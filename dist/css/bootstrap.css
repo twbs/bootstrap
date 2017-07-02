@@ -1573,11 +1573,6 @@ pre code {
   opacity: 1;
 }
 
-.form-control::-moz-placeholder {
-  color: #868e96;
-  opacity: 1;
-}
-
 .form-control:-ms-input-placeholder {
   color: #868e96;
   opacity: 1;
@@ -3830,10 +3825,8 @@ tbody.collapse.show {
 @media (min-width: 576px) {
   .card-columns {
     -webkit-column-count: 3;
-       -moz-column-count: 3;
             column-count: 3;
     -webkit-column-gap: 1.25rem;
-       -moz-column-gap: 1.25rem;
             column-gap: 1.25rem;
   }
   .card-columns .card {
@@ -5085,8 +5078,7 @@ button.close {
 .carousel-item.active,
 .carousel-item-next,
 .carousel-item-prev {
-  display: -ms-flexbox;
-  display: flex;
+  display: block;
 }
 
 .carousel-item-next,
@@ -5097,20 +5089,44 @@ button.close {
 
 .carousel-item-next.carousel-item-left,
 .carousel-item-prev.carousel-item-right {
-  -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+}
+
+@supports ((-webkit-transform-style: preserve-3d) or (transform-style: preserve-3d)) {
+  .carousel-item-next.carousel-item-left,
+  .carousel-item-prev.carousel-item-right {
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+  }
 }
 
 .carousel-item-next,
 .active.carousel-item-right {
-  -webkit-transform: translate3d(100%, 0, 0);
-          transform: translate3d(100%, 0, 0);
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+}
+
+@supports ((-webkit-transform-style: preserve-3d) or (transform-style: preserve-3d)) {
+  .carousel-item-next,
+  .active.carousel-item-right {
+    -webkit-transform: translate3d(100%, 0, 0);
+            transform: translate3d(100%, 0, 0);
+  }
 }
 
 .carousel-item-prev,
 .active.carousel-item-left {
-  -webkit-transform: translate3d(-100%, 0, 0);
-          transform: translate3d(-100%, 0, 0);
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+}
+
+@supports ((-webkit-transform-style: preserve-3d) or (transform-style: preserve-3d)) {
+  .carousel-item-prev,
+  .active.carousel-item-left {
+    -webkit-transform: translate3d(-100%, 0, 0);
+            transform: translate3d(-100%, 0, 0);
+  }
 }
 
 .carousel-control-prev,
@@ -5182,9 +5198,9 @@ button.close {
 
 .carousel-indicators li {
   position: relative;
-  -ms-flex: 1 0 auto;
-      flex: 1 0 auto;
-  max-width: 30px;
+  -ms-flex: 0 1 auto;
+      flex: 0 1 auto;
+  width: 30px;
   height: 3px;
   margin-right: 3px;
   margin-left: 3px;
@@ -8132,6 +8148,10 @@ a.text-light:focus, a.text-light:hover {
 
 a.text-dark:focus, a.text-dark:hover {
   color: #1d2124 !important;
+}
+
+.text-muted {
+  color: #ced4da !important;
 }
 
 .text-hide {
