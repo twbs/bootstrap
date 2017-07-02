@@ -111,7 +111,7 @@ Use [flexbox utilities][flex], [float utilities][float], or [text alignment][tex
 </div>
 {% endexample %}
 
-### Size
+## Size
 
 Use custom CSS or inline styles to change the dimensions as needed.
 
