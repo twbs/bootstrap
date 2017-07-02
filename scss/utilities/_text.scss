@@ -47,3 +47,7 @@
 .text-hide {
   @include text-hide();
 }
+
+.text-truncate {
+  @include text-truncate();
+}
