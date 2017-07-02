@@ -28,7 +28,19 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            {{ site.current_version }} <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="http://getbootstrap.com/docs/4.0/">Latest (4.x)</a></li>
+            <li><a href="https://v4-alpha.getbootstrap.com">v4 Alpha 6</a></li>
+            <li class="active"><a href="https://getbootstrap.com/{{ site.current_version }}/">v{{ site.current_version }}</a></li>
+            <li><a href="https://getbootstrap.com/2.3.2/">v2.3.2</a></li>
+          </ul>
+        </li>
         <li><a href="{{ site.themes }}" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Themes')">Themes</a></li>
+        <li><a href="{{ site.jobs }}" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Jobs')">Jobs</a></li>
         <li><a href="{{ site.expo }}" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Expo');">Expo</a></li>
         <li><a href="{{ site.blog }}" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Blog');">Blog</a></li>
       </ul>
