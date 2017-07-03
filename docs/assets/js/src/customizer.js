@@ -481,40 +481,5 @@ window.onload = function () { // wait for load in a dumb way because B-0
     })
   });
 
-  // browser support alert
-  (function () {
-    function failback() {
-      $('.bs-docs-section, .bs-docs-sidebar').css('display', 'none')
-      showCallout('Looks like your current browser doesn\'t support the Bootstrap Customizer. Please take a second ' +
-                    'to <a href="http://browsehappy.com/">upgrade to a more modern browser</a> (other than Safari).', true)
-    }
-    /**
-     * Based on:
-     *   Blob Feature Check v1.1.0
-     *   https://github.com/ssorallen/blob-feature-check/
-     *   License: Public domain (http://unlicense.org)
-     */
-    var url = window.webkitURL || window.URL // Safari 6 uses "webkitURL".
-    var svg = new Blob(
-      ['<svg xmlns=\'http://www.w3.org/2000/svg\'></svg>'],
-      { type: 'image/svg+xml;charset=utf-8' }
-    )
-    var objectUrl = url.createObjectURL(svg);
-
-    if (/^blob:/.exec(objectUrl) === null || !supportsFile) {
-      // `URL.createObjectURL` created a URL that started with something other
-      // than "blob:", which means it has been polyfilled and is not supported by
-      // this browser.
-      failback()
-    } else {
-      $('<img>')
-        .on('load', function () {
-          $compileBtn.prop('disabled', false)
-        })
-        .on('error', failback)
-        .attr('src', objectUrl)
-    }
-  })();
-
   parseUrl()
 }
