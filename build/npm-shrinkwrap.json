@@ -3008,8 +3008,8 @@
     },
     "popper.js": {
       "version": "1.10.2",
-      "from": "popper.js@>=1.10.1 <2.0.0",
-      "resolved": "https://registry.npmjs.org/popper.js/-/popper.js-1.10.2.tgz"
+      "from": "popper.js@>=1.10.8 <2.0.0",
+      "resolved": "https://registry.npmjs.org/popper.js/-/popper.js-1.10.8.tgz"
     },
     "postcss": {
       "version": "6.0.2",
