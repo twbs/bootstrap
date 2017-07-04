@@ -50,43 +50,16 @@ fieldset[disabled] a.btn {
 // Alternate buttons
 //
 
-.btn-primary {
-  @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border-color);
-}
-.btn-secondary {
-  @include button-variant($btn-secondary-color, $btn-secondary-bg, $btn-secondary-border-color);
-}
-.btn-info {
-  @include button-variant($btn-info-color, $btn-info-bg, $btn-info-border-color);
-}
-.btn-success {
-  @include button-variant($btn-success-color, $btn-success-bg, $btn-success-border-color);
-}
-.btn-warning {
-  @include button-variant($btn-warning-color, $btn-warning-bg, $btn-warning-border-color);
-}
-.btn-danger {
-  @include button-variant($btn-danger-color, $btn-danger-bg, $btn-danger-border-color);
+@each $color, $value in $theme-colors {
+  .btn-#{$color} {
+    @include button-variant($value, $value);
+  }
 }
 
-// Remove all backgrounds
-.btn-outline-primary {
-  @include button-outline-variant($btn-primary-bg, $btn-primary-color);
-}
-.btn-outline-secondary {
-  @include button-outline-variant($btn-secondary-border-color, $btn-secondary-color);
-}
-.btn-outline-info {
-  @include button-outline-variant($btn-info-bg, $btn-info-color);
-}
-.btn-outline-success {
-  @include button-outline-variant($btn-success-bg, $btn-success-color);
-}
-.btn-outline-warning {
-  @include button-outline-variant($btn-warning-bg, $btn-warning-color);
-}
-.btn-outline-danger {
-  @include button-outline-variant($btn-danger-bg, $btn-danger-color);
+@each $color, $value in $theme-colors {
+  .btn-outline-#{$color} {
+    @include button-outline-variant($value, #fff);
+  }
 }
 
 
