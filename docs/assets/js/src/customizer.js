@@ -38,19 +38,6 @@ window.onload = function () { // wait for load in a dumb way because B-0
     '</div>').insertAfter('.bs-customize-download')
   }
 
-  function showCallout(msg, showUpTop) {
-    var $callout = $('<div class="bs-callout bs-callout-danger">' +
-      '<h4>Attention!</h4>' +
-      '<p>' + msg + '</p>' +
-    '</div>')
-
-    if (showUpTop) {
-      $callout.appendTo('.bs-docs-container')
-    } else {
-      $callout.insertAfter('.bs-customize-download')
-    }
-  }
-
   function showAlert(type, msg, insertAfter) {
     $('<div class="alert alert-' + type + '">' + msg + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
       .insertAfter(insertAfter)
