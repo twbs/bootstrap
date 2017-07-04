@@ -2,34 +2,47 @@
   margin-bottom: 0;
   background-color: #fff;
   border-bottom: 0;
-}
-.bs-home-nav .bs-nav-b {
-  display: none;
-}
-.bs-docs-nav .navbar-brand,
-.bs-docs-nav .navbar-nav > li > a {
-  font-weight: 500;
-  color: #563d7c;
-}
-.bs-docs-nav .navbar-nav > li > a:hover,
-.bs-docs-nav .navbar-nav > .active > a,
-.bs-docs-nav .navbar-nav > .active > a:hover {
-  color: #463265;
-  background-color: #f9f9f9;
-}
-.bs-docs-nav .navbar-toggle .icon-bar {
-  background-color: #563d7c;
-}
-.bs-docs-nav .navbar-header .navbar-toggle {
-  border-color: #fff;
-}
-.bs-docs-nav .navbar-header .navbar-toggle:hover,
-.bs-docs-nav .navbar-header .navbar-toggle:focus {
-  background-color: #f9f9f9;
-  border-color: #f9f9f9;
-}
 
-.bs-docs-nav {
+  .bs-nav-b {
+    display: none;
+  }
+
+  .navbar-brand,
+  .navbar-nav > li > a {
+    font-weight: 500;
+    color: #563d7c;
+  }
+
+  .navbar-nav {
+    > li > a {
+      padding-right: 10px;
+      padding-left: 10px;
+    }
+
+    > li > a:hover,
+    > .active > a,
+    > .active > a:hover {
+      color: #463265;
+      background-color: #f9f9f9;
+    }
+  }
+
+  .navbar-toggle .icon-bar {
+    background-color: #563d7c;
+  }
+
+  .navbar-header {
+    .navbar-toggle {
+      border-color: #fff;
+
+      &:hover,
+      &:focus {
+        background-color: #f9f9f9;
+        border-color: #f9f9f9;
+      }
+    }
+  }
+
   .navbar-right {
     @media (min-width: 768px) and (max-width: 992px) {
       display: none;
