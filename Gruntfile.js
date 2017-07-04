@@ -256,12 +256,8 @@ module.exports = function (grunt) {
         src: 'dist/css/<%= pkg.name %>-theme.css',
         dest: 'dist/css/<%= pkg.name %>-theme.min.css'
       },
-      docs: {
-        src: [
-          'docs/assets/css/ie10-viewport-bug-workaround.css',
-          'docs/assets/css/src/pygments-manni.css',
-          'docs/assets/css/src/docs.css'
-        ],
+      minifyDocs: {
+        src: 'docs/assets/css/docs.css',
         dest: 'docs/assets/css/docs.min.css'
       }
     },
@@ -518,7 +514,7 @@ module.exports = function (grunt) {
   });
 
   // Docs task.
-  grunt.registerTask('docs-css', ['autoprefixer:docs', 'autoprefixer:examples', 'csscomb:docs', 'csscomb:examples', 'cssmin:docs']);
+  grunt.registerTask('docs-css', ['autoprefixer:docs', 'autoprefixer:examples', 'csscomb:docs', 'csscomb:examples', 'cssmin:minifyDocs']);
   grunt.registerTask('lint-docs-css', ['csslint:docs', 'csslint:examples']);
   grunt.registerTask('docs-js', ['uglify:docsJs', 'uglify:customize']);
   grunt.registerTask('lint-docs-js', ['jshint:assets', 'jscs:assets']);
