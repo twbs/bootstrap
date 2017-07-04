@@ -40,7 +40,7 @@
   @include text-emphasis-variant('.text-#{$color}', $value);
 }
 
-.text-muted { color: $gray-400 !important; }
+.text-muted { color: $text-muted !important; }
 
 // Misc
 
