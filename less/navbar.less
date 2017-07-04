@@ -845,7 +845,8 @@
 
 @media (min-width: @screen-md-min) {
     .navbar + .jumbotron,
-    .navbar + .jumbotron-image {
+    .navbar + .jumbotron-image,
+    .jumbotron-image-adjacent-to-navbar {
         margin-top: (-1 * @navbar-height);
     }
     .navbar.affix + .jumbotron,
@@ -855,7 +856,8 @@
 }
 
 .navbar + .jumbotron,
-.navbar + .jumbotron-image > .jumbotron {
+.navbar + .jumbotron-image > .jumbotron,
+.jumbotron-image-adjacent-to-navbar {
     padding-bottom: 64px;
 
     @media (min-width: @screen-md-min) {
