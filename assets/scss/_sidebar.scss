@@ -9,12 +9,11 @@
     position: sticky;
     top: 4rem;
     max-height: calc(100vh - 4rem);
+    overflow-y: auto;
   }
   order: 2;
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
-  overflow-x: visible;
-  overflow-y: auto;
   font-size: .875rem;
 }
 
