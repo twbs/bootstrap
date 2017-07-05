@@ -21,16 +21,16 @@
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="{ site.baseurl }}/assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script>window.jQuery || document.write('<script src="{{ site.baseurl }}/assets/js/vendor/jquery.min.js"><\/script>')</script>
 
 {% if site.github %}
-  <script src="{ site.baseurl }}/dist/js/bootstrap.min.js"></script>
+  <script src="{{ site.baseurl }}/dist/js/bootstrap.min.js"></script>
 {% else %}
-  <script src="{ site.baseurl }}/dist/js/bootstrap.js"></script>
+  <script src="{{ site.baseurl }}/dist/js/bootstrap.js"></script>
 {% endif %}
 
 {% if site.github %}
-  <script src="{ site.baseurl }}/assets/js/docs.min.js"></script>
+  <script src="{{ site.baseurl }}/assets/js/docs.min.js"></script>
 {% else %}
   {% for file in site.data.configBridge.paths.docsJs %}
   <script src="{{ file }}"></script>
