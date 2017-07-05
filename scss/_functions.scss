@@ -2,6 +2,9 @@
 //
 // Utility mixins and functions for evalutating source code across our variables, maps, and mixins.
 
+//Import sass-math-pow
+@import "../node_modules/sass-math-pow/sass/math-pow";
+
 // Ascending
 // Used to evaluate Sass maps like our grid breakpoints.
 @mixin _assert-ascending($map, $map-name) {
@@ -53,13 +56,28 @@
   $r: red($color);
   $g: green($color);
   $b: blue($color);
-
-  $yiq: (($r * 299) + ($g * 587) + ($b * 114)) / 1000;
-
-  @if ($yiq >= 150) {
-    color: #111;
+  // get the relative lum for each color
+  $luminositecouleur: relativelum($r / 255, $g / 255, $b / 255);
+  $luminositeblanc: relativelum(1, 1, 1);
+  // if luminosite doesn't fit with white color return black
+  @if ((($luminositeblanc + .05) / ($luminositecouleur + .05)) < 4.5) {
+    color: #000;
   } @else {
     color: #fff;
+  }
+}
+
+// apply Wcag contrast algo : http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef
+// Convert from HTMLCS JS algo
+@function relativelum ($r, $g, $b) {
+  @return ((transform($r) * .2126) + (transform($g) * .7152) + (transform($b) * .0722));
+}
+
+@function transform ($x) {
+  @if ($x <= .03928) {
+      @return $x / 12.92;
+  } @else {
+      @return poly-pow((($x + .055) / 1.055), 2.4);
   }
 }
 
