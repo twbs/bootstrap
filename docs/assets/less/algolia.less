@@ -3,18 +3,18 @@
 // `!important` indicates overridden properties.
 .algolia-autocomplete {
   display: block !important;
-  flex: 1;
+  // flex: 1;
 
   // Menu container
   .ds-dropdown-menu {
     width: 100%;
     min-width: 0 !important;
     max-width: none !important;
-    padding: .75rem 0 !important;
+    padding: 10px 0 !important;
     background-color: #fff;
     background-clip: padding-box;
     border: 1px solid rgba(0,0,0,.1);
-    box-shadow: 0 .5rem 1rem rgba(0,0,0,.175);
+    box-shadow: 0 8px 15px rgba(0,0,0,.175);
 
     @media min-width(@screen-sm-min) {
       width: 175%;
@@ -43,9 +43,9 @@
   }
 
   .algolia-docsearch-suggestion--category-header {
-    padding: .125rem 1rem !important;
+    padding: 2px 15px !important;
     margin-top: 0 !important;
-    font-size: .875rem !important;
+    font-size: 13px !important;
     font-weight: 500 !important;
     color: #7952b3 !important;
     border-bottom: 0 !important;
@@ -78,8 +78,8 @@
   .ds-suggestion {
     &:not(:first-child) {
       .algolia-docsearch-suggestion--category-header {
-        padding-top: .75rem !important;
-        margin-top: .75rem !important;
+        padding-top: 10px !important;
+        margin-top: 10px !important;
         border-top: 1px solid rgba(0,0,0,.1);
       }
     }
@@ -91,16 +91,16 @@
 
   .algolia-docsearch-suggestion--title {
     display: block;
-    padding: .25rem 1rem !important;
+    padding: 4px 15px !important;
     margin-bottom: 0 !important;
-    font-size: .875rem !important;
+    font-size: 13px !important;
     font-weight: 400 !important;
   }
 
   .algolia-docsearch-suggestion--text {
-    padding: 0 1rem .5rem !important;
-    margin-top: -.25rem;
-    font-size: .875rem !important;
+    padding: 0 15px 8px !important;
+    margin-top: -4px;
+    font-size: 13px !important;
     font-weight: normal;
     line-height: 1.25 !important;
   }
@@ -109,8 +109,8 @@
     float: none !important;
     width: auto !important;
     height: auto !important;
-    padding: .75rem 1rem 0;
-    font-size: .75rem !important;
+    padding: 10px 15px 0;
+    font-size: 10px !important;
     line-height: 1 !important;
     color: #767676 !important;
     border-top: 1px solid rgba(0,0,0,.1);
