@@ -7874,13 +7874,13 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 }
 .navbar + .jumbotron,
 .navbar + .jumbotron-image > .jumbotron,
-.jumbotron-image-adjacent-to-navbar {
+.jumbotron-image-adjacent-to-navbar > .jumbotron {
   padding-bottom: 64px;
 }
 @media (min-width: 768px) {
   .navbar + .jumbotron,
   .navbar + .jumbotron-image > .jumbotron,
-  .jumbotron-image-adjacent-to-navbar {
+  .jumbotron-image-adjacent-to-navbar > .jumbotron {
     padding-top: 140px;
     padding-bottom: 104px;
   }
