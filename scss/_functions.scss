@@ -57,10 +57,10 @@
   $g: green($color);
   $b: blue($color);
   // get the relative lum for each color
-  $luminositycolor: relativelum($r / 255, $g / 255, $b / 255);
-  $luminositywhite: relativelum(1, 1, 1);
+  $luminancecolor: relativelum($r / 255, $g / 255, $b / 255);
+  $luminancewhite: relativelum(1, 1, 1);
   // if luminosite doesn't fit with white color return black
-  @if ((($luminositywhite + .05) / ($luminositycolor + .05)) < 4.5) {
+  @if ((($luminancewhite + .05) / ($luminancecolor + .05)) < 4.5) {
     color: #000;
   } @else {
     color: #fff;
