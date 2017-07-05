@@ -164,8 +164,4 @@ const Util = {
 
 export default Util
 
-if (!Util.nodeEnv()) {
-  $(document).ready(() => {
-    setTransitionEndSupport()
-  })
-}
+setTransitionEndSupport()

@@ -17,10 +17,12 @@ const files = {
   Index: path.resolve(__dirname, '../js/src/index.js')
 }
 
-const pathDest = path.resolve(__dirname, '../js/dist/')
-const relativePathSrc = 'js/src/'
-const relativePathDist = 'js/dist/'
-const externalIndex = []
+const pathDest            = path.resolve(__dirname, '../js/dist/')
+const pathDestESM         = path.resolve(__dirname, '../js/dist/esm/')
+const relativePathSrc     = 'js/src/'
+const relativePathDist    = 'js/dist/'
+const relativePathDistESM = 'js/dist/esm/'
+const externalIndex       = []
 
 for (const plugin in files) {
   if (!Object.prototype.hasOwnProperty.call(files, plugin)) {
@@ -28,18 +30,23 @@ for (const plugin in files) {
   }
   const file = `${plugin.toLowerCase()}.js`
   var externalArray = ['jquery', 'popper.js']
+
   if (files[plugin] !== files.Util) {
     externalArray.push(files.Util)
   }
-  if (files[plugin] !== files.Tooltip) {
+
+  if (files[plugin] === files.Popover) {
     externalArray.push(files.Tooltip)
   }
+
+  // Do not export every plugins for the Index
   if (files[plugin] !== files.Index) {
     externalIndex.push(files[plugin])
   }
   else {
     externalArray = externalIndex
   }
+
   rollup.rollup({
     entry: files[plugin],
     external: externalArray,
@@ -56,7 +63,7 @@ for (const plugin in files) {
     }
   })
   .then(function (bundle) {
-    bundle.write({
+    const conf = {
       dest: `${pathDest}/${file}`,
       format: 'umd',
       moduleName: plugin === 'Index' ? 'bootstrap' : plugin,
@@ -65,9 +72,22 @@ for (const plugin in files) {
         jquery: '$',
         'popper.js': 'Popper'
       }
-    })
+    }
+    // Write plugin in UMD
+    bundle.write(conf)
     .then(function () {
       console.log(`${relativePathSrc}${file} -> ${relativePathDist}${file}`)
+
+      conf.format = 'es'
+      conf.moduleName = null
+      conf.dest = `${pathDestESM}/${file}`
+      conf.globals = null
+
+      // Write plugin in ESM
+      bundle.write(conf)
+      .then(function () {
+        console.log(`${relativePathSrc}${file} -> ${relativePathDistESM}${file}`)
+      })
     })
   })
   .catch(console.error) // log errors

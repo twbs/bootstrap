@@ -60,7 +60,7 @@
   "style": "dist/css/bootstrap.css",
   "sass": "scss/bootstrap.scss",
   "main": "js/dist/index",
-  "module": "js/dist/index",
+  "module": "js/dist/esm/index",
   "repository": {
     "type": "git",
     "url": "https://github.com/twbs/bootstrap.git"
