@@ -154,6 +154,39 @@
 }
 
 
+// switches
+//
+// Tweak a few things for switches
+
+.custom-switch {
+  padding-left: $custom-control-gutter * 1.5;
+
+  .custom-control-label {
+    &::before {
+      left: -$custom-control-gutter * 1.5;
+      width: $custom-switch-width;
+      border-radius: $custom-switch-indicator-border-radius;
+    }
+
+    &::after {
+      left: -$custom-control-gutter * 1.5;
+      width: $custom-control-indicator-size * 1.75;
+      background-image: $custom-switch-indicator-icon;
+      background-position: left center;
+      background-size: $custom-control-indicator-size;
+    }
+  }
+
+  .custom-control-input:checked ~ .custom-control-label::after {
+    background-position: right center;
+  }
+
+  &-animated .custom-control-label::after {
+    transition: background-position .1s;
+  }
+}
+
+
 // Select
 //
 // Replaces the browser default select with a custom one, mostly pulled from
