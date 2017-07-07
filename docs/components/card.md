@@ -1307,6 +1307,9 @@ Shows implementations of the publication element.
       <div class="meta-item meta-company" itemprop="hiringOrganization" itemtype="http://schema.org/LocalBusiness">
         <span itemprop="name">Lorem ipsum dolor sit amet</span>
       </div>
+      <div class="meta-item meta-distance">
+        <span>76 km entfernt, </span>
+      </div>
       <div class="meta-item meta-published">
         <time datetime="">veröffentlicht vor 2 Tagen</time>
       </div>
@@ -1325,6 +1328,9 @@ Shows implementations of the publication element.
       </div>
       <div class="meta-item meta-company" itemprop="hiringOrganization" itemtype="http://schema.org/LocalBusiness">
         <span itemprop="name">Lorem ipsum dolor sit amet</span>
+      </div>
+      <div class="meta-item meta-distance">
+        <span>5 km entfernt, </span>
       </div>
       <div class="meta-item meta-published">
         <time datetime="">veröffentlicht vor 2 Tagen</time>
