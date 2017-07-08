@@ -127,6 +127,21 @@
   @include border-bottom-radius($card-inner-border-radius);
 }
 
+.card-img-right {
+  height: 100%; // Required because we use flexbox and this inherently applies align-self: stretch
+  @include border-right-radius($card-inner-border-radius);
+}
+
+.card-img-left {
+  height: 100%; // Required because we use flexbox and this inherently applies align-self: stretch
+  @include border-left-radius($card-inner-border-radius);
+}
+
+
+// Horizontal cards
+.card-horizontal {
+  flex-direction: row;
+}
 
 // Card deck
 

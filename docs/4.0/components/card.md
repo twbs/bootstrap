@@ -347,6 +347,29 @@ Similar to headers and footers, cards can include top and bottom "image caps"—
 </div>
 {% endexample %}
 
+### horizontal cards
+
+Similar to headers and footers, cards can include top and bottom "image caps"—images at the top or bottom of a card.
+
+{% example html %}
+<div class="card card-horizontal mb-3">
+  <img class="card-img-left" src="https://www.fillmurray.com/g/180/250" alt="Card image cap">
+  <div class="card-body">
+    <h4 class="card-title">Card title</h4>
+    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+  </div>
+</div>
+<div class="card card-horizontal">
+  <div class="card-body">
+    <h4 class="card-title">Card title</h4>
+    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+  </div>
+  <img class="card-img-right" data-src="holder.js/180x250/" alt="Card image cap">
+</div>
+{% endexample %}
+
 ### Image overlays
 
 Turn an image into a card background and overlay your card's text. Depending on the image, you may or may not need additional styles or utilities.
