@@ -31,7 +31,7 @@ html {
 *,
 *::before,
 *::after {
-  box-sizing: inherit; // 1
+  box-sizing: border-box; // 1
 }
 
 // IE10+ doesn't honor `<meta name="viewport">` in some cases.
