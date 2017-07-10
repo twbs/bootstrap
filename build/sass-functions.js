@@ -2,7 +2,7 @@
 
 // Export math.pow function for node-sass
 
-var types = require('node-sass').types
+const types = require('node-sass').types
 
 module.exports = {
   pow : function (val, exp) {
