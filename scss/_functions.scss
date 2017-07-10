@@ -2,9 +2,6 @@
 //
 // Utility mixins and functions for evalutating source code across our variables, maps, and mixins.
 
-//Import sass-math-pow
-@import "../node_modules/sass-math-pow/sass/math-pow";
-
 // Ascending
 // Used to evaluate Sass maps like our grid breakpoints.
 @mixin _assert-ascending($map, $map-name) {
@@ -77,7 +74,7 @@
   @if ($x <= .03928) {
       @return $x / 12.92;
   } @else {
-      @return poly-pow((($x + .055) / 1.055), 2.4);
+      @return pow((($x + .055) / 1.055), 2.4);
   }
 }
 
