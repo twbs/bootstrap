@@ -349,7 +349,7 @@ Similar to headers and footers, cards can include top and bottom "image caps"—
 
 ### horizontal cards
 
-Similar to headers and footers, cards can include top and bottom "image caps"—images at the top or bottom of a card.
+The image caps can also be used to make horizontal cards.
 
 {% example html %}
 <div class="card card-horizontal mb-3">
