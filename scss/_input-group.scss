@@ -144,33 +144,13 @@
   // element above the siblings.
   > .btn {
     position: relative;
-
-    + .btn {
-      margin-left: (-$input-btn-border-width);
-    }
-
     // Bring the "active" button to the front
     @include hover-focus-active {
       z-index: 3;
     }
   }
 
-  // Negative margin to only have a single, shared border between the two
-  &:not(:last-child) {
-    > .btn,
-    > .btn-group {
-      margin-right: (-$input-btn-border-width);
-    }
-  }
-  &:not(:first-child) {
-    > .btn,
-    > .btn-group {
-      z-index: 2;
-      margin-left: (-$input-btn-border-width);
-      // Because specificity
-      @include hover-focus-active {
-        z-index: 3;
-      }
-    }
+  &:nth-child(n+1):nth-last-child(n+1) > * {
+    margin-right: -1px;
   }
 }

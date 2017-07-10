@@ -353,7 +353,7 @@ Similar to headers and footers, cards can include top and bottom "image caps"—
 
 {% example html %}
 <div class="card card-horizontal mb-3">
-  <img class="card-img-left" src="https://www.fillmurray.com/g/180/250" alt="Card image cap">
+  <img class="card-img-left" data-src="holder.js/180x250/" alt="Card image cap">
   <div class="card-body">
     <h4 class="card-title">Card title</h4>
     <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
