@@ -85,14 +85,14 @@ var Dropdown = function ($) {
     placement: 'string',
     offset: '(number|string)',
     flip: 'boolean'
-
-    /**
-     * ------------------------------------------------------------------------
-     * Class Definition
-     * ------------------------------------------------------------------------
-     */
-
   };
+
+  /**
+   * ------------------------------------------------------------------------
+   * Class Definition
+   * ------------------------------------------------------------------------
+   */
+
   var Dropdown = function () {
     function Dropdown(element, config) {
       _classCallCheck(this, Dropdown);
@@ -231,8 +231,6 @@ var Dropdown = function ($) {
     };
 
     Dropdown.prototype._getPopperConfig = function _getPopperConfig() {
-      var _this2 = this;
-
       var popperConfig = {
         placement: this._getPlacement(),
         modifiers: {
@@ -245,14 +243,10 @@ var Dropdown = function ($) {
         }
       };
 
+      // Disable Popper.js for Dropdown in Navbar
       if (this._inNavbar) {
-        popperConfig.modifiers.AfterApplyStyle = {
-          enabled: true,
-          order: 901, // ApplyStyle order + 1
-          fn: function fn() {
-            // reset Popper styles
-            $(_this2._menu).attr('style', '');
-          }
+        popperConfig.modifiers.applyStyle = {
+          enabled: !this._inNavbar
         };
       }
       return popperConfig;
@@ -418,7 +412,7 @@ var Dropdown = function ($) {
     Dropdown._jQueryInterface.call($(this), 'toggle');
   }).on(Event.CLICK_DATA_API, Selector.FORM_CHILD, function (e) {
     e.stopPropagation();
-  }
+  });
 
   /**
    * ------------------------------------------------------------------------
@@ -426,7 +420,7 @@ var Dropdown = function ($) {
    * ------------------------------------------------------------------------
    */
 
-  );$.fn[NAME] = Dropdown._jQueryInterface;
+  $.fn[NAME] = Dropdown._jQueryInterface;
   $.fn[NAME].Constructor = Dropdown;
   $.fn[NAME].noConflict = function () {
     $.fn[NAME] = JQUERY_NO_CONFLICT;

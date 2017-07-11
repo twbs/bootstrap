@@ -11,18 +11,10 @@ toc: true
 Alerts are available for any length of text, as well as an optional dismiss button. For proper styling, use one of the four **required** contextual classes (e.g., `.alert-success`). For inline dismissal, use the [alerts jQuery plugin](#dismissing).
 
 {% example html %}
-<div class="alert alert-success" role="alert">
-  <strong>Well done!</strong> You successfully read this important alert message.
-</div>
-<div class="alert alert-info" role="alert">
-  <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
-</div>
-<div class="alert alert-warning" role="alert">
-  <strong>Warning!</strong> Better check yourself, you're not looking too good.
-</div>
-<div class="alert alert-danger" role="alert">
-  <strong>Oh snap!</strong> Change a few things up and try submitting again.
-</div>
+{% for color in site.data.theme-colors %}
+<div class="alert alert-{{ color.name }}" role="alert">
+  This is a {{ color.name }} alert—check it out!
+</div>{% endfor %}
 {% endexample %}
 
 {% capture callout-include %}{% include callout-warning-color-assistive-technologies.md %}{% endcapture %}
@@ -33,18 +25,10 @@ Alerts are available for any length of text, as well as an optional dismiss butt
 Use the `.alert-link` utility class to quickly provide matching colored links within any alert.
 
 {% example html %}
-<div class="alert alert-success" role="alert">
-  <strong>Well done!</strong> You successfully read <a href="#" class="alert-link">this important alert message</a>.
-</div>
-<div class="alert alert-info" role="alert">
-  <strong>Heads up!</strong> This <a href="#" class="alert-link">alert needs your attention</a>, but it's not super important.
-</div>
-<div class="alert alert-warning" role="alert">
-  <strong>Warning!</strong> Better check yourself, you're <a href="#" class="alert-link">not looking too good</a>.
-</div>
-<div class="alert alert-danger" role="alert">
-  <strong>Oh snap!</strong> <a href="#" class="alert-link">Change a few things up</a> and try submitting again.
-</div>
+{% for color in site.data.theme-colors %}
+<div class="alert alert-{{ color.name }}" role="alert">
+  This is a {{ color.name }} alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+</div>{% endfor %}
 {% endexample %}
 
 ### Additional content

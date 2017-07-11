@@ -123,7 +123,7 @@ Buttons in input groups must wrapped in a `.input-group-btn` for proper alignmen
   </div>
   <div class="col-lg-6">
     <div class="input-group">
-      <input type="text" class="form-control" placeholder="Search for..." aria-label="Search for...>
+      <input type="text" class="form-control" placeholder="Search for..." aria-label="Search for...">
       <span class="input-group-btn">
         <button class="btn btn-secondary" type="button">Go!</button>
       </span>

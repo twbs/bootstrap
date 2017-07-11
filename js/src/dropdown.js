@@ -265,14 +265,10 @@ const Dropdown = (($) => {
         }
       }
 
+      // Disable Popper.js for Dropdown in Navbar
       if (this._inNavbar) {
-        popperConfig.modifiers.AfterApplyStyle = {
-          enabled: true,
-          order: 901, // ApplyStyle order + 1
-          fn: () => {
-            // reset Popper styles
-            $(this._menu).attr('style', '')
-          }
+        popperConfig.modifiers.applyStyle = {
+          enabled: !this._inNavbar
         }
       }
       return popperConfig
