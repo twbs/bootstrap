@@ -1,7 +1,7 @@
 // scss-lint:disable VendorPrefix
 
 //
-// Side navigation
+// Right side table of contents
 //
 
 .bd-toc {
@@ -9,10 +9,11 @@
     position: sticky;
     top: 4rem;
     max-height: calc(100vh - 4rem);
+    overflow-y: auto;
   }
+  order: 2;
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
-  overflow-x: visible;
   font-size: .875rem;
 }
 
@@ -34,17 +35,22 @@
 
   a {
     display: block;
-    padding: .25rem 1.5rem;
+    padding: .125rem 1.5rem;
     color: #99979c;
 
     &:hover {
-      color: $brand-primary;
+      color: $blue;
       text-decoration: none;
     }
   }
 }
 
+//
+// Left side navigation
+//
+
 .bd-sidebar {
+  order: 0;
   background-color: #f5f2f9;
   border-bottom: 1px solid rgba(0,0,0,.1);
 
@@ -70,8 +76,10 @@
   margin-left: -15px;
 
   @include media-breakpoint-up(md) {
-    max-height: calc(100vh - 9rem);
-    overflow-y: auto;
+    @supports (position: sticky) {
+      max-height: calc(100vh - 9rem);
+      overflow-y: auto;
+    }
   }
 
   // Override collapse behaviors
@@ -95,7 +103,7 @@
 
 .bd-search-docs-toggle {
   line-height: 1;
-  color: $gray-dark;
+  color: $gray-900;
 }
 
 .bd-sidenav {

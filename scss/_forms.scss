@@ -42,7 +42,7 @@
 
   // Placeholder
   &::placeholder {
-    color: $input-color-placeholder;
+    color: $input-placeholder-color;
     // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526.
     opacity: 1;
   }
@@ -54,7 +54,7 @@
   // don't honor that edge case; we style them as disabled anyway.
   &:disabled,
   &[readonly] {
-    background-color: $input-bg-disabled;
+    background-color: $input-disabled-bg;
     // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655.
     opacity: 1;
   }
@@ -62,8 +62,7 @@
 
 select.form-control {
   &:not([size]):not([multiple]) {
-    $select-border-width: ($border-width * 2);
-    height: calc(#{$input-height} + #{$select-border-width});
+    height: $input-height;
   }
 
   &:focus::-ms-value {
@@ -123,12 +122,12 @@ select.form-control {
 }
 
 
-// Static form control text
+// Readonly controls as plain text
 //
-// Apply class to an element to make any string of text align with labels in a
-// horizontal form layout.
+// Apply class to a readonly input to make it appear like regular plain
+// text (without any border, background color, focus indicator)
 
-.form-control-static {
+.form-control-plaintext {
   padding-top: $input-btn-padding-y;
   padding-bottom: $input-btn-padding-y;
   margin-bottom: 0; // match inputs if this class comes on inputs with default margins
@@ -161,8 +160,7 @@ select.form-control {
 
 select.form-control-sm {
   &:not([size]):not([multiple]) {
-    $select-border-width: ($border-width * 2);
-    height: calc(#{$input-height-sm} + #{$select-border-width});
+    height: $input-height-sm;
   }
 }
 
@@ -175,8 +173,7 @@ select.form-control-sm {
 
 select.form-control-lg {
   &:not([size]):not([multiple]) {
-    $select-border-width: ($border-width * 2);
-    height: calc(#{$input-height-lg} + #{$select-border-width});
+    height: $input-height-lg;
   }
 }
 
@@ -193,6 +190,24 @@ select.form-control-lg {
 .form-text {
   display: block;
   margin-top: $form-text-margin-top;
+}
+
+
+// Form grid
+//
+// Special replacement for our grid system's `.row` for tighter form layouts.
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -5px;
+  margin-left: -5px;
+
+  > .col,
+  > [class*="col-"] {
+    padding-right: 5px;
+    padding-left: 5px;
+  }
 }
 
 
@@ -241,48 +256,37 @@ select.form-control-lg {
 }
 
 
-// Form control feedback states
+// Form validation
 //
-// Apply contextual and semantic states to individual form controls.
+// Provide feedback to users when form field values are valid or invalid. Works
+// primarily for client-side validation via scoped `:invalid` and `:valid`
+// pseudo-classes but also includes `.is-invalid` and `.is-valid` classes for
+// server side validation.
 
-.form-control-feedback {
-  margin-top: $form-feedback-margin-top;
+.invalid-feedback {
+  display: none;
+  margin-top: .25rem;
+  font-size: .875rem;
+  color: $form-feedback-invalid-color;
 }
 
-.form-control-success,
-.form-control-warning,
-.form-control-danger {
-  padding-right: ($input-btn-padding-x * 3);
-  background-repeat: no-repeat;
-  background-position: center right ($input-height / 4);
-  background-size: ($input-height / 2) ($input-height / 2);
+.invalid-tooltip {
+  position: absolute;
+  top: 100%;
+  z-index: 5;
+  display: none;
+  width: 250px;
+  padding: .5rem;
+  margin-top: .1rem;
+  font-size: .875rem;
+  line-height: 1;
+  color: #fff;
+  background-color: rgba($form-feedback-invalid-color,.8);
+  border-radius: .2rem;
 }
 
-// Form validation states
-.has-success {
-  @include form-control-validation($brand-success);
-
-  .form-control-success {
-    background-image: $form-icon-success;
-  }
-}
-
-.has-warning {
-  @include form-control-validation($brand-warning);
-
-  .form-control-warning {
-    background-image: $form-icon-warning;
-  }
-}
-
-.has-danger {
-  @include form-control-validation($brand-danger);
-
-  .form-control-danger {
-    background-image: $form-icon-danger;
-  }
-}
-
+@include form-validation-state("valid", $form-feedback-valid-color);
+@include form-validation-state("invalid", $form-feedback-invalid-color);
 
 // Inline forms
 //
@@ -331,7 +335,7 @@ select.form-control-lg {
     }
 
     // Make static controls behave like regular ones
-    .form-control-static {
+    .form-control-plaintext {
       display: inline-block;
     }
 

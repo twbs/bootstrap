@@ -34,25 +34,13 @@
 
 // Contextual colors
 
-.text-white {
-  color: #fff !important;
+.text-white { color: #fff !important; }
+
+@each $color, $value in $theme-colors {
+  @include text-emphasis-variant('.text-#{$color}', $value);
 }
 
-@include text-emphasis-variant('.text-muted', $text-muted);
-
-@include text-emphasis-variant('.text-primary', $brand-primary);
-
-@include text-emphasis-variant('.text-success', $brand-success);
-
-@include text-emphasis-variant('.text-info', $brand-info);
-
-@include text-emphasis-variant('.text-warning', $brand-warning);
-
-@include text-emphasis-variant('.text-danger', $brand-danger);
-
-// Font color
-
-@include text-emphasis-variant('.text-gray-dark', $gray-dark);
+.text-muted { color: $text-muted !important; }
 
 // Misc
 

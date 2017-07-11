@@ -54,7 +54,7 @@
   background-clip: padding-box;
   border: $modal-content-border-width solid $modal-content-border-color;
   @include border-radius($border-radius-lg);
-  @include box-shadow($modal-content-xs-box-shadow);
+  @include box-shadow($modal-content-box-shadow-xs);
   // Remove focus outline from opened modal
   outline: 0;
 }
@@ -127,11 +127,11 @@
   // Automatically set modal's width for larger viewports
   .modal-dialog {
     max-width: $modal-md;
-    margin: $modal-dialog-sm-up-margin-y auto;
+    margin: $modal-dialog-margin-y-sm-up auto;
   }
 
   .modal-content {
-    @include box-shadow($modal-content-sm-up-box-shadow);
+    @include box-shadow($modal-content-box-shadow-sm-up);
   }
 
   .modal-sm { max-width: $modal-sm; }
