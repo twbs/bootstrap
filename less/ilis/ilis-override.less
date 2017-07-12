@@ -1,56 +1,379 @@
-/*!/*!
- * Bootstrap v3.3.7 (http://getbootstrap.com)
- * Copyright 2011-2016 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */
+@ilis-color-link: #337ab7;
 
-// Core variables and mixins
-@import "variables.less";
-@import "mixins.less";
+html {
+    background-color: white;
+    font-family: 'Lato', sans-serif !important;
+}
 
-// Reset and dependencies
-// @import "normalize.less";
-// @import "print.less";
-// @import "glyphicons.less";
+body {
+    margin: 0px;
+}
 
-// Core CSS
-@import "scaffolding.less";
-// @import "type.less";
-// @import "code.less";
-// @import "grid.less";
-// @import "tables.less";
-// @import "forms.less";
-// @import "buttons.less";
+a:link {
+    color: @ilis-color-link !important;
+}
 
-// Components
-// @import "component-animations.less";
-// @import "dropdowns.less";
-// @import "button-groups.less";
-// @import "input-groups.less";
-// @import "navs.less";
-// @import "navbar.less";
-// @import "breadcrumbs.less";
-// @import "pagination.less";
-// @import "pager.less";
-// @import "labels.less";
-// @import "badges.less";
-// @import "jumbotron.less";
-// @import "thumbnails.less";
-// @import "alerts.less";
-// @import "progress-bars.less";
-// @import "media.less";
-// @import "list-group.less";
-// @import "panels.less";
-// @import "responsive-embed.less";
-// @import "wells.less";
-// @import "close.less";
+.nav-tabs {
+    border: inherit !important;
+    border-bottom: inherit !important;
+    font-weight: inherit !important;
+}
 
-// Components w/ JavaScript
-// @import "modals.less";
-// @import "tooltip.less";
-// @import "popovers.less";
-// @import "carousel.less";
+.nav-tabs > li {
+    margin: 0 !important;
+    background: none !important;
+    border: none !important;
+}
 
-// Utility classes
-@import "utilities.less";
-// @import "responsive-utilities.less";
+.nav-tabs > li > a {
+    font-size: 8pt;
+    padding: 2px 20px;
+    color: #FFF !important;
+    background-color: #000 !important;
+    background-image: none;
+    border-right: 1px solid #eee;
+    margin-right: 0px !important;
+}
+
+.nav-tabs > li.active > a {
+    /*padding-bottom: 0.5em;*/
+    padding: 2px 20px;
+    color: #777 !important;
+    background-color: #e6e6e6 !important;
+    background-image: none !important;
+    border-top: 1px solid #ddd !important;
+    border-left: 1px solid #ddd !important;
+    border-right: 1px solid #ddd !important;
+    border: 1px solid #ddd !important;
+}
+
+.admin-block {
+    background: transparent !important;
+}
+
+.admin-block ul li a:link {
+    color: #FFF !important;
+}
+
+.admin-block ul li a:hover {
+    font-weight: bold;
+}
+
+.disclaimer-container {
+    background: #F8F7F5 !important;
+    color: #494949 !important;
+}
+
+.disclaimer-container a {
+    color: @ilis-color-link !important;
+}
+
+/* DME styles.css */
+.header {
+    background-color: #173559;
+    width: auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.header .title h1 {
+    margin-top: 29px;
+    /*text-align: left;*/
+    /*margin-top: 1.1em;*/
+    /*margin-left: 0.5em;*/
+    /*position: absolute;*/
+    width: 25em;
+}
+
+.header a {
+    color: white !important;
+}
+
+.header .logo img {
+    margin: 30px;
+    height: 38px;
+    width: 192px;
+}
+
+.content {
+    padding: 0px;
+}
+
+.container {
+    width: 100%;
+    margin-right: 0;
+    margin-left: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.lsco {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    /*width: 80em;*/
+    font-family: 'Lato', sans-serif !important;
+    font-size: 12pt;
+    background-color: #FFF;
+}
+
+.disclaimer-container {
+    background: #F8F7F5;
+}
+
+#login-section {
+    width: 35%;
+    margin: 0 auto;
+}
+
+.oneColumn {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding: 0px;
+}
+
+.oneColumn .page-body {
+    background: white;
+}
+
+#twoColumn {
+    font-size: 12pt;
+    padding: 0px;
+    background: white;
+    border: none;
+    width: 80em;
+    margin: 10px auto 0 auto;
+
+    /* padding: 0.5em; */
+    /* margin-top: 0.75em; */
+    /* margin-bottom: 0.5em; */
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+#twoColumn .menu {
+    font-size: 10pt;
+}
+
+#twoColumn .page-body {
+    background: white;
+    height: auto;
+    overflow: auto;
+    border: 0;
+}
+
+#twoColumn .content {
+    font-size: 10pt;
+    border: none;
+    width: 81%;
+}
+
+#pageContent {
+    padding: 0;
+}
+
+.content {
+    border: none;
+}
+
+.page-body {
+    background: white;
+    border: 0;
+}
+
+.sfb-step-navbar {
+    display: inline-block;
+    width: 100%;
+    height: auto;
+    margin-left: 0 !important;
+    font-size: 11px;
+    font-family: Arial, Verdana, Sans-serif !important;
+    font-weight: bold;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    background: linear-gradient(to bottom, #EFECE6 0, #F8F7F5 51%, #fff 100%);
+}
+
+.btn {
+    border: 0px solid transparent;
+    padding: 3px 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.btn-default {
+    color: #FFF;
+    background-color: #111;
+    background-image: none;
+    text-shadow: none;
+}
+
+.btn-success {
+    color: #333;
+    background-color: #e6e6e6;
+    background-image: none;
+    border-color: #adadad;
+}
+
+.btn-success:hover {
+    color: #777;
+    background-color: #e6e6e6;
+    background-image: none;
+    border-color: #adadad;
+}
+
+.btn-info {
+    color: #FFF;
+    background-color: #111;
+    background-image: none;
+    text-shadow: none;
+}
+
+.btn-info:hover {
+    color:#000;
+    background-color: #e6e6e6;
+    background-image: none;
+    border-color: #adadad;
+}
+
+.btn-info:focus {
+    background-color: #e6e6e6 !important;
+    background-image: none !important;
+    border-color: #adadad !important;
+}
+
+.btn-info.disabled, .btn-info[disabled], fieldset[disabled] .btn-info, .btn-info.disabled:hover, .btn-info[disabled]:hover, fieldset[disabled] .btn-info:hover, .btn-info.disabled:focus, .btn-info[disabled]:focus, fieldset[disabled] .btn-info:focus, .btn-info.disabled.focus, .btn-info[disabled].focus, fieldset[disabled] .btn-info.focus, .btn-info.disabled:active, .btn-info[disabled]:active, fieldset[disabled] .btn-info:active, .btn-info.disabled.active, .btn-info[disabled].active, fieldset[disabled] .btn-info.active {
+    color: #FFF;
+    background-color: #777;
+    background-image: none;
+}
+
+/* Workaround for changing the "Add" button style to match those of "btn-default" */
+div.schema-form-array button.btn-success {
+    color: #FFF;
+    background-color: #111;
+    background-image: none;
+    text-shadow: none;
+}
+
+div.schema-form-array button.btn-success:hover {
+    color: #000;
+    background-color: #e6e6e6 !important;
+    background-image: none !important;
+    border-color: #adadad !important;
+}
+
+.has-success .help-block, .has-success .control-label, .has-success .radio, .has-success .checkbox, .has-success .radio-inline, .has-success .checkbox-inline, .has-success.radio label, .has-success.checkbox label, .has-success.radio-inline label, .has-success.checkbox-inline label {
+    color: #333;
+}
+
+.schema-form-section .schema-form-radios .control-label {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.module-heading {
+    background: #EFECE6 repeat scroll 0 0;
+    /* border: 1px solid #D3D8DD; */
+    padding: 0.5em 1em;
+    /*margin-top: 1em;*/
+    margin-top: 0px;
+    color: #333;
+    border: none;
+}
+
+.module-heading:not(:first-child) {
+    margin-top: 10px;
+}
+
+.module-content {
+    background: #F8F7F5 repeat scroll 0 0;
+    border: none;
+    padding-left: 1.0em;
+    padding-top: 0.4em;
+    padding-bottom: 0.4em;
+    margin-top: 0;
+}
+
+legend {
+    display: block;
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    font-size: 21px;
+    font-weight: bold;
+    color: #333;
+    border: 0;
+    border-bottom: 2px solid #DDD;
+}
+
+.page-body-heading {
+    display: none;
+}
+
+.fancy-border {
+    border: none;
+}
+
+.form-control {
+    width: 100%;
+}
+
+.schema-form-section div label {
+    width: inherit;
+}
+
+.schema-form-section .required {
+    padding-left: 0px;
+    background: none;
+}
+
+div.required label {
+    background: url(../images/required.gif) no-repeat 0 4px;
+    padding-left: 15px;
+}
+
+.schema-form-section div label {
+    float: none;
+}
+
+.schema-form-section .required {
+    /* background: url(../../images/required.gif) no-repeat 0 4px; */
+    /*padding-left: 1.2em;*/
+}
+
+.schema-form-section .required .radio label {
+    background: none;
+    padding-left: 1.2em;
+}
+
+fieldset {
+    padding: .35em .625em .75em;
+    /*margin: 0;*/
+    /*border: 0;*/
+    /*min-width: 0;*/
+}
+
+.header-wrapper {
+    width: 80em;
+    margin: 0 auto;
+}
+
+.cart {
+    font-size: 22px;
+    /*color: rgb(195, 117, 80);*/
+    color: #FFF;
+    font-weight: bold;
+}
+
+.header-shopping-cart-container {
+    position: absolute;
+    bottom: 0px;
+    right: 5px;
+}
+
+.ol-control-active {
+    background-color: #ffaa3f !important;
+}
