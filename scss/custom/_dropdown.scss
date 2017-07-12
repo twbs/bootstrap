@@ -51,3 +51,18 @@
     }
   }
 }
+
+.dropdown-item-group {
+  display: flex;
+  flex-wrap: no-wrap;
+
+  > .dropdown-item {
+    flex: auto;
+    display: inline-block;
+    width: auto;
+  }
+
+  > .dropdown-item-noscale {
+    flex: 0 auto;
+  }
+}

@@ -1336,6 +1336,7 @@ Shows implementations of the publication element.
         <time datetime="">veröffentlicht vor 2 Tagen</time>
       </div>
     </section>
+    <div class="badge badge-primary clip clip-top-right"><span class="icon-heart"></span> <span class="hidden-xs-down">Job gemerkt</span></div>
   </article>
 </div>
 {% endexample %}
