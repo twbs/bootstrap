@@ -94,41 +94,41 @@
 // Start with assigning color names to specific hex values.
 $white:  #fff !default;
 $black:  #000 !default;
-$red:    #db2828;
-$orange: #ff6a44;
+$red:    #db2828 !default;
+$orange: #ff6a44 !default;
 $yellow: #ffd500 !default;
-$green:  #21ba45;
-$green-light:  #6cc254;
+$green:  #21ba45 !default;
+$green-light:  #6cc254 !default;
 $teal:   #5bc0de !default;
 $blue:   #0275d8 !default;
-$blue-light: #3d9afc;
-$cyan:   #0070ce;
+$blue-light: #3d9afc !default;
+$cyan:   #0070ce !default;
 $pink:   #ff5b77 !default;
 $purple: #613d7c !default;
 $joblocal-orange: #f8ae00; // used own namespace to distinguish general stuff like error colors which might not change with market
 $joblocal-gray: #444547;
 
 // Create grayscale
-$gray-dark:     mix(black, $joblocal-gray, 50%);
-$gray:          $joblocal-gray;
-$gray-light:    mix(white, $joblocal-gray, 25%);
-$gray-lighter:  #d7d7d7;
-$gray-lightest: #f6f6f6;
+$gray-dark:     mix(black, $joblocal-gray, 50%) !default;
+$gray:          $joblocal-gray !default;
+$gray-light:    mix(white, $joblocal-gray, 25%) !default;
+$gray-lighter:  #d7d7d7 !default;
+$gray-lightest: #f6f6f6 !default;
 
 // Reassign color vars to semantic color scheme
-$brand-primary:             $joblocal-orange;
-$brand-secondary:           $joblocal-gray;
+$brand-primary:             $joblocal-orange !default;
+$brand-secondary:           $joblocal-gray !default;
 $brand-success:             $green !default;
-$brand-info:                $cyan;
+$brand-info:                $cyan !default;
 $brand-warning:             $orange !default;
 $brand-danger:              $red !default;
-$brand-inverse:             $joblocal-gray;
+$brand-inverse:             $joblocal-gray !default;
 
-$ausbildung-color: $blue-light;
-$minijob-color: $green-light;
-$new-color: $orange;
+$ausbildung-color: $blue-light !default;
+$minijob-color: $green-light !default;
+$new-color: $orange !default;
 
-$border-color: $gray-lighter;
+$border-color: $gray-lighter !default;
 
 // Shadows
 //
@@ -205,8 +205,8 @@ $sizes: (
 //
 // Settings for the `<body>` element.
 
-$body-bg:       $gray-lightest;
-$body-color:    $gray;
+$body-bg:       $gray-lightest !default;
+$body-color:    $gray !default;
 
 
 // Links
@@ -334,8 +334,8 @@ $list-inline-padding: 5px !default;
 
 
 // Icons
-// 
-// 
+//
+//
 
 $icons-font-path: "/assets/fonts/icons" !default;
 
@@ -1233,8 +1233,8 @@ $facet-highlighted-color: $white;
 
 
 // Floating Input
-// 
-// 
+//
+//
 
 $floating-input-label-size: $font-size-sm;
 $floating-input-label-active-color: $gray-dark;
