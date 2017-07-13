@@ -5217,7 +5217,7 @@ button.close {
   position: absolute;
   z-index: 1070;
   display: block;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: Verdana, 'Trebuchet ms', Tahoma;
   font-size: 12px;
   font-style: normal;
   font-weight: normal;
@@ -5336,7 +5336,7 @@ button.close {
   display: none;
   max-width: 276px;
   padding: 1px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: Verdana, 'Trebuchet ms', Tahoma;
   font-size: 14px;
   font-style: normal;
   font-weight: normal;
@@ -5761,5 +5761,124 @@ button.close {
 }
 .affix {
   position: fixed;
+}
+body {
+  font-family: Verdana, 'Trebuchet ms', Tahoma;
+}
+.list {
+  margin: 10px 0 30px;
+  list-style: none outside none;
+}
+.list-group {
+  margin-bottom: 0;
+}
+.designer-draggable {
+  min-height: 44px;
+}
+.component-palette .designer-draggable {
+  cursor: move;
+}
+.designer-draggable:hover {
+  background-color: #eee;
+}
+.designer-draggable .btn {
+  display: inline-block;
+}
+.designer-auto-height-container {
+  height: -webkit-calc(100vh - 150px);
+  height:         calc(100vh - 150px);
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+#sfb-navbar-menu ul.navbar-nav > li {
+  margin-right: 8px;
+}
+#sfb-nav-tabs-list > li:nth-child(1) {
+  margin-left: 15px;
+}
+.apps-container {
+  min-height: 50px;
+  padding: 4px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+/* only the top level container gets special styling */
+.apps-container .apps-container {
+  height: auto;
+  padding: 4px;
+  margin: 4px;
+  overflow: hidden;
+  border: 1px dashed blue;
+  border-radius: 4px;
+}
+.apps-container li {
+  list-style-type: none;
+}
+.app {
+  /*width: 170px;*/
+  padding: 5px 10px;
+  margin: 5px 0;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-align: center;
+  cursor: move;
+  background-color: #ea8a8a;
+  border: 1px solid #444;
+  border-radius: 5px;
+}
+#loading-bar-spinner {
+  /* Cover the entire screen */
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* For disable mouse interaction, does not work... */
+  z-index: 10001;
+  width: 100%;
+  height: 100%;
+  pointer-events: auto;
+  background: rgba(255, 255, 255, .5);
+}
+#loading-bar-spinner > .spinner-vertical-align-wrapper {
+  /* For vertically centering child element */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+}
+#loading-bar-spinner .spinner-icon {
+  width: 50px;
+  height: 50px;
+  margin-right: auto;
+  /* For horizontal center */
+  margin-left: auto;
+}
+#loading-bar-container {
+  position: relative;
+}
+.elastic-search-result-selected {
+  background-color: #dff0d8;
+}
+.designer-sortable-placeholder {
+  height: 44px;
+  background-color: #d9edf7;
+  border-radius: 4px;
+}
+.designer-sortable-helper {
+  height: 44px;
+}
+.apps-container .designer-target-container {
+  border-color: darkorchid;
+  border-style: solid !important;
+  border-width: 2px !important;
+}
+.top-buffer-20px {
+  margin-top: 20px;
+}
+.clear {
+  clear: both;
+}
+.required .control-label::after {
+  display: inline;
+  color: #e32;
+  content: ' *';
 }
 /*# sourceMappingURL=bootstrap-system-builder.css.map */
