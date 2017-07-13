@@ -185,6 +185,11 @@ select.form-control-lg {
 
 .form-group {
   margin-bottom: $form-group-margin-bottom;
+  label {
+    padding-top: calc(#{$input-btn-padding-y} - #{$input-btn-border-width} * 2);
+    padding-bottom: calc(#{$input-btn-padding-y} - #{$input-btn-border-width} * 2);
+    margin-bottom: 0; // Override the `<label>` default
+  }
 }
 
 .form-text {

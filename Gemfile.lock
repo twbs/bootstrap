@@ -63,4 +63,4 @@ DEPENDENCIES
   scss_lint (~> 0.53.0)
 
 BUNDLED WITH
-   1.15.0
+   1.15.1
