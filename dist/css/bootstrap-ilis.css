@@ -925,7 +925,10 @@ select[multiple].input-lg {
     font-size: 11px;
   }
 }
-div.required label:before {
+.form-control {
+  padding: 3px 6px;
+}
+.required .control-label::before {
   color: red;
   content: "* ";
 }
@@ -975,9 +978,7 @@ div.required label:before {
 .btn.disabled,
 .btn[disabled],
 fieldset[disabled] .btn {
-  color: #fff;
   cursor: not-allowed;
-  background: #777;
   filter: alpha(opacity=65);
   -webkit-box-shadow: none;
           box-shadow: none;
@@ -1691,6 +1692,17 @@ input[type="submit"].btn-block,
 input[type="reset"].btn-block,
 input[type="button"].btn-block {
   width: 100%;
+}
+.btn.disabled,
+.btn[disabled],
+fieldset[disabled] .btn {
+  color: #fff;
+  cursor: not-allowed;
+  background: #777;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  opacity: .65;
 }
 .list-group {
   padding-left: 0;

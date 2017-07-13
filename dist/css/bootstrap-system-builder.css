@@ -2227,6 +2227,11 @@ select[multiple].input-lg {
     font-size: 12px;
   }
 }
+.required .control-label::after {
+  display: inline;
+  color: #e32;
+  content: ' *';
+}
 .btn {
   display: inline-block;
   padding: 6px 12px;
@@ -5875,10 +5880,5 @@ body {
 }
 .clear {
   clear: both;
-}
-.required .control-label::after {
-  display: inline;
-  color: #e32;
-  content: ' *';
 }
 /*# sourceMappingURL=bootstrap-system-builder.css.map */
