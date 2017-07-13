@@ -203,7 +203,7 @@
   opacity: 0;
 
   &:focus ~ .custom-file-control {
-    @include box-shadow($custom-file-focus-box-shadow);
+    box-shadow: $custom-file-focus-box-shadow;
   }
 }
 
@@ -214,7 +214,7 @@
   left: 0;
   z-index: 5;
   height: $custom-file-height;
-  padding: $custom-file-padding-x $custom-file-padding-y;
+  padding: $custom-file-padding-y $custom-file-padding-x;
   line-height: $custom-file-line-height;
   color: $custom-file-color;
   pointer-events: none;
@@ -238,7 +238,7 @@
     z-index: 6;
     display: block;
     height: $custom-file-height;
-    padding: $custom-file-padding-x $custom-file-padding-y;
+    padding: $custom-file-padding-y $custom-file-padding-x;
     line-height: $custom-file-line-height;
     color: $custom-file-button-color;
     background-color: $custom-file-button-bg;
