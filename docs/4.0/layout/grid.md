@@ -79,11 +79,6 @@ See how aspects of the Bootstrap grid system work across multiple devices with a
   </thead>
   <tbody>
     <tr>
-      <th class="text-nowrap" scope="row">Grid behavior</th>
-      <td>Horizontal at all times</td>
-      <td colspan="4">Collapsed to start, horizontal above breakpoints</td>
-    </tr>
-    <tr>
       <th class="text-nowrap" scope="row">Max container width</th>
       <td>None (auto)</td>
       <td>540px</td>
