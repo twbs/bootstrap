@@ -44,7 +44,7 @@ const Tab = (($) => {
   const Selector = {
     DROPDOWN              : '.dropdown',
     NAV_LIST_GROUP        : '.nav, .list-group',
-    ACTIVE                : '.active',
+    ACTIVE                : '> .nav-item > .active, > .active',
     DATA_TOGGLE           : '[data-toggle="tab"], [data-toggle="pill"], [data-toggle="list"]',
     DROPDOWN_TOGGLE       : '.dropdown-toggle',
     DROPDOWN_ACTIVE_CHILD : '> .dropdown-menu .active'
