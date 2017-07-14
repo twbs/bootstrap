@@ -434,6 +434,8 @@ The gutters between columns in our predefined grid classes can be removed with `
 
 Here's the source code for creating these styles. Note that column overrides are scoped to only the first children columns and are targeted via [attribute selector](https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors). While this generates a more specific selector, column padding can still be further customized with [spacing utilities]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/spacing/).
 
+**Need an edge-to-edge design?** Drop the parent `.container` or `.container-fluid`.
+
 {% highlight sass %}
 .no-gutters {
   margin-right: 0;
