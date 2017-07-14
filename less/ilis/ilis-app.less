@@ -1,12 +1,13 @@
 @ilis-color-link: #337ab7;
+@font-family-base: 'Lato', sans-serif;
 
 html {
     background-color: white;
-    font-family: 'Lato', sans-serif !important;
 }
 
 body {
-    margin: 0px;
+  font-family: @font-family-base;
+  margin: 0;
 }
 
 a:link {
@@ -99,13 +100,13 @@ a:link {
     padding: 0px;
 }
 
-.container {
-    width: 100%;
-    margin-right: 0;
-    margin-left: 0;
-    padding-left: 0;
-    padding-right: 0;
-}
+// .container {
+//     width: 100%;
+//     margin-right: 0;
+//     margin-left: 0;
+//     padding-left: 0;
+//     padding-right: 0;
+// }
 
 .lsco {
     margin-left: auto;
@@ -195,73 +196,12 @@ a:link {
     background: linear-gradient(to bottom, #EFECE6 0, #F8F7F5 51%, #fff 100%);
 }
 
-.btn {
-    border: 0px solid transparent;
-    padding: 3px 20px;
-    font-size: 12px;
-    font-weight: bold;
-}
-
-.btn-default {
-    color: #FFF;
-    background-color: #111;
-    background-image: none;
-    text-shadow: none;
-}
-
-.btn-success {
-    color: #333;
-    background-color: #e6e6e6;
-    background-image: none;
-    border-color: #adadad;
-}
-
-.btn-success:hover {
-    color: #777;
-    background-color: #e6e6e6;
-    background-image: none;
-    border-color: #adadad;
-}
-
-.btn-info {
-    color: #FFF;
-    background-color: #111;
-    background-image: none;
-    text-shadow: none;
-}
-
-.btn-info:hover {
-    color:#000;
-    background-color: #e6e6e6;
-    background-image: none;
-    border-color: #adadad;
-}
-
-.btn-info:focus {
-    background-color: #e6e6e6 !important;
-    background-image: none !important;
-    border-color: #adadad !important;
-}
-
-.btn-info.disabled, .btn-info[disabled], fieldset[disabled] .btn-info, .btn-info.disabled:hover, .btn-info[disabled]:hover, fieldset[disabled] .btn-info:hover, .btn-info.disabled:focus, .btn-info[disabled]:focus, fieldset[disabled] .btn-info:focus, .btn-info.disabled.focus, .btn-info[disabled].focus, fieldset[disabled] .btn-info.focus, .btn-info.disabled:active, .btn-info[disabled]:active, fieldset[disabled] .btn-info:active, .btn-info.disabled.active, .btn-info[disabled].active, fieldset[disabled] .btn-info.active {
-    color: #FFF;
-    background-color: #777;
-    background-image: none;
-}
-
 /* Workaround for changing the "Add" button style to match those of "btn-default" */
 div.schema-form-array button.btn-success {
-    color: #FFF;
-    background-color: #111;
-    background-image: none;
-    text-shadow: none;
+    .btn-default;
 }
 
 div.schema-form-array button.btn-success:hover {
-    color: #000;
-    background-color: #e6e6e6 !important;
-    background-image: none !important;
-    border-color: #adadad !important;
 }
 
 .has-success .help-block, .has-success .control-label, .has-success .radio, .has-success .checkbox, .has-success .radio-inline, .has-success .checkbox-inline, .has-success.radio label, .has-success.checkbox label, .has-success.radio-inline label, .has-success.checkbox-inline label {
@@ -330,11 +270,6 @@ legend {
     background: none;
 }
 
-div.required label {
-    background: url(../images/required.gif) no-repeat 0 4px;
-    padding-left: 15px;
-}
-
 .schema-form-section div label {
     float: none;
 }
@@ -350,7 +285,7 @@ div.required label {
 }
 
 fieldset {
-    padding: .35em .625em .75em;
+    // padding: .35em .625em .75em;
     /*margin: 0;*/
     /*border: 0;*/
     /*min-width: 0;*/

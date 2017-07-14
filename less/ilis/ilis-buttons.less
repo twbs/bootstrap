@@ -1,0 +1,69 @@
+@import "buttons.less";
+
+// modified by rds, update mixin
+.button-variant(@color; @background; @border) {
+  color: @color;
+  background-color: @background;
+  border-color: @background; // @border;
+
+  &:focus,
+  &.focus {
+    color: @background; // @color;
+    background-color: @color; // darken(@background, 10%);
+    // border-color: darken(@border, 25%);
+  }
+  &:hover {
+    color: @background; // @color;
+    background-color: @color; // darken(@background, 10%);
+    // border-color: darken(@border, 12%);
+  }
+  &:active,
+  &.active,
+  .open > .dropdown-toggle& {
+    color: @background; // @color;
+    background-color: @color; // darken(@background, 10%);
+    // border-color: darken(@border, 12%);
+
+    &:hover,
+    &:focus,
+    &.focus {
+      color: @background; // @color;
+      background-color: @color; // darken(@background, 17%);
+      // border-color: darken(@border, 25%);
+    }
+  }
+  &:active,
+  &.active,
+  .open > .dropdown-toggle& {
+    background-image: none;
+  }
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    &:hover,
+    &:focus,
+    &.focus {
+      color: #fff;
+      background-color: @gray-light; // @background;
+      border-color: @gray-light;  // @border;
+    }
+  }
+
+  .badge {
+    color: @background;
+    background-color: @color;
+  }
+}
+
+
+.btn {
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    cursor: @cursor-disabled;
+    .opacity(.65);
+    .box-shadow(none);
+    color: #fff; // added changed by rds
+    background: @gray-light; // added changed by rds
+  }
+}
