@@ -46,7 +46,6 @@
     "docs-github": "shx echo 'github: true' > $npm_config_tmp/twbsconfig.yml && npm run docs-compile -- --config _config.yml,$npm_config_tmp/twbsconfig.yml && shx rm $npm_config_tmp/twbsconfig.yml",
     "docs-upload-preview": "build/upload-preview.sh",
     "maintenance-dependencies": "ncu -a -x jquery && bundle update && shx echo 'Manually update assets/js/vendor/*, js/tests/vendor/*, bower.json and .travis.yml'",
-    "maintenance-shrinkwrap": "npm shrinkwrap --dev && shx mv npm-shrinkwrap.json build/npm-shrinkwrap.json",
     "release-version": "node build/change-version.js",
     "release-zip": "cd dist/ && zip -r9 bootstrap-$npm_package_version-dist.zip * && shx mv bootstrap-$npm_package_version-dist.zip ..",
     "dist": "npm-run-all --parallel css js css-docs",
