@@ -71,13 +71,13 @@
     "popper.js": "^1.10.8"
   },
   "devDependencies": {
-    "autoprefixer": "^7.1.1",
+    "autoprefixer": "^7.1.2",
     "babel-cli": "^6.24.1",
     "babel-eslint": "^7.2.3",
     "babel-plugin-transform-es2015-modules-strip": "^0.1.1",
     "babel-preset-es2015": "^6.24.1",
-    "clean-css-cli": "^4.1.3",
-    "eslint": "^3.19.0",
+    "clean-css-cli": "^4.1.6",
+    "eslint": "^4.2.0",
     "grunt": "^1.0.1",
     "grunt-cli": "^1.2.0",
     "grunt-saucelabs": "^9.0.0",
@@ -86,12 +86,12 @@
     "nodemon": "^1.11.0",
     "npm-run-all": "^4.0.2",
     "phantomjs-prebuilt": "^2.1.14",
-    "postcss-cli": "^4.0.0",
+    "postcss-cli": "^4.1.0",
     "qunit-phantomjs-runner": "^2.3.0",
-    "qunitjs": "^2.3.2",
-    "shelljs": "^0.7.7",
+    "qunitjs": "^2.4.0",
+    "shelljs": "^0.7.8",
     "shx": "^0.2.2",
-    "uglify-js": "^3.0.13"
+    "uglify-js": "^3.0.24"
   },
   "engines": {
     "node": ">=4"
