@@ -5,9 +5,9 @@ git:
   depth: 3
 node_js:
   - "4"
-  - "7"
+  - "8"
 before_install:
-  - if [[ `npm -v` != 4* ]]; then npm install -g npm@4; fi
+  - if [[ `npm -v` != 5* ]]; then npm install -g npm@5; fi
   - "export TRAVIS_COMMIT_MSG=\"`git log --format=%B --no-merges -n 1`\""
   - echo "$TRAVIS_COMMIT_MSG" | grep '\[skip browser\]'; export TWBS_DO_BROWSER=$?; true
 install:
