@@ -36,8 +36,9 @@ Badges can be used as part of links or buttons to provide a counter.
 </button>
 {% endexample %}
 
+Note that depending on how they are used, badges may be confusing for users of screen readers and similar assistive technologies. While the styling of badges provides a visual cue as to their purpose, these users will simply be presented with the content of the badge. Depending on the specific situation, these badges may seem like random additional words or numbers at the end of a sentence, link, or button.
 
-Note that depending on how they are used, badges may be confusing for users of screen readers and similar assistive technologies. While the styling of badges provides a visual cue as to their purpose, these users will simply be presented with the content of the badge. Depending on the specific situation, these badges may seem like random additional words or numbers at the end of a sentence, link or button. Unless the context is clear (as with the "Notifications" example, where it is arguably understandable that the "4" gives a count of the number of notifications), consider including additional context – for instance using a visually hidden piece of additional text.
+Unless the context is clear (as with the "Notifications" example, where it is understood that the "4" is the number of notifications), consider including additional context with a visually hidden piece of additional text.
 
 {% example html %}
 <button class="btn">
