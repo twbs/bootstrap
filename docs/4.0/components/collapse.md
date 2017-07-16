@@ -113,7 +113,7 @@ Using the [card]({{ site.baseurl }}/docs/{{ site.docs_version }}/components/card
 </div>
 {% endexample %}
 
-You can also create accordions with custom markup. Add the `data-children` attribute and specify a set of sibling elements to toggle (e.g., `.item`). Then, use the same attributes and classes as shown above for connectinh toggles to their associated content.
+You can also create accordions with custom markup. Add the `data-children` attribute and specify a set of sibling elements to toggle (e.g., `.item`). Then, use the same attributes and classes as shown above for connecting toggles to their associated content.
 
 {% example html %}
 <div id="exampleAccordion" data-children=".item">

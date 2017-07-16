@@ -231,8 +231,6 @@ var Dropdown = function ($) {
     };
 
     Dropdown.prototype._getPopperConfig = function _getPopperConfig() {
-      var _this2 = this;
-
       var popperConfig = {
         placement: this._getPlacement(),
         modifiers: {
@@ -245,14 +243,10 @@ var Dropdown = function ($) {
         }
       };
 
+      // Disable Popper.js for Dropdown in Navbar
       if (this._inNavbar) {
-        popperConfig.modifiers.AfterApplyStyle = {
-          enabled: true,
-          order: 901, // ApplyStyle order + 1
-          fn: function fn() {
-            // reset Popper styles
-            $(_this2._menu).attr('style', '');
-          }
+        popperConfig.modifiers.applyStyle = {
+          enabled: !this._inNavbar
         };
       }
       return popperConfig;

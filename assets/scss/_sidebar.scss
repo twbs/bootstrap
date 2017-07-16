@@ -9,11 +9,11 @@
     position: sticky;
     top: 4rem;
     max-height: calc(100vh - 4rem);
+    overflow-y: auto;
   }
   order: 2;
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
-  overflow-x: visible;
   font-size: .875rem;
 }
 
@@ -39,7 +39,7 @@
     color: #99979c;
 
     &:hover {
-      color: $brand-primary;
+      color: $blue;
       text-decoration: none;
     }
   }
@@ -103,7 +103,7 @@
 
 .bd-search-docs-toggle {
   line-height: 1;
-  color: $gray-dark;
+  color: $gray-900;
 }
 
 .bd-sidenav {

@@ -10,7 +10,7 @@ toc: true
 
 Dropdowns are toggleable, contextual overlays for displaying lists of links and more. They're made interactive with the included Bootstrap dropdown JavaScript plugin. They're toggled by clicking, not by hovering; this is [an intentional design decision.](http://markdotto.com/2012/02/27/bootstrap-explained-dropdowns/)
 
-Dropdowns are built on a third party library, [Popper.js](https://popper.js.org), which provides dynamic positioning and viewport detection. Be sure to include [popper.min.js](https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.10.1/umd/popper.min.js) before Bootstrap's JavaScript.
+Dropdowns are built on a third party library, [Popper.js](https://popper.js.org), which provides dynamic positioning and viewport detection. Be sure to include [popper.min.js](https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.10.8/umd/popper.min.js) before Bootstrap's JavaScript.
 
 ## Accessibility
 

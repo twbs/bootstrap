@@ -3,7 +3,7 @@ layout: docs
 title: Reboot
 description: Reboot, a collection of element-specific CSS changes in a single file, kickstart Bootstrap to provide an elegant, consistent, and simple baseline to build upon.
 group: content
-redirect_from: "/content/"
+redirect_from: "/docs/4.0/content/"
 toc: true
 ---
 
@@ -342,7 +342,7 @@ HTML5 adds [a new global attribute named `[hidden]`](https://developer.mozilla.o
 `[hidden]` is not compatible with jQuery's `$(...).hide()` and `$(...).show()` methods. This could potentially change in jQuery 3, but we're not holding our breath. Therefore, we don't currently especially endorse `[hidden]` over other techniques for managing the `display` of elements.
 {% endcallout %}
 
-To merely toggle the visibility of an element, meaning its `display` is not modified and the element can still affect the flow of the document, use [the `.invisible` class]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/invisible-content/) instead.
+To merely toggle the visibility of an element, meaning its `display` is not modified and the element can still affect the flow of the document, use [the `.invisible` class]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/visibility/) instead.
 
 ## Click delay optimization for touch
 

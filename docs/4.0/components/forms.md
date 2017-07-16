@@ -412,7 +412,7 @@ Be sure to add `.col-form-label` to your `<label>`s as well so they're verticall
       </div>
     </div>
     <div class="form-group row">
-      <div class="offset-sm-2 col-sm-10">
+      <div class="col-sm-10">
         <button type="submit" class="btn btn-primary">Sign in</button>
       </div>
     </div>
@@ -534,7 +534,7 @@ And of course [custom form controls](#custom-forms) are supported.
 
 Use the `.form-inline` class to display a series of labels, form controls, and buttons on a single horizontal row. Form controls within inline forms vary slightly from their default states.
 
-- Controls are `display: flex`, collapsing any HTML white space and allowing you to provide alignment control with [spacing]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/spacing/) and [flexbox]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/flexbox/) utilities.
+- Controls are `display: flex`, collapsing any HTML white space and allowing you to provide alignment control with [spacing]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/spacing/) and [flexbox]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/flex/) utilities.
 - Controls and input groups receive `width: auto` to override the Bootstrap default `width: 100%`.
 - Controls **only appear inline in viewports that are at least 576px wide** to account for narrow viewports on mobile devices.
 
