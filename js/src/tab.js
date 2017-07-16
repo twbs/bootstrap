@@ -44,7 +44,7 @@ const Tab = (($) => {
   const Selector = {
     DROPDOWN              : '.dropdown',
     NAV_LIST_GROUP        : '.nav, .list-group',
-    ACTIVE                : '> .nav-item > .active, > .active',
+    ACTIVE                : '.active',
     DATA_TOGGLE           : '[data-toggle="tab"], [data-toggle="pill"], [data-toggle="list"]',
     DROPDOWN_TOGGLE       : '.dropdown-toggle',
     DROPDOWN_ACTIVE_CHILD : '> .dropdown-menu .active'
@@ -148,7 +148,8 @@ const Tab = (($) => {
     // private
 
     _activate(element, container, callback) {
-      const active          = $(container).find(Selector.ACTIVE)[0]
+      const activeElements  = callback ? $(container).children(Selector.ACTIVE) : $(container).find(Selector.ACTIVE)
+      const active          = activeElements[0]
       const isTransitioning = callback
         && Util.supportsTransitionEnd()
         && (active && $(active).hasClass(ClassName.FADE))
