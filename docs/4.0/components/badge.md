@@ -41,7 +41,7 @@ Note that depending on how they are used, badges may be confusing for users of s
 Unless the context is clear (as with the "Notifications" example, where it is understood that the "4" is the number of notifications), consider including additional context with a visually hidden piece of additional text.
 
 {% example html %}
-<button class="btn">
+<button class="btn btn-primary">
   Profile <span class="badge badge-light">9</span>
   <span class="sr-only">unread messages</span>
 </button>
