@@ -24,7 +24,8 @@
   }
 }
 
-.pos-s { position: static; }
-.pos-r { position: relative; }
-.pos-a { position: absolute; }
-.pos-f { position: fixed; }
+.p-sticky { position: sticky; }
+.p-static { position: static; }
+.p-relative { position: relative; }
+.p-absolute { position: absolute; }
+.p-fixed { position: fixed; }
