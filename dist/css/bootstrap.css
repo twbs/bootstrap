@@ -7,15 +7,7 @@
 @media print {
   *,
   *::before,
-  *::after,
-  p::first-letter,
-  div::first-letter,
-  blockquote::first-letter,
-  li::first-letter,
-  p::first-line,
-  div::first-line,
-  blockquote::first-line,
-  li::first-line {
+  *::after {
     text-shadow: none !important;
     box-shadow: none !important;
   }
@@ -127,7 +119,8 @@ p {
 abbr[title],
 abbr[data-original-title] {
   text-decoration: underline;
-  text-decoration: underline dotted;
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
   cursor: help;
   border-bottom: 0;
 }
@@ -1588,11 +1581,6 @@ pre code {
   opacity: 1;
 }
 
-.form-control::-moz-placeholder {
-  color: #868e96;
-  opacity: 1;
-}
-
 .form-control:-ms-input-placeholder {
   color: #868e96;
   opacity: 1;
@@ -2469,6 +2457,7 @@ fieldset[disabled] a.btn {
 
 .btn-link, .btn-link:focus, .btn-link:active {
   border-color: transparent;
+  box-shadow: none;
 }
 
 .btn-link:hover {
@@ -3845,10 +3834,8 @@ tbody.collapse.show {
 @media (min-width: 576px) {
   .card-columns {
     -webkit-column-count: 3;
-       -moz-column-count: 3;
             column-count: 3;
     -webkit-column-gap: 1.25rem;
-       -moz-column-gap: 1.25rem;
             column-gap: 1.25rem;
   }
   .card-columns .card {
