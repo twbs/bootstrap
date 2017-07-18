@@ -182,13 +182,14 @@ $(function () {
     assert.expect(2)
     var done = assert.async()
 
-    var dropHTML = '<ul class="drop nav">'
-        + '<li class="dropdown"><a data-toggle="dropdown" href="#">1</a>'
-        + '<ul class="dropdown-menu">'
-        + '<li><a href="#1-1" data-toggle="tab">1-1</a></li>'
-        + '<li><a href="#1-2" data-toggle="tab">1-2</a></li>'
-        + '</ul>'
-        + '</li>'
+    var dropHTML =
+          '<ul class="drop nav">'
+        + '  <li class="dropdown"><a data-toggle="dropdown" href="#">1</a>'
+        + '    <ul class="dropdown-menu nav">'
+        + '      <li><a href="#1-1" data-toggle="tab">1-1</a></li>'
+        + '      <li><a href="#1-2" data-toggle="tab">1-2</a></li>'
+        + '    </ul>'
+        + '  </li>'
         + '</ul>'
 
     $(dropHTML)
