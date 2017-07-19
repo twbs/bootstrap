@@ -52,7 +52,7 @@ Four options are available: top, right, bottom, and left aligned.
 <div class="bd-example bd-example-popover-static">
   <div class="popover bs-popover-top bs-popover-top-docs">
     <h3 class="popover-header">Popover top</h3>
-	<div class="arrow"></div>
+    <div class="arrow"></div>
     <div class="popover-body">
       <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
     </div>
@@ -60,7 +60,7 @@ Four options are available: top, right, bottom, and left aligned.
 
   <div class="popover bs-popover-right bs-popover-right-docs">
     <h3 class="popover-header">Popover right</h3>
-	<div class="arrow"></div>
+    <div class="arrow"></div>
     <div class="popover-body">
       <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
     </div>
@@ -68,7 +68,7 @@ Four options are available: top, right, bottom, and left aligned.
 
   <div class="popover bs-popover-bottom bs-popover-bottom-docs">
     <h3 class="popover-header">Popover bottom</h3>
-	<div class="arrow"></div>
+    <div class="arrow"></div>
     <div class="popover-body">
       <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
     </div>
@@ -76,7 +76,7 @@ Four options are available: top, right, bottom, and left aligned.
 
   <div class="popover bs-popover-left bs-popover-left-docs">
     <h3 class="popover-header">Popover left</h3>
-	<div class="arrow"></div>
+    <div class="arrow"></div>
     <div class="popover-body">
       <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
     </div>
