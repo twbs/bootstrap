@@ -528,7 +528,6 @@ $zindex-tooltip:            1070 !default;
 
 // Navs
 
-$nav-link-padding:              .5rem !default;
 $nav-link-padding-y:            .5rem !default;
 $nav-link-padding-x:            1rem !default;
 $nav-link-disabled-color:       $gray-600 !default;
@@ -549,7 +548,8 @@ $nav-pills-link-active-bg:    $component-active-bg !default;
 
 $navbar-padding-y:                  ($spacer / 2) !default;
 $navbar-padding-x:                  $spacer !default;
-
+$navbar-link-padding-left:              .5rem !default;
+$navbar-link-padding-right:              .5rem !default;
 $navbar-brand-font-size:            $font-size-lg !default;
 // Compute the navbar-brand padding-y so the navbar-brand will have the same height as navbar-text and nav-link
 $nav-link-height:                   $navbar-brand-font-size * $line-height-base !default;
