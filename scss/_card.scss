@@ -11,12 +11,12 @@
   background-color: $card-bg;
   background-clip: border-box;
   border: $card-border-width solid $card-border-color;
-  @include border-radius($card-border-radius);
   // To display hr inside card.
   hr {
     margin-right: 0;
     margin-left: 0;
   }
+  @include border-radius($card-border-radius);
 }
 
 .card-body {
