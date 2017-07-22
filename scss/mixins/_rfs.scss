@@ -1,0 +1,81 @@
+// RFS mixin.
+//
+// Automated font-resizing.
+//
+// See https://github.com/MartijnCuppens/rfs.
+
+@mixin rfs($fs) {
+  // If $fs is not a number (like inherit) or $fs has a unit (like 1.5em) or $ is 0, just print the value.
+  @if type-of($fs) != 'number' or not unitless($fs) or $fs == 0 {
+    font-size: #{$fs};
+  } @else {
+
+    // Minimum fontsize.
+    $rfs_minimum_font_size: 12 !default;
+    $rfs_minimum_font_size_unit: rem !default;
+
+    // Breakpoint at where font-size starts decreasing if screen width is smaller.
+    $rfs_breakpoint: 1200 !default;
+    $rfs_breakpoint_unit: px !default;
+
+    // Factor of decrease.
+    $rfs_factor: 5 !default;
+
+    // 1 rem = $rfs_rem_value px.
+    $rfs_rem_value: 16 !default;
+
+    // Default font-size.
+    @if $rfs_minimum_font_size_unit == rem {
+      font-size: #{$fs / $rfs_rem_value}rem;
+    } @else if $rfs_minimum_font_size_unit == px {
+      font-size: #{$fs}px;
+    } @else {
+      @error "`#{$rfs_minimum_font_size_unit}` is not a valid unit for $rfs_minimum_font_size_unit. Use `px` or `rem`.";
+    }
+
+    @if $rfs_factor < 1 {
+      @error "`#{$rfs_factor}` is not a valid  $rfs_factor, it must be greater or equal to 1.";
+    }
+
+    // Only add media query if font-size is bigger as the minimum font-size.
+    // If $rfs_factor == 1, no rescaling will take place.
+    @if $fs > $rfs_minimum_font_size and $rfs_factor != 1 {
+
+      // These variables must be defined outside of the if-else-construction.
+      // see https://stackoverflow.com/questions/15371332/sass-ignores-variables-defined-in-if-statement.
+      $mq_max_width: null;
+      $min_width: null;
+
+      // Calculate minimum font-size for given font-size.
+      $fs_min: $rfs_minimum_font_size + ($fs - $rfs_minimum_font_size) / $rfs_factor;
+
+      // Calculate difference between given font-size and minimum font-size for given font-size.
+      $fs_diff: $fs - $fs_min;
+
+      // RFS breakpoint formatting
+      @if $rfs_breakpoint_unit == em or $rfs_breakpoint_unit == rem{
+        $mq_max_width: #{$rfs_breakpoint / $rfs_rem_value}#{$rfs_breakpoint_unit};
+      } @else if $rfs_breakpoint_unit == px {
+        $mq_max_width: #{$rfs_breakpoint}px;
+      } @else {
+        @error "`#{$rfs_breakpoint_unit}` is not a valid unit for $rfs_breakpoint_unit. Use `px`, `em` or `rem`.";
+      }
+
+      // Minimum font-size formatting
+      // No need to check if the unit is valid, because we did that before
+      @if $rfs_minimum_font_size_unit == rem {
+        $min_width: #{$fs_min / $rfs_rem_value}rem;
+      } @else {
+        $min_width: #{$fs_min}px;
+      }
+
+      // Calculate the variable width between 0 and $rfs_breakpoint.
+      $variable_width: #{$fs_diff * 100 / $rfs_breakpoint}vw;
+
+      // Render the calculated font-size.
+      @media (max-width: #{$mq_max_width}) {
+        font-size: calc(#{$min_width} + #{$variable_width});
+      }
+    }
+  }
+}

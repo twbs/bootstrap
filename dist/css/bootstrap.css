@@ -448,6 +448,12 @@ h6, .h6 {
   line-height: 1.1;
 }
 
+@media (max-width: 1200px) {
+  .display-3 {
+    font-size: calc(1.5rem + 4vw);
+  }
+}
+
 .display-4 {
   font-size: 3.5rem;
   font-weight: 300;
@@ -1747,7 +1753,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 .invalid-feedback {
   display: none;
   margin-top: .25rem;
-  font-size: .875rem;
+  font-size: 0.875rem;
   color: #dc3545;
 }
 
@@ -1759,7 +1765,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
   width: 250px;
   padding: .5rem;
   margin-top: .1rem;
-  font-size: .875rem;
+  font-size: 0.875rem;
   line-height: 1;
   color: #fff;
   background-color: rgba(220, 53, 69, 0.8);
