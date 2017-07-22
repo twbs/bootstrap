@@ -22,7 +22,7 @@
     margin-right: auto;
     margin-bottom: 2rem;
     margin-left: auto;
-    font-size: 1.25rem;
+    @include rfs(20);
     color: #fff;
   }
 
@@ -33,8 +33,8 @@
 
   .btn {
     width: 100%;
-    padding: 1rem 2rem;
-    font-size: 1.25rem;
+    padding: .8em 1.6em;
+    @include rfs(20);
     font-weight: 500;
   }
 
@@ -62,14 +62,6 @@
       margin-bottom: 4rem;
     }
 
-    h1 {
-      font-size: 4rem;
-    }
-
-    .lead {
-      font-size: 1.5rem;
-    }
-
     .carbonad {
       margin-top: 3rem !important;
     }
@@ -78,7 +70,6 @@
   @include media-breakpoint-up(lg) {
     .lead {
       width: 85%;
-      font-size: 2rem;
     }
   }
 }

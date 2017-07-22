@@ -1,7 +1,7 @@
 .bd-featurette {
   padding-top: 3rem;
   padding-bottom: 3rem;
-  font-size: 1rem;
+  @include rfs(16);
   line-height: 1.5;
   color: #555;
   text-align: center;
@@ -16,14 +16,14 @@
     margin-right: auto;
     margin-bottom: 2rem;
     margin-left: auto;
-    font-size: 1rem;
+    @include rfs(16);
     text-align: center;
   }
 }
 
 .bd-featurette-title {
   margin-bottom: .5rem;
-  font-size: 2rem;
+  @include rfs(32);
   font-weight: normal;
   color: #333;
   text-align: center;
@@ -67,13 +67,6 @@
   .bd-featurette {
     padding-top: 6rem;
     padding-bottom: 6rem;
-  }
-  .bd-featurette-title {
-    font-size: 2.5rem;
-
-    + .lead {
-      font-size: 1.5rem;
-    }
   }
   .bd-featurette .lead {
     max-width: 80%;

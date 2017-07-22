@@ -89,19 +89,15 @@
   margin-top: 1rem;
   margin-bottom: .5rem;
   font-weight: 300;
-
-  @include media-breakpoint-up(sm) {
-    font-size: 3rem;
-  }
+  @include rfs(48);
 }
 
 .bd-lead {
-  font-size: 1.125rem;
+  @include rfs(18);
   font-weight: 300;
 
   @include media-breakpoint-up(sm) {
     max-width: 80%;
     margin-bottom: 1rem;
-    font-size: 1.5rem;
   }
 }

@@ -12,14 +12,14 @@
   }
 
   h1 {
-    font-size: 3rem;
+    @include rfs(48);
     font-weight: normal;
     color: #fff;
   }
 
   p {
     margin-bottom: 0;
-    font-size: 1.25rem;
+    @include rfs(20);
     font-weight: 300;
   }
 
@@ -31,16 +31,6 @@
 
     .carbonad {
       margin: 2rem 0 0 !important;
-    }
-  }
-
-  @include media-breakpoint-up(md) {
-    h1 {
-      font-size: 4rem;
-    }
-
-    p {
-      font-size: 1.5rem;
     }
   }
 

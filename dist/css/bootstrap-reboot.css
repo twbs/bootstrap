@@ -32,6 +32,12 @@ body {
   background-color: #fff;
 }
 
+@media (max-width: 1200px) {
+  body {
+    font-size: calc(0.8rem + 0.266667vw);
+  }
+}
+
 [tabindex="-1"]:focus {
   outline: none !important;
 }

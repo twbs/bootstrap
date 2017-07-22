@@ -14,10 +14,6 @@ body {
   text-align: center;
   background-color: transparent;
 }
-.jumbotron .btn {
-  padding: 14px 24px;
-  font-size: 21px;
-}
 
 .navbar {
   background-image: -webkit-gradient(linear, left top, left bottom, from(#f7f7f7),to(#eee));

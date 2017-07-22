@@ -46,10 +46,6 @@ body {
   text-align: center;
   border-bottom: .05rem solid #e5e5e5;
 }
-.jumbotron .btn {
-  padding: .75rem 1.5rem;
-  font-size: 1.5rem;
-}
 
 /* Supporting marketing content */
 .marketing {
