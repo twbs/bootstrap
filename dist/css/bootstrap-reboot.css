@@ -25,7 +25,7 @@ article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, s
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: normal;
   line-height: 1.5;
   color: #212529;
@@ -34,7 +34,7 @@ body {
 
 @media (max-width: 1200px) {
   body {
-    font-size: calc(12.8px + 0.266667vw);
+    font-size: calc(0.8rem + 0.266667vw);
   }
 }
 
