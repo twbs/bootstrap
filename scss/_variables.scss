@@ -16,6 +16,7 @@
 // Grid breakpoints
 // Grid containers
 // Grid columns
+// Responsive font sizes
 // Fonts
 // Components
 // Tables
@@ -226,6 +227,24 @@ $caret-width:            .3em !default;
 $transition-base:        all .2s ease-in-out !default;
 $transition-fade:        opacity .15s linear !default;
 $transition-collapse:    height .35s ease !default;
+
+// Responsive font sizes
+//
+// RFS Configuration.
+// See https://github.com/MartijnCuppens/rfs.
+
+$rfs-minimum-font-size: 12px !default;
+$rfs-minimum-font-size-unit: px !default;
+
+$rfs-breakpoint: 1200px !default;
+$rfs-breakpoint-unit: px !default;
+
+$rfs-factor: 5 !default;
+
+@if not $enable-responsive-font-sizes {
+  // If $rfs-factor is set to 1, fluid font-resizing is disabled.
+  $rfs-factor: 1;
+}
 
 
 // Fonts

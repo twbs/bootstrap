@@ -89,17 +89,11 @@ article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, s
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: 1rem;
+  font-size: 16px;
   font-weight: normal;
   line-height: 1.5;
   color: #212529;
   background-color: #fff;
-}
-
-@media (max-width: 1200px) {
-  body {
-    font-size: calc(0.8rem + 0.266667vw);
-  }
 }
 
 [tabindex="-1"]:focus {
@@ -408,122 +402,56 @@ h1, h2, h3, h4, h5, h6,
 }
 
 h1, .h1 {
-  font-size: 2.5rem;
-}
-
-@media (max-width: 1200px) {
-  h1, .h1 {
-    font-size: calc(1.1rem + 1.866667vw);
-  }
+  font-size: 40px;
 }
 
 h2, .h2 {
-  font-size: 2rem;
-}
-
-@media (max-width: 1200px) {
-  h2, .h2 {
-    font-size: calc(1rem + 1.333333vw);
-  }
+  font-size: 32px;
 }
 
 h3, .h3 {
-  font-size: 1.75rem;
-}
-
-@media (max-width: 1200px) {
-  h3, .h3 {
-    font-size: calc(0.95rem + 1.066667vw);
-  }
+  font-size: 28px;
 }
 
 h4, .h4 {
-  font-size: 1.5rem;
-}
-
-@media (max-width: 1200px) {
-  h4, .h4 {
-    font-size: calc(0.9rem + 0.8vw);
-  }
+  font-size: 24px;
 }
 
 h5, .h5 {
-  font-size: 1.25rem;
-}
-
-@media (max-width: 1200px) {
-  h5, .h5 {
-    font-size: calc(0.85rem + 0.533333vw);
-  }
+  font-size: 20px;
 }
 
 h6, .h6 {
-  font-size: 1rem;
-}
-
-@media (max-width: 1200px) {
-  h6, .h6 {
-    font-size: calc(0.8rem + 0.266667vw);
-  }
+  font-size: 16px;
 }
 
 .lead {
-  font-size: 1.25rem;
+  font-size: 20px;
   font-weight: 300;
-}
-
-@media (max-width: 1200px) {
-  .lead {
-    font-size: calc(0.85rem + 0.533333vw);
-  }
 }
 
 .display-1 {
-  font-size: 6rem;
+  font-size: 96px;
   font-weight: 300;
   line-height: 1.1;
-}
-
-@media (max-width: 1200px) {
-  .display-1 {
-    font-size: calc(1.8rem + 5.6vw);
-  }
 }
 
 .display-2 {
-  font-size: 5.5rem;
+  font-size: 88px;
   font-weight: 300;
   line-height: 1.1;
-}
-
-@media (max-width: 1200px) {
-  .display-2 {
-    font-size: calc(1.7rem + 5.066667vw);
-  }
 }
 
 .display-3 {
-  font-size: 4.5rem;
+  font-size: 72px;
   font-weight: 300;
   line-height: 1.1;
-}
-
-@media (max-width: 1200px) {
-  .display-3 {
-    font-size: calc(1.5rem + 4vw);
-  }
 }
 
 .display-4 {
-  font-size: 3.5rem;
+  font-size: 56px;
   font-weight: 300;
   line-height: 1.1;
-}
-
-@media (max-width: 1200px) {
-  .display-4 {
-    font-size: calc(1.3rem + 2.933333vw);
-  }
 }
 
 hr {
@@ -570,13 +498,7 @@ mark,
 
 .blockquote {
   margin-bottom: 1rem;
-  font-size: 1.25rem;
-}
-
-@media (max-width: 1200px) {
-  .blockquote {
-    font-size: calc(0.85rem + 0.533333vw);
-  }
+  font-size: 20px;
 }
 
 .blockquote-footer {
@@ -1631,7 +1553,7 @@ pre code {
   display: block;
   width: 100%;
   padding: 0.5em 0.75em;
-  font-size: 1rem;
+  font-size: 16px;
   line-height: 1.25;
   color: #495057;
   background-color: #fff;
@@ -1640,12 +1562,6 @@ pre code {
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 0.25rem;
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-}
-
-@media (max-width: 1200px) {
-  .form-control {
-    font-size: calc(0.8rem + 0.266667vw);
-  }
 }
 
 .form-control::-ms-expand {
@@ -1703,38 +1619,20 @@ select.form-control:focus::-ms-value {
 .col-form-label-lg {
   padding-top: calc(0.5em - 1px * 2);
   padding-bottom: calc(0.5em - 1px * 2);
-  font-size: 1.25rem;
-}
-
-@media (max-width: 1200px) {
-  .col-form-label-lg {
-    font-size: calc(0.85rem + 0.533333vw);
-  }
+  font-size: 20px;
 }
 
 .col-form-label-sm {
   padding-top: calc(0.25em - 1px * 2);
   padding-bottom: calc(0.25em - 1px * 2);
-  font-size: 0.875rem;
-}
-
-@media (max-width: 1200px) {
-  .col-form-label-sm {
-    font-size: calc(0.775rem + 0.133333vw);
-  }
+  font-size: 14px;
 }
 
 .col-form-legend {
   padding-top: 0.5em;
   padding-bottom: 0.5em;
   margin-bottom: 0;
-  font-size: 1rem;
-}
-
-@media (max-width: 1200px) {
-  .col-form-legend {
-    font-size: calc(0.8rem + 0.266667vw);
-  }
+  font-size: 16px;
 }
 
 .form-control-plaintext {
@@ -1759,17 +1657,9 @@ select.form-control:focus::-ms-value {
 .input-group-sm > .input-group-addon,
 .input-group-sm > .input-group-btn > .btn {
   padding: 0.25em 0.5em;
-  font-size: 0.875rem;
+  font-size: 14px;
   line-height: 1.5;
   border-radius: 0.2rem;
-}
-
-@media (max-width: 1200px) {
-  .form-control-sm, .input-group-sm > .form-control,
-  .input-group-sm > .input-group-addon,
-  .input-group-sm > .input-group-btn > .btn {
-    font-size: calc(0.775rem + 0.133333vw);
-  }
 }
 
 select.form-control-sm:not([size]):not([multiple]), .input-group-sm > select.form-control:not([size]):not([multiple]),
@@ -1782,17 +1672,9 @@ select.form-control-sm:not([size]):not([multiple]), .input-group-sm > select.for
 .input-group-lg > .input-group-addon,
 .input-group-lg > .input-group-btn > .btn {
   padding: 0.5em 1em;
-  font-size: 1.25rem;
+  font-size: 20px;
   line-height: 1.5;
   border-radius: 0.3rem;
-}
-
-@media (max-width: 1200px) {
-  .form-control-lg, .input-group-lg > .form-control,
-  .input-group-lg > .input-group-addon,
-  .input-group-lg > .input-group-btn > .btn {
-    font-size: calc(0.85rem + 0.533333vw);
-  }
 }
 
 select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.form-control:not([size]):not([multiple]),
@@ -2693,7 +2575,7 @@ tbody.collapse.show {
   min-width: 10rem;
   padding: 0.5rem 0;
   margin: 0.125rem 0 0;
-  font-size: 1rem;
+  font-size: 16px;
   color: #212529;
   text-align: left;
   list-style: none;
@@ -2701,12 +2583,6 @@ tbody.collapse.show {
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 0.25rem;
-}
-
-@media (max-width: 1200px) {
-  .dropdown-menu {
-    font-size: calc(0.8rem + 0.266667vw);
-  }
 }
 
 .dropdown-divider {
@@ -2758,15 +2634,9 @@ tbody.collapse.show {
   display: block;
   padding: 0.5rem 1.5rem;
   margin-bottom: 0;
-  font-size: 0.875rem;
+  font-size: 14px;
   color: #868e96;
   white-space: nowrap;
-}
-
-@media (max-width: 1200px) {
-  .dropdown-header {
-    font-size: calc(0.775rem + 0.133333vw);
-  }
 }
 
 .btn-group,
@@ -2984,7 +2854,7 @@ tbody.collapse.show {
 .input-group-addon {
   padding: 0.5em 0.75em;
   margin-bottom: 0;
-  font-size: 1rem;
+  font-size: 16px;
   font-weight: normal;
   line-height: 1.25;
   color: #495057;
@@ -2994,42 +2864,20 @@ tbody.collapse.show {
   border-radius: 0.25rem;
 }
 
-@media (max-width: 1200px) {
-  .input-group-addon {
-    font-size: calc(0.8rem + 0.266667vw);
-  }
-}
-
 .input-group-addon.form-control-sm,
 .input-group-sm > .input-group-addon,
 .input-group-sm > .input-group-btn > .input-group-addon.btn {
   padding: 0.25em 0.5em;
-  font-size: 0.875rem;
+  font-size: 14px;
   border-radius: 0.2rem;
-}
-
-@media (max-width: 1200px) {
-  .input-group-addon.form-control-sm,
-  .input-group-sm > .input-group-addon,
-  .input-group-sm > .input-group-btn > .input-group-addon.btn {
-    font-size: calc(0.775rem + 0.133333vw);
-  }
 }
 
 .input-group-addon.form-control-lg,
 .input-group-lg > .input-group-addon,
 .input-group-lg > .input-group-btn > .input-group-addon.btn {
   padding: 0.5em 1em;
-  font-size: 1.25rem;
+  font-size: 20px;
   border-radius: 0.3rem;
-}
-
-@media (max-width: 1200px) {
-  .input-group-addon.form-control-lg,
-  .input-group-lg > .input-group-addon,
-  .input-group-lg > .input-group-btn > .input-group-addon.btn {
-    font-size: calc(0.85rem + 0.533333vw);
-  }
 }
 
 .input-group-addon input[type="radio"],
@@ -3428,15 +3276,9 @@ tbody.collapse.show {
   padding-top: 0.5em;
   padding-bottom: 0.5em;
   margin-right: 1rem;
-  font-size: 1.25rem;
+  font-size: 20px;
   line-height: inherit;
   white-space: nowrap;
-}
-
-@media (max-width: 1200px) {
-  .navbar-brand {
-    font-size: calc(0.85rem + 0.533333vw);
-  }
 }
 
 .navbar-brand:focus, .navbar-brand:hover {
@@ -3476,17 +3318,11 @@ tbody.collapse.show {
 
 .navbar-toggler {
   padding: 0.25em 0.75em;
-  font-size: 1.25rem;
+  font-size: 20px;
   line-height: 1;
   background: transparent;
   border: 1px solid transparent;
   border-radius: 0.25rem;
-}
-
-@media (max-width: 1200px) {
-  .navbar-toggler {
-    font-size: calc(0.85rem + 0.533333vw);
-  }
 }
 
 .navbar-toggler:focus, .navbar-toggler:hover {
@@ -4421,7 +4257,7 @@ tbody.collapse.show {
   display: -ms-flexbox;
   display: flex;
   overflow: hidden;
-  font-size: 0.75rem;
+  font-size: 12px;
   line-height: 1rem;
   text-align: center;
   background-color: #e9ecef;
@@ -4728,18 +4564,12 @@ button.list-group-item-dark.active {
 
 .close {
   float: right;
-  font-size: 1.5rem;
+  font-size: 24px;
   font-weight: bold;
   line-height: 1;
   color: #000;
   text-shadow: 0 1px 0 #fff;
   opacity: .5;
-}
-
-@media (max-width: 1200px) {
-  .close {
-    font-size: calc(0.9rem + 0.8vw);
-  }
 }
 
 .close:focus, .close:hover {
@@ -4911,15 +4741,9 @@ button.close {
   word-spacing: normal;
   white-space: normal;
   line-break: auto;
-  font-size: 0.875rem;
+  font-size: 14px;
   word-wrap: break-word;
   opacity: 0;
-}
-
-@media (max-width: 1200px) {
-  .tooltip {
-    font-size: calc(0.775rem + 0.133333vw);
-  }
 }
 
 .tooltip.show {
@@ -5031,18 +4855,12 @@ button.close {
   word-spacing: normal;
   white-space: normal;
   line-break: auto;
-  font-size: 0.875rem;
+  font-size: 14px;
   word-wrap: break-word;
   background-color: #fff;
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 0.3rem;
-}
-
-@media (max-width: 1200px) {
-  .popover {
-    font-size: calc(0.775rem + 0.133333vw);
-  }
 }
 
 .popover .arrow {
@@ -5181,18 +4999,12 @@ button.close {
 .popover-header {
   padding: 8px 14px;
   margin-bottom: 0;
-  font-size: 1rem;
+  font-size: 16px;
   color: inherit;
   background-color: #f7f7f7;
   border-bottom: 1px solid #ebebeb;
   border-top-left-radius: calc(0.3rem - 1px);
   border-top-right-radius: calc(0.3rem - 1px);
-}
-
-@media (max-width: 1200px) {
-  .popover-header {
-    font-size: calc(0.8rem + 0.266667vw);
-  }
 }
 
 .popover-header:empty {
