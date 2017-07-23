@@ -6,12 +6,15 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
   background-color: $card-bg;
+  background-clip: border-box;
   border: $card-border-width solid $card-border-color;
   @include border-radius($card-border-radius);
 }
 
-.card-block {
+.card-body {
   // Enable `flex-grow: 1` for decks and groups so that card blocks take up
   // as much space as possible, ensuring footers are aligned to the bottom.
   flex: 1 1 auto;
@@ -20,7 +23,6 @@
 
 .card-title {
   margin-bottom: $card-spacer-y;
-  word-break: break-all;
 }
 
 .card-subtitle {
@@ -68,7 +70,7 @@
   border-bottom: $card-border-width solid $card-border-color;
 
   &:first-child {
-    @include border-radius($card-border-radius-inner $card-border-radius-inner 0 0);
+    @include border-radius($card-inner-border-radius $card-inner-border-radius 0 0);
   }
 }
 
@@ -78,7 +80,7 @@
   border-top: $card-border-width solid $card-border-color;
 
   &:last-child {
-    @include border-radius(0 0 $card-border-radius-inner $card-border-radius-inner);
+    @include border-radius(0 0 $card-inner-border-radius $card-inner-border-radius);
   }
 }
 
@@ -99,65 +101,6 @@
   margin-left: -($card-spacer-x / 2);
 }
 
-
-//
-// Background variations
-//
-
-.card-primary {
-  @include card-variant($brand-primary, $brand-primary);
-}
-.card-success {
-  @include card-variant($brand-success, $brand-success);
-}
-.card-info {
-  @include card-variant($brand-info, $brand-info);
-}
-.card-warning {
-  @include card-variant($brand-warning, $brand-warning);
-}
-.card-danger {
-  @include card-variant($brand-danger, $brand-danger);
-}
-
-// Remove all backgrounds
-.card-outline-primary {
-  @include card-outline-variant($btn-primary-bg);
-}
-.card-outline-secondary {
-  @include card-outline-variant($btn-secondary-border-color);
-}
-.card-outline-info {
-  @include card-outline-variant($btn-info-bg);
-}
-.card-outline-success {
-  @include card-outline-variant($btn-success-bg);
-}
-.card-outline-warning {
-  @include card-outline-variant($btn-warning-bg);
-}
-.card-outline-danger {
-  @include card-outline-variant($btn-danger-bg);
-}
-
-//
-// Inverse text within a card for use with dark backgrounds
-//
-
-.card-inverse {
-  @include card-inverse;
-}
-
-//
-// Blockquote
-//
-
-.card-blockquote {
-  padding: 0;
-  margin-bottom: 0;
-  border-left: 0;
-}
-
 // Card image
 .card-img-overlay {
   position: absolute;
@@ -170,18 +113,18 @@
 
 .card-img {
   width: 100%; // Required because we use flexbox and this inherently applies align-self: stretch
-  @include border-radius($card-border-radius-inner);
+  @include border-radius($card-inner-border-radius);
 }
 
 // Card image caps
 .card-img-top {
   width: 100%; // Required because we use flexbox and this inherently applies align-self: stretch
-  @include border-top-radius($card-border-radius-inner);
+  @include border-top-radius($card-inner-border-radius);
 }
 
 .card-img-bottom {
   width: 100%; // Required because we use flexbox and this inherently applies align-self: stretch
-  @include border-bottom-radius($card-border-radius-inner);
+  @include border-bottom-radius($card-inner-border-radius);
 }
 
 
@@ -196,7 +139,7 @@
 
     .card {
       display: flex;
-      flex: 1 0 0;
+      flex: 1 0 0%;
       flex-direction: column;
       margin-right: $card-deck-margin;
       margin-left: $card-deck-margin;
@@ -215,7 +158,7 @@
     flex-flow: row wrap;
 
     .card {
-      flex: 1 0 0;
+      flex: 1 0 0%;
 
       + .card {
         margin-left: 0;

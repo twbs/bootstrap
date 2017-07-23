@@ -6,10 +6,6 @@
   @include media-breakpoint-up($breakpoint) {
     $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
-    .order#{$infix}-first { order: -1; }
-    .order#{$infix}-last  { order: 1; }
-    .order#{$infix}-0     { order: 0; }
-
     .flex#{$infix}-row            { flex-direction: row !important; }
     .flex#{$infix}-column         { flex-direction: column !important; }
     .flex#{$infix}-row-reverse    { flex-direction: row-reverse !important; }
