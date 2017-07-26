@@ -21,33 +21,33 @@ $rfs-factor: 5 !default;
 $rfs-rem-value: 16 !default;
 
 // Remove px-unit from $rfs-minimum-font-size for calculations.
-@if (unit($rfs-minimum-font-size) == 'px') {
-  $rfs-minimum-font-size: $rfs-minimum-font-size / ($rfs-minimum-font-size * 0 + 1)
+@if (unit($rfs-minimum-font-size) == "px") {
+  $rfs-minimum-font-size: $rfs-minimum-font-size / ($rfs-minimum-font-size * 0 + 1);
 }
 
 // Remove px-unit from $rfs-breakpoint for calculations.
-@if (unit($rfs-breakpoint) == 'px') {
-  $rfs-breakpoint: $rfs-breakpoint / ($rfs-breakpoint * 0 + 1)
+@if (unit($rfs-breakpoint) == "px") {
+  $rfs-breakpoint: $rfs-breakpoint / ($rfs-breakpoint * 0 + 1);
 }
 
 // Responsive font-size mixin.
 @mixin rfs($fs, $important: false) {
 
-  $rfs-suffix: '';
+  $rfs-suffix: "";
 
   // Add !important suffix if needed.
   @if ($important) {
-    $rfs-suffix: ' !important';
+    $rfs-suffix: " !important";
   }
 
   // If $fs is not a number (like inherit) or $fs has a unit (like 1.5em) or $ is 0, just print the value.
-  @if type-of($fs) != 'number' or (not unitless($fs) and unit($fs) != 'px') or $fs == 0 {
+  @if type-of($fs) != "number" or (not unitless($fs) and unit($fs) != "px") or $fs == 0 {
     font-size: #{$fs}#{$rfs-suffix};
   } @else {
 
     // Remove px-unit from $fs for calculations.
-    @if (unit($fs) == 'px') {
-      $fs: $fs / ($fs * 0 + 1)
+    @if (unit($fs) == "px") {
+      $fs: $fs / ($fs * 0 + 1);
     }
 
     // Default font-size.
