@@ -14,9 +14,8 @@
   "rules": {
     // Possible Errors
     "no-await-in-loop": "error",
-    "no-compare-neg-zero": "error",
     "no-extra-parens": "error",
-    "no-prototype-builtins": "off",
+    "no-prototype-builtins": "error",
     "no-template-curly-in-string": "error",
     "valid-jsdoc": "error",
 
@@ -27,16 +26,12 @@
     "class-methods-use-this": "off",
     "complexity": "error",
     "consistent-return": "error",
-    "curly": "error",
     "default-case": "error",
     "dot-location": ["error", "property"],
-    "dot-notation": "error",
-    "eqeqeq": "error",
     "guard-for-in": "error",
     "no-alert": "error",
     "no-caller": "error",
     "no-div-regex": "error",
-    "no-else-return": "error",
     "no-empty-function": "error",
     "no-eq-null": "error",
     "no-eval": "error",
@@ -85,7 +80,6 @@
     "no-unused-expressions": "error",
     "no-useless-call": "error",
     "no-useless-concat": "error",
-    "no-useless-escape": "error",
     "no-useless-return": "off",
     "no-void": "error",
     "no-warning-comments": "off",
@@ -108,7 +102,7 @@
     "no-shadow": "off",
     "no-shadow-restricted-names": "error",
     "no-undef-init": "error",
-    "no-undefined": "off",
+    "no-undefined": "error",
     "no-use-before-define": "off",
 
     // Node.js and CommonJS
@@ -213,7 +207,7 @@
     "wrap-regex": "off",
 
     // ECMAScript 6
-    "arrow-body-style": "off",
+    "arrow-body-style": ["error", "as-needed"],
     "arrow-parens": "error",
     "arrow-spacing": "error",
     "generator-star-spacing": "error",

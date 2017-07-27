@@ -231,7 +231,7 @@ const ScrollSpy = (($) => {
       for (let i = this._offsets.length; i--;) {
         const isActiveTarget = this._activeTarget !== this._targets[i]
             && scrollTop >= this._offsets[i]
-            && (this._offsets[i + 1] === undefined ||
+            && (typeof this._offsets[i + 1] === 'undefined' ||
                 scrollTop < this._offsets[i + 1])
 
         if (isActiveTarget) {
@@ -246,6 +246,7 @@ const ScrollSpy = (($) => {
       this._clear()
 
       let queries = this._selector.split(',')
+      // eslint-disable-next-line arrow-body-style
       queries     = queries.map((selector) => {
         return `${selector}[data-target="${target}"],` +
                `${selector}[href="${target}"]`
@@ -287,7 +288,7 @@ const ScrollSpy = (($) => {
         }
 
         if (typeof config === 'string') {
-          if (data[config] === undefined) {
+          if (typeof data[config] === 'undefined') {
             throw new Error(`No method named "${config}"`)
           }
           data[config]()

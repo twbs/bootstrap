@@ -204,7 +204,7 @@ const Dropdown = (($) => {
 
     _getConfig(config) {
       const elementData = $(this._element).data()
-      if (elementData.placement !== undefined) {
+      if (typeof elementData.placement !== 'undefined') {
         elementData.placement = AttachmentMap[elementData.placement.toUpperCase()]
       }
 
@@ -287,7 +287,7 @@ const Dropdown = (($) => {
         }
 
         if (typeof config === 'string') {
-          if (data[config] === undefined) {
+          if (typeof data[config] === 'undefined') {
             throw new Error(`No method named "${config}"`)
           }
           data[config]()

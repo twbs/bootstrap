@@ -42,7 +42,7 @@ const Util = (($) => {
         if ($(event.target).is(this)) {
           return event.handleObj.handler.apply(this, arguments) // eslint-disable-line prefer-rest-params
         }
-        return undefined
+        return undefined // eslint-disable-line no-undefined
       }
     }
   }
@@ -55,7 +55,7 @@ const Util = (($) => {
     const el = document.createElement('bootstrap')
 
     for (const name in TransitionEndEvent) {
-      if (el.style[name] !== undefined) {
+      if (typeof el.style[name] !== 'undefined') {
         return {
           end: TransitionEndEvent[name]
         }
@@ -138,7 +138,7 @@ const Util = (($) => {
 
     typeCheckConfig(componentName, config, configTypes) {
       for (const property in configTypes) {
-        if (configTypes.hasOwnProperty(property)) {
+        if (Object.prototype.hasOwnProperty.call(configTypes, property)) {
           const expectedTypes = configTypes[property]
           const value         = config[property]
           const valueType     = value && isElement(value) ?
