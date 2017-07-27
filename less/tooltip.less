@@ -16,9 +16,19 @@
   .opacity(0);
 
   &.in     { .opacity(@tooltip-opacity); }
-  &.top    { margin-top:  -3px; padding: @tooltip-arrow-width 0; }
+  &.top,
+  &.top-left,
+  &.top-right {
+    margin-top: -3px;
+    padding: @tooltip-arrow-width 0;
+  }
   &.right  { margin-left:  3px; padding: 0 @tooltip-arrow-width; }
-  &.bottom { margin-top:   3px; padding: @tooltip-arrow-width 0; }
+  &.bottom,
+  &.bottom-right,
+  &.bottom-left {
+    margin-top: 3px;
+    padding: @tooltip-arrow-width 0;
+  }
   &.left   { margin-left: -3px; padding: 0 @tooltip-arrow-width; }
 }
 
@@ -49,17 +59,15 @@
     border-width: @tooltip-arrow-width @tooltip-arrow-width 0;
     border-top-color: @tooltip-arrow-color;
   }
-  &.top-left .tooltip-arrow {
+  &.top-right .tooltip-arrow {
     bottom: 0;
     right: @tooltip-arrow-width;
-    margin-bottom: -@tooltip-arrow-width;
     border-width: @tooltip-arrow-width @tooltip-arrow-width 0;
     border-top-color: @tooltip-arrow-color;
   }
-  &.top-right .tooltip-arrow {
+  &.top-left .tooltip-arrow {
     bottom: 0;
     left: @tooltip-arrow-width;
-    margin-bottom: -@tooltip-arrow-width;
     border-width: @tooltip-arrow-width @tooltip-arrow-width 0;
     border-top-color: @tooltip-arrow-color;
   }
@@ -84,17 +92,15 @@
     border-width: 0 @tooltip-arrow-width @tooltip-arrow-width;
     border-bottom-color: @tooltip-arrow-color;
   }
-  &.bottom-left .tooltip-arrow {
+  &.bottom-right .tooltip-arrow {
     top: 0;
     right: @tooltip-arrow-width;
-    margin-top: -@tooltip-arrow-width;
     border-width: 0 @tooltip-arrow-width @tooltip-arrow-width;
     border-bottom-color: @tooltip-arrow-color;
   }
-  &.bottom-right .tooltip-arrow {
+  &.bottom-left .tooltip-arrow {
     top: 0;
     left: @tooltip-arrow-width;
-    margin-top: -@tooltip-arrow-width;
     border-width: 0 @tooltip-arrow-width @tooltip-arrow-width;
     border-bottom-color: @tooltip-arrow-color;
   }
