@@ -7227,13 +7227,20 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   right: 0;
   left: 0;
   z-index: 1030;
+  background-color: #37517e;
 
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
 }
 .navbar.affix .navbar-nav > li > a,
 .navbar-fixed-top .navbar-nav > li > a,
-.navbar-fixed-bottom .navbar-nav > li > a {
+.navbar-fixed-bottom .navbar-nav > li > a,
+.navbar.affix .navbar-title,
+.navbar-fixed-top .navbar-title,
+.navbar-fixed-bottom .navbar-title,
+.navbar.affix .navbar-text,
+.navbar-fixed-top .navbar-text,
+.navbar-fixed-bottom .navbar-text {
   color: #fff;
 }
 @media (min-width: 768px) {
@@ -7532,13 +7539,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .navbar-right ~ .navbar-right {
     margin-right: 0;
   }
-}
-.navbar.affix {
-  background-color: #37517e;
-}
-.navbar.affix .container,
-.navbar.affix .container-fluid {
-  border-bottom-color: transparent;
 }
 .navbar-default {
   background-color: transparent;

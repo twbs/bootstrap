@@ -129,11 +129,12 @@
   left: 0;
   z-index: @zindex-navbar-fixed;
   backface-visibility: hidden;
+  background-color: @navbar-collapse-bg;
 
-  .navbar-nav {
-    > li > a {
-      color: @navbar-inverse-color;
-    }
+  .navbar-nav > li > a,
+  .navbar-title,
+  .navbar-text {
+    color: @navbar-inverse-color;
   }
 
   // Undo the rounded corners
@@ -449,15 +450,6 @@
       margin-right: 0;
     }
   }
-}
-
-.navbar.affix {
-    background-color: @navbar-collapse-bg;
-
-    .container,
-    .container-fluid {
-        border-bottom-color: transparent;
-    }
 }
 
 // Alternate navbars
@@ -1042,3 +1034,4 @@
 .simple-nav .profile-name .text-ellipsis {
   max-width: 240px;
 }
+
