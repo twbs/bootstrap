@@ -32,16 +32,6 @@
   browser: >
     Edge
   summary: >
-    When hovering over a `<select>` menu item, the cursor for the element underneath the menu is displayed.
-  upstream_bug: >
-    Edge#817822
-  origin: >
-    Bootstrap#14528
-
--
-  browser: >
-    Edge
-  summary: >
     CSS `border-radius` sometimes causes lines of bleed-through of the `background-color` of the parent element.
   upstream_bug: >
     Edge#3342037
@@ -222,16 +212,6 @@
   browser: >
     Chrome
   summary: >
-    `:focus` `outline` style causes cursor to not be displayed when toggling a `readonly` `<input>` to read-write.
-  upstream_bug: >
-    Chromium#465274
-  origin: >
-    Bootstrap#16022
-
--
-  browser: >
-    Chrome
-  summary: >
     `table-cell` borders not overlapping despite `margin-right: -1px`
   upstream_bug: >
     Chromium#568691
@@ -267,16 +247,6 @@
     Chromium#449180
   origin: >
     Bootstrap#15298
-
--
-  browser: >
-    Chrome (Linux)
-  summary: >
-    `<select>`'s pop-up menu is blank on some systems.
-  upstream_bug: >
-    Chromium#510079
-  origin: >
-    Bootstrap#21120
 
 -
   browser: >
@@ -419,16 +389,6 @@
     WebKit#153856
   origin: >
     Bootstrap#14839
-
--
-  browser: >
-    Safari (iOS)
-  summary: >
-    Tapping from one `<input>` to another in an overlay can cause shaking/jiggling effect
-  upstream_bug: >
-    WebKit#158276
-  origin: >
-    Bootstrap#19927
 
 -
   browser: >
