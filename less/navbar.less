@@ -130,6 +130,12 @@
   z-index: @zindex-navbar-fixed;
   backface-visibility: hidden;
 
+  .navbar-nav {
+    > li > a {
+      color: @navbar-inverse-color;
+    }
+  }
+
   // Undo the rounded corners
   @media (min-width: @grid-float-breakpoint) {
     border-radius: 0;
@@ -138,6 +144,7 @@
 .navbar.affix {
     top: (-1 * @navbar-height);
     border-top-width:  @navbar-height;
+
     transition: border-top-width .2s ease-out,
                 background-color .2s ease-out;
 }
