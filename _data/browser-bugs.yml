@@ -394,16 +394,6 @@
   browser: >
     Safari (iOS)
   summary: >
-    Tapping from one `<input>` to another in an overlay can cause shaking/jiggling effect
-  upstream_bug: >
-    WebKit#158276
-  origin: >
-    Bootstrap#19927
-
--
-  browser: >
-    Safari (iOS)
-  summary: >
     Modal with `-webkit-overflow-scrolling: touch` doesn't become scrollable after added text makes it taller
   upstream_bug: >
     WebKit#158342
