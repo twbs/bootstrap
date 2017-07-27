@@ -21,7 +21,7 @@ $(function () {
 
   QUnit.test('should provide no conflict', function (assert) {
     assert.expect(1)
-    assert.strictEqual($.fn.carousel, undefined, 'carousel was set back to undefined (orig value)')
+    assert.strictEqual(typeof $.fn.carousel, 'undefined', 'carousel was set back to undefined (orig value)')
   })
 
   QUnit.test('should throw explicit error on undefined method', function (assert) {
@@ -371,14 +371,14 @@ $(function () {
     var done = assert.async()
     $(template)
       .on('slid.bs.carousel', function (e) {
-        assert.ok(e.from !== undefined, 'from present')
-        assert.ok(e.to !== undefined, 'to present')
+        assert.ok(typeof e.from !== 'undefined', 'from present')
+        assert.ok(typeof e.to !== 'undefined', 'to present')
         $(this).off()
         done()
       })
       .on('slide.bs.carousel', function (e) {
-        assert.ok(e.from !== undefined, 'from present')
-        assert.ok(e.to !== undefined, 'to present')
+        assert.ok(typeof e.from !== 'undefined', 'from present')
+        assert.ok(typeof e.to !== 'undefined', 'to present')
         $(this).off('slide.bs.carousel')
       })
       .bootstrapCarousel('next')

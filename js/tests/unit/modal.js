@@ -34,7 +34,7 @@ $(function () {
 
   QUnit.test('should provide no conflict', function (assert) {
     assert.expect(1)
-    assert.strictEqual($.fn.modal, undefined, 'modal was set back to undefined (orig value)')
+    assert.strictEqual(typeof $.fn.modal, 'undefined', 'modal was set back to undefined (orig value)')
   })
 
   QUnit.test('should throw explicit error on undefined method', function (assert) {
@@ -380,7 +380,7 @@ $(function () {
 
     $('<div id="modal-test"/>')
       .on('hidden.bs.modal', function () {
-        assert.strictEqual($body.data('padding-right'), undefined, 'data-padding-right should be cleared after closing')
+        assert.strictEqual(typeof $body.data('padding-right'), 'undefined', 'data-padding-right should be cleared after closing')
         $body.removeAttr('style')
         done()
       })
@@ -422,7 +422,7 @@ $(function () {
 
     $('<div id="modal-test"/>')
       .on('hidden.bs.modal', function () {
-        assert.strictEqual($element.data('padding-right'), undefined, 'data-padding-right should be cleared after closing')
+        assert.strictEqual(typeof $element.data('padding-right'), 'undefined', 'data-padding-right should be cleared after closing')
         $element.remove()
         done()
       })
@@ -464,7 +464,7 @@ $(function () {
 
     $('<div id="modal-test"/>')
       .on('hidden.bs.modal', function () {
-        assert.strictEqual($element.data('margin-right'), undefined, 'data-margin-right should be cleared after closing')
+        assert.strictEqual(typeof $element.data('margin-right'), 'undefined', 'data-margin-right should be cleared after closing')
         $element.remove()
         done()
       })

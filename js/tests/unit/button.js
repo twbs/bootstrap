@@ -21,7 +21,7 @@ $(function () {
 
   QUnit.test('should provide no conflict', function (assert) {
     assert.expect(1)
-    assert.strictEqual($.fn.button, undefined, 'button was set back to undefined (org value)')
+    assert.strictEqual(typeof $.fn.button, 'undefined', 'button was set back to undefined (org value)')
   })
 
   QUnit.test('should return jquery collection containing the element', function (assert) {
