@@ -74,7 +74,7 @@
     "no-param-reassign": "off",
     "no-proto": "error",
     "no-restricted-properties": "error",
-    "no-return-assign": "off",
+    "no-return-assign": "error",
     "no-return-await": "error",
     "no-script-url": "error",
     "no-self-compare": "error",
