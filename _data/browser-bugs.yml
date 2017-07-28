@@ -142,16 +142,6 @@
   browser: >
     Firefox
   summary: >
-    `position: absolute` element that's wider than its column renders differently than other browsers
-  upstream_bug: >
-    Mozilla#1282363
-  origin: >
-    Bootstrap#20161
-
--
-  browser: >
-    Firefox
-  summary: >
     Layout with floated columns breaks when printing
   upstream_bug: >
     Mozilla#1315994
@@ -237,6 +227,16 @@
     Chromium#370155
   origin: >
     Bootstrap#12832
+
+-
+  browser: >
+    Chrome
+  summary: >
+    `position: absolute` element that's wider than its column is incorrectly clipped to column boundary
+  upstream_bug: >
+    Chromium#269061
+  origin: >
+    Bootstrap#20161
 
 -
   browser: >
