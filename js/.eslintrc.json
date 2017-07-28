@@ -58,6 +58,7 @@
       }
     ],
     "no-multi-spaces": ["error", {
+      "ignoreEOLComments": true,
       "exceptions": {
         "AssignmentExpression": true,
         "ArrowFunctionExpression": true,
