@@ -129,6 +129,13 @@
   left: 0;
   z-index: @zindex-navbar-fixed;
   backface-visibility: hidden;
+  background-color: @navbar-collapse-bg;
+
+  .navbar-nav > li > a,
+  .navbar-title,
+  .navbar-text {
+    color: @navbar-inverse-color;
+  }
 
   // Undo the rounded corners
   @media (min-width: @grid-float-breakpoint) {
@@ -138,6 +145,7 @@
 .navbar.affix {
     top: (-1 * @navbar-height);
     border-top-width:  @navbar-height;
+
     transition: border-top-width .2s ease-out,
                 background-color .2s ease-out;
 }
@@ -442,15 +450,6 @@
       margin-right: 0;
     }
   }
-}
-
-.navbar.affix {
-    background-color: @navbar-collapse-bg;
-
-    .container,
-    .container-fluid {
-        border-bottom-color: transparent;
-    }
 }
 
 // Alternate navbars
@@ -1035,3 +1034,4 @@
 .simple-nav .profile-name .text-ellipsis {
   max-width: 240px;
 }
+
