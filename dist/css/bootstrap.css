@@ -8307,6 +8307,13 @@ a.badge:focus {
        -o-transition: background-color .2s ease-in;
           transition: background-color .2s ease-in;
 }
+.jumbotron.bg-focus h1,
+.jumbotron.bg-focus .h1 {
+  color: #37517e;
+}
+.jumbotron.bg-focus .lead {
+  color: #6f8691;
+}
 .jumbotron h1,
 .jumbotron .h1 {
   color: #fff;
