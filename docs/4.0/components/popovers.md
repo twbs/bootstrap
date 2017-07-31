@@ -11,7 +11,7 @@ toc: true
 Things to know when using the popover plugin:
 
 
-- Popovers rely on the 3rd party library [Popper.js](https://popper.js.org) for positioning. You must include [popper.min.js](https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.10.8/umd/popper.min.js) before bootstrap.js in order for popovers to work!
+- Popovers rely on the 3rd party library [Popper.js](https://popper.js.org) for positioning. You must include [popper.min.js](https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js) before bootstrap.js in order for popovers to work!
 - Popovers require the [tooltip plugin]({{ site.baseurl }}/docs/{{ site.docs_version }}/components/tooltips/) as a dependency.
 - Popovers are opt-in for performance reasons, so **you must initialize them yourself**.
 - Zero-length `title` and `content` values will never show a popover.
