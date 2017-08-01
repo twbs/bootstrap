@@ -7,7 +7,7 @@ toc: true
 ---
 
 ## Responsive font sizes
-Bootstrap uses <a href="https://github.com/MartijnCuppens/rfs" target="_blank" rel="noopener">RFS</a> to control its font size. RFS is an SCSS-mixin which automatically calculates the correct font size based on the browsers screen width. You just have got to define your font size for big screens and the font size will automatically decrease for smaller screens.
+Bootstrap uses [RFS](https://github.com/MartijnCuppens/rfs) to control its font size. RFS is an SCSS-mixin which automatically calculates the correct font size based on the browsers screen width. You just have got to define your font size for big screens and the font size will automatically decrease for smaller screens.
 
 ### How to use
 The RFS-mixin accepts as well numbers (eg. `20`) as numbers with `px`-suffix (eg `20px`). On all other values (like 50%, 1.2em, inherit,...) no fluid rescaling is applied.
