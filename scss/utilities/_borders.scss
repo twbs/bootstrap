@@ -2,7 +2,7 @@
 // Border
 //
 
-.border          { border: 1px solid $gray-200 !important; }
+.border          { border: $border-width solid $border-color !important; }
 .border-0        { border: 0 !important; }
 .border-top-0    { border-top: 0 !important; }
 .border-right-0  { border-right: 0 !important; }
