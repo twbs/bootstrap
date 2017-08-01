@@ -7,7 +7,7 @@
     - title: JavaScript
     - title: Options
     - title: Build tools
-    - title: Best practices
+    # - title: Best practices # TODO: Write this content
     - title: Webpack
     - title: Accessibility
 
@@ -58,14 +58,15 @@
     - title: Close icon
     - title: Colors
     - title: Display
-    - title: Flexbox
+    - title: Embed
+    - title: Flex
+    - title: Float
     - title: Image replacement
     - title: Position
-    - title: Responsive helpers
     - title: Screenreaders
     - title: Sizing
     - title: Spacing
-    - title: Typography
+    - title: Text
     - title: Vertical align
     - title: Visibility
 

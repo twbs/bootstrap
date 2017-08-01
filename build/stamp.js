@@ -29,7 +29,7 @@ if (typeof jQuery === 'undefined') {
 (function () {
 `
   const stampEnd = `
-})()`
+})();`
 
   process.stdout.write(stampTop)
 

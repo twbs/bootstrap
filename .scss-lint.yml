@@ -153,6 +153,7 @@ linters:
       - align-items
       - align-self
       - justify-content
+      - order
       - float
       - width
       - min-width
