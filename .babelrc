@@ -4,7 +4,7 @@
       "es2015",
       {
         "loose": true,
-        "modules": false
+        "modules": falsefs
       }
     ]
   ],
