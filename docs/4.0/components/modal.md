@@ -15,6 +15,9 @@ Before getting started with Bootstrap's modal component, be sure to read the fol
 - Bootstrap only supports one modal window at a time. Nested modals aren't supported as we believe them to be poor user experiences.
 - Modals use `position: fixed`, which can sometimes be a bit particular about its rendering. Whenever possible, place your modal HTML in a top-level position to avoid potential interference from other elements. You'll likely run into issues when nesting a `.modal` within another fixed element.
 - Once again, due to `position: fixed`, there are some caveats with using modals on mobile devices. [See our browser support docs]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/browsers-devices/#modals-and-dropdowns-on-mobile) for details.
+- Lastly, the `autofocus` HTML attribute has no effect in modals. Here's how you can achieve the same effect with custom JavaScript.
+  - Why we don't focus by default: Touch devices will likely open their virtual keyboard when focusing a text-input, which may be undesired.
+  - See the [autofocus option](#options) to enable `autofocus` attribute support
 - Due to how HTML5 defines its semantics, [the `autofocus` HTML attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-autofocus) has no effect in Bootstrap modals. To achieve the same effect, use some custom JavaScript:
 
 {% highlight js %}
@@ -79,7 +82,7 @@ Below is a _static_ modal example (meaning its `position` and `display` have bee
 
 Toggle a working modal demo by clicking the button below. It will slide down and fade in from the top of the page.
 
-<div id="exampleModalLive" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLiveLabel" aria-hidden="true">
+<div id="exampleModalLive" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLiveLabel" aria-hidden="true" data-autofocus="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -93,7 +96,7 @@ Toggle a working modal demo by clicking the button below. It will slide down and
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary" autofocus>Save changes</button>
       </div>
     </div>
   </div>
@@ -112,7 +115,7 @@ Toggle a working modal demo by clicking the button below. It will slide down and
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-autofocus="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -126,7 +129,7 @@ Toggle a working modal demo by clicking the button below. It will slide down and
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary" autofocus>Save changes</button>
       </div>
     </div>
   </div>
@@ -137,7 +140,7 @@ Toggle a working modal demo by clicking the button below. It will slide down and
 
 When modals become too long for the user's viewport or device, they scroll independent of the page itself. Try the demo below to see what we mean.
 
-<div id="exampleModalLong" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+<div id="exampleModalLong" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true" data-autofocus="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -168,7 +171,7 @@ When modals become too long for the user's viewport or device, they scroll indep
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary" autofocus>Save changes</button>
       </div>
     </div>
   </div>
@@ -187,7 +190,7 @@ When modals become too long for the user's viewport or device, they scroll indep
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true" data-autofocus="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -201,7 +204,7 @@ When modals become too long for the user's viewport or device, they scroll indep
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary" autofocus>Save changes</button>
       </div>
     </div>
   </div>
@@ -270,7 +273,7 @@ Add `.modal-dialog-centered` to `.modal-dialog` to vertically center the modal.
 
 [Tooltips]({{ site.baseurl }}/docs/{{ site.docs_version }}/components/tooltips/) and [popovers]({{ site.baseurl }}/docs/{{ site.docs_version }}/components/popovers/) can be placed within modals as needed. When modals are closed, any tooltips and popovers within are also automatically dismissed.
 
-<div id="exampleModalPopovers" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalPopoversLabel" aria-hidden="true">
+<div id="exampleModalPopovers" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalPopoversLabel" aria-hidden="true" data-autofocus="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -287,7 +290,7 @@ Add `.modal-dialog-centered` to `.modal-dialog` to vertically center the modal.
         <p><a href="#" class="tooltip-test" title="Tooltip" data-container="#exampleModalPopovers">This link</a> and <a href="#" class="tooltip-test" title="Tooltip" data-container="#exampleModalPopovers">that link</a> have tooltips on hover.</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" autofocus>Close</button>
         <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
@@ -314,7 +317,7 @@ Add `.modal-dialog-centered` to `.modal-dialog` to vertically center the modal.
 
 Utilize the Bootstrap grid system within a modal by nesting `.container-fluid` within the `.modal-body`. Then, use the normal grid system classes as you would anywhere else.
 
-<div id="gridSystemModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
+<div id="gridSystemModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true" data-autofocus="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -350,7 +353,7 @@ Utilize the Bootstrap grid system within a modal by nesting `.container-fluid` w
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" autofocus>Close</button>
         <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
@@ -405,7 +408,7 @@ Below is a live demo followed by example HTML and JavaScript. For more informati
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Open modal for @fat</button>
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Open modal for @getbootstrap</button>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-autofocus="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -418,7 +421,7 @@ Below is a live demo followed by example HTML and JavaScript. For more informati
         <form>
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Recipient:</label>
-            <input type="text" class="form-control" id="recipient-name">
+            <input type="text" class="form-control" id="recipient-name" autofocus>
           </div>
           <div class="form-group">
             <label for="message-text" class="col-form-label">Message:</label>
@@ -568,6 +571,17 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
   </thead>
   <tbody>
     <tr>
+      <td>autofocus</td>
+      <td>boolean or the string <code>'notTouch'</code></td>
+      <td>false</td>
+      <td>Whether input with `autofocus` attribute should be given focus when modal is shown<br />
+          <ul class="list-unstyled">
+            <li><code>notTouch</code> will give focus when not a touch device</li>
+            <li><code>true</code> will give focus regardless</li>
+          </ul>
+      </td>
+    </tr>
+    <tr>
       <td>backdrop</td>
       <td>boolean or the string <code>'static'</code></td>
       <td>true</td>
@@ -578,6 +592,14 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <td>boolean</td>
       <td>true</td>
       <td>Closes the modal when escape key is pressed</td>
+    </tr>
+    <tr>
+      <td>keyboardBtnNav</td>
+      <td>boolean</td>
+      <td>true</td>
+      <td>Whether keyboard's arrow keys should move focus to/between `.btn` elements.
+        <span class="text-muted">(focus will not be taken from input elements)</span>
+      </td>
     </tr>
     <tr>
       <td>focus</td>

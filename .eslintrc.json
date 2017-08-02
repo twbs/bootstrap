@@ -5,6 +5,9 @@
     "browser": true,
     "es6": true
   },
+  "globals": {
+    "DocumentTouch": true
+  },
   "extends": "eslint:recommended",
   "plugins": ["compat"],
   "rules": {
