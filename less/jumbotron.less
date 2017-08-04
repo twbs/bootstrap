@@ -5,13 +5,17 @@
 
 .jumbotron {
   padding: @jumbotron-padding 0;
-  color: @jumbotron-color;
-  background-color: @jumbotron-bg;
   transition: background-color 0.2s ease-in;
 
-  h1,
-  .h1 {
-    color: @jumbotron-heading-color;
+  .jumbotron-image & {
+    h1, h2, h3, h4, h5, h6,
+    .h1, .h2, .h3, .h4, .h5, .h6 {
+      color: @brand-white;
+    }
+
+    dd, strong, .strong {
+      color: @brand-white;
+    }
   }
 
   p {
@@ -50,6 +54,8 @@
 
   > .jumbotron {
     background-color: @navbar-collapse-bg;
+    color: @jumbotron-heading-color;
+
 
     @media (min-width: @screen-md-min) {
         background-color: @navbar-collapse-bg;
@@ -66,3 +72,5 @@
     }
   }
 }
+
+

@@ -1709,65 +1709,45 @@ a.text-inverse:focus {
 .bg-focus {
   background-color: #fff;
 }
-.jumbotron,
 .bg-primary {
   color: #f2f5f7;
 }
 .bg-info {
   color: #f2f5f7;
 }
-.jumbotron h1,
 .bg-primary h1,
 .bg-info h1,
-.jumbotron h2,
 .bg-primary h2,
 .bg-info h2,
-.jumbotron h3,
 .bg-primary h3,
 .bg-info h3,
-.jumbotron h4,
 .bg-primary h4,
 .bg-info h4,
-.jumbotron h5,
 .bg-primary h5,
 .bg-info h5,
-.jumbotron h6,
 .bg-primary h6,
 .bg-info h6,
-.jumbotron .h1,
 .bg-primary .h1,
 .bg-info .h1,
-.jumbotron .h2,
 .bg-primary .h2,
 .bg-info .h2,
-.jumbotron .h3,
 .bg-primary .h3,
 .bg-info .h3,
-.jumbotron .h4,
 .bg-primary .h4,
 .bg-info .h4,
-.jumbotron .h5,
 .bg-primary .h5,
 .bg-info .h5,
-.jumbotron .h6,
 .bg-primary .h6,
 .bg-info .h6 {
   color: #fff;
 }
-.jumbotron dd,
 .bg-primary dd,
 .bg-info dd,
-.jumbotron strong,
 .bg-primary strong,
 .bg-info strong,
-.jumbotron .strong,
 .bg-primary .strong,
 .bg-info .strong {
   color: #fff;
-}
-.jumbotron,
-.bg-primary {
-  color: #d8f1fa;
 }
 .page-header {
   padding-bottom: 16px;
@@ -8301,14 +8281,27 @@ a.badge:focus {
 }
 .jumbotron {
   padding: 32px 0;
-  color: #fff;
-  background-color: #37517e;
   -webkit-transition: background-color .2s ease-in;
        -o-transition: background-color .2s ease-in;
           transition: background-color .2s ease-in;
 }
-.jumbotron h1,
-.jumbotron .h1 {
+.jumbotron-image .jumbotron h1,
+.jumbotron-image .jumbotron h2,
+.jumbotron-image .jumbotron h3,
+.jumbotron-image .jumbotron h4,
+.jumbotron-image .jumbotron h5,
+.jumbotron-image .jumbotron h6,
+.jumbotron-image .jumbotron .h1,
+.jumbotron-image .jumbotron .h2,
+.jumbotron-image .jumbotron .h3,
+.jumbotron-image .jumbotron .h4,
+.jumbotron-image .jumbotron .h5,
+.jumbotron-image .jumbotron .h6 {
+  color: #fff;
+}
+.jumbotron-image .jumbotron dd,
+.jumbotron-image .jumbotron strong,
+.jumbotron-image .jumbotron .strong {
   color: #fff;
 }
 .jumbotron p {
@@ -8342,6 +8335,7 @@ a.badge:focus {
           background-size: cover;
 }
 .jumbotron-image > .jumbotron {
+  color: #fff;
   background-color: #37517e;
 }
 @media (min-width: 768px) {
