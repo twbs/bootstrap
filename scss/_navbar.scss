@@ -31,12 +31,6 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-
-    @include media-breakpoint-down(nth(map-keys($grid-breakpoints), 1)) {
-      width: 100%; // prevent flex parent container from collapsing
-      margin-right: 0;
-      margin-left: 0;
-    }
   }
 }
 
