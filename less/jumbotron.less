@@ -7,17 +7,6 @@
   padding: @jumbotron-padding 0;
   transition: background-color 0.2s ease-in;
 
-  .jumbotron-image & {
-    h1, h2, h3, h4, h5, h6,
-    .h1, .h2, .h3, .h4, .h5, .h6 {
-      color: @brand-white;
-    }
-
-    dd, strong, .strong {
-      color: @brand-white;
-    }
-  }
-
   p {
     margin-bottom: (@jumbotron-padding / 2);
     font-weight: 200;
@@ -52,25 +41,50 @@
   background-position: center top;
   background-size: cover;
 
+  h1, h2, h3, h4, h5, h6,
+  .h1, .h2, .h3, .h4, .h5, .h6 {
+    color: @brand-white;
+  }
+
+  dd, strong, .strong {
+    color: @brand-white;
+  }
+
   > .jumbotron {
     background-color: @navbar-collapse-bg;
     color: @jumbotron-heading-color;
 
 
     @media (min-width: @screen-md-min) {
-        background-color: @navbar-collapse-bg;
-        background-color: rgba(55, 81, 126, .9);
-        //background-color: rgba(46, 67, 105, .9);
+      background-color: @navbar-collapse-bg;
+      background-color: rgba(55, 81, 126, .9);
+      //background-color: rgba(46, 67, 105, .9);
     }
     @media (min-width: @screen-lg-min) {
-        background-color: @navbar-collapse-bg;
-        background-color: rgba(55, 81, 126, .9);
-        //background-color: rgba(46, 67, 105, .75);
+      background-color: @navbar-collapse-bg;
+      background-color: rgba(55, 81, 126, .9);
+      //background-color: rgba(46, 67, 105, .75);
     }
     @media (min-width: @screen-xl-min) {
-        background-color: transparent;
+      background-color: transparent;
     }
   }
+
 }
 
+.jumbotron-image-inverse {
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+  color: @text-color;
 
+  h1, h2, h3, h4, h5, h6,
+  .h1, .h2, .h3, .h4, .h5, .h6 {
+    color: @headings-color;
+  }
+
+  dd, strong, .strong {
+    color: @headings-color;
+  }
+
+}

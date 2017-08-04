@@ -845,17 +845,20 @@
 @media (min-width: @screen-md-min) {
     .navbar + .jumbotron,
     .navbar + .jumbotron-image,
+    .navbar + .jumbotron-image-inverse,
     .jumbotron-image-adjacent-to-navbar {
         margin-top: (-1 * @navbar-height);
     }
     .navbar.affix + .jumbotron,
-    .navbar.affix + .jumbotron-image {
+    .navbar.affix + .jumbotron-image,
+    .navbar.affix + .jumbotron-image-inverse {
         margin-top: 0px;
     }
 }
 
 .navbar + .jumbotron,
 .navbar + .jumbotron-image > .jumbotron,
+.navbar + .jumbotron-image-inverse > .jumbotron,
 .jumbotron-image-adjacent-to-navbar > .jumbotron {
     padding-bottom: 64px;
 

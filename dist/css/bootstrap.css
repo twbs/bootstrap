@@ -1709,6 +1709,24 @@ a.text-inverse:focus {
 .bg-focus {
   background-color: #fff;
 }
+.bg-focus h1,
+.bg-focus h2,
+.bg-focus h3,
+.bg-focus h4,
+.bg-focus h5,
+.bg-focus h6,
+.bg-focus .h1,
+.bg-focus .h2,
+.bg-focus .h3,
+.bg-focus .h4,
+.bg-focus .h5,
+.bg-focus .h6 {
+  color: #37517e;
+}
+.bg-focus p,
+.bg-focus .lead {
+  color: #6f8691;
+}
 .bg-primary {
   color: #f2f5f7;
 }
@@ -7849,22 +7867,26 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 @media (min-width: 768px) {
   .navbar + .jumbotron,
   .navbar + .jumbotron-image,
+  .navbar + .jumbotron-image-inverse,
   .jumbotron-image-adjacent-to-navbar {
     margin-top: -56px;
   }
   .navbar.affix + .jumbotron,
-  .navbar.affix + .jumbotron-image {
+  .navbar.affix + .jumbotron-image,
+  .navbar.affix + .jumbotron-image-inverse {
     margin-top: 0;
   }
 }
 .navbar + .jumbotron,
 .navbar + .jumbotron-image > .jumbotron,
+.navbar + .jumbotron-image-inverse > .jumbotron,
 .jumbotron-image-adjacent-to-navbar > .jumbotron {
   padding-bottom: 64px;
 }
 @media (min-width: 768px) {
   .navbar + .jumbotron,
   .navbar + .jumbotron-image > .jumbotron,
+  .navbar + .jumbotron-image-inverse > .jumbotron,
   .jumbotron-image-adjacent-to-navbar > .jumbotron {
     padding-top: 140px;
     padding-bottom: 104px;
@@ -8285,25 +8307,6 @@ a.badge:focus {
        -o-transition: background-color .2s ease-in;
           transition: background-color .2s ease-in;
 }
-.jumbotron-image .jumbotron h1,
-.jumbotron-image .jumbotron h2,
-.jumbotron-image .jumbotron h3,
-.jumbotron-image .jumbotron h4,
-.jumbotron-image .jumbotron h5,
-.jumbotron-image .jumbotron h6,
-.jumbotron-image .jumbotron .h1,
-.jumbotron-image .jumbotron .h2,
-.jumbotron-image .jumbotron .h3,
-.jumbotron-image .jumbotron .h4,
-.jumbotron-image .jumbotron .h5,
-.jumbotron-image .jumbotron .h6 {
-  color: #fff;
-}
-.jumbotron-image .jumbotron dd,
-.jumbotron-image .jumbotron strong,
-.jumbotron-image .jumbotron .strong {
-  color: #fff;
-}
 .jumbotron p {
   margin-bottom: 16px;
   font-weight: 200;
@@ -8334,6 +8337,25 @@ a.badge:focus {
   -webkit-background-size: cover;
           background-size: cover;
 }
+.jumbotron-image h1,
+.jumbotron-image h2,
+.jumbotron-image h3,
+.jumbotron-image h4,
+.jumbotron-image h5,
+.jumbotron-image h6,
+.jumbotron-image .h1,
+.jumbotron-image .h2,
+.jumbotron-image .h3,
+.jumbotron-image .h4,
+.jumbotron-image .h5,
+.jumbotron-image .h6 {
+  color: #fff;
+}
+.jumbotron-image dd,
+.jumbotron-image strong,
+.jumbotron-image .strong {
+  color: #fff;
+}
 .jumbotron-image > .jumbotron {
   color: #fff;
   background-color: #37517e;
@@ -8354,6 +8376,32 @@ a.badge:focus {
   .jumbotron-image > .jumbotron {
     background-color: transparent;
   }
+}
+.jumbotron-image-inverse {
+  color: #6f8691;
+  background-repeat: no-repeat;
+  background-position: center top;
+  -webkit-background-size: cover;
+          background-size: cover;
+}
+.jumbotron-image-inverse h1,
+.jumbotron-image-inverse h2,
+.jumbotron-image-inverse h3,
+.jumbotron-image-inverse h4,
+.jumbotron-image-inverse h5,
+.jumbotron-image-inverse h6,
+.jumbotron-image-inverse .h1,
+.jumbotron-image-inverse .h2,
+.jumbotron-image-inverse .h3,
+.jumbotron-image-inverse .h4,
+.jumbotron-image-inverse .h5,
+.jumbotron-image-inverse .h6 {
+  color: #2e4369;
+}
+.jumbotron-image-inverse dd,
+.jumbotron-image-inverse strong,
+.jumbotron-image-inverse .strong {
+  color: #2e4369;
 }
 .thumbnail {
   position: relative;
