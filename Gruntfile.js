@@ -231,7 +231,6 @@ module.exports = function (grunt) {
         compatibility: 'ie8',
         keepSpecialComments: '*',
         sourceMap: true,
-        sourceMapInlineSources: true,
         advanced: false
       },
       minifyCore: {
@@ -277,7 +276,7 @@ module.exports = function (grunt) {
     copy: {
       fonts: {
         expand: true,
-        src: 'fonts/**',
+        src: 'fonts/*',
         dest: 'dist/'
       },
       docs: {
@@ -316,27 +315,13 @@ module.exports = function (grunt) {
     htmlmin: {
       dist: {
         options: {
-          collapseBooleanAttributes: true,
           collapseWhitespace: true,
           conservativeCollapse: true,
-          decodeEntities: false,
-          minifyCSS: {
-            compatibility: 'ie8',
-            keepSpecialComments: 0
-          },
+          minifyCSS: true,
           minifyJS: true,
-          minifyURLs: false,
           processConditionalComments: true,
           removeAttributeQuotes: true,
-          removeComments: true,
-          removeOptionalAttributes: true,
-          removeOptionalTags: true,
-          removeRedundantAttributes: true,
-          removeScriptTypeAttributes: true,
-          removeStyleLinkTypeAttributes: true,
-          removeTagWhitespace: false,
-          sortAttributes: true,
-          sortClassName: true
+          removeComments: true
         },
         expand: true,
         cwd: '_gh_pages',
@@ -348,17 +333,17 @@ module.exports = function (grunt) {
       }
     },
 
-    pug: {
+    jade: {
       options: {
         pretty: true,
         data: getLessVarsData
       },
       customizerVars: {
-        src: 'docs/_pug/customizer-variables.pug',
+        src: 'docs/_jade/customizer-variables.jade',
         dest: 'docs/_includes/customizer-variables.html'
       },
       customizerNav: {
-        src: 'docs/_pug/customizer-nav.pug',
+        src: 'docs/_jade/customizer-nav.jade',
         dest: 'docs/_includes/nav/customize.html'
       }
     },
@@ -367,7 +352,7 @@ module.exports = function (grunt) {
       options: {
         ignore: [
           'Attribute "autocomplete" not allowed on element "button" at this point.',
-          'Attribute "autocomplete" is only allowed when the input type is "color", "date", "datetime", "datetime-local", "email", "hidden", "month", "number", "password", "range", "search", "tel", "text", "time", "url", or "week".',
+          'Attribute "autocomplete" is only allowed when the input type is "color", "date", "datetime", "datetime-local", "email", "month", "number", "password", "range", "search", "tel", "text", "time", "url", or "week".',
           'Element "img" is missing required attribute "src".'
         ]
       },
@@ -487,7 +472,7 @@ module.exports = function (grunt) {
 
   // task for building customizer
   grunt.registerTask('build-customizer', ['build-customizer-html', 'build-raw-files']);
-  grunt.registerTask('build-customizer-html', 'pug');
+  grunt.registerTask('build-customizer-html', 'jade');
   grunt.registerTask('build-raw-files', 'Add scripts/less files to customizer.', function () {
     var banner = grunt.template.process('<%= banner %>');
     generateRawFiles(grunt, banner);
