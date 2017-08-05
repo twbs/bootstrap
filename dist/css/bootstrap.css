@@ -679,33 +679,30 @@ pre code {
   margin-left: auto;
   padding-right: 15px;
   padding-left: 15px;
+  width: 100%;
 }
 
 @media (min-width: 576px) {
   .container {
-    width: 540px;
-    max-width: 100%;
+    max-width: 540px;
   }
 }
 
 @media (min-width: 768px) {
   .container {
-    width: 720px;
-    max-width: 100%;
+    max-width: 720px;
   }
 }
 
 @media (min-width: 992px) {
   .container {
-    width: 960px;
-    max-width: 100%;
+    max-width: 960px;
   }
 }
 
 @media (min-width: 1200px) {
   .container {
-    width: 1140px;
-    max-width: 100%;
+    max-width: 1140px;
   }
 }
 
@@ -715,6 +712,7 @@ pre code {
   margin-left: auto;
   padding-right: 15px;
   padding-left: 15px;
+  width: 100%;
 }
 
 .row {
@@ -2696,6 +2694,11 @@ tbody.collapse.show {
   margin-left: 0;
 }
 
+.dropup .dropdown-menu {
+  margin-top: 0;
+  margin-bottom: 0.125rem;
+}
+
 .dropup .dropdown-toggle::after {
   border-top: 0;
   border-bottom: 0.3em solid;
@@ -3432,15 +3435,6 @@ tbody.collapse.show {
       justify-content: space-between;
 }
 
-@media (max-width: 575px) {
-  .navbar > .container,
-  .navbar > .container-fluid {
-    width: 100%;
-    margin-right: 0;
-    margin-left: 0;
-  }
-}
-
 .navbar-brand {
   display: inline-block;
   padding-top: 0.5em;
@@ -3490,6 +3484,8 @@ tbody.collapse.show {
 .navbar-collapse {
   -ms-flex-preferred-size: 100%;
       flex-basis: 100%;
+  -ms-flex-align: center;
+      align-items: center;
 }
 
 .navbar-toggler {

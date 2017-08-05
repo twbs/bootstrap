@@ -3828,4 +3828,4 @@ var Popover = function ($) {
 }(jQuery);
 
 
-})()
+})();
