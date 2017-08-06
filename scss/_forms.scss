@@ -18,7 +18,7 @@
   background-clip: padding-box;
   border: $input-btn-border-width solid $input-border-color;
   // line height issue in input type number. Solve by not assiging line height in inuput number type.
-  &:not([type="number"]){
+  &:not([type="number"]) {
   	line-height: $input-btn-line-height;
   }
   // Note: This has no effect on <select>s in some browsers, due to the limited stylability of `<select>`s in CSS.
