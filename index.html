@@ -107,7 +107,7 @@ layout: home
     <div class="row bd-featured-sites">
     {% for showcase in site.data.showcase %}
       <div class="col-6 col-sm-3">
-        <a href="{{ showcase.expo_url }}" target="_blank" title="{{ showcase.name }}">
+        <a href="{{ showcase.expo_url }}" target="_blank" rel="noopener" title="{{ showcase.name }}">
           <img src="{{ site.baseurl }}/assets/img/expo-{{ showcase.img }}.jpg" alt="{{ showcase.name }}" class="img-fluid">
         </a>
       </div>

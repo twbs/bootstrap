@@ -7,15 +7,7 @@
 @media print {
   *,
   *::before,
-  *::after,
-  p::first-letter,
-  div::first-letter,
-  blockquote::first-letter,
-  li::first-letter,
-  p::first-line,
-  div::first-line,
-  blockquote::first-line,
-  li::first-line {
+  *::after {
     text-shadow: none !important;
     box-shadow: none !important;
   }
@@ -127,7 +119,8 @@ p {
 abbr[title],
 abbr[data-original-title] {
   text-decoration: underline;
-  text-decoration: underline dotted;
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
   cursor: help;
   border-bottom: 0;
 }
@@ -608,33 +601,30 @@ pre code {
   margin-left: auto;
   padding-right: 15px;
   padding-left: 15px;
+  width: 100%;
 }
 
 @media (min-width: 576px) {
   .container {
-    width: 540px;
-    max-width: 100%;
+    max-width: 540px;
   }
 }
 
 @media (min-width: 768px) {
   .container {
-    width: 720px;
-    max-width: 100%;
+    max-width: 720px;
   }
 }
 
 @media (min-width: 992px) {
   .container {
-    width: 960px;
-    max-width: 100%;
+    max-width: 960px;
   }
 }
 
 @media (min-width: 1200px) {
   .container {
-    width: 1140px;
-    max-width: 100%;
+    max-width: 1140px;
   }
 }
 
@@ -644,6 +634,7 @@ pre code {
   margin-left: auto;
   padding-right: 15px;
   padding-left: 15px;
+  width: 100%;
 }
 
 .row {
@@ -1588,11 +1579,6 @@ pre code {
   opacity: 1;
 }
 
-.form-control::-moz-placeholder {
-  color: #868e96;
-  opacity: 1;
-}
-
 .form-control:-ms-input-placeholder {
   color: #868e96;
   opacity: 1;
@@ -2469,6 +2455,7 @@ fieldset[disabled] a.btn {
 
 .btn-link, .btn-link:focus, .btn-link:active {
   border-color: transparent;
+  box-shadow: none;
 }
 
 .btn-link:hover {
@@ -3273,15 +3260,6 @@ tbody.collapse.show {
       justify-content: space-between;
 }
 
-@media (max-width: 575px) {
-  .navbar > .container,
-  .navbar > .container-fluid {
-    width: 100%;
-    margin-right: 0;
-    margin-left: 0;
-  }
-}
-
 .navbar-brand {
   display: inline-block;
   padding-top: 0.3125rem;
@@ -3325,6 +3303,8 @@ tbody.collapse.show {
 .navbar-collapse {
   -ms-flex-preferred-size: 100%;
       flex-basis: 100%;
+  -ms-flex-align: center;
+      align-items: center;
 }
 
 .navbar-toggler {
@@ -3845,10 +3825,8 @@ tbody.collapse.show {
 @media (min-width: 576px) {
   .card-columns {
     -webkit-column-count: 3;
-       -moz-column-count: 3;
             column-count: 3;
     -webkit-column-gap: 1.25rem;
-       -moz-column-gap: 1.25rem;
             column-gap: 1.25rem;
   }
   .card-columns .card {
