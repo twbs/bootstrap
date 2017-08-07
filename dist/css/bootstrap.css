@@ -2558,6 +2558,11 @@ tbody.collapse.show {
   margin-left: 0;
 }
 
+.dropup .dropdown-menu {
+  margin-top: 0;
+  margin-bottom: 0.125rem;
+}
+
 .dropup .dropdown-toggle::after {
   border-top: 0;
   border-bottom: 0.3em solid;
