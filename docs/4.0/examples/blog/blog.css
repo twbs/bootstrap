@@ -2,12 +2,6 @@
  * Globals
  */
 
-@media (min-width: 48em) {
-  html {
-    font-size: 18px;
-  }
-}
-
 body {
   font-family: Georgia, "Times New Roman", Times, serif;
   color: #555;
@@ -88,19 +82,13 @@ h6, .h6 {
 }
 .blog-title {
   margin-bottom: 0;
-  font-size: 2rem;
   font-weight: normal;
 }
 .blog-description {
-  font-size: 1.1rem;
+  font-size: 110%;
   color: #999;
 }
 
-@media (min-width: 40em) {
-  .blog-title {
-    font-size: 3.5rem;
-  }
-}
 
 
 /*
@@ -142,7 +130,6 @@ h6, .h6 {
 }
 .blog-post-title {
   margin-bottom: .25rem;
-  font-size: 2.5rem;
 }
 .blog-post-meta {
   margin-bottom: 1.25rem;

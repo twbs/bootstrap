@@ -14,7 +14,7 @@
   order: 2;
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
-  font-size: .875rem;
+  @include rfs(14);
 }
 
 .section-nav {
@@ -148,7 +148,7 @@
 .bd-sidebar .nav > li > a {
   display: block;
   padding: .25rem 1.5rem;
-  font-size: 90%;
+  @include rfs(90%);
   color: rgba(0,0,0,.65);
 }
 

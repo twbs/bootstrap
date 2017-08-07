@@ -410,6 +410,6 @@
   border: 0;
 }
 .highlight pre code {
-  font-size: inherit;
+  @include rfs(inherit);
   color: $gray-900; // Effectively the base text color
 }

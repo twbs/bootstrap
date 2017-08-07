@@ -9,7 +9,7 @@
   padding: 15px 15px 15px 160px;
   margin: 50px -15px 0;
   overflow: hidden;
-  font-size: 13px;
+  @include rfs(13px);
   line-height: 1.5;
   text-align: left;
   border: solid #866ab3;
