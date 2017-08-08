@@ -6,6 +6,18 @@ group: utilities
 toc: true
 ---
 
+## Common values
+
+Quick positioning classes are available, though they are not responsive.
+
+{% highlight html %}
+<div class="position-static">...</div>
+<div class="position-relative">...</div>
+<div class="position-absolute">...</div>
+<div class="position-fixed">...</div>
+<div class="position-sticky">...</div>
+{% endhighlight %}
+
 ## Fixed top
 
 Position an element at the top of the viewport, from edge to edge. Be sure you understand the ramifications of fixed position in your project; you may need to add aditional CSS.
