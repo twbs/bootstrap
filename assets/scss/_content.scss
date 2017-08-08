@@ -11,6 +11,10 @@
   > h2[id],
   > h3[id],
   > h4[id] {
+    pointer-events: none;
+    > * {
+      pointer-events: auto;
+    }
     &::before {
       position: relative;
       z-index: -1;
@@ -19,7 +23,6 @@
       margin-top: -6rem;
       visibility: hidden;
       content: "";
-      user-select: none;
     }
   }
 
