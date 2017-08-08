@@ -1,0 +1,21 @@
+.bd-featured-sites {
+  margin-right: -1px;
+  margin-left: -1px;
+}
+.bd-featured-sites .col-6 {
+  padding: 1px;
+}
+.bd-featured-sites .img-fluid {
+  margin-top: 0;
+}
+
+@media (min-width: 768px) {
+  .bd-featured-sites .col-sm-3:first-child img {
+    border-top-left-radius: .25rem;
+    border-bottom-left-radius: .25rem;
+  }
+  .bd-featured-sites .col-sm-3:last-child img {
+    border-top-right-radius: .25rem;
+    border-bottom-right-radius: .25rem;
+  }
+}

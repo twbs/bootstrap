@@ -2,54 +2,10 @@
 // Visibility utilities
 //
 
+.visible {
+  @include invisible(visible);
+}
+
 .invisible {
-  @include invisible();
-}
-
-// Responsive visibility utilities
-
-@each $bp in map-keys($grid-breakpoints) {
-  .hidden-#{$bp}-up {
-    @include media-breakpoint-up($bp) {
-      display: none !important;
-    }
-  }
-  .hidden-#{$bp}-down {
-    @include media-breakpoint-down($bp) {
-      display: none !important;
-    }
-  }
-}
-
-
-// Print utilities
-//
-// Media queries are placed on the inside to be mixin-friendly.
-
-.visible-print-block {
-  display: none !important;
-
-  @media print {
-    display: block !important;
-  }
-}
-.visible-print-inline {
-  display: none !important;
-
-  @media print {
-    display: inline !important;
-  }
-}
-.visible-print-inline-block {
-  display: none !important;
-
-  @media print {
-    display: inline-block !important;
-  }
-}
-
-.hidden-print {
-  @media print {
-    display: none !important;
-  }
+  @include invisible(hidden);
 }

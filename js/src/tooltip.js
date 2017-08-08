@@ -1,11 +1,11 @@
-/* global Tether */
+/* global Popper */
 
 import Util from './util'
 
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-alpha.5): tooltip.js
+ * Bootstrap (v4.0.0-alpha.6): tooltip.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -13,11 +13,11 @@ import Util from './util'
 const Tooltip = (($) => {
 
   /**
-   * Check for Tether dependency
-   * Tether - http://tether.io/
+   * Check for Popper dependency
+   * Popper - https://popper.js.org
    */
-  if (window.Tether === undefined) {
-    throw new Error('Bootstrap tooltips require Tether (http://tether.io/)')
+  if (typeof Popper === 'undefined') {
+    throw new Error('Bootstrap tooltips require Popper.js (https://popper.js.org)')
   }
 
 
@@ -28,50 +28,55 @@ const Tooltip = (($) => {
    */
 
   const NAME                = 'tooltip'
-  const VERSION             = '4.0.0-alpha.5'
+  const VERSION             = '4.0.0-alpha.6'
   const DATA_KEY            = 'bs.tooltip'
   const EVENT_KEY           = `.${DATA_KEY}`
   const JQUERY_NO_CONFLICT  = $.fn[NAME]
   const TRANSITION_DURATION = 150
-  const CLASS_PREFIX        = 'bs-tether'
-
-  const Default = {
-    animation   : true,
-    template    : '<div class="tooltip" role="tooltip">'
-                + '<div class="tooltip-inner"></div></div>',
-    trigger     : 'hover focus',
-    title       : '',
-    delay       : 0,
-    html        : false,
-    selector    : false,
-    placement   : 'top',
-    offset      : '0 0',
-    constraints : []
-  }
+  const CLASS_PREFIX        = 'bs-tooltip'
+  const BSCLS_PREFIX_REGEX = new RegExp(`(^|\\s)${CLASS_PREFIX}\\S+`, 'g')
 
   const DefaultType = {
-    animation   : 'boolean',
-    template    : 'string',
-    title       : '(string|element|function)',
-    trigger     : 'string',
-    delay       : '(number|object)',
-    html        : 'boolean',
-    selector    : '(string|boolean)',
-    placement   : '(string|function)',
-    offset      : 'string',
-    constraints : 'array'
+    animation           : 'boolean',
+    template            : 'string',
+    title               : '(string|element|function)',
+    trigger             : 'string',
+    delay               : '(number|object)',
+    html                : 'boolean',
+    selector            : '(string|boolean)',
+    placement           : '(string|function)',
+    offset              : '(number|string)',
+    container           : '(string|element|boolean)',
+    fallbackPlacement   : '(string|array)'
   }
 
   const AttachmentMap = {
-    TOP    : 'bottom center',
-    RIGHT  : 'middle left',
-    BOTTOM : 'top center',
-    LEFT   : 'middle right'
+    AUTO   : 'auto',
+    TOP    : 'top',
+    RIGHT  : 'right',
+    BOTTOM : 'bottom',
+    LEFT   : 'left'
+  }
+
+  const Default = {
+    animation           : true,
+    template            : '<div class="tooltip" role="tooltip">'
+                        + '<div class="arrow"></div>'
+                        + '<div class="tooltip-inner"></div></div>',
+    trigger             : 'hover focus',
+    title               : '',
+    delay               : 0,
+    html                : false,
+    selector            : false,
+    placement           : 'top',
+    offset              : 0,
+    container           : false,
+    fallbackPlacement   : 'flip'
   }
 
   const HoverState = {
-    ACTIVE : 'active',
-    OUT    : 'out'
+    SHOW : 'show',
+    OUT  : 'out'
   }
 
   const Event = {
@@ -88,18 +93,14 @@ const Tooltip = (($) => {
   }
 
   const ClassName = {
-    FADE   : 'fade',
-    ACTIVE : 'active'
+    FADE : 'fade',
+    SHOW : 'show'
   }
 
   const Selector = {
     TOOLTIP       : '.tooltip',
-    TOOLTIP_INNER : '.tooltip-inner'
-  }
-
-  const TetherClass = {
-    element : false,
-    enabled : false
+    TOOLTIP_INNER : '.tooltip-inner',
+    ARROW         : '.arrow'
   }
 
   const Trigger = {
@@ -121,11 +122,11 @@ const Tooltip = (($) => {
     constructor(element, config) {
 
       // private
-      this._isEnabled      = true
-      this._timeout        = 0
-      this._hoverState     = ''
-      this._activeTrigger  = {}
-      this._tether         = null
+      this._isEnabled     = true
+      this._timeout       = 0
+      this._hoverState    = ''
+      this._activeTrigger = {}
+      this._popper        = null
 
       // protected
       this.element = element
@@ -184,7 +185,7 @@ const Tooltip = (($) => {
 
     toggle(event) {
       if (event) {
-        let dataKey = this.constructor.DATA_KEY
+        const dataKey = this.constructor.DATA_KEY
         let context = $(event.currentTarget).data(dataKey)
 
         if (!context) {
@@ -205,7 +206,7 @@ const Tooltip = (($) => {
 
       } else {
 
-        if ($(this.getTipElement()).hasClass(ClassName.ACTIVE)) {
+        if ($(this.getTipElement()).hasClass(ClassName.SHOW)) {
           this._leave(null, this)
           return
         }
@@ -217,21 +218,23 @@ const Tooltip = (($) => {
     dispose() {
       clearTimeout(this._timeout)
 
-      this.cleanupTether()
-
       $.removeData(this.element, this.constructor.DATA_KEY)
 
       $(this.element).off(this.constructor.EVENT_KEY)
+      $(this.element).closest('.modal').off('hide.bs.modal')
 
       if (this.tip) {
         $(this.tip).remove()
       }
 
-      this._isEnabled      = null
-      this._timeout        = null
-      this._hoverState     = null
-      this._activeTrigger  = null
-      this._tether         = null
+      this._isEnabled     = null
+      this._timeout       = null
+      this._hoverState    = null
+      this._activeTrigger = null
+      if (this._popper !== null) {
+        this._popper.destroy()
+      }
+      this._popper        = null
 
       this.element = null
       this.config  = null
@@ -242,12 +245,12 @@ const Tooltip = (($) => {
       if ($(this.element).css('display') === 'none') {
         throw new Error('Please use show on visible elements')
       }
-      let showEvent = $.Event(this.constructor.Event.SHOW)
 
+      const showEvent = $.Event(this.constructor.Event.SHOW)
       if (this.isWithContent() && this._isEnabled) {
         $(this.element).trigger(showEvent)
 
-        let isInTheDom = $.contains(
+        const isInTheDom = $.contains(
           this.element.ownerDocument.documentElement,
           this.element
         )
@@ -256,8 +259,8 @@ const Tooltip = (($) => {
           return
         }
 
-        let tip   = this.getTipElement()
-        let tipId = Util.getUID(this.constructor.NAME)
+        const tip   = this.getTipElement()
+        const tipId = Util.getUID(this.constructor.NAME)
 
         tip.setAttribute('id', tipId)
         this.element.setAttribute('aria-describedby', tipId)
@@ -268,37 +271,62 @@ const Tooltip = (($) => {
           $(tip).addClass(ClassName.FADE)
         }
 
-        let placement  = typeof this.config.placement === 'function' ?
+        const placement  = typeof this.config.placement === 'function' ?
           this.config.placement.call(this, tip, this.element) :
           this.config.placement
 
-        let attachment = this._getAttachment(placement)
+        const attachment = this._getAttachment(placement)
+        this.addAttachmentClass(attachment)
 
-        $(tip)
-          .data(this.constructor.DATA_KEY, this)
-          .appendTo(document.body)
+        const container = this.config.container === false ? document.body : $(this.config.container)
+
+        $(tip).data(this.constructor.DATA_KEY, this)
+
+        if (!$.contains(this.element.ownerDocument.documentElement, this.tip)) {
+          $(tip).appendTo(container)
+        }
 
         $(this.element).trigger(this.constructor.Event.INSERTED)
 
-        this._tether = new Tether({
-          attachment,
-          element         : tip,
-          target          : this.element,
-          classes         : TetherClass,
-          classPrefix     : CLASS_PREFIX,
-          offset          : this.config.offset,
-          constraints     : this.config.constraints,
-          addTargetClasses: false
+        this._popper = new Popper(this.element, tip, {
+          placement: attachment,
+          modifiers: {
+            offset: {
+              offset: this.config.offset
+            },
+            flip: {
+              behavior: this.config.fallbackPlacement
+            },
+            arrow: {
+              element: Selector.ARROW
+            }
+          },
+          onCreate: (data) => {
+            if (data.originalPlacement !== data.placement) {
+              this._handlePopperPlacementChange(data)
+            }
+          },
+          onUpdate : (data) => {
+            this._handlePopperPlacementChange(data)
+          }
         })
 
-        Util.reflow(tip)
-        this._tether.position()
+        $(tip).addClass(ClassName.SHOW)
 
-        $(tip).addClass(ClassName.ACTIVE)
+        // if this is a touch-enabled device we add extra
+        // empty mouseover listeners to the body's immediate children;
+        // only needed because of broken event delegation on iOS
+        // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
+        if ('ontouchstart' in document.documentElement) {
+          $('body').children().on('mouseover', null, $.noop)
+        }
 
-        let complete = () => {
-          let prevHoverState = this._hoverState
-          this._hoverState   = null
+        const complete = () => {
+          if (this.config.animation) {
+            this._fixTransition()
+          }
+          const prevHoverState = this._hoverState
+          this._hoverState     = null
 
           $(this.element).trigger(this.constructor.Event.SHOWN)
 
@@ -311,24 +339,26 @@ const Tooltip = (($) => {
           $(this.tip)
             .one(Util.TRANSITION_END, complete)
             .emulateTransitionEnd(Tooltip._TRANSITION_DURATION)
-          return
+        } else {
+          complete()
         }
-
-        complete()
       }
     }
 
     hide(callback) {
-      let tip       = this.getTipElement()
-      let hideEvent = $.Event(this.constructor.Event.HIDE)
-      let complete  = () => {
-        if (this._hoverState !== HoverState.ACTIVE && tip.parentNode) {
+      const tip       = this.getTipElement()
+      const hideEvent = $.Event(this.constructor.Event.HIDE)
+      const complete  = () => {
+        if (this._hoverState !== HoverState.SHOW && tip.parentNode) {
           tip.parentNode.removeChild(tip)
         }
 
+        this._cleanTipClass()
         this.element.removeAttribute('aria-describedby')
         $(this.element).trigger(this.constructor.Event.HIDDEN)
-        this.cleanupTether()
+        if (this._popper !== null) {
+          this._popper.destroy()
+        }
 
         if (callback) {
           callback()
@@ -341,10 +371,20 @@ const Tooltip = (($) => {
         return
       }
 
-      $(tip).removeClass(ClassName.ACTIVE)
+      $(tip).removeClass(ClassName.SHOW)
+
+      // if this is a touch-enabled device we remove the extra
+      // empty mouseover listeners we added for iOS support
+      if ('ontouchstart' in document.documentElement) {
+        $('body').children().off('mouseover', null, $.noop)
+      }
+
+      this._activeTrigger[Trigger.CLICK] = false
+      this._activeTrigger[Trigger.FOCUS] = false
+      this._activeTrigger[Trigger.HOVER] = false
 
       if (Util.supportsTransitionEnd() &&
-         ($(this.tip).hasClass(ClassName.FADE))) {
+          $(this.tip).hasClass(ClassName.FADE)) {
 
         $(tip)
           .one(Util.TRANSITION_END, complete)
@@ -355,8 +395,14 @@ const Tooltip = (($) => {
       }
 
       this._hoverState = ''
+
     }
 
+    update() {
+      if (this._popper !== null) {
+        this._popper.scheduleUpdate()
+      }
+    }
 
     // protected
 
@@ -364,24 +410,22 @@ const Tooltip = (($) => {
       return Boolean(this.getTitle())
     }
 
+    addAttachmentClass(attachment) {
+      $(this.getTipElement()).addClass(`${CLASS_PREFIX}-${attachment}`)
+    }
+
     getTipElement() {
-      return (this.tip = this.tip || $(this.config.template)[0])
+      return this.tip = this.tip || $(this.config.template)[0]
     }
 
     setContent() {
-      let $tip = $(this.getTipElement())
-
+      const $tip = $(this.getTipElement())
       this.setElementContent($tip.find(Selector.TOOLTIP_INNER), this.getTitle())
-
-      $tip
-        .removeClass(ClassName.FADE)
-        .removeClass(ClassName.ACTIVE)
-
-      this.cleanupTether()
+      $tip.removeClass(`${ClassName.FADE} ${ClassName.SHOW}`)
     }
 
     setElementContent($element, content) {
-      let html = this.config.html
+      const html = this.config.html
       if (typeof content === 'object' && (content.nodeType || content.jquery)) {
         // content is a DOM node or a jQuery
         if (html) {
@@ -408,12 +452,6 @@ const Tooltip = (($) => {
       return title
     }
 
-    cleanupTether() {
-      if (this._tether) {
-        this._tether.destroy()
-      }
-    }
-
 
     // private
 
@@ -422,7 +460,7 @@ const Tooltip = (($) => {
     }
 
     _setListeners() {
-      let triggers = this.config.trigger.split(' ')
+      const triggers = this.config.trigger.split(' ')
 
       triggers.forEach((trigger) => {
         if (trigger === 'click') {
@@ -433,10 +471,10 @@ const Tooltip = (($) => {
           )
 
         } else if (trigger !== Trigger.MANUAL) {
-          let eventIn  = trigger === Trigger.HOVER ?
+          const eventIn  = trigger === Trigger.HOVER ?
             this.constructor.Event.MOUSEENTER :
             this.constructor.Event.FOCUSIN
-          let eventOut = trigger === Trigger.HOVER ?
+          const eventOut = trigger === Trigger.HOVER ?
             this.constructor.Event.MOUSELEAVE :
             this.constructor.Event.FOCUSOUT
 
@@ -452,6 +490,11 @@ const Tooltip = (($) => {
               (event) => this._leave(event)
             )
         }
+
+        $(this.element).closest('.modal').on(
+          'hide.bs.modal',
+          () => this.hide()
+        )
       })
 
       if (this.config.selector) {
@@ -465,9 +508,9 @@ const Tooltip = (($) => {
     }
 
     _fixTitle() {
-      let titleType = typeof this.element.getAttribute('data-original-title')
+      const titleType = typeof this.element.getAttribute('data-original-title')
       if (this.element.getAttribute('title') ||
-         (titleType !== 'string')) {
+         titleType !== 'string') {
         this.element.setAttribute(
           'data-original-title',
           this.element.getAttribute('title') || ''
@@ -477,7 +520,7 @@ const Tooltip = (($) => {
     }
 
     _enter(event, context) {
-      let dataKey = this.constructor.DATA_KEY
+      const dataKey = this.constructor.DATA_KEY
 
       context = context || $(event.currentTarget).data(dataKey)
 
@@ -495,15 +538,15 @@ const Tooltip = (($) => {
         ] = true
       }
 
-      if ($(context.getTipElement()).hasClass(ClassName.ACTIVE) ||
-         (context._hoverState === HoverState.ACTIVE)) {
-        context._hoverState = HoverState.ACTIVE
+      if ($(context.getTipElement()).hasClass(ClassName.SHOW) ||
+         context._hoverState === HoverState.SHOW) {
+        context._hoverState = HoverState.SHOW
         return
       }
 
       clearTimeout(context._timeout)
 
-      context._hoverState = HoverState.ACTIVE
+      context._hoverState = HoverState.SHOW
 
       if (!context.config.delay || !context.config.delay.show) {
         context.show()
@@ -511,14 +554,14 @@ const Tooltip = (($) => {
       }
 
       context._timeout = setTimeout(() => {
-        if (context._hoverState === HoverState.ACTIVE) {
+        if (context._hoverState === HoverState.SHOW) {
           context.show()
         }
       }, context.config.delay.show)
     }
 
     _leave(event, context) {
-      let dataKey = this.constructor.DATA_KEY
+      const dataKey = this.constructor.DATA_KEY
 
       context = context || $(event.currentTarget).data(dataKey)
 
@@ -557,7 +600,7 @@ const Tooltip = (($) => {
     }
 
     _isWithActiveTrigger() {
-      for (let trigger in this._activeTrigger) {
+      for (const trigger in this._activeTrigger) {
         if (this._activeTrigger[trigger]) {
           return true
         }
@@ -581,6 +624,14 @@ const Tooltip = (($) => {
         }
       }
 
+      if (config.title && typeof config.title === 'number') {
+        config.title = config.title.toString()
+      }
+
+      if (config.content && typeof config.content === 'number') {
+        config.content = config.content.toString()
+      }
+
       Util.typeCheckConfig(
         NAME,
         config,
@@ -591,10 +642,10 @@ const Tooltip = (($) => {
     }
 
     _getDelegateConfig() {
-      let config = {}
+      const config = {}
 
       if (this.config) {
-        for (let key in this.config) {
+        for (const key in this.config) {
           if (this.constructor.Default[key] !== this.config[key]) {
             config[key] = this.config[key]
           }
@@ -604,14 +655,38 @@ const Tooltip = (($) => {
       return config
     }
 
+    _cleanTipClass() {
+      const $tip = $(this.getTipElement())
+      const tabClass = $tip.attr('class').match(BSCLS_PREFIX_REGEX)
+      if (tabClass !== null && tabClass.length > 0) {
+        $tip.removeClass(tabClass.join(''))
+      }
+    }
+
+    _handlePopperPlacementChange(data) {
+      this._cleanTipClass()
+      this.addAttachmentClass(this._getAttachment(data.placement))
+    }
+
+    _fixTransition() {
+      const tip                 = this.getTipElement()
+      const initConfigAnimation = this.config.animation
+      if (tip.getAttribute('x-placement') !== null) {
+        return
+      }
+      $(tip).removeClass(ClassName.FADE)
+      this.config.animation = false
+      this.hide()
+      this.show()
+      this.config.animation = initConfigAnimation
+    }
 
     // static
 
     static _jQueryInterface(config) {
       return this.each(function () {
-        let data   = $(this).data(DATA_KEY)
-        let _config = typeof config === 'object' ?
-          config : null
+        let data      = $(this).data(DATA_KEY)
+        const _config = typeof config === 'object' && config
 
         if (!data && /dispose|hide/.test(config)) {
           return

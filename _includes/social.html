@@ -1,0 +1,36 @@
+<!-- Twitter -->
+<meta name="twitter:site" content="@{{ site.twitter }}">
+<meta name="twitter:creator" content="@{{ site.twitter }}">
+
+{% if page.title %}
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{{ page.title }}">
+  <meta name="twitter:description" content="{{ page.description }}">
+  <meta name="twitter:image" content="{{ site.url }}{{ site.social_logo_path }}">
+{% else %}
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ site.title }}">
+  <meta name="twitter:description" content="{{ site.description }}">
+  <meta name="twitter:image" content="{{ site.url }}{{ site.social_image_path }}">
+{% endif %}
+
+<!-- Facebook -->
+{% if page.title %}
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <meta property="og:title" content="{{ page.title }}">
+  <meta property="og:description" content="{{ page.description }}">
+  <meta property="og:type" content="website">
+{% else %}
+  <meta property="og:url" content="{{ site.url }}">
+  <meta property="og:title" content="{{ site.title }}">
+  <meta property="og:description" content="{{ site.description }}">
+{% endif %}
+<meta property="og:image" content="{{ site.url | replace: 'https://', 'http://' }}{{ site.social_image_path }}">
+<meta property="og:image:secure_url" content="{{ site.url }}{{ site.social_image_path }}">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Meta -->
+<meta name="description" content="{{ site.description }}">
+<meta name="author" content="{{ site.authors }}">

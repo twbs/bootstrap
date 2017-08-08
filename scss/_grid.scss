@@ -11,11 +11,12 @@
 
 // Fluid container
 //
-// Utilizes the mixin meant for fixed width containers, but without any defined
-// width for fluid, full width layouts.
+// Utilizes the mixin meant for fixed width containers, but with 100% width for
+// fluid, full width layouts.
 
 @if $enable-grid-classes {
   .container-fluid {
+    width: 100%;
     @include make-container();
   }
 }
@@ -27,6 +28,19 @@
 @if $enable-grid-classes {
   .row {
     @include make-row();
+  }
+
+  // Remove the negative margin from default .row, then the horizontal padding
+  // from all immediate children columns (to prevent runaway style inheritance).
+  .no-gutters {
+    margin-right: 0;
+    margin-left: 0;
+
+    > .col,
+    > [class*="col-"] {
+      padding-right: 0;
+      padding-left: 0;
+    }
   }
 }
 

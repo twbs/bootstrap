@@ -20,16 +20,18 @@
   ],
   "ignore": [
     "/.*",
-    "_config.yml",
-    "CNAME",
-    "composer.json",
-    "CONTRIBUTING.md",
+    "/_*",
+    "about",
+    "assets",
     "docs",
     "js/tests",
-    "test-infra"
+    "nuget",
+    "CNAME",
+    "composer.json",
+    "Gruntfile.js"
   ],
   "dependencies": {
-    "jquery": "1.9.1 - 3",
-    "tether": "^1.3.7"
+    "jquery": ">=1.9.1",
+    "popper.js": "^1.11.0"
   }
 }
