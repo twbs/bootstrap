@@ -15,10 +15,11 @@
       position: relative;
       z-index: -1;
       display: block;
-      height: 6rem;
+      padding-top: 6rem;
       margin-top: -6rem;
       visibility: hidden;
       content: "";
+      user-select: none;
     }
   }
 
