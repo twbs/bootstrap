@@ -17,6 +17,7 @@ We've tested and used these icon sets ourselves.
 ## More options
 While we haven't tried these out, they do look promising and provide multiple formats—including SVG.
 
+- [Bytesize](https://github.com/danklammer/bytesize-icons)
 - [Google Material icons](https://material.io/icons/)
 - [Ionicons](http://ionicons.com/)
 - [Feather](http://colebemis.com/feather/)
