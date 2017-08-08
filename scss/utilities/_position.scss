@@ -23,3 +23,9 @@
     z-index: $zindex-sticky;
   }
 }
+
+.p-sticky { position: sticky; }
+.p-static { position: static; }
+.p-relative { position: relative; }
+.p-absolute { position: absolute; }
+.p-fixed { position: fixed; }
