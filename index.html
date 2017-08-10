@@ -5,7 +5,7 @@ layout: home
 <main class="bd-masthead" id="content" role="main">
   <div class="container">
     {% include icons/bootstrap.svg class="mb-3" width="128" height="128" %}
-    <p class="lead">Bootstrap is the most popular HTML, CSS, and JS framework in the world for building responsive, mobile-first projects on the web.</p>
+    <p class="lead">Bootstrap is the most popular HTML, CSS, and JS library in the world for building responsive, mobile-first projects on the web.</p>
     <p class="lead">
       <a href="{{ site.baseurl }}/getting-started/download/" class="btn btn-lg btn-bd-yellow" onclick="ga('send', 'event', 'Jumbotron actions', 'Download', 'Download {{ site.current_version }}');">Download Bootstrap</a>
     </p>
@@ -107,7 +107,7 @@ layout: home
     <div class="row bd-featured-sites">
     {% for showcase in site.data.showcase %}
       <div class="col-6 col-sm-3">
-        <a href="{{ showcase.expo_url }}" target="_blank" title="{{ showcase.name }}">
+        <a href="{{ showcase.expo_url }}" target="_blank" rel="noopener" title="{{ showcase.name }}">
           <img src="{{ site.baseurl }}/assets/img/expo-{{ showcase.img }}.jpg" alt="{{ showcase.name }}" class="img-fluid">
         </a>
       </div>
