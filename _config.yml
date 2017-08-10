@@ -17,7 +17,7 @@ url:              https://getbootstrap.com
 encoding:         UTF-8
 exclude:          [.git, .github, assets/scss/, build, js, node_modules, nuget, scss, vendor, bower.json, composer.json, Gemfile, Gemfile.lock, Gruntfile.js, package.js, package.json, package-lock.json, sache.json]
 
-gems:
+plugins:
   - jekyll-redirect-from
   - jekyll-sitemap
   - jekyll-toc
