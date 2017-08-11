@@ -8,11 +8,11 @@ toc: true
 
 ## Installing Bootstrap
 
-[Install bootstrap](/getting-started/download/#npm) as a node module using npm.
+[Install bootstrap]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/download/#npm) as a node module using npm.
 
 ## Importing JavaScript
 
-Import [Bootstrap's JavaScript](/getting-started/javascript/) by adding this line to your app's entry point (usually `index.js` or `app.js`):
+Import [Bootstrap's JavaScript]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/javascript/) by adding this line to your app's entry point (usually `index.js` or `app.js`):
 
 {% highlight js %}
 import 'bootstrap';
@@ -55,7 +55,7 @@ Notice that if you chose to **import plugins individually**, you must also insta
 
 To enjoy the full potential of Bootstrap and customize it to your needs, use the source files as a part of your project's bundling process.
 
-First, create your own `_custom.scss` and use it to override the [built-in custom variables](/getting-started/options/). Then, use your main sass file to import your custom variables, followed by Bootstrap:
+First, create your own `_custom.scss` and use it to override the [built-in custom variables]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/options/). Then, use your main sass file to import your custom variables, followed by Bootstrap:
 {% highlight scss %}
 @import "custom";
 @import "~bootstrap/scss/bootstrap";
