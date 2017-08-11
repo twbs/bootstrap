@@ -50,7 +50,7 @@ Add the relative form sizing classes to the `.input-group` itself and contents w
   <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="sizing-addon1">
 </div>
 <br>
-<div class="input-group">
+<div class="input-group input-group-sm">
   <span class="input-group-addon" id="sizing-addon2">@</span>
   <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="sizing-addon2">
 </div>
