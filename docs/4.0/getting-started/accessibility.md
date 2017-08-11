@@ -32,7 +32,7 @@ Content which should be visually hidden, but remain accessible to assistive tech
 
 {% highlight html %}
 <p class="text-danger">
-  <span class=".sr-only">Danger: </span>
+  <span class="sr-only">Danger: </span>
   This action is not reversible
 </p>
 {% endhighlight %}

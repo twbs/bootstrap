@@ -22,7 +22,7 @@
 .carousel-item.active,
 .carousel-item-next,
 .carousel-item-prev {
-  display: flex;
+  display: block;
 }
 
 .carousel-item-next,
@@ -133,7 +133,7 @@
 
   li {
     position: relative;
-    flex: 1 0 auto;
+    flex: 0 1 auto;
     width: $carousel-indicator-width;
     height: $carousel-indicator-height;
     margin-right: $carousel-indicator-spacer;

@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: JavaScript
-description: Bring Bootstrap to life with our JavaScript plugins built on jQuery. Learn about each plugin, our data and programmatic API options, and more.
+description: Bring Bootstrap to life with our optional JavaScript plugins built on jQuery. Learn about each plugin, our data and programmatic API options, and more.
 group: getting-started
 toc: true
 ---
@@ -12,7 +12,9 @@ Plugins can be included individually (using Bootstrap's individual `*.js` files)
 
 ## Dependencies
 
-Some plugins and CSS components depend on other plugins. If you include plugins individually, make sure to check for these dependencies in the docs. Also note that all plugins depend on jQuery (this means jQuery must be included **before** the plugin files). [Consult our `bower.json`]({{ site.repo }}/blob/v{{ site.current_version }}/bower.json) to see which versions of jQuery are supported.
+Some plugins and CSS components depend on other plugins. If you include plugins individually, make sure to check for these dependencies in the docs. Also note that **all plugins depend on jQuery** (this means jQuery must be included **before** the plugin files). [Consult our `bower.json`]({{ site.repo }}/blob/v{{ site.current_version }}/bower.json) to see which versions of jQuery are supported.
+
+Our tooltips and popovers also depend on [Popper.js](https://github.com/FezVrasta/popper.js).
 
 ## Data attributes
 

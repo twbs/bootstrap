@@ -620,4 +620,33 @@ $(function () {
       })
     $dropdown.trigger('click')
   })
+
+  QUnit.test('Dropdown should not use Popper.js in navbar', function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+    var html = '<nav class="navbar navbar-expand-md navbar-light bg-light">'
+        + '<div class="dropdown">'
+        + '  <a class="nav-link dropdown-toggle" href="#" id="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>'
+        + '  <div class="dropdown-menu" aria-labelledby="dropdown">'
+        + '    <a class="dropdown-item" href="#">Action</a>'
+        + '    <a class="dropdown-item" href="#">Another action</a>'
+        + '    <a class="dropdown-item" href="#">Something else here</a>'
+        + '  </div>'
+        + '</div>'
+        + '</nav>'
+
+    $(html).appendTo('#qunit-fixture')
+    var $triggerDropdown = $('#qunit-fixture')
+      .find('[data-toggle="dropdown"]')
+      .bootstrapDropdown()
+    var $dropdownMenu = $triggerDropdown.next()
+
+    $triggerDropdown
+      .parent('.dropdown')
+      .on('shown.bs.dropdown', function () {
+        assert.ok($dropdownMenu.attr('style') === undefined, 'No inline style applied by Popper.js')
+        done()
+      })
+    $triggerDropdown.trigger($.Event('click'))
+  })
 })

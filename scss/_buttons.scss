@@ -84,6 +84,7 @@ fieldset[disabled] a.btn {
   &:focus,
   &:active {
     border-color: transparent;
+    box-shadow: none;
   }
   @include hover {
     border-color: transparent;
