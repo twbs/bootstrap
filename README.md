@@ -38,12 +38,12 @@
 
 Several quick start options are available:
 
-- [Download the latest release.](https://github.com/twbs/bootstrap/archive/v4.0.0-alpha.6.zip)
+- [Download the latest release.](https://github.com/twbs/bootstrap/archive/v4.0.0-beta.zip)
 - Clone the repo: `git clone https://github.com/twbs/bootstrap.git`
-- Install with [npm](https://www.npmjs.com): `npm install bootstrap@4.0.0-alpha.6`
-- Install with [yarn](https://github.com/yarnpkg/yarn): `yarn add bootstrap@4.0.0-alpha.6`
-- Install with [Composer](https://getcomposer.org): `composer require twbs/bootstrap:4.0.0-alpha.6`
-- Install with [Bower](https://bower.io): `bower install bootstrap#v4.0.0-alpha.6`
+- Install with [npm](https://www.npmjs.com): `npm install bootstrap@4.0.0-beta`
+- Install with [yarn](https://github.com/yarnpkg/yarn): `yarn add bootstrap@4.0.0-beta`
+- Install with [Composer](https://getcomposer.org): `composer require twbs/bootstrap:4.0.0-beta`
+- Install with [Bower](https://bower.io): `bower install bootstrap#v4.0.0-beta`
 - Install with [NuGet](https://www.nuget.org): CSS: `Install-Package bootstrap -Pre` Sass: `Install-Package bootstrap.sass -Pre` (`-Pre` is only required until Bootstrap v4 has a stable release).
 
 Read the [Getting started page](https://getbootstrap.com/getting-started/) for information on the framework contents, templates and examples, and more.
@@ -55,6 +55,7 @@ Read the [Getting started page](https://getbootstrap.com/getting-started/) for i
 [![npm version](https://img.shields.io/npm/v/bootstrap.svg)](https://www.npmjs.com/package/bootstrap)
 [![Gem version](https://img.shields.io/gem/v/bootstrap.svg)](https://rubygems.org/gems/bootstrap)
 [![Build Status](https://img.shields.io/travis/twbs/bootstrap/v4-dev.svg)](https://travis-ci.org/twbs/bootstrap)
+[![dependencies Status](https://david-dm.org/twbs/bootstrap/status.svg)](https://david-dm.org/twbs/bootstrap)
 [![devDependency Status](https://img.shields.io/david/dev/twbs/bootstrap.svg)](https://david-dm.org/twbs/bootstrap?type=dev)
 [![Meteor Atmosphere](https://img.shields.io/badge/meteor-twbs%3Abootstrap-blue.svg)](https://atmospherejs.com/twbs/bootstrap)
 [![Packagist Prerelease](https://img.shields.io/packagist/vpre/twbs/bootstrap.svg)](https://packagist.org/packages/twbs/bootstrap)

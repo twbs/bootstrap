@@ -2,16 +2,11 @@
 layout: default
 ---
 
-<div class="bd-pageheader text-center text-sm-left">
-  <div class="container">
-    <h1>{{ page.title }}</h1>
-    <p class="lead">
-      Quickly get a project started with any of our examples ranging from using parts of the framework to custom components and layouts.
-    </p>
+<div class="container my-5">
+  <main class="bd-content" role="main">
+    <h1 class="bd-title" id="content">{{ page.title }}</h1>
+    <p class="bd-lead">{{ page.description }}</p>
     {% include ads.html %}
-  </div>
-</div>
-
-<div class="container bd-content">
-  {{ content }}
+    {{ content }}
+  </main>
 </div>

@@ -55,14 +55,14 @@ Add labels to your progress bars by placing text within the `.progress-bar`.
 
 ## Height
 
-We only set a `height` value on the `.progress-bar`, so if you change that value the outer `.progress` will automatically resize accordingly.
+We only set a `height` value on the `.progress`, so if you change that value the inner `.progress-bar` will automatically resize accordingly.
 
 {% example html %}
-<div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: 25%; height: 1px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+<div class="progress" style="height: 1px;">
+  <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
-<div class="progress">
-  <div class="progress-bar" role="progressbar" style="width: 25%; height: 20px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+<div class="progress" style="height: 20px;">
+  <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
 {% endexample %}
 
