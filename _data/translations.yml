@@ -1,0 +1,9 @@
+- name: Chinese
+  code: zh
+  description: Bootstrap 4 中文文档教程
+  url: http://wiki.jikexueyuan.com/project/bootstrap4/
+
+- name: Brazilian Portuguese
+  code: pt-BR
+  description: Bootstrap 4 Português do Brasil
+  url: https://bootstrapbrasil.github.io/v4/

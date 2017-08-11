@@ -37,7 +37,7 @@
 .table-sm {
   th,
   td {
-    padding: $table-sm-cell-padding;
+    padding: $table-cell-padding-sm;
   }
 }
 
@@ -69,7 +69,7 @@
 
 .table-striped {
   tbody tr:nth-of-type(odd) {
-    background-color: $table-bg-accent;
+    background-color: $table-accent-bg;
   }
 }
 
@@ -81,7 +81,7 @@
 .table-hover {
   tbody tr {
     @include hover {
-      background-color: $table-bg-hover;
+      background-color: $table-hover-bg;
     }
   }
 }
@@ -92,12 +92,11 @@
 // Exact selectors below required to override `.table-striped` and prevent
 // inheritance to nested tables.
 
-// Generate the contextual variants
-@include table-row-variant(active, $table-bg-active);
-@include table-row-variant(success, $state-success-bg);
-@include table-row-variant(info, $state-info-bg);
-@include table-row-variant(warning, $state-warning-bg);
-@include table-row-variant(danger, $state-danger-bg);
+@each $color, $value in $theme-colors {
+  @include table-row-variant($color, theme-color-level($color, -9));
+}
+
+@include table-row-variant(active, $table-active-bg);
 
 
 // Inverse styles
@@ -134,14 +133,14 @@
 
   &.table-striped {
     tbody tr:nth-of-type(odd) {
-      background-color: $table-inverse-bg-accent;
+      background-color: $table-inverse-accent-bg;
     }
   }
 
   &.table-hover {
     tbody tr {
       @include hover {
-        background-color: $table-inverse-bg-hover;
+        background-color: $table-inverse-hover-bg;
       }
     }
   }

@@ -31,12 +31,6 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-
-    @include media-breakpoint-down(nth(map-keys($grid-breakpoints), 1)) {
-      width: 100%; // prevent flex parent container from collapsing
-      margin-right: 0;
-      margin-left: 0;
-    }
   }
 }
 
@@ -75,6 +69,11 @@
     padding-right: 0;
     padding-left: 0;
   }
+
+  .dropdown-menu {
+    position: static;
+    float: none;
+  }
 }
 
 
@@ -99,6 +98,9 @@
 // on the `.navbar` parent.
 .navbar-collapse {
   flex-basis: 100%;
+  // For always expanded or extra full navbars, ensure content aligns itself
+  // properly vertically. Can be easily overridden with flex utilities.
+  align-items: center;
 }
 
 // Button for toggling the navbar when in its collapsed state
@@ -136,13 +138,6 @@
 
     &#{$infix} {
       @include media-breakpoint-down($breakpoint) {
-        .navbar-nav {
-          .dropdown-menu {
-            position: static;
-            float: none;
-          }
-        }
-
         > .container,
         > .container-fluid {
           padding-right: 0;
@@ -160,6 +155,11 @@
 
           .dropdown-menu {
             position: absolute;
+          }
+
+          .dropdown-menu-right {
+            right: 0;
+            left: auto; // Reset the default from `.dropdown-menu`
           }
 
           .nav-link {
@@ -230,7 +230,7 @@
   }
 
   .navbar-toggler-icon {
-    background-image: $navbar-light-toggler-bg;
+    background-image: $navbar-light-toggler-icon-bg;
   }
 
   .navbar-text {
@@ -239,25 +239,25 @@
 }
 
 // White links against a dark background
-.navbar-inverse {
+.navbar-dark {
   .navbar-brand {
-    color: $navbar-inverse-active-color;
+    color: $navbar-dark-active-color;
 
     @include hover-focus {
-      color: $navbar-inverse-active-color;
+      color: $navbar-dark-active-color;
     }
   }
 
   .navbar-nav {
     .nav-link {
-      color: $navbar-inverse-color;
+      color: $navbar-dark-color;
 
       @include hover-focus {
-        color: $navbar-inverse-hover-color;
+        color: $navbar-dark-hover-color;
       }
 
       &.disabled {
-        color: $navbar-inverse-disabled-color;
+        color: $navbar-dark-disabled-color;
       }
     }
 
@@ -265,20 +265,20 @@
     .active > .nav-link,
     .nav-link.show,
     .nav-link.active {
-      color: $navbar-inverse-active-color;
+      color: $navbar-dark-active-color;
     }
   }
 
   .navbar-toggler {
-    color: $navbar-inverse-color;
-    border-color: $navbar-inverse-toggler-border-color;
+    color: $navbar-dark-color;
+    border-color: $navbar-dark-toggler-border-color;
   }
 
   .navbar-toggler-icon {
-    background-image: $navbar-inverse-toggler-bg;
+    background-image: $navbar-dark-toggler-icon-bg;
   }
 
   .navbar-text {
-    color: $navbar-inverse-color;
+    color: $navbar-dark-color;
   }
 }

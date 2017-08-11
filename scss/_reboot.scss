@@ -39,11 +39,17 @@ html {
   @-ms-viewport { width: device-width; }
 }
 
+// Shim for "new" HTML5 structural elements to display correctly (IE10, older browsers)
+article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, section {
+  display: block;
+}
 
 // Body
 //
 // 1. Remove the margin in all browsers.
 // 2. As a best practice, apply a default `background-color`.
+// 3. Set an explicit initial text-align value so that we can later use the
+//    the `inherit` value on things like `<th>` elements.
 
 body {
   margin: 0; // 1
@@ -52,6 +58,7 @@ body {
   font-weight: $font-weight-base;
   line-height: $line-height-base;
   color: $body-color;
+  text-align: left; // 3
   background-color: $body-bg; // 2
 }
 
@@ -300,8 +307,9 @@ caption {
 }
 
 th {
-  // Matches default `<td>` alignment
-  text-align: left;
+  // Matches default `<td>` alignment by inheriting from the `<body>`, or the
+  // closest parent with a set `text-align`.
+  text-align: inherit;
 }
 
 

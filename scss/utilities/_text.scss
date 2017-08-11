@@ -28,31 +28,20 @@
 
 // Weight and italics
 
-.font-weight-normal { font-weight: $font-weight-normal; }
-.font-weight-bold   { font-weight: $font-weight-bold; }
-.font-italic        { font-style: italic; }
+.font-weight-light  { font-weight: $font-weight-light !important; }
+.font-weight-normal { font-weight: $font-weight-normal !important; }
+.font-weight-bold   { font-weight: $font-weight-bold !important; }
+.font-italic        { font-style: italic !important; }
 
 // Contextual colors
 
-.text-white {
-  color: #fff !important;
+.text-white { color: #fff !important; }
+
+@each $color, $value in $theme-colors {
+  @include text-emphasis-variant('.text-#{$color}', $value);
 }
 
-@include text-emphasis-variant('.text-muted', $text-muted);
-
-@include text-emphasis-variant('.text-primary', $brand-primary);
-
-@include text-emphasis-variant('.text-success', $brand-success);
-
-@include text-emphasis-variant('.text-info', $brand-info);
-
-@include text-emphasis-variant('.text-warning', $brand-warning);
-
-@include text-emphasis-variant('.text-danger', $brand-danger);
-
-// Font color
-
-@include text-emphasis-variant('.text-gray-dark', $gray-dark);
+.text-muted { color: $text-muted !important; }
 
 // Misc
 

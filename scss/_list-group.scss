@@ -19,19 +19,19 @@
 
 .list-group-item-action {
   width: 100%; // For `<button>`s (anchors become 100% by default though)
-  color: $list-group-link-color;
+  color: $list-group-action-color;
   text-align: inherit; // For `<button>`s (anchors inherit)
 
   // Hover state
   @include hover-focus {
-    color: $list-group-link-hover-color;
+    color: $list-group-action-hover-color;
     text-decoration: none;
     background-color: $list-group-hover-bg;
   }
 
   &:active {
-    color: $list-group-link-active-color;
-    background-color: $list-group-link-active-bg;
+    color: $list-group-action-active-color;
+    background-color: $list-group-action-active-bg;
   }
 }
 
@@ -109,7 +109,6 @@
 // Add modifier classes to change text and background color on individual items.
 // Organizationally, this must come after the `:hover` states.
 
-@include list-group-item-variant(success, $state-success-bg, $state-success-text);
-@include list-group-item-variant(info, $state-info-bg, $state-info-text);
-@include list-group-item-variant(warning, $state-warning-bg, $state-warning-text);
-@include list-group-item-variant(danger, $state-danger-bg, $state-danger-text);
+@each $color, $value in $theme-colors {
+  @include list-group-item-variant($color, theme-color-level($color, -9), theme-color-level($color, 6));
+}
