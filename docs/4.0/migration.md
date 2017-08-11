@@ -90,7 +90,7 @@ New to Bootstrap 4 is the [Reboot]({{ site.baseurl }}/docs/{{ site.docs_version 
 - Renamed `.table-condensed` to `.table-sm` for consistency.
 - Added a new `.table-inverse` option.
 - Added table header modifiers: `.thead-default` and `.thead-inverse`.
-- Renamed contextual classes to have a `.table-`-prefix. Hence `.active`, `.success`, `.warning`, `.danger` and `.table-info` to `.table-active`, `.table-success`, `.table-warning`, `.table-danger` and `.table-info`.
+- Renamed contextual classes to have a `.table-`-prefix. Hence `.active`, `.success`, `.warning`, `.danger` and `.info` to `.table-active`, `.table-success`, `.table-warning`, `.table-danger` and `.table-info`.
 
 ### Forms
 
