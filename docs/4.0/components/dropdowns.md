@@ -510,8 +510,8 @@ Put a form within a dropdown menu, or make it into a dropdown menu, and use [mar
     <input type="email" class="form-control" id="exampleDropdownFormEmail2" placeholder="email@example.com">
   </div>
   <div class="form-group">
-    <label for="exampleDropdownFormEmail2">Password</label>
-    <input type="password" class="form-control" id="exampleDropdownFormEmail2" placeholder="Password">
+    <label for="exampleDropdownFormPassword2">Password</label>
+    <input type="password" class="form-control" id="exampleDropdownFormPassword2" placeholder="Password">
   </div>
   <div class="form-check">
     <label class="form-check-label">
