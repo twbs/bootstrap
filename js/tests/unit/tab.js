@@ -182,13 +182,14 @@ $(function () {
     assert.expect(2)
     var done = assert.async()
 
-    var dropHTML = '<ul class="drop nav">'
-        + '<li class="dropdown"><a data-toggle="dropdown" href="#">1</a>'
-        + '<ul class="dropdown-menu">'
-        + '<li><a href="#1-1" data-toggle="tab">1-1</a></li>'
-        + '<li><a href="#1-2" data-toggle="tab">1-2</a></li>'
-        + '</ul>'
-        + '</li>'
+    var dropHTML =
+          '<ul class="drop nav">'
+        + '  <li class="dropdown"><a data-toggle="dropdown" href="#">1</a>'
+        + '    <ul class="dropdown-menu nav">'
+        + '      <li><a href="#1-1" data-toggle="tab">1-1</a></li>'
+        + '      <li><a href="#1-2" data-toggle="tab">1-2</a></li>'
+        + '    </ul>'
+        + '  </li>'
         + '</ul>'
 
     $(dropHTML)
@@ -342,5 +343,43 @@ $(function () {
     assert.ok($tabs.find('li:first a').hasClass('active'))
     assert.notOk($tabs.find('li:last > a').hasClass('active'))
     assert.notOk($tabs.find('li:last > .dropdown-menu > a:first').hasClass('active'))
+  })
+
+  QUnit.test('Nested tabs', function (assert) {
+    assert.expect(2)
+    var done = assert.async()
+    var tabsHTML =
+          '<nav class="nav nav-tabs" role="tablist">'
+        + '  <a id="tab1" href="#x-tab1" class="nav-item nav-link" data-toggle="tab" role="tab" aria-controls="x-tab1">Tab 1</a>'
+        + '  <a href="#x-tab2" class="nav-item nav-link active" data-toggle="tab" role="tab" aria-controls="x-tab2" aria-expanded="true">Tab 2</a>'
+        + '  <a href="#x-tab3" class="nav-item nav-link" data-toggle="tab" role="tab" aria-controls="x-tab3">Tab 3</a>'
+        + '</nav>'
+        + '<div class="tab-content">'
+        + '  <div class="tab-pane" id="x-tab1" role="tabpanel">'
+        + '    <nav class="nav nav-tabs" role="tablist">'
+        + '      <a href="#nested-tab1" class="nav-item nav-link active" data-toggle="tab" role="tab" aria-controls="x-tab1" aria-expanded="true">Nested Tab 1</a>'
+        + '      <a id="tabNested2" href="#nested-tab2" class="nav-item nav-link" data-toggle="tab" role="tab" aria-controls="x-profile">Nested Tab2</a>'
+        + '    </nav>'
+        + '    <div class="tab-content">'
+        + '      <div class="tab-pane active" id="nested-tab1" role="tabpanel">Nested Tab1 Content</div>'
+        + '      <div class="tab-pane" id="nested-tab2" role="tabpanel">Nested Tab2 Content</div>'
+        + '    </div>'
+        + '  </div>'
+        + '  <div class="tab-pane active" id="x-tab2" role="tabpanel">Tab2 Content</div>'
+        + '  <div class="tab-pane" id="x-tab3" role="tabpanel">Tab3 Content</div>'
+        + '</div>'
+
+    $(tabsHTML).appendTo('#qunit-fixture')
+
+    $('#tabNested2').on('shown.bs.tab', function () {
+      assert.ok($('#x-tab1').hasClass('active'))
+      done()
+    })
+
+    $('#tab1').on('shown.bs.tab', function () {
+      assert.ok($('#x-tab1').hasClass('active'))
+      $('#tabNested2').trigger($.Event('click'))
+    })
+    .trigger($.Event('click'))
   })
 })
