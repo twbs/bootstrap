@@ -465,21 +465,21 @@ $custom-select-focus-box-shadow:   inset 0 1px 2px rgba($black, .075), 0 0 5px r
 $custom-select-font-size-sm:  75% !default;
 $custom-select-height-sm: $input-height-sm !default;
 
-$custom-file-height:           2.5rem !default;
+$custom-file-height:           $input-height !default;
 $custom-file-width:            14rem !default;
 $custom-file-focus-box-shadow: 0 0 0 .075rem $white, 0 0 0 .2rem theme-color("primary") !default;
 
-$custom-file-padding-y:     1rem !default;
-$custom-file-padding-x:     .5rem !default;
-$custom-file-line-height:   1.5 !default;
-$custom-file-color:         $gray-700 !default;
-$custom-file-bg:            $white !default;
-$custom-file-border-width:  $border-width !default;
+$custom-file-padding-y:     $input-btn-padding-y !default;
+$custom-file-padding-x:     $input-btn-padding-x !default;
+$custom-file-line-height:   $input-btn-line-height !default;
+$custom-file-color:         $input-color !default;
+$custom-file-bg:            $input-bg !default;
+$custom-file-border-width:  $input-btn-border-width !default;
 $custom-file-border-color:  $input-border-color !default;
-$custom-file-border-radius: $border-radius !default;
-$custom-file-box-shadow:    inset 0 .2rem .4rem rgba($black,.05) !default;
+$custom-file-border-radius: $input-border-radius !default;
+$custom-file-box-shadow:    $input-box-shadow !default;
 $custom-file-button-color:  $custom-file-color !default;
-$custom-file-button-bg:     $gray-200 !default;
+$custom-file-button-bg:     $input-group-addon-bg !default;
 $custom-file-text: (
   placeholder: (
     en: "Choose file..."
