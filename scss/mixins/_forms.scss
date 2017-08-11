@@ -10,27 +10,39 @@
 //
 // Example usage: change the default blue border and shadow to white for better
 // contrast against a dark gray background.
-@mixin form-control-focus() {
+@mixin form-control-focus {
   &:focus {
     color: $input-focus-color;
     background-color: $input-focus-bg;
     border-color: $input-focus-border-color;
     outline: none;
+
     @include box-shadow($input-focus-box-shadow);
   }
 }
 
-
 @mixin form-validation-state($state, $color) {
-
   .form-control,
   .custom-select {
     .was-validated &:#{$state},
     &.is-#{$state} {
       border-color: $color;
+      // Validation icon
+      padding-right: $input-btn-padding-x * 3;
+      background-repeat: no-repeat;
+      background-position: center right calc(#{$input-height-inner} / 4);
+      background-size: calc(#{$input-height-inner} / 2) calc(#{$input-height-inner} / 2);
+
+      @if $state == "valid" {
+        background-image: $form-icon-success;
+      }
+
+      @if $state == "invalid" {
+        background-image: $form-icon-danger;
+      }
 
       &:focus {
-        box-shadow: 0 0 0 .2rem rgba($color,.25);
+        box-shadow: 0 0 0 0.2rem rgba($color, 0.25);
       }
 
       ~ .invalid-feedback,
@@ -40,6 +52,13 @@
     }
   }
 
+  // Validation icon top for textarea
+  textarea.form-control,
+  textarea.custom-select {
+    &.is-#{$state} {
+      background-position: top calc(#{$input-height-inner} / 4) right calc(#{$input-height-inner} / 4);
+    }
+  }
 
   // TODO: redo check markup lol crap
   .form-check-input {
@@ -56,8 +75,9 @@
     .was-validated &:#{$state},
     &.is-#{$state} {
       ~ .custom-control-indicator {
-        background-color: rgba($color, .25);
+        background-color: rgba($color, 0.25);
       }
+
       ~ .custom-control-description {
         color: $color;
       }
@@ -71,10 +91,13 @@
       ~ .custom-file-control {
         border-color: $color;
 
-        &::before { border-color: inherit; }
+        &::before {
+          border-color: inherit;
+        }
       }
+
       &:focus {
-        box-shadow: 0 0 0 .2rem rgba($color,.25);
+        box-shadow: 0 0 0 0.2rem rgba($color, 0.25);
       }
     }
   }
