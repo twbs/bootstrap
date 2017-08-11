@@ -38,12 +38,12 @@
 
 Several quick start options are available:
 
-- [Download the latest release.](https://github.com/twbs/bootstrap/archive/v4.0.0-alpha.6.zip)
+- [Download the latest release.](https://github.com/twbs/bootstrap/archive/v4.0.0-beta.zip)
 - Clone the repo: `git clone https://github.com/twbs/bootstrap.git`
-- Install with [npm](https://www.npmjs.com): `npm install bootstrap@4.0.0-alpha.6`
-- Install with [yarn](https://github.com/yarnpkg/yarn): `yarn add bootstrap@4.0.0-alpha.6`
-- Install with [Composer](https://getcomposer.org): `composer require twbs/bootstrap:4.0.0-alpha.6`
-- Install with [Bower](https://bower.io): `bower install bootstrap#v4.0.0-alpha.6`
+- Install with [npm](https://www.npmjs.com): `npm install bootstrap@4.0.0-beta`
+- Install with [yarn](https://github.com/yarnpkg/yarn): `yarn add bootstrap@4.0.0-beta`
+- Install with [Composer](https://getcomposer.org): `composer require twbs/bootstrap:4.0.0-beta`
+- Install with [Bower](https://bower.io): `bower install bootstrap#v4.0.0-beta`
 - Install with [NuGet](https://www.nuget.org): CSS: `Install-Package bootstrap -Pre` Sass: `Install-Package bootstrap.sass -Pre` (`-Pre` is only required until Bootstrap v4 has a stable release).
 
 Read the [Getting started page](https://getbootstrap.com/getting-started/) for information on the framework contents, templates and examples, and more.

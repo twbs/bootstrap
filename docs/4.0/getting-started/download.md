@@ -6,26 +6,42 @@ group: getting-started
 toc: true
 ---
 
-## Bootstrap CSS and JS
+## Compiled CSS and JS
 
-**Download Bootstrap's ready-to-use code to easily drop into your project.** Includes compiled and minified versions of all our CSS bundles (default, grid only, or Reboot only) and JavaScript plugins. Doesn't include documentation or source files.
+Download ready-to-use compiled code for **Bootstrap v{{ site.current_version}}** to easily drop into your project, which includes:
 
-**Current version:** v{{ site.current_version}}
+- Compiled and minified CSS bundles (default, grid-only, and Reboot-only)
+- Compiled and minified JavaScript plugins
 
-<a href="{{ site.download.dist }}" class="btn btn-bd-purple" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download Bootstrap');">Download Bootstrap</a>
+This doesn't include documentation, source files, or any optional JavaScript dependencies (jQuery and Popper.js).
+
+<a href="{{ site.download.dist }}" class="btn btn-bd-purple" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download Bootstrap');">Download</a>
 
 ## Source files
-**Want to compile Bootstrap with your project's asset pipeline?** Choose this option to download our source Sass, JavaScript, and documentation files. Requires a Sass compiler, [Autoprefixer](https://github.com/postcss/autoprefixer), and [some setup]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/build-tools/#tooling-setup).
+
+Compile Bootstrap with your own asset pipeline by downloading our source Sass, JavaScript, and documentation files. This option requires some additional tooling:
+
+- Sass compiler (Libsass or Ruby Sass is supported) for compiling your CSS.
+- [Autoprefixer](https://github.com/postcss/autoprefixer) for CSS vendor prefixing
+
+Should you require [build tools]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/build-tools/#tooling-setup), they are included for developing Bootstrap and it's docs, but they're likely unsuitable for your own purposes.
 
 <a href="{{ site.download.source }}" class="btn btn-bd-purple" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download source');">Download source</a>
 
 ## Bootstrap CDN
 
-Skip the download and use the Bootstrap CDN to deliver Bootstrap's compiled CSS and JS to your project.
+Skip the download with the Bootstrap CDN to deliver cached version of Bootstrap's compiled CSS and JS to your project.
 
 {% highlight html %}
 <link rel="stylesheet" href="{{ site.cdn.css }}" integrity="{{ site.cdn.css_hash }}" crossorigin="anonymous">
 <script src="{{ site.cdn.js }}" integrity="{{ site.cdn.js_hash }}" crossorigin="anonymous"></script>
+{% endhighlight %}
+
+If you're using our compiled JavaScript, don't forget to include CDN versions of jQuery and Popper.js before it.
+
+{% highlight html %}
+<script src="{{ site.cdn.jquery }}" integrity="{{ site.cdn.jquery_hash }}" crossorigin="anonymous"></script>
+<script src="{{ site.cdn.popper }}" integrity="{{ site.cdn.popper_hash }}" crossorigin="anonymous"></script>
 {% endhighlight %}
 
 ## Package managers
