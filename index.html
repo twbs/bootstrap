@@ -32,9 +32,7 @@ layout: home
 <div class="masthead-followup row m-0 border border-white">
   <div class="col-12 col-md-4 p-3 p-md-5 bg-light border border-white">
     <!-- Icon by Bytesize https://github.com/danklammer/bytesize-icons -->
-    <svg class="text-primary mb-2" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-      <path d="M28 22 L28 30 4 30 4 22 M16 4 L16 24 M8 16 L16 24 24 16" />
-    </svg>
+    {% include icons/import.svg width="32" height="32" class="text-primary mb-2" %}
     <h3>Installation</h3>
     <p>Include Bootstrap's source Sass and JavaScript files via Bower, Composer, Meteor, or npm. Package managed installs don't include documentation, but do include our build system and readme.</p>
 
@@ -55,9 +53,7 @@ bower install bootstrap#v{{ site.current_version }}
 
   <div class="col-12 col-md-4 p-3 p-md-5 bg-light border border-white">
     <!-- Icon by Bytesize https://github.com/danklammer/bytesize-icons -->
-    <svg class="text-primary mb-2" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-      <path d="M9 22 C0 23 1 12 9 13 6 2 23 2 22 10 32 7 32 23 23 22 M11 26 L16 30 21 26 M16 16 L16 30" />
-    </svg>
+    {% include icons/download.svg width="32" height="32" class="text-primary mb-2" %}
     <h3>Bootstrap CDN</h3>
     <p>When you only need to include Bootstrap's compiled CSS or JS, you can use the Bootstrap CDN.</p>
 
@@ -78,9 +74,7 @@ bower install bootstrap#v{{ site.current_version }}
 
   <div class="col-12 col-md-4 p-3 p-md-5 bg-light border border-white">
     <!-- Icon by Bytesize https://github.com/danklammer/bytesize-icons -->
-    <svg class="text-primary mb-2" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-      <path d="M18 13 L26 2 8 13 14 19 6 30 24 19 Z" />
-    </svg>
+    {% include icons/lightning.svg width="32" height="32" class="text-primary mb-2" %}
     <h3>Official Themes</h3>
     <p>
       Take Bootstrap 4 to the next level with official premium themes—toolkits built on Bootstrap with new components and plugins, docs, and build tools.
