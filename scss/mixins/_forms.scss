@@ -42,7 +42,7 @@
       }
 
       &:focus {
-        box-shadow: 0 0 0 0.2rem rgba($color, 0.25);
+        box-shadow: 0 0 0 .2rem rgba($color,.25);
       }
 
       ~ .invalid-feedback,
@@ -75,7 +75,7 @@
     .was-validated &:#{$state},
     &.is-#{$state} {
       ~ .custom-control-indicator {
-        background-color: rgba($color, 0.25);
+        background-color: rgba($color, .25);
       }
 
       ~ .custom-control-description {
@@ -97,7 +97,7 @@
       }
 
       &:focus {
-        box-shadow: 0 0 0 0.2rem rgba($color, 0.25);
+        box-shadow: 0 0 0 .2rem rgba($color,.25);
       }
     }
   }
