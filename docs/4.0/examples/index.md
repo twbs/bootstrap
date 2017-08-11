@@ -1,6 +1,7 @@
 ---
 layout: simple
 title: Examples
+description: Quickly get a project started with any of our examples ranging from using parts of the framework to custom components and layouts.
 redirect_from:
   - /examples/
 ---
@@ -38,8 +39,8 @@ Examples that focus on implementing uses of built-in components provided by Boot
   <div class="col-6 col-md-4">
     <a href="{{ site.baseurl }}/docs/{{ site.docs_version }}/examples/narrow-jumbotron/">
       <img class="img-thumbnail" src="{{ site.baseurl }}/docs/{{ site.docs_version }}/examples/screenshots/jumbotron-narrow.jpg" alt="">
+      <h4>Narrow jumbotron</h4>
     </a>
-    <h4>Narrow jumbotron</h4>
     <p>Build a more custom page by narrowing the default container and jumbotron.</p>
   </div>
 </div>

@@ -82,6 +82,10 @@
   justify-content: space-between; // Put modal header elements (title and dismiss) on opposite ends
   padding: $modal-header-padding;
   border-bottom: $modal-header-border-width solid $modal-header-border-color;
+
+  .close {
+    margin-left: auto; // Force icon to the right even when there's no .modal-title
+  }
 }
 
 // Title text within header

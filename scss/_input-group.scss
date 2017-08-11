@@ -74,6 +74,7 @@
   color: $input-color;
   text-align: center;
   background-color: $input-group-addon-bg;
+  background-clip: padding-box;
   border: $input-btn-border-width solid $input-group-addon-border-color;
   @include border-radius($input-border-radius);
 
@@ -144,6 +145,8 @@
   // element above the siblings.
   > .btn {
     position: relative;
+    background-clip: padding-box;
+    border: $input-btn-border-width solid $input-group-btn-border-color;
 
     + .btn {
       margin-left: (-$input-btn-border-width);
