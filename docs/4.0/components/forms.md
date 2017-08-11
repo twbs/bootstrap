@@ -238,17 +238,17 @@ Group checkboxes or radios on the same horizontal row by adding `.form-check-inl
 
 ### Without labels
 
-Should you have no text within the `<label>`, the input is positioned as you'd expect. **Currently only works on non-inline checkboxes and radios.** Remember to still provide some form of label for assistive technologies (for instance, using `aria-label`).
+Add `.position-static` to inputs within `.form-check` that don't have any label text. Remember to still provide some form of label for assistive technologies (for instance, using `aria-label`).
 
 {% example html %}
 <div class="form-check">
   <label class="form-check-label">
-    <input class="form-check-input" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+    <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
   </label>
 </div>
 <div class="form-check">
   <label class="form-check-label">
-    <input class="form-check-input" type="radio" name="blankRadio" id="blankRadio1" value="option1" aria-label="...">
+    <input class="form-check-input position-static" type="radio" name="blankRadio" id="blankRadio1" value="option1" aria-label="...">
   </label>
 </div>
 {% endexample %}

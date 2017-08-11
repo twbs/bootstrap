@@ -1,6 +1,6 @@
 {
   "attr-bans": ["align", "background", "bgcolor", "border", "frameborder", "longdesc", "marginwidth", "marginheight", "scrolling"],
-  "attr-name-style": "dash",
+  "attr-name-style": false,
   "attr-no-unsafe-char": false,
   "class-style": "dash",
   "doctype-first": true,
