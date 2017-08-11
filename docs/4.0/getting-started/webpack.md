@@ -51,7 +51,7 @@ Notice that if you chose to **import plugins individually**, you must also insta
 
 ## Importing Styles
 
-### Importing Precompiled SASS
+### Importing Precompiled Sass
 
 To enjoy the full potential of Bootstrap and customize it to your needs, use the source files as a part of your project's bundling process.
 
