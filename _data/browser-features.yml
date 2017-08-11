@@ -7,7 +7,7 @@
     A11yUserVoice#16717318
   origin: >
     Bootstrap#20732
-    
+
 -
   browser: >
     Edge
@@ -57,16 +57,6 @@
     UserVoice#15944476
   origin: >
     Bootstrap#20143
-
--
-  browser: >
-    Firefox
-  summary: >
-    Fire a [`transitioncancel` event](https://developer.mozilla.org/en-US/docs/Web/Events/transitioncancel) when a CSS transition is canceled
-  upstream_bug: >
-    Mozilla#1264125
-  origin: >
-    Mozilla#1182856
 
 -
   browser: >

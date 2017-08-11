@@ -349,24 +349,22 @@ Change the _visual_ order of specific flex items with a handful of `order` utili
 
 {% example html %}
 <div class="d-flex flex-nowrap bd-highlight">
-  <div class="order-last p-2 bd-highlight">First flex item</div>
-  <div class="p-2 bd-highlight">Second flex item</div>
-  <div class="order-first p-2 bd-highlight">Third flex item</div>
+  <div class="order-3 p-2 bd-highlight">First flex item</div>
+  <div class="order-2 p-2 bd-highlight">Second flex item</div>
+  <div class="order-1 p-2 bd-highlight">Third flex item</div>
 </div>
 {% endexample %}
 
 Responsive variations also exist for `order`.
 
-{% for bp in site.data.breakpoints %}
-- `.order{{ bp.abbr }}-first`
-- `.order{{ bp.abbr }}-last`
-- `.order{{ bp.abbr }}-0`{% endfor %}
+{% for bp in site.data.breakpoints %}{% for i in (1..12) %}
+- `.order{{ bp.abbr }}-{{ i }}`{% endfor %}{% endfor %}
 
 ## Align content
 
 Use `align-content` utilities on flexbox containers to align flex items *together* on the cross axis. Choose from `start` (browser default), `end`, `center`, `between`, `around`, or `stretch`. To demonstrate these utilities, we've enforced `flex-wrap: wrap` and increased the number of flex items.
 
-**Heads up!** This property has no affect on single rows of flex items.
+**Heads up!** This property has no effect on single rows of flex items.
 
 <div class="bd-example">
   <div class="d-flex align-content-start flex-wrap bd-highlight mb-3" style="height: 200px">
