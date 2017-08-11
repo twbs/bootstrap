@@ -68,13 +68,13 @@ Bootstrap's `package.json` contains some additional metadata under the following
 Install Bootstrap in your Ruby apps using [Bundler](https://bundler.io/) (**recommended**) and [RubyGems](https://rubygems.org/) by adding the following line to your [`Gemfile`](https://bundler.io/gemfile.html):
 
 {% highlight ruby %}
-gem 'bootstrap', '~> 4.0.0.alpha6'
+gem 'bootstrap', '~> 4.0.0.beta'
 {% endhighlight %}
 
 Alternatively, if you're not using Bundler, you can install the gem by running this command:
 
 {% highlight bash %}
-gem install bootstrap -v 4.0.0.alpha6
+gem install bootstrap -v 4.0.0.beta
 {% endhighlight %}
 
 [See the gem's README](https://github.com/twbs/bootstrap-rubygem/blob/master/README.md) for further details.
