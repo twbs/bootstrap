@@ -75,12 +75,12 @@
     # - title: Approach
     - title: Icons
 
-# - title: About
-#   pages:
-#     - title: History
-#     - title: Team
-#     - title: Brand
-#     - title: License
-#     - title: Translations
+- title: About
+  pages:
+    - title: History
+    - title: Team
+    - title: Brand
+    - title: License
+    - title: Translations
 
 - title: Migration
