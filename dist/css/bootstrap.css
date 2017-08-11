@@ -5294,6 +5294,10 @@ a.bg-dark:focus, a.bg-dark:hover {
   background-color: #1d2124 !important;
 }
 
+.bg-white {
+  background-color: #fff !important;
+}
+
 .bg-transparent {
   background-color: transparent !important;
 }
@@ -5352,6 +5356,10 @@ a.bg-dark:focus, a.bg-dark:hover {
 
 .border-dark {
   border-color: #343a40 !important;
+}
+
+.border-white {
+  border-color: #fff !important;
 }
 
 .rounded {
