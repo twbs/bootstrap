@@ -7,7 +7,7 @@
     @each $prop, $abbrev in (margin: m, padding: p) {
       @each $size, $length in $spacers {
 
-        .#{$abbrev}#{$infix}-#{$size}  { #{$prop}:        $length !important; }
+        .#{$abbrev}#{$infix}-#{$size} { #{$prop}: $length !important; }
         .#{$abbrev}t#{$infix}-#{$size},
         .#{$abbrev}y#{$infix}-#{$size} {
           #{$prop}-top: $length !important;
@@ -28,7 +28,7 @@
     }
 
     // Some special margin utils
-    .m#{$infix}-auto  { margin:        auto !important; }
+    .m#{$infix}-auto { margin: auto !important; }
     .mt#{$infix}-auto,
     .my#{$infix}-auto {
       margin-top: auto !important;
