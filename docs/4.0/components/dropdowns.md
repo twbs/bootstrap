@@ -12,7 +12,7 @@ Dropdowns are toggleable, contextual overlays for displaying lists of links and 
 
 Dropdowns are built on a third party library, [Popper.js](https://popper.js.org), which provides dynamic positioning and viewport detection. Be sure to include [popper.min.js](https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js) before Bootstrap's JavaScript.
 
-If you're building our JS from source, it [requires `util.js`]({{ site.baseurl }}/docs/getting-started/javascript/#util).
+If you're building our JS from source, it [requires `util.js`]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/javascript/#util).
 
 ## Accessibility
 
@@ -510,8 +510,8 @@ Put a form within a dropdown menu, or make it into a dropdown menu, and use [mar
     <input type="email" class="form-control" id="exampleDropdownFormEmail2" placeholder="email@example.com">
   </div>
   <div class="form-group">
-    <label for="exampleDropdownFormEmail2">Password</label>
-    <input type="password" class="form-control" id="exampleDropdownFormEmail2" placeholder="Password">
+    <label for="exampleDropdownFormPassword2">Password</label>
+    <input type="password" class="form-control" id="exampleDropdownFormPassword2" placeholder="Password">
   </div>
   <div class="form-check">
     <label class="form-check-label">
