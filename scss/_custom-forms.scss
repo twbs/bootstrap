@@ -266,19 +266,24 @@
   &:focus {
     outline: none;
 
-    &::-webkit-slider-thumb, &::-moz-range-thumb, &::-ms-thumb {
+    &::-webkit-slider-thumb, 
+    &::-moz-range-thumb, 
+    &::-ms-thumb {
       box-shadow: $custom-control-indicator-focus-box-shadow;
     }
   }
 
-  &::-moz-focus-inner, &:-moz-focusring {
+  &::-moz-focus-inner, 
+  &:-moz-focusring {
     border: 0;
     outline: none;
   }
 
   &:active {
 
-    &::-webkit-slider-thumb, &::-moz-range-thumb, &::-ms-thumb {
+    &::-webkit-slider-thumb, 
+    &::-moz-range-thumb, 
+    &::-ms-thumb {
       background-color: $custom-control-indicator-active-bg;
     }
   }
