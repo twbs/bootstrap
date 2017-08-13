@@ -130,9 +130,15 @@
 
 // Card deck
 
-@include media-breakpoint-up(sm) {
-  .card-deck {
-    display: flex;
+.card-deck {
+  display: flex;
+  flex-direction: column;
+
+  .card {
+    margin-bottom: $card-deck-margin;
+  }
+
+  @include media-breakpoint-up(sm) {
     flex-flow: row wrap;
     margin-right: -$card-deck-margin;
     margin-left: -$card-deck-margin;
@@ -142,6 +148,7 @@
       flex: 1 0 0%;
       flex-direction: column;
       margin-right: $card-deck-margin;
+      margin-bottom: 0; // Override the default
       margin-left: $card-deck-margin;
     }
   }
@@ -152,15 +159,22 @@
 // Card groups
 //
 
-@include media-breakpoint-up(sm) {
-  .card-group {
-    display: flex;
+.card-group {
+  display: flex;
+  flex-direction: column;
+
+  .card {
+    margin-bottom: $card-group-margin;
+  }
+
+  @include media-breakpoint-up(sm) {
     flex-flow: row wrap;
 
     .card {
       flex: 1 0 0%;
 
       + .card {
+        margin-bottom: 0;
         margin-left: 0;
         border-left: 0;
       }
@@ -177,6 +191,7 @@
             border-bottom-right-radius: 0;
           }
         }
+
         &:last-child {
           @include border-left-radius(0);
 
