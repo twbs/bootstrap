@@ -53,10 +53,12 @@
   }
 
   // Validation icon top for textarea
-  textarea.form-control,
-  textarea.custom-select {
-    &.is-#{$state} {
-      background-position: top calc(#{$input-height-inner} / 4) right calc(#{$input-height-inner} / 4);
+  textarea {
+    &.form-control, 
+    &.custom-select {
+      &.is-#{$state} {
+        background-position: top calc(#{$input-height-inner} / 4) right calc(#{$input-height-inner} / 4);
+      }
     }
   }
 
