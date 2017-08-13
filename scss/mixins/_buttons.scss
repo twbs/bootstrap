@@ -9,7 +9,7 @@
   border-color: $border;
   @include box-shadow($btn-box-shadow);
 
-  &:hover {
+  @include hover {
     @include color-yiq($background);
     background-color: $active-background;
     border-color: $active-border;

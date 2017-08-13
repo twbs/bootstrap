@@ -71,36 +71,28 @@ fieldset[disabled] a.btn {
 .btn-link {
   font-weight: $font-weight-normal;
   color: $link-color;
+  background-color: transparent;
   border-radius: 0;
 
-  &,
-  &:active,
-  &.active,
-  &:disabled {
-    background-color: transparent;
-    @include box-shadow(none);
-  }
-  &,
-  &:focus,
-  &:active {
-    border-color: transparent;
-    box-shadow: none;
-  }
   @include hover {
-    border-color: transparent;
-  }
-  @include hover-focus {
     color: $link-hover-color;
     text-decoration: $link-hover-decoration;
     background-color: transparent;
+    border-color: transparent;
   }
-  &:disabled {
-    color: $btn-link-disabled-color;
 
-    @include hover-focus {
-      text-decoration: none;
-    }
+  &:focus,
+  &.focus {
+    border-color: transparent;
+    box-shadow: none;
   }
+
+  &:disabled,
+  &.disabled {
+    color: $btn-link-disabled-color;
+  }
+
+  // No need for an active state here
 }
 
 

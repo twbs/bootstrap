@@ -5,6 +5,7 @@
 .input-group {
   position: relative;
   display: flex;
+  align-items: center;
   width: 100%;
 
   .form-control {
@@ -28,10 +29,6 @@
 .input-group-addon,
 .input-group-btn,
 .input-group .form-control {
-  // Vertically centers the content of the addons within the input group
-  display: flex;
-  align-items: center;
-
   &:not(:first-child):not(:last-child) {
     @include border-radius(0);
   }
@@ -40,7 +37,6 @@
 .input-group-addon,
 .input-group-btn {
   white-space: nowrap;
-  vertical-align: middle; // Match the inputs
 }
 
 
