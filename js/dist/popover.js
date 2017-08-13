@@ -63,14 +63,14 @@ var Popover = function ($) {
     FOCUSOUT: 'focusout' + EVENT_KEY,
     MOUSEENTER: 'mouseenter' + EVENT_KEY,
     MOUSELEAVE: 'mouseleave' + EVENT_KEY
-
-    /**
-     * ------------------------------------------------------------------------
-     * Class Definition
-     * ------------------------------------------------------------------------
-     */
-
   };
+
+  /**
+   * ------------------------------------------------------------------------
+   * Class Definition
+   * ------------------------------------------------------------------------
+   */
+
   var Popover = function (_Tooltip) {
     _inherits(Popover, _Tooltip);
 
