@@ -241,13 +241,10 @@ select.form-control-lg {
 // Radios and checkboxes on same line
 .form-check-inline {
   display: inline-block;
+  margin-right: $form-check-inline-margin-x;
 
   .form-check-label {
     vertical-align: middle;
-  }
-
-  + .form-check-inline {
-    margin-left: $form-check-inline-margin-x;
   }
 }
 
