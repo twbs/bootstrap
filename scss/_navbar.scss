@@ -31,12 +31,6 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-
-    @include media-breakpoint-down(nth(map-keys($grid-breakpoints), 1)) {
-      width: 100%; // prevent flex parent container from collapsing
-      margin-right: 0;
-      margin-left: 0;
-    }
   }
 }
 
@@ -104,6 +98,9 @@
 // on the `.navbar` parent.
 .navbar-collapse {
   flex-basis: 100%;
+  // For always expanded or extra full navbars, ensure content aligns itself
+  // properly vertically. Can be easily overridden with flex utilities.
+  align-items: center;
 }
 
 // Button for toggling the navbar when in its collapsed state

@@ -6,7 +6,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-alpha.6): collapse.js
+ * Bootstrap (v4.0.0-beta): collapse.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -20,7 +20,7 @@ var Collapse = function ($) {
    */
 
   var NAME = 'collapse';
-  var VERSION = '4.0.0-alpha.6';
+  var VERSION = '4.0.0-beta';
   var DATA_KEY = 'bs.collapse';
   var EVENT_KEY = '.' + DATA_KEY;
   var DATA_API_KEY = '.data-api';
@@ -249,8 +249,8 @@ var Collapse = function ($) {
 
     Collapse.prototype._getConfig = function _getConfig(config) {
       config = $.extend({}, Default, config);
-      config.toggle = Boolean(config.toggle // coerce string values
-      );Util.typeCheckConfig(NAME, config, DefaultType);
+      config.toggle = Boolean(config.toggle); // coerce string values
+      Util.typeCheckConfig(NAME, config, DefaultType);
       return config;
     };
 
@@ -347,7 +347,7 @@ var Collapse = function ($) {
       var config = data ? 'toggle' : $trigger.data();
       Collapse._jQueryInterface.call($target, config);
     });
-  }
+  });
 
   /**
    * ------------------------------------------------------------------------
@@ -355,7 +355,7 @@ var Collapse = function ($) {
    * ------------------------------------------------------------------------
    */
 
-  );$.fn[NAME] = Collapse._jQueryInterface;
+  $.fn[NAME] = Collapse._jQueryInterface;
   $.fn[NAME].Constructor = Collapse;
   $.fn[NAME].noConflict = function () {
     $.fn[NAME] = JQUERY_NO_CONFLICT;
