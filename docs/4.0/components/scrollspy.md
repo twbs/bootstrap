@@ -10,6 +10,7 @@ toc: true
 
 Scrollspy has a few requirements to function properly:
 
+- If building our JS from source, it [requires `util.js`]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/javascript/#util).
 - It must to be used on a Bootstrap [nav component]({{ site.baseurl }}/docs/{{ site.docs_version }}/components/navs/) or [list group]({{ site.baseurl }}/docs/{{ site.docs_version }}/components/list-group/).
 - Scrollspy requires `position: relative;` on the element you're spying on, usually the `<body>`.
 - When spying on elements other than the `<body>`, be sure to have a `height` set and `overflow-y: scroll;` applied.
@@ -22,7 +23,7 @@ When successfully implemented, your nav or list group will update accordingly, m
 Scroll the area below the navbar and watch the active class change. The dropdown items will be highlighted as well.
 
 <div class="bd-example">
-  <nav id="navbar-example2" class="navbar navbar-light bg-faded">
+  <nav id="navbar-example2" class="navbar navbar-light bg-light">
     <a class="navbar-brand" href="#">Navbar</a>
     <ul class="nav nav-pills">
       <li class="nav-item">
@@ -59,7 +60,7 @@ Scroll the area below the navbar and watch the active class change. The dropdown
 </div>
 
 {% highlight html %}
-<nav id="navbar-example2" class="navbar navbar-light bg-faded">
+<nav id="navbar-example2" class="navbar navbar-light bg-light">
   <a class="navbar-brand" href="#">Navbar</a>
   <ul class="nav nav-pills">
     <li class="nav-item">
@@ -100,7 +101,7 @@ Scrollspy also works with nested `.nav`s. If a nested `.nav` is `.active`, its p
 <div class="bd-example">
   <div class="row">
     <div class="col-4">
-      <nav id="navbar-example3" class="navbar navbar-light bg-faded flex-column">
+      <nav id="navbar-example3" class="navbar navbar-light bg-light flex-column">
         <a class="navbar-brand" href="#">Navbar</a>
         <nav class="nav nav-pills flex-column">
           <a class="nav-link" href="#item-1">Item 1</a>
@@ -139,7 +140,7 @@ Scrollspy also works with nested `.nav`s. If a nested `.nav` is `.active`, its p
 </div>
 
 {% highlight html %}
-<nav id="navbar-example3" class="navbar navbar-light bg-faded">
+<nav id="navbar-example3" class="navbar navbar-light bg-light">
   <a class="navbar-brand" href="#">Navbar</a>
   <nav class="nav nav-pills flex-column">
     <a class="nav-link" href="#item-1">Item 1</a>

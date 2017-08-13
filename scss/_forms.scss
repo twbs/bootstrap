@@ -236,10 +236,6 @@ select.form-control-lg {
   position: absolute;
   margin-top: $form-check-input-margin-y;
   margin-left: -$form-check-input-gutter;
-
-  &:only-child {
-    position: static;
-  }
 }
 
 // Radios and checkboxes on same line
@@ -335,7 +331,7 @@ select.form-control-lg {
     }
 
     // Make static controls behave like regular ones
-    .form-control-static {
+    .form-control-plaintext {
       display: inline-block;
     }
 

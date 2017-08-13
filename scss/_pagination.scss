@@ -38,7 +38,7 @@
   position: relative;
   display: block;
   padding: $pagination-padding-y $pagination-padding-x;
-  margin-left: -1px;
+  margin-left: -$pagination-border-width;
   line-height: $pagination-line-height;
   color: $pagination-color;
   background-color: $pagination-bg;

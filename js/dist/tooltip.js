@@ -6,7 +6,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-alpha.6): tooltip.js
+ * Bootstrap (v4.0.0-beta): tooltip.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -28,7 +28,7 @@ var Tooltip = function ($) {
    */
 
   var NAME = 'tooltip';
-  var VERSION = '4.0.0-alpha.6';
+  var VERSION = '4.0.0-beta';
   var DATA_KEY = 'bs.tooltip';
   var EVENT_KEY = '.' + DATA_KEY;
   var JQUERY_NO_CONFLICT = $.fn[NAME];
@@ -270,13 +270,13 @@ var Tooltip = function ($) {
           }
         });
 
-        $(tip).addClass(ClassName.SHOW
+        $(tip).addClass(ClassName.SHOW);
 
         // if this is a touch-enabled device we add extra
         // empty mouseover listeners to the body's immediate children;
         // only needed because of broken event delegation on iOS
         // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
-        );if ('ontouchstart' in document.documentElement) {
+        if ('ontouchstart' in document.documentElement) {
           $('body').children().on('mouseover', null, $.noop);
         }
 
@@ -330,11 +330,11 @@ var Tooltip = function ($) {
         return;
       }
 
-      $(tip).removeClass(ClassName.SHOW
+      $(tip).removeClass(ClassName.SHOW);
 
       // if this is a touch-enabled device we remove the extra
       // empty mouseover listeners we added for iOS support
-      );if ('ontouchstart' in document.documentElement) {
+      if ('ontouchstart' in document.documentElement) {
         $('body').children().off('mouseover', null, $.noop);
       }
 

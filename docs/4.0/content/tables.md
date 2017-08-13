@@ -438,19 +438,11 @@ Add `.table-sm` to make tables more compact by cutting cell padding in half.
 
 Use contextual classes to color table rows or individual cells.
 
-| Class | Description |
-| --- | --- |
-| `.table-active` | Applies the hover color to a particular row or cell |
-| `.table-success` | Indicates a successful or positive action |
-| `.table-info` | Indicates a neutral informative change or action |
-| `.table-warning` | Indicates a warning that might need attention |
-| `.table-danger` | Indicates a dangerous or potentially negative action |
-
 <div class="bd-example">
   <table class="table">
     <thead>
       <tr>
-        <th>#</th>
+        <th>Type</th>
         <th>Column heading</th>
         <th>Column heading</th>
         <th>Column heading</th>
@@ -458,59 +450,25 @@ Use contextual classes to color table rows or individual cells.
     </thead>
     <tbody>
       <tr class="table-active">
-        <th scope="row">1</th>
+        <th scope="row">Active</th>
         <td>Column content</td>
         <td>Column content</td>
         <td>Column content</td>
       </tr>
       <tr>
-        <th scope="row">2</th>
+        <th scope="row">Default</th>
         <td>Column content</td>
         <td>Column content</td>
         <td>Column content</td>
       </tr>
-      <tr class="table-success">
-        <th scope="row">3</th>
+
+      {% for color in site.data.theme-colors %}
+      <tr class="table-{{ color.name }}">
+        <th scope="row">{{ color.name | capitalize }}</th>
         <td>Column content</td>
         <td>Column content</td>
         <td>Column content</td>
-      </tr>
-      <tr>
-        <th scope="row">4</th>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
-      </tr>
-      <tr class="table-info">
-        <th scope="row">5</th>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
-      </tr>
-      <tr>
-        <th scope="row">6</th>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
-      </tr>
-      <tr class="table-warning">
-        <th scope="row">7</th>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
-      </tr>
-      <tr>
-        <th scope="row">8</th>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
-      </tr>
-      <tr class="table-danger">
-        <th scope="row">9</th>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
-      </tr>
+      </tr>{% endfor %}
     </tbody>
   </table>
 </div>
@@ -518,18 +476,14 @@ Use contextual classes to color table rows or individual cells.
 {% highlight html %}
 <!-- On rows -->
 <tr class="table-active">...</tr>
-<tr class="table-success">...</tr>
-<tr class="table-info">...</tr>
-<tr class="table-warning">...</tr>
-<tr class="table-danger">...</tr>
+{% for color in site.data.theme-colors %}
+<tr class="table-{{ color.name }}">...</tr>{% endfor %}
 
 <!-- On cells (`td` or `th`) -->
 <tr>
   <td class="table-active">...</td>
-  <td class="table-success">...</td>
-  <td class="table-info">...</td>
-  <td class="table-warning">...</td>
-  <td class="table-danger">...</td>
+  {% for color in site.data.theme-colors %}
+  <td class="table-{{ color.name }}">...</td>{% endfor %}
 </tr>
 {% endhighlight %}
 

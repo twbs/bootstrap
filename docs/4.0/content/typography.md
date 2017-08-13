@@ -8,7 +8,7 @@ toc: true
 
 ## Global settings
 
-Bootstrap sets basic global display, typography, and link styles. When more control is needed, check out the [textual utility classes]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/typography/).
+Bootstrap sets basic global display, typography, and link styles. When more control is needed, check out the [textual utility classes]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/text/).
 
 - Use a [native font stack]({{ site.baseurl }}/docs/{{ site.docs_version }}/content/reboot/#native-font-stack) that selects the best `font-family` for each OS and device.
 - For a more inclusive and accessible type scale, we assume the browser default root `font-size` (typically 16px) so visitors can customize their browser defaults as needed.
@@ -168,7 +168,7 @@ While not shown above, feel free to use `<b>` and `<i>` in HTML5. `<b>` is meant
 
 ## Text utilities
 
-Change text alignment, transform, style, weight, and color with our [text utilities]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/typography/#text-alignment).
+Change text alignment, transform, style, weight, and color with our [text utilities]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/text/#text-alignment).
 
 ## Abbreviations
 
@@ -202,12 +202,19 @@ Add a `<footer class="blockquote-footer">` for identifying the source. Wrap the 
 </blockquote>
 {% endexample %}
 
-### Reverse layout
+### Alignment
 
-Add `.blockquote-reverse` for a blockquote with right-aligned content.
+Use text utilities as needed to change the alignment of your blockquote.
 
 {% example html %}
-<blockquote class="blockquote blockquote-reverse">
+<blockquote class="blockquote text-center">
+  <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+  <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+</blockquote>
+{% endexample %}
+
+{% example html %}
+<blockquote class="blockquote text-right">
   <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
   <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
 </blockquote>
@@ -261,8 +268,10 @@ Align terms and descriptions horizontally by using our grid system's predefined 
   <dd class="col-sm-9">A description list is perfect for defining terms.</dd>
 
   <dt class="col-sm-3">Euismod</dt>
-  <dd class="col-sm-9">Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
-  <dd class="col-sm-9 offset-sm-3">Donec id elit non mi porta gravida at eget metus.</dd>
+  <dd class="col-sm-9">
+    <p>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</p>
+    <p>Donec id elit non mi porta gravida at eget metus.</p>
+  </dd>
 
   <dt class="col-sm-3">Malesuada porta</dt>
   <dd class="col-sm-9">Etiam porta sem malesuada magna mollis euismod.</dd>

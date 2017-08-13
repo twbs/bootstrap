@@ -58,14 +58,15 @@
     - title: Close icon
     - title: Colors
     - title: Display
-    - title: Flexbox
+    - title: Embed
+    - title: Flex
+    - title: Float
     - title: Image replacement
     - title: Position
-    - title: Responsive helpers
     - title: Screenreaders
     - title: Sizing
     - title: Spacing
-    - title: Typography
+    - title: Text
     - title: Vertical align
     - title: Visibility
 
@@ -74,12 +75,12 @@
     # - title: Approach
     - title: Icons
 
-# - title: About
-#   pages:
-#     - title: History
-#     - title: Team
-#     - title: Brand
-#     - title: License
-#     - title: Translations
+- title: About
+  pages:
+    - title: History
+    - title: Team
+    - title: Brand
+    - title: License
+    - title: Translations
 
 - title: Migration
