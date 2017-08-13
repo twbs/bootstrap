@@ -49,7 +49,7 @@ Here are the big ticket items you'll want to be aware of when moving from v3 to 
 
 ### Components
 
-- **Dropped panels, thumbnails, and wells** for a new all-encompassing component, [cards]({{ site.baseurl }}/docs/{{ site.docs_version }}/components/cards/).
+- **Dropped panels, thumbnails, and wells** for a new all-encompassing component, [cards]({{ site.baseurl }}/docs/{{ site.docs_version }}/components/card/).
 - **Dropped the Glyphicons icon font.** If you need icons, some options are:
   - the upstream version of [Glyphicons](https://glyphicons.com/)
   - [Octicons](https://octicons.github.com/)
@@ -90,7 +90,7 @@ New to Bootstrap 4 is the [Reboot]({{ site.baseurl }}/docs/{{ site.docs_version 
 - Renamed `.table-condensed` to `.table-sm` for consistency.
 - Added a new `.table-inverse` option.
 - Added table header modifiers: `.thead-default` and `.thead-inverse`.
-- Renamed contextual classes to have a `.table-`-prefix. Hence `.active`, `.success`, `.warning`, `.danger` and `.table-info` to `.table-active`, `.table-success`, `.table-warning`, `.table-danger` and `.table-info`.
+- Renamed contextual classes to have a `.table-`-prefix. Hence `.active`, `.success`, `.warning`, `.danger` and `.info` to `.table-active`, `.table-success`, `.table-warning`, `.table-danger` and `.table-info`.
 
 ### Forms
 
@@ -99,6 +99,7 @@ New to Bootstrap 4 is the [Reboot]({{ site.baseurl }}/docs/{{ site.docs_version 
 - Renamed `.input-lg` and `.input-sm` to `.form-control-lg` and `.form-control-sm`, respectively.
 - Dropped `.form-group-*` classes for simplicity's sake. Use `.form-control-*` classes instead now.
 - Dropped `.help-block` and replaced it with `.form-text` for block-level help text. For inline help text and other flexible options, use utility classes like `.text-muted`.
+- Dropped `.radio-inline` and `.checkbox-inline`.
 - Horizontal forms overhauled:
   - Dropped the `.form-horizontal` class requirement.
   - `.form-group` no longer applies styles from the `.row` via mixin, so `.row` is now required for horizontal grid layouts (e.g., `<div class="form-group row">`).
@@ -223,7 +224,7 @@ Dropped entirely for the new card component.
 
 - **Display, hidden, and more:**
   - Made display utilities responsive (e.g., `.d-none` and `d-{sm,md,lg,xl}-none`).
-  - Dropped the bulk of `.hidden-*` utilities for new [display utilities](({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/display/). For example, instead of `.hidden-sm-up`, use `.d-sm-none`. Renamed the `.hidden-print` utilities to use the display utility naming scheme. [More info under the Responsive utilities section of this page.](#responsive-utilities)
+  - Dropped the bulk of `.hidden-*` utilities for new [display utilities]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/display/). For example, instead of `.hidden-sm-up`, use `.d-sm-none`. Renamed the `.hidden-print` utilities to use the display utility naming scheme. [More info under the Responsive utilities section of this page.](#responsive-utilities)
   - Added `.float-{sm,md,lg,xl}-{left,right,none}` classes for responsive floats and removed `.pull-left` and `.pull-right` since they're redundant to `.float-left` and `.float-right`.
 - **Type:**
   - Added responsive variations to our text alignment classes `.text-{sm,md,lg,xl}-{left,center,right}`.

@@ -76,17 +76,17 @@
 
 .custom-checkbox {
   .custom-control-indicator {
-    @include border-radius($custom-checkbox-border-radius);
+    @include border-radius($custom-checkbox-indicator-border-radius);
   }
 
   .custom-control-input:checked ~ .custom-control-indicator {
-    background-image: $custom-checkbox-icon-checked;
+    background-image: $custom-checkbox-indicator-icon-checked;
   }
 
   .custom-control-input:indeterminate ~ .custom-control-indicator {
-    background-color: $custom-checkbox-indeterminate-bg;
-    background-image: $custom-checkbox-icon-indeterminate;
-    @include box-shadow($custom-checkbox-indeterminate-box-shadow);
+    background-color: $custom-checkbox-indicator-indeterminate-bg;
+    background-image: $custom-checkbox-indicator-icon-indeterminate;
+    @include box-shadow($custom-checkbox-indicator-indeterminate-box-shadow);
   }
 }
 
@@ -96,11 +96,11 @@
 
 .custom-radio {
   .custom-control-indicator {
-    border-radius: $custom-radio-border-radius;
+    border-radius: $custom-radio-indicator-border-radius;
   }
 
   .custom-control-input:checked ~ .custom-control-indicator {
-    background-image: $custom-radio-icon-checked;
+    background-image: $custom-radio-indicator-icon-checked;
   }
 }
 
@@ -139,6 +139,7 @@
   color: $custom-select-color;
   vertical-align: middle;
   background: $custom-select-bg $custom-select-indicator no-repeat right $custom-select-padding-x center;
+  background-clip: padding-box;
   background-size: $custom-select-bg-size;
   border: $custom-select-border-width solid $custom-select-border-color;
   @if $enable-rounded {
@@ -203,7 +204,7 @@
   opacity: 0;
 
   &:focus ~ .custom-file-control {
-    @include box-shadow($custom-file-focus-box-shadow);
+    box-shadow: $custom-file-focus-box-shadow;
   }
 }
 
@@ -214,12 +215,14 @@
   left: 0;
   z-index: 5;
   height: $custom-file-height;
-  padding: $custom-file-padding-x $custom-file-padding-y;
+  padding: $custom-file-padding-y $custom-file-padding-x;
+  overflow: hidden;
   line-height: $custom-file-line-height;
   color: $custom-file-color;
   pointer-events: none;
   user-select: none;
   background-color: $custom-file-bg;
+  background-clip: padding-box;
   border: $custom-file-border-width solid $custom-file-border-color;
   @include border-radius($custom-file-border-radius);
   @include box-shadow($custom-file-box-shadow);
@@ -232,18 +235,16 @@
 
   &::before {
     position: absolute;
-    top: -$custom-file-border-width;
-    right: -$custom-file-border-width;
-    bottom: -$custom-file-border-width;
+    top: 0;
+    right: 0;
     z-index: 6;
     display: block;
     height: $custom-file-height;
-    padding: $custom-file-padding-x $custom-file-padding-y;
+    padding: $custom-file-padding-y $custom-file-padding-x;
     line-height: $custom-file-line-height;
     color: $custom-file-button-color;
     background-color: $custom-file-button-bg;
-    border: $custom-file-border-width solid $custom-file-border-color;
-    @include border-radius(0 $custom-file-border-radius $custom-file-border-radius 0);
+    border-left: $custom-file-border-width solid $custom-file-border-color;
   }
 
   @each $lang, $text in map-get($custom-file-text, button-label) {

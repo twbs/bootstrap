@@ -10,7 +10,9 @@ toc: true
 
 Dropdowns are toggleable, contextual overlays for displaying lists of links and more. They're made interactive with the included Bootstrap dropdown JavaScript plugin. They're toggled by clicking, not by hovering; this is [an intentional design decision.](http://markdotto.com/2012/02/27/bootstrap-explained-dropdowns/)
 
-Dropdowns are built on a third party library, [Popper.js](https://popper.js.org), which provides dynamic positioning and viewport detection. Be sure to include [popper.min.js](https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.10.8/umd/popper.min.js) before Bootstrap's JavaScript.
+Dropdowns are built on a third party library, [Popper.js](https://popper.js.org), which provides dynamic positioning and viewport detection. Be sure to include [popper.min.js](https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js) before Bootstrap's JavaScript.
+
+If you're building our JS from source, it [requires `util.js`]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/javascript/#util).
 
 ## Accessibility
 
@@ -470,6 +472,55 @@ Separate groups of related menu items with a divider.
   <div class="dropdown-divider"></div>
   <a class="dropdown-item" href="#">Separated link</a>
 </div>
+{% endexample %}
+
+## Menu forms
+
+Put a form within a dropdown menu, or make it into a dropdown menu, and use [margin or padding utilities]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/spacing/) to give it the negative space you require.
+
+{% example html %}
+<div class="dropdown-menu">
+  <form class="px-4 py-3">
+    <div class="form-group">
+      <label for="exampleDropdownFormEmail1">Email address</label>
+      <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
+    </div>
+    <div class="form-group">
+      <label for="exampleDropdownFormPassword1">Password</label>
+      <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
+    </div>
+    <div class="form-check">
+      <label class="form-check-label">
+        <input type="checkbox" class="form-check-input">
+        Remember me
+      </label>
+    </div>
+    <button type="submit" class="btn btn-primary">Sign in</button>
+  </form>
+  <div class="dropdown-divider"></div>
+  <a class="dropdown-item" href="#">New around here? Sign up</a>
+  <a class="dropdown-item" href="#">Forgot password?</a>
+</div>
+{% endexample %}
+
+{% example html %}
+<form class="dropdown-menu p-4">
+  <div class="form-group">
+    <label for="exampleDropdownFormEmail2">Email address</label>
+    <input type="email" class="form-control" id="exampleDropdownFormEmail2" placeholder="email@example.com">
+  </div>
+  <div class="form-group">
+    <label for="exampleDropdownFormPassword2">Password</label>
+    <input type="password" class="form-control" id="exampleDropdownFormPassword2" placeholder="Password">
+  </div>
+  <div class="form-check">
+    <label class="form-check-label">
+      <input type="checkbox" class="form-check-input">
+      Remember me
+    </label>
+  </div>
+  <button type="submit" class="btn btn-primary">Sign in</button>
+</form>
 {% endexample %}
 
 ## Disabled menu items
