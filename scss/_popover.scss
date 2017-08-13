@@ -120,8 +120,8 @@
       border-bottom-color: $popover-arrow-color;
     }
 
-    // This will remove the popover-title's border just below the arrow
-    .popover-title::before {
+    // This will remove the popover-header's border just below the arrow
+    .popover-header::before {
       position: absolute;
       top: 0;
       left: 50%;
@@ -129,7 +129,7 @@
       width: 20px;
       margin-left: -10px;
       content: "";
-      border-bottom: 1px solid $popover-title-bg;
+      border-bottom: 1px solid $popover-header-bg;
     }
   }
 
@@ -174,13 +174,13 @@
 
 
 // Offset the popover to account for the popover arrow
-.popover-title {
-  padding: $popover-title-padding-y $popover-title-padding-x;
+.popover-header {
+  padding: $popover-header-padding-y $popover-header-padding-x;
   margin-bottom: 0; // Reset the default from Reboot
   font-size: $font-size-base;
-  color: $popover-title-color;
-  background-color: $popover-title-bg;
-  border-bottom: $popover-border-width solid darken($popover-title-bg, 5%);
+  color: $popover-header-color;
+  background-color: $popover-header-bg;
+  border-bottom: $popover-border-width solid darken($popover-header-bg, 5%);
   $offset-border-width: calc(#{$border-radius-lg} - #{$popover-border-width});
   @include border-top-radius($offset-border-width);
 
@@ -189,7 +189,7 @@
   }
 }
 
-.popover-content {
-  padding: $popover-content-padding-y $popover-content-padding-x;
-  color: $popover-content-color;
+.popover-body {
+  padding: $popover-body-padding-y $popover-body-padding-x;
+  color: $popover-body-color;
 }

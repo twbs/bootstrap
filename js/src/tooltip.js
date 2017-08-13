@@ -5,7 +5,7 @@ import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-alpha.6): tooltip.js
+ * Bootstrap (v4.0.0-beta): tooltip.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -28,7 +28,7 @@ const Tooltip = (($) => {
    */
 
   const NAME                = 'tooltip'
-  const VERSION             = '4.0.0-alpha.6'
+  const VERSION             = '4.0.0-beta'
   const DATA_KEY            = 'bs.tooltip'
   const EVENT_KEY           = `.${DATA_KEY}`
   const JQUERY_NO_CONFLICT  = $.fn[NAME]
@@ -61,7 +61,7 @@ const Tooltip = (($) => {
   const Default = {
     animation           : true,
     template            : '<div class="tooltip" role="tooltip">'
-                        + '<div class="arrow" x-arrow></div>'
+                        + '<div class="arrow"></div>'
                         + '<div class="tooltip-inner"></div></div>',
     trigger             : 'hover focus',
     title               : '',
@@ -99,7 +99,8 @@ const Tooltip = (($) => {
 
   const Selector = {
     TOOLTIP       : '.tooltip',
-    TOOLTIP_INNER : '.tooltip-inner'
+    TOOLTIP_INNER : '.tooltip-inner',
+    ARROW         : '.arrow'
   }
 
   const Trigger = {
@@ -288,16 +289,19 @@ const Tooltip = (($) => {
         $(this.element).trigger(this.constructor.Event.INSERTED)
 
         this._popper = new Popper(this.element, tip, {
-          placement : attachment,
-          modifiers : {
-            offset : {
-              offset : this.config.offset
+          placement: attachment,
+          modifiers: {
+            offset: {
+              offset: this.config.offset
             },
-            flip : {
-              behavior : this.config.fallbackPlacement
+            flip: {
+              behavior: this.config.fallbackPlacement
+            },
+            arrow: {
+              element: Selector.ARROW
             }
           },
-          onCreate : (data) => {
+          onCreate: (data) => {
             if (data.originalPlacement !== data.placement) {
               this._handlePopperPlacementChange(data)
             }

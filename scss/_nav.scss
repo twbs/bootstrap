@@ -21,7 +21,7 @@
 
   // Disabled state lightens text
   &.disabled {
-    color: $nav-disabled-link-color;
+    color: $nav-link-disabled-color;
   }
 }
 
@@ -45,7 +45,7 @@
     }
 
     &.disabled {
-      color: $nav-disabled-link-color;
+      color: $nav-link-disabled-color;
       background-color: transparent;
       border-color: transparent;
     }
@@ -53,9 +53,9 @@
 
   .nav-link.active,
   .nav-item.show .nav-link {
-    color: $nav-tabs-active-link-color;
-    background-color: $nav-tabs-active-link-bg;
-    border-color: $nav-tabs-active-link-border-color $nav-tabs-active-link-border-color $nav-tabs-active-link-bg;
+    color: $nav-tabs-link-active-color;
+    background-color: $nav-tabs-link-active-bg;
+    border-color: $nav-tabs-link-active-border-color $nav-tabs-link-active-border-color $nav-tabs-link-active-bg;
   }
 
   .dropdown-menu {
@@ -76,9 +76,9 @@
     @include border-radius($nav-pills-border-radius);
 
     &.active,
-    .show & {
-      color: $nav-pills-active-link-color;
-      background-color: $nav-pills-active-link-bg;
+    .show > & {
+      color: $nav-pills-link-active-color;
+      background-color: $nav-pills-link-active-bg;
     }
   }
 }

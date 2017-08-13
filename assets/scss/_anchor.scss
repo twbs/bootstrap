@@ -1,0 +1,12 @@
+// scss-lint:disable ImportantRule
+
+.anchorjs-link {
+  font-weight: normal;
+  color: rgba($link-color, .5);
+  transition: color .16s linear;
+
+  &:hover {
+    color: $link-color;
+    text-decoration: none;
+  }
+}
