@@ -10,7 +10,6 @@
   > .btn {
     position: relative;
     flex: 0 1 auto;
-    margin-bottom: 0;
 
     // Bring the hover, focused, and "active" buttons to the front to overlay
     // the borders properly
@@ -66,15 +65,18 @@
 .btn-group > .btn-group {
   float: left;
 }
+
 .btn-group > .btn-group:not(:first-child):not(:last-child) > .btn {
   border-radius: 0;
 }
+
 .btn-group > .btn-group:first-child:not(:last-child) {
   > .btn:last-child,
   > .dropdown-toggle {
     @include border-right-radius(0);
   }
 }
+
 .btn-group > .btn-group:last-child:not(:first-child) > .btn:first-child {
   @include border-left-radius(0);
 }
@@ -129,7 +131,6 @@
 //
 
 .btn-group-vertical {
-  display: inline-flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
@@ -146,30 +147,35 @@
     margin-top: -$input-btn-border-width;
     margin-left: 0;
   }
-}
 
-.btn-group-vertical > .btn {
-  &:not(:first-child):not(:last-child) {
-    border-radius: 0;
+  > .btn {
+    &:not(:first-child):not(:last-child) {
+      border-radius: 0;
+    }
   }
+
   &:first-child:not(:last-child) {
     @include border-bottom-radius(0);
   }
+
   &:last-child:not(:first-child) {
     @include border-top-radius(0);
   }
-}
-.btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > .btn {
-  border-radius: 0;
-}
-.btn-group-vertical > .btn-group:first-child:not(:last-child) {
-  > .btn:last-child,
-  > .dropdown-toggle {
-    @include border-bottom-radius(0);
+
+  > .btn-group:not(:first-child):not(:last-child) > .btn {
+    border-radius: 0;
   }
-}
-.btn-group-vertical > .btn-group:last-child:not(:first-child) > .btn:first-child {
-  @include border-top-radius(0);
+
+  > .btn-group:first-child:not(:last-child) {
+    > .btn:last-child,
+    > .dropdown-toggle {
+      @include border-bottom-radius(0);
+    }
+  }
+
+  > .btn-group:last-child:not(:first-child) > .btn:first-child {
+    @include border-top-radius(0);
+  }
 }
 
 
