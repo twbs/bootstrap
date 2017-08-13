@@ -5,37 +5,25 @@
 //
 
 #carbonads {
+  position: static;
   display: block;
+  max-width: 400px;
   padding: 15px 15px 15px 160px;
-  margin: 50px -15px 0;
+  margin: 2rem 0;
   overflow: hidden;
   font-size: 13px;
-  line-height: 1.5;
+  line-height: 1.4;
   text-align: left;
-  border: solid #866ab3;
-  border-width: 1px 0 0;
+  background-color: rgba(0,0,0,.05);
 
   a {
-    color: #fff;
+    color: #333;
     text-decoration: none;
   }
 
   @include media-breakpoint-up(sm) {
     max-width: 330px;
-    margin: 50px auto 0;
-    border-width: 1px;
     border-radius: 4px;
-  }
-
-  @include media-breakpoint-up(lg) {
-    position: absolute;
-    top: 0;
-    right: 15px;
-    margin-top: 0;
-
-    .bd-masthead & {
-      position: static;
-    }
   }
 }
 
@@ -46,24 +34,5 @@
 
 .carbon-poweredby {
   display: block;
-  color: #cdbfe3 !important;
-}
-
-.bd-content {
-  #carbonads {
-    position: static;
-    max-width: 400px;
-    margin: 2rem 0;
-    line-height: 1.4;
-    background-color: #f5f5f5;
-    border: 0;
-
-    a {
-      color: #333;
-    }
-
-    .carbon-poweredby {
-      color: #777 !important;
-    }
-  }
+  color: #777 !important;
 }

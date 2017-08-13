@@ -50,7 +50,7 @@ Add the relative form sizing classes to the `.input-group` itself and contents w
   <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="sizing-addon1">
 </div>
 <br>
-<div class="input-group">
+<div class="input-group input-group-sm">
   <span class="input-group-addon" id="sizing-addon2">@</span>
   <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="sizing-addon2">
 </div>
@@ -123,7 +123,7 @@ Buttons in input groups must wrapped in a `.input-group-btn` for proper alignmen
   </div>
   <div class="col-lg-6">
     <div class="input-group">
-      <input type="text" class="form-control" placeholder="Search for..." aria-label="Search for...>
+      <input type="text" class="form-control" placeholder="Search for..." aria-label="Search for...">
       <span class="input-group-btn">
         <button class="btn btn-secondary" type="button">Go!</button>
       </span>

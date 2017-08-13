@@ -96,6 +96,8 @@
   @include table-row-variant($color, theme-color-level($color, -9));
 }
 
+@include table-row-variant(active, $table-active-bg);
+
 
 // Inverse styles
 //
