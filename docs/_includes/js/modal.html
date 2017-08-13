@@ -27,8 +27,8 @@ $('#myModal').on('shown.bs.modal', function () {
   <h3>Static example</h3>
   <p>A rendered modal with header, body, and set of actions in the footer.</p>
   <div class="bs-example bs-example-modal" data-example-id="static-modal">
-    <div class="modal">
-      <div class="modal-dialog">
+    <div class="modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -46,8 +46,8 @@ $('#myModal').on('shown.bs.modal', function () {
     </div><!-- /.modal -->
   </div><!-- /example -->
 {% highlight html %}
-<div class="modal fade">
-  <div class="modal-dialog">
+<div class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -161,7 +161,7 @@ $('#myModal').on('shown.bs.modal', function () {
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>
 
 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-  <div class="modal-dialog modal-lg">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       ...
     </div>
@@ -172,7 +172,7 @@ $('#myModal').on('shown.bs.modal', function () {
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Small modal</button>
 
 <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-  <div class="modal-dialog modal-sm">
+  <div class="modal-dialog modal-sm" role="document">
     <div class="modal-content">
       ...
     </div>
@@ -182,7 +182,7 @@ $('#myModal').on('shown.bs.modal', function () {
 
   <!--  Modal content for the above example -->
   <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
 
         <div class="modal-header">
@@ -196,7 +196,7 @@ $('#myModal').on('shown.bs.modal', function () {
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
   <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-    <div class="modal-dialog modal-sm">
+    <div class="modal-dialog modal-sm" role="document">
       <div class="modal-content">
 
         <div class="modal-header">
@@ -267,7 +267,7 @@ $('#myModal').on('shown.bs.modal', function () {
   </button>
 </div><!-- /example -->
 {% highlight html %}
-<div class="modal fade" role="dialog" aria-labelledby="gridSystemModalLabel">
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -439,7 +439,7 @@ $('#exampleModal').on('show.bs.modal', function (event) {
          <td>path</td>
          <td>false</td>
          <td>
-          <p><strong class="text-danger">This option is deprecated since v3.3.0 and will be removed in v4.</strong> We recommend instead using client-side templating or a data binding framework, or calling <a href="http://api.jquery.com/load/">jQuery.load</a> yourself.</p>
+          <p><strong class="text-danger">This option is deprecated since v3.3.0 and has been removed in v4.</strong> We recommend instead using client-side templating or a data binding framework, or calling <a href="http://api.jquery.com/load/">jQuery.load</a> yourself.</p>
           <p>If a remote URL is provided, <strong>content will be loaded one time</strong> via jQuery's <code>load</code> method and injected into the <code>.modal-content</code> div. If you're using the data-api, you may alternatively use the <code>href</code> attribute to specify the remote source. An example of this is shown below:</p>
 {% highlight html %}
 <a data-toggle="modal" href="remote.html" data-target="#modal">Click me</a>

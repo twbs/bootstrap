@@ -10,7 +10,7 @@
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 
@@ -127,11 +127,36 @@
     </div>
   </div>
 
+  <div id="myModal2" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel2">Modal Heading</h4>
+        </div>
+        <div class="modal-body">
+          <ol>
+            <li>Ensure you're using Firefox.</li>
+            <li>Open a new tab and then switch back to this tab.</li>
+            <li>Click into this input: <input type="text" id="ff-bug-input"></li>
+            <li>Switch to the other tab and then back to this tab.</li>
+          </ol>
+          <p>Test result: <strong id="ff-bug-test-result"></strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
     Launch demo modal
   </button>
 
   <button id="tall-toggle" class="btn btn-default">Toggle tall &lt;body&gt; content</button>
+  <br><br>
+  <button class="btn btn-secondary btn-lg" data-toggle="modal" data-target="#myModal2">
+    Launch Firefox bug test modal
+  </button>
+  (<a href="https://github.com/twbs/bootstrap/issues/18365">See Issue #18365</a>)
   <br><br>
   <div id="tall" style="display: none;">
     Tall body content to force the page to have a scrollbar.
@@ -149,11 +174,29 @@
 
 <!-- JavaScript Test -->
 <script>
+var firefoxTestDone = false
+function reportFirefoxTestResult(result) {
+  if (!firefoxTestDone) {
+    $('#ff-bug-test-result')
+      .addClass(result ? 'text-success' : 'text-danger')
+      .text(result ? 'PASS' : 'FAIL')  
+  }
+  firefoxTestDone = true
+}
+
 $(function () {
   $('.js-popover').popover()
   $('.js-tooltip').tooltip()
   $('#tall-toggle').click(function () {
     $('#tall').toggle()
+  })
+  $('#ff-bug-input').one('focus', function () {
+    $('#myModal2').on('focus', function () {
+      reportFirefoxTestResult(false)
+    })
+    $('#ff-bug-input').on('focus', function () {
+      reportFirefoxTestResult(true)
+    })
   })
 })
 </script>

@@ -33,6 +33,9 @@ Thumbs.db
 .komodotools
 *.komodoproject
 
+# Jekyll metadata
+docs/.jekyll-metadata
+
 # Folders to ignore
 bower_components
 node_modules

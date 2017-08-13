@@ -31,13 +31,13 @@
   <p>The folks over at <a href="https://www.maxcdn.com/">MaxCDN</a> graciously provide CDN support for Bootstrap's CSS and JavaScript. Just use these <a href="https://www.bootstrapcdn.com/">Bootstrap CDN</a> links.</p>
 {% highlight html %}
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="{{ site.cdn.css }}">
+<link rel="stylesheet" href="{{ site.cdn.css }}" integrity="{{ site.cdn.css_hash }}" crossorigin="anonymous">
 
 <!-- Optional theme -->
-<link rel="stylesheet" href="{{ site.cdn.css_theme }}">
+<link rel="stylesheet" href="{{ site.cdn.css_theme }}" integrity="{{ site.cdn.css_theme_hash }}" crossorigin="anonymous">
 
 <!-- Latest compiled and minified JavaScript -->
-<script src="{{ site.cdn.js }}"></script>
+<script src="{{ site.cdn.js }}" integrity="{{ site.cdn.js_hash }}" crossorigin="anonymous"></script>
 {% endhighlight %}
 
   <h2 id="download-bower">Install with Bower</h2>
@@ -46,7 +46,7 @@
 
   <h2 id="download-npm">Install with npm</h2>
   <p>You can also install Bootstrap using <a href="https://www.npmjs.com">npm</a>:</p>
-  {% highlight bash %}$ npm install bootstrap{% endhighlight %}
+  {% highlight bash %}$ npm install bootstrap@3{% endhighlight %}
   <p><code>require('bootstrap')</code> will load all of Bootstrap's jQuery plugins onto the jQuery object. The <code>bootstrap</code> module itself does not export anything. You can manually load Bootstrap's jQuery plugins individually by loading the <code>/js/*.js</code> files under the package's top-level directory.</p>
   <p>Bootstrap's <code>package.json</code> contains some additional metadata under the following keys:</p>
   <ul>
