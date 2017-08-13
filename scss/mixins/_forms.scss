@@ -33,8 +33,8 @@
         box-shadow: 0 0 0 .2rem rgba($color,.25);
       }
 
-      ~ .invalid-feedback,
-      ~ .invalid-tooltip {
+      ~ .#{$state}-feedback,
+      ~ .#{$state}-tooltip {
         display: block;
       }
     }
