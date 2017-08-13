@@ -261,7 +261,7 @@
   width: 100%;
   padding-left: 0;
   background-color: transparent;
-  -webkit-appearance: none;
+  appearance: none;
 
   &:focus {
     outline: none;
@@ -296,7 +296,7 @@
     background-color: $custom-control-indicator-checked-bg;
     border: 0;
     border-radius: $custom-control-indicator-size;
-    -webkit-appearance: none;
+    appearance: none;
   }
 
   &::-webkit-slider-runnable-track {
@@ -316,7 +316,7 @@
     background-color: $custom-control-indicator-checked-bg;
     border: 0;
     border-radius: $custom-control-indicator-size;
-    -webkit-appearance: none;
+    appearance: none;
   }
 
   &::-moz-range-track {
@@ -336,7 +336,7 @@
     background-color: $custom-control-indicator-checked-bg;
     border: 0;
     border-radius: $custom-control-indicator-size;
-    -webkit-appearance: none;
+    appearance: none;
   }
 
   &::-ms-track {
