@@ -61,7 +61,8 @@ $gray-800: #343a40 !default;
 $gray-900: #212529 !default;
 $black:  #000 !default;
 
-$grays: (
+$grays: () !default;
+$grays: map-merge((
   100: $gray-100,
   200: $gray-200,
   300: $gray-300,
@@ -71,7 +72,7 @@ $grays: (
   700: $gray-700,
   800: $gray-800,
   900: $gray-900
-) !default;
+), $grays);
 
 $blue:    #007bff !default;
 $indigo:  #6610f2 !default;
@@ -84,7 +85,8 @@ $green:   #28a745 !default;
 $teal:    #20c997 !default;
 $cyan:    #17a2b8 !default;
 
-$colors: (
+$colors: () !default;
+$colors: map-merge((
   blue: $blue,
   indigo: $indigo,
   purple: $purple,
@@ -98,9 +100,10 @@ $colors: (
   white: $white,
   gray: $gray-600,
   gray-dark: $gray-800
-) !default;
+), $colors);
 
-$theme-colors: (
+$theme-colors: () !default;
+$theme-colors: map-merge((
   primary: $blue,
   secondary: $gray-600,
   success: $green,
@@ -109,7 +112,7 @@ $theme-colors: (
   danger: $red,
   light: $gray-100,
   dark: $gray-800
-) !default;
+), $theme-colors);
 
 // Set a specific jump point for requesting color jumps
 $theme-color-interval: 8% !default;
