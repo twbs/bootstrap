@@ -52,13 +52,21 @@ fieldset[disabled] a.btn {
 
 @each $color, $value in $theme-colors {
   .btn-#{$color} {
-    @include button-variant($value, $value);
+    @if $value == $white {
+      @include button-variant($value, color-yiq($value, $contrast-colors));
+    } @else {
+      @include button-variant($value, $value);
+    }
   }
 }
 
 @each $color, $value in $theme-colors {
   .btn-outline-#{$color} {
-    @include button-outline-variant($value, #fff);
+    @if $value == $white {
+      @include button-outline-variant(color-yiq($value, $contrast-colors), $white);
+    } @else {
+      @include button-outline-variant($value, $white);
+    }
   }
 }
 
