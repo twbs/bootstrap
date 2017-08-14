@@ -37,7 +37,7 @@
         background-image: $form-icon-success;
       }
 
-      @if $state == "invalid" {
+      @else if $state == "invalid" {
         background-image: $form-icon-danger;
       }
 
