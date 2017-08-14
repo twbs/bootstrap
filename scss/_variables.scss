@@ -117,6 +117,10 @@ $theme-colors: map-merge((
 // Set a specific jump point for requesting color jumps
 $theme-color-interval: 8% !default;
 
+// Set a specific contrast color to be used for a given color
+// This will override the default behavior of the "color-yiq" function
+$contrast-colors: () !default;
+
 
 // Options
 //
