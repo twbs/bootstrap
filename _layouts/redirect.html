@@ -6,15 +6,31 @@
     <link rel="canonical" href="{{ page.redirect.to }}">
     <meta http-equiv="refresh" content="0; url={{ page.redirect.to }}">
     <style>
-      .title { font-size: 2.8rem; margin-top: 1rem; margin-bottom: .5rem; font-weight: 300; }
-      body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; }
+      html {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        width: 100vw;
+        height: 100vh;
+        text-align: center;
+      }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+      }
+      h1 {
+        margin-top: 0;
+        margin-bottom: .5rem;
+      }
+      a {
+        color: #007bff;
+        text-decoration: none;
+      }
     </style>
   </head>
   <body>
-    <div style="width: 500px; margin: 40px auto; text-align: center">
-      <h1 class="title">Redirecting…</h1>
-      <a href="{{ page.redirect.to }}" style="font-size: 0.9rem; color: #7952b3">Click here if you are not redirected.</a>
-    </div>
+    <h1>Redirecting…</h1>
+    <a href="{{ page.redirect.to }}">Click here if you are not redirected</a>
     <script>location="{{ page.redirect.to }}"</script>
   </body>
 </html>
