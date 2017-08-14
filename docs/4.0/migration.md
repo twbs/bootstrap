@@ -190,7 +190,6 @@ The navbar has been entirely rewritten in flexbox with improved support for alig
 - Badges are no longer floated automatically in list groups and other components. Utility classes are now required for that.
 - For consistancy the `.badge-default` class is replaced by `.badge-secondary`.
 
-
 ### Panels, thumbnails, and wells
 
 Dropped entirely for the new card component.
