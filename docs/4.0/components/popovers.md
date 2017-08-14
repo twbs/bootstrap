@@ -361,7 +361,7 @@ Updates the position of an element's popover.
     </tr>
     <tr>
       <td>inserted.bs.popover</td>
-      <td>This event is fired after the <code>show.bs.popover</code> event when the tooltip template has been added to the DOM.</td>
+      <td>This event is fired after the <code>show.bs.popover</code> event when the popover template has been added to the DOM.</td>
     </tr>
   </tbody>
 </table>
