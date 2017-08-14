@@ -49,7 +49,11 @@
 }
 
 // Color contrast
-@mixin color-yiq($color) {
+@function color-yiq($color, $contrast-colors: ()) {
+  @if map-has-key($contrast-colors, $color) {
+    @return map-get($contrast-colors, $color);
+  }
+
   $r: red($color);
   $g: green($color);
   $b: blue($color);
@@ -57,10 +61,14 @@
   $yiq: (($r * 299) + ($g * 587) + ($b * 114)) / 1000;
 
   @if ($yiq >= 150) {
-    color: #111;
+    @return #111;
   } @else {
-    color: #fff;
+    @return #fff;
   }
+}
+
+@mixin color-yiq($color, $contrast-colors: ()) {
+  color: color-yiq($color, $contrast-colors);
 }
 
 // Retreive color Sass maps
