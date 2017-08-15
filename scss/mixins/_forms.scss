@@ -22,7 +22,6 @@
 
 
 @mixin form-validation-state($state, $color) {
-
   .form-control,
   .custom-select {
     .was-validated &:#{$state},
@@ -40,12 +39,11 @@
     }
   }
 
-
-  // TODO: redo check markup lol crap
+  // Vanilla checks and radios
   .form-check-input {
     .was-validated &:#{$state},
     &.is-#{$state} {
-      + .form-check-label {
+      + .form-check-description {
         color: $color;
       }
     }
