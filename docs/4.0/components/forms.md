@@ -28,7 +28,7 @@ Here's a quick example to demonstrate Bootstrap's form styles. Keep reading for 
   <div class="form-check">
     <label class="form-check-label">
       <input type="checkbox" class="form-check-input">
-      Check me out
+      <span class="form-check-description">Check me out</span>
     </label>
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
@@ -164,13 +164,13 @@ By default, any number of checkboxes and radios that are immediate sibling will 
 <div class="form-check">
   <label class="form-check-label">
     <input class="form-check-input" type="checkbox" value="">
-    Option one is this and that&mdash;be sure to include why it's great
+    <span class="form-check-description">Option one is this and that&mdash;be sure to include why it's great</span>
   </label>
 </div>
 <div class="form-check disabled">
   <label class="form-check-label">
     <input class="form-check-input" type="checkbox" value="" disabled>
-    Option two is disabled
+    <span class="form-check-description">Option two is disabled</span>
   </label>
 </div>
 {% endexample %}
@@ -179,19 +179,19 @@ By default, any number of checkboxes and radios that are immediate sibling will 
 <div class="form-check">
   <label class="form-check-label">
     <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-    Option one is this and that&mdash;be sure to include why it's great
+    <span class="form-check-description">Option one is this and that&mdash;be sure to include why it's great</span>
   </label>
 </div>
 <div class="form-check">
   <label class="form-check-label">
     <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-    Option two can be something else and selecting it will deselect option one
+    <span class="form-check-description">Option two can be something else and selecting it will deselect option one</span>
   </label>
 </div>
 <div class="form-check disabled">
   <label class="form-check-label">
     <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" disabled>
-    Option three is disabled
+    <span class="form-check-description">Option three is disabled</span>
   </label>
 </div>
 {% endexample %}
@@ -347,7 +347,8 @@ More complex layouts can also be created with the grid system.
   <div class="form-group">
     <div class="form-check">
       <label class="form-check-label">
-        <input class="form-check-input" type="checkbox"> Check me out
+        <input class="form-check-input" type="checkbox">
+        <span class="form-check-description">Check me out</span>
       </label>
     </div>
   </div>
@@ -383,19 +384,19 @@ Be sure to add `.col-form-label` to your `<label>`s as well so they're verticall
           <div class="form-check">
             <label class="form-check-label">
               <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-              Option one is this and that&mdash;be sure to include why it's great
+              <span class="form-check-description">Option one is this and that&mdash;be sure to include why it's great</span>
             </label>
           </div>
           <div class="form-check">
             <label class="form-check-label">
               <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-              Option two can be something else and selecting it will deselect option one
+              <span class="form-check-description">Option two can be something else and selecting it will deselect option one</span>
             </label>
           </div>
           <div class="form-check disabled">
             <label class="form-check-label">
               <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled>
-              Option three is disabled
+              <span class="form-check-description">Option three is disabled</span>
             </label>
           </div>
         </div>
@@ -406,7 +407,8 @@ Be sure to add `.col-form-label` to your `<label>`s as well so they're verticall
       <div class="col-sm-10">
         <div class="form-check">
           <label class="form-check-label">
-            <input class="form-check-input" type="checkbox"> Check me out
+            <input class="form-check-input" type="checkbox">
+            <span class="form-check-description">Check me out</span>
           </label>
         </div>
       </div>
@@ -461,7 +463,8 @@ The example below uses a flexbox utility to vertically center the contents and c
     <div class="col-auto">
       <div class="form-check mb-2 mb-sm-0">
         <label class="form-check-label">
-          <input class="form-check-input" type="checkbox"> Remember me
+          <input class="form-check-input" type="checkbox">
+          <span class="form-check-description">Remember me</span>
         </label>
       </div>
     </div>
@@ -491,7 +494,8 @@ You can then remix that once again with size-specific column classes.
     <div class="col-auto">
       <div class="form-check mb-2 mb-sm-0">
         <label class="form-check-label">
-          <input class="form-check-input" type="checkbox"> Remember me
+          <input class="form-check-input" type="checkbox">
+          <span class="form-check-description">Remember me</span>
         </label>
       </div>
     </div>
@@ -553,7 +557,8 @@ You may need to manually address the width and alignment of individual form cont
 
   <div class="form-check mb-2 mr-sm-2 mb-sm-0">
     <label class="form-check-label">
-      <input class="form-check-input" type="checkbox"> Remember me
+      <input class="form-check-input" type="checkbox">
+      <span class="form-check-description">Remember me</span>
     </label>
   </div>
 
@@ -847,7 +852,14 @@ Our example forms show native textual `<input>`s above, but form validation styl
 
 {% example html %}
 <form class="was-validated">
-  <label class="custom-control custom-checkbox">
+  <div class="form-check">
+    <label class="form-check-label">
+      <input class="form-check-input" type="checkbox" required>
+      <span class="form-check-description">Regular checkboxes and radios</span>
+    </label>
+  </div>
+
+  <label class="custom-control custom-checkbox my-3">
     <input type="checkbox" class="custom-control-input" required>
     <span class="custom-control-indicator"></span>
     <span class="custom-control-description">Check this custom checkbox</span>
