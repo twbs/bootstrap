@@ -1,51 +1,49 @@
-// Width and height
-
-.w-100 { width: 100% !important; }
-.h-100 { height: 100% !important; }
-
-.mw-100 { max-width: 100% !important; }
-.mh-100 { max-height: 100% !important; }
-
 // Margin and Padding
 
-.mx-auto {
-  margin-right: auto !important;
-  margin-left:  auto !important;
-}
-
 @each $breakpoint in map-keys($grid-breakpoints) {
-  @each $prop, $abbrev in (margin: m, padding: p) {
-    @each $size, $lengths in $spacers {
-      $length-x:   map-get($lengths, x);
-      $length-y:   map-get($lengths, y);
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
-      @include media-breakpoint-up($breakpoint) {
-        $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+    @each $prop, $abbrev in (margin: m, padding: p) {
+      @each $size, $length in $spacers {
 
-        .#{$abbrev}#{$infix}-#{$size}  { #{$prop}:        $length-y $length-x !important; }
-        .#{$abbrev}t#{$infix}-#{$size} { #{$prop}-top:    $length-y !important; }
-        .#{$abbrev}r#{$infix}-#{$size} { #{$prop}-right:  $length-x !important; }
-        .#{$abbrev}b#{$infix}-#{$size} { #{$prop}-bottom: $length-y !important; }
-        .#{$abbrev}l#{$infix}-#{$size} { #{$prop}-left:   $length-x !important; }
-        .#{$abbrev}x#{$infix}-#{$size} {
-          #{$prop}-right:  $length-x !important;
-          #{$prop}-left:   $length-x !important;
-        }
+        .#{$abbrev}#{$infix}-#{$size} { #{$prop}: $length !important; }
+        .#{$abbrev}t#{$infix}-#{$size},
         .#{$abbrev}y#{$infix}-#{$size} {
-          #{$prop}-top:    $length-y !important;
-          #{$prop}-bottom: $length-y !important;
+          #{$prop}-top: $length !important;
+        }
+        .#{$abbrev}r#{$infix}-#{$size},
+        .#{$abbrev}x#{$infix}-#{$size} {
+          #{$prop}-right: $length !important;
+        }
+        .#{$abbrev}b#{$infix}-#{$size},
+        .#{$abbrev}y#{$infix}-#{$size} {
+          #{$prop}-bottom: $length !important;
+        }
+        .#{$abbrev}l#{$infix}-#{$size},
+        .#{$abbrev}x#{$infix}-#{$size} {
+          #{$prop}-left: $length !important;
         }
       }
     }
+
+    // Some special margin utils
+    .m#{$infix}-auto { margin: auto !important; }
+    .mt#{$infix}-auto,
+    .my#{$infix}-auto {
+      margin-top: auto !important;
+    }
+    .mr#{$infix}-auto,
+    .mx#{$infix}-auto {
+      margin-right: auto !important;
+    }
+    .mb#{$infix}-auto,
+    .my#{$infix}-auto {
+      margin-bottom: auto !important;
+    }
+    .ml#{$infix}-auto,
+    .mx#{$infix}-auto {
+      margin-left: auto !important;
+    }
   }
-}
-
-// Positioning
-
-.pos-f-t {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: $zindex-navbar-fixed;
 }

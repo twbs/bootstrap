@@ -15,30 +15,19 @@
   vertical-align: baseline;
   @include border-radius();
 
-  // Empty tags collapse automatically
+  // Empty badges collapse automatically
   &:empty {
     display: none;
   }
 }
 
-// Quick fix for tags in buttons
+// Quick fix for badges in buttons
 .btn .badge {
   position: relative;
   top: -1px;
 }
 
-// scss-lint:disable QualifyingElement
-// Add hover effects, but only for links
-a.badge {
-  @include hover-focus {
-    color: $badge-link-hover-color;
-    text-decoration: none;
-    cursor: pointer;
-  }
-}
-// scss-lint:enable QualifyingElement
-
-// Pill tags
+// Pill badges
 //
 // Make them extra rounded with a modifier to replace v3's badges.
 
@@ -50,28 +39,10 @@ a.badge {
 
 // Colors
 //
-// Contextual variations (linked tags get darker on :hover).
+// Contextual variations (linked badges get darker on :hover).
 
-.badge-default {
-  @include badge-variant($badge-default-bg);
-}
-
-.badge-primary {
-  @include badge-variant($badge-primary-bg);
-}
-
-.badge-success {
-  @include badge-variant($badge-success-bg);
-}
-
-.badge-info {
-  @include badge-variant($badge-info-bg);
-}
-
-.badge-warning {
-  @include badge-variant($badge-warning-bg);
-}
-
-.badge-danger {
-  @include badge-variant($badge-danger-bg);
+@each $color, $value in $theme-colors {
+  .badge-#{$color} {
+    @include badge-variant($value);
+  }
 }

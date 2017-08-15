@@ -9,6 +9,19 @@ $(function () {
   })
 
   QUnit.module('modal', {
+    before: function () {
+      // Enable the scrollbar measurer
+      $('<style type="text/css"> .modal-scrollbar-measure { position: absolute; top: -9999px; width: 50px; height: 50px; overflow: scroll; } </style>').appendTo('head')
+      // Function to calculate the scrollbar width which is then compared to the padding or margin changes
+      $.fn.getScrollbarWidth = function () {
+        var scrollDiv = document.createElement('div')
+        scrollDiv.className = 'modal-scrollbar-measure'
+        document.body.appendChild(scrollDiv)
+        var scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth
+        document.body.removeChild(scrollDiv)
+        return scrollbarWidth
+      }
+    },
     beforeEach: function () {
       // Run all tests in noConflict mode -- it's the only way to ensure that the plugin works in noConflict mode
       $.fn.bootstrapModal = $.fn.modal.noConflict()
@@ -336,23 +349,127 @@ $(function () {
     $toggleBtn.trigger('click')
   })
 
-  QUnit.test('should restore inline body padding after closing', function (assert) {
+  QUnit.test('should adjust the inline body padding when opening and restore when closing', function (assert) {
     assert.expect(2)
     var done = assert.async()
-    var originalBodyPad = 0
     var $body = $(document.body)
-
-    $body.css('padding-right', originalBodyPad)
+    var originalPadding = $body.css('padding-right')
 
     $('<div id="modal-test"/>')
       .on('hidden.bs.modal', function () {
-        var currentBodyPad = parseInt($body.css('padding-right'), 10)
-        assert.notStrictEqual($body.attr('style'), '', 'body has non-empty style attribute')
-        assert.strictEqual(currentBodyPad, originalBodyPad, 'original body padding was not changed')
+        var currentPadding = $body.css('padding-right')
+        assert.strictEqual(currentPadding, originalPadding, 'body padding should be reset after closing')
         $body.removeAttr('style')
         done()
       })
       .on('shown.bs.modal', function () {
+        var expectedPadding = parseFloat(originalPadding) + $(this).getScrollbarWidth() + 'px'
+        var currentPadding = $body.css('padding-right')
+        assert.strictEqual(currentPadding, expectedPadding, 'body padding should be adjusted while opening')
+        $(this).bootstrapModal('hide')
+      })
+      .bootstrapModal('show')
+  })
+
+  QUnit.test('should store the original body padding in data-padding-right before showing', function (assert) {
+    assert.expect(2)
+    var done = assert.async()
+    var $body = $(document.body)
+    var originalPadding = '0px'
+    $body.css('padding-right', originalPadding)
+
+    $('<div id="modal-test"/>')
+      .on('hidden.bs.modal', function () {
+        assert.strictEqual($body.data('padding-right'), undefined, 'data-padding-right should be cleared after closing')
+        $body.removeAttr('style')
+        done()
+      })
+      .on('shown.bs.modal', function () {
+        assert.strictEqual($body.data('padding-right'), originalPadding, 'original body padding should be stored in data-padding-right')
+        $(this).bootstrapModal('hide')
+      })
+      .bootstrapModal('show')
+  })
+
+  QUnit.test('should adjust the inline padding of fixed elements when opening and restore when closing', function (assert) {
+    assert.expect(2)
+    var done = assert.async()
+    var $element = $('<div class="fixed-top"></div>').appendTo('#qunit-fixture')
+    var originalPadding = $element.css('padding-right')
+
+    $('<div id="modal-test"/>')
+      .on('hidden.bs.modal', function () {
+        var currentPadding = $element.css('padding-right')
+        assert.strictEqual(currentPadding, originalPadding, 'fixed element padding should be reset after closing')
+        $element.remove()
+        done()
+      })
+      .on('shown.bs.modal', function () {
+        var expectedPadding = parseFloat(originalPadding) + $(this).getScrollbarWidth() + 'px'
+        var currentPadding = $element.css('padding-right')
+        assert.strictEqual(currentPadding, expectedPadding, 'fixed element padding should be adjusted while opening')
+        $(this).bootstrapModal('hide')
+      })
+      .bootstrapModal('show')
+  })
+
+  QUnit.test('should store the original padding of fixed elements in data-padding-right before showing', function (assert) {
+    assert.expect(2)
+    var done = assert.async()
+    var $element = $('<div class="fixed-top"></div>').appendTo('#qunit-fixture')
+    var originalPadding = '0px'
+    $element.css('padding-right', originalPadding)
+
+    $('<div id="modal-test"/>')
+      .on('hidden.bs.modal', function () {
+        assert.strictEqual($element.data('padding-right'), undefined, 'data-padding-right should be cleared after closing')
+        $element.remove()
+        done()
+      })
+      .on('shown.bs.modal', function () {
+        assert.strictEqual($element.data('padding-right'), originalPadding, 'original fixed element padding should be stored in data-padding-right')
+        $(this).bootstrapModal('hide')
+      })
+      .bootstrapModal('show')
+  })
+
+  QUnit.test('should adjust the inline margin of the navbar-toggler when opening and restore when closing', function (assert) {
+    assert.expect(2)
+    var done = assert.async()
+    var $element = $('<div class="navbar-toggler"></div>').appendTo('#qunit-fixture')
+    var originalMargin = $element.css('margin-right')
+
+    $('<div id="modal-test"/>')
+      .on('hidden.bs.modal', function () {
+        var currentMargin = $element.css('margin-right')
+        assert.strictEqual(currentMargin, originalMargin, 'navbar-toggler margin should be reset after closing')
+        $element.remove()
+        done()
+      })
+      .on('shown.bs.modal', function () {
+        var expectedMargin = parseFloat(originalMargin) + $(this).getScrollbarWidth() + 'px'
+        var currentMargin = $element.css('margin-right')
+        assert.strictEqual(currentMargin, expectedMargin, 'navbar-toggler margin should be adjusted while opening')
+        $(this).bootstrapModal('hide')
+      })
+      .bootstrapModal('show')
+  })
+
+  QUnit.test('should store the original margin of the navbar-toggler in data-margin-right before showing', function (assert) {
+    assert.expect(2)
+    var done = assert.async()
+    var $element = $('<div class="navbar-toggler"></div>').appendTo('#qunit-fixture')
+    var originalMargin = '0px'
+    $element.css('margin-right', originalMargin)
+
+    $('<div id="modal-test"/>')
+      .on('hidden.bs.modal', function () {
+        assert.strictEqual($element.data('margin-right'), undefined, 'data-margin-right should be cleared after closing')
+        $element.remove()
+        done()
+      })
+      .on('shown.bs.modal', function () {
+        assert.strictEqual($element.data('margin-right'), originalMargin, 'original navbar-toggler margin should be stored in data-margin-right')
         $(this).bootstrapModal('hide')
       })
       .bootstrapModal('show')
@@ -372,44 +489,6 @@ $(function () {
       })
       .on('shown.bs.modal', function () {
         $(this).bootstrapModal('hide')
-      })
-      .bootstrapModal('show')
-  })
-
-  QUnit.test('should have a paddingRight when the modal is taller than the viewport', function (assert) {
-    assert.expect(2)
-    var done = assert.async()
-    $('<div class="navbar-fixed-top navbar-fixed-bottom is-fixed">@Johann-S</div>').appendTo('#qunit-fixture')
-    $('.navbar-fixed-top, .navbar-fixed-bottom, .is-fixed').css('padding-right', '10px')
-
-    $('<div id="modal-test"/>')
-      .on('shown.bs.modal', function () {
-        var paddingRight = parseInt($(document.body).css('padding-right'), 10)
-        assert.strictEqual(isNaN(paddingRight), false)
-        assert.strictEqual(paddingRight !== 0, true)
-        $(document.body).css('padding-right', '') // Because test case "should ignore other inline styles when trying to restore body padding after closing" fail if not
-        done()
-      })
-      .bootstrapModal('show')
-  })
-
-  QUnit.test('should remove padding-right on modal after closing', function (assert) {
-    assert.expect(3)
-    var done = assert.async()
-    $('<div class="navbar-fixed-top navbar-fixed-bottom is-fixed">@Johann-S</div>').appendTo('#qunit-fixture')
-    $('.navbar-fixed-top, .navbar-fixed-bottom, .is-fixed').css('padding-right', '10px')
-
-    $('<div id="modal-test"/>')
-      .on('shown.bs.modal', function () {
-        var paddingRight = parseInt($(document.body).css('padding-right'), 10)
-        assert.strictEqual(isNaN(paddingRight), false)
-        assert.strictEqual(paddingRight !== 0, true)
-        $(this).bootstrapModal('hide')
-      })
-      .on('hidden.bs.modal', function () {
-        var paddingRight = parseInt($(document.body).css('padding-right'), 10)
-        assert.strictEqual(paddingRight, 0)
-        done()
       })
       .bootstrapModal('show')
   })

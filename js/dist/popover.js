@@ -10,7 +10,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-alpha.5): popover.js
+ * Bootstrap (v4.0.0-beta): popover.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -24,16 +24,18 @@ var Popover = function ($) {
    */
 
   var NAME = 'popover';
-  var VERSION = '4.0.0-alpha.5';
+  var VERSION = '4.0.0-beta';
   var DATA_KEY = 'bs.popover';
   var EVENT_KEY = '.' + DATA_KEY;
   var JQUERY_NO_CONFLICT = $.fn[NAME];
+  var CLASS_PREFIX = 'bs-popover';
+  var BSCLS_PREFIX_REGEX = new RegExp('(^|\\s)' + CLASS_PREFIX + '\\S+', 'g');
 
   var Default = $.extend({}, Tooltip.Default, {
     placement: 'right',
     trigger: 'click',
     content: '',
-    template: '<div class="popover" role="tooltip">' + '<h3 class="popover-title"></h3>' + '<div class="popover-content"></div></div>'
+    template: '<div class="popover" role="tooltip">' + '<div class="arrow"></div>' + '<h3 class="popover-header"></h3>' + '<div class="popover-body"></div></div>'
   });
 
   var DefaultType = $.extend({}, Tooltip.DefaultType, {
@@ -42,12 +44,12 @@ var Popover = function ($) {
 
   var ClassName = {
     FADE: 'fade',
-    ACTIVE: 'active'
+    SHOW: 'show'
   };
 
   var Selector = {
-    TITLE: '.popover-title',
-    CONTENT: '.popover-content'
+    TITLE: '.popover-header',
+    CONTENT: '.popover-body'
   };
 
   var Event = {
@@ -61,14 +63,14 @@ var Popover = function ($) {
     FOCUSOUT: 'focusout' + EVENT_KEY,
     MOUSEENTER: 'mouseenter' + EVENT_KEY,
     MOUSELEAVE: 'mouseleave' + EVENT_KEY
+
+    /**
+     * ------------------------------------------------------------------------
+     * Class Definition
+     * ------------------------------------------------------------------------
+     */
+
   };
-
-  /**
-   * ------------------------------------------------------------------------
-   * Class Definition
-   * ------------------------------------------------------------------------
-   */
-
   var Popover = function (_Tooltip) {
     _inherits(Popover, _Tooltip);
 
@@ -84,6 +86,10 @@ var Popover = function ($) {
       return this.getTitle() || this._getContent();
     };
 
+    Popover.prototype.addAttachmentClass = function addAttachmentClass(attachment) {
+      $(this.getTipElement()).addClass(CLASS_PREFIX + '-' + attachment);
+    };
+
     Popover.prototype.getTipElement = function getTipElement() {
       return this.tip = this.tip || $(this.config.template)[0];
     };
@@ -95,15 +101,21 @@ var Popover = function ($) {
       this.setElementContent($tip.find(Selector.TITLE), this.getTitle());
       this.setElementContent($tip.find(Selector.CONTENT), this._getContent());
 
-      $tip.removeClass(ClassName.FADE + ' ' + ClassName.ACTIVE);
-
-      this.cleanupTether();
+      $tip.removeClass(ClassName.FADE + ' ' + ClassName.SHOW);
     };
 
     // private
 
     Popover.prototype._getContent = function _getContent() {
       return this.element.getAttribute('data-content') || (typeof this.config.content === 'function' ? this.config.content.call(this.element) : this.config.content);
+    };
+
+    Popover.prototype._cleanTipClass = function _cleanTipClass() {
+      var $tip = $(this.getTipElement());
+      var tabClass = $tip.attr('class').match(BSCLS_PREFIX_REGEX);
+      if (tabClass !== null && tabClass.length > 0) {
+        $tip.removeClass(tabClass.join(''));
+      }
     };
 
     // static

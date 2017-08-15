@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-alpha.5): util.js
+ * Bootstrap (v4.0.0-beta): util.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -112,13 +112,16 @@ const Util = (($) => {
 
     getSelectorFromElement(element) {
       let selector = element.getAttribute('data-target')
-
-      if (!selector) {
+      if (!selector || selector === '#') {
         selector = element.getAttribute('href') || ''
-        selector = /^#[a-z]/i.test(selector) ? selector : null
       }
 
-      return selector
+      try {
+        const $selector = $(selector)
+        return $selector.length > 0 ? selector : null
+      } catch (error) {
+        return null
+      }
     },
 
     reflow(element) {

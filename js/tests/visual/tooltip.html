@@ -3,9 +3,21 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
     <link rel="stylesheet" href="../../../dist/css/bootstrap.min.css">
     <title>Tooltip</title>
+    <style>
+      #target {
+        border: 1px solid;
+        width: 100px;
+        height: 50px;
+        border: 1px solid;
+        margin-left: 50px;
+        -webkit-transform: rotate(270deg);
+        -ms-transform: rotate(270deg);
+        transform: rotate(270deg);
+        margin-top: 100px;
+      }
+    </style>
   </head>
   <body>
     <div class="container">
@@ -16,6 +28,9 @@
       <hr>
 
       <p>
+        <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="auto" title="Tooltip on auto">
+          Tooltip on auto
+        </button>
         <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
           Tooltip on top
         </button>
@@ -31,17 +46,25 @@
         <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-html="true" title="<em>Tooltip</em> <u>with</u> <b>HTML</b>">
           Tooltip with HTML
         </button>
+        <svg width="30" height="20">
+          <circle cx="15" cy="10" r="10" fill="#62448F" data-toggle="tooltip" data-placement="top" title="Tooltip on SVG" />
+        </svg>
       </p>
+      <div id="target" title="Test tooltip on transformed element"></div>
     </div>
 
-    <script src="../vendor/jquery.min.js"></script>
-    <script src="../vendor/tether.min.js"></script>
+    <script src="../../../assets/js/vendor/jquery-slim.min.js"></script>
+    <script src="../../../assets/js/vendor/popper.min.js"></script>
     <script src="../../dist/util.js"></script>
     <script src="../../dist/tooltip.js"></script>
 
     <script>
       $(function () {
         $('[data-toggle="tooltip"]').tooltip()
+        $('#target').tooltip({
+          placement : 'top',
+          trigger : 'manual'
+        }).tooltip('show')
       })
     </script>
   </body>
