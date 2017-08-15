@@ -56,6 +56,10 @@
       @include border-bottom-radius($card-border-radius);
     }
   }
+
+  .card-header + .list-group > li:first-child {
+    border: 0;
+  }
 }
 
 
