@@ -75,6 +75,8 @@
     # - title: Approach
     - title: Icons
 
+- title: Migration
+
 - title: About
   pages:
     - title: History
@@ -82,5 +84,3 @@
     - title: Brand
     - title: License
     - title: Translations
-
-- title: Migration
