@@ -28,6 +28,7 @@
   // Disabled comes first so active can properly restyle
   &.disabled,
   &:disabled {
+    cursor: not-allowed;
     opacity: .65;
     @include box-shadow(none);
   }
