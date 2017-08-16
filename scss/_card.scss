@@ -172,9 +172,9 @@
 
     .card {
       flex: 1 0 0%;
+      margin-bottom: 0;
 
       + .card {
-        margin-bottom: 0;
         margin-left: 0;
         border-left: 0;
       }
