@@ -25,7 +25,7 @@
 }
 
 html {
-  font-family: sans-serif; // 2
+  font-family: $font-family-base; // 2
   line-height: 1.15; // 3
   -webkit-text-size-adjust: 100%; // 4
   -ms-text-size-adjust: 100%; // 4
