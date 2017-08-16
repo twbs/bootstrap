@@ -49,7 +49,7 @@ Here are the big ticket items you'll want to be aware of when moving from v3 to 
 
 ### Components
 
-- **Dropped panels, thumbnails, and wells** for a new all-encompassing component, [cards]({{ site.baseurl }}/docs/{{ site.docs_version }}/components/cards/).
+- **Dropped panels, thumbnails, and wells** for a new all-encompassing component, [cards]({{ site.baseurl }}/docs/{{ site.docs_version }}/components/card/).
 - **Dropped the Glyphicons icon font.** If you need icons, some options are:
   - the upstream version of [Glyphicons](https://glyphicons.com/)
   - [Octicons](https://octicons.github.com/)
@@ -90,7 +90,7 @@ New to Bootstrap 4 is the [Reboot]({{ site.baseurl }}/docs/{{ site.docs_version 
 - Renamed `.table-condensed` to `.table-sm` for consistency.
 - Added a new `.table-inverse` option.
 - Added table header modifiers: `.thead-default` and `.thead-inverse`.
-- Renamed contextual classes to have a `.table-`-prefix. Hence `.active`, `.success`, `.warning`, `.danger` and `.table-info` to `.table-active`, `.table-success`, `.table-warning`, `.table-danger` and `.table-info`.
+- Renamed contextual classes to have a `.table-`-prefix. Hence `.active`, `.success`, `.warning`, `.danger` and `.info` to `.table-active`, `.table-success`, `.table-warning`, `.table-danger` and `.table-info`.
 
 ### Forms
 
@@ -99,6 +99,7 @@ New to Bootstrap 4 is the [Reboot]({{ site.baseurl }}/docs/{{ site.docs_version 
 - Renamed `.input-lg` and `.input-sm` to `.form-control-lg` and `.form-control-sm`, respectively.
 - Dropped `.form-group-*` classes for simplicity's sake. Use `.form-control-*` classes instead now.
 - Dropped `.help-block` and replaced it with `.form-text` for block-level help text. For inline help text and other flexible options, use utility classes like `.text-muted`.
+- Dropped `.radio-inline` and `.checkbox-inline`.
 - Horizontal forms overhauled:
   - Dropped the `.form-horizontal` class requirement.
   - `.form-group` no longer applies styles from the `.row` via mixin, so `.row` is now required for horizontal grid layouts (e.g., `<div class="form-group row">`).
@@ -138,7 +139,8 @@ New to Bootstrap 4 is the [Reboot]({{ site.baseurl }}/docs/{{ site.docs_version 
 ### Grid system
 
 - Added a new `576px` grid breakpoint as `sm`, meaning there are now five total tiers (`xs`, `sm`, `md`, `lg`, and `xl`).
-- Renamed the responsive grid modifier classes from `.col-{breakpoint}-{modifier}-{size}` to `.{modifier}-{breakpoint}-{size}` for simpler grid classes. For example, instead of `.col-md-3.col-md-push-9` it's `.col-md-3.push-md-9`.
+- Renamed the responsive grid modifier classes from `.col-{breakpoint}-{modifier}-{size}` to `.{modifier}-{breakpoint}-{size}` for simpler grid classes.
+- Dropped push and pull modifier classes for the new flexbox-powered `order` classes. For example, instead of `.col-8.push-4` and `.col-4.pull-8`, you'd use `.col-8.order-2` and `.col-4.order-1`.
 - Added flexbox utility classes for grid system and components.
 
 ### List groups
@@ -187,6 +189,7 @@ The navbar has been entirely rewritten in flexbox with improved support for alig
 - Renamed `.label` to `.badge` to disambiguate from the `<label>` element.
 - Dropped the `.badge` component as it was nearly identical to labels. Use the `.badge-pill` modifier together with the label component instead for that rounded look.
 - Badges are no longer floated automatically in list groups and other components. Utility classes are now required for that.
+- `.badge-default` has been dropped and `.badge-secondary` added to match component modifier classes used elsewhere.
 
 ### Panels, thumbnails, and wells
 
@@ -223,7 +226,7 @@ Dropped entirely for the new card component.
 
 - **Display, hidden, and more:**
   - Made display utilities responsive (e.g., `.d-none` and `d-{sm,md,lg,xl}-none`).
-  - Dropped the bulk of `.hidden-*` utilities for new [display utilities](({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/display/). For example, instead of `.hidden-sm-up`, use `.d-sm-none`. Renamed the `.hidden-print` utilities to use the display utility naming scheme. [More info under the Responsive utilities section of this page.](#responsive-utilities)
+  - Dropped the bulk of `.hidden-*` utilities for new [display utilities]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/display/). For example, instead of `.hidden-sm-up`, use `.d-sm-none`. Renamed the `.hidden-print` utilities to use the display utility naming scheme. [More info under the Responsive utilities section of this page.](#responsive-utilities)
   - Added `.float-{sm,md,lg,xl}-{left,right,none}` classes for responsive floats and removed `.pull-left` and `.pull-right` since they're redundant to `.float-left` and `.float-right`.
 - **Type:**
   - Added responsive variations to our text alignment classes `.text-{sm,md,lg,xl}-{left,center,right}`.

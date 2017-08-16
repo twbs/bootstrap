@@ -5,21 +5,19 @@
 
 .progress {
   display: flex;
+  height: $progress-height;
   overflow: hidden; // force rounded corners by cropping it
   font-size: $progress-font-size;
-  line-height: $progress-height;
-  text-align: center;
   background-color: $progress-bg;
   @include border-radius($progress-border-radius);
-  @include box-shadow($progress-box-shadow);
 }
 
 .progress-bar {
-  height: $progress-height;
-  line-height: $progress-height;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: $progress-bar-color;
   background-color: $progress-bar-bg;
-  @include transition($progress-bar-transition);
 }
 
 .progress-bar-striped {
