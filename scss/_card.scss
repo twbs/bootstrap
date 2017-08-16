@@ -57,7 +57,8 @@
     }
   }
 
-  .card-header + .list-group > li:first-child {
+  .card-header + .list-group > li:first-child,
+  .card-header + .list-group > a:first-child {
     border: 0;
   }
 }
