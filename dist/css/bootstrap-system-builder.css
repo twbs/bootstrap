@@ -5801,13 +5801,13 @@ body {
 #sfb-nav-tabs-list > li:nth-child(1) {
   margin-left: 15px;
 }
+/* only the top level container gets special styling */
 .apps-container {
   min-height: 50px;
   padding: 4px;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
-/* only the top level container gets special styling */
 .apps-container .apps-container {
   height: auto;
   padding: 4px;
@@ -5874,6 +5874,19 @@ body {
   border-color: darkorchid;
   border-style: solid !important;
   border-width: 2px !important;
+}
+.designer-settings-popover {
+  width: 290px;
+}
+.designer-ace-editor {
+  min-height: 400px;
+}
+.designer-dnd-item-label {
+  min-height: 22px;
+}
+.designer-drop-area-placeholder {
+  color: #ddd;
+  text-align: center;
 }
 .top-buffer-20px {
   margin-top: 20px;

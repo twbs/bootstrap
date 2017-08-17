@@ -49,6 +49,7 @@ body {
 
 }
 
+/* only the top level container gets special styling */
 .apps-container {
   border: 1px solid #ddd;
   border-radius: 4px;
@@ -56,7 +57,6 @@ body {
   min-height: 50px;
 }
 
-/* only the top level container gets special styling */
 .apps-container .apps-container {
   border: 1px dashed blue;
   border-radius: 4px;
@@ -140,6 +140,23 @@ body {
   border-width: 2px !important;
   border-style: solid !important;
   border-color: darkorchid;
+}
+
+.designer-settings-popover {
+  width: 290px
+}
+
+.designer-ace-editor {
+  min-height: 400px
+}
+
+.designer-dnd-item-label {
+  min-height: 22px
+}
+
+.designer-drop-area-placeholder {
+  text-align:center;
+  color: #ddd
 }
 
 .top-buffer-20px {
