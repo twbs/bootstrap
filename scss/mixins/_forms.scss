@@ -23,6 +23,28 @@
 
 @mixin form-validation-state($state, $color) {
 
+  .#{$state}-feedback {
+    display: none;
+    margin-top: .25rem;
+    font-size: .875rem;
+    color: $color;
+  }
+
+  .#{$state}-tooltip {
+    position: absolute;
+    top: 100%;
+    z-index: 5;
+    display: none;
+    width: 250px;
+    padding: .5rem;
+    margin-top: .1rem;
+    font-size: .875rem;
+    line-height: 1;
+    color: #fff;
+    background-color: rgba($color,.8);
+    border-radius: .2rem;
+  }
+
   .form-control,
   .custom-select {
     .was-validated &:#{$state},
