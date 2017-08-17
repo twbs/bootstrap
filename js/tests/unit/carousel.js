@@ -879,4 +879,43 @@ $(function () {
       }, 80)
     }, 80)
   })
+
+  QUnit.test('Should not go to the next item when the parent of the carousel is not visible', function (assert) {
+    assert.expect(2)
+    var done = assert.async()
+    var html = '<div id="parent" style="display: none;">'
+             + '  <div id="myCarousel" class="carousel slide" data-interval="50" style="display: none;">'
+             + '    <div class="carousel-inner">'
+             + '      <div id="firstItem" class="carousel-item active">'
+             + '        <img alt="">'
+             + '      </div>'
+             + '      <div class="carousel-item">'
+             + '        <img alt="">'
+             + '      </div>'
+             + '      <div class="carousel-item">'
+             + '        <img alt="">'
+             + '      </div>'
+             + '    <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>'
+             + '    <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>'
+             + '  </div>'
+             + '</div>'
+    var $html = $(html)
+    $html.appendTo('#qunit-fixture')
+    var $parent = $html.find('#parent')
+    var $carousel = $html.find('#myCarousel')
+    $carousel.bootstrapCarousel()
+    var $firstItem = $('#firstItem')
+
+    setTimeout(function () {
+      assert.ok($firstItem.hasClass('active'))
+      $carousel.bootstrapCarousel('dispose')
+      $parent.attr('style', 'visibility: hidden;')
+      $carousel.bootstrapCarousel()
+
+      setTimeout(function () {
+        assert.ok($firstItem.hasClass('active'))
+        done()
+      }, 80)
+    }, 80)
+  })
 })
