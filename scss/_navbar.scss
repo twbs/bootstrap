@@ -74,6 +74,14 @@
     position: static;
     float: none;
   }
+
+  .dropup {
+    .dropdown-menu {
+      position: absolute;
+      top: auto;
+      bottom: 100%;
+    }
+  }
 }
 
 
