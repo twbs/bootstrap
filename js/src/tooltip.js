@@ -291,6 +291,9 @@ const Tooltip = (($) => {
         this._popper = new Popper(this.element, tip, {
           placement: attachment,
           modifiers: {
+            preventOverflow: {
+              boundariesElement: 'viewport'
+            },
             offset: {
               offset: this.config.offset
             },
