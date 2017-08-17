@@ -44,10 +44,11 @@
     "js-test-cloud": "ruby -r webrick -e \"s = WEBrick::HTTPServer.new(:Port => 3000, :DocumentRoot => Dir.pwd, :Logger => WEBrick::Log.new('/dev/null'), :AccessLog => []); trap('INT') { s.shutdown }; s.start\" & grunt saucelabs-qunit",
     "docs": "npm-run-all docs-compile docs-lint",
     "docs-lint": "htmllint --rc build/.htmllintrc _gh_pages/*.html _gh_pages/**/*.html js/tests/visual/*.html",
-    "docs-compile": "bundle exec jekyll build",
+    "docs-compile": "bundle exec jekyll build && npm run docs-workbox-precache",
     "docs-serve": "bundle exec jekyll serve",
     "docs-github": "shx echo \"github: true\" > twbsconfig.yml && npm run docs-compile -- --config _config.yml,twbsconfig.yml && shx rm ./twbsconfig.yml",
     "docs-upload-preview": "build/upload-preview.sh",
+    "docs-workbox-precache": "node build/workbox.js",
     "maintenance-dependencies": "ncu -a -x jquery && npm update && bundle update && shx echo 'Manually update assets/js/vendor/*, js/tests/vendor/* and .travis.yml'",
     "release-version": "node build/change-version.js",
     "release-zip": "cd dist/ && zip -r9 bootstrap-$npm_package_version-dist.zip * && shx mv bootstrap-$npm_package_version-dist.zip ..",
@@ -99,7 +100,8 @@
     "rollup-plugin-node-resolve": "^3.0.0",
     "shelljs": "^0.7.8",
     "shx": "^0.2.2",
-    "uglify-js": "^3.0.24"
+    "uglify-js": "^3.0.24",
+    "workbox-build": "^2.0.1"
   },
   "engines": {
     "node": ">=4"
