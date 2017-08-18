@@ -48,3 +48,17 @@
 .text-hide {
   @include text-hide();
 }
+
+// Shadow
+
+@if $enable-text-shadows {
+  @for $level from 0 through 10 {
+    .text-shadow-#{$level} {
+      @if $level == 0 {
+        text-shadow: none;
+      } @else {
+        text-shadow: 1px 1px 1px rgba($black, $level / 10);
+      }
+    }
+  }
+}
