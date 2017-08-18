@@ -1519,8 +1519,37 @@ h4 code {
   font-weight: 600;
   line-height: 24px;
 }
-
 .bs-docs-section > .alert {
   padding: 8px 0;
   background-color: transparent;
+}
+
+.circle-bg-margin {
+  margin-top: 60%;
+  margin-bottom: 60%;
+}
+.circle-bg-xs-margin {
+  margin-top: 12.5%;
+  margin-bottom: 12.5%;
+}
+.circle-bg-sm-margin {
+  margin-top: 25%;
+  margin-bottom: 25%;
+}
+.circle-bg-lg-margin {
+  margin-top: 100%;
+  margin-bottom: 100%;
+}
+.circle-bg-xl-margin {
+  margin-top: 200%;
+  margin-bottom: 200%;
+}
+
+.box-dashed {
+  border: 2px dashed #829ca9;
+}
+
+.bs-example,.panel-body {
+  position: relative;
+  z-index: -1;
 }
