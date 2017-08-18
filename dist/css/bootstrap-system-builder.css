@@ -5801,13 +5801,13 @@ body {
 #sfb-nav-tabs-list > li:nth-child(1) {
   margin-left: 15px;
 }
+/* only the top level container gets special styling */
 .apps-container {
   min-height: 50px;
   padding: 4px;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
-/* only the top level container gets special styling */
 .apps-container .apps-container {
   height: auto;
   padding: 4px;
@@ -5859,9 +5859,6 @@ body {
 #loading-bar-container {
   position: relative;
 }
-.elastic-search-result-selected {
-  background-color: #dff0d8;
-}
 .designer-sortable-placeholder {
   height: 44px;
   background-color: #d9edf7;
@@ -5875,8 +5872,27 @@ body {
   border-style: solid !important;
   border-width: 2px !important;
 }
+.designer-settings-popover {
+  width: 290px;
+}
+.designer-ace-editor {
+  min-height: 400px;
+}
+.designer-dnd-item-label {
+  min-height: 22px;
+}
+.designer-drop-area-placeholder {
+  color: #ddd;
+  text-align: center;
+}
 .top-buffer-20px {
   margin-top: 20px;
+}
+.sf-array-close-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  z-index: 20;
 }
 .clear {
   clear: both;
