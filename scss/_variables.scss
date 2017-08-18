@@ -626,20 +626,10 @@ $card-spacer-y:            .75rem !default;
 $card-spacer-x:            1.25rem !default;
 $card-border-width:        $border-width !default;
 $card-border-radius:       $border-radius !default;
-<<<<<<< HEAD
-$card-border-color:        rgba(0,0,0,.125) !default;
-$card-border-radius-inner: calc(#{$card-border-radius} - #{$card-border-width}) !default;
-$card-cap-color:           $gray-dark !default;
-$card-cap-bg:              $gray-lightest !default;
-$card-bg:                  #fff !default;
-
-$card-link-hover-color:    #fff !default;
-=======
 $card-border-color:        rgba($black,.125) !default;
 $card-inner-border-radius: calc(#{$card-border-radius} - #{$card-border-width}) !default;
 $card-cap-bg:              rgba($black, .03) !default;
 $card-bg:                  $white !default;
->>>>>>> twbs/v4-dev
 
 $card-img-overlay-padding: 1.25rem !default;
 
