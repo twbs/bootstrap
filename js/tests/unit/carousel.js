@@ -170,6 +170,66 @@ $(function () {
       .bootstrapCarousel('next')
   })
 
+  QUnit.test('should support multiple carousel indicators', function (assert) {
+    assert.expect(15)
+    var carouselHTML = '<div id="carousel-example-generic" class="carousel slide">'
+        + '<ol id="carousel-indicators-1" class="carousel-indicators">'
+        + '<li data-target="#carousel-example-generic" data-slide-to="0" class="active"/>'
+        + '<li data-target="#carousel-example-generic" data-slide-to="1"/>'
+        + '</ol>'
+        + '<ol id="carousel-indicators-2" class="carousel-indicators">'
+        + '<li data-target="#carousel-example-generic" data-slide-to="0" class="active"/>'
+        + '<li data-target="#carousel-example-generic" data-slide-to="1"/>'
+        + '</ol>'
+        + '<div class="carousel-inner">'
+        + '<div class="carousel-item active">'
+        + '<div class="carousel-caption"/>'
+        + '</div>'
+        + '<div class="carousel-item">'
+        + '<div class="carousel-caption"/>'
+        + '</div>'
+        + '</div>'
+        + '<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"/>'
+        + '<a class="right carousel-control" href="#carousel-example-generic" data-slide="next"/>'
+        + '</div>'
+    var $carousel = $(carouselHTML)
+
+    var done = assert.async()
+    $carousel
+      .one('slide.bs.carousel', function (e) {
+        e.preventDefault()
+        setTimeout(function () {
+          assert.ok($carousel.find('.carousel-item:eq(0)').is('.active'), 'first item still active')
+          assert.ok($carousel.find('#carousel-indicators-1.carousel-indicators li:eq(0)').is('.active'), 'first indicator of indicators #1 still active')
+          assert.ok($carousel.find('#carousel-indicators-2.carousel-indicators li:eq(0)').is('.active'), 'first indicator of indicators #2 still active')
+          $carousel.bootstrapCarousel('next')
+        }, 0)
+      })
+      .one('slid.bs.carousel', function () {
+        setTimeout(function () {
+          assert.ok(!$carousel.find('.carousel-item:eq(0)').is('.active'), 'first item still active')
+          assert.ok(!$carousel.find('#carousel-indicators-1.carousel-indicators li:eq(0)').is('.active'), 'first indicator of indicators #1 still active')
+          assert.ok(!$carousel.find('#carousel-indicators-2.carousel-indicators li:eq(0)').is('.active'), 'first indicator of indicators #2 still active')
+          assert.ok($carousel.find('.carousel-item:eq(1)').is('.active'), 'second item active')
+          assert.ok($carousel.find('#carousel-indicators-1.carousel-indicators li:eq(1)').is('.active'), 'second indicator of indicators #1 active')
+          assert.ok($carousel.find('#carousel-indicators-2.carousel-indicators li:eq(1)').is('.active'), 'second indicator of indicators #2 active')
+          $carousel.bootstrapCarousel('next')
+        }, 0)
+      })
+      .one('slid.bs.carousel', function () {
+        setTimeout(function () {
+          assert.ok(!$carousel.find('.carousel-item:eq(1)').is('.active'), 'first item still active')
+          assert.ok(!$carousel.find('#carousel-indicators-1.carousel-indicators li:eq(1)').is('.active'), 'second indicator of indicators #1 still active')
+          assert.ok(!$carousel.find('#carousel-indicators-2.carousel-indicators li:eq(1)').is('.active'), 'second indicator of indicators #2 still active')
+          assert.ok($carousel.find('.carousel-item:eq(0)').is('.active'), 'second item active')
+          assert.ok($carousel.find('#carousel-indicators-1.carousel-indicators li:eq(0)').is('.active'), 'first indicator of indicators #1 active')
+          assert.ok($carousel.find('#carousel-indicators-2.carousel-indicators li:eq(0)').is('.active'), 'first indicator of indicators #2 active')
+          done()
+        }, 0)
+      })
+      .bootstrapCarousel('next')
+  })
+
   QUnit.test('should fire slide event with direction', function (assert) {
     assert.expect(4)
     var carouselHTML = '<div id="myCarousel" class="carousel slide">' +

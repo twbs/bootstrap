@@ -113,11 +113,11 @@ class Carousel {
     this.touchStartX    = 0
     this.touchDeltaX    = 0
 
-    this._config            = this._getConfig(config)
-    this._element           = element
-    this._indicatorsElement = this._element.querySelector(Selector.INDICATORS)
-    this._touchSupported    = 'ontouchstart' in document.documentElement || navigator.maxTouchPoints > 0
-    this._pointerEvent      = Boolean(window.PointerEvent || window.MSPointerEvent)
+    this._config             = this._getConfig(config)
+    this._element            = element
+    this._indicatorsElements = this._element.querySelector(Selector.INDICATORS)
+    this._touchSupported     = 'ontouchstart' in document.documentElement || navigator.maxTouchPoints > 0
+    this._pointerEvent       = Boolean(window.PointerEvent || window.MSPointerEvent)
 
     this._addEventListeners()
   }
@@ -218,14 +218,14 @@ class Carousel {
     $(this._element).off(EVENT_KEY)
     $.removeData(this._element, DATA_KEY)
 
-    this._items             = null
-    this._config            = null
-    this._element           = null
-    this._interval          = null
-    this._isPaused          = null
-    this._isSliding         = null
-    this._activeElement     = null
-    this._indicatorsElement = null
+    this._items              = null
+    this._config             = null
+    this._element            = null
+    this._interval           = null
+    this._isPaused           = null
+    this._isSliding          = null
+    this._activeElement      = null
+    this._indicatorsElements = null
   }
 
   // Private
@@ -392,18 +392,17 @@ class Carousel {
   }
 
   _setActiveIndicatorElement(element) {
-    if (this._indicatorsElement) {
-      const indicators = [].slice.call(this._indicatorsElement.querySelectorAll(Selector.ACTIVE))
+    if (this._indicatorsElements) {
+      const indicators = [].slice.call(this._indicatorsElements.querySelectorAll(Selector.ACTIVE))
       $(indicators)
         .removeClass(ClassName.ACTIVE)
 
-      const nextIndicator = this._indicatorsElement.children[
-        this._getItemIndex(element)
-      ]
-
-      if (nextIndicator) {
+      $(this._indicatorsElements).each((index, indicatorElement) => {
+        const nextIndicator = indicatorElement.children[
+          this._getItemIndex(element)
+        ]
         $(nextIndicator).addClass(ClassName.ACTIVE)
-      }
+      })
     }
   }
 
