@@ -27,7 +27,11 @@
 
   // Disabled comes first so active can properly restyle
   &.disabled,
-  &:disabled {
+  &:disabled,
+  &.disabled:active,
+  &:disabled:active,
+  &.disabled.active,
+  &:disabled.active {
     background-color: $background;
     border-color: $border;
   }
@@ -60,7 +64,11 @@
   }
 
   &.disabled,
-  &:disabled {
+  &:disabled,
+  &.disabled:active,
+  &:disabled:active,
+  &.disabled.active,
+  &:disabled.active {
     color: $color;
     background-color: transparent;
   }

@@ -27,7 +27,11 @@
 
   // Disabled comes first so active can properly restyle
   &.disabled,
-  &:disabled {
+  &:disabled,
+  &.disabled:active,
+  &:disabled:active,
+  &.disabled.active,
+  &:disabled.active {
     opacity: .65;
     @include box-shadow(none);
   }
