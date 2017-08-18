@@ -67,7 +67,6 @@
   padding: $card-spacer-y $card-spacer-x;
   margin-bottom: 0; // Removes the default margin-bottom of <hN>
   background-color: $card-cap-bg;
-  color: $card-cap-color;
   border-bottom: $card-border-width solid $card-border-color;
 
   &:first-child {
@@ -78,7 +77,6 @@
 .card-footer {
   padding: $card-spacer-y $card-spacer-x;
   background-color: $card-cap-bg;
-  color: $card-cap-color;
   border-top: $card-border-width solid $card-border-color;
 
   &:last-child {
