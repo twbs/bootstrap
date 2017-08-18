@@ -5859,9 +5859,6 @@ body {
 #loading-bar-container {
   position: relative;
 }
-.elastic-search-result-selected {
-  background-color: #dff0d8;
-}
 .designer-sortable-placeholder {
   height: 44px;
   background-color: #d9edf7;
@@ -5890,25 +5887,6 @@ body {
 }
 .top-buffer-20px {
   margin-top: 20px;
-}
-.min-height-300px {
-  min-height: 300px;
-}
-.border-top-radius-0 {
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
-.float-none {
-  float: none;
-}
-.width-100px {
-  width: 100px;
-}
-.float-none {
-  float: none;
-}
-.padding-15px {
-  padding: 15px;
 }
 .sf-array-close-button {
   position: absolute;
