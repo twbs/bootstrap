@@ -1,0 +1,29 @@
+// Buttons
+//
+// Custom buttons for the docs.
+
+.btn-bd-purple {
+  font-weight: 500;
+  color: $bd-purple-bright;
+  border-color: $bd-purple-bright;
+
+  &:hover,
+  &:active {
+    color: #fff;
+    background-color: $bd-purple-bright;
+    border-color: $bd-purple-bright;
+  }
+}
+
+.btn-bd-yellow {
+  font-weight: 500;
+  color: $bd-yellow;
+  border-color: $bd-yellow;
+
+  &:hover,
+  &:active {
+    color: $bd-graphite;
+    background-color: $bd-yellow;
+    border-color: $bd-yellow;
+  }
+}

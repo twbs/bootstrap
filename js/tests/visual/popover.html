@@ -3,7 +3,6 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
     <link rel="stylesheet" href="../../../dist/css/bootstrap.min.css">
     <title>Popover</title>
   </head>
@@ -11,7 +10,11 @@
     <div class="container">
       <h1>Popover <small>Bootstrap Visual Test</small></h1>
 
-      <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+      <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="auto" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+        Popover on auto
+      </button>
+
+      <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="top" data-content="Default placement was on top but not enough place">
         Popover on top
       </button>
 
@@ -29,8 +32,8 @@
       </button>
     </div>
 
-    <script src="../vendor/jquery.min.js"></script>
-    <script src="../vendor/tether.min.js"></script>
+    <script src="../../../assets/js/vendor/jquery-slim.min.js"></script>
+    <script src="../../../assets/js/vendor/popper.min.js"></script>
     <script src="../../dist/util.js"></script>
     <script src="../../dist/tooltip.js"></script>
     <script src="../../dist/popover.js"></script>

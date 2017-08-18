@@ -11,8 +11,8 @@
 
 // Fluid container
 //
-// Utilizes the mixin meant for fixed width containers, but without any defined
-// width for fluid, full width layouts.
+// Utilizes the mixin meant for fixed width containers, but with 100% width for
+// fluid, full width layouts.
 
 @if $enable-grid-classes {
   .container-fluid {

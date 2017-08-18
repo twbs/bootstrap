@@ -1,7 +1,7 @@
 {
   "env": {
-    "qunit": true,
-    "es6": false
+    "es6": false,
+    "qunit": true
   },
   "globals": {
     "Util": false
@@ -10,6 +10,7 @@
     "ecmaVersion": 5,
     "sourceType": "script"
   },
+  "extends": "../.eslintrc.json",
   "rules": {
     // Best Practices
     "consistent-return": "off",
@@ -23,12 +24,18 @@
     // Strict Mode
     "strict": "off",
 
+    // NodeJS and CommonJS
+    "global-require": "off",
+    "no-process-env": "off",
+    "no-process-exit": "off",
+
     // Stylistic Issues
     "brace-style": "off",
     "func-style": "off",
     "max-statements-per-line": "off",
     "object-curly-newline": "off",
     "object-property-newline": "off",
+    "spaced-comment": "off",
 
     // ECMAScript 6
     "no-var": "off",

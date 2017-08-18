@@ -4,44 +4,26 @@
 // `<nav>`s or `<ul>`s.
 
 .nav {
+  display: flex;
+  flex-wrap: wrap;
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
 }
 
 .nav-link {
-  display: inline-block;
+  display: block;
+  padding: $nav-link-padding-y $nav-link-padding-x;
 
   @include hover-focus {
     text-decoration: none;
   }
 
-  // Disabled state lightens text and removes hover/tab effects
+  // Disabled state lightens text
   &.disabled {
-    color: $nav-disabled-link-color;
-
-    @include plain-hover-focus {
-      color: $nav-disabled-link-hover-color;
-      cursor: $cursor-disabled;
-      background-color: $nav-disabled-link-hover-bg;
-    }
+    color: $nav-link-disabled-color;
   }
 }
-
-
-// Nav inline
-
-.nav-inline {
-  .nav-item {
-    display: inline-block;
-  }
-
-  .nav-item + .nav-item,
-  .nav-link + .nav-link {
-    margin-left: $nav-item-inline-spacer;
-  }
-}
-
 
 //
 // Tabs
@@ -49,21 +31,12 @@
 
 .nav-tabs {
   border-bottom: $nav-tabs-border-width solid $nav-tabs-border-color;
-  @include clearfix();
 
   .nav-item {
-    float: left;
-    // Make the list-items overlay the bottom border
     margin-bottom: -$nav-tabs-border-width;
-
-    + .nav-item {
-      margin-left: $nav-item-margin;
-    }
   }
 
   .nav-link {
-    display: block;
-    padding: $nav-link-padding;
     border: $nav-tabs-border-width solid transparent;
     @include border-top-radius($nav-tabs-border-radius);
 
@@ -72,21 +45,17 @@
     }
 
     &.disabled {
-      @include plain-hover-focus {
-        color: $nav-disabled-link-color;
-        background-color: transparent;
-        border-color: transparent;
-      }
+      color: $nav-link-disabled-color;
+      background-color: transparent;
+      border-color: transparent;
     }
   }
 
   .nav-link.active,
-  .nav-item.open .nav-link {
-    @include plain-hover-focus {
-      color: $nav-tabs-active-link-hover-color;
-      background-color: $nav-tabs-active-link-hover-bg;
-      border-color: $nav-tabs-active-link-hover-border-color $nav-tabs-active-link-hover-border-color transparent;
-    }
+  .nav-item.show .nav-link {
+    color: $nav-tabs-link-active-color;
+    background-color: $nav-tabs-link-active-bg;
+    border-color: $nav-tabs-link-active-border-color $nav-tabs-link-active-border-color $nav-tabs-link-active-bg;
   }
 
   .dropdown-menu {
@@ -103,77 +72,47 @@
 //
 
 .nav-pills {
-  @include clearfix();
-
-  .nav-item {
-    float: left;
-
-    + .nav-item {
-      margin-left: $nav-item-margin;
-    }
-  }
-
   .nav-link {
-    display: block;
-    padding: $nav-link-padding;
     @include border-radius($nav-pills-border-radius);
-  }
 
-  .nav-link.active,
-  .nav-item.open .nav-link {
-    @include plain-hover-focus {
-      color: $nav-pills-active-link-color;
-      cursor: default;
-      background-color: $nav-pills-active-link-bg;
-    }
-  }
-}
-
-.nav-stacked {
-  .nav-item {
-    display: block;
-    float: none;
-
-    + .nav-item {
-      margin-top: $nav-item-margin;
-      margin-left: 0;
+    &.active,
+    .show > & {
+      color: $nav-pills-link-active-color;
+      background-color: $nav-pills-link-active-bg;
     }
   }
 }
 
 
 //
+// Justified variants
+//
+
+.nav-fill {
+  .nav-item {
+    flex: 1 1 auto;
+    text-align: center;
+  }
+}
+
+.nav-justified {
+  .nav-item {
+    flex-basis: 0;
+    flex-grow: 1;
+    text-align: center;
+  }
+}
+
+
 // Tabbable tabs
 //
-
 // Hide tabbable panes to start, show them when `.active`
+
 .tab-content {
   > .tab-pane {
     display: none;
   }
   > .active {
     display: block;
-  }
-}
-
-
-// Justified navigation (flexbox only)
-//
-// Justified nav components are only built for flexbox mode in Bootstrap 4. In
-// previous versions, this component variation was limited to anchor-based nav
-// implementations--meaning it couldn't be used on button elements. This is due
-// to a longstanding Safari bug in responsive table styles.
-//
-// Using flexbox, we avoid that problem altogether at the cost of no default
-// justified navigation for default Bootstrap. Sorry, y'all <3.
-
-@if $enable-flex {
-  .nav-justified {
-    display: flex;
-
-    .nav-item {
-      flex: 1;
-      text-align: center;
-    }
   }
 }
