@@ -103,17 +103,21 @@
 //
 // Same table markup, but inverted color scheme: dark background and light text.
 
-.thead-dark {
-  th {
-    color: $table-dark-color;
-    background-color: $table-dark-bg;
+.table {
+  .thead-dark {
+    th {
+      color: $table-dark-color;
+      background-color: $table-dark-bg;
+      border-color: $table-dark-border-color;
+    }
   }
-}
 
-.thead-light {
-  th {
-    color: $table-head-color;
-    background-color: $table-head-bg;
+  .thead-light {
+    th {
+      color: $table-head-color;
+      background-color: $table-head-bg;
+      border-color: $table-border-color;
+    }
   }
 }
 
