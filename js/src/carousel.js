@@ -131,7 +131,7 @@ const Carousel = (($) => {
 
     nextWhenVisible() {
       // Don't call next when the page isn't visible
-      // or the carousel or it's parent isn't visible
+      // or the carousel or its parent isn't visible
       if (!document.hidden &&
         ($(this._element).is(':visible') && $(this._element).css('visibility') !== 'hidden')) {
         this.next()
