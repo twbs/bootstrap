@@ -418,7 +418,8 @@ const Carousel = (($) => {
 
             setTimeout(() => $(this._element).trigger(slidEvent), 0)
           })
-          .emulateTransitionEnd(this._transitionDuration)
+
+        Util.emulateTransitionEnd(activeElement, TRANSITION_DURATION)
       } else {
         $(activeElement).removeClass(ClassName.ACTIVE)
         $(nextElement).addClass(ClassName.ACTIVE)

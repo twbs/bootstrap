@@ -190,7 +190,8 @@ const Modal = (($) => {
       if (transition) {
         $(this._element)
           .one(Util.TRANSITION_END, (event) => this._hideModal(event))
-          .emulateTransitionEnd(TRANSITION_DURATION)
+
+        Util.emulateTransitionEnd(this._element, TRANSITION_DURATION)
       } else {
         this._hideModal()
       }
@@ -265,7 +266,8 @@ const Modal = (($) => {
       if (transition) {
         $(this._dialog)
           .one(Util.TRANSITION_END, transitionComplete)
-          .emulateTransitionEnd(TRANSITION_DURATION)
+
+        Util.emulateTransitionEnd(this._dialog, TRANSITION_DURATION)
       } else {
         transitionComplete()
       }
@@ -371,7 +373,12 @@ const Modal = (($) => {
 
         $(this._backdrop)
           .one(Util.TRANSITION_END, callback)
+<<<<<<< HEAD
           .emulateTransitionEnd(BACKDROP_TRANSITION_DURATION)
+=======
+
+        Util.emulateTransitionEnd(this._backdrop, BACKDROP_TRANSITION_DURATION)
+>>>>>>> Remove jQuery from Util.js
       } else if (!this._isShown && this._backdrop) {
         $(this._backdrop).removeClass(ClassName.SHOW)
 
@@ -386,7 +393,8 @@ const Modal = (($) => {
            $(this._element).hasClass(ClassName.FADE)) {
           $(this._backdrop)
             .one(Util.TRANSITION_END, callbackRemove)
-            .emulateTransitionEnd(BACKDROP_TRANSITION_DURATION)
+
+          Util.emulateTransitionEnd(this._backdrop, BACKDROP_TRANSITION_DURATION)
         } else {
           callbackRemove()
         }

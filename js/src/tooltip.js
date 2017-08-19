@@ -337,7 +337,8 @@ const Tooltip = (($) => {
         if (Util.supportsTransitionEnd() && $(this.tip).hasClass(ClassName.FADE)) {
           $(this.tip)
             .one(Util.TRANSITION_END, complete)
-            .emulateTransitionEnd(Tooltip._TRANSITION_DURATION)
+
+          Util.emulateTransitionEnd(this.tip, Tooltip._TRANSITION_DURATION)
         } else {
           complete()
         }
@@ -386,7 +387,8 @@ const Tooltip = (($) => {
           $(this.tip).hasClass(ClassName.FADE)) {
         $(tip)
           .one(Util.TRANSITION_END, complete)
-          .emulateTransitionEnd(TRANSITION_DURATION)
+
+        Util.emulateTransitionEnd(tip, TRANSITION_DURATION)
       } else {
         complete()
       }
