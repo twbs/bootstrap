@@ -112,7 +112,8 @@ class Alert {
 
     $(element)
       .one(Util.TRANSITION_END, (event) => this._destroyElement(element, event))
-      .emulateTransitionEnd(transitionDuration)
+
+    Util.emulateTransitionEnd(transitionDuration)
   }
 
   _destroyElement(element) {
