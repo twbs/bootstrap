@@ -173,8 +173,8 @@ const Tab = (() => {
       if (active && isTransitioning) {
         $(active)
           .one(Util.TRANSITION_END, complete)
-          .emulateTransitionEnd(TRANSITION_DURATION)
 
+        Util.emulateTransitionEnd(active, TRANSITION_DURATION)
       } else {
         complete()
       }
