@@ -105,8 +105,8 @@
 
 .thead-inverse {
   th {
-    color: $table-inverse-color;
-    background-color: $table-inverse-bg;
+    color: $table-dark-color;
+    background-color: $table-dark-bg;
   }
 }
 
@@ -118,13 +118,13 @@
 }
 
 .table-inverse {
-  color: $table-inverse-color;
-  background-color: $table-inverse-bg;
+  color: $table-dark-color;
+  background-color: $table-dark-bg;
 
   th,
   td,
   thead th {
-    border-color: $table-inverse-border-color;
+    border-color: $table-dark-border-color;
   }
 
   &.table-bordered {
@@ -133,14 +133,14 @@
 
   &.table-striped {
     tbody tr:nth-of-type(odd) {
-      background-color: $table-inverse-accent-bg;
+      background-color: $table-dark-accent-bg;
     }
   }
 
   &.table-hover {
     tbody tr {
       @include hover {
-        background-color: $table-inverse-hover-bg;
+        background-color: $table-dark-hover-bg;
       }
     }
   }

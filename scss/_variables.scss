@@ -283,11 +283,11 @@ $table-border-color:            $gray-200 !default;
 $table-head-bg:                 $gray-200 !default;
 $table-head-color:              $gray-700 !default;
 
-$table-inverse-bg:              $gray-900 !default;
-$table-inverse-accent-bg:       rgba($white, .05) !default;
-$table-inverse-hover-bg:        rgba($white, .075) !default;
-$table-inverse-border-color:    lighten($gray-900, 7.5%) !default;
-$table-inverse-color:           $body-bg !default;
+$table-dark-bg:              $gray-900 !default;
+$table-dark-accent-bg:       rgba($white, .05) !default;
+$table-dark-hover-bg:        rgba($white, .075) !default;
+$table-dark-border-color:    lighten($gray-900, 7.5%) !default;
+$table-dark-color:           $body-bg !default;
 
 
 // Buttons
