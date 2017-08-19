@@ -84,6 +84,7 @@
     "htmllint-cli": "^0.0.6",
     "node-sass": "^4.5.3",
     "nodemon": "^1.11.0",
+    "npm-check-updates": "^2.12.1",
     "npm-run-all": "^4.0.2",
     "phantomjs-prebuilt": "^2.1.14",
     "postcss-cli": "^4.1.0",
