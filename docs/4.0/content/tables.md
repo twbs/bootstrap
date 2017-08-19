@@ -45,10 +45,10 @@ Using the most basic table markup, here's how `.table`-based tables look in Boot
 </table>
 {% endexample %}
 
-You can also invert the colors—with light text on dark backgrounds—with `.table-inverse`.
+You can also invert the colors—with light text on dark backgrounds—with `.table-dark`.
 
 {% example html %}
-<table class="table table-inverse">
+<table class="table table-dark">
   <thead>
     <tr>
       <th>#</th>
@@ -82,11 +82,11 @@ You can also invert the colors—with light text on dark backgrounds—with `.ta
 
 ## Table head options
 
-Similar to default and inverse tables, use one of two modifier classes to make `<thead>`s appear light or dark gray.
+Similar to tables and dark tables, use the modifier classes `.thead-light` or `.thead-dark` to make `<thead>`s appear light or dark gray.
 
 {% example html %}
 <table class="table">
-  <thead class="thead-inverse">
+  <thead class="thead-dark">
     <tr>
       <th>#</th>
       <th>First Name</th>
@@ -117,7 +117,7 @@ Similar to default and inverse tables, use one of two modifier classes to make `
 </table>
 
 <table class="table">
-  <thead class="thead-default">
+  <thead class="thead-light">
     <tr>
       <th>#</th>
       <th>First Name</th>
@@ -186,7 +186,7 @@ Use `.table-striped` to add zebra-striping to any table row within the `<tbody>`
 {% endexample %}
 
 {% example html %}
-<table class="table table-striped table-inverse">
+<table class="table table-striped table-dark">
   <thead>
     <tr>
       <th>#</th>
@@ -261,7 +261,7 @@ Add `.table-bordered` for borders on all sides of the table and cells.
 {% endexample %}
 
 {% example html %}
-<table class="table table-bordered table-inverse">
+<table class="table table-bordered table-dark">
   <thead>
     <tr>
       <th>#</th>
@@ -335,7 +335,7 @@ Add `.table-hover` to enable a hover state on table rows within a `<tbody>`.
 {% endexample %}
 
 {% example html %}
-<table class="table table-hover table-inverse">
+<table class="table table-hover table-dark">
   <thead>
     <tr>
       <th>#</th>
@@ -403,7 +403,7 @@ Add `.table-sm` to make tables more compact by cutting cell padding in half.
 {% endexample %}
 
 {% example html %}
-<table class="table table-sm table-inverse">
+<table class="table table-sm table-dark">
   <thead>
     <tr>
       <th>#</th>
@@ -487,10 +487,10 @@ Use contextual classes to color table rows or individual cells.
 </tr>
 {% endhighlight %}
 
-Regular table background variants are not available with the inverse table, however, you may use [text or background utilities]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/colors/) to achieve similar styles.
+Regular table background variants are not available with the dark table, however, you may use [text or background utilities]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/colors/) to achieve similar styles.
 
 <div class="bd-example">
-  <table class="table table-inverse">
+  <table class="table table-dark">
     <thead>
       <tr>
         <th>#</th>
