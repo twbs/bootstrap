@@ -99,25 +99,25 @@
 @include table-row-variant(active, $table-active-bg);
 
 
-// Inverse styles
+// Dark styles
 //
 // Same table markup, but inverted color scheme: dark background and light text.
 
-.thead-inverse {
+.thead-dark {
   th {
     color: $table-dark-color;
     background-color: $table-dark-bg;
   }
 }
 
-.thead-default {
+.thead-light {
   th {
     color: $table-head-color;
     background-color: $table-head-bg;
   }
 }
 
-.table-inverse {
+.table-dark {
   color: $table-dark-color;
   background-color: $table-dark-bg;
 
