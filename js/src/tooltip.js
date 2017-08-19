@@ -344,7 +344,8 @@ class Tooltip {
 
         $(this.tip)
           .one(Util.TRANSITION_END, complete)
-          .emulateTransitionEnd(transitionDuration)
+
+        Util.emulateTransitionEnd(tip, transitionDuration)
       } else {
         complete()
       }
