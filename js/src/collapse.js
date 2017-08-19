@@ -189,8 +189,8 @@ const Collapse = (($) => {
 
       $(this._element)
         .one(Util.TRANSITION_END, complete)
-        .emulateTransitionEnd(transitionDuration)
 
+      Util.emulateTransitionEnd(this._element, transitionDuration)
       this._element.style[dimension] = `${this._element[scrollSize]}px`
     }
 
@@ -247,7 +247,8 @@ const Collapse = (($) => {
 
       $(this._element)
         .one(Util.TRANSITION_END, complete)
-        .emulateTransitionEnd(transitionDuration)
+
+      Util.emulateTransitionEnd(this._element, transitionDuration)
     }
 
     setTransitioning(isTransitioning) {

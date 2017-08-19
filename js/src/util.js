@@ -1,4 +1,4 @@
-import $ from 'jquery'
+import Event from './dom/event'
 
 /**
  * --------------------------------------------------------------------------
@@ -113,7 +113,7 @@ const Util = (($) => {
     },
 
     triggerTransitionEnd(element) {
-      $(element).trigger(TRANSITION_END)
+      Event.trigger(element, Util.TRANSITION_END)
     },
 
     // TODO: Remove in v5
@@ -123,6 +123,12 @@ const Util = (($) => {
 
     isElement(obj) {
       return (obj[0] || obj).nodeType
+    },
+
+    emulateTransitionEnd(element, duration) {
+      setTimeout(() => {
+        Util.triggerTransitionEnd(element)
+      }, duration)
     },
 
     typeCheckConfig(componentName, config, configTypes) {
@@ -144,9 +150,8 @@ const Util = (($) => {
     }
   }
 
-  setTransitionEndSupport()
-
   return Util
-})($)
+
+})()
 
 export default Util

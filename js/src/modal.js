@@ -190,7 +190,8 @@ const Modal = (($) => {
 
         $(this._element)
           .one(Util.TRANSITION_END, (event) => this._hideModal(event))
-          .emulateTransitionEnd(transitionDuration)
+
+        Util.emulateTransitionEnd(this._element, transitionDuration)
       } else {
         this._hideModal()
       }
@@ -266,7 +267,8 @@ const Modal = (($) => {
 
         $(this._dialog)
           .one(Util.TRANSITION_END, transitionComplete)
-          .emulateTransitionEnd(transitionDuration)
+
+        Util.emulateTransitionEnd(this._dialog, transitionDuration)
       } else {
         transitionComplete()
       }
@@ -372,7 +374,8 @@ const Modal = (($) => {
 
         $(this._backdrop)
           .one(Util.TRANSITION_END, callback)
-          .emulateTransitionEnd(backdropTransitionDuration)
+
+        Util.emulateTransitionEnd(this._backdrop, backdropTransitionDuration)
       } else if (!this._isShown && this._backdrop) {
         $(this._backdrop).removeClass(ClassName.SHOW)
 
@@ -388,7 +391,8 @@ const Modal = (($) => {
 
           $(this._backdrop)
             .one(Util.TRANSITION_END, callbackRemove)
-            .emulateTransitionEnd(backdropTransitionDuration)
+
+          Util.emulateTransitionEnd(this._backdrop, backdropTransitionDuration)
         } else {
           callbackRemove()
         }
