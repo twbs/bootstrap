@@ -72,7 +72,7 @@
   @return map-get($theme-colors, $key);
 }
 
-@function grayscale($key: "100") {
+@function gray($key: "100") {
   @return map-get($grays, $key);
 }
 
