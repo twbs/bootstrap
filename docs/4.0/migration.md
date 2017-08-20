@@ -6,9 +6,11 @@ group: migration
 toc: true
 ---
 
-{% callout info %}
-**Heads up!** This will be in flux as work on the v4 alphas progresses. Until then consider it incomplete, and we'd love pull requests to help keep it up to date.
-{% endcallout %}
+## Beta 2 changes
+While in beta, we aim to have no breaking changes. However, things don't always go as planned. Below are the breaking changes to bear in mind when moving from Beta 1 to Beta 2.
+
+- Removed `$badge-color` variable and it's usage on `.badge`. We use a color contrast function to pick a `color` based on the `background-color`, so the variable is unnecessary.
+
 
 ## Summary
 
