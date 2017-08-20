@@ -83,14 +83,14 @@ var Carousel = function ($) {
     INDICATORS: '.carousel-indicators',
     DATA_SLIDE: '[data-slide], [data-slide-to]',
     DATA_RIDE: '[data-ride="carousel"]'
-
-    /**
-     * ------------------------------------------------------------------------
-     * Class Definition
-     * ------------------------------------------------------------------------
-     */
-
   };
+
+  /**
+   * ------------------------------------------------------------------------
+   * Class Definition
+   * ------------------------------------------------------------------------
+   */
+
   var Carousel = function () {
     function Carousel(element, config) {
       _classCallCheck(this, Carousel);
@@ -123,7 +123,8 @@ var Carousel = function ($) {
 
     Carousel.prototype.nextWhenVisible = function nextWhenVisible() {
       // Don't call next when the page isn't visible
-      if (!document.hidden) {
+      // or the carousel or its parent isn't visible
+      if (!document.hidden && $(this._element).is(':visible') && $(this._element).css('visibility') !== 'hidden') {
         this.next();
       }
     };

@@ -85,14 +85,14 @@ var Dropdown = function ($) {
     placement: 'string',
     offset: '(number|string)',
     flip: 'boolean'
-
-    /**
-     * ------------------------------------------------------------------------
-     * Class Definition
-     * ------------------------------------------------------------------------
-     */
-
   };
+
+  /**
+   * ------------------------------------------------------------------------
+   * Class Definition
+   * ------------------------------------------------------------------------
+   */
+
   var Dropdown = function () {
     function Dropdown(element, config) {
       _classCallCheck(this, Dropdown);
@@ -241,9 +241,10 @@ var Dropdown = function ($) {
             enabled: this._config.flip
           }
         }
+      };
 
-        // Disable Popper.js for Dropdown in Navbar
-      };if (this._inNavbar) {
+      // Disable Popper.js for Dropdown in Navbar
+      if (this._inNavbar) {
         popperConfig.modifiers.applyStyle = {
           enabled: !this._inNavbar
         };
