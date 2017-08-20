@@ -1,8 +1,51 @@
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('jquery'), require('./util.js')) :
+	typeof define === 'function' && define.amd ? define(['jquery', './util.js'], factory) :
+	(global.Scrollspy = factory(global.$,global.Util));
+}(this, (function ($,Util) { 'use strict';
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+$ = $ && 'default' in $ ? $['default'] : $;
+Util = Util && 'default' in Util ? Util['default'] : Util;
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+  return typeof obj;
+} : function (obj) {
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+};
+
+
+
+
+
+
+
+
+
+
+
+var classCallCheck = function (instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+};
+
+var createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
+
+  return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) defineProperties(Constructor, staticProps);
+    return Constructor;
+  };
+}();
 
 /**
  * --------------------------------------------------------------------------
@@ -11,95 +54,97 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * --------------------------------------------------------------------------
  */
 
-var ScrollSpy = function ($) {
+/**
+ * ------------------------------------------------------------------------
+ * Constants
+ * ------------------------------------------------------------------------
+ */
+
+var NAME = 'scrollspy';
+var VERSION = '4.0.0-beta';
+var DATA_KEY = 'bs.scrollspy';
+var EVENT_KEY = '.' + DATA_KEY;
+var DATA_API_KEY = '.data-api';
+var JQUERY_NO_CONFLICT = $.fn[NAME];
+
+var Default = {
+  offset: 10,
+  method: 'auto',
+  target: ''
+};
+
+var DefaultType = {
+  offset: 'number',
+  method: 'string',
+  target: '(string|element)'
+};
+
+var Event = {
+  ACTIVATE: 'activate' + EVENT_KEY,
+  SCROLL: 'scroll' + EVENT_KEY,
+  LOAD_DATA_API: 'load' + EVENT_KEY + DATA_API_KEY
+};
+
+var ClassName = {
+  DROPDOWN_ITEM: 'dropdown-item',
+  DROPDOWN_MENU: 'dropdown-menu',
+  ACTIVE: 'active'
+};
+
+var Selector = {
+  DATA_SPY: '[data-spy="scroll"]',
+  ACTIVE: '.active',
+  NAV_LIST_GROUP: '.nav, .list-group',
+  NAV_LINKS: '.nav-link',
+  LIST_ITEMS: '.list-group-item',
+  DROPDOWN: '.dropdown',
+  DROPDOWN_ITEMS: '.dropdown-item',
+  DROPDOWN_TOGGLE: '.dropdown-toggle'
+};
+
+var OffsetMethod = {
+  OFFSET: 'offset',
+  POSITION: 'position'
 
   /**
    * ------------------------------------------------------------------------
-   * Constants
+   * Class Definition
    * ------------------------------------------------------------------------
    */
 
-  var NAME = 'scrollspy';
-  var VERSION = '4.0.0-beta';
-  var DATA_KEY = 'bs.scrollspy';
-  var EVENT_KEY = '.' + DATA_KEY;
-  var DATA_API_KEY = '.data-api';
-  var JQUERY_NO_CONFLICT = $.fn[NAME];
+};
+var ScrollSpy = function () {
+  function ScrollSpy(element, config) {
+    var _this = this;
 
-  var Default = {
-    offset: 10,
-    method: 'auto',
-    target: ''
-  };
+    classCallCheck(this, ScrollSpy);
 
-  var DefaultType = {
-    offset: 'number',
-    method: 'string',
-    target: '(string|element)'
-  };
+    this._element = element;
+    this._scrollElement = element.tagName === 'BODY' ? window : element;
+    this._config = this._getConfig(config);
+    this._selector = this._config.target + ' ' + Selector.NAV_LINKS + ',' + (this._config.target + ' ' + Selector.LIST_ITEMS + ',') + (this._config.target + ' ' + Selector.DROPDOWN_ITEMS);
+    this._offsets = [];
+    this._targets = [];
+    this._activeTarget = null;
+    this._scrollHeight = 0;
 
-  var Event = {
-    ACTIVATE: 'activate' + EVENT_KEY,
-    SCROLL: 'scroll' + EVENT_KEY,
-    LOAD_DATA_API: 'load' + EVENT_KEY + DATA_API_KEY
-  };
+    $(this._scrollElement).on(Event.SCROLL, function (event) {
+      return _this._process(event);
+    });
 
-  var ClassName = {
-    DROPDOWN_ITEM: 'dropdown-item',
-    DROPDOWN_MENU: 'dropdown-menu',
-    ACTIVE: 'active'
-  };
+    this.refresh();
+    this._process();
+  }
 
-  var Selector = {
-    DATA_SPY: '[data-spy="scroll"]',
-    ACTIVE: '.active',
-    NAV_LIST_GROUP: '.nav, .list-group',
-    NAV_LINKS: '.nav-link',
-    LIST_ITEMS: '.list-group-item',
-    DROPDOWN: '.dropdown',
-    DROPDOWN_ITEMS: '.dropdown-item',
-    DROPDOWN_TOGGLE: '.dropdown-toggle'
-  };
+  // getters
 
-  var OffsetMethod = {
-    OFFSET: 'offset',
-    POSITION: 'position'
+  createClass(ScrollSpy, [{
+    key: 'refresh',
 
-    /**
-     * ------------------------------------------------------------------------
-     * Class Definition
-     * ------------------------------------------------------------------------
-     */
-
-  };
-  var ScrollSpy = function () {
-    function ScrollSpy(element, config) {
-      var _this = this;
-
-      _classCallCheck(this, ScrollSpy);
-
-      this._element = element;
-      this._scrollElement = element.tagName === 'BODY' ? window : element;
-      this._config = this._getConfig(config);
-      this._selector = this._config.target + ' ' + Selector.NAV_LINKS + ',' + (this._config.target + ' ' + Selector.LIST_ITEMS + ',') + (this._config.target + ' ' + Selector.DROPDOWN_ITEMS);
-      this._offsets = [];
-      this._targets = [];
-      this._activeTarget = null;
-      this._scrollHeight = 0;
-
-      $(this._scrollElement).on(Event.SCROLL, function (event) {
-        return _this._process(event);
-      });
-
-      this.refresh();
-      this._process();
-    }
-
-    // getters
 
     // public
 
-    ScrollSpy.prototype.refresh = function refresh() {
+    value: function refresh() {
       var _this2 = this;
 
       var autoMethod = this._scrollElement !== this._scrollElement.window ? OffsetMethod.POSITION : OffsetMethod.OFFSET;
@@ -139,9 +184,10 @@ var ScrollSpy = function ($) {
         _this2._offsets.push(item[0]);
         _this2._targets.push(item[1]);
       });
-    };
-
-    ScrollSpy.prototype.dispose = function dispose() {
+    }
+  }, {
+    key: 'dispose',
+    value: function dispose() {
       $.removeData(this._element, DATA_KEY);
       $(this._scrollElement).off(EVENT_KEY);
 
@@ -153,11 +199,13 @@ var ScrollSpy = function ($) {
       this._targets = null;
       this._activeTarget = null;
       this._scrollHeight = null;
-    };
+    }
 
     // private
 
-    ScrollSpy.prototype._getConfig = function _getConfig(config) {
+  }, {
+    key: '_getConfig',
+    value: function _getConfig(config) {
       config = $.extend({}, Default, config);
 
       if (typeof config.target !== 'string') {
@@ -172,21 +220,25 @@ var ScrollSpy = function ($) {
       Util.typeCheckConfig(NAME, config, DefaultType);
 
       return config;
-    };
-
-    ScrollSpy.prototype._getScrollTop = function _getScrollTop() {
+    }
+  }, {
+    key: '_getScrollTop',
+    value: function _getScrollTop() {
       return this._scrollElement === window ? this._scrollElement.pageYOffset : this._scrollElement.scrollTop;
-    };
-
-    ScrollSpy.prototype._getScrollHeight = function _getScrollHeight() {
+    }
+  }, {
+    key: '_getScrollHeight',
+    value: function _getScrollHeight() {
       return this._scrollElement.scrollHeight || Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
-    };
-
-    ScrollSpy.prototype._getOffsetHeight = function _getOffsetHeight() {
+    }
+  }, {
+    key: '_getOffsetHeight',
+    value: function _getOffsetHeight() {
       return this._scrollElement === window ? window.innerHeight : this._scrollElement.getBoundingClientRect().height;
-    };
-
-    ScrollSpy.prototype._process = function _process() {
+    }
+  }, {
+    key: '_process',
+    value: function _process() {
       var scrollTop = this._getScrollTop() + this._config.offset;
       var scrollHeight = this._getScrollHeight();
       var maxScroll = this._config.offset + scrollHeight - this._getOffsetHeight();
@@ -217,9 +269,10 @@ var ScrollSpy = function ($) {
           this._activate(this._targets[i]);
         }
       }
-    };
-
-    ScrollSpy.prototype._activate = function _activate(target) {
+    }
+  }, {
+    key: '_activate',
+    value: function _activate(target) {
       this._activeTarget = target;
 
       this._clear();
@@ -245,15 +298,18 @@ var ScrollSpy = function ($) {
       $(this._scrollElement).trigger(Event.ACTIVATE, {
         relatedTarget: target
       });
-    };
-
-    ScrollSpy.prototype._clear = function _clear() {
+    }
+  }, {
+    key: '_clear',
+    value: function _clear() {
       $(this._selector).filter(Selector.ACTIVE).removeClass(ClassName.ACTIVE);
-    };
+    }
 
     // static
 
-    ScrollSpy._jQueryInterface = function _jQueryInterface(config) {
+  }], [{
+    key: '_jQueryInterface',
+    value: function _jQueryInterface(config) {
       return this.each(function () {
         var data = $(this).data(DATA_KEY);
         var _config = (typeof config === 'undefined' ? 'undefined' : _typeof(config)) === 'object' && config;
@@ -270,22 +326,41 @@ var ScrollSpy = function ($) {
           data[config]();
         }
       });
-    };
+    }
+  }, {
+    key: '_init',
+    value: function _init() {
+      /**
+       * ------------------------------------------------------------------------
+       * jQuery
+       * ------------------------------------------------------------------------
+       */
 
-    _createClass(ScrollSpy, null, [{
-      key: 'VERSION',
-      get: function get() {
-        return VERSION;
-      }
-    }, {
-      key: 'Default',
-      get: function get() {
-        return Default;
-      }
-    }]);
+      $.fn[NAME] = ScrollSpy._jQueryInterface;
+      $.fn[NAME].Constructor = ScrollSpy;
+      $.fn[NAME].noConflict = function () {
+        $.fn[NAME] = JQUERY_NO_CONFLICT;
+        return ScrollSpy._jQueryInterface;
+      };
+    }
+  }, {
+    key: 'VERSION',
+    get: function get$$1() {
+      return VERSION;
+    }
+  }, {
+    key: 'Default',
+    get: function get$$1() {
+      return Default;
+    }
+  }]);
+  return ScrollSpy;
+}();
 
-    return ScrollSpy;
-  }();
+if (!Util.nodeEnv()) {
+  $(document).ready(function () {
+    ScrollSpy._init();
+  });
 
   /**
    * ------------------------------------------------------------------------
@@ -301,20 +376,9 @@ var ScrollSpy = function ($) {
       ScrollSpy._jQueryInterface.call($spy, $spy.data());
     }
   });
+}
 
-  /**
-   * ------------------------------------------------------------------------
-   * jQuery
-   * ------------------------------------------------------------------------
-   */
+return ScrollSpy;
 
-  $.fn[NAME] = ScrollSpy._jQueryInterface;
-  $.fn[NAME].Constructor = ScrollSpy;
-  $.fn[NAME].noConflict = function () {
-    $.fn[NAME] = JQUERY_NO_CONFLICT;
-    return ScrollSpy._jQueryInterface;
-  };
-
-  return ScrollSpy;
-}(jQuery);
+})));
 //# sourceMappingURL=scrollspy.js.map

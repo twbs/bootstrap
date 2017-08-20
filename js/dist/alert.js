@@ -1,6 +1,35 @@
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('jquery'), require('./util.js')) :
+	typeof define === 'function' && define.amd ? define(['jquery', './util.js'], factory) :
+	(global.Alert = factory(global.$,global.Util));
+}(this, (function ($,Util) { 'use strict';
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+$ = $ && 'default' in $ ? $['default'] : $;
+Util = Util && 'default' in Util ? Util['default'] : Util;
+
+var classCallCheck = function (instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+};
+
+var createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
+
+  return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) defineProperties(Constructor, staticProps);
+    return Constructor;
+  };
+}();
 
 /**
  * --------------------------------------------------------------------------
@@ -9,56 +38,58 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * --------------------------------------------------------------------------
  */
 
-var Alert = function ($) {
+/**
+ * ------------------------------------------------------------------------
+ * Constants
+ * ------------------------------------------------------------------------
+ */
+
+var NAME = 'alert';
+var VERSION = '4.0.0-beta';
+var DATA_KEY = 'bs.alert';
+var EVENT_KEY = '.' + DATA_KEY;
+var DATA_API_KEY = '.data-api';
+var JQUERY_NO_CONFLICT = $.fn[NAME];
+var TRANSITION_DURATION = 150;
+
+var Selector = {
+  DISMISS: '[data-dismiss="alert"]'
+};
+
+var Event = {
+  CLOSE: 'close' + EVENT_KEY,
+  CLOSED: 'closed' + EVENT_KEY,
+  CLICK_DATA_API: 'click' + EVENT_KEY + DATA_API_KEY
+};
+
+var ClassName = {
+  ALERT: 'alert',
+  FADE: 'fade',
+  SHOW: 'show'
 
   /**
    * ------------------------------------------------------------------------
-   * Constants
+   * Class Definition
    * ------------------------------------------------------------------------
    */
 
-  var NAME = 'alert';
-  var VERSION = '4.0.0-beta';
-  var DATA_KEY = 'bs.alert';
-  var EVENT_KEY = '.' + DATA_KEY;
-  var DATA_API_KEY = '.data-api';
-  var JQUERY_NO_CONFLICT = $.fn[NAME];
-  var TRANSITION_DURATION = 150;
+};
+var Alert = function () {
+  function Alert(element) {
+    classCallCheck(this, Alert);
 
-  var Selector = {
-    DISMISS: '[data-dismiss="alert"]'
-  };
+    this._element = element;
+  }
 
-  var Event = {
-    CLOSE: 'close' + EVENT_KEY,
-    CLOSED: 'closed' + EVENT_KEY,
-    CLICK_DATA_API: 'click' + EVENT_KEY + DATA_API_KEY
-  };
+  // getters
 
-  var ClassName = {
-    ALERT: 'alert',
-    FADE: 'fade',
-    SHOW: 'show'
+  createClass(Alert, [{
+    key: 'close',
 
-    /**
-     * ------------------------------------------------------------------------
-     * Class Definition
-     * ------------------------------------------------------------------------
-     */
-
-  };
-  var Alert = function () {
-    function Alert(element) {
-      _classCallCheck(this, Alert);
-
-      this._element = element;
-    }
-
-    // getters
 
     // public
 
-    Alert.prototype.close = function close(element) {
+    value: function close(element) {
       element = element || this._element;
 
       var rootElement = this._getRootElement(element);
@@ -69,16 +100,19 @@ var Alert = function ($) {
       }
 
       this._removeElement(rootElement);
-    };
-
-    Alert.prototype.dispose = function dispose() {
+    }
+  }, {
+    key: 'dispose',
+    value: function dispose() {
       $.removeData(this._element, DATA_KEY);
       this._element = null;
-    };
+    }
 
     // private
 
-    Alert.prototype._getRootElement = function _getRootElement(element) {
+  }, {
+    key: '_getRootElement',
+    value: function _getRootElement(element) {
       var selector = Util.getSelectorFromElement(element);
       var parent = false;
 
@@ -91,16 +125,18 @@ var Alert = function ($) {
       }
 
       return parent;
-    };
-
-    Alert.prototype._triggerCloseEvent = function _triggerCloseEvent(element) {
+    }
+  }, {
+    key: '_triggerCloseEvent',
+    value: function _triggerCloseEvent(element) {
       var closeEvent = $.Event(Event.CLOSE);
 
       $(element).trigger(closeEvent);
       return closeEvent;
-    };
-
-    Alert.prototype._removeElement = function _removeElement(element) {
+    }
+  }, {
+    key: '_removeElement',
+    value: function _removeElement(element) {
       var _this = this;
 
       $(element).removeClass(ClassName.SHOW);
@@ -113,15 +149,18 @@ var Alert = function ($) {
       $(element).one(Util.TRANSITION_END, function (event) {
         return _this._destroyElement(element, event);
       }).emulateTransitionEnd(TRANSITION_DURATION);
-    };
-
-    Alert.prototype._destroyElement = function _destroyElement(element) {
+    }
+  }, {
+    key: '_destroyElement',
+    value: function _destroyElement(element) {
       $(element).detach().trigger(Event.CLOSED).remove();
-    };
+    }
 
     // static
 
-    Alert._jQueryInterface = function _jQueryInterface(config) {
+  }], [{
+    key: '_jQueryInterface',
+    value: function _jQueryInterface(config) {
       return this.each(function () {
         var $element = $(this);
         var data = $element.data(DATA_KEY);
@@ -135,9 +174,10 @@ var Alert = function ($) {
           data[config](this);
         }
       });
-    };
-
-    Alert._handleDismiss = function _handleDismiss(alertInstance) {
+    }
+  }, {
+    key: '_handleDismiss',
+    value: function _handleDismiss(alertInstance) {
       return function (event) {
         if (event) {
           event.preventDefault();
@@ -145,39 +185,47 @@ var Alert = function ($) {
 
         alertInstance.close(this);
       };
-    };
+    }
+  }, {
+    key: '_init',
+    value: function _init() {
+      /**
+       * ------------------------------------------------------------------------
+       * Data Api implementation
+       * ------------------------------------------------------------------------
+       */
 
-    _createClass(Alert, null, [{
-      key: 'VERSION',
-      get: function get() {
-        return VERSION;
-      }
-    }]);
+      $(document).on(Event.CLICK_DATA_API, Selector.DISMISS, Alert._handleDismiss(new Alert()));
 
-    return Alert;
-  }();
+      /**
+       * ------------------------------------------------------------------------
+       * jQuery
+       * ------------------------------------------------------------------------
+       */
 
-  /**
-   * ------------------------------------------------------------------------
-   * Data Api implementation
-   * ------------------------------------------------------------------------
-   */
-
-  $(document).on(Event.CLICK_DATA_API, Selector.DISMISS, Alert._handleDismiss(new Alert()));
-
-  /**
-   * ------------------------------------------------------------------------
-   * jQuery
-   * ------------------------------------------------------------------------
-   */
-
-  $.fn[NAME] = Alert._jQueryInterface;
-  $.fn[NAME].Constructor = Alert;
-  $.fn[NAME].noConflict = function () {
-    $.fn[NAME] = JQUERY_NO_CONFLICT;
-    return Alert._jQueryInterface;
-  };
-
+      $.fn[NAME] = Alert._jQueryInterface;
+      $.fn[NAME].Constructor = Alert;
+      $.fn[NAME].noConflict = function () {
+        $.fn[NAME] = JQUERY_NO_CONFLICT;
+        return Alert._jQueryInterface;
+      };
+    }
+  }, {
+    key: 'VERSION',
+    get: function get$$1() {
+      return VERSION;
+    }
+  }]);
   return Alert;
-}(jQuery);
+}();
+
+if (!Util.nodeEnv()) {
+  $(document).ready(function () {
+    Alert._init();
+  });
+}
+
+return Alert;
+
+})));
 //# sourceMappingURL=alert.js.map
