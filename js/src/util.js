@@ -9,48 +9,14 @@ import Event from './dom/event'
 
 const Util = (($) => {
 
-
-  /**
-   * ------------------------------------------------------------------------
-   * Private TransitionEnd Helpers
-   * ------------------------------------------------------------------------
-   */
-
-  let transition = false
+  const transition = Event.getBrowserTransitionEnd()
 
   const MAX_UID = 1000000
-
-  const TransitionEndEvent = {
-    WebkitTransition : 'webkitTransitionEnd',
-    transition       : 'transitionend'
-  }
 
   // shoutout AngusCroll (https://goo.gl/pxwQGp)
   function toType(obj) {
     return {}.toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase()
   }
-
-  function transitionEndTest() {
-    if (window.QUnit) {
-      return false
-    }
-
-    const el = document.createElement('bootstrap')
-
-    for (const name in TransitionEndEvent) {
-      if (typeof el.style[name] !== 'undefined') {
-        return {
-          end: TransitionEndEvent[name]
-        }
-      }
-    }
-
-    return false
-  }
-
-  (() => {
-    transition = transitionEndTest()
-  })()
 
   function escapeId(selector) {
     // we escape IDs in case of special selectors (selector = '#myId:something')

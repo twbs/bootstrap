@@ -5,6 +5,11 @@
  * --------------------------------------------------------------------------
  */
 
+const TransitionEndEvent = {
+  WebkitTransition : 'webkitTransitionEnd',
+  transition       : 'transitionend'
+}
+
 const Event = {
   on(element, event, handler) {
     if (typeof event !== 'string') {
@@ -32,6 +37,22 @@ const Event = {
       cancelable: true
     })
     element.dispatchEvent(eventToDispatch)
+  },
+
+  getBrowserTransitionEnd() {
+    if (window.QUnit) {
+      return false
+    }
+
+    const el = document.createElement('bootstrap')
+    for (const name in TransitionEndEvent) {
+      if (el.style[name] !== undefined) {
+        return {
+          end: TransitionEndEvent[name]
+        }
+      }
+    }
+    return false
   }
 }
 
