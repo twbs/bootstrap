@@ -4,6 +4,7 @@
     "qunit": true
   },
   "globals": {
+    "EventHandler": false,
     "Util": false
   },
   "parserOptions": {
