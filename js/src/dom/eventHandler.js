@@ -1,13 +1,13 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-beta): dom/event.js
+ * Bootstrap (v4.0.0-beta): dom/eventHandler.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
 
-const Event = {
+const EventHandler = {
   on(element, event, handler) {
-    if (typeof event !== 'string') {
+    if (typeof event !== 'string' || typeof element === 'undefined') {
       return
     }
     element.addEventListener(event, handler, false)
@@ -19,12 +19,12 @@ const Event = {
       handler()
       element.removeEventListener(event, complete, false)
     }
-    Event.on(element, event, complete)
+    EventHandler.on(element, event, complete)
   },
 
   trigger(element, event) {
-    if (typeof event !== 'string') {
-      return
+    if (typeof event !== 'string' || typeof element === 'undefined') {
+      return null
     }
 
     const eventToDispatch = new CustomEvent(event, {
@@ -32,7 +32,9 @@ const Event = {
       cancelable: true
     })
     element.dispatchEvent(eventToDispatch)
+
+    return eventToDispatch
   }
 }
 
-export default Event
+export default EventHandler
