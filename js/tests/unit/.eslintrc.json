@@ -5,6 +5,7 @@
     "jquery": true
   },
   "globals": {
+    "EventHandler": false,
     "Util": false
   },
   "parserOptions": {
