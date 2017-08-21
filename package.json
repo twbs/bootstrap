@@ -86,6 +86,7 @@
     "nodemon": "^1.11.0",
     "npm-run-all": "^4.0.2",
     "phantomjs-prebuilt": "^2.1.14",
+    "postcss-calc": "^6.0.0",
     "postcss-cli": "^4.1.0",
     "qunit-phantomjs-runner": "^2.3.0",
     "qunitjs": "^2.4.0",
