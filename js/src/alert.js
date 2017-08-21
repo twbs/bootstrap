@@ -85,7 +85,8 @@ class Alert {
     let parent     = false
 
     if (selector) {
-      parent = document.querySelector(selector)
+      const tmpSelected = SelectorEngine.find(selector)
+      parent = tmpSelected[0]
     }
 
     if (!parent) {
