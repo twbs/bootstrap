@@ -98,8 +98,12 @@
       @content;
     }
   } @else if $max == null {
-    @include media-breakpoint-up($name)
+    @include media-breakpoint-up($name) {
+      @content;
+    }
   } @else if $min == null {
-    @include media-breakpoint-down($name)
+    @include media-breakpoint-down($name) {
+      @content;
+    }
   }
 }

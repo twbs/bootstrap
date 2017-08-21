@@ -117,13 +117,16 @@
     "shim": {
       "js/bootstrap": {
         "deps": [
-          "jquery"
+          "jquery",
+          "popper.js"
         ],
         "exports": "$"
       }
     },
-    "dependencies": {
-      "jquery": "3"
+    "dependencies": {},
+    "peerDependencies": {
+      "jquery": "3",
+      "popper.js": "npm:popper.js@^1.11.1"
     }
   }
 }
