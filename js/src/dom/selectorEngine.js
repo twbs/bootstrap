@@ -5,8 +5,45 @@
  * --------------------------------------------------------------------------
  */
 
+// matches polyfill (see: https://mzl.la/2ikXneG)
+let fnMatches = null
+if (!Element.prototype.matches) {
+  fnMatches =
+    Element.prototype.msMatchesSelector ||
+    Element.prototype.webkitMatchesSelector
+} else {
+  fnMatches = Element.prototype.matches
+}
+
+// closest polyfill (see: https://mzl.la/2vXggaI)
+let fnClosest = null
+if (!Element.prototype.closest) {
+  fnClosest = (element, selector) => {
+    let ancestor = element
+    if (!document.documentElement.contains(element)) {
+      return null
+    }
+
+    do {
+      if (fnMatches.call(ancestor, selector)) {
+        return ancestor
+      }
+
+      ancestor = ancestor.parentElement
+    } while (ancestor !== null)
+
+    return null
+  }
+} else {
+  fnClosest = (element, selector) => {
+    return element.closest(selector)
+  }
+}
+
 const SelectorEngine = {
-  matches: Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector,
+  matches(element, selector) {
+    return fnMatches.call(element, selector)
+  },
 
   find(selector) {
     if (typeof selector !== 'string') {
@@ -22,20 +59,7 @@ const SelectorEngine = {
   },
 
   closest(element, selector) {
-    let ancestor = element
-    if (!document.documentElement.contains(element)) {
-      return null
-    }
-
-    do {
-      if (SelectorEngine.matches.call(ancestor, selector)) {
-        return ancestor
-      }
-
-      ancestor = ancestor.parentElement
-    } while (ancestor !== null)
-
-    return null
+    return fnClosest(element, selector)
   }
 }
 
