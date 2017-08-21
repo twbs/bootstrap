@@ -14,28 +14,15 @@ const Util = (($) => {
    * ------------------------------------------------------------------------
    */
 
-  let transition = false
+
+  const transition = Event.getBrowserTransitionEnd()
 
   const MAX_UID = 1000000
 
-  // Shoutout AngusCroll (https://goo.gl/pxwQGp)
+  // shoutout AngusCroll (https://goo.gl/pxwQGp)
   function toType(obj) {
     return {}.toString.call(obj).match(/\s([a-z]+)/i)[1].toLowerCase()
   }
-
-  function transitionEndTest() {
-    if (typeof window !== 'undefined' && window.QUnit) {
-      return false
-    }
-
-    return {
-      end: 'transitionend'
-    }
-  }
-
-  (() => {
-    transition = transitionEndTest()
-  })()
 
   /**
    * --------------------------------------------------------------------------
