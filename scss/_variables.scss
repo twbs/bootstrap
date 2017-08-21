@@ -750,7 +750,7 @@ $pagination-padding-x-lg:           1.5rem !default;
 $pagination-line-height:            1.25 !default;
 
 $pagination-color:                  $link-color !default;
-$pagination-bg:                     $white !default;
+$pagination-bg:                     $body-bg !default;
 $pagination-border-width:           $border-width !default;
 $pagination-border-color:           $gray-300 !default;
 
@@ -766,7 +766,7 @@ $pagination-active-bg:              $component-active-bg !default;
 $pagination-active-border-color:    $pagination-active-bg !default;
 
 $pagination-disabled-color:         $gray-600 !default;
-$pagination-disabled-bg:            $white !default;
+$pagination-disabled-bg:            $body-bg !default;
 $pagination-disabled-border-color:  $gray-300 !default;
 
 
