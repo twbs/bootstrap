@@ -7,7 +7,7 @@ import EventHandler from './dom/eventHandler'
  * --------------------------------------------------------------------------
  */
 
-const Util = (($) => {
+const Util = (() => {
   /**
    * ------------------------------------------------------------------------
    * Private TransitionEnd Helpers
@@ -60,7 +60,7 @@ const Util = (($) => {
       }
 
       // Get transition-duration of the element
-      let transitionDuration = $(element).css('transition-duration')
+      let transitionDuration = element.style.transitionDuration
       const floatTransitionDuration = parseFloat(transitionDuration)
 
       // Return 0 if element or transition duration is not found
