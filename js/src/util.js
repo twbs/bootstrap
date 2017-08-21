@@ -13,23 +13,9 @@ import Event from './dom/event'
 
 const Util = (() => {
 
-
-  /**
-   * ------------------------------------------------------------------------
-   * Private TransitionEnd Helpers
-   * ------------------------------------------------------------------------
-   */
-
-  let transition = false
+  const transition = Event.getBrowserTransitionEnd()
 
   const MAX_UID = 1000000
-
-  const TransitionEndEvent = {
-    WebkitTransition : 'webkitTransitionEnd',
-    MozTransition    : 'transitionend',
-    OTransition      : 'oTransitionEnd otransitionend',
-    transition       : 'transitionend'
-  }
 
   // shoutout AngusCroll (https://goo.gl/pxwQGp)
   function toType(obj) {
@@ -39,29 +25,6 @@ const Util = (() => {
   function isElement(obj) {
     return (obj[0] || obj).nodeType
   }
-
-  function transitionEndTest() {
-    if (window.QUnit) {
-      return false
-    }
-
-    const el = document.createElement('bootstrap')
-
-    for (const name in TransitionEndEvent) {
-      if (typeof el.style[name] !== 'undefined') {
-        return {
-          end: TransitionEndEvent[name]
-        }
-      }
-    }
-
-    return false
-  }
-
-  (() => {
-    transition = transitionEndTest()
-  })()
-
 
   /**
    * --------------------------------------------------------------------------
