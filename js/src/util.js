@@ -7,13 +7,7 @@ import EventHandler from './dom/eventHandler'
  * --------------------------------------------------------------------------
  */
 
-const Util = (($) => {
-  /**
-   * ------------------------------------------------------------------------
-   * Private TransitionEnd Helpers
-   * ------------------------------------------------------------------------
-   */
-
+const Util = (() => {
 
   const transition = EventHandler.getBrowserTransitionEnd()
 
