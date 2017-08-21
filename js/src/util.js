@@ -1,4 +1,4 @@
-import Event from './dom/event'
+import EventHandler from './dom/eventHandler'
 
 /**
  * --------------------------------------------------------------------------
@@ -9,7 +9,7 @@ import Event from './dom/event'
 
 const Util = (($) => {
 
-  const transition = Event.getBrowserTransitionEnd()
+  const transition = EventHandler.getBrowserTransitionEnd()
 
   const MAX_UID = 1000000
 
@@ -69,7 +69,7 @@ const Util = (($) => {
     },
 
     triggerTransitionEnd(element) {
-      Event.trigger(element, Util.TRANSITION_END)
+      EventHandler.trigger(element, Util.TRANSITION_END)
     },
 
     supportsTransitionEnd() {

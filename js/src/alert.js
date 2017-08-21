@@ -1,4 +1,6 @@
-import $ from 'jquery'
+import Data from './dom/data'
+import EventHandler from './dom/eventHandler'
+import SelectorEngine from './dom/selectorEngine'
 import Util from './util'
 
 
@@ -71,7 +73,7 @@ const Alert = (($) => {
       const rootElement = this._getRootElement(element)
       const customEvent = this._triggerCloseEvent(rootElement)
 
-      if (customEvent.isDefaultPrevented()) {
+      if (customEvent.defaultPrevented) {
         return
       }
 
@@ -79,7 +81,7 @@ const Alert = (($) => {
     }
 
     dispose() {
-      $.removeData(this._element, DATA_KEY)
+      Data.removeData(this._element, DATA_KEY)
       this._element = null
     }
 
@@ -91,42 +93,38 @@ const Alert = (($) => {
       let parent     = false
 
       if (selector) {
-        parent = $(selector)[0]
+        const tmpSelected = SelectorEngine.find(selector)
+        parent = tmpSelected[0]
       }
 
       if (!parent) {
-        parent = $(element).closest(`.${ClassName.ALERT}`)[0]
+        parent = SelectorEngine.closest(element, `.${ClassName.ALERT}`)
       }
 
       return parent
     }
 
     _triggerCloseEvent(element) {
-      const closeEvent = $.Event(Event.CLOSE)
-
-      $(element).trigger(closeEvent)
-      return closeEvent
+      return EventHandler.trigger(element, Event.CLOSE)
     }
 
     _removeElement(element) {
-      $(element).removeClass(ClassName.SHOW)
+      element.classList.remove(ClassName.SHOW)
 
       if (!Util.supportsTransitionEnd() ||
-          !$(element).hasClass(ClassName.FADE)) {
+          !element.classList.contains(ClassName.FADE)) {
         this._destroyElement(element)
         return
       }
 
-      $(element)
-        .one(Util.TRANSITION_END, (event) => this._destroyElement(element, event))
+      EventHandler
+        .one(element, Util.TRANSITION_END, (event) => this._destroyElement(element, event))
       Util.emulateTransitionEnd(element, TRANSITION_DURATION)
     }
 
     _destroyElement(element) {
-      $(element)
-        .detach()
-        .trigger(Event.CLOSED)
-        .remove()
+      EventHandler.trigger(element, Event.CLOSED)
+      element.parentNode.removeChild(element)
     }
 
 
@@ -134,12 +132,11 @@ const Alert = (($) => {
 
     static _jQueryInterface(config) {
       return this.each(function () {
-        const $element = $(this)
-        let data       = $element.data(DATA_KEY)
+        let data = Data.getData(this, DATA_KEY)
 
         if (!data) {
           data = new Alert(this)
-          $element.data(DATA_KEY, data)
+          Data.setData(this, DATA_KEY, data)
         }
 
         if (config === 'close') {
