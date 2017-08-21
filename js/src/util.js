@@ -1,8 +1,5 @@
-<<<<<<< c7d976241379aabb15a4c74ed05145198e96ed3e
-import $ from 'jquery'
-=======
-import Event from './dom/event'
->>>>>>> Remove jQuery from Util.js
+import EventHandler from './dom/eventHandler'
+
 
 /**
  * --------------------------------------------------------------------------
@@ -13,7 +10,7 @@ import Event from './dom/event'
 
 const Util = (() => {
 
-  const transition = Event.getBrowserTransitionEnd()
+  const transition = EventHandler.getBrowserTransitionEnd()
 
   const MAX_UID = 1000000
 
@@ -63,7 +60,7 @@ const Util = (() => {
     },
 
     triggerTransitionEnd(element) {
-      Event.trigger(element, Util.TRANSITION_END)
+      EventHandler.trigger(element, Util.TRANSITION_END)
     },
 
     supportsTransitionEnd() {
