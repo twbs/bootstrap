@@ -495,18 +495,18 @@ With the handful of grid tiers available, you're bound to run into issues where,
 
 In addition to column clearing at responsive breakpoints, you may need to reset offsets. See this in action in [the grid example]({{ site.baseurl }}/docs/{{ site.docs_version }}/examples/grid/).
 
-<div class="bd-example-row">		
-{% example html %}		
-<div class="row">		
-  <div class="col-sm-5 col-md-6">.col-sm-5 .col-md-6</div>		
-  <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0">.col-sm-5 .offset-sm-2 .col-md-6 .offset-md-0</div>		
-</div>		
+<div class="bd-example-row">
+{% example html %}
+<div class="row">
+  <div class="col-sm-5 col-md-6">.col-sm-5 .col-md-6</div>
+  <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0">.col-sm-5 .offset-sm-2 .col-md-6 .offset-md-0</div>
+</div>
 
-<div class="row">		
-  <div class="col-sm-6 col-md-5 col-lg-6">.col.col-sm-6.col-md-5.col-lg-6</div>		
-  <div class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">.col-sm-6 .col-md-5 .offset-md-2 .col-lg-6 offset-lg-0</div>		
-</div>		
-{% endexample %}		
+<div class="row">
+  <div class="col-sm-6 col-md-5 col-lg-6">.col.col-sm-6.col-md-5.col-lg-6</div>
+  <div class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">.col-sm-6 .col-md-5 .offset-md-2 .col-lg-6 offset-lg-0</div>
+</div>
+{% endexample %}
 </div>
 
 ## Reordering
@@ -645,7 +645,7 @@ Mixins are used in conjunction with the grid variables to generate semantic CSS 
 @include make-col-ready();
 @include make-col($size, $columns: $grid-columns);
 
-// Get fancy by offsetting, or changing the sort order		
+// Get fancy by offsetting, or changing the sort order
 @include make-col-offset($size, $columns: $grid-columns);
 {% endhighlight %}
 
