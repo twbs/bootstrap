@@ -1,4 +1,4 @@
-import Event from './dom/event'
+import EventHandler from './dom/eventHandler'
 
 /**
  * --------------------------------------------------------------------------
@@ -80,7 +80,7 @@ const Util = (($) => {
     },
 
     triggerTransitionEnd(element) {
-      Event.trigger(element, Util.TRANSITION_END)
+      EventHandler.trigger(element, Util.TRANSITION_END)
     },
 
     // TODO: Remove in v5
@@ -118,7 +118,6 @@ const Util = (($) => {
   }
 
   return Util
-
 })()
 
 export default Util
