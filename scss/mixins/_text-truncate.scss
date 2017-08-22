@@ -1,8 +1,8 @@
 // Text truncate
 // Requires inline-block or block for proper styling
 
-@mixin text-truncate() {
-  display: block;
+@mixin text-truncate($display: inline-block) {
+  display: $display;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
