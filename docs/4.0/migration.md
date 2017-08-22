@@ -12,6 +12,7 @@ While in beta, we aim to have no breaking changes. However, things don't always 
 - Removed `$badge-color` variable and its usage on `.badge`. We use a color contrast function to pick a `color` based on the `background-color`, so the variable is unnecessary.
 - Renamed `grayscale()` function to `gray()` to avoid breaking conflict with the CSS native `grayscale` filter.
 - Renamed `.table-inverse`, `.thead-inverse`, and `.thead-default` to `.*-dark` and `.*-light`, matching our color schemes used elsewhere.
+- Responsive tables now generate classes for each grid breakpoint. This breaks from Beta 1 in that the `.table-responsive` you've been using is more like `.table-responsive-md`. You may now use `.table-responsive` or `.table-responsive-{sm,md,lg,xl}` as needed.
 
 
 ## Summary
