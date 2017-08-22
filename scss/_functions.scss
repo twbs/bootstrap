@@ -62,6 +62,19 @@
     @return $light;
   }
 }
+@function contrast-yiq($color, $dark: #111, $light: #fff) {
+  $r: red($color);
+  $g: green($color);
+  $b: blue($color);
+
+  $yiq: (($r * 299) + ($g * 587) + ($b * 114)) / 1000;
+
+  @if ($yiq >= 150) {
+    @return $dark;
+  } @else {
+    @return $light;
+  }
+}
 
 // Retrieve color Sass maps
 @function color($key: "blue") {
