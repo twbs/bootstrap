@@ -665,3 +665,21 @@ address {
 .text-word-break {
   word-break: break-all;
 }
+
+//Colored dot
+.colored-dot {
+  position: relative;
+
+  &::after {
+    bottom: 0;
+    color: @brand-light-blue;
+    content: '.';
+    position: absolute;
+  }
+
+  &-green {
+    &::after {
+      color: @brand-green;
+    }
+  }
+}
