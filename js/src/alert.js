@@ -73,7 +73,7 @@ const Alert = (() => {
       const rootElement = this._getRootElement(element)
       const customEvent = this._triggerCloseEvent(rootElement)
 
-      if (customEvent.isDefaultPrevented()) {
+      if (customEvent.defaultPrevented) {
         return
       }
 
