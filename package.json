@@ -67,7 +67,7 @@
   "license": "MIT",
   "dependencies": {},
   "peerDependencies": {
-    "jquery": ">=3.0.0",
+    "jquery": "3.0.0 - 4.0.0",
     "popper.js": "^1.11.0"
   },
   "devDependencies": {
