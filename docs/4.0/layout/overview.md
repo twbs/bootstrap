@@ -51,19 +51,21 @@ Since Bootstrap is developed to be mobile first, we use a handful of [media quer
 Bootstrap primarily uses the following media query ranges—or breakpoints—in our source Sass files for our layout, grid system, and components.
 
 {% highlight scss %}
-// Extra small devices (portrait phones, less than 576px)
-// No media query since this is the default in Bootstrap
+/****
+ * Extra small devices (portrait phones, less than 576px)
+ * No media query since this is the default in Bootstrap
+ ****/
 
-// Small devices (landscape phones, 576px and up)
+/* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) { ... }
 
-// Medium devices (tablets, 768px and up)
+/* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) { ... }
 
-// Large devices (desktops, 992px and up)
+/* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) { ... }
 
-// Extra large devices (large desktops, 1200px and up)
+/* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) { ... }
 {% endhighlight %}
 
@@ -87,20 +89,23 @@ Since we write our source CSS in Sass, all our media queries are available via S
 We occasionally use media queries that go in the other direction (the given screen size *or smaller*):
 
 {% highlight scss %}
-// Extra small devices (portrait phones, less than 576px)
+/* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575px) { ... }
 
-// Small devices (landscape phones, less than 768px)
+/* Small devices (landscape phones, less than 768px) */
 @media (max-width: 767px) { ... }
 
-// Medium devices (tablets, less than 992px)
+/* Medium devices (tablets, less than 992px) */
 @media (max-width: 991px) { ... }
 
-// Large devices (desktops, less than 1200px)
+/* Large devices (desktops, less than 1200px) */
 @media (max-width: 1199px) { ... }
 
-// Extra large devices (large desktops)
-// No media query since the extra-large breakpoint has no upper bound on its width
+/****
+ * Extra large devices (large desktops)
+ * No media query since the extra-large breakpoint has no upper bound on its width
+ ****/
+
 {% endhighlight %}
 
 Once again, these media queries are also available via Sass mixins:
@@ -115,19 +120,19 @@ Once again, these media queries are also available via Sass mixins:
 There are also media queries and mixins for targeting a single segment of screen sizes using the minimum and maximum breakpoint widths.
 
 {% highlight scss %}
-// Extra small devices (portrait phones, less than 576px)
+/* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575px) { ... }
 
-// Small devices (landscape phones, 576px and up)
+/* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 767px) { ... }
 
-// Medium devices (tablets, 768px and up)
+/* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991px) { ... }
 
-// Large devices (desktops, 992px and up)
+/* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1199px) { ... }
 
-// Extra large devices (large desktops, 1200px and up)
+/* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) { ... }
 {% endhighlight %}
 
@@ -144,8 +149,10 @@ These media queries are also available via Sass mixins:
 Similarly, media queries may span multiple breakpoint widths:
 
 {% highlight scss %}
-// Example
-// Apply styles starting from medium devices and up to extra large devices
+/****
+ * Example
+ * Apply styles starting from medium devices and up to extra large devices
+ ****/
 @media (min-width: 768px) and (max-width: 1199px) { ... }
 {% endhighlight %}
 
