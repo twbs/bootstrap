@@ -1,0 +1,35 @@
+{
+  "name": "@wrakky-bootstrap/bootstrap",
+  "version": "1.0.5",
+  "description": "",
+  "main": "dist/js/bootstrap.js",
+  "author": "",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@wrakky-bootstrap/css": "^1.0.5",
+    "@wrakky-bootstrap/jquery": "^1.0.5"
+  },
+  "peerDependencies": {
+    "jquery": ">=3.0.0",
+    "popper.js": "^1.11.0"
+  },
+  "scripts": {
+    "build": "npm-run-all --parallel css-* js-*",
+    "precss-src": "shx mkdir -p scss",
+    "css-src": "shx cp -r node_modules/@bootstrap/css/src/* scss",
+    "precss-dist": "shx mkdir -p dist/css",
+    "css-dist": "shx cp -r node_modules/@bootstrap/css/dist/* dist/css",
+    "prejs-src": "shx mkdir -p js/dist && shx mkdir -p js/src",
+    "js-src": "shx cp -r node_modules/@bootstrap/jquery/dist/* js/dist && shx cp -r node_modules/@bootstrap/jquery/src/* js/src",
+    "prejs-dist": "shx mkdir -p dist/js",
+    "js-dist": "shx cp node_modules/@bootstrap/jquery/dist/bootstrap.* dist/js"
+  },
+  "files": [
+    "dist",
+    "js",
+    "scss"
+  ]
+}

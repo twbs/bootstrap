@@ -68,7 +68,7 @@
     "docs-serve": "bundle exec jekyll serve",
     "docs-serve-only": "npm run docs-serve -- --skip-initial-build --no-watch",
     "update-deps": "ncu -a -x jquery -x bundlesize && npm update && bundle update && cross-env-shell echo Manually update \\\"site/docs/$npm_package_version_short/assets/js/vendor/\\\"",
-    "release": "npm run dist && npm run release-sri && npm run release-zip && npm run docs-production",
+    "release": "lerna publish --force-publish",
     "release-sri": "node build/generate-sri.js",
     "release-version": "node build/change-version.js",
     "release-zip": "cross-env-shell \"shx rm -rf bootstrap-$npm_package_version-dist && shx cp -r dist/ bootstrap-$npm_package_version-dist && zip -r9 bootstrap-$npm_package_version-dist.zip bootstrap-$npm_package_version-dist && shx rm -rf bootstrap-$npm_package_version-dist\"",
@@ -78,7 +78,8 @@
     "watch-css-main": "nodemon --watch scss/ --ext scss --exec \"npm run css-main\"",
     "watch-css-docs": "nodemon --watch \"site/docs/**/assets/scss/\" --ext scss --exec \"npm run css-docs\"",
     "watch-js-main": "nodemon --watch js/src/ --ext js --exec \"npm run js-compile\"",
-    "watch-js-docs": "nodemon --watch \"site/docs/**/assets/js/src/\" --ext js --exec \"npm run js-docs\""
+    "watch-js-docs": "nodemon --watch \"site/docs/**/assets/js/src/\" --ext js --exec \"npm run js-docs\"",
+    "prerelease": "lerna run test && lerna run build"
   },
   "style": "dist/css/bootstrap.css",
   "sass": "scss/bootstrap.scss",
@@ -124,6 +125,7 @@
     "karma-firefox-launcher": "^1.1.0",
     "karma-qunit": "^2.1.0",
     "karma-sinon": "^1.0.5",
+    "lerna": "^2.0.0",
     "node-sass": "^4.10.0",
     "nodemon": "^1.18.5",
     "npm-run-all": "^4.1.3",

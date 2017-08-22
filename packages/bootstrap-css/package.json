@@ -1,0 +1,21 @@
+{
+  "name": "@wrakky-bootstrap/css",
+  "version": "1.0.5",
+  "description": "",
+  "main": "index.js",
+  "author": "",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "npm-run-all lint compile prefix minify",
+    "docs": "npm-run-all lint-docs compile-docs prefix-docs minify-docs",
+    "lint": "bundle exec scss-lint --config .scss-lint.yml src/*.scss",
+    "precompile": "shx mkdir -p dist",
+    "compile": "node-sass --output-style expanded --source-map true --source-map-contents true --precision 6 src/bootstrap.scss dist/bootstrap.css && node-sass --output-style expanded --source-map true --source-map-contents true --precision 6 src/bootstrap-grid.scss dist/bootstrap-grid.css && node-sass --output-style expanded --source-map true --source-map-contents true --precision 6 src/bootstrap-reboot.scss dist/bootstrap-reboot.css",
+    "prefix": "postcss --config ../../build/postcss.config.js --replace dist/*.css",
+    "minify": "cleancss --level 1 --source-map --source-map-inline-sources --output dist/bootstrap.min.css dist/bootstrap.css && cleancss --level 1 --source-map --source-map-inline-sources --output dist/bootstrap-grid.min.css dist/bootstrap-grid.css && cleancss --level 1 --source-map --source-map-inline-sources --output dist/bootstrap-reboot.min.css dist/bootstrap-reboot.css",
+    "watch": "nodemon --verbose --ignore dist/ -e scss -x \"npm run build\""
+  }
+}

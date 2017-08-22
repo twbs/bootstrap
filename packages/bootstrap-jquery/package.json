@@ -1,0 +1,27 @@
+{
+  "name": "@wrakky-bootstrap/jquery",
+  "version": "1.0.5",
+  "description": "",
+  "main": "dist/bootstrap.js",
+  "author": "",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "npm-run-all lint compile minify",
+    "lint": "eslint src/ && eslint --config tests/.eslintrc.json --env node build/ Gruntfile.js",
+    "precompile": "shx mkdir -p dist",
+    "compile": "npm-run-all --parallel compile-*",
+    "compile-bundle": "shx cat src/util.js src/alert.js src/button.js src/carousel.js src/collapse.js src/dropdown.js src/modal.js src/scrollspy.js src/tab.js src/tooltip.js src/popover.js | shx sed \"s/^(import|export).*//\" | babel --filename src/bootstrap.js | node ../../build/stamp.js > dist/bootstrap.js",
+    "compile-plugins": "babel src/ --out-dir dist/ --source-maps",
+    "minify": "uglifyjs --config-file ../../build/uglifyjs.config.json --output dist/bootstrap.min.js dist/bootstrap.js",
+    "test": "phantomjs ../../node_modules/qunit-phantomjs-runner/runner.js tests/index.html 60",
+    "test-cloud": "ruby -r webrick -e \"s = WEBrick::HTTPServer.new(:Port => 3000, :DocumentRoot => Dir.pwd, :Logger => WEBrick::Log.new('/dev/null'), :AccessLog => []); trap('INT') { s.shutdown }; s.start\" & grunt saucelabs-qunit",
+    "watch": "nodemon --ignore dist/ -e js -x \"npm run compile-plugins\""
+  },
+  "peerDependencies": {
+    "jquery": ">=3.0.0",
+    "popper.js": "^1.11.0"
+  }
+}

@@ -45,3 +45,6 @@ docs/.jekyll-metadata
 # Folders to ignore
 node_modules
 js/coverage
+
+# lerna
+lerna-debug.log

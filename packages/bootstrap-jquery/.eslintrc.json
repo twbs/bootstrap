@@ -49,7 +49,7 @@
     "no-magic-numbers": ["error", {
       "ignore": [-1, 0, 1],
       "ignoreArrayIndexes": true
-      }
+    }
     ],
     "no-multi-spaces": ["error", {
       "ignoreEOLComments": true,
@@ -58,8 +58,8 @@
         "ArrowFunctionExpression": true,
         "CallExpression": true,
         "VariableDeclarator": true
-        }
       }
+    }
     ],
     "no-multi-str": "error",
     "no-new": "error",
