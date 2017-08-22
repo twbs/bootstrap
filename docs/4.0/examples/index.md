@@ -72,6 +72,13 @@ Taking the default navbar component and showing how it can be moved, placed, and
     </a>
     <p>Super basic template with a fixed top navbar along with some additional content.</p>
   </div>
+  <div class="col-6 col-md-4">
+    <a href="{{ site.baseurl }}/docs/{{ site.docs_version }}/examples/navbar-bottom/">
+      <img class="img-thumbnail" src="{{ site.baseurl }}/docs/{{ site.docs_version }}/examples/screenshots/navbar-bottom.jpg" alt="">
+      <h4>Bottom navbar</h4>
+    </a>
+    <p>Super basic template with a bottom navbar along with some additional content.</p>
+  </div>
 </div>
 
 ## Custom components
