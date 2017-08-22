@@ -57,38 +57,122 @@ if (!window.Event || typeof window.Event !== 'function') {
   window.Event.prototype = origEvent.prototype
 }
 
+const namespaceRegex = /[^.]*(?=\..*)\.|.*/
+const stripNameRegex = /\..*/
+
+// Events storage
+const eventRegistry = {}
+let uidEvent = 1
+
+function getUidEvent(element, uid) {
+  return element.uidEvent = uid && `${uid}::${uidEvent++}` || element.uidEvent || uidEvent++
+}
+
+function getEvent(element) {
+  const uid = getUidEvent(element)
+  return eventRegistry[uid] = eventRegistry[uid] || {}
+}
+
+const nativeEvents =
+`click,dblclick,mouseup,mousedown,contextmenu,
+'mousewheel,DOMMouseScroll,
+'mouseover,mouseout,mousemove,selectstart,selectend,
+'keydown,keypress,keyup,
+'orientationchange,
+'touchstart,touchmove,touchend,touchcancel,
+'gesturestart,gesturechange,gestureend,
+'focus,blur,change,reset,select,submit,
+'load,unload,beforeunload,resize,move,DOMContentLoaded,readystatechange,
+'error,abort,scroll`.split(',')
+
+function bootstrapHandler(element, fn) {
+  return function (event) {
+    return fn.apply(element, [event])
+  }
+}
+
 const EventHandler = {
-  on(element, event, handler) {
-    if (typeof event !== 'string' || typeof element === 'undefined') {
+  on(element, originalTypeEvent, handler) {
+    if (typeof originalTypeEvent !== 'string' ||
+        (typeof element === 'undefined' || element === null)) {
       return
     }
-    element.addEventListener(event, handler, false)
+
+    // allow to get the native events from namespaced events ('click.bs.button' --> 'click')
+    let typeEvent = originalTypeEvent.replace(stripNameRegex, '')
+    const isNative = nativeEvents.indexOf(typeEvent) > -1
+    if (!isNative) {
+      typeEvent = originalTypeEvent
+    }
+    const events    = getEvent(element)
+    const handlers  = events[typeEvent] || (events[typeEvent] = {})
+    const uid = getUidEvent(handler, originalTypeEvent.replace(namespaceRegex, ''))
+    // TODO : Handle multi events on one element
+    if (handlers[uid]) {
+      return
+    }
+
+    const fn = bootstrapHandler(element, handler)
+    handlers[uid] = fn
+    handler.uidEvent = uid
+    element.addEventListener(typeEvent, fn, false)
   },
 
   one(element, event, handler) {
-    const complete = () => {
-      /* eslint func-style: off */
-      handler()
-      element.removeEventListener(event, complete, false)
+    function complete(e) {
+      const typeEvent = event.replace(stripNameRegex, '')
+      const events = getEvent(element)
+      if (!events || !events[typeEvent]) {
+        return
+      }
+      const uidEvent = handler.uidEvent
+      const fn = events[typeEvent][uidEvent]
+      fn.apply(element, [e])
+      EventHandler.off(element, event, handler)
     }
     EventHandler.on(element, event, complete)
   },
 
-  trigger(element, event) {
-    if (typeof event !== 'string' || typeof element === 'undefined') {
-      return null
+  off(element, originalTypeEvent, handler) {
+    if (typeof originalTypeEvent !== 'string' ||
+       (typeof element === 'undefined' || element === null)) {
+      return
     }
 
-    const eventToDispatch = new CustomEvent(event, {
-      bubbles: true,
-      cancelable: true
-    })
+    const typeEvent = originalTypeEvent.replace(stripNameRegex, '')
+    const events = getEvent(element)
+    if (!events || !events[typeEvent]) {
+      return
+    }
 
-    // Add a function 'isDefaultPrevented'
-    eventToDispatch.isDefaultPrevented = () => eventToDispatch.defaultPrevented
-    element.dispatchEvent(eventToDispatch)
+    const uidEvent = handler.uidEvent
+    const fn = events[typeEvent][uidEvent]
+    element.removeEventListener(typeEvent, fn, false)
+    delete events[typeEvent][uidEvent]
+  },
 
-    return eventToDispatch
+  trigger(element, event) {
+    if (typeof event !== 'string' ||
+       (typeof element === 'undefined' || element === null)) {
+      return null
+    }
+    const typeEvent = event.replace(stripNameRegex, '')
+    const isNative = nativeEvents.indexOf(typeEvent) > -1
+    let returnedEvent = null
+    if (isNative) {
+      const evt = document.createEvent('HTMLEvents')
+      evt.initEvent(typeEvent, true, true)
+      element.dispatchEvent(evt)
+      returnedEvent = evt
+    } else {
+      const eventToDispatch = new CustomEvent(event, {
+        bubbles: true,
+        cancelable: true
+      })
+      element.dispatchEvent(eventToDispatch)
+      returnedEvent = eventToDispatch
+    }
+    return returnedEvent
   }
 }
 
