@@ -42,8 +42,8 @@ $(function () {
 
     var $alert = $(alertHTML).bootstrapAlert().appendTo($('#qunit-fixture'))
 
-    $alert.find('.close').trigger('click')
-
+    var closeBtn = $alert.find('.close')[0]
+    EventHandler.trigger(closeBtn, 'click')
     assert.strictEqual($alert.hasClass('show'), false, 'remove .show class on .close click')
   })
 
@@ -58,13 +58,13 @@ $(function () {
 
     assert.notEqual($('#qunit-fixture').find('.alert').length, 0, 'element added to dom')
 
-    $alert
-      .one('closed.bs.alert', function () {
-        assert.strictEqual($('#qunit-fixture').find('.alert').length, 0, 'element removed from dom')
-        done()
-      })
-      .find('.close')
-      .trigger('click')
+    EventHandler.on($alert[0], 'closed.bs.alert', function () {
+      assert.strictEqual($('#qunit-fixture').find('.alert').length, 0, 'element removed from dom')
+      done()
+    })
+
+    var closeBtn = $alert.find('.close')[0]
+    EventHandler.trigger(closeBtn, 'click')
   })
 
   QUnit.test('should not fire closed when close is prevented', function (assert) {
