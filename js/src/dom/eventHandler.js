@@ -27,7 +27,7 @@ if (typeof window.CustomEvent !== 'function') {
     params = params || {
       bubbles: false,
       cancelable: false,
-      detail: undefined
+      detail: null
     }
     const evt = document.createEvent('CustomEvent')
     evt.initCustomEvent(event, params.bubbles, params.cancelable, params.detail)
@@ -65,7 +65,7 @@ if (!window.Event || typeof window.Event !== 'function') {
   window.Event.prototype = origEvent.prototype
 }
 
-const namespaceRegex = /[^\.]*(?=\..*)\.|.*/
+const namespaceRegex = /[^.]*(?=\..*)\.|.*/
 const stripNameRegex = /\..*/
 
 // Events storage
@@ -109,6 +109,8 @@ function bootstrapDelegationHandler(selector, fn) {
         }
       }
     }
+    // To please ESLint
+    return null
   }
 }
 
@@ -201,7 +203,7 @@ const EventHandler = {
 
     const el = document.createElement('bootstrap')
     for (const name in TransitionEndEvent) {
-      if (el.style[name] !== undefined) {
+      if (typeof el.style[name] !== 'undefined') {
         return {
           end: TransitionEndEvent[name]
         }
