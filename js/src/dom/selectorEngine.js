@@ -16,8 +16,9 @@ if (!Element.prototype.matches) {
 }
 
 // closest polyfill (see: https://mzl.la/2vXggaI)
+let fnClosest = null
 if (!Element.prototype.closest) {
-  Element.prototype.closest = (element, selector) => {
+  fnClosest = (element, selector) => {
     let ancestor = element
     if (!document.documentElement.contains(element)) {
       return null
@@ -33,9 +34,12 @@ if (!Element.prototype.closest) {
 
     return null
   }
+} else {
+  // eslint-disable-next-line arrow-body-style
+  fnClosest = (element, selector) => {
+    return element.closest(selector)
+  }
 }
-
-const fnClosest = Element.prototype.closest
 
 const SelectorEngine = {
   matches(element, selector) {
@@ -56,7 +60,7 @@ const SelectorEngine = {
   },
 
   closest(element, selector) {
-    return fnClosest.call(element, selector)
+    return fnClosest(element, selector)
   }
 }
 
