@@ -152,12 +152,7 @@ const Alert = (($) => {
    * Data Api implementation
    * ------------------------------------------------------------------------
    */
-
-  $(document).on(
-    Event.CLICK_DATA_API,
-    Selector.DISMISS,
-    Alert._handleDismiss(new Alert())
-  )
+  EventHandler.on(document, Event.CLICK_DATA_API, Selector.DISMISS, Alert._handleDismiss(new Alert()))
 
   /**
    * ------------------------------------------------------------------------
