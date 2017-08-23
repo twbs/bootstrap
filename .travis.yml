@@ -12,7 +12,6 @@ before_install:
   - echo "$TRAVIS_COMMIT_MSG" | grep '\[skip browser\]'; export TWBS_DO_BROWSER=$?; true
 install:
   - bundle install --deployment --jobs=3 --retry=3
-  - cp build/npm-shrinkwrap.json ./
   - npm install
 script:
   - npm test

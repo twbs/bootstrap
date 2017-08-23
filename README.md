@@ -1,6 +1,6 @@
 <p align="center">
-  <a href="https://v4-alpha.getbootstrap.com">
-    <img src="http://v4-alpha.getbootstrap.com/assets/brand/bootstrap-solid.svg" width=72 height=72>
+  <a href="https://getbootstrap.com">
+    <img src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" width=72 height=72>
   </a>
 
   <h3 align="center">Bootstrap</h3>
@@ -8,7 +8,7 @@
   <p align="center">
     Sleek, intuitive, and powerful front-end framework for faster and easier web development.
     <br>
-    <a href="https://v4-alpha.getbootstrap.com"><strong>Explore Bootstrap docs &raquo;</strong></a>
+    <a href="https://getbootstrap.com/docs/4.0"><strong>Explore Bootstrap docs &raquo;</strong></a>
     <br>
     <br>
     <a href="https://themes.getbootstrap.com">Bootstrap Themes</a>
@@ -38,12 +38,12 @@
 
 Several quick start options are available:
 
-- [Download the latest release.](https://github.com/twbs/bootstrap/archive/v4.0.0-alpha.6.zip)
+- [Download the latest release.](https://github.com/twbs/bootstrap/archive/v4.0.0-beta.zip)
 - Clone the repo: `git clone https://github.com/twbs/bootstrap.git`
-- Install with [npm](https://www.npmjs.com): `npm install bootstrap@4.0.0-alpha.6`
-- Install with [yarn](https://github.com/yarnpkg/yarn): `yarn add bootstrap@4.0.0-alpha.6`
-- Install with [Composer](https://getcomposer.org): `composer require twbs/bootstrap:4.0.0-alpha.6`
-- Install with [Bower](https://bower.io): `bower install bootstrap#v4.0.0-alpha.6`
+- Install with [npm](https://www.npmjs.com): `npm install bootstrap@4.0.0-beta`
+- Install with [yarn](https://github.com/yarnpkg/yarn): `yarn add bootstrap@4.0.0-beta`
+- Install with [Composer](https://getcomposer.org): `composer require twbs/bootstrap:4.0.0-beta`
+- Install with [Bower](https://bower.io): `bower install bootstrap#v4.0.0-beta`
 - Install with [NuGet](https://www.nuget.org): CSS: `Install-Package bootstrap -Pre` Sass: `Install-Package bootstrap.sass -Pre` (`-Pre` is only required until Bootstrap v4 has a stable release).
 
 Read the [Getting started page](https://getbootstrap.com/getting-started/) for information on the framework contents, templates and examples, and more.
@@ -55,6 +55,7 @@ Read the [Getting started page](https://getbootstrap.com/getting-started/) for i
 [![npm version](https://img.shields.io/npm/v/bootstrap.svg)](https://www.npmjs.com/package/bootstrap)
 [![Gem version](https://img.shields.io/gem/v/bootstrap.svg)](https://rubygems.org/gems/bootstrap)
 [![Build Status](https://img.shields.io/travis/twbs/bootstrap/v4-dev.svg)](https://travis-ci.org/twbs/bootstrap)
+[![peerDependencies Status](https://david-dm.org/twbs/bootstrap/peer-status.svg)](https://david-dm.org/twbs/bootstrap?type=peer)
 [![devDependency Status](https://img.shields.io/david/dev/twbs/bootstrap.svg)](https://david-dm.org/twbs/bootstrap?type=dev)
 [![Meteor Atmosphere](https://img.shields.io/badge/meteor-twbs%3Abootstrap-blue.svg)](https://atmospherejs.com/twbs/bootstrap)
 [![Packagist Prerelease](https://img.shields.io/packagist/vpre/twbs/bootstrap.svg)](https://packagist.org/packages/twbs/bootstrap)
@@ -95,9 +96,10 @@ Documentation search is powered by [Algolia's DocSearch](https://community.algol
 ### Running documentation locally
 
 1. Run through the [tooling setup](https://github.com/twbs/bootstrap/blob/v4-dev/docs/4.0/getting-started/build-tools.md#tooling-setup) to install Jekyll (the site builder) and other Ruby dependencies with `bundle install`.
-2. Run `npm run test` (or a specific NPM script) to rebuild distributed CSS and JavaScript files, as well as our docs assets.
-3. From the root `/bootstrap` directory, run `bundle exec jekyll serve` in the command line.
-4. Open <http://localhost:9001> in your browser, and voilà.
+2. Run `npm install` to install Node.js dependencies.
+3. Run `npm run test` (or a specific NPM script) to rebuild distributed CSS and JavaScript files, as well as our docs assets.
+4. From the root `/bootstrap` directory, run `bundle exec jekyll serve` in the command line.
+5. Open <http://localhost:9001> in your browser, and voilà.
 
 Learn more about using Jekyll by reading its [documentation](https://jekyllrb.com/docs/home/).
 

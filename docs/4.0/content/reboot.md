@@ -24,7 +24,7 @@ The `<html>` and `<body>` elements are updated to provide better page-wide defau
 
 - The `box-sizing` is globally set on every element—including `*:before` and `*:after`, to `border-box`. This ensures that the declared width of element is never exceeded due to padding or border.
   - No base `font-size` is declared on the `<html>`, but `16px` is assumed (the browser default). `font-size: 1rem` is applied on the `<body>` for easy responsive type-scaling via media queries while respecting user preferences and ensuring a more accessible approach.
-- The `<body>` also sets a global `font-family` and `line-height`. This is inherited later by some form elements to prevent font inconsistencies.
+- The `<body>` also sets a global `font-family`, `line-height`, and `text-align`. This is inherited later by some form elements to prevent font inconsistencies.
 - For safety, the `<body>` has a declared `background-color`, defaulting to `#fff`.
 
 ## Native font stack
@@ -35,8 +35,6 @@ The default web fonts (Helvetica Neue, Helvetica, and Arial) have been dropped i
 $font-family-sans-serif:
   // Safari for OS X and iOS (San Francisco)
   -apple-system,
-  // Chrome >= 56 for OS X (San Francisco), Windows, Linux and Android
-  system-ui,
   // Chrome < 56 for OS X (San Francisco)
   BlinkMacSystemFont,
   // Windows
@@ -44,7 +42,9 @@ $font-family-sans-serif:
   // Android
   "Roboto",
   // Basic web fallback
-  "Helvetica Neue", Arial, sans-serif !default;
+  "Helvetica Neue", Arial, sans-serif,
+  // Emoji fonts
+  "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
 {% endhighlight %}
 
 This `font-family` is applied to the `<body>` and automatically inherited globally throughout Bootstrap. To switch the global `font-family`, update `$font-family-base` and recompile Bootstrap.

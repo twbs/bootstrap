@@ -22,7 +22,7 @@ $(function () {
 
   QUnit.test('should provide no conflict', function (assert) {
     assert.expect(1)
-    assert.strictEqual($.fn.popover, undefined, 'popover was set back to undefined (org value)')
+    assert.strictEqual(typeof $.fn.popover, 'undefined', 'popover was set back to undefined (org value)')
   })
 
   QUnit.test('should throw explicit error on undefined method', function (assert) {
@@ -304,7 +304,7 @@ $(function () {
         assert.ok(false, 'should not fire any popover events')
       })
       .bootstrapPopover('hide')
-    assert.strictEqual($popover.data('bs.popover'), undefined, 'should not initialize the popover')
+    assert.strictEqual(typeof $popover.data('bs.popover'), 'undefined', 'should not initialize the popover')
   })
 
   QUnit.test('should fire inserted event', function (assert) {
