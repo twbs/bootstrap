@@ -85,8 +85,7 @@ class Alert {
     let parent     = false
 
     if (selector) {
-      const tmpSelected = SelectorEngine.find(selector)
-      parent = tmpSelected[0]
+      parent = SelectorEngine.find(selector)[0]
     }
 
     if (!parent) {
@@ -136,16 +135,6 @@ class Alert {
       }
     })
   }
-
-  static _handleDismiss(alertInstance) {
-    return function (event) {
-      if (event) {
-        event.preventDefault()
-      }
-
-      alertInstance.close(this)
-    }
-  }
 }
 
 /**
@@ -159,13 +148,17 @@ EventHandler.on(document, Event.CLICK_DATA_API, Selector.DISMISS, Alert._handleD
  * ------------------------------------------------------------------------
  * jQuery
  * ------------------------------------------------------------------------
+ * add .alert to jQuery only if jQuery is present
  */
 
-$.fn[NAME]             = Alert._jQueryInterface
-$.fn[NAME].Constructor = Alert
-$.fn[NAME].noConflict  = () => {
-  $.fn[NAME] = JQUERY_NO_CONFLICT
-  return Alert._jQueryInterface
+if (typeof window.$ !== 'undefined' || typeof window.jQuery !== 'undefined') {
+  const $ = window.$ || window.jQuery
+  $.fn[NAME]             = Alert._jQueryInterface
+  $.fn[NAME].Constructor = Alert
+  $.fn[NAME].noConflict  = () => {
+    $.fn[NAME] = JQUERY_NO_CONFLICT
+    return Alert._jQueryInterface
+  }
 }
 
 export default Alert
