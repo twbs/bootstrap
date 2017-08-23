@@ -172,4 +172,3 @@ $zindex-tooltip:           1070 !default;
 ```
 
 Background elements—like the backdrops that allow click-dismissing—tend to reside on a lower `z-index`s, while navigation and popovers utilize higher `z-index`s to ensure they overlay surrounding content.
-popovers utilize higher `z-index`s to ensure they overlay surrounding content.
