@@ -21,7 +21,7 @@ $(function () {
 
   QUnit.test('should provide no conflict', function (assert) {
     assert.expect(1)
-    assert.strictEqual($.fn.tab, undefined, 'tab was set back to undefined (org value)')
+    assert.strictEqual(typeof $.fn.tab, 'undefined', 'tab was set back to undefined (org value)')
   })
 
   QUnit.test('should throw explicit error on undefined method', function (assert) {
