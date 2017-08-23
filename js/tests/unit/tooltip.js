@@ -22,7 +22,7 @@ $(function () {
 
   QUnit.test('should provide no conflict', function (assert) {
     assert.expect(1)
-    assert.strictEqual($.fn.tooltip, undefined, 'tooltip was set back to undefined (org value)')
+    assert.strictEqual(typeof $.fn.tooltip, 'undefined', 'tooltip was set back to undefined (org value)')
   })
 
   QUnit.test('should throw explicit error on undefined method', function (assert) {
@@ -382,7 +382,7 @@ $(function () {
       .on('inserted.bs.tooltip', function () {
         var $tooltip = $($(this).data('bs.tooltip').tip)
         assert.ok($tooltip.hasClass('bs-tooltip-right'))
-        assert.ok($tooltip.attr('style') === undefined)
+        assert.ok(typeof $tooltip.attr('style') === 'undefined')
         $styles.remove()
         done()
       })
@@ -701,7 +701,7 @@ $(function () {
         assert.ok(false, 'should not fire any tooltip events')
       })
       .bootstrapTooltip('hide')
-    assert.strictEqual($tooltip.data('bs.tooltip'), undefined, 'should not initialize the tooltip')
+    assert.strictEqual(typeof $tooltip.data('bs.tooltip'), 'undefined', 'should not initialize the tooltip')
   })
 
   QUnit.test('should not remove tooltip if multiple triggers are set and one is still active', function (assert) {
