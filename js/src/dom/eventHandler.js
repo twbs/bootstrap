@@ -65,7 +65,7 @@ if (!window.Event || typeof window.Event !== 'function') {
   window.Event.prototype = origEvent.prototype
 }
 
-const namespaceRegex = /[^\.]*(?=\..*)\.|.*/
+const namespaceRegex = /[^.]*(?=\..*)\.|.*/
 const stripNameRegex = /\..*/
 
 // Events storage
@@ -109,6 +109,8 @@ function bootstrapDelegationHandler(selector, fn) {
         }
       }
     }
+    // To please ESLint
+    return null
   }
 }
 
