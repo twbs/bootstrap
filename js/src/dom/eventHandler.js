@@ -19,7 +19,8 @@ if (typeof window.CustomEvent !== 'function') {
   window.CustomEvent = (event, params) => {
     params = params || {
       bubbles: false,
-      cancelable: false
+      cancelable: false,
+      detail: null
     }
     const evt = document.createEvent('CustomEvent')
     evt.initCustomEvent(event, params.bubbles, params.cancelable, params.detail)
@@ -101,6 +102,8 @@ function bootstrapDelegationHandler(selector, fn) {
         }
       }
     }
+    // To please ESLint
+    return null
   }
 }
 

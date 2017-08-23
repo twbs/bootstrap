@@ -10,7 +10,7 @@ const mapData = (() => {
   return {
     set(element, key, data) {
       let id
-      if (element.key === undefined) {
+      if (typeof element.key === 'undefined') {
         element.key = {
           key,
           id
@@ -20,14 +20,14 @@ const mapData = (() => {
       storeData[id] = data
     },
     get(element, key) {
-      if (element.key === undefined || element.key !== key) {
+      if (typeof element.key === 'undefined' || element.key !== key) {
         return null
       }
       const keyProperties = element.key
       return storeData[keyProperties.id]
     },
     delete(element, key) {
-      if (element.key === undefined || element.key !== key) {
+      if (typeof element.key === 'undefined' || element.key !== key) {
         return
       }
       const keyProperties = element.key
