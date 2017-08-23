@@ -443,7 +443,7 @@ const Carousel = (($) => {
         if (typeof config === 'number') {
           data.to(config)
         } else if (typeof action === 'string') {
-          if (data[action] === undefined) {
+          if (typeof data[action] === 'undefined') {
             throw new Error(`No method named "${action}"`)
           }
           data[action]()
