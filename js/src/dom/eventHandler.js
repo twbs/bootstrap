@@ -91,13 +91,27 @@ function bootstrapHandler(element, fn) {
   }
 }
 
+function bootstrapDelegationHandler(selector, fn) {
+  return function (event) {
+    const domElements = document.querySelectorAll(selector)
+    for (let target = event.target; target && target !== this; target = target.parentNode) {
+      for (let i = domElements.length; i--;) {
+        if (domElements[i] === target) {
+          return fn.apply(target, [event])
+        }
+      }
+    }
+  }
+}
+
 const EventHandler = {
-  on(element, originalTypeEvent, handler) {
+  on(element, originalTypeEvent, handler, delegationFn) {
     if (typeof originalTypeEvent !== 'string' ||
         (typeof element === 'undefined' || element === null)) {
       return
     }
 
+    const delegation = typeof handler === 'string'
     // allow to get the native events from namespaced events ('click.bs.button' --> 'click')
     let typeEvent = originalTypeEvent.replace(stripNameRegex, '')
     const isNative = nativeEvents.indexOf(typeEvent) > -1
@@ -107,12 +121,11 @@ const EventHandler = {
     const events    = getEvent(element)
     const handlers  = events[typeEvent] || (events[typeEvent] = {})
     const uid = getUidEvent(handler, originalTypeEvent.replace(namespaceRegex, ''))
-    // TODO : Handle multi events on one element
     if (handlers[uid]) {
       return
     }
 
-    const fn = bootstrapHandler(element, handler)
+    const fn = !delegation ? bootstrapHandler(element, handler) : bootstrapDelegationHandler(handler, delegationFn)
     handlers[uid] = fn
     handler.uidEvent = uid
     element.addEventListener(typeEvent, fn, false)
@@ -125,10 +138,8 @@ const EventHandler = {
       if (!events || !events[typeEvent]) {
         return
       }
-      const uidEvent = handler.uidEvent
-      const fn = events[typeEvent][uidEvent]
-      fn.apply(element, [e])
-      EventHandler.off(element, event, handler)
+      handler.apply(element, [e])
+      EventHandler.off(element, event, complete)
     }
     EventHandler.on(element, event, complete)
   },
