@@ -46,7 +46,7 @@ const SelectorEngine = {
     return fnMatches.call(element, selector)
   },
 
-  find(selector) {
+  find(element = document, selector) {
     if (typeof selector !== 'string') {
       return null
     }
@@ -56,7 +56,7 @@ const SelectorEngine = {
       selectorType = 'getElementById'
       selector = selector.substr(1, selector.length)
     }
-    return document[selectorType](selector)
+    return element[selectorType](selector)
   },
 
   closest(element, selector) {
