@@ -16,9 +16,8 @@ if (!Element.prototype.matches) {
 }
 
 // closest polyfill (see: https://mzl.la/2vXggaI)
-let fnClosest = null
 if (!Element.prototype.closest) {
-  fnClosest = (element, selector) => {
+  Element.prototype.closest = (element, selector) => {
     let ancestor = element
     if (!document.documentElement.contains(element)) {
       return null
@@ -34,11 +33,9 @@ if (!Element.prototype.closest) {
 
     return null
   }
-} else {
-  fnClosest = (element, selector) => {
-    return element.closest(selector)
-  }
 }
+
+const fnClosest = Element.prototype.closest
 
 const SelectorEngine = {
   matches(element, selector) {
@@ -59,7 +56,7 @@ const SelectorEngine = {
   },
 
   closest(element, selector) {
-    return fnClosest(element, selector)
+    return fnClosest.call(element, selector)
   }
 }
 
