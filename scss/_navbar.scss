@@ -75,11 +75,10 @@
     float: none;
   }
 
-  .dropup {
-    .dropdown-menu {
-      position: absolute;
-      top: auto;
-      bottom: 100%;
+  .dropdown-toggle {
+    &::after {
+      border-top: $caret-width solid;
+      border-bottom: 0;
     }
   }
 }
@@ -151,6 +150,18 @@
         > .container-fluid {
           padding-right: 0;
           padding-left: 0;
+        }
+
+        .dropup {
+          .dropdown-menu {
+            position: absolute;
+            top: auto;
+            bottom: 100%;
+          }
+
+          .dropdown-toggle {
+            @include caret(up);
+          }
         }
       }
 
