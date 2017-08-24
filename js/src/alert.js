@@ -10,7 +10,7 @@ import Util from './util'
  * --------------------------------------------------------------------------
  */
 
-const Alert = (($) => {
+const Alert = (() => {
   /**
    * ------------------------------------------------------------------------
    * Constants
@@ -22,7 +22,6 @@ const Alert = (($) => {
   const DATA_KEY            = 'bs.alert'
   const EVENT_KEY           = `.${DATA_KEY}`
   const DATA_API_KEY        = '.data-api'
-  const JQUERY_NO_CONFLICT  = $.fn[NAME]
 
   const Selector = {
     DISMISS : '[data-dismiss="alert"]'
@@ -164,9 +163,11 @@ const Alert = (($) => {
    */
 
   if (typeof window.$ !== 'undefined' || typeof window.jQuery !== 'undefined') {
-    const $ = window.$ || window.jQuery
-    $.fn[NAME]             = Alert._jQueryInterface
-    $.fn[NAME].Constructor = Alert
+    const $                   = window.$ || window.jQuery
+    const JQUERY_NO_CONFLICT  = $.fn[NAME]
+    $.fn[NAME]                = Alert._jQueryInterface
+    $.fn[NAME].Constructor    = Alert
+
     $.fn[NAME].noConflict  = function () {
       $.fn[NAME] = JQUERY_NO_CONFLICT
       return Alert._jQueryInterface
@@ -174,7 +175,6 @@ const Alert = (($) => {
   }
 
   return Alert
-
 })()
 
 export default Alert
