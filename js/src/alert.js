@@ -21,7 +21,6 @@ const VERSION             = '4.3.1'
 const DATA_KEY            = 'bs.alert'
 const EVENT_KEY           = `.${DATA_KEY}`
 const DATA_API_KEY        = '.data-api'
-const JQUERY_NO_CONFLICT  = $.fn[NAME]
 
 const Selector = {
   DISMISS : '[data-dismiss="alert"]'
@@ -152,10 +151,11 @@ EventHandler.on(document, Event.CLICK_DATA_API, Selector.DISMISS, Alert._handleD
  */
 
 if (typeof window.$ !== 'undefined' || typeof window.jQuery !== 'undefined') {
-  const $ = window.$ || window.jQuery
-  $.fn[NAME]             = Alert._jQueryInterface
-  $.fn[NAME].Constructor = Alert
-  $.fn[NAME].noConflict  = () => {
+  const $                  = window.$ || window.jQuery
+  const JQUERY_NO_CONFLICT = $.fn[NAME]
+  $.fn[NAME]               = Alert._jQueryInterface
+  $.fn[NAME].Constructor   = Alert
+  $.fn[NAME].noConflict    = () => {
     $.fn[NAME] = JQUERY_NO_CONFLICT
     return Alert._jQueryInterface
   }
