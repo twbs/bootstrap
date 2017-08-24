@@ -47,19 +47,23 @@
 
     <script src="../../../assets/js/vendor/jquery-slim.min.js"></script>
     <script src="../../dist/dom/eventHandler.js"></script>
+    <script src="../../dist/dom/selectorEngine.js"></script>
+    <script src="../../dist/dom/data.js"></script>
     <script src="../../dist/util.js"></script>
     <script src="../../dist/carousel.js"></script>
 
     <script>
       $(function() {
         var t0, t1;
+        var carousel = SelectorEngine.find('#carousel-example-generic')
 
         // Test to show that the carousel doesn't slide when the current tab isn't visible
         // Test to show that transition-duration can be changed with css
-        $('#carousel-example-generic').on('slid.bs.carousel', function(event) {
+        EventHandler.on(carousel, 'slid.bs.carousel', function (event) {
           t1 = performance.now()
           console.log('transition-duration took' + (t1 - t0) + 'ms, slid at ', event.timeStamp)
-        }).on('slide.bs.carousel', function() {
+        })
+        EventHandler.on(carousel, 'slide.bs.carousel', function () {
           t0 = performance.now()
         })
       })
