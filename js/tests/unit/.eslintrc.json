@@ -13,7 +13,8 @@
     "Carousel": false,
     "Simulator": false,
     "Toast": false,
-    "EventHandler": false
+    "EventHandler": false,
+    "Data": false
   },
   "parserOptions": {
     "ecmaVersion": 5,
