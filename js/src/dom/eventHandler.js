@@ -65,6 +65,7 @@ if (!window.Event || typeof window.Event !== 'function') {
 
 const namespaceRegex = /[^.]*(?=\..*)\.|.*/
 const stripNameRegex = /\..*/
+const keyEventRegex  = /^key/
 
 // Events storage
 const eventRegistry = {}
@@ -92,14 +93,29 @@ const nativeEvents = [
   'error', 'abort', 'scroll'
 ]
 
+const customEvents = {
+  mouseenter: 'mouseover',
+  mouseleave: 'mouseout'
+}
+
+function fixEvent(event) {
+  // Add which for key events
+  if (event.which === null && keyEventRegex.test(event.type)) {
+    event.which = event.charCode !== null ? event.charCode : event.keyCode
+  }
+  return event
+}
+
 function bootstrapHandler(element, fn) {
   return function (event) {
+    event = fixEvent(event)
     return fn.apply(element, [event])
   }
 }
 
 function bootstrapDelegationHandler(selector, fn) {
   return function (event) {
+    event = fixEvent(event)
     const domElements = document.querySelectorAll(selector)
     for (let target = event.target; target && target !== this; target = target.parentNode) {
       for (let i = domElements.length; i--;) {
@@ -122,8 +138,15 @@ const EventHandler = {
 
     const delegation      = typeof handler === 'string'
     const originalHandler = delegation ? delegationFn : handler
+
     // allow to get the native events from namespaced events ('click.bs.button' --> 'click')
     let typeEvent = originalTypeEvent.replace(stripNameRegex, '')
+
+    const custom = customEvents[typeEvent]
+    if (custom) {
+      typeEvent = custom
+    }
+
     const isNative = nativeEvents.indexOf(typeEvent) > -1
     if (!isNative) {
       typeEvent = originalTypeEvent
@@ -138,6 +161,7 @@ const EventHandler = {
     const fn = !delegation ? bootstrapHandler(element, handler) : bootstrapDelegationHandler(handler, delegationFn)
     handlers[uid] = fn
     originalHandler.uidEvent = uid
+    fn.originalHandler = originalHandler
     element.addEventListener(typeEvent, fn, delegation)
   },
 
@@ -160,16 +184,46 @@ const EventHandler = {
       return
     }
 
-    const typeEvent = originalTypeEvent.replace(stripNameRegex, '')
-    const events = getEvent(element)
-    if (!events || !events[typeEvent]) {
-      return
+    const events      = getEvent(element)
+    let typeEvent     = originalTypeEvent.replace(stripNameRegex, '')
+    const inNamespace = typeEvent !== originalTypeEvent
+    const custom      = customEvents[typeEvent]
+    if (custom) {
+      typeEvent = custom
+    }
+    const isNative = nativeEvents.indexOf(typeEvent) > -1
+    if (!isNative) {
+      typeEvent = originalTypeEvent
     }
 
-    const uidEvent = handler.uidEvent
-    const fn = events[typeEvent][uidEvent]
-    element.removeEventListener(typeEvent, fn, false)
-    delete events[typeEvent][uidEvent]
+    if (typeof handler === 'undefined') {
+      for (const elementEvent in events) {
+        if (!Object.prototype.hasOwnProperty.call(events, elementEvent)) {
+          continue
+        }
+
+        const storeElementEvent = events[elementEvent]
+        for (const keyHandlers in storeElementEvent) {
+          if (!Object.prototype.hasOwnProperty.call(storeElementEvent, keyHandlers)) {
+            continue
+          }
+          // delete all the namespaced listeners
+          if (inNamespace && keyHandlers.indexOf(originalTypeEvent) > -1) {
+            const handlerFn = events[elementEvent][keyHandlers]
+            EventHandler.off(element, elementEvent, handlerFn.originalHandler)
+          }
+        }
+      }
+    } else {
+      if (!events || !events[typeEvent]) {
+        return
+      }
+
+      const uidEvent = handler.uidEvent
+      const fn = events[typeEvent][uidEvent]
+      element.removeEventListener(typeEvent, fn, false)
+      delete events[typeEvent][uidEvent]
+    }
   },
 
   trigger(element, event, args) {

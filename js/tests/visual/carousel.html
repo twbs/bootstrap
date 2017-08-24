@@ -42,13 +42,15 @@
 
     <script src="../../../assets/js/vendor/jquery-slim.min.js"></script>
     <script src="../../dist/dom/eventHandler.js"></script>
+    <script src="../../dist/dom/selectorEngine.js"></script>
+    <script src="../../dist/dom/data.js"></script>
     <script src="../../dist/util.js"></script>
     <script src="../../dist/carousel.js"></script>
 
     <script>
       $(function() {
         // Test to show that the carousel doesn't slide when the current tab isn't visible
-        $('#carousel-example-generic').on('slid.bs.carousel', function(event) {
+        EventHandler.on(SelectorEngine.find('#carousel-example-generic'), 'slid.bs.carousel', function (event) {
           console.log('slid at ', event.timeStamp)
         })
       })
