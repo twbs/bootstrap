@@ -826,4 +826,26 @@ $(function () {
 
     $el.bootstrapTooltip('show')
   })
+
+  QUnit.test('tooltip should be shown right away after the call of disable/enable', function (assert) {
+    assert.expect(2)
+    var done = assert.async()
+
+    var $trigger = $('<a href="#" rel="tooltip" data-trigger="click" title="Another tooltip"/>')
+      .appendTo('#qunit-fixture')
+      .bootstrapTooltip()
+      .on('shown.bs.tooltip', function () {
+        assert.strictEqual($('.tooltip').hasClass('show'), true)
+        done()
+      })
+
+
+    $trigger.bootstrapTooltip('disable')
+    $trigger.trigger($.Event('click'))
+    setTimeout(function () {
+      assert.strictEqual($('.tooltip').length === 0, true)
+      $trigger.bootstrapTooltip('enable')
+      $trigger.trigger($.Event('click'))
+    }, 200)
+  })
 })
