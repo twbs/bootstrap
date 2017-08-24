@@ -10,7 +10,8 @@
     "Util": false,
     "Alert": false,
     "Button": false,
-    "EventHandler": false
+    "EventHandler": false,
+    "Data": false
   },
   "parserOptions": {
     "ecmaVersion": 5,
