@@ -31,7 +31,7 @@
     "Gruntfile.js"
   ],
   "dependencies": {
-    "jquery": ">=1.9.1",
-    "popper.js": "^1.11.0"
+    "jquery": ">=3.0.0",
+    "popper.js": "^1.12.3"
   }
 }

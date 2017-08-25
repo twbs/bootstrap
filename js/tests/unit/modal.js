@@ -34,7 +34,7 @@ $(function () {
 
   QUnit.test('should provide no conflict', function (assert) {
     assert.expect(1)
-    assert.strictEqual($.fn.modal, undefined, 'modal was set back to undefined (orig value)')
+    assert.strictEqual(typeof $.fn.modal, 'undefined', 'modal was set back to undefined (orig value)')
   })
 
   QUnit.test('should throw explicit error on undefined method', function (assert) {
@@ -380,7 +380,7 @@ $(function () {
 
     $('<div id="modal-test"/>')
       .on('hidden.bs.modal', function () {
-        assert.strictEqual($body.data('padding-right'), undefined, 'data-padding-right should be cleared after closing')
+        assert.strictEqual(typeof $body.data('padding-right'), 'undefined', 'data-padding-right should be cleared after closing')
         $body.removeAttr('style')
         done()
       })
@@ -422,12 +422,54 @@ $(function () {
 
     $('<div id="modal-test"/>')
       .on('hidden.bs.modal', function () {
-        assert.strictEqual($element.data('padding-right'), undefined, 'data-padding-right should be cleared after closing')
+        assert.strictEqual(typeof $element.data('padding-right'), 'undefined', 'data-padding-right should be cleared after closing')
         $element.remove()
         done()
       })
       .on('shown.bs.modal', function () {
         assert.strictEqual($element.data('padding-right'), originalPadding, 'original fixed element padding should be stored in data-padding-right')
+        $(this).bootstrapModal('hide')
+      })
+      .bootstrapModal('show')
+  })
+
+  QUnit.test('should adjust the inline margin of sticky elements when opening and restore when closing', function (assert) {
+    assert.expect(2)
+    var done = assert.async()
+    var $element = $('<div class="sticky-top"></div>').appendTo('#qunit-fixture')
+    var originalPadding = $element.css('margin-right')
+
+    $('<div id="modal-test"/>')
+      .on('hidden.bs.modal', function () {
+        var currentPadding = $element.css('margin-right')
+        assert.strictEqual(currentPadding, originalPadding, 'sticky element margin should be reset after closing')
+        $element.remove()
+        done()
+      })
+      .on('shown.bs.modal', function () {
+        var expectedPadding = parseFloat(originalPadding) - $(this).getScrollbarWidth() + 'px'
+        var currentPadding = $element.css('margin-right')
+        assert.strictEqual(currentPadding, expectedPadding, 'sticky element margin should be adjusted while opening')
+        $(this).bootstrapModal('hide')
+      })
+      .bootstrapModal('show')
+  })
+
+  QUnit.test('should store the original margin of sticky elements in data-margin-right before showing', function (assert) {
+    assert.expect(2)
+    var done = assert.async()
+    var $element = $('<div class="sticky-top"></div>').appendTo('#qunit-fixture')
+    var originalPadding = '0px'
+    $element.css('margin-right', originalPadding)
+
+    $('<div id="modal-test"/>')
+      .on('hidden.bs.modal', function () {
+        assert.strictEqual(typeof $element.data('margin-right'), 'undefined', 'data-margin-right should be cleared after closing')
+        $element.remove()
+        done()
+      })
+      .on('shown.bs.modal', function () {
+        assert.strictEqual($element.data('margin-right'), originalPadding, 'original sticky element margin should be stored in data-margin-right')
         $(this).bootstrapModal('hide')
       })
       .bootstrapModal('show')
@@ -464,7 +506,7 @@ $(function () {
 
     $('<div id="modal-test"/>')
       .on('hidden.bs.modal', function () {
-        assert.strictEqual($element.data('margin-right'), undefined, 'data-margin-right should be cleared after closing')
+        assert.strictEqual(typeof $element.data('margin-right'), 'undefined', 'data-margin-right should be cleared after closing')
         $element.remove()
         done()
       })
