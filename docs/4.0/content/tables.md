@@ -581,7 +581,9 @@ Regular table background variants are not available with the dark table, however
 
 ## Responsive tables
 
-Create responsive tables by adding `.table-responsive` to any `.table` to make them scroll horizontally on small devices (under 768px). When viewing on anything larger than 768px wide, you will not see any difference in these tables.
+Create responsive tables by adding `.table-responsive{-sm|-md|-lg|-xl}` to any `.table` to make them scroll horizontally at each `max-width` breakpoint 575px, 767px, 991px, and 1199px, respectively.
+
+For responsive tables that always scroll horizontally when the table is wider than its container, add the `.table-responsive` class on `.table`.
 
 {% callout warning %}
 #### Vertical clipping/truncation
@@ -600,11 +602,17 @@ Responsive tables make use of `overflow-y: hidden`, which clips off any content 
         <th>Table heading</th>
         <th>Table heading</th>
         <th>Table heading</th>
+        <th>Table heading</th>
+        <th>Table heading</th>
+        <th>Table heading</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <th scope="row">1</th>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
         <td>Table cell</td>
         <td>Table cell</td>
         <td>Table cell</td>
@@ -620,9 +628,15 @@ Responsive tables make use of `overflow-y: hidden`, which clips off any content 
         <td>Table cell</td>
         <td>Table cell</td>
         <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
       </tr>
       <tr>
         <th scope="row">3</th>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
         <td>Table cell</td>
         <td>Table cell</td>
         <td>Table cell</td>
@@ -633,7 +647,7 @@ Responsive tables make use of `overflow-y: hidden`, which clips off any content 
     </tbody>
   </table>
 
-  <table class="table table-bordered table-responsive">
+  <table class="table table-bordered table-responsive-lg">
     <thead>
       <tr>
         <th>#</th>
