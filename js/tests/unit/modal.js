@@ -581,9 +581,9 @@ $(function () {
       .appendTo('#qunit-fixture')
     // The XSS payload above does not have a closure over this function and cannot access the assert object directly
     // However, it can send a click event to the following control button, which will then fail the assert
-    var $controlBtn = $('<button>')
+    $('<button>')
       .addClass('control')
-      .on('click', function() {
+      .on('click', function () {
         assert.notOk(true, 'XSS payload is not executed as js')
       })
       .appendTo('#qunit-fixture')
