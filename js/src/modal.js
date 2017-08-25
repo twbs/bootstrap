@@ -473,7 +473,7 @@ const Modal = (($) => {
       })
 
       // Restore sticky content and navbar-toggler margin
-      $(Selector.STICKY_CONTENT).add(Selector.NAVBAR_TOGGLER).each((index, element) => {
+      $(`${Selector.STICKY_CONTENT}, ${Selector.NAVBAR_TOGGLER}`).each((index, element) => {
         const margin = $(element).data('margin-right')
         if (typeof margin !== 'undefined') {
           $(element).css('margin-right', margin).removeData('margin-right')
