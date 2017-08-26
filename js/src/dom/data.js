@@ -6,10 +6,10 @@
  */
 
 const mapData = (() => {
-  const storeData    = {}
+  const storeData = {}
+  let id = 1
   return {
     set(element, key, data) {
-      let id
       if (typeof element.key === 'undefined') {
         element.key = {
           key,
@@ -18,20 +18,28 @@ const mapData = (() => {
       }
 
       storeData[id] = data
+      id++
     },
     get(element, key) {
-      if (typeof element.key === 'undefined' || element.key !== key) {
+      if (typeof element.key === 'undefined') {
         return null
       }
+
       const keyProperties = element.key
-      return storeData[keyProperties.id]
+      if (keyProperties.key === key) {
+        return storeData[keyProperties.id]
+      }
+      return null
     },
     delete(element, key) {
-      if (typeof element.key === 'undefined' || element.key !== key) {
+      if (typeof element.key === 'undefined') {
         return
       }
+
       const keyProperties = element.key
-      delete storeData[keyProperties.id]
+      if (keyProperties.key === key) {
+        delete storeData[keyProperties.id]
+      }
     }
   }
 })()
@@ -41,7 +49,7 @@ const Data = {
     mapData.set(instance, key, data)
   },
   getData(instance, key) {
-    mapData.get(instance, key)
+    return mapData.get(instance, key)
   },
   removeData(instance, key) {
     mapData.delete(instance, key)
