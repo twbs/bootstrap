@@ -433,6 +433,48 @@ $(function () {
       .bootstrapModal('show')
   })
 
+  QUnit.test('should adjust the inline margin of sticky elements when opening and restore when closing', function (assert) {
+    assert.expect(2)
+    var done = assert.async()
+    var $element = $('<div class="sticky-top"></div>').appendTo('#qunit-fixture')
+    var originalPadding = $element.css('margin-right')
+
+    $('<div id="modal-test"/>')
+      .on('hidden.bs.modal', function () {
+        var currentPadding = $element.css('margin-right')
+        assert.strictEqual(currentPadding, originalPadding, 'sticky element margin should be reset after closing')
+        $element.remove()
+        done()
+      })
+      .on('shown.bs.modal', function () {
+        var expectedPadding = parseFloat(originalPadding) - $(this).getScrollbarWidth() + 'px'
+        var currentPadding = $element.css('margin-right')
+        assert.strictEqual(currentPadding, expectedPadding, 'sticky element margin should be adjusted while opening')
+        $(this).bootstrapModal('hide')
+      })
+      .bootstrapModal('show')
+  })
+
+  QUnit.test('should store the original margin of sticky elements in data-margin-right before showing', function (assert) {
+    assert.expect(2)
+    var done = assert.async()
+    var $element = $('<div class="sticky-top"></div>').appendTo('#qunit-fixture')
+    var originalPadding = '0px'
+    $element.css('margin-right', originalPadding)
+
+    $('<div id="modal-test"/>')
+      .on('hidden.bs.modal', function () {
+        assert.strictEqual(typeof $element.data('margin-right'), 'undefined', 'data-margin-right should be cleared after closing')
+        $element.remove()
+        done()
+      })
+      .on('shown.bs.modal', function () {
+        assert.strictEqual($element.data('margin-right'), originalPadding, 'original sticky element margin should be stored in data-margin-right')
+        $(this).bootstrapModal('hide')
+      })
+      .bootstrapModal('show')
+  })
+
   QUnit.test('should adjust the inline margin of the navbar-toggler when opening and restore when closing', function (assert) {
     assert.expect(2)
     var done = assert.async()
@@ -554,5 +596,41 @@ $(function () {
         }, 1)
       })
       .trigger('click')
+  })
+
+  QUnit.test('should not parse target as html', function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+
+    var $toggleBtn = $('<button data-toggle="modal" data-target="&lt;div id=&quot;modal-test&quot;&gt;&lt;div class=&quot;contents&quot;&lt;div&lt;div id=&quot;close&quot; data-dismiss=&quot;modal&quot;/&gt;&lt;/div&gt;&lt;/div&gt;"/>')
+      .appendTo('#qunit-fixture')
+
+    $toggleBtn.trigger('click')
+    setTimeout(function () {
+      assert.strictEqual($('#modal-test').length, 0, 'target has not been parsed and added to the document')
+      done()
+    }, 1)
+  })
+
+  QUnit.test('should not execute js from target', function (assert) {
+    assert.expect(0)
+    var done = assert.async()
+
+    // This toggle button contains XSS payload in its data-target
+    // Note: it uses the onerror handler of an img element to execute the js, because a simple script element does not work here
+    //       a script element works in manual tests though, so here it is likely blocked by the qunit framework
+    var $toggleBtn = $('<button data-toggle="modal" data-target="&lt;div&gt;&lt;image src=&quot;missing.png&quot; onerror=&quot;$(&apos;#qunit-fixture button.control&apos;).trigger(&apos;click&apos;)&quot;&gt;&lt;/div&gt;"/>')
+      .appendTo('#qunit-fixture')
+    // The XSS payload above does not have a closure over this function and cannot access the assert object directly
+    // However, it can send a click event to the following control button, which will then fail the assert
+    $('<button>')
+      .addClass('control')
+      .on('click', function () {
+        assert.notOk(true, 'XSS payload is not executed as js')
+      })
+      .appendTo('#qunit-fixture')
+
+    $toggleBtn.trigger('click')
+    setTimeout(done, 500)
   })
 })
