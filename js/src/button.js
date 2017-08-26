@@ -75,7 +75,7 @@ const Button = (() => {
       )
 
       if (rootElement) {
-        const input = SelectorEngine.findOne(this._element, Selector.INPUT)
+        const input = SelectorEngine.findOne(Selector.INPUT, this._element)
 
         if (input) {
           if (input.type === 'radio') {
@@ -84,7 +84,7 @@ const Button = (() => {
               triggerChangeEvent = false
 
             } else {
-              const activeElement = SelectorEngine.findOne(rootElement, Selector.ACTIVE)
+              const activeElement = SelectorEngine.findOne(Selector.ACTIVE, rootElement)
 
               if (activeElement) {
                 activeElement.classList.remove(ClassName.ACTIVE)
@@ -171,7 +171,7 @@ const Button = (() => {
 
   EventHandler.on(document,
     Event.FOCUS_BLUR_DATA_API, Selector.DATA_TOGGLE_CARROT, (event) => {
-      const button = SelectorEngine.closest(event.target, Selector.BUTTON)[0]
+      const button = SelectorEngine.closest(event.target, Selector.BUTTON)
       if (/^focus(in)?$/.test(event.type)) {
         button.classList.add(ClassName.FOCUS)
       } else {
