@@ -46,19 +46,19 @@ const SelectorEngine = {
     return fnMatches.call(element, selector)
   },
 
-  find(element = document, selector) {
+  find(selector, element = document) {
     if (typeof selector !== 'string') {
       return null
     }
 
     if (selector.indexOf('#') === 0) {
-      return SelectorEngine.findOne(element, selector)
+      return SelectorEngine.findOne(selector, element)
     }
 
     return element.querySelectorAll(selector)
   },
 
-  findOne(element = document, selector) {
+  findOne(selector, element = document) {
     if (typeof selector !== 'string') {
       return null
     }
