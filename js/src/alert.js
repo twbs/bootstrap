@@ -92,7 +92,7 @@ const Alert = (() => {
       let parent     = false
 
       if (selector) {
-        parent = SelectorEngine.find(selector)[0]
+        parent = SelectorEngine.findOne(selector)
       }
 
       if (!parent) {
