@@ -1,6 +1,7 @@
 import Data from './dom/data'
 import EventHandler from './dom/eventHandler'
 import SelectorEngine from './dom/selectorEngine'
+
 /**
  * --------------------------------------------------------------------------
  * Bootstrap (v4.0.0): button.js
@@ -147,12 +148,16 @@ const Button = (() => {
       event.preventDefault()
 
       let button = event.target
-
       if (!button.classList.contains(ClassName.BUTTON)) {
         button = SelectorEngine.closest(button, Selector.BUTTON)
       }
 
-      Button._jQueryInterface.call($(button), 'toggle')
+      let data = Data.getData(button, DATA_KEY)
+      if (!data) {
+        data = new Button(button)
+        Data.setData(button, DATA_KEY, data)
+      }
+      data.toggle()
     })
 
   EventHandler.on(document,
