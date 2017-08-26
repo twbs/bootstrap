@@ -361,7 +361,8 @@ const Collapse = (($) => {
    */
 
   $(document).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
-    if (!/input|textarea/i.test(event.target.tagName)) {
+    // preventDefault only for <a> elements (which change the URL) not inside the collapsible element
+    if (event.target.tagName === 'A' && !$.contains(this, event.target)) {
       event.preventDefault()
     }
 
