@@ -74,17 +74,18 @@ function getEvent(element) {
   return eventRegistry[uid] = eventRegistry[uid] || {}
 }
 
-const nativeEvents =
-`click,dblclick,mouseup,mousedown,contextmenu,
-'mousewheel,DOMMouseScroll,
-'mouseover,mouseout,mousemove,selectstart,selectend,
-'keydown,keypress,keyup,
-'orientationchange,
-'touchstart,touchmove,touchend,touchcancel,
-'gesturestart,gesturechange,gestureend,
-'focus,blur,change,reset,select,submit,
-'load,unload,beforeunload,resize,move,DOMContentLoaded,readystatechange,
-'error,abort,scroll`.split(',')
+const nativeEvents = [
+  'click', 'dblclick', 'mouseup', 'mousedown', 'contextmenu',
+  'mousewheel', 'DOMMouseScroll',
+  'mouseover', 'mouseout', 'mousemove', 'selectstart', 'selectend',
+  'keydown', 'keypress', 'keyup',
+  'orientationchange',
+  'touchstart', 'touchmove', 'touchend', 'touchcancel',
+  'gesturestart', 'gesturechange', 'gestureend',
+  'focus', 'blur', 'change', 'reset', 'select', 'submit',
+  'load', 'unload', 'beforeunload', 'resize', 'move', 'DOMContentLoaded', 'readystatechange',
+  'error', 'abort', 'scroll'
+]
 
 function bootstrapHandler(element, fn) {
   return function (event) {
@@ -165,9 +166,9 @@ const EventHandler = {
     delete events[typeEvent][uidEvent]
   },
 
-  trigger(element, event) {
+  trigger(element, event, args) {
     if (typeof event !== 'string' ||
-       (typeof element === 'undefined' || element === null)) {
+        (typeof element === 'undefined' || element === null)) {
       return null
     }
     const typeEvent = event.replace(stripNameRegex, '')
@@ -175,13 +176,14 @@ const EventHandler = {
     let returnedEvent = null
     if (isNative) {
       const evt = document.createEvent('HTMLEvents')
-      evt.initEvent(typeEvent, true, true)
+      evt.initEvent(typeEvent, true, true, typeof args !== 'undefined' ? args : {})
       element.dispatchEvent(evt)
       returnedEvent = evt
     } else {
       const eventToDispatch = new CustomEvent(event, {
         bubbles: true,
-        cancelable: true
+        cancelable: true,
+        detail: typeof args !== 'undefined' ? args : {}
       })
       element.dispatchEvent(eventToDispatch)
       returnedEvent = eventToDispatch
