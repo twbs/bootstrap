@@ -33,14 +33,14 @@ Below is an example of a basic card with mixed content and a fixed width. Cards 
 
 Cards support a wide variety of content, including images, text, list groups, links, and more. Below are examples of what's supported.
 
-### Blocks
+### Body
 
 The building block of a card is the `.card-body`. Use it whenever you need a padded section within a card.
 
 {% example html %}
 <div class="card">
   <div class="card-body">
-    This is some text within a card block.
+    This is some text within a card body.
   </div>
 </div>
 {% endexample %}
