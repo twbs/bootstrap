@@ -51,11 +51,24 @@ const SelectorEngine = {
       return null
     }
 
-    let selectorType = 'querySelectorAll'
+    if (selector.indexOf('#') === 0) {
+      return SelectorEngine.findOne(element, selector)
+    }
+
+    return element.querySelectorAll(selector)
+  },
+
+  findOne(element = document, selector) {
+    if (typeof selector !== 'string') {
+      return null
+    }
+
+    let selectorType = 'querySelector'
     if (selector.indexOf('#') === 0) {
       selectorType = 'getElementById'
       selector = selector.substr(1, selector.length)
     }
+
     return element[selectorType](selector)
   },
 
