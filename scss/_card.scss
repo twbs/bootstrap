@@ -40,7 +40,7 @@
   }
 
   + .card-link {
-    margin-left: $card-spacer-x;
+    margin-#{$left}: $card-spacer-x;
   }
 }
 
@@ -94,24 +94,24 @@
 //
 
 .card-header-tabs {
-  margin-right: -($card-spacer-x / 2);
+  margin-#{$right}: -($card-spacer-x / 2);
   margin-bottom: -$card-spacer-y;
-  margin-left: -($card-spacer-x / 2);
+  margin-#{$left}: -($card-spacer-x / 2);
   border-bottom: 0;
 }
 
 .card-header-pills {
-  margin-right: -($card-spacer-x / 2);
-  margin-left: -($card-spacer-x / 2);
+  margin-#{$right}: -($card-spacer-x / 2);
+  margin-#{$left}: -($card-spacer-x / 2);
 }
 
 // Card image
 .card-img-overlay {
   position: absolute;
   top: 0;
-  right: 0;
+  #{$right}: 0;
   bottom: 0;
-  left: 0;
+  #{$left}: 0;
   padding: $card-img-overlay-padding;
 }
 
@@ -144,16 +144,16 @@
 
   @include media-breakpoint-up(sm) {
     flex-flow: row wrap;
-    margin-right: -$card-deck-margin;
-    margin-left: -$card-deck-margin;
+    margin-#{$right}: -$card-deck-margin;
+    margin-#{$left}: -$card-deck-margin;
 
     .card {
       display: flex;
       flex: 1 0 0%;
       flex-direction: column;
-      margin-right: $card-deck-margin;
+      margin-#{$right}: $card-deck-margin;
       margin-bottom: 0; // Override the default
-      margin-left: $card-deck-margin;
+      margin-#{$left}: $card-deck-margin;
     }
   }
 }
@@ -179,8 +179,8 @@
       margin-bottom: 0;
 
       + .card {
-        margin-left: 0;
-        border-left: 0;
+        margin-#{$left}: 0;
+        border-#{$left}: 0;
       }
 
       // Handle rounded corners
@@ -189,10 +189,10 @@
           @include border-right-radius(0);
 
           .card-img-top {
-            border-top-right-radius: 0;
+            border-top-#{$right}-radius: 0;
           }
           .card-img-bottom {
-            border-bottom-right-radius: 0;
+            border-bottom-#{$right}-radius: 0;
           }
         }
 
@@ -200,10 +200,10 @@
           @include border-left-radius(0);
 
           .card-img-top {
-            border-top-left-radius: 0;
+            border-top-#{$left}-radius: 0;
           }
           .card-img-bottom {
-            border-bottom-left-radius: 0;
+            border-bottom-#{$left}-radius: 0;
           }
         }
 

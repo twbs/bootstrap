@@ -115,6 +115,12 @@ $sizes: (
   100: 100%
 ) !default;
 
+// RTL support by flipping all classes.
+$left:         if($enable-rtl, right, left);
+$right:        if($enable-rtl, left,  right);
+$direction:    if($enable-rtl, rtl,   ltr);
+$unicode-bidi: if($enable-rtl, embed, normal);
+
 // Body
 //
 // Settings for the `<body>` element.
