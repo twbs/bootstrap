@@ -5,7 +5,7 @@ import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-alpha.6): tooltip.js
+ * Bootstrap (v4.0.0-beta): tooltip.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -28,7 +28,7 @@ const Tooltip = (($) => {
    */
 
   const NAME                = 'tooltip'
-  const VERSION             = '4.0.0-alpha.6'
+  const VERSION             = '4.0.0-beta'
   const DATA_KEY            = 'bs.tooltip'
   const EVENT_KEY           = `.${DATA_KEY}`
   const JQUERY_NO_CONFLICT  = $.fn[NAME]
@@ -184,6 +184,10 @@ const Tooltip = (($) => {
     }
 
     toggle(event) {
+      if (!this._isEnabled) {
+        return
+      }
+
       if (event) {
         const dataKey = this.constructor.DATA_KEY
         let context = $(event.currentTarget).data(dataKey)
@@ -234,8 +238,8 @@ const Tooltip = (($) => {
       if (this._popper !== null) {
         this._popper.destroy()
       }
-      this._popper        = null
 
+      this._popper = null
       this.element = null
       this.config  = null
       this.tip     = null
@@ -415,7 +419,8 @@ const Tooltip = (($) => {
     }
 
     getTipElement() {
-      return this.tip = this.tip || $(this.config.template)[0]
+      this.tip = this.tip || $(this.config.template)[0]
+      return this.tip
     }
 
     setContent() {
@@ -698,14 +703,13 @@ const Tooltip = (($) => {
         }
 
         if (typeof config === 'string') {
-          if (data[config] === undefined) {
+          if (typeof data[config] === 'undefined') {
             throw new Error(`No method named "${config}"`)
           }
           data[config]()
         }
       })
     }
-
   }
 
 

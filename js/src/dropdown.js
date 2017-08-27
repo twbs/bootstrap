@@ -5,7 +5,7 @@ import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-alpha.6): dropdown.js
+ * Bootstrap (v4.0.0-beta): dropdown.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -27,7 +27,7 @@ const Dropdown = (($) => {
    */
 
   const NAME                     = 'dropdown'
-  const VERSION                  = '4.0.0-alpha.6'
+  const VERSION                  = '4.0.0-beta'
   const DATA_KEY                 = 'bs.dropdown'
   const EVENT_KEY                = `.${DATA_KEY}`
   const DATA_API_KEY             = '.data-api'
@@ -204,7 +204,7 @@ const Dropdown = (($) => {
 
     _getConfig(config) {
       const elementData = $(this._element).data()
-      if (elementData.placement !== undefined) {
+      if (typeof elementData.placement !== 'undefined') {
         elementData.placement = AttachmentMap[elementData.placement.toUpperCase()]
       }
 
@@ -287,7 +287,7 @@ const Dropdown = (($) => {
         }
 
         if (typeof config === 'string') {
-          if (data[config] === undefined) {
+          if (typeof data[config] === 'undefined') {
             throw new Error(`No method named "${config}"`)
           }
           data[config]()
