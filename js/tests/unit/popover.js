@@ -387,4 +387,27 @@ $(function () {
 
     $popover.bootstrapPopover('show')
   })
+
+  QUnit.test('popover should be shown right away after the call of disable/enable', function (assert) {
+    assert.expect(2)
+    var done = assert.async()
+    var $popover = $('<a href="#">@mdo</a>')
+      .appendTo('#qunit-fixture')
+      .bootstrapPopover({
+        title: 'Test popover',
+        content: 'with disable/enable'
+      })
+      .on('shown.bs.popover', function () {
+        assert.strictEqual($('.popover').hasClass('show'), true)
+        done()
+      })
+
+    $popover.bootstrapPopover('disable')
+    $popover.trigger($.Event('click'))
+    setTimeout(function () {
+      assert.strictEqual($('.popover').length === 0, true)
+      $popover.bootstrapPopover('enable')
+      $popover.trigger($.Event('click'))
+    }, 200)
+  })
 })

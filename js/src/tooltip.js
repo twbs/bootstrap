@@ -184,6 +184,10 @@ const Tooltip = (($) => {
     }
 
     toggle(event) {
+      if (!this._isEnabled) {
+        return
+      }
+
       if (event) {
         const dataKey = this.constructor.DATA_KEY
         let context = $(event.currentTarget).data(dataKey)
@@ -234,8 +238,8 @@ const Tooltip = (($) => {
       if (this._popper !== null) {
         this._popper.destroy()
       }
-      this._popper        = null
 
+      this._popper = null
       this.element = null
       this.config  = null
       this.tip     = null
@@ -706,7 +710,6 @@ const Tooltip = (($) => {
         }
       })
     }
-
   }
 
 
