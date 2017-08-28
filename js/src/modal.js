@@ -426,7 +426,7 @@ const Modal = (($) => {
     }
 
     _checkScrollbar() {
-      this._isBodyOverflowing = document.body.clientWidth < window.innerWidth
+      this._isBodyOverflowing = document.body.offsetWidth < window.innerWidth
       this._scrollbarWidth = this._getScrollbarWidth()
     }
 
