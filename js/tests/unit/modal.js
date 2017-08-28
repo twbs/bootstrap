@@ -391,6 +391,25 @@ $(function () {
       .bootstrapModal('show')
   })
 
+  QUnit.test('should not adjust the inline body padding when it does not overflow', function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+    var $body = $(document.body)
+    var originalPadding = $body.css('padding-right')
+
+    $('#qunit-container').hide()
+    $('<div id="modal-test"/>')
+      .on('shown.bs.modal', function () {
+        var currentPadding = $body.css('padding-right')
+        assert.strictEqual(currentPadding, originalPadding, 'body padding should not be adjusted')
+        $(this).bootstrapModal('hide')
+
+        $('#qunit-container').show()
+        done()
+      })
+      .bootstrapModal('show')
+  })
+
   QUnit.test('should adjust the inline padding of fixed elements when opening and restore when closing', function (assert) {
     assert.expect(2)
     var done = assert.async()
