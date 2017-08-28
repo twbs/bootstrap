@@ -34,7 +34,7 @@
       border-top-color: $tooltip-arrow-color;
     }
   }
-  &.bs-tooltip-#{$right} {
+  &.bs-tooltip-right {
     padding: 0 $tooltip-arrow-width;
     .arrow {
       #{$left}: 0;
@@ -60,7 +60,7 @@
       border-bottom-color: $tooltip-arrow-color;
     }
   }
-  &.bs-tooltip-#{$left} {
+  &.bs-tooltip-left {
     padding: 0 $tooltip-arrow-width;
     .arrow {
       #{$right}: 0;
@@ -78,14 +78,14 @@
     &[x-placement^="top"] {
       @extend .bs-tooltip-top;
     }
-    &[x-placement^="#{$right}"] {
-      @extend .bs-tooltip-#{$right};
+    &[x-placement^="right"] {
+      @extend .bs-tooltip-right;
     }
     &[x-placement^="bottom"] {
       @extend .bs-tooltip-bottom;
     }
-    &[x-placement^="#{$left}"] {
-      @extend .bs-tooltip-#{$left};
+    &[x-placement^="left"] {
+      @extend .bs-tooltip-left;
     }
   }
 
