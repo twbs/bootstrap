@@ -30,7 +30,7 @@
   border-top-#{$left}-radius: $border-radius !important;
   border-top-#{$right}-radius: $border-radius !important;
 }
-.rounded-#{$right} {
+.rounded-right {
   border-top-#{$right}-radius: $border-radius !important;
   border-bottom-#{$right}-radius: $border-radius !important;
 }
@@ -38,7 +38,7 @@
   border-bottom-#{$right}-radius: $border-radius !important;
   border-bottom-#{$left}-radius: $border-radius !important;
 }
-.rounded-#{$left} {
+.rounded-left {
   border-top-#{$left}-radius: $border-radius !important;
   border-bottom-#{$left}-radius: $border-radius !important;
 }
