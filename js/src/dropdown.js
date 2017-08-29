@@ -1,5 +1,5 @@
-/* global Popper */
-
+import $ from 'jquery'
+import Popper from 'popper.js'
 import Util from './util'
 
 
@@ -10,7 +10,7 @@ import Util from './util'
  * --------------------------------------------------------------------------
  */
 
-const Dropdown = (($) => {
+const Dropdown = (() => {
 
   /**
    * Check for Popper dependency
@@ -445,6 +445,6 @@ const Dropdown = (($) => {
 
   return Dropdown
 
-})(jQuery)
+})(jQuery, Popper)
 
 export default Dropdown
