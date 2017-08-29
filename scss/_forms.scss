@@ -8,7 +8,7 @@
   display: block;
   width: 100%;
   padding: $input-btn-padding-y $input-btn-padding-x;
-  font-size: $font-size-base;
+  @include rfs($font-size-base);
   line-height: $input-btn-line-height;
   color: $input-color;
   background-color: $input-bg;
@@ -96,13 +96,13 @@ select.form-control {
 .col-form-label-lg {
   padding-top: calc(#{$input-btn-padding-y-lg} - #{$input-btn-border-width} * 2);
   padding-bottom: calc(#{$input-btn-padding-y-lg} - #{$input-btn-border-width} * 2);
-  font-size: $font-size-lg;
+  @include rfs($font-size-lg);
 }
 
 .col-form-label-sm {
   padding-top: calc(#{$input-btn-padding-y-sm} - #{$input-btn-border-width} * 2);
   padding-bottom: calc(#{$input-btn-padding-y-sm} - #{$input-btn-border-width} * 2);
-  font-size: $font-size-sm;
+  @include rfs($font-size-sm);
 }
 
 
@@ -116,7 +116,7 @@ select.form-control {
   padding-top: $input-btn-padding-y;
   padding-bottom: $input-btn-padding-y;
   margin-bottom: 0;
-  font-size: $font-size-base;
+  @include rfs($font-size-base);
 }
 
 
@@ -151,7 +151,7 @@ select.form-control {
 
 .form-control-sm {
   padding: $input-btn-padding-y-sm $input-btn-padding-x-sm;
-  font-size: $font-size-sm;
+  @include rfs($font-size-sm);
   line-height: $input-btn-line-height-sm;
   @include border-radius($input-border-radius-sm);
 }
@@ -164,7 +164,7 @@ select.form-control-sm {
 
 .form-control-lg {
   padding: $input-btn-padding-y-lg $input-btn-padding-x-lg;
-  font-size: $font-size-lg;
+  @include rfs($font-size-lg);
   line-height: $input-btn-line-height-lg;
   @include border-radius($input-border-radius-lg);
 }
@@ -257,7 +257,7 @@ select.form-control-lg {
 .invalid-feedback {
   display: none;
   margin-top: .25rem;
-  font-size: .875rem;
+  @include rfs(14);
   color: $form-feedback-invalid-color;
 }
 
@@ -269,7 +269,7 @@ select.form-control-lg {
   width: 250px;
   padding: .5rem;
   margin-top: .1rem;
-  font-size: .875rem;
+  @include rfs(14);
   line-height: 1;
   color: #fff;
   background-color: rgba($form-feedback-invalid-color,.8);

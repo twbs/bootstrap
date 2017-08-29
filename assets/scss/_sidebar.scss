@@ -14,7 +14,7 @@
   order: 2;
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
-  font-size: .875rem;
+  @include rfs(14);
 }
 
 .section-nav {

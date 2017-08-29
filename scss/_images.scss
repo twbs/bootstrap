@@ -38,6 +38,6 @@
 }
 
 .figure-caption {
-  font-size: $figure-caption-font-size;
+  @include rfs($figure-caption-font-size);
   color: $figure-caption-color;
 }
