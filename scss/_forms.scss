@@ -58,6 +58,10 @@
   }
 }
 
+input[type=date], input[type=datetime-local], input[type=month], input[type=time] {
+  padding: .36rem .75rem;
+}
+
 select.form-control {
   &:not([size]):not([multiple]) {
     height: $input-height;
