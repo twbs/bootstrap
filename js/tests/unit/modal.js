@@ -21,6 +21,8 @@ $(function () {
         document.body.removeChild(scrollDiv)
         return scrollbarWidth
       }
+      // Simulate scrollbars in PhantomJS
+      $('html').css('padding-right', '16px')
     },
     beforeEach: function () {
       // Run all tests in noConflict mode -- it's the only way to ensure that the plugin works in noConflict mode
@@ -397,14 +399,19 @@ $(function () {
     var $body = $(document.body)
     var originalPadding = $body.css('padding-right')
 
-    $('#qunit-container').hide()
+    // Hide scrollbars to prevent the body overflowing
+    $body.css('overflow', 'hidden')        // real scrollbar (for in-browser testing)
+    $('html').css('padding-right', '0px')  // simulated scrollbar (for PhantomJS)
+
     $('<div id="modal-test"/>')
       .on('shown.bs.modal', function () {
         var currentPadding = $body.css('padding-right')
         assert.strictEqual(currentPadding, originalPadding, 'body padding should not be adjusted')
         $(this).bootstrapModal('hide')
 
-        $('#qunit-container').show()
+        // restore scrollbars
+        $body.css('overflow', 'auto')
+        $('html').css('padding-right', '16px')
         done()
       })
       .bootstrapModal('show')
@@ -544,7 +551,7 @@ $(function () {
 
     $('<div id="modal-test"/>')
       .on('hidden.bs.modal', function () {
-        assert.ok(!$body.attr('style'), 'body does not have inline padding set')
+        assert.strictEqual($body.attr('style').indexOf('padding-right'), -1, 'body does not have inline padding set')
         $style.remove()
         done()
       })
