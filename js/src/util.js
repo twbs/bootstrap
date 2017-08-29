@@ -117,7 +117,7 @@ const Util = (($) => {
       }
 
       try {
-        const $selector = $(selector)
+        const $selector = $(document).find(selector)
         return $selector.length > 0 ? selector : null
       } catch (error) {
         return null
