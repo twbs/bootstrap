@@ -646,15 +646,15 @@ $form-feedback-icon-invalid:        str-replace(url("data:image/svg+xml,%3csvg x
 $dropdown-min-width:                10rem !default;
 $dropdown-padding-y:                .5rem !default;
 $dropdown-spacer:                   .125rem !default;
-$dropdown-bg:                       $white !default;
-$dropdown-border-color:             rgba($black, .15) !default;
+$dropdown-bg:                       $component-bg !default;
+$dropdown-border-color:             rgba(contrast-yiq($dropdown-bg, $black), .15) !default;
 $dropdown-border-radius:            $border-radius !default;
 $dropdown-border-width:             $border-width !default;
 $dropdown-divider-bg:               $gray-200 !default;
-$dropdown-box-shadow:               0 .5rem 1rem rgba($black, .175) !default;
+$dropdown-box-shadow:               0 .5rem 1rem rgba($black,.175) !default;
 
-$dropdown-link-color:               $gray-900 !default;
-$dropdown-link-hover-color:         darken($gray-900, 5%) !default;
+$dropdown-link-color:               contrast-yiq($dropdown-bg, $gray-900) !default;
+$dropdown-link-hover-color:         darken($dropdown-link-color, 5%) !default;
 $dropdown-link-hover-bg:            $gray-100 !default;
 
 $dropdown-link-active-color:        $component-active-color !default;
@@ -785,11 +785,11 @@ $card-spacer-y:                     .75rem !default;
 $card-spacer-x:                     1.25rem !default;
 $card-border-width:                 $border-width !default;
 $card-border-radius:                $border-radius !default;
-$card-border-color:                 rgba($black, .125) !default;
+$card-bg:                           $component-bg !default;
+$card-border-color:                 rgba(contrast-yiq($card-bg, $black), .125) !default;
 $card-inner-border-radius:          calc(#{$card-border-radius} - #{$card-border-width}) !default;
-$card-cap-bg:                       rgba($black, .03) !default;
+$card-cap-bg:                       rgba(contrast-yiq($card-bg, $black), .03) !default;
 $card-cap-color:                    $body-color !default;
-$card-bg:                           $white !default;
 
 $card-img-overlay-padding:          1.25rem !default;
 
@@ -829,10 +829,10 @@ $form-feedback-tooltip-border-radius: $tooltip-border-radius !default;
 // Popovers
 
 $popover-font-size:                 $font-size-sm !default;
-$popover-bg:                        $white !default;
+$popover-bg:                        $component-bg !default;
 $popover-max-width:                 276px !default;
 $popover-border-width:              $border-width !default;
-$popover-border-color:              rgba($black, .2) !default;
+$popover-border-color:              rgba(contrast-yiq( $popover-bg, $black), .2) !default;
 $popover-border-radius:             $border-radius-lg !default;
 $popover-box-shadow:                0 .25rem .5rem rgba($black, .2) !default;
 
@@ -841,7 +841,7 @@ $popover-header-color:              $headings-color !default;
 $popover-header-padding-y:          .5rem !default;
 $popover-header-padding-x:          .75rem !default;
 
-$popover-body-color:                $body-color !default;
+$popover-body-color:                $component-color !default;
 $popover-body-padding-y:            $popover-header-padding-y !default;
 $popover-body-padding-x:            $popover-header-padding-x !default;
 
@@ -876,8 +876,8 @@ $modal-dialog-margin-y-sm-up:       1.75rem !default;
 
 $modal-title-line-height:           $line-height-base !default;
 
-$modal-content-bg:                  $white !default;
-$modal-content-border-color:        rgba($black, .2) !default;
+$modal-content-bg:                  $component-bg !default;
+$modal-content-border-color:        rgba(contrast-yiq($modal-content-bg, $black), .2) !default;
 $modal-content-border-width:        $border-width !default;
 $modal-content-border-radius:       $border-radius-lg !default;
 $modal-content-box-shadow-xs:       0 .25rem .5rem rgba($black, .5) !default;
@@ -934,8 +934,8 @@ $progress-bar-transition:           width .6s ease !default;
 
 // List group
 
-$list-group-bg:                     $white !default;
-$list-group-border-color:           rgba($black, .125) !default;
+$list-group-bg:                     $component-bg !default;
+$list-group-border-color:           rgba(contrast-yiq($list-group-bg, $black ), .125) !default;
 $list-group-border-width:           $border-width !default;
 $list-group-border-radius:          $border-radius !default;
 
