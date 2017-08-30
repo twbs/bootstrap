@@ -250,6 +250,9 @@ $box-shadow-sm:               0 .125rem .25rem rgba($black, .075) !default;
 $box-shadow:                  0 .5rem 1rem rgba($black, .15) !default;
 $box-shadow-lg:               0 1rem 3rem rgba($black, .175) !default;
 
+$component-bg:                $body-bg;
+$component-color:             contrast-yiq($component-bg);
+
 $component-active-bg:         theme-color("primary") !default;
 $component-active-color:      contrast-yiq($component-active-bg) !default;
 
