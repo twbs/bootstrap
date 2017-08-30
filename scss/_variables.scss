@@ -651,7 +651,7 @@ $dropdown-border-color:             rgba(contrast-yiq($dropdown-bg, $black), .15
 $dropdown-border-radius:            $border-radius !default;
 $dropdown-border-width:             $border-width !default;
 $dropdown-divider-bg:               $gray-200 !default;
-$dropdown-box-shadow:               0 .5rem 1rem rgba($black,.175) !default;
+$dropdown-box-shadow:               0 .5rem 1rem rgba($black, .175) !default;
 
 $dropdown-link-color:               contrast-yiq($dropdown-bg, $gray-900) !default;
 $dropdown-link-hover-color:         darken($dropdown-link-color, 5%) !default;
@@ -832,7 +832,7 @@ $popover-font-size:                 $font-size-sm !default;
 $popover-bg:                        $component-bg !default;
 $popover-max-width:                 276px !default;
 $popover-border-width:              $border-width !default;
-$popover-border-color:              rgba(contrast-yiq( $popover-bg, $black), .2) !default;
+$popover-border-color:              rgba(contrast-yiq($popover-bg, $black), .2) !default;
 $popover-border-radius:             $border-radius-lg !default;
 $popover-box-shadow:                0 .25rem .5rem rgba($black, .2) !default;
 
@@ -935,7 +935,7 @@ $progress-bar-transition:           width .6s ease !default;
 // List group
 
 $list-group-bg:                     $component-bg !default;
-$list-group-border-color:           rgba(contrast-yiq($list-group-bg, $black ), .125) !default;
+$list-group-border-color:           rgba(contrast-yiq($list-group-bg, $black), .125) !default;
 $list-group-border-width:           $border-width !default;
 $list-group-border-radius:          $border-radius !default;
 
