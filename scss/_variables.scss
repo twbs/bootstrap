@@ -455,6 +455,7 @@ $custom-file-text: (
 
 // Form validation
 $form-feedback-valid-color:   theme-color("success") !default;
+$form-feedback-iffy-color:    theme-color("warning") !default;
 $form-feedback-invalid-color: theme-color("danger") !default;
 
 
