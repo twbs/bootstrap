@@ -36,7 +36,6 @@
     "js-compile-standalone": "rollup --environment BUNDLE:false --config build/rollup.config.js",
     "js-compile-bundle": "rollup --environment BUNDLE:true --config build/rollup.config.js",
     "js-compile-plugins": "babel --no-babelrc js/src/ --out-dir js/dist/ --source-maps --presets=es2015 --plugins=transform-es2015-modules-strip",
-    "postjs-compile": "node build/stamp.js",
     "js-minify": "npm-run-all --parallel js-minify-*",
     "js-minify-standalone": "uglifyjs --config-file build/uglifyjs.config.json --output dist/js/bootstrap.min.js dist/js/bootstrap.js",
     "js-minify-bundle": "uglifyjs --config-file build/uglifyjs.config.json --output dist/js/bootstrap.bundle.min.js dist/js/bootstrap.bundle.js",
