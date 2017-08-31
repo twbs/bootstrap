@@ -117,7 +117,7 @@
 
     .arrow::after {
       top: -($popover-arrow-outer-width - 1);
-      border-bottom-color: $popover-arrow-color;
+      border-bottom-color: $popover-header-bg;
     }
 
     // This will remove the popover-header's border just below the arrow
