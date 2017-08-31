@@ -1,0 +1,16 @@
+:root {
+  @each $color, $value in $colors {
+    --#{$color}: $value;
+  }
+
+  @each $color, $value in $theme-colors {
+    --#{$color}: $value;
+  }
+
+  @each $bp, $value in $grid-breakpoints {
+    --breakpoint-#{$bp}: $value;
+  }
+
+  --font-family-sans-serif: $font-family-sans-serif;
+  --font-family-monospace: $font-family-monospace;
+}
