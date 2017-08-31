@@ -5,6 +5,7 @@ module.exports = (ctx) => ({
     sourcesContent: true
   },
   plugins: {
+    'postcss-calc': {},
     autoprefixer: {
       browsers: [
         //
