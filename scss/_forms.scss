@@ -277,6 +277,7 @@ select.form-control-lg {
 }
 
 @include form-validation-state("valid", $form-feedback-valid-color);
+@include form-validation-state("iffy", $form-feedback-iffy-color);
 @include form-validation-state("invalid", $form-feedback-invalid-color);
 
 // Inline forms
