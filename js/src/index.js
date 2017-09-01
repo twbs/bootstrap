@@ -18,11 +18,11 @@ import Util from './util'
  * --------------------------------------------------------------------------
  */
 
-if (typeof jQuery === 'undefined') {
-  throw new Error('Bootstrap\'s JavaScript requires jQuery. jQuery must be included before Bootstrap\'s JavaScript.')
-}
-
 (() => {
+  if (typeof jQuery === 'undefined') {
+    throw new Error('Bootstrap\'s JavaScript requires jQuery. jQuery must be included before Bootstrap\'s JavaScript.')
+  }
+
   const version = $.fn.jquery.split(' ')[0].split('.')
   const min = 3
   const max = 4
