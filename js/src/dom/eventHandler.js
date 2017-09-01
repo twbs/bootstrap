@@ -115,7 +115,8 @@ const EventHandler = {
       return
     }
 
-    const delegation = typeof handler === 'string'
+    const delegation      = typeof handler === 'string'
+    const originalHandler = delegation ? delegationFn : handler
     // allow to get the native events from namespaced events ('click.bs.button' --> 'click')
     let typeEvent = originalTypeEvent.replace(stripNameRegex, '')
     const isNative = nativeEvents.indexOf(typeEvent) > -1
@@ -124,14 +125,14 @@ const EventHandler = {
     }
     const events    = getEvent(element)
     const handlers  = events[typeEvent] || (events[typeEvent] = {})
-    const uid = getUidEvent(handler, originalTypeEvent.replace(namespaceRegex, ''))
+    const uid       = getUidEvent(originalHandler, originalTypeEvent.replace(namespaceRegex, ''))
     if (handlers[uid]) {
       return
     }
 
     const fn = !delegation ? bootstrapHandler(element, handler) : bootstrapDelegationHandler(handler, delegationFn)
     handlers[uid] = fn
-    handler.uidEvent = uid
+    originalHandler.uidEvent = uid
     element.addEventListener(typeEvent, fn, false)
   },
 
