@@ -623,7 +623,7 @@ $tooltip-arrow-color:         $tooltip-bg !default;
 $popover-inner-padding:               0.0625rem !default;
 $popover-bg:                          $white !default;
 $popover-max-width:                   276px !default;
-$popover-border-width:                12px; //$border-width !default;
+$popover-border-width:                $border-width !default;
 $popover-border-color:                rgba($black,.2) !default;
 $popover-box-shadow:                  0 0.3125rem 0.625rem rgba($black,.2) !default;
 
@@ -636,17 +636,11 @@ $popover-body-color:               $body-color !default;
 $popover-body-padding-y:           0.5625rem !default;
 $popover-body-padding-x:           0.875rem !default;
 
-$popover-arrow-width:                 .8rem !default; // 10px !default;
-$popover-arrow-height:                .4rem !default; //5px !default;
-$popover-arrow-color: blue;//                $popover-bg !default;
+$popover-arrow-width:                 .8rem !default; 
+$popover-arrow-height:                .4rem !default; 
+$popover-arrow-color:                 $popover-bg !default;
 
-//ORIGINAL $popover-arrow-outer-width:           ($popover-arrow-width + 1px) !default;
-//NEW 
-//$popover-arrow-outer-width: calc(#{$popover-arrow-width} + 1.41*#{$popover-border-width}) !default; //NEW
-//$popover-arrow-outer-width: calc(#{$popover-arrow-width} + #{$popover-border-width}) !default; //NEW
-
-
-$popover-arrow-outer-color: green;//           fade-in($popover-border-color, .05) !default;
+$popover-arrow-outer-color:            fade-in($popover-border-color, .05) !default;
 
 
 // Badges
