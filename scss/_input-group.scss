@@ -136,6 +136,7 @@
   // `font-size` in combination with `inline-block` on buttons.
   font-size: 0;
   white-space: nowrap;
+  align-items: stretch;
 
   // Negative margin for spacing, position for bringing hovered/focused/actived
   // element above the siblings.
