@@ -22,7 +22,7 @@
     height: $tooltip-arrow-height;
   }
 
-  $tooltip-arrow-margin: -$tooltip-arrow-width/2;
+  $tooltip-arrow-margin: -$tooltip-arrow-width / 2;
 
   &.bs-tooltip-top {
     padding: $tooltip-arrow-width 0;
