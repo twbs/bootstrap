@@ -39,8 +39,8 @@ const Button = (() => {
 
   const Event = {
     CLICK_DATA_API      : `click${EVENT_KEY}${DATA_API_KEY}`,
-    FOCUS_BLUR_DATA_API : `focus${EVENT_KEY}${DATA_API_KEY} `
-                        + `blur${EVENT_KEY}${DATA_API_KEY}`
+    FOCUS_DATA_API      : `focus${EVENT_KEY}${DATA_API_KEY}`,
+    BLUR_DATA_API       : `blur${EVENT_KEY}${DATA_API_KEY}`
   }
 
 
@@ -106,7 +106,6 @@ const Button = (() => {
           input.focus()
           addAriaPressed = false
         }
-
       }
 
       if (addAriaPressed) {
@@ -170,13 +169,15 @@ const Button = (() => {
     })
 
   EventHandler.on(document,
-    Event.FOCUS_BLUR_DATA_API, Selector.DATA_TOGGLE_CARROT, (event) => {
+    Event.FOCUS_DATA_API, Selector.DATA_TOGGLE_CARROT, (event) => {
       const button = SelectorEngine.closest(event.target, Selector.BUTTON)
-      if (/^focus(in)?$/.test(event.type)) {
-        button.classList.add(ClassName.FOCUS)
-      } else {
-        button.classList.remove(ClassName.FOCUS)
-      }
+      button.classList.add(ClassName.FOCUS)
+    })
+
+  EventHandler.on(document,
+    Event.BLUR_DATA_API, Selector.DATA_TOGGLE_CARROT, (event) => {
+      const button = SelectorEngine.closest(event.target, Selector.BUTTON)
+      button.classList.remove(ClassName.FOCUS)
     })
 
 
