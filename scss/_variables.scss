@@ -608,36 +608,36 @@ $tooltip-max-width:           200px !default;
 $tooltip-color:               $white !default;
 $tooltip-bg:                  $black !default;
 $tooltip-opacity:             .9 !default;
-$tooltip-padding-y:           0.1875rem !default;
-$tooltip-padding-x:           0.5rem !default;
+$tooltip-padding-y:           .1875rem !default;
+$tooltip-padding-x:           .5rem !default;
 $tooltip-margin:              0 !default;
 
 
-$tooltip-arrow-width:         0.3125rem !default;
-$tooltip-arrow-height:        0.3125rem !default;
+$tooltip-arrow-width:         .3125rem !default;
+$tooltip-arrow-height:        .3125rem !default;
 $tooltip-arrow-color:         $tooltip-bg !default;
 
 
 // Popovers
 
-$popover-inner-padding:               0.0625rem !default;
+$popover-inner-padding:               .0625rem !default;
 $popover-bg:                          $white !default;
 $popover-max-width:                   276px !default;
 $popover-border-width:                $border-width !default;
 $popover-border-color:                rgba($black,.2) !default;
-$popover-box-shadow:                  0 0.3125rem 0.625rem rgba($black,.2) !default;
+$popover-box-shadow:                  0 .3125rem .625rem rgba($black,.2) !default;
 
 $popover-header-bg:                    darken($popover-bg, 3%) !default;
 $popover-header-color:                 $headings-color !default;
-$popover-header-padding-y:             0.5rem !default;
-$popover-header-padding-x:             0.875rem !default;
+$popover-header-padding-y:             .5rem !default;
+$popover-header-padding-x:             .875rem !default;
 
 $popover-body-color:               $body-color !default;
-$popover-body-padding-y:           0.5625rem !default;
-$popover-body-padding-x:           0.875rem !default;
+$popover-body-padding-y:           .5625rem !default;
+$popover-body-padding-x:           .875rem !default;
 
-$popover-arrow-width:                 .8rem !default; 
-$popover-arrow-height:                .4rem !default; 
+$popover-arrow-width:                 .8rem !default;
+$popover-arrow-height:                .4rem !default;
 $popover-arrow-color:                 $popover-bg !default;
 
 $popover-arrow-outer-color:            fade-in($popover-border-color, .05) !default;
