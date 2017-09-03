@@ -138,7 +138,7 @@ const EventHandler = {
     const fn = !delegation ? bootstrapHandler(element, handler) : bootstrapDelegationHandler(handler, delegationFn)
     handlers[uid] = fn
     originalHandler.uidEvent = uid
-    element.addEventListener(typeEvent, fn, false)
+    element.addEventListener(typeEvent, fn, delegation)
   },
 
   one(element, event, handler) {
@@ -212,6 +212,20 @@ const EventHandler = {
     }
     return false
   }
+}
+
+// focusin and focusout polyfill
+if (typeof window.onfocusin === 'undefined') {
+  (() => {
+    function listenerFocus(event) {
+      EventHandler.trigger(event.target, 'focusin')
+    }
+    function listenerBlur(event) {
+      EventHandler.trigger(event.target, 'focusout')
+    }
+    EventHandler.on(document, 'focus', 'input', listenerFocus)
+    EventHandler.on(document, 'blur', 'input', listenerBlur)
+  })()
 }
 
 export default EventHandler
