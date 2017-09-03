@@ -136,6 +136,8 @@ const Modal = (() => {
       this._checkScrollbar()
       this._setScrollbar()
 
+      this._adjustDialog()
+
       $(document.body).addClass(ClassName.OPEN)
 
       this._setEscapeEvent()
