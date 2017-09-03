@@ -45,7 +45,7 @@
   .algolia-docsearch-suggestion--category-header {
     padding: .125rem 1rem !important;
     margin-top: 0 !important;
-    font-size: .875rem !important;
+    @include rfs(14, true);
     font-weight: 500 !important;
     color: $bd-purple-bright !important;
     border-bottom: 0 !important;
@@ -93,14 +93,14 @@
     display: block;
     padding: .25rem 1rem !important;
     margin-bottom: 0 !important;
-    font-size: .875rem !important;
+    @include rfs(14, true);
     font-weight: 400 !important;
   }
 
   .algolia-docsearch-suggestion--text {
     padding: 0 1rem .5rem !important;
     margin-top: -.25rem;
-    font-size: .875rem !important;
+    @include rfs(14, true);
     font-weight: normal;
     line-height: 1.25 !important;
   }
@@ -110,7 +110,7 @@
     width: auto !important;
     height: auto !important;
     padding: .75rem 1rem 0;
-    font-size: .75rem !important;
+    @include rfs(12, true);
     line-height: 1 !important;
     color: #767676 !important;
     border-top: 1px solid rgba(0,0,0,.1);

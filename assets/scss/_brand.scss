@@ -63,7 +63,7 @@
     border-left: 1px solid #fff;
   }
   .bd-brand-item h1 {
-    font-size: 4rem;
+    @include rfs(64);
   }
 }
 

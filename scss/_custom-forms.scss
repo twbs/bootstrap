@@ -180,7 +180,7 @@
   height: $custom-select-height-sm;
   padding-top: $custom-select-padding-y;
   padding-bottom: $custom-select-padding-y;
-  font-size: $custom-select-font-size-sm;
+  @include rfs($custom-select-font-size-sm);
 }
 
 

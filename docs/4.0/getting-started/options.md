@@ -35,6 +35,7 @@ You can find and customize these variables for key global options in our `_varia
 | `$enable-hover-media-query` | `true` or `false` (default)        | ...                                                                                    |
 | `$enable-grid-classes`      | `true` (default) or `false`        | Enables the generation of CSS classes for the grid system (e.g., `.container`, `.row`, `.col-md-1`, etc.).     |
 | `$enable-print-styles`      | `true` (default) or `false`        | Enables styles for optimizing printing.                                |
+| `$enable-responsive-font-sizes`      | `true` (default) or `false`        | Enables [responsive font sizes]({{ site.baseurl }}/docs/{{ site.docs_version }}/content/typography/#responsive-font-sizes).                                |
 
 ## Color
 
