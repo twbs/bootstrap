@@ -29,7 +29,7 @@
     height: calc(2*#{$popover-border-width} + #{$popover-arrow-height}); 
   }
 
-  $popover-arrow-margin: 0.5*$popover-arrow-width; 
+  $popover-arrow-margin: -$popover-arrow-width/2; 
   $popover-arrow-before-coor: calc(-#{$popover-arrow-width} - #{$popover-border-width});
   $popover-arrow-after-coor : -$popover-arrow-width;
 
@@ -62,7 +62,7 @@
     .arrow::before,
     .arrow::after {
       border-bottom-width: 0;
-      margin-left: -$popover-arrow-margin;
+      margin-left: $popover-arrow-margin;
     }
 
     .arrow::before {
@@ -85,7 +85,7 @@
 
     .arrow::before,
     .arrow::after {
-      margin-top: -$popover-arrow-margin;
+      margin-top: $popover-arrow-margin;
       border-left-width: 0;
     }
 
@@ -109,7 +109,7 @@
 
     .arrow::before,
     .arrow::after {
-      margin-left: -$popover-arrow-margin; 
+      margin-left: $popover-arrow-margin; 
       border-top-width: 0;
     }
 
@@ -145,7 +145,7 @@
 
     .arrow::before,
     .arrow::after {
-      margin-top: -$popover-arrow-margin;
+      margin-top: $popover-arrow-margin;
       border-right-width: 0;
     }
 
