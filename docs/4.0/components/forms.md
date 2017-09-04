@@ -645,9 +645,9 @@ Add the `disabled` attribute to a `<fieldset>` to disable all the controls withi
         <option>Disabled select</option>
       </select>
     </div>
-    <div class="checkbox">
-      <label>
-        <input type="checkbox"> Can't check this
+    <div class="form-check">
+      <label class="form-check-label">
+        <input class="form-check-input" type="checkbox"> Can't check this
       </label>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
