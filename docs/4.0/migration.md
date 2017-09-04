@@ -15,6 +15,7 @@ While in beta, we aim to have no breaking changes. However, things don't always 
 - Renamed `grayscale()` function to `gray()` to avoid breaking conflict with the CSS native `grayscale` filter.
 - Renamed `.table-inverse`, `.thead-inverse`, and `.thead-default` to `.*-dark` and `.*-light`, matching our color schemes used elsewhere.
 - Responsive tables now generate classes for each grid breakpoint. This breaks from Beta 1 in that the `.table-responsive` you've been using is more like `.table-responsive-md`. You may now use `.table-responsive` or `.table-responsive-{sm,md,lg,xl}` as needed.
+- Dropped Bower support as the package manager has been deprecated for alternatives (e.g., Yarn or npm). [See bower/bower#2298](https://github.com/bower/bower/issues/2298) for details. 
 
 ### Highlights
 
