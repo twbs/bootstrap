@@ -6,6 +6,7 @@
   },
   "globals": {
     "EventHandler": false,
+    "Data": false,
     "Util": false
   },
   "parserOptions": {

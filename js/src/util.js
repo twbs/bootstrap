@@ -135,9 +135,12 @@ const Util = (() => {
         return false
       }
 
-      return element.style.display !== 'none'
-        && element.parentNode.style.display !== 'none'
-        && element.style.visibility !== 'hidden'
+      if (element.style !== null && element.parentNode !== null && typeof element.parentNode.style !== 'undefined') {
+        return element.style.display !== 'none'
+          && element.parentNode.style.display !== 'none'
+          && element.style.visibility !== 'hidden'
+      }
+      return false
     }
   }
 
