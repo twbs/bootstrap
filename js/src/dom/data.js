@@ -39,6 +39,7 @@ const mapData = (() => {
       const keyProperties = element.key
       if (keyProperties.key === key) {
         delete storeData[keyProperties.id]
+        delete element.key
       }
     }
   }
