@@ -25,7 +25,6 @@ const Carousel = (($) => {
   const DATA_KEY               = 'bs.carousel'
   const EVENT_KEY              = `.${DATA_KEY}`
   const DATA_API_KEY           = '.data-api'
-  const JQUERY_NO_CONFLICT     = $.fn[NAME]
   const TRANSITION_DURATION    = 600
   const ARROW_LEFT_KEYCODE     = 37 // KeyboardEvent.which value for left arrow key
   const ARROW_RIGHT_KEYCODE    = 39 // KeyboardEvent.which value for right arrow key
@@ -227,6 +226,25 @@ const Carousel = (($) => {
         ...Default,
         ...config
       }
+      // try to cast interval parameter when it's possible
+      if (typeof config.interval === 'string') {
+        const tmpIntervalNumber = Number(config.interval)
+        if (!isNaN(tmpIntervalNumber)) {
+          config.interval = tmpIntervalNumber
+        }
+        if (config.interval === 'true' || config.interval === 'false') {
+          config.interval = config.interval.toLowerCase() === 'true'
+        }
+      }
+
+      if (typeof config.keyboard === 'string') {
+        config.keyboard = config.keyboard.toLowerCase() === 'true'
+      }
+
+      if (typeof config.wrap === 'string') {
+        config.wrap = config.wrap.toLowerCase() === 'true'
+      }
+
       Util.typeCheckConfig(NAME, config, DefaultType)
       return config
     }
@@ -282,7 +300,8 @@ const Carousel = (($) => {
     }
 
     _getItemIndex(element) {
-      this._items = Util.makeArray(SelectorEngine.find(Selector.ITEM, element.parentNode))
+      this._items = typeof element !== 'undefined' && element !== null ?
+        Util.makeArray(SelectorEngine.find(Selector.ITEM, element.parentNode)) : []
       return this._items.indexOf(element)
     }
 
@@ -435,39 +454,43 @@ const Carousel = (($) => {
 
     // static
 
+    static _carouselInterface(element, config) {
+      let data    = Data.getData(element, DATA_KEY)
+      let _config = {
+        ...Default,
+        ...Util.getDataAttributes(element)
+      }
+
+      if (typeof config === 'object') {
+        _config = {
+          ..._config,
+          ...config
+        }
+      }
+
+      const action = typeof config === 'string' ? config : _config.slide
+
+      if (!data) {
+        data = new Carousel(element, _config)
+        Data.setData(element, DATA_KEY, data)
+      }
+
+      if (typeof config === 'number') {
+        data.to(config)
+      } else if (typeof action === 'string') {
+        if (typeof data[action] === 'undefined') {
+          throw new Error(`No method named "${action}"`)
+        }
+        data[action]()
+      } else if (_config.interval) {
+        data.pause()
+        data.cycle()
+      }
+    }
+
     static _jQueryInterface(config) {
       return this.each(function () {
-        let data      = Data.getData(this, DATA_KEY)
-        let _config = {
-          ...Default,
-          ...Data.getData(this, DATA_KEY)
-        }
-
-        if (typeof config === 'object') {
-          _config = {
-            ..._config,
-            ...config
-          }
-        }
-
-        const action = typeof config === 'string' ? config : _config.slide
-
-        if (!data) {
-          data = new Carousel(this, _config)
-          Data.setData(this, DATA_KEY, data)
-        }
-
-        if (typeof config === 'number') {
-          data.to(config)
-        } else if (typeof action === 'string') {
-          if (typeof data[action] === 'undefined') {
-            throw new Error(`No method named "${action}"`)
-          }
-          data[action]()
-        } else if (_config.interval) {
-          data.pause()
-          data.cycle()
-        }
+        Carousel._carouselInterface(this, config)
       })
     }
 
@@ -494,7 +517,7 @@ const Carousel = (($) => {
         config.interval = false
       }
 
-      Carousel._jQueryInterface.call($(target), config)
+      Carousel._carouselInterface(target, config)
 
       if (slideIndex) {
         Data.getData(target, DATA_KEY).to(slideIndex)
@@ -526,13 +549,18 @@ const Carousel = (($) => {
    * ------------------------------------------------------------------------
    * jQuery
    * ------------------------------------------------------------------------
+   * add .carousel to jQuery only if jQuery is present
    */
 
-  $.fn[NAME]             = Carousel._jQueryInterface
-  $.fn[NAME].Constructor = Carousel
-  $.fn[NAME].noConflict  = function () {
-    $.fn[NAME] = JQUERY_NO_CONFLICT
-    return Carousel._jQueryInterface
+  if (typeof window.$ !== 'undefined' || typeof window.jQuery !== 'undefined') {
+    const $                  = window.$ || window.jQuery
+    const JQUERY_NO_CONFLICT = $.fn[NAME]
+    $.fn[NAME]               = Carousel._jQueryInterface
+    $.fn[NAME].Constructor   = Carousel
+    $.fn[NAME].noConflict    = function () {
+      $.fn[NAME] = JQUERY_NO_CONFLICT
+      return Carousel._jQueryInterface
+    }
   }
 
   return Carousel
