@@ -1,3 +1,5 @@
+import Util from '../util'
+
 /**
  * --------------------------------------------------------------------------
  * Bootstrap (v4.0.0-beta): dom/eventHandler.js
@@ -161,6 +163,7 @@ const EventHandler = {
     }
 
     const fn = !delegation ? bootstrapHandler(element, handler) : bootstrapDelegationHandler(handler, delegationFn)
+    fn.isDelegation = delegation
     handlers[uid] = fn
     originalHandler.uidEvent = uid
     fn.originalHandler = originalHandler
@@ -169,13 +172,8 @@ const EventHandler = {
 
   one(element, event, handler) {
     function complete(e) {
-      const typeEvent = event.replace(stripNameRegex, '')
-      const events = getEvent(element)
-      if (!events || !events[typeEvent]) {
-        return
-      }
-      handler.apply(element, [e])
       EventHandler.off(element, event, complete)
+      handler.apply(element, [e])
     }
     EventHandler.on(element, event, complete)
   },
@@ -223,7 +221,7 @@ const EventHandler = {
 
       const uidEvent = handler.uidEvent
       const fn = events[typeEvent][uidEvent]
-      element.removeEventListener(typeEvent, fn, false)
+      element.removeEventListener(typeEvent, fn, fn.delegation)
       delete events[typeEvent][uidEvent]
     }
   },
@@ -233,24 +231,27 @@ const EventHandler = {
       || (typeof element === 'undefined' || element === null)) {
       return null
     }
-    const typeEvent = event.replace(stripNameRegex, '')
-    const isNative = nativeEvents.indexOf(typeEvent) > -1
-    let returnedEvent = null
+
+    const typeEvent   = event.replace(stripNameRegex, '')
+    const isNative    = nativeEvents.indexOf(typeEvent) > -1
+    let evt           = null
+
     if (isNative) {
-      const evt = document.createEvent('HTMLEvents')
-      evt.initEvent(typeEvent, true, true, typeof args !== 'undefined' ? args : {})
-      element.dispatchEvent(evt)
-      returnedEvent = evt
+      evt = document.createEvent('HTMLEvents')
+      evt.initEvent(typeEvent, true, true)
     } else {
-      const eventToDispatch = new CustomEvent(event, {
+      evt = new CustomEvent(event, {
         bubbles: true,
-        cancelable: true,
-        detail: typeof args !== 'undefined' ? args : {}
+        cancelable: true
       })
-      element.dispatchEvent(eventToDispatch)
-      returnedEvent = eventToDispatch
     }
-    return returnedEvent
+
+    // merge custom informations in our event
+    if (typeof args !== 'undefined') {
+      evt = Util.extend(evt, args)
+    }
+    element.dispatchEvent(evt)
+    return evt
   },
 
   getBrowserTransitionEnd() {
