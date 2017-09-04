@@ -48,7 +48,7 @@
     "docs-serve": "bundle exec jekyll serve",
     "docs-github": "shx echo \"github: true\" > twbsconfig.yml && npm run docs-compile -- --config _config.yml,twbsconfig.yml && shx rm ./twbsconfig.yml",
     "docs-upload-preview": "build/upload-preview.sh",
-    "maintenance-dependencies": "ncu -a -x jquery && npm update && bundle update && shx echo 'Manually update assets/js/vendor/*, js/tests/vendor/*, bower.json and .travis.yml'",
+    "maintenance-dependencies": "ncu -a -x jquery && npm update && bundle update && shx echo 'Manually update assets/js/vendor/*, js/tests/vendor/* and .travis.yml'",
     "release-version": "node build/change-version.js",
     "release-zip": "cd dist/ && zip -r9 bootstrap-$npm_package_version-dist.zip * && shx mv bootstrap-$npm_package_version-dist.zip ..",
     "dist": "npm-run-all --parallel css js css-docs",

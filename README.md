@@ -43,7 +43,6 @@ Several quick start options are available:
 - Install with [npm](https://www.npmjs.com): `npm install bootstrap@4.0.0-beta`
 - Install with [yarn](https://yarnpkg.com): `yarn add bootstrap@4.0.0-beta`
 - Install with [Composer](https://getcomposer.org): `composer require twbs/bootstrap:4.0.0-beta`
-- Install with [Bower](https://bower.io): `bower install bootstrap#v4.0.0-beta`
 - Install with [NuGet](https://www.nuget.org): CSS: `Install-Package bootstrap -Pre` Sass: `Install-Package bootstrap.sass -Pre` (`-Pre` is only required until Bootstrap v4 has a stable release).
 
 Read the [Getting started page](https://getbootstrap.com/getting-started/) for information on the framework contents, templates and examples, and more.
@@ -51,7 +50,6 @@ Read the [Getting started page](https://getbootstrap.com/getting-started/) for i
 ## Status
 
 [![Slack](https://bootstrap-slack.herokuapp.com/badge.svg)](https://bootstrap-slack.herokuapp.com)
-[![Bower](https://img.shields.io/bower/v/bootstrap.svg)](https://bower.io/search/?q=bootstrap)
 [![npm version](https://img.shields.io/npm/v/bootstrap.svg)](https://www.npmjs.com/package/bootstrap)
 [![Gem version](https://img.shields.io/gem/v/bootstrap.svg)](https://rubygems.org/gems/bootstrap)
 [![Build Status](https://img.shields.io/travis/twbs/bootstrap/v4-dev.svg)](https://travis-ci.org/twbs/bootstrap)
