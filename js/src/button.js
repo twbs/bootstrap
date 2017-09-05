@@ -7,6 +7,7 @@
 
 import Data from './dom/data'
 import EventHandler from './dom/eventHandler'
+import Manipulator from './dom/manipulator'
 import SelectorEngine from './dom/selectorEngine'
 
 /**
@@ -93,7 +94,7 @@ class Button {
             rootElement.classList.contains('disabled')) {
             return
           }
-          input.checked = !this._element.classList.contains(ClassName.ACTIVE)
+          Manipulator.setChecked(input, !this._element.classList.contains(ClassName.ACTIVE))
           EventHandler.trigger(input, 'change')
         }
 
