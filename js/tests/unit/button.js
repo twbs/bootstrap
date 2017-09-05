@@ -126,21 +126,21 @@ $(function () {
     assert.ok($btn1.hasClass('active'), 'btn1 has active class')
     assert.ok($btn1.find('input').prop('checked'), 'btn1 is checked')
     assert.ok(!$btn2.hasClass('active'), 'btn2 does not have active class')
-    assert.ok(!$btn2.find('input').prop('checked'), 'btn2 is not checked')
+    assert.ok(!Manipulator.isChecked($btn2.find('input')[0]), 'btn2 is not checked')
 
     EventHandler.trigger($btn2.find('input')[0], 'click')
 
     assert.ok(!$btn1.hasClass('active'), 'btn1 does not have active class')
     assert.ok(!$btn1.find('input').prop('checked'), 'btn1 is not checked')
     assert.ok($btn2.hasClass('active'), 'btn2 has active class')
-    assert.ok($btn2.find('input').prop('checked'), 'btn2 is checked')
+    assert.ok(Manipulator.isChecked($btn2.find('input')[0]), 'btn2 is checked')
 
     EventHandler.trigger($btn2.find('input')[0], 'click') // clicking an already checked radio should not un-check it
 
     assert.ok(!$btn1.hasClass('active'), 'btn1 does not have active class')
     assert.ok(!$btn1.find('input').prop('checked'), 'btn1 is not checked')
     assert.ok($btn2.hasClass('active'), 'btn2 has active class')
-    assert.ok($btn2.find('input').prop('checked'), 'btn2 is checked')
+    assert.ok(Manipulator.isChecked($btn2.find('input')[0]), 'btn2 is checked')
   })
 
   QUnit.test('should not add aria-pressed on labels for radio/checkbox inputs in a data-toggle="buttons" group', function (assert) {
