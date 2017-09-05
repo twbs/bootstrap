@@ -90,7 +90,7 @@ const nativeEvents = [
   'orientationchange',
   'touchstart', 'touchmove', 'touchend', 'touchcancel',
   'gesturestart', 'gesturechange', 'gestureend',
-  'focus', 'blur', 'change', 'reset', 'select', 'submit',
+  'focus', 'blur', 'change', 'reset', 'select', 'submit', 'focusin', 'focusout',
   'load', 'unload', 'beforeunload', 'resize', 'move', 'DOMContentLoaded', 'readystatechange',
   'error', 'abort', 'scroll'
 ]
