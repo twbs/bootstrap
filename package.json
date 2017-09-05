@@ -70,7 +70,7 @@
   "license": "MIT",
   "dependencies": {},
   "peerDependencies": {
-    "jquery": "3.0.0 - 4.0.0",
+    "jquery": "^3.0.0",
     "popper.js": "^1.12.3"
   },
   "devDependencies": {
@@ -118,6 +118,7 @@
     "LICENSE"
   ],
   "jspm": {
+    "registry": "npm",
     "main": "js/bootstrap",
     "directories": {
       "lib": "dist"
@@ -133,8 +134,8 @@
     },
     "dependencies": {},
     "peerDependencies": {
-      "jquery": "3",
-      "popper.js": "npm:popper.js@^1.12.3"
+      "jquery": "^3.0.0",
+      "popper.js": "^1.12.3"
     }
   }
 }
