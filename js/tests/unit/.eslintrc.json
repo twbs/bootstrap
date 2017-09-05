@@ -14,7 +14,8 @@
     "Simulator": false,
     "Toast": false,
     "EventHandler": false,
-    "Data": false
+    "Data": false,
+    "Manipulator": false
   },
   "parserOptions": {
     "ecmaVersion": 5,
