@@ -10,7 +10,10 @@ toc: true
 
 Bootstrap's grid system uses a series of containers, rows, and columns to layout and align content. It's built with [flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes) and is fully responsive. Below is an example and an in-depth look at how the grid comes together.
 
-<div class="bd-example bd-example-row">
+**New to or unfamiliar with flexbox?** [Read this CSS Tricks flexbox guide](https://css-tricks.com/snippets/css/a-guide-to-flexbox/#flexbox-background) for background, terminology, guidelines, and code snippets.
+
+<div class="bd-example-row">
+{% example html %}
 <div class="container">
   <div class="row">
     <div class="col-sm">
@@ -24,6 +27,7 @@ Bootstrap's grid system uses a series of containers, rows, and columns to layout
     </div>
   </div>
 </div>
+{% endexample %}
 </div>
 
 The above example creates three equal-width columns on small, medium, large, and extra large devices using our predefined grid classes. Those columns are centered in the page with the parent `.container`.
