@@ -34,7 +34,7 @@ layout: home
     <!-- Icon by Bytesize https://github.com/danklammer/bytesize-icons -->
     {% include icons/import.svg width="32" height="32" class="text-primary mb-2" %}
     <h3>Installation</h3>
-    <p>Include Bootstrap's source Sass and JavaScript files via Bower, Composer, Meteor, or npm. Package managed installs don't include documentation, but do include our build system and readme.</p>
+    <p>Include Bootstrap's source Sass and JavaScript files via npm, Composer or Meteor. Package managed installs don't include documentation, but do include our build system and readme.</p>
 
 {% highlight sh %}
 npm install bootstrap@{{ site.current_version }}
@@ -44,9 +44,6 @@ npm install bootstrap@{{ site.current_version }}
 gem install bootstrap -v 4.0.0.beta
 {% endhighlight %}
 
-{% highlight sh %}
-bower install bootstrap#v{{ site.current_version }}
-{% endhighlight %}
     <hr class="half-rule">
     <a class="btn btn-outline-primary" href="{{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/download">Read installation docs</a>
   </div>
