@@ -47,6 +47,12 @@ Responsive variations also exist for every single utility mentioned above.
 - `.d{{ bp.abbr }}-flex`
 - `.d{{ bp.abbr }}-inline-flex`{% endfor %}
 
+## Hiding Elements
+
+To hide elements simply use the `.d-none` class or one of the `.d-{sm,md,lg,xl}-none` classes for any responsive screen variation.
+
+To show an element only on a given interval of screen sizes you can combine one `.d-*-none` class with a `.d-*-block` class, for example `.d-none.d-md-block.d-xl-none` will hide the element for all screen sizes but it will shows it only on medium and large devices.
+
 ## Display in print
 
 Change the `display` value of elements when printing with our print display utilities.
