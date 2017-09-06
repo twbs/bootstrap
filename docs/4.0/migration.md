@@ -108,7 +108,7 @@ New to Bootstrap 4 is the [Reboot]({{ site.baseurl }}/docs/{{ site.docs_version 
   - Added new `.form-row` for compact form layouts with the grid classes (swap your `.row` for a `.form-row` and go).
 - Added custom forms support (for checkboxes, radios, selects, and file inputs).
 - Added HTML5 form validation support via CSS's `:invalid` and `:valid` pseudo-classes.
-- Renamed `.has-error` to `.has-danger`.
+- Removed `.has-error` see `.is-invalid` and `is-valid` for [form validation]({{ site.baseurl }}/docs/{{ site.docs_version }}/components/forms/#validation).
 - Renamed `.form-control-static` to `.form-control-plaintext`.
 
 ### Buttons
