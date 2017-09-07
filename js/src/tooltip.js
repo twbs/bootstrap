@@ -71,7 +71,8 @@ const Tooltip = (() => {
     placement           : 'top',
     offset              : 0,
     container           : false,
-    fallbackPlacement   : 'flip'
+    fallbackPlacement   : 'flip',
+    class               : ''
   }
 
   const HoverState = {
@@ -273,6 +274,10 @@ const Tooltip = (() => {
 
         if (this.config.animation) {
           $(tip).addClass(ClassName.FADE)
+        }
+
+        if (this.config.class) {
+          $(tip).addClass(this.config.class)
         }
 
         const placement  = typeof this.config.placement === 'function' ?
