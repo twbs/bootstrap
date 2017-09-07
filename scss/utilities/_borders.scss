@@ -44,9 +44,9 @@
 }
 
 .rounded-circle {
-  border-radius: 50%;
+  @include border-radius(50%);
 }
 
 .rounded-0 {
-  border-radius: 0;
+  @include border-radius(0);
 }

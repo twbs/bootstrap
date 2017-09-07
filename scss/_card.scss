@@ -208,11 +208,11 @@
         }
 
         &:not(:first-child):not(:last-child) {
-          border-radius: 0;
+          @include border-radius(0);
 
           .card-img-top,
           .card-img-bottom {
-            border-radius: 0;
+            @include border-radius(0);
           }
         }
       }
