@@ -73,7 +73,7 @@
     }
   }
 
-  &.bs-popover-#{$right} {
+  &.bs-popover-right {
     margin-#{$left}: $popover-arrow-width;
 
     .arrow {
@@ -133,7 +133,7 @@
     }
   }
 
-  &.bs-popover-#{$left} {
+  &.bs-popover-left {
     margin-#{$right}: $popover-arrow-width;
 
     .arrow {
@@ -160,14 +160,14 @@
     &[x-placement^="top"] {
       @extend .bs-popover-top;
     }
-    &[x-placement^="#{$right}"] {
-      @extend .bs-popover-#{$right};
+    &[x-placement^="right"] {
+      @extend .bs-popover-right;
     }
     &[x-placement^="bottom"] {
       @extend .bs-popover-bottom;
     }
-    &[x-placement^="#{$left}"] {
-      @extend .bs-popover-#{$left};
+    &[x-placement^="left"] {
+      @extend .bs-popover-left;
     }
   }
 }
