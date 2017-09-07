@@ -12,6 +12,12 @@
   border-left: $caret-width solid transparent;
 }
 
+@mixin caret-right {
+  border-top: $caret-width solid transparent;
+  border-bottom: $caret-width solid transparent;
+  border-left: $caret-width solid;
+}
+
 @mixin caret($direction: down) {
   @if $enable-caret {
     &::after {
@@ -25,6 +31,8 @@
         @include caret-down;
       } @else if $direction == up {
         @include caret-up;
+      } @else if $direction == right {
+        @include caret-right;
       }
     }
 
