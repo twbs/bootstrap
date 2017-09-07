@@ -432,7 +432,7 @@ Historically dropdown menu contents *had* to be links, but that's no longer the 
 By default, a dropdown menu is automatically positioned 100% from the top and along the left side of its parent. Add `.dropdown-menu-right` to a `.dropdown-menu` to right align the dropdown menu.
 
 {% callout info %}
-**Heads up!** Dropdowns are positioned only with CSS and may need some additional styles for exact alignment.
+**Heads up!** Dropdowns are positioned thanks to Popper.js (except when they are contained in a navbar).
 {% endcallout %}
 
 {% example html %}
