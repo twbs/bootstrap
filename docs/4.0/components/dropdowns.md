@@ -574,7 +574,7 @@ Regardless of whether you call your dropdown via JavaScript or instead use the d
 
 ### Options
 
-Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-`, as in `data-placement=""`.
+Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-`, as in `data-offset=""`.
 
 <table class="table table-bordered table-striped table-responsive">
   <thead>
@@ -586,14 +586,6 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>placement</td>
-      <td>string</td>
-      <td>'bottom'</td>
-      <td>
-        <p>How to position the popover - top | bottom.</p>
-      </td>
-    </tr>
     <tr>
       <td>offset</td>
       <td>number | string</td>
