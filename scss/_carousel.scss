@@ -32,8 +32,8 @@
 }
 
 // CSS3 transforms when supported by the browser
-.carousel-item-next.carousel-item-#{$left},
-.carousel-item-prev.carousel-item-#{$right} {
+.carousel-item-next.carousel-item-left,
+.carousel-item-prev.carousel-item-right {
   transform: translateX(0);
 
   @supports (transform-style: preserve-3d) {
@@ -42,7 +42,7 @@
 }
 
 .carousel-item-next,
-.active.carousel-item-#{$right} {
+.active.carousel-item-right {
   transform: translateX(100%);
 
   @supports (transform-style: preserve-3d) {
@@ -51,7 +51,7 @@
 }
 
 .carousel-item-prev,
-.active.carousel-item-#{$left} {
+.active.carousel-item-left {
   transform: translateX(-100%);
 
   @supports (transform-style: preserve-3d) {
