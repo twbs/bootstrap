@@ -337,7 +337,7 @@ More complex layouts can also be created with the grid system.
     </div>
     <div class="form-group col-md-4">
       <label for="inputState" class="col-form-label">State</label>
-      <select id="inputState" class="form-control">Choose</select>
+      <input type="text" class="form-control" id="inputState">
     </div>
     <div class="form-group col-md-2">
       <label for="inputZip" class="col-form-label">Zip</label>
