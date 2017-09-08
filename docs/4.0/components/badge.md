@@ -59,6 +59,15 @@ Add any of the below mentioned modifier classes to change the appearance of a ba
 {% capture callout-include %}{% include callout-warning-color-assistive-technologies.md %}{% endcapture %}
 {{ callout-include | markdownify }}
 
+## Outline badges
+
+Use the modifier classes `.badge-outline-*` to replace background with a border colors on any badge.
+
+{% example html %}
+{% for color in site.data.theme-colors %}
+<span class="badge badge-outline-{{ color.name }}">{{ color.name | capitalize }}</span>{% endfor %}
+{% endexample %}
+
 ## Pill badges
 
 Use the `.badge-pill` modifier class to make badges more rounded (with a larger `border-radius` and additional horizontal `padding`). Useful if you miss the badges from v3.
@@ -73,6 +82,11 @@ Use the `.badge-pill` modifier class to make badges more rounded (with a larger 
 Using the `.badge` classes with the `<a>` element quickly provide _actionable_ badges with hover and focus states.
 
 {% example html %}
-{% for color in site.data.theme-colors %}
-<a href="#" class="badge badge-{{ color.name }}">{{ color.name | capitalize }}</a>{% endfor %}
+<div class="mb-2">{% for color in site.data.theme-colors %}
+  <a href="#" class="badge badge-{{ color.name }}">{{ color.name | capitalize }}</a>{% endfor %}
+</div>
+
+<div>{% for color in site.data.theme-colors %}
+  <a href="#" class="badge badge-outline-{{ color.name }}">{{ color.name | capitalize }}</a>{% endfor %}
+</div>
 {% endexample %}

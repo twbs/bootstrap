@@ -10,3 +10,16 @@
     }
   }
 }
+
+@mixin badge-outline-variant($color) {
+  color: $color;
+  border: $border-width solid $color;
+
+  &[href] {
+    @include hover-focus {
+      @include color-yiq($color);
+      text-decoration: none;
+      background-color: $color;
+    }
+  }
+}
