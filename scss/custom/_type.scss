@@ -1,5 +1,6 @@
 body {
   -webkit-font-smoothing: antialiased;
+  word-break: break-word
 }
 
 //
@@ -17,4 +18,14 @@ h1, h2, h3, h4, h5, h6,
 
 a {
   word-wrap: break-word;
+}
+
+//
+// Long Words on mobile
+//
+
+@include media-breakpoint-down(sm) {
+  body {
+    hyphens: auto;
+  }
 }
