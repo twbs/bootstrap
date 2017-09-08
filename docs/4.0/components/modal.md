@@ -19,7 +19,7 @@ Before getting started with Bootstrap's modal component, be sure to read the fol
 
 {% highlight js %}
 $('#myModal').on('shown.bs.modal', function () {
-  $('#myInput').focus()
+  $('#myInput').trigger('focus')
 })
 {% endhighlight %}
 
