@@ -27,20 +27,16 @@
   border-radius: $border-radius !important;
 }
 .rounded-top {
-  border-top-left-radius: $border-radius !important;
-  border-top-right-radius: $border-radius !important;
+  border-radius: $border-radius $border-radius 0 0 !important;
 }
 .rounded-right {
-  border-top-right-radius: $border-radius !important;
-  border-bottom-right-radius: $border-radius !important;
+  border-radius: 0 $border-radius $border-radius 0 !important;
 }
 .rounded-bottom {
-  border-bottom-right-radius: $border-radius !important;
-  border-bottom-left-radius: $border-radius !important;
+  border-radius: 0 0 $border-radius $border-radius !important;
 }
 .rounded-left {
-  border-top-left-radius: $border-radius !important;
-  border-bottom-left-radius: $border-radius !important;
+  border-radius: $border-radius 0 0 $border-radius !important;
 }
 
 .rounded-circle {
