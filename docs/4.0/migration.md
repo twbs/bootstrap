@@ -219,6 +219,10 @@ Dropped entirely for the new card component.
 - `.panel-footer` to `.card-footer`
 - `.panel-primary`, `.panel-success`, `.panel-info`, `.panel-warning`, and `.panel-danger` have been dropped for `.bg-`, `.text-`, and `.border` utilities generated from our `$theme-colors` Sass map.
 
+### Progress
+
+- Contextual `.progress-bar-*` classes dropped as `.bg-*` can be used for this, e.g. `class="progress-bar progress-bar-danger"` becomes `class="progress-bar bg-danger"`.
+
 ### Carousel
 
 - Overhauled the entire component to simplify design and styling. We have fewer styles for you to override, new indicators, and new icons.
