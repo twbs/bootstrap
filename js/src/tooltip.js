@@ -72,7 +72,7 @@ const Tooltip = (() => {
     offset              : 0,
     container           : false,
     fallbackPlacement   : 'flip',
-    class               : ''
+    class               : null
   }
 
   const HoverState = {
