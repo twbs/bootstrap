@@ -1004,8 +1004,8 @@ Here's how it works:
 
 - We wrap the `<input>` in a `<label>` so the custom control properly triggers the file browser.
 - We hide the default file `<input>` via `opacity`.
-- We use `:after` to generate a custom background and directive (*Choose file...*).
-- We use `:before` to generate and position the *Browse* button.
+- We use `::after` to generate a custom background and directive (*Choose file...*).
+- We use `::before` to generate and position the *Browse* button.
 - We declare a `height` on the `<input>` for proper spacing for surrounding content.
 
 In other words, it's an entirely custom element, all generated via CSS.
