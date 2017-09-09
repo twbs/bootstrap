@@ -1879,6 +1879,7 @@ select.form-control:focus::-ms-value {
   padding-bottom: 0.5rem;
   margin-bottom: 0;
   line-height: 1.25;
+  background-color: transparent;
   border: solid transparent;
   border-width: 1px 0;
 }
