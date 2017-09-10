@@ -5634,11 +5634,11 @@ a.bg-dark:focus, a.bg-dark:hover {
 }
 
 .rounded-circle {
-  border-radius: 50%;
+  border-radius: 50% !important;
 }
 
 .rounded-0 {
-  border-radius: 0;
+  border-radius: 0 !important;
 }
 
 .clearfix::after {
