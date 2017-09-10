@@ -481,25 +481,25 @@ You can activate a tab or pill navigation without writing any JavaScript by simp
 <!-- Nav tabs -->
 <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#home" role="tab">Home</a>
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#profile" role="tab">Profile</a>
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#messages" role="tab">Messages</a>
+    <a class="nav-link" id="messages-tab" data-toggle="tab" href="#messages" role="tab" aria-controls="messages" aria-selected="false">Messages</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#settings" role="tab">Settings</a>
+    <a class="nav-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab" aria-controls="settings" aria-selected="false">Settings</a>
   </li>
 </ul>
 
 <!-- Tab panes -->
 <div class="tab-content">
-  <div class="tab-pane active" id="home" role="tabpanel">...</div>
-  <div class="tab-pane" id="profile" role="tabpanel">...</div>
-  <div class="tab-pane" id="messages" role="tabpanel">...</div>
-  <div class="tab-pane" id="settings" role="tabpanel">...</div>
+  <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">...</div>
+  <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
+  <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">...</div>
+  <div class="tab-pane" id="settings" role="tabpanel" aria-labelledby="settings-tab">...</div>
 </div>
 {% endhighlight %}
 
@@ -529,10 +529,10 @@ To make tabs fade in, add `.fade` to each `.tab-pane`. The first tab pane must a
 
 {% highlight html %}
 <div class="tab-content">
-  <div class="tab-pane fade show active" id="home" role="tabpanel">...</div>
-  <div class="tab-pane fade" id="profile" role="tabpanel">...</div>
-  <div class="tab-pane fade" id="messages" role="tabpanel">...</div>
-  <div class="tab-pane fade" id="settings" role="tabpanel">...</div>
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">...</div>
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
+  <div class="tab-pane fade" id="messages" role="tabpanel" aria-labelledby="messages-tab">...</div>
+  <div class="tab-pane fade" id="settings" role="tabpanel" aria-labelledby="settings-tab">...</div>
 </div>
 {% endhighlight %}
 
@@ -548,24 +548,24 @@ Activates a tab element and content container. Tab should have either a `data-ta
 {% highlight html %}
 <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#home" role="tab" aria-controls="home">Home</a>
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#profile" role="tab" aria-controls="profile">Profile</a>
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#messages" role="tab" aria-controls="messages">Messages</a>
+    <a class="nav-link" id="messages-tab" data-toggle="tab" href="#messages" role="tab" aria-controls="messages" aria-selected="false">Messages</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#settings" role="tab" aria-controls="settings">Settings</a>
+    <a class="nav-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab" aria-controls="settings" aria-selected="false">Settings</a>
   </li>
 </ul>
 
 <div class="tab-content">
-  <div class="tab-pane active" id="home" role="tabpanel">...</div>
-  <div class="tab-pane" id="profile" role="tabpanel">...</div>
-  <div class="tab-pane" id="messages" role="tabpanel">...</div>
-  <div class="tab-pane" id="settings" role="tabpanel">...</div>
+  <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">...</div>
+  <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
+  <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">...</div>
+  <div class="tab-pane" id="settings" role="tabpanel" aria-labelledby="settings-tab">...</div>
 </div>
 
 <script>
