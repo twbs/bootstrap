@@ -1,3 +1,5 @@
+import $ from 'jquery'
+
 /**
  * --------------------------------------------------------------------------
  * Bootstrap (v4.0.0-beta): util.js
@@ -5,7 +7,7 @@
  * --------------------------------------------------------------------------
  */
 
-const Util = (($) => {
+const Util = (() => {
 
 
   /**
@@ -117,7 +119,7 @@ const Util = (($) => {
       }
 
       try {
-        const $selector = $(selector)
+        const $selector = $(document).find(selector)
         return $selector.length > 0 ? selector : null
       } catch (error) {
         return null

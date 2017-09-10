@@ -10,7 +10,7 @@ toc: true
 
 Dropdowns are toggleable, contextual overlays for displaying lists of links and more. They're made interactive with the included Bootstrap dropdown JavaScript plugin. They're toggled by clicking, not by hovering; this is [an intentional design decision.](http://markdotto.com/2012/02/27/bootstrap-explained-dropdowns/)
 
-Dropdowns are built on a third party library, [Popper.js](https://popper.js.org), which provides dynamic positioning and viewport detection. Be sure to include [popper.min.js]({{ site.cdn.popper }}) before Bootstrap's JavaScript.
+Dropdowns are built on a third party library, [Popper.js](https://popper.js.org), which provides dynamic positioning and viewport detection. Be sure to include [popper.min.js]({{ site.cdn.popper }}) before Bootstrap's JavaScript or use `bootstrap.bundle.min.js` / `bootstrap.bundle.js` which contains Popper.js.
 
 If you're building our JS from source, it [requires `util.js`]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/javascript/#util).
 
@@ -432,7 +432,7 @@ Historically dropdown menu contents *had* to be links, but that's no longer the 
 By default, a dropdown menu is automatically positioned 100% from the top and along the left side of its parent. Add `.dropdown-menu-right` to a `.dropdown-menu` to right align the dropdown menu.
 
 {% callout info %}
-**Heads up!** Dropdowns are positioned only with CSS and may need some additional styles for exact alignment.
+**Heads up!** Dropdowns are positioned thanks to Popper.js (except when they are contained in a navbar).
 {% endcallout %}
 
 {% example html %}
@@ -574,7 +574,7 @@ Regardless of whether you call your dropdown via JavaScript or instead use the d
 
 ### Options
 
-Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-`, as in `data-placement=""`.
+Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-`, as in `data-offset=""`.
 
 <table class="table table-bordered table-striped table-responsive">
   <thead>
@@ -586,14 +586,6 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>placement</td>
-      <td>string</td>
-      <td>'bottom'</td>
-      <td>
-        <p>How to position the popover - top | bottom.</p>
-      </td>
-    </tr>
     <tr>
       <td>offset</td>
       <td>number | string</td>
