@@ -16,8 +16,8 @@
     <copyright>Copyright 2017</copyright>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <dependencies>
-      <dependency id="jQuery" version="[1.9.1,4)" />
-      <dependency id="popper.js" version="[1.11,2)" />
+      <dependency id="jQuery" version="[3.0.0,4)" />
+      <dependency id="popper.js" version="[1.12.3,2)" />
     </dependencies>
     <tags>css sass mobile-first responsive front-end framework web</tags>
   </metadata>

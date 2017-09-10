@@ -3,44 +3,6 @@
 // Variables should follow the `$component-state-property-size` formula for
 // consistent naming. Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.
 
-// Table of Contents
-//
-// Color system
-// Options
-// Spacing
-// Body
-// Links
-// Paragraphs
-// Grid breakpoints
-// Grid containers
-// Grid columns
-// Fonts
-// Components
-// Tables
-// Buttons
-// Forms
-// Dropdowns
-// Z-index master list
-// Navs
-// Navbar
-// Pagination
-// Jumbotron
-// Form states and alerts
-// Cards
-// Tooltips
-// Popovers
-// Badges
-// Modals
-// Alerts
-// Progress bars
-// List group
-// Image thumbnails
-// Figures
-// Breadcrumbs
-// Carousel
-// Close
-// Code
-
 
 //
 // Color system
@@ -321,11 +283,11 @@ $table-border-color:            $gray-200 !default;
 $table-head-bg:                 $gray-200 !default;
 $table-head-color:              $gray-700 !default;
 
-$table-inverse-bg:              $gray-900 !default;
-$table-inverse-accent-bg:       rgba($white, .05) !default;
-$table-inverse-hover-bg:        rgba($white, .075) !default;
-$table-inverse-border-color:    lighten($gray-900, 7.5%) !default;
-$table-inverse-color:           $body-bg !default;
+$table-dark-bg:              $gray-900 !default;
+$table-dark-accent-bg:       rgba($white, .05) !default;
+$table-dark-hover-bg:        rgba($white, .075) !default;
+$table-dark-border-color:    lighten($gray-900, 7.5%) !default;
+$table-dark-color:           $body-bg !default;
 
 
 // Buttons
@@ -684,7 +646,6 @@ $popover-arrow-outer-color:           fade-in($popover-border-color, .05) !defau
 
 // Badges
 
-$badge-color:                 $white !default;
 $badge-font-size:             75% !default;
 $badge-font-weight:           $font-weight-bold !default;
 $badge-padding-y:             .25em !default;

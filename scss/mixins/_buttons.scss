@@ -10,7 +10,7 @@
   @include box-shadow($btn-box-shadow);
 
   @include hover {
-    @include color-yiq($background);
+    @include color-yiq($active-background);
     background-color: $active-background;
     border-color: $active-border;
   }

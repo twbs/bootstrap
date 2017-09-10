@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="en">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Bootstrap - Content moved</title>
     <link rel="canonical" href="{{ page.redirect.to }}">
     <meta http-equiv="refresh" content="0; url={{ page.redirect.to }}">
@@ -31,6 +32,6 @@
   <body>
     <h1>Redirecting…</h1>
     <a href="{{ page.redirect.to }}">Click here if you are not redirected</a>
-    <script>location="{{ page.redirect.to }}"</script>
+    <script>window.location="{{ page.redirect.to }}";</script>
   </body>
 </html>
