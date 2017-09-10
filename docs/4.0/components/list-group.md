@@ -244,7 +244,7 @@ You can activate a list group navigation without writing any JavaScript by simpl
 Enable tabbable list item via JavaScript (each list item needs to be activated individually):
 
 {% highlight js %}
-$('#myList a').click(function (e) {
+$('#myList a').on('click', function (e) {
   e.preventDefault()
   $(this).tab('show')
 })

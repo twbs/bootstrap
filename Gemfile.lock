@@ -1,8 +1,8 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    addressable (2.5.1)
-      public_suffix (~> 2.0, >= 2.0.2)
+    addressable (2.5.2)
+      public_suffix (>= 2.0.2, < 4.0)
     colorator (1.1.0)
     ffi (1.9.18)
     ffi (1.9.18-x64-mingw32)
@@ -41,7 +41,7 @@ GEM
       mini_portile2 (~> 2.2.0)
     pathutil (0.14.0)
       forwardable-extended (~> 2.6)
-    public_suffix (2.0.5)
+    public_suffix (3.0.0)
     rake (12.0.0)
     rb-fsevent (0.10.2)
     rb-inotify (0.9.10)
@@ -65,4 +65,4 @@ DEPENDENCIES
   scss_lint (~> 0.54.0)
 
 BUNDLED WITH
-   1.15.3
+   1.15.4
