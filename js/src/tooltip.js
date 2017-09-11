@@ -1,5 +1,5 @@
-/* global Popper */
-
+import $ from 'jquery'
+import Popper from 'popper.js'
 import Util from './util'
 
 
@@ -10,7 +10,7 @@ import Util from './util'
  * --------------------------------------------------------------------------
  */
 
-const Tooltip = (($) => {
+const Tooltip = (() => {
 
   /**
    * Check for Popper dependency
@@ -728,6 +728,6 @@ const Tooltip = (($) => {
 
   return Tooltip
 
-})(jQuery)
+})(jQuery, Popper)
 
 export default Tooltip
