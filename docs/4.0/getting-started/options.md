@@ -46,11 +46,11 @@ All colors available in Bootstrap 4, available as Sass variables and a Sass map 
 
 <div class="row">
   {% for color in site.data.colors %}
+    {% unless color.name == "white" or color.name == "gray" or color.name == "gray-dark" %}
     <div class="col-md-4">
-      {% unless color.name == "white" or color.name == "gray" or color.name == "gray-dark" %}
         <div class="p-3 mb-3 swatch-{{ color.name }}">{{ color.name | capitalize }}</div>
-      {% endunless %}
     </div>
+    {% endunless %}
   {% endfor %}
 </div>
 
