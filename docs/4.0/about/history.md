@@ -3,7 +3,7 @@ layout: docs
 title: History
 description: A brief overview of the history of Bootstrap.
 redirect_from:
- - /about/
+ - /docs/4.0/about/
 group: about
 ---
 
