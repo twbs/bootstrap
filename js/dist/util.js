@@ -24,9 +24,10 @@ var Util = function () {
     MozTransition: 'transitionend',
     OTransition: 'oTransitionEnd otransitionend',
     transition: 'transitionend'
+  };
 
-    // shoutout AngusCroll (https://goo.gl/pxwQGp)
-  };function toType(obj) {
+  // shoutout AngusCroll (https://goo.gl/pxwQGp)
+  function toType(obj) {
     return {}.toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase();
   }
 

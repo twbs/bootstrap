@@ -1879,6 +1879,7 @@ select.form-control:focus::-ms-value {
   padding-bottom: 0.5rem;
   margin-bottom: 0;
   line-height: 1.25;
+  background-color: transparent;
   border: solid transparent;
   border-width: 1px 0;
 }
@@ -5633,11 +5634,11 @@ a.bg-dark:focus, a.bg-dark:hover {
 }
 
 .rounded-circle {
-  border-radius: 50%;
+  border-radius: 50% !important;
 }
 
 .rounded-0 {
-  border-radius: 0;
+  border-radius: 0 !important;
 }
 
 .clearfix::after {

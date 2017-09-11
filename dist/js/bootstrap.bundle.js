@@ -33,9 +33,10 @@ var Util = function () {
     MozTransition: 'transitionend',
     OTransition: 'oTransitionEnd otransitionend',
     transition: 'transitionend'
+  };
 
-    // shoutout AngusCroll (https://goo.gl/pxwQGp)
-  };function toType(obj) {
+  // shoutout AngusCroll (https://goo.gl/pxwQGp)
+  function toType(obj) {
     return {}.toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase();
   }
 
@@ -255,14 +256,14 @@ var Alert = function () {
     ALERT: 'alert',
     FADE: 'fade',
     SHOW: 'show'
-
-    /**
-     * ------------------------------------------------------------------------
-     * Class Definition
-     * ------------------------------------------------------------------------
-     */
-
   };
+
+  /**
+   * ------------------------------------------------------------------------
+   * Class Definition
+   * ------------------------------------------------------------------------
+   */
+
   var Alert = function () {
     function Alert(element) {
       classCallCheck(this, Alert);
@@ -435,14 +436,14 @@ var Button = function () {
   var Event = {
     CLICK_DATA_API: 'click' + EVENT_KEY + DATA_API_KEY,
     FOCUS_BLUR_DATA_API: 'focus' + EVENT_KEY + DATA_API_KEY + ' ' + ('blur' + EVENT_KEY + DATA_API_KEY)
-
-    /**
-     * ------------------------------------------------------------------------
-     * Class Definition
-     * ------------------------------------------------------------------------
-     */
-
   };
+
+  /**
+   * ------------------------------------------------------------------------
+   * Class Definition
+   * ------------------------------------------------------------------------
+   */
+
   var Button = function () {
     function Button(element) {
       classCallCheck(this, Button);
@@ -644,14 +645,14 @@ var Carousel = function () {
     INDICATORS: '.carousel-indicators',
     DATA_SLIDE: '[data-slide], [data-slide-to]',
     DATA_RIDE: '[data-ride="carousel"]'
-
-    /**
-     * ------------------------------------------------------------------------
-     * Class Definition
-     * ------------------------------------------------------------------------
-     */
-
   };
+
+  /**
+   * ------------------------------------------------------------------------
+   * Class Definition
+   * ------------------------------------------------------------------------
+   */
+
   var Carousel = function () {
     function Carousel(element, config) {
       classCallCheck(this, Carousel);
@@ -1128,14 +1129,14 @@ var Collapse = function () {
   var Selector = {
     ACTIVES: '.show, .collapsing',
     DATA_TOGGLE: '[data-toggle="collapse"]'
-
-    /**
-     * ------------------------------------------------------------------------
-     * Class Definition
-     * ------------------------------------------------------------------------
-     */
-
   };
+
+  /**
+   * ------------------------------------------------------------------------
+   * Class Definition
+   * ------------------------------------------------------------------------
+   */
+
   var Collapse = function () {
     function Collapse(element, config) {
       classCallCheck(this, Collapse);
@@ -3943,23 +3944,21 @@ var Dropdown = function () {
   };
 
   var Default = {
-    placement: AttachmentMap.BOTTOM,
     offset: 0,
     flip: true
   };
 
   var DefaultType = {
-    placement: 'string',
     offset: '(number|string)',
     flip: 'boolean'
-
-    /**
-     * ------------------------------------------------------------------------
-     * Class Definition
-     * ------------------------------------------------------------------------
-     */
-
   };
+
+  /**
+   * ------------------------------------------------------------------------
+   * Class Definition
+   * ------------------------------------------------------------------------
+   */
+
   var Dropdown = function () {
     function Dropdown(element, config) {
       classCallCheck(this, Dropdown);
@@ -4057,11 +4056,6 @@ var Dropdown = function () {
     };
 
     Dropdown.prototype._getConfig = function _getConfig(config) {
-      var elementData = $(this._element).data();
-      if (typeof elementData.placement !== 'undefined') {
-        elementData.placement = AttachmentMap[elementData.placement.toUpperCase()];
-      }
-
       config = $.extend({}, this.constructor.Default, $(this._element).data(), config);
 
       Util.typeCheckConfig(NAME, config, this.constructor.DefaultType);
@@ -4079,10 +4073,10 @@ var Dropdown = function () {
 
     Dropdown.prototype._getPlacement = function _getPlacement() {
       var $parentDropdown = $(this._element).parent();
-      var placement = this._config.placement;
+      var placement = AttachmentMap.BOTTOM;
 
       // Handle dropup
-      if ($parentDropdown.hasClass(ClassName.DROPUP) || this._config.placement === AttachmentMap.TOP) {
+      if ($parentDropdown.hasClass(ClassName.DROPUP)) {
         placement = AttachmentMap.TOP;
         if ($(this._menu).hasClass(ClassName.MENURIGHT)) {
           placement = AttachmentMap.TOPEND;
@@ -4108,9 +4102,10 @@ var Dropdown = function () {
             enabled: this._config.flip
           }
         }
+      };
 
-        // Disable Popper.js for Dropdown in Navbar
-      };if (this._inNavbar) {
+      // Disable Popper.js for Dropdown in Navbar
+      if (this._inNavbar) {
         popperConfig.modifiers.applyStyle = {
           enabled: !this._inNavbar
         };
@@ -4363,14 +4358,14 @@ var Modal = function () {
     FIXED_CONTENT: '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top',
     STICKY_CONTENT: '.sticky-top',
     NAVBAR_TOGGLER: '.navbar-toggler'
-
-    /**
-     * ------------------------------------------------------------------------
-     * Class Definition
-     * ------------------------------------------------------------------------
-     */
-
   };
+
+  /**
+   * ------------------------------------------------------------------------
+   * Class Definition
+   * ------------------------------------------------------------------------
+   */
+
   var Modal = function () {
     function Modal(element, config) {
       classCallCheck(this, Modal);
@@ -4978,14 +4973,14 @@ var Tooltip = function () {
     FOCUS: 'focus',
     CLICK: 'click',
     MANUAL: 'manual'
-
-    /**
-     * ------------------------------------------------------------------------
-     * Class Definition
-     * ------------------------------------------------------------------------
-     */
-
   };
+
+  /**
+   * ------------------------------------------------------------------------
+   * Class Definition
+   * ------------------------------------------------------------------------
+   */
+
   var Tooltip = function () {
     function Tooltip(element, config) {
       classCallCheck(this, Tooltip);
@@ -5609,14 +5604,14 @@ var Popover = function () {
     FOCUSOUT: 'focusout' + EVENT_KEY,
     MOUSEENTER: 'mouseenter' + EVENT_KEY,
     MOUSELEAVE: 'mouseleave' + EVENT_KEY
-
-    /**
-     * ------------------------------------------------------------------------
-     * Class Definition
-     * ------------------------------------------------------------------------
-     */
-
   };
+
+  /**
+   * ------------------------------------------------------------------------
+   * Class Definition
+   * ------------------------------------------------------------------------
+   */
+
   var Popover = function (_Tooltip) {
     inherits(Popover, _Tooltip);
 
@@ -5808,14 +5803,14 @@ var ScrollSpy = function () {
   var OffsetMethod = {
     OFFSET: 'offset',
     POSITION: 'position'
-
-    /**
-     * ------------------------------------------------------------------------
-     * Class Definition
-     * ------------------------------------------------------------------------
-     */
-
   };
+
+  /**
+   * ------------------------------------------------------------------------
+   * Class Definition
+   * ------------------------------------------------------------------------
+   */
+
   var ScrollSpy = function () {
     function ScrollSpy(element, config) {
       var _this = this;
@@ -6109,14 +6104,14 @@ var Tab = function () {
     DATA_TOGGLE: '[data-toggle="tab"], [data-toggle="pill"], [data-toggle="list"]',
     DROPDOWN_TOGGLE: '.dropdown-toggle',
     DROPDOWN_ACTIVE_CHILD: '> .dropdown-menu .active'
-
-    /**
-     * ------------------------------------------------------------------------
-     * Class Definition
-     * ------------------------------------------------------------------------
-     */
-
   };
+
+  /**
+   * ------------------------------------------------------------------------
+   * Class Definition
+   * ------------------------------------------------------------------------
+   */
+
   var Tab = function () {
     function Tab(element) {
       classCallCheck(this, Tab);
