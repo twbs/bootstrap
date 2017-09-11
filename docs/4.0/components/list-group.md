@@ -56,7 +56,7 @@ Be sure to **not use the standard `.btn` classes here**.
 
 {% example html %}
 <div class="list-group">
-  <a href="#" class="list-group-item active">
+  <a href="#" class="list-group-item list-group-item-action active">
     Cras justo odio
   </a>
   <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
@@ -244,7 +244,7 @@ You can activate a list group navigation without writing any JavaScript by simpl
 Enable tabbable list item via JavaScript (each list item needs to be activated individually):
 
 {% highlight js %}
-$('#myList a').click(function (e) {
+$('#myList a').on('click', function (e) {
   e.preventDefault()
   $(this).tab('show')
 })
