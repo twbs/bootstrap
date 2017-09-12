@@ -10,6 +10,7 @@ source:           docs
 destination:      _gh_pages
 host:             0.0.0.0
 port:             9001
+baseurl:          ""
 url:              http://getbootstrap.com
 encoding:         UTF-8
 
@@ -18,6 +19,7 @@ gems:
 
 # Custom vars
 current_version:  3.3.7
+docs_version:     3.3
 repo:             https://github.com/twbs/bootstrap
 sass_repo:        https://github.com/twbs/bootstrap-sass
 
