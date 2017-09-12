@@ -97,6 +97,7 @@
 // the default flexbox row orienation. Requires the use of `flex-wrap: wrap`
 // on the `.navbar` parent.
 .navbar-collapse {
+  flex-basis: 100%;
   flex-grow: 1;
   // For always expanded or extra full navbars, ensure content aligns itself
   // properly vertically. Can be easily overridden with flex utilities.
@@ -177,6 +178,9 @@
         // scss-lint:disable ImportantRule
         .navbar-collapse {
           display: flex !important;
+
+          // Changes flex-bases to auto because of an IE10 bug
+          flex-basis: auto;
         }
         // scss-lint:enable ImportantRule
 
