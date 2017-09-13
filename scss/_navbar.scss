@@ -32,6 +32,11 @@
     align-items: center;
     justify-content: space-between;
   }
+
+  // Forces the search box to stay inside the navbar container
+  .form-control {
+    width: 100%;
+  }
 }
 
 
