@@ -242,6 +242,26 @@ $(function () {
       .bootstrapModal('show')
   })
 
+  QUnit.test('should not close modal when child dropdown is open', function (assert) {
+    assert.expect(3)
+    var done = assert.async()
+
+    var $div = $('<div id="modal-test"><div class="dropdown show"></div></div>')
+    $div
+      .on('shown.bs.modal', function () {
+        assert.ok($('#modal-test').length, 'modal inserted into dom')
+        assert.ok($('#modal-test').is(':visible'), 'modal visible')
+        $div.trigger($.Event('keydown', { which: 27 }))
+
+        setTimeout(function () {
+          assert.ok($div.is(':visible'), 'modal still visible')
+          $div.remove()
+          done()
+        }, 0)
+      })
+      .bootstrapModal('show')
+  })
+
   QUnit.test('should trigger hide event once when clicking outside of modal-content', function (assert) {
     assert.expect(1)
     var done = assert.async()
