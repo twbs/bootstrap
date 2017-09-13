@@ -9,7 +9,7 @@ module.exports = (ctx) => ({
       browsers: [
         //
         // Official browser support policy:
-        // https://v4-alpha.getbootstrap.com/getting-started/browsers-devices/#supported-browsers
+        // https://getbootstrap.com/docs/4.0/getting-started/browsers-devices/#supported-browsers
         //
         'Chrome >= 45', // Exact version number here is kinda arbitrary
         'Firefox ESR',

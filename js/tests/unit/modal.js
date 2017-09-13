@@ -21,6 +21,8 @@ $(function () {
         document.body.removeChild(scrollDiv)
         return scrollbarWidth
       }
+      // Simulate scrollbars in PhantomJS
+      $('html').css('padding-right', '16px')
     },
     beforeEach: function () {
       // Run all tests in noConflict mode -- it's the only way to ensure that the plugin works in noConflict mode
@@ -349,6 +351,20 @@ $(function () {
     $toggleBtn.trigger('click')
   })
 
+  QUnit.test('should adjust the inline padding of the modal when opening', function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+
+    $('<div id="modal-test"/>')
+      .on('shown.bs.modal', function () {
+        var expectedPadding = $(this).getScrollbarWidth() + 'px'
+        var currentPadding = $(this).css('padding-right')
+        assert.strictEqual(currentPadding, expectedPadding, 'modal padding should be adjusted while opening')
+        done()
+      })
+      .bootstrapModal('show')
+  })
+
   QUnit.test('should adjust the inline body padding when opening and restore when closing', function (assert) {
     assert.expect(2)
     var done = assert.async()
@@ -387,6 +403,30 @@ $(function () {
       .on('shown.bs.modal', function () {
         assert.strictEqual($body.data('padding-right'), originalPadding, 'original body padding should be stored in data-padding-right')
         $(this).bootstrapModal('hide')
+      })
+      .bootstrapModal('show')
+  })
+
+  QUnit.test('should not adjust the inline body padding when it does not overflow', function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+    var $body = $(document.body)
+    var originalPadding = $body.css('padding-right')
+
+    // Hide scrollbars to prevent the body overflowing
+    $body.css('overflow', 'hidden')        // real scrollbar (for in-browser testing)
+    $('html').css('padding-right', '0px')  // simulated scrollbar (for PhantomJS)
+
+    $('<div id="modal-test"/>')
+      .on('shown.bs.modal', function () {
+        var currentPadding = $body.css('padding-right')
+        assert.strictEqual(currentPadding, originalPadding, 'body padding should not be adjusted')
+        $(this).bootstrapModal('hide')
+
+        // restore scrollbars
+        $body.css('overflow', 'auto')
+        $('html').css('padding-right', '16px')
+        done()
       })
       .bootstrapModal('show')
   })
@@ -525,7 +565,7 @@ $(function () {
 
     $('<div id="modal-test"/>')
       .on('hidden.bs.modal', function () {
-        assert.ok(!$body.attr('style'), 'body does not have inline padding set')
+        assert.strictEqual($body.attr('style').indexOf('padding-right'), -1, 'body does not have inline padding set')
         $style.remove()
         done()
       })
@@ -596,5 +636,41 @@ $(function () {
         }, 1)
       })
       .trigger('click')
+  })
+
+  QUnit.test('should not parse target as html', function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+
+    var $toggleBtn = $('<button data-toggle="modal" data-target="&lt;div id=&quot;modal-test&quot;&gt;&lt;div class=&quot;contents&quot;&lt;div&lt;div id=&quot;close&quot; data-dismiss=&quot;modal&quot;/&gt;&lt;/div&gt;&lt;/div&gt;"/>')
+      .appendTo('#qunit-fixture')
+
+    $toggleBtn.trigger('click')
+    setTimeout(function () {
+      assert.strictEqual($('#modal-test').length, 0, 'target has not been parsed and added to the document')
+      done()
+    }, 1)
+  })
+
+  QUnit.test('should not execute js from target', function (assert) {
+    assert.expect(0)
+    var done = assert.async()
+
+    // This toggle button contains XSS payload in its data-target
+    // Note: it uses the onerror handler of an img element to execute the js, because a simple script element does not work here
+    //       a script element works in manual tests though, so here it is likely blocked by the qunit framework
+    var $toggleBtn = $('<button data-toggle="modal" data-target="&lt;div&gt;&lt;image src=&quot;missing.png&quot; onerror=&quot;$(&apos;#qunit-fixture button.control&apos;).trigger(&apos;click&apos;)&quot;&gt;&lt;/div&gt;"/>')
+      .appendTo('#qunit-fixture')
+    // The XSS payload above does not have a closure over this function and cannot access the assert object directly
+    // However, it can send a click event to the following control button, which will then fail the assert
+    $('<button>')
+      .addClass('control')
+      .on('click', function () {
+        assert.notOk(true, 'XSS payload is not executed as js')
+      })
+      .appendTo('#qunit-fixture')
+
+    $toggleBtn.trigger('click')
+    setTimeout(done, 500)
   })
 })

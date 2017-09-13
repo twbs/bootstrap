@@ -28,14 +28,17 @@
     "css-prefix-docs": "postcss --config build/postcss.config.js --no-map --replace assets/css/docs.min.css",
     "css-minify": "cleancss --level 1 --source-map --source-map-inline-sources --output dist/css/bootstrap.min.css dist/css/bootstrap.css && cleancss --level 1 --source-map --source-map-inline-sources --output dist/css/bootstrap-grid.min.css dist/css/bootstrap-grid.css && cleancss --level 1 --source-map --source-map-inline-sources --output dist/css/bootstrap-reboot.min.css dist/css/bootstrap-reboot.css",
     "css-minify-docs": "cleancss --level 1 --source-map --source-map-inline-sources --output assets/css/docs.min.css assets/css/docs.min.css",
-    "js": "npm-run-all js-lint js-compile js-minify",
+    "js": "npm-run-all js-lint* js-compile js-minify",
     "js-docs": "npm-run-all js-lint-docs js-minify-docs",
     "js-lint": "eslint js/ && eslint --config js/tests/.eslintrc.json --env node build/ Gruntfile.js",
-    "js-lint-docs": "eslint --config js/tests/.eslintrc.json assets/js/",
+    "js-lint-docs": "eslint --config js/tests/.eslintrc.json assets/js/ sw.js",
     "js-compile": "npm-run-all --parallel js-compile-*",
-    "js-compile-bundle": "shx cat js/src/util.js js/src/alert.js js/src/button.js js/src/carousel.js js/src/collapse.js js/src/dropdown.js js/src/modal.js js/src/scrollspy.js js/src/tab.js js/src/tooltip.js js/src/popover.js | shx sed \"s/^(import|export).*//\" | babel --filename js/src/bootstrap.js | node build/stamp.js > dist/js/bootstrap.js",
-    "js-compile-plugins": "babel js/src/ --out-dir js/dist/ --source-maps",
-    "js-minify": "uglifyjs --config-file build/uglifyjs.config.json --output dist/js/bootstrap.min.js dist/js/bootstrap.js",
+    "js-compile-standalone": "rollup --environment BUNDLE:false --config build/rollup.config.js",
+    "js-compile-bundle": "rollup --environment BUNDLE:true --config build/rollup.config.js",
+    "js-compile-plugins": "babel --no-babelrc js/src/ --out-dir js/dist/ --source-maps --presets=es2015 --plugins=transform-es2015-modules-strip",
+    "js-minify": "npm-run-all --parallel js-minify-standalone js-minify-bundle",
+    "js-minify-standalone": "uglifyjs --config-file build/uglifyjs.config.json --output dist/js/bootstrap.min.js dist/js/bootstrap.js",
+    "js-minify-bundle": "uglifyjs --config-file build/uglifyjs.config.json --output dist/js/bootstrap.bundle.min.js dist/js/bootstrap.bundle.js",
     "js-minify-docs": "uglifyjs --config-file build/uglifyjs.config.json --output assets/js/docs.min.js assets/js/vendor/anchor.min.js assets/js/vendor/clipboard.min.js assets/js/vendor/holder.min.js assets/js/src/application.js assets/js/src/pwa.js",
     "js-test": "phantomjs ./node_modules/qunit-phantomjs-runner/runner.js js/tests/index.html 60",
     "js-test-cloud": "ruby -r webrick -e \"s = WEBrick::HTTPServer.new(:Port => 3000, :DocumentRoot => Dir.pwd, :Logger => WEBrick::Log.new('/dev/null'), :AccessLog => []); trap('INT') { s.shutdown }; s.start\" & grunt saucelabs-qunit",
@@ -43,9 +46,9 @@
     "docs-lint": "htmllint --rc build/.htmllintrc _gh_pages/*.html _gh_pages/**/*.html js/tests/visual/*.html",
     "docs-compile": "bundle exec jekyll build",
     "docs-serve": "bundle exec jekyll serve",
-    "docs-github": "shx echo 'github: true' > $npm_config_tmp/twbsconfig.yml && npm run docs-compile -- --config _config.yml,$npm_config_tmp/twbsconfig.yml && shx rm $npm_config_tmp/twbsconfig.yml",
+    "docs-github": "shx echo \"github: true\" > twbsconfig.yml && npm run docs-compile -- --config _config.yml,twbsconfig.yml && shx rm ./twbsconfig.yml",
     "docs-upload-preview": "build/upload-preview.sh",
-    "maintenance-dependencies": "ncu -a -x jquery && npm update && bundle update && shx echo 'Manually update assets/js/vendor/*, js/tests/vendor/*, bower.json and .travis.yml'",
+    "maintenance-dependencies": "ncu -a -x jquery && npm update && bundle update && shx echo 'Manually update assets/js/vendor/*, js/tests/vendor/* and .travis.yml'",
     "release-version": "node build/change-version.js",
     "release-zip": "cd dist/ && zip -r9 bootstrap-$npm_package_version-dist.zip * && shx mv bootstrap-$npm_package_version-dist.zip ..",
     "dist": "npm-run-all --parallel css js css-docs",
@@ -67,13 +70,14 @@
   "license": "MIT",
   "dependencies": {},
   "peerDependencies": {
-    "jquery": "3.0.0 - 4.0.0",
+    "jquery": "^3.0.0",
     "popper.js": "^1.12.3"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
     "babel-cli": "^6.24.1",
     "babel-eslint": "^7.2.3",
+    "babel-plugin-external-helpers": "^6.22.0",
     "babel-plugin-transform-es2015-modules-strip": "^0.1.1",
     "babel-preset-es2015": "^6.24.1",
     "clean-css-cli": "^4.1.6",
@@ -86,9 +90,13 @@
     "nodemon": "^1.11.0",
     "npm-run-all": "^4.0.2",
     "phantomjs-prebuilt": "^2.1.14",
+    "popper.js": "^1.12.5",
     "postcss-cli": "^4.1.0",
     "qunit-phantomjs-runner": "^2.3.0",
     "qunitjs": "^2.4.0",
+    "rollup": "^0.49.2",
+    "rollup-plugin-babel": "^3.0.2",
+    "rollup-plugin-node-resolve": "^3.0.0",
     "shelljs": "^0.7.8",
     "shx": "^0.2.2",
     "uglify-js": "^3.0.24"
@@ -110,6 +118,7 @@
     "LICENSE"
   ],
   "jspm": {
+    "registry": "npm",
     "main": "js/bootstrap",
     "directories": {
       "lib": "dist"
@@ -125,8 +134,8 @@
     },
     "dependencies": {},
     "peerDependencies": {
-      "jquery": "3",
-      "popper.js": "npm:popper.js@^1.12.3"
+      "jquery": "^3.0.0",
+      "popper.js": "^1.12.3"
     }
   }
 }

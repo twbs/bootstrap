@@ -1,5 +1,5 @@
-/* global Popper */
-
+import $ from 'jquery'
+import Popper from 'popper.js'
 import Util from './util'
 
 
@@ -10,7 +10,7 @@ import Util from './util'
  * --------------------------------------------------------------------------
  */
 
-const Tooltip = (($) => {
+const Tooltip = (() => {
 
   /**
    * Check for Popper dependency
@@ -622,18 +622,18 @@ const Tooltip = (($) => {
         config
       )
 
-      if (config.delay && typeof config.delay === 'number') {
+      if (typeof config.delay === 'number') {
         config.delay = {
           show : config.delay,
           hide : config.delay
         }
       }
 
-      if (config.title && typeof config.title === 'number') {
+      if (typeof config.title === 'number') {
         config.title = config.title.toString()
       }
 
-      if (config.content && typeof config.content === 'number') {
+      if (typeof config.content === 'number') {
         config.content = config.content.toString()
       }
 
@@ -728,6 +728,6 @@ const Tooltip = (($) => {
 
   return Tooltip
 
-})(jQuery)
+})(jQuery, Popper)
 
 export default Tooltip
