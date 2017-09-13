@@ -56,6 +56,10 @@
       @include border-bottom-radius($card-border-radius);
     }
   }
+
+  .card-header + .list-group > .list-group-item:first-child {
+    border-top: 0;
+  }
 }
 
 
@@ -172,9 +176,9 @@
 
     .card {
       flex: 1 0 0%;
+      margin-bottom: 0;
 
       + .card {
-        margin-bottom: 0;
         margin-left: 0;
         border-left: 0;
       }
