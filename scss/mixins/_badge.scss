@@ -1,11 +1,11 @@
 @mixin badge-variant($bg) {
-  @include color-yiq($bg);
+  color: color-yiq($bg);
   background-color: $bg;
 
   &[href] {
     @include hover-focus {
-      @include color-yiq($bg);
       text-decoration: none;
+      color: color-yiq($bg);
       background-color: darken($bg, 10%);
     }
   }
