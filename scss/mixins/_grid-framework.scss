@@ -42,9 +42,9 @@
 
       .col#{$infix}-0 {
         @include make-col(0, $grid-columns);
-        overflow: hidden;
-        padding-left: 0;
         padding-right: 0;
+        padding-left: 0;
+        overflow: hidden;
       }
 
       @for $i from 1 through $columns {
