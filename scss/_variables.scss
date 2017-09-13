@@ -640,7 +640,7 @@ $popover-arrow-width:                 10px !default;
 $popover-arrow-height:                5px !default;
 $popover-arrow-color:                 $popover-bg !default;
 
-$popover-arrow-outer-width:           ($popover-arrow-width + 1px) !default;
+$popover-arrow-outer-width:           ($popover-arrow-width + round($popover-border-width * 1.4142)) !default; //1.4142 -> value of sqrt(2)
 $popover-arrow-outer-color:           fade-in($popover-border-color, .05) !default;
 
 
