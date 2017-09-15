@@ -28,7 +28,7 @@ GEM
       nokogiri (~> 1.6)
     jekyll-watch (1.5.0)
       listen (~> 3.0, < 3.1)
-    kramdown (1.14.0)
+    kramdown (1.15.0)
     liquid (4.0.0)
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -42,7 +42,7 @@ GEM
     pathutil (0.14.0)
       forwardable-extended (~> 2.6)
     public_suffix (3.0.0)
-    rake (12.0.0)
+    rake (12.1.0)
     rb-fsevent (0.10.2)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
@@ -61,7 +61,7 @@ DEPENDENCIES
   jekyll (~> 3.5.1)
   jekyll-redirect-from (~> 0.12.1)
   jekyll-sitemap (~> 1.1.1)
-  jekyll-toc (~> 0.3.0.pre1)
+  jekyll-toc (~> 0.3.0)
   scss_lint (~> 0.54.0)
 
 BUNDLED WITH
