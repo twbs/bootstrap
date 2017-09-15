@@ -319,8 +319,9 @@ const Modal = (() => {
     }
 
     _showBackdrop(callback) {
-      const animate = this._element.classList.contains(ClassName.FADE) ?
-        ClassName.FADE : ''
+      const animate = this._element.classList.contains(ClassName.FADE)
+        ? ClassName.FADE
+        : ''
 
       if (this._isShown && this._config.backdrop) {
         this._backdrop = document.createElement('div')
@@ -537,8 +538,9 @@ const Modal = (() => {
       target = SelectorEngine.findOne(selector)
     }
 
-    const config = Data.getData(target, DATA_KEY) ?
-      'toggle' : {
+    const config = Data.getData(target, DATA_KEY)
+      ? 'toggle'
+      : {
         ...Util.getDataAttributes(target),
         ...Util.getDataAttributes(this)
       }
