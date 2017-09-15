@@ -154,7 +154,14 @@ const Util = {
     if (typeof nodeList === 'undefined' || nodeList === null) {
       return []
     }
-    return Array.prototype.slice.call(nodeList)
+
+    const strRepresentation = Object.prototype.toString.call(nodeList)
+    if (strRepresentation === '[object NodeList]' ||
+      strRepresentation === '[object HTMLCollection]' || strRepresentation === '[object Array]') {
+      return Array.prototype.slice.call(nodeList)
+    }
+
+    return [nodeList]
   },
 
   getDataAttributes(element) {
