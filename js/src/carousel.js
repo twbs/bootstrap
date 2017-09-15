@@ -200,7 +200,7 @@ const Carousel = (($) => {
     }
 
     dispose() {
-      EventHandler.off(this._element, DATA_KEY)
+      EventHandler.off(this._element, EVENT_KEY)
       Data.removeData(this._element, DATA_KEY)
 
       this._items             = null

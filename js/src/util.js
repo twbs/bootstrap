@@ -9,13 +9,27 @@ import EventHandler from './dom/eventHandler'
 
 const Util = (() => {
 
-  const transition = EventHandler.getBrowserTransitionEnd()
+  const transition = Boolean(EventHandler.getBrowserTransitionEnd())
 
   const MAX_UID = 1000000
 
   // shoutout AngusCroll (https://goo.gl/pxwQGp)
   function toType(obj) {
     return {}.toString.call(obj).match(/\s([a-z]+)/i)[1].toLowerCase()
+  }
+
+  function normalizeData(val) {
+    if (val === 'true') {
+      return true
+    } else if (val === 'false') {
+      return false
+    } else if (val === 'null') {
+      return null
+    } else if (val === Number(val).toString()) {
+      return Number(val)
+    }
+
+    return val
   }
 
   /**
@@ -59,7 +73,7 @@ const Util = (() => {
     },
 
     supportsTransitionEnd() {
-      return Boolean(transition)
+      return transition
     },
 
     isElement(obj) {
@@ -90,7 +104,8 @@ const Util = (() => {
       }
     },
 
-    extend(obj1, obj2) {
+    extend(obj1, ...others) {
+      const obj2 = others.shift()
       for (const secondProp in obj2) {
         if (Object.prototype.hasOwnProperty.call(obj2, secondProp)) {
           const secondVal = obj2[secondProp]
@@ -103,6 +118,11 @@ const Util = (() => {
           }
         }
       }
+
+      if (others.length) {
+        this.extend(obj1, ...others)
+      }
+
       return obj1
     },
 
@@ -118,16 +138,34 @@ const Util = (() => {
         return {}
       }
 
-      const attributes = {}
-      for (let i = 0; i < element.attributes.length; i++) {
-        const attribute = element.attributes[i]
-        if (attribute.nodeName.indexOf('data-') !== -1) {
-          // remove 'data-' part of the attribute name
-          const attributeName = attribute.nodeName.substring('data-'.length)
-          attributes[attributeName] = attribute.nodeValue
+      let attributes
+      if (Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'dataset')) {
+        attributes = this.extend({}, element.dataset)
+      } else {
+        attributes = {}
+        for (let i = 0; i < element.attributes.length; i++) {
+          const attribute = element.attributes[i]
+          if (attribute.nodeName.indexOf('data-') !== -1) {
+            // remove 'data-' part of the attribute name
+            const attributeName = attribute.nodeName.substring('data-'.length).replace(/-./g, (str) => str.charAt(1).toUpperCase())
+            attributes[attributeName] = attribute.nodeValue
+          }
         }
       }
+
+      for (const key in attributes) {
+        if (!Object.prototype.hasOwnProperty.call(attributes, key)) {
+          continue
+        }
+
+        attributes[key] = normalizeData(attributes[key])
+      }
+
       return attributes
+    },
+
+    getDataAttribute(element, key) {
+      return normalizeData(element.getAttribute(`data-${key.replace(/[A-Z]/g, (chr) => `-${chr.toLowerCase()}`)}`))
     },
 
     isVisible(element) {
@@ -141,6 +179,10 @@ const Util = (() => {
           && element.style.visibility !== 'hidden'
       }
       return false
+    },
+
+    get jQuery() {
+      return window.$ || window.jQuery
     }
   }
 

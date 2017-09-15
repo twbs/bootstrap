@@ -1,4 +1,7 @@
-import $ from 'jquery'
+import Data from './dom/data'
+import EventHandler from './dom/eventHandler'
+import Manipulator from './dom/manipulator'
+import SelectorEngine from './dom/selectorEngine'
 import Util from './util'
 
 /**
@@ -20,7 +23,6 @@ const Modal = (($) => {
   const DATA_KEY                     = 'bs.modal'
   const EVENT_KEY                    = `.${DATA_KEY}`
   const DATA_API_KEY                 = '.data-api'
-  const JQUERY_NO_CONFLICT           = $.fn[NAME]
   const TRANSITION_DURATION          = 300
   const BACKDROP_TRANSITION_DURATION = 150
   const ESCAPE_KEYCODE               = 27 // KeyboardEvent.which value for Escape (Esc) key
@@ -80,7 +82,7 @@ const Modal = (($) => {
     constructor(element, config) {
       this._config              = this._getConfig(config)
       this._element             = element
-      this._dialog              = $(element).find(Selector.DIALOG)[0]
+      this._dialog              = SelectorEngine.findOne(Selector.DIALOG, element)
       this._backdrop            = null
       this._isShown             = false
       this._isBodyOverflowing   = false
@@ -109,17 +111,15 @@ const Modal = (($) => {
         return
       }
 
-      if (Util.supportsTransitionEnd() && $(this._element).hasClass(ClassName.FADE)) {
+      if (Util.supportsTransitionEnd() && this._element.classList.contains(ClassName.FADE)) {
         this._isTransitioning = true
       }
 
-      const showEvent = $.Event(Event.SHOW, {
+      const showEvent = EventHandler.trigger(this._element, Event.SHOW, {
         relatedTarget
       })
 
-      $(this._element).trigger(showEvent)
-
-      if (this._isShown || showEvent.isDefaultPrevented()) {
+      if (this._isShown || showEvent === null || showEvent.defaultPrevented) {
         return
       }
 
@@ -130,20 +130,20 @@ const Modal = (($) => {
 
       this._adjustDialog()
 
-      $(document.body).addClass(ClassName.OPEN)
+      document.body.classList.add(ClassName.OPEN)
 
       this._setEscapeEvent()
       this._setResizeEvent()
 
-      $(this._element).on(
+      EventHandler.on(this._element,
         Event.CLICK_DISMISS,
         Selector.DATA_DISMISS,
         (event) => this.hide(event)
       )
 
-      $(this._dialog).on(Event.MOUSEDOWN_DISMISS, () => {
-        $(this._element).one(Event.MOUSEUP_DISMISS, (event) => {
-          if ($(event.target).is(this._element)) {
+      EventHandler.on(this._dialog, Event.MOUSEDOWN_DISMISS, () => {
+        EventHandler.one(this._element, Event.MOUSEUP_DISMISS, (event) => {
+          if (event.target === this._element) {
             this._ignoreBackdropClick = true
           }
         })
@@ -161,11 +161,9 @@ const Modal = (($) => {
         return
       }
 
-      const hideEvent = $.Event(Event.HIDE)
+      const hideEvent = EventHandler.trigger(this._element, Event.HIDE)
 
-      $(this._element).trigger(hideEvent)
-
-      if (!this._isShown || hideEvent.isDefaultPrevented()) {
+      if (!this._isShown || hideEvent === null || hideEvent.defaultPrevented) {
         return
       }
 
@@ -180,17 +178,15 @@ const Modal = (($) => {
       this._setEscapeEvent()
       this._setResizeEvent()
 
-      $(document).off(Event.FOCUSIN)
+      EventHandler.off(document, Event.FOCUSIN)
 
-      $(this._element).removeClass(ClassName.SHOW)
+      this._element.classList.remove(ClassName.SHOW)
 
-      $(this._element).off(Event.CLICK_DISMISS)
-      $(this._dialog).off(Event.MOUSEDOWN_DISMISS)
+      EventHandler.off(this._element, Event.CLICK_DISMISS)
+      EventHandler.off(this._dialog, Event.MOUSEDOWN_DISMISS)
 
       if (transition) {
-        $(this._element)
-          .one(Util.TRANSITION_END, (event) => this._hideModal(event))
-
+        EventHandler.one(this._element, Util.TRANSITION_END, (event) => this._hideModal(event))
         Util.emulateTransitionEnd(this._element, TRANSITION_DURATION)
       } else {
         this._hideModal()
@@ -198,9 +194,12 @@ const Modal = (($) => {
     }
 
     dispose() {
-      $.removeData(this._element, DATA_KEY)
+      Data.removeData(this._element, DATA_KEY)
 
-      $(window, document, this._element, this._backdrop).off(EVENT_KEY)
+      EventHandler.off(window, EVENT_KEY)
+      EventHandler.off(document, EVENT_KEY)
+      EventHandler.off(this._element, EVENT_KEY)
+      EventHandler.off(this._backdrop, EVENT_KEY)
 
       this._config              = null
       this._element             = null
@@ -229,7 +228,7 @@ const Modal = (($) => {
 
     _showElement(relatedTarget) {
       const transition = Util.supportsTransitionEnd() &&
-        $(this._element).hasClass(ClassName.FADE)
+        this._element.classList.contains(ClassName.FADE)
 
       if (!this._element.parentNode ||
          this._element.parentNode.nodeType !== Node.ELEMENT_NODE) {
@@ -245,28 +244,24 @@ const Modal = (($) => {
         Util.reflow(this._element)
       }
 
-      $(this._element).addClass(ClassName.SHOW)
+      this._element.classList.add(ClassName.SHOW)
 
       if (this._config.focus) {
         this._enforceFocus()
       }
-
-      const shownEvent = $.Event(Event.SHOWN, {
-        relatedTarget
-      })
 
       const transitionComplete = () => {
         if (this._config.focus) {
           this._element.focus()
         }
         this._isTransitioning = false
-        $(this._element).trigger(shownEvent)
+        EventHandler.trigger(this._element, Event.SHOWN, {
+          relatedTarget
+        })
       }
 
       if (transition) {
-        $(this._dialog)
-          .one(Util.TRANSITION_END, transitionComplete)
-
+        EventHandler.one(this._dialog, Util.TRANSITION_END, transitionComplete)
         Util.emulateTransitionEnd(this._dialog, TRANSITION_DURATION)
       } else {
         transitionComplete()
@@ -274,35 +269,34 @@ const Modal = (($) => {
     }
 
     _enforceFocus() {
-      $(document)
-        .off(Event.FOCUSIN) // Guard against infinite focus loop
-        .on(Event.FOCUSIN, (event) => {
-          if (document !== event.target &&
-              this._element !== event.target &&
-              $(this._element).has(event.target).length === 0) {
-            this._element.focus()
-          }
-        })
+      EventHandler.off(document, Event.FOCUSIN) // guard against infinite focus loop
+      EventHandler.on(document, Event.FOCUSIN, (event) => {
+        if (document !== event.target &&
+            this._element !== event.target &&
+            !this._element.contains(event.target)) {
+          this._element.focus()
+        }
+      })
     }
 
     _setEscapeEvent() {
       if (this._isShown && this._config.keyboard) {
-        $(this._element).on(Event.KEYDOWN_DISMISS, (event) => {
+        EventHandler.on(this._element, Event.KEYDOWN_DISMISS, (event) => {
           if (event.which === ESCAPE_KEYCODE) {
             event.preventDefault()
             this.hide()
           }
         })
       } else if (!this._isShown) {
-        $(this._element).off(Event.KEYDOWN_DISMISS)
+        EventHandler.off(this._element, Event.KEYDOWN_DISMISS)
       }
     }
 
     _setResizeEvent() {
       if (this._isShown) {
-        $(window).on(Event.RESIZE, (event) => this.handleUpdate(event))
+        EventHandler.on(window, Event.RESIZE, (event) => this.handleUpdate(event))
       } else {
-        $(window).off(Event.RESIZE)
+        EventHandler.off(window, Event.RESIZE)
       }
     }
 
@@ -311,23 +305,23 @@ const Modal = (($) => {
       this._element.setAttribute('aria-hidden', true)
       this._isTransitioning = false
       this._showBackdrop(() => {
-        $(document.body).removeClass(ClassName.OPEN)
+        document.body.classList.remove(ClassName.OPEN)
         this._resetAdjustments()
         this._resetScrollbar()
-        $(this._element).trigger(Event.HIDDEN)
+        EventHandler.trigger(this._element, Event.HIDDEN)
       })
     }
 
     _removeBackdrop() {
       if (this._backdrop) {
-        $(this._backdrop).remove()
+        this._backdrop.parentNode.removeChild(this._backdrop)
         this._backdrop = null
       }
     }
 
     _showBackdrop(callback) {
-      const animate = $(this._element).hasClass(ClassName.FADE)
-        ? ClassName.FADE : ''
+      const animate = this._element.classList.contains(ClassName.FADE) ?
+        ClassName.FADE : ''
 
       if (this._isShown && this._config.backdrop) {
         const doAnimate = Util.supportsTransitionEnd() && animate
@@ -336,12 +330,12 @@ const Modal = (($) => {
         this._backdrop.className = ClassName.BACKDROP
 
         if (animate) {
-          $(this._backdrop).addClass(animate)
+          this._backdrop.classList.add(animate)
         }
 
-        $(this._backdrop).appendTo(document.body)
+        document.body.appendChild(this._backdrop)
 
-        $(this._element).on(Event.CLICK_DISMISS, (event) => {
+        EventHandler.on(this._element, Event.CLICK_DISMISS, (event) => {
           if (this._ignoreBackdropClick) {
             this._ignoreBackdropClick = false
             return
@@ -360,7 +354,7 @@ const Modal = (($) => {
           Util.reflow(this._backdrop)
         }
 
-        $(this._backdrop).addClass(ClassName.SHOW)
+        this._backdrop.classList.add(ClassName.SHOW)
 
         if (!callback) {
           return
@@ -371,16 +365,10 @@ const Modal = (($) => {
           return
         }
 
-        $(this._backdrop)
-          .one(Util.TRANSITION_END, callback)
-<<<<<<< HEAD
-          .emulateTransitionEnd(BACKDROP_TRANSITION_DURATION)
-=======
-
+        EventHandler.one(this._backdrop, Util.TRANSITION_END, callback)
         Util.emulateTransitionEnd(this._backdrop, BACKDROP_TRANSITION_DURATION)
->>>>>>> Remove jQuery from Util.js
       } else if (!this._isShown && this._backdrop) {
-        $(this._backdrop).removeClass(ClassName.SHOW)
+        this._backdrop.classList.remove(ClassName.SHOW)
 
         const callbackRemove = () => {
           this._removeBackdrop()
@@ -390,10 +378,8 @@ const Modal = (($) => {
         }
 
         if (Util.supportsTransitionEnd() &&
-           $(this._element).hasClass(ClassName.FADE)) {
-          $(this._backdrop)
-            .one(Util.TRANSITION_END, callbackRemove)
-
+           this._element.classList.contains(ClassName.FADE)) {
+          EventHandler.one(this._backdrop, Util.TRANSITION_END, callbackRemove)
           Util.emulateTransitionEnd(this._backdrop, BACKDROP_TRANSITION_DURATION)
         } else {
           callbackRemove()
@@ -438,54 +424,67 @@ const Modal = (($) => {
         //   while $(DOMNode).css('padding-right') returns the calculated value or 0 if not set
 
         // Adjust fixed content padding
-        $(Selector.FIXED_CONTENT).each((index, element) => {
-          const actualPadding = $(element)[0].style.paddingRight
-          const calculatedPadding = $(element).css('padding-right')
-          $(element).data('padding-right', actualPadding).css('padding-right', `${parseFloat(calculatedPadding) + this._scrollbarWidth}px`)
-        })
+        Util.makeArray(SelectorEngine.find(Selector.FIXED_CONTENT))
+          .forEach((element) => {
+            const actualPadding = element.style.paddingRight
+            const calculatedPadding = window.getComputedStyle(element)['padding-right']
+            Manipulator.setDataAttribute(element, 'padding-right', actualPadding)
+            element.style.paddingRight = `${parseFloat(calculatedPadding) + this._scrollbarWidth}px`
+          })
 
         // Adjust sticky content margin
-        $(Selector.STICKY_CONTENT).each((index, element) => {
-          const actualMargin = $(element)[0].style.marginRight
-          const calculatedMargin = $(element).css('margin-right')
-          $(element).data('margin-right', actualMargin).css('margin-right', `${parseFloat(calculatedMargin) - this._scrollbarWidth}px`)
-        })
+        Util.makeArray(SelectorEngine.find(Selector.STICKY_CONTENT))
+          .forEach((element) => {
+            const actualMargin = element.style.marginRight
+            const calculatedMargin = window.getComputedStyle(element)['margin-right']
+            Manipulator.setDataAttribute(element, 'margin-right', actualMargin)
+            element.style.marginRight = `${parseFloat(calculatedMargin) - this._scrollbarWidth}px`
+          })
 
         // Adjust navbar-toggler margin
-        $(Selector.NAVBAR_TOGGLER).each((index, element) => {
-          const actualMargin = $(element)[0].style.marginRight
-          const calculatedMargin = $(element).css('margin-right')
-          $(element).data('margin-right', actualMargin).css('margin-right', `${parseFloat(calculatedMargin) + this._scrollbarWidth}px`)
-        })
+        Util.makeArray(SelectorEngine.find(Selector.NAVBAR_TOGGLER))
+          .forEach((element) => {
+            const actualMargin = element.style.marginRight
+            const calculatedMargin = window.getComputedStyle(element)['margin-right']
+            Manipulator.setDataAttribute(element, 'margin-right', actualMargin)
+            element.style.marginRight = `${parseFloat(calculatedMargin) + this._scrollbarWidth}px`
+          })
 
         // Adjust body padding
         const actualPadding = document.body.style.paddingRight
-        const calculatedPadding = $(document.body).css('padding-right')
-        $(document.body).data('padding-right', actualPadding).css('padding-right', `${parseFloat(calculatedPadding) + this._scrollbarWidth}px`)
+        const calculatedPadding = window.getComputedStyle(document.body)['padding-right']
+
+        Manipulator.setDataAttribute(document.body, 'padding-right', actualPadding)
+        document.body.style.paddingRight = `${parseFloat(calculatedPadding) + this._scrollbarWidth}px`
       }
     }
 
     _resetScrollbar() {
       // Restore fixed content padding
-      $(Selector.FIXED_CONTENT).each((index, element) => {
-        const padding = $(element).data('padding-right')
-        if (typeof padding !== 'undefined') {
-          $(element).css('padding-right', padding).removeData('padding-right')
-        }
-      })
+      Util.makeArray(SelectorEngine.find(Selector.FIXED_CONTENT))
+        .forEach((element) => {
+          const padding = Util.getDataAttribute(element, 'padding-right')
+          if (typeof padding !== 'undefined') {
+            Manipulator.removeDataAttribute(element, 'padding-right')
+            element.style.paddingRight = padding
+          }
+        })
 
       // Restore sticky content and navbar-toggler margin
-      $(`${Selector.STICKY_CONTENT}, ${Selector.NAVBAR_TOGGLER}`).each((index, element) => {
-        const margin = $(element).data('margin-right')
-        if (typeof margin !== 'undefined') {
-          $(element).css('margin-right', margin).removeData('margin-right')
-        }
-      })
+      Util.makeArray(SelectorEngine.find(`${Selector.STICKY_CONTENT}, ${Selector.NAVBAR_TOGGLER}`))
+        .forEach((element) => {
+          const margin = Util.getDataAttribute(element, 'margin-right')
+          if (typeof margin !== 'undefined') {
+            Manipulator.removeDataAttribute(element, 'margin-right')
+            element.style.marginRight = margin
+          }
+        })
 
       // Restore body padding
-      const padding = $(document.body).data('padding-right')
+      const padding = Util.getDataAttribute(document.body, 'padding-right')
       if (typeof padding !== 'undefined') {
-        $(document.body).css('padding-right', padding).removeData('padding-right')
+        Manipulator.removeDataAttribute(document.body, 'padding-right')
+        document.body.style.paddingRight = padding
       }
     }
 
@@ -502,16 +501,16 @@ const Modal = (($) => {
 
     static _jQueryInterface(config, relatedTarget) {
       return this.each(function () {
-        let data = $(this).data(DATA_KEY)
+        let data      = Data.getData(this, DATA_KEY)
         const _config = {
           ...Modal.Default,
-          ...$(this).data(),
+          ...Util.getDataAttributes(this),
           ...typeof config === 'object' && config
         }
 
         if (!data) {
           data = new Modal(this, _config)
-          $(this).data(DATA_KEY, data)
+          Data.setData(this, DATA_KEY, data)
         }
 
         if (typeof config === 'string') {
@@ -532,38 +531,48 @@ const Modal = (($) => {
    * ------------------------------------------------------------------------
    */
 
-  $(document).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
+  EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
     let target
     const selector = Util.getSelectorFromElement(this)
 
     if (selector) {
-      target = $(selector)[0]
+      target = SelectorEngine.findOne(selector)
     }
 
-    const config = $(target).data(DATA_KEY)
-      ? 'toggle' : {
-        ...$(target).data(),
-        ...$(this).data()
+    const config = Data.getData(target, DATA_KEY) ?
+      'toggle' : {
+        ...Util.getDataAttributes(target),
+        ...Util.getDataAttributes(this)
       }
 
     if (this.tagName === 'A' || this.tagName === 'AREA') {
       event.preventDefault()
     }
 
-    const $target = $(target).one(Event.SHOW, (showEvent) => {
-      if (showEvent.isDefaultPrevented()) {
-        // Only register focus restorer if modal will actually get shown
+    if (typeof target === 'undefined' || target === null) {
+      return
+    }
+
+    EventHandler.one(target, Event.SHOW, (showEvent) => {
+      if (showEvent.defaultPrevented) {
+        // only register focus restorer if modal will actually get shown
         return
       }
 
-      $target.one(Event.HIDDEN, () => {
-        if ($(this).is(':visible')) {
+      EventHandler.one(target, Event.HIDDEN, () => {
+        if (Util.isVisible(this)) {
           this.focus()
         }
       })
     })
 
-    Modal._jQueryInterface.call($(target), config, this)
+    let data = Data.getData(target, DATA_KEY)
+    if (!data) {
+      data = new Modal(target, config)
+      Data.setData(target, DATA_KEY, data)
+    }
+
+    data.show(this)
   })
 
   /**
@@ -571,15 +580,19 @@ const Modal = (($) => {
    * jQuery
    * ------------------------------------------------------------------------
    */
-
-  $.fn[NAME] = Modal._jQueryInterface
-  $.fn[NAME].Constructor = Modal
-  $.fn[NAME].noConflict = function () {
-    $.fn[NAME] = JQUERY_NO_CONFLICT
-    return Modal._jQueryInterface
+  const $ = Util.jQuery
+  if (typeof $ !== 'undefined') {
+    const JQUERY_NO_CONFLICT = $.fn[NAME]
+    $.fn[NAME]             = Modal._jQueryInterface
+    $.fn[NAME].Constructor = Modal
+    $.fn[NAME].noConflict  = function () {
+      $.fn[NAME] = JQUERY_NO_CONFLICT
+      return Modal._jQueryInterface
+    }
   }
 
   return Modal
-})($)
+
+})()
 
 export default Modal
