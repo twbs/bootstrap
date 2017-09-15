@@ -1,6 +1,5 @@
 import EventHandler from './dom/eventHandler'
 
-
 /**
  * --------------------------------------------------------------------------
  * Bootstrap (v4.0.0-beta): util.js
@@ -9,8 +8,6 @@ import EventHandler from './dom/eventHandler'
  */
 
 const Util = (() => {
-
-  const transition = EventHandler.getBrowserTransitionEnd()
 
   const MAX_UID = 1000000
 
@@ -64,7 +61,7 @@ const Util = (() => {
     },
 
     supportsTransitionEnd() {
-      return Boolean(transition)
+      return Boolean(EventHandler.getBrowserTransitionEnd())
     },
 
     emulateTransitionEnd(element, duration) {
@@ -142,6 +139,10 @@ const Util = (() => {
           && element.style.visibility !== 'hidden'
       }
       return false
+    },
+
+    get jQuery() {
+      return window.$ || window.jQuery
     }
   }
 
