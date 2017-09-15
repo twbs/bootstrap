@@ -1,3 +1,5 @@
+import Util from '../util'
+
 /**
  * --------------------------------------------------------------------------
  * Bootstrap (v4.0.0-beta): dom/manipulator.js
@@ -18,6 +20,24 @@ const Manipulator = {
       return input.bsChecked || input.checked
     }
     throw new Error('INPUT parameter is not an HTMLInputElement')
+  },
+
+  setDataAttribute(element, key, value) {
+    const $ = Util.jQuery
+    if (typeof $ !== 'undefined') {
+      $(element).data(key, value)
+    }
+
+    element.setAttribute(`data-${key.replace(/[A-Z]/g, (chr) => `-${chr.toLowerCase()}`)}`, value)
+  },
+
+  removeDataAttribute(element, key) {
+    const $ = Util.jQuery
+    if (typeof $ !== 'undefined') {
+      $(element).removeData(key)
+    }
+
+    element.removeAttribute(`data-${key.replace(/[A-Z]/g, (chr) => `-${chr.toLowerCase()}`)}`)
   }
 }
 
