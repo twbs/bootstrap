@@ -22,6 +22,20 @@ function toType(obj) {
   return {}.toString.call(obj).match(/\s([a-z]+)/i)[1].toLowerCase()
 }
 
+function normalizeData(val) {
+  if (val === 'true') {
+    return true
+  } else if (val === 'false') {
+    return false
+  } else if (val === 'null') {
+    return null
+  } else if (val === Number(val).toString()) {
+    return Number(val)
+  }
+
+  return val
+}
+
 const Util = {
 
   TRANSITION_END: 'bsTransitionEnd',
@@ -111,60 +125,84 @@ const Util = {
             `but expected type "${expectedTypes}".`)
         }
       }
-    },
+    }
+  },
 
-    extend(obj1, obj2) {
-      for (const secondProp in obj2) {
-        if (Object.prototype.hasOwnProperty.call(obj2, secondProp)) {
-          const secondVal = obj2[secondProp]
-          // Is this value an object?  If so, iterate over its properties, copying them over
-          if (secondVal && Object.prototype.toString.call(secondVal) === '[object Object]') {
-            obj1[secondProp] = obj1[secondProp] || {}
-            Util.extend(obj1[secondProp], secondVal)
-          } else {
-            obj1[secondProp] = secondVal
-          }
+  extend(obj1, ...others) {
+    const obj2 = others.shift()
+    for (const secondProp in obj2) {
+      if (Object.prototype.hasOwnProperty.call(obj2, secondProp)) {
+        const secondVal = obj2[secondProp]
+        // Is this value an object?  If so, iterate over its properties, copying them over
+        if (secondVal && Object.prototype.toString.call(secondVal) === '[object Object]') {
+          obj1[secondProp] = obj1[secondProp] || {}
+          Util.extend(obj1[secondProp], secondVal)
+        } else {
+          obj1[secondProp] = secondVal
         }
       }
-      return obj1
-    },
+    }
 
-    makeArray(nodeList) {
-      if (typeof nodeList === 'undefined' || nodeList === null) {
-        return []
-      }
-      return Array.prototype.slice.call(nodeList)
-    },
+    if (others.length) {
+      this.extend(obj1, ...others)
+    }
 
-    getDataAttributes(element) {
-      if (typeof element === 'undefined' || element === null) {
-        return {}
-      }
+    return obj1
+  },
 
-      const attributes = {}
+  makeArray(nodeList) {
+    if (typeof nodeList === 'undefined' || nodeList === null) {
+      return []
+    }
+    return Array.prototype.slice.call(nodeList)
+  },
+
+  getDataAttributes(element) {
+    if (typeof element === 'undefined' || element === null) {
+      return {}
+    }
+
+    let attributes
+    if (Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'dataset')) {
+      attributes = this.extend({}, element.dataset)
+    } else {
+      attributes = {}
       for (let i = 0; i < element.attributes.length; i++) {
         const attribute = element.attributes[i]
         if (attribute.nodeName.indexOf('data-') !== -1) {
           // remove 'data-' part of the attribute name
-          const attributeName = attribute.nodeName.substring('data-'.length)
+          const attributeName = attribute.nodeName.substring('data-'.length).replace(/-./g, (str) => str.charAt(1).toUpperCase())
           attributes[attributeName] = attribute.nodeValue
         }
       }
-      return attributes
-    },
+    }
 
-    isVisible(element) {
-      if (typeof element === 'undefined' || element === null) {
-        return false
+    for (const key in attributes) {
+      if (!Object.prototype.hasOwnProperty.call(attributes, key)) {
+        continue
       }
 
-      if (element.style !== null && element.parentNode !== null && typeof element.parentNode.style !== 'undefined') {
-        return element.style.display !== 'none'
-          && element.parentNode.style.display !== 'none'
-          && element.style.visibility !== 'hidden'
-      }
+      attributes[key] = normalizeData(attributes[key])
+    }
+
+    return attributes
+  },
+
+  getDataAttribute(element, key) {
+    return normalizeData(element.getAttribute(`data-${key.replace(/[A-Z]/g, (chr) => `-${chr.toLowerCase()}`)}`))
+  },
+
+  isVisible(element) {
+    if (typeof element === 'undefined' || element === null) {
       return false
     }
+
+    if (element.style !== null && element.parentNode !== null && typeof element.parentNode.style !== 'undefined') {
+      return element.style.display !== 'none' &&
+        element.parentNode.style.display !== 'none' &&
+        element.style.visibility !== 'hidden'
+    }
+    return false
   },
 
   findShadowRoot(element) {
@@ -188,6 +226,10 @@ const Util = {
     }
 
     return Util.findShadowRoot(element.parentNode)
+  },
+
+  get jQuery() {
+    return window.$ || window.jQuery
   }
 }
 
