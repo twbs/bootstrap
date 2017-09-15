@@ -213,7 +213,12 @@ $(function () {
       .on('shown.bs.modal', function () {
         assert.ok($('#modal-test').length, 'modal inserted into dom')
         assert.ok($('#modal-test').is(':visible'), 'modal visible')
-        $div.trigger($.Event('keydown', { which: 27 }))
+
+        var evt = document.createEvent('HTMLEvents')
+        evt.initEvent('keydown', true, true)
+        evt.which = 27
+
+        $div[0].dispatchEvent(evt)
 
         setTimeout(function () {
           assert.ok(!$('#modal-test').is(':visible'), 'modal hidden')
@@ -291,15 +296,19 @@ $(function () {
       .one('hidden.bs.modal', function () {
         // after one open-close cycle
         assert.ok(!$('#modal-test').is(':visible'), 'modal hidden')
-        $(this)
-          .one('shown.bs.modal', function () {
-            $('#close').trigger('click')
-          })
-          .one('hidden.bs.modal', function () {
-            assert.ok(!$('#modal-test').is(':visible'), 'modal hidden')
-            done()
-          })
-          .bootstrapModal('show')
+
+        var $this = $(this)
+        setTimeout(function () {
+          $this
+            .one('shown.bs.modal', function () {
+              $('#close').trigger('click')
+            })
+            .one('hidden.bs.modal', function () {
+              assert.ok(!$('#modal-test').is(':visible'), 'modal hidden')
+              done()
+            })
+            .bootstrapModal('show')
+        }, 0)
       })
       .bootstrapModal('show')
   })
@@ -628,16 +637,19 @@ $(function () {
     $('<div id="modal-test"><div class="contents"><div id="close" data-dismiss="modal"/></div></div>')
       .appendTo('#qunit-fixture')
 
+    var evt = document.createEvent('HTMLEvents')
+    evt.initEvent('click', true, true)
+
     $('#test')
       .on('click.bs.modal.data-api', function (event) {
-        assert.notOk(event.isDefaultPrevented(), 'navigating to href will happen')
+        assert.notOk(event.defaultPrevented, 'navigating to href will happen')
 
         setTimeout(function () {
-          assert.ok(event.isDefaultPrevented(), 'model shown instead of navigating to href')
+          assert.ok(evt.defaultPrevented, 'model shown instead of navigating to href')
           done()
         }, 1)
       })
-      .trigger('click')
+    $('#test')[0].dispatchEvent(evt)
   })
 
   QUnit.test('should not parse target as html', function (assert) {

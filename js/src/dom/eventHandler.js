@@ -68,6 +68,7 @@ if (!window.Event || typeof window.Event !== 'function') {
 const namespaceRegex = /[^.]*(?=\..*)\.|.*/
 const stripNameRegex = /\..*/
 const keyEventRegex  = /^key/
+const stripUidRegex  = /::\d+$/
 
 // Events storage
 const eventRegistry = {}
@@ -115,10 +116,10 @@ function bootstrapHandler(element, fn) {
   }
 }
 
-function bootstrapDelegationHandler(selector, fn) {
+function bootstrapDelegationHandler(element, selector, fn) {
   return function (event) {
     event = fixEvent(event)
-    const domElements = document.querySelectorAll(selector)
+    const domElements = element.querySelectorAll(selector)
     for (let target = event.target; target && target !== this; target = target.parentNode) {
       for (let i = domElements.length; i--;) {
         if (domElements[i] === target) {
@@ -128,6 +129,26 @@ function bootstrapDelegationHandler(selector, fn) {
     }
     // To please ESLint
     return null
+  }
+}
+
+function removeHandler(element, events, typeEvent, handler) {
+  const uidEvent = handler.uidEvent
+  const fn = events[typeEvent][uidEvent]
+  element.removeEventListener(typeEvent, fn, fn.delegation)
+  delete events[typeEvent][uidEvent]
+}
+
+function removeNamespacedHandlers(element, events, typeEvent, namespace) {
+  const storeElementEvent = events[typeEvent] || {}
+  for (const handlerKey in storeElementEvent) {
+    if (!Object.prototype.hasOwnProperty.call(storeElementEvent, handlerKey)) {
+      continue
+    }
+
+    if (handlerKey.indexOf(namespace) > -1) {
+      removeHandler(element, events, typeEvent, storeElementEvent[handlerKey].originalHandler)
+    }
   }
 }
 
@@ -160,7 +181,7 @@ const EventHandler = {
       return
     }
 
-    const fn = !delegation ? bootstrapHandler(element, handler) : bootstrapDelegationHandler(handler, delegationFn)
+    const fn = !delegation ? bootstrapHandler(element, handler) : bootstrapDelegationHandler(element, handler, delegationFn)
     fn.isDelegation = delegation
     handlers[uid] = fn
     originalHandler.uidEvent = uid
@@ -184,43 +205,49 @@ const EventHandler = {
 
     const events      = getEvent(element)
     let typeEvent     = originalTypeEvent.replace(stripNameRegex, '')
+
     const inNamespace = typeEvent !== originalTypeEvent
     const custom      = customEvents[typeEvent]
     if (custom) {
       typeEvent = custom
     }
+
     const isNative = nativeEvents.indexOf(typeEvent) > -1
     if (!isNative) {
       typeEvent = originalTypeEvent
     }
 
-    if (typeof handler === 'undefined') {
+    if (typeof handler !== 'undefined') {
+      // Simplest case: handler is passed, remove that listener ONLY.
+      if (!events || !events[typeEvent]) {
+        return
+      }
+
+      removeHandler(element, events, typeEvent, handler)
+      return
+    }
+
+    const isNamespace = originalTypeEvent.charAt(0) === '.'
+    if (isNamespace) {
       for (const elementEvent in events) {
         if (!Object.prototype.hasOwnProperty.call(events, elementEvent)) {
           continue
         }
 
-        const storeElementEvent = events[elementEvent]
-        for (const keyHandlers in storeElementEvent) {
-          if (!Object.prototype.hasOwnProperty.call(storeElementEvent, keyHandlers)) {
-            continue
-          }
-          // delete all the namespaced listeners
-          if (inNamespace && keyHandlers.indexOf(originalTypeEvent) > -1) {
-            const handlerFn = events[elementEvent][keyHandlers]
-            EventHandler.off(element, elementEvent, handlerFn.originalHandler)
-          }
-        }
+        removeNamespacedHandlers(element, events, elementEvent, originalTypeEvent.substr(1))
       }
-    } else {
-      if (!events || !events[typeEvent]) {
-        return
+    }
+
+    const storeElementEvent = events[typeEvent] || {}
+    for (const keyHandlers in storeElementEvent) {
+      if (!Object.prototype.hasOwnProperty.call(storeElementEvent, keyHandlers)) {
+        continue
       }
 
-      const uidEvent = handler.uidEvent
-      const fn = events[typeEvent][uidEvent]
-      element.removeEventListener(typeEvent, fn, fn.delegation)
-      delete events[typeEvent][uidEvent]
+      const handlerKey = keyHandlers.replace(stripUidRegex, '')
+      if (!inNamespace || originalTypeEvent.indexOf(handlerKey) > -1) {
+        removeHandler(element, events, typeEvent, storeElementEvent[keyHandlers].originalHandler)
+      }
     }
   },
 
@@ -231,7 +258,25 @@ const EventHandler = {
     }
 
     const typeEvent   = event.replace(stripNameRegex, '')
+    const inNamespace = event !== typeEvent
     const isNative    = nativeEvents.indexOf(typeEvent) > -1
+
+    const $ = Util.jQuery
+    let jQueryEvent
+
+    let bubbles = true
+    let nativeDispatch = true
+    let defaultPrevented = false
+
+    if (inNamespace && typeof $ !== 'undefined') {
+      jQueryEvent = new $.Event(event, args)
+
+      $(element).trigger(jQueryEvent)
+      bubbles = !jQueryEvent.isPropagationStopped()
+      nativeDispatch = !jQueryEvent.isImmediatePropagationStopped()
+      defaultPrevented = jQueryEvent.isDefaultPrevented()
+    }
+
     let evt           = null
 
     if (isNative) {
@@ -239,7 +284,7 @@ const EventHandler = {
       evt.initEvent(typeEvent, true, true)
     } else {
       evt = new CustomEvent(event, {
-        bubbles: true,
+        bubbles,
         cancelable: true
       })
     }
@@ -248,7 +293,19 @@ const EventHandler = {
     if (typeof args !== 'undefined') {
       evt = Util.extend(evt, args)
     }
-    element.dispatchEvent(evt)
+
+    if (defaultPrevented) {
+      evt.preventDefault()
+    }
+
+    if (nativeDispatch) {
+      element.dispatchEvent(evt)
+    }
+
+    if (evt.defaultPrevented && typeof jQueryEvent !== 'undefined') {
+      jQueryEvent.preventDefault()
+    }
+
     return evt
   },
 
