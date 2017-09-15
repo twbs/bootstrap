@@ -21,7 +21,7 @@ const mapData = (() => {
       id++
     },
     get(element, key) {
-      if (typeof element.key === 'undefined') {
+      if (typeof element === 'undefined' || typeof element.key === 'undefined') {
         return null
       }
 
