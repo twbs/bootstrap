@@ -11,7 +11,8 @@ const plugins = [
   babel({
     exclude: 'node_modules/**', // only transpile our source code
     externalHelpersWhitelist: [ // include only required helpers
-      'typeof',
+      'defineProperties',
+      'createClass',
       'inheritsLoose'
     ]
   })

@@ -1,10 +1,11 @@
 module.exports = {
-  "presets": [
+  presets: [
     [
-      "env",
+      'env',
       {
-        "loose": true,
-        "modules": false
+        loose: true,
+        modules: false,
+        exclude: ['transform-es2015-typeof-symbol']
       }
     ]
   ],
