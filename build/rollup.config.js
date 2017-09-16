@@ -12,10 +12,7 @@ const plugins = [
     exclude: 'node_modules/**', // only transpile our source code
     externalHelpersWhitelist: [ // include only required helpers
       'typeof',
-      'classCallCheck',
-      'createClass',
-      'inherits',
-      'possibleConstructorReturn'
+      'inheritsLoose'
     ]
   })
 ]
