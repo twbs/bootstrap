@@ -266,7 +266,7 @@ const ScrollSpy = (() => {
         // With both <ul> and <nav> markup a parent is the previous sibling of any nav ancestor
         $link.parents(Selector.NAV_LIST_GROUP).prev(`${Selector.NAV_LINKS}, ${Selector.LIST_ITEMS}`).addClass(ClassName.ACTIVE)
         // Handle special case when .nav-link is inside .nav-item
-        $link.parents(Selector.NAV_LIST_GROUP).prev(Selector.NAV_ITEMS).find(Selector.NAV_LINKS).addClass(ClassName.ACTIVE)
+        $link.parents(Selector.NAV_LIST_GROUP).prev(Selector.NAV_ITEMS).children(Selector.NAV_LINKS).addClass(ClassName.ACTIVE)
       }
 
       $(this._scrollElement).trigger(Event.ACTIVATE, {
