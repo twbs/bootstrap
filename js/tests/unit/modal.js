@@ -630,7 +630,6 @@ $(function () {
 
   QUnit.test('should not follow link in area tag', function (assert) {
     assert.expect(2)
-    var done = assert.async()
 
     $('<map><area id="test" shape="default" data-toggle="modal" data-target="#modal-test" href="demo.html"/></map>')
       .appendTo('#qunit-fixture')
@@ -638,19 +637,19 @@ $(function () {
     $('<div id="modal-test"><div class="contents"><div id="close" data-dismiss="modal"/></div></div>')
       .appendTo('#qunit-fixture')
 
-    var evt = document.createEvent('HTMLEvents')
-    evt.initEvent('click', true, true)
+    // We need to use CustomEvent here to have a working preventDefault in IE tests.
+    var evt = new CustomEvent('click', {
+      bubbles: true,
+      cancelable: true
+    })
 
     $('#test')
       .on('click.bs.modal.data-api', function (event) {
         assert.notOk(event.defaultPrevented, 'navigating to href will happen')
-
-        setTimeout(function () {
-          assert.ok(evt.defaultPrevented, 'model shown instead of navigating to href')
-          done()
-        }, 1)
       })
+
     $('#test')[0].dispatchEvent(evt)
+    assert.ok(evt.defaultPrevented, 'model shown instead of navigating to href')
   })
 
   QUnit.test('should not parse target as html', function (assert) {

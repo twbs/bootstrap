@@ -85,11 +85,13 @@ $(function () {
     assert.expect(1)
 
     var element = document.createElement('div')
+    document.body.appendChild(element)
     EventHandler.on(element, 'click.namespace', function () {
       assert.ok(true, 'listener called')
     })
 
     EventHandler.trigger(element, 'click')
+    document.body.removeChild(element)
   })
 
   QUnit.test('on should add delegated event listener', function (assert) {
@@ -201,6 +203,7 @@ $(function () {
     assert.expect(2)
 
     var element = document.createElement('div')
+    document.body.appendChild(element)
 
     EventHandler.on(element, 'click.namespace', function () {
       assert.ok(true, 'first listener called')
@@ -212,12 +215,14 @@ $(function () {
 
     EventHandler.off(element, 'click')
     EventHandler.trigger(element, 'click')
+    document.body.removeChild(element)
   })
 
   QUnit.test('off should remove the specified namespaced listeners for native events', function (assert) {
     assert.expect(3)
 
     var element = document.createElement('div')
+    document.body.appendChild(element)
 
     EventHandler.on(element, 'click.namespace', function () {
       assert.ok(true, 'first listener called')
@@ -229,5 +234,6 @@ $(function () {
 
     EventHandler.off(element, 'click.namespace')
     EventHandler.trigger(element, 'click')
+    document.body.removeChild(element)
   })
 })
