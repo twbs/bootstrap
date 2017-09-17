@@ -11,6 +11,6 @@ module.exports = {
   ],
   plugins: [
     process.env.ROLLUP && 'external-helpers',
-    process.env.PLUGINS && 'transform-es2015-modules-strip',
+    process.env.PLUGINS && 'transform-es2015-modules-strip'
   ].filter(Boolean)
 };
