@@ -85,6 +85,7 @@
     "clean-css-cli": "^4.1.6",
     "cross-env": "^5.0.5",
     "eslint": "^4.2.0",
+    "eslint-plugin-compat": "^1.0.4",
     "grunt": "^1.0.1",
     "grunt-cli": "^1.2.0",
     "grunt-saucelabs": "^9.0.0",
