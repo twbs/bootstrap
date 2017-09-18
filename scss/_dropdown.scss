@@ -105,14 +105,6 @@
   }
 }
 
-// Open state for the dropdown
-.show {
-  // Remove the outline when :focus is triggered
-  > a {
-    outline: 0;
-  }
-}
-
 .dropdown-menu.show {
   display: block;
 }
