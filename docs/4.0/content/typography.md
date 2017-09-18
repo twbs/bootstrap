@@ -16,7 +16,7 @@ Bootstrap sets basic global display, typography, and link styles. When more cont
 - Set the global link color via `$link-color` and apply link underlines only on `:hover`.
 - Use `$body-bg` to set a `background-color` on the `<body>` (`#fff` by default).
 
-These styles can be found within `_reboot.scss`, and the global variables are defined in `_variables.scss`.
+These styles can be found within `_reboot.scss`, and the global variables are defined in `_variables.scss`. Make sure to set `$font-size-base` in `rem`.
 
 ## Headings
 
@@ -297,24 +297,24 @@ Here's an example of it in practice. Choose whatever `font-size`s and media quer
 
 {% highlight scss %}
 html {
-  font-size: 14px;
+  font-size: 1rem;
 }
 
 @include media-breakpoint-up(sm) {
   html {
-    font-size: 16px;
+    font-size: 1.2rem;
   }
 }
 
 @include media-breakpoint-up(md) {
   html {
-    font-size: 20px;
+    font-size: 1.4rem;
   }
 }
 
 @include media-breakpoint-up(lg) {
   html {
-    font-size: 28px;
+    font-size: 1.6rem;
   }
 }
 {% endhighlight %}
