@@ -147,8 +147,7 @@
       }
 
       @include media-breakpoint-up($next) {
-        flex-direction: row;
-        flex-wrap: nowrap;
+        flex-flow: row nowrap;
         justify-content: flex-start;
 
         .navbar-nav {
