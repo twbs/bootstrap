@@ -46,6 +46,7 @@ const Tooltip = (() => {
     selector            : '(string|boolean)',
     placement           : '(string|function)',
     offset              : '(number|string)',
+    arrowPadding        : '(number)',
     container           : '(string|element|boolean)',
     fallbackPlacement   : '(string|array)'
   }
@@ -291,7 +292,6 @@ const Tooltip = (() => {
         const tip   = this.getTipElement()
         const $tip  = $(tip)
         const tipId = Util.getUID(this.constructor.NAME)
-        const $arrow = $tip.find(Selector.ARROW)
 
         tip.setAttribute('id', tipId)
         this.element.setAttribute('aria-describedby', tipId)
@@ -319,29 +319,11 @@ const Tooltip = (() => {
 
         $(this.element).trigger(this.constructor.Event.INSERTED)
 
-        let newOffset = this.config.offset
-
-        const arrowOffset = $arrow.width() + this.config.arrowPadding
-
-        if (!newOffset) {
-          switch (OffsetMap[placement.toUpperCase()]) {
-            case +1:
-              newOffset = `+50%p - ${arrowOffset}px`
-              break
-            case -1:
-              newOffset = `-50%p + ${arrowOffset}px`
-              break
-            default:
-              newOffset = 0
-          }
-
-        }
-
         this._popper = new Popper(this.element, tip, {
           placement: attachment,
           modifiers: {
             offset: {
-              offset: newOffset
+              offset: this._getOffset(placement, $tip)
             },
             flip: {
               behavior: this.config.fallbackPlacement
@@ -507,6 +489,22 @@ const Tooltip = (() => {
 
     _getAttachment(placement) {
       return AttachmentMap[placement.toUpperCase()]
+    }
+
+    _getOffset(placement, $tip) {
+      const $arrow = $tip.find(Selector.ARROW)
+      const arrowOffset = $arrow.width() + this.config.arrowPadding
+      if (!this.config.offset) {
+        switch (OffsetMap[placement.toUpperCase()]) {
+          case +1:
+            return `+50%p - ${arrowOffset}px`
+          case -1:
+            return `-50%p + ${arrowOffset}px`
+          default:
+            return 0
+        }
+      }
+      return this.config.offset
     }
 
     _setListeners() {
