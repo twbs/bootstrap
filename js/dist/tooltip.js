@@ -57,7 +57,31 @@ var Tooltip = function () {
     TOP: 'top',
     RIGHT: 'right',
     BOTTOM: 'bottom',
-    LEFT: 'left'
+    LEFT: 'left',
+    TOPLEFT: 'top',
+    TOPRIGHT: 'top',
+    RIGHTTOP: 'right',
+    RIGHTBOTTOM: 'right',
+    BOTTOMLEFT: 'bottom',
+    BOTTOMRIGHT: 'bottom',
+    LEFTTOP: 'left',
+    LEFTBOTTOM: 'left'
+  };
+
+  var OffsetMap = {
+    AUTO: 0,
+    TOPLEFT: -1,
+    TOP: 0,
+    TOPRIGHT: +1,
+    RIGHTTOP: -1,
+    RIGHT: 0,
+    RIGHTBOTTOM: +1,
+    BOTTOMLEFT: -1,
+    BOTTOM: 0,
+    BOTTOMRIGHT: +1,
+    LEFTTOP: -1,
+    LEFT: 0,
+    LEFTBOTTOM: +1
   };
 
   var Default = {
@@ -70,6 +94,7 @@ var Tooltip = function () {
     selector: false,
     placement: 'top',
     offset: 0,
+    arrowPadding: 6,
     container: false,
     fallbackPlacement: 'flip'
   };
@@ -236,7 +261,9 @@ var Tooltip = function () {
           }
 
           var tip = this.getTipElement();
+          var $tip = $(tip);
           var tipId = Util.getUID(this.constructor.NAME);
+          var $arrow = $tip.find(Selector.ARROW);
 
           tip.setAttribute('id', tipId);
           this.element.setAttribute('aria-describedby', tipId);
@@ -244,7 +271,7 @@ var Tooltip = function () {
           this.setContent();
 
           if (this.config.animation) {
-            $(tip).addClass(ClassName.FADE);
+            $tip.addClass(ClassName.FADE);
           }
 
           var placement = typeof this.config.placement === 'function' ? this.config.placement.call(this, tip, this.element) : this.config.placement;
@@ -254,19 +281,36 @@ var Tooltip = function () {
 
           var container = this.config.container === false ? document.body : $(this.config.container);
 
-          $(tip).data(this.constructor.DATA_KEY, this);
+          $tip.data(this.constructor.DATA_KEY, this);
 
           if (!$.contains(this.element.ownerDocument.documentElement, this.tip)) {
-            $(tip).appendTo(container);
+            $tip.appendTo(container);
           }
 
           $(this.element).trigger(this.constructor.Event.INSERTED);
+
+          var newOffset = this.config.offset;
+
+          var arrowOffset = $arrow.width() + this.config.arrowPadding;
+
+          if (!newOffset) {
+            switch (OffsetMap[placement.toUpperCase()]) {
+              case +1:
+                newOffset = '+50%p - ' + arrowOffset + 'px';
+                break;
+              case -1:
+                newOffset = '-50%p + ' + arrowOffset + 'px';
+                break;
+              default:
+                newOffset = 0;
+            }
+          }
 
           this._popper = new Popper(this.element, tip, {
             placement: attachment,
             modifiers: {
               offset: {
-                offset: this.config.offset
+                offset: newOffset
               },
               flip: {
                 behavior: this.config.fallbackPlacement
