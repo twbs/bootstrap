@@ -2,5 +2,10 @@
   @include bg-variant('.bg-#{$color}', $value);
 }
 
-.bg-white { background-color: $white !important; }
-.bg-transparent { background-color: transparent !important; }
+.bg-white {
+  background-color: $white !important;
+}
+
+.bg-transparent {
+  background-color: transparent !important;
+}
