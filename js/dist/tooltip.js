@@ -48,6 +48,7 @@ var Tooltip = function () {
     selector: '(string|boolean)',
     placement: '(string|function)',
     offset: '(number|string)',
+    arrowPadding: '(number)',
     container: '(string|element|boolean)',
     fallbackPlacement: '(string|array)'
   };
@@ -263,7 +264,6 @@ var Tooltip = function () {
           var tip = this.getTipElement();
           var $tip = $(tip);
           var tipId = Util.getUID(this.constructor.NAME);
-          var $arrow = $tip.find(Selector.ARROW);
 
           tip.setAttribute('id', tipId);
           this.element.setAttribute('aria-describedby', tipId);
@@ -289,28 +289,11 @@ var Tooltip = function () {
 
           $(this.element).trigger(this.constructor.Event.INSERTED);
 
-          var newOffset = this.config.offset;
-
-          var arrowOffset = $arrow.width() + this.config.arrowPadding;
-
-          if (!newOffset) {
-            switch (OffsetMap[placement.toUpperCase()]) {
-              case +1:
-                newOffset = '+50%p - ' + arrowOffset + 'px';
-                break;
-              case -1:
-                newOffset = '-50%p + ' + arrowOffset + 'px';
-                break;
-              default:
-                newOffset = 0;
-            }
-          }
-
           this._popper = new Popper(this.element, tip, {
             placement: attachment,
             modifiers: {
               offset: {
-                offset: newOffset
+                offset: this._getOffset(placement, $tip)
               },
               flip: {
                 behavior: this.config.fallbackPlacement
@@ -479,6 +462,23 @@ var Tooltip = function () {
       key: '_getAttachment',
       value: function _getAttachment(placement) {
         return AttachmentMap[placement.toUpperCase()];
+      }
+    }, {
+      key: '_getOffset',
+      value: function _getOffset(placement, $tip) {
+        var $arrow = $tip.find(Selector.ARROW);
+        var arrowOffset = $arrow.width() + this.config.arrowPadding;
+        if (!this.config.offset) {
+          switch (OffsetMap[placement.toUpperCase()]) {
+            case +1:
+              return '+50%p - ' + arrowOffset + 'px';
+            case -1:
+              return '-50%p + ' + arrowOffset + 'px';
+            default:
+              return 0;
+          }
+        }
+        return this.config.offset;
       }
     }, {
       key: '_setListeners',
