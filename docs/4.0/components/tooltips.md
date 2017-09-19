@@ -43,7 +43,7 @@ Hover over the links below to see tooltips:
 
 ### Static demo
 
-Four options are available: top, right, bottom, and left aligned.
+Twelve options are available: top, topleft, topright, right, righttop, rightbottom, bottom, bottomleft, bottomright, left, lefttop, and leftbottom aligned.
 
 <div class="bd-example bd-example-tooltip-static">
   <div class="tooltip bs-tooltip-top bs-tooltip-top-docs" role="tooltip">
@@ -52,10 +52,34 @@ Four options are available: top, right, bottom, and left aligned.
       Tooltip on the top
     </div>
   </div>
+  <div class="tooltip bs-tooltip-top bs-tooltip-top-docs" role="tooltip">
+    <div class="arrow" style="left:93%"></div>
+    <div class="tooltip-inner">
+      Tooltip on the topleft
+    </div>
+  </div>
+  <div class="tooltip bs-tooltip-top bs-tooltip-top-docs" role="tooltip">
+    <div class="arrow" style="left:5%"></div>
+    <div class="tooltip-inner">
+      Tooltip on the topright
+    </div>
+  </div>
   <div class="tooltip bs-tooltip-right bs-tooltip-right-docs" role="tooltip">
     <div class="arrow"></div>
     <div class="tooltip-inner">
       Tooltip on the right
+    </div>
+  </div>
+  <div class="tooltip bs-tooltip-right bs-tooltip-right-docs" role="tooltip">
+    <div class="arrow" style="top:60%"></div>
+    <div class="tooltip-inner">
+      Tooltip on the righttop
+    </div>
+  </div>
+  <div class="tooltip bs-tooltip-right bs-tooltip-right-docs" role="tooltip">
+    <div class="arrow" style="top:26%"></div>
+    <div class="tooltip-inner">
+      Tooltip on the rightbottom
     </div>
   </div>
   <div class="tooltip bs-tooltip-bottom bs-tooltip-bottom-docs" role="tooltip">
@@ -64,10 +88,34 @@ Four options are available: top, right, bottom, and left aligned.
       Tooltip on the bottom
     </div>
   </div>
+  <div class="tooltip bs-tooltip-bottom bs-tooltip-bottom-docs" role="tooltip">
+    <div class="arrow" style="left:93%"></div>
+    <div class="tooltip-inner">
+      Tooltip on the bottomleft
+    </div>
+  </div>
+  <div class="tooltip bs-tooltip-bottom bs-tooltip-bottom-docs" role="tooltip">
+    <div class="arrow" style="left:5%"></div>
+    <div class="tooltip-inner">
+      Tooltip on the bottomright
+    </div>
+  </div>
   <div class="tooltip bs-tooltip-left bs-tooltip-left-docs" role="tooltip">
     <div class="arrow"></div>
     <div class="tooltip-inner">
       Tooltip on the left
+    </div>
+  </div>
+  <div class="tooltip bs-tooltip-left bs-tooltip-left-docs" role="tooltip">
+    <div class="arrow" style="top:60%"></div>
+    <div class="tooltip-inner">
+      Tooltip on the lefttop
+    </div>
+  </div>
+  <div class="tooltip bs-tooltip-left bs-tooltip-left-docs" role="tooltip">
+    <div class="arrow" style="top:26%"></div>
+    <div class="tooltip-inner">
+      Tooltip on the leftbottom
     </div>
   </div>
 </div>
@@ -79,26 +127,58 @@ Hover over the buttons below to see their tooltips.
 <div class="bd-example tooltip-demo">
   <div class="bd-example-tooltips">
     <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top">Tooltip on top</button>
+    <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="topleft" title="Tooltip on topleft">Tooltip on topleft</button>
+    <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="topright" title="Tooltip on topright">Tooltip on topright</button>
     <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="right" title="Tooltip on right">Tooltip on right</button>
+    <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="righttop" title="Tooltip on righttop. Sed posuere consectetur est at lobortis.">Tooltip on righttop</button>
+    <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="rightbottom" title="Tooltip on rightbottom. Sed posuere consectetur est at lobortis.">Tooltip on rightbottom</button>
     <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">Tooltip on bottom</button>
+    <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottomleft" title="Tooltip on bottomleft">Tooltip on bottomleft</button>
+    <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottomright" title="Tooltip on bottomright">Tooltip on bottomright</button>
     <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="left" title="Tooltip on left">Tooltip on left</button>
+    <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="lefttop" title="Tooltip on lefttop. Sed posuere consectetur est at lobortis.">Tooltip on lefttop</button>
+    <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="leftbottom" title="Tooltip on leftbottom. Sed posuere consectetur est at lobortis">Tooltip on leftbottom</button>
     <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-html="true" title="<em>Tooltip</em> <u>with</u> <b>HTML</b>">Tooltip with HTML</button>
   </div>
 </div>
 
 {% highlight html %}
-<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
-  Tooltip on top
-</button>
-<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="right" title="Tooltip on right">
-  Tooltip on right
-</button>
-<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">
-  Tooltip on bottom
-</button>
-<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="left" title="Tooltip on left">
-  Tooltip on left
-</button>
+    <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
+      Tooltip on top
+    </button>
+    <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="topleft" title="Tooltip on topleft">
+      Tooltip on topleft
+    </button>
+    <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="topright" title="Tooltip on topright">
+      tip on topright
+    </button>
+    <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="right" title="Tooltip on right">
+      Tooltip on right
+    </button>
+    <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="righttop" title="Tooltip on righttop. Sed posuere consectetur est at lobortis.">
+      Tooltip on righttop
+    </button>
+    <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="rightbottom" title="Tooltip on rightbottom. Sed posuere consectetur est at lobortis.">
+      Tooltip on rightbottom
+    </button>
+    <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">
+      Tooltip on bottom
+    </button>
+    <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottomleft" title="Tooltip on bottomleft">
+      Tooltip on bottomleft
+    </button>
+    <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="bottomright" title="Tooltip on bottomright">
+      Tooltip on bottomright
+    </button>
+    <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="left" title="Tooltip on left">
+      Tooltip on left
+    </button>
+    <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="lefttop" title="Tooltip on lefttop. Sed posuere consectetur est at lobortis.">
+      Tooltip on lefttop
+    </button>
+    <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="leftbottom" title="Tooltip on leftbottom. Sed posuere consectetur est at lobortis.">
+      Tooltip on leftbottom
+    </button>
 {% endhighlight %}
 
 And with custom HTML added:
@@ -236,6 +316,12 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <td>number | string</td>
       <td>0</td>
       <td>Offset of the tooltip relative to its target. For more information refer to Popper.js's <a href="https://popper.js.org/popper-documentation.html#modifiers..offset.offset">offset docs</a>.</td>
+    </tr>
+    <tr>
+      <td>arrowPadding</td>
+      <td>number</td>
+      <td>6</td>
+      <td>Distance from edge of tooltip to edge of arrow. Apply when placement is topleft, topright, righttop, rightbottom, bottomleft, bottomright, lefttop, or leftbottom.</td>
     </tr>
     <tr>
       <td>fallbackPlacement</td>

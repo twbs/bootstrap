@@ -48,7 +48,7 @@ $(function () {
 
 ## Static popover
 
-Four options are available: top, right, bottom, and left aligned.
+Twelve options are available: top, topleft, topright, right, righttop, rightbottom, bottom, bottomleft, bottomright, left, lefttop, and leftbottom aligned.
 
 <div class="bd-example bd-example-popover-static">
   <div class="popover bs-popover-top bs-popover-top-docs">
@@ -58,10 +58,39 @@ Four options are available: top, right, bottom, and left aligned.
       <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
     </div>
   </div>
-
+  <div class="popover bs-popover-top bs-popover-top-docs">
+    <div class="arrow" style="left:93%"></div>
+    <h3 class="popover-header">Popover topleft</h3>
+    <div class="popover-body">
+      <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+    </div>
+  </div>
+  <div class="popover bs-popover-top bs-popover-top-docs">
+    <div class="arrow" style="left:4%"></div>
+    <h3 class="popover-header">Popover topright</h3>
+    <div class="popover-body">
+      <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+    </div>
+  </div>
+ 
+  
   <div class="popover bs-popover-right bs-popover-right-docs">
     <div class="arrow"></div>
     <h3 class="popover-header">Popover right</h3>
+    <div class="popover-body">
+      <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+    </div>
+  </div>
+  <div class="popover bs-popover-right bs-popover-right-docs">
+    <div class="arrow" style="top:89%"></div>
+    <h3 class="popover-header">Popover righttop</h3>
+    <div class="popover-body">
+      <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+    </div>
+  </div>
+  <div class="popover bs-popover-right bs-popover-right-docs">
+    <div class="arrow" style="top:7%"></div>
+    <h3 class="popover-header">Popover rightbottom</h3>
     <div class="popover-body">
       <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
     </div>
@@ -74,10 +103,38 @@ Four options are available: top, right, bottom, and left aligned.
       <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
     </div>
   </div>
+  <div class="popover bs-popover-bottom bs-popover-bottom-docs">
+    <div class="arrow" style="left:93%"></div>
+    <h3 class="popover-header">Popover bottomleft</h3>
+    <div class="popover-body">
+      <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+    </div>
+  </div>
+  <div class="popover bs-popover-bottom bs-popover-bottom-docs">
+    <div class="arrow" style="left:4%"></div>
+    <h3 class="popover-header">Popover bottomright</h3>
+    <div class="popover-body">
+      <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+    </div>
+  </div>
 
   <div class="popover bs-popover-left bs-popover-left-docs">
     <div class="arrow"></div>
     <h3 class="popover-header">Popover left</h3>
+    <div class="popover-body">
+      <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+    </div>
+  </div>
+  <div class="popover bs-popover-left bs-popover-left-docs">
+    <div class="arrow" style="top:89%"></div>
+    <h3 class="popover-header">Popover lefttop</h3>
+    <div class="popover-body">
+      <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+    </div>
+  </div>
+  <div class="popover bs-popover-left bs-popover-left-docs">
+    <div class="arrow" style="top:7%"></div>
+    <h3 class="popover-header">Popover leftbottom</h3>
     <div class="popover-body">
       <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
     </div>
@@ -92,42 +149,97 @@ Four options are available: top, right, bottom, and left aligned.
 <button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
 {% endexample %}
 
-### Four directions
+### Twelve directions
 
 <div class="bd-example popover-demo">
   <div class="bd-example-popovers">
     <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
       Popover on top
     </button>
+    <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="topleft" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+      Popover on topleft
+    </button>
+    <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="topright" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+      Popover on topright
+    </button>
     <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
       Popover on right
+    </button>
+    <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="righttop" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+      Popover on righttop
+    </button>
+    <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="rightbottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+      Popover on rightbottom
     </button>
     <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
       Popover on bottom
     </button>
+    <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="bottomleft" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+      Popover on bottomleft
+    </button>
+    <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="bottomright" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+      Popover on bottomright
+    </button>
     <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
       Popover on left
+    </button>
+    <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="lefttop" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+      Popover on lefttop
+    </button>
+    <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="leftbottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+      Popover on leftbottom
     </button>
   </div>
 </div>
 
 {% highlight html %}
-<button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-  Popover on top
-</button>
+    <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+      Popover on top
+    </button>
 
-<button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-  Popover on right
-</button>
+    <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="topleft" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+      Popover on topleft
+    </button>
 
-<button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus
-sagittis lacus vel augue laoreet rutrum faucibus.">
-  Popover on bottom
-</button>
+    <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="topright" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+      Popover on topright
+    </button>
 
-<button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-  Popover on left
-</button>
+    <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+      Popover on right
+    </button>
+
+    <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="righttop" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+      Popover on righttop
+    </button>
+
+    <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="rightbottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+      Popover on rightbottom
+    </button>
+
+    <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+      Popover on bottom
+    </button>
+
+    <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="bottomleft" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+      Popover on bottomleft
+    </button>
+
+    <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="bottomright" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+      Popover on bottomright
+    </button>
+
+    <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+      Popover on left
+    </button>
+
+    <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="lefttop" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+      Popover on lefttop
+    </button>
+
+    <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="leftbottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+      Popover on leftbottom
+    </button>
 {% endhighlight %}
 
 ### Dismiss on next click
@@ -258,6 +370,12 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <td>number | string</td>
       <td>0</td>
       <td>Offset of the popover relative to its target. For more information refer to Popper.js's <a href="https://popper.js.org/popper-documentation.html#modifiers..offset.offset">offset docs</a>.</td>
+    </tr>
+    <tr>
+      <td>arrowPadding</td>
+      <td>number</td>
+      <td>6</td>
+      <td>Distance from edge of tooltip to edge of arrow. Apply when placement is topleft, topright, righttop, rightbottom, bottomleft, bottomright, lefttop, or leftbottom.</td>
     </tr>
     <tr>
       <td>fallbackPlacement</td>
