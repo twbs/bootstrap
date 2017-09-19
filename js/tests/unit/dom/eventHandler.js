@@ -59,6 +59,24 @@ $(function () {
     EventHandler.trigger(element, 'foobar.namespace')
   })
 
+  QUnit.test('should mirror preventDefault for native events', function (assert) {
+    assert.expect(2)
+
+    var element = document.createElement('div')
+    document.body.appendChild(element)
+
+    $(element).on('click', function (event) {
+      event.preventDefault()
+      assert.ok(true, 'first listener called')
+    })
+    element.addEventListener('click', function (event) {
+      assert.ok(event.defaultPrevented, 'defaultPrevented is true in second listener')
+    })
+
+    EventHandler.trigger(element, 'click')
+    document.body.removeChild(element)
+  })
+
   QUnit.test('on should add event listener', function (assert) {
     assert.expect(1)
 
