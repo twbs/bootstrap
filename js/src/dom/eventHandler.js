@@ -21,6 +21,8 @@ const workingDefaultPrevented = (() => {
   return e.defaultPrevented
 })()
 
+let defaultPreventedPreservedOnDispatch = true
+
 // CustomEvent polyfill for IE (see: https://mzl.la/2v76Zvn)
 if (typeof window.CustomEvent !== 'function') {
   window.CustomEvent = (event, params) => {
@@ -51,6 +53,20 @@ if (typeof window.CustomEvent !== 'function') {
   }
 
   window.CustomEvent.prototype = window.Event.prototype
+} else {
+  // MSEdge resets defaultPrevented flag upon dispatchEvent call if at least one listener is attached
+  defaultPreventedPreservedOnDispatch = (() => {
+    const e = new CustomEvent('Bootstrap', {
+      cancelable: true
+    })
+
+    const element = document.createElement('div')
+    element.addEventListener('Bootstrap', () => null)
+
+    e.preventDefault()
+    element.dispatchEvent(e)
+    return e.defaultPrevented
+  })()
 }
 
 // Event constructor shim
@@ -281,7 +297,7 @@ const EventHandler = {
 
     if (isNative) {
       evt = document.createEvent('HTMLEvents')
-      evt.initEvent(typeEvent, true, true)
+      evt.initEvent(typeEvent, bubbles, true)
     } else {
       evt = new CustomEvent(event, {
         bubbles,
@@ -296,6 +312,12 @@ const EventHandler = {
 
     if (defaultPrevented) {
       evt.preventDefault()
+
+      if (!defaultPreventedPreservedOnDispatch) {
+        Object.defineProperty(evt, 'defaultPrevented', {
+          get: () => true
+        })
+      }
     }
 
     if (nativeDispatch) {
