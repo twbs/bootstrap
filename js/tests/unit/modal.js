@@ -577,7 +577,7 @@ $(function () {
 
     $('<div id="modal-test"/>')
       .on('hidden.bs.modal', function () {
-        assert.strictEqual($body.attr('style').indexOf('padding-right'), -1, 'body does not have inline padding set')
+        assert.strictEqual($body.css('padding-left'), '0px', 'body does not have inline padding set')
         $style.remove()
         done()
       })
