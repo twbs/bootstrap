@@ -5,76 +5,86 @@
  * --------------------------------------------------------------------------
  */
 
-// matches polyfill (see: https://mzl.la/2ikXneG)
-let fnMatches = null
-if (!Element.prototype.matches) {
-  fnMatches =
-    Element.prototype.msMatchesSelector ||
-    Element.prototype.webkitMatchesSelector
-} else {
-  fnMatches = Element.prototype.matches
-}
+const SelectorEngine = (() => {
 
-// closest polyfill (see: https://mzl.la/2vXggaI)
-let fnClosest = null
-if (!Element.prototype.closest) {
-  fnClosest = (element, selector) => {
-    let ancestor = element
-    if (!document.documentElement.contains(element)) {
-      return null
-    }
 
-    do {
-      if (fnMatches.call(ancestor, selector)) {
-        return ancestor
+  /**
+   * ------------------------------------------------------------------------
+   * Polyfills
+   * ------------------------------------------------------------------------
+   */
+
+  // matches polyfill (see: https://mzl.la/2ikXneG)
+  let fnMatches = null
+  if (!Element.prototype.matches) {
+    fnMatches =
+      Element.prototype.msMatchesSelector ||
+      Element.prototype.webkitMatchesSelector
+  } else {
+    fnMatches = Element.prototype.matches
+  }
+
+  // closest polyfill (see: https://mzl.la/2vXggaI)
+  let fnClosest = null
+  if (!Element.prototype.closest) {
+    fnClosest = (element, selector) => {
+      let ancestor = element
+      if (!document.documentElement.contains(element)) {
+        return null
       }
 
-      ancestor = ancestor.parentElement
-    } while (ancestor !== null)
+      do {
+        if (fnMatches.call(ancestor, selector)) {
+          return ancestor
+        }
 
-    return null
-  }
-} else {
-  // eslint-disable-next-line arrow-body-style
-  fnClosest = (element, selector) => {
-    return element.closest(selector)
-  }
-}
+        ancestor = ancestor.parentElement
+      } while (ancestor !== null)
 
-const SelectorEngine = {
-  matches(element, selector) {
-    return fnMatches.call(element, selector)
-  },
-
-  find(selector, element = document) {
-    if (typeof selector !== 'string') {
       return null
     }
-
-    if (selector.indexOf('#') === 0) {
-      return SelectorEngine.findOne(selector, element)
+  } else {
+    // eslint-disable-next-line arrow-body-style
+    fnClosest = (element, selector) => {
+      return element.closest(selector)
     }
-
-    return element.querySelectorAll(selector)
-  },
-
-  findOne(selector, element = document) {
-    if (typeof selector !== 'string') {
-      return null
-    }
-
-    let selectorType = 'querySelector'
-    if (selector.indexOf('#') === 0) {
-      selectorType = 'getElementById'
-      selector = selector.substr(1, selector.length)
-    }
-
-    return element[selectorType](selector)
-  },
-
-  closest(element, selector) {
-    return fnClosest(element, selector)
   }
-}
+
+  return {
+    matches(element, selector) {
+      return fnMatches.call(element, selector)
+    },
+
+    find(selector, element = document) {
+      if (typeof selector !== 'string') {
+        return null
+      }
+
+      if (selector.indexOf('#') === 0) {
+        return SelectorEngine.findOne(selector, element)
+      }
+
+      return element.querySelectorAll(selector)
+    },
+
+    findOne(selector, element = document) {
+      if (typeof selector !== 'string') {
+        return null
+      }
+
+      let selectorType = 'querySelector'
+      if (selector.indexOf('#') === 0) {
+        selectorType = 'getElementById'
+        selector = selector.substr(1, selector.length)
+      }
+
+      return element[selectorType](selector)
+    },
+
+    closest(element, selector) {
+      return fnClosest(element, selector)
+    }
+  }
+})()
 
 export default SelectorEngine
