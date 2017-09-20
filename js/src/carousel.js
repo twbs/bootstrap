@@ -58,6 +58,8 @@ const Carousel = (() => {
     KEYDOWN        : `keydown${EVENT_KEY}`,
     MOUSEENTER     : `mouseenter${EVENT_KEY}`,
     MOUSELEAVE     : `mouseleave${EVENT_KEY}`,
+    TOUCHSTART     : `touchstart${EVENT_KEY}`,
+    TOUCHMOVE      : `touchmove${EVENT_KEY}`,
     TOUCHEND       : `touchend${EVENT_KEY}`,
     LOAD_DATA_API  : `load${EVENT_KEY}${DATA_API_KEY}`,
     CLICK_DATA_API : `click${EVENT_KEY}${DATA_API_KEY}`
@@ -234,11 +236,24 @@ const Carousel = (() => {
           .on(Event.KEYDOWN, (event) => this._keydown(event))
       }
 
-      if (this._config.pause === 'hover') {
-        $(this._element)
-          .on(Event.MOUSEENTER, (event) => this.pause(event))
-          .on(Event.MOUSELEAVE, (event) => this.cycle(event))
-        if ('ontouchstart' in document.documentElement) {
+      // Handle touch events
+      if ('ontouchstart' in document.documentElement) {
+        $(this._element).on(Event.TOUCHSTART, (event) => {
+          const initCoordinate = this._pointerCoordinate(event)
+
+          $(this._element).on(Event.TOUCHMOVE, (eventMove) => {
+            const moveCoordinate = this._pointerCoordinate(eventMove)
+            if (moveCoordinate.x < initCoordinate.x) {
+              this.next()
+            } else if (moveCoordinate.x > initCoordinate.x) {
+              this.prev()
+            }
+          })
+        })
+
+        $(this._element).on(Event.TOUCHEND, () => {
+          $(this._element).off(Event.TOUCHMOVE)
+
           // if it's a touch-enabled device, mouseenter/leave are fired as
           // part of the mouse compatibility events on first tap - the carousel
           // would stop cycling until user tapped out of it;
@@ -246,15 +261,46 @@ const Carousel = (() => {
           // (as if it's the second time we tap on it, mouseenter compat event
           // is NOT fired) and after a timeout (to allow for mouse compatibility
           // events to fire) we explicitly restart cycling
-          $(this._element).on(Event.TOUCHEND, () => {
+          if (this._config.pause === 'hover') {
             this.pause()
             if (this.touchTimeout) {
               clearTimeout(this.touchTimeout)
             }
             this.touchTimeout = setTimeout((event) => this.cycle(event), TOUCHEVENT_COMPAT_WAIT + this._config.interval)
-          })
-        }
+          }
+        })
       }
+
+      if (this._config.pause === 'hover') {
+        $(this._element)
+          .on(Event.MOUSEENTER, (event) => this.pause(event))
+          .on(Event.MOUSELEAVE, (event) => this.cycle(event))
+      }
+    }
+
+    _pointerCoordinate(event) {
+      event = event.originalEvent || event || window.event
+      const coordinate = {
+        x: 0,
+        y: 0
+      }
+
+      if (event.touches && event.touches.length) {
+        event = event.touches[0]
+      }
+
+      if (event.changedTouches && event.changedTouches.length) {
+        event = event.changedTouches[0]
+      }
+
+      if (event.pageX) {
+        coordinate.x = event.pageX
+        coordinate.y = event.pageY
+      } else {
+        coordinate.x = event.clientX
+        coordinate.y = event.clientY
+      }
+      return coordinate
     }
 
     _keydown(event) {
