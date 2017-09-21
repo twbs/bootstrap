@@ -22,7 +22,10 @@
 
 .custom-control-input {
   position: absolute;
-  z-index: -1; // Put the input behind the label so it doesn't overlay text
+  top: (($line-height-base - $custom-control-indicator-size) / 2);
+  left: 0;
+  width: $custom-control-indicator-size;
+  height: $custom-control-indicator-size;
   opacity: 0;
 
   &:checked ~ .custom-control-indicator {
