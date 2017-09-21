@@ -131,6 +131,7 @@ var Alert = function () {
         $(element).detach().trigger(Event.CLOSED).remove();
       }
 
+      //test
       // static
 
     }], [{
