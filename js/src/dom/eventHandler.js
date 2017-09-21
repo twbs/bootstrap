@@ -15,7 +15,6 @@ const EventHandler = (() => {
    * ------------------------------------------------------------------------
    */
 
-
   // defaultPrevented is broken in IE.
   // https://connect.microsoft.com/IE/feedback/details/790389/event-defaultprevented-returns-false-after-preventdefault-was-called
   const workingDefaultPrevented = (() => {
@@ -124,51 +123,125 @@ const EventHandler = (() => {
    * ------------------------------------------------------------------------
    */
 
-
   function getUidEvent(element, uid) {
-    return element.uidEvent = uid && `${uid}::${uidEvent++}` || element.uidEvent || uidEvent++
+    return uid && `${uid}::${uidEvent++}` || element.uidEvent || uidEvent++
   }
 
   function getEvent(element) {
     const uid = getUidEvent(element)
+    element.uidEvent = uid
+
     return eventRegistry[uid] = eventRegistry[uid] || {}
   }
 
-  function fixEvent(event) {
+  function fixEvent(event, element) {
     // Add which for key events
     if (event.which === null && keyEventRegex.test(event.type)) {
       event.which = event.charCode !== null ? event.charCode : event.keyCode
     }
-    return event
+
+    event.delegateTarget = element
   }
 
   function bootstrapHandler(element, fn) {
-    return function (event) {
-      event = fixEvent(event)
+    return function handler(event) {
+      fixEvent(event, element)
+      if (handler.oneOff) {
+        EventHandler.off(element, event.type, fn)
+      }
+
       return fn.apply(element, [event])
     }
   }
 
   function bootstrapDelegationHandler(element, selector, fn) {
-    return function (event) {
-      event = fixEvent(event)
+    return function handler(event) {
       const domElements = element.querySelectorAll(selector)
       for (let target = event.target; target && target !== this; target = target.parentNode) {
         for (let i = domElements.length; i--;) {
           if (domElements[i] === target) {
+            fixEvent(event, target)
+            if (handler.oneOff) {
+              EventHandler.off(element, event.type, fn)
+            }
+
             return fn.apply(target, [event])
           }
         }
       }
+
       // To please ESLint
       return null
     }
   }
 
+  function findHandler(events, handler) {
+    for (const uid in events) {
+      if (!Object.prototype.hasOwnProperty.call(events, uid)) {
+        continue
+      }
+
+      if (events[uid].originalHandler === handler) {
+        return events[uid]
+      }
+    }
+
+    return null
+  }
+
+  function addHandler(element, originalTypeEvent, handler, delegationFn, oneOff) {
+    if (typeof originalTypeEvent !== 'string' || (typeof element === 'undefined' || element === null)) {
+      return
+    }
+
+    if (!handler) {
+      handler = delegationFn
+      delegationFn = null
+    }
+
+    const delegation      = typeof handler === 'string'
+    const originalHandler = delegation ? delegationFn : handler
+
+    // allow to get the native events from namespaced events ('click.bs.button' --> 'click')
+    let typeEvent = originalTypeEvent.replace(stripNameRegex, '')
+
+    const custom = customEvents[typeEvent]
+    if (custom) {
+      typeEvent = custom
+    }
+
+    const isNative = nativeEvents.indexOf(typeEvent) > -1
+    if (!isNative) {
+      typeEvent = originalTypeEvent
+    }
+
+    const events     = getEvent(element)
+    const handlers   = events[typeEvent] || (events[typeEvent] = {})
+    const previousFn = findHandler(handlers, originalHandler)
+
+    if (previousFn) {
+      previousFn.oneOff = previousFn.oneOff && oneOff
+      return
+    }
+
+    const uid = getUidEvent(originalHandler, originalTypeEvent.replace(namespaceRegex, ''))
+    const fn  = !delegation ? bootstrapHandler(element, handler) : bootstrapDelegationHandler(element, handler, delegationFn)
+
+    fn.isDelegation = delegation
+    fn.originalHandler = originalHandler
+    fn.oneOff = oneOff
+    handlers[uid] = fn
+
+    element.addEventListener(typeEvent, fn, delegation)
+  }
+
   function removeHandler(element, events, typeEvent, handler) {
-    const uidEvent = handler.uidEvent
-    const fn = events[typeEvent][uidEvent]
-    element.removeEventListener(typeEvent, fn, fn.delegation)
+    const fn = findHandler(events[typeEvent], handler)
+    if (fn === null) {
+      return
+    }
+
+    element.removeEventListener(typeEvent, fn, fn.isDelegation)
     delete events[typeEvent][uidEvent]
   }
 
@@ -186,48 +259,12 @@ const EventHandler = (() => {
   }
 
   return {
-    on(element, originalTypeEvent, handler, delegationFn) {
-      if (typeof originalTypeEvent !== 'string'
-        || (typeof element === 'undefined' || element === null)) {
-        return
-      }
-
-      const delegation      = typeof handler === 'string'
-      const originalHandler = delegation ? delegationFn : handler
-
-      // allow to get the native events from namespaced events ('click.bs.button' --> 'click')
-      let typeEvent = originalTypeEvent.replace(stripNameRegex, '')
-
-      const custom = customEvents[typeEvent]
-      if (custom) {
-        typeEvent = custom
-      }
-
-      const isNative = nativeEvents.indexOf(typeEvent) > -1
-      if (!isNative) {
-        typeEvent = originalTypeEvent
-      }
-      const events    = getEvent(element)
-      const handlers  = events[typeEvent] || (events[typeEvent] = {})
-      const uid       = getUidEvent(originalHandler, originalTypeEvent.replace(namespaceRegex, ''))
-      if (handlers[uid]) {
-        return
-      }
-
-      const fn = !delegation ? bootstrapHandler(element, handler) : bootstrapDelegationHandler(element, handler, delegationFn)
-      fn.isDelegation = delegation
-      handlers[uid] = fn
-      originalHandler.uidEvent = uid
-      fn.originalHandler = originalHandler
-      element.addEventListener(typeEvent, fn, delegation)
+    on(element, event, handler, delegationFn) {
+      addHandler(element, event, handler, delegationFn, false)
     },
 
-    one(element, event, handler) {
-      function complete(e) {
-        EventHandler.off(element, event, complete)
-        handler.apply(element, [e])
-      }
-      EventHandler.on(element, event, complete)
+    one(element, event, handler, delegationFn) {
+      addHandler(element, event, handler, delegationFn, true)
     },
 
     off(element, originalTypeEvent, handler) {

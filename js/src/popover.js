@@ -1,5 +1,7 @@
-import $ from 'jquery'
+import Data from './dom/data'
+import SelectorEngine from './dom/selectorEngine'
 import Tooltip from './tooltip'
+import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
@@ -7,8 +9,7 @@ import Tooltip from './tooltip'
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
-
-const Popover = (($) => {
+const Popover = (() => {
   /**
    * ------------------------------------------------------------------------
    * Constants
@@ -19,7 +20,6 @@ const Popover = (($) => {
   const VERSION             = '4.0.0'
   const DATA_KEY            = 'bs.popover'
   const EVENT_KEY           = `.${DATA_KEY}`
-  const JQUERY_NO_CONFLICT  = $.fn[NAME]
   const CLASS_PREFIX        = 'bs-popover'
   const BSCLS_PREFIX_REGEX  = new RegExp(`(^|\\s)${CLASS_PREFIX}\\S+`, 'g')
 
@@ -106,26 +106,22 @@ const Popover = (($) => {
     }
 
     addAttachmentClass(attachment) {
-      $(this.getTipElement()).addClass(`${CLASS_PREFIX}-${attachment}`)
-    }
-
-    getTipElement() {
-      this.tip = this.tip || $(this.config.template)[0]
-      return this.tip
+      this.getTipElement().classList.add(`${CLASS_PREFIX}-${attachment}`)
     }
 
     setContent() {
-      const $tip = $(this.getTipElement())
+      const tip = this.getTipElement()
 
-      // We use append for html objects to maintain js events
-      this.setElementContent($tip.find(Selector.TITLE), this.getTitle())
+      // we use append for html objects to maintain js events
+      this.setElementContent(SelectorEngine.findOne(Selector.TITLE, tip), this.getTitle())
       let content = this._getContent()
       if (typeof content === 'function') {
         content = content.call(this.element)
       }
-      this.setElementContent($tip.find(Selector.CONTENT), content)
+      this.setElementContent(SelectorEngine.findOne(Selector.CONTENT, tip), content)
 
-      $tip.removeClass(`${ClassName.FADE} ${ClassName.SHOW}`)
+      tip.classList.remove(ClassName.FADE)
+      tip.classList.remove(ClassName.SHOW)
     }
 
     // Private
@@ -136,10 +132,12 @@ const Popover = (($) => {
     }
 
     _cleanTipClass() {
-      const $tip = $(this.getTipElement())
-      const tabClass = $tip.attr('class').match(BSCLS_PREFIX_REGEX)
+      const tip = this.getTipElement()
+      const tabClass = tip.getAttribute('class').match(BSCLS_PREFIX_REGEX)
       if (tabClass !== null && tabClass.length > 0) {
-        $tip.removeClass(tabClass.join(''))
+        tabClass.map((token) => token.trim()).forEach((tClass) => {
+          tip.classList.remove(tClass)
+        })
       }
     }
 
@@ -147,8 +145,8 @@ const Popover = (($) => {
 
     static _jQueryInterface(config) {
       return this.each(function () {
-        let data = $(this).data(DATA_KEY)
-        const _config = typeof config === 'object' ? config : null
+        let data      = Data.getData(this, DATA_KEY)
+        const _config = typeof config === 'object' && config
 
         if (!data && /destroy|hide/.test(config)) {
           return
@@ -156,7 +154,7 @@ const Popover = (($) => {
 
         if (!data) {
           data = new Popover(this, _config)
-          $(this).data(DATA_KEY, data)
+          Data.setData(this, DATA_KEY, data)
         }
 
         if (typeof config === 'string') {
@@ -174,15 +172,20 @@ const Popover = (($) => {
    * jQuery
    * ------------------------------------------------------------------------
    */
+  const $ = Util.jQuery
 
-  $.fn[NAME] = Popover._jQueryInterface
-  $.fn[NAME].Constructor = Popover
-  $.fn[NAME].noConflict = function () {
-    $.fn[NAME] = JQUERY_NO_CONFLICT
-    return Popover._jQueryInterface
+  if (typeof $ !== 'undefined') {
+    const JQUERY_NO_CONFLICT = $.fn[NAME]
+    $.fn[NAME] = Popover._jQueryInterface
+    $.fn[NAME].Constructor = Popover
+    $.fn[NAME].noConflict = function () {
+      $.fn[NAME] = JQUERY_NO_CONFLICT
+      return Popover._jQueryInterface
+    }
   }
 
   return Popover
-})($)
+
+})()
 
 export default Popover

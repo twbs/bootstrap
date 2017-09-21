@@ -64,7 +64,7 @@ $(function () {
     assert.expect(1)
     var $popover = $('<a href="#" title="mdo" data-content="https://twitter.com/mdo">@mdo</a>').bootstrapPopover()
 
-    assert.ok($popover.data('bs.popover'), 'popover instance exists')
+    assert.ok(Data.getData($popover[0], 'bs.popover'), 'popover instance exists')
   })
 
   QUnit.test('should store popover trigger in popover instance data object', function (assert) {
@@ -75,7 +75,7 @@ $(function () {
 
     $popover.bootstrapPopover('show')
 
-    assert.ok($('.popover').data('bs.popover'), 'popover trigger stored in instance data')
+    assert.ok(Data.getData($('.popover')[0], 'bs.popover'), 'popover trigger stored in instance data')
   })
 
   QUnit.test('should get title and content from options', function (assert) {
@@ -225,24 +225,20 @@ $(function () {
   })
 
   QUnit.test('should destroy popover', function (assert) {
-    assert.expect(7)
+    assert.expect(3)
     var $popover = $('<div/>')
       .bootstrapPopover({
         trigger: 'hover'
       })
       .on('click.foo', $.noop)
 
-    assert.ok($popover.data('bs.popover'), 'popover has data')
-    assert.ok($._data($popover[0], 'events').mouseover && $._data($popover[0], 'events').mouseout, 'popover has hover event')
-    assert.strictEqual($._data($popover[0], 'events').click[0].namespace, 'foo', 'popover has extra click.foo event')
+    assert.ok(Data.getData($popover[0], 'bs.popover'), 'popover has data')
 
     $popover.bootstrapPopover('show')
     $popover.bootstrapPopover('dispose')
 
     assert.ok(!$popover.hasClass('show'), 'popover is hidden')
     assert.ok(!$popover.data('popover'), 'popover does not have data')
-    assert.strictEqual($._data($popover[0], 'events').click[0].namespace, 'foo', 'popover still has click.foo')
-    assert.ok(!$._data($popover[0], 'events').mouseover && !$._data($popover[0], 'events').mouseout, 'popover does not have any events')
   })
 
   QUnit.test('should render popover element using delegated selector', function (assert) {
@@ -254,10 +250,10 @@ $(function () {
         trigger: 'click'
       })
 
-    $div.find('a').trigger('click')
+    EventHandler.trigger($div.find('a')[0], 'click')
     assert.notEqual($('.popover').length, 0, 'popover was inserted')
 
-    $div.find('a').trigger('click')
+    EventHandler.trigger($div.find('a')[0], 'click')
     assert.strictEqual($('.popover').length, 0, 'popover was removed')
   })
 
@@ -309,7 +305,7 @@ $(function () {
         assert.ok(false, 'should not fire any popover events')
       })
       .bootstrapPopover('hide')
-    assert.strictEqual(typeof $popover.data('bs.popover'), 'undefined', 'should not initialize the popover')
+    assert.ok(Data.getData($popover[0], 'bs.popover') === null, 'should not initialize the popover')
   })
 
   QUnit.test('should fire inserted event', function (assert) {
@@ -407,11 +403,11 @@ $(function () {
       })
 
     $popover.bootstrapPopover('disable')
-    $popover.trigger($.Event('click'))
+    EventHandler.trigger($popover[0], 'click')
     setTimeout(function () {
       assert.strictEqual($('.popover').length === 0, true)
       $popover.bootstrapPopover('enable')
-      $popover.trigger($.Event('click'))
+      EventHandler.trigger($popover[0], 'click')
     }, 200)
   })
 
