@@ -1,7 +1,7 @@
 .pagination {
   display: flex;
   // 1-2: Disable browser default list styles
-  padding-left: 0; // 1
+  padding-#{$left}: 0; // 1
   list-style: none; // 2
   @include border-radius();
 }
@@ -9,7 +9,7 @@
 .page-item {
   &:first-child {
     .page-link {
-      margin-left: 0;
+      margin-#{$left}: 0;
       @include border-left-radius($border-radius);
     }
   }
@@ -38,7 +38,7 @@
   position: relative;
   display: block;
   padding: $pagination-padding-y $pagination-padding-x;
-  margin-left: -$pagination-border-width;
+  margin-#{$left}: -$pagination-border-width;
   line-height: $pagination-line-height;
   color: $pagination-color;
   background-color: $pagination-bg;

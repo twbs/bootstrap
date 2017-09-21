@@ -30,7 +30,7 @@
   .close {
     position: relative;
     top: -$alert-padding-y;
-    right: -$alert-padding-x;
+    #{$right}: -$alert-padding-x;
     padding: $alert-padding-y $alert-padding-x;
     color: inherit;
   }

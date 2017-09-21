@@ -31,6 +31,8 @@ html {
   -ms-text-size-adjust: 100%; // 4
   -ms-overflow-style: scrollbar; // 5
   -webkit-tap-highlight-color: rgba(0,0,0,0); // 6
+  direction: $direction;
+  unicode-bidi: $unicode-bidi;
 }
 
 // IE10+ doesn't honor `<meta name="viewport">` in some cases.
@@ -57,7 +59,7 @@ body {
   font-weight: $font-weight-base;
   line-height: $line-height-base;
   color: $body-color;
-  text-align: left; // 3
+  text-align: $left; // 3
   background-color: $body-bg; // 2
 }
 
@@ -146,7 +148,7 @@ dt {
 
 dd {
   margin-bottom: .5rem;
-  margin-left: 0; // Undo browser default
+  margin-#{$left}: 0; // Undo browser default
 }
 
 blockquote {
@@ -301,7 +303,7 @@ caption {
   padding-top: $table-cell-padding;
   padding-bottom: $table-cell-padding;
   color: $text-muted;
-  text-align: left;
+  text-align: $left;
   caption-side: bottom;
 }
 
