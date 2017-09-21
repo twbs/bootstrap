@@ -78,13 +78,11 @@ var Dropdown = function () {
   };
 
   var Default = {
-    placement: AttachmentMap.BOTTOM,
     offset: 0,
     flip: true
   };
 
   var DefaultType = {
-    placement: 'string',
     offset: '(number|string)',
     flip: 'boolean'
 
@@ -201,11 +199,6 @@ var Dropdown = function () {
     }, {
       key: '_getConfig',
       value: function _getConfig(config) {
-        var elementData = $(this._element).data();
-        if (typeof elementData.placement !== 'undefined') {
-          elementData.placement = AttachmentMap[elementData.placement.toUpperCase()];
-        }
-
         config = $.extend({}, this.constructor.Default, $(this._element).data(), config);
 
         Util.typeCheckConfig(NAME, config, this.constructor.DefaultType);
@@ -225,10 +218,10 @@ var Dropdown = function () {
       key: '_getPlacement',
       value: function _getPlacement() {
         var $parentDropdown = $(this._element).parent();
-        var placement = this._config.placement;
+        var placement = AttachmentMap.BOTTOM;
 
         // Handle dropup
-        if ($parentDropdown.hasClass(ClassName.DROPUP) || this._config.placement === AttachmentMap.TOP) {
+        if ($parentDropdown.hasClass(ClassName.DROPUP)) {
           placement = AttachmentMap.TOP;
           if ($(this._menu).hasClass(ClassName.MENURIGHT)) {
             placement = AttachmentMap.TOPEND;
