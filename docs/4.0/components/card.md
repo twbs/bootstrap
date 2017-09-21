@@ -33,14 +33,14 @@ Below is an example of a basic card with mixed content and a fixed width. Cards 
 
 Cards support a wide variety of content, including images, text, list groups, links, and more. Below are examples of what's supported.
 
-### Blocks
+### Body
 
 The building block of a card is the `.card-body`. Use it whenever you need a padded section within a card.
 
 {% example html %}
 <div class="card">
   <div class="card-body">
-    This is some text within a card block.
+    This is some text within a card body.
   </div>
 </div>
 {% endexample %}
@@ -591,7 +591,7 @@ Cards can be organized into [Masonry](http://masonry.desandro.com)-like columns 
       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
     </div>
   </div>
-  <div class="card bg-primary p-3 text-center">
+  <div class="card bg-primary text-white text-center p-3">
     <blockquote class="blockquote mb-0">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
       <footer class="blockquote-footer">

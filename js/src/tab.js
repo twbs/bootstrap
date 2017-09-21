@@ -1,3 +1,4 @@
+import $ from 'jquery'
 import Util from './util'
 
 
@@ -8,7 +9,7 @@ import Util from './util'
  * --------------------------------------------------------------------------
  */
 
-const Tab = (($) => {
+const Tab = (() => {
 
 
   /**
