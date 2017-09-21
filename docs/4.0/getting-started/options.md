@@ -12,8 +12,8 @@ Every Sass variable in Bootstrap 4 includes the `!default` flag, meaning you can
 
 {% highlight scss %}
 // Your variable overwrite first or a Sass file containing the modifications
-$body-bg: #000000;
-$body-color: #ffffff;
+$body-bg: #000;
+$body-color: #111;
 
 // Then import Bootstrap
 @import "node_modules/bootstrap/scss/bootstrap";
