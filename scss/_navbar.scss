@@ -130,6 +130,130 @@
   background-size: 100% 100%;
 }
 
+// Navbar themes
+//
+// Styles for switching between navbars with light or dark background.
+
+// Dark links against a light background
+.navbar-light {
+  .navbar-brand {
+    color: $navbar-light-active-color;
+
+    @include hover-focus {
+      color: $navbar-light-active-color;
+    }
+  }
+
+  .navbar-nav {
+    .nav-link {
+      color: $navbar-light-color;
+
+      @include hover-focus {
+        color: $navbar-light-hover-color;
+      }
+
+      &.disabled {
+        color: $navbar-light-disabled-color;
+      }
+    }
+
+    .dropdown-menu {
+      background-color: $navbar-dark-dropdown-bg;
+      border-color: $navbar-light-dropdown-border-color;
+    }
+
+    .dropdown-item {
+      color: $navbar-light-dropdown-link-color;
+
+      @include hover-focus {
+        color: $navbar-light-dropdown-link-hover-color;
+        background-color: $navbar-light-dropdown-link-hover-bg;
+      }
+    }
+
+    .show > .nav-link,
+    .active > .nav-link,
+    .nav-link.show,
+    .nav-link.active {
+      color: $navbar-light-active-color;
+    }
+  }
+
+  .navbar-toggler {
+    color: $navbar-light-color;
+    border-color: $navbar-light-toggler-border-color;
+  }
+
+  .navbar-toggler-icon {
+    background-image: $navbar-light-toggler-icon-bg;
+  }
+
+  .navbar-text {
+    color: $navbar-light-color;
+  }
+}
+
+
+// White links against a dark background
+.navbar-dark {
+  .navbar-brand {
+    color: $navbar-dark-active-color;
+
+    @include hover-focus {
+      color: $navbar-dark-active-color;
+    }
+  }
+
+  .navbar-nav {
+    .nav-link {
+      color: $navbar-dark-color;
+
+      @include hover-focus {
+        color: $navbar-dark-hover-color;
+      }
+
+      &.disabled {
+        color: $navbar-dark-disabled-color;
+      }
+    }
+
+    .dropdown-menu {
+      background-color: $navbar-dark-dropdown-bg;
+      border-color: $navbar-dark-dropdown-border-color;
+    }
+
+    .dropdown-item {
+      color: $navbar-dark-dropdown-link-color;
+
+      @include hover-focus {
+        color: $navbar-dark-dropdown-link-hover-color;
+        background-color: $navbar-dark-dropdown-link-hover-bg;
+      }
+    }
+
+    .show > .nav-link,
+    .active > .nav-link,
+    .nav-link.show,
+    .nav-link.active {
+      color: $navbar-dark-active-color;
+    }
+  }
+
+  .navbar-toggler {
+    color: $navbar-dark-color;
+    border-color: $navbar-dark-toggler-border-color;
+  }
+
+  .navbar-toggler-icon {
+    background-image: $navbar-dark-toggler-icon-bg;
+  }
+
+  .navbar-text {
+    color: $navbar-dark-color;
+  }
+}
+
+
 // Generate series of `.navbar-expand-*` responsive classes for configuring
 // where your navbar collapses.
 .navbar-expand {
@@ -155,7 +279,19 @@
 
           .dropdown-menu {
             position: absolute;
+            background-color: $dropdown-bg;
+            border-color: $dropdown-border-color;
           }
+
+          .dropdown-item {
+            color: $dropdown-link-color;
+
+            @include hover-focus {
+              color: $dropdown-link-hover-color;
+              background-color: $dropdown-link-hover-bg;
+            }
+          }
+
 
           .dropdown-menu-right {
             right: 0;
@@ -188,100 +324,5 @@
         }
       }
     }
-  }
-}
-
-
-// Navbar themes
-//
-// Styles for switching between navbars with light or dark background.
-
-// Dark links against a light background
-.navbar-light {
-  .navbar-brand {
-    color: $navbar-light-active-color;
-
-    @include hover-focus {
-      color: $navbar-light-active-color;
-    }
-  }
-
-  .navbar-nav {
-    .nav-link {
-      color: $navbar-light-color;
-
-      @include hover-focus {
-        color: $navbar-light-hover-color;
-      }
-
-      &.disabled {
-        color: $navbar-light-disabled-color;
-      }
-    }
-
-    .show > .nav-link,
-    .active > .nav-link,
-    .nav-link.show,
-    .nav-link.active {
-      color: $navbar-light-active-color;
-    }
-  }
-
-  .navbar-toggler {
-    color: $navbar-light-color;
-    border-color: $navbar-light-toggler-border-color;
-  }
-
-  .navbar-toggler-icon {
-    background-image: $navbar-light-toggler-icon-bg;
-  }
-
-  .navbar-text {
-    color: $navbar-light-color;
-  }
-}
-
-// White links against a dark background
-.navbar-dark {
-  .navbar-brand {
-    color: $navbar-dark-active-color;
-
-    @include hover-focus {
-      color: $navbar-dark-active-color;
-    }
-  }
-
-  .navbar-nav {
-    .nav-link {
-      color: $navbar-dark-color;
-
-      @include hover-focus {
-        color: $navbar-dark-hover-color;
-      }
-
-      &.disabled {
-        color: $navbar-dark-disabled-color;
-      }
-    }
-
-    .show > .nav-link,
-    .active > .nav-link,
-    .nav-link.show,
-    .nav-link.active {
-      color: $navbar-dark-active-color;
-    }
-  }
-
-  .navbar-toggler {
-    color: $navbar-dark-color;
-    border-color: $navbar-dark-toggler-border-color;
-  }
-
-  .navbar-toggler-icon {
-    background-image: $navbar-dark-toggler-icon-bg;
-  }
-
-  .navbar-text {
-    color: $navbar-dark-color;
   }
 }
