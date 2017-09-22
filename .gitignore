@@ -23,6 +23,7 @@ nbproject
 *.sublime-project
 *.sublime-workspace
 
+
 # Komodo
 *.komodoproject
 .komodotools
@@ -32,5 +33,6 @@ nbproject
 .svn
 .CVS
 .idea
+.vscode
 node_modules
 dist
