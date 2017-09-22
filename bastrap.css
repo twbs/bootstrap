@@ -18,11 +18,11 @@
 
   @font-face {
     font-family: "CHANEWEI";
-    src: url("../fonts/CHANEWEI.eot");
-    src: url("../fonts/CHANEWEI.eot?#iefix") format("embedded-opentype"), 
-        url("../fonts/CHANEWEI.svg#Gotham") format("svg"), 
-        url("../fonts/CHANEWEI.woff") format("woff"), 
-        url("../fonts/CHANEWEI.ttf") format("truetype");
+    src: url("fonts/CHANEWEI.eot");
+    src: url("fonts/CHANEWEI.eot?#iefix") format("embedded-opentype"), 
+        url("fonts/CHANEWEI.svg#Gotham") format("svg"), 
+        url("fonts/CHANEWEI.woff") format("woff"), 
+        url("fonts/CHANEWEI.ttf") format("truetype");
     font-weight: normal;
     font-style: normal; 
   }
@@ -31,22 +31,22 @@
 * ======================================================================= */
   @font-face {
     font-family: 'Glyphicons Halflings';
-    src: url("../fonts/glyphicons-halflings-regular.eot");
-    src: url("../fonts/glyphicons-halflings-regular.eot?#iefix") format("embedded-opentype"), 
-        url("../fonts/glyphicons-halflings-regular.woff") format("woff"), 
-        url("../fonts/glyphicons-halflings-regular.ttf") format("truetype"), 
-        url("../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular") format("svg"); 
+    src: url("fonts/glyphicons-halflings-regular.eot");
+    src: url("fonts/glyphicons-halflings-regular.eot?#iefix") format("embedded-opentype"), 
+        url("fonts/glyphicons-halflings-regular.woff") format("woff"), 
+        url("fonts/glyphicons-halflings-regular.ttf") format("truetype"), 
+        url("fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular") format("svg"); 
   }
 
 /*  BAstrap Icons
 * ======================================================================= */
   @font-face {
     font-family: "bastrap-icons";
-    src:url("../fonts/bastrap-icons.eot");
-    src:url("../fonts/bastrap-icons.eot?#iefix") format("embedded-opentype"),
-    url("../fonts/bastrap-icons.woff") format("woff"),
-    url("../fonts/bastrap-icons.ttf") format("truetype"),
-    url("../fonts/bastrap-icons.svg#bastrap-icons") format("svg");
+    src:url("fonts/bastrap-icons.eot");
+    src:url("fonts/bastrap-icons.eot?#iefix") format("embedded-opentype"),
+    url("fonts/bastrap-icons.woff") format("woff"),
+    url("fonts/bastrap-icons.ttf") format("truetype"),
+    url("fonts/bastrap-icons.svg#bastrap-icons") format("svg");
     font-weight: normal;
     font-style: normal;
   }
