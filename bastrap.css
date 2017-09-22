@@ -3703,15 +3703,15 @@
   .bac-header {
     width: 170px;
     height: 60px;
-    background-image: url(../images/bac-header-2.png);
-    background-image: url(../images/bac-header-2.svg), none;
+    background-image: url(images/bac-header-2.png);
+    background-image: url(images/bac-header-2.svg), none;
   }
   
   .bac-footer {
     width: 255px;
     height: 45px;
-    background-image: url(../images/logo-bac.png);
-    background-image: url(../images/logo-bac.svg), none;
+    background-image: url(images/logo-bac.png);
+    background-image: url(images/logo-bac.svg), none;
   }
   
   /*  Sidebar
