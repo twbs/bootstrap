@@ -206,8 +206,8 @@ $font-family-monospace:  "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation 
 $font-family-base:       $font-family-sans-serif !default;
 
 $font-size-base: 1rem !default; // Assumes the browser default, typically `16px`
-$font-size-lg:   1.25rem !default;
-$font-size-sm:   .875rem !default;
+$font-size-lg:   ($font-size-base * 1.25) !default;
+$font-size-sm:   ($font-size-base * .875) !default;
 
 $font-weight-light: 300 !default;
 $font-weight-normal: normal !default;
@@ -216,12 +216,13 @@ $font-weight-bold: bold !default;
 $font-weight-base: $font-weight-normal !default;
 $line-height-base: 1.5 !default;
 
-$h1-font-size: 2.5rem !default;
-$h2-font-size: 2rem !default;
-$h3-font-size: 1.75rem !default;
-$h4-font-size: 1.5rem !default;
-$h5-font-size: 1.25rem !default;
-$h6-font-size: 1rem !default;
+$headings-font-size-base: $font-size-base !default;
+$h1-font-size:            ($headings-font-size-base * 2.5) !default;
+$h2-font-size:            ($headings-font-size-base * 2) !default;
+$h3-font-size:            ($headings-font-size-base * 1.75) !default;
+$h4-font-size:            ($headings-font-size-base * 1.5) !default;
+$h5-font-size:            ($headings-font-size-base * 1.25) !default;
+$h6-font-size:            ($headings-font-size-base * 1) !default;
 
 $headings-margin-bottom: ($spacer / 2) !default;
 $headings-font-family:   inherit !default;
