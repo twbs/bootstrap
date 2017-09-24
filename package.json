@@ -69,7 +69,9 @@
     "url": "https://github.com/twbs/bootstrap/issues"
   },
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "sass-lint": "^1.11.1"
+  },
   "peerDependencies": {
     "jquery": "^3.0.0",
     "popper.js": "^1.12.3"
