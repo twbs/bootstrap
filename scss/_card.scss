@@ -185,6 +185,11 @@
 
       // Handle rounded corners
       @if $enable-rounded {
+
+        &:only-child {
+          @include border-radius($card-border-radius !important);
+        }
+
         &:first-child {
           @include border-right-radius(0);
 

@@ -3569,10 +3569,8 @@ tbody.collapse.show {
 
 @media (min-width: 576px) {
   .navbar-expand-sm {
-    -ms-flex-direction: row;
-        flex-direction: row;
-    -ms-flex-wrap: nowrap;
-        flex-wrap: nowrap;
+    -ms-flex-flow: row nowrap;
+        flex-flow: row nowrap;
     -ms-flex-pack: start;
         justify-content: flex-start;
   }
@@ -3617,10 +3615,8 @@ tbody.collapse.show {
 
 @media (min-width: 768px) {
   .navbar-expand-md {
-    -ms-flex-direction: row;
-        flex-direction: row;
-    -ms-flex-wrap: nowrap;
-        flex-wrap: nowrap;
+    -ms-flex-flow: row nowrap;
+        flex-flow: row nowrap;
     -ms-flex-pack: start;
         justify-content: flex-start;
   }
@@ -3665,10 +3661,8 @@ tbody.collapse.show {
 
 @media (min-width: 992px) {
   .navbar-expand-lg {
-    -ms-flex-direction: row;
-        flex-direction: row;
-    -ms-flex-wrap: nowrap;
-        flex-wrap: nowrap;
+    -ms-flex-flow: row nowrap;
+        flex-flow: row nowrap;
     -ms-flex-pack: start;
         justify-content: flex-start;
   }
@@ -3713,10 +3707,8 @@ tbody.collapse.show {
 
 @media (min-width: 1200px) {
   .navbar-expand-xl {
-    -ms-flex-direction: row;
-        flex-direction: row;
-    -ms-flex-wrap: nowrap;
-        flex-wrap: nowrap;
+    -ms-flex-flow: row nowrap;
+        flex-flow: row nowrap;
     -ms-flex-pack: start;
         justify-content: flex-start;
   }
@@ -3752,10 +3744,8 @@ tbody.collapse.show {
 }
 
 .navbar-expand {
-  -ms-flex-direction: row;
-      flex-direction: row;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
+  -ms-flex-flow: row nowrap;
+      flex-flow: row nowrap;
   -ms-flex-pack: start;
       justify-content: flex-start;
 }
@@ -4051,6 +4041,9 @@ tbody.collapse.show {
   .card-group .card + .card {
     margin-left: 0;
     border-left: 0;
+  }
+  .card-group .card:only-child {
+    border-radius: 0.25rem !important;
   }
   .card-group .card:first-child {
     border-top-right-radius: 0;
