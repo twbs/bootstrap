@@ -24,9 +24,9 @@ article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, s
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: normal;
-  line-height: 1.35;
+  line-height: 1.5;
   color: #212529;
   text-align: left;
   background-color: #fff;
@@ -124,14 +124,14 @@ sup {
 }
 
 a {
-  color: #00aced;
+  color: #007bff;
   text-decoration: none;
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
 }
 
 a:hover {
-  color: #0074a1;
+  color: #0056b3;
   text-decoration: underline;
 }
 

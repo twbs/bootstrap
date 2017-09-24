@@ -33,16 +33,16 @@ $grays: map-merge((
   900: $gray-900
 ), $grays);
 
-$blue:    #00aced !default;
+$blue:    #007bff !default;
 $indigo:  #6610f2 !default;
 $purple:  #6f42c1 !default;
 $pink:    #e83e8c !default;
-$red:     #db5b42 !default;
+$red:     #dc3545 !default;
 $orange:  #fd7e14 !default;
-$yellow:  #fb3 !default;
-$green:   #149077 !default;
+$yellow:  #ffc107 !default;
+$green:   #28a745 !default;
 $teal:    #20c997 !default;
-$cyan:    #1dcaff !default;
+$cyan:    #17a2b8 !default;
 
 $colors: () !default;
 $colors: map-merge((
@@ -205,23 +205,23 @@ $font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, 
 $font-family-monospace:  "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
 $font-family-base:       $font-family-sans-serif !default;
 
-$font-size-base: .9rem !default; // Assumes the browser default, typically `16px`
-$font-size-lg:   1.125rem !default;
-$font-size-sm:   .7875rem !default;
+$font-size-base: 1rem !default; // Assumes the browser default, typically `16px`
+$font-size-lg:   1.25rem !default;
+$font-size-sm:   .875rem !default;
 
 $font-weight-light: 300 !default;
 $font-weight-normal: normal !default;
 $font-weight-bold: bold !default;
 
 $font-weight-base: $font-weight-normal !default;
-$line-height-base: 1.35 !default;
+$line-height-base: 1.5 !default;
 
-$h1-font-size: 2.25rem !default;
-$h2-font-size: 1.8rem !default;
-$h3-font-size: 1.575rem !default;
-$h4-font-size: 1.35rem !default;
-$h5-font-size: 1.125rem !default;
-$h6-font-size: .9rem !default;
+$h1-font-size: 2.5rem !default;
+$h2-font-size: 2rem !default;
+$h3-font-size: 1.75rem !default;
+$h4-font-size: 1.5rem !default;
+$h5-font-size: 1.25rem !default;
+$h6-font-size: 1rem !default;
 
 $headings-margin-bottom: ($spacer / 2) !default;
 $headings-font-family:   inherit !default;

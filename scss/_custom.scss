@@ -1,0 +1,29 @@
+// Variables
+//
+// Variables should follow the `$component-state-property-size` formula for
+// consistent naming. Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.
+//
+// Color system
+//
+$blue: #007bff;
+$red: #dc3545;
+$yellow: #ffc107;
+$green: #28a745;
+$cyan: #17a2b8;
+// Fonts
+//
+// Font, line-height, and color for body text, headings, and more.
+$font-family-sans-serif: 'Poppins', sans-serif;
+$font-family-monospace:  "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+$font-family-base:       $font-family-sans-serif;
+
+$font-size-base: .9rem;
+$font-size-lg: 1.125rem;
+$font-size-sm: .7875rem;
+$line-height-base: 1.35;
+$h1-font-size: 2.25rem;
+$h2-font-size: 1.8rem;
+$h3-font-size: 1.575rem;
+$h4-font-size: 1.35rem;
+$h5-font-size: 1.125rem;
+$h6-font-size: .9rem;
