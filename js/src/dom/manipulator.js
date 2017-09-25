@@ -40,6 +40,22 @@ const Manipulator = {
     element.removeAttribute(`data-${key.replace(/[A-Z]/g, (chr) => `-${chr.toLowerCase()}`)}`)
   },
 
+  offset(element) {
+    const rect = element.getBoundingClientRect()
+
+    return {
+      top: rect.top + document.body.scrollTop,
+      left: rect.left + document.body.scrollLeft
+    }
+  },
+
+  position(element) {
+    return {
+      top: element.offsetTop,
+      left: element.offsetLeft
+    }
+  },
+
   toggleClass(element, className) {
     if (typeof element === 'undefined' || element === null) {
       return
