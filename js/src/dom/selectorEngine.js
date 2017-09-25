@@ -111,10 +111,6 @@ const SelectorEngine = (() => {
         return null
       }
 
-      if (selector.indexOf('#') === 0) {
-        return SelectorEngine.findOne(selector, element)
-      }
-
       return findFn.call(element, selector)
     },
 
@@ -135,8 +131,46 @@ const SelectorEngine = (() => {
       return children.filter((child) => this.matches(child, selector))
     },
 
+    parents(element, selector) {
+      if (typeof selector !== 'string') {
+        return null
+      }
+
+      const parents = []
+
+      let ancestor = element.parentNode
+      while (ancestor && ancestor.nodeType === Node.ELEMENT_NODE) {
+        if (fnMatches.call(ancestor, selector)) {
+          parents.push(ancestor)
+        }
+
+        ancestor = ancestor.parentNode
+      }
+
+      return parents
+    },
+
     closest(element, selector) {
       return fnClosest(element, selector)
+    },
+
+    prev(element, selector) {
+      if (typeof selector !== 'string') {
+        return null
+      }
+
+      const siblings = []
+
+      let previous = element.previousSibling
+      while (previous) {
+        if (fnMatches.call(previous, selector)) {
+          siblings.push(previous)
+        }
+
+        previous = previous.previousSibling
+      }
+
+      return siblings
     }
   }
 })()
