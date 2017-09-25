@@ -81,6 +81,6 @@
   $color: theme-color($color-name);
   $color-base: if($level > 0, #000, #fff);
   $level: abs($level);
-  
+
   @return mix($color-base, $color, $level * $theme-color-interval);
 }
