@@ -79,7 +79,7 @@ $(function () {
       .show()
       .find('#scrollspy-example')
       .bootstrapScrollspy({
-        target: '#ss-target'
+        target: 'ss-target'
       })
 
     $scrollspy.one('scroll', function () {
@@ -126,7 +126,7 @@ $(function () {
       .show()
       .find('#scrollspy-example')
       .bootstrapScrollspy({
-        target: document.getElementById('#ss-target')
+        target: document.getElementById('ss-target')
       })
 
     $scrollspy.one('scroll', function () {
@@ -662,11 +662,11 @@ $(function () {
           method: 'offset'
         })
       } else if (type === 'data') {
-        $(window).trigger('load')
+        EventHandler.trigger(window, 'load')
       }
 
       var $target = $('#div-' + type + 'm-2')
-      var scrollspy = $content.data('bs.scrollspy')
+      var scrollspy = Data.getData($content[0], 'bs.scrollspy')
 
       assert.ok(scrollspy._offsets[1] === $target.offset().top, 'offset method with ' + type + ' option')
       assert.ok(scrollspy._offsets[1] !== $target.position().top, 'position method with ' + type + ' option')
@@ -709,11 +709,11 @@ $(function () {
           method: 'position'
         })
       } else if (type === 'data') {
-        $(window).trigger('load')
+        EventHandler.trigger(window, 'load')
       }
 
       var $target = $('#div-' + type + 'm-2')
-      var scrollspy = $content.data('bs.scrollspy')
+      var scrollspy = Data.getData($content[0], 'bs.scrollspy')
 
       assert.ok(scrollspy._offsets[1] !== $target.offset().top, 'offset method with ' + type + ' option')
       assert.ok(scrollspy._offsets[1] === $target.position().top, 'position method with ' + type + ' option')
