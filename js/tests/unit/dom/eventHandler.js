@@ -254,4 +254,18 @@ $(function () {
     EventHandler.trigger(element, 'click')
     document.body.removeChild(element)
   })
+
+  QUnit.test('off should remove a listener registered by .one', function (assert) {
+    assert.expect(0)
+
+    var element = document.createElement('div')
+    var handler = function () {
+      assert.notOk(true, 'listener called')
+    }
+
+    EventHandler.one(element, 'foobar', handler)
+    EventHandler.off(element, 'foobar', handler)
+
+    EventHandler.trigger(element, 'foobar')
+  })
 })
