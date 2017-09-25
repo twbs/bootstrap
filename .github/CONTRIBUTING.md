@@ -151,7 +151,7 @@ documentation source files and is managed separately by the Bootstrap Core Team.
 Adhering to the following process is the best way to get your work
 included in the project:
 
-1. [Fork](https://help.github.com/fork-a-repo/) the project, clone your fork,
+1. [Fork](https://help.github.com/articles/fork-a-repo/) the project, clone your fork,
    and configure the remotes:
 
    ```bash
@@ -180,7 +180,7 @@ included in the project:
 4. Commit your changes in logical chunks. Please adhere to these [git commit
    message guidelines](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
    or your code is unlikely be merged into the main project. Use Git's
-   [interactive rebase](https://help.github.com/articles/interactive-rebase)
+   [interactive rebase](https://help.github.com/articles/about-git-rebase/)
    feature to tidy up your commits before making them public.
 
 5. Locally merge (or rebase) the upstream development branch into your topic branch:
@@ -195,7 +195,7 @@ included in the project:
    git push origin <topic-branch-name>
    ```
 
-7. [Open a Pull Request](https://help.github.com/articles/using-pull-requests/)
+7. [Open a Pull Request](https://help.github.com/articles/about-pull-requests/)
     with a clear title and description against the `master` branch.
 
 **IMPORTANT**: By submitting a patch, you agree to allow the project owners to
