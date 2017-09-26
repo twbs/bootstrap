@@ -52,7 +52,7 @@ Pull in Bootstrap's **source files** into nearly any project with some of the mo
 
 Install Bootstrap in your Node powered apps with [the npm package](https://www.npmjs.com/package/bootstrap):
 
-{% highlight bash %}
+{% highlight sh %}
 npm install bootstrap@{{ site.current_version }}
 {% endhighlight %}
 
@@ -73,7 +73,7 @@ gem 'bootstrap', '~> 4.0.0.beta'
 
 Alternatively, if you're not using Bundler, you can install the gem by running this command:
 
-{% highlight bash %}
+{% highlight sh %}
 gem install bootstrap -v 4.0.0.beta
 {% endhighlight %}
 
@@ -83,7 +83,7 @@ gem install bootstrap -v 4.0.0.beta
 
 You can also install and manage Bootstrap's Sass and JavaScript using [Composer](https://getcomposer.org):
 
-{% highlight bash %}
+{% highlight sh %}
 composer require twbs/bootstrap:{{ site.current_version }}
 {% endhighlight %}
 
