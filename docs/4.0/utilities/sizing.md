@@ -6,7 +6,29 @@ group: utilities
 toc: true
 ---
 
-Width and height utilities are generated from the `$sizes` Sass map in `_variables.scss`. Includes support for `25%`, `50%`, `75%`, and `100%` by default. Modify those values as you need to generate different utilities here.
+## Overview
+
+Width and height utilities are generated from the `$sizes` Sass map in `_variables.scss`. Includes support for `25%`, `50%`, `75%`, and `100%` by default. Modify those values as you need to generate different sizing utilities.
+
+## Notation
+
+Sizing utilities are named using the format `{property}-{size}` for `xs` and `{property}-{breakpoint}-{size}` for `sm`, `md`, `lg`, and `xl`.
+
+Where *property* is one of:
+
+* `w` - for classes that set `width`
+* `h` - for classes that set `height`
+
+Where *size* is one of:
+
+* `25` - (by default) for classes that set the `width` or `height` to `25%`
+* `50` - (by default) for classes that set the `width` or `height` to `50%`
+* `75` - (by default) for classes that set the `width` or `height` to `75%`
+* `100` - (by default) for classes that set the `width` or `height` to `100%`
+
+(You can add more sizes by adding entries to the `$sizes` Sass map in `_variables.scss`)
+
+## Examples
 
 {% example html %}
 <div class="w-25 p-3" style="background-color: #eee;">Width 25%</div>
