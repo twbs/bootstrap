@@ -151,7 +151,6 @@ $('.popover-dismiss').popover({
 {% endhighlight %}
 
 
-
 ## Usage
 
 Enable popovers via JavaScript:
@@ -305,7 +304,6 @@ Toggles an element's popover. **Returns to the caller before the popover has act
 #### `.popover('dispose')`
 
 Hides and destroys an element's popover. Popovers that use delegation (which are created using [the `selector` option](#options)) cannot be individually destroyed on descendant trigger elements.
-
 
 {% highlight js %}$('#element').popover('dispose'){% endhighlight %}
 
