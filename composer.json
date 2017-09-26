@@ -22,13 +22,27 @@
       "email": "jacobthornton@gmail.com"
     }
   ],
+  "require": {
+    "robloach/component-installer": "*"
+  },
   "support": {
     "issues": "https://github.com/twbs/bootstrap/issues"
   },
   "license": "MIT",
   "extra": {
     "branch-alias": {
-      "dev-master": "3.3.x-dev"
+      "dev-master": "4.0.x-dev"
+    },
+    "component": {
+      "files": [
+        "dist/**"
+      ],
+      "scripts": [
+        "dist/js/bootstrap.bundle.js"
+      ],
+      "shim": {
+        "deps": ["jquery"]
+      }
     }
   },
   "replace": {
