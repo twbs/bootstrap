@@ -20,7 +20,11 @@ Copy-paste the stylesheet `<link>` into your `<head>` before all other styleshee
 <link rel="stylesheet" href="{{ site.cdn.css }}" integrity="{{ site.cdn.css_hash }}" crossorigin="anonymous">
 {% endhighlight %}
 
-Add our optional JavaScript plugins, jQuery, and [Popper.js](https://github.com/FezVrasta/popper.js) near the end of your pages, right before the closing `</body>` tag. Be sure to place jQuery and Popper.js first, as our JavaScript plugins depend on them. While we use [jQuery's slim build](https://blog.jquery.com/2016/06/09/jquery-3-0-final-released/) in our docs, the full version is also supported.
+
+#### Add our optional JavaScript components.
+
+If you wish to use our <a href="../../components/">javascript components</a>, you will need to place the following three scripts near the end of your pages, right before the closing `</body>` tag\*.   jQuery and Popper.js first, followed by bootstrap's script.
+
 
 {% highlight html %}
 <script src="{{ site.cdn.jquery }}" integrity="{{ site.cdn.jquery_hash }}" crossorigin="anonymous"></script>
@@ -28,7 +32,14 @@ Add our optional JavaScript plugins, jQuery, and [Popper.js](https://github.com/
 <script src="{{ site.cdn.js }}" integrity="{{ site.cdn.js_hash }}" crossorigin="anonymous"></script>
 {% endhighlight %}
 
-And that's it—you're on your way to a fully Bootstrapped site. If you're at all unsure about the general page structure, keep reading for an example page template.
+
+{% callout info %}
+* jQuery, and [Popper.js](https://github.com/FezVrasta/popper.js) are dependencies that must be included before our bootstrap script.
+* While we use [jQuery’s slim build](https://blog.jquery.com/2016/06/09/jquery-3-0-final-released/) in our docs, the full version is also supported.
+* \* Scripts may also be placed before the closing `</head>` tag should your particulars require it.
+{% endcallout %}
+
+And that’s it—you’re on your way to a fully Bootstrapped site. If you’re at all unsure about the general page structure, keep reading for an example page template.
 
 ## Starter template
 
