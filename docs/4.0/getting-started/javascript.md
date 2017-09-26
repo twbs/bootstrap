@@ -84,6 +84,7 @@ $('#myCarousel').carousel('2') // !! Will be ignored, as the transition to the s
 {% endhighlight %}
 
 ### Default settings
+
 You can change the default settings for a plugin by modifying the plugin's `Constructor.Default` object:
 
 {% highlight js %}
