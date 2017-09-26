@@ -38,6 +38,18 @@ const Manipulator = {
     }
 
     element.removeAttribute(`data-${key.replace(/[A-Z]/g, (chr) => `-${chr.toLowerCase()}`)}`)
+  },
+
+  toggleClass(element, className) {
+    if (typeof element === 'undefined' || element === null) {
+      return
+    }
+
+    if (element.classList.contains(className)) {
+      element.classList.remove(className)
+    } else {
+      element.classList.add(className)
+    }
   }
 }
 
