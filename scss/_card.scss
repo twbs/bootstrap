@@ -207,13 +207,18 @@
           }
         }
 
-        &:not(:first-child):not(:last-child) {
-          @include border-radius(0);
 
+        &:not(:first-child):not(:last-child):not(:only-child) {
+          @include border-radius(0);
+          
           .card-img-top,
           .card-img-bottom {
             @include border-radius(0);
           }
+        }
+
+        &:only-child {
+          @include border-radius($card-border-radius);
         }
       }
     }

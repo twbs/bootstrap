@@ -44,7 +44,8 @@
     "js-test-cloud": "ruby -r webrick -e \"s = WEBrick::HTTPServer.new(:Port => 3000, :DocumentRoot => Dir.pwd, :Logger => WEBrick::Log.new('/dev/null'), :AccessLog => []); trap('INT') { s.shutdown }; s.start\" & grunt saucelabs-qunit",
     "docs": "npm-run-all docs-compile docs-lint",
     "docs-lint": "htmllint --rc build/.htmllintrc _gh_pages/*.html _gh_pages/**/*.html js/tests/visual/*.html",
-    "docs-compile": "bundle exec jekyll build && npm run docs-workbox-precache",
+    "docs-compile": "bundle exec jekyll build",
+    "postdocs-compile": "npm run docs-workbox-precache",
     "docs-serve": "bundle exec jekyll serve",
     "docs-github": "shx echo \"github: true\" > twbsconfig.yml && npm run docs-compile -- --config _config.yml,twbsconfig.yml && shx rm ./twbsconfig.yml",
     "docs-upload-preview": "build/upload-preview.sh",
@@ -84,6 +85,7 @@
     "clean-css-cli": "^4.1.6",
     "cross-env": "^5.0.5",
     "eslint": "^4.2.0",
+    "eslint-plugin-compat": "^1.0.4",
     "grunt": "^1.0.1",
     "grunt-cli": "^1.2.0",
     "grunt-saucelabs": "^9.0.0",
@@ -119,6 +121,16 @@
     ".scss-lint.yml",
     "scss/**/*.scss",
     "LICENSE"
+  ],
+  "browserslist": [
+    "Chrome >= 45",
+    "Firefox ESR",
+    "Edge >= 12",
+    "Explorer >= 10",
+    "iOS >= 9",
+    "Safari >= 9",
+    "Android >= 4.4",
+    "Opera >= 30"
   ],
   "jspm": {
     "registry": "npm",
