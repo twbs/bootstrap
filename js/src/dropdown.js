@@ -5,8 +5,11 @@
  * --------------------------------------------------------------------------
  */
 
-import $ from 'jquery'
+import Data from './dom/data'
+import EventHandler from './dom/eventHandler'
+import Manipulator from './dom/manipulator'
 import Popper from 'popper.js'
+import SelectorEngine from './dom/selectorEngine'
 import Util from './util'
 
 /**
@@ -20,7 +23,6 @@ const VERSION                  = '4.3.1'
 const DATA_KEY                 = 'bs.dropdown'
 const EVENT_KEY                = `.${DATA_KEY}`
 const DATA_API_KEY             = '.data-api'
-const JQUERY_NO_CONFLICT       = $.fn[NAME]
 const ESCAPE_KEYCODE           = 27 // KeyboardEvent.which value for Escape (Esc) key
 const SPACE_KEYCODE            = 32 // KeyboardEvent.which value for space key
 const TAB_KEYCODE              = 9 // KeyboardEvent.which value for tab key
@@ -120,12 +122,12 @@ class Dropdown {
   // Public
 
   toggle() {
-    if (this._element.disabled || $(this._element).hasClass(ClassName.DISABLED)) {
+    if (this._element.disabled || this._element.classList.contains(ClassName.DISABLED)) {
       return
     }
 
     const parent   = Dropdown._getParentFromElement(this._element)
-    const isActive = $(this._menu).hasClass(ClassName.SHOW)
+    const isActive = this._menu.classList.contains(ClassName.SHOW)
 
     Dropdown._clearMenus()
 
@@ -136,11 +138,9 @@ class Dropdown {
     const relatedTarget = {
       relatedTarget: this._element
     }
-    const showEvent = $.Event(Event.SHOW, relatedTarget)
+    const showEvent = EventHandler.trigger(parent, Event.SHOW, relatedTarget)
 
-    $(parent).trigger(showEvent)
-
-    if (showEvent.isDefaultPrevented()) {
+    if (showEvent.defaultPrevented) {
       return
     }
 
@@ -171,7 +171,7 @@ class Dropdown {
       // to allow the menu to "escape" the scroll parent's boundaries
       // https://github.com/twbs/bootstrap/issues/24251
       if (this._config.boundary !== 'scrollParent') {
-        $(parent).addClass(ClassName.POSITION_STATIC)
+        parent.classList.add(ClassName.POSITION_STATIC)
       }
       this._popper = new Popper(referenceElement, this._menu, this._getPopperConfig())
     }
@@ -181,68 +181,64 @@ class Dropdown {
     // only needed because of broken event delegation on iOS
     // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
     if ('ontouchstart' in document.documentElement &&
-        $(parent).closest(Selector.NAVBAR_NAV).length === 0) {
-      $(document.body).children().on('mouseover', null, $.noop)
+      !Util.makeArray(SelectorEngine.closest(parent, Selector.NAVBAR_NAV)).length) {
+      Util.makeArray(document.body.children)
+        .forEach((elem) => EventHandler.on(elem, 'mouseover', null, Util.noop()))
     }
 
     this._element.focus()
     this._element.setAttribute('aria-expanded', true)
 
-    $(this._menu).toggleClass(ClassName.SHOW)
-    $(parent)
-      .toggleClass(ClassName.SHOW)
-      .trigger($.Event(Event.SHOWN, relatedTarget))
+    Manipulator.toggleClass(this._menu, ClassName.SHOW)
+    Manipulator.toggleClass(parent, ClassName.SHOW)
+    EventHandler.trigger(parent, Event.SHOWN, relatedTarget)
   }
 
   show() {
-    if (this._element.disabled || $(this._element).hasClass(ClassName.DISABLED) || $(this._menu).hasClass(ClassName.SHOW)) {
+    if (this._element.disabled || this._element.classList.contains(ClassName.DISABLED) || this._menu.classList.contains(ClassName.SHOW)) {
       return
     }
 
+    const parent = Dropdown._getParentFromElement(this._element)
     const relatedTarget = {
       relatedTarget: this._element
     }
-    const showEvent = $.Event(Event.SHOW, relatedTarget)
-    const parent = Dropdown._getParentFromElement(this._element)
 
-    $(parent).trigger(showEvent)
+    const showEvent = EventHandler.trigger(parent, Event.SHOW, relatedTarget)
 
-    if (showEvent.isDefaultPrevented()) {
+    if (showEvent.defaultPrevented) {
       return
     }
 
-    $(this._menu).toggleClass(ClassName.SHOW)
-    $(parent)
-      .toggleClass(ClassName.SHOW)
-      .trigger($.Event(Event.SHOWN, relatedTarget))
+    Manipulator.toggleClass(this._menu, ClassName.SHOW)
+    Manipulator.toggleClass(parent, ClassName.SHOW)
+    EventHandler.trigger(parent, Event.SHOWN, relatedTarget)
   }
 
   hide() {
-    if (this._element.disabled || $(this._element).hasClass(ClassName.DISABLED) || !$(this._menu).hasClass(ClassName.SHOW)) {
+    if (this._element.disabled || this._element.classList.contains(ClassName.DISABLED) || !this._menu.classList.contains(ClassName.SHOW)) {
       return
     }
 
+    const parent = Dropdown._getParentFromElement(this._element)
     const relatedTarget = {
       relatedTarget: this._element
     }
-    const hideEvent = $.Event(Event.HIDE, relatedTarget)
-    const parent = Dropdown._getParentFromElement(this._element)
 
-    $(parent).trigger(hideEvent)
+    const hideEvent = EventHandler.trigger(parent, Event.HIDE, relatedTarget)
 
-    if (hideEvent.isDefaultPrevented()) {
+    if (hideEvent.defaultPrevented) {
       return
     }
 
-    $(this._menu).toggleClass(ClassName.SHOW)
-    $(parent)
-      .toggleClass(ClassName.SHOW)
-      .trigger($.Event(Event.HIDDEN, relatedTarget))
+    Manipulator.toggleClass(this._menu, ClassName.SHOW)
+    Manipulator.toggleClass(parent, ClassName.SHOW)
+    EventHandler.trigger(parent, Event.SHOWN, relatedTarget)
   }
 
   dispose() {
-    $.removeData(this._element, DATA_KEY)
-    $(this._element).off(EVENT_KEY)
+    Data.removeData(this._element, DATA_KEY)
+    EventHandler.off(this._element, EVENT_KEY)
     this._element = null
     this._menu = null
     if (this._popper !== null) {
@@ -261,7 +257,7 @@ class Dropdown {
   // Private
 
   _addEventListeners() {
-    $(this._element).on(Event.CLICK, (event) => {
+    EventHandler.on(this._element, Event.CLICK, (event) => {
       event.preventDefault()
       event.stopPropagation()
       this.toggle()
@@ -271,7 +267,7 @@ class Dropdown {
   _getConfig(config) {
     config = {
       ...this.constructor.Default,
-      ...$(this._element).data(),
+      ...Util.getDataAttributes(this._element),
       ...config
     }
 
@@ -296,27 +292,27 @@ class Dropdown {
   }
 
   _getPlacement() {
-    const $parentDropdown = $(this._element.parentNode)
-    let placement = AttachmentMap.BOTTOM
+    const parentDropdown = this._element.parentNode
+    let placement        = AttachmentMap.BOTTOM
 
     // Handle dropup
-    if ($parentDropdown.hasClass(ClassName.DROPUP)) {
+    if (parentDropdown.classList.contains(ClassName.DROPUP)) {
       placement = AttachmentMap.TOP
-      if ($(this._menu).hasClass(ClassName.MENURIGHT)) {
+      if (this._menu.classList.contains(ClassName.MENURIGHT)) {
         placement = AttachmentMap.TOPEND
       }
-    } else if ($parentDropdown.hasClass(ClassName.DROPRIGHT)) {
+    } else if (parentDropdown.classList.contains(ClassName.DROPRIGHT)) {
       placement = AttachmentMap.RIGHT
-    } else if ($parentDropdown.hasClass(ClassName.DROPLEFT)) {
+    } else if (parentDropdown.classList.contains(ClassName.DROPLEFT)) {
       placement = AttachmentMap.LEFT
-    } else if ($(this._menu).hasClass(ClassName.MENURIGHT)) {
+    } else if (this._menu.classList.contains(ClassName.MENURIGHT)) {
       placement = AttachmentMap.BOTTOMEND
     }
     return placement
   }
 
   _detectNavbar() {
-    return $(this._element).closest('.navbar').length > 0
+    return Util.makeArray(SelectorEngine.closest(this._element, '.navbar')).length > 0
   }
 
   _getOffset() {
@@ -364,22 +360,26 @@ class Dropdown {
 
   // Static
 
+  static _dropdownInterface(element, config) {
+    let data = Data.getData(element, DATA_KEY)
+    const _config = typeof config === 'object' ? config : null
+
+    if (!data) {
+      data = new Dropdown(element, _config)
+      Data.setData(element, DATA_KEY, data)
+    }
+
+    if (typeof config === 'string') {
+      if (typeof data[config] === 'undefined') {
+        throw new Error(`No method named "${config}"`)
+      }
+      data[config]()
+    }
+  }
+
   static _jQueryInterface(config) {
     return this.each(function () {
-      let data = $(this).data(DATA_KEY)
-      const _config = typeof config === 'object' ? config : null
-
-      if (!data) {
-        data = new Dropdown(this, _config)
-        $(this).data(DATA_KEY, data)
-      }
-
-      if (typeof config === 'string') {
-        if (typeof data[config] === 'undefined') {
-          throw new TypeError(`No method named "${config}"`)
-        }
-        data[config]()
-      }
+      Dropdown._dropdownInterface(this, config)
     })
   }
 
@@ -389,11 +389,10 @@ class Dropdown {
       return
     }
 
-    const toggles = [].slice.call(document.querySelectorAll(Selector.DATA_TOGGLE))
-
+    const toggles = Util.makeArray(SelectorEngine.find(Selector.DATA_TOGGLE))
     for (let i = 0, len = toggles.length; i < len; i++) {
-      const parent = Dropdown._getParentFromElement(toggles[i])
-      const context = $(toggles[i]).data(DATA_KEY)
+      const parent        = Dropdown._getParentFromElement(toggles[i])
+      const context       = Data.getData(toggles[i], DATA_KEY)
       const relatedTarget = {
         relatedTarget: toggles[i]
       }
@@ -407,34 +406,34 @@ class Dropdown {
       }
 
       const dropdownMenu = context._menu
-      if (!$(parent).hasClass(ClassName.SHOW)) {
+      if (!parent.classList.contains(ClassName.SHOW)) {
         continue
       }
 
       if (event && (event.type === 'click' &&
-          /input|textarea/i.test(event.target.tagName) || event.type === 'keyup' && event.which === TAB_KEYCODE) &&
-          $.contains(parent, event.target)) {
+          /input|textarea/i.test(event.target.tagName) ||
+          event.type === 'keyup' && event.which === TAB_KEYCODE) &&
+          parent.contains(event.target)) {
         continue
       }
 
-      const hideEvent = $.Event(Event.HIDE, relatedTarget)
-      $(parent).trigger(hideEvent)
-      if (hideEvent.isDefaultPrevented()) {
+      const hideEvent = EventHandler.trigger(parent, Event.HIDE, relatedTarget)
+      if (hideEvent.defaultPrevented) {
         continue
       }
 
       // If this is a touch-enabled device we remove the extra
       // empty mouseover listeners we added for iOS support
       if ('ontouchstart' in document.documentElement) {
-        $(document.body).children().off('mouseover', null, $.noop)
+        Util.makeArray(document.body.children)
+          .forEach((elem) => EventHandler.off(elem, 'mouseover', null, Util.noop()))
       }
 
       toggles[i].setAttribute('aria-expanded', 'false')
 
-      $(dropdownMenu).removeClass(ClassName.SHOW)
-      $(parent)
-        .removeClass(ClassName.SHOW)
-        .trigger($.Event(Event.HIDDEN, relatedTarget))
+      dropdownMenu.classList.remove(ClassName.SHOW)
+      parent.classList.remove(ClassName.SHOW)
+      EventHandler.trigger(parent, Event.HIDDEN, relatedTarget)
     }
   }
 
@@ -468,26 +467,25 @@ class Dropdown {
     event.preventDefault()
     event.stopPropagation()
 
-    if (this.disabled || $(this).hasClass(ClassName.DISABLED)) {
+    if (this.disabled || this.classList.contains(ClassName.DISABLED)) {
       return
     }
 
     const parent   = Dropdown._getParentFromElement(this)
-    const isActive = $(parent).hasClass(ClassName.SHOW)
+    const isActive = parent.classList.contains(ClassName.SHOW)
 
     if (!isActive || isActive && (event.which === ESCAPE_KEYCODE || event.which === SPACE_KEYCODE)) {
       if (event.which === ESCAPE_KEYCODE) {
-        const toggle = parent.querySelector(Selector.DATA_TOGGLE)
-        $(toggle).trigger('focus')
+        EventHandler.trigger(SelectorEngine.findOne(Selector.DATA_TOGGLE, parent), 'focus')
       }
 
-      $(this).trigger('click')
+      EventHandler.trigger(this, 'click')
       return
     }
 
     const items = [].slice.call(parent.querySelectorAll(Selector.VISIBLE_ITEMS))
 
-    if (items.length === 0) {
+    if (!items.length) {
       return
     }
 
@@ -515,31 +513,34 @@ class Dropdown {
  * ------------------------------------------------------------------------
  */
 
-$(document)
-  .on(Event.KEYDOWN_DATA_API, Selector.DATA_TOGGLE, Dropdown._dataApiKeydownHandler)
-  .on(Event.KEYDOWN_DATA_API, Selector.MENU, Dropdown._dataApiKeydownHandler)
-  .on(`${Event.CLICK_DATA_API} ${Event.KEYUP_DATA_API}`, Dropdown._clearMenus)
-  .on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
-    event.preventDefault()
-    event.stopPropagation()
-    Dropdown._jQueryInterface.call($(this), 'toggle')
-  })
-  .on(Event.CLICK_DATA_API, Selector.FORM_CHILD, (e) => {
-    e.stopPropagation()
-  })
+EventHandler.on(document, Event.KEYDOWN_DATA_API, Selector.DATA_TOGGLE, Dropdown._dataApiKeydownHandler)
+EventHandler.on(document, Event.KEYDOWN_DATA_API, Selector.MENU, Dropdown._dataApiKeydownHandler)
+EventHandler.on(document, Event.CLICK_DATA_API, Dropdown._clearMenus)
+EventHandler.on(document, Event.KEYUP_DATA_API, Dropdown._clearMenus)
+EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
+  event.preventDefault()
+  event.stopPropagation()
+  Dropdown._dropdownInterface(this, 'toggle')
+})
+EventHandler
+  .on(document, Event.CLICK_DATA_API, Selector.FORM_CHILD, (e) => e.stopPropagation())
 
 /**
  * ------------------------------------------------------------------------
  * jQuery
  * ------------------------------------------------------------------------
+ * add .dropdown to jQuery only if jQuery is present
  */
 
-$.fn[NAME] = Dropdown._jQueryInterface
-$.fn[NAME].Constructor = Dropdown
-$.fn[NAME].noConflict = () => {
-  $.fn[NAME] = JQUERY_NO_CONFLICT
-  return Dropdown._jQueryInterface
+const $ = Util.jQuery
+if (typeof $ !== 'undefined') {
+  const JQUERY_NO_CONFLICT = $.fn[NAME]
+  $.fn[NAME]               = Dropdown._jQueryInterface
+  $.fn[NAME].Constructor   = Dropdown
+  $.fn[NAME].noConflict    = () => {
+    $.fn[NAME] = JQUERY_NO_CONFLICT
+    return Dropdown._jQueryInterface
+  }
 }
-
 
 export default Dropdown
