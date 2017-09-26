@@ -672,7 +672,7 @@ While Bootstrap will apply these styles in all browsers, Internet Explorer 11 an
 
 ## Validation
 
-Provide valuable, actionable feedback to your users with HTML5 form validation–[available in all our supported browsers](http://caniuse.com/#feat=form-validation). Choose from the browser default validation feedback, or implement custom messages with our built-in classes and starter JavaScript.
+Provide valuable, actionable feedback to your users with HTML5 form validation–[available in all our supported browsers](https://caniuse.com/#feat=form-validation). Choose from the browser default validation feedback, or implement custom messages with our built-in classes and starter JavaScript.
 
 {% callout warning %}
 We **highly recommend** custom validation styles as native browser defaults are not announced to screen readers.

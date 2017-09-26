@@ -81,7 +81,7 @@ gem install bootstrap -v 4.0.0.beta
 
 ### Composer
 
-You can also install and manage Bootstrap's Sass and JavaScript using [Composer](https://getcomposer.org):
+You can also install and manage Bootstrap's Sass and JavaScript using [Composer](https://getcomposer.org/):
 
 {% highlight sh %}
 composer require twbs/bootstrap:{{ site.current_version }}
@@ -89,7 +89,7 @@ composer require twbs/bootstrap:{{ site.current_version }}
 
 ### NuGet
 
-If you develop in .NET, you can also install and manage Bootstrap's [CSS](https://www.nuget.org/packages/bootstrap/) or [Sass](https://www.nuget.org/packages/bootstrap.sass/) and JavaScript using [NuGet](https://www.nuget.org):
+If you develop in .NET, you can also install and manage Bootstrap's [CSS](https://www.nuget.org/packages/bootstrap/) or [Sass](https://www.nuget.org/packages/bootstrap.sass/) and JavaScript using [NuGet](https://www.nuget.org/):
 
 {% highlight powershell %}
 Install-Package bootstrap -Pre
