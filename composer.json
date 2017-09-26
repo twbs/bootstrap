@@ -23,7 +23,8 @@
     }
   ],
   "require": {
-    "robloach/component-installer": "*"
+    "robloach/component-installer": "*",
+    "components/jquery": "~3.0"
   },
   "support": {
     "issues": "https://github.com/twbs/bootstrap/issues"
