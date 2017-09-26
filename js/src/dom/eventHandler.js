@@ -334,7 +334,7 @@ const EventHandler = (() => {
       let defaultPrevented = false
 
       if (inNamespace && typeof $ !== 'undefined') {
-        jQueryEvent = new $.Event(event, args)
+        jQueryEvent = $.Event(event, args)
 
         $(element).trigger(jQueryEvent)
         bubbles = !jQueryEvent.isPropagationStopped()
@@ -342,8 +342,7 @@ const EventHandler = (() => {
         defaultPrevented = jQueryEvent.isDefaultPrevented()
       }
 
-      let evt           = null
-
+      let evt = null
       if (isNative) {
         evt = document.createEvent('HTMLEvents')
         evt.initEvent(typeEvent, bubbles, true)
