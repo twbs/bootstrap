@@ -1,3 +1,5 @@
+import Util from '../util'
+
 /**
  * --------------------------------------------------------------------------
  * Bootstrap (v4.0.0-beta): dom/selectorEngine.js
@@ -29,17 +31,13 @@ const SelectorEngine = (() => {
   if (!Element.prototype.closest) {
     fnClosest = (element, selector) => {
       let ancestor = element
-      if (!document.documentElement.contains(element)) {
-        return null
-      }
-
       do {
         if (fnMatches.call(ancestor, selector)) {
           return ancestor
         }
 
         ancestor = ancestor.parentElement
-      } while (ancestor !== null)
+      } while (ancestor !== null && ancestor.nodeType === Node.ELEMENT_NODE)
 
       return null
     }
@@ -50,12 +48,67 @@ const SelectorEngine = (() => {
     }
   }
 
+  const scopeSelectorRegex = /:scope\b/
+  const supportScopeQuery = (() => {
+    const element = document.createElement('div')
+    try {
+      element.querySelectorAll(':scope *')
+    } catch (e) {
+      return false
+    }
+
+    return true
+  })()
+
+  let findFn = null
+  let findOneFn = null
+  if (supportScopeQuery) {
+    findFn = Element.prototype.querySelectorAll
+    findOneFn = Element.prototype.querySelector
+  } else {
+    findFn = function (selector) {
+      if (!scopeSelectorRegex.test(selector)) {
+        return this.querySelectorAll(selector)
+      }
+
+      const hasId = Boolean(this.id)
+      if (!hasId) {
+        this.id = Util.getUID('scope')
+      }
+
+      let nodeList = null
+      try {
+        selector = selector.replace(scopeSelectorRegex, `#${this.id}`)
+        nodeList = this.querySelectorAll(selector)
+      } finally {
+        if (!hasId) {
+          this.removeAttribute('id')
+        }
+      }
+
+      return nodeList
+    }
+
+    findOneFn = function (selector) {
+      if (!scopeSelectorRegex.test(selector)) {
+        return this.querySelector(selector)
+      }
+
+      const matches = findFn.call(this, selector)
+      if (typeof matches[0] !== 'undefined') {
+        return matches[0]
+      }
+
+      return null
+    }
+  }
+
   return {
     matches(element, selector) {
       return fnMatches.call(element, selector)
     },
 
-    find(selector, element = document) {
+    find(selector, element = document.documentElement) {
       if (typeof selector !== 'string') {
         return null
       }
@@ -64,21 +117,24 @@ const SelectorEngine = (() => {
         return SelectorEngine.findOne(selector, element)
       }
 
-      return element.querySelectorAll(selector)
+      return findFn.call(element, selector)
     },
 
-    findOne(selector, element = document) {
+    findOne(selector, element = document.documentElement) {
       if (typeof selector !== 'string') {
         return null
       }
 
-      let selectorType = 'querySelector'
-      if (selector.indexOf('#') === 0) {
-        selectorType = 'getElementById'
-        selector = selector.substr(1, selector.length)
+      return findOneFn.call(element, selector)
+    },
+
+    children(element, selector) {
+      if (typeof selector !== 'string') {
+        return null
       }
 
-      return element[selectorType](selector)
+      const children = Util.makeArray(element.children)
+      return children.filter((child) => this.matches(child, selector))
     },
 
     closest(element, selector) {
