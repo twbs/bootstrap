@@ -42,7 +42,7 @@
   }
 }
 
-@mixin button-outline-variant($color, $color-hover: #fff) {
+@mixin button-outline-variant($color, $color-hover: #fff, $active-background: darken($color, 7.5%), $active-border: darken($color, 10%)) {
   color: $color;
   background-color: transparent;
   background-image: none;
@@ -50,8 +50,8 @@
 
   @include hover {
     color: $color-hover;
-    background-color: $color;
-    border-color: $color;
+    background-color: $active-background;
+    border-color: $active-border;
   }
 
   &:focus,
@@ -69,8 +69,8 @@
   &.active,
   .show > &.dropdown-toggle {
     color: $color-hover;
-    background-color: $color;
-    border-color: $color;
+    background-color: $active-background;
+    border-color: $active-border;
   }
 }
 
