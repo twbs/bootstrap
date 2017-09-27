@@ -49,7 +49,7 @@
   border-color: $color;
 
   @include hover {
-    color: $color-hover;
+    @include color-yiq($color);
     background-color: $active-background;
     border-color: $active-border;
   }
@@ -68,7 +68,7 @@
   &:active,
   &.active,
   .show > &.dropdown-toggle {
-    color: $color-hover;
+    @include color-yiq($color);
     background-color: $active-background;
     border-color: $active-border;
   }
