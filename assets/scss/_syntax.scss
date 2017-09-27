@@ -62,5 +62,15 @@
 .css .o + .nt,
 .css .nt + .nt { color: #999; }
 
-.language-bash::before { color: #009; content: "$ "; user-select: none; }
-.language-powershell::before { color: #009; content: "PM> "; user-select: none; }
+.language-bash::before,
+.language-sh::before {
+  color: #009;
+  content: "$ ";
+  user-select: none;
+}
+
+.language-powershell::before {
+  color: #009;
+  content: "PM> ";
+  user-select: none;
+}
