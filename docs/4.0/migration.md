@@ -135,7 +135,7 @@ New to Bootstrap 4 is the [Reboot]({{ site.baseurl }}/docs/{{ site.docs_version 
 ### Button group
 
 - Rewrote component with flexbox.
-- Removed `.btn-group-justified`.
+- Removed `.btn-group-justified`. As a replacement you can use `<div class="btn-group d-flex" role="group"></div>` as a wrapper around elements with `.w-100`.
 - Dropped the `.btn-group-xs` class entirely given removal of `.btn-xs`.
 - Removed explicit spacing between button groups in button toolbars; use margin utilities now.
 - Improved documentation for use with other components.
