@@ -144,7 +144,7 @@
     var slidEvent = $.Event('slid.bs.carousel', { relatedTarget: relatedTarget, direction: direction }) // yes, "slid"
     if ($.support.transition && this.$element.hasClass('slide')) {
       $next.addClass(type)
-      if (typeof $next == 'object' && $next.length) 
+      if (typeof $next == 'object' && $next.length)
       {
         $next[0].offsetWidth // force reflow
       }
