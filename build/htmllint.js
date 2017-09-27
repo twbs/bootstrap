@@ -1,23 +1,46 @@
+#!/usr/bin/env node
+
+/*!
+ * Script to run vnu-jar if Java is available.
+ * Copyright 2017 The Bootstrap Authors
+ * Copyright 2017 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+
 'use strict'
 
 const childProcess = require('child_process')
-const fs = require('fs')
+const vnu = require('vnu-jar')
 
-if (fs.existsSync('vnu.jar')) {
-  childProcess.exec('java -version', function (error) {
-    if (error) {
-      console.error('skipping HTML lint test. java missing.')
-      return
-    }
+childProcess.exec('java -version', function (error) {
+  if (error) {
+    console.error('Skipping HTML lint test; Java is missing.')
+    return
+  }
 
-    const vnu = childProcess.spawn(
-                                   'java',
-                                   ['-jar', 'vnu.jar', '--skip-non-html', '_gh_pages/'],
-                                   { stdio: 'inherit' }
-                                  )
+  const ignores = [
+    'Attribute “autocomplete” is only allowed when the input type is “color”, “date”, “datetime-local”, “email”, “hidden”, “month”, “number”, “password”, “range”, “search”, “tel”, “text”, “time”, “url”, or “week”.',
+    'Attribute “autocomplete” not allowed on element “button” at this point.',
+    'Attribute “title” not allowed on element “circle” at this point.',
+    'Bad value “tablist” for attribute “role” on element “nav”.',
+    'Element “img” is missing required attribute “src”.',
+    'Element “legend” not allowed as child of element “div” in this context.*'
+  ].join('|')
 
-    vnu.on('exit', process.exit)
+  const args = [
+    '-jar',
+    vnu,
+    '--asciiquotes',
+    '--errors-only',
+    '--skip-non-html',
+    `--filterpattern "${ignores}"`,
+    '_gh_pages/',
+    'js/tests/'
+  ]
+
+  return childProcess.spawn('java', args, {
+    shell: true,
+    stdio: 'inherit'
   })
-} else {
-  console.error('skipping HTML lint test. vnu.jar missing.')
-}
+  .on('exit', process.exit)
+})
