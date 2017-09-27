@@ -31,7 +31,7 @@
     "js": "npm-run-all js-lint* js-compile js-minify",
     "js-docs": "npm-run-all js-lint-docs js-minify-docs",
     "js-lint": "eslint js/ && eslint --config js/tests/.eslintrc.json --env node build/ Gruntfile.js",
-    "js-lint-docs": "eslint --config js/tests/.eslintrc.json assets/js/ sw.js",
+    "js-lint-docs": "eslint --config js/tests/.eslintrc.json assets/js/ docs/ sw.js",
     "js-compile": "npm-run-all --parallel js-compile-*",
     "js-compile-standalone": "cross-env ROLLUP=true rollup --environment BUNDLE:false --config build/rollup.config.js",
     "js-compile-bundle": "cross-env ROLLUP=true rollup --environment BUNDLE:true --config build/rollup.config.js",
