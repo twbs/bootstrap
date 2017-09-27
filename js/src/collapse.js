@@ -1,3 +1,4 @@
+import $ from 'jquery'
 import Util from './util'
 
 
@@ -8,7 +9,7 @@ import Util from './util'
  * --------------------------------------------------------------------------
  */
 
-const Collapse = (($) => {
+const Collapse = (() => {
 
 
   /**
@@ -32,7 +33,7 @@ const Collapse = (($) => {
 
   const DefaultType = {
     toggle : 'boolean',
-    parent : 'string'
+    parent : '(string|element)'
   }
 
   const Event = {
@@ -288,7 +289,18 @@ const Collapse = (($) => {
     }
 
     _getParent() {
-      const parent   = $(this._config.parent)[0]
+      let parent = null
+      if (Util.isElement(this._config.parent)) {
+        parent = this._config.parent
+
+        // it's a jQuery object
+        if (typeof this._config.parent.jquery !== 'undefined') {
+          parent = this._config.parent[0]
+        }
+      } else {
+        parent = $(this._config.parent)[0]
+      }
+
       const selector =
         `[data-toggle="collapse"][data-parent="${this._config.parent}"]`
 
@@ -362,7 +374,7 @@ const Collapse = (($) => {
 
   $(document).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
     // preventDefault only for <a> elements (which change the URL) not inside the collapsible element
-    if (event.target.tagName === 'A' && !$.contains(this, event.target)) {
+    if (event.currentTarget.tagName === 'A') {
       event.preventDefault()
     }
 

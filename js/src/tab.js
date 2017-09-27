@@ -1,3 +1,4 @@
+import $ from 'jquery'
 import Util from './util'
 
 
@@ -8,7 +9,7 @@ import Util from './util'
  * --------------------------------------------------------------------------
  */
 
-const Tab = (($) => {
+const Tab = (() => {
 
 
   /**
@@ -195,11 +196,15 @@ const Tab = (($) => {
           $(dropdownChild).removeClass(ClassName.ACTIVE)
         }
 
-        active.setAttribute('aria-expanded', false)
+        if (active.getAttribute('role') === 'tab') {
+          active.setAttribute('aria-selected', false)
+        }
       }
 
       $(element).addClass(ClassName.ACTIVE)
-      element.setAttribute('aria-expanded', true)
+      if (element.getAttribute('role') === 'tab') {
+        element.setAttribute('aria-selected', true)
+      }
 
       if (isTransitioning) {
         Util.reflow(element)
