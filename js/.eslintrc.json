@@ -7,6 +7,7 @@
     "jquery": true
   },
   "extends": "eslint:recommended",
+  "plugins": ["compat"],
   "parserOptions": {
     "ecmaVersion": 8,
     "sourceType": "module"
@@ -17,6 +18,7 @@
     "no-extra-parens": "error",
     "no-prototype-builtins": "error",
     "no-template-curly-in-string": "error",
+    "compat/compat": "error",
     "valid-jsdoc": "error",
 
     // Best Practices
