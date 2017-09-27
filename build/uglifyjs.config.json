@@ -1,5 +1,8 @@
 {
-	"output" : {
-		"comments": "/^!/"
-	}
+  "output": {
+    "comments": "/^!/"
+  },
+  "compress": {
+    "typeofs": false
+  }
 }
