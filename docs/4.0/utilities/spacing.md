@@ -39,6 +39,7 @@ Where *size* is one of:
 * `3` - (by default) for classes that set the `margin` or `padding` to `$spacer`
 * `4` - (by default) for classes that set the `margin` or `padding` to `$spacer * 1.5`
 * `5` - (by default) for classes that set the `margin` or `padding` to `$spacer * 3`
+* `auto` - for classes that set the `margin` to auto
 
 (You can add more sizes by adding entries to the `$spacers` Sass map variable.)
 
