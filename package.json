@@ -85,6 +85,7 @@
     "clean-css-cli": "^4.1.6",
     "cross-env": "^5.0.5",
     "eslint": "^4.2.0",
+    "eslint-plugin-compat": "^1.0.4",
     "grunt": "^1.0.1",
     "grunt-cli": "^1.2.0",
     "grunt-saucelabs": "^9.0.0",
@@ -120,6 +121,16 @@
     ".scss-lint.yml",
     "scss/**/*.scss",
     "LICENSE"
+  ],
+  "browserslist": [
+    "Chrome >= 45",
+    "Firefox ESR",
+    "Edge >= 12",
+    "Explorer >= 10",
+    "iOS >= 9",
+    "Safari >= 9",
+    "Android >= 4.4",
+    "Opera >= 30"
   ],
   "jspm": {
     "registry": "npm",

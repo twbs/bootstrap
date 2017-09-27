@@ -54,14 +54,14 @@ current_version:    4.0.0-beta
 docs_version:       4.0
 repo:               "https://github.com/twbs/bootstrap"
 slack:              "https://bootstrap-slack.herokuapp.com"
-download:
-  source:           "https://github.com/twbs/bootstrap/archive/v4.0.0-beta.zip"
-  dist:             "https://github.com/twbs/bootstrap/releases/download/v4.0.0-beta/bootstrap-4.0.0-beta-dist.zip"
-
 blog:               "https://blog.getbootstrap.com"
 expo:               "https://expo.getbootstrap.com"
 jobs:               "https://jobs.getbootstrap.com"
 themes:             "https://themes.getbootstrap.com"
+
+download:
+  source:           "https://github.com/twbs/bootstrap/archive/v4.0.0-beta.zip"
+  dist:             "https://github.com/twbs/bootstrap/releases/download/v4.0.0-beta/bootstrap-4.0.0-beta-dist.zip"
 
 cdn:
   # See https://www.srihash.org for info on how to generate the hashes
