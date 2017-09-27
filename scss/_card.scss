@@ -56,6 +56,10 @@
       @include border-bottom-radius($card-border-radius);
     }
   }
+
+  .card-header + .list-group > .list-group-item:first-child {
+    border-top: 0;
+  }
 }
 
 
@@ -136,9 +140,15 @@
 
 // Card deck
 
-@include media-breakpoint-up(sm) {
-  .card-deck {
-    display: flex;
+.card-deck {
+  display: flex;
+  flex-direction: column;
+
+  .card {
+    margin-bottom: $card-deck-margin;
+  }
+
+  @include media-breakpoint-up(sm) {
     flex-flow: row wrap;
     margin-right: -$card-deck-margin;
     margin-left: -$card-deck-margin;
@@ -148,6 +158,7 @@
       flex: 1 0 0%;
       flex-direction: column;
       margin-right: $card-deck-margin;
+      margin-bottom: 0; // Override the default
       margin-left: $card-deck-margin;
     }
   }
@@ -158,13 +169,20 @@
 // Card groups
 //
 
-@include media-breakpoint-up(sm) {
-  .card-group {
-    display: flex;
+.card-group {
+  display: flex;
+  flex-direction: column;
+
+  .card {
+    margin-bottom: $card-group-margin;
+  }
+
+  @include media-breakpoint-up(sm) {
     flex-flow: row wrap;
 
     .card {
       flex: 1 0 0%;
+      margin-bottom: 0;
 
       + .card {
         margin-left: 0;
@@ -183,6 +201,7 @@
             border-bottom-right-radius: 0;
           }
         }
+
         &:last-child {
           @include border-left-radius(0);
 
@@ -194,13 +213,17 @@
           }
         }
 
-        &:not(:first-child):not(:last-child) {
+        &:not(:first-child):not(:last-child):not(:only-child) {
           border-radius: 0;
 
           .card-img-top,
           .card-img-bottom {
             border-radius: 0;
           }
+        }
+
+        &:only-child {
+          @include border-radius($card-border-radius);
         }
       }
     }

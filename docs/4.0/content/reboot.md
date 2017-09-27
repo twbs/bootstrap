@@ -22,9 +22,9 @@ Here are our guidelines and reasons for choosing what to override in Reboot:
 
 The `<html>` and `<body>` elements are updated to provide better page-wide defaults. More specifically:
 
-- The `box-sizing` is globally set on every element—including `*:before` and `*:after`, to `border-box`. This ensures that the declared width of element is never exceeded due to padding or border.
+- The `box-sizing` is globally set on every element—including `*::before` and `*::after`, to `border-box`. This ensures that the declared width of element is never exceeded due to padding or border.
   - No base `font-size` is declared on the `<html>`, but `16px` is assumed (the browser default). `font-size: 1rem` is applied on the `<body>` for easy responsive type-scaling via media queries while respecting user preferences and ensuring a more accessible approach.
-- The `<body>` also sets a global `font-family` and `line-height`. This is inherited later by some form elements to prevent font inconsistencies.
+- The `<body>` also sets a global `font-family`, `line-height`, and `text-align`. This is inherited later by some form elements to prevent font inconsistencies.
 - For safety, the `<body>` has a declared `background-color`, defaulting to `#fff`.
 
 ## Native font stack
@@ -35,8 +35,6 @@ The default web fonts (Helvetica Neue, Helvetica, and Arial) have been dropped i
 $font-family-sans-serif:
   // Safari for OS X and iOS (San Francisco)
   -apple-system,
-  // Chrome >= 56 for OS X (San Francisco), Windows, Linux and Android
-  system-ui,
   // Chrome < 56 for OS X (San Francisco)
   BlinkMacSystemFont,
   // Windows
@@ -44,7 +42,9 @@ $font-family-sans-serif:
   // Android
   "Roboto",
   // Basic web fallback
-  "Helvetica Neue", Arial, sans-serif !default;
+  "Helvetica Neue", Arial, sans-serif,
+  // Emoji fonts
+  "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
 {% endhighlight %}
 
 This `font-family` is applied to the `<body>` and automatically inherited globally throughout Bootstrap. To switch the global `font-family`, update `$font-family-base` and recompile Bootstrap.
@@ -330,7 +330,7 @@ The `<abbr>` element receives basic styling to make it stand out amongst paragra
 
 ## HTML5 `[hidden]` attribute
 
-HTML5 adds [a new global attribute named `[hidden]`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/hidden), which is styled as `display: none` by default. Borrowing an idea from [PureCSS](https://purecss.io), we improve upon this default by making `[hidden] { display: none !important; }` to help prevent its `display` from getting accidentally overridden. While `[hidden]` isn't natively supported by IE10, the explicit declaration in our CSS gets around that problem.
+HTML5 adds [a new global attribute named `[hidden]`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/hidden), which is styled as `display: none` by default. Borrowing an idea from [PureCSS](https://purecss.io/), we improve upon this default by making `[hidden] { display: none !important; }` to help prevent its `display` from getting accidentally overridden. While `[hidden]` isn't natively supported by IE10, the explicit declaration in our CSS gets around that problem.
 
 {% highlight html %}
 <input type="text" hidden>
@@ -339,7 +339,7 @@ HTML5 adds [a new global attribute named `[hidden]`](https://developer.mozilla.o
 {% callout warning %}
 #### jQuery incompatibility
 
-`[hidden]` is not compatible with jQuery's `$(...).hide()` and `$(...).show()` methods. This could potentially change in jQuery 3, but we're not holding our breath. Therefore, we don't currently especially endorse `[hidden]` over other techniques for managing the `display` of elements.
+`[hidden]` is not compatible with jQuery's `$(...).hide()` and `$(...).show()` methods. Therefore, we don't currently especially endorse `[hidden]` over other techniques for managing the `display` of elements.
 {% endcallout %}
 
 To merely toggle the visibility of an element, meaning its `display` is not modified and the element can still affect the flow of the document, use [the `.invisible` class]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/visibility/) instead.

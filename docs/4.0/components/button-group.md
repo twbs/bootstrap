@@ -25,6 +25,7 @@ In order for assistive technologies (such as screen readers) to convey that a se
 
 In addition, groups and toolbars should be given an explicit label, as most assistive technologies will otherwise not announce them, despite the presence of the correct role attribute. In the examples provided here, we use `aria-label`, but alternatives such as `aria-labelledby` can also be used.
 {% endcallout %}
+
 ## Button toolbar
 
 Combine sets of button groups into button toolbars for more complex components. Use utility classes as needed to space out groups, buttons, and more.
@@ -195,7 +196,3 @@ Make a set of buttons appear vertically stacked rather than horizontally. **Spli
   ...
 </div>
 {% endhighlight %}
-
-## Tooltips and popovers
-
-Due to the specific implementation (and some other components), a bit of special casing is required for tooltips and popovers within button groups. **You'll have to specify the option `container: 'body'`** to avoid unwanted side effects (such as the element growing wider and/or losing its rounded corners when the tooltip or popover is triggered).

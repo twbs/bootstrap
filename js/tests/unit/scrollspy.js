@@ -21,7 +21,7 @@ $(function () {
 
   QUnit.test('should provide no conflict', function (assert) {
     assert.expect(1)
-    assert.strictEqual($.fn.scrollspy, undefined, 'scrollspy was set back to undefined (org value)')
+    assert.strictEqual(typeof $.fn.scrollspy, 'undefined', 'scrollspy was set back to undefined (org value)')
   })
 
   QUnit.test('should throw explicit error on undefined method', function (assert) {
@@ -331,6 +331,47 @@ $(function () {
       + '<a id="a-2" class="nav-link" href="#div-2">div 2</a>'
       + '</nav>'
       + '</nav>'
+      + '</nav>'
+
+    var contentHtml = '<div class="content" style="position: absolute; top: 0px; overflow: auto; height: 50px">'
+      + '<div id="div-1" style="padding: 0; margin: 0">'
+      + '<div id="div-2" style="height: 200px; padding: 0; margin: 0">div 2</div>'
+      + '</div>'
+      + '</div>'
+
+    $(navbarHtml).appendTo('#qunit-fixture')
+
+    var $content = $(contentHtml)
+      .appendTo('#qunit-fixture')
+      .bootstrapScrollspy({ offset: 0, target: '#navigation' })
+
+    function testActiveElements() {
+      if (++times > 3) { return done() }
+
+      $content.one('scroll', function () {
+        assert.ok($('#a-1').hasClass('active'), 'nav item for outer element has "active" class')
+        assert.ok($('#a-2').hasClass('active'), 'nav item for inner element has "active" class')
+        testActiveElements()
+      })
+
+      $content.scrollTop($content.scrollTop() + 10)
+    }
+
+    testActiveElements()
+  })
+
+
+  QUnit.test('should add the active class correctly when there are nested elements (nav nav-item markup)', function (assert) {
+    assert.expect(6)
+    var times = 0
+    var done = assert.async()
+    var navbarHtml = '<nav id="navigation" class="navbar">'
+      + '<ul class="nav">'
+      + '<li class="nav-item"><a id="a-1" class="nav-link" href="#div-1">div 1</a></li>'
+      + '<ul class="nav">'
+      + '<li class="nav-item"><a id="a-2" class="nav-link" href="#div-2">div 2</a></li>'
+      + '</ul>'
+      + '</ul>'
       + '</nav>'
 
     var contentHtml = '<div class="content" style="position: absolute; top: 0px; overflow: auto; height: 50px">'

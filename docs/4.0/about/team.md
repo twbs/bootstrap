@@ -19,4 +19,4 @@ Bootstrap is maintained by the founding team and a small group of invaluable cor
   {% endfor %}
 </div>
 
-Get involved with Bootstrap development by [opening an issue](https://github.com/twbs/bootstrap/issues/new) or submitting a pull request. Read our [contributing guidelines](https://github.com/twbs/bootstrap/blob/master/CONTRIBUTING.md) for information on how we develop.
+Get involved with Bootstrap development by [opening an issue]({{ site.repo }}/issues/new) or submitting a pull request. Read our [contributing guidelines]({{ site.repo }}/blob/v{{ site.current_version }}/.github/CONTRIBUTING.md) for information on how we develop.

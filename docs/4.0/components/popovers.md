@@ -11,8 +11,9 @@ toc: true
 Things to know when using the popover plugin:
 
 
-- Popovers rely on the 3rd party library [Popper.js](https://popper.js.org) for positioning. You must include [popper.min.js](https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.10.8/umd/popper.min.js) before bootstrap.js in order for popovers to work!
+- Popovers rely on the 3rd party library [Popper.js](https://popper.js.org/) for positioning. You must include [popper.min.js]({{ site.cdn.popper }}) before bootstrap.js or use `bootstrap.bundle.min.js` / `bootstrap.bundle.js` which contains Popper.js in order for popovers to work!
 - Popovers require the [tooltip plugin]({{ site.baseurl }}/docs/{{ site.docs_version }}/components/tooltips/) as a dependency.
+- If building our JS from source, it [requires `util.js`]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/javascript/#util).
 - Popovers are opt-in for performance reasons, so **you must initialize them yourself**.
 - Zero-length `title` and `content` values will never show a popover.
 - Specify `container: 'body'` to avoid rendering problems in more complex components (like our input groups, button groups, etc).
@@ -148,7 +149,6 @@ $('.popover-dismiss').popover({
   trigger: 'focus'
 })
 {% endhighlight %}
-
 
 
 ## Usage
@@ -305,7 +305,6 @@ Toggles an element's popover. **Returns to the caller before the popover has act
 
 Hides and destroys an element's popover. Popovers that use delegation (which are created using [the `selector` option](#options)) cannot be individually destroyed on descendant trigger elements.
 
-
 {% highlight js %}$('#element').popover('dispose'){% endhighlight %}
 
 #### `.popover('enable')`
@@ -360,7 +359,7 @@ Updates the position of an element's popover.
     </tr>
     <tr>
       <td>inserted.bs.popover</td>
-      <td>This event is fired after the <code>show.bs.popover</code> event when the tooltip template has been added to the DOM.</td>
+      <td>This event is fired after the <code>show.bs.popover</code> event when the popover template has been added to the DOM.</td>
     </tr>
   </tbody>
 </table>

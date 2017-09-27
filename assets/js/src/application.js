@@ -96,15 +96,10 @@
         .tooltip('_fixTitle')
     })
 
+    anchors.options = {
+      icon: '#'
+    }
+    anchors.add('.bd-content > h2, .bd-content > h3, .bd-content > h4, .bd-content > h5')
+    $('.bd-content > h2, .bd-content > h3, .bd-content > h4, .bd-content > h5').wrapInner('<div></div>')
   })
-
 }(jQuery))
-
-;(function () {
-  'use strict'
-
-  anchors.options = {
-    icon: '#'
-  }
-  anchors.add('.bd-content > h2, .bd-content > h3, .bd-content > h4, .bd-content > h5')
-}())
