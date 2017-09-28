@@ -234,6 +234,10 @@ input[type="search"] {
   label {
     margin-bottom: 2px;
   }
+
+  &:focus-within .control-label {
+    color: @control-label-focus;
+  }
 }
 .row-equal-height > [class*="col-"] > .form-group {
   width: 100%;

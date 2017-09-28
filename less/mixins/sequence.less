@@ -27,21 +27,14 @@
     &:before {
       margin-top: ((@sequence-step-height / 2) - (@sequence-pip-size / 2));
     }
+    &:after {
+      top: @pip-offset-desktop;
+    }
     &:first-child:after {
-      margin-top: @pip-offset-mobile;
-      height: ~"calc(100% - @{pip-offset-mobile})";
+      height: 100%;
     }
     &:last-child:after {
-      height: @pip-offset-mobile;
-    }
-    @media (min-width: @screen-md-min) {
-      &:first-child:after {
-        margin-top: @pip-offset-desktop;
-        height: ~"calc(100% - @{pip-offset-desktop})";
-      }
-      &:last-child:after {
-        height: @pip-offset-desktop;
-      }
+      height: 0;
     }
   }
 
@@ -51,8 +44,7 @@
       margin-top: 0;
 
       &:after {
-        height: 100%;
-        margin-top: 0;
+        height: ~"calc(100% + @{pip-offset-desktop})";
       }
     }
   }
@@ -62,8 +54,13 @@
       margin-bottom: 0;
 
       &:after {
-        height: 100%;
+        height: ~"calc(100% - @{pip-offset-desktop})";
       }
+    }
+  }
+  &.sequence-top.sequence-bottom {
+    > li:first-child:last-child:after {
+      height: 100%;
     }
   }
 
@@ -106,13 +103,30 @@
   }
 }
 
+.sequence-variant(@type, @color) {
+  @variant: ~'.sequence-@{type}';
 
+  @{variant} {
+    .sequence-variant-detail(
+      @color,
+      @pip-offset-sm, @pip-offset-md, @pip-offset-lg,
+      @sequence-border, @sequence-inverse-border, @sequence-margin-lg
+    );
+  }
+
+  @keyframes ~'sequence-pip-@{type}' {
+    from { border-color: @sequence-border; }
+    to { border-color: @color; }
+  }
+}
+
+// TODO update description
 // The line for the active item needs to be the active colour before the 'pip' and
 // the inactive colour afterwards.  This is tricky because we don't know the height.
 // However, we can achieve this with one element by using a gradient with a hard
 // transition between colours at the right point.  We need several variants to cover
 // our large and inverse options.
-.sequence-variant(
+.sequence-variant-detail(
   @color,
   @pip-offset-sm,
   @pip-offset-md,
@@ -123,50 +137,42 @@
 ) {
   > li {
     border-color: @color;
+    &:after {
+      background-image: linear-gradient(@color 0, @color 50%, @sequence-border 50%, @sequence-border 100%);
+    }
   }
+  &.sequence-inverse > li {
+    &:after {
+      background-image: linear-gradient(@color 0, @color 50%, @sequence-inverse-border 50%, @sequence-inverse-border 100%);
+    }
+  }
+
   > .active {
     &:before {
       border-color: @color;
       background-color: @color;
     }
-    &:after {
-      background: linear-gradient(@color 0, @color @pip-offset-sm, @sequence-border @pip-offset-sm, @sequence-border 100%);
-      @media (min-width: @screen-md-min) {
-        background: linear-gradient(@color 0, @color @pip-offset-md, @sequence-border @pip-offset-md, @sequence-border 100%);
-      }
-    }
-    &:first-child:after {
-      background: @sequence-border;
-    }
-    &:last-child:after {
-      background: @color;
-    }
   }
-  &.sequence-inverse > .active {
-    &:after {
-      background: linear-gradient(@color 0, @color @pip-offset-sm, @sequence-inverse-border @pip-offset-sm, @sequence-inverse-border 100%);
-      @media (min-width: @screen-md-min) {
-        background: linear-gradient(@color 0, @color @pip-offset-md, @sequence-inverse-border @pip-offset-md, @sequence-inverse-border 100%);
-      }
-    }
-  }
+}
 
-  @media (min-width: @screen-md-min) {
-    &.sequence-lg > .active {
-      &:after {
-        background: linear-gradient(@color 0, @color @pip-offset-lg, @sequence-border @pip-offset-lg, @sequence-border 100%);
-      }
-      &:first-child:after {
-        background: linear-gradient(@color 0, @color (@pip-offset-lg + @sequence-margin), @sequence-border @pip-offset-lg, @sequence-border 100%);
-      }
-    }
-    &.sequence-lg.sequence-inverse > .active {
-      &:after {
-        background: linear-gradient(@color 0, @color @pip-offset-lg, @sequence-inverse-border @pip-offset-lg, @sequence-inverse-border 100%);
-      }
-      &:first-child:after {
-        background: linear-gradient(@color 0, @color (@pip-offset-lg + @sequence-margin), @sequence-inverse-border @pip-offset-lg, @sequence-inverse-border 100%);
-      }
-    }
+.sequence-animation-variant(@type) {
+  > li:before {
+    animation:
+      @speed-per-item linear 0.3s both ~"sequence-pip-@{type}",
+      @speed-per-pulse linear 0.3s forwards ~"sequence-pulse-@{type}";
+  }
+  > .active:before {
+    animation:
+      @speed-per-item linear 0.3s both ~"sequence-pip-@{type}",
+      @speed-per-pulse linear 0.3s infinite ~"sequence-pulse-@{type}";
+  }
+}
+
+.sequence-animation-delays(@counter) when (@counter > 0) {
+  .sequence-animation-delays((@counter - 1));
+
+  > li:nth-child(@{counter}):before,
+  > li:nth-child(@{counter}):after {
+    animation-delay: (@counter * @speed-per-item) !important;
   }
 }

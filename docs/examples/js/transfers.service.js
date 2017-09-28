@@ -19,52 +19,56 @@
 
 		this.transfers = [{
 			id: 1,
-			type: "REQUEST",
+			type: "TRANSFER",
 			source: "GBP",
 			target: "USD",
-			fixed: "RATE",
+			fixed: "SOURCE",
 			sourceAmount: 10.00,
 			targetAmount: 12.34,
 			sourceAccount: {
+				name: "Steve Pole",
+				type: "ACCOUNT",
+				shortString: "Account ending 9876"
+			},
+			targetAccount: {
 				name: "Mike Marter",
 				shortString: "Account ending 1234"
 			},
-			targetAccount: {
-				name: "Steve Pole",
-				shortString: "Account ending 1234"
-			},
-			status: "PAUSED",
-			reason: "We received your money. There was a problem with your documents.",
+			status: "AWAITING_FUNDS",
+			phase: "INCOMING",
+			state: "PENDING",
 			reference: "Ref123",
 			fee: 0.50,
 			rate: 1.2345,
 			created: "2016-06-30T12:34:56Z",
 			updated: "2016-07-01T12:34:56Z",
+			batch: 1
 		},{
 			id: 2,
 			type: "TRANSFER",
 			source: "GBP",
 			target: "USD",
-			fixed: "TARGET",
-			sourceAmount: 10.00,
-			targetAmount: 12.34,
+			fixed: "SOURCE",
+			sourceAmount: 10000000.00,
+			targetAmount: 12345000.00,
 			sourceAccount: {
 				name: "Steve Pole",
-				type: "CARD",
-				shortString: "Debit card ending 4321"
+				type: "ACCOUNT",
+				shortString: "Account ending 9876"
 			},
 			targetAccount: {
-				name: "Steve Pole",
-				type: "WALLET",
-				shortString: "USD balance"
+				name: "Mike Marter",
+				shortString: "Account ending 1234"
 			},
-			status: "PROCESSING",
-			reason: "We received your money. We're processing your transfer.",
+			status: "FUNDED",
+			phase: "INCOMING",
+			state: "INITIATED",
 			reference: "Ref123",
-			fee: 0.50,
+			fee: 50.00,
 			rate: 1.2345,
 			created: "2016-06-30T12:34:56Z",
 			updated: "2016-07-01T12:34:56Z",
+			batch: 1
 		},{
 			id: 3,
 			type: "TRANSFER",
@@ -84,7 +88,8 @@
 				shortString: "USD balance"
 			},
 			status: "CONVERTING",
-			reason: "Converting",
+			phase: "INCOMING",
+			state: "RECIEVED",
 			reference: "Ref123",
 			fee: 5.50,
 			rate: 1.2345,
@@ -95,53 +100,29 @@
 			type: "TRANSFER",
 			source: "GBP",
 			target: "USD",
-			fixed: "SOURCE",
+			fixed: "TARGET",
 			sourceAmount: 10.00,
 			targetAmount: 12.34,
 			sourceAccount: {
 				name: "Steve Pole",
-				type: "ACCOUNT",
-				shortString: "Account ending 9876"
+				type: "CARD",
+				shortString: "Debit card ending 4321"
 			},
 			targetAccount: {
-				name: "Mike Marter",
-				shortString: "Account ending 1234"
+				name: "Steve Pole",
+				type: "WALLET",
+				shortString: "USD balance"
 			},
-			status: "AWAITING_FUNDS",
-			reason: "Waiting for you to pay in.",
+			status: "PROCESSING",
+			phase: "OUTGOING",
+			state: "PENDING",
 			reference: "Ref123",
 			fee: 0.50,
 			rate: 1.2345,
 			created: "2016-06-30T12:34:56Z",
 			updated: "2016-07-01T12:34:56Z",
-			batch: 1
 		},{
 			id: 5,
-			type: "TRANSFER",
-			source: "GBP",
-			target: "USD",
-			fixed: "SOURCE",
-			sourceAmount: 10000000.00,
-			targetAmount: 12345000.00,
-			sourceAccount: {
-				name: "Steve Pole",
-				type: "ACCOUNT",
-				shortString: "Account ending 9876"
-			},
-			targetAccount: {
-				name: "Mike Marter",
-				shortString: "Account ending 1234"
-			},
-			status: "FUNDED",
-			reason: "We're waiting for your money to arrive in our account.",
-			reference: "Ref123",
-			fee: 50.00,
-			rate: 1.2345,
-			created: "2016-06-30T12:34:56Z",
-			updated: "2016-07-01T12:34:56Z",
-			batch: 1
-		},{
-			id: 6,
 			type: "TRANSFER",
 			source: "GBP",
 			target: "USD",
@@ -159,7 +140,8 @@
 				shortString: "Account ending 1234"
 			},
 			status: "PAID_OUT",
-			reason: "We've sent out your money, it may take some time to arrive in the account.",
+			phase: "OUTGOING",
+			state: "INITIATED",
 			reference: "Ref123",
 			fee: 0.50,
 			rate: 1.2345,
@@ -167,8 +149,8 @@
 			updated: "2016-07-01T12:34:56Z",
 			completed: "2016-07-01T12:34:56Z"
 		},{
-			id: 7,
-			type: "TRANSFER",
+			id: 6,
+			type: "CARD",
 			source: "GBP",
 			target: "GBP",
 			fixed: "SOURCE",
@@ -184,13 +166,39 @@
 				type: "MERCHANT",
 				shortString: "Merchant account"
 			},
-			status: "COMPLETED",
+			status: "PAID_OUT",
+			phase: "OUTGOING",
+			state: "RECEIVED",
 			reference: "Ref123",
 			fee: 0.00,
 			rate: 1.0000,
 			created: "2016-06-30T12:34:56Z",
 			updated: "2016-07-01T12:34:56Z",
 			completed: "2016-07-01T12:34:56Z"
+		},{
+			id: 7,
+			type: "REQUEST",
+			source: "GBP",
+			target: "USD",
+			fixed: "RATE",
+			sourceAmount: 10.00,
+			targetAmount: 12.34,
+			sourceAccount: {
+				name: "Mike Marter",
+				shortString: "Account ending 1234"
+			},
+			targetAccount: {
+				name: "Steve Pole",
+				shortString: "Account ending 1234"
+			},
+			status: "PAUSED",
+			phase: "INCOMING",
+			state: "BLOCKED",
+			reference: "Ref123",
+			fee: 0.50,
+			rate: 1.2345,
+			created: "2016-06-30T12:34:56Z",
+			updated: "2016-07-01T12:34:56Z",
 		},{
 			id: 8,
 			type: "REQUEST",
@@ -210,6 +218,8 @@
 				shortString: "GBP balance"
 			},
 			status: "COMPLETED",
+			phase: "FINISHED",
+			state: "COMPLETE",
 			reference: "Ref123",
 			fee: 0.00,
 			rate: 1.0000,
@@ -235,6 +245,8 @@
 				shortString: "Account ending 1234"
 			},
 			status: "CANCELLED",
+			phase: "FINISHED",
+			state: "CANCELLED",
 			reference: "NewHouse",
 			fee: 500.00,
 			rate: 1.1987,
@@ -259,6 +271,8 @@
 				shortString: "GBP balance"
 			},
 			status: "COMPLETED",
+			phase: "FINISHED",
+			state: "COMPLETE",
 			reference: "Ref123",
 			fee: 0.00,
 			rate: 1.0000,
@@ -284,6 +298,8 @@
 				shortString: "GBP balance"
 			},
 			status: "COMPLETED",
+			phase: "FINISHED",
+			state: "COMPLETE",
 			reference: "Ref123",
 			fee: 0.50,
 			rate: 0.9123,
@@ -309,17 +325,17 @@
 				shortString: "GBP balance"
 			},
 			status: "COMPLETED",
+			phase: "FINISHED",
+			state: "COMPLETE",
 			reference: "Referral Bonus",
 			fee: 0.00,
 			rate: 1.0000,
 			created: "2016-03-30T12:34:56Z",
 			updated: "2016-04-01T12:34:56Z",
 			completed: "2016-04-01T12:34:56Z"
-		}];
-
-		/*
+		},
 		{
-			id: 2,
+			id: 13,
 			type: "TOPUP",
 			source: "GBP",
 			target: "USD",
@@ -336,15 +352,16 @@
 				type: "WALLET",
 				shortString: "USD balance"
 			},
-			status: "PROCESSING",
-			reason: "We received your money. We're processing your transfer.",
+			status: "PAID_OUT",
+			phase: "OUTGOING",
+			state: "RECEIVED",
 			reference: "Ref123",
 			fee: 0.50,
 			rate: 1.2345,
 			created: "2016-06-30T12:34:56Z",
 			updated: "2016-07-01T12:34:56Z",
 		},{
-			id: 3,
+			id: 14,
 			type: "TOPUP",
 			source: "GBP",
 			target: "USD",
@@ -362,14 +379,15 @@
 				shortString: "USD balance"
 			},
 			status: "CONVERTING",
-			reason: "Converting",
+			phase: "INCOMING",
+			state: "COMPLETE",
 			reference: "Ref123",
 			fee: 5.50,
 			rate: 1.2345,
 			created: "2016-06-30T12:34:56Z",
 			updated: "2016-07-01T12:34:56Z",
 		},{
-			id: 7,
+			id: 15,
 			type: "CARD",
 			source: "GBP",
 			target: "GBP",
@@ -387,6 +405,8 @@
 				shortString: "Merchant account"
 			},
 			status: "COMPLETED",
+			phase: "FINISHED",
+			state: "COMPLETE",
 			reference: "Ref123",
 			fee: 0.00,
 			rate: 1.0000,
@@ -394,32 +414,7 @@
 			updated: "2016-07-01T12:34:56Z",
 			completed: "2016-07-01T12:34:56Z"
 		},{
-			id: 10,
-			type: "TOPUP",
-			source: "GBP",
-			target: "GBP",
-			fixed: "SOURCE",
-			sourceAmount: 100.00,
-			targetAmount: 100.00,
-			sourceAccount: {
-				name: "Steve Pole",
-				type: "CARD",
-				shortString: "Debit card ending 4321"
-			},
-			targetAccount: {
-				name: "Steve Pole",
-				type: "WALLET",
-				shortString: "GBP balance"
-			},
-			status: "COMPLETED",
-			reference: "Ref123",
-			fee: 0.00,
-			rate: 1.0000,
-			created: "2016-03-30T12:34:56Z",
-			updated: "2016-04-01T12:34:56Z",
-			completed: "2016-04-01T12:34:56Z"
-		},{
-			id: 11,
+			id: 16,
 			type: "CONVERSION",
 			source: "EUR",
 			target: "GBP",
@@ -437,13 +432,14 @@
 				shortString: "GBP balance"
 			},
 			status: "COMPLETED",
+			phase: "FINISHED",
+			state: "COMPLETE",
 			reference: "Ref123",
 			fee: 0.50,
 			rate: 0.9123,
 			created: "2016-03-30T12:34:56Z",
 			updated: "2016-04-01T12:34:56Z",
 			completed: "2016-04-01T12:34:56Z"
-		},
-		*/
+		}]
 	}
 })(window.angular);

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Decision Example</title>
+  <meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+
+  <link type="text/css" rel="stylesheet"
+    href="../dist/css/bootstrap.min.css" />
+  <link type="text/css" rel="stylesheet"
+    href="http://transferwise.github.io/styleguide-components/components/currency-flags/dist/currency-flags.min.css" />
+
+  <link type="text/css" rel="stylesheet"
+    href="scratch.css" />
+
+  <script src="../assets/js/jquery.js"></script>
+  <script src="../assets/js/angular.js"></script>
+  <script src="../assets/js/styleguide-components.js"></script>
+  <script src="../dist/js/bootstrap.min.js"></script>
+
+  <script>
+  angular.module('ExampleApp', ['tw.styleguide-components'])
+    .controller('PageController', [
+      PageController
+    ]);
+
+  function PageController() {
+    var $ctrl = this;
+  }
+  </script>
+
+  <script src="js/nav.directive.js"></script>
+  <script src="js/simple-nav.directive.js"></script>
+  <script src="js/footer.directive.js"></script>
+
+  <script src="forms.js"></script>
+  <style>
+  .col-xl-3.col-sm-6 {
+    margin-bottom: 0;
+  }
+  </style>
+</head>
+<body ng-app="ExampleApp">
+  <div class="container m-t-3" ng-controller="PageController as ctrl">
+    <div class="row">
+      <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2  col-lg-6 col-lg-offset-3">
+        <div class="m-b-5">
+          <div class="m-b-4">
+            <h6 class="m-b-1">Choose many</h6>
+            <label class="media decision">
+              <div class="media-left">
+                <div class="circle circle-sm circle-inverse">US</div>
+              </div>
+              <div class="media-body">
+                <h5>USD Balance</h5>
+                <p>Lorem ipsum</p>
+              </div>
+              <div class="media-right" ng-init="ctrl.check1 = true;">
+                <tw-checkbox ng-model="ctrl.check1"></tw-checkboox>
+              </div>
+            </label>
+            <label class="media decision">
+              <div class="media-left">
+                <div class="circle circle-sm circle-inverse">US</div>
+              </div>
+              <div class="media-body">
+                <h5>USD Balance</h5>
+                <p>Lorem ipsum</p>
+              </div>
+              <div class="media-right">
+                <tw-checkbox ng-model="ctrl.check2"></tw-checkboox>
+              </div>
+            </label>
+            <label class="media decision m-b-3">
+              <div class="media-left">
+                <div class="circle circle-sm circle-inverse">US</div>
+              </div>
+              <div class="media-body">
+                <h5>USD Balance</h5>
+                <dl>
+                  <dt>Iban</dt>
+                  <dd>1234 5678 1234 5678</dd>
+                  <dt>Account number</dt>
+                  <dd>123 456</dd>
+                </dl>
+              </div>
+              <div class="media-right">
+                <tw-checkbox ng-model="ctrl.check3"></tw-checkboox>
+              </div>
+            </label>
+          </div>
+          <div class="row">
+            <div class="col-sm-8 col-sm-offset-2">
+              <button class="btn btn-primary btn-block">Next thing</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="m-b-5">
+          <div class="m-b-4">
+            <h6 class="m-b-1 m-t-3">Choose one</h6>
+            <label class="media decision">
+              <div class="media-left">
+                <div class="circle circle-sm circle-inverse">US</div>
+              </div>
+              <div class="media-body">
+                <h5>USD Balance</h5>
+                <p>Lorem ipsum</p>
+              </div>
+              <div class="media-right" ng-init="ctrl.radio = '1';">
+                <tw-radio ng-model="ctrl.radio" name="radio" value="1"></tw-radio>
+              </div>
+            </label>
+            <label class="media decision">
+              <div class="media-left">
+                <div class="circle circle-sm circle-inverse">US</div>
+              </div>
+              <div class="media-body">
+                <h5>USD Balance</h5>
+                <p>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum </p>
+              </div>
+              <div class="media-right">
+                <tw-radio ng-model="ctrl.radio" name="radio" value="2"></tw-radio>
+              </div>
+            </label>
+
+            <label class="media decision">
+              <div class="media-left">
+                <div class="circle circle-sm circle-inverse">US</div>
+              </div>
+              <div class="media-body">
+                <h5>USD Balance</h5>
+                <dl>
+                  <dt>Iban</dt>
+                  <dd>1234 5678 1234 5678</dd>
+                  <dt>Account number</dt>
+                  <dd>123 456</dd>
+                </dl>
+              </div>
+              <div class="media-right">
+                <tw-radio ng-model="ctrl.radio" name="radio" value="3"></tw-radio>
+              </div>
+            </label>
+          </div>
+          <div class="row">
+            <div class="col-sm-8 col-sm-offset-2">
+              <button class="btn btn-primary btn-block">Next thing</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="m-b-5">
+          <h6 class="m-b-1 m-t-3">Navigate</h6>
+          <label class="media decision">
+            <div class="media-left">
+              <div class="circle circle-sm circle-inverse">US</div>
+            </div>
+            <div class="media-body">
+              <h5>USD Balance</h5>
+              <p>Lorem ipsum</p>
+            </div>
+            <div class="media-right">
+              <span class="caret rotate270"></span>
+            </div>
+          </label>
+          <label class="media decision">
+            <div class="media-left">
+              <div class="circle circle-sm circle-inverse">US</div>
+            </div>
+            <div class="media-body">
+              <h5>USD Balance</h5>
+              <p>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum </p>
+            </div>
+            <div class="media-right">
+              <span class="caret rotate270"></span>
+            </div>
+          </label>
+
+          <label class="media decision">
+            <div class="media-left">
+              <div class="circle circle-sm circle-inverse">US</div>
+            </div>
+            <div class="media-body">
+              <h5>USD Balance</h5>
+              <dl>
+                <dt>Iban</dt>
+                <dd>1234 5678 1234 5678</dd>
+                <dt>Account number</dt>
+                <dd>123 456</dd>
+              </dl>
+            </div>
+            <div class="media-right">
+              <span class="caret rotate270"></span>
+            </div>
+          </label>
+        </div>
+
+        <div class="m-b-5">
+          <div class="m-b-4">
+            <h6 class="m-b-1 m-t-3">Chapters</h6>
+            <label class="media decision">
+              <div class="media-left">
+                <div class="circle circle-sm circle-inverse">US</div>
+              </div>
+              <div class="media-body">
+                <h5>USD Balance</h5>
+                <p>Lorem ipsum</p>
+              </div>
+              <div class="media-right">
+                <tw-process state='1' size='xs'></tw-process>
+              </div>
+            </label>
+            <label class="media decision">
+              <div class="media-left">
+                <div class="circle circle-sm circle-inverse">US</div>
+              </div>
+              <div class="media-body">
+                <h5>USD Balance</h5>
+                <p>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum </p>
+              </div>
+              <div class="media-right">
+                <span class="caret rotate270"></span>
+              </div>
+            </label>
+
+            <label class="media decision disabled">
+              <div class="media-left">
+                <div class="circle circle-sm circle-inverse">US</div>
+              </div>
+              <div class="media-body">
+                <h5>USD Balance</h5>
+                <dl>
+                  <dt>Iban</dt>
+                  <dd>1234 5678 1234 5678</dd>
+                  <dt>Account number</dt>
+                  <dd>123 456</dd>
+                </dl>
+              </div>
+              <div class="media-right">
+                <span class="caret rotate270"></span>
+              </div>
+            </label>
+          </div>
+          <div class="row">
+            <div class="col-sm-8 col-sm-offset-2">
+              <button class="btn btn-primary btn-block">Next thing</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</body>
+</html>

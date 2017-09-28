@@ -3,12 +3,12 @@
 	<li class="list-group-item p-a-0"
 		ng-repeat="transfer in $ctrl.transfers"
 		ng-class="{
-			'list-group-item-danger': transfer.status === 'PAUSED',
-			'list-group-item-warning': transfer.status === 'AWAITING_FUNDS',
-			'list-group-item-info': transfer.status === 'PROCESSING' || transfer.status === 'FUNDED',
-			'list-group-item-success': transfer.status === 'PAID_OUT',
+			'list-group-item-danger': transfer.state === 'BLOCKED',
+			'list-group-item-warning': transfer.phase === 'INCOMING' && transfer.state === 'PENDING',
+			'list-group-item-info': transfer.phase !== 'FINISHED' && transfer.state !== 'BLOCKED' && !(transfer.phase === 'INCOMING' && transfer.state === 'PENDING') && !(transfer.phase === 'OUTGOING' && transfer.state === 'RECEIVED'),
+			'list-group-item-success': transfer.phase === 'OUTGOING' && transfer.state === 'RECEIVED',
 			'active': $ctrl.active === transfer.id,
-			'disabled': transfer.status === 'CANCELLED'
+			'disabled': transfer.state === 'CANCELLED'
 		}">
 		<div class="p-a-panel" role="button"
 			ng-click="$ctrl.activate(transfer.id, $event)">

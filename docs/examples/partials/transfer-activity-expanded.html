@@ -11,6 +11,8 @@
 		source-account="$ctrl.transfer.sourceAccount"
 		target-account="$ctrl.transfer.targetAccount">
 	</transfer-details>
+
+	<!--
 	<div class="row">
 		<div class="col-sm-12 col-lg-3 m-b-0">
 			<a class="" href="/examples/details.html">
@@ -20,10 +22,10 @@
 	</div>
 
 	<hr class="hidden-xs hidden-sm hidden-md"
-		ng-if="$ctrl.transfer.status !== 'COMPLETED' && $ctrl.transfer.status !== 'CANCELLED'" />
-
+		ng-if="$ctrl.transfer.phase !== 'FINISHED' " />
+	-->
 	<transfer-actions
 		transfer="$ctrl.transfer" class="m-t-2"
-		ng-if="$ctrl.transfer.status !== 'COMPLETED' && $ctrl.transfer.status !== 'CANCELLED'">
+		ng-if="$ctrl.transfer.phase !== 'FINISHED' ">
 	</transfer-actions>
 </div>

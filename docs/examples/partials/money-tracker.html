@@ -1,0 +1,92 @@
+<div class="sequence-date-variant p-b-0 p-t-0">
+	<ul class="sequence sequence-lg sequence-hollow sequence-animate m-l-1"
+		ng-class="{
+			'sequence-info': $ctrl.transfer.phase !== 'FINISHED' && !($ctrl.transfer.phase === 'OUTGOING' && $ctrl.transfer.state === 'RECEIVED'),
+			'sequence-warning': $ctrl.transfer.state === 'AWAITING_FUNDS',
+			'sequence-success': $ctrl.transfer.phase === 'OUTGOING' && $ctrl.transfer.state === 'RECEIVED',
+			'sequence-danger': $ctrl.transfer.state === 'BLOCKED'
+		}">
+		<li ng-class="{'p-b-3': $ctrl.transfer.phase === 'INCOMING' && $ctrl.transfer.state === 'INITIATED'}">
+			<div class="sequence-date">Today</div>
+			<strong class="small p-b-3">Your USD account ending 6789</strong>
+		</li>
+		<li class="active"
+			ng-if="$ctrl.transfer.phase === 'INCOMING' &&
+				$ctrl.transfer.state === 'INITIATED'">
+			<h5 class="text-info">The money's with your bank</h5>
+			<p class="small text-max-width">
+				Once the money's left your account, your bank could take up to
+				<strong class="text-warning">4 hours</strong> to get it to us.
+				We'll let you know when it arrives.
+			</p>
+		</li>
+		<li class="small" ng-class="{'p-b-3': (
+			$ctrl.transfer.phase === 'INCOMING' &&
+			$ctrl.transfer.state === 'RECEIVED') ||
+			($ctrl.transfer.phase === 'OUTGOING' &&
+			$ctrl.transfer.state !== 'RECEIVED')}">
+			TransferWise's USD account
+		</li>
+		<li class="active"
+			ng-if="($ctrl.transfer.phase === 'INCOMING' &&
+				$ctrl.transfer.state === 'RECEIVED') ||
+				($ctrl.transfer.phase === 'OUTGOING' &&
+				$ctrl.transfer.state === 'PENDING')">
+			<h5 class="text-info">Your money's speeding through the system</h5>
+			<p class="small text-max-width">
+				This part's all TransferWise so it's seriously fast.
+				We'll pay out your money in the next 20 minutes.
+			</p>
+		</li>
+		<li class="small" ng-class="{'p-b-3': $ctrl.transfer.phase === 'OUTGOING' &&
+			($ctrl.transfer.state === 'INITIATED' ||
+			$ctrl.transfer.state === 'CONFIRMED' ||
+			$ctrl.transfer.state === 'RECIEVED')}">
+			TransferWise's GBP account
+			<p><span class="text-warning">+ 2 days</span>
+				We can't send the money until your bank reopens on Monday</p>
+		</li>
+		<li class="active"
+			ng-if="$ctrl.transfer.phase === 'OUTGOING' &&
+				($ctrl.transfer.state === 'INITIATED' ||
+				$ctrl.transfer.state === 'CONFIRMED' ||
+				$ctrl.transfer.state === 'RECIEVED')">
+			<h5 class="text-info">The money's on its way</h5>
+			<p class="small text-max-width">
+				It should reach {{$ctrl.targetAccount.name}}'s bank soon.  But banks
+				can be slow &ndash; so
+				this could take up to <strong class="text-warning">1 day</strong>.
+			</p>
+		</li>
+		<!--
+		<li class="small">
+			<div class="sequence-date">+ 3 days</div>
+			Banks are closed on the weekend, and there's a bank holiday on Monday.
+		</li>
+		-->
+		<li class="small"
+			ng-class="{'p-b-3': $ctrl.transfer.phase === 'OUTGOING' &&
+				$ctrl.transfer.state === 'RECEIVED'}"
+			ng-if="!($ctrl.transfer.phase === 'OUTGOING' &&
+				($ctrl.transfer.state === 'INITIATED' ||
+				$ctrl.transfer.state === 'CONFIRMED' ||
+				$ctrl.transfer.state === 'RECIEVED'))">
+			Mike Marter's bank, NatWest
+		</li>
+		<li class="active"
+			ng-if="$ctrl.transfer.phase === 'OUTGOING' &&
+				$ctrl.transfer.state === 'RECEIVED'">
+			<div class="sequence-date">Mon 3 Nov</div>
+			<h5 class="text-success">The money's arrived</h5>
+			<p class="small text-max-width">
+				Your transfer arrived in {{$ctrl.targetAccount.name}}'s
+				{{$ctrl.target}} account ending 456.
+		</li>
+		<li class="small"
+			ng-if="!($ctrl.transfer.phase === 'OUTGOING' &&
+				$ctrl.transfer.state === 'RECEIVED')">
+			<div class="sequence-date">Mon 3 Nov</div>
+			<strong>{{$ctrl.targetAccount.name}}'s {{$ctrl.transfer.target}} account ending 123.</strong>
+		</li>
+	</ul>
+</div>

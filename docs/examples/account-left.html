@@ -50,6 +50,7 @@
 	<script src="js/transfer-activity.directive.js"></script>
 	<script src="js/transfer-activity-expanded.directive.js"></script>
 	<script src="js/transfer-status-message.directive.js"></script>
+	<script src="js/money-tracker.directive.js"></script>
 	<script src="js/repeat-transfer.directive.js"></script>
 	<script src="js/currency-input.directive.js"></script>
 	<script src="js/pagination.directive.js"></script>
@@ -79,12 +80,15 @@
 			});
 
 			TransferService.list({status: [
-				"PAUSED",
 				"AWAITING_FUNDS",
-				"PROCESSING"
+				"FUNDED",
+				"PROCESSING",
+				"PAID_OUT",
+				"PAUSED"
 			]}).then(function(transfers) {
 				$ctrl.activeTransfers = transfers;
 			});
+			//	"CONVERTING",
 
 			TransferService.list({status: [
 				"COMPLETED",
@@ -133,7 +137,7 @@
 			);
 			*/
 
-			NavTourService.checkAndShowTour();
+			//NavTourService.checkAndShowTour();
 		}
 	})(window.angular);
 	</script>

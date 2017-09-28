@@ -1,27 +1,25 @@
+
 <div class="btn-toolbar">
-	<button class="btn btn-primary" ng-if="$ctrl.transfer.status === 'AWAITING_FUNDS'">
-		Pay for this transfer
-	</button>
-	<button class="btn btn-primary" ng-if="$ctrl.transfer.status === 'AWAITING_FUNDS'">
-		I've already paid
-	</button>
-	<button class="btn btn-default" ng-if="$ctrl.transfer.status === 'FUNDED'">
-		I haven't paid
-	</button>
-	<button class="btn btn-primary" ng-if="$ctrl.transfer.status === 'PAUSED'">
-		Fix this transfer
-	</button>
-
-	<!--
-	<button class="btn btn-default">
-		View details
-	</button>
-	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#help-modal">
-		Help
-	</button>
-	-->
-
-	<button class="btn btn-danger pull-md-right m-b-0">
-		Cancel transfer
-	</button>
+	<span ng-if="$ctrl.transfer.phase === 'INCOMING'">
+		<button class="btn btn-success btn-sm" ng-if="$ctrl.transfer.state === 'PENDING'">
+			See how to pay
+		</button>
+		<button class="btn btn-info btn-sm" ng-if="$ctrl.transfer.state === 'PENDING'">
+			Tell us you've paid
+		</button>
+		<button class="btn btn-info btn-sm" ng-if="$ctrl.transfer.state === 'INITIATED'">
+			I've not paid yet
+		</button>
+		<button class="btn btn-primary btn-sm" ng-if="$ctrl.transfer.state === 'BLOCKED'">
+			Fix this transfer
+		</button>
+	</span>
+	<span ng-if="$ctrl.transfer.phase !== 'FINISHED'">
+		<button class="btn btn-info btn-sm">
+			View details
+		</button>
+		<button class="btn btn-danger btn-sm pull-md-right m-b-0">
+			Cancel transfer
+		</button>
+	</span>
 </div>

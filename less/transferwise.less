@@ -181,6 +181,12 @@ li .circle {
   background-color: @brand-white !important;
 }
 
+// We need this because the back icon is not flush to it's bounding box.
+// Would like to find a better solution, but no negative margin utilities atm.
+.tw-card-back {
+  margin-left: -8px;
+}
+
 .icon {
   .btn & {
     margin-top: -1px;

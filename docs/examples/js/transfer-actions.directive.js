@@ -10,7 +10,6 @@
 			bindToController: true,
 			controller: function() {},
 			controllerAs: '$ctrl',
-			replace: true,
 			restrict: 'E',
 			scope: {
 				transfer: "=",

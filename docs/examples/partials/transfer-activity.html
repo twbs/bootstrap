@@ -18,7 +18,6 @@
 			'h5': $ctrl.transfer.fixed === 'SOURCE' || $ctrl.transfer.fixed === 'RATE',
 			'small': $ctrl.transfer.fixed === 'TARGET'}">
 			<span class="sr-only">Sent</span>
-			<!--<span ng-if="$ctrl.transfer.fixed === 'TARGET' && $ctrl.transfer.status !== 'COMPLETED' && $ctrl.transfer.status !== 'CANCELLED'">about</span>-->
 			{{$ctrl.currencies[$ctrl.transfer.source].symbol}}{{$ctrl.transfer.sourceAmount | number:$ctrl.currencies[$ctrl.transfer.source].digits}}
 			<span class="hidden-xs">{{$ctrl.transfer.source}}</span>
 		</p>
@@ -26,8 +25,8 @@
 			'h5': $ctrl.transfer.fixed === 'TARGET',
 			'small': $ctrl.transfer.fixed === 'SOURCE'}">
 			<span class="sr-only">Received</span>
-			<span ng-if="$ctrl.transfer.fixed === 'RATE' && $ctrl.transfer.status !== 'COMPLETED' && $ctrl.transfer.status !== 'CANCELLED'">exactly</span>
-			<span ng-if="$ctrl.transfer.fixed === 'SOURCE' && $ctrl.transfer.status !== 'COMPLETED' && $ctrl.transfer.status !== 'CANCELLED'">about</span>
+			<span ng-if="$ctrl.transfer.fixed === 'RATE' || $ctrl.transfer.phase !== 'OUTGOING'">exactly</span>
+			<span ng-if="!($ctrl.transfer.fixed === 'RATE' || $ctrl.transfer.phase !== 'OUGOING')">about</span>
 			{{$ctrl.currencies[$ctrl.transfer.target].symbol}}{{$ctrl.transfer.targetAmount | number:$ctrl.currencies[$ctrl.transfer.source].digits}}
 			<span class="hidden-xs">{{$ctrl.transfer.source}}</span>
 		</p>

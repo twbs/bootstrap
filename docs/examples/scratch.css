@@ -110,3 +110,29 @@
   width: 100%;
   margin: 0;
 }
+
+@media (min-width: 768px) {
+  .sequence-date {
+    position: absolute;
+    top: 2px;
+    left: -130px;
+    font-size: 12px;
+  }
+  .sequence-date-variant {
+    padding-left: 100px;
+  }
+  .sequence-lg .sequence-date {
+    top: 8px;
+    left: -154px;
+  }
+}
+@media (max-width: 767px) {
+  .sequence-date {
+    float: right;
+    font-weight: bold;
+  }
+}
+
+.sequence > .active {
+  padding-bottom: 24px;
+}

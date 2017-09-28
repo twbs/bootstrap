@@ -1,5 +1,5 @@
 <div>
-	<div ng-if="$ctrl.transfer.status === 'COMPLETED' || $ctrl.transfer.status === 'CANCELLED'">
+	<div ng-if="$ctrl.transfer.phase === 'FINISHED' || $ctrl.transfer.status === 'BLOCKED'">
 		<div class="row">
 			<dl class="col-sm-6">
 				<dt>Sent to</dt>
@@ -30,28 +30,25 @@
 			</dl>
 		</div>
 	</div>
-	<div class="" ng-if="$ctrl.transfer.status !== 'COMPLETED' && $ctrl.transfer.status !== 'CANCELLED'">
-		<ul class="sequence sequence-hollow sequence-pulse m-l-1"
-			ng-class="{
-				'sequence-info': $ctrl.transfer.status !== 'PAUSED' && $ctrl.transfer.status !== 'AWAITING_FUNDS',
-				'sequence-warning': $ctrl.transfer.status === 'AWAITING_FUNDS',
-				'sequence-danger': $ctrl.transfer.status === 'PAUSED',
-				'sequence-pulse': $ctrl.transfer.status !== 'PAUSED' && $ctrl.transfer.status !== 'AWAITING_FUNDS'
-			}">
-			<li><p class="small p-b-1">You set up a transfer to TransferWise</p></li>
-			<li class="active">
-				<p class=" m-b-1" ng-class="{
-						'text-info': $ctrl.transfer.status !== 'PAUSED' && $ctrl.transfer.status !== 'AWAITING_FUNDS',
-						'text-warning': $ctrIl.transfer.status === 'AWAITING_FUNDS',
-						'text-danger': $ctrl.transfer.status === 'PAUSED'
-					}">The money is on it's way to TransferWise</p>
-				<p class="small p-b-1">Although you have instructed your bank to us the money, it will take
-					several hours for them to process the transfer and pay out.  We cannot
-					process the transfer until it arrives in our account.</p>
-			</li>
-			<li><p class="small p-b-1">We receive the money and transfer it to {{$ctrl.targetAccount.name}}</p></li>
-			<li><p class="small p-b-1">{{$ctrl.targetAccount.name}}'s bank process the transfer</p></li>
-			<li><p class="small p-b-1">The money appears in {{$ctrl.targetAccount.name}}'s account.</p></li>
-		</ul>
+
+	<div ng-if="$ctrl.transfer.phase === 'INCOMING' &&
+		$ctrl.transfer.state === 'PENDING'">
+		<h3 class="text-warning">Ready to pay?</h3>
+		<p class="text-max-width">
+			Before your transfer can start, you'll need to pay for it.  That means
+			making a payment from your bank account to ours.
+		</p>
+		<p>You'll need to get us the money in the next 12 hours to get the rate we
+			offered. Most banks make their last outbound transfers around 6pm local time,
+			so try to make the payment before then.</p>
+		<p>If your money arrives later, we'll use the current market rate.</p>
 	</div>
+
+	<money-tracker
+		transfer="$ctrl.transfer"
+		target-account="$ctrl.targetAccount"
+		ng-if="$ctrl.transfer.phase !== 'FINISHED' &&
+			$ctrl.transfer.state !== 'BLOCKED' &&
+			!($ctrl.transfer.phase === 'INCOMING' &&
+			$ctrl.transfer.state === 'PENDING')"></money-tracker>
 </div>
