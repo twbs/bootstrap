@@ -87,7 +87,7 @@
     "eslint": "^4.2.0",
     "eslint-plugin-compat": "^1.0.4",
     "htmllint-cli": "^0.0.6",
-    "jsunitsaucelabs": "^1.1.0",
+    "jsunitsaucelabs": "^1.2.0",
     "node-sass": "^4.5.3",
     "nodemon": "^1.11.0",
     "npm-run-all": "^4.0.2",
