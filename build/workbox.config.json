@@ -1,0 +1,8 @@
+{
+  "globDirectory": "./",
+  "globPatterns": [
+    "_gh_pages/**/*.{html,css,js,json,png,jpg}"
+  ],
+  "swSrc": "./sw.js",
+  "swDest": "./_gh_pages/sw.js"
+}

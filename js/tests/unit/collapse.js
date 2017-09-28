@@ -698,4 +698,48 @@ $(function () {
 
     $target.trigger($.Event('click'))
   })
+
+  QUnit.test('should allow jquery object in parent config', function (assert) {
+    assert.expect(1)
+    var html =
+    '<div class="my-collapse">' +
+    '  <div class="item">' +
+    '    <a data-toggle="collapse" href="#">Toggle item</a>' +
+    '    <div class="collapse">Lorem ipsum</div>' +
+    '  </div>' +
+    '</div>'
+
+    $(html).appendTo('#qunit-fixture')
+    try {
+      $('[data-toggle="collapse"]').bootstrapCollapse({
+        parent: $('.my-collapse')
+      })
+      assert.ok(true, 'collapse correctly created')
+    }
+    catch (e) {
+      assert.ok(false, 'collapse not created')
+    }
+  })
+
+  QUnit.test('should allow DOM object in parent config', function (assert) {
+    assert.expect(1)
+    var html =
+    '<div class="my-collapse">' +
+    '  <div class="item">' +
+    '    <a data-toggle="collapse" href="#">Toggle item</a>' +
+    '    <div class="collapse">Lorem ipsum</div>' +
+    '  </div>' +
+    '</div>'
+
+    $(html).appendTo('#qunit-fixture')
+    try {
+      $('[data-toggle="collapse"]').bootstrapCollapse({
+        parent: $('.my-collapse')[0]
+      })
+      assert.ok(true, 'collapse correctly created')
+    }
+    catch (e) {
+      assert.ok(false, 'collapse not created')
+    }
+  })
 })

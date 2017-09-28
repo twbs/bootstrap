@@ -34,7 +34,7 @@ Syntax Error in tag 'example' while parsing the following markup:
 
   #{markup}
 
-Valid syntax: example <lang>
+Valid syntax: example <lang> [id=foo]
 eos
         end
       end
@@ -55,7 +55,7 @@ eos
       end
 
       def example(output)
-        "<div class=\"bd-example\" data-example-id=\"#{@options[:id]}\">\n#{output}\n</div>"
+        "<div class=\"bd-example\"" + (@options[:id] ? " data-example-id=\"#{@options[:id]}\"" : "") + ">\n#{output}\n</div>"
       end
 
       def remove_holderjs(code)

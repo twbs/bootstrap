@@ -70,7 +70,7 @@ The `.navbar-brand` can be applied to most elements, but an anchor works best as
 
 <!-- As a heading -->
 <nav class="navbar navbar-light bg-light">
-  <span class="h1" class="navbar-brand mb-0">Navbar</span>
+  <span class="navbar-brand mb-0 h1">Navbar</span>
 </nav>
 {% endexample %}
 
@@ -165,7 +165,7 @@ You may also utilize dropdowns in your navbar nav. Dropdown menus require a wrap
         <a class="nav-link" href="#">Pricing</a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Dropdown link
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -323,7 +323,7 @@ Theming the navbar has never been easier thanks to the combination of theming cl
       </ul>
       <form class="form-inline">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
+        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
       </form>
     </div>
   </nav>
@@ -395,7 +395,7 @@ When the container is within your navbar, its horizontal padding is removed at b
 
 ## Placement
 
-Use our position utilities to place navbars in non-static positions. Choose from fixed to the top, fixed to the bottom, or stickied to the top. **Note that `position: sticky`, used for `.sticky-top`, [isn't fully supported in every browser](http://caniuse.com/#feat=css-sticky).**
+Use our position utilities to place navbars in non-static positions. Choose from fixed to the top, fixed to the bottom, or stickied to the top. **Note that `position: sticky`, used for `.sticky-top`, [isn't fully supported in every browser](https://caniuse.com/#feat=css-sticky).**
 
 {% example html %}
 <nav class="navbar navbar-light bg-light">
