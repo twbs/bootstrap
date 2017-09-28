@@ -511,7 +511,7 @@ In addition to column clearing at responsive breakpoints, you may need to reset 
 
 ## Reordering
 
-### Flex order
+### Order classes
 
 Use `.order-` classes for controlling the **visual order** of your content. These classes are responsive, so you can set the `order` by breakpoint (e.g., `.order-1.order-md-2`). Includes support for `1` through `12` across all five grid tiers.
 
