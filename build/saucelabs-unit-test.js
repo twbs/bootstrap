@@ -2,7 +2,8 @@ const JSUnitSaucelabs = require('jsunitsaucelabs')
 
 const jsUnitSaucelabs = new JSUnitSaucelabs({
   username: process.env.SAUCE_USERNAME,
-  password: process.env.SAUCE_ACCESS_KEY
+  password: process.env.SAUCE_ACCESS_KEY,
+  build:    process.env.TRAVIS_JOB_ID
 })
 
 
