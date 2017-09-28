@@ -29,7 +29,6 @@ exclude:
   - composer.json
   - Gemfile
   - Gemfile.lock
-  - Gruntfile.js
   - package.js
   - package.json
   - package-lock.json
