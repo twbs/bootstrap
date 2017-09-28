@@ -8,6 +8,10 @@ const jsUnitSaucelabs = new JSUnitSaucelabs({
 
 
 // TODO : get all the browsers in sauce_browsers.yml
+// Docs: https://wiki.saucelabs.com/display/DOCS/Platform+Configurator
+// Mac Opera is not currently supported by Sauce Labs
+// Win Opera 15+ is not currently supported by Sauce Labs
+// iOS Chrome is not currently supported by Sauce Labs
 
 const testURL = 'http://localhost:3000/js/tests/index.html?hidepassed'
 
