@@ -17,13 +17,12 @@ const jsUnitSaucelabs = new JSUnitSaucelabs({
 const testURL      = 'http://localhost:3000/js/tests/index.html?hidepassed'
 const browsersFile = require(path.resolve(__dirname, './sauce_browsers.json'))
 let jobsDone       = 0
-let jobsSuccess    = 0
+let jobsSucceeded  = 0
 
 const waitingCallback = (error, body, id) => {
   if (error) {
     console.error(error)
     process.exit(1)
-    return
   }
 
   if (typeof body !== 'undefined') {
@@ -55,14 +54,14 @@ const waitingCallback = (error, body, id) => {
       }
 
       if (passed) {
-        jobsSuccess++
+        jobsSucceeded++
       }
       jobsDone++
 
       // Exit
       if (jobsDone === browsersFile.length - 1) {
         jsUnitSaucelabs.stop()
-        process.exit(jobsDone === jobsSuccess ? 0 : 1)
+        process.exit(jobsDone === jobsSucceeded ? 0 : 1)
       }
     }
   }
@@ -70,14 +69,15 @@ const waitingCallback = (error, body, id) => {
 
 jsUnitSaucelabs.on('tunnelCreated', () => {
   browsersFile.forEach((tmpBrowser) => {
-    const broPlatform = typeof tmpBrowser.platform === 'undefined' ? tmpBrowser.platformName : tmpBrowser.platform
-    const arrayBro    = [broPlatform, tmpBrowser.browserName, tmpBrowser.version]
-    jsUnitSaucelabs.start([arrayBro], testURL, 'qunit', (error, success) => {
+    const browsersPlatform = typeof tmpBrowser.platform === 'undefined' ? tmpBrowser.platformName : tmpBrowser.platform
+    const browsersArray = [browsersPlatform, tmpBrowser.browserName, tmpBrowser.version]
+
+    jsUnitSaucelabs.start([browsersArray], testURL, 'qunit', (error, success) => {
       if (typeof success !== 'undefined') {
         const taskIds = success['js tests']
 
         if (!taskIds || !taskIds.length) {
-          throw new Error('Error starting tests through SauceLabs API')
+          throw new Error('Error starting tests through Sauce Labs API')
         }
 
         taskIds.forEach((id) => {
@@ -91,4 +91,5 @@ jsUnitSaucelabs.on('tunnelCreated', () => {
     })
   })
 })
+
 jsUnitSaucelabs.initTunnel()
