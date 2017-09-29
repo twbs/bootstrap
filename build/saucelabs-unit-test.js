@@ -34,17 +34,25 @@ const waitingCallback = (error, body, id) => {
         })
       }, 2000)
     } else {
-      const test = body['js tests'][0]
-      let passed = false
+      const test   = body['js tests'][0]
+      let passed   = false
+      let errorStr = false
 
       if (test.result !== null) {
-        passed = test.result.total === test.result.passed
+        if (typeof test.result === 'string' && test.result === 'Test exceeded maximum duration') {
+          errorStr = test.result
+        } else {
+          passed = test.result.total === test.result.passed
+        }
       }
 
       console.log(`Tested ${testURL}`)
       console.log(`Platform: ${test.platform.join(',')}`)
       console.log(`Passed: ${passed.toString()}`)
       console.log(`Url ${test.url} \n`)
+      if (errorStr) {
+        console.error(errorStr)
+      }
 
       if (passed) {
         jobsSuccess++
