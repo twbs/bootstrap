@@ -42,16 +42,16 @@ GEM
     pathutil (0.14.0)
       forwardable-extended (~> 2.6)
     public_suffix (3.0.0)
-    rake (12.1.0)
     rb-fsevent (0.10.2)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
     rouge (2.2.1)
     safe_yaml (1.0.4)
-    sass (3.4.25)
-    scss_lint (0.54.0)
-      rake (>= 0.9, < 13)
-      sass (~> 3.4.20)
+    sass (3.5.1)
+      sass-listen (~> 4.0.0)
+    sass-listen (4.0.0)
+      rb-fsevent (~> 0.9, >= 0.9.4)
+      rb-inotify (~> 0.9, >= 0.9.7)
 
 PLATFORMS
   ruby
@@ -62,7 +62,6 @@ DEPENDENCIES
   jekyll-redirect-from (~> 0.12.1)
   jekyll-sitemap (~> 1.1.1)
   jekyll-toc (~> 0.3.0)
-  scss_lint (~> 0.54.0)
 
 BUNDLED WITH
    1.15.4

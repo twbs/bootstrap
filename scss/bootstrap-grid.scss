@@ -8,7 +8,7 @@
 //
 
 @at-root {
-  @-ms-viewport { width: device-width; }
+  @-ms-viewport { width: device-width; } // stylelint-disable-line at-rule-no-vendor-prefix
 }
 
 html {

@@ -4,10 +4,10 @@
 
 @mixin make-container() {
   width: 100%;
-  margin-right: auto;
-  margin-left: auto;
   padding-right: ($grid-gutter-width / 2);
   padding-left: ($grid-gutter-width / 2);
+  margin-right: auto;
+  margin-left: auto;
 }
 
 
