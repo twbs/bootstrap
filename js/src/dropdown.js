@@ -75,13 +75,11 @@ const Dropdown = (() => {
   }
 
   const Default = {
-    placement   : AttachmentMap.BOTTOM,
     offset      : 0,
     flip        : true
   }
 
   const DefaultType = {
-    placement   : 'string',
     offset      : '(number|string)',
     flip        : 'boolean'
   }
@@ -203,11 +201,6 @@ const Dropdown = (() => {
     }
 
     _getConfig(config) {
-      const elementData = $(this._element).data()
-      if (typeof elementData.placement !== 'undefined') {
-        elementData.placement = AttachmentMap[elementData.placement.toUpperCase()]
-      }
-
       config = $.extend(
         {},
         this.constructor.Default,
@@ -234,10 +227,10 @@ const Dropdown = (() => {
 
     _getPlacement() {
       const $parentDropdown = $(this._element).parent()
-      let placement = this._config.placement
+      let placement = AttachmentMap.BOTTOM
 
       // Handle dropup
-      if ($parentDropdown.hasClass(ClassName.DROPUP) || this._config.placement === AttachmentMap.TOP) {
+      if ($parentDropdown.hasClass(ClassName.DROPUP)) {
         placement = AttachmentMap.TOP
         if ($(this._menu).hasClass(ClassName.MENURIGHT)) {
           placement = AttachmentMap.TOPEND

@@ -337,7 +337,10 @@ More complex layouts can also be created with the grid system.
     </div>
     <div class="form-group col-md-4">
       <label for="inputState" class="col-form-label">State</label>
-      <select id="inputState" class="form-control">Choose</select>
+      <select id="inputState" class="form-control">
+        <option selected>Choose...</option>
+        <option>...</option>
+      </select>
     </div>
     <div class="form-group col-md-2">
       <label for="inputZip" class="col-form-label">Zip</label>
@@ -669,7 +672,7 @@ While Bootstrap will apply these styles in all browsers, Internet Explorer 11 an
 
 ## Validation
 
-Provide valuable, actionable feedback to your users with HTML5 form validation–[available in all our supported browsers](http://caniuse.com/#feat=form-validation). Choose from the browser default validation feedback, or implement custom messages with our built-in classes and starter JavaScript.
+Provide valuable, actionable feedback to your users with HTML5 form validation–[available in all our supported browsers](https://caniuse.com/#feat=form-validation). Choose from the browser default validation feedback, or implement custom messages with our built-in classes and starter JavaScript.
 
 {% callout warning %}
 We **highly recommend** custom validation styles as native browser defaults are not announced to screen readers.
@@ -736,18 +739,19 @@ When attempting to submit, you'll see the `:invalid` and `:valid` styles applied
 <script>
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 (function() {
-  "use strict";
-  window.addEventListener("load", function() {
-    var form = document.getElementById("needs-validation");
-    form.addEventListener("submit", function(event) {
-      if (form.checkValidity() == false) {
+  'use strict';
+
+  window.addEventListener('load', function() {
+    var form = document.getElementById('needs-validation');
+    form.addEventListener('submit', function(event) {
+      if (form.checkValidity() === false) {
         event.preventDefault();
         event.stopPropagation();
       }
-      form.classList.add("was-validated");
+      form.classList.add('was-validated');
     }, false);
   }, false);
-}());
+})();
 </script>
 {% endexample %}
 
@@ -1004,8 +1008,8 @@ Here's how it works:
 
 - We wrap the `<input>` in a `<label>` so the custom control properly triggers the file browser.
 - We hide the default file `<input>` via `opacity`.
-- We use `:after` to generate a custom background and directive (*Choose file...*).
-- We use `:before` to generate and position the *Browse* button.
+- We use `::after` to generate a custom background and directive (*Choose file...*).
+- We use `::before` to generate and position the *Browse* button.
 - We declare a `height` on the `<input>` for proper spacing for surrounding content.
 
 In other words, it's an entirely custom element, all generated via CSS.

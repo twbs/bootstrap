@@ -12,6 +12,7 @@ We've designed and developed Bootstrap to work in a number of environments. Here
 {% endcallout %}
 
 ### General outline
+
 - Working with CSS
 - Working with Sass files
 - Building new CSS components
