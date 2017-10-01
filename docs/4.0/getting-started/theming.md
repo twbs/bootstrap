@@ -101,9 +101,52 @@ $theme-colors: (
 
 ### Functions
 
-**TODO:**
-- Are these even considered part of the theme-ability of Bootstrap? Should this fall elsewhere?
+Bootstrap utilizes several Sass functions, but only a subset are applicable to general theming. We've included three functions for getting values from the color maps:
 
+{% highlight scss %}
+@function color($key: "blue") {
+  @return map-get($colors, $key);
+}
+
+@function theme-color($key: "primary") {
+  @return map-get($theme-colors, $key);
+}
+
+@function gray($key: "100") {
+  @return map-get($grays, $key);
+}
+{% endhighlight %}
+
+These allow you to pick one color from a Sass map much like how you'd use a color variable from v3.
+
+{% highlight scss %}
+.custom-element {
+  color: gray("100");
+  background-color: theme-color("dark");
+}
+{% endhighlight %}
+
+We also have another function for getting a particular _level_ of color from the `$theme-colors` map. Negative level values will lighten the color, while higher levels will darken.
+
+{% highlight scss %}
+@function theme-color-level($color-name: "primary", $level: 0) {
+  $color: theme-color($color-name);
+  $color-base: if($level > 0, #000, #fff);
+  $level: abs($level);
+
+  @return mix($color-base, $color, $level * $theme-color-interval);
+}
+{% endhighlight %}
+
+In practice, you'd call the function and pass in two parameters: the name of the color from `$theme-colors` (e.g., primary or danger) and a numeric level.
+
+{% highlight scss %}
+.custom-element {
+  color: theme-color-level(primary, -10);
+}
+{% endhighlight %}
+
+Additional functions could be added in the future or your own custom Sass to create level functions for additional Sass maps, or even a generic one if you wanted to be more verbose.
 
 ## Sass options
 
