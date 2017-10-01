@@ -4,6 +4,7 @@ title: Theming Bootstrap
 description: Customize Bootstrap 4 with our new built-in Sass variables for global style preferences for easy theming and component changes.
 group: getting-started
 toc: true
+redirect_from: "/docs/4.0/getting-started/options/"
 ---
 
 ## Introduction
