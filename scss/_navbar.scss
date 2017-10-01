@@ -98,6 +98,7 @@
 // on the `.navbar` parent.
 .navbar-collapse {
   flex-basis: 100%;
+  flex-grow: 1;
   // For always expanded or extra full navbars, ensure content aligns itself
   // properly vertically. Can be easily overridden with flex utilities.
   align-items: center;
@@ -146,8 +147,7 @@
       }
 
       @include media-breakpoint-up($next) {
-        flex-direction: row;
-        flex-wrap: nowrap;
+        flex-flow: row nowrap;
         justify-content: flex-start;
 
         .navbar-nav {
@@ -177,6 +177,9 @@
         // scss-lint:disable ImportantRule
         .navbar-collapse {
           display: flex !important;
+
+          // Changes flex-bases to auto because of an IE10 bug
+          flex-basis: auto;
         }
         // scss-lint:enable ImportantRule
 

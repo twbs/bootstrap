@@ -27,7 +27,7 @@
     // IE JavaScript conditional compilation docs: https://msdn.microsoft.com/library/121hztk3%28v=vs.94%29.aspx
     // @cc_on docs: https://msdn.microsoft.com/library/8ka90k2e%28v=vs.94%29.aspx
     var jscriptVersion = new Function('/*@cc_on return @_jscript_version; @*/')() // eslint-disable-line no-new-func
-    if (jscriptVersion === undefined) {
+    if (typeof jscriptVersion === 'undefined') {
       return 11 // IE11+ not in emulation mode
     }
     if (jscriptVersion < 9) {

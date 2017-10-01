@@ -14,7 +14,7 @@ Below is an example of a single media object. Only two classes are required—th
 
 {% example html %}
 <div class="media">
-  <img class="d-flex mr-3" data-src="holder.js/64x64" alt="Generic placeholder image">
+  <img class="mr-3" data-src="holder.js/64x64" alt="Generic placeholder image">
   <div class="media-body">
     <h5 class="mt-0">Media heading</h5>
     Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
@@ -36,13 +36,13 @@ Media objects can be infinitely nested, though we suggest you stop at some point
 
 {% example html %}
 <div class="media">
-  <img class="d-flex mr-3" data-src="holder.js/64x64" alt="Generic placeholder image">
+  <img class="mr-3" data-src="holder.js/64x64" alt="Generic placeholder image">
   <div class="media-body">
     <h5 class="mt-0">Media heading</h5>
     Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
 
     <div class="media mt-3">
-      <a class="d-flex pr-3" href="#">
+      <a class="pr-3" href="#">
         <img data-src="holder.js/64x64" alt="Generic placeholder image">
       </a>
       <div class="media-body">
@@ -60,7 +60,7 @@ Media in a media object can be aligned with flexbox utilities to the top (defaul
 
 {% example html %}
 <div class="media">
-  <img class="d-flex align-self-start mr-3" data-src="holder.js/64x64" alt="Generic placeholder image">
+  <img class="align-self-start mr-3" data-src="holder.js/64x64" alt="Generic placeholder image">
   <div class="media-body">
     <h5 class="mt-0">Top-aligned media</h5>
     <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
@@ -71,7 +71,7 @@ Media in a media object can be aligned with flexbox utilities to the top (defaul
 
 {% example html %}
 <div class="media">
-  <img class="d-flex align-self-center mr-3" data-src="holder.js/64x64" alt="Generic placeholder image">
+  <img class="align-self-center mr-3" data-src="holder.js/64x64" alt="Generic placeholder image">
   <div class="media-body">
     <h5 class="mt-0">Center-aligned media</h5>
     <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
@@ -82,7 +82,7 @@ Media in a media object can be aligned with flexbox utilities to the top (defaul
 
 {% example html %}
 <div class="media">
-  <img class="d-flex align-self-end mr-3" data-src="holder.js/64x64" alt="Generic placeholder image">
+  <img class="align-self-end mr-3" data-src="holder.js/64x64" alt="Generic placeholder image">
   <div class="media-body">
     <h5 class="mt-0">Bottom-aligned media</h5>
     <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
@@ -101,7 +101,7 @@ Change the order of content in media objects by modifying the HTML itself, or by
     <h5 class="mt-0 mb-1">Media object</h5>
     Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
   </div>
-  <img class="d-flex ml-3" data-src="holder.js/64x64" alt="Generic placeholder image">
+  <img class="ml-3" data-src="holder.js/64x64" alt="Generic placeholder image">
 </div>
 {% endexample %}
 
@@ -112,21 +112,21 @@ Because the media object has so few structural requirements, you can also use th
 {% example html %}
 <ul class="list-unstyled">
   <li class="media">
-    <img class="d-flex mr-3" data-src="holder.js/64x64" alt="Generic placeholder image">
+    <img class="mr-3" data-src="holder.js/64x64" alt="Generic placeholder image">
     <div class="media-body">
       <h5 class="mt-0 mb-1">List-based media object</h5>
       Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
     </div>
   </li>
   <li class="media my-4">
-    <img class="d-flex mr-3" data-src="holder.js/64x64" alt="Generic placeholder image">
+    <img class="mr-3" data-src="holder.js/64x64" alt="Generic placeholder image">
     <div class="media-body">
       <h5 class="mt-0 mb-1">List-based media object</h5>
       Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
     </div>
   </li>
   <li class="media">
-    <img class="d-flex mr-3" data-src="holder.js/64x64" alt="Generic placeholder image">
+    <img class="mr-3" data-src="holder.js/64x64" alt="Generic placeholder image">
     <div class="media-body">
       <h5 class="mt-0 mb-1">List-based media object</h5>
       Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.

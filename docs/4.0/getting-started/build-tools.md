@@ -8,14 +8,14 @@ toc: true
 
 ## Tooling setup
 
-Bootstrap uses [NPM scripts](https://docs.npmjs.com/misc/scripts) for its build system. Our [package.json](https://github.com/twbs/bootstrap/blob/v4-dev/package.json) includes convenient methods for working with the framework, including compiling code, running tests, and more.
+Bootstrap uses [NPM scripts](https://docs.npmjs.com/misc/scripts) for its build system. Our [package.json]({{ site.repo }}/blob/v{{ site.current_version }}/package.json) includes convenient methods for working with the framework, including compiling code, running tests, and more.
 
 To use our build system and run our documentation locally, you'll need a copy of Bootstrap's source files and Node. Follow these steps and you should be ready to rock:
 
-1. [Download and install Node](https://nodejs.org/download/), which we use to manage our dependencies.
-2. Navigate to the root `/bootstrap` directory and run `npm install` to install our local dependencies listed in [package.json](https://github.com/twbs/bootstrap/blob/master/package.json).
-4. [Install Ruby][install-ruby], install [Bundler][gembundler] with `gem install bundler`, and finally run `bundle install`. This will install all Ruby dependencies, such as Jekyll and plugins.
-  - **Windows users:** Read [this unofficial guide](http://jekyll-windows.juthilo.com/) to get Jekyll up and running without problems.
+1. [Download and install Node.js](https://nodejs.org/download/), which we use to manage our dependencies.
+2. Navigate to the root `/bootstrap` directory and run `npm install` to install our local dependencies listed in [package.json]({{ site.repo }}/blob/v{{ site.current_version }}/package.json).
+3. [Install Ruby][install-ruby], install [Bundler][gembundler] with `gem install bundler`, and finally run `bundle install`. This will install all Ruby dependencies, such as Jekyll and plugins.
+  - **Windows users:** Read [this guide](https://jekyllrb.com/docs/windows/) to get Jekyll up and running without problems.
 
 When completed, you'll be able to run the various commands provided from the command line.
 
@@ -24,7 +24,7 @@ When completed, you'll be able to run the various commands provided from the com
 
 ## Using NPM scripts
 
-Our [package.json](https://github.com/twbs/bootstrap/blob/master/package.json) includes the following commands and tasks:
+Our [package.json]({{ site.repo }}/blob/v{{ site.current_version }}/package.json) includes the following commands and tasks:
 
 | Task | Description |
 | --- | --- |
@@ -36,7 +36,7 @@ Our [package.json](https://github.com/twbs/bootstrap/blob/master/package.json) i
 
 Bootstrap uses [Autoprefixer][autoprefixer] (included in our build process) to automatically add vendor prefixes to some CSS properties at build time. Doing so saves us time and code by allowing us to write key parts of our CSS a single time while eliminating the need for vendor mixins like those found in v3.
 
-We maintain the list of browsers supported through Autoprefixer in a separate file within our GitHub repository. See [`/build/postcss.config.js`](https://github.com/twbs/bootstrap/blob/v4-dev/build/postcss.config.js) for details.
+We maintain the list of browsers supported through Autoprefixer in a separate file within our GitHub repository. See [/package.json]({{ site.repo }}/blob/v{{ site.current_version }}/package.json) for details.
 
 ## Local documentation
 
