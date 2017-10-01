@@ -19,7 +19,7 @@ Here's an example that changes the `background-color` and `color` for the `<body
 $body-bg: #000;
 $body-color: #111;
 
-// Bootstrap and it's default variables
+// Bootstrap and its default variables
 @import "node_modules/bootstrap/scss/bootstrap";
 {% endhighlight %}
 
