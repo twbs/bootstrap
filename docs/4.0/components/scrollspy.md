@@ -316,13 +316,13 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
   <tbody>
     <tr>
       <td>activate.bs.scrollspy</td>
-      <td>This event fires whenever a new item becomes activated by the scrollspy.</td>
+      <td>This event fires on the scroll element whenever a new item becomes activated by the scrollspy.</td>
     </tr>
   </tbody>
 </table>
 
 {% highlight js %}
-$('#myScrollspy').on('activate.bs.scrollspy', function () {
+$('[data-spy="scroll"]').on('activate.bs.scrollspy', function () {
   // do something…
 })
 {% endhighlight %}
