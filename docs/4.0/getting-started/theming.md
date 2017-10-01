@@ -86,8 +86,8 @@ For example, to modify an existing color in our `$theme-colors` map, add the fol
 
 {% highlight scss %}
 $theme-colors: (
-  primary: $red,
-  danger: $orange
+  "primary": $red,
+  "danger": $orange
 );
 {% endhighlight %}
 
@@ -186,17 +186,17 @@ Within `_variables.scss`, you'll find our color variables and Sass map. Here's a
 
 {% highlight scss %}
 $colors: (
-  red: $red,
-  orange: $orange,
-  yellow: $yellow,
-  green: $green,
-  teal: $teal,
-  blue: $blue,
-  pink: $pink,
-  purple: $purple,
-  white: $white,
-  gray: $gray-600,
-  gray-dark: $gray-900
+  "red": $red,
+  "orange": $orange,
+  "yellow": $yellow,
+  "green": $green,
+  "teal": $teal,
+  "blue": $blue,
+  "pink": $pink,
+  "purple": $purple,
+  "white": $white,
+  "gray": $gray-600,
+  "gray-dark": $gray-900
 ) !default;
 {% endhighlight %}
 
