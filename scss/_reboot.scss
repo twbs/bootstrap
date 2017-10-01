@@ -239,6 +239,9 @@ pre {
   margin-bottom: 1rem;
   // Don't allow content to break outside
   overflow: auto;
+  // We have @viewport set which causes scrollbars to overlap content in IE11 and Edge, so
+  // we force a non-overlapping, non-auto-hiding scrollbar to counteract.
+  -ms-overflow-style: scrollbar;
 }
 
 
@@ -320,6 +323,13 @@ label {
   // Allow labels to use `margin` for spacing.
   display: inline-block;
   margin-bottom: .5rem;
+}
+
+// Remove the default `border-radius` that macOS Chrome adds.
+//
+// Details at https://github.com/twbs/bootstrap/issues/24093
+button {
+  border-radius: 0;
 }
 
 // Work around a Firefox/IE bug where the transparent `button` background
