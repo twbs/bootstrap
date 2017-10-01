@@ -91,9 +91,13 @@ $theme-colors: (
 );
 {% endhighlight %}
 
-**TODO:**
-- Adding an option
-- Removing an option (replacing the map wholesale)
+To add a new color to `$theme-colors`, add the new key and value:
+
+{% highlight scss %}
+$theme-colors: (
+  "custom-color": #900
+);
+{% endhighlight %}
 
 ### Functions
 
