@@ -2,19 +2,16 @@
 -------------------------------------------------- */
 html {
   position: relative;
-  min-height: 100%;
+  height: 100%;
 }
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .footer {
-  position: absolute;
-  bottom: 0;
   width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 60px;
-  line-height: 60px; /* Vertically center the text there */
   background-color: #f5f5f5;
 }
 
@@ -30,6 +27,10 @@ body > .container {
 .footer > .container {
   padding-right: 15px;
   padding-left: 15px;
+}
+
+.footer img {
+  width: 200px;
 }
 
 code {
