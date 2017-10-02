@@ -530,9 +530,6 @@ Use `.order-` classes for controlling the **visual order** of your content. Thes
     <div class="col order-12">
       Third, but last
     </div>
-    <div class="col order-first">
-      Fourth, but first
-    </div>
   </div>
 </div>
 {% endexample %}
