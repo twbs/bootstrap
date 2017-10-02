@@ -11955,6 +11955,7 @@ a.circle.active:hover {
 }
 .circle-bg {
   position: relative;
+  z-index: 0;
 }
 .circle-bg:before {
   position: absolute;
@@ -12086,10 +12087,6 @@ a.circle.active:hover {
 }
 .circle-bg-navy:before {
   background: #253655;
-}
-.low-z-index {
-  position: relative;
-  z-index: -1;
 }
 .logo,
 .logo-primary,

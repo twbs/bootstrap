@@ -1548,8 +1548,3 @@ h4 code {
 .box-dashed {
   border: 2px dashed #829ca9;
 }
-
-.bs-example,.panel-body {
-  position: relative;
-  z-index: -1;
-}
