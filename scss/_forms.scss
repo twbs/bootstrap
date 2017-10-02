@@ -130,6 +130,7 @@ select.form-control {
   padding-bottom: $input-btn-padding-y;
   margin-bottom: 0; // match inputs if this class comes on inputs with default margins
   line-height: $input-btn-line-height;
+  background-color: transparent;
   border: solid transparent;
   border-width: $input-btn-border-width 0;
 

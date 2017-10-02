@@ -3,6 +3,9 @@ scss_files:
   - "scss/**/*.scss"
   - "docs/assets/scss/**/*.scss"
 
+exclude:
+  - "scss/_root.scss"
+
 plugin_directories: ['.scss-linters']
 
 # List of gem names to load custom linters from (make sure they are already

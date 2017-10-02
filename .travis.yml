@@ -4,31 +4,28 @@ language: node_js
 git:
   depth: 3
 node_js:
-  - "4"
+  - "6"
   - "8"
 before_install:
   - if [[ `npm -v` != 5* ]]; then npm install -g npm@5; fi
-  - "export TRAVIS_COMMIT_MSG=\"`git log --format=%B --no-merges -n 1`\""
-  - echo "$TRAVIS_COMMIT_MSG" | grep '\[skip browser\]'; export TWBS_DO_BROWSER=$?; true
 install:
   - bundle install --deployment --jobs=3 --retry=3
   - npm install
-script:
-  - npm test
-  - if [ "$TWBS_TEST" = browser -a "$SAUCE_ACCESS_KEY" ]; then npm run js-test-cloud; fi
 after_success:
   - if [ "$TRAVIS_REPO_SLUG" = twbs-savage/bootstrap ]; then npm run docs-upload-preview; fi
+stages:
+  - test
+  - name: browser
+    if: type = push
+jobs:
+  include:
+    - stage: browser
+      node_js: 8
+      script: if ! git log --format=%B --no-merges -n 1 | grep '\[skip browser\]'; then npm test && npm run js-test-cloud; fi
 cache:
   directories:
     - node_modules
     - vendor/bundle
-env:
-  - TWBS_TEST=core
-  - TWBS_TEST=browser
-matrix:
-  exclude:
-    - node_js: "4"
-      env: TWBS_TEST=browser
 notifications:
   slack: heybb:iz4wwosL0N0EdaX1gvgkU0NH
   webhooks:

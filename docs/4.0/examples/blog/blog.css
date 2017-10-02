@@ -62,7 +62,7 @@ h6, .h6 {
 .nav-link.active {
   color: #fff;
 }
-.nav-link.active:after {
+.nav-link.active::after {
   position: absolute;
   bottom: 0;
   left: 50%;

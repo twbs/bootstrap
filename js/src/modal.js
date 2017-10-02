@@ -136,6 +136,8 @@ const Modal = (() => {
       this._checkScrollbar()
       this._setScrollbar()
 
+      this._adjustDialog()
+
       $(document.body).addClass(ClassName.OPEN)
 
       this._setEscapeEvent()
@@ -427,7 +429,8 @@ const Modal = (() => {
     }
 
     _checkScrollbar() {
-      this._isBodyOverflowing = document.body.clientWidth < window.innerWidth
+      const rect = document.body.getBoundingClientRect()
+      this._isBodyOverflowing = rect.left + rect.right < window.innerWidth
       this._scrollbarWidth = this._getScrollbarWidth()
     }
 
