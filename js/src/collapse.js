@@ -292,8 +292,8 @@ const Collapse = (() => {
       if (Util.isElement(this._config.parent)) {
         parent = this._config.parent
 
-        // It's a jQuery object
-        if (typeof this._config.parent.jquery !== 'undefined') {
+        // it's a jQuery object
+        if (typeof this._config.parent.jquery !== 'undefined' || typeof this._config.parent[0] !== 'undefined') {
           parent = this._config.parent[0]
         }
       } else {
