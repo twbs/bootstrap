@@ -171,6 +171,12 @@
       z-index: 2;
       // remove nagative margin ($input-btn-border-width) to solve overlapping issue with button.
       margin-left: 0;
+
+      // When input is first, overlap the right side of it with the button(-group)
+      &:first-child {
+        margin-left: (-$input-btn-border-width);
+      }
+
       // Because specificity
       @include hover-focus-active {
         z-index: 3;
