@@ -12,8 +12,8 @@ body {
  */
 
 h1 {
-  margin-bottom: 20px;
   padding-bottom: 9px;
+  margin-bottom: 20px;
   border-bottom: 1px solid #eee;
 }
 
@@ -35,8 +35,8 @@ h1 {
 
 /* Sidebar navigation */
 .sidebar {
-  padding-left: 0;
   padding-right: 0;
+  padding-left: 0;
 }
 
 .sidebar .nav {
@@ -59,7 +59,7 @@ h1 {
  * Dashboard
  */
 
- /* Placeholders */
+/* Placeholders */
 .placeholders {
   padding-bottom: 3rem;
 }
