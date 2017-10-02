@@ -69,3 +69,15 @@ Align images with the [helper float classes]({{ site.baseurl }}/docs/{{ site.doc
   <img src="..." class="rounded" alt="...">
 </div>
 {% endhighlight %}
+
+
+## Picture
+
+If you are using the `<picture>` [element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture) to specify multiple `<source>` elements for a specific `<img>` make sure to add a `.picture` class to display `.img-*` styles correctly.
+
+{% highlight html %}
+​<picture class="picture img-thumbnail">
+ <source srcset="..." type="image/svg+xml">
+ <img src="..." alt="...">
+</picture>
+{% endhighlight %}
