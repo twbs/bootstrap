@@ -301,15 +301,15 @@ $table-dark-color:           $body-bg !default;
 
 $input-btn-padding-y:       .375rem !default;
 $input-btn-padding-x:       .75rem !default;
-$input-btn-line-height:     1.5 !default;
+$input-btn-line-height:     $line-height-base !default;
 
 $input-btn-padding-y-sm:    .25rem !default;
 $input-btn-padding-x-sm:    .5rem !default;
-$input-btn-line-height-sm:  1.5 !default;
+$input-btn-line-height-sm:  $line-height-sm !default;
 
 $input-btn-padding-y-lg:    .5rem !default;
 $input-btn-padding-x-lg:    1rem !default;
-$input-btn-line-height-lg:  1.5 !default;
+$input-btn-line-height-lg:  $line-height-lg !default;
 
 $btn-font-weight:                $font-weight-normal !default;
 $btn-box-shadow:                 inset 0 1px 0 rgba($white,.15), 0 1px 1px rgba($black,.075) !default;
