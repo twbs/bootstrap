@@ -3162,7 +3162,7 @@ tbody.collapse.show {
 .input-group-btn:not(:first-child) > .btn,
 .input-group-btn:not(:first-child) > .btn-group {
   z-index: 2;
-  margin-left: -1px;
+  margin-left: 0;
 }
 
 .input-group-btn:not(:first-child) > .btn:focus, .input-group-btn:not(:first-child) > .btn:active, .input-group-btn:not(:first-child) > .btn:hover,
@@ -3887,6 +3887,11 @@ tbody.collapse.show {
   border-radius: 0.25rem;
 }
 
+.card > hr {
+  margin-right: 0;
+  margin-left: 0;
+}
+
 .card-body {
   -ms-flex: 1 1 auto;
       flex: 1 1 auto;
@@ -4606,8 +4611,13 @@ tbody.collapse.show {
 
 .list-group-flush .list-group-item {
   border-right: 0;
+  border-bottom: 0;
   border-left: 0;
   border-radius: 0;
+}
+
+.list-group-flush .list-group-item:first-child {
+  border-top: 0;
 }
 
 .list-group-flush:first-child .list-group-item:first-child {
