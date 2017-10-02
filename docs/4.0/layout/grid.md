@@ -515,7 +515,7 @@ In addition to column clearing at responsive breakpoints, you may need to reset 
 
 ### Order classes
 
-Use `.order-` classes for controlling the **visual order** of your content. These classes are responsive, so you can set the `order` by breakpoint (e.g., `.order-1.order-md-2`). Includes support for `1` through `12` across all five grid tiers.
+Use `.order-` classes for controlling the **visual order** of your content. These classes are responsive, so you can set the `order` by breakpoint (e.g., `.order-1.order-md-2`). Includes support for `1` through `12` across all five grid tiers. You also set the class of an element to be `first` which will give it negative order and so put it before unordered elements.
 
 <div class="bd-example-row">
 {% example html %}
@@ -524,11 +524,14 @@ Use `.order-` classes for controlling the **visual order** of your content. Thes
     <div class="col">
       First, but unordered
     </div>
-    <div class="col order-12">
-      Second, but last
-    </div>
     <div class="col order-1">
-      Third, but first
+      Second, but third
+    </div>
+    <div class="col order-12">
+      Third, but last
+    </div>
+    <div class="col order-first">
+      Fourth, but first
     </div>
   </div>
 </div>
