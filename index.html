@@ -1,0 +1,83 @@
+---
+layout: home
+---
+
+<main class="bd-masthead" id="content" role="main">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-6 mx-auto col-md-6 order-md-2">
+        <img class="img-fluid mb-3 mb-md-0" src="{{ site.baseurl }}/assets/img/bootstrap-stack.png" alt="" width="1024" height="860">
+      </div>
+      <div class="col-md-6 order-md-1 text-center text-md-left pr-md-5">
+        <h1 class="mb-3 bd-text-purple-bright">Bootstrap</h1>
+        <p class="lead">
+          Build responsive, mobile-first projects on the web with the world's most popular front-end component library.
+        </p>
+        <p class="lead mb-4">
+          Bootstrap is an open source toolkit for developing with HTML, CSS, and JS. Quickly prototype your ideas or build your entire app with our Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful plugins built on jQuery.
+        </p>
+        <div class="d-flex flex-column flex-md-row lead mb-3">
+          <a href="{{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/" class="btn btn-lg btn-bd-purple mb-3 mb-md-0 mr-md-3" onclick="ga('send', 'event', 'Jumbotron actions', 'Get started', 'Get started');">Get started</a>
+          <a href="{{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/download/" class="btn btn-lg btn-outline-secondary" onclick="ga('send', 'event', 'Jumbotron actions', 'Download', 'Download {{ site.current_version }}');">Download</a>
+        </div>
+        <p class="text-muted mb-0">
+          Currently v{{ site.current_version }}
+        </p>
+      </div>
+    </div>
+    {% include ads.html %}
+  </div>
+</main>
+
+<div class="masthead-followup row m-0 border border-white">
+  <div class="col-12 col-md-4 p-3 p-md-5 bg-light border border-white">
+    <!-- Icon by Bytesize https://github.com/danklammer/bytesize-icons -->
+    {% include icons/import.svg width="32" height="32" class="text-primary mb-2" %}
+    <h3>Installation</h3>
+    <p>Include Bootstrap's source Sass and JavaScript files via npm, Composer or Meteor. Package managed installs don't include documentation, but do include our build system and readme.</p>
+
+{% highlight sh %}
+npm install bootstrap@{{ site.current_version }}
+{% endhighlight %}
+
+{% highlight sh %}
+gem install bootstrap -v 4.0.0.beta
+{% endhighlight %}
+
+    <hr class="half-rule">
+    <a class="btn btn-outline-primary" href="{{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/download">Read installation docs</a>
+  </div>
+
+  <div class="col-12 col-md-4 p-3 p-md-5 bg-light border border-white">
+    <!-- Icon by Bytesize https://github.com/danklammer/bytesize-icons -->
+    {% include icons/download.svg width="32" height="32" class="text-primary mb-2" %}
+    <h3>Bootstrap CDN</h3>
+    <p>When you only need to include Bootstrap's compiled CSS or JS, you can use the Bootstrap CDN.</p>
+
+<h5>CSS only</h5>
+{% highlight html %}
+<link rel="stylesheet" href="{{ site.cdn.css }}" integrity="{{ site.cdn.css_hash }}" crossorigin="anonymous">
+{% endhighlight %}
+
+<h5>JS, Popper.js, and jQuery</h5>
+{% highlight html %}
+<script src="{{ site.cdn.jquery }}" integrity="{{ site.cdn.jquery_hash }}" crossorigin="anonymous"></script>
+<script src="{{ site.cdn.popper }}" integrity="{{ site.cdn.popper_hash }}" crossorigin="anonymous"></script>
+<script src="{{ site.cdn.js }}" integrity="{{ site.cdn.js_hash }}" crossorigin="anonymous"></script>
+{% endhighlight %}
+    <hr class="half-rule">
+    <a class="btn btn-outline-primary" href="{{ site.baseurl }}/docs/{{ site.docs_version }}/layout/overview/">Explore the docs</a>
+  </div>
+
+  <div class="col-12 col-md-4 p-3 p-md-5 bg-light border border-white">
+    <!-- Icon by Bytesize https://github.com/danklammer/bytesize-icons -->
+    {% include icons/lightning.svg width="32" height="32" class="text-primary mb-2" %}
+    <h3>Official Themes</h3>
+    <p>
+      Take Bootstrap 4 to the next level with official premium themes—toolkits built on Bootstrap with new components and plugins, docs, and build tools.
+    </p>
+    <img class="img-fluid mt-3 mx-auto" src="{{ site.baseurl }}/assets/img/bootstrap-themes.png" alt="Bootstrap Themes" width="1024" height="388">
+    <hr class="half-rule">
+    <a href="{{ site.themes }}" class="btn btn-outline-primary">Browse themes</a>
+  </div>
+</div>

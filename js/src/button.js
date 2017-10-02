@@ -1,11 +1,12 @@
+import $ from 'jquery'
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-alpha.6): button.js
+ * Bootstrap (v4.0.0-beta): button.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
 
-const Button = (($) => {
+const Button = (() => {
 
 
   /**
@@ -15,7 +16,7 @@ const Button = (($) => {
    */
 
   const NAME                = 'button'
-  const VERSION             = '4.0.0-alpha.6'
+  const VERSION             = '4.0.0-beta'
   const DATA_KEY            = 'bs.button'
   const EVENT_KEY           = `.${DATA_KEY}`
   const DATA_API_KEY        = '.data-api'
@@ -90,6 +91,12 @@ const Button = (($) => {
           }
 
           if (triggerChangeEvent) {
+            if (input.hasAttribute('disabled') ||
+              rootElement.hasAttribute('disabled') ||
+              input.classList.contains('disabled') ||
+              rootElement.classList.contains('disabled')) {
+              return
+            }
             input.checked = !$(this._element).hasClass(ClassName.ACTIVE)
             $(input).trigger('change')
           }

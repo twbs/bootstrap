@@ -1,0 +1,149 @@
+-
+  browser: >
+    Edge
+  summary: >
+    Focusable elements should fire focus event / receive :focus styling when they receive Narrator/accessibility focus
+  upstream_bug: >
+    A11yUserVoice#16717318
+  origin: >
+    Bootstrap#20732
+
+-
+  browser: >
+    Edge
+  summary: >
+    Implement the [`:dir()` pseudo-class](https://developer.mozilla.org/en-US/docs/Web/CSS/:dir) from Selectors Level 4
+  upstream_bug: >
+    UserVoice#12299532
+  origin: >
+    Bootstrap#19984
+
+-
+  browser: >
+    Edge
+  summary: >
+    Implement [sticky positioning](http://html5please.com/#position:sticky) from CSS Positioned Layout Level 3
+  upstream_bug: >
+    UserVoice#6263621
+  origin: >
+    Bootstrap#17021
+
+-
+  browser: >
+    Edge
+  summary: >
+    Implement the HTML5 [`<dialog>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog)
+  upstream_bug: >
+    UserVoice#6508895
+  origin: >
+    Bootstrap#20175
+
+-
+  browser: >
+    Edge
+  summary: >
+    Fire a [`transitioncancel` event](https://developer.mozilla.org/en-US/docs/Web/Events/transitioncancel) when a CSS transition is canceled
+  upstream_bug: >
+    UserVoice#15939898
+  origin: >
+    Bootstrap#20618
+
+-
+  browser: >
+    Edge
+  summary: >
+    Implement the [`of <selector-list>` clause](https://caniuse.com/#feat=css-nth-child-of) of the `:nth-child()` pseudo-class
+  upstream_bug: >
+    UserVoice#15944476
+  origin: >
+    Bootstrap#20143
+
+-
+  browser: >
+    Firefox
+  summary: >
+    Implement the [`of <selector-list>` clause](https://caniuse.com/#feat=css-nth-child-of) of the `:nth-child()` pseudo-class
+  upstream_bug: >
+    Mozilla#854148
+  origin: >
+    Bootstrap#20143
+
+-
+  browser: >
+    Firefox
+  summary: >
+    Implement the HTML5 [`<dialog>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog)
+  upstream_bug: >
+    Mozilla#840640
+  origin: >
+    Bootstrap#20175
+
+-
+  browser: >
+    Firefox
+  summary: >
+    When virtual focus is on a button or link, fire actual focus on the element, too
+  upstream_bug: >
+    Mozilla#1000082
+  origin: >
+    Bootstrap#20732
+
+-
+  browser: >
+    Chrome
+  summary: >
+    Fire a [`transitioncancel` event](https://developer.mozilla.org/en-US/docs/Web/Events/transitioncancel) when a CSS transition is canceled
+  upstream_bug: >
+    Chromium#642487
+  origin: >
+    Chromium#437860
+
+-
+  browser: >
+    Chrome
+  summary: >
+    Implement the [`of <selector-list>` clause](https://caniuse.com/#feat=css-nth-child-of) of the `:nth-child()` pseudo-class
+  upstream_bug: >
+    Chromium#304163
+  origin: >
+    Bootstrap#20143
+
+-
+  browser: >
+    Chrome
+  summary: >
+    Implement the [`:dir()` pseudo-class](https://developer.mozilla.org/en-US/docs/Web/CSS/:dir) from Selectors Level 4
+  upstream_bug: >
+    Chromium#576815
+  origin: >
+    Bootstrap#19984
+
+-
+  browser: >
+    Safari
+  summary: >
+    Fire a [`transitioncancel` event](https://developer.mozilla.org/en-US/docs/Web/Events/transitioncancel) when a CSS transition is canceled
+  upstream_bug: >
+    WebKit#161535
+  origin: >
+    Bootstrap#20618
+
+-
+  browser: >
+    Safari
+  summary: >
+    Implement the [`:dir()` pseudo-class](https://developer.mozilla.org/en-US/docs/Web/CSS/:dir) from Selectors Level 4
+  upstream_bug: >
+    WebKit#64861
+  origin: >
+    Bootstrap#19984
+
+-
+  browser: >
+    Safari
+  summary: >
+    Implement the HTML5 [`<dialog>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog)
+  upstream_bug: >
+    WebKit#84635
+  origin: >
+    Bootstrap#20175

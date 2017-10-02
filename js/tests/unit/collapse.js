@@ -21,7 +21,7 @@ $(function () {
 
   QUnit.test('should provide no conflict', function (assert) {
     assert.expect(1)
-    assert.strictEqual($.fn.collapse, undefined, 'collapse was set back to undefined (org value)')
+    assert.strictEqual(typeof $.fn.collapse, 'undefined', 'collapse was set back to undefined (org value)')
   })
 
   QUnit.test('should throw explicit error on undefined method', function (assert) {
@@ -52,8 +52,28 @@ $(function () {
     assert.ok(!/height/i.test($el.attr('style')), 'has height reset')
   })
 
+
+  QUnit.test('should show multiple collapsed elements', function (assert) {
+    assert.expect(4)
+    var done = assert.async()
+    var $target = $('<a role="button" data-toggle="collapse" class="collapsed" href=".multi"/>').appendTo('#qunit-fixture')
+    var $el = $('<div class="collapse multi"/>').appendTo('#qunit-fixture')
+    var $el2 = $('<div class="collapse multi"/>').appendTo('#qunit-fixture')
+    $el.one('shown.bs.collapse', function () {
+      assert.ok($el.hasClass('show'), 'has class "show"')
+      assert.ok(!/height/i.test($el.attr('style')), 'has height reset')
+    })
+    $el2.one('shown.bs.collapse', function () {
+      assert.ok($el2.hasClass('show'), 'has class "show"')
+      assert.ok(!/height/i.test($el2.attr('style')), 'has height reset')
+      done()
+    })
+    $target.trigger('click')
+  })
+
   QUnit.test('should collapse only the first collapse', function (assert) {
     assert.expect(2)
+    var done = assert.async()
     var html = [
       '<div class="panel-group" id="accordion1">',
       '<div class="panel">',
@@ -69,10 +89,11 @@ $(function () {
     $(html).appendTo('#qunit-fixture')
     var $el1 = $('#collapse1')
     var $el2 = $('#collapse2')
-    $el1.bootstrapCollapse('show')
-
-    assert.ok($el1.hasClass('show'))
-    assert.ok($el2.hasClass('show'))
+    $el1.one('shown.bs.collapse', function () {
+      assert.ok($el1.hasClass('show'))
+      assert.ok($el2.hasClass('show'))
+      done()
+    }).bootstrapCollapse('show')
   })
 
   QUnit.test('should hide a collapsed element', function (assert) {
@@ -491,27 +512,85 @@ $(function () {
   })
 
   QUnit.test('should allow accordion to use children other than card', function (assert) {
-    assert.expect(2)
+    assert.expect(4)
     var done = assert.async()
-    var accordionHTML = '<div id="accordion" data-children=".item">'
+    var accordionHTML = '<div id="accordion">'
         + '<div class="item">'
         + '<a id="linkTrigger" data-parent="#accordion" data-toggle="collapse" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne"></a>'
         + '<div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingThree"></div>'
         + '</div>'
         + '<div class="item">'
-        + '<a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"></a>'
+        + '<a id="linkTriggerTwo" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"></a>'
         + '<div id="collapseTwo" class="collapse show" role="tabpanel" aria-labelledby="headingTwo"></div>'
         + '</div>'
         + '</div>'
 
     $(accordionHTML).appendTo('#qunit-fixture')
-    var $target = $('#linkTrigger')
-    $('#collapseOne').on('shown.bs.collapse', function () {
-      assert.ok($(this).hasClass('show'))
-      assert.ok(!$('#collapseTwo').hasClass('show'))
-      done()
+    var $trigger = $('#linkTrigger')
+    var $triggerTwo = $('#linkTriggerTwo')
+    var $collapseOne = $('#collapseOne')
+    var $collapseTwo = $('#collapseTwo')
+    $collapseOne.on('shown.bs.collapse', function () {
+      assert.ok($collapseOne.hasClass('show'), '#collapseOne is shown')
+      assert.ok(!$collapseTwo.hasClass('show'), '#collapseTwo is not shown')
+      $collapseTwo.on('shown.bs.collapse', function () {
+        assert.ok(!$collapseOne.hasClass('show'), '#collapseOne is not shown')
+        assert.ok($collapseTwo.hasClass('show'), '#collapseTwo is shown')
+        done()
+      })
+      $triggerTwo.trigger($.Event('click'))
     })
-    $target.trigger($.Event('click'))
+    $trigger.trigger($.Event('click'))
+  })
+
+  QUnit.test('should collapse accordion children but not nested accordion children', function (assert) {
+    assert.expect(9)
+    var done = assert.async()
+    $('<div id="accordion">'
+        + '<div class="item">'
+        + '<a id="linkTrigger" data-parent="#accordion" data-toggle="collapse" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne"></a>'
+        + '<div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingThree">'
+        + '<div id="nestedAccordion">'
+        + '<div class="item">'
+        + '<a id="nestedLinkTrigger" data-parent="#nestedAccordion" data-toggle="collapse" href="#nestedCollapseOne" aria-expanded="false" aria-controls="nestedCollapseOne"></a>'
+        + '<div id="nestedCollapseOne" class="collapse" role="tabpanel" aria-labelledby="headingThree">'
+        + '</div>'
+        + '</div>'
+        + '</div>'
+        + '</div>'
+        + '</div>'
+        + '<div class="item">'
+        + '<a id="linkTriggerTwo" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"></a>'
+        + '<div id="collapseTwo" class="collapse show" role="tabpanel" aria-labelledby="headingTwo"></div>'
+        + '</div>'
+        + '</div>').appendTo('#qunit-fixture')
+    var $trigger = $('#linkTrigger')
+    var $triggerTwo = $('#linkTriggerTwo')
+    var $nestedTrigger = $('#nestedLinkTrigger')
+    var $collapseOne = $('#collapseOne')
+    var $collapseTwo = $('#collapseTwo')
+    var $nestedCollapseOne = $('#nestedCollapseOne')
+
+
+    $collapseOne.one('shown.bs.collapse', function () {
+      assert.ok($collapseOne.hasClass('show'), '#collapseOne is shown')
+      assert.ok(!$collapseTwo.hasClass('show'), '#collapseTwo is not shown')
+      assert.ok(!$('#nestedCollapseOne').hasClass('show'), '#nestedCollapseOne is not shown')
+      $nestedCollapseOne.one('shown.bs.collapse', function () {
+        assert.ok($collapseOne.hasClass('show'), '#collapseOne is shown')
+        assert.ok(!$collapseTwo.hasClass('show'), '#collapseTwo is not shown')
+        assert.ok($nestedCollapseOne.hasClass('show'), '#nestedCollapseOne is shown')
+        $collapseTwo.one('shown.bs.collapse', function () {
+          assert.ok(!$collapseOne.hasClass('show'), '#collapseOne is not shown')
+          assert.ok($collapseTwo.hasClass('show'), '#collapseTwo is shown')
+          assert.ok($nestedCollapseOne.hasClass('show'), '#nestedCollapseOne is shown')
+          done()
+        })
+        $triggerTwo.trigger($.Event('click'))
+      })
+      $nestedTrigger.trigger($.Event('click'))
+    })
+    $trigger.trigger($.Event('click'))
   })
 
   QUnit.test('should not prevent event for input', function (assert) {
@@ -529,5 +608,138 @@ $(function () {
       })
 
     $target.trigger($.Event('click'))
+  })
+
+  QUnit.test('should add "collapsed" class to triggers only when all the targeted collapse are hidden', function (assert) {
+    assert.expect(9)
+    var done = assert.async()
+
+    var $trigger1 = $('<a role="button" data-toggle="collapse" href="#test1"/>').appendTo('#qunit-fixture')
+    var $trigger2 = $('<a role="button" data-toggle="collapse" href="#test2"/>').appendTo('#qunit-fixture')
+    var $trigger3 = $('<a role="button" data-toggle="collapse" href=".multi"/>').appendTo('#qunit-fixture')
+
+    var $target1 = $('<div id="test1" class="multi"/>').appendTo('#qunit-fixture')
+    var $target2 = $('<div id="test2" class="multi"/>').appendTo('#qunit-fixture')
+
+    $target2.one('shown.bs.collapse', function () {
+      assert.ok(!$trigger1.hasClass('collapsed'), 'trigger1 does not have collapsed class')
+      assert.ok(!$trigger2.hasClass('collapsed'), 'trigger2 does not have collapsed class')
+      assert.ok(!$trigger3.hasClass('collapsed'), 'trigger3 does not have collapsed class')
+      $target2.one('hidden.bs.collapse', function () {
+        assert.ok(!$trigger1.hasClass('collapsed'), 'trigger1 does not have collapsed class')
+        assert.ok($trigger2.hasClass('collapsed'), 'trigger2 has collapsed class')
+        assert.ok(!$trigger3.hasClass('collapsed'), 'trigger3 does not have collapsed class')
+        $target1.one('hidden.bs.collapse', function () {
+          assert.ok($trigger1.hasClass('collapsed'), 'trigger1 has collapsed class')
+          assert.ok($trigger2.hasClass('collapsed'), 'trigger2 has collapsed class')
+          assert.ok($trigger3.hasClass('collapsed'), 'trigger3 has collapsed class')
+          done()
+        })
+        $trigger1.trigger('click')
+      })
+      $trigger2.trigger('click')
+    })
+    $trigger3.trigger('click')
+  })
+
+  QUnit.test('should set aria-expanded="true" to triggers targetting shown collaspe and aria-expanded="false" only when all the targeted collapses are shown', function (assert) {
+    assert.expect(9)
+    var done = assert.async()
+
+    var $trigger1 = $('<a role="button" data-toggle="collapse" href="#test1"/>').appendTo('#qunit-fixture')
+    var $trigger2 = $('<a role="button" data-toggle="collapse" href="#test2"/>').appendTo('#qunit-fixture')
+    var $trigger3 = $('<a role="button" data-toggle="collapse" href=".multi"/>').appendTo('#qunit-fixture')
+
+    var $target1 = $('<div id="test1" class="multi collapse"/>').appendTo('#qunit-fixture')
+    var $target2 = $('<div id="test2" class="multi collapse"/>').appendTo('#qunit-fixture')
+
+    $target2.one('shown.bs.collapse', function () {
+      assert.strictEqual($trigger1.attr('aria-expanded'), 'true', 'aria-expanded on trigger1 is "true"')
+      assert.strictEqual($trigger2.attr('aria-expanded'), 'true', 'aria-expanded on trigger2 is "true"')
+      assert.strictEqual($trigger3.attr('aria-expanded'), 'true', 'aria-expanded on trigger3 is "true"')
+      $target2.one('hidden.bs.collapse', function () {
+        assert.strictEqual($trigger1.attr('aria-expanded'), 'true', 'aria-expanded on trigger1 is "true"')
+        assert.strictEqual($trigger2.attr('aria-expanded'), 'false', 'aria-expanded on trigger2 is "false"')
+        assert.strictEqual($trigger3.attr('aria-expanded'), 'true', 'aria-expanded on trigger3 is "true"')
+        $target1.one('hidden.bs.collapse', function () {
+          assert.strictEqual($trigger1.attr('aria-expanded'), 'false', 'aria-expanded on trigger1 is "fasle"')
+          assert.strictEqual($trigger2.attr('aria-expanded'), 'false', 'aria-expanded on trigger2 is "false"')
+          assert.strictEqual($trigger3.attr('aria-expanded'), 'false', 'aria-expanded on trigger3 is "false"')
+          done()
+        })
+        $trigger1.trigger('click')
+      })
+      $trigger2.trigger('click')
+    })
+    $trigger3.trigger('click')
+  })
+
+  QUnit.test('should not prevent interactions inside the collapse element', function (assert) {
+    assert.expect(2)
+    var done = assert.async()
+
+    var $target = $('<input type="checkbox" data-toggle="collapse" data-target="#collapsediv1" />').appendTo('#qunit-fixture')
+    var htmlCollapse =
+      '<div id="collapsediv1" class="collapse">' +
+      ' <input type="checkbox" id="testCheckbox" />' +
+      '</div>'
+
+    $(htmlCollapse)
+      .appendTo('#qunit-fixture')
+      .on('shown.bs.collapse', function () {
+        assert.ok($target.prop('checked'), '$trigger is checked')
+        var $testCheckbox = $('#testCheckbox')
+        $testCheckbox.trigger($.Event('click'))
+        setTimeout(function () {
+          assert.ok($testCheckbox.prop('checked'), '$testCheckbox is checked too')
+          done()
+        }, 5)
+      })
+
+    $target.trigger($.Event('click'))
+  })
+
+  QUnit.test('should allow jquery object in parent config', function (assert) {
+    assert.expect(1)
+    var html =
+    '<div class="my-collapse">' +
+    '  <div class="item">' +
+    '    <a data-toggle="collapse" href="#">Toggle item</a>' +
+    '    <div class="collapse">Lorem ipsum</div>' +
+    '  </div>' +
+    '</div>'
+
+    $(html).appendTo('#qunit-fixture')
+    try {
+      $('[data-toggle="collapse"]').bootstrapCollapse({
+        parent: $('.my-collapse')
+      })
+      assert.ok(true, 'collapse correctly created')
+    }
+    catch (e) {
+      assert.ok(false, 'collapse not created')
+    }
+  })
+
+  QUnit.test('should allow DOM object in parent config', function (assert) {
+    assert.expect(1)
+    var html =
+    '<div class="my-collapse">' +
+    '  <div class="item">' +
+    '    <a data-toggle="collapse" href="#">Toggle item</a>' +
+    '    <div class="collapse">Lorem ipsum</div>' +
+    '  </div>' +
+    '</div>'
+
+    $(html).appendTo('#qunit-fixture')
+    try {
+      $('[data-toggle="collapse"]').bootstrapCollapse({
+        parent: $('.my-collapse')[0]
+      })
+      assert.ok(true, 'collapse correctly created')
+    }
+    catch (e) {
+      assert.ok(false, 'collapse not created')
+    }
   })
 })

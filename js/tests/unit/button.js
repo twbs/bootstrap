@@ -21,7 +21,7 @@ $(function () {
 
   QUnit.test('should provide no conflict', function (assert) {
     assert.expect(1)
-    assert.strictEqual($.fn.button, undefined, 'button was set back to undefined (org value)')
+    assert.strictEqual(typeof $.fn.button, 'undefined', 'button was set back to undefined (org value)')
   })
 
   QUnit.test('should return jquery collection containing the element', function (assert) {
@@ -154,6 +154,23 @@ $(function () {
 
     $btn2.find('input').trigger('click')
     assert.ok($btn2.is(':not([aria-pressed])'), 'label for nested radio input has not been given an aria-pressed attribute')
+  })
+
+  QUnit.test('should handle disabled attribute on non-button elements', function (assert) {
+    assert.expect(2)
+    var groupHTML = '  <div class="btn-group disabled" data-toggle="buttons" aria-disabled="true" disabled>'
+      + '<label class="btn btn-danger disabled" aria-disabled="true" disabled>'
+      + '<input type="checkbox" aria-disabled="true" autocomplete="off" disabled class="disabled"/>'
+      + '</label>'
+      + '</div>'
+    var $group = $(groupHTML).appendTo('#qunit-fixture')
+
+    var $btn = $group.children().eq(0)
+    var $input = $btn.children().eq(0)
+
+    $btn.trigger('click')
+    assert.ok($btn.is(':not(.active)'), 'button did not become active')
+    assert.ok(!$input.is(':checked'), 'checkbox did not get checked')
   })
 
 })
