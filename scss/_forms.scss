@@ -88,21 +88,24 @@ select.form-control {
 // For use with horizontal and inline forms, when you need the label text to
 // align with the form controls.
 .col-form-label {
-  padding-top: calc(#{$input-btn-padding-y} - #{$input-btn-border-width} * 2);
-  padding-bottom: calc(#{$input-btn-padding-y} - #{$input-btn-border-width} * 2);
+  padding-top: calc(#{$input-btn-padding-y} + #{$input-btn-border-width});
+  padding-bottom: calc(#{$input-btn-padding-y} + #{$input-btn-border-width});
   margin-bottom: 0; // Override the `<label>` default
+  line-height: $input-btn-line-height;
 }
 
 .col-form-label-lg {
-  padding-top: calc(#{$input-btn-padding-y-lg} - #{$input-btn-border-width} * 2);
-  padding-bottom: calc(#{$input-btn-padding-y-lg} - #{$input-btn-border-width} * 2);
+  padding-top: calc(#{$input-btn-padding-y-lg} + #{$input-btn-border-width});
+  padding-bottom: calc(#{$input-btn-padding-y-lg} + #{$input-btn-border-width});
   font-size: $font-size-lg;
+  line-height: $input-btn-line-height-lg;
 }
 
 .col-form-label-sm {
-  padding-top: calc(#{$input-btn-padding-y-sm} - #{$input-btn-border-width} * 2);
-  padding-bottom: calc(#{$input-btn-padding-y-sm} - #{$input-btn-border-width} * 2);
+  padding-top: calc(#{$input-btn-padding-y-sm} + #{$input-btn-border-width});
+  padding-bottom: calc(#{$input-btn-padding-y-sm} + #{$input-btn-border-width});
   font-size: $font-size-sm;
+  line-height: $input-btn-line-height-sm;
 }
 
 

@@ -4,6 +4,37 @@
  * Copyright 2011-2017 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+:root {
+  --blue: #007bff;
+  --indigo: #6610f2;
+  --purple: #6f42c1;
+  --pink: #e83e8c;
+  --red: #dc3545;
+  --orange: #fd7e14;
+  --yellow: #ffc107;
+  --green: #28a745;
+  --teal: #20c997;
+  --cyan: #17a2b8;
+  --white: #fff;
+  --gray: #868e96;
+  --gray-dark: #343a40;
+  --primary: #007bff;
+  --secondary: #868e96;
+  --success: #28a745;
+  --info: #17a2b8;
+  --warning: #ffc107;
+  --danger: #dc3545;
+  --light: #f8f9fa;
+  --dark: #343a40;
+  --breakpoint-xs: 0;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-family-monospace: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
 @media print {
   *,
   *::before,
@@ -1855,21 +1886,24 @@ select.form-control:focus::-ms-value {
 }
 
 .col-form-label {
-  padding-top: calc(0.5rem - 1px * 2);
-  padding-bottom: calc(0.5rem - 1px * 2);
+  padding-top: calc(0.5rem + 1px);
+  padding-bottom: calc(0.5rem + 1px);
   margin-bottom: 0;
+  line-height: 1.25;
 }
 
 .col-form-label-lg {
-  padding-top: calc(0.5rem - 1px * 2);
-  padding-bottom: calc(0.5rem - 1px * 2);
+  padding-top: calc(0.5rem + 1px);
+  padding-bottom: calc(0.5rem + 1px);
   font-size: 1.25rem;
+  line-height: 1.5;
 }
 
 .col-form-label-sm {
-  padding-top: calc(0.25rem - 1px * 2);
-  padding-bottom: calc(0.25rem - 1px * 2);
+  padding-top: calc(0.25rem + 1px);
+  padding-bottom: calc(0.25rem + 1px);
   font-size: 0.875rem;
+  line-height: 1.5;
 }
 
 .col-form-legend {
@@ -3040,8 +3074,8 @@ tbody.collapse.show {
   position: relative;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-align: center;
-      align-items: center;
+  -ms-flex-align: stretch;
+      align-items: stretch;
   width: 100%;
 }
 
@@ -3056,6 +3090,15 @@ tbody.collapse.show {
 
 .input-group .form-control:focus, .input-group .form-control:active, .input-group .form-control:hover {
   z-index: 3;
+}
+
+.input-group-addon,
+.input-group-btn,
+.input-group .form-control {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
 }
 
 .input-group-addon:not(:first-child):not(:last-child),
@@ -3136,6 +3179,8 @@ tbody.collapse.show {
 
 .input-group-btn {
   position: relative;
+  -ms-flex-align: stretch;
+      align-items: stretch;
   font-size: 0;
   white-space: nowrap;
 }
@@ -3833,6 +3878,14 @@ tbody.collapse.show {
   color: rgba(0, 0, 0, 0.5);
 }
 
+.navbar-light .navbar-text a {
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.navbar-light .navbar-text a:focus, .navbar-light .navbar-text a:hover {
+  color: rgba(0, 0, 0, 0.9);
+}
+
 .navbar-dark .navbar-brand {
   color: white;
 }
@@ -3871,6 +3924,14 @@ tbody.collapse.show {
 
 .navbar-dark .navbar-text {
   color: rgba(255, 255, 255, 0.5);
+}
+
+.navbar-dark .navbar-text a {
+  color: white;
+}
+
+.navbar-dark .navbar-text a:focus, .navbar-dark .navbar-text a:hover {
+  color: white;
 }
 
 .card {
