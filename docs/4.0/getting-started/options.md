@@ -8,18 +8,22 @@ toc: true
 
 ## Customizing variables
 
-Every Sass variable in Bootstrap 4 includes the `!default` flag, meaning you can override that default value in your own Sass. Copy and paste variables as needed, modify the values and remove the !default flag. If a variable has already been assigned, then it won't be re-assigned by the default values in Bootstrap. This means that your modified Sass variables should be called before you import Bootstrap Sass files. For example, to change out the `background-color` and `color` for the `<body>`, you'd do the following::
+Every Sass variable in Bootstrap 4 includes the `!default` flag allowing you to override the variable's default value in your own Sass without modifying Bootstrap's source code. Copy and paste variables as needed, modify their values, and remove the `!default` flag. If a variable has already been assigned, then it won't be re-assigned by the default values in Bootstrap.
+
+Variable overrides within the same Sass file can come before or after the default variables. However, when overriding across Sass files, your overrides must come before you import Bootstrap's Sass files.
+
+Here's an example that changes the `background-color` and `color` for the `<body>` when importing and compiling Bootstrap via npm:
 
 {% highlight scss %}
-// Your variable overwrite first or a Sass file containing the modifications
+// Your variable overrides
 $body-bg: #000;
 $body-color: #111;
 
-// Then import Bootstrap
+// Bootstrap and its default variables
 @import "node_modules/bootstrap/scss/bootstrap";
 {% endhighlight %}
 
-Do the same for any variable you need to override, including the global options listed below.
+Repeat as necessary for any variable in Bootstrap, including the global options below.
 
 ## Global options
 

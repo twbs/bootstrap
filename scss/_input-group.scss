@@ -165,7 +165,8 @@
     > .btn,
     > .btn-group {
       z-index: 2;
-      margin-left: (-$input-btn-border-width);
+      // remove nagative margin ($input-btn-border-width) to solve overlapping issue with button.
+      margin-left: 0;
       // Because specificity
       @include hover-focus-active {
         z-index: 3;
