@@ -25,9 +25,13 @@
   .arrow {
     position: absolute;
     display: block;
-    width: $popover-arrow-width;
-    height: $popover-arrow-height;
+    width: calc(2*#{$popover-border-width} + #{$popover-arrow-width});
+    height: calc(2*#{$popover-border-width} + #{$popover-arrow-height});
   }
+
+  $popover-arrow-margin: -$popover-arrow-width / 2;
+  $popover-arrow-before-coor: calc(-#{$popover-arrow-width} - #{$popover-border-width});
+  $popover-arrow-after-coor: -$popover-arrow-width;
 
   .arrow::before,
   .arrow::after {
@@ -39,11 +43,11 @@
 
   .arrow::before {
     content: "";
-    border-width: $popover-arrow-outer-width;
+    border-width: $popover-arrow-width;
   }
   .arrow::after {
     content: "";
-    border-width: $popover-arrow-outer-width;
+    border-width: $popover-arrow-width;
   }
 
   // Popover directions
@@ -57,18 +61,17 @@
 
     .arrow::before,
     .arrow::after {
+      margin-left: $popover-arrow-margin;
       border-bottom-width: 0;
     }
 
     .arrow::before {
-      bottom: -$popover-arrow-outer-width;
-      margin-left: -($popover-arrow-outer-width - 5);
+      bottom: $popover-arrow-before-coor;
       border-top-color: $popover-arrow-outer-color;
     }
 
     .arrow::after {
-      bottom: -($popover-arrow-outer-width - 1);
-      margin-left: -($popover-arrow-outer-width - 5);
+      bottom: $popover-arrow-after-coor;
       border-top-color: $popover-arrow-color;
     }
   }
@@ -82,17 +85,17 @@
 
     .arrow::before,
     .arrow::after {
-      margin-top: -($popover-arrow-outer-width - 3);
+      margin-top: $popover-arrow-margin;
       border-left-width: 0;
     }
 
     .arrow::before {
-      left: -$popover-arrow-outer-width;
+      left: $popover-arrow-before-coor;
       border-right-color: $popover-arrow-outer-color;
     }
 
     .arrow::after {
-      left: -($popover-arrow-outer-width - 1);
+      left: $popover-arrow-after-coor;
       border-right-color: $popover-arrow-color;
     }
   }
@@ -106,17 +109,17 @@
 
     .arrow::before,
     .arrow::after {
-      margin-left: -($popover-arrow-width - 3);
+      margin-left: $popover-arrow-margin;
       border-top-width: 0;
     }
 
     .arrow::before {
-      top: -$popover-arrow-outer-width;
+      top: $popover-arrow-before-coor;
       border-bottom-color: $popover-arrow-outer-color;
     }
 
     .arrow::after {
-      top: -($popover-arrow-outer-width - 1);
+      top: $popover-arrow-after-coor;
       border-bottom-color: $popover-arrow-color;
     }
 
@@ -142,17 +145,17 @@
 
     .arrow::before,
     .arrow::after {
-      margin-top: -($popover-arrow-outer-width - 3);
+      margin-top: $popover-arrow-margin;
       border-right-width: 0;
     }
 
     .arrow::before {
-      right: -$popover-arrow-outer-width;
+      right: $popover-arrow-before-coor;
       border-left-color: $popover-arrow-outer-color;
     }
 
     .arrow::after {
-      right: -($popover-arrow-outer-width - 1);
+      right: $popover-arrow-after-coor;
       border-left-color: $popover-arrow-color;
     }
   }

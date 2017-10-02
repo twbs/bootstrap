@@ -1,4 +1,5 @@
 // Base class
+
 .tooltip {
   position: absolute;
   z-index: $zindex-tooltip;
@@ -21,6 +22,8 @@
     height: $tooltip-arrow-height;
   }
 
+  $tooltip-arrow-margin: -$tooltip-arrow-width / 2;
+
   &.bs-tooltip-top {
     padding: $tooltip-arrow-width 0;
     .arrow {
@@ -28,7 +31,7 @@
     }
 
     .arrow::before {
-      margin-left: -($tooltip-arrow-width - 2);
+      margin-left: $tooltip-arrow-margin;
       content: "";
       border-width: $tooltip-arrow-width $tooltip-arrow-width 0;
       border-top-color: $tooltip-arrow-color;
@@ -41,7 +44,7 @@
     }
 
     .arrow::before {
-      margin-top: -($tooltip-arrow-width - 2);
+      margin-top: $tooltip-arrow-margin;
       content: "";
       border-width: $tooltip-arrow-width $tooltip-arrow-width $tooltip-arrow-width 0;
       border-right-color: $tooltip-arrow-color;
@@ -54,7 +57,7 @@
     }
 
     .arrow::before {
-      margin-left: -($tooltip-arrow-width - 2);
+      margin-left: $tooltip-arrow-margin;
       content: "";
       border-width: 0 $tooltip-arrow-width $tooltip-arrow-width;
       border-bottom-color: $tooltip-arrow-color;
@@ -68,7 +71,7 @@
 
     .arrow::before {
       right: 0;
-      margin-top: -($tooltip-arrow-width - 2);
+      margin-top: $tooltip-arrow-margin;
       content: "";
       border-width: $tooltip-arrow-width 0 $tooltip-arrow-width $tooltip-arrow-width;
       border-left-color: $tooltip-arrow-color;
