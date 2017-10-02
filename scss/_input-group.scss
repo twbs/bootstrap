@@ -5,7 +5,7 @@
 .input-group {
   position: relative;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   width: 100%;
 
   .form-control {
@@ -29,6 +29,8 @@
 .input-group-addon,
 .input-group-btn,
 .input-group .form-control {
+  display: flex;
+  align-items: center;
   &:not(:first-child):not(:last-child) {
     @include border-radius(0);
   }
@@ -132,6 +134,7 @@
 
 .input-group-btn {
   position: relative;
+  align-items: stretch;
   // Jankily prevent input button groups from wrapping with `white-space` and
   // `font-size` in combination with `inline-block` on buttons.
   font-size: 0;
