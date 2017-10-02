@@ -524,11 +524,11 @@ Use `.order-` classes for controlling the **visual order** of your content. Thes
     <div class="col">
       First, but unordered
     </div>
-    <div class="col order-1">
-      Second, but third
-    </div>
     <div class="col order-12">
-      Third, but last
+      Second, but last
+    </div>
+    <div class="col order-1">
+      Third, but first
     </div>
   </div>
 </div>
