@@ -38,9 +38,6 @@ Thumbs.db
 .komodotools
 *.komodoproject
 
-# SCSS-Lint
-scss-lint-report.xml
-
 # Jekyll metadata and extra config file for `github` script
 docs/.jekyll-metadata
 twbsconfig.yml

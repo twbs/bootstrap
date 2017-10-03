@@ -61,10 +61,6 @@
       @include border-bottom-radius($card-border-radius);
     }
   }
-
-  .card-header + .list-group > .list-group-item:first-child {
-    border-top: 0;
-  }
 }
 
 
