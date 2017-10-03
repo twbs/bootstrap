@@ -72,10 +72,11 @@
   left: 0;
   z-index: $zindex-modal-backdrop;
   background-color: $modal-backdrop-bg;
+  display: none; 
 
   // Fade for backdrop
   &.fade { opacity: 0; }
-  &.show { opacity: $modal-backdrop-opacity; }
+  &.show { display: block; opacity: $modal-backdrop-opacity; }
 }
 
 // Modal header
