@@ -39,6 +39,8 @@ const Dropdown = (() => {
   const ARROW_DOWN_KEYCODE       = 40 // KeyboardEvent.which value for down arrow key
   const RIGHT_MOUSE_BUTTON_WHICH = 3 // MouseEvent.which value for the right button (assuming a right-handed mouse)
   const REGEXP_KEYDOWN           = new RegExp(`${ARROW_UP_KEYCODE}|${ARROW_DOWN_KEYCODE}|${ESCAPE_KEYCODE}`)
+  const POPPER_OFFSET_KEY        = 'offset'
+  const POPPER_OFFSET_FN_KEY     = 'fn'
 
   const Event = {
     HIDE             : `hide${EVENT_KEY}`,
@@ -241,16 +243,28 @@ const Dropdown = (() => {
       return placement
     }
 
+    _getOffset(data) {
+      const popperOffset = $.extend({}, data.offsets, this._config.offset(data.offsets) || {})
+      Object.keys(popperOffset).forEach((key) => {
+        data.offsets[key] = popperOffset[key]
+      })
+      return data
+    }
+
     _detectNavbar() {
       return $(this._element).closest('.navbar').length > 0
     }
 
     _getPopperConfig() {
+      let key = POPPER_OFFSET_KEY
+      if (typeof this._config.offset === 'function') {
+        key = POPPER_OFFSET_FN_KEY
+      }
       const popperConfig = {
         placement : this._getPlacement(),
         modifiers : {
           offset : {
-            offset : this._config.offset
+            [key]: key === POPPER_OFFSET_KEY ? this._config.offset : (data) => this._getOffset(data)
           },
           flip : {
             enabled : this._config.flip
