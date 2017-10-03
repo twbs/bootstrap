@@ -3,6 +3,9 @@ fail_on_violations: true
 stylelint:
   config_file: build/.stylelintrc
 
+scss:
+  enabled: false
+
 jshint:
   enabled: false
 
