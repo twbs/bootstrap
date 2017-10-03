@@ -476,9 +476,9 @@ If more than 12 columns are placed within a single row, each group of extra colu
 {% endexample %}
 </div>
 
-### Column resets
+### Column breaks
 
-With the handful of grid tiers available, you're bound to run into issues where, at certain breakpoints, your columns don't clear quite right as one is taller than the other. To fix that, use a combination of a `.clearfix` and our [responsive display utilities]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/display/).
+Breaking columns to a new line in flexbox requires a small hack: add an element with `width: 100%` wherever you want to wrap your columns to a new line. Normally this is accomplished with multiple `.row`s, but not ever implementation method can account for this.
 
 <div class="bd-example-row">
 {% example html %}
@@ -486,8 +486,8 @@ With the handful of grid tiers available, you're bound to run into issues where,
   <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
   <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
 
-  <!-- Add the extra clearfix for only the required viewport -->
-  <div class="clearfix d-none d-sm-block"></div>
+  <!-- Force next columns to break to new line -->
+  <div class="w-100"></div>
 
   <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
   <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
@@ -495,18 +495,19 @@ With the handful of grid tiers available, you're bound to run into issues where,
 {% endexample %}
 </div>
 
-In addition to column clearing at responsive breakpoints, you may need to reset offsets. See this in action in [the grid example]({{ site.baseurl }}/docs/{{ site.docs_version }}/examples/grid/).
+You may also apply this break at specific breakpoints with our [responsive display utilities]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/display/).
 
 <div class="bd-example-row">
 {% example html %}
 <div class="row">
-  <div class="col-sm-5 col-md-6">.col-sm-5 .col-md-6</div>
-  <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0">.col-sm-5 .offset-sm-2 .col-md-6 .offset-md-0</div>
-</div>
+  <div class="col-6 col-sm-4">.col-6 .col-sm-4</div>
+  <div class="col-6 col-sm-4">.col-6 .col-sm-4</div>
 
-<div class="row">
-  <div class="col-sm-6 col-md-5 col-lg-6">.col.col-sm-6.col-md-5.col-lg-6</div>
-  <div class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">.col-sm-6 .col-md-5 .offset-md-2 .col-lg-6 .offset-lg-0</div>
+  <!-- Force next columns to break to new line at md breakpoint and up -->
+  <div class="w-100 d-none d-md-block"></div>
+
+  <div class="col-6 col-sm-4">.col-6 .col-sm-4</div>
+  <div class="col-6 col-sm-4">.col-6 .col-sm-4</div>
 </div>
 {% endexample %}
 </div>
@@ -575,6 +576,22 @@ Move columns to the right using `.offset-md-*` classes. These classes increase t
 </div>
 <div class="row">
   <div class="col-md-6 offset-md-3">.col-md-6 .offset-md-3</div>
+</div>
+{% endexample %}
+</div>
+
+In addition to column clearing at responsive breakpoints, you may need to reset offsets. See this in action in [the grid example]({{ site.baseurl }}/docs/{{ site.docs_version }}/examples/grid/).
+
+<div class="bd-example-row">
+{% example html %}
+<div class="row">
+  <div class="col-sm-5 col-md-6">.col-sm-5 .col-md-6</div>
+  <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0">.col-sm-5 .offset-sm-2 .col-md-6 .offset-md-0</div>
+</div>
+
+<div class="row">
+  <div class="col-sm-6 col-md-5 col-lg-6">.col.col-sm-6.col-md-5.col-lg-6</div>
+  <div class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">.col-sm-6 .col-md-5 .offset-md-2 .col-lg-6 .offset-lg-0</div>
 </div>
 {% endexample %}
 </div>
