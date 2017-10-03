@@ -38,3 +38,9 @@ Separators are automatically added in CSS through [`::before`](https://developer
 Since breadcrumbs provide a navigation, it's a good idea to add a meaningful label such as `aria-label="breadcrumb"` to describe the type of navigation provided in the `<nav>` element, as well as applying an `aria-current="page"` to the last item of the set to indicate that it represents the current page.
 
 For more information, see the [WAI-ARIA Authoring Practices for the breadcrumb pattern](https://www.w3.org/TR/wai-aria-practices/#breadcrumb).
+
+## Search engine
+
+If your site is visited by search engines, then you should consider adding Schema.org structure data. This will allow your site to appear more attractive in search results. 
+
+For more information, see [Breadcrumbs - Google Developers](https://developers.google.com/search/docs/data-types/breadcrumbs), [BreadcrumbList - schema.org](http://schema.org/BreadcrumbList).
