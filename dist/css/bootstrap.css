@@ -1848,9 +1848,9 @@ pre code {
 .form-control {
   display: block;
   width: 100%;
-  padding: 0.5rem 0.75rem;
+  padding: 0.375rem 0.75rem;
   font-size: 1rem;
-  line-height: 1.25;
+  line-height: 1.5;
   color: #495057;
   background-color: #fff;
   background-image: none;
@@ -1907,10 +1907,10 @@ select.form-control:focus::-ms-value {
 }
 
 .col-form-label {
-  padding-top: calc(0.5rem + 1px);
-  padding-bottom: calc(0.5rem + 1px);
+  padding-top: calc(0.375rem + 1px);
+  padding-bottom: calc(0.375rem + 1px);
   margin-bottom: 0;
-  line-height: 1.25;
+  line-height: 1.5;
 }
 
 .col-form-label-lg {
@@ -1928,17 +1928,17 @@ select.form-control:focus::-ms-value {
 }
 
 .col-form-legend {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-top: 0.375rem;
+  padding-bottom: 0.375rem;
   margin-bottom: 0;
   font-size: 1rem;
 }
 
 .form-control-plaintext {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-top: 0.375rem;
+  padding-bottom: 0.375rem;
   margin-bottom: 0;
-  line-height: 1.25;
+  line-height: 1.5;
   background-color: transparent;
   border: solid transparent;
   border-width: 1px 0;
@@ -2275,9 +2275,9 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
       -ms-user-select: none;
           user-select: none;
   border: 1px solid transparent;
-  padding: 0.5rem 0.75rem;
+  padding: 0.375rem 0.75rem;
   font-size: 1rem;
-  line-height: 1.25;
+  line-height: 1.5;
   border-radius: 0.25rem;
   transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
@@ -3168,11 +3168,11 @@ tbody.collapse.show {
 }
 
 .input-group-addon {
-  padding: 0.5rem 0.75rem;
+  padding: 0.375rem 0.75rem;
   margin-bottom: 0;
   font-size: 1rem;
   font-weight: normal;
-  line-height: 1.25;
+  line-height: 1.5;
   color: #495057;
   text-align: center;
   background-color: #e9ecef;
@@ -3374,7 +3374,7 @@ tbody.collapse.show {
   max-width: 100%;
   height: calc(2.25rem + 2px);
   padding: 0.375rem 1.75rem 0.375rem 0.75rem;
-  line-height: 1.25;
+  line-height: 1.5;
   color: #495057;
   vertical-align: middle;
   background: #fff url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23333' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat right 0.75rem center;
@@ -3394,6 +3394,11 @@ tbody.collapse.show {
 .custom-select:focus::-ms-value {
   color: #495057;
   background-color: #fff;
+}
+
+.custom-select[multiple] {
+  height: auto;
+  background-image: none;
 }
 
 .custom-select:disabled {
@@ -3439,8 +3444,8 @@ tbody.collapse.show {
   left: 0;
   z-index: 5;
   height: calc(2.25rem + 2px);
-  padding: 0.5rem 0.75rem;
-  line-height: 1.25;
+  padding: 0.375rem 0.75rem;
+  line-height: 1.5;
   color: #495057;
   pointer-events: none;
   -webkit-user-select: none;
@@ -3464,8 +3469,8 @@ tbody.collapse.show {
   z-index: 6;
   display: block;
   height: calc(2.25rem + 2px);
-  padding: 0.5rem 0.75rem;
-  line-height: 1.25;
+  padding: 0.375rem 0.75rem;
+  line-height: 1.5;
   color: #495057;
   background-color: #e9ecef;
   border: 1px solid #ced4da;
