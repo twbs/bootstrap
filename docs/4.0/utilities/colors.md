@@ -11,19 +11,19 @@ toc: true
 <p class="text-{{ color.name }}">.text-{{ color.name }}</p>{% endfor %}
 {% endexample %}
 
-Contextual text classes also work well on anchors with the provided hover and focus states. **Note that the `.text-white` class has no link styling.**
+Contextual text classes also work well on anchors with the provided hover and focus states.
 
 {% example html %}
 {% for color in site.data.theme-colors %}
-<p><a href="#" class="text-{{ color.name }}{% if color.name == "light" %} bg-gray{% endif %}">{{ color.name | capitalize }} link</a></p>{% endfor %}
+<p><a href="#" class="text-{{ color.name }}{% if color.name == "light" %} bg-secondary{% endif %}">{{ color.name | capitalize }} link</a></p>{% endfor %}
 {% endexample %}
 
 Similar to the contextual text color classes, easily set the background of an element to any contextual class. Anchor components will darken on hover, just like the text classes. Background utilities **do not set `color`**, so in some cases you'll want to use `.text-*` utilities.
 
 {% example html %}
 {% for color in site.data.theme-colors %}
-<div class="p-3 mb-2 bg-{{ color.name }} {% if color.name == "light" %}text-gray-dark{% else %}text-white{% endif %}">.bg-{{ color.name }}</div>{% endfor %}
-<div class="p-3 mb-2 bg-white text-gray-dark">.bg-white</div>
+<div class="p-3 mb-2 bg-{{ color.name }} {% if color.name == "light" %}text-secondary{% else %}text-light{% endif %}">.bg-{{ color.name }}</div>{% endfor %}
+<div class="p-3 mb-2 bg-white text-dark">.bg-white</div>
 {% endexample %}
 
 {% callout info %}
