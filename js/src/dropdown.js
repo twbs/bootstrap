@@ -241,11 +241,6 @@ const Dropdown = (() => {
       return placement
     }
 
-    _getOffset(data) {
-      data.offsets = $.extend({}, data.offsets, this._config.offset(data.offsets) || {})
-      return data
-    }
-
     _detectNavbar() {
       return $(this._element).closest('.navbar').length > 0
     }
@@ -253,7 +248,10 @@ const Dropdown = (() => {
     _getPopperConfig() {
       const offsetConf = {}
       if (typeof this._config.offset === 'function') {
-        offsetConf.fn = (data) => this._getOffset(data)
+        offsetConf.fn = (data) => {
+          data.offsets = $.extend({}, data.offsets, this._config.offset(data.offsets) || {})
+          return data
+        }
       } else {
         offsetConf.offset = this._config.offset
       }
