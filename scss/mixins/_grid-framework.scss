@@ -40,6 +40,13 @@
         max-width: none; // Reset earlier grid tiers
       }
 
+      .col#{$infix}-0 {
+        @include make-col(0, $grid-columns);
+        padding-right: 0;
+        padding-left: 0;
+        overflow: hidden;
+      }
+
       @for $i from 1 through $columns {
         .col#{$infix}-#{$i} {
           @include make-col($i, $columns);
