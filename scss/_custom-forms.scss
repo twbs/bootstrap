@@ -162,6 +162,11 @@
     }
   }
 
+  &[multiple] {
+    height: auto;
+    background-image: none;
+  }
+
   &:disabled {
     color: $custom-select-disabled-color;
     background-color: $custom-select-disabled-bg;
