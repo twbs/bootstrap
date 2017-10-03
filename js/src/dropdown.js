@@ -242,10 +242,7 @@ const Dropdown = (() => {
     }
 
     _getOffset(data) {
-      const popperOffset = $.extend({}, data.offsets, this._config.offset(data.offsets) || {})
-      Object.keys(popperOffset).forEach((key) => {
-        data.offsets[key] = popperOffset[key]
-      })
+      data.offsets = $.extend({}, data.offsets, this._config.offset(data.offsets) || {})
       return data
     }
 
