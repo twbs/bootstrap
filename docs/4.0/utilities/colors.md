@@ -13,7 +13,7 @@ toc: true
 <p class="text-white bg-dark p-2">.text-white</p>
 {% endexample %}
 
-Contextual text classes also work well on anchors with the provided hover and focus states. **Note that the `.text-white` class has no link styling.**
+Contextual text classes also work well on anchors with the provided hover and focus states.
 
 {% example html %}
 {% for color in site.data.theme-colors %}
