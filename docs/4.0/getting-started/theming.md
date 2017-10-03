@@ -163,6 +163,7 @@ You can find and customize these variables for key global options in our `_varia
 | `$enable-transitions`       | `true` (default) or `false`        | Enables predefined `transition`s on various components.                                |
 | `$enable-hover-media-query` | `true` or `false` (default)        | ...                                                                                    |
 | `$enable-grid-classes`      | `true` (default) or `false`        | Enables the generation of CSS classes for the grid system (e.g., `.container`, `.row`, `.col-md-1`, etc.).     |
+| `$enable-caret`             | `true` (default) or `false`        | Enables pseudo element caret on `.dropdown-toggle`.                                    |
 | `$enable-print-styles`      | `true` (default) or `false`        | Enables styles for optimizing printing.                                |
 
 ## Color
