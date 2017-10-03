@@ -335,6 +335,6 @@ const ScrollSpy = (() => {
 
   return ScrollSpy
 
-})(jQuery)
+})($)
 
 export default ScrollSpy
