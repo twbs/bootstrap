@@ -86,8 +86,8 @@ For example, to modify an existing color in our `$theme-colors` map, add the fol
 
 {% highlight scss %}
 $theme-colors: (
-  "primary": $red,
-  "danger": $orange
+  "primary": #0074d9,
+  "danger": #ff4136
 );
 {% endhighlight %}
 
