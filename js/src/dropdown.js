@@ -82,7 +82,7 @@ const Dropdown = (() => {
   }
 
   const DefaultType = {
-    offset      : '(number|string)',
+    offset      : '(number|string|function)',
     flip        : 'boolean'
   }
 
