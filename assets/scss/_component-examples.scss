@@ -1,4 +1,4 @@
-// scss-lint:disable QualifyingElement
+// stylelint-disable selector-no-qualifying-type
 
 //
 // Grid examples
@@ -288,7 +288,8 @@
 .modal {
   z-index: 1072;
 
-  .tooltip, .popover {
+  .tooltip,
+  .popover {
     z-index: 1073;
   }
 }
