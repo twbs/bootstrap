@@ -1834,7 +1834,7 @@ pre code {
   background-color: #fff;
   background-image: none;
   background-clip: padding-box;
-  border: 1px solid rgba(0, 0, 0, 0.15);
+  border: 1px solid #ced4da;
   border-radius: 0.25rem;
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
@@ -3121,8 +3121,7 @@ tbody.collapse.show {
   color: #495057;
   text-align: center;
   background-color: #e9ecef;
-  background-clip: padding-box;
-  border: 1px solid rgba(0, 0, 0, 0.15);
+  border: 1px solid #ced4da;
   border-radius: 0.25rem;
 }
 
@@ -3187,8 +3186,6 @@ tbody.collapse.show {
 
 .input-group-btn > .btn {
   position: relative;
-  background-clip: padding-box;
-  border: 1px solid rgba(0, 0, 0, 0.15);
 }
 
 .input-group-btn > .btn + .btn {
@@ -3317,9 +3314,8 @@ tbody.collapse.show {
   color: #495057;
   vertical-align: middle;
   background: #fff url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23333' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat right 0.75rem center;
-  background-clip: padding-box;
   background-size: 8px 10px;
-  border: 1px solid rgba(0, 0, 0, 0.15);
+  border: 1px solid #ced4da;
   border-radius: 0.25rem;
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -3380,7 +3376,6 @@ tbody.collapse.show {
   z-index: 5;
   height: calc(2.25rem + 2px);
   padding: 0.5rem 0.75rem;
-  overflow: hidden;
   line-height: 1.25;
   color: #495057;
   pointer-events: none;
@@ -3389,8 +3384,7 @@ tbody.collapse.show {
       -ms-user-select: none;
           user-select: none;
   background-color: #fff;
-  background-clip: padding-box;
-  border: 1px solid rgba(0, 0, 0, 0.15);
+  border: 1px solid #ced4da;
   border-radius: 0.25rem;
 }
 
@@ -3400,8 +3394,9 @@ tbody.collapse.show {
 
 .custom-file-control::before {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: -1px;
+  right: -1px;
+  bottom: -1px;
   z-index: 6;
   display: block;
   height: calc(2.25rem + 2px);
@@ -3409,7 +3404,8 @@ tbody.collapse.show {
   line-height: 1.25;
   color: #495057;
   background-color: #e9ecef;
-  border-left: 1px solid rgba(0, 0, 0, 0.15);
+  border: 1px solid #ced4da;
+  border-radius: 0 0.25rem 0.25rem 0;
 }
 
 .custom-file-control:lang(en)::before {
