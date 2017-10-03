@@ -130,68 +130,6 @@
   background-size: 100% 100%;
 }
 
-// Generate series of `.navbar-expand-*` responsive classes for configuring
-// where your navbar collapses.
-.navbar-expand {
-  @each $breakpoint in map-keys($grid-breakpoints) {
-    $next: breakpoint-next($breakpoint, $grid-breakpoints);
-    $infix: breakpoint-infix($next, $grid-breakpoints);
-
-    &#{$infix} {
-      @include media-breakpoint-down($breakpoint) {
-        > .container,
-        > .container-fluid {
-          padding-right: 0;
-          padding-left: 0;
-        }
-      }
-
-      @include media-breakpoint-up($next) {
-        flex-flow: row nowrap;
-        justify-content: flex-start;
-
-        .navbar-nav {
-          flex-direction: row;
-
-          .dropdown-menu {
-            position: absolute;
-          }
-
-          .dropdown-menu-right {
-            right: 0;
-            left: auto; // Reset the default from `.dropdown-menu`
-          }
-
-          .nav-link {
-            padding-right: .5rem;
-            padding-left: .5rem;
-          }
-        }
-
-        // For nesting containers, have to redeclare for alignment purposes
-        > .container,
-        > .container-fluid {
-          flex-wrap: nowrap;
-        }
-
-        // scss-lint:disable ImportantRule
-        .navbar-collapse {
-          display: flex !important;
-
-          // Changes flex-bases to auto because of an IE10 bug
-          flex-basis: auto;
-        }
-        // scss-lint:enable ImportantRule
-
-        .navbar-toggler {
-          display: none;
-        }
-      }
-    }
-  }
-}
-
-
 // Navbar themes
 //
 // Styles for switching between navbars with light or dark background.
@@ -216,6 +154,20 @@
 
       &.disabled {
         color: $navbar-light-disabled-color;
+      }
+    }
+
+    .dropdown-menu {
+      background-color: $navbar-dark-dropdown-bg;
+      border-color: $navbar-light-dropdown-border-color;
+    }
+
+    .dropdown-item {
+      color: $navbar-light-dropdown-link-color;
+
+      @include hover-focus {
+        color: $navbar-light-dropdown-link-hover-color;
+        background-color: $navbar-light-dropdown-link-hover-bg;
       }
     }
 
@@ -248,6 +200,7 @@
   }
 }
 
+
 // White links against a dark background
 .navbar-dark {
   .navbar-brand {
@@ -268,6 +221,20 @@
 
       &.disabled {
         color: $navbar-dark-disabled-color;
+      }
+    }
+
+    .dropdown-menu {
+      background-color: $navbar-dark-dropdown-bg;
+      border-color: $navbar-dark-dropdown-border-color;
+    }
+
+    .dropdown-item {
+      color: $navbar-dark-dropdown-link-color;
+
+      @include hover-focus {
+        color: $navbar-dark-dropdown-link-hover-color;
+        background-color: $navbar-dark-dropdown-link-hover-bg;
       }
     }
 
@@ -295,6 +262,80 @@
 
       @include hover-focus {
         color: $navbar-dark-active-color;
+      }
+    }
+  }
+}
+
+
+// Generate series of `.navbar-expand-*` responsive classes for configuring
+// where your navbar collapses.
+.navbar-expand {
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    $next: breakpoint-next($breakpoint, $grid-breakpoints);
+    $infix: breakpoint-infix($next, $grid-breakpoints);
+
+    &#{$infix} {
+      @include media-breakpoint-down($breakpoint) {
+        > .container,
+        > .container-fluid {
+          padding-right: 0;
+          padding-left: 0;
+        }
+      }
+
+      @include media-breakpoint-up($next) {
+        flex-flow: row nowrap;
+        justify-content: flex-start;
+
+        .navbar-nav {
+          flex-direction: row;
+
+          .dropdown-menu {
+            position: absolute;
+            background-color: $dropdown-bg;
+            border-color: $dropdown-border-color;
+          }
+
+          .dropdown-item {
+            color: $dropdown-link-color;
+
+            @include hover-focus {
+              color: $dropdown-link-hover-color;
+              background-color: $dropdown-link-hover-bg;
+            }
+          }
+
+
+          .dropdown-menu-right {
+            right: 0;
+            left: auto; // Reset the default from `.dropdown-menu`
+          }
+
+          .nav-link {
+            padding-right: .5rem;
+            padding-left: .5rem;
+          }
+        }
+
+        // For nesting containers, have to redeclare for alignment purposes
+        > .container,
+        > .container-fluid {
+          flex-wrap: nowrap;
+        }
+
+        // scss-lint:disable ImportantRule
+        .navbar-collapse {
+          display: flex !important;
+
+          // Changes flex-bases to auto because of an IE10 bug
+          flex-basis: auto;
+        }
+        // scss-lint:enable ImportantRule
+
+        .navbar-toggler {
+          display: none;
+        }
       }
     }
   }

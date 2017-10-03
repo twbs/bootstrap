@@ -532,19 +532,30 @@ $navbar-toggler-padding-x:           .75rem !default;
 $navbar-toggler-font-size:           $font-size-lg !default;
 $navbar-toggler-border-radius:       $btn-border-radius !default;
 
-$navbar-dark-color:                 rgba($white,.5) !default;
-$navbar-dark-hover-color:           rgba($white,.75) !default;
-$navbar-dark-active-color:          rgba($white,1) !default;
-$navbar-dark-disabled-color:        rgba($white,.25) !default;
+$navbar-dark-color:                     rgba($white,.5) !default;
+$navbar-dark-hover-color:               rgba($white,.75) !default;
+$navbar-dark-active-color:              rgba($white,1) !default;
+$navbar-dark-disabled-color:            rgba($white,.25) !default;
 $navbar-dark-toggler-icon-bg: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='#{$navbar-dark-color}' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"), "#", "%23") !default;
-$navbar-dark-toggler-border-color:  rgba($white,.1) !default;
+$navbar-dark-toggler-border-color:      rgba($white,.1) !default;
+$navbar-dark-dropdown-border-color:     rgba($white,.1) !default;
+$navbar-dark-dropdown-bg:               transparent !default;
+$navbar-dark-dropdown-link-color:       $navbar-dark-color !default;
+$navbar-dark-dropdown-link-hover-color: $navbar-dark-hover-color !default;
+$navbar-dark-dropdown-link-hover-bg:    transparent !default;
 
-$navbar-light-color:                rgba($black,.5) !default;
-$navbar-light-hover-color:          rgba($black,.7) !default;
-$navbar-light-active-color:         rgba($black,.9) !default;
-$navbar-light-disabled-color:       rgba($black,.3) !default;
+$navbar-light-color:                     rgba($black,.5) !default;
+$navbar-light-hover-color:               rgba($black,.7) !default;
+$navbar-light-active-color:              rgba($black,.9) !default;
+$navbar-light-disabled-color:            rgba($black,.3) !default;
 $navbar-light-toggler-icon-bg: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='#{$navbar-light-color}' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"), "#", "%23") !default;
-$navbar-light-toggler-border-color: rgba($black,.1) !default;
+$navbar-light-toggler-border-color:      rgba($black,.1) !default;
+$navbar-light-dropdown-border-color:     rgba($black,.1) !default;
+$navbar-light-dropdown-bg:               transparent !default;
+$navbar-light-dropdown-link-color:       $navbar-light-color !default;
+$navbar-light-dropdown-link-hover-color: $navbar-light-hover-color !default;
+$navbar-light-dropdown-link-hover-bg:    transparent !default;
+
 
 // Pagination
 
