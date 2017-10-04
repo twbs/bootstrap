@@ -1,4 +1,4 @@
-// scss-lint:disable QualifyingElement, DuplicateProperty, VendorPrefix
+// stylelint-disable
 
 // Reboot
 //
@@ -93,7 +93,7 @@ hr {
 // margin for easier control within type scales as it avoids margin collapsing.
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
-  margin-bottom: .5rem;
+  margin-bottom: $headings-margin-bottom;
 }
 
 // Reset margins on paragraphs
@@ -239,6 +239,9 @@ pre {
   margin-bottom: 1rem;
   // Don't allow content to break outside
   overflow: auto;
+  // We have @viewport set which causes scrollbars to overlap content in IE11 and Edge, so
+  // we force a non-overlapping, non-auto-hiding scrollbar to counteract.
+  -ms-overflow-style: scrollbar;
 }
 
 
@@ -273,7 +276,7 @@ svg:not(:root) {
 // However, they DO support removing the click delay via `touch-action: manipulation`.
 // See:
 // * https://getbootstrap.com/docs/4.0/content/reboot/#click-delay-optimization-for-touch
-// * http://caniuse.com/#feat=css-touch-action
+// * https://caniuse.com/#feat=css-touch-action
 // * https://patrickhlauke.github.io/touch/tests/results/#suppressing-300ms-delay
 
 a,
@@ -320,6 +323,13 @@ label {
   // Allow labels to use `margin` for spacing.
   display: inline-block;
   margin-bottom: .5rem;
+}
+
+// Remove the default `border-radius` that macOS Chrome adds.
+//
+// Details at https://github.com/twbs/bootstrap/issues/24093
+button {
+  border-radius: 0;
 }
 
 // Work around a Firefox/IE bug where the transparent `button` background

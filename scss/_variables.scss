@@ -8,6 +8,7 @@
 // Color system
 //
 
+// stylelint-disable
 $white:  #fff !default;
 $gray-100: #f8f9fa !default;
 $gray-200: #e9ecef !default;
@@ -22,15 +23,15 @@ $black:  #000 !default;
 
 $grays: () !default;
 $grays: map-merge((
-  100: $gray-100,
-  200: $gray-200,
-  300: $gray-300,
-  400: $gray-400,
-  500: $gray-500,
-  600: $gray-600,
-  700: $gray-700,
-  800: $gray-800,
-  900: $gray-900
+  "100": $gray-100,
+  "200": $gray-200,
+  "300": $gray-300,
+  "400": $gray-400,
+  "500": $gray-500,
+  "600": $gray-600,
+  "700": $gray-700,
+  "800": $gray-800,
+  "900": $gray-900
 ), $grays);
 
 $blue:    #007bff !default;
@@ -46,32 +47,33 @@ $cyan:    #17a2b8 !default;
 
 $colors: () !default;
 $colors: map-merge((
-  blue: $blue,
-  indigo: $indigo,
-  purple: $purple,
-  pink: $pink,
-  red: $red,
-  orange: $orange,
-  yellow: $yellow,
-  green: $green,
-  teal: $teal,
-  cyan: $cyan,
-  white: $white,
-  gray: $gray-600,
-  gray-dark: $gray-800
+  "blue": $blue,
+  "indigo": $indigo,
+  "purple": $purple,
+  "pink": $pink,
+  "red": $red,
+  "orange": $orange,
+  "yellow": $yellow,
+  "green": $green,
+  "teal": $teal,
+  "cyan": $cyan,
+  "white": $white,
+  "gray": $gray-600,
+  "gray-dark": $gray-800
 ), $colors);
 
 $theme-colors: () !default;
 $theme-colors: map-merge((
-  primary: $blue,
-  secondary: $gray-600,
-  success: $green,
-  info: $cyan,
-  warning: $yellow,
-  danger: $red,
-  light: $gray-100,
-  dark: $gray-800
+  "primary": $blue,
+  "secondary": $gray-600,
+  "success": $green,
+  "info": $cyan,
+  "warning": $yellow,
+  "danger": $red,
+  "light": $gray-100,
+  "dark": $gray-800
 ), $theme-colors);
+// stylelint-enable
 
 // Set a specific jump point for requesting color jumps
 $theme-color-interval: 8% !default;
@@ -81,6 +83,7 @@ $theme-color-interval: 8% !default;
 //
 // Quickly modify global styling by enabling or disabling optional features.
 
+$enable-caret:              true !default;
 $enable-rounded:            true !default;
 $enable-shadows:            false !default;
 $enable-gradients:          false !default;
@@ -201,9 +204,11 @@ $transition-collapse:    height .35s ease !default;
 //
 // Font, line-height, and color for body text, headings, and more.
 
+// stylelint-disable value-keyword-case
 $font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
 $font-family-monospace:  "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
 $font-family-base:       $font-family-sans-serif !default;
+// stylelint-enable value-keyword-case
 
 $font-size-base: 1rem !default; // Assumes the browser default, typically `16px`
 $font-size-lg:   1.25rem !default;
@@ -294,17 +299,17 @@ $table-dark-color:           $body-bg !default;
 //
 // For each of Bootstrap's buttons, define text, background and border color.
 
-$input-btn-padding-y:       .5rem !default;
+$input-btn-padding-y:       .375rem !default;
 $input-btn-padding-x:       .75rem !default;
-$input-btn-line-height:     1.25 !default;
+$input-btn-line-height:     $line-height-base !default;
 
 $input-btn-padding-y-sm:    .25rem !default;
 $input-btn-padding-x-sm:    .5rem !default;
-$input-btn-line-height-sm:  1.5 !default;
+$input-btn-line-height-sm:  $line-height-sm !default;
 
 $input-btn-padding-y-lg:    .5rem !default;
 $input-btn-padding-x-lg:    1rem !default;
-$input-btn-line-height-lg:  1.5 !default;
+$input-btn-line-height-lg:  $line-height-lg !default;
 
 $btn-font-weight:                $font-weight-normal !default;
 $btn-box-shadow:                 inset 0 1px 0 rgba($white,.15), 0 1px 1px rgba($black,.075) !default;
@@ -329,7 +334,7 @@ $input-bg:                       $white !default;
 $input-disabled-bg:              $gray-200 !default;
 
 $input-color:                    $gray-700 !default;
-$input-border-color:             rgba($black,.15) !default;
+$input-border-color:             $gray-400 !default;
 $input-btn-border-width:         $border-width !default; // For form controls and buttons
 $input-box-shadow:               inset 0 1px 1px rgba($black,.075) !default;
 
@@ -371,7 +376,6 @@ $form-group-margin-bottom:       1rem !default;
 $input-group-addon-color:        $input-color !default;
 $input-group-addon-bg:           $gray-200 !default;
 $input-group-addon-border-color: $input-border-color !default;
-$input-group-btn-border-color:   $input-border-color !default;
 
 $custom-control-gutter:   1.5rem !default;
 $custom-control-spacer-y: .25rem !default;
@@ -407,8 +411,8 @@ $custom-radio-indicator-border-radius: 50% !default;
 $custom-radio-indicator-icon-checked: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3E%3Ccircle r='3' fill='#{$custom-control-indicator-checked-color}'/%3E%3C/svg%3E"), "#", "%23") !default;
 
 $custom-select-padding-y:          .375rem !default;
-$custom-select-padding-x:          .75rem  !default;
-$custom-select-height:              $input-height  !default;
+$custom-select-padding-x:          .75rem !default;
+$custom-select-height:              $input-height !default;
 $custom-select-indicator-padding:   1rem !default; // Extra padding to account for the presence of the background-image based indicator
 $custom-select-line-height:         $input-btn-line-height !default;
 $custom-select-color:               $input-color !default;
@@ -650,6 +654,7 @@ $badge-font-size:             75% !default;
 $badge-font-weight:           $font-weight-bold !default;
 $badge-padding-y:             .25em !default;
 $badge-padding-x:             .4em !default;
+$badge-border-radius:         $border-radius !default;
 
 $badge-pill-padding-x:        .6em !default;
 // Use a higher than normal value to ensure completely rounded edges when

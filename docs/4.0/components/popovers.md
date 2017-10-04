@@ -11,7 +11,7 @@ toc: true
 Things to know when using the popover plugin:
 
 
-- Popovers rely on the 3rd party library [Popper.js](https://popper.js.org) for positioning. You must include [popper.min.js]({{ site.cdn.popper }}) before bootstrap.js or use `bootstrap.bundle.min.js` / `bootstrap.bundle.js` which contains Popper.js in order for popovers to work!
+- Popovers rely on the 3rd party library [Popper.js](https://popper.js.org/) for positioning. You must include [popper.min.js]({{ site.cdn.popper }}) before bootstrap.js or use `bootstrap.bundle.min.js` / `bootstrap.bundle.js` which contains Popper.js in order for popovers to work!
 - Popovers require the [tooltip plugin]({{ site.baseurl }}/docs/{{ site.docs_version }}/components/tooltips/) as a dependency.
 - If building our JS from source, it [requires `util.js`]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/javascript/#util).
 - Popovers are opt-in for performance reasons, so **you must initialize them yourself**.
@@ -151,7 +151,6 @@ $('.popover-dismiss').popover({
 {% endhighlight %}
 
 
-
 ## Usage
 
 Enable popovers via JavaScript:
@@ -180,7 +179,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
     </tr>
     <tr>
       <td>container</td>
-      <td>string | false</td>
+      <td>string | element | false</td>
       <td>false</td>
       <td>
         <p>Appends the popover to a specific element. Example: <code>container: 'body'</code>. This option is particularly useful in that it allows you to position the popover in the flow of the document near the triggering element - which will prevent the popover from floating away from the triggering element during a window resize.</p>
@@ -222,7 +221,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
     </tr>
     <tr>
       <td>selector</td>
-      <td>string</td>
+      <td>string | false</td>
       <td>false</td>
       <td>If a selector is provided, popover objects will be delegated to the specified targets. In practice, this is used to enable dynamic HTML content to have popovers added. See <a href="https://github.com/twbs/bootstrap/issues/4215">this</a> and <a href="https://jsbin.com/zopod/1/edit">an informative example</a>.</td>
     </tr>
@@ -305,7 +304,6 @@ Toggles an element's popover. **Returns to the caller before the popover has act
 #### `.popover('dispose')`
 
 Hides and destroys an element's popover. Popovers that use delegation (which are created using [the `selector` option](#options)) cannot be individually destroyed on descendant trigger elements.
-
 
 {% highlight js %}$('#element').popover('dispose'){% endhighlight %}
 

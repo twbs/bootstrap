@@ -50,9 +50,9 @@ Pull in Bootstrap's **source files** into nearly any project with some of the mo
 
 ### npm
 
-Install Bootstrap in your Node powered apps with [the npm package](https://www.npmjs.com/package/bootstrap):
+Install Bootstrap in your Node.js powered apps with [the npm package](https://www.npmjs.com/package/bootstrap):
 
-{% highlight bash %}
+{% highlight sh %}
 npm install bootstrap@{{ site.current_version }}
 {% endhighlight %}
 
@@ -73,7 +73,7 @@ gem 'bootstrap', '~> 4.0.0.beta'
 
 Alternatively, if you're not using Bundler, you can install the gem by running this command:
 
-{% highlight bash %}
+{% highlight sh %}
 gem install bootstrap -v 4.0.0.beta
 {% endhighlight %}
 
@@ -81,15 +81,15 @@ gem install bootstrap -v 4.0.0.beta
 
 ### Composer
 
-You can also install and manage Bootstrap's Sass and JavaScript using [Composer](https://getcomposer.org):
+You can also install and manage Bootstrap's Sass and JavaScript using [Composer](https://getcomposer.org/):
 
-{% highlight bash %}
+{% highlight sh %}
 composer require twbs/bootstrap:{{ site.current_version }}
 {% endhighlight %}
 
 ### NuGet
 
-If you develop in .NET, you can also install and manage Bootstrap's [CSS](https://www.nuget.org/packages/bootstrap/) or [Sass](https://www.nuget.org/packages/bootstrap.sass/) and JavaScript using [NuGet](https://www.nuget.org):
+If you develop in .NET, you can also install and manage Bootstrap's [CSS](https://www.nuget.org/packages/bootstrap/) or [Sass](https://www.nuget.org/packages/bootstrap.sass/) and JavaScript using [NuGet](https://www.nuget.org/):
 
 {% highlight powershell %}
 Install-Package bootstrap -Pre

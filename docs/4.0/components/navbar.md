@@ -323,7 +323,7 @@ Theming the navbar has never been easier thanks to the combination of theming cl
       </ul>
       <form class="form-inline">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
+        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
       </form>
     </div>
   </nav>
@@ -395,7 +395,7 @@ When the container is within your navbar, its horizontal padding is removed at b
 
 ## Placement
 
-Use our position utilities to place navbars in non-static positions. Choose from fixed to the top, fixed to the bottom, or stickied to the top. **Note that `position: sticky`, used for `.sticky-top`, [isn't fully supported in every browser](http://caniuse.com/#feat=css-sticky).**
+Use our position utilities to place navbars in non-static positions. Choose from fixed to the top, fixed to the bottom, or stickied to the top. **Note that `position: sticky`, used for `.sticky-top`, [isn't fully supported in every browser](https://caniuse.com/#feat=css-sticky).**
 
 {% example html %}
 <nav class="navbar navbar-light bg-light">

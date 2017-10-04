@@ -32,10 +32,6 @@ const Util = (() => {
     return {}.toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase()
   }
 
-  function isElement(obj) {
-    return (obj[0] || obj).nodeType
-  }
-
   function getSpecialTransitionEndEvent() {
     return {
       bindType: transition.end,
@@ -138,12 +134,16 @@ const Util = (() => {
       return Boolean(transition)
     },
 
+    isElement(obj) {
+      return (obj[0] || obj).nodeType
+    },
+
     typeCheckConfig(componentName, config, configTypes) {
       for (const property in configTypes) {
         if (Object.prototype.hasOwnProperty.call(configTypes, property)) {
           const expectedTypes = configTypes[property]
           const value         = config[property]
-          const valueType     = value && isElement(value) ?
+          const valueType     = value && Util.isElement(value) ?
                                 'element' : toType(value)
 
           if (!new RegExp(expectedTypes).test(valueType)) {
