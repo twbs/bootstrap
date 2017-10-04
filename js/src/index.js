@@ -19,7 +19,7 @@ import Util from './util'
  */
 
 (() => {
-  if (typeof jQuery === 'undefined') {
+  if (typeof $ === 'undefined') {
     throw new Error('Bootstrap\'s JavaScript requires jQuery. jQuery must be included before Bootstrap\'s JavaScript.')
   }
 
@@ -29,7 +29,7 @@ import Util from './util'
   if (version[0] < min || version[0] >= max) {
     throw new Error('Bootstrap\'s JavaScript requires at least jQuery v3.0.0 but less than v4.0.0')
   }
-})(jQuery)
+})($)
 
 export {
   Util,

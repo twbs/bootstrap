@@ -161,6 +161,6 @@ const Util = (() => {
 
   return Util
 
-})(jQuery)
+})($)
 
 export default Util
