@@ -74,13 +74,6 @@
     position: static;
     float: none;
   }
-
-  .dropdown-toggle {
-    &::after {
-      border-top: $caret-width solid;
-      border-bottom: 0;
-    }
-  }
 }
 
 
@@ -152,17 +145,6 @@
           padding-left: 0;
         }
 
-        .dropup {
-          .dropdown-menu {
-            position: absolute;
-            top: auto;
-            bottom: 100%;
-          }
-
-          .dropdown-toggle {
-            @include caret(up);
-          }
-        }
       }
 
       @include media-breakpoint-up($next) {
@@ -171,6 +153,14 @@
 
         .navbar-nav {
           flex-direction: row;
+
+          .dropup {
+            .dropdown-menu {
+              position: absolute;
+              top: auto;
+              bottom: 100%;
+            }
+          }
 
           .dropdown-menu {
             position: absolute;
