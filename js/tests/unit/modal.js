@@ -673,4 +673,17 @@ $(function () {
     $toggleBtn.trigger('click')
     setTimeout(done, 500)
   })
+
+  QUnit.test('should not try to open a modal which is already visible', function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+    var count = 0
+
+    $('<div id="modal-test"/>').on('shown.bs.modal', function () {
+      count++
+    }).on('hidden.bs.modal', function () {
+      assert.strictEqual(count, 1, 'show() runs only once')
+      done()
+    }).bootstrapModal('show').bootstrapModal('show').bootstrapModal('hide')
+  })
 })
