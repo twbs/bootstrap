@@ -1,4 +1,4 @@
-// scss-lint:disable QualifyingElement
+// stylelint-disable selector-no-qualifying-type
 
 //
 // Base styles
@@ -58,7 +58,11 @@ fieldset[disabled] a.btn {
 
 @each $color, $value in $theme-colors {
   .btn-outline-#{$color} {
-    @include button-outline-variant($value, #fff);
+    @if $color == "light" {
+      @include button-outline-variant($value, $gray-900);
+    } @else {
+      @include button-outline-variant($value, $white);
+    }
   }
 }
 
@@ -71,36 +75,27 @@ fieldset[disabled] a.btn {
 .btn-link {
   font-weight: $font-weight-normal;
   color: $link-color;
-  border-radius: 0;
+  background-color: transparent;
 
-  &,
-  &:active,
-  &.active,
-  &:disabled {
-    background-color: transparent;
-    @include box-shadow(none);
-  }
-  &,
-  &:focus,
-  &:active {
-    border-color: transparent;
-    box-shadow: none;
-  }
   @include hover {
-    border-color: transparent;
-  }
-  @include hover-focus {
     color: $link-hover-color;
     text-decoration: $link-hover-decoration;
     background-color: transparent;
+    border-color: transparent;
   }
-  &:disabled {
-    color: $btn-link-disabled-color;
 
-    @include hover-focus {
-      text-decoration: none;
-    }
+  &:focus,
+  &.focus {
+    border-color: transparent;
+    box-shadow: none;
   }
+
+  &:disabled,
+  &.disabled {
+    color: $btn-link-disabled-color;
+  }
+
+  // No need for an active state here
 }
 
 
@@ -109,11 +104,11 @@ fieldset[disabled] a.btn {
 //
 
 .btn-lg {
-  @include button-size($input-btn-padding-y-lg, $input-btn-padding-x-lg, $font-size-lg, $line-height-lg, $btn-border-radius-lg);
+  @include button-size($input-btn-padding-y-lg, $input-btn-padding-x-lg, $font-size-lg, $input-btn-line-height-lg, $btn-border-radius-lg);
 }
 
 .btn-sm {
-  @include button-size($input-btn-padding-y-sm, $input-btn-padding-x-sm, $font-size-sm, $line-height-sm, $btn-border-radius-sm);
+  @include button-size($input-btn-padding-y-sm, $input-btn-padding-x-sm, $font-size-sm, $input-btn-line-height-sm, $btn-border-radius-sm);
 }
 
 

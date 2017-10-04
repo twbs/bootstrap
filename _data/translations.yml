@@ -1,3 +1,8 @@
+- name: 中文(繁體)
+  code: zh-tw
+  description: Bootstrap 4 繁體中文手冊
+  url: http://bootstrap.hexschool.com/
+
 - name: Chinese
   code: zh
   description: Bootstrap 4 中文文档教程

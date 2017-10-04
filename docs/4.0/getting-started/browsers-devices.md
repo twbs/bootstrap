@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Browsers and devices
-description: Learn about the browsers and devices, from modern to told, that are supported by Bootstrap, including known quirks and bugs for each.
+description: Learn about the browsers and devices, from modern to old, that are supported by Bootstrap, including known quirks and bugs for each.
 group: getting-started
 toc: true
 ---
@@ -101,32 +101,10 @@ For a list of some of the browser bugs that Bootstrap has to grapple with, see o
 
 ## Internet Explorer
 
-Internet Explorer 10+ is supported; IE9 and down is not. Please be aware that some CSS3 properties and HTML5 elements are not fully supported in IE10, or require prefixed properties for full functionality. Visit [Can I use...](http://caniuse.com/) for details on browser support of CSS3 and HTML5 features.
+Internet Explorer 10+ is supported; IE9 and down is not. Please be aware that some CSS3 properties and HTML5 elements are not fully supported in IE10, or require prefixed properties for full functionality. Visit [Can I use...](https://caniuse.com/) for details on browser support of CSS3 and HTML5 features.
 
 **If you require IE8-9 support, use Bootstrap 3.** It's the most stable version of our code and is still supported by our team for critical bugfixes and documentation changes. However, no new features will be added to it.
 
-## Internet Explorer 10 in Windows Phone 8
-
-Internet Explorer 10 in Windows Phone 8 versions older than [Update 3 (a.k.a. GDR3)](https://blogs.windows.com/buildingapps/2013/10/14/introducing-windows-phone-preview-for-developers/) doesn't differentiate **device width** from **viewport width** in `@-ms-viewport` at-rules, and thus doesn't properly apply the media queries in Bootstrap's CSS. To address this, you'll need to **include the following JavaScript to work around the bug**.
-
-{% highlight js %}
-// Copyright 2014-2017 The Bootstrap Authors
-// Copyright 2014-2017 Twitter, Inc.
-// Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
-if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
-  var msViewportStyle = document.createElement('style')
-  msViewportStyle.appendChild(
-    document.createTextNode(
-      '@-ms-viewport{width:auto!important}'
-    )
-  )
-  document.head.appendChild(msViewportStyle)
-}
-{% endhighlight %}
-
-For more information and usage guidelines, read [Windows Phone 8 and Device-Width](https://timkadlec.com/2013/01/windows-phone-8-and-device-width/).
-
-As a heads up, we include this in all of Bootstrap's documentation and examples as a demonstration.
 
 ## Modals and dropdowns on mobile
 
@@ -147,6 +125,7 @@ The `.dropdown-backdrop` element isn't used on iOS in the nav because of the com
 Page zooming inevitably presents rendering artifacts in some components, both in Bootstrap and the rest of the web. Depending on the issue, we may be able to fix it (search first and then open an issue if need be). However, we tend to ignore these as they often have no direct solution other than hacky workarounds.
 
 ## Sticky `:hover`/`:focus` on mobile
+
 Even though real hovering isn't possible on most touchscreens, most mobile browsers emulate hovering support and make `:hover` "sticky". In other words, `:hover` styles start applying after tapping an element and only stop applying after the user taps some other element. On mobile-first sites, this behavior is normally undesirable.
 
 Bootstrap includes a workaround for this, although it is disabled by default. By setting `$enable-hover-media-query` to `true` when compiling from Sass, Bootstrap will use [mq4-hover-shim](https://github.com/twbs/mq4-hover-shim) to disable `:hover` styles in browsers that emulate hovering, thus preventing sticky `:hover` styles. There are some caveats to this workaround; see the shim's documentation for details.
@@ -155,7 +134,7 @@ Bootstrap includes a workaround for this, although it is disabled by default. By
 
 Even in some modern browsers, printing can be quirky.
 
-As of Safari v8.0, use of the fixed-width `.container` class can cause Safari to use an unusually small font size when printing. See [issue #14868](https://github.com/twbs/bootstrap/issues/14868) and [WebKit bug #138192](https://bugs.webkit.org/show_bug.cgi?id=138192) for more details. One potential workaround is the following CSS:
+As of Safari v8.0, use of the fixed-width `.container` class can cause Safari to use an unusually small font size when printing. See [issue #14868]({{ site.repo }}/issues/14868) and [WebKit bug #138192](https://bugs.webkit.org/show_bug.cgi?id=138192) for more details. One potential workaround is the following CSS:
 
 {% highlight css %}
 @media print {
@@ -189,7 +168,7 @@ Want to see an example? [Check out this JS Bin demo.](http://jsbin.com/OyaqoDO/2
 
 ## Validators
 
-In order to provide the best possible experience to old and buggy browsers, Bootstrap uses [CSS browser hacks](http://browserhacks.com) in several places to target special CSS to certain browser versions in order to work around bugs in the browsers themselves. These hacks understandably cause CSS validators to complain that they are invalid. In a couple places, we also use bleeding-edge CSS features that aren't yet fully standardized, but these are used purely for progressive enhancement.
+In order to provide the best possible experience to old and buggy browsers, Bootstrap uses [CSS browser hacks](http://browserhacks.com/) in several places to target special CSS to certain browser versions in order to work around bugs in the browsers themselves. These hacks understandably cause CSS validators to complain that they are invalid. In a couple places, we also use bleeding-edge CSS features that aren't yet fully standardized, but these are used purely for progressive enhancement.
 
 These validation warnings don't matter in practice since the non-hacky portion of our CSS does fully validate and the hacky portions don't interfere with the proper functioning of the non-hacky portion, hence why we deliberately ignore these particular warnings.
 

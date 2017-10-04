@@ -16,16 +16,15 @@
   <script src="{{ site.baseurl }}/assets/js/vendor/clipboard.min.js"></script>
   <script src="{{ site.baseurl }}/assets/js/vendor/holder.min.js"></script>
   <script src="{{ site.baseurl }}/assets/js/src/application.js"></script>
+  <script src="{{ site.baseurl }}/assets/js/src/pwa.js"></script>
 {% endif %}
 
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script src="{{ site.baseurl }}/assets/js/ie10-viewport-bug-workaround.js"></script>
 <script src="{{ site.baseurl }}/assets/js/ie-emulation-modes-warning.js"></script>
 
 {% if page.layout == "docs" %}
-<script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
-<script type="text/javascript">
-  var docsearch = docsearch({
+<script src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+<script>
+  docsearch({
     apiKey: '48cb48b22351bc71ea5f12f4d1ede198',
     indexName: 'bootstrap-v4',
     inputSelector: '#search-input',
@@ -47,10 +46,10 @@
 {% endif %}
 
 <script>
-Holder.addTheme('gray', {
-  bg: '#777',
-  fg: 'rgba(255,255,255,.75)',
-  font: 'Helvetica',
-  fontweight: 'normal'
-})
+  Holder.addTheme('gray', {
+    bg: '#777',
+    fg: 'rgba(255,255,255,.75)',
+    font: 'Helvetica',
+    fontweight: 'normal'
+  });
 </script>

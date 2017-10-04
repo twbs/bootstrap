@@ -1,8 +1,8 @@
 ---
 layout: simple
 title: Examples
-redirect_from:
-  - /examples/
+description: Quickly get a project started with any of our examples ranging from using parts of the framework to custom components and layouts.
+redirect_from: "/examples/"
 ---
 
 [Download the Bootstrap source code]({{ site.download.source }}) to snag these examples.

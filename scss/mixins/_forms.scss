@@ -1,7 +1,7 @@
 // Form control focus state
 //
 // Generate a customized focus state and for any input with the specified color,
-// which defaults to the `@input-border-color-focus` variable.
+// which defaults to the `$input-focus-border-color` variable.
 //
 // We highly encourage you to not customize the default value, but instead use
 // this to tweak colors on an as-needed basis. This aesthetic change is based on
@@ -23,6 +23,28 @@
 
 @mixin form-validation-state($state, $color) {
 
+  .#{$state}-feedback {
+    display: none;
+    margin-top: .25rem;
+    font-size: .875rem;
+    color: $color;
+  }
+
+  .#{$state}-tooltip {
+    position: absolute;
+    top: 100%;
+    z-index: 5;
+    display: none;
+    width: 250px;
+    padding: .5rem;
+    margin-top: .1rem;
+    font-size: .875rem;
+    line-height: 1;
+    color: #fff;
+    background-color: rgba($color,.8);
+    border-radius: .2rem;
+  }
+
   .form-control,
   .custom-select {
     .was-validated &:#{$state},
@@ -33,8 +55,8 @@
         box-shadow: 0 0 0 .2rem rgba($color,.25);
       }
 
-      ~ .invalid-feedback,
-      ~ .invalid-tooltip {
+      ~ .#{$state}-feedback,
+      ~ .#{$state}-tooltip {
         display: block;
       }
     }

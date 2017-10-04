@@ -1,4 +1,4 @@
-// scss-lint:disable QualifyingElement, VendorPrefix
+// stylelint-disable selector-no-qualifying-type
 
 //
 // Textual form controls
@@ -7,8 +7,6 @@
 .form-control {
   display: block;
   width: 100%;
-  // // Make inputs at least the height of their button counterpart (base line-height + padding + border)
-  // height: $input-height;
   padding: $input-btn-padding-y $input-btn-padding-x;
   font-size: $font-size-base;
   line-height: $input-btn-line-height;
@@ -90,21 +88,24 @@ select.form-control {
 // For use with horizontal and inline forms, when you need the label text to
 // align with the form controls.
 .col-form-label {
-  padding-top: calc(#{$input-btn-padding-y} - #{$input-btn-border-width} * 2);
-  padding-bottom: calc(#{$input-btn-padding-y} - #{$input-btn-border-width} * 2);
+  padding-top: calc(#{$input-btn-padding-y} + #{$input-btn-border-width});
+  padding-bottom: calc(#{$input-btn-padding-y} + #{$input-btn-border-width});
   margin-bottom: 0; // Override the `<label>` default
+  line-height: $input-btn-line-height;
 }
 
 .col-form-label-lg {
-  padding-top: calc(#{$input-btn-padding-y-lg} - #{$input-btn-border-width} * 2);
-  padding-bottom: calc(#{$input-btn-padding-y-lg} - #{$input-btn-border-width} * 2);
+  padding-top: calc(#{$input-btn-padding-y-lg} + #{$input-btn-border-width});
+  padding-bottom: calc(#{$input-btn-padding-y-lg} + #{$input-btn-border-width});
   font-size: $font-size-lg;
+  line-height: $input-btn-line-height-lg;
 }
 
 .col-form-label-sm {
-  padding-top: calc(#{$input-btn-padding-y-sm} - #{$input-btn-border-width} * 2);
-  padding-bottom: calc(#{$input-btn-padding-y-sm} - #{$input-btn-border-width} * 2);
+  padding-top: calc(#{$input-btn-padding-y-sm} + #{$input-btn-border-width});
+  padding-bottom: calc(#{$input-btn-padding-y-sm} + #{$input-btn-border-width});
   font-size: $font-size-sm;
+  line-height: $input-btn-line-height-sm;
 }
 
 
@@ -132,6 +133,7 @@ select.form-control {
   padding-bottom: $input-btn-padding-y;
   margin-bottom: 0; // match inputs if this class comes on inputs with default margins
   line-height: $input-btn-line-height;
+  background-color: transparent;
   border: solid transparent;
   border-width: $input-btn-border-width 0;
 
@@ -236,22 +238,15 @@ select.form-control-lg {
   position: absolute;
   margin-top: $form-check-input-margin-y;
   margin-left: -$form-check-input-gutter;
-
-  &:only-child {
-    position: static;
-  }
 }
 
 // Radios and checkboxes on same line
 .form-check-inline {
   display: inline-block;
+  margin-right: $form-check-inline-margin-x;
 
   .form-check-label {
     vertical-align: middle;
-  }
-
-  + .form-check-inline {
-    margin-left: $form-check-inline-margin-x;
   }
 }
 
@@ -262,28 +257,6 @@ select.form-control-lg {
 // primarily for client-side validation via scoped `:invalid` and `:valid`
 // pseudo-classes but also includes `.is-invalid` and `.is-valid` classes for
 // server side validation.
-
-.invalid-feedback {
-  display: none;
-  margin-top: .25rem;
-  font-size: .875rem;
-  color: $form-feedback-invalid-color;
-}
-
-.invalid-tooltip {
-  position: absolute;
-  top: 100%;
-  z-index: 5;
-  display: none;
-  width: 250px;
-  padding: .5rem;
-  margin-top: .1rem;
-  font-size: .875rem;
-  line-height: 1;
-  color: #fff;
-  background-color: rgba($form-feedback-invalid-color,.8);
-  border-radius: .2rem;
-}
 
 @include form-validation-state("valid", $form-feedback-valid-color);
 @include form-validation-state("invalid", $form-feedback-invalid-color);

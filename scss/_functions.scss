@@ -72,7 +72,7 @@
   @return map-get($theme-colors, $key);
 }
 
-@function grayscale($key: "100") {
+@function gray($key: "100") {
   @return map-get($grays, $key);
 }
 
@@ -80,11 +80,7 @@
 @function theme-color-level($color-name: "primary", $level: 0) {
   $color: theme-color($color-name);
   $color-base: if($level > 0, #000, #fff);
+  $level: abs($level);
 
-  @if $level < 0 {
-    // Lighter values need a quick double negative for the Sass math to work
-    @return mix($color-base, $color, $level * -1 * $theme-color-interval);
-  } @else {
-    @return mix($color-base, $color, $level * $theme-color-interval);
-  }
+  @return mix($color-base, $color, $level * $theme-color-interval);
 }

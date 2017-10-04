@@ -5,7 +5,7 @@
     - title: Contents
     - title: Browsers & devices
     - title: JavaScript
-    - title: Options
+    - title: Theming
     - title: Build tools
     # - title: Best practices # TODO: Write this content
     - title: Webpack
@@ -75,12 +75,12 @@
     # - title: Approach
     - title: Icons
 
-# - title: About
-#   pages:
-#     - title: History
-#     - title: Team
-#     - title: Brand
-#     - title: License
-#     - title: Translations
-
 - title: Migration
+
+- title: About
+  pages:
+    - title: History
+    - title: Team
+    - title: Brand
+    - title: License
+    - title: Translations

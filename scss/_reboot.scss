@@ -1,4 +1,4 @@
-// scss-lint:disable QualifyingElement, DuplicateProperty, VendorPrefix
+// stylelint-disable
 
 // Reboot
 //
@@ -18,20 +18,19 @@
 //    we force a non-overlapping, non-auto-hiding scrollbar to counteract.
 // 6. Change the default tap highlight to be completely transparent in iOS.
 
-html {
+*,
+*::before,
+*::after {
   box-sizing: border-box; // 1
+}
+
+html {
   font-family: sans-serif; // 2
   line-height: 1.15; // 3
   -webkit-text-size-adjust: 100%; // 4
   -ms-text-size-adjust: 100%; // 4
   -ms-overflow-style: scrollbar; // 5
   -webkit-tap-highlight-color: rgba(0,0,0,0); // 6
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: inherit; // 1
 }
 
 // IE10+ doesn't honor `<meta name="viewport">` in some cases.
@@ -48,6 +47,8 @@ article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, s
 //
 // 1. Remove the margin in all browsers.
 // 2. As a best practice, apply a default `background-color`.
+// 3. Set an explicit initial text-align value so that we can later use the
+//    the `inherit` value on things like `<th>` elements.
 
 body {
   margin: 0; // 1
@@ -56,6 +57,7 @@ body {
   font-weight: $font-weight-base;
   line-height: $line-height-base;
   color: $body-color;
+  text-align: left; // 3
   background-color: $body-bg; // 2
 }
 
@@ -91,7 +93,7 @@ hr {
 // margin for easier control within type scales as it avoids margin collapsing.
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
-  margin-bottom: .5rem;
+  margin-bottom: $headings-margin-bottom;
 }
 
 // Reset margins on paragraphs
@@ -100,7 +102,7 @@ h1, h2, h3, h4, h5, h6 {
 // bottom margin to use `rem` units instead of `em`.
 p {
   margin-top: 0;
-  margin-bottom: 1rem;
+  margin-bottom: $paragraph-margin-bottom;
 }
 
 // Abbreviations
@@ -237,6 +239,9 @@ pre {
   margin-bottom: 1rem;
   // Don't allow content to break outside
   overflow: auto;
+  // We have @viewport set which causes scrollbars to overlap content in IE11 and Edge, so
+  // we force a non-overlapping, non-auto-hiding scrollbar to counteract.
+  -ms-overflow-style: scrollbar;
 }
 
 
@@ -270,15 +275,15 @@ svg:not(:root) {
 // DON'T remove the click delay when `<meta name="viewport" content="width=device-width">` is present.
 // However, they DO support removing the click delay via `touch-action: manipulation`.
 // See:
-// * https://v4-alpha.getbootstrap.com/content/reboot/#click-delay-optimization-for-touch
-// * http://caniuse.com/#feat=css-touch-action
+// * https://getbootstrap.com/docs/4.0/content/reboot/#click-delay-optimization-for-touch
+// * https://caniuse.com/#feat=css-touch-action
 // * https://patrickhlauke.github.io/touch/tests/results/#suppressing-300ms-delay
 
 a,
 area,
 button,
 [role="button"],
-input,
+input:not([type=range]),
 label,
 select,
 summary,
@@ -304,8 +309,9 @@ caption {
 }
 
 th {
-  // Matches default `<td>` alignment
-  text-align: left;
+  // Matches default `<td>` alignment by inheriting from the `<body>`, or the
+  // closest parent with a set `text-align`.
+  text-align: inherit;
 }
 
 
@@ -317,6 +323,13 @@ label {
   // Allow labels to use `margin` for spacing.
   display: inline-block;
   margin-bottom: .5rem;
+}
+
+// Remove the default `border-radius` that macOS Chrome adds.
+//
+// Details at https://github.com/twbs/bootstrap/issues/24093
+button {
+  border-radius: 0;
 }
 
 // Work around a Firefox/IE bug where the transparent `button` background

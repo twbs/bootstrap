@@ -8,7 +8,7 @@ toc: true
 
 ## Examples
 
-Alerts are available for any length of text, as well as an optional dismiss button. For proper styling, use one of the four **required** contextual classes (e.g., `.alert-success`). For inline dismissal, use the [alerts jQuery plugin](#dismissing).
+Alerts are available for any length of text, as well as an optional dismiss button. For proper styling, use one of the eight **required** contextual classes (e.g., `.alert-success`). For inline dismissal, use the [alerts jQuery plugin](#dismissing).
 
 {% example html %}
 {% for color in site.data.theme-colors %}
@@ -50,6 +50,7 @@ Alerts can also contain additional HTML elements like headings, paragraphs and d
 Using the alert JavaScript plugin, it's possible to dismiss any alert inline. Here's how:
 
 - Be sure you've loaded the alert plugin, or the compiled Bootstrap JavaScript.
+- If you're building our JS from source, it [requires `util.js`]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/javascript/#util). The compiled version includes this.
 - Add a dismiss button and the `.alert-dismissible` class, which adds extra padding to the right of the alert and positions the `.close` button.
 - On the dismiss button, add the `data-dismiss="alert"` attribute, which triggers the JavaScript functionality. Be sure to use the `<button>` element with it for proper behavior across all devices.
 - To animate alerts when dismissing them, be sure to add the `.fade` and `.show` classes.
@@ -58,10 +59,10 @@ You can see this in action with a live demo:
 
 {% example html %}
 <div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Holy guacamole!</strong> You should check in on some of those fields below.
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
-  <strong>Holy guacamole!</strong> You should check in on some of those fields below.
 </div>
 {% endexample %}
 

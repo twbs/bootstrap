@@ -21,7 +21,7 @@ $(function () {
 
   QUnit.test('should provide no conflict', function (assert) {
     assert.expect(1)
-    assert.strictEqual($.fn.collapse, undefined, 'collapse was set back to undefined (org value)')
+    assert.strictEqual(typeof $.fn.collapse, 'undefined', 'collapse was set back to undefined (org value)')
   })
 
   QUnit.test('should throw explicit error on undefined method', function (assert) {
@@ -672,5 +672,74 @@ $(function () {
       $trigger2.trigger('click')
     })
     $trigger3.trigger('click')
+  })
+
+  QUnit.test('should not prevent interactions inside the collapse element', function (assert) {
+    assert.expect(2)
+    var done = assert.async()
+
+    var $target = $('<input type="checkbox" data-toggle="collapse" data-target="#collapsediv1" />').appendTo('#qunit-fixture')
+    var htmlCollapse =
+      '<div id="collapsediv1" class="collapse">' +
+      ' <input type="checkbox" id="testCheckbox" />' +
+      '</div>'
+
+    $(htmlCollapse)
+      .appendTo('#qunit-fixture')
+      .on('shown.bs.collapse', function () {
+        assert.ok($target.prop('checked'), '$trigger is checked')
+        var $testCheckbox = $('#testCheckbox')
+        $testCheckbox.trigger($.Event('click'))
+        setTimeout(function () {
+          assert.ok($testCheckbox.prop('checked'), '$testCheckbox is checked too')
+          done()
+        }, 5)
+      })
+
+    $target.trigger($.Event('click'))
+  })
+
+  QUnit.test('should allow jquery object in parent config', function (assert) {
+    assert.expect(1)
+    var html =
+    '<div class="my-collapse">' +
+    '  <div class="item">' +
+    '    <a data-toggle="collapse" href="#">Toggle item</a>' +
+    '    <div class="collapse">Lorem ipsum</div>' +
+    '  </div>' +
+    '</div>'
+
+    $(html).appendTo('#qunit-fixture')
+    try {
+      $('[data-toggle="collapse"]').bootstrapCollapse({
+        parent: $('.my-collapse')
+      })
+      assert.ok(true, 'collapse correctly created')
+    }
+    catch (e) {
+      assert.ok(false, 'collapse not created')
+    }
+  })
+
+  QUnit.test('should allow DOM object in parent config', function (assert) {
+    assert.expect(1)
+    var html =
+    '<div class="my-collapse">' +
+    '  <div class="item">' +
+    '    <a data-toggle="collapse" href="#">Toggle item</a>' +
+    '    <div class="collapse">Lorem ipsum</div>' +
+    '  </div>' +
+    '</div>'
+
+    $(html).appendTo('#qunit-fixture')
+    try {
+      $('[data-toggle="collapse"]').bootstrapCollapse({
+        parent: $('.my-collapse')[0]
+      })
+      assert.ok(true, 'collapse correctly created')
+    }
+    catch (e) {
+      assert.ok(false, 'collapse not created')
+    }
   })
 })

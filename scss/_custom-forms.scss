@@ -1,5 +1,3 @@
-// scss-lint:disable PropertyCount, VendorPrefix
-
 // Embedded icons from Open Iconic.
 // Released under MIT and copyright 2014 Waybury.
 // https://useiconic.com/open
@@ -164,6 +162,11 @@
     }
   }
 
+  &[multiple] {
+    height: auto;
+    background-image: none;
+  }
+
   &:disabled {
     color: $custom-select-disabled-color;
     background-color: $custom-select-disabled-bg;
@@ -203,7 +206,7 @@
   opacity: 0;
 
   &:focus ~ .custom-file-control {
-    @include box-shadow($custom-file-focus-box-shadow);
+    box-shadow: $custom-file-focus-box-shadow;
   }
 }
 
@@ -214,7 +217,7 @@
   left: 0;
   z-index: 5;
   height: $custom-file-height;
-  padding: $custom-file-padding-x $custom-file-padding-y;
+  padding: $custom-file-padding-y $custom-file-padding-x;
   line-height: $custom-file-line-height;
   color: $custom-file-color;
   pointer-events: none;
@@ -238,7 +241,7 @@
     z-index: 6;
     display: block;
     height: $custom-file-height;
-    padding: $custom-file-padding-x $custom-file-padding-y;
+    padding: $custom-file-padding-y $custom-file-padding-x;
     line-height: $custom-file-line-height;
     color: $custom-file-button-color;
     background-color: $custom-file-button-bg;

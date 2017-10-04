@@ -20,7 +20,7 @@ h4, .h4,
 h5, .h5,
 h6, .h6 {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: normal;
+  font-weight: 400;
   color: #333;
 }
 
@@ -41,8 +41,7 @@ h6, .h6 {
 .blog-masthead {
   margin-bottom: 3rem;
   background-color: #428bca;
-  -webkit-box-shadow: inset 0 -.1rem .25rem rgba(0,0,0,.1);
-          box-shadow: inset 0 -.1rem .25rem rgba(0,0,0,.1);
+  box-shadow: inset 0 -.1rem .25rem rgba(0,0,0,.1);
 }
 
 /* Nav links */
@@ -62,7 +61,7 @@ h6, .h6 {
 .nav-link.active {
   color: #fff;
 }
-.nav-link.active:after {
+.nav-link.active::after {
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -89,7 +88,7 @@ h6, .h6 {
 .blog-title {
   margin-bottom: 0;
   font-size: 2rem;
-  font-weight: normal;
+  font-weight: 400;
 }
 .blog-description {
   font-size: 1.1rem;
@@ -110,7 +109,6 @@ h6, .h6 {
 /* Sidebar modules for boxing content */
 .sidebar-module {
   padding: 1rem;
-  /*margin: 0 -1rem 1rem;*/
 }
 .sidebar-module-inset {
   padding: 1rem;

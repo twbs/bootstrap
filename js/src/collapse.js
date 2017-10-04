@@ -1,14 +1,15 @@
+import $ from 'jquery'
 import Util from './util'
 
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-alpha.6): collapse.js
+ * Bootstrap (v4.0.0-beta): collapse.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
 
-const Collapse = (($) => {
+const Collapse = (() => {
 
 
   /**
@@ -18,7 +19,7 @@ const Collapse = (($) => {
    */
 
   const NAME                = 'collapse'
-  const VERSION             = '4.0.0-alpha.6'
+  const VERSION             = '4.0.0-beta'
   const DATA_KEY            = 'bs.collapse'
   const EVENT_KEY           = `.${DATA_KEY}`
   const DATA_API_KEY        = '.data-api'
@@ -32,7 +33,7 @@ const Collapse = (($) => {
 
   const DefaultType = {
     toggle : 'boolean',
-    parent : 'string'
+    parent : '(string|element)'
   }
 
   const Event = {
@@ -288,7 +289,18 @@ const Collapse = (($) => {
     }
 
     _getParent() {
-      const parent   = $(this._config.parent)[0]
+      let parent = null
+      if (Util.isElement(this._config.parent)) {
+        parent = this._config.parent
+
+        // it's a jQuery object
+        if (typeof this._config.parent.jquery !== 'undefined') {
+          parent = this._config.parent[0]
+        }
+      } else {
+        parent = $(this._config.parent)[0]
+      }
+
       const selector =
         `[data-toggle="collapse"][data-parent="${this._config.parent}"]`
 
@@ -343,7 +355,7 @@ const Collapse = (($) => {
         }
 
         if (typeof config === 'string') {
-          if (data[config] === undefined) {
+          if (typeof data[config] === 'undefined') {
             throw new Error(`No method named "${config}"`)
           }
           data[config]()
@@ -361,7 +373,8 @@ const Collapse = (($) => {
    */
 
   $(document).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
-    if (!/input|textarea/i.test(event.target.tagName)) {
+    // preventDefault only for <a> elements (which change the URL) not inside the collapsible element
+    if (event.currentTarget.tagName === 'A') {
       event.preventDefault()
     }
 
@@ -391,6 +404,6 @@ const Collapse = (($) => {
 
   return Collapse
 
-})(jQuery)
+})($)
 
 export default Collapse

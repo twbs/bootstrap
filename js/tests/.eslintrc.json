@@ -21,13 +21,11 @@
     "no-magic-numbers": "off",
     "vars-on-top": "off",
 
-    // Strict Mode
-    "strict": "off",
-
     // NodeJS and CommonJS
     "global-require": "off",
     "no-process-env": "off",
     "no-process-exit": "off",
+    "no-sync": "off",
 
     // Stylistic Issues
     "brace-style": "off",

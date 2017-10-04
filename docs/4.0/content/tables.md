@@ -16,10 +16,10 @@ Using the most basic table markup, here's how `.table`-based tables look in Boot
 <table class="table">
   <thead>
     <tr>
-      <th>#</th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Username</th>
+      <th scope="col">#</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Username</th>
     </tr>
   </thead>
   <tbody>
@@ -45,16 +45,16 @@ Using the most basic table markup, here's how `.table`-based tables look in Boot
 </table>
 {% endexample %}
 
-You can also invert the colors—with light text on dark backgrounds—with `.table-inverse`.
+You can also invert the colors—with light text on dark backgrounds—with `.table-dark`.
 
 {% example html %}
-<table class="table table-inverse">
+<table class="table table-dark">
   <thead>
     <tr>
-      <th>#</th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Username</th>
+      <th scope="col">#</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Username</th>
     </tr>
   </thead>
   <tbody>
@@ -82,16 +82,16 @@ You can also invert the colors—with light text on dark backgrounds—with `.ta
 
 ## Table head options
 
-Similar to default and inverse tables, use one of two modifier classes to make `<thead>`s appear light or dark gray.
+Similar to tables and dark tables, use the modifier classes `.thead-light` or `.thead-dark` to make `<thead>`s appear light or dark gray.
 
 {% example html %}
 <table class="table">
-  <thead class="thead-inverse">
+  <thead class="thead-dark">
     <tr>
-      <th>#</th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Username</th>
+      <th scope="col">#</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Username</th>
     </tr>
   </thead>
   <tbody>
@@ -117,12 +117,12 @@ Similar to default and inverse tables, use one of two modifier classes to make `
 </table>
 
 <table class="table">
-  <thead class="thead-default">
+  <thead class="thead-light">
     <tr>
-      <th>#</th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Username</th>
+      <th scope="col">#</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Username</th>
     </tr>
   </thead>
   <tbody>
@@ -156,10 +156,10 @@ Use `.table-striped` to add zebra-striping to any table row within the `<tbody>`
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>#</th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Username</th>
+      <th scope="col">#</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Username</th>
     </tr>
   </thead>
   <tbody>
@@ -186,13 +186,13 @@ Use `.table-striped` to add zebra-striping to any table row within the `<tbody>`
 {% endexample %}
 
 {% example html %}
-<table class="table table-striped table-inverse">
+<table class="table table-striped table-dark">
   <thead>
     <tr>
-      <th>#</th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Username</th>
+      <th scope="col">#</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Username</th>
     </tr>
   </thead>
   <tbody>
@@ -226,10 +226,10 @@ Add `.table-bordered` for borders on all sides of the table and cells.
 <table class="table table-bordered">
   <thead>
     <tr>
-      <th>#</th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Username</th>
+      <th scope="col">#</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Username</th>
     </tr>
   </thead>
   <tbody>
@@ -261,13 +261,13 @@ Add `.table-bordered` for borders on all sides of the table and cells.
 {% endexample %}
 
 {% example html %}
-<table class="table table-bordered table-inverse">
+<table class="table table-bordered table-dark">
   <thead>
     <tr>
-      <th>#</th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Username</th>
+      <th scope="col">#</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Username</th>
     </tr>
   </thead>
   <tbody>
@@ -306,10 +306,10 @@ Add `.table-hover` to enable a hover state on table rows within a `<tbody>`.
 <table class="table table-hover">
   <thead>
     <tr>
-      <th>#</th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Username</th>
+      <th scope="col">#</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Username</th>
     </tr>
   </thead>
   <tbody>
@@ -335,13 +335,13 @@ Add `.table-hover` to enable a hover state on table rows within a `<tbody>`.
 {% endexample %}
 
 {% example html %}
-<table class="table table-hover table-inverse">
+<table class="table table-hover table-dark">
   <thead>
     <tr>
-      <th>#</th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Username</th>
+      <th scope="col">#</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Username</th>
     </tr>
   </thead>
   <tbody>
@@ -374,10 +374,10 @@ Add `.table-sm` to make tables more compact by cutting cell padding in half.
 <table class="table table-sm">
   <thead>
     <tr>
-      <th>#</th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Username</th>
+      <th scope="col">#</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Username</th>
     </tr>
   </thead>
   <tbody>
@@ -403,13 +403,13 @@ Add `.table-sm` to make tables more compact by cutting cell padding in half.
 {% endexample %}
 
 {% example html %}
-<table class="table table-sm table-inverse">
+<table class="table table-sm table-dark">
   <thead>
     <tr>
-      <th>#</th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Username</th>
+      <th scope="col">#</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Username</th>
     </tr>
   </thead>
   <tbody>
@@ -442,10 +442,10 @@ Use contextual classes to color table rows or individual cells.
   <table class="table">
     <thead>
       <tr>
-        <th>Type</th>
-        <th>Column heading</th>
-        <th>Column heading</th>
-        <th>Column heading</th>
+        <th scope="col">Type</th>
+        <th scope="col">Column heading</th>
+        <th scope="col">Column heading</th>
+        <th scope="col">Column heading</th>
       </tr>
     </thead>
     <tbody>
@@ -487,16 +487,16 @@ Use contextual classes to color table rows or individual cells.
 </tr>
 {% endhighlight %}
 
-Regular table background variants are not available with the inverse table, however, you may use [text or background utilities]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/colors/) to achieve similar styles.
+Regular table background variants are not available with the dark table, however, you may use [text or background utilities]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/colors/) to achieve similar styles.
 
 <div class="bd-example">
-  <table class="table table-inverse">
+  <table class="table table-dark">
     <thead>
       <tr>
-        <th>#</th>
-        <th>Column heading</th>
-        <th>Column heading</th>
-        <th>Column heading</th>
+        <th scope="col">#</th>
+        <th scope="col">Column heading</th>
+        <th scope="col">Column heading</th>
+        <th scope="col">Column heading</th>
       </tr>
     </thead>
     <tbody>
@@ -581,7 +581,9 @@ Regular table background variants are not available with the inverse table, howe
 
 ## Responsive tables
 
-Create responsive tables by adding `.table-responsive` to any `.table` to make them scroll horizontally on small devices (under 768px). When viewing on anything larger than 768px wide, you will not see any difference in these tables.
+Create responsive tables by adding `.table-responsive{-sm|-md|-lg|-xl}` to any `.table` to make them scroll horizontally at each `max-width` breakpoint 575px, 767px, 991px, and 1199px, respectively.
+
+For responsive tables that always scroll horizontally when the table is wider than its container, add the `.table-responsive` class on `.table`.
 
 {% callout warning %}
 #### Vertical clipping/truncation
@@ -593,18 +595,24 @@ Responsive tables make use of `overflow-y: hidden`, which clips off any content 
   <table class="table table-responsive">
     <thead>
       <tr>
-        <th>#</th>
-        <th>Table heading</th>
-        <th>Table heading</th>
-        <th>Table heading</th>
-        <th>Table heading</th>
-        <th>Table heading</th>
-        <th>Table heading</th>
+        <th scope="col">#</th>
+        <th scope="col">Table heading</th>
+        <th scope="col">Table heading</th>
+        <th scope="col">Table heading</th>
+        <th scope="col">Table heading</th>
+        <th scope="col">Table heading</th>
+        <th scope="col">Table heading</th>
+        <th scope="col">Table heading</th>
+        <th scope="col">Table heading</th>
+        <th scope="col">Table heading</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <th scope="row">1</th>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
         <td>Table cell</td>
         <td>Table cell</td>
         <td>Table cell</td>
@@ -620,9 +628,15 @@ Responsive tables make use of `overflow-y: hidden`, which clips off any content 
         <td>Table cell</td>
         <td>Table cell</td>
         <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
       </tr>
       <tr>
         <th scope="row">3</th>
+        <td>Table cell</td>
+        <td>Table cell</td>
+        <td>Table cell</td>
         <td>Table cell</td>
         <td>Table cell</td>
         <td>Table cell</td>
@@ -633,16 +647,16 @@ Responsive tables make use of `overflow-y: hidden`, which clips off any content 
     </tbody>
   </table>
 
-  <table class="table table-bordered table-responsive">
+  <table class="table table-bordered table-responsive-lg">
     <thead>
       <tr>
-        <th>#</th>
-        <th>Table heading</th>
-        <th>Table heading</th>
-        <th>Table heading</th>
-        <th>Table heading</th>
-        <th>Table heading</th>
-        <th>Table heading</th>
+        <th scope="col">#</th>
+        <th scope="col">Table heading</th>
+        <th scope="col">Table heading</th>
+        <th scope="col">Table heading</th>
+        <th scope="col">Table heading</th>
+        <th scope="col">Table heading</th>
+        <th scope="col">Table heading</th>
       </tr>
     </thead>
     <tbody>
@@ -682,3 +696,42 @@ Responsive tables make use of `overflow-y: hidden`, which clips off any content 
   ...
 </table>
 {% endhighlight %}
+
+
+## Captions
+
+A `<caption>` functions like a heading for a table. It helps users with screen readers to find a table and understand what it’s about and decide if they want to read it.
+
+{% example html %}
+<table class="table">
+  <caption>List of users</caption>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Username</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
+{% endexample %}

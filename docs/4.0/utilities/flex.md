@@ -357,17 +357,14 @@ Change the _visual_ order of specific flex items with a handful of `order` utili
 
 Responsive variations also exist for `order`.
 
-{% for bp in site.data.breakpoints %}
-  {% for i in (1..12) %}
-  - `.order{{ bp.abbr }}-{{ i }}`
-  {% endfor %}
-{% endfor %}
+{% for bp in site.data.breakpoints %}{% for i in (1..12) %}
+- `.order{{ bp.abbr }}-{{ i }}`{% endfor %}{% endfor %}
 
 ## Align content
 
 Use `align-content` utilities on flexbox containers to align flex items *together* on the cross axis. Choose from `start` (browser default), `end`, `center`, `between`, `around`, or `stretch`. To demonstrate these utilities, we've enforced `flex-wrap: wrap` and increased the number of flex items.
 
-**Heads up!** This property has no affect on single rows of flex items.
+**Heads up!** This property has no effect on single rows of flex items.
 
 <div class="bd-example">
   <div class="d-flex align-content-start flex-wrap bd-highlight mb-3" style="height: 200px">

@@ -1,3 +1,5 @@
+// stylelint-disable declaration-no-important
+
 //
 // Text
 //
@@ -28,16 +30,17 @@
 
 // Weight and italics
 
-.font-weight-normal { font-weight: $font-weight-normal; }
-.font-weight-bold   { font-weight: $font-weight-bold; }
-.font-italic        { font-style: italic; }
+.font-weight-light  { font-weight: $font-weight-light !important; }
+.font-weight-normal { font-weight: $font-weight-normal !important; }
+.font-weight-bold   { font-weight: $font-weight-bold !important; }
+.font-italic        { font-style: italic !important; }
 
 // Contextual colors
 
 .text-white { color: #fff !important; }
 
 @each $color, $value in $theme-colors {
-  @include text-emphasis-variant('.text-#{$color}', $value);
+  @include text-emphasis-variant(".text-#{$color}", $value);
 }
 
 .text-muted { color: $text-muted !important; }

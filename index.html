@@ -4,123 +4,80 @@ layout: home
 
 <main class="bd-masthead" id="content" role="main">
   <div class="container">
-    {% include icons/bootstrap.svg class="mb-3" width="128" height="128" %}
-    <p class="lead">Bootstrap is the most popular HTML, CSS, and JS library in the world for building responsive, mobile-first projects on the web.</p>
-    <p class="lead">
-      <a href="{{ site.baseurl }}/getting-started/download/" class="btn btn-lg btn-bd-yellow" onclick="ga('send', 'event', 'Jumbotron actions', 'Download', 'Download {{ site.current_version }}');">Download Bootstrap</a>
-    </p>
-    <p class="version">Currently v{{ site.current_version }}</p>
+    <div class="row align-items-center">
+      <div class="col-6 mx-auto col-md-6 order-md-2">
+        <img class="img-fluid mb-3 mb-md-0" src="{{ site.baseurl }}/assets/img/bootstrap-stack.png" alt="" width="1024" height="860">
+      </div>
+      <div class="col-md-6 order-md-1 text-center text-md-left pr-md-5">
+        <h1 class="mb-3 bd-text-purple-bright">Bootstrap</h1>
+        <p class="lead">
+          Build responsive, mobile-first projects on the web with the world's most popular front-end component library.
+        </p>
+        <p class="lead mb-4">
+          Bootstrap is an open source toolkit for developing with HTML, CSS, and JS. Quickly prototype your ideas or build your entire app with our Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful plugins built on jQuery.
+        </p>
+        <div class="d-flex flex-column flex-md-row lead mb-3">
+          <a href="{{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/" class="btn btn-lg btn-bd-purple mb-3 mb-md-0 mr-md-3" onclick="ga('send', 'event', 'Jumbotron actions', 'Get started', 'Get started');">Get started</a>
+          <a href="{{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/download/" class="btn btn-lg btn-outline-secondary" onclick="ga('send', 'event', 'Jumbotron actions', 'Download', 'Download {{ site.current_version }}');">Download</a>
+        </div>
+        <p class="text-muted mb-0">
+          Currently v{{ site.current_version }}
+        </p>
+      </div>
+    </div>
     {% include ads.html %}
   </div>
 </main>
 
-<div class="bd-featurette">
-  <div class="container">
-    <h2 class="bd-featurette-title">Easy to get started</h2>
-    <p class="lead">Quickly include Bootstrap's CSS and JS into any project. Use your favorite package manager, download the source, or use the Bootstrap CDN.</p>
+<div class="masthead-followup row m-0 border border-white">
+  <div class="col-12 col-md-4 p-3 p-md-5 bg-light border border-white">
+    <!-- Icon by Bytesize https://github.com/danklammer/bytesize-icons -->
+    {% include icons/import.svg width="32" height="32" class="text-primary mb-2" %}
+    <h3>Installation</h3>
+    <p>Include Bootstrap's source Sass and JavaScript files via npm, Composer or Meteor. Package managed installs don't include documentation, but do include our build system and readme.</p>
 
-    <div class="row justify-content-center text-center">
-      <div class="col-sm-6 col-md-5 mb-3 pr-md-4">
-        <h4>Managed dependencies</h4>
-        <p>Include Bootstrap's source Sass and JavaScript files via Bower, Composer, Meteor, or npm. Package managed installs don't include documentation, but do include our build system and readme.</p>
-        <p>
-          <a class="btn btn-bd-purple" href="{{ site.baseurl }}/getting-started/download#package-managers">View install methods</a>
-        </p>
-      </div>
-      <div class="col-sm-6 col-md-5 mb-3 pl-md-4">
-        <h4>Bootstrap CDN</h4>
-        <p>When you only need to include Bootstrap's compiled CSS and JS, you can use the Bootstrap CDN.</p>
+{% highlight sh %}
+npm install bootstrap@{{ site.current_version }}
+{% endhighlight %}
+
+{% highlight sh %}
+gem install bootstrap -v 4.0.0.beta
+{% endhighlight %}
+
+    <hr class="half-rule">
+    <a class="btn btn-outline-primary" href="{{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/download">Read installation docs</a>
+  </div>
+
+  <div class="col-12 col-md-4 p-3 p-md-5 bg-light border border-white">
+    <!-- Icon by Bytesize https://github.com/danklammer/bytesize-icons -->
+    {% include icons/download.svg width="32" height="32" class="text-primary mb-2" %}
+    <h3>Bootstrap CDN</h3>
+    <p>When you only need to include Bootstrap's compiled CSS or JS, you can use the Bootstrap CDN.</p>
+
+<h5>CSS only</h5>
 {% highlight html %}
 <link rel="stylesheet" href="{{ site.cdn.css }}" integrity="{{ site.cdn.css_hash }}" crossorigin="anonymous">
+{% endhighlight %}
+
+<h5>JS, Popper.js, and jQuery</h5>
+{% highlight html %}
 <script src="{{ site.cdn.jquery }}" integrity="{{ site.cdn.jquery_hash }}" crossorigin="anonymous"></script>
 <script src="{{ site.cdn.popper }}" integrity="{{ site.cdn.popper_hash }}" crossorigin="anonymous"></script>
 <script src="{{ site.cdn.js }}" integrity="{{ site.cdn.js_hash }}" crossorigin="anonymous"></script>
 {% endhighlight %}
-      </div>
-    </div>
-
-    <hr class="half-rule mx-auto">
-
-    <div class="text-center">
-      <p>
-        <strong>Looking for something else?</strong> Compiled builds of Bootstrap's CSS and JS are also available.
-      </p>
-      <a href="{{ site.baseurl }}/getting-started/download/" class="btn btn-bd-purple">More download options</a>
-    </div>
+    <hr class="half-rule">
+    <a class="btn btn-outline-primary" href="{{ site.baseurl }}/docs/{{ site.docs_version }}/layout/overview/">Explore the docs</a>
   </div>
-</div>
 
-<div class="bd-featurette">
-  <div class="container">
-    <h2 class="bd-featurette-title">Designed for everyone, everywhere</h2>
-    <p class="lead">Bootstrap makes front-end web development faster and easier. It's made for folks of all skill levels, devices of all shapes, and projects of all sizes.</p>
-
-    <div class="row text-center">
-      <div class="col-sm-4 mb-3">
-        <img src="{{ site.baseurl }}/assets/img/sass.png" alt="Sass support" class="img-fluid">
-        <h4>Preprocessor</h4>
-        <p>Bootstrap ships with vanilla CSS, but its source code utilizes <a href="http://sass-lang.com/">Sass</a>, a popular CSS preprocessor. Quickly get started with precompiled CSS or build on the source.</p>
-      </div>
-      <div class="col-sm-4 mb-3">
-        <img src="{{ site.baseurl }}/assets/img/devices.png" alt="Responsive across devices" class="img-fluid">
-        <h4>One framework, every device.</h4>
-        <p>Bootstrap easily and efficiently scales your websites and applications with a single code base, from phones to tablets to desktops with CSS media queries.</p>
-      </div>
-      <div class="col-sm-4 mb-3">
-        <img src="{{ site.baseurl }}/assets/img/components.png" alt="Components" class="img-fluid">
-        <h4>Full of features</h4>
-        <p>With Bootstrap, you get extensive and beautiful documentation for common HTML elements, dozens of custom HTML and CSS components, and awesome jQuery plugins.</p>
-      </div>
-    </div>
-
-    <hr class="half-rule mx-auto">
-
-    <div class="text-center">
-      <p>
-        <strong>Bootstrap is open source!</strong> It's hosted, developed, and maintained on GitHub by folks like you.
-      </p>
-      <a href="{{ site.repo }}" class="btn btn-bd-purple">View the GitHub project</a>
-    </div>
-  </div>
-</div>
-
-<div class="bd-featurette">
-  <div class="container">
-    <h2 class="bd-featurette-title">Official Bootstrap Themes</h2>
-    <p class="lead">
-      Take Bootstrap to the next level with official premium themes. Each theme is its own toolkit featuring all of Bootstrap, brand new components and plugins, full docs, build tools, and more.
+  <div class="col-12 col-md-4 p-3 p-md-5 bg-light border border-white">
+    <!-- Icon by Bytesize https://github.com/danklammer/bytesize-icons -->
+    {% include icons/lightning.svg width="32" height="32" class="text-primary mb-2" %}
+    <h3>Official Themes</h3>
+    <p>
+      Take Bootstrap 4 to the next level with official premium themes—toolkits built on Bootstrap with new components and plugins, docs, and build tools.
     </p>
-
-    <p class="lead">
-      <a href="{{ site.themes }}" class="btn btn-lg btn-bd-purple">Browse themes</a>
-    </p>
-
-    <img class="img-fluid mx-auto" src="{{ site.baseurl }}/assets/img/bs-themes.png" alt="Bootstrap Themes" width="1024" height="388">
-  </div>
-</div>
-
-<div class="bd-featurette">
-  <div class="container">
-    <h2 class="bd-featurette-title">Built with Bootstrap</h2>
-    <p class="lead">Millions of amazing sites across the web are being built with Bootstrap. Get started on your own with our growing <a href="{{ site.baseurl }}/examples/">collection of examples</a> or by exploring some of our favorites.</p>
-
-    <div class="row bd-featured-sites">
-    {% for showcase in site.data.showcase %}
-      <div class="col-6 col-sm-3">
-        <a href="{{ showcase.expo_url }}" target="_blank" rel="noopener" title="{{ showcase.name }}">
-          <img src="{{ site.baseurl }}/assets/img/expo-{{ showcase.img }}.jpg" alt="{{ showcase.name }}" class="img-fluid">
-        </a>
-      </div>
-    {% endfor %}
-    </div>
-
-    <hr class="half-rule mx-auto">
-
-    <div class="text-center">
-      <p>
-        We showcase dozens of inspiring projects built with Bootstrap on the Bootstrap Expo.
-      </p>
-      <a href="{{ site.expo }}" class="btn btn-bd-purple">Explore the Expo</a>
-    </div>
+    <img class="img-fluid mt-3 mx-auto" src="{{ site.baseurl }}/assets/img/bootstrap-themes.png" alt="Bootstrap Themes" width="1024" height="388">
+    <hr class="half-rule">
+    <a href="{{ site.themes }}" class="btn btn-outline-primary">Browse themes</a>
   </div>
 </div>

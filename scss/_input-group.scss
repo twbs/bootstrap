@@ -1,3 +1,5 @@
+// stylelint-disable selector-no-qualifying-type
+
 //
 // Base styles
 //
@@ -5,6 +7,7 @@
 .input-group {
   position: relative;
   display: flex;
+  align-items: stretch;
   width: 100%;
 
   .form-control {
@@ -28,10 +31,8 @@
 .input-group-addon,
 .input-group-btn,
 .input-group .form-control {
-  // Vertically centers the content of the addons within the input group
   display: flex;
   align-items: center;
-
   &:not(:first-child):not(:last-child) {
     @include border-radius(0);
   }
@@ -40,7 +41,6 @@
 .input-group-addon,
 .input-group-btn {
   white-space: nowrap;
-  vertical-align: middle; // Match the inputs
 }
 
 
@@ -71,7 +71,7 @@
   font-size: $font-size-base; // Match inputs
   font-weight: $font-weight-normal;
   line-height: $input-btn-line-height;
-  color: $input-color;
+  color: $input-group-addon-color;
   text-align: center;
   background-color: $input-group-addon-bg;
   border: $input-btn-border-width solid $input-group-addon-border-color;
@@ -90,13 +90,11 @@
     @include border-radius($input-border-radius-lg);
   }
 
-  // scss-lint:disable QualifyingElement
   // Nuke default margins from checkboxes and radios to vertically center within.
   input[type="radio"],
   input[type="checkbox"] {
     margin-top: 0;
   }
-  // scss-lint:enable QualifyingElement
 }
 
 
@@ -135,6 +133,7 @@
 
 .input-group-btn {
   position: relative;
+  align-items: stretch;
   // Jankily prevent input button groups from wrapping with `white-space` and
   // `font-size` in combination with `inline-block` on buttons.
   font-size: 0;
@@ -155,6 +154,10 @@
     }
   }
 
+  &:first-child > .btn + .btn {
+    margin-left: 0;
+  }
+
   // Negative margin to only have a single, shared border between the two
   &:not(:last-child) {
     > .btn,
@@ -166,7 +169,14 @@
     > .btn,
     > .btn-group {
       z-index: 2;
-      margin-left: (-$input-btn-border-width);
+      // remove nagative margin ($input-btn-border-width) to solve overlapping issue with button.
+      margin-left: 0;
+
+      // When input is first, overlap the right side of it with the button(-group)
+      &:first-child {
+        margin-left: (-$input-btn-border-width);
+      }
+
       // Because specificity
       @include hover-focus-active {
         z-index: 3;

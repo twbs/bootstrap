@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: JavaScript
-description: Bring Bootstrap to life with our JavaScript plugins built on jQuery. Learn about each plugin, our data and programmatic API options, and more.
+description: Bring Bootstrap to life with our optional JavaScript plugins built on jQuery. Learn about each plugin, our data and programmatic API options, and more.
 group: getting-started
 toc: true
 ---
@@ -12,7 +12,9 @@ Plugins can be included individually (using Bootstrap's individual `*.js` files)
 
 ## Dependencies
 
-Some plugins and CSS components depend on other plugins. If you include plugins individually, make sure to check for these dependencies in the docs. Also note that all plugins depend on jQuery (this means jQuery must be included **before** the plugin files). [Consult our `bower.json`]({{ site.repo }}/blob/v{{ site.current_version }}/bower.json) to see which versions of jQuery are supported.
+Some plugins and CSS components depend on other plugins. If you include plugins individually, make sure to check for these dependencies in the docs. Also note that **all plugins depend on jQuery** (this means jQuery must be included **before** the plugin files). [Consult our `package.json`]({{ site.repo }}/blob/v{{ site.current_version }}/package.json) to see which versions of jQuery are supported.
+
+Our dropdowns, popovers and tooltips also depend on [Popper.js](https://popper.js.org/).
 
 ## Data attributes
 
@@ -34,7 +36,7 @@ $(document).off('.alert.data-api')
 
 Bootstrap provides custom events for most plugins' unique actions. Generally, these come in an infinitive and past participle form - where the infinitive (ex. `show`) is triggered at the start of an event, and its past participle form (ex. `shown`) is triggered on the completion of an action.
 
-All infinitive events provide [`preventDefault()`](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) functionality. This provides the ability to stop the execution of an action before it starts.
+All infinitive events provide [`preventDefault()`](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) functionality. This provides the ability to stop the execution of an action before it starts. Returning false from an event handler will also automatically call `preventDefault()`.
 
 {% highlight js %}
 $('#myModal').on('show.bs.modal', function (e) {
@@ -82,6 +84,7 @@ $('#myCarousel').carousel('2') // !! Will be ignored, as the transition to the s
 {% endhighlight %}
 
 ### Default settings
+
 You can change the default settings for a plugin by modifying the plugin's `Constructor.Default` object:
 
 {% highlight js %}
@@ -117,6 +120,6 @@ Bootstrap's plugins don't fall back particularly gracefully when JavaScript is d
 
 ## Util
 
-All Bootstrap Javascript depend on `util.js` and it has to be included alongside the other JS files. If you're using the compiled (or minified) `bootstrap.js`, there is no need to include this—it's already there.
+All Bootstrap's JavaScript files depend on `util.js` and it has to be included alongside the other JS files. If you're using the compiled (or minified) `bootstrap.js`, there is no need to include this—it's already there.
 
 `util.js` includes utility functions and a basic helper for `transitionEnd` events as well as a CSS transition emulator. It's used by the other plugins to check for CSS transition support and to catch hanging transitions.

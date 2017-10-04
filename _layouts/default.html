@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     {% include header.html %}
@@ -12,9 +12,13 @@
 
     {% include docs-navbar.html %}
 
-    <main id="content" role="main">
+    {% if page.layout == "simple" %}
         {{ content }}
-    </main>
+    {% else %}
+        <main id="content" role="main">
+            {{ content }}
+        </main>
+    {% endif %}
 
     {% include footer.html %}
     {% include scripts.html %}

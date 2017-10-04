@@ -56,7 +56,7 @@ Be sure to **not use the standard `.btn` classes here**.
 
 {% example html %}
 <div class="list-group">
-  <a href="#" class="list-group-item active">
+  <a href="#" class="list-group-item list-group-item-action active">
     Cras justo odio
   </a>
   <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
@@ -115,15 +115,15 @@ Add badges to any list group item to show unread counts, activity, and more with
 <ul class="list-group">
   <li class="list-group-item d-flex justify-content-between align-items-center">
     Cras justo odio
-    <span class="badge badge-default badge-pill">14</span>
+    <span class="badge badge-primary badge-pill">14</span>
   </li>
   <li class="list-group-item d-flex justify-content-between align-items-center">
     Dapibus ac facilisis in
-    <span class="badge badge-default badge-pill">2</span>
+    <span class="badge badge-primary badge-pill">2</span>
   </li>
   <li class="list-group-item d-flex justify-content-between align-items-center">
     Morbi leo risus
-    <span class="badge badge-default badge-pill">1</span>
+    <span class="badge badge-primary badge-pill">1</span>
   </li>
 </ul>
 {% endexample %}
@@ -244,7 +244,7 @@ You can activate a list group navigation without writing any JavaScript by simpl
 Enable tabbable list item via JavaScript (each list item needs to be activated individually):
 
 {% highlight js %}
-$('#myList a').click(function (e) {
+$('#myList a').on('click', function (e) {
   e.preventDefault()
   $(this).tab('show')
 })

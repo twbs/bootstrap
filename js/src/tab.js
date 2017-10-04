@@ -1,14 +1,15 @@
+import $ from 'jquery'
 import Util from './util'
 
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-alpha.6): tab.js
+ * Bootstrap (v4.0.0-beta): tab.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
 
-const Tab = (($) => {
+const Tab = (() => {
 
 
   /**
@@ -18,7 +19,7 @@ const Tab = (($) => {
    */
 
   const NAME                = 'tab'
-  const VERSION             = '4.0.0-alpha.6'
+  const VERSION             = '4.0.0-beta'
   const DATA_KEY            = 'bs.tab'
   const EVENT_KEY           = `.${DATA_KEY}`
   const DATA_API_KEY        = '.data-api'
@@ -45,6 +46,7 @@ const Tab = (($) => {
     DROPDOWN              : '.dropdown',
     NAV_LIST_GROUP        : '.nav, .list-group',
     ACTIVE                : '.active',
+    ACTIVE_UL             : '> li > .active',
     DATA_TOGGLE           : '[data-toggle="tab"], [data-toggle="pill"], [data-toggle="list"]',
     DROPDOWN_TOGGLE       : '.dropdown-toggle',
     DROPDOWN_ACTIVE_CHILD : '> .dropdown-menu .active'
@@ -87,7 +89,8 @@ const Tab = (($) => {
       const selector    = Util.getSelectorFromElement(this._element)
 
       if (listElement) {
-        previous = $.makeArray($(listElement).find(Selector.ACTIVE))
+        const itemSelector = listElement.nodeName === 'UL' ? Selector.ACTIVE_UL : Selector.ACTIVE
+        previous = $.makeArray($(listElement).find(itemSelector))
         previous = previous[previous.length - 1]
       }
 
@@ -148,7 +151,14 @@ const Tab = (($) => {
     // private
 
     _activate(element, container, callback) {
-      const active          = $(container).find(Selector.ACTIVE)[0]
+      let activeElements
+      if (container.nodeName === 'UL') {
+        activeElements = $(container).find(Selector.ACTIVE_UL)
+      } else {
+        activeElements = $(container).children(Selector.ACTIVE)
+      }
+
+      const active          = activeElements[0]
       const isTransitioning = callback
         && Util.supportsTransitionEnd()
         && (active && $(active).hasClass(ClassName.FADE))
@@ -186,11 +196,15 @@ const Tab = (($) => {
           $(dropdownChild).removeClass(ClassName.ACTIVE)
         }
 
-        active.setAttribute('aria-expanded', false)
+        if (active.getAttribute('role') === 'tab') {
+          active.setAttribute('aria-selected', false)
+        }
       }
 
       $(element).addClass(ClassName.ACTIVE)
-      element.setAttribute('aria-expanded', true)
+      if (element.getAttribute('role') === 'tab') {
+        element.setAttribute('aria-selected', true)
+      }
 
       if (isTransitioning) {
         Util.reflow(element)
@@ -229,7 +243,7 @@ const Tab = (($) => {
         }
 
         if (typeof config === 'string') {
-          if (data[config] === undefined) {
+          if (typeof data[config] === 'undefined') {
             throw new Error(`No method named "${config}"`)
           }
           data[config]()
@@ -268,6 +282,6 @@ const Tab = (($) => {
 
   return Tab
 
-})(jQuery)
+})($)
 
 export default Tab

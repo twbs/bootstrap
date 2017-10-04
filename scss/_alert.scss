@@ -3,6 +3,7 @@
 //
 
 .alert {
+  position: relative;
   padding: $alert-padding-y $alert-padding-x;
   margin-bottom: $alert-margin-bottom;
   border: $alert-border-width solid transparent;
@@ -28,9 +29,9 @@
 .alert-dismissible {
   // Adjust close link position
   .close {
-    position: relative;
-    top: -$alert-padding-y;
-    right: -$alert-padding-x;
+    position: absolute;
+    top: 0;
+    right: 0;
     padding: $alert-padding-y $alert-padding-x;
     color: inherit;
   }
