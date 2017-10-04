@@ -4,8 +4,8 @@
 
   &[href] {
     @include hover-focus {
-      text-decoration: none;
       color: color-yiq($bg);
+      text-decoration: none;
       background-color: darken($bg, 10%);
     }
   }
