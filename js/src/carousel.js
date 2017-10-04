@@ -519,6 +519,6 @@ const Carousel = (() => {
 
   return Carousel
 
-})(jQuery)
+})($)
 
 export default Carousel

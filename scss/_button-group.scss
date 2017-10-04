@@ -1,4 +1,4 @@
-// scss-lint:disable QualifyingElement
+// stylelint-disable selector-no-qualifying-type
 
 // Make the div behave like a button
 .btn-group,
@@ -47,7 +47,8 @@
   border-radius: 0;
 }
 
-// Set corners individual because sometimes a single button can be in a .btn-group and we need :first-child and :last-child to both match
+// Set corners individual because sometimes a single button can be in a .btn-group
+// and we need :first-child and :last-child to both match
 .btn-group > .btn:first-child {
   margin-left: 0;
 
@@ -55,13 +56,15 @@
     @include border-right-radius(0);
   }
 }
-// Need .dropdown-toggle since :last-child doesn't apply given a .dropdown-menu immediately after it
+// Need .dropdown-toggle since :last-child doesn't apply given a .dropdown-menu
+// immediately after it
 .btn-group > .btn:last-child:not(:first-child),
 .btn-group > .dropdown-toggle:not(:first-child) {
   @include border-left-radius(0);
 }
 
-// Custom edits for including btn-groups within btn-groups (useful for including dropdown buttons within a btn-group)
+// Custom edits for including btn-groups within btn-groups (useful for including
+// dropdown buttons within a btn-group)
 .btn-group > .btn-group {
   float: left;
 }

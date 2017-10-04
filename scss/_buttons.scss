@@ -1,4 +1,4 @@
-// scss-lint:disable QualifyingElement
+// stylelint-disable selector-no-qualifying-type
 
 //
 // Base styles
@@ -76,7 +76,6 @@ fieldset[disabled] a.btn {
   font-weight: $font-weight-normal;
   color: $link-color;
   background-color: transparent;
-  border-radius: 0;
 
   @include hover {
     color: $link-hover-color;

@@ -1,4 +1,4 @@
-// scss-lint:disable QualifyingElement, DuplicateProperty, VendorPrefix
+// stylelint-disable
 
 // Reboot
 //
@@ -93,7 +93,7 @@ hr {
 // margin for easier control within type scales as it avoids margin collapsing.
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
-  margin-bottom: .5rem;
+  margin-bottom: $headings-margin-bottom;
 }
 
 // Reset margins on paragraphs
@@ -323,6 +323,13 @@ label {
   // Allow labels to use `margin` for spacing.
   display: inline-block;
   margin-bottom: .5rem;
+}
+
+// Remove the default `border-radius` that macOS Chrome adds.
+//
+// Details at https://github.com/twbs/bootstrap/issues/24093
+button {
+  border-radius: 0;
 }
 
 // Work around a Firefox/IE bug where the transparent `button` background
