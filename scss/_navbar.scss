@@ -74,13 +74,6 @@
     position: static;
     float: none;
   }
-
-  .dropdown-toggle {
-    &::after {
-      border-top: $caret-width solid;
-      border-bottom: 0;
-    }
-  }
 }
 
 
