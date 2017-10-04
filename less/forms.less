@@ -36,8 +36,8 @@ legend {
 label {
   display: inline-block;
   max-width: 100%; // Force IE8 to wrap long content (see https://github.com/twbs/bootstrap/issues/13141)
+  margin-bottom: 4px;
 }
-// TODO remove tw-select-secondary once launched in styleguide
 label,
 .secondary {
   font-size: @control-label-font-size;
@@ -235,8 +235,11 @@ input[type="search"] {
     margin-bottom: 2px;
   }
 
-  &:focus-within .control-label {
-    color: @control-label-focus;
+  &:focus-within {
+    .control-label,
+    > label {
+      color: @control-label-focus;
+    }
   }
 }
 .row-equal-height > [class*="col-"] > .form-group {
@@ -253,7 +256,7 @@ input[type="search"] {
   position: relative;
   display: block;
   margin-top: 0;
-  margin-bottom: (@padding-base-vertical * 1.5);
+  // margin-bottom: (@padding-base-vertical * 1.5);
 
   label {
     min-height: (@line-height-computed * 2); // Ensure the input doesn't jump when there is no text
@@ -262,7 +265,13 @@ input[type="search"] {
     font-weight: normal;
     cursor: pointer;
   }
+
 }
+.radio + .radio,
+.checkbox + .checkbox {
+  margin-top: (@padding-base-vertical * 1.5);
+}
+
 .radio input[type="radio"],
 .radio-inline input[type="radio"],
 .checkbox input[type="checkbox"],
@@ -467,16 +476,95 @@ input[type="checkbox"] {
   line-height: @input-height-small;
 }
 
+// Focus state
+.focus,
+.has-focus {
+  .control-label {
+    color: @brand-light-blue;
+  }
+  .input-group-addon {
+    border-color: @input-border-focus;
+    &:hover {
+      border-color: @input-border-focus;
+    }
+  }
+}
+
+
+// Help text
+//
+// Apply to any element you wish to create light text for placement immediately
+// below a form control. Use for general help, formatting, or instructional text.
+
+.help-block,
+.error-messages {
+  margin-top: 12px;
+  margin-bottom: 4px;
+  border-width: 0;
+  border-style: solid;
+  border-radius: 3px;
+  padding: 4px 16px 3px;
+  font-size: @font-size-small;
+  line-height: @line-height-computed;
+  transition:
+    border-color 0.15s ease-in-out,
+    background-color 0.15s ease-in-out;
+
+  a {
+    color: inherit;
+  }
+}
+
+.help-block {
+  color: @brand-grey-plus-10;
+  border-color: @input-border;
+  background-color: @brand-smoke-plus-20;
+  display: block;
+
+  .arrow(10px);
+}
+
+.focus, // TODO legacy, remove.
+.has-focus {
+  .alert {
+    border-color: @state-info-border;
+  }
+}
+
 // Feedback states
 .has-success {
-  .form-control-validation(@state-success-text; @state-success-text; @state-success-text-hover; @state-success-bg);
+  .form-control-validation(
+    @state-success-text;
+    @state-success-border;
+    @state-success-border-hover;
+    @state-success-bg
+  );
+}
+.has-info {
+  .form-control-validation(
+    @state-info-text;
+    @state-info-border;
+    @state-info-border-hover;
+    @brand-smoke-plus-20
+  );
 }
 .has-warning {
-  .form-control-validation(@state-warning-text; @state-warning-text; @state-warning-text-hover;  @state-warning-bg);
+  .form-control-validation(
+    @state-warning-text;
+    @state-warning-border;
+    @state-warning-border-hover;
+    @state-warning-bg
+  );
 }
 .has-error {
-  .form-control-validation(@state-danger-text; @state-danger-text; @state-danger-text-hover;  @state-danger-bg);
+  .form-control-validation(
+    @state-danger-text;
+    @state-danger-border;
+    @state-danger-border-hover;
+    @state-danger-bg
+  );
 }
+
 
 // Reposition feedback icon if input has visible label above
 .has-feedback label {
@@ -489,20 +577,6 @@ input[type="checkbox"] {
   }
 }
 
-
-// Help text
-//
-// Apply to any element you wish to create light text for placement immediately
-// below a form control. Use for general help, formatting, or instructional text.
-
-.help-block {
-  display: block; // account for any element using help-block
-  margin-top: 4px;
-  margin-bottom: 8px;
-  color: @gray-light; // lighten the text some for contrast
-  font-size: @font-size-small;
-  line-height: 20px;
-}
 
 
 // Inline forms
@@ -660,11 +734,11 @@ input[type="checkbox"] {
 @import "checkbox-radio.less";
 
 .input-group .input-group-btn + input {
-    border-left: 0px solid transparent;
+  border-left: 0px solid transparent;
 }
 
 .input-group-addon {
-    color: @gray-light;
+  color: @gray-light;
 }
 
 
@@ -675,225 +749,200 @@ input[type="checkbox"] {
 }
 
 .label {
-    padding-top: 0.25em;
-    position: relative;
-    top: -3px;
+  padding-top: 0.25em;
+  position: relative;
+  top: -3px;
 
-    .label-default {
-        color: @gray-light;
-        background-color: @brand-smoke-plus-10;
-    }
+  .label-default {
+    color: @gray-light;
+    background-color: @brand-smoke-plus-10;
+  }
 }
 
 .btn,
 .form-control {
-    &:focus {
-        outline: none;
-    }
+  &:focus {
+    outline: none;
+  }
 }
 
 .form-control {
-    font-weight: @font-weight-normal;
+  font-weight: @font-weight-normal;
+
+  &:focus {
+    border-color: @input-border-focus;
+  }
 }
 
 .form-group {
-    position: relative;
-    font-size: @font-size-small;
+  position: relative;
+  font-size: @font-size-small;
 }
 
 .form-control {
-    + .text-muted,
-    + .text-primary,
-    + .text-success,
-    + .text-info,
-    + .text-warning,
-    + .text-danger {
-        margin-top: @padding-base-vertical;
-        font-size: 12px;
-        line-height: 16px;
-    }
+  + .text-muted,
+  + .text-primary,
+  + .text-success,
+  + .text-info,
+  + .text-warning,
+  + .text-danger {
+    margin-top: @padding-base-vertical;
+    font-size: 12px;
+    line-height: 16px;
+  }
 }
 
 .form-group .row {
-    margin-left: -6px;
-    margin-right: -6px;
+  margin-left: -6px;
+  margin-right: -6px;
 
-    [class*="col-"] {
-        padding-left: 6px;
-        padding-right: 6px;
-    }
+  [class*="col-"] {
+    padding-left: 6px;
+    padding-right: 6px;
+  }
 }
 
 @media (max-width: @screen-xs-max) {
-    .form-group .row [class*="col-sm-"] {
-        margin-bottom: 0;
+  .form-group .row [class*="col-sm-"] {
+    margin-bottom: 0;
 
-        .form-control,
-        .btn-input {
-            margin-bottom: (@padding-base-vertical * 1.5);
-        }
+    .form-control,
+    .btn-input {
+      margin-bottom: (@padding-base-vertical * 1.5);
     }
+  }
 }
 @media (max-width: @screen-sm-max) {
-    .form-group .row [class*="col-md-"] {
-        margin-bottom: 0;
+  .form-group .row [class*="col-md-"] {
+    margin-bottom: 0;
 
-        .form-control,
-        .btn-input {
-            margin-bottom: (@padding-base-vertical * 1.5);
-        }
+    .form-control,
+    .btn-input {
+      margin-bottom: (@padding-base-vertical * 1.5);
     }
+  }
 }
 @media (max-width: @screen-md-max) {
-    .form-group .row [class*="col-lg-"] {
-        margin-bottom: 0;
+  .form-group .row [class*="col-lg-"] {
+    margin-bottom: 0;
 
-        .form-control,
-        .btn-input {
-            margin-bottom: (@padding-base-vertical * 1.5);
-        }
+    .form-control,
+    .btn-input {
+      margin-bottom: (@padding-base-vertical * 1.5);
     }
+  }
 }
 
 @media (max-width: @screen-lg-max) {
-    .form-group .row [class*="col-xl-"] {
-        margin-bottom: 0;
+  .form-group .row [class*="col-xl-"] {
+    margin-bottom: 0;
 
-        .form-control,
-        .btn-input {
-            margin-bottom: (@padding-base-vertical * 1.5);
-        }
-    }
-}
-:not(.has-error).focus {
-    .control-label {
-        color: @brand-light-blue;
-    }
     .form-control,
-    .input-group-addon,
     .btn-input {
-        border-color: @input-border-focus;
-        &:hover {
-            border-color: @input-border-focus;
-        }
+      margin-bottom: (@padding-base-vertical * 1.5);
     }
+  }
 }
 
 @media (min-width: @screen-sm-min) {
-    fieldset .form-group:nth-of-type(odd) {
-        clear: left;
-    }
+  fieldset .form-group:nth-of-type(odd) {
+    clear: left;
+  }
 }
 
 .input-group-addon {
-    .transition(~"border-color ease-in-out .15s");
+  .transition(~"border-color ease-in-out .15s");
 }
 
 .checkbox,
 .radio {
+  > label {
+    font-size: @font-size-base;
+
+    display: block;
+    cursor: pointer;
+
+    line-height: 24px;
+    padding-top: 11px;
+    padding-bottom: 11px;
+    padding-right: 16px;
+
+    color: @input-color;
+    background-color: @brand-white;
+    border: 1px solid @brand-smoke;
+    border-radius: @border-radius-base;
+
+    .transition(border 0.15s ease-in-out, background-color 0.15s ease-in-out;);
+
+    &:hover {
+      border-color: @input-border-hover;
+    }
+    &.focus,
+    &.focus:hover,
+    &.has-focus,
+    &.has-focus:hover,
+    &:focus-within {
+      border-color: @input-border-focus;
+    }
+  }
+
+  &[disabled],
+  &[readonly],
+  fieldset[disabled] &,
+  &.disabled,
+  &.readonly {
+    label {
+      color: @input-color-disabled;
+      border-color: @input-border-disabled;
+      background-color: @input-bg-disabled;
+    }
+  }
+
+  &.checkbox-lg,
+  &.radio-lg {
     > label {
-        font-size: @font-size-base;
+      min-height: 72px;
 
+      small,
+      .small {
         display: block;
-        cursor: pointer;
-
-        line-height: 24px;
-        padding-top: 11px;
-        padding-bottom: 11px;
-        padding-right: 16px;
-
-        color: @input-color;
-        background-color: @brand-white;
-        border: 1px solid @brand-smoke;
-        border-radius: @border-radius-base;
-
-        .transition(border 0.15s ease-in-out, background-color 0.15s ease-in-out;);
-
-        &:hover {
-            border-color: @input-border-hover;
-            background-color: @brand-smoke-plus-20;
-        }
-        &.focus,
-        &.focus:hover {
-            border-color: @input-border-focus;
-            background-color: @brand-smoke-plus-20;
-        }
+        font-size: @font-size-small;
+        color: @text-secondary-color;
+      }
     }
-
-    &.has-success {
-        > label:not(.disabled) {
-            border-color: @state-success-text;
-            color: @input-color;
-        }
-    }
-    &.has-warning {
-        > label:not(.disabled) {
-            border-color: @state-warning-text;
-            color: @input-color;
-        }
-    }
-    &.has-error {
-        > label:not(.disabled) {
-            border-color: @state-danger-text;
-            color: @input-color;
-        }
-    }
-
-    &[disabled],
-    &[readonly],
-    fieldset[disabled] &,
-    &.disabled,
-    &.readonly {
-        label {
-            color: @input-color-disabled;
-            border-color: @input-border-disabled;
-            background-color: @input-bg-disabled;
-        }
-    }
-
-    &.checkbox-lg,
-    &.radio-lg {
-        > label {
-            min-height: 72px;
-
-            small,
-            .small {
-                display: block;
-                font-size: @font-size-small;
-                color: @text-secondary-color;
-            }
-        }
-    }
-}
-/* If a radio group has an error all section are invalid */
-.has-error {
-    .radio > label {
-        border-color: @state-danger-text;
-        color: @input-color;
-    }
+  }
 }
 
 .disabled .checkbox,
 .checkbox.disabled,
 .disabled .radio,
 .radio.disabled {
-    > label,
-    > label:hover {
-        border-color: @input-border-disabled;
-        color: @input-color-disabled;
-    }
+  > label,
+  > label:hover {
+    border-color: @input-border-disabled;
+    color: @input-color-disabled;
+  }
 }
 
 .error-messages {
-	display: none;
-    color: @state-danger-text;
-    margin-top: 4px;
-    font-size: @font-size-small;
-    line-height: 20px;
+  display: none;
+  color: @state-danger-text;
+  background-color: @state-danger-bg;
+  font-size: @font-size-small;
+  line-height: 24px;
+  position: relative;
+  .arrow-pointer(@alert-arrow-width);
+
+  .form-group & {
+    border-radius: @border-radius-base;
+    border-width: 0;
+    margin-top: 12px;
+  }
+  .has-error & {
+    display: block;
+  }
 }
-.has-error .error-messages {
-	display: block;
-}
+
 
 .error-required,
 .error-pattern,
@@ -911,7 +960,7 @@ input[type="checkbox"] {
 .error-week,
 .error-month,
 .error-datetimelocal {
-    display: none;
+  display: none;
 }
 .ng-invalid-required ~ .error-messages > .error-required,
 .ng-invalid-pattern ~ .error-messages > .error-pattern,
@@ -929,9 +978,27 @@ input[type="checkbox"] {
 .ng-invalid-week ~ .error-messages > .error-week,
 .ng-invalid-month ~ .error-messages > .error-month,
 .ng-invalid-datetimelocal ~ .error-messages > .error-datetimelocal {
-	display: block;
+  display: block;
+}
+.ng-invalid-required ~ .alert-danger > .error-required,
+.ng-invalid-pattern ~ .alert-danger > .error-pattern,
+.ng-invalid-minlength ~ .alert-danger > .error-minlength,
+.ng-invalid-maxlength ~ .alert-danger > .error-maxlength,
+.ng-invalid-min ~ .alert-danger > .error-min,
+.ng-invalid-max ~ .alert-danger > .error-max,
+.ng-invalid-async ~ .alert-danger > .error-async,
+.ng-invalid-number ~ .alert-danger > .error-number,
+.ng-invalid-date ~ .alert-danger > .error-date,
+.ng-invalid-time ~ .alert-danger > .error-time,
+.ng-invalid-datetime ~ .alert-danger > .error-datetime,
+.ng-invalid-email ~ .alert-danger > .error-email,
+.ng-invalid-url ~ .alert-danger > .error-url,
+.ng-invalid-week ~ .alert-danger > .error-week,
+.ng-invalid-month ~ .alert-danger > .error-month,
+.ng-invalid-datetimelocal ~ .alert-danger > .error-datetimelocal {
+  display: block;
 }
 
 .form-control-placeholder {
-    color: @input-color-placeholder;
+  color: @input-color-placeholder;
 }

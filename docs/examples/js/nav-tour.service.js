@@ -71,7 +71,16 @@
 			trigger(elementId, options)
 		};
 
-		// Add a tour to show up later
+		/**
+		 * @elementId The HTML id of the element to point at
+		 * @position where in relation to that element should it be
+		 * @title title of the popover
+		 * @content message content for the popover
+		 * @image optional image to show
+		 * @ctaLink optional link which will appear as a button CTA
+		 * @ctaLabel aoptional label for the CTA button
+		 * @after Do not show this tour until after a given date
+		 */
 		this.addSimpleTour = function(elementId, position, title, content, image, ctaLink, ctaLabel, after) {
 			if ($cookies.getObject('twFeatureTour')) {
 				console.log("tour already present");

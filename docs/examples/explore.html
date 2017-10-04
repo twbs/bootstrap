@@ -9,10 +9,13 @@
 		href="../dist/css/bootstrap.min.css" />
 	<link type="text/css" rel="stylesheet"
 		href="http://transferwise.github.io/styleguide-components/components/currency-flags/dist/currency-flags.min.css" />
+	<link type="text/css" rel="stylesheet"
+		href="scratch.css" />
 
 	<script src="../assets/js/jquery.js"></script>
 	<script src="../assets/js/angular.js"></script>
-	<script src="../assets/js/styleguide-components.js"></script>
+	<!--<script src="../assets/js/styleguide-components.js"></script>-->
+	<script src="//localhost/styleguide-components/dist/js/styleguide-components.js"></script>
 
 	<script src="../dist/js/bootstrap.min.js"></script>
 
@@ -31,11 +34,12 @@
 
 		angular.module('ExampleApp')
 		.controller('PageController', [
+			'$scope',
 			'SelectOptionsService',
 			PageController
 		]);
 
-		function PageController(SelectOptionsService) {
+		function PageController($scope, SelectOptionsService) {
 			var $ctrl = this;
 			$ctrl.options = SelectOptionsService;
 
@@ -56,6 +60,25 @@
 				dropdownSize: 'lg',
 				buttonSize: 'lg'
 			};
+
+			$ctrl.isWarning = function($event) {
+				console.log("warning");
+				if ($ctrl.card && $ctrl.card.length > 4) {
+					$ctrl.warning = true;
+				} else {
+					$ctrl.warning = false;
+				}
+			};
+			/*
+			$scope.$watch('$ctrl.card', function(newValue, oldValue) {
+				console.log(newValue);
+				if (newValue && viewValue.length > 4) {
+					$ctrl.warning = true;
+				} else {
+					$ctrl.warning = false;
+				}
+			});
+			*/
 		}
 	})(window.angular);
 	</script>
@@ -124,13 +147,37 @@
 						</div>
 						<form name="testForm">
 							<fieldset class="row">
-								<div class="form-group col-md-6">
-									<label class="control-label">Label for input</label>
-									<input class="form-control" placeholder="Always use placeholders" tw-focusable  />
+								<div class="form-group col-md-6"
+									ng-class="{ 'has-warning': $ctrl.warning }">
+									<label class="control-label">Card number</label>
+									<input class="form-control"
+										placeholder="The long number on the front of the card"
+										ng-model="$ctrl.card"
+										ng-change="$ctrl.isWarning($event)"
+										ng-minlength="16"
+										ng-maxlength="20"
+										ng-keydown="$ctrl.isWarning($event)"
+										tw-focusable
+										tw-validation
+										tw-text-format="**** **** **** **** ****" />
+									<div class="alert alert-danger error-messages">
+										<div class="error-minlength">The card number is too short</div>
+										<div class="error-maxlength">The card number is too long</div>
+									</div>
+									<div class="alert alert-warning">
+										This card may incur extra fees <a href="">Learn more</a>
+									</div>
+									<div class="alert alert-focus">
+										Card numbers are either <strong>16 or 20 digits</strong> long
+									</div>
 								</div>
 								<div class="form-group col-md-6">
 									<label class="control-label">Sentence case labels</label>
-									<input class="form-control" placeholder="Sentence case placeholders"  />
+									<input
+										ng-keydown="$ctrl.isWarning($event)"
+										class="form-control"
+										placeholder="Sentence case placeholders"
+										tw-focusable  />
 									<div class="help-block">Short help text</div>
 								</div>
 								<div class="form-group col-md-6">
@@ -146,9 +193,14 @@
 										<div>Error messages appear beneath</div>
 									</div>
 								</div>
-								<div class="form-group col-md-6 col-md-offset-6">
+								<div class="form-group col-md-6 col-md-offset-6 has-error">
 									<label class="control-label">Date controls</label>
-									<tw-date ng-model="ctrl.date" tw-focusable></tw-date>
+									<tw-date ng-model="ctrl.date" tw-focusable tw-validation class="ng-invalid-required"
+										ng-max="2017-01-01"
+										ng-required="true"></tw-date>
+									<div class="error-messages">
+										<div class="error-required">Required</div>
+									</div>
 								</div>
 							</fieldset>
 							<fieldset>
@@ -178,7 +230,7 @@
 													<button class="btn btn-addon">Go</button>
 												</span>
 											</div>
-											<div class="help-block">Help text here!</div>
+											<div class="alert alert-focus alert-detach">Help text here!</div>
 										</div>
 									</div>
 									<div class="form-group col-md-6">

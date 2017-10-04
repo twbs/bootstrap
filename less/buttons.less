@@ -389,18 +389,21 @@ input[type="button"] {
 
 /* TODO input-inverse is deprecated, remove after styleguide-components updated */
 .btn-input-inverse,
-.btn-addon  {
+.btn-addon {
   .button-variant(
-      #FFF;
-      #FFF;
-      @brand-navy-minus-10;
-      @brand-navy-minus-20;
-      @brand-navy-minus-20;
-      @brand-navy-minus-10;
-      @brand-navy-minus-20;
-      @brand-navy-minus-20;
-      #FFF
+    #FFF;
+    #FFF;
+    @brand-navy-minus-10;
+    @brand-navy-minus-20;
+    @brand-navy-minus-20;
+    @brand-navy-minus-10;
+    @brand-navy-minus-20;
+    @brand-navy-minus-20;
+    #FFF
   );
+  &:focus {
+    outline: thin dotted rgba(255,255,255,0.7);
+  }
 }
 
 /* TODO Remove bootstrap-select rules after checking tw-currency-select */

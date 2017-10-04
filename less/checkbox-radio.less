@@ -1,28 +1,29 @@
 .radio,
 .checkbox {
-    > label {
-      position: relative;
-      padding-left: 48px;
+  border-color: @input-border;
+  > label {
+    position: relative;
+    padding-left: 48px;
 
-      &:active:hover {
-        border-color: @input-border-focus;
-
-        input[type=radio],
-        input[type=checkbox] {
-          + .input-replacement {
-            border-color: @input-border-focus;
-          }
-        }
-      }
+    &:active:hover {
+      border-color: @input-border-focus;
 
       input[type=radio],
       input[type=checkbox] {
-        display: block;
-        position: absolute;
-        top: 13px;
-        left: 40px;
+        + .input-replacement {
+          border-color: @input-border-focus;
+        }
       }
     }
+
+    input[type=radio],
+    input[type=checkbox] {
+      display: block;
+      position: absolute;
+      top: 13px;
+      left: 40px;
+    }
+  }
 }
 
 .tw-checkbox-button {
@@ -37,7 +38,7 @@
   vertical-align: middle;
   text-align: center;
 
-  transition: all 0.15s ease-in-out;
+  transition: border 0.15s ease-in-out;
 
   .tw-checkbox-check {
     width: 20px;
@@ -48,8 +49,15 @@
     color: @brand-white;
   }
 
+  .checkbox:hover &,
+  &:hover {
+    border-color: @input-border-hover;
+  }
+
   &:focus,
   &.focus,
+  &:focus:hover,
+  &.focus:hover,
   &:active,
   &.active {
     border-color: @input-border-focus;
@@ -68,7 +76,7 @@
 
   &[disabled] {
     background-color: @input-bg-disabled;
-    border-color: @input-border-disabled;
+    border-color: @input-border-disabled !important;
     cursor: @cursor-disabled;
 
     .tw-checkbox-check {
@@ -90,8 +98,6 @@
   }
 }
 
-
-
 .tw-radio-button {
   width: 24px;
   height: 24px;
@@ -104,6 +110,8 @@
   padding: 0;
   vertical-align: middle;
 
+  transition: border 0.15s ease-in-out;
+
   .tw-radio-check {
     border-radius: 50%;
     text-align: center;
@@ -111,6 +119,11 @@
     height: 0px;
     margin: 0 0 0 11px;
     transition: all 0.15s ease-in-out;
+  }
+
+  .radio:hover &,
+  &:hover {
+    border-color: @input-border-hover;
   }
 
   &:focus,
@@ -135,7 +148,7 @@
   }
   &[disabled] {
     background-color: @input-bg-disabled;
-    border-color: @input-border-disabled;
+    border-color: @input-border-disabled !important;
     cursor: @cursor-disabled;
 
     .tw-radio-check {
@@ -180,7 +193,6 @@
 .form-inline .tw-radio-button {
   vertical-align: bottom;
 }
-
 
 .form-horizontal {
   .checkbox,

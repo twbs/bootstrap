@@ -10,6 +10,8 @@
   padding: @spacing-1-mobile;
   margin-bottom: @spacing-1-mobile;
   border-radius: @alert-border-radius;
+  color: @brand-grey-plus-10;
+  background-color: @brand-smoke-plus-20;
 
   // Headings for larger alerts
   h4, .h4, h5, .h5 {
@@ -29,6 +31,9 @@
   }
 }
 
+.arrow {
+  .arrow(@alert-arrow-width);
+}
 
 @media (min-width: @screen-sm-min) {
   .alert {
@@ -58,6 +63,43 @@
   }
 }
 
+// Alerts within form-groups
+//
+// Used for validation, help messages etc.
+.form-group {
+  .alert {
+    position: relative; // Elevate over input
+    padding: 4px 16px 3px;
+    margin-top: -2px;
+    border-style: solid;
+    border-color: @input-border;
+    border-width: 0 1px 1px 1px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    margin-bottom: 0;
+    transition: border-color 0.15s ease-in-out;
+
+    .arrow(@alert-arrow-width);
+  }
+
+  .radio ~ .alert,
+  .checkbox ~ .alert,
+  .alert-detach {
+    border-width: 0;
+    margin-top: 12px;
+    border-radius: 3px;
+  }
+
+  .alert-focus,
+  .alert-info,
+  .alert-success,
+  .alert-warning,
+  .alert-danger {
+    display: none;
+  }
+}
+
+
 // Alternate styles
 //
 // Generate contextual modifier classes for colorizing the alert.
@@ -76,4 +118,43 @@
 
 .alert-danger {
   .alert-variant(@alert-danger-bg; @alert-danger-border; @alert-danger-text; @alert-danger-text-hover);
+}
+
+
+.alert-focus {
+  border-color: @input-border;
+}
+.form-group:focus-within .alert-focus,
+input:focus ~ .alert-focus,
+.btn:focus ~ .alert-focus {
+  display: block;
+  border-color: @alert-info-border
+}
+
+.alert-sm {
+  padding: 4px 16px;
+  font-size: @font-size-small;
+}
+
+.focus .alert-focus, // Backwards compatible
+.has-focus .alert-focus,
+.has-info .alert-info,
+.has-warning .alert-warning,
+.has-success .alert-success,
+.has-error .alert-danger {
+  display: block;
+}
+
+// Ensure we only show one type at a time
+.has-info .alert-focus,
+.has-warning .alert-focus,
+.has-warning .alert-info,
+.has-success .alert-focus,
+.has-success .alert-info,
+.has-success .alert-warning,
+.has-error .alert-focus,
+.has-error .alert-info,
+.has-error .alert-warning,
+.has-error .alert-success {
+  display: none;
 }

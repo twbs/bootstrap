@@ -1,0 +1,42 @@
+.arrow(@size: 10px) {
+  position: relative;
+  .arrow-pointer(@size);
+  .arrow-positions(@size);
+}
+
+.arrow-pointer(@size: 10px) {
+  &:before {
+    content: " ";
+    position: absolute;
+    display: block;
+    width: @size;
+    height: @size;
+    left: (2 * @size);
+    top: (@size / -2);
+    transform: rotate(45deg);
+    background-color: inherit;
+  }
+}
+
+.arrow-positions(@size: 10px) {
+  &.arrow-center:before {
+    left: 50%;
+    margin-left: (@size / -2);
+  }
+  &.arrow-top:before {
+    top: (@size / -2);
+    bottom: auto;
+  }
+  &.arrow-left:before {
+    left: (2 * @size);
+    right: auto;
+  }
+  &.arrow-right:before {
+    left: auto;
+    right: (2 * @size);
+  }
+  &.arrow-bottom:before {
+    top: auto;
+    bottom: (@size / -2);
+  }
+}

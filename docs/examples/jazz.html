@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Brand jazz Example</title>
+	<meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+
+	<link type="text/css" rel="stylesheet"
+		href="../dist/css/bootstrap.min.css" />
+	<link type="text/css" rel="stylesheet"
+		href="http://transferwise.github.io/styleguide-components/components/currency-flags/dist/currency-flags.min.css" />
+	<link type="text/css" rel="stylesheet"
+		href="scratch.css" />
+
+	<script src="../assets/js/jquery.js"></script>
+	<script src="../assets/js/angular.js"></script>
+	<!--<script src="../assets/js/styleguide-components.js"></script>-->
+	<script src="//localhost/styleguide-components/dist/js/styleguide-components.js"></script>
+
+	<script src="../dist/js/bootstrap.min.js"></script>
+
+	<script>
+	angular.module('ExampleApp', ['tw.styleguide-components']);
+	</script>
+
+	<script src="js/nav.directive.js"></script>
+	<script src="js/select-options.service.js"></script>
+	<script src="js/next-cards.directive.js"></script>
+	<script src="js/repeat-transfer.directive.js"></script>
+	<script src="js/footer.directive.js"></script>
+	<style>
+	body {
+		padding: 48px;
+	}
+	.jazz-container {
+		/*transform: rotate(23.5deg);*/
+		transform-origin: 0 100%;
+	}
+	.jazz-start,
+	.jazz-conversion,
+	.jazz-data,
+	.jazz-end {
+		width: 5vw;
+		background-color: #37517e;
+		color: #FFF;
+	}
+	.jazz-start,
+	.jazz-conversion,
+	.jazz-data {
+		/*transform: skewY(-23.5deg);*/
+		transform: skew(-23deg);
+		margin-bottom: 5vw;
+	}
+	.jazz-start {
+		height: 5vw;
+	}
+	.jazz-conversion {
+		height: 45vw;
+		margin-left: 13vw;
+	}
+	.jazz-data {
+		height: 15vw;
+		margin-left: 28vw;
+	}
+	.jazz-end {
+		height: 6vw;
+		width: 6vw;
+		/*margin-left: -0.5vw;*/
+		margin-left: 33vw;
+		border-radius: 50%;
+		margin-bottom: 3vw;
+	}
+
+	/*
+	.jazz-start,
+	.jazz-conversion,
+	.jazz-data,
+	.jazz-end {
+		width: 48px;
+		background-color: #37517e;
+		margin-top: 48px;
+	}
+	.jazz-start,
+	.jazz-conversion,
+	.jazz-data {
+		transform: skewY(-23.5deg);
+	}
+	.jazz-start {
+		height: 48px;
+	}
+	.jazz-conversion {
+		height: 288px;
+	}
+	.jazz-data {
+		height: 96px;
+	}
+	.jazz-end {
+		height: 48px;
+		border-radius: 50%;
+	}
+	*/
+	</style>
+</head>
+<body ng-app="ExampleApp">
+	<div class="well">
+		<div class="jazz-container">
+			<div class="jazz-end"></div>
+			<div class="jazz-data"></div>
+			<div class="jazz-conversion"></div>
+			<div class="jazz-start"></div>
+		</div>
+	</div>
+</body>
+</html>

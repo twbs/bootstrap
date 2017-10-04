@@ -1,5 +1,5 @@
 <div>
-	<div class="form-group form-group-lg m-b-0">
+	<div class="form-group form-group-lg m-b-0 has-warnin">
 		<label class="control-label">Send</label>
 		<tw-amount-currency-select
 			ng-model="$ctrl.sourceAmount"
@@ -9,7 +9,7 @@
 		</tw-amount-currency-select>
 	</div>
 	<fees-sequence expand="ctrl.expand"></fees-sequence>
-	<div class="form-group form-group-lg">
+	<div class="form-group form-group-lg has-rror feedback-detached m-b-0">
 		<label class="control-label">Receive</label>
 		<tw-amount-currency-select
 			ng-model="$ctrl.targetAmount"
@@ -17,5 +17,9 @@
 			currency="$ctrl.targetCurrency"
 			size="lg">
 		</tw-amount-currency-select>
+
+	</div>
+	<div class="has-error feedback-detached">
+		<div class="error-block">This is a problem for one reason or another</div>
 	</div>
 </div>

@@ -1836,14 +1836,18 @@
     <input id="input-@state-success-border" type="text" value="@brand-green" data-var="@state-success-border" class="form-control"/>
   </div>
   <div class="col-xs-4">
+    <label for="input-@state-success-border-hover">@state-success-border-hover</label>
+    <input id="input-@state-success-border-hover" type="text" value="@brand-green-minus-20" data-var="@state-success-border-hover" class="form-control"/>
+  </div>
+  <div class="col-xs-4">
     <label for="input-@state-info-text">@state-info-text</label>
     <input id="input-@state-info-text" type="text" value="@brand-light-blue" data-var="@state-info-text" class="form-control"/>
   </div>
+  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@state-info-text-hover">@state-info-text-hover</label>
     <input id="input-@state-info-text-hover" type="text" value="@brand-light-blue-minus-10" data-var="@state-info-text-hover" class="form-control"/>
   </div>
-  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@state-info-bg">@state-info-bg</label>
     <input id="input-@state-info-bg" type="text" value="@brand-light-blue-wash" data-var="@state-info-bg" class="form-control"/>
@@ -1852,15 +1856,20 @@
     <label for="input-@state-info-border">@state-info-border</label>
     <input id="input-@state-info-border" type="text" value="@brand-light-blue" data-var="@state-info-border" class="form-control"/>
   </div>
-  <div class="col-xs-4">
-    <label for="input-@state-warning-text">@state-warning-text</label>
-    <input id="input-@state-warning-text" type="text" value="@brand-orange" data-var="@state-warning-text" class="form-control"/>
-  </div>
   <div class="clearfix"></div>
   <div class="col-xs-4">
-    <label for="input-@state-warning-text-hover">@state-warning-text-hover</label>
-    <input id="input-@state-warning-text-hover" type="text" value="@brand-orange-minus-10" data-var="@state-warning-text-hover" class="form-control"/>
+    <label for="input-@state-info-border-hover">@state-info-border-hover</label>
+    <input id="input-@state-info-border-hover" type="text" value="@brand-light-blue-minus-20" data-var="@state-info-border-hover" class="form-control"/>
   </div>
+  <div class="col-xs-4">
+    <label for="input-@state-warning-text">@state-warning-text</label>
+    <input id="input-@state-warning-text" type="text" value="@brand-orange-minus-10" data-var="@state-warning-text" class="form-control"/>
+  </div>
+  <div class="col-xs-4">
+    <label for="input-@state-warning-text-hover">@state-warning-text-hover</label>
+    <input id="input-@state-warning-text-hover" type="text" value="@brand-orange-minus-20" data-var="@state-warning-text-hover" class="form-control"/>
+  </div>
+  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@state-warning-bg">@state-warning-bg</label>
     <input id="input-@state-warning-bg" type="text" value="@brand-orange-wash" data-var="@state-warning-bg" class="form-control"/>
@@ -1868,6 +1877,10 @@
   <div class="col-xs-4">
     <label for="input-@state-warning-border">@state-warning-border</label>
     <input id="input-@state-warning-border" type="text" value="@brand-orange" data-var="@state-warning-border" class="form-control"/>
+  </div>
+  <div class="col-xs-4">
+    <label for="input-@state-warning-border-hover">@state-warning-border-hover</label>
+    <input id="input-@state-warning-border-hover" type="text" value="@brand-orange-minus-20" data-var="@state-warning-border-hover" class="form-control"/>
   </div>
   <div class="clearfix"></div>
   <div class="col-xs-4">
@@ -1886,6 +1899,10 @@
   <div class="col-xs-4">
     <label for="input-@state-danger-border">@state-danger-border</label>
     <input id="input-@state-danger-border" type="text" value="@brand-red" data-var="@state-danger-border" class="form-control"/>
+  </div>
+  <div class="col-xs-4">
+    <label for="input-@state-danger-border-hover">@state-danger-border-hover</label>
+    <input id="input-@state-danger-border-hover" type="text" value="@brand-red-minus-20" data-var="@state-danger-border-hover" class="form-control"/>
   </div>
 </div>
 <h2 id="tooltips">Tooltips</h2>
@@ -1951,7 +1968,7 @@
   </div>
   <div class="col-xs-4">
     <label for="input-@popover-arrow-width">@popover-arrow-width</label>
-    <input id="input-@popover-arrow-width" type="text" aria-describedby="help-block-@popover-arrow-width" value="9px" data-var="@popover-arrow-width" class="form-control"/>
+    <input id="input-@popover-arrow-width" type="text" aria-describedby="help-block-@popover-arrow-width" value="14px" data-var="@popover-arrow-width" class="form-control"/>
     <p id="help-block-@popover-arrow-width" class="help-block">Popover arrow width</p>
   </div>
   <div class="clearfix"></div>
@@ -2134,7 +2151,7 @@
   </div>
   <div class="col-xs-4">
     <label for="input-@alert-bar-width">@alert-bar-width</label>
-    <input id="input-@alert-bar-width" type="text" value="			  8px" data-var="@alert-bar-width" class="form-control"/>
+    <input id="input-@alert-bar-width" type="text" value="8px" data-var="@alert-bar-width" class="form-control"/>
   </div>
   <div class="clearfix"></div>
   <div class="col-xs-4">
@@ -2209,6 +2226,10 @@
   <div class="col-xs-4">
     <label for="input-@alert-danger-border">@alert-danger-border</label>
     <input id="input-@alert-danger-border" type="text" value="@state-danger-border" data-var="@alert-danger-border" class="form-control"/>
+  </div>
+  <div class="col-xs-4">
+    <label for="input-@alert-arrow-width">@alert-arrow-width</label>
+    <input id="input-@alert-arrow-width" type="text" value="10px" data-var="@alert-arrow-width" class="form-control"/>
   </div>
 </div>
 <h2 id="progress-bars">Progress bars</h2>

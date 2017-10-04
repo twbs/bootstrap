@@ -2,8 +2,9 @@
 .decision {
   padding: 24px 12px 24px 0;
   cursor: pointer;
-  border-top: 1px solid #e2e6e8;
-  border-bottom: 1px solid #e2e6e8;
+  border-top: 1px solid @brand-smoke-plus-10;
+  border-bottom: 1px solid @brand-smoke-plus-10;
+  margin-bottom: 0 !important;
 
   + .decision {
     margin-top: -1px;
@@ -17,35 +18,36 @@
   }
 
   .caret {
-    color: #00b9ff;
+    color: @brand-light-blue;
     padding-bottom: 8px;
   }
 
-  @media (max-width: 479px) {
-    .media-left {
-      display: none;
-    }
+  .media-left {
+    display: none;
   }
 
-  @media (min-width: 480px) {
+  @media (min-width: @screen-xs) {
     padding: 24px 24px 24px 22px;
-    border-left: 2px solid #fff;
-
+    border-left: 2px solid transparent;
+    
+    .media-left {
+      display: block;
+    }
     &:hover {
-      border-left-color: #00b9ff;
+      border-left-color: @brand-light-blue;
     }
   }
 
   &.disabled {
     opacity: 0.5;
     cursor: disabled;
-    border-left-color: #fff;
+    border-left-color: transparent;
   }
 
   &:hover {
     .tw-checkbox-button,
     .tw-radio-button {
-      border-color: #00b9ff;
+      border-color: @brand-light-blue;
     }
   }
 }

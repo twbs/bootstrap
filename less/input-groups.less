@@ -37,6 +37,15 @@
     &:not(:last-child) {
       border-right: 0;
     }
+
+    border-color: @input-border;
+
+    :hover& {
+      border-color: @input-border-hover;
+    }
+    &:focus {
+      border-color: @input-border-focus;
+    }
   }
 
   .input-group-addon + .form-control {
@@ -234,17 +243,9 @@
   }
 }
 
-.input-group {
-  .form-control:focus {
-    border-color: @input-border;
-
-    :hover& {
-      border-color: @input-border-hover;
-    }
-  }
-}
-
-.focus .input-group {
+.focus .input-group, // TODO deprecate
+.has-focus .input-group,
+.input-group:focus-within {
   .form-control,
   .input-group-addon {
     border-color: @input-border-focus;

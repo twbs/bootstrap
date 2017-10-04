@@ -4,8 +4,9 @@
 // and successes.
 
 .form-control-validation(@text-color: #555; @border-color: #ccc; @border-hover: #aaa; @background-color: #f5f5f5) {
+  border-color: @border-color !important;
+
   // Color the label and help text
-  .help-block,
   .control-label,
   .radio,
   .checkbox,
@@ -14,28 +15,71 @@
   &.radio label,
   &.checkbox label,
   &.radio-inline label,
-  &.checkbox-inline label  {
-    color: @text-color;
+  &.checkbox-inline label,
+  .radio label,
+  .checkbox label,
+  .radio-inline label,
+  .checkbox-inline label,
+  .input-group-addon {
+    color: @text-color !important;
+    border-color: @border-color !important;
   }
+
   // Set the border and box shadow on specific inputs to match
   .form-control,
-  .btn-input {
-    border-color: @border-color;
-    &:hover,
-    &:focus {
-      border-color: @border-hover;
+  .btn-input,
+  .btn-input:active,
+  .btn-input:focus,
+  .btn-input:hover,
+  .input-group-addon,
+  .input-group .form-control:focus,
+  .alert {
+    border-color: @border-color !important;
+  }
+
+  &:hover,
+  &:focus-within {
+    .form-control,
+    &.radio label,
+    &.checkbox label,
+    .btn-input,
+    .input-group-addon,
+    .input-group .form-control:focus,
+    .alert {
+      border-color: @border-hover !important;
     }
   }
-  // Set validation states also for addons
-  .input-group-addon {
-    color: @text-color;
-    border-color: @border-color;
-  }
+
   // Optional feedback icon
   .form-control-feedback {
     color: @text-color;
   }
+
+  .radio,
+  &.checkbox {
+    > label {
+      &:not(.disabled) {
+        border-color: @border-color;
+        color: @input-color;
+      }
+      &:hover,
+      &:focus-within {
+        border-color: @border-hover !important;
+
+        .tw-checkbox-button,
+        .tw-radio-button {
+          border-color: @border-hover !important;
+        }
+      }
+    }
+
+    .tw-checkbox-button,
+    .tw-radio-button {
+      border-color: @border-color;
+    }
+  }
 }
+
 
 
 // Form control focus state
