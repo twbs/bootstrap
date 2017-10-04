@@ -4,21 +4,21 @@
 
 @each $color, $value in $colors {
   .swatch-#{$color} {
-    color: color-yiq($value);
     background-color: #{$value};
+    color: color-yiq($value);
   }
 }
 
 @each $color, $value in $theme-colors {
   .swatch-#{$color} {
-    color: color-yiq($value);
     background-color: #{$value};
+    color: color-yiq($value);
   }
 }
 
 @each $color, $value in $grays {
   .swatch-#{$color} {
-    color: color-yiq($value);
     background-color: #{$value};
+    color: color-yiq($value);
   }
 }
