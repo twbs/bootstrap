@@ -1,7 +1,8 @@
 {
   "env": {
     "es6": false,
-    "qunit": true
+    "qunit": true,
+    "jquery": true
   },
   "globals": {
     "Util": false
