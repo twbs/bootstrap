@@ -315,6 +315,9 @@ $input-btn-padding-y-lg:    .5rem !default;
 $input-btn-padding-x-lg:    1rem !default;
 $input-btn-line-height-lg:  $line-height-lg !default;
 
+$btn-contrast-colors: () !default;
+$btn-contrast-colors: map-merge($contrast-colors, $btn-contrast-colors);
+
 $btn-font-weight:                $font-weight-normal !default;
 $btn-box-shadow:                 inset 0 1px 0 rgba($white,.15), 0 1px 1px rgba($black,.075) !default;
 $btn-focus-box-shadow:           0 0 0 3px rgba(theme-color("primary"), .25) !default;
@@ -653,6 +656,9 @@ $popover-arrow-outer-color:           fade-in($popover-border-color, .05) !defau
 
 
 // Badges
+
+$badge-contrast-colors: () !default;
+$badge-contrast-colors: map-merge($contrast-colors, $badge-contrast-colors);
 
 $badge-font-size:             75% !default;
 $badge-font-weight:           $font-weight-bold !default;

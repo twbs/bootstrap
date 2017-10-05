@@ -53,7 +53,7 @@ fieldset[disabled] a.btn {
 @each $color, $value in $theme-colors {
   .btn-#{$color} {
     @if $value == $white {
-      @include button-variant($value, color-yiq($value, $contrast-colors));
+      @include button-variant($value, color-yiq($value, $btn-contrast-colors));
     } @else {
       @include button-variant($value, $value);
     }
@@ -63,7 +63,7 @@ fieldset[disabled] a.btn {
 @each $color, $value in $theme-colors {
   .btn-outline-#{$color} {
     @if $value == $white {
-      @include button-outline-variant(color-yiq($value, $contrast-colors), $white);
+      @include button-outline-variant(color-yiq($value, $btn-contrast-colors), $white);
     } @else {
       @include button-outline-variant($value, $white);
     }

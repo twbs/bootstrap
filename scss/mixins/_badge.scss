@@ -1,4 +1,4 @@
-@mixin badge-variant($bg, $contrast-colors: $contrast-colors) {
+@mixin badge-variant($bg, $contrast-colors: $badge-contrast-colors) {
   @include color-yiq($bg, $contrast-colors);
   background-color: $bg;
 
