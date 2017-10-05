@@ -684,6 +684,9 @@ $(function () {
     }).on('hidden.bs.modal', function () {
       assert.strictEqual(count, 1, 'show() runs only once')
       done()
-    }).bootstrapModal('show').bootstrapModal('show').bootstrapModal('hide')
+    })
+      .bootstrapModal('show')
+      .bootstrapModal('show')
+      .bootstrapModal('hide')
   })
 })
