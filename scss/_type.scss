@@ -117,7 +117,7 @@ mark,
 .blockquote-footer {
   display: block;
   font-size: 80%; // back to default font-size
-  color: $blockquote-small-color;
+  opacity: $blockquote-footer-opacity;
 
   &::before {
     content: "\2014 \00A0"; // em dash, nbsp
