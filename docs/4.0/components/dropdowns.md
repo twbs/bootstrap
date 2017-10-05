@@ -728,7 +728,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <td>container</td>
       <td>boolean | string | element</td>
       <td>false</td>
-      <td>Appends the dropdown to a specific element. Example: <code>container: 'body'</code>.</td>
+      <td>Appends the dropdown to a specific element. Example: <code>container: 'body'</code>. Allowed only for dropdowns not in a navbar.</td>
     </tr>
   </tbody>
 </table>
