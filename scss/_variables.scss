@@ -447,14 +447,18 @@ $custom-file-border-radius: $input-border-radius !default;
 $custom-file-box-shadow:    $input-box-shadow !default;
 $custom-file-button-color:  $custom-file-color !default;
 $custom-file-button-bg:     $input-group-addon-bg !default;
-$custom-file-text: (
+
+// stylelint-disable function-parentheses-newline-inside, function-comma-newline-after
+$custom-file-text: () !default;
+$custom-file-text: map-merge((
   placeholder: (
     en: "Choose file..."
   ),
   button-label: (
     en: "Browse"
   )
-) !default;
+), $custom-file-text);
+// stylelint-enable function-parentheses-newline-inside, function-comma-newline-after
 
 
 // Form validation
