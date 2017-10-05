@@ -78,6 +78,10 @@ $theme-colors: map-merge((
 // Set a specific jump point for requesting color jumps
 $theme-color-interval: 8% !default;
 
+// Set a specific contrast color to be used for a given color
+// This will override the default behavior of the "color-yiq" function
+$contrast-colors: () !default;
+
 
 // Options
 //
@@ -310,6 +314,12 @@ $input-btn-line-height-sm:  $line-height-sm !default;
 $input-btn-padding-y-lg:    .5rem !default;
 $input-btn-padding-x-lg:    1rem !default;
 $input-btn-line-height-lg:  $line-height-lg !default;
+
+$btn-theme-colors: () !default;
+$btn-theme-colors: map-merge($theme-colors, $btn-theme-colors);
+
+$btn-contrast-colors: () !default;
+$btn-contrast-colors: map-merge($contrast-colors, $btn-contrast-colors);
 
 $btn-font-weight:                $font-weight-normal !default;
 $btn-box-shadow:                 inset 0 1px 0 rgba($white,.15), 0 1px 1px rgba($black,.075) !default;
@@ -650,6 +660,12 @@ $popover-arrow-outer-color:           fade-in($popover-border-color, .05) !defau
 
 // Badges
 
+$badge-theme-colors: () !default;
+$badge-theme-colors: map-merge($theme-colors, $badge-theme-colors);
+
+$badge-contrast-colors: () !default;
+$badge-contrast-colors: map-merge($contrast-colors, $badge-contrast-colors);
+
 $badge-font-size:             75% !default;
 $badge-font-weight:           $font-weight-bold !default;
 $badge-padding-y:             .25em !default;
@@ -696,6 +712,9 @@ $modal-transition:            transform .3s ease-out !default;
 // Alerts
 //
 // Define alert colors, border radius, and padding.
+
+$alert-theme-colors: () !default;
+$alert-theme-colors: map-merge($theme-colors, $alert-theme-colors);
 
 $alert-padding-y:             .75rem !default;
 $alert-padding-x:             1.25rem !default;
