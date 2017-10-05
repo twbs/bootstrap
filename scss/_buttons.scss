@@ -50,7 +50,7 @@ fieldset[disabled] a.btn {
 // Alternate buttons
 //
 
-@each $color, $value in $theme-colors {
+@each $color, $value in $btn-theme-colors {
   .btn-#{$color} {
     @if $value == $white {
       @include button-variant($value, color-yiq($value, $btn-contrast-colors));
@@ -58,9 +58,7 @@ fieldset[disabled] a.btn {
       @include button-variant($value, $value);
     }
   }
-}
 
-@each $color, $value in $theme-colors {
   .btn-outline-#{$color} {
     @if $value == $white {
       @include button-outline-variant(color-yiq($value, $btn-contrast-colors), $white);
