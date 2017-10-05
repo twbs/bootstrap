@@ -1,5 +1,5 @@
-/* global Popper */
-
+import $ from 'jquery'
+import Popper from 'popper.js'
 import Util from './util'
 
 
@@ -10,7 +10,7 @@ import Util from './util'
  * --------------------------------------------------------------------------
  */
 
-const Tooltip = (($) => {
+const Tooltip = (() => {
 
   /**
    * Check for Popper dependency
@@ -184,6 +184,10 @@ const Tooltip = (($) => {
     }
 
     toggle(event) {
+      if (!this._isEnabled) {
+        return
+      }
+
       if (event) {
         const dataKey = this.constructor.DATA_KEY
         let context = $(event.currentTarget).data(dataKey)
@@ -234,8 +238,8 @@ const Tooltip = (($) => {
       if (this._popper !== null) {
         this._popper.destroy()
       }
-      this._popper        = null
 
+      this._popper = null
       this.element = null
       this.config  = null
       this.tip     = null
@@ -415,7 +419,8 @@ const Tooltip = (($) => {
     }
 
     getTipElement() {
-      return this.tip = this.tip || $(this.config.template)[0]
+      this.tip = this.tip || $(this.config.template)[0]
+      return this.tip
     }
 
     setContent() {
@@ -617,18 +622,18 @@ const Tooltip = (($) => {
         config
       )
 
-      if (config.delay && typeof config.delay === 'number') {
+      if (typeof config.delay === 'number') {
         config.delay = {
           show : config.delay,
           hide : config.delay
         }
       }
 
-      if (config.title && typeof config.title === 'number') {
+      if (typeof config.title === 'number') {
         config.title = config.title.toString()
       }
 
-      if (config.content && typeof config.content === 'number') {
+      if (typeof config.content === 'number') {
         config.content = config.content.toString()
       }
 
@@ -698,14 +703,13 @@ const Tooltip = (($) => {
         }
 
         if (typeof config === 'string') {
-          if (data[config] === undefined) {
+          if (typeof data[config] === 'undefined') {
             throw new Error(`No method named "${config}"`)
           }
           data[config]()
         }
       })
     }
-
   }
 
 
@@ -724,6 +728,6 @@ const Tooltip = (($) => {
 
   return Tooltip
 
-})(jQuery)
+})($, Popper)
 
 export default Tooltip

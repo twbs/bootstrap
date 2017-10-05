@@ -81,8 +81,18 @@
   $min: breakpoint-min($lower, $breakpoints);
   $max: breakpoint-max($upper, $breakpoints);
 
-  @media (min-width: $min) and (max-width: $max) {
-    @content;
+  @if $min != null and $max != null {
+    @media (min-width: $min) and (max-width: $max) {
+      @content;
+    }
+  } @else if $max == null {
+    @include media-breakpoint-up($lower) {
+      @content;
+    }
+  } @else if $min == null {
+    @include media-breakpoint-down($upper) {
+      @content;
+    }
   }
 }
 
@@ -98,8 +108,12 @@
       @content;
     }
   } @else if $max == null {
-    @include media-breakpoint-up($name)
+    @include media-breakpoint-up($name) {
+      @content;
+    }
   } @else if $min == null {
-    @include media-breakpoint-down($name)
+    @include media-breakpoint-down($name) {
+      @content;
+    }
   }
 }

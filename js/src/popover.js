@@ -1,3 +1,4 @@
+import $ from 'jquery'
 import Tooltip from './tooltip'
 
 
@@ -8,7 +9,7 @@ import Tooltip from './tooltip'
  * --------------------------------------------------------------------------
  */
 
-const Popover = (($) => {
+const Popover = (() => {
 
 
   /**
@@ -114,7 +115,8 @@ const Popover = (($) => {
     }
 
     getTipElement() {
-      return this.tip = this.tip || $(this.config.template)[0]
+      this.tip = this.tip || $(this.config.template)[0]
+      return this.tip
     }
 
     setContent() {
@@ -162,7 +164,7 @@ const Popover = (($) => {
         }
 
         if (typeof config === 'string') {
-          if (data[config] === undefined) {
+          if (typeof data[config] === 'undefined') {
             throw new Error(`No method named "${config}"`)
           }
           data[config]()
@@ -187,6 +189,6 @@ const Popover = (($) => {
 
   return Popover
 
-})(jQuery)
+})($)
 
 export default Popover

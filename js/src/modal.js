@@ -1,3 +1,4 @@
+import $ from 'jquery'
 import Util from './util'
 
 
@@ -8,7 +9,7 @@ import Util from './util'
  * --------------------------------------------------------------------------
  */
 
-const Modal = (($) => {
+const Modal = (() => {
 
 
   /**
@@ -68,6 +69,7 @@ const Modal = (($) => {
     DATA_TOGGLE        : '[data-toggle="modal"]',
     DATA_DISMISS       : '[data-dismiss="modal"]',
     FIXED_CONTENT      : '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top',
+    STICKY_CONTENT     : '.sticky-top',
     NAVBAR_TOGGLER     : '.navbar-toggler'
   }
 
@@ -111,7 +113,7 @@ const Modal = (($) => {
     }
 
     show(relatedTarget) {
-      if (this._isTransitioning) {
+      if (this._isTransitioning || this._isShown) {
         return
       }
 
@@ -133,6 +135,8 @@ const Modal = (($) => {
 
       this._checkScrollbar()
       this._setScrollbar()
+
+      this._adjustDialog()
 
       $(document.body).addClass(ClassName.OPEN)
 
@@ -425,7 +429,8 @@ const Modal = (($) => {
     }
 
     _checkScrollbar() {
-      this._isBodyOverflowing = document.body.clientWidth < window.innerWidth
+      const rect = document.body.getBoundingClientRect()
+      this._isBodyOverflowing = rect.left + rect.right < window.innerWidth
       this._scrollbarWidth = this._getScrollbarWidth()
     }
 
@@ -439,6 +444,13 @@ const Modal = (($) => {
           const actualPadding = $(element)[0].style.paddingRight
           const calculatedPadding = $(element).css('padding-right')
           $(element).data('padding-right', actualPadding).css('padding-right', `${parseFloat(calculatedPadding) + this._scrollbarWidth}px`)
+        })
+
+        // Adjust sticky content margin
+        $(Selector.STICKY_CONTENT).each((index, element) => {
+          const actualMargin = $(element)[0].style.marginRight
+          const calculatedMargin = $(element).css('margin-right')
+          $(element).data('margin-right', actualMargin).css('margin-right', `${parseFloat(calculatedMargin) - this._scrollbarWidth}px`)
         })
 
         // Adjust navbar-toggler margin
@@ -464,8 +476,8 @@ const Modal = (($) => {
         }
       })
 
-      // Restore navbar-toggler margin
-      $(Selector.NAVBAR_TOGGLER).each((index, element) => {
+      // Restore sticky content and navbar-toggler margin
+      $(`${Selector.STICKY_CONTENT}, ${Selector.NAVBAR_TOGGLER}`).each((index, element) => {
         const margin = $(element).data('margin-right')
         if (typeof margin !== 'undefined') {
           $(element).css('margin-right', margin).removeData('margin-right')
@@ -507,7 +519,7 @@ const Modal = (($) => {
         }
 
         if (typeof config === 'string') {
-          if (data[config] === undefined) {
+          if (typeof data[config] === 'undefined') {
             throw new Error(`No method named "${config}"`)
           }
           data[config](relatedTarget)
@@ -573,6 +585,6 @@ const Modal = (($) => {
 
   return Modal
 
-})(jQuery)
+})($)
 
 export default Modal

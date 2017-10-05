@@ -1,3 +1,4 @@
+import $ from 'jquery'
 import Util from './util'
 
 
@@ -8,7 +9,7 @@ import Util from './util'
  * --------------------------------------------------------------------------
  */
 
-const Carousel = (($) => {
+const Carousel = (() => {
 
 
   /**
@@ -131,7 +132,9 @@ const Carousel = (($) => {
 
     nextWhenVisible() {
       // Don't call next when the page isn't visible
-      if (!document.hidden) {
+      // or the carousel or its parent isn't visible
+      if (!document.hidden &&
+        ($(this._element).is(':visible') && $(this._element).css('visibility') !== 'hidden')) {
         this.next()
       }
     }
@@ -441,7 +444,7 @@ const Carousel = (($) => {
         if (typeof config === 'number') {
           data.to(config)
         } else if (typeof action === 'string') {
-          if (data[action] === undefined) {
+          if (typeof data[action] === 'undefined') {
             throw new Error(`No method named "${action}"`)
           }
           data[action]()
@@ -516,6 +519,6 @@ const Carousel = (($) => {
 
   return Carousel
 
-})(jQuery)
+})($)
 
 export default Carousel

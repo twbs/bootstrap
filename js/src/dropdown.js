@@ -1,5 +1,5 @@
-/* global Popper */
-
+import $ from 'jquery'
+import Popper from 'popper.js'
 import Util from './util'
 
 
@@ -10,7 +10,7 @@ import Util from './util'
  * --------------------------------------------------------------------------
  */
 
-const Dropdown = (($) => {
+const Dropdown = (() => {
 
   /**
    * Check for Popper dependency
@@ -75,14 +75,12 @@ const Dropdown = (($) => {
   }
 
   const Default = {
-    placement   : AttachmentMap.BOTTOM,
     offset      : 0,
     flip        : true
   }
 
   const DefaultType = {
-    placement   : 'string',
-    offset      : '(number|string)',
+    offset      : '(number|string|function)',
     flip        : 'boolean'
   }
 
@@ -203,11 +201,6 @@ const Dropdown = (($) => {
     }
 
     _getConfig(config) {
-      const elementData = $(this._element).data()
-      if (elementData.placement !== undefined) {
-        elementData.placement = AttachmentMap[elementData.placement.toUpperCase()]
-      }
-
       config = $.extend(
         {},
         this.constructor.Default,
@@ -234,10 +227,10 @@ const Dropdown = (($) => {
 
     _getPlacement() {
       const $parentDropdown = $(this._element).parent()
-      let placement = this._config.placement
+      let placement = AttachmentMap.BOTTOM
 
       // Handle dropup
-      if ($parentDropdown.hasClass(ClassName.DROPUP) || this._config.placement === AttachmentMap.TOP) {
+      if ($parentDropdown.hasClass(ClassName.DROPUP)) {
         placement = AttachmentMap.TOP
         if ($(this._menu).hasClass(ClassName.MENURIGHT)) {
           placement = AttachmentMap.TOPEND
@@ -253,12 +246,19 @@ const Dropdown = (($) => {
     }
 
     _getPopperConfig() {
+      const offsetConf = {}
+      if (typeof this._config.offset === 'function') {
+        offsetConf.fn = (data) => {
+          data.offsets = $.extend({}, data.offsets, this._config.offset(data.offsets) || {})
+          return data
+        }
+      } else {
+        offsetConf.offset = this._config.offset
+      }
       const popperConfig = {
         placement : this._getPlacement(),
         modifiers : {
-          offset : {
-            offset : this._config.offset
-          },
+          offset : offsetConf,
           flip : {
             enabled : this._config.flip
           }
@@ -287,7 +287,7 @@ const Dropdown = (($) => {
         }
 
         if (typeof config === 'string') {
-          if (data[config] === undefined) {
+          if (typeof data[config] === 'undefined') {
             throw new Error(`No method named "${config}"`)
           }
           data[config]()
@@ -445,6 +445,6 @@ const Dropdown = (($) => {
 
   return Dropdown
 
-})(jQuery)
+})($, Popper)
 
 export default Dropdown

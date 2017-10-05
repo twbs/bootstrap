@@ -1,7 +1,10 @@
 fail_on_violations: true
 
+stylelint:
+  config_file: build/.stylelintrc
+
 scss:
-  config_file: .scss-lint.yml
+  enabled: false
 
 jshint:
   enabled: false

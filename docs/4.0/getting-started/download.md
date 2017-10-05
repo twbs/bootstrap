@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Download
-description: Download Bootstrap to get the compiled CSS and JavaScript, source code, or include it with your favorite package managers like npm, Bower, RubyGems, and more.
+description: Download Bootstrap to get the compiled CSS and JavaScript, source code, or include it with your favorite package managers like npm, RubyGems, and more.
 group: getting-started
 toc: true
 ---
@@ -24,7 +24,7 @@ Compile Bootstrap with your own asset pipeline by downloading our source Sass, J
 - Sass compiler (Libsass or Ruby Sass is supported) for compiling your CSS.
 - [Autoprefixer](https://github.com/postcss/autoprefixer) for CSS vendor prefixing
 
-Should you require [build tools]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/build-tools/#tooling-setup), they are included for developing Bootstrap and it's docs, but they're likely unsuitable for your own purposes.
+Should you require [build tools]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/build-tools/#tooling-setup), they are included for developing Bootstrap and its docs, but they're likely unsuitable for your own purposes.
 
 <a href="{{ site.download.source }}" class="btn btn-bd-purple" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download source');">Download source</a>
 
@@ -50,9 +50,9 @@ Pull in Bootstrap's **source files** into nearly any project with some of the mo
 
 ### npm
 
-Install Bootstrap in your Node powered apps with [the npm package](https://www.npmjs.com/package/bootstrap):
+Install Bootstrap in your Node.js powered apps with [the npm package](https://www.npmjs.com/package/bootstrap):
 
-{% highlight bash %}
+{% highlight sh %}
 npm install bootstrap@{{ site.current_version }}
 {% endhighlight %}
 
@@ -73,7 +73,7 @@ gem 'bootstrap', '~> 4.0.0.beta'
 
 Alternatively, if you're not using Bundler, you can install the gem by running this command:
 
-{% highlight bash %}
+{% highlight sh %}
 gem install bootstrap -v 4.0.0.beta
 {% endhighlight %}
 
@@ -81,23 +81,15 @@ gem install bootstrap -v 4.0.0.beta
 
 ### Composer
 
-You can also install and manage Bootstrap's Sass and JavaScript using [Composer](https://getcomposer.org):
+You can also install and manage Bootstrap's Sass and JavaScript using [Composer](https://getcomposer.org/):
 
-{% highlight bash %}
+{% highlight sh %}
 composer require twbs/bootstrap:{{ site.current_version }}
-{% endhighlight %}
-
-### Bower
-
-Install and manage Bootstrap's Sass and JavaScript using [Bower](https://bower.io).
-
-{% highlight bash %}
-bower install bootstrap#v{{ site.current_version }}
 {% endhighlight %}
 
 ### NuGet
 
-If you develop in .NET, you can also install and manage Bootstrap's [CSS](https://www.nuget.org/packages/bootstrap/) or [Sass](https://www.nuget.org/packages/bootstrap.sass/) and JavaScript using [NuGet](https://www.nuget.org):
+If you develop in .NET, you can also install and manage Bootstrap's [CSS](https://www.nuget.org/packages/bootstrap/) or [Sass](https://www.nuget.org/packages/bootstrap.sass/) and JavaScript using [NuGet](https://www.nuget.org/):
 
 {% highlight powershell %}
 Install-Package bootstrap -Pre
