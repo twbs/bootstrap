@@ -940,6 +940,14 @@ input[type="checkbox"] {
   }
   .has-error & {
     display: block;
+
+    &:empty,
+    &:-moz-only-whitespace {
+      display: none;
+      &:before {
+        display: none;
+      }
+    }
   }
 }
 

@@ -153,8 +153,11 @@
   > [class*="col-"] {
     display: flex;
   }
-  .col-xs-12 {
-    margin-bottom: 16px;
+
+  @media (max-width: @screen-xs-max) {
+    .col-xs-12 {
+      margin-bottom: 12px;
+    }
   }
 }
 
