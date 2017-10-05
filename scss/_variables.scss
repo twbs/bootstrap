@@ -448,7 +448,8 @@ $custom-file-box-shadow:    $input-box-shadow !default;
 $custom-file-button-color:  $custom-file-color !default;
 $custom-file-button-bg:     $input-group-addon-bg !default;
 
-// stylelint-disable
+// stylelint-disable function-parentheses-newline-inside
+// stylelint-disable function-comma-newline-after
 $custom-file-text: () !default;
 $custom-file-text: map-merge((
   placeholder: (
@@ -458,7 +459,8 @@ $custom-file-text: map-merge((
     en: "Browse"
   )
 ), $custom-file-text);
-// stylelint-enable
+// stylelint-enable function-parentheses-newline-inside
+// stylelint-enable function-comma-newline-after
 
 
 // Form validation
