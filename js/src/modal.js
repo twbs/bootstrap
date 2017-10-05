@@ -113,7 +113,7 @@ const Modal = (() => {
     }
 
     show(relatedTarget) {
-      if (this._isTransitioning) {
+      if (this._isTransitioning || this._isShown) {
         return
       }
 
@@ -585,6 +585,6 @@ const Modal = (() => {
 
   return Modal
 
-})(jQuery)
+})($)
 
 export default Modal

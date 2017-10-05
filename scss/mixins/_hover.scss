@@ -1,3 +1,4 @@
+// stylelint-disable indentation
 @mixin hover {
   // TODO: re-enable along with mq4-hover-shim
 //  @if $enable-hover-media-query {
@@ -8,9 +9,7 @@
 //    }
 //  }
 //  @else {
-// scss-lint:disable Indentation
     &:hover { @content; }
-// scss-lint:enable Indentation
 //  }
 }
 

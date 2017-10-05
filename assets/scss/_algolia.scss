@@ -1,3 +1,5 @@
+// stylelint-disable declaration-no-important
+
 // Docsearch overrides
 //
 // `!important` indicates overridden properties.
@@ -25,7 +27,7 @@
       display: none !important;
     }
 
-    [class^=ds-dataset-] {
+    [class^="ds-dataset-"] {
       padding: 0 !important;
       overflow: visible !important;
       background-color: transparent !important;
@@ -101,7 +103,7 @@
     padding: 0 1rem .5rem !important;
     margin-top: -.25rem;
     font-size: .875rem !important;
-    font-weight: normal;
+    font-weight: 400;
     line-height: 1.25 !important;
   }
 
