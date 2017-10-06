@@ -171,14 +171,15 @@
 										Card numbers are either <strong>16 or 20 digits</strong> long
 									</div>
 								</div>
-								<div class="form-group col-md-6">
+								<div class="form-group col-md-6 has-error">
 									<label class="control-label">Sentence case labels</label>
 									<input
 										ng-keydown="$ctrl.isWarning($event)"
 										class="form-control"
 										placeholder="Sentence case placeholders"
 										tw-focusable  />
-									<div class="help-block">Short help text</div>
+									<div class="alert alert-focus">Short help text</div>
+									<div class="alert alert-danger">Short help text</div>
 								</div>
 								<div class="form-group col-md-6">
 									<label class="control-label">Disabled state</label>
