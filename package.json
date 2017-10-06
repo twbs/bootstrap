@@ -76,7 +76,7 @@
   "dependencies": {},
   "peerDependencies": {
     "jquery": "^3.0.0",
-    "popper.js": "^1.12.3"
+    "popper.js": "^1.12.5"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
@@ -196,7 +196,7 @@
     "dependencies": {},
     "peerDependencies": {
       "jquery": "^3.0.0",
-      "popper.js": "^1.12.3"
+      "popper.js": "^1.12.5"
     }
   }
 }
