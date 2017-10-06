@@ -640,11 +640,12 @@ $popover-body-color:               $body-color !default;
 $popover-body-padding-y:           9px !default;
 $popover-body-padding-x:           14px !default;
 
-$popover-arrow-width:                 10px !default;
-$popover-arrow-height:                5px !default;
+$popover-arrow-width:                 20px !default;
+$popover-arrow-height:                20px !default;
 $popover-arrow-color:                 $popover-bg !default;
+$popover-arrow-margin:                calc(#{$border-radius-lg} + #{$popover-border-width}) !default;
 
-$popover-arrow-outer-width:           ($popover-arrow-width + 1px) !default;
+$popover-arrow-outer-height:          calc(#{$popover-arrow-height / 2} + #{$popover-border-width}) !default;
 $popover-arrow-outer-color:           fade-in($popover-border-color, .05) !default;
 
 
