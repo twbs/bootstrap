@@ -32,7 +32,7 @@
     "media-feature-range-operator-space-after": "always",
     "media-feature-range-operator-space-before": "never",
     "no-descending-specificity": null,
-    "no-duplicate-selectors": null,
+    "no-duplicate-selectors": true,
     "number-leading-zero": "never",
     "order/properties-order": [
       "position",
