@@ -14,8 +14,8 @@
   @include border-radius($card-border-radius);
 
   > hr {
-    margin-right: 0;
-    margin-left: 0;
+    margin-#{$right}: 0;
+    margin-#{$left}: 0;
   }
 
   > .list-group:first-child {
