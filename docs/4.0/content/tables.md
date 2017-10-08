@@ -581,7 +581,7 @@ Regular table background variants are not available with the dark table, however
 
 ## Responsive tables
 
-Create responsive tables by adding `.table-responsive{-sm|-md|-lg|-xl}` to any `.table` to make them scroll horizontally at each `max-width` breakpoint 575px, 767px, 991px, and 1199px, respectively.
+Create responsive tables by adding `.table-responsive{-sm|-md|-lg|-xl}` to any `.table` to make them scroll horizontally at each `max-width` breakpoint just below 576px, 768px, 992px, and 1200px, respectively.
 
 For responsive tables that always scroll horizontally when the table is wider than its container, add the `.table-responsive` class on `.table`.
 
