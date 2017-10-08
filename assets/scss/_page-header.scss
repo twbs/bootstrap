@@ -1,4 +1,4 @@
-// scss-lint:disable ImportantRule
+// stylelint-disable declaration-no-important
 
 .bd-pageheader {
   padding: 2rem ($grid-gutter-width / 2);
@@ -13,7 +13,7 @@
 
   h1 {
     font-size: 3rem;
-    font-weight: normal;
+    font-weight: 400;
     color: #fff;
   }
 

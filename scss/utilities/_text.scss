@@ -1,3 +1,5 @@
+// stylelint-disable declaration-no-important
+
 //
 // Text
 //
@@ -38,7 +40,7 @@
 .text-white { color: #fff !important; }
 
 @each $color, $value in $theme-colors {
-  @include text-emphasis-variant('.text-#{$color}', $value);
+  @include text-emphasis-variant(".text-#{$color}", $value);
 }
 
 .text-muted { color: $text-muted !important; }

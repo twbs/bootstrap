@@ -46,6 +46,10 @@
         }
       }
 
+      .order#{$infix}-first {
+        order: -1;
+      }
+
       @for $i from 1 through $columns {
         .order#{$infix}-#{$i} {
           order: $i;

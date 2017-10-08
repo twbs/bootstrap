@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://getbootstrap.com">
+  <a href="https://getbootstrap.com/">
     <img src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" width=72 height=72>
   </a>
 
@@ -8,14 +8,14 @@
   <p align="center">
     Sleek, intuitive, and powerful front-end framework for faster and easier web development.
     <br>
-    <a href="https://getbootstrap.com/docs/4.0"><strong>Explore Bootstrap docs &raquo;</strong></a>
+    <a href="https://getbootstrap.com/docs/4.0/"><strong>Explore Bootstrap docs &raquo;</strong></a>
     <br>
     <br>
-    <a href="https://themes.getbootstrap.com">Bootstrap Themes</a>
+    <a href="https://themes.getbootstrap.com/">Bootstrap Themes</a>
     &middot;
-    <a href="https://jobs.getbootstrap.com">Job Board</a>
+    <a href="https://jobs.getbootstrap.com/">Job Board</a>
     &middot;
-    <a href="https://blog.getbootstrap.com">Blog</a>
+    <a href="https://blog.getbootstrap.com/">Blog</a>
   </p>
 </p>
 
@@ -40,16 +40,16 @@ Several quick start options are available:
 
 - [Download the latest release.](https://github.com/twbs/bootstrap/archive/v4.0.0-beta.zip)
 - Clone the repo: `git clone https://github.com/twbs/bootstrap.git`
-- Install with [npm](https://www.npmjs.com): `npm install bootstrap@4.0.0-beta`
-- Install with [yarn](https://yarnpkg.com): `yarn add bootstrap@4.0.0-beta`
-- Install with [Composer](https://getcomposer.org): `composer require twbs/bootstrap:4.0.0-beta`
-- Install with [NuGet](https://www.nuget.org): CSS: `Install-Package bootstrap -Pre` Sass: `Install-Package bootstrap.sass -Pre` (`-Pre` is only required until Bootstrap v4 has a stable release).
+- Install with [npm](https://www.npmjs.com/): `npm install bootstrap@4.0.0-beta`
+- Install with [yarn](https://yarnpkg.com/): `yarn add bootstrap@4.0.0-beta`
+- Install with [Composer](https://getcomposer.org/): `composer require twbs/bootstrap:4.0.0-beta`
+- Install with [NuGet](https://www.nuget.org/): CSS: `Install-Package bootstrap -Pre` Sass: `Install-Package bootstrap.sass -Pre` (`-Pre` is only required until Bootstrap v4 has a stable release).
 
 Read the [Getting started page](https://getbootstrap.com/getting-started/) for information on the framework contents, templates and examples, and more.
 
 ## Status
 
-[![Slack](https://bootstrap-slack.herokuapp.com/badge.svg)](https://bootstrap-slack.herokuapp.com)
+[![Slack](https://bootstrap-slack.herokuapp.com/badge.svg)](https://bootstrap-slack.herokuapp.com/)
 [![npm version](https://img.shields.io/npm/v/bootstrap.svg)](https://www.npmjs.com/package/bootstrap)
 [![Gem version](https://img.shields.io/gem/v/bootstrap.svg)](https://rubygems.org/gems/bootstrap)
 [![Build Status](https://img.shields.io/travis/twbs/bootstrap/v4-dev.svg)](https://travis-ci.org/twbs/bootstrap)
@@ -125,8 +125,8 @@ Editor preferences are available in the [editor config](https://github.com/twbs/
 Get updates on Bootstrap's development and chat with the project maintainers and community members.
 
 - Follow [@getbootstrap on Twitter](https://twitter.com/getbootstrap).
-- Read and subscribe to [The Official Bootstrap Blog](https://blog.getbootstrap.com).
-- Join [the official Slack room](https://bootstrap-slack.herokuapp.com).
+- Read and subscribe to [The Official Bootstrap Blog](https://blog.getbootstrap.com/).
+- Join [the official Slack room](https://bootstrap-slack.herokuapp.com/).
 - Chat with fellow Bootstrappers in IRC. On the `irc.freenode.net` server, in the `##bootstrap` channel.
 - Implementation help may be found at Stack Overflow (tagged [`bootstrap-4`](https://stackoverflow.com/questions/tagged/bootstrap-4)).
 - Developers should use the keyword `bootstrap` on packages which modify or add to the functionality of Bootstrap when distributing through [npm](https://www.npmjs.com/browse/keyword/bootstrap) or similar delivery mechanisms for maximum discoverability.
@@ -137,7 +137,7 @@ Get updates on Bootstrap's development and chat with the project maintainers and
 
 For transparency into our release cycle and in striving to maintain backward compatibility, Bootstrap is maintained under [the Semantic Versioning guidelines](http://semver.org/). Sometimes we screw up, but we'll adhere to those rules whenever possible.
 
-See [the Releases section of our GitHub project](https://github.com/twbs/bootstrap/releases) for changelogs for each release version of Bootstrap. Release announcement posts on [the official Bootstrap blog](https://blog.getbootstrap.com) contain summaries of the most noteworthy changes made in each release.
+See [the Releases section of our GitHub project](https://github.com/twbs/bootstrap/releases) for changelogs for each release version of Bootstrap. Release announcement posts on [the official Bootstrap blog](https://blog.getbootstrap.com/) contain summaries of the most noteworthy changes made in each release.
 
 
 ## Creators

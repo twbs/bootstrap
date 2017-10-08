@@ -14,13 +14,19 @@ toc: true
 
 Looking to quickly add Bootstrap to your project? Use the Bootstrap CDN, provided for free by the folks at MaxCDN. Using a package manager or need to download the source files? [Head to the downloads page.]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/download/)
 
+### CSS
+
 Copy-paste the stylesheet `<link>` into your `<head>` before all other stylesheets to load our CSS.
 
 {% highlight html %}
 <link rel="stylesheet" href="{{ site.cdn.css }}" integrity="{{ site.cdn.css_hash }}" crossorigin="anonymous">
 {% endhighlight %}
 
-Add our optional JavaScript plugins, jQuery, and [Popper.js](https://github.com/FezVrasta/popper.js) near the end of your pages, right before the closing `</body>` tag. Be sure to place jQuery and Popper.js first, as our JavaScript plugins depend on them. While we use [jQuery's slim build](https://blog.jquery.com/2016/06/09/jquery-3-0-final-released/) in our docs, the full version is also supported.
+### JS
+
+Many of our components require the use of JavaScript to function. Specifically, they require [jQuery](https://jquery.com), [Popper.js](https://popper.js.org/), and our own JavaScript plugins. Place the following `<script>`s near the end of your pages, right before the closing `</body>` tag, to enable them. jQuery must come first, then Popper.js, and then our JavaScript plugins.
+
+We use [jQuery's slim build](https://blog.jquery.com/2016/06/09/jquery-3-0-final-released/), but the full version is also supported.
 
 {% highlight html %}
 <script src="{{ site.cdn.jquery }}" integrity="{{ site.cdn.jquery_hash }}" crossorigin="anonymous"></script>
@@ -28,14 +34,29 @@ Add our optional JavaScript plugins, jQuery, and [Popper.js](https://github.com/
 <script src="{{ site.cdn.js }}" integrity="{{ site.cdn.js_hash }}" crossorigin="anonymous"></script>
 {% endhighlight %}
 
-And that's it—you're on your way to a fully Bootstrapped site. If you're at all unsure about the general page structure, keep reading for an example page template.
+Curious which components explicitly require jQuery, our JS, and Popper.js? Click the show components link below. If you're at all unsure about the general page structure, keep reading for an example page template.
+
+<details>
+<summary class="text-primary mb-3">Show components requiring JavaScript</summary>
+{% markdown %}
+- Alerts for dismissing
+- Buttons for toggling states and checkbox/radio functionality
+- Carousel for all slide behaviors, controls, and indicators
+- Collapse for toggling visibility of content
+- Dropdowns for displaying and positioning (also requires [Popper.js](https://popper.js.org/))
+- Modals for displaying, positioning, and scroll behavior
+- Navbar for extending our Collapse plugin to implement responsive behavior
+- Tooltips and popovers for displaying and positioning (also requires [Popper.js](https://popper.js.org/))
+- Scrollspy for scroll behavior and navigation updates
+{% endmarkdown %}
+</details>
 
 ## Starter template
 
 Be sure to have your pages set up with the latest design and development standards. That means using an HTML5 doctype and including a viewport meta tag for proper responsive behaviors. Put it all together and your pages should look like this:
 
 {% highlight html %}
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <title>Hello, world!</title>
@@ -69,7 +90,7 @@ Bootstrap employs a handful of important global styles and settings that you'll 
 Bootstrap requires the use of the HTML5 doctype. Without it, you'll see some funky incomplete styling, but including it shouldn't cause any considerable hiccups.
 
 {% highlight html %}
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   ...
 </html>

@@ -189,6 +189,6 @@ const Popover = (() => {
 
   return Popover
 
-})(jQuery)
+})($)
 
 export default Popover
