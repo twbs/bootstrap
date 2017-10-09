@@ -27,16 +27,10 @@ h1 {
   bottom: 0;
   left: 0;
   z-index: 1000;
-  padding: 20px;
+  padding: 20px 0;
   overflow-x: hidden;
   overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
   border-right: 1px solid #eee;
-}
-
-/* Sidebar navigation */
-.sidebar {
-  padding-right: 0;
-  padding-left: 0;
 }
 
 .sidebar .nav {
