@@ -4,7 +4,7 @@ language: node_js
 git:
   depth: 3
 node_js:
-  - "4"
+  - "6"
   - "8"
 before_install:
   - if [[ `npm -v` != 5* ]]; then npm install -g npm@5; fi

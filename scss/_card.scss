@@ -12,6 +12,23 @@
   background-clip: border-box;
   border: $card-border-width solid $card-border-color;
   @include border-radius($card-border-radius);
+
+  > hr {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  > .list-group:first-child {
+    .list-group-item:first-child {
+      @include border-top-radius($card-border-radius);
+    }
+  }
+
+  > .list-group:last-child {
+    .list-group-item:last-child {
+      @include border-bottom-radius($card-border-radius);
+    }
+  }
 }
 
 .card-body {
@@ -43,25 +60,6 @@
     margin-left: $card-spacer-x;
   }
 }
-
-.card {
-  > .list-group:first-child {
-    .list-group-item:first-child {
-      @include border-top-radius($card-border-radius);
-    }
-  }
-
-  > .list-group:last-child {
-    .list-group-item:last-child {
-      @include border-bottom-radius($card-border-radius);
-    }
-  }
-
-  .card-header + .list-group > .list-group-item:first-child {
-    border-top: 0;
-  }
-}
-
 
 //
 // Optional textual caps
@@ -155,6 +153,7 @@
 
     .card {
       display: flex;
+      // Flexbugs #4: https://github.com/philipwalton/flexbugs#4-flex-shorthand-declarations-with-unitless-flex-basis-values-are-ignored
       flex: 1 0 0%;
       flex-direction: column;
       margin-right: $card-deck-margin;
@@ -181,6 +180,7 @@
     flex-flow: row wrap;
 
     .card {
+      // Flexbugs #4: https://github.com/philipwalton/flexbugs#4-flex-shorthand-declarations-with-unitless-flex-basis-values-are-ignored
       flex: 1 0 0%;
       margin-bottom: 0;
 

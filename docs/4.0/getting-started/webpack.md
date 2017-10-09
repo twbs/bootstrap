@@ -8,7 +8,7 @@ toc: true
 
 ## Installing Bootstrap
 
-[Install bootstrap]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/download/#npm) as a node module using npm.
+[Install bootstrap]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/download/#npm) as a Node.js module using npm.
 
 ## Importing JavaScript
 
