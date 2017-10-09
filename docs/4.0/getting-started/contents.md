@@ -36,51 +36,49 @@ This is the most basic form of Bootstrap: precompiled files for quick drop-in us
 
 ### Comparison of CSS files
 
-<div class="table-responsive">
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">CSS files</th>
-        <th scope="col" class="w-25 text-center">Layout</th>
-        <th scope="col" class="w-25 text-center">Content</th>
-        <th scope="col" class="w-25 text-center">Components</th>
-        <th scope="col" class="w-25 text-center">Utilities</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">
-          <div><code class="text-nowrap">bootstrap.css</code></div>
-          <div><code class="text-nowrap">bootstrap.min.css</code></div>
-        </th>
-        <td class="w-25 table-success text-center align-middle">All</td>
-        <td class="w-25 table-success text-center align-middle">All</td>
-        <td class="w-25 table-success text-center align-middle">All</td>
-        <td class="w-25 table-success text-center align-middle">All</td>
-      </tr>
-      <tr>
-        <th scope="row">
-          <div><code class="text-nowrap">bootstrap-grid.css</code></div>
-          <div><code class="text-nowrap">bootstrap-grid.min.css</code></div>
-        </th>
-        <td class="w-25 table-warning text-center align-middle">Only <a href="{{ site.baseurl }}/docs/{{ site.docs_version }}/layout/grid/">grid</a> system</td>
-        <td class="w-25 table-danger text-center align-middle">Not</td>
-        <td class="w-25 table-danger text-center align-middle">Not</td>
-        <td class="w-25 table-warning text-center align-middle">Only <a href="{{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/flex/">flex</a> utilities</td>
-      </tr>
-      <tr>
-        <th scope="row">
-          <div><code class="text-nowrap">bootstrap-reboot.css</code></div>
-          <div><code class="text-nowrap">bootstrap-reboot.min.css</code></div>
-        </th>
-        <td class="w-25 table-danger text-center align-middle">Not</td>
-        <td class="w-25 table-warning text-center align-middle">Only <a href="{{ site.baseurl }}/docs/{{ site.docs_version }}/content/reboot/">Reboot</a></td>
-        <td class="w-25 table-danger text-center align-middle">Not</td>
-        <td class="w-25 table-danger text-center align-middle">Not</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<table class="table table-bordered table-responsive">
+  <thead>
+    <tr>
+      <th scope="col">CSS files</th>
+      <th scope="col" class="text-center">Layout</th>
+      <th scope="col" class="text-center">Content</th>
+      <th scope="col" class="text-center">Components</th>
+      <th scope="col" class="text-center">Utilities</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">
+        <div><code class="text-nowrap">bootstrap.css</code></div>
+        <div><code class="text-nowrap">bootstrap.min.css</code></div>
+      </th>
+      <td class="table-success text-center align-middle">All</td>
+      <td class="table-success text-center align-middle">All</td>
+      <td class="table-success text-center align-middle">All</td>
+      <td class="table-success text-center align-middle">All</td>
+    </tr>
+    <tr>
+      <th scope="row">
+        <div><code class="text-nowrap">bootstrap-grid.css</code></div>
+        <div><code class="text-nowrap">bootstrap-grid.min.css</code></div>
+      </th>
+      <td class="table-warning text-center align-middle">Only <a href="{{ site.baseurl }}/docs/{{ site.docs_version }}/layout/grid/">grid</a> system</td>
+      <td class="table-danger text-center align-middle">No</td>
+      <td class="table-danger text-center align-middle">No</td>
+      <td class="table-warning text-center align-middle">Only <a href="{{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/flex/">flex</a> utilities</td>
+    </tr>
+    <tr>
+      <th scope="row">
+        <div><code class="text-nowrap">bootstrap-reboot.css</code></div>
+        <div><code class="text-nowrap">bootstrap-reboot.min.css</code></div>
+      </th>
+      <td class="table-danger text-center align-middle">No</td>
+      <td class="table-warning text-center align-middle">Only <a href="{{ site.baseurl }}/docs/{{ site.docs_version }}/content/reboot/">Reboot</a></td>
+      <td class="table-danger text-center align-middle">No</td>
+      <td class="table-danger text-center align-middle">No</td>
+    </tr>
+  </tbody>
+</table>
 
 ## Bootstrap source code
 
