@@ -18,6 +18,10 @@
   }
 }
 
+.table td {
+  hyphens: auto;
+}
+
 .table:not(.table-responsive) {
   @include media-breakpoint-down(sm) {
     tr {
