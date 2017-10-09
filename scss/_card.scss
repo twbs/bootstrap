@@ -17,6 +17,18 @@
     margin-right: 0;
     margin-left: 0;
   }
+
+  > .list-group:first-child {
+    .list-group-item:first-child {
+      @include border-top-radius($card-border-radius);
+    }
+  }
+
+  > .list-group:last-child {
+    .list-group-item:last-child {
+      @include border-bottom-radius($card-border-radius);
+    }
+  }
 }
 
 .card-body {
@@ -48,21 +60,6 @@
     margin-left: $card-spacer-x;
   }
 }
-
-.card {
-  > .list-group:first-child {
-    .list-group-item:first-child {
-      @include border-top-radius($card-border-radius);
-    }
-  }
-
-  > .list-group:last-child {
-    .list-group-item:last-child {
-      @include border-bottom-radius($card-border-radius);
-    }
-  }
-}
-
 
 //
 // Optional textual caps
