@@ -649,4 +649,19 @@ $(function () {
       })
     $triggerDropdown.trigger($.Event('click'))
   })
+
+  QUnit.test('Dropdown constructor should throw and error when Popper is not available', function (assert) {
+    assert.expect(1)
+    var tmpPopper = window.Popper
+    delete window.Popper
+
+    try {
+      var dropDown = new $.fn.bootstrapDropdown.Constructor(document.body, {})
+      dropDown.toggle() // to please eslint...
+    }
+    catch (e) {
+      assert.strictEqual(e.message, 'Bootstrap dropdown require Popper.js (https://popper.js.org)')
+      window.Popper = tmpPopper // restore Popper global var
+    }
+  })
 })

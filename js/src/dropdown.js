@@ -13,14 +13,6 @@ import Util from './util'
 const Dropdown = (() => {
 
   /**
-   * Check for Popper dependency
-   * Popper - https://popper.js.org
-   */
-  if (typeof Popper === 'undefined') {
-    throw new Error('Bootstrap dropdown require Popper.js (https://popper.js.org)')
-  }
-
-  /**
    * ------------------------------------------------------------------------
    * Constants
    * ------------------------------------------------------------------------
@@ -94,6 +86,14 @@ const Dropdown = (() => {
   class Dropdown {
 
     constructor(element, config) {
+      /**
+       * Check for Popper dependency
+       * Popper - https://popper.js.org
+       */
+      if (typeof Popper === 'undefined') {
+        throw new Error('Bootstrap dropdown require Popper.js (https://popper.js.org)')
+      }
+
       this._element  = element
       this._popper   = null
       this._config   = this._getConfig(config)
