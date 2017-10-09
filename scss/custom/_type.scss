@@ -28,4 +28,9 @@ a {
   body {
     hyphens: auto;
   }
+
+  // Removes Hyphens for certain elements
+  th {
+    hyphens: none;
+  }
 }
