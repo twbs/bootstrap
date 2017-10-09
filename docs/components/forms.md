@@ -1008,6 +1008,27 @@ The label can differ from placeholder and help to show a pattern how text should
   <label for="floating-example-number-input" class="form-label">Number</label>
   <input class="form-control" type="number" placeholder="Just a number here" id="floating-example-number-input">
 </div>
+<div class="row">
+  <div class="col-8">
+    <div class="form-group floating-input js-float-input">
+      <label for="floating-example-search-input" class="form-label">Search</label>
+      <input class="form-control" type="search" placeholder="Search" id="floating-example-search-input">
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="dropdown">
+      <button class="btn btn-block btn-secondary floating-button dropdown-toggle" type="button" id="floating-example-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="button-label">Label</span>
+        <span class="button-value">Trigger Dropdown</span>
+      </button>
+      <div class="dropdown-menu" aria-labelledby="floating-example-dropdown">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+      </div>
+    </div>
+  </div>
+</div>
 {% endexample %}
 
 ### Focused State

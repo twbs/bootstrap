@@ -17,3 +17,40 @@
     border-top: 0;
   }
 }
+
+.table td {
+  hyphens: auto;
+}
+
+.table:not(.table-responsive) {
+  @include media-breakpoint-down(sm) {
+    tr {
+      display: flex;
+      flex-direction: column;
+      border-top: $card-border-width solid $card-border-color;
+    }
+
+    tr:first-child {
+      border-top: none;
+    }
+
+    th,
+    td {
+      border-top: none;
+      flex: 1 1 100%;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    th:first-child,
+    td:first-child {
+      padding-top: $spacer-y;
+    }
+
+    th:last-child,
+    td:last-child {
+      padding-bottom: $spacer-y;
+    }
+
+  }
+}
