@@ -1,6 +1,5 @@
 body {
   -webkit-font-smoothing: antialiased;
-  word-break: break-word
 }
 
 //
@@ -30,7 +29,8 @@ a {
   }
 
   // Removes Hyphens for certain elements
-  th {
+  th,
+  td {
     hyphens: none;
   }
 }
