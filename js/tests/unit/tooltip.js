@@ -848,4 +848,19 @@ $(function () {
       $trigger.trigger($.Event('click'))
     }, 200)
   })
+
+  QUnit.test('Tooltip constructor should throw and error when Popper is not available', function (assert) {
+    assert.expect(1)
+    var tmpPopper = window.Popper
+    delete window.Popper
+
+    try {
+      var tooltip = new $.fn.bootstrapTooltip.Constructor(document.body, {})
+      tooltip.show() // to please eslint...
+    }
+    catch (e) {
+      assert.strictEqual(e.message, 'Bootstrap tooltips and popovers require Popper.js (https://popper.js.org)')
+      window.Popper = tmpPopper // restore Popper global var
+    }
+  })
 })
