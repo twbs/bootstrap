@@ -8,8 +8,6 @@ import $ from 'jquery'
  */
 
 const Util = (() => {
-
-
   /**
    * ------------------------------------------------------------------------
    * Private TransitionEnd Helpers
@@ -21,15 +19,18 @@ const Util = (() => {
   const MAX_UID = 1000000
 
   const TransitionEndEvent = {
-    WebkitTransition : 'webkitTransitionEnd',
-    MozTransition    : 'transitionend',
-    OTransition      : 'oTransitionEnd otransitionend',
-    transition       : 'transitionend'
+    WebkitTransition: 'webkitTransitionEnd',
+    MozTransition: 'transitionend',
+    OTransition: 'oTransitionEnd otransitionend',
+    transition: 'transitionend'
   }
 
   // shoutout AngusCroll (https://goo.gl/pxwQGp)
   function toType(obj) {
-    return {}.toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase()
+    return {}.toString
+      .call(obj)
+      .match(/\s([a-zA-Z]+)/)[1]
+      .toLowerCase()
   }
 
   function getSpecialTransitionEndEvent() {
@@ -89,7 +90,6 @@ const Util = (() => {
     }
   }
 
-
   /**
    * --------------------------------------------------------------------------
    * Public Util Api
@@ -97,7 +97,6 @@ const Util = (() => {
    */
 
   const Util = {
-
     TRANSITION_END: 'bsTransitionEnd',
 
     getUID(prefix) {
@@ -142,15 +141,15 @@ const Util = (() => {
       for (const property in configTypes) {
         if (Object.prototype.hasOwnProperty.call(configTypes, property)) {
           const expectedTypes = configTypes[property]
-          const value         = config[property]
-          const valueType     = value && Util.isElement(value) ?
-                                'element' : toType(value)
+          const value = config[property]
+          const valueType = value && Util.isElement(value) ? 'element' : toType(value)
 
           if (!new RegExp(expectedTypes).test(valueType)) {
             throw new Error(
               `${componentName.toUpperCase()}: ` +
-              `Option "${property}" provided type "${valueType}" ` +
-              `but expected type "${expectedTypes}".`)
+                `Option "${property}" provided type "${valueType}" ` +
+                `but expected type "${expectedTypes}".`
+            )
           }
         }
       }
@@ -160,7 +159,6 @@ const Util = (() => {
   setTransitionEndSupport()
 
   return Util
-
 })($)
 
 export default Util

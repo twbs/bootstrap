@@ -15,13 +15,14 @@ const workboxSWDestMapPath = `${workboxSWDestPath}.map`
 fs.createReadStream(workboxSWSrcPath).pipe(fs.createWriteStream(workboxSWDestPath))
 fs.createReadStream(workboxSWSrcMapPath).pipe(fs.createWriteStream(workboxSWDestMapPath))
 
-const updateUrl = (manifestEntries) => manifestEntries.map((entry) => {
-  if (entry.url.startsWith(buildPrefix)) {
-    const regex = new RegExp(buildPrefix, 'g')
-    entry.url = entry.url.replace(regex, '')
-  }
-  return entry
-})
+const updateUrl = manifestEntries =>
+  manifestEntries.map(entry => {
+    if (entry.url.startsWith(buildPrefix)) {
+      const regex = new RegExp(buildPrefix, 'g')
+      entry.url = entry.url.replace(regex, '')
+    }
+    return entry
+  })
 
 config.manifestTransforms = [updateUrl]
 

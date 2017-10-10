@@ -18,8 +18,8 @@ sh.config.fatal = true
 const sed = sh.sed
 
 // Blame TC39... https://github.com/benjamingr/RegExp.escape/issues/37
-RegExp.quote = (string) => string.replace(/[-\\^$*+?.()|[\]{}]/g, '\\$&')
-RegExp.quoteReplacement = (string) => string.replace(/[$]/g, '$$')
+RegExp.quote = string => string.replace(/[-\\^$*+?.()|[\]{}]/g, '\\$&')
+RegExp.quoteReplacement = string => string.replace(/[$]/g, '$$')
 
 const DRY_RUN = false
 
@@ -32,7 +32,7 @@ function walkAsync(directory, excludedDirectories, fileCallback, errback) {
       errback(err)
       return
     }
-    names.forEach((name) => {
+    names.forEach(name => {
       const filepath = path.join(directory, name)
       fs.lstat(filepath, (err, stats) => {
         if (err) {
@@ -41,11 +41,9 @@ function walkAsync(directory, excludedDirectories, fileCallback, errback) {
         }
         if (stats.isSymbolicLink()) {
           return
-        }
-        else if (stats.isDirectory()) {
+        } else if (stats.isDirectory()) {
           process.nextTick(walkAsync, filepath, excludedDirectories, fileCallback, errback)
-        }
-        else if (stats.isFile()) {
+        } else if (stats.isFile()) {
           process.nextTick(fileCallback, filepath)
         }
       })
@@ -56,19 +54,20 @@ function walkAsync(directory, excludedDirectories, fileCallback, errback) {
 function replaceRecursively(directory, excludedDirectories, allowedExtensions, original, replacement) {
   original = new RegExp(RegExp.quote(original), 'g')
   replacement = RegExp.quoteReplacement(replacement)
-  const updateFile = !DRY_RUN ? (filepath) => {
-    if (allowedExtensions.has(path.parse(filepath).ext)) {
-      sed('-i', original, replacement, filepath)
-    }
-  } : (filepath) => {
-    if (allowedExtensions.has(path.parse(filepath).ext)) {
-      console.log(`FILE: ${filepath}`)
-    }
-    else {
-      console.log(`EXCLUDED:${filepath}`)
-    }
-  }
-  walkAsync(directory, excludedDirectories, updateFile, (err) => {
+  const updateFile = !DRY_RUN
+    ? filepath => {
+        if (allowedExtensions.has(path.parse(filepath).ext)) {
+          sed('-i', original, replacement, filepath)
+        }
+      }
+    : filepath => {
+        if (allowedExtensions.has(path.parse(filepath).ext)) {
+          console.log(`FILE: ${filepath}`)
+        } else {
+          console.log(`EXCLUDED:${filepath}`)
+        }
+      }
+  walkAsync(directory, excludedDirectories, updateFile, err => {
     console.error('ERROR while traversing directory!:')
     console.error(err)
     process.exit(1)
@@ -83,11 +82,7 @@ function main(args) {
   }
   const oldVersion = args[0]
   const newVersion = args[1]
-  const EXCLUDED_DIRS = new Set([
-    '.git',
-    'node_modules',
-    'vendor'
-  ])
+  const EXCLUDED_DIRS = new Set(['.git', 'node_modules', 'vendor'])
   const INCLUDED_EXTENSIONS = new Set([
     // This extension whitelist is how we avoid modifying binary files
     '',
