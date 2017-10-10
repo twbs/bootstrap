@@ -215,6 +215,13 @@
 
         &:only-child {
           @include border-radius($card-border-radius);
+
+          .card-img-top {
+            @include border-top-radius($card-border-radius);
+          }
+          .card-img-bottom {
+            @include border-bottom-radius($card-border-radius);
+          }
         }
 
         &:not(:first-child):not(:last-child):not(:only-child) {
