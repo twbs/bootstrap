@@ -94,7 +94,7 @@
 
 .custom-radio {
   .custom-control-indicator {
-    border-radius: $custom-radio-indicator-border-radius;
+    @include border-radius($custom-radio-indicator-border-radius);
   }
 
   .custom-control-input:checked ~ .custom-control-indicator {
@@ -140,9 +140,9 @@
   background-size: $custom-select-bg-size;
   border: $custom-select-border-width solid $custom-select-border-color;
   @if $enable-rounded {
-    border-radius: $custom-select-border-radius;
+    @include border-radius($custom-select-border-radius);
   } @else {
-    border-radius: 0;
+    @include border-radius(0);
   }
   appearance: none;
 
