@@ -14,7 +14,7 @@
               case 'installed':
                 if (navigator.serviceWorker.controller) { // eslint-disable-line compat/compat
                   console.log('new update available')
-                  location.reload(true)
+                  window.location.reload(true)
                 }
                 break
 
