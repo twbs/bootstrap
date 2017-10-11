@@ -83,7 +83,7 @@ const waitingCallback = (error, body, id) => {
 }
 
 jsUnitSaucelabs.on('tunnelCreated', () => {
-  browsersFile.forEach((tmpBrowser) => {
+  browsersFile.forEach(tmpBrowser => {
     const browsersPlatform = typeof tmpBrowser.platform === 'undefined' ? tmpBrowser.platformName : tmpBrowser.platform
     const browsersArray = [browsersPlatform, tmpBrowser.browserName, tmpBrowser.version]
 
@@ -95,7 +95,7 @@ jsUnitSaucelabs.on('tunnelCreated', () => {
           throw new Error('Error starting tests through Sauce Labs API')
         }
 
-        taskIds.forEach((id) => {
+        taskIds.forEach(id => {
           jsUnitSaucelabs.getStatus(id, (error, body) => {
             waitingCallback(error, body, id)
           })

@@ -1,7 +1,6 @@
 import $ from 'jquery'
 import Util from './util'
 
-
 /**
  * --------------------------------------------------------------------------
  * Bootstrap (v4.0.0-beta): alert.js
@@ -10,38 +9,35 @@ import Util from './util'
  */
 
 const Alert = (() => {
-
-
   /**
    * ------------------------------------------------------------------------
    * Constants
    * ------------------------------------------------------------------------
    */
 
-  const NAME                = 'alert'
-  const VERSION             = '4.0.0-beta'
-  const DATA_KEY            = 'bs.alert'
-  const EVENT_KEY           = `.${DATA_KEY}`
-  const DATA_API_KEY        = '.data-api'
-  const JQUERY_NO_CONFLICT  = $.fn[NAME]
+  const NAME = 'alert'
+  const VERSION = '4.0.0-beta'
+  const DATA_KEY = 'bs.alert'
+  const EVENT_KEY = `.${DATA_KEY}`
+  const DATA_API_KEY = '.data-api'
+  const JQUERY_NO_CONFLICT = $.fn[NAME]
   const TRANSITION_DURATION = 150
 
   const Selector = {
-    DISMISS : '[data-dismiss="alert"]'
+    DISMISS: '[data-dismiss="alert"]'
   }
 
   const Event = {
-    CLOSE          : `close${EVENT_KEY}`,
-    CLOSED         : `closed${EVENT_KEY}`,
-    CLICK_DATA_API : `click${EVENT_KEY}${DATA_API_KEY}`
+    CLOSE: `close${EVENT_KEY}`,
+    CLOSED: `closed${EVENT_KEY}`,
+    CLICK_DATA_API: `click${EVENT_KEY}${DATA_API_KEY}`
   }
 
   const ClassName = {
-    ALERT : 'alert',
-    FADE  : 'fade',
-    SHOW  : 'show'
+    ALERT: 'alert',
+    FADE: 'fade',
+    SHOW: 'show'
   }
-
 
   /**
    * ------------------------------------------------------------------------
@@ -50,18 +46,15 @@ const Alert = (() => {
    */
 
   class Alert {
-
     constructor(element) {
       this._element = element
     }
-
 
     // getters
 
     static get VERSION() {
       return VERSION
     }
-
 
     // public
 
@@ -83,12 +76,11 @@ const Alert = (() => {
       this._element = null
     }
 
-
     // private
 
     _getRootElement(element) {
       const selector = Util.getSelectorFromElement(element)
-      let parent     = false
+      let parent = false
 
       if (selector) {
         parent = $(selector)[0]
@@ -111,14 +103,13 @@ const Alert = (() => {
     _removeElement(element) {
       $(element).removeClass(ClassName.SHOW)
 
-      if (!Util.supportsTransitionEnd() ||
-          !$(element).hasClass(ClassName.FADE)) {
+      if (!Util.supportsTransitionEnd() || !$(element).hasClass(ClassName.FADE)) {
         this._destroyElement(element)
         return
       }
 
       $(element)
-        .one(Util.TRANSITION_END, (event) => this._destroyElement(element, event))
+        .one(Util.TRANSITION_END, event => this._destroyElement(element, event))
         .emulateTransitionEnd(TRANSITION_DURATION)
     }
 
@@ -129,13 +120,12 @@ const Alert = (() => {
         .remove()
     }
 
-
     // static
 
     static _jQueryInterface(config) {
-      return this.each(function () {
+      return this.each(function() {
         const $element = $(this)
-        let data       = $element.data(DATA_KEY)
+        let data = $element.data(DATA_KEY)
 
         if (!data) {
           data = new Alert(this)
@@ -149,7 +139,7 @@ const Alert = (() => {
     }
 
     static _handleDismiss(alertInstance) {
-      return function (event) {
+      return function(event) {
         if (event) {
           event.preventDefault()
         }
@@ -157,9 +147,7 @@ const Alert = (() => {
         alertInstance.close(this)
       }
     }
-
   }
-
 
   /**
    * ------------------------------------------------------------------------
@@ -167,12 +155,7 @@ const Alert = (() => {
    * ------------------------------------------------------------------------
    */
 
-  $(document).on(
-    Event.CLICK_DATA_API,
-    Selector.DISMISS,
-    Alert._handleDismiss(new Alert())
-  )
-
+  $(document).on(Event.CLICK_DATA_API, Selector.DISMISS, Alert._handleDismiss(new Alert()))
 
   /**
    * ------------------------------------------------------------------------
@@ -180,15 +163,14 @@ const Alert = (() => {
    * ------------------------------------------------------------------------
    */
 
-  $.fn[NAME]             = Alert._jQueryInterface
+  $.fn[NAME] = Alert._jQueryInterface
   $.fn[NAME].Constructor = Alert
-  $.fn[NAME].noConflict  = function () {
+  $.fn[NAME].noConflict = function() {
     $.fn[NAME] = JQUERY_NO_CONFLICT
     return Alert._jQueryInterface
   }
 
   return Alert
-
 })($)
 
 export default Alert

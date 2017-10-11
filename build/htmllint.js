@@ -12,7 +12,7 @@
 const childProcess = require('child_process')
 const vnu = require('vnu-jar')
 
-childProcess.exec('java -version', function (error) {
+childProcess.exec('java -version', function(error) {
   if (error) {
     console.error('Skipping HTML lint test; Java is missing.')
     return
@@ -38,9 +38,10 @@ childProcess.exec('java -version', function (error) {
     'js/tests/'
   ]
 
-  return childProcess.spawn('java', args, {
-    shell: true,
-    stdio: 'inherit'
-  })
-  .on('exit', process.exit)
+  return childProcess
+    .spawn('java', args, {
+      shell: true,
+      stdio: 'inherit'
+    })
+    .on('exit', process.exit)
 })
