@@ -1,0 +1,17 @@
+{
+  "env": {
+    "qunit": true,
+    "jquery": true,
+    "es6": false
+  },
+  "extends": "../../../.eslintrc.json",
+  "rules": {
+    "no-var": "off",
+    "object-shorthand": "off",
+    "prefer-arrow-callback": "off",
+    "prefer-const": "off",
+    "prefer-destructuring": "off",
+    "prefer-spread": "off",
+    "prefer-template": "off"
+  }
+}
