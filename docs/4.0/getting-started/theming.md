@@ -238,7 +238,7 @@ $colors: (
   "purple": $purple,
   "white": $white,
   "gray": $gray-600,
-  "gray-dark": $gray-900
+  "gray-dark": $gray-800
 ) !default;
 {% endhighlight %}
 
