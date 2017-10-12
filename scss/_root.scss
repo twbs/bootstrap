@@ -11,6 +11,6 @@
     --breakpoint-#{$bp}: #{$value};
   }
 
-  --font-family-sans-serif: #{$font-family-sans-serif};
-  --font-family-monospace: #{$font-family-monospace};
+  #{--font-family-sans-serif}: $font-family-sans-serif;
+  #{--font-family-monospace}: $font-family-monospace;
 }
