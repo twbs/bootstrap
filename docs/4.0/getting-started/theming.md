@@ -228,17 +228,19 @@ Within `_variables.scss`, you'll find our color variables and Sass map. Here's a
 
 {% highlight scss %}
 $colors: (
+  "blue": $blue,
+  "indigo": $indigo,
+  "purple": $purple,
+  "pink": $pink,
   "red": $red,
   "orange": $orange,
   "yellow": $yellow,
   "green": $green,
   "teal": $teal,
-  "blue": $blue,
-  "pink": $pink,
-  "purple": $purple,
+  "cyan": $cyan,
   "white": $white,
   "gray": $gray-600,
-  "gray-dark": $gray-900
+  "gray-dark": $gray-800
 ) !default;
 {% endhighlight %}
 
