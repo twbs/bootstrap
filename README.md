@@ -20,7 +20,6 @@
 </p>
 
 <br>
-
 ## Table of contents
 
 - [Quick start](#quick-start)
