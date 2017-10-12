@@ -1,0 +1,35 @@
+// Balance the additional space when div.required in sailis
+div.required > label.control-label {
+  margin-right: -15px;
+}
+
+// Counter the changes made by grid-system
+input, button, select, textarea {
+  font-size: 12px;
+  line-height: normal;
+}
+
+// Make the read only field a little bit different
+input[type="text"]:disabled {
+  border: 1px solid #EEE;
+}
+
+div.checkbox.has-error .help-block {
+    width: auto;
+    float: none;
+    display: block;
+    font-size: 12px;
+    line-height: 16px;
+    color: #C00;
+    background: url(http://localhost:8080/products/jawr/css/images/error_sm.gif) no-repeat;
+    padding-left: 20px;
+}
+
+div:not(.checkbox).has-error .help-block {
+    &:extend(div.checkbox.has-error .help-block);
+    margin: .5em 0 .5em 10em;
+}
+
+.glyphicon {
+  display: none;
+}
