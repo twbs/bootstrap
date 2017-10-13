@@ -1,6 +1,10 @@
 // Balance the additional space when div.required in sailis
 div.required > label.control-label {
-  margin-right: -15px;
+  // margin-right: -15px;
+}
+
+.inline-block {
+  display: inline-block;
 }
 
 // Counter the changes made by grid-system
@@ -34,9 +38,24 @@ div:not(.checkbox).has-error .help-block {
   display: none;
 }
 
+.modal-dialog .lookup table tbody tr:hover {
+  background-color: yellow;
+}
+
+.modal-dialog .lookup label {
+  line-height: 3.0em;
+}
+
 .modal-dialog FORM div label {
   font-weight: bold;
   float: inherit;
-  width: 10em;
-  line-height: 3.0em;
+  width: inherit;
+}
+
+form div {
+  clear: none;
+}
+
+form div .checkbox label {
+  float: inherit;
 }

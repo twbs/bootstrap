@@ -3546,8 +3546,8 @@ button.close {
 .affix {
   position: fixed;
 }
-div.required > label.control-label {
-  margin-right: -15px;
+.inline-block {
+  display: inline-block;
 }
 input,
 button,
@@ -3576,10 +3576,21 @@ div:not(.checkbox).has-error .help-block {
 .glyphicon {
   display: none;
 }
+.modal-dialog .lookup table tbody tr:hover {
+  background-color: yellow;
+}
+.modal-dialog .lookup label {
+  line-height: 3.0em;
+}
 .modal-dialog form div label {
   float: inherit;
-  width: 10em;
+  width: inherit;
   font-weight: bold;
-  line-height: 3.0em;
+}
+form div {
+  clear: none;
+}
+form div .checkbox label {
+  float: inherit;
 }
 /*# sourceMappingURL=bootstrap-sailis.css.map */
