@@ -40,9 +40,11 @@
 }
 
 // Future-proof disabling of clicks on `<a>` elements
-a.btn.disabled,
-fieldset[disabled] a.btn {
-  pointer-events: none;
+a.btn {
+  &.disabled,
+  fieldset[disabled] & {
+    pointer-events: none;
+  }
 }
 
 
@@ -119,11 +121,11 @@ fieldset[disabled] a.btn {
 .btn-block {
   display: block;
   width: 100%;
-}
 
-// Vertically space out multiple block buttons
-.btn-block + .btn-block {
-  margin-top: $btn-block-spacing-y;
+  // Vertically space out multiple block buttons
+  & + & {
+    margin-top: $btn-block-spacing-y;
+  }
 }
 
 // Specificity overrides

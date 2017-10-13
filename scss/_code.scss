@@ -31,7 +31,7 @@ kbd {
   @include border-radius($border-radius-sm);
   @include box-shadow($kbd-box-shadow);
 
-  kbd {
+  & & {
     padding: 0;
     font-size: 100%;
     font-weight: $nested-kbd-font-weight;
