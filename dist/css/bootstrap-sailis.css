@@ -3576,4 +3576,10 @@ div:not(.checkbox).has-error .help-block {
 .glyphicon {
   display: none;
 }
+.modal-dialog form div label {
+  float: inherit;
+  width: 10em;
+  font-weight: bold;
+  line-height: 3.0em;
+}
 /*# sourceMappingURL=bootstrap-sailis.css.map */
