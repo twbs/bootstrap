@@ -9,19 +9,6 @@
   @include caret;
 }
 
-// Allow for dropdowns to go bottom up (aka, dropup-menu)
-// Just add .dropup after the standard .dropdown class and you're set.
-.dropup {
-  .dropdown-menu {
-    margin-top: 0;
-    margin-bottom: $dropdown-spacer;
-  }
-
-  .dropdown-toggle {
-    @include caret(up);
-  }
-}
-
 // The dropdown menu
 .dropdown-menu {
   position: absolute;
@@ -42,6 +29,19 @@
   border: $dropdown-border-width solid $dropdown-border-color;
   @include border-radius($border-radius);
   @include box-shadow($dropdown-box-shadow);
+}
+
+// Allow for dropdowns to go bottom up (aka, dropup-menu)
+// Just add .dropup after the standard .dropdown class and you're set.
+.dropup {
+  .dropdown-menu {
+    margin-top: 0;
+    margin-bottom: $dropdown-spacer;
+  }
+
+  .dropdown-toggle {
+    @include caret(up);
+  }
 }
 
 // Dividers (basically an `<hr>`) within the dropdown
