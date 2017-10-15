@@ -3,6 +3,7 @@ fail_on_violations: true
 stylelint:
   config_file: build/.stylelintrc
   enabled: true
+  ignore_file: .houndignore
 
 eslint:
   config_file: js/.eslintrc.json

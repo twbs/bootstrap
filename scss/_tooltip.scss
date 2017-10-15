@@ -21,6 +21,12 @@
     height: $tooltip-arrow-height;
   }
 
+  .arrow::before {
+    position: absolute;
+    border-color: transparent;
+    border-style: solid;
+  }
+
   &.bs-tooltip-top {
     padding: $tooltip-arrow-width 0;
     .arrow {
@@ -87,12 +93,6 @@
     &[x-placement^="left"] {
       @extend .bs-tooltip-left;
     }
-  }
-
-  .arrow::before {
-    position: absolute;
-    border-color: transparent;
-    border-style: solid;
   }
 }
 
