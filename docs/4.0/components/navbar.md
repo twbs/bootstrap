@@ -29,7 +29,10 @@ Navbars come with built-in support for a handful of sub-components. Choose from 
 - `.navbar-text` for adding vertically centered strings of text.
 - `.collapse.navbar-collapse` for grouping and hiding navbar contents by a parent breakpoint.
 
-Here's an example of all the sub-components included in a responsive light-themed navbar that automatically collapses at the `lg` (large) breakpoint.
+Here's an example of all the sub-components.
+- the navbar is light-themed
+- its responsive - it automatically collapses at the `lg` (large) breakpoint.
+- some additional utility classes are used: `bg-light` (colors), `my-2, mr-sm-2, ...' (spacing)
 
 {% example html %}
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -534,5 +537,18 @@ Sometimes you want to use the collapse plugin to trigger hidden content elsewher
       <span class="navbar-toggler-icon"></span>
     </button>
   </nav>
+</div>
+{% endexample %}
+
+##Printing
+
+Navbars are not printed. If you use the navbar for your site's branding, you can add a print-only alternative. 
+
+See the display and float utilities for an explanation of the classes
+
+{% example %}
+<div class="d-none d-print">
+  <!-- logo, name -->
+  <div class="float-right"><small>url</small></div>
 </div>
 {% endexample %}
