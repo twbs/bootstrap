@@ -31,8 +31,8 @@ Navbars come with built-in support for a handful of sub-components. Choose from 
 
 Here's an example of all the sub-components.
 - the navbar is light-themed
-- its responsive - it automatically collapses at the `lg` (large) breakpoint.
-- some additional utility classes are used: e.g. `bg-light` - [colors]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/colors/), `my-2, mr-sm-2, ...` - [spacing]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/spacing/)
+- it's responsive - it automatically collapses at the `lg` (large) breakpoint.
+- some additional utility classes are used: e.g. `bg-light` ([colors]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/colors/)), `my-2, mr-sm-2, ...` ([spacing]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/spacing/)).
 
 {% example html %}
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
