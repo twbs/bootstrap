@@ -49,6 +49,17 @@ Here's an example of all the sub-components.
       <li class="nav-item">
         <a class="nav-link" href="#">Link</a>
       </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="/action">Action</a>
+          <a class="dropdown-item" href="/another_action">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="http://www.example.com/something_else_here">Something else here</a>
+        </div>
+      </li>
       <li class="nav-item">
         <a class="nav-link disabled" href="#">Disabled</a>
       </li>
