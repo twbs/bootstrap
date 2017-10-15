@@ -3568,7 +3568,7 @@ div:not(.checkbox).has-error .help-block {
   font-size: 12px;
   line-height: 16px;
   color: #c00;
-  background: url(http://localhost:8080/products/jawr/css/images/error_sm.gif) no-repeat;
+  background: url(../images/sailis/error_sm.gif) no-repeat;
 }
 div:not(.checkbox).has-error .help-block {
   margin: .5em 0 .5em 10em;

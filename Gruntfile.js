@@ -364,6 +364,11 @@ module.exports = function (grunt) {
         src: 'fonts/**',
         dest: 'dist/'
       },
+      images: {
+        expand: true,
+        src: 'images/**',
+        dest: 'dist/'
+      },
       docs: {
         expand: true,
         cwd: 'dist/',
@@ -583,10 +588,10 @@ module.exports = function (grunt) {
   ]);
 
   // Full distribution task.
-  grunt.registerTask('dist', ['clean:dist', 'dist-css', 'copy:fonts', 'dist-js']);
+  grunt.registerTask('dist', ['clean:dist', 'dist-css', 'copy:fonts', 'copy:images', 'dist-js']);
 
   // Default task.
-  grunt.registerTask('default', ['clean:dist', 'copy:fonts', 'test']);
+  grunt.registerTask('default', ['clean:dist', 'copy:fonts', 'copy:images', 'test']);
 
   grunt.registerTask('build-glyphicons-data', function () { generateGlyphiconsData.call(this, grunt); });
 
