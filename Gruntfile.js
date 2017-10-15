@@ -207,6 +207,17 @@ module.exports = function (grunt) {
         },
         src: 'less/bootstrap-ilis.less',
         dest: 'dist/css/<%= pkg.name %>-ilis.css'
+      },
+      compileSailis: {
+        options: {
+          strictMath: true,
+          sourceMap: true,
+          outputSourceFiles: true,
+          sourceMapURL: '<%= pkg.name %>-sailis.css.map',
+          sourceMapFilename: 'dist/css/<%= pkg.name %>-sailis.css.map'
+        },
+        src: 'less/bootstrap-sailis.less',
+        dest: 'dist/css/<%= pkg.name %>-sailis.css'
       }
     },
 
@@ -243,6 +254,12 @@ module.exports = function (grunt) {
           map: true
         },
         src: 'dist/css/<%= pkg.name %>-ilis.css'
+      },
+      sailis: {
+        options: {
+          map: true
+        },
+        src: 'dist/css/<%= pkg.name %>-sailis.css'
       },
       docs: {
         src: ['docs/assets/css/src/docs.css']
@@ -305,6 +322,10 @@ module.exports = function (grunt) {
         src: 'dist/css/<%= pkg.name %>-ilis.css',
         dest: 'dist/css/<%= pkg.name %>-ilis.min.css'
       },
+      minifySailis: {
+        src: 'dist/css/<%= pkg.name %>-sailis.css',
+        dest: 'dist/css/<%= pkg.name %>-sailis.min.css'
+      },
       docs: {
         src: [
           'docs/assets/css/ie10-viewport-bug-workaround.css',
@@ -341,6 +362,11 @@ module.exports = function (grunt) {
       fonts: {
         expand: true,
         src: 'fonts/**',
+        dest: 'dist/'
+      },
+      images: {
+        expand: true,
+        src: 'images/**',
         dest: 'dist/'
       },
       docs: {
@@ -541,7 +567,8 @@ module.exports = function (grunt) {
     'less:compileTheme',
     'less:compileGrid',
     'less:compileSystemBuilder',
-    'less:compileIlis'
+    'less:compileIlis',
+    'less:compileSailis'
   ]);
   grunt.registerTask('dist-css', [
     'less-compile',
@@ -550,19 +577,21 @@ module.exports = function (grunt) {
     'autoprefixer:grid',
     'autoprefixer:systemBuilder',
     'autoprefixer:ilis',
+    'autoprefixer:sailis',
     'csscomb:dist',
     'cssmin:minifyCore',
     'cssmin:minifyTheme',
     'cssmin:minifyGrid',
     'cssmin:minifySystemBuilder',
-    'cssmin:minifyIlis'
+    'cssmin:minifyIlis',
+    'cssmin:minifySailis'
   ]);
 
   // Full distribution task.
-  grunt.registerTask('dist', ['clean:dist', 'dist-css', 'copy:fonts', 'dist-js']);
+  grunt.registerTask('dist', ['clean:dist', 'dist-css', 'copy:fonts', 'copy:images', 'dist-js']);
 
   // Default task.
-  grunt.registerTask('default', ['clean:dist', 'copy:fonts', 'test']);
+  grunt.registerTask('default', ['clean:dist', 'copy:fonts', 'copy:images', 'test']);
 
   grunt.registerTask('build-glyphicons-data', function () { generateGlyphiconsData.call(this, grunt); });
 
