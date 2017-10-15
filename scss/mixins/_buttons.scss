@@ -32,8 +32,8 @@
     border-color: $border;
   }
 
-  &:active,
-  &.active,
+  &:not([disabled]):not(.disabled):active,
+  &:not([disabled]):not(.disabled).active,
   .show > &.dropdown-toggle {
     background-color: $active-background;
     background-image: none; // Remove the gradient for the pressed/active state
@@ -65,8 +65,8 @@
     background-color: transparent;
   }
 
-  &:active,
-  &.active,
+  &:not([disabled]):not(.disabled):active,
+  &:not([disabled]):not(.disabled).active,
   .show > &.dropdown-toggle {
     color: $color-hover;
     background-color: $color;
