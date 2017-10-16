@@ -12,8 +12,9 @@ Here's what you need to know before getting started with the navbar:
 
 - Navbars require a wrapping `.navbar` with `.navbar-expand{-sm|-md|-lg|-xl}` for responsive collapsing and [color scheme](#color-schemes) classes.
 - Navbars and their contents are fluid by default. Use [optional containers](#containers) to limit their horizontal width.
-- Navbars and their contents are built with flexbox, providing easy alignment options via utility classes.
+- Navbars and their contents are built with flexbox, providing easy alignment options with the flex and spacing utility classes.
 - Navbars are responsive by default, but you can easily modify them to change that. Responsive behavior depends on our Collapse JavaScript plugin.
+- Navbars are hidden by default when printing. Force them to be printed by adding `.d-print` to the `.navbar`. See the [display]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/display/) utility classes. 
 - Ensure accessibility by using a `<nav>` element or, if using a more generic element such as a `<div>`, add a `role="navigation"` to every navbar to explicitly identify it as a landmark region for users of assistive technologies.
 
 Read on for an example and list of supported sub-components.
@@ -29,10 +30,7 @@ Navbars come with built-in support for a handful of sub-components. Choose from 
 - `.navbar-text` for adding vertically centered strings of text.
 - `.collapse.navbar-collapse` for grouping and hiding navbar contents by a parent breakpoint.
 
-Here's an example of all the sub-components.
-- the navbar is light-themed
-- it's responsive - it automatically collapses at the `lg` (large) breakpoint.
-- some additional utility classes are used: e.g. `bg-light` ([colors]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/colors/)), `my-2, mr-sm-2, ...` ([spacing]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/spacing/)).
+Here's an example of all the sub-components included in a responsive light-themed navbar that automatically collapses at the `lg` (large) breakpoint.
 
 {% example html %}
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -71,6 +69,8 @@ Here's an example of all the sub-components.
   </div>
 </nav>
 {% endexample %}
+
+This example uses [color]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/color/) (`bg-light`) and [spacing]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/spacing/) (`my-2`, `my-lg-0`, `mr-sm-0`, `my-sm-0`) utility classes.
 
 ### Brand
 
@@ -548,18 +548,5 @@ Sometimes you want to use the collapse plugin to trigger hidden content elsewher
       <span class="navbar-toggler-icon"></span>
     </button>
   </nav>
-</div>
-{% endexample %}
-
-## Printing
-
-Navbars are not printed. If you use the navbar for your site's branding, you can add a print-only alternative. 
-
-See the [display]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/display/) and [float]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/float/) utilities for an explanation of the classes
-
-{% example html %}
-<div class="d-none d-print">
-  <!-- logo, name -->
-  <div class="float-right"><small>url</small></div>
 </div>
 {% endexample %}
