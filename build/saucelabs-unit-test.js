@@ -1,23 +1,32 @@
+/*!
+ * Script to run our Sauce Labs tests.
+ * Copyright 2017 The Bootstrap Authors
+ * Copyright 2017 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+
+/*
+Docs: https://wiki.saucelabs.com/display/DOCS/Platform+Configurator
+Mac Opera is not currently supported by Sauce Labs
+Win Opera 15+ is not currently supported by Sauce Labs
+iOS Chrome is not currently supported by Sauce Labs
+*/
+
 'use strict'
 
 const path = require('path')
 const JSUnitSaucelabs = require('jsunitsaucelabs')
 
-// Docs: https://wiki.saucelabs.com/display/DOCS/Platform+Configurator
-// Mac Opera is not currently supported by Sauce Labs
-// Win Opera 15+ is not currently supported by Sauce Labs
-// iOS Chrome is not currently supported by Sauce Labs
-
 const jsUnitSaucelabs = new JSUnitSaucelabs({
   username: process.env.SAUCE_USERNAME,
   password: process.env.SAUCE_ACCESS_KEY,
-  build:    process.env.TRAVIS_JOB_ID
+  build: process.env.TRAVIS_JOB_ID
 })
 
-const testURL      = 'http://localhost:3000/js/tests/index.html?hidepassed'
+const testURL = 'http://localhost:3000/js/tests/index.html?hidepassed'
 const browsersFile = require(path.resolve(__dirname, './sauce_browsers.json'))
-let jobsDone       = 0
-let jobsSucceeded  = 0
+let jobsDone = 0
+let jobsSucceeded = 0
 
 const waitingCallback = (error, body, id) => {
   if (error) {
@@ -33,8 +42,8 @@ const waitingCallback = (error, body, id) => {
         })
       }, 2000)
     } else {
-      const test   = body['js tests'][0]
-      let passed   = false
+      const test = body['js tests'][0]
+      let passed = false
       let errorStr = false
 
       if (test.result !== null) {
@@ -46,9 +55,9 @@ const waitingCallback = (error, body, id) => {
       }
 
       console.log(`Tested ${testURL}`)
-      console.log(`Platform: ${test.platform.join(',')}`)
+      console.log(`Platform: ${test.platform.join(', ')}`)
       console.log(`Passed: ${passed.toString()}`)
-      console.log(`Url ${test.url} \n`)
+      console.log(`URL: ${test.url}\n`)
       if (errorStr) {
         console.error(errorStr)
       }
@@ -61,7 +70,13 @@ const waitingCallback = (error, body, id) => {
       // Exit
       if (jobsDone === browsersFile.length - 1) {
         jsUnitSaucelabs.stop()
-        process.exit(jobsDone === jobsSucceeded ? 0 : 1)
+        if (jobsDone > jobsSucceeded) {
+          const failedTest = jobsDone - jobsSucceeded
+          throw new Error(`Some test(s) failed (${failedTest})`)
+        }
+
+        console.log('All tests passed')
+        process.exit(0)
       }
     }
   }

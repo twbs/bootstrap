@@ -255,5 +255,5 @@ var Tab = function () {
   };
 
   return Tab;
-}(jQuery);
+}($);
 //# sourceMappingURL=tab.js.map

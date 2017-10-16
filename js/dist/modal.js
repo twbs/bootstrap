@@ -97,7 +97,7 @@ var Modal = function () {
     _proto.show = function show(relatedTarget) {
       var _this = this;
 
-      if (this._isTransitioning) {
+      if (this._isTransitioning || this._isShown) {
         return;
       }
 
@@ -155,12 +155,6 @@ var Modal = function () {
         return;
       }
 
-      var transition = Util.supportsTransitionEnd() && $(this._element).hasClass(ClassName.FADE);
-
-      if (transition) {
-        this._isTransitioning = true;
-      }
-
       var hideEvent = $.Event(Event.HIDE);
       $(this._element).trigger(hideEvent);
 
@@ -169,6 +163,11 @@ var Modal = function () {
       }
 
       this._isShown = false;
+      var transition = Util.supportsTransitionEnd() && $(this._element).hasClass(ClassName.FADE);
+
+      if (transition) {
+        this._isTransitioning = true;
+      }
 
       this._setEscapeEvent();
 
@@ -577,5 +576,5 @@ var Modal = function () {
   };
 
   return Modal;
-}(jQuery);
+}($);
 //# sourceMappingURL=modal.js.map
