@@ -83,6 +83,8 @@ bootstrap/
 │   ├── bootstrap-reboot.min.css
 │   └── bootstrap-reboot.min.css.map
 └── js/
+    ├── bootstrap.bundle.js
+    ├── bootstrap.bundle.min.js
     ├── bootstrap.js
     └── bootstrap.min.js
 ```
