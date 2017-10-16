@@ -150,7 +150,7 @@ var Util = function () {
   };
   setTransitionEndSupport();
   return Util;
-}(jQuery);
+}($);
 
 function _defineProperties(target, props) {
   for (var i = 0; i < props.length; i++) {
@@ -348,7 +348,7 @@ var Alert = function () {
   };
 
   return Alert;
-}(jQuery);
+}($);
 
 /**
  * --------------------------------------------------------------------------
@@ -511,7 +511,7 @@ var Button = function () {
   };
 
   return Button;
-}(jQuery);
+}($);
 
 /**
  * --------------------------------------------------------------------------
@@ -1011,7 +1011,7 @@ var Carousel = function () {
   };
 
   return Carousel;
-}(jQuery);
+}($);
 
 /**
  * --------------------------------------------------------------------------
@@ -1378,7 +1378,7 @@ var Collapse = function () {
   };
 
   return Collapse;
-}(jQuery);
+}($);
 
 /**
  * --------------------------------------------------------------------------
@@ -1456,7 +1456,7 @@ var Dropdown = function () {
     flip: true
   };
   var DefaultType = {
-    offset: '(number|string)',
+    offset: '(number|string|function)',
     flip: 'boolean'
     /**
      * ------------------------------------------------------------------------
@@ -1604,12 +1604,23 @@ var Dropdown = function () {
     };
 
     _proto._getPopperConfig = function _getPopperConfig() {
+      var _this2 = this;
+
+      var offsetConf = {};
+
+      if (typeof this._config.offset === 'function') {
+        offsetConf.fn = function (data) {
+          data.offsets = $.extend({}, data.offsets, _this2._config.offset(data.offsets) || {});
+          return data;
+        };
+      } else {
+        offsetConf.offset = this._config.offset;
+      }
+
       var popperConfig = {
         placement: this._getPlacement(),
         modifiers: {
-          offset: {
-            offset: this._config.offset
-          },
+          offset: offsetConf,
           flip: {
             enabled: this._config.flip
           }
@@ -1806,7 +1817,7 @@ var Dropdown = function () {
   };
 
   return Dropdown;
-}(jQuery, Popper);
+}($, Popper);
 
 /**
  * --------------------------------------------------------------------------
@@ -1904,7 +1915,7 @@ var Modal = function () {
     _proto.show = function show(relatedTarget) {
       var _this = this;
 
-      if (this._isTransitioning) {
+      if (this._isTransitioning || this._isShown) {
         return;
       }
 
@@ -1962,12 +1973,6 @@ var Modal = function () {
         return;
       }
 
-      var transition = Util.supportsTransitionEnd() && $(this._element).hasClass(ClassName.FADE);
-
-      if (transition) {
-        this._isTransitioning = true;
-      }
-
       var hideEvent = $.Event(Event.HIDE);
       $(this._element).trigger(hideEvent);
 
@@ -1976,6 +1981,11 @@ var Modal = function () {
       }
 
       this._isShown = false;
+      var transition = Util.supportsTransitionEnd() && $(this._element).hasClass(ClassName.FADE);
+
+      if (transition) {
+        this._isTransitioning = true;
+      }
 
       this._setEscapeEvent();
 
@@ -2383,7 +2393,7 @@ var Modal = function () {
   };
 
   return Modal;
-}(jQuery);
+}($);
 
 /**
  * --------------------------------------------------------------------------
@@ -3044,7 +3054,7 @@ var Tooltip = function () {
   };
 
   return Tooltip;
-}(jQuery, Popper);
+}($, Popper);
 
 /**
  * --------------------------------------------------------------------------
@@ -3230,7 +3240,7 @@ var Popover = function () {
   };
 
   return Popover;
-}(jQuery);
+}($);
 
 /**
  * --------------------------------------------------------------------------
@@ -3541,7 +3551,7 @@ var ScrollSpy = function () {
   };
 
   return ScrollSpy;
-}(jQuery);
+}($);
 
 /**
  * --------------------------------------------------------------------------
@@ -3796,7 +3806,7 @@ var Tab = function () {
   };
 
   return Tab;
-}(jQuery);
+}($);
 
 /**
  * --------------------------------------------------------------------------
@@ -3806,7 +3816,7 @@ var Tab = function () {
  */
 
 (function () {
-  if (typeof jQuery === 'undefined') {
+  if (typeof $ === 'undefined') {
     throw new Error('Bootstrap\'s JavaScript requires jQuery. jQuery must be included before Bootstrap\'s JavaScript.');
   }
 
@@ -3817,7 +3827,7 @@ var Tab = function () {
   if (version[0] < min || version[0] >= max) {
     throw new Error('Bootstrap\'s JavaScript requires at least jQuery v3.0.0 but less than v4.0.0');
   }
-})(jQuery);
+})($);
 
 exports.Util = Util;
 exports.Alert = Alert;
