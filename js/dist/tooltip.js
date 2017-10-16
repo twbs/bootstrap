@@ -661,5 +661,5 @@ var Tooltip = function () {
   };
 
   return Tooltip;
-}(jQuery, Popper);
+}($, Popper);
 //# sourceMappingURL=tooltip.js.map
