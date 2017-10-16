@@ -79,6 +79,7 @@
     &.is-#{$state} {
       ~ .custom-control-indicator {
         background-color: rgba($color, .25);
+        box-shadow: 0 0 0 1px #fff, 0 0 0 3px #dc3545;
       }
       ~ .custom-control-description {
         color: $color;
