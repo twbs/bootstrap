@@ -12,7 +12,7 @@ Here's what you need to know before getting started with the navbar:
 
 - Navbars require a wrapping `.navbar` with `.navbar-expand{-sm|-md|-lg|-xl}` for responsive collapsing and [color scheme](#color-schemes) classes.
 - Navbars and their contents are fluid by default. Use [optional containers](#containers) to limit their horizontal width.
-- Navbars and their contents are built with flexbox, providing easy alignment options with the flex and spacing utility classes.
+- Navbars and their contents are built with flexbox. Use the spacing and flex utility classes for sub-component alignment.
 - Navbars are responsive by default, but you can easily modify them to change that. Responsive behavior depends on our Collapse JavaScript plugin.
 - Navbars are hidden by default when printing. Force them to be printed by adding `.d-print` to the `.navbar`. See the [display]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/display/) utility classes. 
 - Ensure accessibility by using a `<nav>` element or, if using a more generic element such as a `<div>`, add a `role="navigation"` to every navbar to explicitly identify it as a landmark region for users of assistive technologies.
