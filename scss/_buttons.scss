@@ -40,11 +40,9 @@
 }
 
 // Future-proof disabling of clicks on `<a>` elements
-a.btn {
-  &.disabled,
-  fieldset[disabled] & {
-    pointer-events: none;
-  }
+a.btn.disabled,
+fieldset[disabled] a.btn {
+  pointer-events: none;
 }
 
 
