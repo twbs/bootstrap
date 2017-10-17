@@ -49,7 +49,7 @@
 }
 
 // Color contrast
-@mixin color-yiq($color) {
+@mixin color-yiq($color, $prop: "color") {
   $r: red($color);
   $g: green($color);
   $b: blue($color);
@@ -57,9 +57,9 @@
   $yiq: (($r * 299) + ($g * 587) + ($b * 114)) / 1000;
 
   @if ($yiq >= 150) {
-    color: #111;
+    #{$prop}: #111;
   } @else {
-    color: #fff;
+    #{$prop}: #fff;
   }
 }
 
