@@ -607,6 +607,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 | --- | --- |
 | `$().dropdown('toggle')` | Toggles the dropdown menu of a given navbar or tabbed navigation. |
 | `$().dropdown('update')` | Updates the position of an element's dropdown. |
+| `$().dropdown('dispose')` | Destroys an element's dropdown. |
 
 ### Events
 
