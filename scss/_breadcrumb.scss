@@ -10,7 +10,7 @@
 
 .breadcrumb-item {
   // The separator between breadcrumbs (by default, a forward-slash: "/")
-  & + &::before {
+  + .breadcrumb-item::before { ::before {
     display: inline-block; // Suppress underlining of the separator in modern browsers
     padding-right: $breadcrumb-item-padding;
     padding-left: $breadcrumb-item-padding;
@@ -24,11 +24,11 @@
   //
   // To trick IE into suppressing the underline, we give the pseudo-element an
   // underline and then immediately remove it.
-  & + &:hover::before {
+  + .breadcrumb-item:hover::before {
     text-decoration: underline;
   }
   // stylelint-disable-next-line no-duplicate-selectors
-  & + &:hover::before {
+  + .breadcrumb-item:hover::before {
     text-decoration: none;
   }
 
