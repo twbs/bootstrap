@@ -96,6 +96,19 @@ Mix and match multiple content types to create the card you need, or throw every
 
 {% example html %}
 <div class="card" style="width: 20rem;">
+  <div class="card-header">
+    Featured
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Cras justo odio</li>
+    <li class="list-group-item">Dapibus ac facilisis in</li>
+    <li class="list-group-item">Vestibulum at eros</li>
+  </ul>
+</div>
+{% endexample %}
+
+{% example html %}
+<div class="card" style="width: 20rem;">
   <img class="card-img-top" data-src="holder.js/100px180/?text=Image cap" alt="Card image cap">
   <div class="card-body">
     <h4 class="card-title">Card title</h4>
