@@ -56,6 +56,7 @@ const Dropdown = (() => {
     SHOW      : 'show',
     DROPUP    : 'dropup',
     DROPRIGHT : 'dropright',
+    DROPLEFT  : 'dropleft',
     MENURIGHT : 'dropdown-menu-right',
     MENULEFT  : 'dropdown-menu-left'
   }
@@ -74,7 +75,9 @@ const Dropdown = (() => {
     BOTTOM    : 'bottom-start',
     BOTTOMEND : 'bottom-end',
     RIGHT     : 'right-start',
-    RIGHTEND  : 'right-end'
+    RIGHTEND  : 'right-end',
+    LEFT      : 'left-start',
+    LEFTEND   : 'left-end'
   }
 
   const Default = {
@@ -240,6 +243,8 @@ const Dropdown = (() => {
         }
       } else if ($parentDropdown.hasClass(ClassName.DROPRIGHT)) {
         placement = AttachmentMap.RIGHT
+      } else if ($parentDropdown.hasClass(ClassName.DROPLEFT)) {
+        placement = AttachmentMap.LEFT
       } else if ($(this._menu).hasClass(ClassName.MENURIGHT)) {
         placement = AttachmentMap.BOTTOMEND
       }
