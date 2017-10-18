@@ -1,5 +1,3 @@
-
-
 // Badge Group
 
 .badge-group {
@@ -16,5 +14,40 @@
 
   .badge:last-child {
     @include border-right-radius($border-radius);
+  }
+}
+
+// Ghost Variants
+.badge-ghost {
+  border: 1px solid currentColor;
+
+  &.badge-default {
+    color: $badge-default-bg;
+    @include badge-variant($badge-color);
+  }
+
+  &.badge-primary {
+    color: $badge-primary-bg;
+    @include badge-variant($badge-color);
+  }
+
+  &.badge-success {
+    color: $badge-success-bg;
+    @include badge-variant($badge-color);
+  }
+
+  &.badge-info {
+    color: $badge-info-bg;
+    @include badge-variant($badge-color);
+  }
+
+  &.badge-warning {
+    color: $badge-warning-bg;
+    @include badge-variant($badge-color);
+  }
+
+  &.badge-danger {
+    color: $badge-danger-bg;
+    @include badge-variant($badge-color);
   }
 }

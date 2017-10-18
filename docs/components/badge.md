@@ -73,7 +73,20 @@ Use `.badge-group` to combine multiple badges into one element.
 
 {% example html %}
 <div class="badge-group">
-  <a href="#" class="badge badge-default">Default</a>
-  <a href="#" class="badge badge-primary">Primary</a>
+  <a href="#" class="badge badge-default badge-ghost">Default</a>
+  <a href="#" class="badge badge-default">Primary</a>
 </div>
+{% endexample %}
+
+## Ghost Variants
+
+Use `.badge-group` to combine multiple badges into one element.
+
+{% example html %}
+<span class="badge badge-default badge-ghost">Default</span>
+<span class="badge badge-primary badge-ghost">Primary</span>
+<span class="badge badge-success badge-ghost">Success</span>
+<span class="badge badge-info badge-ghost">Info</span>
+<span class="badge badge-warning badge-ghost">Warning</span>
+<span class="badge badge-danger badge-ghost">Danger</span>
 {% endexample %}
