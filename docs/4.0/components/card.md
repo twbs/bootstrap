@@ -90,10 +90,6 @@ Create lists of content in a card with a flush list group.
 </div>
 {% endexample %}
 
-### Kitchen sink
-
-Mix and match multiple content types to create the card you need, or throw everything in there. Shown below are image styles, blocks, text styles, and a list group—all wrapped in a fixed-width card.
-
 {% example html %}
 <div class="card" style="width: 20rem;">
   <div class="card-header">
@@ -106,6 +102,10 @@ Mix and match multiple content types to create the card you need, or throw every
   </ul>
 </div>
 {% endexample %}
+
+### Kitchen sink
+
+Mix and match multiple content types to create the card you need, or throw everything in there. Shown below are image styles, blocks, text styles, and a list group—all wrapped in a fixed-width card.
 
 {% example html %}
 <div class="card" style="width: 20rem;">
