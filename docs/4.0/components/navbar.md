@@ -12,8 +12,9 @@ Here's what you need to know before getting started with the navbar:
 
 - Navbars require a wrapping `.navbar` with `.navbar-expand{-sm|-md|-lg|-xl}` for responsive collapsing and [color scheme](#color-schemes) classes.
 - Navbars and their contents are fluid by default. Use [optional containers](#containers) to limit their horizontal width.
-- Navbars and their contents are built with flexbox, providing easy alignment options via utility classes.
+- Use our [spacing]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/spacing/) and [flex]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/flex/) utility classes for controlling spacing and alignment within navbars.
 - Navbars are responsive by default, but you can easily modify them to change that. Responsive behavior depends on our Collapse JavaScript plugin.
+- Navbars are hidden by default when printing. Force them to be printed by adding `.d-print` to the `.navbar`. See the [display]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/display/) utility class. 
 - Ensure accessibility by using a `<nav>` element or, if using a more generic element such as a `<div>`, add a `role="navigation"` to every navbar to explicitly identify it as a landmark region for users of assistive technologies.
 
 Read on for an example and list of supported sub-components.
@@ -46,6 +47,17 @@ Here's an example of all the sub-components included in a responsive light-theme
       <li class="nav-item">
         <a class="nav-link" href="#">Link</a>
       </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/action">Action</a>
+          <a class="dropdown-item" href="/another_action">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="http://www.example.com/something_else_here">Something else here</a>
+        </div>
+      </li>
       <li class="nav-item">
         <a class="nav-link disabled" href="#">Disabled</a>
       </li>
@@ -57,6 +69,8 @@ Here's an example of all the sub-components included in a responsive light-theme
   </div>
 </nav>
 {% endexample %}
+
+This example uses [color]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/color/) (`bg-light`) and [spacing]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/spacing/) (`my-2`, `my-lg-0`, `mr-sm-0`, `my-sm-0`) utility classes.
 
 ### Brand
 
@@ -395,11 +409,13 @@ When the container is within your navbar, its horizontal padding is removed at b
 
 ## Placement
 
-Use our position utilities to place navbars in non-static positions. Choose from fixed to the top, fixed to the bottom, or stickied to the top. **Note that `position: sticky`, used for `.sticky-top`, [isn't fully supported in every browser](https://caniuse.com/#feat=css-sticky).**
+Use our [position utilities]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/position/) to place navbars in non-static positions. Choose from fixed to the top, fixed to the bottom, or stickied to the top (scrolls with the page until it reaches the top, then stays there). Fixed navbars use `position: fixed`, meaning they're pulled from the normal flow of the DOM and may require custom CSS (e.g., `padding-top` on the `<body>`) to prevent overlap with other elements.
+
+Also note that **`.sticky-top` uses `position: sticky`, which [isn't fully supported in every browser](https://caniuse.com/#feat=css-sticky)**.
 
 {% example html %}
 <nav class="navbar navbar-light bg-light">
-  <a class="navbar-brand" href="#">Full width</a>
+  <a class="navbar-brand" href="#">Default</a>
 </nav>
 {% endexample %}
 
