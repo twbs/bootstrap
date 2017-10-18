@@ -22,7 +22,7 @@ Things to know when using the popover plugin:
 - When triggered from anchors that wrap across multiple lines, popovers will be centered between the anchors' overall width. Use `white-space: nowrap;` on your `<a>`s to avoid this behavior.
 - Popovers must be hidden before their corresponding elements have been removed from the DOM.
 
-Keep reading to see see how popovers work with some examples.
+Keep reading to see how popovers work with some examples.
 
 ## Example: Enable popovers everywhere
 
