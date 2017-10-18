@@ -1,0 +1,20 @@
+
+
+// Badge Group
+
+.badge-group {
+  display: flex;
+
+  .badge {
+    flex: 0 0 auto;
+    @include border-radius(0);
+  }
+
+  .badge:first-child {
+    @include border-left-radius($border-radius);
+  }
+
+  .badge:last-child {
+    @include border-right-radius($border-radius);
+  }
+}

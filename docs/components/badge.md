@@ -66,3 +66,14 @@ Using the `.badge` classes with the `<a>` element quickly provide _actionable_ b
 <a href="#" class="badge badge-warning">Warning</a>
 <a href="#" class="badge badge-danger">Danger</a>
 {% endexample %}
+
+## Badge group
+
+Use `.badge-group` to combine multiple badges into one element.
+
+{% example html %}
+<div class="badge-group">
+  <a href="#" class="badge badge-default">Default</a>
+  <a href="#" class="badge badge-primary">Primary</a>
+</div>
+{% endexample %}
