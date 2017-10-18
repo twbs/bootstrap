@@ -18,6 +18,7 @@ While in beta, we aim to have no breaking changes. However, things don't always 
 - Responsive tables now generate classes for each grid breakpoint. This breaks from Beta 1 in that the `.table-responsive` you've been using is more like `.table-responsive-md`. You may now use `.table-responsive` or `.table-responsive-{sm,md,lg,xl}` as needed.
 - Dropped Bower support as the package manager has been deprecated for alternatives (e.g., Yarn or npm). [See bower/bower#2298](https://github.com/bower/bower/issues/2298) for details.
 - Bootstrap now requires jQuery 3.0.0 or higher.
+- Removed the unused `.form-control-label` class. If you did make use of this class, it was duplicate of the `.col-form-label` class that vertically centered a `<label>` with it's associated input in horizontal form layouts.
 
 ### Highlights
 
