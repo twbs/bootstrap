@@ -19,10 +19,10 @@ Things to know when using the popover plugin:
 - Specify `container: 'body'` to avoid rendering problems in more complex components (like our input groups, button groups, etc).
 - Triggering popovers on hidden elements will not work.
 - Popovers for `.disabled` or `disabled` elements must be triggered on a wrapper element.
-- When triggered from hyperlinks that span multiple lines, popovers will be centered. Use `white-space: nowrap;` on your `<a>`s to avoid this behavior.
+- When triggered from anchors that wrap across multiple lines, popovers will be centered between the anchors' overall width. Use `white-space: nowrap;` on your `<a>`s to avoid this behavior.
 - Popovers must be hidden before their corresponding elements have been removed from the DOM.
 
-Got all that? Great, let's see how they work with some examples.
+Keep reading to see see how popovers work with some examples.
 
 ## Example: Enable popovers everywhere
 
@@ -132,7 +132,7 @@ sagittis lacus vel augue laoreet rutrum faucibus.">
 
 ### Dismiss on next click
 
-Use the `focus` trigger to dismiss popovers on the next click that the user makes.
+Use the `focus` trigger to dismiss popovers on the user's next click of a different element than the toggle element.
 
 {% callout danger %}
 #### Specific markup required for dismiss-on-next-click
