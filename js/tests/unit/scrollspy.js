@@ -21,7 +21,7 @@ $(function () {
 
   QUnit.test('should provide no conflict', function (assert) {
     assert.expect(1)
-    assert.strictEqual($.fn.scrollspy, undefined, 'scrollspy was set back to undefined (org value)')
+    assert.strictEqual(typeof $.fn.scrollspy, 'undefined', 'scrollspy was set back to undefined (org value)')
   })
 
   QUnit.test('should throw explicit error on undefined method', function (assert) {
@@ -53,8 +53,8 @@ $(function () {
         + '<div class="topbar-inner">'
         + '<div class="container" id="ss-target">'
         + '<ul class="nav">'
-        + '<li><a href="#masthead">Overview</a></li>'
-        + '<li><a href="#detail">Detail</a></li>'
+        + '<li class="nav-item"><a href="#masthead">Overview</a></li>'
+        + '<li class="nav-item"><a href="#detail">Detail</a></li>'
         + '</ul>'
         + '</div>'
         + '</div>'
@@ -98,8 +98,8 @@ $(function () {
         + '<div class="topbar-inner">'
         + '<div class="container" id="ss-target">'
         + '<ul class="nav">'
-        + '<li><a href="#masthead">Overview</a></li>'
-        + '<li><a href="#detail">Detail</a></li>'
+        + '<li class="nav-item"><a href="#masthead">Overview</a></li>'
+        + '<li class="nav-item"><a href="#detail">Detail</a></li>'
         + '</ul>'
         + '</div>'
         + '</div>'
@@ -140,10 +140,10 @@ $(function () {
 
     var sectionHTML = '<div id="header" style="height: 500px;"></div>'
         + '<nav id="navigation" class="navbar">'
-        + '<ul class="nav navbar-nav">'
-        + '<li class="active"><a class="nav-link" id="one-link" href="#one">One</a></li>'
-        + '<li><a class="nav-link" id="two-link" href="#two">Two</a></li>'
-        + '<li><a class="nav-link" id="three-link" href="#three">Three</a></li>'
+        + '<ul class="navbar-nav">'
+        + '<li class="nav-item active"><a class="nav-link" id="one-link" href="#one">One</a></li>'
+        + '<li class="nav-item"><a class="nav-link" id="two-link" href="#two">Two</a></li>'
+        + '<li class="nav-item"><a class="nav-link" id="three-link" href="#three">Three</a></li>'
         + '</ul>'
         + '</nav>'
         + '<div id="content" style="height: 200px; overflow-y: auto;">'
@@ -173,8 +173,8 @@ $(function () {
     var navbarHtml =
         '<nav class="navbar">'
       + '<ul class="nav">'
-      + '<li><a class="nav-link" id="a-1" href="#div-1">div 1</a></li>'
-      + '<li><a class="nav-link" id="a-2" href="#div-2">div 2</a></li>'
+      + '<li class="nav-item"><a class="nav-link" id="a-1" href="#div-1">div 1</a></li>'
+      + '<li class="nav-item"><a class="nav-link" id="a-2" href="#div-2">div 2</a></li>'
       + '</ul>'
       + '</nav>'
     var contentHtml =
@@ -285,9 +285,9 @@ $(function () {
     var done = assert.async()
     var navbarHtml = '<nav id="navigation" class="navbar">'
       + '<ul class="nav">'
-      + '<li><a id="a-1" class="nav-link" href="#div-1">div 1</a>'
+      + '<li class="nav-item"><a id="a-1" class="nav-link" href="#div-1">div 1</a>'
       + '<ul class="nav">'
-      + '<li><a id="a-2" class="nav-link" href="#div-2">div 2</a></li>'
+      + '<li class="nav-item"><a id="a-2" class="nav-link" href="#div-2">div 2</a></li>'
       + '</ul>'
       + '</li>'
       + '</ul>'
@@ -331,6 +331,47 @@ $(function () {
       + '<a id="a-2" class="nav-link" href="#div-2">div 2</a>'
       + '</nav>'
       + '</nav>'
+      + '</nav>'
+
+    var contentHtml = '<div class="content" style="position: absolute; top: 0px; overflow: auto; height: 50px">'
+      + '<div id="div-1" style="padding: 0; margin: 0">'
+      + '<div id="div-2" style="height: 200px; padding: 0; margin: 0">div 2</div>'
+      + '</div>'
+      + '</div>'
+
+    $(navbarHtml).appendTo('#qunit-fixture')
+
+    var $content = $(contentHtml)
+      .appendTo('#qunit-fixture')
+      .bootstrapScrollspy({ offset: 0, target: '#navigation' })
+
+    function testActiveElements() {
+      if (++times > 3) { return done() }
+
+      $content.one('scroll', function () {
+        assert.ok($('#a-1').hasClass('active'), 'nav item for outer element has "active" class')
+        assert.ok($('#a-2').hasClass('active'), 'nav item for inner element has "active" class')
+        testActiveElements()
+      })
+
+      $content.scrollTop($content.scrollTop() + 10)
+    }
+
+    testActiveElements()
+  })
+
+
+  QUnit.test('should add the active class correctly when there are nested elements (nav nav-item markup)', function (assert) {
+    assert.expect(6)
+    var times = 0
+    var done = assert.async()
+    var navbarHtml = '<nav id="navigation" class="navbar">'
+      + '<ul class="nav">'
+      + '<li class="nav-item"><a id="a-1" class="nav-link" href="#div-1">div 1</a></li>'
+      + '<ul class="nav">'
+      + '<li class="nav-item"><a id="a-2" class="nav-link" href="#div-2">div 2</a></li>'
+      + '</ul>'
+      + '</ul>'
       + '</nav>'
 
     var contentHtml = '<div class="content" style="position: absolute; top: 0px; overflow: auto; height: 50px">'
@@ -406,10 +447,10 @@ $(function () {
 
     var sectionHTML = '<div id="header" style="height: 500px;"></div>'
         + '<nav id="navigation" class="navbar">'
-        + '<ul class="nav navbar-nav">'
-        + '<li><a id="one-link"   class="nav-link active" href="#one">One</a></li>'
-        + '<li><a id="two-link"   class="nav-link" href="#two">Two</a></li>'
-        + '<li><a id="three-link" class="nav-link" href="#three">Three</a></li>'
+        + '<ul class="navbar-nav">'
+        + '<li class="nav-item"><a id="one-link"   class="nav-link active" href="#one">One</a></li>'
+        + '<li class="nav-item"><a id="two-link"   class="nav-link" href="#two">Two</a></li>'
+        + '<li class="nav-item"><a id="three-link" class="nav-link" href="#three">Three</a></li>'
         + '</ul>'
         + '</nav>'
     $(sectionHTML).appendTo('#qunit-fixture')
@@ -447,10 +488,10 @@ $(function () {
 
     var sectionHTML = '<div id="header" style="height: 500px;"></div>'
         + '<nav id="navigation" class="navbar">'
-        + '<ul class="nav navbar-nav">'
-        + '<li><a id="one-link"   class="nav-link active" href="#one">One</a></li>'
-        + '<li><a id="two-link"   class="nav-link" href="#two">Two</a></li>'
-        + '<li><a id="three-link" class="nav-link" href="#three">Three</a></li>'
+        + '<ul class="navbar-nav">'
+        + '<li class="nav-item"><a id="one-link"   class="nav-link active" href="#one">One</a></li>'
+        + '<li class="nav-item"><a id="two-link"   class="nav-link" href="#two">Two</a></li>'
+        + '<li class="nav-item"><a id="three-link" class="nav-link" href="#three">Three</a></li>'
         + '</ul>'
         + '</nav>'
     $(sectionHTML).appendTo('#qunit-fixture')
@@ -490,11 +531,11 @@ $(function () {
     var navbarHtml =
         '<nav class="navbar">'
       + '<ul class="nav">'
-      + '<li><a id="li-100-1" class="nav-link" href="#div-100-1">div 1</a></li>'
-      + '<li><a id="li-100-2" class="nav-link" href="#div-100-2">div 2</a></li>'
-      + '<li><a id="li-100-3" class="nav-link" href="#div-100-3">div 3</a></li>'
-      + '<li><a id="li-100-4" class="nav-link" href="#div-100-4">div 4</a></li>'
-      + '<li><a id="li-100-5" class="nav-link" href="#div-100-5">div 5</a></li>'
+      + '<li class="nav-item"><a id="li-100-1" class="nav-link" href="#div-100-1">div 1</a></li>'
+      + '<li class="nav-item"><a id="li-100-2" class="nav-link" href="#div-100-2">div 2</a></li>'
+      + '<li class="nav-item"><a id="li-100-3" class="nav-link" href="#div-100-3">div 3</a></li>'
+      + '<li class="nav-item"><a id="li-100-4" class="nav-link" href="#div-100-4">div 4</a></li>'
+      + '<li class="nav-item"><a id="li-100-5" class="nav-link" href="#div-100-5">div 5</a></li>'
       + '</ul>'
       + '</nav>'
     var contentHtml =
@@ -538,9 +579,9 @@ $(function () {
       var $navbar = $(
           '<nav class="navbar"' + (type === 'data' ? ' id="navbar-offset-method-menu"' : '') + '>'
         + '<ul class="nav">'
-        + '<li><a id="li-' + type + 'm-1" class="nav-link" href="#div-' + type + 'm-1">div 1</a></li>'
-        + '<li><a id="li-' + type + 'm-2" class="nav-link" href="#div-' + type + 'm-2">div 2</a></li>'
-        + '<li><a id="li-' + type + 'm-3" class="nav-link" href="#div-' + type + 'm-3">div 3</a></li>'
+        + '<li class="nav-item"><a id="li-' + type + 'm-1" class="nav-link" href="#div-' + type + 'm-1">div 1</a></li>'
+        + '<li class="nav-item"><a id="li-' + type + 'm-2" class="nav-link" href="#div-' + type + 'm-2">div 2</a></li>'
+        + '<li class="nav-item"><a id="li-' + type + 'm-3" class="nav-link" href="#div-' + type + 'm-3">div 3</a></li>'
         + '</ul>'
         + '</nav>'
       )
@@ -582,9 +623,9 @@ $(function () {
       var $navbar = $(
           '<nav class="navbar"' + (type === 'data' ? ' id="navbar-offset-method-menu"' : '') + '>'
         + '<ul class="nav">'
-        + '<li><a class="nav-link" id="li-' + type + 'm-1" href="#div-' + type + 'm-1">div 1</a></li>'
-        + '<li><a class="nav-link" id="li-' + type + 'm-2" href="#div-' + type + 'm-2">div 2</a></li>'
-        + '<li><a class="nav-link" id="li-' + type + 'm-3" href="#div-' + type + 'm-3">div 3</a></li>'
+        + '<li class="nav-item"><a class="nav-link" id="li-' + type + 'm-1" href="#div-' + type + 'm-1">div 1</a></li>'
+        + '<li class="nav-item"><a class="nav-link" id="li-' + type + 'm-2" href="#div-' + type + 'm-2">div 2</a></li>'
+        + '<li class="nav-item"><a class="nav-link" id="li-' + type + 'm-3" href="#div-' + type + 'm-3">div 3</a></li>'
         + '</ul>'
         + '</nav>'
       )

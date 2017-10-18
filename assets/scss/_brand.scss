@@ -1,0 +1,110 @@
+// stylelint-disable no-duplicate-selectors
+
+//
+// Brand guidelines
+//
+
+// Logo series wrapper
+.bd-brand-logos {
+  display: table;
+  width: 100%;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  color: #563d7c;
+  background-color: #f9f9f9;
+  border-radius: .25rem;
+}
+
+// Individual items
+.bd-brand-item {
+  padding: 4rem 0;
+  text-align: center;
+}
+.bd-brand-item + .bd-brand-item {
+  border-top: 1px solid #fff;
+}
+.bd-brand-logos .inverse {
+  color: #fff;
+  background-color: #563d7c;
+}
+
+// Heading content within
+.bd-brand-item h1,
+.bd-brand-item h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.bd-brand-item .bd-booticon {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+// Make the icons stand out on what is/isn't okay
+// .bd-brand-item .glyphicon {
+//   width: 30px;
+//   height: 30px;
+//   margin: 10px auto -10px;
+//   line-height: 30px;
+//   color: #fff;
+//   border-radius: 50%;
+// }
+// .bd-brand-item .glyphicon-ok {
+//   background-color: #5cb85c;
+// }
+// .bd-brand-item .glyphicon-remove {
+//   background-color: #d9534f;
+// }
+
+@media (min-width: 768px) {
+  .bd-brand-item {
+    display: table-cell;
+    width: 1%;
+  }
+  .bd-brand-item + .bd-brand-item {
+    border-top: 0;
+    border-left: 1px solid #fff;
+  }
+  .bd-brand-item h1 {
+    font-size: 4rem;
+  }
+}
+
+
+//
+// Color swatches
+//
+
+.color-swatches {
+  margin: 0 -5px;
+  overflow: hidden; // clearfix
+}
+
+.color-swatch {
+  float: left;
+  width: 4rem;
+  height: 4rem;
+  margin-right: .25rem;
+  margin-left: .25rem;
+  border-radius: .25rem;
+
+  @media (min-width: 768px) {
+    width: 6rem;
+    height: 6rem;
+  }
+}
+
+// Docs colors
+.color-swatches {
+  .bd-purple {
+    background-color: $bd-purple;
+  }
+  .bd-purple-light {
+    background-color: $bd-purple-light;
+  }
+  .bd-purple-lighter {
+    background-color: #e5e1ea;
+  }
+  .bd-gray {
+    background-color: #f9f9f9;
+  }
+}

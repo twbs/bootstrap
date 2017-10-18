@@ -43,6 +43,8 @@
   position: relative;
   width: auto;
   margin: $modal-dialog-margin;
+  // allow clicks to pass through for custom click handling to close modal
+  pointer-events: none;
 }
 
 // Actual modal
@@ -50,11 +52,13 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  // counteract the pointer-events: none; in the .modal-dialog
+  pointer-events: auto;
   background-color: $modal-content-bg;
   background-clip: padding-box;
   border: $modal-content-border-width solid $modal-content-border-color;
   @include border-radius($border-radius-lg);
-  @include box-shadow($modal-content-xs-box-shadow);
+  @include box-shadow($modal-content-box-shadow-xs);
   // Remove focus outline from opened modal
   outline: 0;
 }
@@ -78,10 +82,17 @@
 // Top section of the modal w/ title and dismiss
 .modal-header {
   display: flex;
-  align-items: center; // vertically center it
+  align-items: flex-start; // so the close btn always stays on the upper right corner
   justify-content: space-between; // Put modal header elements (title and dismiss) on opposite ends
   padding: $modal-header-padding;
   border-bottom: $modal-header-border-width solid $modal-header-border-color;
+  @include border-top-radius($border-radius-lg);
+
+  .close {
+    padding: $modal-header-padding;
+    // auto on the left force icon to the right even when there is no .modal-title
+    margin: (-$modal-header-padding) (-$modal-header-padding) (-$modal-header-padding) auto;
+  }
 }
 
 // Title text within header
@@ -127,11 +138,11 @@
   // Automatically set modal's width for larger viewports
   .modal-dialog {
     max-width: $modal-md;
-    margin: $modal-dialog-sm-up-margin-y auto;
+    margin: $modal-dialog-margin-y-sm-up auto;
   }
 
   .modal-content {
-    @include box-shadow($modal-content-sm-up-box-shadow);
+    @include box-shadow($modal-content-box-shadow-sm-up);
   }
 
   .modal-sm { max-width: $modal-sm; }

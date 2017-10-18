@@ -1,14 +1,15 @@
+import $ from 'jquery'
 import Util from './util'
 
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-alpha.6): collapse.js
+ * Bootstrap (v4.0.0-beta): collapse.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
 
-const Collapse = (($) => {
+const Collapse = (() => {
 
 
   /**
@@ -18,7 +19,7 @@ const Collapse = (($) => {
    */
 
   const NAME                = 'collapse'
-  const VERSION             = '4.0.0-alpha.6'
+  const VERSION             = '4.0.0-beta'
   const DATA_KEY            = 'bs.collapse'
   const EVENT_KEY           = `.${DATA_KEY}`
   const DATA_API_KEY        = '.data-api'
@@ -32,7 +33,7 @@ const Collapse = (($) => {
 
   const DefaultType = {
     toggle : 'boolean',
-    parent : 'string'
+    parent : '(string|element)'
   }
 
   const Event = {
@@ -77,6 +78,14 @@ const Collapse = (($) => {
         `[data-toggle="collapse"][href="#${element.id}"],` +
         `[data-toggle="collapse"][data-target="#${element.id}"]`
       ))
+      const tabToggles = $(Selector.DATA_TOGGLE)
+      for (let i = 0; i < tabToggles.length; i++) {
+        const elem = tabToggles[i]
+        const selector = Util.getSelectorFromElement(elem)
+        if (selector !== null && $(selector).filter(element).length > 0) {
+          this._triggerArray.push(elem)
+        }
+      }
 
       this._parent = this._config.parent ? this._getParent() : null
 
@@ -215,9 +224,17 @@ const Collapse = (($) => {
         .removeClass(ClassName.SHOW)
 
       if (this._triggerArray.length) {
-        $(this._triggerArray)
-          .addClass(ClassName.COLLAPSED)
-          .attr('aria-expanded', false)
+        for (let i = 0; i < this._triggerArray.length; i++) {
+          const trigger = this._triggerArray[i]
+          const selector = Util.getSelectorFromElement(trigger)
+          if (selector !== null) {
+            const $elem = $(selector)
+            if (!$elem.hasClass(ClassName.SHOW)) {
+              $(trigger).addClass(ClassName.COLLAPSED)
+                   .attr('aria-expanded', false)
+            }
+          }
+        }
       }
 
       this.setTransitioning(true)
@@ -272,7 +289,18 @@ const Collapse = (($) => {
     }
 
     _getParent() {
-      const parent   = $(this._config.parent)[0]
+      let parent = null
+      if (Util.isElement(this._config.parent)) {
+        parent = this._config.parent
+
+        // it's a jQuery object
+        if (typeof this._config.parent.jquery !== 'undefined') {
+          parent = this._config.parent[0]
+        }
+      } else {
+        parent = $(this._config.parent)[0]
+      }
+
       const selector =
         `[data-toggle="collapse"][data-parent="${this._config.parent}"]`
 
@@ -327,7 +355,7 @@ const Collapse = (($) => {
         }
 
         if (typeof config === 'string') {
-          if (data[config] === undefined) {
+          if (typeof data[config] === 'undefined') {
             throw new Error(`No method named "${config}"`)
           }
           data[config]()
@@ -345,15 +373,19 @@ const Collapse = (($) => {
    */
 
   $(document).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
-    if (!/input|textarea/i.test(event.target.tagName)) {
+    // preventDefault only for <a> elements (which change the URL) not inside the collapsible element
+    if (event.currentTarget.tagName === 'A') {
       event.preventDefault()
     }
 
-    const target = Collapse._getTargetFromElement(this)
-    const data   = $(target).data(DATA_KEY)
-    const config = data ? 'toggle' : $(this).data()
-
-    Collapse._jQueryInterface.call($(target), config)
+    const $trigger = $(this)
+    const selector = Util.getSelectorFromElement(this)
+    $(selector).each(function () {
+      const $target = $(this)
+      const data    = $target.data(DATA_KEY)
+      const config  = data ? 'toggle' : $trigger.data()
+      Collapse._jQueryInterface.call($target, config)
+    })
   })
 
 
@@ -372,6 +404,6 @@ const Collapse = (($) => {
 
   return Collapse
 
-})(jQuery)
+})($)
 
 export default Collapse

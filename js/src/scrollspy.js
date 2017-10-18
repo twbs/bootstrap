@@ -1,14 +1,15 @@
+import $ from 'jquery'
 import Util from './util'
 
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-alpha.6): scrollspy.js
+ * Bootstrap (v4.0.0-beta): scrollspy.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
 
-const ScrollSpy = (($) => {
+const ScrollSpy = (() => {
 
 
   /**
@@ -18,7 +19,7 @@ const ScrollSpy = (($) => {
    */
 
   const NAME               = 'scrollspy'
-  const VERSION            = '4.0.0-alpha.6'
+  const VERSION            = '4.0.0-beta'
   const DATA_KEY           = 'bs.scrollspy'
   const EVENT_KEY          = `.${DATA_KEY}`
   const DATA_API_KEY       = '.data-api'
@@ -53,6 +54,7 @@ const ScrollSpy = (($) => {
     ACTIVE          : '.active',
     NAV_LIST_GROUP  : '.nav, .list-group',
     NAV_LINKS       : '.nav-link',
+    NAV_ITEMS       : '.nav-item',
     LIST_ITEMS      : '.list-group-item',
     DROPDOWN        : '.dropdown',
     DROPDOWN_ITEMS  : '.dropdown-item',
@@ -231,7 +233,7 @@ const ScrollSpy = (($) => {
       for (let i = this._offsets.length; i--;) {
         const isActiveTarget = this._activeTarget !== this._targets[i]
             && scrollTop >= this._offsets[i]
-            && (this._offsets[i + 1] === undefined ||
+            && (typeof this._offsets[i + 1] === 'undefined' ||
                 scrollTop < this._offsets[i + 1])
 
         if (isActiveTarget) {
@@ -246,6 +248,7 @@ const ScrollSpy = (($) => {
       this._clear()
 
       let queries = this._selector.split(',')
+      // eslint-disable-next-line arrow-body-style
       queries     = queries.map((selector) => {
         return `${selector}[data-target="${target}"],` +
                `${selector}[href="${target}"]`
@@ -262,6 +265,8 @@ const ScrollSpy = (($) => {
         // Set triggered links parents as active
         // With both <ul> and <nav> markup a parent is the previous sibling of any nav ancestor
         $link.parents(Selector.NAV_LIST_GROUP).prev(`${Selector.NAV_LINKS}, ${Selector.LIST_ITEMS}`).addClass(ClassName.ACTIVE)
+        // Handle special case when .nav-link is inside .nav-item
+        $link.parents(Selector.NAV_LIST_GROUP).prev(Selector.NAV_ITEMS).children(Selector.NAV_LINKS).addClass(ClassName.ACTIVE)
       }
 
       $(this._scrollElement).trigger(Event.ACTIVATE, {
@@ -287,7 +292,7 @@ const ScrollSpy = (($) => {
         }
 
         if (typeof config === 'string') {
-          if (data[config] === undefined) {
+          if (typeof data[config] === 'undefined') {
             throw new Error(`No method named "${config}"`)
           }
           data[config]()
@@ -330,6 +335,6 @@ const ScrollSpy = (($) => {
 
   return ScrollSpy
 
-})(jQuery)
+})($)
 
 export default ScrollSpy

@@ -9,11 +9,10 @@
   font-size: $badge-font-size;
   font-weight: $badge-font-weight;
   line-height: 1;
-  color: $badge-color;
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
-  @include border-radius();
+  @include border-radius($badge-border-radius);
 
   // Empty badges collapse automatically
   &:empty {
@@ -26,16 +25,6 @@
   position: relative;
   top: -1px;
 }
-
-// scss-lint:disable QualifyingElement
-// Add hover effects, but only for links
-a.badge {
-  @include hover-focus {
-    color: $badge-link-hover-color;
-    text-decoration: none;
-  }
-}
-// scss-lint:enable QualifyingElement
 
 // Pill badges
 //
@@ -51,26 +40,8 @@ a.badge {
 //
 // Contextual variations (linked badges get darker on :hover).
 
-.badge-default {
-  @include badge-variant($badge-default-bg);
-}
-
-.badge-primary {
-  @include badge-variant($badge-primary-bg);
-}
-
-.badge-success {
-  @include badge-variant($badge-success-bg);
-}
-
-.badge-info {
-  @include badge-variant($badge-info-bg);
-}
-
-.badge-warning {
-  @include badge-variant($badge-warning-bg);
-}
-
-.badge-danger {
-  @include badge-variant($badge-danger-bg);
+@each $color, $value in $theme-colors {
+  .badge-#{$color} {
+    @include badge-variant($value);
+  }
 }
