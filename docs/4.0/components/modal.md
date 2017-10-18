@@ -575,6 +575,10 @@ Manually readjust the modal's position if the height of a modal changes while it
 
 {% highlight js %}$('#myModal').modal('handleUpdate'){% endhighlight %}
 
+### `.modal('dispose')`
+
+Destroys an element's modal.
+
 ### Events
 
 Bootstrap's modal class exposes a few events for hooking into modal functionality. All modal events are fired at the modal itself (i.e. at the `<div class="modal">`).

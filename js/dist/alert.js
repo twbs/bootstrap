@@ -172,5 +172,5 @@ var Alert = function () {
   };
 
   return Alert;
-}(jQuery);
+}($);
 //# sourceMappingURL=alert.js.map
