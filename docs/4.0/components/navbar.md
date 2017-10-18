@@ -409,7 +409,9 @@ When the container is within your navbar, its horizontal padding is removed at b
 
 ## Placement
 
-Use our position utilities to place navbars in non-static positions. Choose from fixed to the top, fixed to the bottom, or stickied to the top. **Note that `position: sticky`, used for `.sticky-top`, [isn't fully supported in every browser](https://caniuse.com/#feat=css-sticky).**
+Use our position utilities to place navbars in non-static positions. Choose from fixed to the top, fixed to the bottom, or stickied to the top (scrolls with the page until it reaches the top, then stays there). 
+- `.fixed-top` and `.fixed-bottom` both use `position:fixed`, so normal text can flow through them. Use your own CSS to prevent this, e.g. a vertical padding on the `body` tag. Use `@media screen { ... }` as navbars are not printed by default.
+- **Note that `position: sticky`, used for `.sticky-top`, [isn't fully supported in every browser](https://caniuse.com/#feat=css-sticky).**
 
 {% example html %}
 <nav class="navbar navbar-light bg-light">
