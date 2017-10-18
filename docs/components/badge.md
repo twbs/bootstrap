@@ -80,7 +80,7 @@ Use `.badge-group` to combine multiple badges into one element.
 
 ## Ghost Variants
 
-Use `.badge-group` to combine multiple badges into one element.
+Use `.badge-ghost` to get an outlined variant.
 
 {% example html %}
 <span class="badge badge-default badge-ghost">Default</span>
