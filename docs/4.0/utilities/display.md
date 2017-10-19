@@ -6,17 +6,17 @@ group: utilities
 toc: true
 ---
 
-## How it Works
+## How it works
 
-Change the `display` value of elements with our responsive-friendly display utility classes.
-
-The [`display`](https://developer.mozilla.org/en-US/docs/Web/CSS/display) property accepts lots of values, and we support many of them with utility classes. We purposefully don't provide them all.
+Change the value of the [`display` property](https://developer.mozilla.org/en-US/docs/Web/CSS/display) with our responsive display utility classes. We purposely support only a subset of all possible values for `display`. Classes can be combined for various effects as you need.
 
 ## Notation
 
-The classes are named using the format 
-* `d-{display}` - for all content
-* `d-{breakpoint}-{display}` - ** for the named breakpoint ( `sm`, `md`, `lg`, `xl`) and above.**
+Display utility classes that apply to all [breakpoints]({{ site.baseurl }}/docs/{{ site.docs_version }}/layout/overview/#responsive-breakpoints), from `xs` to `xl`, have no breakpoint abbreviation in them. This is because those classes are applied from `min-width: 0` and up, and thus are not bound by a media query. The remaining breakpoints, however, do include a breakpoint abbreviation.
+
+As such, the classes are named using the format:
+* `.d-{value}` for `xs`
+* `.d-{breakpoint}-{value}` for `sm`, `md`, `lg`, and `xl`.
 
 Where *display* is one of:
 
@@ -29,9 +29,9 @@ Where *display* is one of:
 * `flex`
 * `inline-flex`
 
-For example, `d-lg-none` sets `display:none` on screens larger than the lg breakpoint.
+The media queries effect screen widths with the given breakpoint *or larger*.
 
-Combine these classes to get the effect you need.
+For example, `.d-lg-none` sets `display: none;` on both `lg' and `xl` screens.
 
 ## Examples
 
@@ -87,7 +87,7 @@ Change the `display` value of elements when printing with our print display util
 The print and display classes can be combined.
 
 {% example html %}
-<div class="d-print-none">Screen Only (hide on print)</div>
-<div class="d-none d-print-block">Print Only (hide on screen)</div>
-<div class="d-none d-lg-block d-print-block">(lg or wider) screen and print only. Hide on smaller than lg screen.</div>
+<div class="d-print-none">Screen Only (Hide on print only)</div>
+<div class="d-none d-print-block">Print Only (Hide on screen only)</div>
+<div class="d-none d-lg-block d-print-block">Hide up to large on screen, but always show on print</div>
 {% endexample %}
