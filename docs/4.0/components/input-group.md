@@ -106,7 +106,6 @@ Multiple add-ons are supported and can be mixed with checkbox and radio input ve
 </div>
 {% endexample %}
 
-
 ## Button addons
 
 Buttons in input groups must wrapped in a `.input-group-btn` for proper alignment and sizing. This is required due to default browser styles that cannot be overridden.
@@ -227,6 +226,98 @@ Buttons in input groups must wrapped in a `.input-group-btn` for proper alignmen
       </div>
     </div>
   </div>
+</div>
+{% endexample %}
+
+## Custom forms
+
+Input groups include support for custom selects and custom file inputs. Browser default versions of these are not supported.
+
+### Custom select
+
+{% example html %}
+<div class="input-group mb-3">
+  <span class="input-group-addon" id="">Options</span>
+  <select class="custom-select" id="">
+    <option selected>Choose...</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </select>
+</div>
+
+<div class="input-group mb-3">
+  <select class="custom-select" id="">
+    <option selected>Choose...</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </select>
+  <span class="input-group-addon" id="">Options</span>
+</div>
+
+<div class="input-group mb-3">
+  <span class="input-group-btn">
+    <button class="btn btn-secondary" type="button">Button</button>
+  </span>
+  <select class="custom-select" id="">
+    <option selected>Choose...</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </select>
+</div>
+
+<div class="input-group">
+  <select class="custom-select" id="">
+    <option selected>Choose...</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </select>
+  <span class="input-group-btn">
+    <button class="btn btn-secondary" type="button">Button</button>
+  </span>
+</div>
+{% endexample %}
+
+### Custom file input
+
+{% example html %}
+<div class="input-group mb-3">
+  <span class="input-group-addon" id="">Upload</span>
+  <label class="custom-file">
+    <input type="file" id="file" class="custom-file-input" required>
+    <span class="custom-file-control"></span>
+  </label>
+</div>
+
+<div class="input-group mb-3">
+  <label class="custom-file">
+    <input type="file" id="file" class="custom-file-input" required>
+    <span class="custom-file-control"></span>
+  </label>
+  <span class="input-group-addon" id="">Upload</span>
+</div>
+
+<div class="input-group mb-3">
+  <span class="input-group-btn">
+    <button class="btn btn-secondary" type="button">Button</button>
+  </span>
+  <label class="custom-file">
+    <input type="file" id="file" class="custom-file-input" required>
+    <span class="custom-file-control"></span>
+  </label>
+</div>
+
+<div class="input-group">
+  <label class="custom-file">
+    <input type="file" id="file" class="custom-file-input" required>
+    <span class="custom-file-control"></span>
+  </label>
+  <span class="input-group-btn">
+    <button class="btn btn-secondary" type="button">Button</button>
+  </span>
 </div>
 {% endexample %}
 
