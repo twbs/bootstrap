@@ -530,9 +530,9 @@ $navbar-padding-x:                  $spacer !default;
 
 $navbar-brand-font-size:            $font-size-lg !default;
 // Compute the navbar-brand padding-y so the navbar-brand will have the same height as navbar-text and nav-link
-$nav-link-height:                   $navbar-brand-font-size * $line-height-base !default;
-$navbar-brand-height:               ($font-size-base * $line-height-base + $nav-link-padding-y * 2) !default;
-$navbar-brand-padding-y:            ($navbar-brand-height - $nav-link-height) / 2 !default;
+$nav-link-height:                   ($font-size-base * $line-height-base + $nav-link-padding-y * 2) !default;
+$navbar-brand-height:               $navbar-brand-font-size * $line-height-base !default;
+$navbar-brand-padding-y:            ($nav-link-height - $navbar-brand-height) / 2 !default;
 
 $navbar-toggler-padding-y:          .25rem !default;
 $navbar-toggler-padding-x:          .75rem !default;
