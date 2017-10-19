@@ -3,8 +3,26 @@ div.required > label.control-label {
   // margin-right: -15px;
 }
 
-.inline-block {
+.inline-element {
   display: inline-block;
+}
+
+.inline-element.schema-form-select > div.form-group {
+  display: inline-block;
+}
+
+.inline-element {
+  input[type='submit'], input[type='button'], input[type="reset"], button {
+    margin-right: 0px;
+  }
+}
+
+.hiddenHelp {
+  position: relative;
+}
+
+div.field {
+  padding-right: 0px;
 }
 
 // Counter the changes made by grid-system
@@ -15,7 +33,7 @@ input, button, select, textarea {
 
 // Make the read only field a little bit different
 input[type="text"]:disabled {
-  border: 1px solid #EEE;
+  border: none;
 }
 
 div.checkbox.has-error .help-block {

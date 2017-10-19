@@ -3546,8 +3546,23 @@ button.close {
 .affix {
   position: fixed;
 }
-.inline-block {
+.inline-element {
   display: inline-block;
+}
+.inline-element.schema-form-select > div.form-group {
+  display: inline-block;
+}
+.inline-element input[type='submit'],
+.inline-element input[type='button'],
+.inline-element input[type="reset"],
+.inline-element button {
+  margin-right: 0;
+}
+.hiddenHelp {
+  position: relative;
+}
+div.field {
+  padding-right: 0;
 }
 input,
 button,
@@ -3557,7 +3572,7 @@ textarea {
   line-height: normal;
 }
 input[type="text"]:disabled {
-  border: 1px solid #eee;
+  border: none;
 }
 div.checkbox.has-error .help-block,
 div:not(.checkbox).has-error .help-block {
