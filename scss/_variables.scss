@@ -62,16 +62,25 @@ $colors: map-merge((
   "gray-dark":  $gray-800
 ), $colors);
 
+$primary:       $blue !default;
+$secondary:     $gray-600 !default;
+$success:       $green !default;
+$info:          $cyan !default;
+$warning:       $yellow !default;
+$danger:        $red !default;
+$light:         $gray-100 !default;
+$dark:          $gray-800 !default;
+
 $theme-colors: () !default;
 $theme-colors: map-merge((
-  "primary":    $blue,
-  "secondary":  $gray-600,
-  "success":    $green,
-  "info":       $cyan,
-  "warning":    $yellow,
-  "danger":     $red,
-  "light":      $gray-100,
-  "dark":       $gray-800
+  "primary":    $primary,
+  "secondary":  $secondary,
+  "success":    $success,
+  "info":       $info,
+  "warning":    $warning,
+  "danger":     $danger,
+  "light":      $light,
+  "dark":       $dark
 ), $theme-colors);
 // stylelint-enable
 
