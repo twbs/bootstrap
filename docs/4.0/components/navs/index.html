@@ -1,14 +1,37 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Jekyll v3.6.0">
 
-<title>
-  
-    Navs &middot; Bootstrap
-  
-</title>
+<title>Navs &middot; Bootstrap</title>
+
+<!-- Bootstrap core CSS -->
+
+  <link href="/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+<!-- Documentation extras -->
+
+<link href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" rel="stylesheet">
+
+<link href="/assets/css/docs.min.css" rel="stylesheet">
+
+<!-- Favicons -->
+<link rel="apple-touch-icon" href="/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="manifest" href="/assets/img/favicons/manifest.json">
+<link rel="mask-icon" href="/assets/img/favicons/safari-pinned-tab.svg" color="#563d7c">
+<link rel="icon" href="/favicon.ico">
+<meta name="msapplication-config" content="/assets/img/favicons/browserconfig.xml">
+<meta name="theme-color" content="#563d7c">
+
+
+<!-- Meta -->
+<meta name="description" content="The most popular HTML, CSS, and JS library in the world.">
+<meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
 
 <!-- Twitter -->
 <meta name="twitter:site" content="@getbootstrap">
@@ -34,25 +57,6 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 
-<!-- Meta -->
-<meta name="description" content="The most popular HTML, CSS, and JS library in the world.">
-<meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-
-
-<!-- Bootstrap core CSS -->
-
-  <link href="/dist/css/bootstrap.min.css" rel="stylesheet">
-
-
-<!-- Documentation extras -->
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
-
-<link href="/assets/css/docs.min.css" rel="stylesheet">
-
-<!-- Favicons -->
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="icon" href="/favicon.ico">
 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -64,7 +68,7 @@
 </script>
 
   </head>
-  <body class="bd-docs" data-spy="scroll" data-target=".bd-sidenav-active">
+  <body>
     <a id="skippy" class="sr-only sr-only-focusable" href="#content">
       <div class="container">
         <span class="skiplink-text">Skip to main content</span>
@@ -73,7 +77,7 @@
 
     <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
   <a class="navbar-brand mr-0 mr-md-2" href="/" aria-label="Bootstrap">
-    <svg  class="d-block" width="36" height="36" viewbox="0 0 612 612" xmlns="http://www.w3.org/2000/svg" focusable="false"><title>Bootstrap</title><path fill="currentColor" d="M510 8a94.3 94.3 0 0 1 94 94v408a94.3 94.3 0 0 1-94 94H102a94.3 94.3 0 0 1-94-94V102a94.3 94.3 0 0 1 94-94h408m0-8H102C45.9 0 0 45.9 0 102v408c0 56.1 45.9 102 102 102h408c56.1 0 102-45.9 102-102V102C612 45.9 566.1 0 510 0z"/><path fill="currentColor" d="M196.77 471.5V154.43h124.15c54.27 0 91 31.64 91 79.1 0 33-24.17 63.72-54.71 69.21v1.76c43.07 5.49 70.75 35.82 70.75 78 0 55.81-40 89-107.45 89zm39.55-180.4h63.28c46.8 0 72.29-18.68 72.29-53 0-31.42-21.53-48.78-60-48.78h-75.57zm78.22 145.46c47.68 0 72.73-19.34 72.73-56s-25.93-55.37-76.46-55.37h-74.49v111.4z"/></svg>
+    <svg class="d-block" width="36" height="36" viewbox="0 0 612 612" xmlns="http://www.w3.org/2000/svg" focusable="false"><title>Bootstrap</title><path fill="currentColor" d="M510 8a94.3 94.3 0 0 1 94 94v408a94.3 94.3 0 0 1-94 94H102a94.3 94.3 0 0 1-94-94V102a94.3 94.3 0 0 1 94-94h408m0-8H102C45.9 0 0 45.9 0 102v408c0 56.1 45.9 102 102 102h408c56.1 0 102-45.9 102-102V102C612 45.9 566.1 0 510 0z"/><path fill="currentColor" d="M196.77 471.5V154.43h124.15c54.27 0 91 31.64 91 79.1 0 33-24.17 63.72-54.71 69.21v1.76c43.07 5.49 70.75 35.82 70.75 78 0 55.81-40 89-107.45 89zm39.55-180.4h63.28c46.8 0 72.29-18.68 72.29-53 0-31.42-21.53-48.78-60-48.78h-75.57zm78.22 145.46c47.68 0 72.73-19.34 72.73-56s-25.93-55.37-76.46-55.37h-74.49v111.4z"/></svg>
 
   </a>
 
@@ -83,7 +87,7 @@
         <a class="nav-link " href="/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Bootstrap');">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link active" href="/docs/4.0/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Docs');">Documentation</a>
+        <a class="nav-link active" href="/docs/4.0/getting-started/introduction/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Docs');">Documentation</a>
       </li>
       <li class="nav-item">
         <a class="nav-link " href="/docs/4.0/examples/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Examples');">Examples</a>
@@ -110,8 +114,8 @@
       </a>
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="bd-versions">
         <a class="dropdown-item active" href="/docs/4.0/">Latest (4.x)</a>
-        <a class="dropdown-item" href="https://v4-alpha.getbootstrap.com">v4 Alpha 6</a>
-        <a class="dropdown-item" href="https://getbootstrap.com/docs/3.3/">v3.3.7</a>
+        <a class="dropdown-item" href="https://v4-alpha.getbootstrap.com/">v4 Alpha 6</a>
+        <a class="dropdown-item" href="https://getbootstrap.com/3.3/">v3.3.7</a>
         <a class="dropdown-item" href="https://getbootstrap.com/2.3.2/">v2.3.2</a>
       </div>
     </li>
@@ -136,7 +140,7 @@
     </li>
   </ul>
 
-  <a class="btn btn-bd-yellow d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="https://github.com/twbs/bootstrap/archive/v4.0.0-beta.zip">Download</a>
+  <a class="btn btn-bd-yellow d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="https://github.com/twbs/bootstrap/archive/v4.0.0-beta.2.zip">Download</a>
 </header>
 
 
@@ -145,876 +149,433 @@
         <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
           <form class="bd-search d-flex align-items-center">
   <input type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
-  <button class="btn-link bd-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#bd-docs-nav" aria-controls="bd-docs-nav" aria-expanded="false" aria-label="Toggle docs avigation">
-    <svg class="" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 30 30" width="30" height="30" focusable="false"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/></svg>
+  <button class="btn btn-link bd-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#bd-docs-nav" aria-controls="bd-docs-nav" aria-expanded="false" aria-label="Toggle docs navigation">
+    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 30 30" width="30" height="30" focusable="false"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/></svg>
 
   </button>
 </form>
 
-<nav class="collapse bd-links" id="bd-docs-nav">
-  
-  
-  
-  
-  
-  
-
-  
-
-  <div class="bd-toc-item ">
+<nav class="collapse bd-links" id="bd-docs-nav"><div class="bd-toc-item">
       <a class="bd-toc-link" href="/docs/4.0/getting-started/introduction/">
         Getting started
       </a>
 
-      <ul class="nav bd-sidenav">
-        
-          
-          
-
-          
-
-          <li class="">
+      <ul class="nav bd-sidenav"><li>
             <a href="/docs/4.0/getting-started/introduction/">
               Introduction
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/getting-started/download/">
               Download
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/getting-started/contents/">
               Contents
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/getting-started/browsers-devices/">
               Browsers & devices
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/getting-started/javascript/">
               JavaScript
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
-            <a href="/docs/4.0/getting-started/options/">
-              Options
+          </li><li>
+            <a href="/docs/4.0/getting-started/theming/">
+              Theming
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/getting-started/build-tools/">
               Build tools
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/getting-started/webpack/">
               Webpack
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/getting-started/accessibility/">
               Accessibility
             </a>
 
             
-          </li>
-        
-      </ul>
-    </div>
-  
-  
-  
-  
-  
-
-  
-
-  <div class="bd-toc-item ">
+          </li></ul>
+    </div><div class="bd-toc-item">
       <a class="bd-toc-link" href="/docs/4.0/layout/overview/">
         Layout
       </a>
 
-      <ul class="nav bd-sidenav">
-        
-          
-          
-
-          
-
-          <li class="">
+      <ul class="nav bd-sidenav"><li>
             <a href="/docs/4.0/layout/overview/">
               Overview
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/layout/grid/">
               Grid
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/layout/media-object/">
               Media object
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/layout/utilities-for-layout/">
               Utilities for layout
             </a>
 
             
-          </li>
-        
-      </ul>
-    </div>
-  
-  
-  
-  
-  
-
-  
-
-  <div class="bd-toc-item ">
+          </li></ul>
+    </div><div class="bd-toc-item">
       <a class="bd-toc-link" href="/docs/4.0/content/reboot/">
         Content
       </a>
 
-      <ul class="nav bd-sidenav">
-        
-          
-          
-
-          
-
-          <li class="">
+      <ul class="nav bd-sidenav"><li>
             <a href="/docs/4.0/content/reboot/">
               Reboot
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/content/typography/">
               Typography
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/content/code/">
               Code
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/content/images/">
               Images
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/content/tables/">
               Tables
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/content/figures/">
               Figures
             </a>
 
             
-          </li>
-        
-      </ul>
-    </div>
-  
-  
-  
-  
-  
-
-  
-
-  <div class="bd-toc-item active">
+          </li></ul>
+    </div><div class="bd-toc-item active">
       <a class="bd-toc-link" href="/docs/4.0/components/alerts/">
         Components
       </a>
 
-      <ul class="nav bd-sidenav">
-        
-          
-          
-
-          
-
-          <li class="">
+      <ul class="nav bd-sidenav"><li>
             <a href="/docs/4.0/components/alerts/">
               Alerts
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/badge/">
               Badge
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/breadcrumb/">
               Breadcrumb
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/buttons/">
               Buttons
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/button-group/">
               Button group
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/card/">
               Card
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/carousel/">
               Carousel
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/collapse/">
               Collapse
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/dropdowns/">
               Dropdowns
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/forms/">
               Forms
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/input-group/">
               Input group
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/jumbotron/">
               Jumbotron
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/list-group/">
               List group
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/modal/">
               Modal
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="active bd-sidenav-active">
+          </li><li class="active bd-sidenav-active">
             <a href="/docs/4.0/components/navs/">
               Navs
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/navbar/">
               Navbar
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/pagination/">
               Pagination
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/popovers/">
               Popovers
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/progress/">
               Progress
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/scrollspy/">
               Scrollspy
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/tooltips/">
               Tooltips
             </a>
 
             
-          </li>
-        
-      </ul>
-    </div>
-  
-  
-  
-  
-  
-
-  
-
-  <div class="bd-toc-item ">
+          </li></ul>
+    </div><div class="bd-toc-item">
       <a class="bd-toc-link" href="/docs/4.0/utilities/borders/">
         Utilities
       </a>
 
-      <ul class="nav bd-sidenav">
-        
-          
-          
-
-          
-
-          <li class="">
+      <ul class="nav bd-sidenav"><li>
             <a href="/docs/4.0/utilities/borders/">
               Borders
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/utilities/clearfix/">
               Clearfix
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/utilities/close-icon/">
               Close icon
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/utilities/colors/">
               Colors
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/utilities/display/">
               Display
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/utilities/embed/">
               Embed
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/utilities/flex/">
               Flex
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/utilities/float/">
               Float
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/utilities/image-replacement/">
               Image replacement
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/utilities/position/">
               Position
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/utilities/screenreaders/">
               Screenreaders
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/utilities/sizing/">
               Sizing
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/utilities/spacing/">
               Spacing
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/utilities/text/">
               Text
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/utilities/vertical-align/">
               Vertical align
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/utilities/visibility/">
               Visibility
             </a>
 
             
-          </li>
-        
-      </ul>
-    </div>
-  
-  
-  
-  
-  
-
-  
-
-  <div class="bd-toc-item ">
+          </li></ul>
+    </div><div class="bd-toc-item">
       <a class="bd-toc-link" href="/docs/4.0/extend/icons/">
         Extend
       </a>
 
-      <ul class="nav bd-sidenav">
-        
-          
-          
-
-          
-
-          <li class="">
+      <ul class="nav bd-sidenav"><li>
             <a href="/docs/4.0/extend/icons/">
               Icons
             </a>
 
             
-          </li>
-        
-      </ul>
-    </div>
-  
-  
-  
-  
-  
-
-  
-
-  <div class="bd-toc-item ">
+          </li></ul>
+    </div><div class="bd-toc-item">
       <a class="bd-toc-link" href="/docs/4.0/migration/">
         Migration
       </a>
 
-      <ul class="nav bd-sidenav">
-        
-      </ul>
-    </div>
-  
-</nav>
+      <ul class="nav bd-sidenav"></ul>
+    </div><div class="bd-toc-item">
+      <a class="bd-toc-link" href="/docs/4.0/about/history/">
+        About
+      </a>
+
+      <ul class="nav bd-sidenav"><li>
+            <a href="/docs/4.0/about/history/">
+              History
+            </a>
+
+            
+          </li><li>
+            <a href="/docs/4.0/about/team/">
+              Team
+            </a>
+
+            
+          </li><li>
+            <a href="/docs/4.0/about/brand/">
+              Brand
+            </a>
+
+            
+          </li><li>
+            <a href="/docs/4.0/about/license/">
+              License
+            </a>
+
+            
+          </li><li>
+            <a href="/docs/4.0/about/translations/">
+              Translations
+            </a>
+
+            
+          </li></ul>
+    </div></nav>
 
         </div>
 
@@ -1051,6 +612,7 @@
 <li class="toc-entry toc-h4"><a href="#tabshow">.tab(‘show’)</a></li>
 </ul>
 </li>
+<li class="toc-entry toc-h3"><a href="#tabdispose">.tab(‘dispose’)</a></li>
 <li class="toc-entry toc-h3"><a href="#events">Events</a></li>
 </ul>
 </li>
@@ -1061,7 +623,7 @@
         <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
           <h1 class="bd-title" id="content">Navs</h1>
           <p class="bd-lead">Documentation and examples for how to use Bootstrap's included navigation components.</p>
-          <script async type="text/javascript" src="https://cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=getbootstrapcom" id="_carbonads_js"></script>
+          <script async src="https://cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=getbootstrapcom" id="_carbonads_js"></script>
 
           <h2 id="base-nav">Base nav</h2>
 
@@ -1073,7 +635,7 @@
 <p>The base <code class="highlighter-rouge">.nav</code> component does not include any <code class="highlighter-rouge">.active</code> state. The following examples include the class, mainly to demonstrate that this particular class does not trigger any special styling.</p>
 </div>
 
-<div class="bd-example" data-example-id="">
+<div class="bd-example">
 <ul class="nav">
   <li class="nav-item">
     <a class="nav-link active" href="#">Active</a>
@@ -1106,7 +668,7 @@
 
 <p>Classes are used throughout, so your markup can be super flexible. Use <code class="highlighter-rouge">&lt;ul&gt;</code>s like above, or roll your own with say a <code class="highlighter-rouge">&lt;nav&gt;</code> element. Because the <code class="highlighter-rouge">.nav</code> uses <code class="highlighter-rouge">display: flex</code>, the nav links behave the same as nav items would, but without the extra markup.</p>
 
-<div class="bd-example" data-example-id="">
+<div class="bd-example">
 <nav class="nav">
   <a class="nav-link active" href="#">Active</a>
   <a class="nav-link" href="#">Link</a>
@@ -1131,7 +693,7 @@
 
 <p>Centered with <code class="highlighter-rouge">.justify-content-center</code>:</p>
 
-<div class="bd-example" data-example-id="">
+<div class="bd-example">
 <ul class="nav justify-content-center">
   <li class="nav-item">
     <a class="nav-link active" href="#">Active</a>
@@ -1164,7 +726,7 @@
 
 <p>Right-aligned with <code class="highlighter-rouge">.justify-content-end</code>:</p>
 
-<div class="bd-example" data-example-id="">
+<div class="bd-example">
 <ul class="nav justify-content-end">
   <li class="nav-item">
     <a class="nav-link active" href="#">Active</a>
@@ -1199,7 +761,7 @@
 
 <p>Stack your navigation by changing the flex item direction with the <code class="highlighter-rouge">.flex-column</code> utility. Need to stack them on some viewports but not others? Use the responsive versions (e.g., <code class="highlighter-rouge">.flex-sm-column</code>).</p>
 
-<div class="bd-example" data-example-id="">
+<div class="bd-example">
 <ul class="nav flex-column">
   <li class="nav-item">
     <a class="nav-link active" href="#">Active</a>
@@ -1232,7 +794,7 @@
 
 <p>As always, vertical navigation is possible without <code class="highlighter-rouge">&lt;ul&gt;</code>s, too.</p>
 
-<div class="bd-example" data-example-id="">
+<div class="bd-example">
 <nav class="nav flex-column">
   <a class="nav-link active" href="#">Active</a>
   <a class="nav-link" href="#">Link</a>
@@ -1251,7 +813,7 @@
 
 <p>Takes the basic nav from above and adds the <code class="highlighter-rouge">.nav-tabs</code> class to generate a tabbed interface. Use them to create tabbable regions with our <a href="#javascript-behavior">tab JavaScript plugin</a>.</p>
 
-<div class="bd-example" data-example-id="">
+<div class="bd-example">
 <ul class="nav nav-tabs">
   <li class="nav-item">
     <a class="nav-link active" href="#">Active</a>
@@ -1286,7 +848,7 @@
 
 <p>Take that same HTML, but use <code class="highlighter-rouge">.nav-pills</code> instead:</p>
 
-<div class="bd-example" data-example-id="">
+<div class="bd-example">
 <ul class="nav nav-pills">
   <li class="nav-item">
     <a class="nav-link active" href="#">Active</a>
@@ -1321,7 +883,7 @@
 
 <p>Force your <code class="highlighter-rouge">.nav</code>’s contents to extend the full available width one of two modifier classes. To proportionately fill all available space with your <code class="highlighter-rouge">.nav-item</code>s, use <code class="highlighter-rouge">.nav-fill</code>. Notice that all horizontal space is occupied, but not every nav item has the same width.</p>
 
-<div class="bd-example" data-example-id="">
+<div class="bd-example">
 <ul class="nav nav-pills nav-fill">
   <li class="nav-item">
     <a class="nav-link active" href="#">Active</a>
@@ -1354,7 +916,7 @@
 
 <p>When using a <code class="highlighter-rouge">&lt;nav&gt;</code>-based navigation, be sure to include <code class="highlighter-rouge">.nav-item</code> on the anchors.</p>
 
-<div class="bd-example" data-example-id="">
+<div class="bd-example">
 <nav class="nav nav-pills nav-fill">
   <a class="nav-item nav-link active" href="#">Active</a>
   <a class="nav-item nav-link" href="#">Link</a>
@@ -1371,7 +933,7 @@
 
 <p>For equal-width elements, use <code class="highlighter-rouge">.nav-justified</code>. All horizontal space will be occupied by nav links, but unlike the <code class="highlighter-rouge">.nav-fill</code> above, every nav item will be the same width.</p>
 
-<div class="bd-example" data-example-id="">
+<div class="bd-example">
 <nav class="nav nav-pills nav-justified">
   <a class="nav-link active" href="#">Active</a>
   <a class="nav-link" href="#">Longer nav link</a>
@@ -1388,7 +950,7 @@
 
 <p>Similar to the <code class="highlighter-rouge">.nav-fill</code> example using a <code class="highlighter-rouge">&lt;nav&gt;</code>-based navigation, be sure to include <code class="highlighter-rouge">.nav-item</code> on the anchors.</p>
 
-<div class="bd-example" data-example-id="">
+<div class="bd-example">
 <nav class="nav nav-pills nav-justified">
   <a class="nav-item nav-link active" href="#">Active</a>
   <a class="nav-item nav-link" href="#">Link</a>
@@ -1407,7 +969,7 @@
 
 <p>If you need responsive nav variations, consider using a series of <a href="/docs/4.0/utilities/flex/">flexbox utilities</a>. While more verbose, these utilities offer greater customization across responsive breakpoints. In the example below, our nav will be stacked on the lowest breakpoint, then adapt to a horizontal layout that fills the available width starting from the small breakpoint.</p>
 
-<div class="bd-example" data-example-id="">
+<div class="bd-example">
 <nav class="nav nav-pills flex-column flex-sm-row">
   <a class="flex-sm-fill text-sm-center nav-link active" href="#">Active</a>
   <a class="flex-sm-fill text-sm-center nav-link" href="#">Link</a>
@@ -1434,7 +996,7 @@
 
 <h3 id="tabs-with-dropdowns">Tabs with dropdowns</h3>
 
-<div class="bd-example" data-example-id="">
+<div class="bd-example">
 <ul class="nav nav-tabs">
   <li class="nav-item">
     <a class="nav-link active" href="#">Active</a>
@@ -1481,7 +1043,7 @@
 
 <h3 id="pills-with-dropdowns">Pills with dropdowns</h3>
 
-<div class="bd-example" data-example-id="">
+<div class="bd-example">
 <ul class="nav nav-pills">
   <li class="nav-item">
     <a class="nav-link active" href="#">Active</a>
@@ -1530,24 +1092,22 @@
 
 <p>Use the tab JavaScript plugin—include it individually or through the compiled <code class="highlighter-rouge">bootstrap.js</code> file—to extend our navigational tabs and pills to create tabbable panes of local content, even via dropdown menus.</p>
 
+<p>If you’re building our JS from source, it <a href="/docs/4.0/getting-started/javascript/#util">requires <code class="highlighter-rouge">util.js</code></a>.</p>
+
 <p>Dynamic tabbed interfaces, as described in the <a href="https://www.w3.org/TR/wai-aria-practices/#tabpanel"><abbr title="Web Accessibility Initiative">WAI</abbr> <abbr title="Accessible Rich Internet Applications">ARIA</abbr> Authoring Practices</a>, require <code class="highlighter-rouge">role="tablist"</code>, <code class="highlighter-rouge">role="tab"</code>, <code class="highlighter-rouge">role="tabpanel"</code>, and additional <code class="highlighter-rouge">aria-</code> attributes in order to convey their structure, functionality and current state to users of assistive technologies (such as screen readers).</p>
+
+<p>Note that dynamic tabbed interfaces should <em>not</em> contain dropdown menus, as this causes both usability and accessibility issues. From a usability perspective, the fact that the currently displayed tab’s trigger element is not immediately visible (as it’s inside the closed dropdown menu) can cause confusion. From an accessibility point of view, there is currently no sensible way to map this sort of construct to a standard WAI ARIA pattern, meaning that it cannot be easily made understandable to users of assistive technologies.</p>
 
 <div class="bd-example bd-example-tabs">
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
-      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-expanded="true">Home</a>
+      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile">Profile</a>
+      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
     </li>
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-        Dropdown
-      </a>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" id="dropdown1-tab" href="#dropdown1" role="tab" data-toggle="tab" aria-controls="dropdown1">@fat</a>
-        <a class="dropdown-item" id="dropdown2-tab" href="#dropdown2" role="tab" data-toggle="tab" aria-controls="dropdown2">@mdo</a>
-      </div>
+    <li class="nav-item">
+      <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
     </li>
   </ul>
   <div class="tab-content" id="myTabContent">
@@ -1557,54 +1117,36 @@
     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
       <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
     </div>
-    <div class="tab-pane fade" id="dropdown1" role="tabpanel" aria-labelledby="dropdown1-tab">
+    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
       <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
-    </div>
-    <div class="tab-pane fade" id="dropdown2" role="tabpanel" aria-labelledby="dropdown2-tab">
-      <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
     </div>
   </div>
 </div>
 
 <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav nav-tabs"</span> <span class="na">id=</span><span class="s">"myTab"</span> <span class="na">role=</span><span class="s">"tablist"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link active"</span> <span class="na">id=</span><span class="s">"home-tab"</span> <span class="na">data-toggle=</span><span class="s">"tab"</span> <span class="na">href=</span><span class="s">"#home"</span> <span class="na">role=</span><span class="s">"tab"</span> <span class="na">aria-controls=</span><span class="s">"home"</span> <span class="na">aria-expanded=</span><span class="s">"true"</span><span class="nt">&gt;</span>Home<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link active"</span> <span class="na">id=</span><span class="s">"home-tab"</span> <span class="na">data-toggle=</span><span class="s">"tab"</span> <span class="na">href=</span><span class="s">"#home"</span> <span class="na">role=</span><span class="s">"tab"</span> <span class="na">aria-controls=</span><span class="s">"home"</span> <span class="na">aria-selected=</span><span class="s">"true"</span><span class="nt">&gt;</span>Home<span class="nt">&lt;/a&gt;</span>
   <span class="nt">&lt;/li&gt;</span>
   <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">id=</span><span class="s">"profile-tab"</span> <span class="na">data-toggle=</span><span class="s">"tab"</span> <span class="na">href=</span><span class="s">"#profile"</span> <span class="na">role=</span><span class="s">"tab"</span> <span class="na">aria-controls=</span><span class="s">"profile"</span><span class="nt">&gt;</span>Profile<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">id=</span><span class="s">"profile-tab"</span> <span class="na">data-toggle=</span><span class="s">"tab"</span> <span class="na">href=</span><span class="s">"#profile"</span> <span class="na">role=</span><span class="s">"tab"</span> <span class="na">aria-controls=</span><span class="s">"profile"</span> <span class="na">aria-selected=</span><span class="s">"false"</span><span class="nt">&gt;</span>Profile<span class="nt">&lt;/a&gt;</span>
   <span class="nt">&lt;/li&gt;</span>
-  <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item dropdown"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link dropdown-toggle"</span> <span class="na">data-toggle=</span><span class="s">"dropdown"</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">role=</span><span class="s">"button"</span> <span class="na">aria-haspopup=</span><span class="s">"true"</span> <span class="na">aria-expanded=</span><span class="s">"false"</span><span class="nt">&gt;</span>
-      Dropdown
-    <span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-menu"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span> <span class="na">id=</span><span class="s">"dropdown1-tab"</span> <span class="na">href=</span><span class="s">"#dropdown1"</span> <span class="na">role=</span><span class="s">"tab"</span> <span class="na">data-toggle=</span><span class="s">"tab"</span> <span class="na">aria-controls=</span><span class="s">"dropdown1"</span><span class="nt">&gt;</span>@fat<span class="nt">&lt;/a&gt;</span>
-      <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span> <span class="na">id=</span><span class="s">"dropdown2-tab"</span> <span class="na">href=</span><span class="s">"#dropdown2"</span> <span class="na">role=</span><span class="s">"tab"</span> <span class="na">data-toggle=</span><span class="s">"tab"</span> <span class="na">aria-controls=</span><span class="s">"dropdown2"</span><span class="nt">&gt;</span>@mdo<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">id=</span><span class="s">"contact-tab"</span> <span class="na">data-toggle=</span><span class="s">"tab"</span> <span class="na">href=</span><span class="s">"#contact"</span> <span class="na">role=</span><span class="s">"tab"</span> <span class="na">aria-controls=</span><span class="s">"contact"</span> <span class="na">aria-selected=</span><span class="s">"false"</span><span class="nt">&gt;</span>Contact<span class="nt">&lt;/a&gt;</span>
   <span class="nt">&lt;/li&gt;</span>
 <span class="nt">&lt;/ul&gt;</span>
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-content"</span> <span class="na">id=</span><span class="s">"myTabContent"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane fade show active"</span> <span class="na">id=</span><span class="s">"home"</span> <span class="na">role=</span><span class="s">"tabpanel"</span> <span class="na">aria-labelledby=</span><span class="s">"home-tab"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane fade"</span> <span class="na">id=</span><span class="s">"profile"</span> <span class="na">role=</span><span class="s">"tabpanel"</span> <span class="na">aria-labelledby=</span><span class="s">"profile-tab"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane fade"</span> <span class="na">id=</span><span class="s">"dropdown1"</span> <span class="na">role=</span><span class="s">"tabpanel"</span> <span class="na">aria-labelledby=</span><span class="s">"dropdown1-tab"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane fade"</span> <span class="na">id=</span><span class="s">"dropdown2"</span> <span class="na">role=</span><span class="s">"tabpanel"</span> <span class="na">aria-labelledby=</span><span class="s">"dropdown2-tab"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane fade"</span> <span class="na">id=</span><span class="s">"contact"</span> <span class="na">role=</span><span class="s">"tabpanel"</span> <span class="na">aria-labelledby=</span><span class="s">"contact-tab"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></figure>
 
 <p>To help fit your needs, this works with <code class="highlighter-rouge">&lt;ul&gt;</code>-based markup, as shown above, as well as <code class="highlighter-rouge">&lt;nav&gt;</code>-based markup shown below.</p>
 
 <div class="bd-example bd-example-tabs">
   <nav class="nav nav-tabs" id="nav-tab" role="tablist">
-    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="home" aria-expanded="true">Home</a>
-    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="profile">Profile</a>
-    <div class="dropdown">
-      <a class="nav-item nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-        Dropdown
-      </a>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" id="nav-dropdown1-tab" href="#nav-dropdown1" role="tab" data-toggle="tab" aria-controls="dropdown1">@fat</a>
-        <a class="dropdown-item" id="nav-dropdown2-tab" href="#nav-dropdown2" role="tab" data-toggle="tab" aria-controls="dropdown2">@mdo</a>
-      </div>
-    </div>
+    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
+    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
+    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
   </nav>
   <div class="tab-content" id="nav-tabContent">
     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
@@ -1613,33 +1155,21 @@
     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
       <p>Nulla est ullamco ut irure incididunt nulla Lorem Lorem minim irure officia enim reprehenderit. Magna duis labore cillum sint adipisicing exercitation ipsum. Nostrud ut anim non exercitation velit laboris fugiat cupidatat. Commodo esse dolore fugiat sint velit ullamco magna consequat voluptate minim amet aliquip ipsum aute laboris nisi. Labore labore veniam irure irure ipsum pariatur mollit magna in cupidatat dolore magna irure esse tempor ad mollit. Dolore commodo nulla minim amet ipsum officia consectetur amet ullamco voluptate nisi commodo ea sit eu.</p>
     </div>
-    <div class="tab-pane fade" id="nav-dropdown1" role="tabpanel" aria-labelledby="nav-dropdown1-tab">
+    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
       <p>Sint sit mollit irure quis est nostrud cillum consequat Lorem esse do quis dolor esse fugiat sunt do. Eu ex commodo veniam Lorem aliquip laborum occaecat qui Lorem esse mollit dolore anim cupidatat. Deserunt officia id Lorem nostrud aute id commodo elit eiusmod enim irure amet eiusmod qui reprehenderit nostrud tempor. Fugiat ipsum excepteur in aliqua non et quis aliquip ad irure in labore cillum elit enim. Consequat aliquip incididunt ipsum et minim laborum laborum laborum et cillum labore. Deserunt adipisicing cillum id nulla minim nostrud labore eiusmod et amet. Laboris consequat consequat commodo non ut non aliquip reprehenderit nulla anim occaecat. Sunt sit ullamco reprehenderit irure ea ullamco Lorem aute nostrud magna.</p>
-    </div>
-    <div class="tab-pane fade" id="nav-dropdown2" role="tabpanel" aria-labelledby="nav-dropdown2-tab">
-      <p>Proident incididunt esse qui ea nisi ullamco aliquip nostrud velit sint duis. Aute culpa aute cillum sit consectetur mollit minim non reprehenderit tempor. Occaecat amet consectetur aute esse ad ullamco ad commodo mollit reprehenderit esse in consequat. Mollit minim do consectetur pariatur irure non id ea dolore occaecat adipisicing consectetur est aute magna non.</p>
     </div>
   </div>
 </div>
 
 <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"nav nav-tabs"</span> <span class="na">id=</span><span class="s">"myTab"</span> <span class="na">role=</span><span class="s">"tablist"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-item nav-link active"</span> <span class="na">id=</span><span class="s">"nav-home-tab"</span> <span class="na">data-toggle=</span><span class="s">"tab"</span> <span class="na">href=</span><span class="s">"#nav-home"</span> <span class="na">role=</span><span class="s">"tab"</span> <span class="na">aria-controls=</span><span class="s">"nav-home"</span> <span class="na">aria-expanded=</span><span class="s">"true"</span><span class="nt">&gt;</span>Home<span class="nt">&lt;/a&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-item nav-link"</span> <span class="na">id=</span><span class="s">"nav-profile-tab"</span> <span class="na">data-toggle=</span><span class="s">"tab"</span> <span class="na">href=</span><span class="s">"#nav-profile"</span> <span class="na">role=</span><span class="s">"tab"</span> <span class="na">aria-controls=</span><span class="s">"nav-profile"</span><span class="nt">&gt;</span>Profile<span class="nt">&lt;/a&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-item nav-link dropdown-toggle"</span> <span class="na">data-toggle=</span><span class="s">"dropdown"</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">role=</span><span class="s">"button"</span> <span class="na">aria-haspopup=</span><span class="s">"true"</span> <span class="na">aria-expanded=</span><span class="s">"false"</span><span class="nt">&gt;</span>
-      Dropdown
-    <span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-menu"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span> <span class="na">id=</span><span class="s">"nav-dropdown1-tab"</span> <span class="na">href=</span><span class="s">"#nav-dropdown1"</span> <span class="na">role=</span><span class="s">"tab"</span> <span class="na">data-toggle=</span><span class="s">"tab"</span> <span class="na">aria-controls=</span><span class="s">"nav-dropdown1"</span><span class="nt">&gt;</span>@fat<span class="nt">&lt;/a&gt;</span>
-      <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span> <span class="na">id=</span><span class="s">"nav-dropdown2-tab"</span> <span class="na">href=</span><span class="s">"#nav-dropdown2"</span> <span class="na">role=</span><span class="s">"tab"</span> <span class="na">data-toggle=</span><span class="s">"tab"</span> <span class="na">aria-controls=</span><span class="s">"nav-dropdown2"</span><span class="nt">&gt;</span>@mdo<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-item nav-link active"</span> <span class="na">id=</span><span class="s">"nav-home-tab"</span> <span class="na">data-toggle=</span><span class="s">"tab"</span> <span class="na">href=</span><span class="s">"#nav-home"</span> <span class="na">role=</span><span class="s">"tab"</span> <span class="na">aria-controls=</span><span class="s">"nav-home"</span> <span class="na">aria-selected=</span><span class="s">"true"</span><span class="nt">&gt;</span>Home<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-item nav-link"</span> <span class="na">id=</span><span class="s">"nav-profile-tab"</span> <span class="na">data-toggle=</span><span class="s">"tab"</span> <span class="na">href=</span><span class="s">"#nav-profile"</span> <span class="na">role=</span><span class="s">"tab"</span> <span class="na">aria-controls=</span><span class="s">"nav-profile"</span> <span class="na">aria-selected=</span><span class="s">"false"</span><span class="nt">&gt;</span>Profile<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-item nav-link"</span> <span class="na">id=</span><span class="s">"nav-contact-tab"</span> <span class="na">data-toggle=</span><span class="s">"tab"</span> <span class="na">href=</span><span class="s">"#nav-contact"</span> <span class="na">role=</span><span class="s">"tab"</span> <span class="na">aria-controls=</span><span class="s">"nav-contact"</span> <span class="na">aria-selected=</span><span class="s">"false"</span><span class="nt">&gt;</span>Contact<span class="nt">&lt;/a&gt;</span>
 <span class="nt">&lt;/nav&gt;</span>
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-content"</span> <span class="na">id=</span><span class="s">"nav-tabContent"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane fade show active"</span> <span class="na">id=</span><span class="s">"nav-home"</span> <span class="na">role=</span><span class="s">"tabpanel"</span> <span class="na">aria-labelledby=</span><span class="s">"nav-home-tab"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane fade"</span> <span class="na">id=</span><span class="s">"nav-profile"</span> <span class="na">role=</span><span class="s">"tabpanel"</span> <span class="na">aria-labelledby=</span><span class="s">"nav-profile-tab"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane fade"</span> <span class="na">id=</span><span class="s">"nav-dropdown1"</span> <span class="na">role=</span><span class="s">"tabpanel"</span> <span class="na">aria-labelledby=</span><span class="s">"nav-dropdown1-tab"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane fade"</span> <span class="na">id=</span><span class="s">"nav-dropdown2"</span> <span class="na">role=</span><span class="s">"tabpanel"</span> <span class="na">aria-labelledby=</span><span class="s">"nav-dropdown2-tab"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane fade"</span> <span class="na">id=</span><span class="s">"nav-contact"</span> <span class="na">role=</span><span class="s">"tabpanel"</span> <span class="na">aria-labelledby=</span><span class="s">"nav-contact-tab"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></figure>
 
 <p>The tabs plugin also works with pills.</p>
@@ -1647,17 +1177,13 @@
 <div class="bd-example bd-example-tabs">
   <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
     <li class="nav-item">
-      <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-expanded="true">Home</a>
+      <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Home</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-expanded="true">Profile</a>
+      <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</a>
     </li>
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" id="pills-dropdown1-tab" href="#pills-dropdown1" role="tab" data-toggle="pill" aria-controls="pills-dropdown1">@fat</a>
-        <a class="dropdown-item" id="pills-dropdown2-tab" href="#pills-dropdown2" role="tab" data-toggle="pill" aria-controls="pills-dropdown2">@mdo</a>
-      </div>
+    <li class="nav-item">
+      <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</a>
     </li>
   </ul>
   <div class="tab-content" id="pills-tabContent">
@@ -1667,35 +1193,27 @@
     <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
       <p>Ad pariatur nostrud pariatur exercitation ipsum ipsum culpa mollit commodo mollit ex. Aute sunt incididunt amet commodo est sint nisi deserunt pariatur do. Aliquip ex eiusmod voluptate exercitation cillum id incididunt elit sunt. Qui minim sit magna Lorem id et dolore velit Lorem amet exercitation duis deserunt. Anim id labore elit adipisicing ut in id occaecat pariatur ut ullamco ea tempor duis.</p>
     </div>
-    <div class="tab-pane fade" id="pills-dropdown1" role="tabpanel" aria-labelledby="pills-dropdown1-tab">
+    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
       <p>Est quis nulla laborum officia ad nisi ex nostrud culpa Lorem excepteur aliquip dolor aliqua irure ex. Nulla ut duis ipsum nisi elit fugiat commodo sunt reprehenderit laborum veniam eu veniam. Eiusmod minim exercitation fugiat irure ex labore incididunt do fugiat commodo aliquip sit id deserunt reprehenderit aliquip nostrud. Amet ex cupidatat excepteur aute veniam incididunt mollit cupidatat esse irure officia elit do ipsum ullamco Lorem. Ullamco ut ad minim do mollit labore ipsum laboris ipsum commodo sunt tempor enim incididunt. Commodo quis sunt dolore aliquip aute tempor irure magna enim minim reprehenderit. Ullamco consectetur culpa veniam sint cillum aliqua incididunt velit ullamco sunt ullamco quis quis commodo voluptate. Mollit nulla nostrud adipisicing aliqua cupidatat aliqua pariatur mollit voluptate voluptate consequat non.</p>
-    </div>
-    <div class="tab-pane fade" id="pills-dropdown2" role="tabpanel" aria-labelledby="nav-dropdown2-tab">
-      <p>Tempor anim aliquip qui nisi sit minim ex in cupidatat ipsum adipisicing. Ad non magna anim id ullamco do dolor sit adipisicing nulla exercitation. Qui Lorem eiusmod sint in laboris pariatur est adipisicing non sunt occaecat in mollit culpa sit. Aliquip id duis do do quis mollit ut duis. Non dolor reprehenderit do esse nostrud deserunt non eiusmod minim anim sit voluptate ipsum. Nulla elit aliqua do sunt labore velit anim nisi dolor nostrud consectetur fugiat ex qui velit ex tempor. Do cillum qui anim aliquip id cillum duis ex laboris tempor incididunt sint dolor ullamco tempor. Fugiat laboris enim anim veniam aliquip cillum irure.</p>
     </div>
   </div>
 </div>
 
 <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav nav-pills mb-3"</span> <span class="na">id=</span><span class="s">"pills-tab"</span> <span class="na">role=</span><span class="s">"tablist"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link active"</span> <span class="na">id=</span><span class="s">"pills-home-tab"</span> <span class="na">data-toggle=</span><span class="s">"pill"</span> <span class="na">href=</span><span class="s">"#pills-home"</span> <span class="na">role=</span><span class="s">"tab"</span> <span class="na">aria-controls=</span><span class="s">"pills-home"</span> <span class="na">aria-expanded=</span><span class="s">"true"</span><span class="nt">&gt;</span>Home<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link active"</span> <span class="na">id=</span><span class="s">"pills-home-tab"</span> <span class="na">data-toggle=</span><span class="s">"pill"</span> <span class="na">href=</span><span class="s">"#pills-home"</span> <span class="na">role=</span><span class="s">"tab"</span> <span class="na">aria-controls=</span><span class="s">"pills-home"</span> <span class="na">aria-selected=</span><span class="s">"true"</span><span class="nt">&gt;</span>Home<span class="nt">&lt;/a&gt;</span>
   <span class="nt">&lt;/li&gt;</span>
   <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">id=</span><span class="s">"pills-profile-tab"</span> <span class="na">data-toggle=</span><span class="s">"pill"</span> <span class="na">href=</span><span class="s">"#pills-profile"</span> <span class="na">role=</span><span class="s">"tab"</span> <span class="na">aria-controls=</span><span class="s">"pills-profile"</span> <span class="na">aria-expanded=</span><span class="s">"true"</span><span class="nt">&gt;</span>Profile<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">id=</span><span class="s">"pills-profile-tab"</span> <span class="na">data-toggle=</span><span class="s">"pill"</span> <span class="na">href=</span><span class="s">"#pills-profile"</span> <span class="na">role=</span><span class="s">"tab"</span> <span class="na">aria-controls=</span><span class="s">"pills-profile"</span> <span class="na">aria-selected=</span><span class="s">"false"</span><span class="nt">&gt;</span>Profile<span class="nt">&lt;/a&gt;</span>
   <span class="nt">&lt;/li&gt;</span>
-  <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item dropdown"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link dropdown-toggle"</span> <span class="na">data-toggle=</span><span class="s">"dropdown"</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">role=</span><span class="s">"button"</span> <span class="na">aria-haspopup=</span><span class="s">"true"</span> <span class="na">aria-expanded=</span><span class="s">"false"</span><span class="nt">&gt;</span>Dropdown<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"dropdown-menu"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span> <span class="na">id=</span><span class="s">"pills-dropdown1-tab"</span> <span class="na">href=</span><span class="s">"#pills-dropdown1"</span> <span class="na">role=</span><span class="s">"tab"</span> <span class="na">data-toggle=</span><span class="s">"pill"</span> <span class="na">aria-controls=</span><span class="s">"pills-dropdown1"</span><span class="nt">&gt;</span>@fat<span class="nt">&lt;/a&gt;</span>
-      <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"dropdown-item"</span> <span class="na">id=</span><span class="s">"pills-dropdown2-tab"</span> <span class="na">href=</span><span class="s">"#pills-dropdown2"</span> <span class="na">role=</span><span class="s">"tab"</span> <span class="na">data-toggle=</span><span class="s">"pill"</span> <span class="na">aria-controls=</span><span class="s">"pills-dropdown2"</span><span class="nt">&gt;</span>@mdo<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">id=</span><span class="s">"pills-contact-tab"</span> <span class="na">data-toggle=</span><span class="s">"pill"</span> <span class="na">href=</span><span class="s">"#pills-contact"</span> <span class="na">role=</span><span class="s">"tab"</span> <span class="na">aria-controls=</span><span class="s">"pills-contact"</span> <span class="na">aria-selected=</span><span class="s">"false"</span><span class="nt">&gt;</span>Contact<span class="nt">&lt;/a&gt;</span>
   <span class="nt">&lt;/li&gt;</span>
 <span class="nt">&lt;/ul&gt;</span>
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-content"</span> <span class="na">id=</span><span class="s">"pills-tabContent"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane fade show active"</span> <span class="na">id=</span><span class="s">"pills-home"</span> <span class="na">role=</span><span class="s">"tabpanel"</span> <span class="na">aria-labelledby=</span><span class="s">"pills-home-tab"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane fade"</span> <span class="na">id=</span><span class="s">"pills-profile"</span> <span class="na">role=</span><span class="s">"tabpanel"</span> <span class="na">aria-labelledby=</span><span class="s">"pills-profile-tab"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane fade"</span> <span class="na">id=</span><span class="s">"pills-dropdown1"</span> <span class="na">role=</span><span class="s">"tabpanel"</span> <span class="na">aria-labelledby=</span><span class="s">"pills-dropdown1-tab"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane fade"</span> <span class="na">id=</span><span class="s">"pills-dropdown2"</span> <span class="na">role=</span><span class="s">"tabpanel"</span> <span class="na">aria-labelledby=</span><span class="s">"pills-dropdown2-tab"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane fade"</span> <span class="na">id=</span><span class="s">"pills-contact"</span> <span class="na">role=</span><span class="s">"tabpanel"</span> <span class="na">aria-labelledby=</span><span class="s">"pills-contact-tab"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></figure>
 
 <p>And with vertical pills.</p>
@@ -1703,11 +1221,11 @@
 <div class="bd-example bd-example-tabs">
   <div class="row">
     <div class="col-3">
-      <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist">
-        <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-expanded="true">Home</a>
-        <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-expanded="true">Profile</a>
-        <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-expanded="true">Messages</a>
-        <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-expanded="true">Settings</a>
+      <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+        <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
+        <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</a>
+        <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</a>
+        <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>
       </div>
     </div>
     <div class="col-9">
@@ -1729,11 +1247,11 @@
   </div>
 </div>
 
-<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"nav flex-column nav-pills"</span> <span class="na">id=</span><span class="s">"v-pills-tab"</span> <span class="na">role=</span><span class="s">"tablist"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link active"</span> <span class="na">id=</span><span class="s">"v-pills-home-tab"</span> <span class="na">data-toggle=</span><span class="s">"pill"</span> <span class="na">href=</span><span class="s">"#v-pills-home"</span> <span class="na">role=</span><span class="s">"tab"</span> <span class="na">aria-controls=</span><span class="s">"v-pills-home"</span> <span class="na">aria-expanded=</span><span class="s">"true"</span><span class="nt">&gt;</span>Home<span class="nt">&lt;/a&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">id=</span><span class="s">"v-pills-profile-tab"</span> <span class="na">data-toggle=</span><span class="s">"pill"</span> <span class="na">href=</span><span class="s">"#v-pills-profile"</span> <span class="na">role=</span><span class="s">"tab"</span> <span class="na">aria-controls=</span><span class="s">"v-pills-profile"</span> <span class="na">aria-expanded=</span><span class="s">"true"</span><span class="nt">&gt;</span>Profile<span class="nt">&lt;/a&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">id=</span><span class="s">"v-pills-messages-tab"</span> <span class="na">data-toggle=</span><span class="s">"pill"</span> <span class="na">href=</span><span class="s">"#v-pills-messages"</span> <span class="na">role=</span><span class="s">"tab"</span> <span class="na">aria-controls=</span><span class="s">"v-pills-messages"</span> <span class="na">aria-expanded=</span><span class="s">"true"</span><span class="nt">&gt;</span>Messages<span class="nt">&lt;/a&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">id=</span><span class="s">"v-pills-settings-tab"</span> <span class="na">data-toggle=</span><span class="s">"pill"</span> <span class="na">href=</span><span class="s">"#v-pills-settings"</span> <span class="na">role=</span><span class="s">"tab"</span> <span class="na">aria-controls=</span><span class="s">"v-pills-settings"</span> <span class="na">aria-expanded=</span><span class="s">"true"</span><span class="nt">&gt;</span>Settings<span class="nt">&lt;/a&gt;</span>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"nav flex-column nav-pills"</span> <span class="na">id=</span><span class="s">"v-pills-tab"</span> <span class="na">role=</span><span class="s">"tablist"</span> <span class="na">aria-orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link active"</span> <span class="na">id=</span><span class="s">"v-pills-home-tab"</span> <span class="na">data-toggle=</span><span class="s">"pill"</span> <span class="na">href=</span><span class="s">"#v-pills-home"</span> <span class="na">role=</span><span class="s">"tab"</span> <span class="na">aria-controls=</span><span class="s">"v-pills-home"</span> <span class="na">aria-selected=</span><span class="s">"true"</span><span class="nt">&gt;</span>Home<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">id=</span><span class="s">"v-pills-profile-tab"</span> <span class="na">data-toggle=</span><span class="s">"pill"</span> <span class="na">href=</span><span class="s">"#v-pills-profile"</span> <span class="na">role=</span><span class="s">"tab"</span> <span class="na">aria-controls=</span><span class="s">"v-pills-profile"</span> <span class="na">aria-selected=</span><span class="s">"false"</span><span class="nt">&gt;</span>Profile<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">id=</span><span class="s">"v-pills-messages-tab"</span> <span class="na">data-toggle=</span><span class="s">"pill"</span> <span class="na">href=</span><span class="s">"#v-pills-messages"</span> <span class="na">role=</span><span class="s">"tab"</span> <span class="na">aria-controls=</span><span class="s">"v-pills-messages"</span> <span class="na">aria-selected=</span><span class="s">"false"</span><span class="nt">&gt;</span>Messages<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">id=</span><span class="s">"v-pills-settings-tab"</span> <span class="na">data-toggle=</span><span class="s">"pill"</span> <span class="na">href=</span><span class="s">"#v-pills-settings"</span> <span class="na">role=</span><span class="s">"tab"</span> <span class="na">aria-controls=</span><span class="s">"v-pills-settings"</span> <span class="na">aria-selected=</span><span class="s">"false"</span><span class="nt">&gt;</span>Settings<span class="nt">&lt;/a&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-content"</span> <span class="na">id=</span><span class="s">"v-pills-tabContent"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane fade show active"</span> <span class="na">id=</span><span class="s">"v-pills-home"</span> <span class="na">role=</span><span class="s">"tabpanel"</span> <span class="na">aria-labelledby=</span><span class="s">"v-pills-home-tab"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
@@ -1749,32 +1267,32 @@
 <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- Nav tabs --&gt;</span>
 <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav nav-tabs"</span> <span class="na">id=</span><span class="s">"myTab"</span> <span class="na">role=</span><span class="s">"tablist"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link active"</span> <span class="na">data-toggle=</span><span class="s">"tab"</span> <span class="na">href=</span><span class="s">"#home"</span> <span class="na">role=</span><span class="s">"tab"</span><span class="nt">&gt;</span>Home<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link active"</span> <span class="na">id=</span><span class="s">"home-tab"</span> <span class="na">data-toggle=</span><span class="s">"tab"</span> <span class="na">href=</span><span class="s">"#home"</span> <span class="na">role=</span><span class="s">"tab"</span> <span class="na">aria-controls=</span><span class="s">"home"</span> <span class="na">aria-selected=</span><span class="s">"true"</span><span class="nt">&gt;</span>Home<span class="nt">&lt;/a&gt;</span>
   <span class="nt">&lt;/li&gt;</span>
   <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">data-toggle=</span><span class="s">"tab"</span> <span class="na">href=</span><span class="s">"#profile"</span> <span class="na">role=</span><span class="s">"tab"</span><span class="nt">&gt;</span>Profile<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">id=</span><span class="s">"profile-tab"</span> <span class="na">data-toggle=</span><span class="s">"tab"</span> <span class="na">href=</span><span class="s">"#profile"</span> <span class="na">role=</span><span class="s">"tab"</span> <span class="na">aria-controls=</span><span class="s">"profile"</span> <span class="na">aria-selected=</span><span class="s">"false"</span><span class="nt">&gt;</span>Profile<span class="nt">&lt;/a&gt;</span>
   <span class="nt">&lt;/li&gt;</span>
   <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">data-toggle=</span><span class="s">"tab"</span> <span class="na">href=</span><span class="s">"#messages"</span> <span class="na">role=</span><span class="s">"tab"</span><span class="nt">&gt;</span>Messages<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">id=</span><span class="s">"messages-tab"</span> <span class="na">data-toggle=</span><span class="s">"tab"</span> <span class="na">href=</span><span class="s">"#messages"</span> <span class="na">role=</span><span class="s">"tab"</span> <span class="na">aria-controls=</span><span class="s">"messages"</span> <span class="na">aria-selected=</span><span class="s">"false"</span><span class="nt">&gt;</span>Messages<span class="nt">&lt;/a&gt;</span>
   <span class="nt">&lt;/li&gt;</span>
   <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">data-toggle=</span><span class="s">"tab"</span> <span class="na">href=</span><span class="s">"#settings"</span> <span class="na">role=</span><span class="s">"tab"</span><span class="nt">&gt;</span>Settings<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">id=</span><span class="s">"settings-tab"</span> <span class="na">data-toggle=</span><span class="s">"tab"</span> <span class="na">href=</span><span class="s">"#settings"</span> <span class="na">role=</span><span class="s">"tab"</span> <span class="na">aria-controls=</span><span class="s">"settings"</span> <span class="na">aria-selected=</span><span class="s">"false"</span><span class="nt">&gt;</span>Settings<span class="nt">&lt;/a&gt;</span>
   <span class="nt">&lt;/li&gt;</span>
 <span class="nt">&lt;/ul&gt;</span>
 
 <span class="c">&lt;!-- Tab panes --&gt;</span>
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-content"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane active"</span> <span class="na">id=</span><span class="s">"home"</span> <span class="na">role=</span><span class="s">"tabpanel"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane"</span> <span class="na">id=</span><span class="s">"profile"</span> <span class="na">role=</span><span class="s">"tabpanel"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane"</span> <span class="na">id=</span><span class="s">"messages"</span> <span class="na">role=</span><span class="s">"tabpanel"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane"</span> <span class="na">id=</span><span class="s">"settings"</span> <span class="na">role=</span><span class="s">"tabpanel"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane active"</span> <span class="na">id=</span><span class="s">"home"</span> <span class="na">role=</span><span class="s">"tabpanel"</span> <span class="na">aria-labelledby=</span><span class="s">"home-tab"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane"</span> <span class="na">id=</span><span class="s">"profile"</span> <span class="na">role=</span><span class="s">"tabpanel"</span> <span class="na">aria-labelledby=</span><span class="s">"profile-tab"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane"</span> <span class="na">id=</span><span class="s">"messages"</span> <span class="na">role=</span><span class="s">"tabpanel"</span> <span class="na">aria-labelledby=</span><span class="s">"messages-tab"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane"</span> <span class="na">id=</span><span class="s">"settings"</span> <span class="na">role=</span><span class="s">"tabpanel"</span> <span class="na">aria-labelledby=</span><span class="s">"settings-tab"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></figure>
 
 <h3 id="via-javascript">Via JavaScript</h3>
 
 <p>Enable tabbable tabs via JavaScript (each tab needs to be activated individually):</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#myTab a'</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#myTab a'</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">()</span>
   <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">tab</span><span class="p">(</span><span class="s1">'show'</span><span class="p">)</span>
 <span class="p">})</span></code></pre></figure>
@@ -1791,10 +1309,10 @@
 <p>To make tabs fade in, add <code class="highlighter-rouge">.fade</code> to each <code class="highlighter-rouge">.tab-pane</code>. The first tab pane must also have <code class="highlighter-rouge">.show</code> to make the initial content visible.</p>
 
 <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-content"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane fade show active"</span> <span class="na">id=</span><span class="s">"home"</span> <span class="na">role=</span><span class="s">"tabpanel"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane fade"</span> <span class="na">id=</span><span class="s">"profile"</span> <span class="na">role=</span><span class="s">"tabpanel"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane fade"</span> <span class="na">id=</span><span class="s">"messages"</span> <span class="na">role=</span><span class="s">"tabpanel"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane fade"</span> <span class="na">id=</span><span class="s">"settings"</span> <span class="na">role=</span><span class="s">"tabpanel"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane fade show active"</span> <span class="na">id=</span><span class="s">"home"</span> <span class="na">role=</span><span class="s">"tabpanel"</span> <span class="na">aria-labelledby=</span><span class="s">"home-tab"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane fade"</span> <span class="na">id=</span><span class="s">"profile"</span> <span class="na">role=</span><span class="s">"tabpanel"</span> <span class="na">aria-labelledby=</span><span class="s">"profile-tab"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane fade"</span> <span class="na">id=</span><span class="s">"messages"</span> <span class="na">role=</span><span class="s">"tabpanel"</span> <span class="na">aria-labelledby=</span><span class="s">"messages-tab"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane fade"</span> <span class="na">id=</span><span class="s">"settings"</span> <span class="na">role=</span><span class="s">"tabpanel"</span> <span class="na">aria-labelledby=</span><span class="s">"settings-tab"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></figure>
 
 <h3 id="methods">Methods</h3>
@@ -1802,9 +1320,9 @@
 <div class="bd-callout bd-callout-danger">
 <h4 id="asynchronous-methods-and-transitions">Asynchronous methods and transitions</h4>
 
-<p>All API methods are <strong>asynchronous</strong> and start a <strong>transition</strong>. They returns to the caller as soon as the transition is started but <strong>before it ends</strong>. In addition, a method call on a <strong>transitioning component will be ignored</strong>.</p>
+<p>All API methods are <strong>asynchronous</strong> and start a <strong>transition</strong>. They return to the caller as soon as the transition is started but <strong>before it ends</strong>. In addition, a method call on a <strong>transitioning component will be ignored</strong>.</p>
 
-<p><a href="/getting-started/javascript/">See our Javascript documentation for more informations.</a></p>
+<p><a href="/docs/4.0/getting-started/javascript/">See our JavaScript documentation for more information.</a></p>
 </div>
 
 <h4 id="tab">$().tab</h4>
@@ -1813,24 +1331,24 @@
 
 <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav nav-tabs"</span> <span class="na">id=</span><span class="s">"myTab"</span> <span class="na">role=</span><span class="s">"tablist"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link active"</span> <span class="na">data-toggle=</span><span class="s">"tab"</span> <span class="na">href=</span><span class="s">"#home"</span> <span class="na">role=</span><span class="s">"tab"</span> <span class="na">aria-controls=</span><span class="s">"home"</span><span class="nt">&gt;</span>Home<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link active"</span> <span class="na">id=</span><span class="s">"home-tab"</span> <span class="na">data-toggle=</span><span class="s">"tab"</span> <span class="na">href=</span><span class="s">"#home"</span> <span class="na">role=</span><span class="s">"tab"</span> <span class="na">aria-controls=</span><span class="s">"home"</span> <span class="na">aria-selected=</span><span class="s">"true"</span><span class="nt">&gt;</span>Home<span class="nt">&lt;/a&gt;</span>
   <span class="nt">&lt;/li&gt;</span>
   <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">data-toggle=</span><span class="s">"tab"</span> <span class="na">href=</span><span class="s">"#profile"</span> <span class="na">role=</span><span class="s">"tab"</span> <span class="na">aria-controls=</span><span class="s">"profile"</span><span class="nt">&gt;</span>Profile<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">id=</span><span class="s">"profile-tab"</span> <span class="na">data-toggle=</span><span class="s">"tab"</span> <span class="na">href=</span><span class="s">"#profile"</span> <span class="na">role=</span><span class="s">"tab"</span> <span class="na">aria-controls=</span><span class="s">"profile"</span> <span class="na">aria-selected=</span><span class="s">"false"</span><span class="nt">&gt;</span>Profile<span class="nt">&lt;/a&gt;</span>
   <span class="nt">&lt;/li&gt;</span>
   <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">data-toggle=</span><span class="s">"tab"</span> <span class="na">href=</span><span class="s">"#messages"</span> <span class="na">role=</span><span class="s">"tab"</span> <span class="na">aria-controls=</span><span class="s">"messages"</span><span class="nt">&gt;</span>Messages<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">id=</span><span class="s">"messages-tab"</span> <span class="na">data-toggle=</span><span class="s">"tab"</span> <span class="na">href=</span><span class="s">"#messages"</span> <span class="na">role=</span><span class="s">"tab"</span> <span class="na">aria-controls=</span><span class="s">"messages"</span> <span class="na">aria-selected=</span><span class="s">"false"</span><span class="nt">&gt;</span>Messages<span class="nt">&lt;/a&gt;</span>
   <span class="nt">&lt;/li&gt;</span>
   <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">data-toggle=</span><span class="s">"tab"</span> <span class="na">href=</span><span class="s">"#settings"</span> <span class="na">role=</span><span class="s">"tab"</span> <span class="na">aria-controls=</span><span class="s">"settings"</span><span class="nt">&gt;</span>Settings<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">id=</span><span class="s">"settings-tab"</span> <span class="na">data-toggle=</span><span class="s">"tab"</span> <span class="na">href=</span><span class="s">"#settings"</span> <span class="na">role=</span><span class="s">"tab"</span> <span class="na">aria-controls=</span><span class="s">"settings"</span> <span class="na">aria-selected=</span><span class="s">"false"</span><span class="nt">&gt;</span>Settings<span class="nt">&lt;/a&gt;</span>
   <span class="nt">&lt;/li&gt;</span>
 <span class="nt">&lt;/ul&gt;</span>
 
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-content"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane active"</span> <span class="na">id=</span><span class="s">"home"</span> <span class="na">role=</span><span class="s">"tabpanel"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane"</span> <span class="na">id=</span><span class="s">"profile"</span> <span class="na">role=</span><span class="s">"tabpanel"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane"</span> <span class="na">id=</span><span class="s">"messages"</span> <span class="na">role=</span><span class="s">"tabpanel"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane"</span> <span class="na">id=</span><span class="s">"settings"</span> <span class="na">role=</span><span class="s">"tabpanel"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane active"</span> <span class="na">id=</span><span class="s">"home"</span> <span class="na">role=</span><span class="s">"tabpanel"</span> <span class="na">aria-labelledby=</span><span class="s">"home-tab"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane"</span> <span class="na">id=</span><span class="s">"profile"</span> <span class="na">role=</span><span class="s">"tabpanel"</span> <span class="na">aria-labelledby=</span><span class="s">"profile-tab"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane"</span> <span class="na">id=</span><span class="s">"messages"</span> <span class="na">role=</span><span class="s">"tabpanel"</span> <span class="na">aria-labelledby=</span><span class="s">"messages-tab"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane"</span> <span class="na">id=</span><span class="s">"settings"</span> <span class="na">role=</span><span class="s">"tabpanel"</span> <span class="na">aria-labelledby=</span><span class="s">"settings-tab"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span>
 
 <span class="nt">&lt;script&gt;</span>
@@ -1844,6 +1362,10 @@
 <p>Selects the given tab and shows its associated pane. Any other tab that was previously selected becomes unselected and its associated pane is hidden. <strong>Returns to the caller before the tab pane has actually been shown</strong> (i.e. before the <code class="highlighter-rouge">shown.bs.tab</code> event occurs).</p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#someTab'</span><span class="p">).</span><span class="nx">tab</span><span class="p">(</span><span class="s1">'show'</span><span class="p">)</span></code></pre></figure>
+
+<h3 id="tabdispose">.tab(‘dispose’)</h3>
+
+<p>Destroys an element’s tab.</p>
 
 <h3 id="events">Events</h3>
 
@@ -1908,14 +1430,12 @@
   <script src="/assets/js/docs.min.js"></script>
 
 
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script src="/assets/js/ie10-viewport-bug-workaround.js"></script>
 <script src="/assets/js/ie-emulation-modes-warning.js"></script>
 
 
-<script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
-<script type="text/javascript">
-  var docsearch = docsearch({
+<script src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+<script>
+  docsearch({
     apiKey: '48cb48b22351bc71ea5f12f4d1ede198',
     indexName: 'bootstrap-v4',
     inputSelector: '#search-input',
@@ -1937,12 +1457,12 @@
 
 
 <script>
-Holder.addTheme('gray', {
-  bg: '#777',
-  fg: 'rgba(255,255,255,.75)',
-  font: 'Helvetica',
-  fontweight: 'normal'
-})
+  Holder.addTheme('gray', {
+    bg: '#777',
+    fg: 'rgba(255,255,255,.75)',
+    font: 'Helvetica',
+    fontweight: 'normal'
+  });
 </script>
 
   </body>

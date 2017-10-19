@@ -1,14 +1,37 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Jekyll v3.6.0">
 
-<title>
-  
-    Grid system &middot; Bootstrap
-  
-</title>
+<title>Grid system &middot; Bootstrap</title>
+
+<!-- Bootstrap core CSS -->
+
+  <link href="/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+<!-- Documentation extras -->
+
+<link href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" rel="stylesheet">
+
+<link href="/assets/css/docs.min.css" rel="stylesheet">
+
+<!-- Favicons -->
+<link rel="apple-touch-icon" href="/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="manifest" href="/assets/img/favicons/manifest.json">
+<link rel="mask-icon" href="/assets/img/favicons/safari-pinned-tab.svg" color="#563d7c">
+<link rel="icon" href="/favicon.ico">
+<meta name="msapplication-config" content="/assets/img/favicons/browserconfig.xml">
+<meta name="theme-color" content="#563d7c">
+
+
+<!-- Meta -->
+<meta name="description" content="The most popular HTML, CSS, and JS library in the world.">
+<meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
 
 <!-- Twitter -->
 <meta name="twitter:site" content="@getbootstrap">
@@ -34,25 +57,6 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 
-<!-- Meta -->
-<meta name="description" content="The most popular HTML, CSS, and JS library in the world.">
-<meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-
-
-<!-- Bootstrap core CSS -->
-
-  <link href="/dist/css/bootstrap.min.css" rel="stylesheet">
-
-
-<!-- Documentation extras -->
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
-
-<link href="/assets/css/docs.min.css" rel="stylesheet">
-
-<!-- Favicons -->
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="icon" href="/favicon.ico">
 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -64,7 +68,7 @@
 </script>
 
   </head>
-  <body class="bd-docs" data-spy="scroll" data-target=".bd-sidenav-active">
+  <body>
     <a id="skippy" class="sr-only sr-only-focusable" href="#content">
       <div class="container">
         <span class="skiplink-text">Skip to main content</span>
@@ -73,7 +77,7 @@
 
     <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
   <a class="navbar-brand mr-0 mr-md-2" href="/" aria-label="Bootstrap">
-    <svg  class="d-block" width="36" height="36" viewbox="0 0 612 612" xmlns="http://www.w3.org/2000/svg" focusable="false"><title>Bootstrap</title><path fill="currentColor" d="M510 8a94.3 94.3 0 0 1 94 94v408a94.3 94.3 0 0 1-94 94H102a94.3 94.3 0 0 1-94-94V102a94.3 94.3 0 0 1 94-94h408m0-8H102C45.9 0 0 45.9 0 102v408c0 56.1 45.9 102 102 102h408c56.1 0 102-45.9 102-102V102C612 45.9 566.1 0 510 0z"/><path fill="currentColor" d="M196.77 471.5V154.43h124.15c54.27 0 91 31.64 91 79.1 0 33-24.17 63.72-54.71 69.21v1.76c43.07 5.49 70.75 35.82 70.75 78 0 55.81-40 89-107.45 89zm39.55-180.4h63.28c46.8 0 72.29-18.68 72.29-53 0-31.42-21.53-48.78-60-48.78h-75.57zm78.22 145.46c47.68 0 72.73-19.34 72.73-56s-25.93-55.37-76.46-55.37h-74.49v111.4z"/></svg>
+    <svg class="d-block" width="36" height="36" viewbox="0 0 612 612" xmlns="http://www.w3.org/2000/svg" focusable="false"><title>Bootstrap</title><path fill="currentColor" d="M510 8a94.3 94.3 0 0 1 94 94v408a94.3 94.3 0 0 1-94 94H102a94.3 94.3 0 0 1-94-94V102a94.3 94.3 0 0 1 94-94h408m0-8H102C45.9 0 0 45.9 0 102v408c0 56.1 45.9 102 102 102h408c56.1 0 102-45.9 102-102V102C612 45.9 566.1 0 510 0z"/><path fill="currentColor" d="M196.77 471.5V154.43h124.15c54.27 0 91 31.64 91 79.1 0 33-24.17 63.72-54.71 69.21v1.76c43.07 5.49 70.75 35.82 70.75 78 0 55.81-40 89-107.45 89zm39.55-180.4h63.28c46.8 0 72.29-18.68 72.29-53 0-31.42-21.53-48.78-60-48.78h-75.57zm78.22 145.46c47.68 0 72.73-19.34 72.73-56s-25.93-55.37-76.46-55.37h-74.49v111.4z"/></svg>
 
   </a>
 
@@ -83,7 +87,7 @@
         <a class="nav-link " href="/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Bootstrap');">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link active" href="/docs/4.0/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Docs');">Documentation</a>
+        <a class="nav-link active" href="/docs/4.0/getting-started/introduction/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Docs');">Documentation</a>
       </li>
       <li class="nav-item">
         <a class="nav-link " href="/docs/4.0/examples/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Examples');">Examples</a>
@@ -110,8 +114,8 @@
       </a>
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="bd-versions">
         <a class="dropdown-item active" href="/docs/4.0/">Latest (4.x)</a>
-        <a class="dropdown-item" href="https://v4-alpha.getbootstrap.com">v4 Alpha 6</a>
-        <a class="dropdown-item" href="https://getbootstrap.com/docs/3.3/">v3.3.7</a>
+        <a class="dropdown-item" href="https://v4-alpha.getbootstrap.com/">v4 Alpha 6</a>
+        <a class="dropdown-item" href="https://getbootstrap.com/3.3/">v3.3.7</a>
         <a class="dropdown-item" href="https://getbootstrap.com/2.3.2/">v2.3.2</a>
       </div>
     </li>
@@ -136,7 +140,7 @@
     </li>
   </ul>
 
-  <a class="btn btn-bd-yellow d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="https://github.com/twbs/bootstrap/archive/v4.0.0-beta.zip">Download</a>
+  <a class="btn btn-bd-yellow d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="https://github.com/twbs/bootstrap/archive/v4.0.0-beta.2.zip">Download</a>
 </header>
 
 
@@ -145,876 +149,433 @@
         <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
           <form class="bd-search d-flex align-items-center">
   <input type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
-  <button class="btn-link bd-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#bd-docs-nav" aria-controls="bd-docs-nav" aria-expanded="false" aria-label="Toggle docs avigation">
-    <svg class="" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 30 30" width="30" height="30" focusable="false"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/></svg>
+  <button class="btn btn-link bd-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#bd-docs-nav" aria-controls="bd-docs-nav" aria-expanded="false" aria-label="Toggle docs navigation">
+    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 30 30" width="30" height="30" focusable="false"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/></svg>
 
   </button>
 </form>
 
-<nav class="collapse bd-links" id="bd-docs-nav">
-  
-  
-  
-  
-  
-  
-
-  
-
-  <div class="bd-toc-item ">
+<nav class="collapse bd-links" id="bd-docs-nav"><div class="bd-toc-item">
       <a class="bd-toc-link" href="/docs/4.0/getting-started/introduction/">
         Getting started
       </a>
 
-      <ul class="nav bd-sidenav">
-        
-          
-          
-
-          
-
-          <li class="">
+      <ul class="nav bd-sidenav"><li>
             <a href="/docs/4.0/getting-started/introduction/">
               Introduction
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/getting-started/download/">
               Download
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/getting-started/contents/">
               Contents
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/getting-started/browsers-devices/">
               Browsers & devices
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/getting-started/javascript/">
               JavaScript
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
-            <a href="/docs/4.0/getting-started/options/">
-              Options
+          </li><li>
+            <a href="/docs/4.0/getting-started/theming/">
+              Theming
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/getting-started/build-tools/">
               Build tools
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/getting-started/webpack/">
               Webpack
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/getting-started/accessibility/">
               Accessibility
             </a>
 
             
-          </li>
-        
-      </ul>
-    </div>
-  
-  
-  
-  
-  
-
-  
-
-  <div class="bd-toc-item active">
+          </li></ul>
+    </div><div class="bd-toc-item active">
       <a class="bd-toc-link" href="/docs/4.0/layout/overview/">
         Layout
       </a>
 
-      <ul class="nav bd-sidenav">
-        
-          
-          
-
-          
-
-          <li class="">
+      <ul class="nav bd-sidenav"><li>
             <a href="/docs/4.0/layout/overview/">
               Overview
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="active bd-sidenav-active">
+          </li><li class="active bd-sidenav-active">
             <a href="/docs/4.0/layout/grid/">
               Grid
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/layout/media-object/">
               Media object
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/layout/utilities-for-layout/">
               Utilities for layout
             </a>
 
             
-          </li>
-        
-      </ul>
-    </div>
-  
-  
-  
-  
-  
-
-  
-
-  <div class="bd-toc-item ">
+          </li></ul>
+    </div><div class="bd-toc-item">
       <a class="bd-toc-link" href="/docs/4.0/content/reboot/">
         Content
       </a>
 
-      <ul class="nav bd-sidenav">
-        
-          
-          
-
-          
-
-          <li class="">
+      <ul class="nav bd-sidenav"><li>
             <a href="/docs/4.0/content/reboot/">
               Reboot
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/content/typography/">
               Typography
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/content/code/">
               Code
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/content/images/">
               Images
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/content/tables/">
               Tables
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/content/figures/">
               Figures
             </a>
 
             
-          </li>
-        
-      </ul>
-    </div>
-  
-  
-  
-  
-  
-
-  
-
-  <div class="bd-toc-item ">
+          </li></ul>
+    </div><div class="bd-toc-item">
       <a class="bd-toc-link" href="/docs/4.0/components/alerts/">
         Components
       </a>
 
-      <ul class="nav bd-sidenav">
-        
-          
-          
-
-          
-
-          <li class="">
+      <ul class="nav bd-sidenav"><li>
             <a href="/docs/4.0/components/alerts/">
               Alerts
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/badge/">
               Badge
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/breadcrumb/">
               Breadcrumb
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/buttons/">
               Buttons
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/button-group/">
               Button group
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/card/">
               Card
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/carousel/">
               Carousel
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/collapse/">
               Collapse
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/dropdowns/">
               Dropdowns
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/forms/">
               Forms
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/input-group/">
               Input group
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/jumbotron/">
               Jumbotron
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/list-group/">
               List group
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/modal/">
               Modal
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/navs/">
               Navs
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/navbar/">
               Navbar
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/pagination/">
               Pagination
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/popovers/">
               Popovers
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/progress/">
               Progress
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/scrollspy/">
               Scrollspy
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/tooltips/">
               Tooltips
             </a>
 
             
-          </li>
-        
-      </ul>
-    </div>
-  
-  
-  
-  
-  
-
-  
-
-  <div class="bd-toc-item ">
+          </li></ul>
+    </div><div class="bd-toc-item">
       <a class="bd-toc-link" href="/docs/4.0/utilities/borders/">
         Utilities
       </a>
 
-      <ul class="nav bd-sidenav">
-        
-          
-          
-
-          
-
-          <li class="">
+      <ul class="nav bd-sidenav"><li>
             <a href="/docs/4.0/utilities/borders/">
               Borders
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/utilities/clearfix/">
               Clearfix
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/utilities/close-icon/">
               Close icon
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/utilities/colors/">
               Colors
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/utilities/display/">
               Display
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/utilities/embed/">
               Embed
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/utilities/flex/">
               Flex
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/utilities/float/">
               Float
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/utilities/image-replacement/">
               Image replacement
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/utilities/position/">
               Position
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/utilities/screenreaders/">
               Screenreaders
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/utilities/sizing/">
               Sizing
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/utilities/spacing/">
               Spacing
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/utilities/text/">
               Text
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/utilities/vertical-align/">
               Vertical align
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/utilities/visibility/">
               Visibility
             </a>
 
             
-          </li>
-        
-      </ul>
-    </div>
-  
-  
-  
-  
-  
-
-  
-
-  <div class="bd-toc-item ">
+          </li></ul>
+    </div><div class="bd-toc-item">
       <a class="bd-toc-link" href="/docs/4.0/extend/icons/">
         Extend
       </a>
 
-      <ul class="nav bd-sidenav">
-        
-          
-          
-
-          
-
-          <li class="">
+      <ul class="nav bd-sidenav"><li>
             <a href="/docs/4.0/extend/icons/">
               Icons
             </a>
 
             
-          </li>
-        
-      </ul>
-    </div>
-  
-  
-  
-  
-  
-
-  
-
-  <div class="bd-toc-item ">
+          </li></ul>
+    </div><div class="bd-toc-item">
       <a class="bd-toc-link" href="/docs/4.0/migration/">
         Migration
       </a>
 
-      <ul class="nav bd-sidenav">
-        
-      </ul>
-    </div>
-  
-</nav>
+      <ul class="nav bd-sidenav"></ul>
+    </div><div class="bd-toc-item">
+      <a class="bd-toc-link" href="/docs/4.0/about/history/">
+        About
+      </a>
+
+      <ul class="nav bd-sidenav"><li>
+            <a href="/docs/4.0/about/history/">
+              History
+            </a>
+
+            
+          </li><li>
+            <a href="/docs/4.0/about/team/">
+              Team
+            </a>
+
+            
+          </li><li>
+            <a href="/docs/4.0/about/brand/">
+              Brand
+            </a>
+
+            
+          </li><li>
+            <a href="/docs/4.0/about/license/">
+              License
+            </a>
+
+            
+          </li><li>
+            <a href="/docs/4.0/about/translations/">
+              Translations
+            </a>
+
+            
+          </li></ul>
+    </div></nav>
 
         </div>
 
@@ -1044,13 +605,18 @@
 <li class="toc-entry toc-h3"><a href="#horizontal-alignment">Horizontal alignment</a></li>
 <li class="toc-entry toc-h3"><a href="#no-gutters">No gutters</a></li>
 <li class="toc-entry toc-h3"><a href="#column-wrapping">Column wrapping</a></li>
-<li class="toc-entry toc-h3"><a href="#column-resets">Column resets</a></li>
+<li class="toc-entry toc-h3"><a href="#column-breaks">Column breaks</a></li>
 </ul>
 </li>
 <li class="toc-entry toc-h2"><a href="#reordering">Reordering</a>
 <ul>
-<li class="toc-entry toc-h3"><a href="#flex-order">Flex order</a></li>
-<li class="toc-entry toc-h3"><a href="#offsetting-columns">Offsetting columns</a></li>
+<li class="toc-entry toc-h3"><a href="#order-classes">Order classes</a></li>
+<li class="toc-entry toc-h3"><a href="#offsetting-columns">Offsetting columns</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#offset-classes">Offset classes</a></li>
+<li class="toc-entry toc-h4"><a href="#margin-utilities">Margin utilities</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-entry toc-h2"><a href="#nesting">Nesting</a></li>
@@ -1074,13 +640,17 @@
         <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
           <h1 class="bd-title" id="content">Grid system</h1>
           <p class="bd-lead">Use our powerful mobile-first flexbox grid to build layouts of all shapes and sizes thanks to a twelve column system, five default responsive tiers, Sass variables and mixins, and dozens of predefined classes.</p>
-          <script async type="text/javascript" src="https://cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=getbootstrapcom" id="_carbonads_js"></script>
+          <script async src="https://cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=getbootstrapcom" id="_carbonads_js"></script>
 
           <h2 id="how-it-works">How it works</h2>
 
-<p>Bootstrap’s grid system uses a series of containers, rows, and columns to layout and align content. It’s built with flexbox and is fully responsive. Below is an example and an in-depth look at how the grid comes together.</p>
+<p>Bootstrap’s grid system uses a series of containers, rows, and columns to layout and align content. It’s built with <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes">flexbox</a> and is fully responsive. Below is an example and an in-depth look at how the grid comes together.</p>
 
-<div class="bd-example bd-example-row">
+<p><strong>New to or unfamiliar with flexbox?</strong> <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/#flexbox-background">Read this CSS Tricks flexbox guide</a> for background, terminology, guidelines, and code snippets.</p>
+
+<div class="bd-example-row">
+
+<div class="bd-example">
 <div class="container">
   <div class="row">
     <div class="col-sm">
@@ -1094,6 +664,20 @@
     </div>
   </div>
 </div>
+</div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm"</span><span class="nt">&gt;</span>
+      One of three columns
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm"</span><span class="nt">&gt;</span>
+      One of three columns
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm"</span><span class="nt">&gt;</span>
+      One of three columns
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+
 </div>
 
 <p>The above example creates three equal-width columns on small, medium, large, and extra large devices using our predefined grid classes. Those columns are centered in the page with the parent <code class="highlighter-rouge">.container</code>.</p>
@@ -1101,21 +685,19 @@
 <p>Breaking it down, here’s how it works:</p>
 
 <ul>
-  <li>Containers provide a means to center your site’s contents. Use <code class="highlighter-rouge">.container</code> for fixed width or <code class="highlighter-rouge">.container-fluid</code> for full width.</li>
-  <li>Rows are horizontal groups of columns that ensure your columns are lined up properly. We use the negative margin method on <code class="highlighter-rouge">.row</code> to ensure all your content is aligned properly down the left side.</li>
-  <li>Content should be placed within columns, and only columns may be immediate children of rows.</li>
-  <li>Thanks to flexbox, grid columns without a set width will automatically layout with equal widths. For example, four instances of <code class="highlighter-rouge">.col-sm</code> will each automatically be 25% wide for small breakpoints.</li>
-  <li>Column classes indicate the number of columns you’d like to use out of the possible 12 per row. So, if you want three equal-width columns, you can use <code class="highlighter-rouge">.col-sm-4</code>.</li>
+  <li>Containers provide a means to center and horizontally pad your site’s contents. Use <code class="highlighter-rouge">.container</code> for a responsive pixel width or <code class="highlighter-rouge">.container-fluid</code> for <code class="highlighter-rouge">width: 100%</code> across all viewport and device sizes.</li>
+  <li>Rows are wrappers for columns. Each column has horizontal <code class="highlighter-rouge">padding</code> (called a gutter) for controlling the space between them. This <code class="highlighter-rouge">padding</code> is then counteracted on the rows with negative margins. This way, all the content in your columns is visually aligned down the left side.</li>
+  <li>In a grid layout, content must be placed within columns and only columns may be immediate children of rows.</li>
+  <li>Thanks to flexbox, grid columns without a specified <code class="highlighter-rouge">width</code> will automatically layout as equal width columns. For example, four instances of <code class="highlighter-rouge">.col-sm</code> will each automatically be 25% wide from the small breakpoint and up. See the <a href="#auto-layout-columns">auto-layout columns</a> section for more examples.</li>
+  <li>Column classes indicate the number of columns you’d like to use out of the possible 12 per row. So, if you want three equal-width columns across, you can use <code class="highlighter-rouge">.col-4</code>.</li>
   <li>Column <code class="highlighter-rouge">width</code>s are set in percentages, so they’re always fluid and sized relative to their parent element.</li>
   <li>Columns have horizontal <code class="highlighter-rouge">padding</code> to create the gutters between individual columns, however, you can remove the <code class="highlighter-rouge">margin</code> from rows and <code class="highlighter-rouge">padding</code> from columns with <code class="highlighter-rouge">.no-gutters</code> on the <code class="highlighter-rouge">.row</code>.</li>
-  <li>There are five grid tiers, one for each <a href="/docs/4.0/layout/overview/#responsive-breakpoints">responsive breakpoint</a>: all breakpoints (extra small), small, medium, large, and extra large.</li>
-  <li>Grid tiers are based on minimum widths, meaning they apply to that one tier and all those above it (e.g., <code class="highlighter-rouge">.col-sm-4</code> applies to small, medium, large, and extra large devices).</li>
-  <li>You can use predefined grid classes or Sass mixins for more semantic markup.</li>
+  <li>To make the grid responsive, there are five grid breakpoints, one for each <a href="/docs/4.0/layout/overview/#responsive-breakpoints">responsive breakpoint</a>: all breakpoints (extra small), small, medium, large, and extra large.</li>
+  <li>Grid breakpoints are based on minimum width media queries, meaning <strong>they apply to that one breakpoint and all those above it</strong> (e.g., <code class="highlighter-rouge">.col-sm-4</code> applies to small, medium, large, and extra large devices, but not the first <code class="highlighter-rouge">xs</code> breakpoint).</li>
+  <li>You can use predefined grid classes (like <code class="highlighter-rouge">.col-4</code>) or <a href="#sass-mixins">Sass mixins</a> for more semantic markup.</li>
 </ul>
 
 <p>Be aware of the limitations and <a href="https://github.com/philipwalton/flexbugs">bugs around flexbox</a>, like the <a href="https://github.com/philipwalton/flexbugs#9-some-html-elements-cant-be-flex-containers">inability to use some HTML elements as flex containers</a>.</p>
-
-<p>Sounds good? Great, let’s move on to seeing all that in an example.</p>
 
 <h2 id="grid-options">Grid options</h2>
 
@@ -1195,7 +777,7 @@
 
 <div class="bd-example-row">
 
-<div class="bd-example" data-example-id="">
+<div class="bd-example">
 <div class="container">
   <div class="row">
     <div class="col">
@@ -1241,13 +823,13 @@
 
 </div>
 
-<p>Equal-width columns can be broken into multiple lines, but there is a <a href="https://github.com/philipwalton/flexbugs#11-min-and-max-size-declarations-are-ignored-when-wrapping-flex-items">Safari flexbox bug</a> that prevents this from working without an explicit <code class="highlighter-rouge">flex-basis</code> or <code class="highlighter-rouge">border</code>. Our example works thanks to the <code class="highlighter-rouge">border</code> being set; you can do the same with <code class="highlighter-rouge">.col { border: 1px solid transparent; }</code>. Alternatively, you can set the flex-basis to the width of the column (e.g., <code class="highlighter-rouge">.col { flex: 1 0 50%; }</code>).</p>
+<p>Equal-width columns can be broken into multiple lines, but there was a <a href="https://github.com/philipwalton/flexbugs#11-min-and-max-size-declarations-are-ignored-when-wrapping-flex-items">Safari flexbox bug</a> that prevented this from working without an explicit <code class="highlighter-rouge">flex-basis</code> or <code class="highlighter-rouge">border</code>.</p>
 
-<p>Both these fixes have been documented in a <a href="https://output.jsbin.com/micohor">reduced test case outside Bootstrap</a>.</p>
+<p>Two workarounds have been documented in a <a href="https://output.jsbin.com/micohor">reduced test case outside Bootstrap</a>, though if the browser is up to date this shouldn’t be necessary.</p>
 
 <div class="bd-example-row">
 
-<div class="bd-example" data-example-id="">
+<div class="bd-example">
 <div class="container">
   <div class="row">
     <div class="col">Column</div>
@@ -1275,7 +857,7 @@
 
 <div class="bd-example-row">
 
-<div class="bd-example" data-example-id="">
+<div class="bd-example">
 <div class="container">
   <div class="row">
     <div class="col">
@@ -1333,7 +915,7 @@
 
 <div class="bd-example-row">
 
-<div class="bd-example" data-example-id="">
+<div class="bd-example">
 <div class="container">
   <div class="row justify-content-md-center">
     <div class="col col-lg-2">
@@ -1391,7 +973,7 @@
 
 <div class="bd-example-row">
 
-<div class="bd-example" data-example-id="">
+<div class="bd-example">
 <div class="row">
   <div class="col">col</div>
   <div class="col">col</div>
@@ -1419,7 +1001,7 @@
 
 <div class="bd-example-row">
 
-<div class="bd-example" data-example-id="">
+<div class="bd-example">
 <div class="row">
   <div class="col">col</div>
   <div class="col">col</div>
@@ -1449,7 +1031,7 @@
 
 <div class="bd-example-row">
 
-<div class="bd-example" data-example-id="">
+<div class="bd-example">
 <div class="row">
   <div class="col-sm-8">col-sm-8</div>
   <div class="col-sm-4">col-sm-4</div>
@@ -1477,7 +1059,7 @@
 
 <div class="bd-example-row">
 
-<div class="bd-example" data-example-id="">
+<div class="bd-example">
 <!-- Stack the columns on mobile by making one full-width and the other half-width -->
 <div class="row">
   <div class="col-12 col-md-8">.col-12 .col-md-8</div>
@@ -1525,7 +1107,7 @@
 
 <div class="bd-example-row bd-example-row-flex-cols">
 
-<div class="bd-example" data-example-id="">
+<div class="bd-example">
 <div class="container">
   <div class="row align-items-start">
     <div class="col">
@@ -1601,7 +1183,7 @@
 
 <div class="bd-example-row bd-example-row-flex-cols">
 
-<div class="bd-example" data-example-id="">
+<div class="bd-example">
 <div class="container">
   <div class="row">
     <div class="col align-self-start">
@@ -1635,7 +1217,7 @@
 
 <div class="bd-example-row">
 
-<div class="bd-example" data-example-id="">
+<div class="bd-example">
 <div class="container">
   <div class="row justify-content-start">
     <div class="col-4">
@@ -1746,7 +1328,7 @@
 
 <div class="bd-example-row">
 
-<div class="bd-example" data-example-id="">
+<div class="bd-example">
 <div class="row no-gutters">
   <div class="col-12 col-sm-6 col-md-8">.col-12 .col-sm-6 .col-md-8</div>
   <div class="col-6 col-md-4">.col-6 .col-md-4</div>
@@ -1764,7 +1346,7 @@
 
 <div class="bd-example-row">
 
-<div class="bd-example" data-example-id="">
+<div class="bd-example">
 <div class="row">
   <div class="col-9">.col-9</div>
   <div class="col-4">.col-4<br />Since 9 + 4 = 13 &gt; 12, this 4-column-wide div gets wrapped onto a new line as one contiguous unit.</div>
@@ -1778,19 +1360,19 @@
 
 </div>
 
-<h3 id="column-resets">Column resets</h3>
+<h3 id="column-breaks">Column breaks</h3>
 
-<p>With the handful of grid tiers available, you’re bound to run into issues where, at certain breakpoints, your columns don’t clear quite right as one is taller than the other. To fix that, use a combination of a <code class="highlighter-rouge">.clearfix</code> and our <a href="/docs/4.0/utilities/display/">responsive display utilities</a>.</p>
+<p>Breaking columns to a new line in flexbox requires a small hack: add an element with <code class="highlighter-rouge">width: 100%</code> wherever you want to wrap your columns to a new line. Normally this is accomplished with multiple <code class="highlighter-rouge">.row</code>s, but not ever implementation method can account for this.</p>
 
 <div class="bd-example-row">
 
-<div class="bd-example" data-example-id="">
+<div class="bd-example">
 <div class="row">
   <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
   <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
 
-  <!-- Add the extra clearfix for only the required viewport -->
-  <div class="clearfix d-none d-sm-block"></div>
+  <!-- Force next columns to break to new line -->
+  <div class="w-100"></div>
 
   <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
   <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
@@ -1799,8 +1381,8 @@
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-6 col-sm-3"</span><span class="nt">&gt;</span>.col-6 .col-sm-3<span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-6 col-sm-3"</span><span class="nt">&gt;</span>.col-6 .col-sm-3<span class="nt">&lt;/div&gt;</span>
 
-  <span class="c">&lt;!-- Add the extra clearfix for only the required viewport --&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"clearfix d-none d-sm-block"</span><span class="nt">&gt;&lt;/div&gt;</span>
+  <span class="c">&lt;!-- Force next columns to break to new line --&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"w-100"</span><span class="nt">&gt;&lt;/div&gt;</span>
 
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-6 col-sm-3"</span><span class="nt">&gt;</span>.col-6 .col-sm-3<span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-6 col-sm-3"</span><span class="nt">&gt;</span>.col-6 .col-sm-3<span class="nt">&lt;/div&gt;</span>
@@ -1808,15 +1390,43 @@
 
 </div>
 
+<p>You may also apply this break at specific breakpoints with our <a href="/docs/4.0/utilities/display/">responsive display utilities</a>.</p>
+
+<div class="bd-example-row">
+
+<div class="bd-example">
+<div class="row">
+  <div class="col-6 col-sm-4">.col-6 .col-sm-4</div>
+  <div class="col-6 col-sm-4">.col-6 .col-sm-4</div>
+
+  <!-- Force next columns to break to new line at md breakpoint and up -->
+  <div class="w-100 d-none d-md-block"></div>
+
+  <div class="col-6 col-sm-4">.col-6 .col-sm-4</div>
+  <div class="col-6 col-sm-4">.col-6 .col-sm-4</div>
+</div>
+</div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-6 col-sm-4"</span><span class="nt">&gt;</span>.col-6 .col-sm-4<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-6 col-sm-4"</span><span class="nt">&gt;</span>.col-6 .col-sm-4<span class="nt">&lt;/div&gt;</span>
+
+  <span class="c">&lt;!-- Force next columns to break to new line at md breakpoint and up --&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"w-100 d-none d-md-block"</span><span class="nt">&gt;&lt;/div&gt;</span>
+
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-6 col-sm-4"</span><span class="nt">&gt;</span>.col-6 .col-sm-4<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-6 col-sm-4"</span><span class="nt">&gt;</span>.col-6 .col-sm-4<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+
+</div>
+
 <h2 id="reordering">Reordering</h2>
 
-<h3 id="flex-order">Flex order</h3>
+<h3 id="order-classes">Order classes</h3>
 
 <p>Use <code class="highlighter-rouge">.order-</code> classes for controlling the <strong>visual order</strong> of your content. These classes are responsive, so you can set the <code class="highlighter-rouge">order</code> by breakpoint (e.g., <code class="highlighter-rouge">.order-1.order-md-2</code>). Includes support for <code class="highlighter-rouge">1</code> through <code class="highlighter-rouge">12</code> across all five grid tiers.</p>
 
 <div class="bd-example-row">
 
-<div class="bd-example" data-example-id="">
+<div class="bd-example">
 <div class="container">
   <div class="row">
     <div class="col">
@@ -1846,13 +1456,109 @@
 
 </div>
 
-<h3 id="offsetting-columns">Offsetting columns</h3>
-
-<p>With the move to flexbox in v4, we no longer have v3’s style of offset classes. Instead, use margin utilities like <code class="highlighter-rouge">.mr-auto</code> to force sibling columns away from one another.</p>
+<p>There’s also a responsive <code class="highlighter-rouge">.order-first</code> class that quickly changes the order of one element by applying <code class="highlighter-rouge">order: -1</code>. This class can also be intermixed with the numbered <code class="highlighter-rouge">.order-*</code> classes as needed.</p>
 
 <div class="bd-example-row">
 
-<div class="bd-example" data-example-id="">
+<div class="bd-example">
+<div class="container">
+  <div class="row">
+    <div class="col">
+      First, but unordered
+    </div>
+    <div class="col">
+      Second, but unordered
+    </div>
+    <div class="col order-first">
+      Third, but first
+    </div>
+  </div>
+</div>
+</div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col"</span><span class="nt">&gt;</span>
+      First, but unordered
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col"</span><span class="nt">&gt;</span>
+      Second, but unordered
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col order-first"</span><span class="nt">&gt;</span>
+      Third, but first
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+
+</div>
+
+<h3 id="offsetting-columns">Offsetting columns</h3>
+
+<p>You can offset grid columns in two ways: our responsive <code class="highlighter-rouge">.offset-</code> grid classes and our <a href="/docs/4.0/utilities/spacing/">margin utilities</a>. Grid classes are sized to match columns while margins are more useful for quick layouts where the width of the offset is variable.</p>
+
+<h4 id="offset-classes">Offset classes</h4>
+
+<p>Move columns to the right using <code class="highlighter-rouge">.offset-md-*</code> classes. These classes increase the left margin of a column by <code class="highlighter-rouge">*</code> columns. For example, <code class="highlighter-rouge">.offset-md-4</code> moves <code class="highlighter-rouge">.col-md-4</code> over four columns.</p>
+
+<div class="bd-example-row">
+
+<div class="bd-example">
+<div class="row">
+  <div class="col-md-4">.col-md-4</div>
+  <div class="col-md-4 offset-md-4">.col-md-4 .offset-md-4</div>
+</div>
+<div class="row">
+  <div class="col-md-3 offset-md-3">.col-md-3 .offset-md-3</div>
+  <div class="col-md-3 offset-md-3">.col-md-3 .offset-md-3</div>
+</div>
+<div class="row">
+  <div class="col-md-6 offset-md-3">.col-md-6 .offset-md-3</div>
+</div>
+</div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-4"</span><span class="nt">&gt;</span>.col-md-4<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-4 offset-md-4"</span><span class="nt">&gt;</span>.col-md-4 .offset-md-4<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-3 offset-md-3"</span><span class="nt">&gt;</span>.col-md-3 .offset-md-3<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-3 offset-md-3"</span><span class="nt">&gt;</span>.col-md-3 .offset-md-3<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-6 offset-md-3"</span><span class="nt">&gt;</span>.col-md-6 .offset-md-3<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+
+</div>
+
+<p>In addition to column clearing at responsive breakpoints, you may need to reset offsets. See this in action in <a href="/docs/4.0/examples/grid/">the grid example</a>.</p>
+
+<div class="bd-example-row">
+
+<div class="bd-example">
+<div class="row">
+  <div class="col-sm-5 col-md-6">.col-sm-5 .col-md-6</div>
+  <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0">.col-sm-5 .offset-sm-2 .col-md-6 .offset-md-0</div>
+</div>
+
+<div class="row">
+  <div class="col-sm-6 col-md-5 col-lg-6">.col.col-sm-6.col-md-5.col-lg-6</div>
+  <div class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">.col-sm-6 .col-md-5 .offset-md-2 .col-lg-6 .offset-lg-0</div>
+</div>
+</div><div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-5 col-md-6"</span><span class="nt">&gt;</span>.col-sm-5 .col-md-6<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-5 offset-sm-2 col-md-6 offset-md-0"</span><span class="nt">&gt;</span>.col-sm-5 .offset-sm-2 .col-md-6 .offset-md-0<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-6 col-md-5 col-lg-6"</span><span class="nt">&gt;</span>.col.col-sm-6.col-md-5.col-lg-6<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0"</span><span class="nt">&gt;</span>.col-sm-6 .col-md-5 .offset-md-2 .col-lg-6 .offset-lg-0<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+
+</div>
+
+<h4 id="margin-utilities">Margin utilities</h4>
+
+<p>With the move to flexbox in v4, you can use margin utilities like <code class="highlighter-rouge">.mr-auto</code> to force sibling columns away from one another.</p>
+
+<div class="bd-example-row">
+
+<div class="bd-example">
 <div class="row">
   <div class="col-md-4">.col-md-4</div>
   <div class="col-md-4 ml-auto">.col-md-4 .ml-auto</div>
@@ -1886,7 +1592,7 @@
 
 <div class="bd-example-row">
 
-<div class="bd-example" data-example-id="">
+<div class="bd-example">
 <div class="row">
   <div class="col-sm-9">
     Level 1: .col-sm-9
@@ -1956,7 +1662,10 @@
 
 <span class="c1">// Make the element grid-ready (applying everything but the width)
 </span><span class="k">@include</span> <span class="nd">make-col-ready</span><span class="p">();</span>
-<span class="k">@include</span> <span class="nd">make-col</span><span class="p">(</span><span class="nv">$size</span><span class="o">,</span> <span class="nv">$columns</span><span class="o">:</span> <span class="nv">$grid-columns</span><span class="p">);</span></code></pre></figure>
+<span class="k">@include</span> <span class="nd">make-col</span><span class="p">(</span><span class="nv">$size</span><span class="o">,</span> <span class="nv">$columns</span><span class="o">:</span> <span class="nv">$grid-columns</span><span class="p">);</span>
+
+<span class="c1">// Get fancy by offsetting, or changing the sort order
+</span><span class="k">@include</span> <span class="nd">make-col-offset</span><span class="p">(</span><span class="nv">$size</span><span class="o">,</span> <span class="nv">$columns</span><span class="o">:</span> <span class="nv">$grid-columns</span><span class="p">);</span></code></pre></figure>
 
 <h3 id="example-usage">Example usage</h3>
 
@@ -1993,7 +1702,7 @@
   <span class="p">}</span>
 <span class="p">}</span></code></pre></figure>
 
-<div class="bd-example" data-example-id="">
+<div class="bd-example">
 <div class="example-container">
   <div class="example-row">
     <div class="example-content-main">Main content</div>
@@ -2036,7 +1745,7 @@
   <span class="n">lg</span><span class="o">:</span> <span class="m">960px</span>
 <span class="p">);</span></code></pre></figure>
 
-<p>When making any changes to the Sass variables or maps, you’ll need to save your changes and recompile. Doing so will out a brand new set of predefined grid classes for column widths and ordering. Responsive visibility utilities will also be updated to use the custom breakpoints.</p>
+<p>When making any changes to the Sass variables or maps, you’ll need to save your changes and recompile. Doing so will output a brand new set of predefined grid classes for column widths, offsets, and ordering. Responsive visibility utilities will also be updated to use the custom breakpoints. Make sure to set grid values in <code class="highlighter-rouge">px</code> (not <code class="highlighter-rouge">rem</code>, <code class="highlighter-rouge">em</code>, or <code class="highlighter-rouge">%</code>).</p>
 
         </main>
       </div>
@@ -2055,14 +1764,12 @@
   <script src="/assets/js/docs.min.js"></script>
 
 
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script src="/assets/js/ie10-viewport-bug-workaround.js"></script>
 <script src="/assets/js/ie-emulation-modes-warning.js"></script>
 
 
-<script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
-<script type="text/javascript">
-  var docsearch = docsearch({
+<script src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+<script>
+  docsearch({
     apiKey: '48cb48b22351bc71ea5f12f4d1ede198',
     indexName: 'bootstrap-v4',
     inputSelector: '#search-input',
@@ -2084,12 +1791,12 @@
 
 
 <script>
-Holder.addTheme('gray', {
-  bg: '#777',
-  fg: 'rgba(255,255,255,.75)',
-  font: 'Helvetica',
-  fontweight: 'normal'
-})
+  Holder.addTheme('gray', {
+    bg: '#777',
+    fg: 'rgba(255,255,255,.75)',
+    font: 'Helvetica',
+    fontweight: 'normal'
+  });
 </script>
 
   </body>

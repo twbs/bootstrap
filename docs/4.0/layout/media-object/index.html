@@ -1,14 +1,37 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Jekyll v3.6.0">
 
-<title>
-  
-    Media object &middot; Bootstrap
-  
-</title>
+<title>Media object &middot; Bootstrap</title>
+
+<!-- Bootstrap core CSS -->
+
+  <link href="/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+<!-- Documentation extras -->
+
+<link href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" rel="stylesheet">
+
+<link href="/assets/css/docs.min.css" rel="stylesheet">
+
+<!-- Favicons -->
+<link rel="apple-touch-icon" href="/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="manifest" href="/assets/img/favicons/manifest.json">
+<link rel="mask-icon" href="/assets/img/favicons/safari-pinned-tab.svg" color="#563d7c">
+<link rel="icon" href="/favicon.ico">
+<meta name="msapplication-config" content="/assets/img/favicons/browserconfig.xml">
+<meta name="theme-color" content="#563d7c">
+
+
+<!-- Meta -->
+<meta name="description" content="The most popular HTML, CSS, and JS library in the world.">
+<meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
 
 <!-- Twitter -->
 <meta name="twitter:site" content="@getbootstrap">
@@ -34,25 +57,6 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 
-<!-- Meta -->
-<meta name="description" content="The most popular HTML, CSS, and JS library in the world.">
-<meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-
-
-<!-- Bootstrap core CSS -->
-
-  <link href="/dist/css/bootstrap.min.css" rel="stylesheet">
-
-
-<!-- Documentation extras -->
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
-
-<link href="/assets/css/docs.min.css" rel="stylesheet">
-
-<!-- Favicons -->
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="icon" href="/favicon.ico">
 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -64,7 +68,7 @@
 </script>
 
   </head>
-  <body class="bd-docs" data-spy="scroll" data-target=".bd-sidenav-active">
+  <body>
     <a id="skippy" class="sr-only sr-only-focusable" href="#content">
       <div class="container">
         <span class="skiplink-text">Skip to main content</span>
@@ -73,7 +77,7 @@
 
     <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
   <a class="navbar-brand mr-0 mr-md-2" href="/" aria-label="Bootstrap">
-    <svg  class="d-block" width="36" height="36" viewbox="0 0 612 612" xmlns="http://www.w3.org/2000/svg" focusable="false"><title>Bootstrap</title><path fill="currentColor" d="M510 8a94.3 94.3 0 0 1 94 94v408a94.3 94.3 0 0 1-94 94H102a94.3 94.3 0 0 1-94-94V102a94.3 94.3 0 0 1 94-94h408m0-8H102C45.9 0 0 45.9 0 102v408c0 56.1 45.9 102 102 102h408c56.1 0 102-45.9 102-102V102C612 45.9 566.1 0 510 0z"/><path fill="currentColor" d="M196.77 471.5V154.43h124.15c54.27 0 91 31.64 91 79.1 0 33-24.17 63.72-54.71 69.21v1.76c43.07 5.49 70.75 35.82 70.75 78 0 55.81-40 89-107.45 89zm39.55-180.4h63.28c46.8 0 72.29-18.68 72.29-53 0-31.42-21.53-48.78-60-48.78h-75.57zm78.22 145.46c47.68 0 72.73-19.34 72.73-56s-25.93-55.37-76.46-55.37h-74.49v111.4z"/></svg>
+    <svg class="d-block" width="36" height="36" viewbox="0 0 612 612" xmlns="http://www.w3.org/2000/svg" focusable="false"><title>Bootstrap</title><path fill="currentColor" d="M510 8a94.3 94.3 0 0 1 94 94v408a94.3 94.3 0 0 1-94 94H102a94.3 94.3 0 0 1-94-94V102a94.3 94.3 0 0 1 94-94h408m0-8H102C45.9 0 0 45.9 0 102v408c0 56.1 45.9 102 102 102h408c56.1 0 102-45.9 102-102V102C612 45.9 566.1 0 510 0z"/><path fill="currentColor" d="M196.77 471.5V154.43h124.15c54.27 0 91 31.64 91 79.1 0 33-24.17 63.72-54.71 69.21v1.76c43.07 5.49 70.75 35.82 70.75 78 0 55.81-40 89-107.45 89zm39.55-180.4h63.28c46.8 0 72.29-18.68 72.29-53 0-31.42-21.53-48.78-60-48.78h-75.57zm78.22 145.46c47.68 0 72.73-19.34 72.73-56s-25.93-55.37-76.46-55.37h-74.49v111.4z"/></svg>
 
   </a>
 
@@ -83,7 +87,7 @@
         <a class="nav-link " href="/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Bootstrap');">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link active" href="/docs/4.0/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Docs');">Documentation</a>
+        <a class="nav-link active" href="/docs/4.0/getting-started/introduction/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Docs');">Documentation</a>
       </li>
       <li class="nav-item">
         <a class="nav-link " href="/docs/4.0/examples/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Examples');">Examples</a>
@@ -110,8 +114,8 @@
       </a>
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="bd-versions">
         <a class="dropdown-item active" href="/docs/4.0/">Latest (4.x)</a>
-        <a class="dropdown-item" href="https://v4-alpha.getbootstrap.com">v4 Alpha 6</a>
-        <a class="dropdown-item" href="https://getbootstrap.com/docs/3.3/">v3.3.7</a>
+        <a class="dropdown-item" href="https://v4-alpha.getbootstrap.com/">v4 Alpha 6</a>
+        <a class="dropdown-item" href="https://getbootstrap.com/3.3/">v3.3.7</a>
         <a class="dropdown-item" href="https://getbootstrap.com/2.3.2/">v2.3.2</a>
       </div>
     </li>
@@ -136,7 +140,7 @@
     </li>
   </ul>
 
-  <a class="btn btn-bd-yellow d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="https://github.com/twbs/bootstrap/archive/v4.0.0-beta.zip">Download</a>
+  <a class="btn btn-bd-yellow d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="https://github.com/twbs/bootstrap/archive/v4.0.0-beta.2.zip">Download</a>
 </header>
 
 
@@ -145,876 +149,433 @@
         <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
           <form class="bd-search d-flex align-items-center">
   <input type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
-  <button class="btn-link bd-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#bd-docs-nav" aria-controls="bd-docs-nav" aria-expanded="false" aria-label="Toggle docs avigation">
-    <svg class="" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 30 30" width="30" height="30" focusable="false"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/></svg>
+  <button class="btn btn-link bd-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#bd-docs-nav" aria-controls="bd-docs-nav" aria-expanded="false" aria-label="Toggle docs navigation">
+    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 30 30" width="30" height="30" focusable="false"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/></svg>
 
   </button>
 </form>
 
-<nav class="collapse bd-links" id="bd-docs-nav">
-  
-  
-  
-  
-  
-  
-
-  
-
-  <div class="bd-toc-item ">
+<nav class="collapse bd-links" id="bd-docs-nav"><div class="bd-toc-item">
       <a class="bd-toc-link" href="/docs/4.0/getting-started/introduction/">
         Getting started
       </a>
 
-      <ul class="nav bd-sidenav">
-        
-          
-          
-
-          
-
-          <li class="">
+      <ul class="nav bd-sidenav"><li>
             <a href="/docs/4.0/getting-started/introduction/">
               Introduction
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/getting-started/download/">
               Download
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/getting-started/contents/">
               Contents
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/getting-started/browsers-devices/">
               Browsers & devices
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/getting-started/javascript/">
               JavaScript
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
-            <a href="/docs/4.0/getting-started/options/">
-              Options
+          </li><li>
+            <a href="/docs/4.0/getting-started/theming/">
+              Theming
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/getting-started/build-tools/">
               Build tools
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/getting-started/webpack/">
               Webpack
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/getting-started/accessibility/">
               Accessibility
             </a>
 
             
-          </li>
-        
-      </ul>
-    </div>
-  
-  
-  
-  
-  
-
-  
-
-  <div class="bd-toc-item active">
+          </li></ul>
+    </div><div class="bd-toc-item active">
       <a class="bd-toc-link" href="/docs/4.0/layout/overview/">
         Layout
       </a>
 
-      <ul class="nav bd-sidenav">
-        
-          
-          
-
-          
-
-          <li class="">
+      <ul class="nav bd-sidenav"><li>
             <a href="/docs/4.0/layout/overview/">
               Overview
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/layout/grid/">
               Grid
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="active bd-sidenav-active">
+          </li><li class="active bd-sidenav-active">
             <a href="/docs/4.0/layout/media-object/">
               Media object
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/layout/utilities-for-layout/">
               Utilities for layout
             </a>
 
             
-          </li>
-        
-      </ul>
-    </div>
-  
-  
-  
-  
-  
-
-  
-
-  <div class="bd-toc-item ">
+          </li></ul>
+    </div><div class="bd-toc-item">
       <a class="bd-toc-link" href="/docs/4.0/content/reboot/">
         Content
       </a>
 
-      <ul class="nav bd-sidenav">
-        
-          
-          
-
-          
-
-          <li class="">
+      <ul class="nav bd-sidenav"><li>
             <a href="/docs/4.0/content/reboot/">
               Reboot
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/content/typography/">
               Typography
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/content/code/">
               Code
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/content/images/">
               Images
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/content/tables/">
               Tables
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/content/figures/">
               Figures
             </a>
 
             
-          </li>
-        
-      </ul>
-    </div>
-  
-  
-  
-  
-  
-
-  
-
-  <div class="bd-toc-item ">
+          </li></ul>
+    </div><div class="bd-toc-item">
       <a class="bd-toc-link" href="/docs/4.0/components/alerts/">
         Components
       </a>
 
-      <ul class="nav bd-sidenav">
-        
-          
-          
-
-          
-
-          <li class="">
+      <ul class="nav bd-sidenav"><li>
             <a href="/docs/4.0/components/alerts/">
               Alerts
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/badge/">
               Badge
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/breadcrumb/">
               Breadcrumb
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/buttons/">
               Buttons
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/button-group/">
               Button group
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/card/">
               Card
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/carousel/">
               Carousel
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/collapse/">
               Collapse
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/dropdowns/">
               Dropdowns
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/forms/">
               Forms
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/input-group/">
               Input group
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/jumbotron/">
               Jumbotron
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/list-group/">
               List group
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/modal/">
               Modal
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/navs/">
               Navs
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/navbar/">
               Navbar
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/pagination/">
               Pagination
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/popovers/">
               Popovers
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/progress/">
               Progress
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/scrollspy/">
               Scrollspy
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/components/tooltips/">
               Tooltips
             </a>
 
             
-          </li>
-        
-      </ul>
-    </div>
-  
-  
-  
-  
-  
-
-  
-
-  <div class="bd-toc-item ">
+          </li></ul>
+    </div><div class="bd-toc-item">
       <a class="bd-toc-link" href="/docs/4.0/utilities/borders/">
         Utilities
       </a>
 
-      <ul class="nav bd-sidenav">
-        
-          
-          
-
-          
-
-          <li class="">
+      <ul class="nav bd-sidenav"><li>
             <a href="/docs/4.0/utilities/borders/">
               Borders
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/utilities/clearfix/">
               Clearfix
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/utilities/close-icon/">
               Close icon
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/utilities/colors/">
               Colors
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/utilities/display/">
               Display
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/utilities/embed/">
               Embed
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/utilities/flex/">
               Flex
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/utilities/float/">
               Float
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/utilities/image-replacement/">
               Image replacement
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/utilities/position/">
               Position
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/utilities/screenreaders/">
               Screenreaders
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/utilities/sizing/">
               Sizing
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/utilities/spacing/">
               Spacing
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/utilities/text/">
               Text
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/utilities/vertical-align/">
               Vertical align
             </a>
 
             
-          </li>
-        
-          
-          
-
-          
-
-          <li class="">
+          </li><li>
             <a href="/docs/4.0/utilities/visibility/">
               Visibility
             </a>
 
             
-          </li>
-        
-      </ul>
-    </div>
-  
-  
-  
-  
-  
-
-  
-
-  <div class="bd-toc-item ">
+          </li></ul>
+    </div><div class="bd-toc-item">
       <a class="bd-toc-link" href="/docs/4.0/extend/icons/">
         Extend
       </a>
 
-      <ul class="nav bd-sidenav">
-        
-          
-          
-
-          
-
-          <li class="">
+      <ul class="nav bd-sidenav"><li>
             <a href="/docs/4.0/extend/icons/">
               Icons
             </a>
 
             
-          </li>
-        
-      </ul>
-    </div>
-  
-  
-  
-  
-  
-
-  
-
-  <div class="bd-toc-item ">
+          </li></ul>
+    </div><div class="bd-toc-item">
       <a class="bd-toc-link" href="/docs/4.0/migration/">
         Migration
       </a>
 
-      <ul class="nav bd-sidenav">
-        
-      </ul>
-    </div>
-  
-</nav>
+      <ul class="nav bd-sidenav"></ul>
+    </div><div class="bd-toc-item">
+      <a class="bd-toc-link" href="/docs/4.0/about/history/">
+        About
+      </a>
+
+      <ul class="nav bd-sidenav"><li>
+            <a href="/docs/4.0/about/history/">
+              History
+            </a>
+
+            
+          </li><li>
+            <a href="/docs/4.0/about/team/">
+              Team
+            </a>
+
+            
+          </li><li>
+            <a href="/docs/4.0/about/brand/">
+              Brand
+            </a>
+
+            
+          </li><li>
+            <a href="/docs/4.0/about/license/">
+              License
+            </a>
+
+            
+          </li><li>
+            <a href="/docs/4.0/about/translations/">
+              Translations
+            </a>
+
+            
+          </li></ul>
+    </div></nav>
 
         </div>
 
@@ -1023,53 +584,33 @@
             <ul class="section-nav">
 <li class="toc-entry toc-h2"><a href="#example">Example</a>
 <ul>
-<ul>
-<ul>
 <li class="toc-entry toc-h5"><a href="#media-heading">Media heading</a></li>
 <li class="toc-entry toc-h5"><a href="#flexbug-12-inline-elements-arent-treated-as-flex-items">Flexbug #12: Inline elements aren’t treated as flex items</a></li>
-</ul>
-</ul>
 </ul>
 </li>
 <li class="toc-entry toc-h2"><a href="#nesting">Nesting</a>
 <ul>
-<ul>
-<ul>
 <li class="toc-entry toc-h5"><a href="#media-heading-1">Media heading</a></li>
 <li class="toc-entry toc-h5"><a href="#media-heading-2">Media heading</a></li>
 </ul>
-</ul>
-</ul>
 </li>
 <li class="toc-entry toc-h2"><a href="#alignment">Alignment</a>
-<ul>
-<ul>
 <ul>
 <li class="toc-entry toc-h5"><a href="#top-aligned-media">Top-aligned media</a></li>
 <li class="toc-entry toc-h5"><a href="#center-aligned-media">Center-aligned media</a></li>
 <li class="toc-entry toc-h5"><a href="#bottom-aligned-media">Bottom-aligned media</a></li>
 </ul>
-</ul>
-</ul>
 </li>
 <li class="toc-entry toc-h2"><a href="#order">Order</a>
 <ul>
-<ul>
-<ul>
 <li class="toc-entry toc-h5"><a href="#media-object">Media object</a></li>
-</ul>
-</ul>
 </ul>
 </li>
 <li class="toc-entry toc-h2"><a href="#media-list">Media list</a>
 <ul>
-<ul>
-<ul>
 <li class="toc-entry toc-h5"><a href="#list-based-media-object">List-based media object</a></li>
 <li class="toc-entry toc-h5"><a href="#list-based-media-object-1">List-based media object</a></li>
 <li class="toc-entry toc-h5"><a href="#list-based-media-object-2">List-based media object</a></li>
-</ul>
-</ul>
 </ul>
 </li>
 </ul>
@@ -1079,7 +620,7 @@
         <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
           <h1 class="bd-title" id="content">Media object</h1>
           <p class="bd-lead">Documentation and examples for Bootstrap's media object to construct highly repetitive components like blog comments, tweets, and the like.</p>
-          <script async type="text/javascript" src="https://cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=getbootstrapcom" id="_carbonads_js"></script>
+          <script async src="https://cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=getbootstrapcom" id="_carbonads_js"></script>
 
           <h2 id="example">Example</h2>
 
@@ -1087,9 +628,9 @@
 
 <p>Below is an example of a single media object. Only two classes are required—the wrapping <code class="highlighter-rouge">.media</code> and the <code class="highlighter-rouge">.media-body</code> around your content. Optional padding and margin can be controlled through <a href="/docs/4.0/utilities/spacing/">spacing utilities</a>.</p>
 
-<div class="bd-example" data-example-id="">
+<div class="bd-example">
 <div class="media">
-  <img class="d-flex mr-3" data-src="holder.js/64x64" alt="Generic placeholder image" />
+  <img class="mr-3" data-src="holder.js/64x64" alt="Generic placeholder image" />
   <div class="media-body">
     <h5 class="mt-0">Media heading</h5>
     Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
@@ -1097,7 +638,7 @@
 </div>
 </div>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"media"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;img</span> <span class="na">class=</span><span class="s">"d-flex mr-3"</span> <span class="na">src=</span><span class="s">"..."</span> <span class="na">alt=</span><span class="s">"Generic placeholder image"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;img</span> <span class="na">class=</span><span class="s">"mr-3"</span> <span class="na">src=</span><span class="s">"..."</span> <span class="na">alt=</span><span class="s">"Generic placeholder image"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"media-body"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"mt-0"</span><span class="nt">&gt;</span>Media heading<span class="nt">&lt;/h5&gt;</span>
     Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
@@ -1116,15 +657,15 @@
 
 <p>Media objects can be infinitely nested, though we suggest you stop at some point. Place nested <code class="highlighter-rouge">.media</code> within the <code class="highlighter-rouge">.media-body</code> of a parent media object.</p>
 
-<div class="bd-example" data-example-id="">
+<div class="bd-example">
 <div class="media">
-  <img class="d-flex mr-3" data-src="holder.js/64x64" alt="Generic placeholder image" />
+  <img class="mr-3" data-src="holder.js/64x64" alt="Generic placeholder image" />
   <div class="media-body">
     <h5 class="mt-0">Media heading</h5>
     Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
 
     <div class="media mt-3">
-      <a class="d-flex pr-3" href="#">
+      <a class="pr-3" href="#">
         <img data-src="holder.js/64x64" alt="Generic placeholder image" />
       </a>
       <div class="media-body">
@@ -1136,13 +677,13 @@
 </div>
 </div>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"media"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;img</span> <span class="na">class=</span><span class="s">"d-flex mr-3"</span> <span class="na">src=</span><span class="s">"..."</span> <span class="na">alt=</span><span class="s">"Generic placeholder image"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;img</span> <span class="na">class=</span><span class="s">"mr-3"</span> <span class="na">src=</span><span class="s">"..."</span> <span class="na">alt=</span><span class="s">"Generic placeholder image"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"media-body"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"mt-0"</span><span class="nt">&gt;</span>Media heading<span class="nt">&lt;/h5&gt;</span>
     Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
 
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"media mt-3"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"d-flex pr-3"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"pr-3"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"..."</span> <span class="na">alt=</span><span class="s">"Generic placeholder image"</span><span class="nt">&gt;</span>
       <span class="nt">&lt;/a&gt;</span>
       <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"media-body"</span><span class="nt">&gt;</span>
@@ -1157,9 +698,9 @@
 
 <p>Media in a media object can be aligned with flexbox utilities to the top (default), middle, or end of your <code class="highlighter-rouge">.media-body</code> content.</p>
 
-<div class="bd-example" data-example-id="">
+<div class="bd-example">
 <div class="media">
-  <img class="d-flex align-self-start mr-3" data-src="holder.js/64x64" alt="Generic placeholder image" />
+  <img class="align-self-start mr-3" data-src="holder.js/64x64" alt="Generic placeholder image" />
   <div class="media-body">
     <h5 class="mt-0">Top-aligned media</h5>
     <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
@@ -1168,7 +709,7 @@
 </div>
 </div>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"media"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;img</span> <span class="na">class=</span><span class="s">"d-flex align-self-start mr-3"</span> <span class="na">src=</span><span class="s">"..."</span> <span class="na">alt=</span><span class="s">"Generic placeholder image"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;img</span> <span class="na">class=</span><span class="s">"align-self-start mr-3"</span> <span class="na">src=</span><span class="s">"..."</span> <span class="na">alt=</span><span class="s">"Generic placeholder image"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"media-body"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"mt-0"</span><span class="nt">&gt;</span>Top-aligned media<span class="nt">&lt;/h5&gt;</span>
     <span class="nt">&lt;p&gt;</span>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.<span class="nt">&lt;/p&gt;</span>
@@ -1176,9 +717,9 @@
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
-<div class="bd-example" data-example-id="">
+<div class="bd-example">
 <div class="media">
-  <img class="d-flex align-self-center mr-3" data-src="holder.js/64x64" alt="Generic placeholder image" />
+  <img class="align-self-center mr-3" data-src="holder.js/64x64" alt="Generic placeholder image" />
   <div class="media-body">
     <h5 class="mt-0">Center-aligned media</h5>
     <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
@@ -1187,7 +728,7 @@
 </div>
 </div>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"media"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;img</span> <span class="na">class=</span><span class="s">"d-flex align-self-center mr-3"</span> <span class="na">src=</span><span class="s">"..."</span> <span class="na">alt=</span><span class="s">"Generic placeholder image"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;img</span> <span class="na">class=</span><span class="s">"align-self-center mr-3"</span> <span class="na">src=</span><span class="s">"..."</span> <span class="na">alt=</span><span class="s">"Generic placeholder image"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"media-body"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"mt-0"</span><span class="nt">&gt;</span>Center-aligned media<span class="nt">&lt;/h5&gt;</span>
     <span class="nt">&lt;p&gt;</span>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.<span class="nt">&lt;/p&gt;</span>
@@ -1195,9 +736,9 @@
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
-<div class="bd-example" data-example-id="">
+<div class="bd-example">
 <div class="media">
-  <img class="d-flex align-self-end mr-3" data-src="holder.js/64x64" alt="Generic placeholder image" />
+  <img class="align-self-end mr-3" data-src="holder.js/64x64" alt="Generic placeholder image" />
   <div class="media-body">
     <h5 class="mt-0">Bottom-aligned media</h5>
     <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
@@ -1206,7 +747,7 @@
 </div>
 </div>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"media"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;img</span> <span class="na">class=</span><span class="s">"d-flex align-self-end mr-3"</span> <span class="na">src=</span><span class="s">"..."</span> <span class="na">alt=</span><span class="s">"Generic placeholder image"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;img</span> <span class="na">class=</span><span class="s">"align-self-end mr-3"</span> <span class="na">src=</span><span class="s">"..."</span> <span class="na">alt=</span><span class="s">"Generic placeholder image"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"media-body"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"mt-0"</span><span class="nt">&gt;</span>Bottom-aligned media<span class="nt">&lt;/h5&gt;</span>
     <span class="nt">&lt;p&gt;</span>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.<span class="nt">&lt;/p&gt;</span>
@@ -1218,13 +759,13 @@
 
 <p>Change the order of content in media objects by modifying the HTML itself, or by adding some custom flexbox CSS to set the <code class="highlighter-rouge">order</code> property (to an integer of your choosing).</p>
 
-<div class="bd-example" data-example-id="">
+<div class="bd-example">
 <div class="media">
   <div class="media-body">
     <h5 class="mt-0 mb-1">Media object</h5>
     Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
   </div>
-  <img class="d-flex ml-3" data-src="holder.js/64x64" alt="Generic placeholder image" />
+  <img class="ml-3" data-src="holder.js/64x64" alt="Generic placeholder image" />
 </div>
 </div>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"media"</span><span class="nt">&gt;</span>
@@ -1232,31 +773,31 @@
     <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"mt-0 mb-1"</span><span class="nt">&gt;</span>Media object<span class="nt">&lt;/h5&gt;</span>
     Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
   <span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;img</span> <span class="na">class=</span><span class="s">"d-flex ml-3"</span> <span class="na">src=</span><span class="s">"..."</span> <span class="na">alt=</span><span class="s">"Generic placeholder image"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;img</span> <span class="na">class=</span><span class="s">"ml-3"</span> <span class="na">src=</span><span class="s">"..."</span> <span class="na">alt=</span><span class="s">"Generic placeholder image"</span><span class="nt">&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
 <h2 id="media-list">Media list</h2>
 
 <p>Because the media object has so few structural requirements, you can also use these classes on list HTML elements. On your <code class="highlighter-rouge">&lt;ul&gt;</code> or <code class="highlighter-rouge">&lt;ol&gt;</code>, add the <code class="highlighter-rouge">.list-unstyled</code> to remove any browser default list styles, and then apply <code class="highlighter-rouge">.media</code> to your <code class="highlighter-rouge">&lt;li&gt;</code>s. As always, use spacing utilities wherever needed to fine tune.</p>
 
-<div class="bd-example" data-example-id="">
+<div class="bd-example">
 <ul class="list-unstyled">
   <li class="media">
-    <img class="d-flex mr-3" data-src="holder.js/64x64" alt="Generic placeholder image" />
+    <img class="mr-3" data-src="holder.js/64x64" alt="Generic placeholder image" />
     <div class="media-body">
       <h5 class="mt-0 mb-1">List-based media object</h5>
       Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
     </div>
   </li>
   <li class="media my-4">
-    <img class="d-flex mr-3" data-src="holder.js/64x64" alt="Generic placeholder image" />
+    <img class="mr-3" data-src="holder.js/64x64" alt="Generic placeholder image" />
     <div class="media-body">
       <h5 class="mt-0 mb-1">List-based media object</h5>
       Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
     </div>
   </li>
   <li class="media">
-    <img class="d-flex mr-3" data-src="holder.js/64x64" alt="Generic placeholder image" />
+    <img class="mr-3" data-src="holder.js/64x64" alt="Generic placeholder image" />
     <div class="media-body">
       <h5 class="mt-0 mb-1">List-based media object</h5>
       Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
@@ -1266,21 +807,21 @@
 </div>
 <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"list-unstyled"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"media"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;img</span> <span class="na">class=</span><span class="s">"d-flex mr-3"</span> <span class="na">src=</span><span class="s">"..."</span> <span class="na">alt=</span><span class="s">"Generic placeholder image"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;img</span> <span class="na">class=</span><span class="s">"mr-3"</span> <span class="na">src=</span><span class="s">"..."</span> <span class="na">alt=</span><span class="s">"Generic placeholder image"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"media-body"</span><span class="nt">&gt;</span>
       <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"mt-0 mb-1"</span><span class="nt">&gt;</span>List-based media object<span class="nt">&lt;/h5&gt;</span>
       Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
     <span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;/li&gt;</span>
   <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"media my-4"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;img</span> <span class="na">class=</span><span class="s">"d-flex mr-3"</span> <span class="na">src=</span><span class="s">"..."</span> <span class="na">alt=</span><span class="s">"Generic placeholder image"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;img</span> <span class="na">class=</span><span class="s">"mr-3"</span> <span class="na">src=</span><span class="s">"..."</span> <span class="na">alt=</span><span class="s">"Generic placeholder image"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"media-body"</span><span class="nt">&gt;</span>
       <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"mt-0 mb-1"</span><span class="nt">&gt;</span>List-based media object<span class="nt">&lt;/h5&gt;</span>
       Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
     <span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;/li&gt;</span>
   <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"media"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;img</span> <span class="na">class=</span><span class="s">"d-flex mr-3"</span> <span class="na">src=</span><span class="s">"..."</span> <span class="na">alt=</span><span class="s">"Generic placeholder image"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;img</span> <span class="na">class=</span><span class="s">"mr-3"</span> <span class="na">src=</span><span class="s">"..."</span> <span class="na">alt=</span><span class="s">"Generic placeholder image"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"media-body"</span><span class="nt">&gt;</span>
       <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"mt-0 mb-1"</span><span class="nt">&gt;</span>List-based media object<span class="nt">&lt;/h5&gt;</span>
       Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
@@ -1306,14 +847,12 @@
   <script src="/assets/js/docs.min.js"></script>
 
 
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script src="/assets/js/ie10-viewport-bug-workaround.js"></script>
 <script src="/assets/js/ie-emulation-modes-warning.js"></script>
 
 
-<script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
-<script type="text/javascript">
-  var docsearch = docsearch({
+<script src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+<script>
+  docsearch({
     apiKey: '48cb48b22351bc71ea5f12f4d1ede198',
     indexName: 'bootstrap-v4',
     inputSelector: '#search-input',
@@ -1335,12 +874,12 @@
 
 
 <script>
-Holder.addTheme('gray', {
-  bg: '#777',
-  fg: 'rgba(255,255,255,.75)',
-  font: 'Helvetica',
-  fontweight: 'normal'
-})
+  Holder.addTheme('gray', {
+    bg: '#777',
+    fg: 'rgba(255,255,255,.75)',
+    font: 'Helvetica',
+    fontweight: 'normal'
+  });
 </script>
 
   </body>
