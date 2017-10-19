@@ -5,13 +5,13 @@
 
 @mixin button-variant($background, $border, $active-background: darken($background, 7.5%), $active-border: darken($border, 10%)) {
   color: color-yiq($background);
-  background-color: $background;
+  @include gradient-bg($background);
   border-color: $border;
   @include box-shadow($btn-box-shadow);
 
   @include hover {
     color: color-yiq($active-background);
-    background-color: $active-background;
+    @include gradient-bg($active-background);
     border-color: $active-border;
   }
 
@@ -36,7 +36,9 @@
   &:not([disabled]):not(.disabled).active,
   .show > &.dropdown-toggle {
     background-color: $active-background;
-    background-image: none; // Remove the gradient for the pressed/active state
+    @if $enable-gradients {
+      background-image: none; // Remove the gradient for the pressed/active state
+    }
     border-color: $active-border;
 
     // Avoid using mixin so we can pass custom focus shadow properly
