@@ -240,7 +240,7 @@ $display3-weight:     300 !default;
 $display4-weight:     300 !default;
 $display-line-height: $headings-line-height !default;
 
-$lead-font-size:   1.25rem !default;
+$lead-font-size:   ($font-size-base * 1.25) !default;
 $lead-font-weight: 300 !default;
 
 $small-font-size: 80% !default;
