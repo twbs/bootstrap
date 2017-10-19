@@ -6,6 +6,8 @@ group: utilities
 toc: true
 ---
 
+## Color
+
 {% example html %}
 {% for color in site.data.theme-colors %}
 <p class="text-{{ color.name }}{% if color.name == "light" %} bg-dark{% endif %}">.text-{{ color.name }}</p>{% endfor %}
@@ -22,12 +24,23 @@ Contextual text classes also work well on anchors with the provided hover and fo
 <p><a href="#" class="text-white bg-dark">White link</a></p>
 {% endexample %}
 
+## Background color
+
 Similar to the contextual text color classes, easily set the background of an element to any contextual class. Anchor components will darken on hover, just like the text classes. Background utilities **do not set `color`**, so in some cases you'll want to use `.text-*` utilities.
 
 {% example html %}
 {% for color in site.data.theme-colors %}
 <div class="p-3 mb-2 bg-{{ color.name }} {% if color.name == "light" %}text-dark{% else %}text-white{% endif %}">.bg-{{ color.name }}</div>{% endfor %}
 <div class="p-3 mb-2 bg-white text-dark">.bg-white</div>
+{% endexample %}
+
+## Background gradient
+
+When `$enable-shadows` is set to true, you'll be able to use `.bg-gradient-` utility classes. **By default, `$enable-shadows` is disabled and the example below is intentionally broken.** This is done for easier customization from moment you start using Bootstrap. [Learn about our Sass options]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/theming/#sass-options) to enable these classes and more.
+
+{% example html %}
+{% for color in site.data.theme-colors %}
+<div class="p-3 mb-2 bg-gradient-{{ color.name }} {% if color.name == "light" %}text-dark{% else %}text-white{% endif %}">.bg-gradient-{{ color.name }}</div>{% endfor %}
 {% endexample %}
 
 {% callout info %}

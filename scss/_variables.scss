@@ -314,6 +314,10 @@ $input-btn-padding-y:         .375rem !default;
 $input-btn-padding-x:         .75rem !default;
 $input-btn-line-height:       $line-height-base !default;
 
+$input-btn-focus-width:       .2rem !default;
+$input-btn-focus-color:       rgba(theme-color("primary"), .25) !default;
+$input-btn-focus-box-shadow:  0 0 0 $input-btn-focus-width $input-btn-focus-color !default;
+
 $input-btn-padding-y-sm:      .25rem !default;
 $input-btn-padding-x-sm:      .5rem !default;
 $input-btn-line-height-sm:    $line-height-sm !default;
@@ -324,7 +328,6 @@ $input-btn-line-height-lg:    $line-height-lg !default;
 
 $btn-font-weight:             $font-weight-normal !default;
 $btn-box-shadow:              inset 0 1px 0 rgba($white,.15), 0 1px 1px rgba($black,.075) !default;
-$btn-focus-box-shadow:        0 0 0 3px rgba(theme-color("primary"), .25) !default;
 $btn-active-box-shadow:       inset 0 3px 5px rgba($black,.125) !default;
 
 $btn-link-disabled-color:     $gray-600 !default;
@@ -355,7 +358,6 @@ $input-border-radius-sm:                $border-radius-sm !default;
 
 $input-focus-bg:                        $input-bg !default;
 $input-focus-border-color:              lighten(theme-color("primary"), 25%) !default;
-$input-focus-box-shadow:                $input-box-shadow, $btn-focus-box-shadow !default;
 $input-focus-color:                     $input-color !default;
 
 $input-placeholder-color:               $gray-600 !default;
@@ -404,7 +406,7 @@ $custom-control-indicator-checked-color:        $white !default;
 $custom-control-indicator-checked-bg:           theme-color("primary") !default;
 $custom-control-indicator-checked-box-shadow:   none !default;
 
-$custom-control-indicator-focus-box-shadow:     0 0 0 1px $body-bg, 0 0 0 3px theme-color("primary") !default;
+$custom-control-indicator-focus-box-shadow:     0 0 0 1px $body-bg, $input-btn-focus-box-shadow !default;
 
 $custom-control-indicator-active-color:         $white !default;
 $custom-control-indicator-active-bg:            lighten(theme-color("primary"), 35%) !default;
