@@ -1,4 +1,4 @@
-// scss-lint:disable QualifyingElement
+// stylelint-disable selector-no-qualifying-type
 
 //
 // Base styles
@@ -32,8 +32,8 @@
     @include box-shadow(none);
   }
 
-  &:active,
-  &.active {
+  &:not([disabled]):not(.disabled):active,
+  &:not([disabled]):not(.disabled).active {
     background-image: none;
     @include box-shadow($btn-focus-box-shadow, $btn-active-box-shadow);
   }
@@ -76,7 +76,6 @@ fieldset[disabled] a.btn {
   font-weight: $font-weight-normal;
   color: $link-color;
   background-color: transparent;
-  border-radius: 0;
 
   @include hover {
     color: $link-hover-color;
