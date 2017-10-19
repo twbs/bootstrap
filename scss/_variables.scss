@@ -703,7 +703,7 @@ $alert-border-width:          $border-width !default;
 // Progress bars
 
 $progress-height:               1rem !default;
-$progress-font-size:            .75rem !default;
+$progress-font-size:            ($font-size-base * .75) !default;
 $progress-bg:                   $gray-200 !default;
 $progress-border-radius:        $border-radius !default;
 $progress-box-shadow:           inset 0 .1rem .1rem rgba($black,.1) !default;
