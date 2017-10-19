@@ -148,6 +148,36 @@ In practice, you'd call the function and pass in two parameters: the name of the
 
 Additional functions could be added in the future or your own custom Sass to create level functions for additional Sass maps, or even a generic one if you wanted to be more verbose.
 
+### Color contrast
+
+One additional function we include in Bootstrap is the color contrast function, `color-yiq`. It utilizes the [YIQ color space](https://en.wikipedia.org/wiki/YIQ) to automatically return a light (`#fff`) or dark (`#111`) contrast color based the specified base color. This function is especially useful for mixins or loops where you're generating multiple classes.
+
+For example, to generate color swatches from our `$theme-colors` map:
+
+{% highlight scss %}
+@each $color, $value in $theme-colors {
+  .swatch-#{$color} {
+    color: color-yiq($value);
+  }
+}
+{% endhighlight %}
+
+It can also be used for one-off contrast needs:
+
+{% highlight scss %}
+.custom-element {
+  color: color-yiq(#000); // returns `color: #fff`
+}
+{% endhighlight %}
+
+You can also specify a base color with our color map functions:
+
+{% highlight scss %}
+.custom-element {
+  color: color-yiq(theme-color("dark")); // returns `color: #fff`
+}
+{% endhighlight %}
+
 ## Sass options
 
 Customize Bootstrap 4 with our built-in custom variables file and easily toggle global CSS preferences with new `$enable-*` Sass variables. Override a variable's value and recompile with `npm run test` as needed.
