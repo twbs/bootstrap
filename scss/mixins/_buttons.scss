@@ -35,6 +35,7 @@
   &:not([disabled]):not(.disabled):active,
   &:not([disabled]):not(.disabled).active,
   .show > &.dropdown-toggle {
+    color: color-yiq($active-background);
     background-color: $active-background;
     @if $enable-gradients {
       background-image: none; // Remove the gradient for the pressed/active state
