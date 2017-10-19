@@ -36,7 +36,7 @@ Similar to the contextual text color classes, easily set the background of an el
 
 ## Background gradient
 
-When `$enable-shadows` is set to true, you'll be able to use `.bg-gradient-` utility classes. **By default, `$enable-shadows` is disabled and the example below is intentionally broken.** This is done for easier customization from the moment you start using Bootstrap. [Learn about our Sass options]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/theming/#sass-options) to enable these classes and more.
+When `$enable-gradients` is set to true, you'll be able to use `.bg-gradient-` utility classes. **By default, `$enable-gradients` is disabled and the example below is intentionally broken.** This is done for easier customization from the moment you start using Bootstrap. [Learn about our Sass options]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/theming/#sass-options) to enable these classes and more.
 
 {% example html %}
 {% for color in site.data.theme-colors %}
