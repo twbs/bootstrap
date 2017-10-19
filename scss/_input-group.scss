@@ -66,26 +66,26 @@
 //
 
 .input-group-addon {
-  padding: $input-btn-padding-y $input-btn-padding-x;
+  padding: $input-padding-y $input-padding-x;
   margin-bottom: 0; // Allow use of <label> elements by overriding our default margin-bottom
   font-size: $font-size-base; // Match inputs
   font-weight: $font-weight-normal;
-  line-height: $input-btn-line-height;
+  line-height: $input-line-height;
   color: $input-group-addon-color;
   text-align: center;
   background-color: $input-group-addon-bg;
-  border: $input-btn-border-width solid $input-group-addon-border-color;
+  border: $input-border-width solid $input-group-addon-border-color;
   @include border-radius($input-border-radius);
 
   // Sizing
   &.form-control-sm {
-    padding: $input-btn-padding-y-sm $input-btn-padding-x-sm;
+    padding: $input-padding-y-sm $input-padding-x-sm;
     font-size: $font-size-sm;
     @include border-radius($input-border-radius-sm);
   }
 
   &.form-control-lg {
-    padding: $input-btn-padding-y-lg $input-btn-padding-x-lg;
+    padding: $input-padding-y-lg $input-padding-x-lg;
     font-size: $font-size-lg;
     @include border-radius($input-border-radius-lg);
   }
@@ -145,7 +145,7 @@
     position: relative;
 
     + .btn {
-      margin-left: (-$input-btn-border-width);
+      margin-left: (-$input-border-width);
     }
 
     // Bring the "active" button to the front
@@ -162,19 +162,19 @@
   &:not(:last-child) {
     > .btn,
     > .btn-group {
-      margin-right: (-$input-btn-border-width);
+      margin-right: (-$input-border-width);
     }
   }
   &:not(:first-child) {
     > .btn,
     > .btn-group {
       z-index: 2;
-      // remove nagative margin ($input-btn-border-width) to solve overlapping issue with button.
+      // remove nagative margin ($input-border-width) to solve overlapping issue with button.
       margin-left: 0;
 
       // When input is first, overlap the right side of it with the button(-group)
       &:first-child {
-        margin-left: (-$input-btn-border-width);
+        margin-left: (-$input-border-width);
       }
 
       // Because specificity
