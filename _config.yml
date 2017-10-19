@@ -65,9 +65,9 @@ download:
 cdn:
   # See https://www.srihash.org for info on how to generate the hashes
   css:              "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
-  css_hash:         "sha384-UokYarq1ZLvzDjHN2ysZLIgutCgszDPDN4lWSG2Lw7vY3nm4J8n7Sp1EATIQf3sU"
+  css_hash:         "sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
   js:               "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
-  js_hash:          "sha384-wBadoeoMT80oCr1sichrQjvtRRzeLB57SwIqr/6Daho5Ue3bwd1Mw0R0RinUgyzB"
+  js_hash:          "sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
   jquery:           "https://code.jquery.com/jquery-3.2.1.slim.min.js"
   jquery_hash:      "sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
   popper:           "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
