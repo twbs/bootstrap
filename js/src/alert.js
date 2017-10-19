@@ -4,7 +4,7 @@ import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (vv4.0.0-beta.2): alert.js
+ * Bootstrap (v4.0.0-beta.2): alert.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -19,7 +19,7 @@ const Alert = (() => {
    */
 
   const NAME                = 'alert'
-  const VERSION             = 'v4.0.0-beta.2'
+  const VERSION             = '4.0.0-beta.2'
   const DATA_KEY            = 'bs.alert'
   const EVENT_KEY           = `.${DATA_KEY}`
   const DATA_API_KEY        = '.data-api'
