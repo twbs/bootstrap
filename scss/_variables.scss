@@ -87,6 +87,10 @@ $theme-colors: map-merge((
 // Set a specific jump point for requesting color jumps
 $theme-color-interval:      8% !default;
 
+// Customize the light and dark text colors for use in our YIQ color contrast function.
+$yiq-text-dark: #111 !default;
+$yiq-text-light: #fff !default;
+
 
 // Options
 //
