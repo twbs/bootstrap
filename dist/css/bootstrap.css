@@ -433,7 +433,7 @@ h1, h2, h3, h4, h5, h6,
   margin-bottom: 0.5rem;
   font-family: inherit;
   font-weight: 500;
-  line-height: 1.1;
+  line-height: 1.2;
   color: inherit;
 }
 
@@ -469,25 +469,25 @@ h6, .h6 {
 .display-1 {
   font-size: 6rem;
   font-weight: 300;
-  line-height: 1.1;
+  line-height: 1.2;
 }
 
 .display-2 {
   font-size: 5.5rem;
   font-weight: 300;
-  line-height: 1.1;
+  line-height: 1.2;
 }
 
 .display-3 {
   font-size: 4.5rem;
   font-weight: 300;
-  line-height: 1.1;
+  line-height: 1.2;
 }
 
 .display-4 {
   font-size: 3.5rem;
   font-weight: 300;
-  line-height: 1.1;
+  line-height: 1.2;
 }
 
 hr {
@@ -1882,11 +1882,6 @@ pre code {
   opacity: 1;
 }
 
-.form-control::-ms-input-placeholder {
-  color: #868e96;
-  opacity: 1;
-}
-
 .form-control::placeholder {
   color: #868e96;
   opacity: 1;
@@ -2224,10 +2219,6 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
   }
   .form-inline .input-group {
     width: auto;
-  }
-  .form-inline .form-control-label {
-    margin-bottom: 0;
-    vertical-align: middle;
   }
   .form-inline .form-check {
     display: -ms-flexbox;
