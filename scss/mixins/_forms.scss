@@ -18,7 +18,7 @@
     outline: none;
     // Avoid using mixin so we can pass custom focus shadow properly
     @if $enable-shadows {
-      box-shadow: $btn-box-shadow, $input-btn-focus-box-shadow;
+      box-shadow: $input-box-shadow, $input-btn-focus-box-shadow;
     } @else {
       box-shadow: $input-btn-focus-box-shadow;
     }
