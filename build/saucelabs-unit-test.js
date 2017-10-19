@@ -70,7 +70,13 @@ const waitingCallback = (error, body, id) => {
       // Exit
       if (jobsDone === browsersFile.length - 1) {
         jsUnitSaucelabs.stop()
-        process.exit(jobsDone === jobsSucceeded ? 0 : 1)
+        if (jobsDone > jobsSucceeded) {
+          const failedTest = jobsDone - jobsSucceeded
+          throw new Error(`Some test(s) failed (${failedTest})`)
+        }
+
+        console.log('All tests passed')
+        process.exit(0)
       }
     }
   }

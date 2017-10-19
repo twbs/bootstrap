@@ -77,7 +77,7 @@ var Dropdown = function () {
     flip: true
   };
   var DefaultType = {
-    offset: '(number|string)',
+    offset: '(number|string|function)',
     flip: 'boolean'
     /**
      * ------------------------------------------------------------------------
@@ -225,12 +225,23 @@ var Dropdown = function () {
     };
 
     _proto._getPopperConfig = function _getPopperConfig() {
+      var _this2 = this;
+
+      var offsetConf = {};
+
+      if (typeof this._config.offset === 'function') {
+        offsetConf.fn = function (data) {
+          data.offsets = $.extend({}, data.offsets, _this2._config.offset(data.offsets) || {});
+          return data;
+        };
+      } else {
+        offsetConf.offset = this._config.offset;
+      }
+
       var popperConfig = {
         placement: this._getPlacement(),
         modifiers: {
-          offset: {
-            offset: this._config.offset
-          },
+          offset: offsetConf,
           flip: {
             enabled: this._config.flip
           }
@@ -428,5 +439,5 @@ var Dropdown = function () {
   };
 
   return Dropdown;
-}(jQuery, Popper);
+}($, Popper);
 //# sourceMappingURL=dropdown.js.map
