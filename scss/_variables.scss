@@ -212,9 +212,9 @@ $font-family-monospace:       "SFMono-Regular", Menlo, Monaco, Consolas, "Libera
 $font-family-base:            $font-family-sans-serif !default;
 // stylelint-enable value-keyword-case
 
-$font-size-base:              1rem !default; // Assumes the browser default, typically `16px`
-$font-size-lg:                1.25rem !default;
-$font-size-sm:                .875rem !default;
+$font-size-base: 1rem !default; // Assumes the browser default, typically `16px`
+$font-size-lg:   ($font-size-base * 1.25) !default;
+$font-size-sm:   ($font-size-base * .875) !default;
 
 $font-weight-light:           300 !default;
 $font-weight-normal:          400 !default;
@@ -223,12 +223,12 @@ $font-weight-bold:            700 !default;
 $font-weight-base:            $font-weight-normal !default;
 $line-height-base:            1.5 !default;
 
-$h1-font-size:                2.5rem !default;
-$h2-font-size:                2rem !default;
-$h3-font-size:                1.75rem !default;
-$h4-font-size:                1.5rem !default;
-$h5-font-size:                1.25rem !default;
-$h6-font-size:                1rem !default;
+$h1-font-size: $font-size-base * 2.5 !default;
+$h2-font-size: $font-size-base * 2 !default;
+$h3-font-size: $font-size-base * 1.75 !default;
+$h4-font-size: $font-size-base * 1.5 !default;
+$h5-font-size: $font-size-base * 1.25 !default;
+$h6-font-size: $font-size-base !default;
 
 $headings-margin-bottom:      ($spacer / 2) !default;
 $headings-font-family:        inherit !default;
@@ -247,8 +247,8 @@ $display3-weight:             300 !default;
 $display4-weight:             300 !default;
 $display-line-height:         $headings-line-height !default;
 
-$lead-font-size:              1.25rem !default;
-$lead-font-weight:            300 !default;
+$lead-font-size:   ($font-size-base * 1.25) !default;
+$lead-font-weight: 300 !default;
 
 $small-font-size:             80% !default;
 
@@ -707,15 +707,15 @@ $alert-border-width:                $border-width !default;
 
 // Progress bars
 
-$progress-height:                   1rem !default;
-$progress-font-size:                .75rem !default;
-$progress-bg:                       $gray-200 !default;
-$progress-border-radius:            $border-radius !default;
-$progress-box-shadow:               inset 0 .1rem .1rem rgba($black,.1) !default;
-$progress-bar-color:                $white !default;
-$progress-bar-bg:                   theme-color("primary") !default;
-$progress-bar-animation-timing:     1s linear infinite !default;
-$progress-bar-transition:           width .6s ease !default;
+$progress-height:               1rem !default;
+$progress-font-size:            ($font-size-base * .75) !default;
+$progress-bg:                   $gray-200 !default;
+$progress-border-radius:        $border-radius !default;
+$progress-box-shadow:           inset 0 .1rem .1rem rgba($black,.1) !default;
+$progress-bar-color:            $white !default;
+$progress-bar-bg:               theme-color("primary") !default;
+$progress-bar-animation-timing: 1s linear infinite !default;
+$progress-bar-transition:       width .6s ease !default;
 
 // List group
 
