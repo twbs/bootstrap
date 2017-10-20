@@ -175,13 +175,14 @@ const EventHandler = (() => {
     }
   }
 
-  function findHandler(events, handler) {
+  function findHandler(events, handler, delegationSelector = null) {
     for (const uid in events) {
       if (!Object.prototype.hasOwnProperty.call(events, uid)) {
         continue
       }
 
-      if (events[uid].originalHandler === handler) {
+      const event = events[uid]
+      if (event.originalHandler === handler && event.delegationSelector === delegationSelector) {
         return events[uid]
       }
     }
@@ -189,16 +190,7 @@ const EventHandler = (() => {
     return null
   }
 
-  function addHandler(element, originalTypeEvent, handler, delegationFn, oneOff) {
-    if (typeof originalTypeEvent !== 'string' || (typeof element === 'undefined' || element === null)) {
-      return
-    }
-
-    if (!handler) {
-      handler = delegationFn
-      delegationFn = null
-    }
-
+  function normalizeParams(originalTypeEvent, handler, delegationFn) {
     const delegation      = typeof handler === 'string'
     const originalHandler = delegation ? delegationFn : handler
 
@@ -215,9 +207,24 @@ const EventHandler = (() => {
       typeEvent = originalTypeEvent
     }
 
+    return [delegation, originalHandler, typeEvent]
+  }
+
+  function addHandler(element, originalTypeEvent, handler, delegationFn, oneOff) {
+    if (typeof originalTypeEvent !== 'string' || (typeof element === 'undefined' || element === null)) {
+      return
+    }
+
+    if (!handler) {
+      handler = delegationFn
+      delegationFn = null
+    }
+
+    const [delegation, originalHandler, typeEvent] = normalizeParams(originalTypeEvent, handler, delegationFn)
+
     const events     = getEvent(element)
     const handlers   = events[typeEvent] || (events[typeEvent] = {})
-    const previousFn = findHandler(handlers, originalHandler)
+    const previousFn = findHandler(handlers, originalHandler, delegation ? handler : null)
 
     if (previousFn) {
       previousFn.oneOff = previousFn.oneOff && oneOff
@@ -227,22 +234,23 @@ const EventHandler = (() => {
     const uid = getUidEvent(originalHandler, originalTypeEvent.replace(namespaceRegex, ''))
     const fn  = !delegation ? bootstrapHandler(element, handler) : bootstrapDelegationHandler(element, handler, delegationFn)
 
-    fn.isDelegation = delegation
+    fn.delegationSelector = delegation ? handler : null
     fn.originalHandler = originalHandler
     fn.oneOff = oneOff
+    fn.uidEvent = uid
     handlers[uid] = fn
 
     element.addEventListener(typeEvent, fn, delegation)
   }
 
-  function removeHandler(element, events, typeEvent, handler) {
-    const fn = findHandler(events[typeEvent], handler)
+  function removeHandler(element, events, typeEvent, handler, delegationSelector) {
+    const fn = findHandler(events[typeEvent], handler, delegationSelector)
     if (fn === null) {
       return
     }
 
-    element.removeEventListener(typeEvent, fn, fn.isDelegation)
-    delete events[typeEvent][uidEvent]
+    element.removeEventListener(typeEvent, fn, Boolean(delegationSelector))
+    delete events[typeEvent][fn.uidEvent]
   }
 
   function removeNamespacedHandlers(element, events, typeEvent, namespace) {
@@ -253,7 +261,8 @@ const EventHandler = (() => {
       }
 
       if (handlerKey.indexOf(namespace) > -1) {
-        removeHandler(element, events, typeEvent, storeElementEvent[handlerKey].originalHandler)
+        const event = storeElementEvent[handlerKey]
+        removeHandler(element, events, typeEvent, event.originalHandler, event.delegationSelector)
       }
     }
   }
@@ -267,33 +276,23 @@ const EventHandler = (() => {
       addHandler(element, event, handler, delegationFn, true)
     },
 
-    off(element, originalTypeEvent, handler) {
-      if (typeof originalTypeEvent !== 'string'
-        || (typeof element === 'undefined' || element === null)) {
+    off(element, originalTypeEvent, handler, delegationFn) {
+      if (typeof originalTypeEvent !== 'string' || (typeof element === 'undefined' || element === null)) {
         return
       }
 
-      const events      = getEvent(element)
-      let typeEvent     = originalTypeEvent.replace(stripNameRegex, '')
+      const [delegation, originalHandler, typeEvent] = normalizeParams(originalTypeEvent, handler, delegationFn)
 
       const inNamespace = typeEvent !== originalTypeEvent
-      const custom      = customEvents[typeEvent]
-      if (custom) {
-        typeEvent = custom
-      }
+      const events = getEvent(element)
 
-      const isNative = nativeEvents.indexOf(typeEvent) > -1
-      if (!isNative) {
-        typeEvent = originalTypeEvent
-      }
-
-      if (typeof handler !== 'undefined') {
+      if (typeof originalHandler !== 'undefined') {
         // Simplest case: handler is passed, remove that listener ONLY.
         if (!events || !events[typeEvent]) {
           return
         }
 
-        removeHandler(element, events, typeEvent, handler)
+        removeHandler(element, events, typeEvent, originalHandler, delegation ? handler : null)
         return
       }
 
@@ -316,7 +315,8 @@ const EventHandler = (() => {
 
         const handlerKey = keyHandlers.replace(stripUidRegex, '')
         if (!inNamespace || originalTypeEvent.indexOf(handlerKey) > -1) {
-          removeHandler(element, events, typeEvent, storeElementEvent[keyHandlers].originalHandler)
+          const event = storeElementEvent[keyHandlers]
+          removeHandler(element, events, typeEvent, event.originalHandler, event.delegationSelector)
         }
       }
     },
