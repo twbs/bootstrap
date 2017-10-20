@@ -5,13 +5,13 @@
 // and abandoned it in Bootstrap v3 because it breaks lots of third-party widgets (including Google Maps)
 // which weren't expecting the images within themselves to be involuntarily resized.
 // See also https://github.com/twbs/bootstrap/issues/18178
-.img-fluid {
+%img-fluid {
   @include img-fluid;
 }
 
 
 // Image thumbnails
-.img-thumbnail {
+%img-thumbnail {
   padding: $thumbnail-padding;
   background-color: $thumbnail-bg;
   border: $thumbnail-border-width solid $thumbnail-border-color;
@@ -27,17 +27,17 @@
 // Figures
 //
 
-.figure {
+%figure {
   // Ensures the caption's text aligns with the image.
   display: inline-block;
 }
 
-.figure-img {
+%figure-img {
   margin-bottom: ($spacer / 2);
   line-height: 1;
 }
 
-.figure-caption {
+%figure-caption {
   font-size: $figure-caption-font-size;
   color: $figure-caption-color;
 }
