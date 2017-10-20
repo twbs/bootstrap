@@ -28,9 +28,11 @@ Our [package.json]({{ site.repo }}/blob/v{{ site.current_version }}/package.json
 
 | Task | Description |
 | --- | --- |
-| `npm test` | Run `npm test` to run tests locally and compile the CSS and JavaScript into `/dist`. **Uses [Sass](http://sass-lang.com/), [Autoprefixer][autoprefixer], and [UglifyJS](http://lisperator.net/uglifyjs/).** |
-| `npm run dist` | `npm run dist` creates the `/dist` directory with compiled files. **Uses [Sass](http://sass-lang.com/), [Autoprefixer][autoprefixer], and [UglifyJS](http://lisperator.net/uglifyjs/).** |
-| `npm run docs` | Builds and tests CSS, JavaScript, and other assets which are used when running the documentation locally via `npm run docs-serve`. |
+| `npm run dist` | `npm run dist` creates the `/dist` directory with compiled files. **Uses [Sass](http://sass-lang.com/), [Autoprefixer][autoprefixer], and [UglifyJS](https://github.com/mishoo/UglifyJS2).** |
+| `npm test` | Same as `npm run dist` plus it runs tests locally |
+| `npm run docs` | Builds and lints CSS and JavaScript for docs. You can then run the documentation locally via `npm run docs-serve`. |
+
+Run `npm run` to see all the npm scripts.
 
 ## Autoprefixer
 
@@ -44,7 +46,7 @@ Running our documentation locally requires the use of Jekyll, a decently flexibl
 
 1. Run through the [tooling setup](#tooling-setup) above to install Jekyll (the site builder) and other Ruby dependencies with `bundle install`.
 2. From the root `/bootstrap` directory, run `npm run docs-serve` in the command line.
-3. Open <http://localhost:9001> in your browser, and voilà.
+3. Open `http://localhost:9001` in your browser, and voilà.
 
 Learn more about using Jekyll by reading its [documentation](https://jekyllrb.com/docs/home/).
 

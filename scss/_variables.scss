@@ -62,16 +62,25 @@ $colors: map-merge((
   "gray-dark":  $gray-800
 ), $colors);
 
+$primary:       $blue !default;
+$secondary:     $gray-600 !default;
+$success:       $green !default;
+$info:          $cyan !default;
+$warning:       $yellow !default;
+$danger:        $red !default;
+$light:         $gray-100 !default;
+$dark:          $gray-800 !default;
+
 $theme-colors: () !default;
 $theme-colors: map-merge((
-  "primary":    $blue,
-  "secondary":  $gray-600,
-  "success":    $green,
-  "info":       $cyan,
-  "warning":    $yellow,
-  "danger":     $red,
-  "light":      $gray-100,
-  "dark":       $gray-800
+  "primary":    $primary,
+  "secondary":  $secondary,
+  "success":    $success,
+  "info":       $info,
+  "warning":    $warning,
+  "danger":     $danger,
+  "light":      $light,
+  "dark":       $dark
 ), $theme-colors);
 // stylelint-enable
 
@@ -213,8 +222,8 @@ $font-family-base:            $font-family-sans-serif !default;
 // stylelint-enable value-keyword-case
 
 $font-size-base:              1rem !default; // Assumes the browser default, typically `16px`
-$font-size-lg:                1.25rem !default;
-$font-size-sm:                .875rem !default;
+$font-size-lg:                ($font-size-base * 1.25) !default;
+$font-size-sm:                ($font-size-base * .875) !default;
 
 $font-weight-light:           300 !default;
 $font-weight-normal:          400 !default;
@@ -223,17 +232,17 @@ $font-weight-bold:            700 !default;
 $font-weight-base:            $font-weight-normal !default;
 $line-height-base:            1.5 !default;
 
-$h1-font-size:                2.5rem !default;
-$h2-font-size:                2rem !default;
-$h3-font-size:                1.75rem !default;
-$h4-font-size:                1.5rem !default;
-$h5-font-size:                1.25rem !default;
-$h6-font-size:                1rem !default;
+$h1-font-size:                $font-size-base * 2.5 !default;
+$h2-font-size:                $font-size-base * 2 !default;
+$h3-font-size:                $font-size-base * 1.75 !default;
+$h4-font-size:                $font-size-base * 1.5 !default;
+$h5-font-size:                $font-size-base * 1.25 !default;
+$h6-font-size:                $font-size-base !default;
 
 $headings-margin-bottom:      ($spacer / 2) !default;
 $headings-font-family:        inherit !default;
 $headings-font-weight:        500 !default;
-$headings-line-height:        1.1 !default;
+$headings-line-height:        1.2 !default;
 $headings-color:              inherit !default;
 
 $display1-size:               6rem !default;
@@ -247,7 +256,7 @@ $display3-weight:             300 !default;
 $display4-weight:             300 !default;
 $display-line-height:         $headings-line-height !default;
 
-$lead-font-size:              1.25rem !default;
+$lead-font-size:              ($font-size-base * 1.25) !default;
 $lead-font-weight:            300 !default;
 
 $small-font-size:             80% !default;
@@ -305,6 +314,10 @@ $input-btn-padding-y:         .375rem !default;
 $input-btn-padding-x:         .75rem !default;
 $input-btn-line-height:       $line-height-base !default;
 
+$input-btn-focus-width:       .2rem !default;
+$input-btn-focus-color:       rgba(theme-color("primary"), .25) !default;
+$input-btn-focus-box-shadow:  0 0 0 $input-btn-focus-width $input-btn-focus-color !default;
+
 $input-btn-padding-y-sm:      .25rem !default;
 $input-btn-padding-x-sm:      .5rem !default;
 $input-btn-line-height-sm:    $line-height-sm !default;
@@ -315,7 +328,6 @@ $input-btn-line-height-lg:    $line-height-lg !default;
 
 $btn-font-weight:             $font-weight-normal !default;
 $btn-box-shadow:              inset 0 1px 0 rgba($white,.15), 0 1px 1px rgba($black,.075) !default;
-$btn-focus-box-shadow:        0 0 0 3px rgba(theme-color("primary"), .25) !default;
 $btn-active-box-shadow:       inset 0 3px 5px rgba($black,.125) !default;
 
 $btn-link-disabled-color:     $gray-600 !default;
@@ -346,7 +358,6 @@ $input-border-radius-sm:                $border-radius-sm !default;
 
 $input-focus-bg:                        $input-bg !default;
 $input-focus-border-color:              lighten(theme-color("primary"), 25%) !default;
-$input-focus-box-shadow:                $input-box-shadow, $btn-focus-box-shadow !default;
 $input-focus-color:                     $input-color !default;
 
 $input-placeholder-color:               $gray-600 !default;
@@ -395,7 +406,7 @@ $custom-control-indicator-checked-color:        $white !default;
 $custom-control-indicator-checked-bg:           theme-color("primary") !default;
 $custom-control-indicator-checked-box-shadow:   none !default;
 
-$custom-control-indicator-focus-box-shadow:     0 0 0 1px $body-bg, 0 0 0 3px theme-color("primary") !default;
+$custom-control-indicator-focus-box-shadow:     0 0 0 1px $body-bg, $input-btn-focus-box-shadow !default;
 
 $custom-control-indicator-active-color:         $white !default;
 $custom-control-indicator-active-bg:            lighten(theme-color("primary"), 35%) !default;
@@ -530,9 +541,9 @@ $navbar-padding-x:                  $spacer !default;
 
 $navbar-brand-font-size:            $font-size-lg !default;
 // Compute the navbar-brand padding-y so the navbar-brand will have the same height as navbar-text and nav-link
-$nav-link-height:                   $navbar-brand-font-size * $line-height-base !default;
-$navbar-brand-height:               ($font-size-base * $line-height-base + $nav-link-padding-y * 2) !default;
-$navbar-brand-padding-y:            ($navbar-brand-height - $nav-link-height) / 2 !default;
+$nav-link-height:                   ($font-size-base * $line-height-base + $nav-link-padding-y * 2) !default;
+$navbar-brand-height:               $navbar-brand-font-size * $line-height-base !default;
+$navbar-brand-padding-y:            ($nav-link-height - $navbar-brand-height) / 2 !default;
 
 $navbar-toggler-padding-y:          .25rem !default;
 $navbar-toggler-padding-x:          .75rem !default;
@@ -626,27 +637,25 @@ $tooltip-arrow-color:               $tooltip-bg !default;
 
 // Popovers
 
-$popover-inner-padding:             1px !default;
 $popover-bg:                        $white !default;
 $popover-max-width:                 276px !default;
 $popover-border-width:              $border-width !default;
 $popover-border-color:              rgba($black,.2) !default;
-$popover-box-shadow:                0 5px 10px rgba($black,.2) !default;
+$popover-box-shadow:                0 .25rem .5rem rgba($black,.2) !default;
 
 $popover-header-bg:                 darken($popover-bg, 3%) !default;
 $popover-header-color:              $headings-color !default;
-$popover-header-padding-y:          8px !default;
-$popover-header-padding-x:          14px !default;
+$popover-header-padding-y:          .5rem !default;
+$popover-header-padding-x:          .75rem !default;
 
 $popover-body-color:                $body-color !default;
-$popover-body-padding-y:            9px !default;
-$popover-body-padding-x:            14px !default;
+$popover-body-padding-y:            $popover-header-padding-y !default;
+$popover-body-padding-x:            $popover-header-padding-x !default;
 
-$popover-arrow-width:               10px !default;
-$popover-arrow-height:              5px !default;
+$popover-arrow-width:               .8rem !default;
+$popover-arrow-height:              .4rem !default;
 $popover-arrow-color:               $popover-bg !default;
 
-$popover-arrow-outer-width:         ($popover-arrow-width + 1px) !default;
 $popover-arrow-outer-color:         fade-in($popover-border-color, .05) !default;
 
 
@@ -710,7 +719,7 @@ $alert-border-width:                $border-width !default;
 // Progress bars
 
 $progress-height:                   1rem !default;
-$progress-font-size:                .75rem !default;
+$progress-font-size:                ($font-size-base * .75) !default;
 $progress-bg:                       $gray-200 !default;
 $progress-border-radius:            $border-radius !default;
 $progress-box-shadow:               inset 0 .1rem .1rem rgba($black,.1) !default;

@@ -49,25 +49,26 @@ social_image_path:  /assets/brand/bootstrap-social.png
 social_logo_path:   /assets/brand/bootstrap-social-logo.png
 
 # Custom variables
-current_version:    4.0.0-beta
-docs_version:       4.0
-repo:               "https://github.com/twbs/bootstrap"
-slack:              "https://bootstrap-slack.herokuapp.com"
-blog:               "https://blog.getbootstrap.com"
-expo:               "https://expo.getbootstrap.com"
-jobs:               "https://jobs.getbootstrap.com"
-themes:             "https://themes.getbootstrap.com"
+current_version:      4.0.0-beta.2
+current_ruby_version: 4.0.0.beta2
+docs_version:         4.0
+repo:                 "https://github.com/twbs/bootstrap"
+slack:                "https://bootstrap-slack.herokuapp.com"
+blog:                 "https://blog.getbootstrap.com"
+expo:                 "https://expo.getbootstrap.com"
+jobs:                 "https://jobs.getbootstrap.com"
+themes:               "https://themes.getbootstrap.com"
 
 download:
-  source:           "https://github.com/twbs/bootstrap/archive/v4.0.0-beta.zip"
-  dist:             "https://github.com/twbs/bootstrap/releases/download/v4.0.0-beta/bootstrap-4.0.0-beta-dist.zip"
+  source:           "https://github.com/twbs/bootstrap/archive/v4.0.0-beta.2.zip"
+  dist:             "https://github.com/twbs/bootstrap/releases/download/v4.0.0-beta.2/bootstrap-4.0.0-beta.2-dist.zip"
 
 cdn:
   # See https://www.srihash.org for info on how to generate the hashes
-  css:              "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
-  css_hash:         "sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
-  js:               "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
-  js_hash:          "sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
+  css:              "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+  css_hash:         "sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+  js:               "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+  js_hash:          "sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
   jquery:           "https://code.jquery.com/jquery-3.2.1.slim.min.js"
   jquery_hash:      "sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
   popper:           "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
