@@ -135,6 +135,32 @@ $(function () {
     document.body.removeChild(element)
   })
 
+  QUnit.test('on should add delegated event listener if delegated selector differs', function (assert) {
+    assert.expect(1)
+
+    var element = document.createElement('div')
+    var subelement = document.createElement('span')
+    element.appendChild(subelement)
+
+    var anchor = document.createElement('a')
+    element.appendChild(anchor)
+
+    var i = 0
+    var handler = function () {
+      i++
+    }
+
+    EventHandler.on(element, 'click', 'a', handler)
+    EventHandler.on(element, 'click', 'span', handler)
+
+    document.body.appendChild(element)
+    EventHandler.trigger(anchor, 'click')
+    EventHandler.trigger(subelement, 'click')
+    document.body.removeChild(element)
+
+    assert.ok(i === 2, 'listeners called')
+  })
+
   QUnit.test('one should remove the listener after the event', function (assert) {
     assert.expect(1)
 
@@ -267,5 +293,49 @@ $(function () {
     EventHandler.off(element, 'foobar', handler)
 
     EventHandler.trigger(element, 'foobar')
+  })
+
+  QUnit.test('off should remove the correct delegated event listener', function (assert) {
+    assert.expect(5)
+
+    var element = document.createElement('div')
+    var subelement = document.createElement('span')
+    element.appendChild(subelement)
+
+    var anchor = document.createElement('a')
+    element.appendChild(anchor)
+
+    var i = 0
+    var handler = function () {
+      i++
+    }
+
+    EventHandler.on(element, 'click', 'a', handler)
+    EventHandler.on(element, 'click', 'span', handler)
+
+    document.body.appendChild(element)
+
+    EventHandler.trigger(anchor, 'click')
+    EventHandler.trigger(subelement, 'click')
+    assert.ok(i === 2, 'first listeners called')
+
+    EventHandler.off(element, 'click', 'span', handler)
+    EventHandler.trigger(subelement, 'click')
+    assert.ok(i === 2, 'removed listener not called')
+
+    EventHandler.trigger(anchor, 'click')
+    assert.ok(i === 3, 'not removed listener called')
+
+    EventHandler.on(element, 'click', 'span', handler)
+    EventHandler.trigger(anchor, 'click')
+    EventHandler.trigger(subelement, 'click')
+    assert.ok(i === 5, 'listener re-registered')
+
+    EventHandler.off(element, 'click', 'span')
+    EventHandler.trigger(subelement, 'click')
+    assert.ok(i === 5, 'listener removed again')
+
+    document.body.removeChild(element)
+
   })
 })
