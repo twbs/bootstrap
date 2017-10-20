@@ -14,7 +14,7 @@
     // Ensure that the input is always above the *appended* addon button for
     // proper border colors.
     position: relative;
-    z-index: 2;
+    z-index: 1;
     flex: 1 1 auto;
     // Add width 1% and flex-basis auto to ensure that button will not wrap out
     // the column. Applies to IE Edge+ and Firefox. Chrome does not require this.
@@ -23,7 +23,7 @@
 
     // Bring the "active" form control to the front
     @include hover-focus-active {
-      z-index: 3;
+      z-index: 2;
     }
   }
 }
@@ -150,7 +150,7 @@
 
     // Bring the "active" button to the front
     @include hover-focus-active {
-      z-index: 3;
+      z-index: 2;
     }
   }
 
@@ -168,7 +168,7 @@
   &:not(:first-child) {
     > .btn,
     > .btn-group {
-      z-index: 2;
+      z-index: 1;
       // remove nagative margin ($input-btn-border-width) to solve overlapping issue with button.
       margin-left: 0;
 
@@ -179,7 +179,7 @@
 
       // Because specificity
       @include hover-focus-active {
-        z-index: 3;
+        z-index: 2;
       }
     }
   }
