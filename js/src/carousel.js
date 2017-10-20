@@ -7,6 +7,7 @@
 
 import Data from './dom/data'
 import EventHandler from './dom/eventHandler'
+import Manipulator from './dom/manipulator'
 import SelectorEngine from './dom/selectorEngine'
 import Util from './util'
 
@@ -322,6 +323,7 @@ class Carousel {
     [].slice.call(SelectorEngine.find(Selector.ITEM_IMG, this._element)).forEach((itemImg) => {
       EventHandler.on(itemImg, Event.DRAG_START, (e) => e.preventDefault())
     })
+
     if (this._pointerEvent) {
       EventHandler.on(this._element, Event.POINTERDOWN, (event) => start(event))
       EventHandler.on(this._element, Event.POINTERUP, (event) => end(event))
@@ -507,39 +509,42 @@ class Carousel {
 
   // Static
 
+  static _carouselInterface(element, config) {
+    let data    = Data.getData(element, DATA_KEY)
+    let _config = {
+      ...Default,
+      ...Manipulator.getDataAttributes(element)
+    }
+
+    if (typeof config === 'object') {
+      _config = {
+        ..._config,
+        ...config
+      }
+    }
+
+    const action = typeof config === 'string' ? config : _config.slide
+
+    if (!data) {
+      data = new Carousel(element, _config)
+    }
+
+    if (typeof config === 'number') {
+      data.to(config)
+    } else if (typeof action === 'string') {
+      if (typeof data[action] === 'undefined') {
+        throw new Error(`No method named "${action}"`)
+      }
+      data[action]()
+    } else if (_config.interval && _config.ride) {
+      data.pause()
+      data.cycle()
+    }
+  }
+
   static _jQueryInterface(config) {
     return this.each(function () {
-      let data      = Data.getData(this, DATA_KEY)
-      let _config = {
-        ...Default,
-        ...Data.getData(this, DATA_KEY)
-      }
-
-      if (typeof config === 'object') {
-        _config = {
-          ..._config,
-          ...config
-        }
-      }
-
-      const action = typeof config === 'string' ? config : _config.slide
-
-      if (!data) {
-        data = new Carousel(this, _config)
-        Data.setData(this, DATA_KEY, data)
-      }
-
-      if (typeof config === 'number') {
-        data.to(config)
-      } else if (typeof action === 'string') {
-        if (typeof data[action] === 'undefined') {
-          throw new TypeError(`No method named "${action}"`)
-        }
-        data[action]()
-      } else if (_config.interval && _config.ride) {
-        data.pause()
-        data.cycle()
-      }
+      Carousel._carouselInterface(this, config)
     })
   }
 
@@ -588,7 +593,7 @@ EventHandler
 EventHandler.on(window, Event.LOAD_DATA_API, () => {
   const carousels = Util.makeArray(SelectorEngine.find(Selector.DATA_RIDE))
   for (let i = 0, len = carousels.length; i < len; i++) {
-    Carousel._jQueryInterface.call($(carousels[i]), Data.getData(carousels[i], DATA_KEY))
+    Carousel._carouselInterface.call(carousels[i], Data.getData(carousels[i], DATA_KEY))
   }
 })
 
