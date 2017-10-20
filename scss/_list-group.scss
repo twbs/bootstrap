@@ -70,7 +70,7 @@
 
   // Include both here for `<a>`s and `<button>`s
   &.active {
-    z-index: 2; // Place active items above their siblings for proper border styling
+    z-index: 1; // Place active items above their siblings for proper border styling
     color: $list-group-active-color;
     background-color: $list-group-active-bg;
     border-color: $list-group-active-border-color;
@@ -86,13 +86,8 @@
 .list-group-flush {
   .list-group-item {
     border-right: 0;
-    border-bottom: 0;
     border-left: 0;
     border-radius: 0;
-
-    &:first-child {
-      border-top: 0;
-    }
   }
 
   &:first-child {

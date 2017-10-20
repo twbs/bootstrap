@@ -6,7 +6,7 @@ function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.crea
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-beta): popover.js
+ * Bootstrap (v4.0.0-beta.2): popover.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -17,7 +17,7 @@ var Popover = function () {
    * ------------------------------------------------------------------------
    */
   var NAME = 'popover';
-  var VERSION = '4.0.0-beta';
+  var VERSION = '4.0.0-beta.2';
   var DATA_KEY = 'bs.popover';
   var EVENT_KEY = "." + DATA_KEY;
   var JQUERY_NO_CONFLICT = $.fn[NAME];
