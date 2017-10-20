@@ -6,37 +6,7 @@
 
 .dropdown-toggle {
   // Generate the caret automatically
-  &::after {
-    display: inline-block;
-    width: 0;
-    height: 0;
-    margin-left: $caret-width * .85;
-    vertical-align: $caret-width * .85;
-    content: "";
-    border-top: $caret-width solid;
-    border-right: $caret-width solid transparent;
-    border-left: $caret-width solid transparent;
-  }
-
-  &:empty::after {
-    margin-left: 0;
-  }
-}
-
-// Allow for dropdowns to go bottom up (aka, dropup-menu)
-// Just add .dropup after the standard .dropdown class and you're set.
-.dropup {
-  .dropdown-menu {
-    margin-top: 0;
-    margin-bottom: $dropdown-spacer;
-  }
-
-  .dropdown-toggle {
-    &::after {
-      border-top: 0;
-      border-bottom: $caret-width solid;
-    }
-  }
+  @include caret;
 }
 
 // The dropdown menu
@@ -59,6 +29,19 @@
   border: $dropdown-border-width solid $dropdown-border-color;
   @include border-radius($border-radius);
   @include box-shadow($dropdown-box-shadow);
+}
+
+// Allow for dropdowns to go bottom up (aka, dropup-menu)
+// Just add .dropup after the standard .dropdown class and you're set.
+.dropup {
+  .dropdown-menu {
+    margin-top: 0;
+    margin-bottom: $dropdown-spacer;
+  }
+
+  .dropdown-toggle {
+    @include caret(up);
+  }
 }
 
 // Dividers (basically an `<hr>`) within the dropdown
@@ -84,14 +67,14 @@
   @include hover-focus {
     color: $dropdown-link-hover-color;
     text-decoration: none;
-    background-color: $dropdown-link-hover-bg;
+    @include gradient-bg($dropdown-link-hover-bg);
   }
 
   &.active,
   &:active {
     color: $dropdown-link-active-color;
     text-decoration: none;
-    background-color: $dropdown-link-active-bg;
+    @include gradient-bg($dropdown-link-active-bg);
   }
 
   &.disabled,
@@ -102,14 +85,6 @@
     @if $enable-gradients {
       background-image: none;
     }
-  }
-}
-
-// Open state for the dropdown
-.show {
-  // Remove the outline when :focus is triggered
-  > a {
-    outline: 0;
   }
 }
 

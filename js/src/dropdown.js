@@ -5,7 +5,7 @@ import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-beta): dropdown.js
+ * Bootstrap (v4.0.0-beta.2): dropdown.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -27,7 +27,7 @@ const Dropdown = (() => {
    */
 
   const NAME                     = 'dropdown'
-  const VERSION                  = '4.0.0-beta'
+  const VERSION                  = '4.0.0-beta.2'
   const DATA_KEY                 = 'bs.dropdown'
   const EVENT_KEY                = `.${DATA_KEY}`
   const DATA_API_KEY             = '.data-api'
@@ -80,7 +80,7 @@ const Dropdown = (() => {
   }
 
   const DefaultType = {
-    offset      : '(number|string)',
+    offset      : '(number|string|function)',
     flip        : 'boolean'
   }
 
@@ -246,12 +246,19 @@ const Dropdown = (() => {
     }
 
     _getPopperConfig() {
+      const offsetConf = {}
+      if (typeof this._config.offset === 'function') {
+        offsetConf.fn = (data) => {
+          data.offsets = $.extend({}, data.offsets, this._config.offset(data.offsets) || {})
+          return data
+        }
+      } else {
+        offsetConf.offset = this._config.offset
+      }
       const popperConfig = {
         placement : this._getPlacement(),
         modifiers : {
-          offset : {
-            offset : this._config.offset
-          },
+          offset : offsetConf,
           flip : {
             enabled : this._config.flip
           }
@@ -438,6 +445,6 @@ const Dropdown = (() => {
 
   return Dropdown
 
-})(jQuery, Popper)
+})($, Popper)
 
 export default Dropdown

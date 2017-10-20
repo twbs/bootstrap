@@ -4,7 +4,7 @@ import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-beta): tab.js
+ * Bootstrap (v4.0.0-beta.2): tab.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -19,7 +19,7 @@ const Tab = (() => {
    */
 
   const NAME                = 'tab'
-  const VERSION             = '4.0.0-beta'
+  const VERSION             = '4.0.0-beta.2'
   const DATA_KEY            = 'bs.tab'
   const EVENT_KEY           = `.${DATA_KEY}`
   const DATA_API_KEY        = '.data-api'
@@ -196,11 +196,15 @@ const Tab = (() => {
           $(dropdownChild).removeClass(ClassName.ACTIVE)
         }
 
-        active.setAttribute('aria-expanded', false)
+        if (active.getAttribute('role') === 'tab') {
+          active.setAttribute('aria-selected', false)
+        }
       }
 
       $(element).addClass(ClassName.ACTIVE)
-      element.setAttribute('aria-expanded', true)
+      if (element.getAttribute('role') === 'tab') {
+        element.setAttribute('aria-selected', true)
+      }
 
       if (isTransitioning) {
         Util.reflow(element)
@@ -278,6 +282,6 @@ const Tab = (() => {
 
   return Tab
 
-})(jQuery)
+})($)
 
 export default Tab

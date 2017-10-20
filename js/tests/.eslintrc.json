@@ -1,7 +1,8 @@
 {
   "env": {
     "es6": false,
-    "qunit": true
+    "qunit": true,
+    "jquery": true
   },
   "globals": {
     "Util": false
@@ -20,9 +21,6 @@
     "no-extend-native": "off",
     "no-magic-numbers": "off",
     "vars-on-top": "off",
-
-    // Strict Mode
-    "strict": "off",
 
     // NodeJS and CommonJS
     "global-require": "off",

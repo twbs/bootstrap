@@ -24,7 +24,7 @@ To run the unit test suite via a real web browser, open `index.html` in the brow
 
 * Each test should have a unique name clearly stating what unit is being tested.
 * Each test should test only one unit per test, although one test can include several assertions. Create multiple tests for multiple units of functionality.
-* Each test should begin with [`assert.expect`](https://api.qunitjs.com/expect/) to ensure that the expected assertions are run.
+* Each test should begin with [`assert.expect`](https://api.qunitjs.com/assert/expect/) to ensure that the expected assertions are run.
 * Each test should follow the project's [JavaScript Code Guidelines](https://github.com/twbs/bootstrap/blob/master/CONTRIBUTING.md#js)
 
 ### Example tests
@@ -33,16 +33,16 @@ To run the unit test suite via a real web browser, open `index.html` in the brow
 // Synchronous test
 QUnit.test('should describe the unit being tested', function (assert) {
   assert.expect(1)
-  var templateHTML = '<div class="alert alert-danger fade in">'
+  var templateHTML = '<div class="alert alert-danger fade show">'
       + '<a class="close" href="#" data-dismiss="alert">×</a>'
       + '<p><strong>Template necessary for the test.</p>'
       + '</div>'
   var $alert = $(templateHTML).appendTo('#qunit-fixture').bootstrapAlert()
 
-  $alert.find('.close').click()
+  $alert.find('.close').trigger('click')
 
   // Make assertion
-  assert.strictEqual($alert.hasClass('in'), false, 'remove .in class on .close click')
+  assert.strictEqual($alert.hasClass('show'), false, 'remove .show class on .close click')
 })
 
 // Asynchronous test

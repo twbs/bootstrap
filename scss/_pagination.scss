@@ -1,8 +1,6 @@
 .pagination {
   display: flex;
-  // 1-2: Disable browser default list styles
-  padding-left: 0; // 1
-  list-style: none; // 2
+  @include list-unstyled();
   @include border-radius();
 }
 
@@ -20,7 +18,7 @@
   }
 
   &.active .page-link {
-    z-index: 2;
+    z-index: 1;
     color: $pagination-active-color;
     background-color: $pagination-active-bg;
     border-color: $pagination-active-border-color;
