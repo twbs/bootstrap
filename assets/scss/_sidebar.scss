@@ -24,23 +24,24 @@
   ul {
     padding-left: 1rem;
 
+    // this should be removed and just not be generated
     ul {
       display: none;
     }
   }
-}
 
-.toc-entry {
-  display: block;
-
-  a {
+  li {
     display: block;
-    padding: .125rem 1.5rem;
-    color: #99979c;
 
-    &:hover {
-      color: $blue;
-      text-decoration: none;
+    a {
+      display: block;
+      padding: .125rem 1.5rem;
+      color: #99979c;
+
+      &:hover {
+        color: $blue;
+        text-decoration: none;
+      }
     }
   }
 }

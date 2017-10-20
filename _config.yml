@@ -15,6 +15,7 @@ port:           9001
 baseurl:        ""
 url:            "https://getbootstrap.com"
 encoding:       UTF-8
+
 exclude:
   - .git/
   - .github/
@@ -38,7 +39,6 @@ exclude:
 plugins:
   - jekyll-redirect-from
   - jekyll-sitemap
-  - jekyll-toc
 
 # Social
 title:              Bootstrap
