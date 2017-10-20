@@ -84,7 +84,10 @@
     &.is-#{$state} {
       ~ .custom-control-indicator {
         background-color: rgba($color, .25);
-        box-shadow: 0 0 0 1px #fff, 0 0 0 3px #dc3545;
+      }
+    &:focus {
+      ~ .custom-control-indicator {
+      box-shadow: 0 0 0 1px $body-bg, 0 0 0 3px $color;
       }
       ~ .custom-control-description {
         color: $color;
@@ -103,6 +106,7 @@
       }
       &:focus {
         box-shadow: 0 0 0 .2rem rgba($color,.25);
+        
       }
     }
   }
