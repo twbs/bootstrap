@@ -738,6 +738,6 @@ const Tooltip = (() => {
   }
 
   return Tooltip
-})($, Popper)
+})(Popper)
 
 export default Tooltip
