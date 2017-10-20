@@ -506,7 +506,7 @@ const Carousel = (($) => {
   EventHandler.on(window, Event.LOAD_DATA_API, () => {
     const carousels = Util.makeArray(SelectorEngine.find(Selector.DATA_RIDE))
     for (let i = 0, len = carousels.length; i < len; i++) {
-      Carousel._jQueryInterface.call($(carousels[i]), Data.getData(carousels[i], DATA_KEY))
+      Carousel._carouselInterface.call(carousels[i], Data.getData(carousels[i], DATA_KEY))
     }
   })
 
