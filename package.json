@@ -150,11 +150,11 @@
     },
     {
       "path": "./dist/css/bootstrap-placeholders.css",
-      "maxSize": "1 kB"
+      "maxSize": "210 B"
     },
     {
       "path": "./dist/css/bootstrap-placeholders.min.css",
-      "maxSize": "1 kB"
+      "maxSize": "80 B"
     },
     {
       "path": "./dist/css/bootstrap-reboot.css",
