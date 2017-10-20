@@ -3548,6 +3548,7 @@ button.close {
 }
 .inline-element {
   display: inline-block;
+  vertical-align: top;
 }
 .inline-element.schema-form-select > div.form-group {
   display: inline-block;
@@ -3556,10 +3557,12 @@ button.close {
 .inline-element input[type='button'],
 .inline-element input[type="reset"],
 .inline-element button {
-  margin-right: 0;
+  margin: 0;
 }
 .hiddenHelp {
   position: relative;
+  /* Greater than the other components but less than pop-up dialog */
+  z-index: 500;
 }
 div.field {
   padding-right: 0;
@@ -3572,6 +3575,9 @@ textarea {
   line-height: normal;
 }
 input[type="text"]:disabled {
+  border: 1px solid #eee;
+}
+.plain-text input[type="text"]:disabled {
   border: none;
 }
 div.checkbox.has-error .help-block,

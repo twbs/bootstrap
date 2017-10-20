@@ -5,6 +5,7 @@ div.required > label.control-label {
 
 .inline-element {
   display: inline-block;
+  vertical-align: top;
 }
 
 .inline-element.schema-form-select > div.form-group {
@@ -13,12 +14,14 @@ div.required > label.control-label {
 
 .inline-element {
   input[type='submit'], input[type='button'], input[type="reset"], button {
-    margin-right: 0px;
+    margin: 0px;
   }
 }
 
 .hiddenHelp {
   position: relative;
+  /* Greater than the other components but less than pop-up dialog */
+  z-index: 500;
 }
 
 div.field {
@@ -33,6 +36,10 @@ input, button, select, textarea {
 
 // Make the read only field a little bit different
 input[type="text"]:disabled {
+  border: 1px solid #EEE;
+}
+
+.plain-text input[type="text"]:disabled {
   border: none;
 }
 
