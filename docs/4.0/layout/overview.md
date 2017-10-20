@@ -172,3 +172,5 @@ $zindex-tooltip:           1070 !default;
 ```
 
 Background elements—like the backdrops that allow click-dismissing—tend to reside on a lower `z-index`s, while navigation and popovers utilize higher `z-index`s to ensure they overlay surrounding content.
+
+Additionally, the `button-group`, `input-group`, `list-group`, and `pagination` components make use of setting `z-index` to `1` or `2` in order to ensure that the borders of the _active_ element correctly appear "above" their sibling elements.
