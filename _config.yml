@@ -15,6 +15,9 @@ port:           9001
 baseurl:        ""
 url:            "https://getbootstrap.com"
 encoding:       UTF-8
+keep_files:
+  - assets/js/sw
+  - sw.js
 exclude:
   - .git/
   - .github/
@@ -33,6 +36,7 @@ exclude:
   - package.json
   - package-lock.json
   - sache.json
+  - sw.js
   - twbsconfig.yml
 
 plugins:

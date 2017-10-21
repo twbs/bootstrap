@@ -8,10 +8,12 @@ const buildPrefix = '_gh_pages/'
 
 const workboxSWSrcPath = require.resolve('workbox-sw')
 const wbFileName = path.basename(workboxSWSrcPath)
-const workboxSWDestPath = buildPrefix + 'assets/js/vendor/' + wbFileName
+const workboxSWDestDir = path.resolve(buildPrefix + 'assets/js/sw')
+const workboxSWDestPath = path.join(workboxSWDestDir, wbFileName)
 const workboxSWSrcMapPath = `${workboxSWSrcPath}.map`
 const workboxSWDestMapPath = `${workboxSWDestPath}.map`
 
+if (!fs.existsSync(workboxSWDestDir)) fs.mkdirSync(workboxSWDestDir)
 fs.createReadStream(workboxSWSrcPath).pipe(fs.createWriteStream(workboxSWDestPath))
 fs.createReadStream(workboxSWSrcMapPath).pipe(fs.createWriteStream(workboxSWDestMapPath))
 
