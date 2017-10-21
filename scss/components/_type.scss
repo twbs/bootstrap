@@ -1,0 +1,92 @@
+@import "../placeholders/type";
+// stylelint-disable declaration-no-important, selector-list-comma-newline-after
+
+//
+// Headings
+//
+
+
+h1, .h1 { @extend %h1; }
+h2, .h2 { @extend %h2; }
+h3, .h3 { @extend %h3; }
+h4, .h4 { @extend %h4; }
+h5, .h5 { @extend %h5; }
+h6, .h6 { @extend %h6; }
+
+.lead {
+  @extend %lead;
+}
+
+// Type display classes
+.display-1 {
+  @extend %display-1;
+}
+.display-2 {
+  @extend %display-1;
+}
+.display-3 {
+  @extend %display-1;
+}
+.display-4 {
+  @extend %display-1;
+}
+
+
+//
+// Horizontal rules
+//
+
+hr {
+  @extend %hr;
+}
+
+
+//
+// Emphasis
+//
+
+small,
+.small {
+  @extend %small;
+}
+
+mark,
+.mark {
+  @extend %mark;
+}
+
+
+//
+// Lists
+//
+
+.list-unstyled {
+  @extend %list-unstyled;
+}
+
+// Inline turns list items into inline-block
+.list-inline {
+  @extend %list-inline;
+}
+.list-inline-item {
+  @extend %list-inline-item;
+}
+
+
+//
+// Misc
+//
+
+// Builds on `abbr`
+.initialism {
+  @extend %initialism;
+}
+
+// Blockquotes
+.blockquote {
+  @extend %blockquote;
+}
+
+.blockquote-footer {
+  @extend %blockquote-footer;
+}

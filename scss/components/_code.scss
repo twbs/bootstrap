@@ -1,0 +1,23 @@
+@import "../placeholders/code";
+
+// Inline and block code styles
+code { @extend %code; }
+kbd { @extend %kbd; }
+pre { @extend %pre; }
+samp { @extend %samp; }
+
+a > code {
+  @extend %a_code;
+}
+
+kbd kbd {
+  @extend %kbd__kbd;
+}
+pre code {
+  @extend %pre__code;
+}
+
+// Enable scrollable blocks of code
+.pre-scrollable {
+  @extend %pre-scrollable;
+}
