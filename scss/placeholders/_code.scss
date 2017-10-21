@@ -1,29 +1,30 @@
 // Inline and block code styles
-code,
-kbd,
-pre,
-samp {
+%code,
+%kbd,
+%pre,
+%samp {
   font-family: $font-family-monospace;
 }
 
 // Inline code
-code {
+%code {
   padding: $code-padding-y $code-padding-x;
   font-size: $code-font-size;
   color: $code-color;
   background-color: $code-bg;
   @include border-radius($border-radius);
 
-  // Streamline the style when inside anchors to avoid broken underline and more
-  a > & {
-    padding: 0;
-    color: inherit;
-    background-color: inherit;
-  }
+}
+// Streamline the style when inside anchors to avoid broken underline and more
+%a_code {
+  padding: 0;
+  color: inherit;
+  background-color: inherit;
 }
 
+
 // User input typically entered via keyboard
-kbd {
+%kbd {
   padding: $code-padding-y $code-padding-x;
   font-size: $code-font-size;
   color: $kbd-color;
@@ -31,7 +32,7 @@ kbd {
   @include border-radius($border-radius-sm);
   @include box-shadow($kbd-box-shadow);
 
-  kbd {
+  &__kbd {
     padding: 0;
     font-size: 100%;
     font-weight: $nested-kbd-font-weight;
@@ -40,7 +41,7 @@ kbd {
 }
 
 // Blocks of code
-pre {
+%pre {
   display: block;
   margin-top: 0;
   margin-bottom: 1rem;
@@ -48,7 +49,7 @@ pre {
   color: $pre-color;
 
   // Account for some code outputs that place code tags in pre tags
-  code {
+  &__code {
     padding: 0;
     font-size: inherit;
     color: inherit;
@@ -58,7 +59,7 @@ pre {
 }
 
 // Enable scrollable blocks of code
-.pre-scrollable {
+%pre-scrollable {
   max-height: $pre-scrollable-max-height;
   overflow-y: scroll;
 }
