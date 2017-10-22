@@ -106,7 +106,9 @@
         &::before { border-color: inherit; }
       }
       &:focus {
-        box-shadow: 0 0 0 $input-btn-focus-width rgba($color, .25);
+        ~ .custom-file-control {
+          box-shadow: 0 0 0 $input-btn-focus-width rgba($color, .25);
+        }
       }
     }
   }
