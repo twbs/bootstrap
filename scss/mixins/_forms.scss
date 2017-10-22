@@ -57,7 +57,7 @@
       border-color: $color;
 
       &:focus {
-        box-shadow: 0 0 0 .2rem rgba($color,.25);
+        box-shadow: 0 0 0 $input-btn-focus-width rgba($color,.25);
       }
 
       ~ .#{$state}-feedback,
@@ -88,6 +88,11 @@
       ~ .custom-control-description {
         color: $color;
       }
+      &:focus {
+        ~ .custom-control-indicator {
+          box-shadow: 0 0 0 1px $body-bg, 0 0 0 $input-btn-focus-width $color;
+        }
+      }
     }
   }
 
@@ -101,7 +106,7 @@
         &::before { border-color: inherit; }
       }
       &:focus {
-        box-shadow: 0 0 0 .2rem rgba($color,.25);
+        box-shadow: 0 0 0 $input-btn-focus-width rgba($color,.25);
       }
     }
   }
