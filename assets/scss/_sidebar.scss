@@ -8,7 +8,7 @@
   @supports (position: sticky) {
     position: sticky;
     top: 4rem;
-    max-height: calc(100vh - 4rem);
+    height: calc(100vh - 4rem);
     overflow-y: auto;
   }
   order: 2;
@@ -59,7 +59,7 @@
       position: sticky;
       top: 4rem;
       z-index: 1000;
-      max-height: calc(100vh - 4rem);
+      height: calc(100vh - 4rem);
     }
     border-right: 1px solid rgba(0,0,0,.1);
   }

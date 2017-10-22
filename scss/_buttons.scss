@@ -22,7 +22,7 @@
   &:focus,
   &.focus {
     outline: 0;
-    box-shadow: $btn-focus-box-shadow;
+    box-shadow: $input-btn-focus-box-shadow;
   }
 
   // Disabled comes first so active can properly restyle
@@ -35,7 +35,7 @@
   &:not([disabled]):not(.disabled):active,
   &:not([disabled]):not(.disabled).active {
     background-image: none;
-    @include box-shadow($btn-focus-box-shadow, $btn-active-box-shadow);
+    @include box-shadow($input-btn-focus-box-shadow, $btn-active-box-shadow);
   }
 }
 

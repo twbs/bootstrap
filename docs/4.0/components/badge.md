@@ -70,7 +70,7 @@ Use the `.badge-pill` modifier class to make badges more rounded (with a larger 
 
 ## Links
 
-Using the `.badge` classes with the `<a>` element quickly provide _actionable_ badges with hover and focus states.
+Using the contextual `.badge-*` classes on an `<a>` element quickly provide _actionable_ badges with hover and focus states.
 
 {% example html %}
 {% for color in site.data.theme-colors %}
