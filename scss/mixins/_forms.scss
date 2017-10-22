@@ -90,7 +90,7 @@
       }
       &:focus {
         ~ .custom-control-indicator {
-          box-shadow: 0 0 0 1px $body-bg, 0 0 0 $input-btn-focus-width $color;
+          box-shadow: 0 0 0 1px $body-bg, 0 0 0 $input-btn-focus-width rgba($color, .25);
         }
       }
     }
