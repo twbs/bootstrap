@@ -87,6 +87,10 @@ $theme-colors: map-merge((
 // Set a specific jump point for requesting color jumps
 $theme-color-interval:      8% !default;
 
+// Customize the light and dark text colors for use in our YIQ color contrast function.
+$yiq-text-dark: #111 !default;
+$yiq-text-light: #fff !default;
+
 
 // Options
 //
@@ -761,7 +765,6 @@ $thumbnail-border-width:            $border-width !default;
 $thumbnail-border-color:            #ddd !default;
 $thumbnail-border-radius:           $border-radius !default;
 $thumbnail-box-shadow:              0 1px 2px rgba($black,.075) !default;
-$thumbnail-transition:              all .2s ease-in-out !default;
 
 
 // Figures

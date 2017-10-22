@@ -127,6 +127,8 @@ select.form-control {
 // text (without any border, background color, focus indicator)
 
 .form-control-plaintext {
+  display: block;
+  width: 100%;
   padding-top: $input-btn-padding-y;
   padding-bottom: $input-btn-padding-y;
   margin-bottom: 0; // match inputs if this class comes on inputs with default margins
