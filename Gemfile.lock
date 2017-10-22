@@ -24,8 +24,6 @@ GEM
       sass (~> 3.4)
     jekyll-sitemap (1.1.1)
       jekyll (~> 3.3)
-    jekyll-toc (0.4.0.rc2)
-      nokogiri (~> 1.6)
     jekyll-watch (1.5.0)
       listen (~> 3.0, < 3.1)
     kramdown (1.15.0)
@@ -34,11 +32,6 @@ GEM
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
     mercenary (0.3.6)
-    mini_portile2 (2.3.0)
-    nokogiri (1.8.1)
-      mini_portile2 (~> 2.3.0)
-    nokogiri (1.8.1-x64-mingw32)
-      mini_portile2 (~> 2.3.0)
     pathutil (0.16.0)
       forwardable-extended (~> 2.6)
     public_suffix (3.0.0)
@@ -61,7 +54,6 @@ DEPENDENCIES
   jekyll (~> 3.6.0)
   jekyll-redirect-from (~> 0.12.1)
   jekyll-sitemap (~> 1.1.1)
-  jekyll-toc (~> 0.4.0.rc2)
 
 BUNDLED WITH
    1.15.4
