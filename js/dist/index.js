@@ -10,11 +10,14 @@
   }
 
   var version = $.fn.jquery.split(' ')[0].split('.');
-  var min = 3;
-  var max = 4;
+  var minMajor = 1;
+  var ltMajor = 2;
+  var minMinor = 9;
+  var minPatch = 1;
+  var maxMajor = 4;
 
-  if (version[0] < min || version[0] >= max) {
-    throw new Error('Bootstrap\'s JavaScript requires at least jQuery v3.0.0 but less than v4.0.0');
+  if (version[0] < ltMajor && version[1] < minMinor || version[0] === minMajor && version[1] === minMinor && version[2] < minPatch || version[0] >= maxMajor) {
+    throw new Error('Bootstrap\'s JavaScript requires at least jQuery v1.9.1 but less than v4.0.0');
   }
 })($);
 //# sourceMappingURL=index.js.map

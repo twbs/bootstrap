@@ -16,7 +16,12 @@
     background-color: $input-focus-bg;
     border-color: $input-focus-border-color;
     outline: none;
-    @include box-shadow($input-focus-box-shadow);
+    // Avoid using mixin so we can pass custom focus shadow properly
+    @if $enable-shadows {
+      box-shadow: $input-box-shadow, $input-btn-focus-box-shadow;
+    } @else {
+      box-shadow: $input-btn-focus-box-shadow;
+    }
   }
 }
 
@@ -41,7 +46,7 @@
     font-size: .875rem;
     line-height: 1;
     color: #fff;
-    background-color: rgba($color,.8);
+    background-color: rgba($color, .8);
     border-radius: .2rem;
   }
 
@@ -52,7 +57,7 @@
       border-color: $color;
 
       &:focus {
-        box-shadow: 0 0 0 .2rem rgba($color,.25);
+        box-shadow: 0 0 0 $input-btn-focus-width rgba($color, .25);
       }
 
       ~ .#{$state}-feedback,
@@ -78,10 +83,15 @@
     .was-validated &:#{$state},
     &.is-#{$state} {
       ~ .custom-control-indicator {
-        background-color: rgba($color, .25);
+        background-color: rgba($color, .4);
       }
       ~ .custom-control-description {
         color: $color;
+      }
+      &:focus {
+        ~ .custom-control-indicator {
+          box-shadow: 0 0 0 1px $body-bg, 0 0 0 $input-btn-focus-width rgba($color, .25);
+        }
       }
     }
   }
@@ -96,7 +106,9 @@
         &::before { border-color: inherit; }
       }
       &:focus {
-        box-shadow: 0 0 0 .2rem rgba($color,.25);
+        ~ .custom-file-control {
+          box-shadow: 0 0 0 $input-btn-focus-width rgba($color, .25);
+        }
       }
     }
   }

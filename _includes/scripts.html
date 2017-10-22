@@ -3,25 +3,25 @@
 
 <script src="{{ site.baseurl }}/assets/js/vendor/popper.min.js"></script>
 
-{% if site.github %}
+{%- if site.github -%}
   <script src="{{ site.baseurl }}/dist/js/bootstrap.min.js"></script>
-{% else %}
+{%- else -%}
   <script src="{{ site.baseurl }}/dist/js/bootstrap.js"></script>
-{% endif %}
+{%- endif -%}
 
-{% if site.github %}
+{%- if site.github -%}
   <script src="{{ site.baseurl }}/assets/js/docs.min.js"></script>
-{% else %}
+{%- else -%}
   <script src="{{ site.baseurl }}/assets/js/vendor/anchor.min.js"></script>
   <script src="{{ site.baseurl }}/assets/js/vendor/clipboard.min.js"></script>
   <script src="{{ site.baseurl }}/assets/js/vendor/holder.min.js"></script>
   <script src="{{ site.baseurl }}/assets/js/src/application.js"></script>
   <script src="{{ site.baseurl }}/assets/js/src/pwa.js"></script>
-{% endif %}
+{%- endif -%}
 
 <script src="{{ site.baseurl }}/assets/js/ie-emulation-modes-warning.js"></script>
 
-{% if page.layout == "docs" %}
+{%- if page.layout == "docs" -%}
 <script src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
 <script>
   docsearch({
@@ -43,7 +43,7 @@
     debug: false // Set debug to true if you want to inspect the dropdown
   });
 </script>
-{% endif %}
+{%- endif -%}
 
 <script>
   Holder.addTheme('gray', {
