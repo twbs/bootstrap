@@ -14,12 +14,12 @@
     // Bring the hover, focused, and "active" buttons to the front to overlay
     // the borders properly
     @include hover {
-      z-index: 2;
+      z-index: 1;
     }
     &:focus,
     &:active,
     &.active {
-      z-index: 2;
+      z-index: 1;
     }
   }
 
@@ -197,10 +197,12 @@
 [data-toggle="buttons"] {
   > .btn,
   > .btn-group > .btn {
+    margin-bottom: 0; // Override default `<label>` value
+
     input[type="radio"],
     input[type="checkbox"] {
       position: absolute;
-      clip: rect(0,0,0,0);
+      clip: rect(0, 0, 0, 0);
       pointer-events: none;
     }
   }

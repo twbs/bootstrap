@@ -38,11 +38,11 @@
 
 Several quick start options are available:
 
-- [Download the latest release.](https://github.com/twbs/bootstrap/archive/v4.0.0-beta.zip)
+- [Download the latest release.](https://github.com/twbs/bootstrap/archive/v4.0.0-beta.2.zip)
 - Clone the repo: `git clone https://github.com/twbs/bootstrap.git`
-- Install with [npm](https://www.npmjs.com/): `npm install bootstrap@4.0.0-beta`
-- Install with [yarn](https://yarnpkg.com/): `yarn add bootstrap@4.0.0-beta`
-- Install with [Composer](https://getcomposer.org/): `composer require twbs/bootstrap:4.0.0-beta`
+- Install with [npm](https://www.npmjs.com/): `npm install bootstrap@4.0.0-beta.2`
+- Install with [yarn](https://yarnpkg.com/): `yarn add bootstrap@4.0.0-beta.2`
+- Install with [Composer](https://getcomposer.org/): `composer require twbs/bootstrap:4.0.0-beta.2`
 - Install with [NuGet](https://www.nuget.org/): CSS: `Install-Package bootstrap -Pre` Sass: `Install-Package bootstrap.sass -Pre` (`-Pre` is only required until Bootstrap v4 has a stable release).
 
 Read the [Getting started page](https://getbootstrap.com/getting-started/) for information on the framework contents, templates and examples, and more.
@@ -109,7 +109,7 @@ Documentation search is powered by [Algolia's DocSearch](https://community.algol
 2. Run `npm install` to install Node.js dependencies.
 3. Run `npm run test` (or a specific NPM script) to rebuild distributed CSS and JavaScript files, as well as our docs assets.
 4. From the root `/bootstrap` directory, run `npm run docs-serve` in the command line.
-5. Open <http://localhost:9001> in your browser, and voilà.
+5. Open `http://localhost:9001` in your browser, and voilà.
 
 Learn more about using Jekyll by reading its [documentation](https://jekyllrb.com/docs/home/).
 

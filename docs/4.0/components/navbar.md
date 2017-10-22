@@ -52,10 +52,10 @@ Here's an example of all the sub-components included in a responsive light-theme
           Dropdown
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="/action">Action</a>
-          <a class="dropdown-item" href="/another_action">Another action</a>
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="http://www.example.com/something_else_here">Something else here</a>
+          <a class="dropdown-item" href="#">Something else here</a>
         </div>
       </li>
       <li class="nav-item">
@@ -70,7 +70,7 @@ Here's an example of all the sub-components included in a responsive light-theme
 </nav>
 {% endexample %}
 
-This example uses [color]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/color/) (`bg-light`) and [spacing]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/spacing/) (`my-2`, `my-lg-0`, `mr-sm-0`, `my-sm-0`) utility classes.
+This example uses [color]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/colors/) (`bg-light`) and [spacing]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/spacing/) (`my-2`, `my-lg-0`, `mr-sm-0`, `my-sm-0`) utility classes.
 
 ### Brand
 
