@@ -5,10 +5,6 @@
 //
 
 .bd-example-row {
-  .row + .row {
-    margin-top: 1rem;
-  }
-
   .row {
     > .col,
     > [class^="col-"] {
@@ -17,6 +13,10 @@
       background-color: rgba(86, 61, 124, .15);
       border: 1px solid rgba(86, 61, 124, .2);
     }
+  }
+
+  .row + .row {
+    margin-top: 1rem;
   }
 
   .flex-items-top,
@@ -170,31 +170,37 @@
   > .form-group:last-child {
     margin-bottom: 0;
   }
-}
 
-.bd-example > .close {
-  float: none;
+  > .close {
+    float: none;
+  }
 }
 
 // Typography
-.bd-example-type .table .type-info {
-  color: #999;
-  vertical-align: middle;
-}
-.bd-example-type .table td {
-  padding: 1rem 0;
-  border-color: #eee;
-}
-.bd-example-type .table tr:first-child td {
-  border-top: 0;
-}
-.bd-example-type h1,
-.bd-example-type h2,
-.bd-example-type h3,
-.bd-example-type h4,
-.bd-example-type h5,
-.bd-example-type h6 {
-  margin: 0;
+.bd-example-type {
+  .table {
+    .type-info {
+      color: #999;
+      vertical-align: middle;
+    }
+    td {
+      padding: 1rem 0;
+      border-color: #eee;
+    }
+    tr:first-child td {
+      border-top: 0;
+    }
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 }
 
 // Contextual background colors
@@ -210,12 +216,14 @@
 }
 
 // Buttons
-.bd-example > .btn-group {
-  margin-top: .25rem;
-  margin-bottom: .25rem;
-}
-.bd-example > .btn-toolbar + .btn-toolbar {
-  margin-top: .5rem;
+.bd-example {
+  > .btn-group {
+    margin-top: .25rem;
+    margin-bottom: .25rem;
+  }
+  > .btn-toolbar + .btn-toolbar {
+    margin-top: .5rem;
+  }
 }
 
 // Forms
@@ -265,6 +273,19 @@
 }
 
 // Example modals
+.modal {
+  z-index: 1072;
+
+  .tooltip,
+  .popover {
+    z-index: 1073;
+  }
+}
+
+.modal-backdrop {
+  z-index: 1071;
+}
+
 .bd-example-modal {
   background-color: #fafafa;
 
@@ -285,20 +306,6 @@
   }
 }
 
-.modal {
-  z-index: 1072;
-
-  .tooltip,
-  .popover {
-    z-index: 1073;
-  }
-}
-
-.modal-backdrop {
-  z-index: 1071;
-}
-
-
 // Example tabbable tabs
 .bd-example-tabs .nav-tabs {
   margin-bottom: 1rem;
@@ -307,10 +314,11 @@
 // Tooltips
 .bd-example-tooltips {
   text-align: center;
-}
-.bd-example-tooltips > .btn {
-  margin-top: .25rem;
-  margin-bottom: .25rem;
+
+  > .btn {
+    margin-top: .25rem;
+    margin-bottom: .25rem;
+  }
 }
 .bs-tooltip-top-docs,
 .bs-tooltip-bottom-docs {
@@ -329,13 +337,14 @@
 .bd-example-popover-static {
   padding-bottom: 1.5rem;
   background-color: #f9f9f9;
-}
-.bd-example-popover-static .popover {
-  position: relative;
-  display: block;
-  float: left;
-  width: 260px;
-  margin: 1.25rem;
+
+  .popover {
+    position: relative;
+    display: block;
+    float: left;
+    width: 260px;
+    margin: 1.25rem;
+  }
 }
 .bs-popover-top-docs,
 .bs-popover-bottom-docs {
@@ -413,14 +422,16 @@
   }
 }
 
-.highlight pre {
-  padding: 0;
-  margin-top: 0;
-  margin-bottom: 0;
-  background-color: transparent;
-  border: 0;
-}
-.highlight pre code {
-  font-size: inherit;
-  color: $gray-900; // Effectively the base text color
+.highlight {
+  pre {
+    padding: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    background-color: transparent;
+    border: 0;
+  }
+  pre code {
+    font-size: inherit;
+    color: $gray-900; // Effectively the base text color
+  }
 }
