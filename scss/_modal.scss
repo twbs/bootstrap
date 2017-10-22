@@ -26,16 +26,10 @@
   // gnarly iOS Safari bug: https://bugs.webkit.org/show_bug.cgi?id=158342
   // See also https://github.com/twbs/bootstrap/issues/17695
 
-  // When fading in the modal, animate it to slide down
-  &.fade .modal-dialog {
-    @include transition($modal-transition);
-    transform: translate(0, -25%);
+  .modal-open & {
+    overflow-x: hidden;
+    overflow-y: auto;
   }
-  &.show .modal-dialog { transform: translate(0, 0); }
-}
-.modal-open .modal {
-  overflow-x: hidden;
-  overflow-y: auto;
 }
 
 // Shell div to position the modal with bottom padding
@@ -45,6 +39,15 @@
   margin: $modal-dialog-margin;
   // allow clicks to pass through for custom click handling to close modal
   pointer-events: none;
+
+  // When fading in the modal, animate it to slide down
+  .modal.fade & {
+    @include transition($modal-transition);
+    transform: translate(0, -25%);
+  }
+  .modal.show & {
+    transform: translate(0, 0);
+  }
 }
 
 // Actual modal
