@@ -6,6 +6,12 @@ group: migration
 toc: true
 ---
 
+## Beta 3 changes
+
+While Beta 2 saw the bulk of our breaking changes during the beta phase, but we still have a few that needed to be addressed in the Beta 3 release. These changes apply if you're updating to Beta 3 from Beta 2 or any older version of Bootstrap.
+
+- Removed the unused `$thumbnail-transition` variable. We weren't transitioning anything, so it was just extra code.
+
 ## Beta 2 changes
 
 While in beta, we aim to have no breaking changes. However, things don't always go as planned. Below are the breaking changes to bear in mind when moving from Beta 1 to Beta 2.

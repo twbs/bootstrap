@@ -20,7 +20,7 @@ body {
 }
 
 .navbar {
-  background-image: linear-gradient(to bottom, #f7f7f7 0%,#eee 100%);
+  background-image: linear-gradient(to bottom, #f7f7f7 0%, #eee 100%);
   border: 1px solid #e5e5e5;
 }
 

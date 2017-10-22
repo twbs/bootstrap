@@ -91,13 +91,13 @@
 .carousel-control-prev {
   left: 0;
   @if $enable-gradients {
-    background: linear-gradient(90deg, rgba(0,0,0,.25), rgba(0,0,0,.001));
+    background: linear-gradient(90deg, rgba(0, 0, 0, .25), rgba(0, 0, 0, .001));
   }
 }
 .carousel-control-next {
   right: 0;
   @if $enable-gradients {
-    background: linear-gradient(270deg, rgba(0,0,0,.25), rgba(0,0,0,.001));
+    background: linear-gradient(270deg, rgba(0, 0, 0, .25), rgba(0, 0, 0, .001));
   }
 }
 
