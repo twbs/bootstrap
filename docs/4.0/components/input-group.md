@@ -237,8 +237,8 @@ Input groups include support for custom selects and custom file inputs. Browser 
 
 {% example html %}
 <div class="input-group mb-3">
-  <span class="input-group-addon" id="">Options</span>
-  <select class="custom-select" id="">
+  <label class="input-group-addon" for="inputGroupSelect01">Options</label>
+  <select class="custom-select" id="inputGroupSelect01">
     <option selected>Choose...</option>
     <option value="1">One</option>
     <option value="2">Two</option>
@@ -247,20 +247,20 @@ Input groups include support for custom selects and custom file inputs. Browser 
 </div>
 
 <div class="input-group mb-3">
-  <select class="custom-select" id="">
+  <select class="custom-select" id="inputGroupSelect02">
     <option selected>Choose...</option>
     <option value="1">One</option>
     <option value="2">Two</option>
     <option value="3">Three</option>
   </select>
-  <span class="input-group-addon" id="">Options</span>
+  <label class="input-group-addon" for="inputGroupSelect02">Options</label>
 </div>
 
 <div class="input-group mb-3">
   <span class="input-group-btn">
     <button class="btn btn-secondary" type="button">Button</button>
   </span>
-  <select class="custom-select" id="">
+  <select class="custom-select" id="inputGroupSelect03">
     <option selected>Choose...</option>
     <option value="1">One</option>
     <option value="2">Two</option>
@@ -269,7 +269,7 @@ Input groups include support for custom selects and custom file inputs. Browser 
 </div>
 
 <div class="input-group">
-  <select class="custom-select" id="">
+  <select class="custom-select" id="inputGroupSelect04">
     <option selected>Choose...</option>
     <option value="1">One</option>
     <option value="2">Two</option>
@@ -285,16 +285,16 @@ Input groups include support for custom selects and custom file inputs. Browser 
 
 {% example html %}
 <div class="input-group mb-3">
-  <span class="input-group-addon" id="">Upload</span>
+  <span class="input-group-addon">Upload</span>
   <label class="custom-file">
-    <input type="file" id="file" class="custom-file-input" required>
+    <input type="file" id="inputGroupFile01" class="custom-file-input" required>
     <span class="custom-file-control"></span>
   </label>
 </div>
 
 <div class="input-group mb-3">
   <label class="custom-file">
-    <input type="file" id="file" class="custom-file-input" required>
+    <input type="file" id="inputGroupFile02" class="custom-file-input" required>
     <span class="custom-file-control"></span>
   </label>
   <span class="input-group-addon" id="">Upload</span>
@@ -305,14 +305,14 @@ Input groups include support for custom selects and custom file inputs. Browser 
     <button class="btn btn-secondary" type="button">Button</button>
   </span>
   <label class="custom-file">
-    <input type="file" id="file" class="custom-file-input" required>
+    <input type="file" id="inputGroupFile03" class="custom-file-input" required>
     <span class="custom-file-control"></span>
   </label>
 </div>
 
 <div class="input-group">
   <label class="custom-file">
-    <input type="file" id="file" class="custom-file-input" required>
+    <input type="file" id="inputGroupFile04" class="custom-file-input" required>
     <span class="custom-file-control"></span>
   </label>
   <span class="input-group-btn">
