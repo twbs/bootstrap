@@ -197,18 +197,13 @@
 [data-toggle="buttons"] {
   > .btn,
   > .btn-group > .btn {
+    margin-bottom: 0;
+
     input[type="radio"],
     input[type="checkbox"] {
       position: absolute;
       clip: rect(0,0,0,0);
       pointer-events: none;
-    }
-  }
-
-  &.btn-group-vertical {
-    > .btn,
-    > .btn-group > .btn {
-      margin-bottom: 0;
     }
   }
 }
