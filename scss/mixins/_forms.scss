@@ -46,7 +46,7 @@
     font-size: .875rem;
     line-height: 1;
     color: #fff;
-    background-color: rgba($color,.8);
+    background-color: rgba($color, .8);
     border-radius: .2rem;
   }
 
@@ -57,7 +57,7 @@
       border-color: $color;
 
       &:focus {
-        box-shadow: 0 0 0 $input-btn-focus-width rgba($color,.25);
+        box-shadow: 0 0 0 $input-btn-focus-width rgba($color, .25);
       }
 
       ~ .#{$state}-feedback,
@@ -83,7 +83,7 @@
     .was-validated &:#{$state},
     &.is-#{$state} {
       ~ .custom-control-indicator {
-        background-color: rgba($color, .25);
+        background-color: rgba($color, .4);
       }
       ~ .custom-control-description {
         color: $color;
@@ -106,7 +106,7 @@
         &::before { border-color: inherit; }
       }
       &:focus {
-        box-shadow: 0 0 0 $input-btn-focus-width rgba($color,.25);
+        box-shadow: 0 0 0 $input-btn-focus-width rgba($color, .25);
       }
     }
   }
