@@ -1,4 +1,6 @@
 import $ from 'jquery'
+import Util from './util'
+
 /**
  * --------------------------------------------------------------------------
  * Bootstrap (v4.0.0-beta.2): button.js
@@ -182,6 +184,6 @@ const Button = (() => {
 
   return Button
 
-})($)
+})(Util.jQuery)
 
 export default Button

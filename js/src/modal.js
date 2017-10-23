@@ -585,6 +585,6 @@ const Modal = (() => {
 
   return Modal
 
-})($)
+})(Util.jQuery)
 
 export default Modal
