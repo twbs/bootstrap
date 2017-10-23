@@ -11,8 +11,8 @@
   white-space: nowrap;
   vertical-align: middle;
   user-select: none;
-  border: $input-btn-border-width solid transparent;
-  @include button-size($input-btn-padding-y, $input-btn-padding-x, $font-size-base, $input-btn-line-height, $btn-border-radius);
+  border: $btn-border-width solid transparent;
+  @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-line-height, $btn-border-radius);
   @include transition($btn-transition);
 
   // Share hover and focus styles
@@ -104,11 +104,11 @@ fieldset[disabled] a.btn {
 //
 
 .btn-lg {
-  @include button-size($input-btn-padding-y-lg, $input-btn-padding-x-lg, $font-size-lg, $input-btn-line-height-lg, $btn-border-radius-lg);
+  @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $font-size-lg, $btn-line-height-lg, $btn-border-radius-lg);
 }
 
 .btn-sm {
-  @include button-size($input-btn-padding-y-sm, $input-btn-padding-x-sm, $font-size-sm, $input-btn-line-height-sm, $btn-border-radius-sm);
+  @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $font-size-sm, $btn-line-height-sm, $btn-border-radius-sm);
 }
 
 

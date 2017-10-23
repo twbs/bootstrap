@@ -310,9 +310,9 @@ $table-dark-border-color:     lighten($gray-900, 7.5%) !default;
 $table-dark-color:            $body-bg !default;
 
 
-// Buttons
+// Buttons + Forms
 //
-// For each of Bootstrap's buttons, define text, background and border color.
+// Shared variables that are reassigned to `$input-` and `$btn-` specific variables.
 
 $input-btn-padding-y:         .375rem !default;
 $input-btn-padding-x:         .75rem !default;
@@ -329,6 +329,27 @@ $input-btn-line-height-sm:    $line-height-sm !default;
 $input-btn-padding-y-lg:      .5rem !default;
 $input-btn-padding-x-lg:      1rem !default;
 $input-btn-line-height-lg:    $line-height-lg !default;
+
+$input-btn-border-width:      $border-width !default;
+
+
+// Buttons
+//
+// For each of Bootstrap's buttons, define text, background, and border color.
+
+$btn-padding-y:               $input-btn-padding-y !default;
+$btn-padding-x:               $input-btn-padding-x !default;
+$btn-line-height:             $input-btn-line-height !default;
+
+$btn-padding-y-sm:            $input-btn-padding-y-sm !default;
+$btn-padding-x-sm:            $input-btn-padding-x-sm !default;
+$btn-line-height-sm:          $input-btn-line-height-sm !default;
+
+$btn-padding-y-lg:            $input-btn-padding-y-lg !default;
+$btn-padding-x-lg:            $input-btn-padding-x-lg !default;
+$btn-line-height-lg:          $input-btn-line-height-lg !default;
+
+$btn-border-width:            $input-btn-border-width !default;
 
 $btn-font-weight:             $font-weight-normal !default;
 $btn-box-shadow:              inset 0 1px 0 rgba($white, .15), 0 1px 1px rgba($black, .075) !default;
@@ -348,12 +369,24 @@ $btn-transition:              color .15s ease-in-out, background-color .15s ease
 
 // Forms
 
+$input-padding-y:                       $input-btn-padding-y !default;
+$input-padding-x:                       $input-btn-padding-x !default;
+$input-line-height:                     $input-btn-line-height !default;
+
+$input-padding-y-sm:                    $input-btn-padding-y-sm !default;
+$input-padding-x-sm:                    $input-btn-padding-x-sm !default;
+$input-line-height-sm:                  $input-btn-line-height-sm !default;
+
+$input-padding-y-lg:                    $input-btn-padding-y-lg !default;
+$input-padding-x-lg:                    $input-btn-padding-x-lg !default;
+$input-line-height-lg:                  $input-btn-line-height-lg !default;
+
 $input-bg:                              $white !default;
 $input-disabled-bg:                     $gray-200 !default;
 
 $input-color:                           $gray-700 !default;
 $input-border-color:                    $gray-400 !default;
-$input-btn-border-width:                $border-width !default; // For form controls and buttons
+$input-border-width:                    $input-btn-border-width !default;
 $input-box-shadow:                      inset 0 1px 1px rgba($black, .075) !default;
 
 $input-border-radius:                   $border-radius !default;

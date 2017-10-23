@@ -7,13 +7,13 @@
 .form-control {
   display: block;
   width: 100%;
-  padding: $input-btn-padding-y $input-btn-padding-x;
+  padding: $input-padding-y $input-padding-x;
   font-size: $font-size-base;
-  line-height: $input-btn-line-height;
+  line-height: $input-line-height;
   color: $input-color;
   background-color: $input-bg;
   background-clip: padding-box;
-  border: $input-btn-border-width solid $input-border-color;
+  border: $input-border-width solid $input-border-color;
 
   // Note: This has no effect on <select>s in some browsers, due to the limited stylability of `<select>`s in CSS.
   @if $enable-rounded {
@@ -86,24 +86,24 @@ select.form-control {
 // For use with horizontal and inline forms, when you need the label text to
 // align with the form controls.
 .col-form-label {
-  padding-top: calc(#{$input-btn-padding-y} + #{$input-btn-border-width});
-  padding-bottom: calc(#{$input-btn-padding-y} + #{$input-btn-border-width});
+  padding-top: calc(#{$input-padding-y} + #{$input-border-width});
+  padding-bottom: calc(#{$input-padding-y} + #{$input-border-width});
   margin-bottom: 0; // Override the `<label>` default
-  line-height: $input-btn-line-height;
+  line-height: $input-line-height;
 }
 
 .col-form-label-lg {
-  padding-top: calc(#{$input-btn-padding-y-lg} + #{$input-btn-border-width});
-  padding-bottom: calc(#{$input-btn-padding-y-lg} + #{$input-btn-border-width});
+  padding-top: calc(#{$input-padding-y-lg} + #{$input-border-width});
+  padding-bottom: calc(#{$input-padding-y-lg} + #{$input-border-width});
   font-size: $font-size-lg;
-  line-height: $input-btn-line-height-lg;
+  line-height: $input-line-height-lg;
 }
 
 .col-form-label-sm {
-  padding-top: calc(#{$input-btn-padding-y-sm} + #{$input-btn-border-width});
-  padding-bottom: calc(#{$input-btn-padding-y-sm} + #{$input-btn-border-width});
+  padding-top: calc(#{$input-padding-y-sm} + #{$input-border-width});
+  padding-bottom: calc(#{$input-padding-y-sm} + #{$input-border-width});
   font-size: $font-size-sm;
-  line-height: $input-btn-line-height-sm;
+  line-height: $input-line-height-sm;
 }
 
 
@@ -114,8 +114,8 @@ select.form-control {
 // For use with horizontal and inline forms, when you need the legend text to
 // be the same size as regular labels, and to align with the form controls.
 .col-form-legend {
-  padding-top: $input-btn-padding-y;
-  padding-bottom: $input-btn-padding-y;
+  padding-top: $input-padding-y;
+  padding-bottom: $input-padding-y;
   margin-bottom: 0;
   font-size: $font-size-base;
 }
@@ -129,13 +129,13 @@ select.form-control {
 .form-control-plaintext {
   display: block;
   width: 100%;
-  padding-top: $input-btn-padding-y;
-  padding-bottom: $input-btn-padding-y;
+  padding-top: $input-padding-y;
+  padding-bottom: $input-padding-y;
   margin-bottom: 0; // match inputs if this class comes on inputs with default margins
-  line-height: $input-btn-line-height;
+  line-height: $input-line-height;
   background-color: transparent;
   border: solid transparent;
-  border-width: $input-btn-border-width 0;
+  border-width: $input-border-width 0;
 
   &.form-control-sm,
   &.form-control-lg {
@@ -154,9 +154,9 @@ select.form-control {
 // issue documented in https://github.com/twbs/bootstrap/issues/15074.
 
 .form-control-sm {
-  padding: $input-btn-padding-y-sm $input-btn-padding-x-sm;
+  padding: $input-padding-y-sm $input-padding-x-sm;
   font-size: $font-size-sm;
-  line-height: $input-btn-line-height-sm;
+  line-height: $input-line-height-sm;
   @include border-radius($input-border-radius-sm);
 }
 
@@ -167,9 +167,9 @@ select.form-control-sm {
 }
 
 .form-control-lg {
-  padding: $input-btn-padding-y-lg $input-btn-padding-x-lg;
+  padding: $input-padding-y-lg $input-padding-x-lg;
   font-size: $font-size-lg;
-  line-height: $input-btn-line-height-lg;
+  line-height: $input-line-height-lg;
   @include border-radius($input-border-radius-lg);
 }
 
