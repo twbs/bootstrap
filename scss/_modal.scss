@@ -152,11 +152,17 @@
     margin: $modal-dialog-margin-y-sm-up auto;
   }
 
+  .modal-dialog-centered {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
   .modal-content {
     @include box-shadow($modal-content-box-shadow-sm-up);
   }
 
   .modal-sm { max-width: $modal-sm; }
+
 }
 
 @include media-breakpoint-up(lg) {

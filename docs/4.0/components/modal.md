@@ -213,7 +213,7 @@ When modals become too long for the user's viewport or device, they scroll indep
 Add `.modal-dialog-centered` to `.modal-dialog` to vertically center the modal.
 
 <div id="exampleModalCenter" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
