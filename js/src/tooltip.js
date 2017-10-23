@@ -728,6 +728,6 @@ const Tooltip = (() => {
 
   return Tooltip
 
-})($, Popper)
+})(Util.jQuery, Popper)
 
 export default Tooltip
