@@ -3,6 +3,6 @@
   "globPatterns": [
     "_gh_pages/**/*.{html,css,js,json,png,svg}"
   ],
-  "swSrc": "./sw.js",
+  "swSrc": "./docs/static/sw.js",
   "swDest": "./_gh_pages/sw.js"
 }

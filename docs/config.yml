@@ -1,0 +1,103 @@
+languageCode:           "en"
+title:                  "Bootstrap"
+baseURL:                "http://127.0.0.1:9001"
+
+pygmentsUseClasses:     true
+# you can use ```lang if you want too
+pygmentsCodeFences:     true
+
+buildDrafts:            true
+buildFuture:            true
+
+enableRobotsTXT:        true
+metaDataFormat:         "yaml"
+disableKinds:           ["404", "taxonomy", "taxonomyTerm", "RSS"]
+
+publishdir:             "../_gh_pages"
+archetypedir:           "archetypes"
+contentdir:             "content"
+dataDir:                "data"
+layoutdir:              "layouts"
+staticdir:              "static"
+themesdir:              "themes"
+
+ignoreFiles:
+  - assets/scss/
+
+googleAnalytics:        "UA-146052-10"
+
+social:
+  twitter:              "getbootstrap"
+
+params:
+  description:          "The most popular HTML, CSS, and JS library in the world."
+  authors:              "Mark Otto, Jacob Thornton, and Bootstrap contributors"
+  social_image_path:    /assets/brand/bootstrap-social.png
+  social_logo_path:     /assets/brand/bootstrap-social-logo.png
+
+  current_version:      "4.0.0-beta.3"
+  current_ruby_version: "4.0.0.beta2"
+  docs_version:         "4.0"
+  repo:                 "https://github.com/twbs/bootstrap"
+  slack:                "https://bootstrap-slack.herokuapp.com"
+  blog:                 "https://blog.getbootstrap.com"
+  expo:                 "https://expo.getbootstrap.com"
+  jobs:                 "https://jobs.getbootstrap.com"
+  themes:               "https://themes.getbootstrap.com"
+
+  download:
+    source:             "https://github.com/twbs/bootstrap/archive/v4.0.0-beta.3.zip"
+    dist:               "https://github.com/twbs/bootstrap/releases/download/v4.0.0-beta.3/bootstrap-4.0.0-beta.3-dist.zip"
+
+  cdn:
+    # See https://www.srihash.org for info on how to generate the hashes
+    css:                "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css"
+    css_hash:           "sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy"
+    js:                 "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"
+    js_hash:            "sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4"
+    jquery:             "https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    jquery_hash:        "sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    popper:             "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    popper_hash:        "sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+menu:
+  docs:
+    # These are the docs' left sidebar's main menu entries
+    - identifier: getting-started
+      name: Getting started
+      url: /docs/4.0/getting-started/introduction/
+      weight: 1
+
+    - identifier: layout
+      name: Layout
+      url: /docs/4.0/layout/overview/
+      weight: 2
+
+    - identifier: content
+      name: Content
+      url: /docs/4.0/content/reboot/
+      weight: 3
+
+    - identifier: components
+      name: Components
+      url: /docs/4.0/components/alerts/
+      weight: 4
+
+    - identifier: utilities
+      name: Utilities
+      url: /docs/4.0/utilities/borders/
+      weight: 5
+
+    - identifier: extend
+      name: Extend
+      url: /docs/4.0/extend/icons/
+      weight: 6
+
+    - identifier: migration
+      name: Migration
+      url: /docs/4.0/migration/
+      weight: 7
+
+    - identifier: about
+      name: About
+      url: /docs/4.0/about/overview/
+      weight: 8

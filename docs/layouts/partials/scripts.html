@@ -1,0 +1,25 @@
+<script src="{{ .Site.Params.cdn.jquery }}" integrity="{{ .Site.Params.cdn.jquery_hash }}" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="{{ .Site.BaseURL }}/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+
+<script src="{{ .Site.BaseURL }}/assets/js/vendor/popper.min.js"></script>
+
+{{ if eq .Site.Params.github true }}
+  <script src="{{ .Site.BaseURL }}/dist/js/bootstrap.min.js"></script>
+{{ else }}
+  <script src="{{ .Site.BaseURL }}/dist/js/bootstrap.js"></script>
+{{ end }}
+
+{{ if eq .Page.Layout "docs" }}
+<script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+{{ end }}
+
+{{ if eq .Site.Params.github true }}
+  <script src="{{ .Site.BaseURL }}/assets/js/docs.min.js"></script>
+{{ else }}
+  <script src="{{ .Site.BaseURL }}/assets/js/vendor/anchor.min.js"></script>
+  <script src="{{ .Site.BaseURL }}/assets/js/vendor/clipboard.min.js"></script>
+  <script src="{{ .Site.BaseURL }}/assets/js/vendor/holder.min.js"></script>
+  <script src="{{ .Site.BaseURL }}/assets/js/src/application.js"></script>
+  <script src="{{ .Site.BaseURL }}/assets/js/src/ie-emulation-modes-warning.js"></script>
+  <script src="{{ .Site.BaseURL }}/assets/js/src/pwa.js"></script>
+{{ end }}

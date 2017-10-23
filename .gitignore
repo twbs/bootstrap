@@ -38,9 +38,5 @@ Thumbs.db
 .komodotools
 *.komodoproject
 
-# Jekyll metadata and extra config file for `github` script
-docs/.jekyll-metadata
-twbsconfig.yml
-
 # Folders to ignore
 node_modules

@@ -1,0 +1,26 @@
+<form class="bd-search d-flex align-items-center">
+  <input type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off">
+  <button class="btn btn-link bd-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#bd-docs-nav" aria-controls="bd-docs-nav" aria-expanded="false" aria-label="Toggle docs navigation">
+    {{- partial "icons/menu.svg" (dict "class" "" "width" "30" "height" "30") -}}
+  </button>
+</form>
+
+<nav class="collapse bd-links" id="bd-docs-nav">
+  {{ $currentPage := . }}
+  {{ range .Site.Menus.docs }}
+
+  <div class="bd-toc-item{{ if or ($currentPage.IsMenuCurrent "docs" .) ($currentPage.HasMenuCurrent "docs" .) }} active{{ end }}">
+    <a class="bd-toc-link" href="{{ .URL }}">{{ .Name }}</a>
+
+    {{ if .HasChildren }}
+    <ul class="nav bd-sidenav">
+      {{ range .Children }}
+      <li{{ if ($currentPage.IsMenuCurrent "docs" .) }} class="active bd-sidenav-active"{{ end }}>
+        <a href="{{ .URL }}">{{ .Name }}</a>
+      </li>
+      {{ end }}
+    </ul>
+    {{ end }}
+  </div>
+  {{ end }}
+</nav>

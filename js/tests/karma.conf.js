@@ -3,7 +3,7 @@
 'use strict'
 
 module.exports = (config) => {
-  const jqueryFile = process.env.USE_OLD_JQUERY ? 'js/tests/vendor/jquery-1.9.1.min.js' : 'assets/js/vendor/jquery-slim.min.js'
+  const jqueryFile = process.env.USE_OLD_JQUERY ? 'js/tests/vendor/jquery-1.9.1.min.js' : 'docs/static/assets/js/vendor/jquery-slim.min.js'
 
   config.set({
     basePath: '../..',
@@ -17,7 +17,7 @@ module.exports = (config) => {
     // list of files / patterns to load in the browser
     files: [
       jqueryFile,
-      'assets/js/vendor/popper.min.js',
+      'docs/static/assets/js/vendor/popper.min.js',
       'js/dist/util.js',
       'js/dist/tooltip.js',
       'js/dist/!(util|index|tooltip).js', // include all of our js/dist files except util.js, index.js and tooltip.js

@@ -1,0 +1,25 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="{{ if isset .Page.Params "description" }}{{ .Page.Params.description | markdownify }}{{ else }}{{ .Site.Params.description | markdownify }}{{ end }}">
+<meta name="author" content="{{ .Site.Params.authors }}">
+{{ .Hugo.Generator }}
+
+<title>{{ if .IsHome }}{{ .Site.Title | markdownify }} · {{ .Site.Params.description | markdownify }}{{ else }}{{ .Title | markdownify }} · {{ .Site.Title | markdownify }}{{ end }}</title>
+
+<!-- Bootstrap core CSS -->
+{{ if eq .Site.Params.github true }}
+<link href="{{ .Site.BaseURL }}/dist/css/bootstrap.min.css" rel="stylesheet">
+{{ else }}
+<link href="{{ .Site.BaseURL }}/dist/css/bootstrap.css" rel="stylesheet">
+{{ end }}
+
+<!-- Documentation extras -->
+{{ if eq .Page.Layout "docs" }}
+<link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
+{{ end }}
+<link href="{{ .Site.BaseURL }}/assets/css/docs.min.css" rel="stylesheet">
+
+{{ partial "favicons" . }}
+{{ partial "social" . }}
+
+{{ template "_internal/google_analytics.html" . }}

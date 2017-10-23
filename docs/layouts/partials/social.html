@@ -1,0 +1,18 @@
+<!-- Twitter -->
+<meta name="twitter:card" content="{{ if .IsHome }}summary_large_image{{ else }}summary{{ end }}">
+<meta name="twitter:site" content="@{{ .Site.Social.twitter }}">
+<meta name="twitter:creator" content="@{{ .Site.Social.twitter }}">
+<meta name="twitter:title" content="{{ .Title | markdownify }}">
+<meta name="twitter:description" content="{{ if isset .Page.Params "description" }}{{ .Page.Params.description | markdownify }}{{ else }}{{ .Site.Params.description | markdownify }}{{ end }}">
+<meta name="twitter:image" content="{{ if .IsHome }}{{ .Site.BaseURL }}{{ .Site.Params.social_logo_path }}{{ else }}{{ .Site.BaseURL }}{{ .Site.Params.social_image_path }}{{ end }}">
+
+<!-- Facebook -->
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:title" content="{{ .Title | markdownify }}">
+<meta property="og:description" content="{{ if isset .Page.Params "description" }}{{ .Page.Params.description | markdownify }}{{ else }}{{ .Site.Params.description | markdownify }}{{ end }}">
+<meta property="og:type" content="website">
+<meta property="og:image" content="{{ replace .Site.BaseURL "https://" "http://" }}{{ .Site.Params.social_image_path }}">
+<meta property="og:image:secure_url" content="{{ .Site.BaseURL}}{{ .Site.Params.social_image_path }}">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">

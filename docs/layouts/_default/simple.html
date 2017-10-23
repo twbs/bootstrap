@@ -1,0 +1,12 @@
+---
+layout: default
+---
+
+<div class="container my-5">
+  <main class="bd-content" role="main">
+    <h1 class="bd-title" id="content">{{ .Title | markdownify }}</h1>
+    <p class="bd-lead">{{ .Page.Params.description | markdownify }}</p>
+    {{ partial "ads" . }}
+    {{ .Content }}
+  </main>
+</div>
