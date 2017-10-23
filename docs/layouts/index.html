@@ -28,7 +28,7 @@
 <div class="masthead-followup row m-0 border border-white">
   <div class="col-12 col-md-4 p-3 p-md-5 bg-light border border-white">
     <!-- Icon by Bytesize https://github.com/danklammer/bytesize-icons -->
-    {{< svg src="import.svg" width="32" height="32" class="text-primary mb-2" >}}
+    {{ partial "icons/import.svg" (dict "class" "text-primary mb-2" "width" "32" "height" "32") }}
     <h3>Installation</h3>
     <p>Include Bootstrap's source Sass and JavaScript files via npm, Composer or Meteor. Package managed installs don't include documentation, but do include our build system and readme.</p>
 
@@ -46,7 +46,7 @@ gem install bootstrap -v {{ .Site.Params.current_ruby_version }}
 
   <div class="col-12 col-md-4 p-3 p-md-5 bg-light border border-white">
     <!-- Icon by Bytesize https://github.com/danklammer/bytesize-icons -->
-    {{< svg src="download.svg" width="32" height="32" class="text-primary mb-2" >}}
+    {{ partial "icons/download.svg" (dict "class" "text-primary mb-2" "width" "32" "height" "32") }}
     <h3>Bootstrap CDN</h3>
     <p>When you only need to include Bootstrap's compiled CSS or JS, you can use the Bootstrap CDN.</p>
 
@@ -67,7 +67,7 @@ gem install bootstrap -v {{ .Site.Params.current_ruby_version }}
 
   <div class="col-12 col-md-4 p-3 p-md-5 bg-light border border-white">
     <!-- Icon by Bytesize https://github.com/danklammer/bytesize-icons -->
-    {{< svg src="lightning.svg" width="32" height="32" class="text-primary mb-2" >}}
+    {{ partial "icons/lightning.svg" (dict "class" "text-primary mb-2" "width" "32" "height" "32") }}
     <h3>Official Themes</h3>
     <p>
       Take Bootstrap 4 to the next level with official premium themes—toolkits built on Bootstrap with new components and plugins, docs, and build tools.
