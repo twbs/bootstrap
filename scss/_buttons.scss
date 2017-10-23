@@ -119,11 +119,11 @@ fieldset[disabled] a.btn {
 .btn-block {
   display: block;
   width: 100%;
-}
 
-// Vertically space out multiple block buttons
-.btn-block + .btn-block {
-  margin-top: $btn-block-spacing-y;
+  // Vertically space out multiple block buttons
+  + .btn-block {
+    margin-top: $btn-block-spacing-y;
+  }
 }
 
 // Specificity overrides

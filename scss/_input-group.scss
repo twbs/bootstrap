@@ -30,19 +30,31 @@
 
 .input-group-addon,
 .input-group-btn,
-.input-group .form-control {
+.input-group .form-control,
+.input-group .custom-select,
+.input-group .custom-file {
   display: flex;
   align-items: center;
+
   &:not(:first-child):not(:last-child) {
     @include border-radius(0);
   }
+}
+
+.input-group .custom-file {
+  display: flex;
+  align-items: center;
+}
+
+.input-group .custom-select,
+.input-group .custom-file {
+  width: 100%;
 }
 
 .input-group-addon,
 .input-group-btn {
   white-space: nowrap;
 }
-
 
 // Sizing options
 //
@@ -103,6 +115,8 @@
 //
 
 .input-group .form-control:not(:last-child),
+.input-group .custom-select:not(:last-child),
+.input-group .custom-file:not(:last-child) .custom-file-control::before,
 .input-group-addon:not(:last-child),
 .input-group-btn:not(:last-child) > .btn,
 .input-group-btn:not(:last-child) > .btn-group > .btn,
@@ -111,10 +125,14 @@
 .input-group-btn:not(:first-child) > .btn-group:not(:last-child) > .btn {
   @include border-right-radius(0);
 }
+
 .input-group-addon:not(:last-child) {
   border-right: 0;
 }
+
 .input-group .form-control:not(:first-child),
+.input-group .custom-select:not(:first-child),
+.input-group .custom-file:not(:first-child) .custom-file-control,
 .input-group-addon:not(:first-child),
 .input-group-btn:not(:first-child) > .btn,
 .input-group-btn:not(:first-child) > .btn-group > .btn,
@@ -123,8 +141,13 @@
 .input-group-btn:not(:last-child) > .btn-group:not(:first-child) > .btn {
   @include border-left-radius(0);
 }
-.form-control + .input-group-addon:not(:first-child) {
-  border-left: 0;
+
+.form-control,
+.custom-select,
+.custom-file {
+  + .input-group-addon:not(:first-child) {
+    border-left: 0;
+  }
 }
 
 //

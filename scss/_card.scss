@@ -231,13 +231,13 @@
         }
 
         &:not(:first-child):not(:last-child):not(:only-child) {
-          border-radius: 0;
+          @include border-radius(0);
 
           .card-img-top,
           .card-img-bottom,
           .card-header,
           .card-footer {
-            border-radius: 0;
+            @include border-radius(0);
           }
         }
       }
