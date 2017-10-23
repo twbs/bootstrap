@@ -1,0 +1,25 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="{{ if isset .Page.Params "description" }}{{ .Page.Params.description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+<meta name="author" content="{{ .Site.Params.authors }}">
+{{ .Hugo.Generator }}
+
+<title>{{ if .IsHome }}{{ .Site.Title }} · {{ .Site.Params.description }}{{ else }}{{ .Title }} · {{ .Site.Title }}{{ end }}</title>
+
+<!-- Bootstrap core CSS -->
+{{ if eq .Site.Params.github true }}
+<link href="{{ .Site.BaseURL }}/dist/css/bootstrap.min.css" rel="stylesheet">
+{{ else }}
+<link href="{{ .Site.BaseURL }}/dist/css/bootstrap.css" rel="stylesheet">
+{{ end }}
+
+<!-- Documentation extras -->
+{{ if eq .Page.Layout "docs" }}
+<link href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" rel="stylesheet">
+{{ end }}
+<link href="{{ .Site.BaseURL }}/assets/css/docs.min.css" rel="stylesheet">
+
+{{ partial "favicons" . }}
+{{ partial "social" . }}
+
+{{ template "_internal/google_analytics.html" . }}

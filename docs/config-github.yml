@@ -1,0 +1,7 @@
+baseURL:        "https://getbootstrap.com"
+
+buildDrafts:    false
+buildFuture:    false
+
+params:
+  github:       true

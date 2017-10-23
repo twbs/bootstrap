@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {{ partial "header" . }}
+  </head>
+  <body>
+    <a id="skippy" class="sr-only sr-only-focusable" href="#content">
+      <div class="container">
+        <span class="skiplink-text">Skip to main content</span>
+      </div>
+    </a>
+
+    {{ partial "docs-navbar" . }}
+
+    <div class="container-fluid">
+      <div class="row flex-xl-nowrap">
+        <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+          {{ partial "docs-sidebar" . }}
+        </div>
+
+        {{ if (eq .Page.Params.toc true) }}
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            {{ .TableOfContents }}
+          </div>
+        {{ end }}
+
+        <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+          <h1 class="bd-title" id="content">{{ .Title }}</h1>
+          <p class="bd-lead">{{ .Page.Params.description }}</p>
+          {{ partial "ads" . }}
+          {{ .Content }}
+        </main>
+      </div>
+    </div>
+
+    {{ partial "scripts" . }}
+  </body>
+</html>

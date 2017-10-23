@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {{ partial "header" . }}
+  </head>
+  <body>
+    <a id="skippy" class="sr-only sr-only-focusable" href="#content">
+      <div class="container">
+        <span class="skiplink-text">Skip to main content</span>
+      </div>
+    </a>
+
+    {{ partial "docs-navbar" . }}
+
+    {{ if eq .Page.Layout "simple" }}
+      {{ .Content }}
+    {{ else }}
+      <main id="content" role="main">
+        {{ .Content }}
+      </main>
+    {{ end }}
+
+    {{ partial "footer" . }}
+    {{ partial "scripts" . }}
+  </body>
+</html>
