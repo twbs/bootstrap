@@ -15,15 +15,15 @@
   }
 }
 
-.btn-bd-yellow {
+.btn-bd-download {
   font-weight: 500;
-  color: $bd-yellow;
-  border-color: $bd-yellow;
+  color: $bd-download;
+  border-color: $bd-download;
 
   &:hover,
   &:active {
-    color: $bd-graphite;
-    background-color: $bd-yellow;
-    border-color: $bd-yellow;
+    color: $bd-dark;
+    background-color: $bd-download;
+    border-color: $bd-download;
   }
 }
