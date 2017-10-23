@@ -157,7 +157,7 @@ const Util = (() => {
     },
 
     get jQuery() {
-      return window.$ || window.jQuery
+      return window.jQuery || window.$
     }
   }
 
