@@ -231,6 +231,7 @@ Dropped entirely for the new card component.
 ### Progress
 
 - Replaced contextual `.progress-bar-*` classes with `.bg-*` utilities. For example, `class="progress-bar progress-bar-danger"` becomes `class="progress-bar bg-danger"`.
+- Replaced `.active` for animated progress bars with `.progress-bar-animated`.
 
 ### Carousel
 
