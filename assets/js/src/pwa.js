@@ -4,17 +4,17 @@
   'use strict'
 
   if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function () {
-      navigator.serviceWorker.register('/sw.js').then(function (registration) { // eslint-disable-line compat/compat
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js').then(registration => { // eslint-disable-line compat/compat
         console.log('ServiceWorker registration successful with scope: ', registration.scope)
-        registration.onupdatefound = function () {
-          var installingWorker = registration.installing
-          installingWorker.onstatechange = function () {
+        registration.onupdatefound = () => {
+          const installingWorker = registration.installing;
+          installingWorker.onstatechange = () => {
             switch (installingWorker.state) {
               case 'installed':
                 if (navigator.serviceWorker.controller) { // eslint-disable-line compat/compat
                   console.log('new update available')
-                  location.reload(true)
+                  window.location.reload(true)
                 }
                 break
 
@@ -22,7 +22,7 @@
             }
           }
         }
-      }).catch(function (err) {
+      }).catch((err) => {
         console.log('ServiceWorker registration failed: ', err)
       })
     })

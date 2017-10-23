@@ -1,3 +1,5 @@
+/* eslint-env jquery, qunit */
+
 $(function () {
   'use strict'
 
