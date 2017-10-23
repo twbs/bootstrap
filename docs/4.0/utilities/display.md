@@ -15,6 +15,7 @@ Change the value of the [`display` property](https://developer.mozilla.org/en-US
 Display utility classes that apply to all [breakpoints]({{ site.baseurl }}/docs/{{ site.docs_version }}/layout/overview/#responsive-breakpoints), from `xs` to `xl`, have no breakpoint abbreviation in them. This is because those classes are applied from `min-width: 0;` and up, and thus are not bound by a media query. The remaining breakpoints, however, do include a breakpoint abbreviation.
 
 As such, the classes are named using the format:
+
 * `.d-{value}` for `xs`
 * `.d-{breakpoint}-{value}` for `sm`, `md`, `lg`, and `xl`.
 
