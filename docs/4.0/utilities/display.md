@@ -6,20 +6,34 @@ group: utilities
 toc: true
 ---
 
-## Common `display` values
+## How it works
 
-The [`display` property](https://developer.mozilla.org/en-US/docs/Web/CSS/display) accepts a handful of values and we support many of them with utility classes. We purposefully don't provide every value as a utility, so here's what we support:
+Change the value of the [`display` property](https://developer.mozilla.org/en-US/docs/Web/CSS/display) with our responsive display utility classes. We purposely support only a subset of all possible values for `display`. Classes can be combined for various effects as you need.
 
-- `.d-none`
-- `.d-inline`
-- `.d-inline-block`
-- `.d-block`
-- `.d-table`
-- `.d-table-cell`
-- `.d-flex`
-- `.d-inline-flex`
+## Notation
 
-Put them to use by applying any of the classes to an element of your choice. For example, here's how you could use the inline, block, or inline-block utilities (the same applies to the other classes).
+Display utility classes that apply to all [breakpoints]({{ site.baseurl }}/docs/{{ site.docs_version }}/layout/overview/#responsive-breakpoints), from `xs` to `xl`, have no breakpoint abbreviation in them. This is because those classes are applied from `min-width: 0;` and up, and thus are not bound by a media query. The remaining breakpoints, however, do include a breakpoint abbreviation.
+
+As such, the classes are named using the format:
+* `.d-{value}` for `xs`
+* `.d-{breakpoint}-{value}` for `sm`, `md`, `lg`, and `xl`.
+
+Where *display* is one of:
+
+* `none`
+* `inline`
+* `inline-block`
+* `block`
+* `table`
+* `table-cell`
+* `flex`
+* `inline-flex`
+
+The media queries effect screen widths with the given breakpoint *or larger*.
+
+For example, `.d-lg-none` sets `display: none;` on both `lg` and `xl` screens.
+
+## Examples
 
 {% example html %}
 <div class="d-inline bg-success">d-inline</div>
@@ -28,24 +42,8 @@ Put them to use by applying any of the classes to an element of your choice. For
 
 {% example html %}
 <span class="d-block bg-primary">d-block</span>
+<span class="d-block bg-primary">d-block</span>
 {% endexample %}
-
-{% example html %}
-<div class="d-inline-block bg-warning">d-inline-block</div>
-<div class="d-inline-block bg-warning">d-inline-block</div>
-{% endexample %}
-
-Responsive variations also exist for every single utility mentioned above.
-
-{% for bp in site.data.breakpoints %}
-- `.d{{ bp.abbr }}-none`
-- `.d{{ bp.abbr }}-inline`
-- `.d{{ bp.abbr }}-inline-block`
-- `.d{{ bp.abbr }}-block`
-- `.d{{ bp.abbr }}-table`
-- `.d{{ bp.abbr }}-table-cell`
-- `.d{{ bp.abbr }}-flex`
-- `.d{{ bp.abbr }}-inline-flex`{% endfor %}
 
 ## Hiding Elements
 
@@ -53,30 +51,43 @@ For faster mobile-friendly development, use responsive display classes for showi
 
 To hide elements simply use the `.d-none` class or one of the `.d-{sm,md,lg,xl}-none` classes for any responsive screen variation.
 
-To show an element only on a given interval of screen sizes you can combine one `.d-*-none` class with a `.d-*-*` class, for example `.d-none.d-md-block.d-xl-none` will hide the element for all screen sizes except on medium and large devices.
+To show an element only on a given interval of screen sizes you can combine one `.d-*-none` class with a `.d-*-*` class, for example `.d-none .d-md-block .d-xl-none` will hide the element for all screen sizes except on medium and large devices.
 
 | Screen Size        | Class |
 | ---                | --- |
-| Hidden on all      | `d-none` |
-| Hidden only on xs  | `d-none d-sm-block` |
-| Hidden only on sm  | `d-sm-none d-md-block` |
-| Hidden only on md  | `d-md-none d-lg-block` |
-| Hidden only on lg  | `d-lg-none d-xl-block` |
-| Hidden only on xl  | `d-xl-none` |
-| Visible on all     | `d-block` |
-| Visible only on xs | `d-block d-sm-none` |
-| Visible only on sm | `d-none d-sm-block d-md-none` |
-| Visible only on md | `d-none d-md-block d-lg-none` |
-| Visible only on lg | `d-none d-lg-block d-xl-none` |
-| Visible only on xl | `d-none d-xl-block` |
+| Hidden on all      | `.d-none` |
+| Hidden only on xs  | `.d-none .d-sm-block` |
+| Hidden only on sm  | `.d-sm-none .d-md-block` |
+| Hidden only on md  | `.d-md-none .d-lg-block` |
+| Hidden only on lg  | `.d-lg-none .d-xl-block` |
+| Hidden only on xl  | `.d-xl-none` |
+| Visible on all     | `.d-block` |
+| Visible only on xs | `.d-block .d-sm-none` |
+| Visible only on sm | `.d-none .d-sm-block .d-md-none` |
+| Visible only on md | `.d-none .d-md-block .d-lg-none` |
+| Visible only on lg | `.d-none .d-lg-block .d-xl-none` |
+| Visible only on xl | `.d-none .d-xl-block` |
+
+{% example html %}
+<div class="d-lg-none">hide on screens wider than lg</div>
+<div class="d-none d-lg-block">hide on screens smaller than lg</div>
+{% endexample %}
 
 ## Display in print
 
-Change the `display` value of elements when printing with our print display utilities.
+Change the `display` value of elements when printing with our print display utility classes.
 
 | Class | Print style |
 | --- | --- |
-| `.d-print-block` | Applies `display: block` to the element when printing |
-| `.d-print-inline` | Applies `display: inline` to the element when printing |
-| `.d-print-inline-block` | Applies `display: inline-block` to the element when printing |
-| `.d-print-none` | Applies `display: none` to the element when printing |
+| `.d-print-block` | Applies `display: block;` to the element when printing |
+| `.d-print-inline` | Applies `display: inline;` to the element when printing |
+| `.d-print-inline-block` | Applies `display: inline-block;` to the element when printing |
+| `.d-print-none` | Applies `display: none;` to the element when printing |
+
+The print and display classes can be combined.
+
+{% example html %}
+<div class="d-print-none">Screen Only (Hide on print only)</div>
+<div class="d-none d-print-block">Print Only (Hide on screen only)</div>
+<div class="d-none d-lg-block d-print-block">Hide up to large on screen, but always show on print</div>
+{% endexample %}
