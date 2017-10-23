@@ -1554,5 +1554,37 @@ h4 code {
 }
 
 .box-dashed {
-  border: 2px dashed #829ca9;
+  border: 1px dashed #829ca9;
+}
+.d-inline-block {
+  display: inline-block;
+}
+.d-flex {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+}
+.flex-wrap {
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+.justify-content-between {
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  -webkit-box-pack: justify;
+          justify-content: space-between;
+}
+.align-items-start {
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  -webkit-box-align: start;
+          align-items: flex-start;
+}
+.align-items-end {
+  -webkit-align-items: flex-end;
+  -ms-flex-align: end;
+  -webkit-box-align: end;
+          align-items: flex-end;
 }

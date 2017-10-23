@@ -2,69 +2,323 @@
   <h1 id="helper-classes" class="page-header">Helper classes</h1>
 
   <h3 id="helper-classes-spacing">Spacing</h3>
-  <p>Several utility classes are available for spacing.  There are both margin  <code>m-</code>
-      and padding <code>p-</code> classes, that add spacing to the top <code>t</code>,
-      bottom <code>b</code>, left <code>l</code>, right <code>r</code>, or all
-      <code>a</code>.  For example to add margin to the top use class
-      <code>.m-t-1</code>, to adding padding on all sides use <code>.p-a</code></p>
-  <p>These classes add spacing in multiples of 8px, so adding the
-      <code>-1</code> modifier add 8px, <code>-2</code> adds 16px, <code>-3</code> for
-      24px e.g. <code>.m-b-3</code> adds 24px of bottom margin.</p>
-  <p>You can also use the <code>-0</code> modifier to remove any existing spacing,
-      e.g. <code>.m-b-0</code> to remove bottom margin</p>
-  <div class="bs-example" data-example-id="helper-classes-spacing">
-      <div class="m-a"><span style="display: inline-block;" class="bg-default"><button class="btn btn-primary m-b-1">.m-b-1</button></span></div>
-      <div class="m-a"><span style="display: inline-block;"  class="bg-default"><button class="btn btn-primary m-b-2">.m-b-2</button></span></div>
-      <div class="m-a"><span style="display: inline-block;"  class="bg-default"><button class="btn btn-primary m-l-3 m-b-3">.m-l-3 .m-b-3</button></span></div>
-      <div class="m-a"><button class="btn btn-primary p-a-1">.p-a-1</button></div>
-      <div class="m-a"><button class="btn btn-primary p-a-2">.p-a-2</button></div>
-      <div class="m-a"><button class="btn btn-primary p-a-3">.p-a-3</button></div>
+  <p>Several utility classes are available for spacing. </p>
+  <p>The classes are named using the format <code>{property}-{sides}-{size}</code></p>
+  <p>The <i>property</i> options are:</p>
+  <ul>
+  <li><code>m</code> - for classes that set <code>margin</code></li>
+  <li><code>p</code> - for classes that set <code>padding</code></li>
+</ul>
+<p>The <i>sides</i> are:</p>
+<ul>
+  <li><code>a</code> - for classes that set a <code>margin</code> or <code>padding</code> on all 4 sides of the element</li>
+  <li><code>t</code> - for classes that set the <code>top</code> side of the property</li>
+  <li><code>b</code> - for classes that set the <code>bottom</code> side of the property</li>
+  <li><code>l</code> - for classes that set the <code>left</code> side of the property</li>
+  <li><code>r</code> - for classes that set the <code>right</code> side of the property</li>
+  <li><code>x</code> - for classes that set both <code>left</code> and <code>right</code></li>
+  <li><code>y</code> - for classes that set both <code>top</code> and <code>bottom</code></li>
+</ul>
+<p>The <i>sizes</i> are:</p>
+<p>Our base unit for the spacer is: <code>@spacer: 8px;</code></p>
+<ul>
+  <li><code>0</code> - for classes that eliminate the <code>margin</code> or <code>padding</code> by setting it to <code>0</code></li>
+  <li><code>1</code> - for classes that set the <code>margin</code> or <code>padding</code> to <code>@spacer * 1</code> (8px)</li>
+  <li><code>2</code> - for classes that set the <code>margin</code> or <code>padding</code> to <code>@spacer * 2</code> (16px)</li>
+  <li><code>3</code> - for classes that set the <code>margin</code> or <code>padding</code> to <code>@spacer * 3</code> (24px)</li>
+  <li><code>auto</code> - for classes that set the <code>margin</code> to auto</li>
+</ul>
+<p>And only for vertical cases:</p>
+<ul>
+  <li><code>4</code> - for classes that set the <code>margin-top, margin-bottom</code> or <code>padding-top, padding-bottom</code> to <code>@spacer * 4</code> (32px)</li>
+  <li><code>5</code> - for classes that set the <code>margin-top, margin-bottom</code> or <code>padding-top, padding-bottom</code> to <code>@spacer * 5</code> (40px)</li>
+</ul>
+
+<h5>Global clases</h5>
+<div class="bs-example" data-example-id="helper-classes-spacing-global">
+  <div class="d-flex flex-wrap justify-content-between">
+    <div class="m-r-1 m-b-2"><span class="bg-default box-dashed d-inline-block"><button class="btn btn-primary m-a-1">.m-a-1</button></span></div>
+    <div class="m-r-1 m-b-2"><span class="bg-default box-dashed d-inline-block"><button class="btn btn-primary m-a-2">.m-a-2</button></span></div>
+    <div class="m-r-1 m-b-2"><span class="bg-default box-dashed d-inline-block"><button class="btn btn-primary m-a-3">.m-a-3</button></span></div>
+    <div class="m-r-1 m-b-2"><span class="bg-default d-inline-block"><button class="btn btn-primary p-a-1">.p-a-1</button></span></div>
+    <div class="m-r-1 m-b-2"><span class="bg-default d-inline-block"><button class="btn btn-primary p-a-2">.p-a-2</button></span></div>
+    <div class="m-r-1 m-b-2"><span class="bg-default d-inline-block"><button class="btn btn-primary p-a-3">.p-a-3</button></span></div>
   </div>
+</div>
 {% highlight html %}
-<button class="btn m-b">.m-b-1</button>
-<button class="btn m-a-2">.m-a-2</button>
-<button class="btn m-l-3 m-b-3">.m-l-3 .m-b-3</button>
+<button class="btn m-a-1">.m-a-1</button>
+<button class="btn m-a-2">...</button>
 <button class="btn p-a-1">.p-a-1</button>
-<button class="btn p-a-2">.p-a-2</button>
-<button class="btn p-a-3">.p-a-3</button>
+<button class="btn p-a-2">...</button>
 {% endhighlight %}
 
-  <h3 id="helper-classes-xl-spacing">m-b-4 and m-b-5</h3>
-  <p>There are two additional sizes, m-b-4 and m-b-5, that are only available for margin
-      bottom, use <code>.m-b-4</code> or <code>.m-b-5</code> to provide 32px
-      or 40px of spacing.</p>
-  <div class="bs-example" data-example-id="helper-classes-xl-spacing">
-      <div class="m-a-1"><span style="display: inline-block;" class="bg-default"><button class="btn btn-primary m-b-4">.m-b-4</button></span></div>
-      <div class="m-a-1"><span style="display: inline-block;"  class="bg-default"><button class="btn btn-primary m-b-5">.m-b-5</button></span></div>
+<h5>Vertical clases</h5>
+
+<div class="bs-example" data-example-id="helper-classes-spacing-top">
+  <h6>Top</h6>
+  <div class="d-flex flex-wrap justify-content-between">
+    <div class="m-r-1 m-b-2"><span class="bg-default box-dashed d-inline-block"><button class="btn btn-primary m-t-1">.m-t-1</button></span></div>
+    <div class="m-r-1 m-b-2"><span class="bg-default box-dashed d-inline-block"><button class="btn btn-primary m-t-2">.m-t-2</button></span></div>
+    <div class="m-r-1 m-b-2"><span class="bg-default box-dashed d-inline-block"><button class="btn btn-primary m-t-3">.m-t-3</button></span></div>
+    <div class="m-r-1 m-b-2"><span class="bg-default box-dashed d-inline-block"><button class="btn btn-primary m-t-4">.m-t-4</button></span></div>
+    <div class="m-r-1 m-b-2"><span class="bg-default box-dashed d-inline-block"><button class="btn btn-primary m-t-5">.m-t-5</button></span></div>
+  </div>
+  <div class="d-flex flex-wrap justify-content-between">
+    <div class="m-r-1 m-b-2"><span class="bg-default d-inline-block"><button class="btn btn-primary p-t-1">.p-t-1</button></span></div>
+    <div class="m-r-1 m-b-2"><span class="bg-default d-inline-block"><button class="btn btn-primary p-t-2">.p-t-2</button></span></div>
+    <div class="m-r-1 m-b-2"><span class="bg-default d-inline-block"><button class="btn btn-primary p-t-3">.p-t-3</button></span></div>
+    <div class="m-r-1 m-b-2"><span class="bg-default d-inline-block"><button class="btn btn-primary p-t-4">.p-t-4</button></span></div>
+    <div class="m-r-1 m-b-2"><span class="bg-default d-inline-block"><button class="btn btn-primary p-t-5">.p-t-5</button></span></div>
+  </div>
+</div>
+{% highlight html %}
+<button class="btn m-t-1">.m-t-1</button>
+<button class="btn m-t-2">...</button>
+<button class="btn p-t-1">.p-t-1</button>
+<button class="btn p-t-2">...</button>
+{% endhighlight %}
+<div class="bs-example" data-example-id="bottom">
+  <h6>Bottom</h6>
+  <div class="d-flex flex-wrap justify-content-between">
+    <div class="m-r-1 m-b-2"><span class="bg-default box-dashed d-inline-block"><button class="btn btn-primary m-b-1">.m-b-1</button></span></div>
+    <div class="m-r-1 m-b-2"><span class="bg-default box-dashed d-inline-block"><button class="btn btn-primary m-b-2">.m-b-2</button></span></div>
+    <div class="m-r-1 m-b-2"><span class="bg-default box-dashed d-inline-block"><button class="btn btn-primary m-b-4">.m-b-4</button></span></div>
+    <div class="m-r-1 m-b-2"><span class="bg-default box-dashed d-inline-block"><button class="btn btn-primary m-b-4">.m-b-4</button></span></div>
+    <div class="m-r-1 m-b-2"><span class="bg-default box-dashed d-inline-block"><button class="btn btn-primary m-b-5">.m-b-5</button></span></div>
+  </div>
+  <div class="d-flex flex-wrap justify-content-between">
+    <div class="m-r-1 m-b-2"><span class="bg-default d-inline-block"><button class="btn btn-primary p-b-1">.p-b-1</button></span></div>
+    <div class="m-r-1 m-b-2"><span class="bg-default d-inline-block"><button class="btn btn-primary p-b-2">.p-b-2</button></span></div>
+    <div class="m-r-1 m-b-2"><span class="bg-default d-inline-block"><button class="btn btn-primary p-b-3">.p-b-3</button></span></div>
+    <div class="m-r-1 m-b-2"><span class="bg-default d-inline-block"><button class="btn btn-primary p-b-4">.p-b-4</button></span></div>
+    <div class="m-r-1 m-b-2"><span class="bg-default d-inline-block"><button class="btn btn-primary p-b-5">.p-b-5</button></span></div>
+  </div>
+</div>
+{% highlight html %}
+<button class="btn m-b-1">.m-b-1</button>
+<button class="btn m-b-2">...</button>
+<button class="btn p-b-1">.p-b-1</button>
+<button class="btn p-b-2">...</button>
+{% endhighlight %}
+
+<h6>Y axis</h6>
+<div class="bs-example" data-example-id="helper-classes-spacing-y">
+  <div class="d-flex flex-wrap justify-content-between">
+    <div class="m-r-1 m-b-2"><span class="bg-default box-dashed d-inline-block"><button class="btn btn-primary m-y-1">.m-y-1</button></span></div>
+    <div class="m-r-1 m-b-2"><span class="bg-default box-dashed d-inline-block"><button class="btn btn-primary m-y-2">.m-y-2</button></span></div>
+    <div class="m-r-1 m-b-2"><span class="bg-default box-dashed d-inline-block"><button class="btn btn-primary m-y-3">.m-y-3</button></span></div>
+    <div class="m-r-1 m-b-2"><span class="bg-default d-inline-block"><button class="btn btn-primary p-y-1">.p-y-1</button></span></div>
+    <div class="m-r-1 m-b-2"><span class="bg-default d-inline-block"><button class="btn btn-primary p-y-2">.p-y-2</button></span></div>
+    <div class="m-r-1 m-b-2"><span class="bg-default d-inline-block"><button class="btn btn-primary p-y-3">.p-y-3</button></span></div>
+  </div>
+</div>
+{% highlight html %}
+<button class="btn m-y-1">.m-y-1</button>
+<button class="btn m-y-2">...</button>
+<button class="btn p-y-1">.p-y-1</button>
+<button class="btn p-y-2">...</button>
+{% endhighlight %}
+
+<h5>Horizontal clases</h5>
+<h6>Left</h6>
+<div class="bs-example" data-example-id="helper-classes-spacing-left">
+  <div class="d-flex flex-wrap justify-content-between">
+    <div class="m-r-1 m-b-2"><span class="bg-default box-dashed d-inline-block"><button class="btn btn-primary m-l-1">.m-l-1</button></span></div>
+    <div class="m-r-1 m-b-2"><span class="bg-default box-dashed d-inline-block"><button class="btn btn-primary m-l-2">.m-l-2</button></span></div>
+    <div class="m-r-1 m-b-2"><span class="bg-default box-dashed d-inline-block"><button class="btn btn-primary m-l-3">.m-l-3</button></span></div>
+    <div class="m-r-1 m-b-2"><span class="bg-default d-inline-block"><button class="btn btn-primary p-l-1">.p-l-1</button></span></div>
+    <div class="m-r-1 m-b-2"><span class="bg-default d-inline-block"><button class="btn btn-primary p-l-2">.p-l-2</button></span></div>
+    <div class="m-r-1 m-b-2"><span class="bg-default d-inline-block"><button class="btn btn-primary p-l-3">.p-l-3</button></span></div>
+  </div>
+</div>
+{% highlight html %}
+<button class="btn m-l-1">.m-l-1</button>
+<button class="btn m-l-2">...</button>
+<button class="btn p-l-1">.p-l-1</button>
+<button class="btn p-l-2">...</button>
+{% endhighlight %}
+<h6>Right</h6>
+<div class="bs-example" data-example-id="helper-classes-spacing-right">
+  <div class="d-flex flex-wrap justify-content-between">
+    <div class="m-r-1 m-b-2"><span class="bg-default box-dashed d-inline-block"><button class="btn btn-primary m-r-1">.m-r-1</button></span></div>
+    <div class="m-r-1 m-b-2"><span class="bg-default box-dashed d-inline-block"><button class="btn btn-primary m-r-2">.m-r-2</button></span></div>
+    <div class="m-r-1 m-b-2"><span class="bg-default box-dashed d-inline-block"><button class="btn btn-primary m-r-3">.m-r-3</button></span></div>
+    <div class="m-r-1 m-b-2"><span class="bg-default d-inline-block"><button class="btn btn-primary p-r-1">.p-r-1</button></span></div>
+    <div class="m-r-1 m-b-2"><span class="bg-default d-inline-block"><button class="btn btn-primary p-r-2">.p-r-2</button></span></div>
+    <div class="m-r-1 m-b-2"><span class="bg-default d-inline-block"><button class="btn btn-primary p-r-3">.p-r-3</button></span></div>
+  </div>
+</div>
+{% highlight html %}
+<button class="btn m-r-1">.m-r-1</button>
+<button class="btn m-r-2">...</button>
+<button class="btn p-r-1">.p-r-1</button>
+<button class="btn p-r-2">...</button>
+{% endhighlight %}
+<h6>X axis</h6>
+<div class="bs-example" data-example-id="helper-classes-spacing-x">
+  <div class="d-flex flex-wrap justify-content-between">
+    <div class="m-r-1 m-b-2"><span class="bg-default box-dashed d-inline-block"><button class="btn btn-primary m-x-1">.m-x-1</button></span></div>
+    <div class="m-r-1 m-b-2"><span class="bg-default box-dashed d-inline-block"><button class="btn btn-primary m-x-2">.m-x-2</button></span></div>
+    <div class="m-r-1 m-b-2"><span class="bg-default box-dashed d-inline-block"><button class="btn btn-primary m-x-3">.m-x-3</button></span></div>
+    <div class="m-r-1 m-b-2"><span class="bg-default d-inline-block"><button class="btn btn-primary p-x-1">.p-x-1</button></span></div>
+    <div class="m-r-1 m-b-2"><span class="bg-default d-inline-block"><button class="btn btn-primary p-x-2">.p-x-2</button></span></div>
+    <div class="m-r-1 m-b-2"><span class="bg-default d-inline-block"><button class="btn btn-primary p-x-3">.p-x-3</button></span></div>
+  </div>
+</div>
+{% highlight html %}
+<button class="btn m-x-1">.m-x-1</button>
+<button class="btn m-x-2">...</button>
+<button class="btn p-x-1">.p-x-1</button>
+<button class="btn p-x-2">...</button>
+{% endhighlight %}
+
+<h3 id="helper-classes-responsive-sections" class="bs-docs-subheader">Responsive sections</h3>
+<p>These are the sizes of larger, responsive spacing used for separating sections of a page:</p>
+<ul>
+  <li><code>section-1</code> classes provide <strong>16px, 24px or 32px</strong>
+    of spacing depending on screen width.</li>
+  <li><code>section-2</code> classes provide <strong>24px, 48px or 64px</strong>
+    of spacing depending on screen width.</li>
+  <li><code>section-3</code> classes provide <strong>48px, 72px or 96px</strong>
+    of spacing depending on screen width.</li>
+  <li><code>section-5</code> classes provide <strong>80px, 120px or 160px</strong>
+    of spacing depending on screen width.</li>
+  <li><code>section-7</code> classes provide <strong>112px, 168px or 224px</strong>
+    of spacing depending on screen width.</li>
+</ul>
+<p class="alert alert-info">Keep in mind that we jump <strong>4</strong> and <strong>6</strong> sizes for the moment, because they are not used.</p>
+<p>Spacing classes are available for each of the <strong>vertical</strong>
+  utility classes at each section size e.g.<p>
+
+<h4>Top</h4>
+<div class="bs-example" data-example-id="helper-classes-responsive-spacing-top">
+  <div class="d-flex justify-content-between align-items-end m-b-4">
+    <div class="box-dashed d-inline-block">
+      <h6 class="bg-default m-t-section-1">m-t-section-1</h6>
+    </div>
+    <div class="box-dashed d-inline-block">
+      <h6 class="bg-default m-t-section-2">m-t-section-2</h6>
+    </div>
+    <div class="box-dashed d-inline-block">
+      <h6 class="bg-default m-t-section-3">m-t-section-3</h6>
+    </div>
+    <div class="box-dashed d-inline-block">
+      <h6 class="bg-default m-t-section-5">m-t-section-5</h6>
+    </div>
+    <div class="box-dashed d-inline-block">
+      <h6 class="bg-default m-t-section-7">m-t-section-7</h6>
+    </div>
+    <div class="box-dashed d-inline-block">
+      <h6 class="bg-default p-t-section-1">p-t-section-1</h6>
+    </div>
+    <div class="box-dashed d-inline-block">
+      <h6 class="bg-default p-t-section-2">p-t-section-2</h6>
+    </div>
+    <div class="box-dashed d-inline-block">
+      <h6 class="bg-default p-t-section-3">p-t-section-3</h6>
+    </div>
+    <div class="box-dashed d-inline-block">
+      <h6 class="bg-default p-t-section-5">p-t-section-5</h6>
+    </div>
+    <div class="box-dashed d-inline-block">
+      <h6 class="bg-default p-t-section-7">p-t-section-7</h6>
+    </div>
+  </div>
+</div>
+
+{% highlight html %}
+<h6 class="m-t-section-1">m-t-section-1</h6>
+<h6 class="m-t-section-2">...</h6>
+<h6 class="p-t-section-1">p-t-section-1</h6>
+<h6 class="p-t-section-2">...</h6>
+{% endhighlight %}
+
+<h4>Bottom</h4>
+<div class="bs-example" data-example-id="helper-classes-responsive-spacing-bottom">
+  <div class="d-flex justify-content-between align-items-start m-b-4">
+    <div class="box-dashed d-inline-block">
+      <h6 class="bg-default m-b-section-1">m-b-section-1</h6>
+    </div>
+    <div class="box-dashed d-inline-block">
+      <h6 class="bg-default m-b-section-2">m-b-section-2</h6>
+    </div>
+    <div class="box-dashed d-inline-block">
+      <h6 class="bg-default m-b-section-3">m-b-section-3</h6>
+    </div>
+    <div class="box-dashed d-inline-block">
+      <h6 class="bg-default m-b-section-5">m-b-section-5</h6>
+    </div>
+    <div class="box-dashed d-inline-block">
+      <h6 class="bg-default m-b-section-7">m-b-section-7</h6>
+    </div>
+    <div class="box-dashed d-inline-block">
+      <h6 class="bg-default p-b-section-1">p-b-section-1</h6>
+    </div>
+    <div class="box-dashed d-inline-block">
+      <h6 class="bg-default p-b-section-2">p-b-section-2</h6>
+    </div>
+    <div class="box-dashed d-inline-block">
+      <h6 class="bg-default p-b-section-3">p-b-section-3</h6>
+    </div>
+    <div class="box-dashed d-inline-block">
+      <h6 class="bg-default p-b-section-5">p-b-section-5</h6>
+    </div>
+    <div class="box-dashed d-inline-block">
+      <h6 class="bg-default p-b-section-7">p-b-section-7</h6>
+    </div>
+  </div>
+</div>
+{% highlight html %}
+<h6 class="m-b-section-1">m-b-section-1</h6>
+<h6 class="m-b-section-2">..</h6>
+<h6 class="p-b-section-1">p-b-section-1</h6>
+<h6 class="p-b-section-2">..</h6>
+{% endhighlight %}
+
+  <h4>Y axis</h4>
+  <div class="bs-example" data-example-id="helper-classes-responsive-spacing-y">
+    <div class="row m-b-4">
+      <div class="box-dashed d-inline-block">
+        <h6 class="bg-default m-y-section-1">m-y-section-1</h6>
+      </div>
+      <div class="box-dashed d-inline-block">
+        <h6 class="bg-default m-y-section-2">m-y-section-2</h6>
+      </div>
+      <div class="box-dashed d-inline-block">
+        <h6 class="bg-default m-y-section-3">m-y-section-3</h6>
+      </div>
+      <div class="box-dashed d-inline-block">
+        <h6 class="bg-default m-y-section-5">m-y-section-5</h6>
+      </div>
+      <div class="box-dashed d-inline-block">
+        <h6 class="bg-default m-y-section-7">m-y-section-7</h6>
+      </div>
+    </div>
+    <div class="row">
+      <div class="box-dashed d-inline-block">
+        <h6 class="bg-default p-y-section-1">p-y-section-1</h6>
+      </div>
+      <div class="box-dashed d-inline-block">
+        <h6 class="bg-default p-y-section-2">p-y-section-2</h6>
+      </div>
+      <div class="box-dashed d-inline-block">
+        <h6 class="bg-default p-y-section-3">p-y-section-3</h6>
+      </div>
+      <div class="box-dashed d-inline-block">
+        <h6 class="bg-default p-y-section-5">p-y-section-5</h6>
+      </div>
+      <div class="box-dashed d-inline-block">
+        <h6 class="bg-default p-y-section-7">p-y-section-7</h6>
+      </div>
+    </div>
   </div>
   {% highlight html %}
-  <button class="btn m-b-4">.m-b-4</button>
-  <button class="btn m-b-5">.m-b-5</button>
+  <h6 class="m-y-section-1">m-y-section-1</h6>
+  <h6 class="m-y-section-2">...</h6>
+
+  <h6 class="p-y-section-1">p-y-section-1</h6>
+  <h6 class="p-y-section-2">...</h6>
   {% endhighlight %}
-
-
-  <h3 id="helper-classes-responsive-sections">Responsive sections</h3>
-  <p>We have three sizes of larger, responsive spacing used for separating sections of a page:</p>
-  <ul>
-    <li><code>section-1</code> classes provide <strong>16px, 24px or 32px</strong>
-      of spacing depending on screen width.</li>
-    <li><code>section-2</code> classes provide <strong>24px, 48px or 64px</strong>
-      of spacing depending on screen width.</li>
-    <li><code>section-3</code>/<code>section</code> classes provide <strong>48px, 72px or 96px</strong>
-      of spacing depending on screen width.</li>
-  </ul>
-  <p>Spacing classes are available for each of the <strong>vertical</strong>
-    utility classes at each section size e.g.<p>
-  <ul>
-    <li><code>.m-t-section-1</code></li>
-    <li><code>.m-b-section-2</code></li>
-    <li><code>.m-y-section-3</code></li>
-
-    <li><code>.p-t-section-1</code></li>
-    <li><code>.p-b-section-2</code></li>
-    <li><code>.p-y-section-3</code></li>
-  </ul>
-
 
   <h3 id="helper-classes-colors">Contextual colors</h3>
   <p>Convey meaning through color with a handful of emphasis utility classes. These may also be applied to links and will darken on hover just like our default link styles.</p>
