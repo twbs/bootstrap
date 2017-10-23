@@ -30,9 +30,7 @@ Where *display* is one of:
 * `flex`
 * `inline-flex`
 
-The media queries effect screen widths with the given breakpoint *or larger*.
-
-For example, `.d-lg-none` sets `display: none;` on both `lg` and `xl` screens.
+The media queries effect screen widths with the given breakpoint *or larger*. For example, `.d-lg-none` sets `display: none;` on both `lg` and `xl` screens.
 
 ## Examples
 
