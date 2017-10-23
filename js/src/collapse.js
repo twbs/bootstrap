@@ -404,6 +404,6 @@ const Collapse = (() => {
 
   return Collapse
 
-})($)
+})(Util.jQuery)
 
 export default Collapse

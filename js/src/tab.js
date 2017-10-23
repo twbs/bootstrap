@@ -282,6 +282,6 @@ const Tab = (() => {
 
   return Tab
 
-})($)
+})(Util.jQuery)
 
 export default Tab

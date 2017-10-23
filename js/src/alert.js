@@ -189,6 +189,6 @@ const Alert = (() => {
 
   return Alert
 
-})($)
+})(Util.jQuery)
 
 export default Alert

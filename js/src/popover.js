@@ -1,5 +1,6 @@
 import $ from 'jquery'
 import Tooltip from './tooltip'
+import Util from './util'
 
 
 /**
@@ -189,6 +190,6 @@ const Popover = (() => {
 
   return Popover
 
-})($)
+})(Util.jQuery)
 
 export default Popover
