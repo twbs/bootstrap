@@ -51,7 +51,7 @@ pre {
     font-size: inherit;
     color: inherit;
     background-color: transparent;
-    border-radius: 0;
+    @include border-radius(0);
   }
 }
 
