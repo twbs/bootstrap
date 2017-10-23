@@ -310,7 +310,9 @@ $table-dark-border-color:     lighten($gray-900, 7.5%) !default;
 $table-dark-color:            $body-bg !default;
 
 
-// Buttons + Forms common varialbes
+// Buttons + Forms
+//
+// Shared variables that are reassigned to `$input-` and `$btn-` specific variables.
 
 $input-btn-padding-y:         .375rem !default;
 $input-btn-padding-x:         .75rem !default;
@@ -328,12 +330,12 @@ $input-btn-padding-y-lg:      .5rem !default;
 $input-btn-padding-x-lg:      1rem !default;
 $input-btn-line-height-lg:    $line-height-lg !default;
 
-$input-btn-border-width:      $border-width !default; // For form controls and buttons
+$input-btn-border-width:      $border-width !default;
 
 
 // Buttons
 //
-// For each of Bootstrap's buttons, define text, background and border color.
+// For each of Bootstrap's buttons, define text, background, and border color.
 
 $btn-padding-y:               $input-btn-padding-y !default;
 $btn-padding-x:               $input-btn-padding-x !default;
