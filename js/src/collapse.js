@@ -9,7 +9,7 @@ import Util from './util'
  * --------------------------------------------------------------------------
  */
 
-const Collapse = (() => {
+const Collapse = (($) => {
 
 
   /**
@@ -404,6 +404,6 @@ const Collapse = (() => {
 
   return Collapse
 
-})(Util.jQuery)
+})($)
 
 export default Collapse

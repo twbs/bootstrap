@@ -10,7 +10,7 @@ import Util from './util'
  * --------------------------------------------------------------------------
  */
 
-const Tooltip = (() => {
+const Tooltip = (($) => {
 
   /**
    * Check for Popper dependency
@@ -728,6 +728,6 @@ const Tooltip = (() => {
 
   return Tooltip
 
-})(Util.jQuery, Popper)
+})($, Popper)
 
 export default Tooltip

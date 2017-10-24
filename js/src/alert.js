@@ -9,7 +9,7 @@ import Util from './util'
  * --------------------------------------------------------------------------
  */
 
-const Alert = (() => {
+const Alert = (($) => {
 
 
   /**
@@ -189,6 +189,6 @@ const Alert = (() => {
 
   return Alert
 
-})(Util.jQuery)
+})($)
 
 export default Alert

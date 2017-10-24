@@ -9,7 +9,7 @@ import Util from './util'
  * --------------------------------------------------------------------------
  */
 
-const ScrollSpy = (() => {
+const ScrollSpy = (($) => {
 
 
   /**
@@ -335,6 +335,6 @@ const ScrollSpy = (() => {
 
   return ScrollSpy
 
-})(Util.jQuery)
+})($)
 
 export default ScrollSpy

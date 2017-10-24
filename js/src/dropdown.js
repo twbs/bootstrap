@@ -10,7 +10,7 @@ import Util from './util'
  * --------------------------------------------------------------------------
  */
 
-const Dropdown = (() => {
+const Dropdown = (($) => {
 
   /**
    * Check for Popper dependency
@@ -445,6 +445,6 @@ const Dropdown = (() => {
 
   return Dropdown
 
-})(Util.jQuery, Popper)
+})($, Popper)
 
 export default Dropdown
