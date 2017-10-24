@@ -6,38 +6,40 @@
 </form>
 
 <nav class="collapse bd-links" id="bd-docs-nav">
-  {%- assign page_slug = page.url | split: '/' | last -%}
-  {%- for group in .Site.Data.nav -%}
-  {%- assign link = group.pages | first -%}
-  {%- assign link_slug = link.title | slugify -%}
-  {%- assign group_slug = group.title | slugify -%}
-  {%- assign active = nil -%}
+  <!-- I need to fix page_slug; split returns an empty array element as the last item -->
+  {{ $.Scratch.Set "page_slug" (last 1 (split .Permalink "/")) }}
 
-  {%- if page.group == group_slug -%}
-    {%- assign active = 'active' -%}
-  {%- endif -%}
+  {{ range $i, $group := .Site.Data.nav }}
+  {{ $.Scratch.Set "link" ($group.pages | first ) }}
+  {{ $.Scratch.Set "link_slug" (($.Scratch.Get "link").title | urlize) }}
+  {{ $.Scratch.Set "group_slug" ($group.title | urlize) }}
+  {{ $.Scratch.Set "active" "" }}
 
-  <div class="bd-toc-item{% unless active == nil %} {{ active }}{% endunless %}">
-      <a class="bd-toc-link" href="{{ .Site.BaseURL }}/docs/{{ .Site.Params.docs_version }}/{{ group_slug }}/{{ link_slug }}{% if link_slug %}/{{ end }}">
-        {{ group.title }}
+  {{ if (eq .Params.group ($.Scratch.Get "group_slug")) }}
+    {{ $.Scratch.Set "active" "active" }}
+  {{ end }}
+
+  <div class="bd-toc-item{{ with $.Scratch.Get "active" }} {{ . }}{{ end }}">
+      <a class="bd-toc-link" href="{{ .Site.BaseURL }}/docs/{{ .Site.Params.docs_version }}/{{ $.Scratch.Get "group_slug" }}/{{ $.Scratch.Get "link_slug" }}{{ if not (($.Scratch.Get "link_slug") "") }}/{{ end }}">
+        {{ $group.title }}
       </a>
 
       <ul class="nav bd-sidenav">
-        {%- for doc in group.pages -%}
-          {%- assign doc_slug = doc.title | slugify -%}
-          {%- assign active = nil -%}
+        {{ range $j, $doc := $group.pages }}
+          {{ $.Scratch.Set "doc_slug" ($doc.title | urlize) }}
+          {{ $.Scratch.Set "active" "" }}
 
-          {%- if page.group == group_slug and page_slug == doc_slug -%}
-            {%- assign active = 'active bd-sidenav-active' -%}
-          {%- endif -%}
+          {{ if (and (eq .Params.group ($.Scratch.Get "group_slug")) (eq ($.Scratch.Get "page_slug") ($.Scratch.Get "doc_slug"))) }}
+            {{ $.Scratch.Set "active" "active bd-sidenav-active" }}
+          {{ end }}
 
-          <li{% unless active == nil %} class="{{ active }}"{% endunless %}>
-            <a href="{{ .Site.BaseURL }}/docs/{{ .Site.Params.docs_version }}/{{ group_slug }}/{{ doc_slug }}/">
-              {{ doc.title }}
+          <li{{ with $.Scratch.Get "active" }} class="{{ . }}"{{ end }}>
+            <a href="{{ .Site.BaseURL }}/docs/{{ .Site.Params.docs_version }}/{{ $.Scratch.Get "group_slug" }}/{{ $.Scratch.Get "doc_slug" }}/">
+              {{ $doc.title }}
             </a>
           </li>
-        {%- endfor -%}
+        {{ end }}
       </ul>
     </div>
-  {%- endfor -%}
+  {{ end }}
 </nav>
