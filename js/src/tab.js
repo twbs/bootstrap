@@ -9,7 +9,7 @@ import Util from './util'
  * --------------------------------------------------------------------------
  */
 
-const Tab = (() => {
+const Tab = (($) => {
 
 
   /**
@@ -282,6 +282,6 @@ const Tab = (() => {
 
   return Tab
 
-})(Util.jQuery)
+})($)
 
 export default Tab

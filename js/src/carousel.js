@@ -9,7 +9,7 @@ import Util from './util'
  * --------------------------------------------------------------------------
  */
 
-const Carousel = (() => {
+const Carousel = (($) => {
 
 
   /**
@@ -519,6 +519,6 @@ const Carousel = (() => {
 
   return Carousel
 
-})(Util.jQuery)
+})($)
 
 export default Carousel

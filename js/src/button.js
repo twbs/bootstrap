@@ -1,5 +1,4 @@
 import $ from 'jquery'
-import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
@@ -8,7 +7,7 @@ import Util from './util'
  * --------------------------------------------------------------------------
  */
 
-const Button = (() => {
+const Button = (($) => {
 
 
   /**
@@ -184,6 +183,6 @@ const Button = (() => {
 
   return Button
 
-})(Util.jQuery)
+})($)
 
 export default Button

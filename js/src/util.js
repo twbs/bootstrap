@@ -7,7 +7,7 @@ import $ from 'jquery'
  * --------------------------------------------------------------------------
  */
 
-const Util = (() => {
+const Util = (($) => {
 
 
   /**
@@ -152,10 +152,6 @@ const Util = (() => {
           }
         }
       }
-    },
-
-    get jQuery() {
-      return window.jQuery || window.$
     }
   }
 
