@@ -12,13 +12,13 @@ toc: true
 
 Apply `display` utilities to create a flexbox container and transform **direct children elements** into flex items. Flex containers and items are able to be modified further with additional flex properties.
 
-{% example html %}
+{{< example html >}}
 <div class="d-flex p-2 bd-highlight">I'm a flexbox container!</div>
-{% endexample %}
+{{< /example >}}
 
-{% example html %}
+{{< example html >}}
 <div class="d-inline-flex p-2 bd-highlight">I'm an inline flexbox container!</div>
-{% endexample %}
+{{< /example >}}
 
 Responsive variations also exist for `.d-flex` and `.d-inline-flex`.
 
@@ -32,7 +32,7 @@ Set the direction of flex items in a flex container with direction utilities. In
 
 Use `.flex-row` to set a horizontal direction (the browser default), or `.flex-row-reverse` to start the horizontal direction from the opposite side.
 
-{% example html %}
+{{< example html >}}
 <div class="d-flex flex-row bd-highlight mb-3">
   <div class="p-2 bd-highlight">Flex item 1</div>
   <div class="p-2 bd-highlight">Flex item 2</div>
@@ -43,11 +43,11 @@ Use `.flex-row` to set a horizontal direction (the browser default), or `.flex-r
   <div class="p-2 bd-highlight">Flex item 2</div>
   <div class="p-2 bd-highlight">Flex item 3</div>
 </div>
-{% endexample %}
+{{< /example >}}
 
 Use `.flex-column` to set a vertical direction, or `.flex-column-reverse`  to start the vertical direction from the opposite side.
 
-{% example html %}
+{{< example html >}}
 <div class="d-flex flex-column bd-highlight mb-3">
   <div class="p-2 bd-highlight">Flex item 1</div>
   <div class="p-2 bd-highlight">Flex item 2</div>
@@ -58,7 +58,7 @@ Use `.flex-column` to set a vertical direction, or `.flex-column-reverse`  to st
   <div class="p-2 bd-highlight">Flex item 2</div>
   <div class="p-2 bd-highlight">Flex item 3</div>
 </div>
-{% endexample %}
+{{< /example >}}
 
 Responsive variations also exist for `flex-direction`.
 
@@ -221,7 +221,7 @@ Flexbox can do some pretty awesome things when you mix flex alignments with auto
 
 **Unfortunately, IE10 and IE11 do not properly support auto margins on flex items whose parent has a non-default `justify-content` value.** [See this StackOverflow answer](https://stackoverflow.com/a/37535548) for more details.
 
-{% example html %}
+{{< example html >}}
 <div class="d-flex bd-highlight mb-3">
   <div class="p-2 bd-highlight">Flex item</div>
   <div class="p-2 bd-highlight">Flex item</div>
@@ -239,13 +239,13 @@ Flexbox can do some pretty awesome things when you mix flex alignments with auto
   <div class="p-2 bd-highlight">Flex item</div>
   <div class="ml-auto p-2 bd-highlight">Flex item</div>
 </div>
-{% endexample %}
+{{< /example >}}
 
 ### With align-items
 
 Vertically move one flex item to the top or bottom of a container by mixing `align-items`, `flex-direction: column`, and `margin-top: auto` or `margin-bottom: auto`.
 
-{% example html %}
+{{< example html >}}
 <div class="d-flex align-items-start flex-column bd-highlight mb-3" style="height: 200px;">
   <div class="mb-auto p-2 bd-highlight">Flex item</div>
   <div class="p-2 bd-highlight">Flex item</div>
@@ -257,7 +257,7 @@ Vertically move one flex item to the top or bottom of a container by mixing `ali
   <div class="p-2 bd-highlight">Flex item</div>
   <div class="mt-auto p-2 bd-highlight">Flex item</div>
 </div>
-{% endexample %}
+{{< /example >}}
 
 ## Wrap
 
@@ -343,13 +343,13 @@ Responsive variations also exist for `flex-wrap`.
 
 Change the _visual_ order of specific flex items with a handful of `order` utilities. We only provide options for making an item first or last, as well as a reset to use the DOM order. As `order` takes any integer value (e.g., `5`), add custom CSS for any additional values needed.
 
-{% example html %}
+{{< example html >}}
 <div class="d-flex flex-nowrap bd-highlight">
   <div class="order-3 p-2 bd-highlight">First flex item</div>
   <div class="order-2 p-2 bd-highlight">Second flex item</div>
   <div class="order-1 p-2 bd-highlight">Third flex item</div>
 </div>
-{% endexample %}
+{{< /example >}}
 
 Responsive variations also exist for `order`.
 

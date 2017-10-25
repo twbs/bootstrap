@@ -16,25 +16,25 @@ Use border utilities to add or remove an element's borders. Choose from all bord
 ### Additive
 
 <div class="bd-example-border-utils">
-{% example html %}
+{{< example html >}}
 <span class="border"></span>
 <span class="border-top"></span>
 <span class="border-right"></span>
 <span class="border-bottom"></span>
 <span class="border-left"></span>
-{% endexample %}
+{{< /example >}}
 </div>
 
 ### Subtractive
 
 <div class="bd-example-border-utils bd-example-border-utils-0">
-{% example html %}
+{{< example html >}}
 <span class="border-0"></span>
 <span class="border-top-0"></span>
 <span class="border-right-0"></span>
 <span class="border-bottom-0"></span>
 <span class="border-left-0"></span>
-{% endexample %}
+{{< /example >}}
 </div>
 
 ## Border color
@@ -42,11 +42,11 @@ Use border utilities to add or remove an element's borders. Choose from all bord
 Change the border color using utilities built on our theme colors.
 
 <div class="bd-example-border-utils">
-{% example html %}
+{{< example html >}}
 {% for color in .Site.Data.theme-colors %}
 <span class="border border-{{ color.name }}"></span>{% endfor %}
 <span class="border border-white"></span>
-{% endexample %}
+{{< /example >}}
 </div>
 
 ## Border-radius

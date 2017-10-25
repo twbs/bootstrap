@@ -402,7 +402,7 @@ Have a bunch of buttons that all trigger the same modal with slightly different 
 
 Below is a live demo followed by example HTML and JavaScript. For more information, [read the modal events docs](#events) for details on `relatedTarget`.
 
-{% example html %}
+{{< example html >}}
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Open modal for @mdo</button>
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Open modal for @fat</button>
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Open modal for @getbootstrap</button>
@@ -435,7 +435,7 @@ Below is a live demo followed by example HTML and JavaScript. For more informati
     </div>
   </div>
 </div>
-{% endexample %}
+{{< /example >}}
 
 {{< highlight js >}}
 $('#exampleModal').on('show.bs.modal', function (event) {

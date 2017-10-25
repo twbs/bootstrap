@@ -1,0 +1,10 @@
+{{- $lang := .Get 0 -}}
+{{- $input := .Inner -}}
+
+<div class="bd-example">
+{{- $input -}}
+</div>
+
+{{- $.Scratch.Set "input_filtered" (replaceRE "data-src=\"holder.js.+?\"" "src=\"...\"" $input) -}}
+{{- $.Scratch.Set "input_filtered" (replaceRE " class=\"\"" "" ($.Scratch.Get "input_filtered")) -}}
+{{ highlight ($.Scratch.Get "input_filtered") $lang "" }}

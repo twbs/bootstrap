@@ -12,7 +12,7 @@ toc: true
 
 Place one add-on or button on either side of an input. You may also place one on both sides of an input. **We do not support multiple form-controls in a single input group** and `<label>`s must come outside the input group.
 
-{% example html %}
+{{< example html >}}
 <div class="input-group mb-3">
   <div class="input-group-prepend">
     <span class="input-group-text" id="basic-addon1">@</span>
@@ -51,7 +51,7 @@ Place one add-on or button on either side of an input. You may also place one on
   </div>
   <textarea class="form-control" aria-label="With textarea"></textarea>
 </div>
-{% endexample %}
+{{< /example >}}
 
 ## Sizing
 
@@ -59,7 +59,7 @@ Add the relative form sizing classes to the `.input-group` itself and contents w
 
 **Sizing on the individual input group elements isn't supported.**
 
-{% example html %}
+{{< example html >}}
 <div class="input-group input-group-sm mb-3">
   <div class="input-group-prepend">
     <span class="input-group-text" id="inputGroup-sizing-sm">Small</span>
@@ -80,13 +80,13 @@ Add the relative form sizing classes to the `.input-group` itself and contents w
   </div>
   <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
 </div>
-{% endexample %}
+{{< /example >}}
 
 ## Checkboxes and radios
 
 Place any checkbox or radio option within an input group's addon instead of text.
 
-{% example html %}
+{{< example html >}}
 <div class="input-group mb-3">
   <div class="input-group-prepend">
     <div class="input-group-text">
@@ -104,13 +104,13 @@ Place any checkbox or radio option within an input group's addon instead of text
   </div>
   <input type="text" class="form-control" aria-label="Text input with radio button">
 </div>
-{% endexample %}
+{{< /example >}}
 
 ## Multiple inputs
 
 While multiple `<input>`s are supported visually, validation styles are only available for input groups with a single `<input>`.
 
-{% example html %}
+{{< example html >}}
 <div class="input-group">
   <div class="input-group-prepend">
     <span class="input-group-text" id="">First and last name</span>
@@ -118,13 +118,13 @@ While multiple `<input>`s are supported visually, validation styles are only ava
   <input type="text" class="form-control">
   <input type="text" class="form-control">
 </div>
-{% endexample %}
+{{< /example >}}
 
 ## Multiple addons
 
 Multiple add-ons are supported and can be mixed with checkbox and radio input versions.
 
-{% example html %}
+{{< example html >}}
 <div class="input-group mb-3">
   <div class="input-group-prepend">
     <span class="input-group-text">$</span>
@@ -140,11 +140,11 @@ Multiple add-ons are supported and can be mixed with checkbox and radio input ve
     <span class="input-group-text">0.00</span>
   </div>
 </div>
-{% endexample %}
+{{< /example >}}
 
 ## Button addons
 
-{% example html %}
+{{< example html >}}
 <div class="input-group mb-3">
   <div class="input-group-prepend">
     <button class="btn btn-outline-secondary" type="button">Button</button>
@@ -174,11 +174,11 @@ Multiple add-ons are supported and can be mixed with checkbox and radio input ve
     <button class="btn btn-outline-secondary" type="button">Button</button>
   </div>
 </div>
-{% endexample %}
+{{< /example >}}
 
 ## Buttons with dropdowns
 
-{% example html %}
+{{< example html >}}
 <div class="input-group mb-3">
   <div class="input-group-prepend">
     <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</button>
@@ -206,11 +206,11 @@ Multiple add-ons are supported and can be mixed with checkbox and radio input ve
     </div>
   </div>
 </div>
-{% endexample %}
+{{< /example >}}
 
 ## Segmented buttons
 
-{% example html %}
+{{< example html >}}
 <div class="input-group mb-3">
   <div class="input-group-prepend">
     <button type="button" class="btn btn-outline-secondary">Action</button>
@@ -244,7 +244,7 @@ Multiple add-ons are supported and can be mixed with checkbox and radio input ve
     </div>
   </div>
 </div>
-{% endexample %}
+{{< /example >}}
 
 ## Custom forms
 
@@ -252,7 +252,7 @@ Input groups include support for custom selects and custom file inputs. Browser 
 
 ### Custom select
 
-{% example html %}
+{{< example html >}}
 <div class="input-group mb-3">
   <div class="input-group-prepend">
     <label class="input-group-text" for="inputGroupSelect01">Options</label>
@@ -300,11 +300,11 @@ Input groups include support for custom selects and custom file inputs. Browser 
     <button class="btn btn-outline-secondary" type="button">Button</button>
   </div>
 </div>
-{% endexample %}
+{{< /example >}}
 
 ### Custom file input
 
-{% example html %}
+{{< example html >}}
 <div class="input-group mb-3">
   <div class="input-group-prepend">
     <span class="input-group-text">Upload</span>
@@ -344,7 +344,7 @@ Input groups include support for custom selects and custom file inputs. Browser 
     <button class="btn btn-outline-secondary" type="button">Button</button>
   </div>
 </div>
-{% endexample %}
+{{< /example >}}
 
 ## Accessibility
 

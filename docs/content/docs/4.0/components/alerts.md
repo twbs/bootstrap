@@ -12,12 +12,12 @@ toc: true
 
 Alerts are available for any length of text, as well as an optional dismiss button. For proper styling, use one of the eight **required** contextual classes (e.g., `.alert-success`). For inline dismissal, use the [alerts jQuery plugin](#dismissing).
 
-{% example html %}
+{{< example html >}}
 {% for color in .Site.Data.theme-colors %}
 <div class="alert alert-{{ color.name }}" role="alert">
   This is a {{ color.name }} alert—check it out!
 </div>{% endfor %}
-{% endexample %}
+{{< /example >}}
 
 {{< callout warning >}}
 {{< partial "callout-warning-color-assistive-technologies.md" >}}
@@ -27,25 +27,25 @@ Alerts are available for any length of text, as well as an optional dismiss butt
 
 Use the `.alert-link` utility class to quickly provide matching colored links within any alert.
 
-{% example html %}
+{{< example html >}}
 {% for color in .Site.Data.theme-colors %}
 <div class="alert alert-{{ color.name }}" role="alert">
   This is a {{ color.name }} alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
 </div>{% endfor %}
-{% endexample %}
+{{< /example >}}
 
 ### Additional content
 
 Alerts can also contain additional HTML elements like headings, paragraphs and dividers.
 
-{% example html %}
+{{< example html >}}
 <div class="alert alert-success" role="alert">
   <h4 class="alert-heading">Well done!</h4>
   <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
   <hr>
   <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
 </div>
-{% endexample %}
+{{< /example >}}
 
 
 ### Dismissing
@@ -60,14 +60,14 @@ Using the alert JavaScript plugin, it's possible to dismiss any alert inline. He
 
 You can see this in action with a live demo:
 
-{% example html %}
+{{< example html >}}
 <div class="alert alert-warning alert-dismissible fade show" role="alert">
   <strong>Holy guacamole!</strong> You should check in on some of those fields below.
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
-{% endexample %}
+{{< /example >}}
 
 ## JavaScript behavior
 
