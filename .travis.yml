@@ -25,6 +25,7 @@ cache:
   directories:
     - node_modules
 notifications:
+  email: false
   slack: heybb:iz4wwosL0N0EdaX1gvgkU0NH
   webhooks:
     - http://savage.twbsapps.com/savage/travis
