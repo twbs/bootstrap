@@ -10,7 +10,7 @@ import Util from './util'
  * --------------------------------------------------------------------------
  */
 
-const Dropdown = (() => {
+const Dropdown = (($) => {
 
   /**
    * Check for Popper dependency
