@@ -35,37 +35,37 @@ All HTML headings, `<h1>` through `<h6>`, are available.
   <tbody>
     <tr>
       <td>
-        {% markdown %}`<h1></h1>`{% endmarkdown %}
+        {{< markdown >}}`<h1></h1>`{{< /markdown >}}
       </td>
       <td><span class="h1">h1. Bootstrap heading</span></td>
     </tr>
     <tr>
       <td>
-        {% markdown %}`<h2></h2>`{% endmarkdown %}
+        {{< markdown >}}`<h2></h2>`{{< /markdown >}}
       </td>
       <td><span class="h2">h2. Bootstrap heading</span></td>
     </tr>
     <tr>
       <td>
-        {% markdown %}`<h3></h3>`{% endmarkdown %}
+        {{< markdown >}}`<h3></h3>`{{< /markdown >}}
       </td>
       <td><span class="h3">h3. Bootstrap heading</span></td>
     </tr>
     <tr>
       <td>
-        {% markdown %}`<h4></h4>`{% endmarkdown %}
+        {{< markdown >}}`<h4></h4>`{{< /markdown >}}
       </td>
       <td><span class="h4">h4. Bootstrap heading</span></td>
     </tr>
     <tr>
       <td>
-        {% markdown %}`<h5></h5>`{% endmarkdown %}
+        {{< markdown >}}`<h5></h5>`{{< /markdown >}}
       </td>
       <td><span class="h5">h5. Bootstrap heading</span></td>
     </tr>
     <tr>
       <td>
-        {% markdown %}`<h6></h6>`{% endmarkdown %}
+        {{< markdown >}}`<h6></h6>`{{< /markdown >}}
       </td>
       <td><span class="h6">h6. Bootstrap heading</span></td>
     </tr>

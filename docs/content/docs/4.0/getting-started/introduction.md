@@ -42,7 +42,7 @@ Curious which components explicitly require jQuery, our JS, and Popper.js? Click
 
 <details>
 <summary class="text-primary mb-3">Show components requiring JavaScript</summary>
-{% markdown %}
+{{< markdown >}}
 - Alerts for dismissing
 - Buttons for toggling states and checkbox/radio functionality
 - Carousel for all slide behaviors, controls, and indicators
@@ -52,7 +52,7 @@ Curious which components explicitly require jQuery, our JS, and Popper.js? Click
 - Navbar for extending our Collapse plugin to implement responsive behavior
 - Tooltips and popovers for displaying and positioning (also requires [Popper.js](https://popper.js.org/))
 - Scrollspy for scroll behavior and navigation updates
-{% endmarkdown %}
+{{< /markdown >}}
 </details>
 
 ## Starter template
