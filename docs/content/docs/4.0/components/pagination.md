@@ -12,7 +12,7 @@ We use a large block of connected links for our pagination, making links hard to
 
 In addition, as pages likely have more than one such navigation section, it's advisable to provide a descriptive `aria-label` for the `<nav>` to reflect its purpose. For example, if the pagination component is used to navigate between a set of search results, an appropriate label could be `aria-label="Search results pages"`.
 
-{% example html %}
+{{< example html >}}
 <nav aria-label="Page navigation example">
   <ul class="pagination">
     <li class="page-item"><a class="page-link" href="#">Previous</a></li>
@@ -22,13 +22,13 @@ In addition, as pages likely have more than one such navigation section, it's ad
     <li class="page-item"><a class="page-link" href="#">Next</a></li>
   </ul>
 </nav>
-{% endexample %}
+{{< /example >}}
 
 ## Working with icons
 
 Looking to use an icon or symbol in place of text for some pagination links? Be sure to provide proper screen reader support with `aria` attributes and the `.sr-only` utility.
 
-{% example html %}
+{{< example html >}}
 <nav aria-label="Page navigation example">
   <ul class="pagination">
     <li class="page-item">
@@ -48,7 +48,7 @@ Looking to use an icon or symbol in place of text for some pagination links? Be 
     </li>
   </ul>
 </nav>
-{% endexample %}
+{{< /example >}}
 
 ## Disabled and active states
 
@@ -56,7 +56,7 @@ Pagination links are customizable for different circumstances. Use `.disabled` f
 
 While the `.disabled` class uses `pointer-events: none` to _try_ to disable the link functionality of `<a>`s, that CSS property is not yet standardized and doesn't account for keyboard navigation. As such, you should always add `tabindex="-1"` on disabled links and use custom JavaScript to fully disable their functionality.
 
-{% example html %}
+{{< example html >}}
 <nav aria-label="...">
   <ul class="pagination">
     <li class="page-item disabled">
@@ -72,11 +72,11 @@ While the `.disabled` class uses `pointer-events: none` to _try_ to disable the 
     </li>
   </ul>
 </nav>
-{% endexample %}
+{{< /example >}}
 
 You can optionally swap out active or disabled anchors for `<span>`, or omit the anchor in the case of the prev/next arrows, to remove click functionality and prevent keyboard focus while retaining intended styles.
 
-{% example html %}
+{{< example html >}}
 <nav aria-label="...">
   <ul class="pagination">
     <li class="page-item disabled">
@@ -95,13 +95,13 @@ You can optionally swap out active or disabled anchors for `<span>`, or omit the
     </li>
   </ul>
 </nav>
-{% endexample %}
+{{< /example >}}
 
 ## Sizing
 
 Fancy larger or smaller pagination? Add `.pagination-lg` or `.pagination-sm` for additional sizes.
 
-{% example html %}
+{{< example html >}}
 <nav aria-label="...">
   <ul class="pagination pagination-lg">
     <li class="page-item disabled">
@@ -115,9 +115,9 @@ Fancy larger or smaller pagination? Add `.pagination-lg` or `.pagination-sm` for
     </li>
   </ul>
 </nav>
-{% endexample %}
+{{< /example >}}
 
-{% example html %}
+{{< example html >}}
 <nav aria-label="...">
   <ul class="pagination pagination-sm">
     <li class="page-item disabled">
@@ -131,13 +131,13 @@ Fancy larger or smaller pagination? Add `.pagination-lg` or `.pagination-sm` for
     </li>
   </ul>
 </nav>
-{% endexample %}
+{{< /example >}}
 
 ## Alignment
 
 Change the alignment of pagination components with [flexbox utilities]({{ .Site.BaseURL }}/docs/{{ .Site.Params.docs_version }}/utilities/flex/).
 
-{% example html %}
+{{< example html >}}
 <nav aria-label="Page navigation example">
   <ul class="pagination justify-content-center">
     <li class="page-item disabled">
@@ -151,9 +151,9 @@ Change the alignment of pagination components with [flexbox utilities]({{ .Site.
     </li>
   </ul>
 </nav>
-{% endexample %}
+{{< /example >}}
 
-{% example html %}
+{{< example html >}}
 <nav aria-label="Page navigation example">
   <ul class="pagination justify-content-end">
     <li class="page-item disabled">
@@ -167,4 +167,4 @@ Change the alignment of pagination components with [flexbox utilities]({{ .Site.
     </li>
   </ul>
 </nav>
-{% endexample %}
+{{< /example >}}

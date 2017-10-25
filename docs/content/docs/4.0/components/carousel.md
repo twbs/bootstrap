@@ -26,7 +26,7 @@ Be sure to set a unique id on the `.carousel` for optional controls, especially 
 
 Here's a carousel with slides only. Note the presence of the `.d-block` and `.img-fluid` on carousel images to prevent browser default image alignment.
 
-{% example html %}
+{{< example html >}}
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
@@ -40,13 +40,13 @@ Here's a carousel with slides only. Note the presence of the `.d-block` and `.im
     </div>
   </div>
 </div>
-{% endexample %}
+{{< /example >}}
 
 ### With controls
 
 Adding in the previous and next controls:
 
-{% example html %}
+{{< example html >}}
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
@@ -68,13 +68,13 @@ Adding in the previous and next controls:
     <span class="sr-only">Next</span>
   </a>
 </div>
-{% endexample %}
+{{< /example >}}
 
 ### With indicators
 
 You can also add the indicators to the carousel, alongside the controls, too.
 
-{% example html %}
+{{< example html >}}
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -101,7 +101,7 @@ You can also add the indicators to the carousel, alongside the controls, too.
     <span class="sr-only">Next</span>
   </a>
 </div>
-{% endexample %}
+{{< /example >}}
 
 {% callout warning %}
 #### Initial active element required

@@ -10,7 +10,7 @@ toc: true
 
 The most basic list group is an unordered list with list items and the proper classes. Build upon it with the options that follow, or with your own CSS as needed.
 
-{% example html %}
+{{< example html >}}
 <ul class="list-group">
   <li class="list-group-item">Cras justo odio</li>
   <li class="list-group-item">Dapibus ac facilisis in</li>
@@ -18,13 +18,13 @@ The most basic list group is an unordered list with list items and the proper cl
   <li class="list-group-item">Porta ac consectetur ac</li>
   <li class="list-group-item">Vestibulum at eros</li>
 </ul>
-{% endexample %}
+{{< /example >}}
 
 ## Active items
 
 Add `.active` to a `.list-group-item` to indicate the current active selection.
 
-{% example html %}
+{{< example html >}}
 <ul class="list-group">
   <li class="list-group-item active">Cras justo odio</li>
   <li class="list-group-item">Dapibus ac facilisis in</li>
@@ -32,13 +32,13 @@ Add `.active` to a `.list-group-item` to indicate the current active selection.
   <li class="list-group-item">Porta ac consectetur ac</li>
   <li class="list-group-item">Vestibulum at eros</li>
 </ul>
-{% endexample %}
+{{< /example >}}
 
 ## Disabled items
 
 Add `.disabled` to a `.list-group-item` to make it _appear_ disabled. Note that some elements with `.disabled` will also require custom JavaScript to fully disable their click events (e.g., links).
 
-{% example html %}
+{{< example html >}}
 <ul class="list-group">
   <li class="list-group-item disabled">Cras justo odio</li>
   <li class="list-group-item">Dapibus ac facilisis in</li>
@@ -46,7 +46,7 @@ Add `.disabled` to a `.list-group-item` to make it _appear_ disabled. Note that 
   <li class="list-group-item">Porta ac consectetur ac</li>
   <li class="list-group-item">Vestibulum at eros</li>
 </ul>
-{% endexample %}
+{{< /example >}}
 
 ## Links and buttons
 
@@ -54,7 +54,7 @@ Use `<a>`s or `<button>`s to create _actionable_ list group items with hover, di
 
 Be sure to **not use the standard `.btn` classes here**.
 
-{% example html %}
+{{< example html >}}
 <div class="list-group">
   <a href="#" class="list-group-item list-group-item-action active">
     Cras justo odio
@@ -64,11 +64,11 @@ Be sure to **not use the standard `.btn` classes here**.
   <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
   <a href="#" class="list-group-item list-group-item-action disabled">Vestibulum at eros</a>
 </div>
-{% endexample %}
+{{< /example >}}
 
 With `<button>`s, you can also make use of the `disabled` attribute instead of the `.disabled` class. Sadly, `<a>`s don't support the disabled attribute.
 
-{% example html %}
+{{< example html >}}
 <div class="list-group">
   <button type="button" class="list-group-item list-group-item-action active">
     Cras justo odio
@@ -78,31 +78,31 @@ With `<button>`s, you can also make use of the `disabled` attribute instead of t
   <button type="button" class="list-group-item list-group-item-action">Porta ac consectetur ac</button>
   <button type="button" class="list-group-item list-group-item-action" disabled>Vestibulum at eros</button>
 </div>
-{% endexample %}
+{{< /example >}}
 
 ## Contextual classes
 
 Use contextual classes to style list items with a stateful background and color.
 
-{% example html %}
+{{< example html >}}
 <ul class="list-group">
   <li class="list-group-item">Dapibus ac facilisis in</li>
 
   {% for color in .Site.Data.theme-colors %}
   <li class="list-group-item list-group-item-{{ color.name }}">This is a {{ color.name }} list group item</li>{% endfor %}
 </ul>
-{% endexample %}
+{{< /example >}}
 
 Contextual classes also work with `.list-group-item-action`. Note the addition of the hover styles here not present in the previous example. Also supported is the `.active` state; apply it to indicate an active selection on a contextual list group item.
 
-{% example html %}
+{{< example html >}}
 <div class="list-group">
   <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
 
   {% for color in .Site.Data.theme-colors %}
   <a href="#" class="list-group-item list-group-item-action list-group-item-{{ color.name }}">This is a {{ color.name }} list group item</a>{% endfor %}
 </div>
-{% endexample %}
+{{< /example >}}
 
 {% capture callout-include %}{% include callout-warning-color-assistive-technologies.md %}{% endcapture %}
 {{ callout-include | markdownify }}
@@ -111,7 +111,7 @@ Contextual classes also work with `.list-group-item-action`. Note the addition o
 
 Add badges to any list group item to show unread counts, activity, and more with the help of some [utilities]({{ .Site.BaseURL }}/docs/{{ .Site.Params.docs_version }}/utilities/flex/).
 
-{% example html %}
+{{< example html >}}
 <ul class="list-group">
   <li class="list-group-item d-flex justify-content-between align-items-center">
     Cras justo odio
@@ -126,13 +126,13 @@ Add badges to any list group item to show unread counts, activity, and more with
     <span class="badge badge-primary badge-pill">1</span>
   </li>
 </ul>
-{% endexample %}
+{{< /example >}}
 
 ## Custom content
 
 Add nearly any HTML within, even for linked list groups like the one below, with the help of [flexbox utilities]({{ .Site.BaseURL }}/docs/{{ .Site.Params.docs_version }}/utilities/flex/).
 
-{% example html %}
+{{< example html >}}
 <div class="list-group">
   <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
     <div class="d-flex w-100 justify-content-between">
@@ -159,7 +159,7 @@ Add nearly any HTML within, even for linked list groups like the one below, with
     <small class="text-muted">Donec id elit non mi porta.</small>
   </a>
 </div>
-{% endexample %}
+{{< /example >}}
 
 ## JavaScript behavior
 

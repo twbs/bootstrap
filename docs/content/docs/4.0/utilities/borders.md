@@ -12,14 +12,14 @@ toc: true
 Add classes to an element to remove all borders or some borders.
 
 <div class="bd-example-border-utils">
-{% example html %}
+{{< example html >}}
 <span class="border"></span>
 <span class="border-0"></span>
 <span class="border-top-0"></span>
 <span class="border-right-0"></span>
 <span class="border-bottom-0"></span>
 <span class="border-left-0"></span>
-{% endexample %}
+{{< /example >}}
 </div>
 
 ## Border color
@@ -27,11 +27,11 @@ Add classes to an element to remove all borders or some borders.
 Change the border color using utilities built on our theme colors.
 
 <div class="bd-example-border-utils">
-{% example html %}
+{{< example html >}}
 {% for color in .Site.Data.theme-colors %}
 <span class="border border-{{ color.name }}"></span>{% endfor %}
 <span class="border border-white"></span>
-{% endexample %}
+{{< /example >}}
 </div>
 
 ## Border-radius

@@ -12,7 +12,7 @@ toc: true
 
 Place one add-on or button on either side of an input. You may also place one on both sides of an input. **We do not support multiple form-controls in a single input group** and `<label>`s must come outside the input group.
 
-{% example html %}
+{{< example html >}}
 <div class="input-group">
   <span class="input-group-addon" id="basic-addon1">@</span>
   <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
@@ -40,13 +40,13 @@ Place one add-on or button on either side of an input. You may also place one on
   <span class="input-group-addon">0.00</span>
   <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
 </div>
-{% endexample %}
+{{< /example >}}
 
 ## Sizing
 
 Add the relative form sizing classes to the `.input-group` itself and contents within will automatically resize—no need for repeating the form control size classes on each element.
 
-{% example html %}
+{{< example html >}}
 <div class="input-group input-group-lg">
   <span class="input-group-addon" id="sizing-addon1">@</span>
   <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="sizing-addon1">
@@ -56,13 +56,13 @@ Add the relative form sizing classes to the `.input-group` itself and contents w
   <span class="input-group-addon" id="sizing-addon2">@</span>
   <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="sizing-addon2">
 </div>
-{% endexample %}
+{{< /example >}}
 
 ## Checkboxes and radio addons
 
 Place any checkbox or radio option within an input group's addon instead of text.
 
-{% example html %}
+{{< example html >}}
 <div class="row">
   <div class="col-lg-6">
     <div class="input-group">
@@ -81,13 +81,13 @@ Place any checkbox or radio option within an input group's addon instead of text
     </div>
   </div>
 </div>
-{% endexample %}
+{{< /example >}}
 
 ## Multiple addons
 
 Multiple add-ons are supported and can be mixed with checkbox and radio input versions.
 
-{% example html %}
+{{< example html >}}
 <div class="row">
   <div class="col-lg-6">
     <div class="input-group">
@@ -106,13 +106,13 @@ Multiple add-ons are supported and can be mixed with checkbox and radio input ve
     </div>
   </div>
 </div>
-{% endexample %}
+{{< /example >}}
 
 ## Button addons
 
 Buttons in input groups must wrapped in a `.input-group-btn` for proper alignment and sizing. This is required due to default browser styles that cannot be overridden.
 
-{% example html %}
+{{< example html >}}
 <div class="row">
   <div class="col-lg-6">
     <div class="input-group">
@@ -145,11 +145,11 @@ Buttons in input groups must wrapped in a `.input-group-btn` for proper alignmen
     </div>
   </div>
 </div>
-{% endexample %}
+{{< /example >}}
 
 ## Buttons with dropdowns
 
-{% example html %}
+{{< example html >}}
 <div class="row">
   <div class="col-lg-6">
     <div class="input-group">
@@ -186,11 +186,11 @@ Buttons in input groups must wrapped in a `.input-group-btn` for proper alignmen
     </div>
   </div>
 </div>
-{% endexample %}
+{{< /example >}}
 
 ## Segmented buttons
 
-{% example html %}
+{{< example html >}}
 <div class="row">
   <div class="col-lg-6">
     <div class="input-group">
@@ -229,7 +229,7 @@ Buttons in input groups must wrapped in a `.input-group-btn` for proper alignmen
     </div>
   </div>
 </div>
-{% endexample %}
+{{< /example >}}
 
 ## Custom forms
 
@@ -237,7 +237,7 @@ Input groups include support for custom selects and custom file inputs. Browser 
 
 ### Custom select
 
-{% example html %}
+{{< example html >}}
 <div class="input-group mb-3">
   <label class="input-group-addon" for="inputGroupSelect01">Options</label>
   <select class="custom-select" id="inputGroupSelect01">
@@ -281,11 +281,11 @@ Input groups include support for custom selects and custom file inputs. Browser 
     <button class="btn btn-secondary" type="button">Button</button>
   </span>
 </div>
-{% endexample %}
+{{< /example >}}
 
 ### Custom file input
 
-{% example html %}
+{{< example html >}}
 <div class="input-group mb-3">
   <span class="input-group-addon">Upload</span>
   <label class="custom-file">
@@ -321,7 +321,7 @@ Input groups include support for custom selects and custom file inputs. Browser 
     <button class="btn btn-secondary" type="button">Button</button>
   </span>
 </div>
-{% endexample %}
+{{< /example >}}
 
 ## Accessibility
 

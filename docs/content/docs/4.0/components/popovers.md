@@ -88,9 +88,9 @@ Four options are available: top, right, bottom, and left aligned.
 
 ## Live demo
 
-{% example html %}
+{{< example html >}}
 <button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
-{% endexample %}
+{{< /example >}}
 
 ### Four directions
 
@@ -140,9 +140,9 @@ Use the `focus` trigger to dismiss popovers on the user's next click of a differ
 For proper cross-browser and cross-platform behavior, you must use the `<a>` tag, _not_ the `<button>` tag, and you also must include a [`tabindex`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex) attribute.
 {% endcallout %}
 
-{% example html %}
+{{< example html >}}
 <a tabindex="0" class="btn btn-lg btn-danger" role="button" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?">Dismissible popover</a>
-{% endexample %}
+{{< /example >}}
 
 {{< highlight js >}}
 $('.popover-dismiss').popover({

@@ -12,7 +12,7 @@ Due to the widespread use of tables across third-party widgets like calendars an
 
 Using the most basic table markup, here's how `.table`-based tables look in Bootstrap. **All table styles are inherited in Bootstrap 4**, meaning any nested tables will be styled in the same manner as the parent.
 
-{% example html %}
+{{< example html >}}
 <table class="table">
   <thead>
     <tr>
@@ -43,11 +43,11 @@ Using the most basic table markup, here's how `.table`-based tables look in Boot
     </tr>
   </tbody>
 </table>
-{% endexample %}
+{{< /example >}}
 
 You can also invert the colors—with light text on dark backgrounds—with `.table-dark`.
 
-{% example html %}
+{{< example html >}}
 <table class="table table-dark">
   <thead>
     <tr>
@@ -78,13 +78,13 @@ You can also invert the colors—with light text on dark backgrounds—with `.ta
     </tr>
   </tbody>
 </table>
-{% endexample %}
+{{< /example >}}
 
 ## Table head options
 
 Similar to tables and dark tables, use the modifier classes `.thead-light` or `.thead-dark` to make `<thead>`s appear light or dark gray.
 
-{% example html %}
+{{< example html >}}
 <table class="table">
   <thead class="thead-dark">
     <tr>
@@ -146,13 +146,13 @@ Similar to tables and dark tables, use the modifier classes `.thead-light` or `.
     </tr>
   </tbody>
 </table>
-{% endexample %}
+{{< /example >}}
 
 ## Striped rows
 
 Use `.table-striped` to add zebra-striping to any table row within the `<tbody>`.
 
-{% example html %}
+{{< example html >}}
 <table class="table table-striped">
   <thead>
     <tr>
@@ -183,9 +183,9 @@ Use `.table-striped` to add zebra-striping to any table row within the `<tbody>`
     </tr>
   </tbody>
 </table>
-{% endexample %}
+{{< /example >}}
 
-{% example html %}
+{{< example html >}}
 <table class="table table-striped table-dark">
   <thead>
     <tr>
@@ -216,13 +216,13 @@ Use `.table-striped` to add zebra-striping to any table row within the `<tbody>`
     </tr>
   </tbody>
 </table>
-{% endexample %}
+{{< /example >}}
 
 ## Bordered table
 
 Add `.table-bordered` for borders on all sides of the table and cells.
 
-{% example html %}
+{{< example html >}}
 <table class="table table-bordered">
   <thead>
     <tr>
@@ -258,9 +258,9 @@ Add `.table-bordered` for borders on all sides of the table and cells.
     </tr>
   </tbody>
 </table>
-{% endexample %}
+{{< /example >}}
 
-{% example html %}
+{{< example html >}}
 <table class="table table-bordered table-dark">
   <thead>
     <tr>
@@ -296,13 +296,13 @@ Add `.table-bordered` for borders on all sides of the table and cells.
     </tr>
   </tbody>
 </table>
-{% endexample %}
+{{< /example >}}
 
 ## Hoverable rows
 
 Add `.table-hover` to enable a hover state on table rows within a `<tbody>`.
 
-{% example html %}
+{{< example html >}}
 <table class="table table-hover">
   <thead>
     <tr>
@@ -332,9 +332,9 @@ Add `.table-hover` to enable a hover state on table rows within a `<tbody>`.
     </tr>
   </tbody>
 </table>
-{% endexample %}
+{{< /example >}}
 
-{% example html %}
+{{< example html >}}
 <table class="table table-hover table-dark">
   <thead>
     <tr>
@@ -364,13 +364,13 @@ Add `.table-hover` to enable a hover state on table rows within a `<tbody>`.
     </tr>
   </tbody>
 </table>
-{% endexample %}
+{{< /example >}}
 
 ## Small table
 
 Add `.table-sm` to make tables more compact by cutting cell padding in half.
 
-{% example html %}
+{{< example html >}}
 <table class="table table-sm">
   <thead>
     <tr>
@@ -400,9 +400,9 @@ Add `.table-sm` to make tables more compact by cutting cell padding in half.
     </tr>
   </tbody>
 </table>
-{% endexample %}
+{{< /example >}}
 
-{% example html %}
+{{< example html >}}
 <table class="table table-sm table-dark">
   <thead>
     <tr>
@@ -432,7 +432,7 @@ Add `.table-sm` to make tables more compact by cutting cell padding in half.
     </tr>
   </tbody>
 </table>
-{% endexample %}
+{{< /example >}}
 
 ## Contextual classes
 
@@ -584,7 +584,7 @@ Regular table background variants are not available with the dark table, however
 
 A `<caption>` functions like a heading for a table. It helps users with screen readers to find a table and understand what it’s about and decide if they want to read it.
 
-{% example html %}
+{{< example html >}}
 <table class="table">
   <caption>List of users</caption>
   <thead>
@@ -616,7 +616,7 @@ A `<caption>` functions like a heading for a table. It helps users with screen r
     </tr>
   </tbody>
 </table>
-{% endexample %}
+{{< /example >}}
 
 ## Responsive tables
 

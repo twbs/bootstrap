@@ -9,7 +9,7 @@ group: components
 
 Separators are automatically added in CSS through [`::before`](https://developer.mozilla.org/en-US/docs/Web/CSS/::before) and [`content`](https://developer.mozilla.org/en-US/docs/Web/CSS/content).
 
-{% example html %}
+{{< example html >}}
 
 <nav aria-label="breadcrumb" role="navigation">
   <ol class="breadcrumb">
@@ -31,7 +31,7 @@ Separators are automatically added in CSS through [`::before`](https://developer
     <li class="breadcrumb-item active" aria-current="page">Data</li>
   </ol>
 </nav>
-{% endexample %}
+{{< /example >}}
 
 ## Accessibility
 
