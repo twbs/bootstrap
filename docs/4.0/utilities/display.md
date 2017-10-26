@@ -27,6 +27,7 @@ Where *display* is one of:
 * `block`
 * `table`
 * `table-cell`
+* `table-row`
 * `flex`
 * `inline-flex`
 

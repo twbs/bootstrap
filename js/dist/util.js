@@ -4,7 +4,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
-var Util = function () {
+var Util = function ($) {
   /**
    * ------------------------------------------------------------------------
    * Private TransitionEnd Helpers
@@ -14,8 +14,6 @@ var Util = function () {
   var MAX_UID = 1000000;
   var TransitionEndEvent = {
     WebkitTransition: 'webkitTransitionEnd',
-    MozTransition: 'transitionend',
-    OTransition: 'oTransitionEnd otransitionend',
     transition: 'transitionend' // shoutout AngusCroll (https://goo.gl/pxwQGp)
 
   };

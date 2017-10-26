@@ -8,7 +8,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
-var ScrollSpy = function () {
+var ScrollSpy = function ($) {
   /**
    * ------------------------------------------------------------------------
    * Constants

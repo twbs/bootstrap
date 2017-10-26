@@ -10,7 +10,7 @@ function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.crea
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
-var Popover = function () {
+var Popover = function ($) {
   /**
    * ------------------------------------------------------------------------
    * Constants
