@@ -8,7 +8,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
-var Tooltip = function () {
+var Tooltip = function ($) {
   /**
    * Check for Popper dependency
    * Popper - https://popper.js.org

@@ -28,7 +28,7 @@
   .btn + .btn-group,
   .btn-group + .btn,
   .btn-group + .btn-group {
-    margin-left: -$input-btn-border-width;
+    margin-left: -$btn-border-width;
   }
 }
 
@@ -101,8 +101,8 @@
 //
 
 .btn + .dropdown-toggle-split {
-  padding-right: $input-btn-padding-x * .75;
-  padding-left: $input-btn-padding-x * .75;
+  padding-right: $btn-padding-x * .75;
+  padding-left: $btn-padding-x * .75;
 
   &::after {
     margin-left: 0;
@@ -110,13 +110,13 @@
 }
 
 .btn-sm + .dropdown-toggle-split {
-  padding-right: $input-btn-padding-x-sm * .75;
-  padding-left: $input-btn-padding-x-sm * .75;
+  padding-right: $btn-padding-x-sm * .75;
+  padding-left: $btn-padding-x-sm * .75;
 }
 
 .btn-lg + .dropdown-toggle-split {
-  padding-right: $input-btn-padding-x-lg * .75;
-  padding-left: $input-btn-padding-x-lg * .75;
+  padding-right: $btn-padding-x-lg * .75;
+  padding-left: $btn-padding-x-lg * .75;
 }
 
 
@@ -150,7 +150,7 @@
   > .btn + .btn-group,
   > .btn-group + .btn,
   > .btn-group + .btn-group {
-    margin-top: -$input-btn-border-width;
+    margin-top: -$btn-border-width;
     margin-left: 0;
   }
 
