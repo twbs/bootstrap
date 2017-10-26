@@ -8,8 +8,6 @@ node_js:
   - "8"
 before_install:
   - if [[ `npm -v` != 5* ]]; then npm install -g npm@5; fi
-  - wget -q https://github.com/gohugoio/hugo/releases/download/v0.30.2/hugo_0.30.2_Linux-64bit.deb
-  - sudo dpkg -i hugo_0.30.2_Linux-64bit.deb
 after_success:
   - if [ "$TRAVIS_REPO_SLUG" = twbs-savage/bootstrap ]; then npm run docs-upload-preview; fi
 stages:

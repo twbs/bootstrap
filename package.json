@@ -96,6 +96,7 @@
     "eslint-plugin-compat": "^2.0.1",
     "htmllint-cli": "^0.0.6",
     "http-server": "^0.10.0",
+    "hugo-bin": "^0.17.0",
     "jsunitsaucelabs": "^1.2.0",
     "node-sass": "^4.5.3",
     "nodemon": "^1.11.0",

@@ -14,12 +14,8 @@ To use our build system and run our documentation locally, you'll need a copy of
 
 1. [Download and install Node.js](https://nodejs.org/download/), which we use to manage our dependencies.
 2. Navigate to the root `/bootstrap` directory and run `npm install` to install our local dependencies listed in [package.json]({{ .Site.Params.repo }}/blob/v{{ .Site.Params.current_version }}/package.json).
-3. Download [Hugo](https://gohugo.io/) and place it somewhere in your `PATH`.
 
 When completed, you'll be able to run the various commands provided from the command line.
-
-[install-ruby]: https://www.ruby-lang.org/en/documentation/installation/
-[gembundler]: https://bundler.io/
 
 ## Using NPM scripts
 
@@ -43,7 +39,7 @@ We maintain the list of browsers supported through Autoprefixer in a separate fi
 
 Running our documentation locally requires the use of Hugo, a blazingly fast static site generator that provides us: basic includes, Markdown-based files, templates, and more. Here's how to get it started:
 
-1. Run through the [tooling setup](#tooling-setup) above to install Hugo (the site builder).
+1. Run through the [tooling setup](#tooling-setup) above to install the Node.js dependencies and Hugo (the site builder).
 2. From the root `/bootstrap` directory, run `npm run docs-serve` in the command line.
 3. Open `http://localhost:9001` in your browser, and voilà.
 
