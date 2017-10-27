@@ -12,7 +12,7 @@ Dropdowns are toggleable, contextual overlays for displaying lists of links and 
 
 Dropdowns are built on a third party library, [Popper.js](https://popper.js.org/), which provides dynamic positioning and viewport detection. Be sure to include [popper.min.js]({{ site.cdn.popper }}) before Bootstrap's JavaScript or use `bootstrap.bundle.min.js` / `bootstrap.bundle.js` which contains Popper.js.
 
-We do not use Popper.js to position our dropdowns contained in navbars, because they are no use case where dynamic positioning can be usefull in a navbar.
+We do not use Popper.js to position our dropdowns contained in navbars, because they don't need to be dynamically positioned in this case.
 
 If you're building our JavaScript from source, it [requires `util.js`]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/javascript/#util).
 
