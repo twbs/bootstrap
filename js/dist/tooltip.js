@@ -4,11 +4,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-beta): tooltip.js
+ * Bootstrap (v4.0.0-beta.2): tooltip.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
-var Tooltip = function () {
+var Tooltip = function ($) {
   /**
    * Check for Popper dependency
    * Popper - https://popper.js.org
@@ -24,7 +24,7 @@ var Tooltip = function () {
 
 
   var NAME = 'tooltip';
-  var VERSION = '4.0.0-beta';
+  var VERSION = '4.0.0-beta.2';
   var DATA_KEY = 'bs.tooltip';
   var EVENT_KEY = "." + DATA_KEY;
   var JQUERY_NO_CONFLICT = $.fn[NAME];
@@ -661,5 +661,5 @@ var Tooltip = function () {
   };
 
   return Tooltip;
-}(jQuery, Popper);
+}($, Popper);
 //# sourceMappingURL=tooltip.js.map

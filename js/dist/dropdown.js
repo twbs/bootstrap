@@ -4,11 +4,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-beta): dropdown.js
+ * Bootstrap (v4.0.0-beta.2): dropdown.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
-var Dropdown = function () {
+var Dropdown = function ($) {
   /**
    * Check for Popper dependency
    * Popper - https://popper.js.org
@@ -24,7 +24,7 @@ var Dropdown = function () {
 
 
   var NAME = 'dropdown';
-  var VERSION = '4.0.0-beta';
+  var VERSION = '4.0.0-beta.2';
   var DATA_KEY = 'bs.dropdown';
   var EVENT_KEY = "." + DATA_KEY;
   var DATA_API_KEY = '.data-api';
@@ -77,7 +77,7 @@ var Dropdown = function () {
     flip: true
   };
   var DefaultType = {
-    offset: '(number|string)',
+    offset: '(number|string|function)',
     flip: 'boolean'
     /**
      * ------------------------------------------------------------------------
@@ -225,12 +225,23 @@ var Dropdown = function () {
     };
 
     _proto._getPopperConfig = function _getPopperConfig() {
+      var _this2 = this;
+
+      var offsetConf = {};
+
+      if (typeof this._config.offset === 'function') {
+        offsetConf.fn = function (data) {
+          data.offsets = $.extend({}, data.offsets, _this2._config.offset(data.offsets) || {});
+          return data;
+        };
+      } else {
+        offsetConf.offset = this._config.offset;
+      }
+
       var popperConfig = {
         placement: this._getPlacement(),
         modifiers: {
-          offset: {
-            offset: this._config.offset
-          },
+          offset: offsetConf,
           flip: {
             enabled: this._config.flip
           }
@@ -428,5 +439,5 @@ var Dropdown = function () {
   };
 
   return Dropdown;
-}(jQuery, Popper);
+}($, Popper);
 //# sourceMappingURL=dropdown.js.map

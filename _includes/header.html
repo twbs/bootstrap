@@ -1,20 +1,22 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="{{ page.description | default: site.description }}">
+<meta name="author" content="{{ site.authors }}">
 <meta name="generator" content="Jekyll v{{ jekyll.version }}">
 
 <title>
   {%- if page.title -%}
-    {{ page.title }} &middot; {{ site.title }}
+    {{ page.title }} · {{ site.title }}
   {%- else -%}
-    {{ site.title }} &middot; {{ site.description }}
+    {{ site.title }} · {{ site.description }}
   {%- endif -%}
 </title>
 
 <!-- Bootstrap core CSS -->
 {% if site.github %}
-  <link href="{{ site.baseurl }}/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="{{ site.baseurl }}/dist/css/bootstrap.min.css" rel="stylesheet">
 {% else %}
-  <link href="{{ site.baseurl }}/dist/css/bootstrap.css" rel="stylesheet">
+<link href="{{ site.baseurl }}/dist/css/bootstrap.css" rel="stylesheet">
 {% endif %}
 
 <!-- Documentation extras -->
