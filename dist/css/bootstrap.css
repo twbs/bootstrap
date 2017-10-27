@@ -10396,17 +10396,44 @@ a[data-toggle=tooltip] {
 
   line-break: auto;
 }
+.popover.animate {
+  -webkit-transition: -webkit-transform .25s;
+       -o-transition:      -o-transform .25s;
+          transition:         transform .25s;
+}
+.popover.scale-down {
+  -webkit-transform: scale(0);
+      -ms-transform: scale(0);
+       -o-transform: scale(0);
+          transform: scale(0);
+}
 .popover.top {
   margin-top: -14px;
+  -webkit-transform-origin: 50% 0;
+      -ms-transform-origin: 50% 0;
+       -o-transform-origin: 50% 0;
+          transform-origin: 50% 0;
 }
 .popover.right {
   margin-left: 14px;
+  -webkit-transform-origin: 0 25%;
+      -ms-transform-origin: 0 25%;
+       -o-transform-origin: 0 25%;
+          transform-origin: 0 25%;
 }
 .popover.bottom {
   margin-top: 14px;
+  -webkit-transform-origin: 50% 0;
+      -ms-transform-origin: 50% 0;
+       -o-transform-origin: 50% 0;
+          transform-origin: 50% 0;
 }
 .popover.left {
   margin-left: -14px;
+  -webkit-transform-origin: 100% 25%;
+      -ms-transform-origin: 100% 25%;
+       -o-transform-origin: 100% 25%;
+          transform-origin: 100% 25%;
 }
 .popover.left-top {
   margin-left: -14px;
