@@ -2139,14 +2139,13 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 .was-validated .form-control:invalid, .form-control.is-invalid, .was-validated
 .custom-select:invalid,
 .custom-select.is-invalid {
-  border-color: #dc3545;
+  border-color: #dc3545 !important;;
 }
 
 .was-validated .form-control:invalid:focus, .form-control.is-invalid:focus, .was-validated
 .custom-select:invalid:focus,
 .custom-select.is-invalid:focus {
   box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
-  border-color: #dc3545 !important;
 }
 
 .was-validated .form-control:invalid ~ .invalid-feedback,
