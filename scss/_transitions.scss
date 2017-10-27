@@ -14,16 +14,21 @@
   &.show {
     display: block;
   }
+  &.flexshow {
+    display: flex;
+  }
 }
 
 tr {
-  &.collapse.show {
+  &.collapse.show,
+  &.collapse.flexshow {
     display: table-row;
   }
 }
 
 tbody {
-  &.collapse.show {
+  &.collapse.show,
+  &.collapse.flexshow {
     display: table-row-group;
   }
 }
