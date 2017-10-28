@@ -10,7 +10,7 @@ import Util from './util'
  * --------------------------------------------------------------------------
  */
 
-const Tooltip = (() => {
+const Tooltip = (($) => {
 
   /**
    * Check for Popper dependency
