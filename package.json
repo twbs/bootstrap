@@ -126,15 +126,9 @@
     "node": ">=6"
   },
   "files": [
-    ".babelrc",
-    ".eslintignore",
-    "Gemfile",
-    "dist",
-    "build",
-    "js/.eslintrc.json",
-    "js/**/*.js",
-    "js/**/*.js.map",
-    "scss/**/*.scss"
+    "dist/",
+    "js/{src,dist}/",
+    "scss/"
   ],
   "browserslist": [
     "Chrome >= 45",
@@ -205,7 +199,7 @@
     },
     "dependencies": {},
     "peerDependencies": {
-      "jquery": "^3.0.0",
+      "jquery": "1.9.1 - 3",
       "popper.js": "^1.12.9"
     }
   }
