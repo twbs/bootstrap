@@ -622,11 +622,11 @@ A `<caption>` functions like a heading for a table. It helps users with screen r
 
 Responsive tables allow tables to be scrolled horizontally with ease. Make any table responsive across all viewports by adding `.table-responsive` class on `.table`. Or, pick a maximum breakpoint with which to have a responsive table up to by adding `.table-responsive{-sm|-md|-lg|-xl}`.
 
-{% callout warning %}
+{{< callout warning >}}
 #### Vertical clipping/truncation
 
 Responsive tables make use of `overflow-y: hidden`, which clips off any content that goes beyond the bottom or top edges of the table. In particular, this can clip off dropdown menus and other third-party widgets.
-{% endcallout %}
+{{< /callout >}}
 
 ### Always responsive
 

@@ -103,11 +103,11 @@ You can also add the indicators to the carousel, alongside the controls, too.
 </div>
 {{< /example >}}
 
-{% callout warning %}
+{{< callout warning >}}
 #### Initial active element required
 
 The `.active` class needs to be added to one of the slides. Otherwise, the carousel will not be visible.
-{% endcallout %}
+{{< /callout >}}
 
 ### With captions
 

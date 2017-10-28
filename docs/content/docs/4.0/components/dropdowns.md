@@ -431,9 +431,9 @@ Historically dropdown menu contents *had* to be links, but that's no longer the 
 
 By default, a dropdown menu is automatically positioned 100% from the top and along the left side of its parent. Add `.dropdown-menu-right` to a `.dropdown-menu` to right align the dropdown menu.
 
-{% callout info %}
+{{< callout info >}}
 **Heads up!** Dropdowns are positioned thanks to Popper.js (except when they are contained in a navbar).
-{% endcallout %}
+{{< /callout >}}
 
 {{< example html >}}
 <div class="btn-group">
@@ -539,9 +539,9 @@ Add `.disabled` to items in the dropdown to **style them as disabled**.
 
 Via data attributes or JavaScript, the dropdown plugin toggles hidden content (dropdown menus) by toggling the `.show` class on the parent list item. The `data-toggle="dropdown"` attribute is relied on for closing dropdown menus at an application level, so it's a good idea to always use it.
 
-{% callout info %}
+{{< callout info >}}
 On touch-enabled devices, opening a dropdown adds empty (`$.noop`) `mouseover` handlers to the immediate children of the `<body>` element. This admittedly ugly hack is necessary to work around a [quirk in iOS' event delegation](https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html), which would otherwise prevent a tap anywhere outside of the dropdown from triggering the code that closes the dropdown. Once the dropdown is closed, these additional empty `mouseover` handlers are removed.
-{% endcallout %}
+{{< /callout >}}
 
 ### Via data attributes
 
@@ -566,11 +566,11 @@ Call the dropdowns via JavaScript:
 $('.dropdown-toggle').dropdown()
 {{< /highlight >}}
 
-{% callout info %}
+{{< callout info >}}
 ##### `data-toggle="dropdown"` still required
 
 Regardless of whether you call your dropdown via JavaScript or instead use the data-api, `data-toggle="dropdown"` is always required to be present on the dropdown's trigger element.
-{% endcallout %}
+{{< /callout >}}
 
 ### Options
 

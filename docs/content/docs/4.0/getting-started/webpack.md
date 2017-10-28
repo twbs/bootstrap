@@ -45,9 +45,9 @@ Bootstrap is dependent on [jQuery](https://jquery.com/) and [Popper](https://pop
   ]
 {{< /highlight >}}
 
-{% callout warning %}
+{{< callout warning >}}
 Notice that if you chose to **import plugins individually**, you must also install [exports-loader](https://github.com/webpack-contrib/exports-loader)
-{% endcallout %}
+{{< /callout >}}
 
 ## Importing Styles
 
