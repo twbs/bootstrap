@@ -39,9 +39,9 @@ module.exports = {
     format: 'iife'
   },
   name: 'bootstrap',
-  external: external,
-  globals: globals,
-  plugins: plugins,
+  external,
+  globals,
+  plugins,
   banner: `/*!
   * Bootstrap v${pkg.version} (${pkg.homepage})
   * Copyright 2011-${year} ${pkg.author}
