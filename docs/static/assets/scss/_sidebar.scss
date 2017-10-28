@@ -1,4 +1,4 @@
-// stylelint-disable declaration-no-important
+// stylelint-disable declaration-no-important, selector-max-id
 
 //
 // Right side table of contents
@@ -17,33 +17,36 @@
   font-size: .875rem;
 }
 
-.section-nav {
+#TableOfContents {
   padding-left: 0;
   border-left: 1px solid #eee;
 
   ul {
+    padding-left: 0;
+  }
+
+  // HACK: need to simplify this...
+  // stylelint-disable-next-line
+  ul li ul li ul {
     padding-left: 1rem;
-
-    ul {
-      display: none;
-    }
   }
-}
 
-.toc-entry {
-  display: block;
-
-  a {
+  li {
     display: block;
-    padding: .125rem 1.5rem;
-    color: #99979c;
 
-    &:hover {
-      color: $blue;
-      text-decoration: none;
+    a {
+      display: block;
+      padding: .125rem 1.5rem;
+      color: #99979c;
+
+      &:hover {
+        color: $blue;
+        text-decoration: none;
+      }
     }
   }
 }
+
 
 //
 // Left side navigation
