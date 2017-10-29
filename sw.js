@@ -1,4 +1,2 @@
-self.importScripts('/assets/js/vendor/{fileName}')
-
-const workboxSW = new self.WorkboxSW()
+self.importScripts('/assets/js/vendor/{fileName}')boxSW = new self.WorkboxSW()
 workboxSW.precache([])
