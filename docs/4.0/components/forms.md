@@ -724,7 +724,7 @@ For custom Bootstrap form validation messages, you'll need to add the `novalidat
 When attempting to submit, you'll see the `:invalid` and `:valid` styles applied to your form controls.
 
 {% example html %}
-<form class="container" id="needs-validation" novalidate>
+<form id="needs-validation" novalidate>
   <div class="row">
     <div class="col-md-6 mb-3">
       <label for="validationCustom01">First name</label>
