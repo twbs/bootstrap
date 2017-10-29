@@ -17,7 +17,6 @@
     "Twitter, Inc."
   ],
   "scripts": {
-    "bash": "bash",
     "bundlesize": "bundlesize",
     "css": "npm-run-all --parallel css-lint* css-compile* --sequential css-prefix* css-minify*",
     "css-main": "npm-run-all --parallel css-lint css-compile --sequential css-prefix css-minify",
@@ -49,7 +48,9 @@
     "docs-compile": "bundle exec jekyll build",
     "postdocs-compile": "npm run docs-workbox-precache",
     "docs-github": "shx echo \"github: true\" > twbsconfig.yml && npm run docs-compile -- --config _config.yml,twbsconfig.yml && shx rm ./twbsconfig.yml",
-    "docs-lint": "htmllint --rc build/.htmllintrc \"_gh_pages/**/*.html\" \"js/tests/**/*.html\" && node build/htmllint.js",
+    "docs-lint": "npm-run-all docs-lint-*",
+    "docs-lint-htmllint": "htmllint --rc build/.htmllintrc \"_gh_pages/**/*.html\" \"js/tests/**/*.html\"",
+    "docs-lint-vnu-jar": "node build/vnu-jar.js",
     "docs-serve": "bundle exec jekyll serve",
     "docs-upload-preview": "build/upload-preview.sh",
     "docs-workbox-precache": "node build/workbox.js",
@@ -57,10 +58,10 @@
     "release-version": "node build/change-version.js",
     "release-zip": "cd dist/ && zip -r9 bootstrap-$npm_package_version-dist.zip * && shx mv bootstrap-$npm_package_version-dist.zip ..",
     "dist": "npm-run-all --parallel css js",
-    "test": "npm-run-all dist --parallel js-test --sequential docs-compile docs-lint bundlesize",
+    "test": "npm-run-all dist js-test docs-compile docs-lint bundlesize",
     "watch": "npm-run-all --parallel watch-css watch-js",
     "watch-css": "nodemon --ignore js/ --ignore dist/ -e scss -x \"npm run css\"",
-    "watch-js": "nodemon --ignore scss/ --ignore js/dist/ --ignore dist/ -e js -x \"npm-run-all --parallel js-compile-*\""
+    "watch-js": "nodemon --ignore scss/ --ignore js/dist/ --ignore dist/ -e js -x \"npm run js-compile\""
   },
   "style": "dist/css/bootstrap.css",
   "sass": "scss/bootstrap.scss",
