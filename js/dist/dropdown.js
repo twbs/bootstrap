@@ -10,19 +10,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
  */
 var Dropdown = function ($) {
   /**
-   * Check for Popper dependency
-   * Popper - https://popper.js.org
-   */
-  if (typeof Popper === 'undefined') {
-    throw new Error('Bootstrap dropdown require Popper.js (https://popper.js.org)');
-  }
-  /**
    * ------------------------------------------------------------------------
    * Constants
    * ------------------------------------------------------------------------
    */
-
-
   var NAME = 'dropdown';
   var VERSION = '4.0.0-beta.2';
   var DATA_KEY = 'bs.dropdown';
@@ -56,6 +47,8 @@ var Dropdown = function ($) {
     DISABLED: 'disabled',
     SHOW: 'show',
     DROPUP: 'dropup',
+    DROPRIGHT: 'dropright',
+    DROPLEFT: 'dropleft',
     MENURIGHT: 'dropdown-menu-right',
     MENULEFT: 'dropdown-menu-left'
   };
@@ -70,7 +63,11 @@ var Dropdown = function ($) {
     TOP: 'top-start',
     TOPEND: 'top-end',
     BOTTOM: 'bottom-start',
-    BOTTOMEND: 'bottom-end'
+    BOTTOMEND: 'bottom-end',
+    RIGHT: 'right-start',
+    RIGHTEND: 'right-end',
+    LEFT: 'left-start',
+    LEFTEND: 'left-end'
   };
   var Default = {
     offset: 0,
@@ -127,6 +124,15 @@ var Dropdown = function ($) {
 
       if (showEvent.isDefaultPrevented()) {
         return;
+      }
+      /**
+       * Check for Popper dependency
+       * Popper - https://popper.js.org
+       */
+
+
+      if (typeof Popper === 'undefined') {
+        throw new Error('Bootstrap dropdown require Popper.js (https://popper.js.org)');
       }
 
       var element = this._element; // for dropup with alignment we use the parent as popper container
@@ -213,6 +219,10 @@ var Dropdown = function ($) {
         if ($(this._menu).hasClass(ClassName.MENURIGHT)) {
           placement = AttachmentMap.TOPEND;
         }
+      } else if ($parentDropdown.hasClass(ClassName.DROPRIGHT)) {
+        placement = AttachmentMap.RIGHT;
+      } else if ($parentDropdown.hasClass(ClassName.DROPLEFT)) {
+        placement = AttachmentMap.LEFT;
       } else if ($(this._menu).hasClass(ClassName.MENURIGHT)) {
         placement = AttachmentMap.BOTTOMEND;
       }

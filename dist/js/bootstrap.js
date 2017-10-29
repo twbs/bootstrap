@@ -1387,19 +1387,10 @@ var Collapse = function ($$$1) {
 
 var Dropdown = function ($$$1) {
   /**
-   * Check for Popper dependency
-   * Popper - https://popper.js.org
-   */
-  if (typeof Popper === 'undefined') {
-    throw new Error('Bootstrap dropdown require Popper.js (https://popper.js.org)');
-  }
-  /**
    * ------------------------------------------------------------------------
    * Constants
    * ------------------------------------------------------------------------
    */
-
-
   var NAME = 'dropdown';
   var VERSION = '4.0.0-beta.2';
   var DATA_KEY = 'bs.dropdown';
@@ -1433,6 +1424,8 @@ var Dropdown = function ($$$1) {
     DISABLED: 'disabled',
     SHOW: 'show',
     DROPUP: 'dropup',
+    DROPRIGHT: 'dropright',
+    DROPLEFT: 'dropleft',
     MENURIGHT: 'dropdown-menu-right',
     MENULEFT: 'dropdown-menu-left'
   };
@@ -1447,7 +1440,11 @@ var Dropdown = function ($$$1) {
     TOP: 'top-start',
     TOPEND: 'top-end',
     BOTTOM: 'bottom-start',
-    BOTTOMEND: 'bottom-end'
+    BOTTOMEND: 'bottom-end',
+    RIGHT: 'right-start',
+    RIGHTEND: 'right-end',
+    LEFT: 'left-start',
+    LEFTEND: 'left-end'
   };
   var Default = {
     offset: 0,
@@ -1504,6 +1501,15 @@ var Dropdown = function ($$$1) {
 
       if (showEvent.isDefaultPrevented()) {
         return;
+      }
+      /**
+       * Check for Popper dependency
+       * Popper - https://popper.js.org
+       */
+
+
+      if (typeof Popper === 'undefined') {
+        throw new Error('Bootstrap dropdown require Popper.js (https://popper.js.org)');
       }
 
       var element = this._element; // for dropup with alignment we use the parent as popper container
@@ -1590,6 +1596,10 @@ var Dropdown = function ($$$1) {
         if ($$$1(this._menu).hasClass(ClassName.MENURIGHT)) {
           placement = AttachmentMap.TOPEND;
         }
+      } else if ($parentDropdown.hasClass(ClassName.DROPRIGHT)) {
+        placement = AttachmentMap.RIGHT;
+      } else if ($parentDropdown.hasClass(ClassName.DROPLEFT)) {
+        placement = AttachmentMap.LEFT;
       } else if ($$$1(this._menu).hasClass(ClassName.MENURIGHT)) {
         placement = AttachmentMap.BOTTOMEND;
       }
@@ -2409,19 +2419,10 @@ var Modal = function ($$$1) {
 
 var Tooltip = function ($$$1) {
   /**
-   * Check for Popper dependency
-   * Popper - https://popper.js.org
-   */
-  if (typeof Popper === 'undefined') {
-    throw new Error('Bootstrap tooltips require Popper.js (https://popper.js.org)');
-  }
-  /**
    * ------------------------------------------------------------------------
    * Constants
    * ------------------------------------------------------------------------
    */
-
-
   var NAME = 'tooltip';
   var VERSION = '4.0.0-beta.2';
   var DATA_KEY = 'bs.tooltip';
@@ -2505,7 +2506,15 @@ var Tooltip = function ($$$1) {
   /*#__PURE__*/
   function () {
     function Tooltip(element, config) {
-      // private
+      /**
+       * Check for Popper dependency
+       * Popper - https://popper.js.org
+       */
+      if (typeof Popper === 'undefined') {
+        throw new Error('Bootstrap tooltips require Popper.js (https://popper.js.org)');
+      } // private
+
+
       this._isEnabled = true;
       this._timeout = 0;
       this._hoverState = '';
