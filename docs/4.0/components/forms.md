@@ -700,7 +700,7 @@ While Bootstrap will apply these styles in all browsers, Internet Explorer 11 an
 Provide valuable, actionable feedback to your users with HTML5 form validation–[available in all our supported browsers](https://caniuse.com/#feat=form-validation). Choose from the browser default validation feedback, or implement custom messages with our built-in classes and starter JavaScript.
 
 {% callout warning %}
-We **highly recommend** custom validation styles as native browser defaults are not announced to screen readers.
+We **highly recommend** custom validation styles as native browser defaults are not announced to screen readers. Please ensure to manage `aria-describedby` attribute on `input` element according to the validation state.
 {% endcallout %}
 
 ### How it works
@@ -739,21 +739,21 @@ When attempting to submit, you'll see the `:invalid` and `:valid` styles applied
     <div class="col-md-6 mb-3">
       <label for="validationCustom03">City</label>
       <input type="text" class="form-control" id="validationCustom03" placeholder="City" required>
-      <div class="invalid-feedback">
+      <div class="invalid-feedback" id="invalidFeed03">
         Please provide a valid city.
       </div>
     </div>
     <div class="col-md-3 mb-3">
       <label for="validationCustom04">State</label>
       <input type="text" class="form-control" id="validationCustom04" placeholder="State" required>
-      <div class="invalid-feedback">
+      <div class="invalid-feedback" id="invalidFeed04">
         Please provide a valid state.
       </div>
     </div>
     <div class="col-md-3 mb-3">
       <label for="validationCustom05">Zip</label>
       <input type="text" class="form-control" id="validationCustom05" placeholder="Zip" required>
-      <div class="invalid-feedback">
+      <div class="invalid-feedback" id="invalidFeed05">
         Please provide a valid zip.
       </div>
     </div>
@@ -765,6 +765,27 @@ When attempting to submit, you'll see the `:invalid` and `:valid` styles applied
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 (function() {
   'use strict';
+  // Generic function to manage aria-describedby attribute value on input validity update
+  // @param array of inputs to check
+  // Works only if the invalid-feedback element have an ID
+  function updateAriaDescribedAttribute(inputs) {
+    for (var i = 0; i < inputs.length; i++) {
+      // Check element validity, and set aria-described attribute
+      if(inputs[i].validity.valid === false) {
+        if(inputs[i].parentElement.getElementsByClassName('invalid-feedback').length > 0
+          && inputs[i].parentElement.getElementsByClassName('invalid-feedback')[0].id) {
+          inputs[i].setAttribute('aria-describedby',inputs[i].parentElement.getElementsByClassName('invalid-feedback')[0].id);          
+        }
+      } else {
+        inputs[i].removeAttribute('aria-describedBy');
+      }
+
+      // Listen to input update, and check again the validity
+      inputs[i].addEventListener('input', function() {
+        updateAriaDescribedAttribute([this]);
+      })
+    }
+  }
 
   window.addEventListener('load', function() {
     var form = document.getElementById('needs-validation');
@@ -772,6 +793,9 @@ When attempting to submit, you'll see the `:invalid` and `:valid` styles applied
       if (form.checkValidity() === false) {
         event.preventDefault();
         event.stopPropagation();
+        // Check each form elements validity and add an aria-describedby to associate properly feedback with input
+        var inputs = form.getElementsByTagName('input');
+        updateAriaDescribedAttribute(inputs);
       }
       form.classList.add('was-validated');
     }, false);
@@ -845,22 +869,22 @@ We recommend using client side validation, but in case you require server side, 
   <div class="row">
     <div class="col-md-6 mb-3">
       <label for="validationServer03">City</label>
-      <input type="text" class="form-control is-invalid" id="validationServer03" placeholder="City" required>
-      <div class="invalid-feedback">
+      <input type="text" class="form-control is-invalid" id="validationServer03" placeholder="City" required aria-describedby="invalidFeedServ03">
+      <div class="invalid-feedback" id="invalidFeedServ03">
         Please provide a valid city.
       </div>
     </div>
     <div class="col-md-3 mb-3">
       <label for="validationServer04">State</label>
-      <input type="text" class="form-control is-invalid" id="validationServer04" placeholder="State" required>
-      <div class="invalid-feedback">
+      <input type="text" class="form-control is-invalid" id="validationServer04" placeholder="State" required aria-describedby="invalidFeedServ04">
+      <div class="invalid-feedback" id="invalidFeedServ04">
         Please provide a valid state.
       </div>
     </div>
     <div class="col-md-3 mb-3">
       <label for="validationServer05">Zip</label>
-      <input type="text" class="form-control is-invalid" id="validationServer05" placeholder="Zip" required>
-      <div class="invalid-feedback">
+      <input type="text" class="form-control is-invalid" id="validationServer05" placeholder="Zip" required aria-describedby="invalidFeedServ05">
+      <div class="invalid-feedback" id="invalidFeedServ05">
         Please provide a valid zip.
       </div>
     </div>
