@@ -1,10 +1,12 @@
 ---
 layout: docs
 title: Input group
-description: Easily extend form controls by adding text, buttons, or button groups on either side of textual inputs.
+description: Easily extend form controls by adding text, buttons, or button groups on either side of textual inputs, custom selects, and custom file inputs.
 group: components
 toc: true
 ---
+
+
 
 ## Basic example
 
@@ -106,7 +108,6 @@ Multiple add-ons are supported and can be mixed with checkbox and radio input ve
 </div>
 {% endexample %}
 
-
 ## Button addons
 
 Buttons in input groups must wrapped in a `.input-group-btn` for proper alignment and sizing. This is required due to default browser styles that cannot be overridden.
@@ -132,7 +133,7 @@ Buttons in input groups must wrapped in a `.input-group-btn` for proper alignmen
 </div>
 <br>
 <div class="row">
-  <div class="col-lg-offset-3 col-lg-6">
+  <div class="col-lg-6 offset-lg-3">
     <div class="input-group">
       <span class="input-group-btn">
         <button class="btn btn-secondary" type="button">Hate it</button>
@@ -227,6 +228,98 @@ Buttons in input groups must wrapped in a `.input-group-btn` for proper alignmen
       </div>
     </div>
   </div>
+</div>
+{% endexample %}
+
+## Custom forms
+
+Input groups include support for custom selects and custom file inputs. Browser default versions of these are not supported.
+
+### Custom select
+
+{% example html %}
+<div class="input-group mb-3">
+  <label class="input-group-addon" for="inputGroupSelect01">Options</label>
+  <select class="custom-select" id="inputGroupSelect01">
+    <option selected>Choose...</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </select>
+</div>
+
+<div class="input-group mb-3">
+  <select class="custom-select" id="inputGroupSelect02">
+    <option selected>Choose...</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </select>
+  <label class="input-group-addon" for="inputGroupSelect02">Options</label>
+</div>
+
+<div class="input-group mb-3">
+  <span class="input-group-btn">
+    <button class="btn btn-secondary" type="button">Button</button>
+  </span>
+  <select class="custom-select" id="inputGroupSelect03">
+    <option selected>Choose...</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </select>
+</div>
+
+<div class="input-group">
+  <select class="custom-select" id="inputGroupSelect04">
+    <option selected>Choose...</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </select>
+  <span class="input-group-btn">
+    <button class="btn btn-secondary" type="button">Button</button>
+  </span>
+</div>
+{% endexample %}
+
+### Custom file input
+
+{% example html %}
+<div class="input-group mb-3">
+  <span class="input-group-addon">Upload</span>
+  <label class="custom-file">
+    <input type="file" id="inputGroupFile01" class="custom-file-input" required>
+    <span class="custom-file-control"></span>
+  </label>
+</div>
+
+<div class="input-group mb-3">
+  <label class="custom-file">
+    <input type="file" id="inputGroupFile02" class="custom-file-input" required>
+    <span class="custom-file-control"></span>
+  </label>
+  <span class="input-group-addon" id="">Upload</span>
+</div>
+
+<div class="input-group mb-3">
+  <span class="input-group-btn">
+    <button class="btn btn-secondary" type="button">Button</button>
+  </span>
+  <label class="custom-file">
+    <input type="file" id="inputGroupFile03" class="custom-file-input" required>
+    <span class="custom-file-control"></span>
+  </label>
+</div>
+
+<div class="input-group">
+  <label class="custom-file">
+    <input type="file" id="inputGroupFile04" class="custom-file-input" required>
+    <span class="custom-file-control"></span>
+  </label>
+  <span class="input-group-btn">
+    <button class="btn btn-secondary" type="button">Button</button>
+  </span>
 </div>
 {% endexample %}
 

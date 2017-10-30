@@ -1,6 +1,8 @@
+import $ from 'jquery'
+
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-beta): util.js
+ * Bootstrap (v4.0.0-beta.2): util.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -20,18 +22,12 @@ const Util = (($) => {
 
   const TransitionEndEvent = {
     WebkitTransition : 'webkitTransitionEnd',
-    MozTransition    : 'transitionend',
-    OTransition      : 'oTransitionEnd otransitionend',
     transition       : 'transitionend'
   }
 
   // shoutout AngusCroll (https://goo.gl/pxwQGp)
   function toType(obj) {
     return {}.toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase()
-  }
-
-  function isElement(obj) {
-    return (obj[0] || obj).nodeType
   }
 
   function getSpecialTransitionEndEvent() {
@@ -136,12 +132,16 @@ const Util = (($) => {
       return Boolean(transition)
     },
 
+    isElement(obj) {
+      return (obj[0] || obj).nodeType
+    },
+
     typeCheckConfig(componentName, config, configTypes) {
       for (const property in configTypes) {
         if (Object.prototype.hasOwnProperty.call(configTypes, property)) {
           const expectedTypes = configTypes[property]
           const value         = config[property]
-          const valueType     = value && isElement(value) ?
+          const valueType     = value && Util.isElement(value) ?
                                 'element' : toType(value)
 
           if (!new RegExp(expectedTypes).test(valueType)) {
@@ -159,6 +159,6 @@ const Util = (($) => {
 
   return Util
 
-})(jQuery)
+})($)
 
 export default Util

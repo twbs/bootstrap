@@ -6,9 +6,31 @@ group: migration
 toc: true
 ---
 
-{% callout info %}
-**Heads up!** This will be in flux as work on the v4 alphas progresses. Until then consider it incomplete, and we'd love pull requests to help keep it up to date.
-{% endcallout %}
+## Beta 3 changes
+
+While Beta 2 saw the bulk of our breaking changes during the beta phase, but we still have a few that needed to be addressed in the Beta 3 release. These changes apply if you're updating to Beta 3 from Beta 2 or any older version of Bootstrap.
+
+- Removed the unused `$thumbnail-transition` variable. We weren't transitioning anything, so it was just extra code.
+
+## Beta 2 changes
+
+While in beta, we aim to have no breaking changes. However, things don't always go as planned. Below are the breaking changes to bear in mind when moving from Beta 1 to Beta 2.
+
+### Breaking
+
+- Removed `$badge-color` variable and its usage on `.badge`. We use a color contrast function to pick a `color` based on the `background-color`, so the variable is unnecessary.
+- Renamed `grayscale()` function to `gray()` to avoid breaking conflict with the CSS native `grayscale` filter.
+- Renamed `.table-inverse`, `.thead-inverse`, and `.thead-default` to `.*-dark` and `.*-light`, matching our color schemes used elsewhere.
+- Responsive tables now generate classes for each grid breakpoint. This breaks from Beta 1 in that the `.table-responsive` you've been using is more like `.table-responsive-md`. You may now use `.table-responsive` or `.table-responsive-{sm,md,lg,xl}` as needed.
+- Dropped Bower support as the package manager has been deprecated for alternatives (e.g., Yarn or npm). [See bower/bower#2298](https://github.com/bower/bower/issues/2298) for details.
+- Bootstrap still requires jQuery 1.9.1 or higher, but you're advised to use version 3.x since v3.x's supported browsers are the ones Bootstrap supports plus v3.x has some security fixes.
+- Removed the unused `.form-control-label` class. If you did make use of this class, it was duplicate of the `.col-form-label` class that vertically centered a `<label>` with it's associated input in horizontal form layouts.
+- Changed the `color-yiq` from a mixin that included the `color` property to a function that returns a value, allowing you to use it for any CSS property. For example, instead of `color-yiq(#000)`, you'd write `color: color-yiq(#000);`.
+
+### Highlights
+
+- Introduced new `pointer-events` usage on modals. The outer `.modal-dialog` passes through events with `pointer-events: none` for custom click handling (making it possible to just listen on the `.modal-backdrop` for any clicks), and then counteracts it for the actual `.modal-content` with `pointer-events: auto`.
+
 
 ## Summary
 
@@ -54,8 +76,8 @@ Here are the big ticket items you'll want to be aware of when moving from v3 to 
   - the upstream version of [Glyphicons](https://glyphicons.com/)
   - [Octicons](https://octicons.github.com/)
   - [Font Awesome](http://fontawesome.io/)
-  - See the [Extend page]({{ site.baseurl }}/docs/{{ site.docs_version }}/extend) for a list of alternatives. Have additional suggestions? Please open an issue or PR.
-- Dropped the Affix jQuery plugin.
+  - See the [Extend page]({{ site.baseurl }}/docs/{{ site.docs_version }}/extend/icons/) for a list of alternatives. Have additional suggestions? Please open an issue or PR.
+- **Dropped the Affix jQuery plugin.**
   - We recommend using `position: sticky` instead. [See the HTML5 Please entry](http://html5please.com/#sticky) for details and specific polyfill recommendations. One suggestion is to use an `@supports` rule for implementing it (e.g., `@supports (position: sticky) { ... }`)/
   - If you were using Affix to apply additional, non-`position` styles, the polyfills might not support your use case. One option for such uses is the third-party [ScrollPos-Styler](https://github.com/acch/scrollpos-styler) library.
 - **Dropped the pager component** as it was essentially slightly customized buttons.
@@ -95,33 +117,33 @@ New to Bootstrap 4 is the [Reboot]({{ site.baseurl }}/docs/{{ site.docs_version 
 ### Forms
 
 - Moved element resets to the `_reboot.scss` file.
-- Renamed `.control-label` to `.form-control-label`.
+- Renamed `.control-label` to `.col-form-label`.
 - Renamed `.input-lg` and `.input-sm` to `.form-control-lg` and `.form-control-sm`, respectively.
 - Dropped `.form-group-*` classes for simplicity's sake. Use `.form-control-*` classes instead now.
 - Dropped `.help-block` and replaced it with `.form-text` for block-level help text. For inline help text and other flexible options, use utility classes like `.text-muted`.
 - Dropped `.radio-inline` and `.checkbox-inline`.
+- Consolidated `.checkbox` and `.radio` into `.form-check` and the various `.form-check-*` classes.
 - Horizontal forms overhauled:
   - Dropped the `.form-horizontal` class requirement.
   - `.form-group` no longer applies styles from the `.row` via mixin, so `.row` is now required for horizontal grid layouts (e.g., `<div class="form-group row">`).
-  - Added new `.form-control-label` class to vertically center labels with `.form-control`s.
+  - Added new `.col-form-label` class to vertically center labels with `.form-control`s.
   - Added new `.form-row` for compact form layouts with the grid classes (swap your `.row` for a `.form-row` and go).
 - Added custom forms support (for checkboxes, radios, selects, and file inputs).
-- Added HTML5 form validation support via CSS's `:invalid` and `:valid` pseudo-classes.
-- Renamed `.has-error` to `.has-danger`.
+- Replaced `.has-error`, `.has-warning`, and `.has-success` classes with HTML5 form validation via CSS's `:invalid` and `:valid` pseudo-classes.
 - Renamed `.form-control-static` to `.form-control-plaintext`.
 
 ### Buttons
 
 - Renamed `.btn-default` to `.btn-secondary`.
 - Dropped the `.btn-xs` class entirely as `.btn-sm` is proportionally much smaller than v3's.
-- The [stateful button](https://getbootstrap.com/javascript/#buttons-methods) feature of the `button.js` jQuery plugin has been dropped. This includes the `$().button(string)` and `$().button('reset')` methods. We advise using a tiny bit of custom JavaScript instead, which will have the benefit of behaving exactly the way you want it to.
+- The [stateful button]({{ site.url }}/docs/3.3/javascript/#buttons-stateful) feature of the `button.js` jQuery plugin has been dropped. This includes the `$().button(string)` and `$().button('reset')` methods. We advise using a tiny bit of custom JavaScript instead, which will have the benefit of behaving exactly the way you want it to.
   - Note that the other features of the plugin (button checkboxes, button radios, single-toggle buttons) have been retained in v4.
 - Change buttons' `[disabled]` to `:disabled` as IE9+ supports `:disabled`. However `fieldset[disabled]` is still necessary because [native disabled fieldsets are still buggy in IE11](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset#Browser_compatibility).
 
 ### Button group
 
 - Rewrote component with flexbox.
-- Removed `.btn-group-justified`.
+- Removed `.btn-group-justified`. As a replacement you can use `<div class="btn-group d-flex" role="group"></div>` as a wrapper around elements with `.w-100`.
 - Dropped the `.btn-group-xs` class entirely given removal of `.btn-xs`.
 - Removed explicit spacing between button groups in button toolbars; use margin utilities now.
 - Improved documentation for use with other components.
@@ -206,6 +228,11 @@ Dropped entirely for the new card component.
 - `.panel-footer` to `.card-footer`
 - `.panel-primary`, `.panel-success`, `.panel-info`, `.panel-warning`, and `.panel-danger` have been dropped for `.bg-`, `.text-`, and `.border` utilities generated from our `$theme-colors` Sass map.
 
+### Progress
+
+- Replaced contextual `.progress-bar-*` classes with `.bg-*` utilities. For example, `class="progress-bar progress-bar-danger"` becomes `class="progress-bar bg-danger"`.
+- Replaced `.active` for animated progress bars with `.progress-bar-animated`.
+
 ### Carousel
 
 - Overhauled the entire component to simplify design and styling. We have fewer styles for you to override, new indicators, and new icons.
@@ -237,7 +264,7 @@ Dropped entirely for the new card component.
 
 ### Vendor prefix mixins
 
-Bootstrap 3's [vendor prefix](http://webdesign.about.com/od/css/a/css-vendor-prefixes.htm) mixins, which were deprecated in v3.2.0, have been removed in Bootstrap 4. Since we use [Autoprefixer](https://github.com/postcss/autoprefixer), they're no longer necessary.
+Bootstrap 3's [vendor prefix](https://www.thoughtco.com/css-vendor-prefixes-3466867) mixins, which were deprecated in v3.2.0, have been removed in Bootstrap 4. Since we use [Autoprefixer](https://github.com/postcss/autoprefixer), they're no longer necessary.
 
 Removed the following mixins: `animation`, `animation-delay`, `animation-direction`, `animation-duration`, `animation-fill-mode`, `animation-iteration-count`, `animation-name`, `animation-timing-function`, `backface-visibility`, `box-sizing`, `content-columns`, `hyphens`, `opacity`, `perspective`, `perspective-origin`, `rotate`, `rotateX`, `rotateY`, `scale`, `scaleX`, `scaleY`, `skew`, `transform-origin`, `transition-delay`, `transition-duration`, `transition-property`, `transition-timing-function`, `transition-transform`, `translate`, `translate3d`, `user-select`
 

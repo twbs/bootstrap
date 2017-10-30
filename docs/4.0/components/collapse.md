@@ -35,7 +35,7 @@ You can use a link with the `href` attribute, or a button with the `data-target`
 ## Multiple targets
 
 A `<button>` or `<a>` can show and hide multiple elements by referencing them with a JQuery selector in its `href` or `data-target` attribute.
-Multiple `<button>` or `<a>` can  show and hide an element if they each reference it with their `href` or `data-target` attribute
+Multiple `<button>` or `<a>` can show and hide an element if they each reference it with their `href` or `data-target` attribute
 
 {% example html %}
 <p>
@@ -186,9 +186,9 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
   <tbody>
     <tr>
       <td>parent</td>
-      <td>selector</td>
+      <td>selector | jQuery object | DOM element </td>
       <td>false</td>
-      <td>If a selector is provided, then all collapsible elements under the specified parent will be closed when this collapsible item is shown. (similar to traditional accordion behavior - this is dependent on the <code>card</code> class). The attribute has to be set on the target collapsible area.</td>
+      <td>If parent is provided, then all collapsible elements under the specified parent will be closed when this collapsible item is shown. (similar to traditional accordion behavior - this is dependent on the <code>card</code> class). The attribute has to be set on the target collapsible area.</td>
     </tr>
     <tr>
       <td>toggle</td>
@@ -225,6 +225,10 @@ Shows a collapsible element. **Returns to the caller before the collapsible elem
 #### `.collapse('hide')`
 
 Hides a collapsible element. **Returns to the caller before the collapsible element has actually been hidden** (i.e. before the `hidden.bs.collapse` event occurs).
+
+#### `.collapse('dispose')`
+
+Destroys an element's collapse.
 
 ### Events
 

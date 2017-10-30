@@ -217,7 +217,7 @@ Use the tab JavaScript plugin—include it individually or through the compiled 
 
 ### Using data attributes
 
-You can activate a list group navigation without writing any JavaScript by simply specifying `data-toggle="list"` or  on an element. Use these data attributes on `.list-group-item`.
+You can activate a list group navigation without writing any JavaScript by simply specifying `data-toggle="list"` or on an element. Use these data attributes on `.list-group-item`.
 
 <div role="tabpanel">
 {% highlight html %}
@@ -244,7 +244,7 @@ You can activate a list group navigation without writing any JavaScript by simpl
 Enable tabbable list item via JavaScript (each list item needs to be activated individually):
 
 {% highlight js %}
-$('#myList a').click(function (e) {
+$('#myList a').on('click', function (e) {
   e.preventDefault()
   $(this).tab('show')
 })
