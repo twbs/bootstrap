@@ -1,0 +1,23 @@
+[[translation]]
+code = "zh-tw"
+description = "Bootstrap 4 繁體中文手冊"
+name = "中文(繁體)"
+url = "http://bootstrap.hexschool.com/"
+
+[[translation]]
+code = "zh"
+description = "Bootstrap 4 · 全球最流行的 HTML、CSS 和 JS 工具库。"
+name = "Chinese"
+url = "http://code.z01.com/v4"
+
+[[translation]]
+code = "zh"
+description = "Bootstrap 4 中文文档教程"
+name = "Chinese"
+url = "http://wiki.jikexueyuan.com/project/bootstrap4/"
+
+[[translation]]
+code = "pt-BR"
+description = "Bootstrap 4 Português do Brasil"
+name = "Brazilian Portuguese"
+url = "http://getbootstrap.com.br/v4/"

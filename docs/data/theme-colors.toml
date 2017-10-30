@@ -1,0 +1,31 @@
+[[color]]
+hex = "#007bff"
+name = "primary"
+
+[[color]]
+hex = "#868e96"
+name = "secondary"
+
+[[color]]
+hex = "#28a745"
+name = "success"
+
+[[color]]
+hex = "#dc3545"
+name = "danger"
+
+[[color]]
+hex = "#ffc107"
+name = "warning"
+
+[[color]]
+hex = "#17a2b8"
+name = "info"
+
+[[color]]
+hex = "#f8f9fa"
+name = "light"
+
+[[color]]
+hex = "#343a40"
+name = "dark"

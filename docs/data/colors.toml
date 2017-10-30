@@ -1,0 +1,51 @@
+[[color]]
+hex = "#007bff"
+name = "blue"
+
+[[color]]
+hex = "#6610f2"
+name = "indigo"
+
+[[color]]
+hex = "#6f42c1"
+name = "purple"
+
+[[color]]
+hex = "#e83e8c"
+name = "pink"
+
+[[color]]
+hex = "#dc3545"
+name = "red"
+
+[[color]]
+hex = "#fd7e14"
+name = "orange"
+
+[[color]]
+hex = "#ffc107"
+name = "yellow"
+
+[[color]]
+hex = "#28a745"
+name = "green"
+
+[[color]]
+hex = "#20c997"
+name = "teal"
+
+[[color]]
+hex = "#17a2b8"
+name = "cyan"
+
+[[color]]
+hex = "#fff"
+name = "white"
+
+[[color]]
+hex = "#868e96"
+name = "gray"
+
+[[color]]
+hex = "#343a40"
+name = "gray-dark"

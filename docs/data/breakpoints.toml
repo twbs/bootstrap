@@ -1,0 +1,34 @@
+[[breakpoint]]
+abbr = ""
+breakpoint = "xs"
+container = ""
+min-width = "0px"
+name = "Extra small"
+
+[[breakpoint]]
+abbr = "-sm"
+breakpoint = "sm"
+container = "540px"
+min-width = "576px"
+name = "Small"
+
+[[breakpoint]]
+abbr = "-md"
+breakpoint = "md"
+container = "720px"
+min-width = "768px"
+name = "Medium"
+
+[[breakpoint]]
+abbr = "-lg"
+breakpoint = "lg"
+container = "960px"
+min-width = "992px"
+name = "Large"
+
+[[breakpoint]]
+abbr = "-xl"
+breakpoint = "xl"
+container = "1140px"
+min-width = "1200px"
+name = "Extra large"

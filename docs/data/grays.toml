@@ -1,0 +1,35 @@
+[[gray]]
+hex = "#f8f9fa"
+name = 100
+
+[[gray]]
+hex = "#e9ecef"
+name = 200
+
+[[gray]]
+hex = "#dee2e6"
+name = 300
+
+[[gray]]
+hex = "#ced4da"
+name = 400
+
+[[gray]]
+hex = "#adb5bd"
+name = 500
+
+[[gray]]
+hex = "#868e96"
+name = 600
+
+[[gray]]
+hex = "#495057"
+name = 700
+
+[[gray]]
+hex = "#343a40"
+name = 800
+
+[[gray]]
+hex = "#212529"
+name = 900
