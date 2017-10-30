@@ -3580,19 +3580,22 @@ input[type="text"]:disabled {
 .plain-text input[type="text"]:disabled {
   border: none;
 }
-div.checkbox.has-error .help-block,
-div:not(.checkbox).has-error .help-block {
+div.has-error .help-block {
   display: block;
   float: none;
   width: auto;
   padding-left: 20px;
+  clear: left;
   font-size: 12px;
   line-height: 16px;
   color: #c00;
   background: url(../images/sailis/error_sm.gif) no-repeat;
 }
-div:not(.checkbox).has-error .help-block {
-  margin: .5em 0 .5em 10em;
+div.has-error.sailis-field .help-block {
+  margin: .5em 0 .5em 140px;
+}
+div.has-error.sailis-lookup-input .help-block {
+  max-width: 220px;
 }
 .glyphicon {
   display: none;
