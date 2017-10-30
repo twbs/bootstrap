@@ -633,7 +633,7 @@ Manually readjust the modal's position if the height of a modal changes while it
 
 {% highlight js %}$('#myModal').modal('handleUpdate'){% endhighlight %}
 
-### `.modal('dispose')`
+#### `.modal('dispose')`
 
 Destroys an element's modal.
 
