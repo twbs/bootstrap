@@ -36,78 +36,82 @@ bootstrap/
 
 This is the most basic form of Bootstrap: precompiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JS (`bootstrap.*`), as well as compiled and minified CSS and JS (`bootstrap.min.*`). CSS [source maps](https://developers.google.com/web/tools/chrome-devtools/javascript/source-maps) (`bootstrap.*.map`) are available for use with certain browsers' developer tools. Bundled JS files (`bootstrap.bundle.js` and minified `bootstrap.bundle.min.js`) include [Popper](https://popper.js.org/), but not [jQuery](https://jquery.com/).
 
-### Comparison of CSS files
+## CSS files
+
+Bootstrap includes a handful of options for including some or all of our compiled CSS.
 
 <table class="table table-bordered table-responsive">
   <thead>
     <tr>
       <th scope="col">CSS files</th>
-      <th scope="col" class="text-center">Layout</th>
-      <th scope="col" class="text-center">Content</th>
-      <th scope="col" class="text-center">Components</th>
-      <th scope="col" class="text-center">Utilities</th>
+      <th scope="col">Layout</th>
+      <th scope="col">Content</th>
+      <th scope="col">Components</th>
+      <th scope="col">Utilities</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th scope="row">
-        <div><code class="text-nowrap">bootstrap.css</code></div>
-        <div><code class="text-nowrap">bootstrap.min.css</code></div>
+        <div><code class="font-weight-normal text-nowrap">bootstrap.css</code></div>
+        <div><code class="font-weight-normal text-nowrap">bootstrap.min.css</code></div>
       </th>
-      <td class="table-success text-center align-middle">All</td>
-      <td class="table-success text-center align-middle">All</td>
-      <td class="table-success text-center align-middle">All</td>
-      <td class="table-success text-center align-middle">All</td>
+      <td class="text-success">Included</td>
+      <td class="text-success">Included</td>
+      <td class="text-success">Included</td>
+      <td class="text-success">Included</td>
     </tr>
     <tr>
       <th scope="row">
-        <div><code class="text-nowrap">bootstrap-grid.css</code></div>
-        <div><code class="text-nowrap">bootstrap-grid.min.css</code></div>
+        <div><code class="font-weight-normal text-nowrap">bootstrap-grid.css</code></div>
+        <div><code class="font-weight-normal text-nowrap">bootstrap-grid.min.css</code></div>
       </th>
-      <td class="table-warning text-center align-middle">Only <a href="{{ site.baseurl }}/docs/{{ site.docs_version }}/layout/grid/">grid</a> system</td>
-      <td class="table-danger text-center align-middle">No</td>
-      <td class="table-danger text-center align-middle">No</td>
-      <td class="table-warning text-center align-middle">Only <a href="{{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/flex/">flex</a> utilities</td>
+      <td><a class="text-warning" href="{{ site.baseurl }}/docs/{{ site.docs_version }}/layout/grid/">Only grid system</a></td>
+      <td class="bg-light text-muted">Not included</td>
+      <td class="bg-light text-muted">Not included</td>
+      <td><a class="text-warning" href="{{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/flex/">Only flex utilities</a></td>
     </tr>
     <tr>
       <th scope="row">
-        <div><code class="text-nowrap">bootstrap-reboot.css</code></div>
-        <div><code class="text-nowrap">bootstrap-reboot.min.css</code></div>
+        <div><code class="font-weight-normal text-nowrap">bootstrap-reboot.css</code></div>
+        <div><code class="font-weight-normal text-nowrap">bootstrap-reboot.min.css</code></div>
       </th>
-      <td class="table-danger text-center align-middle">No</td>
-      <td class="table-warning text-center align-middle">Only <a href="{{ site.baseurl }}/docs/{{ site.docs_version }}/content/reboot/">Reboot</a></td>
-      <td class="table-danger text-center align-middle">No</td>
-      <td class="table-danger text-center align-middle">No</td>
+      <td class="bg-light text-muted">Not included</td>
+      <td><a class="text-warning" href="{{ site.baseurl }}/docs/{{ site.docs_version }}/content/reboot/">Only Reboot</a></td>
+      <td class="bg-light text-muted">Not included</td>
+      <td class="bg-light text-muted">Not included</td>
     </tr>
   </tbody>
 </table>
 
-### Comparison of JS files
+## JS files
+
+Similarly, we have options for including some or all of our compiled JavaScript.
 
 <table class="table table-bordered table-responsive">
   <thead>
     <tr>
       <th scope="col">JS files</th>
-      <th scope="col" class="text-center">Popper</th>
-      <th scope="col" class="text-center">jQuery</th>
+      <th scope="col">Popper</th>
+      <th scope="col">jQuery</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th scope="row">
-        <div><code class="text-nowrap">bootstrap.bundle.js</code></div>
-        <div><code class="text-nowrap">bootstrap.bundle.min.js</code></div>
+        <div><code class="font-weight-normal text-nowrap">bootstrap.bundle.js</code></div>
+        <div><code class="font-weight-normal text-nowrap">bootstrap.bundle.min.js</code></div>
       </th>
-      <td class="table-success text-center align-middle">Included</td>
-      <td class="table-danger text-center align-middle">Not included</td>
+      <td class="text-success">Included</td>
+      <td class="bg-light text-muted">Not included</td>
     </tr>
     <tr>
       <th scope="row">
-        <div><code class="text-nowrap">bootstrap.js</code></div>
-        <div><code class="text-nowrap">bootstrap.min.js</code></div>
+        <div><code class="font-weight-normal text-nowrap">bootstrap.js</code></div>
+        <div><code class="font-weight-normal text-nowrap">bootstrap.min.js</code></div>
       </th>
-      <td class="table-danger text-center align-middle">Not included</td>
-      <td class="table-danger text-center align-middle">Not included</td>
+      <td class="bg-light text-muted">Not included</td>
+      <td class="bg-light text-muted">Not included</td>
     </tr>
   </tbody>
 </table>
