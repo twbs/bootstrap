@@ -583,7 +583,7 @@ Selects the given tab and shows its associated pane. Any other tab that was prev
 $('#someTab').tab('show')
 {% endhighlight %}
 
-### .tab('dispose')
+#### .tab('dispose')
 
 Destroys an element's tab.
 

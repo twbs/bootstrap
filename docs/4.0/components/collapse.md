@@ -226,7 +226,7 @@ Shows a collapsible element. **Returns to the caller before the collapsible elem
 
 Hides a collapsible element. **Returns to the caller before the collapsible element has actually been hidden** (i.e. before the `hidden.bs.collapse` event occurs).
 
-### `.collapse('dispose')`
+#### `.collapse('dispose')`
 
 Destroys an element's collapse.
 
