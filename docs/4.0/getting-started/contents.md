@@ -34,7 +34,7 @@ bootstrap/
     └── bootstrap.min.js
 {% endhighlight %}
 
-This is the most basic form of Bootstrap: precompiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JS (`bootstrap.*`), as well as compiled and minified CSS and JS (`bootstrap.min.*`). CSS [source maps](https://developers.google.com/web/tools/chrome-devtools/javascript/source-maps) (`bootstrap.*.map`) are available for use with certain browsers' developer tools.
+This is the most basic form of Bootstrap: precompiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JS (`bootstrap.*`), as well as compiled and minified CSS and JS (`bootstrap.min.*`). CSS [source maps](https://developers.google.com/web/tools/chrome-devtools/javascript/source-maps) (`bootstrap.*.map`) are available for use with certain browsers' developer tools. Bundled JS files (`bootstrap.bundle.js` and minified `bootstrap.bundle.min.js`) include [Popper](https://popper.js.org), but not [jQuery](https://jquery.com).
 
 ### Comparison of CSS files
 
@@ -78,6 +78,36 @@ This is the most basic form of Bootstrap: precompiled files for quick drop-in us
       <td class="table-warning text-center align-middle">Only <a href="{{ site.baseurl }}/docs/{{ site.docs_version }}/content/reboot/">Reboot</a></td>
       <td class="table-danger text-center align-middle">No</td>
       <td class="table-danger text-center align-middle">No</td>
+    </tr>
+  </tbody>
+</table>
+
+### Comparison of JS files
+
+<table class="table table-bordered table-responsive">
+  <thead>
+    <tr>
+      <th scope="col">JS files</th>
+      <th scope="col" class="text-center">Popper</th>
+      <th scope="col" class="text-center">jQuery</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">
+        <div><code class="text-nowrap">bootstrap.bundle.js</code></div>
+        <div><code class="text-nowrap">bootstrap.bundle.min.js</code></div>
+      </th>
+      <td class="table-success text-center align-middle">Included</td>
+      <td class="table-danger text-center align-middle">Not included</td>
+    </tr>
+    <tr>
+      <th scope="row">
+        <div><code class="text-nowrap">bootstrap.js</code></div>
+        <div><code class="text-nowrap">bootstrap.min.js</code></div>
+      </th>
+      <td class="table-danger text-center align-middle">Not included</td>
+      <td class="table-danger text-center align-middle">Not included</td>
     </tr>
   </tbody>
 </table>
