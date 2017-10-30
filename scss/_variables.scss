@@ -133,8 +133,8 @@ $sizes: (
 
 // RTL support flips 'right' and 'left' on attributes. Not on selectors.
 $left:         if($enable-rtl, right, left);
-$right:        if($enable-rtl, left,  right);
-$direction:    if($enable-rtl, rtl,   ltr);
+$right:        if($enable-rtl, left, right);
+$direction:    if($enable-rtl, rtl, ltr);
 $unicode-bidi: if($enable-rtl, embed, normal);
 
 // Body
