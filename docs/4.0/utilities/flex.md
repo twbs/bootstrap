@@ -215,20 +215,24 @@ Responsive variations also exist for `align-self`.
 
 ## Auto margins
 
-Flexbox can do some pretty awesome things when you mix flex alignments with auto margins.
+Flexbox can do some pretty awesome things when you mix flex alignments with auto margins. Shown below are three examples of controlling flex items via auto margins: default (no auto margin), pushing two items to the right (`.mr-auto`), and pushing two items to the left (`.ml-auto`).
 
-### With justify-content
-
-Easily move all flex items to one side, but keep another on the opposite end by mixing `justify-content` with `margin-right: auto` or `margin-left: auto`.
+**Unfortunately, IE10 and IE11 do not properly support auto margins on flex items whose parent has a non-default `justify-content` value.** [See this StackOverflow answer](https://stackoverflow.com/a/37535548) for more details.
 
 {% example html %}
-<div class="d-flex justify-content-end bd-highlight mb-3">
+<div class="d-flex bd-highlight mb-3">
+  <div class="p-2 bd-highlight">Flex item</div>
+  <div class="p-2 bd-highlight">Flex item</div>
+  <div class="p-2 bd-highlight">Flex item</div>
+</div>
+
+<div class="d-flex bd-highlight mb-3">
   <div class="mr-auto p-2 bd-highlight">Flex item</div>
   <div class="p-2 bd-highlight">Flex item</div>
   <div class="p-2 bd-highlight">Flex item</div>
 </div>
 
-<div class="d-flex justify-content-start bd-highlight">
+<div class="d-flex bd-highlight mb-3">
   <div class="p-2 bd-highlight">Flex item</div>
   <div class="p-2 bd-highlight">Flex item</div>
   <div class="ml-auto p-2 bd-highlight">Flex item</div>
@@ -237,7 +241,7 @@ Easily move all flex items to one side, but keep another on the opposite end by 
 
 ### With align-items
 
-Similarly, move one flex item to the top or bottom of a container by mixing `align-items`, `flex-direction: column`, and `margin-top: auto` or `margin-bottom: auto`.
+Vertically move one flex item to the top or bottom of a container by mixing `align-items`, `flex-direction: column`, and `margin-top: auto` or `margin-bottom: auto`.
 
 {% example html %}
 <div class="d-flex align-items-start flex-column bd-highlight mb-3" style="height: 200px;">

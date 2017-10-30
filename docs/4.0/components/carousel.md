@@ -14,7 +14,7 @@ In browsers where the [Page Visibility API](https://www.w3.org/TR/page-visibilit
 
 Please be aware that nested carousels are not supported, and carousels are generally not compliant with accessibility standards.
 
-Lastly, if you're building our JS from source, it [requires `util.js`]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/javascript/#util).
+Lastly, if you're building our JavaScript from source, it [requires `util.js`]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/javascript/#util).
 
 ## Example
 
@@ -262,6 +262,10 @@ Cycles to the previous item. **Returns to the caller before the previous item ha
 #### `.carousel('next')`
 
 Cycles to the next item. **Returns to the caller before the next item has been shown** (i.e. before the `slid.bs.carousel` event occurs).
+
+### `.carousel('dispose')`
+
+Destroys an element's carousel.
 
 ### Events
 

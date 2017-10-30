@@ -1,5 +1,13 @@
 // Gradients
 
+@mixin gradient-bg($color) {
+  @if $enable-gradients {
+    background: $color linear-gradient(180deg, mix($body-bg, $color, 15%), $color) repeat-x;
+  } @else {
+    background-color: $color;
+  }
+}
+
 // Horizontal gradient, from left to right
 //
 // Creates two color stops, start and end, by specifying a color and position for each color stop.

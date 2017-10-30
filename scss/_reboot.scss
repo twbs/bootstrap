@@ -30,9 +30,9 @@ html {
   -webkit-text-size-adjust: 100%; // 4
   -ms-text-size-adjust: 100%; // 4
   -ms-overflow-style: scrollbar; // 5
-  -webkit-tap-highlight-color: rgba(0,0,0,0); // 6
-  direction: $direction;
-  unicode-bidi: $unicode-bidi;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); // 6
+  direction: $direction; // 7
+  unicode-bidi: $unicode-bidi; // 8
 }
 
 // IE10+ doesn't honor `<meta name="viewport">` in some cases.
