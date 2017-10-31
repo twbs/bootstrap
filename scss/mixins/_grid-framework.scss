@@ -25,10 +25,20 @@
       @extend %grid-column;
     }
 
+    // Allow gutter width to be different depending on breakpoints
     @include media-breakpoint-only($breakpoint, $breakpoints) {
       $gutter: map-get($gutters, $breakpoint);
 
-      .col {
+      @for $i from 1 through $columns {
+        .col#{$infix}-#{$i} {
+          padding-left: ($gutter / 2);
+          padding-right: ($gutter / 2);
+        }
+      }
+
+      .col,
+      .col#{$infix},
+      .col#{$infix}-auto {
         padding-left: ($gutter / 2);
         padding-right: ($gutter / 2);
       }
