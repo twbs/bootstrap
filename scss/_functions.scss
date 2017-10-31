@@ -49,7 +49,7 @@
 }
 
 // Color contrast
-@mixin color-yiq($color) {
+@function color-yiq($color) {
   $r: red($color);
   $g: green($color);
   $b: blue($color);
@@ -57,9 +57,9 @@
   $yiq: (($r * 299) + ($g * 587) + ($b * 114)) / 1000;
 
   @if ($yiq >= 150) {
-    color: #111;
+    @return $yiq-text-dark;
   } @else {
-    color: #fff;
+    @return $yiq-text-light;
   }
 }
 
@@ -80,11 +80,7 @@
 @function theme-color-level($color-name: "primary", $level: 0) {
   $color: theme-color($color-name);
   $color-base: if($level > 0, #000, #fff);
+  $level: abs($level);
 
-  @if $level < 0 {
-    // Lighter values need a quick double negative for the Sass math to work
-    @return mix($color-base, $color, $level * -1 * $theme-color-interval);
-  } @else {
-    @return mix($color-base, $color, $level * $theme-color-interval);
-  }
+  @return mix($color-base, $color, $level * $theme-color-interval);
 }

@@ -1,3 +1,4 @@
+// stylelint-disable indentation
 @mixin hover {
   // TODO: re-enable along with mq4-hover-shim
 //  @if $enable-hover-media-query {
@@ -8,21 +9,21 @@
 //    }
 //  }
 //  @else {
-// scss-lint:disable Indentation
-    &:hover { @content }
-// scss-lint:enable Indentation
+    &:hover { @content; }
 //  }
 }
 
 
 @mixin hover-focus {
   @if $enable-hover-media-query {
-    &:focus { @content }
-    @include hover { @content }
+    &:focus {
+      @content;
+    }
+    @include hover { @content; }
   } @else {
     &:focus,
     &:hover {
-      @content
+      @content;
     }
   }
 }
@@ -31,14 +32,14 @@
   @if $enable-hover-media-query {
     &,
     &:focus {
-      @content
+      @content;
     }
-    @include hover { @content }
+    @include hover { @content; }
   } @else {
     &,
     &:focus,
     &:hover {
-      @content
+      @content;
     }
   }
 }
@@ -47,14 +48,14 @@
   @if $enable-hover-media-query {
     &:focus,
     &:active {
-      @content
+      @content;
     }
-    @include hover { @content }
+    @include hover { @content; }
   } @else {
     &:focus,
     &:active,
     &:hover {
-      @content
+      @content;
     }
   }
 }

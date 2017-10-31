@@ -1,3 +1,5 @@
+// stylelint-disable selector-no-qualifying-type
+
 //
 // Base styles
 //
@@ -5,14 +7,14 @@
 .input-group {
   position: relative;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   width: 100%;
 
   .form-control {
     // Ensure that the input is always above the *appended* addon button for
     // proper border colors.
     position: relative;
-    z-index: 2;
+    z-index: 1;
     flex: 1 1 auto;
     // Add width 1% and flex-basis auto to ensure that button will not wrap out
     // the column. Applies to IE Edge+ and Firefox. Chrome does not require this.
@@ -21,24 +23,38 @@
 
     // Bring the "active" form control to the front
     @include hover-focus-active {
-      z-index: 3;
+      z-index: 2;
     }
   }
 }
 
 .input-group-addon,
 .input-group-btn,
-.input-group .form-control {
+.input-group .form-control,
+.input-group .custom-select,
+.input-group .custom-file {
+  display: flex;
+  align-items: center;
+
   &:not(:first-child):not(:last-child) {
     @include border-radius(0);
   }
+}
+
+.input-group .custom-file {
+  display: flex;
+  align-items: center;
+}
+
+.input-group .custom-select,
+.input-group .custom-file {
+  width: 100%;
 }
 
 .input-group-addon,
 .input-group-btn {
   white-space: nowrap;
 }
-
 
 // Sizing options
 //
@@ -62,38 +78,35 @@
 //
 
 .input-group-addon {
-  padding: $input-btn-padding-y $input-btn-padding-x;
+  padding: $input-padding-y $input-padding-x;
   margin-bottom: 0; // Allow use of <label> elements by overriding our default margin-bottom
   font-size: $font-size-base; // Match inputs
   font-weight: $font-weight-normal;
-  line-height: $input-btn-line-height;
+  line-height: $input-line-height;
   color: $input-group-addon-color;
   text-align: center;
   background-color: $input-group-addon-bg;
-  background-clip: padding-box;
-  border: $input-btn-border-width solid $input-group-addon-border-color;
+  border: $input-border-width solid $input-group-addon-border-color;
   @include border-radius($input-border-radius);
 
   // Sizing
   &.form-control-sm {
-    padding: $input-btn-padding-y-sm $input-btn-padding-x-sm;
+    padding: $input-padding-y-sm $input-padding-x-sm;
     font-size: $font-size-sm;
     @include border-radius($input-border-radius-sm);
   }
 
   &.form-control-lg {
-    padding: $input-btn-padding-y-lg $input-btn-padding-x-lg;
+    padding: $input-padding-y-lg $input-padding-x-lg;
     font-size: $font-size-lg;
     @include border-radius($input-border-radius-lg);
   }
 
-  // scss-lint:disable QualifyingElement
   // Nuke default margins from checkboxes and radios to vertically center within.
   input[type="radio"],
   input[type="checkbox"] {
     margin-top: 0;
   }
-  // scss-lint:enable QualifyingElement
 }
 
 
@@ -102,6 +115,8 @@
 //
 
 .input-group .form-control:not(:last-child),
+.input-group .custom-select:not(:last-child),
+.input-group .custom-file:not(:last-child) .custom-file-control::before,
 .input-group-addon:not(:last-child),
 .input-group-btn:not(:last-child) > .btn,
 .input-group-btn:not(:last-child) > .btn-group > .btn,
@@ -110,10 +125,14 @@
 .input-group-btn:not(:first-child) > .btn-group:not(:last-child) > .btn {
   @include border-right-radius(0);
 }
+
 .input-group-addon:not(:last-child) {
   border-right: 0;
 }
+
 .input-group .form-control:not(:first-child),
+.input-group .custom-select:not(:first-child),
+.input-group .custom-file:not(:first-child) .custom-file-control,
 .input-group-addon:not(:first-child),
 .input-group-btn:not(:first-child) > .btn,
 .input-group-btn:not(:first-child) > .btn-group > .btn,
@@ -122,8 +141,13 @@
 .input-group-btn:not(:last-child) > .btn-group:not(:first-child) > .btn {
   @include border-left-radius(0);
 }
-.form-control + .input-group-addon:not(:first-child) {
-  border-left: 0;
+
+.form-control,
+.custom-select,
+.custom-file {
+  + .input-group-addon:not(:first-child) {
+    border-left: 0;
+  }
 }
 
 //
@@ -132,6 +156,7 @@
 
 .input-group-btn {
   position: relative;
+  align-items: stretch;
   // Jankily prevent input button groups from wrapping with `white-space` and
   // `font-size` in combination with `inline-block` on buttons.
   font-size: 0;
@@ -141,34 +166,43 @@
   // element above the siblings.
   > .btn {
     position: relative;
-    background-clip: padding-box;
-    border: $input-btn-border-width solid $input-group-btn-border-color;
 
     + .btn {
-      margin-left: (-$input-btn-border-width);
+      margin-left: (-$input-border-width);
     }
 
     // Bring the "active" button to the front
     @include hover-focus-active {
-      z-index: 3;
+      z-index: 2;
     }
+  }
+
+  &:first-child > .btn + .btn {
+    margin-left: 0;
   }
 
   // Negative margin to only have a single, shared border between the two
   &:not(:last-child) {
     > .btn,
     > .btn-group {
-      margin-right: (-$input-btn-border-width);
+      margin-right: (-$input-border-width);
     }
   }
   &:not(:first-child) {
     > .btn,
     > .btn-group {
-      z-index: 2;
-      margin-left: (-$input-btn-border-width);
+      z-index: 1;
+      // remove nagative margin ($input-border-width) to solve overlapping issue with button.
+      margin-left: 0;
+
+      // When input is first, overlap the right side of it with the button(-group)
+      &:first-child {
+        margin-left: (-$input-border-width);
+      }
+
       // Because specificity
       @include hover-focus-active {
-        z-index: 3;
+        z-index: 2;
       }
     }
   }
