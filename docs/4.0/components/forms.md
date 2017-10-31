@@ -765,12 +765,12 @@ When attempting to submit, you'll see the `:invalid` and `:valid` styles applied
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 (function() {
   'use strict';
-  // Generic function to manage aria-describedby attribute value on input validity update
+  // Generic function to manage aria-describedby and aria-invalid attribute value on input validity update
   // @param array of inputs to check
   // Works only if the invalid-feedback element have an ID
-  function updateAriaDescribedAttribute(inputs) {
+  function updateValidityAriaAttribute(inputs) {
     for (var i = 0; i < inputs.length; i++) {
-      // Check element validity, and set aria-described attribute
+      // Check element validity, and set aria-described and aria-invalid attribute
       if (inputs[i].validity.valid === false) {
         if (inputs[i].parentElement.getElementsByClassName('invalid-feedback').length > 0
           && inputs[i].parentElement.getElementsByClassName('invalid-feedback')[0].id) {
@@ -792,12 +792,12 @@ When attempting to submit, you'll see the `:invalid` and `:valid` styles applied
         event.stopPropagation()
         // Check each form elements validity and add an aria-describedby to associate properly feedback with input
         var inputs = form.getElementsByTagName('input')
-        updateAriaDescribedAttribute(inputs)
+        updateValidityAriaAttribute(inputs)
 
         // Listen to input update, and check again the validity
         for (var i = 0; i < inputs.length; i++) {
           inputs[i].addEventListener('input', function () {
-            updateAriaDescribedAttribute([this])
+            updateValidityAriaAttribute([this])
           })
         }
       }
