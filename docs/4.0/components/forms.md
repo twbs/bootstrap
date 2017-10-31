@@ -738,21 +738,21 @@ When attempting to submit, you'll see the `:invalid` and `:valid` styles applied
   <div class="row">
     <div class="col-md-6 mb-3">
       <label for="validationCustom03">City</label>
-      <input type="text" class="form-control" id="validationCustom03" placeholder="City" required>
+      <input type="text" class="form-control" id="validationCustom03" placeholder="City" required aria-invalid="false">
       <div class="invalid-feedback" id="invalidFeed03">
         Please provide a valid city.
       </div>
     </div>
     <div class="col-md-3 mb-3">
       <label for="validationCustom04">State</label>
-      <input type="text" class="form-control" id="validationCustom04" placeholder="State" required>
+      <input type="text" class="form-control" id="validationCustom04" placeholder="State" required aria-invalid="false">
       <div class="invalid-feedback" id="invalidFeed04">
         Please provide a valid state.
       </div>
     </div>
     <div class="col-md-3 mb-3">
       <label for="validationCustom05">Zip</label>
-      <input type="text" class="form-control" id="validationCustom05" placeholder="Zip" required>
+      <input type="text" class="form-control" id="validationCustom05" placeholder="Zip" required aria-invalid="false">
       <div class="invalid-feedback" id="invalidFeed05">
         Please provide a valid zip.
       </div>
@@ -775,9 +775,11 @@ When attempting to submit, you'll see the `:invalid` and `:valid` styles applied
         if (inputs[i].parentElement.getElementsByClassName('invalid-feedback').length > 0
           && inputs[i].parentElement.getElementsByClassName('invalid-feedback')[0].id) {
           inputs[i].setAttribute('aria-describedby', inputs[i].parentElement.getElementsByClassName('invalid-feedback')[0].id)
+          inputs[i].setAttribute('aria-invalid', true)
         }
       } else {
         inputs[i].removeAttribute('aria-describedBy')
+        inputs[i].setAttribute('aria-invalid', false)
       }
     }
   }
@@ -793,11 +795,11 @@ When attempting to submit, you'll see the `:invalid` and `:valid` styles applied
         updateAriaDescribedAttribute(inputs)
 
         // Listen to input update, and check again the validity
-        inputs.forEach((input) => {
-          input.addEventListener('input', function () {
+        for (let i = 0; i < inputs.length; i++) {
+          inputs[i].addEventListener('input', function () {
             updateAriaDescribedAttribute([this])
           })
-        })
+        }
       }
       form.classList.add('was-validated')
     }, false)
@@ -871,21 +873,21 @@ We recommend using client side validation, but in case you require server side, 
   <div class="row">
     <div class="col-md-6 mb-3">
       <label for="validationServer03">City</label>
-      <input type="text" class="form-control is-invalid" id="validationServer03" placeholder="City" required aria-describedby="invalidFeedServ03">
+      <input type="text" class="form-control is-invalid" id="validationServer03" placeholder="City" required aria-describedby="invalidFeedServ03" aria-invalid="true">
       <div class="invalid-feedback" id="invalidFeedServ03">
         Please provide a valid city.
       </div>
     </div>
     <div class="col-md-3 mb-3">
       <label for="validationServer04">State</label>
-      <input type="text" class="form-control is-invalid" id="validationServer04" placeholder="State" required aria-describedby="invalidFeedServ04">
+      <input type="text" class="form-control is-invalid" id="validationServer04" placeholder="State" required aria-describedby="invalidFeedServ04" aria-invalid="true">
       <div class="invalid-feedback" id="invalidFeedServ04">
         Please provide a valid state.
       </div>
     </div>
     <div class="col-md-3 mb-3">
       <label for="validationServer05">Zip</label>
-      <input type="text" class="form-control is-invalid" id="validationServer05" placeholder="Zip" required aria-describedby="invalidFeedServ05">
+      <input type="text" class="form-control is-invalid" id="validationServer05" placeholder="Zip" required aria-describedby="invalidFeedServ05" aria-invalid="true">
       <div class="invalid-feedback" id="invalidFeedServ05">
         Please provide a valid zip.
       </div>
