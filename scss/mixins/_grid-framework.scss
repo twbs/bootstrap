@@ -31,8 +31,8 @@
 
       @for $i from 1 through $columns {
         .col#{$infix}-#{$i} {
-          padding-left: ($gutter / 2);
           padding-right: ($gutter / 2);
+          padding-left: ($gutter / 2);
         }
       }
 
