@@ -124,29 +124,32 @@ var Dropdown = function ($) {
 
       if (showEvent.isDefaultPrevented()) {
         return;
-      }
-      /**
-       * Check for Popper dependency
-       * Popper - https://popper.js.org
-       */
+      } // Disable totally Popper.js for Dropdown in Navbar
 
 
-      if (typeof Popper === 'undefined') {
-        throw new Error('Bootstrap dropdown require Popper.js (https://popper.js.org)');
-      }
-
-      var element = this._element; // for dropup with alignment we use the parent as popper container
-
-      if ($(parent).hasClass(ClassName.DROPUP)) {
-        if ($(this._menu).hasClass(ClassName.MENULEFT) || $(this._menu).hasClass(ClassName.MENURIGHT)) {
-          element = parent;
+      if (!this._inNavbar) {
+        /**
+         * Check for Popper dependency
+         * Popper - https://popper.js.org
+         */
+        if (typeof Popper === 'undefined') {
+          throw new Error('Bootstrap dropdown require Popper.js (https://popper.js.org)');
         }
-      }
 
-      this._popper = new Popper(element, this._menu, this._getPopperConfig()); // if this is a touch-enabled device we add extra
+        var element = this._element; // for dropup with alignment we use the parent as popper container
+
+        if ($(parent).hasClass(ClassName.DROPUP)) {
+          if ($(this._menu).hasClass(ClassName.MENULEFT) || $(this._menu).hasClass(ClassName.MENURIGHT)) {
+            element = parent;
+          }
+        }
+
+        this._popper = new Popper(element, this._menu, this._getPopperConfig());
+      } // if this is a touch-enabled device we add extra
       // empty mouseover listeners to the body's immediate children;
       // only needed because of broken event delegation on iOS
       // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
+
 
       if ('ontouchstart' in document.documentElement && !$(parent).closest(Selector.NAVBAR_NAV).length) {
         $('body').children().on('mouseover', null, $.noop);
@@ -168,9 +171,9 @@ var Dropdown = function ($) {
 
       if (this._popper !== null) {
         this._popper.destroy();
-      }
 
-      this._popper = null;
+        this._popper = null;
+      }
     };
 
     _proto.update = function update() {
@@ -255,16 +258,8 @@ var Dropdown = function ($) {
           flip: {
             enabled: this._config.flip
           }
-        } // Disable Popper.js for Dropdown in Navbar
-
+        }
       };
-
-      if (this._inNavbar) {
-        popperConfig.modifiers.applyStyle = {
-          enabled: !this._inNavbar
-        };
-      }
-
       return popperConfig;
     }; // static
 
