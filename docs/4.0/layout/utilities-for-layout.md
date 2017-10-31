@@ -8,7 +8,7 @@ toc: true
 
 ## Changing `display`
 
-Use our `display` utilities for responsively toggling common values of the `display` property. Mix it with our grid system, content, or components to show or hide them across specific viewports.
+Use our [display utilities]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/display/) for responsively toggling common values of the `display` property. Mix it with our grid system, content, or components to show or hide them across specific viewports.
 
 ## Flexbox options
 

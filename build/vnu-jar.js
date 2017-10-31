@@ -12,7 +12,7 @@
 const childProcess = require('child_process')
 const vnu = require('vnu-jar')
 
-childProcess.exec('java -version', function (error) {
+childProcess.exec('java -version', (error) => {
   if (error) {
     console.error('Skipping HTML lint test; Java is missing.')
     return
