@@ -769,7 +769,7 @@ When attempting to submit, you'll see the `:invalid` and `:valid` styles applied
   // @param array of inputs to check
   // Works only if the invalid-feedback element have an ID
   function updateAriaDescribedAttribute(inputs) {
-    for (let i = 0; i < inputs.length; i++) {
+    for (var i = 0; i < inputs.length; i++) {
       // Check element validity, and set aria-described attribute
       if (inputs[i].validity.valid === false) {
         if (inputs[i].parentElement.getElementsByClassName('invalid-feedback').length > 0
@@ -784,18 +784,18 @@ When attempting to submit, you'll see the `:invalid` and `:valid` styles applied
     }
   }
 
-  window.addEventListener('load', () => {
-    const form = document.getElementById('needs-validation')
-    form.addEventListener('submit', (event) => {
+  window.addEventListener('load', function() {
+    var form = document.getElementById('needs-validation')
+    form.addEventListener('submit', function(event) {
       if (form.checkValidity() === false) {
         event.preventDefault()
         event.stopPropagation()
         // Check each form elements validity and add an aria-describedby to associate properly feedback with input
-        const inputs = form.getElementsByTagName('input')
+        var inputs = form.getElementsByTagName('input')
         updateAriaDescribedAttribute(inputs)
 
         // Listen to input update, and check again the validity
-        for (let i = 0; i < inputs.length; i++) {
+        for (var i = 0; i < inputs.length; i++) {
           inputs[i].addEventListener('input', function () {
             updateAriaDescribedAttribute([this])
           })
