@@ -790,7 +790,7 @@ When attempting to submit, you'll see the `:invalid` and `:valid` styles applied
       if (form.checkValidity() === false) {
         event.preventDefault()
         event.stopPropagation()
-        // Check each form elements validity and add an aria-describedby to associate properly feedback with input
+        // Check each form element's validity and set appropriate aria-invalid / aria-describedby attributes
         var inputs = form.getElementsByTagName('input')
         updateValidityAriaAttribute(inputs)
 
