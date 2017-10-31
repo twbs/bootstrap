@@ -7,7 +7,7 @@ import $ from 'jquery'
  * --------------------------------------------------------------------------
  */
 
-const Util = (() => {
+const Util = (($) => {
 
 
   /**
@@ -22,8 +22,6 @@ const Util = (() => {
 
   const TransitionEndEvent = {
     WebkitTransition : 'webkitTransitionEnd',
-    MozTransition    : 'transitionend',
-    OTransition      : 'oTransitionEnd otransitionend',
     transition       : 'transitionend'
   }
 

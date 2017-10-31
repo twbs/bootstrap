@@ -10,16 +10,7 @@ import Util from './util'
  * --------------------------------------------------------------------------
  */
 
-const Tooltip = (() => {
-
-  /**
-   * Check for Popper dependency
-   * Popper - https://popper.js.org
-   */
-  if (typeof Popper === 'undefined') {
-    throw new Error('Bootstrap tooltips require Popper.js (https://popper.js.org)')
-  }
-
+const Tooltip = (($) => {
 
   /**
    * ------------------------------------------------------------------------
@@ -120,6 +111,13 @@ const Tooltip = (() => {
   class Tooltip {
 
     constructor(element, config) {
+      /**
+       * Check for Popper dependency
+       * Popper - https://popper.js.org
+       */
+      if (typeof Popper === 'undefined') {
+        throw new Error('Bootstrap tooltips require Popper.js (https://popper.js.org)')
+      }
 
       // private
       this._isEnabled     = true
