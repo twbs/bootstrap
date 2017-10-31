@@ -38,8 +38,8 @@ childProcess.exec('java -version', (error, stdout, stderr) => {
     // Documentation does not rely on them being usable.
     'The “date” input type is not supported in all browsers.*',
     'The “time” input type is not supported in all browsers.*',
-    // The next one we are suppressing it because IE11 doesn't recognise <main>.
-    // So, redundant for modern browsers, but not invalid.
+    // IE11 doesn't recognise <main> / give the element an implicit "main" landmark.
+    // Explicit role="main" is redundant for other modern browsers, but still valid.
     'The “main” role is unnecessary for element “main”.'
   ].join('|')
 
