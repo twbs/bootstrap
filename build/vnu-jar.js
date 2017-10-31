@@ -22,12 +22,16 @@ childProcess.exec('java -version', (error, stdout, stderr) => {
 
   // vnu-jar accepts multiple ignores joined with a `|`
   const ignores = [
+    // "autocomplete" is included in <button> and checkboxes and radio <input>s due to
+    // Firefox's non-standard autocomplete behavior - see https://bugzilla.mozilla.org/show_bug.cgi?id=654072
     'Attribute “autocomplete” is only allowed when the input type is “color”, “date”, “datetime-local”, “email”, “hidden”, “month”, “number”, “password”, “range”, “search”, “tel”, “text”, “time”, “url”, or “week”.',
     'Attribute “autocomplete” not allowed on element “button” at this point.',
     'Attribute “title” not allowed on element “circle” at this point.',
     'Bad value “tablist” for attribute “role” on element “nav”.',
     // We use holder.js with `data-src` and no `src`; we could work around this, not sure it's worth it.
     'Element “img” is missing required attribute “src”.',
+    // Markup used in Components > Forms > Layout > Form grid > Horizontal form is currently invalid,
+    // but used this way due to lack of support for flexbox layout on <fieldset> element in most browsers
     'Element “legend” not allowed as child of element “div” in this context.*',
     'The “datetime-local” input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
     // The next one we are using it because IE11 doesn't recognise <main>.
