@@ -39,13 +39,13 @@
       .col,
       .col#{$infix},
       .col#{$infix}-auto {
-        padding-left: ($gutter / 2);
         padding-right: ($gutter / 2);
+        padding-left: ($gutter / 2);
       }
 
       .row {
-        margin-left: ($gutter / -2);
         margin-right: ($gutter / -2);
+        margin-left: ($gutter / -2);
       }
     }
 
