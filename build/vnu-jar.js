@@ -12,11 +12,13 @@
 const childProcess = require('child_process')
 const vnu = require('vnu-jar')
 
-childProcess.exec('java -version', (error) => {
+childProcess.exec('java -version', (error, stdout, stderr) => {
   if (error) {
     console.error('Skipping HTML lint test; Java is missing.')
     return
   }
+
+  const is32bitJava = !stderr.match(/64-Bit/)
 
   // vnu-jar accepts multiple ignores joined with a `|`
   const ignores = [
@@ -43,6 +45,11 @@ childProcess.exec('java -version', (error) => {
     '_gh_pages/',
     'js/tests/'
   ]
+
+  // For the 32-bit Java we need to pass `-Xss512k`
+  if (is32bitJava) {
+    args.splice(0, 0, '-Xss512k')
+  }
 
   return childProcess.spawn('java', args, {
     shell: true,
