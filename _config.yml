@@ -25,7 +25,6 @@ exclude:
   - nuget/
   - scss/
   - vendor/
-  - bower.json
   - composer.json
   - Gemfile
   - Gemfile.lock
