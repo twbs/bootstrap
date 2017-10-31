@@ -10,11 +10,7 @@ menu:
 
 Community members have translated Bootstrap's documentation into various languages. None are officially supported and they may not always be up to date.
 
-<ul>
-{% for language in .Site.Data.translations %}
-  <li><a href="{{ language.url }}" hreflang="{{ language.code }}">{{ language.description }} ({{ language.name }})</a></li>
-{% endfor %}
-</ul>
+{{< translations >}}
 
 **We don't help organize or host translations, we just link to them.**
 

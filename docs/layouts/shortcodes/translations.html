@@ -1,0 +1,5 @@
+<ul>
+  {{ range .Site.Data.translations.translation }}
+  <li><a href="{{ .url }}" hreflang="{{ .code }}">{{ .description }} ({{ .name }})</a></li>
+  {{ end }}
+</ul>
