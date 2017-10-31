@@ -769,37 +769,39 @@ When attempting to submit, you'll see the `:invalid` and `:valid` styles applied
   // @param array of inputs to check
   // Works only if the invalid-feedback element have an ID
   function updateAriaDescribedAttribute(inputs) {
-    for (var i = 0; i < inputs.length; i++) {
+    for (let i = 0; i < inputs.length; i++) {
       // Check element validity, and set aria-described attribute
-      if(inputs[i].validity.valid === false) {
-        if(inputs[i].parentElement.getElementsByClassName('invalid-feedback').length > 0
+      if (inputs[i].validity.valid === false) {
+        if (inputs[i].parentElement.getElementsByClassName('invalid-feedback').length > 0
           && inputs[i].parentElement.getElementsByClassName('invalid-feedback')[0].id) {
-          inputs[i].setAttribute('aria-describedby',inputs[i].parentElement.getElementsByClassName('invalid-feedback')[0].id);          
+          inputs[i].setAttribute('aria-describedby', inputs[i].parentElement.getElementsByClassName('invalid-feedback')[0].id)
         }
       } else {
-        inputs[i].removeAttribute('aria-describedBy');
+        inputs[i].removeAttribute('aria-describedBy')
       }
-
-      // Listen to input update, and check again the validity
-      inputs[i].addEventListener('input', function() {
-        updateAriaDescribedAttribute([this]);
-      })
     }
   }
 
-  window.addEventListener('load', function() {
-    var form = document.getElementById('needs-validation');
-    form.addEventListener('submit', function(event) {
+  window.addEventListener('load', () => {
+    const form = document.getElementById('needs-validation')
+    form.addEventListener('submit', (event) => {
       if (form.checkValidity() === false) {
-        event.preventDefault();
-        event.stopPropagation();
+        event.preventDefault()
+        event.stopPropagation()
         // Check each form elements validity and add an aria-describedby to associate properly feedback with input
-        var inputs = form.getElementsByTagName('input');
-        updateAriaDescribedAttribute(inputs);
+        const inputs = form.getElementsByTagName('input')
+        updateAriaDescribedAttribute(inputs)
+
+        // Listen to input update, and check again the validity
+        inputs.forEach((input) => {
+          input.addEventListener('input', function () {
+            updateAriaDescribedAttribute([this])
+          })
+        })
       }
-      form.classList.add('was-validated');
-    }, false);
-  }, false);
+      form.classList.add('was-validated')
+    }, false)
+  }, false)
 })();
 </script>
 {% endexample %}
