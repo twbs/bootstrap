@@ -700,7 +700,7 @@ While Bootstrap will apply these styles in all browsers, Internet Explorer 11 an
 Provide valuable, actionable feedback to your users with HTML5 form validation–[available in all our supported browsers](https://caniuse.com/#feat=form-validation). Choose from the browser default validation feedback, or implement custom messages with our built-in classes and starter JavaScript.
 
 {% callout warning %}
-We **highly recommend** custom validation styles, as native browser defaults are not announced to screen readers. Please ensure you manage the `aria-invalid` and `aria-describedby` attribute on `input` element according to the validation state.
+We recommend using custom validation styles, as native browser validation errors are not consistently announced by all browser and screen reader combinations. Please ensure you manage the `aria-invalid` and `aria-describedby` attribute on `input` element according to the validation state.
 {% endcallout %}
 
 ### How it works
@@ -768,24 +768,37 @@ When attempting to submit, you'll see the `:invalid` and `:valid` styles applied
   // Generic function to manage aria-describedby and aria-invalid attribute value on input validity update
   // @param array of inputs to check
   // Works only if the invalid-feedback element have an ID
-  function updateValidityAriaAttribute(inputs) {
-    for (var i = 0; i < inputs.length; i++) {
-      // Check element validity, and set aria-described and aria-invalid attribute
-      if (inputs[i].validity.valid === false) {
-        if (inputs[i].parentElement.getElementsByClassName('invalid-feedback').length > 0
-          && inputs[i].parentElement.getElementsByClassName('invalid-feedback')[0].id) {
-          inputs[i].setAttribute('aria-describedby', inputs[i].parentElement.getElementsByClassName('invalid-feedback')[0].id)
-          inputs[i].setAttribute('aria-invalid', true)
+  function updateValidityAriaAttribute(inputs, form) {
+    // Check if form has already been validated or not to prevent intrusive alert message
+    if(!form || form.classList.contains('was-validated')) { 
+      for (var i = 0; i < inputs.length; i++) {
+        // Check element validity, and set aria-described and aria-invalid attribute
+        if (inputs[i].validity.valid === false) {
+          if (inputs[i].parentElement.getElementsByClassName('invalid-feedback').length > 0
+            && inputs[i].parentElement.getElementsByClassName('invalid-feedback')[0].id) {
+            inputs[i].setAttribute('aria-describedby', inputs[i].parentElement.getElementsByClassName('invalid-feedback')[0].id)
+            inputs[i].setAttribute('aria-invalid', true)
+          }
+        } else {
+          inputs[i].removeAttribute('aria-describedBy')
+          inputs[i].setAttribute('aria-invalid', false)
         }
-      } else {
-        inputs[i].removeAttribute('aria-describedBy')
-        inputs[i].setAttribute('aria-invalid', false)
       }
     }
   }
 
   window.addEventListener('load', function() {
     var form = document.getElementById('needs-validation')
+    // Attach event listener to each input in the form
+    var inputs = form.getElementsByTagName('input')
+
+    // Listen to input update, and check again the validity
+    for (var i = 0; i < inputs.length; i++) {
+      inputs[i].addEventListener('input', function () {
+        updateValidityAriaAttribute([this], form)
+      })
+    }
+    
     form.addEventListener('submit', function(event) {
       if (form.checkValidity() === false) {
         event.preventDefault()
@@ -793,13 +806,6 @@ When attempting to submit, you'll see the `:invalid` and `:valid` styles applied
         // Check each form element's validity and set appropriate aria-invalid / aria-describedby attributes
         var inputs = form.getElementsByTagName('input')
         updateValidityAriaAttribute(inputs)
-
-        // Listen to input update, and check again the validity
-        for (var i = 0; i < inputs.length; i++) {
-          inputs[i].addEventListener('input', function () {
-            updateValidityAriaAttribute([this])
-          })
-        }
       }
       form.classList.add('was-validated')
     }, false)
