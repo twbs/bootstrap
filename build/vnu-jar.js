@@ -32,7 +32,9 @@ childProcess.exec('java -version', (error, stdout, stderr) => {
     // Markup used in Components > Forms > Layout > Form grid > Horizontal form is currently invalid,
     // but used this way due to lack of support for flexbox layout on <fieldset> element in most browsers
     'Element “legend” not allowed as child of element “div” in this context.*',
-    'The “datetime-local” input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.',
+    // Content > Reboot uses various date/time inputs as a visual example. Documentation does not rely on them being usable.
+    'The “date” input type is not supported in all browsers.*',
+    'The “time” input type is not supported in all browsers.*',
     // The next one we are using it because IE11 doesn't recognise <main>.
     // So, redundant for modern browsers, but not invalid.
     'The “main” role is unnecessary for element “main”.'
