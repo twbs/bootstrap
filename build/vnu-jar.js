@@ -26,7 +26,6 @@ childProcess.exec('java -version', (error, stdout, stderr) => {
     // Firefox's non-standard autocomplete behavior - see https://bugzilla.mozilla.org/show_bug.cgi?id=654072
     'Attribute “autocomplete” is only allowed when the input type is “color”, “date”, “datetime-local”, “email”, “hidden”, “month”, “number”, “password”, “range”, “search”, “tel”, “text”, “time”, “url”, or “week”.',
     'Attribute “autocomplete” not allowed on element “button” at this point.',
-    'Attribute “title” not allowed on element “circle” at this point.',
     'Bad value “tablist” for attribute “role” on element “nav”.',
     // We use holder.js with `data-src` and no `src`; we could work around this, not sure it's worth it.
     'Element “img” is missing required attribute “src”.',
