@@ -373,7 +373,7 @@ const Tooltip = (() => {
       // empty mouseover listeners we added for iOS support
       if ('ontouchstart' in document.documentElement) {
         Util.makeArray(document.body.children)
-            .forEach((element) => EventHandler.off(element, 'mouseover', Util.noop()))
+          .forEach((element) => EventHandler.off(element, 'mouseover', Util.noop()))
       }
 
       this._activeTrigger[Trigger.CLICK] = false
