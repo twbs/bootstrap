@@ -30,6 +30,7 @@ Change the border color using utilities built on our theme colors.
 {% example html %}
 {% for color in site.data.theme-colors %}
 <span class="border border-{{ color.name }}"></span>{% endfor %}
+<span class="border border-white"></span>
 {% endexample %}
 </div>
 

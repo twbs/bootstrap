@@ -8,7 +8,7 @@ toc: true
 
 ## Global settings
 
-Bootstrap sets basic global display, typography, and link styles. When more control is needed, check out the [textual utility classes]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/typography/).
+Bootstrap sets basic global display, typography, and link styles. When more control is needed, check out the [textual utility classes]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/text/).
 
 - Use a [native font stack]({{ site.baseurl }}/docs/{{ site.docs_version }}/content/reboot/#native-font-stack) that selects the best `font-family` for each OS and device.
 - For a more inclusive and accessible type scale, we assume the browser default root `font-size` (typically 16px) so visitors can customize their browser defaults as needed.
@@ -16,7 +16,7 @@ Bootstrap sets basic global display, typography, and link styles. When more cont
 - Set the global link color via `$link-color` and apply link underlines only on `:hover`.
 - Use `$body-bg` to set a `background-color` on the `<body>` (`#fff` by default).
 
-These styles can be found within `_reboot.scss`, and the global variables are defined in `_variables.scss`.
+These styles can be found within `_reboot.scss`, and the global variables are defined in `_variables.scss`. Make sure to set `$font-size-base` in `rem`.
 
 ## Headings
 
@@ -168,7 +168,7 @@ While not shown above, feel free to use `<b>` and `<i>` in HTML5. `<b>` is meant
 
 ## Text utilities
 
-Change text alignment, transform, style, weight, and color with our [text utilities]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/typography/#text-alignment).
+Change text alignment, transform, style, weight, and color with our [text utilities]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/text/#text-alignment).
 
 ## Abbreviations
 
@@ -268,8 +268,10 @@ Align terms and descriptions horizontally by using our grid system's predefined 
   <dd class="col-sm-9">A description list is perfect for defining terms.</dd>
 
   <dt class="col-sm-3">Euismod</dt>
-  <dd class="col-sm-9">Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
-  <dd class="col-sm-9 offset-sm-3">Donec id elit non mi porta gravida at eget metus.</dd>
+  <dd class="col-sm-9">
+    <p>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</p>
+    <p>Donec id elit non mi porta gravida at eget metus.</p>
+  </dd>
 
   <dt class="col-sm-3">Malesuada porta</dt>
   <dd class="col-sm-9">Etiam porta sem malesuada magna mollis euismod.</dd>
@@ -295,24 +297,24 @@ Here's an example of it in practice. Choose whatever `font-size`s and media quer
 
 {% highlight scss %}
 html {
-  font-size: 14px;
+  font-size: 1rem;
 }
 
 @include media-breakpoint-up(sm) {
   html {
-    font-size: 16px;
+    font-size: 1.2rem;
   }
 }
 
 @include media-breakpoint-up(md) {
   html {
-    font-size: 20px;
+    font-size: 1.4rem;
   }
 }
 
 @include media-breakpoint-up(lg) {
   html {
-    font-size: 28px;
+    font-size: 1.6rem;
   }
 }
 {% endhighlight %}

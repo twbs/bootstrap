@@ -10,7 +10,7 @@
     width: 100%;
     min-height: 1px; // Prevent columns from collapsing when empty
     padding-right: ($gutter / 2);
-    padding-left:  ($gutter / 2);
+    padding-left: ($gutter / 2);
   }
 
   @each $breakpoint in map-keys($breakpoints) {
@@ -46,9 +46,22 @@
         }
       }
 
+      .order#{$infix}-first {
+        order: -1;
+      }
+
       @for $i from 1 through $columns {
         .order#{$infix}-#{$i} {
           order: $i;
+        }
+      }
+
+      // `$columns - 1` because offsetting by the width of an entire row isn't possible
+      @for $i from 0 through ($columns - 1) {
+        @if not ($infix == "" and $i == 0) { // Avoid emitting useless .offset-0
+          .offset#{$infix}-#{$i} {
+            @include make-col-offset($i, $columns);
+          }
         }
       }
     }

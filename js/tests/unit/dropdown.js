@@ -21,7 +21,7 @@ $(function () {
 
   QUnit.test('should provide no conflict', function (assert) {
     assert.expect(1)
-    assert.strictEqual($.fn.dropdown, undefined, 'dropdown was set back to undefined (org value)')
+    assert.strictEqual(typeof $.fn.dropdown, 'undefined', 'dropdown was set back to undefined (org value)')
   })
 
   QUnit.test('should throw explicit error on undefined method', function (assert) {
@@ -619,5 +619,213 @@ $(function () {
         $textarea.trigger($.Event('click'))
       })
     $dropdown.trigger('click')
+  })
+
+  QUnit.test('Dropdown should not use Popper.js in navbar', function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+    var html = '<nav class="navbar navbar-expand-md navbar-light bg-light">'
+        + '<div class="dropdown">'
+        + '  <a class="nav-link dropdown-toggle" href="#" id="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>'
+        + '  <div class="dropdown-menu" aria-labelledby="dropdown">'
+        + '    <a class="dropdown-item" href="#">Action</a>'
+        + '    <a class="dropdown-item" href="#">Another action</a>'
+        + '    <a class="dropdown-item" href="#">Something else here</a>'
+        + '  </div>'
+        + '</div>'
+        + '</nav>'
+
+    $(html).appendTo('#qunit-fixture')
+    var $triggerDropdown = $('#qunit-fixture')
+      .find('[data-toggle="dropdown"]')
+      .bootstrapDropdown()
+    var $dropdownMenu = $triggerDropdown.next()
+
+    $triggerDropdown
+      .parent('.dropdown')
+      .on('shown.bs.dropdown', function () {
+        assert.ok(typeof $dropdownMenu.attr('style') === 'undefined', 'No inline style applied by Popper.js')
+        done()
+      })
+    $triggerDropdown.trigger($.Event('click'))
+  })
+
+  QUnit.test('should ignore keyboard events for <input>s and <textarea>s within dropdown-menu, except for escape key', function (assert) {
+    assert.expect(7)
+    var done = assert.async()
+
+    var dropdownHTML = '<div class="tabs">'
+        + '<div class="dropdown">'
+        + '<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>'
+        + '<div class="dropdown-menu">'
+        + '<a class="dropdown-item" href="#">Secondary link</a>'
+        + '<a class="dropdown-item" href="#">Something else here</a>'
+        + '<div class="divider"/>'
+        + '<a class="dropdown-item" href="#">Another link</a>'
+        + '<input type="text" id="input">'
+        + '<textarea id="textarea"/>'
+        + '</div>'
+        + '</div>'
+        + '</div>'
+    var $dropdown = $(dropdownHTML)
+      .appendTo('#qunit-fixture')
+      .find('[data-toggle="dropdown"]')
+      .bootstrapDropdown()
+
+    var $input = $('#input')
+    var $textarea = $('#textarea')
+
+    $dropdown
+      .parent('.dropdown')
+      .on('shown.bs.dropdown', function () {
+        // Space key
+        $input.trigger('focus').trigger($.Event('keydown', { which: 32 }))
+        assert.ok($(document.activeElement)[0] === $input[0], 'input still focused')
+        $textarea.trigger('focus').trigger($.Event('keydown', { which: 32 }))
+        assert.ok($(document.activeElement)[0] === $textarea[0], 'textarea still focused')
+
+        // Key up
+        $input.trigger('focus').trigger($.Event('keydown', { which: 38 }))
+        assert.ok($(document.activeElement)[0] === $input[0], 'input still focused')
+        $textarea.trigger('focus').trigger($.Event('keydown', { which: 38 }))
+        assert.ok($(document.activeElement)[0] === $textarea[0], 'textarea still focused')
+
+        // Key down
+        $input.trigger('focus').trigger($.Event('keydown', { which: 40 }))
+        assert.ok($(document.activeElement)[0] === $input[0], 'input still focused')
+        $textarea.trigger('focus').trigger($.Event('keydown', { which: 40 }))
+        assert.ok($(document.activeElement)[0] === $textarea[0], 'textarea still focused')
+
+        // Key escape
+        $input.trigger('focus').trigger($.Event('keydown', { which: 27 }))
+        assert.ok(!$dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is not shown')
+        done()
+      })
+
+    $dropdown.trigger('click')
+  })
+
+  QUnit.test('should ignore space key events for <input>s within dropdown, and accept up, down and escape', function (assert) {
+    assert.expect(6)
+    var done = assert.async()
+
+    var dropdownHTML =
+          '<ul class="nav tabs">'
+        + '  <li class="dropdown">'
+        + '    <input type="text" id="input" data-toggle="dropdown">'
+        + '    <div class="dropdown-menu" role="menu">'
+        + '      <a id="item1" class="dropdown-item" href="#">Secondary link</a>'
+        + '      <a id="item2" class="dropdown-item" href="#">Something else here</a>'
+        + '      <div class="divider"></div>'
+        + '      <a class="dropdown-item" href="#">Another link</a>'
+        + '    </div>'
+        + '  </li>'
+        + '</ul>'
+
+    var $dropdown = $(dropdownHTML)
+      .appendTo('#qunit-fixture')
+      .find('[data-toggle="dropdown"]')
+      .bootstrapDropdown()
+
+    var $input = $('#input')
+
+    $dropdown
+    .parent('.dropdown')
+    .one('shown.bs.dropdown', function () {
+      assert.ok(true, 'shown was fired')
+
+      // Key space
+      $input.trigger('focus').trigger($.Event('keydown', { which: 32 }))
+      assert.ok($dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is shown')
+      assert.ok($(document.activeElement).is($input), 'input is still focused')
+
+      // Key escape
+      $input.trigger('focus').trigger($.Event('keydown', { which: 27 }))
+      assert.ok(!$dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is not shown')
+
+      $dropdown
+      .parent('.dropdown')
+      .one('shown.bs.dropdown', function () {
+
+        // Key down
+        $input.trigger('focus').trigger($.Event('keydown', { which: 40 }))
+        assert.ok(document.activeElement === $('#item1')[0], 'item1 is focused')
+
+        $dropdown
+        .parent('.dropdown')
+        .one('shown.bs.dropdown', function () {
+
+          // Key up
+          $input.trigger('focus').trigger($.Event('keydown', { which: 38 }))
+          assert.ok(document.activeElement === $('#item1')[0], 'item1 is focused')
+          done()
+        }).bootstrapDropdown('toggle')
+        $input.trigger('click')
+      })
+      $input.trigger('click')
+    })
+    $input.trigger('click')
+  })
+
+  QUnit.test('should ignore space key events for <textarea>s within dropdown, and accept up, down and escape', function (assert) {
+    assert.expect(6)
+    var done = assert.async()
+
+    var dropdownHTML =
+          '<ul class="nav tabs">'
+        + '  <li class="dropdown">'
+        + '    <textarea id="textarea" data-toggle="dropdown"></textarea>'
+        + '    <div class="dropdown-menu" role="menu">'
+        + '      <a id="item1" class="dropdown-item" href="#">Secondary link</a>'
+        + '      <a id="item2" class="dropdown-item" href="#">Something else here</a>'
+        + '      <div class="divider"></div>'
+        + '      <a class="dropdown-item" href="#">Another link</a>'
+        + '    </div>'
+        + '  </li>'
+        + '</ul>'
+
+    var $dropdown = $(dropdownHTML)
+      .appendTo('#qunit-fixture')
+      .find('[data-toggle="dropdown"]')
+      .bootstrapDropdown()
+
+    var $textarea = $('#textarea')
+
+    $dropdown
+    .parent('.dropdown')
+    .one('shown.bs.dropdown', function () {
+      assert.ok(true, 'shown was fired')
+
+      // Key space
+      $textarea.trigger('focus').trigger($.Event('keydown', { which: 32 }))
+      assert.ok($dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is shown')
+      assert.ok($(document.activeElement).is($textarea), 'textarea is still focused')
+
+      // Key escape
+      $textarea.trigger('focus').trigger($.Event('keydown', { which: 27 }))
+      assert.ok(!$dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is not shown')
+
+      $dropdown
+      .parent('.dropdown')
+      .one('shown.bs.dropdown', function () {
+
+        // Key down
+        $textarea.trigger('focus').trigger($.Event('keydown', { which: 40 }))
+        assert.ok(document.activeElement === $('#item1')[0], 'item1 is focused')
+
+        $dropdown
+        .parent('.dropdown')
+        .one('shown.bs.dropdown', function () {
+
+          // Key up
+          $textarea.trigger('focus').trigger($.Event('keydown', { which: 38 }))
+          assert.ok(document.activeElement === $('#item1')[0], 'item1 is focused')
+          done()
+        }).bootstrapDropdown('toggle')
+        $textarea.trigger('click')
+      })
+      $textarea.trigger('click')
+    })
+    $textarea.trigger('click')
   })
 })

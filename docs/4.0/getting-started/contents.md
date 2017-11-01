@@ -18,13 +18,103 @@ bootstrap/
 │   ├── bootstrap.css
 │   ├── bootstrap.css.map
 │   ├── bootstrap.min.css
-│   └── bootstrap.min.css.map
+│   ├── bootstrap.min.css.map
+│   ├── bootstrap-grid.css
+│   ├── bootstrap-grid.css.map
+│   ├── bootstrap-grid.min.css
+│   ├── bootstrap-grid.min.css.map
+│   ├── bootstrap-reboot.css
+│   ├── bootstrap-reboot.css.map
+│   ├── bootstrap-reboot.min.css
+│   └── bootstrap-reboot.min.css.map
 └── js/
+    ├── bootstrap.bundle.js
+    ├── bootstrap.bundle.min.js
     ├── bootstrap.js
     └── bootstrap.min.js
 {% endhighlight %}
 
-This is the most basic form of Bootstrap: precompiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JS (`bootstrap.*`), as well as compiled and minified CSS and JS (`bootstrap.min.*`). CSS [source maps](https://developers.google.com/web/tools/chrome-devtools/javascript/source-maps) (`bootstrap.*.map`) are available for use with certain browsers' developer tools.
+This is the most basic form of Bootstrap: precompiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JS (`bootstrap.*`), as well as compiled and minified CSS and JS (`bootstrap.min.*`). CSS [source maps](https://developers.google.com/web/tools/chrome-devtools/javascript/source-maps) (`bootstrap.*.map`) are available for use with certain browsers' developer tools. Bundled JS files (`bootstrap.bundle.js` and minified `bootstrap.bundle.min.js`) include [Popper](https://popper.js.org/), but not [jQuery](https://jquery.com/).
+
+## CSS files
+
+Bootstrap includes a handful of options for including some or all of our compiled CSS.
+
+<table class="table table-bordered table-responsive">
+  <thead>
+    <tr>
+      <th scope="col">CSS files</th>
+      <th scope="col">Layout</th>
+      <th scope="col">Content</th>
+      <th scope="col">Components</th>
+      <th scope="col">Utilities</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">
+        <div><code class="font-weight-normal text-nowrap">bootstrap.css</code></div>
+        <div><code class="font-weight-normal text-nowrap">bootstrap.min.css</code></div>
+      </th>
+      <td class="text-success">Included</td>
+      <td class="text-success">Included</td>
+      <td class="text-success">Included</td>
+      <td class="text-success">Included</td>
+    </tr>
+    <tr>
+      <th scope="row">
+        <div><code class="font-weight-normal text-nowrap">bootstrap-grid.css</code></div>
+        <div><code class="font-weight-normal text-nowrap">bootstrap-grid.min.css</code></div>
+      </th>
+      <td><a class="text-warning" href="{{ site.baseurl }}/docs/{{ site.docs_version }}/layout/grid/">Only grid system</a></td>
+      <td class="bg-light text-muted">Not included</td>
+      <td class="bg-light text-muted">Not included</td>
+      <td><a class="text-warning" href="{{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/flex/">Only flex utilities</a></td>
+    </tr>
+    <tr>
+      <th scope="row">
+        <div><code class="font-weight-normal text-nowrap">bootstrap-reboot.css</code></div>
+        <div><code class="font-weight-normal text-nowrap">bootstrap-reboot.min.css</code></div>
+      </th>
+      <td class="bg-light text-muted">Not included</td>
+      <td><a class="text-warning" href="{{ site.baseurl }}/docs/{{ site.docs_version }}/content/reboot/">Only Reboot</a></td>
+      <td class="bg-light text-muted">Not included</td>
+      <td class="bg-light text-muted">Not included</td>
+    </tr>
+  </tbody>
+</table>
+
+## JS files
+
+Similarly, we have options for including some or all of our compiled JavaScript.
+
+<table class="table table-bordered table-responsive">
+  <thead>
+    <tr>
+      <th scope="col">JS files</th>
+      <th scope="col">Popper</th>
+      <th scope="col">jQuery</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">
+        <div><code class="font-weight-normal text-nowrap">bootstrap.bundle.js</code></div>
+        <div><code class="font-weight-normal text-nowrap">bootstrap.bundle.min.js</code></div>
+      </th>
+      <td class="text-success">Included</td>
+      <td class="bg-light text-muted">Not included</td>
+    </tr>
+    <tr>
+      <th scope="row">
+        <div><code class="font-weight-normal text-nowrap">bootstrap.js</code></div>
+        <div><code class="font-weight-normal text-nowrap">bootstrap.min.js</code></div>
+      </th>
+      <td class="bg-light text-muted">Not included</td>
+      <td class="bg-light text-muted">Not included</td>
+    </tr>
+  </tbody>
+</table>
 
 ## Bootstrap source code
 

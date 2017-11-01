@@ -1,57 +1,74 @@
 # Dependencies
-markdown:         kramdown
-highlighter:      rouge
+markdown:       kramdown
+highlighter:    rouge
 
 kramdown:
-  auto_ids: true
+  auto_ids:     true
 
 # Permalinks
-permalink:        pretty
+permalink:      pretty
 
 # Server
-source:           .
-destination:      ./_gh_pages
-port:             9001
-baseurl:          ""
-url:              https://getbootstrap.com
-encoding:         UTF-8
-exclude:          [.git, .github, assets/scss/, build, js, node_modules, nuget, scss, vendor, bower.json, composer.json, Gemfile, Gemfile.lock, Gruntfile.js, package.js, package.json, sache.json]
+source:         "."
+destination:    ./_gh_pages
+port:           9001
+baseurl:        ""
+url:            "https://getbootstrap.com"
+encoding:       UTF-8
+exclude:
+  - .git/
+  - .github/
+  - assets/scss/
+  - build/
+  - js/
+  - node_modules/
+  - nuget/
+  - scss/
+  - vendor/
+  - composer.json
+  - Gemfile
+  - Gemfile.lock
+  - package.js
+  - package.json
+  - package-lock.json
+  - sache.json
+  - twbsconfig.yml
 
-gems:
+plugins:
   - jekyll-redirect-from
   - jekyll-sitemap
   - jekyll-toc
 
 # Social
-title: Bootstrap
-description: The most popular HTML, CSS, and JS framework in the world.
-twitter: getbootstrap
-authors: Mark Otto, Jacob Thornton, and Bootstrap contributors
-social_logo_path: /assets/brand/bootstrap-social-logo.png
-social_image_path: /assets/brand/bootstrap-social.png
+title:              Bootstrap
+description:        "The most popular HTML, CSS, and JS library in the world."
+twitter:            getbootstrap
+authors:            "Mark Otto, Jacob Thornton, and Bootstrap contributors"
+social_image_path:  /assets/brand/bootstrap-social.png
+social_logo_path:   /assets/brand/bootstrap-social-logo.png
 
-# Custom vars
-current_version:  4.0.0-alpha.6
-docs_version:     4.0
-repo:             https://github.com/twbs/bootstrap
-slack:            https://bootstrap-slack.herokuapp.com
+# Custom variables
+current_version:      4.0.0-beta.2
+current_ruby_version: 4.0.0.beta2
+docs_version:         4.0
+repo:                 "https://github.com/twbs/bootstrap"
+slack:                "https://bootstrap-slack.herokuapp.com"
+blog:                 "https://blog.getbootstrap.com"
+expo:                 "https://expo.getbootstrap.com"
+jobs:                 "https://jobs.getbootstrap.com"
+themes:               "https://themes.getbootstrap.com"
 
 download:
-  source:         https://github.com/twbs/bootstrap/archive/v4.0.0-alpha.6.zip
-  dist:           https://github.com/twbs/bootstrap/releases/download/v4.0.0-alpha.6/bootstrap-4.0.0-alpha.6-dist.zip
-
-blog:             https://blog.getbootstrap.com
-expo:             https://expo.getbootstrap.com
-themes:           https://themes.getbootstrap.com
-jobs:             https://jobs.getbootstrap.com
+  source:           "https://github.com/twbs/bootstrap/archive/v4.0.0-beta.2.zip"
+  dist:             "https://github.com/twbs/bootstrap/releases/download/v4.0.0-beta.2/bootstrap-4.0.0-beta.2-dist.zip"
 
 cdn:
   # See https://www.srihash.org for info on how to generate the hashes
-  css:            https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css
-  css_hash:       "sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
-  js:             https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js
-  js_hash:        "sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
-  jquery:         https://code.jquery.com/jquery-3.2.1.slim.min.js
-  jquery_hash:    "sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-  popper:         https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.10.1/umd/popper.min.js
-  popper_hash:    "sha256-nxD3NU7Wocq19nG7DTQAx9troUwVoxjUhYrAhFSO3HM="
+  css:              "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+  css_hash:         "sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+  js:               "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+  js_hash:          "sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+  jquery:           "https://code.jquery.com/jquery-3.2.1.slim.min.js"
+  jquery_hash:      "sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+  popper:           "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"
+  popper_hash:      "sha384-W1IgCZfiFCplncoIxD5rld+uzdB6FlcG2vm4qjrCP5Z7uUt7vnwbztJXeqXgd26w"
