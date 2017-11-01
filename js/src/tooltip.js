@@ -322,7 +322,7 @@ class Tooltip {
       // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
       if ('ontouchstart' in document.documentElement) {
         Util.makeArray(document.body.children).forEach((element) => {
-          EventHandler.on(element, 'mouseover', Util.noop)
+          EventHandler.on(element, 'mouseover', Util.noop())
         })
       }
 
@@ -381,7 +381,7 @@ class Tooltip {
     // empty mouseover listeners we added for iOS support
     if ('ontouchstart' in document.documentElement) {
       Util.makeArray(document.body.children)
-        .forEach((element) => EventHandler.off(element, 'mouseover', Util.noop))
+        .forEach((element) => EventHandler.off(element, 'mouseover', Util.noop()))
     }
 
     this._activeTrigger[Trigger.CLICK] = false

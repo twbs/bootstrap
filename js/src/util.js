@@ -235,8 +235,9 @@ const Util = {
     return Util.findShadowRoot(element.parentNode)
   },
 
-  // eslint-disable-next-line no-empty-function
   noop() {
+    // eslint-disable-next-line no-empty-function
+    return function () {}
   },
 
   get jQuery() {
