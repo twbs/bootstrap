@@ -266,8 +266,13 @@ These changes, and more, are demonstrated below.
     </p>
 
     <p>
-      <label for="time">Example temporal</label>
-      <input type="datetime-local" id="time">
+      <label for="date">Example date</label>
+      <input type="date" id="date">
+    </p>
+
+    <p>
+      <label for="time">Example time</label>
+      <input type="time" id="time">
     </p>
 
     <p>
