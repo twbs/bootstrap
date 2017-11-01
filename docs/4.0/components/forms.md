@@ -762,16 +762,20 @@ When attempting to submit, you'll see the `:invalid` and `:valid` styles applied
 </form>
 
 <script>
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-(function() {
-  'use strict';
-  // Generic function to manage aria-describedby and aria-invalid attribute value on input validity update
+// Example starter JavaScript for disabling form submissions
+// if there are invalid fields
+(function () {
+  'use strict'
+
+  // Generic function to manage aria-describedby and aria-invalid attribute
+  // value on input validity update
   // @param array of inputs to check
   // Works only if the invalid-feedback element have an ID
   function updateValidityAriaAttribute(inputs, form) {
-    // Check if form has already been validated or not to prevent intrusive alert message
-    if(!form || form.classList.contains('was-validated')) { 
-      for (var i = 0; i < inputs.length; i++) {
+    // Check if the form has already been validated or not,
+    // to prevent intrusive alert message
+    if (!form || form.classList.contains('was-validated')) {
+      for (var i = 0, len = inputs.length; i < len; i++) {
         // Check element validity, and set aria-described and aria-invalid attribute
         if (inputs[i].validity.valid === false) {
           if (inputs[i].parentElement.getElementsByClassName('invalid-feedback').length > 0
@@ -787,30 +791,31 @@ When attempting to submit, you'll see the `:invalid` and `:valid` styles applied
     }
   }
 
-  window.addEventListener('load', function() {
+  window.addEventListener('load', function () {
     var form = document.getElementById('needs-validation')
     // Attach event listener to each input in the form
     var inputs = form.getElementsByTagName('input')
 
     // Listen to input update, and check again the validity
-    for (var i = 0; i < inputs.length; i++) {
+    for (var i = 0, len = inputs.length; i < len; i++) {
       inputs[i].addEventListener('input', function () {
         updateValidityAriaAttribute([this], form)
       })
     }
-    
-    form.addEventListener('submit', function(event) {
+
+    form.addEventListener('submit', function (event) {
       if (form.checkValidity() === false) {
         event.preventDefault()
         event.stopPropagation()
-        // Check each form element's validity and set appropriate aria-invalid / aria-describedby attributes
+        // Check each form element's validity and set appropriate
+        // aria-invalid / aria-describedby attributes
         var inputs = form.getElementsByTagName('input')
         updateValidityAriaAttribute(inputs)
       }
       form.classList.add('was-validated')
     }, false)
   }, false)
-})();
+}())
 </script>
 {% endexample %}
 
