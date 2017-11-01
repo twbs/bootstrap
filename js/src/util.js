@@ -190,8 +190,9 @@ const Util = (() => {
       return false
     },
 
-    // eslint-disable-next-line no-empty-function
     noop() {
+      // eslint-disable-next-line no-empty-function
+      return function () {}
     },
 
     get jQuery() {
