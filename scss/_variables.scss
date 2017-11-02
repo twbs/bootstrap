@@ -720,26 +720,26 @@ $badge-pill-border-radius:          10rem !default;
 // Modals
 
 // Padding applied to the modal body
-$modal-inner-padding:               15px !default;
+$modal-inner-padding:         1rem !default;
 
-$modal-dialog-margin:               10px !default;
-$modal-dialog-margin-y-sm-up:       30px !default;
+$modal-dialog-margin:         .5rem !default;
+$modal-dialog-margin-y-sm-up: 1.75rem !default;
 
 $modal-title-line-height:           $line-height-base !default;
 
-$modal-content-bg:                  $white !default;
-$modal-content-border-color:        rgba($black, .2) !default;
-$modal-content-border-width:        $border-width !default;
-$modal-content-box-shadow-xs:       0 3px 9px rgba($black, .5) !default;
-$modal-content-box-shadow-sm-up:    0 5px 15px rgba($black, .5) !default;
+$modal-content-bg:               $white !default;
+$modal-content-border-color:     rgba($black, .2) !default;
+$modal-content-border-width:     $border-width !default;
+$modal-content-box-shadow-xs:    0 .25rem .5rem rgba($black, .5) !default;
+$modal-content-box-shadow-sm-up: 0 .5rem 1rem rgba($black, .5) !default;
 
-$modal-backdrop-bg:                 $black !default;
-$modal-backdrop-opacity:            .5 !default;
-$modal-header-border-color:         $gray-200 !default;
-$modal-footer-border-color:         $modal-header-border-color !default;
-$modal-header-border-width:         $modal-content-border-width !default;
-$modal-footer-border-width:         $modal-header-border-width !default;
-$modal-header-padding:              15px !default;
+$modal-backdrop-bg:           $black !default;
+$modal-backdrop-opacity:      .5 !default;
+$modal-header-border-color:   $gray-200 !default;
+$modal-footer-border-color:   $modal-header-border-color !default;
+$modal-header-border-width:   $modal-content-border-width !default;
+$modal-footer-border-width:   $modal-header-border-width !default;
+$modal-header-padding:        1rem !default;
 
 $modal-lg:                          800px !default;
 $modal-md:                          500px !default;
