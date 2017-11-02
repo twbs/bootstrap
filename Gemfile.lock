@@ -47,7 +47,7 @@ GEM
       ffi (>= 0.5.0, < 2)
     rouge (2.2.1)
     safe_yaml (1.0.4)
-    sass (3.5.2)
+    sass (3.5.3)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
       rb-fsevent (~> 0.9, >= 0.9.4)

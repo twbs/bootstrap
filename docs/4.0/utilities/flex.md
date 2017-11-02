@@ -280,6 +280,7 @@ Change how flex items wrap in a flex container. Choose from no wrapping at all (
     <div class="p-2 bd-highlight">Flex item</div>
   </div>
 </div>
+
 {% highlight html %}
 <div class="d-flex flex-nowrap">
   ...
@@ -305,6 +306,7 @@ Change how flex items wrap in a flex container. Choose from no wrapping at all (
     <div class="p-2 bd-highlight">Flex item</div>
   </div>
 </div>
+
 {% highlight html %}
 <div class="d-flex flex-wrap">
   ...
@@ -330,15 +332,13 @@ Change how flex items wrap in a flex container. Choose from no wrapping at all (
     <div class="p-2 bd-highlight">Flex item</div>
   </div>
 </div>
+
 {% highlight html %}
 <div class="d-flex flex-wrap-reverse">
   ...
 </div>
 {% endhighlight %}
 
-
-{% example html %}
-{% endexample %}
 
 Responsive variations also exist for `flex-wrap`.
 
@@ -389,6 +389,7 @@ Use `align-content` utilities on flexbox containers to align flex items *togethe
     <div class="p-2 bd-highlight">Flex item</div>
   </div>
 </div>
+
 {% highlight html %}
 <div class="d-flex align-content-start flex-wrap">
   ...
@@ -414,6 +415,7 @@ Use `align-content` utilities on flexbox containers to align flex items *togethe
     <div class="p-2 bd-highlight">Flex item</div>
   </div>
 </div>
+
 {% highlight html %}
 <div class="d-flex align-content-end flex-wrap">...</div>
 {% endhighlight %}
@@ -437,6 +439,7 @@ Use `align-content` utilities on flexbox containers to align flex items *togethe
     <div class="p-2 bd-highlight">Flex item</div>
   </div>
 </div>
+
 {% highlight html %}
 <div class="d-flex align-content-center flex-wrap">...</div>
 {% endhighlight %}
@@ -460,6 +463,7 @@ Use `align-content` utilities on flexbox containers to align flex items *togethe
     <div class="p-2 bd-highlight">Flex item</div>
   </div>
 </div>
+
 {% highlight html %}
 <div class="d-flex align-content-between flex-wrap">...</div>
 {% endhighlight %}
@@ -483,6 +487,7 @@ Use `align-content` utilities on flexbox containers to align flex items *togethe
     <div class="p-2 bd-highlight">Flex item</div>
   </div>
 </div>
+
 {% highlight html %}
 <div class="d-flex align-content-around flex-wrap">...</div>
 {% endhighlight %}
@@ -506,6 +511,7 @@ Use `align-content` utilities on flexbox containers to align flex items *togethe
     <div class="p-2 bd-highlight">Flex item</div>
   </div>
 </div>
+
 {% highlight html %}
 <div class="d-flex align-content-stretch flex-wrap">...</div>
 {% endhighlight %}
