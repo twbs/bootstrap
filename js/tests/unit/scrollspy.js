@@ -189,6 +189,7 @@ $(function () {
       .bootstrapScrollspy({ offset: 0, target: '.navbar' })
 
     var done = assert.async()
+<<<<<<< HEAD
     var testElementIsActiveAfterScroll = function (element, target) {
       var deferred = $.Deferred()
       var scrollHeight = Math.ceil($content.scrollTop() + $(target).position().top)
@@ -226,6 +227,8 @@ $(function () {
       .bootstrapScrollspy({ offset: 0, target: '.navbar' })
 
     var done = assert.async()
+=======
+>>>>>>> upstream/master
     var testElementIsActiveAfterScroll = function (element, target) {
       var deferred = $.Deferred()
       var scrollHeight = Math.ceil($content.scrollTop() + $(target).position().top)
@@ -237,6 +240,7 @@ $(function () {
       return deferred.promise()
     }
 
+<<<<<<< HEAD
     $.when(testElementIsActiveAfterScroll('#a-1', '#div-1'))
       .then(function () { return testElementIsActiveAfterScroll('#a-2', '#div-2') })
       .then(function () { done() })
@@ -276,6 +280,10 @@ $(function () {
 
     $.when(testElementIsActiveAfterScroll('#a-1', '#div-1'))
       .then(function () { return testElementIsActiveAfterScroll('#a-2', '#div-2') })
+=======
+    $.when(testElementIsActiveAfterScroll('#li-1', '#div-1'))
+      .then(function () { return testElementIsActiveAfterScroll('#li-2', '#div-2') })
+>>>>>>> upstream/master
       .then(function () { done() })
   })
 
@@ -570,6 +578,7 @@ $(function () {
       .then(function () { return testElementIsActiveAfterScroll('#li-100-2', '#div-100-2') })
       .then(function () { return testElementIsActiveAfterScroll('#li-100-1', '#div-100-1') })
       .then(function () { done() })
+<<<<<<< HEAD
   })
 
   QUnit.test('should allow passed in option offset method: offset', function (assert) {
@@ -654,6 +663,8 @@ $(function () {
 
     testOffsetMethod('js')
     testOffsetMethod('data')
+=======
+>>>>>>> upstream/master
   })
 
 })

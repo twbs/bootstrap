@@ -1,5 +1,6 @@
 fail_on_violations: true
 
+<<<<<<< HEAD
 stylelint:
   config_file: build/.stylelintrc
   enabled: true
@@ -17,3 +18,15 @@ jshint:
 
 ruby:
   enabled: false
+=======
+scss:
+  enabled: false
+
+javascript:
+  enabled: true
+  config_file: js/.jshintrc
+
+jscs:
+  enabled: true
+  config_file: js/.jscsrc
+>>>>>>> upstream/master

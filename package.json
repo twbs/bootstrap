@@ -1,7 +1,11 @@
 {
   "name": "bootstrap",
   "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
+<<<<<<< HEAD
   "version": "4.0.0-beta",
+=======
+  "version": "3.3.7",
+>>>>>>> upstream/master
   "keywords": [
     "css",
     "sass",
@@ -17,6 +21,7 @@
     "Twitter, Inc."
   ],
   "scripts": {
+<<<<<<< HEAD
     "bash": "bash",
     "bundlesize": "bundlesize",
     "css": "npm-run-all --parallel css-lint* css-compile* --sequential css-prefix* css-minify*",
@@ -61,6 +66,11 @@
     "watch": "npm-run-all --parallel watch-css watch-js",
     "watch-css": "nodemon --ignore js/ --ignore dist/ -e scss -x \"npm run css\"",
     "watch-js": "nodemon --ignore scss/ --ignore js/dist/ --ignore dist/ -e js -x \"npm-run-all --parallel js-compile-*\""
+=======
+    "change-version": "node grunt/change-version.js",
+    "update-shrinkwrap": "npm shrinkwrap --dev && shx mv ./npm-shrinkwrap.json ./grunt/npm-shrinkwrap.json",
+    "test": "grunt test"
+>>>>>>> upstream/master
   },
   "style": "dist/css/bootstrap.css",
   "sass": "scss/bootstrap.scss",
@@ -79,6 +89,7 @@
     "popper.js": "^1.12.3"
   },
   "devDependencies": {
+<<<<<<< HEAD
     "autoprefixer": "^7.1.2",
     "babel-cli": "7.0.0-beta.2",
     "babel-eslint": "^8.0.0",
@@ -113,6 +124,37 @@
     "uglify-js": "^3.0.24",
     "vnu-jar": "^17.11.1",
     "workbox-build": "^2.0.1"
+=======
+    "btoa": "~1.1.2",
+    "glob": "~7.0.3",
+    "grunt": "~1.0.1",
+    "grunt-autoprefixer": "~3.0.4",
+    "grunt-contrib-clean": "~1.0.0",
+    "grunt-contrib-compress": "~1.3.0",
+    "grunt-contrib-concat": "~1.0.0",
+    "grunt-contrib-connect": "~1.0.0",
+    "grunt-contrib-copy": "~1.0.0",
+    "grunt-contrib-csslint": "~1.0.0",
+    "grunt-contrib-cssmin": "~1.0.0",
+    "grunt-contrib-htmlmin": "~1.5.0",
+    "grunt-contrib-jshint": "~1.0.0",
+    "grunt-contrib-less": "~1.3.0",
+    "grunt-contrib-pug": "~1.0.0",
+    "grunt-contrib-qunit": "~0.7.0",
+    "grunt-contrib-uglify": "~1.0.0",
+    "grunt-contrib-watch": "~1.0.0",
+    "grunt-csscomb": "~3.1.0",
+    "grunt-exec": "~1.0.0",
+    "grunt-html": "~8.0.1",
+    "grunt-jekyll": "~0.4.4",
+    "grunt-jscs": "~3.0.1",
+    "grunt-saucelabs": "~9.0.0",
+    "load-grunt-tasks": "~3.5.0",
+    "markdown-it": "^7.0.0",
+    "shelljs": "^0.7.0",
+    "shx": "^0.1.2",
+    "time-grunt": "^1.3.0"
+>>>>>>> upstream/master
   },
   "engines": {
     "node": ">=6"

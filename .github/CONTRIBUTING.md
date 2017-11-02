@@ -18,8 +18,13 @@ the preferred channel for [bug reports](#bug-reports), [features requests](#feat
 and [submitting pull requests](#pull-requests), but please respect the following
 restrictions:
 
+<<<<<<< HEAD:.github/CONTRIBUTING.md
 * Please **do not** use the issue tracker for personal support requests.  Stack
   Overflow ([`bootstrap-4`](https://stackoverflow.com/questions/tagged/bootstrap-4) tag), [Slack](https://bootstrap-slack.herokuapp.com/) or [IRC](README.md#community) are better places to get help.
+=======
+* Please **do not** use the issue tracker for personal support requests. Stack
+  Overflow ([`twitter-bootstrap-3`](https://stackoverflow.com/questions/tagged/twitter-bootstrap-3) tag), [Slack](https://bootstrap-slack.herokuapp.com/) or [IRC](README.md#community) are better places to get help.
+>>>>>>> upstream/master:CONTRIBUTING.md
 
 * Please **do not** derail or troll issues. Keep the discussion on topic and
   respect the opinions of others.
@@ -28,7 +33,16 @@ restrictions:
   Use [GitHub's "reactions" feature](https://github.com/blog/2119-add-reactions-to-pull-requests-issues-and-comments)
   instead. We reserve the right to delete comments which violate this rule.
 
+<<<<<<< HEAD:.github/CONTRIBUTING.md
 * Please **do not** open issues regarding the official themes offered on <https://themes.getbootstrap.com/>.
+  Instead, please email any questions or feedback regarding those themes to `themes AT getbootstrap DOT com`.
+=======
+* Please **do not** open issues or pull requests regarding the code in
+  [`Normalize`](https://github.com/necolas/normalize.css) (open them in
+  their respective repositories).
+>>>>>>> upstream/master:CONTRIBUTING.md
+
+* Please **do not** open issues regarding the official themes offered on <http://themes.getbootstrap.com/>.
   Instead, please email any questions or feedback regarding those themes to `themes AT getbootstrap DOT com`.
 
 
@@ -38,7 +52,12 @@ Our bug tracker utilizes several labels to help organize and identify issues. He
 
 - `browser bug` - Issues that are reported to us, but actually are the result of a browser-specific bug. These are diagnosed with reduced test cases and result in an issue opened on that browser's own bug tracker.
 - `confirmed` - Issues that have been confirmed with a reduced test case and identify a bug in Bootstrap.
+<<<<<<< HEAD:.github/CONTRIBUTING.md
 - `css` - Issues stemming from our compiled CSS or source Sass files.
+=======
+- `css` - Issues stemming from our compiled CSS or source Less/Sass files.
+- `customizer` - Issues with our web-based Customizer.
+>>>>>>> upstream/master:CONTRIBUTING.md
 - `docs` - Issues for improving or updating our documentation.
 - `examples` - Issues involving the example templates included in our docs.
 - `feature` - Issues asking for a new feature to be added, or an existing one to be extended or modified. New features require a minor version bump (e.g., `v3.0.0` to `v3.1.0`).
@@ -116,7 +135,13 @@ When feasible, we aim to report such upstream bugs to the relevant browser vendo
 
 ## Feature requests
 
-Feature requests are welcome. But take a moment to find out whether your idea
+Feature requests are welcome, but please note that they **must target
+[Bootstrap v4](https://github.com/twbs/bootstrap/tree/v4-dev),** because
+Bootstrap v3 is now in maintenance mode and is closed off to new features.
+This is so that we can focus our efforts on Bootstrap v4, the future of the
+framework.
+
+Before opening a feature request, please take a moment to find out whether your idea
 fits with the scope and aims of the project. It's up to *you* to make a strong
 case to convince the project's developers of the merits of this feature. Please
 provide as much detail and context as possible.
@@ -133,18 +158,30 @@ implementing features, refactoring code, porting to a different language),
 otherwise you risk spending a lot of time working on something that the
 project's developers might not want to merge into the project.
 
+In particular, **pull requests that add new features to Bootstrap v3 will be
+rejected.** Bootstrap v3 is now in maintenance mode and is therefore closed
+off to new features, so that we can focus our efforts on Bootstrap v4, the
+future of the framework. Pull requests that add new features should target
+[Bootstrap v4 (the `v4-dev` git branch)](https://github.com/twbs/bootstrap/tree/v4-dev)
+instead, where they will be welcomed and duly considered.
+
 Please adhere to the [coding guidelines](#code-guidelines) used throughout the
 project (indentation, accurate comments, etc.) and any other requirements
 (such as test coverage).
 
 **Do not edit `bootstrap.css`, or `bootstrap.js`
 directly!** Those files are automatically generated. You should edit the
+<<<<<<< HEAD:.github/CONTRIBUTING.md
 source files in [`/bootstrap/scss/`](https://github.com/twbs/bootstrap/tree/master/scss)
 and/or [`/bootstrap/js/`](https://github.com/twbs/bootstrap/tree/master/js) instead.
+=======
+source files in [`/bootstrap/scss/`](https://github.com/twbs/bootstrap/tree/v4-dev/scss)
+and/or [`/bootstrap/js/`](https://github.com/twbs/bootstrap/tree/v4-dev/js) instead.
+>>>>>>> upstream/master:CONTRIBUTING.md
 
 Similarly, when contributing to Bootstrap's documentation, you should edit the
 documentation source files in
-[the `/bootstrap/docs/` directory of the `master` branch](https://github.com/twbs/bootstrap/tree/master/docs).
+[the `/bootstrap/docs/4.0` directory of the `v4-dev` branch](https://github.com/twbs/bootstrap/tree/v4-dev/docs/4.0).
 **Do not edit the `gh-pages` branch.** That branch is generated from the
 documentation source files and is managed separately by the Bootstrap Core Team.
 
@@ -166,8 +203,8 @@ included in the project:
 2. If you cloned a while ago, get the latest changes from upstream:
 
    ```bash
-   git checkout master
-   git pull upstream master
+   git checkout v4-dev
+   git pull upstream v4-dev
    ```
 
 3. Create a new topic branch (off the main project development branch) to
@@ -179,14 +216,19 @@ included in the project:
 
 4. Commit your changes in logical chunks. Please adhere to these [git commit
    message guidelines](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
+<<<<<<< HEAD:.github/CONTRIBUTING.md
    or your code is unlikely be merged into the main project. Use Git's
    [interactive rebase](https://help.github.com/articles/about-git-rebase/)
+=======
+   or your code is unlikely to be merged into the main project. Use Git's
+   [interactive rebase](https://help.github.com/articles/interactive-rebase)
+>>>>>>> upstream/master:CONTRIBUTING.md
    feature to tidy up your commits before making them public.
 
 5. Locally merge (or rebase) the upstream development branch into your topic branch:
 
    ```bash
-   git pull [--rebase] upstream master
+   git pull [--rebase] upstream v4-dev
    ```
 
 6. Push your topic branch up to your fork:
@@ -195,8 +237,13 @@ included in the project:
    git push origin <topic-branch-name>
    ```
 
+<<<<<<< HEAD:.github/CONTRIBUTING.md
 7. [Open a Pull Request](https://help.github.com/articles/about-pull-requests/)
     with a clear title and description against the `master` branch.
+=======
+7. [Open a Pull Request](https://help.github.com/articles/using-pull-requests/)
+    with a clear title and description against the `v4-dev` branch.
+>>>>>>> upstream/master:CONTRIBUTING.md
 
 **IMPORTANT**: By submitting a patch, you agree to allow the project owners to
 license your work under the terms of the [MIT License](LICENSE) (if it
@@ -228,8 +275,13 @@ includes code changes) and under the terms of the
 
 [Adhere to the Code Guide.](http://codeguide.co/#css)
 
+<<<<<<< HEAD:.github/CONTRIBUTING.md
 - When feasible, default color palettes should comply with [WCAG color contrast guidelines](https://www.w3.org/TR/WCAG20/#visual-audio-contrast).
 - Except in rare cases, don't remove default `:focus` styles (via e.g. `outline: none;`) without providing alternative styles. See [this A11Y Project post](http://a11yproject.com/posts/never-remove-css-outlines/) for more details.
+=======
+- When feasible, default color palettes should comply with [WCAG color contrast guidelines](http://www.w3.org/TR/WCAG20/#visual-audio-contrast).
+- Except in rare cases, don't remove default `:focus` styles (via e.g. `outline: none;`) without providing alternative styles. See [this A11Y Project post](http://a11yproject.com/posts/never-remove-css-outlines) for more details.
+>>>>>>> upstream/master:CONTRIBUTING.md
 
 ### JS
 
@@ -237,7 +289,11 @@ includes code changes) and under the terms of the
 - 2 spaces (no tabs)
 - strict mode
 - "Attractive"
+<<<<<<< HEAD:.github/CONTRIBUTING.md
 - Don't use [jQuery event alias convenience methods](https://github.com/jquery/jquery/blob/master/src/event/alias.js) (such as `$().focus()`). Instead, use [`$().trigger(eventType, ...)`](https://api.jquery.com/trigger/) or [`$().on(eventType, ...)`](https://api.jquery.com/on/), depending on whether you're firing an event or listening for an event. (For example, `$().trigger('focus')` or `$().on('focus', function (event) { /* handle focus event */ })`) We do this to be compatible with custom builds of jQuery where the event aliases module has been excluded.
+=======
+- Don't use [jQuery event alias convenience methods](https://github.com/jquery/jquery/blob/master/src/event/alias.js) (such as `$().focus()`). Instead, use [`$().trigger(eventType, ...)`](http://api.jquery.com/trigger/) or [`$().on(eventType, ...)`](http://api.jquery.com/on/), depending on whether you're firing an event or listening for an event. (For example, `$().trigger('focus')` or `$().on('focus', function (event) { /* handle focus event */ })`) We do this to be compatible with custom builds of jQuery where the event aliases module has been excluded.
+>>>>>>> upstream/master:CONTRIBUTING.md
 
 ### Checking coding style
 

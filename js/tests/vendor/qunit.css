@@ -1,12 +1,20 @@
 /*!
+<<<<<<< HEAD
  * QUnit 2.4.0
+=======
+ * QUnit 1.22.0
+>>>>>>> upstream/master
  * https://qunitjs.com/
  *
  * Copyright jQuery Foundation and other contributors
  * Released under the MIT license
  * https://jquery.org/license
  *
+<<<<<<< HEAD
  * Date: 2017-07-08T15:20Z
+=======
+ * Date: 2016-02-23T15:57Z
+>>>>>>> upstream/master
  */
 
 /** Font Family and Sizes */
@@ -60,6 +68,12 @@
 	padding: 0.5em 1em 0.5em 1em;
 	color: #366097;
 	background-color: #F4FF77;
+}
+
+#qunit-filteredTest {
+	padding: 0.5em 1em 0.5em 1em;
+	background-color: #F4FF77;
+	color: #366097;
 }
 
 #qunit-userAgent {
@@ -236,7 +250,11 @@
 }
 
 #qunit-tests.hidepass li.running,
+<<<<<<< HEAD
 #qunit-tests.hidepass li.pass:not(.todo) {
+=======
+#qunit-tests.hidepass li.pass {
+>>>>>>> upstream/master
 	visibility: hidden;
 	position: absolute;
 	width:   0;
