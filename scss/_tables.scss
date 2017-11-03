@@ -70,6 +70,13 @@
 .table-striped {
   tbody tr:nth-of-type(odd) {
     background-color: $table-accent-bg;
+    /* stylelint-disable */
+    // disables qualifying type selector
+    // This selector is required to override `.table-striped`
+    &.table-active {
+      background-color: $table-active-bg;
+    }
+    /* stylelint-enable */
   }
 }
 
@@ -89,14 +96,12 @@
 
 // Table backgrounds
 //
-// Exact selectors below required to override `.table-striped` and prevent
-// inheritance to nested tables.
 
 @each $color, $value in $theme-colors {
   @include table-row-variant($color, theme-color-level($color, -9));
 }
 
-@include table-row-variant(active, $table-active-bg);
+.table-active { background-color: $table-active-bg; }
 
 
 // Dark styles
@@ -139,6 +144,13 @@
   &.table-striped {
     tbody tr:nth-of-type(odd) {
       background-color: $table-dark-accent-bg;
+      /* stylelint-disable */
+      // disables qualifying type selector
+      // This selector is required to override `.table-striped`
+      &.table-active {
+        background-color: $table-dark-active-bg;
+      }
+      /* stylelint-enable */
     }
   }
 
@@ -148,6 +160,11 @@
         background-color: $table-dark-hover-bg;
       }
     }
+  }
+
+  &.table-active,
+  .table-active {
+    background-color: $table-dark-active-bg;
   }
 }
 

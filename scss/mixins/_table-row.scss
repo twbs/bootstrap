@@ -1,14 +1,13 @@
 // Tables
 
 @mixin table-row-variant($state, $background) {
-  // Exact selectors below required to override `.table-striped` and prevent
-  // inheritance to nested tables.
   .table-#{$state} {
-    &,
-    > th,
-    > td {
-      background-color: $background;
-    }
+    background-color: $background;
+  }
+
+  // This selector is required to override `.table-striped`
+  .table-striped tbody tr:nth-of-type(odd).table-#{$state} {
+    background-color: $background;
   }
 
   // Hover states for `.table-hover`
