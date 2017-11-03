@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Webpack
-description: Learn how to include Bootstrap in your project using Webpack 2.
+description: Learn how to include Bootstrap in your project using Webpack 3.
 group: getting-started
 toc: true
 ---
@@ -29,6 +29,7 @@ import 'bootstrap/js/dist/dropdown';
 Bootstrap is dependent on [jQuery](https://jquery.com/) and [Popper](https://popper.js.org/), so npm will install them for you if needed. But they must be explicitly provided by webpack. Add the following code to the `plugins` section in your webpack config file:
 
 {% highlight js %}
+  // don't forget to import webpack (using import or require) to use webpack.ProvidePlugin
   plugins: [
     ...
       new webpack.ProvidePlugin({
@@ -83,7 +84,7 @@ For Bootstrap to compile, make sure you install and use the required loaders: [s
         }
       }
     }, {
-      loader: 'sass-loader' // compiles SASS to CSS
+      loader: 'sass-loader' // compiles Sass to CSS
     }]
   },
   ...
@@ -97,4 +98,17 @@ Alternatively, you may use Bootstrap's ready-to-use css by simply adding this li
 import 'bootstrap/dist/css/bootstrap.min.css';
 {% endhighlight %}
 
-In this case you may use your existing rule for `css` without any special modifications to webpack config.
+In this case you may use your existing rule for `css` without any special modifications to webpack config except you don't need `sass-loader` just [style-loader](https://github.com/webpack-contrib/style-loader) and [css-loader](https://github.com/webpack-contrib/css-loader).
+
+{% highlight js %}
+  ...
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      }
+    ]
+  }
+  ...
+{% endhighlight %}
