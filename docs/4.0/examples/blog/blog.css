@@ -1,7 +1,6 @@
 /*
  * Globals
  */
-
 @media (min-width: 48em) {
   html {
     font-size: 18px;
@@ -30,20 +29,16 @@ h6,
   color: #333;
 }
 
-
 /*
  * Override Bootstrap's default container.
  */
-
 .container {
   max-width: 60rem;
 }
 
-
 /*
  * Masthead for nav
  */
-
 .blog-masthead {
   margin-bottom: 3rem;
   background-color: #428bca;
@@ -81,11 +76,9 @@ h6,
   border-left: .3rem solid transparent;
 }
 
-
 /*
  * Blog name and description
  */
-
 .blog-header {
   padding-bottom: 1.25rem;
   margin-bottom: 2rem;
@@ -107,7 +100,6 @@ h6,
   }
 }
 
-
 /*
  * Main column and sidebar layout
  */
@@ -127,7 +119,6 @@ h6,
   margin-bottom: 0;
 }
 
-
 /* Pagination */
 .blog-pagination {
   margin-bottom: 4rem;
@@ -136,11 +127,9 @@ h6,
   border-radius: 2rem;
 }
 
-
 /*
  * Blog posts
  */
-
 .blog-post {
   margin-bottom: 4rem;
 }
@@ -153,11 +142,9 @@ h6,
   color: #999;
 }
 
-
 /*
  * Footer
  */
-
 .blog-footer {
   padding: 2.5rem 0;
   color: #999;
