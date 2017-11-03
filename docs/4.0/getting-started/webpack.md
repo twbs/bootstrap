@@ -84,7 +84,7 @@ For Bootstrap to compile, make sure you install and use the required loaders: [s
         }
       }
     }, {
-      loader: 'sass-loader' // compiles SASS to CSS
+      loader: 'sass-loader' // compiles Sass to CSS
     }]
   },
   ...
