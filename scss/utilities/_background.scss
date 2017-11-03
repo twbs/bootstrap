@@ -1,5 +1,13 @@
 // stylelint-disable declaration-no-important
 
+@each $color, $value in $grays {
+  @include bg-variant(".bg-gray-#{$color}", $value);
+}
+
+@each $color, $value in $colors {
+  @include bg-variant(".bg-#{$color}", $value);
+}
+
 @each $color, $value in $theme-colors {
   @include bg-variant(".bg-#{$color}", $value);
 }
