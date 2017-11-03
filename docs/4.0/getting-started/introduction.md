@@ -113,7 +113,7 @@ For more straightforward sizing in CSS, we switch the global `box-sizing` value 
 
 On the rare occasion you need to override it, use something like the following:
 
-{% highlight scss %}
+{% highlight css %}
 .selector-for-some-widget {
   box-sizing: content-box;
 }
