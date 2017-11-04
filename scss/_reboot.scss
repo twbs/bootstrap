@@ -276,6 +276,9 @@ img {
 
 svg:not(:root) {
   overflow: hidden; // Hide the overflow in IE
+  // Workaround Chrome performance issue,
+  // see: https://github.com/twbs/bootstrap/issues/24673
+  font-family: $font-family-svg;
 }
 
 
