@@ -59,13 +59,14 @@ Be sure to have your pages set up with the latest design and development standar
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Hello, world!</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ site.cdn.css }}" integrity="{{ site.cdn.css_hash }}" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
   </head>
   <body>
     <h1>Hello, world!</h1>
@@ -112,7 +113,7 @@ For more straightforward sizing in CSS, we switch the global `box-sizing` value 
 
 On the rare occasion you need to override it, use something like the following:
 
-{% highlight scss %}
+{% highlight css %}
 .selector-for-some-widget {
   box-sizing: content-box;
 }

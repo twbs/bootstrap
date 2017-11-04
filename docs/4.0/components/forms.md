@@ -138,15 +138,15 @@ If you want to have `<input readonly>` elements in your form styled as plain tex
 
 {% example html %}
 <form class="form-inline">
-  <div class="form-group">
+  <div class="form-group mb-2">
     <label for="staticEmail2" class="sr-only">Email</label>
     <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="email@example.com">
   </div>
-  <div class="form-group mx-sm-3">
+  <div class="form-group mx-sm-3 mb-2">
     <label for="inputPassword2" class="sr-only">Password</label>
     <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
   </div>
-  <button type="submit" class="btn btn-primary">Confirm identity</button>
+  <button type="submit" class="btn btn-primary mb-2">Confirm identity</button>
 </form>
 {% endexample %}
 
@@ -264,11 +264,11 @@ The `.form-group` class is the easiest way to add some structure to forms. Its o
 {% example html %}
 <form>
   <div class="form-group">
-    <label class="form-control-label" for="formGroupExampleInput">Example label</label>
+    <label class="col-form-label" for="formGroupExampleInput">Example label</label>
     <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
   </div>
   <div class="form-group">
-    <label class="form-control-label" for="formGroupExampleInput2">Another label</label>
+    <label class="col-form-label" for="formGroupExampleInput2">Another label</label>
     <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
   </div>
 </form>
@@ -477,24 +477,24 @@ The example below uses a flexbox utility to vertically center the contents and c
   <div class="form-row align-items-center">
     <div class="col-auto">
       <label class="sr-only" for="inlineFormInput">Name</label>
-      <input type="text" class="form-control mb-2 mb-sm-0" id="inlineFormInput" placeholder="Jane Doe">
+      <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Jane Doe">
     </div>
     <div class="col-auto">
       <label class="sr-only" for="inlineFormInputGroup">Username</label>
-      <div class="input-group mb-2 mb-sm-0">
+      <div class="input-group mb-2">
         <div class="input-group-addon">@</div>
         <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Username">
       </div>
     </div>
     <div class="col-auto">
-      <div class="form-check mb-2 mb-sm-0">
+      <div class="form-check mb-2">
         <label class="form-check-label">
           <input class="form-check-input" type="checkbox"> Remember me
         </label>
       </div>
     </div>
     <div class="col-auto">
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn btn-primary mb-2">Submit</button>
     </div>
   </div>
 </form>
@@ -537,7 +537,7 @@ And of course [custom form controls](#custom-forms) are supported.
   <div class="form-row align-items-center">
     <div class="col-auto">
       <label class="mr-sm-2" for="inlineFormCustomSelect">Preference</label>
-      <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect">
+      <select class="custom-select mb-2 mr-sm-2" id="inlineFormCustomSelect">
         <option selected>Choose...</option>
         <option value="1">One</option>
         <option value="2">Two</option>
@@ -545,14 +545,14 @@ And of course [custom form controls](#custom-forms) are supported.
       </select>
     </div>
     <div class="col-auto">
-      <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+      <label class="custom-control custom-checkbox mb-2 mr-sm-2">
         <input type="checkbox" class="custom-control-input">
         <span class="custom-control-indicator"></span>
         <span class="custom-control-description">Remember my preference</span>
       </label>
     </div>
     <div class="col-auto">
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn btn-primary mb-2">Submit</button>
     </div>
   </div>
 </form>
@@ -571,21 +571,21 @@ You may need to manually address the width and alignment of individual form cont
 {% example html %}
 <form class="form-inline">
   <label class="sr-only" for="inlineFormInputName2">Name</label>
-  <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInputName2" placeholder="Jane Doe">
+  <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Jane Doe">
 
   <label class="sr-only" for="inlineFormInputGroupUsername2">Username</label>
-  <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+  <div class="input-group mb-2 mr-sm-2">
     <div class="input-group-addon">@</div>
     <input type="text" class="form-control" id="inlineFormInputGroupUsername2" placeholder="Username">
   </div>
 
-  <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+  <div class="form-check mb-2 mr-sm-2">
     <label class="form-check-label">
       <input class="form-check-input" type="checkbox"> Remember me
     </label>
   </div>
 
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary mb-2">Submit</button>
 </form>
 {% endexample %}
 
@@ -593,21 +593,21 @@ Custom form controls and selects are also supported.
 
 {% example html %}
 <form class="form-inline">
-  <label class="mr-sm-2" for="inlineFormCustomSelectPref">Preference</label>
-  <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelectPref">
+  <label class="mr-2" for="inlineFormCustomSelectPref">Preference</label>
+  <select class="custom-select mb-2 mr-sm-2" id="inlineFormCustomSelectPref">
     <option selected>Choose...</option>
     <option value="1">One</option>
     <option value="2">Two</option>
     <option value="3">Three</option>
   </select>
 
-  <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+  <label class="custom-control custom-checkbox mb-2 mr-sm-2">
     <input type="checkbox" class="custom-control-input">
     <span class="custom-control-indicator"></span>
     <span class="custom-control-description">Remember my preference</span>
   </label>
 
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary mb-2">Submit</button>
 </form>
 {% endexample %}
 
@@ -724,7 +724,7 @@ For custom Bootstrap form validation messages, you'll need to add the `novalidat
 When attempting to submit, you'll see the `:invalid` and `:valid` styles applied to your form controls.
 
 {% example html %}
-<form class="container" id="needs-validation" novalidate>
+<form id="needs-validation" novalidate>
   <div class="row">
     <div class="col-md-6 mb-3">
       <label for="validationCustom01">First name</label>

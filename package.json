@@ -1,7 +1,7 @@
 {
   "name": "bootstrap",
   "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
-  "version": "4.0.0-beta",
+  "version": "4.0.0-beta.2",
   "keywords": [
     "css",
     "sass",
@@ -17,7 +17,6 @@
     "Twitter, Inc."
   ],
   "scripts": {
-    "bash": "bash",
     "bundlesize": "bundlesize",
     "css": "npm-run-all --parallel css-lint* css-compile* --sequential css-prefix* css-minify*",
     "css-main": "npm-run-all --parallel css-lint css-compile --sequential css-prefix css-minify",
@@ -30,18 +29,18 @@
     "css-prefix-docs": "postcss --config build/postcss.config.js --replace \"assets/css/docs.min.css\" \"docs/**/*.css\"",
     "css-minify": "cleancss --level 1 --source-map --source-map-inline-sources --output dist/css/bootstrap.min.css dist/css/bootstrap.css && cleancss --level 1 --source-map --source-map-inline-sources --output dist/css/bootstrap-grid.min.css dist/css/bootstrap-grid.css && cleancss --level 1 --source-map --source-map-inline-sources --output dist/css/bootstrap-reboot.min.css dist/css/bootstrap-reboot.css",
     "css-minify-docs": "cleancss --level 1 --source-map --source-map-inline-sources --output assets/css/docs.min.css assets/css/docs.min.css",
-    "js": "npm-run-all js-lint* js-compile* js-minify*",
+    "js": "npm-run-all js-lint* js-compile js-minify",
     "js-main": "npm-run-all js-lint js-compile js-minify",
     "js-docs": "npm-run-all js-lint-docs js-minify-docs",
     "js-lint": "eslint js/ && eslint --config js/tests/.eslintrc.json --env node build/",
     "js-lint-docs": "eslint --config js/tests/.eslintrc.json assets/js/ docs/ sw.js",
     "js-compile": "npm-run-all --parallel js-compile-*",
-    "js-compile-standalone": "cross-env ROLLUP=true rollup --environment BUNDLE:false --config build/rollup.config.js",
-    "js-compile-bundle": "cross-env ROLLUP=true rollup --environment BUNDLE:true --config build/rollup.config.js",
+    "js-compile-standalone": "cross-env ROLLUP=true rollup --environment BUNDLE:false --config build/rollup.config.js --sourcemap",
+    "js-compile-bundle": "cross-env ROLLUP=true rollup --environment BUNDLE:true --config build/rollup.config.js --sourcemap",
     "js-compile-plugins": "cross-env PLUGINS=true babel js/src/ --out-dir js/dist/ --source-maps",
     "js-minify": "npm-run-all --parallel js-minify-*",
-    "js-minify-standalone": "uglifyjs --compress typeofs=false --mangle --comments \"/^!/\" --output dist/js/bootstrap.min.js dist/js/bootstrap.js",
-    "js-minify-bundle": "uglifyjs --compress typeofs=false --mangle --comments \"/^!/\" --output dist/js/bootstrap.bundle.min.js dist/js/bootstrap.bundle.js",
+    "js-minify-standalone": "uglifyjs --compress typeofs=false --mangle --comments \"/^!/\" --source-map \"content=dist/js/bootstrap.js.map,includeSources,url=bootstrap.min.js.map\" --output dist/js/bootstrap.min.js dist/js/bootstrap.js",
+    "js-minify-bundle": "uglifyjs --compress typeofs=false --mangle --comments \"/^!/\" --source-map \"content=dist/js/bootstrap.bundle.js.map,includeSources,url=bootstrap.bundle.min.js.map\" --output dist/js/bootstrap.bundle.min.js dist/js/bootstrap.bundle.js",
     "js-minify-docs": "uglifyjs --mangle --comments \"/^!/\" --output assets/js/docs.min.js assets/js/vendor/anchor.min.js assets/js/vendor/clipboard.min.js assets/js/vendor/holder.min.js assets/js/src/application.js assets/js/src/pwa.js",
     "js-test": "phantomjs ./node_modules/qunit-phantomjs-runner/runner.js js/tests/index.html 60",
     "js-test-cloud": "ruby -r webrick -e \"s = WEBrick::HTTPServer.new(:Port => 3000, :DocumentRoot => Dir.pwd, :Logger => WEBrick::Log.new('/dev/null'), :AccessLog => []); trap('INT') { s.shutdown }; s.start\" & node build/saucelabs-unit-test.js",
@@ -49,7 +48,9 @@
     "docs-compile": "bundle exec jekyll build",
     "postdocs-compile": "npm run docs-workbox-precache",
     "docs-github": "shx echo \"github: true\" > twbsconfig.yml && npm run docs-compile -- --config _config.yml,twbsconfig.yml && shx rm ./twbsconfig.yml",
-    "docs-lint": "htmllint --rc build/.htmllintrc \"_gh_pages/**/*.html\" \"js/tests/**/*.html\" && node build/htmllint.js",
+    "docs-lint": "npm-run-all docs-lint-*",
+    "docs-lint-htmllint": "htmllint --rc build/.htmllintrc \"_gh_pages/**/*.html\" \"js/tests/**/*.html\"",
+    "docs-lint-vnu-jar": "node build/vnu-jar.js",
     "docs-serve": "bundle exec jekyll serve",
     "docs-upload-preview": "build/upload-preview.sh",
     "docs-workbox-precache": "node build/workbox.js",
@@ -57,10 +58,10 @@
     "release-version": "node build/change-version.js",
     "release-zip": "cd dist/ && zip -r9 bootstrap-$npm_package_version-dist.zip * && shx mv bootstrap-$npm_package_version-dist.zip ..",
     "dist": "npm-run-all --parallel css js",
-    "test": "npm-run-all dist --parallel js-test --sequential docs-compile docs-lint bundlesize",
+    "test": "npm-run-all dist js-test docs-compile docs-lint bundlesize",
     "watch": "npm-run-all --parallel watch-css watch-js",
     "watch-css": "nodemon --ignore js/ --ignore dist/ -e scss -x \"npm run css\"",
-    "watch-js": "nodemon --ignore scss/ --ignore js/dist/ --ignore dist/ -e js -x \"npm-run-all --parallel js-compile-*\""
+    "watch-js": "nodemon --ignore scss/ --ignore js/dist/ --ignore dist/ -e js -x \"npm run js-compile\""
   },
   "style": "dist/css/bootstrap.css",
   "sass": "scss/bootstrap.scss",
@@ -75,8 +76,8 @@
   "license": "MIT",
   "dependencies": {},
   "peerDependencies": {
-    "jquery": "^3.0.0",
-    "popper.js": "^1.12.3"
+    "jquery": "1.9.1 - 3",
+    "popper.js": "^1.12.6"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
@@ -96,7 +97,7 @@
     "nodemon": "^1.11.0",
     "npm-run-all": "^4.0.2",
     "phantomjs-prebuilt": "^2.1.14",
-    "popper.js": "^1.12.5",
+    "popper.js": "^1.12.6",
     "postcss-cli": "^4.1.0",
     "qunit-phantomjs-runner": "^2.3.0",
     "qunitjs": "^2.4.0",
@@ -125,6 +126,7 @@
     "build",
     "js/.eslintrc.json",
     "js/**/*.js",
+    "js/**/*.js.map",
     "scss/**/*.scss"
   ],
   "browserslist": [
@@ -197,7 +199,7 @@
     "dependencies": {},
     "peerDependencies": {
       "jquery": "^3.0.0",
-      "popper.js": "^1.12.3"
+      "popper.js": "^1.12.6"
     }
   }
 }

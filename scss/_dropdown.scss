@@ -27,7 +27,7 @@
   background-color: $dropdown-bg;
   background-clip: padding-box;
   border: $dropdown-border-width solid $dropdown-border-color;
-  @include border-radius($border-radius);
+  @include border-radius($dropdown-border-radius);
   @include box-shadow($dropdown-box-shadow);
 }
 
@@ -41,6 +41,34 @@
 
   .dropdown-toggle {
     @include caret(up);
+  }
+}
+
+.dropright {
+  .dropdown-menu {
+    margin-top: 0;
+    margin-left: $dropdown-spacer;
+  }
+
+  .dropdown-toggle {
+    @include caret(right);
+    &::after {
+      vertical-align: 0;
+    }
+  }
+}
+
+.dropleft {
+  .dropdown-menu {
+    margin-top: 0;
+    margin-right: $dropdown-spacer;
+  }
+
+  .dropdown-toggle {
+    @include caret(left);
+    &::before {
+      vertical-align: 0;
+    }
   }
 }
 
@@ -67,14 +95,14 @@
   @include hover-focus {
     color: $dropdown-link-hover-color;
     text-decoration: none;
-    background-color: $dropdown-link-hover-bg;
+    @include gradient-bg($dropdown-link-hover-bg);
   }
 
   &.active,
   &:active {
     color: $dropdown-link-active-color;
     text-decoration: none;
-    background-color: $dropdown-link-active-bg;
+    @include gradient-bg($dropdown-link-active-bg);
   }
 
   &.disabled,
