@@ -19,6 +19,7 @@
   color: $progress-bar-color;
   text-align: center;
   background-color: $progress-bar-bg;
+  @include transition($progress-bar-transition);
 }
 
 .progress-bar-striped {
