@@ -665,18 +665,17 @@ $card-columns-margin:               $card-spacer-y !default;
 
 // Tooltips
 
-$tooltip-max-width:                 200px !default;
-$tooltip-color:                     $white !default;
-$tooltip-bg:                        $black !default;
-$tooltip-opacity:                   .9 !default;
-$tooltip-padding-y:                 3px !default;
-$tooltip-padding-x:                 8px !default;
-$tooltip-margin:                    0 !default;
+$tooltip-max-width:           200px !default;
+$tooltip-color:               $white !default;
+$tooltip-bg:                  $black !default;
+$tooltip-opacity:             .9 !default;
+$tooltip-padding-y:           .25rem !default;
+$tooltip-padding-x:           .5rem !default;
+$tooltip-margin:              0 !default;
 
-
-$tooltip-arrow-width:               5px !default;
-$tooltip-arrow-height:              5px !default;
-$tooltip-arrow-color:               $tooltip-bg !default;
+$tooltip-arrow-width:         .4rem !default;
+$tooltip-arrow-height:        $tooltip-arrow-width !default;
+$tooltip-arrow-color:         $tooltip-bg !default;
 
 
 // Popovers
