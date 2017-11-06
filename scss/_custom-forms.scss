@@ -215,7 +215,6 @@
   top: 0;
   right: 0;
   left: 0;
-  z-index: 5;
   height: $custom-file-height;
   padding: $custom-file-padding-y $custom-file-padding-x;
   line-height: $custom-file-line-height;
@@ -238,7 +237,7 @@
     top: -$custom-file-border-width;
     right: -$custom-file-border-width;
     bottom: -$custom-file-border-width;
-    z-index: 6;
+    z-index: 1;
     display: block;
     height: $custom-file-height;
     padding: $custom-file-padding-y $custom-file-padding-x;
