@@ -410,4 +410,25 @@ $(function () {
       $popover.trigger($.Event('click'))
     }, 200)
   })
+
+  QUnit.test('popover should call content function only once', function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+    var nbCall = 0
+    $('<div id="popover" style="display:none">content</div>').appendTo('#qunit-fixture')
+    var $popover = $('<a href="#">@Johann-S</a>')
+      .appendTo('#qunit-fixture')
+      .bootstrapPopover({
+        content: function () {
+          nbCall++
+          return $('#popover').clone().show().get(0)
+        }
+      })
+      .on('shown.bs.popover', function () {
+        assert.strictEqual(nbCall, 1)
+        done()
+      })
+
+    $popover.trigger($.Event('click'))
+  })
 })
