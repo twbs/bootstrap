@@ -42,7 +42,7 @@ Our bug tracker utilizes several labels to help organize and identify issues. He
 - `docs` - Issues for improving or updating our documentation.
 - `examples` - Issues involving the example templates included in our docs.
 - `feature` - Issues asking for a new feature to be added, or an existing one to be extended or modified. New features require a minor version bump (e.g., `v3.0.0` to `v3.1.0`).
-- `grunt` - Issues with our build system, which is used to run all our tests, concatenate and compile source files, and more.
+- `build` - Issues with our build system, which is used to run all our tests, concatenate and compile source files, and more.
 - `help wanted` - Issues we need or would love help from the community to resolve.
 - `js` - Issues stemming from our compiled or source JavaScript files.
 - `meta` - Issues with the project itself or our GitHub repository.
@@ -57,7 +57,7 @@ Good bug reports are extremely helpful, so thanks!
 
 Guidelines for bug reports:
 
-0. **Validate and lint your code** &mdash; [validate your HTML](https://html5.validator.nu)
+0. **Validate and lint your code** &mdash; [validate your HTML](https://html5.validator.nu/)
    and [lint your HTML](https://github.com/twbs/bootlint) to ensure your
    problem isn't caused by a simple error in your own code.
 
@@ -151,7 +151,7 @@ documentation source files and is managed separately by the Bootstrap Core Team.
 Adhering to the following process is the best way to get your work
 included in the project:
 
-1. [Fork](https://help.github.com/fork-a-repo/) the project, clone your fork,
+1. [Fork](https://help.github.com/articles/fork-a-repo/) the project, clone your fork,
    and configure the remotes:
 
    ```bash
@@ -180,7 +180,7 @@ included in the project:
 4. Commit your changes in logical chunks. Please adhere to these [git commit
    message guidelines](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
    or your code is unlikely be merged into the main project. Use Git's
-   [interactive rebase](https://help.github.com/articles/interactive-rebase)
+   [interactive rebase](https://help.github.com/articles/about-git-rebase/)
    feature to tidy up your commits before making them public.
 
 5. Locally merge (or rebase) the upstream development branch into your topic branch:
@@ -195,7 +195,7 @@ included in the project:
    git push origin <topic-branch-name>
    ```
 
-7. [Open a Pull Request](https://help.github.com/articles/using-pull-requests/)
+7. [Open a Pull Request](https://help.github.com/articles/about-pull-requests/)
     with a clear title and description against the `master` branch.
 
 **IMPORTANT**: By submitting a patch, you agree to allow the project owners to
@@ -211,7 +211,7 @@ includes code changes) and under the terms of the
 * Push the revised version to your pull request's branch and post a comment on the pull request saying that you've fixed the problem(s). One of the Bootstrap Core Team members will then come along and reopen your pull request.
 * Or you can just open a new pull request for your revised version.
 
-[@twbs-savage](https://github.com/twbs-savage) is a Bootstrap bot that automatically runs cross-browser tests (via [Sauce](https://saucelabs.com) and Travis CI) on JavaScript pull requests. Savage will leave a comment on pull requests stating whether cross-browser JS tests passed or failed, with a link to the full Travis build details. If your pull request fails, check the Travis log to see which browser + OS combinations failed. Each browser test in the Travis log includes a link to a Sauce page with details about the test. On those details pages, you can watch a screencast of the test run to see exactly which unit tests failed.
+[@twbs-savage](https://github.com/twbs-savage) is a Bootstrap bot that automatically runs cross-browser tests (via [Sauce](https://saucelabs.com/) and Travis CI) on JavaScript pull requests. Savage will leave a comment on pull requests stating whether cross-browser JS tests passed or failed, with a link to the full Travis build details. If your pull request fails, check the Travis log to see which browser + OS combinations failed. Each browser test in the Travis log includes a link to a Sauce page with details about the test. On those details pages, you can watch a screencast of the test run to see exactly which unit tests failed.
 
 
 ## Code guidelines
