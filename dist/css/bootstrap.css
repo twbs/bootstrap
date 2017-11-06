@@ -524,7 +524,7 @@ mark,
 }
 
 .list-inline-item:not(:last-child) {
-  margin-right: 5px;
+  margin-right: 0.5rem;
 }
 
 .initialism {
@@ -2072,6 +2072,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 .was-validated .form-control:valid:focus, .form-control.is-valid:focus, .was-validated
 .custom-select:valid:focus,
 .custom-select.is-valid:focus {
+  border-color: #28a745;
   box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
 }
 
@@ -2145,6 +2146,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 .was-validated .form-control:invalid:focus, .form-control.is-invalid:focus, .was-validated
 .custom-select:invalid:focus,
 .custom-select.is-invalid:focus {
+  border-color: #dc3545;
   box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
 }
 
@@ -2300,7 +2302,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 }
 
 .btn.disabled, .btn:disabled {
-  opacity: .65;
+  opacity: 0.65;
 }
 
 .btn:not([disabled]):not(.disabled):active, .btn:not([disabled]):not(.disabled).active {
@@ -4794,12 +4796,14 @@ tbody.collapse.show {
 .progress-bar {
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-align: center;
-  align-items: center;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -ms-flex-pack: center;
   justify-content: center;
   color: #fff;
+  text-align: center;
   background-color: #007bff;
+  transition: width 0.6s ease;
 }
 
 .progress-bar-striped {
@@ -5307,8 +5311,8 @@ button.close {
 .tooltip .arrow {
   position: absolute;
   display: block;
-  width: 5px;
-  height: 5px;
+  width: 0.4rem;
+  height: 0.4rem;
 }
 
 .tooltip .arrow::before {
@@ -5318,7 +5322,7 @@ button.close {
 }
 
 .tooltip.bs-tooltip-top, .tooltip.bs-tooltip-auto[x-placement^="top"] {
-  padding: 5px 0;
+  padding: 0.4rem 0;
 }
 
 .tooltip.bs-tooltip-top .arrow, .tooltip.bs-tooltip-auto[x-placement^="top"] .arrow {
@@ -5326,14 +5330,14 @@ button.close {
 }
 
 .tooltip.bs-tooltip-top .arrow::before, .tooltip.bs-tooltip-auto[x-placement^="top"] .arrow::before {
-  margin-left: -3px;
+  margin-left: -0.4rem;
   content: "";
-  border-width: 5px 5px 0;
+  border-width: 0.4rem 0.4rem 0;
   border-top-color: #000;
 }
 
 .tooltip.bs-tooltip-right, .tooltip.bs-tooltip-auto[x-placement^="right"] {
-  padding: 0 5px;
+  padding: 0 0.4rem;
 }
 
 .tooltip.bs-tooltip-right .arrow, .tooltip.bs-tooltip-auto[x-placement^="right"] .arrow {
@@ -5341,14 +5345,14 @@ button.close {
 }
 
 .tooltip.bs-tooltip-right .arrow::before, .tooltip.bs-tooltip-auto[x-placement^="right"] .arrow::before {
-  margin-top: -3px;
+  margin-top: -0.4rem;
   content: "";
-  border-width: 5px 5px 5px 0;
+  border-width: 0.4rem 0.4rem 0.4rem 0;
   border-right-color: #000;
 }
 
 .tooltip.bs-tooltip-bottom, .tooltip.bs-tooltip-auto[x-placement^="bottom"] {
-  padding: 5px 0;
+  padding: 0.4rem 0;
 }
 
 .tooltip.bs-tooltip-bottom .arrow, .tooltip.bs-tooltip-auto[x-placement^="bottom"] .arrow {
@@ -5356,14 +5360,14 @@ button.close {
 }
 
 .tooltip.bs-tooltip-bottom .arrow::before, .tooltip.bs-tooltip-auto[x-placement^="bottom"] .arrow::before {
-  margin-left: -3px;
+  margin-left: -0.4rem;
   content: "";
-  border-width: 0 5px 5px;
+  border-width: 0 0.4rem 0.4rem;
   border-bottom-color: #000;
 }
 
 .tooltip.bs-tooltip-left, .tooltip.bs-tooltip-auto[x-placement^="left"] {
-  padding: 0 5px;
+  padding: 0 0.4rem;
 }
 
 .tooltip.bs-tooltip-left .arrow, .tooltip.bs-tooltip-auto[x-placement^="left"] .arrow {
@@ -5372,15 +5376,15 @@ button.close {
 
 .tooltip.bs-tooltip-left .arrow::before, .tooltip.bs-tooltip-auto[x-placement^="left"] .arrow::before {
   right: 0;
-  margin-top: -3px;
+  margin-top: -0.4rem;
   content: "";
-  border-width: 5px 0 5px 5px;
+  border-width: 0.4rem 0 0.4rem 0.4rem;
   border-left-color: #000;
 }
 
 .tooltip-inner {
   max-width: 200px;
-  padding: 3px 8px;
+  padding: 0.25rem 0.5rem;
   color: #fff;
   text-align: center;
   background-color: #000;
