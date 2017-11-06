@@ -148,7 +148,7 @@
 
   &:focus {
     border-color: $custom-select-focus-border-color;
-    outline: none;
+    outline: 0;
     @include box-shadow($custom-select-focus-box-shadow);
 
     &::-ms-value {

@@ -15,7 +15,7 @@
     color: $input-focus-color;
     background-color: $input-focus-bg;
     border-color: $input-focus-border-color;
-    outline: none;
+    outline: 0;
     // Avoid using mixin so we can pass custom focus shadow properly
     @if $enable-shadows {
       box-shadow: $input-box-shadow, $input-focus-box-shadow;
