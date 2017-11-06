@@ -12,7 +12,7 @@
 //
 // Creates two color stops, start and end, by specifying a color and position for each color stop.
 @mixin gradient-x($start-color: #555, $end-color: #333, $start-percent: 0%, $end-percent: 100%) {
-  background-image: linear-gradient(to right, $start-color $start-percent, $end-color $end-percent);
+  background-image: linear-gradient(to $right, $start-color $start-percent, $end-color $end-percent);
   background-repeat: repeat-x;
 }
 
@@ -29,7 +29,7 @@
   background-repeat: repeat-x;
 }
 @mixin gradient-x-three-colors($start-color: #00b3ee, $mid-color: #7a43b6, $color-stop: 50%, $end-color: #c3325f) {
-  background-image: linear-gradient(to right, $start-color, $mid-color $color-stop, $end-color);
+  background-image: linear-gradient(to $right, $start-color, $mid-color $color-stop, $end-color);
   background-repeat: no-repeat;
 }
 @mixin gradient-y-three-colors($start-color: #00b3ee, $mid-color: #7a43b6, $color-stop: 50%, $end-color: #c3325f) {

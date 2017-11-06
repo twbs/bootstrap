@@ -11,8 +11,8 @@
   position: relative;
   display: inline-flex;
   min-height: (1rem * $line-height-base);
-  padding-left: $custom-control-gutter;
-  margin-right: $custom-control-spacer-x;
+  padding-#{$left}: $custom-control-gutter;
+  margin-#{$right}: $custom-control-spacer-x;
 }
 
 .custom-control-input {
@@ -55,7 +55,7 @@
 .custom-control-indicator {
   position: absolute;
   top: (($line-height-base - $custom-control-indicator-size) / 2);
-  left: 0;
+  #{$left}: 0;
   display: block;
   width: $custom-control-indicator-size;
   height: $custom-control-indicator-size;
@@ -116,7 +116,7 @@
     margin-bottom: $custom-control-spacer-y;
 
     + .custom-control {
-      margin-left: 0;
+      margin-#{$left}: 0;
     }
   }
 }
@@ -136,7 +136,7 @@
   line-height: $custom-select-line-height;
   color: $custom-select-color;
   vertical-align: middle;
-  background: $custom-select-bg $custom-select-indicator no-repeat right $custom-select-padding-x center;
+  background: $custom-select-bg $custom-select-indicator no-repeat $right $custom-select-padding-x center;
   background-size: $custom-select-bg-size;
   border: $custom-select-border-width solid $custom-select-border-color;
   @if $enable-rounded {
@@ -213,8 +213,8 @@
 .custom-file-control {
   position: absolute;
   top: 0;
-  right: 0;
-  left: 0;
+  #{$right}: 0;
+  #{$left}: 0;
   z-index: 5;
   height: $custom-file-height;
   padding: $custom-file-padding-y $custom-file-padding-x;
@@ -236,7 +236,7 @@
   &::before {
     position: absolute;
     top: -$custom-file-border-width;
-    right: -$custom-file-border-width;
+    #{$right}: -$custom-file-border-width;
     bottom: -$custom-file-border-width;
     z-index: 6;
     display: block;

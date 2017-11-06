@@ -104,6 +104,7 @@ $enable-transitions:        true !default;
 $enable-hover-media-query:  false !default;
 $enable-grid-classes:       true !default;
 $enable-print-styles:       true !default;
+$enable-rtl:                false !default;
 
 
 // Spacing
@@ -129,6 +130,12 @@ $sizes: (
   75: 75%,
   100: 100%
 ) !default;
+
+// RTL support flips 'right' and 'left' on attributes. Not on selectors.
+$left:         if($enable-rtl, right, left);
+$right:        if($enable-rtl, left, right);
+$direction:    if($enable-rtl, rtl, ltr);
+$unicode-bidi: if($enable-rtl, embed, normal);
 
 // Body
 //

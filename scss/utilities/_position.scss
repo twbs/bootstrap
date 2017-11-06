@@ -14,16 +14,16 @@ $positions: static, relative, absolute, fixed, sticky;
 .fixed-top {
   position: fixed;
   top: 0;
-  right: 0;
-  left: 0;
+  #{$right}: 0;
+  #{$left}: 0;
   z-index: $zindex-fixed;
 }
 
 .fixed-bottom {
   position: fixed;
-  right: 0;
+  #{$right}: 0;
   bottom: 0;
-  left: 0;
+  #{$left}: 0;
   z-index: $zindex-fixed;
 }
 

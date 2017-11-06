@@ -34,7 +34,7 @@
     }
 
     .arrow::before {
-      margin-left: -($tooltip-arrow-width - 2);
+      margin-#{$left}: -($tooltip-arrow-width - 2);
       content: "";
       border-width: $tooltip-arrow-width $tooltip-arrow-width 0;
       border-top-color: $tooltip-arrow-color;
@@ -43,14 +43,14 @@
   &.bs-tooltip-right {
     padding: 0 $tooltip-arrow-width;
     .arrow {
-      left: 0;
+      #{$left}: 0;
     }
 
     .arrow::before {
       margin-top: -($tooltip-arrow-width - 2);
       content: "";
       border-width: $tooltip-arrow-width $tooltip-arrow-width $tooltip-arrow-width 0;
-      border-right-color: $tooltip-arrow-color;
+      border-#{$right}-color: $tooltip-arrow-color;
     }
   }
   &.bs-tooltip-bottom {
@@ -60,7 +60,7 @@
     }
 
     .arrow::before {
-      margin-left: -($tooltip-arrow-width - 2);
+      margin-#{$left}: -($tooltip-arrow-width - 2);
       content: "";
       border-width: 0 $tooltip-arrow-width $tooltip-arrow-width;
       border-bottom-color: $tooltip-arrow-color;
@@ -69,15 +69,15 @@
   &.bs-tooltip-left {
     padding: 0 $tooltip-arrow-width;
     .arrow {
-      right: 0;
+      #{$right}: 0;
     }
 
     .arrow::before {
-      right: 0;
+      #{$right}: 0;
       margin-top: -($tooltip-arrow-width - 2);
       content: "";
       border-width: $tooltip-arrow-width 0 $tooltip-arrow-width $tooltip-arrow-width;
-      border-left-color: $tooltip-arrow-color;
+      border-#{$left}-color: $tooltip-arrow-color;
     }
   }
   &.bs-tooltip-auto {

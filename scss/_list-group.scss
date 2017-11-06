@@ -7,7 +7,7 @@
   flex-direction: column;
 
   // No need to set list-style: none; since .list-group-item is block level
-  padding-left: 0; // reset padding because ul and ol
+  padding-#{$left}: 0; // reset padding because ul and ol
   margin-bottom: 0;
 }
 
@@ -85,8 +85,8 @@
 
 .list-group-flush {
   .list-group-item {
-    border-right: 0;
-    border-left: 0;
+    border-#{$right}: 0;
+    border-#{$left}: 0;
     @include border-radius(0);
   }
 

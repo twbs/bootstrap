@@ -139,8 +139,8 @@ select.form-control {
 
   &.form-control-sm,
   &.form-control-lg {
-    padding-right: 0;
-    padding-left: 0;
+    padding-#{$right}: 0;
+    padding-#{$left}: 0;
   }
 }
 
@@ -202,13 +202,13 @@ select.form-control-lg {
 .form-row {
   display: flex;
   flex-wrap: wrap;
-  margin-right: -5px;
-  margin-left: -5px;
+  margin-#{$right}: -5px;
+  margin-#{$left}: -5px;
 
   > .col,
   > [class*="col-"] {
-    padding-right: 5px;
-    padding-left: 5px;
+    padding-#{$right}: 5px;
+    padding-#{$left}: 5px;
   }
 }
 
@@ -230,20 +230,20 @@ select.form-control-lg {
 }
 
 .form-check-label {
-  padding-left: $form-check-input-gutter;
+  padding-#{$left}: $form-check-input-gutter;
   margin-bottom: 0; // Override default `<label>` bottom margin
 }
 
 .form-check-input {
   position: absolute;
   margin-top: $form-check-input-margin-y;
-  margin-left: -$form-check-input-gutter;
+  margin-#{$left}: -$form-check-input-gutter;
 }
 
 // Radios and checkboxes on same line
 .form-check-inline {
   display: inline-block;
-  margin-right: $form-check-inline-margin-x;
+  margin-#{$right}: $form-check-inline-margin-x;
 
   .form-check-label {
     vertical-align: middle;
@@ -327,13 +327,13 @@ select.form-control-lg {
       margin-bottom: 0;
     }
     .form-check-label {
-      padding-left: 0;
+      padding-#{$left}: 0;
     }
     .form-check-input {
       position: relative;
       margin-top: 0;
-      margin-right: $form-check-input-margin-x;
-      margin-left: 0;
+      margin-#{$right}: $form-check-input-margin-x;
+      margin-#{$left}: 0;
     }
 
     // Custom form controls
@@ -341,12 +341,12 @@ select.form-control-lg {
       display: flex;
       align-items: center;
       justify-content: center;
-      padding-left: 0;
+      padding-#{$left}: 0;
     }
     .custom-control-indicator {
       position: static;
       display: inline-block;
-      margin-right: $form-check-input-margin-x; // Flexbox alignment means we lose our HTML space here, so we compensate.
+      margin-#{$right}: $form-check-input-margin-x; // Flexbox alignment means we lose our HTML space here, so we compensate.
       vertical-align: text-bottom;
     }
 
