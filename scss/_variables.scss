@@ -280,7 +280,7 @@ $dt-font-weight:              $font-weight-bold !default;
 $kbd-box-shadow:              inset 0 -.1rem 0 rgba($black, .25) !default;
 $nested-kbd-font-weight:      $font-weight-bold !default;
 
-$list-inline-padding:         5px !default;
+$list-inline-padding:         .5rem !default;
 
 $mark-bg:                     #fcf8e3 !default;
 
@@ -357,6 +357,7 @@ $btn-font-weight:             $font-weight-normal !default;
 $btn-box-shadow:              inset 0 1px 0 rgba($white, .15), 0 1px 1px rgba($black, .075) !default;
 $btn-focus-width:             $input-btn-focus-width !default;
 $btn-focus-box-shadow:        $input-btn-focus-box-shadow !default;
+$btn-disabled-opacity:        .65 !default;
 $btn-active-box-shadow:       inset 0 3px 5px rgba($black, .125) !default;
 
 $btn-link-disabled-color:     $gray-600 !default;
@@ -569,10 +570,10 @@ $nav-link-disabled-color:           $gray-600 !default;
 $nav-tabs-border-color:             $gray-300 !default;
 $nav-tabs-border-width:             $border-width !default;
 $nav-tabs-border-radius:            $border-radius !default;
-$nav-tabs-link-hover-border-color:  $gray-200 !default;
+$nav-tabs-link-hover-border-color:  $gray-200 $gray-200 $nav-tabs-border-color !default;
 $nav-tabs-link-active-color:        $gray-700 !default;
 $nav-tabs-link-active-bg:           $body-bg !default;
-$nav-tabs-link-active-border-color: $gray-300 !default;
+$nav-tabs-link-active-border-color: $gray-300 $gray-300 $nav-tabs-link-active-bg !default;
 
 $nav-pills-border-radius:           $border-radius !default;
 $nav-pills-link-active-color:       $component-active-color !default;
@@ -665,18 +666,17 @@ $card-columns-margin:               $card-spacer-y !default;
 
 // Tooltips
 
-$tooltip-max-width:                 200px !default;
-$tooltip-color:                     $white !default;
-$tooltip-bg:                        $black !default;
-$tooltip-opacity:                   .9 !default;
-$tooltip-padding-y:                 3px !default;
-$tooltip-padding-x:                 8px !default;
-$tooltip-margin:                    0 !default;
+$tooltip-max-width:           200px !default;
+$tooltip-color:               $white !default;
+$tooltip-bg:                  $black !default;
+$tooltip-opacity:             .9 !default;
+$tooltip-padding-y:           .25rem !default;
+$tooltip-padding-x:           .5rem !default;
+$tooltip-margin:              0 !default;
 
-
-$tooltip-arrow-width:               5px !default;
-$tooltip-arrow-height:              5px !default;
-$tooltip-arrow-color:               $tooltip-bg !default;
+$tooltip-arrow-width:         .4rem !default;
+$tooltip-arrow-height:        $tooltip-arrow-width !default;
+$tooltip-arrow-color:         $tooltip-bg !default;
 
 
 // Popovers
