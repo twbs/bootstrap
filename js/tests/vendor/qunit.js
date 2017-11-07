@@ -1,17 +1,17 @@
 /*!
- * QUnit 2.4.0
+ * QUnit 2.4.1
  * https://qunitjs.com/
  *
  * Copyright jQuery Foundation and other contributors
  * Released under the MIT license
  * https://jquery.org/license
  *
- * Date: 2017-07-08T15:20Z
+ * Date: 2017-10-22T05:12Z
  */
 (function (global$1) {
   'use strict';
 
-  global$1 = global$1 && 'default' in global$1 ? global$1['default'] : global$1;
+  global$1 = 'default' in global$1 ? global$1['default'] : global$1;
 
   var window = global$1.window;
   var self$1 = global$1.self;
@@ -1388,6 +1388,13 @@
   		this.async = false;
   		this.expected = 0;
   	} else {
+  		if (typeof this.callback !== "function") {
+  			var method = this.todo ? "todo" : "test";
+
+  			// eslint-disable-next-line max-len
+  			throw new TypeError("You must provide a function as a test callback to QUnit." + method + "(\"" + settings.testName + "\")");
+  		}
+
   		this.assert = new Assert(this);
   	}
   }
@@ -1697,12 +1704,15 @@
   			result: resultInfo.result,
   			message: resultInfo.message,
   			actual: resultInfo.actual,
-  			expected: resultInfo.expected,
   			testId: this.testId,
   			negative: resultInfo.negative || false,
   			runtime: now() - this.started,
   			todo: !!this.todo
   		};
+
+  		if (hasOwn.call(resultInfo, "expected")) {
+  			details.expected = resultInfo.expected;
+  		}
 
   		if (!resultInfo.result) {
   			source = resultInfo.source || sourceFromStacktrace();
@@ -1729,7 +1739,6 @@
   			result: false,
   			message: message || "error",
   			actual: actual || null,
-  			expected: null,
   			source: source
   		});
   	},
@@ -2650,7 +2659,7 @@
   QUnit.isLocal = !(defined.document && window.location.protocol !== "file:");
 
   // Expose the current QUnit version
-  QUnit.version = "2.4.0";
+  QUnit.version = "2.4.1";
 
   function createModule(name, testEnvironment, modifiers) {
   	var parentModule = moduleStack.length ? moduleStack.slice(-1)[0] : null;
@@ -3284,7 +3293,8 @@
   			// Skip inherited or undefined properties
   			if (hasOwn.call(params, key) && params[key] !== undefined) {
 
-  				// Output a parameter for each value of this key (but usually just one)
+  				// Output a parameter for each value of this key
+  				// (but usually just one)
   				arrValue = [].concat(params[key]);
   				for (i = 0; i < arrValue.length; i++) {
   					querystring += encodeURIComponent(key);
@@ -3705,7 +3715,8 @@
   		if (config.altertitle && document$$1.title) {
 
   			// Show ✖ for good, ✔ for bad suite result in title
-  			// use escape sequences in case file gets loaded with non-utf-8-charset
+  			// use escape sequences in case file gets loaded with non-utf-8
+  			// charset
   			document$$1.title = [stats.failedTests ? "\u2716" : "\u2714", document$$1.title.replace(/^[\u2714\u2716] /i, "")].join(" ");
   		}
 
@@ -3743,7 +3754,7 @@
   		if (running) {
   			bad = QUnit.config.reorder && details.previousFailure;
 
-  			running.innerHTML = (bad ? "Rerunning previously failed test: <br />" : "Running: <br />") + getNameHtml(details.name, details.module);
+  			running.innerHTML = [bad ? "Rerunning previously failed test: <br />" : "Running: <br />", getNameHtml(details.name, details.module)].join("");
   		}
   	});
 
@@ -4874,7 +4885,9 @@
   				line = text.substring(lineStart, lineEnd + 1);
   				lineStart = lineEnd + 1;
 
-  				if (lineHash.hasOwnProperty ? lineHash.hasOwnProperty(line) : lineHash[line] !== undefined) {
+  				var lineHashExists = lineHash.hasOwnProperty ? lineHash.hasOwnProperty(line) : lineHash[line] !== undefined;
+
+  				if (lineHashExists) {
   					chars += String.fromCharCode(lineHash[line]);
   				} else {
   					chars += String.fromCharCode(lineArrayLength);
