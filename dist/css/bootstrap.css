@@ -3558,7 +3558,6 @@ tbody.collapse.show {
   top: 0;
   right: 0;
   left: 0;
-  z-index: 5;
   height: calc(2.25rem + 2px);
   padding: 0.375rem 0.75rem;
   line-height: 1.5;
@@ -3582,7 +3581,7 @@ tbody.collapse.show {
   top: -1px;
   right: -1px;
   bottom: -1px;
-  z-index: 6;
+  z-index: 1;
   display: block;
   height: calc(2.25rem + 2px);
   padding: 0.375rem 0.75rem;
