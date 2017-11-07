@@ -33,7 +33,7 @@
 
   &:active ~ .custom-control-indicator {
     color: $custom-control-indicator-active-color;
-    @include gradient-bg($custom-control-indicator-active-bg);
+    background-color: $custom-control-indicator-active-bg;
     @include box-shadow($custom-control-indicator-active-box-shadow);
   }
 
@@ -78,12 +78,11 @@
   }
 
   .custom-control-input:checked ~ .custom-control-indicator {
-    background-image: $custom-checkbox-indicator-icon-checked;
+    @include custom-check-bg($custom-control-indicator-checked-bg, $custom-checkbox-indicator-icon-checked);
   }
 
   .custom-control-input:indeterminate ~ .custom-control-indicator {
-    background-color: $custom-checkbox-indicator-indeterminate-bg;
-    background-image: $custom-checkbox-indicator-icon-indeterminate;
+    @include custom-check-bg($custom-checkbox-indicator-indeterminate-bg, $custom-checkbox-indicator-icon-indeterminate);
     @include box-shadow($custom-checkbox-indicator-indeterminate-box-shadow);
   }
 }
@@ -98,7 +97,7 @@
   }
 
   .custom-control-input:checked ~ .custom-control-indicator {
-    background-image: $custom-radio-indicator-icon-checked;
+    @include custom-check-bg($custom-control-indicator-checked-bg, $custom-radio-indicator-icon-checked);
   }
 }
 
