@@ -18,7 +18,7 @@ $(function () {
     $('<div id="collapse:Example"></div>').appendTo($('#qunit-fixture'))
     assert.strictEqual(Util.getSelectorFromElement($el3[0]), '#collapse\\:Example')
 
-    // if $.escapeSelector don't exist on older jQuery release (1 & 2)
+    // if $.escapeSelector doesn't exist in older jQuery versions (< 3)
     var tmpEscapeSelector = $.escapeSelector
     delete $.escapeSelector
     assert.ok(typeof $.escapeSelector === 'undefined', '$.escapeSelector undefined')
