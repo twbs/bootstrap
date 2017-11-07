@@ -162,9 +162,12 @@
     }
   }
 
-  &[multiple] {
+  &[multiple],
+  &[size]:not([size="1"]) {
     height: auto;
+    padding-right: $custom-select-padding-x;
     background-image: none;
+
   }
 
   &:disabled {
