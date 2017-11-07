@@ -216,7 +216,12 @@
   opacity: 0;
 
   &:focus ~ .custom-file-control {
+    border-color: $custom-file-focus-border-color;
     box-shadow: $custom-file-focus-box-shadow;
+
+    &::before {
+      border-color: $custom-file-focus-border-color;
+    }
   }
 }
 
