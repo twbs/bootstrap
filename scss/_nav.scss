@@ -41,7 +41,7 @@
     @include border-top-radius($nav-tabs-border-radius);
 
     @include hover-focus {
-      border-color: $nav-tabs-link-hover-border-color $nav-tabs-link-hover-border-color $nav-tabs-border-color;
+      border-color: $nav-tabs-link-hover-border-color;
     }
 
     &.disabled {
@@ -55,7 +55,7 @@
   .nav-item.show .nav-link {
     color: $nav-tabs-link-active-color;
     background-color: $nav-tabs-link-active-bg;
-    border-color: $nav-tabs-link-active-border-color $nav-tabs-link-active-border-color $nav-tabs-link-active-bg;
+    border-color: $nav-tabs-link-active-border-color;
   }
 
   .dropdown-menu {
