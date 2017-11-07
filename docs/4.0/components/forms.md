@@ -1018,6 +1018,24 @@ Custom `<select>` menus need only a custom class, `.custom-select` to trigger th
 </select>
 {% endexample %}
 
+You may also choose from small and large custom selects to match our similarly sized text inputs.
+
+{% example html %}
+<select class="custom-select custom-select-lg">
+  <option selected>Open this select menu</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+</select>
+
+<select class="custom-select custom-select-sm">
+  <option selected>Open this select menu</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+</select>
+{% endexample %}
+
 The `multiple` attribute is also supported:
 
 {% example html %}
