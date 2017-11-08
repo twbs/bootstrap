@@ -18,7 +18,7 @@ You can use a link with the `href` attribute, or a button with the `data-target`
 
 {% example html %}
 <p>
-  <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+  <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
     Link with href
   </a>
   <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
@@ -39,7 +39,7 @@ Multiple `<button>` or `<a>` can show and hide an element if they each reference
 
 {% example html %}
 <p>
-  <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" aria-expanded="false" aria-controls="multiCollapseExample1">Toggle first element</a>
+  <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Toggle first element</a>
   <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Toggle second element</button>
   <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Toggle both elements</button>
 </p>
@@ -70,7 +70,7 @@ Using the [card]({{ site.baseurl }}/docs/{{ site.docs_version }}/components/card
   <div class="card">
     <div class="card-header" role="tab" id="headingOne">
       <h5 class="mb-0">
-        <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        <a data-toggle="collapse" href="#collapseOne" role="button" aria-expanded="true" aria-controls="collapseOne">
           Collapsible Group Item #1
         </a>
       </h5>
@@ -85,7 +85,7 @@ Using the [card]({{ site.baseurl }}/docs/{{ site.docs_version }}/components/card
   <div class="card">
     <div class="card-header" role="tab" id="headingTwo">
       <h5 class="mb-0">
-        <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        <a class="collapsed" data-toggle="collapse" href="#collapseTwo" role="button" aria-expanded="false" aria-controls="collapseTwo">
           Collapsible Group Item #2
         </a>
       </h5>
@@ -99,7 +99,7 @@ Using the [card]({{ site.baseurl }}/docs/{{ site.docs_version }}/components/card
   <div class="card">
     <div class="card-header" role="tab" id="headingThree">
       <h5 class="mb-0">
-        <a class="collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        <a class="collapsed" data-toggle="collapse" href="#collapseThree" role="button" aria-expanded="false" aria-controls="collapseThree">
           Collapsible Group Item #3
         </a>
       </h5>
@@ -118,7 +118,7 @@ You can also create accordions with custom markup. Add the `data-children` attri
 {% example html %}
 <div id="exampleAccordion" data-children=".item">
   <div class="item">
-    <a data-toggle="collapse" data-parent="#exampleAccordion" href="#exampleAccordion1" aria-expanded="true" aria-controls="exampleAccordion1">
+    <a data-toggle="collapse" data-parent="#exampleAccordion" href="#exampleAccordion1" role="button" aria-expanded="true" aria-controls="exampleAccordion1">
       Toggle item
     </a>
     <div id="exampleAccordion1" class="collapse show" role="tabpanel">
@@ -128,7 +128,7 @@ You can also create accordions with custom markup. Add the `data-children` attri
     </div>
   </div>
   <div class="item">
-    <a data-toggle="collapse" data-parent="#exampleAccordion" href="#exampleAccordion2" aria-expanded="false" aria-controls="exampleAccordion2">
+    <a data-toggle="collapse" data-parent="#exampleAccordion" href="#exampleAccordion2" role="button" aria-expanded="false" aria-controls="exampleAccordion2">
       Toggle item 2
     </a>
     <div id="exampleAccordion2" class="collapse" role="tabpanel">
