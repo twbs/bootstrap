@@ -101,7 +101,7 @@
     "postcss-cli": "^4.1.0",
     "qunit-phantomjs-runner": "^2.3.0",
     "qunitjs": "^2.4.0",
-    "rollup": "^0.50.0",
+    "rollup": "^0.51.1",
     "rollup-plugin-babel": "4.0.0-beta.0",
     "rollup-plugin-node-resolve": "^3.0.0",
     "shelljs": "^0.7.8",
