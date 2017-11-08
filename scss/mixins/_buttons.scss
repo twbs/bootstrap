@@ -25,6 +25,10 @@
     }
   }
 
+  &:visited {
+    color: color-yiq($background);
+  }
+
   // Disabled comes first so active can properly restyle
   &.disabled,
   &:disabled {
