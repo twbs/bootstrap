@@ -86,6 +86,7 @@ fieldset[disabled] a.btn {
 
   &:focus,
   &.focus {
+    text-decoration: $link-hover-decoration;
     border-color: transparent;
     box-shadow: none;
   }
