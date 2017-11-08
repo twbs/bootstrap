@@ -158,7 +158,7 @@ $(function () {
 
   QUnit.test('should handle disabled attribute on non-button elements', function (assert) {
     assert.expect(2)
-    var groupHTML = '  <div class="btn-group disabled" data-toggle="buttons" aria-disabled="true" disabled>'
+    var groupHTML = '<div class="btn-group disabled" data-toggle="buttons" aria-disabled="true" disabled>'
       + '<label class="btn btn-danger disabled" aria-disabled="true" disabled>'
       + '<input type="checkbox" aria-disabled="true" autocomplete="off" disabled class="disabled"/>'
       + '</label>'
