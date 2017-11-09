@@ -32,11 +32,11 @@
   // Offset the popover to account for the popover arrow
   &.top {
     margin-top: -@popover-arrow-width;
-    transform-origin: 50% 0%;
+    transform-origin: 50% 100%;
   }
   &.right {
     margin-left: @popover-arrow-width;
-    transform-origin: 0% 25%;
+    transform-origin: 0% 50%;
   }
   &.bottom {
     margin-top: @popover-arrow-width;
@@ -44,11 +44,17 @@
   }
   &.left {
     margin-left: -@popover-arrow-width;
-    transform-origin: 100% 25%;
+    transform-origin: 100% 50%;
   }
 
-  &.left-top  { margin-left: -@popover-arrow-width; }
-  &.right-top { margin-left: @popover-arrow-width; }
+  &.left-top  {
+    margin-left: -@popover-arrow-width;
+    transform-origin: 100% 29px;
+  }
+  &.right-top {
+    margin-left: @popover-arrow-width;
+    transform-origin: 0% 29px;
+  }
 
   .arrow-pointer(@popover-arrow-width);
 
