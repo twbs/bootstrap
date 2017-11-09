@@ -22,11 +22,30 @@
   border-radius: @border-radius-large;
   .box-shadow(0px 20px 66px 0px rgba(34,48,73,.2));
 
+  &.animate {
+    transition: transform .25s;
+  }
+  &.scale-down {
+    transform: scale(0);
+  }
+
   // Offset the popover to account for the popover arrow
-  &.top     { margin-top: -@popover-arrow-width; }
-  &.right   { margin-left: @popover-arrow-width; }
-  &.bottom  { margin-top: @popover-arrow-width; }
-  &.left    { margin-left: -@popover-arrow-width; }
+  &.top {
+    margin-top: -@popover-arrow-width;
+    transform-origin: 50% 0%;
+  }
+  &.right {
+    margin-left: @popover-arrow-width;
+    transform-origin: 0% 25%;
+  }
+  &.bottom {
+    margin-top: @popover-arrow-width;
+    transform-origin: 50% 0%;
+  }
+  &.left {
+    margin-left: -@popover-arrow-width;
+    transform-origin: 100% 25%;
+  }
 
   &.left-top  { margin-left: -@popover-arrow-width; }
   &.right-top { margin-left: @popover-arrow-width; }
