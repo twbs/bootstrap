@@ -41,7 +41,7 @@ GEM
       mini_portile2 (~> 2.3.0)
     pathutil (0.16.0)
       forwardable-extended (~> 2.6)
-    public_suffix (3.0.0)
+    public_suffix (3.0.1)
     rb-fsevent (0.10.2)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
@@ -64,4 +64,4 @@ DEPENDENCIES
   jekyll-toc (~> 0.4.0)
 
 BUNDLED WITH
-   1.15.4
+   1.16.0
