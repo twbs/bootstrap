@@ -4,15 +4,18 @@
   @include border-radius();
 }
 
+.page-label, .page-link {
+    position: relative;
+    display: block;
+    padding: $pagination-padding-y $pagination-padding-x;
+    margin-left: -$pagination-border-width;
+    line-height: $pagination-line-height;
+    background-color: $pagination-bg;
+    border: $pagination-border-width solid $pagination-border-color;
+}
+
 .page-link {
-  position: relative;
-  display: block;
-  padding: $pagination-padding-y $pagination-padding-x;
-  margin-left: -$pagination-border-width;
-  line-height: $pagination-line-height;
   color: $pagination-color;
-  background-color: $pagination-bg;
-  border: $pagination-border-width solid $pagination-border-color;
 
   @include hover-focus {
     color: $pagination-hover-color;
