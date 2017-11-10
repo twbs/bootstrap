@@ -51,7 +51,7 @@
   }
 }
 
-@mixin button-outline-variant($color, $color-hover: #fff) {
+@mixin button-outline-variant($color, $color-hover: color-yiq($color)) {
   color: $color;
   background-color: transparent;
   background-image: none;
