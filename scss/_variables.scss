@@ -214,6 +214,38 @@ $transition-base:             all .2s ease-in-out !default;
 $transition-fade:             opacity .15s linear !default;
 $transition-collapse:         height .35s ease !default;
 
+// Box-Shadows
+//
+// Define the opacity and distance options of box-shadow
+$box-shadow-default-distance: 10;
+$box-shadow-short-distance: 3;
+$box-shadow-long-distance: 14;
+$box-shadow-longer-distance: 19;
+
+$box-shadow-distances: () !default;
+$box-shadow-distances: map-merge(
+  (
+    "box-shadow-short":      $box-shadow-short-distance,
+    "box-shadow-long":       $box-shadow-long-distance,
+    "box-shadow-longer":     $box-shadow-longer-distance,
+  ),
+  $box-shadow-distances
+);
+
+
+$box-shadow-default-opacity: .4;
+$box-shadow-soft-opacity: .15;
+$box-shadow-hard-opacity: .7;
+
+$box-shadow-opacities: () !default;
+$box-shadow-opacities: map-merge(
+  (
+    "box-shadow-soft":    $box-shadow-soft-opacity,
+    "box-shadow-hard":    $box-shadow-hard-opacity,
+  ),
+  $box-shadow-opacities
+);
+
 
 // Fonts
 //

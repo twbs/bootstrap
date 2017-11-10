@@ -396,6 +396,18 @@
   }
 }
 
+// Shadows
+
+.bd-example-shadow-utils {
+  [class^="box-shadow"] {
+    display: inline-block;
+    width: 10rem;
+    height: 10rem;
+    margin: 2rem;
+    background-color: #f5f5f5;
+  }
+}
+
 //
 // Code snippets
 //
