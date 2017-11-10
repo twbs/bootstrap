@@ -1,0 +1,65 @@
+// stylelint-disable declaration-no-important
+
+//
+// Shadows
+//
+
+// mixin exclusive for shadows utilities with fixed color, always show shadows, ignoring $enable-shadows flag
+// property-no-vendor-prefix
+@mixin utilities-box-shadow($vertical, $horizontal, $opacity) {
+  box-shadow: #{$vertical}px #{$horizontal}px #{2*max(abs($vertical), abs($horizontal))}px rgba(0, 0, 0, $opacity);
+}
+
+@mixin utilities-directional-box-shadow($distance, $opacity, $suffix) {
+  .box-shadow-bottom#{$suffix} {
+    @include utilities-box-shadow(0, $distance, $opacity);
+  }
+
+  .box-shadow-top#{$suffix} {
+    @include utilities-box-shadow(0, -$distance, $opacity);
+  }
+
+  .box-shadow-right#{$suffix} {
+    @include utilities-box-shadow($distance, 0, $opacity);
+  }
+
+  .box-shadow-left#{$suffix} {
+    @include utilities-box-shadow(-$distance, 0, $opacity);
+  }
+
+  .box-shadow-bottom.box-shadow-right#{$suffix} {
+    @include utilities-box-shadow($distance, $distance, $opacity);
+  }
+
+  .box-shadow-bottom.box-shadow-left#{$suffix} {
+    @include utilities-box-shadow(-$distance, $distance, $opacity);
+  }
+
+  .box-shadow-top.box-shadow-right#{$suffix} {
+    @include utilities-box-shadow($distance, -$distance, $opacity);
+  }
+
+  .box-shadow-top.box-shadow-left#{$suffix} {
+    @include utilities-box-shadow(-$distance, -$distance, $opacity);
+  }
+}
+
+// Directional Shadows
+@include utilities-directional-box-shadow($box-shadow-default-distance, $box-shadow-default-opacity, "");
+
+// Opacity Options
+@each $opacity, $opacity-value in $box-shadow-opacities {
+  @include utilities-directional-box-shadow($box-shadow-default-distance, $opacity-value, ".#{$opacity}");
+}
+
+// Distance Options
+@each $distance, $distance-value in $box-shadow-distances {
+  @include utilities-directional-box-shadow($distance-value, $box-shadow-default-opacity, ".#{$distance}");
+}
+
+// Opacity and Distance combined values
+@each $opacity, $opacity-value in $box-shadow-opacities {
+  @each $distance, $distance-value in $box-shadow-distances {
+    @include utilities-directional-box-shadow($distance-value, $opacity-value, ".#{$opacity}.#{$distance}");
+  }
+}
