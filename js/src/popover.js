@@ -26,19 +26,25 @@ const Popover = (($) => {
   const CLASS_PREFIX        = 'bs-popover'
   const BSCLS_PREFIX_REGEX  = new RegExp(`(^|\\s)${CLASS_PREFIX}\\S+`, 'g')
 
-  const Default = $.extend({}, Tooltip.Default, {
-    placement : 'right',
-    trigger   : 'click',
-    content   : '',
-    template  : '<div class="popover" role="tooltip">'
-              + '<div class="arrow"></div>'
-              + '<h3 class="popover-header"></h3>'
-              + '<div class="popover-body"></div></div>'
-  })
+  const Default = {
+    ...Tooltip.Default,
+    ...{
+      placement : 'right',
+      trigger   : 'click',
+      content   : '',
+      template  : '<div class="popover" role="tooltip">'
+                + '<div class="arrow"></div>'
+                + '<h3 class="popover-header"></h3>'
+                + '<div class="popover-body"></div></div>'
+    }
+  }
 
-  const DefaultType = $.extend({}, Tooltip.DefaultType, {
-    content : '(string|element|function)'
-  })
+  const DefaultType = {
+    ...Tooltip.DefaultType,
+    ...{
+      content : '(string|element|function)'
+    }
+  }
 
   const ClassName = {
     FADE : 'fade',

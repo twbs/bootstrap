@@ -501,10 +501,13 @@ const Tooltip = (($) => {
       })
 
       if (this.config.selector) {
-        this.config = $.extend({}, this.config, {
-          trigger  : 'manual',
-          selector : ''
-        })
+        this.config = {
+          ...this.config,
+          ...{
+            trigger  : 'manual',
+            selector : ''
+          }
+        }
       } else {
         this._fixTitle()
       }
@@ -613,12 +616,11 @@ const Tooltip = (($) => {
     }
 
     _getConfig(config) {
-      config = $.extend(
-        {},
-        this.constructor.Default,
-        $(this.element).data(),
-        config
-      )
+      config = {
+        ...this.constructor.Default,
+        ...$(this.element).data(),
+        ...config
+      }
 
       if (typeof config.delay === 'number') {
         config.delay = {
