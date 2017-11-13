@@ -515,6 +515,8 @@ $custom-file-text: (
 
 
 // Form validation
+$form-feedback-margin-top:          .25rem !default;
+$form-feedback-font-size:           ($font-size-base * .875) !default;
 $form-feedback-valid-color:         theme-color("success") !default;
 $form-feedback-invalid-color:       theme-color("danger") !default;
 
