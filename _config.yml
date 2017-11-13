@@ -72,5 +72,5 @@ cdn:
   js_hash:          "sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
   jquery:           "https://code.jquery.com/jquery-3.2.1.slim.min.js"
   jquery_hash:      "sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-  popper:           "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"
-  popper_hash:      "sha384-W1IgCZfiFCplncoIxD5rld+uzdB6FlcG2vm4qjrCP5Z7uUt7vnwbztJXeqXgd26w"
+  popper:           "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.7/umd/popper.min.js"
+  popper_hash:      "sha384-TUSpaPr16YQQOdRqTlO+JgktHTijOcvPtWvOyfo7F6Usp/LtNvvmKLpZ+NSgVdjA"
