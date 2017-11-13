@@ -1,10 +1,16 @@
 
 .decision {
-  padding: 24px 12px 24px 0;
   cursor: pointer;
-  border-top: 1px solid @brand-smoke-plus-10;
-  border-bottom: 1px solid @brand-smoke-plus-10;
+
+  padding: @decision-padding-lg @decision-padding-md @decision-padding-lg 0;
   margin-bottom: 0 !important;
+
+  border-top: @decision-border;
+  border-bottom: @decision-border;
+
+  align-items: center;
+
+  .transition(background-color ease @decision-focus-transition);
 
   + .decision {
     margin-top: -1px;
@@ -27,27 +33,34 @@
   }
 
   @media (min-width: @screen-xs) {
-    padding: 24px 24px 24px 22px;
-    border-left: 2px solid transparent;
-    
+    padding: @decision-padding-lg;
+
     .media-left {
       display: block;
-    }
-    &:hover {
-      border-left-color: @brand-light-blue;
     }
   }
 
   &.disabled {
     opacity: 0.5;
-    cursor: disabled;
-    border-left-color: transparent;
+    cursor: not-allowed;
   }
 
-  &:hover {
+  &:not(.disabled):hover {
+    @media (min-width: @screen-xs) {
+      background-color: @brand-smoke-plus-20;
+
+      .circle-inverse {
+        background-color: #fff;
+      }
+    }
+
     .tw-checkbox-button,
     .tw-radio-button {
       border-color: @brand-light-blue;
     }
+  }
+
+  &.decision-complex {
+    align-items: initial;
   }
 }

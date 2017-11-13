@@ -65,24 +65,24 @@
               </div>
               <div class="media-body">
                 <h5>USD Balance</h5>
-                <p>Lorem ipsum</p>
-              </div>
-              <div class="media-right">
-                <tw-checkbox ng-model="ctrl.check2"></tw-checkboox>
-              </div>
-            </label>
-            <label class="media decision m-b-3">
-              <div class="media-left">
-                <div class="circle circle-sm circle-inverse">US</div>
-              </div>
-              <div class="media-body">
-                <h5>USD Balance</h5>
                 <dl>
                   <dt>Iban</dt>
                   <dd>1234 5678 1234 5678</dd>
                   <dt>Account number</dt>
                   <dd>123 456</dd>
                 </dl>
+              </div>
+              <div class="media-right">
+                <tw-checkbox ng-model="ctrl.check2"></tw-checkboox>
+              </div>
+            </label>
+            <label class="media decision disabled m-b-3">
+              <div class="media-left">
+                <div class="circle circle-sm circle-inverse">US</div>
+              </div>
+              <div class="media-body">
+                <h5>USD Balance</h5>
+                <p>Lorem ipsum</p>
               </div>
               <div class="media-right">
                 <tw-checkbox ng-model="ctrl.check3"></tw-checkboox>
@@ -248,6 +248,54 @@
           </div>
         </div>
 
+        <div class="m-b-5">
+          <div class="m-b-4">
+            <h6 class="m-b-1">Complex</h6>
+            <label class="media decision decision-complex">
+              <div class="media-left">
+                <div class="circle circle-sm circle-inverse">US</div>
+              </div>
+              <div class="media-body">
+                <h5>USD Balance</h5>
+                <p>
+                  Lorem ipsum dolor sit amet,
+                  consectetur adipiscing elit,
+                  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam,
+                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                  Excepteur sint occaecat cupidatat non proident,
+                  sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+              </div>
+              <div class="media-right" ng-init="ctrl.check1 = true;">
+                <tw-checkbox ng-model="ctrl.check1"></tw-checkboox>
+              </div>
+            </label>
+            <label class="media decision decision-complex">
+              <div class="media-left">
+                <div class="circle circle-sm circle-inverse">US</div>
+              </div>
+              <div class="media-body">
+                <h5>USD Balance</h5>
+                <dl>
+                  <dt>Iban</dt>
+                  <dd>1234 5678 1234 5678</dd>
+                  <dt>Account number</dt>
+                  <dd>123 456</dd>
+                </dl>
+              </div>
+              <div class="media-right">
+                <tw-checkbox ng-model="ctrl.check2"></tw-checkboox>
+              </div>
+            </label>
+          </div>
+          <div class="row">
+            <div class="col-sm-8 col-sm-offset-2">
+              <button class="btn btn-primary btn-block">Next thing</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
