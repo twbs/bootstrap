@@ -44,12 +44,11 @@
 			var title = pages[0].title;
 			var content = pages[0].content;
 
-			title += '<a href="" class="close text-no-decoration" '+
+			title += '<a href="" class="popover-close" '+
 				'onclick="hideCover(\''+elementId+'\')">&times;</a>';
 
 			if (pages[0].image) {
-				content = '<div class="embed-responsive embed-responsive-4by3">' +
-					'<img class="popover-image" src="' + pages[0].image + '" /></div>' +
+				content = '<img class="popover-image" src="' + pages[0].image + '" />' +
 					content;
 			}
 			if (pages[0].ctaLink && pages[0].ctaLabel) {
@@ -126,8 +125,7 @@
 
 			var navTourCover = " \
 				<div id='navTourCover' \
-					class='nav-tour-cover' \
-					style='display: block;' \
+					class='popover-modal-cover' \
 					onclick='hideCover(\""+id+"\")'></div>";
 
 			$('body').append(navTourCover);

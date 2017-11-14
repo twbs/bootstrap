@@ -1,5 +1,5 @@
 /*!
- * Bootstrap v5.10.8 (http://bootstrap.transferwise.com)
+ * Bootstrap v5.11.0 (http://bootstrap.transferwise.com)
  * Copyright 2011-2017 Twitter, Inc.
  * Licensed under MIT (https://github.com/transferwise/bootstrap/blob/master/LICENSE)
  */
@@ -9783,6 +9783,7 @@ a.list-group-item-danger:hover {
   font-weight: bold;
   line-height: 24px;
   color: #00b9ff;
+  text-decoration: none;
 }
 .close:hover,
 .close:focus {
@@ -10497,6 +10498,11 @@ a[data-toggle=tooltip] {
   left: -7px;
   margin-top: -7px;
 }
+.popover img,
+.popover .popover-image {
+  width: 100%;
+  margin: 8px 0;
+}
 .popover-title {
   padding: 0;
   margin: 0;
@@ -10516,6 +10522,34 @@ a[data-toggle=tooltip] {
 .popover-content > :last-child {
   margin-bottom: 0;
 }
+.popover-close {
+  float: right;
+  font-size: 32px;
+  font-weight: bold;
+  line-height: 24px;
+  color: #00b9ff;
+  text-decoration: none;
+}
+.popover-close:hover,
+.popover-close:focus {
+  color: #00a4df;
+  text-decoration: none;
+  cursor: pointer;
+}
+.popover-close:focus {
+  outline: thin dotted rgba(0, 0, 0, .5);
+  outline-offset: 2px;
+}
+.popover-close:active {
+  color: #008ec0;
+}
+button.popover-close {
+  -webkit-appearance: none;
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+}
 [data-toggle=popover]:not(.btn) {
   font-weight: inherit !important;
   color: inherit !important;
@@ -10531,6 +10565,80 @@ a[data-toggle=tooltip] {
 }
 .nav > li > a [data-toggle=popover] {
   border-bottom: 0;
+}
+@media (max-width: 991px) {
+  .popover-modal {
+    position: fixed;
+    top: 0 !important;
+    right: 0 !important;
+    left: 0 !important;
+    width: 272px;
+    margin: 32px auto !important;
+  }
+  .popover-modal:before {
+    display: none;
+  }
+}
+@media (min-width: 992px) {
+  .popover-modal.left {
+    margin-right: -24px !important;
+  }
+  .popover-modal.right {
+    margin-left: -24px !important;
+  }
+  .popover-modal.top {
+    margin-bottom: -8px !important;
+  }
+  .popover-modal.bottom {
+    margin-top: -8px !important;
+  }
+  .popover-close {
+    display: none;
+  }
+}
+@-webkit-keyframes cover-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: .7;
+  }
+}
+@-o-keyframes cover-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: .7;
+  }
+}
+@keyframes cover-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: .7;
+  }
+}
+.popover-modal-cover {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1060;
+  display: none;
+  width: 100vw;
+  height: 100vh;
+  cursor: pointer;
+  background-color: #253655;
+  opacity: .7;
+  -webkit-animation: cover-fade-in .35s 0s linear forwards;
+       -o-animation: cover-fade-in .35s 0s linear forwards;
+          animation: cover-fade-in .35s 0s linear forwards;
+}
+@media (max-width: 991px) {
+  .popover-modal-cover {
+    display: block;
+  }
 }
 .carousel {
   position: relative;

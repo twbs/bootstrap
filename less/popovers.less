@@ -1,7 +1,8 @@
 //
 // Popovers
 // --------------------------------------------------
-
+@popover-padding-vertical: 18px;
+@popover-padding-horizontal: 24px;
 
 .popover {
   top: 0;
@@ -9,7 +10,7 @@
   z-index: @zindex-popover;
   display: none;
   width: @popover-max-width;
-  padding: 18px 24px;
+  padding: @popover-padding-vertical @popover-padding-horizontal;
   // Our parent element can be arbitrary since popovers are by default inserted as a sibling of their target element.
   // So reset our font and text properties to avoid inheriting weird values.
   .reset-text();
@@ -21,6 +22,9 @@
   border: 1px solid @popover-border-color;
   border-radius: @border-radius-large;
   .box-shadow(0px 20px 66px 0px rgba(34,48,73,.2));
+
+  position: absolute;
+
 
   &.animate {
     transition: transform .25s;
@@ -93,7 +97,11 @@
     left: (@popover-arrow-width / -2);
   }
 
-  position: absolute;
+  img,
+  .popover-image {
+    width: 100%;
+    margin: 8px 0;
+  }
 }
 
 .popover-title {
@@ -118,6 +126,10 @@
   margin-bottom: 0;
 }
 
+.popover-close {
+  .close();
+}
+
 [data-toggle=popover] {
   &:not(.btn) {
     color: inherit !important;
@@ -134,5 +146,66 @@
   }
   .nav > li > a & {
     border-bottom: 0;
+  }
+}
+
+
+@media (max-width: @screen-md-max) {
+  .popover-modal {
+    position: fixed;
+    top: 0 !important;
+    right: 0 !important;
+    left: 0 !important;
+    width: 272px;
+    margin: 32px auto !important;
+  }
+  .popover-modal:before {
+    display: none;
+  }
+}
+@media (min-width: @screen-lg-min) {
+  .popover-modal.left {
+    margin-right: -24px !important;
+  }
+  .popover-modal.right {
+    margin-left: -24px !important;
+  }
+  .popover-modal.top {
+    margin-bottom: -8px !important;
+  }
+  .popover-modal.bottom {
+    margin-top: -8px !important;
+  }
+  .popover-close {
+    display: none;
+  }
+}
+
+
+@keyframes cover-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: .7;
+  }
+}
+
+.popover-modal-cover {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1060;
+  display: none;
+  width: 100vw;
+  height: 100vh;
+  cursor: pointer;
+  background-color: @brand-navy-minus-20;
+  opacity: .7;
+  animation: cover-fade-in .35s 0s linear forwards;
+}
+@media (max-width: @screen-md-max) {
+  .popover-modal-cover {
+    display: block;
   }
 }
