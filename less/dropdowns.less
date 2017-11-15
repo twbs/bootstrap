@@ -5,21 +5,22 @@
 
 // Dropdown arrow/caret
 .caret {
-    vertical-align: middle;
-    display: inline-block;
-    font-family: 'Glyphicons Halflings';
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 300;
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    margin-left: 1px;
-    text-align: center;
-    width: 16px;
-    transition: transform .15s linear;
+  vertical-align: middle;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 1;
+  font-smooth: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin-left: 1px;
+  text-align: center;
+  width: 16px;
+  transition: transform .15s linear;
 
-    &:before { content: "\e114"; }
+  &:before { content: "\e114"; }
 }
 
 // The dropdown wrapper (div)
@@ -63,7 +64,7 @@
   // Links within the dropdown menu
   > li > a {
     display: block;
-    padding: @padding-large-vertical @padding-large-horizontal;
+    padding: @dropdown-link-padding;
     clear: both;
     font-weight: normal;
     border-radius: @border-radius-base;
@@ -76,10 +77,10 @@
     }
   }
   > li:first-child > a {
-      .border-top-radius((@border-radius-base - 1px))
+    .border-top-radius((@border-radius-base - 1px))
   }
   > li:last-child > a {
-      .border-bottom-radius((@border-radius-base - 1px))
+    .border-bottom-radius((@border-radius-base - 1px))
   }
 }
 
@@ -126,6 +127,10 @@
 
   strong {
     color: inherit;
+  }
+  .small,
+  .secondary {
+    color: @brand-smoke-minus-10;
   }
 }
 

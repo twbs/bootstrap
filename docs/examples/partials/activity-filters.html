@@ -49,7 +49,7 @@
 				{{button.label}}
 			</button>
 
-			<!-- Collapsed dropdown button when we have too many -->
+			<!-- Collapsed dropdown button when we have too many
 			<div ng-if="$ctrl.buttons.length > 1" class="btn-group m-b-0"
 				ng-class="{
 					'btn-block': $ctrl.buttons.length > 1,
@@ -77,9 +77,11 @@
 					</li>
 				</ul>
 			</div>
+			 -->
 
 		</div>
 	</div>
+
 
 	<div class="col-md-3 m-b-2"
 		ng-if="$ctrl.searchable"
@@ -115,6 +117,7 @@
 			</div>
 		</div>
 	</div>
+
 	<div class="col-xs-12 col-sm-6 col-md-3 col-sm-pull-6 col-md-pull-3 m-b-2" ng-if="$ctrl.filtersActive">
 		<tw-select options="$ctrl.activityTypes"
 			ng-model="$ctrl.type"

@@ -112,11 +112,11 @@
 //** Background color for `<body>`.
 @body-bg:               @brand-white;
 //** Global text color on `<body>`.
-@text-color:            @brand-grey-plus-10;
+@text-color:            @brand-grey;
 //** Bold text color on `<body>`.
 @text-bold-color:       @brand-navy-minus-10;
 
-@text-secondary-color:  @brand-grey-plus-20;
+@text-secondary-color:  @brand-grey;
 
 //== Typography
 //
@@ -297,18 +297,33 @@
 
 @btn-font-weight:                @font-weight-semi-bold;               //normal;
 
+@btn-height:                     @input-height-base;
 @btn-font-size:                  16px;
 @btn-line-height:                24px;
+@btn-padding-horizontal:         24px;
+@btn-padding-vertical:           @padding-large-vertical;
+@btn-padding:                    @btn-padding-vertical @btn-padding-horizontal (@btn-padding-vertical - 2px);
 
+@btn-xs-height:                  22px; // TODO 24?
 @btn-xs-font-size:               12px;
 @btn-xs-line-height:             18px;
+@btn-xs-padding-horizontal:      8px;
+@btn-xs-padding-vertical:        @padding-xs-vertical;
+@btn-xs-padding:                 @btn-xs-padding-vertical @btn-xs-padding-horizontal (@btn-xs-padding-vertical - 2px);
 
+@btn-sm-height:                  @input-height-small;
 @btn-sm-font-size:               14px;
 @btn-sm-line-height:             24px;
+@btn-sm-padding-horizontal:      16px;
+@btn-sm-padding-vertical:        @padding-small-vertical;
+@btn-sm-padding:                 @btn-sm-padding-vertical @btn-sm-padding-horizontal (@btn-sm-padding-vertical - 2px);
 
+@btn-lg-height:                  @input-height-large;
 @btn-lg-font-size:               20px;
 @btn-lg-line-height:             32px;
-
+@btn-lg-padding-horizontal:      24px;
+@btn-lg-padding-vertical:        ((@input-height-large - @btn-lg-line-height) / 2);
+@btn-lg-padding:                 @btn-lg-padding-vertical @btn-lg-padding-horizontal (@btn-lg-padding-vertical - 2px);
 
 @btn-disabled-bg:                @brand-smoke-plus-10;
 @btn-disabled-color:             @brand-smoke-minus-10;
@@ -407,12 +422,15 @@
 
 @input-font-size:                16px;
 @input-line-height:              @btn-line-height;
+@input-padding:                  (@padding-large-vertical + 1px) @padding-base-horizontal (@padding-large-vertical - 1px);
 
 @input-font-size-small:          14px;
 @input-line-height-small:        @btn-sm-line-height;
+@input-padding-small:            (@padding-small-vertical + 1px) @padding-small-horizontal (@padding-small-vertical - 1px) ;
 
 @input-font-size-large:          22px;
 @input-line-height-large:        @btn-lg-line-height;
+@input-padding-large:            (@padding-large-vertical + 1px) @padding-large-horizontal (@padding-large-vertical - 1px);
 
 // TODO: Rename `@input-border-radius` to `@input-border-radius-base` in v4
 //** Default `.form-control` border radius
@@ -427,7 +445,7 @@
 @input-border-focus:             @brand-light-blue;
 
 //** Placeholder text color
-@input-color-placeholder:        @brand-smoke;
+@input-color-placeholder:        @brand-smoke-minus-10;
 
 //** Default `.form-control` height
 @input-height-base:              48px;  //(@line-height-computed + (@padding-base-vertical * 2) + 2);
@@ -442,18 +460,19 @@
 @legend-color:                   @headings-color;
 @legend-border-color:            @input-border;
 
-@control-label-color:            @brand-grey-plus-10;
+@control-label-color:            @text-color;
 @control-label-focus:            @brand-light-blue;
 @control-label-font-size:        @font-size-small;
 
 //** Color for textual input addons
 @input-group-color:              @brand-smoke-minus-10;
 @input-group-addon-font-size:    @input-font-size;
-
-//** Background color for textual input addons
 @input-group-addon-bg:           @input-bg;
-//** Border color for textual input addons
 @input-group-addon-border-color: @input-border;
+@input-group-addon-padding:      @padding-large-vertical @padding-base-horizontal (@padding-large-vertical - 2px);
+
+@input-group-addon-sm-padding:   (@padding-small-vertical - 1px) @padding-small-horizontal;
+@input-group-addon-lg-padding:   @padding-large-vertical @padding-large-horizontal (@padding-large-vertical - 2px);
 
 //** Disabled cursor for form controls and buttons.
 @cursor-disabled:                not-allowed;
@@ -476,6 +495,8 @@
 
 //** Dropdown link text color.
 @dropdown-link-color:            @brand-navy-minus-10;
+//** Dropdown link padding.
+@dropdown-link-padding:          (@padding-large-vertical + 1px) @padding-large-horizontal (@padding-large-vertical - 1px);
 //** Hover color for dropdown links.
 @dropdown-link-hover-color:      @brand-navy-minus-10;
 //** Hover background for dropdown links.
@@ -599,7 +620,7 @@
 @container-lg:                 @container-large-desktop;
 
 // Large screen / wide desktop
-@container-xlarge-desktop:      (1140px + @grid-gutter-width);
+@container-xlarge-desktop:     (1140px + @grid-gutter-width);
 //** For `@screen-xl-min` and up.
 @container-xl:                 @container-xlarge-desktop;
 
@@ -622,17 +643,18 @@
 //##
 
 // Basics of a navbar
-@navbar-font-size:                 14px;
-@navbar-line-height:               40px;
-@navbar-height:                    56px;                    //50px;
-@navbar-margin-bottom:             40px;
-@navbar-border-radius:             0;
-@navbar-padding-horizontal:        16px;
-@navbar-padding-vertical:          ((@navbar-height - @line-height-computed) / 2);
-@navbar-padding-vertical:          8px;
-@navbar-collapse-max-height:       340px;
-@navbar-collapse-max-width:        (320px - 56px);
-@navbar-collapse-bg:               @brand-navy;
+@navbar-font-size:            14px;
+@navbar-line-height:          40px;
+@navbar-height:               56px;
+@navbar-margin-bottom:        40px;
+@navbar-border-radius:        0;
+@navbar-padding-horizontal:   16px;
+@navbar-padding-vertical:     8px;
+@navbar-padding:              (@navbar-padding-vertical + 1px) @navbar-padding-horizontal (@navbar-padding-vertical - 1px);
+
+@navbar-collapse-max-height:  340px;
+@navbar-collapse-max-width:   (320px - 56px);
+@navbar-collapse-bg:          @brand-navy;
 
 //=== Standard navbar
 // Navbar basics
@@ -694,7 +716,7 @@
 //##
 
 //=== Shared nav styles
-@nav-link-padding:                          8px 24px;
+@nav-link-padding:                          9px 24px 7px;
 @nav-link-hover-bg:                         @brand-smoke-plus-20;
 
 @nav-disabled-link-color:                   @link-disabled-color;
@@ -767,24 +789,28 @@
 //## Define colors for form feedback states and, by default, alerts.
 
 @state-success-text:             @brand-green-minus-10;
+@state-success-text-large:       @brand-green;
 @state-success-text-hover:       @brand-green-minus-20;
 @state-success-bg:               @brand-green-wash;
 @state-success-border:           @brand-green;
 @state-success-border-hover:     @brand-green-minus-20;
 
 @state-info-text:                @brand-light-blue;
+@state-info-text-large:          @brand-light-blue;
 @state-info-text-hover:          @brand-light-blue-minus-10;
 @state-info-bg:                  @brand-light-blue-wash;
 @state-info-border:              @brand-light-blue;
 @state-info-border-hover:        @brand-light-blue-minus-20;
 
 @state-warning-text:             @brand-orange-minus-10;
+@state-warning-text-large:       @brand-orange;
 @state-warning-text-hover:       @brand-orange-minus-20;
 @state-warning-bg:               @brand-orange-wash;
 @state-warning-border:           @brand-orange;
 @state-warning-border-hover:     @brand-orange-minus-20;
 
 @state-danger-text:              @brand-red;
+@state-danger-text-large:        @brand-red;
 @state-danger-text-hover:        @brand-red-minus-10;
 @state-danger-bg:                @brand-red-wash;
 @state-danger-border:            @brand-red;
@@ -1159,7 +1185,7 @@
 //** Horizontal offset for forms and lists.
 @component-offset-horizontal: 180px;
 //** Text muted color
-@text-muted:                  @gray-light;
+@text-muted:                  @brand-smoke-minus-10;
 //** Abbreviations and acronyms border color
 @abbr-border-color:           @link-color;
 //** Headings small color

@@ -72,12 +72,12 @@
 }
 
 // Button sizes
-.button-size(@padding-vertical; @padding-horizontal; @font-size; @line-height; @border-radius) {
-  padding: (@padding-vertical - 1px) @padding-horizontal;
+.button-size(@padding; @font-size; @line-height; @border-radius; @min-height) {
+  padding: @padding;
   font-size: @font-size;
   line-height: @line-height;
   border-radius: @border-radius;
-  min-height: ((@padding-vertical * 2) + @line-height);
+  min-height: @min-height;
 
   .dropdown-menu {
       > li > a {

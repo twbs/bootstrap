@@ -10,8 +10,19 @@
 	<li ng-class="{'active': $ctrl.active === 'activity' || !$ctrl.active}">
 		<a href="account-left.html">Activity</a>
 	</li>
-	<li ng-class="{'active': $ctrl.active === 'balances'}">
-		<a href="">Balances</a>
+	<li ng-class="{
+			'active': $ctrl.active === 'balances',
+			'expanded': $ctrl.active === 'gbp' || $ctrl.balances
+		}">
+		<a href="" ng-click="$ctrl.balances = !$ctrl.balance">Balances <span class="caret pull-xs-right"></span></a>
+		<ul class="nav nav-stacked nav-inverse m-b-2">
+			<li ng-class="{'active': $ctrl.active === 'gbp'}">
+				<a href="" >
+					GBP <span class="pull-xs-right">1,234.56</span>
+				</a>
+			</li>
+			<li><a href="">USD <span class="pull-xs-right">12,345.67</span></a></li>
+		</ul>
 	</li>
 	<li ng-class="{'active': $ctrl.active === 'history'}">
 		<a href="">History</a>

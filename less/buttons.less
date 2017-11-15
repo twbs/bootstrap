@@ -18,11 +18,11 @@
   border: 1px solid transparent;
   white-space: nowrap;
   .button-size(
-      @padding-large-vertical;
-      (@spacer * 3);
-      @btn-font-size;
-      @btn-line-height;
-      @border-radius-base
+    @btn-padding;
+    @btn-font-size;
+    @btn-line-height;
+    @border-radius-base;
+    @btn-height
   );
   .user-select(none);
 
@@ -270,41 +270,43 @@
 .btn-lg {
   // line-height: ensure even-numbered height of button next to large input
   .button-size(
-    ((@input-height-large - @btn-lg-line-height) / 2);
-    (@spacer * 3);
+    @btn-lg-padding;
     @btn-lg-font-size;
     @btn-lg-line-height;
-    @border-radius-large
+    @border-radius-large;
+    @btn-lg-height
   );
 }
 .btn-sm,
 .navbar .btn {
   // line-height: ensure proper height of button next to small input
   .button-size(
-    @padding-small-vertical;
-    (@spacer * 2);
+    @btn-sm-padding;
     @btn-sm-font-size;
     @btn-sm-line-height;
-    @border-radius-small
+    @border-radius-small;
+    @btn-sm-height
   );
 }
 .btn-xs {
   .button-size(
-    @padding-xs-vertical;
-    (@spacer * 1);
+    @btn-xs-padding;
     @btn-xs-font-size;
     @btn-xs-line-height;
-    @border-radius-small
+    @border-radius-small;
+    @btn-xs-height
   );
 }
 
 @media (max-width: (@grid-float-breakpoint - 1px)) {
   .navbar-collapse .btn {
-    .button-size( @padding-large-vertical;
-    (@spacer * 3);
-    @btn-font-size;
-    @btn-line-height;
-    @border-radius-base);
+    .button-size(
+      @btn-padding;
+      @btn-font-size;
+      @btn-line-height;
+      @border-radius-base;
+      @btn-height
+    );
   }
 }
 

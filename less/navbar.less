@@ -258,7 +258,7 @@
 
 .navbar-nav {
   > li > a {
-    padding: @navbar-padding-vertical @navbar-padding-horizontal;
+    padding: @navbar-padding;
     line-height: @navbar-line-height;
     outline-offset: -1px;
     transition: color ease @transition-duration;
@@ -328,8 +328,7 @@
     > li {
       float: left;
       > a {
-        padding-top: @navbar-padding-vertical;
-        padding-bottom: (@navbar-padding-vertical - 3px);
+        padding-bottom: (@navbar-padding-vertical - 2px);
         font-size: @navbar-font-size;
       }
     }
@@ -367,7 +366,8 @@
     .box-shadow(none);
 
     // Vertically center in expanded, horizontal navbar
-    .navbar-vertical-align(@input-height-small);
+    margin-top: 12px;
+    margin-bottom: 12px;
 
     // Mixin behavior for optimum display
     .form-inline();
@@ -1037,4 +1037,3 @@
 .simple-nav .profile-name .text-ellipsis {
   max-width: 240px;
 }
-

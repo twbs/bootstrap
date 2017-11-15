@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Account Page Example</title>
+  <!--<meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+
+  <link type="text/css" rel="stylesheet"
+    href="../dist/css/bootstrap.min.css" />
+  <link type="text/css" rel="stylesheet" href="scratch.css" />
+
+  <script src="../assets/js/jquery.js"></script>
+  <script src="../assets/js/angular.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-cookies.min.js"></script>
+  <script src="../assets/js/styleguide-components.js"></script>
+
+  <script src="../dist/js/bootstrap.min.js"></script>
+
+  <script src="forms.js"></script>
+
+  <script>
+  angular
+    .module('ExampleApp', ['tw.styleguide-components', 'ngCookies'])
+    .config(function ($locationProvider) {
+      // undo the default ('!')
+      //$locationProvider.hashPrefix('');
+    });
+
+  </script>
+
+  <script src="js/nav.directive.js"></script>
+  <script src="js/top-nav.directive.js"></script>
+  <script src="js/simple-nav.directive.js"></script>
+  <script src="js/side-nav.directive.js"></script>
+  <script src="js/activity-filters.directive.js"></script>
+  <script src="js/pagination.directive.js"></script>
+  <script src="js/profile-block.directive.js"></script>
+  <script src="js/footer.directive.js"></script>
+
+
+  <script src="//transferwise.github.io/styleguide-components/lib/styleguide-components.js"></script>
+  <link type="text/css" rel="stylesheet" href="//transferwise.github.io/styleguide-components/components/currency-flags/dist/currency-flags.min.css" />
+
+  <script>
+  (function(angular) {
+
+    angular.module('ExampleApp')
+    .controller('PageController', [
+      PageController
+    ]);
+
+    function PageController() {
+      var $ctrl = this;
+
+      $ctrl.burgerToggle = function() {
+        $ctrl.open = !$ctrl.open;
+      };
+      $ctrl.showSearch = false;
+
+      $ctrl.sideNavToggle = function() {
+        $ctrl.sideNav = !$ctrl.sideNav;
+      };
+      $ctrl.sideNav = true;
+
+      $ctrl.actionButtons = [
+        {label: 'Send money', icon: 'icon-send', type: 'success', primary: true}
+        ,{label: 'Add money', icon: 'icon-add'}
+      ];
+
+      var now = new Date();
+      var after = new Date(now.getTime() + (10 * 1000));
+    }
+  })(window.angular);
+  </script>
+</head>
+<body ng-app="ExampleApp" class="bg-default" ng-controller="PageController as ctrl">
+<nav-bar ng-if="!ctrl.sideNav" fluid="ctrl.sideNav"></nav-bar>
+<div class="column-layout">
+  <div class="column-layout-left bg-primary" ng-class="{open: ctrl.open}" ng-if="ctrl.sideNav">
+    <div class="column-layout-top">
+      <side-nav active="gbp"></side-nav>
+    </div>
+  </div>
+  <div class="column-layout-main">
+    <top-nav
+      title="GBP balance - 1,234.56 GBP"
+      on-burger-click="ctrl.burgerToggle()"
+      buttons="ctrl.actionButtons"
+      button-summary="Actions">
+    </top-nav>
+
+    <div class="container m-t-3">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="panel">
+            <div class="panel-body">
+              <div class="row m-b-3">
+                <div class="col-sm-6">
+                  <tw-date-lookup
+                    placeholder="Start date..."
+                    ng-model="$ctrl.startDate"
+                    ng-max="$ctrl.endDate"
+                    size="sm">
+                  </tw-date-lookup>
+                </div>
+                <div class="col-sm-6">
+                  <tw-date-lookup
+                    placeholder="End date..."
+                    ng-model="$ctrl.endDate"
+                    ng-min="$ctrl.startDate"
+                    size="sm">
+                  </tw-date-lookup>
+                </div>
+              </div>
+              <table class="table table-condensed">
+                <thead>
+                  <tr>
+                    <th class="p-t-0">Transactions</th>
+                    <th class="p-t-0 text-xs-right">Amount</th>
+                    <th class="p-t-0 text-xs-right">Balance</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td colspan="3" class="p-t-3"><h6 class="m-t-2">Thursday, 2nd November</h6></td>
+                  </tr>
+                  <tr>
+                    <td>Allpress coffee</td>
+                    <td class="text-xs-right">-3.00</td>
+                    <td class="text-xs-right">1,234.56</td>
+                  </tr>
+                  <tr>
+                    <td>Allpress coffee</td>
+                    <td class="text-xs-right">-3.00</td>
+                    <td class="text-xs-right">1,237.56</td>
+                  </tr>
+                  <tr>
+                    <td colspan="3" class="p-t-3"><h6 class="m-t-2">Wednesday, 1st November</h6></td>
+                  </tr>
+                  <tr>
+                    <td>Allpress coffee</td>
+                    <td class="text-xs-right">-3.00</td>
+                    <td class="text-xs-right">1,240.56</td>
+                  </tr>
+                  <tr>
+                    <td>Allpress coffee</td>
+                    <td class="text-xs-right">-3.00</td>
+                    <td class="text-xs-right">1,243.56</td>
+                  </tr>
+                </tbody>
+              </table>
+              <button class="btn btn-sm btn-default">Export</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="panel">
+            <div class="panel-body">
+              <h5 class="m-b-3">Account details</h5>
+              <dl class="">
+                <dt>Account number</dt>
+                <dd>12345678</dd>
+
+                <dt>Sort code</dt>
+                <dd>12 - 34 - 56</dd>
+              </dl>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panel-body">
+              <h4 class="pull-xs-right">
+                <a href="" class="text-no-decoration">&plus;</a>
+              </h4>
+              <h5 class="m-b-3">
+                Direct debits
+              </h5>
+              <ul class="list-unstyled">
+                <li><a href="">Virgin media</a> <small>40 GBP p/m</small></li>
+                <li><a href="">Council tax</a>  <small>20 GBP p/m</small></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-xs-center section">
+        &copy; TransferWise 2016
+      </div>
+      <div style="position: fixed; left: 264px; bottom: 24px;">
+        <div class="container" style="width: 1176px;">
+          <button class="btn btn-primary pull-right"
+            style="border-radius: 24px; width: 48px; padding: 11px; text-align: center;">
+            ?
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column-layout-cover"
+    ng-class="{in: ctrl.open}"
+    ng-click="ctrl.open = !ctrl.open;">
+    <a class="close">&times;</a>
+  </div>
+</div>
+</body>
+</html>

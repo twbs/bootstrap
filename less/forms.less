@@ -133,21 +133,24 @@ output {
 .form-control {
   display: block;
   width: 100%;
-  height: @input-height-base; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
-  padding: @padding-large-vertical @padding-base-horizontal;
-  font-size: @input-font-size;
-  line-height: @input-line-height;
   color: @input-color;
   background-color: @input-bg;
   background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
   border: 1px solid @input-border;
-  border-radius: @input-border-radius; // Note: This has no effect on <select>s in some browsers, due to the limited stylability of <select>s in CSS.
   .transition(~"border-color ease-in-out .15s");
+
+  .input-size(
+    @input-height-base,
+    @input-padding,
+    @input-font-size,
+    @input-line-height,
+    @input-border-radius
+  );
 
   background-clip: padding-box; // Remove iOS drop shadow
 
   &:hover {
-      border-color: @input-border-hover;
+    border-color: @input-border-hover;
   }
 
   // Customize the `:focus` state to imitate native WebKit styles.
@@ -179,7 +182,6 @@ output {
   // Reset height for `textarea`s
   textarea& {
     height: 144px;
-    padding: @padding-large-vertical @padding-base-horizontal @padding-large-vertical @padding-base-horizontal;
   }
 }
 
@@ -336,21 +338,16 @@ input[type="checkbox"] {
 // a horizontal form layout.
 
 .form-control-static {
-  // Size it appropriately next to real form controls
-  padding-top: (@line-height-computed / 2 - 1);
-  padding-bottom:(@line-height-computed / 2 - 1);
   // Remove default margin from `p`
   margin-bottom: 0;
   line-height: @line-height-computed;
   min-height: (@line-height-computed * 2);
-
   font-size: @input-font-size;
   color: @input-color-disabled;
   background-color: @input-bg-disabled;
   border: 1px solid @input-border-disabled;
   border-radius: @input-border-radius;
-  padding-left: @padding-base-horizontal;
-  padding-right: @padding-base-horizontal;
+  padding: @input-padding;
 
   &.input-lg,
   &.input-sm {
@@ -369,13 +366,19 @@ input[type="checkbox"] {
 // issue documented in https://github.com/twbs/bootstrap/issues/15074.
 
 .input-sm {
-  .input-size(@input-height-small; @padding-small-vertical; @padding-small-horizontal; @input-font-size-small; @input-line-height-small; @input-border-radius-small);
+  .input-size(
+    @input-height-small;
+    @input-padding-small;
+    @input-font-size-small;
+    @input-line-height-small;
+    @input-border-radius-small
+  );
 }
 .form-group-sm,
 .navbar {
   .form-control {
     height: @input-height-small;
-    padding: @padding-small-vertical @padding-small-horizontal;
+    padding: @input-padding-small;
     font-size: @input-font-size-small;
     line-height: @input-line-height-small;
     border-radius: @input-border-radius-small;
@@ -391,14 +394,20 @@ input[type="checkbox"] {
   .form-control-static {
     height: @input-height-small;
     min-height: (@line-height-computed + @input-font-size-small);
-    padding: (@padding-small-vertical + 1) @padding-small-horizontal;
+    padding: @input-padding-small;
     font-size: @input-font-size-small;
     line-height: @input-line-height-small;
   }
 }
 
 .input-lg {
-  .input-size(@input-height-large; @padding-large-vertical; @padding-large-horizontal; @input-font-size-large; @input-line-height-large; @input-border-radius-large);
+  .input-size(
+    @input-height-large;
+    @input-padding-large;
+    @input-font-size-large;
+    @input-line-height-large;
+    @input-border-radius-large
+  );
 }
 .form-group-lg {
   position: relative;
@@ -421,7 +430,7 @@ input[type="checkbox"] {
   .form-control-static {
     height: @input-height-large;
     min-height: (@line-height-computed + @input-font-size-large);
-    padding: (@line-height-computed / 2 + 1) @padding-large-horizontal;
+    padding: @input-padding-large;
     font-size: @input-font-size-large;
     line-height: @input-line-height-large;
   }
@@ -631,7 +640,7 @@ input[type="checkbox"] {
 
     .control-label {
       margin-bottom: 0;
-      vertical-align: middle;
+      vertical-align: calc(-2px);
     }
 
     // Remove default margin on radios/checkboxes that were used for stacking, and
@@ -744,8 +753,8 @@ input[type="checkbox"] {
 
 .form-control-feedback,
 .form-control-feedback.icon {
-    font-size: 24px;
-    line-height: 48px;
+  font-size: 24px;
+  line-height: 48px;
 }
 
 .label {

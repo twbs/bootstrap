@@ -1,9 +1,20 @@
 // Typography
 
-.text-emphasis-variant(@color, @hover) {
-  color: @color !important;
+.text-emphasis-variant(@small-color, @large-color, @hover) {
+  color: @small-color !important;
   a&:hover,
   a&:focus {
-    color: @hover;
+    color: @hover !important;
+  }
+
+  .large-text-emphasis(@small-color, @large-color);
+}
+
+.large-text-emphasis(@small-color, @large-color) when not (@small-color = @large-color) {
+  h1&, h2&, h3&,
+  &.h1, &.h2, &.h3,
+  h1, h2, h3,
+  .h1, .h2, .h3 {
+    color: @large-color !important;
   }
 }
