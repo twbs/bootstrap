@@ -119,21 +119,3 @@
     }
   }
 }
-
-// Custom check backgrounds
-//
-// We use this for multiple form checks (radio and checkbox) and multiple states
-// (checked and active).
-
-@mixin custom-check-bg($bg-color, $bg-image) {
-  background-color: $bg-color;
-
-  @if $enable-gradients {
-    background-image: $bg-image, linear-gradient(180deg, mix($body-bg, $bg-color, 15%), $bg-color);
-    background-repeat: no-repeat, repeat-x;
-    background-position: center center;
-    background-size: $custom-control-indicator-bg-size, 100% 100%;
-  } @else {
-    background-image: $bg-image;
-  }
-}
