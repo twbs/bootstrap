@@ -44,10 +44,12 @@ const Helper = (() => {
   }
 
   function handleFocusin() {
+    // Needed for keyboard users in firefox
     $(this).addClass('focus')
   }
 
   function handleFocusout() {
+    // Needed for keyboard users in firefox
     $(this).removeClass('focus')
   }
 
