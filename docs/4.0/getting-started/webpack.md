@@ -26,25 +26,9 @@ import 'bootstrap/js/dist/dropdown';
 ...
 {% endhighlight %}
 
-Bootstrap is dependent on [jQuery](https://jquery.com/) and [Popper](https://popper.js.org/), so npm will install them for you if needed. But they must be explicitly provided by webpack. Add the following code to the `plugins` section in your webpack config file:
-
-{% highlight js %}
-  // don't forget to import webpack (using import or require) to use webpack.ProvidePlugin
-  plugins: [
-    ...
-      new webpack.ProvidePlugin({
-        $: 'jquery',
-        jQuery: 'jquery',
-        'window.jQuery': 'jquery',
-        Popper: ['popper.js', 'default'],
-        // In case you imported plugins individually, you must also require them here:
-        Util: "exports-loader?Util!bootstrap/js/dist/util",
-        Dropdown: "exports-loader?Dropdown!bootstrap/js/dist/dropdown",
-        ...
-      })
-    ...
-  ]
-{% endhighlight %}
+Bootstrap is dependent on [jQuery](https://jquery.com/) and [Popper](https://popper.js.org/),
+these are defined as `peerDependencies`, this means that you will have to make sure to add both of them
+to your `package.json` using `npm --save jquery popper.js`.
 
 {% callout warning %}
 Notice that if you chose to **import plugins individually**, you must also install [exports-loader](https://github.com/webpack-contrib/exports-loader)
