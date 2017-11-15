@@ -28,22 +28,18 @@ const Popover = (($) => {
 
   const Default = {
     ...Tooltip.Default,
-    ...{
-      placement : 'right',
-      trigger   : 'click',
-      content   : '',
-      template  : '<div class="popover" role="tooltip">'
-                + '<div class="arrow"></div>'
-                + '<h3 class="popover-header"></h3>'
-                + '<div class="popover-body"></div></div>'
-    }
+    placement : 'right',
+    trigger   : 'click',
+    content   : '',
+    template  : '<div class="popover" role="tooltip">'
+              + '<div class="arrow"></div>'
+              + '<h3 class="popover-header"></h3>'
+              + '<div class="popover-body"></div></div>'
   }
 
   const DefaultType = {
     ...Tooltip.DefaultType,
-    ...{
-      content : '(string|element|function)'
-    }
+    content : '(string|element|function)'
   }
 
   const ClassName = {
