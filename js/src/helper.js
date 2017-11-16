@@ -70,7 +70,7 @@ const Helper = (() => {
   $(document).on(Event.INPUTFOCUSIN, Selector.CUSTOMFILE, handleFocusin)
   $(document).on(Event.INPUTFOCUSOUT, Selector.CUSTOMFILE, handleFocusout)
   $(document).on(Event.FORMRESET, Selector.FORM, handleFormReset)
-  
+
 })($)
 
 export default Helper
