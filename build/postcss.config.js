@@ -2,7 +2,15 @@
 
 module.exports = (ctx) => {
   const cssnanoOptions = {
-    preset: ['default']
+    preset: ['default', {
+      cssDeclarationSorter: false,
+      mergeRules: false,
+      minifyFontValues: {
+        removeDuplicates: false,
+        removeQuotes: false
+      },
+      reduceTransforms: false
+    }]
   }
 
   return {
