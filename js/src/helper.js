@@ -25,8 +25,10 @@ const Helper = (() => {
   }
 
   const Event = {
-    INPUTCHANGE : `change${EVENT_KEY}`,
-    FORMRESET   : `reset${EVENT_KEY}`
+    INPUTCHANGE   : `change${EVENT_KEY}`,
+    FORMRESET     : `reset${EVENT_KEY}`,
+    INPUTFOCUSIN  : `focusin${EVENT_KEY}`,
+    INPUTFOCUSOUT : `focusout${EVENT_KEY}`
   }
 
   const ClassName = {
@@ -39,6 +41,16 @@ const Helper = (() => {
     if ($fileControl.length === 1) {
       $fileControl.text(this.value)
     }
+  }
+
+  function handleFocusin() {
+    // Needed for keyboard users in firefox
+    $(this).addClass('focus')
+  }
+
+  function handleFocusout() {
+    // Needed for keyboard users in firefox
+    $(this).removeClass('focus')
   }
 
   function handleFormReset() {
@@ -55,7 +67,10 @@ const Helper = (() => {
    */
 
   $(document).on(Event.INPUTCHANGE, Selector.CUSTOMFILE, handleInputChange)
+  $(document).on(Event.INPUTFOCUSIN, Selector.CUSTOMFILE, handleFocusin)
+  $(document).on(Event.INPUTFOCUSOUT, Selector.CUSTOMFILE, handleFocusout)
   $(document).on(Event.FORMRESET, Selector.FORM, handleFormReset)
+
 })($)
 
 export default Helper
