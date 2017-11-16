@@ -503,10 +503,8 @@ const Tooltip = (($) => {
       if (this.config.selector) {
         this.config = {
           ...this.config,
-          ...{
-            trigger  : 'manual',
-            selector : ''
-          }
+          trigger  : 'manual',
+          selector : ''
         }
       } else {
         this._fixTitle()
