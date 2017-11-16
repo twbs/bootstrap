@@ -172,14 +172,17 @@
   display: flex;
   flex-direction: column;
 
-  .card {
+  // The child selector allows nested `.card` within `.card-group`
+  // to display properly.
+  > .card {
     margin-bottom: $card-group-margin;
   }
 
   @include media-breakpoint-up(sm) {
     flex-flow: row wrap;
-
-    .card {
+    // The child selector allows nested `.card` within `.card-group`
+    // to display properly.
+    > .card {
       // Flexbugs #4: https://github.com/philipwalton/flexbugs#4-flex-shorthand-declarations-with-unitless-flex-basis-values-are-ignored
       flex: 1 0 0%;
       margin-bottom: 0;
