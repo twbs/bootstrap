@@ -14,4 +14,8 @@
   word-spacing: normal;
   white-space: normal;
   line-break: auto;
+
+  [dir='rtl'] & {
+    text-align: right;
+  }
 }

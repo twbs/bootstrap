@@ -36,6 +36,11 @@
     right: 0;
     padding: $alert-padding-y $alert-padding-x;
     color: inherit;
+
+    [dir='rtl'] & {
+      right: auto;
+      left: 0;
+    }
   }
 }
 

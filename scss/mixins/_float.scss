@@ -2,9 +2,17 @@
 
 @mixin float-left {
   float: left !important;
+
+  [dir='rtl'] & {
+    float: right !important;
+  }
 }
 @mixin float-right {
   float: right !important;
+
+  [dir='rtl'] & {
+    float: left !important;
+  }
 }
 @mixin float-none {
   float: none !important;

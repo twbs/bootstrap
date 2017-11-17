@@ -63,6 +63,10 @@ body {
   color: $body-color;
   text-align: left; // 3
   background-color: $body-bg; // 2
+
+  [dir='rtl'] & {
+    text-align: right;
+  }
 }
 
 // Suppress the focus outline on elements that cannot be accessed via keyboard.
@@ -316,6 +320,10 @@ caption {
   color: $text-muted;
   text-align: left;
   caption-side: bottom;
+
+  [dir='rtl'] & {
+    text-align: right;
+  }
 }
 
 th {
