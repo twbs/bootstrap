@@ -13,15 +13,6 @@ import Util from './util'
 const Tooltip = (($) => {
 
   /**
-   * Check for Popper dependency
-   * Popper - https://popper.js.org
-   */
-  if (typeof Popper === 'undefined') {
-    throw new Error('Bootstrap tooltips require Popper.js (https://popper.js.org)')
-  }
-
-
-  /**
    * ------------------------------------------------------------------------
    * Constants
    * ------------------------------------------------------------------------
@@ -120,6 +111,13 @@ const Tooltip = (($) => {
   class Tooltip {
 
     constructor(element, config) {
+      /**
+       * Check for Popper dependency
+       * Popper - https://popper.js.org
+       */
+      if (typeof Popper === 'undefined') {
+        throw new Error('Bootstrap tooltips require Popper.js (https://popper.js.org)')
+      }
 
       // private
       this._isEnabled     = true
@@ -503,10 +501,11 @@ const Tooltip = (($) => {
       })
 
       if (this.config.selector) {
-        this.config = $.extend({}, this.config, {
+        this.config = {
+          ...this.config,
           trigger  : 'manual',
           selector : ''
-        })
+        }
       } else {
         this._fixTitle()
       }
@@ -615,12 +614,11 @@ const Tooltip = (($) => {
     }
 
     _getConfig(config) {
-      config = $.extend(
-        {},
-        this.constructor.Default,
-        $(this.element).data(),
-        config
-      )
+      config = {
+        ...this.constructor.Default,
+        ...$(this.element).data(),
+        ...config
+      }
 
       if (typeof config.delay === 'number') {
         config.delay = {

@@ -171,7 +171,10 @@ const ScrollSpy = (($) => {
     // private
 
     _getConfig(config) {
-      config = $.extend({}, Default, config)
+      config = {
+        ...Default,
+        ...config
+      }
 
       if (typeof config.target !== 'string') {
         let id = $(config.target).attr('id')

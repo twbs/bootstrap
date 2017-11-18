@@ -50,11 +50,20 @@
   }
 }
 
+.modal-dialog-centered {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 // Actual modal
 .modal-content {
   position: relative;
   display: flex;
   flex-direction: column;
+  width: 100%; // Ensure `.modal-content` extends the full width of the parent `.modal-dialog`
   // counteract the pointer-events: none; in the .modal-dialog
   pointer-events: auto;
   background-color: $modal-content-bg;
@@ -144,11 +153,17 @@
     margin: $modal-dialog-margin-y-sm-up auto;
   }
 
+  .modal-dialog-centered {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
   .modal-content {
     @include box-shadow($modal-content-box-shadow-sm-up);
   }
 
   .modal-sm { max-width: $modal-sm; }
+
 }
 
 @include media-breakpoint-up(lg) {

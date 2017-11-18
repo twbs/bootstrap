@@ -263,7 +263,7 @@ Cycles to the previous item. **Returns to the caller before the previous item ha
 
 Cycles to the next item. **Returns to the caller before the next item has been shown** (i.e. before the `slid.bs.carousel` event occurs).
 
-### `.carousel('dispose')`
+#### `.carousel('dispose')`
 
 Destroys an element's carousel.
 

@@ -67,6 +67,7 @@ Each plugin also exposes its raw constructor on a `Constructor` property: `$.fn.
 All programmatic API methods are **asynchronous** and returns to the caller once the transition is started but **before it ends**.
 
 In order to execute an action once the transition is complete, you can listen to the corresponding event.
+
 {% highlight js %}
 $('#myCollapse').on('shown.bs.collapse', function (e) {
   // Action to execute once the collapsible area is expanded
@@ -74,6 +75,7 @@ $('#myCollapse').on('shown.bs.collapse', function (e) {
 {% endhighlight %}
 
 In addition a method call on a **transitioning component will be ignored**.
+
 {% highlight js %}
 $('#myCarousel').on('slid.bs.carousel', function (e) {
   $('#myCarousel').carousel('2') // Will slide to the slide 2 as soon as the transition to slide 1 is finished

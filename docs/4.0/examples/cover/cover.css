@@ -23,7 +23,6 @@ a:hover {
 /*
  * Base structure
  */
-
 html,
 body {
   height: 100%;
@@ -61,7 +60,6 @@ body {
 /*
  * Header
  */
-
 .masthead {
   margin-bottom: 2rem;
 }
@@ -105,7 +103,6 @@ body {
 /*
  * Cover
  */
-
 .cover {
   padding: 0 1.5rem;
 }
@@ -118,7 +115,6 @@ body {
 /*
  * Footer
  */
-
 .mastfoot {
   color: rgba(255, 255, 255, .5);
 }
@@ -127,7 +123,6 @@ body {
 /*
  * Affix and center
  */
-
 @media (min-width: 40em) {
   /* Pull out the header and footer */
   .masthead {

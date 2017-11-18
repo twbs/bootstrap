@@ -280,7 +280,7 @@ $('[data-spy="scroll"]').each(function () {
 })
 {% endhighlight %}
 
-### `.scrollspy('dispose')`
+#### `.scrollspy('dispose')`
 
 Destroys an element's scrollspy.
 
