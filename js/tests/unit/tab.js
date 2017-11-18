@@ -53,10 +53,10 @@ $(function () {
 
     $('<ul><li id="home"/><li id="profile"/></ul>').appendTo('#qunit-fixture')
 
-    $(tabsHTML).find('li:last a').bootstrapTab('show')
+    $(tabsHTML).find('li:last-child a').bootstrapTab('show')
     assert.strictEqual($('#qunit-fixture').find('.active').attr('id'), 'profile')
 
-    $(tabsHTML).find('li:first a').bootstrapTab('show')
+    $(tabsHTML).find('li:first-child a').bootstrapTab('show')
     assert.strictEqual($('#qunit-fixture').find('.active').attr('id'), 'home')
   })
 
@@ -69,10 +69,10 @@ $(function () {
 
     $('<ul><li id="home"/><li id="profile"/></ul>').appendTo('#qunit-fixture')
 
-    $(pillsHTML).find('li:last a').bootstrapTab('show')
+    $(pillsHTML).find('li:last-child a').bootstrapTab('show')
     assert.strictEqual($('#qunit-fixture').find('.active').attr('id'), 'profile')
 
-    $(pillsHTML).find('li:first a').bootstrapTab('show')
+    $(pillsHTML).find('li:first-child a').bootstrapTab('show')
     assert.strictEqual($('#qunit-fixture').find('.active').attr('id'), 'home')
   })
 
@@ -85,10 +85,10 @@ $(function () {
 
     $('<ol><li id="home"/><li id="profile"/></ol>').appendTo('#qunit-fixture')
 
-    $(pillsHTML).find('li:last a').bootstrapTab('show')
+    $(pillsHTML).find('li:last-child a').bootstrapTab('show')
     assert.strictEqual($('#qunit-fixture').find('.active').attr('id'), 'profile')
 
-    $(pillsHTML).find('li:first a').bootstrapTab('show')
+    $(pillsHTML).find('li:first-child a').bootstrapTab('show')
     assert.strictEqual($('#qunit-fixture').find('.active').attr('id'), 'home')
   })
 
@@ -101,10 +101,10 @@ $(function () {
 
     $('<nav><div id="home"></div><div id="profile"></div></nav>').appendTo('#qunit-fixture')
 
-    $(tabsHTML).find('a:last').bootstrapTab('show')
+    $(tabsHTML).find('a:last-child').bootstrapTab('show')
     assert.strictEqual($('#qunit-fixture').find('.active').attr('id'), 'profile')
 
-    $(tabsHTML).find('a:first').bootstrapTab('show')
+    $(tabsHTML).find('a:first-child').bootstrapTab('show')
     assert.strictEqual($('#qunit-fixture').find('.active').attr('id'), 'home')
   })
 
@@ -117,10 +117,10 @@ $(function () {
 
     $('<nav><div id="home"></div><div id="profile"></div></nav>').appendTo('#qunit-fixture')
 
-    $(tabsHTML).find('a:last').bootstrapTab('show')
+    $(tabsHTML).find('a:last-child').bootstrapTab('show')
     assert.strictEqual($('#qunit-fixture').find('.active').attr('id'), 'profile')
 
-    $(tabsHTML).find('a:first').bootstrapTab('show')
+    $(tabsHTML).find('a:first-child').bootstrapTab('show')
     assert.strictEqual($('#qunit-fixture').find('.active').attr('id'), 'home')
   })
 
@@ -193,10 +193,10 @@ $(function () {
         + '</ul>'
 
     $(dropHTML)
-      .find('ul > li:first a')
+      .find('ul > li:first-child a')
         .bootstrapTab('show')
       .end()
-      .find('ul > li:last a')
+      .find('ul > li:last-child a')
         .on('show.bs.tab', function (e) {
           assert.strictEqual(e.relatedTarget.hash, '#1-1', 'references correct element as relatedTarget')
         })
@@ -217,24 +217,24 @@ $(function () {
         + '</ul>'
 
     $(tabsHTML)
-      .find('li:first a')
+      .find('li:first-child a')
         .on('hide.bs.tab', function () {
           assert.ok(true, 'hide event fired')
         })
         .bootstrapTab('show')
       .end()
-      .find('li:last a')
+      .find('li:last-child a')
         .bootstrapTab('show')
 
     $(tabsHTML)
-      .find('li:first a')
+      .find('li:first-child a')
         .on('hidden.bs.tab', function () {
           assert.ok(true, 'hidden event fired')
           done()
         })
         .bootstrapTab('show')
       .end()
-      .find('li:last a')
+      .find('li:last-child a')
         .bootstrapTab('show')
   })
 
@@ -248,7 +248,7 @@ $(function () {
         + '</ul>'
 
     $(tabsHTML)
-      .find('li:first a')
+      .find('li:first-child a')
         .on('hide.bs.tab', function (e) {
           e.preventDefault()
           assert.ok(true, 'hide event fired')
@@ -259,7 +259,7 @@ $(function () {
         })
         .bootstrapTab('show')
       .end()
-      .find('li:last a')
+      .find('li:last-child a')
         .bootstrapTab('show')
   })
 
@@ -273,7 +273,7 @@ $(function () {
         + '</ul>'
 
     $(tabsHTML)
-      .find('li:first a')
+      .find('li:first-child a')
         .on('hide.bs.tab', function (e) {
           assert.strictEqual(e.relatedTarget.hash, '#profile', 'references correct element as relatedTarget')
         })
@@ -283,7 +283,7 @@ $(function () {
         })
         .bootstrapTab('show')
       .end()
-      .find('li:last a')
+      .find('li:last-child a')
         .bootstrapTab('show')
   })
 
@@ -295,19 +295,19 @@ $(function () {
         + '</ul>'
     var $tabs = $(tabsHTML).appendTo('#qunit-fixture')
 
-    $tabs.find('li:first a').bootstrapTab('show')
+    $tabs.find('li:first-child a').bootstrapTab('show')
     assert.strictEqual($tabs.find('.active').attr('aria-selected'), 'true', 'shown tab has aria-selected = true')
     assert.strictEqual($tabs.find('a:not(.active)').attr('aria-selected'), 'false', 'hidden tab has aria-selected = false')
 
-    $tabs.find('li:last a').trigger('click')
+    $tabs.find('li:last-child a').trigger('click')
     assert.strictEqual($tabs.find('.active').attr('aria-selected'), 'true', 'after click, shown tab has aria-selected = true')
     assert.strictEqual($tabs.find('a:not(.active)').attr('aria-selected'), 'false', 'after click, hidden tab has aria-selected = false')
 
-    $tabs.find('li:first a').bootstrapTab('show')
+    $tabs.find('li:first-child a').bootstrapTab('show')
     assert.strictEqual($tabs.find('.active').attr('aria-selected'), 'true', 'shown tab has aria-selected = true')
     assert.strictEqual($tabs.find('a:not(.active)').attr('aria-selected'), 'false', 'hidden tab has aria-selected = false')
 
-    $tabs.find('li:first a').trigger('click')
+    $tabs.find('li:first-child a').trigger('click')
     assert.strictEqual($tabs.find('.active').attr('aria-selected'), 'true', 'after second show event, shown tab still has aria-selected = true')
     assert.strictEqual($tabs.find('a:not(.active)').attr('aria-selected'), 'false', 'after second show event, hidden tab has aria-selected = false')
   })
@@ -320,9 +320,9 @@ $(function () {
         + '</ul>'
     var $tabs = $(tabsHTML).appendTo('#qunit-fixture')
 
-    $tabs.find('li:last a').trigger('click')
-    assert.notOk($tabs.find('li:first a').hasClass('active'))
-    assert.ok($tabs.find('li:last a').hasClass('active'))
+    $tabs.find('li:last-child a').trigger('click')
+    assert.notOk($tabs.find('li:first-child a').hasClass('active'))
+    assert.ok($tabs.find('li:last-child a').hasClass('active'))
   })
 
   QUnit.test('selected tab should deactivate previous selected link in dropdown', function (assert) {
@@ -339,10 +339,10 @@ $(function () {
         + '</ul>'
     var $tabs = $(tabsHTML).appendTo('#qunit-fixture')
 
-    $tabs.find('li:first > a').trigger('click')
-    assert.ok($tabs.find('li:first a').hasClass('active'))
-    assert.notOk($tabs.find('li:last > a').hasClass('active'))
-    assert.notOk($tabs.find('li:last > .dropdown-menu > a:first').hasClass('active'))
+    $tabs.find('li:first-child a').trigger('click')
+    assert.ok($tabs.find('li:first-child a').hasClass('active'))
+    assert.notOk($tabs.find('li:last-child a').hasClass('active'))
+    assert.notOk($tabs.find('li:last-child .dropdown-menu a:first-child').hasClass('active'))
   })
 
   QUnit.test('Nested tabs', function (assert) {

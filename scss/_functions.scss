@@ -63,7 +63,7 @@
   }
 }
 
-// Retreive color Sass maps
+// Retrieve color Sass maps
 @function color($key: "blue") {
   @return map-get($colors, $key);
 }
