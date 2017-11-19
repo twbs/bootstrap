@@ -15,10 +15,12 @@
 @each $breakpoint in map-keys($grid-breakpoints) {
   @include media-breakpoint-up($breakpoint) {
     $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
-
     .text#{$infix}-left   { text-align: left !important; }
     .text#{$infix}-right  { text-align: right !important; }
     .text#{$infix}-center { text-align: center !important; }
+    .text#{$infix}-justify-center { text-align: justify !important; text-align-last: center !important; -ms-text-align-last: center !important; -moz-text-align-last: center !important;}
+    .text#{$infix}-justify-left { text-align: justify !important; text-align-last: left !important; -ms-text-align-last: left !important; -moz-text-align-last: left !important;}
+    .text#{$infix}-justify-right { text-align: justify !important; text-align-last: right !important; -ms-text-align-last: right !important; -moz-text-align-last: right !important;}
   }
 }
 
