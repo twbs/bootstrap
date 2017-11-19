@@ -41,7 +41,7 @@
     "js-minify": "npm-run-all --parallel js-minify-*",
     "js-minify-standalone": "uglifyjs --compress typeofs=false --mangle --comments \"/^!/\" --source-map \"content=dist/js/bootstrap.js.map,includeSources,url=bootstrap.min.js.map\" --output dist/js/bootstrap.min.js dist/js/bootstrap.js",
     "js-minify-bundle": "uglifyjs --compress typeofs=false --mangle --comments \"/^!/\" --source-map \"content=dist/js/bootstrap.bundle.js.map,includeSources,url=bootstrap.bundle.min.js.map\" --output dist/js/bootstrap.bundle.min.js dist/js/bootstrap.bundle.js",
-    "js-minify-docs": "uglifyjs --mangle --comments \"/^!/\" --output assets/js/docs.min.js assets/js/vendor/anchor.min.js assets/js/vendor/clipboard.min.js assets/js/vendor/holder.min.js assets/js/src/application.js assets/js/src/pwa.js",
+    "js-minify-docs": "uglifyjs --mangle --comments \"/^!/\" --output assets/js/docs.min.js assets/js/vendor/anchor.min.js assets/js/vendor/clipboard.min.js assets/js/vendor/holder.min.js \"assets/js/src/*.js\"",
     "js-test": "phantomjs ./node_modules/qunit-phantomjs-runner/runner.js js/tests/index.html 60",
     "js-test-cloud": "ruby -r webrick -e \"s = WEBrick::HTTPServer.new(:Port => 3000, :DocumentRoot => Dir.pwd, :Logger => WEBrick::Log.new('/dev/null'), :AccessLog => []); trap('INT') { s.shutdown }; s.start\" & node build/saucelabs-unit-test.js",
     "docs": "npm-run-all --parallel css-docs js-docs --sequential docs-compile docs-lint",
