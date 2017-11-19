@@ -210,12 +210,11 @@ const Dropdown = (($) => {
     }
 
     _getConfig(config) {
-      config = $.extend(
-        {},
-        this.constructor.Default,
-        $(this._element).data(),
-        config
-      )
+      config = {
+        ...this.constructor.Default,
+        ...$(this._element).data(),
+        ...config
+      }
 
       Util.typeCheckConfig(
         NAME,
@@ -262,7 +261,10 @@ const Dropdown = (($) => {
       const offsetConf = {}
       if (typeof this._config.offset === 'function') {
         offsetConf.fn = (data) => {
-          data.offsets = $.extend({}, data.offsets, this._config.offset(data.offsets) || {})
+          data.offsets = {
+            ...data.offsets,
+            ...this._config.offset(data.offsets) || {}
+          }
           return data
         }
       } else {

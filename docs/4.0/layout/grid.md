@@ -478,7 +478,7 @@ If more than 12 columns are placed within a single row, each group of extra colu
 
 ### Column breaks
 
-Breaking columns to a new line in flexbox requires a small hack: add an element with `width: 100%` wherever you want to wrap your columns to a new line. Normally this is accomplished with multiple `.row`s, but not ever implementation method can account for this.
+Breaking columns to a new line in flexbox requires a small hack: add an element with `width: 100%` wherever you want to wrap your columns to a new line. Normally this is accomplished with multiple `.row`s, but not every implementation method can account for this.
 
 <div class="bd-example-row">
 {% example html %}

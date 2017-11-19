@@ -26,7 +26,8 @@ const Popover = (($) => {
   const CLASS_PREFIX        = 'bs-popover'
   const BSCLS_PREFIX_REGEX  = new RegExp(`(^|\\s)${CLASS_PREFIX}\\S+`, 'g')
 
-  const Default = $.extend({}, Tooltip.Default, {
+  const Default = {
+    ...Tooltip.Default,
     placement : 'right',
     trigger   : 'click',
     content   : '',
@@ -34,11 +35,12 @@ const Popover = (($) => {
               + '<div class="arrow"></div>'
               + '<h3 class="popover-header"></h3>'
               + '<div class="popover-body"></div></div>'
-  })
+  }
 
-  const DefaultType = $.extend({}, Tooltip.DefaultType, {
+  const DefaultType = {
+    ...Tooltip.DefaultType,
     content : '(string|element|function)'
-  })
+  }
 
   const ClassName = {
     FADE : 'fade',
