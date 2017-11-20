@@ -29,13 +29,15 @@
 }
 
 // Maximum breakpoint width. Null for the largest (last) breakpoint.
-// The maximum value is calculated as the minimum of the next one less 0.1.
+// The maximum value is calculated as the minimum of the next one less 0.01px
+// to work around the limitations of `min-` and `max-` prefixes and viewports with fractional widths.
+// See https://www.w3.org/TR/mediaqueries-4/#mq-min-max
 //
 //    >> breakpoint-max(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
 //    767px
 @function breakpoint-max($name, $breakpoints: $grid-breakpoints) {
   $next: breakpoint-next($name, $breakpoints);
-  @return if($next, breakpoint-min($next, $breakpoints) - 1px, null);
+  @return if($next, breakpoint-min($next, $breakpoints) - .01px, null);
 }
 
 // Returns a blank string if smallest breakpoint, otherwise returns the name with a dash infront.
