@@ -51,6 +51,7 @@
   }
 
   .form-control,
+  .form-control-file,
   .custom-select {
     .was-validated &:#{$state},
     &.is-#{$state} {
