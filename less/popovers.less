@@ -8,7 +8,6 @@
   top: 0;
   left: 0;
   z-index: @zindex-popover;
-  display: none;
   width: @popover-max-width;
   padding: @popover-padding-vertical @popover-padding-horizontal;
   // Our parent element can be arbitrary since popovers are by default inserted as a sibling of their target element.
@@ -158,8 +157,6 @@
     left: 0 !important;
     width: 272px;
     margin: 32px auto !important;
-
-    transform-origin: 50% 50% !important;
   }
   .popover-modal:before {
     display: none;
