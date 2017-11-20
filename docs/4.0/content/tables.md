@@ -579,6 +579,10 @@ Regular table background variants are not available with the dark table, however
 {% capture callout-include %}{% include callout-warning-color-assistive-technologies.md %}{% endcapture %}
 {{ callout-include | markdownify }}
 
+Create responsive tables by adding `.table-responsive{-sm|-md|-lg|-xl}` to any `.table` to make them scroll horizontally at each `max-width` breakpoint of 575.99px, 767.99px, 991.99px, and 1119.99px, respectively.
+
+{% capture callout-include %}{% include callout-info-mediaqueries-breakpoints.md %}{% endcapture %}
+{{ callout-include | markdownify }}
 
 ## Captions
 
