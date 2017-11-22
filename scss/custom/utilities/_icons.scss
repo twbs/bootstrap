@@ -1,6 +1,6 @@
 // Icon Styles
-// 
-// 
+//
+//
 
 @font-face {
   font-family: 'joblocal-icons';
@@ -79,11 +79,12 @@
 .icon-heart-outline:before { content: $icon-heart-outline; }
 .icon-location:before { content: $icon-location; }
 .icon-swipe:before { content: $icon-swipe; }
+.icon-external:before { content: $icon-external; }
 
 
 // Modifiers
-// 
-// 
+//
+//
 
 .icon-xs:before {
   font-size: $font-size-xs;

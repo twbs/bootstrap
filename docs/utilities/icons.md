@@ -349,6 +349,14 @@ All icons that are currently available for use
         <code>.icon-swipe</code>
       </td>
     </tr>
+    <tr>
+      <td>
+        <p class="icon-external"></p>
+      </td>
+      <td>
+        <code>.icon-external</code>
+      </td>
+    </tr>
   </body>
 </table>
 
