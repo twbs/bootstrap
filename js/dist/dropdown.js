@@ -1,3 +1,5 @@
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
@@ -197,7 +199,7 @@ var Dropdown = function ($) {
     };
 
     _proto._getConfig = function _getConfig(config) {
-      config = $.extend({}, this.constructor.Default, $(this._element).data(), config);
+      config = _extends({}, this.constructor.Default, $(this._element).data(), config);
       Util.typeCheckConfig(NAME, config, this.constructor.DefaultType);
       return config;
     };
@@ -244,7 +246,7 @@ var Dropdown = function ($) {
 
       if (typeof this._config.offset === 'function') {
         offsetConf.fn = function (data) {
-          data.offsets = $.extend({}, data.offsets, _this2._config.offset(data.offsets) || {});
+          data.offsets = _extends({}, data.offsets, _this2._config.offset(data.offsets) || {});
           return data;
         };
       } else {
