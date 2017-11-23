@@ -31,6 +31,7 @@ Wrap the dropdown's toggle (your button or link) and the dropdown menu within `.
 Any single `.btn` can be turned into a dropdown toggle with some markup changes. Here's how you can put them to work with either `<button>` elements:
 
 {% example html %}
+
 <div class="dropdown">
   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Dropdown button
@@ -46,6 +47,7 @@ Any single `.btn` can be turned into a dropdown toggle with some markup changes.
 And with `<a>` elements:
 
 {% example html %}
+
 <div class="dropdown show">
   <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Dropdown link
@@ -125,7 +127,9 @@ The best part is you can do this with any button variant, too:
 </div>
 
 {% highlight html %}
+
 <!-- Example single danger button -->
+
 <div class="btn-group">
   <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Action
@@ -228,7 +232,9 @@ We use this extra class to reduce the horizontal `padding` on either side of the
 </div>
 
 {% highlight html %}
+
 <!-- Example split danger button -->
+
 <div class="btn-group">
   <button type="button" class="btn btn-danger">Action</button>
   <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -306,7 +312,9 @@ Button dropdowns work with buttons of all sizes, including default and split dro
 </div><!-- /example -->
 
 {% highlight html %}
+
 <!-- Large button groups (default and split) -->
+
 <div class="btn-group">
   <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Large button
@@ -328,6 +336,7 @@ Button dropdowns work with buttons of all sizes, including default and split dro
 </div>
 
 <!-- Small button groups (default and split) -->
+
 <div class="btn-group">
   <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Small button
@@ -385,7 +394,9 @@ Trigger dropdown menus above elements by adding `.dropup` to the parent element.
 </div>
 
 {% highlight html %}
+
 <!-- Default dropup button -->
+
 <div class="btn-group dropup">
   <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Dropup
@@ -396,6 +407,7 @@ Trigger dropdown menus above elements by adding `.dropup` to the parent element.
 </div>
 
 <!-- Split dropup button -->
+
 <div class="btn-group dropup">
   <button type="button" class="btn btn-secondary">
     Split dropup
@@ -445,7 +457,9 @@ Trigger dropdown menus at the right of the elements by adding `.dropright` to th
 </div>
 
 {% highlight html %}
+
 <!-- Default dropright button -->
+
 <div class="btn-group dropright">
   <button type="button" class="btn btn-secondary">Dropright</button>
   <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -457,6 +471,7 @@ Trigger dropdown menus at the right of the elements by adding `.dropright` to th
 </div>
 
 <!-- Split dropright button -->
+
 <div class="btn-group dropright">
   <button type="button" class="btn btn-secondary">
     Split dropright
@@ -508,7 +523,9 @@ Trigger dropdown menus at the left of the elements by adding `.dropleft` to the 
 </div>
 
 {% highlight html %}
+
 <!-- Default dropleft button -->
+
 <div class="btn-group dropleft">
   <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Dropleft
@@ -519,6 +536,7 @@ Trigger dropdown menus at the left of the elements by adding `.dropleft` to the 
 </div>
 
 <!-- Split dropleft button -->
+
 <div class="btn-group">
   <div class="btn-group dropleft" role="group">
     <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -534,12 +552,12 @@ Trigger dropdown menus at the left of the elements by adding `.dropleft` to the 
 </div>
 {% endhighlight %}
 
-
 ## Menu items
 
-Historically dropdown menu contents *had* to be links, but that's no longer the case with v4. Now you can optionally use `<button>` elements in your dropdowns instead of just `<a>`s.
+Historically dropdown menu contents _had_ to be links, but that's no longer the case with v4. Now you can optionally use `<button>` elements in your dropdowns instead of just `<a>`s.
 
 {% example html %}
+
 <div class="dropdown">
   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Dropdown
@@ -556,11 +574,10 @@ Historically dropdown menu contents *had* to be links, but that's no longer the 
 
 By default, a dropdown menu is automatically positioned 100% from the top and along the left side of its parent. Add `.dropdown-menu-right` to a `.dropdown-menu` to right align the dropdown menu.
 
-{% callout info %}
-**Heads up!** Dropdowns are positioned thanks to Popper.js (except when they are contained in a navbar).
-{% endcallout %}
+{% callout info %} **Heads up!** Dropdowns are positioned thanks to Popper.js (except when they are contained in a navbar). {% endcallout %}
 
 {% example html %}
+
 <div class="btn-group">
   <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     This dropdown's menu is right-aligned
@@ -578,6 +595,7 @@ By default, a dropdown menu is automatically positioned 100% from the top and al
 Add a header to label sections of actions in any dropdown menu.
 
 {% example html %}
+
 <div class="dropdown-menu">
   <h6 class="dropdown-header">Dropdown header</h6>
   <a class="dropdown-item" href="#">Action</a>
@@ -590,6 +608,7 @@ Add a header to label sections of actions in any dropdown menu.
 Separate groups of related menu items with a divider.
 
 {% example html %}
+
 <div class="dropdown-menu">
   <a class="dropdown-item" href="#">Action</a>
   <a class="dropdown-item" href="#">Another action</a>
@@ -604,6 +623,7 @@ Separate groups of related menu items with a divider.
 Put a form within a dropdown menu, or make it into a dropdown menu, and use [margin or padding utilities]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/spacing/) to give it the negative space you require.
 
 {% example html %}
+
 <div class="dropdown-menu">
   <form class="px-4 py-3">
     <div class="form-group">
@@ -629,6 +649,7 @@ Put a form within a dropdown menu, or make it into a dropdown menu, and use [mar
 {% endexample %}
 
 {% example html %}
+
 <form class="dropdown-menu p-4">
   <div class="form-group">
     <label for="exampleDropdownFormEmail2">Email address</label>
@@ -653,6 +674,7 @@ Put a form within a dropdown menu, or make it into a dropdown menu, and use [mar
 Add `.disabled` to items in the dropdown to **style them as disabled**.
 
 {% example html %}
+
 <div class="dropdown-menu">
   <a class="dropdown-item" href="#">Regular link</a>
   <a class="dropdown-item disabled" href="#">Disabled link</a>
@@ -664,15 +686,14 @@ Add `.disabled` to items in the dropdown to **style them as disabled**.
 
 Via data attributes or JavaScript, the dropdown plugin toggles hidden content (dropdown menus) by toggling the `.show` class on the parent list item. The `data-toggle="dropdown"` attribute is relied on for closing dropdown menus at an application level, so it's a good idea to always use it.
 
-{% callout info %}
-On touch-enabled devices, opening a dropdown adds empty (`$.noop`) `mouseover` handlers to the immediate children of the `<body>` element. This admittedly ugly hack is necessary to work around a [quirk in iOS' event delegation](https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html), which would otherwise prevent a tap anywhere outside of the dropdown from triggering the code that closes the dropdown. Once the dropdown is closed, these additional empty `mouseover` handlers are removed.
-{% endcallout %}
+{% callout info %} On touch-enabled devices, opening a dropdown adds empty (`$.noop`) `mouseover` handlers to the immediate children of the `<body>` element. This admittedly ugly hack is necessary to work around a [quirk in iOS' event delegation](https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html), which would otherwise prevent a tap anywhere outside of the dropdown from triggering the code that closes the dropdown. Once the dropdown is closed, these additional empty `mouseover` handlers are removed. {% endcallout %}
 
 ### Via data attributes
 
 Add `data-toggle="dropdown"` to a link or button to toggle a dropdown.
 
 {% highlight html %}
+
 <div class="dropdown">
   <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Dropdown trigger
@@ -687,15 +708,13 @@ Add `data-toggle="dropdown"` to a link or button to toggle a dropdown.
 
 Call the dropdowns via JavaScript:
 
-{% highlight js %}
-$('.dropdown-toggle').dropdown()
-{% endhighlight %}
+{% highlight js %} $('.dropdown-toggle').dropdown() {% endhighlight %}
 
 {% callout info %}
+
 ##### `data-toggle="dropdown"` still required
 
-Regardless of whether you call your dropdown via JavaScript or instead use the data-api, `data-toggle="dropdown"` is always required to be present on the dropdown's trigger element.
-{% endcallout %}
+Regardless of whether you call your dropdown via JavaScript or instead use the data-api, `data-toggle="dropdown"` is always required to be present on the dropdown's trigger element. {% endcallout %}
 
 ### Options
 
@@ -728,25 +747,21 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 
 ### Methods
 
-| Method | Description |
-| --- | --- |
-| `$().dropdown('toggle')` | Toggles the dropdown menu of a given navbar or tabbed navigation. |
-| `$().dropdown('update')` | Updates the position of an element's dropdown. |
-| `$().dropdown('dispose')` | Destroys an element's dropdown. |
+| Method                    | Description                                                       |
+| ------------------------- | ----------------------------------------------------------------- |
+| `$().dropdown('toggle')`  | Toggles the dropdown menu of a given navbar or tabbed navigation. |
+| `$().dropdown('update')`  | Updates the position of an element's dropdown.                    |
+| `$().dropdown('dispose')` | Destroys an element's dropdown.                                   |
 
 ### Events
 
 All dropdown events are fired at the `.dropdown-menu`'s parent element and have a `relatedTarget` property, whose value is the toggling anchor element.
 
-| Event | Description |
-| --- | --- |
-| `show.bs.dropdown` | This event fires immediately when the show instance method is called. |
-| `shown.bs.dropdown` | This event is fired when the dropdown has been made visible to the user (will wait for CSS transitions, to complete). |
-| `hide.bs.dropdown` | This event is fired immediately when the hide instance method has been called. |
-| `hidden.bs.dropdown`| This event is fired when the dropdown has finished being hidden from the user (will wait for CSS transitions, to complete). |
+| Event                | Description                                                                                                                 |
+| -------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `show.bs.dropdown`   | This event fires immediately when the show instance method is called.                                                       |
+| `shown.bs.dropdown`  | This event is fired when the dropdown has been made visible to the user (will wait for CSS transitions, to complete).       |
+| `hide.bs.dropdown`   | This event is fired immediately when the hide instance method has been called.                                              |
+| `hidden.bs.dropdown` | This event is fired when the dropdown has finished being hidden from the user (will wait for CSS transitions, to complete). |
 
-{% highlight js %}
-$('#myDropdown').on('show.bs.dropdown', function () {
-  // do something…
-})
-{% endhighlight %}
+{% highlight js %} $('#myDropdown').on('show.bs.dropdown', function () { // do something… }) {% endhighlight %}

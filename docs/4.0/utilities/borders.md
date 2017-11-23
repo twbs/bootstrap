@@ -48,12 +48,4 @@ Add classes to an element to easily round its corners.
   <img data-src="holder.js/75x75" class="rounded-0" alt="Example non-rounded image (overrides rounding applied elsewhere)">
 </div>
 
-{% highlight html %}
-<img src="..." alt="..." class="rounded">
-<img src="..." alt="..." class="rounded-top">
-<img src="..." alt="..." class="rounded-right">
-<img src="..." alt="..." class="rounded-bottom">
-<img src="..." alt="..." class="rounded-left">
-<img src="..." alt="..." class="rounded-circle">
-<img src="..." alt="..." class="rounded-0">
-{% endhighlight %}
+{% highlight html %} <img src="..." alt="..." class="rounded"> <img src="..." alt="..." class="rounded-top"> <img src="..." alt="..." class="rounded-right"> <img src="..." alt="..." class="rounded-bottom"> <img src="..." alt="..." class="rounded-left"> <img src="..." alt="..." class="rounded-circle"> <img src="..." alt="..." class="rounded-0"> {% endhighlight %}

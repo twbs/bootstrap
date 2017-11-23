@@ -11,18 +11,21 @@ toc: true
 Apply `display` utilities to create a flexbox container and transform **direct children elements** into flex items. Flex containers and items are able to be modified further with additional flex properties.
 
 {% example html %}
+
 <div class="d-flex p-2 bd-highlight">I'm a flexbox container!</div>
 {% endexample %}
 
 {% example html %}
+
 <div class="d-inline-flex p-2 bd-highlight">I'm an inline flexbox container!</div>
 {% endexample %}
 
 Responsive variations also exist for `.d-flex` and `.d-inline-flex`.
 
 {% for bp in site.data.breakpoints %}
-- `.d{{ bp.abbr }}-flex`
-- `.d{{ bp.abbr }}-inline-flex`{% endfor %}
+
+* `.d{{ bp.abbr }}-flex`
+* `.d{{ bp.abbr }}-inline-flex`{% endfor %}
 
 ## Direction
 
@@ -31,6 +34,7 @@ Set the direction of flex items in a flex container with direction utilities. In
 Use `.flex-row` to set a horizontal direction (the browser default), or `.flex-row-reverse` to start the horizontal direction from the opposite side.
 
 {% example html %}
+
 <div class="d-flex flex-row bd-highlight mb-3">
   <div class="p-2 bd-highlight">Flex item 1</div>
   <div class="p-2 bd-highlight">Flex item 2</div>
@@ -43,9 +47,10 @@ Use `.flex-row` to set a horizontal direction (the browser default), or `.flex-r
 </div>
 {% endexample %}
 
-Use `.flex-column` to set a vertical direction, or `.flex-column-reverse`  to start the vertical direction from the opposite side.
+Use `.flex-column` to set a vertical direction, or `.flex-column-reverse` to start the vertical direction from the opposite side.
 
 {% example html %}
+
 <div class="d-flex flex-column bd-highlight mb-3">
   <div class="p-2 bd-highlight">Flex item 1</div>
   <div class="p-2 bd-highlight">Flex item 2</div>
@@ -61,10 +66,11 @@ Use `.flex-column` to set a vertical direction, or `.flex-column-reverse`  to st
 Responsive variations also exist for `flex-direction`.
 
 {% for bp in site.data.breakpoints %}
-- `.flex{{ bp.abbr }}-row`
-- `.flex{{ bp.abbr }}-row-reverse`
-- `.flex{{ bp.abbr }}-column`
-- `.flex{{ bp.abbr }}-column-reverse`{% endfor %}
+
+* `.flex{{ bp.abbr }}-row`
+* `.flex{{ bp.abbr }}-row-reverse`
+* `.flex{{ bp.abbr }}-column`
+* `.flex{{ bp.abbr }}-column-reverse`{% endfor %}
 
 ## Justify content
 
@@ -99,6 +105,7 @@ Use `justify-content` utilities on flexbox containers to change the alignment of
 </div>
 
 {% highlight html %}
+
 <div class="d-flex justify-content-start">...</div>
 <div class="d-flex justify-content-end">...</div>
 <div class="d-flex justify-content-center">...</div>
@@ -109,11 +116,12 @@ Use `justify-content` utilities on flexbox containers to change the alignment of
 Responsive variations also exist for `justify-content`.
 
 {% for bp in site.data.breakpoints %}
-- `.justify-content{{ bp.abbr }}-start`
-- `.justify-content{{ bp.abbr }}-end`
-- `.justify-content{{ bp.abbr }}-center`
-- `.justify-content{{ bp.abbr }}-between`
-- `.justify-content{{ bp.abbr }}-around`{% endfor %}
+
+* `.justify-content{{ bp.abbr }}-start`
+* `.justify-content{{ bp.abbr }}-end`
+* `.justify-content{{ bp.abbr }}-center`
+* `.justify-content{{ bp.abbr }}-between`
+* `.justify-content{{ bp.abbr }}-around`{% endfor %}
 
 ## Align items
 
@@ -148,6 +156,7 @@ Use `align-items` utilities on flexbox containers to change the alignment of fle
 </div>
 
 {% highlight html %}
+
 <div class="d-flex align-items-start">...</div>
 <div class="d-flex align-items-end">...</div>
 <div class="d-flex align-items-center">...</div>
@@ -158,11 +167,12 @@ Use `align-items` utilities on flexbox containers to change the alignment of fle
 Responsive variations also exist for `align-items`.
 
 {% for bp in site.data.breakpoints %}
-- `.align-items{{ bp.abbr }}-start`
-- `.align-items{{ bp.abbr }}-end`
-- `.align-items{{ bp.abbr }}-center`
-- `.align-items{{ bp.abbr }}-baseline`
-- `.align-items{{ bp.abbr }}-stretch`{% endfor %}
+
+* `.align-items{{ bp.abbr }}-start`
+* `.align-items{{ bp.abbr }}-end`
+* `.align-items{{ bp.abbr }}-center`
+* `.align-items{{ bp.abbr }}-baseline`
+* `.align-items{{ bp.abbr }}-stretch`{% endfor %}
 
 ## Align self
 
@@ -197,6 +207,7 @@ Use `align-self` utilities on flexbox items to individually change their alignme
 </div>
 
 {% highlight html %}
+
 <div class="align-self-start">Aligned flex item</div>
 <div class="align-self-end">Aligned flex item</div>
 <div class="align-self-center">Aligned flex item</div>
@@ -207,11 +218,12 @@ Use `align-self` utilities on flexbox items to individually change their alignme
 Responsive variations also exist for `align-self`.
 
 {% for bp in site.data.breakpoints %}
-- `.align-self{{ bp.abbr }}-start`
-- `.align-self{{ bp.abbr }}-end`
-- `.align-self{{ bp.abbr }}-center`
-- `.align-self{{ bp.abbr }}-baseline`
-- `.align-self{{ bp.abbr }}-stretch`{% endfor %}
+
+* `.align-self{{ bp.abbr }}-start`
+* `.align-self{{ bp.abbr }}-end`
+* `.align-self{{ bp.abbr }}-center`
+* `.align-self{{ bp.abbr }}-baseline`
+* `.align-self{{ bp.abbr }}-stretch`{% endfor %}
 
 ## Auto margins
 
@@ -220,6 +232,7 @@ Flexbox can do some pretty awesome things when you mix flex alignments with auto
 **Unfortunately, IE10 and IE11 do not properly support auto margins on flex items whose parent has a non-default `justify-content` value.** [See this StackOverflow answer](https://stackoverflow.com/a/37535548) for more details.
 
 {% example html %}
+
 <div class="d-flex bd-highlight mb-3">
   <div class="p-2 bd-highlight">Flex item</div>
   <div class="p-2 bd-highlight">Flex item</div>
@@ -244,6 +257,7 @@ Flexbox can do some pretty awesome things when you mix flex alignments with auto
 Vertically move one flex item to the top or bottom of a container by mixing `align-items`, `flex-direction: column`, and `margin-top: auto` or `margin-bottom: auto`.
 
 {% example html %}
+
 <div class="d-flex align-items-start flex-column bd-highlight mb-3" style="height: 200px;">
   <div class="mb-auto p-2 bd-highlight">Flex item</div>
   <div class="p-2 bd-highlight">Flex item</div>
@@ -282,6 +296,7 @@ Change how flex items wrap in a flex container. Choose from no wrapping at all (
 </div>
 
 {% highlight html %}
+
 <div class="d-flex flex-nowrap">
   ...
 </div>
@@ -308,6 +323,7 @@ Change how flex items wrap in a flex container. Choose from no wrapping at all (
 </div>
 
 {% highlight html %}
+
 <div class="d-flex flex-wrap">
   ...
 </div>
@@ -334,24 +350,26 @@ Change how flex items wrap in a flex container. Choose from no wrapping at all (
 </div>
 
 {% highlight html %}
+
 <div class="d-flex flex-wrap-reverse">
   ...
 </div>
 {% endhighlight %}
 
-
 Responsive variations also exist for `flex-wrap`.
 
 {% for bp in site.data.breakpoints %}
-- `.flex{{ bp.abbr }}-nowrap`
-- `.flex{{ bp.abbr }}-wrap`
-- `.flex{{ bp.abbr }}-wrap-reverse`{% endfor %}
+
+* `.flex{{ bp.abbr }}-nowrap`
+* `.flex{{ bp.abbr }}-wrap`
+* `.flex{{ bp.abbr }}-wrap-reverse`{% endfor %}
 
 ## Order
 
 Change the _visual_ order of specific flex items with a handful of `order` utilities. We only provide options for making an item first or last, as well as a reset to use the DOM order. As `order` takes any integer value (e.g., `5`), add custom CSS for any additional values needed.
 
 {% example html %}
+
 <div class="d-flex flex-nowrap bd-highlight">
   <div class="order-3 p-2 bd-highlight">First flex item</div>
   <div class="order-2 p-2 bd-highlight">Second flex item</div>
@@ -362,11 +380,12 @@ Change the _visual_ order of specific flex items with a handful of `order` utili
 Responsive variations also exist for `order`.
 
 {% for bp in site.data.breakpoints %}{% for i in (1..12) %}
-- `.order{{ bp.abbr }}-{{ i }}`{% endfor %}{% endfor %}
+
+* `.order{{ bp.abbr }}-{{ i }}`{% endfor %}{% endfor %}
 
 ## Align content
 
-Use `align-content` utilities on flexbox containers to align flex items *together* on the cross axis. Choose from `start` (browser default), `end`, `center`, `between`, `around`, or `stretch`. To demonstrate these utilities, we've enforced `flex-wrap: wrap` and increased the number of flex items.
+Use `align-content` utilities on flexbox containers to align flex items _together_ on the cross axis. Choose from `start` (browser default), `end`, `center`, `between`, `around`, or `stretch`. To demonstrate these utilities, we've enforced `flex-wrap: wrap` and increased the number of flex items.
 
 **Heads up!** This property has no effect on single rows of flex items.
 
@@ -391,6 +410,7 @@ Use `align-content` utilities on flexbox containers to align flex items *togethe
 </div>
 
 {% highlight html %}
+
 <div class="d-flex align-content-start flex-wrap">
   ...
 </div>
@@ -417,6 +437,7 @@ Use `align-content` utilities on flexbox containers to align flex items *togethe
 </div>
 
 {% highlight html %}
+
 <div class="d-flex align-content-end flex-wrap">...</div>
 {% endhighlight %}
 
@@ -441,6 +462,7 @@ Use `align-content` utilities on flexbox containers to align flex items *togethe
 </div>
 
 {% highlight html %}
+
 <div class="d-flex align-content-center flex-wrap">...</div>
 {% endhighlight %}
 
@@ -465,6 +487,7 @@ Use `align-content` utilities on flexbox containers to align flex items *togethe
 </div>
 
 {% highlight html %}
+
 <div class="d-flex align-content-between flex-wrap">...</div>
 {% endhighlight %}
 
@@ -489,6 +512,7 @@ Use `align-content` utilities on flexbox containers to align flex items *togethe
 </div>
 
 {% highlight html %}
+
 <div class="d-flex align-content-around flex-wrap">...</div>
 {% endhighlight %}
 
@@ -513,14 +537,16 @@ Use `align-content` utilities on flexbox containers to align flex items *togethe
 </div>
 
 {% highlight html %}
+
 <div class="d-flex align-content-stretch flex-wrap">...</div>
 {% endhighlight %}
 
 Responsive variations also exist for `align-content`.
 
 {% for bp in site.data.breakpoints %}
-- `.align-content{{ bp.abbr }}-start`
-- `.align-content{{ bp.abbr }}-end`
-- `.align-content{{ bp.abbr }}-center`
-- `.align-content{{ bp.abbr }}-around`
-- `.align-content{{ bp.abbr }}-stretch`{% endfor %}
+
+* `.align-content{{ bp.abbr }}-start`
+* `.align-content{{ bp.abbr }}-end`
+* `.align-content{{ bp.abbr }}-center`
+* `.align-content{{ bp.abbr }}-around`
+* `.align-content{{ bp.abbr }}-stretch`{% endfor %}

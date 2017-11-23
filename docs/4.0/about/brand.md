@@ -66,7 +66,7 @@ The project and framework should always be referred to as **Bootstrap**. No Twit
 
 ## Colors
 
-Our docs and branding use a handful of primary colors to differentiate what *is* Bootstrap from what *is in* Bootstrap. In other words, if it's purple, it's representative of Bootstrap.
+Our docs and branding use a handful of primary colors to differentiate what _is_ Bootstrap from what _is in_ Bootstrap. In other words, if it's purple, it's representative of Bootstrap.
 
 <div class="bd-brand">
   <div class="color-swatches">

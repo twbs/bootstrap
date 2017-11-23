@@ -10,24 +10,11 @@ Set the `visibility` of elements with our visibility utilities. These do not mod
 Apply `.visible` or `.invisible` as needed.
 
 {% highlight html %}
+
 <div class="visible">...</div>
 <div class="invisible">...</div>
 {% endhighlight %}
 
-{% highlight scss %}
-// Class
-.visible {
-  visibility: visible;
-}
-.invisible {
-  visibility: hidden;
-}
+{% highlight scss %} // Class .visible { visibility: visible; } .invisible { visibility: hidden; }
 
-// Usage as a mixin
-.element {
-  @include invisible(visible);
-}
-.element {
-  @include invisible(hidden);
-}
-{% endhighlight %}
+// Usage as a mixin .element { @include invisible(visible); } .element { @include invisible(hidden); } {% endhighlight %}

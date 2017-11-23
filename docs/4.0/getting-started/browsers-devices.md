@@ -105,7 +105,6 @@ Internet Explorer 10+ is supported; IE9 and down is not. Please be aware that so
 
 **If you require IE8-9 support, use Bootstrap 3.** It's the most stable version of our code and is still supported by our team for critical bugfixes and documentation changes. However, no new features will be added to it.
 
-
 ## Modals and dropdowns on mobile
 
 ### Overflow and scrolling
@@ -136,13 +135,7 @@ Even in some modern browsers, printing can be quirky.
 
 As of Safari v8.0, use of the fixed-width `.container` class can cause Safari to use an unusually small font size when printing. See [issue #14868]({{ site.repo }}/issues/14868) and [WebKit bug #138192](https://bugs.webkit.org/show_bug.cgi?id=138192) for more details. One potential workaround is the following CSS:
 
-{% highlight css %}
-@media print {
-  .container {
-    width: auto;
-  }
-}
-{% endhighlight %}
+{% highlight css %} @media print { .container { width: auto; } } {% endhighlight %}
 
 ## Android stock browser
 
@@ -153,6 +146,7 @@ Out of the box, Android 4.1 (and even some newer releases apparently) ship with 
 On `<select>` elements, the Android stock browser will not display the side controls if there is a `border-radius` and/or `border` applied. (See [this StackOverflow question](https://stackoverflow.com/questions/14744437/html-select-box-not-showing-drop-down-arrow-on-android-version-4-0-when-set-with) for details.) Use the snippet of code below to remove the offending CSS and render the `<select>` as an unstyled element on the Android stock browser. The user agent sniffing avoids interference with Chrome, Safari, and Mozilla browsers.
 
 {% highlight html %}
+
 <script>
 $(function () {
   var nua = navigator.userAgent
@@ -162,6 +156,7 @@ $(function () {
   }
 })
 </script>
+
 {% endhighlight %}
 
 Want to see an example? [Check out this JS Bin demo.](http://jsbin.com/OyaqoDO/2)

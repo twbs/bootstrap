@@ -44,6 +44,7 @@
     "js-minify-docs": "uglifyjs --mangle --comments \"/^!/\" --output assets/js/docs.min.js assets/js/vendor/anchor.min.js assets/js/vendor/clipboard.min.js assets/js/vendor/holder.min.js \"assets/js/src/*.js\"",
     "js-test": "phantomjs ./node_modules/qunit-phantomjs-runner/runner.js js/tests/index.html 60",
     "js-test-cloud": "ruby -r webrick -e \"s = WEBrick::HTTPServer.new(:Port => 3000, :DocumentRoot => Dir.pwd, :Logger => WEBrick::Log.new('/dev/null'), :AccessLog => []); trap('INT') { s.shutdown }; s.start\" & node build/saucelabs-unit-test.js",
+    "md-fix": "prettier --write \"**/*.md\"",
     "docs": "npm-run-all --parallel css-docs js-docs --sequential docs-compile docs-lint",
     "docs-compile": "bundle exec jekyll build",
     "postdocs-compile": "npm run docs-workbox-precache",
@@ -99,6 +100,7 @@
     "phantomjs-prebuilt": "^2.1.16",
     "popper.js": "^1.12.9",
     "postcss-cli": "^4.1.1",
+    "prettier": "^1.8.2",
     "qunit-phantomjs-runner": "^2.3.0",
     "qunitjs": "^2.4.1",
     "rollup": "^0.51.8",
@@ -129,6 +131,15 @@
     "js/**/*.js.map",
     "scss/**/*.scss"
   ],
+  "prettier": {
+    "bracketSpacing": false,
+    "printWidth": 80,
+    "proseWrap": false,
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "all",
+    "useTabs": false
+  },
   "browserslist": [
     "Chrome >= 45",
     "Firefox ESR",

@@ -10,16 +10,16 @@ toc: true
 
 Things to know when using the popover plugin:
 
-- Popovers rely on the 3rd party library [Popper.js](https://popper.js.org/) for positioning. You must include [popper.min.js]({{ site.cdn.popper }}) before bootstrap.js or use `bootstrap.bundle.min.js` / `bootstrap.bundle.js` which contains Popper.js in order for popovers to work!
-- Popovers require the [tooltip plugin]({{ site.baseurl }}/docs/{{ site.docs_version }}/components/tooltips/) as a dependency.
-- If you're building our JavaScript from source, it [requires `util.js`]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/javascript/#util).
-- Popovers are opt-in for performance reasons, so **you must initialize them yourself**.
-- Zero-length `title` and `content` values will never show a popover.
-- Specify `container: 'body'` to avoid rendering problems in more complex components (like our input groups, button groups, etc).
-- Triggering popovers on hidden elements will not work.
-- Popovers for `.disabled` or `disabled` elements must be triggered on a wrapper element.
-- When triggered from anchors that wrap across multiple lines, popovers will be centered between the anchors' overall width. Use `white-space: nowrap;` on your `<a>`s to avoid this behavior.
-- Popovers must be hidden before their corresponding elements have been removed from the DOM.
+* Popovers rely on the 3rd party library [Popper.js](https://popper.js.org/) for positioning. You must include [popper.min.js]({{ site.cdn.popper }}) before bootstrap.js or use `bootstrap.bundle.min.js` / `bootstrap.bundle.js` which contains Popper.js in order for popovers to work!
+* Popovers require the [tooltip plugin]({{ site.baseurl }}/docs/{{ site.docs_version }}/components/tooltips/) as a dependency.
+* If you're building our JavaScript from source, it [requires `util.js`]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/javascript/#util).
+* Popovers are opt-in for performance reasons, so **you must initialize them yourself**.
+* Zero-length `title` and `content` values will never show a popover.
+* Specify `container: 'body'` to avoid rendering problems in more complex components (like our input groups, button groups, etc).
+* Triggering popovers on hidden elements will not work.
+* Popovers for `.disabled` or `disabled` elements must be triggered on a wrapper element.
+* When triggered from anchors that wrap across multiple lines, popovers will be centered between the anchors' overall width. Use `white-space: nowrap;` on your `<a>`s to avoid this behavior.
+* Popovers must be hidden before their corresponding elements have been removed from the DOM.
 
 Keep reading to see how popovers work with some examples.
 
@@ -27,23 +27,13 @@ Keep reading to see how popovers work with some examples.
 
 One way to initialize all popovers on a page would be to select them by their `data-toggle` attribute:
 
-{% highlight js %}
-$(function () {
-  $('[data-toggle="popover"]').popover()
-})
-{% endhighlight %}
+{% highlight js %} $(function () { $('[data-toggle="popover"]').popover() }) {% endhighlight %}
 
 ## Example: Using the `container` option
 
 When you have some styles on a parent element that interfere with a popover, you'll want to specify a custom `container` so that the popover's HTML appears within that element instead.
 
-{% highlight js %}
-$(function () {
-  $('.example-popover').popover({
-    container: 'body'
-  })
-})
-{% endhighlight %}
+{% highlight js %} $(function () { $('.example-popover').popover({ container: 'body' }) }) {% endhighlight %}
 
 ## Static popover
 
@@ -87,9 +77,7 @@ Four options are available: top, right, bottom, and left aligned.
 
 ## Live demo
 
-{% example html %}
-<button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
-{% endexample %}
+{% example html %} <button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button> {% endexample %}
 
 ### Four directions
 
@@ -110,19 +98,14 @@ Four options are available: top, right, bottom, and left aligned.
   </div>
 </div>
 
-{% highlight html %}
-<button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-  Popover on top
-</button>
+{% highlight html %} <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."> Popover on top </button>
 
 <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
   Popover on right
 </button>
 
 <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus
-sagittis lacus vel augue laoreet rutrum faucibus.">
-  Popover on bottom
-</button>
+sagittis lacus vel augue laoreet rutrum faucibus."> Popover on bottom </button>
 
 <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
   Popover on left
@@ -134,21 +117,14 @@ sagittis lacus vel augue laoreet rutrum faucibus.">
 Use the `focus` trigger to dismiss popovers on the user's next click of a different element than the toggle element.
 
 {% callout danger %}
+
 #### Specific markup required for dismiss-on-next-click
 
-For proper cross-browser and cross-platform behavior, you must use the `<a>` tag, _not_ the `<button>` tag, and you also must include a [`tabindex`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex) attribute.
-{% endcallout %}
+For proper cross-browser and cross-platform behavior, you must use the `<a>` tag, _not_ the `<button>` tag, and you also must include a [`tabindex`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex) attribute. {% endcallout %}
 
-{% example html %}
-<a tabindex="0" class="btn btn-lg btn-danger" role="button" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?">Dismissible popover</a>
-{% endexample %}
+{% example html %} <a tabindex="0" class="btn btn-lg btn-danger" role="button" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?">Dismissible popover</a> {% endexample %}
 
-{% highlight js %}
-$('.popover-dismiss').popover({
-  trigger: 'focus'
-})
-{% endhighlight %}
-
+{% highlight js %} $('.popover-dismiss').popover({ trigger: 'focus' }) {% endhighlight %}
 
 ## Usage
 
@@ -268,15 +244,14 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 </table>
 
 {% callout info %}
+
 #### Data attributes for individual popovers
 
-Options for individual popovers can alternatively be specified through the use of data attributes, as explained above.
-{% endcallout %}
+Options for individual popovers can alternatively be specified through the use of data attributes, as explained above. {% endcallout %}
 
 ### Methods
 
-{% capture callout-include %}{% include callout-danger-async-methods.md %}{% endcapture %}
-{{ callout-include | markdownify }}
+{% capture callout-include %}{% include callout-danger-async-methods.md %}{% endcapture %} {{ callout-include | markdownify }}
 
 #### `$().popover(options)`
 
@@ -363,8 +338,4 @@ Updates the position of an element's popover.
   </tbody>
 </table>
 
-{% highlight js %}
-$('#myPopover').on('hidden.bs.popover', function () {
-  // do something…
-})
-{% endhighlight %}
+{% highlight js %} $('#myPopover').on('hidden.bs.popover', function () { // do something… }) {% endhighlight %}

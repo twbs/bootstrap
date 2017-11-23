@@ -11,12 +11,14 @@ toc: true
 Easily realign text to components with text alignment classes.
 
 {% example html %}
+
 <p class="text-justify">Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Cras mattis iudicium purus sit amet fermentum.</p>
 {% endexample %}
 
 For left, right, and center alignment, responsive classes are available that use the same viewport width breakpoints as the grid system.
 
 {% example html %}
+
 <p class="text-left">Left aligned text on all viewport sizes.</p>
 <p class="text-center">Center aligned text on all viewport sizes.</p>
 <p class="text-right">Right aligned text on all viewport sizes.</p>
@@ -32,6 +34,7 @@ For left, right, and center alignment, responsive classes are available that use
 Prevent text from wrapping with a `.text-nowrap` class.
 
 {% example html %}
+
 <div class="row">
   <div class="col-1 text-nowrap">
     Curabitur blandit tempus ardua ridiculus sed magna.
@@ -45,7 +48,9 @@ Prevent text from wrapping with a `.text-nowrap` class.
 For longer content, you can add a `.text-truncate` class to truncate the text with an ellipsis. **Requires `display: inline-block` or `display: block`.**
 
 {% example html %}
+
 <!-- Block level -->
+
 <div class="row">
   <div class="col-2 text-truncate">
     Praeterea iter est quasdam res quas ex communi.
@@ -53,6 +58,7 @@ For longer content, you can add a `.text-truncate` class to truncate the text wi
 </div>
 
 <!-- Inline level -->
+
 <span class="d-inline-block text-truncate" style="max-width: 150px;">
   Praeterea iter est quasdam res quas ex communi.
 </span>
@@ -63,6 +69,7 @@ For longer content, you can add a `.text-truncate` class to truncate the text wi
 Transform text in components with text capitalization classes.
 
 {% example html %}
+
 <p class="text-lowercase">Lowercased text.</p>
 <p class="text-uppercase">Uppercased text.</p>
 <p class="text-capitalize">CapiTaliZed text.</p>
@@ -75,6 +82,7 @@ Note how `text-capitalize` only changes the first letter of each word, leaving t
 Quickly change the weight (boldness) of text or italicize text.
 
 {% example html %}
+
 <p class="font-weight-bold">Bold text.</p>
 <p class="font-weight-normal">Normal weight text.</p>
 <p class="font-weight-light">Light weight text.</p>
