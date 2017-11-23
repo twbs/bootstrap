@@ -873,3 +873,8 @@ $kbd-bg:                            $gray-900 !default;
 
 $pre-color:                         $gray-900 !default;
 $pre-scrollable-max-height:         340px !default;
+
+input[type=checkbox] {
+    height: 20px !important ;
+    width: 20px  !important ;
+}

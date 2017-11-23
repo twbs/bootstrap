@@ -5,6 +5,11 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * Forked from Normalize.css, licensed MIT (https://github.com/necolas/normalize.css/blob/master/LICENSE.md)
  */
+input[type=checkbox] {
+  height: 20px !important;
+  width: 20px  !important;
+}
+
 *,
 *::before,
 *::after {
@@ -62,7 +67,6 @@ p {
 abbr[title],
 abbr[data-original-title] {
   text-decoration: underline;
-  -webkit-text-decoration: underline dotted;
   text-decoration: underline dotted;
   cursor: help;
   border-bottom: 0;
@@ -193,7 +197,6 @@ label,
 select,
 summary,
 textarea {
-  -ms-touch-action: manipulation;
   touch-action: manipulation;
 }
 
@@ -339,4 +342,5 @@ template {
 [hidden] {
   display: none !important;
 }
+
 /*# sourceMappingURL=bootstrap-reboot.css.map */
