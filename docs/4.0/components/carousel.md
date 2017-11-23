@@ -238,7 +238,12 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 
 Initializes the carousel with an optional options `object` and starts cycling through items.
 
-{% highlight js %} $('.carousel').carousel({ interval: 2000 }) {% endhighlight %}
+<!-- prettier-ignore -->
+{% highlight js %}
+  $('.carousel').carousel({
+    interval: 2000
+  })
+{% endhighlight %}
 
 #### `.carousel('cycle')`
 

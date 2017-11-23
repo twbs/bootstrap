@@ -668,4 +668,14 @@ Cards can be organized into [Masonry](https://masonry.desandro.com/)-like column
 
 Card columns can also be extended and customized with some additional code. Shown below is an extension of the `.card-columns` class using the same CSS we use—CSS columns— to generate a set of responsive tiers for changing the number of columns.
 
-{% highlight scss %} .card-columns { @include media-breakpoint-only(lg) { column-count: 4; } @include media-breakpoint-only(xl) { column-count: 5; } } {% endhighlight %}
+<!-- prettier-ignore -->
+{% highlight scss %}
+.card-columns {
+  @include media-breakpoint-only(lg) {
+    column-count: 4;
+  }
+  @include media-breakpoint-only(xl) {
+    column-count: 5;
+  }
+}
+{% endhighlight %}
