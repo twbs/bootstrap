@@ -14,15 +14,13 @@ Images in Bootstrap are made responsive with `.img-fluid`. `max-width: 100%;` an
   <img data-src="holder.js/100px250" class="img-fluid" alt="Generic responsive image">
 </div>
 
-{% highlight html %}
-<img src="..." class="img-fluid" alt="Responsive image">
-{% endhighlight %}
+{% highlight html %} <img src="..." class="img-fluid" alt="Responsive image"> {% endhighlight %}
 
 {% callout warning %}
+
 #### SVG images and IE 10
 
-In Internet Explorer 10, SVG images with `.img-fluid` are disproportionately sized. To fix this, add `width: 100% \9;` where necessary. This fix improperly sizes other image formats, so Bootstrap doesn't apply it automatically.
-{% endcallout %}
+In Internet Explorer 10, SVG images with `.img-fluid` are disproportionately sized. To fix this, add `width: 100% \9;` where necessary. This fix improperly sizes other image formats, so Bootstrap doesn't apply it automatically. {% endcallout %}
 
 ## Image thumbnails
 
@@ -32,9 +30,7 @@ In addition to our [border-radius utilities]({{ site.baseurl }}/docs/{{ site.doc
   <img data-src="holder.js/200x200" class="img-thumbnail" alt="A generic square placeholder image with a white border around it, making it resemble a photograph taken with an old instant camera">
 </div>
 
-{% highlight html %}
-<img src="..." alt="..." class="img-thumbnail">
-{% endhighlight %}
+{% highlight html %} <img src="..." alt="..." class="img-thumbnail"> {% endhighlight %}
 
 ## Aligning images
 
@@ -45,18 +41,13 @@ Align images with the [helper float classes]({{ site.baseurl }}/docs/{{ site.doc
   <img data-src="holder.js/200x200" class="rounded float-right" alt="A generic square placeholder image with rounded corners">
 </div>
 
-{% highlight html %}
-<img src="..." class="rounded float-left" alt="...">
-<img src="..." class="rounded float-right" alt="...">
-{% endhighlight %}
+{% highlight html %} <img src="..." class="rounded float-left" alt="..."> <img src="..." class="rounded float-right" alt="..."> {% endhighlight %}
 
 <div class="bd-example bd-example-images">
   <img data-src="holder.js/200x200" class="rounded mx-auto d-block" alt="A generic square placeholder image with rounded corners">
 </div>
 
-{% highlight html %}
-<img src="..." class="rounded mx-auto d-block" alt="...">
-{% endhighlight %}
+{% highlight html %} <img src="..." class="rounded mx-auto d-block" alt="..."> {% endhighlight %}
 
 <div class="bd-example bd-example-images">
   <div class="text-center">
@@ -65,18 +56,18 @@ Align images with the [helper float classes]({{ site.baseurl }}/docs/{{ site.doc
 </div>
 
 {% highlight html %}
+
 <div class="text-center">
   <img src="..." class="rounded" alt="...">
 </div>
 {% endhighlight %}
 
-
 ## Picture
 
 If you are using the `<picture>` element to specify multiple `<source>` elements for a specific `<img>`, make sure to add the `.img-*` classes to the `<img>` and not to the `<picture>` tag.
 
-{% highlight html %}
-​<picture>
+{% highlight html %} ​<picture>
+
   <source srcset="..." type="image/svg+xml">
   <img src="..." class="img-fluid img-thumbnail" alt="...">
 </picture>

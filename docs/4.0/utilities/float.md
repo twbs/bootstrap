@@ -15,6 +15,7 @@ These utility classes float an element to the left or right, or disable floating
 Toggle a float with a class:
 
 {% example html %}
+
 <div class="float-left">Float left on all viewport sizes</div><br>
 <div class="float-right">Float right on all viewport sizes</div><br>
 <div class="float-none">Don't float on all viewport sizes</div>
@@ -24,23 +25,14 @@ Toggle a float with a class:
 
 Or by Sass mixin:
 
-{% highlight scss %}
-.element {
-  @include float-left;
-}
-.another-element {
-  @include float-right;
-}
-.one-more {
-  @include float-none;
-}
-{% endhighlight %}
+{% highlight scss %} .element { @include float-left; } .another-element { @include float-right; } .one-more { @include float-none; } {% endhighlight %}
 
 ## Responsive
 
 Responsive variations also exist for each `float` value.
 
 {% example html %}
+
 <div class="float-sm-left">Float left on viewports sized SM (small) or wider</div><br>
 <div class="float-md-left">Float left on viewports sized MD (medium) or wider</div><br>
 <div class="float-lg-left">Float left on viewports sized LG (large) or wider</div><br>
@@ -50,6 +42,7 @@ Responsive variations also exist for each `float` value.
 Here are all the support classes;
 
 {% for bp in site.data.breakpoints %}
-- `.float{{ bp.abbr }}-left`
-- `.float{{ bp.abbr }}-right`
-- `.float{{ bp.abbr }}-none`{% endfor %}
+
+* `.float{{ bp.abbr }}-left`
+* `.float{{ bp.abbr }}-right`
+* `.float{{ bp.abbr }}-none`{% endfor %}

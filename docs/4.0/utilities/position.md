@@ -11,6 +11,7 @@ toc: true
 Quick positioning classes are available, though they are not responsive.
 
 {% highlight html %}
+
 <div class="position-static">...</div>
 <div class="position-relative">...</div>
 <div class="position-absolute">...</div>
@@ -23,6 +24,7 @@ Quick positioning classes are available, though they are not responsive.
 Position an element at the top of the viewport, from edge to edge. Be sure you understand the ramifications of fixed position in your project; you may need to add aditional CSS.
 
 {% highlight html %}
+
 <div class="fixed-top">...</div>
 {% endhighlight %}
 
@@ -31,6 +33,7 @@ Position an element at the top of the viewport, from edge to edge. Be sure you u
 Position an element at the bottom of the viewport, from edge to edge. Be sure you understand the ramifications of fixed position in your project; you may need to add aditional CSS.
 
 {% highlight html %}
+
 <div class="fixed-bottom">...</div>
 {% endhighlight %}
 
@@ -41,5 +44,6 @@ Position an element at the top of the viewport, from edge to edge, but only afte
 **Microsoft Edge and IE11 will render `position: sticky` as `position: relative`.** As such, we wrap the styles in a `@supports` query, limiting the stickiness to only browsers that properly can render it.
 
 {% highlight html %}
+
 <div class="sticky-top">...</div>
 {% endhighlight %}

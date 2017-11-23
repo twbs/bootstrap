@@ -10,13 +10,14 @@ toc: true
 
 Click the buttons below to show and hide another element via class changes:
 
-- `.collapse` hides content
-- `.collapsing` is applied during transitions
-- `.collapse.show` shows content
+* `.collapse` hides content
+* `.collapsing` is applied during transitions
+* `.collapse.show` shows content
 
 You can use a link with the `href` attribute, or a button with the `data-target` attribute. In both cases, the `data-toggle="collapse"` is required.
 
 {% example html %}
+
 <p>
   <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
     Link with href
@@ -34,10 +35,10 @@ You can use a link with the `href` attribute, or a button with the `data-target`
 
 ## Multiple targets
 
-A `<button>` or `<a>` can show and hide multiple elements by referencing them with a JQuery selector in its `href` or `data-target` attribute.
-Multiple `<button>` or `<a>` can show and hide an element if they each reference it with their `href` or `data-target` attribute
+A `<button>` or `<a>` can show and hide multiple elements by referencing them with a JQuery selector in its `href` or `data-target` attribute. Multiple `<button>` or `<a>` can show and hide an element if they each reference it with their `href` or `data-target` attribute
 
 {% example html %}
+
 <p>
   <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Toggle first element</a>
   <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Toggle second element</button>
@@ -66,6 +67,7 @@ Multiple `<button>` or `<a>` can show and hide an element if they each reference
 Using the [card]({{ site.baseurl }}/docs/{{ site.docs_version }}/components/card/) component, you can extend the default collapse behavior to create an accordion.
 
 {% example html %}
+
 <div id="accordion" role="tablist">
   <div class="card">
     <div class="card-header" role="tab" id="headingOne">
@@ -81,6 +83,7 @@ Using the [card]({{ site.baseurl }}/docs/{{ site.docs_version }}/components/card
         Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
       </div>
     </div>
+
   </div>
   <div class="card">
     <div class="card-header" role="tab" id="headingTwo">
@@ -116,6 +119,7 @@ Using the [card]({{ site.baseurl }}/docs/{{ site.docs_version }}/components/card
 You can also create accordions with custom markup. Add the `data-children` attribute and specify a set of sibling elements to toggle (e.g., `.item`). Then, use the same attributes and classes as shown above for connecting toggles to their associated content.
 
 {% example html %}
+
 <div id="exampleAccordion" data-children=".item">
   <div class="item">
     <a data-toggle="collapse" data-parent="#exampleAccordion" href="#exampleAccordion1" role="button" aria-expanded="true" aria-controls="exampleAccordion1">
@@ -150,9 +154,9 @@ Additionally, if your control element is targeting a single collapsible element 
 
 The collapse plugin utilizes a few classes to handle the heavy lifting:
 
-- `.collapse` hides the content
-- `.collapse.show` shows the content
-- `.collapsing` is added when the transition starts, and removed when it finishes
+* `.collapse` hides the content
+* `.collapse.show` shows the content
+* `.collapsing` is added when the transition starts, and removed when it finishes
 
 These classes can be found in `_transitions.scss`.
 
@@ -166,9 +170,7 @@ To add accordion-like group management to a collapsible area, add the data attri
 
 Enable manually with:
 
-{% highlight js %}
-$('.collapse').collapse()
-{% endhighlight %}
+{% highlight js %} $('.collapse').collapse() {% endhighlight %}
 
 ### Options
 
@@ -201,18 +203,13 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 
 ### Methods
 
-{% capture callout-include %}{% include callout-danger-async-methods.md %}{% endcapture %}
-{{ callout-include | markdownify }}
+{% capture callout-include %}{% include callout-danger-async-methods.md %}{% endcapture %} {{ callout-include | markdownify }}
 
 #### `.collapse(options)`
 
 Activates your content as a collapsible element. Accepts an optional options `object`.
 
-{% highlight js %}
-$('#myCollapsible').collapse({
-  toggle: false
-})
-{% endhighlight %}
+{% highlight js %} $('#myCollapsible').collapse({ toggle: false }) {% endhighlight %}
 
 #### `.collapse('toggle')`
 
@@ -261,8 +258,4 @@ Bootstrap's collapse class exposes a few events for hooking into collapse functi
   </tbody>
 </table>
 
-{% highlight js %}
-$('#myCollapsible').on('hidden.bs.collapse', function () {
-  // do something…
-})
-{% endhighlight %}
+{% highlight js %} $('#myCollapsible').on('hidden.bs.collapse', function () { // do something… }) {% endhighlight %}

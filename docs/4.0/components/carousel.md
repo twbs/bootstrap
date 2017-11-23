@@ -27,6 +27,7 @@ Be sure to set a unique id on the `.carousel` for optional controls, especially 
 Here's a carousel with slides only. Note the presence of the `.d-block` and `.img-fluid` on carousel images to prevent browser default image alignment.
 
 {% example html %}
+
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
@@ -47,6 +48,7 @@ Here's a carousel with slides only. Note the presence of the `.d-block` and `.im
 Adding in the previous and next controls:
 
 {% example html %}
+
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
@@ -75,6 +77,7 @@ Adding in the previous and next controls:
 You can also add the indicators to the carousel, alongside the controls, too.
 
 {% example html %}
+
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -104,10 +107,10 @@ You can also add the indicators to the carousel, alongside the controls, too.
 {% endexample %}
 
 {% callout warning %}
+
 #### Initial active element required
 
-The `.active` class needs to be added to one of the slides. Otherwise, the carousel will not be visible.
-{% endcallout %}
+The `.active` class needs to be added to one of the slides. Otherwise, the carousel will not be visible. {% endcallout %}
 
 ### With captions
 
@@ -155,6 +158,7 @@ Add captions to your slides easily with the `.carousel-caption` element within a
 </div>
 
 {% highlight html %}
+
 <div class="carousel-item">
   <img src="..." alt="...">
   <div class="carousel-caption d-none d-md-block">
@@ -176,9 +180,7 @@ The `data-ride="carousel"` attribute is used to mark a carousel as animating sta
 
 Call carousel manually with:
 
-{% highlight js %}
-$('.carousel').carousel()
-{% endhighlight %}
+{% highlight js %} $('.carousel').carousel() {% endhighlight %}
 
 ### Options
 
@@ -230,17 +232,17 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 
 ### Methods
 
-{% capture callout-include %}{% include callout-danger-async-methods.md %}{% endcapture %}
-{{ callout-include | markdownify }}
+{% capture callout-include %}{% include callout-danger-async-methods.md %}{% endcapture %} {{ callout-include | markdownify }}
 
 #### `.carousel(options)`
 
 Initializes the carousel with an optional options `object` and starts cycling through items.
 
+<!-- prettier-ignore -->
 {% highlight js %}
-$('.carousel').carousel({
-  interval: 2000
-})
+  $('.carousel').carousel({
+    interval: 2000
+  })
 {% endhighlight %}
 
 #### `.carousel('cycle')`
@@ -271,10 +273,10 @@ Destroys an element's carousel.
 
 Bootstrap's carousel class exposes two events for hooking into carousel functionality. Both events have the following additional properties:
 
-- `direction`: The direction in which the carousel is sliding (either `"left"` or `"right"`).
-- `relatedTarget`: The DOM element that is being slid into place as the active item.
-- `from`: The index of the current item
-- `to`: The index of the next item
+* `direction`: The direction in which the carousel is sliding (either `"left"` or `"right"`).
+* `relatedTarget`: The DOM element that is being slid into place as the active item.
+* `from`: The index of the current item
+* `to`: The index of the next item
 
 All carousel events are fired at the carousel itself (i.e. at the `<div class="carousel">`).
 
@@ -297,8 +299,4 @@ All carousel events are fired at the carousel itself (i.e. at the `<div class="c
   </tbody>
 </table>
 
-{% highlight js %}
-$('#myCarousel').on('slide.bs.carousel', function () {
-  // do something…
-})
-{% endhighlight %}
+{% highlight js %} $('#myCarousel').on('slide.bs.carousel', function () { // do something… }) {% endhighlight %}

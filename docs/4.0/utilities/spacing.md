@@ -16,12 +16,12 @@ Spacing utilities that apply to all breakpoints, from `xs` to `xl`, have no brea
 
 The classes are named using the format `{property}{sides}-{size}` for `xs` and `{property}{sides}-{breakpoint}-{size}` for `sm`, `md`, `lg`, and `xl`.
 
-Where *property* is one of:
+Where _property_ is one of:
 
 * `m` - for classes that set `margin`
 * `p` - for classes that set `padding`
 
-Where *sides* is one of:
+Where _sides_ is one of:
 
 * `t` - for classes that set `margin-top` or `padding-top`
 * `b` - for classes that set `margin-bottom` or `padding-bottom`
@@ -31,7 +31,7 @@ Where *sides* is one of:
 * `y` - for classes that set both `*-top` and `*-bottom`
 * blank - for classes that set a `margin` or `padding` on all 4 sides of the element
 
-Where *size* is one of:
+Where _size_ is one of:
 
 * `0` - for classes that eliminate the `margin` or `padding` by setting it to `0`
 * `1` - (by default) for classes that set the `margin` or `padding` to `$spacer * .25`
@@ -47,24 +47,13 @@ Where *size* is one of:
 
 Here are some representative examples of these classes:
 
-{% highlight scss %}
-.mt-0 {
-  margin-top: 0 !important;
-}
+{% highlight scss %} .mt-0 { margin-top: 0 !important; }
 
-.ml-1 {
-  margin-left: ($spacer * .25) !important;
-}
+.ml-1 { margin-left: ($spacer \* .25) !important; }
 
-.px-2 {
-  padding-left: ($spacer * .5) !important;
-  padding-right: ($spacer * .5) !important;
-}
+.px-2 { padding-left: ($spacer _ .5) !important; padding-right: ($spacer _ .5) !important; }
 
-.p-3 {
-  padding: $spacer !important;
-}
-{% endhighlight %}
+.p-3 { padding: $spacer !important; } {% endhighlight %}
 
 ### Horizontal centering
 
@@ -77,6 +66,7 @@ Additionally, Bootstrap also includes an `.mx-auto` class for horizontally cente
 </div>
 
 {% highlight html %}
+
 <div class="mx-auto" style="width: 200px;">
   Centered element
 </div>

@@ -10,7 +10,6 @@ To run the unit test suite via [PhantomJS](http://phantomjs.org/), run `npm run 
 
 To run the unit test suite via a real web browser, open `index.html` in the browser.
 
-
 ## How do I add a new unit test?
 
 1. Locate and open the file dedicated to the plugin which you need to add tests to (`unit/<plugin-name>.js`).
@@ -31,31 +30,38 @@ To run the unit test suite via a real web browser, open `index.html` in the brow
 
 ```javascript
 // Synchronous test
-QUnit.test('should describe the unit being tested', function (assert) {
-  assert.expect(1)
-  var templateHTML = '<div class="alert alert-danger fade show">'
-      + '<a class="close" href="#" data-dismiss="alert">×</a>'
-      + '<p><strong>Template necessary for the test.</p>'
-      + '</div>'
-  var $alert = $(templateHTML).appendTo('#qunit-fixture').bootstrapAlert()
+QUnit.test('should describe the unit being tested', function(assert) {
+  assert.expect(1);
+  var templateHTML =
+    '<div class="alert alert-danger fade show">' +
+    '<a class="close" href="#" data-dismiss="alert">×</a>' +
+    '<p><strong>Template necessary for the test.</p>' +
+    '</div>';
+  var $alert = $(templateHTML)
+    .appendTo('#qunit-fixture')
+    .bootstrapAlert();
 
-  $alert.find('.close').trigger('click')
+  $alert.find('.close').trigger('click');
 
   // Make assertion
-  assert.strictEqual($alert.hasClass('show'), false, 'remove .show class on .close click')
-})
+  assert.strictEqual(
+    $alert.hasClass('show'),
+    false,
+    'remove .show class on .close click',
+  );
+});
 
 // Asynchronous test
-QUnit.test('should describe the unit being tested', function (assert) {
-  assert.expect(1)
-  var done = assert.async()
+QUnit.test('should describe the unit being tested', function(assert) {
+  assert.expect(1);
+  var done = assert.async();
 
   $('<div title="tooltip title"></div>')
     .appendTo('#qunit-fixture')
-    .on('shown.bs.tooltip', function () {
-      assert.ok(true, '"shown" event was fired after calling "show"')
-      done()
+    .on('shown.bs.tooltip', function() {
+      assert.ok(true, '"shown" event was fired after calling "show"');
+      done();
     })
-    .bootstrapTooltip('show')
-})
+    .bootstrapTooltip('show');
+});
 ```

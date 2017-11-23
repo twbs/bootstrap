@@ -8,6 +8,7 @@ group: components
 A lightweight, flexible component that can optionally extend the entire viewport to showcase key marketing messages on your site.
 
 {% example html %}
+
 <div class="jumbotron">
   <h1 class="display-3">Hello, world!</h1>
   <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
@@ -22,6 +23,7 @@ A lightweight, flexible component that can optionally extend the entire viewport
 To make the jumbotron full width, and without rounded corners, add the `.jumbotron-fluid` modifier class and add a `.container` or `.container-fluid` within.
 
 {% example html %}
+
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
     <h1 class="display-3">Fluid jumbotron</h1>

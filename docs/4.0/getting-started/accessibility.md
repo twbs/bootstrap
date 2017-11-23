@@ -24,13 +24,14 @@ Because Bootstrap's components are purposely designed to be fairly generic, auth
 
 ### Color contrast
 
-Most colors that currently make up Bootstrap's default palette—used throughout the framework for things such as button variations, alert variations, form validation indicators—lead to *insufficient* color contrast (below the recommended [WCAG 2.0 color contrast ratio of 4.5:1](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html)) when used against a light background. Authors will need to manually modify/extend these default colors to ensure adequate color contrast ratios.
+Most colors that currently make up Bootstrap's default palette—used throughout the framework for things such as button variations, alert variations, form validation indicators—lead to _insufficient_ color contrast (below the recommended [WCAG 2.0 color contrast ratio of 4.5:1](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html)) when used against a light background. Authors will need to manually modify/extend these default colors to ensure adequate color contrast ratios.
 
 ### Visually hidden content
 
 Content which should be visually hidden, but remain accessible to assistive technologies such as screen readers, can be styled using the `.sr-only` class. This can be useful in situations where additional visual information or cues (such as meaning denoted through the use of color) need to also be conveyed to non-visual users.
 
 {% highlight html %}
+
 <p class="text-danger">
   <span class="sr-only">Danger: </span>
   This action is not reversible
@@ -39,15 +40,13 @@ Content which should be visually hidden, but remain accessible to assistive tech
 
 For visually hidden interactive controls, such as traditional "skip" links, `.sr-only` can be combined with the `.sr-only-focusable` class. This will ensure that the control becomes visible once focused (for sighted keyboard users).
 
-{% highlight html %}
-<a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
-{% endhighlight %}
+{% highlight html %} <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a> {% endhighlight %}
 
 ## Additional resources
 
-- [Web Content Accessibility Guidelines (WCAG) 2.0](https://www.w3.org/TR/WCAG20/)
-- [The A11Y Project](http://a11yproject.com/)
-- [MDN accessibility documentation](https://developer.mozilla.org/en-US/docs/Web/Accessibility)
-- [Tenon.io Accessibility Checker](https://tenon.io/)
-- [Colour Contrast Analyser (CCA)](https://developer.paciellogroup.com/resources/contrastanalyser/)
-- ["HTML Codesniffer" bookmarklet for identifying accessibility issues](https://github.com/squizlabs/HTML_CodeSniffer)
+* [Web Content Accessibility Guidelines (WCAG) 2.0](https://www.w3.org/TR/WCAG20/)
+* [The A11Y Project](http://a11yproject.com/)
+* [MDN accessibility documentation](https://developer.mozilla.org/en-US/docs/Web/Accessibility)
+* [Tenon.io Accessibility Checker](https://tenon.io/)
+* [Colour Contrast Analyser (CCA)](https://developer.paciellogroup.com/resources/contrastanalyser/)
+* ["HTML Codesniffer" bookmarklet for identifying accessibility issues](https://github.com/squizlabs/HTML_CodeSniffer)
