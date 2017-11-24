@@ -167,7 +167,7 @@
   &:focus {
     border-color: $custom-select-focus-border-color;
     outline: 0;
-    @include box-shadow($custom-select-focus-box-shadow);
+    box-shadow: $custom-select-focus-box-shadow;
 
     &::-ms-value {
       // For visual consistency with other platforms/browsers,
@@ -180,8 +180,10 @@
     }
   }
 
-  &[multiple] {
+  &[multiple],
+  &[size]:not([size="1"]) {
     height: auto;
+    padding-right: $custom-select-padding-x;
     background-image: none;
   }
 
@@ -201,6 +203,13 @@
   padding-top: $custom-select-padding-y;
   padding-bottom: $custom-select-padding-y;
   font-size: $custom-select-font-size-sm;
+}
+
+.custom-select-lg {
+  height: $custom-select-height-lg;
+  padding-top: $custom-select-padding-y;
+  padding-bottom: $custom-select-padding-y;
+  font-size: $custom-select-font-size-lg;
 }
 
 
@@ -224,7 +233,12 @@
   opacity: 0;
 
   &:focus ~ .custom-file-control {
+    border-color: $custom-file-focus-border-color;
     box-shadow: $custom-file-focus-box-shadow;
+
+    &::before {
+      border-color: $custom-file-focus-border-color;
+    }
   }
 }
 
