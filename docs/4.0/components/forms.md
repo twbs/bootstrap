@@ -1018,6 +1018,20 @@ Custom `<select>` menus need only a custom class, `.custom-select` to trigger th
 </select>
 {% endexample %}
 
+### Range control
+
+Custom `<input type="range">` controls need only a custom class, `.custom-range` to trigger the custom styles.
+
+{% example html %}
+<input type="range" class="custom-range">
+{% endexample %}
+
+Additionally you can add steps by defining `min` and `max` attributes.
+
+{% example html %}
+<input type="range" class="custom-range" min="0" max="5">
+{% endexample %}
+
 ### File browser
 
 The file input is the most gnarly of the bunch and require additional JavaScript if you'd like to hook them up with functional *Choose file...* and selected file name text.
