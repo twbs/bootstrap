@@ -462,6 +462,6 @@ $(function () {
         done()
       })
 
-    $popover.trigger($.Event('click'))
+    EventHandler.trigger($popover[0], 'click')
   })
 })
