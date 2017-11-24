@@ -107,6 +107,10 @@ if (bundle) {
   )
   files = files.concat([
     jqueryFile,
+    'js/coverage/dist/dom/eventHandler.js',
+    'js/coverage/dist/dom/selectorEngine.js',
+    'js/coverage/dist/dom/data.js',
+    'js/coverage/dist/dom/manipulator.js',
     'js/coverage/dist/util.js',
     'js/coverage/dist/tooltip.js',
     'js/coverage/dist/!(util|index|tooltip).js' // include all of our js/dist files except util.js, index.js and tooltip.js
