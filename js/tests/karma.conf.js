@@ -18,6 +18,10 @@ module.exports = (config) => {
     files: [
       jqueryFile,
       'assets/js/vendor/popper.min.js',
+      'js/dist/dom/eventHandler.js',
+      'js/dist/dom/selectorEngine.js',
+      'js/dist/dom/data.js',
+      'js/dist/dom/manipulator.js',
       'js/dist/util.js',
       'js/dist/tooltip.js',
       'js/dist/!(util|index|tooltip).js', // include all of our js/dist files except util.js, index.js and tooltip.js
