@@ -2,12 +2,12 @@ import $ from 'jquery'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-beta): util.js
+ * Bootstrap (v4.0.0-beta.2): util.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
 
-const Util = (() => {
+const Util = (($) => {
 
 
   /**
@@ -22,8 +22,6 @@ const Util = (() => {
 
   const TransitionEndEvent = {
     WebkitTransition : 'webkitTransitionEnd',
-    MozTransition    : 'transitionend',
-    OTransition      : 'oTransitionEnd otransitionend',
     transition       : 'transitionend'
   }
 
@@ -89,6 +87,14 @@ const Util = (() => {
     }
   }
 
+  function escapeId(selector) {
+    // we escape IDs in case of special selectors (selector = '#myId:something')
+    // $.escapeSelector does not exist in jQuery < 3
+    selector = typeof $.escapeSelector === 'function' ? $.escapeSelector(selector).substr(1) :
+      selector.replace(/(:|\.|\[|\]|,|=|@)/g, '\\$1')
+
+    return selector
+  }
 
   /**
    * --------------------------------------------------------------------------
@@ -112,6 +118,11 @@ const Util = (() => {
       let selector = element.getAttribute('data-target')
       if (!selector || selector === '#') {
         selector = element.getAttribute('href') || ''
+      }
+
+      // if it's an ID
+      if (selector.charAt(0) === '#') {
+        selector = escapeId(selector)
       }
 
       try {
@@ -161,6 +172,6 @@ const Util = (() => {
 
   return Util
 
-})(jQuery)
+})($)
 
 export default Util

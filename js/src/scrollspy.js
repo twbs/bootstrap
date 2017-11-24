@@ -4,12 +4,12 @@ import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-beta): scrollspy.js
+ * Bootstrap (v4.0.0-beta.2): scrollspy.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
 
-const ScrollSpy = (() => {
+const ScrollSpy = (($) => {
 
 
   /**
@@ -19,7 +19,7 @@ const ScrollSpy = (() => {
    */
 
   const NAME               = 'scrollspy'
-  const VERSION            = '4.0.0-beta'
+  const VERSION            = '4.0.0-beta.2'
   const DATA_KEY           = 'bs.scrollspy'
   const EVENT_KEY          = `.${DATA_KEY}`
   const DATA_API_KEY       = '.data-api'
@@ -171,7 +171,10 @@ const ScrollSpy = (() => {
     // private
 
     _getConfig(config) {
-      config = $.extend({}, Default, config)
+      config = {
+        ...Default,
+        ...config
+      }
 
       if (typeof config.target !== 'string') {
         let id = $(config.target).attr('id')
@@ -335,6 +338,6 @@ const ScrollSpy = (() => {
 
   return ScrollSpy
 
-})(jQuery)
+})($)
 
 export default ScrollSpy

@@ -12,6 +12,23 @@
   background-clip: border-box;
   border: $card-border-width solid $card-border-color;
   @include border-radius($card-border-radius);
+
+  > hr {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  > .list-group:first-child {
+    .list-group-item:first-child {
+      @include border-top-radius($card-border-radius);
+    }
+  }
+
+  > .list-group:last-child {
+    .list-group-item:last-child {
+      @include border-bottom-radius($card-border-radius);
+    }
+  }
 }
 
 .card-body {
@@ -43,25 +60,6 @@
     margin-left: $card-spacer-x;
   }
 }
-
-.card {
-  > .list-group:first-child {
-    .list-group-item:first-child {
-      @include border-top-radius($card-border-radius);
-    }
-  }
-
-  > .list-group:last-child {
-    .list-group-item:last-child {
-      @include border-bottom-radius($card-border-radius);
-    }
-  }
-
-  .card-header + .list-group > .list-group-item:first-child {
-    border-top: 0;
-  }
-}
-
 
 //
 // Optional textual caps
@@ -155,6 +153,7 @@
 
     .card {
       display: flex;
+      // Flexbugs #4: https://github.com/philipwalton/flexbugs#4-flex-shorthand-declarations-with-unitless-flex-basis-values-are-ignored
       flex: 1 0 0%;
       flex-direction: column;
       margin-right: $card-deck-margin;
@@ -173,14 +172,18 @@
   display: flex;
   flex-direction: column;
 
-  .card {
+  // The child selector allows nested `.card` within `.card-group`
+  // to display properly.
+  > .card {
     margin-bottom: $card-group-margin;
   }
 
   @include media-breakpoint-up(sm) {
     flex-flow: row wrap;
-
-    .card {
+    // The child selector allows nested `.card` within `.card-group`
+    // to display properly.
+    > .card {
+      // Flexbugs #4: https://github.com/philipwalton/flexbugs#4-flex-shorthand-declarations-with-unitless-flex-basis-values-are-ignored
       flex: 1 0 0%;
       margin-bottom: 0;
 
@@ -194,10 +197,12 @@
         &:first-child {
           @include border-right-radius(0);
 
-          .card-img-top {
+          .card-img-top,
+          .card-header {
             border-top-right-radius: 0;
           }
-          .card-img-bottom {
+          .card-img-bottom,
+          .card-footer {
             border-bottom-right-radius: 0;
           }
         }
@@ -205,25 +210,38 @@
         &:last-child {
           @include border-left-radius(0);
 
-          .card-img-top {
+          .card-img-top,
+          .card-header {
             border-top-left-radius: 0;
           }
-          .card-img-bottom {
+          .card-img-bottom,
+          .card-footer {
             border-bottom-left-radius: 0;
-          }
-        }
-
-        &:not(:first-child):not(:last-child):not(:only-child) {
-          border-radius: 0;
-
-          .card-img-top,
-          .card-img-bottom {
-            border-radius: 0;
           }
         }
 
         &:only-child {
           @include border-radius($card-border-radius);
+
+          .card-img-top,
+          .card-header {
+            @include border-top-radius($card-border-radius);
+          }
+          .card-img-bottom,
+          .card-footer {
+            @include border-bottom-radius($card-border-radius);
+          }
+        }
+
+        &:not(:first-child):not(:last-child):not(:only-child) {
+          @include border-radius(0);
+
+          .card-img-top,
+          .card-img-bottom,
+          .card-header,
+          .card-footer {
+            @include border-radius(0);
+          }
         }
       }
     }

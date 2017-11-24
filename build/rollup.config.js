@@ -1,3 +1,5 @@
+'use strict'
+
 const path    = require('path')
 const babel   = require('rollup-plugin-babel')
 const resolve = require('rollup-plugin-node-resolve')
@@ -13,12 +15,13 @@ const plugins = [
     externalHelpersWhitelist: [ // include only required helpers
       'defineProperties',
       'createClass',
-      'inheritsLoose'
+      'inheritsLoose',
+      'extends'
     ]
   })
 ]
 const globals = {
-  jquery: '$',
+  jquery: 'jQuery', // ensure we use jQuery which is always available even in noConflict mode
   'popper.js': 'Popper'
 }
 
@@ -34,12 +37,12 @@ module.exports = {
   input: path.resolve(__dirname, '../js/src/index.js'),
   output: {
     file: path.resolve(__dirname, `../dist/js/${fileDest}`),
-    format: 'iife'
+    format: 'umd'
   },
   name: 'bootstrap',
-  external: external,
-  globals: globals,
-  plugins: plugins,
+  external,
+  globals,
+  plugins,
   banner: `/*!
   * Bootstrap v${pkg.version} (${pkg.homepage})
   * Copyright 2011-${year} ${pkg.author}

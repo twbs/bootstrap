@@ -4,12 +4,12 @@ import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-beta): modal.js
+ * Bootstrap (v4.0.0-beta.2): modal.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
 
-const Modal = (() => {
+const Modal = (($) => {
 
 
   /**
@@ -19,7 +19,7 @@ const Modal = (() => {
    */
 
   const NAME                         = 'modal'
-  const VERSION                      = '4.0.0-beta'
+  const VERSION                      = '4.0.0-beta.2'
   const DATA_KEY                     = 'bs.modal'
   const EVENT_KEY                    = `.${DATA_KEY}`
   const DATA_API_KEY                 = '.data-api'
@@ -113,7 +113,7 @@ const Modal = (() => {
     }
 
     show(relatedTarget) {
-      if (this._isTransitioning) {
+      if (this._isTransitioning || this._isShown) {
         return
       }
 
@@ -169,12 +169,6 @@ const Modal = (() => {
         return
       }
 
-      const transition = Util.supportsTransitionEnd() && $(this._element).hasClass(ClassName.FADE)
-
-      if (transition) {
-        this._isTransitioning = true
-      }
-
       const hideEvent = $.Event(Event.HIDE)
 
       $(this._element).trigger(hideEvent)
@@ -184,6 +178,12 @@ const Modal = (() => {
       }
 
       this._isShown = false
+
+      const transition = Util.supportsTransitionEnd() && $(this._element).hasClass(ClassName.FADE)
+
+      if (transition) {
+        this._isTransitioning = true
+      }
 
       this._setEscapeEvent()
       this._setResizeEvent()
@@ -227,7 +227,10 @@ const Modal = (() => {
     // private
 
     _getConfig(config) {
-      config = $.extend({}, Default, config)
+      config = {
+        ...Default,
+        ...config
+      }
       Util.typeCheckConfig(NAME, config, DefaultType)
       return config
     }
@@ -506,12 +509,11 @@ const Modal = (() => {
     static _jQueryInterface(config, relatedTarget) {
       return this.each(function () {
         let data      = $(this).data(DATA_KEY)
-        const _config = $.extend(
-          {},
-          Modal.Default,
-          $(this).data(),
-          typeof config === 'object' && config
-        )
+        const _config = {
+          ...Modal.Default,
+          ...$(this).data(),
+          ...typeof config === 'object' && config
+        }
 
         if (!data) {
           data = new Modal(this, _config)
@@ -547,7 +549,10 @@ const Modal = (() => {
     }
 
     const config = $(target).data(DATA_KEY) ?
-      'toggle' : $.extend({}, $(target).data(), $(this).data())
+      'toggle' : {
+        ...$(target).data(),
+        ...$(this).data()
+      }
 
     if (this.tagName === 'A' || this.tagName === 'AREA') {
       event.preventDefault()
@@ -585,6 +590,6 @@ const Modal = (() => {
 
   return Modal
 
-})(jQuery)
+})($)
 
 export default Modal
