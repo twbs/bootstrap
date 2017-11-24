@@ -205,7 +205,8 @@
   margin: 0;
   opacity: 0;
 
-  &:focus ~ .custom-file-control {
+  &:focus ~ .custom-file-control,
+  &.focus ~ .custom-file-control {
     box-shadow: $custom-file-focus-box-shadow;
   }
 }
