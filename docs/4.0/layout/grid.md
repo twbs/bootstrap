@@ -149,9 +149,7 @@ For example, here are two grid layouts that apply to every device and viewport, 
 {% endexample %}
 </div>
 
-Equal-width columns can be broken into multiple lines, but there was a [Safari flexbox bug](https://github.com/philipwalton/flexbugs#11-min-and-max-size-declarations-are-ignored-when-wrapping-flex-items) that prevented this from working without an explicit `flex-basis` or `border`.
-
-Two workarounds have been documented in a [reduced test case outside Bootstrap](https://output.jsbin.com/micohor), though if the browser is up to date this shouldn't be necessary.
+Equal-width columns can be broken into multiple lines, but there was a [Safari flexbox bug](https://github.com/philipwalton/flexbugs#11-min-and-max-size-declarations-are-ignored-when-wrapping-flex-items) that prevented this from working without an explicit `flex-basis` or `border`. There are workarounds for older browser versions, but they shouldn't be necessary if you're up-to-date.
 
 <div class="bd-example-row">
 {% example html %}
