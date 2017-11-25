@@ -33,7 +33,7 @@
 
   &:active ~ .custom-control-indicator {
     color: $custom-control-indicator-active-color;
-    @include gradient-bg($custom-control-indicator-active-bg);
+    background-color: $custom-control-indicator-active-bg;
     @include box-shadow($custom-control-indicator-active-box-shadow);
   }
 
@@ -62,10 +62,17 @@
   pointer-events: none;
   user-select: none;
   background-color: $custom-control-indicator-bg;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: $custom-control-indicator-bg-size;
   @include box-shadow($custom-control-indicator-box-shadow);
+
+  &::before {
+    display: block;
+    width: $custom-control-indicator-size;
+    height: $custom-control-indicator-size;
+    content: "";
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: $custom-control-indicator-bg-size;
+  }
 }
 
 // Checkboxes
@@ -78,13 +85,20 @@
   }
 
   .custom-control-input:checked ~ .custom-control-indicator {
-    background-image: $custom-checkbox-indicator-icon-checked;
+    @include gradient-bg($custom-control-indicator-checked-bg);
+
+    &::before {
+      background-image: $custom-checkbox-indicator-icon-checked;
+    }
   }
 
   .custom-control-input:indeterminate ~ .custom-control-indicator {
-    background-color: $custom-checkbox-indicator-indeterminate-bg;
-    background-image: $custom-checkbox-indicator-icon-indeterminate;
+    @include gradient-bg($custom-control-indicator-checked-bg);
     @include box-shadow($custom-checkbox-indicator-indeterminate-box-shadow);
+
+    &::before {
+      background-image: $custom-checkbox-indicator-icon-indeterminate;
+    }
   }
 }
 
@@ -98,7 +112,11 @@
   }
 
   .custom-control-input:checked ~ .custom-control-indicator {
-    background-image: $custom-radio-indicator-icon-checked;
+    @include gradient-bg($custom-control-indicator-checked-bg);
+
+    &::before {
+      background-image: $custom-radio-indicator-icon-checked;
+    }
   }
 }
 
@@ -149,7 +167,7 @@
   &:focus {
     border-color: $custom-select-focus-border-color;
     outline: 0;
-    @include box-shadow($custom-select-focus-box-shadow);
+    box-shadow: $custom-select-focus-box-shadow;
 
     &::-ms-value {
       // For visual consistency with other platforms/browsers,
@@ -162,8 +180,10 @@
     }
   }
 
-  &[multiple] {
+  &[multiple],
+  &[size]:not([size="1"]) {
     height: auto;
+    padding-right: $custom-select-padding-x;
     background-image: none;
   }
 
@@ -183,6 +203,13 @@
   padding-top: $custom-select-padding-y;
   padding-bottom: $custom-select-padding-y;
   font-size: $custom-select-font-size-sm;
+}
+
+.custom-select-lg {
+  height: $custom-select-height-lg;
+  padding-top: $custom-select-padding-y;
+  padding-bottom: $custom-select-padding-y;
+  font-size: $custom-select-font-size-lg;
 }
 
 
@@ -206,7 +233,12 @@
   opacity: 0;
 
   &:focus ~ .custom-file-control {
+    border-color: $custom-file-focus-border-color;
     box-shadow: $custom-file-focus-box-shadow;
+
+    &::before {
+      border-color: $custom-file-focus-border-color;
+    }
   }
 }
 

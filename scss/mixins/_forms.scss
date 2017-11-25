@@ -84,10 +84,15 @@
     .was-validated &:#{$state},
     &.is-#{$state} {
       ~ .custom-control-indicator {
-        background-color: rgba($color, .4);
+        background-color: lighten($color, 25%);
       }
       ~ .custom-control-description {
         color: $color;
+      }
+      &:checked {
+        ~ .custom-control-indicator {
+          @include gradient-bg(lighten($color, 10%));
+        }
       }
       &:focus {
         ~ .custom-control-indicator {
