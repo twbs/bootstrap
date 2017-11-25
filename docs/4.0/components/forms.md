@@ -264,11 +264,11 @@ The `.form-group` class is the easiest way to add some structure to forms. Its o
 {% example html %}
 <form>
   <div class="form-group">
-    <label class="col-form-label" for="formGroupExampleInput">Example label</label>
+    <label for="formGroupExampleInput">Example label</label>
     <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
   </div>
   <div class="form-group">
-    <label class="col-form-label" for="formGroupExampleInput2">Another label</label>
+    <label for="formGroupExampleInput2">Another label</label>
     <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
   </div>
 </form>
@@ -1050,6 +1050,46 @@ Custom `<select>` menus need only a custom class, `.custom-select` to trigger th
 
 {% example html %}
 <select class="custom-select">
+  <option selected>Open this select menu</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+</select>
+{% endexample %}
+
+You may also choose from small and large custom selects to match our similarly sized text inputs.
+
+{% example html %}
+<select class="custom-select custom-select-lg">
+  <option selected>Open this select menu</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+</select>
+
+<select class="custom-select custom-select-sm">
+  <option selected>Open this select menu</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+</select>
+{% endexample %}
+
+The `multiple` attribute is also supported:
+
+{% example html %}
+<select class="custom-select" multiple>
+  <option selected>Open this select menu</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+</select>
+{% endexample %}
+
+As is the `size` attribute:
+
+{% example html %}
+<select class="custom-select" size="3">
   <option selected>Open this select menu</option>
   <option value="1">One</option>
   <option value="2">Two</option>
