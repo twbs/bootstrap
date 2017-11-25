@@ -11,6 +11,7 @@ toc: true
 While Beta 2 saw the bulk of our breaking changes during the beta phase, but we still have a few that needed to be addressed in the Beta 3 release. These changes apply if you're updating to Beta 3 from Beta 2 or any older version of Bootstrap.
 
 - Removed the unused `$thumbnail-transition` variable. We weren't transitioning anything, so it was just extra code.
+- Updated selector for input-based button groups. Instead of `[data-toggle="buttons"] { }` for style and behavior, we use the `data` attribute just for JS behaviors and rely on a new `.btn-group-toggle` class for styling.
 
 ## Beta 2 changes
 
