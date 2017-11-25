@@ -197,7 +197,7 @@
 // See https://github.com/twbs/bootstrap/pull/12794 and
 // https://github.com/twbs/bootstrap/pull/14559 for more information.
 
-[data-toggle="buttons"] {
+.btn-toggle-group {
   > .btn,
   > .btn-group > .btn {
     margin-bottom: 0; // Override default `<label>` value
