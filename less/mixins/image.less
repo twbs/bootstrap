@@ -1,7 +1,4 @@
-// Image Mixins
-// - Responsive image
-// - Retina image
-
+/* stylelint-disable media-feature-name-no-vendor-prefix, media-feature-parentheses-space-inside, media-feature-name-no-unknown, indentation, at-rule-name-space-after */
 
 // Responsive image
 //
@@ -22,11 +19,11 @@
 
   @media
   only screen and (-webkit-min-device-pixel-ratio: 2),
-  only screen and (   min--moz-device-pixel-ratio: 2),
-  only screen and (     -o-min-device-pixel-ratio: 2/1),
-  only screen and (        min-device-pixel-ratio: 2),
-  only screen and (                min-resolution: 192dpi),
-  only screen and (                min-resolution: 2dppx) {
+  only screen and ( min--moz-device-pixel-ratio: 2),
+  only screen and ( -o-min-device-pixel-ratio: 2/1),
+  only screen and ( min-device-pixel-ratio: 2),
+  only screen and ( min-resolution: 192dpi),
+  only screen and ( min-resolution: 2dppx) {
     background-image: url("@{file-2x}");
     background-size: @width-1x @height-1x;
   }

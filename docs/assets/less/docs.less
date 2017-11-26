@@ -1,3 +1,5 @@
+/* stylelint-disable selector-max-type, selector-no-qualifying-type, declaration-no-important */
+
 /*!
  * Bootstrap Docs (http://getbootstrap.com)
  * Copyright 2011-2017 Twitter, Inc.
@@ -51,7 +53,7 @@ body {
 // Keep code small in tables on account of limited space
 .table code {
   font-size: 13px;
-  font-weight: normal;
+  font-weight: 400;
 }
 
 // Inline code within headings retain the heading's background-color
@@ -106,7 +108,7 @@ h1[id] {
 .v4-tease {
   display: block;
   padding: 15px 20px;
-  font-weight: bold;
+  font-weight: 700;
   color: #fff;
   text-align: center;
   background-color: #0275d8;
@@ -119,7 +121,7 @@ h1[id] {
 
 /* Nullify ill-advised printing of hrefs; see #18711 */
 @media print {
-  a[href]:after {
+  a[href]::after {
     content: "" !important;
   }
 }

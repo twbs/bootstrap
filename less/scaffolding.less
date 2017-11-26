@@ -11,8 +11,8 @@
 * {
   .box-sizing(border-box);
 }
-*:before,
-*:after {
+*::before,
+*::after {
   .box-sizing(border-box);
 }
 
@@ -21,7 +21,7 @@
 
 html {
   font-size: 10px;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 body {
@@ -111,7 +111,7 @@ img {
 // Horizontal rules
 
 hr {
-  margin-top:    @line-height-computed;
+  margin-top: @line-height-computed;
   margin-bottom: @line-height-computed;
   border: 0;
   border-top: 1px solid @hr-border;
@@ -126,10 +126,10 @@ hr {
   position: absolute;
   width: 1px;
   height: 1px;
-  margin: -1px;
   padding: 0;
+  margin: -1px;
   overflow: hidden;
-  clip: rect(0,0,0,0);
+  clip: rect(0, 0, 0, 0);
   border: 0;
 }
 

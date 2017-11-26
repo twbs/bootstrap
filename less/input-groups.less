@@ -1,3 +1,5 @@
+/* stylelint-disable selector-no-qualifying-type */
+
 //
 // Input groups
 // --------------------------------------------------
@@ -12,8 +14,8 @@
   // Undo padding and float of grid classes
   &[class*="col-"] {
     float: none;
-    padding-left: 0;
     padding-right: 0;
+    padding-left: 0;
   }
 
   .form-control {
@@ -77,7 +79,7 @@
 .input-group-addon {
   padding: @padding-base-vertical @padding-base-horizontal;
   font-size: @font-size-base;
-  font-weight: normal;
+  font-weight: 400;
   line-height: 1;
   color: @input-color;
   text-align: center;
