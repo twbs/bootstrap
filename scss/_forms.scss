@@ -221,12 +221,6 @@ select.form-control-lg {
   position: relative;
   display: block;
   margin-bottom: $form-check-margin-bottom;
-
-  &.disabled {
-    .form-check-label {
-      color: $text-muted;
-    }
-  }
 }
 
 .form-check-label {
@@ -238,6 +232,12 @@ select.form-control-lg {
   position: absolute;
   margin-top: $form-check-input-margin-y;
   margin-left: -$form-check-input-gutter;
+
+  &:disabled {
+    ~ .form-check-description {
+      color: $text-muted;
+    }
+  }
 }
 
 // Radios and checkboxes on same line

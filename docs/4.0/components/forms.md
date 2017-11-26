@@ -167,7 +167,7 @@ By default, any number of checkboxes and radios that are immediate sibling will 
     <span class="form-check-description">Option one is this and that&mdash;be sure to include why it's great</span>
   </label>
 </div>
-<div class="form-check disabled">
+<div class="form-check">
   <label class="form-check-label">
     <input class="form-check-input" type="checkbox" value="" disabled>
     <span class="form-check-description">Option two is disabled</span>
@@ -188,7 +188,7 @@ By default, any number of checkboxes and radios that are immediate sibling will 
     <span class="form-check-description">Option two can be something else and selecting it will deselect option one</span>
   </label>
 </div>
-<div class="form-check disabled">
+<div class="form-check">
   <label class="form-check-label">
     <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" disabled>
     <span class="form-check-description">Option three is disabled</span>
@@ -203,17 +203,20 @@ Group checkboxes or radios on the same horizontal row by adding `.form-check-inl
 {% example html %}
 <div class="form-check form-check-inline">
   <label class="form-check-label">
-    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"> 1
+    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+    <span class="form-check-description">1</span>
   </label>
 </div>
 <div class="form-check form-check-inline">
   <label class="form-check-label">
-    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2"> 2
+    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+    <span class="form-check-description">2</span>
   </label>
 </div>
-<div class="form-check form-check-inline disabled">
+<div class="form-check form-check-inline">
   <label class="form-check-label">
-    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" disabled> 3
+    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" disabled>
+    <span class="form-check-description">3</span>
   </label>
 </div>
 {% endexample %}
@@ -221,17 +224,20 @@ Group checkboxes or radios on the same horizontal row by adding `.form-check-inl
 {% example html %}
 <div class="form-check form-check-inline">
   <label class="form-check-label">
-    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
+    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+    <span class="form-check-description">1</span>
   </label>
 </div>
 <div class="form-check form-check-inline">
   <label class="form-check-label">
-    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
+    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+    <span class="form-check-description">2</span>
   </label>
 </div>
-<div class="form-check form-check-inline disabled">
+<div class="form-check form-check-inline">
   <label class="form-check-label">
-    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" disabled> 3
+    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" disabled>
+    <span class="form-check-description">3</span>
   </label>
 </div>
 {% endexample %}
@@ -395,7 +401,7 @@ Be sure to add `.col-form-label` to your `<label>`s as well so they're verticall
               <span class="form-check-description">Option two can be something else and selecting it will deselect option one</span>
             </label>
           </div>
-          <div class="form-check disabled">
+          <div class="form-check">
             <label class="form-check-label">
               <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled>
               <span class="form-check-description">Option three is disabled</span>
