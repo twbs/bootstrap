@@ -336,20 +336,6 @@ select.form-control-lg {
       margin-left: 0;
     }
 
-    // Custom form controls
-    .custom-control {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding-left: 0;
-    }
-    .custom-control-indicator {
-      position: static;
-      display: inline-block;
-      margin-right: $form-check-input-margin-x; // Flexbox alignment means we lose our HTML space here, so we compensate.
-      vertical-align: text-bottom;
-    }
-
     // Re-override the feedback icon.
     .has-feedback .form-control-feedback {
       top: 0;

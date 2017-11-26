@@ -9,15 +9,21 @@
 
 .custom-control {
   position: relative;
-  display: inline-flex;
-  min-height: (1rem * $line-height-base);
-  padding-left: $custom-control-gutter;
-  margin-right: $custom-control-spacer-x;
+  margin-bottom: $custom-control-spacer-y;
+
+  label {
+    display: inline;
+    padding-left: $custom-control-gutter;
+    margin-bottom: 0;
+  }
 }
 
 .custom-control-input {
   position: absolute;
-  z-index: -1; // Put the input behind the label so it doesn't overlay text
+  top: (($line-height-base - $custom-control-indicator-size) / 2);
+  left: 0;
+  width: $custom-control-indicator-size;
+  height: $custom-control-indicator-size;
   opacity: 0;
 
   &:checked ~ .custom-control-indicator {
@@ -123,19 +129,14 @@
 
 // Layout options
 //
-// By default radios and checkboxes are `inline-block` with no additional spacing
-// set. Use these optional classes to tweak the layout.
+// By default radios and checkboxes are stacked, add `.custom-control-inline`
+// to each `.custom-control` to display it inline.
 
-.custom-controls-stacked {
-  display: flex;
-  flex-direction: column;
+.custom-control-inline {
+  display: inline-block;
 
-  .custom-control {
-    margin-bottom: $custom-control-spacer-y;
-
-    + .custom-control {
-      margin-left: 0;
-    }
+  + .custom-control-inline {
+    margin-left: $custom-control-spacer-x;
   }
 }
 
