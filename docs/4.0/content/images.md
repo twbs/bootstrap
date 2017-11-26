@@ -69,3 +69,15 @@ Align images with the [helper float classes]({{ site.baseurl }}/docs/{{ site.doc
   <img src="..." class="rounded" alt="...">
 </div>
 {% endhighlight %}
+
+
+## Picture
+
+If you are using the `<picture>` element to specify multiple `<source>` elements for a specific `<img>`, make sure to add the `.img-*` classes to the `<img>` and not to the `<picture>` tag.
+
+{% highlight html %}
+​<picture>
+  <source srcset="..." type="image/svg+xml">
+  <img src="..." class="img-fluid img-thumbnail" alt="...">
+</picture>
+{% endhighlight %}

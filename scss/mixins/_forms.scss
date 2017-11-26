@@ -1,7 +1,7 @@
 // Form control focus state
 //
 // Generate a customized focus state and for any input with the specified color,
-// which defaults to the `@input-border-color-focus` variable.
+// which defaults to the `$input-focus-border-color` variable.
 //
 // We highly encourage you to not customize the default value, but instead use
 // this to tweak colors on an as-needed basis. This aesthetic change is based on
@@ -15,13 +15,41 @@
     color: $input-focus-color;
     background-color: $input-focus-bg;
     border-color: $input-focus-border-color;
-    outline: none;
-    @include box-shadow($input-focus-box-shadow);
+    outline: 0;
+    // Avoid using mixin so we can pass custom focus shadow properly
+    @if $enable-shadows {
+      box-shadow: $input-box-shadow, $input-focus-box-shadow;
+    } @else {
+      box-shadow: $input-focus-box-shadow;
+    }
   }
 }
 
 
 @mixin form-validation-state($state, $color) {
+
+  .#{$state}-feedback {
+    display: none;
+    margin-top: $form-feedback-margin-top;
+    font-size: $form-feedback-font-size;
+    color: $color;
+  }
+
+  .#{$state}-tooltip {
+    position: absolute;
+    top: 100%;
+    z-index: 5;
+    display: none;
+    width: 250px;
+    padding: .5rem;
+    margin-top: .1rem;
+    font-size: .875rem;
+    line-height: 1;
+    color: #fff;
+    background-color: rgba($color, .8);
+    border-radius: .2rem;
+  }
+
   .form-control,
   .custom-select {
     .was-validated &:#{$state},
@@ -29,7 +57,8 @@
       border-color: $color;
 
       &:focus {
-        box-shadow: 0 0 0 .2rem rgba($color,.25);
+        border-color: $color;
+        box-shadow: 0 0 0 $input-focus-width rgba($color, .25);
       }
 
       ~ .#{$state}-feedback,
@@ -54,10 +83,20 @@
     .was-validated &:#{$state},
     &.is-#{$state} {
       ~ .custom-control-indicator {
-        background-color: rgba($color, .25);
+        background-color: lighten($color, 25%);
       }
       ~ .custom-control-description {
         color: $color;
+      }
+      &:checked {
+        ~ .custom-control-indicator {
+          @include gradient-bg(lighten($color, 10%));
+        }
+      }
+      &:focus {
+        ~ .custom-control-indicator {
+          box-shadow: 0 0 0 1px $body-bg, 0 0 0 $input-focus-width rgba($color, .25);
+        }
       }
     }
   }
@@ -72,7 +111,9 @@
         &::before { border-color: inherit; }
       }
       &:focus {
-        box-shadow: 0 0 0 .2rem rgba($color,.25);
+        ~ .custom-file-control {
+          box-shadow: 0 0 0 $input-focus-width rgba($color, .25);
+        }
       }
     }
   }

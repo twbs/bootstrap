@@ -1,4 +1,4 @@
-// scss-lint:disable ImportantRule
+// stylelint-disable declaration-no-important
 
 .bd-masthead {
   position: relative;
@@ -39,11 +39,6 @@
       margin-top: 3rem !important;
     }
   }
-}
-
-.bd-pretext {
-  overflow: hidden;
-  resize: none;
 }
 
 .half-rule {

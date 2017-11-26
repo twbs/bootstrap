@@ -1,33 +1,33 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="{{ page.description | default: site.description | smartify }}">
+<meta name="author" content="{{ site.authors }}">
 <meta name="generator" content="Jekyll v{{ jekyll.version }}">
 
 <title>
-  {% if page.title %}
-    {{ page.title }} &middot; {{ site.title }}
-  {% else %}
-    {{ site.title }} &middot; {{ site.description }}
-  {% endif %}
+  {%- if page.title -%}
+    {{ page.title | smartify }} · {{ site.title | smartify }}
+  {%- else -%}
+    {{ site.title | smartify }} · {{ site.description | smartify }}
+  {%- endif -%}
 </title>
-
-{% include social.html %}
 
 <!-- Bootstrap core CSS -->
 {% if site.github %}
-  <link href="{{ site.baseurl }}/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="{{ site.baseurl }}/dist/css/bootstrap.min.css" rel="stylesheet">
 {% else %}
-  <link href="{{ site.baseurl }}/dist/css/bootstrap.css" rel="stylesheet">
+<link href="{{ site.baseurl }}/dist/css/bootstrap.css" rel="stylesheet">
 {% endif %}
 
 <!-- Documentation extras -->
 {% if page.layout == "docs" %}
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css" />
+<link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
 {% endif %}
 <link href="{{ site.baseurl }}/assets/css/docs.min.css" rel="stylesheet">
 
-<!-- Favicons -->
-<link rel="apple-touch-icon" href="{{ site.baseurl }}/apple-touch-icon.png">
-<link rel="icon" href="{{ site.baseurl }}/favicon.ico">
+{% include favicons.html %}
+
+{% include social.html %}
 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

@@ -56,7 +56,7 @@ Be sure to **not use the standard `.btn` classes here**.
 
 {% example html %}
 <div class="list-group">
-  <a href="#" class="list-group-item active">
+  <a href="#" class="list-group-item list-group-item-action active">
     Cras justo odio
   </a>
   <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
@@ -217,7 +217,7 @@ Use the tab JavaScript plugin—include it individually or through the compiled 
 
 ### Using data attributes
 
-You can activate a list group navigation without writing any JavaScript by simply specifying `data-toggle="list"` or  on an element. Use these data attributes on `.list-group-item`.
+You can activate a list group navigation without writing any JavaScript by simply specifying `data-toggle="list"` or on an element. Use these data attributes on `.list-group-item`.
 
 <div role="tabpanel">
 {% highlight html %}
@@ -244,7 +244,7 @@ You can activate a list group navigation without writing any JavaScript by simpl
 Enable tabbable list item via JavaScript (each list item needs to be activated individually):
 
 {% highlight js %}
-$('#myList a').click(function (e) {
+$('#myList a').on('click', function (e) {
   e.preventDefault()
   $(this).tab('show')
 })
@@ -254,9 +254,9 @@ You can activate individual list item in several ways:
 
 {% highlight js %}
 $('#myList a[href="#profile"]').tab('show') // Select tab by name
-$('#myList a:first').tab('show') // Select first tab
-$('#myList a:last').tab('show') // Select last tab
-$('#myList li:eq(2) a').tab('show') // Select third tab (0-indexed)
+$('#myList a:first-child').tab('show') // Select first tab
+$('#myList a:last-child').tab('show') // Select last tab
+$('#myList a:nth-child(3)').tab('show') // Select third tab
 {% endhighlight %}
 
 ### Fade effect
@@ -295,7 +295,7 @@ Activates a list item element and content container. Tab should have either a `d
 
 <script>
   $(function () {
-    $('#myList a:last').tab('show')
+    $('#myList a:last-child').tab('show')
   })
 </script>
 {% endhighlight %}

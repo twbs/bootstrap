@@ -1,4 +1,4 @@
-// scss-lint:disable QualifyingElement
+// stylelint-disable declaration-no-important, selector-no-qualifying-type
 
 // Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css
 
@@ -14,8 +14,7 @@
     *::before,
     *::after {
       // Bootstrap specific; comment out `color` and `background`
-      //color: #000 !important; // Black prints faster:
-                                //   http://www.sanbeiji.com/archives/953
+      //color: #000 !important; // Black prints faster: http://www.sanbeiji.com/archives/953
       text-shadow: none !important;
       //background: transparent !important;
       box-shadow: none !important;

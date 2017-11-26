@@ -4,10 +4,10 @@
 
 @mixin make-container() {
   width: 100%;
+  padding-right: ($grid-gutter-width / 2);
+  padding-left: ($grid-gutter-width / 2);
   margin-right: auto;
   margin-left: auto;
-  padding-right: ($grid-gutter-width / 2);
-  padding-left:  ($grid-gutter-width / 2);
 }
 
 
@@ -24,7 +24,7 @@
   display: flex;
   flex-wrap: wrap;
   margin-right: ($grid-gutter-width / -2);
-  margin-left:  ($grid-gutter-width / -2);
+  margin-left: ($grid-gutter-width / -2);
 }
 
 @mixin make-col-ready() {
@@ -35,7 +35,7 @@
   width: 100%;
   min-height: 1px; // Prevent collapsing
   padding-right: ($grid-gutter-width / 2);
-  padding-left:  ($grid-gutter-width / 2);
+  padding-left: ($grid-gutter-width / 2);
 }
 
 @mixin make-col($size, $columns: $grid-columns) {
@@ -44,4 +44,9 @@
   // the width of the column. Applies to IE10+ and Firefox. Chrome and Safari
   // do not appear to require this.
   max-width: percentage($size / $columns);
+}
+
+@mixin make-col-offset($size, $columns: $grid-columns) {
+  $num: $size / $columns;
+  margin-left: if($num == 0, 0, percentage($num));
 }
