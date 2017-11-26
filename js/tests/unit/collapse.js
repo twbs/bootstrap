@@ -642,7 +642,7 @@ $(function () {
     $trigger3.trigger('click')
   })
 
-  QUnit.test('should set aria-expanded="true" to triggers targetting shown collaspe and aria-expanded="false" only when all the targeted collapses are shown', function (assert) {
+  QUnit.test('should set aria-expanded="true" to triggers targeting shown collaspe and aria-expanded="false" only when all the targeted collapses are shown', function (assert) {
     assert.expect(9)
     var done = assert.async()
 
@@ -697,5 +697,49 @@ $(function () {
       })
 
     $target.trigger($.Event('click'))
+  })
+
+  QUnit.test('should allow jquery object in parent config', function (assert) {
+    assert.expect(1)
+    var html =
+    '<div class="my-collapse">' +
+    '  <div class="item">' +
+    '    <a data-toggle="collapse" href="#">Toggle item</a>' +
+    '    <div class="collapse">Lorem ipsum</div>' +
+    '  </div>' +
+    '</div>'
+
+    $(html).appendTo('#qunit-fixture')
+    try {
+      $('[data-toggle="collapse"]').bootstrapCollapse({
+        parent: $('.my-collapse')
+      })
+      assert.ok(true, 'collapse correctly created')
+    }
+    catch (e) {
+      assert.ok(false, 'collapse not created')
+    }
+  })
+
+  QUnit.test('should allow DOM object in parent config', function (assert) {
+    assert.expect(1)
+    var html =
+    '<div class="my-collapse">' +
+    '  <div class="item">' +
+    '    <a data-toggle="collapse" href="#">Toggle item</a>' +
+    '    <div class="collapse">Lorem ipsum</div>' +
+    '  </div>' +
+    '</div>'
+
+    $(html).appendTo('#qunit-fixture')
+    try {
+      $('[data-toggle="collapse"]').bootstrapCollapse({
+        parent: $('.my-collapse')[0]
+      })
+      assert.ok(true, 'collapse correctly created')
+    }
+    catch (e) {
+      assert.ok(false, 'collapse not created')
+    }
   })
 })

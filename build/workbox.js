@@ -1,3 +1,5 @@
+'use strict'
+
 const fs = require('fs')
 const path = require('path')
 const swBuild = require('workbox-build')
@@ -6,7 +8,7 @@ const buildPrefix = '_gh_pages/'
 
 const workboxSWSrcPath = require.resolve('workbox-sw')
 const wbFileName = path.basename(workboxSWSrcPath)
-const workboxSWDestPath = buildPrefix + 'assets/js/vendor/' + wbFileName
+const workboxSWDestPath = `${buildPrefix}assets/js/vendor/${wbFileName}`
 const workboxSWSrcMapPath = `${workboxSWSrcPath}.map`
 const workboxSWDestMapPath = `${workboxSWDestPath}.map`
 

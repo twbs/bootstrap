@@ -4,12 +4,12 @@ import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-beta): tab.js
+ * Bootstrap (v4.0.0-beta.2): tab.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
 
-const Tab = (() => {
+const Tab = (($) => {
 
 
   /**
@@ -19,7 +19,7 @@ const Tab = (() => {
    */
 
   const NAME                = 'tab'
-  const VERSION             = '4.0.0-beta'
+  const VERSION             = '4.0.0-beta.2'
   const DATA_KEY            = 'bs.tab'
   const EVENT_KEY           = `.${DATA_KEY}`
   const DATA_API_KEY        = '.data-api'
@@ -166,7 +166,6 @@ const Tab = (() => {
       const complete = () => this._transitionComplete(
         element,
         active,
-        isTransitioning,
         callback
       )
 
@@ -174,19 +173,14 @@ const Tab = (() => {
         $(active)
           .one(Util.TRANSITION_END, complete)
           .emulateTransitionEnd(TRANSITION_DURATION)
-
       } else {
         complete()
       }
-
-      if (active) {
-        $(active).removeClass(ClassName.SHOW)
-      }
     }
 
-    _transitionComplete(element, active, isTransitioning, callback) {
+    _transitionComplete(element, active, callback) {
       if (active) {
-        $(active).removeClass(ClassName.ACTIVE)
+        $(active).removeClass(`${ClassName.SHOW} ${ClassName.ACTIVE}`)
 
         const dropdownChild = $(active.parentNode).find(
           Selector.DROPDOWN_ACTIVE_CHILD
@@ -196,18 +190,18 @@ const Tab = (() => {
           $(dropdownChild).removeClass(ClassName.ACTIVE)
         }
 
-        active.setAttribute('aria-expanded', false)
+        if (active.getAttribute('role') === 'tab') {
+          active.setAttribute('aria-selected', false)
+        }
       }
 
       $(element).addClass(ClassName.ACTIVE)
-      element.setAttribute('aria-expanded', true)
-
-      if (isTransitioning) {
-        Util.reflow(element)
-        $(element).addClass(ClassName.SHOW)
-      } else {
-        $(element).removeClass(ClassName.FADE)
+      if (element.getAttribute('role') === 'tab') {
+        element.setAttribute('aria-selected', true)
       }
+
+      Util.reflow(element)
+      $(element).addClass(ClassName.SHOW)
 
       if (element.parentNode &&
           $(element.parentNode).hasClass(ClassName.DROPDOWN_MENU)) {
@@ -278,6 +272,6 @@ const Tab = (() => {
 
   return Tab
 
-})(jQuery)
+})($)
 
 export default Tab

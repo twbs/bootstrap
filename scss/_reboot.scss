@@ -1,4 +1,4 @@
-// scss-lint:disable QualifyingElement, DuplicateProperty, VendorPrefix
+// stylelint-disable at-rule-no-vendor-prefix, declaration-no-important, selector-no-qualifying-type, property-no-vendor-prefix
 
 // Reboot
 //
@@ -30,18 +30,22 @@ html {
   -webkit-text-size-adjust: 100%; // 4
   -ms-text-size-adjust: 100%; // 4
   -ms-overflow-style: scrollbar; // 5
-  -webkit-tap-highlight-color: rgba(0,0,0,0); // 6
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); // 6
 }
 
 // IE10+ doesn't honor `<meta name="viewport">` in some cases.
 @at-root {
-  @-ms-viewport { width: device-width; }
+  @-ms-viewport {
+    width: device-width;
+  }
 }
 
+// stylelint-disable selector-list-comma-newline-after
 // Shim for "new" HTML5 structural elements to display correctly (IE10, older browsers)
 article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block;
 }
+// stylelint-enable selector-list-comma-newline-after
 
 // Body
 //
@@ -67,7 +71,7 @@ body {
 //
 // Credit: https://github.com/suitcss/base
 [tabindex="-1"]:focus {
-  outline: none !important;
+  outline: 0 !important;
 }
 
 
@@ -91,10 +95,12 @@ hr {
 //
 // By default, `<h1>`-`<h6>` all receive top and bottom margins. We nuke the top
 // margin for easier control within type scales as it avoids margin collapsing.
+// stylelint-disable selector-list-comma-newline-after
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
-  margin-bottom: .5rem;
+  margin-bottom: $headings-margin-bottom;
 }
+// stylelint-enable selector-list-comma-newline-after
 
 // Reset margins on paragraphs
 //
@@ -157,10 +163,12 @@ dfn {
   font-style: italic; // Add the correct font style in Android 4.3-
 }
 
+// stylelint-disable font-weight-notation
 b,
 strong {
   font-weight: bolder; // Add the correct font weight in Chrome, Edge, and Safari
 }
+// stylelint-enable font-weight-notation
 
 small {
   font-size: 80%; // Add the correct font size in all browsers
@@ -224,6 +232,7 @@ a:not([href]):not([tabindex]) {
 // Code
 //
 
+// stylelint-disable font-family-no-duplicate-names
 pre,
 code,
 kbd,
@@ -231,6 +240,7 @@ samp {
   font-family: monospace, monospace; // Correct the inheritance and scaling of font size in all browsers.
   font-size: 1em; // Correct the odd `em` font sizing in all browsers.
 }
+// stylelint-enable font-family-no-duplicate-names
 
 pre {
   // Remove browser default top margin
@@ -239,6 +249,9 @@ pre {
   margin-bottom: 1rem;
   // Don't allow content to break outside
   overflow: auto;
+  // We have @viewport set which causes scrollbars to overlap content in IE11 and Edge, so
+  // we force a non-overlapping, non-auto-hiding scrollbar to counteract.
+  -ms-overflow-style: scrollbar;
 }
 
 
@@ -273,14 +286,14 @@ svg:not(:root) {
 // However, they DO support removing the click delay via `touch-action: manipulation`.
 // See:
 // * https://getbootstrap.com/docs/4.0/content/reboot/#click-delay-optimization-for-touch
-// * http://caniuse.com/#feat=css-touch-action
+// * https://caniuse.com/#feat=css-touch-action
 // * https://patrickhlauke.github.io/touch/tests/results/#suppressing-300ms-delay
 
 a,
 area,
 button,
 [role="button"],
-input:not([type=range]),
+input:not([type="range"]),
 label,
 select,
 summary,
@@ -320,6 +333,13 @@ label {
   // Allow labels to use `margin` for spacing.
   display: inline-block;
   margin-bottom: .5rem;
+}
+
+// Remove the default `border-radius` that macOS Chrome adds.
+//
+// Details at https://github.com/twbs/bootstrap/issues/24093
+button {
+  border-radius: 0;
 }
 
 // Work around a Firefox/IE bug where the transparent `button` background

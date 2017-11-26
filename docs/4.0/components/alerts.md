@@ -50,7 +50,7 @@ Alerts can also contain additional HTML elements like headings, paragraphs and d
 Using the alert JavaScript plugin, it's possible to dismiss any alert inline. Here's how:
 
 - Be sure you've loaded the alert plugin, or the compiled Bootstrap JavaScript.
-- If you're building our JS from source, it [requires `util.js`]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/javascript/#util). The compiled version includes this.
+- If you're building our JavaScript from source, it [requires `util.js`]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/javascript/#util). The compiled version includes this.
 - Add a dismiss button and the `.alert-dismissible` class, which adds extra padding to the right of the alert and positions the `.close` button.
 - On the dismiss button, add the `data-dismiss="alert"` attribute, which triggers the JavaScript functionality. Be sure to use the `<button>` element with it for proper behavior across all devices.
 - To animate alerts when dismissing them, be sure to add the `.fade` and `.show` classes.
@@ -59,10 +59,10 @@ You can see this in action with a live demo:
 
 {% example html %}
 <div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Holy guacamole!</strong> You should check in on some of those fields below.
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
-  <strong>Holy guacamole!</strong> You should check in on some of those fields below.
 </div>
 {% endexample %}
 
@@ -73,7 +73,7 @@ You can see this in action with a live demo:
 Enable dismissal of an alert via JavaScript:
 
 {% highlight js %}
-$(".alert").alert()
+$('.alert').alert()
 {% endhighlight %}
 
 Or with `data` attributes on a button **within the alert**, as demonstrated above:
@@ -92,6 +92,7 @@ Note that closing an alert will remove it from the DOM.
 | --- | --- |
 | `$().alert()` | Makes an alert listen for click events on descendant elements which have the `data-dismiss="alert"` attribute. (Not necessary when using the data-api's auto-initialization.) |
 | `$().alert('close')` | Closes an alert by removing it from the DOM. If the `.fade` and `.show` classes are present on the element, the alert will fade out before it is removed. |
+| `$().alert('dispose')` | Destroys an element's alert. |
 
 {% highlight js %}$(".alert").alert('close'){% endhighlight %}
 
