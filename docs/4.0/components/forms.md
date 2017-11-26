@@ -545,11 +545,13 @@ And of course [custom form controls](#custom-forms) are supported.
       </select>
     </div>
     <div class="col-auto">
-      <label class="custom-control custom-checkbox mb-2 mr-sm-2">
-        <input type="checkbox" class="custom-control-input">
-        <span class="custom-control-indicator"></span>
-        <span class="custom-control-description">Remember my preference</span>
-      </label>
+      <div class="custom-control custom-checkbox mb-2 mr-sm-2">
+        <label>
+          <input type="checkbox" class="custom-control-input">
+          <span class="custom-control-indicator"></span>
+          <span class="custom-control-description">Remember my preference</span>
+        </label>
+      </div>
     </div>
     <div class="col-auto">
       <button type="submit" class="btn btn-primary mb-2">Submit</button>
@@ -601,11 +603,13 @@ Custom form controls and selects are also supported.
     <option value="3">Three</option>
   </select>
 
-  <label class="custom-control custom-checkbox mb-2 mr-sm-2">
-    <input type="checkbox" class="custom-control-input">
-    <span class="custom-control-indicator"></span>
-    <span class="custom-control-description">Remember my preference</span>
-  </label>
+  <div class="custom-control custom-checkbox mb-2 mr-sm-2">
+    <label>
+      <input type="checkbox" class="custom-control-input">
+      <span class="custom-control-indicator"></span>
+      <span class="custom-control-description">Remember my preference</span>
+    </label>
+  </div>
 
   <button type="submit" class="btn btn-primary mb-2">Submit</button>
 </form>
@@ -876,23 +880,29 @@ Our example forms show native textual `<input>`s above, but form validation styl
 
 {% example html %}
 <form class="was-validated">
-  <label class="custom-control custom-checkbox">
-    <input type="checkbox" class="custom-control-input" required>
-    <span class="custom-control-indicator"></span>
-    <span class="custom-control-description">Check this custom checkbox</span>
-  </label>
+  <div class="custom-control custom-checkbox">
+    <label>
+      <input type="checkbox" class="custom-control-input" required>
+      <span class="custom-control-indicator"></span>
+      <span class="custom-control-description">Check this custom checkbox</span>
+    </label>
+  </div>
 
-  <div class="custom-controls-stacked d-block my-3">
-    <label class="custom-control custom-radio">
-      <input id="radioStacked1" name="radio-stacked" type="radio" class="custom-control-input" required>
-      <span class="custom-control-indicator"></span>
-      <span class="custom-control-description">Toggle this custom radio</span>
-    </label>
-    <label class="custom-control custom-radio">
-      <input id="radioStacked2" name="radio-stacked" type="radio" class="custom-control-input" required>
-      <span class="custom-control-indicator"></span>
-      <span class="custom-control-description">Or toggle this other custom radio</span>
-    </label>
+  <div class="my-3">
+    <div class="custom-control custom-radio">
+      <label>
+        <input id="radioStacked1" name="radio-stacked" type="radio" class="custom-control-input" required>
+        <span class="custom-control-indicator"></span>
+        <span class="custom-control-description">Toggle this custom radio</span>
+      </label>
+    </div>
+    <div class="custom-control custom-radio">
+      <label>
+        <input id="radioStacked2" name="radio-stacked" type="radio" class="custom-control-input" required>
+        <span class="custom-control-indicator"></span>
+        <span class="custom-control-description">Or toggle this other custom radio</span>
+      </label>
+    </div>
   </div>
 
   <select class="custom-select d-block my-3" required>
@@ -930,21 +940,25 @@ In the checked states, we use **base64 embedded SVG icons** from [Open Iconic](h
 #### Checkboxes
 
 {% example html %}
-<label class="custom-control custom-checkbox">
-  <input type="checkbox" class="custom-control-input">
-  <span class="custom-control-indicator"></span>
-  <span class="custom-control-description">Check this custom checkbox</span>
-</label>
+<div class="custom-control custom-checkbox">
+  <label>
+    <input type="checkbox" class="custom-control-input">
+    <span class="custom-control-indicator"></span>
+    <span class="custom-control-description">Check this custom checkbox</span>
+  </label>
+</div>
 {% endexample %}
 
 Custom checkboxes can also utilize the `:indeterminate` pseudo class when manually set via JavaScript (there is no available HTML attribute for specifying it).
 
 <div class="bd-example bd-example-indeterminate">
-  <label class="custom-control custom-checkbox">
-    <input type="checkbox" class="custom-control-input">
-    <span class="custom-control-indicator"></span>
-    <span class="custom-control-description">Check this custom checkbox</span>
-  </label>
+  <div class="custom-control custom-checkbox">
+    <label>
+      <input type="checkbox" class="custom-control-input">
+      <span class="custom-control-indicator"></span>
+      <span class="custom-control-description">Check this custom checkbox</span>
+    </label>
+  </div>
 </div>
 
 If you're using jQuery, something like this should suffice:
@@ -956,16 +970,20 @@ $('.your-checkbox').prop('indeterminate', true)
 #### Radios
 
 {% example html %}
-<label class="custom-control custom-radio">
-  <input id="radio1" name="radio" type="radio" class="custom-control-input">
-  <span class="custom-control-indicator"></span>
-  <span class="custom-control-description">Toggle this custom radio</span>
-</label>
-<label class="custom-control custom-radio">
-  <input id="radio2" name="radio" type="radio" class="custom-control-input">
-  <span class="custom-control-indicator"></span>
-  <span class="custom-control-description">Or toggle this other custom radio</span>
-</label>
+<div class="custom-control custom-radio">
+  <label>
+    <input id="radio1" name="radio" type="radio" class="custom-control-input">
+    <span class="custom-control-indicator"></span>
+    <span class="custom-control-description">Toggle this custom radio</span>
+  </label>
+</div>
+<div class="custom-control custom-radio">
+  <label>
+    <input id="radio2" name="radio" type="radio" class="custom-control-input">
+    <span class="custom-control-indicator"></span>
+    <span class="custom-control-description">Or toggle this other custom radio</span>
+  </label>
+</div>
 {% endexample %}
 
 #### Disabled
@@ -973,31 +991,36 @@ $('.your-checkbox').prop('indeterminate', true)
 Custom checkboxes and radios can also be disabled. Add the `disabled` boolean attribute to the `<input>` and the custom indicator and label description will be automatically styled.
 
 {% example html %}
-<label class="custom-control custom-checkbox">
-  <input type="checkbox" class="custom-control-input" disabled>
-  <span class="custom-control-indicator"></span>
-  <span class="custom-control-description">Check this custom checkbox</span>
-</label>
-
-<label class="custom-control custom-radio">
-  <input id="radio3" name="radioDisabled" type="radio" class="custom-control-input" disabled>
-  <span class="custom-control-indicator"></span>
-  <span class="custom-control-description">Toggle this custom radio</span>
-</label>
+<div class="custom-control custom-checkbox">
+  <label>
+    <input type="checkbox" class="custom-control-input" disabled>
+    <span class="custom-control-indicator"></span>
+    <span class="custom-control-description">Check this custom checkbox</span>
+  </label>
+</div>
+<div class="custom-control custom-radio">
+  <label>
+    <input id="radio3" name="radioDisabled" type="radio" class="custom-control-input" disabled>
+    <span class="custom-control-indicator"></span>
+    <span class="custom-control-description">Toggle this custom radio</span>
+  </label>
+</div>
 {% endexample %}
 
-#### Stacked
+#### Inline
 
-Custom checkboxes and radios are inline to start. Add a parent with class `.custom-controls-stacked` to ensure each form control is on separate lines.
+Custom checkboxes and radios are stacked to start. Add class `.custom-control-inline` to each `.custom-control` to display it inline.
 
 {% example html %}
-<div class="custom-controls-stacked">
-  <label class="custom-control custom-radio">
+<div class="custom-control custom-control-inline custom-radio">
+  <label>
     <input id="radioStacked3" name="radio-stacked" type="radio" class="custom-control-input">
     <span class="custom-control-indicator"></span>
     <span class="custom-control-description">Toggle this custom radio</span>
   </label>
-  <label class="custom-control custom-radio">
+</div>
+<div class="custom-control custom-control-inline custom-radio">
+  <label>
     <input id="radioStacked4" name="radio-stacked" type="radio" class="custom-control-input">
     <span class="custom-control-indicator"></span>
     <span class="custom-control-description">Or toggle this other custom radio</span>
