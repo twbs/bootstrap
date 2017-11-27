@@ -146,6 +146,7 @@
     margin-left: $carousel-indicator-spacer;
     text-indent: -999px;
     background-color: rgba($carousel-indicator-active-bg, .5);
+    box-shadow: 1px 1px 1px darken($carousel-indicator-active-bg, 40%);
 
     // Use pseudo classes to increase the hit area by 10px on top and bottom.
     &::before {
@@ -170,6 +171,7 @@
 
   .active {
     background-color: $carousel-indicator-active-bg;
+    box-shadow: 1px 1px 1px darken($carousel-indicator-active-bg, 80%);
   }
 }
 
