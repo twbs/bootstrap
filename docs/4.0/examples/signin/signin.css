@@ -1,17 +1,25 @@
+html,
 body {
+  height: 100%;
+}
+
+body {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   padding-top: 40px;
   padding-bottom: 40px;
   background-color: #eee;
 }
 
 .form-signin {
+  width: 100%;
   max-width: 330px;
   padding: 15px;
   margin: 0 auto;
-}
-.form-signin .form-signin-heading,
-.form-signin .checkbox {
-  margin-bottom: 10px;
 }
 .form-signin .checkbox {
   font-weight: 400;
