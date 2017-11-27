@@ -27,7 +27,6 @@
 
 
 @mixin form-validation-state($state, $color) {
-
   .#{$state}-feedback {
     display: none;
     margin-top: $form-feedback-margin-top;
@@ -74,6 +73,10 @@
     &.is-#{$state} {
       + .form-check-description {
         color: $color;
+      }
+      ~ .#{$state}-feedback,
+      ~ .#{$state}-tooltip {
+        display: block;
       }
     }
   }
