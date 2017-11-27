@@ -10,6 +10,7 @@
   font-size: $progress-font-size;
   background-color: $progress-bg;
   @include border-radius($progress-border-radius);
+  @include box-shadow($progress-box-shadow);
 }
 
 .progress-bar {
