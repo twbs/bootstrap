@@ -2,9 +2,17 @@
 
 // Width and height
 
-@each $prop, $abbrev in (width: w, height: h) {
-  @each $size, $length in $sizes {
-    .#{$abbrev}-#{$size} { #{$prop}: $length !important; }
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    @each $prop, $abbrev in (width: w, height: h) {
+      @each $size, $length in $sizes {
+        .#{$abbrev}#{$infix}-#{$size} { #{$prop}: $length !important; }
+      }
+
+      .#{$abbrev}#{$infix}-auto { #{$prop}: auto !important; }
+    }
   }
 }
 
