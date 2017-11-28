@@ -50,8 +50,8 @@
     border-radius: .2rem;
   }
 
-  .form-control,
-  .custom-select {
+  .form-control:required,
+  .custom-select:required {
     .was-validated &:#{$state},
     &.is-#{$state} {
       border-color: $color;
@@ -70,7 +70,7 @@
 
 
   // TODO: redo check markup lol crap
-  .form-check-input {
+  .form-check-input:required {
     .was-validated &:#{$state},
     &.is-#{$state} {
       + .form-check-label {
@@ -80,7 +80,7 @@
   }
 
   // custom radios and checks
-  .custom-control-input {
+  .custom-control-input:required {
     .was-validated &:#{$state},
     &.is-#{$state} {
       ~ .custom-control-indicator {
