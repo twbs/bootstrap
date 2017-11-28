@@ -13,14 +13,14 @@ redirect_from: "/examples/"
   <h2>{{ entry.category | capitalize }}</h2>
   <p>{{ entry.description }}</p>
   {% for example in entry.examples %}
-  	{% if forloop.first %}<div class="row">{% endif %}
+    {% if forloop.first %}<div class="row">{% endif %}
       <div class="col-6 col-md-4 col-lg-3">
         <a href="{{ site.baseurl }}/docs/{{ site.docs_version }}/examples/{{ example.name | slugify }}/">
-          <img class="img-thumbnail mb-3" src="{{ site.baseurl }}/docs/{{ site.docs_version }}/examples/screenshots/{{ example.name | slugify }}.png" width="800" height="600">
+          <img class="img-thumbnail mb-3" src="{{ site.baseurl }}/docs/{{ site.docs_version }}/examples/screenshots/{{ example.name | slugify }}.png" alt="{{ example.name }} screenshot" width="800" height="600">
           <h5 class="mb-1">{{ example.name }}</h5>
         </a>
         <p>{{ example.description }}</p>
       </div>
-  	{% if forloop.last %}</div>{% endif %}
+    {% if forloop.last %}</div>{% endif %}
   {% endfor %}
 {% endfor %}
