@@ -29,6 +29,8 @@
       description: "Simple one-page template for photo galleries, portfolios, and more."
     - name: Pricing
       description: "Example pricing page built with Cards and featuring a custom header and footer."
+    - name: Form validation
+      description: "Lengthy custom form to show all our form components and their validation potential."
     - name: Cover
       description: "A one-page template for building simple and beautiful home pages."
     - name: Carousel
