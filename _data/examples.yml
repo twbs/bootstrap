@@ -1,27 +1,3 @@
-- category: Framework
-  description: "Examples that focus on implementing uses of built-in components provided by Bootstrap."
-  examples:
-    - name: "Starter template"
-      description: "Nothing but the basics: compiled CSS and JavaScript."
-    - name: Grid
-      description: "Multiple examples of grid layouts with all four tiers, nesting, and more."
-    - name: Jumbotron
-      description: "Build around the jumbotron with a navbar and some basic grid columns."
-    - name: "Jumbotron narrow"
-      description: "Build a more custom page by narrowing the default container and jumbotron."
-
-- category: Navbars
-  description: "Taking the default navbar component and showing how it can be moved, placed, and extended."
-  examples:
-    - name: Navbars
-      description: "Demonstration of all the responsive and container options for our navbar component."
-    - name: Navbar static
-      description: "Single navbar example of a static top navbar along with some additional content."
-    - name: Navbar fixed
-      description: "Single navbar example with a fixed top navbar along with some additional content."
-    - name: Navbar bottom
-      description: "Single navbar example with a bottom navbar along with some additional content."
-
 - category: Custom components
   description: "Brand new components and templates to help folks quickly get started with Bootstrap and demonstrate best practices for adding onto the framework."
   examples:
@@ -47,6 +23,30 @@
       description: "Attach a footer to the bottom of the viewport when the content is shorter than it."
     - name: Sticky footer navbar
       description: "Attach a footer to the bottom of the viewport with a fixed top navbar."
+
+- category: Framework
+  description: "Examples that focus on implementing uses of built-in components provided by Bootstrap."
+  examples:
+    - name: "Starter template"
+      description: "Nothing but the basics: compiled CSS and JavaScript."
+    - name: Grid
+      description: "Multiple examples of grid layouts with all four tiers, nesting, and more."
+    - name: Jumbotron
+      description: "Build around the jumbotron with a navbar and some basic grid columns."
+    - name: "Jumbotron narrow"
+      description: "Build a more custom page by narrowing the default container and jumbotron."
+
+- category: Navbars
+  description: "Taking the default navbar component and showing how it can be moved, placed, and extended."
+  examples:
+    - name: Navbars
+      description: "Demonstration of all the responsive and container options for our navbar component."
+    - name: Navbar static
+      description: "Single navbar example of a static top navbar along with some additional content."
+    - name: Navbar fixed
+      description: "Single navbar example with a fixed top navbar along with some additional content."
+    - name: Navbar bottom
+      description: "Single navbar example with a bottom navbar along with some additional content."
 
 - category: Experiments
   description: "Examples that focus on future-friendly features or techniques."
