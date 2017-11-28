@@ -459,7 +459,7 @@ For modals that simply appear rather than fade in to view, remove the `.fade` cl
 
 ### Dynamic heights
 
-If the height of a modal changes while it is open, you should call `$('#myModal').data('bs.modal').handleUpdate()` or `$('#myModal').modal('handleUpdate')` to readjust the modal's position in case a scrollbar appears.
+If the height of a modal changes while it is open, you should call `$('#myModal').modal('handleUpdate')` to readjust the modal's position in case a scrollbar appears.
 
 ### Accessibility
 
