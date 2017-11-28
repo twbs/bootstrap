@@ -27,6 +27,8 @@
   examples:
     - name: Album
       description: "Simple one-page template for photo galleries, portfolios, and more."
+    - name: Pricing
+      description: "Example pricing page built with Cards and featuring a custom header and footer."
     - name: Cover
       description: "A one-page template for building simple and beautiful home pages."
     - name: Carousel
@@ -41,7 +43,7 @@
       description: "Create a custom navbar with justified links. Heads up! Not too Safari friendly."
     - name: Sticky footer
       description: "Attach a footer to the bottom of the viewport when the content is shorter than it."
-    - name: Sticky footer with navbar
+    - name: Sticky footer navbar
       description: "Attach a footer to the bottom of the viewport with a fixed top navbar."
 
 - category: Experiments
