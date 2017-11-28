@@ -93,7 +93,7 @@
   }
 
   .custom-control-input:indeterminate ~ .custom-control-indicator {
-    @include gradient-bg($custom-control-indicator-checked-bg);
+    @include gradient-bg($custom-checkbox-indicator-indeterminate-bg);
     @include box-shadow($custom-checkbox-indicator-indeterminate-box-shadow);
 
     &::before {
