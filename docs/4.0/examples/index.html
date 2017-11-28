@@ -1,0 +1,26 @@
+---
+layout: simple
+title: Examples
+description: Quickly get a project started with any of our examples ranging from using parts of the framework to custom components and layouts.
+redirect_from: "/examples/"
+---
+
+{% markdown %}
+[Download the Bootstrap source code]({{ site.download.source }}) to snag these examples.
+{% endmarkdown %}
+
+{% for entry in site.data.examples %}
+  <h2>{{ entry.category | capitalize }}</h2>
+  <p>{{ entry.description }}</p>
+  {% for example in entry.examples %}
+  	{% if forloop.first %}<div class="row">{% endif %}
+      <div class="col-6 col-md-4 col-lg-3">
+        <a href="{{ site.baseurl }}/docs/{{ site.docs_version }}/examples/{{ example.name | slugify }}/">
+          <img class="img-thumbnail mb-3" src="{{ site.baseurl }}/docs/{{ site.docs_version }}/examples/screenshots/{{ example.name | slugify }}.png" width="800" height="600">
+          <h5>{{ example.name }}</h5>
+        </a>
+        <p>{{ example.description }}</p>
+      </div>
+  	{% if forloop.last %}</div>{% endif %}
+  {% endfor %}
+{% endfor %}
