@@ -13,14 +13,14 @@
 - category: Navbars
   description: "Taking the default navbar component and showing how it can be moved, placed, and extended."
   examples:
-    - name: Navbar
-      description: "Super basic template that includes the navbar along with some additional content."
+    - name: Navbars
+      description: "Demonstration of all the responsive and container options for our navbar component."
     - name: Navbar static
-      description: "Super basic template with a static top navbar along with some additional content."
+      description: "Single navbar example of a static top navbar along with some additional content."
     - name: Navbar fixed
-      description: "Super basic template with a fixed top navbar along with some additional content."
+      description: "Single navbar example with a fixed top navbar along with some additional content."
     - name: Navbar bottom
-      description: "Super basic template with a bottom navbar along with some additional content."
+      description: "Single navbar example with a bottom navbar along with some additional content."
 
 - category: Custom components
   description: "Brand new components and templates to help folks quickly get started with Bootstrap and demonstrate best practices for adding onto the framework."
