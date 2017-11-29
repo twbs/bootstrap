@@ -7,12 +7,14 @@
       description: "Example pricing page built with Cards and featuring a custom header and footer."
     - name: Checkout
       description: "Custom checkout form showing our form components and their validation features."
+    - name: Product
+      description: "Lean product-focused marketing page with extensive grid and image work."
     - name: Cover
       description: "A one-page template for building simple and beautiful home pages."
     - name: Carousel
       description: "Customize the navbar and carousel, then add some new components."
     - name: Blog
-      description: "Simple two-column blog layout with custom navigation, header, and type."
+      description: "Magazine like blog template with header, navigation, featured content."
     - name: Dashboard
       description: "Basic admin dashboard shell with fixed sidebar and navbar."
     - name: Sign-in
