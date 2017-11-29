@@ -534,14 +534,14 @@ Use `.order-` classes for controlling the **visual order** of your content. Thes
 {% endexample %}
 </div>
 
-There's also a responsive `.order-first` class that quickly changes the order of one element by applying `order: -1`. This class can also be intermixed with the numbered `.order-*` classes as needed.
+There's also a responsive `.order-first` and `.order-last` class that quickly changes the order of one element by applying `order: -1` or `order: 13` (`order: $columns + 1`). These classes can also be intermixed with the numbered `.order-*` classes as needed.
 
 <div class="bd-example-row">
 {% example html %}
 <div class="container">
   <div class="row">
-    <div class="col">
-      First, but unordered
+    <div class="col order-last">
+      First, but last
     </div>
     <div class="col">
       Second, but unordered
