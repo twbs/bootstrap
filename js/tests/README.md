@@ -6,7 +6,7 @@ Bootstrap uses [QUnit](https://qunitjs.com/), a powerful, easy-to-use JavaScript
 * `vendor/` contains third-party testing-related code (QUnit and jQuery).
 * `visual/` contains "visual" tests which are run interactively in real browsers and require manual verification by humans.
 
-To run the unit test suite via [PhantomJS](http://phantomjs.org/), run `npm run js-test`.
+To run the unit test suite via [Karma](http://karma-runner.github.io/), run `npm run js-test`.
 
 To run the unit test suite via a real web browser, open `index.html` in the browser.
 

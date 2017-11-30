@@ -364,6 +364,8 @@ Create horizontal forms with the grid by adding the `.row` class to form groups 
 
 Be sure to add `.col-form-label` to your `<label>`s as well so they're vertically centered with their associated form controls. For `<legend>` elements, you can use `.col-form-legend` to make them appear similar to regular `<label>` elements.
 
+At times, you maybe need to use margin or padding utilities to create that perfect alignment you need. For example, we've removed the `padding-top` on our stacked radio inputs label to better align the text baseline.
+
 {% example html %}
 <form>
   <div class="form-group row">
@@ -380,7 +382,7 @@ Be sure to add `.col-form-label` to your `<label>`s as well so they're verticall
   </div>
   <fieldset class="form-group">
     <div class="row">
-      <legend class="col-form-legend col-sm-2">Radios</legend>
+      <legend class="col-form-legend col-sm-2 pt-0">Radios</legend>
       <div class="col-sm-10">
         <div class="form-check">
           <label class="form-check-label">
