@@ -1,4 +1,6 @@
-sudo: false
+sudo: required
+addons:
+  chrome: stable
 dist: trusty
 language: node_js
 git:
