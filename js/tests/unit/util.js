@@ -55,4 +55,24 @@ $(function () {
     id2 = Util.getUID('test')
     assert.ok(id !== id2, id + ' !== ' + id2)
   })
+
+  QUnit.test('Util.findShadowRoot should find the shadow DOM root', function (assert) {
+    // Only for newer browsers
+    if (typeof document.body.attachShadow !== 'function') {
+      assert.expect(0)
+      return
+    }
+
+    assert.expect(2)
+    var $div = $('<div id="test"></div>').appendTo($('#qunit-fixture'))
+    var shadowRoot = $div[0].attachShadow({
+      mode: 'open'
+    })
+
+    assert.equal(shadowRoot, Util.findShadowRoot(shadowRoot))
+
+    shadowRoot.innerHTML = '<button>Shadow Button</button>'
+
+    assert.equal(shadowRoot, Util.findShadowRoot(shadowRoot.firstChild))
+  })
 })

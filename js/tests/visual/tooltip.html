@@ -47,7 +47,12 @@
           Tooltip with HTML
         </button>
       </p>
-      <div id="target" title="Test tooltip on transformed element"></div>
+      <div class="row">
+        <div class="col-sm-3">
+          <div id="target" title="Test tooltip on transformed element"></div>
+        </div>
+        <div id="shadow" class="pt-5"></div>
+      </div>
     </div>
 
     <script src="../../../assets/js/vendor/jquery-slim.min.js"></script>
@@ -57,6 +62,21 @@
 
     <script>
       $(function () {
+        if (typeof document.body.attachShadow === 'function') {
+          var shadowRoot = $('#shadow')[0].attachShadow({ mode: 'open' })
+          shadowRoot.innerHTML =
+            '<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top in a shadow dom">' +
+            '  Tooltip on top in a shadow dom' +
+            '</button>' +
+            '<button id="secondTooltip" type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top in a shadow dom with container option">' +
+            '  Tooltip on top in a shadow dom' +
+            '</button>'
+
+          $(shadowRoot.firstChild).tooltip()
+          $(shadowRoot.getElementById('secondTooltip')).tooltip({
+            container: shadowRoot
+          })
+        }
         $('[data-toggle="tooltip"]').tooltip()
         $('#target').tooltip({
           placement : 'top',

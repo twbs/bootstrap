@@ -246,8 +246,9 @@ const Tooltip = (($) => {
       if (this.isWithContent() && this._isEnabled) {
         $(this.element).trigger(showEvent)
 
+        const shadowRoot = Util.findShadowRoot(this.element)
         const isInTheDom = $.contains(
-          this.element.ownerDocument.documentElement,
+          shadowRoot !== null ? shadowRoot : this.element.ownerDocument.documentElement,
           this.element
         )
 

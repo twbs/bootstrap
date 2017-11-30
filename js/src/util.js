@@ -136,6 +136,25 @@ const Util = (($) => {
           }
         }
       }
+    },
+
+    findShadowRoot(element) {
+      // Can find the shadow root otherwise it'll return the document
+      if (typeof element.getRootNode === 'function') {
+        const tmpRoot = element.getRootNode()
+        return tmpRoot instanceof ShadowRoot ? tmpRoot : null
+      }
+
+      if (element instanceof ShadowRoot) {
+        return element
+      }
+
+      // when we don't find a shadow root
+      if (!element.parentNode) {
+        return null
+      }
+
+      return Util.findShadowRoot(element.parentNode)
     }
   }
 
