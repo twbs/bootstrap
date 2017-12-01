@@ -120,6 +120,20 @@ select.form-control {
   font-size: $font-size-base;
 }
 
+.col-form-legend-lg {
+  padding-top: $input-padding-y-lg;
+  padding-bottom: $input-padding-y-lg;
+  font-size: $font-size-lg;
+  line-height: $input-line-height-lg;
+}
+
+.col-form-legend-sm {
+  padding-top: $input-padding-y-sm;
+  padding-bottom: $input-padding-y-sm;
+  font-size: $font-size-sm;
+  line-height: $input-line-height-sm;
+}
+
 
 // Readonly controls as plain text
 //
