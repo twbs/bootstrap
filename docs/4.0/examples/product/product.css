@@ -3,7 +3,7 @@
 }
 
 .site-header {
-  background-color: rgba(0, 0, 0, 0.85);
+  background-color: rgba(0, 0, 0, .85);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   backdrop-filter: saturate(180%) blur(20px);
 }
@@ -22,16 +22,17 @@
   bottom: -30%;
   width: 300px;
   height: 540px;
-  border-radius: 21px;
   background-color: #333;
+  border-radius: 21px;
+  -webkit-transform: rotate(30deg);
   transform: rotate(30deg);
 }
 .product-device::before {
   position: absolute;
   top: 10%;
   right: 10px;
-  left: 10px;
   bottom: 10%;
+  left: 10px;
   content: "";
   background-color: rgba(255, 255, 255, .1);
   border-radius: 5px;
@@ -49,6 +50,6 @@
 
 .box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
 
-.flex-equal > * { flex: 1; }
+.flex-equal > * { -ms-flex: 1; flex: 1; }
 
 .overflow-hidden { overflow: hidden; }
