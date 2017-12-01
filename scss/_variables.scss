@@ -483,15 +483,19 @@ $custom-select-border-width:        $input-btn-border-width !default;
 $custom-select-border-color:        $input-border-color !default;
 $custom-select-border-radius:       $border-radius !default;
 
-$custom-select-focus-border-color:  lighten(theme-color("primary"), 25%) !default;
-$custom-select-focus-box-shadow:    inset 0 1px 2px rgba($black, .075), 0 0 5px rgba($custom-select-focus-border-color, .5) !default;
+$custom-select-focus-border-color:  $input-focus-border-color !default;
+$custom-select-focus-box-shadow:    inset 0 1px 2px rgba($black, .075), $input-btn-focus-box-shadow !default;
 
 $custom-select-font-size-sm:        75% !default;
 $custom-select-height-sm:           $input-height-sm !default;
 
+$custom-select-font-size-lg:        125% !default;
+$custom-select-height-lg:           $input-height-lg !default;
+
 $custom-file-height:                $input-height !default;
 $custom-file-width:                 14rem !default;
-$custom-file-focus-box-shadow:      0 0 0 .075rem $white, 0 0 0 .2rem theme-color("primary") !default;
+$custom-file-focus-border-color:    $input-focus-border-color !default;
+$custom-file-focus-box-shadow:      $input-btn-focus-box-shadow !default;
 
 $custom-file-padding-y:             $input-btn-padding-y !default;
 $custom-file-padding-x:             $input-btn-padding-x !default;

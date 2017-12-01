@@ -364,6 +364,8 @@ Create horizontal forms with the grid by adding the `.row` class to form groups 
 
 Be sure to add `.col-form-label` to your `<label>`s as well so they're vertically centered with their associated form controls. For `<legend>` elements, you can use `.col-form-legend` to make them appear similar to regular `<label>` elements.
 
+At times, you maybe need to use margin or padding utilities to create that perfect alignment you need. For example, we've removed the `padding-top` on our stacked radio inputs label to better align the text baseline.
+
 {% example html %}
 <form>
   <div class="form-group row">
@@ -380,7 +382,7 @@ Be sure to add `.col-form-label` to your `<label>`s as well so they're verticall
   </div>
   <fieldset class="form-group">
     <div class="row">
-      <legend class="col-form-legend col-sm-2">Radios</legend>
+      <legend class="col-form-legend col-sm-2 pt-0">Radios</legend>
       <div class="col-sm-10">
         <div class="form-check">
           <label class="form-check-label">
@@ -1011,6 +1013,46 @@ Custom `<select>` menus need only a custom class, `.custom-select` to trigger th
 
 {% example html %}
 <select class="custom-select">
+  <option selected>Open this select menu</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+</select>
+{% endexample %}
+
+You may also choose from small and large custom selects to match our similarly sized text inputs.
+
+{% example html %}
+<select class="custom-select custom-select-lg">
+  <option selected>Open this select menu</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+</select>
+
+<select class="custom-select custom-select-sm">
+  <option selected>Open this select menu</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+</select>
+{% endexample %}
+
+The `multiple` attribute is also supported:
+
+{% example html %}
+<select class="custom-select" multiple>
+  <option selected>Open this select menu</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+</select>
+{% endexample %}
+
+As is the `size` attribute:
+
+{% example html %}
+<select class="custom-select" size="3">
   <option selected>Open this select menu</option>
   <option value="1">One</option>
   <option value="2">Two</option>

@@ -40,6 +40,12 @@ printf "\n${magenta}Compile latest CSS and JS...${end}"
 printf "\n${magenta}=======================================================\n${end}"
 npm run dist
 
+# Generate the SRI hashes
+printf "\n${magenta}=======================================================${end}"
+printf "\n${magenta}Generate the SRI hashes...${end}"
+printf "\n${magenta}=======================================================\n${end}"
+npm run release-sri
+
 # Compress the dist files
 printf "\n${magenta}=======================================================${end}"
 printf "\n${magenta}Compressing the dist files...${end}"

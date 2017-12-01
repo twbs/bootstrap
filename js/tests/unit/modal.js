@@ -29,6 +29,8 @@ $(function () {
       $.fn.bootstrapModal = $.fn.modal.noConflict()
     },
     afterEach: function () {
+      $('.modal-backdrop, #modal-test').remove()
+      $(document.body).removeClass('modal-open')
       $.fn.modal = $.fn.bootstrapModal
       delete $.fn.bootstrapModal
     }

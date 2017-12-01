@@ -51,16 +51,16 @@
   }
 }
 
-@mixin button-outline-variant($color, $color-hover: #fff) {
+@mixin button-outline-variant($color, $color-hover: #fff, $active-background: $color, $active-border: $color) {
   color: $color;
   background-color: transparent;
   background-image: none;
   border-color: $color;
 
-  @include hover {
-    color: $color-hover;
-    background-color: $color;
-    border-color: $color;
+  &:hover {
+    color: color-yiq($color);
+    background-color: $active-background;
+    border-color: $active-border;
   }
 
   &:focus,
@@ -77,9 +77,9 @@
   &:not([disabled]):not(.disabled):active,
   &:not([disabled]):not(.disabled).active,
   .show > &.dropdown-toggle {
-    color: $color-hover;
-    background-color: $color;
-    border-color: $color;
+    color: color-yiq($color-hover);
+    background-color: $active-background;
+    border-color: $active-border;
     // Avoid using mixin so we can pass custom focus shadow properly
     box-shadow: 0 0 0 $btn-focus-width rgba($color, .5);
   }
