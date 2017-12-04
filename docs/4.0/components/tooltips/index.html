@@ -639,7 +639,9 @@
   <li>Tooltips with zero-length titles are never displayed.</li>
   <li>Specify <code class="highlighter-rouge">container: 'body'</code> to avoid rendering problems in more complex components (like our input groups, button groups, etc).</li>
   <li>Triggering tooltips on hidden elements will not work.</li>
-  <li>Tooltips for <code class="highlighter-rouge">.disabled</code> or <code class="highlighter-rouge">disabled</code> elements must be triggered on a wrapper element.</li>
+  <li>Tooltips for <code class="highlighter-rouge">.disabled</code> or <code
+      class="highlighter-rouge">disabled</code> elements must be triggered on <a
+      href="https://stackoverflow.com/a/19938049/596625">a wrapper element</a>.</li>
   <li>When triggered from hyperlinks that span multiple lines, tooltips will be centered. Use <code class="highlighter-rouge">white-space: nowrap;</code> on your <code class="highlighter-rouge">&lt;a&gt;</code>s to avoid this behavior.</li>
   <li>Tooltips must be hidden before their corresponding elements have been removed from the DOM.</li>
 </ul>
