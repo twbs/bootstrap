@@ -62,14 +62,51 @@
     @return $light;
   }
 }
-@function contrast-yiq($color, $dark: #111, $light: #fff) {
+@function yiq($color) {
   $r: red($color);
   $g: green($color);
   $b: blue($color);
 
   $yiq: (($r * 299) + ($g * 587) + ($b * 114)) / 1000;
 
-  @if ($yiq >= 150) {
+  @return $yiq;
+}
+@function color-brightness($color) {
+  @return yiq($color);
+}
+@function color-difference($color1, $color2) {
+  $r1: red($color1);
+  $g1: green($color1);
+  $b1: blue($color1);
+
+  $r2: red($color2);
+  $g2: green($color2);
+  $b2: blue($color2);
+
+  $diff: (max($r1, $r2) - min($r1, $r2)) + (max($g1, $g2) - min($g1, $g2)) + (max($b1, $b2) - min($b1, $b2));
+
+  @return $diff;
+}
+@function test-contrast($color1, $color2) {
+  $delta-brightness: abs(color-brightness($color1) - color-brightness($color2));
+  $color-difference: color-difference($color1, $color2);
+
+  @if ($delta-brightness > 125) and ($color-difference > 500) {
+    @return true;
+  }
+
+  @return false;
+}
+@function use-if-contrast($color1, $color2, $dark: #111, $light: #fff) {
+  @if test-contrast($color1, $color2) {
+    @return $color1;
+  }
+  @return contrast-yiq($color2, $dark, $light);
+}
+@function contrast-yiq($color, $dark: #111, $light: #fff) {
+  $yiq: yiq($color);
+
+  @if ($yiq >= $yiq-contrasted-threshold) {
     @return $dark;
   } @else {
     @return $light;
