@@ -2,9 +2,11 @@
 
 @mixin float-left {
   float: left !important;
+  order: -10;
 }
 @mixin float-right {
   float: right !important;
+  order: 10;
 }
 @mixin float-none {
   float: none !important;
