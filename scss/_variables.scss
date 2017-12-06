@@ -250,8 +250,8 @@ $box-shadow-sm:               0 .125rem .25rem rgba($black, .075) !default;
 $box-shadow:                  0 .5rem 1rem rgba($black, .15) !default;
 $box-shadow-lg:               0 1rem 3rem rgba($black, .175) !default;
 
-$component-bg:                $body-bg;
-$component-color:             contrast-yiq($component-bg);
+$component-bg:                $body-bg !default;
+$component-color:             use-if-contrast($body-color, $component-bg) !default;
 
 $component-active-bg:         theme-color("primary") !default;
 $component-active-color:      contrast-yiq($component-active-bg) !default;
@@ -654,11 +654,11 @@ $dropdown-divider-bg:               $gray-200 !default;
 $dropdown-box-shadow:               0 .5rem 1rem rgba($black, .175) !default;
 
 $dropdown-link-color:               contrast-yiq($dropdown-bg, $gray-900) !default;
-$dropdown-link-hover-color:         darken($dropdown-link-color, 5%) !default;
 $dropdown-link-hover-bg:            $gray-100 !default;
+$dropdown-link-hover-color:         use-if-contrast(darken($dropdown-link-color, 5%), $dropdown-link-hover-bg) !default;
 
-$dropdown-link-active-color:        $component-active-color !default;
 $dropdown-link-active-bg:           $component-active-bg !default;
+$dropdown-link-active-color:        use-if-contrast($component-active-color, $dropdown-link-active-bg) !default;
 
 $dropdown-link-disabled-color:      $gray-600 !default;
 
@@ -692,8 +692,8 @@ $nav-tabs-border-color:             $gray-300 !default;
 $nav-tabs-border-width:             $border-width !default;
 $nav-tabs-border-radius:            $border-radius !default;
 $nav-tabs-link-hover-border-color:  $gray-200 $gray-200 $nav-tabs-border-color !default;
-$nav-tabs-link-active-color:        $gray-700 !default;
 $nav-tabs-link-active-bg:           $body-bg !default;
+$nav-tabs-link-active-color:        use-if-contrast($gray-700, $nav-tabs-link-active-bg) !default;
 $nav-tabs-link-active-border-color: $gray-300 $gray-300 $nav-tabs-link-active-bg !default;
 
 $nav-pills-border-radius:           $border-radius !default;
@@ -752,8 +752,8 @@ $pagination-padding-y-lg:           .75rem !default;
 $pagination-padding-x-lg:           1.5rem !default;
 $pagination-line-height:            1.25 !default;
 
-$pagination-color:                  $link-color !default;
 $pagination-bg:                     $body-bg !default;
+$pagination-color:                  use-if-contrast($link-color, $pagination-bg) !default;
 $pagination-border-width:           $border-width !default;
 $pagination-border-color:           $gray-300 !default;
 
@@ -762,10 +762,11 @@ $pagination-focus-outline:          0 !default;
 
 $pagination-hover-color:            $link-hover-color !default;
 $pagination-hover-bg:               $gray-200 !default;
+$pagination-hover-color:            use-if-contrast($link-hover-color, $pagination-hover-bg) !default;
 $pagination-hover-border-color:     $gray-300 !default;
 
-$pagination-active-color:           $component-active-color !default;
 $pagination-active-bg:              $component-active-bg !default;
+$pagination-active-color:           use-if-contrast($component-active-color, $pagination-active-bg) !default;
 $pagination-active-border-color:    $pagination-active-bg !default;
 
 $pagination-disabled-color:         $gray-600 !default;
@@ -786,10 +787,11 @@ $card-spacer-x:                     1.25rem !default;
 $card-border-width:                 $border-width !default;
 $card-border-radius:                $border-radius !default;
 $card-bg:                           $component-bg !default;
+$card-color:                        use-if-contrast($component-color, $card-bg) !default;
 $card-border-color:                 rgba(contrast-yiq($card-bg, $black), .125) !default;
 $card-inner-border-radius:          calc(#{$card-border-radius} - #{$card-border-width}) !default;
 $card-cap-bg:                       rgba(contrast-yiq($card-bg, $black), .03) !default;
-$card-cap-color:                    $body-color !default;
+$card-cap-color:                    use-if-contrast($card-color, opacity-to-mix($card-cap-bg, $card-bg)) !default;
 
 $card-img-overlay-padding:          1.25rem !default;
 
@@ -841,7 +843,7 @@ $popover-header-color:              $headings-color !default;
 $popover-header-padding-y:          .5rem !default;
 $popover-header-padding-x:          .75rem !default;
 
-$popover-body-color:                $component-color !default;
+$popover-body-color:                use-if-contrast($component-color, $popover-bg) !default;
 $popover-body-padding-y:            $popover-header-padding-y !default;
 $popover-body-padding-x:            $popover-header-padding-x !default;
 
@@ -877,6 +879,7 @@ $modal-dialog-margin-y-sm-up:       1.75rem !default;
 $modal-title-line-height:           $line-height-base !default;
 
 $modal-content-bg:                  $component-bg !default;
+$modal-content-color:               use-if-contrast($component-color, $modal-content-bg) !default;
 $modal-content-border-color:        rgba(contrast-yiq($modal-content-bg, $black), .2) !default;
 $modal-content-border-width:        $border-width !default;
 $modal-content-border-radius:       $border-radius-lg !default;
@@ -935,6 +938,7 @@ $progress-bar-transition:           width .6s ease !default;
 // List group
 
 $list-group-bg:                     $component-bg !default;
+$list-group-color:                  use-if-contrast($component-color, $list-group-bg) !default;
 $list-group-border-color:           rgba(contrast-yiq($list-group-bg, $black), .125) !default;
 $list-group-border-width:           $border-width !default;
 $list-group-border-radius:          $border-radius !default;
@@ -943,8 +947,8 @@ $list-group-item-padding-y:         .75rem !default;
 $list-group-item-padding-x:         1.25rem !default;
 
 $list-group-hover-bg:               $gray-100 !default;
-$list-group-active-color:           $component-active-color !default;
 $list-group-active-bg:              $component-active-bg !default;
+$list-group-active-color:           use-if-contrast($component-active-color, $list-group-active-bg) !default;
 $list-group-active-border-color:    $list-group-active-bg !default;
 
 $list-group-disabled-color:         $gray-600 !default;
@@ -953,8 +957,8 @@ $list-group-disabled-bg:            $list-group-bg !default;
 $list-group-action-color:           $gray-700 !default;
 $list-group-action-hover-color:     $list-group-action-color !default;
 
-$list-group-action-active-color:    $body-color !default;
 $list-group-action-active-bg:       $gray-200 !default;
+$list-group-action-active-color:    use-if-contrast($component-color, $list-group-action-active-bg) !default;
 
 
 // Image thumbnails
