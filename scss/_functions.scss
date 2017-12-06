@@ -62,6 +62,7 @@
     @return $light;
   }
 }
+
 @function yiq($color) {
   $r: red($color);
   $g: green($color);
@@ -71,9 +72,11 @@
 
   @return $yiq;
 }
+
 @function color-brightness($color) {
   @return yiq($color);
 }
+
 @function color-difference($color1, $color2) {
   $r1: red($color1);
   $g1: green($color1);
@@ -87,6 +90,7 @@
 
   @return $diff;
 }
+
 @function test-contrast($color1, $color2) {
   $delta-brightness: abs(color-brightness($color1) - color-brightness($color2));
   $color-difference: color-difference($color1, $color2);
@@ -97,13 +101,15 @@
 
   @return false;
 }
+
 @function use-if-contrast($color1, $color2, $dark: #111, $light: #fff) {
   @if test-contrast($color1, $color2) {
     @return $color1;
   }
   @return contrast-yiq($color2, $dark, $light);
 }
-@function contrast-yiq($color, $dark: #111, $light: #fff) {
+
+@function contrast-yiq($color, $dark: $yiq-text-dark, $light: $yiq-text-light) {
   $yiq: yiq($color);
 
   @if ($yiq >= $yiq-contrasted-threshold) {
@@ -111,6 +117,10 @@
   } @else {
     @return $light;
   }
+}
+
+@function opacity-to-mix($forecolor, $backcolor) {
+  @return mix(opacify($forecolor, 1), $backcolor, alpha($forecolor) * 100);
 }
 
 // Retrieve color Sass maps
