@@ -21,7 +21,6 @@ const Util = (($) => {
   const MAX_UID = 1000000
 
   const TransitionEndEvent = {
-    WebkitTransition : 'webkitTransitionEnd',
     transition       : 'transitionend'
   }
 
