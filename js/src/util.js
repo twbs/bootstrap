@@ -42,7 +42,7 @@ const Util = (($) => {
     if (window.QUnit) {
       return false
     }
-    
+
     return {
       end: 'transitionend'
     }
