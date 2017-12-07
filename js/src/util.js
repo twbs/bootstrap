@@ -42,16 +42,10 @@ const Util = (($) => {
     if (window.QUnit) {
       return false
     }
-
-    const el = document.createElement('bootstrap')
-
-    if (typeof el.style[name] !== 'undefined') {
-      return {
-        end: 'transitionend'
-      }
+    
+    return {
+      end: 'transitionend'
     }
-
-    return false
   }
 
   function transitionEndEmulator(duration) {
