@@ -38,7 +38,8 @@ const Tooltip = (($) => {
     placement           : '(string|function)',
     offset              : '(number|string)',
     container           : '(string|element|boolean)',
-    fallbackPlacement   : '(string|array)'
+    fallbackPlacement   : '(string|array)',
+    boundary            : '(string|element)'
   }
 
   const AttachmentMap = {
@@ -62,7 +63,8 @@ const Tooltip = (($) => {
     placement           : 'top',
     offset              : 0,
     container           : false,
-    fallbackPlacement   : 'flip'
+    fallbackPlacement   : 'flip',
+    boundary            : 'scrollParent'
   }
 
   const HoverState = {
@@ -301,6 +303,9 @@ const Tooltip = (($) => {
             },
             arrow: {
               element: Selector.ARROW
+            },
+            preventOverflow: {
+              boundariesElement: this.config.boundary
             }
           },
           onCreate: (data) => {
