@@ -54,8 +54,7 @@
     float: left;
   }
 
-  // Reset rounded corners individual because sometimes a single button can be
-  // in a .btn-group and we need :first-child and :last-child to both match.
+  // Reset rounded corners
   > .btn:not(:last-child):not(.dropdown-toggle),
   > .btn-group:not(:last-child) > .btn {
     @include border-right-radius(0);
