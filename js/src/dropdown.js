@@ -74,12 +74,14 @@ const Dropdown = (($) => {
 
   const Default = {
     offset      : 0,
-    flip        : true
+    flip        : true,
+    boundary    : 'scrollParent'
   }
 
   const DefaultType = {
     offset      : '(number|string|function)',
-    flip        : 'boolean'
+    flip        : 'boolean',
+    boundary    : '(string|element)'
   }
 
 
@@ -159,6 +161,10 @@ const Dropdown = (($) => {
             element = parent
           }
         }
+        // If bopundary is not `scrollParent`, then set position to `static` to allow the
+        // menu to "escape" the scroll parent's boundaries
+        // https://github.com/twbs/bootstrap/issues/24251
+        $(parent).css('position', this._config.boundary !== 'scrollParent' ? 'static' : '')
         this._popper = new Popper(element, this._menu, this._getPopperConfig())
       }
 
@@ -276,6 +282,9 @@ const Dropdown = (($) => {
           offset : offsetConf,
           flip : {
             enabled : this._config.flip
+          },
+          preventOverflow : {
+            boundariesElement : this._config.boundary
           }
         }
       }
