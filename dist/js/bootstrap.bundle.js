@@ -8,6 +8,28 @@ var bootstrap = (function (exports,$) {
 
 $ = $ && $.hasOwnProperty('default') ? $['default'] : $;
 
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  return Constructor;
+}
+
+function _inheritsLoose(subClass, superClass) {
+  subClass.prototype = Object.create(superClass.prototype);
+  subClass.prototype.constructor = subClass;
+  subClass.__proto__ = superClass;
+}
+
 /**
  * --------------------------------------------------------------------------
  * Bootstrap (v4.0.0-beta.2): util.js
@@ -88,6 +110,13 @@ var Util = function ($$$1) {
       $$$1.event.special[Util.TRANSITION_END] = getSpecialTransitionEndEvent();
     }
   }
+
+  function escapeId(selector) {
+    // we escape IDs in case of special selectors (selector = '#myId:something')
+    // $.escapeSelector does not exist in jQuery < 3
+    selector = typeof $$$1.escapeSelector === 'function' ? $$$1.escapeSelector(selector).substr(1) : selector.replace(/(:|\.|\[|\]|,|=|@)/g, '\\$1');
+    return selector;
+  }
   /**
    * --------------------------------------------------------------------------
    * Public Util Api
@@ -110,6 +139,11 @@ var Util = function ($$$1) {
 
       if (!selector || selector === '#') {
         selector = element.getAttribute('href') || '';
+      } // if it's an ID
+
+
+      if (selector.charAt(0) === '#') {
+        selector = escapeId(selector);
       }
 
       try {
@@ -148,32 +182,6 @@ var Util = function ($$$1) {
   setTransitionEndSupport();
   return Util;
 }($);
-
-function _defineProperties(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ("value" in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
-  }
-}
-
-function _createClass(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties(Constructor, staticProps);
-  return Constructor;
-}
-
-var createClass = _createClass;
-
-function _inheritsLoose(subClass, superClass) {
-  subClass.prototype = Object.create(superClass.prototype);
-  subClass.prototype.constructor = subClass;
-  subClass.__proto__ = superClass;
-}
-
-var inheritsLoose = _inheritsLoose;
 
 /**
  * --------------------------------------------------------------------------
@@ -314,7 +322,7 @@ var Alert = function ($$$1) {
       };
     };
 
-    createClass(Alert, null, [{
+    _createClass(Alert, null, [{
       key: "VERSION",
       get: function get() {
         return VERSION;
@@ -465,7 +473,7 @@ var Button = function ($$$1) {
       });
     };
 
-    createClass(Button, null, [{
+    _createClass(Button, null, [{
       key: "VERSION",
       get: function get() {
         return VERSION;
@@ -965,7 +973,7 @@ var Carousel = function ($$$1) {
       event.preventDefault();
     };
 
-    createClass(Carousel, null, [{
+    _createClass(Carousel, null, [{
       key: "VERSION",
       get: function get() {
         return VERSION;
@@ -1324,7 +1332,7 @@ var Collapse = function ($$$1) {
       });
     };
 
-    createClass(Collapse, null, [{
+    _createClass(Collapse, null, [{
       key: "VERSION",
       get: function get() {
         return VERSION;
@@ -1723,7 +1731,7 @@ var classCallCheck = function (instance, Constructor) {
   }
 };
 
-var createClass$1 = function () {
+var createClass = function () {
   function defineProperties(target, props) {
     for (var i = 0; i < props.length; i++) {
       var descriptor = props[i];
@@ -1760,7 +1768,7 @@ var defineProperty = function (obj, key, value) {
   return obj;
 };
 
-var _extends$1 = Object.assign || function (target) {
+var _extends = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];
 
@@ -1782,7 +1790,7 @@ var _extends$1 = Object.assign || function (target) {
  * @returns {Object} ClientRect like output
  */
 function getClientRect(offsets) {
-  return _extends$1({}, offsets, {
+  return _extends({}, offsets, {
     right: offsets.left + offsets.width,
     bottom: offsets.top + offsets.height
   });
@@ -2031,7 +2039,7 @@ function computeAutoPlacement(placement, refRect, popper, reference, boundariesE
   };
 
   var sortedAreas = Object.keys(rects).map(function (key) {
-    return _extends$1({
+    return _extends({
       key: key
     }, rects[key], {
       area: getArea(rects[key])
@@ -2608,9 +2616,9 @@ function computeStyle(data, options) {
   };
 
   // Update `data` attributes, styles and arrowStyles
-  data.attributes = _extends$1({}, attributes, data.attributes);
-  data.styles = _extends$1({}, styles, data.styles);
-  data.arrowStyles = _extends$1({}, data.offsets.arrow, data.arrowStyles);
+  data.attributes = _extends({}, attributes, data.attributes);
+  data.styles = _extends({}, styles, data.styles);
+  data.arrowStyles = _extends({}, data.offsets.arrow, data.arrowStyles);
 
   return data;
 }
@@ -2880,7 +2888,7 @@ function flip(data, options) {
 
       // this object contains `position`, we want to preserve it along with
       // any additional property we may add in the future
-      data.offsets.popper = _extends$1({}, data.offsets.popper, getPopperOffsets(data.instance.popper, data.offsets.reference, data.placement));
+      data.offsets.popper = _extends({}, data.offsets.popper, getPopperOffsets(data.instance.popper, data.offsets.reference, data.placement));
 
       data = runModifiers(data.instance.modifiers, data, 'flip');
     }
@@ -3134,7 +3142,7 @@ function preventOverflow(data, options) {
 
   order.forEach(function (placement) {
     var side = ['left', 'top'].indexOf(placement) !== -1 ? 'primary' : 'secondary';
-    popper = _extends$1({}, popper, check[side](placement));
+    popper = _extends({}, popper, check[side](placement));
   });
 
   data.offsets.popper = popper;
@@ -3169,7 +3177,7 @@ function shift(data) {
       end: defineProperty({}, side, reference[side] + reference[measurement] - popper[measurement])
     };
 
-    data.offsets.popper = _extends$1({}, popper, shiftOffsets[shiftvariation]);
+    data.offsets.popper = _extends({}, popper, shiftOffsets[shiftvariation]);
   }
 
   return data;
@@ -3679,7 +3687,7 @@ var Popper = function () {
     this.update = debounce(this.update.bind(this));
 
     // with {} we create a new object with the options inside it
-    this.options = _extends$1({}, Popper.Defaults, options);
+    this.options = _extends({}, Popper.Defaults, options);
 
     // init state
     this.state = {
@@ -3694,13 +3702,13 @@ var Popper = function () {
 
     // Deep merge modifiers options
     this.options.modifiers = {};
-    Object.keys(_extends$1({}, Popper.Defaults.modifiers, options.modifiers)).forEach(function (name) {
-      _this.options.modifiers[name] = _extends$1({}, Popper.Defaults.modifiers[name] || {}, options.modifiers ? options.modifiers[name] : {});
+    Object.keys(_extends({}, Popper.Defaults.modifiers, options.modifiers)).forEach(function (name) {
+      _this.options.modifiers[name] = _extends({}, Popper.Defaults.modifiers[name] || {}, options.modifiers ? options.modifiers[name] : {});
     });
 
     // Refactoring modifiers' list (Object => Array)
     this.modifiers = Object.keys(this.options.modifiers).map(function (name) {
-      return _extends$1({
+      return _extends({
         name: name
       }, _this.options.modifiers[name]);
     })
@@ -3735,7 +3743,7 @@ var Popper = function () {
   // class prototype and break stuff like Sinon stubs
 
 
-  createClass$1(Popper, [{
+  createClass(Popper, [{
     key: 'update',
     value: function update$$1() {
       return update.call(this);
@@ -4210,7 +4218,7 @@ var Dropdown = function ($$$1) {
       items[index].focus();
     };
 
-    createClass(Dropdown, null, [{
+    _createClass(Dropdown, null, [{
       key: "VERSION",
       get: function get() {
         return VERSION;
@@ -4768,7 +4776,7 @@ var Modal = function ($$$1) {
       });
     };
 
-    createClass(Modal, null, [{
+    _createClass(Modal, null, [{
       key: "VERSION",
       get: function get() {
         return VERSION;
@@ -5440,7 +5448,7 @@ var Tooltip = function ($$$1) {
       });
     };
 
-    createClass(Tooltip, null, [{
+    _createClass(Tooltip, null, [{
       key: "VERSION",
       get: function get() {
         return VERSION;
@@ -5555,7 +5563,7 @@ var Popover = function ($$$1) {
   var Popover =
   /*#__PURE__*/
   function (_Tooltip) {
-    inheritsLoose(Popover, _Tooltip);
+    _inheritsLoose(Popover, _Tooltip);
 
     function Popover() {
       return _Tooltip.apply(this, arguments) || this;
@@ -5581,13 +5589,20 @@ var Popover = function ($$$1) {
       var $tip = $$$1(this.getTipElement()); // we use append for html objects to maintain js events
 
       this.setElementContent($tip.find(Selector.TITLE), this.getTitle());
-      this.setElementContent($tip.find(Selector.CONTENT), this._getContent());
+
+      var content = this._getContent();
+
+      if (typeof content === 'function') {
+        content = content.call(this.element);
+      }
+
+      this.setElementContent($tip.find(Selector.CONTENT), content);
       $tip.removeClass(ClassName.FADE + " " + ClassName.SHOW);
     }; // private
 
 
     _proto._getContent = function _getContent() {
-      return this.element.getAttribute('data-content') || (typeof this.config.content === 'function' ? this.config.content.call(this.element) : this.config.content);
+      return this.element.getAttribute('data-content') || this.config.content;
     };
 
     _proto._cleanTipClass = function _cleanTipClass() {
@@ -5625,7 +5640,7 @@ var Popover = function ($$$1) {
       });
     };
 
-    createClass(Popover, null, [{
+    _createClass(Popover, null, [{
       key: "VERSION",
       // getters
       get: function get() {
@@ -5947,7 +5962,7 @@ var ScrollSpy = function ($$$1) {
       });
     };
 
-    createClass(ScrollSpy, null, [{
+    _createClass(ScrollSpy, null, [{
       key: "VERSION",
       get: function get() {
         return VERSION;
@@ -6211,7 +6226,7 @@ var Tab = function ($$$1) {
       });
     };
 
-    createClass(Tab, null, [{
+    _createClass(Tab, null, [{
       key: "VERSION",
       get: function get() {
         return VERSION;

@@ -11,6 +11,10 @@ toc: true
 While Beta 2 saw the bulk of our breaking changes during the beta phase, but we still have a few that needed to be addressed in the Beta 3 release. These changes apply if you're updating to Beta 3 from Beta 2 or any older version of Bootstrap.
 
 - Removed the unused `$thumbnail-transition` variable. We weren't transitioning anything, so it was just extra code.
+- Changed the CSS for managing multiple `background-image`s on custom form checkboxes and radios. Previously, the `.custom-control-indicator` element had the background color, gradient, and SVG icon. Customizing the background gradient meant replacing all of those every time you needed to change just one. Now, we have `.custom-control-indicator` for the fill and gradient and `.custom-control-indicator::before` handles the icon.
+- The npm package no longer includes any files other than our source and dist files; if you relied on them and were running our scripts via the `node_modules` folder, you should adapt your workflow.
+- Updated selector for input-based button groups. Instead of `[data-toggle="buttons"] { }` for style and behavior, we use the `data` attribute just for JS behaviors and rely on a new `.btn-group-toggle` class for styling.
+- Removed `.col-form-legend` in favor of a slightly improved `.col-form-label`. This way `.col-form-label-sm` and `.col-form-label-lg` can be used on `<legend>` elements with ease.
 
 ## Beta 2 changes
 
@@ -75,7 +79,7 @@ Here are the big ticket items you'll want to be aware of when moving from v3 to 
 - **Dropped the Glyphicons icon font.** If you need icons, some options are:
   - the upstream version of [Glyphicons](https://glyphicons.com/)
   - [Octicons](https://octicons.github.com/)
-  - [Font Awesome](http://fontawesome.io/)
+  - [Font Awesome](https://fontawesome.com/)
   - See the [Extend page]({{ site.baseurl }}/docs/{{ site.docs_version }}/extend/icons/) for a list of alternatives. Have additional suggestions? Please open an issue or PR.
 - **Dropped the Affix jQuery plugin.**
   - We recommend using `position: sticky` instead. [See the HTML5 Please entry](http://html5please.com/#sticky) for details and specific polyfill recommendations. One suggestion is to use an `@supports` rule for implementing it (e.g., `@supports (position: sticky) { ... }`)/

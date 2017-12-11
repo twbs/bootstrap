@@ -1,5 +1,6 @@
 // CSS image replacement
 @mixin text-hide() {
+  // stylelint-disable-next-line font-family-no-missing-generic-family-keyword
   font: 0/0 a;
   color: transparent;
   text-shadow: none;

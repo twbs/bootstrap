@@ -88,20 +88,23 @@ We occasionally use media queries that go in the other direction (the given scre
 
 {% highlight scss %}
 // Extra small devices (portrait phones, less than 576px)
-@media (max-width: 575px) { ... }
+@media (max-width: 575.99px) { ... }
 
 // Small devices (landscape phones, less than 768px)
-@media (max-width: 767px) { ... }
+@media (max-width: 767.99px) { ... }
 
 // Medium devices (tablets, less than 992px)
-@media (max-width: 991px) { ... }
+@media (max-width: 991.99px) { ... }
 
 // Large devices (desktops, less than 1200px)
-@media (max-width: 1199px) { ... }
+@media (max-width: 1199.99px) { ... }
 
 // Extra large devices (large desktops)
 // No media query since the extra-large breakpoint has no upper bound on its width
 {% endhighlight %}
+
+{% capture callout-include %}{% include callout-info-mediaqueries-breakpoints.md %}{% endcapture %}
+{{ callout-include | markdownify }}
 
 Once again, these media queries are also available via Sass mixins:
 
@@ -116,16 +119,16 @@ There are also media queries and mixins for targeting a single segment of screen
 
 {% highlight scss %}
 // Extra small devices (portrait phones, less than 576px)
-@media (max-width: 575px) { ... }
+@media (max-width: 575.99px) { ... }
 
 // Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) and (max-width: 767px) { ... }
+@media (min-width: 576px) and (max-width: 767.99px) { ... }
 
 // Medium devices (tablets, 768px and up)
-@media (min-width: 768px) and (max-width: 991px) { ... }
+@media (min-width: 768px) and (max-width: 991.99px) { ... }
 
 // Large devices (desktops, 992px and up)
-@media (min-width: 992px) and (max-width: 1199px) { ... }
+@media (min-width: 992px) and (max-width: 1199.99px) { ... }
 
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) { ... }
@@ -146,7 +149,7 @@ Similarly, media queries may span multiple breakpoint widths:
 {% highlight scss %}
 // Example
 // Apply styles starting from medium devices and up to extra large devices
-@media (min-width: 768px) and (max-width: 1199px) { ... }
+@media (min-width: 768px) and (max-width: 1199.99px) { ... }
 {% endhighlight %}
 
 The Sass mixin for targeting the same screen size range would be:

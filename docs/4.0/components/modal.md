@@ -210,7 +210,7 @@ When modals become too long for the user's viewport or device, they scroll indep
 
 ### Vertically centered
 
-Add `.modal-dialog-centered` to `.modal-dialog` to vertically center the modal. **Do not use this with long modals**—it will overflow the viewport and potentially hide parts of your modal.
+Add `.modal-dialog-centered` to `.modal-dialog` to vertically center the modal.
 
 <div id="exampleModalCenter" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -459,7 +459,7 @@ For modals that simply appear rather than fade in to view, remove the `.fade` cl
 
 ### Dynamic heights
 
-If the height of a modal changes while it is open, you should call `$('#myModal').data('bs.modal').handleUpdate()` or `$('#myModal').modal('handleUpdate')` to readjust the modal's position in case a scrollbar appears.
+If the height of a modal changes while it is open, you should call `$('#myModal').modal('handleUpdate')` to readjust the modal's position in case a scrollbar appears.
 
 ### Accessibility
 

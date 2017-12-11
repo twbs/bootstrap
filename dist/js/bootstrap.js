@@ -9,6 +9,28 @@ var bootstrap = (function (exports,$,Popper) {
 $ = $ && $.hasOwnProperty('default') ? $['default'] : $;
 Popper = Popper && Popper.hasOwnProperty('default') ? Popper['default'] : Popper;
 
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  return Constructor;
+}
+
+function _inheritsLoose(subClass, superClass) {
+  subClass.prototype = Object.create(superClass.prototype);
+  subClass.prototype.constructor = subClass;
+  subClass.__proto__ = superClass;
+}
+
 /**
  * --------------------------------------------------------------------------
  * Bootstrap (v4.0.0-beta.2): util.js
@@ -89,6 +111,13 @@ var Util = function ($$$1) {
       $$$1.event.special[Util.TRANSITION_END] = getSpecialTransitionEndEvent();
     }
   }
+
+  function escapeId(selector) {
+    // we escape IDs in case of special selectors (selector = '#myId:something')
+    // $.escapeSelector does not exist in jQuery < 3
+    selector = typeof $$$1.escapeSelector === 'function' ? $$$1.escapeSelector(selector).substr(1) : selector.replace(/(:|\.|\[|\]|,|=|@)/g, '\\$1');
+    return selector;
+  }
   /**
    * --------------------------------------------------------------------------
    * Public Util Api
@@ -111,6 +140,11 @@ var Util = function ($$$1) {
 
       if (!selector || selector === '#') {
         selector = element.getAttribute('href') || '';
+      } // if it's an ID
+
+
+      if (selector.charAt(0) === '#') {
+        selector = escapeId(selector);
       }
 
       try {
@@ -149,32 +183,6 @@ var Util = function ($$$1) {
   setTransitionEndSupport();
   return Util;
 }($);
-
-function _defineProperties(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ("value" in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
-  }
-}
-
-function _createClass(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties(Constructor, staticProps);
-  return Constructor;
-}
-
-var createClass = _createClass;
-
-function _inheritsLoose(subClass, superClass) {
-  subClass.prototype = Object.create(superClass.prototype);
-  subClass.prototype.constructor = subClass;
-  subClass.__proto__ = superClass;
-}
-
-var inheritsLoose = _inheritsLoose;
 
 /**
  * --------------------------------------------------------------------------
@@ -315,7 +323,7 @@ var Alert = function ($$$1) {
       };
     };
 
-    createClass(Alert, null, [{
+    _createClass(Alert, null, [{
       key: "VERSION",
       get: function get() {
         return VERSION;
@@ -466,7 +474,7 @@ var Button = function ($$$1) {
       });
     };
 
-    createClass(Button, null, [{
+    _createClass(Button, null, [{
       key: "VERSION",
       get: function get() {
         return VERSION;
@@ -966,7 +974,7 @@ var Carousel = function ($$$1) {
       event.preventDefault();
     };
 
-    createClass(Carousel, null, [{
+    _createClass(Carousel, null, [{
       key: "VERSION",
       get: function get() {
         return VERSION;
@@ -1325,7 +1333,7 @@ var Collapse = function ($$$1) {
       });
     };
 
-    createClass(Collapse, null, [{
+    _createClass(Collapse, null, [{
       key: "VERSION",
       get: function get() {
         return VERSION;
@@ -1779,7 +1787,7 @@ var Dropdown = function ($$$1) {
       items[index].focus();
     };
 
-    createClass(Dropdown, null, [{
+    _createClass(Dropdown, null, [{
       key: "VERSION",
       get: function get() {
         return VERSION;
@@ -2337,7 +2345,7 @@ var Modal = function ($$$1) {
       });
     };
 
-    createClass(Modal, null, [{
+    _createClass(Modal, null, [{
       key: "VERSION",
       get: function get() {
         return VERSION;
@@ -3009,7 +3017,7 @@ var Tooltip = function ($$$1) {
       });
     };
 
-    createClass(Tooltip, null, [{
+    _createClass(Tooltip, null, [{
       key: "VERSION",
       get: function get() {
         return VERSION;
@@ -3124,7 +3132,7 @@ var Popover = function ($$$1) {
   var Popover =
   /*#__PURE__*/
   function (_Tooltip) {
-    inheritsLoose(Popover, _Tooltip);
+    _inheritsLoose(Popover, _Tooltip);
 
     function Popover() {
       return _Tooltip.apply(this, arguments) || this;
@@ -3150,13 +3158,20 @@ var Popover = function ($$$1) {
       var $tip = $$$1(this.getTipElement()); // we use append for html objects to maintain js events
 
       this.setElementContent($tip.find(Selector.TITLE), this.getTitle());
-      this.setElementContent($tip.find(Selector.CONTENT), this._getContent());
+
+      var content = this._getContent();
+
+      if (typeof content === 'function') {
+        content = content.call(this.element);
+      }
+
+      this.setElementContent($tip.find(Selector.CONTENT), content);
       $tip.removeClass(ClassName.FADE + " " + ClassName.SHOW);
     }; // private
 
 
     _proto._getContent = function _getContent() {
-      return this.element.getAttribute('data-content') || (typeof this.config.content === 'function' ? this.config.content.call(this.element) : this.config.content);
+      return this.element.getAttribute('data-content') || this.config.content;
     };
 
     _proto._cleanTipClass = function _cleanTipClass() {
@@ -3194,7 +3209,7 @@ var Popover = function ($$$1) {
       });
     };
 
-    createClass(Popover, null, [{
+    _createClass(Popover, null, [{
       key: "VERSION",
       // getters
       get: function get() {
@@ -3516,7 +3531,7 @@ var ScrollSpy = function ($$$1) {
       });
     };
 
-    createClass(ScrollSpy, null, [{
+    _createClass(ScrollSpy, null, [{
       key: "VERSION",
       get: function get() {
         return VERSION;
@@ -3780,7 +3795,7 @@ var Tab = function ($$$1) {
       });
     };
 
-    createClass(Tab, null, [{
+    _createClass(Tab, null, [{
       key: "VERSION",
       get: function get() {
         return VERSION;
