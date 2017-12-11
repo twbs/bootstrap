@@ -54,11 +54,13 @@ const Dropdown = (($) => {
   }
 
   const Selector = {
-    DATA_TOGGLE   : '[data-toggle="dropdown"]',
-    FORM_CHILD    : '.dropdown form',
-    MENU          : '.dropdown-menu',
-    NAVBAR_NAV    : '.navbar-nav',
-    VISIBLE_ITEMS : '.dropdown-menu .dropdown-item:not(.disabled)'
+    DATA_TOGGLE    : '[data-toggle="dropdown"]',
+    FORM_CHILD     : '.dropdown form',
+    MENU           : '.dropdown-menu',
+    NAVBAR_NAV     : '.navbar-nav',
+    VISIBLE_ITEMS  : `.dropdown-menu .dropdown-item:not(.${ClassName.DISABLED})`,
+    ACTIVE_ITEMS   : `.dropdown-item:not(.${ClassName.DISABLED})`,
+    DROPDOWN_SHOWN : `.${ClassName.SHOW} > [data-toggle="dropdown"]`
   }
 
   const AttachmentMap = {
@@ -74,12 +76,14 @@ const Dropdown = (($) => {
 
   const Default = {
     offset      : 0,
-    flip        : true
+    flip        : true,
+    container   : false
   }
 
   const DefaultType = {
     offset      : '(number|string|function)',
-    flip        : 'boolean'
+    flip        : 'boolean',
+    container   : '(boolean|string|element)'
   }
 
 
@@ -94,9 +98,9 @@ const Dropdown = (($) => {
     constructor(element, config) {
       this._element  = element
       this._popper   = null
+      this._inNavbar = this._detectNavbar()
       this._config   = this._getConfig(config)
       this._menu     = this._getMenuElement()
-      this._inNavbar = this._detectNavbar()
 
       this._addEventListeners()
     }
@@ -159,9 +163,12 @@ const Dropdown = (($) => {
             element = parent
           }
         }
+
+        if (Util.isElement(this._config.container) && !this._inNavbar) {
+          $(this._config.container).append(this._menu)
+        }
         this._popper = new Popper(element, this._menu, this._getPopperConfig())
       }
-
 
       // if this is a touch-enabled device we add extra
       // empty mouseover listeners to the body's immediate children;
@@ -222,6 +229,19 @@ const Dropdown = (($) => {
         this.constructor.DefaultType
       )
 
+      // Only for dropdowns not in a navbar because we need Popper.js
+      if (!this._inNavbar) {
+        if (Util.isElement(config.container) || typeof config.container === 'string') {
+          // if it's a jQuery object or a collection of elements
+          if (typeof config.container.jquery === 'string' && typeof config.container[0] !== 'undefined') {
+            config.container = config.container[0]
+          } else if (typeof config.container === 'string') {
+            const tmpContainer = $(document).find(config.container)
+            config.container   = typeof tmpContainer[0] !== 'undefined' ? tmpContainer[0] : false
+          }
+        }
+      }
+
       return config
     }
 
@@ -277,6 +297,14 @@ const Dropdown = (($) => {
           flip : {
             enabled : this._config.flip
           }
+        }
+      }
+
+      // Only schedule an update when we use container option
+      // because sometimes browsers are slow to refresh what we see
+      if (Util.isElement(this._config.container)) {
+        popperConfig.onCreate = () => {
+          this._popper.scheduleUpdate()
         }
       }
 
@@ -346,6 +374,9 @@ const Dropdown = (($) => {
         }
 
         toggles[i].setAttribute('aria-expanded', 'false')
+        if (Util.isElement(context._config.container) && !context._inNavbar) {
+          $(parent).append(context._menu)
+        }
 
         $(dropdownMenu).removeClass(ClassName.SHOW)
         $(parent)
@@ -387,7 +418,14 @@ const Dropdown = (($) => {
         return
       }
 
-      const parent   = Dropdown._getParentFromElement(this)
+      let parent   = Dropdown._getParentFromElement(this)
+      let dropdown = $(parent).children(Selector.DATA_TOGGLE)[0]
+      if (typeof dropdown === 'undefined') {
+        dropdown = $(parent).find(Selector.DROPDOWN_SHOWN)[0]
+        if (typeof dropdown !== 'undefined') {
+          parent = dropdown.parentNode
+        }
+      }
       const isActive = $(parent).hasClass(ClassName.SHOW)
 
       if (!isActive && (event.which !== ESCAPE_KEYCODE || event.which !== SPACE_KEYCODE) ||
@@ -402,7 +440,13 @@ const Dropdown = (($) => {
         return
       }
 
-      const items = $(parent).find(Selector.VISIBLE_ITEMS).get()
+      const context  = $(dropdown).data(DATA_KEY)
+      let items      = null
+      if (context._config.container && Util.isElement(context._config.container)) {
+        items = $(context._menu).children(Selector.ACTIVE_ITEMS).get()
+      } else {
+        items = $(parent).find(Selector.VISIBLE_ITEMS).get()
+      }
 
       if (!items.length) {
         return
