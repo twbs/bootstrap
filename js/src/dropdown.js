@@ -161,7 +161,7 @@ const Dropdown = (($) => {
             element = parent
           }
         }
-        // If bopundary is not `scrollParent`, then set position to `static` to allow the
+        // If boundary is not `scrollParent`, then set position to `static` to allow the
         // menu to "escape" the scroll parent's boundaries
         // https://github.com/twbs/bootstrap/issues/24251
         $(parent).css('position', this._config.boundary !== 'scrollParent' ? 'static' : '')
