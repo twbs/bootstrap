@@ -80,8 +80,13 @@ $(function () {
         + '</div>'
         + '</div>'
     var $dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').bootstrapDropdown()
-    assert.ok(!$dropdown.parent('.dropdown').hasClass('position-static'), '"position-static" class not added')
-    done()
+    $dropdown
+      .parent('.dropdown')
+      .on('shown.bs.dropdown', function () {
+        assert.ok(!$dropdown.parent('.dropdown').hasClass('position-static'), '"position-static" class not added')
+        done()
+      })
+    $dropdown.trigger('click')
   })
 
   QUnit.test('should add class position-static to dropdown if boundary not scrollParent', function (assert) {
@@ -97,8 +102,13 @@ $(function () {
         + '</div>'
         + '</div>'
     var $dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').bootstrapDropdown()
-    assert.ok($dropdown.parent('.dropdown').hasClass('position-static'), '"position-static" class added')
-    done()
+    $dropdown
+      .parent('.dropdown')
+      .on('shown.bs.dropdown', function () {
+        assert.ok($dropdown.parent('.dropdown').hasClass('position-static'), '"position-static" class added')
+        done()
+      })
+    $dropdown.trigger('click')
   })
 
   QUnit.test('should set aria-expanded="true" on target when dropdown menu is shown', function (assert) {
