@@ -67,6 +67,40 @@ $(function () {
     $dropdown.trigger($.Event('click'))
   })
 
+  QUnit.test('should not add class position-static to dropdown if boundary not set', function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+    var dropdownHTML = '<div class="tabs">'
+        + '<div class="dropdown">'
+        + '<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>'
+        + '<div class="dropdown-menu">'
+        + '<a class="dropdown-item" href="#">Secondary link</a>'
+        + '<a class="dropdown-item" href="#">Something else here</a>'
+        + '</div>'
+        + '</div>'
+        + '</div>'
+    var $dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').bootstrapDropdown()
+    assert.ok(!$dropdown.parent('.dropdown').hasClass('position-static'), '"position-static" class not added')
+    done()
+  })
+
+  QUnit.test('should add class position-static to dropdown if boundary not scrollParent', function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+    var dropdownHTML = '<div class="tabs">'
+        + '<div class="dropdown">'
+        + '<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-boundary="viewport">Dropdown</a>'
+        + '<div class="dropdown-menu">'
+        + '<a class="dropdown-item" href="#">Secondary link</a>'
+        + '<a class="dropdown-item" href="#">Something else here</a>'
+        + '</div>'
+        + '</div>'
+        + '</div>'
+    var $dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').bootstrapDropdown()
+    assert.ok($dropdown.parent('.dropdown').hasClass('position-static'), '"position-static" class added')
+    done()
+  })
+
   QUnit.test('should set aria-expanded="true" on target when dropdown menu is shown', function (assert) {
     assert.expect(1)
     var done = assert.async()
