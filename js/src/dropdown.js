@@ -161,10 +161,12 @@ const Dropdown = (($) => {
             element = parent
           }
         }
-        // If boundary is not `scrollParent`, then set position to `static` to allow the
-        // menu to "escape" the scroll parent's boundaries
+        // If boundary is not `scrollParent`, then set position to `static`
+        // to allow the menu to "escape" the scroll parent's boundaries
         // https://github.com/twbs/bootstrap/issues/24251
-        $(parent).css('position', this._config.boundary !== 'scrollParent' ? 'static' : '')
+        if (this._config.boundary !== 'scrollParent') {
+          $(parent).css('position', 'static')
+        }
         this._popper = new Popper(element, this._menu, this._getPopperConfig())
       }
 
