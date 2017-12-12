@@ -50,7 +50,8 @@ const Dropdown = (($) => {
     DROPRIGHT : 'dropright',
     DROPLEFT  : 'dropleft',
     MENURIGHT : 'dropdown-menu-right',
-    MENULEFT  : 'dropdown-menu-left'
+    MENULEFT  : 'dropdown-menu-left',
+    POSITION_STATIC: 'position-static'
   }
 
   const Selector = {
@@ -165,7 +166,7 @@ const Dropdown = (($) => {
         // to allow the menu to "escape" the scroll parent's boundaries
         // https://github.com/twbs/bootstrap/issues/24251
         if (this._config.boundary !== 'scrollParent') {
-          $(parent).addClass('position-static')
+          $(parent).addClass(ClassName.POSITION_STATIC)
         }
         this._popper = new Popper(element, this._menu, this._getPopperConfig())
       }
