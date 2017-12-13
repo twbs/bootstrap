@@ -653,7 +653,6 @@ Put a form within a dropdown menu, or make it into a dropdown menu, and use [mar
 Add `.active` to items in the dropdown to **style them as active**.
 
 {% example html %}
-
 <div class="dropdown-menu">
   <a class="dropdown-item" href="#">Regular link</a>
   <a class="dropdown-item active" href="#">Active link</a>
