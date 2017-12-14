@@ -35,10 +35,6 @@
 .input-group .custom-file {
   display: flex;
   align-items: center;
-
-  &:not(:first-child):not(:last-child) {
-    @include border-radius(0);
-  }
 }
 
 .input-group .custom-file {
