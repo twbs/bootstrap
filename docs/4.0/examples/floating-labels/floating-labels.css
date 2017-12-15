@@ -1,6 +1,6 @@
 :root {
-  --input-padding-x: 0.75rem;
-  --input-padding-y: 0.75rem;
+  --input-padding-x: .75rem;
+  --input-padding-y: .75rem;
 }
 
 html,
@@ -47,8 +47,20 @@ body {
   line-height: 1.5;
   color: #495057;
   border: 1px solid transparent;
-  border-radius: 0.25rem;
+  border-radius: .25rem;
   transition: all .1s ease-in-out;
+}
+
+.form-label-group input::-webkit-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input:-ms-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::-ms-input-placeholder {
+  color: transparent;
 }
 
 .form-label-group input::placeholder {
@@ -56,7 +68,7 @@ body {
 }
 
 .form-label-group input:not(:placeholder-shown) {
-  padding-top: calc(var(--input-padding-y) + var(--input-padding-y) * (2/3));
+  padding-top: calc(var(--input-padding-y) + var(--input-padding-y) * (2 / 3));
   padding-bottom: calc(var(--input-padding-y) / 3);
 }
 
