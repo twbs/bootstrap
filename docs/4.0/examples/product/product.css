@@ -50,6 +50,9 @@
 
 .box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
 
-.flex-equal > * { -ms-flex: 1; flex: 1; }
+.flex-equal > * {
+  -ms-flex: 1;
+  flex: 1;
+}
 
 .overflow-hidden { overflow: hidden; }
