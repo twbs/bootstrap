@@ -129,6 +129,12 @@ The required markup for a tooltip is only a `data` attribute and `title` on the 
 You should only add tooltips to HTML elements that are traditionally keyboard-focusable and interactive (such as links or form controls). Although arbitrary HTML elements (such as `<span>`s) can be made focusable by adding the `tabindex="0"` attribute, this will add potentially annoying and confusing tab stops on non-interactive elements for keyboard users. In addition, most assistive technologies currently do not announce the tooltip in this situation.
 {% endcallout %}
 
+{% callout info %}
+#### Tooltips on disabled elements require wrapper elements
+
+To add a tooltip to a `disabled` element, put the element inside of a `display: inline-block` or `display: block` level `<div>` and apply the tooltip to that `<div>` instead. You can optionally set `pointer-events: none` on the `disabled` element to allow mouse events to reach the wrapper. In that case you might also need to set the `cursor: not-allowed` on the wrapper element.
+{% endcallout %}
+
 {% highlight html %}
 <!-- HTML to write -->
 <a href="#" data-toggle="tooltip" title="Some tooltip text!">Hover over me</a>
