@@ -44,7 +44,7 @@ body {
   overflow-x: auto;
   color: rgba(255, 255, 255, 0.75);
   text-align: center;
-  white-space: nowrap
+  white-space: nowrap;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -53,7 +53,6 @@ body {
   padding-bottom: .75rem;
   font-size: .875rem;
   color: var(--secondary);
-  white-space: nowrap;
 }
 
 .nav-underline .nav-link:hover {
