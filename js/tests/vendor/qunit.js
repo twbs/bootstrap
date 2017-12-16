@@ -118,9 +118,9 @@
       for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) arr2[i] = arr[i];
 
       return arr2;
-    } else {
-      return Array.from(arr);
     }
+
+    return Array.from(arr);
   };
 
   var toString = Object.prototype.toString;
@@ -773,9 +773,9 @@
   		separator: function separator() {
   			if (this.multiline) {
   				return this.HTML ? "<br />" : "\n";
-  			} else {
-  				return this.HTML ? "&#160;" : " ";
   			}
+
+  			return this.HTML ? "&#160;" : " ";
   		},
 
   		// Extra can be a number, shortcut for increasing-calling-decreasing
@@ -1294,9 +1294,9 @@
   				return "failed";
   			} else if (this.todo) {
   				return "todo";
-  			} else {
-  				return "passed";
   			}
+
+  			return "passed";
   		}
   	}, {
   		key: "getFailedAssertions",
@@ -1802,9 +1802,9 @@
   				return true;
   			} else if (testModule.parentModule) {
   				return moduleChainNameMatch(testModule.parentModule);
-  			} else {
-  				return false;
   			}
+
+  			return false;
   		}
 
   		function moduleChainIdMatch(testModule) {
@@ -2457,12 +2457,12 @@
   			return name;
   		} else if (message) {
   			return message;
-  		} else {
-  			return "Error";
   		}
-  	} else {
-  		return resultErrorString;
+
+		return "Error";
   	}
+
+	return resultErrorString;
   }
 
   /* global module, exports, define */
@@ -2610,9 +2610,9 @@
   					return "skipped";
   				} else if (todo === total) {
   					return "todo";
-  				} else {
-  					return "passed";
   				}
+
+				return "passed";
   			}
   		}
   	}]);
@@ -4404,9 +4404,9 @@
   			}
   			if (bestCommon.length * 2 >= longtext.length) {
   				return [bestLongtextA, bestLongtextB, bestShorttextA, bestShorttextB, bestCommon];
-  			} else {
-  				return null;
   			}
+
+			return null;
   		}
 
   		// First check if the second quarter is the seed for a half-match.
