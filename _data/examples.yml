@@ -56,4 +56,4 @@
     - name: Floating labels
       description: "Beautifully simple forms with floating labels over your inputs."
     - name: Offcanvas
-      description: "Build a toggleable off-canvas navigation menu for use with Bootstrap."
+      description: "Turn your expandable navbar into a sliding offcanvas menu."

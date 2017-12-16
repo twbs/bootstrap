@@ -3,6 +3,10 @@ body {
   overflow-x: hidden; /* Prevent scroll on narrow devices */
 }
 
+body {
+  padding-top: 56px;
+}
+
 @media (max-width: 767.99px) {
   .offcanvas-collapse {
     position: fixed;
@@ -24,3 +28,49 @@ body {
     transform: translateX(-1rem); /* Account for horizontal padding on navbar */
   }
 }
+
+.nav-scroller {
+  position: relative;
+  z-index: 2;
+  height: 2.75rem;
+  overflow-y: hidden;
+}
+
+.nav-scroller .nav {
+  display: flex;
+  flex-wrap: nowrap;
+  padding-bottom: 1rem;
+  margin-top: -1px;
+  overflow-x: auto;
+  color: rgba(255, 255, 255, 0.75);
+  text-align: center;
+  white-space: nowrap
+  -webkit-overflow-scrolling: touch;
+}
+
+.nav-underline .nav-link {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  font-size: .875rem;
+  color: var(--secondary);
+  white-space: nowrap;
+}
+
+.nav-underline .nav-link:hover {
+  color: var(--blue);
+}
+
+.nav-underline .active {
+  font-weight: 500;
+  color: var(--gray-dark);
+}
+
+.bg-purple { background-color: var(--purple); }
+
+.text-white-50 { color: rgba(255, 255, 255, .5); }
+
+.box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
+
+.lh-100 { line-height: 1; }
+.lh-125 { line-height: 1.25; }
+.lh-150 { line-height: 1.5; }
