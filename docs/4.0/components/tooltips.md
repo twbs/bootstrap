@@ -244,6 +244,12 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <td>Allow to specify which position Popper will use on fallback. For more information refer to
       Popper.js's <a href="https://popper.js.org/popper-documentation.html#modifiers..flip.behavior">behavior docs</a></td>
     </tr>
+    <tr>
+      <td>boundary</td>
+      <td>string | element</td>
+      <td>'scrollParent'</td>
+      <td>Overflow constraint boundary of the tooltip. Accepts the values of <code>'viewport'</code>, <code>'window'</code>, <code>'scrollParent'</code>, or an HTMLElement reference (JavaScript only). For more information refer to Popper.js's <a href="https://popper.js.org/popper-documentation.html#modifiers..preventOverflow.boundariesElement">preventOverflow docs</a>.</td>
+    </tr>
   </tbody>
 </table>
 
