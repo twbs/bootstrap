@@ -69,7 +69,7 @@
           <form class="card p-2">
             <div class="input-group">
               <input type="text" class="form-control" placeholder="Promo code">
-              <div class="input-group-btn">
+              <div class="input-group-append">
                 <button type="submit" class="btn btn-secondary">Redeem</button>
               </div>
             </div>
@@ -96,8 +96,21 @@
             </div>
 
             <div class="mb-3">
-              <label for="email">Email</label>
-              <input type="email" class="form-control" id="email" placeholder="you@example.com" required>
+              <label for="username">Username</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="username">@</span>
+                </div>
+                <input type="text" class="form-control" id="username" placeholder="Username" aria-label="Username" aria-describedby="username" required>
+                <div class="invalid-feedback" style="width: 100%;">
+                  Your username is required.
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="email">Email <span class="text-muted">(Optional)</span></label>
+              <input type="email" class="form-control" id="email" placeholder="you@example.com">
               <div class="invalid-feedback">
                 Please enter a valid email address for shipping updates.
               </div>
