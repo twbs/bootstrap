@@ -367,9 +367,9 @@ More complex layouts can also be created with the grid system.
 
 #### Horizontal form
 
-Create horizontal forms with the grid by adding the `.row` class to form groups and using the `.col-*-*` classes to specify the width of your labels and controls.
+Create horizontal forms with the grid by adding the `.row` class to form groups and using the `.col-*-*` classes to specify the width of your labels and controls. Be sure to add `.col-form-label` to your `<label>`s as well so they're vertically centered with their associated form controls.
 
-Be sure to add `.col-form-label` to your `<label>`s as well so they're vertically centered with their associated form controls. For `<legend>` elements, you can use `.col-form-legend` to make them appear similar to regular `<label>` elements.
+At times, you maybe need to use margin or padding utilities to create that perfect alignment you need. For example, we've removed the `padding-top` on our stacked radio inputs label to better align the text baseline.
 
 {% example html %}
 <form>
@@ -384,27 +384,27 @@ Be sure to add `.col-form-label` to your `<label>`s as well so they're verticall
     <div class="col-sm-10">
       <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
     </div>
-    </div>
-    <fieldset class="form-group">
-      <div class="row">
-        <legend class="col-form-legend col-sm-2">Radios</legend>
-        <div class="col-sm-10">
-          <div class="form-check">
-            <label class="form-check-label">
-              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-              <span class="form-check-description">Option one is this and that&mdash;be sure to include why it's great</span>
-            </label>
-          </div>
-          <div class="form-check">
-            <label class="form-check-label">
-              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-              <span class="form-check-description">Option two can be something else and selecting it will deselect option one</span>
-            </label>
-          </div>
-          <div class="form-check">
-            <label class="form-check-label">
-              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled>
-              <span class="form-check-description">Option three is disabled</span>
+  </div>
+  <fieldset class="form-group">
+    <div class="row">
+      <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
+      <div class="col-sm-10">
+        <div class="form-check">
+          <label class="form-check-label">
+            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+            <span class="form-check-description">Option one is this and that&mdash;be sure to include why it's great</span>
+          </label>
+        </div>
+        <div class="form-check">
+          <label class="form-check-label">
+            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+            <span class="form-check-description">Option two can be something else and selecting it will deselect option one</span>
+          </label>
+        </div>
+        <div class="form-check disabled">
+          <label class="form-check-label">
+            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled>
+            <span class="form-check-description">Option three is disabled</span>
           </label>
         </div>
       </div>
@@ -431,7 +431,7 @@ Be sure to add `.col-form-label` to your `<label>`s as well so they're verticall
 
 ##### Horizontal form label sizing
 
-Be sure to use `.col-form-label-sm` or `.col-form-label-lg` to your `<label>`s to correctly follow the size of `.form-control-lg` and `.form-control-sm`.
+Be sure to use `.col-form-label-sm` or `.col-form-label-lg` to your `<label>`s or `<legend>`s to correctly follow the size of `.form-control-lg` and `.form-control-sm`.
 
 {% example html %}
 <form>

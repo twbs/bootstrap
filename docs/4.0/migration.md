@@ -26,6 +26,8 @@ While Beta 2 saw the bulk of our breaking changes during the beta phase, but we 
 
 - Removed the unused `$thumbnail-transition` variable. We weren't transitioning anything, so it was just extra code.
 
+- Removed `.col-form-legend` in favor of a slightly improved `.col-form-label`. This way `.col-form-label-sm` and `.col-form-label-lg` can be used on `<legend>` elements with ease.
+
 ## Beta 2 changes
 
 While in beta, we aim to have no breaking changes. However, things don't always go as planned. Below are the breaking changes to bear in mind when moving from Beta 1 to Beta 2.
@@ -89,7 +91,7 @@ Here are the big ticket items you'll want to be aware of when moving from v3 to 
 - **Dropped the Glyphicons icon font.** If you need icons, some options are:
   - the upstream version of [Glyphicons](https://glyphicons.com/)
   - [Octicons](https://octicons.github.com/)
-  - [Font Awesome](http://fontawesome.io/)
+  - [Font Awesome](https://fontawesome.com/)
   - See the [Extend page]({{ site.baseurl }}/docs/{{ site.docs_version }}/extend/icons/) for a list of alternatives. Have additional suggestions? Please open an issue or PR.
 - **Dropped the Affix jQuery plugin.**
   - We recommend using `position: sticky` instead. [See the HTML5 Please entry](http://html5please.com/#sticky) for details and specific polyfill recommendations. One suggestion is to use an `@supports` rule for implementing it (e.g., `@supports (position: sticky) { ... }`)/
