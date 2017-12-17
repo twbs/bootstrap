@@ -208,12 +208,6 @@ select.form-control-lg {
   position: relative;
   display: block;
   margin-bottom: $form-check-margin-bottom;
-
-  &.disabled {
-    .form-check-label {
-      color: $text-muted;
-    }
-  }
 }
 
 .form-check-label {
@@ -225,6 +219,12 @@ select.form-control-lg {
   position: absolute;
   margin-top: $form-check-input-margin-y;
   margin-left: -$form-check-input-gutter;
+
+  &:disabled {
+    ~ .form-check-description {
+      color: $text-muted;
+    }
+  }
 }
 
 // Radios and checkboxes on same line
@@ -321,20 +321,6 @@ select.form-control-lg {
       margin-top: 0;
       margin-right: $form-check-input-margin-x;
       margin-left: 0;
-    }
-
-    // Custom form controls
-    .custom-control {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding-left: 0;
-    }
-    .custom-control-indicator {
-      position: static;
-      display: inline-block;
-      margin-right: $form-check-input-margin-x; // Flexbox alignment means we lose our HTML space here, so we compensate.
-      vertical-align: text-bottom;
     }
 
     // Re-override the feedback icon.

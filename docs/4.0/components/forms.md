@@ -28,7 +28,7 @@ Here's a quick example to demonstrate Bootstrap's form styles. Keep reading for 
   <div class="form-check">
     <label class="form-check-label">
       <input type="checkbox" class="form-check-input">
-      Check me out
+      <span class="form-check-description">Check me out</span>
     </label>
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
@@ -164,13 +164,13 @@ By default, any number of checkboxes and radios that are immediate sibling will 
 <div class="form-check">
   <label class="form-check-label">
     <input class="form-check-input" type="checkbox" value="">
-    Option one is this and that&mdash;be sure to include why it's great
+    <span class="form-check-description">Option one is this and that&mdash;be sure to include why it's great</span>
   </label>
 </div>
-<div class="form-check disabled">
+<div class="form-check">
   <label class="form-check-label">
     <input class="form-check-input" type="checkbox" value="" disabled>
-    Option two is disabled
+    <span class="form-check-description">Option two is disabled</span>
   </label>
 </div>
 {% endexample %}
@@ -179,19 +179,19 @@ By default, any number of checkboxes and radios that are immediate sibling will 
 <div class="form-check">
   <label class="form-check-label">
     <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-    Option one is this and that&mdash;be sure to include why it's great
+    <span class="form-check-description">Option one is this and that&mdash;be sure to include why it's great</span>
   </label>
 </div>
 <div class="form-check">
   <label class="form-check-label">
     <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-    Option two can be something else and selecting it will deselect option one
+    <span class="form-check-description">Option two can be something else and selecting it will deselect option one</span>
   </label>
 </div>
-<div class="form-check disabled">
+<div class="form-check">
   <label class="form-check-label">
     <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" disabled>
-    Option three is disabled
+    <span class="form-check-description">Option three is disabled</span>
   </label>
 </div>
 {% endexample %}
@@ -203,17 +203,20 @@ Group checkboxes or radios on the same horizontal row by adding `.form-check-inl
 {% example html %}
 <div class="form-check form-check-inline">
   <label class="form-check-label">
-    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"> 1
+    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+    <span class="form-check-description">1</span>
   </label>
 </div>
 <div class="form-check form-check-inline">
   <label class="form-check-label">
-    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2"> 2
+    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+    <span class="form-check-description">2</span>
   </label>
 </div>
-<div class="form-check form-check-inline disabled">
+<div class="form-check form-check-inline">
   <label class="form-check-label">
-    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" disabled> 3
+    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" disabled>
+    <span class="form-check-description">3</span>
   </label>
 </div>
 {% endexample %}
@@ -221,17 +224,20 @@ Group checkboxes or radios on the same horizontal row by adding `.form-check-inl
 {% example html %}
 <div class="form-check form-check-inline">
   <label class="form-check-label">
-    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
+    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+    <span class="form-check-description">1</span>
   </label>
 </div>
 <div class="form-check form-check-inline">
   <label class="form-check-label">
-    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
+    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+    <span class="form-check-description">2</span>
   </label>
 </div>
-<div class="form-check form-check-inline disabled">
+<div class="form-check form-check-inline">
   <label class="form-check-label">
-    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" disabled> 3
+    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" disabled>
+    <span class="form-check-description">3</span>
   </label>
 </div>
 {% endexample %}
@@ -350,7 +356,8 @@ More complex layouts can also be created with the grid system.
   <div class="form-group">
     <div class="form-check">
       <label class="form-check-label">
-        <input class="form-check-input" type="checkbox"> Check me out
+        <input class="form-check-input" type="checkbox">
+        <span class="form-check-description">Check me out</span>
       </label>
     </div>
   </div>
@@ -385,19 +392,19 @@ At times, you maybe need to use margin or padding utilities to create that perfe
         <div class="form-check">
           <label class="form-check-label">
             <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-            Option one is this and that&mdash;be sure to include why it's great
+            <span class="form-check-description">Option one is this and that&mdash;be sure to include why it's great</span>
           </label>
         </div>
         <div class="form-check">
           <label class="form-check-label">
             <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-            Option two can be something else and selecting it will deselect option one
+            <span class="form-check-description">Option two can be something else and selecting it will deselect option one</span>
           </label>
         </div>
         <div class="form-check disabled">
           <label class="form-check-label">
             <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled>
-            Option three is disabled
+            <span class="form-check-description">Option three is disabled</span>
           </label>
         </div>
       </div>
@@ -408,7 +415,8 @@ At times, you maybe need to use margin or padding utilities to create that perfe
     <div class="col-sm-10">
       <div class="form-check">
         <label class="form-check-label">
-          <input class="form-check-input" type="checkbox"> Check me out
+          <input class="form-check-input" type="checkbox">
+          <span class="form-check-description">Check me out</span>
         </label>
       </div>
     </div>
@@ -489,7 +497,8 @@ The example below uses a flexbox utility to vertically center the contents and c
     <div class="col-auto">
       <div class="form-check mb-2">
         <label class="form-check-label">
-          <input class="form-check-input" type="checkbox"> Remember me
+          <input class="form-check-input" type="checkbox">
+          <span class="form-check-description">Remember me</span>
         </label>
       </div>
     </div>
@@ -519,7 +528,8 @@ You can then remix that once again with size-specific column classes.
     <div class="col-auto">
       <div class="form-check mb-2 mb-sm-0">
         <label class="form-check-label">
-          <input class="form-check-input" type="checkbox"> Remember me
+          <input class="form-check-input" type="checkbox">
+          <span class="form-check-description">Remember me</span>
         </label>
       </div>
     </div>
@@ -545,11 +555,13 @@ And of course [custom form controls](#custom-forms) are supported.
       </select>
     </div>
     <div class="col-auto">
-      <label class="custom-control custom-checkbox mb-2 mr-sm-2">
-        <input type="checkbox" class="custom-control-input">
-        <span class="custom-control-indicator"></span>
-        <span class="custom-control-description">Remember my preference</span>
-      </label>
+      <div class="custom-control custom-checkbox mb-2 mr-sm-2">
+        <label>
+          <input type="checkbox" class="custom-control-input">
+          <span class="custom-control-indicator"></span>
+          <span class="custom-control-description">Remember my preference</span>
+        </label>
+      </div>
     </div>
     <div class="col-auto">
       <button type="submit" class="btn btn-primary mb-2">Submit</button>
@@ -581,7 +593,8 @@ You may need to manually address the width and alignment of individual form cont
 
   <div class="form-check mb-2 mr-sm-2">
     <label class="form-check-label">
-      <input class="form-check-input" type="checkbox"> Remember me
+      <input class="form-check-input" type="checkbox">
+      <span class="form-check-description">Remember me</span>
     </label>
   </div>
 
@@ -601,11 +614,13 @@ Custom form controls and selects are also supported.
     <option value="3">Three</option>
   </select>
 
-  <label class="custom-control custom-checkbox mb-2 mr-sm-2">
-    <input type="checkbox" class="custom-control-input">
-    <span class="custom-control-indicator"></span>
-    <span class="custom-control-description">Remember my preference</span>
-  </label>
+  <div class="custom-control custom-checkbox mb-2 mr-sm-2">
+    <label>
+      <input type="checkbox" class="custom-control-input">
+      <span class="custom-control-indicator"></span>
+      <span class="custom-control-description">Remember my preference</span>
+    </label>
+  </div>
 
   <button type="submit" class="btn btn-primary mb-2">Submit</button>
 </form>
@@ -758,6 +773,15 @@ When attempting to submit, you'll see the `:invalid` and `:valid` styles applied
       </div>
     </div>
   </div>
+  <div class="form-check mb-3">
+    <label class="form-check-label">
+      <input class="form-check-input" type="checkbox" value="" required>
+      <span class="form-check-description">Confirm address details</span>
+      <span class="invalid-feedback">
+        Please confirm these details.
+      </span>
+    </label>
+  </div>
   <button class="btn btn-primary" type="submit">Submit form</button>
 </form>
 
@@ -876,23 +900,36 @@ Our example forms show native textual `<input>`s above, but form validation styl
 
 {% example html %}
 <form class="was-validated">
-  <label class="custom-control custom-checkbox">
-    <input type="checkbox" class="custom-control-input" required>
-    <span class="custom-control-indicator"></span>
-    <span class="custom-control-description">Check this custom checkbox</span>
-  </label>
+  <div class="form-check">
+    <label class="form-check-label">
+      <input class="form-check-input" type="checkbox" required>
+      <span class="form-check-description">Regular checkboxes and radios</span>
+    </label>
+  </div>
 
-  <div class="custom-controls-stacked d-block my-3">
-    <label class="custom-control custom-radio">
-      <input id="radioStacked1" name="radio-stacked" type="radio" class="custom-control-input" required>
+  <div class="custom-control custom-checkbox my-3">
+    <label>
+      <input type="checkbox" class="custom-control-input" required>
       <span class="custom-control-indicator"></span>
-      <span class="custom-control-description">Toggle this custom radio</span>
+      <span class="custom-control-description">Check this custom checkbox</span>
     </label>
-    <label class="custom-control custom-radio">
-      <input id="radioStacked2" name="radio-stacked" type="radio" class="custom-control-input" required>
-      <span class="custom-control-indicator"></span>
-      <span class="custom-control-description">Or toggle this other custom radio</span>
-    </label>
+  </div>
+
+  <div class="my-3">
+    <div class="custom-control custom-radio">
+      <label>
+        <input id="radioStacked1" name="radio-stacked" type="radio" class="custom-control-input" required>
+        <span class="custom-control-indicator"></span>
+        <span class="custom-control-description">Toggle this custom radio</span>
+      </label>
+    </div>
+    <div class="custom-control custom-radio">
+      <label>
+        <input id="radioStacked2" name="radio-stacked" type="radio" class="custom-control-input" required>
+        <span class="custom-control-indicator"></span>
+        <span class="custom-control-description">Or toggle this other custom radio</span>
+      </label>
+    </div>
   </div>
 
   <select class="custom-select d-block my-3" required>
@@ -930,21 +967,25 @@ In the checked states, we use **base64 embedded SVG icons** from [Open Iconic](h
 #### Checkboxes
 
 {% example html %}
-<label class="custom-control custom-checkbox">
-  <input type="checkbox" class="custom-control-input">
-  <span class="custom-control-indicator"></span>
-  <span class="custom-control-description">Check this custom checkbox</span>
-</label>
+<div class="custom-control custom-checkbox">
+  <label>
+    <input type="checkbox" class="custom-control-input">
+    <span class="custom-control-indicator"></span>
+    <span class="custom-control-description">Check this custom checkbox</span>
+  </label>
+</div>
 {% endexample %}
 
 Custom checkboxes can also utilize the `:indeterminate` pseudo class when manually set via JavaScript (there is no available HTML attribute for specifying it).
 
 <div class="bd-example bd-example-indeterminate">
-  <label class="custom-control custom-checkbox">
-    <input type="checkbox" class="custom-control-input">
-    <span class="custom-control-indicator"></span>
-    <span class="custom-control-description">Check this custom checkbox</span>
-  </label>
+  <div class="custom-control custom-checkbox">
+    <label>
+      <input type="checkbox" class="custom-control-input">
+      <span class="custom-control-indicator"></span>
+      <span class="custom-control-description">Check this custom checkbox</span>
+    </label>
+  </div>
 </div>
 
 If you're using jQuery, something like this should suffice:
@@ -956,16 +997,20 @@ $('.your-checkbox').prop('indeterminate', true)
 #### Radios
 
 {% example html %}
-<label class="custom-control custom-radio">
-  <input id="radio1" name="radio" type="radio" class="custom-control-input">
-  <span class="custom-control-indicator"></span>
-  <span class="custom-control-description">Toggle this custom radio</span>
-</label>
-<label class="custom-control custom-radio">
-  <input id="radio2" name="radio" type="radio" class="custom-control-input">
-  <span class="custom-control-indicator"></span>
-  <span class="custom-control-description">Or toggle this other custom radio</span>
-</label>
+<div class="custom-control custom-radio">
+  <label>
+    <input id="radio1" name="radio" type="radio" class="custom-control-input">
+    <span class="custom-control-indicator"></span>
+    <span class="custom-control-description">Toggle this custom radio</span>
+  </label>
+</div>
+<div class="custom-control custom-radio">
+  <label>
+    <input id="radio2" name="radio" type="radio" class="custom-control-input">
+    <span class="custom-control-indicator"></span>
+    <span class="custom-control-description">Or toggle this other custom radio</span>
+  </label>
+</div>
 {% endexample %}
 
 #### Disabled
@@ -973,31 +1018,36 @@ $('.your-checkbox').prop('indeterminate', true)
 Custom checkboxes and radios can also be disabled. Add the `disabled` boolean attribute to the `<input>` and the custom indicator and label description will be automatically styled.
 
 {% example html %}
-<label class="custom-control custom-checkbox">
-  <input type="checkbox" class="custom-control-input" disabled>
-  <span class="custom-control-indicator"></span>
-  <span class="custom-control-description">Check this custom checkbox</span>
-</label>
-
-<label class="custom-control custom-radio">
-  <input id="radio3" name="radioDisabled" type="radio" class="custom-control-input" disabled>
-  <span class="custom-control-indicator"></span>
-  <span class="custom-control-description">Toggle this custom radio</span>
-</label>
+<div class="custom-control custom-checkbox">
+  <label>
+    <input type="checkbox" class="custom-control-input" disabled>
+    <span class="custom-control-indicator"></span>
+    <span class="custom-control-description">Check this custom checkbox</span>
+  </label>
+</div>
+<div class="custom-control custom-radio">
+  <label>
+    <input id="radio3" name="radioDisabled" type="radio" class="custom-control-input" disabled>
+    <span class="custom-control-indicator"></span>
+    <span class="custom-control-description">Toggle this custom radio</span>
+  </label>
+</div>
 {% endexample %}
 
-#### Stacked
+#### Inline
 
-Custom checkboxes and radios are inline to start. Add a parent with class `.custom-controls-stacked` to ensure each form control is on separate lines.
+Custom checkboxes and radios are stacked to start. Add class `.custom-control-inline` to each `.custom-control` to display it inline.
 
 {% example html %}
-<div class="custom-controls-stacked">
-  <label class="custom-control custom-radio">
+<div class="custom-control custom-control-inline custom-radio">
+  <label>
     <input id="radioStacked3" name="radio-stacked" type="radio" class="custom-control-input">
     <span class="custom-control-indicator"></span>
     <span class="custom-control-description">Toggle this custom radio</span>
   </label>
-  <label class="custom-control custom-radio">
+</div>
+<div class="custom-control custom-control-inline custom-radio">
+  <label>
     <input id="radioStacked4" name="radio-stacked" type="radio" class="custom-control-input">
     <span class="custom-control-indicator"></span>
     <span class="custom-control-description">Or toggle this other custom radio</span>

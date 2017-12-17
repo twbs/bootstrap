@@ -27,7 +27,6 @@
 
 
 @mixin form-validation-state($state, $color) {
-
   .#{$state}-feedback {
     display: none;
     margin-top: $form-feedback-margin-top;
@@ -68,13 +67,16 @@
     }
   }
 
-
-  // TODO: redo check markup lol crap
+  // Vanilla checks and radios
   .form-check-input {
     .was-validated &:#{$state},
     &.is-#{$state} {
-      + .form-check-label {
+      + .form-check-description {
         color: $color;
+      }
+      ~ .#{$state}-feedback,
+      ~ .#{$state}-tooltip {
+        display: block;
       }
     }
   }
