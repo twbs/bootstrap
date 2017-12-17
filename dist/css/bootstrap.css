@@ -2011,6 +2011,10 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
   margin-bottom: 0.5rem;
 }
 
+.form-check.disabled .form-check-label {
+  color: #868e96;
+}
+
 .form-check-label {
   padding-left: 1.25rem;
   margin-bottom: 0;
@@ -2020,10 +2024,6 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
   position: absolute;
   margin-top: 0.25rem;
   margin-left: -1.25rem;
-}
-
-.form-check-input:disabled ~ .form-check-description {
-  color: #868e96;
 }
 
 .form-check-inline {
@@ -2081,14 +2081,8 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
   display: block;
 }
 
-.was-validated .form-check-input:valid + .form-check-description, .form-check-input.is-valid + .form-check-description {
+.was-validated .form-check-input:valid + .form-check-label, .form-check-input.is-valid + .form-check-label {
   color: #28a745;
-}
-
-.was-validated .form-check-input:valid ~ .valid-feedback,
-.was-validated .form-check-input:valid ~ .valid-tooltip, .form-check-input.is-valid ~ .valid-feedback,
-.form-check-input.is-valid ~ .valid-tooltip {
-  display: block;
 }
 
 .was-validated .custom-control-input:valid ~ .custom-control-indicator, .custom-control-input.is-valid ~ .custom-control-indicator {
@@ -2165,14 +2159,8 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
   display: block;
 }
 
-.was-validated .form-check-input:invalid + .form-check-description, .form-check-input.is-invalid + .form-check-description {
+.was-validated .form-check-input:invalid + .form-check-label, .form-check-input.is-invalid + .form-check-label {
   color: #dc3545;
-}
-
-.was-validated .form-check-input:invalid ~ .invalid-feedback,
-.was-validated .form-check-input:invalid ~ .invalid-tooltip, .form-check-input.is-invalid ~ .invalid-feedback,
-.form-check-input.is-invalid ~ .invalid-tooltip {
-  display: block;
 }
 
 .was-validated .custom-control-input:invalid ~ .custom-control-indicator, .custom-control-input.is-invalid ~ .custom-control-indicator {
@@ -2267,6 +2255,21 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
     margin-top: 0;
     margin-right: 0.25rem;
     margin-left: 0;
+  }
+  .form-inline .custom-control {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    padding-left: 0;
+  }
+  .form-inline .custom-control-indicator {
+    position: static;
+    display: inline-block;
+    margin-right: 0.25rem;
+    vertical-align: text-bottom;
   }
   .form-inline .has-feedback .form-control-feedback {
     top: 0;
@@ -3396,21 +3399,16 @@ tbody.collapse.show {
 
 .custom-control {
   position: relative;
-  margin-bottom: 0.25rem;
-}
-
-.custom-control label {
-  display: inline;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  min-height: 1.5rem;
   padding-left: 1.5rem;
-  margin-bottom: 0;
+  margin-right: 1rem;
 }
 
 .custom-control-input {
   position: absolute;
-  top: 0.25rem;
-  left: 0;
-  width: 1rem;
-  height: 1rem;
+  z-index: -1;
   opacity: 0;
 }
 
@@ -3493,12 +3491,19 @@ tbody.collapse.show {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3E%3Ccircle r='3' fill='%23fff'/%3E%3C/svg%3E");
 }
 
-.custom-control-inline {
-  display: inline-block;
+.custom-controls-stacked {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
-.custom-control-inline + .custom-control-inline {
-  margin-left: 1rem;
+.custom-controls-stacked .custom-control {
+  margin-bottom: 0.25rem;
+}
+
+.custom-controls-stacked .custom-control + .custom-control {
+  margin-left: 0;
 }
 
 .custom-select {
