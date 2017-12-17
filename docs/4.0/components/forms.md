@@ -777,9 +777,9 @@ When attempting to submit, you'll see the `:invalid` and `:valid` styles applied
     <label class="form-check-label">
       <input class="form-check-input" type="checkbox" value="" required>
       <span class="form-check-description">Confirm address details</span>
-      <div class="invalid-feedback">
+      <span class="invalid-feedback">
         Please confirm these details.
-      </div>
+      </span>
     </label>
   </div>
   <button class="btn btn-primary" type="submit">Submit form</button>
