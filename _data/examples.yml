@@ -22,7 +22,7 @@
     - name: Justified nav
       description: "Create a custom navbar with justified links. Heads up! Not too Safari friendly."
     - name: Sticky footer
-      description: "Attach a footer to the bottom of the viewport when the content is shorter than it."
+      description: "Attach a footer to the bottom of the viewport when page content is short."
     - name: Sticky footer navbar
       description: "Attach a footer to the bottom of the viewport with a fixed top navbar."
 
