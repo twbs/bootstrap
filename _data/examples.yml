@@ -42,7 +42,7 @@
   description: "Taking the default navbar component and showing how it can be moved, placed, and extended."
   examples:
     - name: Navbars
-      description: "Demonstration of all the responsive and container options for our navbar component."
+      description: "Demonstration of all responsive and container options for the navbar."
     - name: Navbar static
       description: "Single navbar example of a static top navbar along with some additional content."
     - name: Navbar fixed
