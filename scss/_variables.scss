@@ -667,6 +667,7 @@ $card-columns-margin:               $card-spacer-y !default;
 
 // Tooltips
 
+$tooltip-font-size:           $font-size-sm !default;
 $tooltip-max-width:           200px !default;
 $tooltip-color:               $white !default;
 $tooltip-bg:                  $black !default;
@@ -682,6 +683,7 @@ $tooltip-arrow-color:         $tooltip-bg !default;
 
 // Popovers
 
+$popover-font-size:                 $font-size-sm !default;
 $popover-bg:                        $white !default;
 $popover-max-width:                 276px !default;
 $popover-border-width:              $border-width !default;
