@@ -671,6 +671,7 @@ $tooltip-font-size:           $font-size-sm !default;
 $tooltip-max-width:           200px !default;
 $tooltip-color:               $white !default;
 $tooltip-bg:                  $black !default;
+$tooltip-border-radius:        $border-radius !default;
 $tooltip-opacity:             .9 !default;
 $tooltip-padding-y:           .25rem !default;
 $tooltip-padding-x:           .5rem !default;
@@ -688,6 +689,7 @@ $popover-bg:                        $white !default;
 $popover-max-width:                 276px !default;
 $popover-border-width:              $border-width !default;
 $popover-border-color:              rgba($black, .2) !default;
+$popover-border-radius:             $border-radius-lg !default;
 $popover-box-shadow:                0 .25rem .5rem rgba($black, .2) !default;
 
 $popover-header-bg:                 darken($popover-bg, 3%) !default;
