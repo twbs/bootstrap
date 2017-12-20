@@ -133,6 +133,31 @@ fieldset:disabled a.btn {
   }
 }
 
+
+//
+// Circle buttons
+//
+
+.btn-circle {
+  width: ($font-size-base * $btn-line-height) + ($btn-padding-y * 2) + ($font-size-base / (16 / 2));
+  height: ($font-size-base * $btn-line-height) + ($btn-padding-y * 2) + ($font-size-base / (16 / 2));
+  padding: $btn-padding-y;
+  border-radius: 50%;
+
+  &.btn-sm {
+    width: ($font-size-sm * $btn-line-height-sm) + ($btn-padding-y-sm * 2) + ($font-size-base / (16 / 2));
+    height: ($font-size-sm * $btn-line-height-sm) + ($btn-padding-y-sm * 2) + ($font-size-base / (16 / 2));
+    padding: $btn-padding-y-sm;
+  }
+
+  &.btn-lg {
+    width: ($font-size-lg * $btn-line-height-lg) + ($btn-padding-y-lg * 2) + ($font-size-base / (16 / 2));
+    height: ($font-size-lg * $btn-line-height-lg) + ($btn-padding-y-lg * 2) + ($font-size-base / (16 / 2));
+    padding: $btn-padding-y-lg;
+  }
+}
+
+
 // Specificity overrides
 input[type="submit"],
 input[type="reset"],
