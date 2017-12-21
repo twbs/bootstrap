@@ -808,23 +808,14 @@ While these feedback styles cannot be styled with CSS, you can still customize t
     <div class="col-md-6 mb-3">
       <label for="validationDefault03">City</label>
       <input type="text" class="form-control" id="validationDefault03" placeholder="City" required>
-      <div class="invalid-feedback">
-        Please provide a valid city.
-      </div>
     </div>
     <div class="col-md-3 mb-3">
       <label for="validationDefault04">State</label>
       <input type="text" class="form-control" id="validationDefault04" placeholder="State" required>
-      <div class="invalid-feedback">
-        Please provide a valid state.
-      </div>
     </div>
     <div class="col-md-3 mb-3">
       <label for="validationDefault05">Zip</label>
       <input type="text" class="form-control" id="validationDefault05" placeholder="Zip" required>
-      <div class="invalid-feedback">
-        Please provide a valid zip.
-      </div>
     </div>
   </div>
 
