@@ -207,11 +207,11 @@ Group checkboxes or radios on the same horizontal row by adding `.form-check-inl
 </div>
 <div class="form-check form-check-inline">
   <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-  <label class="form-check-label" for="inlineCheckbox1">2</label>
+  <label class="form-check-label" for="inlineCheckbox2">2</label>
 </div>
 <div class="form-check form-check-inline">
   <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" disabled>
-  <label class="form-check-label" for="inlineCheckbox1">3 (disabled)</label>
+  <label class="form-check-label" for="inlineCheckbox3">3 (disabled)</label>
 </div>
 {% endexample %}
 
@@ -339,8 +339,8 @@ More complex layouts can also be created with the grid system.
   </div>
   <div class="form-group">
     <div class="form-check">
-      <input class="form-check-input" type="checkbox">
-      <label class="form-check-label">
+      <input class="form-check-input" type="checkbox" id="gridCheck">
+      <label class="form-check-label" for="gridCheck">
         Check me out
       </label>
     </div>
@@ -667,8 +667,8 @@ Add the `disabled` attribute to a `<fieldset>` to disable all the controls withi
       </select>
     </div>
     <div class="form-check">
-      <input class="form-check-input" type="checkbox">
-      <label class="form-check-label">
+      <input class="form-check-input" type="checkbox" id="disabledFieldsetCheck" disabled>
+      <label class="form-check-label" for="disabledFieldsetCheck">
         Can't check this
       </label>
     </div>
@@ -940,11 +940,11 @@ $('.your-checkbox').prop('indeterminate', true)
 
 {% example html %}
 <div class="custom-control custom-radio">
-  <input type="radio" id="customRadio1" name="customRadio1" class="custom-control-input">
+  <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
   <label class="custom-control-label" for="customRadio1">Toggle this custom radio</label>
 </div>
 <div class="custom-control custom-radio">
-  <input type="radio" id="customRadio2" name="customRadio1" class="custom-control-input">
+  <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
   <label class="custom-control-label" for="customRadio2">Or toggle this other custom radio</label>
 </div>
 {% endexample %}
@@ -953,12 +953,12 @@ $('.your-checkbox').prop('indeterminate', true)
 
 {% example html %}
 <div class="custom-control custom-radio custom-control-inline">
-  <input type="radio" id="customRadio1" name="customRadio1" class="custom-control-input">
-  <label class="custom-control-label" for="customRadio1">Toggle this custom radio</label>
+  <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
+  <label class="custom-control-label" for="customRadioInline1">Toggle this custom radio</label>
 </div>
 <div class="custom-control custom-radio custom-control-inline">
-  <input type="radio" id="customRadio2" name="customRadio1" class="custom-control-input">
-  <label class="custom-control-label" for="customRadio2">Or toggle this other custom radio</label>
+  <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+  <label class="custom-control-label" for="customRadioInline2">Or toggle this other custom radio</label>
 </div>
 {% endexample %}
 
