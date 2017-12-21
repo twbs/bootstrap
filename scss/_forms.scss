@@ -207,24 +207,21 @@ select.form-control-lg {
 .form-check {
   position: relative;
   display: block;
-  margin-bottom: $form-check-margin-bottom;
-
-  &.disabled {
-    .form-check-label {
-      color: $text-muted;
-    }
-  }
-}
-
-.form-check-label {
   padding-left: $form-check-input-gutter;
-  margin-bottom: 0; // Override default `<label>` bottom margin
 }
 
 .form-check-input {
   position: absolute;
   margin-top: $form-check-input-margin-y;
   margin-left: -$form-check-input-gutter;
+
+  &:disabled ~ .form-check-label {
+    color: $text-muted;
+  }
+}
+
+.form-check-label {
+  margin-bottom: 0; // Override default `<label>` bottom margin
 }
 
 // Radios and checkboxes on same line
