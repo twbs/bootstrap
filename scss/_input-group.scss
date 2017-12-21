@@ -157,9 +157,6 @@
 .input-group-btn {
   position: relative;
   align-items: stretch;
-  // Jankily prevent input button groups from wrapping with `white-space` and
-  // `font-size` in combination with `inline-block` on buttons.
-  font-size: 0;
   white-space: nowrap;
 
   // Negative margin for spacing, position for bringing hovered/focused/actived
