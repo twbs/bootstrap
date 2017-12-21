@@ -731,8 +731,8 @@ When attempting to submit, you'll see the `:invalid` and `:valid` styles applied
 
 {% example html %}
 <form id="needs-validation" novalidate>
-  <div class="row">
     <div class="col-md-6 mb-3">
+  <div class="form-row">
       <label for="validationCustom01">First name</label>
       <input type="text" class="form-control" id="validationCustom01" placeholder="First name" value="Mark" required>
     </div>
@@ -741,7 +741,7 @@ When attempting to submit, you'll see the `:invalid` and `:valid` styles applied
       <input type="text" class="form-control" id="validationCustom02" placeholder="Last name" value="Otto" required>
     </div>
   </div>
-  <div class="row">
+  <div class="form-row">
     <div class="col-md-6 mb-3">
       <label for="validationCustom03">City</label>
       <input type="text" class="form-control" id="validationCustom03" placeholder="City" required>
@@ -794,8 +794,8 @@ While these feedback styles cannot be styled with CSS, you can still customize t
 
 {% example html %}
 <form>
-  <div class="row">
     <div class="col-md-6 mb-3">
+  <div class="form-row">
       <label for="validationDefault01">First name</label>
       <input type="text" class="form-control" id="validationDefault01" placeholder="First name" value="Mark" required>
     </div>
@@ -804,7 +804,7 @@ While these feedback styles cannot be styled with CSS, you can still customize t
       <input type="text" class="form-control" id="validationDefault02" placeholder="Last name" value="Otto" required>
     </div>
   </div>
-  <div class="row">
+  <div class="form-row">
     <div class="col-md-6 mb-3">
       <label for="validationDefault03">City</label>
       <input type="text" class="form-control" id="validationDefault03" placeholder="City" required>
@@ -838,8 +838,8 @@ We recommend using client side validation, but in case you require server side, 
 
 {% example html %}
 <form>
-  <div class="row">
     <div class="col-md-6 mb-3">
+  <div class="form-row">
       <label for="validationServer01">First name</label>
       <input type="text" class="form-control is-valid" id="validationServer01" placeholder="First name" value="Mark" required>
     </div>
@@ -848,7 +848,7 @@ We recommend using client side validation, but in case you require server side, 
       <input type="text" class="form-control is-valid" id="validationServer02" placeholder="Last name" value="Otto" required>
     </div>
   </div>
-  <div class="row">
+  <div class="form-row">
     <div class="col-md-6 mb-3">
       <label for="validationServer03">City</label>
       <input type="text" class="form-control is-invalid" id="validationServer03" placeholder="City" required>
