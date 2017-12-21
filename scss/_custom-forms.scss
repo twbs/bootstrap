@@ -9,9 +9,13 @@
 
 .custom-control {
   position: relative;
-  display: inline-flex;
+  display: block;
   min-height: (1rem * $line-height-base);
   padding-left: $custom-control-gutter;
+}
+
+.custom-control-inline {
+  display: inline-flex;
   margin-right: $custom-control-spacer-x;
 }
 
