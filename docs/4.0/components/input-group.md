@@ -99,6 +99,8 @@ Place any checkbox or radio option within an input group's addon instead of text
 
 ## Multiple inputs
 
+While multiple `<input>`s are supported visually, validation styles are only available for input groups with a single `<input>`.
+
 {% example html %}
 <div class="input-group">
   <div class="input-group-prepend">
