@@ -40,7 +40,7 @@ GEM
       mini_portile2 (~> 2.3.0)
     nokogiri (1.8.1-x64-mingw32)
       mini_portile2 (~> 2.3.0)
-    pathutil (0.16.0)
+    pathutil (0.16.1)
       forwardable-extended (~> 2.6)
     public_suffix (3.0.1)
     rb-fsevent (0.10.2)
@@ -49,7 +49,7 @@ GEM
     rouge (2.2.1)
     ruby_dep (1.5.0)
     safe_yaml (1.0.4)
-    sass (3.5.3)
+    sass (3.5.4)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -66,4 +66,4 @@ DEPENDENCIES
   jekyll-toc (~> 0.5.0.rc)
 
 BUNDLED WITH
-   1.16.0
+   1.16.1
