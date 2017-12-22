@@ -27,7 +27,7 @@ function findUnusedVars(dir) {
     process.exit(1)
   }
 
-  console.log(`\x1b[1m%s\x1b[0m`, `\n➜ Finding unused variables in "${dir}"...`)
+  console.log(`Finding unused variables in "${dir}"...`)
 
   // A variable to handle success/failure message in this function
   let unusedVarsFound = false
@@ -44,7 +44,7 @@ function findUnusedVars(dir) {
   // Array of all Sass variables
   const variables = sassFilesString.match(/(^\$[a-zA-Z0-9_-]+[^:])/gm)
 
-  console.log(`\x1b[36m%s\x1b[0m`, `  Found ${variables.length} total variables.`)
+  console.log(`Found ${variables.length} total variables.`)
 
   // Loop through each variable
   variables.forEach((variable) => {
@@ -52,14 +52,14 @@ function findUnusedVars(dir) {
     const count = (sassFilesString.match(re) || []).length
 
     if (count === 1) {
-      console.log(`\x1b[41m%s\x1b[0m`, `  Variable "${variable}" is not being used.`)
+      console.log(`Variable "${variable}" is not being used.`)
       unusedVarsFound = true
       globalSuccess = false
     }
   })
 
   if (unusedVarsFound === false) {
-    console.log(`\x1b[32m%s\x1b[0m`, `  No unused variables found in "${dir}".`)
+    console.log(`No unused variables found in "${dir}".`)
   }
 }
 
