@@ -482,7 +482,9 @@ The example below uses a flexbox utility to vertically center the contents and c
     <div class="col-auto">
       <label class="sr-only" for="inlineFormInputGroup">Username</label>
       <div class="input-group mb-2">
-        <div class="input-group-addon">@</div>
+        <div class="input-group-prepend">
+          <div class="input-group-text">@</div>
+        </div>
         <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Username">
       </div>
     </div>
@@ -512,7 +514,9 @@ You can then remix that once again with size-specific column classes.
     <div class="col-sm-3">
       <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
       <div class="input-group mb-2 mb-sm-0">
-        <div class="input-group-addon">@</div>
+        <div class="input-group-prepend">
+          <div class="input-group-text">@</div>
+        </div>
         <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="Username">
       </div>
     </div>
@@ -575,7 +579,9 @@ You may need to manually address the width and alignment of individual form cont
 
   <label class="sr-only" for="inlineFormInputGroupUsername2">Username</label>
   <div class="input-group mb-2 mr-sm-2">
-    <div class="input-group-addon">@</div>
+    <div class="input-group-prepend">
+      <div class="input-group-text">@</div>
+    </div>
     <input type="text" class="form-control" id="inlineFormInputGroupUsername2" placeholder="Username">
   </div>
 
@@ -725,17 +731,29 @@ When attempting to submit, you'll see the `:invalid` and `:valid` styles applied
 
 {% example html %}
 <form id="needs-validation" novalidate>
-  <div class="row">
-    <div class="col-md-6 mb-3">
+  <div class="form-row">
+    <div class="col-md-4 mb-3">
       <label for="validationCustom01">First name</label>
       <input type="text" class="form-control" id="validationCustom01" placeholder="First name" value="Mark" required>
     </div>
-    <div class="col-md-6 mb-3">
+    <div class="col-md-4 mb-3">
       <label for="validationCustom02">Last name</label>
       <input type="text" class="form-control" id="validationCustom02" placeholder="Last name" value="Otto" required>
     </div>
+    <div class="col-md-4 mb-3">
+      <label for="validationCustomUsername">Username</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroupPrepend">@</span>
+        </div>
+        <input type="text" class="form-control" id="validationCustomUsername" placeholder="Username" aria-describedby="inputGroupPrepend" required>
+        <div class="invalid-feedback">
+          Please choose a username.
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="row">
+  <div class="form-row">
     <div class="col-md-6 mb-3">
       <label for="validationCustom03">City</label>
       <input type="text" class="form-control" id="validationCustom03" placeholder="City" required>
@@ -788,40 +806,39 @@ While these feedback styles cannot be styled with CSS, you can still customize t
 
 {% example html %}
 <form>
-  <div class="row">
-    <div class="col-md-6 mb-3">
+  <div class="form-row">
+    <div class="col-md-4 mb-3">
       <label for="validationDefault01">First name</label>
       <input type="text" class="form-control" id="validationDefault01" placeholder="First name" value="Mark" required>
     </div>
-    <div class="col-md-6 mb-3">
+    <div class="col-md-4 mb-3">
       <label for="validationDefault02">Last name</label>
       <input type="text" class="form-control" id="validationDefault02" placeholder="Last name" value="Otto" required>
     </div>
+    <div class="col-md-4 mb-3">
+      <label for="validationDefaultUsername">Username</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroupPrepend2">@</span>
+        </div>
+        <input type="text" class="form-control" id="validationDefaultUsername" placeholder="Username" aria-describedby="inputGroupPrepend2" required>
+      </div>
+    </div>
   </div>
-  <div class="row">
+  <div class="form-row">
     <div class="col-md-6 mb-3">
       <label for="validationDefault03">City</label>
       <input type="text" class="form-control" id="validationDefault03" placeholder="City" required>
-      <div class="invalid-feedback">
-        Please provide a valid city.
-      </div>
     </div>
     <div class="col-md-3 mb-3">
       <label for="validationDefault04">State</label>
       <input type="text" class="form-control" id="validationDefault04" placeholder="State" required>
-      <div class="invalid-feedback">
-        Please provide a valid state.
-      </div>
     </div>
     <div class="col-md-3 mb-3">
       <label for="validationDefault05">Zip</label>
       <input type="text" class="form-control" id="validationDefault05" placeholder="Zip" required>
-      <div class="invalid-feedback">
-        Please provide a valid zip.
-      </div>
     </div>
   </div>
-
   <button class="btn btn-primary" type="submit">Submit form</button>
 </form>
 {% endexample %}
@@ -832,17 +849,29 @@ We recommend using client side validation, but in case you require server side, 
 
 {% example html %}
 <form>
-  <div class="row">
-    <div class="col-md-6 mb-3">
+  <div class="form-row">
+    <div class="col-md-4 mb-3">
       <label for="validationServer01">First name</label>
       <input type="text" class="form-control is-valid" id="validationServer01" placeholder="First name" value="Mark" required>
     </div>
-    <div class="col-md-6 mb-3">
+    <div class="col-md-4 mb-3">
       <label for="validationServer02">Last name</label>
       <input type="text" class="form-control is-valid" id="validationServer02" placeholder="Last name" value="Otto" required>
     </div>
+    <div class="col-md-4 mb-3">
+      <label for="validationServerUsername">Username</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroupPrepend3">@</span>
+        </div>
+        <input type="text" class="form-control is-invalid" id="validationServerUsername" placeholder="Username" aria-describedby="inputGroupPrepend3" required>
+        <div class="invalid-feedback">
+          Please choose a username.
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="row">
+  <div class="form-row">
     <div class="col-md-6 mb-3">
       <label for="validationServer03">City</label>
       <input type="text" class="form-control is-invalid" id="validationServer03" placeholder="City" required>
