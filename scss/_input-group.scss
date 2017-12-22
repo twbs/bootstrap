@@ -44,10 +44,15 @@
 .input-group .custom-file {
   display: flex;
   align-items: center;
+  width: 100%;
+
+  .custom-file-input {
+    width: 100%;
+    min-width: 0;
+  }
 }
 
-.input-group .custom-select,
-.input-group .custom-file {
+.input-group .custom-select {
   width: 100%;
 }
 
