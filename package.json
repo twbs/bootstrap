@@ -133,8 +133,10 @@
     "scss/"
   ],
   "browserslist": [
+    "last 1 major version",
+    ">= 1%",
     "Chrome >= 45",
-    "Firefox ESR",
+    "Firefox >= 38",
     "Edge >= 12",
     "Explorer >= 10",
     "iOS >= 9",
@@ -153,11 +155,11 @@
     },
     {
       "path": "./dist/css/bootstrap-reboot.css",
-      "maxSize": "5 kB"
+      "maxSize": "3 kB"
     },
     {
       "path": "./dist/css/bootstrap-reboot.min.css",
-      "maxSize": "5 kB"
+      "maxSize": "3 kB"
     },
     {
       "path": "./dist/css/bootstrap.css",
@@ -165,7 +167,7 @@
     },
     {
       "path": "./dist/css/bootstrap.min.css",
-      "maxSize": "20 kB"
+      "maxSize": "21 kB"
     },
     {
       "path": "./dist/js/bootstrap.bundle.js",
