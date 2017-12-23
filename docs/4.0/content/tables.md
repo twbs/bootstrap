@@ -553,7 +553,7 @@ Regular table background variants are not available with the dark table, however
 {% capture callout-include %}{% include callout-warning-color-assistive-technologies.md %}{% endcapture %}
 {{ callout-include | markdownify }}
 
-Create responsive tables by adding `.table-responsive{-sm|-md|-lg|-xl}` to any `.table` to make them scroll horizontally at each `max-width` breakpoint of 575.99px, 767.99px, 991.99px, and 1119.99px, respectively.
+Create responsive tables by wrapping any `.table` with `.table-responsive{-sm|-md|-lg|-xl}`, making the table scroll horizontally at each `max-width` breakpoint of 575.99px, 767.99px, 991.99px, and 1119.99px, respectively.
 
 {% capture callout-include %}{% include callout-info-mediaqueries-breakpoints.md %}{% endcapture %}
 {{ callout-include | markdownify }}
@@ -598,120 +598,83 @@ A `<caption>` functions like a heading for a table. It helps users with screen r
 
 ## Responsive tables
 
-Responsive tables allow tables to be scrolled horizontally with ease. Make any table responsive across all viewports by adding `.table-responsive` class on `.table`. Or, pick a maximum breakpoint with which to have a responsive table up to by adding `.table-responsive{-sm|-md|-lg|-xl}`.
+Responsive tables allow tables to be scrolled horizontally with ease. Make any table responsive across all viewports by wrapping a `.table` with `.table-responsive`. Or, pick a maximum breakpoint with which to have a responsive table up to by using `.table-responsive{-sm|-md|-lg|-xl}`.
 
 {% callout warning %}
-#### Vertical clipping/truncation
+##### Vertical clipping/truncation
 
 Responsive tables make use of `overflow-y: hidden`, which clips off any content that goes beyond the bottom or top edges of the table. In particular, this can clip off dropdown menus and other third-party widgets.
 {% endcallout %}
 
 ### Always responsive
 
-<div class="bd-example">
-  <table class="table table-responsive">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Table heading</th>
-        <th scope="col">Table heading</th>
-        <th scope="col">Table heading</th>
-        <th scope="col">Table heading</th>
-        <th scope="col">Table heading</th>
-        <th scope="col">Table heading</th>
-        <th scope="col">Table heading</th>
-        <th scope="col">Table heading</th>
-        <th scope="col">Table heading</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-      </tr>
-    </tbody>
-  </table>
+Across every breakpoint, use `.table-responsive` for horizontally scrolling tables.
 
-  <table class="table table-bordered table-responsive-lg">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Table heading</th>
-        <th scope="col">Table heading</th>
-        <th scope="col">Table heading</th>
-        <th scope="col">Table heading</th>
-        <th scope="col">Table heading</th>
-        <th scope="col">Table heading</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-      </tr>
-    </tbody>
-  </table>
+<div class="bd-example">
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Heading</th>
+          <th scope="col">Heading</th>
+          <th scope="col">Heading</th>
+          <th scope="col">Heading</th>
+          <th scope="col">Heading</th>
+          <th scope="col">Heading</th>
+          <th scope="col">Heading</th>
+          <th scope="col">Heading</th>
+          <th scope="col">Heading</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 
 {% highlight html %}
-<table class="table table-responsive">
-  ...
-</table>
+<div class="table-responsive">
+  <table class="table">
+    ...
+  </table>
+</div>
 {% endhighlight %}
 
 ### Breakpoint specific
@@ -720,51 +683,55 @@ Use `.table-responsive{-sm|-md|-lg|-xl}` as needed to create responsive tables u
 
 <div class="bd-example">
 {% for bp in site.data.breakpoints %}{% unless bp.breakpoint == "xs" %}
-<table class="table table-responsive{{ bp.abbr }}">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Table heading</th>
-      <th scope="col">Table heading</th>
-      <th scope="col">Table heading</th>
-      <th scope="col">Table heading</th>
-      <th scope="col">Table heading</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Table cell</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Table cell</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Table cell</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-    </tr>
-  </tbody>
-</table>
+<div class="table-responsive{{ bp.abbr }}">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Heading</th>
+        <th scope="col">Heading</th>
+        <th scope="col">Heading</th>
+        <th scope="col">Heading</th>
+        <th scope="col">Heading</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 {% endunless %}{% endfor %}
 </div>
 
 {% highlight html %}
 {% for bp in site.data.breakpoints %}{% unless bp.breakpoint == "xs" %}
-<table class="table table-responsive{{ bp.abbr }}">
-  ...
-</table>
+<div class="table-responsive{{ bp.abbr }}">
+  <table class="table">
+    ...
+  </table>
+</div>
 {% endunless %}{% endfor %}
 {% endhighlight %}
