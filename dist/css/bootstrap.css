@@ -583,22 +583,18 @@ samp {
 }
 
 code {
-  padding: 0.2rem 0.4rem;
-  font-size: 90%;
-  color: #bd4147;
-  background-color: #f8f9fa;
-  border-radius: 0.25rem;
+  font-size: 87.5%;
+  color: #e83e8c;
+  word-break: break-word;
 }
 
 a > code {
-  padding: 0;
   color: inherit;
-  background-color: inherit;
 }
 
 kbd {
   padding: 0.2rem 0.4rem;
-  font-size: 90%;
+  font-size: 87.5%;
   color: #fff;
   background-color: #212529;
   border-radius: 0.2rem;
@@ -612,16 +608,14 @@ kbd kbd {
 
 pre {
   display: block;
-  font-size: 90%;
+  font-size: 87.5%;
   color: #212529;
 }
 
 pre code {
-  padding: 0;
   font-size: inherit;
   color: inherit;
-  background-color: transparent;
-  border-radius: 0;
+  word-break: normal;
 }
 
 .pre-scrollable {
@@ -1906,6 +1900,7 @@ select.form-control:focus::-ms-value {
 .form-control-file,
 .form-control-range {
   display: block;
+  width: 100%;
 }
 
 .col-form-label {
@@ -3279,6 +3274,19 @@ tbody.collapse.show {
   border-bottom-left-radius: 0;
 }
 
+.input-group .custom-file {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+}
+
+.input-group .custom-file .custom-file-input {
+  width: 100%;
+  min-width: 0;
+}
+
 .input-group .custom-file:not(:first-child):not(:last-of-type) .custom-file-control,
 .input-group .custom-file:not(:first-child):not(:last-of-type) .custom-file-control::before {
   border-radius: 0;
@@ -3294,6 +3302,10 @@ tbody.collapse.show {
 .input-group .custom-file:last-of-type:not(:first-child) .custom-file-control::before {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+}
+
+.input-group .custom-select {
+  width: 100%;
 }
 
 .input-group-prepend,
