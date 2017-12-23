@@ -41,12 +41,25 @@
   // Custom file inputs have more complex markup, thus requiring different
   // border-radius overrides.
   .custom-file {
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    .custom-file-input {
+      width: 100%;
+      min-width: 0;
+    }
+
     &:not(:first-child):not(:last-of-type) .custom-file-control,
     &:not(:first-child):not(:last-of-type) .custom-file-control::before { @include border-radius(0); }
     &:first-child .custom-file-control,
     &:first-child .custom-file-control::before { @include border-right-radius(0); }
     &:last-of-type:not(:first-child) .custom-file-control,
     &:last-of-type:not(:first-child) .custom-file-control::before { @include border-left-radius(0); }
+  }
+
+  .custom-select {
+    width: 100%;
   }
 }
 

@@ -17,9 +17,9 @@ Using the most basic table markup, here's how `.table`-based tables look in Boot
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">Username</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
     </tr>
   </thead>
   <tbody>
@@ -52,9 +52,9 @@ You can also invert the colors—with light text on dark backgrounds—with `.ta
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">Username</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
     </tr>
   </thead>
   <tbody>
@@ -89,9 +89,9 @@ Similar to tables and dark tables, use the modifier classes `.thead-light` or `.
   <thead class="thead-dark">
     <tr>
       <th scope="col">#</th>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">Username</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
     </tr>
   </thead>
   <tbody>
@@ -120,9 +120,9 @@ Similar to tables and dark tables, use the modifier classes `.thead-light` or `.
   <thead class="thead-light">
     <tr>
       <th scope="col">#</th>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">Username</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
     </tr>
   </thead>
   <tbody>
@@ -157,9 +157,9 @@ Use `.table-striped` to add zebra-striping to any table row within the `<tbody>`
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">Username</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
     </tr>
   </thead>
   <tbody>
@@ -190,9 +190,9 @@ Use `.table-striped` to add zebra-striping to any table row within the `<tbody>`
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">Username</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
     </tr>
   </thead>
   <tbody>
@@ -227,9 +227,9 @@ Add `.table-bordered` for borders on all sides of the table and cells.
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">Username</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
     </tr>
   </thead>
   <tbody>
@@ -241,18 +241,12 @@ Add `.table-bordered` for borders on all sides of the table and cells.
     </tr>
     <tr>
       <th scope="row">2</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@TwBootstrap</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
       <td>Jacob</td>
       <td>Thornton</td>
       <td>@fat</td>
     </tr>
     <tr>
-      <th scope="row">4</th>
+      <th scope="row">3</th>
       <td colspan="2">Larry the Bird</td>
       <td>@twitter</td>
     </tr>
@@ -265,9 +259,9 @@ Add `.table-bordered` for borders on all sides of the table and cells.
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">Username</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
     </tr>
   </thead>
   <tbody>
@@ -279,18 +273,12 @@ Add `.table-bordered` for borders on all sides of the table and cells.
     </tr>
     <tr>
       <th scope="row">2</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@TwBootstrap</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
       <td>Jacob</td>
       <td>Thornton</td>
       <td>@fat</td>
     </tr>
     <tr>
-      <th scope="row">4</th>
+      <th scope="row">3</th>
       <td colspan="2">Larry the Bird</td>
       <td>@twitter</td>
     </tr>
@@ -307,9 +295,9 @@ Add `.table-hover` to enable a hover state on table rows within a `<tbody>`.
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">Username</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
     </tr>
   </thead>
   <tbody>
@@ -339,9 +327,9 @@ Add `.table-hover` to enable a hover state on table rows within a `<tbody>`.
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">Username</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
     </tr>
   </thead>
   <tbody>
@@ -375,9 +363,9 @@ Add `.table-sm` to make tables more compact by cutting cell padding in half.
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">Username</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
     </tr>
   </thead>
   <tbody>
@@ -407,9 +395,9 @@ Add `.table-sm` to make tables more compact by cutting cell padding in half.
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">Username</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
     </tr>
   </thead>
   <tbody>
@@ -442,32 +430,28 @@ Use contextual classes to color table rows or individual cells.
   <table class="table">
     <thead>
       <tr>
-        <th scope="col">Type</th>
-        <th scope="col">Column heading</th>
-        <th scope="col">Column heading</th>
-        <th scope="col">Column heading</th>
+        <th scope="col">Class</th>
+        <th scope="col">Heading</th>
+        <th scope="col">Heading</th>
       </tr>
     </thead>
     <tbody>
       <tr class="table-active">
         <th scope="row">Active</th>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
+        <td>Cell</td>
+        <td>Cell</td>
       </tr>
       <tr>
         <th scope="row">Default</th>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
+        <td>Cell</td>
+        <td>Cell</td>
       </tr>
 
       {% for color in site.data.theme-colors %}
       <tr class="table-{{ color.name }}">
         <th scope="row">{{ color.name | capitalize }}</th>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
+        <td>Cell</td>
+        <td>Cell</td>
       </tr>{% endfor %}
     </tbody>
   </table>
@@ -494,65 +478,55 @@ Regular table background variants are not available with the dark table, however
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Column heading</th>
-        <th scope="col">Column heading</th>
-        <th scope="col">Column heading</th>
+        <th scope="col">Heading</th>
+        <th scope="col">Heading</th>
       </tr>
     </thead>
     <tbody>
       <tr class="bg-primary">
         <th scope="row">1</th>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
+        <td>Cell</td>
+        <td>Cell</td>
       </tr>
       <tr>
         <th scope="row">2</th>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
+        <td>Cell</td>
+        <td>Cell</td>
       </tr>
       <tr class="bg-success">
         <th scope="row">3</th>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
+        <td>Cell</td>
+        <td>Cell</td>
       </tr>
       <tr>
         <th scope="row">4</th>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
+        <td>Cell</td>
+        <td>Cell</td>
       </tr>
       <tr class="bg-info">
         <th scope="row">5</th>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
+        <td>Cell</td>
+        <td>Cell</td>
       </tr>
       <tr>
         <th scope="row">6</th>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
+        <td>Cell</td>
+        <td>Cell</td>
       </tr>
       <tr class="bg-warning">
         <th scope="row">7</th>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
+        <td>Cell</td>
+        <td>Cell</td>
       </tr>
       <tr>
         <th scope="row">8</th>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
+        <td>Cell</td>
+        <td>Cell</td>
       </tr>
       <tr class="bg-danger">
         <th scope="row">9</th>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
+        <td>Cell</td>
+        <td>Cell</td>
       </tr>
     </tbody>
   </table>
@@ -594,9 +568,9 @@ A `<caption>` functions like a heading for a table. It helps users with screen r
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">Username</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
     </tr>
   </thead>
   <tbody>
