@@ -147,7 +147,7 @@
 
 .custom-select {
   display: inline-block;
-  max-width: 100%;
+  width: 100%;
   height: $input-height;
   padding: $custom-select-padding-y ($custom-select-padding-x + $custom-select-indicator-padding) $custom-select-padding-y $custom-select-padding-x;
   line-height: $custom-select-line-height;
@@ -219,13 +219,12 @@
 .custom-file {
   position: relative;
   display: inline-block;
-  max-width: 100%;
+  width: 100%;
   height: $custom-file-height;
   margin-bottom: 0;
 }
 
 .custom-file-input {
-  min-width: $custom-file-width;
   max-width: 100%;
   height: $custom-file-height;
   margin: 0;
