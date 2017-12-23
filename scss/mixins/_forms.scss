@@ -69,34 +69,32 @@
     }
   }
 
-
-  // TODO: redo check markup lol crap
   .form-check-input {
     .was-validated &:#{$state},
     &.is-#{$state} {
-      + .form-check-label {
+      ~ .form-check-label {
         color: $color;
       }
     }
   }
 
-  // custom radios and checks
   .custom-control-input {
     .was-validated &:#{$state},
     &.is-#{$state} {
-      ~ .custom-control-indicator {
-        background-color: lighten($color, 25%);
-      }
-      ~ .custom-control-description {
+      ~ .custom-control-label {
         color: $color;
+
+        &::before {
+          background-color: lighten($color, 25%);
+        }
       }
       &:checked {
-        ~ .custom-control-indicator {
+        ~ .custom-control-label::before {
           @include gradient-bg(lighten($color, 10%));
         }
       }
       &:focus {
-        ~ .custom-control-indicator {
+        ~ .custom-control-label::before {
           box-shadow: 0 0 0 1px $body-bg, 0 0 0 $input-focus-width rgba($color, .25);
         }
       }
