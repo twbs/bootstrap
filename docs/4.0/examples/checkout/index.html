@@ -26,7 +26,7 @@
       </div>
 
       <div class="row">
-        <div class="col-md-4 order-md-2">
+        <div class="col-md-4 order-md-2 mb-4">
           <h4 class="d-flex justify-content-between align-items-center mb-3">
             <span class="text-muted">Your cart</span>
             <span class="badge badge-secondary badge-pill">3</span>
@@ -159,36 +159,31 @@
               </div>
             </div>
             <hr class="mb-4">
-            <label class="custom-control custom-checkbox">
+            <div class="custom-control custom-checkbox">
               <input type="checkbox" class="custom-control-input">
-              <span class="custom-control-indicator"></span>
-              <span class="custom-control-description">Shipping address is the same as my billing address</span>
-            </label>
-            <label class="custom-control custom-checkbox">
+              <label class="custom-control-label">Shipping address is the same as my billing address</label>
+            </div>
+            <div class="custom-control custom-checkbox">
               <input type="checkbox" class="custom-control-input">
-              <span class="custom-control-indicator"></span>
-              <span class="custom-control-description">Save this information for next time</span>
-            </label>
+              <label class="custom-control-label">Save this information for next time</label>
+            </div>
             <hr class="mb-4">
 
             <h4 class="mb-3">Payment</h4>
 
             <div class="d-block my-3">
-              <label class="custom-control custom-radio">
+              <div class="custom-control custom-radio">
                 <input id="paymentMethodCredit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
-                <span class="custom-control-indicator"></span>
-                <span class="custom-control-description">Credit card</span>
-              </label>
-              <label class="custom-control custom-radio">
+                <label class="custom-control-label">Credit card</label>
+              </div>
+              <div class="custom-control custom-radio">
                 <input id="paymentMethodDebit" name="paymentMethod" type="radio" class="custom-control-input" required>
-                <span class="custom-control-indicator"></span>
-                <span class="custom-control-description">Debit card</span>
-              </label>
-              <label class="custom-control custom-radio">
+                <label class="custom-control-label">Debit card</label>
+              </div>
+              <div class="custom-control custom-radio">
                 <input id="paymentMethodPaypal" name="paymentMethod" type="radio" class="custom-control-input" required>
-                <span class="custom-control-indicator"></span>
-                <span class="custom-control-description">Paypal</span>
-              </label>
+                <label class="custom-control-label">Paypal</label>
+              </div>
             </div>
             <div class="row">
               <div class="col-md-6 mb-3">
