@@ -682,8 +682,8 @@ $tooltip-padding-y:           .25rem !default;
 $tooltip-padding-x:           .5rem !default;
 $tooltip-margin:              0 !default;
 
-$tooltip-arrow-width:         .4rem !default;
-$tooltip-arrow-height:        $tooltip-arrow-width !default;
+$tooltip-arrow-width:         .8rem !default;
+$tooltip-arrow-height:        .4rem !default;
 $tooltip-arrow-color:         $tooltip-bg !default;
 
 
@@ -704,8 +704,8 @@ $popover-body-color:                $body-color !default;
 $popover-body-padding-y:            $popover-header-padding-y !default;
 $popover-body-padding-x:            $popover-header-padding-x !default;
 
-$popover-arrow-width:               .8rem !default;
-$popover-arrow-height:              .4rem !default;
+$popover-arrow-width:               1.6rem !default;
+$popover-arrow-height:              .8rem !default;
 $popover-arrow-color:               $popover-bg !default;
 
 $popover-arrow-outer-color:         fade-in($popover-border-color, .05) !default;
