@@ -286,6 +286,7 @@ Dropped entirely for the new card component.
   - Added new [responsive margin and padding utilities]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/spacing/) for all sides, plus vertical and horizontal shorthands.
   - Added boatload of [flexbox utilities]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/flex/).
   - Dropped `.center-block` for the new `.mx-auto` class.
+- Clearfix updated to drop support for older browser versions.
 
 ### Vendor prefix mixins
 
