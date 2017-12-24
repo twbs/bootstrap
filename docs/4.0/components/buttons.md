@@ -123,15 +123,9 @@ The checked state for these buttons is **only updated via `click` event** on the
 Note that pre-checked buttons require you to manually add the `.active` class to the input's `<label>`.
 
 {% example html %}
-<div class="btn-group btn-group-toggle" data-toggle="buttons">
+<div class="btn-group-toggle" data-toggle="buttons">
   <label class="btn btn-secondary active">
-    <input type="checkbox" checked autocomplete="off"> Active
-  </label>
-  <label class="btn btn-secondary">
-    <input type="checkbox" autocomplete="off"> Check
-  </label>
-  <label class="btn btn-secondary">
-    <input type="checkbox" autocomplete="off"> Check
+    <input type="checkbox" checked autocomplete="off"> Checked
   </label>
 </div>
 {% endexample %}
