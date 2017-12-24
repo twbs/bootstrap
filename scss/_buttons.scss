@@ -40,7 +40,11 @@
   &:not([disabled]):not(.disabled):active,
   &:not([disabled]):not(.disabled).active {
     background-image: none;
-    @include box-shadow($btn-focus-box-shadow, $btn-active-box-shadow);
+    box-shadow: $btn-active-box-shadow;
+
+    &:focus {
+      @box-shadow: $btn-focus-box-shadow, $btn-active-box-shadow;
+    }
   }
 }
 
