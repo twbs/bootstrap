@@ -45,7 +45,7 @@
 
     &:not(:last-child) .custom-file-control,
     &:not(:last-child) .custom-file-control::before { @include border-right-radius(0); }
-    &:not(:first-child) .custom-file-control, 
+    &:not(:first-child) .custom-file-control,
     &:not(:first-child) .custom-file-control::before { @include border-left-radius(0); }
   }
 }
@@ -142,7 +142,7 @@
 .input-group > .input-group-append:not(:last-child) > .btn,
 .input-group > .input-group-append:not(:last-child) > .input-group-text,
 .input-group > .input-group-append:last-child > .btn:not(:last-child):not(.dropdown-toggle),
-.input-group > .input-group-append:last-child > .input-group-text:not(:last-child), {
+.input-group > .input-group-append:last-child > .input-group-text:not(:last-child) {
   @include border-right-radius(0);
 }
 
@@ -151,6 +151,6 @@
 .input-group > .input-group-prepend:not(:first-child) > .btn,
 .input-group > .input-group-prepend:not(:first-child) > .input-group-text,
 .input-group > .input-group-prepend:first-child > .btn:not(:first-child),
-.input-group > .input-group-prepend:first-child > .input-group-text:not(:first-child) {  
+.input-group > .input-group-prepend:first-child > .input-group-text:not(:first-child) {
   @include border-left-radius(0);
 }
