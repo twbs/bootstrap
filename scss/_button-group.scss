@@ -68,10 +68,6 @@
 
   // Custom edits for including btn-groups within btn-groups (useful for including
   // dropdown buttons within a btn-group)
-  > .btn-group {
-    float: left;
-  }
-
   > .btn-group:not(:first-child):not(:last-child) > .btn {
     border-radius: 0;
   }
