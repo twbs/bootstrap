@@ -32,6 +32,11 @@
     @include box-shadow(none);
   }
 
+  // Opinionated: add "hand" cursor to non-disabled .btn elements
+  &:not([disabled]):not(.disabled) {
+    cursor: pointer;
+  }
+
   &:not([disabled]):not(.disabled):active,
   &:not([disabled]):not(.disabled).active {
     background-image: none;
