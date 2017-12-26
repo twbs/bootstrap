@@ -35,64 +35,6 @@
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
-@media print {
-  *,
-  *::before,
-  *::after {
-    text-shadow: none !important;
-    box-shadow: none !important;
-  }
-  a,
-  a:visited {
-    text-decoration: underline;
-  }
-  abbr[title]::after {
-    content: " (" attr(title) ")";
-  }
-  pre {
-    white-space: pre-wrap !important;
-  }
-  pre,
-  blockquote {
-    border: 1px solid #999;
-    page-break-inside: avoid;
-  }
-  thead {
-    display: table-header-group;
-  }
-  tr,
-  img {
-    page-break-inside: avoid;
-  }
-  p,
-  h2,
-  h3 {
-    orphans: 3;
-    widows: 3;
-  }
-  h2,
-  h3 {
-    page-break-after: avoid;
-  }
-  .navbar {
-    display: none;
-  }
-  .badge {
-    border: 1px solid #000;
-  }
-  .table {
-    border-collapse: collapse !important;
-  }
-  .table td,
-  .table th {
-    background-color: #fff !important;
-  }
-  .table-bordered th,
-  .table-bordered td {
-    border: 1px solid #ddd !important;
-  }
-}
-
 *,
 *::before,
 *::after {
@@ -8888,5 +8830,63 @@ a.text-dark:focus, a.text-dark:hover {
 
 .invisible {
   visibility: hidden !important;
+}
+
+@media print {
+  *,
+  *::before,
+  *::after {
+    text-shadow: none !important;
+    box-shadow: none !important;
+  }
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+  abbr[title]::after {
+    content: " (" attr(title) ")";
+  }
+  pre {
+    white-space: pre-wrap !important;
+  }
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+  thead {
+    display: table-header-group;
+  }
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+  .navbar {
+    display: none;
+  }
+  .badge {
+    border: 1px solid #000;
+  }
+  .table {
+    border-collapse: collapse !important;
+  }
+  .table td,
+  .table th {
+    background-color: #fff !important;
+  }
+  .table-bordered th,
+  .table-bordered td {
+    border: 1px solid #ddd !important;
+  }
 }
 /*# sourceMappingURL=bootstrap.css.map */
