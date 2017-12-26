@@ -61,6 +61,28 @@
   }
 }
 
+.card-full-link {
+  .card > & {
+    display: inherit;
+    flex-direction: inherit;
+    min-width: 0;
+    color: inherit;
+    text-decoration: inherit;
+  }
+
+  :not(.card) > & {
+    &::after{
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 1;
+      content: "";
+    }
+  }
+}
+
 //
 // Optional textual caps
 //
@@ -91,7 +113,6 @@
     @include border-radius(0 0 $card-inner-border-radius $card-inner-border-radius);
   }
 }
-
 
 //
 // Header navs
@@ -135,7 +156,6 @@
   @include border-bottom-radius($card-inner-border-radius);
 }
 
-
 // Card deck
 
 .card-deck {
@@ -162,7 +182,6 @@
     }
   }
 }
-
 
 //
 // Card groups
@@ -247,7 +266,6 @@
     }
   }
 }
-
 
 //
 // Columns
