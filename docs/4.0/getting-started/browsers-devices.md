@@ -105,7 +105,6 @@ Internet Explorer 10+ is supported; IE9 and down is not. Please be aware that so
 
 **If you require IE8-9 support, use Bootstrap 3.** It's the most stable version of our code and is still supported by our team for critical bugfixes and documentation changes. However, no new features will be added to it.
 
-
 ## Modals and dropdowns on mobile
 
 ### Overflow and scrolling
