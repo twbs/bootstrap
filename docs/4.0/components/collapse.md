@@ -174,7 +174,7 @@ $('.collapse').collapse()
 
 Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-`, as in `data-parent=""`.
 
-<table class="table table-bordered table-striped table-responsive">
+<table class="table table-bordered table-striped">
   <thead>
     <tr>
       <th style="width: 100px;">Name</th>
@@ -234,7 +234,7 @@ Destroys an element's collapse.
 
 Bootstrap's collapse class exposes a few events for hooking into collapse functionality.
 
-<table class="table table-bordered table-striped table-responsive">
+<table class="table table-bordered table-striped">
   <thead>
     <tr>
       <th style="width: 150px;">Event Type</th>

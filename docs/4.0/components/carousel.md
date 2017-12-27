@@ -184,7 +184,7 @@ $('.carousel').carousel()
 
 Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-`, as in `data-interval=""`.
 
-<table class="table table-bordered table-striped table-responsive">
+<table class="table table-bordered table-striped">
   <thead>
     <tr>
       <th style="width: 100px;">Name</th>
@@ -278,7 +278,7 @@ Bootstrap's carousel class exposes two events for hooking into carousel function
 
 All carousel events are fired at the carousel itself (i.e. at the `<div class="carousel">`).
 
-<table class="table table-bordered table-striped table-responsive">
+<table class="table table-bordered table-striped">
   <thead>
     <tr>
       <th style="width: 150px;">Event Type</th>

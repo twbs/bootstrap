@@ -16,7 +16,7 @@ Alternative browsers which use the latest version of WebKit, Blink, or Gecko, wh
 
 Generally speaking, Bootstrap supports the latest versions of each major platform's default browsers. Note that proxy browsers (such as Opera Mini, Opera Mobile's Turbo mode, UC Browser Mini, Amazon Silk) are not supported.
 
-<table class="table table-bordered table-striped table-responsive">
+<table class="table table-bordered table-striped">
   <thead>
     <tr>
       <td></td>
@@ -59,7 +59,7 @@ Generally speaking, Bootstrap supports the latest versions of each major platfor
 
 Similarly, the latest versions of most desktop browsers are supported.
 
-<table class="table table-bordered table-striped table-responsive">
+<table class="table table-bordered table-striped">
   <thead>
     <tr>
       <td></td>
