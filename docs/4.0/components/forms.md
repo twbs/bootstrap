@@ -899,31 +899,37 @@ Our example forms show native textual `<input>`s above, but form validation styl
 
 {% example html %}
 <form class="was-validated">
-  <div class="custom-control custom-checkbox">
+  <div class="custom-control custom-checkbox mb-3">
     <input type="checkbox" class="custom-control-input" id="customControlValidation1" required>
     <label class="custom-control-label" for="customControlValidation1">Check this custom checkbox</label>
+    <div class="invalid-feedback">Example invalid feedback text</div>
   </div>
 
   <div class="custom-control custom-radio">
     <input type="radio" class="custom-control-input" id="customControlValidation2" name="radio-stacked" required>
     <label class="custom-control-label" for="customControlValidation2">Toggle this custom radio</label>
   </div>
-  <div class="custom-control custom-radio">
+  <div class="custom-control custom-radio mb-3">
     <input type="radio" class="custom-control-input" id="customControlValidation3" name="radio-stacked" required>
     <label class="custom-control-label" for="customControlValidation3">Or toggle this other custom radio</label>
+    <div class="invalid-feedback">More example invalid feedback text</div>
   </div>
 
-  <select class="custom-select d-block my-3" required>
-    <option value="">Open this select menu</option>
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
-  </select>
+  <div class="form-group">
+    <select class="custom-select" required>
+      <option value="">Open this select menu</option>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+    <div class="invalid-feedback">Example invalid custom select feedback</div>
+  </div>
 
-  <label class="custom-file">
-    <input type="file" id="file" class="custom-file-input" required>
-    <span class="custom-file-control"></span>
-  </label>
+  <div class="custom-file">
+    <input type="file" class="custom-file-input" id="validatedCustomFile" required>
+    <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+    <div class="invalid-feedback">Example invalid custom file feedback</div>  
+  </div>
 </form>
 {% endexample %}
 
@@ -1062,24 +1068,16 @@ As is the `size` attribute:
 
 ### File browser
 
-The file input is the most gnarly of the bunch and require additional JavaScript if you'd like to hook them up with functional *Choose file...* and selected file name text.
+The file input is the most gnarly of the bunch and requires additional JavaScript if you'd like to hook them up with functional *Choose file...* and selected file name text.
 
 {% example html %}
-<label class="custom-file">
-  <input type="file" id="file2" class="custom-file-input">
-  <span class="custom-file-control"></span>
-</label>
+<div class="custom-file">
+  <input type="file" class="custom-file-input" id="customFile">
+  <label class="custom-file-label" for="customFile">Choose file</label>
+</div>
 {% endexample %}
 
-Here's how it works:
-
-- We wrap the `<input>` in a `<label>` so the custom control properly triggers the file browser.
-- We hide the default file `<input>` via `opacity`.
-- We use `::after` to generate a custom background and directive (*Choose file...*).
-- We use `::before` to generate and position the *Browse* button.
-- We declare a `height` on the `<input>` for proper spacing for surrounding content.
-
-In other words, it's an entirely custom element, all generated via CSS.
+We hide the default file `<input>` via `opacity` and instead style the `<label>`. The button is generated and positioned with `::after`. Lastly, we declare a `width` and `height` on the `<input>` for proper spacing for surrounding content.
 
 #### Translating or customizing the strings
 

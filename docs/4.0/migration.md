@@ -35,8 +35,6 @@ While Beta 2 saw the bulk of our breaking changes during the beta phase, but we 
 
 - Sizing classes must be on the parent `.input-group` and not the individual form elements.
 
-- Due to limitations in how CSS selectors work, all buttons must be the same element (e.g., `<a>` or `<button>`).
-
 ## Beta 2 changes
 
 While in beta, we aim to have no breaking changes. However, things don't always go as planned. Below are the breaking changes to bear in mind when moving from Beta 1 to Beta 2.
