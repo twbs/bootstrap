@@ -12,6 +12,10 @@
     text-decoration: none;
     opacity: .75;
   }
+
+  [dir='rtl'] & {
+    float: left;
+  }
 }
 
 // Additional properties for button version
