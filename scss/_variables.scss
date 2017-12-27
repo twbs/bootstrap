@@ -702,8 +702,8 @@ $popover-body-color:                $body-color !default;
 $popover-body-padding-y:            $popover-header-padding-y !default;
 $popover-body-padding-x:            $popover-header-padding-x !default;
 
-$popover-arrow-width:               1.6rem !default;
-$popover-arrow-height:              .8rem !default;
+$popover-arrow-width:               1rem !default;
+$popover-arrow-height:              .5rem !default;
 $popover-arrow-color:               $popover-bg !default;
 
 $popover-arrow-outer-color:         fade-in($popover-border-color, .05) !default;
