@@ -17,10 +17,6 @@
   @include border-radius($border-radius-lg);
   @include box-shadow($popover-box-shadow);
 
-  // Arrows
-  //
-  // .arrow is outer, .arrow::after is inner
-
   .arrow {
     position: absolute;
     display: block;
@@ -48,7 +44,7 @@
 
   .arrow::before,
   .arrow::after {
-    border-width: $popover-arrow-height $popover-arrow-width/2 0;
+    border-width: $popover-arrow-height ($popover-arrow-width / 2) 0;
   }
 
   .arrow::before {
@@ -74,7 +70,7 @@
 
   .arrow::before,
   .arrow::after {
-    border-width: $popover-arrow-width/2 $popover-arrow-height $popover-arrow-width/2 0;
+    border-width: ($popover-arrow-width / 2) $popover-arrow-height ($popover-arrow-width / 2) 0;
   }
 
   .arrow::before {
@@ -97,7 +93,7 @@
 
   .arrow::before,
   .arrow::after {
-    border-width: 0 $popover-arrow-width/2 $popover-arrow-height $popover-arrow-width/2;
+    border-width: 0 ($popover-arrow-width / 2) $popover-arrow-height ($popover-arrow-width / 2);
   }
 
   .arrow::before {
@@ -117,7 +113,7 @@
     left: 50%;
     display: block;
     width: $popover-arrow-width;
-    margin-left: -$popover-arrow-width/2;
+    margin-left: ($popover-arrow-width / -2);
     content: "";
     border-bottom: $popover-border-width solid $popover-header-bg;
   }
@@ -135,7 +131,7 @@
 
   .arrow::before,
   .arrow::after {
-    border-width: $popover-arrow-width/2 0 $popover-arrow-width/2 $popover-arrow-height;
+    border-width: ($popover-arrow-width / 2) 0 ($popover-arrow-width / 2) $popover-arrow-height;
   }
 
   .arrow::before {
