@@ -41,40 +41,7 @@ Hover over the links below to see tooltips:
   </p>
 </div>
 
-### Static demo
-
-Four options are available: top, right, bottom, and left aligned.
-
-<div class="bd-example bd-example-tooltip-static">
-  <div class="tooltip bs-tooltip-top bs-tooltip-top-docs" role="tooltip">
-    <div class="arrow"></div>
-    <div class="tooltip-inner">
-      Tooltip on the top
-    </div>
-  </div>
-  <div class="tooltip bs-tooltip-right bs-tooltip-right-docs" role="tooltip">
-    <div class="arrow"></div>
-    <div class="tooltip-inner">
-      Tooltip on the right
-    </div>
-  </div>
-  <div class="tooltip bs-tooltip-bottom bs-tooltip-bottom-docs" role="tooltip">
-    <div class="arrow"></div>
-    <div class="tooltip-inner">
-      Tooltip on the bottom
-    </div>
-  </div>
-  <div class="tooltip bs-tooltip-left bs-tooltip-left-docs" role="tooltip">
-    <div class="arrow"></div>
-    <div class="tooltip-inner">
-      Tooltip on the left
-    </div>
-  </div>
-</div>
-
-### Interactive demo
-
-Hover over the buttons below to see their tooltips.
+Hover over the buttons below to see the four tooltips directions: top, right, bottom, and left.
 
 <div class="bd-example tooltip-demo">
   <div class="bd-example-tooltips">
