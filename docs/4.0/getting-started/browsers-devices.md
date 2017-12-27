@@ -34,7 +34,7 @@ Generally speaking, Bootstrap supports the latest versions of each major platfor
       <td class="text-success">Supported</td>
       <td class="text-muted">N/A</td>
       <td class="text-success">Android v5.0+ supported</td>
-      <td class="text-muted">N/A</td>
+      <td class="text-success">Supported</td>
     </tr>
     <tr>
       <th scope="row">iOS</th>
@@ -42,7 +42,7 @@ Generally speaking, Bootstrap supports the latest versions of each major platfor
       <td class="text-success">Supported</td>
       <td class="text-success">Supported</td>
       <td class="text-muted">N/A</td>
-      <td class="text-muted">N/A</td>
+      <td class="text-success">Supported</td>
     </tr>
     <tr>
       <th scope="row">Windows 10 Mobile</th>
