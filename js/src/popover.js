@@ -26,7 +26,8 @@ const Popover = (($) => {
   const CLASS_PREFIX        = 'bs-popover'
   const BSCLS_PREFIX_REGEX  = new RegExp(`(^|\\s)${CLASS_PREFIX}\\S+`, 'g')
 
-  const Default = $.extend({}, Tooltip.Default, {
+  const Default = {
+    ...Tooltip.Default,
     placement : 'right',
     trigger   : 'click',
     content   : '',
@@ -34,11 +35,12 @@ const Popover = (($) => {
               + '<div class="arrow"></div>'
               + '<h3 class="popover-header"></h3>'
               + '<div class="popover-body"></div></div>'
-  })
+  }
 
-  const DefaultType = $.extend({}, Tooltip.DefaultType, {
+  const DefaultType = {
+    ...Tooltip.DefaultType,
     content : '(string|element|function)'
-  })
+  }
 
   const ClassName = {
     FADE : 'fade',
@@ -124,7 +126,11 @@ const Popover = (($) => {
 
       // we use append for html objects to maintain js events
       this.setElementContent($tip.find(Selector.TITLE), this.getTitle())
-      this.setElementContent($tip.find(Selector.CONTENT), this._getContent())
+      let content = this._getContent()
+      if (typeof content === 'function') {
+        content = content.call(this.element)
+      }
+      this.setElementContent($tip.find(Selector.CONTENT), content)
 
       $tip.removeClass(`${ClassName.FADE} ${ClassName.SHOW}`)
     }
@@ -133,9 +139,7 @@ const Popover = (($) => {
 
     _getContent() {
       return this.element.getAttribute('data-content')
-        || (typeof this.config.content === 'function' ?
-              this.config.content.call(this.element) :
-              this.config.content)
+        || this.config.content
     }
 
     _cleanTipClass() {

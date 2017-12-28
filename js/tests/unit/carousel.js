@@ -120,17 +120,17 @@ $(function () {
       .one('slide.bs.carousel', function (e) {
         e.preventDefault()
         setTimeout(function () {
-          assert.ok($carousel.find('.carousel-item:eq(0)').is('.active'), 'first item still active')
-          assert.ok($carousel.find('.carousel-indicators li:eq(0)').is('.active'), 'first indicator still active')
+          assert.ok($carousel.find('.carousel-item:nth-child(1)').is('.active'), 'first item still active')
+          assert.ok($carousel.find('.carousel-indicators li:nth-child(1)').is('.active'), 'first indicator still active')
           $carousel.bootstrapCarousel('next')
         }, 0)
       })
       .one('slid.bs.carousel', function () {
         setTimeout(function () {
-          assert.ok(!$carousel.find('.carousel-item:eq(0)').is('.active'), 'first item still active')
-          assert.ok(!$carousel.find('.carousel-indicators li:eq(0)').is('.active'), 'first indicator still active')
-          assert.ok($carousel.find('.carousel-item:eq(1)').is('.active'), 'second item active')
-          assert.ok($carousel.find('.carousel-indicators li:eq(1)').is('.active'), 'second indicator active')
+          assert.ok(!$carousel.find('.carousel-item:nth-child(1)').is('.active'), 'first item still active')
+          assert.ok(!$carousel.find('.carousel-indicators li:nth-child(1)').is('.active'), 'first indicator still active')
+          assert.ok($carousel.find('.carousel-item:nth-child(2)').is('.active'), 'second item active')
+          assert.ok($carousel.find('.carousel-indicators li:nth-child(2)').is('.active'), 'second indicator active')
           done()
         }, 0)
       })

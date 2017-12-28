@@ -14,8 +14,8 @@
 const fs = require('fs')
 const path = require('path')
 const sh = require('shelljs')
+
 sh.config.fatal = true
-const sed = sh.sed
 
 // Blame TC39... https://github.com/benjamingr/RegExp.escape/issues/37
 RegExp.quote = (string) => string.replace(/[-\\^$*+?.()|[\]{}]/g, '\\$&')
@@ -58,7 +58,7 @@ function replaceRecursively(directory, excludedDirectories, allowedExtensions, o
   replacement = RegExp.quoteReplacement(replacement)
   const updateFile = !DRY_RUN ? (filepath) => {
     if (allowedExtensions.has(path.parse(filepath).ext)) {
-      sed('-i', original, replacement, filepath)
+      sh.sed('-i', original, replacement, filepath)
     }
   } : (filepath) => {
     if (allowedExtensions.has(path.parse(filepath).ext)) {

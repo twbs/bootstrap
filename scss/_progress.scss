@@ -10,14 +10,17 @@
   font-size: $progress-font-size;
   background-color: $progress-bg;
   @include border-radius($progress-border-radius);
+  @include box-shadow($progress-box-shadow);
 }
 
 .progress-bar {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
   color: $progress-bar-color;
+  text-align: center;
   background-color: $progress-bar-bg;
+  @include transition($progress-bar-transition);
 }
 
 .progress-bar-striped {
