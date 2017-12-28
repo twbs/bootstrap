@@ -3462,6 +3462,7 @@ tbody.collapse.show {
 }
 
 .input-group-text {
+  height: 100%;
   padding: 0.375rem 0.75rem;
   margin-bottom: 0;
   font-size: 1rem;
