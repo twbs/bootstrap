@@ -51,7 +51,6 @@
 
 .bd-sidebar {
   order: 0;
-  // background-color: #f5f2f9;
   border-bottom: 1px solid rgba(0, 0, 0, .1);
 
   @include media-breakpoint-up(md) {
@@ -69,7 +68,7 @@
   }
 }
 
-.bd-links {
+.bd-sidenav {
   padding-top: 1rem;
   padding-bottom: 1rem;
   margin-right: -15px;
@@ -106,11 +105,15 @@
   color: $gray-900;
 }
 
-.bd-sidenav {
-  display: none;
+.bd-sidenav-section {
+  margin-bottom: 1rem;
+
+  &:not(:first-child) {
+    margin-top: 1rem;
+  }
 }
 
-.bd-toc-link {
+.bd-sidenav-section-title {
   display: block;
   padding: .25rem 1.5rem;
   font-weight: 500;
@@ -120,47 +123,34 @@
     color: rgba(0, 0, 0, .85);
     text-decoration: none;
   }
-}
 
-.bd-toc-item {
-  &.active {
-    margin-bottom: 1rem;
-
-    &:not(:first-child) {
-      margin-top: 1rem;
-    }
-
-    > .bd-toc-link {
-      color: rgba(0, 0, 0, .85);
-
-      &:hover {
-        background-color: transparent;
-      }
-    }
-
-    > .bd-sidenav {
-      display: block;
-    }
+  .active > & {
+    padding-left: 1.3rem;
+    color: $bd-purple-bright;
+    border-left: .2rem solid $bd-purple-bright;
   }
 }
 
-// All levels of nav
-.bd-sidebar .nav > li > a {
-  display: block;
-  padding: .25rem 1.5rem;
-  font-size: 90%;
-  color: rgba(0, 0, 0, .65);
-}
+.bd-sidenav-section-nav {
+  flex-direction: column;
 
-.bd-sidebar .nav > li > a:hover {
-  color: rgba(0, 0, 0, .85);
-  text-decoration: none;
-  background-color: transparent;
-}
+  a {
+    display: block;
+    padding: .25rem 1.5rem;
+    font-size: 90%;
+    color: rgba(0, 0, 0, .65);
 
-.bd-sidebar .nav > .active > a,
-.bd-sidebar .nav > .active:hover > a {
-  font-weight: 500;
-  color: rgba(0, 0, 0, .85);
-  background-color: transparent;
+    &:hover {
+      color: rgba(0, 0, 0, .85);
+      text-decoration: none;
+    }
+  }
+
+  .active a,
+  .active:hover a {
+    padding-left: 1.3rem;
+    font-weight: 500;
+    color: $bd-purple-bright;
+    border-left: .2rem solid $bd-purple-bright;
+  }
 }
