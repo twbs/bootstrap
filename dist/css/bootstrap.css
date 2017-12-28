@@ -2436,6 +2436,10 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
   opacity: 0.65;
 }
 
+.btn:not([disabled]):not(.disabled) {
+  cursor: pointer;
+}
+
 .btn:not([disabled]):not(.disabled):active, .btn:not([disabled]):not(.disabled).active {
   background-image: none;
 }
@@ -3882,6 +3886,10 @@ tbody.collapse.show {
   text-decoration: none;
 }
 
+.navbar-toggler:not([disabled]):not(.disabled) {
+  cursor: pointer;
+}
+
 .navbar-toggler-icon {
   display: inline-block;
   width: 1.5em;
@@ -4593,6 +4601,10 @@ tbody.collapse.show {
   border-color: #dee2e6;
 }
 
+.page-link:not([disabled]):not(.disabled) {
+  cursor: pointer;
+}
+
 .page-item:first-child .page-link {
   margin-left: 0;
   border-top-left-radius: 0.25rem;
@@ -4614,6 +4626,7 @@ tbody.collapse.show {
 .page-item.disabled .page-link {
   color: #868e96;
   pointer-events: none;
+  cursor: auto;
   background-color: #fff;
   border-color: #dee2e6;
 }
@@ -5281,6 +5294,10 @@ button.list-group-item-dark.active {
   color: #000;
   text-decoration: none;
   opacity: .75;
+}
+
+.close:not([disabled]):not(.disabled) {
+  cursor: pointer;
 }
 
 button.close {
