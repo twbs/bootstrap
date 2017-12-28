@@ -25,6 +25,7 @@
     "css-compile-docs": "node-sass --output-style expanded --source-map true --source-map-contents true --precision 6 assets/scss/docs.scss assets/css/docs.min.css",
     "css-lint": "stylelint --config build/.stylelintrc --syntax scss \"scss/**/*.scss\"",
     "css-lint-docs": "stylelint --config build/.stylelintrc --syntax scss \"assets/scss/*.scss\" && stylelint --config docs/4.0/examples/.stylelintrc \"docs/**/*.css\"",
+    "css-lint-vars": "node build/lint-vars.js scss/ assets/scss/",
     "css-prefix": "postcss --config build/postcss.config.js --replace \"dist/css/*.css\" \"!dist/css/*.min.css\"",
     "css-prefix-docs": "postcss --config build/postcss.config.js --replace \"assets/css/docs.min.css\" \"docs/**/*.css\"",
     "css-minify": "cleancss --level 1 --source-map --source-map-inline-sources --output dist/css/bootstrap.min.css dist/css/bootstrap.css && cleancss --level 1 --source-map --source-map-inline-sources --output dist/css/bootstrap-grid.min.css dist/css/bootstrap-grid.css && cleancss --level 1 --source-map --source-map-inline-sources --output dist/css/bootstrap-reboot.min.css dist/css/bootstrap-reboot.css",
@@ -41,8 +42,10 @@
     "js-minify": "npm-run-all --parallel js-minify-*",
     "js-minify-standalone": "uglifyjs --compress typeofs=false --mangle --comments \"/^!/\" --source-map \"content=dist/js/bootstrap.js.map,includeSources,url=bootstrap.min.js.map\" --output dist/js/bootstrap.min.js dist/js/bootstrap.js",
     "js-minify-bundle": "uglifyjs --compress typeofs=false --mangle --comments \"/^!/\" --source-map \"content=dist/js/bootstrap.bundle.js.map,includeSources,url=bootstrap.bundle.min.js.map\" --output dist/js/bootstrap.bundle.min.js dist/js/bootstrap.bundle.js",
-    "js-minify-docs": "uglifyjs --mangle --comments \"/^!/\" --output assets/js/docs.min.js assets/js/vendor/anchor.min.js assets/js/vendor/clipboard.min.js assets/js/vendor/holder.min.js assets/js/src/application.js assets/js/src/pwa.js",
-    "js-test": "phantomjs ./node_modules/qunit-phantomjs-runner/runner.js js/tests/index.html 60",
+    "js-minify-docs": "uglifyjs --mangle --comments \"/^!/\" --output assets/js/docs.min.js assets/js/vendor/anchor.min.js assets/js/vendor/clipboard.min.js assets/js/vendor/holder.min.js \"assets/js/src/*.js\"",
+    "js-test": "npm-run-all --parallel js-test-karma*",
+    "js-test-karma": "karma start js/tests/karma.conf.js",
+    "js-test-karma-old": "cross-env USE_OLD_JQUERY=true npm run js-test-karma",
     "js-test-cloud": "ruby -r webrick -e \"s = WEBrick::HTTPServer.new(:Port => 3000, :DocumentRoot => Dir.pwd, :Logger => WEBrick::Log.new('/dev/null'), :AccessLog => []); trap('INT') { s.shutdown }; s.start\" & node build/saucelabs-unit-test.js",
     "docs": "npm-run-all --parallel css-docs js-docs --sequential docs-compile docs-lint",
     "docs-compile": "bundle exec jekyll build",
@@ -54,7 +57,8 @@
     "docs-serve": "bundle exec jekyll serve",
     "docs-upload-preview": "build/upload-preview.sh",
     "docs-workbox-precache": "node build/workbox.js",
-    "maintenance-dependencies": "ncu -a -x jquery && npm update && bundle update && shx echo 'Manually update assets/js/vendor/*, js/tests/vendor/* and .travis.yml'",
+    "maintenance-dependencies": "ncu -a -x jquery && npm update && bundle update && shx echo \"Manually update assets/js/vendor/*, js/tests/vendor/* and .travis.yml\"",
+    "release-sri": "node build/generate-sri.js",
     "release-version": "node build/change-version.js",
     "release-zip": "cd dist/ && zip -r9 bootstrap-$npm_package_version-dist.zip * && shx mv bootstrap-$npm_package_version-dist.zip ..",
     "dist": "npm-run-all --parallel css js",
@@ -80,58 +84,59 @@
     "popper.js": "^1.12.9"
   },
   "devDependencies": {
-    "@babel/cli": "7.0.0-beta.31",
-    "@babel/core": "7.0.0-beta.31",
-    "@babel/preset-env": "7.0.0-beta.31",
-    "autoprefixer": "^7.1.6",
-    "babel-eslint": "^8.0.2",
+    "@babel/cli": "7.0.0-beta.35",
+    "@babel/core": "7.0.0-beta.35",
+    "@babel/preset-env": "7.0.0-beta.35",
+    "autoprefixer": "^7.2.3",
+    "babel-eslint": "^8.0.3",
     "babel-plugin-transform-es2015-modules-strip": "^0.1.1",
     "bundlesize": "^0.15.3",
     "clean-css-cli": "^4.1.10",
-    "cross-env": "^5.1.1",
-    "eslint": "^4.11.0",
+    "cross-env": "^5.1.3",
+    "eslint": "^4.13.1",
     "eslint-plugin-compat": "^2.1.0",
+    "glob": "^7.1.2",
     "htmllint-cli": "^0.0.6",
     "jsunitsaucelabs": "^1.3.0",
-    "node-sass": "^4.6.1",
-    "nodemon": "^1.12.1",
+    "karma": "^2.0.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-detect-browsers": "^2.2.6",
+    "karma-firefox-launcher": "^1.1.0",
+    "karma-qunit": "^1.2.1",
+    "node-sass": "^4.7.2",
+    "nodemon": "^1.14.1",
     "npm-run-all": "^4.1.2",
-    "phantomjs-prebuilt": "^2.1.16",
     "popper.js": "^1.12.9",
     "postcss-cli": "^4.1.1",
-    "qunit-phantomjs-runner": "^2.3.0",
     "qunitjs": "^2.4.1",
-    "rollup": "^0.51.5",
+    "rollup": "^0.52.3",
     "rollup-plugin-babel": "4.0.0-beta.0",
     "rollup-plugin-node-resolve": "^3.0.0",
     "shelljs": "^0.7.8",
     "shx": "^0.2.2",
-    "stylelint": "^8.2.0",
-    "stylelint-config-recommended-scss": "^2.0.0",
-    "stylelint-config-standard": "^17.0.0",
-    "stylelint-order": "^0.7.0",
-    "stylelint-scss": "^2.1.0",
-    "uglify-js": "^3.1.9",
+    "sri-toolbox": "^0.2.0",
+    "stylelint": "^8.4.0",
+    "stylelint-config-recommended-scss": "^3.0.0",
+    "stylelint-config-standard": "^18.0.0",
+    "stylelint-order": "^0.8.0",
+    "stylelint-scss": "^2.2.0",
+    "uglify-js": "^3.2.2",
     "vnu-jar": "^17.11.1",
-    "workbox-build": "^2.1.1"
+    "workbox-build": "^2.1.2"
   },
   "engines": {
     "node": ">=6"
   },
   "files": [
-    ".babelrc",
-    ".eslintignore",
-    "Gemfile",
-    "dist",
-    "build",
-    "js/.eslintrc.json",
-    "js/**/*.js",
-    "js/**/*.js.map",
-    "scss/**/*.scss"
+    "dist/",
+    "js/{src,dist}/",
+    "scss/"
   ],
   "browserslist": [
+    "last 1 major version",
+    ">= 1%",
     "Chrome >= 45",
-    "Firefox ESR",
+    "Firefox >= 38",
     "Edge >= 12",
     "Explorer >= 10",
     "iOS >= 9",
@@ -150,11 +155,11 @@
     },
     {
       "path": "./dist/css/bootstrap-reboot.css",
-      "maxSize": "5 kB"
+      "maxSize": "3 kB"
     },
     {
       "path": "./dist/css/bootstrap-reboot.min.css",
-      "maxSize": "5 kB"
+      "maxSize": "3 kB"
     },
     {
       "path": "./dist/css/bootstrap.css",
@@ -162,7 +167,7 @@
     },
     {
       "path": "./dist/css/bootstrap.min.css",
-      "maxSize": "20 kB"
+      "maxSize": "21 kB"
     },
     {
       "path": "./dist/js/bootstrap.bundle.js",
@@ -198,7 +203,7 @@
     },
     "dependencies": {},
     "peerDependencies": {
-      "jquery": "^3.0.0",
+      "jquery": "1.9.1 - 3",
       "popper.js": "^1.12.9"
     }
   }
