@@ -330,6 +330,7 @@ output {
 
 summary {
   display: list-item;
+  cursor: pointer;
 }
 
 template {
