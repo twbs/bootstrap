@@ -27,11 +27,13 @@ body {
 @media (min-width: 768px) {
   .navbar-nav {
     display: -ms-flexbox;
+    display: -webkit-box;
     display: flex;
   }
 
   .navbar-nav .nav-item {
     -ms-flex: 1 0 auto;
+    -webkit-box-flex: 1;
     flex: 1 0 auto;
   }
 }
