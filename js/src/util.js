@@ -20,11 +20,6 @@ const Util = (($) => {
 
   const MAX_UID = 1000000
 
-  const TransitionEndEvent = {
-    WebkitTransition : 'webkitTransitionEnd',
-    transition       : 'transitionend'
-  }
-
   // shoutout AngusCroll (https://goo.gl/pxwQGp)
   function toType(obj) {
     return {}.toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase()
@@ -48,17 +43,9 @@ const Util = (($) => {
       return false
     }
 
-    const el = document.createElement('bootstrap')
-
-    for (const name in TransitionEndEvent) {
-      if (typeof el.style[name] !== 'undefined') {
-        return {
-          end: TransitionEndEvent[name]
-        }
-      }
+    return {
+      end: 'transitionend'
     }
-
-    return false
   }
 
   function transitionEndEmulator(duration) {

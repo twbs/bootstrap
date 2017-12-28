@@ -254,9 +254,9 @@ You can activate individual list item in several ways:
 
 {% highlight js %}
 $('#myList a[href="#profile"]').tab('show') // Select tab by name
-$('#myList a:first').tab('show') // Select first tab
-$('#myList a:last').tab('show') // Select last tab
-$('#myList li:eq(2) a').tab('show') // Select third tab (0-indexed)
+$('#myList a:first-child').tab('show') // Select first tab
+$('#myList a:last-child').tab('show') // Select last tab
+$('#myList a:nth-child(3)').tab('show') // Select third tab
 {% endhighlight %}
 
 ### Fade effect
@@ -295,7 +295,7 @@ Activates a list item element and content container. Tab should have either a `d
 
 <script>
   $(function () {
-    $('#myList a:last').tab('show')
+    $('#myList a:last-child').tab('show')
   })
 </script>
 {% endhighlight %}
@@ -319,7 +319,7 @@ When showing a new tab, the events fire in the following order:
 
 If no tab was already active, the `hide.bs.tab` and `hidden.bs.tab` events will not be fired.
 
-<table class="table table-bordered table-striped table-responsive">
+<table class="table table-bordered table-striped">
   <thead>
     <tr>
       <th style="width: 150px;">Event type</th>

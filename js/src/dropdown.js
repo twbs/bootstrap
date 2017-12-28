@@ -50,7 +50,8 @@ const Dropdown = (($) => {
     DROPRIGHT : 'dropright',
     DROPLEFT  : 'dropleft',
     MENURIGHT : 'dropdown-menu-right',
-    MENULEFT  : 'dropdown-menu-left'
+    MENULEFT  : 'dropdown-menu-left',
+    POSITION_STATIC : 'position-static'
   }
 
   const Selector = {
@@ -74,12 +75,14 @@ const Dropdown = (($) => {
 
   const Default = {
     offset      : 0,
-    flip        : true
+    flip        : true,
+    boundary    : 'scrollParent'
   }
 
   const DefaultType = {
     offset      : '(number|string|function)',
-    flip        : 'boolean'
+    flip        : 'boolean',
+    boundary    : '(string|element)'
   }
 
 
@@ -159,6 +162,12 @@ const Dropdown = (($) => {
             element = parent
           }
         }
+        // If boundary is not `scrollParent`, then set position to `static`
+        // to allow the menu to "escape" the scroll parent's boundaries
+        // https://github.com/twbs/bootstrap/issues/24251
+        if (this._config.boundary !== 'scrollParent') {
+          $(parent).addClass(ClassName.POSITION_STATIC)
+        }
         this._popper = new Popper(element, this._menu, this._getPopperConfig())
       }
 
@@ -210,12 +219,11 @@ const Dropdown = (($) => {
     }
 
     _getConfig(config) {
-      config = $.extend(
-        {},
-        this.constructor.Default,
-        $(this._element).data(),
-        config
-      )
+      config = {
+        ...this.constructor.Default,
+        ...$(this._element).data(),
+        ...config
+      }
 
       Util.typeCheckConfig(
         NAME,
@@ -262,7 +270,10 @@ const Dropdown = (($) => {
       const offsetConf = {}
       if (typeof this._config.offset === 'function') {
         offsetConf.fn = (data) => {
-          data.offsets = $.extend({}, data.offsets, this._config.offset(data.offsets) || {})
+          data.offsets = {
+            ...data.offsets,
+            ...this._config.offset(data.offsets) || {}
+          }
           return data
         }
       } else {
@@ -274,6 +285,9 @@ const Dropdown = (($) => {
           offset : offsetConf,
           flip : {
             enabled : this._config.flip
+          },
+          preventOverflow : {
+            boundariesElement : this._config.boundary
           }
         }
       }
