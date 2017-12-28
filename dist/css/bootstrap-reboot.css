@@ -1,5 +1,5 @@
 /*!
- * Bootstrap Reboot v4.0.0-beta.2 (https://getbootstrap.com)
+ * Bootstrap Reboot v4.0.0-beta.3 (https://getbootstrap.com)
  * Copyright 2011-2017 The Bootstrap Authors
  * Copyright 2011-2017 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
@@ -40,7 +40,7 @@ body {
 }
 
 [tabindex="-1"]:focus {
-  outline: none !important;
+  outline: 0 !important;
 }
 
 hr {
@@ -63,7 +63,7 @@ abbr[title],
 abbr[data-original-title] {
   text-decoration: underline;
   -webkit-text-decoration: underline dotted;
-          text-decoration: underline dotted;
+  text-decoration: underline dotted;
   cursor: help;
   border-bottom: 0;
 }
@@ -194,7 +194,7 @@ select,
 summary,
 textarea {
   -ms-touch-action: manipulation;
-      touch-action: manipulation;
+  touch-action: manipulation;
 }
 
 table {
@@ -330,6 +330,7 @@ output {
 
 summary {
   display: list-item;
+  cursor: pointer;
 }
 
 template {

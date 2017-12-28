@@ -20,18 +20,20 @@ body {
 }
 
 .navbar {
-  background-image: linear-gradient(to bottom, #f7f7f7 0%,#eee 100%);
+  background-image: linear-gradient(to bottom, #f7f7f7 0%, #eee 100%);
   border: 1px solid #e5e5e5;
 }
 
 @media (min-width: 768px) {
   .navbar-nav {
     display: -ms-flexbox;
+    display: -webkit-box;
     display: flex;
   }
 
   .navbar-nav .nav-item {
     -ms-flex: 1 0 auto;
+    -webkit-box-flex: 1;
     flex: 1 0 auto;
   }
 }
