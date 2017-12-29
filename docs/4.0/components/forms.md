@@ -1081,18 +1081,12 @@ We hide the default file `<input>` via `opacity` and instead style the `<label>`
 
 #### Translating or customizing the strings
 
-The [`:lang()` pseudo-class](https://developer.mozilla.org/en-US/docs/Web/CSS/:lang) is used to allow for easy translation of the "Browse" and "Choose file..." text into other languages. Simply override or add entries to the `$custom-file-text` SCSS variable with the relevant [language tag](https://en.wikipedia.org/wiki/IETF_language_tag) and localized strings. The English strings can be customized the same way. For example, here's how one might add a Spanish translation (Spanish's language code is `es`):
+The [`:lang()` pseudo-class](https://developer.mozilla.org/en-US/docs/Web/CSS/:lang) is used to allow for easy translation of the "Browse" text into other languages. Simply override or add entries to the `$custom-file-text` SCSS variable with the relevant [language tag](https://en.wikipedia.org/wiki/IETF_language_tag) and localized strings. The English strings can be customized the same way. For example, here's how one might add a Spanish translation (Spanish's language code is `es`):
 
 {% highlight scss %}
 $custom-file-text: (
-  placeholder: (
-    en: "Choose file...",
-    es: "Seleccionar archivo..."
-  ),
-  button-label: (
-    en: "Browse",
-    es: "Navegar"
-  )
+  en: "Browse",
+  es: "Navegar"
 );
 {% endhighlight %}
 
