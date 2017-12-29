@@ -130,7 +130,11 @@ const Collapse = (($) => {
       let activesData
 
       if (this._parent) {
-        actives = $.makeArray($(this._parent).children().children(Selector.ACTIVES))
+        actives = $.makeArray(
+          $(this._parent)
+            .find(Selector.ACTIVES)
+            .filter(`[data-parent="${this._config.parent}"]`)
+        )
         if (!actives.length) {
           actives = null
         }
