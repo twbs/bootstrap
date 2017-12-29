@@ -1,9 +1,10 @@
+import $ from 'jquery'
 import Util from './util'
 
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-alpha.6): modal.js
+ * Bootstrap (v4.0.0-beta.3): modal.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -18,7 +19,7 @@ const Modal = (($) => {
    */
 
   const NAME                         = 'modal'
-  const VERSION                      = '4.0.0-alpha.6'
+  const VERSION                      = '4.0.0-beta.3'
   const DATA_KEY                     = 'bs.modal'
   const EVENT_KEY                    = `.${DATA_KEY}`
   const DATA_API_KEY                 = '.data-api'
@@ -68,6 +69,7 @@ const Modal = (($) => {
     DATA_TOGGLE        : '[data-toggle="modal"]',
     DATA_DISMISS       : '[data-dismiss="modal"]',
     FIXED_CONTENT      : '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top',
+    STICKY_CONTENT     : '.sticky-top',
     NAVBAR_TOGGLER     : '.navbar-toggler'
   }
 
@@ -111,7 +113,7 @@ const Modal = (($) => {
     }
 
     show(relatedTarget) {
-      if (this._isTransitioning) {
+      if (this._isTransitioning || this._isShown) {
         return
       }
 
@@ -133,6 +135,8 @@ const Modal = (($) => {
 
       this._checkScrollbar()
       this._setScrollbar()
+
+      this._adjustDialog()
 
       $(document.body).addClass(ClassName.OPEN)
 
@@ -165,12 +169,6 @@ const Modal = (($) => {
         return
       }
 
-      const transition = Util.supportsTransitionEnd() && $(this._element).hasClass(ClassName.FADE)
-
-      if (transition) {
-        this._isTransitioning = true
-      }
-
       const hideEvent = $.Event(Event.HIDE)
 
       $(this._element).trigger(hideEvent)
@@ -180,6 +178,12 @@ const Modal = (($) => {
       }
 
       this._isShown = false
+
+      const transition = Util.supportsTransitionEnd() && $(this._element).hasClass(ClassName.FADE)
+
+      if (transition) {
+        this._isTransitioning = true
+      }
 
       this._setEscapeEvent()
       this._setResizeEvent()
@@ -223,7 +227,10 @@ const Modal = (($) => {
     // private
 
     _getConfig(config) {
-      config = $.extend({}, Default, config)
+      config = {
+        ...Default,
+        ...config
+      }
       Util.typeCheckConfig(NAME, config, DefaultType)
       return config
     }
@@ -425,7 +432,8 @@ const Modal = (($) => {
     }
 
     _checkScrollbar() {
-      this._isBodyOverflowing = document.body.clientWidth < window.innerWidth
+      const rect = document.body.getBoundingClientRect()
+      this._isBodyOverflowing = rect.left + rect.right < window.innerWidth
       this._scrollbarWidth = this._getScrollbarWidth()
     }
 
@@ -439,6 +447,13 @@ const Modal = (($) => {
           const actualPadding = $(element)[0].style.paddingRight
           const calculatedPadding = $(element).css('padding-right')
           $(element).data('padding-right', actualPadding).css('padding-right', `${parseFloat(calculatedPadding) + this._scrollbarWidth}px`)
+        })
+
+        // Adjust sticky content margin
+        $(Selector.STICKY_CONTENT).each((index, element) => {
+          const actualMargin = $(element)[0].style.marginRight
+          const calculatedMargin = $(element).css('margin-right')
+          $(element).data('margin-right', actualMargin).css('margin-right', `${parseFloat(calculatedMargin) - this._scrollbarWidth}px`)
         })
 
         // Adjust navbar-toggler margin
@@ -464,8 +479,8 @@ const Modal = (($) => {
         }
       })
 
-      // Restore navbar-toggler margin
-      $(Selector.NAVBAR_TOGGLER).each((index, element) => {
+      // Restore sticky content and navbar-toggler margin
+      $(`${Selector.STICKY_CONTENT}, ${Selector.NAVBAR_TOGGLER}`).each((index, element) => {
         const margin = $(element).data('margin-right')
         if (typeof margin !== 'undefined') {
           $(element).css('margin-right', margin).removeData('margin-right')
@@ -494,12 +509,11 @@ const Modal = (($) => {
     static _jQueryInterface(config, relatedTarget) {
       return this.each(function () {
         let data      = $(this).data(DATA_KEY)
-        const _config = $.extend(
-          {},
-          Modal.Default,
-          $(this).data(),
-          typeof config === 'object' && config
-        )
+        const _config = {
+          ...Modal.Default,
+          ...$(this).data(),
+          ...typeof config === 'object' && config
+        }
 
         if (!data) {
           data = new Modal(this, _config)
@@ -507,7 +521,7 @@ const Modal = (($) => {
         }
 
         if (typeof config === 'string') {
-          if (data[config] === undefined) {
+          if (typeof data[config] === 'undefined') {
             throw new Error(`No method named "${config}"`)
           }
           data[config](relatedTarget)
@@ -535,7 +549,10 @@ const Modal = (($) => {
     }
 
     const config = $(target).data(DATA_KEY) ?
-      'toggle' : $.extend({}, $(target).data(), $(this).data())
+      'toggle' : {
+        ...$(target).data(),
+        ...$(this).data()
+      }
 
     if (this.tagName === 'A' || this.tagName === 'AREA') {
       event.preventDefault()
@@ -573,6 +590,6 @@ const Modal = (($) => {
 
   return Modal
 
-})(jQuery)
+})($)
 
 export default Modal

@@ -9,11 +9,10 @@
   font-size: $badge-font-size;
   font-weight: $badge-font-weight;
   line-height: 1;
-  color: $badge-color;
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
-  @include border-radius();
+  @include border-radius($badge-border-radius);
 
   // Empty badges collapse automatically
   &:empty {

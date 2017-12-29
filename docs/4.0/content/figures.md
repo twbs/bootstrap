@@ -16,7 +16,7 @@ Use the included `.figure` , `.figure-img` and `.figure-caption` classes to prov
 </figure>
 {% endexample %}
 
-Aligning the figure's caption is easy with our [text utilities]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/typography/#text-alignment).
+Aligning the figure's caption is easy with our [text utilities]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/text/#text-alignment).
 
 {% example html %}
 <figure class="figure">

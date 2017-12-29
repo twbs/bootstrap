@@ -10,7 +10,8 @@ toc: true
 
 Things to know when using the tooltip plugin:
 
-- Tooltips rely on the 3rd party library [Popper.js](https://popper.js.org) for positioning. You must include [popper.min.js](https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.10.1/umd/popper.min.js) before bootstrap.js in order for tooltips to work!
+- Tooltips rely on the 3rd party library [Popper.js](https://popper.js.org/) for positioning. You must include [popper.min.js]({{ site.cdn.popper }}) before bootstrap.js or use `bootstrap.bundle.min.js` / `bootstrap.bundle.js` which contains Popper.js in order for tooltips to work!
+- If you're building our JavaScript from source, it [requires `util.js`]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/javascript/#util).
 - Tooltips are opt-in for performance reasons, so **you must initialize them yourself**.
 - Tooltips with zero-length titles are never displayed.
 - Specify `container: 'body'` to avoid rendering problems in more complex components (like our input groups, button groups, etc).
@@ -40,40 +41,7 @@ Hover over the links below to see tooltips:
   </p>
 </div>
 
-### Static demo
-
-Four options are available: top, right, bottom, and left aligned.
-
-<div class="bd-example bd-example-tooltip-static">
-  <div class="tooltip bs-tooltip-top bs-tooltip-top-docs" role="tooltip">
-    <div class="arrow"></div>
-    <div class="tooltip-inner">
-      Tooltip on the top
-    </div>
-  </div>
-  <div class="tooltip bs-tooltip-right bs-tooltip-right-docs" role="tooltip">
-    <div class="arrow"></div>
-    <div class="tooltip-inner">
-      Tooltip on the right
-    </div>
-  </div>
-  <div class="tooltip bs-tooltip-bottom bs-tooltip-bottom-docs" role="tooltip">
-    <div class="arrow"></div>
-    <div class="tooltip-inner">
-      Tooltip on the bottom
-    </div>
-  </div>
-  <div class="tooltip bs-tooltip-left bs-tooltip-left-docs" role="tooltip">
-    <div class="arrow"></div>
-    <div class="tooltip-inner">
-      Tooltip on the left
-    </div>
-  </div>
-</div>
-
-### Interactive demo
-
-Hover over the buttons below to see their tooltips.
+Hover over the buttons below to see the four tooltips directions: top, right, bottom, and left.
 
 <div class="bd-example tooltip-demo">
   <div class="bd-example-tooltips">
@@ -123,7 +91,7 @@ $('#example').tooltip(options)
 The required markup for a tooltip is only a `data` attribute and `title` on the HTML element you wish to have a tooltip. The generated markup of a tooltip is rather simple, though it does require a position (by default, set to `top` by the plugin).
 
 {% callout warning %}
-#### Making tooltips work for keyboard and assistive technology users
+##### Making tooltips work for keyboard and assistive technology users
 
 You should only add tooltips to HTML elements that are traditionally keyboard-focusable and interactive (such as links or form controls). Although arbitrary HTML elements (such as `<span>`s) can be made focusable by adding the `tabindex="0"` attribute, this will add potentially annoying and confusing tab stops on non-interactive elements for keyboard users. In addition, most assistive technologies currently do not announce the tooltip in this situation.
 {% endcallout %}
@@ -141,11 +109,23 @@ You should only add tooltips to HTML elements that are traditionally keyboard-fo
 </div>
 {% endhighlight %}
 
+### Disabled elements
+
+Elements with the `disabled` attribute aren't interactive, meaning users cannot hover or click them to trigger a tooltip (or popover). As a workaround, you'll want to trigger the tooltip from a wrapper `<div>` or `<span>` and override the `pointer-events` on the disabled element.
+
+<div class="tooltip-demo">
+{% example html %}
+<span class="d-inline-block" data-toggle="tooltip" title="Disabled tooltip">
+  <button class="btn btn-primary" style="pointer-events: none;" type="button" disabled>Disabled button</button>
+</span>
+{% endexample %}
+</div>
+
 ### Options
 
 Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-`, as in `data-animation=""`.
 
-<table class="table table-bordered table-striped table-responsive">
+<table class="table table-bordered table-striped">
   <thead>
     <tr>
       <th style="width: 100px;">Name</th>
@@ -200,7 +180,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
     </tr>
     <tr>
       <td>selector</td>
-      <td>string</td>
+      <td>string | false</td>
       <td>false</td>
       <td>If a selector is provided, tooltip objects will be delegated to the specified targets. In practice, this is used to enable dynamic HTML content to have popovers added. See <a href="https://github.com/twbs/bootstrap/issues/4215">this</a> and <a href="https://jsbin.com/zopod/1/edit">an informative example</a>.</td>
     </tr>
@@ -242,6 +222,12 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <td>'flip'</td>
       <td>Allow to specify which position Popper will use on fallback. For more information refer to
       Popper.js's <a href="https://popper.js.org/popper-documentation.html#modifiers..flip.behavior">behavior docs</a></td>
+    </tr>
+    <tr>
+      <td>boundary</td>
+      <td>string | element</td>
+      <td>'scrollParent'</td>
+      <td>Overflow constraint boundary of the tooltip. Accepts the values of <code>'viewport'</code>, <code>'window'</code>, <code>'scrollParent'</code>, or an HTMLElement reference (JavaScript only). For more information refer to Popper.js's <a href="https://popper.js.org/popper-documentation.html#modifiers..preventOverflow.boundariesElement">preventOverflow docs</a>.</td>
     </tr>
   </tbody>
 </table>
@@ -311,7 +297,7 @@ Updates the position of an element's tooltip.
 
 ### Events
 
-<table class="table table-bordered table-striped table-responsive">
+<table class="table table-bordered table-striped">
   <thead>
     <tr>
       <th style="width: 150px;">Event Type</th>

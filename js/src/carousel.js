@@ -1,9 +1,10 @@
+import $ from 'jquery'
 import Util from './util'
 
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-alpha.6): carousel.js
+ * Bootstrap (v4.0.0-beta.3): carousel.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -18,7 +19,7 @@ const Carousel = (($) => {
    */
 
   const NAME                   = 'carousel'
-  const VERSION                = '4.0.0-alpha.6'
+  const VERSION                = '4.0.0-beta.3'
   const DATA_KEY               = 'bs.carousel'
   const EVENT_KEY              = `.${DATA_KEY}`
   const DATA_API_KEY           = '.data-api'
@@ -131,7 +132,9 @@ const Carousel = (($) => {
 
     nextWhenVisible() {
       // Don't call next when the page isn't visible
-      if (!document.hidden) {
+      // or the carousel or its parent isn't visible
+      if (!document.hidden &&
+        ($(this._element).is(':visible') && $(this._element).css('visibility') !== 'hidden')) {
         this.next()
       }
     }
@@ -220,7 +223,10 @@ const Carousel = (($) => {
     // private
 
     _getConfig(config) {
-      config = $.extend({}, Default, config)
+      config = {
+        ...Default,
+        ...config
+      }
       Util.typeCheckConfig(NAME, config, DefaultType)
       return config
     }
@@ -425,10 +431,16 @@ const Carousel = (($) => {
     static _jQueryInterface(config) {
       return this.each(function () {
         let data      = $(this).data(DATA_KEY)
-        const _config = $.extend({}, Default, $(this).data())
+        let _config = {
+          ...Default,
+          ...$(this).data()
+        }
 
         if (typeof config === 'object') {
-          $.extend(_config, config)
+          _config = {
+            ..._config,
+            ...config
+          }
         }
 
         const action = typeof config === 'string' ? config : _config.slide
@@ -441,7 +453,7 @@ const Carousel = (($) => {
         if (typeof config === 'number') {
           data.to(config)
         } else if (typeof action === 'string') {
-          if (data[action] === undefined) {
+          if (typeof data[action] === 'undefined') {
             throw new Error(`No method named "${action}"`)
           }
           data[action]()
@@ -465,7 +477,10 @@ const Carousel = (($) => {
         return
       }
 
-      const config     = $.extend({}, $(target).data(), $(this).data())
+      const config = {
+        ...$(target).data(),
+        ...$(this).data()
+      }
       const slideIndex = this.getAttribute('data-slide-to')
 
       if (slideIndex) {
@@ -516,6 +531,6 @@ const Carousel = (($) => {
 
   return Carousel
 
-})(jQuery)
+})($)
 
 export default Carousel

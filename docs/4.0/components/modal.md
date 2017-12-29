@@ -15,18 +15,15 @@ Before getting started with Bootstrap's modal component, be sure to read the fol
 - Bootstrap only supports one modal window at a time. Nested modals aren't supported as we believe them to be poor user experiences.
 - Modals use `position: fixed`, which can sometimes be a bit particular about its rendering. Whenever possible, place your modal HTML in a top-level position to avoid potential interference from other elements. You'll likely run into issues when nesting a `.modal` within another fixed element.
 - Once again, due to `position: fixed`, there are some caveats with using modals on mobile devices. [See our browser support docs]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/browsers-devices/#modals-and-dropdowns-on-mobile) for details.
-- Lastly, the `autofocus` HTML attribute has no effect in modals. Here's how you can achieve the same effect with custom JavaScript.
-
-Keep reading for demos and usage guidelines.
-
-
 - Due to how HTML5 defines its semantics, [the `autofocus` HTML attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-autofocus) has no effect in Bootstrap modals. To achieve the same effect, use some custom JavaScript:
 
 {% highlight js %}
 $('#myModal').on('shown.bs.modal', function () {
-  $('#myInput').focus()
+  $('#myInput').trigger('focus')
 })
 {% endhighlight %}
+
+Keep reading for demos and usage guidelines.
 
 ## Examples
 
@@ -35,7 +32,7 @@ $('#myModal').on('shown.bs.modal', function () {
 Below is a _static_ modal example (meaning its `position` and `display` have been overridden). Included are the modal header, modal body (required for `padding`), and modal footer (optional). We ask that you include modal headers with dismiss actions whenever possible, or provide another explicit dismiss action.
 
 <div class="bd-example bd-example-modal">
-  <div class="modal">
+  <div class="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -57,7 +54,7 @@ Below is a _static_ modal example (meaning its `position` and `display` have bee
 </div>
 
 {% highlight html %}
-<div class="modal">
+<div class="modal" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -211,6 +208,64 @@ When modals become too long for the user's viewport or device, they scroll indep
 </div>
 {% endhighlight %}
 
+### Vertically centered
+
+Add `.modal-dialog-centered` to `.modal-dialog` to vertically center the modal.
+
+<div id="exampleModalCenter" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="bd-example">
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+    Launch demo modal
+  </button>
+</div>
+
+{% highlight html %}
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endhighlight %}
+
 ### Tooltips and popovers
 
 [Tooltips]({{ site.baseurl }}/docs/{{ site.docs_version }}/components/tooltips/) and [popovers]({{ site.baseurl }}/docs/{{ site.docs_version }}/components/popovers/) can be placed within modals as needed. When modals are closed, any tooltips and popovers within are also automatically dismissed.
@@ -270,14 +325,14 @@ Utilize the Bootstrap grid system within a modal by nesting `.container-fluid` w
         <div class="container-fluid bd-example-row">
           <div class="row">
             <div class="col-md-4">.col-md-4</div>
-            <div class="col-md-4 col-md-offset-4">.col-md-4 .col-md-offset-4</div>
+            <div class="col-md-4 ml-auto">.col-md-4 .ml-auto</div>
           </div>
           <div class="row">
-            <div class="col-md-3 col-md-offset-3">.col-md-3 .col-md-offset-3</div>
-            <div class="col-md-2 col-md-offset-4">.col-md-2 .col-md-offset-4</div>
+            <div class="col-md-3 ml-auto">.col-md-3 .ml-auto</div>
+            <div class="col-md-2 ml-auto">.col-md-2 .ml-auto</div>
           </div>
           <div class="row">
-            <div class="col-md-6 col-md-offset-3">.col-md-6 .col-md-offset-3</div>
+            <div class="col-md-6 ml-auto">.col-md-6 .ml-auto</div>
           </div>
           <div class="row">
             <div class="col-sm-9">
@@ -313,14 +368,14 @@ Utilize the Bootstrap grid system within a modal by nesting `.container-fluid` w
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-4">.col-md-4</div>
-      <div class="col-md-4 col-md-offset-4">.col-md-4 .col-md-offset-4</div>
+      <div class="col-md-4 ml-auto">.col-md-4 .ml-auto</div>
     </div>
     <div class="row">
-      <div class="col-md-3 col-md-offset-3">.col-md-3 .col-md-offset-3</div>
-      <div class="col-md-2 col-md-offset-4">.col-md-2 .col-md-offset-4</div>
+      <div class="col-md-3 ml-auto">.col-md-3 .ml-auto</div>
+      <div class="col-md-2 ml-auto">.col-md-2 .ml-auto</div>
     </div>
     <div class="row">
-      <div class="col-md-6 col-md-offset-3">.col-md-6 .col-md-offset-3</div>
+      <div class="col-md-6 ml-auto">.col-md-6 .ml-auto</div>
     </div>
     <div class="row">
       <div class="col-sm-9">
@@ -362,11 +417,11 @@ Below is a live demo followed by example HTML and JavaScript. For more informati
       <div class="modal-body">
         <form>
           <div class="form-group">
-            <label for="recipient-name" class="form-control-label">Recipient:</label>
+            <label for="recipient-name" class="col-form-label">Recipient:</label>
             <input type="text" class="form-control" id="recipient-name">
           </div>
           <div class="form-group">
-            <label for="message-text" class="form-control-label">Message:</label>
+            <label for="message-text" class="col-form-label">Message:</label>
             <textarea class="form-control" id="message-text"></textarea>
           </div>
         </form>
@@ -404,7 +459,7 @@ For modals that simply appear rather than fade in to view, remove the `.fade` cl
 
 ### Dynamic heights
 
-If the height of a modal changes while it is open, you should call `$('#myModal').data('bs.modal').handleUpdate()` or `$('#myModal').modal('handleUpdate')` to readjust the modal's position in case a scrollbar appears.
+If the height of a modal changes while it is open, you should call `$('#myModal').modal('handleUpdate')` to readjust the modal's position in case a scrollbar appears.
 
 ### Accessibility
 
@@ -425,7 +480,7 @@ Modals have two optional sizes, available via modifier classes to be placed on a
 
 {% highlight html %}
 <!-- Large modal -->
-<button class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>
 
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
@@ -502,7 +557,7 @@ Call a modal with id `myModal` with a single line of JavaScript:
 
 Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-`, as in `data-backdrop=""`.
 
-<table class="table table-bordered table-striped table-responsive">
+<table class="table table-bordered table-striped">
   <thead>
     <tr>
       <th style="width: 100px;">Name</th>
@@ -578,11 +633,15 @@ Manually readjust the modal's position if the height of a modal changes while it
 
 {% highlight js %}$('#myModal').modal('handleUpdate'){% endhighlight %}
 
+#### `.modal('dispose')`
+
+Destroys an element's modal.
+
 ### Events
 
 Bootstrap's modal class exposes a few events for hooking into modal functionality. All modal events are fired at the modal itself (i.e. at the `<div class="modal">`).
 
-<table class="table table-bordered table-striped table-responsive">
+<table class="table table-bordered table-striped">
   <thead>
     <tr>
       <th style="width: 150px;">Event Type</th>
