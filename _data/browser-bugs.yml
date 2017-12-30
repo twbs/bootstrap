@@ -250,6 +250,16 @@
 
 -
   browser: >
+    Chrome
+  summary: >
+    Significant performance hit for dynamic SVGs with text depending on the number of fonts in `font-family`.
+  upstream_bug: >
+    Chromium#781344
+  origin: >
+    Bootstrap#24673
+
+-
+  browser: >
     Safari
   summary: >
     `rem` units in media queries should be calculated using `font-size: initial`, not the root element's `font-size`
