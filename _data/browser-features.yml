@@ -22,16 +22,6 @@
   browser: >
     Edge
   summary: >
-    Implement [sticky positioning](http://html5please.com/#position:sticky) from CSS Positioned Layout Level 3
-  upstream_bug: >
-    UserVoice#6263621
-  origin: >
-    Bootstrap#17021
-
--
-  browser: >
-    Edge
-  summary: >
     Implement the HTML5 [`<dialog>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog)
   upstream_bug: >
     UserVoice#6508895
