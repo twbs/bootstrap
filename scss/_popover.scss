@@ -8,13 +8,13 @@
   // Our parent element can be arbitrary since tooltips are by default inserted as a sibling of their target element.
   // So reset our font and text properties to avoid inheriting weird values.
   @include reset-text();
-  font-size: $font-size-sm;
+  font-size: $popover-font-size;
   // Allow breaking very long words so they don't overflow the popover's bounds
   word-wrap: break-word;
   background-color: $popover-bg;
   background-clip: padding-box;
   border: $popover-border-width solid $popover-border-color;
-  @include border-radius($border-radius-lg);
+  @include border-radius($popover-border-radius);
   @include box-shadow($popover-box-shadow);
 
   .arrow {

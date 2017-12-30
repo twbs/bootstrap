@@ -109,6 +109,18 @@ You should only add tooltips to HTML elements that are traditionally keyboard-fo
 </div>
 {% endhighlight %}
 
+### Disabled elements
+
+Elements with the `disabled` attribute aren't interactive, meaning users cannot hover or click them to trigger a tooltip (or popover). As a workaround, you'll want to trigger the tooltip from a wrapper `<div>` or `<span>` and override the `pointer-events` on the disabled element.
+
+<div class="tooltip-demo">
+{% example html %}
+<span class="d-inline-block" data-toggle="tooltip" title="Disabled tooltip">
+  <button class="btn btn-primary" style="pointer-events: none;" type="button" disabled>Disabled button</button>
+</span>
+{% endexample %}
+</div>
+
 ### Options
 
 Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-`, as in `data-animation=""`.
