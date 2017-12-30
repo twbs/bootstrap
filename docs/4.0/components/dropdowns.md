@@ -648,6 +648,18 @@ Put a form within a dropdown menu, or make it into a dropdown menu, and use [mar
 </form>
 {% endexample %}
 
+## Active menu items
+
+Add `.active` to items in the dropdown to **style them as active**.
+
+{% example html %}
+<div class="dropdown-menu">
+  <a class="dropdown-item" href="#">Regular link</a>
+  <a class="dropdown-item active" href="#">Active link</a>
+  <a class="dropdown-item" href="#">Another link</a>
+</div>
+{% endexample %}
+
 ## Disabled menu items
 
 Add `.disabled` to items in the dropdown to **style them as disabled**.
@@ -701,7 +713,7 @@ Regardless of whether you call your dropdown via JavaScript or instead use the d
 
 Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-`, as in `data-offset=""`.
 
-<table class="table table-bordered table-striped table-responsive">
+<table class="table table-bordered table-striped">
   <thead>
     <tr>
       <th style="width: 100px;">Name</th>

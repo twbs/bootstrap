@@ -225,7 +225,9 @@
 }
 
 .custom-file-input {
-  max-width: 100%;
+  position: relative;
+  z-index: 2;
+  width: 100%;
   height: $custom-file-height;
   margin: 0;
   opacity: 0;
@@ -238,49 +240,43 @@
       border-color: $custom-file-focus-border-color;
     }
   }
+
+  @each $lang, $value in $custom-file-text {
+    &:lang(#{$lang}) ~ .custom-file-label::after {
+      content: $value;
+    }
+  }
 }
 
-.custom-file-control {
+.custom-file-label {
   position: absolute;
   top: 0;
   right: 0;
   left: 0;
+  z-index: 1;
   height: $custom-file-height;
   padding: $custom-file-padding-y $custom-file-padding-x;
   line-height: $custom-file-line-height;
   color: $custom-file-color;
-  pointer-events: none;
-  user-select: none;
   background-color: $custom-file-bg;
   border: $custom-file-border-width solid $custom-file-border-color;
   @include border-radius($custom-file-border-radius);
   @include box-shadow($custom-file-box-shadow);
 
-  @each $lang, $text in map-get($custom-file-text, placeholder) {
-    &:lang(#{$lang}):empty::after {
-      content: $text;
-    }
-  }
-
-  &::before {
+  &::after {
     position: absolute;
-    top: -$custom-file-border-width;
-    right: -$custom-file-border-width;
-    bottom: -$custom-file-border-width;
-    z-index: 1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
     display: block;
-    height: $custom-file-height;
+    height: calc(#{$custom-file-height} - #{$custom-file-border-width} * 2);
     padding: $custom-file-padding-y $custom-file-padding-x;
     line-height: $custom-file-line-height;
     color: $custom-file-button-color;
+    content: "Browse";
     @include gradient-bg($custom-file-button-bg);
-    border: $custom-file-border-width solid $custom-file-border-color;
+    border-left: $custom-file-border-width solid $custom-file-border-color;
     @include border-radius(0 $custom-file-border-radius $custom-file-border-radius 0);
-  }
-
-  @each $lang, $text in map-get($custom-file-text, button-label) {
-    &:lang(#{$lang})::before {
-      content: $text;
-    }
   }
 }

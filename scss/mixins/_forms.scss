@@ -88,11 +88,18 @@
           background-color: lighten($color, 25%);
         }
       }
+
+      ~ .#{$state}-feedback,
+      ~ .#{$state}-tooltip {
+        display: block;
+      }
+
       &:checked {
         ~ .custom-control-label::before {
           @include gradient-bg(lighten($color, 10%));
         }
       }
+
       &:focus {
         ~ .custom-control-label::before {
           box-shadow: 0 0 0 1px $body-bg, 0 0 0 $input-focus-width rgba($color, .25);
@@ -105,13 +112,19 @@
   .custom-file-input {
     .was-validated &:#{$state},
     &.is-#{$state} {
-      ~ .custom-file-control {
+      ~ .custom-file-label {
         border-color: $color;
 
         &::before { border-color: inherit; }
       }
+
+      ~ .#{$state}-feedback,
+      ~ .#{$state}-tooltip {
+        display: block;
+      }
+
       &:focus {
-        ~ .custom-file-control {
+        ~ .custom-file-label {
           box-shadow: 0 0 0 $input-focus-width rgba($color, .25);
         }
       }
