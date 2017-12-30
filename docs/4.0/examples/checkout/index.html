@@ -99,9 +99,9 @@
               <label for="username">Username</label>
               <div class="input-group">
                 <div class="input-group-prepend">
-                  <span class="input-group-text" id="username">@</span>
+                  <span class="input-group-text">@</span>
                 </div>
-                <input type="text" class="form-control" id="username" placeholder="Username" aria-label="Username" aria-describedby="username" required>
+                <input type="text" class="form-control" id="username" placeholder="Username" required>
                 <div class="invalid-feedback" style="width: 100%;">
                   Your username is required.
                 </div>
@@ -160,12 +160,12 @@
             </div>
             <hr class="mb-4">
             <div class="custom-control custom-checkbox">
-              <input type="checkbox" class="custom-control-input">
-              <label class="custom-control-label">Shipping address is the same as my billing address</label>
+              <input type="checkbox" class="custom-control-input" id="same-address">
+              <label class="custom-control-label" for="same-address">Shipping address is the same as my billing address</label>
             </div>
             <div class="custom-control custom-checkbox">
-              <input type="checkbox" class="custom-control-input">
-              <label class="custom-control-label">Save this information for next time</label>
+              <input type="checkbox" class="custom-control-input" id="save-info">
+              <label class="custom-control-label" for="save-info">Save this information for next time</label>
             </div>
             <hr class="mb-4">
 
@@ -173,16 +173,16 @@
 
             <div class="d-block my-3">
               <div class="custom-control custom-radio">
-                <input id="paymentMethodCredit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
-                <label class="custom-control-label">Credit card</label>
+                <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
+                <label class="custom-control-label" for="credit">Credit card</label>
               </div>
               <div class="custom-control custom-radio">
-                <input id="paymentMethodDebit" name="paymentMethod" type="radio" class="custom-control-input" required>
-                <label class="custom-control-label">Debit card</label>
+                <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
+                <label class="custom-control-label" for="debit">Debit card</label>
               </div>
               <div class="custom-control custom-radio">
-                <input id="paymentMethodPaypal" name="paymentMethod" type="radio" class="custom-control-input" required>
-                <label class="custom-control-label">Paypal</label>
+                <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
+                <label class="custom-control-label" for="paypal">Paypal</label>
               </div>
             </div>
             <div class="row">
