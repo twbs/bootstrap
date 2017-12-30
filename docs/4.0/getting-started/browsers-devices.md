@@ -16,7 +16,7 @@ Alternative browsers which use the latest version of WebKit, Blink, or Gecko, wh
 
 Generally speaking, Bootstrap supports the latest versions of each major platform's default browsers. Note that proxy browsers (such as Opera Mini, Opera Mobile's Turbo mode, UC Browser Mini, Amazon Silk) are not supported.
 
-<table class="table table-bordered table-striped table-responsive">
+<table class="table table-bordered table-striped">
   <thead>
     <tr>
       <td></td>
@@ -34,7 +34,7 @@ Generally speaking, Bootstrap supports the latest versions of each major platfor
       <td class="text-success">Supported</td>
       <td class="text-muted">N/A</td>
       <td class="text-success">Android v5.0+ supported</td>
-      <td class="text-muted">N/A</td>
+      <td class="text-success">Supported</td>
     </tr>
     <tr>
       <th scope="row">iOS</th>
@@ -42,7 +42,7 @@ Generally speaking, Bootstrap supports the latest versions of each major platfor
       <td class="text-success">Supported</td>
       <td class="text-success">Supported</td>
       <td class="text-muted">N/A</td>
-      <td class="text-muted">N/A</td>
+      <td class="text-success">Supported</td>
     </tr>
     <tr>
       <th scope="row">Windows 10 Mobile</th>
@@ -59,7 +59,7 @@ Generally speaking, Bootstrap supports the latest versions of each major platfor
 
 Similarly, the latest versions of most desktop browsers are supported.
 
-<table class="table table-bordered table-striped table-responsive">
+<table class="table table-bordered table-striped">
   <thead>
     <tr>
       <td></td>
@@ -104,7 +104,6 @@ For a list of some of the browser bugs that Bootstrap has to grapple with, see o
 Internet Explorer 10+ is supported; IE9 and down is not. Please be aware that some CSS3 properties and HTML5 elements are not fully supported in IE10, or require prefixed properties for full functionality. Visit [Can I use...](https://caniuse.com/) for details on browser support of CSS3 and HTML5 features.
 
 **If you require IE8-9 support, use Bootstrap 3.** It's the most stable version of our code and is still supported by our team for critical bugfixes and documentation changes. However, no new features will be added to it.
-
 
 ## Modals and dropdowns on mobile
 
