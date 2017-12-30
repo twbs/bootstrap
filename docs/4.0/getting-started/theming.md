@@ -93,7 +93,7 @@ Repeat as necessary for any variable in Bootstrap, including the global options 
 
 Bootstrap 4 includes a handful of Sass maps, key value pairs that make it easier to generate families of related CSS. We use Sass maps for our colors, grid breakpoints, and more. Just like Sass variables, all Sass maps include the `!default` flag and can be overridden and extended.
 
-Some of our Sass maps are merged into empty ones by default. This is done to allow easy expansion of a given Sass map,  but comes at the cost of making _removing_ items from a map slightly more difficult.
+Some of our Sass maps are merged into empty ones by default. This is done to allow easy expansion of a given Sass map, but comes at the cost of making _removing_ items from a map slightly more difficult.
 
 To modify an existing color in our `$theme-colors` map, add the following to your custom Sass file:
 
