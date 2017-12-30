@@ -42,7 +42,7 @@ body {
   padding-bottom: 1rem;
   margin-top: -1px;
   overflow-x: auto;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, .75);
   text-align: center;
   white-space: nowrap;
   -webkit-overflow-scrolling: touch;
