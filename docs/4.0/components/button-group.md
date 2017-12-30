@@ -19,7 +19,7 @@ Wrap a series of buttons with `.btn` in `.btn-group`. Add on optional JavaScript
 {% endexample %}
 
 {% callout warning %}
-#### Ensure correct `role` and provide a label
+##### Ensure correct `role` and provide a label
 
 In order for assistive technologies (such as screen readers) to convey that a series of buttons is grouped, an appropriate `role` attribute needs to be provided. For button groups, this would be `role="group"`, while toolbars should have a `role="toolbar"`.
 
