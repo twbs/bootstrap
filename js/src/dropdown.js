@@ -377,6 +377,7 @@ const Dropdown = (($) => {
       return parent || element.parentNode
     }
 
+    // eslint-disable-next-line complexity
     static _dataApiKeydownHandler(event) {
       // If not input/textarea:
       //  - And not a key in REGEXP_KEYDOWN => not a dropdown command
