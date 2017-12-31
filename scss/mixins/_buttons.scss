@@ -79,11 +79,14 @@
   &:not([disabled]):not(.disabled):active,
   &:not([disabled]):not(.disabled).active,
   .show > &.dropdown-toggle {
-    color: color-yiq($color-hover);
+    color: color-yiq($active-background);
     background-color: $active-background;
     border-color: $active-border;
-    // Avoid using mixin so we can pass custom focus shadow properly
-    box-shadow: 0 0 0 $btn-focus-width rgba($color, .5);
+
+    &:focus {
+      // Avoid using mixin so we can pass custom focus shadow properly
+      box-shadow: 0 0 0 $btn-focus-width rgba($color, .5);
+    }
   }
 }
 
