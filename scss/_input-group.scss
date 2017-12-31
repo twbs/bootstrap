@@ -60,7 +60,6 @@
 .input-group-prepend,
 .input-group-append {
   display: flex;
-  align-items: center;
 
   // Ensure buttons are always above inputs for more visually pleasing borders.
   // This isn't needed for `.input-group-text` since it shares the same border-color
@@ -88,6 +87,8 @@
 // to prepend or append to an input.
 
 .input-group-text {
+  display: flex;
+  align-items: center;
   padding: $input-padding-y $input-padding-x;
   margin-bottom: 0; // Allow use of <label> elements by overriding our default margin-bottom
   font-size: $font-size-base; // Match inputs
