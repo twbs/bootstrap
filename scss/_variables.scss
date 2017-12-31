@@ -880,3 +880,7 @@ $kbd-bg:                            $gray-900 !default;
 
 $pre-color:                         $gray-900 !default;
 $pre-scrollable-max-height:         340px !default;
+
+
+// Printing
+$print-body-min-width:              map-get($grid-breakpoints, "lg") !default;

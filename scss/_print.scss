@@ -82,6 +82,11 @@
 
     // Bootstrap specific changes start
 
+    // Specify a min-width to make printing more consistent across browsers
+    body {
+      min-width: $print-body-min-width;
+    }
+
     // Bootstrap components
     .navbar {
       display: none;
