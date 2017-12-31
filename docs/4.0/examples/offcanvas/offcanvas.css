@@ -64,9 +64,11 @@ body {
   color: var(--gray-dark);
 }
 
+.text-white-50 { color: rgba(255, 255, 255, .5); }
+
 .bg-purple { background-color: var(--purple); }
 
-.text-white-50 { color: rgba(255, 255, 255, .5); }
+.border-bottom { border-bottom: 1px solid #e5e5e5; }
 
 .box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
 
