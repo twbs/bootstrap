@@ -13,7 +13,6 @@ We've tested and used these icon sets ourselves.
 
 - [Iconic](https://useiconic.com/open/)
 - [Octicons](https://octicons.github.com/)
-- [Entypo](http://www.entypo.com/)
 
 ## More options
 
