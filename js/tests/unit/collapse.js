@@ -606,23 +606,19 @@ $(function () {
     }
 
     function firstTest() {
-      window.setTimeout(function () {
-        assert.ok($collapseOneOne.hasClass('show'), '#collapseOneOne is shown')
-        assert.ok($collapseOneTwo.hasClass('show'), '#collapseOneTwo is shown')
-        assert.ok(!$collapseTwoOne.hasClass('show'), '#collapseTwoOne is not shown')
-        assert.ok(!$collapseTwoTwo.hasClass('show'), '#collapseTwoTwo is not shown')
-        $triggerTwo.trigger($.Event('click'))
-      }, 600)
+      assert.ok($collapseOneOne.hasClass('show'), '#collapseOneOne is shown')
+      assert.ok($collapseOneTwo.hasClass('show'), '#collapseOneTwo is shown')
+      assert.ok(!$collapseTwoOne.hasClass('show'), '#collapseTwoOne is not shown')
+      assert.ok(!$collapseTwoTwo.hasClass('show'), '#collapseTwoTwo is not shown')
+      $triggerTwo.trigger($.Event('click'))
     }
 
-    function secondeTest() {
-      window.setTimeout(function () {
-        assert.ok(!$collapseOneOne.hasClass('show'), '#collapseOneOne is not shown')
-        assert.ok(!$collapseOneTwo.hasClass('show'), '#collapseOneTwo is not shown')
-        assert.ok($collapseTwoOne.hasClass('show'), '#collapseTwoOne is shown')
-        assert.ok($collapseTwoTwo.hasClass('show'), '#collapseTwoTwo is shown')
-        done()
-      }, 600)
+    function secondTest() {
+      assert.ok(!$collapseOneOne.hasClass('show'), '#collapseOneOne is not shown')
+      assert.ok(!$collapseOneTwo.hasClass('show'), '#collapseOneTwo is not shown')
+      assert.ok($collapseTwoOne.hasClass('show'), '#collapseTwoOne is shown')
+      assert.ok($collapseTwoTwo.hasClass('show'), '#collapseTwoTwo is shown')
+      done()
     }
 
     $collapseOneOne.on('shown.bs.collapse', function () {
@@ -645,7 +641,7 @@ $(function () {
 
     $collapseTwoOne.on('shown.bs.collapse', function () {
       if (collapsedElements.two) {
-        secondeTest()
+        secondTest()
       }
       else {
         collapsedElements.two = true
@@ -654,7 +650,7 @@ $(function () {
 
     $collapseTwoTwo.on('shown.bs.collapse', function () {
       if (collapsedElements.two) {
-        secondeTest()
+        secondTest()
       }
       else {
         collapsedElements.two = true
