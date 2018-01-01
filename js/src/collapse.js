@@ -83,6 +83,7 @@ const Collapse = (($) => {
         const elem = tabToggles[i]
         const selector = Util.getSelectorFromElement(elem)
         if (selector !== null && $(selector).filter(element).length > 0) {
+          this._selector = selector
           this._triggerArray.push(elem)
         }
       }
@@ -141,7 +142,7 @@ const Collapse = (($) => {
       }
 
       if (actives) {
-        activesData = $(actives).data(DATA_KEY)
+        activesData = $(actives).not(this._selector).data(DATA_KEY)
         if (activesData && activesData._isTransitioning) {
           return
         }
