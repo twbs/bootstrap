@@ -70,9 +70,9 @@ Our docs and branding use a handful of primary colors to differentiate what *is*
 
 <div class="bd-brand">
   <div class="color-swatches">
-    <div class="color-swatch bd-purple"></div>
-    <div class="color-swatch bd-purple-light"></div>
-    <div class="color-swatch bd-purple-lighter"></div>
+    <div class="color-swatch bd-brand"></div>
+    <div class="color-swatch bd-brand-light"></div>
+    <div class="color-swatch bd-brand-lighter"></div>
     <div class="color-swatch bd-gray"></div>
   </div>
 </div>
