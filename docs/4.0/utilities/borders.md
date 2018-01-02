@@ -9,11 +9,15 @@ toc: true
 
 ## Border
 
-Add classes to an element to remove all borders or some borders.
+Add classes to an element to add or remove all borders or some borders.
 
 <div class="bd-example-border-utils">
 {% example html %}
 <span class="border"></span>
+<span class="border-top"></span>
+<span class="border-right"></span>
+<span class="border-bottom"></span>
+<span class="border-left"></span>
 <span class="border-0"></span>
 <span class="border-top-0"></span>
 <span class="border-right-0"></span>
