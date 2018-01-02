@@ -9,9 +9,8 @@
 
 .custom-control {
   position: relative;
-  display: block;
+  display: flex;
   min-height: (1rem * $line-height-base);
-  padding-left: $custom-control-gutter;
 }
 
 .custom-control-inline {
@@ -57,14 +56,14 @@
 // Build the custom controls out of psuedo-elements.
 
 .custom-control-label {
+  display: flex;
   margin-bottom: 0;
 
   // Background-color and (when enabled) gradient
   &::before {
-    position: absolute;
-    top: (($line-height-base - $custom-control-indicator-size) / 2);
-    left: 0;
+    position: relative;
     display: block;
+    margin-top: (($line-height-base - $custom-control-indicator-size) / 2);
     width: $custom-control-indicator-size;
     height: $custom-control-indicator-size;
     pointer-events: none;
@@ -86,6 +85,10 @@
     background-repeat: no-repeat;
     background-position: center center;
     background-size: $custom-control-indicator-bg-size;
+  }
+  
+  &:not(:empty)::before {
+    margin-right: $custom-control-gutter;
   }
 }
 
