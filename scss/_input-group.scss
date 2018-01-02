@@ -26,7 +26,9 @@
       z-index: 3;
     }
 
-    + .form-control {
+    + .form-control,
+    + .custom-select,
+    + .custom-file {
       margin-left: -$input-border-width;
     }
   }
