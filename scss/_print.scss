@@ -20,9 +20,10 @@
       box-shadow: none !important;
     }
 
-    a,
-    a:visited {
-      text-decoration: underline;
+    a {
+      &:not(.btn) {
+        text-decoration: underline;
+      }
     }
 
     // Bootstrap specific; comment the following selector out
