@@ -33,8 +33,8 @@
 }
 
 .bd-highlight {
-  background-color: rgba($bd-purple, .15);
-  border: 1px solid rgba($bd-purple, .15);
+  background-color: rgba($bd-brand, .15);
+  border: 1px solid rgba($bd-brand, .15);
 }
 
 // Grid mixins
@@ -101,7 +101,7 @@
 .bd-example-container-body {
   height: 8rem;
   margin-right: 4.5rem;
-  background-color: lighten($bd-purple, 25%);
+  background-color: lighten($bd-brand, 25%);
   border-radius: .25rem;
 }
 

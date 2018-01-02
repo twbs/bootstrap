@@ -4,14 +4,14 @@
 
 .btn-bd-primary {
   font-weight: 500;
-  color: $bd-purple-bright;
-  border-color: $bd-purple-bright;
+  color: $bd-brand-bright;
+  border-color: $bd-brand-bright;
 
   &:hover,
   &:active {
     color: #fff;
-    background-color: $bd-purple-bright;
-    border-color: $bd-purple-bright;
+    background-color: $bd-brand-bright;
+    border-color: $bd-brand-bright;
   }
 }
 

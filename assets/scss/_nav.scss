@@ -4,7 +4,7 @@
 
 .bd-navbar {
   min-height: 4rem;
-  background-color: $bd-purple;
+  background-color: $bd-brand;
   box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .05), inset 0 -1px 0 rgba(0, 0, 0, .1);
 
   @include media-breakpoint-down(md) {
@@ -39,7 +39,7 @@
     .nav-link {
       padding-right: .5rem;
       padding-left: .5rem;
-      color: $bd-purple-light;
+      color: $bd-brand-light;
 
       &.active,
       &:hover {
