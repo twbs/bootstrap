@@ -94,6 +94,8 @@ The required markup for a tooltip is only a `data` attribute and `title` on the 
 ##### Making tooltips work for keyboard and assistive technology users
 
 You should only add tooltips to HTML elements that are traditionally keyboard-focusable and interactive (such as links or form controls). Although arbitrary HTML elements (such as `<span>`s) can be made focusable by adding the `tabindex="0"` attribute, this will add potentially annoying and confusing tab stops on non-interactive elements for keyboard users. In addition, most assistive technologies currently do not announce the tooltip in this situation.
+
+Additionally, do not rely solely on `hover` as the trigger for your tooltip, as this will make your tooltips impossible to trigger for keyboard users.
 {% endcallout %}
 
 {% highlight html %}
@@ -111,11 +113,11 @@ You should only add tooltips to HTML elements that are traditionally keyboard-fo
 
 ### Disabled elements
 
-Elements with the `disabled` attribute aren't interactive, meaning users cannot hover or click them to trigger a tooltip (or popover). As a workaround, you'll want to trigger the tooltip from a wrapper `<div>` or `<span>` and override the `pointer-events` on the disabled element.
+Elements with the `disabled` attribute aren't interactive, meaning users cannot focus, hover, or click them to trigger a tooltip (or popover). As a workaround, you'll want to trigger the tooltip from a wrapper `<div>` or `<span>`, ideally made keyboard-focusable using `tabindex="0"`, and override the `pointer-events` on the disabled element.
 
 <div class="tooltip-demo">
 {% example html %}
-<span class="d-inline-block" data-toggle="tooltip" title="Disabled tooltip">
+<span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Disabled tooltip">
   <button class="btn btn-primary" style="pointer-events: none;" type="button" disabled>Disabled button</button>
 </span>
 {% endexample %}
@@ -192,7 +194,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         <p>Base HTML to use when creating the tooltip.</p>
         <p>The tooltip's <code>title</code> will be injected into the <code>.tooltip-inner</code>.</p>
         <p><code>.arrow</code> will become the tooltip's arrow.</p>
-        <p>The outermost wrapper element should have the <code>.tooltip</code> class.</p>
+        <p>The outermost wrapper element should have the <code>.tooltip</code> class and <code>role="tooltip"</code>.</p>
       </td>
     </tr>
     <tr>
@@ -208,7 +210,11 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <td>trigger</td>
       <td>string</td>
       <td>'hover focus'</td>
-      <td>How tooltip is triggered - click | hover | focus | manual. You may pass multiple triggers; separate them with a space. `manual` cannot be combined with any other trigger.</td>
+      <td>
+        <p>How tooltip is triggered - click | hover | focus | manual. You may pass multiple triggers; separate them with a space.</p>
+        <p><code>'manual'</code> indicates that the tooltip will be triggered programmatically via the <code>.tooltip('show')</code>, <code>.tooltip('hide')</code> and <code>.tooltip('toggle')</code> methods; this value cannot be combined with any other trigger.</p>
+        <p><code>'hover'</code> on its own will result in tooltips that cannot be triggered via the keyboard, and should only be used if alternative methods for conveying the same information for keyboard users is present.</p>
+      </td>
     </tr>
     <tr>
       <td>offset</td>
