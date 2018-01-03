@@ -581,6 +581,81 @@ $(function () {
     $trigger.trigger($.Event('click'))
   })
 
+  QUnit.test('should allow accordion to target multiple elements', function (assert) {
+    assert.expect(8)
+    var done = assert.async()
+    var accordionHTML = '<div id="accordion">'
+      + '<a id="linkTriggerOne" data-toggle="collapse" data-target=".collapseOne" href="#" aria-expanded="false" aria-controls="collapseOne"></a>'
+      + '<a id="linkTriggerTwo" data-toggle="collapse" data-target=".collapseTwo" href="#" aria-expanded="false" aria-controls="collapseTwo"></a>'
+      + '<div id="collapseOneOne" class="collapse collapseOne" role="tabpanel" data-parent="#accordion"></div>'
+      + '<div id="collapseOneTwo" class="collapse collapseOne" role="tabpanel" data-parent="#accordion"></div>'
+      + '<div id="collapseTwoOne" class="collapse collapseTwo" role="tabpanel" data-parent="#accordion"></div>'
+      + '<div id="collapseTwoTwo" class="collapse collapseTwo" role="tabpanel" data-parent="#accordion"></div>'
+      + '</div>'
+
+    $(accordionHTML).appendTo('#qunit-fixture')
+    var $trigger = $('#linkTriggerOne')
+    var $triggerTwo = $('#linkTriggerTwo')
+    var $collapseOneOne = $('#collapseOneOne')
+    var $collapseOneTwo = $('#collapseOneTwo')
+    var $collapseTwoOne = $('#collapseTwoOne')
+    var $collapseTwoTwo = $('#collapseTwoTwo')
+    var collapsedElements = {
+      one : false,
+      two : false
+    }
+
+    function firstTest() {
+      assert.ok($collapseOneOne.hasClass('show'), '#collapseOneOne is shown')
+      assert.ok($collapseOneTwo.hasClass('show'), '#collapseOneTwo is shown')
+      assert.ok(!$collapseTwoOne.hasClass('show'), '#collapseTwoOne is not shown')
+      assert.ok(!$collapseTwoTwo.hasClass('show'), '#collapseTwoTwo is not shown')
+      $triggerTwo.trigger($.Event('click'))
+    }
+
+    function secondTest() {
+      assert.ok(!$collapseOneOne.hasClass('show'), '#collapseOneOne is not shown')
+      assert.ok(!$collapseOneTwo.hasClass('show'), '#collapseOneTwo is not shown')
+      assert.ok($collapseTwoOne.hasClass('show'), '#collapseTwoOne is shown')
+      assert.ok($collapseTwoTwo.hasClass('show'), '#collapseTwoTwo is shown')
+      done()
+    }
+
+    $collapseOneOne.on('shown.bs.collapse', function () {
+      if (collapsedElements.one) {
+        firstTest()
+      } else {
+        collapsedElements.one = true
+      }
+    })
+
+    $collapseOneTwo.on('shown.bs.collapse', function () {
+      if (collapsedElements.one) {
+        firstTest()
+      } else {
+        collapsedElements.one = true
+      }
+    })
+
+    $collapseTwoOne.on('shown.bs.collapse', function () {
+      if (collapsedElements.two) {
+        secondTest()
+      } else {
+        collapsedElements.two = true
+      }
+    })
+
+    $collapseTwoTwo.on('shown.bs.collapse', function () {
+      if (collapsedElements.two) {
+        secondTest()
+      } else {
+        collapsedElements.two = true
+      }
+    })
+
+    $trigger.trigger($.Event('click'))
+  })
+
   QUnit.test('should collapse accordion children but not nested accordion children', function (assert) {
     assert.expect(9)
     var done = assert.async()
