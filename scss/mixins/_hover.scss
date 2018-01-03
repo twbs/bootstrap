@@ -1,16 +1,16 @@
 // stylelint-disable indentation
 @mixin hover {
   // TODO: re-enable along with mq4-hover-shim
-//  @if $enable-hover-media-query {
+  @if $enable-hover-media-query {
 //    // See Media Queries Level 4: https://drafts.csswg.org/mediaqueries/#hover
 //    // Currently shimmed by https://github.com/twbs/mq4-hover-shim
-//    @media (hover: hover) {
-//      &:hover { @content }
-//    }
-//  }
-//  @else {
+    #{$enable-hover-media-query} {
+      &:hover { @content }
+    }
+  }
+  @else {
     &:hover { @content; }
-//  }
+  }
 }
 
 
