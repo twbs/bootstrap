@@ -357,7 +357,12 @@
     height: 5rem;
     margin: .25rem;
     background-color: #f5f5f5;
-    border: 1px solid;
+  }
+}
+
+.bd-example-border-utils-0 {
+  [class^="border"] {
+    border: 1px solid $border-color;
   }
 }
 
