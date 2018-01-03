@@ -65,7 +65,7 @@
   }
 
   @include media-breakpoint-up(xl) {
-    max-width: 320px;
+    flex: 0 1 320px;
   }
 }
 
