@@ -9,7 +9,12 @@
 //    }
 //  }
 //  @else {
+  @if $enable-hover-selector {
+    #{$enable-hover-selector} &:hover { @content; }
+  }
+  @else {
     &:hover { @content; }
+  }
 //  }
 }
 
