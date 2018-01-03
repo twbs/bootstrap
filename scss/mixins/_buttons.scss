@@ -16,7 +16,8 @@
   }
 
   &:focus,
-  &.focus {
+  &.focus,
+  .btn-group-input:focus ~ & {
     // Avoid using mixin so we can pass custom focus shadow properly
     @if $enable-shadows {
       box-shadow: $btn-box-shadow, 0 0 0 $btn-focus-width rgba($border, .5);
@@ -34,6 +35,7 @@
 
   &:not([disabled]):not(.disabled):active,
   &:not([disabled]):not(.disabled).active,
+  .btn-group-input:checked ~ &,
   .show > &.dropdown-toggle {
     color: color-yiq($active-background);
     background-color: $active-background;
@@ -66,7 +68,8 @@
   }
 
   &:focus,
-  &.focus {
+  &.focus,
+  .btn-group-input:focus ~ & {
     box-shadow: 0 0 0 $btn-focus-width rgba($color, .5);
   }
 
@@ -78,6 +81,7 @@
 
   &:not([disabled]):not(.disabled):active,
   &:not([disabled]):not(.disabled).active,
+  .btn-group-input:checked ~ &,
   .show > &.dropdown-toggle {
     color: color-yiq($active-background);
     background-color: $active-background;

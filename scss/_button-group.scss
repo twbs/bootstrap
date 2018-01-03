@@ -54,7 +54,8 @@
     @include border-right-radius(0);
   }
 
-  > .btn:not(:first-child),
+  > .btn + .btn,
+  > .btn-group + .btn,
   > .btn-group:not(:first-child) > .btn {
     @include border-left-radius(0);
   }
@@ -132,7 +133,8 @@
     @include border-bottom-radius(0);
   }
 
-  > .btn:not(:first-child),
+  > .btn + .btn,
+  > .btn-group + .btn,
   > .btn-group:not(:first-child) > .btn {
     @include border-top-radius(0);
   }
@@ -163,4 +165,10 @@
       pointer-events: none;
     }
   }
+}
+
+.btn-group-input {
+  position: absolute;
+  z-index: -1; // Put the input behind the label so it doesn't overlay button
+  opacity: 0;
 }
