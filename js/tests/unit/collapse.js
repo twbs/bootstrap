@@ -624,8 +624,7 @@ $(function () {
     $collapseOneOne.on('shown.bs.collapse', function () {
       if (collapsedElements.one) {
         firstTest()
-      }
-      else {
+      } else {
         collapsedElements.one = true
       }
     })
@@ -633,8 +632,7 @@ $(function () {
     $collapseOneTwo.on('shown.bs.collapse', function () {
       if (collapsedElements.one) {
         firstTest()
-      }
-      else {
+      } else {
         collapsedElements.one = true
       }
     })
@@ -642,8 +640,7 @@ $(function () {
     $collapseTwoOne.on('shown.bs.collapse', function () {
       if (collapsedElements.two) {
         secondTest()
-      }
-      else {
+      } else {
         collapsedElements.two = true
       }
     })
@@ -651,8 +648,7 @@ $(function () {
     $collapseTwoTwo.on('shown.bs.collapse', function () {
       if (collapsedElements.two) {
         secondTest()
-      }
-      else {
+      } else {
         collapsedElements.two = true
       }
     })
