@@ -2,8 +2,8 @@
 @mixin hover {
   // TODO: re-enable along with mq4-hover-shim
   @if $enable-hover-media-query {
-//    // See Media Queries Level 4: https://drafts.csswg.org/mediaqueries/#hover
-//    // Currently shimmed by https://github.com/twbs/mq4-hover-shim
+    // See Media Queries Level 4: https://drafts.csswg.org/mediaqueries/#hover
+    // Currently shimmed by https://github.com/twbs/mq4-hover-shim
     #{$enable-hover-media-query} {
       &:hover { @content; }
     }
