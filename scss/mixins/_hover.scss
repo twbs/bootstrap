@@ -5,7 +5,7 @@
 //    // See Media Queries Level 4: https://drafts.csswg.org/mediaqueries/#hover
 //    // Currently shimmed by https://github.com/twbs/mq4-hover-shim
     #{$enable-hover-media-query} {
-      &:hover { @content }
+      &:hover { @content; }
     }
   }
   @else {
