@@ -351,7 +351,7 @@ Change the _visual_ order of specific flex items with a handful of `order` utili
 
 Responsive variations also exist for `order`.
 
-{% for bp in site.data.breakpoints %}{% for i in (1..12) %}
+{% for bp in site.data.breakpoints %}{% for i in (0..12) %}
 - `.order{{ bp.abbr }}-{{ i }}`{% endfor %}{% endfor %}
 
 ## Align content

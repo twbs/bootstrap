@@ -336,3 +336,71 @@ These Sass loops aren't limited to color maps, either. You can also generate res
 {% endhighlight %}
 
 Should you need to modify your `$grid-breakpoints`, your changes will apply to all the loops iterating over that map.
+
+## CSS variables
+
+Bootstrap 4 includes around two dozen [CSS custom properties (variables)](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables) in it's compiled CSS. These provide easy access to commonly used values like our theme colors, breakpoints, and primary font stacks when working in your browser's Inspector, a code sandbox, or general prototyping.
+
+### Available variables
+
+Here are the variables we include (note that the `:root` is required). They're located in our `_root.scss` file.
+
+{% highlight css %}
+:root {
+  --blue: #007bff;
+  --indigo: #6610f2;
+  --purple: #6f42c1;
+  --pink: #e83e8c;
+  --red: #dc3545;
+  --orange: #fd7e14;
+  --yellow: #ffc107;
+  --green: #28a745;
+  --teal: #20c997;
+  --cyan: #17a2b8;
+  --white: #fff;
+  --gray: #6c757d;
+  --gray-dark: #343a40;
+  --primary: #007bff;
+  --secondary: #6c757d;
+  --success: #28a745;
+  --info: #17a2b8;
+  --warning: #ffc107;
+  --danger: #dc3545;
+  --light: #f8f9fa;
+  --dark: #343a40;
+  --breakpoint-xs: 0;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+{% endhighlight %}
+
+### Examples
+
+CSS variables offer similar flexibility to Sass's variables, but without the need for compilation before being served to the browser. For example, here we're resetting our page's font and link styles with CSS variables.
+
+{% highlight css %}
+body {
+  font: 1rem/1.5 var(--font-family-sans-serif);
+}
+a {
+  color: var(--blue);
+}
+{% endhighlight %}
+
+You can also use our breakpoint variables in your media queries:
+
+{% highlight css %}
+.content-secondary {
+  display: none;
+}
+
+@media (min-width(var(--breakpoint-sm))) {
+  .content-secondary {
+    display: block;
+  }
+}
+{% endhighlight %}

@@ -88,16 +88,16 @@ We occasionally use media queries that go in the other direction (the given scre
 
 {% highlight scss %}
 // Extra small devices (portrait phones, less than 576px)
-@media (max-width: 575.99px) { ... }
+@media (max-width: 575.98px) { ... }
 
 // Small devices (landscape phones, less than 768px)
-@media (max-width: 767.99px) { ... }
+@media (max-width: 767.98px) { ... }
 
 // Medium devices (tablets, less than 992px)
-@media (max-width: 991.99px) { ... }
+@media (max-width: 991.98px) { ... }
 
 // Large devices (desktops, less than 1200px)
-@media (max-width: 1199.99px) { ... }
+@media (max-width: 1199.98px) { ... }
 
 // Extra large devices (large desktops)
 // No media query since the extra-large breakpoint has no upper bound on its width
@@ -119,16 +119,16 @@ There are also media queries and mixins for targeting a single segment of screen
 
 {% highlight scss %}
 // Extra small devices (portrait phones, less than 576px)
-@media (max-width: 575.99px) { ... }
+@media (max-width: 575.98px) { ... }
 
 // Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) and (max-width: 767.99px) { ... }
+@media (min-width: 576px) and (max-width: 767.98px) { ... }
 
 // Medium devices (tablets, 768px and up)
-@media (min-width: 768px) and (max-width: 991.99px) { ... }
+@media (min-width: 768px) and (max-width: 991.98px) { ... }
 
 // Large devices (desktops, 992px and up)
-@media (min-width: 992px) and (max-width: 1199.99px) { ... }
+@media (min-width: 992px) and (max-width: 1199.98px) { ... }
 
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) { ... }
@@ -149,7 +149,7 @@ Similarly, media queries may span multiple breakpoint widths:
 {% highlight scss %}
 // Example
 // Apply styles starting from medium devices and up to extra large devices
-@media (min-width: 768px) and (max-width: 1199.99px) { ... }
+@media (min-width: 768px) and (max-width: 1199.98px) { ... }
 {% endhighlight %}
 
 The Sass mixin for targeting the same screen size range would be:
