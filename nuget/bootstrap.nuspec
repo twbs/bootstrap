@@ -17,12 +17,13 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <dependencies>
       <dependency id="jQuery" version="[3.0.0,4)" />
-      <dependency id="popper.js" version="[1.12.6,2)" />
+      <dependency id="popper.js" version="[1.12.9,2)" />
     </dependencies>
     <tags>css mobile-first responsive front-end framework web</tags>
   </metadata>
   <files>
     <file src="dist\css\*.*" target="content\Content" />
     <file src="dist\js\bootstrap*.js" target="content\Scripts" />
+    <file src="dist\js\bootstrap*.js.map" target="content\Scripts" />
   </files>
 </package>

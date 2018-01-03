@@ -30,7 +30,7 @@ Similar to the contextual text color classes, easily set the background of an el
 
 {% example html %}
 {% for color in site.data.theme-colors %}
-<div class="p-3 mb-2 bg-{{ color.name }} {% if color.name == "light" %}text-dark{% else %}text-white{% endif %}">.bg-{{ color.name }}</div>{% endfor %}
+<div class="p-3 mb-2 bg-{{ color.name }} {% if color.name == "light" or color.name == "warning" %}text-dark{% else %}text-white{% endif %}">.bg-{{ color.name }}</div>{% endfor %}
 <div class="p-3 mb-2 bg-white text-dark">.bg-white</div>
 {% endexample %}
 
@@ -40,7 +40,7 @@ When `$enable-gradients` is set to true, you'll be able to use `.bg-gradient-` u
 
 {% example html %}
 {% for color in site.data.theme-colors %}
-<div class="p-3 mb-2 bg-gradient-{{ color.name }} {% if color.name == "light" %}text-dark{% else %}text-white{% endif %}">.bg-gradient-{{ color.name }}</div>{% endfor %}
+<div class="p-3 mb-2 bg-gradient-{{ color.name }} {% if color.name == "light" or color.name == "warning" %}text-dark{% else %}text-white{% endif %}">.bg-gradient-{{ color.name }}</div>{% endfor %}
 {% endexample %}
 
 {% callout info %}

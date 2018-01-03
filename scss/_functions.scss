@@ -56,14 +56,14 @@
 
   $yiq: (($r * 299) + ($g * 587) + ($b * 114)) / 1000;
 
-  @if ($yiq >= 150) {
+  @if ($yiq >= $yiq-contrasted-threshold) {
     @return $yiq-text-dark;
   } @else {
     @return $yiq-text-light;
   }
 }
 
-// Retreive color Sass maps
+// Retrieve color Sass maps
 @function color($key: "blue") {
   @return map-get($colors, $key);
 }

@@ -4,7 +4,7 @@ import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-beta.2): carousel.js
+ * Bootstrap (v4.0.0-beta.3): carousel.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -19,7 +19,7 @@ const Carousel = (($) => {
    */
 
   const NAME                   = 'carousel'
-  const VERSION                = '4.0.0-beta.2'
+  const VERSION                = '4.0.0-beta.3'
   const DATA_KEY               = 'bs.carousel'
   const EVENT_KEY              = `.${DATA_KEY}`
   const DATA_API_KEY           = '.data-api'
@@ -223,7 +223,10 @@ const Carousel = (($) => {
     // private
 
     _getConfig(config) {
-      config = $.extend({}, Default, config)
+      config = {
+        ...Default,
+        ...config
+      }
       Util.typeCheckConfig(NAME, config, DefaultType)
       return config
     }
@@ -428,10 +431,16 @@ const Carousel = (($) => {
     static _jQueryInterface(config) {
       return this.each(function () {
         let data      = $(this).data(DATA_KEY)
-        const _config = $.extend({}, Default, $(this).data())
+        let _config = {
+          ...Default,
+          ...$(this).data()
+        }
 
         if (typeof config === 'object') {
-          $.extend(_config, config)
+          _config = {
+            ..._config,
+            ...config
+          }
         }
 
         const action = typeof config === 'string' ? config : _config.slide
@@ -468,7 +477,10 @@ const Carousel = (($) => {
         return
       }
 
-      const config     = $.extend({}, $(target).data(), $(this).data())
+      const config = {
+        ...$(target).data(),
+        ...$(this).data()
+      }
       const slideIndex = this.getAttribute('data-slide-to')
 
       if (slideIndex) {

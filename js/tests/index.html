@@ -6,7 +6,19 @@
     <title>Bootstrap Plugin Test Suite</title>
 
     <!-- jQuery -->
-    <script src="../../assets/js/vendor/jquery-slim.min.js"></script>
+    <script>
+      (function () {
+        var path = '../../assets/js/vendor/jquery-slim.min.js'
+        // get jquery param from the query string.
+        var jQueryVersion = location.search.match(/[?&]jquery=(.*?)(?=&|$)/)
+
+        // If a version was specified, use that version from our vendor folder
+        if (jQueryVersion) {
+          path = 'vendor/jquery-' + jQueryVersion[1] + '.min.js'
+        }
+        document.write('<script src="' + path + '"><\/script>')
+      }())
+    </script>
     <script src="../../assets/js/vendor/popper.min.js"></script>
 
     <!-- QUnit -->
@@ -75,11 +87,6 @@
             log.push(details)
           }
         })
-      })
-
-      // Cleanup
-      QUnit.testDone(function () {
-        $('#modal-test, .modal-backdrop').remove()
       })
 
       // Display fixture on-screen on iOS to avoid false positives

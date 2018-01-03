@@ -53,9 +53,7 @@
 .modal-dialog-centered {
   display: flex;
   align-items: center;
-  height: 100%;
-  margin-top: 0;
-  margin-bottom: 0;
+  min-height: calc(100% - (#{$modal-dialog-margin} * 2));
 }
 
 // Actual modal
@@ -154,8 +152,7 @@
   }
 
   .modal-dialog-centered {
-    margin-top: 0;
-    margin-bottom: 0;
+    min-height: calc(100% - (#{$modal-dialog-margin-y-sm-up} * 2));
   }
 
   .modal-content {
