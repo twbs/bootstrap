@@ -21,23 +21,28 @@ We'll dive into each of these more throughout, but at a high level, here's what 
 - Whenever possible, avoid enforcing strict HTML requirements (children selectors)
 
 ## Responsive-up
+
 - sometimes called mobile-first, but that can be a misnomer
 - styles apply to a min-width and up
 
 ## Base and modifier classes
+
 - Components should be built with a base class that houses common, not-to-be overridden property-value pairs.
 - For example, `.btn` and `.btn-primary`. We use `.btn` for all the common styles like `display`, `padding`, and `border-width`. We then use modifiers like `.btn-primary` to add the color, background-color, border-color, etc.
 
 ## z-index scales
+
 There are two `z-index` scales in Bootstrap—elements within a component and overlay components.
 
 ### Component elements
+
 - Some components in Bootstrap are built with overlapping elements to prevent double borders without modifying the `border` property. For example, button groups, input groups, and pagination.
 - These components share a standard `z-index` scale of `0` through `3`.
 - `0` is default (initial), `1` is `:hover`, `2` is `:active`/`.active`, and , `3` is `:focus`.
 - This approach matches our expectations of highest user priority. If an element is focused, it's in view and at the user's attention. Active elements are second highest because they indicate state. Hover is third highest because it indicates user intent, but nearly _anything_ can be hovered.
 
 ### Overlay components
+
 Bootstrap includes several components that function as an overlay of some kind. This includes, in order of highest `z-index`, dropdowns, fixed and sticky navbars, modals, tooltips, and popovers. These components have their own `z-index` scale that begins at `1000`. This starting number is random and serves as a small buffer between our styles and your project's custom styles.
 
 Each overlay component increases it's `z-index` value slightly in such a way that common UI principles allow user focused or hovered elements to remain in view at all times. For example, a modal is document blocking (e.g., you cannot take any other action save for the modal's action), so we put that above our navbars.
@@ -45,6 +50,7 @@ Each overlay component increases it's `z-index` value slightly in such a way tha
 Learn more about this in our [`z-index` layout page](/docs/4.0/layout/overview/#z-index).
 
 ## HTML and CSS over JS
+
 Whenever possible, we prefer to write HTML and CSS over JavaScript. In general, HTML and CSS are more prolific and accessible to more people of all different experience levels. HTML and CSS are also faster in your browser than JavaScript, and your browser general provides a great deal of functionality for you.
 
 This principle is our first-class JavaScript API is `data` attributes. You don’t need to write nearly any JavaScript to use our JavaScript plugins; instead, write HTML. Read more about this in [our JavaScript overview page]().
