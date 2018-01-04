@@ -26,16 +26,17 @@
       z-index: 3;
     }
 
-    + .form-control {
+    + .form-control,
+    + .custom-select,
+    + .custom-file {
       margin-left: -$input-border-width;
     }
   }
 
   .form-control,
   .custom-select {
-    &:not(:first-child):not(:last-of-type) { @include border-radius(0); }
-    &:first-child { @include border-right-radius(0); }
-    &:last-of-type:not(:first-child) { @include border-left-radius(0); }
+    &:not(:last-child) { @include border-right-radius(0); }
+    &:not(:first-child) { @include border-left-radius(0); }
   }
 
   // Custom file inputs have more complex markup, thus requiring different
@@ -44,12 +45,10 @@
     display: flex;
     align-items: center;
 
-    &:not(:first-child):not(:last-of-type) .custom-file-control,
-    &:not(:first-child):not(:last-of-type) .custom-file-control::before { @include border-radius(0); }
-    &:first-child .custom-file-control,
-    &:first-child .custom-file-control::before { @include border-right-radius(0); }
-    &:last-of-type:not(:first-child) .custom-file-control,
-    &:last-of-type:not(:first-child) .custom-file-control::before { @include border-left-radius(0); }
+    &:not(:last-child) .custom-file-label,
+    &:not(:last-child) .custom-file-label::before { @include border-right-radius(0); }
+    &:not(:first-child) .custom-file-label,
+    &:not(:first-child) .custom-file-label::before { @include border-left-radius(0); }
   }
 }
 
@@ -63,7 +62,6 @@
 .input-group-prepend,
 .input-group-append {
   display: flex;
-  align-items: center;
 
   // Ensure buttons are always above inputs for more visually pleasing borders.
   // This isn't needed for `.input-group-text` since it shares the same border-color
@@ -91,6 +89,8 @@
 // to prepend or append to an input.
 
 .input-group-text {
+  display: flex;
+  align-items: center;
   padding: $input-padding-y $input-padding-x;
   margin-bottom: 0; // Allow use of <label> elements by overriding our default margin-bottom
   font-size: $font-size-base; // Match inputs
@@ -139,28 +139,21 @@
 // border-radius values when extending. They're more specific than we'd like
 // with the `.input-group >` part, but without it, we cannot override the sizing.
 
-.input-group > .input-group-prepend > .btn,
-.input-group > .input-group-prepend > .input-group-text {
-  // All prepended buttons have no right border-radius
-  @include border-right-radius(0);
 
-  + .btn,
-  + .input-group-text {
-    @include border-left-radius(0);
-  }
+.input-group > .input-group-prepend > .btn,
+.input-group > .input-group-prepend > .input-group-text,
+.input-group > .input-group-append:not(:last-child) > .btn,
+.input-group > .input-group-append:not(:last-child) > .input-group-text,
+.input-group > .input-group-append:last-child > .btn:not(:last-child):not(.dropdown-toggle),
+.input-group > .input-group-append:last-child > .input-group-text:not(:last-child) {
+  @include border-right-radius(0);
 }
 
-// We separate out the button and input resets here because `.input-group-text`
-// can be any HTML element, but buttons are always inputs, buttons, or anchors.
-.input-group > .input-group-append {
-  // Everything but the last one have no rounded corners
-  .btn:not(:last-of-type),
-  .input-group-text:not(:last-child) {
-    @include border-radius(0);
-  }
-
-  .btn:last-of-type,
-  .input-group-text:last-child {
-    @include border-left-radius(0);
-  }
+.input-group > .input-group-append > .btn,
+.input-group > .input-group-append > .input-group-text,
+.input-group > .input-group-prepend:not(:first-child) > .btn,
+.input-group > .input-group-prepend:not(:first-child) > .input-group-text,
+.input-group > .input-group-prepend:first-child > .btn:not(:first-child),
+.input-group > .input-group-prepend:first-child > .input-group-text:not(:first-child) {
+  @include border-left-radius(0);
 }
