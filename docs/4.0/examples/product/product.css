@@ -2,6 +2,10 @@
   max-width: 960px;
 }
 
+/*
+ * Custom translucent site header
+ */
+
 .site-header {
   background-color: rgba(0, 0, 0, .85);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
@@ -16,6 +20,10 @@
   text-decoration: none;
 }
 
+/*
+ * Dummy devices (replace them with your own or something else entirely!)
+ */
+
 .product-device {
   position: absolute;
   right: 10%;
@@ -27,6 +35,7 @@
   -webkit-transform: rotate(30deg);
   transform: rotate(30deg);
 }
+
 .product-device::before {
   position: absolute;
   top: 10%;
@@ -37,6 +46,7 @@
   background-color: rgba(255, 255, 255, .1);
   border-radius: 5px;
 }
+
 .product-device-2 {
   top: -25%;
   right: auto;
@@ -44,6 +54,11 @@
   left: 5%;
   background-color: #e5e5e5;
 }
+
+
+/*
+ * Extra utilities
+ */
 
 .border-top { border-top: 1px solid #e5e5e5; }
 .border-bottom { border-bottom: 1px solid #e5e5e5; }
