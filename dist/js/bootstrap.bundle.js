@@ -1,6 +1,6 @@
 /*!
   * Bootstrap v4.0.0-beta.3 (https://getbootstrap.com)
-  * Copyright 2011-2017 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Copyright 2011-2018 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
   */
 (function (global, factory) {
@@ -1097,6 +1097,8 @@ var Collapse = function ($$$1) {
         var selector = Util.getSelectorFromElement(elem);
 
         if (selector !== null && $$$1(selector).filter(element).length > 0) {
+          this._selector = selector;
+
           this._triggerArray.push(elem);
         }
       }
@@ -1135,7 +1137,7 @@ var Collapse = function ($$$1) {
       var activesData;
 
       if (this._parent) {
-        actives = $$$1.makeArray($$$1(this._parent).children().children(Selector.ACTIVES));
+        actives = $$$1.makeArray($$$1(this._parent).find(Selector.ACTIVES).filter("[data-parent=\"" + this._config.parent + "\"]"));
 
         if (!actives.length) {
           actives = null;
@@ -1143,7 +1145,7 @@ var Collapse = function ($$$1) {
       }
 
       if (actives) {
-        activesData = $$$1(actives).data(DATA_KEY);
+        activesData = $$$1(actives).not(this._selector).data(DATA_KEY);
 
         if (activesData && activesData._isTransitioning) {
           return;
@@ -1158,7 +1160,7 @@ var Collapse = function ($$$1) {
       }
 
       if (actives) {
-        Collapse._jQueryInterface.call($$$1(actives), 'hide');
+        Collapse._jQueryInterface.call($$$1(actives).not(this._selector), 'hide');
 
         if (!activesData) {
           $$$1(actives).data(DATA_KEY, null);
@@ -4182,7 +4184,8 @@ var Dropdown = function ($$$1) {
       }
 
       return parent || element.parentNode;
-    };
+    }; // eslint-disable-next-line complexity
+
 
     Dropdown._dataApiKeydownHandler = function _dataApiKeydownHandler(event) {
       // If not input/textarea:

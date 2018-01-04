@@ -83,6 +83,7 @@ const Collapse = (($) => {
         const elem = tabToggles[i]
         const selector = Util.getSelectorFromElement(elem)
         if (selector !== null && $(selector).filter(element).length > 0) {
+          this._selector = selector
           this._triggerArray.push(elem)
         }
       }
@@ -130,14 +131,18 @@ const Collapse = (($) => {
       let activesData
 
       if (this._parent) {
-        actives = $.makeArray($(this._parent).children().children(Selector.ACTIVES))
+        actives = $.makeArray(
+          $(this._parent)
+            .find(Selector.ACTIVES)
+            .filter(`[data-parent="${this._config.parent}"]`)
+        )
         if (!actives.length) {
           actives = null
         }
       }
 
       if (actives) {
-        activesData = $(actives).data(DATA_KEY)
+        activesData = $(actives).not(this._selector).data(DATA_KEY)
         if (activesData && activesData._isTransitioning) {
           return
         }
@@ -150,7 +155,7 @@ const Collapse = (($) => {
       }
 
       if (actives) {
-        Collapse._jQueryInterface.call($(actives), 'hide')
+        Collapse._jQueryInterface.call($(actives).not(this._selector), 'hide')
         if (!activesData) {
           $(actives).data(DATA_KEY, null)
         }
