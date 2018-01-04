@@ -39,7 +39,7 @@ const Util = (($) => {
   }
 
   function transitionEndTest() {
-    if (window.QUnit) {
+    if (window && window.QUnit) {
       return false
     }
 
