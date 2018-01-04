@@ -71,7 +71,7 @@
   }
 
   :not(.card) > & {
-    &::after{
+    &::after {
       position: absolute;
       top: 0;
       right: 0;
