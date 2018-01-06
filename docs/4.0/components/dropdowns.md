@@ -741,6 +741,12 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <td>'scrollParent'</td>
       <td>Overflow constraint boundary of the dropdown menu. Accepts the values of <code>'viewport'</code>, <code>'window'</code>, <code>'scrollParent'</code>, or an HTMLElement reference (JavaScript only). For more information refer to Popper.js's <a href="https://popper.js.org/popper-documentation.html#modifiers..preventOverflow.boundariesElement">preventOverflow docs</a>.</td>
     </tr>
+    <tr>
+      <td>reference</td>
+      <td>string | element</td>
+      <td>'toggle'</td>
+      <td>Reference element of the dropdown menu. Accepts the values of <code>'toggle'</code>, <code>'parent'</code>, or an HTMLElement reference. For more information refer to Popper.js's <a href="https://popper.js.org/popper-documentation.html#referenceObject">referenceObject docs</a>.</td>
+    </tr>
   </tbody>
 </table>
 
