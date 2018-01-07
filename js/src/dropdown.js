@@ -158,18 +158,18 @@ const Dropdown = (($) => {
           throw new Error('Bootstrap dropdown require Popper.js (https://popper.js.org)')
         }
         let referenceElement = this._element
-        
+
         if (this._config.reference === 'parent') {
           referenceElement = parent
         } else if (Util.isElement(this._config.reference)) {
           referenceElement = this._config.reference
-          
-          //check if it's jQuery element
+
+          // Check if it's jQuery element
           if (typeof this._config.reference.jquery !== 'undefined') {
             referenceElement = this._config.reference[0]
           }
         }
-        
+
         // If boundary is not `scrollParent`, then set position to `static`
         // to allow the menu to "escape" the scroll parent's boundaries
         // https://github.com/twbs/bootstrap/issues/24251
