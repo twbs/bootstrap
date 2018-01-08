@@ -1,6 +1,6 @@
 /*!
- * Bootstrap v5.12.3 (http://bootstrap.transferwise.com)
- * Copyright 2011-2017 Twitter, Inc.
+ * Bootstrap v5.12.4 (http://bootstrap.transferwise.com)
+ * Copyright 2011-2018 Twitter, Inc.
  * Licensed under MIT (https://github.com/transferwise/bootstrap/blob/master/LICENSE)
  */
 
@@ -10717,6 +10717,11 @@ button.popover-close {
   }
   .popover-promotion .popover-image {
     width: 80%;
+  }
+}
+@media only screen and (min-width: 480px) and (max-width: 768px) {
+  .popover-promotion .popover-image {
+    width: 65%;
   }
 }
 /**
