@@ -226,6 +226,7 @@
 
       &.disabled {
         color: $navbar-light-disabled-color;
+        pointer-events: none;
       }
     }
 
