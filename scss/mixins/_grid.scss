@@ -28,7 +28,6 @@
 }
 
 @mixin make-col-ready() {
-  position: relative;
   // Prevent columns from becoming too narrow when at smaller grid tiers by
   // always setting `width: 100%;`. This works because we use `flex` values
   // later on to override this initial width.
