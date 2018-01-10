@@ -672,6 +672,38 @@ Add `.disabled` to items in the dropdown to **style them as disabled**.
 </div>
 {% endexample %}
 
+## Dropdown options
+
+Use `data-offset` or `data-reference` to change the location of the dropdown.
+
+{% example html %}
+<div class="d-flex">
+  <div class="dropdown mr-1">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20">
+      Offset
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+      <button class="dropdown-item" type="button">Action</button>
+      <button class="dropdown-item" type="button">Another action</button>
+      <button class="dropdown-item" type="button">Something else here</button>
+    </div>
+  </div>
+  <div class="btn-group">
+    <button type="button" class="btn btn-secondary">Reference</button>
+    <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-reference="parent">
+      <span class="sr-only">Toggle Dropdown</span>
+    </button>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="#">Action</a>
+      <a class="dropdown-item" href="#">Another action</a>
+      <a class="dropdown-item" href="#">Something else here</a>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="#">Separated link</a>
+    </div>
+  </div>
+</div>
+{% endexample %}
+
 ## Usage
 
 Via data attributes or JavaScript, the dropdown plugin toggles hidden content (dropdown menus) by toggling the `.show` class on the parent list item. The `data-toggle="dropdown"` attribute is relied on for closing dropdown menus at an application level, so it's a good idea to always use it.
