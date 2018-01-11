@@ -206,14 +206,14 @@ You can find and customize these variables for key global options in our `_varia
 | Variable                    | Values                             | Description                                                                            |
 | --------------------------- | ---------------------------------- | -------------------------------------------------------------------------------------- |
 | `$spacer`                   | `1rem` (default), or any value > 0 | Specifies the default spacer value to programmatically generate our [spacer utilities]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/spacing/). |
-| `$enable-rounded`           | `true` (default) or `false`        | Enables predefined `border-radius` styles on various components.                       |
-| `$enable-shadows`           | `true` or `false` (default)        | Enables predefined `box-shadow` styles on various components.                          |
-| `$enable-gradients`         | `true` or `false` (default)        | Enables predefined gradients via `background-image` styles on various components.      |
-| `$enable-transitions`       | `true` (default) or `false`        | Enables predefined `transition`s on various components.                                |
-| `$enable-hover-media-query` | `true` or `false` (default)        | ...                                                                                    |
-| `$enable-grid-classes`      | `true` (default) or `false`        | Enables the generation of CSS classes for the grid system (e.g., `.container`, `.row`, `.col-md-1`, etc.).     |
-| `$enable-caret`             | `true` (default) or `false`        | Enables pseudo element caret on `.dropdown-toggle`.                                    |
-| `$enable-print-styles`      | `true` (default) or `false`        | Enables styles for optimizing printing.                                |
+| `$enable-rounded`           | `true` (default) or `false`        | Enables predefined `border-radius` styles on various components. |
+| `$enable-shadows`           | `true` or `false` (default)        | Enables predefined `box-shadow` styles on various components. |
+| `$enable-gradients`         | `true` or `false` (default)        | Enables predefined gradients via `background-image` styles on various components. |
+| `$enable-transitions`       | `true` (default) or `false`        | Enables predefined `transition`s on various components. |
+| `$enable-hover-media-query` | `true` or `false` (default)        | **Deprecated** |
+| `$enable-grid-classes`      | `true` (default) or `false`        | Enables the generation of CSS classes for the grid system (e.g., `.container`, `.row`, `.col-md-1`, etc.). |
+| `$enable-caret`             | `true` (default) or `false`        | Enables pseudo element caret on `.dropdown-toggle`. |
+| `$enable-print-styles`      | `true` (default) or `false`        | Enables styles for optimizing printing. |
 
 ## Color
 
