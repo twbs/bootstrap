@@ -19,7 +19,7 @@ As such, the classes are named using the format:
 * `.d-{value}` for `xs`
 * `.d-{breakpoint}-{value}` for `sm`, `md`, `lg`, and `xl`.
 
-Where *display* is one of:
+Where *value* is one of:
 
 * `none`
 * `inline`
