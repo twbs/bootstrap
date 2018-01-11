@@ -302,3 +302,6 @@ $('#myCarousel').on('slide.bs.carousel', function () {
   // do something…
 })
 {% endhighlight %}
+
+### Changing the transition duration of the carousel
+The transition duration can be changed with css. The variable `$carousel-transition` is available in `_varibables.scss`, but this can also be overwritten in custom css afterwards. Just change the `transition` (or `transition-duration`) value of `.carousel-item`. If multiple transitions are applied, make sure the transform transition is defined first (eg. `transition: transform 2s ease, opacity .5s ease-out`). The transition duration must be the same for each carousel item.
