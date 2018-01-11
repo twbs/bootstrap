@@ -1,0 +1,17 @@
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.pricing-card {
+  border-radius: 0;
+}
+.pricing-card-title {
+  text-align: center;
+  padding-top: 15px;
+}
+@media screen and (max-width: 767px) {
+  .card-group .card {
+    display: block;
+    vertical-align: top;
+  }
+}
