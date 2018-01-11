@@ -152,7 +152,7 @@ const Dropdown = (($) => {
         if (typeof Popper === 'undefined') {
           throw new TypeError('Bootstrap dropdown require Popper.js (https://popper.js.org)')
         }
-        
+
         let referenceElement = this._element
 
         if (this._config.reference === 'parent') {
