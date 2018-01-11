@@ -25,10 +25,11 @@ We'll dive into each of these more throughout, but at a high level, here's what 
 - sometimes called mobile-first, but that can be a misnomer
 - styles apply to a min-width and up
 
-## Base and modifier classes
+## Classes
 
-- Components should be built with a base class that houses common, not-to-be overridden property-value pairs.
-- For example, `.btn` and `.btn-primary`. We use `.btn` for all the common styles like `display`, `padding`, and `border-width`. We then use modifiers like `.btn-primary` to add the color, background-color, border-color, etc.
+Aside from our Reboot, a cross-browser normalization stylesheet, all our styles aim to use classes as selectors. This means steering clear of type selectors (e.g., `input[type="text"]`) and extraneous parent classes (e.g., `.parent .child`) that make styles too specific to easily override.
+
+As such, components should be built with a base class that houses common, not-to-be overridden property-value pairs. For example, `.btn` and `.btn-primary`. We use `.btn` for all the common styles like `display`, `padding`, and `border-width`. We then use modifiers like `.btn-primary` to add the color, background-color, border-color, etc.
 
 ## z-index scales
 
