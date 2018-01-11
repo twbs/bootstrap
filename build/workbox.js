@@ -4,6 +4,7 @@ const fs = require('fs')
 const path = require('path')
 const swBuild = require('workbox-build')
 const config = require('./workbox.config.json')
+
 const buildPrefix = '_gh_pages/'
 
 const workboxSWSrcPath = require.resolve('workbox-sw')
