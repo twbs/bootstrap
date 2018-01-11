@@ -1,7 +1,6 @@
 import $ from 'jquery'
 import Util from './util'
 
-
 /**
  * --------------------------------------------------------------------------
  * Bootstrap (v4.0.0-beta.3): alert.js
@@ -10,8 +9,6 @@ import Util from './util'
  */
 
 const Alert = (($) => {
-
-
   /**
    * ------------------------------------------------------------------------
    * Constants
@@ -42,7 +39,6 @@ const Alert = (($) => {
     SHOW  : 'show'
   }
 
-
   /**
    * ------------------------------------------------------------------------
    * Class Definition
@@ -50,20 +46,17 @@ const Alert = (($) => {
    */
 
   class Alert {
-
     constructor(element) {
       this._element = element
     }
 
-
-    // getters
+    // Getters
 
     static get VERSION() {
       return VERSION
     }
 
-
-    // public
+    // Public
 
     close(element) {
       element = element || this._element
@@ -83,8 +76,7 @@ const Alert = (($) => {
       this._element = null
     }
 
-
-    // private
+    // Private
 
     _getRootElement(element) {
       const selector = Util.getSelectorFromElement(element)
@@ -129,8 +121,7 @@ const Alert = (($) => {
         .remove()
     }
 
-
-    // static
+    // Static
 
     static _jQueryInterface(config) {
       return this.each(function () {
@@ -157,9 +148,7 @@ const Alert = (($) => {
         alertInstance.close(this)
       }
     }
-
   }
-
 
   /**
    * ------------------------------------------------------------------------
@@ -172,7 +161,6 @@ const Alert = (($) => {
     Selector.DISMISS,
     Alert._handleDismiss(new Alert())
   )
-
 
   /**
    * ------------------------------------------------------------------------
@@ -188,7 +176,6 @@ const Alert = (($) => {
   }
 
   return Alert
-
 })($)
 
 export default Alert
