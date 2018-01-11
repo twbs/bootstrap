@@ -387,9 +387,8 @@ Trigger dropdown menus above elements by adding `.dropup` to the parent element.
 {% highlight html %}
 <!-- Default dropup button -->
 <div class="btn-group dropup">
-  <button type="button" class="btn btn-secondary">Dropup</button>
   <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <span class="sr-only">Toggle Dropdown</span>
+    Dropup
   </button>
   <div class="dropdown-menu">
     <!-- Dropdown menu links -->
@@ -564,7 +563,7 @@ By default, a dropdown menu is automatically positioned 100% from the top and al
 {% example html %}
 <div class="btn-group">
   <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    This dropdown's menu is right-aligned
+    Right-aligned menu
   </button>
   <div class="dropdown-menu dropdown-menu-right">
     <button class="dropdown-item" type="button">Action</button>
@@ -616,8 +615,8 @@ Put a form within a dropdown menu, or make it into a dropdown menu, and use [mar
       <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
     </div>
     <div class="form-check">
-      <label class="form-check-label">
-        <input type="checkbox" class="form-check-input">
+      <input type="checkbox" class="form-check-input" id="dropdownCheck">
+      <label class="form-check-label" for="dropdownCheck">
         Remember me
       </label>
     </div>
@@ -640,13 +639,25 @@ Put a form within a dropdown menu, or make it into a dropdown menu, and use [mar
     <input type="password" class="form-control" id="exampleDropdownFormPassword2" placeholder="Password">
   </div>
   <div class="form-check">
-    <label class="form-check-label">
-      <input type="checkbox" class="form-check-input">
+    <input type="checkbox" class="form-check-input" id="dropdownCheck2">
+    <label class="form-check-label" for="dropdownCheck2">
       Remember me
     </label>
   </div>
   <button type="submit" class="btn btn-primary">Sign in</button>
 </form>
+{% endexample %}
+
+## Active menu items
+
+Add `.active` to items in the dropdown to **style them as active**.
+
+{% example html %}
+<div class="dropdown-menu">
+  <a class="dropdown-item" href="#">Regular link</a>
+  <a class="dropdown-item active" href="#">Active link</a>
+  <a class="dropdown-item" href="#">Another link</a>
+</div>
 {% endexample %}
 
 ## Disabled menu items
@@ -702,7 +713,7 @@ Regardless of whether you call your dropdown via JavaScript or instead use the d
 
 Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-`, as in `data-offset=""`.
 
-<table class="table table-bordered table-striped table-responsive">
+<table class="table table-bordered table-striped">
   <thead>
     <tr>
       <th style="width: 100px;">Name</th>
@@ -724,8 +735,16 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <td>true</td>
       <td>Allow Dropdown to flip in case of an overlapping on the reference element. For more information refer to Popper.js's <a href="https://popper.js.org/popper-documentation.html#modifiers..flip.enabled">flip docs</a>.</td>
     </tr>
+    <tr>
+      <td>boundary</td>
+      <td>string | element</td>
+      <td>'scrollParent'</td>
+      <td>Overflow constraint boundary of the dropdown menu. Accepts the values of <code>'viewport'</code>, <code>'window'</code>, <code>'scrollParent'</code>, or an HTMLElement reference (JavaScript only). For more information refer to Popper.js's <a href="https://popper.js.org/popper-documentation.html#modifiers..preventOverflow.boundariesElement">preventOverflow docs</a>.</td>
+    </tr>
   </tbody>
 </table>
+
+Note when `boundary` is set to any value other than `'scrollParent'`, the style `position: static` is applied to the `.dropdown` container.
 
 ### Methods
 

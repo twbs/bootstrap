@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Tables
-description: Documentation and examples for opt-in styling of tables (given their prevelant use in JavaScript plugins) with Bootstrap.
+description: Documentation and examples for opt-in styling of tables (given their prevalent use in JavaScript plugins) with Bootstrap.
 group: content
 toc: true
 ---
@@ -17,9 +17,9 @@ Using the most basic table markup, here's how `.table`-based tables look in Boot
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">Username</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
     </tr>
   </thead>
   <tbody>
@@ -52,9 +52,9 @@ You can also invert the colors—with light text on dark backgrounds—with `.ta
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">Username</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
     </tr>
   </thead>
   <tbody>
@@ -89,9 +89,9 @@ Similar to tables and dark tables, use the modifier classes `.thead-light` or `.
   <thead class="thead-dark">
     <tr>
       <th scope="col">#</th>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">Username</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
     </tr>
   </thead>
   <tbody>
@@ -120,9 +120,9 @@ Similar to tables and dark tables, use the modifier classes `.thead-light` or `.
   <thead class="thead-light">
     <tr>
       <th scope="col">#</th>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">Username</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
     </tr>
   </thead>
   <tbody>
@@ -157,9 +157,9 @@ Use `.table-striped` to add zebra-striping to any table row within the `<tbody>`
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">Username</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
     </tr>
   </thead>
   <tbody>
@@ -190,9 +190,9 @@ Use `.table-striped` to add zebra-striping to any table row within the `<tbody>`
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">Username</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
     </tr>
   </thead>
   <tbody>
@@ -227,9 +227,9 @@ Add `.table-bordered` for borders on all sides of the table and cells.
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">Username</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
     </tr>
   </thead>
   <tbody>
@@ -241,18 +241,12 @@ Add `.table-bordered` for borders on all sides of the table and cells.
     </tr>
     <tr>
       <th scope="row">2</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@TwBootstrap</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
       <td>Jacob</td>
       <td>Thornton</td>
       <td>@fat</td>
     </tr>
     <tr>
-      <th scope="row">4</th>
+      <th scope="row">3</th>
       <td colspan="2">Larry the Bird</td>
       <td>@twitter</td>
     </tr>
@@ -265,9 +259,9 @@ Add `.table-bordered` for borders on all sides of the table and cells.
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">Username</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
     </tr>
   </thead>
   <tbody>
@@ -279,18 +273,12 @@ Add `.table-bordered` for borders on all sides of the table and cells.
     </tr>
     <tr>
       <th scope="row">2</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@TwBootstrap</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
       <td>Jacob</td>
       <td>Thornton</td>
       <td>@fat</td>
     </tr>
     <tr>
-      <th scope="row">4</th>
+      <th scope="row">3</th>
       <td colspan="2">Larry the Bird</td>
       <td>@twitter</td>
     </tr>
@@ -307,9 +295,9 @@ Add `.table-hover` to enable a hover state on table rows within a `<tbody>`.
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">Username</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
     </tr>
   </thead>
   <tbody>
@@ -339,9 +327,9 @@ Add `.table-hover` to enable a hover state on table rows within a `<tbody>`.
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">Username</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
     </tr>
   </thead>
   <tbody>
@@ -375,9 +363,9 @@ Add `.table-sm` to make tables more compact by cutting cell padding in half.
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">Username</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
     </tr>
   </thead>
   <tbody>
@@ -407,9 +395,9 @@ Add `.table-sm` to make tables more compact by cutting cell padding in half.
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">Username</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
     </tr>
   </thead>
   <tbody>
@@ -442,32 +430,28 @@ Use contextual classes to color table rows or individual cells.
   <table class="table">
     <thead>
       <tr>
-        <th scope="col">Type</th>
-        <th scope="col">Column heading</th>
-        <th scope="col">Column heading</th>
-        <th scope="col">Column heading</th>
+        <th scope="col">Class</th>
+        <th scope="col">Heading</th>
+        <th scope="col">Heading</th>
       </tr>
     </thead>
     <tbody>
       <tr class="table-active">
         <th scope="row">Active</th>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
+        <td>Cell</td>
+        <td>Cell</td>
       </tr>
       <tr>
         <th scope="row">Default</th>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
+        <td>Cell</td>
+        <td>Cell</td>
       </tr>
 
       {% for color in site.data.theme-colors %}
       <tr class="table-{{ color.name }}">
         <th scope="row">{{ color.name | capitalize }}</th>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
+        <td>Cell</td>
+        <td>Cell</td>
       </tr>{% endfor %}
     </tbody>
   </table>
@@ -494,65 +478,55 @@ Regular table background variants are not available with the dark table, however
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Column heading</th>
-        <th scope="col">Column heading</th>
-        <th scope="col">Column heading</th>
+        <th scope="col">Heading</th>
+        <th scope="col">Heading</th>
       </tr>
     </thead>
     <tbody>
       <tr class="bg-primary">
         <th scope="row">1</th>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
+        <td>Cell</td>
+        <td>Cell</td>
       </tr>
       <tr>
         <th scope="row">2</th>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
+        <td>Cell</td>
+        <td>Cell</td>
       </tr>
       <tr class="bg-success">
         <th scope="row">3</th>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
+        <td>Cell</td>
+        <td>Cell</td>
       </tr>
       <tr>
         <th scope="row">4</th>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
+        <td>Cell</td>
+        <td>Cell</td>
       </tr>
       <tr class="bg-info">
         <th scope="row">5</th>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
+        <td>Cell</td>
+        <td>Cell</td>
       </tr>
       <tr>
         <th scope="row">6</th>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
+        <td>Cell</td>
+        <td>Cell</td>
       </tr>
       <tr class="bg-warning">
         <th scope="row">7</th>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
+        <td>Cell</td>
+        <td>Cell</td>
       </tr>
       <tr>
         <th scope="row">8</th>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
+        <td>Cell</td>
+        <td>Cell</td>
       </tr>
       <tr class="bg-danger">
         <th scope="row">9</th>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
+        <td>Cell</td>
+        <td>Cell</td>
       </tr>
     </tbody>
   </table>
@@ -579,10 +553,14 @@ Regular table background variants are not available with the dark table, however
 {% capture callout-include %}{% include callout-warning-color-assistive-technologies.md %}{% endcapture %}
 {{ callout-include | markdownify }}
 
+Create responsive tables by wrapping any `.table` with `.table-responsive{-sm|-md|-lg|-xl}`, making the table scroll horizontally at each `max-width` breakpoint of up to (but not including) 576px, 768px, 992px, and 1120px, respectively.
+
+{% capture callout-include %}{% include callout-info-mediaqueries-breakpoints.md %}{% endcapture %}
+{{ callout-include | markdownify }}
 
 ## Captions
 
-A `<caption>` functions like a heading for a table. It helps users with screen readers to find a table and understand what it’s about and decide if they want to read it.
+A `<caption>` functions like a heading for a table. It helps users with screen readers to find a table and understand what it's about and decide if they want to read it.
 
 {% example html %}
 <table class="table">
@@ -590,9 +568,9 @@ A `<caption>` functions like a heading for a table. It helps users with screen r
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">Username</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
     </tr>
   </thead>
   <tbody>
@@ -620,120 +598,83 @@ A `<caption>` functions like a heading for a table. It helps users with screen r
 
 ## Responsive tables
 
-Responsive tables allow tables to be scrolled horizontally with ease. Make any table responsive across all viewports by adding `.table-responsive` class on `.table`. Or, pick a maximum breakpoint with which to have a responsive table up to by adding `.table-responsive{-sm|-md|-lg|-xl}`.
+Responsive tables allow tables to be scrolled horizontally with ease. Make any table responsive across all viewports by wrapping a `.table` with `.table-responsive`. Or, pick a maximum breakpoint with which to have a responsive table up to by using `.table-responsive{-sm|-md|-lg|-xl}`.
 
 {% callout warning %}
-#### Vertical clipping/truncation
+##### Vertical clipping/truncation
 
 Responsive tables make use of `overflow-y: hidden`, which clips off any content that goes beyond the bottom or top edges of the table. In particular, this can clip off dropdown menus and other third-party widgets.
 {% endcallout %}
 
 ### Always responsive
 
-<div class="bd-example">
-  <table class="table table-responsive">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Table heading</th>
-        <th scope="col">Table heading</th>
-        <th scope="col">Table heading</th>
-        <th scope="col">Table heading</th>
-        <th scope="col">Table heading</th>
-        <th scope="col">Table heading</th>
-        <th scope="col">Table heading</th>
-        <th scope="col">Table heading</th>
-        <th scope="col">Table heading</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-      </tr>
-    </tbody>
-  </table>
+Across every breakpoint, use `.table-responsive` for horizontally scrolling tables.
 
-  <table class="table table-bordered table-responsive-lg">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Table heading</th>
-        <th scope="col">Table heading</th>
-        <th scope="col">Table heading</th>
-        <th scope="col">Table heading</th>
-        <th scope="col">Table heading</th>
-        <th scope="col">Table heading</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-        <td>Table cell</td>
-      </tr>
-    </tbody>
-  </table>
+<div class="bd-example">
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Heading</th>
+          <th scope="col">Heading</th>
+          <th scope="col">Heading</th>
+          <th scope="col">Heading</th>
+          <th scope="col">Heading</th>
+          <th scope="col">Heading</th>
+          <th scope="col">Heading</th>
+          <th scope="col">Heading</th>
+          <th scope="col">Heading</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+          <td>Cell</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 
 {% highlight html %}
-<table class="table table-responsive">
-  ...
-</table>
+<div class="table-responsive">
+  <table class="table">
+    ...
+  </table>
+</div>
 {% endhighlight %}
 
 ### Breakpoint specific
@@ -742,51 +683,55 @@ Use `.table-responsive{-sm|-md|-lg|-xl}` as needed to create responsive tables u
 
 <div class="bd-example">
 {% for bp in site.data.breakpoints %}{% unless bp.breakpoint == "xs" %}
-<table class="table table-responsive{{ bp.abbr }}">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Table heading</th>
-      <th scope="col">Table heading</th>
-      <th scope="col">Table heading</th>
-      <th scope="col">Table heading</th>
-      <th scope="col">Table heading</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Table cell</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Table cell</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Table cell</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-      <td>Table cell</td>
-    </tr>
-  </tbody>
-</table>
+<div class="table-responsive{{ bp.abbr }}">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Heading</th>
+        <th scope="col">Heading</th>
+        <th scope="col">Heading</th>
+        <th scope="col">Heading</th>
+        <th scope="col">Heading</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 {% endunless %}{% endfor %}
 </div>
 
 {% highlight html %}
 {% for bp in site.data.breakpoints %}{% unless bp.breakpoint == "xs" %}
-<table class="table table-responsive{{ bp.abbr }}">
-  ...
-</table>
+<div class="table-responsive{{ bp.abbr }}">
+  <table class="table">
+    ...
+  </table>
+</div>
 {% endunless %}{% endfor %}
 {% endhighlight %}

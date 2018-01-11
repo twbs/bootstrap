@@ -4,7 +4,7 @@ import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-beta.2): collapse.js
+ * Bootstrap (v4.0.0-beta.3): collapse.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -19,7 +19,7 @@ const Collapse = (($) => {
    */
 
   const NAME                = 'collapse'
-  const VERSION             = '4.0.0-beta.2'
+  const VERSION             = '4.0.0-beta.3'
   const DATA_KEY            = 'bs.collapse'
   const EVENT_KEY           = `.${DATA_KEY}`
   const DATA_API_KEY        = '.data-api'
@@ -83,6 +83,7 @@ const Collapse = (($) => {
         const elem = tabToggles[i]
         const selector = Util.getSelectorFromElement(elem)
         if (selector !== null && $(selector).filter(element).length > 0) {
+          this._selector = selector
           this._triggerArray.push(elem)
         }
       }
@@ -130,14 +131,18 @@ const Collapse = (($) => {
       let activesData
 
       if (this._parent) {
-        actives = $.makeArray($(this._parent).children().children(Selector.ACTIVES))
+        actives = $.makeArray(
+          $(this._parent)
+            .find(Selector.ACTIVES)
+            .filter(`[data-parent="${this._config.parent}"]`)
+        )
         if (!actives.length) {
           actives = null
         }
       }
 
       if (actives) {
-        activesData = $(actives).data(DATA_KEY)
+        activesData = $(actives).not(this._selector).data(DATA_KEY)
         if (activesData && activesData._isTransitioning) {
           return
         }
@@ -150,7 +155,7 @@ const Collapse = (($) => {
       }
 
       if (actives) {
-        Collapse._jQueryInterface.call($(actives), 'hide')
+        Collapse._jQueryInterface.call($(actives).not(this._selector), 'hide')
         if (!activesData) {
           $(actives).data(DATA_KEY, null)
         }
@@ -277,7 +282,10 @@ const Collapse = (($) => {
     // private
 
     _getConfig(config) {
-      config = $.extend({}, Default, config)
+      config = {
+        ...Default,
+        ...config
+      }
       config.toggle = Boolean(config.toggle) // coerce string values
       Util.typeCheckConfig(NAME, config, DefaultType)
       return config
@@ -338,12 +346,11 @@ const Collapse = (($) => {
       return this.each(function () {
         const $this   = $(this)
         let data      = $this.data(DATA_KEY)
-        const _config = $.extend(
-          {},
-          Default,
-          $this.data(),
-          typeof config === 'object' && config
-        )
+        const _config = {
+          ...Default,
+          ...$this.data(),
+          ...typeof config === 'object' && config
+        }
 
         if (!data && _config.toggle && /show|hide/.test(config)) {
           _config.toggle = false

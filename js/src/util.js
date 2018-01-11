@@ -2,7 +2,7 @@ import $ from 'jquery'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-beta.2): util.js
+ * Bootstrap (v4.0.0-beta.3): util.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -19,11 +19,6 @@ const Util = (($) => {
   let transition = false
 
   const MAX_UID = 1000000
-
-  const TransitionEndEvent = {
-    WebkitTransition : 'webkitTransitionEnd',
-    transition       : 'transitionend'
-  }
 
   // shoutout AngusCroll (https://goo.gl/pxwQGp)
   function toType(obj) {
@@ -44,21 +39,13 @@ const Util = (($) => {
   }
 
   function transitionEndTest() {
-    if (window.QUnit) {
+    if (typeof window !== 'undefined' && window.QUnit) {
       return false
     }
 
-    const el = document.createElement('bootstrap')
-
-    for (const name in TransitionEndEvent) {
-      if (typeof el.style[name] !== 'undefined') {
-        return {
-          end: TransitionEndEvent[name]
-        }
-      }
+    return {
+      end: 'transitionend'
     }
-
-    return false
   }
 
   function transitionEndEmulator(duration) {

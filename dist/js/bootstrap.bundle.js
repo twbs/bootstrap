@@ -1,10 +1,13 @@
 /*!
-  * Bootstrap v4.0.0-beta.2 (https://getbootstrap.com)
-  * Copyright 2011-2017 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Bootstrap v4.0.0-beta.3 (https://getbootstrap.com)
+  * Copyright 2011-2018 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
   */
-var bootstrap = (function (exports,$) {
-'use strict';
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('jquery')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'jquery'], factory) :
+	(factory((global.bootstrap = {}),global.jQuery));
+}(this, (function (exports,$) { 'use strict';
 
 $ = $ && $.hasOwnProperty('default') ? $['default'] : $;
 
@@ -24,6 +27,24 @@ function _createClass(Constructor, protoProps, staticProps) {
   return Constructor;
 }
 
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
 function _inheritsLoose(subClass, superClass) {
   subClass.prototype = Object.create(superClass.prototype);
   subClass.prototype.constructor = subClass;
@@ -32,7 +53,7 @@ function _inheritsLoose(subClass, superClass) {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-beta.2): util.js
+ * Bootstrap (v4.0.0-beta.3): util.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -44,12 +65,7 @@ var Util = function ($$$1) {
    * ------------------------------------------------------------------------
    */
   var transition = false;
-  var MAX_UID = 1000000;
-  var TransitionEndEvent = {
-    WebkitTransition: 'webkitTransitionEnd',
-    transition: 'transitionend' // shoutout AngusCroll (https://goo.gl/pxwQGp)
-
-  };
+  var MAX_UID = 1000000; // shoutout AngusCroll (https://goo.gl/pxwQGp)
 
   function toType(obj) {
     return {}.toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase();
@@ -74,17 +90,9 @@ var Util = function ($$$1) {
       return false;
     }
 
-    var el = document.createElement('bootstrap');
-
-    for (var name in TransitionEndEvent) {
-      if (typeof el.style[name] !== 'undefined') {
-        return {
-          end: TransitionEndEvent[name]
-        };
-      }
-    }
-
-    return false;
+    return {
+      end: 'transitionend'
+    };
   }
 
   function transitionEndEmulator(duration) {
@@ -185,7 +193,7 @@ var Util = function ($$$1) {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-beta.2): alert.js
+ * Bootstrap (v4.0.0-beta.3): alert.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -197,7 +205,7 @@ var Alert = function ($$$1) {
    * ------------------------------------------------------------------------
    */
   var NAME = 'alert';
-  var VERSION = '4.0.0-beta.2';
+  var VERSION = '4.0.0-beta.3';
   var DATA_KEY = 'bs.alert';
   var EVENT_KEY = "." + DATA_KEY;
   var DATA_API_KEY = '.data-api';
@@ -357,7 +365,7 @@ var Alert = function ($$$1) {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-beta.2): button.js
+ * Bootstrap (v4.0.0-beta.3): button.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -369,7 +377,7 @@ var Button = function ($$$1) {
    * ------------------------------------------------------------------------
    */
   var NAME = 'button';
-  var VERSION = '4.0.0-beta.2';
+  var VERSION = '4.0.0-beta.3';
   var DATA_KEY = 'bs.button';
   var EVENT_KEY = "." + DATA_KEY;
   var DATA_API_KEY = '.data-api';
@@ -520,7 +528,7 @@ var Button = function ($$$1) {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-beta.2): carousel.js
+ * Bootstrap (v4.0.0-beta.3): carousel.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -532,7 +540,7 @@ var Carousel = function ($$$1) {
    * ------------------------------------------------------------------------
    */
   var NAME = 'carousel';
-  var VERSION = '4.0.0-beta.2';
+  var VERSION = '4.0.0-beta.3';
   var DATA_KEY = 'bs.carousel';
   var EVENT_KEY = "." + DATA_KEY;
   var DATA_API_KEY = '.data-api';
@@ -714,7 +722,7 @@ var Carousel = function ($$$1) {
 
 
     _proto._getConfig = function _getConfig(config) {
-      config = $$$1.extend({}, Default, config);
+      config = _extends({}, Default, config);
       Util.typeCheckConfig(NAME, config, DefaultType);
       return config;
     };
@@ -916,10 +924,10 @@ var Carousel = function ($$$1) {
       return this.each(function () {
         var data = $$$1(this).data(DATA_KEY);
 
-        var _config = $$$1.extend({}, Default, $$$1(this).data());
+        var _config = _extends({}, Default, $$$1(this).data());
 
         if (typeof config === 'object') {
-          $$$1.extend(_config, config);
+          _config = _extends({}, _config, config);
         }
 
         var action = typeof config === 'string' ? config : _config.slide;
@@ -957,7 +965,7 @@ var Carousel = function ($$$1) {
         return;
       }
 
-      var config = $$$1.extend({}, $$$1(target).data(), $$$1(this).data());
+      var config = _extends({}, $$$1(target).data(), $$$1(this).data());
       var slideIndex = this.getAttribute('data-slide-to');
 
       if (slideIndex) {
@@ -1020,7 +1028,7 @@ var Carousel = function ($$$1) {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-beta.2): collapse.js
+ * Bootstrap (v4.0.0-beta.3): collapse.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -1032,7 +1040,7 @@ var Collapse = function ($$$1) {
    * ------------------------------------------------------------------------
    */
   var NAME = 'collapse';
-  var VERSION = '4.0.0-beta.2';
+  var VERSION = '4.0.0-beta.3';
   var DATA_KEY = 'bs.collapse';
   var EVENT_KEY = "." + DATA_KEY;
   var DATA_API_KEY = '.data-api';
@@ -1089,6 +1097,8 @@ var Collapse = function ($$$1) {
         var selector = Util.getSelectorFromElement(elem);
 
         if (selector !== null && $$$1(selector).filter(element).length > 0) {
+          this._selector = selector;
+
           this._triggerArray.push(elem);
         }
       }
@@ -1127,7 +1137,7 @@ var Collapse = function ($$$1) {
       var activesData;
 
       if (this._parent) {
-        actives = $$$1.makeArray($$$1(this._parent).children().children(Selector.ACTIVES));
+        actives = $$$1.makeArray($$$1(this._parent).find(Selector.ACTIVES).filter("[data-parent=\"" + this._config.parent + "\"]"));
 
         if (!actives.length) {
           actives = null;
@@ -1135,7 +1145,7 @@ var Collapse = function ($$$1) {
       }
 
       if (actives) {
-        activesData = $$$1(actives).data(DATA_KEY);
+        activesData = $$$1(actives).not(this._selector).data(DATA_KEY);
 
         if (activesData && activesData._isTransitioning) {
           return;
@@ -1150,7 +1160,7 @@ var Collapse = function ($$$1) {
       }
 
       if (actives) {
-        Collapse._jQueryInterface.call($$$1(actives), 'hide');
+        Collapse._jQueryInterface.call($$$1(actives).not(this._selector), 'hide');
 
         if (!activesData) {
           $$$1(actives).data(DATA_KEY, null);
@@ -1256,7 +1266,7 @@ var Collapse = function ($$$1) {
 
 
     _proto._getConfig = function _getConfig(config) {
-      config = $$$1.extend({}, Default, config);
+      config = _extends({}, Default, config);
       config.toggle = Boolean(config.toggle); // coerce string values
 
       Util.typeCheckConfig(NAME, config, DefaultType);
@@ -1311,7 +1321,7 @@ var Collapse = function ($$$1) {
         var $this = $$$1(this);
         var data = $this.data(DATA_KEY);
 
-        var _config = $$$1.extend({}, Default, $this.data(), typeof config === 'object' && config);
+        var _config = _extends({}, Default, $this.data(), typeof config === 'object' && config);
 
         if (!data && _config.toggle && /show|hide/.test(config)) {
           _config.toggle = false;
@@ -1387,7 +1397,7 @@ var Collapse = function ($$$1) {
 
 /**!
  * @fileOverview Kickass library to create and place poppers near their reference elements.
- * @version 1.12.6
+ * @version 1.12.9
  * @license
  * Copyright (c) 2016 Federico Zivolo and contributors
  *
@@ -1409,7 +1419,7 @@ var Collapse = function ($$$1) {
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-var isBrowser = typeof window !== 'undefined' && typeof window.document !== 'undefined';
+var isBrowser = typeof window !== 'undefined' && typeof document !== 'undefined';
 var longerTimeoutBrowsers = ['Edge', 'Trident', 'Firefox'];
 var timeoutDuration = 0;
 for (var i = 0; i < longerTimeoutBrowsers.length; i += 1) {
@@ -1426,7 +1436,7 @@ function microtaskDebounce(fn) {
       return;
     }
     called = true;
-    Promise.resolve().then(function () {
+    window.Promise.resolve().then(function () {
       called = false;
       fn();
     });
@@ -1483,7 +1493,7 @@ function getStyleComputedProperty(element, property) {
     return [];
   }
   // NOTE: 1 DOM access here
-  var css = window.getComputedStyle(element, null);
+  var css = getComputedStyle(element, null);
   return property ? css[property] : css;
 }
 
@@ -1511,7 +1521,7 @@ function getParentNode(element) {
 function getScrollParent(element) {
   // Return body, `getScroll` will take care to get the correct `scrollTop` from it
   if (!element) {
-    return window.document.body;
+    return document.body;
   }
 
   switch (element.nodeName) {
@@ -1553,7 +1563,7 @@ function getOffsetParent(element) {
       return element.ownerDocument.documentElement;
     }
 
-    return window.document.documentElement;
+    return document.documentElement;
   }
 
   // .offsetParent will return the closest TD or TABLE in case
@@ -1600,7 +1610,7 @@ function getRoot(node) {
 function findCommonOffsetParent(element1, element2) {
   // This check is needed to avoid errors in case one of the elements isn't defined for any reason
   if (!element1 || !element1.nodeType || !element2 || !element2.nodeType) {
-    return window.document.documentElement;
+    return document.documentElement;
   }
 
   // Here we make sure to give as "start" the element that comes first in the DOM
@@ -1692,7 +1702,7 @@ function getBordersSize(styles, axis) {
   var sideA = axis === 'x' ? 'Left' : 'Top';
   var sideB = sideA === 'Left' ? 'Right' : 'Bottom';
 
-  return +styles['border' + sideA + 'Width'].split('px')[0] + +styles['border' + sideB + 'Width'].split('px')[0];
+  return parseFloat(styles['border' + sideA + 'Width'], 10) + parseFloat(styles['border' + sideB + 'Width'], 10);
 }
 
 /**
@@ -1715,9 +1725,9 @@ function getSize(axis, body, html, computedStyle) {
 }
 
 function getWindowSizes() {
-  var body = window.document.body;
-  var html = window.document.documentElement;
-  var computedStyle = isIE10$1() && window.getComputedStyle(html);
+  var body = document.body;
+  var html = document.documentElement;
+  var computedStyle = isIE10$1() && getComputedStyle(html);
 
   return {
     height: getSize('Height', body, html, computedStyle),
@@ -1768,7 +1778,7 @@ var defineProperty = function (obj, key, value) {
   return obj;
 };
 
-var _extends = Object.assign || function (target) {
+var _extends$1 = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];
 
@@ -1790,7 +1800,7 @@ var _extends = Object.assign || function (target) {
  * @returns {Object} ClientRect like output
  */
 function getClientRect(offsets) {
-  return _extends({}, offsets, {
+  return _extends$1({}, offsets, {
     right: offsets.left + offsets.width,
     bottom: offsets.top + offsets.height
   });
@@ -1860,8 +1870,8 @@ function getOffsetRectRelativeToArbitraryNode(children, parent) {
   var scrollParent = getScrollParent(children);
 
   var styles = getStyleComputedProperty(parent);
-  var borderTopWidth = +styles.borderTopWidth.split('px')[0];
-  var borderLeftWidth = +styles.borderLeftWidth.split('px')[0];
+  var borderTopWidth = parseFloat(styles.borderTopWidth, 10);
+  var borderLeftWidth = parseFloat(styles.borderLeftWidth, 10);
 
   var offsets = getClientRect({
     top: childrenRect.top - parentRect.top - borderTopWidth,
@@ -1877,8 +1887,8 @@ function getOffsetRectRelativeToArbitraryNode(children, parent) {
   // differently when margins are applied to it. The margins are included in
   // the box of the documentElement, in the other cases not.
   if (!isIE10 && isHTML) {
-    var marginTop = +styles.marginTop.split('px')[0];
-    var marginLeft = +styles.marginLeft.split('px')[0];
+    var marginTop = parseFloat(styles.marginTop, 10);
+    var marginLeft = parseFloat(styles.marginLeft, 10);
 
     offsets.top -= borderTopWidth - marginTop;
     offsets.bottom -= borderTopWidth - marginTop;
@@ -1957,7 +1967,7 @@ function getBoundaries(popper, reference, padding, boundariesElement) {
     // Handle other cases based on DOM element used as boundaries
     var boundariesNode = void 0;
     if (boundariesElement === 'scrollParent') {
-      boundariesNode = getScrollParent(getParentNode(popper));
+      boundariesNode = getScrollParent(getParentNode(reference));
       if (boundariesNode.nodeName === 'BODY') {
         boundariesNode = popper.ownerDocument.documentElement;
       }
@@ -2039,7 +2049,7 @@ function computeAutoPlacement(placement, refRect, popper, reference, boundariesE
   };
 
   var sortedAreas = Object.keys(rects).map(function (key) {
-    return _extends({
+    return _extends$1({
       key: key
     }, rects[key], {
       area: getArea(rects[key])
@@ -2083,7 +2093,7 @@ function getReferenceOffsets(state, popper, reference) {
  * @returns {Object} object containing width and height properties
  */
 function getOuterSizes(element) {
-  var styles = window.getComputedStyle(element);
+  var styles = getComputedStyle(element);
   var x = parseFloat(styles.marginTop) + parseFloat(styles.marginBottom);
   var y = parseFloat(styles.marginLeft) + parseFloat(styles.marginRight);
   var result = {
@@ -2300,7 +2310,7 @@ function getSupportedPropertyName(property) {
   for (var i = 0; i < prefixes.length - 1; i++) {
     var prefix = prefixes[i];
     var toCheck = prefix ? '' + prefix + upperProp : property;
-    if (typeof window.document.body.style[toCheck] !== 'undefined') {
+    if (typeof document.body.style[toCheck] !== 'undefined') {
       return toCheck;
     }
   }
@@ -2419,7 +2429,7 @@ function removeEventListeners(reference, state) {
  */
 function disableEventListeners() {
   if (this.state.eventsEnabled) {
-    window.cancelAnimationFrame(this.scheduleUpdate);
+    cancelAnimationFrame(this.scheduleUpdate);
     this.state = removeEventListeners(this.reference, this.state);
   }
 }
@@ -2616,9 +2626,9 @@ function computeStyle(data, options) {
   };
 
   // Update `data` attributes, styles and arrowStyles
-  data.attributes = _extends({}, attributes, data.attributes);
-  data.styles = _extends({}, styles, data.styles);
-  data.arrowStyles = _extends({}, data.offsets.arrow, data.arrowStyles);
+  data.attributes = _extends$1({}, attributes, data.attributes);
+  data.styles = _extends$1({}, styles, data.styles);
+  data.arrowStyles = _extends$1({}, data.offsets.arrow, data.arrowStyles);
 
   return data;
 }
@@ -2659,6 +2669,8 @@ function isModifierRequired(modifiers, requestingName, requestedName) {
  * @returns {Object} The data object, properly modified
  */
 function arrow(data, options) {
+  var _data$offsets$arrow;
+
   // arrow depends on keepTogether in order to work
   if (!isModifierRequired(data.instance.modifiers, 'arrow', 'keepTogether')) {
     return data;
@@ -2710,22 +2722,23 @@ function arrow(data, options) {
   if (reference[side] + arrowElementSize > popper[opSide]) {
     data.offsets.popper[side] += reference[side] + arrowElementSize - popper[opSide];
   }
+  data.offsets.popper = getClientRect(data.offsets.popper);
 
   // compute center of the popper
   var center = reference[side] + reference[len] / 2 - arrowElementSize / 2;
 
   // Compute the sideValue using the updated popper offsets
   // take popper margin in account because we don't have this info available
-  var popperMarginSide = getStyleComputedProperty(data.instance.popper, 'margin' + sideCapitalized).replace('px', '');
-  var sideValue = center - getClientRect(data.offsets.popper)[side] - popperMarginSide;
+  var css = getStyleComputedProperty(data.instance.popper);
+  var popperMarginSide = parseFloat(css['margin' + sideCapitalized], 10);
+  var popperBorderSide = parseFloat(css['border' + sideCapitalized + 'Width'], 10);
+  var sideValue = center - data.offsets.popper[side] - popperMarginSide - popperBorderSide;
 
   // prevent arrowElement from being placed not contiguously to its popper
   sideValue = Math.max(Math.min(popper[len] - arrowElementSize, sideValue), 0);
 
   data.arrowElement = arrowElement;
-  data.offsets.arrow = {};
-  data.offsets.arrow[side] = Math.round(sideValue);
-  data.offsets.arrow[altSide] = ''; // make sure to unset any eventual altSide value from the DOM node
+  data.offsets.arrow = (_data$offsets$arrow = {}, defineProperty(_data$offsets$arrow, side, Math.round(sideValue)), defineProperty(_data$offsets$arrow, altSide, ''), _data$offsets$arrow);
 
   return data;
 }
@@ -2888,7 +2901,7 @@ function flip(data, options) {
 
       // this object contains `position`, we want to preserve it along with
       // any additional property we may add in the future
-      data.offsets.popper = _extends({}, data.offsets.popper, getPopperOffsets(data.instance.popper, data.offsets.reference, data.placement));
+      data.offsets.popper = _extends$1({}, data.offsets.popper, getPopperOffsets(data.instance.popper, data.offsets.reference, data.placement));
 
       data = runModifiers(data.instance.modifiers, data, 'flip');
     }
@@ -3142,7 +3155,7 @@ function preventOverflow(data, options) {
 
   order.forEach(function (placement) {
     var side = ['left', 'top'].indexOf(placement) !== -1 ? 'primary' : 'secondary';
-    popper = _extends({}, popper, check[side](placement));
+    popper = _extends$1({}, popper, check[side](placement));
   });
 
   data.offsets.popper = popper;
@@ -3177,7 +3190,7 @@ function shift(data) {
       end: defineProperty({}, side, reference[side] + reference[measurement] - popper[measurement])
     };
 
-    data.offsets.popper = _extends({}, popper, shiftOffsets[shiftvariation]);
+    data.offsets.popper = _extends$1({}, popper, shiftOffsets[shiftvariation]);
   }
 
   return data;
@@ -3687,7 +3700,7 @@ var Popper = function () {
     this.update = debounce(this.update.bind(this));
 
     // with {} we create a new object with the options inside it
-    this.options = _extends({}, Popper.Defaults, options);
+    this.options = _extends$1({}, Popper.Defaults, options);
 
     // init state
     this.state = {
@@ -3702,13 +3715,13 @@ var Popper = function () {
 
     // Deep merge modifiers options
     this.options.modifiers = {};
-    Object.keys(_extends({}, Popper.Defaults.modifiers, options.modifiers)).forEach(function (name) {
-      _this.options.modifiers[name] = _extends({}, Popper.Defaults.modifiers[name] || {}, options.modifiers ? options.modifiers[name] : {});
+    Object.keys(_extends$1({}, Popper.Defaults.modifiers, options.modifiers)).forEach(function (name) {
+      _this.options.modifiers[name] = _extends$1({}, Popper.Defaults.modifiers[name] || {}, options.modifiers ? options.modifiers[name] : {});
     });
 
     // Refactoring modifiers' list (Object => Array)
     this.modifiers = Object.keys(this.options.modifiers).map(function (name) {
-      return _extends({
+      return _extends$1({
         name: name
       }, _this.options.modifiers[name]);
     })
@@ -3819,7 +3832,7 @@ Popper.Defaults = Defaults;
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-beta.2): dropdown.js
+ * Bootstrap (v4.0.0-beta.3): dropdown.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -3831,7 +3844,7 @@ var Dropdown = function ($$$1) {
    * ------------------------------------------------------------------------
    */
   var NAME = 'dropdown';
-  var VERSION = '4.0.0-beta.2';
+  var VERSION = '4.0.0-beta.3';
   var DATA_KEY = 'bs.dropdown';
   var EVENT_KEY = "." + DATA_KEY;
   var DATA_API_KEY = '.data-api';
@@ -3866,7 +3879,8 @@ var Dropdown = function ($$$1) {
     DROPRIGHT: 'dropright',
     DROPLEFT: 'dropleft',
     MENURIGHT: 'dropdown-menu-right',
-    MENULEFT: 'dropdown-menu-left'
+    MENULEFT: 'dropdown-menu-left',
+    POSITION_STATIC: 'position-static'
   };
   var Selector = {
     DATA_TOGGLE: '[data-toggle="dropdown"]',
@@ -3887,11 +3901,13 @@ var Dropdown = function ($$$1) {
   };
   var Default = {
     offset: 0,
-    flip: true
+    flip: true,
+    boundary: 'scrollParent'
   };
   var DefaultType = {
     offset: '(number|string|function)',
-    flip: 'boolean'
+    flip: 'boolean',
+    boundary: '(string|element)'
     /**
      * ------------------------------------------------------------------------
      * Class Definition
@@ -3958,6 +3974,13 @@ var Dropdown = function ($$$1) {
           if ($$$1(this._menu).hasClass(ClassName.MENULEFT) || $$$1(this._menu).hasClass(ClassName.MENURIGHT)) {
             element = parent;
           }
+        } // If boundary is not `scrollParent`, then set position to `static`
+        // to allow the menu to "escape" the scroll parent's boundaries
+        // https://github.com/twbs/bootstrap/issues/24251
+
+
+        if (this._config.boundary !== 'scrollParent') {
+          $$$1(parent).addClass(ClassName.POSITION_STATIC);
         }
 
         this._popper = new Popper(element, this._menu, this._getPopperConfig());
@@ -4013,7 +4036,7 @@ var Dropdown = function ($$$1) {
     };
 
     _proto._getConfig = function _getConfig(config) {
-      config = $$$1.extend({}, this.constructor.Default, $$$1(this._element).data(), config);
+      config = _extends({}, this.constructor.Default, $$$1(this._element).data(), config);
       Util.typeCheckConfig(NAME, config, this.constructor.DefaultType);
       return config;
     };
@@ -4060,7 +4083,7 @@ var Dropdown = function ($$$1) {
 
       if (typeof this._config.offset === 'function') {
         offsetConf.fn = function (data) {
-          data.offsets = $$$1.extend({}, data.offsets, _this2._config.offset(data.offsets) || {});
+          data.offsets = _extends({}, data.offsets, _this2._config.offset(data.offsets) || {});
           return data;
         };
       } else {
@@ -4073,6 +4096,9 @@ var Dropdown = function ($$$1) {
           offset: offsetConf,
           flip: {
             enabled: this._config.flip
+          },
+          preventOverflow: {
+            boundariesElement: this._config.boundary
           }
         }
       };
@@ -4158,7 +4184,8 @@ var Dropdown = function ($$$1) {
       }
 
       return parent || element.parentNode;
-    };
+    }; // eslint-disable-next-line complexity
+
 
     Dropdown._dataApiKeydownHandler = function _dataApiKeydownHandler(event) {
       // If not input/textarea:
@@ -4270,7 +4297,7 @@ var Dropdown = function ($$$1) {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-beta.2): modal.js
+ * Bootstrap (v4.0.0-beta.3): modal.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -4282,7 +4309,7 @@ var Modal = function ($$$1) {
    * ------------------------------------------------------------------------
    */
   var NAME = 'modal';
-  var VERSION = '4.0.0-beta.2';
+  var VERSION = '4.0.0-beta.3';
   var DATA_KEY = 'bs.modal';
   var EVENT_KEY = "." + DATA_KEY;
   var DATA_API_KEY = '.data-api';
@@ -4473,7 +4500,7 @@ var Modal = function ($$$1) {
 
 
     _proto._getConfig = function _getConfig(config) {
-      config = $$$1.extend({}, Default, config);
+      config = _extends({}, Default, config);
       Util.typeCheckConfig(NAME, config, DefaultType);
       return config;
     };
@@ -4757,7 +4784,7 @@ var Modal = function ($$$1) {
       return this.each(function () {
         var data = $$$1(this).data(DATA_KEY);
 
-        var _config = $$$1.extend({}, Modal.Default, $$$1(this).data(), typeof config === 'object' && config);
+        var _config = _extends({}, Modal.Default, $$$1(this).data(), typeof config === 'object' && config);
 
         if (!data) {
           data = new Modal(this, _config);
@@ -4806,7 +4833,7 @@ var Modal = function ($$$1) {
       target = $$$1(selector)[0];
     }
 
-    var config = $$$1(target).data(DATA_KEY) ? 'toggle' : $$$1.extend({}, $$$1(target).data(), $$$1(this).data());
+    var config = $$$1(target).data(DATA_KEY) ? 'toggle' : _extends({}, $$$1(target).data(), $$$1(this).data());
 
     if (this.tagName === 'A' || this.tagName === 'AREA') {
       event.preventDefault();
@@ -4846,7 +4873,7 @@ var Modal = function ($$$1) {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-beta.2): tooltip.js
+ * Bootstrap (v4.0.0-beta.3): tooltip.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -4858,7 +4885,7 @@ var Tooltip = function ($$$1) {
    * ------------------------------------------------------------------------
    */
   var NAME = 'tooltip';
-  var VERSION = '4.0.0-beta.2';
+  var VERSION = '4.0.0-beta.3';
   var DATA_KEY = 'bs.tooltip';
   var EVENT_KEY = "." + DATA_KEY;
   var JQUERY_NO_CONFLICT = $$$1.fn[NAME];
@@ -4876,7 +4903,8 @@ var Tooltip = function ($$$1) {
     placement: '(string|function)',
     offset: '(number|string)',
     container: '(string|element|boolean)',
-    fallbackPlacement: '(string|array)'
+    fallbackPlacement: '(string|array)',
+    boundary: '(string|element)'
   };
   var AttachmentMap = {
     AUTO: 'auto',
@@ -4896,7 +4924,8 @@ var Tooltip = function ($$$1) {
     placement: 'top',
     offset: 0,
     container: false,
-    fallbackPlacement: 'flip'
+    fallbackPlacement: 'flip',
+    boundary: 'scrollParent'
   };
   var HoverState = {
     SHOW: 'show',
@@ -5086,6 +5115,9 @@ var Tooltip = function ($$$1) {
             },
             arrow: {
               element: Selector.ARROW
+            },
+            preventOverflow: {
+              boundariesElement: this.config.boundary
             }
           },
           onCreate: function onCreate(data) {
@@ -5263,7 +5295,7 @@ var Tooltip = function ($$$1) {
       });
 
       if (this.config.selector) {
-        this.config = $$$1.extend({}, this.config, {
+        this.config = _extends({}, this.config, {
           trigger: 'manual',
           selector: ''
         });
@@ -5357,7 +5389,7 @@ var Tooltip = function ($$$1) {
     };
 
     _proto._getConfig = function _getConfig(config) {
-      config = $$$1.extend({}, this.constructor.Default, $$$1(this.element).data(), config);
+      config = _extends({}, this.constructor.Default, $$$1(this.element).data(), config);
 
       if (typeof config.delay === 'number') {
         config.delay = {
@@ -5506,7 +5538,7 @@ var Tooltip = function ($$$1) {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-beta.2): popover.js
+ * Bootstrap (v4.0.0-beta.3): popover.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -5518,19 +5550,19 @@ var Popover = function ($$$1) {
    * ------------------------------------------------------------------------
    */
   var NAME = 'popover';
-  var VERSION = '4.0.0-beta.2';
+  var VERSION = '4.0.0-beta.3';
   var DATA_KEY = 'bs.popover';
   var EVENT_KEY = "." + DATA_KEY;
   var JQUERY_NO_CONFLICT = $$$1.fn[NAME];
   var CLASS_PREFIX = 'bs-popover';
   var BSCLS_PREFIX_REGEX = new RegExp("(^|\\s)" + CLASS_PREFIX + "\\S+", 'g');
-  var Default = $$$1.extend({}, Tooltip.Default, {
+  var Default = _extends({}, Tooltip.Default, {
     placement: 'right',
     trigger: 'click',
     content: '',
     template: '<div class="popover" role="tooltip">' + '<div class="arrow"></div>' + '<h3 class="popover-header"></h3>' + '<div class="popover-body"></div></div>'
   });
-  var DefaultType = $$$1.extend({}, Tooltip.DefaultType, {
+  var DefaultType = _extends({}, Tooltip.DefaultType, {
     content: '(string|element|function)'
   });
   var ClassName = {
@@ -5699,7 +5731,7 @@ var Popover = function ($$$1) {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-beta.2): scrollspy.js
+ * Bootstrap (v4.0.0-beta.3): scrollspy.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -5711,7 +5743,7 @@ var ScrollSpy = function ($$$1) {
    * ------------------------------------------------------------------------
    */
   var NAME = 'scrollspy';
-  var VERSION = '4.0.0-beta.2';
+  var VERSION = '4.0.0-beta.3';
   var DATA_KEY = 'bs.scrollspy';
   var EVENT_KEY = "." + DATA_KEY;
   var DATA_API_KEY = '.data-api';
@@ -5838,7 +5870,7 @@ var ScrollSpy = function ($$$1) {
 
 
     _proto._getConfig = function _getConfig(config) {
-      config = $$$1.extend({}, Default, config);
+      config = _extends({}, Default, config);
 
       if (typeof config.target !== 'string') {
         var id = $$$1(config.target).attr('id');
@@ -6010,7 +6042,7 @@ var ScrollSpy = function ($$$1) {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-beta.2): tab.js
+ * Bootstrap (v4.0.0-beta.3): tab.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -6022,7 +6054,7 @@ var Tab = function ($$$1) {
    * ------------------------------------------------------------------------
    */
   var NAME = 'tab';
-  var VERSION = '4.0.0-beta.2';
+  var VERSION = '4.0.0-beta.3';
   var DATA_KEY = 'bs.tab';
   var EVENT_KEY = "." + DATA_KEY;
   var DATA_API_KEY = '.data-api';
@@ -6149,7 +6181,7 @@ var Tab = function ($$$1) {
       var isTransitioning = callback && Util.supportsTransitionEnd() && active && $$$1(active).hasClass(ClassName.FADE);
 
       var complete = function complete() {
-        return _this2._transitionComplete(element, active, isTransitioning, callback);
+        return _this2._transitionComplete(element, active, callback);
       };
 
       if (active && isTransitioning) {
@@ -6157,15 +6189,11 @@ var Tab = function ($$$1) {
       } else {
         complete();
       }
-
-      if (active) {
-        $$$1(active).removeClass(ClassName.SHOW);
-      }
     };
 
-    _proto._transitionComplete = function _transitionComplete(element, active, isTransitioning, callback) {
+    _proto._transitionComplete = function _transitionComplete(element, active, callback) {
       if (active) {
-        $$$1(active).removeClass(ClassName.ACTIVE);
+        $$$1(active).removeClass(ClassName.SHOW + " " + ClassName.ACTIVE);
         var dropdownChild = $$$1(active.parentNode).find(Selector.DROPDOWN_ACTIVE_CHILD)[0];
 
         if (dropdownChild) {
@@ -6183,12 +6211,8 @@ var Tab = function ($$$1) {
         element.setAttribute('aria-selected', true);
       }
 
-      if (isTransitioning) {
-        Util.reflow(element);
-        $$$1(element).addClass(ClassName.SHOW);
-      } else {
-        $$$1(element).removeClass(ClassName.FADE);
-      }
+      Util.reflow(element);
+      $$$1(element).addClass(ClassName.SHOW);
 
       if (element.parentNode && $$$1(element.parentNode).hasClass(ClassName.DROPDOWN_MENU)) {
         var dropdownElement = $$$1(element).closest(Selector.DROPDOWN)[0];
@@ -6299,7 +6323,7 @@ exports.Scrollspy = ScrollSpy;
 exports.Tab = Tab;
 exports.Tooltip = Tooltip;
 
-return exports;
+Object.defineProperty(exports, '__esModule', { value: true });
 
-}({},jQuery));
+})));
 //# sourceMappingURL=bootstrap.bundle.js.map

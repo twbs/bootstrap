@@ -1,10 +1,12 @@
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-beta.2): collapse.js
+ * Bootstrap (v4.0.0-beta.3): collapse.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -15,7 +17,7 @@ var Collapse = function ($) {
    * ------------------------------------------------------------------------
    */
   var NAME = 'collapse';
-  var VERSION = '4.0.0-beta.2';
+  var VERSION = '4.0.0-beta.3';
   var DATA_KEY = 'bs.collapse';
   var EVENT_KEY = "." + DATA_KEY;
   var DATA_API_KEY = '.data-api';
@@ -72,6 +74,8 @@ var Collapse = function ($) {
         var selector = Util.getSelectorFromElement(elem);
 
         if (selector !== null && $(selector).filter(element).length > 0) {
+          this._selector = selector;
+
           this._triggerArray.push(elem);
         }
       }
@@ -110,7 +114,7 @@ var Collapse = function ($) {
       var activesData;
 
       if (this._parent) {
-        actives = $.makeArray($(this._parent).children().children(Selector.ACTIVES));
+        actives = $.makeArray($(this._parent).find(Selector.ACTIVES).filter("[data-parent=\"" + this._config.parent + "\"]"));
 
         if (!actives.length) {
           actives = null;
@@ -118,7 +122,7 @@ var Collapse = function ($) {
       }
 
       if (actives) {
-        activesData = $(actives).data(DATA_KEY);
+        activesData = $(actives).not(this._selector).data(DATA_KEY);
 
         if (activesData && activesData._isTransitioning) {
           return;
@@ -133,7 +137,7 @@ var Collapse = function ($) {
       }
 
       if (actives) {
-        Collapse._jQueryInterface.call($(actives), 'hide');
+        Collapse._jQueryInterface.call($(actives).not(this._selector), 'hide');
 
         if (!activesData) {
           $(actives).data(DATA_KEY, null);
@@ -239,7 +243,7 @@ var Collapse = function ($) {
 
 
     _proto._getConfig = function _getConfig(config) {
-      config = $.extend({}, Default, config);
+      config = _extends({}, Default, config);
       config.toggle = Boolean(config.toggle); // coerce string values
 
       Util.typeCheckConfig(NAME, config, DefaultType);
@@ -294,7 +298,7 @@ var Collapse = function ($) {
         var $this = $(this);
         var data = $this.data(DATA_KEY);
 
-        var _config = $.extend({}, Default, $this.data(), typeof config === 'object' && config);
+        var _config = _extends({}, Default, $this.data(), typeof config === 'object' && config);
 
         if (!data && _config.toggle && /show|hide/.test(config)) {
           _config.toggle = false;

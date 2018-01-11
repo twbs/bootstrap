@@ -19,7 +19,7 @@ Utilize our source Sass files to take advantage of variables, maps, mixins, and 
 
 ### File structure
 
-Whenever possible, avoid modifying Bootstrap's core files. For Sass, that means creating your own stylesheet that imports Bootstrap so you can modify and extend it. Assuming you've downloaded our source files or are using a package manager, you'll have a file structure that looks like this:
+Whenever possible, avoid modifying Bootstrap's core files. For Sass, that means creating your own stylesheet that imports Bootstrap so you can modify and extend it. Assuming you're using a package manager like npm, you'll have a file structure that looks like this:
 
 {% highlight plaintext %}
 your-project/
@@ -29,6 +29,17 @@ your-project/
     └── bootstrap
         ├── js
         └── scss
+{% endhighlight %}
+
+If you've downloaded our source files and aren't using a package manager, you'll want to manually setup something similar to that structure, keeping Bootstrap's source files separate from your own.
+
+{% highlight plaintext %}
+your-project/
+├── scss
+│   └── custom.scss
+└── bootstrap/
+    ├── js
+    └── scss
 {% endhighlight %}
 
 In your `custom.scss`, you'll import Bootstrap's source Sass files. You have two options: include all of Bootstrap, or pick the parts you need. We encourage the latter, though be aware there are some requirements and dependencies across our components. You also will need to include some JavaScript for our plugins.
@@ -82,7 +93,9 @@ Repeat as necessary for any variable in Bootstrap, including the global options 
 
 Bootstrap 4 includes a handful of Sass maps, key value pairs that make it easier to generate families of related CSS. We use Sass maps for our colors, grid breakpoints, and more. Just like Sass variables, all Sass maps include the `!default` flag and can be overridden and extended.
 
-For example, to modify an existing color in our `$theme-colors` map, add the following to your custom Sass file:
+Some of our Sass maps are merged into empty ones by default. This is done to allow easy expansion of a given Sass map, but comes at the cost of making _removing_ items from a map slightly more difficult.
+
+To modify an existing color in our `$theme-colors` map, add the following to your custom Sass file:
 
 {% highlight scss %}
 $theme-colors: (
@@ -97,6 +110,12 @@ To add a new color to `$theme-colors`, add the new key and value:
 $theme-colors: (
   "custom-color": #900
 );
+{% endhighlight %}
+
+To remove colors from `$theme-colors`, or any other map, use `map-remove`:
+
+{% highlight scss %}
+$theme-colors: map-remove($theme-colors, "success", "info", "danger");
 {% endhighlight %}
 
 ### Functions
@@ -317,3 +336,71 @@ These Sass loops aren't limited to color maps, either. You can also generate res
 {% endhighlight %}
 
 Should you need to modify your `$grid-breakpoints`, your changes will apply to all the loops iterating over that map.
+
+## CSS variables
+
+Bootstrap 4 includes around two dozen [CSS custom properties (variables)](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables) in it's compiled CSS. These provide easy access to commonly used values like our theme colors, breakpoints, and primary font stacks when working in your browser's Inspector, a code sandbox, or general prototyping.
+
+### Available variables
+
+Here are the variables we include (note that the `:root` is required). They're located in our `_root.scss` file.
+
+{% highlight css %}
+:root {
+  --blue: #007bff;
+  --indigo: #6610f2;
+  --purple: #6f42c1;
+  --pink: #e83e8c;
+  --red: #dc3545;
+  --orange: #fd7e14;
+  --yellow: #ffc107;
+  --green: #28a745;
+  --teal: #20c997;
+  --cyan: #17a2b8;
+  --white: #fff;
+  --gray: #6c757d;
+  --gray-dark: #343a40;
+  --primary: #007bff;
+  --secondary: #6c757d;
+  --success: #28a745;
+  --info: #17a2b8;
+  --warning: #ffc107;
+  --danger: #dc3545;
+  --light: #f8f9fa;
+  --dark: #343a40;
+  --breakpoint-xs: 0;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+{% endhighlight %}
+
+### Examples
+
+CSS variables offer similar flexibility to Sass's variables, but without the need for compilation before being served to the browser. For example, here we're resetting our page's font and link styles with CSS variables.
+
+{% highlight css %}
+body {
+  font: 1rem/1.5 var(--font-family-sans-serif);
+}
+a {
+  color: var(--blue);
+}
+{% endhighlight %}
+
+You can also use our breakpoint variables in your media queries:
+
+{% highlight css %}
+.content-secondary {
+  display: none;
+}
+
+@media (min-width(var(--breakpoint-sm))) {
+  .content-secondary {
+    display: block;
+  }
+}
+{% endhighlight %}

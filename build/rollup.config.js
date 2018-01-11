@@ -15,7 +15,8 @@ const plugins = [
     externalHelpersWhitelist: [ // include only required helpers
       'defineProperties',
       'createClass',
-      'inheritsLoose'
+      'inheritsLoose',
+      'extends'
     ]
   })
 ]
@@ -35,16 +36,16 @@ if (BUNDLE) {
 module.exports = {
   input: path.resolve(__dirname, '../js/src/index.js'),
   output: {
-    file: path.resolve(__dirname, `../dist/js/${fileDest}`),
-    format: 'iife'
-  },
-  name: 'bootstrap',
-  external,
-  globals,
-  plugins,
-  banner: `/*!
+    banner: `/*!
   * Bootstrap v${pkg.version} (${pkg.homepage})
   * Copyright 2011-${year} ${pkg.author}
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
-  */`
+  */`,
+    file: path.resolve(__dirname, `../dist/js/${fileDest}`),
+    format: 'umd',
+    globals,
+    name: 'bootstrap'
+  },
+  external,
+  plugins
 }

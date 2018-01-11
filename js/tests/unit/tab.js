@@ -382,4 +382,37 @@ $(function () {
     })
     .trigger($.Event('click'))
   })
+
+  QUnit.test('should not remove fade class if no active pane is present', function (assert) {
+    assert.expect(6)
+    var done = assert.async()
+    var tabsHTML = '<ul class="nav nav-tabs" role="tablist">'
+      + '<li class="nav-item"><a id="tab-home" href="#home" class="nav-link" data-toggle="tab" role="tab">Home</a></li>'
+      + '<li class="nav-item"><a id="tab-profile" href="#profile" class="nav-link" data-toggle="tab" role="tab">Profile</a></li>'
+      + '</ul>'
+      + '<div class="tab-content">'
+      + '<div class="tab-pane fade" id="home" role="tabpanel"></div>'
+      + '<div class="tab-pane fade" id="profile" role="tabpanel"></div>'
+      + '</div>'
+
+
+    $(tabsHTML).appendTo('#qunit-fixture')
+    $('#tab-profile')
+      .on('shown.bs.tab', function () {
+        assert.ok($('#profile').hasClass('fade'))
+        assert.ok($('#profile').hasClass('show'))
+
+        $('#tab-home')
+          .on('shown.bs.tab', function () {
+            assert.ok($('#profile').hasClass('fade'))
+            assert.notOk($('#profile').hasClass('show'))
+            assert.ok($('#home').hasClass('fade'))
+            assert.ok($('#home').hasClass('show'))
+
+            done()
+          })
+          .trigger($.Event('click'))
+      })
+      .trigger($.Event('click'))
+  })
 })
