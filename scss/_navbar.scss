@@ -31,6 +31,8 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
+    padding-right: 0;
+    padding-left: 0;
   }
 }
 
@@ -143,14 +145,6 @@
     $infix: breakpoint-infix($next, $grid-breakpoints);
 
     &#{$infix} {
-      @include media-breakpoint-down($breakpoint) {
-        > .container,
-        > .container-fluid {
-          padding-right: 0;
-          padding-left: 0;
-        }
-      }
-
       @include media-breakpoint-up($next) {
         flex-flow: row nowrap;
         justify-content: flex-start;
@@ -172,6 +166,8 @@
         > .container,
         > .container-fluid {
           flex-wrap: nowrap;
+          padding-right: ($grid-gutter-width / 2);
+          padding-left: ($grid-gutter-width / 2);
         }
 
         .navbar-collapse {
