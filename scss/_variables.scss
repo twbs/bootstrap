@@ -715,7 +715,7 @@ $nav-divider-margin-y:              ($spacer / 2) !default;
 // Navbar
 
 $navbar-padding-y:                  ($spacer / 2) !default;
-$navbar-padding-x:                  $spacer !default;
+$navbar-padding-x:                  ($grid-gutter-width / 2) !default;
 
 $navbar-nav-link-padding-x:         .5rem !default;
 
