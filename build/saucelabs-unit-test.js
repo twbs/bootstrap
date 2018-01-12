@@ -91,7 +91,7 @@ jsUnitSaucelabs.on('tunnelCreated', () => {
       if (typeof success !== 'undefined') {
         const taskIds = success['js tests']
 
-        if (!taskIds || !taskIds.length) {
+        if (!taskIds || taskIds.length === 0) {
           throw new Error('Error starting tests through Sauce Labs API')
         }
 
