@@ -12920,7 +12920,7 @@ a.circle.active:hover {
   margin-bottom: 0;
   margin-left: 25px;
   font-size: 14px;
-  border-color: #e2e6e8;
+  border-color: #d3d5d8;
 }
 .sequence > li {
   padding-top: 2px;
@@ -13005,7 +13005,7 @@ a.circle.active:hover {
   position: relative;
   display: block;
   line-height: 24px;
-  border-color: #e2e6e8;
+  border-color: #d3d5d8;
 }
 .sequence > li > a {
   display: block;
@@ -13098,7 +13098,7 @@ a.circle.active:hover {
   background-image: none;
 }
 .sequence > .active ~ li:before {
-  border-color: #e2e6e8;
+  border-color: #d3d5d8;
 }
 .sequence a {
   font-weight: 500;
@@ -13134,10 +13134,10 @@ a.circle.active:hover {
   border-color: #00b9ff;
 }
 .sequence-info > li:after {
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #00b9ff), color-stop(50%, #00b9ff), color-stop(50%, #e2e6e8), to(#e2e6e8));
-  background-image: -webkit-linear-gradient(#00b9ff 0, #00b9ff 50%, #e2e6e8 50%, #e2e6e8 100%);
-  background-image:      -o-linear-gradient(#00b9ff 0, #00b9ff 50%, #e2e6e8 50%, #e2e6e8 100%);
-  background-image:         linear-gradient(#00b9ff 0, #00b9ff 50%, #e2e6e8 50%, #e2e6e8 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #00b9ff), color-stop(50%, #00b9ff), color-stop(50%, #d3d5d8), to(#d3d5d8));
+  background-image: -webkit-linear-gradient(#00b9ff 0, #00b9ff 50%, #d3d5d8 50%, #d3d5d8 100%);
+  background-image:      -o-linear-gradient(#00b9ff 0, #00b9ff 50%, #d3d5d8 50%, #d3d5d8 100%);
+  background-image:         linear-gradient(#00b9ff 0, #00b9ff 50%, #d3d5d8 50%, #d3d5d8 100%);
 }
 .sequence-info.sequence-inverse > li:after {
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #00b9ff), color-stop(50%, #00b9ff), color-stop(50%, #253655), to(#253655));
@@ -13151,7 +13151,7 @@ a.circle.active:hover {
 }
 @-webkit-keyframes sequence-pip-info {
   from {
-    border-color: #e2e6e8;
+    border-color: #d3d5d8;
   }
   to {
     border-color: #00b9ff;
@@ -13159,7 +13159,7 @@ a.circle.active:hover {
 }
 @-o-keyframes sequence-pip-info {
   from {
-    border-color: #e2e6e8;
+    border-color: #d3d5d8;
   }
   to {
     border-color: #00b9ff;
@@ -13167,7 +13167,7 @@ a.circle.active:hover {
 }
 @keyframes sequence-pip-info {
   from {
-    border-color: #e2e6e8;
+    border-color: #d3d5d8;
   }
   to {
     border-color: #00b9ff;
@@ -13177,10 +13177,10 @@ a.circle.active:hover {
   border-color: #37517e;
 }
 .sequence-primary > li:after {
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #37517e), color-stop(50%, #37517e), color-stop(50%, #e2e6e8), to(#e2e6e8));
-  background-image: -webkit-linear-gradient(#37517e 0, #37517e 50%, #e2e6e8 50%, #e2e6e8 100%);
-  background-image:      -o-linear-gradient(#37517e 0, #37517e 50%, #e2e6e8 50%, #e2e6e8 100%);
-  background-image:         linear-gradient(#37517e 0, #37517e 50%, #e2e6e8 50%, #e2e6e8 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #37517e), color-stop(50%, #37517e), color-stop(50%, #d3d5d8), to(#d3d5d8));
+  background-image: -webkit-linear-gradient(#37517e 0, #37517e 50%, #d3d5d8 50%, #d3d5d8 100%);
+  background-image:      -o-linear-gradient(#37517e 0, #37517e 50%, #d3d5d8 50%, #d3d5d8 100%);
+  background-image:         linear-gradient(#37517e 0, #37517e 50%, #d3d5d8 50%, #d3d5d8 100%);
 }
 .sequence-primary.sequence-inverse > li:after {
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #37517e), color-stop(50%, #37517e), color-stop(50%, #253655), to(#253655));
@@ -13194,7 +13194,7 @@ a.circle.active:hover {
 }
 @-webkit-keyframes sequence-pip-primary {
   from {
-    border-color: #e2e6e8;
+    border-color: #d3d5d8;
   }
   to {
     border-color: #37517e;
@@ -13202,7 +13202,7 @@ a.circle.active:hover {
 }
 @-o-keyframes sequence-pip-primary {
   from {
-    border-color: #e2e6e8;
+    border-color: #d3d5d8;
   }
   to {
     border-color: #37517e;
@@ -13210,7 +13210,7 @@ a.circle.active:hover {
 }
 @keyframes sequence-pip-primary {
   from {
-    border-color: #e2e6e8;
+    border-color: #d3d5d8;
   }
   to {
     border-color: #37517e;
@@ -13220,10 +13220,10 @@ a.circle.active:hover {
   border-color: #2ed06e;
 }
 .sequence-success > li:after {
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #2ed06e), color-stop(50%, #2ed06e), color-stop(50%, #e2e6e8), to(#e2e6e8));
-  background-image: -webkit-linear-gradient(#2ed06e 0, #2ed06e 50%, #e2e6e8 50%, #e2e6e8 100%);
-  background-image:      -o-linear-gradient(#2ed06e 0, #2ed06e 50%, #e2e6e8 50%, #e2e6e8 100%);
-  background-image:         linear-gradient(#2ed06e 0, #2ed06e 50%, #e2e6e8 50%, #e2e6e8 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #2ed06e), color-stop(50%, #2ed06e), color-stop(50%, #d3d5d8), to(#d3d5d8));
+  background-image: -webkit-linear-gradient(#2ed06e 0, #2ed06e 50%, #d3d5d8 50%, #d3d5d8 100%);
+  background-image:      -o-linear-gradient(#2ed06e 0, #2ed06e 50%, #d3d5d8 50%, #d3d5d8 100%);
+  background-image:         linear-gradient(#2ed06e 0, #2ed06e 50%, #d3d5d8 50%, #d3d5d8 100%);
 }
 .sequence-success.sequence-inverse > li:after {
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #2ed06e), color-stop(50%, #2ed06e), color-stop(50%, #253655), to(#253655));
@@ -13237,7 +13237,7 @@ a.circle.active:hover {
 }
 @-webkit-keyframes sequence-pip-success {
   from {
-    border-color: #e2e6e8;
+    border-color: #d3d5d8;
   }
   to {
     border-color: #2ed06e;
@@ -13245,7 +13245,7 @@ a.circle.active:hover {
 }
 @-o-keyframes sequence-pip-success {
   from {
-    border-color: #e2e6e8;
+    border-color: #d3d5d8;
   }
   to {
     border-color: #2ed06e;
@@ -13253,7 +13253,7 @@ a.circle.active:hover {
 }
 @keyframes sequence-pip-success {
   from {
-    border-color: #e2e6e8;
+    border-color: #d3d5d8;
   }
   to {
     border-color: #2ed06e;
@@ -13263,10 +13263,10 @@ a.circle.active:hover {
   border-color: #ffa600;
 }
 .sequence-warning > li:after {
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #ffa600), color-stop(50%, #ffa600), color-stop(50%, #e2e6e8), to(#e2e6e8));
-  background-image: -webkit-linear-gradient(#ffa600 0, #ffa600 50%, #e2e6e8 50%, #e2e6e8 100%);
-  background-image:      -o-linear-gradient(#ffa600 0, #ffa600 50%, #e2e6e8 50%, #e2e6e8 100%);
-  background-image:         linear-gradient(#ffa600 0, #ffa600 50%, #e2e6e8 50%, #e2e6e8 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #ffa600), color-stop(50%, #ffa600), color-stop(50%, #d3d5d8), to(#d3d5d8));
+  background-image: -webkit-linear-gradient(#ffa600 0, #ffa600 50%, #d3d5d8 50%, #d3d5d8 100%);
+  background-image:      -o-linear-gradient(#ffa600 0, #ffa600 50%, #d3d5d8 50%, #d3d5d8 100%);
+  background-image:         linear-gradient(#ffa600 0, #ffa600 50%, #d3d5d8 50%, #d3d5d8 100%);
 }
 .sequence-warning.sequence-inverse > li:after {
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #ffa600), color-stop(50%, #ffa600), color-stop(50%, #253655), to(#253655));
@@ -13280,7 +13280,7 @@ a.circle.active:hover {
 }
 @-webkit-keyframes sequence-pip-warning {
   from {
-    border-color: #e2e6e8;
+    border-color: #d3d5d8;
   }
   to {
     border-color: #ffa600;
@@ -13288,7 +13288,7 @@ a.circle.active:hover {
 }
 @-o-keyframes sequence-pip-warning {
   from {
-    border-color: #e2e6e8;
+    border-color: #d3d5d8;
   }
   to {
     border-color: #ffa600;
@@ -13296,7 +13296,7 @@ a.circle.active:hover {
 }
 @keyframes sequence-pip-warning {
   from {
-    border-color: #e2e6e8;
+    border-color: #d3d5d8;
   }
   to {
     border-color: #ffa600;
@@ -13306,10 +13306,10 @@ a.circle.active:hover {
   border-color: #f53636;
 }
 .sequence-danger > li:after {
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f53636), color-stop(50%, #f53636), color-stop(50%, #e2e6e8), to(#e2e6e8));
-  background-image: -webkit-linear-gradient(#f53636 0, #f53636 50%, #e2e6e8 50%, #e2e6e8 100%);
-  background-image:      -o-linear-gradient(#f53636 0, #f53636 50%, #e2e6e8 50%, #e2e6e8 100%);
-  background-image:         linear-gradient(#f53636 0, #f53636 50%, #e2e6e8 50%, #e2e6e8 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f53636), color-stop(50%, #f53636), color-stop(50%, #d3d5d8), to(#d3d5d8));
+  background-image: -webkit-linear-gradient(#f53636 0, #f53636 50%, #d3d5d8 50%, #d3d5d8 100%);
+  background-image:      -o-linear-gradient(#f53636 0, #f53636 50%, #d3d5d8 50%, #d3d5d8 100%);
+  background-image:         linear-gradient(#f53636 0, #f53636 50%, #d3d5d8 50%, #d3d5d8 100%);
 }
 .sequence-danger.sequence-inverse > li:after {
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f53636), color-stop(50%, #f53636), color-stop(50%, #253655), to(#253655));
@@ -13323,7 +13323,7 @@ a.circle.active:hover {
 }
 @-webkit-keyframes sequence-pip-danger {
   from {
-    border-color: #e2e6e8;
+    border-color: #d3d5d8;
   }
   to {
     border-color: #f53636;
@@ -13331,7 +13331,7 @@ a.circle.active:hover {
 }
 @-o-keyframes sequence-pip-danger {
   from {
-    border-color: #e2e6e8;
+    border-color: #d3d5d8;
   }
   to {
     border-color: #f53636;
@@ -13339,7 +13339,7 @@ a.circle.active:hover {
 }
 @keyframes sequence-pip-danger {
   from {
-    border-color: #e2e6e8;
+    border-color: #d3d5d8;
   }
   to {
     border-color: #f53636;
