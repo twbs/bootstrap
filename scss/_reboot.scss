@@ -279,29 +279,6 @@ svg:not(:root) {
 }
 
 
-// Avoid 300ms click delay on touch devices that support the `touch-action` CSS property.
-//
-// In particular, unlike most other browsers, IE11+Edge on Windows 10 on touch devices and IE Mobile 10-11
-// DON'T remove the click delay when `<meta name="viewport" content="width=device-width">` is present.
-// However, they DO support removing the click delay via `touch-action: manipulation`.
-// See:
-// * https://getbootstrap.com/docs/4.0/content/reboot/#click-delay-optimization-for-touch
-// * https://caniuse.com/#feat=css-touch-action
-// * https://patrickhlauke.github.io/touch/tests/results/#suppressing-300ms-delay
-
-a,
-area,
-button,
-[role="button"],
-input:not([type="range"]),
-label,
-select,
-summary,
-textarea {
-  touch-action: manipulation;
-}
-
-
 //
 // Tables
 //
