@@ -80,6 +80,20 @@ With `<button>`s, you can also make use of the `disabled` attribute instead of t
 </div>
 {% endexample %}
 
+## List Group Flush
+
+A list group that removes borders and border-radius to keep list group items edge-to-edge. This is most useful within other components (e.g., cards).
+
+{% example html %}
+<ul class="list-group list-group-flush">
+  <li class="list-group-item">Cras justo odio</li>
+  <li class="list-group-item">Dapibus ac facilisis in</li>
+  <li class="list-group-item">Morbi leo risus</li>
+  <li class="list-group-item">Porta ac consectetur ac</li>
+  <li class="list-group-item">Vestibulum at eros</li>
+</ul>
+{% endexample %}
+
 ## Contextual classes
 
 Use contextual classes to style list items with a stateful background and color.
