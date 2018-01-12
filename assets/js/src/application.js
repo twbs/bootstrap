@@ -10,13 +10,12 @@
  * details, see https://creativecommons.org/licenses/by/3.0/.
  */
 
-/* global Clipboard, anchors */
+/* global Clipboard: false, anchors: false, Holder: false */
 
 (function ($) {
   'use strict'
 
   $(function () {
-
     // Tooltip and popover demos
     $('.tooltip-demo').tooltip({
       selector: '[data-toggle="tooltip"]',
@@ -54,13 +53,13 @@
     })
 
     // Insert copy to clipboard button before .highlight
-    $('.highlight').each(function () {
+    $('figure.highlight, div.highlight').each(function () {
       var btnHtml = '<div class="bd-clipboard"><button class="btn-clipboard" title="Copy to clipboard">Copy</button></div>'
       $(this).before(btnHtml)
       $('.btn-clipboard')
         .tooltip()
         .on('mouseleave', function () {
-          // explicitly hide tooltip, since after clicking it remains
+          // Explicitly hide tooltip, since after clicking it remains
           // focused (as it's a button), so tooltip would otherwise
           // remain visible until focus is moved away
           $(this).tooltip('hide')
@@ -101,5 +100,35 @@
     }
     anchors.add('.bd-content > h2, .bd-content > h3, .bd-content > h4, .bd-content > h5')
     $('.bd-content > h2, .bd-content > h3, .bd-content > h4, .bd-content > h5').wrapInner('<div></div>')
+
+    // Search
+    if (window.docsearch) {
+      window.docsearch({
+        apiKey: '48cb48b22351bc71ea5f12f4d1ede198',
+        indexName: 'bootstrap-v4',
+        inputSelector: '#search-input',
+        handleSelected: function (input, event, suggestion) {
+          var url = suggestion.url
+          url = suggestion.isLvl1 ? url.split('#')[0] : url
+          // If it's a title we remove the anchor so it does not jump.
+          window.location.href = url
+        },
+        transformData: function (hits) {
+          return hits.map(function (hit) {
+            hit.url = hit.url.replace('https://v4-alpha.getbootstrap.com', '/docs/4.0')
+            return hit
+          })
+        },
+        debug: false // Set debug to true if you want to inspect the dropdown
+      })
+    }
+
+    // Holder
+    Holder.addTheme('gray', {
+      bg: '#777',
+      fg: 'rgba(255,255,255,.75)',
+      font: 'Helvetica',
+      fontweight: 'normal'
+    })
   })
 }(jQuery))

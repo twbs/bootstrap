@@ -15,7 +15,7 @@ $gray-200: #e9ecef !default;
 $gray-300: #dee2e6 !default;
 $gray-400: #ced4da !default;
 $gray-500: #adb5bd !default;
-$gray-600: #868e96 !default;
+$gray-600: #6c757d !default;
 $gray-700: #495057 !default;
 $gray-800: #343a40 !default;
 $gray-900: #212529 !default;
@@ -103,7 +103,7 @@ $enable-rounded:            true !default;
 $enable-shadows:            false !default;
 $enable-gradients:          false !default;
 $enable-transitions:        true !default;
-$enable-hover-media-query:  false !default;
+$enable-hover-media-query:  false !default; // Deprecated, no longer affects any compiled CSS
 $enable-grid-classes:       true !default;
 $enable-print-styles:       true !default;
 
@@ -201,7 +201,7 @@ $line-height-lg:              1.5 !default;
 $line-height-sm:              1.5 !default;
 
 $border-width:                1px !default;
-$border-color:                $gray-200 !default;
+$border-color:                $gray-300 !default;
 
 $border-radius:               .25rem !default;
 $border-radius-lg:            .3rem !default;
@@ -585,6 +585,8 @@ $nav-pills-link-active-bg:          $component-active-bg !default;
 $navbar-padding-y:                  ($spacer / 2) !default;
 $navbar-padding-x:                  $spacer !default;
 
+$navbar-nav-link-padding-x:         .5rem !default;
+
 $navbar-brand-font-size:            $font-size-lg !default;
 // Compute the navbar-brand padding-y so the navbar-brand will have the same height as navbar-text and nav-link
 $nav-link-height:                   ($font-size-base * $line-height-base + $nav-link-padding-y * 2) !default;
@@ -624,6 +626,8 @@ $pagination-color:                  $link-color !default;
 $pagination-bg:                     $white !default;
 $pagination-border-width:           $border-width !default;
 $pagination-border-color:           $gray-300 !default;
+
+$pagination-focus-box-shadow:       $input-btn-focus-box-shadow !default;
 
 $pagination-hover-color:            $link-hover-color !default;
 $pagination-hover-bg:               $gray-200 !default;
@@ -667,9 +671,11 @@ $card-columns-margin:               $card-spacer-y !default;
 
 // Tooltips
 
+$tooltip-font-size:           $font-size-sm !default;
 $tooltip-max-width:           200px !default;
 $tooltip-color:               $white !default;
 $tooltip-bg:                  $black !default;
+$tooltip-border-radius:        $border-radius !default;
 $tooltip-opacity:             .9 !default;
 $tooltip-padding-y:           .25rem !default;
 $tooltip-padding-x:           .5rem !default;
@@ -682,10 +688,12 @@ $tooltip-arrow-color:         $tooltip-bg !default;
 
 // Popovers
 
+$popover-font-size:                 $font-size-sm !default;
 $popover-bg:                        $white !default;
 $popover-max-width:                 276px !default;
 $popover-border-width:              $border-width !default;
 $popover-border-color:              rgba($black, .2) !default;
+$popover-border-radius:             $border-radius-lg !default;
 $popover-box-shadow:                0 .25rem .5rem rgba($black, .2) !default;
 
 $popover-header-bg:                 darken($popover-bg, 3%) !default;
@@ -759,6 +767,10 @@ $alert-margin-bottom:               1rem !default;
 $alert-border-radius:               $border-radius !default;
 $alert-link-font-weight:            $font-weight-bold !default;
 $alert-border-width:                $border-width !default;
+
+$alert-bg-level:                    -10 !default;
+$alert-border-level:                -9 !default;
+$alert-color-level:                 6 !default;
 
 
 // Progress bars
@@ -870,3 +882,8 @@ $kbd-bg:                            $gray-900 !default;
 
 $pre-color:                         $gray-900 !default;
 $pre-scrollable-max-height:         340px !default;
+
+
+// Printing
+$print-page-size:                   a3 !default;
+$print-body-min-width:              map-get($grid-breakpoints, "lg") !default;
