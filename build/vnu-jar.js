@@ -64,5 +64,5 @@ childProcess.exec('java -version', (error, stdout, stderr) => {
     shell: true,
     stdio: 'inherit'
   })
-  .on('exit', process.exit)
+    .on('exit', process.exit)
 })

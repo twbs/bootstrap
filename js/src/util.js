@@ -8,8 +8,6 @@ import $ from 'jquery'
  */
 
 const Util = (($) => {
-
-
   /**
    * ------------------------------------------------------------------------
    * Private TransitionEnd Helpers
@@ -20,7 +18,7 @@ const Util = (($) => {
 
   const MAX_UID = 1000000
 
-  // shoutout AngusCroll (https://goo.gl/pxwQGp)
+  // Shoutout AngusCroll (https://goo.gl/pxwQGp)
   function toType(obj) {
     return {}.toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase()
   }
@@ -75,10 +73,10 @@ const Util = (($) => {
   }
 
   function escapeId(selector) {
-    // we escape IDs in case of special selectors (selector = '#myId:something')
+    // We escape IDs in case of special selectors (selector = '#myId:something')
     // $.escapeSelector does not exist in jQuery < 3
-    selector = typeof $.escapeSelector === 'function' ? $.escapeSelector(selector).substr(1) :
-      selector.replace(/(:|\.|\[|\]|,|=|@)/g, '\\$1')
+    selector = typeof $.escapeSelector === 'function' ? $.escapeSelector(selector).substr(1)
+      : selector.replace(/(:|\.|\[|\]|,|=|@)/g, '\\$1')
 
     return selector
   }
@@ -107,7 +105,7 @@ const Util = (($) => {
         selector = element.getAttribute('href') || ''
       }
 
-      // if it's an ID
+      // If it's an ID
       if (selector.charAt(0) === '#') {
         selector = escapeId(selector)
       }
@@ -115,7 +113,7 @@ const Util = (($) => {
       try {
         const $selector = $(document).find(selector)
         return $selector.length > 0 ? selector : null
-      } catch (error) {
+      } catch (err) {
         return null
       }
     },
@@ -141,8 +139,8 @@ const Util = (($) => {
         if (Object.prototype.hasOwnProperty.call(configTypes, property)) {
           const expectedTypes = configTypes[property]
           const value         = config[property]
-          const valueType     = value && Util.isElement(value) ?
-                                'element' : toType(value)
+          const valueType     = value && Util.isElement(value)
+            ? 'element' : toType(value)
 
           if (!new RegExp(expectedTypes).test(valueType)) {
             throw new Error(
@@ -158,7 +156,6 @@ const Util = (($) => {
   setTransitionEndSupport()
 
   return Util
-
 })($)
 
 export default Util
