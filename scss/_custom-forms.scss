@@ -117,6 +117,15 @@
       background-image: $custom-checkbox-indicator-icon-indeterminate;
     }
   }
+
+  .custom-control-input:disabled {
+    &:checked ~ .custom-control-label::before {
+      background-color: $custom-control-indicator-checked-disabled-bg;
+    }
+    &:indeterminate ~ .custom-control-label::before {
+      background-color: $custom-control-indicator-checked-disabled-bg;
+    }
+  }
 }
 
 // Radios
@@ -134,6 +143,12 @@
     }
     &::after {
       background-image: $custom-radio-indicator-icon-checked;
+    }
+  }
+
+  .custom-control-input:disabled {
+    &:checked ~ .custom-control-label::before {
+      background-color: $custom-control-indicator-checked-disabled-bg;
     }
   }
 }
