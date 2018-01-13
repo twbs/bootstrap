@@ -1,6 +1,6 @@
 /* eslint no-console:off */
 
-(function setupSW() {
+(function () {
   'use strict'
 
   if ('serviceWorker' in navigator) {

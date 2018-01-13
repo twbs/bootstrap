@@ -3,16 +3,17 @@
 const path    = require('path')
 const babel   = require('rollup-plugin-babel')
 const resolve = require('rollup-plugin-node-resolve')
+
 const pkg     = require(path.resolve(__dirname, '../package.json'))
 const BUNDLE  = process.env.BUNDLE === 'true'
 const year    = new Date().getFullYear()
 
 let fileDest  = 'bootstrap.js'
-const external  = ['jquery', 'popper.js']
+const external = ['jquery', 'popper.js']
 const plugins = [
   babel({
-    exclude: 'node_modules/**', // only transpile our source code
-    externalHelpersWhitelist: [ // include only required helpers
+    exclude: 'node_modules/**', // Only transpile our source code
+    externalHelpersWhitelist: [ // Include only required helpers
       'defineProperties',
       'createClass',
       'inheritsLoose',
@@ -21,13 +22,13 @@ const plugins = [
   })
 ]
 const globals = {
-  jquery: 'jQuery', // ensure we use jQuery which is always available even in noConflict mode
+  jquery: 'jQuery', // Ensure we use jQuery which is always available even in noConflict mode
   'popper.js': 'Popper'
 }
 
 if (BUNDLE) {
   fileDest = 'bootstrap.bundle.js'
-  // remove last entry in external array to bundle Popper
+  // Remove last entry in external array to bundle Popper
   external.pop()
   delete globals['popper.js']
   plugins.push(resolve())

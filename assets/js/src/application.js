@@ -16,7 +16,6 @@
   'use strict'
 
   $(function () {
-
     // Tooltip and popover demos
     $('.tooltip-demo').tooltip({
       selector: '[data-toggle="tooltip"]',
@@ -60,7 +59,7 @@
       $('.btn-clipboard')
         .tooltip()
         .on('mouseleave', function () {
-          // explicitly hide tooltip, since after clicking it remains
+          // Explicitly hide tooltip, since after clicking it remains
           // focused (as it's a button), so tooltip would otherwise
           // remain visible until focus is moved away
           $(this).tooltip('hide')
