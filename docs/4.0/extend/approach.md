@@ -5,7 +5,7 @@ description: Learn about the guiding principles, strategies, and techniques used
 group: extend
 ---
 
-While the getting started pages provide an introductory tour of the project and what it offers, this document focuses on _why_ we do the things we do in Bootstrap. It's meant to clearly explain our philosophy to building on the web so that others can not only learn and contribute alongside us, but help us improve our own approach.
+While the getting started pages provide an introductory tour of the project and what it offers, this document focuses on _why_ we do the things we do in Bootstrap. It explains our philosophy to building on the web so that others can learn from us, contribute with us, and help us improve.
 
 See something that doesn't sound right, or perhaps could be done better? [Open an issue](https://github.com/twbs/bootstrap/issues/new)—we'd love to discuss it with you.
 
@@ -15,8 +15,8 @@ We'll dive into each of these more throughout, but at a high level, here's what 
 
 - Components should be responsive and mobile-first
 - Components should be built with a base class and extended via modifier classes
-- Component states should obey a common z-index scale: default (initial), hover (1), active (2), focus (3)
-- Whenever possible, prefer a HTML+CSS implementation over JavaScript
+- Component states should obey a common z-index scale
+- Whenever possible, prefer a HTML and CSS implementation over JavaScript
 - Whenever possible, use utilities over custom styles
 - Whenever possible, avoid enforcing strict HTML requirements (children selectors)
 
