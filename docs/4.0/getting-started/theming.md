@@ -70,7 +70,7 @@ In your `custom.scss`, you'll import Bootstrap's source Sass files. You have two
 @import "node_modules/bootstrap/scss/grid";
 {% endhighlight %}
 
-With that setup in place, you can begin to modify any of the Sass variables and maps in your `custom.scss`. You can also start to add parts of Bootstrap under the `// Optional` section as needed.
+With that setup in place, you can begin to modify any of the Sass variables and maps in your `custom.scss`. You can also start to add parts of Bootstrap under the `// Optional` section as needed. We suggest using the full import stack from our `bootstrap.scss` file as your starting point.
 
 ### Variable defaults
 
