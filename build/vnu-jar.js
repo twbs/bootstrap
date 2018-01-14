@@ -39,7 +39,9 @@ childProcess.exec('java -version', (error, stdout, stderr) => {
     'The “time” input type is not supported in all browsers.*',
     // IE11 doesn't recognise <main> / give the element an implicit "main" landmark.
     // Explicit role="main" is redundant for other modern browsers, but still valid.
-    'The “main” role is unnecessary for element “main”.'
+    'The “main” role is unnecessary for element “main”.',
+    // For some reason, the validator thinks the dashboard example is written in Danish
+    'This document appears to be written in Danish.*'
   ].join('|')
 
   const args = [
@@ -62,5 +64,5 @@ childProcess.exec('java -version', (error, stdout, stderr) => {
     shell: true,
     stdio: 'inherit'
   })
-  .on('exit', process.exit)
+    .on('exit', process.exit)
 })
