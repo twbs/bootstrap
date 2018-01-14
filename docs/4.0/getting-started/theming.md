@@ -126,6 +126,12 @@ To remove colors from `$theme-colors`, or any other map, use `map-remove`:
 $theme-colors: map-remove($theme-colors, "success", "info", "danger");
 {% endhighlight %}
 
+#### Required keys
+
+Bootstrap assumes the presence of some specific keys within Sass maps as we used and extend these ourselves. As you customize the included maps, you may encounter errors where a specific Sass map's key is being used.
+
+For example, we use the `primary`, `success`, and `danger` keys from `$theme-colors` for links, buttons, and form states. Replacing the values of these keys should present no issues, but removing them may cause Sass compilation issues. In these instances, you'll need to modify the Sass code that makes use of those values.
+
 ### Functions
 
 Bootstrap utilizes several Sass functions, but only a subset are applicable to general theming. We've included three functions for getting values from the color maps:
