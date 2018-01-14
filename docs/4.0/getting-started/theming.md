@@ -42,6 +42,8 @@ your-project/
     └── scss
 {% endhighlight %}
 
+### Importing
+
 In your `custom.scss`, you'll import Bootstrap's source Sass files. You have two options: include all of Bootstrap, or pick the parts you need. We encourage the latter, though be aware there are some requirements and dependencies across our components. You also will need to include some JavaScript for our plugins.
 
 {% highlight scss %}
