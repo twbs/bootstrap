@@ -97,6 +97,8 @@ Bootstrap 4 includes a handful of Sass maps, key value pairs that make it easier
 
 Some of our Sass maps are merged into empty ones by default. This is done to allow easy expansion of a given Sass map, but comes at the cost of making _removing_ items from a map slightly more difficult.
 
+#### Modify map
+
 To modify an existing color in our `$theme-colors` map, add the following to your custom Sass file:
 
 {% highlight scss %}
@@ -106,6 +108,8 @@ $theme-colors: (
 );
 {% endhighlight %}
 
+#### Add to map
+
 To add a new color to `$theme-colors`, add the new key and value:
 
 {% highlight scss %}
@@ -113,6 +117,8 @@ $theme-colors: (
   "custom-color": #900
 );
 {% endhighlight %}
+
+#### Remove from map
 
 To remove colors from `$theme-colors`, or any other map, use `map-remove`:
 
