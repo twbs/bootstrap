@@ -80,9 +80,9 @@ With `<button>`s, you can also make use of the `disabled` attribute instead of t
 </div>
 {% endexample %}
 
-## List Group Flush
+## Flush
 
-A list group that removes borders and border-radius to keep list group items edge-to-edge. This is most useful within other components (e.g., cards).
+Add `.list-group-flush` to remove some borders and rounded corners to render list group items edge-to-edge in a parent container (e.g., cards).
 
 {% example html %}
 <ul class="list-group list-group-flush">
