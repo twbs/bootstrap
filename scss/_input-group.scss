@@ -11,9 +11,9 @@
   align-items: stretch;
   width: 100%;
 
-  .form-control,
-  .custom-select,
-  .custom-file {
+  > .form-control,
+  > .custom-select,
+  > .custom-file {
     position: relative; // For focus state's z-index
     flex: 1 1 auto;
     // Add width 1% and flex-basis auto to ensure that button will not wrap out
@@ -33,15 +33,15 @@
     }
   }
 
-  .form-control,
-  .custom-select {
+  > .form-control,
+  > .custom-select {
     &:not(:last-child) { @include border-right-radius(0); }
     &:not(:first-child) { @include border-left-radius(0); }
   }
 
   // Custom file inputs have more complex markup, thus requiring different
   // border-radius overrides.
-  .custom-file {
+  > .custom-file {
     display: flex;
     align-items: center;
 
