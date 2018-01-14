@@ -55,6 +55,6 @@ files.forEach((file) => {
 
     console.log(`${file.configPropertyName}: ${integrity}`)
 
-    sh.sed('-i', new RegExp(`(\\s${file.configPropertyName}:\\s+"|')(\\S+)("|')`), '$1' + integrity + '$3', configFile)
+    sh.sed('-i', new RegExp(`(\\s${file.configPropertyName}:\\s+"|')(\\S+)("|')`), `$1${integrity}$3`, configFile)
   })
 })
