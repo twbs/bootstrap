@@ -9,7 +9,7 @@ Following these guidelines helps to communicate that you respect the time of
 the developers managing and developing this open source project. In return,
 they should reciprocate that respect in addressing your issue or assessing
 patches and features.
-
+d
 
 ## Using the issue tracker
 
@@ -17,7 +17,7 @@ The [issue tracker](https://github.com/twbs/bootstrap/issues) is
 the preferred channel for [bug reports](#bug-reports), [features requests](#feature-requests)
 and [submitting pull requests](#pull-requests), but please respect the following
 restrictions:
-
+d
 * Please **do not** use the issue tracker for personal support requests.  Stack
   Overflow ([`bootstrap-4`](https://stackoverflow.com/questions/tagged/bootstrap-4) tag), [Slack](https://bootstrap-slack.herokuapp.com/) or [IRC](README.md#community) are better places to get help.
 
