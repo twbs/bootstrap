@@ -1162,7 +1162,7 @@ The [`:lang()` pseudo-class](https://developer.mozilla.org/en-US/docs/Web/CSS/:l
 {% highlight scss %}
 $custom-file-text: (
   en: "Browse",
-  es: "Navegar"
+  es: "Elegir"
 );
 {% endhighlight %}
 
@@ -1171,7 +1171,7 @@ Here's `lang(es)` in action on the custom file input for a Spanish translation:
 {% example html %}
 <div class="custom-file">
   <input type="file" class="custom-file-input" id="customFileLang" lang="es">
-  <label class="custom-file-label" for="customFileLang">Elegir archivo</label>
+  <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
 </div>
 {% endexample %}
 
