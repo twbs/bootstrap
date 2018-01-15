@@ -73,7 +73,7 @@ You can see this in action with a live demo:
 Enable dismissal of an alert via JavaScript:
 
 {% highlight js %}
-$(".alert").alert()
+$('.alert').alert()
 {% endhighlight %}
 
 Or with `data` attributes on a button **within the alert**, as demonstrated above:

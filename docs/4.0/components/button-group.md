@@ -19,7 +19,7 @@ Wrap a series of buttons with `.btn` in `.btn-group`. Add on optional JavaScript
 {% endexample %}
 
 {% callout warning %}
-#### Ensure correct `role` and provide a label
+##### Ensure correct `role` and provide a label
 
 In order for assistive technologies (such as screen readers) to convey that a series of buttons is grouped, an appropriate `role` attribute needs to be provided. For button groups, this would be `role="group"`, while toolbars should have a `role="toolbar"`.
 
@@ -60,7 +60,9 @@ Feel free to mix input groups with button groups in your toolbars. Similar to th
     <button type="button" class="btn btn-secondary">4</button>
   </div>
   <div class="input-group">
-    <span class="input-group-addon" id="btnGroupAddon">@</span>
+    <div class="input-group-prepend">
+      <div class="input-group-text" id="btnGroupAddon">@</div>
+    </div>
     <input type="text" class="form-control" placeholder="Input group example" aria-label="Input group example" aria-describedby="btnGroupAddon">
   </div>
 </div>
@@ -73,7 +75,9 @@ Feel free to mix input groups with button groups in your toolbars. Similar to th
     <button type="button" class="btn btn-secondary">4</button>
   </div>
   <div class="input-group">
-    <span class="input-group-addon" id="btnGroupAddon2">@</span>
+    <div class="input-group-prepend">
+      <div class="input-group-text" id="btnGroupAddon2">@</div>
+    </div>
     <input type="text" class="form-control" placeholder="Input group example" aria-label="Input group example" aria-describedby="btnGroupAddon2">
   </div>
 </div>

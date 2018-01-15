@@ -10,7 +10,6 @@ toc: true
 
 Things to know when using the popover plugin:
 
-
 - Popovers rely on the 3rd party library [Popper.js](https://popper.js.org/) for positioning. You must include [popper.min.js]({{ site.cdn.popper }}) before bootstrap.js or use `bootstrap.bundle.min.js` / `bootstrap.bundle.js` which contains Popper.js in order for popovers to work!
 - Popovers require the [tooltip plugin]({{ site.baseurl }}/docs/{{ site.docs_version }}/components/tooltips/) as a dependency.
 - If you're building our JavaScript from source, it [requires `util.js`]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/javascript/#util).
@@ -46,53 +45,15 @@ $(function () {
 })
 {% endhighlight %}
 
-## Static popover
-
-Four options are available: top, right, bottom, and left aligned.
-
-<div class="bd-example bd-example-popover-static">
-  <div class="popover bs-popover-top bs-popover-top-docs">
-    <div class="arrow"></div>
-    <h3 class="popover-header">Popover top</h3>
-    <div class="popover-body">
-      <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
-    </div>
-  </div>
-
-  <div class="popover bs-popover-right bs-popover-right-docs">
-    <div class="arrow"></div>
-    <h3 class="popover-header">Popover right</h3>
-    <div class="popover-body">
-      <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
-    </div>
-  </div>
-
-  <div class="popover bs-popover-bottom bs-popover-bottom-docs">
-    <div class="arrow"></div>
-    <h3 class="popover-header">Popover bottom</h3>
-    <div class="popover-body">
-      <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
-    </div>
-  </div>
-
-  <div class="popover bs-popover-left bs-popover-left-docs">
-    <div class="arrow"></div>
-    <h3 class="popover-header">Popover left</h3>
-    <div class="popover-body">
-      <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
-    </div>
-  </div>
-
-  <div class="clearfix"></div>
-</div>
-
-## Live demo
+## Example
 
 {% example html %}
 <button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
 {% endexample %}
 
 ### Four directions
+
+Four options are available: top, right, bottom, and left aligned.
 
 <div class="bd-example popover-demo">
   <div class="bd-example-popovers">
@@ -150,6 +111,17 @@ $('.popover-dismiss').popover({
 })
 {% endhighlight %}
 
+### Disabled elements
+
+Elements with the `disabled` attribute aren't interactive, meaning users cannot hover or click them to trigger a popover (or tooltip). As a workaround, you'll want to trigger the popover from a wrapper `<div>` or `<span>` and override the `pointer-events` on the disabled element.
+
+For disabled popover triggers, you may also prefer `data-trigger="hover"` so that the popover appears as immediate visual feedback to your users as they may not expect to _click_ on a disabled element.
+
+{% example html %}
+<span class="d-inline-block" data-toggle="popover" data-content="Disabled popover">
+  <button class="btn btn-primary" style="pointer-events: none;" type="button" disabled>Disabled button</button>
+</span>
+{% endexample %}
 
 ## Usage
 
@@ -161,7 +133,7 @@ Enable popovers via JavaScript:
 
 Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-`, as in `data-animation=""`.
 
-<table class="table table-bordered table-striped table-responsive">
+<table class="table table-bordered table-striped">
   <thead>
     <tr>
       <th style="width: 100px;">Name</th>
@@ -265,6 +237,12 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <td>Allow to specify which position Popper will use on fallback. For more information refer to
       Popper.js's <a href="https://popper.js.org/popper-documentation.html#modifiers..flip.behavior">behavior docs</a></td>
     </tr>
+    <tr>
+      <td>boundary</td>
+      <td>string | element</td>
+      <td>'scrollParent'</td>
+      <td>Overflow constraint boundary of the popover. Accepts the values of <code>'viewport'</code>, <code>'window'</code>, <code>'scrollParent'</code>, or an HTMLElement reference (JavaScript only). For more information refer to Popper.js's <a href="https://popper.js.org/popper-documentation.html#modifiers..preventOverflow.boundariesElement">preventOverflow docs</a>.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -333,7 +311,7 @@ Updates the position of an element's popover.
 
 ### Events
 
-<table class="table table-bordered table-striped table-responsive">
+<table class="table table-bordered table-striped">
   <thead>
     <tr>
       <th style="width: 150px;">Event Type</th>

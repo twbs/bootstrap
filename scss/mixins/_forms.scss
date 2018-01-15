@@ -15,7 +15,7 @@
     color: $input-focus-color;
     background-color: $input-focus-bg;
     border-color: $input-focus-border-color;
-    outline: none;
+    outline: 0;
     // Avoid using mixin so we can pass custom focus shadow properly
     @if $enable-shadows {
       box-shadow: $input-box-shadow, $input-focus-box-shadow;
@@ -27,11 +27,11 @@
 
 
 @mixin form-validation-state($state, $color) {
-
   .#{$state}-feedback {
     display: none;
-    margin-top: .25rem;
-    font-size: .875rem;
+    width: 100%;
+    margin-top: $form-feedback-margin-top;
+    font-size: $form-feedback-font-size;
     color: $color;
   }
 
@@ -40,7 +40,7 @@
     top: 100%;
     z-index: 5;
     display: none;
-    width: 250px;
+    max-width: 100%; // Contain to parent when possible
     padding: .5rem;
     margin-top: .1rem;
     font-size: .875rem;
@@ -57,6 +57,7 @@
       border-color: $color;
 
       &:focus {
+        border-color: $color;
         box-shadow: 0 0 0 $input-focus-width rgba($color, .25);
       }
 
@@ -67,29 +68,39 @@
     }
   }
 
-
-  // TODO: redo check markup lol crap
   .form-check-input {
     .was-validated &:#{$state},
     &.is-#{$state} {
-      + .form-check-label {
+      ~ .form-check-label {
         color: $color;
       }
     }
   }
 
-  // custom radios and checks
   .custom-control-input {
     .was-validated &:#{$state},
     &.is-#{$state} {
-      ~ .custom-control-indicator {
-        background-color: rgba($color, .4);
-      }
-      ~ .custom-control-description {
+      ~ .custom-control-label {
         color: $color;
+
+        &::before {
+          background-color: lighten($color, 25%);
+        }
       }
+
+      ~ .#{$state}-feedback,
+      ~ .#{$state}-tooltip {
+        display: block;
+      }
+
+      &:checked {
+        ~ .custom-control-label::before {
+          @include gradient-bg(lighten($color, 10%));
+        }
+      }
+
       &:focus {
-        ~ .custom-control-indicator {
+        ~ .custom-control-label::before {
           box-shadow: 0 0 0 1px $body-bg, 0 0 0 $input-focus-width rgba($color, .25);
         }
       }
@@ -100,13 +111,19 @@
   .custom-file-input {
     .was-validated &:#{$state},
     &.is-#{$state} {
-      ~ .custom-file-control {
+      ~ .custom-file-label {
         border-color: $color;
 
         &::before { border-color: inherit; }
       }
+
+      ~ .#{$state}-feedback,
+      ~ .#{$state}-tooltip {
+        display: block;
+      }
+
       &:focus {
-        ~ .custom-file-control {
+        ~ .custom-file-label {
           box-shadow: 0 0 0 $input-focus-width rgba($color, .25);
         }
       }

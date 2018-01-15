@@ -50,7 +50,7 @@
         order: -1;
       }
 
-      @for $i from 1 through $columns {
+      @for $i from 0 through $columns {
         .order#{$infix}-#{$i} {
           order: $i;
         }

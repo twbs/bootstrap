@@ -40,7 +40,7 @@ This is the most basic form of Bootstrap: precompiled files for quick drop-in us
 
 Bootstrap includes a handful of options for including some or all of our compiled CSS.
 
-<table class="table table-bordered table-responsive">
+<table class="table table-bordered">
   <thead>
     <tr>
       <th scope="col">CSS files</th>
@@ -88,7 +88,7 @@ Bootstrap includes a handful of options for including some or all of our compile
 
 Similarly, we have options for including some or all of our compiled JavaScript.
 
-<table class="table table-bordered table-responsive">
+<table class="table table-bordered">
   <thead>
     <tr>
       <th scope="col">JS files</th>
