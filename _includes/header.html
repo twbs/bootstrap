@@ -14,7 +14,7 @@
 
 <!-- Bootstrap core CSS -->
 {% if site.github %}
-<link href="{{ site.baseurl }}/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="{{ site.baseurl }}/dist/css/bootstrap.min.css" rel="stylesheet" integrity="{{ site.cdn.css_hash }}" crossorigin="anonymous">
 {% else %}
 <link href="{{ site.baseurl }}/dist/css/bootstrap.css" rel="stylesheet">
 {% endif %}
