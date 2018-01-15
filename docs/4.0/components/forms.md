@@ -1166,7 +1166,7 @@ $custom-file-text: (
 );
 {% endhighlight %}
 
-And here's `lang(es)` in action on the custom file input for a Spanish translation:
+Here's `lang(es)` in action on the custom file input for a Spanish translation:
 
 {% example html %}
 <div class="custom-file">
