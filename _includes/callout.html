@@ -1,0 +1,5 @@
+{% comment %} allowed: info danger warning {% endcomment %}
+{% assign css_class = include.type | default: "info" %}
+<div class="bd-callout bd-callout-{{ css_class }}">
+  {{ include.content | markdownify }}
+</div>
