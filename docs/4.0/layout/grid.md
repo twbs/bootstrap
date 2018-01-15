@@ -534,7 +534,7 @@ Use `.order-` classes for controlling the **visual order** of your content. Thes
 {% endexample %}
 </div>
 
-There's also a responsive `.order-first` and `.order-last` class that quickly changes the order of one element by applying `order: -1` or `order: 13` (`order: $columns + 1`). These classes can also be intermixed with the numbered `.order-*` classes as needed.
+There are also responsive `.order-first` and `.order-last` classes that change the `order` of an element by applying `order: -1` and `order: 13` (`order: $columns + 1`), respectively. These classes can also be intermixed with the numbered `.order-*` classes as needed.
 
 <div class="bd-example-row">
 {% example html %}
