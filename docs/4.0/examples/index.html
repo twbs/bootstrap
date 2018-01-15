@@ -10,7 +10,7 @@ redirect_from: "/examples/"
   <p>{{ entry.description }}</p>
   {% for example in entry.examples %}
     {% if forloop.first %}<div class="row">{% endif %}
-      <div class="col-6 col-md-4 col-xl-3 mb-3">
+      <div class="col-sm-6 col-md-4 col-xl-3 mb-3">
         <a href="{{ site.baseurl }}/docs/{{ site.docs_version }}/examples/{{ example.name | slugify }}/">
           <img class="img-thumbnail mb-3" src="{{ site.baseurl }}/docs/{{ site.docs_version }}/examples/screenshots/{{ example.name | slugify }}.png" alt="{{ example.name }} screenshot" width="800" height="600">
           <h5 class="mb-1">{{ example.name }}</h5>
