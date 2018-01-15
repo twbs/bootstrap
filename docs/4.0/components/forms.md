@@ -1166,4 +1166,13 @@ $custom-file-text: (
 );
 {% endhighlight %}
 
+And here's `lang(es)` in action on the custom file input for a Spanish translation:
+
+{% example html %}
+<div class="custom-file">
+  <input type="file" class="custom-file-input" id="customFileLang" lang="es">
+  <label class="custom-file-label" for="customFileLang">Elegir archivo</label>
+</div>
+{% endexample %}
+
 You'll need to set the language of your document (or subtree thereof) correctly in order for the correct text to be shown. This can be done using [the `lang` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang) on the `<html>` element or the [`Content-Language` HTTP header](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.12), among other methods.
