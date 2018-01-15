@@ -447,9 +447,8 @@ Trigger dropdown menus at the right of the elements by adding `.dropright` to th
 {% highlight html %}
 <!-- Default dropright button -->
 <div class="btn-group dropright">
-  <button type="button" class="btn btn-secondary">Dropright</button>
   <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <span class="sr-only">Toggle Dropright</span>
+    Dropright
   </button>
   <div class="dropdown-menu">
     <!-- Dropdown menu links -->
