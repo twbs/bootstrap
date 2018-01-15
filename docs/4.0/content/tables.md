@@ -620,13 +620,11 @@ Regular table background variants are not available with the dark table, however
 </tr>
 {% endhighlight %}
 
-{% capture callout-include %}{% include callout-warning-color-assistive-technologies.md %}{% endcapture %}
-{{ callout-include | markdownify }}
+{% include callout-warning-color-assistive-technologies.md %}
 
 Create responsive tables by wrapping any `.table` with `.table-responsive{-sm|-md|-lg|-xl}`, making the table scroll horizontally at each `max-width` breakpoint of up to (but not including) 576px, 768px, 992px, and 1120px, respectively.
 
-{% capture callout-include %}{% include callout-info-mediaqueries-breakpoints.md %}{% endcapture %}
-{{ callout-include | markdownify }}
+{% include callout-info-mediaqueries-breakpoints.md %}
 
 ## Captions
 
@@ -670,11 +668,12 @@ A `<caption>` functions like a heading for a table. It helps users with screen r
 
 Responsive tables allow tables to be scrolled horizontally with ease. Make any table responsive across all viewports by wrapping a `.table` with `.table-responsive`. Or, pick a maximum breakpoint with which to have a responsive table up to by using `.table-responsive{-sm|-md|-lg|-xl}`.
 
-{% callout warning %}
+{% capture callout %}
 ##### Vertical clipping/truncation
 
 Responsive tables make use of `overflow-y: hidden`, which clips off any content that goes beyond the bottom or top edges of the table. In particular, this can clip off dropdown menus and other third-party widgets.
-{% endcallout %}
+{% endcapture %}
+{% include callout.html content=callout type="warning" %}
 
 ### Always responsive
 

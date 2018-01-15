@@ -43,11 +43,11 @@ When `$enable-gradients` is set to true, you'll be able to use `.bg-gradient-` u
 <div class="p-3 mb-2 bg-gradient-{{ color.name }} {% if color.name == "light" or color.name == "warning" %}text-dark{% else %}text-white{% endif %}">.bg-gradient-{{ color.name }}</div>{% endfor %}
 {% endexample %}
 
-{% callout info %}
+{% capture callout %}
 #### Dealing with specificity
 
 Sometimes contextual classes cannot be applied due to the specificity of another selector. In some cases, a sufficient workaround is to wrap your element's content in a `<div>` with the class.
-{% endcallout %}
+{% endcapture %}
+{% include callout.html content=callout type="info" %}
 
-{% capture callout-include %}{% include callout-warning-color-assistive-technologies.md %}{% endcapture %}
-{{ callout-include | markdownify }}
+{% include callout-warning-color-assistive-technologies.md %}
