@@ -28,7 +28,7 @@
   }
 
   // Opinionated: add "hand" cursor to non-disabled .page-link elements
-  &:not([disabled]):not(.disabled) {
+  &:not(:disabled):not(.disabled) {
     cursor: pointer;
   }
 }
