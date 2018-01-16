@@ -31,7 +31,7 @@ While Beta 2 saw the bulk of our breaking changes during the beta phase, but we 
 
 ### Input groups
 
-- Input group addons are now specific to their placement relative to an input. We've dropped `.input-group-addon` and `.input-group-btn` for two new classes, `.input-group-prepend` and `.input-group-append`. You must explicitly use an append or a prepend now, simplifying much of our CSS.
+- Input group addons are now specific to their placement relative to an input. We've dropped `.input-group-addon` and `.input-group-btn` for two new classes, `.input-group-prepend` and `.input-group-append`. You must explicitly use an append or a prepend now, simplifying much of our CSS. Within an append or prepend, place your buttons as they would exist anywhere else, but wrap text in `.input-group-text`.
 
 - Validation styles are now supported, as are multiple inputs (though you can only validate one input per group).
 
