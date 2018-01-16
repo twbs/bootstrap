@@ -28,9 +28,9 @@ See also:
     {% for bug in site.data.browser-bugs %}
     <tr>
       <td>{{ bug.browser }}</td>
-      <td>{{ bug.summary | markdownify | bugify }}</td>
-      <td>{{ bug.upstream_bug | bugify }}</td>
-      <td>{{ bug.origin | bugify }}</td>
+      <td>{{ bug.summary | markdownify }}</td>
+      <td>{% include bugify.html content=bug.upstream_bug %}</td>
+      <td>{% include bugify.html content=bug.origin %}</td>
     </tr>
     {% endfor %}
   </tbody>
@@ -55,9 +55,9 @@ We publicly list these "most wanted" feature requests here, in the hopes of expe
     {% for feat in site.data.browser-features %}
     <tr>
       <td>{{ feat.browser }}</td>
-      <td>{{ feat.summary | markdownify | bugify }}</td>
-      <td>{{ feat.upstream_bug | bugify }}</td>
-      <td>{{ feat.origin | bugify }}</td>
+      <td>{{ feat.summary | markdownify }}</td>
+      <td>{% include bugify.html content=feat.upstream_bug %}</td>
+      <td>{% include bugify.html content=feat.origin %}</td>
     </tr>
     {% endfor %}
   </tbody>
