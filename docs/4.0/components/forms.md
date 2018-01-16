@@ -780,10 +780,10 @@ When attempting to submit, you'll see the `:invalid` and `:valid` styles applied
     <div class="form-check">
       <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
       <label class="form-check-label" for="invalidCheck">
-        I agree
+        Agree to terms and conditions
       </label>
       <div class="invalid-feedback">
-        You must agree
+        You must agree before submitting.
       </div>
     </div>
   </div>
@@ -857,7 +857,7 @@ While these feedback styles cannot be styled with CSS, you can still customize t
     <div class="form-check">
       <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
       <label class="form-check-label" for="invalidCheck2">
-        I agree
+        Agree to terms and conditions
       </label>
     </div>
   </div>
@@ -926,10 +926,10 @@ We recommend using client side validation, but in case you require server side, 
     <div class="form-check">
       <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" required>
       <label class="form-check-label" for="invalidCheck3">
-        I agree
+        Agree to terms and conditions
       </label>
       <div class="invalid-feedback">
-        You must agree
+        You must agree before submitting.
       </div>
     </div>
   </div>
