@@ -69,7 +69,7 @@ All heading elements—e.g., `<h1>`—and `<p>` are reset to have their `margin-
     </tr>
     <tr>
       <td>
-        {{ "`<h2></h2>" | markdownify }}
+        {{ "`<h2></h2>`" | markdownify }}
       </td>
       <td><span class="h2">h2. Bootstrap heading</span></td>
     </tr>
