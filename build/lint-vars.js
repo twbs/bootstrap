@@ -3,8 +3,8 @@
 /*!
  * Script to find unused Sass variables.
  *
- * Copyright 2017 The Bootstrap Authors
- * Copyright 2017 Twitter, Inc.
+ * Copyright 2017-2018 The Bootstrap Authors
+ * Copyright 2017-2018 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
@@ -44,7 +44,7 @@ function findUnusedVars(dir) {
   // Array of all Sass variables
   const variables = sassFilesString.match(/(^\$[a-zA-Z0-9_-]+[^:])/gm)
 
-  console.log(`There's a total of ${variables.length} variables.`)
+  console.log(`Found ${variables.length} total variables.`)
 
   // Loop through each variable
   variables.forEach((variable) => {
@@ -52,7 +52,7 @@ function findUnusedVars(dir) {
     const count = (sassFilesString.match(re) || []).length
 
     if (count === 1) {
-      console.log(`Variable "${variable}" is only used once!`)
+      console.log(`Variable "${variable}" is not being used.`)
       unusedVarsFound = true
       globalSuccess = false
     }
