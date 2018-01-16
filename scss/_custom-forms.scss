@@ -117,6 +117,15 @@
       background-image: $custom-checkbox-indicator-icon-indeterminate;
     }
   }
+
+  .custom-control-input:disabled {
+    &:checked ~ .custom-control-label::before {
+      background-color: $custom-control-indicator-checked-disabled-bg;
+    }
+    &:indeterminate ~ .custom-control-label::before {
+      background-color: $custom-control-indicator-checked-disabled-bg;
+    }
+  }
 }
 
 // Radios
@@ -136,6 +145,12 @@
       background-image: $custom-radio-indicator-icon-checked;
     }
   }
+
+  .custom-control-input:disabled {
+    &:checked ~ .custom-control-label::before {
+      background-color: $custom-control-indicator-checked-disabled-bg;
+    }
+  }
 }
 
 
@@ -148,7 +163,7 @@
 .custom-select {
   display: inline-block;
   width: 100%;
-  height: $input-height;
+  height: $custom-select-height;
   padding: $custom-select-padding-y ($custom-select-padding-x + $custom-select-indicator-padding) $custom-select-padding-y $custom-select-padding-x;
   line-height: $custom-select-line-height;
   color: $custom-select-color;

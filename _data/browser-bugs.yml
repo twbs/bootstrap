@@ -280,6 +280,16 @@
 
 -
   browser: >
+    Safari
+  summary: >
+    CSS `min-width` and `max-width` media features should not round fractional pixel
+  upstream_bug: >
+    WebKit#178261
+  origin: >
+    Bootstrap#25166
+
+-
+  browser: >
     Safari (OS X)
   summary: >
     `px`, `em`, and `rem` should all behave the same in media queries when page zoom is applied
