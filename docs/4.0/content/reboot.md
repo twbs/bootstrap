@@ -75,25 +75,25 @@ All heading elements—e.g., `<h1>`—and `<p>` are reset to have their `margin-
     </tr>
     <tr>
       <td>
-        {{ "`<h3></h3>" | markdownify }}
+        {{ "`<h3></h3>`" | markdownify }}
       </td>
       <td><span class="h3">h3. Bootstrap heading</span></td>
     </tr>
     <tr>
       <td>
-        {{ "`<h4></h4>" | markdownify }}
+        {{ "`<h4></h4>`" | markdownify }}
       </td>
       <td><span class="h4">h4. Bootstrap heading</span></td>
     </tr>
     <tr>
       <td>
-        {{ "`<h5></h5>" | markdownify }}
+        {{ "`<h5></h5>`" | markdownify }}
       </td>
       <td><span class="h5">h5. Bootstrap heading</span></td>
     </tr>
     <tr>
       <td>
-        {{ "`<h6></h6>" | markdownify }}
+        {{ "`<h6></h6>`" | markdownify }}
       </td>
       <td><span class="h6">h6. Bootstrap heading</span></td>
     </tr>
