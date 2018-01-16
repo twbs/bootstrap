@@ -149,11 +149,13 @@ For simpler styling, clear hierarchy, and better spacing, description lists have
 
 The `<pre>` element is reset to remove its `margin-top` and use `rem` units for its `margin-bottom`.
 
-{% highlight css %}
+<div class="bd-example">
+<pre>
 .example-element {
   margin-bottom: 1rem;
 }
-{% endhighlight %}
+</pre>
+</div>
 
 ## Tables
 
