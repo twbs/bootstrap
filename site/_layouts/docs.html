@@ -16,7 +16,7 @@
 
         {% if page.toc %}
           <div class="d-none d-xl-block col-xl-2 bd-toc">
-            {{ content | toc_only }}
+            {% include toc.html html=content class="section-nav" h_min=1 h_max=3 %}
           </div>
         {% endif %}
 
