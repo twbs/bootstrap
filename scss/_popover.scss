@@ -181,3 +181,22 @@
   padding: $popover-body-padding-y $popover-body-padding-x;
   color: $popover-body-color;
 }
+
+// Allow theme colors to be applied to Popovers
+// The below will change the background color border color on the arrow color.
+@each $color, $value in $theme-colors {
+
+  .popover.popover-#{$color} .popover-header{
+    background-color: $value;
+  }
+
+  .popover-#{$color}.bs-popover-bottom .arrow::after,
+  .popover-#{$color}.bs-popover-auto[x-placement^="bottom"] .arrow::after{
+    border-bottom-color: $value;
+  }
+  .popover-#{$color}.bs-popover-bottom .popover-header::before,
+  .popover-#{$color}.bs-popover-auto[x-placement^="bottom"] .popover-header::before{
+    border-bottom-color: $value;
+  }
+
+}
