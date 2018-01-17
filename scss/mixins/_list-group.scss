@@ -7,8 +7,6 @@
   }
 
   .list-group-item-action.list-group-item-#{$state} {
-    color: $color;
-
     @include hover-focus {
       color: $color;
       background-color: darken($background, 5%);
