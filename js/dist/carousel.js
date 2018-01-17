@@ -1,10 +1,12 @@
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-beta.2): carousel.js
+ * Bootstrap (v4.0.0-beta.3): carousel.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -15,7 +17,7 @@ var Carousel = function ($) {
    * ------------------------------------------------------------------------
    */
   var NAME = 'carousel';
-  var VERSION = '4.0.0-beta.2';
+  var VERSION = '4.0.0-beta.3';
   var DATA_KEY = 'bs.carousel';
   var EVENT_KEY = "." + DATA_KEY;
   var DATA_API_KEY = '.data-api';
@@ -98,12 +100,12 @@ var Carousel = function ($) {
       this._indicatorsElement = $(this._element).find(Selector.INDICATORS)[0];
 
       this._addEventListeners();
-    } // getters
+    } // Getters
 
 
     var _proto = Carousel.prototype;
 
-    // public
+    // Public
     _proto.next = function next() {
       if (!this._isSliding) {
         this._slide(Direction.NEXT);
@@ -193,11 +195,11 @@ var Carousel = function ($) {
       this._isSliding = null;
       this._activeElement = null;
       this._indicatorsElement = null;
-    }; // private
+    }; // Private
 
 
     _proto._getConfig = function _getConfig(config) {
-      config = $.extend({}, Default, config);
+      config = _extends({}, Default, config);
       Util.typeCheckConfig(NAME, config, DefaultType);
       return config;
     };
@@ -219,7 +221,7 @@ var Carousel = function ($) {
         });
 
         if ('ontouchstart' in document.documentElement) {
-          // if it's a touch-enabled device, mouseenter/leave are fired as
+          // If it's a touch-enabled device, mouseenter/leave are fired as
           // part of the mouse compatibility events on first tap - the carousel
           // would stop cycling until user tapped out of it;
           // here, we listen for touchend, explicitly pause the carousel
@@ -258,7 +260,6 @@ var Carousel = function ($) {
           break;
 
         default:
-          return;
       }
     };
 
@@ -350,7 +351,7 @@ var Carousel = function ($) {
       }
 
       if (!activeElement || !nextElement) {
-        // some weirdness is happening, so we bail
+        // Some weirdness is happening, so we bail
         return;
       }
 
@@ -392,17 +393,17 @@ var Carousel = function ($) {
       if (isCycling) {
         this.cycle();
       }
-    }; // static
+    }; // Static
 
 
     Carousel._jQueryInterface = function _jQueryInterface(config) {
       return this.each(function () {
         var data = $(this).data(DATA_KEY);
 
-        var _config = $.extend({}, Default, $(this).data());
+        var _config = _extends({}, Default, $(this).data());
 
         if (typeof config === 'object') {
-          $.extend(_config, config);
+          _config = _extends({}, _config, config);
         }
 
         var action = typeof config === 'string' ? config : _config.slide;
@@ -416,7 +417,7 @@ var Carousel = function ($) {
           data.to(config);
         } else if (typeof action === 'string') {
           if (typeof data[action] === 'undefined') {
-            throw new Error("No method named \"" + action + "\"");
+            throw new TypeError("No method named \"" + action + "\"");
           }
 
           data[action]();
@@ -440,7 +441,8 @@ var Carousel = function ($) {
         return;
       }
 
-      var config = $.extend({}, $(target).data(), $(this).data());
+      var config = _extends({}, $(target).data(), $(this).data());
+
       var slideIndex = this.getAttribute('data-slide-to');
 
       if (slideIndex) {

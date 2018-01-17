@@ -53,7 +53,7 @@ While Bootstrap uses `em`s or `rem`s for defining most sizes, `px`s are used for
 
 See how aspects of the Bootstrap grid system work across multiple devices with a handy table.
 
-<table class="table table-bordered table-striped table-responsive">
+<table class="table table-bordered table-striped">
   <thead>
     <tr>
       <th></th>
@@ -149,9 +149,7 @@ For example, here are two grid layouts that apply to every device and viewport, 
 {% endexample %}
 </div>
 
-Equal-width columns can be broken into multiple lines, but there was a [Safari flexbox bug](https://github.com/philipwalton/flexbugs#11-min-and-max-size-declarations-are-ignored-when-wrapping-flex-items) that prevented this from working without an explicit `flex-basis` or `border`.
-
-Two workarounds have been documented in a [reduced test case outside Bootstrap](https://output.jsbin.com/micohor), though if the browser is up to date this shouldn't be necessary.
+Equal-width columns can be broken into multiple lines, but there was a [Safari flexbox bug](https://github.com/philipwalton/flexbugs#11-min-and-max-size-declarations-are-ignored-when-wrapping-flex-items) that prevented this from working without an explicit `flex-basis` or `border`. There are workarounds for older browser versions, but they shouldn't be necessary if you're up-to-date.
 
 <div class="bd-example-row">
 {% example html %}
@@ -274,7 +272,7 @@ For grids that are the same from the smallest of devices to the largest, use the
 
 ### Stacked to horizontal
 
-Using a single set of `.col-sm-*` classes, you can create a basic grid system that starts out stacked on extra small devices before becoming horizontal on desktop (medium) devices.
+Using a single set of `.col-sm-*` classes, you can create a basic grid system that starts out stacked before becoming horizontal with at the small breakpoint (`sm`).
 
 <div class="bd-example-row">
 {% example html %}
@@ -536,14 +534,14 @@ Use `.order-` classes for controlling the **visual order** of your content. Thes
 {% endexample %}
 </div>
 
-There's also a responsive `.order-first` class that quickly changes the order of one element by applying `order: -1`. This class can also be intermixed with the numbered `.order-*` classes as needed.
+There are also responsive `.order-first` and `.order-last` classes that change the `order` of an element by applying `order: -1` and `order: 13` (`order: $columns + 1`), respectively. These classes can also be intermixed with the numbered `.order-*` classes as needed.
 
 <div class="bd-example-row">
 {% example html %}
 <div class="container">
   <div class="row">
-    <div class="col">
-      First, but unordered
+    <div class="col order-last">
+      First, but last
     </div>
     <div class="col">
       Second, but unordered

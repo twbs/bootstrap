@@ -19,6 +19,7 @@
   @include hover-focus {
     text-decoration: none;
   }
+
   &:focus,
   &.focus {
     outline: 0;
@@ -32,16 +33,25 @@
     @include box-shadow(none);
   }
 
-  &:not([disabled]):not(.disabled):active,
-  &:not([disabled]):not(.disabled).active {
+  // Opinionated: add "hand" cursor to non-disabled .btn elements
+  &:not(:disabled):not(.disabled) {
+    cursor: pointer;
+  }
+
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled).active {
     background-image: none;
-    @include box-shadow($btn-focus-box-shadow, $btn-active-box-shadow);
+    @include box-shadow($btn-active-box-shadow);
+
+    &:focus {
+      @include box-shadow($btn-focus-box-shadow, $btn-active-box-shadow);
+    }
   }
 }
 
 // Future-proof disabling of clicks on `<a>` elements
 a.btn.disabled,
-fieldset[disabled] a.btn {
+fieldset:disabled a.btn {
   pointer-events: none;
 }
 
