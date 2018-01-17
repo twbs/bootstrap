@@ -6,8 +6,7 @@
     background-color: $background;
   }
 
-  a.list-group-item-#{$state},
-  button.list-group-item-#{$state} {
+  .list-group-item-action.list-group-item-#{$state} {
     color: $color;
 
     @include hover-focus {
