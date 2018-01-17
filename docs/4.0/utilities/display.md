@@ -45,7 +45,7 @@ The media queries effect screen widths with the given breakpoint *or larger*. Fo
 <span class="d-block p-2 bg-dark text-white">d-block</span>
 {% endexample %}
 
-## Hiding Elements
+## Hiding elements
 
 For faster mobile-friendly development, use responsive display classes for showing and hiding elements by device. Avoid creating entirely different versions of the same site, instead hide element responsively for each screen size.
 
