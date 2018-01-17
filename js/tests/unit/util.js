@@ -9,16 +9,16 @@ $(function () {
     var $el = $('<div data-target="body"></div>').appendTo($('#qunit-fixture'))
     assert.strictEqual(Util.getSelectorFromElement($el[0]), 'body')
 
-    // not found element
+    // Not found element
     var $el2 = $('<div data-target="#fakeDiv"></div>').appendTo($('#qunit-fixture'))
     assert.strictEqual(Util.getSelectorFromElement($el2[0]), null)
 
-    // should escape ID and find the correct element
+    // Should escape ID and find the correct element
     var $el3 = $('<div data-target="#collapse:Example"></div>').appendTo($('#qunit-fixture'))
     $('<div id="collapse:Example"></div>').appendTo($('#qunit-fixture'))
     assert.strictEqual(Util.getSelectorFromElement($el3[0]), '#collapse\\:Example')
 
-    // if $.escapeSelector doesn't exist in older jQuery versions (< 3)
+    // If $.escapeSelector doesn't exist in older jQuery versions (< 3)
     var tmpEscapeSelector = $.escapeSelector
     delete $.escapeSelector
     assert.ok(typeof $.escapeSelector === 'undefined', '$.escapeSelector undefined')
@@ -30,8 +30,8 @@ $(function () {
     assert.expect(1)
     var namePlugin = 'collapse'
     var defaultType = {
-      toggle : 'boolean',
-      parent : '(string|element)'
+      toggle: 'boolean',
+      parent: '(string|element)'
     }
     var config = {
       toggle: true,
@@ -40,8 +40,8 @@ $(function () {
 
     try {
       Util.typeCheckConfig(namePlugin, config, defaultType)
-    } catch (e) {
-      assert.strictEqual(e.message, 'COLLAPSE: Option "parent" provided type "number" but expected type "(string|element)".')
+    } catch (err) {
+      assert.strictEqual(err.message, 'COLLAPSE: Option "parent" provided type "number" but expected type "(string|element)".')
     }
   })
 

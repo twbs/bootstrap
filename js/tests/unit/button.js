@@ -87,11 +87,11 @@ $(function () {
     assert.expect(1)
     var done = assert.async()
 
-    var groupHTML = '<div class="btn-group" data-toggle="buttons">'
-      + '<label class="btn btn-primary">'
-      + '<input type="radio" id="radio" autocomplete="off">Radio'
-      + '</label>'
-      + '</div>'
+    var groupHTML = '<div class="btn-group" data-toggle="buttons">' +
+      '<label class="btn btn-primary">' +
+      '<input type="radio" id="radio" autocomplete="off">Radio' +
+      '</label>' +
+      '</div>'
     var $group = $(groupHTML).appendTo('#qunit-fixture')
 
     $group.find('input').on('change', function (e) {
@@ -105,17 +105,17 @@ $(function () {
 
   QUnit.test('should check for closest matching toggle', function (assert) {
     assert.expect(12)
-    var groupHTML = '<div class="btn-group" data-toggle="buttons">'
-      + '<label class="btn btn-primary active">'
-      + '<input type="radio" name="options" id="option1" checked="true"> Option 1'
-      + '</label>'
-      + '<label class="btn btn-primary">'
-      + '<input type="radio" name="options" id="option2"> Option 2'
-      + '</label>'
-      + '<label class="btn btn-primary">'
-      + '<input type="radio" name="options" id="option3"> Option 3'
-      + '</label>'
-      + '</div>'
+    var groupHTML = '<div class="btn-group" data-toggle="buttons">' +
+      '<label class="btn btn-primary active">' +
+      '<input type="radio" name="options" id="option1" checked="true"> Option 1' +
+      '</label>' +
+      '<label class="btn btn-primary">' +
+      '<input type="radio" name="options" id="option2"> Option 2' +
+      '</label>' +
+      '<label class="btn btn-primary">' +
+      '<input type="radio" name="options" id="option3"> Option 3' +
+      '</label>' +
+      '</div>'
     var $group = $(groupHTML).appendTo('#qunit-fixture')
 
     var $btn1 = $group.children().eq(0)
@@ -131,7 +131,7 @@ $(function () {
     assert.ok($btn2.hasClass('active'), 'btn2 has active class')
     assert.ok($btn2.find('input').prop('checked'), 'btn2 is checked')
 
-    $btn2.find('input').trigger('click') // clicking an already checked radio should not un-check it
+    $btn2.find('input').trigger('click') // Clicking an already checked radio should not un-check it
     assert.ok(!$btn1.hasClass('active'), 'btn1 does not have active class')
     assert.ok(!$btn1.find('input').prop('checked'), 'btn1 is not checked')
     assert.ok($btn2.hasClass('active'), 'btn2 has active class')
@@ -140,10 +140,10 @@ $(function () {
 
   QUnit.test('should not add aria-pressed on labels for radio/checkbox inputs in a data-toggle="buttons" group', function (assert) {
     assert.expect(2)
-    var groupHTML = '<div class="btn-group" data-toggle="buttons">'
-      + '<label class="btn btn-primary"><input type="checkbox" autocomplete="off"> Checkbox</label>'
-      + '<label class="btn btn-primary"><input type="radio" name="options" autocomplete="off"> Radio</label>'
-      + '</div>'
+    var groupHTML = '<div class="btn-group" data-toggle="buttons">' +
+      '<label class="btn btn-primary"><input type="checkbox" autocomplete="off"> Checkbox</label>' +
+      '<label class="btn btn-primary"><input type="radio" name="options" autocomplete="off"> Radio</label>' +
+      '</div>'
     var $group = $(groupHTML).appendTo('#qunit-fixture')
 
     var $btn1 = $group.children().eq(0)
@@ -158,11 +158,11 @@ $(function () {
 
   QUnit.test('should handle disabled attribute on non-button elements', function (assert) {
     assert.expect(2)
-    var groupHTML = '<div class="btn-group disabled" data-toggle="buttons" aria-disabled="true" disabled>'
-      + '<label class="btn btn-danger disabled" aria-disabled="true" disabled>'
-      + '<input type="checkbox" aria-disabled="true" autocomplete="off" disabled class="disabled"/>'
-      + '</label>'
-      + '</div>'
+    var groupHTML = '<div class="btn-group disabled" data-toggle="buttons" aria-disabled="true" disabled>' +
+      '<label class="btn btn-danger disabled" aria-disabled="true" disabled>' +
+      '<input type="checkbox" aria-disabled="true" autocomplete="off" disabled class="disabled"/>' +
+      '</label>' +
+      '</div>'
     var $group = $(groupHTML).appendTo('#qunit-fixture')
 
     var $btn = $group.children().eq(0)
@@ -172,5 +172,4 @@ $(function () {
     assert.ok($btn.is(':not(.active)'), 'button did not become active')
     assert.ok(!$input.is(':checked'), 'checkbox did not get checked')
   })
-
 })

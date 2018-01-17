@@ -74,6 +74,11 @@
       ~ .form-check-label {
         color: $color;
       }
+
+      ~ .#{$state}-feedback,
+      ~ .#{$state}-tooltip {
+        display: block;
+      }
     }
   }
 
