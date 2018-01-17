@@ -4,18 +4,18 @@
   .list-group-item-#{$state} {
     color: $color;
     background-color: $background;
-  }
 
-  .list-group-item-action.list-group-item-#{$state} {
-    @include hover-focus {
-      color: $color;
-      background-color: darken($background, 5%);
-    }
+    &.list-group-item-action {
+      @include hover-focus {
+        color: $color;
+        background-color: darken($background, 5%);
+      }
 
-    &.active {
-      color: #fff;
-      background-color: $color;
-      border-color: $color;
+      &.active {
+        color: #fff;
+        background-color: $color;
+        border-color: $color;
+      }
     }
   }
 }
