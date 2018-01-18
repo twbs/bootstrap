@@ -98,7 +98,7 @@
 
   img,
   .popover-image {
-    width: 100%;
+    width: 65%;
     margin: 8px 0;
   }
 }
@@ -211,31 +211,70 @@
 
 .popover-promotion {
   text-align: center;
+  padding: 24px;
 
-  h3, .h3 {
-    font-size: @font-size-h4;
+  @media (max-width: @screen-sm-min) {
+    width: auto !important;
+
+    padding: 24px !important;
+    margin: 16px !important;
   }
 
-  @media (min-width: @screen-md-min) {
-    h3, .h3 {
-      font-size: @font-size-h3;
-    }
+  @media (min-width: (@screen-sm-min - 10px)) and (max-width: @screen-lg-min) {
+    width: 540px !important;
 
-    .popover-image {
+    padding: 28px 32px !important;
+    margin: 32px auto !important;
+  }
+
+  .popover-title {
+    font-size: @font-size-h4;
+    line-height: @line-height-h4;
+
+    @media (min-width: @screen-md-min) {
+      font-size: @font-size-h3;
+      line-height: @line-height-h3;
+    }
+  }
+
+  .popover-image {
+    @media (max-width: @screen-xs-min) {
       width: 80%;
     }
-  }
 
-  @media only screen and (min-width: @screen-xs-min) and (max-width: @screen-md-min) {
-    .popover-image {
-      width: 65%;
+    @media (min-width: @screen-xs-min) and (max-width: @screen-lg-min) {
+      width: 60%;
+    }
+
+    @media (min-width: @screen-lg-min) {
+      width: 80%;
     }
   }
 }
 
+@media (max-width: @screen-lg-min) {
+  .popover-promotion {
+    position: absolute !important;
+  }
+}
+
 /**
+ * Note: Repeated occurrances [sic] of the same simple selector are allowed and
+ * do increase specificity.
+ *
  * Safely raising specificity to 0020
+ *
+ * https://www.w3.org/TR/css3-selectors/#specificity
  */
 .promoted.promoted {
-  color: @nav-inverse-link-hover-color;
+  .button-variant(
+      @btn-primary-color;
+      #FFF;
+      @btn-primary-bg;
+      @btn-primary-bg-hover;
+      @btn-primary-bg-active;
+      @btn-primary-border;
+      @btn-primary-border-hover;
+      @btn-primary-border-active
+  );
 }
