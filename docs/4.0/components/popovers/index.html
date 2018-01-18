@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="Documentation and examples for adding Bootstrap popovers, like those found in iOS, to any element on your site.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Jekyll v3.6.2">
+<meta name="generator" content="Jekyll v3.7.0">
 
 <title>Popovers · Bootstrap</title>
 
 <!-- Bootstrap core CSS -->
 
-<link href="/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 
 <!-- Documentation extras -->
@@ -125,7 +125,7 @@
     </li>
   </ul>
 
-  <a class="btn btn-bd-download d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="https://github.com/twbs/bootstrap/archive/v4.0.0-beta.3.zip">Download</a>
+  <a class="btn btn-bd-download d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="https://github.com/twbs/bootstrap/archive/v4.0.0.zip">Download</a>
 </header>
 
 
@@ -337,11 +337,14 @@
               Visibility
             </a></li></ul>
     </div><div class="bd-toc-item">
-      <a class="bd-toc-link" href="/docs/4.0/extend/icons/">
+      <a class="bd-toc-link" href="/docs/4.0/extend/approach/">
         Extend
       </a>
 
       <ul class="nav bd-sidenav"><li>
+            <a href="/docs/4.0/extend/approach/">
+              Approach
+            </a></li><li>
             <a href="/docs/4.0/extend/icons/">
               Icons
             </a></li></ul>
@@ -387,6 +390,7 @@
 <li class="toc-entry toc-h4"><a href="#specific-markup-required-for-dismiss-on-next-click">Specific markup required for dismiss-on-next-click</a></li>
 </ul>
 </li>
+<li class="toc-entry toc-h3"><a href="#disabled-elements">Disabled elements</a></li>
 </ul>
 </li>
 <li class="toc-entry toc-h2"><a href="#usage">Usage</a>
@@ -522,6 +526,21 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'.popover-dismiss'</span><span class="p">).</span><span class="nx">popover</span><span class="p">({</span>
   <span class="na">trigger</span><span class="p">:</span> <span class="s1">'focus'</span>
 <span class="p">})</span></code></pre></figure>
+
+<h3 id="disabled-elements">Disabled elements</h3>
+
+<p>Elements with the <code class="highlighter-rouge">disabled</code> attribute aren’t interactive, meaning users cannot hover or click them to trigger a popover (or tooltip). As a workaround, you’ll want to trigger the popover from a wrapper <code class="highlighter-rouge">&lt;div&gt;</code> or <code class="highlighter-rouge">&lt;span&gt;</code> and override the <code class="highlighter-rouge">pointer-events</code> on the disabled element.</p>
+
+<p>For disabled popover triggers, you may also prefer <code class="highlighter-rouge">data-trigger="hover"</code> so that the popover appears as immediate visual feedback to your users as they may not expect to <em>click</em> on a disabled element.</p>
+
+<div class="bd-example">
+<span class="d-inline-block" data-toggle="popover" data-content="Disabled popover">
+  <button class="btn btn-primary" style="pointer-events: none;" type="button" disabled="">Disabled button</button>
+</span>
+</div>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"d-inline-block"</span> <span class="na">data-toggle=</span><span class="s">"popover"</span> <span class="na">data-content=</span><span class="s">"Disabled popover"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span> <span class="na">style=</span><span class="s">"pointer-events: none;"</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">disabled</span><span class="nt">&gt;</span>Disabled button<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/span&gt;</span></code></pre></div>
 
 <h2 id="usage">Usage</h2>
 
@@ -759,34 +778,6 @@ sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
 
-<script src="/assets/js/vendor/popper.min.js"></script><script src="/dist/js/bootstrap.min.js"></script><script src="/assets/js/docs.min.js"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
-<script>
-  docsearch({
-    apiKey: '48cb48b22351bc71ea5f12f4d1ede198',
-    indexName: 'bootstrap-v4',
-    inputSelector: '#search-input',
-    handleSelected: function (input, event, suggestion) {
-      var url = suggestion.url;
-      url = suggestion.isLvl1 ? url.split('#')[0]: url;
-      // If it's a title we remove the anchor so it does not jump.
-      window.location.href = url;
-    },
-    transformData: function (hits) {
-      return hits.map(function (hit) {
-        hit.url = hit.url.replace('https://v4-alpha.getbootstrap.com', '/docs/4.0');
-        return hit;
-      });
-    },
-    debug: false // Set debug to true if you want to inspect the dropdown
-  });
-</script><script>
-  Holder.addTheme('gray', {
-    bg: '#777',
-    fg: 'rgba(255,255,255,.75)',
-    font: 'Helvetica',
-    fontweight: 'normal'
-  });
-</script>
-
+<script src="/assets/js/vendor/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script><script src="/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/assets/js/docs.min.js"></script>
   </body>
 </html>

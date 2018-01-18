@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="Bootstrap 4 is a major rewrite of the entire project. The most notable changes are summarized below, followed by more specific changes to relevant components.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Jekyll v3.6.2">
+<meta name="generator" content="Jekyll v3.7.0">
 
 <title>Migrating to v4 · Bootstrap</title>
 
 <!-- Bootstrap core CSS -->
 
-<link href="/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 
 <!-- Documentation extras -->
@@ -125,7 +125,7 @@
     </li>
   </ul>
 
-  <a class="btn btn-bd-download d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="https://github.com/twbs/bootstrap/archive/v4.0.0-beta.3.zip">Download</a>
+  <a class="btn btn-bd-download d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="https://github.com/twbs/bootstrap/archive/v4.0.0.zip">Download</a>
 </header>
 
 
@@ -337,11 +337,14 @@
               Visibility
             </a></li></ul>
     </div><div class="bd-toc-item">
-      <a class="bd-toc-link" href="/docs/4.0/extend/icons/">
+      <a class="bd-toc-link" href="/docs/4.0/extend/approach/">
         Extend
       </a>
 
       <ul class="nav bd-sidenav"><li>
+            <a href="/docs/4.0/extend/approach/">
+              Approach
+            </a></li><li>
             <a href="/docs/4.0/extend/icons/">
               Icons
             </a></li></ul>
@@ -376,6 +379,11 @@
         
           <div class="d-none d-xl-block col-xl-2 bd-toc">
             <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#stable-changes">Stable changes</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#printing">Printing</a></li>
+</ul>
+</li>
 <li class="toc-entry toc-h2"><a href="#beta-3-changes">Beta 3 changes</a>
 <ul>
 <li class="toc-entry toc-h3"><a href="#miscellaneous">Miscellaneous</a></li>
@@ -438,7 +446,24 @@
           <p class="bd-lead">Bootstrap 4 is a major rewrite of the entire project. The most notable changes are summarized below, followed by more specific changes to relevant components.</p>
           <script async src="https://cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=getbootstrapcom" id="_carbonads_js"></script>
 
-          <h2 id="beta-3-changes">Beta 3 changes</h2>
+          <h2 id="stable-changes">Stable changes</h2>
+
+<p>Moving from Beta 3 to our stable v4.0 release, there are no breaking changes, but there are some notable changes.</p>
+
+<h3 id="printing">Printing</h3>
+<ul>
+  <li>
+    <p>Fixed broken print utilities. Previously, using a <code class="highlighter-rouge">.d-print-*</code> class would unexpectedly overrule any other <code class="highlighter-rouge">.d-*</code> class. Now, they match our other display utilities and only apply to that media (<code class="highlighter-rouge">@media print</code>).</p>
+  </li>
+  <li>
+    <p>Expanded available print display utilities to match other utilities. Beta 3 and older only had <code class="highlighter-rouge">block</code>, <code class="highlighter-rouge">inline-block</code>, <code class="highlighter-rouge">inline</code>, and <code class="highlighter-rouge">none</code>. Stable v4 added <code class="highlighter-rouge">flex</code>, <code class="highlighter-rouge">inline-flex</code>, <code class="highlighter-rouge">table</code>, <code class="highlighter-rouge">table-row</code>, and <code class="highlighter-rouge">table-cell</code>.</p>
+  </li>
+  <li>
+    <p>Fixed print preview rendering across browsers with new print styles that specify <code class="highlighter-rouge">@page</code> <code class="highlighter-rouge">size</code>.</p>
+  </li>
+</ul>
+
+<h2 id="beta-3-changes">Beta 3 changes</h2>
 
 <p>While Beta 2 saw the bulk of our breaking changes during the beta phase, but we still have a few that needed to be addressed in the Beta 3 release. These changes apply if you’re updating to Beta 3 from Beta 2 or any older version of Bootstrap.</p>
 
@@ -465,13 +490,16 @@
   <li>
     <p>Removed <code class="highlighter-rouge">.col-form-legend</code> in favor of a slightly improved <code class="highlighter-rouge">.col-form-label</code>. This way <code class="highlighter-rouge">.col-form-label-sm</code> and <code class="highlighter-rouge">.col-form-label-lg</code> can be used on <code class="highlighter-rouge">&lt;legend&gt;</code> elements with ease.</p>
   </li>
+  <li>
+    <p>Custom file inputs received a change to their <code class="highlighter-rouge">$custom-file-text</code> Sass variable. It’s no longer a nested Sass map and now only powers one string—the <code class="highlighter-rouge">Browse</code> button as that is now the only pseudo-element generated from our Sass. The <code class="highlighter-rouge">Choose file</code> text now comes from the <code class="highlighter-rouge">.custom-file-label</code>.</p>
+  </li>
 </ul>
 
 <h3 id="input-groups">Input groups</h3>
 
 <ul>
   <li>
-    <p>Input group addons are now specific to their placement relative to an input. We’ve dropped <code class="highlighter-rouge">.input-group-addon</code> and <code class="highlighter-rouge">.input-group-btn</code> for two new classes, <code class="highlighter-rouge">.input-group-prepend</code> and <code class="highlighter-rouge">.input-group-append</code>. You must explicitly use an append or a prepend now, simplifying much of our CSS.</p>
+    <p>Input group addons are now specific to their placement relative to an input. We’ve dropped <code class="highlighter-rouge">.input-group-addon</code> and <code class="highlighter-rouge">.input-group-btn</code> for two new classes, <code class="highlighter-rouge">.input-group-prepend</code> and <code class="highlighter-rouge">.input-group-append</code>. You must explicitly use an append or a prepend now, simplifying much of our CSS. Within an append or prepend, place your buttons as they would exist anywhere else, but wrap text in <code class="highlighter-rouge">.input-group-text</code>.</p>
   </li>
   <li>
     <p>Validation styles are now supported, as are multiple inputs (though you can only validate one input per group).</p>
@@ -874,34 +902,6 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
 
-<script src="/assets/js/vendor/popper.min.js"></script><script src="/dist/js/bootstrap.min.js"></script><script src="/assets/js/docs.min.js"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
-<script>
-  docsearch({
-    apiKey: '48cb48b22351bc71ea5f12f4d1ede198',
-    indexName: 'bootstrap-v4',
-    inputSelector: '#search-input',
-    handleSelected: function (input, event, suggestion) {
-      var url = suggestion.url;
-      url = suggestion.isLvl1 ? url.split('#')[0]: url;
-      // If it's a title we remove the anchor so it does not jump.
-      window.location.href = url;
-    },
-    transformData: function (hits) {
-      return hits.map(function (hit) {
-        hit.url = hit.url.replace('https://v4-alpha.getbootstrap.com', '/docs/4.0');
-        return hit;
-      });
-    },
-    debug: false // Set debug to true if you want to inspect the dropdown
-  });
-</script><script>
-  Holder.addTheme('gray', {
-    bg: '#777',
-    fg: 'rgba(255,255,255,.75)',
-    font: 'Helvetica',
-    fontweight: 'normal'
-  });
-</script>
-
+<script src="/assets/js/vendor/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script><script src="/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/assets/js/docs.min.js"></script>
   </body>
 </html>

@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="Learn how to use Bootstrap’s included npm scripts to build our documentation, compile source code, run tests, and more.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Jekyll v3.6.2">
+<meta name="generator" content="Jekyll v3.7.0">
 
 <title>Build tools · Bootstrap</title>
 
 <!-- Bootstrap core CSS -->
 
-<link href="/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 
 <!-- Documentation extras -->
@@ -125,7 +125,7 @@
     </li>
   </ul>
 
-  <a class="btn btn-bd-download d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="https://github.com/twbs/bootstrap/archive/v4.0.0-beta.3.zip">Download</a>
+  <a class="btn btn-bd-download d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="https://github.com/twbs/bootstrap/archive/v4.0.0.zip">Download</a>
 </header>
 
 
@@ -337,11 +337,14 @@
               Visibility
             </a></li></ul>
     </div><div class="bd-toc-item">
-      <a class="bd-toc-link" href="/docs/4.0/extend/icons/">
+      <a class="bd-toc-link" href="/docs/4.0/extend/approach/">
         Extend
       </a>
 
       <ul class="nav bd-sidenav"><li>
+            <a href="/docs/4.0/extend/approach/">
+              Approach
+            </a></li><li>
             <a href="/docs/4.0/extend/icons/">
               Icons
             </a></li></ul>
@@ -392,13 +395,13 @@
 
           <h2 id="tooling-setup">Tooling setup</h2>
 
-<p>Bootstrap uses <a href="https://docs.npmjs.com/misc/scripts">NPM scripts</a> for its build system. Our <a href="https://github.com/twbs/bootstrap/blob/v4.0.0-beta.3/package.json">package.json</a> includes convenient methods for working with the framework, including compiling code, running tests, and more.</p>
+<p>Bootstrap uses <a href="https://docs.npmjs.com/misc/scripts">NPM scripts</a> for its build system. Our <a href="https://github.com/twbs/bootstrap/blob/v4.0.0/package.json">package.json</a> includes convenient methods for working with the framework, including compiling code, running tests, and more.</p>
 
 <p>To use our build system and run our documentation locally, you’ll need a copy of Bootstrap’s source files and Node. Follow these steps and you should be ready to rock:</p>
 
 <ol>
   <li><a href="https://nodejs.org/download/">Download and install Node.js</a>, which we use to manage our dependencies.</li>
-  <li>Navigate to the root <code class="highlighter-rouge">/bootstrap</code> directory and run <code class="highlighter-rouge">npm install</code> to install our local dependencies listed in <a href="https://github.com/twbs/bootstrap/blob/v4.0.0-beta.3/package.json">package.json</a>.</li>
+  <li>Navigate to the root <code class="highlighter-rouge">/bootstrap</code> directory and run <code class="highlighter-rouge">npm install</code> to install our local dependencies listed in <a href="https://github.com/twbs/bootstrap/blob/v4.0.0/package.json">package.json</a>.</li>
   <li><a href="https://www.ruby-lang.org/en/documentation/installation/">Install Ruby</a>, install <a href="https://bundler.io/">Bundler</a> with <code class="highlighter-rouge">gem install bundler</code>, and finally run <code class="highlighter-rouge">bundle install</code>. This will install all Ruby dependencies, such as Jekyll and plugins.
     <ul>
       <li><strong>Windows users:</strong> Read <a href="https://jekyllrb.com/docs/windows/">this guide</a> to get Jekyll up and running without problems.</li>
@@ -410,7 +413,7 @@
 
 <h2 id="using-npm-scripts">Using NPM scripts</h2>
 
-<p>Our <a href="https://github.com/twbs/bootstrap/blob/v4.0.0-beta.3/package.json">package.json</a> includes the following commands and tasks:</p>
+<p>Our <a href="https://github.com/twbs/bootstrap/blob/v4.0.0/package.json">package.json</a> includes the following commands and tasks:</p>
 
 <table>
   <thead>
@@ -441,7 +444,7 @@
 
 <p>Bootstrap uses <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a> (included in our build process) to automatically add vendor prefixes to some CSS properties at build time. Doing so saves us time and code by allowing us to write key parts of our CSS a single time while eliminating the need for vendor mixins like those found in v3.</p>
 
-<p>We maintain the list of browsers supported through Autoprefixer in a separate file within our GitHub repository. See <a href="https://github.com/twbs/bootstrap/blob/v4.0.0-beta.3/package.json">/package.json</a> for details.</p>
+<p>We maintain the list of browsers supported through Autoprefixer in a separate file within our GitHub repository. See <a href="https://github.com/twbs/bootstrap/blob/v4.0.0/package.json">/package.json</a> for details.</p>
 
 <h2 id="local-documentation">Local documentation</h2>
 
@@ -467,34 +470,6 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
 
-<script src="/assets/js/vendor/popper.min.js"></script><script src="/dist/js/bootstrap.min.js"></script><script src="/assets/js/docs.min.js"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
-<script>
-  docsearch({
-    apiKey: '48cb48b22351bc71ea5f12f4d1ede198',
-    indexName: 'bootstrap-v4',
-    inputSelector: '#search-input',
-    handleSelected: function (input, event, suggestion) {
-      var url = suggestion.url;
-      url = suggestion.isLvl1 ? url.split('#')[0]: url;
-      // If it's a title we remove the anchor so it does not jump.
-      window.location.href = url;
-    },
-    transformData: function (hits) {
-      return hits.map(function (hit) {
-        hit.url = hit.url.replace('https://v4-alpha.getbootstrap.com', '/docs/4.0');
-        return hit;
-      });
-    },
-    debug: false // Set debug to true if you want to inspect the dropdown
-  });
-</script><script>
-  Holder.addTheme('gray', {
-    bg: '#777',
-    fg: 'rgba(255,255,255,.75)',
-    font: 'Helvetica',
-    fontweight: 'normal'
-  });
-</script>
-
+<script src="/assets/js/vendor/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script><script src="/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/assets/js/docs.min.js"></script>
   </body>
 </html>

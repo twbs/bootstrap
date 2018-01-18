@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="Use Bootstrap’s custom button styles for actions in forms, dialogs, and more with support for multiple sizes, states, and more.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Jekyll v3.6.2">
+<meta name="generator" content="Jekyll v3.7.0">
 
 <title>Buttons · Bootstrap</title>
 
 <!-- Bootstrap core CSS -->
 
-<link href="/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 
 <!-- Documentation extras -->
@@ -125,7 +125,7 @@
     </li>
   </ul>
 
-  <a class="btn btn-bd-download d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="https://github.com/twbs/bootstrap/archive/v4.0.0-beta.3.zip">Download</a>
+  <a class="btn btn-bd-download d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="https://github.com/twbs/bootstrap/archive/v4.0.0.zip">Download</a>
 </header>
 
 
@@ -337,11 +337,14 @@
               Visibility
             </a></li></ul>
     </div><div class="bd-toc-item">
-      <a class="bd-toc-link" href="/docs/4.0/extend/icons/">
+      <a class="bd-toc-link" href="/docs/4.0/extend/approach/">
         Extend
       </a>
 
       <ul class="nav bd-sidenav"><li>
+            <a href="/docs/4.0/extend/approach/">
+              Approach
+            </a></li><li>
             <a href="/docs/4.0/extend/icons/">
               Icons
             </a></li></ul>
@@ -562,34 +565,22 @@
 
 <h3 id="checkbox-and-radio-buttons">Checkbox and radio buttons</h3>
 
-<p>Bootstrap’s <code class="highlighter-rouge">.button</code> styles can be applied to other elements, such as <code class="highlighter-rouge">&lt;label&gt;</code>s, to provide checkbox or radio style button toggling. Add <code class="highlighter-rouge">data-toggle="buttons"</code> to a <code class="highlighter-rouge">.btn-group</code> containing those modified buttons to enable their toggling behavior via JavaScript and add <code class="highlighter-rouge">.btn-group-toggle</code> to style the <code class="highlighter-rouge">&lt;input&gt;</code>s within your buttons.</p>
+<p>Bootstrap’s <code class="highlighter-rouge">.button</code> styles can be applied to other elements, such as <code class="highlighter-rouge">&lt;label&gt;</code>s, to provide checkbox or radio style button toggling. Add <code class="highlighter-rouge">data-toggle="buttons"</code> to a <code class="highlighter-rouge">.btn-group</code> containing those modified buttons to enable their toggling behavior via JavaScript and add <code class="highlighter-rouge">.btn-group-toggle</code> to style the <code class="highlighter-rouge">&lt;input&gt;</code>s within your buttons. <strong>Note that you can create single input-powered buttons or groups of them.</strong></p>
 
 <p>The checked state for these buttons is <strong>only updated via <code class="highlighter-rouge">click</code> event</strong> on the button. If you use another method to update the input—e.g., with <code class="highlighter-rouge">&lt;input type="reset"&gt;</code> or by manually applying the input’s <code class="highlighter-rouge">checked</code> property—you’ll need to toggle <code class="highlighter-rouge">.active</code> on the <code class="highlighter-rouge">&lt;label&gt;</code> manually.</p>
 
 <p>Note that pre-checked buttons require you to manually add the <code class="highlighter-rouge">.active</code> class to the input’s <code class="highlighter-rouge">&lt;label&gt;</code>.</p>
 
 <div class="bd-example">
-<div class="btn-group btn-group-toggle" data-toggle="buttons">
+<div class="btn-group-toggle" data-toggle="buttons">
   <label class="btn btn-secondary active">
-    <input type="checkbox" checked="" autocomplete="off" /> Active
-  </label>
-  <label class="btn btn-secondary">
-    <input type="checkbox" autocomplete="off" /> Check
-  </label>
-  <label class="btn btn-secondary">
-    <input type="checkbox" autocomplete="off" /> Check
+    <input type="checkbox" checked="" autocomplete="off" /> Checked
   </label>
 </div>
 </div>
-<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btn-group btn-group-toggle"</span> <span class="na">data-toggle=</span><span class="s">"buttons"</span><span class="nt">&gt;</span>
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btn-group-toggle"</span> <span class="na">data-toggle=</span><span class="s">"buttons"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"btn btn-secondary active"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">checked</span> <span class="na">autocomplete=</span><span class="s">"off"</span><span class="nt">&gt;</span> Active
-  <span class="nt">&lt;/label&gt;</span>
-  <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"btn btn-secondary"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">autocomplete=</span><span class="s">"off"</span><span class="nt">&gt;</span> Check
-  <span class="nt">&lt;/label&gt;</span>
-  <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"btn btn-secondary"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">autocomplete=</span><span class="s">"off"</span><span class="nt">&gt;</span> Check
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">checked</span> <span class="na">autocomplete=</span><span class="s">"off"</span><span class="nt">&gt;</span> Checked
   <span class="nt">&lt;/label&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></div>
 
@@ -646,34 +637,6 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
 
-<script src="/assets/js/vendor/popper.min.js"></script><script src="/dist/js/bootstrap.min.js"></script><script src="/assets/js/docs.min.js"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
-<script>
-  docsearch({
-    apiKey: '48cb48b22351bc71ea5f12f4d1ede198',
-    indexName: 'bootstrap-v4',
-    inputSelector: '#search-input',
-    handleSelected: function (input, event, suggestion) {
-      var url = suggestion.url;
-      url = suggestion.isLvl1 ? url.split('#')[0]: url;
-      // If it's a title we remove the anchor so it does not jump.
-      window.location.href = url;
-    },
-    transformData: function (hits) {
-      return hits.map(function (hit) {
-        hit.url = hit.url.replace('https://v4-alpha.getbootstrap.com', '/docs/4.0');
-        return hit;
-      });
-    },
-    debug: false // Set debug to true if you want to inspect the dropdown
-  });
-</script><script>
-  Holder.addTheme('gray', {
-    bg: '#777',
-    fg: 'rgba(255,255,255,.75)',
-    font: 'Helvetica',
-    fontweight: 'normal'
-  });
-</script>
-
+<script src="/assets/js/vendor/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script><script src="/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/assets/js/docs.min.js"></script>
   </body>
 </html>

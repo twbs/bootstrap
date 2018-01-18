@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="Learn about the browsers and devices, from modern to old, that are supported by Bootstrap, including known quirks and bugs for each.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Jekyll v3.6.2">
+<meta name="generator" content="Jekyll v3.7.0">
 
 <title>Browsers and devices · Bootstrap</title>
 
 <!-- Bootstrap core CSS -->
 
-<link href="/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 
 <!-- Documentation extras -->
@@ -125,7 +125,7 @@
     </li>
   </ul>
 
-  <a class="btn btn-bd-download d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="https://github.com/twbs/bootstrap/archive/v4.0.0-beta.3.zip">Download</a>
+  <a class="btn btn-bd-download d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="https://github.com/twbs/bootstrap/archive/v4.0.0.zip">Download</a>
 </header>
 
 
@@ -337,11 +337,14 @@
               Visibility
             </a></li></ul>
     </div><div class="bd-toc-item">
-      <a class="bd-toc-link" href="/docs/4.0/extend/icons/">
+      <a class="bd-toc-link" href="/docs/4.0/extend/approach/">
         Extend
       </a>
 
       <ul class="nav bd-sidenav"><li>
+            <a href="/docs/4.0/extend/approach/">
+              Approach
+            </a></li><li>
             <a href="/docs/4.0/extend/icons/">
               Icons
             </a></li></ul>
@@ -391,7 +394,7 @@
 </ul>
 </li>
 <li class="toc-entry toc-h2"><a href="#browser-zooming">Browser zooming</a></li>
-<li class="toc-entry toc-h2"><a href="#sticky-hoverfocus-on-mobile">Sticky :hover/:focus on mobile</a></li>
+<li class="toc-entry toc-h2"><a href="#sticky-hoverfocus-on-ios">Sticky :hover/:focus on iOS</a></li>
 <li class="toc-entry toc-h2"><a href="#printing">Printing</a></li>
 <li class="toc-entry toc-h2"><a href="#android-stock-browser">Android stock browser</a>
 <ul>
@@ -525,11 +528,11 @@
 
 <p>Page zooming inevitably presents rendering artifacts in some components, both in Bootstrap and the rest of the web. Depending on the issue, we may be able to fix it (search first and then open an issue if need be). However, we tend to ignore these as they often have no direct solution other than hacky workarounds.</p>
 
-<h2 id="sticky-hoverfocus-on-mobile">Sticky <code class="highlighter-rouge">:hover</code>/<code class="highlighter-rouge">:focus</code> on mobile</h2>
+<h2 id="sticky-hoverfocus-on-ios">Sticky <code class="highlighter-rouge">:hover</code>/<code class="highlighter-rouge">:focus</code> on iOS</h2>
 
-<p>Even though real hovering isn’t possible on most touchscreens, most mobile browsers emulate hovering support and make <code class="highlighter-rouge">:hover</code> “sticky”. In other words, <code class="highlighter-rouge">:hover</code> styles start applying after tapping an element and only stop applying after the user taps some other element. On mobile-first sites, this behavior is normally undesirable.</p>
+<p>While <code class="highlighter-rouge">:hover</code> isn’t possible on most touch devices, iOS emulates this behavior, resulting in “sticky” hover styles that persist after tapping one element. These hover styles are only removed when users tap another element. This behavior is considered largely undesirable and appears to not be an issue on Android or Windows devices.</p>
 
-<p>Bootstrap includes a workaround for this, although it is disabled by default. By setting <code class="highlighter-rouge">$enable-hover-media-query</code> to <code class="highlighter-rouge">true</code> when compiling from Sass, Bootstrap will use <a href="https://github.com/twbs/mq4-hover-shim">mq4-hover-shim</a> to disable <code class="highlighter-rouge">:hover</code> styles in browsers that emulate hovering, thus preventing sticky <code class="highlighter-rouge">:hover</code> styles. There are some caveats to this workaround; see the shim’s documentation for details.</p>
+<p>Throughout our v4 alpha and beta releases, we included incomplete and commented out code for opting into a media query shim that would disable hover styles in touch device browsers that emulate hovering. This work was never fully completed or enabled, but to avoid complete breakage, we’ve opted to deprecate <a href="https://github.com/twbs/mq4-hover-shim">this shim</a> and keep the mixins as shortcuts for the pseudo-classes.</p>
 
 <h2 id="printing">Printing</h2>
 
@@ -578,34 +581,6 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
 
-<script src="/assets/js/vendor/popper.min.js"></script><script src="/dist/js/bootstrap.min.js"></script><script src="/assets/js/docs.min.js"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
-<script>
-  docsearch({
-    apiKey: '48cb48b22351bc71ea5f12f4d1ede198',
-    indexName: 'bootstrap-v4',
-    inputSelector: '#search-input',
-    handleSelected: function (input, event, suggestion) {
-      var url = suggestion.url;
-      url = suggestion.isLvl1 ? url.split('#')[0]: url;
-      // If it's a title we remove the anchor so it does not jump.
-      window.location.href = url;
-    },
-    transformData: function (hits) {
-      return hits.map(function (hit) {
-        hit.url = hit.url.replace('https://v4-alpha.getbootstrap.com', '/docs/4.0');
-        return hit;
-      });
-    },
-    debug: false // Set debug to true if you want to inspect the dropdown
-  });
-</script><script>
-  Holder.addTheme('gray', {
-    bg: '#777',
-    fg: 'rgba(255,255,255,.75)',
-    font: 'Helvetica',
-    fontweight: 'normal'
-  });
-</script>
-
+<script src="/assets/js/vendor/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script><script src="/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/assets/js/docs.min.js"></script>
   </body>
 </html>

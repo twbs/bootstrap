@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="Customize Bootstrap 4 with our new built-in Sass variables for global style preferences for easy theming and component changes.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Jekyll v3.6.2">
+<meta name="generator" content="Jekyll v3.7.0">
 
 <title>Theming Bootstrap · Bootstrap</title>
 
 <!-- Bootstrap core CSS -->
 
-<link href="/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 
 <!-- Documentation extras -->
@@ -125,7 +125,7 @@
     </li>
   </ul>
 
-  <a class="btn btn-bd-download d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="https://github.com/twbs/bootstrap/archive/v4.0.0-beta.3.zip">Download</a>
+  <a class="btn btn-bd-download d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="https://github.com/twbs/bootstrap/archive/v4.0.0.zip">Download</a>
 </header>
 
 
@@ -337,11 +337,14 @@
               Visibility
             </a></li></ul>
     </div><div class="bd-toc-item">
-      <a class="bd-toc-link" href="/docs/4.0/extend/icons/">
+      <a class="bd-toc-link" href="/docs/4.0/extend/approach/">
         Extend
       </a>
 
       <ul class="nav bd-sidenav"><li>
+            <a href="/docs/4.0/extend/approach/">
+              Approach
+            </a></li><li>
             <a href="/docs/4.0/extend/icons/">
               Icons
             </a></li></ul>
@@ -380,8 +383,16 @@
 <li class="toc-entry toc-h2"><a href="#sass">Sass</a>
 <ul>
 <li class="toc-entry toc-h3"><a href="#file-structure">File structure</a></li>
+<li class="toc-entry toc-h3"><a href="#importing">Importing</a></li>
 <li class="toc-entry toc-h3"><a href="#variable-defaults">Variable defaults</a></li>
-<li class="toc-entry toc-h3"><a href="#maps-and-loops">Maps and loops</a></li>
+<li class="toc-entry toc-h3"><a href="#maps-and-loops">Maps and loops</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#modify-map">Modify map</a></li>
+<li class="toc-entry toc-h4"><a href="#add-to-map">Add to map</a></li>
+<li class="toc-entry toc-h4"><a href="#remove-from-map">Remove from map</a></li>
+<li class="toc-entry toc-h4"><a href="#required-keys">Required keys</a></li>
+</ul>
+</li>
 <li class="toc-entry toc-h3"><a href="#functions">Functions</a></li>
 <li class="toc-entry toc-h3"><a href="#color-contrast">Color contrast</a></li>
 </ul>
@@ -398,6 +409,12 @@
 <ul>
 <li class="toc-entry toc-h3"><a href="#modifiers">Modifiers</a></li>
 <li class="toc-entry toc-h3"><a href="#responsive">Responsive</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#css-variables">CSS variables</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#available-variables">Available variables</a></li>
+<li class="toc-entry toc-h3"><a href="#examples">Examples</a></li>
 </ul>
 </li>
 </ul>
@@ -440,29 +457,31 @@
     ├── js
     └── scss</code></pre></figure>
 
+<h3 id="importing">Importing</h3>
+
 <p>In your <code class="highlighter-rouge">custom.scss</code>, you’ll import Bootstrap’s source Sass files. You have two options: include all of Bootstrap, or pick the parts you need. We encourage the latter, though be aware there are some requirements and dependencies across our components. You also will need to include some JavaScript for our plugins.</p>
 
-<figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="c1">// Custom.scss
-// Option A: Include all of Bootstrap
-</span>
+<figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="c1">// Custom.scss</span>
+<span class="c1">// Option A: Include all of Bootstrap</span>
+
 <span class="k">@import</span> <span class="s2">"node_modules/bootstrap/scss/bootstrap"</span><span class="p">;</span></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="c1">// Custom.scss
-// Option B: Include parts of Bootstrap
-</span>
-<span class="c1">// Required
-</span><span class="k">@import</span> <span class="s2">"node_modules/bootstrap/scss/functions"</span><span class="p">;</span>
+<figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="c1">// Custom.scss</span>
+<span class="c1">// Option B: Include parts of Bootstrap</span>
+
+<span class="c1">// Required</span>
+<span class="k">@import</span> <span class="s2">"node_modules/bootstrap/scss/functions"</span><span class="p">;</span>
 <span class="k">@import</span> <span class="s2">"node_modules/bootstrap/scss/variables"</span><span class="p">;</span>
 <span class="k">@import</span> <span class="s2">"node_modules/bootstrap/scss/mixins"</span><span class="p">;</span>
 
-<span class="c1">// Optional
-</span><span class="k">@import</span> <span class="s2">"node_modules/bootstrap/scss/reboot"</span><span class="p">;</span>
+<span class="c1">// Optional</span>
+<span class="k">@import</span> <span class="s2">"node_modules/bootstrap/scss/reboot"</span><span class="p">;</span>
 <span class="k">@import</span> <span class="s2">"node_modules/bootstrap/scss/type"</span><span class="p">;</span>
 <span class="k">@import</span> <span class="s2">"node_modules/bootstrap/scss/images"</span><span class="p">;</span>
 <span class="k">@import</span> <span class="s2">"node_modules/bootstrap/scss/code"</span><span class="p">;</span>
 <span class="k">@import</span> <span class="s2">"node_modules/bootstrap/scss/grid"</span><span class="p">;</span></code></pre></figure>
 
-<p>With that setup in place, you can begin to modify any of the Sass variables and maps in your <code class="highlighter-rouge">custom.scss</code>. You can also start to add parts of Bootstrap under the <code class="highlighter-rouge">// Optional</code> section as needed.</p>
+<p>With that setup in place, you can begin to modify any of the Sass variables and maps in your <code class="highlighter-rouge">custom.scss</code>. You can also start to add parts of Bootstrap under the <code class="highlighter-rouge">// Optional</code> section as needed. We suggest using the full import stack from our <code class="highlighter-rouge">bootstrap.scss</code> file as your starting point.</p>
 
 <h3 id="variable-defaults">Variable defaults</h3>
 
@@ -472,12 +491,12 @@
 
 <p>Here’s an example that changes the <code class="highlighter-rouge">background-color</code> and <code class="highlighter-rouge">color</code> for the <code class="highlighter-rouge">&lt;body&gt;</code> when importing and compiling Bootstrap via npm:</p>
 
-<figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="c1">// Your variable overrides
-</span><span class="nv">$body-bg</span><span class="p">:</span> <span class="mh">#000</span><span class="p">;</span>
+<figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="c1">// Your variable overrides</span>
+<span class="nv">$body-bg</span><span class="p">:</span> <span class="mh">#000</span><span class="p">;</span>
 <span class="nv">$body-color</span><span class="p">:</span> <span class="mh">#111</span><span class="p">;</span>
 
-<span class="c1">// Bootstrap and its default variables
-</span><span class="k">@import</span> <span class="s2">"node_modules/bootstrap/scss/bootstrap"</span><span class="p">;</span></code></pre></figure>
+<span class="c1">// Bootstrap and its default variables</span>
+<span class="k">@import</span> <span class="s2">"node_modules/bootstrap/scss/bootstrap"</span><span class="p">;</span></code></pre></figure>
 
 <p>Repeat as necessary for any variable in Bootstrap, including the global options below.</p>
 
@@ -485,18 +504,36 @@
 
 <p>Bootstrap 4 includes a handful of Sass maps, key value pairs that make it easier to generate families of related CSS. We use Sass maps for our colors, grid breakpoints, and more. Just like Sass variables, all Sass maps include the <code class="highlighter-rouge">!default</code> flag and can be overridden and extended.</p>
 
-<p>For example, to modify an existing color in our <code class="highlighter-rouge">$theme-colors</code> map, add the following to your custom Sass file:</p>
+<p>Some of our Sass maps are merged into empty ones by default. This is done to allow easy expansion of a given Sass map, but comes at the cost of making <em>removing</em> items from a map slightly more difficult.</p>
+
+<h4 id="modify-map">Modify map</h4>
+
+<p>To modify an existing color in our <code class="highlighter-rouge">$theme-colors</code> map, add the following to your custom Sass file:</p>
 
 <figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="nv">$theme-colors</span><span class="p">:</span> <span class="p">(</span>
   <span class="s2">"primary"</span><span class="o">:</span> <span class="mh">#0074d9</span><span class="o">,</span>
   <span class="s2">"danger"</span><span class="o">:</span> <span class="mh">#ff4136</span>
 <span class="p">);</span></code></pre></figure>
 
+<h4 id="add-to-map">Add to map</h4>
+
 <p>To add a new color to <code class="highlighter-rouge">$theme-colors</code>, add the new key and value:</p>
 
 <figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="nv">$theme-colors</span><span class="p">:</span> <span class="p">(</span>
   <span class="s2">"custom-color"</span><span class="o">:</span> <span class="mh">#900</span>
 <span class="p">);</span></code></pre></figure>
+
+<h4 id="remove-from-map">Remove from map</h4>
+
+<p>To remove colors from <code class="highlighter-rouge">$theme-colors</code>, or any other map, use <code class="highlighter-rouge">map-remove</code>:</p>
+
+<figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="nv">$theme-colors</span><span class="p">:</span> <span class="nf">map-remove</span><span class="p">(</span><span class="nv">$theme-colors</span><span class="o">,</span> <span class="s2">"success"</span><span class="o">,</span> <span class="s2">"info"</span><span class="o">,</span> <span class="s2">"danger"</span><span class="p">);</span></code></pre></figure>
+
+<h4 id="required-keys">Required keys</h4>
+
+<p>Bootstrap assumes the presence of some specific keys within Sass maps as we used and extend these ourselves. As you customize the included maps, you may encounter errors where a specific Sass map’s key is being used.</p>
+
+<p>For example, we use the <code class="highlighter-rouge">primary</code>, <code class="highlighter-rouge">success</code>, and <code class="highlighter-rouge">danger</code> keys from <code class="highlighter-rouge">$theme-colors</code> for links, buttons, and form states. Replacing the values of these keys should present no issues, but removing them may cause Sass compilation issues. In these instances, you’ll need to modify the Sass code that makes use of those values.</p>
 
 <h3 id="functions">Functions</h3>
 
@@ -554,14 +591,14 @@
 <p>It can also be used for one-off contrast needs:</p>
 
 <figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="nc">.custom-element</span> <span class="p">{</span>
-  <span class="nl">color</span><span class="p">:</span> <span class="nf">color-yiq</span><span class="p">(</span><span class="mh">#000</span><span class="p">);</span> <span class="c1">// returns `color: #fff`
-</span><span class="p">}</span></code></pre></figure>
+  <span class="nl">color</span><span class="p">:</span> <span class="nf">color-yiq</span><span class="p">(</span><span class="mh">#000</span><span class="p">);</span> <span class="c1">// returns `color: #fff`</span>
+<span class="p">}</span></code></pre></figure>
 
 <p>You can also specify a base color with our color map functions:</p>
 
 <figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="nc">.custom-element</span> <span class="p">{</span>
-  <span class="nl">color</span><span class="p">:</span> <span class="nf">color-yiq</span><span class="p">(</span><span class="nf">theme-color</span><span class="p">(</span><span class="s2">"dark"</span><span class="p">));</span> <span class="c1">// returns `color: #fff`
-</span><span class="p">}</span></code></pre></figure>
+  <span class="nl">color</span><span class="p">:</span> <span class="nf">color-yiq</span><span class="p">(</span><span class="nf">theme-color</span><span class="p">(</span><span class="s2">"dark"</span><span class="p">));</span> <span class="c1">// returns `color: #fff`</span>
+<span class="p">}</span></code></pre></figure>
 
 <h2 id="sass-options">Sass options</h2>
 
@@ -606,7 +643,7 @@
     <tr>
       <td><code class="highlighter-rouge">$enable-hover-media-query</code></td>
       <td><code class="highlighter-rouge">true</code> or <code class="highlighter-rouge">false</code> (default)</td>
-      <td>…</td>
+      <td><strong>Deprecated</strong></td>
     </tr>
     <tr>
       <td><code class="highlighter-rouge">$enable-grid-classes</code></td>
@@ -706,11 +743,11 @@
 
 <p>Here’s how you can use these in your Sass:</p>
 
-<figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="c1">// With variable
-</span><span class="nc">.alpha</span> <span class="p">{</span> <span class="nl">color</span><span class="p">:</span> <span class="nv">$purple</span><span class="p">;</span> <span class="p">}</span>
+<figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="c1">// With variable</span>
+<span class="nc">.alpha</span> <span class="p">{</span> <span class="nl">color</span><span class="p">:</span> <span class="nv">$purple</span><span class="p">;</span> <span class="p">}</span>
 
-<span class="c1">// From the Sass map with our `color()` function
-</span><span class="nc">.beta</span> <span class="p">{</span> <span class="nl">color</span><span class="p">:</span> <span class="nf">color</span><span class="p">(</span><span class="s2">"purple"</span><span class="p">);</span> <span class="p">}</span></code></pre></figure>
+<span class="c1">// From the Sass map with our `color()` function</span>
+<span class="nc">.beta</span> <span class="p">{</span> <span class="nl">color</span><span class="p">:</span> <span class="nf">color</span><span class="p">(</span><span class="s2">"purple"</span><span class="p">);</span> <span class="p">}</span></code></pre></figure>
 
 <p><a href="/docs/4.0/utilities/colors/">Color utility classes</a> are also available for setting <code class="highlighter-rouge">color</code> and <code class="highlighter-rouge">background-color</code>.</p>
 
@@ -816,15 +853,15 @@
 
 <p>Here are two examples of how we loop over the <code class="highlighter-rouge">$theme-colors</code> map to generate modifiers to the <code class="highlighter-rouge">.alert</code> component and all our <code class="highlighter-rouge">.bg-*</code> background utilities.</p>
 
-<figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="c1">// Generate alert modifier classes
-</span><span class="k">@each</span> <span class="nv">$color</span><span class="o">,</span> <span class="nv">$value</span> <span class="n">in</span> <span class="nv">$theme-colors</span> <span class="p">{</span>
+<figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="c1">// Generate alert modifier classes</span>
+<span class="k">@each</span> <span class="nv">$color</span><span class="o">,</span> <span class="nv">$value</span> <span class="n">in</span> <span class="nv">$theme-colors</span> <span class="p">{</span>
   <span class="nc">.alert-</span><span class="si">#{</span><span class="nv">$color</span><span class="si">}</span> <span class="p">{</span>
     <span class="k">@include</span> <span class="nd">alert-variant</span><span class="p">(</span><span class="nf">theme-color-level</span><span class="p">(</span><span class="nv">$color</span><span class="o">,</span> <span class="m">-10</span><span class="p">)</span><span class="o">,</span> <span class="nf">theme-color-level</span><span class="p">(</span><span class="nv">$color</span><span class="o">,</span> <span class="m">-9</span><span class="p">)</span><span class="o">,</span> <span class="nf">theme-color-level</span><span class="p">(</span><span class="nv">$color</span><span class="o">,</span> <span class="m">6</span><span class="p">));</span>
   <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="c1">// Generate `.bg-*` color utilities
-</span><span class="k">@each</span> <span class="nv">$color</span><span class="o">,</span> <span class="nv">$value</span> <span class="n">in</span> <span class="nv">$theme-colors</span> <span class="p">{</span>
+<span class="c1">// Generate `.bg-*` color utilities</span>
+<span class="k">@each</span> <span class="nv">$color</span><span class="o">,</span> <span class="nv">$value</span> <span class="n">in</span> <span class="nv">$theme-colors</span> <span class="p">{</span>
   <span class="k">@include</span> <span class="nd">bg-variant</span><span class="p">(</span><span class="s1">'.bg-</span><span class="si">#{</span><span class="nv">$color</span><span class="si">}</span><span class="s1">'</span><span class="o">,</span> <span class="nv">$value</span><span class="p">);</span>
 <span class="p">}</span></code></pre></figure>
 
@@ -844,6 +881,69 @@
 
 <p>Should you need to modify your <code class="highlighter-rouge">$grid-breakpoints</code>, your changes will apply to all the loops iterating over that map.</p>
 
+<h2 id="css-variables">CSS variables</h2>
+
+<p>Bootstrap 4 includes around two dozen <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables">CSS custom properties (variables)</a> in it’s compiled CSS. These provide easy access to commonly used values like our theme colors, breakpoints, and primary font stacks when working in your browser’s Inspector, a code sandbox, or general prototyping.</p>
+
+<h3 id="available-variables">Available variables</h3>
+
+<p>Here are the variables we include (note that the <code class="highlighter-rouge">:root</code> is required). They’re located in our <code class="highlighter-rouge">_root.scss</code> file.</p>
+
+<figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="nd">:root</span> <span class="p">{</span>
+  <span class="py">--blue</span><span class="p">:</span> <span class="m">#007bff</span><span class="p">;</span>
+  <span class="py">--indigo</span><span class="p">:</span> <span class="m">#6610f2</span><span class="p">;</span>
+  <span class="py">--purple</span><span class="p">:</span> <span class="m">#6f42c1</span><span class="p">;</span>
+  <span class="py">--pink</span><span class="p">:</span> <span class="m">#e83e8c</span><span class="p">;</span>
+  <span class="py">--red</span><span class="p">:</span> <span class="m">#dc3545</span><span class="p">;</span>
+  <span class="py">--orange</span><span class="p">:</span> <span class="m">#fd7e14</span><span class="p">;</span>
+  <span class="py">--yellow</span><span class="p">:</span> <span class="m">#ffc107</span><span class="p">;</span>
+  <span class="py">--green</span><span class="p">:</span> <span class="m">#28a745</span><span class="p">;</span>
+  <span class="py">--teal</span><span class="p">:</span> <span class="m">#20c997</span><span class="p">;</span>
+  <span class="py">--cyan</span><span class="p">:</span> <span class="m">#17a2b8</span><span class="p">;</span>
+  <span class="py">--white</span><span class="p">:</span> <span class="m">#fff</span><span class="p">;</span>
+  <span class="py">--gray</span><span class="p">:</span> <span class="m">#6c757d</span><span class="p">;</span>
+  <span class="py">--gray-dark</span><span class="p">:</span> <span class="m">#343a40</span><span class="p">;</span>
+  <span class="py">--primary</span><span class="p">:</span> <span class="m">#007bff</span><span class="p">;</span>
+  <span class="py">--secondary</span><span class="p">:</span> <span class="m">#6c757d</span><span class="p">;</span>
+  <span class="py">--success</span><span class="p">:</span> <span class="m">#28a745</span><span class="p">;</span>
+  <span class="py">--info</span><span class="p">:</span> <span class="m">#17a2b8</span><span class="p">;</span>
+  <span class="py">--warning</span><span class="p">:</span> <span class="m">#ffc107</span><span class="p">;</span>
+  <span class="py">--danger</span><span class="p">:</span> <span class="m">#dc3545</span><span class="p">;</span>
+  <span class="py">--light</span><span class="p">:</span> <span class="m">#f8f9fa</span><span class="p">;</span>
+  <span class="py">--dark</span><span class="p">:</span> <span class="m">#343a40</span><span class="p">;</span>
+  <span class="py">--breakpoint-xs</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="py">--breakpoint-sm</span><span class="p">:</span> <span class="m">576px</span><span class="p">;</span>
+  <span class="py">--breakpoint-md</span><span class="p">:</span> <span class="m">768px</span><span class="p">;</span>
+  <span class="py">--breakpoint-lg</span><span class="p">:</span> <span class="m">992px</span><span class="p">;</span>
+  <span class="py">--breakpoint-xl</span><span class="p">:</span> <span class="m">1200px</span><span class="p">;</span>
+  <span class="py">--font-family-sans-serif</span><span class="p">:</span> <span class="n">-apple-system</span><span class="p">,</span> <span class="n">BlinkMacSystemFont</span><span class="p">,</span> <span class="s1">"Segoe UI"</span><span class="p">,</span> <span class="n">Roboto</span><span class="p">,</span> <span class="s1">"Helvetica Neue"</span><span class="p">,</span> <span class="n">Arial</span><span class="p">,</span> <span class="nb">sans-serif</span><span class="p">,</span> <span class="s1">"Apple Color Emoji"</span><span class="p">,</span> <span class="s1">"Segoe UI Emoji"</span><span class="p">,</span> <span class="s1">"Segoe UI Symbol"</span><span class="p">;</span>
+  <span class="py">--font-family-monospace</span><span class="p">:</span> <span class="n">SFMono-Regular</span><span class="p">,</span> <span class="n">Menlo</span><span class="p">,</span> <span class="n">Monaco</span><span class="p">,</span> <span class="n">Consolas</span><span class="p">,</span> <span class="s1">"Liberation Mono"</span><span class="p">,</span> <span class="s1">"Courier New"</span><span class="p">,</span> <span class="nb">monospace</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<h3 id="examples">Examples</h3>
+
+<p>CSS variables offer similar flexibility to Sass’s variables, but without the need for compilation before being served to the browser. For example, here we’re resetting our page’s font and link styles with CSS variables.</p>
+
+<figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="nt">body</span> <span class="p">{</span>
+  <span class="nl">font</span><span class="p">:</span> <span class="m">1rem</span><span class="p">/</span><span class="m">1.5</span> <span class="n">var</span><span class="p">(</span><span class="n">--font-family-sans-serif</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nt">a</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="n">var</span><span class="p">(</span><span class="n">--blue</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>You can also use our breakpoint variables in your media queries:</p>
+
+<figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="nc">.content-secondary</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">@media</span> <span class="p">(</span><span class="n">min-width</span><span class="p">(</span><span class="n">var</span><span class="p">(</span><span class="n">--breakpoint-sm</span><span class="p">)))</span> <span class="p">{</span>
+  <span class="nc">.content-secondary</span> <span class="p">{</span>
+    <span class="nl">display</span><span class="p">:</span> <span class="nb">block</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+
         </main>
       </div>
     </div>
@@ -851,34 +951,6 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
 
-<script src="/assets/js/vendor/popper.min.js"></script><script src="/dist/js/bootstrap.min.js"></script><script src="/assets/js/docs.min.js"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
-<script>
-  docsearch({
-    apiKey: '48cb48b22351bc71ea5f12f4d1ede198',
-    indexName: 'bootstrap-v4',
-    inputSelector: '#search-input',
-    handleSelected: function (input, event, suggestion) {
-      var url = suggestion.url;
-      url = suggestion.isLvl1 ? url.split('#')[0]: url;
-      // If it's a title we remove the anchor so it does not jump.
-      window.location.href = url;
-    },
-    transformData: function (hits) {
-      return hits.map(function (hit) {
-        hit.url = hit.url.replace('https://v4-alpha.getbootstrap.com', '/docs/4.0');
-        return hit;
-      });
-    },
-    debug: false // Set debug to true if you want to inspect the dropdown
-  });
-</script><script>
-  Holder.addTheme('gray', {
-    bg: '#777',
-    fg: 'rgba(255,255,255,.75)',
-    font: 'Helvetica',
-    fontweight: 'normal'
-  });
-</script>
-
+<script src="/assets/js/vendor/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script><script src="/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/assets/js/docs.min.js"></script>
   </body>
 </html>
