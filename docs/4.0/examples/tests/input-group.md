@@ -382,47 +382,34 @@ Not shown are buttons in appends/prepends, but these are supported in place of i
       </div>
     </div>
     <div class="input-group">
+      <input type="text" class="form-control is-invalid">
+      <div class="input-group-append">
+        <span class="input-group-text">Text</span>
+      </div>
+      <div class="invalid-feedback">
+        Example invalid feedback text
+      </div>
+    </div>
+    <div class="input-group">
       <div class="input-group-prepend">
-        <button class="btn btn-outline-secondary" type="button">Btn</button>
+        <span class="input-group-text">Text</span>
       </div>
       <input type="text" class="form-control is-invalid">
+      <div class="input-group-append">
+        <span class="input-group-text">Text</span>
+      </div>
       <div class="invalid-feedback">
         Example invalid feedback text
-      </div>
-    </div>
-    <div class="input-group">
-      <div class="input-group-prepend"><span class="input-group-text">Text</span></div>
-      <select class="custom-select is-invalid">
-        <option selected>Custom select</option>
-      </select>
-      <div class="invalid-feedback">
-        Example invalid feedback text
-      </div>
-    </div>
-    <div class="input-group">
-      <div class="input-group-prepend"><span class="input-group-text">Text</span></div>
-      <div class="custom-file">
-        <input type="file" class="custom-file-input is-invalid" id="customFile">
-        <label class="custom-file-label" for="customFile">Choose file</label>
       </div>
     </div>
   </div>
 
   <div class="col-md">
     <div class="input-group">
-      <input type="text" class="form-control is-invalid">
-      <div class="input-group-append">
-        <span class="input-group-text">Text</span>
-      </div>
-      <div class="invalid-feedback">
-        Example invalid feedback text
-      </div>
-    </div>
-    <div class="input-group">
-      <input type="text" class="form-control is-invalid">
-      <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="button">Btn</button>
-      </div>
+      <div class="input-group-prepend"><span class="input-group-text">Text</span></div>
+      <select class="custom-select is-invalid">
+        <option selected>Custom select</option>
+      </select>
       <div class="invalid-feedback">
         Example invalid feedback text
       </div>
@@ -432,40 +419,6 @@ Not shown are buttons in appends/prepends, but these are supported in place of i
         <option selected>Custom select</option>
       </select>
       <div class="input-group-append"><span class="input-group-text">Text</span></div>
-      <div class="invalid-feedback">
-        Example invalid feedback text
-      </div>
-    </div>
-    <div class="input-group">
-      <div class="custom-file">
-        <input type="file" class="custom-file-input is-invalid" id="customFile">
-        <label class="custom-file-label" for="customFile">Choose file</label>
-      </div>
-      <div class="input-group-append"><span class="input-group-text">Text</span></div>
-    </div>
-  </div>
-
-  <div class="col-md">
-    <div class="input-group">
-      <div class="input-group-prepend">
-        <span class="input-group-text">Text</span>
-      </div>
-      <input type="text" class="form-control is-invalid">
-      <div class="input-group-append">
-        <span class="input-group-text">Text</span>
-      </div>
-      <div class="invalid-feedback">
-        Example invalid feedback text
-      </div>
-    </div>
-    <div class="input-group">
-      <div class="input-group-prepend">
-        <button class="btn btn-outline-secondary" type="button">Btn</button>
-      </div>
-      <input type="text" class="form-control is-invalid">
-      <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="button">Btn</button>
-      </div>
       <div class="invalid-feedback">
         Example invalid feedback text
       </div>
@@ -478,6 +431,23 @@ Not shown are buttons in appends/prepends, but these are supported in place of i
       <div class="input-group-append"><span class="input-group-text">Text</span></div>
       <div class="invalid-feedback">
         Example invalid feedback text
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md">
+    <div class="input-group">
+      <div class="custom-file">
+        <input type="file" class="custom-file-input is-invalid" id="customFile">
+        <label class="custom-file-label" for="customFile">Choose file</label>
+      </div>
+      <div class="input-group-append"><span class="input-group-text">Text</span></div>
+    </div>
+    <div class="input-group">
+      <div class="input-group-prepend"><span class="input-group-text">Text</span></div>
+      <div class="custom-file">
+        <input type="file" class="custom-file-input is-invalid" id="customFile">
+        <label class="custom-file-label" for="customFile">Choose file</label>
       </div>
     </div>
     <div class="input-group">
