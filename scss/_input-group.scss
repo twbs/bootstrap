@@ -46,9 +46,9 @@
     align-items: center;
 
     &:not(:last-child) .custom-file-label,
-    &:not(:last-child) .custom-file-label::before { @include border-right-radius(0); }
+    &:not(:last-child) .custom-file-label::after { @include border-right-radius(0); }
     &:not(:first-child) .custom-file-label,
-    &:not(:first-child) .custom-file-label::before { @include border-left-radius(0); }
+    &:not(:first-child) .custom-file-label::after { @include border-left-radius(0); }
   }
 }
 
