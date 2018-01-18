@@ -80,6 +80,20 @@ With `<button>`s, you can also make use of the `disabled` attribute instead of t
 </div>
 {% endexample %}
 
+## Flush
+
+Add `.list-group-flush` to remove some borders and rounded corners to render list group items edge-to-edge in a parent container (e.g., cards).
+
+{% example html %}
+<ul class="list-group list-group-flush">
+  <li class="list-group-item">Cras justo odio</li>
+  <li class="list-group-item">Dapibus ac facilisis in</li>
+  <li class="list-group-item">Morbi leo risus</li>
+  <li class="list-group-item">Porta ac consectetur ac</li>
+  <li class="list-group-item">Vestibulum at eros</li>
+</ul>
+{% endexample %}
+
 ## Contextual classes
 
 Use contextual classes to style list items with a stateful background and color.
@@ -217,7 +231,7 @@ Use the tab JavaScript plugin—include it individually or through the compiled 
 
 ### Using data attributes
 
-You can activate a list group navigation without writing any JavaScript by simply specifying `data-toggle="list"` or  on an element. Use these data attributes on `.list-group-item`.
+You can activate a list group navigation without writing any JavaScript by simply specifying `data-toggle="list"` or on an element. Use these data attributes on `.list-group-item`.
 
 <div role="tabpanel">
 {% highlight html %}
@@ -244,7 +258,7 @@ You can activate a list group navigation without writing any JavaScript by simpl
 Enable tabbable list item via JavaScript (each list item needs to be activated individually):
 
 {% highlight js %}
-$('#myList a').click(function (e) {
+$('#myList a').on('click', function (e) {
   e.preventDefault()
   $(this).tab('show')
 })
@@ -254,9 +268,9 @@ You can activate individual list item in several ways:
 
 {% highlight js %}
 $('#myList a[href="#profile"]').tab('show') // Select tab by name
-$('#myList a:first').tab('show') // Select first tab
-$('#myList a:last').tab('show') // Select last tab
-$('#myList li:eq(2) a').tab('show') // Select third tab (0-indexed)
+$('#myList a:first-child').tab('show') // Select first tab
+$('#myList a:last-child').tab('show') // Select last tab
+$('#myList a:nth-child(3)').tab('show') // Select third tab
 {% endhighlight %}
 
 ### Fade effect
@@ -295,7 +309,7 @@ Activates a list item element and content container. Tab should have either a `d
 
 <script>
   $(function () {
-    $('#myList a:last').tab('show')
+    $('#myList a:last-child').tab('show')
   })
 </script>
 {% endhighlight %}
@@ -319,7 +333,7 @@ When showing a new tab, the events fire in the following order:
 
 If no tab was already active, the `hide.bs.tab` and `hidden.bs.tab` events will not be fired.
 
-<table class="table table-bordered table-striped table-responsive">
+<table class="table table-bordered table-striped">
   <thead>
     <tr>
       <th style="width: 150px;">Event type</th>

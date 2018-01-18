@@ -32,13 +32,8 @@ For left, right, and center alignment, responsive classes are available that use
 Prevent text from wrapping with a `.text-nowrap` class.
 
 {% example html %}
-<div class="row">
-  <div class="col-1 text-nowrap">
-    Curabitur blandit tempus ardua ridiculus sed magna.
-  </div>
-  <div class="col-11">
-    <img data-src="holder.js/50x50" alt="An image to show the text doesn't wrap">
-  </div>
+<div class="text-nowrap bd-highlight" style="width: 8rem;">
+  This text should overflow the parent.
 </div>
 {% endexample %}
 
@@ -77,5 +72,6 @@ Quickly change the weight (boldness) of text or italicize text.
 {% example html %}
 <p class="font-weight-bold">Bold text.</p>
 <p class="font-weight-normal">Normal weight text.</p>
+<p class="font-weight-light">Light weight text.</p>
 <p class="font-italic">Italic text.</p>
 {% endexample %}

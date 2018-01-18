@@ -12,6 +12,11 @@
     text-decoration: none;
     opacity: .75;
   }
+
+  // Opinionated: add "hand" cursor to non-disabled .close elements
+  &:not(:disabled):not(.disabled) {
+    cursor: pointer;
+  }
 }
 
 // Additional properties for button version
@@ -19,11 +24,11 @@
 // If you want the anchor version, it requires `href="#"`.
 // See https://developer.mozilla.org/en-US/docs/Web/Events/click#Safari_Mobile
 
-// scss-lint:disable QualifyingElement
+// stylelint-disable property-no-vendor-prefix, selector-no-qualifying-type
 button.close {
   padding: 0;
-  background: transparent;
+  background-color: transparent;
   border: 0;
   -webkit-appearance: none;
 }
-// scss-lint:enable QualifyingElement
+// stylelint-enable

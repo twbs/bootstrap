@@ -10,8 +10,8 @@ toc: true
 
 Scrollspy has a few requirements to function properly:
 
-- If building our JS from source, it [requires `util.js`]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/javascript/#util).
-- It must to be used on a Bootstrap [nav component]({{ site.baseurl }}/docs/{{ site.docs_version }}/components/navs/) or [list group]({{ site.baseurl }}/docs/{{ site.docs_version }}/components/list-group/).
+- If you're building our JavaScript from source, it [requires `util.js`]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/javascript/#util).
+- It must be used on a Bootstrap [nav component]({{ site.baseurl }}/docs/{{ site.docs_version }}/components/navs/) or [list group]({{ site.baseurl }}/docs/{{ site.docs_version }}/components/list-group/).
 - Scrollspy requires `position: relative;` on the element you're spying on, usually the `<body>`.
 - When spying on elements other than the `<body>`, be sure to have a `height` set and `overflow-y: scroll;` applied.
 - Anchors (`<a>`) are required and must point to an element with that `id`.
@@ -280,12 +280,15 @@ $('[data-spy="scroll"]').each(function () {
 })
 {% endhighlight %}
 
+#### `.scrollspy('dispose')`
+
+Destroys an element's scrollspy.
 
 ### Options
 
 Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-`, as in `data-offset=""`.
 
-<table class="table table-bordered table-striped table-responsive">
+<table class="table table-bordered table-striped">
   <thead>
     <tr>
       <th style="width: 100px;">Name</th>
@@ -306,7 +309,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 
 ### Events
 
-<table class="table table-bordered table-striped table-responsive">
+<table class="table table-bordered table-striped">
   <thead>
     <tr>
       <th style="width: 150px;">Event Type</th>
@@ -316,13 +319,13 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
   <tbody>
     <tr>
       <td>activate.bs.scrollspy</td>
-      <td>This event fires whenever a new item becomes activated by the scrollspy.</td>
+      <td>This event fires on the scroll element whenever a new item becomes activated by the scrollspy.</td>
     </tr>
   </tbody>
 </table>
 
 {% highlight js %}
-$('#myScrollspy').on('activate.bs.scrollspy', function () {
+$('[data-spy="scroll"]').on('activate.bs.scrollspy', function () {
   // do something…
 })
 {% endhighlight %}
