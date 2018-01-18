@@ -309,7 +309,7 @@ Test file for small, default, and large versions of each **supported** combinati
 ---
 
 ### Custom form controls
-<p class="text-danger">Sizes are not supported on custom selects or custom files.</p>
+<strong class="text-danger">Sizes are not supported on custom selects or custom files.</strong>
 
 <div class="row">
   <div class="col-md">
@@ -366,7 +366,9 @@ Test file for small, default, and large versions of each **supported** combinati
 ---
 
 ### Validation
-<span class="text-danger">Due to their markup, custom file inputs cannot support validation in an input group.</span>
+Not shown are buttons in appends/prepends, but these are supported in place of input group text.
+
+<strong class="text-danger">Input group validation does't support multiple inputs, multiple selects, or validation feedback on custom file inputs due to CSS selector limitations.</strong>
 
 <div class="row">
   <div class="col-md">
