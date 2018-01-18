@@ -35,8 +35,26 @@
 
   > .form-control,
   > .custom-select {
-    &:not(:last-child) { @include border-right-radius(0); }
+    &:first-child { @include border-right-radius(0); }
     &:not(:first-child) { @include border-left-radius(0); }
+
+    // Only remove border-right-radius on inputs that don't expect validation
+    // feedback/tooltips. Validated inputs without feedback/tooltip will still
+    // rounded corners as expected.
+    &:not(:last-child):not(:required):not(.is-invalid):not(.valid) {
+      @include border-right-radius(0);
+    }
+
+    // Hacky selectors for targeting inputs, custom selects, and custom files
+    // with validation styles. Without this, input groups that have an prepend,
+    // input, append, and validation feedback text will have un-rounded inputs.
+    &:required,
+    &.is-valid,
+    &.is-invalid {
+      &:nth-child(2):nth-last-child(3) {
+        @include border-right-radius(0);
+      }
+    }
   }
 
   // Custom file inputs have more complex markup, thus requiring different
@@ -79,8 +97,19 @@
   }
 }
 
-.input-group-prepend { margin-right: -$input-border-width; }
-.input-group-append { margin-left: -$input-border-width; }
+.input-group-prepend {
+  margin-right: -$input-border-width;
+
+  > .btn { @include border-right-radius(0); }
+  > .btn:not(:first-child) { @include border-left-radius(0); }
+}
+
+.input-group-append {
+  margin-left: -$input-border-width;
+
+  > .btn { @include border-left-radius(0); }
+  > .btn:not(:last-child):not(.dropdown-toggle) { @include border-right-radius(0); }
+}
 
 
 // Textual addons
@@ -101,7 +130,9 @@
   white-space: nowrap;
   background-color: $input-group-addon-bg;
   border: $input-border-width solid $input-group-addon-border-color;
-  @include border-radius($input-border-radius);
+
+  .input-group-prepend > &:first-child { @include border-left-radius($input-border-radius); }
+  .input-group-append > &:last-child { @include border-right-radius($input-border-radius); }
 
   // Nuke default margins from checkboxes and radios to vertically center within.
   input[type="radio"],
@@ -116,44 +147,52 @@
 // Remix the default form control sizing classes into new ones for easier
 // manipulation.
 
-.input-group-lg > .form-control,
-.input-group-lg > .input-group-prepend > .input-group-text,
-.input-group-lg > .input-group-append > .input-group-text,
-.input-group-lg > .input-group-prepend > .btn,
-.input-group-lg > .input-group-append > .btn {
-  @extend .form-control-lg;
+.input-group-lg {
+  > .form-control {
+    @extend .form-control-lg;
+  }
+
+  > .input-group-prepend,
+  > .input-group-append {
+    > .btn,
+    > .input-group-text {
+      padding: $input-padding-y-lg $input-padding-x-lg;
+      font-size: $font-size-lg;
+      line-height: $input-line-height-lg;
+    }
+  }
+
+  > .input-group-prepend > .btn:first-child,
+  > .input-group-prepend > .input-group-text:first-child {
+    @include border-left-radius($input-border-radius-lg);
+  }
+
+  > .input-group-append > .btn:last-child,
+  > .input-group-append > .input-group-text:last-child {
+    @include border-right-radius($input-border-radius-lg);
+  }
 }
 
-.input-group-sm > .form-control,
-.input-group-sm > .input-group-prepend > .input-group-text,
-.input-group-sm > .input-group-append > .input-group-text,
-.input-group-sm > .input-group-prepend > .btn,
-.input-group-sm > .input-group-append > .btn {
-  @extend .form-control-sm;
-}
+.input-group-sm {
+  > .form-control {
+    @extend .form-control-sm;
+  }
 
+  > .input-group-prepend,
+  > .input-group-append {
+    > .btn,
+    > .input-group-text {
+      padding: $input-padding-y-sm $input-padding-x-sm;
+      font-size: $font-size-sm;
+      line-height: $input-line-height-sm;
+    }
+  }
 
-// Prepend and append rounded corners
-//
-// These rulesets must come after the sizing ones to properly override sm and lg
-// border-radius values when extending. They're more specific than we'd like
-// with the `.input-group >` part, but without it, we cannot override the sizing.
+  > .input-group-prepend > .input-group-text:first-child {
+    @include border-left-radius($input-border-radius-sm);
+  }
 
-
-.input-group > .input-group-prepend > .btn,
-.input-group > .input-group-prepend > .input-group-text,
-.input-group > .input-group-append:not(:last-child) > .btn,
-.input-group > .input-group-append:not(:last-child) > .input-group-text,
-.input-group > .input-group-append:last-child > .btn:not(:last-child):not(.dropdown-toggle),
-.input-group > .input-group-append:last-child > .input-group-text:not(:last-child) {
-  @include border-right-radius(0);
-}
-
-.input-group > .input-group-append > .btn,
-.input-group > .input-group-append > .input-group-text,
-.input-group > .input-group-prepend:not(:first-child) > .btn,
-.input-group > .input-group-prepend:not(:first-child) > .input-group-text,
-.input-group > .input-group-prepend:first-child > .btn:not(:first-child),
-.input-group > .input-group-prepend:first-child > .input-group-text:not(:first-child) {
-  @include border-left-radius(0);
+  > .input-group-append > .input-group-text:last-child {
+    @include border-right-radius($input-border-radius-sm);
+  }
 }
