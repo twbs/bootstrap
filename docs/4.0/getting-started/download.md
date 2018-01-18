@@ -92,11 +92,9 @@ composer require twbs/bootstrap:{{ site.current_version }}
 If you develop in .NET, you can also install and manage Bootstrap's [CSS](https://www.nuget.org/packages/bootstrap/) or [Sass](https://www.nuget.org/packages/bootstrap.sass/) and JavaScript using [NuGet](https://www.nuget.org/):
 
 {% highlight powershell %}
-Install-Package bootstrap -Pre
+Install-Package bootstrap
 {% endhighlight %}
 
 {% highlight powershell %}
-Install-Package bootstrap.sass -Pre
+Install-Package bootstrap.sass
 {% endhighlight %}
-
-The `-Pre` is required until Bootstrap v4 has a stable release.
