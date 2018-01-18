@@ -5244,20 +5244,12 @@ tbody.collapse.show {
   background-color: #b8daff;
 }
 
-a.list-group-item-primary,
-button.list-group-item-primary {
-  color: #004085;
-}
-
-a.list-group-item-primary:hover, a.list-group-item-primary:focus,
-button.list-group-item-primary:hover,
-button.list-group-item-primary:focus {
+.list-group-item-primary.list-group-item-action:hover, .list-group-item-primary.list-group-item-action:focus {
   color: #004085;
   background-color: #9fcdff;
 }
 
-a.list-group-item-primary.active,
-button.list-group-item-primary.active {
+.list-group-item-primary.list-group-item-action.active {
   color: #fff;
   background-color: #004085;
   border-color: #004085;
@@ -5268,20 +5260,12 @@ button.list-group-item-primary.active {
   background-color: #d6d8db;
 }
 
-a.list-group-item-secondary,
-button.list-group-item-secondary {
-  color: #383d41;
-}
-
-a.list-group-item-secondary:hover, a.list-group-item-secondary:focus,
-button.list-group-item-secondary:hover,
-button.list-group-item-secondary:focus {
+.list-group-item-secondary.list-group-item-action:hover, .list-group-item-secondary.list-group-item-action:focus {
   color: #383d41;
   background-color: #c8cbcf;
 }
 
-a.list-group-item-secondary.active,
-button.list-group-item-secondary.active {
+.list-group-item-secondary.list-group-item-action.active {
   color: #fff;
   background-color: #383d41;
   border-color: #383d41;
@@ -5292,20 +5276,12 @@ button.list-group-item-secondary.active {
   background-color: #c3e6cb;
 }
 
-a.list-group-item-success,
-button.list-group-item-success {
-  color: #155724;
-}
-
-a.list-group-item-success:hover, a.list-group-item-success:focus,
-button.list-group-item-success:hover,
-button.list-group-item-success:focus {
+.list-group-item-success.list-group-item-action:hover, .list-group-item-success.list-group-item-action:focus {
   color: #155724;
   background-color: #b1dfbb;
 }
 
-a.list-group-item-success.active,
-button.list-group-item-success.active {
+.list-group-item-success.list-group-item-action.active {
   color: #fff;
   background-color: #155724;
   border-color: #155724;
@@ -5316,20 +5292,12 @@ button.list-group-item-success.active {
   background-color: #bee5eb;
 }
 
-a.list-group-item-info,
-button.list-group-item-info {
-  color: #0c5460;
-}
-
-a.list-group-item-info:hover, a.list-group-item-info:focus,
-button.list-group-item-info:hover,
-button.list-group-item-info:focus {
+.list-group-item-info.list-group-item-action:hover, .list-group-item-info.list-group-item-action:focus {
   color: #0c5460;
   background-color: #abdde5;
 }
 
-a.list-group-item-info.active,
-button.list-group-item-info.active {
+.list-group-item-info.list-group-item-action.active {
   color: #fff;
   background-color: #0c5460;
   border-color: #0c5460;
@@ -5340,20 +5308,12 @@ button.list-group-item-info.active {
   background-color: #ffeeba;
 }
 
-a.list-group-item-warning,
-button.list-group-item-warning {
-  color: #856404;
-}
-
-a.list-group-item-warning:hover, a.list-group-item-warning:focus,
-button.list-group-item-warning:hover,
-button.list-group-item-warning:focus {
+.list-group-item-warning.list-group-item-action:hover, .list-group-item-warning.list-group-item-action:focus {
   color: #856404;
   background-color: #ffe8a1;
 }
 
-a.list-group-item-warning.active,
-button.list-group-item-warning.active {
+.list-group-item-warning.list-group-item-action.active {
   color: #fff;
   background-color: #856404;
   border-color: #856404;
@@ -5364,20 +5324,12 @@ button.list-group-item-warning.active {
   background-color: #f5c6cb;
 }
 
-a.list-group-item-danger,
-button.list-group-item-danger {
-  color: #721c24;
-}
-
-a.list-group-item-danger:hover, a.list-group-item-danger:focus,
-button.list-group-item-danger:hover,
-button.list-group-item-danger:focus {
+.list-group-item-danger.list-group-item-action:hover, .list-group-item-danger.list-group-item-action:focus {
   color: #721c24;
   background-color: #f1b0b7;
 }
 
-a.list-group-item-danger.active,
-button.list-group-item-danger.active {
+.list-group-item-danger.list-group-item-action.active {
   color: #fff;
   background-color: #721c24;
   border-color: #721c24;
@@ -5388,20 +5340,12 @@ button.list-group-item-danger.active {
   background-color: #fdfdfe;
 }
 
-a.list-group-item-light,
-button.list-group-item-light {
-  color: #818182;
-}
-
-a.list-group-item-light:hover, a.list-group-item-light:focus,
-button.list-group-item-light:hover,
-button.list-group-item-light:focus {
+.list-group-item-light.list-group-item-action:hover, .list-group-item-light.list-group-item-action:focus {
   color: #818182;
   background-color: #ececf6;
 }
 
-a.list-group-item-light.active,
-button.list-group-item-light.active {
+.list-group-item-light.list-group-item-action.active {
   color: #fff;
   background-color: #818182;
   border-color: #818182;
@@ -5412,20 +5356,12 @@ button.list-group-item-light.active {
   background-color: #c6c8ca;
 }
 
-a.list-group-item-dark,
-button.list-group-item-dark {
-  color: #1b1e21;
-}
-
-a.list-group-item-dark:hover, a.list-group-item-dark:focus,
-button.list-group-item-dark:hover,
-button.list-group-item-dark:focus {
+.list-group-item-dark.list-group-item-action:hover, .list-group-item-dark.list-group-item-action:focus {
   color: #1b1e21;
   background-color: #b9bbbe;
 }
 
-a.list-group-item-dark.active,
-button.list-group-item-dark.active {
+.list-group-item-dark.list-group-item-action.active {
   color: #fff;
   background-color: #1b1e21;
   border-color: #1b1e21;
@@ -6516,39 +6452,37 @@ button.bg-dark:focus {
   }
 }
 
-.d-print-block {
-  display: none !important;
-}
-
-@media print {
-  .d-print-block {
-    display: block !important;
-  }
-}
-
-.d-print-inline {
-  display: none !important;
-}
-
-@media print {
-  .d-print-inline {
-    display: inline !important;
-  }
-}
-
-.d-print-inline-block {
-  display: none !important;
-}
-
-@media print {
-  .d-print-inline-block {
-    display: inline-block !important;
-  }
-}
-
 @media print {
   .d-print-none {
     display: none !important;
+  }
+  .d-print-inline {
+    display: inline !important;
+  }
+  .d-print-inline-block {
+    display: inline-block !important;
+  }
+  .d-print-block {
+    display: block !important;
+  }
+  .d-print-table {
+    display: table !important;
+  }
+  .d-print-table-row {
+    display: table-row !important;
+  }
+  .d-print-table-cell {
+    display: table-cell !important;
+  }
+  .d-print-flex {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+  }
+  .d-print-inline-flex {
+    display: -webkit-inline-box !important;
+    display: -ms-inline-flexbox !important;
+    display: inline-flex !important;
   }
 }
 

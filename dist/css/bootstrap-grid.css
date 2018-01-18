@@ -1308,39 +1308,37 @@ html {
   }
 }
 
-.d-print-block {
-  display: none !important;
-}
-
-@media print {
-  .d-print-block {
-    display: block !important;
-  }
-}
-
-.d-print-inline {
-  display: none !important;
-}
-
-@media print {
-  .d-print-inline {
-    display: inline !important;
-  }
-}
-
-.d-print-inline-block {
-  display: none !important;
-}
-
-@media print {
-  .d-print-inline-block {
-    display: inline-block !important;
-  }
-}
-
 @media print {
   .d-print-none {
     display: none !important;
+  }
+  .d-print-inline {
+    display: inline !important;
+  }
+  .d-print-inline-block {
+    display: inline-block !important;
+  }
+  .d-print-block {
+    display: block !important;
+  }
+  .d-print-table {
+    display: table !important;
+  }
+  .d-print-table-row {
+    display: table-row !important;
+  }
+  .d-print-table-cell {
+    display: table-cell !important;
+  }
+  .d-print-flex {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+  }
+  .d-print-inline-flex {
+    display: -webkit-inline-box !important;
+    display: -ms-inline-flexbox !important;
+    display: inline-flex !important;
   }
 }
 
