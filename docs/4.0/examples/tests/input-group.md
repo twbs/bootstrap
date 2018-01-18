@@ -337,8 +337,8 @@ Test file for small, default, and large versions of each **supported** combinati
     </div>
     <div class="input-group">
       <div class="custom-file">
-        <input type="file" class="custom-file-input" id="customFile">
-        <label class="custom-file-label" for="customFile">Choose file</label>
+        <input type="file" class="custom-file-input" id="customFile2">
+        <label class="custom-file-label" for="customFile2">Choose file</label>
       </div>
       <div class="input-group-append"><span class="input-group-text">Text</span></div>
     </div>
@@ -355,8 +355,8 @@ Test file for small, default, and large versions of each **supported** combinati
     <div class="input-group">
       <div class="input-group-prepend"><span class="input-group-text">Text</span></div>
       <div class="custom-file">
-        <input type="file" class="custom-file-input" id="customFile">
-        <label class="custom-file-label" for="customFile">Choose file</label>
+        <input type="file" class="custom-file-input" id="customFile3">
+        <label class="custom-file-label" for="customFile3">Choose file</label>
       </div>
       <div class="input-group-append"><span class="input-group-text">Text</span></div>
     </div>
@@ -438,23 +438,23 @@ Not shown are buttons in appends/prepends, but these are supported in place of i
   <div class="col-md">
     <div class="input-group">
       <div class="custom-file">
-        <input type="file" class="custom-file-input is-invalid" id="customFile">
-        <label class="custom-file-label" for="customFile">Choose file</label>
+        <input type="file" class="custom-file-input is-invalid" id="customFile4">
+        <label class="custom-file-label" for="customFile4">Choose file</label>
       </div>
       <div class="input-group-append"><span class="input-group-text">Text</span></div>
     </div>
     <div class="input-group">
       <div class="input-group-prepend"><span class="input-group-text">Text</span></div>
       <div class="custom-file">
-        <input type="file" class="custom-file-input is-invalid" id="customFile">
-        <label class="custom-file-label" for="customFile">Choose file</label>
+        <input type="file" class="custom-file-input is-invalid" id="customFile5">
+        <label class="custom-file-label" for="customFile5">Choose file</label>
       </div>
     </div>
     <div class="input-group">
       <div class="input-group-prepend"><span class="input-group-text">Text</span></div>
       <div class="custom-file">
-        <input type="file" class="custom-file-input is-invalid" id="customFile">
-        <label class="custom-file-label" for="customFile">Choose file</label>
+        <input type="file" class="custom-file-input is-invalid" id="customFile6">
+        <label class="custom-file-label" for="customFile6">Choose file</label>
       </div>
       <div class="input-group-append"><span class="input-group-text">Text</span></div>
     </div>
