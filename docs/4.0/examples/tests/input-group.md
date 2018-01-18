@@ -10,7 +10,9 @@ sizes:
 <style>
 main { padding: 2rem; }
 .input-group { margin-bottom: .5rem; }
-.row, hr { margin-bottom: 1.5rem; }
+.row { margin-top: 1rem; margin-bottom: 1.5rem; }
+hr { margin-bottom: 1.5rem; }
+h3, p { margin-bottom: 0; }
 h2 + p { max-width: var(--breakpoint-md); }
 </style>
 
