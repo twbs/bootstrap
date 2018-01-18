@@ -41,7 +41,7 @@
     // Only remove border-right-radius on inputs that don't expect validation
     // feedback/tooltips. Validated inputs without feedback/tooltip will still
     // rounded corners as expected.
-    &:not(:last-child):not(:required):not(.is-invalid):not(.valid) {
+    &:not(:last-child):not(:required):not(.is-invalid):not(.is-valid) {
       @include border-right-radius(0);
     }
 
