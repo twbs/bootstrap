@@ -368,7 +368,7 @@ Test file for small, default, and large versions of each **supported** combinati
 ### Validation
 Not shown are buttons in appends/prepends, but these are supported in place of input group text.
 
-<strong class="text-danger">Input group validation does't support multiple inputs, multiple selects, or validation feedback on custom file inputs due to CSS selector limitations.</strong>
+<strong class="text-danger">Input group validation doesn't support multiple inputs, multiple selects, or validation feedback on custom file inputs due to CSS selector limitations.</strong>
 
 <div class="row">
   <div class="col-md">
