@@ -45,7 +45,7 @@ The media queries effect screen widths with the given breakpoint *or larger*. Fo
 <span class="d-block p-2 bg-dark text-white">d-block</span>
 {% endexample %}
 
-## Hiding Elements
+## Hiding elements
 
 For faster mobile-friendly development, use responsive display classes for showing and hiding elements by device. Avoid creating entirely different versions of the same site, instead hide element responsively for each screen size.
 
@@ -75,14 +75,17 @@ To show an element only on a given interval of screen sizes you can combine one 
 
 ## Display in print
 
-Change the `display` value of elements when printing with our print display utility classes.
+Change the `display` value of elements when printing with our print display utility classes. Includes support for the same `display` values as our responsive `.d-*` utilities.
 
-| Class | Print style |
-| --- | --- |
-| `.d-print-block` | Applies `display: block;` to the element when printing |
-| `.d-print-inline` | Applies `display: inline;` to the element when printing |
-| `.d-print-inline-block` | Applies `display: inline-block;` to the element when printing |
-| `.d-print-none` | Applies `display: none;` to the element when printing |
+- `.d-print-none`
+- `.d-print-inline`
+- `.d-print-inline-block`
+- `.d-print-block`
+- `.d-print-table`
+- `.d-print-table-row`
+- `.d-print-table-cell`
+- `.d-print-flex`
+- `.d-print-inline-flex`
 
 The print and display classes can be combined.
 
