@@ -6,6 +6,17 @@ group: migration
 toc: true
 ---
 
+## Stable changes
+
+Moving from Beta 3 to our stable v4.0 release, there are no breaking changes, but there are some notable changes.
+
+### Printing
+- Fixed broken print utilities. Previously, using a `.d-print-*` class would unexpectedly overrule any other `.d-*` class. Now, they match our other display utilities and only apply to that media (`@media print`).
+
+- Expanded available print display utilities to match other utilities. Beta 3 and older only had `block`, `inline-block`, `inline`, and `none`. Stable v4 added `flex`, `inline-flex`, `table`, `table-row`, and `table-cell`.
+
+- Fixed print preview rendering across browsers with new print styles that specify `@page` `size`.
+
 ## Beta 3 changes
 
 While Beta 2 saw the bulk of our breaking changes during the beta phase, but we still have a few that needed to be addressed in the Beta 3 release. These changes apply if you're updating to Beta 3 from Beta 2 or any older version of Bootstrap.
