@@ -7,7 +7,7 @@
     A11yUserVoice#16717318
   origin: >
     Bootstrap#20732
-    
+
 -
   browser: >
     Edge
@@ -17,16 +17,6 @@
     UserVoice#12299532
   origin: >
     Bootstrap#19984
-
--
-  browser: >
-    Edge
-  summary: >
-    Implement [sticky positioning](http://html5please.com/#position:sticky) from CSS Positioned Layout Level 3
-  upstream_bug: >
-    UserVoice#6263621
-  origin: >
-    Bootstrap#17021
 
 -
   browser: >
@@ -52,7 +42,7 @@
   browser: >
     Edge
   summary: >
-    Implement the [`of <selector-list>` clause](http://caniuse.com/#feat=css-nth-child-of) of the `:nth-child()` pseudo-class
+    Implement the [`of <selector-list>` clause](https://caniuse.com/#feat=css-nth-child-of) of the `:nth-child()` pseudo-class
   upstream_bug: >
     UserVoice#15944476
   origin: >
@@ -62,17 +52,7 @@
   browser: >
     Firefox
   summary: >
-    Fire a [`transitioncancel` event](https://developer.mozilla.org/en-US/docs/Web/Events/transitioncancel) when a CSS transition is canceled
-  upstream_bug: >
-    Mozilla#1264125
-  origin: >
-    Mozilla#1182856
-
--
-  browser: >
-    Firefox
-  summary: >
-    Implement the [`of <selector-list>` clause](http://caniuse.com/#feat=css-nth-child-of) of the `:nth-child()` pseudo-class
+    Implement the [`of <selector-list>` clause](https://caniuse.com/#feat=css-nth-child-of) of the `:nth-child()` pseudo-class
   upstream_bug: >
     Mozilla#854148
   origin: >
@@ -112,7 +92,7 @@
   browser: >
     Chrome
   summary: >
-    Implement the [`of <selector-list>` clause](http://caniuse.com/#feat=css-nth-child-of) of the `:nth-child()` pseudo-class
+    Implement the [`of <selector-list>` clause](https://caniuse.com/#feat=css-nth-child-of) of the `:nth-child()` pseudo-class
   upstream_bug: >
     Chromium#304163
   origin: >

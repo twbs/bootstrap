@@ -6,7 +6,7 @@ group: utilities
 toc: true
 ---
 
-Easily clear `float`s by adding `.clearfix` **to the parent element**. Utilizes [the micro clearfix](http://nicolasgallagher.com/micro-clearfix-hack/) as popularized by Nicolas Gallagher. Can also be used as a mixin.
+Easily clear `float`s by adding `.clearfix` **to the parent element**. Can also be used as a mixin.
 
 {% highlight html %}
 <div class="clearfix">...</div>
@@ -32,7 +32,7 @@ The following example shows how the clearfix can be used. Without the clearfix t
 
 {% example html %}
 <div class="bg-info clearfix">
-  <button class="btn btn-secondary float-left">Example Button floated left</button>
-  <button class="btn btn-secondary float-right">Example Button floated right</button>
+  <button type="button" class="btn btn-secondary float-left">Example Button floated left</button>
+  <button type="button" class="btn btn-secondary float-right">Example Button floated right</button>
 </div>
 {% endexample %}

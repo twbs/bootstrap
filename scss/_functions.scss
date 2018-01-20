@@ -49,21 +49,21 @@
 }
 
 // Color contrast
-@mixin color-yiq($color) {
+@function color-yiq($color) {
   $r: red($color);
   $g: green($color);
   $b: blue($color);
 
   $yiq: (($r * 299) + ($g * 587) + ($b * 114)) / 1000;
 
-  @if ($yiq >= 150) {
-    color: #111;
+  @if ($yiq >= $yiq-contrasted-threshold) {
+    @return $yiq-text-dark;
   } @else {
-    color: #fff;
+    @return $yiq-text-light;
   }
 }
 
-// Retreive color Sass maps
+// Retrieve color Sass maps
 @function color($key: "blue") {
   @return map-get($colors, $key);
 }
@@ -72,7 +72,7 @@
   @return map-get($theme-colors, $key);
 }
 
-@function grayscale($key: "100") {
+@function gray($key: "100") {
   @return map-get($grays, $key);
 }
 
@@ -80,11 +80,7 @@
 @function theme-color-level($color-name: "primary", $level: 0) {
   $color: theme-color($color-name);
   $color-base: if($level > 0, #000, #fff);
+  $level: abs($level);
 
-  @if $level < 0 {
-    // Lighter values need a quick double negative for the Sass math to work
-    @return mix($color-base, $color, $level * -1 * $theme-color-interval);
-  } @else {
-    @return mix($color-base, $color, $level * $theme-color-interval);
-  }
+  @return mix($color-base, $color, $level * $theme-color-interval);
 }
