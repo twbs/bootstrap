@@ -72,6 +72,16 @@ Plus, they'll easily stack.
 {% endexample %}
 </div>
 
+## Accessibility
+
+Toasts are intended to be small interruptions to your visitors or users, so to help those on screen readers, you should wrap your toasts in an [`aria-live` region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions). This allows screen readers the ability to see suggested interruptions without any visual cues.
+
+{% highlight html %}
+<div role="region" aria-live="polite">
+  <div class="toast">...</div>
+</div>
+{% endhighlight %}
+
 ## Placement
 
 Place toasts with custom CSS as you need them. The top right is often used for notifications, as is the top middle. If you're only ever going to show one toast at a time, put the positioning styles right on the `.toast.`
