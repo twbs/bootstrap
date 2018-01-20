@@ -730,7 +730,7 @@ $toast-border-color: rgba(0,0,0,.1) !default;
 $toast-border-radius: .25rem !default;
 $toast-box-shadow: 0 .25rem .75rem rgba($black, .1) !default;
 
-$toast-header-color: $gray-600;
+$toast-header-color: $gray-600 !default;
 $toast-header-background-color: rgba($white, .85) !default;
 $toast-header-border-color: rgba(0,0,0,.05) !default;
 
