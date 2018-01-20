@@ -27,7 +27,7 @@ A basic toast can include a header (though it doesn't strictly need one) with wh
 {% endexample %}
 </div>
 
-They're slightly translucent, too, so they blend over whatever they might appear over.
+They're slightly translucent, too, so they blend over whatever they might appear over. For browsers that support `backdrop-filter`, we'll also attempt to blur the elements under a toast.
 
 <div class="bg-dark">
 {% example html %}
