@@ -39,6 +39,16 @@
   }
 }
 
+.spinner-border-sm {
+  width: 1rem;
+  height: 1rem;
+  border-width: .2em;
+
+  &.spinner-border-reverse::after {
+    border-width: .2em;
+  }
+}
+
 //
 // Growing circle
 //
@@ -71,4 +81,9 @@
   animation-duration: .75s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
+}
+
+.spinner-grow-sm {
+  width: 1rem;
+  height: 1rem;
 }
