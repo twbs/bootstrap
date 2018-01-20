@@ -151,6 +151,12 @@
   }
 }
 
+.table-borderless {
+  th,
+  td {
+    border: 0;
+  }
+}
 
 // Responsive tables
 //
