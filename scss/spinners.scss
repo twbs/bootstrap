@@ -13,6 +13,7 @@
   height: 2rem;
   overflow: hidden;
   text-indent: -999em;
+  vertical-align: text-bottom;
   border: .25em solid;
   border-color: currentColor transparent currentColor currentColor;
   border-radius: 50%;
@@ -63,6 +64,7 @@
   height: 2rem;
   overflow: hidden;
   text-indent: -999em;
+  vertical-align: text-bottom;
   background-color: currentColor;
   border-radius: 50%;
   animation-name: spinner-grow;
