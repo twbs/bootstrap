@@ -8,9 +8,7 @@ toc: true
 
 ## About
 
-Bootstrap spinners can be used to show the loading state in your projects. They're built only with HTML and CSS, meaning you don't need any JavaScript to create them. You will, however, need some JS to toggle their visibility.
-
-These spinners are very customizable. Easily change their appearance, alignment, sizing, and more with our amazing utility classes.
+Bootstrap "spinners" can be used to show the loading state in your projects. They're built only with HTML and CSS, meaning you don't need any JavaScript to create them. You will, however, need some custom JavaScript to toggle their visibility. They're appearance, alignment, and sizing can be easily customized with our amazing utility classes.
 
 For accessibility purposes, each loader here includes `Loading...` text within. We account for this in our CSS, using a text hiding technique to prevent it from rendering on screen.
 
