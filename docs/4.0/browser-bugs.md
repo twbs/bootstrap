@@ -15,7 +15,7 @@ See also:
 * [WebKit bug 159753: [meta] Issues affecting Bootstrap](https://bugs.webkit.org/show_bug.cgi?id=159753)
 * [jQuery's browser bug workarounds](https://docs.google.com/document/d/1LPaPA30bLUB_publLIMF0RlhdnPx_ePXm7oW02iiT6o)
 
-<table class="bd-browser-bugs table table-bordered table-hover table-responsive">
+<table class="bd-browser-bugs table table-bordered table-hover">
   <thead>
     <tr>
       <th>Browser(s)</th>
@@ -42,7 +42,7 @@ There are several features specified in Web standards which would allow us to ma
 
 We publicly list these "most wanted" feature requests here, in the hopes of expediting the process of getting them implemented.
 
-<table class="bd-browser-bugs table table-bordered table-hover table-responsive">
+<table class="bd-browser-bugs table table-bordered table-hover">
   <thead>
     <tr>
       <th>Browser(s)</th>

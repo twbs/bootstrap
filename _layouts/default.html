@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     {% include header.html %}
   </head>
-  <body class="bd-docs" data-spy="scroll" data-target=".bd-sidenav-active">
+  <body>
     <a id="skippy" class="sr-only sr-only-focusable" href="#content">
       <div class="container">
         <span class="skiplink-text">Skip to main content</span>
@@ -12,9 +12,13 @@
 
     {% include docs-navbar.html %}
 
-    <main id="content" role="main">
+    {% if page.layout == "simple" %}
+      {{ content }}
+    {% else %}
+      <main id="content" role="main">
         {{ content }}
-    </main>
+      </main>
+    {% endif %}
 
     {% include footer.html %}
     {% include scripts.html %}

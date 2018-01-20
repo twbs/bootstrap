@@ -32,16 +32,6 @@
   browser: >
     Edge
   summary: >
-    When hovering over a `<select>` menu item, the cursor for the element underneath the menu is displayed.
-  upstream_bug: >
-    Edge#817822
-  origin: >
-    Bootstrap#14528
-
--
-  browser: >
-    Edge
-  summary: >
     CSS `border-radius` sometimes causes lines of bleed-through of the `background-color` of the parent element.
   upstream_bug: >
     Edge#3342037
@@ -152,16 +142,6 @@
   browser: >
     Firefox
   summary: >
-    `position: absolute` element that's wider than its column renders differently than other browsers
-  upstream_bug: >
-    Mozilla#1282363
-  origin: >
-    Bootstrap#20161
-
--
-  browser: >
-    Firefox
-  summary: >
     Layout with floated columns breaks when printing
   upstream_bug: >
     Mozilla#1315994
@@ -222,19 +202,9 @@
   browser: >
     Chrome
   summary: >
-    `:focus` `outline` style causes cursor to not be displayed when toggling a `readonly` `<input>` to read-write.
-  upstream_bug: >
-    Chromium#465274
-  origin: >
-    Bootstrap#16022
-
--
-  browser: >
-    Chrome
-  summary: >
     `table-cell` borders not overlapping despite `margin-right: -1px`
   upstream_bug: >
-    Chromium#568691
+    Chromium#749848
   origin: >
     Bootstrap#17438, Bootstrap#14237
 
@@ -260,6 +230,16 @@
 
 -
   browser: >
+    Chrome
+  summary: >
+    `position: absolute` element that's wider than its column is incorrectly clipped to column boundary
+  upstream_bug: >
+    Chromium#269061
+  origin: >
+    Bootstrap#20161
+
+-
+  browser: >
     Chrome (Windows & Linux)
   summary: >
     Animation glitch when returning to inactive tab after animations occurred while tab was hidden.
@@ -270,13 +250,13 @@
 
 -
   browser: >
-    Chrome (Linux)
+    Chrome
   summary: >
-    `<select>`'s pop-up menu is blank on some systems.
+    Significant performance hit for dynamic SVGs with text depending on the number of fonts in `font-family`.
   upstream_bug: >
-    Chromium#510079
+    Chromium#781344
   origin: >
-    Bootstrap#21120
+    Bootstrap#24673
 
 -
   browser: >
@@ -297,6 +277,16 @@
     WebKit#163658
   origin: >
     Bootstrap#20732
+
+-
+  browser: >
+    Safari
+  summary: >
+    CSS `min-width` and `max-width` media features should not round fractional pixel
+  upstream_bug: >
+    WebKit#178261
+  origin: >
+    Bootstrap#25166
 
 -
   browser: >
@@ -419,16 +409,6 @@
     WebKit#153856
   origin: >
     Bootstrap#14839
-
--
-  browser: >
-    Safari (iOS)
-  summary: >
-    Tapping from one `<input>` to another in an overlay can cause shaking/jiggling effect
-  upstream_bug: >
-    WebKit#158276
-  origin: >
-    Bootstrap#19927
 
 -
   browser: >

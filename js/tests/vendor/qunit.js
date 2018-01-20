@@ -1,12 +1,12 @@
 /*!
- * QUnit 2.3.3
+ * QUnit 2.4.1
  * https://qunitjs.com/
  *
  * Copyright jQuery Foundation and other contributors
  * Released under the MIT license
  * https://jquery.org/license
  *
- * Date: 2017-06-02T14:07Z
+ * Date: 2017-10-22T05:12Z
  */
 (function (global$1) {
   'use strict';
@@ -227,10 +227,8 @@
   		case "Function":
   		case "Symbol":
   			return type.toLowerCase();
-  	}
-
-  	if ((typeof obj === "undefined" ? "undefined" : _typeof(obj)) === "object") {
-  		return "object";
+  		default:
+  			return typeof obj === "undefined" ? "undefined" : _typeof(obj);
   	}
   }
 
@@ -588,7 +586,13 @@
   		return arguments.length === 2 || innerEquiv.apply(this, [].slice.call(arguments, 1));
   	}
 
-  	return innerEquiv;
+  	return function () {
+  		var result = innerEquiv.apply(undefined, arguments);
+
+  		// Release any retained objects
+  		pairs.length = 0;
+  		return result;
+  	};
   })();
 
   /**
@@ -636,7 +640,13 @@
   		tests: [],
   		childModules: [],
   		testsRun: 0,
-  		unskippedTestsRun: 0
+  		unskippedTestsRun: 0,
+  		hooks: {
+  			before: [],
+  			beforeEach: [],
+  			afterEach: [],
+  			after: []
+  		}
   	},
 
   	callbacks: {},
@@ -1317,7 +1327,7 @@
   	return TestReport;
   }();
 
-  var focused = false;
+  var focused$1 = false;
 
   function Test(settings) {
   	var i, l;
@@ -1325,12 +1335,30 @@
   	++Test.count;
 
   	this.expected = null;
-  	extend(this, settings);
   	this.assertions = [];
   	this.semaphore = 0;
   	this.module = config.currentModule;
   	this.stack = sourceFromStacktrace(3);
   	this.steps = [];
+  	this.timeout = undefined;
+
+  	// If a module is skipped, all its tests and the tests of the child suites
+  	// should be treated as skipped even if they are defined as `only` or `todo`.
+  	// As for `todo` module, all its tests will be treated as `todo` except for
+  	// tests defined as `skip` which will be left intact.
+  	//
+  	// So, if a test is defined as `todo` and is inside a skipped module, we should
+  	// then treat that test as if was defined as `skip`.
+  	if (this.module.skip) {
+  		settings.skip = true;
+  		settings.todo = false;
+
+  		// Skipped tests should be left intact
+  	} else if (this.module.todo && !settings.skip) {
+  		settings.todo = true;
+  	}
+
+  	extend(this, settings);
 
   	this.testReport = new TestReport(settings.testName, this.module.suiteReport, {
   		todo: settings.todo,
@@ -1360,6 +1388,13 @@
   		this.async = false;
   		this.expected = 0;
   	} else {
+  		if (typeof this.callback !== "function") {
+  			var method = this.todo ? "todo" : "test";
+
+  			// eslint-disable-next-line max-len
+  			throw new TypeError("You must provide a function as a test callback to QUnit." + method + "(\"" + settings.testName + "\")");
+  		}
+
   		this.assert = new Assert(this);
   	}
   }
@@ -1442,6 +1477,12 @@
   		function runTest(test) {
   			promise = test.callback.call(test.testEnvironment, test.assert);
   			test.resolvePromise(promise);
+
+  			// If the test has a "lock" on it, but the timeout is 0, then we push a
+  			// failure as the test should be synchronous.
+  			if (test.timeout === 0 && test.semaphore !== 0) {
+  				pushFailure("Test did not finish synchronously even though assert.timeout( 0 ) was used.", sourceFromStacktrace(2));
+  			}
   		}
   	},
 
@@ -1450,22 +1491,27 @@
   	},
 
   	queueHook: function queueHook(hook, hookName, hookOwner) {
-  		var promise,
-  		    test = this;
-  		return function runHook() {
+  		var _this = this;
+
+  		var callHook = function callHook() {
+  			var promise = hook.call(_this.testEnvironment, _this.assert);
+  			_this.resolvePromise(promise, hookName);
+  		};
+
+  		var runHook = function runHook() {
   			if (hookName === "before") {
   				if (hookOwner.unskippedTestsRun !== 0) {
   					return;
   				}
 
-  				test.preserveEnvironment = true;
+  				_this.preserveEnvironment = true;
   			}
 
   			if (hookName === "after" && hookOwner.unskippedTestsRun !== numberOfUnskippedTests(hookOwner) - 1 && config.queue.length > 2) {
   				return;
   			}
 
-  			config.current = test;
+  			config.current = _this;
   			if (config.notrycatch) {
   				callHook();
   				return;
@@ -1473,15 +1519,13 @@
   			try {
   				callHook();
   			} catch (error) {
-  				test.pushFailure(hookName + " failed on " + test.testName + ": " + (error.message || error), extractStacktrace(error, 0));
-  			}
-
-  			function callHook() {
-  				promise = hook.call(test.testEnvironment, test.assert);
-  				test.resolvePromise(promise, hookName);
+  				_this.pushFailure(hookName + " failed on " + _this.testName + ": " + (error.message || error), extractStacktrace(error, 0));
   			}
   		};
+
+  		return runHook;
   	},
+
 
   	// Currently only used for module level hooks, can be used to add global level ones
   	hooks: function hooks(handler) {
@@ -1491,8 +1535,11 @@
   			if (module.parentModule) {
   				processHooks(test, module.parentModule);
   			}
-  			if (module.hooks && objectType(module.hooks[handler]) === "function") {
-  				hooks.push(test.queueHook(module.hooks[handler], handler, module));
+
+  			if (module.hooks[handler].length) {
+  				for (var i = 0; i < module.hooks[handler].length; i++) {
+  					hooks.push(test.queueHook(module.hooks[handler][i], handler, module));
+  				}
   			}
   		}
 
@@ -1500,8 +1547,10 @@
   		if (!this.skip) {
   			processHooks(this, this.module);
   		}
+
   		return hooks;
   	},
+
 
   	finish: function finish() {
   		config.current = this;
@@ -1655,12 +1704,15 @@
   			result: resultInfo.result,
   			message: resultInfo.message,
   			actual: resultInfo.actual,
-  			expected: resultInfo.expected,
   			testId: this.testId,
   			negative: resultInfo.negative || false,
   			runtime: now() - this.started,
   			todo: !!this.todo
   		};
+
+  		if (hasOwn.call(resultInfo, "expected")) {
+  			details.expected = resultInfo.expected;
+  		}
 
   		if (!resultInfo.result) {
   			source = resultInfo.source || sourceFromStacktrace();
@@ -1687,7 +1739,6 @@
   			result: false,
   			message: message || "error",
   			actual: actual || null,
-  			expected: null,
   			source: source
   		});
   	},
@@ -1860,7 +1911,7 @@
 
   // Will be exposed as QUnit.test
   function test(testName, callback) {
-  	if (focused) {
+  	if (focused$1) {
   		return;
   	}
 
@@ -1873,7 +1924,7 @@
   }
 
   function todo(testName, callback) {
-  	if (focused) {
+  	if (focused$1) {
   		return;
   	}
 
@@ -1888,7 +1939,7 @@
 
   // Will be exposed as QUnit.skip
   function skip(testName) {
-  	if (focused) {
+  	if (focused$1) {
   		return;
   	}
 
@@ -1902,12 +1953,12 @@
 
   // Will be exposed as QUnit.only
   function only(testName, callback) {
-  	if (focused) {
+  	if (focused$1) {
   		return;
   	}
 
   	config.queue.length = 0;
-  	focused = true;
+  	focused$1 = true;
 
   	var newTest = new Test({
   		testName: testName,
@@ -1919,20 +1970,29 @@
 
   // Put a hold on processing and return a function that will release it.
   function internalStop(test) {
-  	var released = false;
-
   	test.semaphore += 1;
   	config.blocking = true;
 
   	// Set a recovery timeout, if so configured.
-  	if (config.testTimeout && defined.setTimeout) {
-  		clearTimeout(config.timeout);
-  		config.timeout = setTimeout(function () {
-  			pushFailure("Test timed out", sourceFromStacktrace(2));
-  			internalRecover(test);
-  		}, config.testTimeout);
+  	if (defined.setTimeout) {
+  		var timeoutDuration = void 0;
+
+  		if (typeof test.timeout === "number") {
+  			timeoutDuration = test.timeout;
+  		} else if (typeof config.testTimeout === "number") {
+  			timeoutDuration = config.testTimeout;
+  		}
+
+  		if (typeof timeoutDuration === "number" && timeoutDuration > 0) {
+  			clearTimeout(config.timeout);
+  			config.timeout = setTimeout(function () {
+  				pushFailure("Test took longer than " + timeoutDuration + "ms; test timed out.", sourceFromStacktrace(2));
+  				internalRecover(test);
+  			}, timeoutDuration);
+  		}
   	}
 
+  	var released = false;
   	return function resume() {
   		if (released) {
   			return;
@@ -2059,10 +2119,19 @@
 
   	// Assert helpers
 
-  	// Documents a "step", which is a string value, in a test as a passing assertion
-
-
   	createClass(Assert, [{
+  		key: "timeout",
+  		value: function timeout(duration) {
+  			if (typeof duration !== "number") {
+  				throw new Error("You must pass a number as the duration to assert.timeout");
+  			}
+
+  			this.test.timeout = duration;
+  		}
+
+  		// Documents a "step", which is a string value, in a test as a passing assertion
+
+  	}, {
   		key: "step",
   		value: function step(message) {
   			var result = !!message;
@@ -2138,7 +2207,7 @@
   	}, {
   		key: "push",
   		value: function push(result, actual, expected, message, negative) {
-  			Logger.warn("assert.push is deprecated and will be removed in QUnit 3.0." + " Please use assert.pushResult instead (http://api.qunitjs.com/pushResult/).");
+  			Logger.warn("assert.push is deprecated and will be removed in QUnit 3.0." + " Please use assert.pushResult instead (https://api.qunitjs.com/assert/pushResult).");
 
   			var currentAssert = this instanceof Assert ? this : config.current.assert;
   			return currentAssert.pushResult({
@@ -2573,6 +2642,7 @@
   	return false;
   }
 
+  var focused = false;
   var QUnit = {};
   var globalSuite = new SuiteReport();
 
@@ -2589,12 +2659,15 @@
   QUnit.isLocal = !(defined.document && window.location.protocol !== "file:");
 
   // Expose the current QUnit version
-  QUnit.version = "2.3.3";
+  QUnit.version = "2.4.1";
 
-  function createModule(name, testEnvironment) {
+  function createModule(name, testEnvironment, modifiers) {
   	var parentModule = moduleStack.length ? moduleStack.slice(-1)[0] : null;
   	var moduleName = parentModule !== null ? [parentModule.name, name].join(" > ") : name;
   	var parentSuite = parentModule ? parentModule.suiteReport : globalSuite;
+
+  	var skip$$1 = parentModule !== null && parentModule.skip || modifiers.skip;
+  	var todo$$1 = parentModule !== null && parentModule.todo || modifiers.todo;
 
   	var module = {
   		name: moduleName,
@@ -2604,7 +2677,14 @@
   		testsRun: 0,
   		unskippedTestsRun: 0,
   		childModules: [],
-  		suiteReport: new SuiteReport(name, parentSuite)
+  		suiteReport: new SuiteReport(name, parentSuite),
+
+  		// Pass along `skip` and `todo` properties from parent module, in case
+  		// there is one, to childs. And use own otherwise.
+  		// This property will be used to mark own tests and tests of child suites
+  		// as either `skipped` or `todo`.
+  		skip: skip$$1,
+  		todo: skip$$1 ? false : todo$$1
   	};
 
   	var env = {};
@@ -2619,53 +2699,108 @@
   	return module;
   }
 
+  function processModule(name, options, executeNow) {
+  	var modifiers = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
+
+  	var module = createModule(name, options, modifiers);
+
+  	// Move any hooks to a 'hooks' object
+  	var testEnvironment = module.testEnvironment;
+  	var hooks = module.hooks = {};
+
+  	setHookFromEnvironment(hooks, testEnvironment, "before");
+  	setHookFromEnvironment(hooks, testEnvironment, "beforeEach");
+  	setHookFromEnvironment(hooks, testEnvironment, "afterEach");
+  	setHookFromEnvironment(hooks, testEnvironment, "after");
+
+  	function setHookFromEnvironment(hooks, environment, name) {
+  		var potentialHook = environment[name];
+  		hooks[name] = typeof potentialHook === "function" ? [potentialHook] : [];
+  		delete environment[name];
+  	}
+
+  	var moduleFns = {
+  		before: setHookFunction(module, "before"),
+  		beforeEach: setHookFunction(module, "beforeEach"),
+  		afterEach: setHookFunction(module, "afterEach"),
+  		after: setHookFunction(module, "after")
+  	};
+
+  	var currentModule = config.currentModule;
+  	if (objectType(executeNow) === "function") {
+  		moduleStack.push(module);
+  		config.currentModule = module;
+  		executeNow.call(module.testEnvironment, moduleFns);
+  		moduleStack.pop();
+  		module = module.parentModule || currentModule;
+  	}
+
+  	config.currentModule = module;
+  }
+
+  // TODO: extract this to a new file alongside its related functions
+  function module$1(name, options, executeNow) {
+  	if (focused) {
+  		return;
+  	}
+
+  	if (arguments.length === 2) {
+  		if (objectType(options) === "function") {
+  			executeNow = options;
+  			options = undefined;
+  		}
+  	}
+
+  	processModule(name, options, executeNow);
+  }
+
+  module$1.only = function () {
+  	if (focused) {
+  		return;
+  	}
+
+  	config.modules.length = 0;
+  	config.queue.length = 0;
+
+  	module$1.apply(undefined, arguments);
+
+  	focused = true;
+  };
+
+  module$1.skip = function (name, options, executeNow) {
+  	if (focused) {
+  		return;
+  	}
+
+  	if (arguments.length === 2) {
+  		if (objectType(options) === "function") {
+  			executeNow = options;
+  			options = undefined;
+  		}
+  	}
+
+  	processModule(name, options, executeNow, { skip: true });
+  };
+
+  module$1.todo = function (name, options, executeNow) {
+  	if (focused) {
+  		return;
+  	}
+
+  	if (arguments.length === 2) {
+  		if (objectType(options) === "function") {
+  			executeNow = options;
+  			options = undefined;
+  		}
+  	}
+
+  	processModule(name, options, executeNow, { todo: true });
+  };
+
   extend(QUnit, {
   	on: on,
 
-  	// Call on start of module test to prepend name to all tests
-  	module: function module(name, testEnvironment, executeNow) {
-  		if (arguments.length === 2) {
-  			if (objectType(testEnvironment) === "function") {
-  				executeNow = testEnvironment;
-  				testEnvironment = undefined;
-  			}
-  		}
-
-  		var module = createModule(name, testEnvironment);
-
-  		// Move any hooks to a 'hooks' object
-  		if (module.testEnvironment) {
-  			module.hooks = {
-  				before: module.testEnvironment.before,
-  				beforeEach: module.testEnvironment.beforeEach,
-  				afterEach: module.testEnvironment.afterEach,
-  				after: module.testEnvironment.after
-  			};
-
-  			delete module.testEnvironment.before;
-  			delete module.testEnvironment.beforeEach;
-  			delete module.testEnvironment.afterEach;
-  			delete module.testEnvironment.after;
-  		}
-
-  		var moduleFns = {
-  			before: setHook(module, "before"),
-  			beforeEach: setHook(module, "beforeEach"),
-  			afterEach: setHook(module, "afterEach"),
-  			after: setHook(module, "after")
-  		};
-
-  		var currentModule = config.currentModule;
-  		if (objectType(executeNow) === "function") {
-  			moduleStack.push(module);
-  			config.currentModule = module;
-  			executeNow.call(module.testEnvironment, moduleFns);
-  			moduleStack.pop();
-  			module = module.parentModule || currentModule;
-  		}
-
-  		config.currentModule = module;
-  	},
+  	module: module$1,
 
   	test: test,
 
@@ -2802,13 +2937,9 @@
   	ProcessingQueue.advance();
   }
 
-  function setHook(module, hookName) {
-  	if (!module.hooks) {
-  		module.hooks = {};
-  	}
-
-  	return function (callback) {
-  		module.hooks[hookName] = callback;
+  function setHookFunction(module, hookName) {
+  	return function setHook(callback) {
+  		module.hooks[hookName].push(callback);
   	};
   }
 
@@ -3162,7 +3293,8 @@
   			// Skip inherited or undefined properties
   			if (hasOwn.call(params, key) && params[key] !== undefined) {
 
-  				// Output a parameter for each value of this key (but usually just one)
+  				// Output a parameter for each value of this key
+  				// (but usually just one)
   				arrValue = [].concat(params[key]);
   				for (i = 0; i < arrValue.length; i++) {
   					querystring += encodeURIComponent(key);
@@ -3583,7 +3715,8 @@
   		if (config.altertitle && document$$1.title) {
 
   			// Show ✖ for good, ✔ for bad suite result in title
-  			// use escape sequences in case file gets loaded with non-utf-8-charset
+  			// use escape sequences in case file gets loaded with non-utf-8
+  			// charset
   			document$$1.title = [stats.failedTests ? "\u2716" : "\u2714", document$$1.title.replace(/^[\u2714\u2716] /i, "")].join(" ");
   		}
 
@@ -3621,7 +3754,7 @@
   		if (running) {
   			bad = QUnit.config.reorder && details.previousFailure;
 
-  			running.innerHTML = (bad ? "Rerunning previously failed test: <br />" : "Running: <br />") + getNameHtml(details.name, details.module);
+  			running.innerHTML = [bad ? "Rerunning previously failed test: <br />" : "Running: <br />", getNameHtml(details.name, details.module)].join("");
   		}
   	});
 
@@ -4752,7 +4885,9 @@
   				line = text.substring(lineStart, lineEnd + 1);
   				lineStart = lineEnd + 1;
 
-  				if (lineHash.hasOwnProperty ? lineHash.hasOwnProperty(line) : lineHash[line] !== undefined) {
+  				var lineHashExists = lineHash.hasOwnProperty ? lineHash.hasOwnProperty(line) : lineHash[line] !== undefined;
+
+  				if (lineHashExists) {
   					chars += String.fromCharCode(lineHash[line]);
   				} else {
   					chars += String.fromCharCode(lineArrayLength);
