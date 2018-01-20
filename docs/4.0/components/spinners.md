@@ -20,18 +20,24 @@ Use the border spinners for a lightweight loading indicator.
 <div class="spinner-border">Loading...</div>
 {% endexample %}
 
-You can also reverse the spinner's border.
+### Reverse
+
+You can also reverse the spinner's border with `.spinner-border-reverse`.
 
 {% example html %}
 <div class="spinner-border spinner-border-reverse">Loading...</div>
 {% endexample %}
 
-The border spinner uses `currentColor` for it's `border-color`, meaning you can customize the color with [text color utilities][color]. Here's the regular and reverse border spinner in blue, along with the supported variants.
+### Colors
+
+The border spinner uses `currentColor` for it's `border-color`, meaning you can customize the color with [text color utilities][color]. Here's the regular and reverse border spinner in blue.
 
 <div class="bd-example">
   <div class="spinner-border text-primary">Loading...</div>
   <div class="spinner-border spinner-border-reverse text-primary">Loading...</div>
 </div>
+
+Use any of our text color utilities on the standard or reversed border spinner.
 
 {% highlight html %}
 {% for color in site.data.theme-colors %}
@@ -111,20 +117,46 @@ Use [flexbox utilities][flex], [float utilities][float], or [text alignment][tex
 
 ## Size
 
-Use custom CSS or inline styles to change the dimensions as needed.
+Add `.spinner-border-sm` and `.spinner-grow-sm` to make a smaller spinner that can quickly be used within other components.
 
 {% example html %}
-<div class="spinner-border" style="width: 1rem; height: 1rem;">Loading...</div>
-<div class="spinner-border spinner-border-reverse" style="width: 1rem; height: 1rem;">Loading...</div>
+<div class="spinner-border spinner-border-sm">Loading...</div>
+<div class="spinner-border spinner-border-reverse spinner-border-sm">Loading...</div>
+
+<div class="spinner-grow spinner-grow-sm">Loading...</div>
 {% endexample %}
 
-You can also use our `width` and `height` [sizing utilities][sizing] with a parent element that has some set dimensions.
+Or, use custom CSS or inline styles to change the dimensions as needed.
 
 {% example html %}
-<div style="width: 200px; height: 200px;">
-  <div class="spinner-border w-50 h-50">Loading...</div>
-  <div class="spinner-border spinner-border-reverse w-50 h-50">Loading...</div>
-</div>
+<div class="spinner-border" style="width: 3rem; height: 3rem;">Loading...</div>
+<div class="spinner-border spinner-border-reverse" style="width: 3rem; height: 3rem;">Loading...</div>
+
+<div class="spinner-grow" style="width: 3rem; height: 3rem;">Loading...</div>
+{% endexample %}
+
+## Buttons
+
+Use spinners within buttons to indicate an action is currently processing or taking place. You may also swap the text out of the spinner element and utilize button text as needed.
+
+{% example html %}
+<button class="btn btn-primary" type="button" disabled>
+  <span class="spinner-border spinner-border-sm">Loading...</span>
+</button>
+<button class="btn btn-primary" type="button" disabled>
+  <span class="spinner-border spinner-border-sm"></span>
+  Loading...
+</button>
+{% endexample %}
+
+{% example html %}
+<button class="btn btn-primary" type="button" disabled>
+  <div class="spinner-grow spinner-grow-sm">Loading...</div>
+</button>
+<button class="btn btn-primary" type="button" disabled>
+  <div class="spinner-grow spinner-grow-sm"></div>
+  Loading...
+</button>
 {% endexample %}
 
 
