@@ -31,8 +31,7 @@ $(function () {
     $el.bootstrapPopover()
     try {
       $el.bootstrapPopover('noMethod')
-    }
-    catch (err) {
+    } catch (err) {
       assert.strictEqual(err.message, 'No method named "noMethod"')
     }
   })
@@ -109,7 +108,11 @@ $(function () {
     var content = $('<i>¯\\_(ツ)_/¯</i>').get(0)
     var $popover = $('<a href="#" rel="tooltip"/>')
       .appendTo('#qunit-fixture')
-      .bootstrapPopover({ html: true, title: title, content: content })
+      .bootstrapPopover({
+        html: true,
+        title: title,
+        content: content
+      })
 
     $popover.bootstrapPopover('show')
 
@@ -127,7 +130,10 @@ $(function () {
     var content = $('<i>¯\\_(ツ)_/¯</i>').get(0)
     var $popover = $('<a href="#" rel="tooltip"/>')
       .appendTo('#qunit-fixture')
-      .bootstrapPopover({ title: title, content: content })
+      .bootstrapPopover({
+        title: title,
+        content: content
+      })
 
     $popover.bootstrapPopover('show')
 
@@ -137,7 +143,6 @@ $(function () {
     assert.strictEqual($('.popover .popover-body').html(), '¯\\_(ツ)_/¯', 'content inserted')
     assert.ok(!$.contains($('.popover').get(0), content), 'content node copied, not moved')
   })
-
 
   QUnit.test('should not duplicate HTML object', function (assert) {
     assert.expect(6)
@@ -331,8 +336,7 @@ $(function () {
 
     try {
       $('<div data-toggle="popover" data-title="some title" data-content="@Johann-S" style="display: none"/>').bootstrapPopover('show')
-    }
-    catch (err) {
+    } catch (err) {
       assert.strictEqual(err.message, 'Please use show on visible elements')
       done()
     }
@@ -409,5 +413,26 @@ $(function () {
       $popover.bootstrapPopover('enable')
       $popover.trigger($.Event('click'))
     }, 200)
+  })
+
+  QUnit.test('popover should call content function only once', function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+    var nbCall = 0
+    $('<div id="popover" style="display:none">content</div>').appendTo('#qunit-fixture')
+    var $popover = $('<a href="#">@Johann-S</a>')
+      .appendTo('#qunit-fixture')
+      .bootstrapPopover({
+        content: function () {
+          nbCall++
+          return $('#popover').clone().show().get(0)
+        }
+      })
+      .on('shown.bs.popover', function () {
+        assert.strictEqual(nbCall, 1)
+        done()
+      })
+
+    $popover.trigger($.Event('click'))
   })
 })

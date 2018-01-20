@@ -522,9 +522,9 @@ You can activate individual tabs in several ways:
 
 {% highlight js %}
 $('#myTab a[href="#profile"]').tab('show') // Select tab by name
-$('#myTab a:first').tab('show') // Select first tab
-$('#myTab a:last').tab('show') // Select last tab
-$('#myTab li:eq(2) a').tab('show') // Select third tab (0-indexed)
+$('#myTab li:first-child a').tab('show') // Select first tab
+$('#myTab li:last-child a').tab('show') // Select last tab
+$('#myTab li:nth-child(3) a').tab('show') // Select third tab
 {% endhighlight %}
 
 ### Fade effect
@@ -574,7 +574,7 @@ Activates a tab element and content container. Tab should have either a `data-ta
 
 <script>
   $(function () {
-    $('#myTab a:last').tab('show')
+    $('#myTab li:last-child a').tab('show')
   })
 </script>
 {% endhighlight %}
@@ -602,7 +602,7 @@ When showing a new tab, the events fire in the following order:
 
 If no tab was already active, then the `hide.bs.tab` and `hidden.bs.tab` events will not be fired.
 
-<table class="table table-bordered table-striped table-responsive">
+<table class="table table-bordered table-striped">
   <thead>
     <tr>
       <th style="width: 150px;">Event Type</th>
