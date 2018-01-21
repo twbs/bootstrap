@@ -42,9 +42,9 @@
 }
 
 
-// Bordered version
+// Border versions
 //
-// Add borders all around the table and between all the columns.
+// Add or remove borders all around the table and between all the columns.
 
 .table-bordered {
   border: $table-border-width solid $table-border-color;
@@ -62,13 +62,21 @@
   }
 }
 
+.table-borderless {
+  th,
+  td,
+  thead th,
+  tbody + tbody {
+    border: 0;
+  }
+}
 
 // Zebra-striping
 //
 // Default zebra-stripe styles (alternating gray and transparent backgrounds)
 
 .table-striped {
-  tbody tr:nth-of-type(odd) {
+  tbody tr:nth-of-type(#{$table-striped-order}) {
     background-color: $table-accent-bg;
   }
 }
@@ -171,7 +179,7 @@
         -ms-overflow-style: -ms-autohiding-scrollbar; // See https://github.com/twbs/bootstrap/pull/10057
 
         // Prevent double border on horizontal scroll due to use of `display: block;`
-        &.table-bordered {
+        > .table-bordered {
           border: 0;
         }
       }

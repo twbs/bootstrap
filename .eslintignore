@@ -1,3 +1,5 @@
 **/*.min.js
-**/vendor/*
-**/dist/*
+**/dist/
+**/vendor/
+/_gh_pages/
+/package.js

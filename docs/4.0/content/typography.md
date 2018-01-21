@@ -32,37 +32,37 @@ All HTML headings, `<h1>` through `<h6>`, are available.
   <tbody>
     <tr>
       <td>
-        {% markdown %}`<h1></h1>`{% endmarkdown %}
+        {{ "`<h1></h1>`" | markdownify }}
       </td>
       <td><span class="h1">h1. Bootstrap heading</span></td>
     </tr>
     <tr>
       <td>
-        {% markdown %}`<h2></h2>`{% endmarkdown %}
+        {{ "`<h2></h2>`" | markdownify }}
       </td>
       <td><span class="h2">h2. Bootstrap heading</span></td>
     </tr>
     <tr>
       <td>
-        {% markdown %}`<h3></h3>`{% endmarkdown %}
+        {{ "`<h3></h3>`" | markdownify }}
       </td>
       <td><span class="h3">h3. Bootstrap heading</span></td>
     </tr>
     <tr>
       <td>
-        {% markdown %}`<h4></h4>`{% endmarkdown %}
+        {{ "`<h4></h4>`" | markdownify }}
       </td>
       <td><span class="h4">h4. Bootstrap heading</span></td>
     </tr>
     <tr>
       <td>
-        {% markdown %}`<h5></h5>`{% endmarkdown %}
+        {{ "`<h5></h5>`" | markdownify }}
       </td>
       <td><span class="h5">h5. Bootstrap heading</span></td>
     </tr>
     <tr>
       <td>
-        {% markdown %}`<h6></h6>`{% endmarkdown %}
+        {{ "`<h6></h6>`" | markdownify }}
       </td>
       <td><span class="h6">h6. Bootstrap heading</span></td>
     </tr>
@@ -168,7 +168,7 @@ While not shown above, feel free to use `<b>` and `<i>` in HTML5. `<b>` is meant
 
 ## Text utilities
 
-Change text alignment, transform, style, weight, and color with our [text utilities]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/text/#text-alignment).
+Change text alignment, transform, style, weight, and color with our [text utilities]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/text/) and [color utilities]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/colors/).
 
 ## Abbreviations
 

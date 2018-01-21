@@ -5,10 +5,11 @@ $(function () {
 
   QUnit.test('Util.getSelectorFromElement should return the correct element', function (assert) {
     assert.expect(2)
+
     var $el = $('<div data-target="body"></div>').appendTo($('#qunit-fixture'))
     assert.strictEqual(Util.getSelectorFromElement($el[0]), 'body')
 
-    // not found element
+    // Not found element
     var $el2 = $('<div data-target="#fakeDiv"></div>').appendTo($('#qunit-fixture'))
     assert.strictEqual(Util.getSelectorFromElement($el2[0]), null)
   })
@@ -17,8 +18,8 @@ $(function () {
     assert.expect(1)
     var namePlugin = 'collapse'
     var defaultType = {
-      toggle : 'boolean',
-      parent : '(string|element)'
+      toggle: 'boolean',
+      parent: '(string|element)'
     }
     var config = {
       toggle: true,
@@ -27,8 +28,8 @@ $(function () {
 
     try {
       Util.typeCheckConfig(namePlugin, config, defaultType)
-    } catch (e) {
-      assert.strictEqual(e.message, 'COLLAPSE: Option "parent" provided type "number" but expected type "(string|element)".')
+    } catch (err) {
+      assert.strictEqual(err.message, 'COLLAPSE: Option "parent" provided type "number" but expected type "(string|element)".')
     }
   })
 

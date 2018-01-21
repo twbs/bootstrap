@@ -7,6 +7,8 @@ module.exports = (ctx) => ({
     sourcesContent: true
   },
   plugins: {
-    autoprefixer: { cascade: false }
+    autoprefixer: {
+      cascade: false
+    }
   }
 })
