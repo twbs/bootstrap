@@ -74,13 +74,15 @@ const Dropdown = (($) => {
   const Default = {
     offset      : 0,
     flip        : true,
-    boundary    : 'scrollParent'
+    boundary    : 'scrollParent',
+    reference   : 'toggle'
   }
 
   const DefaultType = {
     offset      : '(number|string|function)',
     flip        : 'boolean',
-    boundary    : '(string|element)'
+    boundary    : '(string|element)',
+    reference   : '(string|element)'
   }
 
   /**
@@ -150,20 +152,27 @@ const Dropdown = (($) => {
         if (typeof Popper === 'undefined') {
           throw new TypeError('Bootstrap dropdown require Popper.js (https://popper.js.org)')
         }
-        let element = this._element
-        // For dropup with alignment we use the parent as popper container
-        if ($(parent).hasClass(ClassName.DROPUP)) {
-          if ($(this._menu).hasClass(ClassName.MENULEFT) || $(this._menu).hasClass(ClassName.MENURIGHT)) {
-            element = parent
+
+        let referenceElement = this._element
+
+        if (this._config.reference === 'parent') {
+          referenceElement = parent
+        } else if (Util.isElement(this._config.reference)) {
+          referenceElement = this._config.reference
+
+          // Check if it's jQuery element
+          if (typeof this._config.reference.jquery !== 'undefined') {
+            referenceElement = this._config.reference[0]
           }
         }
+
         // If boundary is not `scrollParent`, then set position to `static`
         // to allow the menu to "escape" the scroll parent's boundaries
         // https://github.com/twbs/bootstrap/issues/24251
         if (this._config.boundary !== 'scrollParent') {
           $(parent).addClass(ClassName.POSITION_STATIC)
         }
-        this._popper = new Popper(element, this._menu, this._getPopperConfig())
+        this._popper = new Popper(referenceElement, this._menu, this._getPopperConfig())
       }
 
       // If this is a touch-enabled device we add extra
