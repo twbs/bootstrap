@@ -14,16 +14,21 @@
   background-color: $pagination-bg;
   border: $pagination-border-width solid $pagination-border-color;
 
-  @include hover-focus {
+  &:hover {
     color: $pagination-hover-color;
     text-decoration: none;
     background-color: $pagination-hover-bg;
     border-color: $pagination-hover-border-color;
   }
 
+  &:focus {
+    z-index: 2;
+    outline: 0;
+    box-shadow: $pagination-focus-box-shadow;
+  }
 
   // Opinionated: add "hand" cursor to non-disabled .page-link elements
-  &:not([disabled]):not(.disabled) {
+  &:not(:disabled):not(.disabled) {
     cursor: pointer;
   }
 }

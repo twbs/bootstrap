@@ -28,12 +28,13 @@
   // Disabled comes first so active can properly restyle
   &.disabled,
   &:disabled {
+    color: color-yiq($background);
     background-color: $background;
     border-color: $border;
   }
 
-  &:not([disabled]):not(.disabled):active,
-  &:not([disabled]):not(.disabled).active,
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled).active,
   .show > &.dropdown-toggle {
     color: color-yiq($active-background);
     background-color: $active-background;
@@ -53,14 +54,14 @@
   }
 }
 
-@mixin button-outline-variant($color, $color-hover: #fff, $active-background: $color, $active-border: $color) {
+@mixin button-outline-variant($color, $color-hover: color-yiq($color), $active-background: $color, $active-border: $color) {
   color: $color;
   background-color: transparent;
   background-image: none;
   border-color: $color;
 
   &:hover {
-    color: color-yiq($color);
+    color: $color-hover;
     background-color: $active-background;
     border-color: $active-border;
   }
@@ -76,14 +77,21 @@
     background-color: transparent;
   }
 
-  &:not([disabled]):not(.disabled):active,
-  &:not([disabled]):not(.disabled).active,
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled).active,
   .show > &.dropdown-toggle {
-    color: color-yiq($color-hover);
+    color: color-yiq($active-background);
     background-color: $active-background;
     border-color: $active-border;
-    // Avoid using mixin so we can pass custom focus shadow properly
-    box-shadow: 0 0 0 $btn-focus-width rgba($color, .5);
+
+    &:focus {
+      // Avoid using mixin so we can pass custom focus shadow properly
+      @if $enable-shadows and $btn-active-box-shadow != none {
+        box-shadow: $btn-active-box-shadow, 0 0 0 $btn-focus-width rgba($color, .5);
+      } @else {
+        box-shadow: 0 0 0 $btn-focus-width rgba($color, .5);
+      }
+    }
   }
 }
 

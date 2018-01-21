@@ -213,6 +213,23 @@ Responsive variations also exist for `align-self`.
 - `.align-self{{ bp.abbr }}-baseline`
 - `.align-self{{ bp.abbr }}-stretch`{% endfor %}
 
+## Fill
+
+Use the `.flex-fill` class on a series of sibling elements to force them into equal widths while taking up all available horizontal space. [Especially useful for equal-width, or justified, navigation.]({{ site.baseurl }}/docs/{{ site.docs_version }}/components/navs/#working-with-flex-utilities)
+
+{% example html %}
+<div class="d-flex bd-highlight">
+  <div class="p-2 flex-fill bd-highlight">Flex item</div>
+  <div class="p-2 flex-fill bd-highlight">Flex item</div>
+  <div class="p-2 flex-fill bd-highlight">Flex item</div>
+</div>
+{% endexample %}
+
+Responsive variations also exist for `flex-fill`.
+
+{% for bp in site.data.breakpoints %}
+- `.flex{{ bp.abbr }}-fill`{% endfor %}
+
 ## Auto margins
 
 Flexbox can do some pretty awesome things when you mix flex alignments with auto margins. Shown below are three examples of controlling flex items via auto margins: default (no auto margin), pushing two items to the right (`.mr-auto`), and pushing two items to the left (`.ml-auto`).
@@ -351,7 +368,7 @@ Change the _visual_ order of specific flex items with a handful of `order` utili
 
 Responsive variations also exist for `order`.
 
-{% for bp in site.data.breakpoints %}{% for i in (1..12) %}
+{% for bp in site.data.breakpoints %}{% for i in (0..12) %}
 - `.order{{ bp.abbr }}-{{ i }}`{% endfor %}{% endfor %}
 
 ## Align content

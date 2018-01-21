@@ -1,7 +1,7 @@
 /*!
  * Script to run our Sauce Labs tests.
- * Copyright 2017 The Bootstrap Authors
- * Copyright 2017 Twitter, Inc.
+ * Copyright 2017-2018 The Bootstrap Authors
+ * Copyright 2017-2018 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
@@ -91,7 +91,7 @@ jsUnitSaucelabs.on('tunnelCreated', () => {
       if (typeof success !== 'undefined') {
         const taskIds = success['js tests']
 
-        if (!taskIds || !taskIds.length) {
+        if (!taskIds || taskIds.length === 0) {
           throw new Error('Error starting tests through Sauce Labs API')
         }
 

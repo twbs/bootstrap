@@ -42,6 +42,13 @@ Place one add-on or button on either side of an input. You may also place one on
     <span class="input-group-text">.00</span>
   </div>
 </div>
+
+<div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text">With textarea</span>
+  </div>
+  <textarea class="form-control" aria-label="With textarea"></textarea>
+</div>
 {% endexample %}
 
 ## Sizing
@@ -300,17 +307,17 @@ Input groups include support for custom selects and custom file inputs. Browser 
   <div class="input-group-prepend">
     <span class="input-group-text">Upload</span>
   </div>
-  <label class="custom-file">
-    <input type="file" id="inputGroupFile01" class="custom-file-input" required>
-    <span class="custom-file-control"></span>
-  </label>
+  <div class="custom-file">
+    <input type="file" class="custom-file-input" id="inputGroupFile01">
+    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+  </div>
 </div>
 
 <div class="input-group mb-3">
-  <label class="custom-file">
-    <input type="file" id="inputGroupFile02" class="custom-file-input" required>
-    <span class="custom-file-control"></span>
-  </label>
+  <div class="custom-file">
+    <input type="file" class="custom-file-input" id="inputGroupFile02">
+    <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
+  </div>
   <div class="input-group-append">
     <span class="input-group-text" id="">Upload</span>
   </div>
@@ -320,17 +327,17 @@ Input groups include support for custom selects and custom file inputs. Browser 
   <div class="input-group-prepend">
     <button class="btn btn-outline-secondary" type="button">Button</button>
   </div>
-  <label class="custom-file">
-    <input type="file" id="inputGroupFile03" class="custom-file-input" required>
-    <span class="custom-file-control"></span>
-  </label>
+  <div class="custom-file">
+    <input type="file" class="custom-file-input" id="inputGroupFile03">
+    <label class="custom-file-label" for="inputGroupFile03">Choose file</label>
+  </div>
 </div>
 
 <div class="input-group">
-  <label class="custom-file">
-    <input type="file" id="inputGroupFile04" class="custom-file-input" required>
-    <span class="custom-file-control"></span>
-  </label>
+  <div class="custom-file">
+    <input type="file" class="custom-file-input" id="inputGroupFile04">
+    <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
+  </div>
   <div class="input-group-append">
     <button class="btn btn-outline-secondary" type="button">Button</button>
   </div>

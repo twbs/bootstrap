@@ -42,6 +42,8 @@ your-project/
     └── scss
 {% endhighlight %}
 
+### Importing
+
 In your `custom.scss`, you'll import Bootstrap's source Sass files. You have two options: include all of Bootstrap, or pick the parts you need. We encourage the latter, though be aware there are some requirements and dependencies across our components. You also will need to include some JavaScript for our plugins.
 
 {% highlight scss %}
@@ -68,7 +70,7 @@ In your `custom.scss`, you'll import Bootstrap's source Sass files. You have two
 @import "node_modules/bootstrap/scss/grid";
 {% endhighlight %}
 
-With that setup in place, you can begin to modify any of the Sass variables and maps in your `custom.scss`. You can also start to add parts of Bootstrap under the `// Optional` section as needed.
+With that setup in place, you can begin to modify any of the Sass variables and maps in your `custom.scss`. You can also start to add parts of Bootstrap under the `// Optional` section as needed. We suggest using the full import stack from our `bootstrap.scss` file as your starting point.
 
 ### Variable defaults
 
@@ -93,7 +95,11 @@ Repeat as necessary for any variable in Bootstrap, including the global options 
 
 Bootstrap 4 includes a handful of Sass maps, key value pairs that make it easier to generate families of related CSS. We use Sass maps for our colors, grid breakpoints, and more. Just like Sass variables, all Sass maps include the `!default` flag and can be overridden and extended.
 
-For example, to modify an existing color in our `$theme-colors` map, add the following to your custom Sass file:
+Some of our Sass maps are merged into empty ones by default. This is done to allow easy expansion of a given Sass map, but comes at the cost of making _removing_ items from a map slightly more difficult.
+
+#### Modify map
+
+To modify an existing color in our `$theme-colors` map, add the following to your custom Sass file:
 
 {% highlight scss %}
 $theme-colors: (
@@ -102,6 +108,8 @@ $theme-colors: (
 );
 {% endhighlight %}
 
+#### Add to map
+
 To add a new color to `$theme-colors`, add the new key and value:
 
 {% highlight scss %}
@@ -109,6 +117,20 @@ $theme-colors: (
   "custom-color": #900
 );
 {% endhighlight %}
+
+#### Remove from map
+
+To remove colors from `$theme-colors`, or any other map, use `map-remove`:
+
+{% highlight scss %}
+$theme-colors: map-remove($theme-colors, "success", "info", "danger");
+{% endhighlight %}
+
+#### Required keys
+
+Bootstrap assumes the presence of some specific keys within Sass maps as we used and extend these ourselves. As you customize the included maps, you may encounter errors where a specific Sass map's key is being used.
+
+For example, we use the `primary`, `success`, and `danger` keys from `$theme-colors` for links, buttons, and form states. Replacing the values of these keys should present no issues, but removing them may cause Sass compilation issues. In these instances, you'll need to modify the Sass code that makes use of those values.
 
 ### Functions
 
@@ -198,14 +220,14 @@ You can find and customize these variables for key global options in our `_varia
 | Variable                    | Values                             | Description                                                                            |
 | --------------------------- | ---------------------------------- | -------------------------------------------------------------------------------------- |
 | `$spacer`                   | `1rem` (default), or any value > 0 | Specifies the default spacer value to programmatically generate our [spacer utilities]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/spacing/). |
-| `$enable-rounded`           | `true` (default) or `false`        | Enables predefined `border-radius` styles on various components.                       |
-| `$enable-shadows`           | `true` or `false` (default)        | Enables predefined `box-shadow` styles on various components.                          |
-| `$enable-gradients`         | `true` or `false` (default)        | Enables predefined gradients via `background-image` styles on various components.      |
-| `$enable-transitions`       | `true` (default) or `false`        | Enables predefined `transition`s on various components.                                |
-| `$enable-hover-media-query` | `true` or `false` (default)        | ...                                                                                    |
-| `$enable-grid-classes`      | `true` (default) or `false`        | Enables the generation of CSS classes for the grid system (e.g., `.container`, `.row`, `.col-md-1`, etc.).     |
-| `$enable-caret`             | `true` (default) or `false`        | Enables pseudo element caret on `.dropdown-toggle`.                                    |
-| `$enable-print-styles`      | `true` (default) or `false`        | Enables styles for optimizing printing.                                |
+| `$enable-rounded`           | `true` (default) or `false`        | Enables predefined `border-radius` styles on various components. |
+| `$enable-shadows`           | `true` or `false` (default)        | Enables predefined `box-shadow` styles on various components. |
+| `$enable-gradients`         | `true` or `false` (default)        | Enables predefined gradients via `background-image` styles on various components. |
+| `$enable-transitions`       | `true` (default) or `false`        | Enables predefined `transition`s on various components. |
+| `$enable-hover-media-query` | `true` or `false` (default)        | **Deprecated** |
+| `$enable-grid-classes`      | `true` (default) or `false`        | Enables the generation of CSS classes for the grid system (e.g., `.container`, `.row`, `.col-md-1`, etc.). |
+| `$enable-caret`             | `true` (default) or `false`        | Enables pseudo element caret on `.dropdown-toggle`. |
+| `$enable-print-styles`      | `true` (default) or `false`        | Enables styles for optimizing printing. |
 
 ## Color
 
@@ -328,3 +350,71 @@ These Sass loops aren't limited to color maps, either. You can also generate res
 {% endhighlight %}
 
 Should you need to modify your `$grid-breakpoints`, your changes will apply to all the loops iterating over that map.
+
+## CSS variables
+
+Bootstrap 4 includes around two dozen [CSS custom properties (variables)](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables) in it's compiled CSS. These provide easy access to commonly used values like our theme colors, breakpoints, and primary font stacks when working in your browser's Inspector, a code sandbox, or general prototyping.
+
+### Available variables
+
+Here are the variables we include (note that the `:root` is required). They're located in our `_root.scss` file.
+
+{% highlight css %}
+:root {
+  --blue: #007bff;
+  --indigo: #6610f2;
+  --purple: #6f42c1;
+  --pink: #e83e8c;
+  --red: #dc3545;
+  --orange: #fd7e14;
+  --yellow: #ffc107;
+  --green: #28a745;
+  --teal: #20c997;
+  --cyan: #17a2b8;
+  --white: #fff;
+  --gray: #6c757d;
+  --gray-dark: #343a40;
+  --primary: #007bff;
+  --secondary: #6c757d;
+  --success: #28a745;
+  --info: #17a2b8;
+  --warning: #ffc107;
+  --danger: #dc3545;
+  --light: #f8f9fa;
+  --dark: #343a40;
+  --breakpoint-xs: 0;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+{% endhighlight %}
+
+### Examples
+
+CSS variables offer similar flexibility to Sass's variables, but without the need for compilation before being served to the browser. For example, here we're resetting our page's font and link styles with CSS variables.
+
+{% highlight css %}
+body {
+  font: 1rem/1.5 var(--font-family-sans-serif);
+}
+a {
+  color: var(--blue);
+}
+{% endhighlight %}
+
+You can also use our breakpoint variables in your media queries:
+
+{% highlight css %}
+.content-secondary {
+  display: none;
+}
+
+@media (min-width(var(--breakpoint-sm))) {
+  .content-secondary {
+    display: block;
+  }
+}
+{% endhighlight %}

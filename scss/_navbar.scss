@@ -118,7 +118,7 @@
   }
 
   // Opinionated: add "hand" cursor to non-disabled .navbar-toggler elements
-  &:not([disabled]):not(.disabled) {
+  &:not(:disabled):not(.disabled) {
     cursor: pointer;
   }
 }
@@ -168,8 +168,8 @@
           }
 
           .nav-link {
-            padding-right: .5rem;
-            padding-left: .5rem;
+            padding-right: $navbar-nav-link-padding-x;
+            padding-left: $navbar-nav-link-padding-x;
           }
         }
 
