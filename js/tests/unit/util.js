@@ -4,7 +4,7 @@ $(function () {
   QUnit.module('util')
 
   QUnit.test('Util.getSelectorFromElement should return the correct element', function (assert) {
-    assert.expect(5)
+    assert.expect(2)
 
     var $el = $('<div data-target="body"></div>').appendTo($('#qunit-fixture'))
     assert.strictEqual(Util.getSelectorFromElement($el[0]), 'body')
