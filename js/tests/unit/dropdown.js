@@ -912,15 +912,15 @@ $(function () {
   QUnit.test('should not use Popper.js if display set to static', function (assert) {
     assert.expect(1)
     var dropdownHTML =
-        '<div class="dropdown">'
-        + '<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-display="static">Dropdown</a>'
-        + '<div class="dropdown-menu">'
-        + '<a class="dropdown-item" href="#">Secondary link</a>'
-        + '<a class="dropdown-item" href="#">Something else here</a>'
-        + '<div class="divider"/>'
-        + '<a class="dropdown-item" href="#">Another link</a>'
-        + '</div>'
-        + '</div>'
+        '<div class="dropdown">' +
+        '<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-display="static">Dropdown</a>' +
+        '<div class="dropdown-menu">' +
+        '<a class="dropdown-item" href="#">Secondary link</a>' +
+        '<a class="dropdown-item" href="#">Something else here</a>' +
+        '<div class="divider"/>' +
+        '<a class="dropdown-item" href="#">Another link</a>' +
+        '</div>' +
+        '</div>'
 
     var $dropdown = $(dropdownHTML)
       .appendTo('#qunit-fixture')
