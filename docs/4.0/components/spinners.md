@@ -151,10 +151,10 @@ Use spinners within buttons to indicate an action is currently processing or tak
 
 {% example html %}
 <button class="btn btn-primary" type="button" disabled>
-  <div class="spinner-grow spinner-grow-sm">Loading...</div>
+  <span class="spinner-grow spinner-grow-sm">Loading...</span>
 </button>
 <button class="btn btn-primary" type="button" disabled>
-  <div class="spinner-grow spinner-grow-sm"></div>
+  <span class="spinner-grow spinner-grow-sm"></span>
   Loading...
 </button>
 {% endexample %}
