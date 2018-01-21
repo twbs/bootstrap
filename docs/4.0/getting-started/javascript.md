@@ -32,6 +32,11 @@ Alternatively, to target a specific plugin, just include the plugin's name as a 
 $(document).off('.alert.data-api')
 {% endhighlight %}
 
+{% callout warning %}
+##### Escaping selectors
+If you use special selectors, for example: `collapse:Example`, be sure to escape them, because they'll be passed through jQuery.
+{% endcallout %}
+
 ## Events
 
 Bootstrap provides custom events for most plugins' unique actions. Generally, these come in an infinitive and past participle form - where the infinitive (ex. `show`) is triggered at the start of an event, and its past participle form (ex. `shown`) is triggered on the completion of an action.
