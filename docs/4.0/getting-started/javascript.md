@@ -34,7 +34,7 @@ $(document).off('.alert.data-api')
 
 {% callout warning %}
 ##### Escaping selectors
-If you use special selectors, for example : "collapse:Example", be sure to escape those selectors because they'll be pass threw jQuery.
+If you use special selectors, for example: `collapse:Example`, be sure to escape them, because they'll be passed through jQuery.
 {% endcallout %}
 
 ## Events
