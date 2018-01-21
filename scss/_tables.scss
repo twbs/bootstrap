@@ -42,9 +42,9 @@
 }
 
 
-// Bordered version
+// Border versions
 //
-// Add borders all around the table and between all the columns.
+// Add or remove borders all around the table and between all the columns.
 
 .table-bordered {
   border: $table-border-width solid $table-border-color;
@@ -62,13 +62,21 @@
   }
 }
 
+.table-borderless {
+  th,
+  td,
+  thead th,
+  tbody + tbody {
+    border: 0;
+  }
+}
 
 // Zebra-striping
 //
 // Default zebra-stripe styles (alternating gray and transparent backgrounds)
 
 .table-striped {
-  tbody tr:nth-of-type(odd) {
+  tbody tr:nth-of-type(#{$table-striped-order}) {
     background-color: $table-accent-bg;
   }
 }

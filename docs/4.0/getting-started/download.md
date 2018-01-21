@@ -53,7 +53,7 @@ Pull in Bootstrap's **source files** into nearly any project with some of the mo
 Install Bootstrap in your Node.js powered apps with [the npm package](https://www.npmjs.com/package/bootstrap):
 
 {% highlight sh %}
-npm install bootstrap@{{ site.current_version }}
+npm install bootstrap
 {% endhighlight %}
 
 `require('bootstrap')` will load all of Bootstrap's jQuery plugins onto the jQuery object. The `bootstrap` module itself does not export anything. You can manually load Bootstrap's jQuery plugins individually by loading the `/js/*.js` files under the package's top-level directory.
@@ -92,11 +92,9 @@ composer require twbs/bootstrap:{{ site.current_version }}
 If you develop in .NET, you can also install and manage Bootstrap's [CSS](https://www.nuget.org/packages/bootstrap/) or [Sass](https://www.nuget.org/packages/bootstrap.sass/) and JavaScript using [NuGet](https://www.nuget.org/):
 
 {% highlight powershell %}
-Install-Package bootstrap -Pre
+Install-Package bootstrap
 {% endhighlight %}
 
 {% highlight powershell %}
-Install-Package bootstrap.sass -Pre
+Install-Package bootstrap.sass
 {% endhighlight %}
-
-The `-Pre` is required until Bootstrap v4 has a stable release.
