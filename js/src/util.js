@@ -72,15 +72,6 @@ const Util = (($) => {
     }
   }
 
-  function escapeId(selector) {
-    // We escape IDs in case of special selectors (selector = '#myId:something')
-    // $.escapeSelector does not exist in jQuery < 3
-    selector = typeof $.escapeSelector === 'function' ? $.escapeSelector(selector).substr(1)
-      : selector.replace(/(:|\.|\[|\]|,|=|@)/g, '\\$1')
-
-    return selector
-  }
-
   /**
    * --------------------------------------------------------------------------
    * Public Util Api
@@ -103,11 +94,6 @@ const Util = (($) => {
       let selector = element.getAttribute('data-target')
       if (!selector || selector === '#') {
         selector = element.getAttribute('href') || ''
-      }
-
-      // If it's an ID
-      if (selector.charAt(0) === '#') {
-        selector = escapeId(selector)
       }
 
       try {
