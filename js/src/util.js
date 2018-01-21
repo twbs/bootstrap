@@ -20,7 +20,7 @@ const Util = (($) => {
 
   // Shoutout AngusCroll (https://goo.gl/pxwQGp)
   function toType(obj) {
-    return {}.toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase()
+    return {}.toString.call(obj).match(/\s([a-z]+)/i)[1].toLowerCase()
   }
 
   function getSpecialTransitionEndEvent() {
