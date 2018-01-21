@@ -197,6 +197,7 @@ $grid-breakpoints: map-merge(
   ),
   $grid-breakpoints
 );
+$grid-breakpoints: map-sort-by-values($grid-breakpoints);
 
 @include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
 @include _assert-starts-at-zero($grid-breakpoints);
@@ -217,6 +218,7 @@ $container-max-widths: map-merge(
   ),
   $container-max-widths
 );
+$container-max-widths: map-sort-by-values($container-max-widths);
 
 @include _assert-ascending($container-max-widths, "$container-max-widths");
 

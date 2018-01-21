@@ -48,6 +48,57 @@
   @return $string;
 }
 
+// map-sort-by-values
+// Sorts a map ascending by values
+// Used for grid-breakpoints and container-max-widths sorting
+//
+// @param {Map} $map - Initial map
+// @return {Map} - Sorted map
+@function map-sort-by-values($map) {
+  // Transform map to zipped list
+  $keys: ();
+  $values: ();
+
+  @each $key, $val in $map {
+    $keys: append($keys, $key);
+    $values: append($values, $val);
+  }
+
+  $list: zip($keys, $values);
+
+  // Sort zipped list and create sorted map
+  $sortedMap: ();
+  @while length($list) > 0 {
+
+    // Find smallest pair
+    $smallestPair: nth($list, 1);
+    @each $pair in $list {
+      $value: nth($pair, 2);
+      $smallestValue: nth($smallestPair, 2);
+      @if $value < $smallestValue {
+        $smallestPair: $pair;
+      }
+    }
+
+    // Add smallest pair to sorted map
+    $key: nth($smallestPair, 1);
+    $value: nth($smallestPair, 2);
+    $sortedMap: map-merge($sortedMap, ($key: $value));
+
+    // Remove from list smallest pair
+    $newList: ();
+    $smallestPairIndex: index($list, $smallestPair);
+    @for $i from 1 through length($list) {
+      @if $i != $smallestPairIndex {
+        $newList: append($newList, nth($list, $i), "space");
+      }
+    }
+    $list: $newList;
+  }
+
+  @return $sortedMap;
+}
+
 // Color contrast
 @function color-yiq($color, $dark: $yiq-text-dark, $light: $yiq-text-light) {
   $r: red($color);
