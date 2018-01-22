@@ -33,6 +33,11 @@
   @include box-shadow($dropdown-box-shadow);
 }
 
+.dropdown-menu-right {
+  right: 0;
+  left: auto;
+}
+
 // Allow for dropdowns to go bottom up (aka, dropup-menu)
 // Just add .dropup after the standard .dropdown class and you're set.
 .dropup {
@@ -51,6 +56,7 @@
 .dropright {
   .dropdown-menu {
     top: 0;
+    right: auto;
     left: 100%;
     margin-top: 0;
     margin-left: $dropdown-spacer;
