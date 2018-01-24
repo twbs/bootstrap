@@ -51,9 +51,11 @@
   }
 
   .form-control,
-  .custom-select {
+  .custom-select,
+  .form-group {
     .was-validated &:#{$state},
-    &.is-#{$state} {
+    &.is-#{$state},
+    &.is-#{$state} .form-control {
       border-color: $color;
 
       &:focus {
