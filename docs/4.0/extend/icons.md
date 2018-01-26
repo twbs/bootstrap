@@ -25,3 +25,4 @@ While we haven't tried these out, they do look promising and provide multiple fo
 - [Dripicons](http://demo.amitjakhu.com/dripicons/)
 - [Ikons](http://ikons.piotrkwiatkowski.co.uk/)
 - [Glyph](http://glyph.smarticons.co/)
+- [Micon (MDL2 Icons)](http://xtoolkit.github.io/Micon/)
