@@ -129,3 +129,10 @@
   color: $dropdown-header-color;
   white-space: nowrap; // as with > li > a
 }
+
+// Dropdown text
+.dropdown-item-text {
+  display: block;
+  padding: $dropdown-item-padding-y $dropdown-item-padding-x;
+  color: $dropdown-link-color;
+}

@@ -6,14 +6,47 @@ group: migration
 toc: true
 ---
 
+## Stable changes
+
+Moving from Beta 3 to our stable v4.0 release, there are no breaking changes, but there are some notable changes.
+
+### Printing
+- Fixed broken print utilities. Previously, using a `.d-print-*` class would unexpectedly overrule any other `.d-*` class. Now, they match our other display utilities and only apply to that media (`@media print`).
+
+- Expanded available print display utilities to match other utilities. Beta 3 and older only had `block`, `inline-block`, `inline`, and `none`. Stable v4 added `flex`, `inline-flex`, `table`, `table-row`, and `table-cell`.
+
+- Fixed print preview rendering across browsers with new print styles that specify `@page` `size`.
+
 ## Beta 3 changes
 
 While Beta 2 saw the bulk of our breaking changes during the beta phase, but we still have a few that needed to be addressed in the Beta 3 release. These changes apply if you're updating to Beta 3 from Beta 2 or any older version of Bootstrap.
 
+### Miscellaneous
+
 - Removed the unused `$thumbnail-transition` variable. We weren't transitioning anything, so it was just extra code.
-- Changed the CSS for managing multiple `background-image`s on custom form checkboxes and radios. Previously, the `.custom-control-indicator` element had the background color, gradient, and SVG icon. Customizing the background gradient meant replacing all of those every time you needed to change just one. Now, we have `.custom-control-indicator` for the fill and gradient and `.custom-control-indicator::before` handles the icon.
 - The npm package no longer includes any files other than our source and dist files; if you relied on them and were running our scripts via the `node_modules` folder, you should adapt your workflow.
+
+### Forms
+
+- Rewrote both custom and default checkboxes and radios. Now, both have matching HTML structure (outer `<div>` with sibling `<input>` and `<label>`) and the same layout styles (stacked default, inline with modifier class). This allows us to style the label based on the input's state, simplifying support for the `disabled` attribute (previously requiring a parent class) and better supporting our form validation.
+
+  As part of this, we've changed the CSS for managing multiple `background-image`s on custom form checkboxes and radios. Previously, the now removed `.custom-control-indicator` element had the background color, gradient, and SVG icon. Customizing the background gradient meant replacing all of those every time you needed to change just one. Now, we have `.custom-control-label::before` for the fill and gradient and `.custom-control-label::after` handles the icon.
+
+  To make a custom check inline, add `.custom-control-inline`.
+
 - Updated selector for input-based button groups. Instead of `[data-toggle="buttons"] { }` for style and behavior, we use the `data` attribute just for JS behaviors and rely on a new `.btn-group-toggle` class for styling.
+
+- Removed `.col-form-legend` in favor of a slightly improved `.col-form-label`. This way `.col-form-label-sm` and `.col-form-label-lg` can be used on `<legend>` elements with ease.
+
+- Custom file inputs received a change to their `$custom-file-text` Sass variable. It's no longer a nested Sass map and now only powers one string—the `Browse` button as that is now the only pseudo-element generated from our Sass. The `Choose file` text now comes from the `.custom-file-label`.
+
+### Input groups
+
+- Input group addons are now specific to their placement relative to an input. We've dropped `.input-group-addon` and `.input-group-btn` for two new classes, `.input-group-prepend` and `.input-group-append`. You must explicitly use an append or a prepend now, simplifying much of our CSS. Within an append or prepend, place your buttons as they would exist anywhere else, but wrap text in `.input-group-text`.
+
+- Validation styles are now supported, as are multiple inputs (though you can only validate one input per group).
+
+- Sizing classes must be on the parent `.input-group` and not the individual form elements.
 
 ## Beta 2 changes
 
@@ -78,7 +111,7 @@ Here are the big ticket items you'll want to be aware of when moving from v3 to 
 - **Dropped the Glyphicons icon font.** If you need icons, some options are:
   - the upstream version of [Glyphicons](https://glyphicons.com/)
   - [Octicons](https://octicons.github.com/)
-  - [Font Awesome](http://fontawesome.io/)
+  - [Font Awesome](https://fontawesome.com/)
   - See the [Extend page]({{ site.baseurl }}/docs/{{ site.docs_version }}/extend/icons/) for a list of alternatives. Have additional suggestions? Please open an issue or PR.
 - **Dropped the Affix jQuery plugin.**
   - We recommend using `position: sticky` instead. [See the HTML5 Please entry](http://html5please.com/#sticky) for details and specific polyfill recommendations. One suggestion is to use an `@supports` rule for implementing it (e.g., `@supports (position: sticky) { ... }`)/
@@ -264,6 +297,7 @@ Dropped entirely for the new card component.
   - Added new [responsive margin and padding utilities]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/spacing/) for all sides, plus vertical and horizontal shorthands.
   - Added boatload of [flexbox utilities]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/flex/).
   - Dropped `.center-block` for the new `.mx-auto` class.
+- Clearfix updated to drop support for older browser versions.
 
 ### Vendor prefix mixins
 
@@ -279,7 +313,6 @@ Our documentation received an upgrade across the board as well. Here's the low d
   - `bugify.rb` is used to efficiently list out the entries on our [browser bugs]({{ site.baseurl }}/docs/{{ site.docs_version }}/browser-bugs/) page.
   - `example.rb` is a custom fork of the default `highlight.rb` plugin, allowing for easier example-code handling.
   - `callout.rb` is a similar custom fork of that, but designed for our special docs callouts.
-  - `markdown-block.rb` is used to to render Markdown snippets within HTML elements like tables.
   - [jekyll-toc](https://github.com/toshimaru/jekyll-toc) is used to generate our table of contents.
 - All docs content has been rewritten in Markdown (instead of HTML) for easier editing.
 - Pages have been reorganized for simpler content and a more approachable hierarchy.

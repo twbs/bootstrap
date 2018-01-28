@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Introduction
-description: Get started with Bootstrap, the world's most popular framework for building responsive, mobile-first sites, with the Bootstrap CDN and a template starter page.
+description: Get started with Bootstrap, the world's most popular framework for building responsive, mobile-first sites, with BootstrapCDN and a template starter page.
 group: getting-started
 redirect_from:
   - /docs/
@@ -13,7 +13,7 @@ toc: true
 
 ## Quick start
 
-Looking to quickly add Bootstrap to your project? Use the Bootstrap CDN, provided for free by the folks at MaxCDN. Using a package manager or need to download the source files? [Head to the downloads page.]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/download/)
+Looking to quickly add Bootstrap to your project? Use BootstrapCDN, provided for free by the folks at MaxCDN. Using a package manager or need to download the source files? [Head to the downloads page.]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/download/)
 
 ### CSS
 
@@ -39,7 +39,7 @@ Curious which components explicitly require jQuery, our JS, and Popper.js? Click
 
 <details>
 <summary class="text-primary mb-3">Show components requiring JavaScript</summary>
-{% markdown %}
+{% capture markdown %}
 - Alerts for dismissing
 - Buttons for toggling states and checkbox/radio functionality
 - Carousel for all slide behaviors, controls, and indicators
@@ -49,7 +49,8 @@ Curious which components explicitly require jQuery, our JS, and Popper.js? Click
 - Navbar for extending our Collapse plugin to implement responsive behavior
 - Tooltips and popovers for displaying and positioning (also requires [Popper.js](https://popper.js.org/))
 - Scrollspy for scroll behavior and navigation updates
-{% endmarkdown %}
+{% endcapture %}
+{{ markdown | markdownify }}
 </details>
 
 ## Starter template

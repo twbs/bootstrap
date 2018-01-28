@@ -44,46 +44,18 @@
 }
 
 .btn-group {
-  > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
-    border-radius: 0;
-  }
-
-  // Set corners individual because sometimes a single button can be in a .btn-group
-  // and we need :first-child and :last-child to both match
   > .btn:first-child {
     margin-left: 0;
-
-    &:not(:last-child):not(.dropdown-toggle) {
-      @include border-right-radius(0);
-    }
   }
 
-
-  // Need .dropdown-toggle since :last-child doesn't apply given a .dropdown-menu
-  // immediately after it
-  > .btn:last-child:not(:first-child),
-  > .dropdown-toggle:not(:first-child) {
-    @include border-left-radius(0);
+  // Reset rounded corners
+  > .btn:not(:last-child):not(.dropdown-toggle),
+  > .btn-group:not(:last-child) > .btn {
+    @include border-right-radius(0);
   }
 
-  // Custom edits for including btn-groups within btn-groups (useful for including
-  // dropdown buttons within a btn-group)
-  > .btn-group {
-    float: left;
-  }
-
-  > .btn-group:not(:first-child):not(:last-child) > .btn {
-    border-radius: 0;
-  }
-
-  > .btn-group:first-child:not(:last-child) {
-    > .btn:last-child,
-    > .dropdown-toggle {
-      @include border-right-radius(0);
-    }
-  }
-
-  > .btn-group:last-child:not(:first-child) > .btn:first-child {
+  > .btn:not(:first-child),
+  > .btn-group:not(:first-child) > .btn {
     @include border-left-radius(0);
   }
 }
@@ -154,32 +126,14 @@
     margin-left: 0;
   }
 
-  > .btn {
-    &:not(:first-child):not(:last-child) {
-      border-radius: 0;
-    }
-
-    &:first-child:not(:last-child) {
-      @include border-bottom-radius(0);
-    }
-
-    &:last-child:not(:first-child) {
-      @include border-top-radius(0);
-    }
+  // Reset rounded corners
+  > .btn:not(:last-child):not(.dropdown-toggle),
+  > .btn-group:not(:last-child) > .btn {
+    @include border-bottom-radius(0);
   }
 
-  > .btn-group:not(:first-child):not(:last-child) > .btn {
-    border-radius: 0;
-  }
-
-  > .btn-group:first-child:not(:last-child) {
-    > .btn:last-child,
-    > .dropdown-toggle {
-      @include border-bottom-radius(0);
-    }
-  }
-
-  > .btn-group:last-child:not(:first-child) > .btn:first-child {
+  > .btn:not(:first-child),
+  > .btn-group:not(:first-child) > .btn {
     @include border-top-radius(0);
   }
 }

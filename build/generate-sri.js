@@ -5,8 +5,8 @@
  * Remember to use the same vendor files as the CDN ones,
  * otherwise the hashes won't match!
  *
- * Copyright 2017 The Bootstrap Authors
- * Copyright 2017 Twitter, Inc.
+ * Copyright 2017-2018 The Bootstrap Authors
+ * Copyright 2017-2018 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
@@ -16,11 +16,10 @@ const fs = require('fs')
 const path = require('path')
 const sriToolbox = require('sri-toolbox')
 const sh = require('shelljs')
-const sed = sh.sed
 
 sh.config.fatal = true
 
-const configFile = path.join(__dirname, '..', '_config.yml')
+const configFile = path.join(__dirname, '../_config.yml')
 
 // Array of objects which holds the files to generate SRI hashes for.
 // `file` is the path from the root folder
@@ -56,6 +55,6 @@ files.forEach((file) => {
 
     console.log(`${file.configPropertyName}: ${integrity}`)
 
-    sed('-i', new RegExp(`(\\s${file.configPropertyName}:\\s+"|')(\\S+)("|')`), '$1' + integrity + '$3', configFile)
+    sh.sed('-i', new RegExp(`(\\s${file.configPropertyName}:\\s+"|')(\\S+)("|')`), `$1${integrity}$3`, configFile)
   })
 })

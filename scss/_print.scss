@@ -20,9 +20,10 @@
       box-shadow: none !important;
     }
 
-    a,
-    a:visited {
-      text-decoration: underline;
+    a {
+      &:not(.btn) {
+        text-decoration: underline;
+      }
     }
 
     // Bootstrap specific; comment the following selector out
@@ -81,6 +82,19 @@
     }
 
     // Bootstrap specific changes start
+
+    // Specify a size and min-width to make printing closer across browsers.
+    // We don't set margin here because it breaks `size` in Chrome. We also
+    // don't use `!important` on `size` as it breaks in Chrome.
+    @page {
+      size: $print-page-size;
+    }
+    body {
+      min-width: $print-body-min-width !important;
+    }
+    .container {
+      min-width: $print-body-min-width !important;
+    }
 
     // Bootstrap components
     .navbar {
