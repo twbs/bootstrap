@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('NPM Install') {
       steps {
-        powershell 'Write-Host "Hello, World!"'
+        powershell 'Write-Output "Hello, World!"'
       }
     }
   }
