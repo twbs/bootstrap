@@ -4,7 +4,7 @@ pipeline {
     stage('Install Deps') {
       steps {
         powershell(script: 'npm install', returnStdout: true)
-        powershell(script: '$Env:Path', returnStdout: true)
+        powershell(script: 'Write-Output $Env:Path', returnStdout: true)
         powershell 'bundle install'
       }
     }
