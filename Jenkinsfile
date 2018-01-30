@@ -3,17 +3,17 @@ pipeline {
   stages {
     stage('NPM Install') {
       steps {
-        powershell 'npm install'
+        powershell(script: 'npm install', returnStdout: true)
       }
     }
     stage('Build and Test') {
       steps {
-        powershell 'npm test'
+        powershell(script: 'npm test', returnStdout: true, returnStatus: true)
       }
     }
     stage('Build Docs') {
       steps {
-        powershell 'npm run docs'
+        powershell(script: 'npm run docs', returnStdout: true, returnStatus: true)
       }
     }
   }
