@@ -4,8 +4,7 @@ pipeline {
     stage('Install Deps') {
       steps {
         powershell(script: 'npm install', returnStdout: true)
-        powershell(script: 'gem install bundler', returnStatus: true, returnStdout: true)
-        powershell 'bundle install'
+        bat 'bundle install'
       }
     }
     stage('Build and Test') {
