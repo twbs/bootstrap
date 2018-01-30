@@ -3,7 +3,17 @@ pipeline {
   stages {
     stage('NPM Install') {
       steps {
-        powershell 'Write-Output "Hello, World!"'
+        powershell 'npm install'
+      }
+    }
+    stage('Build and Test') {
+      steps {
+        powershell 'npm test'
+      }
+    }
+    stage('Build Docs') {
+      steps {
+        powershell 'npm run docs'
       }
     }
   }
