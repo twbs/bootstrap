@@ -57,7 +57,7 @@ Learn more about this in our [`z-index` layout page](/docs/4.0/layout/overview/#
 
 ## HTML and CSS over JS
 
-Whenever possible, we prefer to write HTML and CSS over JavaScript. In general, HTML and CSS are more prolific and accessible to more people of all different experience levels. HTML and CSS are also faster in your browser than JavaScript, and your browser general provides a great deal of functionality for you.
+Whenever possible, we prefer to write HTML and CSS over JavaScript. In general, HTML and CSS are more prolific and accessible to more people of all different experience levels. HTML and CSS are also faster in your browser than JavaScript, and your browser generally provides a great deal of functionality for you.
 
 This principle is our first-class JavaScript API is `data` attributes. You don’t need to write nearly any JavaScript to use our JavaScript plugins; instead, write HTML. Read more about this in [our JavaScript overview page]().
 
