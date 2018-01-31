@@ -48,7 +48,6 @@
 }
 
 .example-content-main {
-  @include make-col-ready();
 
   @include media-breakpoint-up(sm) {
     @include make-col(6);
@@ -60,7 +59,6 @@
 }
 
 .example-content-secondary {
-  @include make-col-ready();
 
   @include media-breakpoint-up(sm) {
     @include make-col(6);
