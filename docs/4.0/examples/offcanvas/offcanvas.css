@@ -20,7 +20,8 @@ body {
     background-color: var(--gray-dark);
     transition: visibility .3s ease-in-out, -webkit-transform .3s ease-in-out;
     transition: visibility .3s ease-in-out, transform .3s ease-in-out;
-    transition: visibility .3s ease-in-out, transform .3s ease-in-out, -webkit-transform .3s ease-in-out;    -webkit-transform: translateX(100%);
+    transition: visibility .3s ease-in-out, transform .3s ease-in-out, -webkit-transform .3s ease-in-out;
+    -webkit-transform: translateX(100%);
     transform: translateX(100%);
   }
   .offcanvas-collapse.open {
