@@ -16,14 +16,16 @@ body {
     padding-right: 1rem;
     padding-left: 1rem;
     overflow-y: auto;
+    visibility: hidden;
     background-color: var(--gray-dark);
-    transition: -webkit-transform .3s ease-in-out;
-    transition: transform .3s ease-in-out;
-    transition: transform .3s ease-in-out, -webkit-transform .3s ease-in-out;
+    transition: visibility .3s ease-in-out, -webkit-transform .3s ease-in-out;
+    transition: visibility .3s ease-in-out, transform .3s ease-in-out;
+    transition: visibility .3s ease-in-out, transform .3s ease-in-out, -webkit-transform .3s ease-in-out;
     -webkit-transform: translateX(100%);
     transform: translateX(100%);
   }
   .offcanvas-collapse.open {
+    visibility: visible;
     -webkit-transform: translateX(-1rem);
     transform: translateX(-1rem); /* Account for horizontal padding on navbar */
   }

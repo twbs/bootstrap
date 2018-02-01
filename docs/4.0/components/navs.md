@@ -347,7 +347,7 @@ Note that dynamic tabbed interfaces should <em>not</em> contain dropdown menus, 
 </div>
 {% endhighlight %}
 
-To help fit your needs, this works with `<ul>`-based markup, as shown above, or with any arbitrary "roll your own" markup. Note that if you're using `<nav>`, you shouldn't add `role="tablist"` directly to it, as this would override the element's native role as a navigation landmark. Instead, switch to an alternative element (in the exammple below, a simple `<div>`) and wrap the `<nav>` around it.
+To help fit your needs, this works with `<ul>`-based markup, as shown above, or with any arbitrary "roll your own" markup. Note that if you're using `<nav>`, you shouldn't add `role="tablist"` directly to it, as this would override the element's native role as a navigation landmark. Instead, switch to an alternative element (in the example below, a simple `<div>`) and wrap the `<nav>` around it.
 
 <div class="bd-example bd-example-tabs">
   <nav>
