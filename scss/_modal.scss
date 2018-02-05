@@ -19,6 +19,7 @@
   z-index: $zindex-modal;
   display: none;
   overflow: hidden;
+  overscroll-behavior: contain;
   // Prevent Chrome on Windows from adding a focus outline. For details, see
   // https://github.com/twbs/bootstrap/pull/10951.
   outline: 0;
