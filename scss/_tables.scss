@@ -113,11 +113,13 @@
 
 // stylelint-disable-next-line no-duplicate-selectors
 .table {
-  .thead-dark {
-    th {
-      color: $table-dark-color;
-      background-color: $table-dark-bg;
-      border-color: $table-dark-border-color;
+  @media not print {
+    .thead-dark {
+      th {
+        color: $table-dark-color;
+        background-color: $table-dark-bg;
+        border-color: $table-dark-border-color;
+      }
     }
   }
 
@@ -130,30 +132,32 @@
   }
 }
 
-.table-dark {
-  color: $table-dark-color;
-  background-color: $table-dark-bg;
+@media not print {
+  .table-dark {
+    color: $table-dark-color;
+    background-color: $table-dark-bg;
 
-  th,
-  td,
-  thead th {
-    border-color: $table-dark-border-color;
-  }
-
-  &.table-bordered {
-    border: 0;
-  }
-
-  &.table-striped {
-    tbody tr:nth-of-type(odd) {
-      background-color: $table-dark-accent-bg;
+    th,
+    td,
+    thead th {
+      border-color: $table-dark-border-color;
     }
-  }
 
-  &.table-hover {
-    tbody tr {
-      @include hover {
-        background-color: $table-dark-hover-bg;
+    &.table-bordered {
+      border: 0;
+    }
+
+    &.table-striped {
+      tbody tr:nth-of-type(odd) {
+        background-color: $table-dark-accent-bg;
+      }
+    }
+
+    &.table-hover {
+      tbody tr {
+        @include hover {
+          background-color: $table-dark-hover-bg;
+        }
       }
     }
   }
