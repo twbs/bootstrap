@@ -6,6 +6,17 @@ group: migration
 toc: true
 ---
 
+## Stable changes
+
+Moving from Beta 3 to our stable v4.0 release, there are no breaking changes, but there are some notable changes.
+
+### Printing
+- Fixed broken print utilities. Previously, using a `.d-print-*` class would unexpectedly overrule any other `.d-*` class. Now, they match our other display utilities and only apply to that media (`@media print`).
+
+- Expanded available print display utilities to match other utilities. Beta 3 and older only had `block`, `inline-block`, `inline`, and `none`. Stable v4 added `flex`, `inline-flex`, `table`, `table-row`, and `table-cell`.
+
+- Fixed print preview rendering across browsers with new print styles that specify `@page` `size`.
+
 ## Beta 3 changes
 
 While Beta 2 saw the bulk of our breaking changes during the beta phase, but we still have a few that needed to be addressed in the Beta 3 release. These changes apply if you're updating to Beta 3 from Beta 2 or any older version of Bootstrap.
@@ -31,7 +42,7 @@ While Beta 2 saw the bulk of our breaking changes during the beta phase, but we 
 
 ### Input groups
 
-- Input group addons are now specific to their placement relative to an input. We've dropped `.input-group-addon` and `.input-group-btn` for two new classes, `.input-group-prepend` and `.input-group-append`. You must explicitly use an append or a prepend now, simplifying much of our CSS.
+- Input group addons are now specific to their placement relative to an input. We've dropped `.input-group-addon` and `.input-group-btn` for two new classes, `.input-group-prepend` and `.input-group-append`. You must explicitly use an append or a prepend now, simplifying much of our CSS. Within an append or prepend, place your buttons as they would exist anywhere else, but wrap text in `.input-group-text`.
 
 - Validation styles are now supported, as are multiple inputs (though you can only validate one input per group).
 
@@ -133,7 +144,6 @@ New to Bootstrap 4 is the [Reboot]({{ site.baseurl }}/docs/{{ site.docs_version 
 ### Tables
 
 - Nearly all instances of the `>` selector have been removed, meaning nested tables will now automatically inherit styles from their parents. This greatly simplifies our selectors and potential customizations.
-- Responsive tables no longer require a wrapping element. Instead, just put the `.table-responsive` right on the `<table>`.
 - Renamed `.table-condensed` to `.table-sm` for consistency.
 - Added a new `.table-inverse` option.
 - Added table header modifiers: `.thead-default` and `.thead-inverse`.
@@ -302,7 +312,6 @@ Our documentation received an upgrade across the board as well. Here's the low d
   - `bugify.rb` is used to efficiently list out the entries on our [browser bugs]({{ site.baseurl }}/docs/{{ site.docs_version }}/browser-bugs/) page.
   - `example.rb` is a custom fork of the default `highlight.rb` plugin, allowing for easier example-code handling.
   - `callout.rb` is a similar custom fork of that, but designed for our special docs callouts.
-  - `markdown-block.rb` is used to to render Markdown snippets within HTML elements like tables.
   - [jekyll-toc](https://github.com/toshimaru/jekyll-toc) is used to generate our table of contents.
 - All docs content has been rewritten in Markdown (instead of HTML) for easier editing.
 - Pages have been reorganized for simpler content and a more approachable hierarchy.

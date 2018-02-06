@@ -4,8 +4,8 @@
 
 /*!
  * JavaScript for Bootstrap's docs (https://getbootstrap.com)
- * Copyright 2011-2017 The Bootstrap Authors
- * Copyright 2011-2017 Twitter, Inc.
+ * Copyright 2011-2018 The Bootstrap Authors
+ * Copyright 2011-2018 Twitter, Inc.
  * Licensed under the Creative Commons Attribution 3.0 Unported License. For
  * details, see https://creativecommons.org/licenses/by/3.0/.
  */
@@ -16,7 +16,6 @@
   'use strict'
 
   $(function () {
-
     // Tooltip and popover demos
     $('.tooltip-demo').tooltip({
       selector: '[data-toggle="tooltip"]',
@@ -60,7 +59,7 @@
       $('.btn-clipboard')
         .tooltip()
         .on('mouseleave', function () {
-          // explicitly hide tooltip, since after clicking it remains
+          // Explicitly hide tooltip, since after clicking it remains
           // focused (as it's a button), so tooltip would otherwise
           // remain visible until focus is moved away
           $(this).tooltip('hide')

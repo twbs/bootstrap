@@ -20,7 +20,7 @@ Lastly, if you're building our JavaScript from source, it [requires `util.js`]({
 
 Carousels don't automatically normalize slide dimensions. As such, you may need to use additional utilities or custom styles to appropriately size content. While carousels support previous/next controls and indicators, they're not explicitly required. Add and customize as you see fit.
 
-Be sure to set a unique id on the `.carousel` for optional controls, especially if you're using multiple carousels on a single page.
+**The `.active` class needs to be added to one of the slides** otherwise the carousel will not be visible. Also be sure to set a unique id on the `.carousel` for optional controls, especially if you're using multiple carousels on a single page.
 
 ### Slides only
 
@@ -103,12 +103,6 @@ You can also add the indicators to the carousel, alongside the controls, too.
 </div>
 {% endexample %}
 
-{% callout warning %}
-##### Initial active element required
-
-The `.active` class needs to be added to one of the slides. Otherwise, the carousel will not be visible.
-{% endcallout %}
-
 ### With captions
 
 Add captions to your slides easily with the `.carousel-caption` element within any `.carousel-item`. They can be easily hidden on smaller viewports, as shown below, with optional [display utilities]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/display/). We hide them initially with `.d-none` and bring them back on medium-sized devices with `.d-md-block`.
@@ -163,6 +157,35 @@ Add captions to your slides easily with the `.carousel-caption` element within a
   </div>
 </div>
 {% endhighlight %}
+
+### Crossfade
+
+Add `.carousel-fade` to your carousel to animate slides with a fade transition instead of a slide.
+
+{% example html %}
+<div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" data-src="holder.js/800x400?auto=yes&bg=777&fg=555&text=First slide" alt="First slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" data-src="holder.js/800x400?auto=yes&bg=666&fg=444&text=Second slide" alt="Second slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" data-src="holder.js/800x400?auto=yes&bg=555&fg=333&text=Third slide" alt="Third slide">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+{% endexample %}
+
 
 ## Usage
 

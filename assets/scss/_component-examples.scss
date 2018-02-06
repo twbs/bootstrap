@@ -147,6 +147,10 @@
     }
   }
 
+  .custom-file-input:lang(es) ~ .custom-file-label::after {
+    content: "Elegir";
+  }
+
   > .form-control {
     + .form-control {
       margin-top: .5rem;

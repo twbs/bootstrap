@@ -1,17 +1,14 @@
 import $ from 'jquery'
 import Util from './util'
 
-
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-beta.3): modal.js
+ * Bootstrap (v4.0.0): modal.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
 
 const Modal = (($) => {
-
-
   /**
    * ------------------------------------------------------------------------
    * Constants
@@ -19,7 +16,7 @@ const Modal = (($) => {
    */
 
   const NAME                         = 'modal'
-  const VERSION                      = '4.0.0-beta.3'
+  const VERSION                      = '4.0.0'
   const DATA_KEY                     = 'bs.modal'
   const EVENT_KEY                    = `.${DATA_KEY}`
   const DATA_API_KEY                 = '.data-api'
@@ -73,7 +70,6 @@ const Modal = (($) => {
     NAVBAR_TOGGLER     : '.navbar-toggler'
   }
 
-
   /**
    * ------------------------------------------------------------------------
    * Class Definition
@@ -81,7 +77,6 @@ const Modal = (($) => {
    */
 
   class Modal {
-
     constructor(element, config) {
       this._config              = this._getConfig(config)
       this._element             = element
@@ -94,8 +89,7 @@ const Modal = (($) => {
       this._scrollbarWidth      = 0
     }
 
-
-    // getters
+    // Getters
 
     static get VERSION() {
       return VERSION
@@ -105,8 +99,7 @@ const Modal = (($) => {
       return Default
     }
 
-
-    // public
+    // Public
 
     toggle(relatedTarget) {
       return this._isShown ? this.hide() : this.show(relatedTarget)
@@ -196,7 +189,6 @@ const Modal = (($) => {
       $(this._dialog).off(Event.MOUSEDOWN_DISMISS)
 
       if (transition) {
-
         $(this._element)
           .one(Util.TRANSITION_END, (event) => this._hideModal(event))
           .emulateTransitionEnd(TRANSITION_DURATION)
@@ -224,7 +216,7 @@ const Modal = (($) => {
       this._adjustDialog()
     }
 
-    // private
+    // Private
 
     _getConfig(config) {
       config = {
@@ -241,7 +233,7 @@ const Modal = (($) => {
 
       if (!this._element.parentNode ||
          this._element.parentNode.nodeType !== Node.ELEMENT_NODE) {
-        // don't move modals dom position
+        // Don't move modal's DOM position
         document.body.appendChild(this._element)
       }
 
@@ -282,11 +274,11 @@ const Modal = (($) => {
 
     _enforceFocus() {
       $(document)
-        .off(Event.FOCUSIN) // guard against infinite focus loop
+        .off(Event.FOCUSIN) // Guard against infinite focus loop
         .on(Event.FOCUSIN, (event) => {
           if (document !== event.target &&
               this._element !== event.target &&
-              !$(this._element).has(event.target).length) {
+              $(this._element).has(event.target).length === 0) {
             this._element.focus()
           }
         })
@@ -300,7 +292,6 @@ const Modal = (($) => {
             this.hide()
           }
         })
-
       } else if (!this._isShown) {
         $(this._element).off(Event.KEYDOWN_DISMISS)
       }
@@ -334,8 +325,8 @@ const Modal = (($) => {
     }
 
     _showBackdrop(callback) {
-      const animate = $(this._element).hasClass(ClassName.FADE) ?
-        ClassName.FADE : ''
+      const animate = $(this._element).hasClass(ClassName.FADE)
+        ? ClassName.FADE : ''
 
       if (this._isShown && this._config.backdrop) {
         const doAnimate = Util.supportsTransitionEnd() && animate
@@ -382,7 +373,6 @@ const Modal = (($) => {
         $(this._backdrop)
           .one(Util.TRANSITION_END, callback)
           .emulateTransitionEnd(BACKDROP_TRANSITION_DURATION)
-
       } else if (!this._isShown && this._backdrop) {
         $(this._backdrop).removeClass(ClassName.SHOW)
 
@@ -401,12 +391,10 @@ const Modal = (($) => {
         } else {
           callbackRemove()
         }
-
       } else if (callback) {
         callback()
       }
     }
-
 
     // ----------------------------------------------------------------------
     // the following methods are used to handle overflowing modals
@@ -503,12 +491,11 @@ const Modal = (($) => {
       return scrollbarWidth
     }
 
-
-    // static
+    // Static
 
     static _jQueryInterface(config, relatedTarget) {
       return this.each(function () {
-        let data      = $(this).data(DATA_KEY)
+        let data = $(this).data(DATA_KEY)
         const _config = {
           ...Modal.Default,
           ...$(this).data(),
@@ -522,7 +509,7 @@ const Modal = (($) => {
 
         if (typeof config === 'string') {
           if (typeof data[config] === 'undefined') {
-            throw new Error(`No method named "${config}"`)
+            throw new TypeError(`No method named "${config}"`)
           }
           data[config](relatedTarget)
         } else if (_config.show) {
@@ -530,9 +517,7 @@ const Modal = (($) => {
         }
       })
     }
-
   }
-
 
   /**
    * ------------------------------------------------------------------------
@@ -548,8 +533,8 @@ const Modal = (($) => {
       target = $(selector)[0]
     }
 
-    const config = $(target).data(DATA_KEY) ?
-      'toggle' : {
+    const config = $(target).data(DATA_KEY)
+      ? 'toggle' : {
         ...$(target).data(),
         ...$(this).data()
       }
@@ -560,7 +545,7 @@ const Modal = (($) => {
 
     const $target = $(target).one(Event.SHOW, (showEvent) => {
       if (showEvent.isDefaultPrevented()) {
-        // only register focus restorer if modal will actually get shown
+        // Only register focus restorer if modal will actually get shown
         return
       }
 
@@ -574,22 +559,20 @@ const Modal = (($) => {
     Modal._jQueryInterface.call($(target), config, this)
   })
 
-
   /**
    * ------------------------------------------------------------------------
    * jQuery
    * ------------------------------------------------------------------------
    */
 
-  $.fn[NAME]             = Modal._jQueryInterface
+  $.fn[NAME] = Modal._jQueryInterface
   $.fn[NAME].Constructor = Modal
-  $.fn[NAME].noConflict  = function () {
+  $.fn[NAME].noConflict = function () {
     $.fn[NAME] = JQUERY_NO_CONFLICT
     return Modal._jQueryInterface
   }
 
   return Modal
-
 })($)
 
 export default Modal
