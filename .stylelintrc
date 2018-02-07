@@ -221,6 +221,7 @@
     ],
     "property-no-vendor-prefix": true,
     "rule-empty-line-before": null,
+    "scss/dollar-variable-default": [true, { "ignore": "local" }],
     "selector-attribute-quotes": "always",
     "selector-list-comma-newline-after": "always",
     "selector-list-comma-newline-before": "never-multi-line",
