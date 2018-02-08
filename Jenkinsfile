@@ -20,7 +20,7 @@ pipeline {
     }
     stage('Publish') {
       steps {
-        powershell(script: 'publish.ps1', returnStatus: true, returnStdout: true)
+        powershell(script: '.\\publish.ps1', returnStatus: true, returnStdout: true)
       }
     }
   }
