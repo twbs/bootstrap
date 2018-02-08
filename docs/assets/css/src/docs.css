@@ -638,8 +638,13 @@ h4 code {
 
 /* Space things out */
 .bs-docs-section {
-  margin-bottom: 64px;
+  margin-bottom: 32px;
 }
+.bs-docs-section .page-header,.bs-docs-section .page-subheader {
+  padding-top: 88px;
+  margin-top: 0;
+}
+
 .bs-docs-section:last-child {
   margin-bottom: 0;
 }
