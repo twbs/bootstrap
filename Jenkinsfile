@@ -5,7 +5,7 @@ pipeline {
       steps {    
         bat(script: '''
           echo %PATH%
-          echo %USERDOMAIN%\%USERNAME%
+          echo %USERDOMAIN%\\%USERNAME%
         ''', returnStdout: true)
         powershell(script: 'npm cache verify', returnStdout: true)
         powershell(script: 'npm install', returnStdout: true)
