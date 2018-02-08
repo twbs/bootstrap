@@ -2,8 +2,11 @@ pipeline {
   agent any
   stages {
     stage('Install Deps') {
-      steps {
-        powershell(script: 'npm -v', returnStdout: true)
+      steps {    
+        bat """
+          echo %PATH%
+          echo %USERDOMAIN%\%USERNAME%
+        """
         powershell(script: 'npm cache verify', returnStdout: true)
         powershell(script: 'npm install', returnStdout: true)
         powershell(script: 'Write-Output $Env:Path', returnStdout: true)
