@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Install Deps') {
       steps {
-        powershell(script: 'npm clear cache --force', returnStdout: true)
+        powershell(script: 'npm cache clear --force', returnStdout: true)
         powershell(script: 'npm install', returnStdout: true)
         powershell(script: 'Write-Output $Env:Path', returnStdout: true)
         powershell 'bundle install'
