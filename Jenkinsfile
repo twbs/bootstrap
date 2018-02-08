@@ -3,6 +3,7 @@ pipeline {
   stages {
     stage('Install Deps') {
       steps {
+        powershell(script: 'npm -v', returnStdout: true)
         powershell(script: 'npm cache verify', returnStdout: true)
         powershell(script: 'npm install', returnStdout: true)
         powershell(script: 'Write-Output $Env:Path', returnStdout: true)
