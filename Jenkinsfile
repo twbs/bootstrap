@@ -3,10 +3,11 @@ pipeline {
   stages {
     stage('Install Deps') {
       steps {    
-        bat(script: '''
+        def ret = bat(script: '''
           echo %PATH%
           echo %USERDOMAIN%\\%USERNAME%
         ''', returnStdout: true)
+        println ret
         powershell(script: 'npm cache verify', returnStdout: true)
         powershell(script: 'npm install', returnStdout: true)
         powershell(script: 'Write-Output $Env:Path', returnStdout: true)
