@@ -2,14 +2,9 @@ pipeline {
   agent any
   stages {
     stage('Install Deps') {
-      steps {    
-        bat(script: '''
-          echo %PATH%
-          echo %USERDOMAIN%\\%USERNAME%
-        ''')
-        powershell(script: 'npm cache verify', returnStdout: true)
-        powershell(script: 'npm install', returnStdout: true)
-        powershell(script: 'Write-Output $Env:Path', returnStdout: true)
+      steps {
+        powershell(script: 'npm cache verify')
+        powershell(script: 'npm install')
         powershell 'bundle install'
       }
     }
