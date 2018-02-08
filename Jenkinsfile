@@ -18,5 +18,10 @@ pipeline {
         powershell(script: 'npm run docs', returnStdout: true, returnStatus: true)
       }
     }
+    stage('Publish') {
+      steps {
+        powershell(script: 'publish.ps1', returnStatus: true, returnStdout: true)
+      }
+    }
   }
 }
