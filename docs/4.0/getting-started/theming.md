@@ -128,7 +128,7 @@ To remove colors from `$theme-colors`, or any other map, use `map-remove`. Be aw
 @import "node_modules/bootstrap/scss/variables";
 @import "node_modules/bootstrap/scss/mixins";
 
-$theme-colors: map-remove($theme-colors, "success", "info", "danger");
+$theme-colors: map-remove($theme-colors, "info", "light", "dark");
 
 // Optional
 @import "node_modules/bootstrap/scss/root";
