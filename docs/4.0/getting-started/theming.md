@@ -120,10 +120,21 @@ $theme-colors: (
 
 #### Remove from map
 
-To remove colors from `$theme-colors`, or any other map, use `map-remove`:
+To remove colors from `$theme-colors`, or any other map, use `map-remove`. Be aware you must insert it between our requirements and options:
 
 {% highlight scss %}
-$theme-colors: map-remove($theme-colors, "success", "info", "danger");
+// Required
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/mixins";
+
+$theme-colors: map-remove($theme-colors, "info", "light", "dark");
+
+// Optional
+@import "node_modules/bootstrap/scss/root";
+@import "node_modules/bootstrap/scss/reboot";
+@import "node_modules/bootstrap/scss/type";
+...
 {% endhighlight %}
 
 #### Required keys
