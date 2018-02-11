@@ -15,6 +15,14 @@
 .border-right-0  { border-right: 0 !important; }
 .border-bottom-0 { border-bottom: 0 !important; }
 .border-left-0   { border-left: 0 !important; }
+.border-x-0 {
+  border-right: 0 !important;
+  border-left: 0 !important;
+}
+.border-y-0 {
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+}
 
 @each $color, $value in $theme-colors {
   .border-#{$color} {
