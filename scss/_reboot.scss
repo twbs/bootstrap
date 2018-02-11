@@ -205,6 +205,11 @@ a {
     color: $link-hover-color;
     text-decoration: $link-hover-decoration;
   }
+
+  // Reset the `cursor` on non-disabled links. Also applies to buttons.
+  &:not(:disabled):not(.disabled) {
+    cursor: pointer;
+  }
 }
 
 // And undo these styles for placeholder links/named anchors (without href)
@@ -352,11 +357,17 @@ select {
 // 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
 //    controls in Android 4.
 // 2. Correct the inability to style clickable types in iOS and Safari.
+// 3. Reset the `cursor` on non-disabled buttons.
 button,
 html [type="button"], // 1
 [type="reset"],
 [type="submit"] {
   -webkit-appearance: button; // 2
+
+  // 3
+  &:not(:disabled):not(.disabled) {
+    cursor: pointer;
+  }
 }
 
 // Remove inner border and padding from Firefox, but don't restore the outline like Normalize.
@@ -373,7 +384,6 @@ input[type="checkbox"] {
   box-sizing: border-box; // 1. Add the correct box sizing in IE 10-
   padding: 0; // 2. Remove the padding in IE 10-
 }
-
 
 input[type="date"],
 input[type="time"],
