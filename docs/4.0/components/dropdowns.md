@@ -807,6 +807,12 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <td>'toggle'</td>
       <td>Reference element of the dropdown menu. Accepts the values of <code>'toggle'</code>, <code>'parent'</code>, or an HTMLElement reference. For more information refer to Popper.js's <a href="https://popper.js.org/popper-documentation.html#referenceObject">referenceObject docs</a>.</td>
     </tr>
+    <tr>
+      <td>display</td>
+      <td>string</td>
+      <td>dynamic | static</td>
+      <td>By default, we use Popper.js for dynamic positioning. Disable this with `static`.</td>
+    </tr>
   </tbody>
 </table>
 
