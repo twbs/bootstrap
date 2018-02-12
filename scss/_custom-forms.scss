@@ -320,7 +320,7 @@
     width: $custom-control-indicator-size;
     height: $custom-control-indicator-size;
     margin-top: -($custom-control-indicator-size * .25);
-    background-color: $custom-control-indicator-checked-bg;
+    @include gradient-bg($custom-control-indicator-checked-bg);
     border: 0;
     border-radius: $custom-control-indicator-size;
     appearance: none;
@@ -331,7 +331,7 @@
     }
 
     &:active {
-      background-color: $custom-control-indicator-active-bg;
+      @include gradient-bg($custom-control-indicator-active-bg);
     }
   }
 
@@ -348,7 +348,7 @@
   &::-moz-range-thumb {
     width: $custom-control-indicator-size;
     height: $custom-control-indicator-size;
-    background-color: $custom-control-indicator-checked-bg;
+    @include gradient-bg($custom-control-indicator-checked-bg);
     border: 0;
     border-radius: $custom-control-indicator-size;
     appearance: none;
@@ -359,7 +359,7 @@
     }
 
     &:active {
-      background-color: $custom-control-indicator-active-bg;
+      @include gradient-bg($custom-control-indicator-active-bg);
     }
   }
 
@@ -376,7 +376,7 @@
   &::-ms-thumb {
     width: $custom-control-indicator-size;
     height: $custom-control-indicator-size;
-    background-color: $custom-control-indicator-checked-bg;
+    @include gradient-bg($custom-control-indicator-checked-bg);
     border: 0;
     border-radius: $custom-control-indicator-size;
     appearance: none;
@@ -387,7 +387,7 @@
     }
 
     &:active {
-      background-color: $custom-control-indicator-active-bg;
+      @include gradient-bg($custom-control-indicator-active-bg);
     }
   }
 
