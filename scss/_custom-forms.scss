@@ -295,3 +295,110 @@
     @include border-radius(0 $custom-file-border-radius $custom-file-border-radius 0);
   }
 }
+
+// Range
+//
+// Replace the browser default range with a custom one.
+.custom-range {
+  width: 100%;
+  padding-left: 0;
+  background-color: transparent;
+  appearance: none;
+
+  &:focus {
+    outline: none;
+
+    &::-webkit-slider-thumb,
+    &::-moz-range-thumb,
+    &::-ms-thumb {
+      box-shadow: $custom-control-indicator-focus-box-shadow;
+    }
+  }
+
+  &::-moz-focus-inner,
+  &:-moz-focusring {
+    border: 0;
+    outline: none;
+  }
+
+  &:active {
+
+    &::-webkit-slider-thumb,
+    &::-moz-range-thumb,
+    &::-ms-thumb {
+      background-color: $custom-control-indicator-active-bg;
+    }
+  }
+
+  // 	webkit styling
+  &::-webkit-slider-thumb {
+    width: $custom-control-indicator-size;
+    height: $custom-control-indicator-size;
+    margin-top: -($custom-control-indicator-size * .25);
+    background-color: $custom-control-indicator-checked-bg;
+    border: 0;
+    border-radius: $custom-control-indicator-size;
+    appearance: none;
+  }
+
+  &::-webkit-slider-runnable-track {
+    width: 100%;
+    height: $custom-control-indicator-size * .5;
+    color: transparent;
+    cursor: pointer;
+    background-color: $custom-control-indicator-bg;
+    border-color: transparent;
+    border-radius: $custom-control-indicator-size;
+  }
+
+  // 	firefox styling
+  &::-moz-range-thumb {
+    width: $custom-control-indicator-size;
+    height: $custom-control-indicator-size;
+    background-color: $custom-control-indicator-checked-bg;
+    border: 0;
+    border-radius: $custom-control-indicator-size;
+    appearance: none;
+  }
+
+  &::-moz-range-track {
+    width: 100%;
+    height: $custom-control-indicator-size * .5;
+    color: transparent;
+    cursor: pointer;
+    background-color: $custom-control-indicator-bg;
+    border-color: transparent;
+    border-radius: $custom-control-indicator-size;
+  }
+
+  // 	IE styling
+  &::-ms-thumb {
+    width: $custom-control-indicator-size;
+    height: $custom-control-indicator-size;
+    background-color: $custom-control-indicator-checked-bg;
+    border: 0;
+    border-radius: $custom-control-indicator-size;
+    appearance: none;
+  }
+
+  &::-ms-track {
+    width: 100%;
+    height: $custom-control-indicator-size * .5;
+    color: transparent;
+    cursor: pointer;
+    background-color: transparent;
+    border-color: transparent;
+    border-width: ($custom-control-indicator-size * .5);
+  }
+
+  &::-ms-fill-lower {
+    background-color: $custom-control-indicator-bg;
+    border-radius: $custom-control-indicator-size;
+  }
+
+  &::-ms-fill-upper {
+    margin-right: 15px;
+    background-color: $custom-control-indicator-bg;
+    border-radius: $custom-control-indicator-size;
+  }
+}

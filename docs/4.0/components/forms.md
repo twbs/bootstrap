@@ -1171,6 +1171,20 @@ As is the `size` attribute:
 </select>
 {% endexample %}
 
+### Range
+
+Create custom `<input type="range">` controls with `.custom-range`.
+
+{% example html %}
+<input type="range" class="custom-range">
+{% endexample %}
+
+Additionally, you may specify steps by adding `min` and `max` attributes.
+
+{% example html %}
+<input type="range" class="custom-range" min="0" max="5">
+{% endexample %}
+
 ### File browser
 
 The file input is the most gnarly of the bunch and requires additional JavaScript if you'd like to hook them up with functional *Choose file...* and selected file name text.
