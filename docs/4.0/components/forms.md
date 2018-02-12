@@ -1173,7 +1173,7 @@ As is the `size` attribute:
 
 ### Range
 
-Create custom `<input type="range">` controls with `.custom-range`.
+Create custom `<input type="range">` controls with `.custom-range`. The track (the background) and thumb (the value) are both styled to appear the same across browsers. As only IE and Firefox support "filling" their track from the left or right of the thumb as a means to visually indicate progress, we do not currently support it.
 
 {% example html %}
 <input type="range" class="custom-range">
