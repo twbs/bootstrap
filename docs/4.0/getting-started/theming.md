@@ -60,7 +60,7 @@ In your `custom.scss`, you'll import Bootstrap's source Sass files. You have two
 // Required
 @import "node_modules/bootstrap/scss/functions";
 @import "node_modules/bootstrap/scss/variables";
-@import "node_modules/bootstrap/scss/mixins";
+@import "node_modules/bootstrap/scss/_mixins";
 
 // Optional
 @import "node_modules/bootstrap/scss/reboot";
@@ -126,7 +126,7 @@ To remove colors from `$theme-colors`, or any other map, use `map-remove`. Be aw
 // Required
 @import "node_modules/bootstrap/scss/functions";
 @import "node_modules/bootstrap/scss/variables";
-@import "node_modules/bootstrap/scss/mixins";
+@import "node_modules/bootstrap/scss/_mixins";
 
 $theme-colors: map-remove($theme-colors, "info", "light", "dark");
 
