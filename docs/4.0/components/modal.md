@@ -563,21 +563,12 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
     <tr>
       <td>autofocus</td>
       <td>boolean or the string <code>'notTouch'</code></td>
-      <td>false</td>
+      <td>'notTouch'</td>
       <td>Whether input with `autofocus` attribute should be given focus when modal is shown<br />
           <ul class="list-unstyled">
             <li><code>notTouch</code> will give focus when not a touch device</li>
             <li><code>true</code> will give focus regardless</li>
-          </ul>
-      </td>
-    </tr>
-    <tr>
-      <td>boolean or the string <code>'notTouch'</code></td>
-      <td>false</td>
-      <td>Whether input with `autofocus` attribute should be given focus when modal is shown<br />
-          <ul class="list-unstyled">
-            <li><code>notTouch</code> will give focus when not a touch device</li>
-            <li><code>true</code> will give focus regardless</li>
+            <li><code>false</code> no autofocus</li>
           </ul>
       </td>
     </tr>

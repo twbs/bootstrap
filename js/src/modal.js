@@ -28,7 +28,7 @@ const Modal = (($) => {
   const RIGHT_KEYCODE                = 39
 
   const Default = {
-    autofocus: false,      // true|false|notTouch
+    autofocus: 'notTouch',      // true|false|notTouch
     backdrop : true,
     keyboard : true,
     keyboardBtnNav: true,  // ability to use arrows to nav button focus
