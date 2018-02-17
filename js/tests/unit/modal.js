@@ -694,6 +694,7 @@ $(function () {
       .bootstrapModal('show')
       .bootstrapModal('hide')
   })
+
   QUnit.test('right arrow should select first button when none focused', function (assert) {
     assert.expect(1)
     var done = assert.async()
@@ -703,7 +704,9 @@ $(function () {
       '</div>' +
       '</div>')
     $div.on('shown.bs.modal', function () {
-      $div.trigger($.Event('keydown', { which: 39 }))
+      $div.trigger($.Event('keydown', {
+        which: 39
+      }))
       setTimeout(function () {
         assert.ok($(document.activeElement).is($div.find('.btn').first()), 'first button selected')
         done()
@@ -723,7 +726,9 @@ $(function () {
     $div.on('shown.bs.modal', function () {
       $div.find('.btn').first().trigger('focus')
       setTimeout(function () {
-        $div.trigger($.Event('keydown', { which: 39 }))
+        $div.trigger($.Event('keydown', {
+          which: 39
+        }))
       }, 0)
       setTimeout(function () {
         assert.ok($(document.activeElement).is($div.find('.btn').last()), 'last button selected')
@@ -744,7 +749,9 @@ $(function () {
     $div.on('shown.bs.modal', function () {
       $div.find('.btn').last().trigger('focus')
       setTimeout(function () {
-        $div.trigger($.Event('keydown', { which: 39 }))
+        $div.trigger($.Event('keydown', {
+          which: 39
+        }))
       }, 0)
       setTimeout(function () {
         assert.ok($(document.activeElement).is($div.find('.btn').first()), 'right arrow wrapped')
@@ -766,7 +773,9 @@ $(function () {
     $div.on('shown.bs.modal', function () {
       $div.find('input').trigger('focus')
       setTimeout(function () {
-        $div.trigger($.Event('keydown', { which: 39 }))
+        $div.trigger($.Event('keydown', {
+          which: 39
+        }))
       }, 0)
       setTimeout(function () {
         assert.ok($(document.activeElement).is('input'), 'input still focused')
@@ -785,7 +794,9 @@ $(function () {
       '</div>' +
       '</div>')
     $div.on('shown.bs.modal', function () {
-      $div.trigger($.Event('keydown', { which: 37 }))
+      $div.trigger($.Event('keydown', {
+        which: 37
+      }))
       setTimeout(function () {
         assert.ok($(document.activeElement).is($div.find('.btn').last()), 'last button selected')
         done()
@@ -805,7 +816,9 @@ $(function () {
     $div.on('shown.bs.modal', function () {
       $div.find('.btn').last().trigger('focus')
       setTimeout(function () {
-        $div.trigger($.Event('keydown', { which: 37 }))
+        $div.trigger($.Event('keydown', {
+          which: 37
+        }))
       }, 0)
       setTimeout(function () {
         assert.ok($(document.activeElement).is($div.find('.btn').first()), 'first button selected')
@@ -826,7 +839,9 @@ $(function () {
     $div.on('shown.bs.modal', function () {
       $div.find('.btn').first().trigger('focus')
       setTimeout(function () {
-        $div.trigger($.Event('keydown', { which: 37 }))
+        $div.trigger($.Event('keydown', {
+          which: 37
+        }))
       }, 0)
       setTimeout(function () {
         assert.ok($(document.activeElement).is($div.find('.btn').last()), 'last button selected')
@@ -848,7 +863,9 @@ $(function () {
     $div.on('shown.bs.modal', function () {
       $div.find('input').trigger('focus')
       setTimeout(function () {
-        $div.trigger($.Event('keydown', { which: 37 }))
+        $div.trigger($.Event('keydown', {
+          which: 37
+        }))
       }, 0)
       setTimeout(function () {
         assert.ok($(document.activeElement).is('input'), 'input still focused')
@@ -858,18 +875,14 @@ $(function () {
     .bootstrapModal('show')
   })
 
-  /*
-    This test succeeds even when bootstrap code to give focus to [autofocus] is non existant!!
-    why does [autofocus] have focus in test environment?!
-    phantomjs issue??
-  */
   QUnit.test(':input[autofocus] should get focus', function (assert) {
-    assert.expect(1)
+    assert.expect(2)
     var done = assert.async()
-    $('body').append('<div id="modal-test" data-autofocus="true"><div class="contents">' +
+    $('body').append('<div id="modal-test" class="modal" data-autofocus="true"><div class="contents">' +
       '<input id="my-input" type="text" autofocus />' +
       '</div>' +
       '</div>')
+    assert.notOk($(document.activeElement).is('#my-input'), 'input focused')
     $('#modal-test').on('shown.bs.modal', function () {
       assert.ok($(document.activeElement).is('#my-input'), 'input focused')
       done()
@@ -877,21 +890,14 @@ $(function () {
     .bootstrapModal('show')
   })
 
-  /*
-    test reports [autofocus] getting focus even if bootstrap code to do so is non-existant
-    phantomjs issue??
-  */
-  /*
   QUnit.test(':input[autofocus] should not get focus (default)', function (assert) {
     assert.expect(1)
     var done = assert.async()
     $('body').append(
-      '<div id="modal-test"><div class="contents">' +
+      '<div id="modal-test" class="modal" data-autofocus="false"><div class="contents">' +
       '<input id="my-input" type="text" autofocus />' +
       '</div>' +
       '</div>')
-    // $div.find('#notInModal').trigger('focus')
-    $('#my-input').attr('autofocus', 'autofocus')
     $('#modal-test')
     .on('shown.bs.modal', function () {
       assert.notOk($(document.activeElement).is('#my-input'), 'input does not have focus')
@@ -899,6 +905,5 @@ $(function () {
     })
     .bootstrapModal('show')
   })
-  */
 
 })
