@@ -24,17 +24,23 @@ const Modal = (($) => {
   const TRANSITION_DURATION          = 300
   const BACKDROP_TRANSITION_DURATION = 150
   const ESCAPE_KEYCODE               = 27 // KeyboardEvent.which value for Escape (Esc) key
+  const LEFT_KEYCODE                 = 37
+  const RIGHT_KEYCODE                = 39
 
   const Default = {
+    autofocus: 'notTouch',      // true|false|notTouch
     backdrop : true,
     keyboard : true,
+    keyboardBtnNav: true,  // ability to use arrows to nav button focus
     focus    : true,
     show     : true
   }
 
   const DefaultType = {
+    autofocus: '(boolean|string)',
     backdrop : '(boolean|string)',
     keyboard : 'boolean',
+    keyboardBtnNav: 'boolean',
     focus    : 'boolean',
     show     : 'boolean'
   }
@@ -48,6 +54,7 @@ const Modal = (($) => {
     RESIZE            : `resize${EVENT_KEY}`,
     CLICK_DISMISS     : `click.dismiss${EVENT_KEY}`,
     KEYDOWN_DISMISS   : `keydown.dismiss${EVENT_KEY}`,
+    KEYDOWN_NAV       : `keydown.nav${EVENT_KEY}`,
     MOUSEUP_DISMISS   : `mouseup.dismiss${EVENT_KEY}`,
     MOUSEDOWN_DISMISS : `mousedown.dismiss${EVENT_KEY}`,
     CLICK_DATA_API    : `click${EVENT_KEY}${DATA_API_KEY}`
@@ -134,6 +141,7 @@ const Modal = (($) => {
       $(document.body).addClass(ClassName.OPEN)
 
       this._setEscapeEvent()
+      this._setKeyNavEvent()
       this._setResizeEvent()
 
       $(this._element).on(
@@ -179,6 +187,7 @@ const Modal = (($) => {
       }
 
       this._setEscapeEvent()
+      this._setKeyNavEvent()
       this._setResizeEvent()
 
       $(document).off(Event.FOCUSIN)
@@ -227,6 +236,11 @@ const Modal = (($) => {
       return config
     }
 
+    // Util worthy?
+    _isTouchDevice() {
+      return 'ontouchstart' in window || window.DocumentTouch && document instanceof DocumentTouch
+    }
+
     _showElement(relatedTarget) {
       const transition = Util.supportsTransitionEnd() &&
         $(this._element).hasClass(ClassName.FADE)
@@ -259,6 +273,9 @@ const Modal = (($) => {
         if (this._config.focus) {
           this._element.focus()
         }
+        if (this._config.autofocus === true || this._config.autofocus === 'notTouch' && !this._isTouchDevice()) {
+          this._autofocus()
+        }
         this._isTransitioning = false
         $(this._element).trigger(shownEvent)
       }
@@ -270,6 +287,10 @@ const Modal = (($) => {
       } else {
         transitionComplete()
       }
+    }
+
+    _autofocus() {
+      $(this._element).find(':input:not(:hidden)[autofocus]').eq(0).trigger('focus')
     }
 
     _enforceFocus() {
@@ -297,6 +318,20 @@ const Modal = (($) => {
       }
     }
 
+    _setKeyNavEvent() {
+      if (this._isShown && this._config.keyboardBtnNav) {
+        $(this._element).on(Event.KEYDOWN_NAV, (event) => {
+          if (event.which === LEFT_KEYCODE) {
+            this._keyboardBtnNav('prev')
+          } else if (event.which === RIGHT_KEYCODE) {
+            this._keyboardBtnNav('next')
+          }
+        })
+      } else if (!this._isShown) {
+        $(this._element).off(Event.KEYDOWN_NAV)
+      }
+    }
+
     _setResizeEvent() {
       if (this._isShown) {
         $(window).on(Event.RESIZE, (event) => this.handleUpdate(event))
@@ -315,6 +350,30 @@ const Modal = (($) => {
         this._resetScrollbar()
         $(this._element).trigger(Event.HIDDEN)
       })
+    }
+
+    _keyboardBtnNav(prevNext) {
+      const $focusable = $(this._element).find('.btn')
+      let curFocusIdx = $focusable.index(document.activeElement)
+      if ($(document.activeElement).is(':input:not(:button)')) {
+        // we're currently focused on an input, stay put
+        return
+      }
+      if (curFocusIdx < 0) {
+        // nothing currently focused
+        // "next" will focus first $focusable, "prev" will focus last $focusable
+        curFocusIdx = prevNext === 'next' ? -1 : 0
+      }
+      if (prevNext === 'prev') {
+        // eq() accepts negative index
+        $focusable.eq(curFocusIdx - 1).trigger('focus')
+        return
+      } else if (curFocusIdx === $focusable.length - 1) {
+        // last btn is focused, wrap back to first
+        $focusable.eq(0).trigger('focus')
+      } else {
+        $focusable.eq(curFocusIdx + 1).trigger('focus')
+      }
     }
 
     _removeBackdrop() {
