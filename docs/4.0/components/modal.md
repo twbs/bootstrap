@@ -15,16 +15,6 @@ Before getting started with Bootstrap's modal component, be sure to read the fol
 - Bootstrap only supports one modal window at a time. Nested modals aren't supported as we believe them to be poor user experiences.
 - Modals use `position: fixed`, which can sometimes be a bit particular about its rendering. Whenever possible, place your modal HTML in a top-level position to avoid potential interference from other elements. You'll likely run into issues when nesting a `.modal` within another fixed element.
 - Once again, due to `position: fixed`, there are some caveats with using modals on mobile devices. [See our browser support docs]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/browsers-devices/#modals-and-dropdowns-on-mobile) for details.
-- Lastly, the `autofocus` HTML attribute has no effect in modals. Here's how you can achieve the same effect with custom JavaScript.
-  - Why we don't focus by default: Touch devices will likely open their virtual keyboard when focusing a text-input, which may be undesired.
-  - See the [autofocus option](#options) to enable `autofocus` attribute support
-- Due to how HTML5 defines its semantics, [the `autofocus` HTML attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attr-autofocus) has no effect in Bootstrap modals. To achieve the same effect, use some custom JavaScript:
-
-{% highlight js %}
-$('#myModal').on('shown.bs.modal', function () {
-  $('#myInput').trigger('focus')
-})
-{% endhighlight %}
 
 Keep reading for demos and usage guidelines.
 
@@ -262,7 +252,7 @@ Add `.modal-dialog-centered` to `.modal-dialog` to vertically center the modal.
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary" autofocus>Save changes</button>
       </div>
     </div>
   </div>
@@ -572,6 +562,16 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
   <tbody>
     <tr>
       <td>autofocus</td>
+      <td>boolean or the string <code>'notTouch'</code></td>
+      <td>false</td>
+      <td>Whether input with `autofocus` attribute should be given focus when modal is shown<br />
+          <ul class="list-unstyled">
+            <li><code>notTouch</code> will give focus when not a touch device</li>
+            <li><code>true</code> will give focus regardless</li>
+          </ul>
+      </td>
+    </tr>
+    <tr>
       <td>boolean or the string <code>'notTouch'</code></td>
       <td>false</td>
       <td>Whether input with `autofocus` attribute should be given focus when modal is shown<br />
