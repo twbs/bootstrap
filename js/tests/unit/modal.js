@@ -694,4 +694,215 @@ $(function () {
       .bootstrapModal('show')
       .bootstrapModal('hide')
   })
+
+  QUnit.test('right arrow should select first button when none focused', function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+    var $div = $('<div id="modal-test"><div class="contents">' +
+      '<button class="btn">button 1</button>' +
+      '<button class="btn">button 2</button>' +
+      '</div>' +
+      '</div>')
+    $div.on('shown.bs.modal', function () {
+      $div.trigger($.Event('keydown', {
+        which: 39
+      }))
+      setTimeout(function () {
+        assert.ok($(document.activeElement).is($div.find('.btn').first()), 'first button selected')
+        done()
+      }, 0)
+    })
+      .bootstrapModal('show')
+  })
+
+  QUnit.test('right arrow should select next button', function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+    var $div = $('<div id="modal-test"><div class="contents">' +
+      '<button class="btn">button 1</button>' +
+      '<button class="btn">button 2</button>' +
+      '</div>' +
+      '</div>')
+    $div.on('shown.bs.modal', function () {
+      $div.find('.btn').first().trigger('focus')
+      setTimeout(function () {
+        $div.trigger($.Event('keydown', {
+          which: 39
+        }))
+      }, 0)
+      setTimeout(function () {
+        assert.ok($(document.activeElement).is($div.find('.btn').last()), 'last button selected')
+        done()
+      }, 0)
+    })
+      .bootstrapModal('show')
+  })
+
+  QUnit.test('right arrow should select first button when last focused', function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+    var $div = $('<div id="modal-test"><div class="contents">' +
+      '<button class="btn">button 1</button>' +
+      '<button class="btn">button 2</button>' +
+      '</div>' +
+      '</div>')
+    $div.on('shown.bs.modal', function () {
+      $div.find('.btn').last().trigger('focus')
+      setTimeout(function () {
+        $div.trigger($.Event('keydown', {
+          which: 39
+        }))
+      }, 0)
+      setTimeout(function () {
+        assert.ok($(document.activeElement).is($div.find('.btn').first()), 'right arrow wrapped')
+        done()
+      }, 0)
+    })
+      .bootstrapModal('show')
+  })
+
+  QUnit.test('right arrow should not take focus from input', function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+    var $div = $('<div id="modal-test"><div class="contents">' +
+      '<input type="text" />' +
+      '<button class="btn">button 1</button>' +
+      '<button class="btn">button 2</button>' +
+      '</div>' +
+      '</div>')
+    $div.on('shown.bs.modal', function () {
+      $div.find('input').trigger('focus')
+      setTimeout(function () {
+        $div.trigger($.Event('keydown', {
+          which: 39
+        }))
+      }, 0)
+      setTimeout(function () {
+        assert.ok($(document.activeElement).is('input'), 'input still focused')
+        done()
+      }, 0)
+    })
+      .bootstrapModal('show')
+  })
+
+  QUnit.test('left arrow should last button when none focused', function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+    var $div = $('<div id="modal-test"><div class="contents">' +
+      '<button class="btn">button 1</button>' +
+      '<button class="btn">button 2</button>' +
+      '</div>' +
+      '</div>')
+    $div.on('shown.bs.modal', function () {
+      $div.trigger($.Event('keydown', {
+        which: 37
+      }))
+      setTimeout(function () {
+        assert.ok($(document.activeElement).is($div.find('.btn').last()), 'last button selected')
+        done()
+      }, 0)
+    })
+      .bootstrapModal('show')
+  })
+
+  QUnit.test('left arrow should select prev button', function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+    var $div = $('<div id="modal-test"><div class="contents">' +
+      '<button class="btn">button 1</button>' +
+      '<button class="btn">button 2</button>' +
+      '</div>' +
+      '</div>')
+    $div.on('shown.bs.modal', function () {
+      $div.find('.btn').last().trigger('focus')
+      setTimeout(function () {
+        $div.trigger($.Event('keydown', {
+          which: 37
+        }))
+      }, 0)
+      setTimeout(function () {
+        assert.ok($(document.activeElement).is($div.find('.btn').first()), 'first button selected')
+        done()
+      }, 0)
+    })
+      .bootstrapModal('show')
+  })
+
+  QUnit.test('left arrow should select last button when first focused', function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+    var $div = $('<div id="modal-test"><div class="contents">' +
+      '<button class="btn">button 1</button>' +
+      '<button class="btn">button 2</button>' +
+      '</div>' +
+      '</div>')
+    $div.on('shown.bs.modal', function () {
+      $div.find('.btn').first().trigger('focus')
+      setTimeout(function () {
+        $div.trigger($.Event('keydown', {
+          which: 37
+        }))
+      }, 0)
+      setTimeout(function () {
+        assert.ok($(document.activeElement).is($div.find('.btn').last()), 'last button selected')
+        done()
+      }, 0)
+    })
+      .bootstrapModal('show')
+  })
+
+  QUnit.test('right arrow should not take focus from input', function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+    var $div = $('<div id="modal-test"><div class="contents">' +
+      '<input type="text" />' +
+      '<button class="btn">button 1</button>' +
+      '<button class="btn">button 2</button>' +
+      '</div>' +
+      '</div>')
+    $div.on('shown.bs.modal', function () {
+      $div.find('input').trigger('focus')
+      setTimeout(function () {
+        $div.trigger($.Event('keydown', {
+          which: 37
+        }))
+      }, 0)
+      setTimeout(function () {
+        assert.ok($(document.activeElement).is('input'), 'input still focused')
+        done()
+      }, 0)
+    })
+      .bootstrapModal('show')
+  })
+
+  QUnit.test(':input[autofocus] should get focus', function (assert) {
+    assert.expect(2)
+    var done = assert.async()
+    $('body').append('<div id="modal-test" class="modal" data-autofocus="true"><div class="contents">' +
+      '<input id="my-input" type="text" autofocus />' +
+      '</div>' +
+      '</div>')
+    assert.notOk($(document.activeElement).is('#my-input'), 'input focused')
+    $('#modal-test').on('shown.bs.modal', function () {
+      assert.ok($(document.activeElement).is('#my-input'), 'input focused')
+      done()
+    })
+      .bootstrapModal('show')
+  })
+
+  QUnit.test(':input[autofocus] should not get focus (default)', function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+    $('body').append(
+      '<div id="modal-test" class="modal" data-autofocus="false"><div class="contents">' +
+      '<input id="my-input" type="text" autofocus />' +
+      '</div>' +
+      '</div>')
+    $('#modal-test')
+      .on('shown.bs.modal', function () {
+        assert.notOk($(document.activeElement).is('#my-input'), 'input does not have focus')
+        done()
+      })
+      .bootstrapModal('show')
+  })
 })
