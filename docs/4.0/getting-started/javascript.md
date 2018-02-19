@@ -82,7 +82,7 @@ $('#myCollapse').on('shown.bs.collapse', function (e) {
 In addition a method call on a **transitioning component will be ignored**.
 
 {% highlight js %}
-$('#myCarousel').on('slid.bs.carousel', function (e) {
+$('#myCarousel').on('slide.bs.carousel', function (e) {
   $('#myCarousel').carousel('2') // Will slide to the slide 2 as soon as the transition to slide 1 is finished
 })
 
