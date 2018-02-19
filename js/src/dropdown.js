@@ -75,14 +75,16 @@ const Dropdown = (($) => {
     offset      : 0,
     flip        : true,
     boundary    : 'scrollParent',
-    reference   : 'toggle'
+    reference   : 'toggle',
+    display     : 'dynamic'
   }
 
   const DefaultType = {
     offset      : '(number|string|function)',
     flip        : 'boolean',
     boundary    : '(string|element)',
-    reference   : '(string|element)'
+    reference   : '(string|element)',
+    display     : 'string'
   }
 
   /**
@@ -295,6 +297,12 @@ const Dropdown = (($) => {
         }
       }
 
+      // Disable Popper.js if we have a static display
+      if (this._config.display === 'static') {
+        popperConfig.modifiers.applyStyle = {
+          enabled: false
+        }
+      }
       return popperConfig
     }
 

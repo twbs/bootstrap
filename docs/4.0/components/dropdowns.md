@@ -46,7 +46,7 @@ Any single `.btn` can be turned into a dropdown toggle with some markup changes.
 And with `<a>` elements:
 
 {% example html %}
-<div class="dropdown show">
+<div class="dropdown">
   <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Dropdown link
   </a>
@@ -806,6 +806,12 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <td>string | element</td>
       <td>'toggle'</td>
       <td>Reference element of the dropdown menu. Accepts the values of <code>'toggle'</code>, <code>'parent'</code>, or an HTMLElement reference. For more information refer to Popper.js's <a href="https://popper.js.org/popper-documentation.html#referenceObject">referenceObject docs</a>.</td>
+    </tr>
+    <tr>
+      <td>display</td>
+      <td>string</td>
+      <td>dynamic | static</td>
+      <td>By default, we use Popper.js for dynamic positioning. Disable this with `static`.</td>
     </tr>
   </tbody>
 </table>
