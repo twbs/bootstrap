@@ -504,6 +504,22 @@ $custom-select-height-sm:           $input-height-sm !default;
 $custom-select-font-size-lg:        125% !default;
 $custom-select-height-lg:           $input-height-lg !default;
 
+$custom-range-track-width:          100% !default;
+$custom-range-track-height:         .5rem !default;
+$custom-range-track-cursor:         pointer !default;
+$custom-range-track-bg:             $gray-300 !default;
+$custom-range-track-border-radius:  1rem !default;
+$custom-range-track-box-shadow:     inset 0 .25rem .25rem rgba($black, .1) !default;
+
+$custom-range-thumb-width:            1rem !default;
+$custom-range-thumb-height:           $custom-range-thumb-width !default;
+$custom-range-thumb-bg:               $component-active-bg !default;
+$custom-range-thumb-border:           0 !default;
+$custom-range-thumb-border-radius:    1rem !default;
+$custom-range-thumb-box-shadow:       0 .1rem .25rem rgba($black, .1) !default;
+$custom-range-thumb-focus-box-shadow: 0 0 0 1px $body-bg, $input-btn-focus-box-shadow !default;
+$custom-range-thumb-active-bg:        lighten($component-active-bg, 35%) !default;
+
 $custom-file-height:                $input-height !default;
 $custom-file-focus-border-color:    $input-focus-border-color !default;
 $custom-file-focus-box-shadow:      $input-btn-focus-box-shadow !default;
