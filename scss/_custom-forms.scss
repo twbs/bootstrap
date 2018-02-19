@@ -317,98 +317,104 @@
   }
 
   &::-webkit-slider-thumb {
-    width: $custom-control-indicator-size;
-    height: $custom-control-indicator-size;
-    margin-top: -($custom-control-indicator-size * .25);
-    @include gradient-bg($custom-control-indicator-checked-bg);
-    border: 0;
-    border-radius: $custom-control-indicator-size;
+    width: $custom-range-thumb-width;
+    height: $custom-range-thumb-height;
+    margin-top: -($custom-range-thumb-width * .25); // Webkit specific?
+    @include gradient-bg($custom-range-thumb-bg);
+    border: $custom-range-thumb-border;
+    @include border-radius($custom-range-thumb-border-radius);
+    @include box-shadow($custom-range-thumb-box-shadow);
     appearance: none;
 
     &:focus {
       outline: none;
-      box-shadow: $custom-control-indicator-focus-box-shadow;
+      box-shadow: $custom-range-thumb-focus-box-shadow; // No mixin for focus accessibility
     }
 
     &:active {
-      @include gradient-bg($custom-control-indicator-active-bg);
+      @include gradient-bg($custom-range-thumb-active-bg);
     }
   }
 
   &::-webkit-slider-runnable-track {
-    width: 100%;
-    height: $custom-control-indicator-size * .5;
-    color: transparent;
-    cursor: pointer;
-    background-color: $custom-control-indicator-bg;
+    width: $custom-range-track-width;
+    height: $custom-range-track-height;
+    color: transparent; // Why?
+    cursor: $custom-range-track-cursor;
+    background-color: $custom-range-track-bg;
     border-color: transparent;
-    border-radius: $custom-control-indicator-size;
+    @include border-radius($custom-range-track-border-radius);
+    @include box-shadow($custom-range-track-box-shadow);
   }
 
   &::-moz-range-thumb {
-    width: $custom-control-indicator-size;
-    height: $custom-control-indicator-size;
-    @include gradient-bg($custom-control-indicator-checked-bg);
-    border: 0;
-    border-radius: $custom-control-indicator-size;
+    width: $custom-range-thumb-width;
+    height: $custom-range-thumb-height;
+    @include gradient-bg($custom-range-thumb-bg);
+    border: $custom-range-thumb-border;
+    @include border-radius($custom-range-thumb-border-radius);
+    @include box-shadow($custom-range-thumb-box-shadow);
     appearance: none;
 
     &:focus {
       outline: none;
-      box-shadow: $custom-control-indicator-focus-box-shadow;
+      box-shadow: $custom-range-thumb-focus-box-shadow; // No mixin for focus accessibility
     }
 
     &:active {
-      @include gradient-bg($custom-control-indicator-active-bg);
+      @include gradient-bg($custom-range-thumb-active-bg);
     }
   }
 
   &::-moz-range-track {
-    width: 100%;
-    height: $custom-control-indicator-size * .5;
+    width: $custom-range-track-width;
+    height: $custom-range-track-height;
     color: transparent;
-    cursor: pointer;
-    background-color: $custom-control-indicator-bg;
-    border-color: transparent;
-    border-radius: $custom-control-indicator-size;
+    cursor: $custom-range-track-cursor;
+    background-color: $custom-range-track-bg;
+    border-color: transparent; // Firefox specific?
+    @include border-radius($custom-range-track-border-radius);
+    @include box-shadow($custom-range-track-box-shadow);
   }
 
   &::-ms-thumb {
-    width: $custom-control-indicator-size;
-    height: $custom-control-indicator-size;
-    @include gradient-bg($custom-control-indicator-checked-bg);
-    border: 0;
-    border-radius: $custom-control-indicator-size;
+    width: $custom-range-thumb-width;
+    height: $custom-range-thumb-height;
+    @include gradient-bg($custom-range-thumb-bg);
+    border: $custom-range-thumb-border;
+    @include border-radius($custom-range-thumb-border-radius);
+    @include box-shadow($custom-range-thumb-box-shadow);
     appearance: none;
 
     &:focus {
       outline: none;
-      box-shadow: $custom-control-indicator-focus-box-shadow;
+      box-shadow: $custom-range-thumb-focus-box-shadow; // No mixin for focus accessibility
     }
 
     &:active {
-      @include gradient-bg($custom-control-indicator-active-bg);
+      @include gradient-bg($custom-range-thumb-active-bg);
     }
   }
 
   &::-ms-track {
-    width: 100%;
-    height: $custom-control-indicator-size * .5;
+    width: $custom-range-track-width;
+    height: $custom-range-track-height;
     color: transparent;
-    cursor: pointer;
+    cursor: $custom-range-track-cursor;
     background-color: transparent;
     border-color: transparent;
-    border-width: ($custom-control-indicator-size * .5);
+    border-width: ($custom-range-thumb-height * .5);
+    @include box-shadow($custom-range-track-box-shadow);
   }
 
   &::-ms-fill-lower {
-    background-color: $custom-control-indicator-bg;
-    border-radius: $custom-control-indicator-size;
+    background-color: $custom-range-track-bg;
+    @include border-radius($custom-range-track-border-radius);
   }
 
   &::-ms-fill-upper {
-    margin-right: 15px;
-    background-color: $custom-control-indicator-bg;
-    border-radius: $custom-control-indicator-size;
+    margin-right: 15px; // arbitrary?
+    background-color: $custom-range-track-bg;
+    @include border-radius($custom-range-track-border-radius);
   }
 }
