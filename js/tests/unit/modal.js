@@ -695,7 +695,7 @@ $(function () {
       .bootstrapModal('hide')
   })
 
-  QUnit.test('right arrow should select first button when none focused', function (assert) {
+  QUnit.test('right arrow should focus first button when none focused', function (assert) {
     assert.expect(1)
     var done = assert.async()
     var $div = $('<div id="modal-test"><div class="contents">' +
@@ -715,7 +715,7 @@ $(function () {
       .bootstrapModal('show')
   })
 
-  QUnit.test('right arrow should select next button', function (assert) {
+  QUnit.test('right arrow should focus next button', function (assert) {
     assert.expect(1)
     var done = assert.async()
     var $div = $('<div id="modal-test"><div class="contents">' +
@@ -738,7 +738,7 @@ $(function () {
       .bootstrapModal('show')
   })
 
-  QUnit.test('right arrow should select first button when last focused', function (assert) {
+  QUnit.test('right arrow should focus first button when last focused', function (assert) {
     assert.expect(1)
     var done = assert.async()
     var $div = $('<div id="modal-test"><div class="contents">' +
@@ -785,7 +785,7 @@ $(function () {
       .bootstrapModal('show')
   })
 
-  QUnit.test('left arrow should last button when none focused', function (assert) {
+  QUnit.test('left arrow should focus last button when none focused', function (assert) {
     assert.expect(1)
     var done = assert.async()
     var $div = $('<div id="modal-test"><div class="contents">' +
@@ -805,7 +805,7 @@ $(function () {
       .bootstrapModal('show')
   })
 
-  QUnit.test('left arrow should select prev button', function (assert) {
+  QUnit.test('left arrow should focus prev button', function (assert) {
     assert.expect(1)
     var done = assert.async()
     var $div = $('<div id="modal-test"><div class="contents">' +
@@ -828,7 +828,7 @@ $(function () {
       .bootstrapModal('show')
   })
 
-  QUnit.test('left arrow should select last button when first focused', function (assert) {
+  QUnit.test('left arrow should focus last button when first focused', function (assert) {
     assert.expect(1)
     var done = assert.async()
     var $div = $('<div id="modal-test"><div class="contents">' +
@@ -851,7 +851,7 @@ $(function () {
       .bootstrapModal('show')
   })
 
-  QUnit.test('right arrow should not take focus from input', function (assert) {
+  QUnit.test('left arrow should not take focus from input', function (assert) {
     assert.expect(1)
     var done = assert.async()
     var $div = $('<div id="modal-test"><div class="contents">' +

@@ -592,7 +592,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <td>keyboardBtnNav</td>
       <td>boolean</td>
       <td>true</td>
-      <td>Whether keyboard's arrow keys should move focus to/between `.btn` elements.
+      <td>Whether keyboard's left &amp; right arrow keys should move focus to/between `.btn` elements.
         <span class="text-muted">(focus will not be taken from input elements)</span>
       </td>
     </tr>
