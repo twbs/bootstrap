@@ -89,6 +89,7 @@
   color: $dropdown-link-color;
   text-align: inherit; // For `<button>`s
   white-space: nowrap; // prevent links from randomly breaking onto new lines
+  cursor: pointer; // opinionated: add "hand" cursor to non-disabled items
   background-color: transparent; // For `<button>`s
   border: 0; // For `<button>`s
 
@@ -108,6 +109,7 @@
   &.disabled,
   &:disabled {
     color: $dropdown-link-disabled-color;
+    pointer-events: none; // neutralize disabled items, making them non-clickable and circumventing the opinionated "hand" cursor
     background-color: transparent;
     // Remove CSS gradients if they're enabled
     @if $enable-gradients {
