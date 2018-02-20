@@ -453,8 +453,8 @@ const Modal = (($) => {
 
         // Adjust body padding
         const actualPadding = document.body.style.paddingRight
-        const calculatedPadding = $('body').css('padding-right')
-        $('body').data('padding-right', actualPadding).css('padding-right', `${parseFloat(calculatedPadding) + this._scrollbarWidth}px`)
+        const calculatedPadding = $(document.body).css('padding-right')
+        $(document.body).data('padding-right', actualPadding).css('padding-right', `${parseFloat(calculatedPadding) + this._scrollbarWidth}px`)
       }
     }
 
@@ -476,9 +476,9 @@ const Modal = (($) => {
       })
 
       // Restore body padding
-      const padding = $('body').data('padding-right')
+      const padding = $(document.body).data('padding-right')
       if (typeof padding !== 'undefined') {
-        $('body').css('padding-right', padding).removeData('padding-right')
+        $(document.body).css('padding-right', padding).removeData('padding-right')
       }
     }
 
