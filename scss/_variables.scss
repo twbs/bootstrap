@@ -320,6 +320,7 @@ $table-dark-color:            $body-bg !default;
 
 $table-striped-order:         odd !default;
 
+$table-caption-color:         $text-muted !default;
 
 // Buttons + Forms
 //
@@ -504,6 +505,22 @@ $custom-select-height-sm:           $input-height-sm !default;
 $custom-select-font-size-lg:        125% !default;
 $custom-select-height-lg:           $input-height-lg !default;
 
+$custom-range-track-width:          100% !default;
+$custom-range-track-height:         .5rem !default;
+$custom-range-track-cursor:         pointer !default;
+$custom-range-track-bg:             $gray-300 !default;
+$custom-range-track-border-radius:  1rem !default;
+$custom-range-track-box-shadow:     inset 0 .25rem .25rem rgba($black, .1) !default;
+
+$custom-range-thumb-width:            1rem !default;
+$custom-range-thumb-height:           $custom-range-thumb-width !default;
+$custom-range-thumb-bg:               $component-active-bg !default;
+$custom-range-thumb-border:           0 !default;
+$custom-range-thumb-border-radius:    1rem !default;
+$custom-range-thumb-box-shadow:       0 .1rem .25rem rgba($black, .1) !default;
+$custom-range-thumb-focus-box-shadow: 0 0 0 1px $body-bg, $input-btn-focus-box-shadow !default;
+$custom-range-thumb-active-bg:        lighten($component-active-bg, 35%) !default;
+
 $custom-file-height:                $input-height !default;
 $custom-file-focus-border-color:    $input-focus-border-color !default;
 $custom-file-focus-box-shadow:      $input-btn-focus-box-shadow !default;
@@ -590,6 +607,8 @@ $nav-tabs-link-active-border-color: $gray-300 $gray-300 $nav-tabs-link-active-bg
 $nav-pills-border-radius:           $border-radius !default;
 $nav-pills-link-active-color:       $component-active-color !default;
 $nav-pills-link-active-bg:          $component-active-bg !default;
+
+$nav-divider-margin-y:              ($spacer / 2) !default;
 
 // Navbar
 
@@ -870,7 +889,7 @@ $carousel-control-icon-width:       20px !default;
 $carousel-control-prev-icon-bg:     str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='#{$carousel-control-color}' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E"), "#", "%23") !default;
 $carousel-control-next-icon-bg:     str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='#{$carousel-control-color}' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E"), "#", "%23") !default;
 
-$carousel-transition:               transform .6s ease !default;
+$carousel-transition:               transform .6s ease !default; // Define transform transition first if using multiple transitons (e.g., `transform 2s ease, opacity .5s ease-out`)
 
 
 // Close
