@@ -125,13 +125,13 @@
     }
   }
 
-  &:first-child {
+  &:first-of-type {
     .list-group-item:first-child {
       border-top: 0;
     }
   }
 
-  &:last-child {
+  &:last-of-type {
     .list-group-item:last-child {
       margin-bottom: 0;
       border-bottom: 0;
