@@ -40,16 +40,8 @@
     margin-bottom: 0;
 
     &.input-group-between{
-      flex: inherit;
-
-      .form-control,
-      .custom-select,
-      .btn,
-      .btn-group > .btn,
-      .input-group-text,
-      .custom-file{
-        flex: inherit;
-      }
+      flex: 0 0 auto;
+      width: auto;
     }
 
     + .form-control,
