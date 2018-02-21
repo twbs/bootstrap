@@ -11,9 +11,27 @@
   align-items: stretch;
   width: 100%;
 
+  .form-control,
+  .custom-select,
+  .custom-file,
+  .btn,
+  .btn-group,
+  .btn-group > .btn,
+  .input-group-text{
+
+    // Bring the "active" form control to the top of surrounding elements
+    &:focus {
+      z-index: 3;
+    }
+  }
+
   > .form-control,
   > .custom-select,
-  > .custom-file {
+  > .custom-file,
+  > .btn,
+  > .btn-group,
+  > .btn-group > .btn,
+  > .input-group-text {
     position: relative; // For focus state's z-index
     flex: 1 1 auto;
     // Add width 1% and flex-basis auto to ensure that button will not wrap out
@@ -21,34 +39,54 @@
     width: 1%;
     margin-bottom: 0;
 
-    // Bring the "active" form control to the top of surrounding elements
-    &:focus {
-      z-index: 3;
-    }
-
     + .form-control,
     + .custom-select,
-    + .custom-file {
+    + .btn,
+    + .btn-group > .btn,
+    + .input-group-text,
+    + .custom-file{
       margin-left: -$input-border-width;
     }
   }
 
   > .form-control,
-  > .custom-select {
+  > .custom-select,
+  > .input-group-text,
+  > .btn{
     &:not(:last-child) { @include border-right-radius(0); }
     &:not(:first-child) { @include border-left-radius(0); }
   }
 
   // Custom file inputs have more complex markup, thus requiring different
   // border-radius overrides.
-  > .custom-file {
+  .custom-file {
     display: flex;
     align-items: center;
+  }
 
-    &:not(:last-child) .custom-file-label,
-    &:not(:last-child) .custom-file-label::after { @include border-right-radius(0); }
-    &:not(:first-child) .custom-file-label,
-    &:not(:first-child) .custom-file-label::after { @include border-left-radius(0); }
+  > .custom-file {
+    &:not(:last-child) > .custom-file-control,
+    &:not(:last-child) > .custom-file-control::before,
+    &:not(:last-child) > .custom-file-label,
+    &:not(:last-child) > .custom-file-label::before{
+      @include border-right-radius(0);
+    }
+    &:not(:first-child) > .custom-file-control,
+    &:not(:first-child) > .custom-file-control::after,
+    &:not(:first-child) > .custom-file-label,
+    &:not(:first-child) > .custom-file-label::after{
+      @include border-left-radius(0);
+    }
+  }
+
+
+  > .btn-group {
+    &:not(:last-child) > .btn{
+      @include border-right-radius(0);
+    }
+    &:not(:first-child) > .btn{
+      @include border-left-radius(0);
+    }
   }
 }
 
@@ -71,11 +109,20 @@
     z-index: 2;
   }
 
-  .btn + .btn,
-  .btn + .input-group-text,
-  .input-group-text + .input-group-text,
-  .input-group-text + .btn {
-    margin-left: -$input-border-width;
+  > .btn,
+  > .btn-group,
+  > .input-group-text,
+  > .form-control,
+  > .custom-file,
+  > .custom-select{
+    + .btn,
+    + .btn-group,
+    + .input-group-text,
+    + .form-control,
+    + .custom-file,
+    + .custom-select {
+      margin-left: -$input-border-width;
+    }
   }
 }
 
@@ -116,20 +163,50 @@
 // Remix the default form control sizing classes into new ones for easier
 // manipulation.
 
-.input-group-lg > .form-control,
-.input-group-lg > .input-group-prepend > .input-group-text,
-.input-group-lg > .input-group-append > .input-group-text,
-.input-group-lg > .input-group-prepend > .btn,
-.input-group-lg > .input-group-append > .btn {
-  @extend .form-control-lg;
+.input-group-lg{
+  > .form-control,
+  > .input-group-text,
+  > .btn,
+  > .btn-group > .btn,
+  > .custom-file,
+  > .custom-select{
+    @extend .form-control-lg;
+  }
+
+  > .input-group-prepend,
+  > .input-group-append{
+    > .form-control,
+    > .input-group-text,
+    > .btn,
+    > .btn-group > .btn,
+    > .custom-file,
+    > .custom-select{
+      @extend .form-control-lg;
+    }
+  }
 }
 
-.input-group-sm > .form-control,
-.input-group-sm > .input-group-prepend > .input-group-text,
-.input-group-sm > .input-group-append > .input-group-text,
-.input-group-sm > .input-group-prepend > .btn,
-.input-group-sm > .input-group-append > .btn {
-  @extend .form-control-sm;
+.input-group-sm{
+  > .form-control,
+  > .input-group-text,
+  > .btn,
+  > .btn-group .btn,
+  > .custom-file,
+  > .custom-select{
+    @extend .form-control-sm;
+  }
+
+  > .input-group-prepend,
+  > .input-group-append{
+    > .form-control,
+    > .input-group-text,
+    > .btn,
+    > .btn-group > .btn,
+    > .custom-file,
+    > .custom-select{
+      @extend .form-control-sm;
+    }
+  }
 }
 
 
@@ -139,21 +216,61 @@
 // border-radius values when extending. They're more specific than we'd like
 // with the `.input-group >` part, but without it, we cannot override the sizing.
 
-
-.input-group > .input-group-prepend > .btn,
-.input-group > .input-group-prepend > .input-group-text,
-.input-group > .input-group-append:not(:last-child) > .btn,
-.input-group > .input-group-append:not(:last-child) > .input-group-text,
-.input-group > .input-group-append:last-child > .btn:not(:last-child):not(.dropdown-toggle),
-.input-group > .input-group-append:last-child > .input-group-text:not(:last-child) {
-  @include border-right-radius(0);
+.input-group{
+  > .input-group-prepend,
+  > .input-group-append:not(:last-child){
+    > .form-control,
+    > .input-group-text,
+    > .btn,
+    > .btn-group > .btn,
+    > .custom-select,
+    > .custom-file > .custom-file-control,
+    > .custom-file > .custom-file-control::after,
+    > .custom-file > .custom-file-label,
+    > .custom-file > .custom-file-label::after{
+      @include border-right-radius(0);
+    }
+  }
+  > .input-group-append:last-child{
+    > .form-control:not(:last-child),
+    > .input-group-text:not(:last-child),
+    > .btn:not(:last-child):not(.dropdown-toggle),
+    > .btn-group .btn:not(:last-child):not(.dropdown-toggle),
+    > .custom-select:not(:last-child),
+    > .custom-file:not(:last-child) > .custom-file-control,
+    > .custom-file:not(:last-child) > .custom-file-control::after,
+    > .custom-file:not(:last-child) > .custom-file-label,
+    > .custom-file:not(:last-child) > .custom-file-label::after{
+      @include border-right-radius(0);
+    }
+  }
 }
-
-.input-group > .input-group-append > .btn,
-.input-group > .input-group-append > .input-group-text,
-.input-group > .input-group-prepend:not(:first-child) > .btn,
-.input-group > .input-group-prepend:not(:first-child) > .input-group-text,
-.input-group > .input-group-prepend:first-child > .btn:not(:first-child),
-.input-group > .input-group-prepend:first-child > .input-group-text:not(:first-child) {
-  @include border-left-radius(0);
+.input-group{
+  > .input-group-append,
+  > .input-group-prepend:not(:first-child){
+    > .form-control,
+    > .input-group-text,
+    > .btn,
+    > .btn-group > .btn,
+    > .custom-select,
+    > .custom-file > .custom-file-control,
+    > .custom-file > .custom-file-control::before,
+    > .custom-file > .custom-file-label,
+    > .custom-file > .custom-file-label::before{
+      @include border-left-radius(0);
+    }
+  }
+  > .input-group-prepend:first-child{
+    > .form-control:not(:first-child),
+    > .input-group-text:not(:first-child),
+    > .btn:not(:first-child),
+    > .btn-group > .btn:not(:first-child),
+    > .custom-select:not(:first-child),
+    > .custom-file:not(:first-child) > .custom-file-control,
+    > .custom-file:not(:first-child) > .custom-file-control::before,
+    > .custom-file:not(:first-child) > .custom-file-label,
+    > .custom-file:not(:first-child) > .custom-file-label::before{
+      @include border-left-radius(0);
+    }
+  }
 }
