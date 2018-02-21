@@ -359,8 +359,8 @@ const Modal = (($) => {
     _keyboardBtnNav(prevNext) {
       const $focusable = $(this._element).find('.btn')
       let curFocusIdx = $focusable.index(document.activeElement)
-      if ($(document.activeElement).is(':input:not(:button)')) {
-        // we're currently focused on an input, stay put
+      if ($(document.activeElement).is(':input:not(.btn)')) {
+        // we're currently focused on a non-btn input, stay put
         return
       }
       if (curFocusIdx < 0) {
