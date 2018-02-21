@@ -321,6 +321,10 @@ const Modal = (($) => {
     _setKeyNavEvent() {
       if (this._isShown && this._config.keyboardBtnNav) {
         $(this._element).on(Event.KEYDOWN_NAV, (event) => {
+          if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) {
+            // disregard if modifier
+            return
+          }
           if (event.which === LEFT_KEYCODE) {
             this._keyboardBtnNav('prev')
           } else if (event.which === RIGHT_KEYCODE) {

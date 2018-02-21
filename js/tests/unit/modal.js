@@ -875,6 +875,42 @@ $(function () {
       .bootstrapModal('show')
   })
 
+  QUnit.test('ignore left/right arrow keys with modifier key', function (assert) {
+    assert.expect(8)
+    var done = assert.async(8)
+    var $div = $('<div id="modal-test"><div class="contents">' +
+      '<button class="btn">button 1</button>' +
+      '<button class="btn">button 2</button>' +
+      '</div>' +
+      '</div>')
+    $div.on('shown.bs.modal', function () {
+      const keys = [37, 39]
+      const modifiers = ['altKey', 'ctrlKey', 'metaKey', 'shiftKey']
+      // itterate over each combination of left/right and modifier
+      for (let i = 0, l = keys.length; i < l; i++) {
+        for (let i2 = 0, l2 = modifiers.length; i2 < l2; i2++) {
+          (function (keycode, modifier) {
+            setTimeout(function () {
+              // unfocus .btn if currently focused
+              $(document.activeElement).filter('.btn').blur()
+            }, 0)
+            setTimeout(function () {
+              $div.trigger($.Event('keydown', {
+                which: keycode,
+                [modifier]: true
+              }))
+            }, 0)
+            setTimeout(function () {
+              assert.ok(!$(document.activeElement).is('.btn'), 'button does not have focus: keycode = ' + keycode + ', modifier = ' + modifier)
+              done()
+            }, 0)
+          }(keys[i], modifiers[i2]))
+        }
+      }
+    })
+      .bootstrapModal('show')
+  })
+
   QUnit.test(':input[autofocus] should get focus', function (assert) {
     assert.expect(2)
     var done = assert.async()
