@@ -65,6 +65,14 @@ Place one add-on or button on either side of an input. You may also place one on
   </div>
 </div>
 
+<div class="input-group my-3">
+  <input class="form-control" placeholder="Month">
+  <span class="input-group-text input-group-between">&#47;</span>
+  <input class="form-control" placeholder="Day">
+  <span class="input-group-text input-group-between">&#47;</span>
+  <input type="text" name="input7" id="input7" class="form-control" placeholder="Year">
+</div>
+
 {% endexample %}
 
 ## Sizing
