@@ -77,6 +77,10 @@
     opacity: 0;
     transition-duration: .6s;
     transition-property: opacity;
+
+    @media screen and (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
   }
 
   .carousel-item.active,
