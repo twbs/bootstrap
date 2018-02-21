@@ -43,12 +43,28 @@ Place one add-on or button on either side of an input. You may also place one on
   </div>
 </div>
 
-<div class="input-group">
+<div class="input-group mb-3">
   <div class="input-group-prepend">
     <span class="input-group-text">With textarea</span>
   </div>
   <textarea class="form-control" aria-label="With textarea"></textarea>
 </div>
+
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text">Width</span>
+  </div>
+  <input type="number" class="form-control" value="20">
+  <div class="input-group-append">
+    <span class="input-group-text">units:</span>
+    <select class="form-control">
+      <option value="px" selected>pixel</option>
+      <option value="%">percent</option>
+      <option value="em">em</option>
+    </select>
+  </div>
+</div>
+
 {% endexample %}
 
 ## Sizing
