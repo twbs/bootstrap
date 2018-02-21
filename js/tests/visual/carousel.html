@@ -5,12 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="../../../dist/css/bootstrap.min.css">
     <title>Carousel</title>
+    <style>
+      .carousel-item {
+        transition: transform 2s ease, opacity .5s ease;
+      }
+    </style>
   </head>
   <body>
     <div class="container">
       <h1>Carousel <small>Bootstrap Visual Test</small></h1>
 
-      <p>Also, the carousel shouldn't slide when its window/tab is hidden. Check the console log.</p>
+      <p>The transition duration should be around 2s. Also, the carousel shouldn't slide when its window/tab is hidden. Check the console log.</p>
 
       <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -46,9 +51,15 @@
 
     <script>
       $(function() {
+        var t0, t1;
+
         // Test to show that the carousel doesn't slide when the current tab isn't visible
+        // Test to show that transition-duration can be changed with css
         $('#carousel-example-generic').on('slid.bs.carousel', function(event) {
-          console.log('slid at ', event.timeStamp)
+          t1 = performance.now()
+          console.log('transition-duration took' + (t1 - t0) + 'ms, slid at ', event.timeStamp)
+        }).on('slide.bs.carousel', function() {
+          t0 = performance.now()
         })
       })
     </script>

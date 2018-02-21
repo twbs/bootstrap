@@ -533,13 +533,13 @@ var Carousel = function ($$$1) {
   var EVENT_KEY = "." + DATA_KEY;
   var DATA_API_KEY = '.data-api';
   var JQUERY_NO_CONFLICT = $$$1.fn[NAME];
-  var TRANSITION_DURATION = 600;
   var ARROW_LEFT_KEYCODE = 37; // KeyboardEvent.which value for left arrow key
 
   var ARROW_RIGHT_KEYCODE = 39; // KeyboardEvent.which value for right arrow key
 
   var TOUCHEVENT_COMPAT_WAIT = 500; // Time for mouse compat events to fire after touch
 
+  var MILLISECONDS_MULTIPLIER = 1000;
   var Default = {
     interval: 5000,
     keyboard: true,
@@ -609,6 +609,7 @@ var Carousel = function ($$$1) {
       this._config = this._getConfig(config);
       this._element = $$$1(element)[0];
       this._indicatorsElement = $$$1(this._element).find(Selector.INDICATORS)[0];
+      this._transitionDuration = this._getTransitionDuration();
 
       this._addEventListeners();
     } // Getters
@@ -713,6 +714,20 @@ var Carousel = function ($$$1) {
       config = _extends({}, Default, config);
       Util.typeCheckConfig(NAME, config, DefaultType);
       return config;
+    };
+
+    _proto._getTransitionDuration = function _getTransitionDuration() {
+      // Get transition-duration of first element in the carousel
+      var transitionDuration = $$$1(this._element).find(Selector.ITEM).css('transition-duration'); // Return 0 carousel item is not found
+
+      if (!transitionDuration) {
+        return 0;
+      } // If multiple durations are defined, take the first
+
+
+      transitionDuration = transitionDuration.split(',')[0]; // Multiply by 1000 if transition-duration is defined in seconds
+
+      return transitionDuration.indexOf('ms') > -1 ? parseFloat(transitionDuration) : parseFloat(transitionDuration) * MILLISECONDS_MULTIPLIER;
     };
 
     _proto._addEventListeners = function _addEventListeners() {
@@ -893,7 +908,7 @@ var Carousel = function ($$$1) {
           setTimeout(function () {
             return $$$1(_this3._element).trigger(slidEvent);
           }, 0);
-        }).emulateTransitionEnd(TRANSITION_DURATION);
+        }).emulateTransitionEnd(this._transitionDuration);
       } else {
         $$$1(activeElement).removeClass(ClassName.ACTIVE);
         $$$1(nextElement).addClass(ClassName.ACTIVE);
@@ -3890,13 +3905,15 @@ var Dropdown = function ($$$1) {
     offset: 0,
     flip: true,
     boundary: 'scrollParent',
-    reference: 'toggle'
+    reference: 'toggle',
+    display: 'dynamic'
   };
   var DefaultType = {
     offset: '(number|string|function)',
     flip: 'boolean',
     boundary: '(string|element)',
-    reference: '(string|element)'
+    reference: '(string|element)',
+    display: 'string'
     /**
      * ------------------------------------------------------------------------
      * Class Definition
@@ -4093,8 +4110,16 @@ var Dropdown = function ($$$1) {
           preventOverflow: {
             boundariesElement: this._config.boundary
           }
-        }
+        } // Disable Popper.js if we have a static display
+
       };
+
+      if (this._config.display === 'static') {
+        popperConfig.modifiers.applyStyle = {
+          enabled: false
+        };
+      }
+
       return popperConfig;
     }; // Static
 
