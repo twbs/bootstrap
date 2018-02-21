@@ -21,8 +21,8 @@ const EVENT_KEY          = `.${DATA_KEY}`
 const DATA_API_KEY       = '.data-api'
 const JQUERY_NO_CONFLICT = $.fn[NAME]
 const ESCAPE_KEYCODE     = 27 // KeyboardEvent.which value for Escape (Esc) key
-  const LEFT_KEYCODE                 = 37
-  const RIGHT_KEYCODE                = 39
+const LEFT_KEYCODE       = 37
+const RIGHT_KEYCODE      = 39
 
 const Default = {
   autofocus: 'notTouch',      // true|false|notTouch
@@ -243,10 +243,10 @@ class Modal {
     return config
   }
 
-    // Util worthy?
-    _isTouchDevice() {
-      return 'ontouchstart' in window || window.DocumentTouch && document instanceof window.DocumentTouch
-    }
+  // Util worthy?
+  _isTouchDevice() {
+    return 'ontouchstart' in window || window.DocumentTouch && document instanceof window.DocumentTouch
+  }
 
   _showElement(relatedTarget) {
     const transition = $(this._element).hasClass(ClassName.FADE)
