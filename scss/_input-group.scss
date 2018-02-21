@@ -39,6 +39,19 @@
     width: 1%;
     margin-bottom: 0;
 
+    &.input-group-between{
+      flex: inherit;
+
+      .form-control,
+      .custom-select,
+      .btn,
+      .btn-group > .btn,
+      .input-group-text,
+      .custom-file{
+        flex: inherit;
+      }
+    }
+
     + .form-control,
     + .custom-select,
     + .btn,
