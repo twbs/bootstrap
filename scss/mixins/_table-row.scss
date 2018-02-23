@@ -7,8 +7,8 @@
     &,
     > th,
     > td {
-      background-color: $background;
       color: color-yiq($background);
+      background-color: $background;
     }
   }
 
@@ -23,8 +23,8 @@
 
         > td,
         > th {
-          background-color: $hover-background;
           color: color-yiq($hover-background);
+          background-color: $hover-background;
         }
       }
     }
