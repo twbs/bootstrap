@@ -29,9 +29,10 @@ $positions: static, relative, absolute, fixed, sticky;
 }
 
 .sticky-top {
+  position: relative;
   @supports (position: sticky) {
     position: sticky;
-    top: 0;
-    z-index: $zindex-sticky;
   }
+  top: 0;
+  z-index: $zindex-sticky;
 }
