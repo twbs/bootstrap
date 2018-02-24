@@ -418,16 +418,4 @@ a {
 }
 {% endhighlight %}
 
-You can also use our breakpoint variables in your media queries:
-
-{% highlight css %}
-.content-secondary {
-  display: none;
-}
-
-@media (min-width(var(--breakpoint-sm))) {
-  .content-secondary {
-    display: block;
-  }
-}
-{% endhighlight %}
+While we include breakpoints in our CSS variables, they unfortunately cannot be used in media queries. These remain in the compiled CSS for backward compatibility given they can be utilized by JavaScript. [Learn more in the spec.](https://www.w3.org/TR/css-variables-1/#using-variables)
