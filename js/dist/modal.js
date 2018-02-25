@@ -447,8 +447,8 @@ var Modal = function ($) {
         }); // Adjust body padding
 
         var actualPadding = document.body.style.paddingRight;
-        var calculatedPadding = $('body').css('padding-right');
-        $('body').data('padding-right', actualPadding).css('padding-right', parseFloat(calculatedPadding) + this._scrollbarWidth + "px");
+        var calculatedPadding = $(document.body).css('padding-right');
+        $(document.body).data('padding-right', actualPadding).css('padding-right', parseFloat(calculatedPadding) + this._scrollbarWidth + "px");
       }
     };
 
@@ -470,10 +470,10 @@ var Modal = function ($) {
         }
       }); // Restore body padding
 
-      var padding = $('body').data('padding-right');
+      var padding = $(document.body).data('padding-right');
 
       if (typeof padding !== 'undefined') {
-        $('body').css('padding-right', padding).removeData('padding-right');
+        $(document.body).css('padding-right', padding).removeData('padding-right');
       }
     };
 
