@@ -27,8 +27,16 @@
     }
 
     &.input-group-between{
-      flex: 0 0 auto;
-      width: auto;
+      flex: inherit;
+
+      .form-control,
+      .custom-select,
+      .btn,
+      .btn-group > .btn,
+      .input-group-text,
+      .custom-file{
+        flex: inherit;
+      }
     }
 
     + .form-control,
