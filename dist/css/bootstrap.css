@@ -2068,54 +2068,54 @@ select.form-control:focus::-ms-value {
   border-width: 1px 0;
 }
 
-.form-control-plaintext.form-control-sm, .input-group-sm .form-control-plaintext.form-control,
-.input-group-sm .form-control-plaintext.input-group-text,
-.input-group-sm .form-control-plaintext.btn,
-.input-group-sm .form-control-plaintext.custom-file,
-.input-group-sm .form-control-plaintext.custom-select, .form-control-plaintext.form-control-lg, .input-group-lg .form-control-plaintext.form-control,
-.input-group-lg .form-control-plaintext.input-group-text,
-.input-group-lg .form-control-plaintext.btn,
-.input-group-lg .form-control-plaintext.custom-file,
-.input-group-lg .form-control-plaintext.custom-select {
+.form-control-plaintext.form-control-sm, .input-group-sm > .form-control-plaintext.form-control,
+.input-group-sm > .input-group-prepend > .form-control-plaintext.input-group-text,
+.input-group-sm > .input-group-append > .form-control-plaintext.input-group-text,
+.input-group-sm > .input-group-prepend > .form-control-plaintext.btn,
+.input-group-sm > .input-group-append > .form-control-plaintext.btn, .form-control-plaintext.form-control-lg, .input-group-lg > .form-control-plaintext.form-control,
+.input-group-lg > .input-group-prepend > .form-control-plaintext.input-group-text,
+.input-group-lg > .input-group-append > .form-control-plaintext.input-group-text,
+.input-group-lg > .input-group-prepend > .form-control-plaintext.btn,
+.input-group-lg > .input-group-append > .form-control-plaintext.btn {
   padding-right: 0;
   padding-left: 0;
 }
 
-.form-control-sm, .input-group-sm .form-control,
-.input-group-sm .input-group-text,
-.input-group-sm .btn,
-.input-group-sm .custom-file,
-.input-group-sm .custom-select {
+.form-control-sm, .input-group-sm > .form-control,
+.input-group-sm > .input-group-prepend > .input-group-text,
+.input-group-sm > .input-group-append > .input-group-text,
+.input-group-sm > .input-group-prepend > .btn,
+.input-group-sm > .input-group-append > .btn {
   padding: 0.25rem 0.5rem;
   font-size: 0.875rem;
   line-height: 1.5;
   border-radius: 0.2rem;
 }
 
-select.form-control-sm:not([size]):not([multiple]), .input-group-sm select.form-control:not([size]):not([multiple]),
-.input-group-sm select.input-group-text:not([size]):not([multiple]),
-.input-group-sm select.btn:not([size]):not([multiple]),
-.input-group-sm select.custom-file:not([size]):not([multiple]),
-.input-group-sm select.custom-select:not([size]):not([multiple]) {
+select.form-control-sm:not([size]):not([multiple]), .input-group-sm > select.form-control:not([size]):not([multiple]),
+.input-group-sm > .input-group-prepend > select.input-group-text:not([size]):not([multiple]),
+.input-group-sm > .input-group-append > select.input-group-text:not([size]):not([multiple]),
+.input-group-sm > .input-group-prepend > select.btn:not([size]):not([multiple]),
+.input-group-sm > .input-group-append > select.btn:not([size]):not([multiple]) {
   height: calc(1.8125rem + 2px);
 }
 
-.form-control-lg, .input-group-lg .form-control,
-.input-group-lg .input-group-text,
-.input-group-lg .btn,
-.input-group-lg .custom-file,
-.input-group-lg .custom-select {
+.form-control-lg, .input-group-lg > .form-control,
+.input-group-lg > .input-group-prepend > .input-group-text,
+.input-group-lg > .input-group-append > .input-group-text,
+.input-group-lg > .input-group-prepend > .btn,
+.input-group-lg > .input-group-append > .btn {
   padding: 0.5rem 1rem;
   font-size: 1.25rem;
   line-height: 1.5;
   border-radius: 0.3rem;
 }
 
-select.form-control-lg:not([size]):not([multiple]), .input-group-lg select.form-control:not([size]):not([multiple]),
-.input-group-lg select.input-group-text:not([size]):not([multiple]),
-.input-group-lg select.btn:not([size]):not([multiple]),
-.input-group-lg select.custom-file:not([size]):not([multiple]),
-.input-group-lg select.custom-select:not([size]):not([multiple]) {
+select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.form-control:not([size]):not([multiple]),
+.input-group-lg > .input-group-prepend > select.input-group-text:not([size]):not([multiple]),
+.input-group-lg > .input-group-append > select.input-group-text:not([size]):not([multiple]),
+.input-group-lg > .input-group-prepend > select.btn:not([size]):not([multiple]),
+.input-group-lg > .input-group-append > select.btn:not([size]):not([multiple]) {
   height: calc(2.875rem + 2px);
 }
 
@@ -3476,102 +3476,9 @@ tbody.collapse.show {
   width: 100%;
 }
 
-.input-group .form-control,
-.input-group .custom-select,
-.input-group .custom-file,
-.input-group .btn,
-.input-group .btn-group,
-.input-group .btn-group > .btn,
-.input-group .input-group-text {
-  border-radius: 0;
-}
-
-.input-group .form-control:focus,
-.input-group .custom-select:focus,
-.input-group .custom-file:focus,
-.input-group .btn:focus,
-.input-group .btn-group:focus,
-.input-group .btn-group > .btn:focus,
-.input-group .input-group-text:focus {
-  z-index: 3;
-}
-
-.input-group .form-control.input-group-between,
-.input-group .custom-select.input-group-between,
-.input-group .custom-file.input-group-between,
-.input-group .btn.input-group-between,
-.input-group .btn-group.input-group-between,
-.input-group .btn-group > .btn.input-group-between,
-.input-group .input-group-text.input-group-between {
-  -webkit-box-flex: 0;
-  -ms-flex: 0 0 auto;
-  flex: 0 0 auto;
-  width: auto;
-}
-
-.input-group .form-control + .form-control,
-.input-group .form-control + .custom-select,
-.input-group .form-control + .btn,
-.input-group .form-control + .input-group-text,
-.input-group .form-control + .custom-file,
-.input-group .custom-select + .form-control,
-.input-group .custom-select + .custom-select,
-.input-group .custom-select + .btn,
-.input-group .custom-select + .input-group-text,
-.input-group .custom-select + .custom-file,
-.input-group .custom-file + .form-control,
-.input-group .custom-file + .custom-select,
-.input-group .custom-file + .btn,
-.input-group .custom-file + .input-group-text,
-.input-group .custom-file + .custom-file,
-.input-group .btn + .form-control,
-.input-group .btn + .custom-select,
-.input-group .btn + .btn,
-.input-group .btn + .input-group-text,
-.input-group .btn + .custom-file,
-.input-group .btn-group + .form-control,
-.input-group .btn-group + .custom-select,
-.input-group .btn-group + .btn,
-.input-group .btn-group + .input-group-text,
-.input-group .btn-group + .custom-file,
-.input-group .btn-group > .btn + .form-control,
-.input-group .btn-group > .btn + .custom-select,
-.input-group .btn-group > .btn + .btn,
-.input-group .btn-group > .btn + .input-group-text,
-.input-group .btn-group > .btn + .custom-file,
-.input-group .input-group-text + .form-control,
-.input-group .input-group-text + .custom-select,
-.input-group .input-group-text + .btn,
-.input-group .input-group-text + .input-group-text,
-.input-group .input-group-text + .custom-file {
-  margin-left: -1px;
-}
-
-.input-group .custom-file {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.input-group .custom-file .custom-file-control,
-.input-group .custom-file .custom-file-control::before,
-.input-group .custom-file .custom-file-control::after,
-.input-group .custom-file .custom-file-label,
-.input-group .custom-file .custom-file-label::before,
-.input-group .custom-file .custom-file-label::after {
-  border-radius: 0;
-}
-
 .input-group > .form-control,
 .input-group > .custom-select,
-.input-group > .custom-file,
-.input-group > .btn,
-.input-group > .btn-group,
-.input-group > .btn-group > .btn,
-.input-group > .input-group-text {
+.input-group > .custom-file {
   position: relative;
   -webkit-box-flex: 1;
   -ms-flex: 1 1 auto;
@@ -3580,74 +3487,55 @@ tbody.collapse.show {
   margin-bottom: 0;
 }
 
-.input-group > .input-group-prepend:first-child > .form-control:first-child,
-.input-group > .input-group-prepend:first-child > .input-group-text:first-child,
-.input-group > .input-group-prepend:first-child > .btn:first-child,
-.input-group > .input-group-prepend:first-child > .btn-group:first-child > .btn:first-child,
-.input-group > .input-group-prepend:first-child > .custom-select:first-child,
-.input-group > .input-group-prepend:first-child > .custom-file:first-child > .custom-file-control,
-.input-group > .input-group-prepend:first-child > .custom-file:first-child > .custom-file-control::before,
-.input-group > .input-group-prepend:first-child > .custom-file:first-child > .custom-file-label,
-.input-group > .input-group-prepend:first-child > .custom-file:first-child > .custom-file-label::before,
-.input-group > .input-group-append:first-child > .form-control:first-child,
-.input-group > .input-group-append:first-child > .input-group-text:first-child,
-.input-group > .input-group-append:first-child > .btn:first-child,
-.input-group > .input-group-append:first-child > .btn-group:first-child > .btn:first-child,
-.input-group > .input-group-append:first-child > .custom-select:first-child,
-.input-group > .input-group-append:first-child > .custom-file:first-child > .custom-file-control,
-.input-group > .input-group-append:first-child > .custom-file:first-child > .custom-file-control::before,
-.input-group > .input-group-append:first-child > .custom-file:first-child > .custom-file-label,
-.input-group > .input-group-append:first-child > .custom-file:first-child > .custom-file-label::before {
-  border-top-left-radius: 0.25rem;
-  border-bottom-left-radius: 0.25rem;
+.input-group > .form-control:focus,
+.input-group > .custom-select:focus,
+.input-group > .custom-file:focus {
+  z-index: 3;
 }
 
-.input-group > .form-control:first-child,
-.input-group > .input-group-text:first-child,
-.input-group > .btn:first-child,
-.input-group > .btn-group:first-child > .btn:first-child,
-.input-group > .custom-select:first-child,
-.input-group > .custom-file:first-child > .custom-file-control,
-.input-group > .custom-file:first-child > .custom-file-control::before,
-.input-group > .custom-file:first-child > .custom-file-label,
-.input-group > .custom-file:first-child > .custom-file-label::before {
-  border-top-left-radius: 0.25rem;
-  border-bottom-left-radius: 0.25rem;
+.input-group > .form-control + .form-control,
+.input-group > .form-control + .custom-select,
+.input-group > .form-control + .custom-file,
+.input-group > .custom-select + .form-control,
+.input-group > .custom-select + .custom-select,
+.input-group > .custom-select + .custom-file,
+.input-group > .custom-file + .form-control,
+.input-group > .custom-file + .custom-select,
+.input-group > .custom-file + .custom-file {
+  margin-left: -1px;
 }
 
-.input-group > .input-group-prepend:last-child > .form-control:last-child,
-.input-group > .input-group-prepend:last-child > .input-group-text:last-child,
-.input-group > .input-group-prepend:last-child > .btn:last-child,
-.input-group > .input-group-prepend:last-child > .btn-group:last-child > .btn:last-child,
-.input-group > .input-group-prepend:last-child > .custom-select:last-child,
-.input-group > .input-group-prepend:last-child > .custom-file:last-child > .custom-file-control,
-.input-group > .input-group-prepend:last-child > .custom-file:last-child > .custom-file-control::before,
-.input-group > .input-group-prepend:last-child > .custom-file:last-child > .custom-file-label,
-.input-group > .input-group-prepend:last-child > .custom-file:last-child > .custom-file-label::before,
-.input-group > .input-group-append:last-child > .form-control:last-child,
-.input-group > .input-group-append:last-child > .input-group-text:last-child,
-.input-group > .input-group-append:last-child > .btn:last-child,
-.input-group > .input-group-append:last-child > .btn-group:last-child > .btn:last-child,
-.input-group > .input-group-append:last-child > .custom-select:last-child,
-.input-group > .input-group-append:last-child > .custom-file:last-child > .custom-file-control,
-.input-group > .input-group-append:last-child > .custom-file:last-child > .custom-file-control::before,
-.input-group > .input-group-append:last-child > .custom-file:last-child > .custom-file-label,
-.input-group > .input-group-append:last-child > .custom-file:last-child > .custom-file-label::before {
-  border-top-right-radius: 0.25rem;
-  border-bottom-right-radius: 0.25rem;
+.input-group > .form-control:not(:last-child),
+.input-group > .custom-select:not(:last-child) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
-.input-group > .form-control:last-child,
-.input-group > .input-group-text:last-child,
-.input-group > .btn:last-child,
-.input-group > .btn-group:last-child > .btn:last-child,
-.input-group > .custom-select:last-child,
-.input-group > .custom-file:last-child > .custom-file-control,
-.input-group > .custom-file:last-child > .custom-file-control::before,
-.input-group > .custom-file:last-child > .custom-file-label,
-.input-group > .custom-file:last-child > .custom-file-label::before {
-  border-top-right-radius: 0.25rem;
-  border-bottom-right-radius: 0.25rem;
+.input-group > .form-control:not(:first-child),
+.input-group > .custom-select:not(:first-child) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.input-group > .custom-file {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.input-group > .custom-file:not(:last-child) .custom-file-label,
+.input-group > .custom-file:not(:last-child) .custom-file-label::after {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.input-group > .custom-file:not(:first-child) .custom-file-label,
+.input-group > .custom-file:not(:first-child) .custom-file-label::after {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
 .input-group-prepend,
@@ -3661,6 +3549,17 @@ tbody.collapse.show {
 .input-group-append .btn {
   position: relative;
   z-index: 2;
+}
+
+.input-group-prepend .btn + .btn,
+.input-group-prepend .btn + .input-group-text,
+.input-group-prepend .input-group-text + .input-group-text,
+.input-group-prepend .input-group-text + .btn,
+.input-group-append .btn + .btn,
+.input-group-append .btn + .input-group-text,
+.input-group-append .input-group-text + .input-group-text,
+.input-group-append .input-group-text + .btn {
+  margin-left: -1px;
 }
 
 .input-group-prepend {
@@ -3694,6 +3593,26 @@ tbody.collapse.show {
 .input-group-text input[type="radio"],
 .input-group-text input[type="checkbox"] {
   margin-top: 0;
+}
+
+.input-group > .input-group-prepend > .btn,
+.input-group > .input-group-prepend > .input-group-text,
+.input-group > .input-group-append:not(:last-child) > .btn,
+.input-group > .input-group-append:not(:last-child) > .input-group-text,
+.input-group > .input-group-append:last-child > .btn:not(:last-child):not(.dropdown-toggle),
+.input-group > .input-group-append:last-child > .input-group-text:not(:last-child) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.input-group > .input-group-append > .btn,
+.input-group > .input-group-append > .input-group-text,
+.input-group > .input-group-prepend:not(:first-child) > .btn,
+.input-group > .input-group-prepend:not(:first-child) > .input-group-text,
+.input-group > .input-group-prepend:first-child > .btn:not(:first-child),
+.input-group > .input-group-prepend:first-child > .input-group-text:not(:first-child) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
 .custom-control {
