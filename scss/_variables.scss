@@ -534,6 +534,7 @@ $custom-file-border-width:          $input-btn-border-width !default;
 $custom-file-border-color:          $input-border-color !default;
 $custom-file-border-radius:         $input-border-radius !default;
 $custom-file-box-shadow:            $input-box-shadow !default;
+$custom-file-calculated-height:     calc(#{$input-height-inner} + #{$input-height-border} - #{$custom-file-border-width} * 2) !default;
 $custom-file-button-color:          $custom-file-color !default;
 $custom-file-button-bg:             $input-group-addon-bg !default;
 $custom-file-text: (
