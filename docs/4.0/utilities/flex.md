@@ -356,20 +356,50 @@ Responsive variations also exist for `flex-wrap`.
 
 ## Order
 
-Change the _visual_ order of specific flex items with a handful of `order` utilities. We only provide options for making an item first or last, as well as a reset to use the DOM order. As `order` takes any integer value (e.g., `5`), add custom CSS for any additional values needed.
+Change the _visual_ order of specific flex items with a handful of `order` utilities. Use `.order-` classes for controlling the **visual order** of your content. These classes are responsive, so you can set the `order` by breakpoint (e.g., `.order-1.order-md-2`). Includes support for `1` through `12` across all five grid tiers.
 
+<div class="bd-example-row">
 {% example html %}
-<div class="d-flex flex-nowrap bd-highlight">
-  <div class="order-3 p-2 bd-highlight">First flex item</div>
-  <div class="order-2 p-2 bd-highlight">Second flex item</div>
-  <div class="order-1 p-2 bd-highlight">Third flex item</div>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      First, but unordered
+    </div>
+    <div class="col order-12">
+      Second, but last
+    </div>
+    <div class="col order-1">
+      Third, but first
+    </div>
+  </div>
 </div>
 {% endexample %}
+</div>
 
-Responsive variations also exist for `order`.
+There are also responsive `.order-first` and `.order-last` classes that change the `order` of an element by applying `order: -1` and `order: 13` (`order: $columns + 1`), respectively. These classes can also be intermixed with the numbered `.order-*` classes as needed.
 
-{% for bp in site.data.breakpoints %}{% for i in (0..12) %}
-- `.order{{ bp.abbr }}-{{ i }}`{% endfor %}{% endfor %}
+<div class="bd-example-row">
+{% example html %}
+<div class="container">
+  <div class="row">
+    <div class="col order-last">
+      First, but last
+    </div>
+    <div class="col">
+      Second, but unordered
+    </div>
+    <div class="col order-first">
+      Third, but first
+    </div>
+  </div>
+</div>
+{% endexample %}
+</div>
+
+As such, the classes are named using the format:
+
+* `.order-{value}` for `xs`
+* `.order-{breakpoint}-{value}` for `sm`, `md`, `lg`, and `xl`.
 
 ## Align content
 
