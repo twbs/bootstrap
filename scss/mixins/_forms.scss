@@ -37,7 +37,6 @@
 
   .#{$state}-tooltip {
     position: absolute;
-    top: 100%;
     z-index: 5;
     display: none;
     max-width: 100%; // Contain to parent when possible
@@ -48,6 +47,10 @@
     color: #fff;
     background-color: rgba($color, .8);
     border-radius: .2rem;
+
+    .input-group & {
+      top: 100%;
+    }
   }
 
   .form-control,
