@@ -37,7 +37,6 @@
 
   .#{$state}-tooltip {
     position: absolute;
-    top: 100%;
     z-index: 5;
     display: none;
     max-width: 100%; // Contain to parent when possible
@@ -48,6 +47,10 @@
     color: color-yiq($color);
     background-color: rgba($color, $form-feedback-tooltip-opacity);
     @include border-radius($form-feedback-tooltip-border-radius);
+
+    .input-group & {
+      top: 100%;
+    }
   }
 
   .form-control {
