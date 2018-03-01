@@ -316,7 +316,7 @@
     border: 0;
   }
 
-  &::-webkit-slider-thumb {
+  %thumb {
     width: $custom-range-thumb-width;
     height: $custom-range-thumb-height;
     margin-top: -($custom-range-thumb-width * .25); // Webkit specific?
@@ -336,7 +336,7 @@
     }
   }
 
-  &::-webkit-slider-runnable-track {
+  %track {
     width: $custom-range-track-width;
     height: $custom-range-track-height;
     color: transparent; // Why?
@@ -347,64 +347,28 @@
     @include box-shadow($custom-range-track-box-shadow);
   }
 
+  &::-webkit-slider-thumb {
+    @extend %thumb;
+  }
+
+  &::-webkit-slider-runnable-track {
+    @extend %track;
+  }
+
   &::-moz-range-thumb {
-    width: $custom-range-thumb-width;
-    height: $custom-range-thumb-height;
-    @include gradient-bg($custom-range-thumb-bg);
-    border: $custom-range-thumb-border;
-    @include border-radius($custom-range-thumb-border-radius);
-    @include box-shadow($custom-range-thumb-box-shadow);
-    appearance: none;
-
-    &:focus {
-      outline: none;
-      box-shadow: $custom-range-thumb-focus-box-shadow; // No mixin for focus accessibility
-    }
-
-    &:active {
-      @include gradient-bg($custom-range-thumb-active-bg);
-    }
+    @extend %thumb
   }
 
   &::-moz-range-track {
-    width: $custom-range-track-width;
-    height: $custom-range-track-height;
-    color: transparent;
-    cursor: $custom-range-track-cursor;
-    background-color: $custom-range-track-bg;
-    border-color: transparent; // Firefox specific?
-    @include border-radius($custom-range-track-border-radius);
-    @include box-shadow($custom-range-track-box-shadow);
+    @extend %track
   }
 
   &::-ms-thumb {
-    width: $custom-range-thumb-width;
-    height: $custom-range-thumb-height;
-    @include gradient-bg($custom-range-thumb-bg);
-    border: $custom-range-thumb-border;
-    @include border-radius($custom-range-thumb-border-radius);
-    @include box-shadow($custom-range-thumb-box-shadow);
-    appearance: none;
-
-    &:focus {
-      outline: none;
-      box-shadow: $custom-range-thumb-focus-box-shadow; // No mixin for focus accessibility
-    }
-
-    &:active {
-      @include gradient-bg($custom-range-thumb-active-bg);
-    }
+    @extend %thumb
   }
 
   &::-ms-track {
-    width: $custom-range-track-width;
-    height: $custom-range-track-height;
-    color: transparent;
-    cursor: $custom-range-track-cursor;
-    background-color: transparent;
-    border-color: transparent;
-    border-width: ($custom-range-thumb-height * .5);
-    @include box-shadow($custom-range-track-box-shadow);
+    @extend %track
   }
 
   &::-ms-fill-lower {
