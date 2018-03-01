@@ -521,48 +521,6 @@ $(function () {
       .bootstrapModal('show')
   })
 
-  QUnit.test('should adjust the inline margin of the navbar-toggler when opening and restore when closing', function (assert) {
-    assert.expect(2)
-    var done = assert.async()
-    var $element = $('<div class="navbar-toggler"></div>').appendTo('#qunit-fixture')
-    var originalMargin = $element.css('margin-right')
-
-    $('<div id="modal-test"/>')
-      .on('hidden.bs.modal', function () {
-        var currentMargin = $element.css('margin-right')
-        assert.strictEqual(currentMargin, originalMargin, 'navbar-toggler margin should be reset after closing')
-        $element.remove()
-        done()
-      })
-      .on('shown.bs.modal', function () {
-        var expectedMargin = parseFloat(originalMargin) + $(this).getScrollbarWidth() + 'px'
-        var currentMargin = $element.css('margin-right')
-        assert.strictEqual(currentMargin, expectedMargin, 'navbar-toggler margin should be adjusted while opening')
-        $(this).bootstrapModal('hide')
-      })
-      .bootstrapModal('show')
-  })
-
-  QUnit.test('should store the original margin of the navbar-toggler in data-margin-right before showing', function (assert) {
-    assert.expect(2)
-    var done = assert.async()
-    var $element = $('<div class="navbar-toggler"></div>').appendTo('#qunit-fixture')
-    var originalMargin = '0px'
-    $element.css('margin-right', originalMargin)
-
-    $('<div id="modal-test"/>')
-      .on('hidden.bs.modal', function () {
-        assert.strictEqual(typeof $element.data('margin-right'), 'undefined', 'data-margin-right should be cleared after closing')
-        $element.remove()
-        done()
-      })
-      .on('shown.bs.modal', function () {
-        assert.strictEqual($element.data('margin-right'), originalMargin, 'original navbar-toggler margin should be stored in data-margin-right')
-        $(this).bootstrapModal('hide')
-      })
-      .bootstrapModal('show')
-  })
-
   QUnit.test('should ignore values set via CSS when trying to restore body padding after closing', function (assert) {
     assert.expect(1)
     var done = assert.async()
