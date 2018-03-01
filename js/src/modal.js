@@ -64,8 +64,7 @@ const Modal = (($) => {
     DATA_TOGGLE        : '[data-toggle="modal"]',
     DATA_DISMISS       : '[data-dismiss="modal"]',
     FIXED_CONTENT      : '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top',
-    STICKY_CONTENT     : '.sticky-top',
-    NAVBAR_TOGGLER     : '.navbar-toggler'
+    STICKY_CONTENT     : '.sticky-top'
   }
 
   /**
@@ -452,15 +451,6 @@ const Modal = (($) => {
             .css('margin-right', `${parseFloat(calculatedMargin) - this._scrollbarWidth}px`)
         })
 
-        // Adjust navbar-toggler margin
-        $(navbarToggler).each((index, element) => {
-          const actualMargin = element.style.marginRight
-          const calculatedMargin = $(element).css('margin-right')
-          $(element)
-            .data('margin-right', actualMargin)
-            .css('margin-right', `${parseFloat(calculatedMargin) + this._scrollbarWidth}px`)
-        })
-
         // Adjust body padding
         const actualPadding = document.body.style.paddingRight
         const calculatedPadding = $(document.body).css('padding-right')
@@ -482,8 +472,8 @@ const Modal = (($) => {
         }
       })
 
-      // Restore sticky content and navbar-toggler margin
-      const elements = [].slice.call(document.querySelectorAll(`${Selector.STICKY_CONTENT}, ${Selector.NAVBAR_TOGGLER}`))
+      // Restore sticky content
+      const elements = [].slice.call(document.querySelectorAll(`${Selector.STICKY_CONTENT}`))
       $(elements).each((index, element) => {
         const margin = $(element).data('margin-right')
         if (typeof margin !== 'undefined') {
