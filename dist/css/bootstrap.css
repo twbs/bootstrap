@@ -3320,7 +3320,17 @@ tbody.collapse.show {
   padding: 0.25rem 1.5rem;
   color: #212529;
 }
-
+/* Shadows */
+.bs-1{
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+}
+.bs-2{
+      box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+}
+.bs-3{
+      box-shadow: 2px 2px 15px rgba(0,0,0,0.8);
+}
+/* Shadows End */
 .btn-group,
 .btn-group-vertical {
   position: relative;
