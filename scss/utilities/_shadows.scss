@@ -1,0 +1,5 @@
+@if $enable-shadows {
+  .shadow-sm { box-shadow: $box-shadow-sm; }
+  .shadow    { box-shadow: $box-shadow; }
+  .shadow-lg { box-shadow: $box-shadow-lg; }
+}
