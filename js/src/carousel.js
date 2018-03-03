@@ -15,16 +15,16 @@ const Carousel = (($) => {
    * ------------------------------------------------------------------------
    */
 
-  const NAME                   = 'carousel'
-  const VERSION                = '4.0.0'
-  const DATA_KEY               = 'bs.carousel'
-  const EVENT_KEY              = `.${DATA_KEY}`
-  const DATA_API_KEY           = '.data-api'
-  const JQUERY_NO_CONFLICT     = $.fn[NAME]
-  const TRANSITION_DURATION    = 600
-  const ARROW_LEFT_KEYCODE     = 37 // KeyboardEvent.which value for left arrow key
-  const ARROW_RIGHT_KEYCODE    = 39 // KeyboardEvent.which value for right arrow key
-  const TOUCHEVENT_COMPAT_WAIT = 500 // Time for mouse compat events to fire after touch
+  const NAME                    = 'carousel'
+  const VERSION                 = '4.0.0'
+  const DATA_KEY                = 'bs.carousel'
+  const EVENT_KEY               = `.${DATA_KEY}`
+  const DATA_API_KEY            = '.data-api'
+  const JQUERY_NO_CONFLICT      = $.fn[NAME]
+  const ARROW_LEFT_KEYCODE      = 37 // KeyboardEvent.which value for left arrow key
+  const ARROW_RIGHT_KEYCODE     = 39 // KeyboardEvent.which value for right arrow key
+  const TOUCHEVENT_COMPAT_WAIT  = 500 // Time for mouse compat events to fire after touch
+  const MILLISECONDS_MULTIPLIER = 1000
 
   const Default = {
     interval : 5000,
@@ -89,18 +89,20 @@ const Carousel = (($) => {
 
   class Carousel {
     constructor(element, config) {
-      this._items             = null
-      this._interval          = null
-      this._activeElement     = null
+      this._items              = null
+      this._interval           = null
+      this._activeElement      = null
 
-      this._isPaused          = false
-      this._isSliding         = false
+      this._isPaused           = false
+      this._isSliding          = false
 
-      this.touchTimeout       = null
+      this.touchTimeout        = null
 
-      this._config            = this._getConfig(config)
-      this._element           = $(element)[0]
-      this._indicatorsElement = $(this._element).find(Selector.INDICATORS)[0]
+      this._config             = this._getConfig(config)
+      this._element            = $(element)[0]
+      this._indicatorsElement  = $(this._element).find(Selector.INDICATORS)[0]
+
+      this._transitionDuration = this._getTransitionDuration()
 
       this._addEventListeners()
     }
@@ -221,6 +223,24 @@ const Carousel = (($) => {
       }
       Util.typeCheckConfig(NAME, config, DefaultType)
       return config
+    }
+
+    _getTransitionDuration() {
+      // Get transition-duration of first element in the carousel
+      let transitionDuration = $(this._element).find(Selector.ITEM).css('transition-duration')
+
+      // Return 0 carousel item is not found
+      if (!transitionDuration) {
+        return 0
+      }
+
+      // If multiple durations are defined, take the first
+      transitionDuration = transitionDuration.split(',')[0]
+
+      // Multiply by 1000 if transition-duration is defined in seconds
+      return transitionDuration.indexOf('ms') > -1
+        ? parseFloat(transitionDuration)
+        : parseFloat(transitionDuration) * MILLISECONDS_MULTIPLIER
     }
 
     _addEventListeners() {
@@ -398,7 +418,7 @@ const Carousel = (($) => {
 
             setTimeout(() => $(this._element).trigger(slidEvent), 0)
           })
-          .emulateTransitionEnd(TRANSITION_DURATION)
+          .emulateTransitionEnd(this._transitionDuration)
       } else {
         $(activeElement).removeClass(ClassName.ACTIVE)
         $(nextElement).addClass(ClassName.ACTIVE)

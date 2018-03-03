@@ -76,13 +76,15 @@ var Dropdown = function ($) {
     offset: 0,
     flip: true,
     boundary: 'scrollParent',
-    reference: 'toggle'
+    reference: 'toggle',
+    display: 'dynamic'
   };
   var DefaultType = {
     offset: '(number|string|function)',
     flip: 'boolean',
     boundary: '(string|element)',
-    reference: '(string|element)'
+    reference: '(string|element)',
+    display: 'string'
     /**
      * ------------------------------------------------------------------------
      * Class Definition
@@ -170,7 +172,7 @@ var Dropdown = function ($) {
 
 
       if ('ontouchstart' in document.documentElement && $(parent).closest(Selector.NAVBAR_NAV).length === 0) {
-        $('body').children().on('mouseover', null, $.noop);
+        $(document.body).children().on('mouseover', null, $.noop);
       }
 
       this._element.focus();
@@ -279,8 +281,16 @@ var Dropdown = function ($) {
           preventOverflow: {
             boundariesElement: this._config.boundary
           }
-        }
+        } // Disable Popper.js if we have a static display
+
       };
+
+      if (this._config.display === 'static') {
+        popperConfig.modifiers.applyStyle = {
+          enabled: false
+        };
+      }
+
       return popperConfig;
     }; // Static
 
@@ -345,7 +355,7 @@ var Dropdown = function ($) {
 
 
         if ('ontouchstart' in document.documentElement) {
-          $('body').children().off('mouseover', null, $.noop);
+          $(document.body).children().off('mouseover', null, $.noop);
         }
 
         toggles[i].setAttribute('aria-expanded', 'false');
