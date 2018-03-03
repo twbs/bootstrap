@@ -69,7 +69,7 @@ var Util = function ($$$1) {
   var MAX_UID = 1000000; // Shoutout AngusCroll (https://goo.gl/pxwQGp)
 
   function toType(obj) {
-    return {}.toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase();
+    return {}.toString.call(obj).match(/\s([a-z]+)/i)[1].toLowerCase();
   }
 
   function getSpecialTransitionEndEvent() {
@@ -119,13 +119,6 @@ var Util = function ($$$1) {
       $$$1.event.special[Util.TRANSITION_END] = getSpecialTransitionEndEvent();
     }
   }
-
-  function escapeId(selector) {
-    // We escape IDs in case of special selectors (selector = '#myId:something')
-    // $.escapeSelector does not exist in jQuery < 3
-    selector = typeof $$$1.escapeSelector === 'function' ? $$$1.escapeSelector(selector).substr(1) : selector.replace(/(:|\.|\[|\]|,|=|@)/g, '\\$1');
-    return selector;
-  }
   /**
    * --------------------------------------------------------------------------
    * Public Util Api
@@ -148,11 +141,6 @@ var Util = function ($$$1) {
 
       if (!selector || selector === '#') {
         selector = element.getAttribute('href') || '';
-      } // If it's an ID
-
-
-      if (selector.charAt(0) === '#') {
-        selector = escapeId(selector);
       }
 
       try {
@@ -546,13 +534,13 @@ var Carousel = function ($$$1) {
   var EVENT_KEY = "." + DATA_KEY;
   var DATA_API_KEY = '.data-api';
   var JQUERY_NO_CONFLICT = $$$1.fn[NAME];
-  var TRANSITION_DURATION = 600;
   var ARROW_LEFT_KEYCODE = 37; // KeyboardEvent.which value for left arrow key
 
   var ARROW_RIGHT_KEYCODE = 39; // KeyboardEvent.which value for right arrow key
 
   var TOUCHEVENT_COMPAT_WAIT = 500; // Time for mouse compat events to fire after touch
 
+  var MILLISECONDS_MULTIPLIER = 1000;
   var Default = {
     interval: 5000,
     keyboard: true,
@@ -622,6 +610,7 @@ var Carousel = function ($$$1) {
       this._config = this._getConfig(config);
       this._element = $$$1(element)[0];
       this._indicatorsElement = $$$1(this._element).find(Selector.INDICATORS)[0];
+      this._transitionDuration = this._getTransitionDuration();
 
       this._addEventListeners();
     } // Getters
@@ -726,6 +715,20 @@ var Carousel = function ($$$1) {
       config = _extends({}, Default, config);
       Util.typeCheckConfig(NAME, config, DefaultType);
       return config;
+    };
+
+    _proto._getTransitionDuration = function _getTransitionDuration() {
+      // Get transition-duration of first element in the carousel
+      var transitionDuration = $$$1(this._element).find(Selector.ITEM).css('transition-duration'); // Return 0 carousel item is not found
+
+      if (!transitionDuration) {
+        return 0;
+      } // If multiple durations are defined, take the first
+
+
+      transitionDuration = transitionDuration.split(',')[0]; // Multiply by 1000 if transition-duration is defined in seconds
+
+      return transitionDuration.indexOf('ms') > -1 ? parseFloat(transitionDuration) : parseFloat(transitionDuration) * MILLISECONDS_MULTIPLIER;
     };
 
     _proto._addEventListeners = function _addEventListeners() {
@@ -906,7 +909,7 @@ var Carousel = function ($$$1) {
           setTimeout(function () {
             return $$$1(_this3._element).trigger(slidEvent);
           }, 0);
-        }).emulateTransitionEnd(TRANSITION_DURATION);
+        }).emulateTransitionEnd(this._transitionDuration);
       } else {
         $$$1(activeElement).removeClass(ClassName.ACTIVE);
         $$$1(nextElement).addClass(ClassName.ACTIVE);
@@ -1467,12 +1470,16 @@ var Dropdown = function ($$$1) {
   var Default = {
     offset: 0,
     flip: true,
-    boundary: 'scrollParent'
+    boundary: 'scrollParent',
+    reference: 'toggle',
+    display: 'dynamic'
   };
   var DefaultType = {
     offset: '(number|string|function)',
     flip: 'boolean',
-    boundary: '(string|element)'
+    boundary: '(string|element)',
+    reference: '(string|element)',
+    display: 'string'
     /**
      * ------------------------------------------------------------------------
      * Class Definition
@@ -1533,11 +1540,15 @@ var Dropdown = function ($$$1) {
           throw new TypeError('Bootstrap dropdown require Popper.js (https://popper.js.org)');
         }
 
-        var element = this._element; // For dropup with alignment we use the parent as popper container
+        var referenceElement = this._element;
 
-        if ($$$1(parent).hasClass(ClassName.DROPUP)) {
-          if ($$$1(this._menu).hasClass(ClassName.MENULEFT) || $$$1(this._menu).hasClass(ClassName.MENURIGHT)) {
-            element = parent;
+        if (this._config.reference === 'parent') {
+          referenceElement = parent;
+        } else if (Util.isElement(this._config.reference)) {
+          referenceElement = this._config.reference; // Check if it's jQuery element
+
+          if (typeof this._config.reference.jquery !== 'undefined') {
+            referenceElement = this._config.reference[0];
           }
         } // If boundary is not `scrollParent`, then set position to `static`
         // to allow the menu to "escape" the scroll parent's boundaries
@@ -1548,7 +1559,7 @@ var Dropdown = function ($$$1) {
           $$$1(parent).addClass(ClassName.POSITION_STATIC);
         }
 
-        this._popper = new Popper(element, this._menu, this._getPopperConfig());
+        this._popper = new Popper(referenceElement, this._menu, this._getPopperConfig());
       } // If this is a touch-enabled device we add extra
       // empty mouseover listeners to the body's immediate children;
       // only needed because of broken event delegation on iOS
@@ -1556,7 +1567,7 @@ var Dropdown = function ($$$1) {
 
 
       if ('ontouchstart' in document.documentElement && $$$1(parent).closest(Selector.NAVBAR_NAV).length === 0) {
-        $$$1('body').children().on('mouseover', null, $$$1.noop);
+        $$$1(document.body).children().on('mouseover', null, $$$1.noop);
       }
 
       this._element.focus();
@@ -1665,8 +1676,16 @@ var Dropdown = function ($$$1) {
           preventOverflow: {
             boundariesElement: this._config.boundary
           }
-        }
+        } // Disable Popper.js if we have a static display
+
       };
+
+      if (this._config.display === 'static') {
+        popperConfig.modifiers.applyStyle = {
+          enabled: false
+        };
+      }
+
       return popperConfig;
     }; // Static
 
@@ -1731,7 +1750,7 @@ var Dropdown = function ($$$1) {
 
 
         if ('ontouchstart' in document.documentElement) {
-          $$$1('body').children().off('mouseover', null, $$$1.noop);
+          $$$1(document.body).children().off('mouseover', null, $$$1.noop);
         }
 
         toggles[i].setAttribute('aria-expanded', 'false');
@@ -2304,8 +2323,8 @@ var Modal = function ($$$1) {
         }); // Adjust body padding
 
         var actualPadding = document.body.style.paddingRight;
-        var calculatedPadding = $$$1('body').css('padding-right');
-        $$$1('body').data('padding-right', actualPadding).css('padding-right', parseFloat(calculatedPadding) + this._scrollbarWidth + "px");
+        var calculatedPadding = $$$1(document.body).css('padding-right');
+        $$$1(document.body).data('padding-right', actualPadding).css('padding-right', parseFloat(calculatedPadding) + this._scrollbarWidth + "px");
       }
     };
 
@@ -2327,10 +2346,10 @@ var Modal = function ($$$1) {
         }
       }); // Restore body padding
 
-      var padding = $$$1('body').data('padding-right');
+      var padding = $$$1(document.body).data('padding-right');
 
       if (typeof padding !== 'undefined') {
-        $$$1('body').css('padding-right', padding).removeData('padding-right');
+        $$$1(document.body).css('padding-right', padding).removeData('padding-right');
       }
     };
 
@@ -2700,7 +2719,7 @@ var Tooltip = function ($$$1) {
         // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
 
         if ('ontouchstart' in document.documentElement) {
-          $$$1('body').children().on('mouseover', null, $$$1.noop);
+          $$$1(document.body).children().on('mouseover', null, $$$1.noop);
         }
 
         var complete = function complete() {
@@ -2761,7 +2780,7 @@ var Tooltip = function ($$$1) {
       // empty mouseover listeners we added for iOS support
 
       if ('ontouchstart' in document.documentElement) {
-        $$$1('body').children().off('mouseover', null, $$$1.noop);
+        $$$1(document.body).children().off('mouseover', null, $$$1.noop);
       }
 
       this._activeTrigger[Trigger.CLICK] = false;

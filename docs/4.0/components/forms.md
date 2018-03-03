@@ -25,7 +25,7 @@ Here's a quick example to demonstrate Bootstrap's form styles. Keep reading for 
     <label for="exampleInputPassword1">Password</label>
     <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
   </div>
-  <div class="form-check">
+  <div class="form-group form-check">
     <input type="checkbox" class="form-check-input" id="exampleCheck1">
     <label class="form-check-label" for="exampleCheck1">Check me out</label>
   </div>
@@ -700,7 +700,7 @@ While Bootstrap will apply these styles in all browsers, Internet Explorer 11 an
 Provide valuable, actionable feedback to your users with HTML5 form validation–[available in all our supported browsers](https://caniuse.com/#feat=form-validation). Choose from the browser default validation feedback, or implement custom messages with our built-in classes and starter JavaScript.
 
 {% callout warning %}
-We **highly recommend** custom validation styles as native browser defaults are not announced to screen readers.
+We currently recommend using custom validation styles, as native browser default validation messages are not consistently exposed to assistive technologies in all browsers (most notably, Chrome on desktop and mobile).
 {% endcallout %}
 
 ### How it works
@@ -709,6 +709,7 @@ Here's how form validation works with Bootstrap:
 
 - HTML form validation is applied via CSS's two pseudo-classes, `:invalid` and `:valid`. It applies to `<input>`, `<select>`, and `<textarea>` elements.
 - Bootstrap scopes the `:invalid` and `:valid` styles to parent `.was-validated` class, usually applied to the `<form>`. Otherwise, any required field without a value shows up as invalid on page load. This way, you may choose when to activate them (typically after form submission is attempted).
+- To reset the appearance of the form (for instance, in the case of dynamic form submissions using AJAX), remove the `.was-validated` class from the `<form>` again after submission.
 - As a fallback, `.is-invalid` and `.is-valid` classes may be used instead of the pseudo-classes for [server side validation](#server-side). They do not require a `.was-validated` parent class.
 - Due to constraints in how CSS works, we cannot (at present) apply styles to a `<label>` that comes before a form control in the DOM without the help of custom JavaScript.
 - All modern browsers support the [constraint validation API](https://www.w3.org/TR/html5/sec-forms.html#the-constraint-validation-api), a series of JavaScript methods for validating form controls.
@@ -1169,6 +1170,29 @@ As is the `size` attribute:
   <option value="2">Two</option>
   <option value="3">Three</option>
 </select>
+{% endexample %}
+
+### Range
+
+Create custom `<input type="range">` controls with `.custom-range`. The track (the background) and thumb (the value) are both styled to appear the same across browsers. As only IE and Firefox support "filling" their track from the left or right of the thumb as a means to visually indicate progress, we do not currently support it.
+
+{% example html %}
+<label for="customRange1">Example range</label>
+<input type="range" class="custom-range" id="customRange1">
+{% endexample %}
+
+Range inputs have implicit values for `min` and `max`—`0` and `100`, respectively. You may specify new values for those using the `min` and `max` attributes.
+
+{% example html %}
+<label for="customRange2">Example range</label>
+<input type="range" class="custom-range" min="0" max="5" id="customRange2">
+{% endexample %}
+
+By default, range inputs "snap" to integer values. To change this, you can specify a `step` value. In the example below, we double the number of steps by using `step="0.5"`.
+
+{% example html %}
+<label for="customRange3">Example range</label>
+<input type="range" class="custom-range" min="0" max="5" step="0.5" id="customRange3">
 {% endexample %}
 
 ### File browser

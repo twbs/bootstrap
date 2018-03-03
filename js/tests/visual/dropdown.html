@@ -161,8 +161,46 @@
             </div>
           </div>
         </div>
-
       </div>
+
+      <div class="row">
+        <div class="col-sm-3 mt-4">
+          <div class="btn-group dropdown">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-offset="10,20">Dropdown offset</button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3 mt-4">
+          <div class="btn-group dropdown">
+            <button type="button" class="btn btn-secondary">Dropdown reference</button>
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-reference="parent">
+              <span class="sr-only">Dropdown split</span>
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3 mt-4">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+              Dropdown menu without Popper.js
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
 
     <script src="../../../assets/js/vendor/jquery-slim.min.js"></script>
