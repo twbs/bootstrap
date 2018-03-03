@@ -42,6 +42,10 @@ const files = [
   {
     file: 'node_modules/popper.js/dist/umd/popper.min.js',
     configPropertyName: 'popper_hash'
+  },
+  {
+    file: 'node_modules/hammerjs/hammer.min.js',
+    configPropertyName: 'hammer_hash'
   }
 ]
 
