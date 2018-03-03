@@ -2,6 +2,8 @@
 <script>window.jQuery || document.write('<script src="{{ site.baseurl }}/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
 
 <script src="{{ site.baseurl }}/assets/js/vendor/popper.min.js"{% if site.github %} integrity="{{ site.cdn.popper_hash }}" crossorigin="anonymous"{% endif %}></script>
+<script src="{{ site.cdn.hammer }}"{% if site.github %} integrity="{{ site.cdn.hammer_hash }}" crossorigin="anonymous"{% endif %}></script>
+
 
 {%- if site.github -%}
   <script src="{{ site.baseurl }}/dist/js/bootstrap.min.js" integrity="{{ site.cdn.js_hash }}" crossorigin="anonymous"></script>

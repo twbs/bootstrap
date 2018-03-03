@@ -941,4 +941,75 @@ $(function () {
       }, 80)
     }, 80)
   })
+
+  QUnit.test('should allow swiperight and call prev', function (assert) {
+    assert.expect(2)
+    var done = assert.async()
+    document.documentElement.ontouchstart = $.noop
+
+    var carouselHTML =
+        '<div class="carousel" data-interval="false">' +
+        '  <div class="carousel-inner">' +
+        '    <div id="item" class="carousel-item">' +
+        '      <img alt="">' +
+        '    </div>' +
+        '    <div class="carousel-item active">' +
+        '      <img alt="">' +
+        '    </div>' +
+        '  </div>' +
+        '</div>'
+
+    var $carousel = $(carouselHTML)
+    $carousel.appendTo('#qunit-fixture')
+    var $item = $('#item')
+    $carousel.bootstrapCarousel()
+
+    $carousel.one('slid.bs.carousel', function () {
+      assert.ok(true, 'slid event fired')
+      assert.ok($item.hasClass('active'))
+      delete document.documentElement.ontouchstart
+      done()
+    })
+
+    Simulator.gestures.swipe($carousel[0], {
+      deltaX: 300,
+      deltaY: 0
+    })
+  })
+
+  QUnit.test('should allow swipeleft and call next', function (assert) {
+    assert.expect(2)
+    var done = assert.async()
+    document.documentElement.ontouchstart = $.noop
+
+    var carouselHTML =
+        '<div class="carousel" data-interval="false">' +
+        '  <div class="carousel-inner">' +
+        '    <div id="item" class="carousel-item active">' +
+        '      <img alt="">' +
+        '    </div>' +
+        '    <div class="carousel-item">' +
+        '      <img alt="">' +
+        '    </div>' +
+        '  </div>' +
+        '</div>'
+
+    var $carousel = $(carouselHTML)
+    $carousel.appendTo('#qunit-fixture')
+    var $item = $('#item')
+    $carousel.bootstrapCarousel()
+
+    $carousel.one('slid.bs.carousel', function () {
+      assert.ok(true, 'slid event fired')
+      assert.ok(!$item.hasClass('active'))
+      delete document.documentElement.ontouchstart
+      done()
+    })
+
+    Simulator.gestures.swipe($carousel[0], {
+      pos: [300, 10],
+      deltaX: -300,
+      deltaY: 0
+    })
+  })
 })

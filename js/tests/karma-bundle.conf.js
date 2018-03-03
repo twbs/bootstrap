@@ -18,6 +18,8 @@ module.exports = (config) => {
     files: [
       jqueryFile,
       'assets/js/vendor/popper.min.js',
+      'https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js',
+      'js/tests/vendor/hammer-simulator.js',
       'dist/js/bootstrap.js',
       'js/tests/unit/*.js'
     ],
