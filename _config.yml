@@ -58,6 +58,8 @@ cdn:
   jquery_hash:      "sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
   popper:           "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"
   popper_hash:      "sha384-GM0Y80ecpwKxF1D5XCrGanKusGDy9WW0O2sSM84neB4iFhvKp3fwnoIRnPsQcN1R"
+  hammer:           "https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"
+  hammer_hash:      "sha384-Cs3dgUx6+jDxxuqHvVH8Onpyj2LF1gKZurLDlhqzuJmUqVYMJ0THTWpxK5Z086Zm"
 
 toc:
   min_level:        2

@@ -1,4 +1,5 @@
 import $ from 'jquery'
+import Hammer from 'hammerjs'
 import Util from './util'
 
 /**
@@ -23,13 +24,15 @@ const JQUERY_NO_CONFLICT     = $.fn[NAME]
 const ARROW_LEFT_KEYCODE     = 37 // KeyboardEvent.which value for left arrow key
 const ARROW_RIGHT_KEYCODE    = 39 // KeyboardEvent.which value for right arrow key
 const TOUCHEVENT_COMPAT_WAIT = 500 // Time for mouse compat events to fire after touch
+const HAMMER_ENABLED         = typeof Hammer !== 'undefined'
 
 const Default = {
   interval : 5000,
   keyboard : true,
   slide    : false,
   pause    : 'hover',
-  wrap     : true
+  wrap     : true,
+  touch    : true
 }
 
 const DefaultType = {
@@ -37,7 +40,8 @@ const DefaultType = {
   keyboard : 'boolean',
   slide    : '(boolean|string)',
   pause    : '(string|boolean)',
-  wrap     : 'boolean'
+  wrap     : 'boolean',
+  touch    : 'boolean'
 }
 
 const Direction = {
@@ -55,7 +59,9 @@ const Event = {
   MOUSELEAVE     : `mouseleave${EVENT_KEY}`,
   TOUCHEND       : `touchend${EVENT_KEY}`,
   LOAD_DATA_API  : `load${EVENT_KEY}${DATA_API_KEY}`,
-  CLICK_DATA_API : `click${EVENT_KEY}${DATA_API_KEY}`
+  CLICK_DATA_API : `click${EVENT_KEY}${DATA_API_KEY}`,
+  SWIPELEFT      : 'swipeleft',
+  SWIPERIGHT     : 'swiperight'
 }
 
 const ClassName = {
@@ -84,21 +90,30 @@ const Selector = {
  * Class Definition
  * ------------------------------------------------------------------------
  */
-
 class Carousel {
   constructor(element, config) {
-    this._items              = null
-    this._interval           = null
-    this._activeElement      = null
+    this._items         = null
+    this._interval      = null
+    this._activeElement = null
+    this._isPaused      = false
+    this._isSliding     = false
+    this.touchTimeout   = null
+    this.hammer         = null
 
-    this._isPaused           = false
-    this._isSliding          = false
+    this._config            = this._getConfig(config)
+    this._element           = element
+    this._indicatorsElement = this._element.querySelector(Selector.INDICATORS)
+    this._touchSupported    = 'ontouchstart' in document.documentElement || navigator.maxTouchPoints > 0
 
-    this.touchTimeout        = null
-
-    this._config             = this._getConfig(config)
-    this._element            = $(element)[0]
-    this._indicatorsElement  = this._element.querySelector(Selector.INDICATORS)
+    if (HAMMER_ENABLED && this._touchSupported && this._config.touch) {
+      this.hammer = new Hammer(this._element, {
+        recognizers: [[
+          Hammer.Swipe, {
+            direction: Hammer.DIRECTION_HORIZONTAL
+          }
+        ]]
+      })
+    }
 
     this._addEventListeners()
   }
@@ -226,11 +241,16 @@ class Carousel {
         .on(Event.KEYDOWN, (event) => this._keydown(event))
     }
 
+    if (this.hammer) {
+      this.hammer.on(Event.SWIPELEFT, () => this.next())
+      this.hammer.on(Event.SWIPERIGHT, () => this.prev())
+    }
+
     if (this._config.pause === 'hover') {
       $(this._element)
         .on(Event.MOUSEENTER, (event) => this.pause(event))
         .on(Event.MOUSELEAVE, (event) => this.cycle(event))
-      if ('ontouchstart' in document.documentElement) {
+      if (this._touchSupported) {
         // If it's a touch-enabled device, mouseenter/leave are fired as
         // part of the mouse compatibility events on first tap - the carousel
         // would stop cycling until user tapped out of it;

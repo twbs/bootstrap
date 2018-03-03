@@ -12,6 +12,8 @@ The carousel is a slideshow for cycling through a series of content, built with 
 
 In browsers where the [Page Visibility API](https://www.w3.org/TR/page-visibility/) is supported, the carousel will avoid sliding when the webpage is not visible to the user (such as when the browser tab is inactive, the browser window is minimized, etc.).
 
+The carousel supports swipe gestures (left and right) using [HammerJS]({{ site.cdn.hammer }}). For this to function correctly you need to include HammerJS before Bootstrap or use `bootstrap.bundle.min.js` / `bootstrap.bundle.js` which contains HammerJS.
+
 Please be aware that nested carousels are not supported, and carousels are generally not compliant with accessibility standards.
 
 Lastly, if you're building our JavaScript from source, it [requires `util.js`]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/javascript/#util).
@@ -280,6 +282,12 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <td>boolean</td>
       <td>true</td>
       <td>Whether the carousel should cycle continuously or have hard stops.</td>
+    </tr>
+    <tr>
+      <td>touch</td>
+      <td>boolean</td>
+      <td>true</td>
+      <td>Whether the carousel should handle touch event and allow swipe left/right.</td>
     </tr>
   </tbody>
 </table>
