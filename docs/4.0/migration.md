@@ -243,8 +243,8 @@ The navbar has been entirely rewritten in flexbox with improved support for alig
 
 ### Labels and badges
 
-- Renamed `.label` to `.badge` to disambiguate from the `<label>` element.
-- Dropped the `.badge` component as it was nearly identical to labels. Use the `.badge-pill` modifier together with the label component instead for that rounded look.
+- Consolidated `.label` and `.badge` to disambiguate from the `<label>` element and simplify related components.
+- Added `.badge-pill` as modifier for rounded "pill" look.
 - Badges are no longer floated automatically in list groups and other components. Utility classes are now required for that.
 - `.badge-default` has been dropped and `.badge-secondary` added to match component modifier classes used elsewhere.
 
