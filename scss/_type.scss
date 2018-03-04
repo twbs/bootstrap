@@ -112,6 +112,20 @@ mark,
 .blockquote {
   margin-bottom: $spacer;
   font-size: $blockquote-font-size;
+
+  &.blockquote-reverse {
+    text-align: right;
+
+    .blockquote-footer {
+      &::before {
+        content: none;
+      }
+
+      &::after {
+        content: "\00A0 \2014"; // nbsp, em dash
+      }
+    }
+  }
 }
 
 .blockquote-footer {
