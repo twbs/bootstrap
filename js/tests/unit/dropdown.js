@@ -88,7 +88,7 @@ $(function () {
         assert.ok(!$dropdown.parent('.dropdown').hasClass('position-static'), '"position-static" class not added')
         done()
       })
-    $dropdown.trigger('click')
+    EventHandler.trigger($dropdown[0], 'click')
   })
 
   QUnit.test('should add class position-static to dropdown if boundary not scrollParent', function (assert) {
@@ -110,7 +110,7 @@ $(function () {
         assert.ok($dropdown.parent('.dropdown').hasClass('position-static'), '"position-static" class added')
         done()
       })
-    $dropdown.trigger('click')
+    EventHandler.trigger($dropdown[0], 'click')
   })
 
   QUnit.test('should set aria-expanded="true" on target when dropdown menu is shown', function (assert) {
@@ -834,7 +834,7 @@ $(function () {
   })
 
   QUnit.test('should ignore space key events for <input>s within dropdown, and accept up, down and escape', function (assert) {
-    assert.expect(6)
+    assert.expect(7)
     var done = assert.async()
 
     var dropdownHTML =
@@ -907,7 +907,7 @@ $(function () {
   })
 
   QUnit.test('should ignore space key events for <textarea>s within dropdown, and accept up, down and escape', function (assert) {
-    assert.expect(6)
+    assert.expect(7)
     var done = assert.async()
 
     var dropdownHTML =
@@ -1006,7 +1006,7 @@ $(function () {
         done()
       })
 
-    $dropdown.trigger('click')
+    EventHandler.trigger($dropdown[0], 'click')
   })
 
   QUnit.test('should call Popper.js and detect navbar on update', function (assert) {
