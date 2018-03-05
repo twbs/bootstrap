@@ -35,15 +35,17 @@ The media queries effect screen widths with the given breakpoint *or larger*. Fo
 
 ## Examples
 
-{% example html %}
+{% capture example %}
 <div class="d-inline p-2 bg-primary text-white">d-inline</div>
 <div class="d-inline p-2 bg-dark text-white">d-inline</div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
-{% example html %}
+{% capture example %}
 <span class="d-block p-2 bg-primary text-white">d-block</span>
 <span class="d-block p-2 bg-dark text-white">d-block</span>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Hiding elements
 
@@ -68,10 +70,11 @@ To show an element only on a given interval of screen sizes you can combine one 
 | Visible only on lg | `.d-none .d-lg-block .d-xl-none` |
 | Visible only on xl | `.d-none .d-xl-block` |
 
-{% example html %}
+{% capture example %}
 <div class="d-lg-none">hide on screens wider than lg</div>
 <div class="d-none d-lg-block">hide on screens smaller than lg</div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Display in print
 
@@ -89,8 +92,9 @@ Change the `display` value of elements when printing with our print display util
 
 The print and display classes can be combined.
 
-{% example html %}
+{% capture example %}
 <div class="d-print-none">Screen Only (Hide on print only)</div>
 <div class="d-none d-print-block">Print Only (Hide on screen only)</div>
 <div class="d-none d-lg-block d-print-block">Hide up to large on screen, but always show on print</div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
