@@ -168,6 +168,7 @@ const Tab = (() => {
     _transitionComplete(element, active, callback) {
       if (active) {
         active.classList.remove(ClassName.ACTIVE)
+        active.classList.remove(ClassName.SHOW)
 
         const dropdownChild = SelectorEngine.findOne(Selector.DROPDOWN_ACTIVE_CHILD, active.parentNode)
         if (dropdownChild) {
