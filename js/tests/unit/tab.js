@@ -379,8 +379,8 @@ $(function () {
       assert.ok($('#x-tab1').hasClass('active'))
       EventHandler.trigger($('#tabNested2')[0], 'click')
     })
-<<<<<<< HEAD
-      .trigger($.Event('click'))
+
+    EventHandler.trigger($('#tab1')[0], 'click')
   })
 
   QUnit.test('should not remove fade class if no active pane is present', function (assert) {
@@ -410,12 +410,9 @@ $(function () {
 
             done()
           })
-          .trigger($.Event('click'))
+        EventHandler.trigger($('#tab-home')[0], 'click')
       })
-      .trigger($.Event('click'))
-=======
 
-    EventHandler.trigger($('#tab1')[0], 'click')
->>>>>>> rewritten tab without jquery
+    EventHandler.trigger($('#tab-profile')[0], 'click')
   })
 })

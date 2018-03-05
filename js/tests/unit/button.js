@@ -106,17 +106,17 @@ $(function () {
   QUnit.test('should check for closest matching toggle', function (assert) {
     assert.expect(12)
     var groupHTML =
-        '<div class="btn-group" data-toggle="buttons">'
-      + '  <label class="btn btn-primary active">'
-      + '    <input type="radio" name="options" id="option1" checked="true"> Option 1'
-      + '  </label>'
-      + '  <label class="btn btn-primary">'
-      + '    <input type="radio" name="options" id="option2"> Option 2'
-      + '  </label>'
-      + '  <label class="btn btn-primary">'
-      + '    <input type="radio" name="options" id="option3"> Option 3'
-      + '  </label>'
-      + '</div>'
+        '<div class="btn-group" data-toggle="buttons">' +
+      '  <label class="btn btn-primary active">' +
+      '    <input type="radio" name="options" id="option1" checked="true"> Option 1' +
+      '  </label>' +
+      '  <label class="btn btn-primary">' +
+      '    <input type="radio" name="options" id="option2"> Option 2' +
+      '  </label>' +
+      '  <label class="btn btn-primary">' +
+      '    <input type="radio" name="options" id="option3"> Option 3' +
+      '  </label>' +
+      '</div>'
 
     var $group = $(groupHTML).appendTo('#qunit-fixture')
 

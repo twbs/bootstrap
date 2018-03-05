@@ -185,7 +185,6 @@ const Popover = (() => {
   }
 
   return Popover
-
 })()
 
 export default Popover

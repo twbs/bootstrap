@@ -565,17 +565,19 @@ $(function () {
     var $triggerTwo = $('#linkTriggerTwo')
     var $collapseOne = $('#collapseOne')
     var $collapseTwo = $('#collapseTwo')
+
     $collapseOne.on('shown.bs.collapse', function () {
       assert.ok($collapseOne.hasClass('show'), '#collapseOne is shown')
       assert.ok(!$collapseTwo.hasClass('show'), '#collapseTwo is not shown')
+
       $collapseTwo.on('shown.bs.collapse', function () {
         assert.ok(!$collapseOne.hasClass('show'), '#collapseOne is not shown')
         assert.ok($collapseTwo.hasClass('show'), '#collapseTwo is shown')
         done()
       })
-      $triggerTwo.trigger($.Event('click'))
+      EventHandler.trigger($triggerTwo[0], 'click')
     })
-    $trigger.trigger($.Event('click'))
+    EventHandler.trigger($trigger[0], 'click')
   })
 
   QUnit.test('should allow accordion to target multiple elements', function (assert) {
@@ -607,7 +609,7 @@ $(function () {
       assert.ok($collapseOneTwo.hasClass('show'), '#collapseOneTwo is shown')
       assert.ok(!$collapseTwoOne.hasClass('show'), '#collapseTwoOne is not shown')
       assert.ok(!$collapseTwoTwo.hasClass('show'), '#collapseTwoTwo is not shown')
-      $triggerTwo.trigger($.Event('click'))
+      EventHandler.trigger($triggerTwo[0], 'click')
     }
 
     function secondTest() {
@@ -650,7 +652,7 @@ $(function () {
       }
     })
 
-    $trigger.trigger($.Event('click'))
+    EventHandler.trigger($trigger[0], 'click')
   })
 
   QUnit.test('should collapse accordion children but not nested accordion children', function (assert) {

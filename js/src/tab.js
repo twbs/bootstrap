@@ -139,14 +139,14 @@ const Tab = (() => {
     // Private
 
     _activate(element, container, callback) {
-      const activeElements = container.nodeName === 'UL' ?
-        SelectorEngine.find(Selector.ACTIVE_UL, container) :
-        SelectorEngine.children(container, Selector.ACTIVE)
+      const activeElements = container.nodeName === 'UL'
+        ? SelectorEngine.find(Selector.ACTIVE_UL, container)
+        : SelectorEngine.children(container, Selector.ACTIVE)
 
       const active          = activeElements[0]
-      const isTransitioning = callback
-        && Util.supportsTransitionEnd()
-        && (active && active.classList.contains(ClassName.FADE))
+      const isTransitioning = callback &&
+        Util.supportsTransitionEnd() &&
+        (active && active.classList.contains(ClassName.FADE))
 
       const complete = () => this._transitionComplete(
         element,
@@ -169,6 +169,7 @@ const Tab = (() => {
     _transitionComplete(element, active, callback) {
       if (active) {
         active.classList.remove(ClassName.ACTIVE)
+        active.classList.remove(ClassName.SHOW)
 
         const dropdownChild = SelectorEngine.findOne(Selector.DROPDOWN_ACTIVE_CHILD, active.parentNode)
         if (dropdownChild) {
@@ -185,16 +186,11 @@ const Tab = (() => {
         element.setAttribute('aria-selected', true)
       }
 
-      if (isTransitioning) {
-        Util.reflow(element)
-        element.classList.add(ClassName.SHOW)
-      } else {
-        element.classList.remove(ClassName.FADE)
-      }
+      Util.reflow(element)
+      element.classList.add(ClassName.SHOW)
 
       if (element.parentNode &&
           element.parentNode.classList.contains(ClassName.DROPDOWN_MENU)) {
-
         const dropdownElement = SelectorEngine.closest(element, Selector.DROPDOWN)
         if (dropdownElement) {
           SelectorEngine.findOne(Selector.DROPDOWN_TOGGLE, dropdownElement).classList.add(ClassName.ACTIVE)
@@ -254,7 +250,6 @@ const Tab = (() => {
   }
 
   return Tab
-
 })()
 
 export default Tab

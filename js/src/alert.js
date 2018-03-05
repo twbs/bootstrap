@@ -9,8 +9,8 @@ import Util from './util'
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
-const Alert = (() => {
 
+const Alert = (() => {
   /**
    * ------------------------------------------------------------------------
    * Constants
@@ -172,7 +172,6 @@ const Alert = (() => {
   }
 
   return Alert
-
 })()
 
 export default Alert

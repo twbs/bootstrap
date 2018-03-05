@@ -336,6 +336,5 @@ $(function () {
     assert.ok(i === 5, 'listener removed again')
 
     document.body.removeChild(element)
-
   })
 })

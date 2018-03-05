@@ -8,7 +8,6 @@ import Util from '../util'
  */
 
 const EventHandler = (() => {
-
   /**
    * ------------------------------------------------------------------------
    * Polyfills
@@ -322,8 +321,8 @@ const EventHandler = (() => {
     },
 
     trigger(element, event, args) {
-      if (typeof event !== 'string'
-        || (typeof element === 'undefined' || element === null)) {
+      if (typeof event !== 'string' ||
+        (typeof element === 'undefined' || element === null)) {
         return null
       }
 

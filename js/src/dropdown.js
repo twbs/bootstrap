@@ -183,7 +183,7 @@ const Dropdown = (() => {
       if ('ontouchstart' in document.documentElement &&
          !Util.makeArray(SelectorEngine.closest(parent, Selector.NAVBAR_NAV)).length) {
         Util.makeArray(document.body.children)
-            .forEach((elem) => EventHandler.on(elem, 'mouseover', null, Util.noop()))
+          .forEach((elem) => EventHandler.on(elem, 'mouseover', null, Util.noop()))
       }
 
       this._element.focus()
@@ -354,8 +354,8 @@ const Dropdown = (() => {
         }
 
         if (event && (event.type === 'click' &&
-            /input|textarea/i.test(event.target.tagName) || event.type === 'keyup' && event.which === TAB_KEYCODE)
-            && parent.contains(event.target)) {
+            /input|textarea/i.test(event.target.tagName) || event.type === 'keyup' && event.which === TAB_KEYCODE) &&
+            parent.contains(event.target)) {
           continue
         }
 
@@ -368,7 +368,7 @@ const Dropdown = (() => {
         // empty mouseover listeners we added for iOS support
         if ('ontouchstart' in document.documentElement) {
           Util.makeArray(document.body.children)
-              .forEach(elem => EventHandler.off(elem, 'mouseover', null, Util.noop()))
+            .forEach((elem) => EventHandler.off(elem, 'mouseover', null, Util.noop()))
         }
 
         toggles[i].setAttribute('aria-expanded', 'false')
@@ -487,7 +487,6 @@ const Dropdown = (() => {
   }
 
   return Dropdown
-
 })(Popper)
 
 export default Dropdown

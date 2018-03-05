@@ -179,6 +179,7 @@ const Button = (() => {
    * ------------------------------------------------------------------------
    * add .button to jQuery only if jQuery is present
    */
+
   if (typeof window.$ !== 'undefined' || typeof window.jQuery !== 'undefined') {
     const $                   = window.$ || window.jQuery
     const JQUERY_NO_CONFLICT  = $.fn[NAME]
@@ -192,7 +193,6 @@ const Button = (() => {
   }
 
   return Button
-
 })()
 
 export default Button

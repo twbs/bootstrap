@@ -87,7 +87,7 @@ $(function () {
         assert.ok(!$dropdown.parent('.dropdown').hasClass('position-static'), '"position-static" class not added')
         done()
       })
-    $dropdown.trigger('click')
+    EventHandler.trigger($dropdown[0], 'click')
   })
 
   QUnit.test('should add class position-static to dropdown if boundary not scrollParent', function (assert) {
@@ -109,7 +109,7 @@ $(function () {
         assert.ok($dropdown.parent('.dropdown').hasClass('position-static'), '"position-static" class added')
         done()
       })
-    $dropdown.trigger('click')
+    EventHandler.trigger($dropdown[0], 'click')
   })
 
   QUnit.test('should set aria-expanded="true" on target when dropdown menu is shown', function (assert) {
@@ -197,17 +197,17 @@ $(function () {
   QUnit.test('should add class show to menu if clicked', function (assert) {
     assert.expect(1)
     var done = assert.async()
-    var dropdownHTML = '<div class="tabs">'
-        + '<div class="dropdown">'
-        + '<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>'
-        + '<div class="dropdown-menu">'
-        + '<a class="dropdown-item" href="#">Secondary link</a>'
-        + '<a class="dropdown-item" href="#">Something else here</a>'
-        + '<div class="divider"/>'
-        + '<a class="dropdown-item" href="#">Another link</a>'
-        + '</div>'
-        + '</div>'
-        + '</div>'
+    var dropdownHTML = '<div class="tabs">' +
+        '<div class="dropdown">' +
+        '<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>' +
+        '<div class="dropdown-menu">' +
+        '<a class="dropdown-item" href="#">Secondary link</a>' +
+        '<a class="dropdown-item" href="#">Something else here</a>' +
+        '<div class="divider"/>' +
+        '<a class="dropdown-item" href="#">Another link</a>' +
+        '</div>' +
+        '</div>' +
+        '</div>'
 
     $(dropdownHTML).appendTo('#qunit-fixture')
     var $dropdown = $('#qunit-fixture').find('[data-toggle="dropdown"]').bootstrapDropdown()
@@ -224,17 +224,17 @@ $(function () {
   QUnit.test('should test if element has a # before assuming it\'s a selector', function (assert) {
     assert.expect(1)
     var done = assert.async()
-    var dropdownHTML = '<div class="tabs">'
-        + '<div class="dropdown">'
-        + '<a href="/foo/" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>'
-        + '<div class="dropdown-menu">'
-        + '<a class="dropdown-item" href="#">Secondary link</a>'
-        + '<a class="dropdown-item" href="#">Something else here</a>'
-        + '<div class="divider"/>'
-        + '<a class="dropdown-item" href="#">Another link</a>'
-        + '</div>'
-        + '</div>'
-        + '</div>'
+    var dropdownHTML = '<div class="tabs">' +
+        '<div class="dropdown">' +
+        '<a href="/foo/" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>' +
+        '<div class="dropdown-menu">' +
+        '<a class="dropdown-item" href="#">Secondary link</a>' +
+        '<a class="dropdown-item" href="#">Something else here</a>' +
+        '<div class="divider"/>' +
+        '<a class="dropdown-item" href="#">Another link</a>' +
+        '</div>' +
+        '</div>' +
+        '</div>'
 
     $(dropdownHTML).appendTo('#qunit-fixture')
     var $dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').bootstrapDropdown()
@@ -298,18 +298,18 @@ $(function () {
       .find('[data-toggle="dropdown"]')
       .bootstrapDropdown()
     $dropdown
-     .parent('.dropdown')
-     .on('shown.bs.dropdown', function () {
-       assert.ok($dropdown.parent('.dropdown').hasClass('show'), '"show" class added on click')
+      .parent('.dropdown')
+      .on('shown.bs.dropdown', function () {
+        assert.ok($dropdown.parent('.dropdown').hasClass('show'), '"show" class added on click')
 
-       EventHandler.trigger(document.body, 'keyup', {
-         which: 9 // Tab
-       })
-     })
-     .on('hidden.bs.dropdown', function () {
-       assert.ok(!$dropdown.parent('.dropdown').hasClass('show'), '"show" class removed')
-       done()
-     })
+        EventHandler.trigger(document.body, 'keyup', {
+          which: 9 // Tab
+        })
+      })
+      .on('hidden.bs.dropdown', function () {
+        assert.ok(!$dropdown.parent('.dropdown').hasClass('show'), '"show" class removed')
+        done()
+      })
 
     EventHandler.trigger($dropdown[0], 'click')
   })
@@ -339,24 +339,24 @@ $(function () {
     assert.strictEqual($dropdowns.length, 2, 'two dropdowns')
 
     $first.parent('.dropdown')
-    .on('shown.bs.dropdown', function () {
-      assert.strictEqual($first.parents('.show').length, 1, '"show" class added on click')
-      assert.strictEqual($('#qunit-fixture .dropdown-menu.show').length, 1, 'only one dropdown is shown')
-      $(document.body).trigger('click')
-    }).on('hidden.bs.dropdown', function () {
-      assert.strictEqual($('#qunit-fixture .dropdown-menu.show').length, 0, '"show" class removed')
-      EventHandler.trigger($last[0], 'click')
-    })
+      .on('shown.bs.dropdown', function () {
+        assert.strictEqual($first.parents('.show').length, 1, '"show" class added on click')
+        assert.strictEqual($('#qunit-fixture .dropdown-menu.show').length, 1, 'only one dropdown is shown')
+        $(document.body).trigger('click')
+      }).on('hidden.bs.dropdown', function () {
+        assert.strictEqual($('#qunit-fixture .dropdown-menu.show').length, 0, '"show" class removed')
+        EventHandler.trigger($last[0], 'click')
+      })
 
     $last.parent('.btn-group')
-    .on('shown.bs.dropdown', function () {
-      assert.strictEqual($last.parent('.show').length, 1, '"show" class added on click')
-      assert.strictEqual($('#qunit-fixture .dropdown-menu.show').length, 1, 'only one dropdown is shown')
-      $(document.body).trigger('click')
-    }).on('hidden.bs.dropdown', function () {
-      assert.strictEqual($('#qunit-fixture .dropdown-menu.show').length, 0, '"show" class removed')
-      done()
-    })
+      .on('shown.bs.dropdown', function () {
+        assert.strictEqual($last.parent('.show').length, 1, '"show" class added on click')
+        assert.strictEqual($('#qunit-fixture .dropdown-menu.show').length, 1, 'only one dropdown is shown')
+        $(document.body).trigger('click')
+      }).on('hidden.bs.dropdown', function () {
+        assert.strictEqual($('#qunit-fixture .dropdown-menu.show').length, 0, '"show" class removed')
+        done()
+      })
     EventHandler.trigger($first[0], 'click')
   })
 
@@ -385,28 +385,28 @@ $(function () {
     assert.strictEqual($dropdowns.length, 2, 'two dropdowns')
 
     $first.parent('.dropdown')
-    .on('shown.bs.dropdown', function () {
-      assert.strictEqual($first.parents('.show').length, 1, '"show" class added on click')
-      assert.strictEqual($('#qunit-fixture .dropdown-menu.show').length, 1, 'only one dropdown is shown')
-      EventHandler.trigger(document.body, 'keyup', {
-        which: 9 // Tab
+      .on('shown.bs.dropdown', function () {
+        assert.strictEqual($first.parents('.show').length, 1, '"show" class added on click')
+        assert.strictEqual($('#qunit-fixture .dropdown-menu.show').length, 1, 'only one dropdown is shown')
+        EventHandler.trigger(document.body, 'keyup', {
+          which: 9 // Tab
+        })
+      }).on('hidden.bs.dropdown', function () {
+        assert.strictEqual($('#qunit-fixture .dropdown-menu.show').length, 0, '"show" class removed')
+        EventHandler.trigger($last[0], 'click')
       })
-    }).on('hidden.bs.dropdown', function () {
-      assert.strictEqual($('#qunit-fixture .dropdown-menu.show').length, 0, '"show" class removed')
-      EventHandler.trigger($last[0], 'click')
-    })
 
     $last.parent('.btn-group')
-    .on('shown.bs.dropdown', function () {
-      assert.strictEqual($last.parent('.show').length, 1, '"show" class added on click')
-      assert.strictEqual($('#qunit-fixture .dropdown-menu.show').length, 1, 'only one dropdown is shown')
-      EventHandler.trigger(document.body, 'keyup', {
-        which: 9 // Tab
+      .on('shown.bs.dropdown', function () {
+        assert.strictEqual($last.parent('.show').length, 1, '"show" class added on click')
+        assert.strictEqual($('#qunit-fixture .dropdown-menu.show').length, 1, 'only one dropdown is shown')
+        EventHandler.trigger(document.body, 'keyup', {
+          which: 9 // Tab
+        })
+      }).on('hidden.bs.dropdown', function () {
+        assert.strictEqual($('#qunit-fixture .dropdown-menu.show').length, 0, '"show" class removed')
+        done()
       })
-    }).on('hidden.bs.dropdown', function () {
-      assert.strictEqual($('#qunit-fixture .dropdown-menu.show').length, 0, '"show" class removed')
-      done()
-    })
     EventHandler.trigger($first[0], 'click')
   })
 
@@ -777,7 +777,9 @@ $(function () {
 
         // Key escape
         $input.trigger('focus')
-        EventHandler.trigger($input[0], 'keydown', { which: 27 })
+        EventHandler.trigger($input[0], 'keydown', {
+          which: 27
+        })
 
         assert.ok(!$dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is not shown')
         done()
@@ -787,7 +789,7 @@ $(function () {
   })
 
   QUnit.test('should ignore space key events for <input>s within dropdown, and accept up, down and escape', function (assert) {
-    assert.expect(6)
+    assert.expect(7)
     var done = assert.async()
 
     var dropdownHTML =
@@ -811,49 +813,56 @@ $(function () {
     var $input = $('#input')
 
     $dropdown
-    .parent('.dropdown')
-    .one('shown.bs.dropdown', function () {
-      assert.ok(true, 'shown was fired')
-
-      // Key space
-      $input.trigger('focus').trigger($.Event('keydown', { which: 32 }))
-      assert.ok($dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is shown')
-      assert.ok($(document.activeElement).is($input), 'input is still focused')
-
-      // Key escape
-      $input.trigger('focus')
-      EventHandler.trigger($input[0], 'keydown', { which: 27 })
-      assert.ok(!$dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is not shown')
-
-      $dropdown
       .parent('.dropdown')
       .one('shown.bs.dropdown', function () {
         assert.ok(true, 'shown was fired')
 
-        // Key down
+        // Key space
+        $input.trigger('focus').trigger($.Event('keydown', {
+          which: 32
+        }))
+        assert.ok($dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is shown')
+        assert.ok($(document.activeElement).is($input), 'input is still focused')
+
+        // Key escape
         $input.trigger('focus')
-        EventHandler.trigger($input[0], 'keydown', { which: 40 })
-        assert.ok(document.activeElement === $('#item1')[0], 'item1 is focused')
+        EventHandler.trigger($input[0], 'keydown', {
+          which: 27
+        })
+        assert.ok(!$dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is not shown')
 
         $dropdown
-        .parent('.dropdown')
-        .one('shown.bs.dropdown', function () {
+          .parent('.dropdown')
+          .one('shown.bs.dropdown', function () {
+            assert.ok(true, 'shown was fired')
 
-          // Key up
-          $input.trigger('focus')
-          EventHandler.trigger($input[0], 'keydown', { which: 38 })
-          assert.ok(document.activeElement === $('#item1')[0], 'item1 is focused')
-          done()
-        }).bootstrapDropdown('toggle')
+            // Key down
+            $input.trigger('focus')
+            EventHandler.trigger($input[0], 'keydown', {
+              which: 40
+            })
+            assert.ok(document.activeElement === $('#item1')[0], 'item1 is focused')
+
+            $dropdown
+              .parent('.dropdown')
+              .one('shown.bs.dropdown', function () {
+                // Key up
+                $input.trigger('focus')
+                EventHandler.trigger($input[0], 'keydown', {
+                  which: 38
+                })
+                assert.ok(document.activeElement === $('#item1')[0], 'item1 is focused')
+                done()
+              }).bootstrapDropdown('toggle')
+            EventHandler.trigger($input[0], 'click')
+          })
         EventHandler.trigger($input[0], 'click')
       })
-      EventHandler.trigger($input[0], 'click')
-    })
     EventHandler.trigger($input[0], 'click')
   })
 
   QUnit.test('should ignore space key events for <textarea>s within dropdown, and accept up, down and escape', function (assert) {
-    assert.expect(6)
+    assert.expect(7)
     var done = assert.async()
 
     var dropdownHTML =
@@ -877,44 +886,51 @@ $(function () {
     var $textarea = $('#textarea')
 
     $dropdown
-    .parent('.dropdown')
-    .one('shown.bs.dropdown', function () {
-      assert.ok(true, 'shown was fired')
-
-      // Key space
-      $textarea.trigger('focus').trigger($.Event('keydown', { which: 32 }))
-      assert.ok($dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is shown')
-      assert.ok($(document.activeElement).is($textarea), 'textarea is still focused')
-
-      // Key escape
-      $textarea.trigger('focus')
-      EventHandler.trigger($textarea[0], 'keydown', { which: 27 })
-      assert.ok(!$dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is not shown')
-
-      $dropdown
       .parent('.dropdown')
       .one('shown.bs.dropdown', function () {
         assert.ok(true, 'shown was fired')
 
-        // Key down
+        // Key space
+        $textarea.trigger('focus').trigger($.Event('keydown', {
+          which: 32
+        }))
+        assert.ok($dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is shown')
+        assert.ok($(document.activeElement).is($textarea), 'textarea is still focused')
+
+        // Key escape
         $textarea.trigger('focus')
-        EventHandler.trigger($textarea[0], 'keydown', { which: 40 })
-        assert.ok(document.activeElement === $('#item1')[0], 'item1 is focused')
+        EventHandler.trigger($textarea[0], 'keydown', {
+          which: 27
+        })
+        assert.ok(!$dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is not shown')
 
         $dropdown
-        .parent('.dropdown')
-        .one('shown.bs.dropdown', function () {
+          .parent('.dropdown')
+          .one('shown.bs.dropdown', function () {
+            assert.ok(true, 'shown was fired')
 
-          // Key up
-          $textarea.trigger('focus')
-          EventHandler.trigger($textarea[0], 'keydown', { which: 38 })
-          assert.ok(document.activeElement === $('#item1')[0], 'item1 is focused')
-          done()
-        }).bootstrapDropdown('toggle')
+            // Key down
+            $textarea.trigger('focus')
+            EventHandler.trigger($textarea[0], 'keydown', {
+              which: 40
+            })
+            assert.ok(document.activeElement === $('#item1')[0], 'item1 is focused')
+
+            $dropdown
+              .parent('.dropdown')
+              .one('shown.bs.dropdown', function () {
+                // Key up
+                $textarea.trigger('focus')
+                EventHandler.trigger($textarea[0], 'keydown', {
+                  which: 38
+                })
+                assert.ok(document.activeElement === $('#item1')[0], 'item1 is focused')
+                done()
+              }).bootstrapDropdown('toggle')
+            EventHandler.trigger($textarea[0], 'click')
+          })
         EventHandler.trigger($textarea[0], 'click')
       })
-      EventHandler.trigger($textarea[0], 'click')
-    })
     EventHandler.trigger($textarea[0], 'click')
   })
 
@@ -945,6 +961,6 @@ $(function () {
         done()
       })
 
-    $dropdown.trigger('click')
+    EventHandler.trigger($dropdown[0], 'click')
   })
 })

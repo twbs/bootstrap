@@ -536,13 +536,9 @@ $(function () {
 
     assert.strictEqual($template.find('.carousel-item')[1], $template.find('.active')[0], 'second item active')
 
-<<<<<<< HEAD
-    $template.trigger($.Event('keydown', {
+    EventHandler.trigger($template[0], 'keydown', {
       which: 37
-    }))
-=======
-    EventHandler.trigger($template[0], 'keydown', { which: 37 })
->>>>>>> fix unit test for carousel
+    })
 
     assert.strictEqual($template.find('.carousel-item')[0], $template.find('.active')[0], 'first item active')
   })
@@ -568,13 +564,9 @@ $(function () {
 
     assert.strictEqual($template.find('.carousel-item')[0], $template.find('.active')[0], 'first item active')
 
-<<<<<<< HEAD
-    $template.trigger($.Event('keydown', {
+    EventHandler.trigger($template[0], 'keydown', {
       which: 39
-    }))
-=======
-    EventHandler.trigger($template[0], 'keydown', { which: 39 })
->>>>>>> fix unit test for carousel
+    })
 
     assert.strictEqual($template.find('.carousel-item')[1], $template.find('.active')[0], 'second item active')
   })
@@ -593,24 +585,14 @@ $(function () {
     $template.bootstrapCarousel()
     var done = assert.async()
 
-<<<<<<< HEAD
-    var eventArrowDown = $.Event('keydown', {
-      which: 40
-    })
-    var eventArrowUp   = $.Event('keydown', {
-      which: 38
-    })
-
-    $template.one('keydown', function (event) {
-      assert.strictEqual(event.isDefaultPrevented(), false)
-=======
     EventHandler.one($template[0], 'keydown', function (event) {
       assert.strictEqual(event.defaultPrevented, false)
->>>>>>> fix unit test for carousel
     })
 
     // arrow down
-    EventHandler.trigger($template[0], 'keydown', { which: 40 })
+    EventHandler.trigger($template[0], 'keydown', {
+      which: 40
+    })
 
     EventHandler.one($template[0], 'keydown', function (event) {
       assert.strictEqual(event.defaultPrevented, false)
@@ -618,7 +600,9 @@ $(function () {
     })
 
     // arrow up
-    EventHandler.trigger($template[0], 'keydown', { which: 38 })
+    EventHandler.trigger($template[0], 'keydown', {
+      which: 38
+    })
   })
 
   QUnit.test('should support disabling the keyboard navigation', function (assert) {

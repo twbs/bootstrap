@@ -745,7 +745,10 @@ $(function () {
     assert.expect(41)
     var $el = $('<button>Trigger</button>')
       .appendTo('#qunit-fixture')
-      .bootstrapTooltip({ trigger: 'click hover focus', animation: false })
+      .bootstrapTooltip({
+        trigger: 'click hover focus',
+        animation: false
+      })
 
     var tooltip = Data.getData($el[0], 'bs.tooltip')
     var $tooltip = $(tooltip.getTipElement())

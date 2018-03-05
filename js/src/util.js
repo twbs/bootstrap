@@ -8,7 +8,6 @@ import EventHandler from './dom/eventHandler'
  */
 
 const Util = (() => {
-
   const transition = Boolean(EventHandler.getBrowserTransitionEnd())
 
   const MAX_UID = 1000000
@@ -133,8 +132,8 @@ const Util = (() => {
         return []
       }
       const strRepresentation = Object.prototype.toString.call(nodeList)
-      if (strRepresentation === '[object NodeList]'
-        || strRepresentation === '[object HTMLCollection]' || strRepresentation === '[object Array]') {
+      if (strRepresentation === '[object NodeList]' ||
+        strRepresentation === '[object HTMLCollection]' || strRepresentation === '[object Array]') {
         return Array.prototype.slice.call(nodeList)
       }
 
@@ -182,9 +181,9 @@ const Util = (() => {
       }
 
       if (element.style !== null && element.parentNode !== null && typeof element.parentNode.style !== 'undefined') {
-        return element.style.display !== 'none'
-          && element.parentNode.style.display !== 'none'
-          && element.style.visibility !== 'hidden'
+        return element.style.display !== 'none' &&
+          element.parentNode.style.display !== 'none' &&
+          element.style.visibility !== 'hidden'
       }
       return false
     },
@@ -200,7 +199,6 @@ const Util = (() => {
   }
 
   return Util
-
 })()
 
 export default Util
