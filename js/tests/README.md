@@ -27,6 +27,16 @@ To run the unit test suite via a real web browser, open `index.html` in the brow
 * Each test should begin with [`assert.expect`](https://api.qunitjs.com/assert/expect/) to ensure that the expected assertions are run.
 * Each test should follow the project's [JavaScript Code Guidelines](https://github.com/twbs/bootstrap/blob/master/CONTRIBUTING.md#js)
 
+## Code coverage
+
+Currently we try to ensure at least 80% of code coverage in our JS files.
+
+So to be use your changes will be compliant with that limit you can run the following command `npm run js-compile && npm run js-test`
+and open this file : `js/coverage/lcov-report/index.html`.
+
+You'll see the code coverage for each of our plugins, you can see more details when you select a plugin and ensure your change is
+fully covered by a unit test.
+
 ### Example tests
 
 ```javascript
