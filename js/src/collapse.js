@@ -53,6 +53,7 @@ const Collapse = (() => {
   }
 
   const Selector = {
+    ACTIVES     : '.show, .collapsing',
     DATA_TOGGLE : '[data-toggle="collapse"]'
   }
 
@@ -125,8 +126,8 @@ const Collapse = (() => {
       let actives
       let activesData
 
-      if (this._parent) {
-        actives = [].slice.call(this._parent.querySelectorAll(Selector.ACTIVES))
+      if (this._parent && this._parent.children.length) {
+        actives = Util.makeArray(SelectorEngine.find(Selector.ACTIVES, this._parent))
           .filter((elem) => elem.getAttribute('data-parent') === this._config.parent)
 
         if (!actives.length) {
@@ -135,7 +136,11 @@ const Collapse = (() => {
       }
 
       if (actives) {
-        activesData = Data.getData(actives[0], DATA_KEY)
+        const tempActiveData = actives.filter((elem) => {
+          const container = SelectorEngine.findOne(this._selector)
+          return !container.contains(elem)
+        })
+        activesData = tempActiveData[0] ? Data.getData(tempActiveData[0], DATA_KEY) : null
         if (activesData && activesData._isTransitioning) {
           return
         }
@@ -147,7 +152,12 @@ const Collapse = (() => {
       }
 
       if (actives) {
-        actives.forEach((elemActive) => Collapse._collapseInterface(elemActive, 'hide'))
+        actives.forEach((elemActive) => {
+          const container = SelectorEngine.findOne(this._selector)
+          if (!container.contains(elemActive)) {
+            Collapse._collapseInterface(elemActive, 'hide')
+          }
+        })
         if (!activesData) {
           Data.setData(actives[0], DATA_KEY, null)
         }
@@ -291,12 +301,11 @@ const Collapse = (() => {
         `[data-toggle="collapse"][data-parent="${this._config.parent}"]`
 
       const elements = Util.makeArray(SelectorEngine.find(selector, parent))
-      elements.forEach((element) => {
+      elements.forEach((element) =>
         this._addAriaAndCollapsedClass(
           Collapse._getTargetFromElement(element),
           [element]
-        )
-      })
+        ))
 
       return parent
     }
@@ -305,7 +314,7 @@ const Collapse = (() => {
       if (element) {
         const isOpen = element.classList.contains(ClassName.SHOW)
 
-        if (triggerArray.length) {
+        if (triggerArray.length > 0) {
           triggerArray.forEach((elem) => {
             if (!isOpen) {
               elem.classList.add(ClassName.COLLAPSED)
@@ -409,7 +418,6 @@ const Collapse = (() => {
   }
 
   return Collapse
-
 })()
 
 export default Collapse
