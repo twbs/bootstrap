@@ -8,8 +8,6 @@ import Util from '../util'
  */
 
 const SelectorEngine = (() => {
-
-
   /**
    * ------------------------------------------------------------------------
    * Polyfills
