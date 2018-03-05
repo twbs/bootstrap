@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Project: Jennifer and Gene get Married</title>
+    </head>
+    <body>
+    <style> 
+        body 
+        { background-color: yellow;}
+        #going-there {background-color: blue;}
+        p.exspensive {color: green;}
+    </style>
+    
+        <h1>Travel to ....</h1>
+        <h2>Your local Beach</h2>
+        <img src="https://www.kasandbox.org/programming-images/landscapes/beach-waves-daytime.png" width= "200" >
+        <p id="going-there"> Going to the beach can be the most relaxing of times. While there you can enjoy the sun, the smell of the salt water, and the sound of the waves as they lap the shore </p>
+        <p class="exspensive">Even though a beach getaway may sound like a expensive endevore you are truly never more then a days drive of any of the fine beaches we have in our Great state.</p>
+        <p class="exspensive">So pack a bag grab some sun screen and head down for good times your are sure never to forget.</p> 
+        <ol>Things to do while there!
+            <li>Go to the Pier</li>
+            <li>Take in some local color</li>
+            <li>Feed the seagulls</li>
+            <li> dont let them poop on your head</li>
+            </ol>
+            
+            
+            <img src="https://www.kasandbox.org/programming-images/landscapes/beach-waves-at-sunset.png">
+        
+        <img src="https://www.kasandbox.org/programming-images/landscapes/beach-sunset.png">
+        <ul> 
+            <li> Bike </li>
+            <li> Jog </li>
+            <li> Just Relax</li>
+        </ul>
+    </body>
+</html>
