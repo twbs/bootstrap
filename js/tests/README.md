@@ -29,24 +29,23 @@ To run the unit test suite via a real web browser, open `index.html` in the brow
 
 ## Code coverage
 
-Currently we try to ensure at least 80% of code coverage in our JS files.
+Currently, we try to make sure at least 80% of code is covered by tests.
 
-So to be use your changes will be compliant with that limit you can run the following command `npm run js-compile && npm run js-test`
-and open this file : `js/coverage/lcov-report/index.html`.
+So, to be sure your changes are compliant with this limit, you can run `npm run js-compile && npm run js-test` and open the file in `js/coverage/lcov-report/index.html`.
 
-You'll see the code coverage for each of our plugins, you can see more details when you select a plugin and ensure your change is
+You'll see the code coverage for each of our plugins, you can see more details when you select a plugin and make sure your change is
 fully covered by a unit test.
 
 ### Example tests
 
-```javascript
+```js
 // Synchronous test
 QUnit.test('should describe the unit being tested', function (assert) {
   assert.expect(1)
-  var templateHTML = '<div class="alert alert-danger fade show">'
-      + '<a class="close" href="#" data-dismiss="alert">×</a>'
-      + '<p><strong>Template necessary for the test.</p>'
-      + '</div>'
+  var templateHTML = '<div class="alert alert-danger fade show">' +
+        '<a class="close" href="#" data-dismiss="alert">×</a>' +
+        '<p><strong>Template necessary for the test.</p>' +
+        '</div>'
   var $alert = $(templateHTML).appendTo('#qunit-fixture').bootstrapAlert()
 
   $alert.find('.close').trigger('click')
