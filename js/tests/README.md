@@ -29,12 +29,7 @@ To run the unit test suite via a real web browser, open `index.html` in the brow
 
 ## Code coverage
 
-Currently, we try to make sure at least 80% of code is covered by tests.
-
-So, to be sure your changes are compliant with this limit, you can run `npm run js-compile && npm run js-test` and open the file in `js/coverage/lcov-report/index.html`.
-
-You'll see the code coverage for each of our plugins, you can see more details when you select a plugin and make sure your change is
-fully covered by a unit test.
+Currently we're aiming for at least 80% test coverage for our code. To ensure your changes meet or exceed this limit, run `npm run js-compile && npm run js-test` and open the file in `js/coverage/lcov-report/index.html` to see the code coverage for each plugin. See more details when you select a plugin and ensure your change is fully covered by unit tests.
 
 ### Example tests
 
