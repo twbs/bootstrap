@@ -115,7 +115,8 @@
         },
         transformData: function (hits) {
           return hits.map(function (hit) {
-            hit.url = hit.url.replace('https://v4-alpha.getbootstrap.com', '/docs/4.0')
+            var baseurl = document.getElementById('search-input').getAttribute('data-baseurl')
+            hit.url = hit.url.replace('https://getbootstrap.com' + baseurl, baseurl)
             return hit
           })
         },
