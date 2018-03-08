@@ -1,5 +1,7 @@
 /* eslint-env node */
 /* eslint no-process-env: 0 */
+const path = require('path')
+const jsCoveragePath = path.resolve(__dirname, '../coverage')
 
 module.exports = (config) => {
   const jqueryFile = process.env.USE_OLD_JQUERY ? 'js/tests/vendor/jquery-1.9.1.min.js' : 'assets/js/vendor/jquery-slim.min.js'
@@ -11,18 +13,19 @@ module.exports = (config) => {
       'karma-chrome-launcher',
       'karma-firefox-launcher',
       'karma-qunit',
-      'karma-detect-browsers'
+      'karma-detect-browsers',
+      'karma-coverage-istanbul-reporter'
     ],
     // list of files / patterns to load in the browser
     files: [
       jqueryFile,
       'assets/js/vendor/popper.min.js',
-      'js/dist/util.js',
-      'js/dist/tooltip.js',
-      'js/dist/!(util|index|tooltip).js', // include all of our js/dist files except util.js, index.js and tooltip.js
+      'js/coverage/dist/util.js',
+      'js/coverage/dist/tooltip.js',
+      'js/coverage/dist/!(util|index|tooltip).js', // include all of our js/dist files except util.js, index.js and tooltip.js
       'js/tests/unit/*.js'
     ],
-    reporters: ['dots'],
+    reporters: ['dots', 'coverage-istanbul'],
     port: 9876,
     colors: true,
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
@@ -48,6 +51,20 @@ module.exports = (config) => {
         }
 
         throw new Error('Please install Firefox or Chrome')
+      }
+    },
+    coverageIstanbulReporter: {
+      dir: jsCoveragePath,
+      reports: ['lcov', 'text-summary'],
+      fixWebpackSourcePaths: true,
+      thresholds: {
+        emitWarning: true,
+        global: {
+          statements: 80,
+          lines: 80,
+          branches: 80,
+          functions: 80
+        }
       }
     }
   })

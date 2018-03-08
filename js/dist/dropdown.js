@@ -172,7 +172,7 @@ var Dropdown = function ($) {
 
 
       if ('ontouchstart' in document.documentElement && $(parent).closest(Selector.NAVBAR_NAV).length === 0) {
-        $('body').children().on('mouseover', null, $.noop);
+        $(document.body).children().on('mouseover', null, $.noop);
       }
 
       this._element.focus();
@@ -355,7 +355,7 @@ var Dropdown = function ($) {
 
 
         if ('ontouchstart' in document.documentElement) {
-          $('body').children().off('mouseover', null, $.noop);
+          $(document.body).children().off('mouseover', null, $.noop);
         }
 
         toggles[i].setAttribute('aria-expanded', 'false');
