@@ -132,7 +132,7 @@ New to Bootstrap 4 is the [Reboot]({{ site.baseurl }}/docs/{{ site.docs_version 
 - Moved all `.text-` utilities to the `_utilities.scss` file.
 - Dropped `.page-header` as, aside from the border, all its styles can be applied via utilities.
 - `.dl-horizontal` has been dropped. Instead, use `.row` on `<dl>` and use grid column classes (or mixins) on its `<dt>` and `<dd>` children.
-- Custom `<blockquote>` styling has moved to classes—`.blockquote` and the `.blockquote-reverse` modifier.
+- Redesigned blockquotes, moving their styles from the `<blockquote>` element to a single class, `.blockquote`. Dropped the `.blockquote-reverse` modifier for text utilities.
 - `.list-inline` now requires that its children list items have the new `.list-inline-item` class applied to them.
 
 ### Images
@@ -243,8 +243,8 @@ The navbar has been entirely rewritten in flexbox with improved support for alig
 
 ### Labels and badges
 
-- Renamed `.label` to `.badge` to disambiguate from the `<label>` element.
-- Dropped the `.badge` component as it was nearly identical to labels. Use the `.badge-pill` modifier together with the label component instead for that rounded look.
+- Consolidated `.label` and `.badge` to disambiguate from the `<label>` element and simplify related components.
+- Added `.badge-pill` as modifier for rounded "pill" look.
 - Badges are no longer floated automatically in list groups and other components. Utility classes are now required for that.
 - `.badge-default` has been dropped and `.badge-secondary` added to match component modifier classes used elsewhere.
 
