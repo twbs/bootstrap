@@ -58,9 +58,11 @@ const Alert = (($) => {
     // Public
 
     close(element) {
-      element = element || this._element
+      let rootElement = this._element
+      if (element) {
+        rootElement = this._getRootElement(element)
+      }
 
-      const rootElement = this._getRootElement(element)
       const customEvent = this._triggerCloseEvent(rootElement)
 
       if (customEvent.isDefaultPrevented()) {

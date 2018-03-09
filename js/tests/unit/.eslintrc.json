@@ -7,6 +7,7 @@
   "globals": {
     "sinon": false,
     "Util": false,
+    "Alert": false,
     "Button": false
   },
   "parserOptions": {
