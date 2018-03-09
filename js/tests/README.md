@@ -1,9 +1,9 @@
 ## How does Bootstrap's test suite work?
 
-Bootstrap uses [QUnit](https://qunitjs.com/), a powerful, easy-to-use JavaScript unit test framework. Each plugin has a file dedicated to its tests in `unit/<plugin-name>.js`.
+Bootstrap uses [QUnit](https://qunitjs.com/) and [Sinon](http://sinonjs.org/). Each plugin has a file dedicated to its tests in `unit/<plugin-name>.js`.
 
 * `unit/` contains the unit test files for each Bootstrap plugin.
-* `vendor/` contains third-party testing-related code (QUnit and jQuery).
+* `vendor/` contains third-party testing-related code (QUnit, jQuery and Sinon).
 * `visual/` contains "visual" tests which are run interactively in real browsers and require manual verification by humans.
 
 To run the unit test suite via [Karma](http://karma-runner.github.io/), run `npm run js-test`.
@@ -51,13 +51,17 @@ QUnit.test('should describe the unit being tested', function (assert) {
 
 // Asynchronous test
 QUnit.test('should describe the unit being tested', function (assert) {
-  assert.expect(1)
+  assert.expect(2)
   var done = assert.async()
 
-  $('<div title="tooltip title"></div>')
-    .appendTo('#qunit-fixture')
+  var $tooltip = $('<div title="tooltip title"></div>').bootstrapTooltip()
+  var tooltipInstance = $tooltip.data('bs.tooltip')
+  var spyShow = sinon.spy(tooltipInstance, 'show')
+
+  $tooltip.appendTo('#qunit-fixture')
     .on('shown.bs.tooltip', function () {
       assert.ok(true, '"shown" event was fired after calling "show"')
+      assert.ok(spyShow.called, 'show called')
       done()
     })
     .bootstrapTooltip('show')
