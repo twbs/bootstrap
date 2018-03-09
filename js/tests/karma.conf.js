@@ -8,11 +8,12 @@ module.exports = (config) => {
 
   config.set({
     basePath: '../..',
-    frameworks: ['qunit', 'detectBrowsers'],
+    frameworks: ['qunit', 'sinon', 'detectBrowsers'],
     plugins: [
       'karma-chrome-launcher',
       'karma-firefox-launcher',
       'karma-qunit',
+      'karma-sinon',
       'karma-detect-browsers',
       'karma-coverage-istanbul-reporter'
     ],
