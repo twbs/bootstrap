@@ -556,7 +556,7 @@ $(function () {
     $scrollspy
       .bootstrapScrollspy({
         target: '#navigation',
-        offset: $scrollspy.position().top
+        offset: $scrollspy[0].offsetTop
       })
       .one('scroll', function () {
         assert.strictEqual($('.active').length, 1, '"active" class on only one element present')
