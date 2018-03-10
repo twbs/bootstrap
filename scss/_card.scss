@@ -136,6 +136,20 @@
   @include border-bottom-radius($card-inner-border-radius);
 }
 
+// Card background
+.card-bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+
+  + .card-body {
+    position: relative;
+    z-index: 1;
+  }
+}
 
 // Card deck
 
