@@ -1,5 +1,3 @@
-import EventHandler from './dom/eventHandler'
-
 /**
  * --------------------------------------------------------------------------
  * Bootstrap (v4.1.3): util.js
@@ -77,7 +75,7 @@ const Util = (() => {
       }
 
       // Get transition-duration of the element
-      let transitionDuration = element.style.transitionDuration
+      let transitionDuration = window.getComputedStyle(element).transitionDuration
       const floatTransitionDuration = parseFloat(transitionDuration)
 
       // Return 0 if element or transition duration is not found
@@ -96,7 +94,7 @@ const Util = (() => {
     },
 
     triggerTransitionEnd(element) {
-      EventHandler.trigger(element, Util.TRANSITION_END)
+      element.dispatchEvent(new Event(Util.TRANSITION_END))
     },
 
     // TODO: Remove in v5

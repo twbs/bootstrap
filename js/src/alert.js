@@ -102,8 +102,7 @@ const Alert = (() => {
     _removeElement(element) {
       element.classList.remove(ClassName.SHOW)
 
-      if (!Util.supportsTransitionEnd() ||
-          !element.classList.contains(ClassName.FADE)) {
+      if (!element.classList.contains(ClassName.FADE)) {
         this._destroyElement(element)
         return
       }
@@ -116,8 +115,10 @@ const Alert = (() => {
     }
 
     _destroyElement(element) {
+      if (element.parentNode) {
+        element.parentNode.removeChild(element)
+      }
       EventHandler.trigger(element, Event.CLOSED)
-      element.parentNode.removeChild(element)
     }
 
     // Static
@@ -162,12 +163,12 @@ const Alert = (() => {
    * add .alert to jQuery only if jQuery is present
    */
 
-  if (typeof window.$ !== 'undefined' || typeof window.jQuery !== 'undefined') {
-    const $                  = window.$ || window.jQuery
-    const JQUERY_NO_CONFLICT = $.fn[NAME]
-    $.fn[NAME]               = Alert._jQueryInterface
-    $.fn[NAME].Constructor   = Alert
-    $.fn[NAME].noConflict    = () => {
+  const $ = Util.jQuery
+  if (typeof $ !== 'undefined') {
+    const JQUERY_NO_CONFLICT  = $.fn[NAME]
+    $.fn[NAME]                = Alert._jQueryInterface
+    $.fn[NAME].Constructor    = Alert
+    $.fn[NAME].noConflict     = () => {
       $.fn[NAME] = JQUERY_NO_CONFLICT
       return Alert._jQueryInterface
     }
