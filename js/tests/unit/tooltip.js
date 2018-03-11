@@ -1000,7 +1000,7 @@ $(function () {
       .appendTo('#qunit-fixture')
       .bootstrapTooltip()
 
-    var tooltip = $tooltip.data('bs.tooltip')
+    var tooltip = Data.getData($tooltip[0], 'bs.tooltip')
     tooltip.show()
     assert.ok(tooltip._popper)
 
@@ -1016,7 +1016,7 @@ $(function () {
       .appendTo('#qunit-fixture')
       .bootstrapTooltip()
 
-    var tooltip = $tooltip.data('bs.tooltip')
+    var tooltip = Data.getData($tooltip[0], 'bs.tooltip')
     tooltip.update()
 
     assert.ok(tooltip._popper === null)

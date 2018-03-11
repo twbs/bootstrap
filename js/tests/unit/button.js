@@ -208,11 +208,11 @@ $(function () {
     var $el = $('<div/>')
     var $button = $el.bootstrapButton()
 
-    assert.ok(typeof $button.data('bs.button') !== 'undefined')
+    assert.ok(typeof Data.getData($button[0], 'bs.button') !== 'undefined')
 
-    $button.data('bs.button').dispose()
+    Data.getData($button[0], 'bs.button').dispose()
 
-    assert.ok(typeof $button.data('bs.button') === 'undefined')
+    assert.ok(Data.getData($button[0], 'bs.button') === null)
   })
 
   QUnit.test('should return button version', function (assert) {
