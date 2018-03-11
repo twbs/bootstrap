@@ -1051,7 +1051,7 @@ $(function () {
       .find('[data-toggle="dropdown"]')
       .bootstrapDropdown()
 
-    var dropdown = $dropdown.data('bs.dropdown')
+    var dropdown = Data.getData($dropdown[0], 'bs.dropdown')
     dropdown.toggle()
     assert.ok(dropdown._popper)
 
@@ -1079,7 +1079,7 @@ $(function () {
       .find('[data-toggle="dropdown"]')
       .bootstrapDropdown()
 
-    var dropdown = $dropdown.data('bs.dropdown')
+    var dropdown = Data.getData($dropdown[0], 'bs.dropdown')
     var spyDetectNavbar = sinon.spy(dropdown, '_detectNavbar')
 
     dropdown.update()
@@ -1104,7 +1104,7 @@ $(function () {
       .find('[data-toggle="dropdown"]')
       .bootstrapDropdown()
 
-    var dropdown = $dropdown.data('bs.dropdown')
+    var dropdown = Data.getData($dropdown[0], 'bs.dropdown')
     dropdown.toggle()
 
     assert.ok(dropdown._popper)
@@ -1135,7 +1135,7 @@ $(function () {
       .find('[data-toggle="dropdown"]')
       .bootstrapDropdown()
 
-    var dropdown = $dropdown.data('bs.dropdown')
+    var dropdown = Data.getData($dropdown[0], 'bs.dropdown')
 
     assert.notOk(dropdown._popper)
     assert.ok(dropdown._menu !== null)
