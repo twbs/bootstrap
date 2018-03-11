@@ -141,12 +141,11 @@ class Collapse {
       }
     }
 
+    const container = SelectorEngine.findOne(this._selector)
     if (actives) {
-      const tempActiveData = actives.filter((elem) => {
-        const container = SelectorEngine.findOne(this._selector)
-        return !container.contains(elem)
-      })
+      const tempActiveData = actives.filter((elem) => container !== elem)
       activesData = tempActiveData[0] ? Data.getData(tempActiveData[0], DATA_KEY) : null
+
       if (activesData && activesData._isTransitioning) {
         return
       }
@@ -159,14 +158,14 @@ class Collapse {
 
     if (actives) {
       actives.forEach((elemActive) => {
-        const container = SelectorEngine.findOne(this._selector)
-        if (!container.contains(elemActive)) {
+        if (container !== elemActive) {
           Collapse._collapseInterface(elemActive, 'hide')
         }
+
+        if (!activesData) {
+          Data.setData(elemActive, DATA_KEY, null)
+        }
       })
-      if (!activesData) {
-        Data.setData(actives[0], DATA_KEY, null)
-      }
     }
 
     const dimension = this._getDimension()

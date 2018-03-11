@@ -232,7 +232,7 @@ class Modal {
   }
 
   _showElement(relatedTarget) {
-    const transition = $(this._element).hasClass(ClassName.FADE)
+    const transition = this._element.classList.contains(ClassName.FADE)
 
     if (!this._element.parentNode ||
         this._element.parentNode.nodeType !== Node.ELEMENT_NODE) {
@@ -295,14 +295,14 @@ class Modal {
 
   _setEscapeEvent() {
     if (this._isShown && this._config.keyboard) {
-      $(this._element).on(Event.KEYDOWN_DISMISS, (event) => {
+      EventHandler.on(this._element, Event.KEYDOWN_DISMISS, (event) => {
         if (event.which === ESCAPE_KEYCODE) {
           event.preventDefault()
           this.hide()
         }
       })
     } else if (!this._isShown) {
-      $(this._element).off(Event.KEYDOWN_DISMISS)
+      EventHandler.off(this._element, Event.KEYDOWN_DISMISS)
     }
   }
 

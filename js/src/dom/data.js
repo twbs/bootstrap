@@ -23,10 +23,10 @@ const Data = (() => {
             key,
             id
           }
+          id++
         }
 
-        storeData[id] = data
-        id++
+        storeData[element.key.id] = data
       },
       get(element, key) {
         if (typeof element === 'undefined' || typeof element.key === 'undefined') {

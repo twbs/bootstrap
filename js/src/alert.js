@@ -114,8 +114,11 @@ class Alert {
   }
 
   _destroyElement(element) {
+    if (element.parentNode) {
+      element.parentNode.removeChild(element)
+    }
+
     EventHandler.trigger(element, Event.CLOSED)
-    element.parentNode.removeChild(element)
   }
 
   // Static
@@ -150,8 +153,8 @@ EventHandler.on(document, Event.CLICK_DATA_API, Selector.DISMISS, Alert._handleD
  * add .alert to jQuery only if jQuery is present
  */
 
-if (typeof window.$ !== 'undefined' || typeof window.jQuery !== 'undefined') {
-  const $                  = window.$ || window.jQuery
+const $ = Util.jQuery
+if (typeof $ !== 'undefined') {
   const JQUERY_NO_CONFLICT = $.fn[NAME]
   $.fn[NAME]               = Alert._jQueryInterface
   $.fn[NAME].Constructor   = Alert
