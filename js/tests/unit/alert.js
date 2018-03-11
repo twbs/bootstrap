@@ -91,7 +91,7 @@ $(function () {
     var done = assert.async()
     var $el = $('<div/>')
     var $alert = $el.bootstrapAlert()
-    var alertInstance = $alert.data('bs.alert')
+    var alertInstance = Data.getData($alert[0], 'bs.alert')
 
     $alert.one('closed.bs.alert', function () {
       assert.ok('alert closed')
@@ -107,11 +107,11 @@ $(function () {
     var $el = $('<div/>')
     var $alert = $el.bootstrapAlert()
 
-    assert.ok(typeof $alert.data('bs.alert') !== 'undefined')
+    assert.ok(typeof Data.getData($alert[0], 'bs.alert') !== 'undefined')
 
-    $alert.data('bs.alert').dispose()
+    Data.getData($alert[0], 'bs.alert').dispose()
 
-    assert.ok(typeof $alert.data('bs.button') === 'undefined')
+    assert.ok(Data.getData($alert[0], 'bs.alert') === null)
   })
 
   QUnit.test('should return alert version', function (assert) {
