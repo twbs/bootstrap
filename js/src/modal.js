@@ -168,8 +168,7 @@ const Modal = (() => {
 
       this._isShown = false
 
-      const transition = Util.supportsTransitionEnd() && $(this._element).hasClass(ClassName.FADE)
-
+      const transition = Util.supportsTransitionEnd() && this._element.classList.contains(ClassName.FADE)
       if (transition) {
         this._isTransitioning = true
       }

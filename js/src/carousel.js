@@ -537,8 +537,8 @@ const Carousel = (() => {
    * add .carousel to jQuery only if jQuery is present
    */
 
-  if (typeof window.$ !== 'undefined' || typeof window.jQuery !== 'undefined') {
-    const $                  = window.$ || window.jQuery
+  const $ = Util.jQuery
+  if (typeof $ !== 'undefined') {
     const JQUERY_NO_CONFLICT = $.fn[NAME]
     $.fn[NAME]               = Carousel._jQueryInterface
     $.fn[NAME].Constructor   = Carousel

@@ -171,7 +171,7 @@ const Dropdown = (() => {
         // to allow the menu to "escape" the scroll parent's boundaries
         // https://github.com/twbs/bootstrap/issues/24251
         if (this._config.boundary !== 'scrollParent') {
-          $(parent).addClass(ClassName.POSITION_STATIC)
+          parent.classList.add(ClassName.POSITION_STATIC)
         }
         this._popper = new Popper(referenceElement, this._menu, this._getPopperConfig())
       }
@@ -402,7 +402,7 @@ const Dropdown = (() => {
       if (/input|textarea/i.test(event.target.tagName)
         ? event.which === SPACE_KEYCODE || event.which !== ESCAPE_KEYCODE &&
         (event.which !== ARROW_DOWN_KEYCODE && event.which !== ARROW_UP_KEYCODE ||
-          $(event.target).closest(Selector.MENU).length) : !REGEXP_KEYDOWN.test(event.which)) {
+          SelectorEngine.closest(event.target, Selector.MENU) !== null) : !REGEXP_KEYDOWN.test(event.which)) {
         return
       }
 

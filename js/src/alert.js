@@ -159,8 +159,8 @@ const Alert = (() => {
    * add .alert to jQuery only if jQuery is present
    */
 
-  if (typeof window.$ !== 'undefined' || typeof window.jQuery !== 'undefined') {
-    const $                   = window.$ || window.jQuery
+  const $ = Util.jQuery
+  if (typeof $ !== 'undefined') {
     const JQUERY_NO_CONFLICT  = $.fn[NAME]
     $.fn[NAME]                = Alert._jQueryInterface
     $.fn[NAME].Constructor    = Alert
