@@ -1960,7 +1960,6 @@ var Modal = function ($$$1) {
       this._isShown = false;
       this._isBodyOverflowing = false;
       this._ignoreBackdropClick = false;
-      this._originalBodyPadding = 0;
       this._scrollbarWidth = 0;
     } // Getters
 
@@ -3873,7 +3872,7 @@ var Tab = function ($$$1) {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-alpha.6): index.js
+ * Bootstrap (v4.0.0): index.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
