@@ -24,7 +24,7 @@ Carousels don't automatically normalize slide dimensions. As such, you may need 
 
 ### Slides only
 
-Here's a carousel with slides only. Note the presence of the `.d-block` and `.img-fluid` on carousel images to prevent browser default image alignment.
+Here's a carousel with slides only. Note the presence of the `.d-block` and `.w-100` on carousel images to prevent browser default image alignment.
 
 {% example html %}
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
@@ -325,3 +325,7 @@ $('#myCarousel').on('slide.bs.carousel', function () {
   // do something…
 })
 {% endhighlight %}
+
+### Change transition duration
+
+The transition duration of `.carousel-item` can be changed with the `$carousel-transition` Sass variable before compiling or custom styles if you're using the compiled CSS. If multiple transitions are applied, make sure the transform transition is defined first (eg. `transition: transform 2s ease, opacity .5s ease-out`). The transition duration must be the same for each carousel item.

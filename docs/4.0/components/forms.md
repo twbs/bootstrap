@@ -25,7 +25,7 @@ Here's a quick example to demonstrate Bootstrap's form styles. Keep reading for 
     <label for="exampleInputPassword1">Password</label>
     <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
   </div>
-  <div class="form-check">
+  <div class="form-group form-check">
     <input type="checkbox" class="form-check-input" id="exampleCheck1">
     <label class="form-check-label" for="exampleCheck1">Check me out</label>
   </div>
@@ -1170,6 +1170,29 @@ As is the `size` attribute:
   <option value="2">Two</option>
   <option value="3">Three</option>
 </select>
+{% endexample %}
+
+### Range
+
+Create custom `<input type="range">` controls with `.custom-range`. The track (the background) and thumb (the value) are both styled to appear the same across browsers. As only IE and Firefox support "filling" their track from the left or right of the thumb as a means to visually indicate progress, we do not currently support it.
+
+{% example html %}
+<label for="customRange1">Example range</label>
+<input type="range" class="custom-range" id="customRange1">
+{% endexample %}
+
+Range inputs have implicit values for `min` and `max`—`0` and `100`, respectively. You may specify new values for those using the `min` and `max` attributes.
+
+{% example html %}
+<label for="customRange2">Example range</label>
+<input type="range" class="custom-range" min="0" max="5" id="customRange2">
+{% endexample %}
+
+By default, range inputs "snap" to integer values. To change this, you can specify a `step` value. In the example below, we double the number of steps by using `step="0.5"`.
+
+{% example html %}
+<label for="customRange3">Example range</label>
+<input type="range" class="custom-range" min="0" max="5" step="0.5" id="customRange3">
 {% endexample %}
 
 ### File browser

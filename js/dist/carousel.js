@@ -22,13 +22,13 @@ var Carousel = function ($) {
   var EVENT_KEY = "." + DATA_KEY;
   var DATA_API_KEY = '.data-api';
   var JQUERY_NO_CONFLICT = $.fn[NAME];
-  var TRANSITION_DURATION = 600;
   var ARROW_LEFT_KEYCODE = 37; // KeyboardEvent.which value for left arrow key
 
   var ARROW_RIGHT_KEYCODE = 39; // KeyboardEvent.which value for right arrow key
 
   var TOUCHEVENT_COMPAT_WAIT = 500; // Time for mouse compat events to fire after touch
 
+  var MILLISECONDS_MULTIPLIER = 1000;
   var Default = {
     interval: 5000,
     keyboard: true,
@@ -98,6 +98,7 @@ var Carousel = function ($) {
       this._config = this._getConfig(config);
       this._element = $(element)[0];
       this._indicatorsElement = $(this._element).find(Selector.INDICATORS)[0];
+      this._transitionDuration = this._getTransitionDuration();
 
       this._addEventListeners();
     } // Getters
@@ -202,6 +203,20 @@ var Carousel = function ($) {
       config = _extends({}, Default, config);
       Util.typeCheckConfig(NAME, config, DefaultType);
       return config;
+    };
+
+    _proto._getTransitionDuration = function _getTransitionDuration() {
+      // Get transition-duration of first element in the carousel
+      var transitionDuration = $(this._element).find(Selector.ITEM).css('transition-duration'); // Return 0 carousel item is not found
+
+      if (!transitionDuration) {
+        return 0;
+      } // If multiple durations are defined, take the first
+
+
+      transitionDuration = transitionDuration.split(',')[0]; // Multiply by 1000 if transition-duration is defined in seconds
+
+      return transitionDuration.indexOf('ms') > -1 ? parseFloat(transitionDuration) : parseFloat(transitionDuration) * MILLISECONDS_MULTIPLIER;
     };
 
     _proto._addEventListeners = function _addEventListeners() {
@@ -382,7 +397,7 @@ var Carousel = function ($) {
           setTimeout(function () {
             return $(_this3._element).trigger(slidEvent);
           }, 0);
-        }).emulateTransitionEnd(TRANSITION_DURATION);
+        }).emulateTransitionEnd(this._transitionDuration);
       } else {
         $(activeElement).removeClass(ClassName.ACTIVE);
         $(nextElement).addClass(ClassName.ACTIVE);
