@@ -392,8 +392,7 @@ Use [text and background utilities]({{ site.baseurl }}/docs/{{ site.docs_version
 </div>{% endfor %}
 {% endexample %}
 
-{% capture callout-include %}{% include callout-warning-color-assistive-technologies.md %}{% endcapture %}
-{{ callout-include | markdownify }}
+{% include callout-warning-color-assistive-technologies.md %}
 
 ### Border
 

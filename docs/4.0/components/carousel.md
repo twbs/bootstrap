@@ -24,7 +24,7 @@ Carousels don't automatically normalize slide dimensions. As such, you may need 
 
 ### Slides only
 
-Here's a carousel with slides only. Note the presence of the `.d-block` and `.img-fluid` on carousel images to prevent browser default image alignment.
+Here's a carousel with slides only. Note the presence of the `.d-block` and `.w-100` on carousel images to prevent browser default image alignment.
 
 {% example html %}
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
@@ -253,8 +253,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 
 ### Methods
 
-{% capture callout-include %}{% include callout-danger-async-methods.md %}{% endcapture %}
-{{ callout-include | markdownify }}
+{% include callout-danger-async-methods.md %}
 
 #### `.carousel(options)`
 

@@ -272,9 +272,10 @@ Here's how you can use these in your Sass:
 
 [Color utility classes]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/colors/) are also available for setting `color` and `background-color`.
 
-{% callout info %}
+{% capture callout %}
 In the future, we'll aim to provide Sass maps and variables for shades of each color as we've done with the grayscale colors below.
-{% endcallout %}
+{% endcapture %}
+{% include callout.html content=callout type="info" %}
 
 ### Theme colors
 
@@ -418,16 +419,4 @@ a {
 }
 {% endhighlight %}
 
-You can also use our breakpoint variables in your media queries:
-
-{% highlight css %}
-.content-secondary {
-  display: none;
-}
-
-@media (min-width(var(--breakpoint-sm))) {
-  .content-secondary {
-    display: block;
-  }
-}
-{% endhighlight %}
+While we include breakpoints in our CSS variables, they unfortunately cannot be used in media queries. These remain in the compiled CSS for backward compatibility given they can be utilized by JavaScript. [Learn more in the spec.](https://www.w3.org/TR/css-variables-1/#using-variables)

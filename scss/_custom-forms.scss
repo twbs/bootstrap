@@ -247,11 +247,11 @@
   margin: 0;
   opacity: 0;
 
-  &:focus ~ .custom-file-control {
+  &:focus ~ .custom-file-label {
     border-color: $custom-file-focus-border-color;
     box-shadow: $custom-file-focus-box-shadow;
 
-    &::before {
+    &::after {
       border-color: $custom-file-focus-border-color;
     }
   }

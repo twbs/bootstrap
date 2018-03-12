@@ -317,7 +317,7 @@ const Tooltip = (($) => {
         // only needed because of broken event delegation on iOS
         // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
         if ('ontouchstart' in document.documentElement) {
-          $('body').children().on('mouseover', null, $.noop)
+          $(document.body).children().on('mouseover', null, $.noop)
         }
 
         const complete = () => {
@@ -375,7 +375,7 @@ const Tooltip = (($) => {
       // If this is a touch-enabled device we remove the extra
       // empty mouseover listeners we added for iOS support
       if ('ontouchstart' in document.documentElement) {
-        $('body').children().off('mouseover', null, $.noop)
+        $(document.body).children().off('mouseover', null, $.noop)
       }
 
       this._activeTrigger[Trigger.CLICK] = false
