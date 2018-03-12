@@ -267,7 +267,7 @@ var Tooltip = function ($) {
         // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
 
         if ('ontouchstart' in document.documentElement) {
-          $('body').children().on('mouseover', null, $.noop);
+          $(document.body).children().on('mouseover', null, $.noop);
         }
 
         var complete = function complete() {
@@ -328,7 +328,7 @@ var Tooltip = function ($) {
       // empty mouseover listeners we added for iOS support
 
       if ('ontouchstart' in document.documentElement) {
-        $('body').children().off('mouseover', null, $.noop);
+        $(document.body).children().off('mouseover', null, $.noop);
       }
 
       this._activeTrigger[Trigger.CLICK] = false;
