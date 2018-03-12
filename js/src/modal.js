@@ -85,7 +85,6 @@ const Modal = (($) => {
       this._isShown             = false
       this._isBodyOverflowing   = false
       this._ignoreBackdropClick = false
-      this._originalBodyPadding = 0
       this._scrollbarWidth      = 0
     }
 
