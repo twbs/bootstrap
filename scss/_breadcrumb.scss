@@ -5,7 +5,7 @@
   margin-bottom: $breadcrumb-margin-bottom;
   list-style: none;
   background-color: $breadcrumb-bg;
-  @include border-radius($border-radius);
+  @include border-radius($breadcrumb-border-radius);
 }
 
 .breadcrumb-item {
