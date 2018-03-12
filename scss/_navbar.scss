@@ -32,6 +32,31 @@
     align-items: center;
     justify-content: space-between;
   }
+
+  .dropdown-menu {
+    position: static;
+    float: none;
+    margin-top: 0;
+    border: 0;
+    border-radius: 0;
+  }
+
+  @each $color, $value in $theme-colors {
+    &.bg-#{$color} .dropdown-menu {
+      background-color: $value;
+    }
+  }
+
+  .dropdown-header,
+  .dropdown-item {
+    padding-right: $navbar-nav-link-padding-x;
+    padding-left: $navbar-nav-link-padding-x;
+    white-space: normal;
+  }
+
+  .dropdown-item {
+    background-color: transparent;
+  }
 }
 
 
@@ -68,11 +93,6 @@
   .nav-link {
     padding-right: 0;
     padding-left: 0;
-  }
-
-  .dropdown-menu {
-    position: static;
-    float: none;
   }
 }
 
@@ -158,19 +178,27 @@
         .navbar-nav {
           flex-direction: row;
 
-          .dropdown-menu {
-            position: absolute;
-          }
-
-          .dropdown-menu-right {
-            right: 0;
-            left: auto; // Reset the default from `.dropdown-menu`
-          }
-
           .nav-link {
             padding-right: $navbar-nav-link-padding-x;
             padding-left: $navbar-nav-link-padding-x;
           }
+        }
+
+        .dropdown-menu {
+          position: absolute;
+          margin-top: $navbar-padding-y;
+        }
+
+        .dropdown-menu-right {
+          right: 0;
+          left: auto; // Reset the default from `.dropdown-menu`
+        }
+
+        .dropdown-header,
+        .dropdown-item {
+          padding-right: $dropdown-item-padding-x;
+          padding-left: $dropdown-item-padding-x;
+          white-space: nowrap;
         }
 
         // For nesting containers, have to redeclare for alignment purposes
@@ -256,6 +284,26 @@
       }
     }
   }
+
+  .dropdown-header {
+    color: $navbar-light-color;
+  }
+
+  .dropdown-item {
+    color: $navbar-light-color;
+
+    @include hover-focus {
+      color: $navbar-light-active-color;
+    }
+
+    &.active {
+      color: $navbar-light-active-color;
+    }
+  }
+
+  .dropdown-divider {
+    border-color: $navbar-light-toggler-border-color;
+  }
 }
 
 // White links against a dark background
@@ -307,5 +355,25 @@
         color: $navbar-dark-active-color;
       }
     }
+  }
+
+  .dropdown-header {
+    color: $navbar-dark-color;
+  }
+
+  .dropdown-item {
+    color: $navbar-dark-color;
+
+    @include hover-focus {
+      color: $navbar-dark-active-color;
+    }
+
+    &.active {
+      color: $navbar-dark-active-color;
+    }
+  }
+
+  .dropdown-divider {
+    border-color: $navbar-dark-toggler-border-color;
   }
 }
