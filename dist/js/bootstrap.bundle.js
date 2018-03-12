@@ -4001,7 +4001,7 @@ var Dropdown = function ($$$1) {
 
 
       if ('ontouchstart' in document.documentElement && $$$1(parent).closest(Selector.NAVBAR_NAV).length === 0) {
-        $$$1('body').children().on('mouseover', null, $$$1.noop);
+        $$$1(document.body).children().on('mouseover', null, $$$1.noop);
       }
 
       this._element.focus();
@@ -4184,7 +4184,7 @@ var Dropdown = function ($$$1) {
 
 
         if ('ontouchstart' in document.documentElement) {
-          $$$1('body').children().off('mouseover', null, $$$1.noop);
+          $$$1(document.body).children().off('mouseover', null, $$$1.noop);
         }
 
         toggles[i].setAttribute('aria-expanded', 'false');
@@ -4394,7 +4394,6 @@ var Modal = function ($$$1) {
       this._isShown = false;
       this._isBodyOverflowing = false;
       this._ignoreBackdropClick = false;
-      this._originalBodyPadding = 0;
       this._scrollbarWidth = 0;
     } // Getters
 
@@ -4757,8 +4756,8 @@ var Modal = function ($$$1) {
         }); // Adjust body padding
 
         var actualPadding = document.body.style.paddingRight;
-        var calculatedPadding = $$$1('body').css('padding-right');
-        $$$1('body').data('padding-right', actualPadding).css('padding-right', parseFloat(calculatedPadding) + this._scrollbarWidth + "px");
+        var calculatedPadding = $$$1(document.body).css('padding-right');
+        $$$1(document.body).data('padding-right', actualPadding).css('padding-right', parseFloat(calculatedPadding) + this._scrollbarWidth + "px");
       }
     };
 
@@ -4780,10 +4779,10 @@ var Modal = function ($$$1) {
         }
       }); // Restore body padding
 
-      var padding = $$$1('body').data('padding-right');
+      var padding = $$$1(document.body).data('padding-right');
 
       if (typeof padding !== 'undefined') {
-        $$$1('body').css('padding-right', padding).removeData('padding-right');
+        $$$1(document.body).css('padding-right', padding).removeData('padding-right');
       }
     };
 
@@ -5153,7 +5152,7 @@ var Tooltip = function ($$$1) {
         // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
 
         if ('ontouchstart' in document.documentElement) {
-          $$$1('body').children().on('mouseover', null, $$$1.noop);
+          $$$1(document.body).children().on('mouseover', null, $$$1.noop);
         }
 
         var complete = function complete() {
@@ -5214,7 +5213,7 @@ var Tooltip = function ($$$1) {
       // empty mouseover listeners we added for iOS support
 
       if ('ontouchstart' in document.documentElement) {
-        $$$1('body').children().off('mouseover', null, $$$1.noop);
+        $$$1(document.body).children().off('mouseover', null, $$$1.noop);
       }
 
       this._activeTrigger[Trigger.CLICK] = false;
@@ -6307,7 +6306,7 @@ var Tab = function ($$$1) {
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-alpha.6): index.js
+ * Bootstrap (v4.0.0): index.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
