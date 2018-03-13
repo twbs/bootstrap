@@ -259,13 +259,18 @@
   }
 
   @include media-breakpoint-up(sm) {
-    column-count: $card-columns-count;
+    column-count: $card-columns-sm-count;
     column-gap: $card-columns-gap;
 
     .card {
       display: inline-block; // Don't let them vertically span multiple columns
       width: 100%; // Don't let their width change
     }
+  }
+
+  @include media-breakpoint-up(md) {
+    column-count: $card-columns-md-count;
+    column-gap: $card-columns-gap;
   }
 }
 
