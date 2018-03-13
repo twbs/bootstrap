@@ -10,7 +10,7 @@
  * details, see https://creativecommons.org/licenses/by/3.0/.
  */
 
-/* global Clipboard: false, anchors: false, Holder: false */
+/* global ClipboardJS: false, anchors: false, Holder: false */
 
 (function ($) {
   'use strict'
@@ -66,7 +66,7 @@
         })
     })
 
-    var clipboard = new Clipboard('.btn-clipboard', {
+    var clipboard = new ClipboardJS('.btn-clipboard', {
       target: function (trigger) {
         return trigger.parentNode.nextElementSibling
       }
