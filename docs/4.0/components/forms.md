@@ -105,6 +105,19 @@ Set heights using classes like `.form-control-lg` and `.form-control-sm`.
 </select>
 {% endexample %}
 
+## Range Inputs
+
+Set horizontally scrollable range inputs using `.form-control-range`.
+
+{% example html %}
+<form>
+  <div class="form-group">
+    <label for="formControlRange">Example Range input</label>
+    <input type="range" class="form-control-range" id="formControlRange">
+  </div>
+</form>
+{% endexample %}
+
 ### Readonly
 
 Add the `readonly` boolean attribute on an input to prevent modification of the input's value. Read-only inputs appear lighter (just like disabled inputs), but retain the standard cursor.
