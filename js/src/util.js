@@ -17,6 +17,7 @@ const Util = (($) => {
   let transition = false
 
   const MAX_UID = 1000000
+  const MILLISECONDS_MULTIPLIER = 1000
 
   // Shoutout AngusCroll (https://goo.gl/pxwQGp)
   function toType(obj) {
@@ -102,6 +103,23 @@ const Util = (($) => {
       } catch (err) {
         return null
       }
+    },
+
+    getTransitionDurationFromElement(element) {
+      // Get transition-duration of the element
+      let transitionDuration = $(element).css('transition-duration')
+
+      // Return 0 if element or transition duration is not found
+      if (!transitionDuration) {
+        return 0
+      }
+
+      // If multiple durations are defined, take the first
+      transitionDuration = transitionDuration.split(',')[0]
+
+      // jQuery always converts transition durations into seconds,
+      // so multiply by 1000
+      return parseFloat(transitionDuration) * MILLISECONDS_MULTIPLIER
     },
 
     reflow(element) {

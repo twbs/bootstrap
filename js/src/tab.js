@@ -15,13 +15,12 @@ const Tab = (($) => {
    * ------------------------------------------------------------------------
    */
 
-  const NAME                = 'tab'
-  const VERSION             = '4.0.0'
-  const DATA_KEY            = 'bs.tab'
-  const EVENT_KEY           = `.${DATA_KEY}`
-  const DATA_API_KEY        = '.data-api'
-  const JQUERY_NO_CONFLICT  = $.fn[NAME]
-  const TRANSITION_DURATION = 150
+  const NAME               = 'tab'
+  const VERSION            = '4.0.0'
+  const DATA_KEY           = 'bs.tab'
+  const EVENT_KEY          = `.${DATA_KEY}`
+  const DATA_API_KEY       = '.data-api'
+  const JQUERY_NO_CONFLICT = $.fn[NAME]
 
   const Event = {
     HIDE           : `hide${EVENT_KEY}`,
@@ -162,9 +161,11 @@ const Tab = (($) => {
       )
 
       if (active && isTransitioning) {
+        const transitionDuration = Util.getTransitionDurationFromElement(active)
+
         $(active)
           .one(Util.TRANSITION_END, complete)
-          .emulateTransitionEnd(TRANSITION_DURATION)
+          .emulateTransitionEnd(transitionDuration)
       } else {
         complete()
       }
