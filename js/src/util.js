@@ -117,10 +117,9 @@ const Util = (($) => {
       // If multiple durations are defined, take the first
       transitionDuration = transitionDuration.split(',')[0]
 
-      // Multiply by 1000 if transition-duration is defined in seconds
-      return transitionDuration.indexOf('ms') !== -1
-        ? parseFloat(transitionDuration)
-        : parseFloat(transitionDuration) * MILLISECONDS_MULTIPLIER
+      // jQuery always converts transition durations into seconds,
+      // so multiply by 1000
+      return parseFloat(transitionDuration) * MILLISECONDS_MULTIPLIER
     },
 
     reflow(element) {
