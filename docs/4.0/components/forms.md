@@ -107,7 +107,7 @@ Set heights using classes like `.form-control-lg` and `.form-control-sm`.
 
 ## Range Inputs
 
-Set horizontally scrollable range inputs using `.form-control-range`
+Set horizontally scrollable range inputs using `.form-control-range`.
 
 {% example html %}
 <form>
@@ -117,7 +117,6 @@ Set horizontally scrollable range inputs using `.form-control-range`
   </div>
 </form>
 {% endexample %}
-
 
 ### Readonly
 
