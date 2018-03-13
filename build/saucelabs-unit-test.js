@@ -72,8 +72,8 @@ const waitingCallback = (error, body, id) => {
       if (jobsDone === browsersFile.length - 1) {
         jsUnitSaucelabs.stop()
         if (jobsDone > jobsSucceeded) {
-          const failedTestsNumber = jobsDone - jobsSucceeded
-          throw new Error(`${failedTestsNumber} test${failedTestsNumber > 1 ? 's' : ''} failed.`)
+          const failedTests = jobsDone - jobsSucceeded
+          throw new Error(`${failedTests} test${failedTests > 1 ? 's' : ''} failed.`)
         }
 
         console.log('All tests passed')
