@@ -821,7 +821,7 @@ $('.dropdown-toggle').dropdown()
 {% endhighlight %}
 
 {% capture callout %}
-##### `data-toggle="dropdown"` still required
+###### `data-toggle="dropdown"` still required
 
 Regardless of whether you call your dropdown via JavaScript or instead use the data-api, `data-toggle="dropdown"` is always required to be present on the dropdown's trigger element.
 {% endcapture %}

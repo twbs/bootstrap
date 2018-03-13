@@ -579,7 +579,7 @@ Our default modal without modifier class constitutes the "medium" size modal.
     <div class="modal-content">
 
       <div class="modal-header">
-        <h5 class="modal-title h4" id="myLargeModalLabel">Large modal</h5>
+        <h5 class="modal-title h3" id="myLargeModalLabel">Large modal</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -595,7 +595,7 @@ Our default modal without modifier class constitutes the "medium" size modal.
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title h4" id="mySmallModalLabel">Small modal</h5>
+        <h5 class="modal-title h3" id="mySmallModalLabel">Small modal</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

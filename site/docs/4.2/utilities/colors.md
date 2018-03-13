@@ -49,7 +49,7 @@ When `$enable-gradients` is set to `true` (default is `false`), you can use `.bg
 - `.bg-gradient-{{ color.name }}`{% endfor %}
 
 {% capture callout %}
-#### Dealing with specificity
+##### Dealing with specificity
 
 Sometimes contextual classes cannot be applied due to the specificity of another selector. In some cases, a sufficient workaround is to wrap your element's content in a `<div>` with the class.
 {% endcapture %}

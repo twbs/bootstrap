@@ -15,7 +15,7 @@
         </div>
 
         {% if page.toc %}
-          <div class="d-none d-xl-block col-xl-2 bd-toc" style="background-color: #00000003;">
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
             {% capture itemClass %}toc-entry.toc-h%level%{% endcapture %}
             {% include toc.html html=content class="section-nav" item_class=itemClass h_min=1 h_max=4 %}
           </div>

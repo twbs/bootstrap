@@ -32,7 +32,8 @@
 @mixin bs-callout-variant($color) {
   border-left-color: $color;
 
-  h4 { color: $color; }
+  h5,
+  h6 { color: $color; }
 }
 
 .bd-callout-info { @include bs-callout-variant($bd-info); }
