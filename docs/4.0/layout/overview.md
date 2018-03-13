@@ -103,8 +103,7 @@ We occasionally use media queries that go in the other direction (the given scre
 // No media query since the extra-large breakpoint has no upper bound on its width
 {% endhighlight %}
 
-{% capture callout-include %}{% include callout-info-mediaqueries-breakpoints.md %}{% endcapture %}
-{{ callout-include | markdownify }}
+{% include callout-info-mediaqueries-breakpoints.md %}
 
 Once again, these media queries are also available via Sass mixins:
 
