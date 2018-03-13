@@ -106,19 +106,22 @@ const Util = (($) => {
     },
 
     getTransitionDurationFromElement(element) {
+      if (!element) {
+        return 0
+      }
+
       // Get transition-duration of the element
       let transitionDuration = $(element).css('transition-duration')
+      const floatTransitionDuration = parseFloat(transitionDuration)
 
       // Return 0 if element or transition duration is not found
-      if (!transitionDuration) {
+      if (!floatTransitionDuration) {
         return 0
       }
 
       // If multiple durations are defined, take the first
       transitionDuration = transitionDuration.split(',')[0]
 
-      // jQuery always converts transition durations into seconds,
-      // so multiply by 1000
       return parseFloat(transitionDuration) * MILLISECONDS_MULTIPLIER
     },
 

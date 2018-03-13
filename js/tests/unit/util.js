@@ -46,44 +46,35 @@ $(function () {
     assert.expect(1)
     var $div = $('<div style="transition: all 300ms ease-out;"></div>').appendTo($('#qunit-fixture'))
 
-    assert.strictEqual(Util.getTransitionDurationFromElement($div), 300)
+    assert.strictEqual(Util.getTransitionDurationFromElement($div[0]), 300)
   })
 
   QUnit.test('Util.getTransitionDurationFromElement should accept transition durations in seconds', function (assert) {
     assert.expect(1)
     var $div = $('<div style="transition: all .4s ease-out;"></div>').appendTo($('#qunit-fixture'))
 
-    assert.strictEqual(Util.getTransitionDurationFromElement($div), 400)
+    assert.strictEqual(Util.getTransitionDurationFromElement($div[0]), 400)
   })
 
   QUnit.test('Util.getTransitionDurationFromElement should get the first transition duration if multiple transition durations are defined', function (assert) {
     assert.expect(1)
     var $div = $('<div style="transition: transform .3s ease-out, opacity .2s;"></div>').appendTo($('#qunit-fixture'))
 
-    assert.strictEqual(Util.getTransitionDurationFromElement($div), 300)
+    assert.strictEqual(Util.getTransitionDurationFromElement($div[0]), 300)
   })
 
   QUnit.test('Util.getTransitionDurationFromElement should return 0 if transition duration is not defined', function (assert) {
     assert.expect(1)
     var $div = $('<div></div>').appendTo($('#qunit-fixture'))
 
-    assert.strictEqual(Util.getTransitionDurationFromElement($div), 0)
+    assert.strictEqual(Util.getTransitionDurationFromElement($div[0]), 0)
   })
 
   QUnit.test('Util.getTransitionDurationFromElement should return 0 if element is not found in DOM', function (assert) {
     assert.expect(1)
     var $div = $('#fake-id')
 
-    assert.strictEqual(Util.getTransitionDurationFromElement($div), 0)
-  })
-
-  QUnit.test('Util.getTransitionDurationFromElement should properly handle inherited transition durations', function (assert) {
-    assert.expect(1)
-    var $parent = $('<div style="transition-duration: 5s;"></div>')
-    var $child = $('<div style="transition-duration: inherit;"></div>')
-    $('#qunit-fixture').append($parent.append($child))
-
-    assert.strictEqual(Util.getTransitionDurationFromElement($child), 5000)
+    assert.strictEqual(Util.getTransitionDurationFromElement($div[0]), 0)
   })
 
   QUnit.test('Util.getUID should generate a new id uniq', function (assert) {
