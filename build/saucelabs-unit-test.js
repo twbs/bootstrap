@@ -58,6 +58,7 @@ const waitingCallback = (error, body, id) => {
       console.log(`Platform: ${test.platform.join(', ')}`)
       console.log(`Passed: ${passed.toString()}`)
       console.log(`URL: ${test.url}\n`)
+
       if (errorStr) {
         console.error(errorStr)
       }
@@ -71,8 +72,8 @@ const waitingCallback = (error, body, id) => {
       if (jobsDone === browsersFile.length - 1) {
         jsUnitSaucelabs.stop()
         if (jobsDone > jobsSucceeded) {
-          const failedTest = jobsDone - jobsSucceeded
-          throw new Error(`Some test(s) failed (${failedTest})`)
+          const failedTests = jobsDone - jobsSucceeded
+          throw new Error(`${failedTests} test${failedTests > 1 ? 's' : ''} failed.`)
         }
 
         console.log('All tests passed')
