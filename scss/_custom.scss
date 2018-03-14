@@ -114,6 +114,7 @@ $gray:          $joblocal-gray !default;
 $gray-light:    mix(white, $joblocal-gray, 25%) !default;
 $gray-lighter:  #d7d7d7 !default;
 $gray-lightest: #f6f6f6 !default;
+$gray-card:     #eaeaea !default;
 
 // Reassign color vars to semantic color scheme
 $brand-primary:             $joblocal-orange !default;
@@ -1191,6 +1192,14 @@ $search-title-color: inherit;
 $search-byline-size: $font-size-sm;
 $search-byline-weight: $font-weight-bold;
 $search-byline-color: $brand-primary;
+
+// application
+//
+//
+
+$application-color: $white;
+$application-bg: $gray-card;
+$application-padding-x: $spacer * 2;
 
 // Facet
 //
