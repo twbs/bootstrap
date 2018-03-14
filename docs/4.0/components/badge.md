@@ -75,3 +75,21 @@ Using the contextual `.badge-*` classes on an `<a>` element quickly provide _act
 {% for color in site.data.theme-colors %}
 <a href="#" class="badge badge-{{ color.name }}">{{ color.name | capitalize }}</a>{% endfor %}
 {% endexample %}
+
+
+## Dismisable badges
+
+{% example html %}
+<span class="badge badge-primary">
+  Dismissable badge
+  <button type="button" class="close" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</span>
+<a href="#" class="badge badge-secondary">
+  Dismissable link badge
+  <button type="button" class="close" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</a>
+{% endexample %}

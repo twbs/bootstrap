@@ -18,6 +18,15 @@
   &:empty {
     display: none;
   }
+  // changes the .close btn to create dismissable badges
+  .close {
+    padding-right: $badge-padding-x;
+    padding-left: $badge-padding-x;
+    margin-right: -$badge-padding-x;
+    font-size: inherit;
+    color: inherit;
+    text-shadow: none;
+  }
 }
 
 // Quick fix for badges in buttons
