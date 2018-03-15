@@ -48,7 +48,7 @@ Default Application in horizontal alignment
                         <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Telefon optional">
                     </div>
                     <div class="col-12 mt-2">
-                        <h3>Unterlagen</h3>
+                        <p class="h3 card-text-color">Unterlagen</p>
                     </div>
                     <div class="col-12">
                       <p class="dash-border card-text-color text-center p-2">File upload</p>
