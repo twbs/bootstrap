@@ -1,7 +1,7 @@
 ---
 layout: docs
-title: Application
-description: Documentation for the correct implementation of the Application.
+title: Application-Form
+description: Documentation for the correct implementation of the Application-Form.
 group: components
 ---
 
@@ -14,21 +14,21 @@ Small and adaptive tag for adding context to just about any content.
 
 ## Example
 
-Default Application in horizontal alignment
+Default Application-Form in horizontal alignment
 
 {% example html %}
 <div class="card">
-  <div class="card-header card-inverse application-header">
+  <div class="card-header card-inverse application-form-header">
   <div class="row">
     <div class="col-12 col-sm-4 align-self-center text-center">
       <p class="h1 my-auto">Jetzt bewerben</p>
     </div>
-    <div class="col-12 col-sm-8 application-title align-self-center">
+    <div class="col-12 col-sm-8 application-form-title align-self-center">
       <p class="my-auto">Fachinformatiker für Anwendungsentwicklung (m/w) zum September 2017</p>
     </div>
   </div>
   </div>
-  <div class="card-block application">
+  <div class="card-block application-form">
       <div class="container mt-4">
         <div class="row">
             <div class="col-12">

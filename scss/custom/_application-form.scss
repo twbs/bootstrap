@@ -1,7 +1,7 @@
-.application {
-  color: $application-color;
-  background: $application-bg;
-  padding: 0 $application-padding-x;
+.application-form {
+  color: $application-form-color;
+  background: $application-form-bg;
+  padding: 0 $application-form-padding-x;
   flex: 0 0 auto;
 
   .btn-primary {
@@ -17,7 +17,7 @@
       color: $white;
     }
 
-    .application-title {
+    .application-form-title {
       font-size: 1.1rem;
     }
 
@@ -29,9 +29,8 @@
       border-right: .5rem solid transparent;
       border-top: .5rem solid $brand-primary;
       position: absolute;
-      top: auto;
-      bottom: -.49rem;
-      left: 2.5rem;
+      top: 100%;
+      left: $application-form-padding-x*1.2;
     }
   }
 
