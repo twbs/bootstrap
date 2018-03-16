@@ -448,6 +448,7 @@ The tabs plugin also works with pills.
 {% endhighlight %}
 
 And with vertical pills.
+
 <div class="bd-example bd-example-tabs">
   <div class="row">
     <div class="col-3">
@@ -476,6 +477,7 @@ And with vertical pills.
     </div>
   </div>
 </div>
+
 {% highlight html %}
 <div class="row">
   <div class="col-3">
