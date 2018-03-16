@@ -1888,6 +1888,7 @@ dd {
 }
 .dl-horizontal-item dd {
   text-align: right;
+  word-break: break-all;
 
   -webkit-box-flex: 1;
   -webkit-flex: 1 1 auto;
@@ -3484,7 +3485,6 @@ table th[class*="col-"] {
   }
   .table > .tbody > dl {
     display: table-row;
-    word-break: break-all;
   }
   .table > .tbody > dl > dt {
     display: none;
@@ -3493,6 +3493,7 @@ table th[class*="col-"] {
     display: table-cell;
     font-size: 14px;
     color: #5d7079;
+    word-break: break-all;
   }
   .table > .tfoot {
     display: table-footer-group;
@@ -3505,12 +3506,12 @@ table th[class*="col-"] {
   .table > .tbody > dl {
     padding: 24px 24px 0;
     margin-bottom: 24px;
-    word-break: break-all;
     border: 1px #d3d5d8 solid;
     border-radius: 3px;
   }
   .table > .tbody > dl > dd {
     padding: 0;
+    word-break: break-all;
     border: 0;
   }
   .table > .tbody > dl > dd:empty {
