@@ -35,16 +35,16 @@ Default Application-Form in horizontal alignment
             <p class="card-text-color">Schicke ganz einfach Deine Bewerbung über {domain} ab und wir informieren Dich per Email, sobald der Arbeitgeber die Bewerbung heruntergeladen hat.</p>
             <form class="inline-form">
                 <div class="row">
-                    <div class="col-12 col-md-6 mb-2">
+                    <div class="col-12 col-md-6 my-2">
                         <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Vorname">
                     </div>
-                    <div class="col-12 col-md-6">
+                    <div class="col-12 col-md-6 my-2">
                         <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Nachname">
                     </div>
-                    <div class="col-12 col-md-8 mb-2">
+                    <div class="col-12 col-md-8 my-2">
                         <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="E-mail">
                     </div>
-                    <div class="col-12 col-md-4">
+                    <div class="col-12 col-md-4 my-2">
                         <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Telefon optional">
                     </div>
                     <div class="col-12 mt-2">
