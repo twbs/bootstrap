@@ -9845,6 +9845,7 @@ a.list-group-item-danger:hover {
 .embed-responsive-4by3 {
   padding-bottom: 75%;
 }
+.well,
 .well-xs {
   min-height: 24px;
   padding: 24px;
