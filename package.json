@@ -128,7 +128,7 @@
     "stylelint-scss": "^2.5.0",
     "uglify-js": "^3.3.14",
     "vnu-jar": "^17.11.1",
-    "workbox-build": "^2.1.3"
+    "workbox-build": "^3.0.0"
   },
   "engines": {
     "node": ">=6"
