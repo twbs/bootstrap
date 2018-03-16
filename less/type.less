@@ -508,6 +508,20 @@ dd {
   }
 }
 
+.dl-horizontal-item {
+  display: flex;
+  flex-wrap: nowrap; // delegate to item-level wrapping
+
+  dt {
+    flex: 1 2 auto;
+  }
+
+  dd {
+    text-align: right;
+    flex: 1 1 auto;
+  }
+}
+
 // Misc
 // -------------------------
 
