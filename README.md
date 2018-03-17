@@ -11,9 +11,13 @@
     <a href="https://getbootstrap.com/docs/4.0/"><strong>Explore Bootstrap docs »</strong></a>
     <br>
     <br>
-    <a href="https://themes.getbootstrap.com/">Bootstrap Themes</a>
+    <a href="https://github.com/twbs/bootstrap/issues/new?template=bug.md">Report bug</a>
     ·
-    <a href="https://jobs.getbootstrap.com/">Job Board</a>
+    <a href="https://github.com/twbs/bootstrap/issues/new?template=feature.md&labels=feature">Request feature</a>
+    ·
+    <a href="https://themes.getbootstrap.com/">Themes</a>
+    ·
+    <a href="https://jobs.getbootstrap.com/">Jobs</a>
     ·
     <a href="https://blog.getbootstrap.com/">Blog</a>
   </p>
