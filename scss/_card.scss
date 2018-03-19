@@ -10,7 +10,7 @@
   word-wrap: break-word;
   background-color: $card-bg;
   background-clip: border-box;
-  border: $card-border-width solid $card-border-color;
+  border: none;
   @include border-radius($card-border-radius);
 
   > hr {
@@ -28,6 +28,18 @@
     .list-group-item:last-child {
       @include border-bottom-radius($card-border-radius);
     }
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border: $card-border-width solid $card-border-color;
+    z-index: 1;
+    pointer-events: none;
   }
 }
 
@@ -72,7 +84,9 @@
   border-bottom: $card-border-width solid $card-border-color;
 
   &:first-child {
-    @include border-radius($card-inner-border-radius $card-inner-border-radius 0 0);
+    @include border-radius(
+      $card-inner-border-radius $card-inner-border-radius 0 0
+    );
   }
 
   + .list-group {
@@ -88,10 +102,11 @@
   border-top: $card-border-width solid $card-border-color;
 
   &:last-child {
-    @include border-radius(0 0 $card-inner-border-radius $card-inner-border-radius);
+    @include border-radius(
+      0 0 $card-inner-border-radius $card-inner-border-radius
+    );
   }
 }
-
 
 //
 // Header navs
@@ -135,7 +150,6 @@
   @include border-bottom-radius($card-inner-border-radius);
 }
 
-
 // Card deck
 
 .card-deck {
@@ -162,7 +176,6 @@
     }
   }
 }
-
 
 //
 // Card groups
@@ -248,7 +261,6 @@
   }
 }
 
-
 //
 // Columns
 //
@@ -268,7 +280,6 @@
     }
   }
 }
-
 
 //
 // Accordion
