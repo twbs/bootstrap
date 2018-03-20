@@ -5,6 +5,7 @@
     "jquery": true
   },
   "globals": {
+    "sinon": false,
     "Util": false
   },
   "parserOptions": {

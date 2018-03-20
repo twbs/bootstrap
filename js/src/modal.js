@@ -15,15 +15,13 @@ const Modal = (($) => {
    * ------------------------------------------------------------------------
    */
 
-  const NAME                         = 'modal'
-  const VERSION                      = '4.0.0'
-  const DATA_KEY                     = 'bs.modal'
-  const EVENT_KEY                    = `.${DATA_KEY}`
-  const DATA_API_KEY                 = '.data-api'
-  const JQUERY_NO_CONFLICT           = $.fn[NAME]
-  const TRANSITION_DURATION          = 300
-  const BACKDROP_TRANSITION_DURATION = 150
-  const ESCAPE_KEYCODE               = 27 // KeyboardEvent.which value for Escape (Esc) key
+  const NAME               = 'modal'
+  const VERSION            = '4.0.0'
+  const DATA_KEY           = 'bs.modal'
+  const EVENT_KEY          = `.${DATA_KEY}`
+  const DATA_API_KEY       = '.data-api'
+  const JQUERY_NO_CONFLICT = $.fn[NAME]
+  const ESCAPE_KEYCODE     = 27 // KeyboardEvent.which value for Escape (Esc) key
 
   const Default = {
     backdrop : true,
@@ -187,10 +185,13 @@ const Modal = (($) => {
       $(this._element).off(Event.CLICK_DISMISS)
       $(this._dialog).off(Event.MOUSEDOWN_DISMISS)
 
+
       if (transition) {
+        const transitionDuration  = Util.getTransitionDurationFromElement(this._element)
+
         $(this._element)
           .one(Util.TRANSITION_END, (event) => this._hideModal(event))
-          .emulateTransitionEnd(TRANSITION_DURATION)
+          .emulateTransitionEnd(transitionDuration)
       } else {
         this._hideModal()
       }
@@ -263,9 +264,11 @@ const Modal = (($) => {
       }
 
       if (transition) {
+        const transitionDuration  = Util.getTransitionDurationFromElement(this._element)
+
         $(this._dialog)
           .one(Util.TRANSITION_END, transitionComplete)
-          .emulateTransitionEnd(TRANSITION_DURATION)
+          .emulateTransitionEnd(transitionDuration)
       } else {
         transitionComplete()
       }
@@ -369,9 +372,11 @@ const Modal = (($) => {
           return
         }
 
+        const backdropTransitionDuration = Util.getTransitionDurationFromElement(this._backdrop)
+
         $(this._backdrop)
           .one(Util.TRANSITION_END, callback)
-          .emulateTransitionEnd(BACKDROP_TRANSITION_DURATION)
+          .emulateTransitionEnd(backdropTransitionDuration)
       } else if (!this._isShown && this._backdrop) {
         $(this._backdrop).removeClass(ClassName.SHOW)
 
@@ -384,9 +389,11 @@ const Modal = (($) => {
 
         if (Util.supportsTransitionEnd() &&
            $(this._element).hasClass(ClassName.FADE)) {
+          const backdropTransitionDuration = Util.getTransitionDurationFromElement(this._backdrop)
+
           $(this._backdrop)
             .one(Util.TRANSITION_END, callbackRemove)
-            .emulateTransitionEnd(BACKDROP_TRANSITION_DURATION)
+            .emulateTransitionEnd(backdropTransitionDuration)
         } else {
           callbackRemove()
         }
