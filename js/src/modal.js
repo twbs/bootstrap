@@ -107,7 +107,7 @@ const Modal = (($) => {
         return
       }
 
-      if (Util.supportsTransitionEnd() && $(this._element).hasClass(ClassName.FADE)) {
+      if ($(this._element).hasClass(ClassName.FADE)) {
         this._isTransitioning = true
       }
 
@@ -168,8 +168,7 @@ const Modal = (($) => {
       }
 
       this._isShown = false
-
-      const transition = Util.supportsTransitionEnd() && $(this._element).hasClass(ClassName.FADE)
+      const transition = $(this._element).hasClass(ClassName.FADE)
 
       if (transition) {
         this._isTransitioning = true
@@ -228,8 +227,7 @@ const Modal = (($) => {
     }
 
     _showElement(relatedTarget) {
-      const transition = Util.supportsTransitionEnd() &&
-        $(this._element).hasClass(ClassName.FADE)
+      const transition = $(this._element).hasClass(ClassName.FADE)
 
       if (!this._element.parentNode ||
          this._element.parentNode.nodeType !== Node.ELEMENT_NODE) {
@@ -331,8 +329,6 @@ const Modal = (($) => {
         ? ClassName.FADE : ''
 
       if (this._isShown && this._config.backdrop) {
-        const doAnimate = Util.supportsTransitionEnd() && animate
-
         this._backdrop = document.createElement('div')
         this._backdrop.className = ClassName.BACKDROP
 
@@ -357,7 +353,7 @@ const Modal = (($) => {
           }
         })
 
-        if (doAnimate) {
+        if (animate) {
           Util.reflow(this._backdrop)
         }
 
@@ -367,7 +363,7 @@ const Modal = (($) => {
           return
         }
 
-        if (!doAnimate) {
+        if (!animate) {
           callback()
           return
         }
@@ -387,8 +383,7 @@ const Modal = (($) => {
           }
         }
 
-        if (Util.supportsTransitionEnd() &&
-           $(this._element).hasClass(ClassName.FADE)) {
+        if ($(this._element).hasClass(ClassName.FADE)) {
           const backdropTransitionDuration = Util.getTransitionDurationFromElement(this._backdrop)
 
           $(this._backdrop)
