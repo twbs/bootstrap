@@ -57,14 +57,13 @@ module.exports = (config) => {
     coverageIstanbulReporter: {
       dir: jsCoveragePath,
       reports: ['lcov', 'text-summary'],
-      fixWebpackSourcePaths: true,
       thresholds: {
-        emitWarning: true,
+        emitWarning: false,
         global: {
-          statements: 80,
-          lines: 80,
-          branches: 80,
-          functions: 80
+          statements: 89,
+          lines: 89,
+          branches: 83,
+          functions: 84
         }
       }
     }
