@@ -17,7 +17,7 @@ const plugins = [
       'defineProperties',
       'createClass',
       'inheritsLoose',
-      'extends'
+      'objectSpread'
     ]
   })
 ]
