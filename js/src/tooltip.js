@@ -333,7 +333,7 @@ const Tooltip = (($) => {
           }
         }
 
-        if (Util.supportsTransitionEnd() && $(this.tip).hasClass(ClassName.FADE)) {
+        if ($(this.tip).hasClass(ClassName.FADE)) {
           const transitionDuration = Util.getTransitionDurationFromElement(this.tip)
 
           $(this.tip)
@@ -383,8 +383,7 @@ const Tooltip = (($) => {
       this._activeTrigger[Trigger.FOCUS] = false
       this._activeTrigger[Trigger.HOVER] = false
 
-      if (Util.supportsTransitionEnd() &&
-          $(this.tip).hasClass(ClassName.FADE)) {
+      if ($(this.tip).hasClass(ClassName.FADE)) {
         const transitionDuration = Util.getTransitionDurationFromElement(tip)
 
         $(tip)

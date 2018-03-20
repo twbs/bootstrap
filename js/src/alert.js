@@ -102,8 +102,7 @@ const Alert = (($) => {
     _removeElement(element) {
       $(element).removeClass(ClassName.SHOW)
 
-      if (!Util.supportsTransitionEnd() ||
-          !$(element).hasClass(ClassName.FADE)) {
+      if (!$(element).hasClass(ClassName.FADE)) {
         this._destroyElement(element)
         return
       }

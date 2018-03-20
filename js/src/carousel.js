@@ -142,8 +142,7 @@ const Carousel = (($) => {
         this._isPaused = true
       }
 
-      if ($(this._element).find(Selector.NEXT_PREV)[0] &&
-        Util.supportsTransitionEnd()) {
+      if ($(this._element).find(Selector.NEXT_PREV)[0]) {
         Util.triggerTransitionEnd(this._element)
         this.cycle(true)
       }
@@ -376,8 +375,7 @@ const Carousel = (($) => {
         to: nextElementIndex
       })
 
-      if (Util.supportsTransitionEnd() &&
-        $(this._element).hasClass(ClassName.SLIDE)) {
+      if ($(this._element).hasClass(ClassName.SLIDE)) {
         $(nextElement).addClass(orderClassName)
 
         Util.reflow(nextElement)

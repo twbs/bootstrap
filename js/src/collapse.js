@@ -182,11 +182,6 @@ const Collapse = (($) => {
         $(this._element).trigger(Event.SHOWN)
       }
 
-      if (!Util.supportsTransitionEnd()) {
-        complete()
-        return
-      }
-
       const capitalizedDimension = dimension[0].toUpperCase() + dimension.slice(1)
       const scrollSize = `scroll${capitalizedDimension}`
       const transitionDuration = Util.getTransitionDurationFromElement(this._element)
@@ -246,12 +241,6 @@ const Collapse = (($) => {
       }
 
       this._element.style[dimension] = ''
-
-      if (!Util.supportsTransitionEnd()) {
-        complete()
-        return
-      }
-
       const transitionDuration = Util.getTransitionDurationFromElement(this._element)
 
       $(this._element)

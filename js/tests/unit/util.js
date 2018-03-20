@@ -90,4 +90,9 @@ $(function () {
     id2 = Util.getUID('test')
     assert.ok(id !== id2, id + ' !== ' + id2)
   })
+
+  QUnit.test('Util.supportsTransitionEnd should return true', function (assert) {
+    assert.expect(1)
+    assert.ok(Util.supportsTransitionEnd())
+  })
 })
