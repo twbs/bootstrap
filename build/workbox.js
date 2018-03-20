@@ -43,7 +43,7 @@ swBuild.injectManifest(config).then(({
     }
     const swFileContents = data.replace(wbSwRegex, wbFileName)
     fs.writeFile(config.swDest, swFileContents, () => {
-      console.log('Pre-cache Manifest generated.', `Pre-cached ${count} files, totalling ${size} bytes.`)
+      console.log(`Pre-cache Manifest generated. Pre-cached ${count} files, totalling ${size} bytes.`)
     })
   })
 }).catch((error) => {
