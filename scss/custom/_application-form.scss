@@ -1,0 +1,54 @@
+.application-form {
+  color: $application-form-color;
+  background: $application-form-bg;
+  padding: 0 $application-form-padding-x;
+  flex: 0 0 auto;
+
+  .btn-primary {
+    white-space: normal;
+  }
+
+  &-header {
+    background: $brand-primary;
+    padding: 1.5rem;
+    position: relative;
+
+    .h1 {
+      color: $white;
+    }
+
+    .application-form-title {
+      font-size: 1.1rem;
+    }
+
+    &:after {
+      content: "";
+      width: 0;
+      height: 0;
+      border-left: .5rem solid transparent;
+      border-right: .5rem solid transparent;
+      border-top: .5rem solid $brand-primary;
+      position: absolute;
+      top: 100%;
+      left: $application-form-padding-x*1.2;
+    }
+  }
+
+  .card-text-color {
+    color: $black;
+  }
+
+  .dash-border {
+    border-width: 0.05rem;
+    border-style: dashed;
+    color: $black;
+    opacity: 0.4;
+  }
+
+  .card-text-font-size {
+    font-size: 0.7rem;
+  }
+  @include media-breakpoint-down(xs) {
+    text-align: center;
+  }
+}
