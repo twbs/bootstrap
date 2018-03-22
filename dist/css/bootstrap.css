@@ -164,15 +164,6 @@ input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
-fieldset {
-  padding: .35em .625em .75em;
-  margin: 0 2px;
-  border: 1px solid #c0c0c0;
-}
-legend {
-  padding: 0;
-  border: 0;
-}
 textarea {
   overflow: auto;
 }
