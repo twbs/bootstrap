@@ -18,6 +18,10 @@ install:
   - bundle install --deployment --jobs=1
   - cp grunt/npm-shrinkwrap.json ./
   - npm install
+# Undo `_JAVA_OPTIONS` environment variable;
+# see https://github.com/travis-ci/travis-ci/issues/8408
+before_script:
+  - _JAVA_OPTIONS=
 cache:
   directories:
     - node_modules
