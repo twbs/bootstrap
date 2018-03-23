@@ -15,7 +15,7 @@ See also:
 * [WebKit bug 159753: [meta] Issues affecting Bootstrap](https://bugs.webkit.org/show_bug.cgi?id=159753)
 * [jQuery's browser bug workarounds](https://docs.google.com/document/d/1LPaPA30bLUB_publLIMF0RlhdnPx_ePXm7oW02iiT6o)
 
-<table class="bd-browser-bugs table table-bordered table-hover table-responsive">
+<table class="bd-browser-bugs table table-bordered table-hover">
   <thead>
     <tr>
       <th>Browser(s)</th>
@@ -28,9 +28,9 @@ See also:
     {% for bug in site.data.browser-bugs %}
     <tr>
       <td>{{ bug.browser }}</td>
-      <td>{{ bug.summary | markdownify | bugify }}</td>
-      <td>{{ bug.upstream_bug | bugify }}</td>
-      <td>{{ bug.origin | bugify }}</td>
+      <td>{{ bug.summary | markdownify }}</td>
+      <td>{% include bugify.html content=bug.upstream_bug %}</td>
+      <td>{% include bugify.html content=bug.origin %}</td>
     </tr>
     {% endfor %}
   </tbody>
@@ -42,7 +42,7 @@ There are several features specified in Web standards which would allow us to ma
 
 We publicly list these "most wanted" feature requests here, in the hopes of expediting the process of getting them implemented.
 
-<table class="bd-browser-bugs table table-bordered table-hover table-responsive">
+<table class="bd-browser-bugs table table-bordered table-hover">
   <thead>
     <tr>
       <th>Browser(s)</th>
@@ -55,9 +55,9 @@ We publicly list these "most wanted" feature requests here, in the hopes of expe
     {% for feat in site.data.browser-features %}
     <tr>
       <td>{{ feat.browser }}</td>
-      <td>{{ feat.summary | markdownify | bugify }}</td>
-      <td>{{ feat.upstream_bug | bugify }}</td>
-      <td>{{ feat.origin | bugify }}</td>
+      <td>{{ feat.summary | markdownify }}</td>
+      <td>{% include bugify.html content=feat.upstream_bug %}</td>
+      <td>{% include bugify.html content=feat.origin %}</td>
     </tr>
     {% endfor %}
   </tbody>

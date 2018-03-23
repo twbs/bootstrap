@@ -11,18 +11,19 @@ Choose from `.align-baseline`, `.align-top`, `.align-middle`, `.align-bottom`, `
 
 With inline elements:
 
-{% example html %}
+{% capture example %}
 <span class="align-baseline">baseline</span>
 <span class="align-top">top</span>
 <span class="align-middle">middle</span>
 <span class="align-bottom">bottom</span>
 <span class="align-text-top">text-top</span>
 <span class="align-text-bottom">text-bottom</span>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 With table cells:
 
-{% example html %}
+{% capture example %}
 <table style="height: 100px;">
   <tbody>
     <tr>
@@ -35,4 +36,5 @@ With table cells:
     </tr>
   </tbody>
 </table>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}

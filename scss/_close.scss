@@ -12,6 +12,11 @@
     text-decoration: none;
     opacity: .75;
   }
+
+  // Opinionated: add "hand" cursor to non-disabled .close elements
+  &:not(:disabled):not(.disabled) {
+    cursor: pointer;
+  }
 }
 
 // Additional properties for button version
@@ -22,7 +27,7 @@
 // stylelint-disable property-no-vendor-prefix, selector-no-qualifying-type
 button.close {
   padding: 0;
-  background: transparent;
+  background-color: transparent;
   border: 0;
   -webkit-appearance: none;
 }

@@ -76,6 +76,7 @@ select.form-control {
 .form-control-file,
 .form-control-range {
   display: block;
+  width: 100%;
 }
 
 
@@ -83,12 +84,13 @@ select.form-control {
 // Labels
 //
 
-// For use with horizontal and inline forms, when you need the label text to
-// align with the form controls.
+// For use with horizontal and inline forms, when you need the label (or legend)
+// text to align with the form controls.
 .col-form-label {
   padding-top: calc(#{$input-padding-y} + #{$input-border-width});
   padding-bottom: calc(#{$input-padding-y} + #{$input-border-width});
-  margin-bottom: 0; // Override the `<label>` default
+  margin-bottom: 0; // Override the `<label>/<legend>` default
+  font-size: inherit; // Override the `<legend>` default
   line-height: $input-line-height;
 }
 
@@ -107,20 +109,6 @@ select.form-control {
 }
 
 
-//
-// Legends
-//
-
-// For use with horizontal and inline forms, when you need the legend text to
-// be the same size as regular labels, and to align with the form controls.
-.col-form-legend {
-  padding-top: $input-padding-y;
-  padding-bottom: $input-padding-y;
-  margin-bottom: 0;
-  font-size: $font-size-base;
-}
-
-
 // Readonly controls as plain text
 //
 // Apply class to a readonly input to make it appear like regular plain
@@ -133,6 +121,7 @@ select.form-control {
   padding-bottom: $input-padding-y;
   margin-bottom: 0; // match inputs if this class comes on inputs with default margins
   line-height: $input-line-height;
+  color: $input-plaintext-color;
   background-color: transparent;
   border: solid transparent;
   border-width: $input-border-width 0;
@@ -220,33 +209,35 @@ select.form-control-lg {
 .form-check {
   position: relative;
   display: block;
-  margin-bottom: $form-check-margin-bottom;
-
-  &.disabled {
-    .form-check-label {
-      color: $text-muted;
-    }
-  }
-}
-
-.form-check-label {
   padding-left: $form-check-input-gutter;
-  margin-bottom: 0; // Override default `<label>` bottom margin
 }
 
 .form-check-input {
   position: absolute;
   margin-top: $form-check-input-margin-y;
   margin-left: -$form-check-input-gutter;
+
+  &:disabled ~ .form-check-label {
+    color: $text-muted;
+  }
 }
 
-// Radios and checkboxes on same line
+.form-check-label {
+  margin-bottom: 0; // Override default `<label>` bottom margin
+}
+
 .form-check-inline {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  padding-left: 0; // Override base .form-check
   margin-right: $form-check-inline-margin-x;
 
-  .form-check-label {
-    vertical-align: middle;
+  // Undo .form-check-input defaults and add some `margin-right`.
+  .form-check-input {
+    position: static;
+    margin-top: 0;
+    margin-right: $form-check-inline-input-margin-x;
+    margin-left: 0;
   }
 }
 
@@ -312,7 +303,8 @@ select.form-control-lg {
       display: inline-block;
     }
 
-    .input-group {
+    .input-group,
+    .custom-select {
       width: auto;
     }
 
@@ -323,10 +315,6 @@ select.form-control-lg {
       align-items: center;
       justify-content: center;
       width: auto;
-      margin-top: 0;
-      margin-bottom: 0;
-    }
-    .form-check-label {
       padding-left: 0;
     }
     .form-check-input {
@@ -336,23 +324,12 @@ select.form-control-lg {
       margin-left: 0;
     }
 
-    // Custom form controls
     .custom-control {
-      display: flex;
       align-items: center;
       justify-content: center;
-      padding-left: 0;
     }
-    .custom-control-indicator {
-      position: static;
-      display: inline-block;
-      margin-right: $form-check-input-margin-x; // Flexbox alignment means we lose our HTML space here, so we compensate.
-      vertical-align: text-bottom;
-    }
-
-    // Re-override the feedback icon.
-    .has-feedback .form-control-feedback {
-      top: 0;
+    .custom-control-label {
+      margin-bottom: 0;
     }
   }
 }

@@ -1,6 +1,8 @@
 // The dropdown wrapper (`<div>`)
 .dropup,
-.dropdown {
+.dropright,
+.dropdown,
+.dropleft {
   position: relative;
 }
 
@@ -31,10 +33,17 @@
   @include box-shadow($dropdown-box-shadow);
 }
 
+.dropdown-menu-right {
+  right: 0;
+  left: auto;
+}
+
 // Allow for dropdowns to go bottom up (aka, dropup-menu)
 // Just add .dropup after the standard .dropdown class and you're set.
 .dropup {
   .dropdown-menu {
+    top: auto;
+    bottom: 100%;
     margin-top: 0;
     margin-bottom: $dropdown-spacer;
   }
@@ -43,6 +52,53 @@
     @include caret(up);
   }
 }
+
+.dropright {
+  .dropdown-menu {
+    top: 0;
+    right: auto;
+    left: 100%;
+    margin-top: 0;
+    margin-left: $dropdown-spacer;
+  }
+
+  .dropdown-toggle {
+    @include caret(right);
+    &::after {
+      vertical-align: 0;
+    }
+  }
+}
+
+.dropleft {
+  .dropdown-menu {
+    top: 0;
+    right: 100%;
+    left: auto;
+    margin-top: 0;
+    margin-right: $dropdown-spacer;
+  }
+
+  .dropdown-toggle {
+    @include caret(left);
+    &::before {
+      vertical-align: 0;
+    }
+  }
+}
+
+// When enabled Popper.js, reset basic dropdown position
+// stylelint-disable no-duplicate-selectors
+.dropdown-menu {
+  &[x-placement^="top"],
+  &[x-placement^="right"],
+  &[x-placement^="bottom"],
+  &[x-placement^="left"] {
+    right: auto;
+    bottom: auto;
+  }
+}
+// stylelint-enable no-duplicate-selectors
 
 // Dividers (basically an `<hr>`) within the dropdown
 .dropdown-divider {
@@ -61,7 +117,7 @@
   color: $dropdown-link-color;
   text-align: inherit; // For `<button>`s
   white-space: nowrap; // prevent links from randomly breaking onto new lines
-  background: none; // For `<button>`s
+  background-color: transparent; // For `<button>`s
   border: 0; // For `<button>`s
 
   @include hover-focus {
@@ -100,4 +156,11 @@
   font-size: $font-size-sm;
   color: $dropdown-header-color;
   white-space: nowrap; // as with > li > a
+}
+
+// Dropdown text
+.dropdown-item-text {
+  display: block;
+  padding: $dropdown-item-padding-y $dropdown-item-padding-x;
+  color: $dropdown-link-color;
 }

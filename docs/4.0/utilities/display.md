@@ -19,7 +19,7 @@ As such, the classes are named using the format:
 * `.d-{value}` for `xs`
 * `.d-{breakpoint}-{value}` for `sm`, `md`, `lg`, and `xl`.
 
-Where *display* is one of:
+Where *value* is one of:
 
 * `none`
 * `inline`
@@ -35,17 +35,19 @@ The media queries effect screen widths with the given breakpoint *or larger*. Fo
 
 ## Examples
 
-{% example html %}
+{% capture example %}
 <div class="d-inline p-2 bg-primary text-white">d-inline</div>
 <div class="d-inline p-2 bg-dark text-white">d-inline</div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
-{% example html %}
+{% capture example %}
 <span class="d-block p-2 bg-primary text-white">d-block</span>
 <span class="d-block p-2 bg-dark text-white">d-block</span>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
-## Hiding Elements
+## Hiding elements
 
 For faster mobile-friendly development, use responsive display classes for showing and hiding elements by device. Avoid creating entirely different versions of the same site, instead hide element responsively for each screen size.
 
@@ -68,26 +70,31 @@ To show an element only on a given interval of screen sizes you can combine one 
 | Visible only on lg | `.d-none .d-lg-block .d-xl-none` |
 | Visible only on xl | `.d-none .d-xl-block` |
 
-{% example html %}
+{% capture example %}
 <div class="d-lg-none">hide on screens wider than lg</div>
 <div class="d-none d-lg-block">hide on screens smaller than lg</div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Display in print
 
-Change the `display` value of elements when printing with our print display utility classes.
+Change the `display` value of elements when printing with our print display utility classes. Includes support for the same `display` values as our responsive `.d-*` utilities.
 
-| Class | Print style |
-| --- | --- |
-| `.d-print-block` | Applies `display: block;` to the element when printing |
-| `.d-print-inline` | Applies `display: inline;` to the element when printing |
-| `.d-print-inline-block` | Applies `display: inline-block;` to the element when printing |
-| `.d-print-none` | Applies `display: none;` to the element when printing |
+- `.d-print-none`
+- `.d-print-inline`
+- `.d-print-inline-block`
+- `.d-print-block`
+- `.d-print-table`
+- `.d-print-table-row`
+- `.d-print-table-cell`
+- `.d-print-flex`
+- `.d-print-inline-flex`
 
 The print and display classes can be combined.
 
-{% example html %}
+{% capture example %}
 <div class="d-print-none">Screen Only (Hide on print only)</div>
 <div class="d-none d-print-block">Print Only (Hide on screen only)</div>
 <div class="d-none d-lg-block d-print-block">Hide up to large on screen, but always show on print</div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}

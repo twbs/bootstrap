@@ -63,37 +63,37 @@ All heading elements—e.g., `<h1>`—and `<p>` are reset to have their `margin-
   <tbody>
     <tr>
       <td>
-        {% markdown %}`<h1></h1>`{% endmarkdown %}
+        {{ "`<h1></h1>`" | markdownify }}
       </td>
       <td><span class="h1">h1. Bootstrap heading</span></td>
     </tr>
     <tr>
       <td>
-        {% markdown %}`<h2></h2>`{% endmarkdown %}
+        {{ "`<h2></h2>`" | markdownify }}
       </td>
       <td><span class="h2">h2. Bootstrap heading</span></td>
     </tr>
     <tr>
       <td>
-        {% markdown %}`<h3></h3>`{% endmarkdown %}
+        {{ "`<h3></h3>`" | markdownify }}
       </td>
       <td><span class="h3">h3. Bootstrap heading</span></td>
     </tr>
     <tr>
       <td>
-        {% markdown %}`<h4></h4>`{% endmarkdown %}
+        {{ "`<h4></h4>`" | markdownify }}
       </td>
       <td><span class="h4">h4. Bootstrap heading</span></td>
     </tr>
     <tr>
       <td>
-        {% markdown %}`<h5></h5>`{% endmarkdown %}
+        {{ "`<h5></h5>`" | markdownify }}
       </td>
       <td><span class="h5">h5. Bootstrap heading</span></td>
     </tr>
     <tr>
       <td>
-        {% markdown %}`<h6></h6>`{% endmarkdown %}
+        {{ "`<h6></h6>`" | markdownify }}
       </td>
       <td><span class="h6">h6. Bootstrap heading</span></td>
     </tr>
@@ -105,7 +105,7 @@ All heading elements—e.g., `<h1>`—and `<p>` are reset to have their `margin-
 All lists—`<ul>`, `<ol>`, and `<dl>`—have their `margin-top` removed and a `margin-bottom: 1rem`. Nested lists have no `margin-bottom`.
 
 <div class="bd-example">
-{% markdown %}
+{% capture markdown %}
 * Lorem ipsum dolor sit amet
 * Consectetur adipiscing elit
 * Integer molestie lorem at massa
@@ -127,23 +127,22 @@ All lists—`<ul>`, `<ol>`, and `<dl>`—have their `margin-top` removed and a `
 6. Faucibus porta lacus fringilla vel
 7. Aenean sit amet erat nunc
 8. Eget porttitor lorem
-{% endmarkdown %}
+{% endcapture %}
+{{ markdown | markdownify }}
 </div>
 
 For simpler styling, clear hierarchy, and better spacing, description lists have updated `margin`s. `<dd>`s reset `margin-left` to `0` and add `margin-bottom: .5rem`. `<dt>`s are **bolded**.
 
 <div class="bd-example">
-{% markdown %}
-<dl>
-  <dt>Description lists</dt>
-  <dd>A description list is perfect for defining terms.</dd>
-  <dt>Euismod</dt>
-  <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem.</dd>
-  <dd>Donec id elit non mi porta gravida at eget metus.</dd>
-  <dt>Malesuada porta</dt>
-  <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
-</dl>
-{% endmarkdown %}
+  <dl>
+    <dt>Description lists</dt>
+    <dd>A description list is perfect for defining terms.</dd>
+    <dt>Euismod</dt>
+    <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem.</dd>
+    <dd>Donec id elit non mi porta gravida at eget metus.</dd>
+    <dt>Malesuada porta</dt>
+    <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+  </dl>
 </div>
 
 ## Preformatted text
@@ -151,13 +150,11 @@ For simpler styling, clear hierarchy, and better spacing, description lists have
 The `<pre>` element is reset to remove its `margin-top` and use `rem` units for its `margin-bottom`.
 
 <div class="bd-example">
-{% markdown %}
 <pre>
 .example-element {
   margin-bottom: 1rem;
 }
 </pre>
-{% endmarkdown %}
 </div>
 
 ## Tables
@@ -266,8 +263,13 @@ These changes, and more, are demonstrated below.
     </p>
 
     <p>
-      <label for="time">Example temporal</label>
-      <input type="datetime-local" id="time">
+      <label for="date">Example date</label>
+      <input type="date" id="date">
+    </p>
+
+    <p>
+      <label for="time">Example time</label>
+      <input type="time" id="time">
     </p>
 
     <p>
@@ -328,6 +330,22 @@ The `<abbr>` element receives basic styling to make it stand out amongst paragra
   Nulla <abbr title="attribute">attr</abbr> vitae elit libero, a pharetra augue.
 </div>
 
+### Summary
+
+The default `cursor` on summary is `text`, so we reset that to `pointer` to convey that the element can be interacted with by clicking on it.
+
+<div class="bd-example">
+  <details>
+    <summary>Some details</summary>
+    <p>More info about the details.</p>
+  </details>
+
+  <details open>
+    <summary>Even more details</summary>
+    <p>Here are even more details about the details.</p>
+  </details>
+</div>
+
 ## HTML5 `[hidden]` attribute
 
 HTML5 adds [a new global attribute named `[hidden]`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/hidden), which is styled as `display: none` by default. Borrowing an idea from [PureCSS](https://purecss.io/), we improve upon this default by making `[hidden] { display: none !important; }` to help prevent its `display` from getting accidentally overridden. While `[hidden]` isn't natively supported by IE10, the explicit declaration in our CSS gets around that problem.
@@ -336,24 +354,11 @@ HTML5 adds [a new global attribute named `[hidden]`](https://developer.mozilla.o
 <input type="text" hidden>
 {% endhighlight %}
 
-{% callout warning %}
-#### jQuery incompatibility
+{% capture callout %}
+##### jQuery incompatibility
 
 `[hidden]` is not compatible with jQuery's `$(...).hide()` and `$(...).show()` methods. Therefore, we don't currently especially endorse `[hidden]` over other techniques for managing the `display` of elements.
-{% endcallout %}
+{% endcapture %}
+{% include callout.html content=callout type="warning" %}
 
 To merely toggle the visibility of an element, meaning its `display` is not modified and the element can still affect the flow of the document, use [the `.invisible` class]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/visibility/) instead.
-
-## Click delay optimization for touch
-
-Traditionally, browsers on touchscreen devices have a delay of approximately 300ms between the end of a "tap" – the moment when a finger/stylus is lifted from screen – and the [`click` event](https://developer.mozilla.org/en-US/docs/Web/Events/click) being fired. This delay is necessary for these browsers to correctly handle "double-tap to zoom" gestures without prematurely triggering actions or links after the first "tap", but it can make your site feel slightly sluggish and unresponsive.
-
-Most mobile browsers automatically optimize away this 300ms delay for sites that use the `width=device-width` property as part of their [responsive meta tag]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/introduction/#responsive-meta-tag) (as well as for sites that disable zooming, for instance with `user-scalable=no`, though this practice is strongly discouraged for accessibility and usability reasons). The biggest exceptions here are IE11 on Windows Phone 8.1, and iOS Safari (and any other iOS WebView-based browser) [prior to iOS 9.3](https://webkit.org/blog/5610/more-responsive-tapping-on-ios/).
-
-On touch-enabled laptop/desktop devices, IE11 and Microsoft Edge are currently the only browsers with "double-tap to zoom" functionality. As the [responsive meta tag]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/introduction/#responsive-meta-tag) is ignored by all desktop browsers, using `width=device-width` will have no effect on the 300ms delay here.
-
-To address this problem in IE11 and Microsoft Edge on desktop, as well as IE11 on Windows Phone 8.1, Bootstrap explicitly uses the [`touch-action:manipulation` CSS property](https://developer.mozilla.org/en-US/docs/Web/CSS/touch-action) on all interactive elements (such as buttons and links). This property essentially disables double-tap functionality on those elements, eliminating the 300ms delay.
-
-In the case of old iOS versions (prior to 9.3), the suggested approach is to use additional scripts such as [FastClick](https://github.com/ftlabs/fastclick) to explicitly work around the delay.
-
-For further details, see the compatibility table for [suppressing 300ms delay for touchscreen interactions](https://patrickhlauke.github.io/touch/tests/results/#suppressing-300ms-delay).

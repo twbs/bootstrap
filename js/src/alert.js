@@ -1,17 +1,14 @@
 import $ from 'jquery'
 import Util from './util'
 
-
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-beta.2): alert.js
+ * Bootstrap (v4.0.0): alert.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
 
 const Alert = (($) => {
-
-
   /**
    * ------------------------------------------------------------------------
    * Constants
@@ -19,12 +16,11 @@ const Alert = (($) => {
    */
 
   const NAME                = 'alert'
-  const VERSION             = '4.0.0-beta.2'
+  const VERSION             = '4.0.0'
   const DATA_KEY            = 'bs.alert'
   const EVENT_KEY           = `.${DATA_KEY}`
   const DATA_API_KEY        = '.data-api'
   const JQUERY_NO_CONFLICT  = $.fn[NAME]
-  const TRANSITION_DURATION = 150
 
   const Selector = {
     DISMISS : '[data-dismiss="alert"]'
@@ -42,7 +38,6 @@ const Alert = (($) => {
     SHOW  : 'show'
   }
 
-
   /**
    * ------------------------------------------------------------------------
    * Class Definition
@@ -50,20 +45,17 @@ const Alert = (($) => {
    */
 
   class Alert {
-
     constructor(element) {
       this._element = element
     }
 
-
-    // getters
+    // Getters
 
     static get VERSION() {
       return VERSION
     }
 
-
-    // public
+    // Public
 
     close(element) {
       element = element || this._element
@@ -83,8 +75,7 @@ const Alert = (($) => {
       this._element = null
     }
 
-
-    // private
+    // Private
 
     _getRootElement(element) {
       const selector = Util.getSelectorFromElement(element)
@@ -111,15 +102,16 @@ const Alert = (($) => {
     _removeElement(element) {
       $(element).removeClass(ClassName.SHOW)
 
-      if (!Util.supportsTransitionEnd() ||
-          !$(element).hasClass(ClassName.FADE)) {
+      if (!$(element).hasClass(ClassName.FADE)) {
         this._destroyElement(element)
         return
       }
 
+      const transitionDuration = Util.getTransitionDurationFromElement(element)
+
       $(element)
         .one(Util.TRANSITION_END, (event) => this._destroyElement(element, event))
-        .emulateTransitionEnd(TRANSITION_DURATION)
+        .emulateTransitionEnd(transitionDuration)
     }
 
     _destroyElement(element) {
@@ -129,8 +121,7 @@ const Alert = (($) => {
         .remove()
     }
 
-
-    // static
+    // Static
 
     static _jQueryInterface(config) {
       return this.each(function () {
@@ -157,9 +148,7 @@ const Alert = (($) => {
         alertInstance.close(this)
       }
     }
-
   }
-
 
   /**
    * ------------------------------------------------------------------------
@@ -172,7 +161,6 @@ const Alert = (($) => {
     Selector.DISMISS,
     Alert._handleDismiss(new Alert())
   )
-
 
   /**
    * ------------------------------------------------------------------------
@@ -188,7 +176,6 @@ const Alert = (($) => {
   }
 
   return Alert
-
 })($)
 
 export default Alert

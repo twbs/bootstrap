@@ -1,0 +1,42 @@
+{%- comment -%}
+Usage: {% include bugify.html content=text %},
+where content is a string that contains a bug reference name and id.
+e.g. Bootstrap#19984
+{%- endcomment -%}
+
+{%- assign words = include.content | split: " " -%}
+
+{%- for word in words -%}
+  {% if word contains "#" %}
+    {% if word contains "," %}{% assign separator = true %}{% else %}{% assign separator = false %}{% endif %}
+    {%- assign data = word | split: "#" -%}
+    {%- assign bug_cat = data[0] | strip_newlines -%}
+    {%- assign bug_id  = data[1] | strip_newlines | remove: "," -%}
+
+    {%- case bug_cat -%}
+    {%- when "Bootstrap" -%}
+      <a href="https://github.com/twbs/bootstrap/issues/{{ bug_id }}">#{{ bug_id }}</a>
+    {%- when "Edge" -%}
+      <a href="https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/{{ bug_id }}">Edge issue #{{ bug_id }}</a>
+    {%- when "A11yUserVoice" -%}
+      <a href="https://microsoftaccessibility.uservoice.com/forums/307429-microsoft-accessibility-feedback/suggestions/{{ bug_id }}">Microsoft A11y UserVoice idea #{{ bug_id }}</a>
+    {%- when "UserVoice" -%}
+      <a href="https://wpdev.uservoice.com/forums/257854-microsoft-edge-developer/suggestions/{{ bug_id }}">Edge UserVoice idea #{{ bug_id }}</a>
+    {%- when "Mozilla" -%}
+      <a href="https://bugzilla.mozilla.org/show_bug.cgi?id={{ bug_id }}">Mozilla bug #{{ bug_id }}</a>
+    {%- when "Chromium" -%}
+      <a href="https://bugs.chromium.org/p/chromium/issues/detail?id={{ bug_id }}">Chromium issue #{{ bug_id }}</a>
+    {%- when "WebKit" -%}
+      <a href="https://bugs.webkit.org/show_bug.cgi?id={{ bug_id }}">WebKit bug #{{ bug_id }}</a>
+    {%- when "Safari" -%}
+      <a href="https://openradar.appspot.com/{{ bug_id }}">Apple Safari Radar #{{ bug_id }}</a>
+    {%- when "Normalize" -%}
+      <a href="https://github.com/necolas/normalize.css/issues/{{ bug_id }}">Normalize #{{ bug_id }}</a>
+    {%- else -%}
+      <strong>parse error</strong>
+    {%- endcase -%}{% if separator %}, {% endif %}
+
+  {% else %}
+    {{ word }}
+  {%- endif -%}
+{%- endfor -%}

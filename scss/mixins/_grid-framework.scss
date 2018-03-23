@@ -46,14 +46,12 @@
         }
       }
 
-      .order#{$infix}-first {
-        order: -1;
-      }
+      .order#{$infix}-first { order: -1; }
 
-      @for $i from 1 through $columns {
-        .order#{$infix}-#{$i} {
-          order: $i;
-        }
+      .order#{$infix}-last { order: $columns + 1; }
+
+      @for $i from 0 through $columns {
+        .order#{$infix}-#{$i} { order: $i; }
       }
 
       // `$columns - 1` because offsetting by the width of an entire row isn't possible

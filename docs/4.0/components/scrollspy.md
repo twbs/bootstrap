@@ -256,17 +256,19 @@ After adding `position: relative;` in your CSS, call the scrollspy via JavaScrip
 $('body').scrollspy({ target: '#navbar-example' })
 {% endhighlight %}
 
-{% callout danger %}
+{% capture callout %}
 #### Resolvable ID targets required
 
 Navbar links must have resolvable id targets. For example, a `<a href="#home">home</a>` must correspond to something in the DOM like `<div id="home"></div>`.
-{% endcallout %}
+{% endcapture %}
+{% include callout.html content=callout type="danger" %}
 
-{% callout info %}
+{% capture callout %}
 #### Non-`:visible` target elements ignored
 
 Target elements that are not [`:visible` according to jQuery](https://api.jquery.com/visible-selector/) will be ignored and their corresponding nav items will never be highlighted.
-{% endcallout %}
+{% endcapture %}
+{% include callout.html content=callout type="info" %}
 
 ### Methods
 
@@ -280,7 +282,7 @@ $('[data-spy="scroll"]').each(function () {
 })
 {% endhighlight %}
 
-### `.scrollspy('dispose')`
+#### `.scrollspy('dispose')`
 
 Destroys an element's scrollspy.
 
@@ -288,7 +290,7 @@ Destroys an element's scrollspy.
 
 Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-`, as in `data-offset=""`.
 
-<table class="table table-bordered table-striped table-responsive">
+<table class="table table-bordered table-striped">
   <thead>
     <tr>
       <th style="width: 100px;">Name</th>
@@ -309,7 +311,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 
 ### Events
 
-<table class="table table-bordered table-striped table-responsive">
+<table class="table table-bordered table-striped">
   <thead>
     <tr>
       <th style="width: 150px;">Event Type</th>

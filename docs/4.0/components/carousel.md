@@ -20,13 +20,13 @@ Lastly, if you're building our JavaScript from source, it [requires `util.js`]({
 
 Carousels don't automatically normalize slide dimensions. As such, you may need to use additional utilities or custom styles to appropriately size content. While carousels support previous/next controls and indicators, they're not explicitly required. Add and customize as you see fit.
 
-Be sure to set a unique id on the `.carousel` for optional controls, especially if you're using multiple carousels on a single page.
+**The `.active` class needs to be added to one of the slides** otherwise the carousel will not be visible. Also be sure to set a unique id on the `.carousel` for optional controls, especially if you're using multiple carousels on a single page. Control and indicator elements must have a `data-target` attribute (or `href` for links) that matches the id of the `.carousel` element.
 
 ### Slides only
 
-Here's a carousel with slides only. Note the presence of the `.d-block` and `.img-fluid` on carousel images to prevent browser default image alignment.
+Here's a carousel with slides only. Note the presence of the `.d-block` and `.w-100` on carousel images to prevent browser default image alignment.
 
-{% example html %}
+{% capture example %}
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
@@ -40,13 +40,14 @@ Here's a carousel with slides only. Note the presence of the `.d-block` and `.im
     </div>
   </div>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### With controls
 
 Adding in the previous and next controls:
 
-{% example html %}
+{% capture example %}
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
@@ -68,13 +69,14 @@ Adding in the previous and next controls:
     <span class="sr-only">Next</span>
   </a>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### With indicators
 
 You can also add the indicators to the carousel, alongside the controls, too.
 
-{% example html %}
+{% capture example %}
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -101,13 +103,8 @@ You can also add the indicators to the carousel, alongside the controls, too.
     <span class="sr-only">Next</span>
   </a>
 </div>
-{% endexample %}
-
-{% callout warning %}
-#### Initial active element required
-
-The `.active` class needs to be added to one of the slides. Otherwise, the carousel will not be visible.
-{% endcallout %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### With captions
 
@@ -124,21 +121,21 @@ Add captions to your slides easily with the `.carousel-caption` element within a
       <div class="carousel-item active">
         <img class="d-block w-100" data-src="holder.js/800x400?auto=yes&bg=777&fg=555&text=First slide" alt="First slide">
         <div class="carousel-caption d-none d-md-block">
-          <h3>First slide label</h3>
+          <h5>First slide label</h5>
           <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
         </div>
       </div>
       <div class="carousel-item">
         <img class="d-block w-100" data-src="holder.js/800x400?auto=yes&bg=666&fg=444&text=Second slide" alt="Second slide">
         <div class="carousel-caption d-none d-md-block">
-          <h3>Second slide label</h3>
+          <h5>Second slide label</h5>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
       </div>
       <div class="carousel-item">
         <img class="d-block w-100" data-src="holder.js/800x400?auto=yes&bg=555&fg=333&text=Third slide" alt="Third slide">
         <div class="carousel-caption d-none d-md-block">
-          <h3>Third slide label</h3>
+          <h5>Third slide label</h5>
           <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
         </div>
       </div>
@@ -158,11 +155,41 @@ Add captions to your slides easily with the `.carousel-caption` element within a
 <div class="carousel-item">
   <img src="..." alt="...">
   <div class="carousel-caption d-none d-md-block">
-    <h3>...</h3>
+    <h5>...</h5>
     <p>...</p>
   </div>
 </div>
 {% endhighlight %}
+
+### Crossfade
+
+Add `.carousel-fade` to your carousel to animate slides with a fade transition instead of a slide.
+
+{% capture example %}
+<div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" data-src="holder.js/800x400?auto=yes&bg=777&fg=555&text=First slide" alt="First slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" data-src="holder.js/800x400?auto=yes&bg=666&fg=444&text=Second slide" alt="Second slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" data-src="holder.js/800x400?auto=yes&bg=555&fg=333&text=Third slide" alt="Third slide">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+{% endcapture %}
+{% include example.html content=example %}
+
 
 ## Usage
 
@@ -184,7 +211,7 @@ $('.carousel').carousel()
 
 Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-`, as in `data-interval=""`.
 
-<table class="table table-bordered table-striped table-responsive">
+<table class="table table-bordered table-striped">
   <thead>
     <tr>
       <th style="width: 100px;">Name</th>
@@ -230,8 +257,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 
 ### Methods
 
-{% capture callout-include %}{% include callout-danger-async-methods.md %}{% endcapture %}
-{{ callout-include | markdownify }}
+{% include callout-danger-async-methods.md %}
 
 #### `.carousel(options)`
 
@@ -263,7 +289,7 @@ Cycles to the previous item. **Returns to the caller before the previous item ha
 
 Cycles to the next item. **Returns to the caller before the next item has been shown** (i.e. before the `slid.bs.carousel` event occurs).
 
-### `.carousel('dispose')`
+#### `.carousel('dispose')`
 
 Destroys an element's carousel.
 
@@ -278,7 +304,7 @@ Bootstrap's carousel class exposes two events for hooking into carousel function
 
 All carousel events are fired at the carousel itself (i.e. at the `<div class="carousel">`).
 
-<table class="table table-bordered table-striped table-responsive">
+<table class="table table-bordered table-striped">
   <thead>
     <tr>
       <th style="width: 150px;">Event Type</th>
@@ -302,3 +328,7 @@ $('#myCarousel').on('slide.bs.carousel', function () {
   // do something…
 })
 {% endhighlight %}
+
+### Change transition duration
+
+The transition duration of `.carousel-item` can be changed with the `$carousel-transition` Sass variable before compiling or custom styles if you're using the compiled CSS. If multiple transitions are applied, make sure the transform transition is defined first (eg. `transition: transform 2s ease, opacity .5s ease-out`).
