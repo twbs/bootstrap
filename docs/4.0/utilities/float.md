@@ -8,7 +8,7 @@ toc: true
 
 ## Overview
 
-These utility classes float an element to the left or right, or disable floating, based on the current viewport size using the [CSS `float` property](https://developer.mozilla.org/en-US/docs/Web/CSS/float). `!important` is included to avoid specificity issues. These use the same viewport breakpoints as our grid system.
+These utility classes float an element to the left or right, or disable floating, based on the current viewport size using the [CSS `float` property](https://developer.mozilla.org/en-US/docs/Web/CSS/float). `!important` is included to avoid specificity issues. These however, don't mix with miscellaneous layout modules such as flex or grid. These use the same viewport breakpoints as our grid system.
 
 ## Classes
 
