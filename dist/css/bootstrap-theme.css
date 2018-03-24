@@ -1395,6 +1395,48 @@ fieldset[disabled] .btn-inverse.active {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffd9534f', endColorstr='#ffc9302c', GradientType=0);
   background-repeat: repeat-x;
 }
+@media print {
+  .progress-bar {
+    background-image: -webkit-linear-gradient(top, #2e3192 0%, #22246b 100%) !important;
+    background-image:      -o-linear-gradient(top, #2e3192 0%, #22246b 100%) !important;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#2e3192), to(#22246b)) !important;
+    background-image:         linear-gradient(to bottom, #2e3192 0%, #22246b 100%) !important;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff2e3192', endColorstr='#ff22246b', GradientType=0) !important;
+    background-repeat: repeat-x !important;
+  }
+  .progress-bar-success {
+    background-image: -webkit-linear-gradient(top, #9bcb3c 0%, #7ea72d 100%) !important;
+    background-image:      -o-linear-gradient(top, #9bcb3c 0%, #7ea72d 100%) !important;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#9bcb3c), to(#7ea72d)) !important;
+    background-image:         linear-gradient(to bottom, #9bcb3c 0%, #7ea72d 100%) !important;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff9bcb3c', endColorstr='#ff7ea72d', GradientType=0) !important;
+    background-repeat: repeat-x !important;
+  }
+  .progress-bar-info {
+    background-image: -webkit-linear-gradient(top, #96a4d3 0%, #7285c4 100%) !important;
+    background-image:      -o-linear-gradient(top, #96a4d3 0%, #7285c4 100%) !important;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#96a4d3), to(#7285c4)) !important;
+    background-image:         linear-gradient(to bottom, #96a4d3 0%, #7285c4 100%) !important;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff96a4d3', endColorstr='#ff7285c4', GradientType=0) !important;
+    background-repeat: repeat-x !important;
+  }
+  .progress-bar-warning {
+    background-image: -webkit-linear-gradient(top, #f7a35c 0%, #f5882b 100%) !important;
+    background-image:      -o-linear-gradient(top, #f7a35c 0%, #f5882b 100%) !important;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#f7a35c), to(#f5882b)) !important;
+    background-image:         linear-gradient(to bottom, #f7a35c 0%, #f5882b 100%) !important;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff7a35c', endColorstr='#fff5882b', GradientType=0) !important;
+    background-repeat: repeat-x !important;
+  }
+  .progress-bar-danger {
+    background-image: -webkit-linear-gradient(top, #d9534f 0%, #c9302c 100%) !important;
+    background-image:      -o-linear-gradient(top, #d9534f 0%, #c9302c 100%) !important;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#d9534f), to(#c9302c)) !important;
+    background-image:         linear-gradient(to bottom, #d9534f 0%, #c9302c 100%) !important;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffd9534f', endColorstr='#ffc9302c', GradientType=0) !important;
+    background-repeat: repeat-x !important;
+  }
+}
 .progress-bar-striped {
   background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
   background-image:      -o-linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
@@ -1848,5 +1890,33 @@ body {
   color: white;
   background-color: #1b20c2;
   border-radius: 50%;
+}
+@media print {
+  /* Fix for Chrome */
+  * {
+    -webkit-transition: none !important;
+         -o-transition: none !important;
+            transition: none !important;
+  }
+  body {
+    padding-top: 0;
+  }
+  .sidebar,
+  .apim-noprint {
+    display: none;
+  }
+  a[href]:after {
+    content: "";
+  }
+  .page-header {
+    page-break-after: avoid;
+  }
+  .list-group {
+    page-break-before: avoid;
+  }
+  .list-group-item {
+    page-break-inside: avoid;
+    page-break-after: auto;
+  }
 }
 /*# sourceMappingURL=bootstrap-theme.css.map */

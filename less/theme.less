@@ -347,6 +347,13 @@ b, strong {
 .progress-bar-warning    { .progress-bar-styles(@progress-bar-warning-bg); }
 .progress-bar-danger     { .progress-bar-styles(@progress-bar-danger-bg); }
 
+@media print {
+  .progress-bar            { .progress-bar-styles(@progress-bar-bg) !important; }
+  .progress-bar-success    { .progress-bar-styles(@progress-bar-success-bg) !important; }
+  .progress-bar-info       { .progress-bar-styles(@progress-bar-info-bg) !important; }
+  .progress-bar-warning    { .progress-bar-styles(@progress-bar-warning-bg) !important; }
+  .progress-bar-danger     { .progress-bar-styles(@progress-bar-danger-bg) !important; }
+}
 // Reset the striped class because our mixins don't do multiple gradients and
 // the above custom styles override the new `.progress-bar-striped` in v3.2.0.
 .progress-bar-striped {
@@ -813,5 +820,36 @@ body {
     color: @apim-pri-hover;
     text-decoration: none;
     .add-cicle-to-icon(@apim-pri-hover);
+  }
+}
+
+@media print {
+
+  /* Fix for Chrome */
+  * {
+    transition: none !important;
+  }
+
+  body {
+    padding-top: 0;
+  }
+
+  .sidebar, .apim-noprint {
+    display: none;
+  }
+
+  a[href]:after {
+      content: "";
+  }
+  
+  .page-header {
+    page-break-after: avoid;
+  }
+  .list-group {
+    page-break-before: avoid;
+  }
+  .list-group-item {
+    page-break-inside: avoid;
+    page-break-after: auto;
   }
 }
