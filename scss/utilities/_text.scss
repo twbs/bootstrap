@@ -50,3 +50,5 @@
 .text-hide {
   @include text-hide();
 }
+
+.text-decoration-none { text-decoration: none !important; }
