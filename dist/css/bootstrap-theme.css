@@ -1918,5 +1918,11 @@ body {
     page-break-inside: avoid;
     page-break-after: auto;
   }
+  ul.nav > li {
+    display: none;
+  }
+  ul.nav > li.active {
+    display: table-cell;
+  }
 }
 /*# sourceMappingURL=bootstrap-theme.css.map */
