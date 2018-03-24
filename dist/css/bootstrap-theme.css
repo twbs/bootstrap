@@ -1905,6 +1905,10 @@ body {
   .apim-noprint {
     display: none;
   }
+  .main {
+    width: 100%;
+    margin-left: 0;
+  }
   a[href]:after {
     content: "";
   }
