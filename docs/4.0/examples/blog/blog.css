@@ -35,7 +35,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-scroller .nav {
-  display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: nowrap;
@@ -61,7 +60,6 @@ h1, h2, h3, h4, h5, h6 {
 
 .flex-auto {
   -ms-flex: 0 0 auto;
-  -webkit-box-flex: 0;
   flex: 0 0 auto;
 }
 
