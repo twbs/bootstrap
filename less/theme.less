@@ -823,6 +823,10 @@ body {
   }
 }
 
+.apim-printonly {
+  display: none;
+}
+
 @media print {
 
   /* Fix for Chrome */
@@ -846,6 +850,10 @@ body {
       content: "";
   }
 
+  .apim-printonly {
+    display: block;
+    page-break-after: avoid;
+  }
   .page-header {
     page-break-after: avoid;
   }
@@ -855,7 +863,7 @@ body {
   .list-group-item {
     page-break-inside: avoid;
     page-break-after: auto;
-  }
+  } 
   ul.nav > li {
     display: none;
   }

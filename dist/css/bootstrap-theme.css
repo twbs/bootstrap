@@ -1891,6 +1891,9 @@ body {
   background-color: #1b20c2;
   border-radius: 50%;
 }
+.apim-printonly {
+  display: none;
+}
 @media print {
   /* Fix for Chrome */
   * {
@@ -1911,6 +1914,11 @@ body {
   }
   a[href]:after {
     content: "";
+  }
+  .apim-printonly {
+    display: block;
+
+    page-break-after: avoid;
   }
   .page-header {
     page-break-after: avoid;
