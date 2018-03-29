@@ -47,6 +47,8 @@
     "js-test": "npm-run-all --parallel js-test-karma*",
     "js-test-karma": "karma start js/tests/karma.conf.js",
     "js-test-karma-old": "cross-env USE_OLD_JQUERY=true npm run js-test-karma",
+    "js-test-karma-bundle": "cross-env karma start js/tests/karma-bundle.conf.js",
+    "js-test-karma-bundle-old": "cross-env USE_OLD_JQUERY=true npm run js-test-karma-bundle",
     "js-test-cloud": "ruby -r webrick -e \"s = WEBrick::HTTPServer.new(:Port => 3000, :DocumentRoot => Dir.pwd, :Logger => WEBrick::Log.new('/dev/null'), :AccessLog => []); trap('INT') { s.shutdown }; s.start\" & node build/saucelabs-unit-test.js",
     "docs": "npm-run-all --parallel css-docs js-docs --sequential docs-compile docs-lint",
     "docs-compile": "bundle exec jekyll build",
