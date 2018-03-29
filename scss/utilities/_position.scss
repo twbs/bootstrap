@@ -5,9 +5,14 @@
 // Sass list not in variables since it's not intended for customization.
 // stylelint-disable-next-line scss/dollar-variable-default
 $positions: static, relative, absolute, fixed, sticky;
+$positions-prefix-webkit: sticky;
 
 @each $position in $positions {
-  .position-#{$position} { position: $position !important; }
+  @if (false != index($positions-prefix-webkit, $position)) {
+    .position-#{$position} { position: -webkit-#{$position} !important; position: $position !important; }
+  } @else {
+    .position-#{$position} { position: $position !important; }
+  }
 }
 
 // Shorthand
@@ -29,7 +34,8 @@ $positions: static, relative, absolute, fixed, sticky;
 }
 
 .sticky-top {
-  @supports (position: sticky) {
+  @supports (position: sticky) or (position: -webkit-sticky) {
+    position: -webkit-sticky;
     position: sticky;
     top: 0;
     z-index: $zindex-sticky;
