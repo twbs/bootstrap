@@ -4,7 +4,6 @@
   padding: $breadcrumb-padding-y $breadcrumb-padding-x;
   margin-bottom: $breadcrumb-margin-bottom;
   list-style: none;
-  background-color: $breadcrumb-bg;
   @include border-radius($breadcrumb-border-radius);
 }
 
@@ -16,7 +15,6 @@
     &::before {
       display: inline-block; // Suppress underlining of the separator in modern browsers
       padding-right: $breadcrumb-item-padding;
-      color: $breadcrumb-divider-color;
       content: $breadcrumb-divider;
     }
   }
