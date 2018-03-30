@@ -1,3 +1,9 @@
+// stylelint-disable selector-max-type
+
+// borders tfoot
+// nesting issues
+//
+
 //
 // Basic Bootstrap table
 //
@@ -6,41 +12,45 @@
   width: 100%;
   max-width: 100%;
   margin-bottom: $spacer;
-  background-color: $table-bg; // Reset for nesting within parents with `background-color`.
+  vertical-align: top;
 
-  th,
-  td {
-    padding: $table-cell-padding;
-    vertical-align: top;
-    border-top: $table-border-width solid $table-border-color;
-  }
-
-  thead th {
+  > thead {
     vertical-align: bottom;
-    border-bottom: (2 * $table-border-width) solid $table-border-color;
   }
 
-  tbody + tbody {
-    border-top: (2 * $table-border-width) solid $table-border-color;
-  }
+  > thead,
+  > tbody,
+  > tfoot {
+    &:not(:first-child) {
+      border-top: (2 * $table-border-width) solid $table-border-color;
+    }
 
-  .table {
-    background-color: $body-bg;
+    > tr {
+      > th,
+      > td {
+        padding: $table-cell-padding;
+        border-top: $table-border-width solid $table-border-color;
+      }
+    }
   }
 }
-
 
 //
 // Condensed table w/ half padding
 //
 
 .table-sm {
-  th,
-  td {
-    padding: $table-cell-padding-sm;
+  > thead,
+  > tbody,
+  > tfoot {
+    > tr {
+      > th,
+      > td {
+        padding: $table-cell-padding-sm;
+      }
+    }
   }
 }
-
 
 // Border versions
 //
@@ -49,25 +59,30 @@
 .table-bordered {
   border: $table-border-width solid $table-border-color;
 
-  th,
-  td {
-    border: $table-border-width solid $table-border-color;
-  }
-
-  thead {
-    th,
-    td {
-      border-bottom-width: (2 * $table-border-width);
+  > thead,
+  > tbody,
+  > tfoot {
+    > tr {
+      > th,
+      > td {
+        border: $table-border-width solid $table-border-color;
+      }
     }
   }
 }
 
 .table-borderless {
-  th,
-  td,
-  thead th,
-  tbody + tbody {
+  > thead,
+  > tbody,
+  > tfoot {
     border: 0;
+
+    > tr {
+      > th,
+      > td {
+        border: 0;
+      }
+    }
   }
 }
 
@@ -76,24 +91,28 @@
 // Default zebra-stripe styles (alternating gray and transparent backgrounds)
 
 .table-striped {
-  tbody tr:nth-of-type(#{$table-striped-order}) {
-    background-color: $table-accent-bg;
+  > tbody > tr:nth-of-type(#{$table-striped-order}) {
+    > th,
+    > td {
+      background-color: $table-accent-bg;
+    }
   }
 }
-
 
 // Hover effect
 //
 // Placed here since it has to come after the potential zebra striping
 
 .table-hover {
-  tbody tr {
-    @include hover {
-      background-color: $table-hover-bg;
+  > tbody > tr {
+    > th,
+    > td {
+      @include hover {
+        background-color: $table-hover-bg;
+      }
     }
   }
 }
-
 
 // Table backgrounds
 //
@@ -105,7 +124,6 @@
 }
 
 @include table-row-variant(active, $table-active-bg);
-
 
 // Dark styles
 //
@@ -158,7 +176,6 @@
     }
   }
 }
-
 
 // Responsive tables
 //
