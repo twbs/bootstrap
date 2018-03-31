@@ -214,10 +214,10 @@ Place various form controls and components within a navbar with `.form-inline`.
 {% endcapture %}
 {% include example.html content=example %}
 
-Align the contents of your inline forms with utilities as needed.
+Immediate children elements in `.navbar` use flex layout and will default to `justify-content: between`. Use additional [flex utilities]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/flex/) as needed to adjust this behavior.
 
 {% capture example %}
-<nav class="navbar navbar-light bg-light justify-content-between">
+<nav class="navbar navbar-light bg-light">
   <a class="navbar-brand">Navbar</a>
   <form class="form-inline">
     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
