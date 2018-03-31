@@ -12,6 +12,25 @@ Bootstrap supports the **latest, stable releases** of all major browsers and pla
 
 Alternative browsers which use the latest version of WebKit, Blink, or Gecko, whether directly or via the platform's web view API, are not explicitly supported. However, Bootstrap should (in most cases) display and function correctly in these browsers as well. More specific support information is provided below.
 
+You can find our supported range of browsers and their versions [in our `package.json`]({{ site.repo }}/blob/v4-dev/package.json):
+
+```json
+"browserslist": [
+  "last 1 major version",
+  ">= 1%",
+  "Chrome >= 45",
+  "Firefox >= 38",
+  "Edge >= 12",
+  "Explorer >= 10",
+  "iOS >= 9",
+  "Safari >= 9",
+  "Android >= 4.4",
+  "Opera >= 30"
+]
+```
+
+We use [Browserslist](https://github.com/browserslist/browserslist) to manage these versions alongside Autoprefixer to compile our CSS with the intended browser support. Consult their documentation for how to integrate this into your projects.
+
 ### Mobile devices
 
 Generally speaking, Bootstrap supports the latest versions of each major platform's default browsers. Note that proxy browsers (such as Opera Mini, Opera Mobile's Turbo mode, UC Browser Mini, Amazon Silk) are not supported.
