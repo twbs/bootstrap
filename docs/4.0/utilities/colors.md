@@ -11,8 +11,11 @@ toc: true
 {% capture example %}
 {% for color in site.data.theme-colors %}
 <p class="text-{{ color.name }}{% if color.name == "light" %} bg-dark{% endif %}">.text-{{ color.name }}</p>{% endfor %}
+<p class="text-body">.text-body</p>
 <p class="text-muted">.text-muted</p>
 <p class="text-white bg-dark">.text-white</p>
+<p class="text-black-50">.text-black-50</p>
+<p class="text-white-50 bg-dark">.text-white-50</p>
 {% endcapture %}
 {% include example.html content=example %}
 
