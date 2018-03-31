@@ -45,6 +45,7 @@
   @include text-emphasis-variant(".text-#{$color}", $value);
 }
 
+.text-body { color: $body-color !important; }
 .text-muted { color: $text-muted !important; }
 
 // Misc
