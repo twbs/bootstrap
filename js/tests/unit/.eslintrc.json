@@ -5,7 +5,9 @@
     "jquery": true
   },
   "globals": {
-    "Util": false
+    "sinon": false,
+    "Util": false,
+    "bootstrap": false
   },
   "parserOptions": {
     "ecmaVersion": 5,

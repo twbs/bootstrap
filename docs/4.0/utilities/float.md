@@ -8,17 +8,18 @@ toc: true
 
 ## Overview
 
-These utility classes float an element to the left or right, or disable floating, based on the current viewport size using the [CSS `float` property](https://developer.mozilla.org/en-US/docs/Web/CSS/float). `!important` is included to avoid specificity issues. These use the same viewport breakpoints as our grid system.
+These utility classes float an element to the left or right, or disable floating, based on the current viewport size using the [CSS `float` property](https://developer.mozilla.org/en-US/docs/Web/CSS/float). `!important` is included to avoid specificity issues. These use the same viewport breakpoints as our grid system. Please be aware float utilities have no affect on flex items.
 
 ## Classes
 
 Toggle a float with a class:
 
-{% example html %}
+{% capture example %}
 <div class="float-left">Float left on all viewport sizes</div><br>
 <div class="float-right">Float right on all viewport sizes</div><br>
 <div class="float-none">Don't float on all viewport sizes</div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Mixins
 
@@ -40,12 +41,13 @@ Or by Sass mixin:
 
 Responsive variations also exist for each `float` value.
 
-{% example html %}
+{% capture example %}
 <div class="float-sm-left">Float left on viewports sized SM (small) or wider</div><br>
 <div class="float-md-left">Float left on viewports sized MD (medium) or wider</div><br>
 <div class="float-lg-left">Float left on viewports sized LG (large) or wider</div><br>
 <div class="float-xl-left">Float left on viewports sized XL (extra-large) or wider</div><br>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 Here are all the support classes;
 
