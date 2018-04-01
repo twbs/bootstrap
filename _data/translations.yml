@@ -6,12 +6,12 @@
 - name: Chinese
   code: zh
   description: Bootstrap 4 · 全球最流行的 HTML、CSS 和 JS 工具库。
-  url: http://code.z01.com/v4
+  url: https://code.z01.com/v4
 
 - name: Chinese
   code: zh
   description: Bootstrap 4 中文文档教程
-  url: http://wiki.jikexueyuan.com/project/bootstrap4/
+  url: https://wiki.jikexueyuan.com/project/bootstrap4/
 
 - name: Brazilian Portuguese
   code: pt-BR

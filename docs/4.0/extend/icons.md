@@ -25,5 +25,5 @@ While we haven't tried these out, they do look promising and provide multiple fo
 - [Feather](https://feathericons.com/)
 - [Dripicons](http://demo.amitjakhu.com/dripicons/)
 - [Ikons](http://ikons.piotrkwiatkowski.co.uk/)
-- [Glyph](http://glyph.smarticons.co/)
+- [Glyph](https://glyph.smarticons.co/)
 - [Icons8](https://icons8.com/)
