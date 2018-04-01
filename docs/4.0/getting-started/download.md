@@ -60,7 +60,7 @@ npm install bootstrap
 
 Bootstrap's `package.json` contains some additional metadata under the following keys:
 
-- `sass` - path to Bootstrap's main [Sass](http://sass-lang.com/) source file
+- `sass` - path to Bootstrap's main [Sass](https://sass-lang.com/) source file
 - `style` - path to Bootstrap's non-minified CSS that's been precompiled using the default settings (no customization)
 
 ### RubyGems
