@@ -29,7 +29,7 @@ You can find our supported range of browsers and their versions [in our `package
 ]
 ```
 
-We use [Browserslist](https://github.com/browserslist/browserslist) to manage these versions alongside Autoprefixer to compile our CSS with the intended browser support. Consult their documentation for how to integrate this into your projects.
+We use [Autoprefixer](https://github.com/postcss/autoprefixer) to handle intended browser support via CSS prefixes, which uses [Browserslist](https://github.com/browserslist/browserslist) to manage these browser versions. Consult their documentation for how to integrate these tools into your projects.
 
 ### Mobile devices
 
