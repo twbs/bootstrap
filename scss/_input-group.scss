@@ -96,11 +96,11 @@
   font-size: $font-size-base; // Match inputs
   font-weight: $font-weight-normal;
   line-height: $input-line-height;
-  color: $input-group-addon-color;
+  color: $input-group-text-color;
   text-align: center;
   white-space: nowrap;
-  background-color: $input-group-addon-bg;
-  border: $input-border-width solid $input-group-addon-border-color;
+  background-color: $input-group-text-bg;
+  border: $input-border-width solid $input-group-text-border-color;
   @include border-radius($input-border-radius);
 
   // Nuke default margins from checkboxes and radios to vertically center within.
