@@ -24,6 +24,7 @@ const Alert = (($) => {
 
   const Selector = {
     DISMISS : '[data-dismiss="alert"]'
+    console.log("wang");
   }
 
   const Event = {
