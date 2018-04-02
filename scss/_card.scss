@@ -153,7 +153,7 @@
 
     .card {
       display: flex;
-      // Flexbugs #4: https://github.com/philipwalton/flexbugs#4-flex-shorthand-declarations-with-unitless-flex-basis-values-are-ignored
+      // Flexbugs #4: https://github.com/philipwalton/flexbugs#flexbug-4
       flex: 1 0 0%;
       flex-direction: column;
       margin-right: $card-deck-margin;
@@ -183,7 +183,7 @@
     // The child selector allows nested `.card` within `.card-group`
     // to display properly.
     > .card {
-      // Flexbugs #4: https://github.com/philipwalton/flexbugs#4-flex-shorthand-declarations-with-unitless-flex-basis-values-are-ignored
+      // Flexbugs #4: https://github.com/philipwalton/flexbugs#flexbug-4
       flex: 1 0 0%;
       margin-bottom: 0;
 
