@@ -68,6 +68,16 @@
     }
   }
 
+  .form-control-file {
+    .was-validated &:#{$state},
+    &.is-#{$state} {
+      ~ .#{$state}-feedback,
+      ~ .#{$state}-tooltip {
+        display: block;
+      }
+    }
+  }
+
   .form-check-input {
     .was-validated &:#{$state},
     &.is-#{$state} {
