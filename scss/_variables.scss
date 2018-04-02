@@ -873,7 +873,7 @@ $breadcrumb-margin-bottom:          1rem !default;
 $breadcrumb-bg:                     $gray-200 !default;
 $breadcrumb-divider-color:          $gray-600 !default;
 $breadcrumb-active-color:           $gray-600 !default;
-$breadcrumb-divider:                "/" !default;
+$breadcrumb-divider:                quote("/") !default;
 
 $breadcrumb-border-radius:          $border-radius !default;
 
