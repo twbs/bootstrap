@@ -4601,10 +4601,13 @@ input[type="button"].btn-block {
   border-radius: 0.25rem;
 }
 
+.breadcrumb-item + .breadcrumb-item {
+  padding-left: 0.5rem;
+}
+
 .breadcrumb-item + .breadcrumb-item::before {
   display: inline-block;
   padding-right: 0.5rem;
-  padding-left: 0.5rem;
   color: #6c757d;
   content: "/";
 }
