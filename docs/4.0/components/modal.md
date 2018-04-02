@@ -508,7 +508,7 @@ Modals have two optional sizes, available via modifier classes to be placed on a
     <div class="modal-content">
 
       <div class="modal-header">
-        <h4 class="modal-title" id="myLargeModalLabel">Large modal</h4>
+        <h5 class="modal-title h4" id="myLargeModalLabel">Large modal</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -524,7 +524,7 @@ Modals have two optional sizes, available via modifier classes to be placed on a
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title" id="mySmallModalLabel">Small modal</h4>
+        <h5 class="modal-title h4" id="mySmallModalLabel">Small modal</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

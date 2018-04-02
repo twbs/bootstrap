@@ -565,7 +565,7 @@ Sometimes you want to use the collapse plugin to trigger hidden content elsewher
 <div class="pos-f-t">
   <div class="collapse" id="navbarToggleExternalContent">
     <div class="bg-dark p-4">
-      <h4 class="text-white">Collapsed content</h4>
+      <h5 class="text-white h4">Collapsed content</h5>
       <span class="text-muted">Toggleable via the navbar brand.</span>
     </div>
   </div>
