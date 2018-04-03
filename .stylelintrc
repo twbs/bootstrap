@@ -4,9 +4,7 @@
     "stylelint-order"
   ],
   "rules": {
-    "at-rule-empty-line-before": [null, {
-      "except": ["first-nested"]
-    }],
+    "at-rule-empty-line-before": null,
     "at-rule-name-space-after": "always",
     "at-rule-no-vendor-prefix": true,
     "at-rule-semicolon-space-before": "never",
