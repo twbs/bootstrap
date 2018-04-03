@@ -235,6 +235,35 @@ Responsive variations also exist for `flex-fill`.
 {% for bp in site.data.breakpoints %}
 - `.flex{{ bp.abbr }}-fill`{% endfor %}
 
+## Grow and shrink
+
+Use `.flex-grow-*` utilities to toggle a flex item's ability to grow to fill available space. In the example below, the `.flex-grow-1` elements uses all available space it can, while allowing the remaining two flex items their necessary space.
+
+{% capture example %}
+<div class="d-flex bd-highlight">
+  <div class="p-2 flex-grow-1 bd-highlight">Flex item</div>
+  <div class="p-2 bd-highlight">Flex item</div>
+  <div class="p-2 bd-highlight">Third flex item</div>
+</div>
+{% endcapture %}
+{% include example.html content=example %}
+
+Use `.flex-shrink-*` utilities to toggle a flex item's ability to shrink if necessary. In the example below, the second flex item with `.flex-shrink-1` is forced to wrap it's contents to a new line, "shrinking" to allow more space for the previous flex item with `.w-100`.
+
+{% capture example %}
+<div class="d-flex bd-highlight">
+  <div class="p-2 w-100 bd-highlight">Flex item</div>
+  <div class="p-2 flex-shrink-1 bd-highlight">Flex item</div>
+</div>
+{% endcapture %}
+{% include example.html content=example %}
+
+Responsive variations also exist for `flex-grow` and `flex-shrink`.
+
+{% for bp in site.data.breakpoints %}
+- `.flex{{ bp.abbr }}-{grow|shrink}-0`
+- `.flex{{ bp.abbr }}-{grow|shrink}-1`{% endfor %}
+
 ## Auto margins
 
 Flexbox can do some pretty awesome things when you mix flex alignments with auto margins. Shown below are three examples of controlling flex items via auto margins: default (no auto margin), pushing two items to the right (`.mr-auto`), and pushing two items to the left (`.ml-auto`).

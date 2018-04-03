@@ -73,4 +73,4 @@ Specifically regarding custom CSS, utilities can help combat increasing file siz
 
 ## Flexible HTML
 
-While not always possible, we strive to avoid being overly dogmatic in our HTML requirements for components. Thus, we focus on single classes in our CSS selectors and try to avoid immediate children selectors (`~`). This gives you more flexibility in your implementation and helps keep our CSS simpler and less specific.
+While not always possible, we strive to avoid being overly dogmatic in our HTML requirements for components. Thus, we focus on single classes in our CSS selectors and try to avoid immediate children selectors (`>`). This gives you more flexibility in your implementation and helps keep our CSS simpler and less specific.

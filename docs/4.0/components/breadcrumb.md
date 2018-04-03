@@ -5,9 +5,7 @@ description: Indicate the current page's location within a navigational hierarch
 group: components
 ---
 
-## Overview
-
-Separators are automatically added in CSS through [`::before`](https://developer.mozilla.org/en-US/docs/Web/CSS/::before) and [`content`](https://developer.mozilla.org/en-US/docs/Web/CSS/content).
+## Example
 
 {% capture example %}
 <nav aria-label="breadcrumb">
@@ -32,6 +30,26 @@ Separators are automatically added in CSS through [`::before`](https://developer
 </nav>
 {% endcapture %}
 {% include example.html content=example %}
+
+## Changing the separator
+
+Separators are automatically added in CSS through [`::before`](https://developer.mozilla.org/en-US/docs/Web/CSS/::before) and [`content`](https://developer.mozilla.org/en-US/docs/Web/CSS/content). They can be changed by changing `$breadcrumb-divider`. The [quote](http://sass-lang.com/documentation/Sass/Script/Functions.html#quote-instance_method) function is needed to generate the quotes around a string, so if you want `>` as seperator, you can use this:
+ 
+```scss
+$breadcrumb-divider: quote(">");
+```
+
+It's also possible to use a **base64 embedded SVG icon**:
+
+```scss
+$breadcrumb-divider: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPjxwYXRoIGQ9Ik0yLjUgMEwxIDEuNSAzLjUgNCAxIDYuNSAyLjUgOGw0LTQtNC00eiIgZmlsbD0iY3VycmVudENvbG9yIi8+PC9zdmc+);
+```
+
+The separator can be removed by setting `$breadcrumb-divider` to `none`:
+
+```scss
+$breadcrumb-divider: none;
+```
 
 ## Accessibility
 

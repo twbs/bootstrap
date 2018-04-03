@@ -10,7 +10,7 @@ toc: true
 
 Download ready-to-use compiled code for **Bootstrap v{{ site.current_version}}** to easily drop into your project, which includes:
 
-- Compiled and minified CSS bundles (see [CSS files comparison]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/contents/#comparison-of-css-files))
+- Compiled and minified CSS bundles (see [CSS files comparison]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/contents/#css-files))
 - Compiled and minified JavaScript plugins
 
 This doesn't include documentation, source files, or any optional JavaScript dependencies (jQuery and Popper.js).
@@ -60,7 +60,7 @@ npm install bootstrap
 
 Bootstrap's `package.json` contains some additional metadata under the following keys:
 
-- `sass` - path to Bootstrap's main [Sass](http://sass-lang.com/) source file
+- `sass` - path to Bootstrap's main [Sass](https://sass-lang.com/) source file
 - `style` - path to Bootstrap's non-minified CSS that's been precompiled using the default settings (no customization)
 
 ### RubyGems

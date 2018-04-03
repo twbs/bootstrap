@@ -6,7 +6,8 @@
   },
   "globals": {
     "sinon": false,
-    "Util": false
+    "Util": false,
+    "bootstrap": false
   },
   "parserOptions": {
     "ecmaVersion": 5,

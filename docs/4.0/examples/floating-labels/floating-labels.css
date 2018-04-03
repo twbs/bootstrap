@@ -10,10 +10,8 @@ body {
 
 body {
   display: -ms-flexbox;
-  display: -webkit-box;
   display: flex;
   -ms-flex-align: center;
-  -webkit-box-align: center;
   align-items: center;
   padding-top: 40px;
   padding-bottom: 40px;
