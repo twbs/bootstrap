@@ -289,13 +289,38 @@
 .btn-block .process:first-child {
   position: absolute;
 }
-
-.btn-primary .process-circle,
-.btn-success .process-circle,
-.btn:hover .process-circle,
-.btn:focus .process-circle {
-  stroke: @brand-white;
+.btn .process-circle {
+  transition: stroke 0.5s 0s linear;
 }
-.btn[disabled] .process-circle {
-  stroke: @btn-disabled-color;
+
+.btn-primary,
+.btn-success {
+  .process-circle {
+    stroke: @brand-white;
+  }
+  .process-icon-horizontal,
+  .process-icon-vertical {
+    background-color: @brand-white;
+  }
+}
+
+.btn:hover,
+.btn:focus {
+  .process-circle {
+    stroke: @brand-white;
+  }
+  .process-icon-horizontal,
+  .process-icon-vertical {
+    background-color: @brand-white;
+  }
+}
+
+.btn[disabled] {
+  .process-circle {
+    stroke: @btn-disabled-color;
+  }
+  .process-icon-horizontal,
+  .process-icon-vertical {
+    background-color: @brand-white;
+  }
 }

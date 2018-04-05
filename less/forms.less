@@ -489,7 +489,7 @@ input[type="checkbox"] {
 .focus,
 .has-focus {
   .control-label {
-    color: @brand-light-blue;
+    color: @control-label-focus;
   }
   .input-group-addon {
     border-color: @input-border-focus;
@@ -551,9 +551,9 @@ input[type="checkbox"] {
 }
 .has-info {
   .form-control-validation(
-    @state-info-text;
-    @state-info-border;
-    @state-info-border-hover;
+    @brand-light-blue-minus-20;
+    @brand-light-blue;
+    @brand-light-blue-minus-10;
     @brand-smoke-plus-20
   );
 }

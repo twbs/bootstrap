@@ -17,14 +17,14 @@
 @brand-navy-minus-10: #2e4369;
 @brand-navy: #37517e;
 
-//=== Blues (Deprecated)
+//=== Blues
 //
 //
-@brand-blue-minus-20: @brand-navy-minus-20; //#111824;
-@brand-blue-minus-10: @brand-navy-minus-20; //#192439;
-@brand-blue: @brand-navy-minus-10;          //#223049;
-@brand-blue-plus-10: @brand-navy;           //#283957;
-@brand-blue-plus-20: @brand-navy;           //#2f4366;
+@brand-blue-minus-20: #111824;
+@brand-blue-minus-10: #192439;
+@brand-blue: #223049;
+@brand-blue-plus-10: #283957;
+@brand-blue-plus-20: #2f4366;
 
 //=== Dark Grays
 //
@@ -57,28 +57,31 @@
 //
 //
 @brand-red-minus-20: #B62A18;
-@brand-red-minus-10: #CF3131;
+@brand-red-minus-10: #C22E2E;
 @brand-red: #F53636;
 
 @brand-red-wash: #FFDFDF;
+@brand-red-alert: #C22E2E;
 
 //=== Greens
 //
 //
-@brand-green-minus-20: #1D8547;
+@brand-green-minus-20: #1B7940;
 @brand-green-minus-10: #28B862;
 @brand-green: #2ED06E;
 
 @brand-green-wash: #D6F5E2;
+@brand-green-alert: #1B7940;
 
 //=== Oranges
 //
 //
-@brand-orange-minus-20: #C07500;
+@brand-orange-minus-20: #9E5F00;
 @brand-orange-minus-10: #DF8700;
 @brand-orange: #FFA600;
 
 @brand-orange-wash: #FFF3DD;
+@brand-orange-alert: #9E5F00;
 
 //=== Yellows
 //
@@ -470,7 +473,7 @@
 @legend-border-color:            @input-border;
 
 @control-label-color:            @text-color;
-@control-label-focus:            @brand-light-blue;
+@control-label-focus:            @brand-light-blue-minus-20;
 @control-label-font-size:        @font-size-small;
 
 //** Color for textual input addons
@@ -797,28 +800,28 @@
 //
 //## Define colors for form feedback states and, by default, alerts.
 
-@state-success-text:             @brand-green-minus-10;
+@state-success-text:             @brand-green-minus-20;
 @state-success-text-large:       @brand-green;
 @state-success-text-hover:       @brand-green-minus-20;
 @state-success-bg:               @brand-green-wash;
 @state-success-border:           @brand-green;
 @state-success-border-hover:     @brand-green-minus-20;
 
-@state-info-text:                @brand-light-blue;
+@state-info-text:                @brand-light-blue-minus-10;
 @state-info-text-large:          @brand-light-blue;
 @state-info-text-hover:          @brand-light-blue-minus-10;
 @state-info-bg:                  @brand-light-blue-wash;
 @state-info-border:              @brand-light-blue;
 @state-info-border-hover:        @brand-light-blue-minus-20;
 
-@state-warning-text:             @brand-orange-minus-10;
+@state-warning-text:             @brand-orange-minus-20;
 @state-warning-text-large:       @brand-orange;
 @state-warning-text-hover:       @brand-orange-minus-20;
 @state-warning-bg:               @brand-orange-wash;
 @state-warning-border:           @brand-orange;
 @state-warning-border-hover:     @brand-orange-minus-20;
 
-@state-danger-text:              @brand-red;
+@state-danger-text:              @brand-red-minus-10;
 @state-danger-text-large:        @brand-red;
 @state-danger-text-hover:        @brand-red-minus-10;
 @state-danger-bg:                @brand-red-wash;
@@ -951,10 +954,10 @@
 @alert-success-text-hover:    @state-success-text-hover;
 @alert-success-border:        @state-success-border;
 
-@alert-info-bg:               @state-info-bg;
-@alert-info-text:             @state-info-text;
-@alert-info-text-hover:       @state-info-text-hover;
-@alert-info-border:           @state-info-border;
+@alert-info-bg:               @brand-smoke-plus-20;
+@alert-info-text:             @brand-grey-minus-10;
+@alert-info-text-hover:       @brand-grey-minus-10;
+@alert-info-border:           @brand-light-blue;
 
 @alert-warning-bg:            @state-warning-bg;
 @alert-warning-text:          @state-warning-text;
