@@ -80,7 +80,7 @@ Here are the big ticket items you'll want to be aware of when moving from v3 to 
 ### Global changes
 
 - **Flexbox is enabled by default.** In general this means a move away from floats and more across our components.
-- Switched from [Less](http://lesscss.org/) to [Sass](http://sass-lang.com/) for our source CSS files.
+- Switched from [Less](http://lesscss.org/) to [Sass](https://sass-lang.com/) for our source CSS files.
 - Switched from `px` to `rem` as our primary CSS unit, though pixels are still used for media queries and grid behavior as device viewports are not affected by type size.
 - Global font-size increased from `14px` to `16px`.
 - Revamped grid tiers to add a fifth option (addressing smaller devices at `576px` and below) and removed the `-xs` infix from those classes. Example: `.col-6.col-sm-4.col-md-3`.
