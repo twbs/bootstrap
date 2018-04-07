@@ -83,7 +83,7 @@ Bootstrap's documentation, included in this repo in the root directory, is built
 1. If necessary, [install Jekyll](http://jekyllrb.com/docs/installation) and other Ruby dependencies with `bundle install`.
    **Note for Windows users:** Read [this unofficial guide](http://jekyll-windows.juthilo.com/) to get Jekyll up and running without problems.
 2. From the root `/bootstrap` directory, run `bundle exec jekyll serve` in the command line.
-4. Open `http://localhost:3001` in your browser, and voilà.
+4. Open `http://localhost:9001` in your browser, and voilà.
 
 Learn more about using Jekyll by reading its [documentation](http://jekyllrb.com/docs/home/).
 
