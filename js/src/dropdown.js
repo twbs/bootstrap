@@ -57,7 +57,7 @@ const Dropdown = (($) => {
     FORM_CHILD    : '.dropdown form',
     MENU          : '.dropdown-menu',
     NAVBAR_NAV    : '.navbar-nav',
-    VISIBLE_ITEMS : '.dropdown-menu .dropdown-item:not(.disabled)'
+    VISIBLE_ITEMS : '.dropdown-menu .dropdown-item:not(.disabled):not(:disabled)'
   }
 
   const AttachmentMap = {
@@ -74,13 +74,17 @@ const Dropdown = (($) => {
   const Default = {
     offset      : 0,
     flip        : true,
-    boundary    : 'scrollParent'
+    boundary    : 'scrollParent',
+    reference   : 'toggle',
+    display     : 'dynamic'
   }
 
   const DefaultType = {
     offset      : '(number|string|function)',
     flip        : 'boolean',
-    boundary    : '(string|element)'
+    boundary    : '(string|element)',
+    reference   : '(string|element)',
+    display     : 'string'
   }
 
   /**
@@ -150,20 +154,27 @@ const Dropdown = (($) => {
         if (typeof Popper === 'undefined') {
           throw new TypeError('Bootstrap dropdown require Popper.js (https://popper.js.org)')
         }
-        let element = this._element
-        // For dropup with alignment we use the parent as popper container
-        if ($(parent).hasClass(ClassName.DROPUP)) {
-          if ($(this._menu).hasClass(ClassName.MENULEFT) || $(this._menu).hasClass(ClassName.MENURIGHT)) {
-            element = parent
+
+        let referenceElement = this._element
+
+        if (this._config.reference === 'parent') {
+          referenceElement = parent
+        } else if (Util.isElement(this._config.reference)) {
+          referenceElement = this._config.reference
+
+          // Check if it's jQuery element
+          if (typeof this._config.reference.jquery !== 'undefined') {
+            referenceElement = this._config.reference[0]
           }
         }
+
         // If boundary is not `scrollParent`, then set position to `static`
         // to allow the menu to "escape" the scroll parent's boundaries
         // https://github.com/twbs/bootstrap/issues/24251
         if (this._config.boundary !== 'scrollParent') {
           $(parent).addClass(ClassName.POSITION_STATIC)
         }
-        this._popper = new Popper(element, this._menu, this._getPopperConfig())
+        this._popper = new Popper(referenceElement, this._menu, this._getPopperConfig())
       }
 
       // If this is a touch-enabled device we add extra
@@ -172,7 +183,7 @@ const Dropdown = (($) => {
       // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
       if ('ontouchstart' in document.documentElement &&
          $(parent).closest(Selector.NAVBAR_NAV).length === 0) {
-        $('body').children().on('mouseover', null, $.noop)
+        $(document.body).children().on('mouseover', null, $.noop)
       }
 
       this._element.focus()
@@ -286,6 +297,12 @@ const Dropdown = (($) => {
         }
       }
 
+      // Disable Popper.js if we have a static display
+      if (this._config.display === 'static') {
+        popperConfig.modifiers.applyStyle = {
+          enabled: false
+        }
+      }
       return popperConfig
     }
 
@@ -348,7 +365,7 @@ const Dropdown = (($) => {
         // If this is a touch-enabled device we remove the extra
         // empty mouseover listeners we added for iOS support
         if ('ontouchstart' in document.documentElement) {
-          $('body').children().off('mouseover', null, $.noop)
+          $(document.body).children().off('mouseover', null, $.noop)
         }
 
         toggles[i].setAttribute('aria-expanded', 'false')

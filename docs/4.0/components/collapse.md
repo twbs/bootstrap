@@ -6,6 +6,10 @@ group: components
 toc: true
 ---
 
+## How it works
+
+The collapse JavaScript plugin is used to show and hide content. Buttons or anchors are used as triggers that are mapped to specific elements you toggle. Collapsing an element will animate the `height` from it's current value to `0`. Given how CSS handles animations, you cannot use `padding` on a `.collapse` element. Instead, use the class as an independent wrapping element.
+
 ## Example
 
 Click the buttons below to show and hide another element via class changes:
@@ -16,7 +20,7 @@ Click the buttons below to show and hide another element via class changes:
 
 You can use a link with the `href` attribute, or a button with the `data-target` attribute. In both cases, the `data-toggle="collapse"` is required.
 
-{% example html %}
+{% capture example %}
 <p>
   <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
     Link with href
@@ -30,14 +34,15 @@ You can use a link with the `href` attribute, or a button with the `data-target`
     Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
   </div>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Multiple targets
 
 A `<button>` or `<a>` can show and hide multiple elements by referencing them with a JQuery selector in its `href` or `data-target` attribute.
 Multiple `<button>` or `<a>` can show and hide an element if they each reference it with their `href` or `data-target` attribute
 
-{% example html %}
+{% capture example %}
 <p>
   <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Toggle first element</a>
   <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Toggle second element</button>
@@ -59,18 +64,19 @@ Multiple `<button>` or `<a>` can show and hide an element if they each reference
     </div>
   </div>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Accordion example
 
 Using the [card]({{ site.baseurl }}/docs/{{ site.docs_version }}/components/card/) component, you can extend the default collapse behavior to create an accordion.
 
-{% example html %}
-<div id="accordion">
+{% capture example %}
+<div class="accordion" id="accordion">
   <div class="card">
     <div class="card-header" id="headingOne">
       <h5 class="mb-0">
-        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
           Collapsible Group Item #1
         </button>
       </h5>
@@ -85,7 +91,7 @@ Using the [card]({{ site.baseurl }}/docs/{{ site.docs_version }}/components/card
   <div class="card">
     <div class="card-header" id="headingTwo">
       <h5 class="mb-0">
-        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
           Collapsible Group Item #2
         </button>
       </h5>
@@ -99,7 +105,7 @@ Using the [card]({{ site.baseurl }}/docs/{{ site.docs_version }}/components/card
   <div class="card">
     <div class="card-header" id="headingThree">
       <h5 class="mb-0">
-        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
           Collapsible Group Item #3
         </button>
       </h5>
@@ -111,7 +117,8 @@ Using the [card]({{ site.baseurl }}/docs/{{ site.docs_version }}/components/card
     </div>
   </div>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Accessibility
 
@@ -176,8 +183,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 
 ### Methods
 
-{% capture callout-include %}{% include callout-danger-async-methods.md %}{% endcapture %}
-{{ callout-include | markdownify }}
+{% include callout-danger-async-methods.md %}
 
 #### `.collapse(options)`
 

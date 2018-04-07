@@ -157,7 +157,7 @@
 // Select
 //
 // Replaces the browser default select with a custom one, mostly pulled from
-// http://primercss.io.
+// https://primer.github.io/.
 //
 
 .custom-select {
@@ -247,11 +247,11 @@
   margin: 0;
   opacity: 0;
 
-  &:focus ~ .custom-file-control {
+  &:focus ~ .custom-file-label {
     border-color: $custom-file-focus-border-color;
     box-shadow: $custom-file-focus-box-shadow;
 
-    &::before {
+    &::after {
       border-color: $custom-file-focus-border-color;
     }
   }
@@ -293,5 +293,128 @@
     @include gradient-bg($custom-file-button-bg);
     border-left: $custom-file-border-width solid $custom-file-border-color;
     @include border-radius(0 $custom-file-border-radius $custom-file-border-radius 0);
+  }
+}
+
+// Range
+//
+// Style range inputs the same across browsers. Vendor-specific rules for psuedo
+// elements cannot be mixed. As such, there are no shared styles for focus or
+// active states on prefixed selectors.
+
+.custom-range {
+  width: 100%;
+  padding-left: 0; // Firefox specific
+  background-color: transparent;
+  appearance: none;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::-moz-focus-outer {
+    border: 0;
+  }
+
+  &::-webkit-slider-thumb {
+    width: $custom-range-thumb-width;
+    height: $custom-range-thumb-height;
+    margin-top: -($custom-range-thumb-width * .25); // Webkit specific?
+    @include gradient-bg($custom-range-thumb-bg);
+    border: $custom-range-thumb-border;
+    @include border-radius($custom-range-thumb-border-radius);
+    @include box-shadow($custom-range-thumb-box-shadow);
+    appearance: none;
+
+    &:focus {
+      outline: none;
+      box-shadow: $custom-range-thumb-focus-box-shadow; // No mixin for focus accessibility
+    }
+
+    &:active {
+      @include gradient-bg($custom-range-thumb-active-bg);
+    }
+  }
+
+  &::-webkit-slider-runnable-track {
+    width: $custom-range-track-width;
+    height: $custom-range-track-height;
+    color: transparent; // Why?
+    cursor: $custom-range-track-cursor;
+    background-color: $custom-range-track-bg;
+    border-color: transparent;
+    @include border-radius($custom-range-track-border-radius);
+    @include box-shadow($custom-range-track-box-shadow);
+  }
+
+  &::-moz-range-thumb {
+    width: $custom-range-thumb-width;
+    height: $custom-range-thumb-height;
+    @include gradient-bg($custom-range-thumb-bg);
+    border: $custom-range-thumb-border;
+    @include border-radius($custom-range-thumb-border-radius);
+    @include box-shadow($custom-range-thumb-box-shadow);
+    appearance: none;
+
+    &:focus {
+      outline: none;
+      box-shadow: $custom-range-thumb-focus-box-shadow; // No mixin for focus accessibility
+    }
+
+    &:active {
+      @include gradient-bg($custom-range-thumb-active-bg);
+    }
+  }
+
+  &::-moz-range-track {
+    width: $custom-range-track-width;
+    height: $custom-range-track-height;
+    color: transparent;
+    cursor: $custom-range-track-cursor;
+    background-color: $custom-range-track-bg;
+    border-color: transparent; // Firefox specific?
+    @include border-radius($custom-range-track-border-radius);
+    @include box-shadow($custom-range-track-box-shadow);
+  }
+
+  &::-ms-thumb {
+    width: $custom-range-thumb-width;
+    height: $custom-range-thumb-height;
+    @include gradient-bg($custom-range-thumb-bg);
+    border: $custom-range-thumb-border;
+    @include border-radius($custom-range-thumb-border-radius);
+    @include box-shadow($custom-range-thumb-box-shadow);
+    appearance: none;
+
+    &:focus {
+      outline: none;
+      box-shadow: $custom-range-thumb-focus-box-shadow; // No mixin for focus accessibility
+    }
+
+    &:active {
+      @include gradient-bg($custom-range-thumb-active-bg);
+    }
+  }
+
+  &::-ms-track {
+    width: $custom-range-track-width;
+    height: $custom-range-track-height;
+    color: transparent;
+    cursor: $custom-range-track-cursor;
+    background-color: transparent;
+    border-color: transparent;
+    border-width: ($custom-range-thumb-height * .5);
+    @include box-shadow($custom-range-track-box-shadow);
+  }
+
+  &::-ms-fill-lower {
+    background-color: $custom-range-track-bg;
+    @include border-radius($custom-range-track-border-radius);
+  }
+
+  &::-ms-fill-upper {
+    margin-right: 15px; // arbitrary?
+    background-color: $custom-range-track-bg;
+    @include border-radius($custom-range-track-border-radius);
   }
 }

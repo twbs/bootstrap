@@ -15,15 +15,13 @@ const Modal = (($) => {
    * ------------------------------------------------------------------------
    */
 
-  const NAME                         = 'modal'
-  const VERSION                      = '4.0.0'
-  const DATA_KEY                     = 'bs.modal'
-  const EVENT_KEY                    = `.${DATA_KEY}`
-  const DATA_API_KEY                 = '.data-api'
-  const JQUERY_NO_CONFLICT           = $.fn[NAME]
-  const TRANSITION_DURATION          = 300
-  const BACKDROP_TRANSITION_DURATION = 150
-  const ESCAPE_KEYCODE               = 27 // KeyboardEvent.which value for Escape (Esc) key
+  const NAME               = 'modal'
+  const VERSION            = '4.0.0'
+  const DATA_KEY           = 'bs.modal'
+  const EVENT_KEY          = `.${DATA_KEY}`
+  const DATA_API_KEY       = '.data-api'
+  const JQUERY_NO_CONFLICT = $.fn[NAME]
+  const ESCAPE_KEYCODE     = 27 // KeyboardEvent.which value for Escape (Esc) key
 
   const Default = {
     backdrop : true,
@@ -85,7 +83,6 @@ const Modal = (($) => {
       this._isShown             = false
       this._isBodyOverflowing   = false
       this._ignoreBackdropClick = false
-      this._originalBodyPadding = 0
       this._scrollbarWidth      = 0
     }
 
@@ -110,7 +107,7 @@ const Modal = (($) => {
         return
       }
 
-      if (Util.supportsTransitionEnd() && $(this._element).hasClass(ClassName.FADE)) {
+      if ($(this._element).hasClass(ClassName.FADE)) {
         this._isTransitioning = true
       }
 
@@ -171,8 +168,7 @@ const Modal = (($) => {
       }
 
       this._isShown = false
-
-      const transition = Util.supportsTransitionEnd() && $(this._element).hasClass(ClassName.FADE)
+      const transition = $(this._element).hasClass(ClassName.FADE)
 
       if (transition) {
         this._isTransitioning = true
@@ -188,10 +184,13 @@ const Modal = (($) => {
       $(this._element).off(Event.CLICK_DISMISS)
       $(this._dialog).off(Event.MOUSEDOWN_DISMISS)
 
+
       if (transition) {
+        const transitionDuration  = Util.getTransitionDurationFromElement(this._element)
+
         $(this._element)
           .one(Util.TRANSITION_END, (event) => this._hideModal(event))
-          .emulateTransitionEnd(TRANSITION_DURATION)
+          .emulateTransitionEnd(transitionDuration)
       } else {
         this._hideModal()
       }
@@ -228,8 +227,7 @@ const Modal = (($) => {
     }
 
     _showElement(relatedTarget) {
-      const transition = Util.supportsTransitionEnd() &&
-        $(this._element).hasClass(ClassName.FADE)
+      const transition = $(this._element).hasClass(ClassName.FADE)
 
       if (!this._element.parentNode ||
          this._element.parentNode.nodeType !== Node.ELEMENT_NODE) {
@@ -264,9 +262,11 @@ const Modal = (($) => {
       }
 
       if (transition) {
+        const transitionDuration  = Util.getTransitionDurationFromElement(this._element)
+
         $(this._dialog)
           .one(Util.TRANSITION_END, transitionComplete)
-          .emulateTransitionEnd(TRANSITION_DURATION)
+          .emulateTransitionEnd(transitionDuration)
       } else {
         transitionComplete()
       }
@@ -329,8 +329,6 @@ const Modal = (($) => {
         ? ClassName.FADE : ''
 
       if (this._isShown && this._config.backdrop) {
-        const doAnimate = Util.supportsTransitionEnd() && animate
-
         this._backdrop = document.createElement('div')
         this._backdrop.className = ClassName.BACKDROP
 
@@ -355,7 +353,7 @@ const Modal = (($) => {
           }
         })
 
-        if (doAnimate) {
+        if (animate) {
           Util.reflow(this._backdrop)
         }
 
@@ -365,14 +363,16 @@ const Modal = (($) => {
           return
         }
 
-        if (!doAnimate) {
+        if (!animate) {
           callback()
           return
         }
 
+        const backdropTransitionDuration = Util.getTransitionDurationFromElement(this._backdrop)
+
         $(this._backdrop)
           .one(Util.TRANSITION_END, callback)
-          .emulateTransitionEnd(BACKDROP_TRANSITION_DURATION)
+          .emulateTransitionEnd(backdropTransitionDuration)
       } else if (!this._isShown && this._backdrop) {
         $(this._backdrop).removeClass(ClassName.SHOW)
 
@@ -383,11 +383,12 @@ const Modal = (($) => {
           }
         }
 
-        if (Util.supportsTransitionEnd() &&
-           $(this._element).hasClass(ClassName.FADE)) {
+        if ($(this._element).hasClass(ClassName.FADE)) {
+          const backdropTransitionDuration = Util.getTransitionDurationFromElement(this._backdrop)
+
           $(this._backdrop)
             .one(Util.TRANSITION_END, callbackRemove)
-            .emulateTransitionEnd(BACKDROP_TRANSITION_DURATION)
+            .emulateTransitionEnd(backdropTransitionDuration)
         } else {
           callbackRemove()
         }
@@ -453,8 +454,8 @@ const Modal = (($) => {
 
         // Adjust body padding
         const actualPadding = document.body.style.paddingRight
-        const calculatedPadding = $('body').css('padding-right')
-        $('body').data('padding-right', actualPadding).css('padding-right', `${parseFloat(calculatedPadding) + this._scrollbarWidth}px`)
+        const calculatedPadding = $(document.body).css('padding-right')
+        $(document.body).data('padding-right', actualPadding).css('padding-right', `${parseFloat(calculatedPadding) + this._scrollbarWidth}px`)
       }
     }
 
@@ -476,9 +477,9 @@ const Modal = (($) => {
       })
 
       // Restore body padding
-      const padding = $('body').data('padding-right')
+      const padding = $(document.body).data('padding-right')
       if (typeof padding !== 'undefined') {
-        $('body').css('padding-right', padding).removeData('padding-right')
+        $(document.body).css('padding-right', padding).removeData('padding-right')
       }
     }
 

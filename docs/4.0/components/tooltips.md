@@ -90,13 +90,14 @@ $('#example').tooltip(options)
 
 The required markup for a tooltip is only a `data` attribute and `title` on the HTML element you wish to have a tooltip. The generated markup of a tooltip is rather simple, though it does require a position (by default, set to `top` by the plugin).
 
-{% callout warning %}
+{% capture callout %}
 ##### Making tooltips work for keyboard and assistive technology users
 
 You should only add tooltips to HTML elements that are traditionally keyboard-focusable and interactive (such as links or form controls). Although arbitrary HTML elements (such as `<span>`s) can be made focusable by adding the `tabindex="0"` attribute, this will add potentially annoying and confusing tab stops on non-interactive elements for keyboard users. In addition, most assistive technologies currently do not announce the tooltip in this situation.
 
 Additionally, do not rely solely on `hover` as the trigger for your tooltip, as this will make your tooltips impossible to trigger for keyboard users.
-{% endcallout %}
+{% endcapture %}
+{% include callout.html content=callout type="warning" %}
 
 {% highlight html %}
 <!-- HTML to write -->
@@ -116,11 +117,12 @@ Additionally, do not rely solely on `hover` as the trigger for your tooltip, as 
 Elements with the `disabled` attribute aren't interactive, meaning users cannot focus, hover, or click them to trigger a tooltip (or popover). As a workaround, you'll want to trigger the tooltip from a wrapper `<div>` or `<span>`, ideally made keyboard-focusable using `tabindex="0"`, and override the `pointer-events` on the disabled element.
 
 <div class="tooltip-demo">
-{% example html %}
+{% capture example %}
 <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Disabled tooltip">
   <button class="btn btn-primary" style="pointer-events: none;" type="button" disabled>Disabled button</button>
 </span>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 </div>
 
 ### Options
@@ -238,16 +240,16 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
   </tbody>
 </table>
 
-{% callout info %}
+{% capture callout %}
 #### Data attributes for individual tooltips
 
 Options for individual tooltips can alternatively be specified through the use of data attributes, as explained above.
-{% endcallout %}
+{% endcapture %}
+{% include callout.html content=callout type="info" %}
 
 ### Methods
 
-{% capture callout-include %}{% include callout-danger-async-methods.md %}{% endcapture %}
-{{ callout-include | markdownify }}
+{% include callout-danger-async-methods.md %}
 
 #### `$().tooltip(options)`
 

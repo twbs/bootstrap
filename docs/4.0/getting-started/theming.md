@@ -76,6 +76,8 @@ With that setup in place, you can begin to modify any of the Sass variables and 
 
 Every Sass variable in Bootstrap 4 includes the `!default` flag allowing you to override the variable's default value in your own Sass without modifying Bootstrap's source code. Copy and paste variables as needed, modify their values, and remove the `!default` flag. If a variable has already been assigned, then it won't be re-assigned by the default values in Bootstrap.
 
+You will find the complete list of Bootstrap's variables in `scss/_variables.scss`.
+
 Variable overrides within the same Sass file can come before or after the default variables. However, when overriding across Sass files, your overrides must come before you import Bootstrap's Sass files.
 
 Here's an example that changes the `background-color` and `color` for the `<body>` when importing and compiling Bootstrap via npm:
@@ -120,10 +122,21 @@ $theme-colors: (
 
 #### Remove from map
 
-To remove colors from `$theme-colors`, or any other map, use `map-remove`:
+To remove colors from `$theme-colors`, or any other map, use `map-remove`. Be aware you must insert it between our requirements and options:
 
 {% highlight scss %}
-$theme-colors: map-remove($theme-colors, "success", "info", "danger");
+// Required
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/mixins";
+
+$theme-colors: map-remove($theme-colors, "info", "light", "dark");
+
+// Optional
+@import "node_modules/bootstrap/scss/root";
+@import "node_modules/bootstrap/scss/reboot";
+@import "node_modules/bootstrap/scss/type";
+...
 {% endhighlight %}
 
 #### Required keys
@@ -215,7 +228,7 @@ You can also specify a base color with our color map functions:
 
 Customize Bootstrap 4 with our built-in custom variables file and easily toggle global CSS preferences with new `$enable-*` Sass variables. Override a variable's value and recompile with `npm run test` as needed.
 
-You can find and customize these variables for key global options in our `_variables.scss` file.
+You can find and customize these variables for key global options in Bootstrap's `scss/_variables.scss` file.
 
 | Variable                    | Values                             | Description                                                                            |
 | --------------------------- | ---------------------------------- | -------------------------------------------------------------------------------------- |
@@ -235,7 +248,7 @@ Many of Bootstrap's various components and utilities are built through a series 
 
 ### All colors
 
-All colors available in Bootstrap 4, are available as Sass variables and a Sass map in our `scss/_variables.scss` file. This will be expanded upon in subsequent minor releases to add additional shades, much like the [grayscale palette](#grays) we already include.
+All colors available in Bootstrap 4, are available as Sass variables and a Sass map in `scss/_variables.scss` file. This will be expanded upon in subsequent minor releases to add additional shades, much like the [grayscale palette](#grays) we already include.
 
 <div class="row">
   {% for color in site.data.colors %}
@@ -259,13 +272,14 @@ Here's how you can use these in your Sass:
 
 [Color utility classes]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/colors/) are also available for setting `color` and `background-color`.
 
-{% callout info %}
+{% capture callout %}
 In the future, we'll aim to provide Sass maps and variables for shades of each color as we've done with the grayscale colors below.
-{% endcallout %}
+{% endcapture %}
+{% include callout.html content=callout type="info" %}
 
 ### Theme colors
 
-We use a subset of all colors to create a smaller color palette for generating color schemes, also available as Sass variables and a Sass map in our `scss/_variables.scss` file.
+We use a subset of all colors to create a smaller color palette for generating color schemes, also available as Sass variables and a Sass map in Bootstraps's `scss/_variables.scss` file.
 
 <div class="row">
   {% for color in site.data.theme-colors %}
@@ -287,7 +301,7 @@ An expansive set of gray variables and a Sass map in `scss/_variables.scss` for 
   </div>
 </div>
 
-Within `_variables.scss`, you'll find our color variables and Sass map. Here's an example of the `$colors` Sass map:
+Within `scss/_variables.scss`, you'll find Bootstrap's color variables and Sass map. Here's an example of the `$colors` Sass map:
 
 {% highlight scss %}
 $colors: (
@@ -353,7 +367,7 @@ Should you need to modify your `$grid-breakpoints`, your changes will apply to a
 
 ## CSS variables
 
-Bootstrap 4 includes around two dozen [CSS custom properties (variables)](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables) in it's compiled CSS. These provide easy access to commonly used values like our theme colors, breakpoints, and primary font stacks when working in your browser's Inspector, a code sandbox, or general prototyping.
+Bootstrap 4 includes around two dozen [CSS custom properties (variables)](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables) in its compiled CSS. These provide easy access to commonly used values like our theme colors, breakpoints, and primary font stacks when working in your browser's Inspector, a code sandbox, or general prototyping.
 
 ### Available variables
 
@@ -405,16 +419,24 @@ a {
 }
 {% endhighlight %}
 
-You can also use our breakpoint variables in your media queries:
+### Breakpoint variables
+
+While we originally included breakpoints in our CSS variables (e.g., `--breakpoint-md`), **these are not supported in media queries**, but they can still be used _within_ rulesets in media queries. These breakpoint variables remain in the compiled CSS for backward compatibility given they can be utilized by JavaScript. [Learn more in the spec.](https://www.w3.org/TR/css-variables-1/#using-variables)
+
+Here's an example of **what's not supported:**
 
 {% highlight css %}
-.content-secondary {
-  display: none;
+@media (min-width: var(--breakpoint-sm)) {
+  ...
 }
+{% endhighlight %}
 
-@media (min-width(var(--breakpoint-sm))) {
-  .content-secondary {
-    display: block;
+And here's an example of **what is supported:**
+
+{% highlight css %}
+@media (min-width: 768px) {
+  .custom-element {
+    color: var(--primary);
   }
 }
 {% endhighlight %}

@@ -11,6 +11,7 @@ Bootstrap doesn't include an icon library by default, but we have a handful of r
 
 We've tested and used these icon sets ourselves.
 
+- [Font Awesome](https://fontawesome.com/)
 - [Iconic](https://useiconic.com/open/)
 - [Octicons](https://octicons.github.com/)
 
@@ -24,4 +25,5 @@ While we haven't tried these out, they do look promising and provide multiple fo
 - [Feather](https://feathericons.com/)
 - [Dripicons](http://demo.amitjakhu.com/dripicons/)
 - [Ikons](http://ikons.piotrkwiatkowski.co.uk/)
-- [Glyph](http://glyph.smarticons.co/)
+- [Glyph](https://glyph.smarticons.co/)
+- [Icons8](https://icons8.com/)

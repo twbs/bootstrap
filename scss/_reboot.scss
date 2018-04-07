@@ -30,7 +30,7 @@ html {
   -webkit-text-size-adjust: 100%; // 4
   -ms-text-size-adjust: 100%; // 4
   -ms-overflow-style: scrollbar; // 5
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); // 6
+  -webkit-tap-highlight-color: rgba($black, 0); // 6
 }
 
 // IE10+ doesn't honor `<meta name="viewport">` in some cases.
@@ -290,7 +290,7 @@ table {
 caption {
   padding-top: $table-cell-padding;
   padding-bottom: $table-cell-padding;
-  color: $text-muted;
+  color: $table-caption-color;
   text-align: left;
   caption-side: bottom;
 }
@@ -309,7 +309,7 @@ th {
 label {
   // Allow labels to use `margin` for spacing.
   display: inline-block;
-  margin-bottom: .5rem;
+  margin-bottom: $label-margin-bottom;
 }
 
 // Remove the default `border-radius` that macOS Chrome adds.

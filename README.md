@@ -11,9 +11,13 @@
     <a href="https://getbootstrap.com/docs/4.0/"><strong>Explore Bootstrap docs »</strong></a>
     <br>
     <br>
-    <a href="https://themes.getbootstrap.com/">Bootstrap Themes</a>
+    <a href="https://github.com/twbs/bootstrap/issues/new?template=bug.md">Report bug</a>
     ·
-    <a href="https://jobs.getbootstrap.com/">Job Board</a>
+    <a href="https://github.com/twbs/bootstrap/issues/new?template=feature.md&labels=feature">Request feature</a>
+    ·
+    <a href="https://themes.getbootstrap.com/">Themes</a>
+    ·
+    <a href="https://jobs.getbootstrap.com/">Jobs</a>
     ·
     <a href="https://blog.getbootstrap.com/">Blog</a>
   </p>
@@ -144,7 +148,7 @@ Get updates on Bootstrap's development and chat with the project maintainers and
 
 ## Versioning
 
-For transparency into our release cycle and in striving to maintain backward compatibility, Bootstrap is maintained under [the Semantic Versioning guidelines](http://semver.org/). Sometimes we screw up, but we'll adhere to those rules whenever possible.
+For transparency into our release cycle and in striving to maintain backward compatibility, Bootstrap is maintained under [the Semantic Versioning guidelines](https://semver.org/). Sometimes we screw up, but we'll adhere to those rules whenever possible.
 
 See [the Releases section of our GitHub project](https://github.com/twbs/bootstrap/releases) for changelogs for each release version of Bootstrap. Release announcement posts on [the official Bootstrap blog](https://blog.getbootstrap.com/) contain summaries of the most noteworthy changes made in each release.
 

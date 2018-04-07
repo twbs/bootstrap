@@ -43,10 +43,14 @@ For visually hidden interactive controls, such as traditional "skip" links, `.sr
 <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 {% endhighlight %}
 
+### Reduced motion
+
+Bootstrap includes support for the [`prefers-reduced-motion` media feature](https://drafts.csswg.org/mediaqueries-5/#prefers-reduced-motion). In browsers/environments that allow the user to specify their preference for reduced motion, most CSS transition effects in Bootstrap (for instance, when a modal dialog is opened or closed) will be disabled. Currently, support is limited to Safari on macOS and iOS.
+
 ## Additional resources
 
 - [Web Content Accessibility Guidelines (WCAG) 2.0](https://www.w3.org/TR/WCAG20/)
-- [The A11Y Project](http://a11yproject.com/)
+- [The A11Y Project](https://a11yproject.com/)
 - [MDN accessibility documentation](https://developer.mozilla.org/en-US/docs/Web/Accessibility)
 - [Tenon.io Accessibility Checker](https://tenon.io/)
 - [Colour Contrast Analyser (CCA)](https://developer.paciellogroup.com/resources/contrastanalyser/)

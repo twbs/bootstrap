@@ -10,7 +10,7 @@ We publicly list browser bugs that are impacting us here, in the hopes of expedi
 
 See also:
 
-* [Chromium issue 536263: [meta] Issues affecting Bootstrap](https://code.google.com/p/chromium/issues/detail?id=536263)
+* [Chromium issue 536263: [meta] Issues affecting Bootstrap](https://bugs.chromium.org/p/chromium/issues/detail?id=536263)
 * [Mozilla bug 1230801: Fix the issues that affect Bootstrap](https://bugzilla.mozilla.org/show_bug.cgi?id=1230801)
 * [WebKit bug 159753: [meta] Issues affecting Bootstrap](https://bugs.webkit.org/show_bug.cgi?id=159753)
 * [jQuery's browser bug workarounds](https://docs.google.com/document/d/1LPaPA30bLUB_publLIMF0RlhdnPx_ePXm7oW02iiT6o)
@@ -28,9 +28,9 @@ See also:
     {% for bug in site.data.browser-bugs %}
     <tr>
       <td>{{ bug.browser }}</td>
-      <td>{{ bug.summary | markdownify | bugify }}</td>
-      <td>{{ bug.upstream_bug | bugify }}</td>
-      <td>{{ bug.origin | bugify }}</td>
+      <td>{{ bug.summary | markdownify }}</td>
+      <td>{% include bugify.html content=bug.upstream_bug %}</td>
+      <td>{% include bugify.html content=bug.origin %}</td>
     </tr>
     {% endfor %}
   </tbody>
@@ -55,9 +55,9 @@ We publicly list these "most wanted" feature requests here, in the hopes of expe
     {% for feat in site.data.browser-features %}
     <tr>
       <td>{{ feat.browser }}</td>
-      <td>{{ feat.summary | markdownify | bugify }}</td>
-      <td>{{ feat.upstream_bug | bugify }}</td>
-      <td>{{ feat.origin | bugify }}</td>
+      <td>{{ feat.summary | markdownify }}</td>
+      <td>{% include bugify.html content=feat.upstream_bug %}</td>
+      <td>{% include bugify.html content=feat.origin %}</td>
     </tr>
     {% endfor %}
   </tbody>

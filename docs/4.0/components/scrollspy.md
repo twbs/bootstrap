@@ -148,8 +148,8 @@ Scrollspy also works with nested `.nav`s. If a nested `.nav` is `.active`, its p
       <a class="nav-link ml-3 my-1" href="#item-1-1">Item 1-1</a>
       <a class="nav-link ml-3 my-1" href="#item-1-2">Item 1-2</a>
     </nav>
-    <a class="nav-link" href="#item-2">Item2</a>
-    <a class="nav-link" href="#item-3">Item3</a>
+    <a class="nav-link" href="#item-2">Item 2</a>
+    <a class="nav-link" href="#item-3">Item 3</a>
     <nav class="nav nav-pills flex-column">
       <a class="nav-link ml-3 my-1" href="#item-3-1">Item 3-1</a>
       <a class="nav-link ml-3 my-1" href="#item-3-2">Item 3-2</a>
@@ -184,7 +184,7 @@ Scrollspy also works with `.list-group`s. Scroll the area next to the list group
     <div class="col-4">
       <div id="list-example" class="list-group">
         <a class="list-group-item list-group-item-action" href="#list-item-1">Item 1</a>
-        <a class="list-group-item list-group-item-action" href="#list-item-2">Item2</a>
+        <a class="list-group-item list-group-item-action" href="#list-item-2">Item 2</a>
         <a class="list-group-item list-group-item-action" href="#list-item-3">Item 3</a>
         <a class="list-group-item list-group-item-action" href="#list-item-4">Item 4</a>
       </div>
@@ -207,7 +207,7 @@ Scrollspy also works with `.list-group`s. Scroll the area next to the list group
 {% highlight html %}
 <div id="list-example" class="list-group">
   <a class="list-group-item list-group-item-action" href="#list-item-1">Item 1</a>
-  <a class="list-group-item list-group-item-action" href="#list-item-2">Item2</a>
+  <a class="list-group-item list-group-item-action" href="#list-item-2">Item 2</a>
   <a class="list-group-item list-group-item-action" href="#list-item-3">Item 3</a>
   <a class="list-group-item list-group-item-action" href="#list-item-4">Item 4</a>
 </div>
@@ -256,17 +256,19 @@ After adding `position: relative;` in your CSS, call the scrollspy via JavaScrip
 $('body').scrollspy({ target: '#navbar-example' })
 {% endhighlight %}
 
-{% callout danger %}
+{% capture callout %}
 #### Resolvable ID targets required
 
 Navbar links must have resolvable id targets. For example, a `<a href="#home">home</a>` must correspond to something in the DOM like `<div id="home"></div>`.
-{% endcallout %}
+{% endcapture %}
+{% include callout.html content=callout type="danger" %}
 
-{% callout info %}
+{% capture callout %}
 #### Non-`:visible` target elements ignored
 
 Target elements that are not [`:visible` according to jQuery](https://api.jquery.com/visible-selector/) will be ignored and their corresponding nav items will never be highlighted.
-{% endcallout %}
+{% endcapture %}
+{% include callout.html content=callout type="info" %}
 
 ### Methods
 

@@ -47,9 +47,10 @@ $(function () {
 
 ## Example
 
-{% example html %}
+{% capture example %}
 <button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Four directions
 
@@ -95,15 +96,17 @@ sagittis lacus vel augue laoreet rutrum faucibus.">
 
 Use the `focus` trigger to dismiss popovers on the user's next click of a different element than the toggle element.
 
-{% callout danger %}
+{% capture callout %}
 #### Specific markup required for dismiss-on-next-click
 
 For proper cross-browser and cross-platform behavior, you must use the `<a>` tag, _not_ the `<button>` tag, and you also must include a [`tabindex`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex) attribute.
-{% endcallout %}
+{% endcapture %}
+{% include callout.html content=callout type="danger" %}
 
-{% example html %}
+{% capture example %}
 <a tabindex="0" class="btn btn-lg btn-danger" role="button" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?">Dismissible popover</a>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 {% highlight js %}
 $('.popover-dismiss').popover({
@@ -117,11 +120,12 @@ Elements with the `disabled` attribute aren't interactive, meaning users cannot 
 
 For disabled popover triggers, you may also prefer `data-trigger="hover"` so that the popover appears as immediate visual feedback to your users as they may not expect to _click_ on a disabled element.
 
-{% example html %}
+{% capture example %}
 <span class="d-inline-block" data-toggle="popover" data-content="Disabled popover">
   <button class="btn btn-primary" style="pointer-events: none;" type="button" disabled>Disabled button</button>
 </span>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Usage
 
@@ -246,16 +250,16 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
   </tbody>
 </table>
 
-{% callout info %}
+{% capture callout %}
 #### Data attributes for individual popovers
 
 Options for individual popovers can alternatively be specified through the use of data attributes, as explained above.
-{% endcallout %}
+{% endcapture %}
+{% include callout.html content=callout type="info" %}
 
 ### Methods
 
-{% capture callout-include %}{% include callout-danger-async-methods.md %}{% endcapture %}
-{{ callout-include | markdownify }}
+{% include callout-danger-async-methods.md %}
 
 #### `$().popover(options)`
 
