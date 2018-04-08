@@ -408,6 +408,31 @@ Responsive variations also exist for `order`.
 {% for bp in site.data.breakpoints %}{% for i in (0..12) %}
 - `.order{{ bp.abbr }}-{{ i }}`{% endfor %}{% endfor %}
 
+There are also responsive `.order-first` and `.order-last` classes that change the `order` of an element by applying `order: -1` and `order: 13` (`order: $columns + 1`), respectively. These classes can also be intermixed with the numbered `.order-*` classes as needed.
+
+<div class="bd-example-row">
+{% example html %}
+<div class="container">
+  <div class="row">
+    <div class="col order-last">
+      First, but last
+    </div>
+    <div class="col">
+      Second, but unordered
+    </div>
+    <div class="col order-first">
+      Third, but first
+    </div>
+  </div>
+</div>
+{% endexample %}
+</div>
+
+As such, the classes are named using the format:
+
+* `.order-{value}` for `xs`
+* `.order-{breakpoint}-{value}` for `sm`, `md`, `lg`, and `xl`.
+
 ## Align content
 
 Use `align-content` utilities on flexbox containers to align flex items *together* on the cross axis. Choose from `start` (browser default), `end`, `center`, `between`, `around`, or `stretch`. To demonstrate these utilities, we've enforced `flex-wrap: wrap` and increased the number of flex items.
