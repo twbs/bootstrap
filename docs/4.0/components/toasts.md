@@ -13,7 +13,7 @@ Toasts are lightweight notifications designed to mimic the push notifications th
 A basic toast can include a header (though it doesn't strictly need one) with whatever contents you like. The header is also `display: flex`, so `.mr-auto` and `.ml-auto` can be used for easy pushing of content, as well as all our flexbox utilities.
 
 <div class="bg-light">
-{% example html %}
+{% capture example %}
 <div class="toast">
   <div class="toast-header">
     <img class="rounded mr-2" data-src="holder.js/20x20?size=1&text=.&bg=#007aff" alt="">
@@ -24,13 +24,14 @@ A basic toast can include a header (though it doesn't strictly need one) with wh
     Hello, world! This is a toast message.
   </div>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 </div>
 
 They're slightly translucent, too, so they blend over whatever they might appear over. For browsers that support `backdrop-filter`, we'll also attempt to blur the elements under a toast.
 
 <div class="bg-dark">
-{% example html %}
+{% capture example %}
 <div class="toast">
   <div class="toast-header">
     <img class="rounded mr-2" data-src="holder.js/20x20?size=1&text=.&bg=#007aff" alt="">
@@ -41,13 +42,14 @@ They're slightly translucent, too, so they blend over whatever they might appear
     Hello, world! This is a toast message.
   </div>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 </div>
 
 Plus, they'll easily stack.
 
 <div class="bg-light">
-{% example html %}
+{% capture example %}
 <div class="toast">
   <div class="toast-header">
     <img class="rounded mr-2" data-src="holder.js/20x20?size=1&text=.&bg=#007aff" alt="">
@@ -69,7 +71,8 @@ Plus, they'll easily stack.
     Heads up, toasts will stack automatically
   </div>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 </div>
 
 ## Accessibility
@@ -87,7 +90,7 @@ Toasts are intended to be small interruptions to your visitors or users, so to h
 Place toasts with custom CSS as you need them. The top right is often used for notifications, as is the top middle. If you're only ever going to show one toast at a time, put the positioning styles right on the `.toast.`
 
 <div class="bg-dark">
-{% example html %}
+{% capture example %}
 <div style="position: relative; min-height: 200px;">
   <div class="toast" style="position: absolute; top: 0; right: 0;">
     <div class="toast-header">
@@ -100,13 +103,14 @@ Place toasts with custom CSS as you need them. The top right is often used for n
     </div>
   </div>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 </div>
 
 For systems that generate more notifications, consider using a wrapping element so they can easily stack.
 
 <div class="bg-dark">
-{% example html %}
+{% capture example %}
 <div style="position: relative; min-height: 200px;">
   <!-- Position it -->
   <div style="position: absolute; top: 0; right: 0;">
@@ -135,13 +139,14 @@ For systems that generate more notifications, consider using a wrapping element 
     </div>
   </div>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 </div>
 
 You can also get fancy with flexbox utilities.
 
 <div class="bg-dark">
-{% example html %}
+{% capture example html %}
 <div style="position: relative; min-height: 200px;">
   <!-- Position it -->
   <div class="d-flex justify-content-center" style="position: absolute; top: 0; right: 0; left: 0;">
@@ -159,5 +164,6 @@ You can also get fancy with flexbox utilities.
     </div>
   </div>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 </div>
