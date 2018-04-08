@@ -296,6 +296,36 @@ You can quickly change the text alignment of any card—in its entirety or speci
 {% endcapture %}
 {% include example.html content=example %}
 
+## Fully linked card
+
+Add the class `.card-full-link` to a link in the card to make the whole card clickable. This adds a `::before` pseudo-element to the link which is stretched over the card.
+
+{% example html %}
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" data-src="holder.js/100px180/" alt="Card image cap">
+  <div class="card-body">
+    <h4 class="card-title">Card with link</h4>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary card-full-link">Go somewhere</a>
+  </div>
+</div>
+{% endexample %}  
+
+If you don't have a visible link in your card, you can wrap all content of the card in a link with the class `.card-full-link` to make the card clickable. Be carefull not to add other interactive elements (e.g. forms or other links) inside the card.
+
+{% example html %}
+<div class="card" style="width: 18rem;">
+  <a href="#" class="card-full-link">
+    <img class="card-img-top" data-src="holder.js/100px180/" alt="Card image cap">
+    <div class="card-body">
+      <h4 class="card-title">Card without link</h4>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+  </a>
+</div>
+{% endexample %}
+
+
 ## Navigation
 
 Add some navigation to a card's header (or block) with Bootstrap's [nav components]({{ site.baseurl }}/docs/{{ site.docs_version }}/components/navs/).
