@@ -21,26 +21,51 @@ Utilize our source Sass files to take advantage of variables, maps, mixins, and 
 
 Whenever possible, avoid modifying Bootstrap's core files. For Sass, that means creating your own stylesheet that imports Bootstrap so you can modify and extend it. Assuming you're using a package manager like npm, you'll have a file structure that looks like this:
 
-{% highlight plaintext %}
-your-project/
-├── scss
-│   └── custom.scss
-└── node_modules/
-    └── bootstrap
-        ├── js
-        └── scss
-{% endhighlight %}
+<figure>
+  <ul class="bd-ascii">
+    <li>your-project/
+      <ul>
+        <li>scss
+          <ul>
+            <li>custom.scss</li>
+          </ul>
+        </li>
+        <li>node_modules/
+          <ul>
+            <li>bootstrap
+              <ul>
+                <li>js</li>
+                <li>scss</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</figure>
 
 If you've downloaded our source files and aren't using a package manager, you'll want to manually setup something similar to that structure, keeping Bootstrap's source files separate from your own.
 
-{% highlight plaintext %}
-your-project/
-├── scss
-│   └── custom.scss
-└── bootstrap/
-    ├── js
-    └── scss
-{% endhighlight %}
+<figure>
+  <ul class="bd-ascii">
+    <li>your-project/
+      <ul>
+        <li>scss
+          <ul>
+            <li>custom.scss</li>
+          </ul>
+        </li>
+        <li>bootstrap/
+          <ul>
+            <li>js</li>
+            <li>scss</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</figure>
 
 ### Importing
 

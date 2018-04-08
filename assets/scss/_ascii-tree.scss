@@ -1,0 +1,40 @@
+// stylelint-disable selector-max-type, selector-max-combinators, selector-max-compound-selectors
+
+// ASCII tree
+//
+// Styles to allow for traditional ASCII trees to be marked up as semantically meaningful nested lists.
+
+.bd-ascii,
+.bd-ascii ul {
+  padding-left: 0;
+  margin-left: 0;
+  font-family: monospace;
+  list-style: none;
+}
+.bd-ascii li {
+  padding: 0;
+  margin: 0;
+}
+
+/* level 1 */
+.bd-ascii > li::before { content: ""; }
+
+/* level 2 */
+.bd-ascii > li > ul > li::before { content: "├──\00a0"; }
+.bd-ascii > li > ul > li:last-child::before { content: "└──\00a0"; }
+
+/* level 3 */
+.bd-ascii > li > ul > li > ul > li::before { content: "│\00a0\00a0\00a0├──\00a0"; }
+.bd-ascii > li > ul > li > ul > li:last-child::before { content: "│\00a0\00a0\00a0└──\00a0"; }
+.bd-ascii > li > ul > li:last-child > ul > li::before { content: "\00a0\00a0\00a0\00a0├──\00a0"; }
+.bd-ascii > li > ul > li:last-child > ul > li:last-child::before { content: "\00a0\00a0\00a0\00a0└──\00a0"; }
+
+/* level 4 */
+.bd-ascii > li > ul > li > ul > li > ul > li::before { content: "│\00a0\00a0\00a0│\00a0\00a0\00a0├──\00a0"; }
+.bd-ascii > li > ul > li > ul > li > ul > li:last-child::before { content: "│\00a0\00a0\00a0│\00a0\00a0\00a0└──\00a0"; }
+.bd-ascii > li > ul > li > ul > li:last-child > ul > li::before { content: "│\00a0\00a0\00a0\00a0\00a0\00a0\00a0├──\00a0"; }
+.bd-ascii > li > ul > li > ul > li:last-child > ul > li:last-child::before { content: "│\00a0\00a0\00a0\00a0\00a0\00a0\00a0└──\00a0"; }
+.bd-ascii > li > ul > li:last-child > ul > li > ul > li::before { content: "\00a0\00a0\00a0\00a0│\00a0\00a0\00a0├──\00a0"; }
+.bd-ascii > li > ul > li:last-child > ul > li > ul > li:last-child::before { content: "\00a0\00a0\00a0\00a0│\00a0\00a0\00a0└──\00a0"; }
+.bd-ascii > li > ul > li:last-child > ul > li:last-child > ul > li::before { content: "\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0├──\00a0"; }
+.bd-ascii > li > ul > li:last-child > ul > li:last-child > ul > li:last-child::before { content: "\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0└──\00a0"; }
