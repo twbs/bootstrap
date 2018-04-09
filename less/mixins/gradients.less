@@ -1,4 +1,4 @@
-/* stylelint-disable value-no-vendor-prefix */
+/* stylelint-disable value-no-vendor-prefix, selector-max-id */
 
 #gradient {
 
@@ -10,8 +10,8 @@
     background-image: -webkit-linear-gradient(left, @start-color @start-percent, @end-color @end-percent); // Safari 5.1-6, Chrome 10+
     background-image: -o-linear-gradient(left, @start-color @start-percent, @end-color @end-percent); // Opera 12
     background-image: linear-gradient(to right, @start-color @start-percent, @end-color @end-percent); // Standard, IE10, Firefox 16+, Opera 12.10+, Safari 7+, Chrome 26+
-    background-repeat: repeat-x;
     filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)", argb(@start-color), argb(@end-color))); // IE9 and down
+    background-repeat: repeat-x;
   }
 
   // Vertical gradient, from top to bottom
@@ -22,8 +22,8 @@
     background-image: -webkit-linear-gradient(top, @start-color @start-percent, @end-color @end-percent);  // Safari 5.1-6, Chrome 10+
     background-image: -o-linear-gradient(top, @start-color @start-percent, @end-color @end-percent);  // Opera 12
     background-image: linear-gradient(to bottom, @start-color @start-percent, @end-color @end-percent); // Standard, IE10, Firefox 16+, Opera 12.10+, Safari 7+, Chrome 26+
-    background-repeat: repeat-x;
     filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)", argb(@start-color), argb(@end-color))); // IE9 and down
+    background-repeat: repeat-x;
   }
 
   .directional(@start-color: #555; @end-color: #333; @deg: 45deg) {
@@ -36,15 +36,15 @@
     background-image: -webkit-linear-gradient(left, @start-color, @mid-color @color-stop, @end-color);
     background-image: -o-linear-gradient(left, @start-color, @mid-color @color-stop, @end-color);
     background-image: linear-gradient(to right, @start-color, @mid-color @color-stop, @end-color);
-    background-repeat: no-repeat;
     filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)", argb(@start-color), argb(@end-color))); // IE9 and down, gets no color-stop at all for proper fallback
+    background-repeat: no-repeat;
   }
   .vertical-three-colors(@start-color: #00b3ee; @mid-color: #7a43b6; @color-stop: 50%; @end-color: #c3325f) {
     background-image: -webkit-linear-gradient(@start-color, @mid-color @color-stop, @end-color);
     background-image: -o-linear-gradient(@start-color, @mid-color @color-stop, @end-color);
     background-image: linear-gradient(@start-color, @mid-color @color-stop, @end-color);
-    background-repeat: no-repeat;
     filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)", argb(@start-color), argb(@end-color))); // IE9 and down, gets no color-stop at all for proper fallback
+    background-repeat: no-repeat;
   }
   .radial(@inner-color: #555; @outer-color: #333) {
     background-image: -webkit-radial-gradient(circle, @inner-color, @outer-color);
