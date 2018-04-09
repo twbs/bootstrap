@@ -1,0 +1,789 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="Documentation and examples for adding Bootstrap popovers, like those found in iOS, to any element on your site.">
+<meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+<meta name="generator" content="Jekyll v3.7.3">
+
+<title>Popovers · Bootstrap</title>
+
+<!-- Bootstrap core CSS -->
+
+<link href="/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+
+<!-- Documentation extras -->
+
+<link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
+
+<link href="/assets/css/docs.min.css" rel="stylesheet">
+
+<!-- Favicons -->
+<link rel="apple-touch-icon" href="/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="manifest" href="/assets/img/favicons/manifest.json">
+<link rel="mask-icon" href="/assets/img/favicons/safari-pinned-tab.svg" color="#563d7c">
+<link rel="icon" href="/favicon.ico">
+<meta name="msapplication-config" content="/assets/img/favicons/browserconfig.xml">
+<meta name="theme-color" content="#563d7c">
+
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@getbootstrap">
+<meta name="twitter:creator" content="@getbootstrap">
+<meta name="twitter:title" content="Popovers">
+<meta name="twitter:description" content="Documentation and examples for adding Bootstrap popovers, like those found in iOS, to any element on your site.">
+<meta name="twitter:image" content="https://getbootstrap.com/assets/brand/bootstrap-social-logo.png">
+
+<!-- Facebook -->
+<meta property="og:url" content="https://getbootstrap.com/docs/4.1/components/popovers/">
+<meta property="og:title" content="Popovers">
+<meta property="og:description" content="Documentation and examples for adding Bootstrap popovers, like those found in iOS, to any element on your site.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="http://getbootstrap.com/assets/brand/bootstrap-social.png">
+<meta property="og:image:secure_url" content="https://getbootstrap.com/assets/brand/bootstrap-social.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-146052-10', 'getbootstrap.com');
+  ga('send', 'pageview');
+</script>
+
+  </head>
+  <body>
+    <a id="skippy" class="sr-only sr-only-focusable" href="#content">
+  <div class="container">
+    <span class="skiplink-text">Skip to main content</span>
+  </div>
+</a>
+
+
+    <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
+  <a class="navbar-brand mr-0 mr-md-2" href="/" aria-label="Bootstrap"><svg class="d-block" width="36" height="36" viewbox="0 0 612 612" xmlns="http://www.w3.org/2000/svg" focusable="false"><title>Bootstrap</title><path fill="currentColor" d="M510 8a94.3 94.3 0 0 1 94 94v408a94.3 94.3 0 0 1-94 94H102a94.3 94.3 0 0 1-94-94V102a94.3 94.3 0 0 1 94-94h408m0-8H102C45.9 0 0 45.9 0 102v408c0 56.1 45.9 102 102 102h408c56.1 0 102-45.9 102-102V102C612 45.9 566.1 0 510 0z"/><path fill="currentColor" d="M196.77 471.5V154.43h124.15c54.27 0 91 31.64 91 79.1 0 33-24.17 63.72-54.71 69.21v1.76c43.07 5.49 70.75 35.82 70.75 78 0 55.81-40 89-107.45 89zm39.55-180.4h63.28c46.8 0 72.29-18.68 72.29-53 0-31.42-21.53-48.78-60-48.78h-75.57zm78.22 145.46c47.68 0 72.73-19.34 72.73-56s-25.93-55.37-76.46-55.37h-74.49v111.4z"/></svg>
+</a>
+
+  <div class="navbar-nav-scroll">
+    <ul class="navbar-nav bd-navbar-nav flex-row">
+      <li class="nav-item">
+        <a class="nav-link " href="/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Bootstrap');">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="/docs/4.1/getting-started/introduction/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Docs');">Documentation</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " href="/docs/4.1/examples/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Examples');">Examples</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://themes.getbootstrap.com" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Themes');" target="_blank" rel="noopener">Themes</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://jobs.getbootstrap.com" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Jobs');" target="_blank" rel="noopener">Jobs</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://expo.getbootstrap.com" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Expo');" target="_blank" rel="noopener">Expo</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://blog.getbootstrap.com" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Blog');" target="_blank" rel="noopener">Blog</a>
+      </li>
+    </ul>
+  </div>
+
+  <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+    <li class="nav-item dropdown">
+      <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-versions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        v4.1
+      </a>
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="bd-versions">
+        <a class="dropdown-item active" href="/docs/4.1/">Latest (4.1.x)</a>
+        <a class="dropdown-item" href="https://getbootstrap.com/docs/4.0/">v4.0.0</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="https://v4-alpha.getbootstrap.com/">v4 Alpha 6</a>
+        <a class="dropdown-item" href="https://getbootstrap.com/docs/3.3/">v3.3.7</a>
+        <a class="dropdown-item" href="https://getbootstrap.com/2.3.2/">v2.3.2</a>
+      </div>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link p-2" href="https://github.com/twbs/bootstrap" target="_blank" rel="noopener" aria-label="GitHub"><svg class="navbar-nav-svg" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 512 499.36" focusable="false"><title>GitHub</title><path d="M256 0C114.64 0 0 114.61 0 256c0 113.09 73.34 209 175.08 242.9 12.8 2.35 17.47-5.56 17.47-12.34 0-6.08-.22-22.18-.35-43.54-71.2 15.49-86.2-34.34-86.2-34.34-11.64-29.57-28.42-37.45-28.42-37.45-23.27-15.84 1.73-15.55 1.73-15.55 25.69 1.81 39.21 26.38 39.21 26.38 22.84 39.12 59.92 27.82 74.5 21.27 2.33-16.54 8.94-27.82 16.25-34.22-56.84-6.43-116.6-28.43-116.6-126.49 0-27.95 10-50.8 26.35-68.69-2.63-6.48-11.42-32.5 2.51-67.75 0 0 21.49-6.88 70.4 26.24a242.65 242.65 0 0 1 128.18 0c48.87-33.13 70.33-26.24 70.33-26.24 14 35.25 5.18 61.27 2.55 67.75 16.41 17.9 26.31 40.75 26.31 68.69 0 98.35-59.85 120-116.88 126.32 9.19 7.9 17.38 23.53 17.38 47.41 0 34.22-.31 61.83-.31 70.23 0 6.85 4.61 14.81 17.6 12.31C438.72 464.97 512 369.08 512 256.02 512 114.62 397.37 0 256 0z" fill="currentColor" fill-rule="evenodd"/></svg>
+</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link p-2" href="https://twitter.com/getbootstrap" target="_blank" rel="noopener" aria-label="Twitter"><svg class="navbar-nav-svg" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 512 416.32" focusable="false"><title>Twitter</title><path d="M160.83 416.32c193.2 0 298.92-160.22 298.92-298.92 0-4.51 0-9-.2-13.52A214 214 0 0 0 512 49.38a212.93 212.93 0 0 1-60.44 16.6 105.7 105.7 0 0 0 46.3-58.19 209 209 0 0 1-66.79 25.37 105.09 105.09 0 0 0-181.73 71.91 116.12 116.12 0 0 0 2.66 24c-87.28-4.3-164.73-46.3-216.56-109.82A105.48 105.48 0 0 0 68 159.6a106.27 106.27 0 0 1-47.53-13.11v1.43a105.28 105.28 0 0 0 84.21 103.06 105.67 105.67 0 0 1-47.33 1.84 105.06 105.06 0 0 0 98.14 72.94A210.72 210.72 0 0 1 25 370.84a202.17 202.17 0 0 1-25-1.43 298.85 298.85 0 0 0 160.83 46.92" fill="currentColor"/></svg>
+</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link p-2" href="https://bootstrap-slack.herokuapp.com" target="_blank" rel="noopener" aria-label="Slack"><svg class="navbar-nav-svg" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 512 512" focusable="false"><title>Slack</title><path fill="currentColor" d="M210.787 234.832l68.31-22.883 22.1 65.977-68.309 22.882z"/><path d="M490.54 185.6C437.7 9.59 361.6-31.34 185.6 21.46S-31.3 150.4 21.46 326.4 150.4 543.3 326.4 490.54 543.34 361.6 490.54 185.6zM401.7 299.8l-33.15 11.05 11.46 34.38c4.5 13.92-2.87 29.06-16.78 33.56-2.87.82-6.14 1.64-9 1.23a27.32 27.32 0 0 1-24.56-18l-11.46-34.38-68.36 22.92 11.46 34.38c4.5 13.92-2.87 29.06-16.78 33.56-2.87.82-6.14 1.64-9 1.23a27.32 27.32 0 0 1-24.56-18l-11.46-34.43-33.15 11.05c-2.87.82-6.14 1.64-9 1.23a27.32 27.32 0 0 1-24.56-18c-4.5-13.92 2.87-29.06 16.78-33.56l33.12-11.03-22.1-65.9-33.15 11.05c-2.87.82-6.14 1.64-9 1.23a27.32 27.32 0 0 1-24.56-18c-4.48-13.93 2.89-29.07 16.81-33.58l33.15-11.05-11.46-34.38c-4.5-13.92 2.87-29.06 16.78-33.56s29.06 2.87 33.56 16.78l11.46 34.38 68.36-22.92-11.46-34.38c-4.5-13.92 2.87-29.06 16.78-33.56s29.06 2.87 33.56 16.78l11.47 34.42 33.15-11.05c13.92-4.5 29.06 2.87 33.56 16.78s-2.87 29.06-16.78 33.56L329.7 194.6l22.1 65.9 33.15-11.05c13.92-4.5 29.06 2.87 33.56 16.78s-2.88 29.07-16.81 33.57z" fill="currentColor"/></svg>
+</a>
+    </li>
+  </ul>
+
+  <a class="btn btn-bd-download d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="https://github.com/twbs/bootstrap/archive/v4.1.0.zip">Download</a>
+</header>
+
+
+    <div class="container-fluid">
+      <div class="row flex-xl-nowrap">
+        <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+          <form class="bd-search d-flex align-items-center">
+  <input type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off" data-siteurl="https://getbootstrap.com">
+  <button class="btn btn-link bd-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#bd-docs-nav" aria-controls="bd-docs-nav" aria-expanded="false" aria-label="Toggle docs navigation"><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 30 30" width="30" height="30" focusable="false"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/></svg>
+</button>
+</form>
+
+<nav class="collapse bd-links" id="bd-docs-nav"><div class="bd-toc-item">
+      <a class="bd-toc-link" href="/docs/4.1/getting-started/introduction/">
+        Getting started
+      </a>
+
+      <ul class="nav bd-sidenav"><li>
+            <a href="/docs/4.1/getting-started/introduction/">
+              Introduction
+            </a></li><li>
+            <a href="/docs/4.1/getting-started/download/">
+              Download
+            </a></li><li>
+            <a href="/docs/4.1/getting-started/contents/">
+              Contents
+            </a></li><li>
+            <a href="/docs/4.1/getting-started/browsers-devices/">
+              Browsers & devices
+            </a></li><li>
+            <a href="/docs/4.1/getting-started/javascript/">
+              JavaScript
+            </a></li><li>
+            <a href="/docs/4.1/getting-started/theming/">
+              Theming
+            </a></li><li>
+            <a href="/docs/4.1/getting-started/build-tools/">
+              Build tools
+            </a></li><li>
+            <a href="/docs/4.1/getting-started/webpack/">
+              Webpack
+            </a></li><li>
+            <a href="/docs/4.1/getting-started/accessibility/">
+              Accessibility
+            </a></li></ul>
+    </div><div class="bd-toc-item">
+      <a class="bd-toc-link" href="/docs/4.1/layout/overview/">
+        Layout
+      </a>
+
+      <ul class="nav bd-sidenav"><li>
+            <a href="/docs/4.1/layout/overview/">
+              Overview
+            </a></li><li>
+            <a href="/docs/4.1/layout/grid/">
+              Grid
+            </a></li><li>
+            <a href="/docs/4.1/layout/media-object/">
+              Media object
+            </a></li><li>
+            <a href="/docs/4.1/layout/utilities-for-layout/">
+              Utilities for layout
+            </a></li></ul>
+    </div><div class="bd-toc-item">
+      <a class="bd-toc-link" href="/docs/4.1/content/reboot/">
+        Content
+      </a>
+
+      <ul class="nav bd-sidenav"><li>
+            <a href="/docs/4.1/content/reboot/">
+              Reboot
+            </a></li><li>
+            <a href="/docs/4.1/content/typography/">
+              Typography
+            </a></li><li>
+            <a href="/docs/4.1/content/code/">
+              Code
+            </a></li><li>
+            <a href="/docs/4.1/content/images/">
+              Images
+            </a></li><li>
+            <a href="/docs/4.1/content/tables/">
+              Tables
+            </a></li><li>
+            <a href="/docs/4.1/content/figures/">
+              Figures
+            </a></li></ul>
+    </div><div class="bd-toc-item active">
+      <a class="bd-toc-link" href="/docs/4.1/components/alerts/">
+        Components
+      </a>
+
+      <ul class="nav bd-sidenav"><li>
+            <a href="/docs/4.1/components/alerts/">
+              Alerts
+            </a></li><li>
+            <a href="/docs/4.1/components/badge/">
+              Badge
+            </a></li><li>
+            <a href="/docs/4.1/components/breadcrumb/">
+              Breadcrumb
+            </a></li><li>
+            <a href="/docs/4.1/components/buttons/">
+              Buttons
+            </a></li><li>
+            <a href="/docs/4.1/components/button-group/">
+              Button group
+            </a></li><li>
+            <a href="/docs/4.1/components/card/">
+              Card
+            </a></li><li>
+            <a href="/docs/4.1/components/carousel/">
+              Carousel
+            </a></li><li>
+            <a href="/docs/4.1/components/collapse/">
+              Collapse
+            </a></li><li>
+            <a href="/docs/4.1/components/dropdowns/">
+              Dropdowns
+            </a></li><li>
+            <a href="/docs/4.1/components/forms/">
+              Forms
+            </a></li><li>
+            <a href="/docs/4.1/components/input-group/">
+              Input group
+            </a></li><li>
+            <a href="/docs/4.1/components/jumbotron/">
+              Jumbotron
+            </a></li><li>
+            <a href="/docs/4.1/components/list-group/">
+              List group
+            </a></li><li>
+            <a href="/docs/4.1/components/modal/">
+              Modal
+            </a></li><li>
+            <a href="/docs/4.1/components/navs/">
+              Navs
+            </a></li><li>
+            <a href="/docs/4.1/components/navbar/">
+              Navbar
+            </a></li><li>
+            <a href="/docs/4.1/components/pagination/">
+              Pagination
+            </a></li><li class="active bd-sidenav-active">
+            <a href="/docs/4.1/components/popovers/">
+              Popovers
+            </a></li><li>
+            <a href="/docs/4.1/components/progress/">
+              Progress
+            </a></li><li>
+            <a href="/docs/4.1/components/scrollspy/">
+              Scrollspy
+            </a></li><li>
+            <a href="/docs/4.1/components/tooltips/">
+              Tooltips
+            </a></li></ul>
+    </div><div class="bd-toc-item">
+      <a class="bd-toc-link" href="/docs/4.1/utilities/borders/">
+        Utilities
+      </a>
+
+      <ul class="nav bd-sidenav"><li>
+            <a href="/docs/4.1/utilities/borders/">
+              Borders
+            </a></li><li>
+            <a href="/docs/4.1/utilities/clearfix/">
+              Clearfix
+            </a></li><li>
+            <a href="/docs/4.1/utilities/close-icon/">
+              Close icon
+            </a></li><li>
+            <a href="/docs/4.1/utilities/colors/">
+              Colors
+            </a></li><li>
+            <a href="/docs/4.1/utilities/display/">
+              Display
+            </a></li><li>
+            <a href="/docs/4.1/utilities/embed/">
+              Embed
+            </a></li><li>
+            <a href="/docs/4.1/utilities/flex/">
+              Flex
+            </a></li><li>
+            <a href="/docs/4.1/utilities/float/">
+              Float
+            </a></li><li>
+            <a href="/docs/4.1/utilities/image-replacement/">
+              Image replacement
+            </a></li><li>
+            <a href="/docs/4.1/utilities/position/">
+              Position
+            </a></li><li>
+            <a href="/docs/4.1/utilities/screenreaders/">
+              Screenreaders
+            </a></li><li>
+            <a href="/docs/4.1/utilities/shadows/">
+              Shadows
+            </a></li><li>
+            <a href="/docs/4.1/utilities/sizing/">
+              Sizing
+            </a></li><li>
+            <a href="/docs/4.1/utilities/spacing/">
+              Spacing
+            </a></li><li>
+            <a href="/docs/4.1/utilities/text/">
+              Text
+            </a></li><li>
+            <a href="/docs/4.1/utilities/vertical-align/">
+              Vertical align
+            </a></li><li>
+            <a href="/docs/4.1/utilities/visibility/">
+              Visibility
+            </a></li></ul>
+    </div><div class="bd-toc-item">
+      <a class="bd-toc-link" href="/docs/4.1/extend/approach/">
+        Extend
+      </a>
+
+      <ul class="nav bd-sidenav"><li>
+            <a href="/docs/4.1/extend/approach/">
+              Approach
+            </a></li><li>
+            <a href="/docs/4.1/extend/icons/">
+              Icons
+            </a></li></ul>
+    </div><div class="bd-toc-item">
+      <a class="bd-toc-link" href="/docs/4.1/migration/">
+        Migration
+      </a>
+
+      <ul class="nav bd-sidenav"></ul>
+    </div><div class="bd-toc-item">
+      <a class="bd-toc-link" href="/docs/4.1/about/overview/">
+        About
+      </a>
+
+      <ul class="nav bd-sidenav"><li>
+            <a href="/docs/4.1/about/overview/">
+              Overview
+            </a></li><li>
+            <a href="/docs/4.1/about/brand/">
+              Brand
+            </a></li><li>
+            <a href="/docs/4.1/about/license/">
+              License
+            </a></li><li>
+            <a href="/docs/4.1/about/translations/">
+              Translations
+            </a></li></ul>
+    </div></nav>
+
+        </div>
+
+        
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#overview">Overview</a></li>
+<li class="toc-entry toc-h2"><a href="#example-enable-popovers-everywhere">Example: Enable popovers everywhere</a></li>
+<li class="toc-entry toc-h2"><a href="#example-using-the-container-option">Example: Using the container option</a></li>
+<li class="toc-entry toc-h2"><a href="#example">Example</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#four-directions">Four directions</a></li>
+<li class="toc-entry toc-h3"><a href="#dismiss-on-next-click">Dismiss on next click</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#specific-markup-required-for-dismiss-on-next-click">Specific markup required for dismiss-on-next-click</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h3"><a href="#disabled-elements">Disabled elements</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#usage">Usage</a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#options">Options</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#data-attributes-for-individual-popovers">Data attributes for individual popovers</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h3"><a href="#methods">Methods</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#asynchronous-methods-and-transitions">Asynchronous methods and transitions</a></li>
+<li class="toc-entry toc-h4"><a href="#popoveroptions">$().popover(options)</a></li>
+<li class="toc-entry toc-h4"><a href="#popovershow">.popover('show')</a></li>
+<li class="toc-entry toc-h4"><a href="#popoverhide">.popover('hide')</a></li>
+<li class="toc-entry toc-h4"><a href="#popovertoggle">.popover('toggle')</a></li>
+<li class="toc-entry toc-h4"><a href="#popoverdispose">.popover('dispose')</a></li>
+<li class="toc-entry toc-h4"><a href="#popoverenable">.popover('enable')</a></li>
+<li class="toc-entry toc-h4"><a href="#popoverdisable">.popover('disable')</a></li>
+<li class="toc-entry toc-h4"><a href="#popovertoggleenabled">.popover('toggleEnabled')</a></li>
+<li class="toc-entry toc-h4"><a href="#popoverupdate">.popover('update')</a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h3"><a href="#events">Events</a></li>
+</ul>
+</li>
+</ul>
+          </div>
+        
+
+        <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+          <h1 class="bd-title" id="content">Popovers</h1>
+          <p class="bd-lead">Documentation and examples for adding Bootstrap popovers, like those found in iOS, to any element on your site.</p>
+          <script async src="https://cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=getbootstrapcom" id="_carbonads_js"></script>
+
+          <h2 id="overview">Overview</h2>
+
+<p>Things to know when using the popover plugin:</p>
+
+<ul>
+  <li>Popovers rely on the 3rd party library <a href="https://popper.js.org/">Popper.js</a> for positioning. You must include <a href="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js">popper.min.js</a> before bootstrap.js or use <code class="highlighter-rouge">bootstrap.bundle.min.js</code> / <code class="highlighter-rouge">bootstrap.bundle.js</code> which contains Popper.js in order for popovers to work!</li>
+  <li>Popovers require the <a href="/docs/4.1/components/tooltips/">tooltip plugin</a> as a dependency.</li>
+  <li>If you’re building our JavaScript from source, it <a href="/docs/4.1/getting-started/javascript/#util">requires <code class="highlighter-rouge">util.js</code></a>.</li>
+  <li>Popovers are opt-in for performance reasons, so <strong>you must initialize them yourself</strong>.</li>
+  <li>Zero-length <code class="highlighter-rouge">title</code> and <code class="highlighter-rouge">content</code> values will never show a popover.</li>
+  <li>Specify <code class="highlighter-rouge">container: 'body'</code> to avoid rendering problems in more complex components (like our input groups, button groups, etc).</li>
+  <li>Triggering popovers on hidden elements will not work.</li>
+  <li>Popovers for <code class="highlighter-rouge">.disabled</code> or <code class="highlighter-rouge">disabled</code> elements must be triggered on a wrapper element.</li>
+  <li>When triggered from anchors that wrap across multiple lines, popovers will be centered between the anchors’ overall width. Use <code class="highlighter-rouge">white-space: nowrap;</code> on your <code class="highlighter-rouge">&lt;a&gt;</code>s to avoid this behavior.</li>
+  <li>Popovers must be hidden before their corresponding elements have been removed from the DOM.</li>
+</ul>
+
+<p>Keep reading to see how popovers work with some examples.</p>
+
+<h2 id="example-enable-popovers-everywhere">Example: Enable popovers everywhere</h2>
+
+<p>One way to initialize all popovers on a page would be to select them by their <code class="highlighter-rouge">data-toggle</code> attribute:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s1">'[data-toggle="popover"]'</span><span class="p">).</span><span class="nx">popover</span><span class="p">()</span>
+<span class="p">})</span></code></pre></figure>
+
+<h2 id="example-using-the-container-option">Example: Using the <code class="highlighter-rouge">container</code> option</h2>
+
+<p>When you have some styles on a parent element that interfere with a popover, you’ll want to specify a custom <code class="highlighter-rouge">container</code> so that the popover’s HTML appears within that element instead.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s1">'.example-popover'</span><span class="p">).</span><span class="nx">popover</span><span class="p">({</span>
+    <span class="na">container</span><span class="p">:</span> <span class="s1">'body'</span>
+  <span class="p">})</span>
+<span class="p">})</span></code></pre></figure>
+
+<h2 id="example">Example</h2>
+
+<div class="bd-example">
+<button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
+</div>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-lg btn-danger"</span> <span class="na">data-toggle=</span><span class="s">"popover"</span> <span class="na">title=</span><span class="s">"Popover title"</span> <span class="na">data-content=</span><span class="s">"And here's some amazing content. It's very engaging. Right?"</span><span class="nt">&gt;</span>Click to toggle popover<span class="nt">&lt;/button&gt;</span></code></pre></figure>
+
+<h3 id="four-directions">Four directions</h3>
+
+<p>Four options are available: top, right, bottom, and left aligned.</p>
+
+<div class="bd-example popover-demo">
+  <div class="bd-example-popovers">
+    <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+      Popover on top
+    </button>
+    <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+      Popover on right
+    </button>
+    <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+      Popover on bottom
+    </button>
+    <button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+      Popover on left
+    </button>
+  </div>
+</div>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-secondary"</span> <span class="na">data-container=</span><span class="s">"body"</span> <span class="na">data-toggle=</span><span class="s">"popover"</span> <span class="na">data-placement=</span><span class="s">"top"</span> <span class="na">data-content=</span><span class="s">"Vivamus sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</span>
+  Popover on top
+<span class="nt">&lt;/button&gt;</span>
+
+<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-secondary"</span> <span class="na">data-container=</span><span class="s">"body"</span> <span class="na">data-toggle=</span><span class="s">"popover"</span> <span class="na">data-placement=</span><span class="s">"right"</span> <span class="na">data-content=</span><span class="s">"Vivamus sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</span>
+  Popover on right
+<span class="nt">&lt;/button&gt;</span>
+
+<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-secondary"</span> <span class="na">data-container=</span><span class="s">"body"</span> <span class="na">data-toggle=</span><span class="s">"popover"</span> <span class="na">data-placement=</span><span class="s">"bottom"</span> <span class="na">data-content=</span><span class="s">"Vivamus
+sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</span>
+  Popover on bottom
+<span class="nt">&lt;/button&gt;</span>
+
+<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-secondary"</span> <span class="na">data-container=</span><span class="s">"body"</span> <span class="na">data-toggle=</span><span class="s">"popover"</span> <span class="na">data-placement=</span><span class="s">"left"</span> <span class="na">data-content=</span><span class="s">"Vivamus sagittis lacus vel augue laoreet rutrum faucibus."</span><span class="nt">&gt;</span>
+  Popover on left
+<span class="nt">&lt;/button&gt;</span></code></pre></figure>
+
+<h3 id="dismiss-on-next-click">Dismiss on next click</h3>
+
+<p>Use the <code class="highlighter-rouge">focus</code> trigger to dismiss popovers on the user’s next click of a different element than the toggle element.</p>
+
+<div class="bd-callout bd-callout-danger">
+<h4 id="specific-markup-required-for-dismiss-on-next-click">Specific markup required for dismiss-on-next-click</h4>
+
+<p>For proper cross-browser and cross-platform behavior, you must use the <code class="highlighter-rouge">&lt;a&gt;</code> tag, <em>not</em> the <code class="highlighter-rouge">&lt;button&gt;</code> tag, and you also must include a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex"><code class="highlighter-rouge">tabindex</code></a> attribute.</p>
+</div>
+
+<div class="bd-example">
+<a tabindex="0" class="btn btn-lg btn-danger" role="button" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="And here's some amazing content. It's very engaging. Right?">Dismissible popover</a>
+</div>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;a</span> <span class="na">tabindex=</span><span class="s">"0"</span> <span class="na">class=</span><span class="s">"btn btn-lg btn-danger"</span> <span class="na">role=</span><span class="s">"button"</span> <span class="na">data-toggle=</span><span class="s">"popover"</span> <span class="na">data-trigger=</span><span class="s">"focus"</span> <span class="na">title=</span><span class="s">"Dismissible popover"</span> <span class="na">data-content=</span><span class="s">"And here's some amazing content. It's very engaging. Right?"</span><span class="nt">&gt;</span>Dismissible popover<span class="nt">&lt;/a&gt;</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'.popover-dismiss'</span><span class="p">).</span><span class="nx">popover</span><span class="p">({</span>
+  <span class="na">trigger</span><span class="p">:</span> <span class="s1">'focus'</span>
+<span class="p">})</span></code></pre></figure>
+
+<h3 id="disabled-elements">Disabled elements</h3>
+
+<p>Elements with the <code class="highlighter-rouge">disabled</code> attribute aren’t interactive, meaning users cannot hover or click them to trigger a popover (or tooltip). As a workaround, you’ll want to trigger the popover from a wrapper <code class="highlighter-rouge">&lt;div&gt;</code> or <code class="highlighter-rouge">&lt;span&gt;</code> and override the <code class="highlighter-rouge">pointer-events</code> on the disabled element.</p>
+
+<p>For disabled popover triggers, you may also prefer <code class="highlighter-rouge">data-trigger="hover"</code> so that the popover appears as immediate visual feedback to your users as they may not expect to <em>click</em> on a disabled element.</p>
+
+<div class="bd-example">
+<span class="d-inline-block" data-toggle="popover" data-content="Disabled popover">
+  <button class="btn btn-primary" style="pointer-events: none;" type="button" disabled="">Disabled button</button>
+</span>
+</div>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"d-inline-block"</span> <span class="na">data-toggle=</span><span class="s">"popover"</span> <span class="na">data-content=</span><span class="s">"Disabled popover"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span> <span class="na">style=</span><span class="s">"pointer-events: none;"</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">disabled</span><span class="nt">&gt;</span>Disabled button<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/span&gt;</span></code></pre></figure>
+
+<h2 id="usage">Usage</h2>
+
+<p>Enable popovers via JavaScript:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#example'</span><span class="p">).</span><span class="nx">popover</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span></code></pre></figure>
+
+<h3 id="options">Options</h3>
+
+<p>Options can be passed via data attributes or JavaScript. For data attributes, append the option name to <code class="highlighter-rouge">data-</code>, as in <code class="highlighter-rouge">data-animation=""</code>.</p>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th style="width: 100px;">Name</th>
+      <th style="width: 100px;">Type</th>
+      <th style="width: 50px;">Default</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>animation</td>
+      <td>boolean</td>
+      <td>true</td>
+      <td>Apply a CSS fade transition to the popover</td>
+    </tr>
+    <tr>
+      <td>container</td>
+      <td>string | element | false</td>
+      <td>false</td>
+      <td>
+        <p>Appends the popover to a specific element. Example: <code>container: 'body'</code>. This option is particularly useful in that it allows you to position the popover in the flow of the document near the triggering element - which will prevent the popover from floating away from the triggering element during a window resize.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>content</td>
+      <td>string | element | function</td>
+      <td>''</td>
+      <td>
+        <p>Default content value if <code>data-content</code> attribute isn't present.</p>
+        <p>If a function is given, it will be called with its <code>this</code> reference set to the element that the popover is attached to.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>delay</td>
+      <td>number | object</td>
+      <td>0</td>
+      <td>
+        <p>Delay showing and hiding the popover (ms) - does not apply to manual trigger type</p>
+        <p>If a number is supplied, delay is applied to both hide/show</p>
+        <p>Object structure is: <code>delay: { "show": 500, "hide": 100 }</code></p>
+      </td>
+    </tr>
+    <tr>
+      <td>html</td>
+      <td>boolean</td>
+      <td>false</td>
+      <td>Insert HTML into the popover. If false, jQuery's <code>text</code> method will be used to insert content into the DOM. Use text if you're worried about XSS attacks.</td>
+    </tr>
+    <tr>
+      <td>placement</td>
+      <td>string | function</td>
+      <td>'right'</td>
+      <td>
+        <p>How to position the popover - auto | top | bottom | left | right.<br />When <code>auto</code> is specified, it will dynamically reorient the popover.</p>
+        <p>When a function is used to determine the placement, it is called with the popover DOM node as its first argument and the triggering element DOM node as its second. The <code>this</code> context is set to the popover instance.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>selector</td>
+      <td>string | false</td>
+      <td>false</td>
+      <td>If a selector is provided, popover objects will be delegated to the specified targets. In practice, this is used to enable dynamic HTML content to have popovers added. See <a href="https://github.com/twbs/bootstrap/issues/4215">this</a> and <a href="https://jsbin.com/zopod/1/edit">an informative example</a>.</td>
+    </tr>
+    <tr>
+      <td>template</td>
+      <td>string</td>
+      <td><code>'&lt;div class="popover" role="tooltip"&gt;&lt;div class="arrow"&gt;&lt;/div&gt;&lt;h3 class="popover-header"&gt;&lt;/h3&gt;&lt;div class="popover-body"&gt;&lt;/div&gt;&lt;/div&gt;'</code></td>
+      <td>
+        <p>Base HTML to use when creating the popover.</p>
+        <p>The popover's <code>title</code> will be injected into the <code>.popover-header</code>.</p>
+        <p>The popover's <code>content</code> will be injected into the <code>.popover-body</code>.</p>
+        <p><code>.arrow</code> will become the popover's arrow.</p>
+        <p>The outermost wrapper element should have the <code>.popover</code> class.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>title</td>
+      <td>string | element | function</td>
+      <td>''</td>
+      <td>
+        <p>Default title value if <code>title</code> attribute isn't present.</p>
+        <p>If a function is given, it will be called with its <code>this</code> reference set to the element that the popover is attached to.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>trigger</td>
+      <td>string</td>
+      <td>'click'</td>
+      <td>How popover is triggered - click | hover | focus | manual. You may pass multiple triggers; separate them with a space. `manual` cannot be combined with any other trigger.</td>
+    </tr>
+    <tr>
+      <td>offset</td>
+      <td>number | string</td>
+      <td>0</td>
+      <td>Offset of the popover relative to its target. For more information refer to Popper.js's <a href="https://popper.js.org/popper-documentation.html#modifiers..offset.offset">offset docs</a>.</td>
+    </tr>
+    <tr>
+      <td>fallbackPlacement</td>
+      <td>string | array</td>
+      <td>'flip'</td>
+      <td>Allow to specify which position Popper will use on fallback. For more information refer to
+      Popper.js's <a href="https://popper.js.org/popper-documentation.html#modifiers..flip.behavior">behavior docs</a></td>
+    </tr>
+    <tr>
+      <td>boundary</td>
+      <td>string | element</td>
+      <td>'scrollParent'</td>
+      <td>Overflow constraint boundary of the popover. Accepts the values of <code>'viewport'</code>, <code>'window'</code>, <code>'scrollParent'</code>, or an HTMLElement reference (JavaScript only). For more information refer to Popper.js's <a href="https://popper.js.org/popper-documentation.html#modifiers..preventOverflow.boundariesElement">preventOverflow docs</a>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="bd-callout bd-callout-info">
+<h4 id="data-attributes-for-individual-popovers">Data attributes for individual popovers</h4>
+
+<p>Options for individual popovers can alternatively be specified through the use of data attributes, as explained above.</p>
+</div>
+
+<h3 id="methods">Methods</h3>
+
+<div class="bd-callout bd-callout-danger">
+<h4 id="asynchronous-methods-and-transitions">Asynchronous methods and transitions</h4>
+
+<p>All API methods are <strong>asynchronous</strong> and start a <strong>transition</strong>. They return to the caller as soon as the transition is started but <strong>before it ends</strong>. In addition, a method call on a <strong>transitioning component will be ignored</strong>.</p>
+
+<p><a href="/docs/4.1/getting-started/javascript/">See our JavaScript documentation for more information.</a></p>
+</div>
+
+<h4 id="popoveroptions"><code class="highlighter-rouge">$().popover(options)</code></h4>
+
+<p>Initializes popovers for an element collection.</p>
+
+<h4 id="popovershow"><code class="highlighter-rouge">.popover('show')</code></h4>
+
+<p>Reveals an element’s popover. <strong>Returns to the caller before the popover has actually been shown</strong> (i.e. before the <code class="highlighter-rouge">shown.bs.popover</code> event occurs). This is considered a “manual” triggering of the popover. Popovers whose both title and content are zero-length are never displayed.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#element'</span><span class="p">).</span><span class="nx">popover</span><span class="p">(</span><span class="s1">'show'</span><span class="p">)</span></code></pre></figure>
+
+<h4 id="popoverhide"><code class="highlighter-rouge">.popover('hide')</code></h4>
+
+<p>Hides an element’s popover. <strong>Returns to the caller before the popover has actually been hidden</strong> (i.e. before the <code class="highlighter-rouge">hidden.bs.popover</code> event occurs). This is considered a “manual” triggering of the popover.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#element'</span><span class="p">).</span><span class="nx">popover</span><span class="p">(</span><span class="s1">'hide'</span><span class="p">)</span></code></pre></figure>
+
+<h4 id="popovertoggle"><code class="highlighter-rouge">.popover('toggle')</code></h4>
+
+<p>Toggles an element’s popover. <strong>Returns to the caller before the popover has actually been shown or hidden</strong> (i.e. before the <code class="highlighter-rouge">shown.bs.popover</code> or <code class="highlighter-rouge">hidden.bs.popover</code> event occurs). This is considered a “manual” triggering of the popover.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#element'</span><span class="p">).</span><span class="nx">popover</span><span class="p">(</span><span class="s1">'toggle'</span><span class="p">)</span></code></pre></figure>
+
+<h4 id="popoverdispose"><code class="highlighter-rouge">.popover('dispose')</code></h4>
+
+<p>Hides and destroys an element’s popover. Popovers that use delegation (which are created using <a href="#options">the <code class="highlighter-rouge">selector</code> option</a>) cannot be individually destroyed on descendant trigger elements.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#element'</span><span class="p">).</span><span class="nx">popover</span><span class="p">(</span><span class="s1">'dispose'</span><span class="p">)</span></code></pre></figure>
+
+<h4 id="popoverenable"><code class="highlighter-rouge">.popover('enable')</code></h4>
+
+<p>Gives an element’s popover the ability to be shown. <strong>Popovers are enabled by default.</strong></p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#element'</span><span class="p">).</span><span class="nx">popover</span><span class="p">(</span><span class="s1">'enable'</span><span class="p">)</span></code></pre></figure>
+
+<h4 id="popoverdisable"><code class="highlighter-rouge">.popover('disable')</code></h4>
+
+<p>Removes the ability for an element’s popover to be shown. The popover will only be able to be shown if it is re-enabled.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#element'</span><span class="p">).</span><span class="nx">popover</span><span class="p">(</span><span class="s1">'disable'</span><span class="p">)</span></code></pre></figure>
+
+<h4 id="popovertoggleenabled"><code class="highlighter-rouge">.popover('toggleEnabled')</code></h4>
+
+<p>Toggles the ability for an element’s popover to be shown or hidden.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#element'</span><span class="p">).</span><span class="nx">popover</span><span class="p">(</span><span class="s1">'toggleEnabled'</span><span class="p">)</span></code></pre></figure>
+
+<h4 id="popoverupdate"><code class="highlighter-rouge">.popover('update')</code></h4>
+
+<p>Updates the position of an element’s popover.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#element'</span><span class="p">).</span><span class="nx">popover</span><span class="p">(</span><span class="s1">'update'</span><span class="p">)</span></code></pre></figure>
+
+<h3 id="events">Events</h3>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th style="width: 150px;">Event Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>show.bs.popover</td>
+      <td>This event fires immediately when the <code>show</code> instance method is called.</td>
+    </tr>
+    <tr>
+      <td>shown.bs.popover</td>
+      <td>This event is fired when the popover has been made visible to the user (will wait for CSS transitions to complete).</td>
+    </tr>
+    <tr>
+      <td>hide.bs.popover</td>
+      <td>This event is fired immediately when the <code>hide</code> instance method has been called.</td>
+    </tr>
+    <tr>
+      <td>hidden.bs.popover</td>
+      <td>This event is fired when the popover has finished being hidden from the user (will wait for CSS transitions to complete).</td>
+    </tr>
+    <tr>
+      <td>inserted.bs.popover</td>
+      <td>This event is fired after the <code>show.bs.popover</code> event when the popover template has been added to the DOM.</td>
+    </tr>
+  </tbody>
+</table>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#myPopover'</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'hidden.bs.popover'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="c1">// do something…</span>
+<span class="p">})</span></code></pre></figure>
+
+
+        </main>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+
+<script src="/assets/js/vendor/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script><script src="/dist/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/assets/js/docs.min.js"></script>
+  </body>
+</html>
