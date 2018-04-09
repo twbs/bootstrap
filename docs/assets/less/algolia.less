@@ -1,3 +1,5 @@
+/* stylelint-disable declaration-no-important, selector-attribute-quotes */
+
 // Docsearch overrides
 //
 // `!important` indicates overridden properties.
@@ -12,8 +14,9 @@
     padding: 10px 0 !important;
     background-color: #fff;
     background-clip: padding-box;
-    border: 1px solid rgba(0,0,0,.1);
-    box-shadow: 0 8px 15px rgba(0,0,0,.175);
+    border: 1px solid #ddd;
+    border: 1px solid rgba(0, 0, 0, .1);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, .175);
 
     @media min-width(@screen-sm-min) {
       width: 175%;
@@ -79,7 +82,7 @@
       .algolia-docsearch-suggestion--category-header {
         padding-top: 10px !important;
         margin-top: 10px !important;
-        border-top: 1px solid rgba(0,0,0,.1);
+        border-top: 1px solid #eee;
       }
     }
 
@@ -100,7 +103,7 @@
     padding: 0 15px 8px !important;
     margin-top: -4px;
     font-size: 13px !important;
-    font-weight: normal;
+    font-weight: 400;
     line-height: 1.25 !important;
   }
 
@@ -112,7 +115,7 @@
     font-size: 10px !important;
     line-height: 1 !important;
     color: #767676 !important;
-    border-top: 1px solid rgba(0,0,0,.1);
+    border-top: 1px solid #eee;
   }
 
   .algolia-docsearch-footer--logo {
@@ -125,14 +128,14 @@
 
   .algolia-docsearch-suggestion--highlight {
     color: #5f2dab;
-    background-color: rgba(154, 132, 187, .12);
+    background-color: #eee;
   }
 
   .algolia-docsearch-suggestion--text .algolia-docsearch-suggestion--highlight {
-    box-shadow: inset 0 -2px 0 0 rgba(95,45,171,.5) !important;
+    box-shadow: inset 0 -2px 0 0 rgba(95, 45, 171, .5) !important;
   }
 
   .ds-suggestion.ds-cursor .algolia-docsearch-suggestion--content {
-    background-color: rgba(208,189,236,.15) !important;
+    background-color: #e5e5e5 !important;
   }
 }

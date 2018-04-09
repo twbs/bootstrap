@@ -10,10 +10,10 @@
   height: 0;
   margin-left: 2px;
   vertical-align: middle;
-  border-top:   @caret-width-base dashed;
-  border-top:   @caret-width-base solid ~"\9"; // IE8
+  border-top: @caret-width-base dashed;
+  border-top: @caret-width-base solid ~"\9"; // IE8
   border-right: @caret-width-base solid transparent;
-  border-left:  @caret-width-base solid transparent;
+  border-left: @caret-width-base solid transparent;
 }
 
 // The dropdown wrapper (div)
@@ -38,15 +38,15 @@
   min-width: 160px;
   padding: 5px 0;
   margin: 2px 0 0; // override default ul
-  list-style: none;
   font-size: @font-size-base;
   text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
+  list-style: none;
   background-color: @dropdown-bg;
+  background-clip: padding-box;
   border: 1px solid @dropdown-fallback-border; // IE8 fallback
   border: 1px solid @dropdown-border;
   border-radius: @border-radius-base;
-  .box-shadow(0 6px 12px rgba(0,0,0,.175));
-  background-clip: padding-box;
+  .box-shadow(0 6px 12px rgba(0, 0, 0, .175));
 
   // Aligns the dropdown menu to right
   //
@@ -66,20 +66,17 @@
     display: block;
     padding: 3px 20px;
     clear: both;
-    font-weight: normal;
+    font-weight: 400;
     line-height: @line-height-base;
     color: @dropdown-link-color;
     white-space: nowrap; // prevent links from randomly breaking onto new lines
-  }
-}
 
-// Hover/Focus state
-.dropdown-menu > li > a {
-  &:hover,
-  &:focus {
-    text-decoration: none;
-    color: @dropdown-link-hover-color;
-    background-color: @dropdown-link-hover-bg;
+    &:hover,
+    &:focus {
+      color: @dropdown-link-hover-color;
+      text-decoration: none;
+      background-color: @dropdown-link-hover-bg;
+    }
   }
 }
 
@@ -90,8 +87,8 @@
   &:focus {
     color: @dropdown-link-active-color;
     text-decoration: none;
-    outline: 0;
     background-color: @dropdown-link-active-bg;
+    outline: 0;
   }
 }
 
@@ -110,10 +107,10 @@
   &:hover,
   &:focus {
     text-decoration: none;
+    cursor: @cursor-disabled;
     background-color: transparent;
     background-image: none; // Remove CSS gradient
     .reset-filter();
-    cursor: @cursor-disabled;
   }
 }
 
@@ -135,8 +132,8 @@
 // Add extra class to `.dropdown-menu` to flip the alignment of the dropdown
 // menu with the parent.
 .dropdown-menu-right {
-  left: auto; // Reset the default from `.dropdown-menu`
   right: 0;
+  left: auto; // Reset the default from `.dropdown-menu`
 }
 // With v3, we enabled auto-flipping if you have a dropdown within a right
 // aligned nav component. To enable the undoing of that, we provide an override
@@ -145,8 +142,8 @@
 // This is only for left-aligning a dropdown menu within a `.navbar-right` or
 // `.pull-right` nav component.
 .dropdown-menu-left {
-  left: 0;
   right: auto;
+  left: 0;
 }
 
 // Dropdown section headers
@@ -162,10 +159,10 @@
 // Backdrop to catch body clicks on mobile, etc.
 .dropdown-backdrop {
   position: fixed;
-  left: 0;
+  top: 0;
   right: 0;
   bottom: 0;
-  top: 0;
+  left: 0;
   z-index: (@zindex-dropdown - 10);
 }
 
@@ -184,10 +181,10 @@
 .navbar-fixed-bottom .dropdown {
   // Reverse the caret
   .caret {
+    content: "";
     border-top: 0;
     border-bottom: @caret-width-base dashed;
     border-bottom: @caret-width-base solid ~"\9"; // IE8
-    content: "";
   }
   // Different positioning for bottom up menu
   .dropdown-menu {

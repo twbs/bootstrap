@@ -1,3 +1,5 @@
+/* stylelint-disable selector-no-qualifying-type */
+
 //
 // Button groups
 // --------------------------------------------------
@@ -103,18 +105,18 @@
 
 // Give the line between buttons some depth
 .btn-group > .btn + .dropdown-toggle {
-  padding-left: 8px;
   padding-right: 8px;
+  padding-left: 8px;
 }
 .btn-group > .btn-lg + .dropdown-toggle {
-  padding-left: 12px;
   padding-right: 12px;
+  padding-left: 12px;
 }
 
 // The clickable button for toggling the menu
 // Remove the gradient and set the same inset shadow as the :active state
 .btn-group.open .dropdown-toggle {
-  .box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
+  .box-shadow(inset 0 3px 5px rgba(0, 0, 0, .125));
 
   // Show no shadow for `.btn-link` since it has no other button styles.
   &.btn-link {
@@ -205,8 +207,8 @@
   border-collapse: separate;
   > .btn,
   > .btn-group {
-    float: none;
     display: table-cell;
+    float: none;
     width: 1%;
   }
   > .btn-group .btn {
@@ -237,7 +239,7 @@
     input[type="radio"],
     input[type="checkbox"] {
       position: absolute;
-      clip: rect(0,0,0,0);
+      clip: rect(0, 0, 0, 0);
       pointer-events: none;
     }
   }

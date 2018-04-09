@@ -1,3 +1,5 @@
+/* stylelint-disable selector-list-comma-newline-after, selector-no-qualifying-type */
+
 //
 // Typography
 // --------------------------------------------------
@@ -15,7 +17,7 @@ h1, h2, h3, h4, h5, h6,
 
   small,
   .small {
-    font-weight: normal;
+    font-weight: 400;
     line-height: 1;
     color: @headings-small-color;
   }
@@ -82,8 +84,8 @@ small,
 
 mark,
 .mark {
-  background-color: @state-warning-bg;
   padding: .2em;
+  background-color: @state-warning-bg;
 }
 
 // Alignment
@@ -180,8 +182,8 @@ ol {
 
   > li {
     display: inline-block;
-    padding-left: 5px;
     padding-right: 5px;
+    padding-left: 5px;
   }
 }
 
@@ -195,7 +197,7 @@ dd {
   line-height: @line-height-base;
 }
 dt {
-  font-weight: bold;
+  font-weight: 700;
 }
 dd {
   margin-left: 0; // Undo browser default
@@ -259,8 +261,8 @@ blockquote {
     line-height: @line-height-base;
     color: @blockquote-small-color;
 
-    &:before {
-      content: '\2014 \00A0'; // em dash, nbsp
+    &::before {
+      content: "\2014 \00A0"; // em dash, nbsp
     }
   }
 }
@@ -272,17 +274,17 @@ blockquote {
 blockquote.pull-right {
   padding-right: 15px;
   padding-left: 0;
+  text-align: right;
   border-right: 5px solid @blockquote-border-color;
   border-left: 0;
-  text-align: right;
 
   // Account for citation
   footer,
   small,
   .small {
-    &:before { content: ''; }
-    &:after {
-      content: '\00A0 \2014'; // nbsp, em dash
+    &::before { content: ""; }
+    &::after {
+      content: "\00A0 \2014"; // nbsp, em dash
     }
   }
 }

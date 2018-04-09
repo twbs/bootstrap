@@ -1,3 +1,5 @@
+/* stylelint-disable selector-max-class, selector-max-combinators, selector-max-compound-selectors, declaration-no-important, selector-no-qualifying-type, property-no-vendor-prefix */
+
 /* Template-specific stuff
  *
  * Customizations just for the template; these are not necessary for anything
@@ -47,9 +49,9 @@ body,
   padding-top: 15px;
   padding-bottom: 15px;
   background-color: #eee;
-  background-color: rgba(86,61,124,.15);
+  background-color: rgba(86, 61, 124, .15);
   border: 1px solid #ddd;
-  border: 1px solid rgba(86,61,124,.2);
+  border: 1px solid rgba(86, 61, 124, .2);
 }
 
 .container .navbar-header,
@@ -70,13 +72,11 @@ body,
   padding-bottom: 0;
   overflow: visible !important;
   visibility: visible !important;
+  border-top: 0;
 }
 
 .navbar-toggle {
   display: none;
-}
-.navbar-collapse {
-  border-top: 0;
 }
 
 .navbar-brand {
@@ -110,7 +110,7 @@ body,
   border-width: 0 1px 1px;
   border-radius: 0 0 4px 4px;
   -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
-          box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
 }
 .navbar-default .navbar-nav .open .dropdown-menu > li > a {
   color: #333;
@@ -140,7 +140,7 @@ body,
   margin-left: 0;
   border: 0;
   -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
 }
 
 /* Copy-pasted from forms.less since we mixin the .form-inline styles. */

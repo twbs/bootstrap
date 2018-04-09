@@ -1,3 +1,5 @@
+/* stylelint-disable property-no-vendor-prefix, selector-max-id, selector-no-qualifying-type */
+
 // Grid examples
 //
 // Highlight the grid columns within the docs so folks can see their padding,
@@ -10,9 +12,9 @@
   padding-top: 10px;
   padding-bottom: 10px;
   background-color: #eee;
-  background-color: rgba(86,61,124,.15);
+  background-color: rgba(86, 61, 124, .15);
   border: 1px solid #ddd;
-  border: 1px solid rgba(86,61,124,.2);
+  border: 1px solid rgba(86, 61, 124, .2);
 }
 
 // Examples
@@ -27,16 +29,16 @@
   border-color: #e5e5e5 #eee #eee;
   border-style: solid;
   border-width: 1px 0;
-  -webkit-box-shadow: inset 0 3px 6px rgba(0,0,0,.05);
-          box-shadow: inset 0 3px 6px rgba(0,0,0,.05);
+  -webkit-box-shadow: inset 0 3px 6px rgba(0, 0, 0, .05);
+  box-shadow: inset 0 3px 6px rgba(0, 0, 0, .05);
 }
 // Echo out a label for the example
-.bs-example:after {
+.bs-example::after {
   position: absolute;
   top: 15px;
   left: 15px;
   font-size: 12px;
-  font-weight: bold;
+  font-weight: 700;
   color: #959595;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -65,7 +67,7 @@
     border-width: 1px;
     border-radius: 4px 4px 0 0;
     -webkit-box-shadow: none;
-            box-shadow: none;
+    box-shadow: none;
   }
   .bs-example + .highlight,
   .bs-example + .zero-clipboard + .highlight {
@@ -156,9 +158,11 @@
 }
 
 // Forms
-.bs-example-control-sizing select,
-.bs-example-control-sizing input[type="text"] + input[type="text"] {
-  margin-top: 10px;
+.bs-example-control-sizing {
+  select,
+  input[type="text"] + input[type="text"] {
+    margin-top: 10px;
+  }
 }
 .bs-example-form .input-group {
   margin-bottom: 10px;
@@ -195,7 +199,7 @@
 .bs-navbar-top-example {
   padding-bottom: 45px;
 }
-.bs-navbar-top-example:after {
+.bs-navbar-top-example::after {
   top: auto;
   bottom: 15px;
 }
@@ -311,10 +315,10 @@
 
 // Pseudo :focus state for showing how it looks in the docs
 #focusedInput {
-  border-color: rgb(204,204,204); // Restate unfocused value to make CSSLint happy that there's a pre-CSS3 fallback
-  border-color: rgba(82,168,236,.8);
+  border-color: rgb(204, 204, 204); // Restate unfocused value to make CSSLint happy that there's a pre-CSS3 fallback
+  border-color: rgba(82, 168, 236, .8);
   outline: 0;
   outline: thin dotted \9; // IE6-9
-  -webkit-box-shadow: 0 0 8px rgba(82,168,236,.6);
-          box-shadow: 0 0 8px rgba(82,168,236,.6);
+  -webkit-box-shadow: 0 0 8px rgba(82, 168, 236, .6);
+  box-shadow: 0 0 8px rgba(82, 168, 236, .6);
 }

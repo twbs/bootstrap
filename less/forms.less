@@ -1,3 +1,5 @@
+/* stylelint-disable selector-no-qualifying-type, property-no-vendor-prefix, media-feature-name-no-vendor-prefix, indentation */
+
 //
 // Forms
 // --------------------------------------------------
@@ -8,13 +10,13 @@
 // Restyle and baseline non-control form elements.
 
 fieldset {
-  padding: 0;
-  margin: 0;
-  border: 0;
   // Chrome and Firefox set a `min-width: min-content;` on fieldsets,
   // so we reset that to ensure it behaves more like a standard block element.
   // See https://github.com/twbs/bootstrap/issues/12359.
   min-width: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
 }
 
 legend {
@@ -33,7 +35,7 @@ label {
   display: inline-block;
   max-width: 100%; // Force IE8 to wrap long content (see https://github.com/twbs/bootstrap/issues/13141)
   margin-bottom: 5px;
-  font-weight: bold;
+  font-weight: 700;
 }
 
 
@@ -43,9 +45,17 @@ label {
 // is required to ensure optimum display with or without those classes to better
 // address browser inconsistencies.
 
-// Override content-box in Normalize (* isn't specific enough)
 input[type="search"] {
+  // Override content-box in Normalize (* isn't specific enough)
   .box-sizing(border-box);
+
+  // Search inputs in iOS
+  //
+  // This overrides the extra rounded corners on search inputs in iOS so that our
+  // `.form-control` class can properly style them. Note that this cannot simply
+  // be added to `.form-control` as it's not specific enough. For details, see
+  // https://github.com/twbs/bootstrap/issues/11586.
+  -webkit-appearance: none;
 }
 
 // Position radios and checkboxes better
@@ -54,6 +64,16 @@ input[type="checkbox"] {
   margin: 4px 0 0;
   margin-top: 1px \9; // IE8-9
   line-height: normal;
+
+  // Apply same disabled cursor tweak as for inputs
+  // Some special care is needed because <label>s don't inherit their parent's `cursor`.
+  //
+  // Note: Neither radios nor checkboxes can be readonly.
+  &[disabled],
+  &.disabled,
+  fieldset[disabled] & {
+    cursor: @cursor-disabled;
+  }
 }
 
 input[type="file"] {
@@ -123,7 +143,7 @@ output {
   background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
   border: 1px solid @input-border;
   border-radius: @input-border-radius; // Note: This has no effect on <select>s in some browsers, due to the limited stylability of <select>s in CSS.
-  .box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
+  .box-shadow(inset 0 1px 1px rgba(0, 0, 0, .075));
   .transition(~"border-color ease-in-out .15s, box-shadow ease-in-out .15s");
 
   // Customize the `:focus` state to imitate native WebKit styles.
@@ -134,8 +154,8 @@ output {
 
   // Unstyle the caret on `<select>`s in IE10+.
   &::-ms-expand {
-    border: 0;
     background-color: transparent;
+    border: 0;
   }
 
   // Disabled and read-only inputs
@@ -159,18 +179,6 @@ output {
   textarea& {
     height: auto;
   }
-}
-
-
-// Search inputs in iOS
-//
-// This overrides the extra rounded corners on search inputs in iOS so that our
-// `.form-control` class can properly style them. Note that this cannot simply
-// be added to `.form-control` as it's not specific enough. For details, see
-// https://github.com/twbs/bootstrap/issues/11586.
-
-input[type="search"] {
-  -webkit-appearance: none;
 }
 
 
@@ -226,11 +234,19 @@ input[type="search"] {
   margin-top: 10px;
   margin-bottom: 10px;
 
+  // These are used on elements with <label> descendants
+  &.disabled,
+  fieldset[disabled] & {
+    label {
+      cursor: @cursor-disabled;
+    }
+  }
+
   label {
     min-height: @line-height-computed; // Ensure the input doesn't jump when there is no text
     padding-left: 20px;
     margin-bottom: 0;
-    font-weight: normal;
+    font-weight: 400;
     cursor: pointer;
   }
 }
@@ -239,8 +255,8 @@ input[type="search"] {
 .checkbox input[type="checkbox"],
 .checkbox-inline input[type="checkbox"] {
   position: absolute;
-  margin-left: -20px;
   margin-top: 4px \9;
+  margin-left: -20px;
 }
 
 .radio + .radio,
@@ -255,45 +271,20 @@ input[type="search"] {
   display: inline-block;
   padding-left: 20px;
   margin-bottom: 0;
+  font-weight: 400;
   vertical-align: middle;
-  font-weight: normal;
   cursor: pointer;
+
+  // These are used directly on <label>s
+  &.disabled,
+  fieldset[disabled] & {
+    cursor: @cursor-disabled;
+  }
 }
 .radio-inline + .radio-inline,
 .checkbox-inline + .checkbox-inline {
   margin-top: 0;
   margin-left: 10px; // space out consecutive inline controls
-}
-
-// Apply same disabled cursor tweak as for inputs
-// Some special care is needed because <label>s don't inherit their parent's `cursor`.
-//
-// Note: Neither radios nor checkboxes can be readonly.
-input[type="radio"],
-input[type="checkbox"] {
-  &[disabled],
-  &.disabled,
-  fieldset[disabled] & {
-    cursor: @cursor-disabled;
-  }
-}
-// These classes are used directly on <label>s
-.radio-inline,
-.checkbox-inline {
-  &.disabled,
-  fieldset[disabled] & {
-    cursor: @cursor-disabled;
-  }
-}
-// These classes are used on elements with <label> descendants
-.radio,
-.checkbox {
-  &.disabled,
-  fieldset[disabled] & {
-    label {
-      cursor: @cursor-disabled;
-    }
-  }
 }
 
 
@@ -303,17 +294,17 @@ input[type="checkbox"] {
 // a horizontal form layout.
 
 .form-control-static {
+  min-height: (@line-height-computed + @font-size-base);
   // Size it appropriately next to real form controls
   padding-top: (@padding-base-vertical + 1);
   padding-bottom: (@padding-base-vertical + 1);
   // Remove default margin from `p`
   margin-bottom: 0;
-  min-height: (@line-height-computed + @font-size-base);
 
   &.input-lg,
   &.input-sm {
-    padding-left: 0;
     padding-right: 0;
+    padding-left: 0;
   }
 }
 
@@ -556,9 +547,9 @@ input[type="checkbox"] {
   .checkbox,
   .radio-inline,
   .checkbox-inline {
+    padding-top: (@padding-base-vertical + 1); // Default padding plus a border
     margin-top: 0;
     margin-bottom: 0;
-    padding-top: (@padding-base-vertical + 1); // Default padding plus a border
   }
   // Account for padding we're adding to ensure the alignment and of help text
   // and other content below items
@@ -576,9 +567,9 @@ input[type="checkbox"] {
   // labels on narrow viewports stack the same as a default form example.
   @media (min-width: @screen-sm-min) {
     .control-label {
-      text-align: right;
-      margin-bottom: 0;
       padding-top: (@padding-base-vertical + 1); // Default padding plus a border
+      margin-bottom: 0;
+      text-align: right;
     }
   }
 
