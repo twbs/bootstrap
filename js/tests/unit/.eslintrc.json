@@ -7,7 +7,9 @@
   "globals": {
     "bootstrap": false,
     "sinon": false,
-    "Util": false
+    "Util": false,
+    "Alert": false,
+    "Button": false
   },
   "parserOptions": {
     "ecmaVersion": 5,
