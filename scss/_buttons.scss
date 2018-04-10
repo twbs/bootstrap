@@ -34,12 +34,12 @@
   }
 
   // Opinionated: add "hand" cursor to non-disabled .btn elements
-  &:not([disabled]):not(.disabled) {
+  &:not(:disabled):not(.disabled) {
     cursor: pointer;
   }
 
-  &:not([disabled]):not(.disabled):active,
-  &:not([disabled]):not(.disabled).active {
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled).active {
     background-image: none;
     @include box-shadow($btn-active-box-shadow);
 
@@ -51,7 +51,7 @@
 
 // Future-proof disabling of clicks on `<a>` elements
 a.btn.disabled,
-fieldset[disabled] a.btn {
+fieldset:disabled a.btn {
   pointer-events: none;
 }
 
@@ -68,11 +68,7 @@ fieldset[disabled] a.btn {
 
 @each $color, $value in $theme-colors {
   .btn-outline-#{$color} {
-    @if $color == "light" {
-      @include button-outline-variant($value, $gray-900);
-    } @else {
-      @include button-outline-variant($value, $white);
-    }
+    @include button-outline-variant($value);
   }
 }
 
@@ -104,6 +100,7 @@ fieldset[disabled] a.btn {
   &:disabled,
   &.disabled {
     color: $btn-link-disabled-color;
+    pointer-events: none;
   }
 
   // No need for an active state here

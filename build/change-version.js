@@ -1,15 +1,13 @@
 #!/usr/bin/env node
 
-'use strict'
-
 /*!
  * Script to update version number references in the project.
- * Copyright 2017 The Bootstrap Authors
- * Copyright 2017 Twitter, Inc.
+ * Copyright 2017-2018 The Bootstrap Authors
+ * Copyright 2017-2018 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
-/* global Set */
+'use strict'
 
 const fs = require('fs')
 const path = require('path')
@@ -18,8 +16,13 @@ const sh = require('shelljs')
 sh.config.fatal = true
 
 // Blame TC39... https://github.com/benjamingr/RegExp.escape/issues/37
-RegExp.quote = (string) => string.replace(/[-\\^$*+?.()|[\]{}]/g, '\\$&')
-RegExp.quoteReplacement = (string) => string.replace(/[$]/g, '$$')
+function regExpQuote(string) {
+  return string.replace(/[-\\^$*+?.()|[\]{}]/g, '\\$&')
+}
+
+function regExpQuoteReplacement(string) {
+  return string.replace(/[$]/g, '$$')
+}
 
 const DRY_RUN = false
 
@@ -39,13 +42,9 @@ function walkAsync(directory, excludedDirectories, fileCallback, errback) {
           process.nextTick(errback, err)
           return
         }
-        if (stats.isSymbolicLink()) {
-          return
-        }
-        else if (stats.isDirectory()) {
+        if (stats.isDirectory()) {
           process.nextTick(walkAsync, filepath, excludedDirectories, fileCallback, errback)
-        }
-        else if (stats.isFile()) {
+        } else if (stats.isFile()) {
           process.nextTick(fileCallback, filepath)
         }
       })
@@ -54,18 +53,17 @@ function walkAsync(directory, excludedDirectories, fileCallback, errback) {
 }
 
 function replaceRecursively(directory, excludedDirectories, allowedExtensions, original, replacement) {
-  original = new RegExp(RegExp.quote(original), 'g')
-  replacement = RegExp.quoteReplacement(replacement)
-  const updateFile = !DRY_RUN ? (filepath) => {
+  original = new RegExp(regExpQuote(original), 'g')
+  replacement = regExpQuoteReplacement(replacement)
+  const updateFile = DRY_RUN ? (filepath) => {
     if (allowedExtensions.has(path.parse(filepath).ext)) {
-      sh.sed('-i', original, replacement, filepath)
+      console.log(`FILE: ${filepath}`)
+    } else {
+      console.log(`EXCLUDED:${filepath}`)
     }
   } : (filepath) => {
     if (allowedExtensions.has(path.parse(filepath).ext)) {
-      console.log(`FILE: ${filepath}`)
-    }
-    else {
-      console.log(`EXCLUDED:${filepath}`)
+      sh.sed('-i', original, replacement, filepath)
     }
   }
   walkAsync(directory, excludedDirectories, updateFile, (err) => {

@@ -2,8 +2,8 @@
 
 /*!
  * Script to run vnu-jar if Java is available.
- * Copyright 2017 The Bootstrap Authors
- * Copyright 2017 Twitter, Inc.
+ * Copyright 2017-2018 The Bootstrap Authors
+ * Copyright 2017-2018 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
@@ -39,7 +39,9 @@ childProcess.exec('java -version', (error, stdout, stderr) => {
     'The “time” input type is not supported in all browsers.*',
     // IE11 doesn't recognise <main> / give the element an implicit "main" landmark.
     // Explicit role="main" is redundant for other modern browsers, but still valid.
-    'The “main” role is unnecessary for element “main”.'
+    'The “main” role is unnecessary for element “main”.',
+    // Ignore the wrong lanuage code warnings for now; they happen randomly.
+    'This document appears to be written in.*'
   ].join('|')
 
   const args = [
@@ -62,5 +64,5 @@ childProcess.exec('java -version', (error, stdout, stderr) => {
     shell: true,
     stdio: 'inherit'
   })
-  .on('exit', process.exit)
+    .on('exit', process.exit)
 })

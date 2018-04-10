@@ -64,6 +64,7 @@
     - title: Image replacement
     - title: Position
     - title: Screenreaders
+    - title: Shadows
     - title: Sizing
     - title: Spacing
     - title: Text
@@ -72,7 +73,7 @@
 
 - title: Extend
   pages:
-    # - title: Approach
+    - title: Approach
     - title: Icons
 
 - title: Migration

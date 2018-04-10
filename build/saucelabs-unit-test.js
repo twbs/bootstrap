@@ -1,7 +1,7 @@
 /*!
  * Script to run our Sauce Labs tests.
- * Copyright 2017 The Bootstrap Authors
- * Copyright 2017 Twitter, Inc.
+ * Copyright 2017-2018 The Bootstrap Authors
+ * Copyright 2017-2018 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
@@ -58,6 +58,7 @@ const waitingCallback = (error, body, id) => {
       console.log(`Platform: ${test.platform.join(', ')}`)
       console.log(`Passed: ${passed.toString()}`)
       console.log(`URL: ${test.url}\n`)
+
       if (errorStr) {
         console.error(errorStr)
       }
@@ -71,8 +72,8 @@ const waitingCallback = (error, body, id) => {
       if (jobsDone === browsersFile.length - 1) {
         jsUnitSaucelabs.stop()
         if (jobsDone > jobsSucceeded) {
-          const failedTest = jobsDone - jobsSucceeded
-          throw new Error(`Some test(s) failed (${failedTest})`)
+          const failedTests = jobsDone - jobsSucceeded
+          throw new Error(`${failedTests} test${failedTests > 1 ? 's' : ''} failed.`)
         }
 
         console.log('All tests passed')
@@ -91,7 +92,7 @@ jsUnitSaucelabs.on('tunnelCreated', () => {
       if (typeof success !== 'undefined') {
         const taskIds = success['js tests']
 
-        if (!taskIds || !taskIds.length) {
+        if (!taskIds || taskIds.length === 0) {
           throw new Error('Error starting tests through Sauce Labs API')
         }
 
