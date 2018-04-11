@@ -618,7 +618,7 @@ By default, a dropdown menu is automatically positioned 100% from the top and al
 
 ### Responsive alignment
 
-If you want to responsive alignment, disable dynamic positioning by adding `data-display="static"` attribute and use the responsive variation classes.
+If you want to use responsive alignment, disable dynamic positioning by adding the `data-display="static"` attribute and use the responsive variation classes.
 
 To align **right** the dropdown menu with the given breakpoint or larger, add `.dropdown-menu-right{-sm|-md|-lg|-xl}`.
 
@@ -652,7 +652,7 @@ To align **left** the dropdown menu with the given breakpoint or larger, add `.d
 {% endcapture %}
 {% include example.html content=example %}
 
-Note You don't need to add a `data-display="static"` attribute to dropdown buttons in navbars, since Popper.js isn’t used in navbars.
+Note that you don't need to add a `data-display="static"` attribute to dropdown buttons in navbars, since Popper.js isn't used in navbars.
 
 ## Menu content
 
