@@ -616,6 +616,44 @@ By default, a dropdown menu is automatically positioned 100% from the top and al
 {% endcapture %}
 {% include example.html content=example %}
 
+### Responsive alignment
+
+If you want to responsive alignment, disable dynamic positioning by adding `data-display="static"` attribute and use the responsive variation classes.
+
+To align **right** the dropdown menu with the given breakpoint or larger, add `.dropdown-menu-right{-sm|-md|-lg|-xl}`.
+
+{% capture example %}
+<div class="btn-group">
+  <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+    Left-aligned but right aligned when large screen
+  </button>
+  <div class="dropdown-menu dropdown-menu-lg-right">
+    <button class="dropdown-item" type="button">Action</button>
+    <button class="dropdown-item" type="button">Another action</button>
+    <button class="dropdown-item" type="button">Something else here</button>
+  </div>
+</div>
+{% endcapture %}
+{% include example.html content=example %}
+
+To align **left** the dropdown menu with the given breakpoint or larger, add `.dropdown-menu-right` and `.dropdown-menu-left{-sm|-md|-lg|-xl}`.
+
+{% capture example %}
+<div class="btn-group">
+  <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+    Right-aligned but left aligned when large screen
+  </button>
+  <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
+    <button class="dropdown-item" type="button">Action</button>
+    <button class="dropdown-item" type="button">Another action</button>
+    <button class="dropdown-item" type="button">Something else here</button>
+  </div>
+</div>
+{% endcapture %}
+{% include example.html content=example %}
+
+Note You don't need to add a `data-display="static"` attribute to dropdown buttons in navbars, since Popper.js isn’t used in navbars.
+
 ## Menu content
 
 ### Headers
