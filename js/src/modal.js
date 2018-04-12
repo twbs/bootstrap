@@ -498,7 +498,7 @@ const Modal = (($) => {
       return this.each(function () {
         let data = $(this).data(DATA_KEY)
         const _config = {
-          ...Modal.Default,
+          ...Default,
           ...$(this).data(),
           ...typeof config === 'object' && config
         }
