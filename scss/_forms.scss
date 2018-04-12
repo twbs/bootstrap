@@ -121,6 +121,7 @@ select.form-control {
   padding-bottom: $input-padding-y;
   margin-bottom: 0; // match inputs if this class comes on inputs with default margins
   line-height: $input-line-height;
+  color: $input-plaintext-color;
   background-color: transparent;
   border: solid transparent;
   border-width: $input-border-width 0;
@@ -302,7 +303,8 @@ select.form-control-lg {
       display: inline-block;
     }
 
-    .input-group {
+    .input-group,
+    .custom-select {
       width: auto;
     }
 
