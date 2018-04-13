@@ -16,9 +16,8 @@ const plugins = [
     externalHelpersWhitelist: [ // Include only required helpers
       'defineProperties',
       'createClass',
-      'inheritsLoose',
-      'defineProperty',
-      'objectSpread'
+      'extends',
+      'inheritsLoose'
     ]
   })
 ]

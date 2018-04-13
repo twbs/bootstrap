@@ -537,7 +537,7 @@ $(function () {
           which: 38
         }))
         assert.ok($(document.activeElement).is($textarea), 'textarea still focused')
-
+        document.activeElement.blur()
         done()
       })
 
