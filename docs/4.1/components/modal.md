@@ -665,6 +665,22 @@ Bootstrap's modal class exposes a few events for hooking into modal functionalit
       <td>hidden.bs.modal</td>
       <td>This event is fired when the modal has finished being hidden from the user (will wait for CSS transitions to complete).</td>
     </tr>
+    <tr>
+      <td>focusin.bs.modal</td>
+      <td>This event is fired when a modal gets focus inside.</td>
+    </tr>
+    <tr>
+      <td>resize.bs.modal</td>
+      <td>This event is fired when a modal is resized.</td>
+    </tr>
+    <tr>
+      <td>click.dismiss.bs.modal</td>
+      <td>This event is fired when a modal is closed by clicking on a backdrop.</td>
+    </tr>
+    <tr>
+      <td>keydown.dismiss.bs.modal</td>
+      <td>This event is fired when a modal is closed by pressing the Escape key on a keyboard.</td>
+    </tr>
   </tbody>
 </table>
 
