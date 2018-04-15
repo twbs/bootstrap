@@ -143,11 +143,18 @@
     $infix: breakpoint-infix($next, $grid-breakpoints);
 
     &#{$infix} {
-      @include media-breakpoint-down($breakpoint) {
-        > .container,
-        > .container-fluid {
-          padding-right: 0;
-          padding-left: 0;
+      // On the final pass through the loop,
+      // $breakpoint = xl, $next = null and $infix = "",
+      // effectively wrapping around from xl to xs. This final pass
+      // generates rules for bare navbar-expand, and we shouldn't zero
+      // container padding since there are no smaller breakpoints.
+      @if $next {
+        @include media-breakpoint-down($breakpoint) {
+          > .container,
+          > .container-fluid {
+            padding-right: 0;
+            padding-left: 0;
+          }
         }
       }
 
