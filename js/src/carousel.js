@@ -3,7 +3,7 @@ import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0): carousel.js
+ * Bootstrap (v4.1.0): carousel.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -16,12 +16,11 @@ const Carousel = (($) => {
    */
 
   const NAME                   = 'carousel'
-  const VERSION                = '4.0.0'
+  const VERSION                = '4.1.0'
   const DATA_KEY               = 'bs.carousel'
   const EVENT_KEY              = `.${DATA_KEY}`
   const DATA_API_KEY           = '.data-api'
   const JQUERY_NO_CONFLICT     = $.fn[NAME]
-  const TRANSITION_DURATION    = 600
   const ARROW_LEFT_KEYCODE     = 37 // KeyboardEvent.which value for left arrow key
   const ARROW_RIGHT_KEYCODE    = 39 // KeyboardEvent.which value for right arrow key
   const TOUCHEVENT_COMPAT_WAIT = 500 // Time for mouse compat events to fire after touch
@@ -89,18 +88,18 @@ const Carousel = (($) => {
 
   class Carousel {
     constructor(element, config) {
-      this._items             = null
-      this._interval          = null
-      this._activeElement     = null
+      this._items              = null
+      this._interval           = null
+      this._activeElement      = null
 
-      this._isPaused          = false
-      this._isSliding         = false
+      this._isPaused           = false
+      this._isSliding          = false
 
-      this.touchTimeout       = null
+      this.touchTimeout        = null
 
-      this._config            = this._getConfig(config)
-      this._element           = $(element)[0]
-      this._indicatorsElement = $(this._element).find(Selector.INDICATORS)[0]
+      this._config             = this._getConfig(config)
+      this._element            = $(element)[0]
+      this._indicatorsElement  = $(this._element).find(Selector.INDICATORS)[0]
 
       this._addEventListeners()
     }
@@ -143,8 +142,7 @@ const Carousel = (($) => {
         this._isPaused = true
       }
 
-      if ($(this._element).find(Selector.NEXT_PREV)[0] &&
-        Util.supportsTransitionEnd()) {
+      if ($(this._element).find(Selector.NEXT_PREV)[0]) {
         Util.triggerTransitionEnd(this._element)
         this.cycle(true)
       }
@@ -377,14 +375,15 @@ const Carousel = (($) => {
         to: nextElementIndex
       })
 
-      if (Util.supportsTransitionEnd() &&
-        $(this._element).hasClass(ClassName.SLIDE)) {
+      if ($(this._element).hasClass(ClassName.SLIDE)) {
         $(nextElement).addClass(orderClassName)
 
         Util.reflow(nextElement)
 
         $(activeElement).addClass(directionalClassName)
         $(nextElement).addClass(directionalClassName)
+
+        const transitionDuration = Util.getTransitionDurationFromElement(activeElement)
 
         $(activeElement)
           .one(Util.TRANSITION_END, () => {
@@ -398,7 +397,7 @@ const Carousel = (($) => {
 
             setTimeout(() => $(this._element).trigger(slidEvent), 0)
           })
-          .emulateTransitionEnd(TRANSITION_DURATION)
+          .emulateTransitionEnd(transitionDuration)
       } else {
         $(activeElement).removeClass(ClassName.ACTIVE)
         $(nextElement).addClass(ClassName.ACTIVE)

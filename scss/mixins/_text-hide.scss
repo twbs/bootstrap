@@ -6,4 +6,6 @@
   text-shadow: none;
   background-color: transparent;
   border: 0;
+
+  @warn "The `text-hide()` mixin has been deprecated as of v4.1.0. It will be removed entirely in v5.";
 }
