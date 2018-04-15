@@ -611,7 +611,7 @@ const Tooltip = (($) => {
       config = {
         ...this.constructor.Default,
         ...$(this.element).data(),
-        ...config
+        ...typeof config === 'object' && config ? config : {}
       }
 
       if (typeof config.delay === 'number') {
