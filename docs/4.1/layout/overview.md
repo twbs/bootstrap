@@ -70,13 +70,12 @@ Bootstrap primarily uses the following media query ranges—or breakpoints—in 
 Since we write our source CSS in Sass, all our media queries are available via Sass mixins:
 
 {% highlight scss %}
-@include media-breakpoint-up(xs) { ... }
 @include media-breakpoint-up(sm) { ... }
 @include media-breakpoint-up(md) { ... }
 @include media-breakpoint-up(lg) { ... }
 @include media-breakpoint-up(xl) { ... }
 
-// Example usage:
+// Example usage, small and up:
 @include media-breakpoint-up(sm) {
   .some-class {
     display: block;
@@ -112,6 +111,13 @@ Once again, these media queries are also available via Sass mixins:
 @include media-breakpoint-down(sm) { ... }
 @include media-breakpoint-down(md) { ... }
 @include media-breakpoint-down(lg) { ... }
+
+// Example usage, medium and down:
+@include media-breakpoint-down(md) {
+  .some-class {
+    display: block;
+  }
+}
 {% endhighlight %}
 
 There are also media queries and mixins for targeting a single segment of screen sizes using the minimum and maximum breakpoint widths.
