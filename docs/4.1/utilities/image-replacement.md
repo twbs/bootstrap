@@ -8,7 +8,7 @@ toc: true
 
 {% capture callout %}
 ##### Warning
-This class has been deprecated
+This component is deprecated and will be removed in a future version of bootstrap
 {% endcapture %}
 {% include callout.html content=callout type="warning" %}
 
