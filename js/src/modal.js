@@ -500,7 +500,7 @@ const Modal = (($) => {
         const _config = {
           ...Default,
           ...$(this).data(),
-          ...typeof config === 'object' && config
+          ...typeof config === 'object' && config ? config : {}
         }
 
         if (!data) {

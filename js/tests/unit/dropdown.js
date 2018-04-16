@@ -544,6 +544,41 @@ $(function () {
     $dropdown.trigger('click')
   })
 
+  QUnit.test('should skip disabled element when using keyboard navigation', function (assert) {
+    assert.expect(3)
+    var done = assert.async()
+    var dropdownHTML = '<div class="tabs">' +
+        '<div class="dropdown">' +
+        '<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>' +
+        '<div class="dropdown-menu">' +
+        '<a class="dropdown-item disabled" href="#">Disabled link</a>' +
+        '<button class="dropdown-item" type="button" disabled>Disabled button</button>' +
+        '<a id="item1" class="dropdown-item" href="#">Another link</a>' +
+        '</div>' +
+        '</div>' +
+        '</div>'
+    var $dropdown = $(dropdownHTML)
+      .appendTo('#qunit-fixture')
+      .find('[data-toggle="dropdown"]')
+      .bootstrapDropdown()
+
+    $dropdown
+      .parent('.dropdown')
+      .on('shown.bs.dropdown', function () {
+        assert.ok(true, 'shown was fired')
+        $dropdown.trigger($.Event('keydown', {
+          which: 40
+        }))
+        $dropdown.trigger($.Event('keydown', {
+          which: 40
+        }))
+        assert.ok(!$(document.activeElement).is('.disabled'), '.disabled is not focused')
+        assert.ok(!$(document.activeElement).is(':disabled'), ':disabled is not focused')
+        done()
+      })
+    $dropdown.trigger('click')
+  })
+
   QUnit.test('should focus next/previous element when using keyboard navigation', function (assert) {
     assert.expect(4)
     var done = assert.async()
@@ -579,41 +614,6 @@ $(function () {
           which: 38
         }))
         assert.ok($(document.activeElement).is($('#item1')), 'item1 is focused')
-        done()
-      })
-    $dropdown.trigger('click')
-  })
-
-  QUnit.test('should skip disabled element when using keyboard navigation', function (assert) {
-    assert.expect(3)
-    var done = assert.async()
-    var dropdownHTML = '<div class="tabs">' +
-        '<div class="dropdown">' +
-        '<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>' +
-        '<div class="dropdown-menu">' +
-        '<a class="dropdown-item disabled" href="#">Disabled link</a>' +
-        '<button class="dropdown-item" type="button" disabled>Disabled button</button>' +
-        '<a id="item1" class="dropdown-item" href="#">Another link</a>' +
-        '</div>' +
-        '</div>' +
-        '</div>'
-    var $dropdown = $(dropdownHTML)
-      .appendTo('#qunit-fixture')
-      .find('[data-toggle="dropdown"]')
-      .bootstrapDropdown()
-
-    $dropdown
-      .parent('.dropdown')
-      .on('shown.bs.dropdown', function () {
-        assert.ok(true, 'shown was fired')
-        $dropdown.trigger($.Event('keydown', {
-          which: 40
-        }))
-        assert.ok($(document.activeElement).is($('#item1')), '#item1 is focused')
-        $dropdown.trigger($.Event('keydown', {
-          which: 40
-        }))
-        assert.ok($(document.activeElement).is($('#item1')), '#item1 is still focused')
         done()
       })
     $dropdown.trigger('click')
