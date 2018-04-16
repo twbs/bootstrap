@@ -165,7 +165,7 @@ const ScrollSpy = (($) => {
     _getConfig(config) {
       config = {
         ...Default,
-        ...config
+        ...typeof config === 'object' && config ? config : {}
       }
 
       if (typeof config.target !== 'string') {
