@@ -6,6 +6,12 @@ group: utilities
 toc: true
 ---
 
+{% capture callout %}
+##### Warning
+This component is deprecated and will be removed in a future version of bootstrap
+{% endcapture %}
+{% include callout.html content=callout type="warning" %}
+
 Utilize the `.text-hide` class or mixin to help replace an element's text content with a background image.
 
 {% highlight html %}
