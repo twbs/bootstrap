@@ -36,6 +36,10 @@ h4 code {
   background-color: inherit;
 }
 
+.bs-docs-container {
+  overflow: hidden;
+}
+
 /* Outline button for use within the docs */
 .btn-outline {
   color: #223049;
