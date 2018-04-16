@@ -91,8 +91,8 @@
     "@babel/cli": "7.0.0-beta.44",
     "@babel/core": "7.0.0-beta.44",
     "@babel/preset-env": "7.0.0-beta.44",
-    "autoprefixer": "^8.2.0",
-    "babel-eslint": "^8.2.2",
+    "autoprefixer": "^8.3.0",
+    "babel-eslint": "^8.2.3",
     "babel-plugin-istanbul": "^4.1.6",
     "babel-plugin-transform-es2015-modules-strip": "^0.1.1",
     "bundlesize": "^0.17.0",
@@ -128,9 +128,9 @@
     "stylelint-config-standard": "^18.2.0",
     "stylelint-order": "^0.8.1",
     "stylelint-scss": "^3.0.0",
-    "uglify-js": "^3.3.20",
+    "uglify-js": "^3.3.21",
     "vnu-jar": "^18.3.0",
-    "workbox-build": "^3.0.1"
+    "workbox-build": "^3.1.0"
   },
   "engines": {
     "node": ">=6"
