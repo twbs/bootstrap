@@ -77,7 +77,7 @@ const Modal = (($) => {
   class Modal {
     constructor(element, config) {
       this._config              = this._getConfig(config)
-      this._element             = element
+      this._element             = element[0]
       this._dialog              = $(element).find(Selector.DIALOG)[0]
       this._backdrop            = null
       this._isShown             = false
