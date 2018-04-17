@@ -114,6 +114,7 @@
     "nodemon": "^1.17.3",
     "npm-run-all": "^4.1.2",
     "popper.js": "^1.14.3",
+    "postcss-calc": "^6.0.1",
     "postcss-cli": "^5.0.0",
     "qunitjs": "^2.4.1",
     "rollup": "^0.58.0",
