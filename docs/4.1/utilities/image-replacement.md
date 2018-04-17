@@ -8,7 +8,7 @@ toc: true
 
 {% capture callout %}
 ##### Warning
-This component is deprecated and will be removed in a future version of bootstrap
+The `text-hide()` clas and mixin has been deprecated as of v4.1. It will be removed entirely in v5.
 {% endcapture %}
 {% include callout.html content=callout type="warning" %}
 
