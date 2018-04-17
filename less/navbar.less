@@ -13,9 +13,10 @@
   font-size: @navbar-font-size;
   min-height: @navbar-height; // Ensure a navbar always shows (e.g., without a .navbar-brand in collapsed mode)
   margin-bottom: @navbar-margin-bottom;
-  border: 0px solid transparent;
-  transition: border-top-width 0s linear,
-              background-color 0.2s linear;
+  border: 0 solid transparent;
+  transition:
+    border-top-width 0s linear,
+    background-color 0.2s linear;
 
   // Prevent floats from breaking the navbar
   &:extend(.clearfix all);
@@ -25,11 +26,10 @@
 
     .container,
     .container-fluid {
-        border: 0px solid transparent;
+      border: 0 solid transparent;
     }
   }
 }
-
 
 // Navbar heading
 //
@@ -44,7 +44,6 @@
   }
 }
 
-
 // Navbar collapse (body)
 //
 // Group your navbar content into this for easy collapsing and expanding across
@@ -58,6 +57,7 @@
 .navbar-collapse {
   overflow-x: visible;
   &:extend(.clearfix all);
+
   -webkit-overflow-scrolling: touch;
 
   @media (min-width: @grid-float-breakpoint) {
@@ -92,11 +92,10 @@
   > .navbar-collapse {
     @media (min-width: @grid-float-breakpoint) {
       margin-right: 0;
-      margin-left:  0;
+      margin-left: 0;
     }
   }
 }
-
 
 //
 // Navbar alignment options
@@ -114,8 +113,8 @@
 
     .container,
     .container-fluid {
-        border-width: 0;
-        margin-bottom: -1px;
+      border-width: 0;
+      margin-bottom: -1px;
     }
   }
 }
@@ -135,38 +134,45 @@
   .navbar-title,
   .navbar-text {
     color: @navbar-inverse-color;
+
+    @media (max-width: @grid-float-breakpoint) {
+      color: @brand-navy;
+    }
   }
+
 
   // Undo the rounded corners
   @media (min-width: @grid-float-breakpoint) {
     border-radius: 0;
   }
 }
-.navbar.affix {
-    top: (-1 * @navbar-height);
-    border-top-width:  @navbar-height;
 
-    transition: border-top-width .2s ease-out,
-                background-color .2s ease-out;
+.navbar.affix {
+  top: (-1 * @navbar-height);
+  border-top-width: @navbar-height;
+  transition:
+    border-top-width 0.2s ease-out,
+    background-color 0.2s ease-out;
 }
+
 .navbar-fixed-top {
   top: 0;
 
   .container,
   .container-fluid {
-      margin-bottom: -1px;
+    margin-bottom: -1px;
   }
 }
+
 .navbar-fixed-bottom {
   bottom: 0;
   margin-bottom: 0; // override .navbar defaults
 
   .container,
   .container-fluid {
-      margin-top: -1px;
+    margin-top: -1px;
   }
 }
-
 
 // Brand/project name
 
@@ -175,11 +181,9 @@
   padding: @navbar-padding-vertical @navbar-padding-horizontal (@navbar-padding-vertical - 3px);
   font-size: @font-size-large;
   line-height: @navbar-line-height;
-  height: @navbar-height;
-
   margin-top: 12px;
   margin-right: 10px;
-  height: 24px;
+  height: (@spacer * 3);
   width: 118px;
 
   &:hover,
@@ -192,7 +196,6 @@
   }
 }
 
-
 // Navbar toggle
 //
 // Custom button for toggling the `.navbar-collapse`, powered by the collapse
@@ -203,10 +206,10 @@
   float: left;
   padding: 9px 0;
   .navbar-vertical-align(34px);
+
   background-color: transparent;
   background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
   border: 0;
-  color: @brand-light-blue;
   margin-right: 12px;
 
   // We remove the `outline` here, but later compensate by attaching `:hover`
@@ -219,7 +222,7 @@
   font-weight: @font-weight-semi-bold;
   line-height: 18px;
   margin-bottom: 8px;
-  color: #fff;
+  color: @brand-white;
 
   .icon-bar:first-child {
     margin-top: 1px;
@@ -233,12 +236,14 @@
     border-radius: 1px;
     background-color: @navbar-default-toggle-icon-bar-bg;
   }
+
   .icon-bar + .icon-bar {
     margin-top: 4px;
   }
+
   &:hover,
   &:focus {
-     color: @brand-light-blue-minus-10;
+    color: @brand-light-blue-minus-10;
 
     .icon-bar {
       background-color: @brand-light-blue-minus-10;
@@ -250,54 +255,92 @@
   }
 }
 
-
 // Navbar nav links
 //
 // Builds on top of the `.nav` components with its own modifier class to make
 // the nav the full height of the horizontal nav (above 768px).
 
 .navbar-nav {
-  > li > a {
-    padding: @navbar-padding;
-    line-height: @navbar-line-height;
-    outline-offset: -1px;
-    transition: color ease @transition-duration;
+  > li {
+    > a,
+    > button {
+      padding: @navbar-padding;
+      line-height: @navbar-line-height;
+      outline-offset: -1px;
+      transition: color ease @transition-duration;
 
-    @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
-      padding-left: 12px;
-      padding-right: 12px;
-    }
+      @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+        padding-left: 12px;
+        padding-right: 12px;
+      }
 
-    &.dropdown-toggle {
-      height: (@navbar-line-height + (2 * @navbar-padding-vertical));
+      &.dropdown-toggle {
+        height: (@navbar-line-height + (2 * @navbar-padding-vertical));
+        border: 0;
+        background: none;
+        line-height: @navbar-line-height;
+        width: 100%;
+        text-align: left;
+        color: @nav-link-color;
+
+        &:active,
+        &:focus {
+          border-bottom-color: transparent;
+          outline: 0;
+          color: @brand-light-blue;
+        }
+
+        @media (min-width: @grid-float-breakpoint) {
+          .navbar-inverse & {
+            color: @brand-white;
+          }
+
+          &:hover {
+            border-bottom-color: transparent;
+            outline: 0;
+            color: @brand-light-blue;
+          }
+        }
+      }
     }
   }
+
   > li.divider {
     display: none;
   }
 
   @media (max-width: @grid-float-breakpoint-max) {
-    .navbar-collapse & {
+    > li {
       border-bottom: 1px solid @brand-smoke-plus-20;
+
+      > a,
+      > button {
+        font-size: @navbar-font-size-mobile;
+        padding: @padding-base-vertical (@spacer * 4);
+      }
     }
 
     // Dropdowns get custom display when collapsed
     .navbar-collapse-flatten {
-        .dropdown-toggle {
-            display: none;
-        }
-        .dropdown-menu {
-          position: static;
-          margin-top: 0;
-          background-color: transparent;
-          border: 0;
-          display: block;
+      .dropdown-toggle {
+        display: none;
+      }
 
-          float: none;
-          width: 100%;
-          box-shadow: none;
-          padding: 0;
+      .dropdown-menu {
+        position: static;
+        margin-top: 0;
+        background-color: transparent;
+        border: 0;
+        display: block;
+        float: none;
+        width: 100%;
+        box-shadow: none;
+        padding: @padding-large-vertical 0;
+
+        > li > a {
+          padding: @padding-base-vertical (@spacer * 4);
         }
+      }
     }
 
     > li.divider {
@@ -306,7 +349,7 @@
     }
 
     > li > a {
-      color: @nav-link-color !important;
+      color: @nav-link-color;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
@@ -315,6 +358,7 @@
       &:focus {
         color: @nav-link-hover-color;
       }
+
       &:active {
         color: @nav-link-active-color;
       }
@@ -327,6 +371,7 @@
 
     > li {
       float: left;
+
       > a {
         padding-bottom: (@navbar-padding-vertical - 2px);
         font-size: @navbar-font-size;
@@ -334,7 +379,6 @@
     }
   }
 }
-
 
 // Navbar form
 //
@@ -353,7 +397,6 @@
       }
     }
   }
-
 
   // Undo 100% width for pull classes
   @media (min-width: @grid-float-breakpoint) {
@@ -378,23 +421,74 @@
   }
 }
 
-
 // Dropdown menus
 
-// Menu position and menu carets
-.navbar-nav > li > .dropdown-menu {
-  margin-top: 12px;
+// Menu position and menu arrows
+.navbar-nav {
+  > li {
+    > .dropdown-menu {
+      margin-top: @navbar-height;
+
+      > li > a {
+        font-size: @navbar-font-size;
+        @media (max-width: @grid-float-breakpoint) {
+          font-size: (@navbar-font-size + 2px);
+        }
+      }
+
+      @media (min-width: @grid-float-breakpoint) {
+        .arrow-pointer(@dropdown-arrow-width);
+      }
+    }
+
+    //show dropdowns in other states
+    &.dropdown {
+      &:active,
+      &:focus,
+      &:focus-within {
+        .dropdown-menu {
+          display: block;
+          animation: showDropdown 0.2s cubic-bezier(0.6, 0.2, 0.1, 1) both;
+        }
+      }
+
+      &:hover {
+        @media (min-width: @grid-float-breakpoint) {
+          .dropdown-menu {
+            display: block;
+            animation: showDropdown 0.2s cubic-bezier(0.6, 0.2, 0.1, 1) both;
+          }
+        }
+      }
+    }
+  }
 }
+
+.navbar-right li > .dropdown-menu {
+  &::before {
+    right: (@dropdown-arrow-width * 2);
+    left: auto;
+  }
+
+  &.dropdown-menu-center {
+    &::before {
+      right: auto;
+      left: 50%;
+      margin-left: (@dropdown-arrow-width / -2);
+    }
+  }
+}
+
 @media (max-width: @screen-md-max) {
   .navbar-collpse .navbar-nav > li > .dropdown-menu {
     margin-top: 0;
   }
 }
+
 // Menu position and menu caret support for dropups via extra dropup class
 .navbar-fixed-bottom .navbar-nav > li > .dropdown-menu {
   margin-bottom: 0;
 }
-
 
 // Buttons in navbars
 //
@@ -406,6 +500,7 @@
   &.btn-sm {
     .navbar-vertical-align(@input-height-small);
   }
+
   &.btn-xs {
     .navbar-vertical-align(22);
   }
@@ -416,7 +511,6 @@
     display: block;
   }
 }
-
 
 // Text in navbars
 //
@@ -432,7 +526,6 @@
   }
 }
 
-
 // Component alignment
 //
 // Repurpose the pull utilities as their own navbar utilities to avoid specificity
@@ -442,7 +535,8 @@
 // Declared after the navbar components to ensure more specificity on the margins.
 
 @media (min-width: @grid-float-breakpoint) {
-  .navbar-left  { .pull-xs-left(); }
+  .navbar-left { .pull-xs-left(); }
+
   .navbar-right {
     .pull-xs-right();
 
@@ -461,11 +555,12 @@
 
   .container,
   .container-fluid {
-      border-color: @navbar-default-border;
+    border-color: @navbar-default-border;
   }
 
   .navbar-brand {
     color: @navbar-default-brand-color;
+
     &:hover,
     &:focus {
       color: @navbar-default-brand-hover-color;
@@ -491,6 +586,7 @@
         background-color: @navbar-default-link-hover-bg;
       }
     }
+
     > .active > a {
       &,
       &:hover,
@@ -500,6 +596,7 @@
         border-color: @navbar-default-link-active-color;
       }
     }
+
     > .disabled > a {
       &,
       &:hover,
@@ -516,7 +613,8 @@
     > .open > a {
       &,
       &:hover,
-      &:focus {
+      &:focus,
+      &:focus-within {
         background-color: @navbar-default-link-active-bg;
         color: @navbar-default-link-active-color;
       }
@@ -527,12 +625,15 @@
       .open .dropdown-menu {
         > li > a {
           color: @navbar-default-link-color;
+
           &:hover,
-          &:focus {
+          &:focus,
+          &:focus-within {
             color: @navbar-default-link-hover-color;
             background-color: @navbar-default-link-hover-bg;
           }
         }
+
         > .active > a {
           &,
           &:hover,
@@ -541,6 +642,7 @@
             background-color: @navbar-default-link-active-bg;
           }
         }
+
         > .disabled > a {
           &,
           &:hover,
@@ -553,13 +655,13 @@
     }
   }
 
-
   // Links in navbars
   //
   // Add a class to ensure links outside the navbar nav are colored correctly.
 
   .navbar-link {
     color: @link-color;
+
     &:hover {
       color: @link-hover-color;
     }
@@ -567,10 +669,12 @@
 
   .btn-link {
     color: @navbar-default-link-color;
+
     &:hover,
     &:focus {
       color: @navbar-default-link-hover-color;
     }
+
     &[disabled],
     fieldset[disabled] & {
       &:hover,
@@ -588,11 +692,12 @@
 
   .container,
   .container-fluid {
-      border-color: @navbar-inverse-border;
+    border-color: @navbar-inverse-border;
   }
 
   .navbar-brand {
     color: @navbar-inverse-brand-color;
+
     &:hover,
     &:focus {
       color: @navbar-inverse-brand-hover-color;
@@ -618,6 +723,7 @@
         background-color: @navbar-inverse-link-hover-bg;
       }
     }
+
     > .active > a {
       &,
       &:hover,
@@ -627,6 +733,7 @@
         border-color: @navbar-inverse-link-active-color;
       }
     }
+
     > .disabled > a {
       &,
       &:hover,
@@ -636,7 +743,8 @@
       }
     }
 
-    > .open > a {
+    > .open > a,
+    .dropdown:focus-within > a {
       &,
       &:hover,
       &:focus {
@@ -654,6 +762,7 @@
 
   .navbar-link {
     color: @navbar-inverse-link-color;
+
     &:hover {
       color: @navbar-inverse-link-hover-color;
     }
@@ -661,10 +770,12 @@
 
   .btn-link {
     color: @navbar-inverse-link-color;
+
     &:hover,
     &:focus {
       color: @navbar-inverse-link-hover-color;
     }
+
     &[disabled],
     fieldset[disabled] & {
       &:hover,
@@ -677,211 +788,238 @@
 
 .navbar .navbar-brand,
 .navbar-inverse .navbar-brand {
-    background-repeat: no-repeat;
-    background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  color: transparent;
 
+  &:hover,
+  &:focus {
     color: transparent;
-
-    &:hover,
-    &:focus {
-        color: transparent;
-    }
+  }
 }
 
 .navbar .flag {
-    height: 24px;
-    width: 24px;
-    margin-top: 16px;
-    margin-right: 8px;
-    float: left;
+  height: 24px;
+  width: 24px;
+  margin-top: 16px;
+  margin-right: 8px;
+  float: left;
 }
+
 .navbar .logo-text {
-    height: 20px;
-    width: 104px;
-    margin-top: 16.5px;
-    margin-right: 8px;
-    float: left;
+  height: 20px;
+  width: 104px;
+  margin-top: 16.5px;
+  margin-right: 8px;
+  float: left;
 }
 
 .cover {
-    display: none;
+  display: none;
 }
+
 @media (max-width: @grid-float-breakpoint-max) {
-    .navbar-collapse {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 100% !important;
+  .navbar-collapse {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100% !important;
 
-        // Backwards compatibility if collapse-panel missing
-        background-color: @brand-white;
-        top: (@navbar-height - 2px);
-        padding: 8px;
+    // Backwards compatibility if collapse-panel missing
+    background-color: @brand-white;
+    top: (@navbar-height - 2px);
+    padding: 8px;
 
-        .open .dropdown-menu {
-          position: relative;
-          width: 100%;
-          box-shadow: none;
-          padding: 0;
-          float: none;
+    .open,
+    .dropdown:focus-within {
+      border-bottom: none;
 
-          border-top: 1px solid @brand-smoke-plus-20;
-          border-bottom: 1px solid @brand-smoke-plus-20;
+      > a {
+        color: @brand-light-blue;
+      }
+
+      .caret {
+        transform: rotate(-180deg);
+      }
+
+      .dropdown-menu {
+        position: relative;
+        width: 100%;
+        box-shadow: none;
+        padding: 0;
+        padding-bottom: @padding-large-vertical;
+        float: none;
+        margin-top: 0;
+        border-bottom: 1px solid @brand-smoke-plus-20;
+
+        > li > a {
+          padding: @padding-base-vertical (@spacer * 4);
         }
 
-        &.navbar-collapse-with-panel {
-            top: 0;
-            padding: 0;
-            background-color: transparent;
+        .dropdown-header {
+          padding: @padding-base-vertical (@spacer * 4);
         }
-
-        .navbar-collapse-panel {
-            position: fixed;
-            height: 100%;
-            top: 0;
-            overflow-y: scroll;
-            padding: 8px;
-            background-color: @brand-white;
-            color: @brand-primary !important;
-            width: @navbar-collapse-max-width;
-            max-width: @navbar-collapse-max-width !important;
-            transition: transform .35s ease;
-            transform: translateX(-@navbar-collapse-max-width);
-        }
-
-        .navbar-toggle {
-            left: 280px;
-            opacity: 0;
-            transition: opacity .35s ease;
-            display: inline-block;
-            position: absolute;
-            top: 4px;
-
-            &.close {
-                margin-top: 0;
-            }
-        }
-
-        // Only show toggle after animation finished
-        &.in {
-            .navbar-toggle {
-                opacity: 1;
-            }
-        }
-
-        .cover {
-            display: block;
-            width: 100%;
-            height: 100%;
-            background-color: @brand-navy-minus-20;
-            opacity: 0;
-            transition: opacity .35s ease;
-        }
-
-        &.in,
-        &[aria-expanded=true] {
-            .cover {
-                opacity: 0.9;
-            }
-            .navbar-collapse-panel {
-                transform: translateX(0);
-            }
-        }
-
-        .navbar-btn.btn-group {
-            display: flex;
-            .btn {
-                display: block;
-                width: 100%;
-                text-align: left;
-
-                + .dropdown-toggle {
-                    flex: 0;
-                }
-            }
-            .dropdown-menu {
-                width: 100%;
-            }
-        }
+      }
     }
+
+    &.navbar-collapse-with-panel {
+      top: 0;
+      padding: 0;
+      background-color: transparent;
+    }
+
+    .navbar-collapse-panel {
+      position: fixed;
+      height: 100%;
+      top: 0;
+      overflow-y: scroll;
+      padding: 8px;
+      background-color: @brand-white;
+      color: @brand-primary !important;
+      width: @navbar-collapse-max-width;
+      max-width: @navbar-collapse-max-width !important;
+      transition: transform 0.35s ease;
+      transform: translateX(-@navbar-collapse-max-width);
+    }
+
+    .navbar-toggle {
+      left: 280px;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      display: inline-block;
+      position: absolute;
+      top: 4px;
+
+      &.close {
+        margin-top: 0;
+      }
+    }
+
+    // Only show toggle after animation finished
+    &.in {
+      .navbar-toggle {
+        opacity: 1;
+      }
+    }
+
+    .cover {
+      display: block;
+      width: 100%;
+      height: 100%;
+      background-color: @brand-navy-minus-20;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+
+    &.in,
+    &[aria-expanded=true] {
+      .cover {
+        opacity: 0.9;
+      }
+
+      .navbar-collapse-panel {
+        transform: translateX(0);
+      }
+    }
+
+    .navbar-btn.btn-group {
+      display: flex;
+
+      .btn {
+        display: block;
+        width: 100%;
+        text-align: left;
+
+        + .dropdown-toggle {
+          flex: 0;
+        }
+      }
+
+      .dropdown-menu {
+        width: 100%;
+      }
+    }
+  }
 }
+
 .navbar .profile-name {
-    padding-bottom: 3px;
+  padding-bottom: 3px;
 
-    .caret {
-      vertical-align: top;
-      line-height: @navbar-line-height;
-    }
+  .caret {
+    vertical-align: top;
+    line-height: @navbar-line-height;
+  }
 
+  .text-ellipses,
+  .text-ellipsis {
+    max-width: 75px;
+    display: inline-block;
+  }
+
+  @media (min-width: @screen-lg-min) {
     .text-ellipses,
     .text-ellipsis {
-        max-width: 75px;
-        display: inline-block;
+      max-width: 125px;
     }
-    @media (min-width: @screen-lg-min) {
-        .text-ellipses,
-        .text-ellipsis {
-            max-width: 125px;
-        }
+  }
+
+  @media (min-width: @screen-xl-min) {
+    .text-ellipses,
+    .text-ellipsis {
+      max-width: 220px;
     }
-    @media (min-width: @screen-xl-min) {
-        .text-ellipses,
-        .text-ellipsis {
-            max-width: 220px;
-        }
-    }
+  }
 }
-
-
 
 .navbar[data-spy~=affix] + * {
-    margin-top: 0;
+  margin-top: 0;
 }
+
 .navbar[data-spy~=affix].affix + * {
-    margin-top: @navbar-height;
+  margin-top: @navbar-height;
 }
 
 @media (min-width: @screen-md-min) {
-    .navbar + .jumbotron,
-    .navbar + .jumbotron-image,
-    .navbar + .jumbotron-image-inverse,
-    .jumbotron-image-adjacent-to-navbar {
-        margin-top: (-1 * @navbar-height);
-    }
-    .navbar.affix + .jumbotron,
-    .navbar.affix + .jumbotron-image,
-    .navbar.affix + .jumbotron-image-inverse {
-        margin-top: 0px;
-    }
+  .navbar + .jumbotron,
+  .navbar + .jumbotron-image,
+  .navbar + .jumbotron-image-inverse,
+  .jumbotron-image-adjacent-to-navbar {
+    margin-top: (-1 * @navbar-height);
+  }
+
+  .navbar.affix + .jumbotron,
+  .navbar.affix + .jumbotron-image,
+  .navbar.affix + .jumbotron-image-inverse {
+    margin-top: 0;
+  }
 }
 
 .navbar + .jumbotron,
 .navbar + .jumbotron-image > .jumbotron,
 .navbar + .jumbotron-image-inverse > .jumbotron,
 .jumbotron-image-adjacent-to-navbar > .jumbotron {
-    padding-bottom: 64px;
+  padding-bottom: 64px;
 
-    @media (min-width: @screen-md-min) {
-        padding-top: 140px;
-        padding-bottom: 104px;
-    }
+  @media (min-width: @screen-md-min) {
+    padding-top: 140px;
+    padding-bottom: 104px;
+  }
 }
 
 .navbar {
-    > .container .navbar-brand,
-    > .container-fluid .navbar-brand {
-        margin-left: 0;
-    }
+  > .container .navbar-brand,
+  > .container-fluid .navbar-brand {
+    margin-left: 0;
+  }
 }
 
 @media (max-width: @screen-sm-max) {
-    .navbar-static-top {
-        background-color: @navbar-collapse-bg;
-        border-bottom-color: transparent;
-    }
+  .navbar-static-top {
+    background-color: @navbar-collapse-bg;
+    border-bottom-color: transparent;
+  }
 }
-
 
 .navbar-title {
   float: left;
@@ -891,23 +1029,25 @@
   margin-bottom: 12px;
   font-weight: @font-weight-bold;
 }
+
 .navbar-subtitle {
   font-size: @font-size-small;
   margin-bottom: 8px;
 }
+
 .navbar-title,
 .navbar-subtitle {
-    color: #FFF;
-    text-overflow: ellipsis;
-    overflow-x: hidden;
-    white-space: nowrap;
-    display: inline-block;
-    width: 75%;
+  color: @brand-white;
+  text-overflow: ellipsis;
+  overflow-x: hidden;
+  white-space: nowrap;
+  display: inline-block;
+  width: 75%;
 
-    @media (min-width: @screen-lg-min) {
-      color: @headings-color;
-      width: 100%;
-    }
+  @media (min-width: @screen-lg-min) {
+    color: @headings-color;
+    width: 100%;
+  }
 }
 
 .navbar-logo {
@@ -924,11 +1064,11 @@
   margin-top: -16px;
   padding-bottom: 0;
   background-color: @brand-navy;
-  border-bottom: 1px solid #e2e6e8;
+  border-bottom: 1px solid @brand-smoke-plus-10;
 
   @media (min-width: @screen-lg-min) {
     margin-top: 0;
-    background-color: #FFF;
+    background-color: @brand-white;
 
     &.affix {
       top: 0;
@@ -944,6 +1084,7 @@
       }
     }
   }
+
   @media (max-width: @screen-md-max) {
     &.affix {
       // we have a global affix rule which would be breaking to remove
@@ -958,25 +1099,28 @@
     .btn-info,
     .btn-warning,
     .btn-danger {
-      color: #00b9ff;
-      border-color: #00b9ff;
+      color: @brand-light-blue;
+      border-color: @brand-light-blue;
     }
+
     .btn-info:hover,
     .btn-warning:hover,
     .btn-danger:hover {
-      color: #fff;
+      color: @brand-white;
     }
+
     .form-control,
     .input-group,
     .btn-input,
     .input-group-addon {
-      border-color: #fff;
+      border-color: @brand-white;
     }
   }
 
   h1 {
     line-height: 32px;
   }
+
   .close {
     text-decoration: none;
     height: 32px;
@@ -993,10 +1137,12 @@
 // TODO this is a hack with no docs
 .simple-nav {
   background-color: @brand-navy;
+
   .navbar-nav > li > a {
     padding-top: (@navbar-padding-vertical + 4px);
     padding-bottom: (@navbar-padding-vertical + 1px);
   }
+
   .navbar-header {
     padding-top: 4px;
     width: ~"calc(100% - 120px)";
@@ -1005,28 +1151,34 @@
       width: ~"calc(100% - 340px)";
     }
   }
+
   .navbar-nav > li > a.dropdown-toggle {
     height: @nav-toolbar-height;
   }
+
   .navbar-right li > a {
     // HACK - better to make things only collapse if inside collapse
     float: right;
   }
 }
+
 @media (min-width: @screen-sm-min) {
   .simple-nav .navbar-nav > li > a {
     font-size: @font-size-base !important;
   }
 }
+
 @media (min-width: @screen-lg-min) {
   .simple-nav {
-    background-color: #fff;
+    background-color: @brand-white;
     border-bottom: 1px solid @brand-smoke-plus-10;
   }
 }
+
 @media (max-width: @screen-md-max) {
   .simple-nav .navbar-nav > li > a {
-    color: #fff;
+    color: @brand-white;
+
     &:focus,
     &:hover,
     &:active {
@@ -1034,6 +1186,7 @@
     }
   }
 }
+
 .simple-nav .profile-name .text-ellipsis {
   max-width: 240px;
 }
