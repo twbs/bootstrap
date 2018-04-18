@@ -52,7 +52,7 @@ Bootstrap primarily uses the following media query ranges—or breakpoints—in 
 
 {% highlight scss %}
 // Extra small devices (portrait phones, less than 576px)
-// No media query since this is the default in Bootstrap
+// No media query for `xs` since this is the default in Bootstrap
 
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) { ... }
@@ -70,12 +70,16 @@ Bootstrap primarily uses the following media query ranges—or breakpoints—in 
 Since we write our source CSS in Sass, all our media queries are available via Sass mixins:
 
 {% highlight scss %}
+// No media query necessary for xs breakpoint as it's effectively @media (min-width: 0) { ... }
 @include media-breakpoint-up(sm) { ... }
 @include media-breakpoint-up(md) { ... }
 @include media-breakpoint-up(lg) { ... }
 @include media-breakpoint-up(xl) { ... }
 
-// Example usage, small and up:
+// Example usage, default extra small and mixin for small and up:
+.some-class {
+   display: none;
+}
 @include media-breakpoint-up(sm) {
   .some-class {
     display: block;
@@ -111,6 +115,7 @@ Once again, these media queries are also available via Sass mixins:
 @include media-breakpoint-down(sm) { ... }
 @include media-breakpoint-down(md) { ... }
 @include media-breakpoint-down(lg) { ... }
+// No media query necessary for xl breakpoint as it has no upper bound on its width
 
 // Example usage, medium and down:
 @include media-breakpoint-down(md) {
