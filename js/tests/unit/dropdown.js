@@ -545,14 +545,15 @@ $(function () {
   })
 
   QUnit.test('should skip disabled element when using keyboard navigation', function (assert) {
-    assert.expect(2)
+    assert.expect(3)
     var done = assert.async()
     var dropdownHTML = '<div class="tabs">' +
         '<div class="dropdown">' +
         '<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>' +
         '<div class="dropdown-menu">' +
         '<a class="dropdown-item disabled" href="#">Disabled link</a>' +
-        '<a class="dropdown-item" href="#">Another link</a>' +
+        '<button class="dropdown-item" type="button" disabled>Disabled button</button>' +
+        '<a id="item1" class="dropdown-item" href="#">Another link</a>' +
         '</div>' +
         '</div>' +
         '</div>'
@@ -572,6 +573,7 @@ $(function () {
           which: 40
         }))
         assert.ok(!$(document.activeElement).is('.disabled'), '.disabled is not focused')
+        assert.ok(!$(document.activeElement).is(':disabled'), ':disabled is not focused')
         done()
       })
     $dropdown.trigger('click')
@@ -907,5 +909,147 @@ $(function () {
         $textarea.trigger('click')
       })
     $textarea.trigger('click')
+  })
+
+  QUnit.test('should not use Popper.js if display set to static', function (assert) {
+    assert.expect(1)
+    var dropdownHTML =
+        '<div class="dropdown">' +
+        '<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-display="static">Dropdown</a>' +
+        '<div class="dropdown-menu">' +
+        '<a class="dropdown-item" href="#">Secondary link</a>' +
+        '<a class="dropdown-item" href="#">Something else here</a>' +
+        '<div class="divider"/>' +
+        '<a class="dropdown-item" href="#">Another link</a>' +
+        '</div>' +
+        '</div>'
+
+    var $dropdown = $(dropdownHTML)
+      .appendTo('#qunit-fixture')
+      .find('[data-toggle="dropdown"]')
+      .bootstrapDropdown()
+    var done = assert.async()
+    var dropdownMenu = $dropdown.next()[0]
+
+    $dropdown.parent('.dropdown')
+      .on('shown.bs.dropdown', function () {
+        // Popper.js add this attribute when we use it
+        assert.strictEqual(dropdownMenu.getAttribute('x-placement'), null)
+        done()
+      })
+
+    $dropdown.trigger('click')
+  })
+
+  QUnit.test('should call Popper.js and detect navbar on update', function (assert) {
+    assert.expect(3)
+
+    var dropdownHTML =
+      '<div class="dropdown">' +
+      '  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>' +
+      '  <div class="dropdown-menu">' +
+      '    <a class="dropdown-item" href="#">Another link</a>' +
+      '  </div>' +
+      '</div>'
+
+    var $dropdown = $(dropdownHTML)
+      .appendTo('#qunit-fixture')
+      .find('[data-toggle="dropdown"]')
+      .bootstrapDropdown()
+
+    var dropdown = $dropdown.data('bs.dropdown')
+    dropdown.toggle()
+    assert.ok(dropdown._popper)
+
+    var spyPopper = sinon.spy(dropdown._popper, 'scheduleUpdate')
+    var spyDetectNavbar = sinon.spy(dropdown, '_detectNavbar')
+    dropdown.update()
+
+    assert.ok(spyPopper.called)
+    assert.ok(spyDetectNavbar.called)
+  })
+
+  QUnit.test('should just detect navbar on update', function (assert) {
+    assert.expect(2)
+
+    var dropdownHTML =
+      '<div class="dropdown">' +
+      '  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>' +
+      '  <div class="dropdown-menu">' +
+      '    <a class="dropdown-item" href="#">Another link</a>' +
+      '  </div>' +
+      '</div>'
+
+    var $dropdown = $(dropdownHTML)
+      .appendTo('#qunit-fixture')
+      .find('[data-toggle="dropdown"]')
+      .bootstrapDropdown()
+
+    var dropdown = $dropdown.data('bs.dropdown')
+    var spyDetectNavbar = sinon.spy(dropdown, '_detectNavbar')
+
+    dropdown.update()
+
+    assert.notOk(dropdown._popper)
+    assert.ok(spyDetectNavbar.called)
+  })
+
+  QUnit.test('should dispose dropdown with Popper', function (assert) {
+    assert.expect(6)
+
+    var dropdownHTML =
+      '<div class="dropdown">' +
+      '  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>' +
+      '  <div class="dropdown-menu">' +
+      '    <a class="dropdown-item" href="#">Another link</a>' +
+      '  </div>' +
+      '</div>'
+
+    var $dropdown = $(dropdownHTML)
+      .appendTo('#qunit-fixture')
+      .find('[data-toggle="dropdown"]')
+      .bootstrapDropdown()
+
+    var dropdown = $dropdown.data('bs.dropdown')
+    dropdown.toggle()
+
+    assert.ok(dropdown._popper)
+    assert.ok(dropdown._menu !== null)
+    assert.ok(dropdown._element !== null)
+    var spyDestroy = sinon.spy(dropdown._popper, 'destroy')
+
+    dropdown.dispose()
+
+    assert.ok(spyDestroy.called)
+    assert.ok(dropdown._menu === null)
+    assert.ok(dropdown._element === null)
+  })
+
+  QUnit.test('should dispose dropdown', function (assert) {
+    assert.expect(5)
+
+    var dropdownHTML =
+      '<div class="dropdown">' +
+      '  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>' +
+      '  <div class="dropdown-menu">' +
+      '    <a class="dropdown-item" href="#">Another link</a>' +
+      '  </div>' +
+      '</div>'
+
+    var $dropdown = $(dropdownHTML)
+      .appendTo('#qunit-fixture')
+      .find('[data-toggle="dropdown"]')
+      .bootstrapDropdown()
+
+    var dropdown = $dropdown.data('bs.dropdown')
+
+    assert.notOk(dropdown._popper)
+    assert.ok(dropdown._menu !== null)
+    assert.ok(dropdown._element !== null)
+
+    dropdown.dispose()
+
+    assert.ok(dropdown._menu === null)
+    assert.ok(dropdown._element === null)
   })
 })

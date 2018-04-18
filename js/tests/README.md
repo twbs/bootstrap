@@ -1,12 +1,12 @@
 ## How does Bootstrap's test suite work?
 
-Bootstrap uses [QUnit](https://qunitjs.com/), a powerful, easy-to-use JavaScript unit test framework. Each plugin has a file dedicated to its tests in `unit/<plugin-name>.js`.
+Bootstrap uses [QUnit](https://qunitjs.com/) and [Sinon](http://sinonjs.org/). Each plugin has a file dedicated to its tests in `unit/<plugin-name>.js`.
 
 * `unit/` contains the unit test files for each Bootstrap plugin.
-* `vendor/` contains third-party testing-related code (QUnit and jQuery).
+* `vendor/` contains third-party testing-related code (QUnit, jQuery and Sinon).
 * `visual/` contains "visual" tests which are run interactively in real browsers and require manual verification by humans.
 
-To run the unit test suite via [Karma](http://karma-runner.github.io/), run `npm run js-test`.
+To run the unit test suite via [Karma](https://karma-runner.github.io/), run `npm run js-test`.
 
 To run the unit test suite via a real web browser, open `index.html` in the browser.
 
@@ -27,16 +27,20 @@ To run the unit test suite via a real web browser, open `index.html` in the brow
 * Each test should begin with [`assert.expect`](https://api.qunitjs.com/assert/expect/) to ensure that the expected assertions are run.
 * Each test should follow the project's [JavaScript Code Guidelines](https://github.com/twbs/bootstrap/blob/master/CONTRIBUTING.md#js)
 
+## Code coverage
+
+Currently we're aiming for at least 80% test coverage for our code. To ensure your changes meet or exceed this limit, run `npm run js-compile && npm run js-test` and open the file in `js/coverage/lcov-report/index.html` to see the code coverage for each plugin. See more details when you select a plugin and ensure your change is fully covered by unit tests.
+
 ### Example tests
 
-```javascript
+```js
 // Synchronous test
 QUnit.test('should describe the unit being tested', function (assert) {
   assert.expect(1)
-  var templateHTML = '<div class="alert alert-danger fade show">'
-      + '<a class="close" href="#" data-dismiss="alert">×</a>'
-      + '<p><strong>Template necessary for the test.</p>'
-      + '</div>'
+  var templateHTML = '<div class="alert alert-danger fade show">' +
+        '<a class="close" href="#" data-dismiss="alert">×</a>' +
+        '<p><strong>Template necessary for the test.</p>' +
+        '</div>'
   var $alert = $(templateHTML).appendTo('#qunit-fixture').bootstrapAlert()
 
   $alert.find('.close').trigger('click')
@@ -47,13 +51,17 @@ QUnit.test('should describe the unit being tested', function (assert) {
 
 // Asynchronous test
 QUnit.test('should describe the unit being tested', function (assert) {
-  assert.expect(1)
+  assert.expect(2)
   var done = assert.async()
 
-  $('<div title="tooltip title"></div>')
-    .appendTo('#qunit-fixture')
+  var $tooltip = $('<div title="tooltip title"></div>').bootstrapTooltip()
+  var tooltipInstance = $tooltip.data('bs.tooltip')
+  var spyShow = sinon.spy(tooltipInstance, 'show')
+
+  $tooltip.appendTo('#qunit-fixture')
     .on('shown.bs.tooltip', function () {
       assert.ok(true, '"shown" event was fired after calling "show"')
+      assert.ok(spyShow.called, 'show called')
       done()
     })
     .bootstrapTooltip('show')
