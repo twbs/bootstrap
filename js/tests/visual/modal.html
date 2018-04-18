@@ -147,6 +147,26 @@
         </div>
       </div>
 
+      <div class="modal fade" id="slowModal" tabindex="-1" role="dialog" aria-labelledby="slowModalLabel" aria-hidden="true" style="transition-duration: 5s;">
+        <div class="modal-dialog" role="document" style="transition-duration: inherit;">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <h4 class="modal-title" id="slowModalLabel">Lorem slowly</h4>
+            </div>
+            <div class="modal-body">
+              <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
         Launch demo modal
       </button>
@@ -161,6 +181,12 @@
         Launch Firefox bug test modal
       </button>
       (<a href="https://github.com/twbs/bootstrap/issues/18365">See Issue #18365</a>)
+
+      <br><br>
+
+      <button type="button" class="btn btn-secondary btn-lg" data-toggle="modal" data-target="#slowModal">
+        Launch modal with slow transition
+      </button>
 
       <br><br>
 
@@ -225,6 +251,17 @@
           })
           .modal('show')
         })
+
+        // Test transition duration
+        var t0, t1;
+
+        $('#slowModal').on('shown.bs.modal', function(){
+          t1 = performance.now()
+          console.log('transition-duration took ' + (t1 - t0) + 'ms.')
+        }).on('show.bs.modal', function(){
+          t0 = performance.now()
+        })
+
       })
     </script>
   </body>
