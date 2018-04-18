@@ -124,12 +124,24 @@
   @extend .form-control-lg;
 }
 
+.input-group-lg > .input-group-prepend > .btn,
+.input-group-lg > .input-group-append > .btn {
+  padding-right: $btn-padding-x-lg;
+  padding-left: $btn-padding-x-lg;
+}
+
 .input-group-sm > .form-control,
 .input-group-sm > .input-group-prepend > .input-group-text,
 .input-group-sm > .input-group-append > .input-group-text,
 .input-group-sm > .input-group-prepend > .btn,
 .input-group-sm > .input-group-append > .btn {
   @extend .form-control-sm;
+}
+
+.input-group-sm > .input-group-prepend > .btn,
+.input-group-sm > .input-group-append > .btn {
+  padding-right: $btn-padding-x-sm;
+  padding-left: $btn-padding-x-sm;
 }
 
 
