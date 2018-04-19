@@ -342,7 +342,7 @@ const Dropdown = (($) => {
         }
 
         if (event) {
-          relatedTarget.original = event.originalEvent;
+          relatedTarget.original = event.originalEvent
         }
 
         if (!context) {
