@@ -17,8 +17,10 @@ body {
   top: 0;
   bottom: 0;
   left: 0;
-  z-index: 100; /* Behind the navbar */
-  padding: 48px 0 0; /* Height of navbar */
+  z-index: 100;
+  /* Behind the navbar */
+  padding: 48px 0 0;
+  /* Height of navbar */
   box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
 }
 
@@ -28,7 +30,8 @@ body {
   height: calc(100vh - 48px);
   padding-top: .5rem;
   overflow-x: hidden;
-  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+  overflow-y: auto;
+  /* Scrollable contents if viewport is shorter than content. */
 }
 
 @supports ((position: -webkit-sticky) or (position: sticky)) {
@@ -67,7 +70,8 @@ body {
  */
 
 [role="main"] {
-  padding-top: 48px; /* Space for fixed navbar */
+  padding-top: 48px;
+  /* Space for fixed navbar */
 }
 
 /*
@@ -103,11 +107,16 @@ body {
  * Utilities
  */
 
-.border-top { border-top: 1px solid #e5e5e5; }
-.border-bottom { border-bottom: 1px solid #e5e5e5; }
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
 
 @media (max-width: 768px) {
-  [role="main"] {
-      padding-top: 135px;
-  }
+    [role="main"] {
+        padding-top: 135px;
+    }
 }
