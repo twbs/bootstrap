@@ -341,6 +341,10 @@ const Dropdown = (($) => {
           relatedTarget: toggles[i]
         }
 
+        if (event) {
+          relatedTarget.original = event.originalEvent;
+        }
+
         if (!context) {
           continue
         }
