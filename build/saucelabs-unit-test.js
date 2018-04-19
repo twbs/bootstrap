@@ -1,3 +1,4 @@
+/* eslint-disable */
 /*!
  * Script to run our Sauce Labs tests.
  * Copyright 2017-2018 The Bootstrap Authors
@@ -25,6 +26,10 @@ const jsUnitSaucelabs = new JSUnitSaucelabs({
 
 const testURL = 'http://localhost:3000/js/tests/index.html?hidepassed'
 const browsersFile = require(path.resolve(__dirname, './sauce_browsers.json'))
+const errorMessages = [
+  'Test exceeded maximum duration',
+  'Test exceeded maximum duration after 180 seconds'
+]
 let jobsDone = 0
 let jobsSucceeded = 0
 
@@ -43,11 +48,12 @@ const waitingCallback = (error, body, id) => {
       }, 2000)
     } else {
       const test = body['js tests'][0]
+      console.log(`result unit test ${test.platform.join(', ')}`,test)
       let passed = false
       let errorStr = false
 
       if (test.result !== null) {
-        if (typeof test.result === 'string' && test.result === 'Test exceeded maximum duration') {
+        if (typeof test.result === 'string' && errorMessages.includes(test.result)) {
           errorStr = test.result
         } else {
           passed = test.result.total === test.result.passed
@@ -56,7 +62,7 @@ const waitingCallback = (error, body, id) => {
 
       console.log(`Tested ${testURL}`)
       console.log(`Platform: ${test.platform.join(', ')}`)
-      console.log(`Passed: ${passed.toString()}`)
+      console.log(`Passed: ${passed}`)
       console.log(`URL: ${test.url}\n`)
 
       if (errorStr) {

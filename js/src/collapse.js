@@ -331,7 +331,7 @@ const Collapse = (($) => {
         const _config = {
           ...Default,
           ...$this.data(),
-          ...typeof config === 'object' && config ? config : {}
+          ...typeof config === 'object' && config
         }
 
         if (!data && _config.toggle && /show|hide/.test(config)) {
