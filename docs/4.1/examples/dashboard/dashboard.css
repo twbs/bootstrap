@@ -116,7 +116,7 @@ body {
 }
 
 @media (max-width: 768px) {
-    [role="main"] {
-        padding-top: 135px;
-    }
+  [role="main"] {
+    padding-top: 135px;
+  }
 }
