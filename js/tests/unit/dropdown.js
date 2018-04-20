@@ -500,17 +500,17 @@ $(function () {
 
   QUnit.test('should fire hide and hidden event with a mouseEvent', function (assert) {
     assert.expect(3)
-    var dropdownHTML = '<ul class="tabs">'
-        + '<li class="dropdown">'
-        + '<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>'
-        + '<ul class="dropdown-menu">'
-        + '<li><a href="#">Secondary link</a></li>'
-        + '<li><a href="#">Something else here</a></li>'
-        + '<li class="divider"/>'
-        + '<li><a href="#">Another link</a></li>'
-        + '</ul>'
-        + '</li>'
-        + '</ul>'
+    var dropdownHTML = '<div class="tabs">' +
+        '<div class="dropdown">' +
+        '<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>' +
+        '<div class="dropdown-menu">' +
+        '<a class="dropdown-item" href="#">Secondary link</a>' +
+        '<a class="dropdown-item" href="#">Something else here</a>' +
+        '<div class="divider"/>' +
+        '<a class="dropdown-item" href="#">Another link</a>' +
+        '</div>' +
+        '</div>' +
+        '</div>'
     var $dropdown = $(dropdownHTML)
       .appendTo('#qunit-fixture')
       .find('[data-toggle="dropdown"]')
