@@ -558,7 +558,9 @@ $(function () {
       })
       .on('shown.bs.dropdown', function () {
         assert.ok(true, 'shown was fired')
-        var esc = $.Event('keyup', { keyCode: 27 })
+        var esc = $.Event('keyup', {
+          keyCode: 27
+        })
         $(document.body).trigger(esc)
       })
 
