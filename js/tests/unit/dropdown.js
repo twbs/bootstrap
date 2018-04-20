@@ -531,7 +531,7 @@ $(function () {
     $dropdown.trigger('click')
   })
 
-  QUnit.test('should fire hide and hidden event without a clickEvent if event type is keyup', function (assert) {
+  QUnit.test('should fire hide and hidden event without a clickEvent if event type is not click', function (assert) {
     assert.expect(3)
     var dropdownHTML = '<div class="tabs">' +
         '<div class="dropdown">' +
@@ -554,14 +554,13 @@ $(function () {
         assert.notOk(e.clickEvent)
       })
       .on('hidden.bs.dropdown', function (e) {
-        assert.onotO(e.clickEvent)
+        assert.notOk(e.clickEvent)
       })
       .on('shown.bs.dropdown', function () {
         assert.ok(true, 'shown was fired')
-        var esc = $.Event('keyup', {
-          keyCode: 27
-        })
-        $(document.body).trigger(esc)
+        $dropdown.trigger($.Event('keydown', {
+          which: 27
+        }))
       })
 
     $dropdown.trigger('click')
