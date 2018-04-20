@@ -1589,7 +1589,7 @@
   </div>
   <div class="col-xs-4">
     <label for="input-@navbar-font-size-mobile">@navbar-font-size-mobile</label>
-    <input id="input-@navbar-font-size-mobile" type="text" value="18px" data-var="@navbar-font-size-mobile" class="form-control"/>
+    <input id="input-@navbar-font-size-mobile" type="text" value="16px" data-var="@navbar-font-size-mobile" class="form-control"/>
   </div>
   <div class="col-xs-4">
     <label for="input-@navbar-line-height">@navbar-line-height</label>
@@ -1623,9 +1623,18 @@
   </div>
   <div class="clearfix"></div>
   <div class="col-xs-4">
+    <label for="input-@navbar-padding-horizontal-mobile">@navbar-padding-horizontal-mobile</label>
+    <input id="input-@navbar-padding-horizontal-mobile" type="text" value="(@spacer * 2)" data-var="@navbar-padding-horizontal-mobile" class="form-control"/>
+  </div>
+  <div class="col-xs-4">
+    <label for="input-@navbar-padding-mobile">@navbar-padding-mobile</label>
+    <input id="input-@navbar-padding-mobile" type="text" value="(@navbar-padding-vertical + 1px) @navbar-padding-horizontal-mobile (@navbar-padding-vertical - 1px)" data-var="@navbar-padding-mobile" class="form-control"/>
+  </div>
+  <div class="col-xs-4">
     <label for="input-@navbar-collapse-max-height">@navbar-collapse-max-height</label>
     <input id="input-@navbar-collapse-max-height" type="text" value="340px" data-var="@navbar-collapse-max-height" class="form-control"/>
   </div>
+  <div class="clearfix"></div>
   <div class="col-xs-4">
     <label for="input-@navbar-collapse-max-width">@navbar-collapse-max-width</label>
     <input id="input-@navbar-collapse-max-width" type="text" value="(320px - 56px)" data-var="@navbar-collapse-max-width" class="form-control"/>
