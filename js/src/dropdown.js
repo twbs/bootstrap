@@ -341,8 +341,8 @@ const Dropdown = (($) => {
           relatedTarget: toggles[i]
         }
 
-        if (event) {
-          relatedTarget.original = event.originalEvent
+        if (event && event.type == 'click') {
+          relatedTarget.mouseEvent = event.originalEvent
         }
 
         if (!context) {
