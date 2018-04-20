@@ -342,7 +342,7 @@ const Dropdown = (($) => {
         }
 
         if (event && event.type === 'click') {
-          relatedTarget.mouseEvent = event
+          relatedTarget.clickEvent = event
         }
 
         if (!context) {
