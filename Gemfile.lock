@@ -16,7 +16,7 @@ GEM
     http_parser.rb (0.6.0)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
-    jekyll (3.7.3)
+    jekyll (3.8.0)
       addressable (~> 2.4)
       colorator (~> 1.0)
       em-websocket (~> 0.5)
@@ -71,7 +71,7 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
-  jekyll (~> 3.7.0)
+  jekyll (~> 3.8.0)
   jekyll-redirect-from (~> 0.13.0)
   jekyll-sitemap (~> 1.2.0)
   jekyll-toc (~> 0.5.1)
