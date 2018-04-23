@@ -263,6 +263,34 @@
   }
 }
 
+.btn-download {
+  .button-variant(
+      @btn-download-color;
+      @btn-download-color;
+      @btn-download-bg;
+      @btn-download-bg-hover;
+      @btn-download-bg-active;
+      @btn-download-border;
+      @btn-download-border-hover;
+      @btn-download-border-active
+  );
+  position: relative;
+  text-align: left;
+  border-radius: 8px !important;
+  padding-left: 80px;
+	padding-top: 8px;
+	padding-bottom: 8px;
+  .icon-download {
+    position: absolute;
+    top: 12px;
+    left: 16px;
+  }
+  span {
+    display: block;
+    color: @btn-download-color !important;
+    margin-bottom: 0;
+  }
+}
 
 // Button Sizes
 // --------------------------------------------------
