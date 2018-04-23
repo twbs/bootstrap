@@ -21,16 +21,18 @@
     width: 1%;
     margin-bottom: 0;
 
-    // Bring the "active" form control to the top of surrounding elements
-    &:focus {
-      z-index: 3;
-    }
-
     + .form-control,
     + .custom-select,
     + .custom-file {
       margin-left: -$input-border-width;
     }
+  }
+
+  // Bring the "active" form control to the top of surrounding elements
+  > .form-control:focus,
+  > .custom-select:focus,
+  > .custom-file .custom-file-input:focus ~ .custom-file-label {
+    z-index: 3;
   }
 
   > .form-control,
