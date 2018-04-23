@@ -1,6 +1,8 @@
 $(function () {
   'use strict'
 
+  window.Util = typeof bootstrap !== 'undefined' ? bootstrap.Util : Util
+
   QUnit.module('util')
 
   QUnit.test('Util.getSelectorFromElement should return the correct element', function (assert) {

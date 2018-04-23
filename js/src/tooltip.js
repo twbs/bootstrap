@@ -4,7 +4,7 @@ import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0): tooltip.js
+ * Bootstrap (v4.1.0): tooltip.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -17,7 +17,7 @@ const Tooltip = (($) => {
    */
 
   const NAME               = 'tooltip'
-  const VERSION            = '4.0.0'
+  const VERSION            = '4.1.0'
   const DATA_KEY           = 'bs.tooltip'
   const EVENT_KEY          = `.${DATA_KEY}`
   const JQUERY_NO_CONFLICT = $.fn[NAME]
@@ -611,7 +611,7 @@ const Tooltip = (($) => {
       config = {
         ...this.constructor.Default,
         ...$(this.element).data(),
-        ...config
+        ...typeof config === 'object' && config ? config : {}
       }
 
       if (typeof config.delay === 'number') {

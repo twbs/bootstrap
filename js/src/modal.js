@@ -3,7 +3,7 @@ import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0): modal.js
+ * Bootstrap (v4.1.0): modal.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -16,7 +16,7 @@ const Modal = (($) => {
    */
 
   const NAME               = 'modal'
-  const VERSION            = '4.0.0'
+  const VERSION            = '4.1.0'
   const DATA_KEY           = 'bs.modal'
   const EVENT_KEY          = `.${DATA_KEY}`
   const DATA_API_KEY       = '.data-api'
@@ -498,9 +498,9 @@ const Modal = (($) => {
       return this.each(function () {
         let data = $(this).data(DATA_KEY)
         const _config = {
-          ...Modal.Default,
+          ...Default,
           ...$(this).data(),
-          ...typeof config === 'object' && config
+          ...typeof config === 'object' && config ? config : {}
         }
 
         if (!data) {

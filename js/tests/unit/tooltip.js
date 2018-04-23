@@ -953,4 +953,33 @@ $(function () {
       $trigger.trigger($.Event('click'))
     }, 200)
   })
+
+  QUnit.test('should call Popper.js to update', function (assert) {
+    assert.expect(2)
+
+    var $tooltip = $('<a href="#" rel="tooltip" data-trigger="click" title="Another tooltip"/>')
+      .appendTo('#qunit-fixture')
+      .bootstrapTooltip()
+
+    var tooltip = $tooltip.data('bs.tooltip')
+    tooltip.show()
+    assert.ok(tooltip._popper)
+
+    var spyPopper = sinon.spy(tooltip._popper, 'scheduleUpdate')
+    tooltip.update()
+    assert.ok(spyPopper.called)
+  })
+
+  QUnit.test('should not call Popper.js to update', function (assert) {
+    assert.expect(1)
+
+    var $tooltip = $('<a href="#" rel="tooltip" data-trigger="click" title="Another tooltip"/>')
+      .appendTo('#qunit-fixture')
+      .bootstrapTooltip()
+
+    var tooltip = $tooltip.data('bs.tooltip')
+    tooltip.update()
+
+    assert.ok(tooltip._popper === null)
+  })
 })
