@@ -78,7 +78,7 @@ Since we write our source CSS in Sass, all our media queries are available via S
 
 // Example usage, default extra small and mixin for small and up:
 .some-class {
-   display: none;
+  display: none;
 }
 @include media-breakpoint-up(sm) {
   .some-class {
