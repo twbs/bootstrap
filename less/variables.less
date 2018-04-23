@@ -658,7 +658,7 @@
 
 // Basics of a navbar
 @navbar-font-size:            14px;
-@navbar-font-size-mobile:     18px;
+@navbar-font-size-mobile:     16px;
 @navbar-line-height:          40px;
 @navbar-height:               56px;
 @navbar-margin-bottom:        40px;
@@ -666,6 +666,9 @@
 @navbar-padding-horizontal:   16px;
 @navbar-padding-vertical:     8px;
 @navbar-padding:              (@navbar-padding-vertical + 1px) @navbar-padding-horizontal (@navbar-padding-vertical - 1px);
+@navbar-padding-horizontal-mobile: (@spacer * 2);
+@navbar-padding-mobile:       (@navbar-padding-vertical + 1px) @navbar-padding-horizontal-mobile (@navbar-padding-vertical - 1px);
+
 
 @navbar-collapse-max-height:  340px;
 @navbar-collapse-max-width:   (320px - 56px);
