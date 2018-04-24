@@ -70,18 +70,18 @@ Bootstrap primarily uses the following media query ranges—or breakpoints—in 
 Since we write our source CSS in Sass, all our media queries are available via Sass mixins:
 
 {% highlight scss %}
-// No media query necessary for xs breakpoint as it's effectively @media (min-width: 0) { ... }
+// No media query necessary for xs breakpoint as it's effectively `@media (min-width: 0) { ... }`
 @include media-breakpoint-up(sm) { ... }
 @include media-breakpoint-up(md) { ... }
 @include media-breakpoint-up(lg) { ... }
 @include media-breakpoint-up(xl) { ... }
 
-// Example usage, default extra small and mixin for small and up:
-.some-class {
+// Example: Hide starting at `min-width: 0`, and then show at the `sm` breakpoint
+.custom-class {
   display: none;
 }
 @include media-breakpoint-up(sm) {
-  .some-class {
+  .custom-class {
     display: block;
   }
 }
@@ -117,9 +117,9 @@ Once again, these media queries are also available via Sass mixins:
 @include media-breakpoint-down(lg) { ... }
 // No media query necessary for xl breakpoint as it has no upper bound on its width
 
-// Example usage, medium and down:
+// Example: Style from medium breakpoint and down
 @include media-breakpoint-down(md) {
-  .some-class {
+  .custom-class {
     display: block;
   }
 }
