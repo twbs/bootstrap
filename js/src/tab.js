@@ -3,7 +3,7 @@ import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0): tab.js
+ * Bootstrap (v4.1.0): tab.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -15,13 +15,12 @@ const Tab = (($) => {
    * ------------------------------------------------------------------------
    */
 
-  const NAME                = 'tab'
-  const VERSION             = '4.0.0'
-  const DATA_KEY            = 'bs.tab'
-  const EVENT_KEY           = `.${DATA_KEY}`
-  const DATA_API_KEY        = '.data-api'
-  const JQUERY_NO_CONFLICT  = $.fn[NAME]
-  const TRANSITION_DURATION = 150
+  const NAME               = 'tab'
+  const VERSION            = '4.1.0'
+  const DATA_KEY           = 'bs.tab'
+  const EVENT_KEY          = `.${DATA_KEY}`
+  const DATA_API_KEY       = '.data-api'
+  const JQUERY_NO_CONFLICT = $.fn[NAME]
 
   const Event = {
     HIDE           : `hide${EVENT_KEY}`,
@@ -152,7 +151,6 @@ const Tab = (($) => {
 
       const active = activeElements[0]
       const isTransitioning = callback &&
-        Util.supportsTransitionEnd() &&
         (active && $(active).hasClass(ClassName.FADE))
 
       const complete = () => this._transitionComplete(
@@ -162,9 +160,11 @@ const Tab = (($) => {
       )
 
       if (active && isTransitioning) {
+        const transitionDuration = Util.getTransitionDurationFromElement(active)
+
         $(active)
           .one(Util.TRANSITION_END, complete)
-          .emulateTransitionEnd(TRANSITION_DURATION)
+          .emulateTransitionEnd(transitionDuration)
       } else {
         complete()
       }

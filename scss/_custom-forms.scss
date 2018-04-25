@@ -54,16 +54,17 @@
 
 // Custom control indicators
 //
-// Build the custom controls out of psuedo-elements.
+// Build the custom controls out of pseudo-elements.
 
 .custom-control-label {
+  position: relative;
   margin-bottom: 0;
 
   // Background-color and (when enabled) gradient
   &::before {
     position: absolute;
     top: (($line-height-base - $custom-control-indicator-size) / 2);
-    left: 0;
+    left: -$custom-control-gutter;
     display: block;
     width: $custom-control-indicator-size;
     height: $custom-control-indicator-size;
@@ -78,7 +79,7 @@
   &::after {
     position: absolute;
     top: (($line-height-base - $custom-control-indicator-size) / 2);
-    left: 0;
+    left: -$custom-control-gutter;
     display: block;
     width: $custom-control-indicator-size;
     height: $custom-control-indicator-size;
@@ -157,7 +158,7 @@
 // Select
 //
 // Replaces the browser default select with a custom one, mostly pulled from
-// http://primercss.io.
+// https://primer.github.io/.
 //
 
 .custom-select {
@@ -247,11 +248,11 @@
   margin: 0;
   opacity: 0;
 
-  &:focus ~ .custom-file-control {
+  &:focus ~ .custom-file-label {
     border-color: $custom-file-focus-border-color;
     box-shadow: $custom-file-focus-box-shadow;
 
-    &::before {
+    &::after {
       border-color: $custom-file-focus-border-color;
     }
   }
@@ -298,7 +299,7 @@
 
 // Range
 //
-// Style range inputs the same across browsers. Vendor-specific rules for psuedo
+// Style range inputs the same across browsers. Vendor-specific rules for pseudo
 // elements cannot be mixed. As such, there are no shared styles for focus or
 // active states on prefixed selectors.
 

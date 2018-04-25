@@ -118,7 +118,7 @@
   position: relative;
   padding: 1rem;
   margin: 1rem (-$grid-gutter-width / 2) 0;
-  border: solid #f7f7f9;
+  border: solid $gray-100;
   border-width: .2rem 0 0;
   @include clearfix();
 
@@ -378,7 +378,7 @@
   padding: 1rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
-  background-color: #f7f7f9;
+  background-color: $gray-100;
   -ms-overflow-style: -ms-autohiding-scrollbar;
 
   @include media-breakpoint-up(sm) {

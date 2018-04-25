@@ -12,9 +12,9 @@
         // get jquery param from the query string.
         var jQueryVersion = location.search.match(/[?&]jquery=(.*?)(?=&|$)/)
 
-        // If a version was specified, use that version from our vendor folder
+        // If a version was specified, use that version from jQuery CDN
         if (jQueryVersion) {
-          path = 'vendor/jquery-' + jQueryVersion[1] + '.min.js'
+          path = 'https://code.jquery.com/jquery-' + jQueryVersion[1] + '.min.js'
         }
         document.write('<script src="' + path + '"><\/script>')
       }())
@@ -22,8 +22,11 @@
     <script src="../../assets/js/vendor/popper.min.js"></script>
 
     <!-- QUnit -->
-    <link rel="stylesheet" href="vendor/qunit.css" media="screen">
-    <script src="vendor/qunit.js"></script>
+    <link rel="stylesheet" href="../../node_modules/qunitjs/qunit/qunit.css" media="screen">
+    <script src="../../node_modules/qunitjs/qunit/qunit.js"></script>
+
+    <!-- Sinon -->
+    <script src="../../node_modules/sinon/pkg/sinon-no-sourcemaps.js"></script>
 
     <script>
       // Disable jQuery event aliases to ensure we don't accidentally use any of them

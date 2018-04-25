@@ -11,9 +11,13 @@
     <a href="https://getbootstrap.com/docs/4.0/"><strong>Explore Bootstrap docs »</strong></a>
     <br>
     <br>
-    <a href="https://themes.getbootstrap.com/">Bootstrap Themes</a>
+    <a href="https://github.com/twbs/bootstrap/issues/new?template=bug.md">Report bug</a>
     ·
-    <a href="https://jobs.getbootstrap.com/">Job Board</a>
+    <a href="https://github.com/twbs/bootstrap/issues/new?template=feature.md&labels=feature">Request feature</a>
+    ·
+    <a href="https://themes.getbootstrap.com/">Themes</a>
+    ·
+    <a href="https://jobs.getbootstrap.com/">Jobs</a>
     ·
     <a href="https://blog.getbootstrap.com/">Blog</a>
   </p>
@@ -38,11 +42,11 @@
 
 Several quick start options are available:
 
-- [Download the latest release.](https://github.com/twbs/bootstrap/archive/v4.0.0.zip)
+- [Download the latest release.](https://github.com/twbs/bootstrap/archive/v4.1.0.zip)
 - Clone the repo: `git clone https://github.com/twbs/bootstrap.git`
 - Install with [npm](https://www.npmjs.com/): `npm install bootstrap`
-- Install with [yarn](https://yarnpkg.com/): `yarn add bootstrap@4.0.0`
-- Install with [Composer](https://getcomposer.org/): `composer require twbs/bootstrap:4.0.0`
+- Install with [yarn](https://yarnpkg.com/): `yarn add bootstrap@4.1.0`
+- Install with [Composer](https://getcomposer.org/): `composer require twbs/bootstrap:4.1.0`
 - Install with [NuGet](https://www.nuget.org/): CSS: `Install-Package bootstrap` Sass: `Install-Package bootstrap.sass`
 
 Read the [Getting started page](https://getbootstrap.com/docs/4.0/getting-started/introduction/) for information on the framework contents, templates and examples, and more.
@@ -101,7 +105,7 @@ Have a bug or a feature request? Please first read the [issue guidelines](https:
 
 Bootstrap's documentation, included in this repo in the root directory, is built with [Jekyll](https://jekyllrb.com/) and publicly hosted on GitHub Pages at <https://getbootstrap.com/>. The docs may also be run locally.
 
-Documentation search is powered by [Algolia's DocSearch](https://community.algolia.com/docsearch/). Working on our search? Be sure to set `debug: true` in the `_scripts.html` include.
+Documentation search is powered by [Algolia's DocSearch](https://community.algolia.com/docsearch/). Working on our search? Be sure to set `debug: true` in `assets/js/application.js` file.
 
 ### Running documentation locally
 
@@ -144,7 +148,7 @@ Get updates on Bootstrap's development and chat with the project maintainers and
 
 ## Versioning
 
-For transparency into our release cycle and in striving to maintain backward compatibility, Bootstrap is maintained under [the Semantic Versioning guidelines](http://semver.org/). Sometimes we screw up, but we'll adhere to those rules whenever possible.
+For transparency into our release cycle and in striving to maintain backward compatibility, Bootstrap is maintained under [the Semantic Versioning guidelines](https://semver.org/). Sometimes we screw up, but we'll adhere to those rules whenever possible.
 
 See [the Releases section of our GitHub project](https://github.com/twbs/bootstrap/releases) for changelogs for each release version of Bootstrap. Release announcement posts on [the official Bootstrap blog](https://blog.getbootstrap.com/) contain summaries of the most noteworthy changes made in each release.
 
