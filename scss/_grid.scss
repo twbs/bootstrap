@@ -4,10 +4,13 @@
 
 @if $enable-grid-classes {
 
-  $combined-container-max-widths: map-merge((
-          xs: 0,
-          fluid: 9999px,
-  ), $container-max-widths);
+  $combined-container-max-widths: map-merge(
+    (
+      xs: 0,
+      fluid: 9999px,
+    ),
+    $container-max-widths
+  );
 
   %containers {
     @include make-container();
