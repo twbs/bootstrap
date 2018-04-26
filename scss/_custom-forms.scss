@@ -311,6 +311,12 @@
 
   &:focus {
     outline: none;
+
+    // Pseudo-elements must be split across multiple rulesets to have an affect.
+    // No box-shadow() mixin for focus accessibility.
+    &::-webkit-slider-thumb { box-shadow: $custom-range-thumb-focus-box-shadow; }
+    &::-moz-range-thumb     { box-shadow: $custom-range-thumb-focus-box-shadow; }
+    &::-ms-thumb            { box-shadow: $custom-range-thumb-focus-box-shadow; }
   }
 
   &::-moz-focus-outer {
@@ -326,11 +332,6 @@
     @include border-radius($custom-range-thumb-border-radius);
     @include box-shadow($custom-range-thumb-box-shadow);
     appearance: none;
-
-    &:focus {
-      outline: none;
-      box-shadow: $custom-range-thumb-focus-box-shadow; // No mixin for focus accessibility
-    }
 
     &:active {
       @include gradient-bg($custom-range-thumb-active-bg);
@@ -357,11 +358,6 @@
     @include box-shadow($custom-range-thumb-box-shadow);
     appearance: none;
 
-    &:focus {
-      outline: none;
-      box-shadow: $custom-range-thumb-focus-box-shadow; // No mixin for focus accessibility
-    }
-
     &:active {
       @include gradient-bg($custom-range-thumb-active-bg);
     }
@@ -386,11 +382,6 @@
     @include border-radius($custom-range-thumb-border-radius);
     @include box-shadow($custom-range-thumb-box-shadow);
     appearance: none;
-
-    &:focus {
-      outline: none;
-      box-shadow: $custom-range-thumb-focus-box-shadow; // No mixin for focus accessibility
-    }
 
     &:active {
       @include gradient-bg($custom-range-thumb-active-bg);
