@@ -377,7 +377,7 @@
   &::-ms-thumb {
     width: $custom-range-thumb-width;
     height: $custom-range-thumb-height;
-    margin-top: 0; // IE/Edge specific
+    margin-top: 0; // Edge specific
     margin-right: $custom-range-thumb-focus-box-shadow-total-width; // Workaround that overflowed box-shadow is hidden.
     margin-left: $custom-range-thumb-focus-box-shadow-total-width;  // Workaround that overflowed box-shadow is hidden.
     @include gradient-bg($custom-range-thumb-bg);
