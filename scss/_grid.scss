@@ -29,11 +29,15 @@
 
 @each $breakpoint, $container-max-width in $container-max-widths {
   @include media-breakpoint-up($breakpoint, $grid-breakpoints) {
+
+    %responsive-container-#{$breakpoint} {
+      max-width: $container-max-width;
+    }
+
     @each $name, $width in $grid-breakpoints {
       @if ($container-max-width > $width or $breakpoint == $name) {
-        $infix: breakpoint-infix($name, $grid-breakpoints);
-        .container#{$infix} {
-          max-width: $container-max-width;
+        .container#{breakpoint-infix($name, $grid-breakpoints)} {
+          @extend %responsive-container-#{$breakpoint};
         }
       }
     }
