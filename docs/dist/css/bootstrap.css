@@ -1,5 +1,5 @@
 /*!
- * Bootstrap v5.15.6 (http://bootstrap.transferwise.com)
+ * Bootstrap v5.15.7 (http://bootstrap.transferwise.com)
  * Copyright 2011-2018 Twitter, Inc.
  * Licensed under MIT (https://github.com/transferwise/bootstrap/blob/master/LICENSE)
  */
@@ -7939,6 +7939,15 @@ select[multiple].input-group-sm > .input-group-addon {
     font-size: 9px;
   }
 }
+.navbar-nav > li > .dropdown-menu > .active > a {
+  font-weight: bold;
+  color: #00b9ff;
+  background-color: transparent;
+}
+.navbar-nav > li > .dropdown-menu > .active > a:hover,
+.navbar-nav > li > .dropdown-menu > .active > a:focus {
+  background-color: #f2f5f7;
+}
 @media (min-width: 768px) {
   .navbar-nav > li > .dropdown-menu:before {
     position: absolute;
@@ -8077,8 +8086,15 @@ select[multiple].input-group-sm > .input-group-addon {
   background-color: transparent;
 }
 .navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > .dropdown-toggle {
+  font-weight: bold;
+}
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > .dropdown-toggle,
 .navbar-default .navbar-nav > .active > a:hover,
-.navbar-default .navbar-nav > .active > a:focus {
+.navbar-default .navbar-nav > .active > .dropdown-toggle:hover,
+.navbar-default .navbar-nav > .active > a:focus,
+.navbar-default .navbar-nav > .active > .dropdown-toggle:focus {
   color: #00b9ff;
   background-color: transparent;
   border-color: #00b9ff;
@@ -8105,6 +8121,9 @@ select[multiple].input-group-sm > .input-group-addon {
   .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus-within {
     color: #00b9ff;
     background-color: transparent;
+  }
+  .navbar-default .navbar-nav .open .dropdown-menu > .active > a {
+    font-weight: bold;
   }
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a,
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
@@ -8170,8 +8189,15 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   background-color: transparent;
 }
 .navbar-inverse .navbar-nav > .active > a,
+.navbar-inverse .navbar-nav > .active > .dropdown-toggle {
+  font-weight: bold;
+}
+.navbar-inverse .navbar-nav > .active > a,
+.navbar-inverse .navbar-nav > .active > .dropdown-toggle,
 .navbar-inverse .navbar-nav > .active > a:hover,
-.navbar-inverse .navbar-nav > .active > a:focus {
+.navbar-inverse .navbar-nav > .active > .dropdown-toggle:hover,
+.navbar-inverse .navbar-nav > .active > a:focus,
+.navbar-inverse .navbar-nav > .active > .dropdown-toggle:focus {
   color: #00b9ff;
   background-color: transparent;
   border-color: #00b9ff;
