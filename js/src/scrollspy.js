@@ -225,7 +225,8 @@ const ScrollSpy = (($) => {
         return
       }
 
-      for (let i = this._offsets.length; i--;) {
+      const offsetLength = this._offsets.length
+      for (let i = offsetLength; i--;) {
         const isActiveTarget = this._activeTarget !== this._targets[i] &&
             scrollTop >= this._offsets[i] &&
             (typeof this._offsets[i + 1] === 'undefined' ||
@@ -302,9 +303,10 @@ const ScrollSpy = (($) => {
    */
 
   $(window).on(Event.LOAD_DATA_API, () => {
-    const scrollSpys = $.makeArray($(Selector.DATA_SPY))
+    const scrollSpys = [].slice.call(document.querySelectorAll(Selector.DATA_SPY))
 
-    for (let i = scrollSpys.length; i--;) {
+    const scrollSpysLength = scrollSpys.length
+    for (let i = scrollSpysLength; i--;) {
       const $spy = $(scrollSpys[i])
       ScrollSpy._jQueryInterface.call($spy, $spy.data())
     }
