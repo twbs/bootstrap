@@ -52,9 +52,11 @@ var Alert = function ($) {
 
     // Public
     _proto.close = function close(element) {
-      element = element || this._element;
+      var rootElement = this._element;
 
-      var rootElement = this._getRootElement(element);
+      if (element) {
+        rootElement = this._getRootElement(element);
+      }
 
       var customEvent = this._triggerCloseEvent(rootElement);
 

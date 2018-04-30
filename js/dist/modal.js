@@ -495,7 +495,7 @@ var Modal = function ($) {
       return this.each(function () {
         var data = $(this).data(DATA_KEY);
 
-        var _config = _objectSpread({}, Modal.Default, $(this).data(), typeof config === 'object' && config);
+        var _config = _objectSpread({}, Default, $(this).data(), typeof config === 'object' && config ? config : {});
 
         if (!data) {
           data = new Modal(this, _config);

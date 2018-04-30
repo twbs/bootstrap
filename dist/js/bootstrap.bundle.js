@@ -251,9 +251,11 @@
 
       // Public
       _proto.close = function close(element) {
-        element = element || this._element;
+        var rootElement = this._element;
 
-        var rootElement = this._getRootElement(element);
+        if (element) {
+          rootElement = this._getRootElement(element);
+        }
 
         var customEvent = this._triggerCloseEvent(rootElement);
 
@@ -1323,7 +1325,7 @@
           var $this = $$$1(this);
           var data = $this.data(DATA_KEY);
 
-          var _config = _objectSpread({}, Default, $this.data(), typeof config === 'object' && config);
+          var _config = _objectSpread({}, Default, $this.data(), typeof config === 'object' && config ? config : {});
 
           if (!data && _config.toggle && /show|hide/.test(config)) {
             _config.toggle = false;
@@ -1400,7 +1402,7 @@
 
   /**!
    * @fileOverview Kickass library to create and place poppers near their reference elements.
-   * @version 1.14.1
+   * @version 1.14.3
    * @license
    * Copyright (c) 2016 Federico Zivolo and contributors
    *
@@ -1423,6 +1425,7 @@
    * SOFTWARE.
    */
   var isBrowser = typeof window !== 'undefined' && typeof document !== 'undefined';
+
   var longerTimeoutBrowsers = ['Edge', 'Trident', 'Firefox'];
   var timeoutDuration = 0;
   for (var i = 0; i < longerTimeoutBrowsers.length; i += 1) {
@@ -1549,40 +1552,25 @@
     return getScrollParent(getParentNode(element));
   }
 
+  var isIE11 = isBrowser && !!(window.MSInputMethodContext && document.documentMode);
+  var isIE10 = isBrowser && /MSIE 10/.test(navigator.userAgent);
+
   /**
-   * Tells if you are running Internet Explorer
+   * Determines if the browser is Internet Explorer
    * @method
    * @memberof Popper.Utils
-   * @argument {number} version to check
+   * @param {Number} version to check
    * @returns {Boolean} isIE
    */
-  var cache = {};
-
-  var isIE = function () {
-    var version = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'all';
-
-    version = version.toString();
-    if (cache.hasOwnProperty(version)) {
-      return cache[version];
+  function isIE(version) {
+    if (version === 11) {
+      return isIE11;
     }
-    switch (version) {
-      case '11':
-        cache[version] = navigator.userAgent.indexOf('Trident') !== -1;
-        break;
-      case '10':
-        cache[version] = navigator.appVersion.indexOf('MSIE 10') !== -1;
-        break;
-      case 'all':
-        cache[version] = navigator.userAgent.indexOf('Trident') !== -1 || navigator.userAgent.indexOf('MSIE') !== -1;
-        break;
+    if (version === 10) {
+      return isIE10;
     }
-
-    //Set IE
-    cache.all = cache.all || Object.keys(cache).some(function (key) {
-      return cache[key];
-    });
-    return cache[version];
-  };
+    return isIE11 || isIE10;
+  }
 
   /**
    * Returns the offset parent of the given element
@@ -2335,6 +2323,7 @@
 
     // compute the popper offsets
     data.offsets.popper = getPopperOffsets(this.popper, data.offsets.reference, data.placement);
+
     data.offsets.popper.position = this.options.positionFixed ? 'fixed' : 'absolute';
 
     // run the modifiers
@@ -2640,11 +2629,13 @@
       position: popper.position
     };
 
-    // floor sides to avoid blurry text
+    // Avoid blurry text by using full pixel integers.
+    // For pixel-perfect positioning, top/bottom prefers rounded
+    // values, while left/right prefers floored values.
     var offsets = {
       left: Math.floor(popper.left),
-      top: Math.floor(popper.top),
-      bottom: Math.floor(popper.bottom),
+      top: Math.round(popper.top),
+      bottom: Math.round(popper.bottom),
       right: Math.floor(popper.right)
     };
 
@@ -3200,7 +3191,27 @@
       boundariesElement = getOffsetParent(boundariesElement);
     }
 
+    // NOTE: DOM access here
+    // resets the popper's position so that the document size can be calculated excluding
+    // the size of the popper element itself
+    var transformProp = getSupportedPropertyName('transform');
+    var popperStyles = data.instance.popper.style; // assignment to help minification
+    var top = popperStyles.top,
+        left = popperStyles.left,
+        transform = popperStyles[transformProp];
+
+    popperStyles.top = '';
+    popperStyles.left = '';
+    popperStyles[transformProp] = '';
+
     var boundaries = getBoundaries(data.instance.popper, data.instance.reference, options.padding, boundariesElement, data.positionFixed);
+
+    // NOTE: DOM access here
+    // restores the original style properties after the offsets have been computed
+    popperStyles.top = top;
+    popperStyles.left = left;
+    popperStyles[transformProp] = transform;
+
     options.boundaries = boundaries;
 
     var order = options.priority;
@@ -4879,7 +4890,7 @@
         return this.each(function () {
           var data = $$$1(this).data(DATA_KEY);
 
-          var _config = _objectSpread({}, Modal.Default, $$$1(this).data(), typeof config === 'object' && config);
+          var _config = _objectSpread({}, Default, $$$1(this).data(), typeof config === 'object' && config ? config : {});
 
           if (!data) {
             data = new Modal(this, _config);
@@ -5486,7 +5497,7 @@
       };
 
       _proto._getConfig = function _getConfig(config) {
-        config = _objectSpread({}, this.constructor.Default, $$$1(this.element).data(), config);
+        config = _objectSpread({}, this.constructor.Default, $$$1(this.element).data(), typeof config === 'object' && config ? config : {});
 
         if (typeof config.delay === 'number') {
           config.delay = {
@@ -5972,7 +5983,7 @@
 
 
       _proto._getConfig = function _getConfig(config) {
-        config = _objectSpread({}, Default, config);
+        config = _objectSpread({}, Default, typeof config === 'object' && config ? config : {});
 
         if (typeof config.target !== 'string') {
           var id = $$$1(config.target).attr('id');
@@ -6393,7 +6404,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.0.0): index.js
+   * Bootstrap (v4.1.0): index.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
