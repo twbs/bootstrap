@@ -286,7 +286,7 @@
     bottom: 0;
     z-index: 3;
     display: block;
-    height: calc(#{$custom-file-height} - #{$custom-file-border-width} * 2);
+    height: $custom-file-height-inner;
     padding: $custom-file-padding-y $custom-file-padding-x;
     line-height: $custom-file-line-height;
     color: $custom-file-button-color;
