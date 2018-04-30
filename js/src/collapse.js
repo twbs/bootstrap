@@ -72,11 +72,14 @@ const Collapse = (($) => {
         `[data-toggle="collapse"][href="#${element.id}"],` +
         `[data-toggle="collapse"][data-target="#${element.id}"]`
       ))
-      const tabToggles = $(Selector.DATA_TOGGLE)
-      for (let i = 0; i < tabToggles.length; i++) {
-        const elem = tabToggles[i]
+      const toggleList = [].slice.call(document.querySelectorAll(Selector.DATA_TOGGLE))
+      for (let i = 0, len = toggleList.length; i < len; i++) {
+        const elem = toggleList[i]
         const selector = Util.getSelectorFromElement(elem)
-        if (selector !== null && $(selector).filter(element).length > 0) {
+        const filterElement = [].slice.call(document.querySelectorAll(selector))
+          .filter((foundElem) => foundElem === element)
+
+        if (selector !== null && filterElement.length > 0) {
           this._selector = selector
           this._triggerArray.push(elem)
         }
@@ -123,11 +126,9 @@ const Collapse = (($) => {
       let activesData
 
       if (this._parent) {
-        actives = $.makeArray(
-          $(this._parent)
-            .find(Selector.ACTIVES)
-            .filter(`[data-parent="${this._config.parent}"]`)
-        )
+        actives = [].slice.call(this._parent.querySelectorAll(Selector.ACTIVES))
+          .filter((elem) => elem.getAttribute('data-parent') === this._config.parent)
+
         if (actives.length === 0) {
           actives = null
         }
@@ -216,12 +217,13 @@ const Collapse = (($) => {
         .removeClass(ClassName.COLLAPSE)
         .removeClass(ClassName.SHOW)
 
-      if (this._triggerArray.length > 0) {
-        for (let i = 0; i < this._triggerArray.length; i++) {
+      const triggerArrayLength = this._triggerArray.length
+      if (triggerArrayLength > 0) {
+        for (let i = 0; i < triggerArrayLength; i++) {
           const trigger = this._triggerArray[i]
           const selector = Util.getSelectorFromElement(trigger)
           if (selector !== null) {
-            const $elem = $(selector)
+            const $elem = $([].slice.call(document.querySelectorAll(selector)))
             if (!$elem.hasClass(ClassName.SHOW)) {
               $(trigger).addClass(ClassName.COLLAPSED)
                 .attr('aria-expanded', false)
