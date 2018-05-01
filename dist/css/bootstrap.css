@@ -7787,6 +7787,8 @@ select[multiple].input-group-sm > .input-group-addon {
   .navbar-nav > li > button {
     padding: 9px 16px 7px;
     font-size: 16px;
+
+    -webkit-touch-callout: none;
   }
   .navbar-nav > li > .dropdown-menu {
     position: relative;
@@ -7944,13 +7946,18 @@ select[multiple].input-group-sm > .input-group-addon {
   .navbar-nav > li > .dropdown-menu > li > a {
     position: relative;
     padding: 9px 16px 7px;
+
+    -webkit-touch-callout: none;
   }
   .navbar-nav > li > .dropdown-menu > li > a .badge {
     position: absolute;
-    top: 14px;
+    top: 16px;
     right: 0;
-    padding: 2px;
-    font-size: 9px;
+    width: 8px;
+    min-width: 8px;
+    height: 8px;
+    padding: 5px;
+    text-indent: 264px;
   }
 }
 .navbar-nav > li > .dropdown-menu > .active > a {
@@ -8005,22 +8012,25 @@ select[multiple].input-group-sm > .input-group-addon {
             animation: showDropdown .2s cubic-bezier(.6, .2, .1, 1) both;
   }
 }
-.navbar-right li > .dropdown-menu::before {
+.navbar-right li > .dropdown-menu::before,
+.pull-xs-right li > .dropdown-menu::before {
   right: -webkit-calc((8px * 2) + (8px / 2));
   right:         calc((8px * 2) + (8px / 2));
   left: auto;
 }
 @media (min-width: 768px) and (max-width: 991px) {
-  .navbar-right li > .dropdown-menu::before {
+  .navbar-right li > .dropdown-menu::before,
+  .pull-xs-right li > .dropdown-menu::before {
     right: 16px;
   }
 }
-.navbar-right li > .dropdown-menu.dropdown-menu-center::before {
+.navbar-right.dropdown-menu-center::before,
+.pull-xs-right.dropdown-menu-center::before {
   right: auto;
   left: 50%;
   margin-left: -4px;
 }
-@media (max-width: 991px) {
+@media (max-width: 768px) {
   .navbar-collapse .navbar-nav > li > .dropdown-menu {
     margin-top: 0;
   }
@@ -8064,8 +8074,23 @@ select[multiple].input-group-sm > .input-group-addon {
   .navbar-right {
     float: right !important;
   }
+  .navbar-right li > .dropdown-menu::before {
+    right: -webkit-calc((8px * 2) + (8px / 2));
+    right:         calc((8px * 2) + (8px / 2));
+    left: auto;
+  }
+  .navbar-right.dropdown-menu-center::before {
+    right: auto;
+    left: 50%;
+    margin-left: -4px;
+  }
   .navbar-right ~ .navbar-right {
     margin-right: 0;
+  }
+}
+@media (min-width: 768px) and (min-width: 768px) and (max-width: 991px) {
+  .navbar-right li > .dropdown-menu::before {
+    right: 16px;
   }
 }
 .navbar-default {
@@ -8584,7 +8609,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 .simple-nav .navbar-nav > li > a.dropdown-toggle {
   height: 64px;
 }
-.simple-nav .navbar-right li > a {
+.simple-nav > .navbar-right li > a {
   float: right;
 }
 @media (min-width: 576px) {

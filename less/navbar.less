@@ -516,13 +516,16 @@
 }
 
 //Dropdown arrows
-.navbar-right li > .dropdown-menu {
-  &::before {
-    right: calc((@dropdown-arrow-width * 2) + (@dropdown-arrow-width / 2));
-    left: auto;
+.navbar-right,
+.pull-xs-right {
+  li > .dropdown-menu {
+    &::before {
+      right: calc((@dropdown-arrow-width * 2) + (@dropdown-arrow-width / 2));
+      left: auto;
 
-    @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
-      right: (@dropdown-arrow-width * 2);
+      @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+        right: (@dropdown-arrow-width * 2);
+      }
     }
   }
 
@@ -1204,7 +1207,7 @@
     height: @nav-toolbar-height;
   }
 
-  .navbar-right li > a {
+  >.navbar-right  li > a {
     // HACK - better to make things only collapse if inside collapse
     float: right;
   }
