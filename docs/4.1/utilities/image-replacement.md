@@ -6,6 +6,12 @@ group: utilities
 toc: true
 ---
 
+{% capture callout %}
+##### Warning
+The `text-hide()` class and mixin has been deprecated as of v4.1. It will be removed entirely in v5.
+{% endcapture %}
+{% include callout.html content=callout type="warning" %}
+
 Utilize the `.text-hide` class or mixin to help replace an element's text content with a background image.
 
 {% highlight html %}

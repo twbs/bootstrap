@@ -3,7 +3,7 @@ import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.1.0): tab.js
+ * Bootstrap (v4.1.1): tab.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -16,7 +16,7 @@ const Tab = (($) => {
    */
 
   const NAME               = 'tab'
-  const VERSION            = '4.1.0'
+  const VERSION            = '4.1.1'
   const DATA_KEY           = 'bs.tab'
   const EVENT_KEY          = `.${DATA_KEY}`
   const DATA_API_KEY       = '.data-api'
