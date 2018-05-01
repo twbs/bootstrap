@@ -3,7 +3,7 @@ import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0): alert.js
+ * Bootstrap (v4.1.1): alert.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -16,7 +16,7 @@ const Alert = (($) => {
    */
 
   const NAME                = 'alert'
-  const VERSION             = '4.0.0'
+  const VERSION             = '4.1.1'
   const DATA_KEY            = 'bs.alert'
   const EVENT_KEY           = `.${DATA_KEY}`
   const DATA_API_KEY        = '.data-api'
@@ -58,9 +58,11 @@ const Alert = (($) => {
     // Public
 
     close(element) {
-      element = element || this._element
+      let rootElement = this._element
+      if (element) {
+        rootElement = this._getRootElement(element)
+      }
 
-      const rootElement = this._getRootElement(element)
       const customEvent = this._triggerCloseEvent(rootElement)
 
       if (customEvent.isDefaultPrevented()) {
