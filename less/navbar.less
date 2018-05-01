@@ -457,10 +457,13 @@
 
           .badge {
             position: absolute;
-            top: 14px;
+            top: (@spacer * 2);
             right: 0;
-            padding: 2px;
-            font-size: 9px;
+            padding: 5px;
+            text-indent: @navbar-collapse-max-width;
+            width: @spacer;
+            min-width: @spacer;
+            height: @spacer;
           }
         }
       }
