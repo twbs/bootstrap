@@ -8136,7 +8136,7 @@ select[multiple].input-group-sm > .input-group-addon {
 .navbar-default .navbar-nav > .active > .dropdown-toggle:focus {
   color: #00b9ff;
   background-color: transparent;
-  border-color: #00b9ff;
+  border-color: transparent;
 }
 .navbar-default .navbar-nav > .disabled > a,
 .navbar-default .navbar-nav > .disabled > a:hover,
@@ -8239,7 +8239,7 @@ fieldset[disabled] .navbar-default .btn-link:focus {
 .navbar-inverse .navbar-nav > .active > .dropdown-toggle:focus {
   color: #00b9ff;
   background-color: transparent;
-  border-color: #00b9ff;
+  border-color: transparent;
 }
 .navbar-inverse .navbar-nav > .disabled > a,
 .navbar-inverse .navbar-nav > .disabled > a:hover,
