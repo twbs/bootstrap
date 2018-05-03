@@ -2,11 +2,8 @@
 // - Responsive image
 // - Retina image
 
-
-// Responsive image
-//
+// Responsive image.
 // Keep images from scaling beyond the width of their parents.
-
 @mixin img-fluid {
   // Part 1: Set a maximum relative to the parent
   max-width: 100%;
@@ -15,11 +12,8 @@
   height: auto;
 }
 
-
-// Retina image
-//
+// Retina image.
 // Short retina mixin for setting background-image and -size.
-
 // stylelint-disable indentation, media-query-list-comma-newline-after
 @mixin img-retina($file-1x, $file-2x, $width-1x, $height-1x) {
   background-image: url($file-1x);
