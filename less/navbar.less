@@ -321,6 +321,22 @@
       > button {
         font-size: @navbar-font-size-mobile;
         padding: @navbar-padding-mobile;
+        -webkit-touch-callout: none;// When a target is touched and held on iPhone OS, Safari displays a callout information about the link. This property allows disabling that behavior.
+      }
+
+      >.dropdown-menu {
+        position: relative;
+        width: 100%;
+        box-shadow: none;
+        padding: 0;
+        padding-bottom: @padding-large-vertical;
+        float: none;
+        margin-top: 0;
+        border-bottom: 1px solid @brand-smoke-plus-20;
+
+        .dropdown-header {
+          padding: @navbar-padding-mobile;
+        }
       }
     }
 
@@ -439,14 +455,29 @@
         @media (max-width: @grid-float-breakpoint) {
           padding: @navbar-padding-mobile;
           position: relative;
+          -webkit-touch-callout: none;// When a target is touched and held on iPhone OS, Safari displays a callout information about the link. This property allows disabling that behavior.
 
           .badge {
             position: absolute;
-            top: 14px;
+            top: (@spacer * 2);
             right: 0;
-            padding: 2px;
-            font-size: 9px;
+            padding: 5px;
+            text-indent: @navbar-collapse-max-width;
+            width: @spacer;
+            min-width: @spacer;
+            height: @spacer;
           }
+        }
+      }
+
+      > .active > a {
+        color: @brand-light-blue;
+        background-color: transparent;
+        font-weight: bold;
+
+        &:hover,
+        &:focus {
+          background-color: @dropdown-link-hover-bg;
         }
       }
 
@@ -484,13 +515,17 @@
   }
 }
 
-.navbar-right li > .dropdown-menu {
-  &::before {
-    right: calc((@dropdown-arrow-width * 2) + (@dropdown-arrow-width / 2));
-    left: auto;
+//Dropdown arrows
+.navbar-right,
+.pull-xs-right {
+  li > .dropdown-menu {
+    &::before {
+      right: calc((@dropdown-arrow-width * 2) + (@dropdown-arrow-width / 2));
+      left: auto;
 
-    @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
-      right: (@dropdown-arrow-width * 2);
+      @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+        right: (@dropdown-arrow-width * 2);
+      }
     }
   }
 
@@ -503,8 +538,8 @@
   }
 }
 
-@media (max-width: @screen-md-max) {
-  .navbar-collpse .navbar-nav > li > .dropdown-menu {
+@media (max-width: @screen-md) {
+  .navbar-collapse .navbar-nav > li > .dropdown-menu {
     margin-top: 0;
   }
 }
@@ -611,13 +646,17 @@
       }
     }
 
-    > .active > a {
-      &,
-      &:hover,
-      &:focus {
-        color: @navbar-default-link-active-color;
-        background-color: @navbar-default-link-active-bg;
-        border-color: @navbar-default-link-active-color;
+    > .active {
+      > a,
+      > .dropdown-toggle {
+        font-weight: bold;
+        &,
+        &:hover,
+        &:focus {
+          color: @navbar-default-link-active-color;
+          background-color: @navbar-default-link-active-bg;
+          border-color: transparent;
+        }
       }
     }
 
@@ -659,6 +698,7 @@
         }
 
         > .active > a {
+          font-weight: bold;
           &,
           &:hover,
           &:focus {
@@ -748,13 +788,17 @@
       }
     }
 
-    > .active > a {
-      &,
-      &:hover,
-      &:focus {
-        color: @navbar-inverse-link-active-color;
-        background-color: @navbar-inverse-link-active-bg;
-        border-color: @navbar-inverse-link-active-color;
+    > .active {
+      > a,
+      > .dropdown-toggle {
+        font-weight: bold;
+        &,
+        &:hover,
+        &:focus {
+          color: @navbar-inverse-link-active-color;
+          background-color: @navbar-inverse-link-active-bg;
+          border-color: transparent;
+        }
       }
     }
 
@@ -866,21 +910,6 @@
 
       .caret {
         transform: rotate(-180deg);
-      }
-
-      .dropdown-menu {
-        position: relative;
-        width: 100%;
-        box-shadow: none;
-        padding: 0;
-        padding-bottom: @padding-large-vertical;
-        float: none;
-        margin-top: 0;
-        border-bottom: 1px solid @brand-smoke-plus-20;
-
-        .dropdown-header {
-          padding: @navbar-padding-mobile;
-        }
       }
     }
 
@@ -1178,7 +1207,7 @@
     height: @nav-toolbar-height;
   }
 
-  .navbar-right li > a {
+  >.navbar-right  li > a {
     // HACK - better to make things only collapse if inside collapse
     float: right;
   }
