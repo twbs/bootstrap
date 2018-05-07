@@ -17,6 +17,7 @@ $(function () {
       $.fn.tooltip = $.fn.bootstrapTooltip
       delete $.fn.bootstrapTooltip
       $('.tooltip').remove()
+      $('#qunit-fixture').html('')
     }
   })
 
