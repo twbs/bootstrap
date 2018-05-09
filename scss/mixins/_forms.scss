@@ -25,6 +25,20 @@
   }
 }
 
+@mixin form-valid-state($state) {
+
+  @if $state == "valid" or $state == "invalid" {
+    .was-validated &:#{$state},
+    &.is-#{$state} {
+      @content;
+    }
+  } @else {
+    &.is-#{$state} {
+      @content;
+    }
+  }
+}
+
 
 @mixin form-validation-state($state, $color) {
   .#{$state}-feedback {
@@ -52,8 +66,7 @@
 
   .form-control,
   .custom-select {
-    .was-validated &:#{$state},
-    &.is-#{$state} {
+    @include form-valid-state($state) {
       border-color: $color;
 
       &:focus {
@@ -69,8 +82,7 @@
   }
 
   .form-control-file {
-    .was-validated &:#{$state},
-    &.is-#{$state} {
+    @include form-valid-state($state) {
       ~ .#{$state}-feedback,
       ~ .#{$state}-tooltip {
         display: block;
@@ -79,8 +91,7 @@
   }
 
   .form-check-input {
-    .was-validated &:#{$state},
-    &.is-#{$state} {
+    @include form-valid-state($state) {
       ~ .form-check-label {
         color: $color;
       }
@@ -93,8 +104,7 @@
   }
 
   .custom-control-input {
-    .was-validated &:#{$state},
-    &.is-#{$state} {
+    @include form-valid-state($state) {
       ~ .custom-control-label {
         color: $color;
 
@@ -124,8 +134,7 @@
 
   // custom file
   .custom-file-input {
-    .was-validated &:#{$state},
-    &.is-#{$state} {
+    @include form-valid-state($state) {
       ~ .custom-file-label {
         border-color: $color;
 
