@@ -1,5 +1,5 @@
 /*!
- * Bootstrap v5.15.7 (http://bootstrap.transferwise.com)
+ * Bootstrap v5.16.0 (http://bootstrap.transferwise.com)
  * Copyright 2011-2018 Twitter, Inc.
  * Licensed under MIT (https://github.com/transferwise/bootstrap/blob/master/LICENSE)
  */
@@ -7776,6 +7776,12 @@ select[multiple].input-group-sm > .input-group-addon {
 .navbar-nav > li > button.dropdown-toggle .caret {
   margin-left: 4px;
 }
+@media (min-width: 768px) {
+  .navbar-nav > li > a.navbar-title-link,
+  .navbar-nav > li > button.navbar-title-link {
+    font-size: 22px;
+  }
+}
 .navbar-nav > li.divider {
   display: none;
 }
@@ -8635,6 +8641,37 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 }
 .simple-nav .profile-name .text-ellipsis {
   max-width: 240px;
+}
+@media (min-width: 768px) {
+  .subnav {
+    position: relative;
+    height: 56px !important;
+    margin-bottom: 64px;
+  }
+  .subnav::before {
+    position: absolute;
+    top: 64px;
+    left: 0;
+    width: 100%;
+    height: 64px;
+    content: "";
+    background-color: transparent;
+  }
+  .subnav.navbar-inverse::before {
+    background-color: #2e4369;
+  }
+  .subnav .navbar-nav > li > a.dropdown-toggle,
+  .subnav .navbar-nav > li button.dropdown-toggle {
+    height: 60px;
+  }
+  .subnav-menu {
+    position: absolute;
+    top: 68px;
+  }
+  .navbar {
+    min-height: 64px;
+    padding-top: 2px;
+  }
 }
 .breadcrumb {
   padding: 8px 0;
