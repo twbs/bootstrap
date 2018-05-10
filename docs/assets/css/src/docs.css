@@ -984,6 +984,12 @@ h4 code {
 .bs-example .navbar:last-child {
   margin-bottom: 0;
 }
+@media (min-width: 768px) {
+  .bs-example .navbar.subnav {
+    margin-bottom: 64px;
+  }
+}
+
 .bs-navbar-top-example,
 .bs-navbar-bottom-example {
   z-index: 1;

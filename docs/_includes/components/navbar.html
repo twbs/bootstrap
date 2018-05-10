@@ -584,4 +584,170 @@ body { padding-bottom: 56px; }
 </nav>
 {% endhighlight %}
 
+<h2 id="navbar-secondary" class="page-subheader">Secondary navigation</h2>
+<p>Secondary navigation for expecific navigation of the site. Used for Blog, products like Swift/bic, Currency Converter, etc.  </p>
+<p>Add <code>.subnav</code> to navbar or header, and <code>.subnav-menu</code> to navbar-nav to get the secondary navigation.</p>
+<p>Add <code>.navbar-title-link</code> to the secondary navigation title link. Must have the <code>.active</code> state on home.</p>
+<p>On mobile, the subnav-menu behaves like an ordinary navbar-nav.</p>
+<div class="alert alert-info">
+  <p><a href="../../examples/navbar-secondary">Try the demo</a> to view these options and the responsive version as well.</p>
+</div>
+<div class="bs-example" data-example-id="navbar-secondary-exaple">
+  <header class="navbar subnav">
+      <div class="container">
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-11" aria-expanded="false">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+
+              <a href="https://transferwise.com" class="logo-text hidden-md hidden-lg hidden-xl"><span class="sr-only">TransferWise</span></a>
+              <a href="https://transferwise.com" class="navbar-brand visible-md visible-lg visible-xl">TransferWise</a>
+          </div>
+
+          <nav class="collapse navbar-collapse navbar-collapse-with-panel" aria-expanded="false" id="bs-example-navbar-collapse-11">
+              <div class="navbar-collapse-panel">
+                  <ul class="nav navbar-nav subnav-menu">
+                      <li class="active"><a class="navbar-title-link" href="https://transferwise.com/">Link</a></li>
+                      <li class="dropdown">
+                          <button class="dropdown-toggle">Dropdown button<span class="caret"></span></button>
+                          <ul class="dropdown-menu" role="menu">
+                              <li><a href="#">Action</a></li>
+                              <li><a href="#">Another action</a></li>
+                              <li><a href="#">Something else here <span class="badge badge-success">new</span></a></li>
+                          </ul>
+                      </li>
+                      <li class="dropdown">
+                          <button class="dropdown-toggle">Dropdown<span class="caret"></span></button>
+                          <ul class="dropdown-menu" role="menu">
+                              <li><a href="#">Action</a></li>
+                              <li><a href="#">Another action</a></li>
+                              <li><a href="#">Something else here <span class="badge badge-success">new</span></a></li>
+                          </ul>
+                      </li>
+                  </ul>
+                  <div class="navbar-right order-1">
+                      <ul class="nav navbar-nav">
+                          <li class="dropdown active">
+                              <button class="dropdown-toggle">Dropdown button<span class="caret"></span></button>
+                              <ul class="dropdown-menu" role="menu">
+                                  <li><a href="#">Action</a></li>
+                                  <li class="active"><a href="#">Another action</a></li>
+                                  <li><a href="#">Something else here <span class="badge badge-success">new</span></a></li>
+                                  <li class="divider"></li>
+                                  <li class="dropdown-header">Nav header</li>
+                                  <li><a href="#">Separated link</a></li>
+                                  <li><a href="#">One more separated link</a></li>
+                              </ul>
+                          </li>
+                          <li class="active"><a href="https://transferwise.com/">Link</a></li>
+                      </ul>
+
+                      <div class="navbar-btn btn-group">
+                          <a class="btn btn-success" href="https://transferwise.com/">Get started</a>
+                      </div>
+                  </div>
+              </div>
+              <a role="button" class="navbar-toggle close" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="true">×</a>
+          </nav>
+      </div>
+  </header>
+</div>
+
+{% highlight html %}
+<nav class="navbar subnav">
+  ...
+  <ul class="nav navbar-nav subnav-menu">
+    <li class="active">
+      <a class="navbar-title-link" href="/"> Title </a>
+    </li>
+    <li class="dropdown">
+    ...
+    </li>
+    ...
+  </ul>
+  ...
+</nav>
+{% endhighlight %}
+
+<div class="bs-example" data-example-id="navbar-inverse-secondary-exaple">
+  <header class="navbar navbar-inverse subnav bg-primary">
+      <div class="container">
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-12" aria-expanded="false">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+
+              <a href="https://transferwise.com" class="logo-text logo-text-inverse hidden-md hidden-lg hidden-xl"><span class="sr-only">TransferWise</span></a>
+              <a href="https://transferwise.com" class="navbar-brand visible-md visible-lg visible-xl">TransferWise</a>
+          </div>
+
+          <nav id="bs-example-navbar-collapse-12" class="collapse navbar-collapse navbar-collapse-with-panel" aria-expanded="false">
+              <div class="navbar-collapse-panel">
+                  <ul class="nav navbar-nav subnav-menu">
+                      <li><a class="navbar-title-link" href="https://transferwise.com/">Link</a></li>
+                      <li class="dropdown">
+                          <button class="dropdown-toggle">Dropdown button<span class="caret"></span></button>
+                          <ul class="dropdown-menu" role="menu">
+                              <li><a href="#">Action</a></li>
+                              <li><a href="#">Another action</a></li>
+                              <li><a href="#">Something else here <span class="badge badge-success">new</span></a></li>
+                          </ul>
+                      </li>
+                      <li class="dropdown">
+                          <button class="dropdown-toggle">Dropdown<span class="caret"></span></button>
+                          <ul class="dropdown-menu" role="menu">
+                              <li><a href="#">Action</a></li>
+                              <li><a href="#">Another action</a></li>
+                              <li><a href="#">Something else here <span class="badge badge-success">new</span></a></li>
+                          </ul>
+                      </li>
+                  </ul>
+                  <div class="navbar-right order-1">
+                      <ul class="nav navbar-nav">
+                          <li class="dropdown active">
+                              <button class="dropdown-toggle">Dropdown button<span class="caret"></span></button>
+                              <ul class="dropdown-menu" role="menu">
+                                  <li><a href="#">Action</a></li>
+                                  <li class="active"><a href="#">Another action</a></li>
+                                  <li><a href="#">Something else here <span class="badge badge-success">new</span></a></li>
+                                  <li class="divider"></li>
+                                  <li class="dropdown-header">Nav header</li>
+                                  <li><a href="#">Separated link</a></li>
+                                  <li><a href="#">One more separated link</a></li>
+                              </ul>
+                          </li>
+                          <li class="active"><a href="https://transferwise.com/">Link</a></li>
+                      </ul>
+
+                      <div class="navbar-btn btn-group">
+                          <a class="btn btn-success" href="https://transferwise.com/">Get started</a>
+                      </div>
+                  </div>
+              </div>
+              <a role="button" class="navbar-toggle close" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="true">×</a>
+          </nav>
+      </div>
+  </header>
+</div>
+
+{% highlight html %}
+<nav class="navbar subnav navbar-inverse bg-primary">
+  ...
+  <ul class="nav navbar-nav subnav-menu">
+    <li>
+      <a class="navbar-title-link" href="/"> Title </a>
+    </li>
+    <li class="dropdown">
+    ...
+    </li>
+    ...
+  </ul>
+  ...
+</nav>
+{% endhighlight %}
+
 </div>
