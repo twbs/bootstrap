@@ -72,8 +72,6 @@ body {
 
 .border-bottom { border-bottom: 1px solid #e5e5e5; }
 
-.box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
-
 .lh-100 { line-height: 1; }
 .lh-125 { line-height: 1.25; }
 .lh-150 { line-height: 1.5; }
