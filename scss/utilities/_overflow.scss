@@ -1,0 +1,15 @@
+$directions: x, y;
+$name-map: (
+  hide: hidden,
+  auto: auto,
+  scroll: scroll,
+  visible: visible,
+);
+
+@each $name, $value in $name-map {
+  .overflow-#{$name} { overflow: $value; }
+  
+  @each $direction in $directions {
+    .overflow-#{$direction}-#{$name} { overflow-#{$direction}: $value; }
+  }
+}
