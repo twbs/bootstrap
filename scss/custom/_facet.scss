@@ -1,0 +1,173 @@
+.facet {
+  background: $facet-bg;
+  box-shadow: $facet-shadow;
+  border-radius: $facet-border-radius;
+}
+
+.facet-header {
+  display: flex;
+
+  .facet-title {
+    margin: 0;
+    padding: $facet-group-link-padding-y $facet-group-link-padding-x;
+    color: $headings-color;
+    font-weight: $headings-font-weight;
+  }
+
+  .facet-toggle {
+    width: 100%;
+    text-align: left;
+    padding-right: $facet-spacer-x * 2;
+    color: $headings-color;
+    font-weight: $headings-font-weight;
+
+    .facet-title {
+      padding-left: 0;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: inherit;
+      text-decoration: none;
+    }
+  }
+}
+
+.facet-toggle {
+  width: 100%;
+  text-align: left;
+  padding-right: $facet-spacer-x * 2;
+  cursor: pointer;
+
+  &:after {
+    position: absolute;
+    right: $facet-spacer-x * 2.5;
+  }
+
+  &[aria-expanded="false"]:after {
+    @include icon;
+    content: $facet-expand-char;
+  }
+
+  &[aria-expanded="true"]:after {
+    @include icon;
+    content: $facet-collapse-char;
+  }
+}
+
+.facet-toggle-more {
+  border-top: 1px solid $facet-border-color;
+
+  &:hover,
+  &:focus,
+  &:active {
+    border-top: 1px solid $facet-border-color;
+  }
+
+  &[aria-expanded="false"]:after {
+    @include icon;
+    content: $facet-more-char;
+  }
+
+  &[aria-expanded="true"]:after {
+    @include icon;
+    content: $facet-less-char;
+  }
+}
+
+// Facet Group
+// 
+// 
+
+.facet-group {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  border-top: 1px solid $facet-group-border-color;
+
+  .facet-group {
+    border-top: 0;
+    border-left: $facet-group-nested-inset solid $facet-group-border-color;
+  }
+
+  .form-check-label {
+    display: block;
+    padding: $facet-group-link-padding-y $facet-group-link-padding-x;
+    padding-left: $form-check-input-gutter + $facet-group-link-padding-x;
+  }
+
+  .facet-group-link {
+    display: block;
+    padding: $facet-group-link-padding-y $facet-group-link-padding-x;
+  }
+
+  .facet-group-item {
+    flex: 0 auto;
+  }
+}
+
+.facet-group-link {
+  cursor: pointer;
+  
+  // Hover state
+  @include hover-focus {
+    color: $facet-group-item-hover-color;
+    text-decoration: none;
+    background-color: $facet-group-item-hover-bg;
+  }
+
+  &:active {
+    color: $facet-group-item-active-color;
+    background-color: $facet-group-item-active-bg;
+  }
+}
+
+.facet-group-item + .facet-group-item {
+  border-top: 1px solid $facet-group-border-color;
+}
+
+
+// Selected Facets
+// 
+// 
+
+.facet-highlighted {
+  border: 2px solid $facet-highlighted-bg;
+
+  .facet-header {
+    color: $facet-highlighted-color;
+    background: $facet-highlighted-bg;
+  }
+
+  .facet-title,
+  .btn {
+    color: $facet-highlighted-color;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}
+
+.facet-selected {
+  margin: .25rem;
+
+  .btn-facet {
+    position: relative;
+    width: 100%;
+    display: block;
+    text-align: left;
+
+    &:after {
+      @include icon;
+
+      content: $icon-remove;
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: $btn-padding-y $btn-padding-x;
+      background: rgba(255,255,255,.2);
+    }
+  }
+}

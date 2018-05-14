@@ -1,0 +1,30 @@
+body {
+  -webkit-font-smoothing: antialiased;
+}
+
+//
+// Headings
+//
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  small,
+  .small {
+    font-size: 1em; // inherit headline size
+    font-weight: $font-weight-light;
+  }
+}
+
+a {
+  word-wrap: break-word;
+}
+
+//
+// Long Words on mobile
+//
+
+@include media-breakpoint-down(sm) {
+  body {
+    hyphens: auto;
+  }
+}

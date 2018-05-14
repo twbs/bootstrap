@@ -1,0 +1,68 @@
+// Tags
+//
+// Use like this (can still contain the wrapping span)
+// <div class="tag-group">
+//   <a href="#" class="tag">Tag</a>
+// </div>
+
+.tag-group {
+  // Clears introduced margin-bottom
+  margin-bottom: ($tag-group-spacing-y * -1);
+
+  .tag {
+    margin-right: $tag-group-spacing-x;
+    margin-bottom: $tag-group-spacing-y;
+  }
+
+  .tag:last-child {
+    margin-right: 0;
+  }
+}
+
+.tag {
+  position: relative;
+  display: inline-block;
+  padding: $tag-padding-y $tag-padding-x; //em because we want to use the font-size element, not the root font size as base
+
+  font-size: $tag-font-size;
+  line-height: $tag-line-height;
+  color: $tag-color;
+  background: $tag-bg;
+  text-decoration: none;
+
+  box-shadow: $tag-box-shadow;
+  border-radius: ($tag-line-height + $tag-padding-y + $tag-padding-y) * 0.5;
+}
+
+a.tag {
+  // Increase padding for after arrow
+  padding-right: $tag-padding-x * 2;
+
+  &:hover {
+    color: $tag-hover-color;
+    background: $tag-hover-bg;
+    box-shadow: $tag-hover-shadow;
+  }
+
+  &:active {
+    color: $tag-active-color;
+    background: $tag-active-bg;
+    box-shadow: $tag-active-shadow;
+  }
+}
+
+a.tag:after {
+  content: '›';
+
+  position: absolute;
+  top: $tag-padding-y;
+  right: $tag-padding-x;
+
+  font-size: inherit;
+  line-height: $tag-line-height;
+}
+
+// Sizes
+.tag-sm {
+  font-size: $tag-sm-font-size;
+}

@@ -1,0 +1,33 @@
+.pagination {
+  margin: 0;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  .page-link {
+    border-color: $pagination-bg;
+    border-top: $pagination-active-border-width solid $pagination-bg;
+    border-bottom: $pagination-active-border-width solid $pagination-bg;
+
+    @include hover-focus {
+      border-color: $pagination-hover-bg;
+    }
+  }
+
+  .page-item.disabled .page-link {
+    border-color: $pagination-bg;
+  }
+  
+  .active .page-link {
+    border-color: $pagination-bg;
+    border-bottom-color: $pagination-active-border;
+  }
+
+  .page-prev,
+  .page-next {
+    flex: 1 0 auto;
+  }
+
+  .page-next {
+    text-align: right;
+  }
+}

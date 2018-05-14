@@ -26,10 +26,12 @@
     - title: Images
     - title: Tables
     - title: Figures
+    - title: WYSIWYG
 
 - title: Components
   pages:
     - title: Alerts
+    - title: Application-Form
     - title: Badge
     - title: Breadcrumb
     - title: Buttons
@@ -38,6 +40,7 @@
     - title: Carousel
     - title: Collapse
     - title: Dropdowns
+    - title: Facet
     - title: Forms
     - title: Input group
     - title: Jumbotron
@@ -49,7 +52,10 @@
     - title: Popovers
     - title: Progress
     - title: Scrollspy
+    - title: Slider
+    - title: Search Agent
     - title: Tooltips
+    - title: Tags
 
 - title: Utilities
   pages:

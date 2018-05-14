@@ -1,0 +1,69 @@
+// Clip
+//
+// Clips Elements to an obsolute position
+
+.clip {
+  position: absolute;
+}
+
+.clip-top {
+  top: 0;
+  border-top: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+
+  margin-left: $spacer-x;
+
+  &.clip-edge {
+    margin-left: 0;
+    border-left: 0;
+    border-bottom-left-radius: 0;
+  }
+}
+
+.clip-top-right {
+  top: 0;
+  right: 0;
+  border-top: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+
+  margin-right: $spacer-x;
+
+  &.clip-edge {
+    margin-right: 0;
+    border-right: 0;
+    border-bottom-right-radius: 0;
+  }
+}
+
+.clip-bottom {
+  bottom: 0;
+  border-bottom: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+
+  margin-left: $spacer-x;
+
+  &.clip-edge {
+    margin-left: 0;
+    border-left: 0;
+    border-top-left-radius: 0;
+  }
+}
+
+.clip-bottom-right {
+  bottom: 0;
+  right: 0;
+  border-bottom: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+
+  margin-right: $spacer-x;
+
+  &.clip-edge {
+    margin-right: 0;
+    border-right: 0;
+    border-top-right-radius: 0;
+  }
+}

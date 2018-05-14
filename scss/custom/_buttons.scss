@@ -1,0 +1,38 @@
+//
+// Button Sizes
+//
+
+.btn-xl {
+  // line-height: ensure even-numbered height of button next to large input
+  @include button-size($btn-padding-y-xl, $btn-padding-x-xl, $font-size-xl, $btn-border-radius-xl);
+}
+
+//
+// Alternate buttons
+//
+
+// CTA Variant, can be paired with a color
+.btn-cta {
+  // This solution only works in all browsers except ALL IE's - I chose this solution as I book this as progressive enhancement. It's a standard spec, no user dies if the gradient is not present. TBD
+  @include gradient-y($btn-cta-gradient-start, $btn-cta-gradient-end);
+  background-blend-mode: $btn-cta-gradient-blend;
+
+  text-shadow: $btn-cta-text-shadow;
+  font-weight: $btn-cta-font-weight;
+}
+
+// Rounded Variant for Slider Controls
+.btn-rounded {
+  padding: 1em;
+  line-height: 1;
+  border-radius: 1.5em;
+}
+
+.btn-right {
+  margin-left: auto;
+}
+
+// Adds pointer to all buttons
+.btn {
+  cursor: pointer;
+}

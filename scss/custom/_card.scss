@@ -1,0 +1,255 @@
+.card {
+  border: 0;
+  box-shadow: $card-shadow;
+}
+
+.card-block {
+  border-top: $card-border-width solid $card-border-color;
+
+  // clear top border if block is first child in the card
+  &:first-child {
+    border-top: 0;
+  }
+}
+
+
+// clear bottom border as each block only has top border
+.card {
+  > .list-group {
+    .list-group-item:last-child {
+      border-bottom: 0;
+    }
+  }
+}
+
+.card-header {
+  border-bottom: 0;
+}
+
+//
+// Card groups
+//
+
+@include media-breakpoint-up(sm) {
+  .card-group {
+    box-shadow: $card-shadow;
+
+    .card {
+      box-shadow: none;
+    }
+  }
+}
+
+//
+// CUSTOM: Buttons
+//
+
+.card {
+  .card-btn {
+    padding: $card-spacer-y $card-spacer-x;
+    border-top: $card-border-width solid $card-border-color;
+    border-radius: 0;
+  }
+
+  > .card-btn:first-child {
+    @include border-top-radius($card-border-radius);
+  }
+
+  > .card-btn:last-child {
+    @include border-bottom-radius($card-border-radius);
+  }
+}
+
+//
+// CUSTOM: Card Image General
+//
+
+.card-img {
+  border-radius: 0; // overwrite vanilla bootstrap as we want to handle this differently with wrapper
+  border-top: $card-border-width solid $card-border-color;
+}
+
+.card-img:first-child {
+  border-top: 0;
+}
+
+// .card-img-top,
+.card-img:first-child img {
+  @include border-top-radius($card-border-radius-inner);
+}
+
+// .card-img-bottom,
+.card-img:last-child img {
+  @include border-bottom-radius($card-border-radius-inner);
+}
+
+//
+// CUSTOM: Card has-arrow
+//
+// I kept it general, so we can use it at other places. We might need to adjust when this creates problems
+
+.has-arrow {
+  position: relative;
+  padding-right: $card-arrow-size + $card-spacer-x;
+
+  &:after {
+    content: '';
+
+    position: absolute;
+    right: $card-spacer-x * .5;
+    top: 50%;
+    width: $card-arrow-size;
+    height: $card-arrow-size;
+    margin-top: $card-arrow-size * -.5;
+
+    background-image: $card-arrow;
+    background-size: $card-arrow-size;
+    background-repeat: no-repeat;
+  }
+}
+
+//
+// CUSTOM: Card block action
+//
+// Generally removing link formatting on linked card-blocks, introducing hover & active for dedicated blocks, for example publications
+
+a.card-block {
+  color: inherit;
+
+  @include hover-focus {
+    text-decoration: none;
+  }
+}
+
+.card-block-action {
+  width: 100%; // For `<button>`s (anchors become 100% by default though)
+  text-align: inherit; // For `<button>`s (anchors inherit)
+
+  // Hover state
+  @include hover-focus {
+    color: $card-action-hover-color;
+    background-color: $card-action-hover-bg;
+  }
+
+  &:active {
+    color: $card-action-active-color;
+    background-color: $card-action-active-bg;
+    box-shadow: $card-action-active-box-shadow;
+  }
+}
+
+//
+// CUSTOM: Card-nav
+//
+// Special Component, that adds the correct padding and top border without using the `card-header` class.
+
+.card-nav {
+  padding: $card-nav-spacer-y $card-nav-spacer-x;
+  border-top: $card-border-width solid $card-border-color;
+
+  &:first-child {
+    border-top: 0;
+  }
+}
+
+//
+// CUSTOM: Card-header
+//
+// Overwrites card-header to resemble screendesign
+
+.card-header {
+  background-color: transparent;
+}
+
+
+//
+// Alerts
+//
+
+.card {
+  .alert {
+    border-radius: 0;
+    border-left: 0;
+    border-right: 0;
+    margin: 0;
+  }
+
+  .alert-bottom {
+    border-bottom: 0;
+    @include border-bottom-radius($card-border-radius-inner);
+  }
+
+  .alert-top {
+    border-top: 0;
+    @include border-top-radius($card-border-radius-inner);
+  }
+}
+
+//
+// Card deck rework
+//
+
+.card-grid {
+  display: flex;
+  flex-flow: row wrap;
+
+  .card {
+    display: flex;
+    flex: 1 0 256px;
+    flex-direction: column;
+  }
+}
+
+@each $breakpoint in map-keys($grid-gutter-widths) {
+  @include media-breakpoint-up($breakpoint) {
+    $gutter: map-get($grid-gutter-widths, $breakpoint);
+
+    .card-grid {
+      margin: $gutter * -.5;
+
+      .card {
+        margin: $gutter * .5;
+      }
+    }
+  }
+}
+
+//
+// Action Cards
+//
+
+.card-action {
+  position: relative;
+  top: 0;
+
+  text-decoration: none;
+  color: inherit;
+
+  transition: border 0.2s, box-shadow 0.2s, top 0.2s ease-in-out;
+
+  &:before {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    content: '';
+    border-radius: $card-border-radius;
+    background-color: transparent;
+  }
+
+  &:hover {
+    top: -.25rem;
+    box-shadow: $box-shadow-large;
+    text-decoration: none;
+    color: inherit;
+
+    &:before {
+      border: 2px solid $brand-primary;
+    }
+  }
+
+  &:active {
+    transition: top 0.1s;
+    top: .05rem;
+    box-shadow: inset $box-shadow-large;
+  }
+}

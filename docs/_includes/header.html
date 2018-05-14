@@ -1,0 +1,26 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<title>
+  {% if page.title %}
+    {{ page.title }} &middot; {{ site.title }}
+  {% else %}
+    {{ site.title }} &middot; {{ site.description }}
+  {% endif %}
+</title>
+
+{% include social.html %}
+
+<!-- Bootstrap core CSS -->
+{% if site.github %}
+  <link href="{{ site.baseurl }}/dist/css/joblocal.min.css" rel="stylesheet">
+{% else %}
+  <link href="{{ site.baseurl }}/dist/css/joblocal.css" rel="stylesheet">
+{% endif %}
+
+<!-- Documentation extras -->
+<link href="{{ site.baseurl }}/assets/css/docs.min.css" rel="stylesheet">
+
+<!-- Favicons -->
+<link rel="apple-touch-icon" href="{{ site.baseurl }}/apple-touch-icon.png">
+<link rel="icon" href="{{ site.baseurl }}/favicon.ico">

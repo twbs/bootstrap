@@ -1,0 +1,58 @@
+.section {
+  width: 100%;
+  height: auto;
+  padding: $section-padding-y $section-padding-x;
+
+  border-bottom: 1px solid $section-border;
+}
+
+.section-unpadded {
+  padding: 0;
+}
+
+.section-background {
+  background-size: cover;
+  background-position: center;
+}
+
+.section-inner {
+  width: 100%;
+  max-width: $section-inner-max-width;
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Section Parts
+.section-header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: $section-padding-y;
+  margin-bottom: $section-padding-y;
+}
+
+.section-header:first-child {
+  margin-top: 0;
+}
+
+// Color Variants
+.section-inverse {
+  color: $section-inverse-color;
+}
+
+.section-contrast {
+  color: $section-contrast-color;
+}
+
+.section-primary {
+  color: $section-primary-color;
+}
+
+// Make Headings inherit correct color
+.section {
+  h1, h2, h3, h4, h5, h6,
+  .h1, .h2, .h3, .h4, .h5, .h6 {
+    color: inherit;
+  }
+}

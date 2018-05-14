@@ -1,0 +1,13 @@
+// To make this more consistent, this should be done with a mapping
+
+.shadow-default {
+  box-shadow: $box-shadow-default !important;
+}
+
+.shadow-soft {
+  box-shadow: $box-shadow-soft !important;
+}
+
+.shadow-large {
+  box-shadow: $box-shadow-large !important;
+}

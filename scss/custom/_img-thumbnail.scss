@@ -1,0 +1,14 @@
+//
+// Nav Thumbnail
+//
+
+$nav-thumbnail-height: ($btn-padding-y * 2) + ($font-size-base * $btn-line-height);
+$nav-border-height: ($border-width * 2);
+
+.nav-thumbnail {
+  height: calc(#{$nav-thumbnail-height} + #{$nav-border-height});
+  width: auto;
+  padding: $thumbnail-padding;
+  border: 1px solid $btn-secondary-border;
+  border-radius: $btn-border-radius;
+}

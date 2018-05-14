@@ -713,7 +713,171 @@ Put a form within a dropdown menu, or make it into a dropdown menu, and use [mar
 {% endcapture %}
 {% include example.html content=example %}
 
-## Dropdown options
+## Menu items with media
+
+{% example html %}
+<div class="dropdown-menu">
+  <a class="dropdown-item" href="#">
+    <div class="media media-center">
+      <img class="media-image" data-src="holder.js/40x40" alt="Generic placeholder image">
+      <div class="media-body">
+        <div class="dropdown-item-title">Heading</div>
+      </div>
+    </div>
+  </a>
+  <a class="dropdown-item" href="#">
+    <div class="media media-center">
+      <img class="media-image" data-src="holder.js/40x40" alt="Generic placeholder image">
+      <div class="media-body">
+        <div class="dropdown-item-title">Heading</div>
+      </div>
+    </div>
+  </a>
+  <a class="dropdown-item" href="#">
+    <div class="media media-center">
+      <img class="media-image" data-src="holder.js/40x40" alt="Generic placeholder image">
+      <div class="media-body">
+        <div class="dropdown-item-title">Heading</div>
+      </div>
+    </div>
+  </a>
+</div>
+{% endexample %}
+
+## Menu items with subtitles
+
+{% example html %}
+<div class="dropdown-menu">
+  <a class="dropdown-item" href="#">
+    <div class="dropdown-item-title">Heading</div>
+    <div class="dropdown-item-subtitle">Subheading</div>
+  </a>
+  <a class="dropdown-item" href="#">
+    <div class="dropdown-item-title">Heading</div>
+    <div class="dropdown-item-subtitle">Subheading</div>
+  </a>
+  <a class="dropdown-item" href="#">
+    <div class="dropdown-item-title">Heading</div>
+    <div class="dropdown-item-subtitle">Subheading</div>
+  </a>
+</div>
+{% endexample %}
+
+## Menu items with media and subtitles
+
+{% example html %}
+<div class="dropdown-menu">
+  <a class="dropdown-item" href="#">
+    <div class="media media-center">
+      <img class="media-image" data-src="holder.js/40x40" alt="Generic placeholder image">
+      <div class="media-body">
+        <div class="dropdown-item-title">Heading</div>
+        <div class="dropdown-item-subtitle">Subheading</div>
+      </div>
+    </div>
+  </a>
+  <a class="dropdown-item" href="#">
+    <div class="media media-center">
+      <img class="media-image" data-src="holder.js/40x40" alt="Generic placeholder image">
+      <div class="media-body">
+        <div class="dropdown-item-title">Heading</div>
+        <div class="dropdown-item-subtitle">Subheading</div>
+      </div>
+    </div>
+  </a>
+  <a class="dropdown-item" href="#">
+    <div class="media media-center">
+      <img class="media-image" data-src="holder.js/40x40" alt="Generic placeholder image">
+      <div class="media-body">
+        <div class="dropdown-item-title">Heading</div>
+        <div class="dropdown-item-subtitle">Subheading</div>
+      </div>
+    </div>
+  </a>
+</div>
+{% endexample %}
+
+## Inverse menu
+
+{% example html %}
+<div class="dropdown-menu dropdown-menu-inverse bg-inverse">
+  <a class="dropdown-item" href="#">
+    Regular link
+  </a>
+  <a class="dropdown-item" href="#">
+    Another link
+  </a>
+  <a class="dropdown-item" href="#">
+    One more link
+  </a>
+  <div class="dropdown-divider"></div>
+  <h6 class="dropdown-header">Item states</h6>
+  <a class="dropdown-item disabled" href="#">
+    Disabled link
+  </a>
+  <a class="dropdown-item active" href="#">
+    Active link
+  </a>
+</div>
+{% endexample %}
+
+## Dropdown Item Group
+
+Can be used if dropdown-items need to contain different actions:
+
+{% example html %}
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="DropdownItemGroupButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Dropdown button
+  </button>
+  <div class="dropdown-menu" aria-labelledby="DropdownItemGroupButton">
+    <div class="dropdown-item-group">
+      <button href="#" class="dropdown-item">
+        <div class="media media-center">
+          <img class="media-image" data-src="holder.js/40x40" alt="Generic placeholder image">
+          <div class="media-body">
+            <div class="dropdown-item-title">Heading</div>
+            <div class="dropdown-item-subtitle">Subheading</div>
+          </div>
+        </div>
+      </button>
+      <button href="#" class="dropdown-item dropdown-item-noscale">
+        <span class="icon-heart"></span>
+      </button>
+    </div>
+    <div class="dropdown-item-group">
+      <button href="#" class="dropdown-item">
+        <div class="media media-center">
+          <img class="media-image" data-src="holder.js/40x40" alt="Generic placeholder image">
+          <div class="media-body">
+            <div class="dropdown-item-title">Heading</div>
+            <div class="dropdown-item-subtitle">Subheading</div>
+          </div>
+        </div>
+      </button>
+      <button href="#" class="dropdown-item dropdown-item-noscale">
+        <span class="icon-heart"></span>
+      </button>
+    </div>
+    <div class="dropdown-item-group">
+      <button href="#" class="dropdown-item">
+        <div class="media media-center">
+          <img class="media-image" data-src="holder.js/40x40" alt="Generic placeholder image">
+          <div class="media-body">
+            <div class="dropdown-item-title">Heading</div>
+            <div class="dropdown-item-subtitle">Subheading</div>
+          </div>
+        </div>
+      </button>
+      <button href="#" class="dropdown-item dropdown-item-noscale">
+        <span class="icon-heart"></span>
+      </button>
+    </div>
+  </div>
+</div>
+{% endexample %}
+
+## Usage
 
 Use `data-offset` or `data-reference` to change the location of the dropdown.
 

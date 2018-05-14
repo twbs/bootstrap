@@ -6,3 +6,7 @@ group :development, :test do
   gem 'jekyll-sitemap', '~> 1.2.0'
   gem 'jekyll-toc', '~> 0.5.1'
 end
+
+group :jekyll_plugins do
+  gem 'jekyll-livereload'
+end

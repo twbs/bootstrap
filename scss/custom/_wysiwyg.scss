@@ -1,0 +1,31 @@
+.wysiwyg {
+	p,
+	dd,
+	blockquote,
+	ul,
+	ol {
+		margin: 0;
+	}
+
+  .heading-1,
+  .heading-2,
+  .heading-3,
+  .heading-4,
+  .heading-5,
+  .heading-6 {
+    font-weight: bold;
+    margin-bottom: $headings-margin-bottom;
+  }
+
+  .heading-1, .heading-2 {
+    font-size: $font-size-h2;
+  }
+
+  .heading-3 {
+    font-size: $font-size-h3;
+  }
+
+  .heading-4, .heading-5, .heading-6 {
+    font-size: $font-size-h4;
+  }
+}

@@ -37,6 +37,56 @@ In addition to our [border-radius utilities]({{ site.baseurl }}/docs/{{ site.doc
 <img src="..." alt="..." class="img-thumbnail">
 {% endhighlight %}
 
+### Nav Thumbnail
+
+Thumbnail for use in a navbar
+
+<div class="bd-example">
+  <div class="card my-4">
+    <div class="navbar">
+      <ul class="nav nav-buttons card-buttons">
+        <li class="nav-item">
+          <img data-src="holder.js/120x49?auto=yes" class="img-thumbnail nav-thumbnail" alt="A generic square placeholder image with rounded corners">
+        </li>
+        <li class="nav-item">
+          <button type="button" class="btn btn-secondary">Button</button>
+        </li>
+        <li class="nav-item">
+          <div class="btn-group">
+            <button type="button" data-toggle="dropdown" class="btn btn-secondary dropdown-toggle">Dropdown</button>
+            <div class="dropdown-menu">
+              <a href="mailto:" class="dropdown-item">E-Mail</a>
+              <div class="dropdown-divider"></div>
+              <h6 class="dropdown-header">Social</h6>
+              <a href="#" class="dropdown-item">Facebook</a>
+              <a href="#" class="dropdown-item">Twitter</a>
+              <a href="#" class="dropdown-item">Google Plus</a>
+              <a href="#" class="dropdown-item">LinkedIn</a>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item">
+          <button type="button" class="btn btn-secondary">Button</button>
+        </li>
+        <li class="ml-auto">
+          <a href="#" class="btn btn-cta btn-primary">Start Engines</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+{% highlight html %}
+<ul class="nav nav-buttons card-buttons">
+  <li class="nav-item">
+    <img data-src="holder.js/120x49?auto=yes" class="img-thumbnail nav-thumbnail" alt="placeholder">
+  </li>
+  <li class="nav-item">
+    ...
+  </li>
+</ul>
+{% endhighlight %}
+
 ## Aligning images
 
 Align images with the [helper float classes]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/float) or [text alignment classes]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/text/#text-alignment). `block`-level images can be centered using [the `.mx-auto` margin utility class]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/spacing/#horizontal-centering).
