@@ -2,7 +2,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     colorator (0.1)
-    ffi (1.9.18)
+    ffi (1.9.23)
     jekyll (3.1.6)
       colorator (~> 0.1)
       jekyll-sass-converter (~> 1.0)
@@ -12,22 +12,24 @@ GEM
       mercenary (~> 0.3.3)
       rouge (~> 1.7)
       safe_yaml (~> 1.0)
-    jekyll-sass-converter (1.5.1)
+    jekyll-sass-converter (1.5.2)
       sass (~> 3.4)
-    jekyll-watch (1.5.0)
-      listen (~> 3.0, < 3.1)
+    jekyll-watch (1.5.1)
+      listen (~> 3.0)
     kramdown (1.16.2)
     liquid (3.0.6)
-    listen (3.0.8)
+    listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
+      ruby_dep (~> 1.2)
     mercenary (0.3.6)
-    rb-fsevent (0.10.2)
+    rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
     rouge (1.11.1)
+    ruby_dep (1.5.0)
     safe_yaml (1.0.4)
-    sass (3.5.5)
+    sass (3.5.6)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -40,4 +42,4 @@ DEPENDENCIES
   jekyll (= 3.1.6)
 
 BUNDLED WITH
-   1.14.6
+   1.16.2

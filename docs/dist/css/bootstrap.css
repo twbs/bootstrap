@@ -1,5 +1,5 @@
 /*!
- * Bootstrap v5.16.0 (http://bootstrap.transferwise.com)
+ * Bootstrap v5.16.1 (http://bootstrap.transferwise.com)
  * Copyright 2011-2018 Twitter, Inc.
  * Licensed under MIT (https://github.com/transferwise/bootstrap/blob/master/LICENSE)
  */
@@ -7274,11 +7274,6 @@ select[multiple].input-group-sm > .input-group-addon {
 .input-group-btn:first-child > .btn,
 .input-group-btn:first-child > .btn-group {
   margin-right: -1px;
-}
-.input-group-btn:last-child > .btn,
-.input-group-btn:last-child > .btn-group {
-  z-index: 2;
-  margin-left: -1px;
 }
 .focus .input-group .form-control,
 .has-focus .input-group .form-control,

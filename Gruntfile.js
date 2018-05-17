@@ -155,6 +155,7 @@ module.exports = function (grunt) {
 
     qunit: {
       options: {
+        timeout: 10000,
         inject: 'js/tests/unit/phantom.js'
       },
       files: 'js/tests/index.html'

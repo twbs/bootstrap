@@ -1,7 +1,7 @@
 {
   "name": "bootstrap",
   "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
-  "version": "5.16.0",
+  "version": "5.16.1",
   "keywords": [
     "css",
     "less",
@@ -47,7 +47,7 @@
     "grunt-contrib-jade": "~0.14.1",
     "grunt-contrib-jshint": "~0.11.2",
     "grunt-contrib-less": "~1.0.1",
-    "grunt-contrib-qunit": "~0.7.0",
+    "grunt-contrib-qunit": "~1.0.0",
     "grunt-contrib-uglify": "~0.9.1",
     "grunt-contrib-watch": "~0.6.1",
     "grunt-csscomb": "~3.0.0",
