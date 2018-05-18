@@ -23,7 +23,6 @@
   display: none;
   align-items: center;
   width: 100%;
-  @include transition($carousel-transition);
   backface-visibility: hidden;
   perspective: 1000px;
 }
@@ -32,6 +31,7 @@
 .carousel-item-next,
 .carousel-item-prev {
   display: block;
+  @include transition($carousel-transition);
 }
 
 .carousel-item-next,
