@@ -260,16 +260,32 @@ $headings-font-weight:        500 !default;
 $headings-line-height:        1.2 !default;
 $headings-color:              inherit !default;
 
-$display1-size:               6rem !default;
-$display2-size:               5.5rem !default;
-$display3-size:               4.5rem !default;
-$display4-size:               3.5rem !default;
-
-$display1-weight:             300 !default;
-$display2-weight:             300 !default;
-$display3-weight:             300 !default;
-$display4-weight:             300 !default;
-$display-line-height:         $headings-line-height !default;
+$displays: (
+  (
+    name: 1,
+    font-size: 6rem,
+    font-weight: 300,
+    line-height: $headings-line-height
+  ),
+  (
+    name: 2,
+    font-size: 5.5rem,
+    font-weight: 300,
+    line-height: $headings-line-height
+  ),
+  (
+    name: 3,
+    font-size: 4.5rem,
+    font-weight: 300,
+    line-height: $headings-line-height
+  ),
+  (
+    name: 4,
+    font-size: 3.5rem,
+    font-weight: 300,
+    line-height: $headings-line-height
+  )
+) !default;
 
 $lead-font-size:              ($font-size-base * 1.25) !default;
 $lead-font-weight:            300 !default;

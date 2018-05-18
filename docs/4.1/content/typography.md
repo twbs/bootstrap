@@ -110,7 +110,7 @@ Use the included utility classes to recreate the small secondary heading text fr
 
 ## Display headings
 
-Traditional heading elements are designed to work best in the meat of your page content. When you need a heading to stand out, consider using a **display heading**—a larger, slightly more opinionated heading style.
+Traditional heading elements are designed to work best in the meat of your page content. When you need a heading to stand out, consider using a **display heading**—a larger, slightly more opinionated heading style. More displays can be added to the `$displays` sass map in `_variables.scss`.
 
 <div class="bd-example bd-example-type">
   <table class="table">
