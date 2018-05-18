@@ -425,76 +425,63 @@ b, strong {
 
 // Combine bootstraps nav-tabs and justified for our use
 .apim-nav-tabs {  
-  // border-bottom: 1px solid @nav-tabs-border-color;
-  border-bottom: 0;
   width: 100%;
+  margin-top: @padding-base-vertical;
+  margin-bottom: -1px;
+  border: 1px solid @nav-tabs-active-link-hover-border-color;
+  border-bottom-width: 0;
+  overflow-x: hidden;
 
   > li {
     float: none;
-    // Make the list-items overlay the bottom border
-    // margin-bottom: -1px;
+    padding-left: 2px;
+    padding-right: 2px;
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    white-space: nowrap;
 
     // Actual tabs (as links)
     > a {
       text-align: center;
       font-size: @font-size-base;
-      // text-height:20 + 2*padding-height:10 + 2*border-width:1
-      height: (ceil(@font-size-base * @line-height-base)  + (@padding-base-vertical*2) + 2px);
-      margin-right: 0;
+      // text-height:20 + 2*padding-height:10 + 2*border-width:3
+      height: (ceil(@font-size-base * @line-height-base)  + (@padding-base-vertical*2) + 6px);
       line-height: @line-height-base;
       border-radius: @border-radius-base;
+      margin-bottom: -2px;
 
       color: @nav-tabs-link-color;
       background-color: @nav-tabs-link-bg;
-      border: 1px solid @nav-tabs-border-color;
-      border-bottom-color: transparent;
-      overflow-y: hidden;
+      border: 0px solid transparent;
+      border-top: 3px solid @nav-tabs-link-color;
 
       &:hover {
-        border-color: @nav-tabs-link-hover-border-color @nav-tabs-link-hover-border-color transparent @nav-tabs-link-hover-border-color;
         color: @nav-tabs-link-hover-color;
         background-color: @nav-tabs-link-hover-bg;
+        border-bottom: 1px solid @nav-tabs-active-link-hover-border-color;
       }
     }
 
     // Active state, and its :hover to override normal :hover
-    &.active > a {
-      &,
-      &:hover,
-      &:focus {
-        cursor: default;
-        color: @nav-tabs-active-link-hover-color;
-        background-color: @nav-tabs-active-link-hover-bg;
-        border: 1px solid @nav-tabs-active-link-hover-border-color;
-        border-bottom-color: transparent;
+    &.active {
+      > a {
+        &,
+        &:hover,
+        &:focus {
+          cursor: default;
+          color: @nav-tabs-active-link-hover-color;
+          background-color: @nav-tabs-active-link-hover-bg;
+          border: 1px solid @nav-tabs-active-link-hover-border-color;
+          border-bottom-width: 0;
+        }
       }
     }
   }
-  > li:last-child {
-    > a {
-      border-right-color: @nav-tabs-border-color;
-    }
-  }
-  > .active > a,
-  > .active > a:hover,
-  > .active > a:focus {
-    border: 1px solid @nav-tabs-link-border-color;
-    border-bottom-color: transparent;
-  }
-
   @media (min-width: @screen-sm-min) {
     > li {
       display: table-cell;
       width: 1%;
-      > a {
-        border-radius: @border-radius-base @border-radius-base 0 0;
-        border-right-color: @nav-tabs-link-border-color;
-      }
-    }
-    > .active > a,
-    > .active > a:hover,
-    > .active > a:focus {
-      border-bottom-color: @nav-tabs-active-link-hover-border-color;
     }
   }
 
@@ -520,13 +507,11 @@ b, strong {
   }
 }
 
-
-
 .nav-tabs {
   > li {
     // Actual tabs (as links)
     > a {
-      margin-right: 1px;
+      // margin-right: 1px;
       min-width: 120px;
       text-align: center;
       color: @nav-tabs-link-color;
@@ -852,17 +837,20 @@ body {
 
   .apim-printonly {
     display: block;
+    page-break-before: avoid;
     page-break-after: avoid;
   }
   .page-header {
     page-break-after: avoid;
   }
-  .list-group {
-    page-break-before: avoid;
-  }
-  .list-group-item {
+  .apim-printnobreakinside {
     page-break-inside: avoid;
-    page-break-after: auto;
+  } 
+  .apim-printnobreakbefore {
+    page-break-before: avoid;
+  } 
+  .apim-printnobreakafter {
+    page-break-after: avoid;
   } 
   ul.nav > li {
     display: none;

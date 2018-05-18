@@ -1523,28 +1523,37 @@ fieldset[disabled] .btn-inverse.active {
 }
 .apim-nav-tabs {
   width: 100%;
-  border-bottom: 0;
+  margin-top: 6px;
+  margin-bottom: -1px;
+  overflow-x: hidden;
+  border: 1px solid #96a4d3;
+  border-bottom-width: 0;
 }
 .apim-nav-tabs > li {
   float: none;
+  padding-right: 2px;
+  padding-left: 2px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .apim-nav-tabs > li > a {
-  height: 35px;
-  margin-right: 0;
-  overflow-y: hidden;
+  height: 39px;
+  margin-bottom: -2px;
   font-size: 14px;
   line-height: 1.42857143;
   color: #fff;
   text-align: center;
   background-color: #96a4d3;
-  border: 1px solid #96a4d3;
-  border-bottom-color: transparent;
+  border: 0 solid transparent;
+  border-top: 3px solid #fff;
   border-radius: 0;
 }
 .apim-nav-tabs > li > a:hover {
   color: #e0e0e0;
   background-color: #6478be;
-  border-color: #96a4d3 #96a4d3 transparent #96a4d3;
+  border-bottom: 1px solid #96a4d3;
 }
 .apim-nav-tabs > li.active > a,
 .apim-nav-tabs > li.active > a:hover,
@@ -1553,30 +1562,12 @@ fieldset[disabled] .btn-inverse.active {
   cursor: default;
   background-color: white;
   border: 1px solid #96a4d3;
-  border-bottom-color: transparent;
-}
-.apim-nav-tabs > li:last-child > a {
-  border-right-color: #96a4d3;
-}
-.apim-nav-tabs > .active > a,
-.apim-nav-tabs > .active > a:hover,
-.apim-nav-tabs > .active > a:focus {
-  border: 1px solid white;
-  border-bottom-color: transparent;
+  border-bottom-width: 0;
 }
 @media (min-width: 768px) {
   .apim-nav-tabs > li {
     display: table-cell;
     width: 1%;
-  }
-  .apim-nav-tabs > li > a {
-    border-right-color: white;
-    border-radius: 0 0 0 0;
-  }
-  .apim-nav-tabs > .active > a,
-  .apim-nav-tabs > .active > a:hover,
-  .apim-nav-tabs > .active > a:focus {
-    border-bottom-color: #96a4d3;
   }
 }
 .apim-nav-tabs > .dropdown .dropdown-menu {
@@ -1595,7 +1586,6 @@ fieldset[disabled] .btn-inverse.active {
 }
 .nav-tabs > li > a {
   min-width: 120px;
-  margin-right: 1px;
   color: #fff;
   text-align: center;
   background-color: #96a4d3;
@@ -1918,17 +1908,20 @@ body {
   .apim-printonly {
     display: block;
 
+    page-break-before: avoid;
     page-break-after: avoid;
   }
   .page-header {
     page-break-after: avoid;
   }
-  .list-group {
+  .apim-printnobreakinside {
+    page-break-inside: avoid;
+  }
+  .apim-printnobreakbefore {
     page-break-before: avoid;
   }
-  .list-group-item {
-    page-break-inside: avoid;
-    page-break-after: auto;
+  .apim-printnobreakafter {
+    page-break-after: avoid;
   }
   ul.nav > li {
     display: none;
