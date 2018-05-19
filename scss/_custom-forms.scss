@@ -325,6 +325,7 @@
     border: $custom-range-thumb-border;
     @include border-radius($custom-range-thumb-border-radius);
     @include box-shadow($custom-range-thumb-box-shadow);
+    @include transition($custom-forms-transition);
     appearance: none;
 
     &:focus {
@@ -355,6 +356,7 @@
     border: $custom-range-thumb-border;
     @include border-radius($custom-range-thumb-border-radius);
     @include box-shadow($custom-range-thumb-box-shadow);
+    @include transition($custom-forms-transition);
     appearance: none;
 
     &:focus {
@@ -385,6 +387,7 @@
     border: $custom-range-thumb-border;
     @include border-radius($custom-range-thumb-border-radius);
     @include box-shadow($custom-range-thumb-box-shadow);
+    @include transition($custom-forms-transition);
     appearance: none;
 
     &:focus {
@@ -418,4 +421,10 @@
     background-color: $custom-range-track-bg;
     @include border-radius($custom-range-track-border-radius);
   }
+}
+
+.custom-control-label::before,
+.custom-file-label,
+.custom-select {
+  @include transition($custom-forms-transition);
 }
