@@ -26,8 +26,8 @@ h6, .h6 { font-size: $h6-font-size; }
 }
 
 // Type display classes
-@each $display in $displays {
-  .display-#{map-get($display, name)} {
+@each $name, $display in $displays {
+  .display-#{$name} {
     font-size: map-get($display, font-size);
     // stylelint-disable-next-line font-weight-notation
     font-weight: map-get($display, font-weight);
