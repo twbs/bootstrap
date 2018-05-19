@@ -211,7 +211,7 @@ By default, any number of checkboxes and radios that are immediate sibling will 
     Second default radio
   </label>
 </div>
-<div class="form-check disabled">
+<div class="form-check">
   <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" disabled>
   <label class="form-check-label" for="exampleRadios3">
     Disabled radio
