@@ -13,6 +13,13 @@
   // Part 2: Override the height to auto, otherwise images will be stretched
   // when setting a width and height attribute on the img element.
   height: auto;
+  // IE10 code
+  &[src$=".svg"], &[src$=".SVG"],
+  &[src$=".sVg"], &[src$=".SvG"],
+  &[src$=".svG"], &[src$=".SVg"],
+  &[src$=".Svg"], &[src$=".sVG"] {
+    width: 100% \9;
+  }
 }
 
 
