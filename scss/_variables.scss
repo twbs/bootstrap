@@ -260,7 +260,9 @@ $headings-font-weight:        500 !default;
 $headings-line-height:        1.2 !default;
 $headings-color:              inherit !default;
 
-$displays: (
+$displays: () !default;
+// stylelint-disable
+$displays: map-merge((
   (
     name: 1,
     font-size: 6rem,
@@ -285,7 +287,8 @@ $displays: (
     font-weight: 300,
     line-height: $headings-line-height
   )
-) !default;
+), $displays);
+// stylelint-enable
 
 $lead-font-size:              ($font-size-base * 1.25) !default;
 $lead-font-weight:            300 !default;
