@@ -124,7 +124,7 @@ Set horizontally scrollable range inputs using `.form-control-range`.
 {% endcapture %}
 {% include example.html content=example %}
 
-### Readonly
+## Readonly
 
 Add the `readonly` boolean attribute on an input to prevent modification of the input's value. Read-only inputs appear lighter (just like disabled inputs), but retain the standard cursor.
 
@@ -133,7 +133,7 @@ Add the `readonly` boolean attribute on an input to prevent modification of the 
 {% endcapture %}
 {% include example.html content=example %}
 
-### Readonly plain text
+## Readonly plain text
 
 If you want to have `<input readonly>` elements in your form styled as plain text, use the `.form-control-plaintext` class to remove the default form field styling and preserve the correct margin and padding.
 
