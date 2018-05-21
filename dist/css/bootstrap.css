@@ -8651,9 +8651,11 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
     height: 64px;
     content: "";
     background-color: transparent;
+    border-top: #f2f5f7 solid 1px;
   }
   .subnav.navbar-inverse::before {
     background-color: #2e4369;
+    border-top: none;
   }
   .subnav .navbar-nav > li > a.dropdown-toggle,
   .subnav .navbar-nav > li button.dropdown-toggle {

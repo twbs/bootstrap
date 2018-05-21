@@ -1263,12 +1263,14 @@
       height: @navbar-secondary-height;
       position: absolute;
       top: @navbar-secondary-height;
+      border-top: @gray-base solid 1px;
       left: 0;
     }
 
     &.navbar-inverse {
       &::before {
         background-color: @navbar-inverse-secondary-bg;
+        border-top: none;
       }
     }
 
