@@ -14,3 +14,7 @@
   padding-left: 0;
   @include border-radius(0);
 }
+
+.jumbotron-full {
+    height: 100vh;
+}
