@@ -87,6 +87,14 @@ You can also install and manage Bootstrap's Sass and JavaScript using [Composer]
 composer require twbs/bootstrap:{{ site.current_version }}
 {% endhighlight %}
 
+### Bower
+
+A Bootstrap package is also available through [Bower](https://bower.io/):
+
+{% highlight sh %}
+bower install bootstrap
+{% endhighlight %}
+
 ### NuGet
 
 If you develop in .NET, you can also install and manage Bootstrap's [CSS](https://www.nuget.org/packages/bootstrap/) or [Sass](https://www.nuget.org/packages/bootstrap.sass/) and JavaScript using [NuGet](https://www.nuget.org/):
