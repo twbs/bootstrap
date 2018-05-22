@@ -130,13 +130,20 @@
   backface-visibility: hidden;
   background-color: @navbar-collapse-bg;
 
-  .navbar-nav > li > a,
-  .navbar-title,
-  .navbar-text {
-    color: @navbar-inverse-color;
+  .navbar-nav > li {
+     > a,
+    .navbar-title,
+    .navbar-text {
+      color: @navbar-inverse-color;
 
-    @media (max-width: @grid-float-breakpoint) {
-      color: @brand-navy;
+      @media (max-width: @grid-float-breakpoint) {
+        color: @brand-navy;
+      }
+    }
+    &.active {
+      > a{
+        color: @nav-link-active-color;
+      }
     }
   }
 
@@ -477,7 +484,7 @@
       }
 
       > .active > a {
-        color: @brand-light-blue;
+        color: @nav-link-active-color;
         background-color: transparent;
         font-weight: bold;
 
