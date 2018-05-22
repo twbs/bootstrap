@@ -17,6 +17,7 @@ $(function () {
       $.fn.popover = $.fn.bootstrapPopover
       delete $.fn.bootstrapPopover
       $('.popover').remove()
+      $('#qunit-fixture').html('')
     }
   })
 
