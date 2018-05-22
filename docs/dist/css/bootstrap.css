@@ -8236,6 +8236,7 @@ fieldset[disabled] .navbar-default .btn-link:focus {
 .navbar-inverse .navbar-nav > .active > a,
 .navbar-inverse .navbar-nav > .active > .dropdown-toggle {
   font-weight: bold;
+  color: #00a4df;
 }
 .navbar-inverse .navbar-nav > .active > a,
 .navbar-inverse .navbar-nav > .active > .dropdown-toggle,
@@ -8645,8 +8646,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 @media (min-width: 768px) {
   .subnav {
     position: relative;
-    height: 56px !important;
-    margin-bottom: 64px;
+    height: 128px !important;
   }
   .subnav::before {
     position: absolute;

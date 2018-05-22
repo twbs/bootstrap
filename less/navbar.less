@@ -805,6 +805,7 @@
       > a,
       > .dropdown-toggle {
         font-weight: bold;
+        color: @nav-link-active-color;
         &,
         &:hover,
         &:focus {
@@ -1259,8 +1260,7 @@
 
 @media (min-width: @grid-float-breakpoint) {
   .subnav {
-    height: @navbar-height !important; //this line is necessary until we solve the style="height:0;" in navbar-collapse added when closing the mobile menu
-    margin-bottom: @navbar-secondary-height;
+    height: (@navbar-secondary-height * 2) !important; //this line is necessary until we solve the style="height:0;" in navbar-collapse added when closing the mobile menu
     position: relative;
 
     &::before {
