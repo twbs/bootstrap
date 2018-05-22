@@ -63,21 +63,21 @@ Add the relative form sizing classes to the `.input-group` itself and contents w
   <div class="input-group-prepend">
     <span class="input-group-text" id="inputGroup-sizing-sm">Small</span>
   </div>
-  <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
 </div>
 
 <div class="input-group mb-3">
   <div class="input-group-prepend">
     <span class="input-group-text" id="inputGroup-sizing-default">Default</span>
   </div>
-  <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 </div>
 
 <div class="input-group input-group-lg">
   <div class="input-group-prepend">
     <span class="input-group-text" id="inputGroup-sizing-lg">Large</span>
   </div>
-  <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
 </div>
 {% endcapture %}
 {% include example.html content=example %}
@@ -99,7 +99,7 @@ Place any checkbox or radio option within an input group's addon instead of text
 <div class="input-group">
   <div class="input-group-prepend">
     <div class="input-group-text">
-    <input type="radio" aria-label="Radio button for following text input">
+      <input type="radio" aria-label="Radio button for following text input">
     </div>
   </div>
   <input type="text" class="form-control" aria-label="Text input with radio button">
@@ -114,10 +114,10 @@ While multiple `<input>`s are supported visually, validation styles are only ava
 {% capture example %}
 <div class="input-group">
   <div class="input-group-prepend">
-    <span class="input-group-text" id="">First and last name</span>
+    <span class="input-group-text">First and last name</span>
   </div>
-  <input type="text" class="form-control">
-  <input type="text" class="form-control">
+  <input type="text" aria-label="First name" class="form-control">
+  <input type="text" aria-label="Last name" class="form-control">
 </div>
 {% endcapture %}
 {% include example.html content=example %}
@@ -132,11 +132,11 @@ Multiple add-ons are supported and can be mixed with checkbox and radio input ve
     <span class="input-group-text">$</span>
     <span class="input-group-text">0.00</span>
   </div>
-  <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+  <input type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)">
 </div>
 
 <div class="input-group">
-  <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+  <input type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)">
   <div class="input-group-append">
     <span class="input-group-text">$</span>
     <span class="input-group-text">0.00</span>
@@ -150,29 +150,29 @@ Multiple add-ons are supported and can be mixed with checkbox and radio input ve
 {% capture example %}
 <div class="input-group mb-3">
   <div class="input-group-prepend">
-    <button class="btn btn-outline-secondary" type="button">Button</button>
+    <button class="btn btn-outline-secondary" type="button" id="button-addon1">Button</button>
   </div>
-  <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+  <input type="text" class="form-control" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
 </div>
 
 <div class="input-group mb-3">
-  <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+  <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
   <div class="input-group-append">
-    <button class="btn btn-outline-secondary" type="button">Button</button>
+    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
   </div>
 </div>
 
 <div class="input-group mb-3">
-  <div class="input-group-prepend">
+  <div class="input-group-prepend" id="button-addon3">
     <button class="btn btn-outline-secondary" type="button">Button</button>
     <button class="btn btn-outline-secondary" type="button">Button</button>
   </div>
-  <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+  <input type="text" class="form-control" placeholder="" aria-label="Example text with two button addons" aria-describedby="button-addon3">
 </div>
 
 <div class="input-group">
-  <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
-  <div class="input-group-append">
+  <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username with two button addons" aria-describedby="button-addon4">
+  <div class="input-group-append" id="button-addon4">
     <button class="btn btn-outline-secondary" type="button">Button</button>
     <button class="btn btn-outline-secondary" type="button">Button</button>
   </div>
@@ -287,7 +287,7 @@ Input groups include support for custom selects and custom file inputs. Browser 
   <div class="input-group-prepend">
     <button class="btn btn-outline-secondary" type="button">Button</button>
   </div>
-  <select class="custom-select" id="inputGroupSelect03">
+  <select class="custom-select" id="inputGroupSelect03" aria-label="Example select with button addon">
     <option selected>Choose...</option>
     <option value="1">One</option>
     <option value="2">Two</option>
@@ -296,7 +296,7 @@ Input groups include support for custom selects and custom file inputs. Browser 
 </div>
 
 <div class="input-group">
-  <select class="custom-select" id="inputGroupSelect04">
+  <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
     <option selected>Choose...</option>
     <option value="1">One</option>
     <option value="2">Two</option>
@@ -314,10 +314,10 @@ Input groups include support for custom selects and custom file inputs. Browser 
 {% capture example %}
 <div class="input-group mb-3">
   <div class="input-group-prepend">
-    <span class="input-group-text">Upload</span>
+    <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
   </div>
   <div class="custom-file">
-    <input type="file" class="custom-file-input" id="inputGroupFile01">
+    <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
     <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
   </div>
 </div>
@@ -325,30 +325,30 @@ Input groups include support for custom selects and custom file inputs. Browser 
 <div class="input-group mb-3">
   <div class="custom-file">
     <input type="file" class="custom-file-input" id="inputGroupFile02">
-    <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
+    <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Choose file</label>
   </div>
   <div class="input-group-append">
-    <span class="input-group-text" id="">Upload</span>
+    <span class="input-group-text" id="inputGroupFileAddon02">Upload</span>
   </div>
 </div>
 
 <div class="input-group mb-3">
   <div class="input-group-prepend">
-    <button class="btn btn-outline-secondary" type="button">Button</button>
+    <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon03">Button</button>
   </div>
   <div class="custom-file">
-    <input type="file" class="custom-file-input" id="inputGroupFile03">
+    <input type="file" class="custom-file-input" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03">
     <label class="custom-file-label" for="inputGroupFile03">Choose file</label>
   </div>
 </div>
 
 <div class="input-group">
   <div class="custom-file">
-    <input type="file" class="custom-file-input" id="inputGroupFile04">
+    <input type="file" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
     <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
   </div>
   <div class="input-group-append">
-    <button class="btn btn-outline-secondary" type="button">Button</button>
+    <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Button</button>
   </div>
 </div>
 {% endcapture %}
