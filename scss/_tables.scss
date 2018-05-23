@@ -1,9 +1,5 @@
 // stylelint-disable selector-max-type
 
-// borders tfoot
-// nesting issues
-//
-
 //
 // Basic Bootstrap table
 //
@@ -121,9 +117,8 @@
 }
 
 // Table backgrounds
+
 @each $table-state, $background-color in $table-states {
-  $color: color-yiq($background-color);
-  $border-color: rgba($color, $table-states-border-opacity);
 
   .table-#{$table-state} {
 
@@ -136,103 +131,22 @@
     > tbody,
     > tfoot {
       &:not(:first-child) {
-        border-color: $border-color;
+        border-color: rgba(color-yiq($background-color), $table-states-border-opacity);
       }
 
       > tr {
         > th,
         > td {
-          color: $color;
-          background-color: $background-color;
-          border-color: $border-color;
+          @include table-background($background-color);
         }
       }
     }
-  }
-}
-
-// Table head, body & foot backgrounds
-@each $table-state, $background-color in $table-states {
-  $color: color-yiq($background-color);
-  $border-color: rgba($color, $table-states-border-opacity);
-
-  .table {
-    > .thead-#{$table-state},
-    > .tbody-#{$table-state},
-    > .tfoot-#{$table-state} {
-      &:not(:first-child) {
-        border-color: $border-color;
-      }
-
-      > tr {
-        > th,
-        > td {
-          color: $color;
-          background-color: $background-color;
-          border-color: $border-color;
-        }
-      }
-    }
-  }
-}
-
-// Table row backgrounds
-@each $table-state, $background-color in $table-states {
-  $color: color-yiq($background-color);
-  $border-color: rgba($color, $table-states-border-opacity);
-
-  .table {
-    > thead,
-    > tbody,
-    > tfoot {
-      > .tr-#{$table-state} {
-        > th,
-        > td {
-          color: $color;
-          background-color: $background-color;
-          border-color: $border-color;
-        }
-      }
-    }
-  }
-}
-
-// Table cell backgrounds
-@each $table-state, $background-color in $table-states {
-  $color: color-yiq($background-color);
-  $border-color: rgba($color, $table-states-border-opacity);
-
-  .table {
-    > thead,
-    > tbody,
-    > tfoot {
-      > tr {
-        > .th-#{$table-state},
-        > .td-#{$table-state} {
-          color: $color;
-          background-color: $background-color;
-          border-color: $border-color;
-        }
-      }
-    }
-  }
-}
-
-@each $table-state, $background-color in $table-states {
-  .table-#{$table-state} {
 
     // Striped table theming
     &.table-striped > tbody > tr:nth-of-type(#{$table-striped-order}) {
       > td,
       > th {
-        @if (color-yiq($background-color) == $yiq-text-light) {
-          color: $yiq-text-light;
-          background-color: lighten($background-color, $table-states-accent-lightness-factor);
-        }
-        @else {
-          color: $yiq-text-dark;
-          background-color: darken($background-color, $table-states-accent-lightness-factor);
-        }
+        @include table-striped-background($background-color);
       }
     }
 
@@ -241,14 +155,7 @@
       @include hover {
         > td,
         > th {
-          @if (color-yiq($background-color) == $yiq-text-light) {
-            color: $yiq-text-light;
-            background-color: lighten($background-color, $table-states-hover-lightness-factor);
-          }
-          @else {
-            color: $yiq-text-dark;
-            background-color: darken($background-color, $table-states-hover-lightness-factor);
-          }
+          @include table-hover-background($background-color);
         }
       }
     }
@@ -258,13 +165,135 @@
       @include hover {
         > td,
         > th {
-          @if (color-yiq($background-color) == $yiq-text-light) {
-            color: $yiq-text-light;
-            background-color: lighten(lighten($background-color, $table-states-accent-lightness-factor), $table-states-hover-lightness-factor);
+          @include table-striped-hover-background($background-color);
+        }
+      }
+    }
+  }
+}
+
+// Table head & foot backgrounds
+
+@each $table-state, $background-color in $table-states {
+  .table {
+    > .thead-#{$table-state},
+    > .tfoot-#{$table-state} {
+      &:not(:first-child) {
+        border-color: rgba(color-yiq($background-color), $table-states-border-opacity);
+      }
+
+      > tr {
+        > th,
+        > td {
+          @include table-background($background-color);
+        }
+      }
+    }
+  }
+}
+
+// Table row backgrounds
+
+@each $table-state, $background-color in $table-states {
+
+  .table {
+    > thead,
+    > tbody,
+    > tfoot {
+      > .tr-#{$table-state} {
+        > th,
+        > td {
+          @include table-background($background-color);
+        }
+      }
+    }
+  }
+
+  // Striped table row theming
+  .table-striped > tbody > .tr-#{$table-state}:nth-of-type(#{$table-striped-order}) {
+    > td,
+    > th {
+      @include table-striped-background($background-color);
+    }
+  }
+
+  // Hover table row theming
+  .table-hover > tbody > .tr-#{$table-state} {
+    @include hover {
+      > td,
+      > th {
+        @include table-hover-background($background-color);
+      }
+    }
+  }
+
+  // Striped hover table row theming
+  .table-striped.table-hover > tbody > .tr-#{$table-state}:nth-of-type(#{$table-striped-order}) {
+    @include hover {
+      > td,
+      > th {
+        @include table-striped-hover-background($background-color);
+      }
+    }
+  }
+}
+
+// Table cell backgrounds
+@each $table-state, $background-color in $table-states {
+
+  .table {
+    > thead,
+    > tbody,
+    > tfoot {
+      > tr {
+        > .th-#{$table-state},
+        > .td-#{$table-state} {
+          @include table-background($background-color);
+        }
+      }
+    }
+  }
+
+  // Striped table row theming
+  .table-striped {
+    > thead,
+    > tbody,
+    > tfoot {
+      > tr {
+        > .th-#{$table-state},
+        > .td-#{$table-state} {
+          @include table-striped-background($background-color);
+        }
+      }
+    }
+  }
+
+  // Striped table row theming
+  .table-hover {
+    > thead,
+    > tbody,
+    > tfoot {
+      > tr {
+        @include hover {
+          > .th-#{$table-state},
+          > .td-#{$table-state} {
+            @include table-hover-background($background-color);
           }
-          @else {
-            color: $yiq-text-dark;
-            background-color: darken(darken($background-color, $table-states-accent-lightness-factor), $table-states-hover-lightness-factor);
+        }
+      }
+    }
+  }
+
+  // Striped hover table row theming
+  .table-striped.table-hover {
+    > thead,
+    > tbody,
+    > tfoot {
+      > tr {
+        @include hover {
+          > .th-#{$table-state},
+          > .td-#{$table-state} {
+            @include table-striped-hover-background($background-color);
           }
         }
       }

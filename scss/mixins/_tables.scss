@@ -1,0 +1,41 @@
+@mixin table-background($background-color) {
+  @if (color-yiq($background-color) == $yiq-text-light) {
+    color: $yiq-text-light;
+    background-color: $background-color;
+    border-color: rgba($yiq-text-light, $table-states-border-opacity);
+  } @else {
+    color: $yiq-text-dark;
+    background-color: $background-color;
+    border-color: rgba($yiq-text-dark, $table-states-border-opacity);
+  }
+}
+
+@mixin table-hover-background($background-color) {
+  @if (color-yiq($background-color) == $yiq-text-light) {
+    color: $yiq-text-light;
+    background-color: lighten($background-color, $table-states-hover-lightness-factor);
+  } @else {
+    color: $yiq-text-dark;
+    background-color: darken($background-color, $table-states-hover-lightness-factor);
+  }
+}
+
+@mixin table-striped-background($background-color) {
+  @if (color-yiq($background-color) == $yiq-text-light) {
+    color: $yiq-text-light;
+    background-color: lighten($background-color, $table-states-accent-lightness-factor);
+  } @else {
+    color: $yiq-text-dark;
+    background-color: darken($background-color, $table-states-accent-lightness-factor);
+  }
+}
+
+@mixin table-striped-hover-background($background-color) {
+  @if (color-yiq($background-color) == $yiq-text-light) {
+    color: $yiq-text-light;
+    background-color: lighten(lighten($background-color, $table-states-accent-lightness-factor), $table-states-hover-lightness-factor);
+  } @else {
+    color: $yiq-text-dark;
+    background-color: darken(darken($background-color, $table-states-accent-lightness-factor), $table-states-hover-lightness-factor);
+  }
+}
