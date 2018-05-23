@@ -29,6 +29,7 @@
       > th,
       > td {
         padding: $table-cell-padding;
+        background-color: $table-bg;
         border-top: $table-border-width solid $table-border-color;
       }
     }
@@ -107,7 +108,12 @@
   > tbody > tr {
     > th,
     > td {
-      @include hover {
+      @include transition($table-hover-bg-transition);
+    }
+
+    @include hover {
+      > th,
+      > td {
         background-color: $table-hover-bg;
       }
     }
@@ -115,67 +121,157 @@
 }
 
 // Table backgrounds
-//
-// Exact selectors below required to override `.table-striped` and prevent
-// inheritance to nested tables.
+@each $table-state, $background-color in $table-states {
+  $color: color-yiq($background-color);
+  $border-color: rgba($color, $table-states-border-opacity);
 
-@each $color, $value in $theme-colors {
-  @include table-row-variant($color, theme-color-level($color, -9));
-}
+  .table-#{$table-state} {
 
-@include table-row-variant(active, $table-active-bg);
-
-// Dark styles
-//
-// Same table markup, but inverted color scheme: dark background and light text.
-
-// stylelint-disable-next-line no-duplicate-selectors
-.table {
-  .thead-dark {
-    th {
-      color: $table-dark-color;
-      background-color: $table-dark-bg;
-      border-color: $table-dark-border-color;
+    // Remove border
+    &.table-bordered {
+      border: 0;
     }
-  }
 
-  .thead-light {
-    th {
-      color: $table-head-color;
-      background-color: $table-head-bg;
-      border-color: $table-border-color;
-    }
-  }
-}
+    > thead,
+    > tbody,
+    > tfoot {
+      &:not(:first-child) {
+        border-color: $border-color;
+      }
 
-.table-dark {
-  color: $table-dark-color;
-  background-color: $table-dark-bg;
-
-  th,
-  td,
-  thead th {
-    border-color: $table-dark-border-color;
-  }
-
-  &.table-bordered {
-    border: 0;
-  }
-
-  &.table-striped {
-    tbody tr:nth-of-type(odd) {
-      background-color: $table-dark-accent-bg;
-    }
-  }
-
-  &.table-hover {
-    tbody tr {
-      @include hover {
-        background-color: $table-dark-hover-bg;
+      > tr {
+        > th,
+        > td {
+          color: $color;
+          background-color: $background-color;
+          border-color: $border-color;
+        }
       }
     }
   }
 }
+
+// Table head, body & foot backgrounds
+@each $table-state, $background-color in $table-states {
+  $color: color-yiq($background-color);
+  $border-color: rgba($color, $table-states-border-opacity);
+
+  .table {
+    > .thead-#{$table-state},
+    > .tbody-#{$table-state},
+    > .tfoot-#{$table-state} {
+      &:not(:first-child) {
+        border-color: $border-color;
+      }
+
+      > tr {
+        > th,
+        > td {
+          color: $color;
+          background-color: $background-color;
+          border-color: $border-color;
+        }
+      }
+    }
+  }
+}
+
+// Table row backgrounds
+@each $table-state, $background-color in $table-states {
+  $color: color-yiq($background-color);
+  $border-color: rgba($color, $table-states-border-opacity);
+
+  .table {
+    > thead,
+    > tbody,
+    > tfoot {
+      > .tr-#{$table-state} {
+        > th,
+        > td {
+          color: $color;
+          background-color: $background-color;
+          border-color: $border-color;
+        }
+      }
+    }
+  }
+}
+
+// Table cell backgrounds
+@each $table-state, $background-color in $table-states {
+  $color: color-yiq($background-color);
+  $border-color: rgba($color, $table-states-border-opacity);
+
+  .table {
+    > thead,
+    > tbody,
+    > tfoot {
+      > tr {
+        > .th-#{$table-state},
+        > .td-#{$table-state} {
+          color: $color;
+          background-color: $background-color;
+          border-color: $border-color;
+        }
+      }
+    }
+  }
+}
+
+@each $table-state, $background-color in $table-states {
+  .table-#{$table-state} {
+
+    // Striped table theming
+    &.table-striped > tbody > tr:nth-of-type(#{$table-striped-order}) {
+      > td,
+      > th {
+        @if (color-yiq($background-color) == $yiq-text-light) {
+          color: $yiq-text-light;
+          background-color: lighten($background-color, $table-states-accent-lightness-factor);
+        }
+        @else {
+          color: $yiq-text-dark;
+          background-color: darken($background-color, $table-states-accent-lightness-factor);
+        }
+      }
+    }
+
+    // Hover table theming
+    &.table-hover > tbody > tr {
+      @include hover {
+        > td,
+        > th {
+          @if (color-yiq($background-color) == $yiq-text-light) {
+            color: $yiq-text-light;
+            background-color: lighten($background-color, $table-states-hover-lightness-factor);
+          }
+          @else {
+            color: $yiq-text-dark;
+            background-color: darken($background-color, $table-states-hover-lightness-factor);
+          }
+        }
+      }
+    }
+
+    // Striped hover table theming
+    &.table-striped.table-hover > tbody > tr:nth-of-type(#{$table-striped-order}) {
+      @include hover {
+        > td,
+        > th {
+          @if (color-yiq($background-color) == $yiq-text-light) {
+            color: $yiq-text-light;
+            background-color: lighten(lighten($background-color, $table-states-accent-lightness-factor), $table-states-hover-lightness-factor);
+          }
+          @else {
+            color: $yiq-text-dark;
+            background-color: darken(darken($background-color, $table-states-accent-lightness-factor), $table-states-hover-lightness-factor);
+          }
+        }
+      }
+    }
+  }
+}
+
 
 // Responsive tables
 //
