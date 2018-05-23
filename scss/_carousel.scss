@@ -23,7 +23,6 @@
   display: none;
   align-items: center;
   width: 100%;
-  @include transition($carousel-transition);
   backface-visibility: hidden;
   perspective: 1000px;
 }
@@ -32,6 +31,7 @@
 .carousel-item-next,
 .carousel-item-prev {
   display: block;
+  @include transition($carousel-transition);
 }
 
 .carousel-item-next,
@@ -189,6 +189,7 @@
     margin-right: $carousel-indicator-spacer;
     margin-left: $carousel-indicator-spacer;
     text-indent: -999px;
+    cursor: pointer;
     background-color: rgba($carousel-indicator-active-bg, .5);
 
     // Use pseudo classes to increase the hit area by 10px on top and bottom.
