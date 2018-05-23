@@ -130,13 +130,20 @@
   backface-visibility: hidden;
   background-color: @navbar-collapse-bg;
 
-  .navbar-nav > li > a,
-  .navbar-title,
-  .navbar-text {
-    color: @navbar-inverse-color;
+  .navbar-nav > li {
+     > a,
+    .navbar-title,
+    .navbar-text {
+      color: @navbar-inverse-color;
 
-    @media (max-width: @grid-float-breakpoint) {
-      color: @brand-navy;
+      @media (max-width: @grid-float-breakpoint) {
+        color: @brand-navy;
+      }
+    }
+    &.active {
+      > a{
+        color: @nav-link-active-color;
+      }
     }
   }
 
@@ -477,7 +484,7 @@
       }
 
       > .active > a {
-        color: @brand-light-blue;
+        color: @nav-link-active-color;
         background-color: transparent;
         font-weight: bold;
 
@@ -798,6 +805,7 @@
       > a,
       > .dropdown-toggle {
         font-weight: bold;
+        color: @nav-link-active-color;
         &,
         &:hover,
         &:focus {
@@ -1248,12 +1256,22 @@
   max-width: 240px;
 }
 
+//Public-nav
+.tw-public-navigation-item-content__icon {
+  vertical-align: middle;
+}
+
+.tw-public-navigation-item-content__text {
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 164px;
+}
+
 // Secondary navigation
 
 @media (min-width: @grid-float-breakpoint) {
   .subnav {
-    height: @navbar-height !important; //this line is necessary until we solve the style="height:0;" in navbar-collapse added when closing the mobile menu
-    margin-bottom: @navbar-secondary-height;
+    height: (@navbar-secondary-height * 2) !important; //this line is necessary until we solve the style="height:0;" in navbar-collapse added when closing the mobile menu
     position: relative;
 
     &::before {
@@ -1263,12 +1281,14 @@
       height: @navbar-secondary-height;
       position: absolute;
       top: @navbar-secondary-height;
+      border-top: @gray-base solid 1px;
       left: 0;
     }
 
     &.navbar-inverse {
       &::before {
         background-color: @navbar-inverse-secondary-bg;
+        border-top: none;
       }
     }
 
