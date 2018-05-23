@@ -8643,6 +8643,14 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 .simple-nav .profile-name .text-ellipsis {
   max-width: 240px;
 }
+.tw-public-navigation-item-content__icon {
+  vertical-align: middle;
+}
+.tw-public-navigation-item-content__text {
+  display: inline-block;
+  max-width: 164px;
+  vertical-align: middle;
+}
 @media (min-width: 768px) {
   .subnav {
     position: relative;
