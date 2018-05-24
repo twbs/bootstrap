@@ -261,12 +261,11 @@
 
 .custom-file:focus-within > .custom-file-label, // workaround for Firefox
 .custom-file-input:focus ~ .custom-file-label {
-    border-color: $custom-file-focus-border-color;
-    box-shadow: $custom-file-focus-box-shadow;
+  border-color: $custom-file-focus-border-color;
+  box-shadow: $custom-file-focus-box-shadow;
 
-    &::after {
-      border-color: $custom-file-focus-border-color;
-    }
+  &::after {
+    border-color: $custom-file-focus-border-color;
   }
 }
 
