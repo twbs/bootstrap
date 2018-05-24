@@ -248,15 +248,6 @@
   margin: 0;
   opacity: 0;
 
-  &:focus ~ .custom-file-label {
-    border-color: $custom-file-focus-border-color;
-    box-shadow: $custom-file-focus-box-shadow;
-
-    &::after {
-      border-color: $custom-file-focus-border-color;
-    }
-  }
-
   &:disabled ~ .custom-file-label {
     background-color: $custom-file-disabled-bg;
   }
@@ -264,6 +255,17 @@
   @each $lang, $value in $custom-file-text {
     &:lang(#{$lang}) ~ .custom-file-label::after {
       content: $value;
+    }
+  }
+}
+
+.custom-file:focus-within > .custom-file-label, // workaround for Firefox
+.custom-file-input:focus ~ .custom-file-label {
+    border-color: $custom-file-focus-border-color;
+    box-shadow: $custom-file-focus-box-shadow;
+
+    &::after {
+      border-color: $custom-file-focus-border-color;
     }
   }
 }
