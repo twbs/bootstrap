@@ -176,8 +176,8 @@
 
 @each $table-state, $background-color in $table-states {
   .table {
-    > .thead-#{$table-state},
-    > .tfoot-#{$table-state} {
+    > thead.thead-#{$table-state},
+    > tfoot.tfoot-#{$table-state} {
       &:not(:first-child) {
         border-color: rgba(color-yiq($background-color), $table-states-border-opacity);
       }
@@ -200,7 +200,7 @@
     > thead,
     > tbody,
     > tfoot {
-      > .tr-#{$table-state} {
+      > tr.tr-#{$table-state} {
         > th,
         > td {
           @include table-background($background-color);
@@ -210,7 +210,7 @@
   }
 
   // Striped table row theming
-  .table-striped > tbody > .tr-#{$table-state}:nth-of-type(#{$table-striped-order}) {
+  .table-striped > tbody > th.tr-#{$table-state}:nth-of-type(#{$table-striped-order}) {
     > td,
     > th {
       @include table-striped-background($background-color);
@@ -218,7 +218,7 @@
   }
 
   // Hover table row theming
-  .table-hover > tbody > .tr-#{$table-state} {
+  .table-hover > tbody > th.tr-#{$table-state} {
     @include hover {
       > td,
       > th {
@@ -228,7 +228,7 @@
   }
 
   // Striped hover table row theming
-  .table-striped.table-hover > tbody > .tr-#{$table-state}:nth-of-type(#{$table-striped-order}) {
+  .table-striped.table-hover > tbody > tr.tr-#{$table-state}:nth-of-type(#{$table-striped-order}) {
     @include hover {
       > td,
       > th {
@@ -246,8 +246,8 @@
     > tbody,
     > tfoot {
       > tr {
-        > .th-#{$table-state},
-        > .td-#{$table-state} {
+        > th.th-#{$table-state},
+        > td.td-#{$table-state} {
           @include table-background($background-color);
         }
       }
@@ -260,8 +260,8 @@
     > tbody,
     > tfoot {
       > tr {
-        > .th-#{$table-state},
-        > .td-#{$table-state} {
+        > th.th-#{$table-state},
+        > td.td-#{$table-state} {
           @include table-striped-background($background-color);
         }
       }
@@ -275,8 +275,8 @@
     > tfoot {
       > tr {
         @include hover {
-          > .th-#{$table-state},
-          > .td-#{$table-state} {
+          > th.th-#{$table-state},
+          > td.td-#{$table-state} {
             @include table-hover-background($background-color);
           }
         }
@@ -291,8 +291,8 @@
     > tfoot {
       > tr {
         @include hover {
-          > .th-#{$table-state},
-          > .td-#{$table-state} {
+          > th.th-#{$table-state},
+          > td.td-#{$table-state} {
             @include table-striped-hover-background($background-color);
           }
         }
