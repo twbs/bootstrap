@@ -110,20 +110,6 @@ Set heights using classes like `.form-control-lg` and `.form-control-sm`.
 {% endcapture %}
 {% include example.html content=example %}
 
-## Range Inputs
-
-Set horizontally scrollable range inputs using `.form-control-range`.
-
-{% capture example %}
-<form>
-  <div class="form-group">
-    <label for="formControlRange">Example Range input</label>
-    <input type="range" class="form-control-range" id="formControlRange">
-  </div>
-</form>
-{% endcapture %}
-{% include example.html content=example %}
-
 ### Readonly
 
 Add the `readonly` boolean attribute on an input to prevent modification of the input's value. Read-only inputs appear lighter (just like disabled inputs), but retain the standard cursor.
@@ -166,6 +152,20 @@ If you want to have `<input readonly>` elements in your form styled as plain tex
     <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
   </div>
   <button type="submit" class="btn btn-primary mb-2">Confirm identity</button>
+</form>
+{% endcapture %}
+{% include example.html content=example %}
+
+## Range Inputs
+
+Set horizontally scrollable range inputs using `.form-control-range`.
+
+{% capture example %}
+<form>
+  <div class="form-group">
+    <label for="formControlRange">Example Range input</label>
+    <input type="range" class="form-control-range" id="formControlRange">
+  </div>
 </form>
 {% endcapture %}
 {% include example.html content=example %}
