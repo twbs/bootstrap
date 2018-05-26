@@ -15,6 +15,7 @@ install:
   - npm install
 after_success:
   - if [ "$TRAVIS_REPO_SLUG" = twbs-savage/bootstrap ]; then npm run docs-upload-preview; fi
+  - if [ "$TRAVIS_NODE_VERSION" = "8" ]; then npm run coveralls; fi
 stages:
   - test
   - name: browser

@@ -33,6 +33,7 @@ $(function () {
       $(document.body).removeClass('modal-open')
       $.fn.modal = $.fn.bootstrapModal
       delete $.fn.bootstrapModal
+      $('#qunit-fixture').html('')
     }
   })
 
