@@ -60,7 +60,6 @@
     "docs-lint-htmllint": "htmllint --rc build/.htmllintrc \"_gh_pages/**/*.html\" \"js/tests/**/*.html\"",
     "docs-lint-vnu-jar": "node build/vnu-jar.js",
     "docs-serve": "bundle exec jekyll serve",
-    "docs-upload-preview": "build/upload-preview.sh",
     "docs-workbox-precache": "node build/workbox.js",
     "maintenance-dependencies": "ncu -a -x jquery && npm update && bundle update && shx echo \"Manually update assets/js/vendor/*, js/tests/vendor/* and .travis.yml\"",
     "release-sri": "node build/generate-sri.js",
