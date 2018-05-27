@@ -10,7 +10,7 @@
 .custom-control {
   position: relative;
   display: block;
-  min-height: (1rem * $line-height-base);
+  min-height: ($font-size-base * $line-height-base);
   padding-left: $custom-control-gutter;
 }
 
