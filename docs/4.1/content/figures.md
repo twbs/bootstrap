@@ -12,7 +12,7 @@ Use the included `.figure` , `.figure-img` and `.figure-caption` classes to prov
 {% capture example %}
 <figure class="figure">
   <img data-src="holder.js/400x300" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
-  <figcaption class="figure-caption">A caption for the above image.</figcaption>
+  <figcaption class="figure-caption">A caption for the image above.</figcaption>
 </figure>
 {% endcapture %}
 {% include example.html content=example %}
@@ -22,7 +22,7 @@ Aligning the figure's caption is easy with our [text utilities]({{ site.baseurl 
 {% capture example %}
 <figure class="figure">
   <img data-src="holder.js/400x300" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
-  <figcaption class="figure-caption text-right">A caption for the above image.</figcaption>
+  <figcaption class="figure-caption text-right">A caption for the image above.</figcaption>
 </figure>
 {% endcapture %}
 {% include example.html content=example %}
