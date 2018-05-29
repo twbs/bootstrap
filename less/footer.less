@@ -1,0 +1,70 @@
+.footer {
+  background-color: @gray-base;
+  font-size: @font-size-small;
+  line-height: @line-height-computed;
+
+  .footer-link,
+  .link-icon {
+    color: @brand-grey-plus-10;
+    font-weight: normal;
+    text-decoration: none;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: @gray-darker;
+    }
+  }
+
+  .footer-title {
+    font-size: @font-size-small;
+    color: @headings-color;
+
+    .footer-link {
+      color: @headings-color;
+      font-weight: bold;
+
+      &:hover,
+      &:active,
+      &:focus {
+        color: @brand-grey-plus-10;
+      }
+    }
+  }
+
+  .logo {
+    color: transparent;
+  }
+
+  .icon {
+    margin: 0 5px;
+    font-size: 50px !important;
+  }
+
+  &.footer-inverse {
+    background: @brand-navy;
+
+    .footer-link,
+    .link-icon {
+      color: @brand-smoke-plus-20;
+
+      &:hover,
+      &:active,
+      &:focus {
+        color: @brand-smoke-minus-10;
+      }
+    }
+
+    .footer-title {
+      color: @brand-smoke-plus-20;
+    }
+
+    hr {
+      opacity: 0.1;
+    }
+  }
+
+  @media (max-width: @screen-xs-max) {
+    position: relative;
+  }
+}
