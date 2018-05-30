@@ -16,7 +16,7 @@ Used for styling different content section throughout the pages.
 
 A simple example of a default `section` component.
 
-{% example html %}
+{% capture example %}
 <div class="section">
   <div class="section-inner">
     <div class="section-header">
@@ -27,13 +27,14 @@ A simple example of a default `section` component.
     </div>
   </div>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Section with header
 
 A `section` with header `section-header` and a button `btn`.
 
-{% example html %}
+{% capture example %}
 <div class="section">
   <div class="section-inner">
     <div class="section-header">
@@ -49,13 +50,14 @@ A `section` with header `section-header` and a button `btn`.
     </div>
   </div>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Successive sections
 
 Successive `section` blocks, displaying their separation.
 
-{% example html %}
+{% capture example %}
 <div class="section">
   <div class="section-inner">
     <div class="section-header">
@@ -76,13 +78,14 @@ Successive `section` blocks, displaying their separation.
     </div>
   </div>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Variants
 
 Add any of the below mentioned modifier classes to change the appearance of a section.
 
-{% example html %}
+{% capture example %}
 <div class="section">
   <div class="section-inner">
     <div class="section-header">
@@ -93,9 +96,10 @@ Add any of the below mentioned modifier classes to change the appearance of a se
     </div>
   </div>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
-{% example html %}
+{% capture example %}
 <div class="section section-inverse bg-inverse">
   <div class="section-inner">
     <div class="section-header">
@@ -106,9 +110,10 @@ Add any of the below mentioned modifier classes to change the appearance of a se
     </div>
   </div>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
-{% example html %}
+{% capture example %}
 <div class="section section-contrast bg-faded">
   <div class="section-inner">
     <div class="section-header">
@@ -119,9 +124,10 @@ Add any of the below mentioned modifier classes to change the appearance of a se
     </div>
   </div>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
-{% example html %}
+{% capture example %}
 <div class="section section-primary bg-primary">
   <div class="section-inner">
     <div class="section-header">
@@ -132,9 +138,10 @@ Add any of the below mentioned modifier classes to change the appearance of a se
     </div>
   </div>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
-{% example html %}
+{% capture example %}
 <div class="section bg-white">
   <div class="section-inner">
     <div class="section-header">
@@ -145,9 +152,10 @@ Add any of the below mentioned modifier classes to change the appearance of a se
     </div>
   </div>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
-{% example html %}
+{% capture example %}
 <div class="section section-inverse section-background holderjs" style="background-image: url(?holder.js/700x300?theme=vine);">
   <div class="section-inner">
     <div class="section-header">
@@ -158,4 +166,5 @@ Add any of the below mentioned modifier classes to change the appearance of a se
     </div>
   </div>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
