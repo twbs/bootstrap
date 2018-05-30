@@ -29,6 +29,9 @@ GEM
       pathutil (~> 0.9)
       rouge (>= 1.7, < 4)
       safe_yaml (~> 1.0)
+    jekyll-livereload (0.2.2)
+      em-websocket (~> 0.5)
+      jekyll (~> 3.0)
     jekyll-redirect-from (0.13.0)
       jekyll (~> 3.3)
     jekyll-sass-converter (1.5.2)
@@ -72,9 +75,10 @@ PLATFORMS
 
 DEPENDENCIES
   jekyll (~> 3.8.0)
+  jekyll-livereload
   jekyll-redirect-from (~> 0.13.0)
   jekyll-sitemap (~> 1.2.0)
   jekyll-toc (~> 0.5.1)
 
 BUNDLED WITH
-   1.16.1
+   1.16.2

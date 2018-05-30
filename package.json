@@ -19,9 +19,10 @@
   "scripts": {
     "bundlesize": "bundlesize",
     "css": "npm-run-all --parallel css-lint* css-compile* --sequential css-prefix* css-minify*",
+    "clean-css": "cleancss --level 1 --source-map --output dist/css/bootstrap.min.css dist/css/bootstrap.css",
     "css-main": "npm-run-all --parallel css-lint css-compile --sequential css-prefix css-minify",
     "css-docs": "npm-run-all --parallel css-lint-docs css-compile-docs --sequential css-prefix-docs css-minify-docs",
-    "css-compile": "node-sass --output-style expanded --source-map true --source-map-contents true --precision 6 scss/bootstrap.scss dist/css/bootstrap.css && node-sass --output-style expanded --source-map true --source-map-contents true --precision 6 scss/bootstrap-grid.scss dist/css/bootstrap-grid.css && node-sass --output-style expanded --source-map true --source-map-contents true --precision 6 scss/bootstrap-reboot.scss dist/css/bootstrap-reboot.css",
+    "css-compile": "node-sass --output-style expanded --source-map true --source-map-contents true --precision 6 scss/joblocal.scss dist/css/bootstrap.css && node-sass --output-style expanded --source-map true --source-map-contents true --precision 6 scss/bootstrap-grid.scss dist/css/bootstrap-grid.css && node-sass --output-style expanded --source-map true --source-map-contents true --precision 6 scss/bootstrap-reboot.scss dist/css/bootstrap-reboot.css",
     "css-compile-docs": "node-sass --output-style expanded --source-map true --source-map-contents true --precision 6 assets/scss/docs.scss assets/css/docs.min.css",
     "css-lint": "stylelint --syntax scss \"scss/**/*.scss\"",
     "css-lint-docs": "stylelint --syntax scss \"assets/scss/*.scss\" && stylelint \"docs/**/*.css\"",
@@ -68,6 +69,7 @@
     "dist": "npm-run-all --parallel css js",
     "test": "npm-run-all dist js-test docs-compile docs-lint bundlesize",
     "watch": "npm-run-all --parallel watch-css watch-js",
+    "dist-n-push": "grunt dist && git add dist docs && git commit -m 'Version bump' && git push --follow-tags",
     "watch-css": "nodemon --ignore js/ --ignore dist/ -e scss -x \"npm run css\"",
     "watch-js": "nodemon --ignore scss/ --ignore js/dist/ --ignore dist/ -e js -x \"npm run js-compile\""
   },
@@ -171,11 +173,11 @@
     },
     {
       "path": "./dist/css/bootstrap.css",
-      "maxSize": "25 kB"
+      "maxSize": "28 kB"
     },
     {
       "path": "./dist/css/bootstrap.min.css",
-      "maxSize": "21 kB"
+      "maxSize": "26 kB"
     },
     {
       "path": "./dist/js/bootstrap.bundle.js",
