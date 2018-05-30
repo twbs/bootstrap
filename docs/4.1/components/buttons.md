@@ -40,14 +40,15 @@ When using button classes on `<a>` elements that are used to trigger in-page fun
 
 The `.btn-cta` class additionally highlights the button and inherits the color of the button element. Please note that at this point of time, no IE user will ever see these.
 
-{% example html %}
+{% capture example %}
 <button type="button" class="btn btn-cta btn-primary">Primary</button>
 <button type="button" class="btn btn-cta btn-secondary">Secondary</button>
 <button type="button" class="btn btn-cta btn-success">Success</button>
 <button type="button" class="btn btn-cta btn-info">Info</button>
 <button type="button" class="btn btn-cta btn-warning">Warning</button>
 <button type="button" class="btn btn-cta btn-danger">Danger</button>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Outline buttons
 
@@ -63,10 +64,11 @@ In need of a button, but not the hefty background colors they bring? Replace the
 
 Fancy larger or smaller buttons? Add `.btn-xl`, `.btn-lg` or `.btn-sm` for additional sizes.
 
-{% example html %}
+{% capture example %}
 <button type="button" class="btn btn-primary btn-xl">Extra Large button</button>
 <button type="button" class="btn btn-secondary btn-xl">Extra Large button</button>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 {% capture example %}
 <button type="button" class="btn btn-primary btn-lg">Large button</button>
@@ -185,7 +187,7 @@ Shows implementation of a <div class="icon-heart-outline"></div>c lipped button 
 
 ### Top
 
-{% example html %}
+{% capture example %}
 <div class="card" style="width: 20rem;">
   <div class="card-img">
     <img class="card-img-top" data-src="holder.js/100px180/" alt="Card image cap">
@@ -197,9 +199,10 @@ Shows implementation of a <div class="icon-heart-outline"></div>c lipped button 
   </div>
   <button class="btn btn-secondary btn-sm clip clip-top"><span class="icon-heart-outline"></span> Clipped Button</button>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
-{% example html %}
+{% capture example %}
 <div class="card" style="width: 20rem;">
   <div class="card-img">
     <img class="card-img-top" data-src="holder.js/100px180/" alt="Card image cap">
@@ -211,11 +214,12 @@ Shows implementation of a <div class="icon-heart-outline"></div>c lipped button 
   </div>
   <button class="btn btn-primary btn-sm clip clip-top-right"><span class="icon-heart"></span> Clipped Button</button>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Bottom
 
-{% example html %}
+{% capture example %}
 <div class="card" style="width: 20rem;">
   <div class="card-img">
     <img class="card-img-top" data-src="holder.js/100px180/" alt="Card image cap">
@@ -227,9 +231,10 @@ Shows implementation of a <div class="icon-heart-outline"></div>c lipped button 
   </div>
   <button class="btn btn-secondary btn-sm clip clip-bottom"><span class="icon-heart-outline"></span> Clipped Button</button>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
-{% example html %}
+{% capture example %}
 <div class="card" style="width: 20rem;">
   <div class="card-img">
     <img class="card-img-top" data-src="holder.js/100px180/" alt="Card image cap">
@@ -241,11 +246,12 @@ Shows implementation of a <div class="icon-heart-outline"></div>c lipped button 
   </div>
   <button class="btn btn-secondary btn-sm clip clip-bottom-right"><span class="icon-heart-outline"></span> Clipped Button</button>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Clip to edge
 
-{% example html %}
+{% capture example %}
 <div class="row">
   <div class="col-6">
     <div class="card" style="width: 20rem;">
@@ -274,9 +280,10 @@ Shows implementation of a <div class="icon-heart-outline"></div>c lipped button 
     </div>
   </div>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
-{% example html %}
+{% capture example %}
 <div class="row">
   <div class="col-6">
     <div class="card" style="width: 20rem;">
@@ -305,4 +312,5 @@ Shows implementation of a <div class="icon-heart-outline"></div>c lipped button 
     </div>
   </div>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}

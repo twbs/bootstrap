@@ -552,7 +552,7 @@ Modals have two optional sizes, available via modifier classes to be placed on a
   <div class="modal-dialog modal-full">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title" id="mySmallModalLabel">Unicorns can play on full scale here</h4>
+        <h4 class="modal-title" id="myFullModalLabel">Unicorns can play on full scale here</h4>
         <button type="button" class="btn btn-primary btn-sm ml-auto" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span> Schließen
         </button>
@@ -607,7 +607,7 @@ Modals have two optional sizes, available via modifier classes to be placed on a
 <div class="modal fade bd-example-modal-faded" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-full">
     <div class="modal-content modal-faded bg-faded">
-     ...
+      ...
     </div>
   </div>
 </div>
@@ -650,11 +650,11 @@ Modals have two optional sizes, available via modifier classes to be placed on a
   </div>
 </div>
 
-<div class="modal fade bd-example-modal-faded" tabindex="-1" role="dialog" aria-labelledby="myDarkModalLabel" aria-hidden="true">
+<div class="modal fade bd-example-modal-faded" tabindex="-1" role="dialog" aria-labelledby="myFadedModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-full">
     <div class="modal-content modal-faded bg-faded">
       <div class="modal-header">
-        <h4 class="modal-title" id="myDarkModalLabel">Faded Modal</h4>
+        <h4 class="modal-title" id="myFadedModalLabel">Faded Modal</h4>
         <button type="button" class="btn btn-primary btn-sm ml-auto" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span> Schließen
         </button>

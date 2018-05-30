@@ -86,7 +86,7 @@ Additionally, Bootstrap also includes an `.mx-auto` class for horizontally cente
 
 Here are the use cases of the p spacer in use with cards. For mobile breakpoints, as Bootstrap is created mobile first, please begin to define xs - up.
 
-#### Card - p-0
+#### Card p-0
 As used for example on Job Detail. In this case we don't really need the `p-` tag, as card-img is fullwidth by default, but for the sake of demonstration, here it is.
 
 <div class="card" style="width: 320px;">
@@ -103,7 +103,7 @@ As used for example on Job Detail. In this case we don't really need the `p-` ta
     </div>
   </div>
   <div class="card-img p-0">
-    <img data-src="holder.js/320x480?auto=yes">
+    <img data-src="holder.js/320x480?auto=yes" alt="card-img">
   </div>
   <table class="table table-flush table-responsive">
     <tbody>
@@ -129,7 +129,7 @@ As used for example on Job Detail. In this case we don't really need the `p-` ta
     ...
   </div>
   <div class="card-img p-0">
-    <img data-src="holder.js/320x480?auto=yes">
+    <img data-src="holder.js/320x480?auto=yes" alt="card-img">
   </div>
   <table class="table table-flush table-responsive">
     ...
@@ -137,14 +137,14 @@ As used for example on Job Detail. In this case we don't really need the `p-` ta
 </div>
 {% endhighlight %}
 
-#### Card - p-4
+#### Card p-4
 As used in company detail, here is an example with a padded logo. Most logos are on white, but as we cannot rely on our clients to upload a logo with enough whitespace on the edges, here is the padded version.
 
 <div class="row">
   <div class="col-12 col-sm-6">
     <div class="card" style="width: 320px;">
       <div class="card-img p-4">
-        <img class="img-fluid" data-src="holder.js/320x160?auto=yes?text=Delos Destinations Logo">
+        <img class="img-fluid" data-src="holder.js/320x160?auto=yes?text=Delos Destinations Logo" alt="img-fluid">
       </div>
       <table class="table table-flush table-responsive">
         <tbody>
@@ -167,7 +167,7 @@ As used in company detail, here is an example with a padded logo. Most logos are
   <div class="col-12 col-sm-6">
     <div class="card" style="width: 320px;">
       <div class="card-img p-4">
-        <img class="img-fluid" data-src="holder.js/160x320?auto=yes?text=Delos Destinations Logo">
+        <img class="img-fluid" data-src="holder.js/160x320?auto=yes?text=Delos Destinations Logo" alt="img-fluid">
       </div>
       <table class="table table-flush table-responsive">
         <tbody>
@@ -192,7 +192,7 @@ As used in company detail, here is an example with a padded logo. Most logos are
 {% highlight html %}
 <div class="card" style="width: 320px;">
   <div class="card-img p-4">
-    <img data-src="holder.js/320x480?auto=yes">
+    <img data-src="holder.js/320x480?auto=yes" alt="card-img">
   </div>
   <table class="table table-flush table-responsive">
     ...
@@ -201,10 +201,10 @@ As used in company detail, here is an example with a padded logo. Most logos are
 {% endhighlight %}
 
 
-#### Card - p-6
+#### Card p-6
 As used in Job Detail for Content. Note, that we use responsive utilities and different padding for x and y.
 
-{% example html %}
+{% capture example %}
 <div class="card">
   <div class="card-block px-3 py-3 px-sm-4 py-sm-3 px-md-5 py-md-4 px-lg-6 py-lg-5">
     <h1 class="card-title">Ausbildung zum Drogist (w/m) mit der Möglichkeit der Zusatzqualifikation zum Handelsfachwirt 2017 <small>in München</small></h1>
@@ -219,4 +219,5 @@ As used in Job Detail for Content. Note, that we use responsive utilities and di
     <p>AmRest Coffee Deutschland Sp. z o.o. &amp; Co. KG is a sub company of AmRest Holdings SE, which operates almost 150 Starbucks Stores in Germany as licensee.</p>
   </div>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}

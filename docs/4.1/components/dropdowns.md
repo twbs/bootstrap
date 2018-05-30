@@ -715,7 +715,7 @@ Put a form within a dropdown menu, or make it into a dropdown menu, and use [mar
 
 ## Menu items with media
 
-{% example html %}
+{% capture example %}
 <div class="dropdown-menu">
   <a class="dropdown-item" href="#">
     <div class="media media-center">
@@ -742,11 +742,12 @@ Put a form within a dropdown menu, or make it into a dropdown menu, and use [mar
     </div>
   </a>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Menu items with subtitles
 
-{% example html %}
+{% capture example %}
 <div class="dropdown-menu">
   <a class="dropdown-item" href="#">
     <div class="dropdown-item-title">Heading</div>
@@ -761,11 +762,12 @@ Put a form within a dropdown menu, or make it into a dropdown menu, and use [mar
     <div class="dropdown-item-subtitle">Subheading</div>
   </a>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Menu items with media and subtitles
 
-{% example html %}
+{% capture example %}
 <div class="dropdown-menu">
   <a class="dropdown-item" href="#">
     <div class="media media-center">
@@ -795,11 +797,12 @@ Put a form within a dropdown menu, or make it into a dropdown menu, and use [mar
     </div>
   </a>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Inverse menu
 
-{% example html %}
+{% capture example %}
 <div class="dropdown-menu dropdown-menu-inverse bg-inverse">
   <a class="dropdown-item" href="#">
     Regular link
@@ -819,20 +822,21 @@ Put a form within a dropdown menu, or make it into a dropdown menu, and use [mar
     Active link
   </a>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Dropdown Item Group
 
 Can be used if dropdown-items need to contain different actions:
 
-{% example html %}
+{% capture example %}
 <div class="dropdown">
   <button class="btn btn-secondary dropdown-toggle" type="button" id="DropdownItemGroupButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Dropdown button
   </button>
   <div class="dropdown-menu" aria-labelledby="DropdownItemGroupButton">
     <div class="dropdown-item-group">
-      <button href="#" class="dropdown-item">
+      <a href="#" class="dropdown-item button">
         <div class="media media-center">
           <img class="media-image" data-src="holder.js/40x40" alt="Generic placeholder image">
           <div class="media-body">
@@ -840,13 +844,13 @@ Can be used if dropdown-items need to contain different actions:
             <div class="dropdown-item-subtitle">Subheading</div>
           </div>
         </div>
-      </button>
-      <button href="#" class="dropdown-item dropdown-item-noscale">
+      </a>
+      <a href="#" class="btn dropdown-item dropdown-item-noscale">
         <span class="icon-heart"></span>
-      </button>
+      </a>
     </div>
     <div class="dropdown-item-group">
-      <button href="#" class="dropdown-item">
+      <a href="#" class="btn dropdown-item">
         <div class="media media-center">
           <img class="media-image" data-src="holder.js/40x40" alt="Generic placeholder image">
           <div class="media-body">
@@ -854,13 +858,13 @@ Can be used if dropdown-items need to contain different actions:
             <div class="dropdown-item-subtitle">Subheading</div>
           </div>
         </div>
-      </button>
-      <button href="#" class="dropdown-item dropdown-item-noscale">
+      </a>
+      <a href="#" class="btn dropdown-item dropdown-item-noscale">
         <span class="icon-heart"></span>
-      </button>
+      </a>
     </div>
     <div class="dropdown-item-group">
-      <button href="#" class="dropdown-item">
+      <a href="#" class="btn dropdown-item">
         <div class="media media-center">
           <img class="media-image" data-src="holder.js/40x40" alt="Generic placeholder image">
           <div class="media-body">
@@ -868,14 +872,15 @@ Can be used if dropdown-items need to contain different actions:
             <div class="dropdown-item-subtitle">Subheading</div>
           </div>
         </div>
-      </button>
-      <button href="#" class="dropdown-item dropdown-item-noscale">
+      </a>
+      <a href="#" class="btn dropdown-item dropdown-item-noscale">
         <span class="icon-heart"></span>
-      </button>
+      </a>
     </div>
   </div>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Usage
 

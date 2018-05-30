@@ -69,43 +69,6 @@ You can see this in action with a live demo:
 {% endcapture %}
 {% include example.html content=example %}
 
-### Nested in Card
-
-Alerts can be included in cards.
-
-{% example html %}
-<div class="card">
-  <div class="card-block">
-    This is a card block
-  </div>
-  <div class="alert alert-success" role="alert">
-    <h4 class="alert-heading">Well done!</h4>
-    <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
-    <hr>
-    <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
-  </div>
-  <div class="card-block">
-    This is a card block
-  </div>
-</div>
-{% endexample %}
-
-Additional classes make sure alerts look good at the top and bottom. Use `.alert-top` and `.alert-bottom`.
-
-{% example html %}
-<div class="card">
-  <div class="alert alert-top alert-warning" role="alert">
-    <p class="mb-0">Alerts the top</p>
-  </div>
-  <div class="card-block">
-    This is a card block in the middle
-  </div>
-  <div class="alert alert-bottom alert-danger" role="alert">
-    <p class="mb-0">Alerts the bottom</p>
-  </div>
-</div>
-{% endexample %}
-
 ## JavaScript behavior
 
 ### Triggers

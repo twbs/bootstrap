@@ -16,8 +16,7 @@
   color: #444547;
   background: #fff;
   text-decoration: none;
-  -webkit-box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.12);
-          box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.12);
+  box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.12);
   border-radius: 1.25em;
 }
 
@@ -28,15 +27,13 @@ a.tag {
 a.tag:hover {
   color: #f8ae00;
   background: #fff;
-  -webkit-box-shadow: 0 0.35rem 0.5rem rgba(0, 0, 0, 0.16);
-          box-shadow: 0 0.35rem 0.5rem rgba(0, 0, 0, 0.16);
+  box-shadow: 0 0.35rem 0.5rem rgba(0, 0, 0, 0.16);
 }
 
 a.tag:active {
   color: #f8ae00;
   background: #fff;
-  -webkit-box-shadow: inset 0 0.2rem 0.2rem rgba(0, 0, 0, 0.24);
-          box-shadow: inset 0 0.2rem 0.2rem rgba(0, 0, 0, 0.24);
+  box-shadow: inset 0 0.2rem 0.2rem rgba(0, 0, 0, 0.24);
 }
 
 a.tag:after {
@@ -53,8 +50,7 @@ a.tag:after {
 }
 
 html {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   font-family: sans-serif;
   line-height: 1.15;
   -ms-text-size-adjust: 100%;
@@ -66,8 +62,7 @@ html {
 *,
 *::before,
 *::after {
-  -webkit-box-sizing: inherit;
-          box-sizing: inherit;
+  box-sizing: inherit;
 }
 
 @-ms-viewport {
@@ -89,8 +84,7 @@ body {
 }
 
 hr {
-  -webkit-box-sizing: content-box;
-          box-sizing: content-box;
+  box-sizing: content-box;
   height: 0;
   overflow: visible;
 }
@@ -108,6 +102,7 @@ p {
 abbr[title],
 abbr[data-original-title] {
   text-decoration: underline;
+  -webkit-text-decoration: underline dotted;
   text-decoration: underline dotted;
   cursor: help;
   border-bottom: 0;
@@ -305,8 +300,7 @@ button::-moz-focus-inner,
 
 input[type="radio"],
 input[type="checkbox"] {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   padding: 0;
 }
 

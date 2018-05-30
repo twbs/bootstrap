@@ -16,7 +16,7 @@ Cards are built with as little markup and styles as possible, but still manage t
 
 Below is an example of a basic card with mixed content and a fixed width. Cards have no fixed width to start, so they'll naturally fill the full width of its parent element. This is easily customized with our various [sizing options](#sizing).
 
-{% example html %}
+{% capture example %}
 <div class="card" style="width: 20rem;">
   <div class="card-img">
     <img class="card-img-top" data-src="holder.js/100px180/" alt="Card image cap">
@@ -70,13 +70,7 @@ Subtitles are used by adding a `.card-subtitle` to a `<h*>` tag. If the `.card-t
 
 `.card-img-top` places an image to the top of the card. With `.card-text`, text can be added to the card. Text within `.card-text` can also be styled with the standard HTML tags.
 
-<<<<<<< HEAD:docs/4.1/components/card.md
 {% capture example %}
-<div class="card" style="width: 18rem;">
-  <img class="card-img-top" data-src="holder.js/100px180/?text=Image cap" alt="Card image cap">
-  <div class="card-body">
-=======
-{% example html %}
 <div class="card">
   <div class="card-img">
     <img class="card-img-top" data-src="holder.js/100px180/?text=Image cap" alt="Card image cap">
@@ -85,11 +79,12 @@ Subtitles are used by adding a `.card-subtitle` to a `<h*>` tag. If the `.card-t
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
   </div>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 `.card-img` adds the top border. It is a **wrapper class**, because the applied paddings would result in image distortions when an image has defined width and height (due to used box-sizing). We might use a more general class in the future. For the sake of simplicity we decided to use `p-X` utility for the padding, as discussed.
 
-{% example html %}
+{% capture example %}
 <div class="card">
   <div class="card-block">
     <p class="card-text">Default <code>card-img</code> has no padding</p>
@@ -122,19 +117,19 @@ Subtitles are used by adding a `.card-subtitle` to a `<h*>` tag. If the `.card-t
     <img data-src="holder.js/100px180/?text=Image cap" alt="Card image cap">
   </div>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Buttons
 
 `.card-btn` creates a full block button. Use it for collapse toggles or other full-width-buttons
 
-{% example html %}
+{% capture example %}
 <div class="card">
   <div class="card-img">
     <img class="card-img-top" data-src="holder.js/100px180/?text=Image cap" alt="Card image cap">
   </div>
   <div class="card-block">
->>>>>>> joblocal-bootstrap4:docs/components/card.md
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
   </div>
   <button class="card-btn btn btn-link">Show more</button>
@@ -175,7 +170,7 @@ Create lists of content in a card with a flush list group.
 
 Shows a table inside a card.
 
-{% example html %}
+{% capture example %}
 <div class="card">
   <table class="table table-flush">
     <tbody>
@@ -194,27 +189,20 @@ Shows a table inside a card.
     </tbody>
   </table>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Kitchen sink
 
 Mix and match multiple content types to create the card you need, or throw everything in there. Shown below are image styles, blocks, text styles, and a list group—all wrapped in a fixed-width card.
 
-<<<<<<< HEAD:docs/4.1/components/card.md
 {% capture example %}
-<div class="card" style="width: 18rem;">
-  <img class="card-img-top" data-src="holder.js/100px180/?text=Image cap" alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-=======
-{% example html %}
 <div class="card" style="width: 20rem;">
   <div class="card-img">
     <img class="card-img-top" data-src="holder.js/100px180/?text=Image cap" alt="Card image cap">
   </div>
   <div class="card-block">
     <h4 class="card-title">Card title</h4>
->>>>>>> joblocal-bootstrap4:docs/components/card.md
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
   </div>
   <ul class="list-group list-group-flush">
@@ -222,9 +210,6 @@ Mix and match multiple content types to create the card you need, or throw every
     <li class="list-group-item">Dapibus ac facilisis in</li>
     <li class="list-group-item">Vestibulum at eros</li>
   </ul>
-<<<<<<< HEAD:docs/4.1/components/card.md
-  <div class="card-body">
-=======
   <table class="table table-flush table-responsive">
     <tbody>
       <tr>
@@ -242,7 +227,6 @@ Mix and match multiple content types to create the card you need, or throw every
     </tbody>
   </table>
   <div class="card-block">
->>>>>>> joblocal-bootstrap4:docs/components/card.md
     <a href="#" class="card-link">Card link</a>
     <a href="#" class="card-link">Another link</a>
   </div>
@@ -317,7 +301,7 @@ Card headers can be styled by adding `.card-header` to `<h*>` elements.
 
 #### Footer Table
 
-{% example html %}
+{% capture example %}
 <div class="card text-center">
   <div class="card-header">
     Featured
@@ -346,7 +330,8 @@ Card headers can be styled by adding `.card-header` to `<h*>` elements.
     </table>
   </div>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Sizing
 
@@ -422,7 +407,7 @@ Use custom CSS in your stylesheets or as inline styles to set a width.
 
 Shadow utility classes overwrite the default shadow on the card
 
-{% example html %}
+{% capture example %}
 <div class="card shadow-soft">
   <div class="card-block">
     <h3 class="card-title">Soft shadow</h3>
@@ -430,9 +415,10 @@ Shadow utility classes overwrite the default shadow on the card
   </div>
   <a href="#" class="card-btn btn btn-link">Go somewhere</a>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
-{% example html %}
+{% capture example %}
 <div class="card shadow-large">
   <div class="card-block">
     <h3 class="card-title">Large Shadow</h3>
@@ -440,7 +426,8 @@ Shadow utility classes overwrite the default shadow on the card
   </div>
   <a href="#" class="card-btn btn btn-primary">Go somewhere</a>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Text alignment
 
@@ -534,7 +521,7 @@ Special Component, that adds the correct padding and top border without using th
     <p class="card-text small"><span class="badge badge-primary">Top Job</span> <a href="#">dm-drogerie markt GmbH + Co. KG</a></p>
   </div>
   <div class="card-nav bg-faded">
-    <ul class="nav nav-buttons card-buttons card-buttons">
+    <ul class="nav nav-buttons card-buttons">
       <li class="nav-item">
         <button type="button" class="btn btn-secondary">Job merken</button>
       </li>
@@ -577,17 +564,11 @@ Similar to headers and footers, cards can include top and bottom "image caps"—
 
 {% capture example %}
 <div class="card mb-3">
-<<<<<<< HEAD:docs/4.1/components/card.md
-  <img class="card-img-top" data-src="holder.js/100px180/" alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-=======
   <div class="card-img">
     <img class="card-img-top" data-src="holder.js/100px180/" alt="Card image cap">
   </div>
   <div class="card-block">
     <h4 class="card-title">Card title</h4>
->>>>>>> joblocal-bootstrap4:docs/components/card.md
     <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
   </div>
@@ -609,17 +590,11 @@ Similar to headers and footers, cards can include top and bottom "image caps"—
 
 Turn an image into a card background and overlay your card's text. Depending on the image, you may or may not need additional styles or utilities.
 
-<<<<<<< HEAD:docs/4.1/components/card.md
 {% capture example %}
-<div class="card bg-dark text-white">
-  <img class="card-img" data-src="holder.js/100px270/#55595c:#373a3c/text:Card image" alt="Card image">
-=======
-{% example html %}
 <div class="card card-inverse">
   <div class="card-img">
     <img data-src="holder.js/100px270/#55595c:#373a3c/text:Card image" alt="Card image">
   </div>
->>>>>>> joblocal-bootstrap4:docs/components/card.md
   <div class="card-img-overlay">
     <h5 class="card-title">Card title</h5>
     <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -633,21 +608,19 @@ Turn an image into a card background and overlay your card's text. Depending on 
 
 Cards include various options for customizing their backgrounds, borders, and color.
 
-<<<<<<< HEAD:docs/4.1/components/card.md
-### Background and color
-=======
-### Interactive / Arrow
+### Interactive/Arrow
 
-{% example html %}
+{% capture example %}
 <div class="card">
   <a href="#" class="card-block has-arrow">
     <h3 class="card-title">Special title treatment</h3>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
   </a>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
-{% example html %}
+{% capture example %}
 <div class="card">
   <div class="list-group list-group-flush">
     <a href="#" class="list-group-item list-group-item-action has-arrow">Cras justo odio</a>
@@ -655,12 +628,13 @@ Cards include various options for customizing their backgrounds, borders, and co
     <a href="#" class="list-group-item list-group-item-action has-arrow">Vestibulum at eros</a>
   </div>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Card Block Action
 Introduces the same concept as list-group action and its variables. We don't use list-groups here, because we want to inherit colors etc. from card block elements as we know it.
 
-{% example html %}
+{% capture example %}
 <div class="card">
   <a href="#" class="card-block card-block-action has-arrow">
     <h3 class="card-title">Job</h3>
@@ -675,12 +649,12 @@ Introduces the same concept as list-group action and its variables. We don't use
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
   </a>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Inverted text
 
 By default, cards use dark text and assume a light background. You can reverse that by toggling the `color` of text within, as well as that of the card's subcomponents, with `.card-inverse`. Then, specify a dark `background-color` and `border-color` to go with it.
->>>>>>> joblocal-bootstrap4:docs/components/card.md
 
 Use [text and background utilities]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/colors/) to change the appearance of a card.
 
@@ -741,49 +715,31 @@ Use card groups to render cards as a single, attached element with equal width a
 {% capture example %}
 <div class="card-group">
   <div class="card">
-<<<<<<< HEAD:docs/4.1/components/card.md
-    <img class="card-img-top" data-src="holder.js/100px180/" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-=======
     <div class="card-img">
       <img class="card-img-top" data-src="holder.js/100px180/" alt="Card image cap">
     </div>
     <div class="card-block">
       <h4 class="card-title">Card title</h4>
->>>>>>> joblocal-bootstrap4:docs/components/card.md
       <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
     </div>
   </div>
   <div class="card">
-<<<<<<< HEAD:docs/4.1/components/card.md
-    <img class="card-img-top" data-src="holder.js/100px180/" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-=======
     <div class="card-img">
       <img class="card-img-top" data-src="holder.js/100px180/" alt="Card image cap">
     </div>
     <div class="card-block">
       <h4 class="card-title">Card title</h4>
->>>>>>> joblocal-bootstrap4:docs/components/card.md
       <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
     </div>
   </div>
   <div class="card">
-<<<<<<< HEAD:docs/4.1/components/card.md
-    <img class="card-img-top" data-src="holder.js/100px180/" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-=======
     <div class="card-img">
       <img class="card-img-top" data-src="holder.js/100px180/" alt="Card image cap">
     </div>
     <div class="card-block">
       <h4 class="card-title">Card title</h4>
->>>>>>> joblocal-bootstrap4:docs/components/card.md
       <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
     </div>
@@ -797,17 +753,11 @@ When using card groups with footers, their content will automatically line up.
 {% capture example %}
 <div class="card-group">
   <div class="card">
-<<<<<<< HEAD:docs/4.1/components/card.md
-    <img class="card-img-top" data-src="holder.js/100px180/" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-=======
     <div class="card-img">
       <img class="card-img-top" data-src="holder.js/100px180/" alt="Card image cap">
     </div>
     <div class="card-block">
       <h4 class="card-title">Card title</h4>
->>>>>>> joblocal-bootstrap4:docs/components/card.md
       <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
     </div>
     <div class="card-footer">
@@ -815,17 +765,11 @@ When using card groups with footers, their content will automatically line up.
     </div>
   </div>
   <div class="card">
-<<<<<<< HEAD:docs/4.1/components/card.md
-    <img class="card-img-top" data-src="holder.js/100px180/" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-=======
     <div class="card-img">
       <img class="card-img-top" data-src="holder.js/100px180/" alt="Card image cap">
     </div>
     <div class="card-block">
       <h4 class="card-title">Card title</h4>
->>>>>>> joblocal-bootstrap4:docs/components/card.md
       <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
     </div>
     <div class="card-footer">
@@ -833,17 +777,11 @@ When using card groups with footers, their content will automatically line up.
     </div>
   </div>
   <div class="card">
-<<<<<<< HEAD:docs/4.1/components/card.md
-    <img class="card-img-top" data-src="holder.js/100px180/" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-=======
     <div class="card-img">
       <img class="card-img-top" data-src="holder.js/100px180/" alt="Card image cap">
     </div>
     <div class="card-block">
       <h4 class="card-title">Card title</h4>
->>>>>>> joblocal-bootstrap4:docs/components/card.md
       <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
     </div>
     <div class="card-footer">
@@ -861,49 +799,31 @@ Need a set of equal width and height cards that aren't attached to one another? 
 {% capture example %}
 <div class="card-deck">
   <div class="card">
-<<<<<<< HEAD:docs/4.1/components/card.md
-    <img class="card-img-top" data-src="holder.js/100px200/" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-=======
     <div class="card-img">
       <img class="card-img-top" data-src="holder.js/100px200/" alt="Card image cap">
     </div>
     <div class="card-block">
       <h4 class="card-title">Card title</h4>
->>>>>>> joblocal-bootstrap4:docs/components/card.md
       <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
     </div>
   </div>
   <div class="card">
-<<<<<<< HEAD:docs/4.1/components/card.md
-    <img class="card-img-top" data-src="holder.js/100px200/" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-=======
     <div class="card-img">
       <img class="card-img-top" data-src="holder.js/100px200/" alt="Card image cap">
     </div>
     <div class="card-block">
       <h4 class="card-title">Card title</h4>
->>>>>>> joblocal-bootstrap4:docs/components/card.md
       <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
     </div>
   </div>
   <div class="card">
-<<<<<<< HEAD:docs/4.1/components/card.md
-    <img class="card-img-top" data-src="holder.js/100px200/" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-=======
     <div class="card-img">
       <img class="card-img-top" data-src="holder.js/100px200/" alt="Card image cap">
     </div>
     <div class="card-block">
       <h4 class="card-title">Card title</h4>
->>>>>>> joblocal-bootstrap4:docs/components/card.md
       <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
     </div>
@@ -917,17 +837,11 @@ Just like with card groups, card footers in decks will automatically line up.
 {% capture example %}
 <div class="card-deck">
   <div class="card">
-<<<<<<< HEAD:docs/4.1/components/card.md
-    <img class="card-img-top" data-src="holder.js/100px180/" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-=======
     <div class="card-img">
       <img class="card-img-top" data-src="holder.js/100px180/" alt="Card image cap">
     </div>
     <div class="card-block">
       <h4 class="card-title">Card title</h4>
->>>>>>> joblocal-bootstrap4:docs/components/card.md
       <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
     </div>
     <div class="card-footer">
@@ -935,17 +849,11 @@ Just like with card groups, card footers in decks will automatically line up.
     </div>
   </div>
   <div class="card">
-<<<<<<< HEAD:docs/4.1/components/card.md
-    <img class="card-img-top" data-src="holder.js/100px180/" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-=======
     <div class="card-img">
       <img class="card-img-top" data-src="holder.js/100px180/" alt="Card image cap">
     </div>
     <div class="card-block">
       <h4 class="card-title">Card title</h4>
->>>>>>> joblocal-bootstrap4:docs/components/card.md
       <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
     </div>
     <div class="card-footer">
@@ -953,17 +861,11 @@ Just like with card groups, card footers in decks will automatically line up.
     </div>
   </div>
   <div class="card">
-<<<<<<< HEAD:docs/4.1/components/card.md
-    <img class="card-img-top" data-src="holder.js/100px180/" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-=======
     <div class="card-img">
       <img class="card-img-top" data-src="holder.js/100px180/" alt="Card image cap">
     </div>
     <div class="card-block">
       <h4 class="card-title">Card title</h4>
->>>>>>> joblocal-bootstrap4:docs/components/card.md
       <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
     </div>
     <div class="card-footer">
@@ -978,7 +880,7 @@ Just like with card groups, card footers in decks will automatically line up.
 
 Need a set of equal width and height cards that aren't attached to one another but also should wrap in another column? Use card grids.
 
-{% example html %}
+{% capture example %}
 <div class="card-grid">
   <div class="card">
     <div class="card-block p-4 p-md-5">
@@ -1011,11 +913,12 @@ Need a set of equal width and height cards that aren't attached to one another b
     </div>
   </div>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 Just like with card groups, card footers in decks will automatically line up.
 
-{% example html %}
+{% capture example %}
 <div class="card-grid">
   <div class="card">
     <div class="card-block p-4 p-md-5">
@@ -1054,13 +957,14 @@ Just like with card groups, card footers in decks will automatically line up.
     </div>
   </div>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 #### Interactive Cards in a deck or grid
 
 To make cards hover, use `.card-action` class.
 
-{% example html %}
+{% capture example %}
 <div class="card-grid">
   <a href="#" class="card card-action">
     <div class="CompanyCard__logo card-block p-4 p-md-5">
@@ -1267,7 +1171,8 @@ To make cards hover, use `.card-action` class.
     </div>
   </a>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Card columns
 
@@ -1278,17 +1183,11 @@ Cards can be organized into [Masonry](https://masonry.desandro.com/)-like column
 {% capture example %}
 <div class="card-columns">
   <div class="card">
-<<<<<<< HEAD:docs/4.1/components/card.md
-    <img class="card-img-top" data-src="holder.js/100px160/" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title that wraps to a new line</h5>
-=======
     <div class="card-img">
       <img class="card-img-top img-fluid" data-src="holder.js/100px160/" alt="Card image cap">
     </div>
     <div class="card-block">
       <h4 class="card-title">Card title that wraps to a new line</h4>
->>>>>>> joblocal-bootstrap4:docs/components/card.md
       <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
     </div>
   </div>
@@ -1303,17 +1202,11 @@ Cards can be organized into [Masonry](https://masonry.desandro.com/)-like column
     </blockquote>
   </div>
   <div class="card">
-<<<<<<< HEAD:docs/4.1/components/card.md
-    <img class="card-img-top" data-src="holder.js/100px160/" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-=======
     <div class="card-img">
       <img class="card-img-top img-fluid" data-src="holder.js/100px160/" alt="Card image cap">
     </div>
     <div class="card-block">
       <h4 class="card-title">Card title</h4>
->>>>>>> joblocal-bootstrap4:docs/components/card.md
       <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
     </div>
@@ -1336,13 +1229,9 @@ Cards can be organized into [Masonry](https://masonry.desandro.com/)-like column
     </div>
   </div>
   <div class="card">
-<<<<<<< HEAD:docs/4.1/components/card.md
-    <img class="card-img" data-src="holder.js/100px260/" alt="Card image">
-=======
     <div class="card-img">
       <img class="img-fluid" data-src="holder.js/100px260/" alt="Card image">
     </div>
->>>>>>> joblocal-bootstrap4:docs/components/card.md
   </div>
   <div class="card p-3 text-right">
     <blockquote class="blockquote mb-0">

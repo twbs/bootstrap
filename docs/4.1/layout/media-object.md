@@ -38,11 +38,7 @@ Media objects can be infinitely nested, though we suggest you stop at some point
 
 {% capture example %}
 <div class="media">
-<<<<<<< HEAD:docs/4.1/layout/media-object.md
   <img class="mr-3" data-src="holder.js/64x64" alt="Generic placeholder image">
-=======
-  <img class="media-image" data-src="holder.js/64x64" alt="Generic placeholder image">
->>>>>>> joblocal-bootstrap4:docs/layout/media-object.md
   <div class="media-body">
     <h5 class="mt-0">Media heading</h5>
     Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
@@ -67,11 +63,7 @@ Media in a media object can be aligned with flexbox utilities to the top (defaul
 
 {% capture example %}
 <div class="media">
-<<<<<<< HEAD:docs/4.1/layout/media-object.md
   <img class="align-self-start mr-3" data-src="holder.js/64x64" alt="Generic placeholder image">
-=======
-  <img class="media-image" data-src="holder.js/64x64" alt="Generic placeholder image">
->>>>>>> joblocal-bootstrap4:docs/layout/media-object.md
   <div class="media-body">
     <h5 class="mt-0">Top-aligned media</h5>
     <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
@@ -81,15 +73,9 @@ Media in a media object can be aligned with flexbox utilities to the top (defaul
 {% endcapture %}
 {% include example.html content=example %}
 
-<<<<<<< HEAD:docs/4.1/layout/media-object.md
 {% capture example %}
 <div class="media">
   <img class="align-self-center mr-3" data-src="holder.js/64x64" alt="Generic placeholder image">
-=======
-{% example html %}
-<div class="media media-center">
-  <img class="media-image" data-src="holder.js/64x64" alt="Generic placeholder image">
->>>>>>> joblocal-bootstrap4:docs/layout/media-object.md
   <div class="media-body">
     <h5 class="mt-0">Center-aligned media</h5>
     <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
@@ -99,15 +85,9 @@ Media in a media object can be aligned with flexbox utilities to the top (defaul
 {% endcapture %}
 {% include example.html content=example %}
 
-<<<<<<< HEAD:docs/4.1/layout/media-object.md
 {% capture example %}
 <div class="media">
   <img class="align-self-end mr-3" data-src="holder.js/64x64" alt="Generic placeholder image">
-=======
-{% example html %}
-<div class="media media-bottom">
-  <img class="media-image" data-src="holder.js/64x64" alt="Generic placeholder image">
->>>>>>> joblocal-bootstrap4:docs/layout/media-object.md
   <div class="media-body">
     <h5 class="mt-0">Bottom-aligned media</h5>
     <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
@@ -127,11 +107,7 @@ Change the order of content in media objects by modifying the HTML itself, or by
     <h5 class="mt-0 mb-1">Media object</h5>
     Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
   </div>
-<<<<<<< HEAD:docs/4.1/layout/media-object.md
   <img class="ml-3" data-src="holder.js/64x64" alt="Generic placeholder image">
-=======
-  <img class="media-image" data-src="holder.js/64x64" alt="Generic placeholder image">
->>>>>>> joblocal-bootstrap4:docs/layout/media-object.md
 </div>
 {% endcapture %}
 {% include example.html content=example %}
@@ -143,33 +119,21 @@ Because the media object has so few structural requirements, you can also use th
 {% capture example %}
 <ul class="list-unstyled">
   <li class="media">
-<<<<<<< HEAD:docs/4.1/layout/media-object.md
     <img class="mr-3" data-src="holder.js/64x64" alt="Generic placeholder image">
-=======
-    <img class="media-image" data-src="holder.js/64x64" alt="Generic placeholder image">
->>>>>>> joblocal-bootstrap4:docs/layout/media-object.md
     <div class="media-body">
       <h5 class="mt-0 mb-1">List-based media object</h5>
       Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
     </div>
   </li>
   <li class="media my-4">
-<<<<<<< HEAD:docs/4.1/layout/media-object.md
     <img class="mr-3" data-src="holder.js/64x64" alt="Generic placeholder image">
-=======
-    <img class="media-image" data-src="holder.js/64x64" alt="Generic placeholder image">
->>>>>>> joblocal-bootstrap4:docs/layout/media-object.md
     <div class="media-body">
       <h5 class="mt-0 mb-1">List-based media object</h5>
       Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
     </div>
   </li>
   <li class="media">
-<<<<<<< HEAD:docs/4.1/layout/media-object.md
     <img class="mr-3" data-src="holder.js/64x64" alt="Generic placeholder image">
-=======
-    <img class="media-image" data-src="holder.js/64x64" alt="Generic placeholder image">
->>>>>>> joblocal-bootstrap4:docs/layout/media-object.md
     <div class="media-body">
       <h5 class="mt-0 mb-1">List-based media object</h5>
       Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
