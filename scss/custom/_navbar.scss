@@ -1,25 +1,21 @@
 @import "../mixins/hover";
-
 .navbar-inverse {
   .navbar-nav {
     .nav-link {
       color: $navbar-inverse-link-color;
-
       @include hover-focus {
         color: $navbar-inverse-link-hover-color;
         background-color: $navbar-inverse-link-hover-bg;
       }
-
       &.active,
       &:active {
         color: $navbar-inverse-link-active-color;
         background-color: $navbar-inverse-link-active-bg;
       }
-
       &.disabled,
       &:disabled {
-       color: $navbar-link-disabled-color;
-       background-color: transparent;
+        color: $navbar-link-disabled-color;
+        background-color: transparent;
       }
     }
   }
@@ -28,11 +24,9 @@
 // Separate the font-size adjustment from the general component
 .navbar-sm {
   font-size: $small-font-size;
-
   .navbar-brand {
     font-size: 1.25em; // TODO solve this in a more solid way
   }
-
   .btn,
   .form-control {
     font-size: 1em; // inherits parent font size

@@ -25,12 +25,12 @@
 
 .media {
   // Clear spacing of contained elements
-  margin-left: $media-spacing-x * -.5;
   margin-right: $media-spacing-x * -.5;
+  margin-left: $media-spacing-x * -.5;
 }
 
 .media-body,
 .media-image {
-  margin-left: $media-spacing-x * .5;
   margin-right: $media-spacing-x * .5;
+  margin-left: $media-spacing-x * .5;
 }

@@ -8,11 +8,11 @@
 
 .clip-top {
   top: 0;
+  margin-left: $spacer;
   border-top: 0;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 
-  margin-left: $spacer-x;
 
   &.clip-edge {
     margin-left: 0;
@@ -24,11 +24,11 @@
 .clip-top-right {
   top: 0;
   right: 0;
+  margin-right: $spacer;
   border-top: 0;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 
-  margin-right: $spacer-x;
 
   &.clip-edge {
     margin-right: 0;
@@ -39,11 +39,11 @@
 
 .clip-bottom {
   bottom: 0;
+  margin-left: $spacer;
   border-bottom: 0;
-  border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
 
-  margin-left: $spacer-x;
 
   &.clip-edge {
     margin-left: 0;
@@ -53,13 +53,13 @@
 }
 
 .clip-bottom-right {
-  bottom: 0;
   right: 0;
+  bottom: 0;
+  margin-right: $spacer;
   border-bottom: 0;
-  border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
 
-  margin-right: $spacer-x;
 
   &.clip-edge {
     margin-right: 0;

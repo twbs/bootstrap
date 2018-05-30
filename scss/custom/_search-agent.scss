@@ -1,8 +1,8 @@
 .search-agent {
+  flex: 0 0 auto;
+  padding: 0 $search-agent-padding-x;
   color: $search-agent-color;
   background: $search-agent-bg;
-  padding: 0 $search-agent-padding-x;
-  flex: 0 0 auto;
 
   .search-agent-body {
     padding-top: $search-agent-padding-y;
@@ -17,11 +17,11 @@
   }
 
   .search-agent-byline {
+    margin-bottom: .5em;
     font-size: $search-byline-size;
     font-weight: $search-byline-weight;
     color: $search-byline-color;
     text-transform: uppercase;
-    margin-bottom: .5em;
   }
 
   .search-agent-visual {
@@ -35,7 +35,7 @@
 
     width: 100%;
     height: auto;
-    padding-top: $spacer-y;
+    padding-top: $spacer;
   }
 
   @include media-breakpoint-down(xs) {

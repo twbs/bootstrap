@@ -1,25 +1,25 @@
 .facet {
   background: $facet-bg;
-  box-shadow: $facet-shadow;
   border-radius: $facet-border-radius;
+  box-shadow: $facet-shadow;
 }
 
 .facet-header {
   display: flex;
 
   .facet-title {
-    margin: 0;
     padding: $facet-group-link-padding-y $facet-group-link-padding-x;
-    color: $headings-color;
+    margin: 0;
     font-weight: $headings-font-weight;
+    color: $headings-color;
   }
 
   .facet-toggle {
     width: 100%;
-    text-align: left;
     padding-right: $facet-spacer-x * 2;
-    color: $headings-color;
     font-weight: $headings-font-weight;
+    color: $headings-color;
+    text-align: left;
 
     .facet-title {
       padding-left: 0;
@@ -36,21 +36,21 @@
 
 .facet-toggle {
   width: 100%;
-  text-align: left;
   padding-right: $facet-spacer-x * 2;
+  text-align: left;
   cursor: pointer;
 
-  &:after {
+  &::after {
     position: absolute;
     right: $facet-spacer-x * 2.5;
   }
 
-  &[aria-expanded="false"]:after {
+  &[aria-expanded="false"]::after {
     @include icon;
     content: $facet-expand-char;
   }
 
-  &[aria-expanded="true"]:after {
+  &[aria-expanded="true"]::after {
     @include icon;
     content: $facet-collapse-char;
   }
@@ -65,20 +65,20 @@
     border-top: 1px solid $facet-border-color;
   }
 
-  &[aria-expanded="false"]:after {
+  &[aria-expanded="false"]::after {
     @include icon;
     content: $facet-more-char;
   }
 
-  &[aria-expanded="true"]:after {
+  &[aria-expanded="true"]::after {
     @include icon;
     content: $facet-less-char;
   }
 }
 
 // Facet Group
-// 
-// 
+//
+//
 
 .facet-group {
   display: flex;
@@ -111,7 +111,7 @@
 
 .facet-group-link {
   cursor: pointer;
-  
+
   // Hover state
   @include hover-focus {
     color: $facet-group-item-hover-color;
@@ -131,8 +131,8 @@
 
 
 // Selected Facets
-// 
-// 
+//
+//
 
 .facet-highlighted {
   border: 2px solid $facet-highlighted-bg;
@@ -144,9 +144,9 @@
 
   .facet-title,
   .btn {
+    overflow: hidden;
     color: $facet-highlighted-color;
     text-overflow: ellipsis;
-    overflow: hidden;
   }
 }
 
@@ -155,19 +155,19 @@
 
   .btn-facet {
     position: relative;
-    width: 100%;
     display: block;
+    width: 100%;
     text-align: left;
 
-    &:after {
+    &::after {
       @include icon;
 
-      content: $icon-remove;
       position: absolute;
       top: 0;
       right: 0;
       padding: $btn-padding-y $btn-padding-x;
-      background: rgba(255,255,255,.2);
+      content: $icon-remove;
+      background: rgba(255, 255, 255, .2);
     }
   }
 }

@@ -1,9 +1,9 @@
 .input-group {
   .input-group-field {
     flex: 1 auto;
+    background-color: $input-bg;
     border: $input-btn-border-width solid $input-border-color;
     border-right-color: transparent;
-    background-color: $input-bg;
   }
 
   .input-group-field-auto {
@@ -20,11 +20,6 @@
     &[placeholder] {
       text-overflow: ellipsis;
     }
-  }
-
-  input-group-field:first-child {
-    @include border-left-radius($input-border-radius);
-    border-right-color: $input-border-color;
   }
 
   .input-group-field:last-child {

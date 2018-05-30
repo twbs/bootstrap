@@ -1,13 +1,13 @@
 // To make this more consistent, this should be done with a mapping
 
 .shadow-default {
-  box-shadow: $box-shadow-default !important;
+  box-shadow: $box-shadow-default !important; /* stylelint-disable-line */
 }
 
 .shadow-soft {
-  box-shadow: $box-shadow-soft !important;
+  box-shadow: $box-shadow-soft !important; /* stylelint-disable-line */
 }
 
 .shadow-large {
-  box-shadow: $box-shadow-large !important;
+  box-shadow: $box-shadow-large !important; /* stylelint-disable-line */
 }

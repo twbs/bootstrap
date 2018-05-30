@@ -3,8 +3,8 @@
 // Apply contextual and semantic states to individual form controls.
 
 .form-control-feedback {
-  margin-top: -$input-btn-border-width;
   padding: $input-padding-y $input-padding-x;
+  margin-top: -$input-btn-border-width;
   @include border-bottom-radius($input-border-radius);
   line-height: $input-line-height;
 }
@@ -13,10 +13,10 @@
 .has-success {
   .form-control-feedback {
     color: $white;
-    background-color: $brand-success;
+    background-color: theme-color("success");
 
     &-inverse {
-      color: $brand-success;
+      color: theme-color("success");
       background-color: transparent;
     }
   }
@@ -25,10 +25,10 @@
 .has-warning {
   .form-control-feedback {
     color: $white;
-    background-color: $brand-warning;
+    background-color: theme-color("warning");
 
     &-inverse {
-      color: $brand-warning;
+      color: theme-color("warning");
       background-color: transparent;
     }
   }
@@ -37,10 +37,10 @@
 .has-danger {
   .form-control-feedback {
     color: $white;
-    background-color: $brand-danger;
+    background-color: theme-color("danger");
 
     &-inverse {
-      color: $brand-danger;
+      color: theme-color("danger");
       background-color: transparent;
     }
   }

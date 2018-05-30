@@ -4,7 +4,7 @@
 
 .btn-xl {
   // line-height: ensure even-numbered height of button next to large input
-  @include button-size($btn-padding-y-xl, $btn-padding-x-xl, $font-size-xl, $btn-border-radius-xl);
+  @include button-size($btn-padding-y-xl, $btn-padding-x-xl, $font-size-xl, $line-height-lg, $btn-border-radius-xl);
 }
 
 //
@@ -17,8 +17,8 @@
   @include gradient-y($btn-cta-gradient-start, $btn-cta-gradient-end);
   background-blend-mode: $btn-cta-gradient-blend;
 
-  text-shadow: $btn-cta-text-shadow;
   font-weight: $btn-cta-font-weight;
+  text-shadow: $btn-cta-text-shadow;
 }
 
 // Rounded Variant for Slider Controls
@@ -35,4 +35,16 @@
 // Adds pointer to all buttons
 .btn {
   cursor: pointer;
+}
+
+.btn-primary,
+.btn-info,
+.btn-success,
+.btn-warning,
+.btn-danger {
+  color: $white;
+}
+.btn-secondary {
+  @include button-variant($white, $gray-lighter);
+  color: $gray;
 }

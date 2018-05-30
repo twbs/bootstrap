@@ -36,20 +36,20 @@
 
     th,
     td {
-      border-top: none;
       flex: 1 1 100%;
       padding-top: 0;
       padding-bottom: 0;
+      border-top: none;
     }
 
     th:first-child,
     td:first-child {
-      padding-top: $spacer-y;
+      padding-top: $spacer;
     }
 
     th:last-child,
     td:last-child {
-      padding-bottom: $spacer-y;
+      padding-bottom: $spacer;
     }
 
   }

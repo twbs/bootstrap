@@ -1,16 +1,16 @@
 .slider {
   width: 100%;
-  overflow-x: hidden;
-  overflow-y: visible; 
   padding: $slider-inner-padding-y $slider-inner-padding-x;
+  overflow-x: hidden;
+  overflow-y: visible;
 }
 
 .slider-inner {
   position: relative;
   @include make-container-max-widths();
 
-  margin-left: auto;
   margin-right: auto;
+  margin-left: auto;
 }
 
 .slider-item {
@@ -24,8 +24,8 @@
   @each $breakpoint in map-keys($grid-gutter-widths) {
     @include media-breakpoint-up($breakpoint) {
       $gutter: map-get($grid-gutter-widths, $breakpoint);
-      padding-left: ($gutter / 2);
       padding-right: ($gutter / 2);
+      padding-left: ($gutter / 2);
     }
   }
 }
@@ -47,20 +47,20 @@
 .slider-control-prev,
 .slider-control-next {
   box-sizing: border-box;
-  background-position: center;
   background-repeat: no-repeat;
+  background-position: center;
 }
 
 .slider-control-indicators ul {
   // clear list styling
-  list-style: none;
   padding: 0;
   margin: 0;
+  margin-right: $slider-control-spacing-x;
+  margin-left: $slider-control-spacing-x;
   font-size: 0;
   line-height: 0;
+  list-style: none;
 
-  margin-left: $slider-control-spacing-x;
-  margin-right: $slider-control-spacing-x;
 }
 
 .slider-control-indicators li {
@@ -77,21 +77,21 @@
 .slider-control-indicators button {
   width: $slider-control-indicator-size;
   height: $slider-control-indicator-size;
-  margin: 0;
   padding: 0;
+  margin: 0;
   overflow: hidden;
 
   text-indent: $slider-control-indicator-size * -2;
+  border: none;
   border-radius: $slider-control-indicator-size * .5;
 
   outline: none;
-  border: none;
 
   &:hover {
     background: $slider-control-indicator-hover-bg;
   }
 
-  &.active {
+  &.active {/* stylelint-disable-line selector-no-qualifying-type */
     background: $slider-control-indicator-active-bg;
   }
 }
@@ -103,12 +103,12 @@
 // Slider Cards
 .slider-card {
   .card-img {
-    height: 100%;
-    width: 100%;
     display: flex;
-    align-items: center;
     align-content: center;
+    align-items: center;
     justify-content: center;
+    width: 100%;
+    height: 100%;
 
     img {
       flex: 0 1 auto;

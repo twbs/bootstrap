@@ -2,25 +2,28 @@
 //
 //
 
+/* stylelint-disable */
 @font-face {
-  font-family: 'joblocal-icons';
-  src:  url('#{$icons-font-path}/joblocal-icons.eot?o31wyy');
-  src:  url('#{$icons-font-path}/joblocal-icons.eot?o31wyy#iefix') format('embedded-opentype'),
-    url('#{$icons-font-path}/joblocal-icons.ttf?o31wyy') format('truetype'),
-    url('#{$icons-font-path}/joblocal-icons.woff?o31wyy') format('woff'),
-    url('#{$icons-font-path}/joblocal-icons.svg?o31wyy#joblocal-icons') format('svg');
+  font-family: "joblocal-icons";
+  src: url("#{$icons-font-path}/joblocal-icons.eot?o31wyy");
+  src:
+    url("#{$icons-font-path}/joblocal-icons.eot?o31wyy#iefix") format("embedded-opentype"),
+    url("#{$icons-font-path}/joblocal-icons.ttf?o31wyy") format("truetype"),
+    url("#{$icons-font-path}/joblocal-icons.woff?o31wyy") format("woff"),
+    url("#{$icons-font-path}/joblocal-icons.svg?o31wyy#joblocal-icons") format("svg");
   font-weight: normal;
   font-style: normal;
 }
+/* stylelint-enable */
 
 .icon,
 [class^="icon-"],
 [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'joblocal-icons' !important;
+  font-family: 'joblocal-icons' !important; /* stylelint-disable-line */
   speak: none;
   font-style: normal;
-  font-weight: normal;
+  font-weight: normal; /* stylelint-disable-line */
   font-variant: normal;
   text-transform: none;
 
@@ -30,75 +33,75 @@
 }
 
 @mixin icon {
-  font-family: 'joblocal-icons' !important;
+  font-family: 'joblocal-icons' !important; /* stylelint-disable-line */
   speak: none;
   font-style: normal;
-  font-weight: normal;
+  font-weight: normal; /* stylelint-disable-line */
   font-variant: normal;
   text-transform: none;
 }
 
-.icon-arrow-top:before { content: $icon-arrow-top; }
-.icon-arrow-right:before { content: $icon-arrow-right; }
-.icon-arrow-bottom:before { content: $icon-arrow-bottom; }
-.icon-arrow-left:before { content: $icon-arrow-left; }
-.icon-star:before { content: $icon-star; }
-.icon-more:before { content: $icon-more; }
-.icon-less:before { content: $icon-less; }
-.icon-benefit-barrier-free:before { content: $icon-benefit-barrier-free; }
-.icon-benefit-canteen:before { content: $icon-benefit-canteen; }
-.icon-benefit-childcare:before { content: $icon-benefit-childcare; }
-.icon-benefit-coaching:before { content: $icon-benefit-coaching; }
-.icon-benefit-company-car:before { content: $icon-benefit-company-car; }
-.icon-benefit-company-doctor:before { content: $icon-benefit-company-doctor; }
-.icon-benefit-dogs-allowed:before { content: $icon-benefit-dogs-allowed; }
-.icon-benefit-employee-discount:before { content: $icon-benefit-employee-discount; }
-.icon-benefit-employee-events:before { content: $icon-benefit-employee-events; }
-.icon-benefit-employee-mobile-phone:before { content: $icon-benefit-employee-mobile-phone; }
-.icon-benefit-employee-shareholding:before { content: $icon-benefit-employee-shareholding; }
-.icon-benefit-flexible-working-hours:before { content: $icon-benefit-flexible-working-hours; }
-.icon-benefit-food-allowance:before { content: $icon-benefit-food-allowance; }
-.icon-benefit-further-education:before { content: $icon-benefit-further-education; }
-.icon-benefit-health-measures:before { content: $icon-benefit-health-measures; }
-.icon-benefit-homeoffice:before { content: $icon-benefit-homeoffice; }
-.icon-benefit-internet-use:before { content: $icon-benefit-internet-use; }
-.icon-benefit-paid-training:before { content: $icon-benefit-paid-training; }
-.icon-benefit-parking:before { content: $icon-benefit-parking; }
-.icon-benefit-pension:before { content: $icon-benefit-pension; }
-.icon-benefit-ride-cost-refunds:before { content: $icon-benefit-ride-cost-refunds; }
-.icon-benefit-traffic-connections:before { content: $icon-benefit-traffic-connections; }
-.icon-benefit-work-clothes:before { content: $icon-benefit-work-clothes; }
-.icon-caret-top:before { content: $icon-caret-top; }
-.icon-caret-right:before { content: $icon-caret-right; }
-.icon-caret-bottom:before { content: $icon-caret-bottom; }
-.icon-caret-left:before { content: $icon-caret-left; }
-.icon-search:before { content: $icon-search; }
-.icon-close:before { content: $icon-close; }
-.icon-remove:before { content: $icon-remove; }
-.icon-heart:before { content: $icon-heart; }
-.icon-heart-outline:before { content: $icon-heart-outline; }
-.icon-location:before { content: $icon-location; }
-.icon-swipe:before { content: $icon-swipe; }
-.icon-external:before { content: $icon-external; }
+.icon-arrow-top::before { content: $icon-arrow-top; }
+.icon-arrow-right::before { content: $icon-arrow-right; }
+.icon-arrow-bottom::before { content: $icon-arrow-bottom; }
+.icon-arrow-left::before { content: $icon-arrow-left; }
+.icon-star::before { content: $icon-star; }
+.icon-more::before { content: $icon-more; }
+.icon-less::before { content: $icon-less; }
+.icon-benefit-barrier-free::before { content: $icon-benefit-barrier-free; }
+.icon-benefit-canteen::before { content: $icon-benefit-canteen; }
+.icon-benefit-childcare::before { content: $icon-benefit-childcare; }
+.icon-benefit-coaching::before { content: $icon-benefit-coaching; }
+.icon-benefit-company-car::before { content: $icon-benefit-company-car; }
+.icon-benefit-company-doctor::before { content: $icon-benefit-company-doctor; }
+.icon-benefit-dogs-allowed::before { content: $icon-benefit-dogs-allowed; }
+.icon-benefit-employee-discount::before { content: $icon-benefit-employee-discount; }
+.icon-benefit-employee-events::before { content: $icon-benefit-employee-events; }
+.icon-benefit-employee-mobile-phone::before { content: $icon-benefit-employee-mobile-phone; }
+.icon-benefit-employee-shareholding::before { content: $icon-benefit-employee-shareholding; }
+.icon-benefit-flexible-working-hours::before { content: $icon-benefit-flexible-working-hours; }
+.icon-benefit-food-allowance::before { content: $icon-benefit-food-allowance; }
+.icon-benefit-further-education::before { content: $icon-benefit-further-education; }
+.icon-benefit-health-measures::before { content: $icon-benefit-health-measures; }
+.icon-benefit-homeoffice::before { content: $icon-benefit-homeoffice; }
+.icon-benefit-internet-use::before { content: $icon-benefit-internet-use; }
+.icon-benefit-paid-training::before { content: $icon-benefit-paid-training; }
+.icon-benefit-parking::before { content: $icon-benefit-parking; }
+.icon-benefit-pension::before { content: $icon-benefit-pension; }
+.icon-benefit-ride-cost-refunds::before { content: $icon-benefit-ride-cost-refunds; }
+.icon-benefit-traffic-connections::before { content: $icon-benefit-traffic-connections; }
+.icon-benefit-work-clothes::before { content: $icon-benefit-work-clothes; }
+.icon-caret-top::before { content: $icon-caret-top; }
+.icon-caret-right::before { content: $icon-caret-right; }
+.icon-caret-bottom::before { content: $icon-caret-bottom; }
+.icon-caret-left::before { content: $icon-caret-left; }
+.icon-search::before { content: $icon-search; }
+.icon-close::before { content: $icon-close; }
+.icon-remove::before { content: $icon-remove; }
+.icon-heart::before { content: $icon-heart; }
+.icon-heart-outline::before { content: $icon-heart-outline; }
+.icon-location::before { content: $icon-location; }
+.icon-swipe::before { content: $icon-swipe; }
+.icon-external::before { content: $icon-external; }
 
 
 // Modifiers
 //
 //
 
-.icon-xs:before {
+.icon-xs::before {
   font-size: $font-size-xs;
 }
 
-.icon-sm:before {
+.icon-sm::before {
   font-size: $font-size-sm;
 }
 
-.icon-lg:before {
+.icon-lg::before {
   font-size: $font-size-lg;
 }
 
-.icon-xl:before {
+.icon-xl::before {
   font-size: $font-size-xl;
 }
 

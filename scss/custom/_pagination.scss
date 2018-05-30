@@ -1,7 +1,7 @@
 .pagination {
-  margin: 0;
-  justify-content: center;
   flex-wrap: wrap;
+  justify-content: center;
+  margin: 0;
 
   .page-link {
     border-color: $pagination-bg;
@@ -16,7 +16,7 @@
   .page-item.disabled .page-link {
     border-color: $pagination-bg;
   }
-  
+
   .active .page-link {
     border-color: $pagination-bg;
     border-bottom-color: $pagination-active-border;

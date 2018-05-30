@@ -3,35 +3,31 @@
 //
 
 .modal-full {
-  max-width: 100%;
   width: 100%;
+  max-width: 100%;
   height: 100%;
-
-  margin: 0;
   padding: 0;
+  margin: 0;
 
   .modal-content {
+    // Fixed for older phones
+    display: -webkit-flex; /* stylelint-disable-line */
+    display: -moz-box; /* stylelint-disable-line */
+    display: -ms-flexbox; /* stylelint-disable-line */
+    -webkit-flex-direction: column; /* stylelint-disable-line */
+    -moz-flex-direction: column; /* stylelint-disable-line */
     width: 100%;
     height: 100%;
-
     border: none;
     border-radius: 0;
-
-    // Fixed for older phones
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
-
-    -webkit-flex-direction: column;
-    -moz-flex-direction: column;
   }
 
   .modal-header,
   .modal-footer {
     // Fixed for older phones
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
+    display: -webkit-flex; /* stylelint-disable-line */
+    display: -moz-box; /* stylelint-disable-line */
+    display: -ms-flexbox; /* stylelint-disable-line */
 
     width: 100%;
     box-shadow: $modal-full-shadow;
@@ -39,17 +35,15 @@
 
   .modal-body {
     // Fixed for older phones
-    -webkit-box-flex: 1;   /* OLD - iOS 6-, Safari 3.1-6 */
-    -webkit-flex: 1;       /* Safari 6.1+. iOS 7.1+, BB10 */
-    -ms-flex: 1;           /* IE 10 */
+    -webkit-box-flex: 1;   /* stylelint-disable-line */ /* OLD - iOS 6-, Safari 3.1-6 */
+    -webkit-flex: 1;       /* stylelint-disable-line */ /* Safari 6.1+. iOS 7.1+, BB10 */
+    -ms-flex: 1;           /* stylelint-disable-line */ /* IE 10 */
     flex: 1;               /* NEW, Spec - Firefox, Chrome, Opera */
 
     width: 100%;
     height: 100%;
-    overflow-y: auto;
-
-    overflow-y: auto;
     overflow-x: hidden;
+    overflow-y: auto;
   }
 }
 

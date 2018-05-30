@@ -1,5 +1,5 @@
-$floating-padding-distributable: ($input-padding-y * 2) - $floating-input-label-size;
-$floating-label-margin: $floating-padding-distributable / 3;
+$floating-padding-distributable: ($input-padding-y * 2) - $floating-input-label-size !default;
+$floating-label-margin: $floating-padding-distributable / 3 !default;
 
 .floating-input {
   position: relative;
@@ -23,8 +23,8 @@ $floating-label-margin: $floating-padding-distributable / 3;
   &.is-filled,
   &.is-focused {
     .form-label {
-      font-size: $floating-input-label-size;
       top: $floating-label-margin;
+      font-size: $floating-input-label-size;
     }
 
     .form-control {
@@ -62,9 +62,9 @@ $floating-label-margin: $floating-padding-distributable / 3;
 // Floating Button
 .floating-button {
   position: relative;
-  text-align: left;
   padding-top: $floating-padding-distributable - $floating-label-margin + $floating-input-label-size;
   padding-bottom: $floating-label-margin;
+  text-align: left;
 
   .button-label,
   .button-value {
@@ -90,7 +90,7 @@ $floating-label-margin: $floating-padding-distributable / 3;
       padding-right: 1em + $caret-width;
     }
 
-    &:after {
+    &::after {
       position: absolute;
       top: 50%;
       right: 1em;

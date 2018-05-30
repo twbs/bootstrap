@@ -51,3 +51,7 @@
     @include badge-variant($badge-color);
   }
 }
+
+.badge-primary {
+  color: $white;
+}

@@ -27,14 +27,14 @@
   font-size: $tag-font-size;
   line-height: $tag-line-height;
   color: $tag-color;
-  background: $tag-bg;
   text-decoration: none;
+  background: $tag-bg;
 
+  border-radius: ($tag-line-height + $tag-padding-y + $tag-padding-y) * .5;
   box-shadow: $tag-box-shadow;
-  border-radius: ($tag-line-height + $tag-padding-y + $tag-padding-y) * 0.5;
 }
 
-a.tag {
+a.tag { /* stylelint-disable-line selector-no-qualifying-type */
   // Increase padding for after arrow
   padding-right: $tag-padding-x * 2;
 
@@ -51,15 +51,13 @@ a.tag {
   }
 }
 
-a.tag:after {
-  content: '›';
-
+a.tag::after { /* stylelint-disable-line selector-no-qualifying-type */
   position: absolute;
   top: $tag-padding-y;
   right: $tag-padding-x;
-
   font-size: inherit;
   line-height: $tag-line-height;
+  content: "›";
 }
 
 // Sizes

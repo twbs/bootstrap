@@ -4,6 +4,22 @@
   padding: $section-padding-y $section-padding-x;
 
   border-bottom: 1px solid $section-border;
+
+  // Make Headings inherit correct color
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .h1,
+  .h2,
+  .h3,
+  .h4,
+  .h5,
+  .h6 {
+    color: inherit;
+  }
 }
 
 .section-unpadded {
@@ -11,23 +27,23 @@
 }
 
 .section-background {
-  background-size: cover;
   background-position: center;
+  background-size: cover;
 }
 
 .section-inner {
   width: 100%;
   max-width: $section-inner-max-width;
 
-  margin-left: auto;
   margin-right: auto;
+  margin-left: auto;
 }
 
 // Section Parts
 .section-header {
   display: flex;
-  align-items: center;
   flex-wrap: wrap;
+  align-items: center;
   margin-top: $section-padding-y;
   margin-bottom: $section-padding-y;
 }
@@ -47,12 +63,4 @@
 
 .section-primary {
   color: $section-primary-color;
-}
-
-// Make Headings inherit correct color
-.section {
-  h1, h2, h3, h4, h5, h6,
-  .h1, .h2, .h3, .h4, .h5, .h6 {
-    color: inherit;
-  }
 }
