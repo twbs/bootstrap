@@ -9,6 +9,8 @@
   max-width: 100%;
   margin-bottom: $spacer;
   vertical-align: top;
+  background-color: $table-bg;
+  border-color: $table-border-color;
 
   > thead {
     vertical-align: bottom;
@@ -17,16 +19,25 @@
   > thead,
   > tbody,
   > tfoot {
+    background-color: inherit;
+    border-color: inherit;
+
     &:not(:first-child) {
-      border-top: (2 * $table-border-width) solid $table-border-color;
+      border-top-style: solid;
+      border-top-width: (2 * $table-border-width);
     }
 
     > tr {
+      background-color: inherit;
+      border-color: inherit;
+
       > th,
       > td {
         padding: $table-cell-padding;
-        background-color: $table-bg;
-        border-top: $table-border-width solid $table-border-color;
+        background-color: inherit;
+        border-color: inherit;
+        border-top-style: solid;
+        border-top-width: $table-border-width;
       }
     }
   }
@@ -62,7 +73,8 @@
     > tr {
       > th,
       > td {
-        border: $table-border-width solid $table-border-color;
+        border-style: solid;
+        border-width: $table-border-width;
       }
     }
   }
@@ -72,7 +84,9 @@
   > thead,
   > tbody,
   > tfoot {
-    border: 0;
+    &:not(:first-child) {
+      border: 0;
+    }
 
     > tr {
       > th,
@@ -89,9 +103,9 @@
 
 .table-striped {
   > tbody > tr:nth-of-type(#{$table-striped-order}) {
-    > th,
-    > td {
-      background-color: $table-accent-bg;
+    > td,
+    > th {
+      box-shadow: inset 0 0 0 999rem $table-accent-bg;
     }
   }
 }
@@ -102,205 +116,26 @@
 
 .table-hover {
   > tbody > tr {
-    > th,
-    > td {
+    > td,
+    > th {
       @include transition($table-hover-bg-transition);
     }
 
     @include hover {
-      > th,
-      > td {
-        background-color: $table-hover-bg;
+      > td,
+      > th {
+        box-shadow: inset 0 0 0 999rem $table-hover-bg;
       }
     }
   }
 }
 
 // Table backgrounds
-
 @each $table-state, $background-color in $table-states {
-
-  .table-#{$table-state} {
-
-    // Remove border
-    &.table-bordered {
-      border: 0;
-    }
-
-    > thead,
-    > tbody,
-    > tfoot {
-      &:not(:first-child) {
-        border-color: rgba(color-yiq($background-color), $table-states-border-opacity);
-      }
-
-      > tr {
-        > th,
-        > td {
-          @include table-background($background-color);
-        }
-      }
-    }
-
-    // Striped table theming
-    &.table-striped > tbody > tr:nth-of-type(#{$table-striped-order}) {
-      > td,
-      > th {
-        @include table-striped-background($background-color);
-      }
-    }
-
-    // Hover table theming
-    &.table-hover > tbody > tr {
-      @include hover {
-        > td,
-        > th {
-          @include table-hover-background($background-color);
-        }
-      }
-    }
-
-    // Striped hover table theming
-    &.table-striped.table-hover > tbody > tr:nth-of-type(#{$table-striped-order}) {
-      @include hover {
-        > td,
-        > th {
-          @include table-striped-hover-background($background-color);
-        }
-      }
-    }
+  .table-#{$table-state}.table-#{$table-state} {
+    @include table-background($background-color);
   }
 }
-
-// Table head & foot backgrounds
-
-@each $table-state, $background-color in $table-states {
-  .table {
-    > thead.thead-#{$table-state},
-    > tfoot.tfoot-#{$table-state} {
-      &:not(:first-child) {
-        border-color: rgba(color-yiq($background-color), $table-states-border-opacity);
-      }
-
-      > tr {
-        > th,
-        > td {
-          @include table-background($background-color);
-        }
-      }
-    }
-  }
-}
-
-// Table row backgrounds
-
-@each $table-state, $background-color in $table-states {
-
-  .table {
-    > thead,
-    > tbody,
-    > tfoot {
-      > tr.tr-#{$table-state} {
-        > th,
-        > td {
-          @include table-background($background-color);
-        }
-      }
-    }
-  }
-
-  // Striped table row theming
-  .table-striped > tbody > th.tr-#{$table-state}:nth-of-type(#{$table-striped-order}) {
-    > td,
-    > th {
-      @include table-striped-background($background-color);
-    }
-  }
-
-  // Hover table row theming
-  .table-hover > tbody > th.tr-#{$table-state} {
-    @include hover {
-      > td,
-      > th {
-        @include table-hover-background($background-color);
-      }
-    }
-  }
-
-  // Striped hover table row theming
-  .table-striped.table-hover > tbody > tr.tr-#{$table-state}:nth-of-type(#{$table-striped-order}) {
-    @include hover {
-      > td,
-      > th {
-        @include table-striped-hover-background($background-color);
-      }
-    }
-  }
-}
-
-// Table cell backgrounds
-@each $table-state, $background-color in $table-states {
-
-  .table {
-    > thead,
-    > tbody,
-    > tfoot {
-      > tr {
-        > th.th-#{$table-state},
-        > td.td-#{$table-state} {
-          @include table-background($background-color);
-        }
-      }
-    }
-  }
-
-  // Striped table row theming
-  .table-striped {
-    > thead,
-    > tbody,
-    > tfoot {
-      > tr {
-        > th.th-#{$table-state},
-        > td.td-#{$table-state} {
-          @include table-striped-background($background-color);
-        }
-      }
-    }
-  }
-
-  // Striped table row theming
-  .table-hover {
-    > thead,
-    > tbody,
-    > tfoot {
-      > tr {
-        @include hover {
-          > th.th-#{$table-state},
-          > td.td-#{$table-state} {
-            @include table-hover-background($background-color);
-          }
-        }
-      }
-    }
-  }
-
-  // Striped hover table row theming
-  .table-striped.table-hover {
-    > thead,
-    > tbody,
-    > tfoot {
-      > tr {
-        @include hover {
-          > th.th-#{$table-state},
-          > td.td-#{$table-state} {
-            @include table-striped-hover-background($background-color);
-          }
-        }
-      }
-    }
-  }
-}
-
 
 // Responsive tables
 //

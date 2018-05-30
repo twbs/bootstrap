@@ -308,10 +308,10 @@ $table-cell-padding-sm:       .3rem !default;
 $table-bg:                    transparent !default;
 $table-accent-bg:             rgba($black, .05) !default;
 $table-hover-bg:              rgba($black, .075) !default;
-$table-hover-bg-transition:   background-color .15s ease-in-out !default;
+$table-hover-bg-transition:   box-shadow .15s ease-in-out !default;
 
 $table-border-width:          $border-width !default;
-$table-border-color:          rgba($yiq-text-dark, .15) !default;
+$table-border-color:          $gray-300 !default;
 
 $table-striped-order:         odd !default;
 
@@ -334,10 +334,6 @@ $table-states: map-merge(
   $table-states
 );
 // stylelint-enable scss/dollar-variable-default
-
-$table-states-border-opacity:          .15 !default;
-$table-states-accent-lightness-factor: 5% !default;
-$table-states-hover-lightness-factor:  10% !default;
 
 // Buttons + Forms
 //
