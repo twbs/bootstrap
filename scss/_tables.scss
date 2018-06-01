@@ -8,12 +8,17 @@
   width: 100%;
   max-width: 100%;
   margin-bottom: $spacer;
-  vertical-align: top;
+  vertical-align: $table-vertical-align;
   background-color: $table-bg;
   border-color: $table-border-color;
 
   > thead {
     vertical-align: bottom;
+  }
+
+  > tbody,
+  > tfoot {
+    vertical-align: inherit;
   }
 
   > thead,
@@ -22,9 +27,37 @@
     background-color: inherit;
     border-color: inherit;
 
-    &:not(:first-child) {
-      border-top-style: solid;
-      border-top-width: (2 * $table-border-width);
+    @if ($table-show-border-top) {
+      &:first-child {
+        > tr:first-child {
+          > th,
+          > td {
+            border-top-style: solid;
+            border-top-width: $table-border-width;
+          }
+        }
+      }
+    }
+
+    // Border between thead, tbody & tfoot
+    &:not(:last-child) {
+      > tr:last-child {
+        > th,
+        > td {
+          border-bottom-width: (2 * $table-border-width);
+        }
+      }
+    }
+
+    @if (not $table-show-border-bottom) {
+      &:last-child {
+        > tr:last-child {
+          > th,
+          > td {
+            border-style: none;
+          }
+        }
+      }
     }
 
     > tr {
@@ -36,8 +69,8 @@
         padding: $table-cell-padding;
         background-color: inherit;
         border-color: inherit;
-        border-top-style: solid;
-        border-top-width: $table-border-width;
+        border-bottom-style: solid;
+        border-bottom-width: $table-border-width;
       }
     }
   }
@@ -65,15 +98,15 @@
 // Add or remove borders all around the table and between all the columns.
 
 .table-bordered {
-  border: $table-border-width solid $table-border-color;
-
   > thead,
   > tbody,
   > tfoot {
     > tr {
       > th,
       > td {
-        border-style: solid;
+        // Important is used to over
+        // stylelint-disable-next-line declaration-no-important
+        border-style: solid !important;
         border-width: $table-border-width;
       }
     }
@@ -84,14 +117,11 @@
   > thead,
   > tbody,
   > tfoot {
-    &:not(:first-child) {
-      border: 0;
-    }
-
     > tr {
       > th,
       > td {
-        border: 0;
+        // stylelint-disable-next-line declaration-no-important
+        border: 0 !important;
       }
     }
   }
@@ -105,6 +135,7 @@
   > tbody > tr:nth-of-type(#{$table-striped-order}) {
     > td,
     > th {
+      // Box shadow is used in stead of background color so that colored tables can be themed easily.
       box-shadow: inset 0 0 0 999rem $table-accent-bg;
     }
   }
@@ -124,15 +155,21 @@
     @include hover {
       > td,
       > th {
+        // Box shadow is used in stead of background color so that colored tables can be themed easily.
         box-shadow: inset 0 0 0 999rem $table-hover-bg;
       }
     }
   }
 }
 
-// Table backgrounds
-@each $table-state, $background-color in $table-states {
-  .table-#{$table-state}.table-#{$table-state} {
+// Colored tables
+//
+// Because border and background colors are always inherited, these classes
+// can be added to the table, thead, tbody, tfoot, tr, td and th elements.
+//
+@each $table-color, $background-color in $table-colors {
+  // Double selector increases specificity
+  .table-#{$table-color}.table-#{$table-color} {
     @include table-background($background-color);
   }
 }

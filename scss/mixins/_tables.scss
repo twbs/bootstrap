@@ -1,9 +1,33 @@
+// stylelint-disable selector-max-type
+
 @mixin table-background($background-color) {
+  color: color-yiq($background-color);
   background-color: $background-color;
 
-  // If the background is dark, we change the text to a light color and
-  @if (color-yiq($background-color) == $yiq-text-light) {
-    color: $yiq-text-light;
+  @if (is-light($background-color)) {
+    border-color: darken($background-color, 10%);
+  } @else {
+    // Use lighter striped and hover highlighting
     border-color: lighten($background-color, 10%);
+
+    &.table-striped {
+      > tbody > tr:nth-of-type(#{$table-striped-order}) {
+        > td,
+        > th {
+          box-shadow: inset 0 0 0 999rem rgba($yiq-text-light, .05);
+        }
+      }
+    }
+
+    &.table-hover {
+      > tbody > tr {
+        @include hover {
+          > td,
+          > th {
+            box-shadow: inset 0 0 0 999rem rgba($yiq-text-light, .075);
+          }
+        }
+      }
+    }
   }
 }

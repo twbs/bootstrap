@@ -48,15 +48,25 @@
   @return $string;
 }
 
-// Color contrast
-@function color-yiq($color) {
+// Check if color is light
+@function is-light($color) {
   $r: red($color);
   $g: green($color);
   $b: blue($color);
 
   $yiq: (($r * 299) + ($g * 587) + ($b * 114)) / 1000;
 
-  @if ($yiq >= $yiq-contrasted-threshold) {
+  @return ($yiq >= $yiq-contrasted-threshold);
+}
+
+// Check if color is dark
+@function is-dark($color) {
+  @return not is-light($color);
+}
+
+// Color contrast
+@function color-yiq($color) {
+  @if is-light($color) {
     @return $yiq-text-dark;
   } @else {
     @return $yiq-text-light;

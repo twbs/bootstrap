@@ -305,6 +305,8 @@ $hr-margin-y:                 $spacer !default;
 $table-cell-padding:          .75rem !default;
 $table-cell-padding-sm:       .3rem !default;
 
+$table-vertical-align:        top !default;
+
 $table-bg:                    transparent !default;
 $table-accent-bg:             rgba($black, .05) !default;
 $table-hover-bg:              rgba($black, .075) !default;
@@ -312,14 +314,16 @@ $table-hover-bg-transition:   box-shadow .15s ease-in-out !default;
 
 $table-border-width:          $border-width !default;
 $table-border-color:          $gray-300 !default;
+$table-show-border-top:       false !default;
+$table-show-border-bottom:    false !default;
 
 $table-striped-order:         odd !default;
 
 $table-caption-color:         $text-muted !default;
 
 // stylelint-disable scss/dollar-variable-default
-$table-states: () !default;
-$table-states: map-merge(
+$table-colors: () !default;
+$table-colors: map-merge(
   (
     "primary":    theme-color-level("primary", -9),
     "secondary":  theme-color-level("secondary", -9),
@@ -331,7 +335,7 @@ $table-states: map-merge(
     "dark":       $dark,
     "active":     $gray-300
   ),
-  $table-states
+  $table-colors
 );
 // stylelint-enable scss/dollar-variable-default
 

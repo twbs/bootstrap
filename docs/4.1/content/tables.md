@@ -46,110 +46,6 @@ Using the most basic table markup, here's how `.table`-based tables look in Boot
 {% endcapture %}
 {% include example.html content=example %}
 
-You can also invert the colors—with light text on dark backgrounds—with `.table-dark`.
-
-{% capture example %}
-<table class="table table-dark">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
-{% endcapture %}
-{% include example.html content=example %}
-
-## Table head options
-
-Similar to tables and dark tables, use the modifier classes `.thead-light` or `.thead-dark` to make `<thead>`s appear light or dark gray.
-
-{% capture example %}
-<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
-
-<table class="table">
-  <thead class="thead-light">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
-{% endcapture %}
-{% include example.html content=example %}
 
 ## Striped rows
 
@@ -157,40 +53,6 @@ Use `.table-striped` to add zebra-striping to any table row within the `<tbody>`
 
 {% capture example %}
 <table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
-{% endcapture %}
-{% include example.html content=example %}
-
-{% capture example %}
-<table class="table table-striped table-dark">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -260,80 +122,12 @@ Add `.table-bordered` for borders on all sides of the table and cells.
 {% endcapture %}
 {% include example.html content=example %}
 
-{% capture example %}
-<table class="table table-bordered table-dark">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
-{% endcapture %}
-{% include example.html content=example %}
-
 ## Borderless table
 
 Add `.table-borderless` for a table without borders.
 
 {% capture example %}
 <table class="table table-borderless">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
-{% endcapture %}
-{% include example.html content=example %}
-
-`.table-borderless` can also be used on dark tables.
-
-{% capture example %}
-<table class="table table-borderless table-dark">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -402,39 +196,6 @@ Add `.table-hover` to enable a hover state on table rows within a `<tbody>`.
 {% endcapture %}
 {% include example.html content=example %}
 
-{% capture example %}
-<table class="table table-hover table-dark">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
-{% endcapture %}
-{% include example.html content=example %}
-
 ## Small table
 
 Add `.table-sm` to make tables more compact by cutting cell padding in half.
@@ -472,44 +233,46 @@ Add `.table-sm` to make tables more compact by cutting cell padding in half.
 {% endcapture %}
 {% include example.html content=example %}
 
-{% capture example %}
-<table class="table table-sm table-dark">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
-{% endcapture %}
-{% include example.html content=example %}
+## Colored tables
 
-## Contextual classes
-
-Use contextual classes to color table rows or individual cells.
+Use contextual classes to color tables, rows or individual cells.
 
 <div class="bd-example">
+
+  <h3>Colored table</h3>
+
+  <table class="table table-success">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td colspan="2">Larry the Bird</td>
+        <td>@twitter</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <h3 class="mt-5">Colored table rows</h3>
+
   <table class="table">
     <thead>
       <tr>
@@ -538,100 +301,66 @@ Use contextual classes to color table rows or individual cells.
       </tr>{% endfor %}
     </tbody>
   </table>
-</div>
+  
+  <h3 class="mt-5">Colored table cells</h3>
 
-{% highlight html %}
-<!-- On rows -->
-<tr class="table-active">...</tr>
-{% for color in site.data.theme-colors %}
-<tr class="table-{{ color.name }}">...</tr>{% endfor %}
-
-<!-- On cells (`td` or `th`) -->
-<tr>
-  <td class="table-active">...</td>
-  {% for color in site.data.theme-colors %}
-  <td class="table-{{ color.name }}">...</td>{% endfor %}
-</tr>
-{% endhighlight %}
-
-Regular table background variants are not available with the dark table, however, you may use [text or background utilities]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/colors/) to achieve similar styles.
-
-<div class="bd-example">
-  <table class="table table-dark">
+  <table class="table">
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Heading</th>
-        <th scope="col">Heading</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col" class="table-primary">Handle</th>
       </tr>
     </thead>
     <tbody>
-      <tr class="bg-primary">
+      <tr>
         <th scope="row">1</th>
-        <td>Cell</td>
-        <td>Cell</td>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td class="table-primary">@mdo</td>
       </tr>
       <tr>
         <th scope="row">2</th>
-        <td>Cell</td>
-        <td>Cell</td>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td class="table-primary">@fat</td>
       </tr>
-      <tr class="bg-success">
+      <tr>
         <th scope="row">3</th>
-        <td>Cell</td>
-        <td>Cell</td>
-      </tr>
-      <tr>
-        <th scope="row">4</th>
-        <td>Cell</td>
-        <td>Cell</td>
-      </tr>
-      <tr class="bg-info">
-        <th scope="row">5</th>
-        <td>Cell</td>
-        <td>Cell</td>
-      </tr>
-      <tr>
-        <th scope="row">6</th>
-        <td>Cell</td>
-        <td>Cell</td>
-      </tr>
-      <tr class="bg-warning">
-        <th scope="row">7</th>
-        <td>Cell</td>
-        <td>Cell</td>
-      </tr>
-      <tr>
-        <th scope="row">8</th>
-        <td>Cell</td>
-        <td>Cell</td>
-      </tr>
-      <tr class="bg-danger">
-        <th scope="row">9</th>
-        <td>Cell</td>
-        <td>Cell</td>
+        <td colspan="2">Larry the Bird</td>
+        <td class="table-primary">@twitter</td>
       </tr>
     </tbody>
   </table>
 </div>
 
 {% highlight html %}
-<!-- On rows -->
-<tr class="bg-primary">...</tr>
-<tr class="bg-success">...</tr>
-<tr class="bg-warning">...</tr>
-<tr class="bg-danger">...</tr>
-<tr class="bg-info">...</tr>
+<!-- On tables -->
+<table class="table-active">…</table>
+{%- for color in site.data.theme-colors %}
+<table class="table-{{ color.name }}">…</table>
+{%- endfor %}
+
+<!-- On `thead`, `tbody` or `tfoot` -->
+<thead class="table-active">…</thead>
+{%- for color in site.data.theme-colors %}
+<thead class="table-{{ color.name }}">…</thead>
+{%- endfor %}
+
+<!-- On rows (`tr`) -->
+<tr class="table-active">…</tr>
+{%- for color in site.data.theme-colors %}
+<tr class="table-{{ color.name }}">…</tr>
+{%- endfor %}
 
 <!-- On cells (`td` or `th`) -->
-<tr>
-  <td class="bg-primary">...</td>
-  <td class="bg-success">...</td>
-  <td class="bg-warning">...</td>
-  <td class="bg-danger">...</td>
-  <td class="bg-info">...</td>
-</tr>
+<td class="table-active">…</td>
+{%- for color in site.data.theme-colors %}
+<td class="table-{{ color.name }}">…</td>
+{%- endfor %}
 {% endhighlight %}
+
 
 {% include callout-warning-color-assistive-technologies.md %}
 
