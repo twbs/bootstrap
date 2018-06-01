@@ -333,8 +333,8 @@ const Dropdown = (($) => {
         return
       }
 
-      const toggles = $.makeArray($(Selector.DATA_TOGGLE))
-      for (let i = 0; i < toggles.length; i++) {
+      const toggles = [].slice.call(document.querySelectorAll(Selector.DATA_TOGGLE))
+      for (let i = 0, len = toggles.length; i < len; i++) {
         const parent = Dropdown._getParentFromElement(toggles[i])
         const context = $(toggles[i]).data(DATA_KEY)
         const relatedTarget = {

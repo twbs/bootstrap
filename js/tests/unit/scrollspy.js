@@ -16,6 +16,7 @@ $(function () {
     afterEach: function () {
       $.fn.scrollspy = $.fn.bootstrapScrollspy
       delete $.fn.bootstrapScrollspy
+      $('#qunit-fixture').html('')
     }
   })
 
