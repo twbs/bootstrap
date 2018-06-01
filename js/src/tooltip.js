@@ -273,7 +273,7 @@ const Tooltip = (($) => {
         const attachment = this._getAttachment(placement)
         this.addAttachmentClass(attachment)
 
-        const container = this.config.container === false ? document.body : $(this.config.container)
+        const container = this.config.container === false ? document.body : $(document).find(this.config.container)
 
         $(tip).data(this.constructor.DATA_KEY, this)
 

@@ -430,23 +430,26 @@ const Modal = (($) => {
       if (this._isBodyOverflowing) {
         // Note: DOMNode.style.paddingRight returns the actual value or '' if not set
         //   while $(DOMNode).css('padding-right') returns the calculated value or 0 if not set
+        const fixedContent = [].slice.call(document.querySelectorAll(Selector.FIXED_CONTENT))
+        const stickyContent = [].slice.call(document.querySelectorAll(Selector.STICKY_CONTENT))
+        const navbarToggler = [].slice.call(document.querySelectorAll(Selector.NAVBAR_TOGGLER))
 
         // Adjust fixed content padding
-        $(Selector.FIXED_CONTENT).each((index, element) => {
+        $(fixedContent).each((index, element) => {
           const actualPadding = $(element)[0].style.paddingRight
           const calculatedPadding = $(element).css('padding-right')
           $(element).data('padding-right', actualPadding).css('padding-right', `${parseFloat(calculatedPadding) + this._scrollbarWidth}px`)
         })
 
         // Adjust sticky content margin
-        $(Selector.STICKY_CONTENT).each((index, element) => {
+        $(stickyContent).each((index, element) => {
           const actualMargin = $(element)[0].style.marginRight
           const calculatedMargin = $(element).css('margin-right')
           $(element).data('margin-right', actualMargin).css('margin-right', `${parseFloat(calculatedMargin) - this._scrollbarWidth}px`)
         })
 
         // Adjust navbar-toggler margin
-        $(Selector.NAVBAR_TOGGLER).each((index, element) => {
+        $(navbarToggler).each((index, element) => {
           const actualMargin = $(element)[0].style.marginRight
           const calculatedMargin = $(element).css('margin-right')
           $(element).data('margin-right', actualMargin).css('margin-right', `${parseFloat(calculatedMargin) + this._scrollbarWidth}px`)
@@ -461,7 +464,8 @@ const Modal = (($) => {
 
     _resetScrollbar() {
       // Restore fixed content padding
-      $(Selector.FIXED_CONTENT).each((index, element) => {
+      const fixedContent = [].slice.call(document.querySelectorAll(Selector.FIXED_CONTENT))
+      $(fixedContent).each((index, element) => {
         const padding = $(element).data('padding-right')
         if (typeof padding !== 'undefined') {
           $(element).css('padding-right', padding).removeData('padding-right')

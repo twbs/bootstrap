@@ -492,10 +492,11 @@ const Carousel = (($) => {
     .on(Event.CLICK_DATA_API, Selector.DATA_SLIDE, Carousel._dataApiClickHandler)
 
   $(window).on(Event.LOAD_DATA_API, () => {
-    $(Selector.DATA_RIDE).each(function () {
-      const $carousel = $(this)
+    const carousels = [].slice.call(document.querySelectorAll(Selector.DATA_RIDE))
+    for (let i = 0, len = carousels.length; i < len; i++) {
+      const $carousel = $(carousels[i])
       Carousel._jQueryInterface.call($carousel, $carousel.data())
-    })
+    }
   })
 
   /**
