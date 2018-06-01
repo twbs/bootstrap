@@ -242,13 +242,15 @@ const Dropdown = (($) => {
     _getMenuElement() {
       if (!this._menu) {
         const parent = Dropdown._getParentFromElement(this._element)
-        this._menu = $(parent).find(Selector.MENU)[0]
+        if (parent) {
+          this._menu = parent.querySelector(Selector.MENU)
+        }
       }
       return this._menu
     }
 
     _getPlacement() {
-      const $parentDropdown = $(this._element).parent()
+      const $parentDropdown = $(this._element.parentNode)
       let placement = AttachmentMap.BOTTOM
 
       // Handle dropup
@@ -284,6 +286,7 @@ const Dropdown = (($) => {
       } else {
         offsetConf.offset = this._config.offset
       }
+
       const popperConfig = {
         placement: this._getPlacement(),
         modifiers: {
@@ -382,7 +385,7 @@ const Dropdown = (($) => {
       const selector = Util.getSelectorFromElement(element)
 
       if (selector) {
-        parent = $(selector)[0]
+        parent = document.querySelector(selector)
       }
 
       return parent || element.parentNode
@@ -417,7 +420,7 @@ const Dropdown = (($) => {
       if (!isActive && (event.which !== ESCAPE_KEYCODE || event.which !== SPACE_KEYCODE) ||
            isActive && (event.which === ESCAPE_KEYCODE || event.which === SPACE_KEYCODE)) {
         if (event.which === ESCAPE_KEYCODE) {
-          const toggle = $(parent).find(Selector.DATA_TOGGLE)[0]
+          const toggle = parent.querySelector(Selector.DATA_TOGGLE)
           $(toggle).trigger('focus')
         }
 
@@ -425,7 +428,7 @@ const Dropdown = (($) => {
         return
       }
 
-      const items = $(parent).find(Selector.VISIBLE_ITEMS).get()
+      const items = [].slice.call(parent.querySelectorAll(Selector.VISIBLE_ITEMS))
 
       if (items.length === 0) {
         return
