@@ -104,37 +104,22 @@
       border: $border-width solid $black;
     }
 
+    // stylelint-disable selector-max-type
     .table {
-      border-collapse: collapse !important;
-
-      td,
-      th {
-        background-color: $white !important;
+      > thead,
+      > tbody,
+      > tfoot {
+        > tr {
+          > td,
+          > th {
+            color: $body-color !important;
+            background-color: $white !important;
+            border-color: $table-border-color !important;
+          }
+        }
       }
     }
-
-    .table-bordered {
-      th,
-      td {
-        border: 1px solid $gray-300 !important;
-      }
-    }
-
-    .table-dark {
-      color: inherit;
-
-      th,
-      td,
-      thead th,
-      tbody + tbody {
-        border-color: $table-border-color;
-      }
-    }
-
-    .table .thead-dark th {
-      color: inherit;
-      border-color: $table-border-color;
-    }
+    // stylelint-enable selector-max-type
 
     // Bootstrap specific changes end
   }

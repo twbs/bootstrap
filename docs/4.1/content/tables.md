@@ -10,7 +10,7 @@ toc: true
 
 Due to the widespread use of tables across third-party widgets like calendars and date pickers, we've designed our tables to be **opt-in**. Just add the base class `.table` to any `<table>`, then extend with custom styles or our various included modifier classes.
 
-Using the most basic table markup, here's how `.table`-based tables look in Bootstrap. There was **a rewrite of the table styles in Bootstrap 4.2**, this rewrite prevented styles from tables to be leaked to their nested tables.
+Using the most basic table markup, here's how `.table`-based tables look in Bootstrap. There was **a rewrite of the table styles in Bootstrap 4.2**, this rewrite prevented styles from tables to be leaked to their nested tables and allowed tables to be easily colored.
 
 {% capture example %}
 <table class="table">
@@ -403,6 +403,51 @@ This is an table with `.table-dark`, `.table-striped` and `.table-bordered`. The
 
 {% include callout-warning-color-assistive-technologies.md %}
 
+
+Another example with `.table-light` added to `.table` and `.table-primary` added to `thead`.  
+This table also includes a `tfoot`. Borders between `thead`, `tbody` and `tfoot` always have a doubled border width.
+
+<div>
+  <table class="table table-light">
+    <thead class="table-primary">
+      <tr>
+        <th scope="col">Heading</th>
+        <th scope="col">Heading</th>
+        <th scope="col">Heading</th>
+        <th scope="col">Heading</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>cell</td>
+        <td>cell</td>
+        <td>cell</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>cell</td>
+        <td>cell</td>
+        <td>cell</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>cell</td>
+        <td>cell</td>
+        <td>cell</td>
+      </tr>
+    </tbody>
+    <thead>
+      <tr>
+        <td>Footer</td>
+        <td>Footer</td>
+        <td>Footer</td>
+        <td>Footer</td>
+      </tr>
+    </thead>
+  </table>
+</div>
+
 ## Nested tables
 
 Table styles from nested tables are not inherited by it's parent table.
@@ -467,7 +512,7 @@ Table styles from nested tables are not inherited by it's parent table.
 
 ## Top and bottom border
 
-Change the following variables to add or remove top or bottom borders. These are the default values:
+Change the following variables to add or remove top or bottom borders. These are the default values from `_variables.scss`:
 ```scss
 $table-show-border-top:       true !default;
 $table-show-border-bottom:    false !default;
