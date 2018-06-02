@@ -8,7 +8,6 @@
   width: 100%;
   max-width: 100%;
   margin-bottom: $spacer;
-  vertical-align: $table-vertical-align;
   background-color: $table-bg;
   border-color: $table-border-color;
 
@@ -16,9 +15,12 @@
     vertical-align: bottom;
   }
 
-  > tbody,
+  > tbody {
+    vertical-align: $table-vertical-align;
+  }
+
   > tfoot {
-    vertical-align: inherit;
+    vertical-align: top;
   }
 
   > thead,
@@ -27,34 +29,33 @@
     background-color: inherit;
     border-color: inherit;
 
-    @if ($table-show-border-top) {
+    @if (not $table-show-border-top) {
       &:first-child {
         > tr:first-child {
           > th,
           > td {
-            border-top-style: solid;
-            border-top-width: $table-border-width;
+            border-top-style: none;
           }
         }
       }
     }
 
     // Border between thead, tbody & tfoot
-    &:not(:last-child) {
-      > tr:last-child {
+    &:not(:first-child) {
+      > tr:first-child {
         > th,
         > td {
-          border-bottom-width: (2 * $table-border-width);
+          border-top-width: (2 * $table-border-width);
         }
       }
     }
 
-    @if (not $table-show-border-bottom) {
+    @if ($table-show-border-bottom) {
       &:last-child {
         > tr:last-child {
           > th,
           > td {
-            border-style: none;
+            border-bottom-style: solid;
           }
         }
       }
@@ -69,8 +70,8 @@
         padding: $table-cell-padding;
         background-color: inherit;
         border-color: inherit;
-        border-bottom-style: solid;
-        border-bottom-width: $table-border-width;
+        border-width: $table-border-width;
+        border-top-style: solid;
       }
     }
   }

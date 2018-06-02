@@ -10,7 +10,7 @@ toc: true
 
 Due to the widespread use of tables across third-party widgets like calendars and date pickers, we've designed our tables to be **opt-in**. Just add the base class `.table` to any `<table>`, then extend with custom styles or our various included modifier classes.
 
-Using the most basic table markup, here's how `.table`-based tables look in Bootstrap. **All table styles are inherited in Bootstrap 4**, meaning any nested tables will be styled in the same manner as the parent.
+Using the most basic table markup, here's how `.table`-based tables look in Bootstrap. There was **a rewrite of the table styles in Bootstrap 4.2**, this rewrite prevented styles from tables to be leaked to their nested tables.
 
 {% capture example %}
 <table class="table">
@@ -235,12 +235,22 @@ Add `.table-sm` to make tables more compact by cutting cell padding in half.
 
 ## Colored tables
 
-Use contextual classes to color tables, rows or individual cells.
+Use the following contextual classes to color tables, rows or individual cells:
 
-<div class="bd-example">
+{% highlight css %}
+.table-active
+{%- for color in site.data.theme-colors %}
+.table-{{ color.name }}
+{%- endfor %}
+{% endhighlight %}
 
-  <h3>Colored table</h3>
+It's possible to add more colors to the `$table-colors` variable. Try to avoid semi transparent colors, because background-color styles of table elements (`thead`, `tbody`, `tfoot`, `tr`, `td` & `th`) are inherited from their parent.
 
+### Colored table
+
+`.table-success` is added to the `.table`:
+
+<div>
   <table class="table table-success">
     <thead>
       <tr>
@@ -270,9 +280,13 @@ Use contextual classes to color tables, rows or individual cells.
       </tr>
     </tbody>
   </table>
-  
-  <h3 class="mt-5">Colored table rows</h3>
+</div>
 
+### Colored table rows
+
+A visual overview of all the contextual table classes, the classes are added to the `tr` elements here:
+
+<div>
   <table class="table">
     <thead>
       <tr>
@@ -282,17 +296,17 @@ Use contextual classes to color tables, rows or individual cells.
       </tr>
     </thead>
     <tbody>
-      <tr class="table-active">
-        <th scope="row">Active</th>
-        <td>Cell</td>
-        <td>Cell</td>
-      </tr>
       <tr>
         <th scope="row">Default</th>
         <td>Cell</td>
         <td>Cell</td>
       </tr>
-
+      <tr class="table-active">
+        <th scope="row">Active</th>
+        <td>Cell</td>
+        <td>Cell</td>
+      </tr>
+  
       {% for color in site.data.theme-colors %}
       <tr class="table-{{ color.name }}">
         <th scope="row">{{ color.name | capitalize }}</th>
@@ -301,9 +315,12 @@ Use contextual classes to color tables, rows or individual cells.
       </tr>{% endfor %}
     </tbody>
   </table>
-  
-  <h3 class="mt-5">Colored table cells</h3>
+</div>
 
+### Colored table cells
+
+A column can be highlighted by adding the contextual class to the table cells, in this example the `.table-primary` class is added to the last `th` in the `thead` and the last `td` of the rows:
+<div>
   <table class="table">
     <thead>
       <tr>
@@ -335,38 +352,126 @@ Use contextual classes to color tables, rows or individual cells.
   </table>
 </div>
 
-{% highlight html %}
-<!-- On tables -->
-<table class="table-active">…</table>
-{%- for color in site.data.theme-colors %}
-<table class="table-{{ color.name }}">…</table>
-{%- endfor %}
+### Colored table with other styles
 
-<!-- On `thead`, `tbody` or `tfoot` -->
-<thead class="table-active">…</thead>
-{%- for color in site.data.theme-colors %}
-<thead class="table-{{ color.name }}">…</thead>
-{%- endfor %}
+This is an table with `.table-dark`, `.table-striped` and `.table-bordered`. The `.table-error` class is added to row #4. The text color is automatically determined by the [color-yiq]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/theming/#color-contrast) function.
 
-<!-- On rows (`tr`) -->
-<tr class="table-active">…</tr>
-{%- for color in site.data.theme-colors %}
-<tr class="table-{{ color.name }}">…</tr>
-{%- endfor %}
-
-<!-- On cells (`td` or `th`) -->
-<td class="table-active">…</td>
-{%- for color in site.data.theme-colors %}
-<td class="table-{{ color.name }}">…</td>
-{%- endfor %}
-{% endhighlight %}
-
+<div>
+  <table class="table table-dark table-striped table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Heading</th>
+        <th scope="col">Heading</th>
+        <th scope="col">Heading</th>
+        <th scope="col">Heading</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>cell</td>
+        <td>cell</td>
+        <td>cell</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>cell</td>
+        <td>cell</td>
+        <td>cell</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>cell</td>
+        <td>cell</td>
+        <td>cell</td>
+      </tr>
+      <tr class="table-danger">
+        <th scope="row">4</th>
+        <td>danger!</td>
+        <td>danger!</td>
+        <td>danger!</td>
+      </tr>
+      <tr>
+        <th scope="row">5</th>
+        <td>cell</td>
+        <td>cell</td>
+        <td>cell</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 {% include callout-warning-color-assistive-technologies.md %}
 
-Create responsive tables by wrapping any `.table` with `.table-responsive{-sm|-md|-lg|-xl}`, making the table scroll horizontally at each `max-width` breakpoint of up to (but not including) 576px, 768px, 992px, and 1120px, respectively.
+## Nested tables
 
-{% include callout-info-mediaqueries-breakpoints.md %}
+Table styles from nested tables are not inherited by it's parent table.
+
+{% capture example %}
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Heading</th>
+      <th scope="col">Heading</th>
+      <th scope="col">Heading</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Cell</td>
+      <td>Cell</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>
+        <!-- .mb-0 class is added to remove margin below table -->
+        <table class="table table-bordered mb-0">
+          <thead>
+            <tr>
+              <th scope="col">Heading</th>
+              <th scope="col">Heading</th>
+              <th scope="col">Heading</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Cell</td>
+              <td>Cell</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Cell</td>
+              <td>Cell</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>Cell</td>
+              <td>Cell</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+      <td>Cell</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Cell</td>
+      <td>Cell</td>
+    </tr>
+  </tbody>
+</table>
+{% endcapture %}
+{% include example.html content=example %}
+
+## Top and bottom border
+
+Change the following variables to add or remove top or bottom borders. These are the default values:
+```scss
+$table-show-border-top:       true !default;
+$table-show-border-bottom:    false !default;
+```
 
 ## Captions
 

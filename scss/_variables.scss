@@ -314,7 +314,7 @@ $table-hover-bg-transition:   box-shadow .15s ease-in-out !default;
 
 $table-border-width:          $border-width !default;
 $table-border-color:          $gray-300 !default;
-$table-show-border-top:       false !default;
+$table-show-border-top:       true !default;
 $table-show-border-bottom:    false !default;
 
 $table-striped-order:         odd !default;
