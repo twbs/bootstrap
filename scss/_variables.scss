@@ -321,8 +321,8 @@ $table-striped-order:         odd !default;
 
 $table-caption-color:         $text-muted !default;
 
-// stylelint-disable scss/dollar-variable-default
 $table-colors: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
 $table-colors: map-merge(
   (
     "primary":    theme-color-level("primary", -9),
@@ -337,7 +337,6 @@ $table-colors: map-merge(
   ),
   $table-colors
 );
-// stylelint-enable scss/dollar-variable-default
 
 // Buttons + Forms
 //
