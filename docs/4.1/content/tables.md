@@ -437,14 +437,14 @@ This table also includes a `tfoot`. Borders between `thead`, `tbody` and `tfoot`
         <td>cell</td>
       </tr>
     </tbody>
-    <thead>
+    <tfoot>
       <tr>
         <td>Footer</td>
         <td>Footer</td>
         <td>Footer</td>
         <td>Footer</td>
       </tr>
-    </thead>
+    </tfoot>
   </table>
 </div>
 
