@@ -105,7 +105,8 @@
     > tr {
       > th,
       > td {
-        // Important is used to over
+        // Important is used to overrule the removal of the top border
+        // if `$table-show-border-top` is false
         // stylelint-disable-next-line declaration-no-important
         border-style: solid !important;
         border-width: $table-border-width;
@@ -121,8 +122,10 @@
     > tr {
       > th,
       > td {
+        // Important is used to overrule the top border
+        // if `$table-show-border-bottom` is true
         // stylelint-disable-next-line declaration-no-important
-        border: 0 !important;
+        border-style: none !important;
       }
     }
   }
