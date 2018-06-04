@@ -115,7 +115,7 @@ const ScrollSpy = (($) => {
 
       this._scrollHeight = this._getScrollHeight()
 
-      const targets = $.makeArray(document.querySelectorAll(this._selector))
+      const targets = [].slice.call(document.querySelectorAll(this._selector))
 
       targets
         .map((element) => {
@@ -123,7 +123,7 @@ const ScrollSpy = (($) => {
           const targetSelector = Util.getSelectorFromElement(element)
 
           if (targetSelector) {
-            target = $(targetSelector)[0]
+            target = document.querySelector(targetSelector)
           }
 
           if (target) {
@@ -250,7 +250,7 @@ const ScrollSpy = (($) => {
                `${selector}[href="${target}"]`
       })
 
-      const $link = $(queries.join(','))
+      const $link = $([].slice.call(document.querySelectorAll(queries.join(','))))
 
       if ($link.hasClass(ClassName.DROPDOWN_ITEM)) {
         $link.closest(Selector.DROPDOWN).find(Selector.DROPDOWN_TOGGLE).addClass(ClassName.ACTIVE)
@@ -271,7 +271,8 @@ const ScrollSpy = (($) => {
     }
 
     _clear() {
-      $(this._selector).filter(Selector.ACTIVE).removeClass(ClassName.ACTIVE)
+      const nodes = [].slice.call(document.querySelectorAll(this._selector))
+      $(nodes).filter(Selector.ACTIVE).removeClass(ClassName.ACTIVE)
     }
 
     // Static

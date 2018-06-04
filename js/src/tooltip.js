@@ -418,9 +418,9 @@ const Tooltip = (($) => {
     }
 
     setContent() {
-      const $tip = $(this.getTipElement())
-      this.setElementContent($tip.find(Selector.TOOLTIP_INNER), this.getTitle())
-      $tip.removeClass(`${ClassName.FADE} ${ClassName.SHOW}`)
+      const tip = this.getTipElement()
+      this.setElementContent($(tip.querySelectorAll(Selector.TOOLTIP_INNER)), this.getTitle())
+      $(tip).removeClass(`${ClassName.FADE} ${ClassName.SHOW}`)
     }
 
     setElementContent($element, content) {
@@ -655,7 +655,7 @@ const Tooltip = (($) => {
     _cleanTipClass() {
       const $tip = $(this.getTipElement())
       const tabClass = $tip.attr('class').match(BSCLS_PREFIX_REGEX)
-      if (tabClass !== null && tabClass.length > 0) {
+      if (tabClass !== null && tabClass.length) {
         $tip.removeClass(tabClass.join(''))
       }
     }

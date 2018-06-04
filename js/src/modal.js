@@ -78,7 +78,7 @@ const Modal = (($) => {
     constructor(element, config) {
       this._config              = this._getConfig(config)
       this._element             = element
-      this._dialog              = $(element).find(Selector.DIALOG)[0]
+      this._dialog              = element.querySelector(Selector.DIALOG)
       this._backdrop            = null
       this._isShown             = false
       this._isBodyOverflowing   = false
@@ -333,7 +333,7 @@ const Modal = (($) => {
         this._backdrop.className = ClassName.BACKDROP
 
         if (animate) {
-          $(this._backdrop).addClass(animate)
+          this._backdrop.classList.add(animate)
         }
 
         $(this._backdrop).appendTo(document.body)
@@ -436,29 +436,37 @@ const Modal = (($) => {
 
         // Adjust fixed content padding
         $(fixedContent).each((index, element) => {
-          const actualPadding = $(element)[0].style.paddingRight
+          const actualPadding = element.style.paddingRight
           const calculatedPadding = $(element).css('padding-right')
-          $(element).data('padding-right', actualPadding).css('padding-right', `${parseFloat(calculatedPadding) + this._scrollbarWidth}px`)
+          $(element)
+            .data('padding-right', actualPadding)
+            .css('padding-right', `${parseFloat(calculatedPadding) + this._scrollbarWidth}px`)
         })
 
         // Adjust sticky content margin
         $(stickyContent).each((index, element) => {
-          const actualMargin = $(element)[0].style.marginRight
+          const actualMargin = element.style.marginRight
           const calculatedMargin = $(element).css('margin-right')
-          $(element).data('margin-right', actualMargin).css('margin-right', `${parseFloat(calculatedMargin) - this._scrollbarWidth}px`)
+          $(element)
+            .data('margin-right', actualMargin)
+            .css('margin-right', `${parseFloat(calculatedMargin) - this._scrollbarWidth}px`)
         })
 
         // Adjust navbar-toggler margin
         $(navbarToggler).each((index, element) => {
-          const actualMargin = $(element)[0].style.marginRight
+          const actualMargin = element.style.marginRight
           const calculatedMargin = $(element).css('margin-right')
-          $(element).data('margin-right', actualMargin).css('margin-right', `${parseFloat(calculatedMargin) + this._scrollbarWidth}px`)
+          $(element)
+            .data('margin-right', actualMargin)
+            .css('margin-right', `${parseFloat(calculatedMargin) + this._scrollbarWidth}px`)
         })
 
         // Adjust body padding
         const actualPadding = document.body.style.paddingRight
         const calculatedPadding = $(document.body).css('padding-right')
-        $(document.body).data('padding-right', actualPadding).css('padding-right', `${parseFloat(calculatedPadding) + this._scrollbarWidth}px`)
+        $(document.body)
+          .data('padding-right', actualPadding)
+          .css('padding-right', `${parseFloat(calculatedPadding) + this._scrollbarWidth}px`)
       }
     }
 
@@ -468,12 +476,15 @@ const Modal = (($) => {
       $(fixedContent).each((index, element) => {
         const padding = $(element).data('padding-right')
         if (typeof padding !== 'undefined') {
-          $(element).css('padding-right', padding).removeData('padding-right')
+          $(element)
+            .css('padding-right', padding)
+            .removeData('padding-right')
         }
       })
 
       // Restore sticky content and navbar-toggler margin
-      $(`${Selector.STICKY_CONTENT}, ${Selector.NAVBAR_TOGGLER}`).each((index, element) => {
+      const elements = [].slice.call(document.querySelectorAll(`${Selector.STICKY_CONTENT}, ${Selector.NAVBAR_TOGGLER}`))
+      $(elements).each((index, element) => {
         const margin = $(element).data('margin-right')
         if (typeof margin !== 'undefined') {
           $(element).css('margin-right', margin).removeData('margin-right')
@@ -535,7 +546,7 @@ const Modal = (($) => {
     const selector = Util.getSelectorFromElement(this)
 
     if (selector) {
-      target = $(selector)[0]
+      target = document.querySelector(selector)
     }
 
     const config = $(target).data(DATA_KEY)
