@@ -827,7 +827,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <td>display</td>
       <td>string</td>
       <td>'dynamic'</td>
-      <td>By default, we use Popper.js for dynamic positioning. Disable this with `static`.</td>
+      <td>By default, we use Popper.js for dynamic positioning. Disable this with <code>static</code>.</td>
     </tr>
   </tbody>
 </table>
