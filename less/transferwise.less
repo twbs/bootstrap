@@ -34,17 +34,9 @@ a.btn {
 address {
     margin-bottom: 16px;
 }
-.footer {
-    background-color: @gray-base;
-}
+
 blockquote footer {
     background-color: transparent;
-}
-
-@media (max-width: @screen-xs-max) {
-    footer {
-        position: relative;
-    }
 }
 
 .well,
@@ -69,28 +61,6 @@ blockquote footer {
     &:active {
         color: @brand-smoke-plus-10;
     }
-}
-
-.footer {
-    font-size: @font-size-small;
-    line-height: @line-height-computed;
-
-    /* TODO deprecate for a.secondary */
-    a:not(.btn):not(.tw-select-option-link) {
-        color: @brand-grey-plus-10;
-
-        &:hover,
-        &:focus {
-            color: @brand-grey;
-        }
-
-        &:active {
-            color: @brand-navy;
-        }
-    }
-}
-.footer {
-    background-color: @gray-base;
 }
 
 .badge {

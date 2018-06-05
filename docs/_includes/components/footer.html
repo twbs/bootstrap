@@ -1,0 +1,174 @@
+<div class="bs-docs-section">
+  <h1 id="footer" class="page-header">Footer</h1>
+
+  <p class="lead">Global footer for all web products.</p>
+  <p>Use <code>.footer-title</code> class to block titles.</p>
+  <p>Use <code>.footer-link</code> class to links.</p>
+  <p>Add <code>.p-y-section-5</code> class (or <a href="https://bootstrap.transferwise.com/css/#helper-classes-responsive-sections">similar</a>) to <code>footer</code> section to give proper responsive spacing to the footer.</p>
+  <p>Use <code>.tiny</code> utility class to the copyright copy.</p>
+
+  <div class="bs-example" id="footer-default" data-example-id="footer-default">
+    <footer class="footer p-y-section-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 text-xs-center text-md-left">
+            <a class="logo logo-3 m-b-4 hidden-md hidden-lg hidden-xl center-block" href="#">TransferWise</a>
+            <h5 class="footer-title m-b-2">I am a title</h5>
+            <ul class="list-unstyled">
+              <li><a class="footer-link" href="#">Company and team</a></li>
+              <li><a class="footer-link" href="#">News and blog</a></li>
+              <li><a class="footer-link" href="#">Press</a></li>
+              <li><a class="footer-link" href="#">Careers</a></li>
+              <li><a class="footer-link" href="#">Affiliates and partnerships</a></li>
+            </ul>
+          </div>
+          <div class="col-md-3 text-xs-center text-md-left">
+            <h5 class="footer-title m-b-2"><a class="footer-link" href="">I am a title link</a></h5>
+            <ul class="list-unstyled">
+              <li><a class="footer-link" href="#">Help centre</a></li>
+              <li><a class="footer-link" href="#">Mid-market rate</a></li>
+              <li><a class="footer-link" href="#">Pricing</a></li>
+            </ul>
+          </div>
+          <div class="col-md-3 text-xs-center text-md-left">
+            <h5 class="footer-title m-b-2">Learn more</h5>
+            <ul class="list-unstyled">
+
+              <li><a class="footer-link" href="#">Swift/BIC codes</a></li>
+              <li><a class="footer-link" href="#">Currency converter</a></li>
+              <li><a class="footer-link" href="#">Rate alerts</a></li>
+              <li><a class="footer-link" href="#">Compare exchange rates</a></li>
+              <li><a class="footer-link" href="#">Providers</a></li>
+            </ul>
+          </div>
+          <div class="col-md-3 text-xs-center text-md-left">
+            <h5 class="footer-title m-b-2">Follow us</h5>
+            <ul class="list-unstyled">
+              <li>
+                <a href="#" class="link-icon" target="_blank"><i class="icon icon-lg icon-facebook-inverse"></i></a>
+                <a href="#" class="link-icon" target="_blank"><i class="icon icon-lg icon-twitter"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <hr>
+        <div class="row m-b-5">
+          <div class="col-md-3">
+            <a class="logo logo-3 hidden-xs hidden-sm" href="#">TransferWise</a>
+          </div>
+          <div class="col-md-3 text-xs-center text-md-left footer-title">
+            <a class="footer-link" href="#">Legal</a>
+          </div>
+          <div class="col-md-3 text-xs-center text-md-left footer-title">
+            <a class="footer-link" href="#">Privacy policy</a>
+          </div>
+          <div class="col-md-3 text-xs-center text-md-left footer-title">
+            <a class="footer-link" href="#">Country site map</a>
+          </div>
+        </div>
+        <div class="row text-xs-center m-t-5">
+          <div class="col-xs-12 col-md-8 col-md-offset-2">
+            <p class="tiny">© TransferWise Ltd <span>2018</span></p>
+            <p class="tiny">TransferWise is authorised by the Financial Conduct Authority under the Electronic Money Regulations 2011, Firm Reference <a class="footer-link" href="https://register.fca.org.uk/ShPo_FirmDetailsPage?id=001b000001EjC6SAAV" target="_blank">900507</a>, for the issuing
+              of electronic money.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+{% highlight html %}
+<footer class="footer p-y-section-5">
+  <div class="container">
+    <div class="row">
+    ...
+    <h5 class="footer-title">I am a title</h5>
+    <a class="footer-link" href="">I am a link</a>
+    ...
+    </div>
+    <hr>
+    <div class="row">
+      <p class="tiny">© TransferWise Ltd <span>2018</span></p>
+    </div>
+  </div>
+</footer>
+{% endhighlight %}
+
+  <h2 id="footer-inverse" class="page-subheader">Inverted footer</h2>
+
+  <p>Add <code>.footer-inverse</code> class to the footer element.</p>
+
+  <div class="bs-example" data-example-id="footer-inverse">
+    <footer class="footer footer-inverse p-y-section-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 text-xs-center text-md-left">
+            <a class="logo logo-3 logo-inverse m-b-4 hidden-md hidden-lg hidden-xl center-block" href="#">TransferWise</a>
+            <h5 class="footer-title m-b-2">I am a title</h5>
+            <ul class="list-unstyled">
+              <li><a class="footer-link" href="#">Company and team</a></li>
+              <li><a class="footer-link" href="#">News and blog</a></li>
+              <li><a class="footer-link" href="#">Press</a></li>
+              <li><a class="footer-link" href="#">Careers</a></li>
+              <li><a class="footer-link" href="#">Affiliates and partnerships</a></li>
+            </ul>
+          </div>
+          <div class="col-md-3 text-xs-center text-md-left">
+            <h5 class="footer-title m-b-2"><a class="footer-link" href="">I am a title link</a></h5>
+            <ul class="list-unstyled">
+              <li><a class="footer-link" href="#">Help centre</a></li>
+              <li><a class="footer-link" href="#">Mid-market rate</a></li>
+              <li><a class="footer-link" href="#">Pricing</a></li>
+            </ul>
+          </div>
+          <div class="col-md-3 text-xs-center text-md-left">
+            <h5 class="footer-title m-b-2">Learn more</h5>
+            <ul class="list-unstyled">
+
+              <li><a class="footer-link" href="#">Swift/BIC codes</a></li>
+              <li><a class="footer-link" href="#">Currency converter</a></li>
+              <li><a class="footer-link" href="#">Rate alerts</a></li>
+              <li><a class="footer-link" href="#">Compare exchange rates</a></li>
+              <li><a class="footer-link" href="#">Providers</a></li>
+            </ul>
+          </div>
+          <div class="col-md-3 text-xs-center text-md-left">
+            <h5 class="footer-title m-b-2">Follow us</h5>
+            <ul class="list-unstyled">
+              <li>
+                <a href="#" class="link-icon" target="_blank"><i class="icon icon-lg icon-facebook-inverse"></i></a>
+                <a href="#" class="link-icon" target="_blank"><i class="icon icon-lg icon-twitter"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <hr>
+        <div class="row m-b-5">
+          <div class="col-md-3">
+            <a class="logo logo-3 logo-inverse hidden-xs hidden-sm" href="#">TransferWise</a>
+          </div>
+          <div class="col-md-3 text-xs-center text-md-left footer-title">
+            <a class="footer-link" href="#">Legal</a>
+          </div>
+          <div class="col-md-3 text-xs-center text-md-left footer-title">
+            <a class="footer-link" href="#">Privacy policy</a>
+          </div>
+          <div class="col-md-3 text-xs-center text-md-left footer-title">
+            <a class="footer-link" href="#">Country site map</a>
+          </div>
+        </div>
+        <div class="row text-xs-center m-t-5">
+          <div class="col-xs-12 col-md-8 col-md-offset-2">
+            <p class="tiny">© TransferWise Ltd <span>2018</span></p>
+            <p class="tiny">TransferWise is authorised by the Financial Conduct Authority under the Electronic Money Regulations 2011, Firm Reference <a class="footer-link" href="https://register.fca.org.uk/ShPo_FirmDetailsPage?id=001b000001EjC6SAAV" target="_blank">900507</a>, for the issuing
+              of electronic money.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+{% highlight html %}
+<footer class="footer footer-inverse p-y-section-5">
+  ...
+</footer>
+{% endhighlight %}
+</div>
