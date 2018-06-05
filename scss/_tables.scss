@@ -25,7 +25,6 @@
   > thead,
   > tbody,
   > tfoot {
-    background-color: inherit;
     border-color: inherit;
 
     @if (not $table-show-border-top) {
@@ -61,13 +60,11 @@
     }
 
     > tr {
-      background-color: inherit;
       border-color: inherit;
 
       > th,
       > td {
         padding: $table-cell-padding;
-        background-color: inherit;
         border-color: inherit;
         border-width: $table-border-width;
         border-top-style: solid;
@@ -194,11 +191,6 @@
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
         -ms-overflow-style: -ms-autohiding-scrollbar; // See https://github.com/twbs/bootstrap/pull/10057
-
-        // Prevent double border on horizontal scroll due to use of `display: block;`
-        > .table-bordered {
-          border: 0;
-        }
       }
     }
   }

@@ -113,7 +113,9 @@
           > td,
           > th {
             color: $body-color !important;
-            background-color: $white !important;
+            // We use #fff, not $white, because we don not want
+            // a background color in any case.
+            background-color: #fff !important;
             border-color: $table-border-color !important;
           }
         }
