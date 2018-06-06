@@ -10,7 +10,7 @@ toc: true
 
 Due to the widespread use of tables across third-party widgets like calendars and date pickers, we've designed our tables to be **opt-in**. Just add the base class `.table` to any `<table>`, then extend with custom styles or our various included modifier classes.
 
-Using the most basic table markup, here's how `.table`-based tables look in Bootstrap. There was **a rewrite of the table styles in Bootstrap 4.2**, this rewrite prevented styles from tables to be leaked to their nested tables and allowed tables to be easily colored.
+Using the most basic table markup, here's how `.table`-based tables look in Bootstrap. There was **a rewrite of the table styles in Bootstrap (TODO: version number)**, this rewrite prevented styles from tables to be leaked to their nested tables and allowed tables to be easily colored.
 
 {% capture example %}
 <table class="table">
@@ -243,7 +243,7 @@ Use the following contextual classes to color tables, rows or individual cells:
 {%- endfor %}
 {% endhighlight %}
 
-It's possible to add more colors to the `$table-colors` variable. Try to avoid semi transparent colors, because background-color styles of table elements (`thead`, `tbody`, `tfoot`, `tr`, `td` & `th`) are inherited from their parent.
+It's possible to add more colors to the `$table-colors` variable.
 
 ### Colored table
 
