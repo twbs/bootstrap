@@ -10,7 +10,7 @@
       @each $size, $length in $spacers {
 
         // Don't generate utils for negative paddings
-        @if (not ($prop == padding and  $length < 0)) {
+        @if (not ($prop == padding and $length < 0)) {
           .#{$abbrev}#{$infix}-#{$size} { #{$prop}: $length !important; }
           .#{$abbrev}t#{$infix}-#{$size},
           .#{$abbrev}y#{$infix}-#{$size} {
