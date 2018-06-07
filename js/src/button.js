@@ -112,6 +112,10 @@ class Button {
     if (triggerChangeEvent) {
       this._element.classList.toggle(ClassName.ACTIVE)
     }
+
+    static _getInstance(element) {
+      return Data.getData(element, DATA_KEY)
+    }
   }
 
   dispose() {

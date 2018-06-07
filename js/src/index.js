@@ -5,7 +5,7 @@ import Collapse from './collapse'
 import Dropdown from './dropdown'
 import Modal from './modal'
 import Popover from './popover'
-import Scrollspy from './scrollspy'
+import ScrollSpy from './scrollspy'
 import Tab from './tab'
 import Toast from './toast'
 import Tooltip from './tooltip'
@@ -27,7 +27,7 @@ export {
   Dropdown,
   Modal,
   Popover,
-  Scrollspy,
+  ScrollSpy,
   Tab,
   Toast,
   Tooltip

@@ -741,6 +741,10 @@ class Tooltip {
         .map((token) => token.trim())
         .forEach((tClass) => tip.classList.remove(tClass))
     }
+
+    static _getInstance(element) {
+      return Data.getData(element, DATA_KEY)
+    }
   }
 
   _handlePopperPlacementChange(popperData) {

@@ -1,6 +1,8 @@
 $(function () {
   'use strict'
 
+  var Button = typeof window.bootstrap !== 'undefined' ? window.bootstrap.Button : window.Button
+
   QUnit.module('button plugin')
 
   QUnit.test('should be defined on jquery object', function (assert) {
@@ -208,11 +210,11 @@ $(function () {
     var $el = $('<div/>')
     var $button = $el.bootstrapButton()
 
-    assert.ok(typeof Data.getData($button[0], 'bs.button') !== 'undefined')
+    assert.ok(typeof Button._getInstance($button[0]) !== 'undefined')
 
-    Data.getData($button[0], 'bs.button').dispose()
+    Button._getInstance($button[0]).dispose()
 
-    assert.ok(Data.getData($button[0], 'bs.button') === null)
+    assert.ok(Button._getInstance($button[0]) === null)
   })
 
   QUnit.test('should return button version', function (assert) {
