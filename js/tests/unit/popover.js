@@ -281,14 +281,14 @@ $(function () {
       })
       .one('shown.bs.popover', function () {
         assert.notEqual($('.popover').length, 0, 'popover was inserted')
-        EventHandler.trigger($div.find('a')[0], 'click')
+        $div.find('a')[0].click()
       })
       .one('hidden.bs.popover', function () {
         assert.strictEqual($('.popover').length, 0, 'popover was removed')
         done()
       })
 
-    EventHandler.trigger($div.find('a')[0], 'click')
+    $div.find('a')[0].click()
   })
 
   QUnit.test('should detach popover content rather than removing it so that event handlers are left intact', function (assert) {
@@ -438,11 +438,11 @@ $(function () {
       })
 
     $popover.bootstrapPopover('disable')
-    EventHandler.trigger($popover[0], 'click')
+    $popover[0].click()
     setTimeout(function () {
       assert.strictEqual($('.popover').length === 0, true)
       $popover.bootstrapPopover('enable')
-      EventHandler.trigger($popover[0], 'click')
+      $popover[0].click()
     }, 200)
   })
 
@@ -464,6 +464,6 @@ $(function () {
         done()
       })
 
-    EventHandler.trigger($popover[0], 'click')
+    $popover[0].click()
   })
 })

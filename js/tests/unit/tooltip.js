@@ -538,7 +538,7 @@ $(function () {
       done()
     }, 200)
 
-    EventHandler.trigger($tooltip[0], 'mouseover')
+    $tooltip[0].dispatchEvent(new Event('mouseover'))
   })
 
   QUnit.test('should not show tooltip if leave event occurs before delay expires', function (assert) {
@@ -553,7 +553,7 @@ $(function () {
 
     setTimeout(function () {
       assert.ok(!$('.tooltip').is('.fade.show'), '100ms: tooltip not faded active')
-      EventHandler.trigger($tooltip[0], 'mouseout')
+      $tooltip[0].dispatchEvent(new Event('mouseout'))
     }, 100)
 
     setTimeout(function () {
@@ -561,7 +561,7 @@ $(function () {
       done()
     }, 200)
 
-    EventHandler.trigger($tooltip[0], 'mouseover')
+    $tooltip[0].dispatchEvent(new Event('mouseover'))
   })
 
   QUnit.test('should not hide tooltip if leave event occurs and enter event occurs within the hide delay', function (assert) {
@@ -579,11 +579,11 @@ $(function () {
 
     setTimeout(function () {
       assert.ok($('.tooltip').is('.fade.show'), '1ms: tooltip faded active')
-      EventHandler.trigger($tooltip[0], 'mouseout')
+      $tooltip[0].dispatchEvent(new Event('mouseout'))
 
       setTimeout(function () {
         assert.ok($('.tooltip').is('.fade.show'), '100ms: tooltip still faded active')
-        EventHandler.trigger($tooltip[0], 'mouseover')
+        $tooltip[0].dispatchEvent(new Event('mouseover'))
       }, 100)
 
       setTimeout(function () {
@@ -592,7 +592,7 @@ $(function () {
       }, 200)
     }, 0)
 
-    EventHandler.trigger($tooltip[0], 'mouseover')
+    $tooltip[0].dispatchEvent(new Event('mouseover'))
   })
 
   QUnit.test('should not show tooltip if leave event occurs before delay expires', function (assert) {
@@ -607,7 +607,7 @@ $(function () {
 
     setTimeout(function () {
       assert.ok(!$('.tooltip').is('.fade.show'), '100ms: tooltip not faded active')
-      EventHandler.trigger($tooltip[0], 'mouseout')
+      $tooltip[0].dispatchEvent(new Event('mouseout'))
     }, 100)
 
     setTimeout(function () {
@@ -615,7 +615,7 @@ $(function () {
       done()
     }, 200)
 
-    EventHandler.trigger($tooltip[0], 'mouseover')
+    $tooltip[0].dispatchEvent(new Event('mouseover'))
   })
 
   QUnit.test('should not show tooltip if leave event occurs before delay expires, even if hide delay is 0', function (assert) {
@@ -633,7 +633,7 @@ $(function () {
 
     setTimeout(function () {
       assert.ok(!$('.tooltip').is('.fade.show'), '100ms: tooltip not faded active')
-      EventHandler.trigger($tooltip[0], 'mouseout')
+      $tooltip[0].dispatchEvent(new Event('mouseout'))
     }, 100)
 
     setTimeout(function () {
@@ -641,7 +641,7 @@ $(function () {
       done()
     }, 250)
 
-    EventHandler.trigger($tooltip[0], 'mouseover')
+    $tooltip[0].dispatchEvent(new Event('mouseover'))
   })
 
   QUnit.test('should wait 200ms before hiding the tooltip', function (assert) {
@@ -660,7 +660,7 @@ $(function () {
     setTimeout(function () {
       assert.ok($(Tooltip._getInstance($tooltip[0]).tip).is('.fade.show'), '1ms: tooltip faded active')
 
-      EventHandler.trigger($tooltip[0], 'mouseout')
+      $tooltip[0].dispatchEvent(new Event('mouseout'))
 
       setTimeout(function () {
         assert.ok($(Tooltip._getInstance($tooltip[0]).tip).is('.fade.show'), '100ms: tooltip still faded active')
@@ -672,7 +672,7 @@ $(function () {
       }, 200)
     }, 0)
 
-    EventHandler.trigger($tooltip[0], 'mouseover')
+    $tooltip[0].dispatchEvent(new Event('mouseover'))
   })
 
   QUnit.test('should not reload the tooltip on subsequent mouseenter events', function (assert) {
@@ -697,11 +697,11 @@ $(function () {
       title: titleHtml
     })
 
-    EventHandler.trigger($('#tt-outer')[0], 'mouseover')
+    $('#tt-outer')[0].dispatchEvent(new Event('mouseover'))
 
     var currentUid = $('#tt-content').text()
 
-    EventHandler.trigger($('#tt-outer')[0], 'mouseover')
+    $('#tt-outer')[0].dispatchEvent(new Event('mouseover'))
     assert.strictEqual(currentUid, $('#tt-content').text())
   })
 
@@ -729,16 +729,16 @@ $(function () {
 
     var obj = Tooltip._getInstance($tooltip[0])
 
-    EventHandler.trigger($('#tt-outer')[0], 'mouseover')
+    $('#tt-outer')[0].dispatchEvent(new Event('mouseover'))
 
     var currentUid = $('#tt-content').text()
 
-    EventHandler.trigger($('#tt-outer')[0], 'mouseout')
+    $('#tt-outer')[0].dispatchEvent(new Event('mouseout'))
     assert.strictEqual(currentUid, $('#tt-content').text())
 
     assert.ok(obj._hoverState === 'out', 'the tooltip hoverState should be set to "out"')
 
-    EventHandler.trigger($('#tt-outer')[0], 'mouseover')
+    $('#tt-outer')[0].dispatchEvent(new Event('mouseover'))
     assert.ok(obj._hoverState === 'show', 'the tooltip hoverState should be set to "show"')
 
     assert.strictEqual(currentUid, $('#tt-content').text())
@@ -794,7 +794,7 @@ $(function () {
 
     $.each(tests, function (idx, triggers) {
       for (var i = 0, len = triggers.length; i < len; i++) {
-        EventHandler.trigger($el[0], triggers[i])
+        $el[0].dispatchEvent(new Event(triggers[i]))
         assert.equal(i < len - 1, showingTooltip())
       }
     })
@@ -816,13 +816,13 @@ $(function () {
       return $tooltip.hasClass('show') || tooltip._hoverState === 'show'
     }
 
-    EventHandler.trigger($el[0], 'click')
+    $el[0].click()
     assert.ok(showingTooltip(), 'tooltip is faded in')
 
     $el.bootstrapTooltip('hide')
     assert.ok(!showingTooltip(), 'tooltip was faded out')
 
-    EventHandler.trigger($el[0], 'click')
+    $el[0].click()
     assert.ok(showingTooltip(), 'tooltip is faded in again')
   })
 
@@ -904,11 +904,11 @@ $(function () {
       })
 
     $trigger.bootstrapTooltip('disable')
-    EventHandler.trigger($trigger[0], 'click')
+    $trigger[0].click()
     setTimeout(function () {
       assert.strictEqual($('.tooltip').length === 0, true)
       $trigger.bootstrapTooltip('enable')
-      EventHandler.trigger($trigger[0], 'click')
+      $trigger[0].click()
     }, 200)
   })
 
