@@ -373,6 +373,10 @@ class Collapse {
       Collapse._collapseInterface(this, config)
     })
   }
+
+  static _getInstance(element) {
+    return Data.getData(element, DATA_KEY)
+  }
 }
 
 /**

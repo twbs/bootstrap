@@ -498,6 +498,10 @@ class Modal {
     } else {
       document.body.style.paddingRight = ''
     }
+
+    static _getInstance(element) {
+      return Data.getData(element, DATA_KEY)
+    }
   }
 
   _getScrollbarWidth() { // thx d.walsh
