@@ -1,6 +1,8 @@
 $(function () {
   'use strict'
 
+  var Collapse = typeof window.bootstrap !== 'undefined' ? window.bootstrap.Collapse : window.Collapse
+
   QUnit.module('collapse plugin')
 
   QUnit.test('should be defined on jquery object', function (assert) {
@@ -473,7 +475,7 @@ $(function () {
     EventHandler.trigger($target2[0], 'click')
 
     $body2.toggleClass('show collapsing')
-    Data.getData($body2[0], 'bs.collapse')._isTransitioning = true
+    Collapse._getInstance($body2[0])._isTransitioning = true
 
     EventHandler.trigger($target1[0], 'click')
 
