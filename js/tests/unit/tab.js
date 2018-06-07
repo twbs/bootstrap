@@ -320,7 +320,7 @@ $(function () {
         '</ul>'
     var $tabs = $(tabsHTML).appendTo('#qunit-fixture')
 
-    EventHandler.trigger($tabs.find('li:last-child a')[0], 'click')
+    $tabs.find('li:last-child a')[0].click()
     assert.notOk($tabs.find('li:first-child a').hasClass('active'))
     assert.ok($tabs.find('li:last-child a').hasClass('active'))
   })
@@ -339,7 +339,7 @@ $(function () {
         '</ul>'
     var $tabs = $(tabsHTML).appendTo('#qunit-fixture')
 
-    EventHandler.trigger($tabs.find('li:first-child a')[0], 'click')
+    $tabs.find('li:first-child a')[0].click()
     assert.ok($tabs.find('li:first-child a').hasClass('active'))
     assert.notOk($tabs.find('li:last-child a').hasClass('active'))
     assert.notOk($tabs.find('li:last-child .dropdown-menu a:first-child').hasClass('active'))
@@ -378,10 +378,10 @@ $(function () {
 
     $('#tab1').on('shown.bs.tab', function () {
       assert.ok($('#x-tab1').hasClass('active'))
-      EventHandler.trigger($('#tabNested2')[0], 'click')
+      $('#tabNested2')[0].click()
     })
 
-    EventHandler.trigger($('#tab1')[0], 'click')
+    $('#tab1')[0].click()
   })
 
   QUnit.test('should not remove fade class if no active pane is present', function (assert) {
@@ -412,10 +412,10 @@ $(function () {
             done()
           })
 
-        EventHandler.trigger($('#tab-home')[0], 'click')
+        $('#tab-home')[0].click()
       })
 
-    EventHandler.trigger($('#tab-profile')[0], 'click')
+    $('#tab-profile')[0].click()
   })
 
   QUnit.test('should handle removed tabs', function (assert) {
