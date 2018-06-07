@@ -1,6 +1,8 @@
 $(function () {
   'use strict'
 
+  var Popover = typeof window.bootstrap !== 'undefined' ? window.bootstrap.Popover : window.Popover
+
   QUnit.module('popover plugin')
 
   QUnit.test('should be defined on jquery object', function (assert) {
@@ -65,7 +67,7 @@ $(function () {
     assert.expect(1)
     var $popover = $('<a href="#" title="mdo" data-content="https://twitter.com/mdo">@mdo</a>').bootstrapPopover()
 
-    assert.ok(Data.getData($popover[0], 'bs.popover'), 'popover instance exists')
+    assert.ok(Popover._getInstance($popover[0]), 'popover instance exists')
   })
 
   QUnit.test('should store popover trigger in popover instance data object', function (assert) {
@@ -76,7 +78,7 @@ $(function () {
 
     $popover.bootstrapPopover('show')
 
-    assert.ok(Data.getData($('.popover')[0], 'bs.popover'), 'popover trigger stored in instance data')
+    assert.ok(Popover._getInstance($('.popover')[0]), 'popover trigger stored in instance data')
   })
 
   QUnit.test('should get title and content from options', function (assert) {
@@ -259,13 +261,13 @@ $(function () {
       })
       .on('click.foo', $.noop)
 
-    assert.ok(Data.getData($popover[0], 'bs.popover'), 'popover has data')
+    assert.ok(Popover._getInstance($popover[0]), 'popover has data')
 
     $popover.bootstrapPopover('show')
     $popover.bootstrapPopover('dispose')
 
     assert.ok(!$popover.hasClass('show'), 'popover is hidden')
-    assert.ok(!$popover.data('popover'), 'popover does not have data')
+    assert.ok(!Popover._getInstance($popover[0]), 'popover does not have data')
   })
 
   QUnit.test('should render popover element using delegated selector', function (assert) {
@@ -338,7 +340,7 @@ $(function () {
         assert.ok(false, 'should not fire any popover events')
       })
       .bootstrapPopover('hide')
-    assert.ok(Data.getData($popover[0], 'bs.popover') === null, 'should not initialize the popover')
+    assert.ok(Popover._getInstance($popover[0]) === null, 'should not initialize the popover')
   })
 
   QUnit.test('should fire inserted event', function (assert) {
