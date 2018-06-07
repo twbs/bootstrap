@@ -226,7 +226,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <td>trigger</td>
       <td>string</td>
       <td>'click'</td>
-      <td>How popover is triggered - click | hover | focus | manual. You may pass multiple triggers; separate them with a space. `manual` cannot be combined with any other trigger.</td>
+      <td>How popover is triggered - click | hover | focus | manual. You may pass multiple triggers; separate them with a space. <code>manual</code> cannot be combined with any other trigger.</td>
     </tr>
     <tr>
       <td>offset</td>
