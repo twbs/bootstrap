@@ -1,6 +1,8 @@
 $(function () {
   'use strict'
 
+  var ScrollSpy = typeof window.bootstrap !== 'undefined' ? window.bootstrap.ScrollSpy : window.ScrollSpy
+
   QUnit.module('scrollspy plugin')
 
   QUnit.test('should be defined on jquery object', function (assert) {
@@ -667,7 +669,7 @@ $(function () {
       }
 
       var $target = $('#div-' + type + 'm-2')
-      var scrollspy = Data.getData($content[0], 'bs.scrollspy')
+      var scrollspy = ScrollSpy._getInstance($content[0])
 
       assert.ok(scrollspy._offsets[1] === $target.offset().top, 'offset method with ' + type + ' option')
       assert.ok(scrollspy._offsets[1] !== $target.position().top, 'position method with ' + type + ' option')
@@ -714,7 +716,7 @@ $(function () {
       }
 
       var $target = $('#div-' + type + 'm-2')
-      var scrollspy = Data.getData($content[0], 'bs.scrollspy')
+      var scrollspy = ScrollSpy._getInstance($content[0])
 
       assert.ok(scrollspy._offsets[1] !== $target.offset().top, 'offset method with ' + type + ' option')
       assert.ok(scrollspy._offsets[1] === $target.position().top, 'position method with ' + type + ' option')

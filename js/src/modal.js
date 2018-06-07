@@ -514,6 +514,10 @@ const Modal = (() => {
         }
       })
     }
+
+    static _getInstance(element) {
+      return Data.getData(element, DATA_KEY)
+    }
   }
 
   /**
