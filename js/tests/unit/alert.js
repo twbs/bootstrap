@@ -1,6 +1,8 @@
 $(function () {
   'use strict'
 
+  var Alert = typeof window.bootstrap !== 'undefined' ? window.bootstrap.Alert : window.Alert
+
   QUnit.module('alert plugin')
 
   QUnit.test('should be defined on jquery object', function (assert) {
@@ -91,7 +93,7 @@ $(function () {
     var done = assert.async()
     var $el = $('<div/>')
     var $alert = $el.bootstrapAlert()
-    var alertInstance = Data.getData($alert[0], 'bs.alert')
+    var alertInstance = Alert._getInstance($alert[0])
 
     $alert.one('closed.bs.alert', function () {
       assert.ok('alert closed')
@@ -107,11 +109,11 @@ $(function () {
     var $el = $('<div/>')
     var $alert = $el.bootstrapAlert()
 
-    assert.ok(typeof Data.getData($alert[0], 'bs.alert') !== 'undefined')
+    assert.ok(typeof Alert._getInstance($alert[0]) !== 'undefined')
 
-    Data.getData($alert[0], 'bs.alert').dispose()
+    Alert._getInstance($alert[0]).dispose()
 
-    assert.ok(Data.getData($alert[0], 'bs.alert') === null)
+    assert.ok(Alert._getInstance($alert[0]) === null)
   })
 
   QUnit.test('should return alert version', function (assert) {

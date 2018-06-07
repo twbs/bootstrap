@@ -1,6 +1,8 @@
 $(function () {
   'use strict'
 
+  var Dropdown = typeof window.bootstrap !== 'undefined' ? window.bootstrap.Dropdown : window.Dropdown
+
   QUnit.module('dropdowns plugin')
 
   QUnit.test('should be defined on jquery object', function (assert) {
@@ -1025,7 +1027,7 @@ $(function () {
       .find('[data-toggle="dropdown"]')
       .bootstrapDropdown()
 
-    var dropdown = Data.getData($dropdown[0], 'bs.dropdown')
+    var dropdown = Dropdown._getInstance($dropdown[0])
     dropdown.toggle()
     assert.ok(dropdown._popper)
 
@@ -1053,7 +1055,7 @@ $(function () {
       .find('[data-toggle="dropdown"]')
       .bootstrapDropdown()
 
-    var dropdown = Data.getData($dropdown[0], 'bs.dropdown')
+    var dropdown = Dropdown._getInstance($dropdown[0])
     var spyDetectNavbar = sinon.spy(dropdown, '_detectNavbar')
 
     dropdown.update()
@@ -1078,7 +1080,7 @@ $(function () {
       .find('[data-toggle="dropdown"]')
       .bootstrapDropdown()
 
-    var dropdown = Data.getData($dropdown[0], 'bs.dropdown')
+    var dropdown = Dropdown._getInstance($dropdown[0])
     dropdown.toggle()
 
     assert.ok(dropdown._popper)
@@ -1109,7 +1111,7 @@ $(function () {
       .find('[data-toggle="dropdown"]')
       .bootstrapDropdown()
 
-    var dropdown = Data.getData($dropdown[0], 'bs.dropdown')
+    var dropdown = Dropdown._getInstance($dropdown[0])
 
     assert.notOk(dropdown._popper)
     assert.ok(dropdown._menu !== null)

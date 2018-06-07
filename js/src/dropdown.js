@@ -505,6 +505,10 @@ class Dropdown {
 
     items[index].focus()
   }
+
+  static _getInstance(element) {
+    return Data.getData(element, DATA_KEY)
+  }
 }
 
 /**
