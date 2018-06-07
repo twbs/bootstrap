@@ -125,25 +125,26 @@ $(function () {
 
     var $btn1 = $group.children().eq(0)
     var $btn2 = $group.children().eq(1)
+    var inputBtn2 = $btn2.find('input')[0]
 
     assert.ok($btn1.hasClass('active'), 'btn1 has active class')
     assert.ok($btn1.find('input').prop('checked'), 'btn1 is checked')
     assert.ok(!$btn2.hasClass('active'), 'btn2 does not have active class')
-    assert.ok(!Manipulator.isChecked($btn2.find('input')[0]), 'btn2 is not checked')
+    assert.ok(!(inputBtn2.bsChecked || inputBtn2.checked), 'btn2 is not checked')
 
-    EventHandler.trigger($btn2.find('input')[0], 'click')
-
-    assert.ok(!$btn1.hasClass('active'), 'btn1 does not have active class')
-    assert.ok(!$btn1.find('input').prop('checked'), 'btn1 is not checked')
-    assert.ok($btn2.hasClass('active'), 'btn2 has active class')
-    assert.ok(Manipulator.isChecked($btn2.find('input')[0]), 'btn2 is checked')
-
-    EventHandler.trigger($btn2.find('input')[0], 'click') // clicking an already checked radio should not un-check it
+    inputBtn2.dispatchEvent(new Event('click'))
 
     assert.ok(!$btn1.hasClass('active'), 'btn1 does not have active class')
     assert.ok(!$btn1.find('input').prop('checked'), 'btn1 is not checked')
     assert.ok($btn2.hasClass('active'), 'btn2 has active class')
-    assert.ok(Manipulator.isChecked($btn2.find('input')[0]), 'btn2 is checked')
+    assert.ok(inputBtn2.bsChecked || inputBtn2.checked, 'btn2 is checked')
+
+    inputBtn2.dispatchEvent(new Event('click')) // clicking an already checked radio should not un-check it
+
+    assert.ok(!$btn1.hasClass('active'), 'btn1 does not have active class')
+    assert.ok(!$btn1.find('input').prop('checked'), 'btn1 is not checked')
+    assert.ok($btn2.hasClass('active'), 'btn2 has active class')
+    assert.ok(inputBtn2.bsChecked || inputBtn2.checked, 'btn2 is checked')
   })
 
   QUnit.test('should only toggle selectable inputs', function (assert) {

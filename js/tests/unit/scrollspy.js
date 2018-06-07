@@ -665,7 +665,7 @@ $(function () {
           method: 'offset'
         })
       } else if (type === 'data') {
-        EventHandler.trigger(window, 'load')
+        window.dispatchEvent(new Event('load'))
       }
 
       var $target = $('#div-' + type + 'm-2')
@@ -712,7 +712,7 @@ $(function () {
           method: 'position'
         })
       } else if (type === 'data') {
-        EventHandler.trigger(window, 'load')
+        window.dispatchEvent(new Event('load'))
       }
 
       var $target = $('#div-' + type + 'm-2')
