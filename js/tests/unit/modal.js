@@ -422,7 +422,7 @@ $(function () {
 
     $('<div id="modal-test"/>')
       .on('hidden.bs.modal', function () {
-        assert.strictEqual(typeof $body.data('padding-right'), 'undefined', 'data-padding-right should be cleared after closing')
+        assert.strictEqual(document.body.getAttribute('data-padding-right'), null, 'data-padding-right should be cleared after closing')
         $body.removeAttr('style')
         done()
       })
@@ -488,7 +488,7 @@ $(function () {
 
     $('<div id="modal-test"/>')
       .on('hidden.bs.modal', function () {
-        assert.strictEqual(typeof $element.data('padding-right'), 'undefined', 'data-padding-right should be cleared after closing')
+        assert.strictEqual($element[0].getAttribute('data-padding-right'), null, 'data-padding-right should be cleared after closing')
         $element.remove()
         done()
       })
@@ -530,7 +530,7 @@ $(function () {
 
     $('<div id="modal-test"/>')
       .on('hidden.bs.modal', function () {
-        assert.strictEqual(typeof $element.data('margin-right'), 'undefined', 'data-margin-right should be cleared after closing')
+        assert.strictEqual($element[0].getAttribute('data-margin-right'), null, 'data-margin-right should be cleared after closing')
         $element.remove()
         done()
       })

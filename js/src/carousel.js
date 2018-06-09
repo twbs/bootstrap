@@ -562,8 +562,8 @@ class Carousel {
     }
 
     const config = {
-      ...Util.getDataAttributes(target),
-      ...Util.getDataAttributes(this)
+      ...Manipulator.getDataAttributes(target),
+      ...Manipulator.getDataAttributes(this)
     }
     const slideIndex = this.getAttribute('data-slide-to')
 
