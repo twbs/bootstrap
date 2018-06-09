@@ -461,7 +461,7 @@ const Modal = (() => {
       // Restore fixed content padding
       Util.makeArray(SelectorEngine.find(Selector.FIXED_CONTENT))
         .forEach((element) => {
-          const padding = Util.getDataAttribute(element, 'padding-right')
+          const padding = Manipulator.getDataAttribute(element, 'padding-right')
           if (typeof padding !== 'undefined') {
             Manipulator.removeDataAttribute(element, 'padding-right')
             element.style.paddingRight = padding
@@ -471,7 +471,7 @@ const Modal = (() => {
       // Restore sticky content and navbar-toggler margin
       Util.makeArray(SelectorEngine.find(`${Selector.STICKY_CONTENT}, ${Selector.NAVBAR_TOGGLER}`))
         .forEach((element) => {
-          const margin = Util.getDataAttribute(element, 'margin-right')
+          const margin = Manipulator.getDataAttribute(element, 'margin-right')
           if (typeof margin !== 'undefined') {
             Manipulator.removeDataAttribute(element, 'margin-right')
             element.style.marginRight = margin
@@ -479,7 +479,7 @@ const Modal = (() => {
         })
 
       // Restore body padding
-      const padding = Util.getDataAttribute(document.body, 'padding-right')
+      const padding = Manipulator.getDataAttribute(document.body, 'padding-right')
       if (typeof padding !== 'undefined') {
         Manipulator.removeDataAttribute(document.body, 'padding-right')
         document.body.style.paddingRight = padding
@@ -502,7 +502,7 @@ const Modal = (() => {
         let data      = Data.getData(this, DATA_KEY)
         const _config = {
           ...Modal.Default,
-          ...Util.getDataAttributes(this),
+          ...Manipulator.getDataAttributes(this),
           ...typeof config === 'object' && config ? config : {}
         }
 
@@ -544,8 +544,8 @@ const Modal = (() => {
     const config = Data.getData(target, DATA_KEY)
       ? 'toggle'
       : {
-        ...Util.getDataAttributes(target),
-        ...Util.getDataAttributes(this)
+        ...Manipulator.getDataAttributes(target),
+        ...Manipulator.getDataAttributes(this)
       }
 
     if (this.tagName === 'A' || this.tagName === 'AREA') {

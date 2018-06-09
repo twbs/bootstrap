@@ -326,7 +326,7 @@ const ScrollSpy = (() => {
 
   EventHandler.on(window, Event.LOAD_DATA_API, () => {
     const scrollSpys = Util.makeArray(SelectorEngine.find(Selector.DATA_SPY))
-    scrollSpys.forEach((spy) => new ScrollSpy(spy, Util.getDataAttributes(spy)))
+    scrollSpys.forEach((spy) => new ScrollSpy(spy, Manipulator.getDataAttributes(spy)))
   })
 
   /**
