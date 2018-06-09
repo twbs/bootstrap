@@ -7,6 +7,7 @@
 
 import Data from './dom/data'
 import EventHandler from './dom/eventHandler'
+import Manipulator from './dom/manipulator'
 import Popper from 'popper.js'
 import SelectorEngine from './dom/selectorEngine'
 import Util from './util'
@@ -657,7 +658,7 @@ class Tooltip {
 
     config = {
       ...this.constructor.Default,
-      ...Util.getDataAttributes(this.element),
+      ...Manipulator.getDataAttributes(this.element),
       ...typeof config === 'object' && config ? config : {}
     }
 
@@ -707,10 +708,6 @@ class Tooltip {
         .map((token) => token.trim())
         .forEach((tClass) => tip.classList.remove(tClass))
     }
-
-    static _getInstance(element) {
-      return Data.getData(element, DATA_KEY)
-    }
   }
 
   _handlePopperPlacementChange(popperData) {
@@ -758,6 +755,10 @@ class Tooltip {
         data[config]()
       }
     })
+  }
+
+  static _getInstance(element) {
+    return Data.getData(element, DATA_KEY)
   }
 }
 
