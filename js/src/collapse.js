@@ -7,6 +7,7 @@
 
 import Data from './dom/data'
 import EventHandler from './dom/eventHandler'
+import Manipulator from './dom/manipulator'
 import SelectorEngine from './dom/selectorEngine'
 import Util from './util'
 
@@ -347,7 +348,7 @@ class Collapse {
     let data      = Data.getData(element, DATA_KEY)
     const _config = {
       ...Default,
-      ...Util.getDataAttributes(element),
+      ...Manipulator.getDataAttributes(element),
       ...typeof config === 'object' && config ? config : {}
     }
 
@@ -391,7 +392,7 @@ EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (
     event.preventDefault()
   }
 
-  const triggerData      = Util.getDataAttributes(this)
+  const triggerData      = Manipulator.getDataAttributes(this)
   const selector         = Util.getSelectorFromElement(this)
   const selectorElements = Util.makeArray(SelectorEngine.find(selector))
 

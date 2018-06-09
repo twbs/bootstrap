@@ -322,7 +322,7 @@ class ScrollSpy {
 
 EventHandler.on(window, Event.LOAD_DATA_API, () => {
   Util.makeArray(SelectorEngine.find(Selector.DATA_SPY))
-    .forEach((spy) => new ScrollSpy(spy, Util.getDataAttributes(spy)))
+    .forEach((spy) => new ScrollSpy(spy, Manipulator.getDataAttributes(spy)))
 })
 
 /**

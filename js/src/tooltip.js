@@ -11,6 +11,7 @@ import {
 } from './tools/sanitizer'
 import Data from './dom/data'
 import EventHandler from './dom/eventHandler'
+import Manipulator from './dom/manipulator'
 import Popper from 'popper.js'
 import SelectorEngine from './dom/selectorEngine'
 import Util from './util'
@@ -671,7 +672,7 @@ class Tooltip {
   }
 
   _getConfig(config) {
-    const dataAttributes = Util.getDataAttributes(this.element)
+    const dataAttributes = Manipulator.getDataAttributes(this.element)
 
     Object.keys(dataAttributes)
       .forEach((dataAttr) => {
@@ -741,10 +742,6 @@ class Tooltip {
         .map((token) => token.trim())
         .forEach((tClass) => tip.classList.remove(tClass))
     }
-
-    static _getInstance(element) {
-      return Data.getData(element, DATA_KEY)
-    }
   }
 
   _handlePopperPlacementChange(popperData) {
@@ -792,6 +789,10 @@ class Tooltip {
         data[config]()
       }
     })
+  }
+
+  static _getInstance(element) {
+    return Data.getData(element, DATA_KEY)
   }
 }
 
