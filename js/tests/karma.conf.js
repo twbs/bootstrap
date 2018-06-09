@@ -22,7 +22,8 @@ module.exports = (config) => {
       jqueryFile,
       'assets/js/vendor/popper.min.js',
       'js/coverage/dist/util.js',
-      'js/coverage/dist/dom/*.js',
+      'js/coverage/dist/dom/polyfill.js',
+      'js/coverage/dist/dom/!(polyfill).js',
       'js/coverage/dist/tooltip.js',
       'js/coverage/dist/!(util|index|tooltip).js', // include all of our js/dist files except util.js, index.js and tooltip.js
       'js/tests/unit/*.js',
