@@ -1,88 +1,14 @@
+import Polyfill from './polyfill'
 import Util from '../util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-beta): dom/eventHandler.js
+ * Bootstrap (v4.1.1): dom/eventHandler.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
 
 const EventHandler = (() => {
-  /**
-   * ------------------------------------------------------------------------
-   * Polyfills
-   * ------------------------------------------------------------------------
-   */
-
-  // defaultPrevented is broken in IE.
-  // https://connect.microsoft.com/IE/feedback/details/790389/event-defaultprevented-returns-false-after-preventdefault-was-called
-  const workingDefaultPrevented = (() => {
-    const e = document.createEvent('CustomEvent')
-    e.initEvent('Bootstrap', true, true)
-    e.preventDefault()
-    return e.defaultPrevented
-  })()
-
-  let defaultPreventedPreservedOnDispatch = true
-
-  // CustomEvent polyfill for IE (see: https://mzl.la/2v76Zvn)
-  if (typeof window.CustomEvent !== 'function') {
-    window.CustomEvent = (event, params) => {
-      params = params || {
-        bubbles: false,
-        cancelable: false,
-        detail: null
-      }
-      const evt = document.createEvent('CustomEvent')
-      evt.initCustomEvent(event, params.bubbles, params.cancelable, params.detail)
-      if (!workingDefaultPrevented) {
-        const origPreventDefault = Event.prototype.preventDefault
-        evt.preventDefault = () => {
-          if (!evt.cancelable) {
-            return
-          }
-
-          origPreventDefault.call(evt)
-          Object.defineProperty(evt, 'defaultPrevented', {
-            get() {
-              return true
-            },
-            configurable: true
-          })
-        }
-      }
-      return evt
-    }
-
-    window.CustomEvent.prototype = window.Event.prototype
-  } else {
-    // MSEdge resets defaultPrevented flag upon dispatchEvent call if at least one listener is attached
-    defaultPreventedPreservedOnDispatch = (() => {
-      const e = new CustomEvent('Bootstrap', {
-        cancelable: true
-      })
-
-      const element = document.createElement('div')
-      element.addEventListener('Bootstrap', () => null)
-
-      e.preventDefault()
-      element.dispatchEvent(e)
-      return e.defaultPrevented
-    })()
-  }
-
-  // Event constructor shim
-  if (!window.Event || typeof window.Event !== 'function') {
-    const origEvent = window.Event
-    window.Event = (inType, params) => {
-      params = params || {}
-      const e = document.createEvent('Event')
-      e.initEvent(inType, Boolean(params.bubbles), Boolean(params.cancelable))
-      return e
-    }
-    window.Event.prototype = origEvent.prototype
-  }
-
   /**
    * ------------------------------------------------------------------------
    * Constants
@@ -361,7 +287,7 @@ const EventHandler = (() => {
       if (defaultPrevented) {
         evt.preventDefault()
 
-        if (!defaultPreventedPreservedOnDispatch) {
+        if (!Polyfill.defaultPreventedPreservedOnDispatch) {
           Object.defineProperty(evt, 'defaultPrevented', {
             get: () => true
           })
@@ -382,7 +308,7 @@ const EventHandler = (() => {
 })()
 
 // focusin and focusout polyfill
-if (typeof window.onfocusin === 'undefined') {
+if (Polyfill.focusIn) {
   (() => {
     function listenerFocus(event) {
       EventHandler.trigger(event.target, 'focusin')
