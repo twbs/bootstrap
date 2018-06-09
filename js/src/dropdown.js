@@ -225,7 +225,7 @@ const Dropdown = (() => {
     _getConfig(config) {
       config = {
         ...this.constructor.Default,
-        ...Util.getDataAttributes(this._element),
+        ...Manipulator.getDataAttributes(this._element),
         ...config
       }
 

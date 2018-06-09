@@ -1,5 +1,6 @@
 import Data from './dom/data'
 import EventHandler from './dom/eventHandler'
+import Manipulator from './dom/manipulator'
 import SelectorEngine from './dom/selectorEngine'
 import Util from './util'
 
@@ -427,7 +428,7 @@ const Carousel = (() => {
       let data    = Data.getData(element, DATA_KEY)
       let _config = {
         ...Default,
-        ...Util.getDataAttributes(element)
+        ...Manipulator.getDataAttributes(element)
       }
 
       if (typeof config === 'object') {
@@ -477,8 +478,8 @@ const Carousel = (() => {
       }
 
       const config = {
-        ...Util.getDataAttributes(target),
-        ...Util.getDataAttributes(this)
+        ...Manipulator.getDataAttributes(target),
+        ...Manipulator.getDataAttributes(this)
       }
       const slideIndex = this.getAttribute('data-slide-to')
 

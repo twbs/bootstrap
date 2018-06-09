@@ -71,6 +71,16 @@ module.exports = (config) => {
           branches: 84,
           functions: 87,
           lines: 90
+        },
+        each: {
+          overrides: {
+            'js/src/dom/polyfill.js': {
+              statements: 39,
+              lines: 37,
+              branches: 19,
+              functions: 50
+            }
+          }
         }
       }
     },
