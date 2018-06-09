@@ -419,3 +419,126 @@
     @include border-radius($custom-range-track-border-radius);
   }
 }
+
+// Switch
+//
+// Android style $custom-switch-track-height < $custom-switch-thumb-height
+// iOS style     $custom-switch-track-height >= $custom-switch-thumb-height
+@function custom-switch-thumb-left($checked) {
+  @if ($checked == 1) {
+    @if ($custom-switch-padding-inner > 0) {
+      @return $custom-switch-track-width - $custom-switch-thumb-width - $custom-switch-padding-inner;
+    } @else {
+      @return $custom-switch-track-width - $custom-switch-thumb-width - $custom-switch-padding-inner * 2;
+    }
+  } @else {
+    @if ($custom-switch-padding-inner > 0) {
+      @return $custom-switch-padding-inner;
+    } @else {
+      @return 0;
+    }
+  }
+}
+
+.custom-switch {
+  padding-left: 0;
+  .custom-control-input {
+    ~ .custom-control-label {
+      @if ($custom-switch-padding-inner > 0) {
+        padding-left: $custom-switch-track-width + $custom-switch-padding-outer;
+      } @else {
+        padding-left: $custom-switch-track-width + $custom-switch-padding-outer - $custom-switch-padding-inner * 2;
+      }
+      &::before,
+      &::after {
+        top: 0;
+        transition: $custom-switch-transition;
+        content: '';
+      }
+      &::before {
+        @include gradient-bg($custom-switch-track-bg);
+        @include box-shadow($custom-switch-track-box-shadow);
+        border-radius: $custom-switch-track-border-radius;
+        height: $custom-switch-track-height;
+        width: $custom-switch-track-width;
+        @if ($custom-switch-track-height < $custom-switch-thumb-height) {
+          top: ($custom-switch-thumb-height - $custom-switch-track-height) / 2;
+        } @else {
+          top: 0;
+        }
+        @if ($custom-switch-padding-inner < 0) {
+          left: $custom-switch-padding-inner * -1;
+        } @else {
+          left: 0;
+        }
+      }
+      &::after {
+        @include gradient-bg($custom-switch-thumb-bg);
+        border-radius: $custom-switch-thumb-border-radius;
+        box-shadow: $custom-switch-thumb-box-shadow;
+        height: $custom-switch-thumb-height;
+        width: $custom-switch-thumb-width;
+        @if ($custom-switch-track-height > $custom-switch-thumb-height) {
+          top: $custom-switch-padding-inner;
+        } @else {
+          top: 0;
+        }
+        left: custom-switch-thumb-left(0);
+      }
+    }
+    &:checked {
+      &:disabled ~ .custom-control-label {
+        &::before {
+          background-color: $custom-switch-track-checked-disabled-bg;
+        }
+        &::after {
+          background-color: $custom-switch-thumb-checked-disabled-bg;
+        }
+      }
+      ~ .custom-control-label {
+        &::before {
+          @include gradient-bg($custom-switch-track-checked-bg);
+        }
+        &::after {
+          @include gradient-bg($custom-switch-thumb-checked-bg);
+          left: custom-switch-thumb-left(1);
+        }
+      }
+    }
+    &:focus ~ .custom-control-label {
+      &::before {
+        box-shadow: $custom-switch-track-focus-box-shadow;
+      }
+      &::after {
+        box-shadow: $custom-switch-thumb-focus-box-shadow;
+      }
+    }
+    &:disabled ~ .custom-control-label {
+      &::before {
+        background-color: $custom-switch-track-disabled-bg;
+      }
+      &::after {
+        background-color: $custom-switch-thumb-disabled-bg;
+      }
+    }
+    &:active ~ .custom-control-label {
+      &::before {
+        background-color: $custom-switch-track-active-bg;
+      }
+      &::after {
+        background-color: $custom-switch-thumb-active-bg;
+      }
+    }
+    //ios thumb increase effect
+    @if($custom-switch-thumb-active-w != $custom-switch-thumb-width) {
+      &:active {
+        &:checked ~ .custom-control-label::after {
+          left: custom-switch-thumb-left(1) - ($custom-switch-thumb-active-w - $custom-switch-thumb-width);
+        }
+        ~ .custom-control-label::after {
+          width: $custom-switch-thumb-active-w;
+        }
+      }
+    }
+  }
+}

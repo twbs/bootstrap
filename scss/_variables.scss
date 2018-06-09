@@ -525,6 +525,33 @@ $custom-range-thumb-box-shadow:       0 .1rem .25rem rgba($black, .1) !default;
 $custom-range-thumb-focus-box-shadow: 0 0 0 1px $body-bg, $input-btn-focus-box-shadow !default;
 $custom-range-thumb-active-bg:        lighten($component-active-bg, 35%) !default;
 
+$custom-switch-track-height:              $custom-control-indicator-size !default;
+$custom-switch-track-width:               $custom-switch-track-height * 2 !default;
+$custom-switch-track-border-radius:       $custom-switch-track-height / 2 !default;
+$custom-switch-track-box-shadow:          $custom-control-indicator-box-shadow !default;
+$custom-switch-track-bg:                  $custom-control-indicator-bg !default;
+$custom-switch-track-disabled-bg:         $custom-control-indicator-disabled-bg !default;
+$custom-switch-track-active-bg:           $custom-control-indicator-active-bg !default;
+$custom-switch-track-checked-bg:          $custom-control-indicator-checked-bg !default;
+$custom-switch-track-checked-disabled-bg: $custom-control-indicator-checked-disabled-bg !default;
+$custom-switch-track-focus-box-shadow:    $custom-control-indicator-focus-box-shadow !default;
+
+$custom-switch-thumb-height:              1rem * $input-line-height !default;
+$custom-switch-thumb-width:               $custom-switch-thumb-height !default;
+$custom-switch-thumb-border-radius:       $custom-switch-thumb-height / 2 !default;
+$custom-switch-thumb-box-shadow:          0 0 0.25rem rgba($black, 0.3) !default;
+$custom-switch-thumb-bg:                  $input-bg !default;
+$custom-switch-thumb-disabled-bg:         $custom-switch-thumb-bg !default;
+$custom-switch-thumb-active-bg:           $custom-control-indicator-active-color !default;
+$custom-switch-thumb-checked-bg:          $custom-control-indicator-checked-color !default;
+$custom-switch-thumb-checked-disabled-bg: $custom-control-indicator-checked-color !default;
+$custom-switch-thumb-active-w:            $custom-switch-thumb-width * 1.2 !default;
+$custom-switch-thumb-focus-box-shadow:    $custom-switch-thumb-box-shadow !default;
+
+$custom-switch-padding-inner: ($custom-switch-track-height - $custom-switch-thumb-height) / 2 !default;
+$custom-switch-padding-outer: 0.5rem !default;
+$custom-switch-transition:    all 0.15s ease-in-out !default;
+
 $custom-file-height:                $input-height !default;
 $custom-file-height-inner:          $input-height-inner !default;
 $custom-file-focus-border-color:    $input-focus-border-color !default;
