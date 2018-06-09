@@ -8,6 +8,7 @@
     "bootstrap": false,
     "sinon": false,
     "Util": false,
+    "Data": false,
     "Alert": false,
     "Button": false,
     "Carousel": false,
