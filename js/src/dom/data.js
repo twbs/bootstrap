@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-beta): dom/data.js
+ * Bootstrap (v4.1.1): dom/data.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -11,7 +11,6 @@ const Data = (() => {
    * Constants
    * ------------------------------------------------------------------------
    */
-
 
   const mapData = (() => {
     const storeData = {}
