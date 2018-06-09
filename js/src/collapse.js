@@ -1,5 +1,6 @@
 import Data from './dom/data'
 import EventHandler from './dom/eventHandler'
+import Manipulator from './dom/manipulator'
 import SelectorEngine from './dom/selectorEngine'
 import Util from './util'
 
@@ -337,7 +338,7 @@ const Collapse = (() => {
       let data      = Data.getData(element, DATA_KEY)
       const _config = {
         ...Default,
-        ...Util.getDataAttributes(element),
+        ...Manipulator.getDataAttributes(element),
         ...typeof config === 'object' && config ? config : {}
       }
 
@@ -381,7 +382,7 @@ const Collapse = (() => {
       event.preventDefault()
     }
 
-    const triggerData      = Util.getDataAttributes(this)
+    const triggerData      = Manipulator.getDataAttributes(this)
     const selector         = Util.getSelectorFromElement(this)
     const selectorElements = Util.makeArray(SelectorEngine.find(selector))
 
