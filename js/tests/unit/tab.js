@@ -45,7 +45,7 @@ $(function () {
   })
 
   QUnit.test('should activate element by tab id', function (assert) {
-    assert.expect(2)
+    assert.expect(4)
     var tabsHTML = '<ul class="nav">' +
         '<li><a href="#home">Home</a></li>' +
         '<li><a href="#profile">Profile</a></li>' +
@@ -63,7 +63,7 @@ $(function () {
   })
 
   QUnit.test('should activate element by tab id', function (assert) {
-    assert.expect(2)
+    assert.expect(4)
     var pillsHTML = '<ul class="nav nav-pills">' +
         '<li><a href="#home">Home</a></li>' +
         '<li><a href="#profile">Profile</a></li>' +
@@ -81,7 +81,7 @@ $(function () {
   })
 
   QUnit.test('should activate element by tab id in ordered list', function (assert) {
-    assert.expect(2)
+    assert.expect(4)
     var pillsHTML = '<ol class="nav nav-pills">' +
         '<li><a href="#home">Home</a></li>' +
         '<li><a href="#profile">Profile</a></li>' +
@@ -99,7 +99,7 @@ $(function () {
   })
 
   QUnit.test('should activate element by tab id in nav list', function (assert) {
-    assert.expect(2)
+    assert.expect(4)
     var tabsHTML =  '<nav class="nav">' +
                       '<a href="#home">Home</a>' +
                       '<a href="#profile">Profile</a>' +
@@ -117,7 +117,7 @@ $(function () {
   })
 
   QUnit.test('should activate element by tab id in list group', function (assert) {
-    assert.expect(2)
+    assert.expect(4)
     var tabsHTML =  '<div class="list-group">' +
                       '<a href="#home">Home</a>' +
                       '<a href="#profile">Profile</a>' +
