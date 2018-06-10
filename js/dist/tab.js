@@ -38,7 +38,7 @@ var Tab = function ($) {
     DROPDOWN: '.dropdown',
     NAV_LIST_GROUP: '.nav, .list-group',
     ACTIVE: '.active',
-    ACTIVE_UL: '> li > .active',
+    ACTIVE_LIST: '> li > .active',
     DATA_TOGGLE: '[data-toggle="tab"], [data-toggle="pill"], [data-toggle="list"]',
     DROPDOWN_TOGGLE: '.dropdown-toggle',
     DROPDOWN_ACTIVE_CHILD: '> .dropdown-menu .active'
@@ -74,7 +74,7 @@ var Tab = function ($) {
       var selector = Util.getSelectorFromElement(this._element);
 
       if (listElement) {
-        var itemSelector = listElement.nodeName === 'UL' ? Selector.ACTIVE_UL : Selector.ACTIVE;
+        var itemSelector = listElement.nodeName === 'UL' || listElement.nodeName === 'OL' ? Selector.ACTIVE_LIST : Selector.ACTIVE;
         previous = $.makeArray($(listElement).find(itemSelector));
         previous = previous[previous.length - 1];
       }
@@ -131,8 +131,8 @@ var Tab = function ($) {
 
       var activeElements;
 
-      if (container.nodeName === 'UL') {
-        activeElements = $(container).find(Selector.ACTIVE_UL);
+      if (container.nodeName === 'UL' || container.nodeName === 'OL') {
+        activeElements = $(container).find(Selector.ACTIVE_LIST);
       } else {
         activeElements = $(container).children(Selector.ACTIVE);
       }
