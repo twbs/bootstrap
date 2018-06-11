@@ -155,6 +155,33 @@ const Polyfill = (() => {
     }
   }
 
+  if (typeof Object.assign !== 'function') {
+    Object.defineProperty(Object, 'assign', {
+      value: (target, ...args) => {
+        if (target === null || typeof target === 'undefined') {
+          throw new TypeError('Cannot convert undefined or null to object')
+        }
+
+        const to = Object(target)
+
+        for (let index = 1; index < args.length; index++) {
+          const nextSource = args[index]
+
+          if (nextSource !== null || !nextSource) {
+            for (const nextKey in nextSource) {
+              if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) {
+                to[nextKey] = nextSource[nextKey]
+              }
+            }
+          }
+        }
+        return to
+      },
+      writable: true,
+      configurable: true
+    })
+  }
+
   return {
     defaultPreventedPreservedOnDispatch,
     focusIn: typeof window.onfocusin === 'undefined',
