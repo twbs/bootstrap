@@ -281,7 +281,7 @@ const EventHandler = (() => {
 
       // merge custom informations in our event
       if (typeof args !== 'undefined') {
-        evt = Util.extend(evt, args)
+        evt = Object.assign(evt, args)
       }
 
       if (defaultPrevented) {
