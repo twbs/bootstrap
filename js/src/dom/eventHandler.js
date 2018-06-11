@@ -307,18 +307,4 @@ const EventHandler = (() => {
   }
 })()
 
-// focusin and focusout polyfill
-if (Polyfill.focusIn) {
-  (() => {
-    function listenerFocus(event) {
-      EventHandler.trigger(event.target, 'focusin')
-    }
-    function listenerBlur(event) {
-      EventHandler.trigger(event.target, 'focusout')
-    }
-    EventHandler.on(document, 'focus', 'input', listenerFocus)
-    EventHandler.on(document, 'blur', 'input', listenerBlur)
-  })()
-}
-
 export default EventHandler
