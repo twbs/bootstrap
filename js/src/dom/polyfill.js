@@ -7,6 +7,7 @@ import Util from '../util'
  * --------------------------------------------------------------------------
  */
 
+/* istanbul ignore next */
 const Polyfill = (() => {
   // defaultPrevented is broken in IE
   const workingDefaultPrevented = (() => {
