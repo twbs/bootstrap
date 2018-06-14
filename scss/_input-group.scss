@@ -78,8 +78,14 @@
   }
 }
 
-.input-group-prepend { margin-right: -$input-border-width; }
-.input-group-append { margin-left: -$input-border-width; }
+.input-group-prepend,
+.input-group-append:not(:last-child) {
+  margin-right: -$input-border-width;
+}
+.input-group-append,
+.input-group-prepend:not(:first-child) {
+  margin-left: -$input-border-width;
+}
 
 
 // Textual addons
