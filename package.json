@@ -50,6 +50,7 @@
     "js-test-karma-bundle": "cross-env karma start js/tests/karma-bundle.conf.js",
     "js-test-karma-bundle-old": "cross-env USE_OLD_JQUERY=true npm run js-test-karma-bundle",
     "js-test-cloud": "ruby -r webrick -e \"s = WEBrick::HTTPServer.new(:Port => 3000, :DocumentRoot => Dir.pwd, :Logger => WEBrick::Log.new('/dev/null'), :AccessLog => []); trap('INT') { s.shutdown }; s.start\" & node build/saucelabs-unit-test.js",
+    "coveralls": "shx cat js/coverage/lcov.info | coveralls",
     "docs": "npm-run-all --parallel css-docs js-docs --sequential docs-compile docs-lint",
     "docs-compile": "bundle exec jekyll build",
     "postdocs-compile": "npm run docs-workbox-precache",
@@ -59,7 +60,6 @@
     "docs-lint-htmllint": "htmllint --rc build/.htmllintrc \"_gh_pages/**/*.html\" \"js/tests/**/*.html\"",
     "docs-lint-vnu-jar": "node build/vnu-jar.js",
     "docs-serve": "bundle exec jekyll serve",
-    "docs-upload-preview": "build/upload-preview.sh",
     "docs-workbox-precache": "node build/workbox.js",
     "maintenance-dependencies": "ncu -a -x jquery && npm update && bundle update && shx echo \"Manually update assets/js/vendor/*, js/tests/vendor/* and .travis.yml\"",
     "release-sri": "node build/generate-sri.js",
@@ -97,6 +97,7 @@
     "babel-plugin-transform-es2015-modules-strip": "^0.1.1",
     "bundlesize": "^0.15.3",
     "clean-css-cli": "^4.1.11",
+    "coveralls": "^3.0.0",
     "cross-env": "^5.1.5",
     "eslint": "^4.19.1",
     "eslint-plugin-compat": "^2.2.0",
@@ -187,7 +188,7 @@
     },
     {
       "path": "./dist/js/bootstrap.js",
-      "maxSize": "20 kB"
+      "maxSize": "21 kB"
     },
     {
       "path": "./dist/js/bootstrap.min.js",
