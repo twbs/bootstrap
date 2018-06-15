@@ -1,5 +1,5 @@
 /*!
- * Bootstrap v5.17.3 (http://bootstrap.transferwise.com)
+ * Bootstrap v5.17.4 (http://bootstrap.transferwise.com)
  * Copyright 2011-2018 Twitter, Inc.
  * Licensed under MIT (https://github.com/transferwise/bootstrap/blob/master/LICENSE)
  */
@@ -7799,20 +7799,6 @@ select[multiple].input-group-sm > .input-group-addon {
 
     -webkit-touch-callout: none;
   }
-  .navbar-nav > li > .dropdown-menu {
-    position: relative;
-    float: none;
-    width: 100%;
-    padding: 0;
-    padding-bottom: 12px;
-    margin-top: 0;
-    border-bottom: 1px solid #f2f5f7;
-    -webkit-box-shadow: none;
-            box-shadow: none;
-  }
-  .navbar-nav > li > .dropdown-menu .dropdown-header {
-    padding: 9px 16px 7px;
-  }
   .navbar-nav .navbar-collapse-flatten .dropdown-toggle {
     display: none;
   }
@@ -7948,6 +7934,20 @@ select[multiple].input-group-sm > .input-group-addon {
 .navbar-nav > li > .dropdown-menu {
   margin-top: 56px;
 }
+.navbar-nav > li > .dropdown-menu:before {
+  position: absolute;
+  top: -4px;
+  left: 16px;
+  display: block;
+  width: 8px;
+  height: 8px;
+  content: " ";
+  background-color: inherit;
+  -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+       -o-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
 .navbar-nav > li > .dropdown-menu > li > a {
   font-size: 14px;
 }
@@ -7977,22 +7977,6 @@ select[multiple].input-group-sm > .input-group-addon {
 .navbar-nav > li > .dropdown-menu > .active > a:hover,
 .navbar-nav > li > .dropdown-menu > .active > a:focus {
   background-color: #f2f5f7;
-}
-@media (min-width: 768px) {
-  .navbar-nav > li > .dropdown-menu:before {
-    position: absolute;
-    top: -4px;
-    left: 16px;
-    display: block;
-    width: 8px;
-    height: 8px;
-    content: " ";
-    background-color: inherit;
-    -webkit-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
-         -o-transform: rotate(45deg);
-            transform: rotate(45deg);
-  }
 }
 .navbar-nav > li.dropdown:active > a,
 .navbar-nav > li.dropdown:focus > a,
@@ -8038,11 +8022,6 @@ select[multiple].input-group-sm > .input-group-addon {
   right: auto;
   left: 50%;
   margin-left: -4px;
-}
-@media (max-width: 768px) {
-  .navbar-collapse .navbar-nav > li > .dropdown-menu {
-    margin-top: 0;
-  }
 }
 .navbar-fixed-bottom .navbar-nav > li > .dropdown-menu {
   margin-bottom: 0;
@@ -8370,6 +8349,26 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
         -ms-transform: translateX(-264px);
          -o-transform: translateX(-264px);
             transform: translateX(-264px);
+  }
+  .navbar-collapse .navbar-nav > li {
+    border-bottom: 1px solid #f2f5f7;
+  }
+  .navbar-collapse .dropdown-menu {
+    position: relative;
+    float: none;
+    width: 100%;
+    padding: 0;
+    padding-bottom: 12px;
+    margin-top: 0 !important;
+    border-bottom: 1px solid #f2f5f7;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+  }
+  .navbar-collapse .dropdown-menu::before {
+    display: none;
+  }
+  .navbar-collapse .dropdown-menu .dropdown-header {
+    padding: 9px 16px 7px;
   }
   .navbar-collapse .navbar-toggle {
     position: absolute;
