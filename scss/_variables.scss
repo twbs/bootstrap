@@ -182,13 +182,15 @@ $paragraph-margin-bottom:   1rem !default;
 // Define the minimum dimensions at which your layout will change,
 // adapting to different screen sizes, for use in media queries.
 
-$grid-breakpoints: (
+$grid-breakpoints: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$grid-breakpoints: map-merge((
   xs: 0,
   sm: 576px,
   md: 768px,
   lg: 992px,
   xl: 1200px
-) !default;
+), $grid-breakpoints);
 
 @include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
 @include _assert-starts-at-zero($grid-breakpoints);
@@ -198,12 +200,14 @@ $grid-breakpoints: (
 //
 // Define the maximum width of `.container` for different screen sizes.
 
-$container-max-widths: (
+$container-max-widths: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$container-max-widths: map-merge((
   sm: 540px,
   md: 720px,
   lg: 960px,
   xl: 1140px
-) !default;
+), $container-max-widths);
 
 @include _assert-ascending($container-max-widths, "$container-max-widths");
 
