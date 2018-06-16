@@ -15,7 +15,8 @@
     "Simulator": false,
     "Toast": false,
     "EventHandler": false,
-    "Manipulator": false
+    "Manipulator": false,
+    "SelectorEngine": false
   },
   "parserOptions": {
     "ecmaVersion": 5,
