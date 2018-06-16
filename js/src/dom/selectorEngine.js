@@ -3,7 +3,7 @@ import Util from '../util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-beta): dom/selectorEngine.js
+ * Bootstrap (v4.1.1): dom/selectorEngine.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -69,6 +69,10 @@ const SelectorEngine = (() => {
     },
 
     closest(element, selector) {
+      if (typeof selector !== 'string') {
+        return null
+      }
+
       return closest(element, selector)
     },
 
