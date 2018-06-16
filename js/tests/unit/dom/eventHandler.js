@@ -1,7 +1,7 @@
 $(function () {
   'use strict'
 
-  QUnit.module('event handler')
+  QUnit.module('eventHandler')
 
   QUnit.test('should be defined', function (assert) {
     assert.expect(1)
