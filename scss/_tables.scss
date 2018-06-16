@@ -22,9 +22,8 @@
     vertical-align: top;
   }
 
-  > thead,
-  > tbody,
-  > tfoot {
+  // stylelint-disable-next-line selector-max-universal
+  > * {
     border-color: inherit;
 
     @if (not $table-show-border-top) {
@@ -78,9 +77,8 @@
 //
 
 .table-sm {
-  > thead,
-  > tbody,
-  > tfoot {
+  // stylelint-disable-next-line selector-max-universal
+  > * {
     > tr {
       > th,
       > td {
@@ -95,9 +93,8 @@
 // Add or remove borders all around the table and between all the columns.
 
 .table-bordered {
-  > thead,
-  > tbody,
-  > tfoot {
+  // stylelint-disable-next-line selector-max-universal
+  > * {
     > tr {
       > th,
       > td {
@@ -112,9 +109,8 @@
 }
 
 .table-borderless {
-  > thead,
-  > tbody,
-  > tfoot {
+  // stylelint-disable-next-line selector-max-universal
+  > * {
     > tr {
       > th,
       > td {
