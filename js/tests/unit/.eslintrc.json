@@ -12,7 +12,8 @@
     "Alert": false,
     "Button": false,
     "EventHandler": false,
-    "Manipulator": false
+    "Manipulator": false,
+    "SelectorEngine": false
   },
   "parserOptions": {
     "ecmaVersion": 5,
