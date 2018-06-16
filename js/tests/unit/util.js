@@ -101,4 +101,22 @@ $(function () {
     assert.expect(1)
     assert.ok(Util.supportsTransitionEnd())
   })
+
+  QUnit.test('noop should return an empty function', function (assert) {
+    assert.expect(1)
+    Util.noop().call()
+    assert.ok(typeof Util.noop() === 'function')
+  })
+
+  QUnit.test('should return jQuery if present', function (assert) {
+    assert.expect(2)
+
+    assert.equal(Util.jQuery, $)
+
+    $.noConflict()
+
+    assert.equal(Util.jQuery, jQuery)
+
+    window.$ = jQuery
+  })
 })
