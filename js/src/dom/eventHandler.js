@@ -281,7 +281,14 @@ const EventHandler = (() => {
 
       // merge custom informations in our event
       if (typeof args !== 'undefined') {
-        evt = Object.assign(evt, args)
+        Object.keys(args)
+          .forEach((key) => {
+            Object.defineProperty(evt, key, {
+              get() {
+                return args[key]
+              }
+            })
+          })
       }
 
       if (defaultPrevented) {
