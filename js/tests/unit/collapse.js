@@ -73,7 +73,7 @@ $(function () {
       assert.ok(!/height/i.test($el2.attr('style')), 'has height reset')
       done()
     })
-    $target[0].dispatchEvent(new Event('click'))
+    $target[0].click()
   })
 
   QUnit.test('should collapse only the first collapse', function (assert) {
@@ -760,11 +760,11 @@ $(function () {
           assert.ok($trigger3.hasClass('collapsed'), 'trigger3 has collapsed class')
           done()
         })
-        $trigger1[0].dispatchEvent(new Event('click'))
+        $trigger1[0].click()
       })
-      $trigger2[0].dispatchEvent(new Event('click'))
+      $trigger2[0].click()
     })
-    $trigger3[0].dispatchEvent(new Event('click'))
+    $trigger3[0].click()
   })
 
   QUnit.test('should set aria-expanded="true" to triggers targeting shown collaspe and aria-expanded="false" only when all the targeted collapses are shown', function (assert) {
@@ -792,11 +792,11 @@ $(function () {
           assert.strictEqual($trigger3.attr('aria-expanded'), 'false', 'aria-expanded on trigger3 is "false"')
           done()
         })
-        $trigger1[0].dispatchEvent(new Event('click'))
+        $trigger1[0].click()
       })
-      $trigger2[0].dispatchEvent(new Event('click'))
+      $trigger2[0].click()
     })
-    $trigger3[0].dispatchEvent(new Event('click'))
+    $trigger3[0].click()
   })
 
   QUnit.test('should not prevent interactions inside the collapse element', function (assert) {

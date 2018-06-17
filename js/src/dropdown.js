@@ -472,7 +472,7 @@ class Dropdown {
         EventHandler.trigger(SelectorEngine.findOne(Selector.DATA_TOGGLE, parent), 'focus')
       }
 
-      EventHandler.trigger(this, 'click')
+      Dropdown._clearMenus()
       return
     }
 
