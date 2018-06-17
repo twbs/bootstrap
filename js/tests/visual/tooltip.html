@@ -71,17 +71,18 @@
       <div id="customContainer"></div>
     </div>
 
-    <script src="../../../node_modules/jquery/dist/jquery.slim.min.js"></script>
     <script src="../../../node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <script src="../../dist/dom/polyfill.js"></script>
+    <script src="../../dist/dom/manipulator.js"></script>
     <script src="../../dist/dom/data.js"></script>
     <script src="../../dist/dom/eventHandler.js"></script>
     <script src="../../dist/dom/selectorEngine.js"></script>
     <script src="../../dist/util.js"></script>
     <script src="../../dist/tooltip.js"></script>
     <script>
-      $(function () {
+      document.addEventListener('DOMContentLoaded', function () {
         if (typeof document.body.attachShadow === 'function') {
-          var shadowRoot = $('#shadow')[0].attachShadow({ mode: 'open' })
+          var shadowRoot = document.getElementById('shadow').attachShadow({ mode: 'open' })
           shadowRoot.innerHTML =
             '<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top in a shadow dom">' +
             '  Tooltip on top in a shadow dom' +
@@ -90,19 +91,28 @@
             '  Tooltip on top in a shadow dom' +
             '</button>'
 
-          $(shadowRoot.firstChild).tooltip()
-          $(shadowRoot.getElementById('secondTooltip')).tooltip({
+          var firstChildTooltip = new Tooltip(shadowRoot.firstChild)
+          var secondChildTooltip = new Tooltip(shadowRoot.getElementById('secondTooltip'), {
             container: shadowRoot
           })
         }
-        $('[data-toggle="tooltip"]').tooltip()
-        $('#tooltipElement').tooltip({
-          container: $('#customContainer')[0]
+
+        document.querySelectorAll('[data-toggle="tooltip"]')
+          .forEach(function (tooltip) {
+            new Tooltip(tooltip)
+          })
+
+        var tooltipElement = document.getElementById('tooltipElement')
+        var tooltipElementInstance = new Tooltip(tooltipElement, {
+          container: document.getElementById('customContainer')
         })
-        $('#target').tooltip({
+
+        var target = document.getElementById('target')
+        var targetTooltip = new Tooltip(target, {
           placement : 'top',
           trigger : 'manual'
-        }).tooltip('show')
+        })
+        targetTooltip.show()
       })
     </script>
   </body>
