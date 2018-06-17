@@ -431,7 +431,7 @@ const Dropdown = (() => {
           EventHandler.trigger(toggle, 'focus')
         }
 
-        EventHandler.trigger(this, 'click')
+        Dropdown._clearMenus()
         return
       }
 
