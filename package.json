@@ -98,7 +98,6 @@
   "license": "MIT",
   "dependencies": {},
   "peerDependencies": {
-    "jquery": "1.9.1 - 3",
     "popper.js": "^1.14.6"
   },
   "devDependencies": {
@@ -206,15 +205,12 @@
     "shim": {
       "js/bootstrap": {
         "deps": [
-          "jquery",
           "popper.js"
-        ],
-        "exports": "$"
+        ]
       }
     },
     "dependencies": {},
     "peerDependencies": {
-      "jquery": "1.9.1 - 3",
       "popper.js": "^1.14.6"
     }
   }
