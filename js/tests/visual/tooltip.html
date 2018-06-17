@@ -63,8 +63,9 @@
       <div id="customContainer"></div>
     </div>
 
-    <script src="../../../assets/js/vendor/jquery-slim.min.js"></script>
     <script src="../../../assets/js/vendor/popper.min.js"></script>
+    <script src="../../dist/dom/polyfill.js"></script>
+    <script src="../../dist/dom/manipulator.js"></script>
     <script src="../../dist/dom/data.js"></script>
     <script src="../../dist/dom/eventHandler.js"></script>
     <script src="../../dist/dom/selectorEngine.js"></script>
@@ -72,12 +73,18 @@
     <script src="../../dist/tooltip.js"></script>
 
     <script>
-      $(function () {
-        $('[data-toggle="tooltip"]').tooltip()
-        $('#target').tooltip({
+      document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('[data-toggle="tooltip"]')
+          .forEach(function (tooltip) {
+            new Tooltip(tooltip)
+          })
+
+        var target = document.getElementById('target')
+        var targetTooltip = new Tooltip(target, {
           placement : 'top',
           trigger : 'manual'
-        }).tooltip('show')
+        })
+        targetTooltip.show()
       })
     </script>
   </body>
