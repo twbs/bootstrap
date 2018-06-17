@@ -21,7 +21,6 @@ const plugins = [
   })
 ]
 const globals = {
-  jquery: 'jQuery', // Ensure we use jQuery which is always available even in noConflict mode
   'popper.js': 'Popper'
 }
 
