@@ -676,7 +676,7 @@ $(function () {
     $template.bootstrapCarousel()
     var done = assert.async()
 
-    function handlerKeydown() {
+    function handlerKeydown(event) {
       assert.strictEqual(event.defaultPrevented, false)
       $template[0].removeEventListener('keydown', handlerKeydown)
     }
@@ -687,7 +687,7 @@ $(function () {
     keyDown.which = 40
     $template[0].dispatchEvent(keyDown)
 
-    function handlerKeydown2() {
+    function handlerKeydown2(event) {
       assert.strictEqual(event.defaultPrevented, false)
       $template[0].addEventListener('keydown', handlerKeydown2)
       done()
