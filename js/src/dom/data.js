@@ -28,7 +28,7 @@ const Data = (() => {
         storeData[element.key.id] = data
       },
       get(element, key) {
-        if (typeof element === 'undefined' || typeof element.key === 'undefined') {
+        if (!element || typeof element.key === 'undefined') {
           return null
         }
 
