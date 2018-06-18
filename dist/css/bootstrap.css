@@ -5790,11 +5790,9 @@ fieldset[disabled] .btn-link:focus {
 }
 .btn-download {
   position: relative;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 80px;
+  padding: 8px 16px;
   color: #fff;
-  text-align: left;
+  text-align: center;
   background-color: #000;
   border-color: #bbb;
   border-radius: 8px !important;
@@ -5867,7 +5865,11 @@ fieldset[disabled] .btn-download.active {
 .btn-download .icon-download {
   position: absolute;
   top: 12px;
-  left: 16px;
+}
+.btn-download .btn-download-inner {
+  display: inline-block;
+  padding-left: 64px;
+  text-align: left;
 }
 .btn-download span {
   display: block;
