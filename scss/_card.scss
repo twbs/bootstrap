@@ -14,8 +14,8 @@
   @include border-radius($card-border-radius);
 
   > hr {
-    margin-right: 0;
-    margin-left: 0;
+    margin-#{$opposite}: 0;
+    margin-#{$default}: 0;
   }
 
   > .list-group:first-child {
@@ -57,7 +57,7 @@
   }
 
   + .card-link {
-    margin-left: $card-spacer-x;
+    margin-#{$default}: $card-spacer-x;
   }
 }
 
@@ -98,24 +98,24 @@
 //
 
 .card-header-tabs {
-  margin-right: -($card-spacer-x / 2);
+  margin-#{$opposite}: -($card-spacer-x / 2);
   margin-bottom: -$card-spacer-y;
-  margin-left: -($card-spacer-x / 2);
+  margin-#{$default}: -($card-spacer-x / 2);
   border-bottom: 0;
 }
 
 .card-header-pills {
-  margin-right: -($card-spacer-x / 2);
-  margin-left: -($card-spacer-x / 2);
+  margin-#{$opposite}: -($card-spacer-x / 2);
+  margin-#{$default}: -($card-spacer-x / 2);
 }
 
 // Card image
 .card-img-overlay {
   position: absolute;
   top: 0;
-  right: 0;
+  #{$opposite}: 0;
   bottom: 0;
-  left: 0;
+  #{$default}: 0;
   padding: $card-img-overlay-padding;
 }
 
@@ -148,17 +148,17 @@
 
   @include media-breakpoint-up(sm) {
     flex-flow: row wrap;
-    margin-right: -$card-deck-margin;
-    margin-left: -$card-deck-margin;
+    margin-#{$opposite}: -$card-deck-margin;
+    margin-#{$default}: -$card-deck-margin;
 
     .card {
       display: flex;
       // Flexbugs #4: https://github.com/philipwalton/flexbugs#flexbug-4
       flex: 1 0 0%;
       flex-direction: column;
-      margin-right: $card-deck-margin;
+      margin-#{$opposite}: $card-deck-margin;
       margin-bottom: 0; // Override the default
-      margin-left: $card-deck-margin;
+      margin-#{$default}: $card-deck-margin;
     }
   }
 }
@@ -188,8 +188,8 @@
       margin-bottom: 0;
 
       + .card {
-        margin-left: 0;
-        border-left: 0;
+        margin-#{$default}: 0;
+        border-#{$default}: 0;
       }
 
       // Handle rounded corners
@@ -199,11 +199,11 @@
 
           .card-img-top,
           .card-header {
-            border-top-right-radius: 0;
+            border-top-#{$opposite}-radius: 0;
           }
           .card-img-bottom,
           .card-footer {
-            border-bottom-right-radius: 0;
+            border-bottom-#{$opposite}-radius: 0;
           }
         }
 
@@ -212,11 +212,11 @@
 
           .card-img-top,
           .card-header {
-            border-top-left-radius: 0;
+            border-top-#{$default}-radius: 0;
           }
           .card-img-bottom,
           .card-footer {
-            border-bottom-left-radius: 0;
+            border-bottom-#{$default}-radius: 0;
           }
         }
 
@@ -290,12 +290,12 @@
 
   .card:first-of-type {
     border-bottom: 0;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
+    border-bottom-#{$opposite}-radius: 0;
+    border-bottom-#{$default}-radius: 0;
   }
 
   .card:last-of-type {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
+    border-top-#{$default}-radius: 0;
+    border-top-#{$opposite}-radius: 0;
   }
 }

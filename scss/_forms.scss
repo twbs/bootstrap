@@ -128,8 +128,8 @@ select.form-control {
 
   &.form-control-sm,
   &.form-control-lg {
-    padding-right: 0;
-    padding-left: 0;
+    padding-#{$opposite}: 0;
+    padding-#{$default}: 0;
   }
 }
 
@@ -191,13 +191,13 @@ select.form-control-lg {
 .form-row {
   display: flex;
   flex-wrap: wrap;
-  margin-right: -5px;
-  margin-left: -5px;
+  margin-#{$opposite}: -5px;
+  margin-#{$default}: -5px;
 
   > .col,
   > [class*="col-"] {
-    padding-right: 5px;
-    padding-left: 5px;
+    padding-#{$opposite}: 5px;
+    padding-#{$default}: 5px;
   }
 }
 
@@ -209,13 +209,13 @@ select.form-control-lg {
 .form-check {
   position: relative;
   display: block;
-  padding-left: $form-check-input-gutter;
+  padding-#{$default}: $form-check-input-gutter;
 }
 
 .form-check-input {
   position: absolute;
   margin-top: $form-check-input-margin-y;
-  margin-left: -$form-check-input-gutter;
+  margin-#{$default}: -$form-check-input-gutter;
 
   &:disabled ~ .form-check-label {
     color: $text-muted;
@@ -229,15 +229,15 @@ select.form-control-lg {
 .form-check-inline {
   display: inline-flex;
   align-items: center;
-  padding-left: 0; // Override base .form-check
-  margin-right: $form-check-inline-margin-x;
+  padding-#{$default}: 0; // Override base .form-check
+  margin-#{$opposite}: $form-check-inline-margin-x;
 
   // Undo .form-check-input defaults and add some `margin-right`.
   .form-check-input {
     position: static;
     margin-top: 0;
-    margin-right: $form-check-inline-input-margin-x;
-    margin-left: 0;
+    margin-#{$opposite}: $form-check-inline-input-margin-x;
+    margin-#{$default}: 0;
   }
 }
 
@@ -315,13 +315,13 @@ select.form-control-lg {
       align-items: center;
       justify-content: center;
       width: auto;
-      padding-left: 0;
+      padding-#{$default}: 0;
     }
     .form-check-input {
       position: relative;
       margin-top: 0;
-      margin-right: $form-check-input-margin-x;
-      margin-left: 0;
+      margin-#{$opposite}: $form-check-input-margin-x;
+      margin-#{$default}: 0;
     }
 
     .custom-control {

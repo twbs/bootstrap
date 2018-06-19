@@ -8,7 +8,7 @@
   position: relative;
   display: block;
   padding: $pagination-padding-y $pagination-padding-x;
-  margin-left: -$pagination-border-width;
+  margin-#{$default}: -$pagination-border-width;
   line-height: $pagination-line-height;
   color: $pagination-color;
   background-color: $pagination-bg;
@@ -37,7 +37,7 @@
 .page-item {
   &:first-child {
     .page-link {
-      margin-left: 0;
+      margin-#{$default}: 0;
       @include border-left-radius($border-radius);
     }
   }

@@ -13,9 +13,9 @@
 .modal {
   position: fixed;
   top: 0;
-  right: 0;
+  #{$opposite}: 0;
   bottom: 0;
-  left: 0;
+  #{$default}: 0;
   z-index: $zindex-modal;
   display: none;
   overflow: hidden;
@@ -77,9 +77,9 @@
 .modal-backdrop {
   position: fixed;
   top: 0;
-  right: 0;
+  #{$opposite}: 0;
   bottom: 0;
-  left: 0;
+  #{$default}: 0;
   z-index: $zindex-modal-backdrop;
   background-color: $modal-backdrop-bg;
 
@@ -130,8 +130,8 @@
   border-top: $modal-footer-border-width solid $modal-footer-border-color;
 
   // Easily place margin between footer elements
-  > :not(:first-child) { margin-left: .25rem; }
-  > :not(:last-child) { margin-right: .25rem; }
+  > :not(:first-child) { margin-#{$default}: .25rem; }
+  > :not(:last-child) { margin-#{$opposite}: .25rem; }
 }
 
 // Measure scrollbar width for padding body during modal show/hide
