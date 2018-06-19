@@ -6,15 +6,15 @@
 
 .border         { border: $border-width solid $border-color !important; }
 .border-top     { border-top: $border-width solid $border-color !important; }
-.border-right   { border-right: $border-width solid $border-color !important; }
+.border-right   { border-#{$opposite}: $border-width solid $border-color !important; }
 .border-bottom  { border-bottom: $border-width solid $border-color !important; }
-.border-left    { border-left: $border-width solid $border-color !important; }
+.border-left    { border-#{$default}: $border-width solid $border-color !important; }
 
 .border-0        { border: 0 !important; }
 .border-top-0    { border-top: 0 !important; }
-.border-right-0  { border-right: 0 !important; }
+.border-right-0  { border-#{$opposite}: 0 !important; }
 .border-bottom-0 { border-bottom: 0 !important; }
-.border-left-0   { border-left: 0 !important; }
+.border-left-0   { border-#{$default}: 0 !important; }
 
 @each $color, $value in $theme-colors {
   .border-#{$color} {
@@ -34,20 +34,20 @@
   border-radius: $border-radius !important;
 }
 .rounded-top {
-  border-top-left-radius: $border-radius !important;
-  border-top-right-radius: $border-radius !important;
+  border-top-#{$default}-radius: $border-radius !important;
+  border-top-#{$opposite}-radius: $border-radius !important;
 }
 .rounded-right {
-  border-top-right-radius: $border-radius !important;
-  border-bottom-right-radius: $border-radius !important;
+  border-top-#{$opposite}-radius: $border-radius !important;
+  border-bottom-#{$opposite}-radius: $border-radius !important;
 }
 .rounded-bottom {
-  border-bottom-right-radius: $border-radius !important;
-  border-bottom-left-radius: $border-radius !important;
+  border-bottom-#{$opposite}-radius: $border-radius !important;
+  border-bottom-#{$default}-radius: $border-radius !important;
 }
 .rounded-left {
-  border-top-left-radius: $border-radius !important;
-  border-bottom-left-radius: $border-radius !important;
+  border-top-#{$default}-radius: $border-radius !important;
+  border-bottom-#{$default}-radius: $border-radius !important;
 }
 
 .rounded-circle {

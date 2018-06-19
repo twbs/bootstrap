@@ -1,0 +1,60 @@
+$direction: ltr !default;
+
+// Default $direction if not valid
+@if $direction != ltr and $direction != rtl {
+  $direction: ltr;
+}
+
+@function if-ltr($if, $else: null) {
+  @if $direction != rtl {
+    @return $if;
+  } @else {
+    @return $else;
+  }
+}
+
+@function if-rtl($if, $else: null) {
+  @return if-ltr($else, $if);
+}
+
+$left: if-ltr(left, right) !default;
+$right: if-ltr(right, left) !default;
+
+$default: $left !default;
+$opposite: $right !default;
+
+@function side-values($values) {
+  @if $direction == rtl and length($values) >= 4 {
+    // Reorder right and left positions in list
+    @return nth($values, 1) nth($values, 4) nth($values, 3) nth($values, 2);
+  } @else {
+    @return $values;
+  }
+}
+
+@function corner-values($values) {
+  @if $direction == rtl and length($values) > 1 {
+    // Reorder right and left positions in list
+    @if length($values) == 2 {
+      @return nth($values, 2) nth($values, 1);
+    } @else if length($values) == 3 {
+      @return nth($values, 2) nth($values, 1) nth($values, 2) nth($values, 3);
+    } @else {
+      @return nth($values, 2) nth($values, 1) nth($values, 4) nth($values, 3);
+    }
+  } @else {
+    @return $values;
+  }
+}
+
+@mixin if-ltr {
+  @if $direction != rtl {
+    @content;
+  }
+}
+
+@mixin if-rtl {
+  @if $direction == rtl {
+    @content;
+  }
+}
