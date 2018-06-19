@@ -25,6 +25,14 @@ Place one add-on or button on either side of an input. You may also place one on
   </div>
 </div>
 
+<div class="input-group mb-3">
+  <input type="text" class="form-control" aria-label="Min value" placeholder="Min value">
+  <div class="input-group-prepend">
+    <span class="input-group-text">to</span>
+  </div>
+  <input type="text" class="form-control" aria-label="Max value" placeholder="Max value">
+</div>
+
 <label for="basic-url">Your vanity URL</label>
 <div class="input-group mb-3">
   <div class="input-group-prepend">
