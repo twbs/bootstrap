@@ -9,7 +9,7 @@ kramdown:
 permalink:      pretty
 
 # Server
-source:         "."
+source:         "site"
 destination:    ./_gh_pages
 host:           0.0.0.0
 port:           9001
@@ -17,25 +17,7 @@ baseurl:        ""
 url:            "https://getbootstrap.com"
 encoding:       UTF-8
 exclude:
-  - .git/
-  - .github/
-  - assets/scss/
-  - build/
-  - js/
-  - node_modules/
-  - nuget/
-  - scss/
-  - vendor/
-  - CODE_OF_CONDUCT.md
-  - composer.json
-  - Gemfile
-  - Gemfile.lock
-  - package.js
-  - package.json
-  - package-lock.json
-  - README.md
-  - sache.json
-  - twbsconfig.yml
+  - docs/4.1/assets/scss/
 
 plugins:
   - jekyll-redirect-from
