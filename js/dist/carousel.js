@@ -98,7 +98,7 @@ var Carousel = function ($) {
       this.touchTimeout = null;
       this._config = this._getConfig(config);
       this._element = $(element)[0];
-      this._indicatorsElement = $(this._element).find(Selector.INDICATORS)[0];
+      this._indicatorsElement = this._element.querySelector(Selector.INDICATORS);
 
       this._addEventListeners();
     } // Getters
@@ -132,7 +132,7 @@ var Carousel = function ($) {
         this._isPaused = true;
       }
 
-      if ($(this._element).find(Selector.NEXT_PREV)[0]) {
+      if (this._element.querySelector(Selector.NEXT_PREV)) {
         Util.triggerTransitionEnd(this._element);
         this.cycle(true);
       }
@@ -159,7 +159,7 @@ var Carousel = function ($) {
     _proto.to = function to(index) {
       var _this = this;
 
-      this._activeElement = $(this._element).find(Selector.ACTIVE_ITEM)[0];
+      this._activeElement = this._element.querySelector(Selector.ACTIVE_ITEM);
 
       var activeIndex = this._getItemIndex(this._activeElement);
 
@@ -265,7 +265,7 @@ var Carousel = function ($) {
     };
 
     _proto._getItemIndex = function _getItemIndex(element) {
-      this._items = $.makeArray($(element).parent().find(Selector.ITEM));
+      this._items = element && element.parentNode ? [].slice.call(element.parentNode.querySelectorAll(Selector.ITEM)) : [];
       return this._items.indexOf(element);
     };
 
@@ -290,7 +290,7 @@ var Carousel = function ($) {
     _proto._triggerSlideEvent = function _triggerSlideEvent(relatedTarget, eventDirectionName) {
       var targetIndex = this._getItemIndex(relatedTarget);
 
-      var fromIndex = this._getItemIndex($(this._element).find(Selector.ACTIVE_ITEM)[0]);
+      var fromIndex = this._getItemIndex(this._element.querySelector(Selector.ACTIVE_ITEM));
 
       var slideEvent = $.Event(Event.SLIDE, {
         relatedTarget: relatedTarget,
@@ -304,7 +304,8 @@ var Carousel = function ($) {
 
     _proto._setActiveIndicatorElement = function _setActiveIndicatorElement(element) {
       if (this._indicatorsElement) {
-        $(this._indicatorsElement).find(Selector.ACTIVE).removeClass(ClassName.ACTIVE);
+        var indicators = [].slice.call(this._indicatorsElement.querySelectorAll(Selector.ACTIVE));
+        $(indicators).removeClass(ClassName.ACTIVE);
 
         var nextIndicator = this._indicatorsElement.children[this._getItemIndex(element)];
 
@@ -317,7 +318,7 @@ var Carousel = function ($) {
     _proto._slide = function _slide(direction, element) {
       var _this3 = this;
 
-      var activeElement = $(this._element).find(Selector.ACTIVE_ITEM)[0];
+      var activeElement = this._element.querySelector(Selector.ACTIVE_ITEM);
 
       var activeElementIndex = this._getItemIndex(activeElement);
 
@@ -483,11 +484,13 @@ var Carousel = function ($) {
 
   $(document).on(Event.CLICK_DATA_API, Selector.DATA_SLIDE, Carousel._dataApiClickHandler);
   $(window).on(Event.LOAD_DATA_API, function () {
-    $(Selector.DATA_RIDE).each(function () {
-      var $carousel = $(this);
+    var carousels = [].slice.call(document.querySelectorAll(Selector.DATA_RIDE));
+
+    for (var i = 0, len = carousels.length; i < len; i++) {
+      var $carousel = $(carousels[i]);
 
       Carousel._jQueryInterface.call($carousel, $carousel.data());
-    });
+    }
   });
   /**
    * ------------------------------------------------------------------------
