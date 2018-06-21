@@ -68,7 +68,7 @@ const Collapse = (($) => {
       this._isTransitioning = false
       this._element         = element
       this._config          = this._getConfig(config)
-      this._triggerArray    = $.makeArray($(
+      this._triggerArray    = $.makeArray(document.querySelectorAll(
         `[data-toggle="collapse"][href="#${element.id}"],` +
         `[data-toggle="collapse"][data-target="#${element.id}"]`
       ))
@@ -162,7 +162,7 @@ const Collapse = (($) => {
 
       this._element.style[dimension] = 0
 
-      if (this._triggerArray.length > 0) {
+      if (this._triggerArray.length) {
         $(this._triggerArray)
           .removeClass(ClassName.COLLAPSED)
           .attr('aria-expanded', true)
@@ -297,7 +297,8 @@ const Collapse = (($) => {
       const selector =
         `[data-toggle="collapse"][data-parent="${this._config.parent}"]`
 
-      $(parent).find(selector).each((i, element) => {
+      const children = [].slice.call(parent.querySelectorAll(selector))
+      $(children).each((i, element) => {
         this._addAriaAndCollapsedClass(
           Collapse._getTargetFromElement(element),
           [element]
@@ -311,7 +312,7 @@ const Collapse = (($) => {
       if (element) {
         const isOpen = $(element).hasClass(ClassName.SHOW)
 
-        if (triggerArray.length > 0) {
+        if (triggerArray.length) {
           $(triggerArray)
             .toggleClass(ClassName.COLLAPSED, !isOpen)
             .attr('aria-expanded', isOpen)
@@ -323,7 +324,7 @@ const Collapse = (($) => {
 
     static _getTargetFromElement(element) {
       const selector = Util.getSelectorFromElement(element)
-      return selector ? $(selector)[0] : null
+      return selector ? document.querySelector(selector) : null
     }
 
     static _jQueryInterface(config) {
@@ -369,7 +370,8 @@ const Collapse = (($) => {
 
     const $trigger = $(this)
     const selector = Util.getSelectorFromElement(this)
-    $(selector).each(function () {
+    const selectors = [].slice.call(document.querySelectorAll(selector))
+    $(selectors).each(function () {
       const $target = $(this)
       const data    = $target.data(DATA_KEY)
       const config  = data ? 'toggle' : $trigger.data()
