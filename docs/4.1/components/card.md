@@ -638,10 +638,10 @@ Cards can be organized into [Masonry](https://masonry.desandro.com/)-like column
     </blockquote>
   </div>
   <div class="card">
-    <img class="card-img" data-src="holder.js/100px260/" alt="Card image">
+    <img class="card-img-top" data-src="holder.js/100px260/" alt="Card image">
     <div class="card-body">
       <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+      <p class="card-text">This is a taller card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first.</p>
       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
     </div>
   </div>
