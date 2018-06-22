@@ -96,7 +96,7 @@ Adding images to the `.navbar-brand` will likely always require custom styles or
 <!-- Just an image -->
 <nav class="navbar navbar-light bg-light">
   <a class="navbar-brand" href="#">
-    <img src="{{ site.baseurl }}/assets/brand/bootstrap-solid.svg" width="30" height="30" alt="">
+    <img src="{{ site.baseurl }}/docs/{{ site.docs_version }}/assets/brand/bootstrap-solid.svg" width="30" height="30" alt="">
   </a>
 </nav>
 {% endcapture %}
@@ -106,7 +106,7 @@ Adding images to the `.navbar-brand` will likely always require custom styles or
 <!-- Image and text -->
 <nav class="navbar navbar-light bg-light">
   <a class="navbar-brand" href="#">
-    <img src="{{ site.baseurl }}/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+    <img src="{{ site.baseurl }}/docs/{{ site.docs_version }}/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
     Bootstrap
   </a>
 </nav>

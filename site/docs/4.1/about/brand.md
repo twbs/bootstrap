@@ -14,10 +14,10 @@ Use either the Bootstrap mark (a capital **B**) or the standard logo (just **Boo
 
 <div class="bd-brand-logos">
   <div class="bd-brand-item">
-    <img class="svg" src="{{ site.baseurl }}/assets/brand/bootstrap-solid.svg" alt="Bootstrap" width="144" height="144">
+    <img class="svg" src="{{ site.baseurl }}/docs/{{ site.docs_version }}/assets/brand/bootstrap-solid.svg" alt="Bootstrap" width="144" height="144">
   </div>
   <div class="bd-brand-item inverse">
-    <img class="svg" src="{{ site.baseurl }}/assets/brand/bootstrap-outline.svg" alt="Bootstrap" width="144" height="144">
+    <img class="svg" src="{{ site.baseurl }}/docs/{{ site.docs_version }}/assets/brand/bootstrap-outline.svg" alt="Bootstrap" width="144" height="144">
   </div>
 </div>
 <div class="bd-brand-logos">
@@ -35,13 +35,13 @@ Download the Bootstrap mark in one of three styles, each available as an SVG fil
 
 <div class="bd-brand-logos">
   <div class="bd-brand-item">
-    <img class="svg" src="{{ site.baseurl }}/assets/brand/bootstrap-solid.svg" alt="Bootstrap" width="144" height="144">
+    <img class="svg" src="{{ site.baseurl }}/docs/{{ site.docs_version }}/assets/brand/bootstrap-solid.svg" alt="Bootstrap" width="144" height="144">
   </div>
   <div class="bd-brand-item inverse">
-    <img class="svg" src="{{ site.baseurl }}/assets/brand/bootstrap-outline.svg" alt="Bootstrap" width="144" height="144">
+    <img class="svg" src="{{ site.baseurl }}/docs/{{ site.docs_version }}/assets/brand/bootstrap-outline.svg" alt="Bootstrap" width="144" height="144">
   </div>
   <div class="bd-brand-item inverse">
-    <img class="svg" src="{{ site.baseurl }}/assets/brand/bootstrap-punchout.svg" alt="Bootstrap" width="144" height="144">
+    <img class="svg" src="{{ site.baseurl }}/docs/{{ site.docs_version }}/assets/brand/bootstrap-punchout.svg" alt="Bootstrap" width="144" height="144">
   </div>
 </div>
 
