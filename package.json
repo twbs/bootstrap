@@ -109,7 +109,7 @@
     "karma-detect-browsers": "^2.2.6",
     "karma-firefox-launcher": "^1.1.0",
     "karma-qunit": "^1.2.1",
-    "node-sass": "^4.7.2",
+    "node-sass": "^4.9.0",
     "nodemon": "^1.14.10",
     "npm-run-all": "^4.1.2",
     "popper.js": "^1.12.9",
