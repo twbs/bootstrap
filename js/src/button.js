@@ -52,6 +52,7 @@ const Event = {
 class Button {
   constructor(element) {
     this._element = element
+    Data.setData(element, DATA_KEY, this)
   }
 
   // Getters
@@ -112,10 +113,6 @@ class Button {
     if (triggerChangeEvent) {
       this._element.classList.toggle(ClassName.ACTIVE)
     }
-
-    static _getInstance(element) {
-      return Data.getData(element, DATA_KEY)
-    }
   }
 
   dispose() {
@@ -131,13 +128,16 @@ class Button {
 
       if (!data) {
         data = new Button(this)
-        Data.setData(this, DATA_KEY, data)
       }
 
       if (config === 'toggle') {
         data[config]()
       }
     })
+  }
+
+  static _getInstance(element) {
+    return Data.getData(element, DATA_KEY)
   }
 }
 

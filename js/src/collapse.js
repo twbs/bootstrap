@@ -96,6 +96,8 @@ class Collapse {
     if (this._config.toggle) {
       this.toggle()
     }
+
+    Data.setData(element, DATA_KEY, this)
   }
 
   // Getters
@@ -358,7 +360,6 @@ class Collapse {
 
     if (!data) {
       data = new Collapse(element, _config)
-      Data.setData(element, DATA_KEY, data)
     }
 
     if (typeof config === 'string') {
