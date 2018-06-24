@@ -761,7 +761,7 @@ Using our built-in grid Sass variables and maps, it's possible to completely cus
 
 ### Columns and gutters
 
-The number of grid columns can be modified via Sass variables. `$grid-columns` is used to generate the widths (in percent) of each individual column while `$grid-gutter-width` allows breakpoint-specific widths that are divided evenly across `padding-left` and `padding-right` for the column gutters.
+The number of grid columns can be modified via Sass variables. `$grid-columns` is used to generate the widths (in percent) of each individual column while `$grid-gutter-width` sets the width for the column gutters.
 
 {% highlight scss %}
 $grid-columns: 12 !default;
