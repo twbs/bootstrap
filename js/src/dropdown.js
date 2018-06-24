@@ -103,6 +103,7 @@ class Dropdown {
     this._inNavbar = this._detectNavbar()
 
     this._addEventListeners()
+    Data.setData(element, DATA_KEY, this)
   }
 
   // Getters

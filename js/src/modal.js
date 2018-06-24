@@ -87,6 +87,7 @@ class Modal {
     this._ignoreBackdropClick = false
     this._isTransitioning     = false
     this._scrollbarWidth      = 0
+    Data.setData(element, DATA_KEY, this)
   }
 
   // Getters
@@ -522,7 +523,6 @@ class Modal {
 
       if (!data) {
         data = new Modal(this, _config)
-        Data.setData(this, DATA_KEY, data)
       }
 
       if (typeof config === 'string') {
@@ -581,7 +581,6 @@ EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (
   let data = Data.getData(target, DATA_KEY)
   if (!data) {
     data = new Modal(target, config)
-    Data.setData(target, DATA_KEY, data)
   }
 
   data.show(this)
