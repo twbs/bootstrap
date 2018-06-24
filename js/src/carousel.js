@@ -103,6 +103,7 @@ const Carousel = (() => {
       this._indicatorsElement = SelectorEngine.findOne(Selector.INDICATORS, this._element)
 
       this._addEventListeners()
+      Data.setData(element, DATA_KEY, this)
     }
 
     // Getters
@@ -442,7 +443,6 @@ const Carousel = (() => {
 
       if (!data) {
         data = new Carousel(element, _config)
-        Data.setData(element, DATA_KEY, data)
       }
 
       if (typeof config === 'number') {

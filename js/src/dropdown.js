@@ -103,6 +103,7 @@ const Dropdown = (() => {
       this._inNavbar = this._detectNavbar()
 
       this._addEventListeners()
+      Data.setData(element, DATA_KEY, this)
     }
 
     // Getters
@@ -316,7 +317,6 @@ const Dropdown = (() => {
 
       if (!data) {
         data = new Dropdown(element, _config)
-        Data.setData(element, DATA_KEY, data)
       }
 
       if (typeof config === 'string') {

@@ -85,6 +85,7 @@ const Modal = (() => {
       this._isBodyOverflowing   = false
       this._ignoreBackdropClick = false
       this._scrollbarWidth      = 0
+      Data.setData(element, DATA_KEY, this)
     }
 
     // Getters
@@ -501,7 +502,6 @@ const Modal = (() => {
 
         if (!data) {
           data = new Modal(this, _config)
-          Data.setData(this, DATA_KEY, data)
         }
 
         if (typeof config === 'string') {
@@ -565,7 +565,6 @@ const Modal = (() => {
     let data = Data.getData(target, DATA_KEY)
     if (!data) {
       data = new Modal(target, config)
-      Data.setData(target, DATA_KEY, data)
     }
 
     data.show(this)

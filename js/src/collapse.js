@@ -96,6 +96,8 @@ const Collapse = (() => {
       if (this._config.toggle) {
         this.toggle()
       }
+
+      Data.setData(element, DATA_KEY, this)
     }
 
     // Getters
@@ -348,7 +350,6 @@ const Collapse = (() => {
 
       if (!data) {
         data = new Collapse(element, _config)
-        Data.setData(element, DATA_KEY, data)
       }
 
       if (typeof config === 'string') {
@@ -388,6 +389,7 @@ const Collapse = (() => {
 
     selectorElements.forEach((element) => {
       const data = Data.getData(element, DATA_KEY)
+
       let config
       if (data) {
         // update parent attribute
@@ -395,6 +397,7 @@ const Collapse = (() => {
           data._config.parent = triggerData.parent
           data._parent = data._getParent()
         }
+
         config = 'toggle'
       } else {
         config = triggerData

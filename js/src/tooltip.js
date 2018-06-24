@@ -131,6 +131,7 @@ const Tooltip = (() => {
       this.tip     = null
 
       this._setListeners()
+      Data.setData(element, this.constructor.DATA_KEY, this)
     }
 
     // Getters
@@ -710,7 +711,6 @@ const Tooltip = (() => {
 
         if (!data) {
           data = new Tooltip(this, _config)
-          Data.setData(this, DATA_KEY, data)
         }
 
         if (typeof config === 'string') {

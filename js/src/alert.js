@@ -48,6 +48,9 @@ const Alert = (() => {
   class Alert {
     constructor(element) {
       this._element = element
+      if (this._element) {
+        Data.setData(element, DATA_KEY, this)
+      }
     }
 
     // Getters
@@ -129,7 +132,6 @@ const Alert = (() => {
 
         if (!data) {
           data = new Alert(this)
-          Data.setData(this, DATA_KEY, data)
         }
 
         if (config === 'close') {
@@ -158,7 +160,8 @@ const Alert = (() => {
    * Data Api implementation
    * ------------------------------------------------------------------------
    */
-  EventHandler.on(document, Event.CLICK_DATA_API, Selector.DISMISS, Alert._handleDismiss(new Alert()))
+  EventHandler
+    .on(document, Event.CLICK_DATA_API, Selector.DISMISS, Alert._handleDismiss(new Alert()))
 
   /**
    * ------------------------------------------------------------------------

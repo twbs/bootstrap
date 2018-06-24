@@ -53,6 +53,7 @@ const Button = (() => {
   class Button {
     constructor(element) {
       this._element = element
+      Data.setData(element, DATA_KEY, this)
     }
 
     // Getters
@@ -128,7 +129,6 @@ const Button = (() => {
 
         if (!data) {
           data = new Button(this)
-          Data.setData(this, DATA_KEY, data)
         }
 
         if (config === 'toggle') {
