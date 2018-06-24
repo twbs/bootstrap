@@ -119,6 +119,7 @@ class Carousel {
     this._pointerEvent      = Boolean(window.PointerEvent || window.MSPointerEvent)
 
     this._addEventListeners()
+    Data.setData(element, DATA_KEY, this)
   }
 
   // Getters
@@ -526,7 +527,6 @@ class Carousel {
 
     if (!data) {
       data = new Carousel(element, _config)
-      Data.setData(element, DATA_KEY, data)
     }
 
     if (typeof config === 'number') {
