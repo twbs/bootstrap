@@ -259,15 +259,15 @@ Bootstrap's grid includes five tiers of predefined classes for building complex 
 
 ### All breakpoints
 
-For grids that are the same from the smallest of devices to the largest, use the `.col` and `.col-*` classes. Specify a numbered class when you need a particularly sized column; otherwise, feel free to stick to `.col`.
+For grids that are the same from the smallest of devices to the largest, use the `.col-*` classes. Specify a numbered class when you need a particularly sized column.
 
 <div class="bd-example-row">
 {% capture example %}
 <div class="row">
-  <div class="col">col</div>
-  <div class="col">col</div>
-  <div class="col">col</div>
-  <div class="col">col</div>
+  <div class="col-3">col-3</div>
+  <div class="col-3">col-3</div>
+  <div class="col-3">col-3</div>
+  <div class="col-3">col-3</div>
 </div>
 <div class="row">
   <div class="col-8">col-8</div>
@@ -288,9 +288,9 @@ Using a single set of `.col-sm-*` classes, you can create a basic grid system th
   <div class="col-sm-4">col-sm-4</div>
 </div>
 <div class="row">
-  <div class="col-sm">col-sm</div>
-  <div class="col-sm">col-sm</div>
-  <div class="col-sm">col-sm</div>
+  <div class="col-sm-4">col-sm-4</div>
+  <div class="col-sm-4">col-sm-4</div>
+  <div class="col-sm-4">col-sm-4</div>
 </div>
 {% endcapture %}
 {% include example.html content=example %}
