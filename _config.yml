@@ -18,7 +18,6 @@ url:            "https://getbootstrap.com"
 encoding:       UTF-8
 exclude:
   - docs/4.1/assets/scss/
-  - docs/4.1/assets/js/src/
 
 plugins:
   - jekyll-redirect-from
