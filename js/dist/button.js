@@ -4,7 +4,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.1.0): button.js
+ * Bootstrap (v4.1.1): button.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -15,7 +15,7 @@ var Button = function ($) {
    * ------------------------------------------------------------------------
    */
   var NAME = 'button';
-  var VERSION = '4.1.0';
+  var VERSION = '4.1.1';
   var DATA_KEY = 'bs.button';
   var EVENT_KEY = "." + DATA_KEY;
   var DATA_API_KEY = '.data-api';
@@ -60,14 +60,14 @@ var Button = function ($) {
       var rootElement = $(this._element).closest(Selector.DATA_TOGGLE)[0];
 
       if (rootElement) {
-        var input = $(this._element).find(Selector.INPUT)[0];
+        var input = this._element.querySelector(Selector.INPUT);
 
         if (input) {
           if (input.type === 'radio') {
-            if (input.checked && $(this._element).hasClass(ClassName.ACTIVE)) {
+            if (input.checked && this._element.classList.contains(ClassName.ACTIVE)) {
               triggerChangeEvent = false;
             } else {
-              var activeElement = $(rootElement).find(Selector.ACTIVE)[0];
+              var activeElement = rootElement.querySelector(Selector.ACTIVE);
 
               if (activeElement) {
                 $(activeElement).removeClass(ClassName.ACTIVE);
@@ -80,7 +80,7 @@ var Button = function ($) {
               return;
             }
 
-            input.checked = !$(this._element).hasClass(ClassName.ACTIVE);
+            input.checked = !this._element.classList.contains(ClassName.ACTIVE);
             $(input).trigger('change');
           }
 
@@ -90,7 +90,7 @@ var Button = function ($) {
       }
 
       if (addAriaPressed) {
-        this._element.setAttribute('aria-pressed', !$(this._element).hasClass(ClassName.ACTIVE));
+        this._element.setAttribute('aria-pressed', !this._element.classList.contains(ClassName.ACTIVE));
       }
 
       if (triggerChangeEvent) {

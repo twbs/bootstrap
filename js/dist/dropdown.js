@@ -8,7 +8,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.1.0): dropdown.js
+ * Bootstrap (v4.1.1): dropdown.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -19,7 +19,7 @@ var Dropdown = function ($) {
    * ------------------------------------------------------------------------
    */
   var NAME = 'dropdown';
-  var VERSION = '4.1.0';
+  var VERSION = '4.1.1';
   var DATA_KEY = 'bs.dropdown';
   var EVENT_KEY = "." + DATA_KEY;
   var DATA_API_KEY = '.data-api';
@@ -228,14 +228,16 @@ var Dropdown = function ($) {
       if (!this._menu) {
         var parent = Dropdown._getParentFromElement(this._element);
 
-        this._menu = $(parent).find(Selector.MENU)[0];
+        if (parent) {
+          this._menu = parent.querySelector(Selector.MENU);
+        }
       }
 
       return this._menu;
     };
 
     _proto._getPlacement = function _getPlacement() {
-      var $parentDropdown = $(this._element).parent();
+      var $parentDropdown = $(this._element.parentNode);
       var placement = AttachmentMap.BOTTOM; // Handle dropup
 
       if ($parentDropdown.hasClass(ClassName.DROPUP)) {
@@ -323,9 +325,9 @@ var Dropdown = function ($) {
         return;
       }
 
-      var toggles = $.makeArray($(Selector.DATA_TOGGLE));
+      var toggles = [].slice.call(document.querySelectorAll(Selector.DATA_TOGGLE));
 
-      for (var i = 0; i < toggles.length; i++) {
+      for (var i = 0, len = toggles.length; i < len; i++) {
         var parent = Dropdown._getParentFromElement(toggles[i]);
 
         var context = $(toggles[i]).data(DATA_KEY);
@@ -371,7 +373,7 @@ var Dropdown = function ($) {
       var selector = Util.getSelectorFromElement(element);
 
       if (selector) {
-        parent = $(selector)[0];
+        parent = document.querySelector(selector);
       }
 
       return parent || element.parentNode;
@@ -403,7 +405,7 @@ var Dropdown = function ($) {
 
       if (!isActive && (event.which !== ESCAPE_KEYCODE || event.which !== SPACE_KEYCODE) || isActive && (event.which === ESCAPE_KEYCODE || event.which === SPACE_KEYCODE)) {
         if (event.which === ESCAPE_KEYCODE) {
-          var toggle = $(parent).find(Selector.DATA_TOGGLE)[0];
+          var toggle = parent.querySelector(Selector.DATA_TOGGLE);
           $(toggle).trigger('focus');
         }
 
@@ -411,7 +413,7 @@ var Dropdown = function ($) {
         return;
       }
 
-      var items = $(parent).find(Selector.VISIBLE_ITEMS).get();
+      var items = [].slice.call(parent.querySelectorAll(Selector.VISIBLE_ITEMS));
 
       if (items.length === 0) {
         return;

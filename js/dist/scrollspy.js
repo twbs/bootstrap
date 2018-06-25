@@ -8,7 +8,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.1.0): scrollspy.js
+ * Bootstrap (v4.1.1): scrollspy.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -19,7 +19,7 @@ var ScrollSpy = function ($) {
    * ------------------------------------------------------------------------
    */
   var NAME = 'scrollspy';
-  var VERSION = '4.1.0';
+  var VERSION = '4.1.1';
   var DATA_KEY = 'bs.scrollspy';
   var EVENT_KEY = "." + DATA_KEY;
   var DATA_API_KEY = '.data-api';
@@ -101,13 +101,13 @@ var ScrollSpy = function ($) {
       this._offsets = [];
       this._targets = [];
       this._scrollHeight = this._getScrollHeight();
-      var targets = $.makeArray($(this._selector));
+      var targets = [].slice.call(document.querySelectorAll(this._selector));
       targets.map(function (element) {
         var target;
         var targetSelector = Util.getSelectorFromElement(element);
 
         if (targetSelector) {
-          target = $(targetSelector)[0];
+          target = document.querySelector(targetSelector);
         }
 
         if (target) {
@@ -146,7 +146,7 @@ var ScrollSpy = function ($) {
 
 
     _proto._getConfig = function _getConfig(config) {
-      config = _objectSpread({}, Default, config);
+      config = _objectSpread({}, Default, typeof config === 'object' && config ? config : {});
 
       if (typeof config.target !== 'string') {
         var id = $(config.target).attr('id');
@@ -204,7 +204,9 @@ var ScrollSpy = function ($) {
         return;
       }
 
-      for (var i = this._offsets.length; i--;) {
+      var offsetLength = this._offsets.length;
+
+      for (var i = offsetLength; i--;) {
         var isActiveTarget = this._activeTarget !== this._targets[i] && scrollTop >= this._offsets[i] && (typeof this._offsets[i + 1] === 'undefined' || scrollTop < this._offsets[i + 1]);
 
         if (isActiveTarget) {
@@ -224,7 +226,7 @@ var ScrollSpy = function ($) {
       queries = queries.map(function (selector) {
         return selector + "[data-target=\"" + target + "\"]," + (selector + "[href=\"" + target + "\"]");
       });
-      var $link = $(queries.join(','));
+      var $link = $([].slice.call(document.querySelectorAll(queries.join(','))));
 
       if ($link.hasClass(ClassName.DROPDOWN_ITEM)) {
         $link.closest(Selector.DROPDOWN).find(Selector.DROPDOWN_TOGGLE).addClass(ClassName.ACTIVE);
@@ -245,7 +247,8 @@ var ScrollSpy = function ($) {
     };
 
     _proto._clear = function _clear() {
-      $(this._selector).filter(Selector.ACTIVE).removeClass(ClassName.ACTIVE);
+      var nodes = [].slice.call(document.querySelectorAll(this._selector));
+      $(nodes).filter(Selector.ACTIVE).removeClass(ClassName.ACTIVE);
     }; // Static
 
 
@@ -292,9 +295,10 @@ var ScrollSpy = function ($) {
 
 
   $(window).on(Event.LOAD_DATA_API, function () {
-    var scrollSpys = $.makeArray($(Selector.DATA_SPY));
+    var scrollSpys = [].slice.call(document.querySelectorAll(Selector.DATA_SPY));
+    var scrollSpysLength = scrollSpys.length;
 
-    for (var i = scrollSpys.length; i--;) {
+    for (var i = scrollSpysLength; i--;) {
       var $spy = $(scrollSpys[i]);
 
       ScrollSpy._jQueryInterface.call($spy, $spy.data());

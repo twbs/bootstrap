@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.1.0): util.js
+ * Bootstrap (v4.1.1): util.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -76,8 +76,7 @@ var Util = function ($) {
       }
 
       try {
-        var $selector = $(document).find(selector);
-        return $selector.length > 0 ? selector : null;
+        return document.querySelector(selector) ? selector : null;
       } catch (err) {
         return null;
       }

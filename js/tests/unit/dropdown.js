@@ -16,6 +16,7 @@ $(function () {
     afterEach: function () {
       $.fn.dropdown = $.fn.bootstrapDropdown
       delete $.fn.bootstrapDropdown
+      $('#qunit-fixture').html('')
     }
   })
 
