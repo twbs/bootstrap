@@ -110,20 +110,6 @@ Set heights using classes like `.form-control-lg` and `.form-control-sm`.
 {% endcapture %}
 {% include example.html content=example %}
 
-## Range Inputs
-
-Set horizontally scrollable range inputs using `.form-control-range`.
-
-{% capture example %}
-<form>
-  <div class="form-group">
-    <label for="formControlRange">Example Range input</label>
-    <input type="range" class="form-control-range" id="formControlRange">
-  </div>
-</form>
-{% endcapture %}
-{% include example.html content=example %}
-
 ### Readonly
 
 Add the `readonly` boolean attribute on an input to prevent modification of the input's value. Read-only inputs appear lighter (just like disabled inputs), but retain the standard cursor.
@@ -170,6 +156,20 @@ If you want to have `<input readonly>` elements in your form styled as plain tex
 {% endcapture %}
 {% include example.html content=example %}
 
+## Range Inputs
+
+Set horizontally scrollable range inputs using `.form-control-range`.
+
+{% capture example %}
+<form>
+  <div class="form-group">
+    <label for="formControlRange">Example Range input</label>
+    <input type="range" class="form-control-range" id="formControlRange">
+  </div>
+</form>
+{% endcapture %}
+{% include example.html content=example %}
+
 ## Checkboxes and radios
 
 Default checkboxes and radios are improved upon with the help of `.form-check`, **a single class for both input types that improves the layout and behavior of their HTML elements**. Checkboxes are for selecting one or several options in a list, while radios are for selecting one option from many.
@@ -211,7 +211,7 @@ By default, any number of checkboxes and radios that are immediate sibling will 
     Second default radio
   </label>
 </div>
-<div class="form-check disabled">
+<div class="form-check">
   <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" disabled>
   <label class="form-check-label" for="exampleRadios3">
     Disabled radio
@@ -570,7 +570,7 @@ And of course [custom form controls](#custom-forms) are supported.
 <form>
   <div class="form-row align-items-center">
     <div class="col-auto my-1">
-      <label class="mr-sm-2" for="inlineFormCustomSelect">Preference</label>
+      <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
       <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
         <option selected>Choose...</option>
         <option value="1">One</option>

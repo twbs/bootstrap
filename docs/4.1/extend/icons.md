@@ -21,7 +21,7 @@ While we haven't tried these out, they do look promising and provide multiple fo
 
 - [Bytesize](https://github.com/danklammer/bytesize-icons)
 - [Google Material icons](https://material.io/icons/)
-- [Ionicons](http://ionicons.com/)
+- [Ionicons](https://ionicons.com/)
 - [Feather](https://feathericons.com/)
 - [Dripicons](http://demo.amitjakhu.com/dripicons/)
 - [Ikons](http://ikons.piotrkwiatkowski.co.uk/)
