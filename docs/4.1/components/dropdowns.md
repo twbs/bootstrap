@@ -845,7 +845,7 @@ Note when `boundary` is set to any value other than `'scrollParent'`, the style 
 ### Events
 
 All dropdown events are fired at the `.dropdown-menu`'s parent element and have a `relatedTarget` property, whose value is the toggling anchor element.
-`hide.bs.dropdown` and `hidden.bs.dropdown` events have a `clickEvent` property (only when original event type is `click`) that contains Event Object for click event.
+`hide.bs.dropdown` and `hidden.bs.dropdown` events have a `clickEvent` property (only when the original event type is `click`) that contains an Event Object for the click event.
 
 | Event | Description |
 | --- | --- |
