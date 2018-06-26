@@ -76,8 +76,7 @@ var Util = function ($) {
       }
 
       try {
-        var $selector = $(document).find(selector);
-        return $selector.length > 0 ? selector : null;
+        return document.querySelector(selector) ? selector : null;
       } catch (err) {
         return null;
       }

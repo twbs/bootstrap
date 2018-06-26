@@ -273,7 +273,7 @@ const Tooltip = (($) => {
         const attachment = this._getAttachment(placement)
         this.addAttachmentClass(attachment)
 
-        const container = this.config.container === false ? document.body : $(this.config.container)
+        const container = this.config.container === false ? document.body : $(document).find(this.config.container)
 
         $(tip).data(this.constructor.DATA_KEY, this)
 
@@ -418,9 +418,9 @@ const Tooltip = (($) => {
     }
 
     setContent() {
-      const $tip = $(this.getTipElement())
-      this.setElementContent($tip.find(Selector.TOOLTIP_INNER), this.getTitle())
-      $tip.removeClass(`${ClassName.FADE} ${ClassName.SHOW}`)
+      const tip = this.getTipElement()
+      this.setElementContent($(tip.querySelectorAll(Selector.TOOLTIP_INNER)), this.getTitle())
+      $(tip).removeClass(`${ClassName.FADE} ${ClassName.SHOW}`)
     }
 
     setElementContent($element, content) {
@@ -655,14 +655,16 @@ const Tooltip = (($) => {
     _cleanTipClass() {
       const $tip = $(this.getTipElement())
       const tabClass = $tip.attr('class').match(BSCLS_PREFIX_REGEX)
-      if (tabClass !== null && tabClass.length > 0) {
+      if (tabClass !== null && tabClass.length) {
         $tip.removeClass(tabClass.join(''))
       }
     }
 
-    _handlePopperPlacementChange(data) {
+    _handlePopperPlacementChange(popperData) {
+      const popperInstance = popperData.instance
+      this.tip = popperInstance.popper
       this._cleanTipClass()
-      this.addAttachmentClass(this._getAttachment(data.placement))
+      this.addAttachmentClass(this._getAttachment(popperData.placement))
     }
 
     _fixTransition() {

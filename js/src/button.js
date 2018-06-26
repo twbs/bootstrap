@@ -68,15 +68,15 @@ const Button = (($) => {
       )[0]
 
       if (rootElement) {
-        const input = $(this._element).find(Selector.INPUT)[0]
+        const input = this._element.querySelector(Selector.INPUT)
 
         if (input) {
           if (input.type === 'radio') {
             if (input.checked &&
-              $(this._element).hasClass(ClassName.ACTIVE)) {
+              this._element.classList.contains(ClassName.ACTIVE)) {
               triggerChangeEvent = false
             } else {
-              const activeElement = $(rootElement).find(Selector.ACTIVE)[0]
+              const activeElement = rootElement.querySelector(Selector.ACTIVE)
 
               if (activeElement) {
                 $(activeElement).removeClass(ClassName.ACTIVE)
@@ -91,7 +91,7 @@ const Button = (($) => {
               rootElement.classList.contains('disabled')) {
               return
             }
-            input.checked = !$(this._element).hasClass(ClassName.ACTIVE)
+            input.checked = !this._element.classList.contains(ClassName.ACTIVE)
             $(input).trigger('change')
           }
 
@@ -102,7 +102,7 @@ const Button = (($) => {
 
       if (addAriaPressed) {
         this._element.setAttribute('aria-pressed',
-          !$(this._element).hasClass(ClassName.ACTIVE))
+          !this._element.classList.contains(ClassName.ACTIVE))
       }
 
       if (triggerChangeEvent) {

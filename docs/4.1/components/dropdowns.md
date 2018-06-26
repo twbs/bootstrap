@@ -827,7 +827,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <td>display</td>
       <td>string</td>
       <td>'dynamic'</td>
-      <td>By default, we use Popper.js for dynamic positioning. Disable this with `static`.</td>
+      <td>By default, we use Popper.js for dynamic positioning. Disable this with <code>static</code>.</td>
     </tr>
   </tbody>
 </table>
@@ -845,6 +845,7 @@ Note when `boundary` is set to any value other than `'scrollParent'`, the style 
 ### Events
 
 All dropdown events are fired at the `.dropdown-menu`'s parent element and have a `relatedTarget` property, whose value is the toggling anchor element.
+`hide.bs.dropdown` and `hidden.bs.dropdown` events have a `clickEvent` property (only when the original event type is `click`) that contains an Event Object for the click event.
 
 | Event | Description |
 | --- | --- |
