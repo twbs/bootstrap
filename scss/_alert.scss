@@ -3,6 +3,7 @@
 //
 
 .alert {
+  position: relative;
   padding: $alert-padding-y $alert-padding-x;
   margin-bottom: $alert-margin-bottom;
   border: $alert-border-width solid transparent;
@@ -26,11 +27,13 @@
 // Expand the right padding and account for the close button's positioning.
 
 .alert-dismissible {
+  padding-right: ($close-font-size + $alert-padding-x * 2);
+
   // Adjust close link position
   .close {
-    position: relative;
-    top: -$alert-padding-y;
-    right: -$alert-padding-x;
+    position: absolute;
+    top: 0;
+    right: 0;
     padding: $alert-padding-y $alert-padding-x;
     color: inherit;
   }
@@ -41,15 +44,8 @@
 //
 // Generate contextual modifier classes for colorizing the alert.
 
-.alert-success {
-  @include alert-variant($alert-success-bg, $alert-success-border-color, $alert-success-text);
-}
-.alert-info {
-  @include alert-variant($alert-info-bg, $alert-info-border-color, $alert-info-text);
-}
-.alert-warning {
-  @include alert-variant($alert-warning-bg, $alert-warning-border-color, $alert-warning-text);
-}
-.alert-danger {
-  @include alert-variant($alert-danger-bg, $alert-danger-border-color, $alert-danger-text);
+@each $color, $value in $theme-colors {
+  .alert-#{$color} {
+    @include alert-variant(theme-color-level($color, $alert-bg-level), theme-color-level($color, $alert-border-level), theme-color-level($color, $alert-color-level));
+  }
 }

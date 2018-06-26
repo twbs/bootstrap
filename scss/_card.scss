@@ -9,11 +9,29 @@
   min-width: 0;
   word-wrap: break-word;
   background-color: $card-bg;
+  background-clip: border-box;
   border: $card-border-width solid $card-border-color;
   @include border-radius($card-border-radius);
+
+  > hr {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  > .list-group:first-child {
+    .list-group-item:first-child {
+      @include border-top-radius($card-border-radius);
+    }
+  }
+
+  > .list-group:last-child {
+    .list-group-item:last-child {
+      @include border-bottom-radius($card-border-radius);
+    }
+  }
 }
 
-.card-block {
+.card-body {
   // Enable `flex-grow: 1` for decks and groups so that card blocks take up
   // as much space as possible, ensuring footers are aligned to the bottom.
   flex: 1 1 auto;
@@ -43,21 +61,6 @@
   }
 }
 
-.card {
-  > .list-group:first-child {
-    .list-group-item:first-child {
-      @include border-top-radius($card-border-radius);
-    }
-  }
-
-  > .list-group:last-child {
-    .list-group-item:last-child {
-      @include border-bottom-radius($card-border-radius);
-    }
-  }
-}
-
-
 //
 // Optional textual caps
 //
@@ -70,6 +73,12 @@
 
   &:first-child {
     @include border-radius($card-inner-border-radius $card-inner-border-radius 0 0);
+  }
+
+  + .list-group {
+    .list-group-item:first-child {
+      border-top: 0;
+    }
   }
 }
 
@@ -98,65 +107,6 @@
 .card-header-pills {
   margin-right: -($card-spacer-x / 2);
   margin-left: -($card-spacer-x / 2);
-}
-
-
-//
-// Background variations
-//
-
-.card-primary {
-  @include card-variant($brand-primary, $brand-primary);
-}
-.card-success {
-  @include card-variant($brand-success, $brand-success);
-}
-.card-info {
-  @include card-variant($brand-info, $brand-info);
-}
-.card-warning {
-  @include card-variant($brand-warning, $brand-warning);
-}
-.card-danger {
-  @include card-variant($brand-danger, $brand-danger);
-}
-
-// Remove all backgrounds
-.card-outline-primary {
-  @include card-outline-variant($btn-primary-bg);
-}
-.card-outline-secondary {
-  @include card-outline-variant($btn-secondary-border-color);
-}
-.card-outline-info {
-  @include card-outline-variant($btn-info-bg);
-}
-.card-outline-success {
-  @include card-outline-variant($btn-success-bg);
-}
-.card-outline-warning {
-  @include card-outline-variant($btn-warning-bg);
-}
-.card-outline-danger {
-  @include card-outline-variant($btn-danger-bg);
-}
-
-//
-// Inverse text within a card for use with dark backgrounds
-//
-
-.card-inverse {
-  @include card-inverse;
-}
-
-//
-// Blockquote
-//
-
-.card-blockquote {
-  padding: 0;
-  margin-bottom: 0;
-  border-left: 0;
 }
 
 // Card image
@@ -188,18 +138,26 @@
 
 // Card deck
 
-@include media-breakpoint-up(sm) {
-  .card-deck {
-    display: flex;
+.card-deck {
+  display: flex;
+  flex-direction: column;
+
+  .card {
+    margin-bottom: $card-deck-margin;
+  }
+
+  @include media-breakpoint-up(sm) {
     flex-flow: row wrap;
     margin-right: -$card-deck-margin;
     margin-left: -$card-deck-margin;
 
     .card {
       display: flex;
-      flex: 1 0 0;
+      // Flexbugs #4: https://github.com/philipwalton/flexbugs#flexbug-4
+      flex: 1 0 0%;
       flex-direction: column;
       margin-right: $card-deck-margin;
+      margin-bottom: 0; // Override the default
       margin-left: $card-deck-margin;
     }
   }
@@ -210,13 +168,24 @@
 // Card groups
 //
 
-@include media-breakpoint-up(sm) {
-  .card-group {
-    display: flex;
-    flex-flow: row wrap;
+.card-group {
+  display: flex;
+  flex-direction: column;
 
-    .card {
-      flex: 1 0 0;
+  // The child selector allows nested `.card` within `.card-group`
+  // to display properly.
+  > .card {
+    margin-bottom: $card-group-margin;
+  }
+
+  @include media-breakpoint-up(sm) {
+    flex-flow: row wrap;
+    // The child selector allows nested `.card` within `.card-group`
+    // to display properly.
+    > .card {
+      // Flexbugs #4: https://github.com/philipwalton/flexbugs#flexbug-4
+      flex: 1 0 0%;
+      margin-bottom: 0;
 
       + .card {
         margin-left: 0;
@@ -228,30 +197,50 @@
         &:first-child {
           @include border-right-radius(0);
 
-          .card-img-top {
+          .card-img-top,
+          .card-header {
             border-top-right-radius: 0;
           }
-          .card-img-bottom {
+          .card-img-bottom,
+          .card-footer {
             border-bottom-right-radius: 0;
           }
         }
+
         &:last-child {
           @include border-left-radius(0);
 
-          .card-img-top {
+          .card-img-top,
+          .card-header {
             border-top-left-radius: 0;
           }
-          .card-img-bottom {
+          .card-img-bottom,
+          .card-footer {
             border-bottom-left-radius: 0;
           }
         }
 
-        &:not(:first-child):not(:last-child) {
-          border-radius: 0;
+        &:only-child {
+          @include border-radius($card-border-radius);
 
           .card-img-top,
-          .card-img-bottom {
-            border-radius: 0;
+          .card-header {
+            @include border-top-radius($card-border-radius);
+          }
+          .card-img-bottom,
+          .card-footer {
+            @include border-bottom-radius($card-border-radius);
+          }
+        }
+
+        &:not(:first-child):not(:last-child):not(:only-child) {
+          @include border-radius(0);
+
+          .card-img-top,
+          .card-img-bottom,
+          .card-header,
+          .card-footer {
+            @include border-radius(0);
           }
         }
       }
@@ -272,10 +261,41 @@
   @include media-breakpoint-up(sm) {
     column-count: $card-columns-count;
     column-gap: $card-columns-gap;
+    orphans: 1;
+    widows: 1;
 
     .card {
       display: inline-block; // Don't let them vertically span multiple columns
       width: 100%; // Don't let their width change
     }
+  }
+}
+
+
+//
+// Accordion
+//
+
+.accordion {
+  .card:not(:first-of-type):not(:last-of-type) {
+    border-bottom: 0;
+    border-radius: 0;
+  }
+
+  .card:not(:first-of-type) {
+    .card-header:first-child {
+      border-radius: 0;
+    }
+  }
+
+  .card:first-of-type {
+    border-bottom: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .card:last-of-type {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
   }
 }

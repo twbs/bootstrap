@@ -1,16 +1,14 @@
+import $ from 'jquery'
 import Util from './util'
-
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-alpha.6): carousel.js
+ * Bootstrap (v4.1.1): carousel.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
 
 const Carousel = (($) => {
-
-
   /**
    * ------------------------------------------------------------------------
    * Constants
@@ -18,12 +16,11 @@ const Carousel = (($) => {
    */
 
   const NAME                   = 'carousel'
-  const VERSION                = '4.0.0-alpha.6'
+  const VERSION                = '4.1.1'
   const DATA_KEY               = 'bs.carousel'
   const EVENT_KEY              = `.${DATA_KEY}`
   const DATA_API_KEY           = '.data-api'
   const JQUERY_NO_CONFLICT     = $.fn[NAME]
-  const TRANSITION_DURATION    = 600
   const ARROW_LEFT_KEYCODE     = 37 // KeyboardEvent.which value for left arrow key
   const ARROW_RIGHT_KEYCODE    = 39 // KeyboardEvent.which value for right arrow key
   const TOUCHEVENT_COMPAT_WAIT = 500 // Time for mouse compat events to fire after touch
@@ -83,7 +80,6 @@ const Carousel = (($) => {
     DATA_RIDE   : '[data-ride="carousel"]'
   }
 
-
   /**
    * ------------------------------------------------------------------------
    * Class Definition
@@ -91,26 +87,24 @@ const Carousel = (($) => {
    */
 
   class Carousel {
-
     constructor(element, config) {
-      this._items             = null
-      this._interval          = null
-      this._activeElement     = null
+      this._items              = null
+      this._interval           = null
+      this._activeElement      = null
 
-      this._isPaused          = false
-      this._isSliding         = false
+      this._isPaused           = false
+      this._isSliding          = false
 
-      this.touchTimeout       = null
+      this.touchTimeout        = null
 
-      this._config            = this._getConfig(config)
-      this._element           = $(element)[0]
-      this._indicatorsElement = $(this._element).find(Selector.INDICATORS)[0]
+      this._config             = this._getConfig(config)
+      this._element            = $(element)[0]
+      this._indicatorsElement  = this._element.querySelector(Selector.INDICATORS)
 
       this._addEventListeners()
     }
 
-
-    // getters
+    // Getters
 
     static get VERSION() {
       return VERSION
@@ -120,8 +114,7 @@ const Carousel = (($) => {
       return Default
     }
 
-
-    // public
+    // Public
 
     next() {
       if (!this._isSliding) {
@@ -131,7 +124,9 @@ const Carousel = (($) => {
 
     nextWhenVisible() {
       // Don't call next when the page isn't visible
-      if (!document.hidden) {
+      // or the carousel or its parent isn't visible
+      if (!document.hidden &&
+        ($(this._element).is(':visible') && $(this._element).css('visibility') !== 'hidden')) {
         this.next()
       }
     }
@@ -147,8 +142,7 @@ const Carousel = (($) => {
         this._isPaused = true
       }
 
-      if ($(this._element).find(Selector.NEXT_PREV)[0] &&
-        Util.supportsTransitionEnd()) {
+      if (this._element.querySelector(Selector.NEXT_PREV)) {
         Util.triggerTransitionEnd(this._element)
         this.cycle(true)
       }
@@ -176,7 +170,7 @@ const Carousel = (($) => {
     }
 
     to(index) {
-      this._activeElement = $(this._element).find(Selector.ACTIVE_ITEM)[0]
+      this._activeElement = this._element.querySelector(Selector.ACTIVE_ITEM)
 
       const activeIndex = this._getItemIndex(this._activeElement)
 
@@ -195,9 +189,9 @@ const Carousel = (($) => {
         return
       }
 
-      const direction = index > activeIndex ?
-        Direction.NEXT :
-        Direction.PREV
+      const direction = index > activeIndex
+        ? Direction.NEXT
+        : Direction.PREV
 
       this._slide(direction, this._items[index])
     }
@@ -216,11 +210,13 @@ const Carousel = (($) => {
       this._indicatorsElement = null
     }
 
-
-    // private
+    // Private
 
     _getConfig(config) {
-      config = $.extend({}, Default, config)
+      config = {
+        ...Default,
+        ...config
+      }
       Util.typeCheckConfig(NAME, config, DefaultType)
       return config
     }
@@ -236,7 +232,7 @@ const Carousel = (($) => {
           .on(Event.MOUSEENTER, (event) => this.pause(event))
           .on(Event.MOUSELEAVE, (event) => this.cycle(event))
         if ('ontouchstart' in document.documentElement) {
-          // if it's a touch-enabled device, mouseenter/leave are fired as
+          // If it's a touch-enabled device, mouseenter/leave are fired as
           // part of the mouse compatibility events on first tap - the carousel
           // would stop cycling until user tapped out of it;
           // here, we listen for touchend, explicitly pause the carousel
@@ -269,12 +265,13 @@ const Carousel = (($) => {
           this.next()
           break
         default:
-          return
       }
     }
 
     _getItemIndex(element) {
-      this._items = $.makeArray($(element).parent().find(Selector.ITEM))
+      this._items = element && element.parentNode
+        ? [].slice.call(element.parentNode.querySelectorAll(Selector.ITEM))
+        : []
       return this._items.indexOf(element)
     }
 
@@ -293,14 +290,13 @@ const Carousel = (($) => {
       const delta     = direction === Direction.PREV ? -1 : 1
       const itemIndex = (activeIndex + delta) % this._items.length
 
-      return itemIndex === -1 ?
-        this._items[this._items.length - 1] : this._items[itemIndex]
+      return itemIndex === -1
+        ? this._items[this._items.length - 1] : this._items[itemIndex]
     }
-
 
     _triggerSlideEvent(relatedTarget, eventDirectionName) {
       const targetIndex = this._getItemIndex(relatedTarget)
-      const fromIndex = this._getItemIndex($(this._element).find(Selector.ACTIVE_ITEM)[0])
+      const fromIndex = this._getItemIndex(this._element.querySelector(Selector.ACTIVE_ITEM))
       const slideEvent = $.Event(Event.SLIDE, {
         relatedTarget,
         direction: eventDirectionName,
@@ -315,8 +311,8 @@ const Carousel = (($) => {
 
     _setActiveIndicatorElement(element) {
       if (this._indicatorsElement) {
-        $(this._indicatorsElement)
-          .find(Selector.ACTIVE)
+        const indicators = [].slice.call(this._indicatorsElement.querySelectorAll(Selector.ACTIVE))
+        $(indicators)
           .removeClass(ClassName.ACTIVE)
 
         const nextIndicator = this._indicatorsElement.children[
@@ -330,7 +326,7 @@ const Carousel = (($) => {
     }
 
     _slide(direction, element) {
-      const activeElement = $(this._element).find(Selector.ACTIVE_ITEM)[0]
+      const activeElement = this._element.querySelector(Selector.ACTIVE_ITEM)
       const activeElementIndex = this._getItemIndex(activeElement)
       const nextElement   = element || activeElement &&
         this._getItemByDirection(direction, activeElement)
@@ -362,7 +358,7 @@ const Carousel = (($) => {
       }
 
       if (!activeElement || !nextElement) {
-        // some weirdness is happening, so we bail
+        // Some weirdness is happening, so we bail
         return
       }
 
@@ -381,15 +377,15 @@ const Carousel = (($) => {
         to: nextElementIndex
       })
 
-      if (Util.supportsTransitionEnd() &&
-        $(this._element).hasClass(ClassName.SLIDE)) {
-
+      if ($(this._element).hasClass(ClassName.SLIDE)) {
         $(nextElement).addClass(orderClassName)
 
         Util.reflow(nextElement)
 
         $(activeElement).addClass(directionalClassName)
         $(nextElement).addClass(directionalClassName)
+
+        const transitionDuration = Util.getTransitionDurationFromElement(activeElement)
 
         $(activeElement)
           .one(Util.TRANSITION_END, () => {
@@ -402,10 +398,8 @@ const Carousel = (($) => {
             this._isSliding = false
 
             setTimeout(() => $(this._element).trigger(slidEvent), 0)
-
           })
-          .emulateTransitionEnd(TRANSITION_DURATION)
-
+          .emulateTransitionEnd(transitionDuration)
       } else {
         $(activeElement).removeClass(ClassName.ACTIVE)
         $(nextElement).addClass(ClassName.ACTIVE)
@@ -419,16 +413,21 @@ const Carousel = (($) => {
       }
     }
 
-
-    // static
+    // Static
 
     static _jQueryInterface(config) {
       return this.each(function () {
-        let data      = $(this).data(DATA_KEY)
-        const _config = $.extend({}, Default, $(this).data())
+        let data = $(this).data(DATA_KEY)
+        let _config = {
+          ...Default,
+          ...$(this).data()
+        }
 
         if (typeof config === 'object') {
-          $.extend(_config, config)
+          _config = {
+            ..._config,
+            ...config
+          }
         }
 
         const action = typeof config === 'string' ? config : _config.slide
@@ -441,8 +440,8 @@ const Carousel = (($) => {
         if (typeof config === 'number') {
           data.to(config)
         } else if (typeof action === 'string') {
-          if (data[action] === undefined) {
-            throw new Error(`No method named "${action}"`)
+          if (typeof data[action] === 'undefined') {
+            throw new TypeError(`No method named "${action}"`)
           }
           data[action]()
         } else if (_config.interval) {
@@ -465,7 +464,10 @@ const Carousel = (($) => {
         return
       }
 
-      const config     = $.extend({}, $(target).data(), $(this).data())
+      const config = {
+        ...$(target).data(),
+        ...$(this).data()
+      }
       const slideIndex = this.getAttribute('data-slide-to')
 
       if (slideIndex) {
@@ -480,9 +482,7 @@ const Carousel = (($) => {
 
       event.preventDefault()
     }
-
   }
-
 
   /**
    * ------------------------------------------------------------------------
@@ -494,12 +494,12 @@ const Carousel = (($) => {
     .on(Event.CLICK_DATA_API, Selector.DATA_SLIDE, Carousel._dataApiClickHandler)
 
   $(window).on(Event.LOAD_DATA_API, () => {
-    $(Selector.DATA_RIDE).each(function () {
-      const $carousel = $(this)
+    const carousels = [].slice.call(document.querySelectorAll(Selector.DATA_RIDE))
+    for (let i = 0, len = carousels.length; i < len; i++) {
+      const $carousel = $(carousels[i])
       Carousel._jQueryInterface.call($carousel, $carousel.data())
-    })
+    }
   })
-
 
   /**
    * ------------------------------------------------------------------------
@@ -507,15 +507,14 @@ const Carousel = (($) => {
    * ------------------------------------------------------------------------
    */
 
-  $.fn[NAME]             = Carousel._jQueryInterface
+  $.fn[NAME] = Carousel._jQueryInterface
   $.fn[NAME].Constructor = Carousel
-  $.fn[NAME].noConflict  = function () {
+  $.fn[NAME].noConflict = function () {
     $.fn[NAME] = JQUERY_NO_CONFLICT
     return Carousel._jQueryInterface
   }
 
   return Carousel
-
-})(jQuery)
+})($)
 
 export default Carousel

@@ -31,12 +31,6 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-
-    @include media-breakpoint-down(nth(map-keys($grid-breakpoints), 1)) {
-      width: 100%; // prevent flex parent container from collapsing
-      margin-right: 0;
-      margin-left: 0;
-    }
   }
 }
 
@@ -77,9 +71,8 @@
   }
 
   .dropdown-menu {
-    position: static !important;
+    position: static;
     float: none;
-    transform: unset !important;
   }
 }
 
@@ -105,6 +98,10 @@
 // on the `.navbar` parent.
 .navbar-collapse {
   flex-basis: 100%;
+  flex-grow: 1;
+  // For always expanded or extra full navbars, ensure content aligns itself
+  // properly vertically. Can be easily overridden with flex utilities.
+  align-items: center;
 }
 
 // Button for toggling the navbar when in its collapsed state
@@ -112,12 +109,17 @@
   padding: $navbar-toggler-padding-y $navbar-toggler-padding-x;
   font-size: $navbar-toggler-font-size;
   line-height: 1;
-  background: transparent; // remove default button style
+  background-color: transparent; // remove default button style
   border: $border-width solid transparent; // remove default button style
   @include border-radius($navbar-toggler-border-radius);
 
   @include hover-focus {
     text-decoration: none;
+  }
+
+  // Opinionated: add "hand" cursor to non-disabled .navbar-toggler elements
+  &:not(:disabled):not(.disabled) {
+    cursor: pointer;
   }
 }
 
@@ -150,21 +152,19 @@
       }
 
       @include media-breakpoint-up($next) {
-        flex-direction: row;
-        flex-wrap: nowrap;
+        flex-flow: row nowrap;
         justify-content: flex-start;
 
         .navbar-nav {
           flex-direction: row;
 
           .dropdown-menu {
-            position: absolute !important;
-            top: 100% !important;
+            position: absolute;
           }
 
           .nav-link {
-            padding-right: .5rem;
-            padding-left: .5rem;
+            padding-right: $navbar-nav-link-padding-x;
+            padding-left: $navbar-nav-link-padding-x;
           }
         }
 
@@ -174,11 +174,12 @@
           flex-wrap: nowrap;
         }
 
-        // scss-lint:disable ImportantRule
         .navbar-collapse {
-          display: flex !important;
+          display: flex !important;  // stylelint-disable-line declaration-no-important
+
+          // Changes flex-bases to auto because of an IE10 bug
+          flex-basis: auto;
         }
-        // scss-lint:enable ImportantRule
 
         .navbar-toggler {
           display: none;
@@ -235,29 +236,36 @@
 
   .navbar-text {
     color: $navbar-light-color;
+    a {
+      color: $navbar-light-active-color;
+
+      @include hover-focus {
+        color: $navbar-light-active-color;
+      }
+    }
   }
 }
 
 // White links against a dark background
-.navbar-inverse {
+.navbar-dark {
   .navbar-brand {
-    color: $navbar-inverse-active-color;
+    color: $navbar-dark-active-color;
 
     @include hover-focus {
-      color: $navbar-inverse-active-color;
+      color: $navbar-dark-active-color;
     }
   }
 
   .navbar-nav {
     .nav-link {
-      color: $navbar-inverse-color;
+      color: $navbar-dark-color;
 
       @include hover-focus {
-        color: $navbar-inverse-hover-color;
+        color: $navbar-dark-hover-color;
       }
 
       &.disabled {
-        color: $navbar-inverse-disabled-color;
+        color: $navbar-dark-disabled-color;
       }
     }
 
@@ -265,20 +273,27 @@
     .active > .nav-link,
     .nav-link.show,
     .nav-link.active {
-      color: $navbar-inverse-active-color;
+      color: $navbar-dark-active-color;
     }
   }
 
   .navbar-toggler {
-    color: $navbar-inverse-color;
-    border-color: $navbar-inverse-toggler-border-color;
+    color: $navbar-dark-color;
+    border-color: $navbar-dark-toggler-border-color;
   }
 
   .navbar-toggler-icon {
-    background-image: $navbar-inverse-toggler-icon-bg;
+    background-image: $navbar-dark-toggler-icon-bg;
   }
 
   .navbar-text {
-    color: $navbar-inverse-color;
+    color: $navbar-dark-color;
+    a {
+      color: $navbar-dark-active-color;
+
+      @include hover-focus {
+        color: $navbar-dark-active-color;
+      }
+    }
   }
 }

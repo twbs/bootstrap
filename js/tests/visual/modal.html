@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -13,7 +13,7 @@
     </style>
   </head>
   <body>
-    <nav class="navbar navbar-full navbar-dark bg-inverse">
+    <nav class="navbar navbar-full navbar-dark bg-dark">
       <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"></button>
       <div class="collapse navbar-expand-md" id="navbarResponsive">
         <a class="navbar-brand" href="#">This shouldn't jump!</a>
@@ -65,7 +65,7 @@
                   </div>
 
                   <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
-                    <div class="card-block">
+                    <div class="card-body">
                       Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
                     </div>
                   </div>
@@ -79,7 +79,7 @@
                     </h5>
                   </div>
                   <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
-                    <div class="card-block">
+                    <div class="card-body">
                       Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
                     </div>
                   </div>
@@ -93,7 +93,7 @@
                     </h5>
                   </div>
                   <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
-                    <div class="card-block">
+                    <div class="card-body">
                       Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
                     </div>
                   </div>
@@ -147,6 +147,26 @@
         </div>
       </div>
 
+      <div class="modal fade" id="slowModal" tabindex="-1" role="dialog" aria-labelledby="slowModalLabel" aria-hidden="true" style="transition-duration: 5s;">
+        <div class="modal-dialog" role="document" style="transition-duration: inherit;">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <h4 class="modal-title" id="slowModalLabel">Lorem slowly</h4>
+            </div>
+            <div class="modal-body">
+              <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
         Launch demo modal
       </button>
@@ -164,9 +184,25 @@
 
       <br><br>
 
-      <div class="bg-inverse text-white p-2" id="tall" style="display: none;">
+      <button type="button" class="btn btn-secondary btn-lg" data-toggle="modal" data-target="#slowModal">
+        Launch modal with slow transition
+      </button>
+
+      <br><br>
+
+      <div class="bg-dark text-white p-2" id="tall" style="display: none;">
         Tall body content to force the page to have a scrollbar.
       </div>
+
+      <button type="button" class="btn btn-secondary btn-lg" data-toggle="modal" data-target="&#x3C;div class=&#x22;modal fade the-bad&#x22; tabindex=&#x22;-1&#x22; role=&#x22;dialog&#x22;&#x3E;&#x3C;div class=&#x22;modal-dialog&#x22; role=&#x22;document&#x22;&#x3E;&#x3C;div class=&#x22;modal-content&#x22;&#x3E;&#x3C;div class=&#x22;modal-header&#x22;&#x3E;&#x3C;button type=&#x22;button&#x22; class=&#x22;close&#x22; data-dismiss=&#x22;modal&#x22; aria-label=&#x22;Close&#x22;&#x3E;&#x3C;span aria-hidden=&#x22;true&#x22;&#x3E;&#x26;times;&#x3C;/span&#x3E;&#x3C;/button&#x3E;&#x3C;h4 class=&#x22;modal-title&#x22;&#x3E;The Bad Modal&#x3C;/h4&#x3E;&#x3C;/div&#x3E;&#x3C;div class=&#x22;modal-body&#x22;&#x3E;This modal&#x27;s HTTML source code is declared inline, inside the data-target attribute of it&#x27;s show-button&#x3C;/div&#x3E;&#x3C;/div&#x3E;&#x3C;/div&#x3E;&#x3C;/div&#x3E;">
+        Modal with an XSS inside the data-target
+      </button>
+
+      <br><br>
+
+      <button type="button" class="btn btn-secondary btn-lg" id="btnPreventModal">
+        Launch prevented modal on hide (to see the result open your console)
+      </button>
     </div>
 
     <script src="../../../assets/js/vendor/jquery-slim.min.js"></script>
@@ -199,6 +235,33 @@
           $('#firefoxModal').on('focus', reportFirefoxTestResult.bind(false))
           $('#ff-bug-input').on('focus', reportFirefoxTestResult.bind(true))
         })
+
+        $('#btnPreventModal').on('click', function () {
+          $('#firefoxModal').one('shown.bs.modal', function () {
+            $(this).modal('hide')
+          })
+          .one('hide.bs.modal', function (event) {
+            event.preventDefault()
+            if ($(this).data('bs.modal')._isTransitioning) {
+              console.error('Modal plugin should not set _isTransitioning when hide event is prevented')
+            } else {
+              console.log('Test passed')
+              $(this).modal('hide') // work as expected
+            }
+          })
+          .modal('show')
+        })
+
+        // Test transition duration
+        var t0, t1;
+
+        $('#slowModal').on('shown.bs.modal', function(){
+          t1 = performance.now()
+          console.log('transition-duration took ' + (t1 - t0) + 'ms.')
+        }).on('show.bs.modal', function(){
+          t0 = performance.now()
+        })
+
       })
     </script>
   </body>

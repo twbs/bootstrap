@@ -16,7 +16,6 @@
 
 @if $enable-grid-classes {
   .container-fluid {
-    width: 100%;
     @include make-container();
   }
 }

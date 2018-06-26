@@ -3,20 +3,19 @@
 // ++++++++++++++++++++++++++++++++++++++++++
 
 /*!
- * JavaScript for Bootstrap's docs (https://getbootstrap.com)
- * Copyright 2011-2017 The Bootstrap Authors
- * Copyright 2011-2017 Twitter, Inc.
+ * JavaScript for Bootstrap's docs (https://getbootstrap.com/)
+ * Copyright 2011-2018 The Bootstrap Authors
+ * Copyright 2011-2018 Twitter, Inc.
  * Licensed under the Creative Commons Attribution 3.0 Unported License. For
  * details, see https://creativecommons.org/licenses/by/3.0/.
  */
 
-/* global Clipboard, anchors */
+/* global ClipboardJS: false, anchors: false, Holder: false */
 
 (function ($) {
   'use strict'
 
   $(function () {
-
     // Tooltip and popover demos
     $('.tooltip-demo').tooltip({
       selector: '[data-toggle="tooltip"]',
@@ -54,20 +53,20 @@
     })
 
     // Insert copy to clipboard button before .highlight
-    $('.highlight').each(function () {
+    $('figure.highlight, div.highlight').each(function () {
       var btnHtml = '<div class="bd-clipboard"><button class="btn-clipboard" title="Copy to clipboard">Copy</button></div>'
       $(this).before(btnHtml)
       $('.btn-clipboard')
         .tooltip()
         .on('mouseleave', function () {
-          // explicitly hide tooltip, since after clicking it remains
+          // Explicitly hide tooltip, since after clicking it remains
           // focused (as it's a button), so tooltip would otherwise
           // remain visible until focus is moved away
           $(this).tooltip('hide')
         })
     })
 
-    var clipboard = new Clipboard('.btn-clipboard', {
+    var clipboard = new ClipboardJS('.btn-clipboard', {
       target: function (trigger) {
         return trigger.parentNode.nextElementSibling
       }
@@ -96,15 +95,18 @@
         .tooltip('_fixTitle')
     })
 
+    anchors.options = {
+      icon: '#'
+    }
+    anchors.add('.bd-content > h2, .bd-content > h3, .bd-content > h4, .bd-content > h5')
+    $('.bd-content > h2, .bd-content > h3, .bd-content > h4, .bd-content > h5').wrapInner('<div></div>')
+
+    // Holder
+    Holder.addTheme('gray', {
+      bg: '#777',
+      fg: 'rgba(255,255,255,.75)',
+      font: 'Helvetica',
+      fontweight: 'normal'
+    })
   })
-
 }(jQuery))
-
-;(function () {
-  'use strict'
-
-  anchors.options = {
-    icon: '#'
-  }
-  anchors.add('.bd-content > h2, .bd-content > h3, .bd-content > h4, .bd-content > h5')
-}())

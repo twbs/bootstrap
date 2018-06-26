@@ -17,12 +17,13 @@ $(function () {
       $.fn.popover = $.fn.bootstrapPopover
       delete $.fn.bootstrapPopover
       $('.popover').remove()
+      $('#qunit-fixture').html('')
     }
   })
 
   QUnit.test('should provide no conflict', function (assert) {
     assert.expect(1)
-    assert.strictEqual($.fn.popover, undefined, 'popover was set back to undefined (org value)')
+    assert.strictEqual(typeof $.fn.popover, 'undefined', 'popover was set back to undefined (org value)')
   })
 
   QUnit.test('should throw explicit error on undefined method', function (assert) {
@@ -31,8 +32,7 @@ $(function () {
     $el.bootstrapPopover()
     try {
       $el.bootstrapPopover('noMethod')
-    }
-    catch (err) {
+    } catch (err) {
       assert.strictEqual(err.message, 'No method named "noMethod"')
     }
   })
@@ -81,6 +81,7 @@ $(function () {
 
   QUnit.test('should get title and content from options', function (assert) {
     assert.expect(4)
+    var done = assert.async()
     var $popover = $('<a href="#">@fat</a>')
       .appendTo('#qunit-fixture')
       .bootstrapPopover({
@@ -92,15 +93,18 @@ $(function () {
         }
       })
 
-    $popover.bootstrapPopover('show')
-
-    assert.notEqual($('.popover').length, 0, 'popover was inserted')
-    assert.strictEqual($('.popover .popover-title').text(), '@fat', 'title correctly inserted')
-    assert.strictEqual($('.popover .popover-content').text(), 'loves writing tests （╯°□°）╯︵ ┻━┻', 'content correctly inserted')
-
-    $popover.bootstrapPopover('hide')
-
-    assert.strictEqual($('.popover').length, 0, 'popover was removed')
+    $popover
+      .one('shown.bs.popover', function () {
+        assert.notEqual($('.popover').length, 0, 'popover was inserted')
+        assert.strictEqual($('.popover .popover-header').text(), '@fat', 'title correctly inserted')
+        assert.strictEqual($('.popover .popover-body').text(), 'loves writing tests （╯°□°）╯︵ ┻━┻', 'content correctly inserted')
+        $popover.bootstrapPopover('hide')
+      })
+      .one('hidden.bs.popover', function () {
+        assert.strictEqual($('.popover').length, 0, 'popover was removed')
+        done()
+      })
+      .bootstrapPopover('show')
   })
 
   QUnit.test('should allow DOMElement title and content (html: true)', function (assert) {
@@ -109,15 +113,19 @@ $(function () {
     var content = $('<i>¯\\_(ツ)_/¯</i>').get(0)
     var $popover = $('<a href="#" rel="tooltip"/>')
       .appendTo('#qunit-fixture')
-      .bootstrapPopover({ html: true, title: title, content: content })
+      .bootstrapPopover({
+        html: true,
+        title: title,
+        content: content
+      })
 
     $popover.bootstrapPopover('show')
 
     assert.notEqual($('.popover').length, 0, 'popover inserted')
-    assert.strictEqual($('.popover .popover-title').text(), '@glebm <3 writing tests', 'title inserted')
+    assert.strictEqual($('.popover .popover-header').text(), '@glebm <3 writing tests', 'title inserted')
     assert.ok($.contains($('.popover').get(0), title), 'title node moved, not copied')
     // toLowerCase because IE8 will return <I>...</I>
-    assert.strictEqual($('.popover .popover-content').html().toLowerCase(), '<i>¯\\_(ツ)_/¯</i>', 'content inserted')
+    assert.strictEqual($('.popover .popover-body').html().toLowerCase(), '<i>¯\\_(ツ)_/¯</i>', 'content inserted')
     assert.ok($.contains($('.popover').get(0), content), 'content node moved, not copied')
   })
 
@@ -127,20 +135,23 @@ $(function () {
     var content = $('<i>¯\\_(ツ)_/¯</i>').get(0)
     var $popover = $('<a href="#" rel="tooltip"/>')
       .appendTo('#qunit-fixture')
-      .bootstrapPopover({ title: title, content: content })
+      .bootstrapPopover({
+        title: title,
+        content: content
+      })
 
     $popover.bootstrapPopover('show')
 
     assert.notEqual($('.popover').length, 0, 'popover inserted')
-    assert.strictEqual($('.popover .popover-title').text(), '@glebm <3 writing tests', 'title inserted')
+    assert.strictEqual($('.popover .popover-header').text(), '@glebm <3 writing tests', 'title inserted')
     assert.ok(!$.contains($('.popover').get(0), title), 'title node copied, not moved')
-    assert.strictEqual($('.popover .popover-content').html(), '¯\\_(ツ)_/¯', 'content inserted')
+    assert.strictEqual($('.popover .popover-body').html(), '¯\\_(ツ)_/¯', 'content inserted')
     assert.ok(!$.contains($('.popover').get(0), content), 'content node copied, not moved')
   })
 
-
   QUnit.test('should not duplicate HTML object', function (assert) {
     assert.expect(6)
+    var done = assert.async()
     var $div = $('<div/>').html('loves writing tests （╯°□°）╯︵ ┻━┻')
 
     var $popover = $('<a href="#">@fat</a>')
@@ -152,56 +163,75 @@ $(function () {
         }
       })
 
-    $popover.bootstrapPopover('show')
-    assert.notEqual($('.popover').length, 0, 'popover was inserted')
-    assert.equal($('.popover .popover-content').html(), $div[0].outerHTML, 'content correctly inserted')
+    function popoverInserted() {
+      assert.notEqual($('.popover').length, 0, 'popover was inserted')
+      assert.equal($('.popover .popover-body').html(), $div[0].outerHTML, 'content correctly inserted')
+    }
 
-    $popover.bootstrapPopover('hide')
-    assert.strictEqual($('.popover').length, 0, 'popover was removed')
+    $popover
+      .one('shown.bs.popover', function () {
+        popoverInserted()
 
-    $popover.bootstrapPopover('show')
-    assert.notEqual($('.popover').length, 0, 'popover was inserted')
-    assert.equal($('.popover .popover-content').html(), $div[0].outerHTML, 'content correctly inserted')
+        $popover.one('hidden.bs.popover', function () {
+          assert.strictEqual($('.popover').length, 0, 'popover was removed')
 
-    $popover.bootstrapPopover('hide')
-    assert.strictEqual($('.popover').length, 0, 'popover was removed')
+          $popover.one('shown.bs.popover', function () {
+            popoverInserted()
+
+            $popover.one('hidden.bs.popover', function () {
+              assert.strictEqual($('.popover').length, 0, 'popover was removed')
+              done()
+            }).bootstrapPopover('hide')
+          }).bootstrapPopover('show')
+        }).bootstrapPopover('hide')
+      })
+      .bootstrapPopover('show')
   })
 
   QUnit.test('should get title and content from attributes', function (assert) {
     assert.expect(4)
+    var done = assert.async()
     var $popover = $('<a href="#" title="@mdo" data-content="loves data attributes (づ｡◕‿‿◕｡)づ ︵ ┻━┻" >@mdo</a>')
       .appendTo('#qunit-fixture')
       .bootstrapPopover()
+      .one('shown.bs.popover', function () {
+        assert.notEqual($('.popover').length, 0, 'popover was inserted')
+        assert.strictEqual($('.popover .popover-header').text(), '@mdo', 'title correctly inserted')
+        assert.strictEqual($('.popover .popover-body').text(), 'loves data attributes (づ｡◕‿‿◕｡)づ ︵ ┻━┻', 'content correctly inserted')
+        $popover.bootstrapPopover('hide')
+      })
+      .one('hidden.bs.popover', function () {
+        assert.strictEqual($('.popover').length, 0, 'popover was removed')
+        done()
+      })
       .bootstrapPopover('show')
-
-    assert.notEqual($('.popover').length, 0, 'popover was inserted')
-    assert.strictEqual($('.popover .popover-title').text(), '@mdo', 'title correctly inserted')
-    assert.strictEqual($('.popover .popover-content').text(), 'loves data attributes (づ｡◕‿‿◕｡)づ ︵ ┻━┻', 'content correctly inserted')
-
-    $popover.bootstrapPopover('hide')
-    assert.strictEqual($('.popover').length, 0, 'popover was removed')
   })
 
   QUnit.test('should get title and content from attributes ignoring options passed via js', function (assert) {
     assert.expect(4)
+    var done = assert.async()
     var $popover = $('<a href="#" title="@mdo" data-content="loves data attributes (づ｡◕‿‿◕｡)づ ︵ ┻━┻" >@mdo</a>')
       .appendTo('#qunit-fixture')
       .bootstrapPopover({
         title: 'ignored title option',
         content: 'ignored content option'
       })
+      .one('shown.bs.popover', function () {
+        assert.notEqual($('.popover').length, 0, 'popover was inserted')
+        assert.strictEqual($('.popover .popover-header').text(), '@mdo', 'title correctly inserted')
+        assert.strictEqual($('.popover .popover-body').text(), 'loves data attributes (づ｡◕‿‿◕｡)づ ︵ ┻━┻', 'content correctly inserted')
+        $popover.bootstrapPopover('hide')
+      })
+      .one('hidden.bs.popover', function () {
+        assert.strictEqual($('.popover').length, 0, 'popover was removed')
+        done()
+      })
       .bootstrapPopover('show')
-
-    assert.notEqual($('.popover').length, 0, 'popover was inserted')
-    assert.strictEqual($('.popover .popover-title').text(), '@mdo', 'title correctly inserted')
-    assert.strictEqual($('.popover .popover-content').text(), 'loves data attributes (づ｡◕‿‿◕｡)づ ︵ ┻━┻', 'content correctly inserted')
-
-    $popover.bootstrapPopover('hide')
-    assert.strictEqual($('.popover').length, 0, 'popover was removed')
   })
 
   QUnit.test('should respect custom template', function (assert) {
     assert.expect(3)
+    var done = assert.async()
     var $popover = $('<a href="#">@fat</a>')
       .appendTo('#qunit-fixture')
       .bootstrapPopover({
@@ -209,14 +239,16 @@ $(function () {
         content: 'Test',
         template: '<div class="popover foobar"><div class="arrow"></div><div class="inner"><h3 class="title"/><div class="content"><p/></div></div></div>'
       })
-
-    $popover.bootstrapPopover('show')
-
-    assert.notEqual($('.popover').length, 0, 'popover was inserted')
-    assert.ok($('.popover').hasClass('foobar'), 'custom class is present')
-
-    $popover.bootstrapPopover('hide')
-    assert.strictEqual($('.popover').length, 0, 'popover was removed')
+      .one('shown.bs.popover', function () {
+        assert.notEqual($('.popover').length, 0, 'popover was inserted')
+        assert.ok($('.popover').hasClass('foobar'), 'custom class is present')
+        $popover.bootstrapPopover('hide')
+      })
+      .one('hidden.bs.popover', function () {
+        assert.strictEqual($('.popover').length, 0, 'popover was removed')
+        done()
+      })
+      .bootstrapPopover('show')
   })
 
   QUnit.test('should destroy popover', function (assert) {
@@ -242,18 +274,23 @@ $(function () {
 
   QUnit.test('should render popover element using delegated selector', function (assert) {
     assert.expect(2)
-    var $div = $('<div><a href="#" title="mdo" data-content="http://twitter.com/mdo">@mdo</a></div>')
+    var done = assert.async()
+    var $div = $('<div><a href="#" title="mdo" data-content="https://twitter.com/mdo">@mdo</a></div>')
       .appendTo('#qunit-fixture')
       .bootstrapPopover({
         selector: 'a',
         trigger: 'click'
       })
+      .one('shown.bs.popover', function () {
+        assert.notEqual($('.popover').length, 0, 'popover was inserted')
+        $div.find('a').trigger('click')
+      })
+      .one('hidden.bs.popover', function () {
+        assert.strictEqual($('.popover').length, 0, 'popover was removed')
+        done()
+      })
 
     $div.find('a').trigger('click')
-    assert.notEqual($('.popover').length, 0, 'popover was inserted')
-
-    $div.find('a').trigger('click')
-    assert.strictEqual($('.popover').length, 0, 'popover was removed')
   })
 
   QUnit.test('should detach popover content rather than removing it so that event handlers are left intact', function (assert) {
@@ -271,6 +308,7 @@ $(function () {
         html: true,
         trigger: 'manual',
         container: 'body',
+        animation: false,
         content: function () {
           return $content
         }
@@ -284,8 +322,8 @@ $(function () {
             $div
               .one('shown.bs.popover', function () {
                 $('.content-with-handler .btn').trigger('click')
-                $div.bootstrapPopover('dispose')
                 assert.ok(handlerCalled, 'content\'s event handler still present')
+                $div.bootstrapPopover('dispose')
                 done()
               })
               .bootstrapPopover('show')
@@ -304,7 +342,7 @@ $(function () {
         assert.ok(false, 'should not fire any popover events')
       })
       .bootstrapPopover('hide')
-    assert.strictEqual($popover.data('bs.popover'), undefined, 'should not initialize the popover')
+    assert.strictEqual(typeof $popover.data('bs.popover'), 'undefined', 'should not initialize the popover')
   })
 
   QUnit.test('should fire inserted event', function (assert) {
@@ -331,8 +369,7 @@ $(function () {
 
     try {
       $('<div data-toggle="popover" data-title="some title" data-content="@Johann-S" style="display: none"/>').bootstrapPopover('show')
-    }
-    catch (err) {
+    } catch (err) {
       assert.strictEqual(err.message, 'Please use show on visible elements')
       done()
     }
@@ -380,11 +417,55 @@ $(function () {
         content: 7
       })
       .on('shown.bs.popover', function () {
-        assert.strictEqual($('.popover .popover-title').text(), '5')
-        assert.strictEqual($('.popover .popover-content').text(), '7')
+        assert.strictEqual($('.popover .popover-header').text(), '5')
+        assert.strictEqual($('.popover .popover-body').text(), '7')
         done()
       })
 
     $popover.bootstrapPopover('show')
+  })
+
+  QUnit.test('popover should be shown right away after the call of disable/enable', function (assert) {
+    assert.expect(2)
+    var done = assert.async()
+    var $popover = $('<a href="#">@mdo</a>')
+      .appendTo('#qunit-fixture')
+      .bootstrapPopover({
+        title: 'Test popover',
+        content: 'with disable/enable'
+      })
+      .on('shown.bs.popover', function () {
+        assert.strictEqual($('.popover').hasClass('show'), true)
+        done()
+      })
+
+    $popover.bootstrapPopover('disable')
+    $popover.trigger($.Event('click'))
+    setTimeout(function () {
+      assert.strictEqual($('.popover').length === 0, true)
+      $popover.bootstrapPopover('enable')
+      $popover.trigger($.Event('click'))
+    }, 200)
+  })
+
+  QUnit.test('popover should call content function only once', function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+    var nbCall = 0
+    $('<div id="popover" style="display:none">content</div>').appendTo('#qunit-fixture')
+    var $popover = $('<a href="#">@Johann-S</a>')
+      .appendTo('#qunit-fixture')
+      .bootstrapPopover({
+        content: function () {
+          nbCall++
+          return $('#popover').clone().show().get(0)
+        }
+      })
+      .on('shown.bs.popover', function () {
+        assert.strictEqual(nbCall, 1)
+        done()
+      })
+
+    $popover.trigger($.Event('click'))
   })
 })

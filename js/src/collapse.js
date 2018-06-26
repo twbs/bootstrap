@@ -1,16 +1,14 @@
+import $ from 'jquery'
 import Util from './util'
-
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-alpha.6): collapse.js
+ * Bootstrap (v4.1.1): collapse.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
 
 const Collapse = (($) => {
-
-
   /**
    * ------------------------------------------------------------------------
    * Constants
@@ -18,12 +16,11 @@ const Collapse = (($) => {
    */
 
   const NAME                = 'collapse'
-  const VERSION             = '4.0.0-alpha.6'
+  const VERSION             = '4.1.1'
   const DATA_KEY            = 'bs.collapse'
   const EVENT_KEY           = `.${DATA_KEY}`
   const DATA_API_KEY        = '.data-api'
   const JQUERY_NO_CONFLICT  = $.fn[NAME]
-  const TRANSITION_DURATION = 600
 
   const Default = {
     toggle : true,
@@ -32,7 +29,7 @@ const Collapse = (($) => {
 
   const DefaultType = {
     toggle : 'boolean',
-    parent : 'string'
+    parent : '(string|element)'
   }
 
   const Event = {
@@ -60,7 +57,6 @@ const Collapse = (($) => {
     DATA_TOGGLE : '[data-toggle="collapse"]'
   }
 
-
   /**
    * ------------------------------------------------------------------------
    * Class Definition
@@ -68,15 +64,26 @@ const Collapse = (($) => {
    */
 
   class Collapse {
-
     constructor(element, config) {
       this._isTransitioning = false
       this._element         = element
       this._config          = this._getConfig(config)
-      this._triggerArray    = $.makeArray($(
+      this._triggerArray    = $.makeArray(document.querySelectorAll(
         `[data-toggle="collapse"][href="#${element.id}"],` +
         `[data-toggle="collapse"][data-target="#${element.id}"]`
       ))
+      const toggleList = [].slice.call(document.querySelectorAll(Selector.DATA_TOGGLE))
+      for (let i = 0, len = toggleList.length; i < len; i++) {
+        const elem = toggleList[i]
+        const selector = Util.getSelectorFromElement(elem)
+        const filterElement = [].slice.call(document.querySelectorAll(selector))
+          .filter((foundElem) => foundElem === element)
+
+        if (selector !== null && filterElement.length > 0) {
+          this._selector = selector
+          this._triggerArray.push(elem)
+        }
+      }
 
       this._parent = this._config.parent ? this._getParent() : null
 
@@ -89,8 +96,7 @@ const Collapse = (($) => {
       }
     }
 
-
-    // getters
+    // Getters
 
     static get VERSION() {
       return VERSION
@@ -100,8 +106,7 @@ const Collapse = (($) => {
       return Default
     }
 
-
-    // public
+    // Public
 
     toggle() {
       if ($(this._element).hasClass(ClassName.SHOW)) {
@@ -121,14 +126,16 @@ const Collapse = (($) => {
       let activesData
 
       if (this._parent) {
-        actives = $.makeArray($(this._parent).children().children(Selector.ACTIVES))
-        if (!actives.length) {
+        actives = [].slice.call(this._parent.querySelectorAll(Selector.ACTIVES))
+          .filter((elem) => elem.getAttribute('data-parent') === this._config.parent)
+
+        if (actives.length === 0) {
           actives = null
         }
       }
 
       if (actives) {
-        activesData = $(actives).data(DATA_KEY)
+        activesData = $(actives).not(this._selector).data(DATA_KEY)
         if (activesData && activesData._isTransitioning) {
           return
         }
@@ -141,7 +148,7 @@ const Collapse = (($) => {
       }
 
       if (actives) {
-        Collapse._jQueryInterface.call($(actives), 'hide')
+        Collapse._jQueryInterface.call($(actives).not(this._selector), 'hide')
         if (!activesData) {
           $(actives).data(DATA_KEY, null)
         }
@@ -176,17 +183,13 @@ const Collapse = (($) => {
         $(this._element).trigger(Event.SHOWN)
       }
 
-      if (!Util.supportsTransitionEnd()) {
-        complete()
-        return
-      }
-
       const capitalizedDimension = dimension[0].toUpperCase() + dimension.slice(1)
-      const scrollSize           = `scroll${capitalizedDimension}`
+      const scrollSize = `scroll${capitalizedDimension}`
+      const transitionDuration = Util.getTransitionDurationFromElement(this._element)
 
       $(this._element)
         .one(Util.TRANSITION_END, complete)
-        .emulateTransitionEnd(TRANSITION_DURATION)
+        .emulateTransitionEnd(transitionDuration)
 
       this._element.style[dimension] = `${this._element[scrollSize]}px`
     }
@@ -203,7 +206,7 @@ const Collapse = (($) => {
         return
       }
 
-      const dimension       = this._getDimension()
+      const dimension = this._getDimension()
 
       this._element.style[dimension] = `${this._element.getBoundingClientRect()[dimension]}px`
 
@@ -214,10 +217,19 @@ const Collapse = (($) => {
         .removeClass(ClassName.COLLAPSE)
         .removeClass(ClassName.SHOW)
 
-      if (this._triggerArray.length) {
-        $(this._triggerArray)
-          .addClass(ClassName.COLLAPSED)
-          .attr('aria-expanded', false)
+      const triggerArrayLength = this._triggerArray.length
+      if (triggerArrayLength > 0) {
+        for (let i = 0; i < triggerArrayLength; i++) {
+          const trigger = this._triggerArray[i]
+          const selector = Util.getSelectorFromElement(trigger)
+          if (selector !== null) {
+            const $elem = $([].slice.call(document.querySelectorAll(selector)))
+            if (!$elem.hasClass(ClassName.SHOW)) {
+              $(trigger).addClass(ClassName.COLLAPSED)
+                .attr('aria-expanded', false)
+            }
+          }
+        }
       }
 
       this.setTransitioning(true)
@@ -231,15 +243,11 @@ const Collapse = (($) => {
       }
 
       this._element.style[dimension] = ''
-
-      if (!Util.supportsTransitionEnd()) {
-        complete()
-        return
-      }
+      const transitionDuration = Util.getTransitionDurationFromElement(this._element)
 
       $(this._element)
         .one(Util.TRANSITION_END, complete)
-        .emulateTransitionEnd(TRANSITION_DURATION)
+        .emulateTransitionEnd(transitionDuration)
     }
 
     setTransitioning(isTransitioning) {
@@ -256,12 +264,14 @@ const Collapse = (($) => {
       this._isTransitioning = null
     }
 
-
-    // private
+    // Private
 
     _getConfig(config) {
-      config = $.extend({}, Default, config)
-      config.toggle = Boolean(config.toggle) // coerce string values
+      config = {
+        ...Default,
+        ...config
+      }
+      config.toggle = Boolean(config.toggle) // Coerce string values
       Util.typeCheckConfig(NAME, config, DefaultType)
       return config
     }
@@ -272,11 +282,23 @@ const Collapse = (($) => {
     }
 
     _getParent() {
-      const parent   = $(this._config.parent)[0]
+      let parent = null
+      if (Util.isElement(this._config.parent)) {
+        parent = this._config.parent
+
+        // It's a jQuery object
+        if (typeof this._config.parent.jquery !== 'undefined') {
+          parent = this._config.parent[0]
+        }
+      } else {
+        parent = document.querySelector(this._config.parent)
+      }
+
       const selector =
         `[data-toggle="collapse"][data-parent="${this._config.parent}"]`
 
-      $(parent).find(selector).each((i, element) => {
+      const children = [].slice.call(parent.querySelectorAll(selector))
+      $(children).each((i, element) => {
         this._addAriaAndCollapsedClass(
           Collapse._getTargetFromElement(element),
           [element]
@@ -298,24 +320,22 @@ const Collapse = (($) => {
       }
     }
 
-
-    // static
+    // Static
 
     static _getTargetFromElement(element) {
       const selector = Util.getSelectorFromElement(element)
-      return selector ? $(selector)[0] : null
+      return selector ? document.querySelector(selector) : null
     }
 
     static _jQueryInterface(config) {
       return this.each(function () {
         const $this   = $(this)
         let data      = $this.data(DATA_KEY)
-        const _config = $.extend(
-          {},
-          Default,
-          $this.data(),
-          typeof config === 'object' && config
-        )
+        const _config = {
+          ...Default,
+          ...$this.data(),
+          ...typeof config === 'object' && config ? config : {}
+        }
 
         if (!data && _config.toggle && /show|hide/.test(config)) {
           _config.toggle = false
@@ -327,16 +347,14 @@ const Collapse = (($) => {
         }
 
         if (typeof config === 'string') {
-          if (data[config] === undefined) {
-            throw new Error(`No method named "${config}"`)
+          if (typeof data[config] === 'undefined') {
+            throw new TypeError(`No method named "${config}"`)
           }
           data[config]()
         }
       })
     }
-
   }
-
 
   /**
    * ------------------------------------------------------------------------
@@ -345,17 +363,21 @@ const Collapse = (($) => {
    */
 
   $(document).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
-    if (!/input|textarea/i.test(event.target.tagName)) {
+    // preventDefault only for <a> elements (which change the URL) not inside the collapsible element
+    if (event.currentTarget.tagName === 'A') {
       event.preventDefault()
     }
 
-    const target = Collapse._getTargetFromElement(this)
-    const data   = $(target).data(DATA_KEY)
-    const config = data ? 'toggle' : $(this).data()
-
-    Collapse._jQueryInterface.call($(target), config)
+    const $trigger = $(this)
+    const selector = Util.getSelectorFromElement(this)
+    const selectors = [].slice.call(document.querySelectorAll(selector))
+    $(selectors).each(function () {
+      const $target = $(this)
+      const data    = $target.data(DATA_KEY)
+      const config  = data ? 'toggle' : $trigger.data()
+      Collapse._jQueryInterface.call($target, config)
+    })
   })
-
 
   /**
    * ------------------------------------------------------------------------
@@ -363,15 +385,14 @@ const Collapse = (($) => {
    * ------------------------------------------------------------------------
    */
 
-  $.fn[NAME]             = Collapse._jQueryInterface
+  $.fn[NAME] = Collapse._jQueryInterface
   $.fn[NAME].Constructor = Collapse
-  $.fn[NAME].noConflict  = function () {
+  $.fn[NAME].noConflict = function () {
     $.fn[NAME] = JQUERY_NO_CONFLICT
     return Collapse._jQueryInterface
   }
 
   return Collapse
-
-})(jQuery)
+})($)
 
 export default Collapse

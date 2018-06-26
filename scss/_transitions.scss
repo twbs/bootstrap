@@ -1,28 +1,16 @@
+// stylelint-disable selector-no-qualifying-type
+
 .fade {
-  opacity: 0;
   @include transition($transition-fade);
 
-  &.show {
-    opacity: 1;
+  &:not(.show) {
+    opacity: 0;
   }
 }
 
 .collapse {
-  display: none;
-  &.show {
-    display: block;
-  }
-}
-
-tr {
-  &.collapse.show {
-    display: table-row;
-  }
-}
-
-tbody {
-  &.collapse.show {
-    display: table-row-group;
+  &:not(.show) {
+    display: none;
   }
 }
 

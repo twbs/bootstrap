@@ -1,4 +1,4 @@
-// scss-lint:disable QualifyingElement
+// stylelint-disable selector-no-qualifying-type
 
 //
 // Base styles
@@ -11,14 +11,15 @@
   white-space: nowrap;
   vertical-align: middle;
   user-select: none;
-  border: $input-btn-border-width solid transparent;
-  @include button-size($input-btn-padding-y, $input-btn-padding-x, $font-size-base, $input-btn-line-height, $btn-border-radius);
+  border: $btn-border-width solid transparent;
+  @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-line-height, $btn-border-radius);
   @include transition($btn-transition);
 
   // Share hover and focus styles
   @include hover-focus {
     text-decoration: none;
   }
+
   &:focus,
   &.focus {
     outline: 0;
@@ -28,20 +29,29 @@
   // Disabled comes first so active can properly restyle
   &.disabled,
   &:disabled {
-    opacity: .65;
+    opacity: $btn-disabled-opacity;
     @include box-shadow(none);
   }
 
-  &:active,
-  &.active {
+  // Opinionated: add "hand" cursor to non-disabled .btn elements
+  &:not(:disabled):not(.disabled) {
+    cursor: pointer;
+  }
+
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled).active {
     background-image: none;
-    @include box-shadow($btn-focus-box-shadow, $btn-active-box-shadow);
+    @include box-shadow($btn-active-box-shadow);
+
+    &:focus {
+      @include box-shadow($btn-focus-box-shadow, $btn-active-box-shadow);
+    }
   }
 }
 
 // Future-proof disabling of clicks on `<a>` elements
 a.btn.disabled,
-fieldset[disabled] a.btn {
+fieldset:disabled a.btn {
   pointer-events: none;
 }
 
@@ -50,43 +60,16 @@ fieldset[disabled] a.btn {
 // Alternate buttons
 //
 
-.btn-primary {
-  @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border-color);
-}
-.btn-secondary {
-  @include button-variant($btn-secondary-color, $btn-secondary-bg, $btn-secondary-border-color);
-}
-.btn-info {
-  @include button-variant($btn-info-color, $btn-info-bg, $btn-info-border-color);
-}
-.btn-success {
-  @include button-variant($btn-success-color, $btn-success-bg, $btn-success-border-color);
-}
-.btn-warning {
-  @include button-variant($btn-warning-color, $btn-warning-bg, $btn-warning-border-color);
-}
-.btn-danger {
-  @include button-variant($btn-danger-color, $btn-danger-bg, $btn-danger-border-color);
+@each $color, $value in $theme-colors {
+  .btn-#{$color} {
+    @include button-variant($value, $value);
+  }
 }
 
-// Remove all backgrounds
-.btn-outline-primary {
-  @include button-outline-variant($btn-primary-bg, $btn-primary-color);
-}
-.btn-outline-secondary {
-  @include button-outline-variant($btn-secondary-border-color, $btn-secondary-color);
-}
-.btn-outline-info {
-  @include button-outline-variant($btn-info-bg, $btn-info-color);
-}
-.btn-outline-success {
-  @include button-outline-variant($btn-success-bg, $btn-success-color);
-}
-.btn-outline-warning {
-  @include button-outline-variant($btn-warning-bg, $btn-warning-color);
-}
-.btn-outline-danger {
-  @include button-outline-variant($btn-danger-bg, $btn-danger-color);
+@each $color, $value in $theme-colors {
+  .btn-outline-#{$color} {
+    @include button-outline-variant($value);
+  }
 }
 
 
@@ -98,35 +81,29 @@ fieldset[disabled] a.btn {
 .btn-link {
   font-weight: $font-weight-normal;
   color: $link-color;
-  border-radius: 0;
+  background-color: transparent;
 
-  &,
-  &:active,
-  &.active,
-  &:disabled {
-    background-color: transparent;
-    @include box-shadow(none);
-  }
-  &,
-  &:focus,
-  &:active {
-    border-color: transparent;
-  }
   @include hover {
-    border-color: transparent;
-  }
-  @include hover-focus {
     color: $link-hover-color;
     text-decoration: $link-hover-decoration;
     background-color: transparent;
+    border-color: transparent;
   }
-  &:disabled {
-    color: $btn-link-disabled-color;
 
-    @include hover-focus {
-      text-decoration: none;
-    }
+  &:focus,
+  &.focus {
+    text-decoration: $link-hover-decoration;
+    border-color: transparent;
+    box-shadow: none;
   }
+
+  &:disabled,
+  &.disabled {
+    color: $btn-link-disabled-color;
+    pointer-events: none;
+  }
+
+  // No need for an active state here
 }
 
 
@@ -135,11 +112,11 @@ fieldset[disabled] a.btn {
 //
 
 .btn-lg {
-  @include button-size($input-btn-padding-y-lg, $input-btn-padding-x-lg, $font-size-lg, $line-height-lg, $btn-border-radius-lg);
+  @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $font-size-lg, $btn-line-height-lg, $btn-border-radius-lg);
 }
 
 .btn-sm {
-  @include button-size($input-btn-padding-y-sm, $input-btn-padding-x-sm, $font-size-sm, $line-height-sm, $btn-border-radius-sm);
+  @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $font-size-sm, $btn-line-height-sm, $btn-border-radius-sm);
 }
 
 
@@ -150,11 +127,11 @@ fieldset[disabled] a.btn {
 .btn-block {
   display: block;
   width: 100%;
-}
 
-// Vertically space out multiple block buttons
-.btn-block + .btn-block {
-  margin-top: $btn-block-spacing-y;
+  // Vertically space out multiple block buttons
+  + .btn-block {
+    margin-top: $btn-block-spacing-y;
+  }
 }
 
 // Specificity overrides
