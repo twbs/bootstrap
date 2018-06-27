@@ -29,8 +29,8 @@ title:              Bootstrap
 description:        "The most popular HTML, CSS, and JS library in the world."
 twitter:            getbootstrap
 authors:            "Mark Otto, Jacob Thornton, and Bootstrap contributors"
-social_image_path:  /assets/brand/bootstrap-social.png
-social_logo_path:   /assets/brand/bootstrap-social-logo.png
+social_image_path:  /docs/4.1/assets/brand/bootstrap-social.png
+social_logo_path:   /docs/4.1/assets/brand/bootstrap-social-logo.png
 
 # Custom variables
 current_version:      4.1.1
