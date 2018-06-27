@@ -97,7 +97,7 @@ var Tab = function ($) {
       }
 
       if (selector) {
-        target = $(selector)[0];
+        target = document.querySelector(selector);
       }
 
       this._activate(this._element, listElement);
@@ -179,7 +179,8 @@ var Tab = function ($) {
         var dropdownElement = $(element).closest(Selector.DROPDOWN)[0];
 
         if (dropdownElement) {
-          $(dropdownElement).find(Selector.DROPDOWN_TOGGLE).addClass(ClassName.ACTIVE);
+          var dropdownToggleList = [].slice.call(dropdownElement.querySelectorAll(Selector.DROPDOWN_TOGGLE));
+          $(dropdownToggleList).addClass(ClassName.ACTIVE);
         }
 
         element.setAttribute('aria-expanded', true);

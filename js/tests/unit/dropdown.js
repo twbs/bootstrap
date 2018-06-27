@@ -499,6 +499,74 @@ $(function () {
     $dropdown.trigger('click')
   })
 
+  QUnit.test('should fire hide and hidden event with a clickEvent', function (assert) {
+    assert.expect(3)
+    var dropdownHTML = '<div class="tabs">' +
+        '<div class="dropdown">' +
+        '<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>' +
+        '<div class="dropdown-menu">' +
+        '<a class="dropdown-item" href="#">Secondary link</a>' +
+        '<a class="dropdown-item" href="#">Something else here</a>' +
+        '<div class="divider"/>' +
+        '<a class="dropdown-item" href="#">Another link</a>' +
+        '</div>' +
+        '</div>' +
+        '</div>'
+    var $dropdown = $(dropdownHTML)
+      .appendTo('#qunit-fixture')
+      .find('[data-toggle="dropdown"]')
+      .bootstrapDropdown()
+
+    $dropdown.parent('.dropdown')
+      .on('hide.bs.dropdown', function (e) {
+        assert.ok(e.clickEvent)
+      })
+      .on('hidden.bs.dropdown', function (e) {
+        assert.ok(e.clickEvent)
+      })
+      .on('shown.bs.dropdown', function () {
+        assert.ok(true, 'shown was fired')
+        $(document.body).trigger('click')
+      })
+
+    $dropdown.trigger('click')
+  })
+
+  QUnit.test('should fire hide and hidden event without a clickEvent if event type is not click', function (assert) {
+    assert.expect(3)
+    var dropdownHTML = '<div class="tabs">' +
+        '<div class="dropdown">' +
+        '<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>' +
+        '<div class="dropdown-menu">' +
+        '<a class="dropdown-item" href="#">Secondary link</a>' +
+        '<a class="dropdown-item" href="#">Something else here</a>' +
+        '<div class="divider"/>' +
+        '<a class="dropdown-item" href="#">Another link</a>' +
+        '</div>' +
+        '</div>' +
+        '</div>'
+    var $dropdown = $(dropdownHTML)
+      .appendTo('#qunit-fixture')
+      .find('[data-toggle="dropdown"]')
+      .bootstrapDropdown()
+
+    $dropdown.parent('.dropdown')
+      .on('hide.bs.dropdown', function (e) {
+        assert.notOk(e.clickEvent)
+      })
+      .on('hidden.bs.dropdown', function (e) {
+        assert.notOk(e.clickEvent)
+      })
+      .on('shown.bs.dropdown', function () {
+        assert.ok(true, 'shown was fired')
+        $dropdown.trigger($.Event('keydown', {
+          which: 27
+        }))
+      })
+
+    $dropdown.trigger('click')
+  })
+
   QUnit.test('should ignore keyboard events within <input>s and <textarea>s', function (assert) {
     assert.expect(3)
     var done = assert.async()
