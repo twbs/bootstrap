@@ -334,21 +334,6 @@
         padding: @navbar-padding-mobile;
         -webkit-touch-callout: none;// When a target is touched and held on iPhone OS, Safari displays a callout information about the link. This property allows disabling that behavior.
       }
-
-      >.dropdown-menu {
-        position: relative;
-        width: 100%;
-        box-shadow: none;
-        padding: 0;
-        padding-bottom: @padding-large-vertical;
-        float: none;
-        margin-top: 0;
-        border-bottom: 1px solid @brand-smoke-plus-20;
-
-        .dropdown-header {
-          padding: @navbar-padding-mobile;
-        }
-      }
     }
 
     // Dropdowns get custom display when collapsed
@@ -459,6 +444,7 @@
   > li {
     > .dropdown-menu {
       margin-top: @navbar-height;
+      .arrow-pointer(@dropdown-arrow-width);
 
       > li > a {
         font-size: @navbar-font-size;
@@ -490,10 +476,6 @@
         &:focus {
           background-color: @dropdown-link-hover-bg;
         }
-      }
-
-      @media (min-width: @grid-float-breakpoint) {
-        .arrow-pointer(@dropdown-arrow-width);
       }
     }
 
@@ -546,12 +528,6 @@
       left: 50%;
       margin-left: (@dropdown-arrow-width / -2);
     }
-  }
-}
-
-@media (max-width: @screen-md) {
-  .navbar-collapse .navbar-nav > li > .dropdown-menu {
-    margin-top: 0;
   }
 }
 
@@ -943,6 +919,31 @@
       max-width: @navbar-collapse-max-width !important;
       transition: transform 0.35s ease;
       transform: translateX(-@navbar-collapse-max-width);
+    }
+
+    .navbar-nav {
+      > li {
+        border-bottom: 1px solid @brand-smoke-plus-20;
+      }
+    }
+
+    .dropdown-menu {
+      position: relative;
+      width: 100%;
+      box-shadow: none;
+      padding: 0;
+      padding-bottom: @padding-large-vertical;
+      float: none;
+      margin-top: 0 !important;
+      border-bottom: 1px solid @brand-smoke-plus-20;
+
+      &::before {
+        display: none;
+      }
+
+      .dropdown-header {
+        padding: @navbar-padding-mobile;
+      }
     }
 
     .navbar-toggle {
