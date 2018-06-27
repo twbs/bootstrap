@@ -10,20 +10,26 @@
   background-color: $table-bg;
   border-color: $table-border-color;
 
-  > thead {
+  // Nested tables:
+  table {
+    border-color: inherit;
+  }
+
+  thead {
     vertical-align: bottom;
   }
 
-  > tbody {
+  tbody {
     vertical-align: $table-vertical-align;
   }
 
-  > tfoot {
+  tfoot {
     vertical-align: top;
   }
 
-  // stylelint-disable-next-line selector-max-universal
-  > * {
+  thead,
+  tbody,
+  tfoot {
     border-color: inherit;
 
     @if (not $table-show-border-top) {
@@ -57,18 +63,18 @@
         }
       }
     }
+  }
 
-    > tr {
-      border-color: inherit;
+  tr {
+    border-color: inherit;
+  }
 
-      > th,
-      > td {
-        padding: $table-cell-padding;
-        border-color: inherit;
-        border-width: $table-border-width;
-        border-top-style: solid;
-      }
-    }
+  th,
+  td {
+    padding: $table-cell-padding;
+    border-color: inherit;
+    border-width: $table-border-width;
+    border-top-style: solid;
   }
 }
 
