@@ -182,6 +182,7 @@ img {
 
 svg:not(:root) {
   overflow: hidden;
+  vertical-align: middle;
 }
 
 table {
