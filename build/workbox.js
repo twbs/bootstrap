@@ -38,6 +38,7 @@ swBuild.injectManifest(config).then(({
     if (err) {
       throw err
     }
+
     swBuild.copyWorkboxLibraries(`${buildPrefix}assets/js/vendor/workbox`).then((wbPath) => {
       const swFileContents = data.replace(wbSwRegex, `${wbPath}`)
       fs.writeFile(config.swDest, swFileContents, () => {
