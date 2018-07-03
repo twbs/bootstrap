@@ -25,5 +25,9 @@
     <file src="dist\css\*.*" target="content\Content" />
     <file src="dist\js\bootstrap*.js" target="content\Scripts" />
     <file src="dist\js\bootstrap*.js.map" target="content\Scripts" />
+
+    <file src="dist\css\*.*" target="contentFiles\Content" />
+    <file src="dist\js\bootstrap*.js" target="contentFiles\Scripts" />
+    <file src="dist\js\bootstrap*.js.map" target="contentFiles\Scripts" />
   </files>
 </package>
