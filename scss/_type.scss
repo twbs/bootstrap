@@ -26,27 +26,20 @@ h6, .h6 { font-size: $h6-font-size; }
 }
 
 // Type display classes
-.display-1 {
-  font-size: $display1-size;
-  font-weight: $display1-weight;
-  line-height: $display-line-height;
+@each $display-key, $display-value in $display-sizes {
+  .lol-display-#{$display-key} {
+    font-size: map_get($display-value, 'size');
+    font-weight: map_get($display-value, 'weight');
+      &.display-responsive {
+        @include media-breakpoint-down(sm) {
+          font-size: map_get($display-value, 'size')/1.3;
+        }
+        @include media-breakpoint-down(xs) {
+          font-size: map_get($display-value, 'size')/1.8;
+        }
+      }
+  }
 }
-.display-2 {
-  font-size: $display2-size;
-  font-weight: $display2-weight;
-  line-height: $display-line-height;
-}
-.display-3 {
-  font-size: $display3-size;
-  font-weight: $display3-weight;
-  line-height: $display-line-height;
-}
-.display-4 {
-  font-size: $display4-size;
-  font-weight: $display4-weight;
-  line-height: $display-line-height;
-}
-
 
 //
 // Horizontal rules
