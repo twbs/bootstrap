@@ -109,7 +109,7 @@ Use the included utility classes to recreate the small secondary heading text fr
 
 ## Display headings
 
-Traditional heading elements are designed to work best in the meat of your page content. When you need a heading to stand out, consider using a **display heading**—a larger, slightly more opinionated heading style.
+Traditional heading elements are designed to work best in the meat of your page content. When you need a heading to stand out, consider using a **display heading**—a larger, slightly more opinionated heading style
 
 <div class="bd-example bd-example-type">
   <table class="table">
@@ -135,6 +135,24 @@ Traditional heading elements are designed to work best in the meat of your page 
 <h1 class="display-2">Display 2</h1>
 <h1 class="display-3">Display 3</h1>
 <h1 class="display-4">Display 4</h1>
+{% endhighlight %}
+
+### Responsive Display
+
+Display headings doesn't shrink on small screens by default, but you can add `.display-responsive` class to your heading to automatically resize them in small screens.
+
+<div class="bd-example bd-example-type">
+  <table class="table">
+    <tbody>
+      <tr>
+        <td><span class="display-2 display-responsive">Large text for a display heading</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+{% highlight html %}
+<h2 class="display-2 display-responsive2">Display 2</h1>
 {% endhighlight %}
 
 ## Lead
