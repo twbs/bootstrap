@@ -25,5 +25,9 @@
     <file src="scss\**\*.scss" target="content\Content\bootstrap" />
     <file src="dist\js\bootstrap*.js" target="content\Scripts" />
     <file src="dist\js\bootstrap*.js.map" target="content\Scripts" />
+
+    <file src="scss\**\*.scss" target="contentFiles\Content\bootstrap" />
+    <file src="dist\js\bootstrap*.js" target="contentFiles\Scripts" />
+    <file src="dist\js\bootstrap*.js.map" target="contentFiles\Scripts" />
   </files>
 </package>
