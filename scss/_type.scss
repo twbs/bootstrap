@@ -26,16 +26,16 @@ h6, .h6 { font-size: $h6-font-size; }
 }
 
 // Type display classes
-@each $display-key, $display-value in $display-sizes {
-  .lol-display-#{$display-key} {
+@each $display-key, $display-value in $display-texts {
+  .display-#{$display-key} {
     font-size: map_get($display-value, 'size');
     font-weight: map_get($display-value, 'weight');
       &.display-responsive {
         @include media-breakpoint-down(sm) {
-          font-size: map_get($display-value, 'size')/1.3;
+          font-size: map_get($display-value, 'size')/1.25;
         }
         @include media-breakpoint-down(xs) {
-          font-size: map_get($display-value, 'size')/1.8;
+          font-size: map_get($display-value, 'size')/1.75;
         }
       }
   }
