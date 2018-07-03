@@ -4,9 +4,7 @@
     "stylelint-order"
   ],
   "rules": {
-    "at-rule-empty-line-before": [null, {
-      "except": ["first-nested"]
-    }],
+    "at-rule-empty-line-before": null,
     "at-rule-name-space-after": "always",
     "at-rule-no-vendor-prefix": true,
     "at-rule-semicolon-space-before": "never",
@@ -33,6 +31,9 @@
     "no-descending-specificity": null,
     "no-duplicate-selectors": true,
     "number-leading-zero": "never",
+    "media-feature-name-no-unknown": [true, {
+      "ignoreMediaFeatureNames": ["prefers-reduced-motion"]
+    }],
     "order/properties-order": [
       "position",
       "top",

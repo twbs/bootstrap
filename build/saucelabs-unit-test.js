@@ -25,6 +25,10 @@ const jsUnitSaucelabs = new JSUnitSaucelabs({
 
 const testURL = 'http://localhost:3000/js/tests/index.html?hidepassed'
 const browsersFile = require(path.resolve(__dirname, './sauce_browsers.json'))
+const errorMessages = [
+  'Test exceeded maximum duration',
+  'Test exceeded maximum duration after 180 seconds'
+]
 let jobsDone = 0
 let jobsSucceeded = 0
 
@@ -43,11 +47,12 @@ const waitingCallback = (error, body, id) => {
       }, 2000)
     } else {
       const test = body['js tests'][0]
+      const platform = test.platform.join(', ')
       let passed = false
       let errorStr = false
 
       if (test.result !== null) {
-        if (typeof test.result === 'string' && test.result === 'Test exceeded maximum duration') {
+        if (typeof test.result === 'string' && errorMessages.includes(test.result)) {
           errorStr = test.result
         } else {
           passed = test.result.total === test.result.passed
@@ -55,11 +60,12 @@ const waitingCallback = (error, body, id) => {
       }
 
       console.log(`Tested ${testURL}`)
-      console.log(`Platform: ${test.platform.join(', ')}`)
-      console.log(`Passed: ${passed.toString()}`)
+      console.log(`Platform: ${platform}`)
+      console.log(`Passed: ${passed}`)
       console.log(`URL: ${test.url}\n`)
+
       if (errorStr) {
-        console.error(errorStr)
+        console.error(`${platform}: ${errorStr}`)
       }
 
       if (passed) {
@@ -71,8 +77,8 @@ const waitingCallback = (error, body, id) => {
       if (jobsDone === browsersFile.length - 1) {
         jsUnitSaucelabs.stop()
         if (jobsDone > jobsSucceeded) {
-          const failedTest = jobsDone - jobsSucceeded
-          throw new Error(`Some test(s) failed (${failedTest})`)
+          const failedTests = jobsDone - jobsSucceeded
+          throw new Error(`${failedTests} test${failedTests > 1 ? 's' : ''} failed.`)
         }
 
         console.log('All tests passed')
