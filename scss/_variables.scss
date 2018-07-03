@@ -518,9 +518,11 @@ $custom-select-indicator:           str-replace(url("data:image/svg+xml;charset=
 $custom-select-border-width:        $input-btn-border-width !default;
 $custom-select-border-color:        $input-border-color !default;
 $custom-select-border-radius:       $border-radius !default;
+$custom-select-box-shadow:          inset 0 1px 2px rgba($black, .075) !default;
 
 $custom-select-focus-border-color:  $input-focus-border-color !default;
-$custom-select-focus-box-shadow:    inset 0 1px 2px rgba($black, .075), 0 0 5px rgba($custom-select-focus-border-color, .5) !default;
+$custom-select-focus-width:         $input-btn-focus-width !default;
+$custom-select-focus-box-shadow:    0 0 0 $custom-select-focus-width rgba($custom-select-focus-border-color, .5) !default;
 
 $custom-select-font-size-sm:        75% !default;
 $custom-select-height-sm:           $input-height-sm !default;
