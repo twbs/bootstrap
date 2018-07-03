@@ -73,7 +73,7 @@
     "release-version": "node build/change-version.js",
     "release-zip": "cd dist/ && zip -r9 bootstrap-$npm_package_version-dist.zip * && shx mv bootstrap-$npm_package_version-dist.zip ..",
     "saucelabs-test": "node build/saucelabs-unit-test.js",
-    "dist": "npm-run-all --parallel css js",
+    "dist": "npm-run-all --parallel css-main js",
     "test": "npm-run-all dist js-test docs-compile docs-lint bundlesize",
     "watch": "npm-run-all --parallel watch-css-main watch-css-docs watch-js-main watch-js-docs",
     "watch-css-main": "nodemon --watch scss/ --ext scss --exec \"npm run css-main\"",
