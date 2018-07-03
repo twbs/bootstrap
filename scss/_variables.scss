@@ -256,15 +256,13 @@ $headings-font-weight:        500 !default;
 $headings-line-height:        1.2 !default;
 $headings-color:              inherit !default;
 
-$display1-size:               6rem !default;
-$display2-size:               5.5rem !default;
-$display3-size:               4.5rem !default;
-$display4-size:               3.5rem !default;
+$display-sizes: (
+  1: (size: 6rem, weight: 300),
+  2: (size: 5.5rem, weight: 300),
+  3: (size: 4.5rem, weight: 300),
+  4: (size: 3.5rem, weight: 300),
+) !default;
 
-$display1-weight:             300 !default;
-$display2-weight:             300 !default;
-$display3-weight:             300 !default;
-$display4-weight:             300 !default;
 $display-line-height:         $headings-line-height !default;
 
 $lead-font-size:              ($font-size-base * 1.25) !default;
