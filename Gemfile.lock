@@ -29,7 +29,7 @@ GEM
       pathutil (~> 0.9)
       rouge (>= 1.7, < 4)
       safe_yaml (~> 1.0)
-    jekyll-redirect-from (0.13.0)
+    jekyll-redirect-from (0.14.0)
       jekyll (~> 3.3)
     jekyll-sass-converter (1.5.2)
       sass (~> 3.4)
@@ -47,9 +47,9 @@ GEM
       ruby_dep (~> 1.2)
     mercenary (0.3.6)
     mini_portile2 (2.3.0)
-    nokogiri (1.8.3)
+    nokogiri (1.8.4)
       mini_portile2 (~> 2.3.0)
-    nokogiri (1.8.3-x64-mingw32)
+    nokogiri (1.8.4-x64-mingw32)
       mini_portile2 (~> 2.3.0)
     pathutil (0.16.1)
       forwardable-extended (~> 2.6)
@@ -72,7 +72,7 @@ PLATFORMS
 
 DEPENDENCIES
   jekyll (~> 3.8.3)
-  jekyll-redirect-from (~> 0.13.0)
+  jekyll-redirect-from (~> 0.14.0)
   jekyll-sitemap (~> 1.2.0)
   jekyll-toc (~> 0.6.0)
 
