@@ -117,9 +117,8 @@ Documentation search is powered by [Algolia's DocSearch](https://community.algol
 
 1. Run through the [tooling setup](https://getbootstrap.com/docs/4.1/getting-started/build-tools/#tooling-setup) to install Jekyll (the site builder) and other Ruby dependencies with `bundle install`.
 2. Run `npm install` to install Node.js dependencies.
-3. Run `npm run test` (or a specific NPM script) to rebuild distributed CSS and JavaScript files, as well as our docs assets.
-4. From the root `/bootstrap` directory, run `npm run docs-serve` in the command line.
-5. Open `http://localhost:9001` in your browser, and voilà.
+3. Run `npm start` to compile CSS and JavaScript files, generate our docs, and watch for changes.
+4. Open `http://localhost:9001` in your browser, and voilà.
 
 Learn more about using Jekyll by reading its [documentation](https://jekyllrb.com/docs/home/).
 
@@ -127,6 +126,7 @@ Learn more about using Jekyll by reading its [documentation](https://jekyllrb.co
 
 - For v2.3.2: <https://getbootstrap.com/2.3.2/>
 - For v3.3.x: <https://getbootstrap.com/docs/3.3/>
+- For v4.0.x: <https://getbootstrap.com/docs/4.0/>
 
 [Previous releases](https://github.com/twbs/bootstrap/releases) and their documentation are also available for download.
 
