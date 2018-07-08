@@ -474,7 +474,7 @@ Embedding YouTube videos in modals requires additional JavaScript not in Bootstr
 
 Modals have three optional sizes, available via modifier classes to be placed on a `.modal-dialog`. These sizes kick in at certain breakpoints to avoid horizontal scrollbars on narrower viewports.
 
-<table class="table table-striped">
+<table class="table table-bordered table-striped">
   <thead>
     <tr>
       <th>Size</th>
