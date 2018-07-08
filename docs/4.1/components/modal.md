@@ -520,7 +520,7 @@ Modals have three optional sizes, available via modifier classes to be placed on
     <div class="modal-content">
 
       <div class="modal-header">
-        <h4 class="modal-title" id="myExtraLargeModalLabel">Extra large modal</h4>
+        <h5 class="modal-title h4" id="myExtraLargeModalLabel">Extra large modal</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
