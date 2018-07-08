@@ -50,11 +50,23 @@
     border-radius: .2rem;
   }
 
-  .form-control,
-  .custom-select {
+  .form-control {
     .was-validated &:#{$state},
     &.is-#{$state} {
       border-color: $color;
+
+      @if $enable-validation-icons {
+        padding-right: $input-height-inner;
+        background-repeat: no-repeat;
+        background-position: center right calc(#{$input-height-inner} / 4);
+        background-size: calc(#{$input-height-inner} / 2) calc(#{$input-height-inner} / 2);
+
+        @if $state == "valid" {
+          background-image: $form-feedback-icon-valid;
+        } @else {
+          background-image: $form-feedback-icon-invalid;
+        }
+      }
 
       &:focus {
         border-color: $color;
@@ -67,6 +79,44 @@
       }
     }
   }
+
+  textarea.form-control {
+    .was-validated &:#{$state},
+    &.is-#{$state} {
+      @if $enable-validation-icons {
+        padding-right: $input-height-inner;
+        background-position: top calc(#{$input-height-inner} / 4) right calc(#{$input-height-inner} / 4);
+      }
+    }
+  }
+
+  .custom-select {
+    .was-validated &:#{$state},
+    &.is-#{$state} {
+      border-color: $color;
+
+      @if $enable-validation-icons {
+        padding-right: $input-height-inner;
+
+        @if $state == "valid" {
+          background: $custom-select-background, $form-feedback-icon-valid no-repeat center right ($input-height-inner * .9) / calc(#{$input-height-inner} / 2) calc(#{$input-height-inner} / 2);
+        } @else {
+          background: $custom-select-background, $form-feedback-icon-invalid no-repeat center right ($input-height-inner * .9) / calc(#{$input-height-inner} / 2) calc(#{$input-height-inner} / 2);
+        }
+      }
+
+      &:focus {
+        border-color: $color;
+        box-shadow: 0 0 0 $input-focus-width rgba($color, .25);
+      }
+
+      ~ .#{$state}-feedback,
+      ~ .#{$state}-tooltip {
+        display: block;
+      }
+    }
+  }
+
 
   .form-control-file {
     .was-validated &:#{$state},
