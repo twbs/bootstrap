@@ -8,7 +8,6 @@
 
     @each $prop, $abbrev in (margin: m, padding: p) {
       @each $size, $length in $spacers {
-
         .#{$abbrev}#{$infix}-#{$size} { #{$prop}: $length !important; }
         .#{$abbrev}t#{$infix}-#{$size},
         .#{$abbrev}y#{$infix}-#{$size} {
@@ -29,32 +28,30 @@
       }
     }
 
-    // Some special margin utils
-
-    // Negative margins i.e. mb-n1 is the inverse or negative of mb-1
-    @each $prop, $abbrev in (margin: m) {
-      @each $size, $length in $spacers {
-
-        .#{$abbrev}#{$infix}-n#{$size} { #{$prop}: -$length !important; }
-        .#{$abbrev}t#{$infix}-n#{$size},
-        .#{$abbrev}y#{$infix}-n#{$size} {
-          #{$prop}-top: -$length !important;
+    // Negative margins (e.g., where `.mb-n1` is negative version of `.mb-1`)
+    @each $size, $length in $spacers {
+      @if not $size == 0 {
+        .m#{$infix}-n#{$size} { margin: -$length !important; }
+        .mt#{$infix}-n#{$size},
+        .my#{$infix}-n#{$size} {
+          margin-top: -$length !important;
         }
-        .#{$abbrev}r#{$infix}-n#{$size},
-        .#{$abbrev}x#{$infix}-n#{$size} {
-          #{$prop}-right: -$length !important;
+        .mr#{$infix}-n#{$size},
+        .mx#{$infix}-n#{$size} {
+          margin-right: -$length !important;
         }
-        .#{$abbrev}b#{$infix}-n#{$size},
-        .#{$abbrev}y#{$infix}-n#{$size} {
-          #{$prop}-bottom: -$length !important;
+        .mb#{$infix}-n#{$size},
+        .my#{$infix}-n#{$size} {
+          margin-bottom: -$length !important;
         }
-        .#{$abbrev}l#{$infix}-n#{$size},
-        .#{$abbrev}x#{$infix}-n#{$size} {
-          #{$prop}-left: -$length !important;
+        .ml#{$infix}-n#{$size},
+        .mx#{$infix}-n#{$size} {
+          margin-left: -$length !important;
         }
       }
     }
 
+    // Some special margin utils
     .m#{$infix}-auto { margin: auto !important; }
     .mt#{$infix}-auto,
     .my#{$infix}-auto {
