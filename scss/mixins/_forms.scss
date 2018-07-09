@@ -80,6 +80,7 @@
     }
   }
 
+  // stylelint-disable selector-no-qualifying-type
   textarea.form-control {
     .was-validated &:#{$state},
     &.is-#{$state} {
@@ -89,6 +90,7 @@
       }
     }
   }
+  // stylelint-enable selector-no-qualifying-type
 
   .custom-select {
     .was-validated &:#{$state},
