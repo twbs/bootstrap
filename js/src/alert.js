@@ -84,7 +84,7 @@ const Alert = (($) => {
       let parent     = false
 
       if (selector) {
-        parent = $(selector)[0]
+        parent = document.querySelector(selector)
       }
 
       if (!parent) {

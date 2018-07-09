@@ -160,7 +160,7 @@
 
 -
   browser: >
-    Firefox (OS X & Linux)
+    Firefox (macOS & Linux)
   summary: >
     Badge widget causes bottom border of Tabs widget to unexpectedly not overlap
   upstream_bug: >
@@ -180,7 +180,7 @@
 
 -
   browser: >
-    Chrome (OS X)
+    Chrome (macOS)
   summary: >
     Clicking above `<input type="number">` increment button flashes the decrement button.
   upstream_bug: >
@@ -290,7 +290,7 @@
 
 -
   browser: >
-    Safari (OS X)
+    Safari (macOS)
   summary: >
     `px`, `em`, and `rem` should all behave the same in media queries when page zoom is applied
   upstream_bug: >
@@ -300,7 +300,7 @@
 
 -
   browser: >
-    Safari (OS X)
+    Safari (macOS)
   summary: >
     Weird button behavior with some `<input type="number">` elements.
   upstream_bug: >
@@ -312,7 +312,7 @@
 
 -
   browser: >
-    Safari (OS X)
+    Safari (macOS)
   summary: >
     Small font size when printing webpage with fixed-width `.container`.
   upstream_bug: >
