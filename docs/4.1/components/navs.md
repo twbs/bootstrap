@@ -501,7 +501,38 @@ And with vertical pills.
 
 ### Using data attributes
 
-You can activate a tab or pill navigation without writing any JavaScript by simply specifying `data-toggle="tab"` or `data-toggle="pill"` on an element. Use these data attributes on `.nav-tabs` or `.nav-pills`.
+You can activate a tab or pill navigation without writing any JavaScript by simply specifying `data-toggle="tab"`, `data-toggle="pill"`, or `data-toggle="list"` on an element. Use these data attributes on `.nav` or `.list-group`.
+
+#### Required data attributes
+
+**Toggle elements**
+
+- toggle elements must be contained in a .nav or .list-group element
+- data-toggle must be set to tab, pill, or list
+- data-target or href defined with a jQuery selector for the target container to toggle
+- if the *clicked* element is `.active` or `.disabled`, no show event will trigger
+
+**Toggle targets**
+
+- must be hidden elements
+- must show with addition of `.active` class
+- unique targeting, usually an `id` for the data-target|href targetting
+- warning: only one item will be toggled with tabs, use collapse for toggling multiple items.
+
+default classes for tabs are `.tab-content` with nested `.tab-pane` elements
+
+#### Optional data attributes
+
+**Toggle elements**
+
+- `role="tab"` - this will cause teh aria-selected to toggle between true and false
+- `aria-selected="false"` - boolean, if tab is active this should be true
+- `aria-controls` - id of the target container
+
+**Toggle targets**
+
+- `role="tabpanel"` - definition aria accessibility
+- `aria-labelledby` - id of the toggle controller / label
 
 {% highlight html %}
 <!-- Nav tabs -->
