@@ -4,7 +4,7 @@ import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0): tooltip.js
+ * Bootstrap (v4.1.1): tooltip.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -16,13 +16,12 @@ const Tooltip = (($) => {
    * ------------------------------------------------------------------------
    */
 
-  const NAME                = 'tooltip'
-  const VERSION             = '4.0.0'
-  const DATA_KEY            = 'bs.tooltip'
-  const EVENT_KEY           = `.${DATA_KEY}`
-  const JQUERY_NO_CONFLICT  = $.fn[NAME]
-  const TRANSITION_DURATION = 150
-  const CLASS_PREFIX        = 'bs-tooltip'
+  const NAME               = 'tooltip'
+  const VERSION            = '4.1.1'
+  const DATA_KEY           = 'bs.tooltip'
+  const EVENT_KEY          = `.${DATA_KEY}`
+  const JQUERY_NO_CONFLICT = $.fn[NAME]
+  const CLASS_PREFIX       = 'bs-tooltip'
   const BSCLS_PREFIX_REGEX = new RegExp(`(^|\\s)${CLASS_PREFIX}\\S+`, 'g')
 
   const DefaultType = {
@@ -274,7 +273,7 @@ const Tooltip = (($) => {
         const attachment = this._getAttachment(placement)
         this.addAttachmentClass(attachment)
 
-        const container = this.config.container === false ? document.body : $(this.config.container)
+        const container = this.config.container === false ? document.body : $(document).find(this.config.container)
 
         $(tip).data(this.constructor.DATA_KEY, this)
 
@@ -317,7 +316,7 @@ const Tooltip = (($) => {
         // only needed because of broken event delegation on iOS
         // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
         if ('ontouchstart' in document.documentElement) {
-          $('body').children().on('mouseover', null, $.noop)
+          $(document.body).children().on('mouseover', null, $.noop)
         }
 
         const complete = () => {
@@ -334,10 +333,12 @@ const Tooltip = (($) => {
           }
         }
 
-        if (Util.supportsTransitionEnd() && $(this.tip).hasClass(ClassName.FADE)) {
+        if ($(this.tip).hasClass(ClassName.FADE)) {
+          const transitionDuration = Util.getTransitionDurationFromElement(this.tip)
+
           $(this.tip)
             .one(Util.TRANSITION_END, complete)
-            .emulateTransitionEnd(Tooltip._TRANSITION_DURATION)
+            .emulateTransitionEnd(transitionDuration)
         } else {
           complete()
         }
@@ -375,18 +376,19 @@ const Tooltip = (($) => {
       // If this is a touch-enabled device we remove the extra
       // empty mouseover listeners we added for iOS support
       if ('ontouchstart' in document.documentElement) {
-        $('body').children().off('mouseover', null, $.noop)
+        $(document.body).children().off('mouseover', null, $.noop)
       }
 
       this._activeTrigger[Trigger.CLICK] = false
       this._activeTrigger[Trigger.FOCUS] = false
       this._activeTrigger[Trigger.HOVER] = false
 
-      if (Util.supportsTransitionEnd() &&
-          $(this.tip).hasClass(ClassName.FADE)) {
+      if ($(this.tip).hasClass(ClassName.FADE)) {
+        const transitionDuration = Util.getTransitionDurationFromElement(tip)
+
         $(tip)
           .one(Util.TRANSITION_END, complete)
-          .emulateTransitionEnd(TRANSITION_DURATION)
+          .emulateTransitionEnd(transitionDuration)
       } else {
         complete()
       }
@@ -416,9 +418,9 @@ const Tooltip = (($) => {
     }
 
     setContent() {
-      const $tip = $(this.getTipElement())
-      this.setElementContent($tip.find(Selector.TOOLTIP_INNER), this.getTitle())
-      $tip.removeClass(`${ClassName.FADE} ${ClassName.SHOW}`)
+      const tip = this.getTipElement()
+      this.setElementContent($(tip.querySelectorAll(Selector.TOOLTIP_INNER)), this.getTitle())
+      $(tip).removeClass(`${ClassName.FADE} ${ClassName.SHOW}`)
     }
 
     setElementContent($element, content) {
@@ -609,7 +611,7 @@ const Tooltip = (($) => {
       config = {
         ...this.constructor.Default,
         ...$(this.element).data(),
-        ...config
+        ...typeof config === 'object' && config ? config : {}
       }
 
       if (typeof config.delay === 'number') {
@@ -653,14 +655,16 @@ const Tooltip = (($) => {
     _cleanTipClass() {
       const $tip = $(this.getTipElement())
       const tabClass = $tip.attr('class').match(BSCLS_PREFIX_REGEX)
-      if (tabClass !== null && tabClass.length > 0) {
+      if (tabClass !== null && tabClass.length) {
         $tip.removeClass(tabClass.join(''))
       }
     }
 
-    _handlePopperPlacementChange(data) {
+    _handlePopperPlacementChange(popperData) {
+      const popperInstance = popperData.instance
+      this.tip = popperInstance.popper
       this._cleanTipClass()
-      this.addAttachmentClass(this._getAttachment(data.placement))
+      this.addAttachmentClass(this._getAttachment(popperData.placement))
     }
 
     _fixTransition() {

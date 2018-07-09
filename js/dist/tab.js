@@ -4,7 +4,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0): tab.js
+ * Bootstrap (v4.1.1): tab.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -15,12 +15,11 @@ var Tab = function ($) {
    * ------------------------------------------------------------------------
    */
   var NAME = 'tab';
-  var VERSION = '4.0.0';
+  var VERSION = '4.1.1';
   var DATA_KEY = 'bs.tab';
   var EVENT_KEY = "." + DATA_KEY;
   var DATA_API_KEY = '.data-api';
   var JQUERY_NO_CONFLICT = $.fn[NAME];
-  var TRANSITION_DURATION = 150;
   var Event = {
     HIDE: "hide" + EVENT_KEY,
     HIDDEN: "hidden" + EVENT_KEY,
@@ -98,7 +97,7 @@ var Tab = function ($) {
       }
 
       if (selector) {
-        target = $(selector)[0];
+        target = document.querySelector(selector);
       }
 
       this._activate(this._element, listElement);
@@ -139,14 +138,15 @@ var Tab = function ($) {
       }
 
       var active = activeElements[0];
-      var isTransitioning = callback && Util.supportsTransitionEnd() && active && $(active).hasClass(ClassName.FADE);
+      var isTransitioning = callback && active && $(active).hasClass(ClassName.FADE);
 
       var complete = function complete() {
         return _this2._transitionComplete(element, active, callback);
       };
 
       if (active && isTransitioning) {
-        $(active).one(Util.TRANSITION_END, complete).emulateTransitionEnd(TRANSITION_DURATION);
+        var transitionDuration = Util.getTransitionDurationFromElement(active);
+        $(active).one(Util.TRANSITION_END, complete).emulateTransitionEnd(transitionDuration);
       } else {
         complete();
       }
@@ -179,7 +179,8 @@ var Tab = function ($) {
         var dropdownElement = $(element).closest(Selector.DROPDOWN)[0];
 
         if (dropdownElement) {
-          $(dropdownElement).find(Selector.DROPDOWN_TOGGLE).addClass(ClassName.ACTIVE);
+          var dropdownToggleList = [].slice.call(dropdownElement.querySelectorAll(Selector.DROPDOWN_TOGGLE));
+          $(dropdownToggleList).addClass(ClassName.ACTIVE);
         }
 
         element.setAttribute('aria-expanded', true);

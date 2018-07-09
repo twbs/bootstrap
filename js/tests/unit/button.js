@@ -16,6 +16,7 @@ $(function () {
     afterEach: function () {
       $.fn.button = $.fn.bootstrapButton
       delete $.fn.bootstrapButton
+      $('#qunit-fixture').html('')
     }
   })
 
@@ -171,5 +172,28 @@ $(function () {
     $btn.trigger('click')
     assert.ok($btn.is(':not(.active)'), 'button did not become active')
     assert.ok(!$input.is(':checked'), 'checkbox did not get checked')
+  })
+
+  QUnit.test('dispose should remove data and the element', function (assert) {
+    assert.expect(2)
+
+    var $el = $('<div/>')
+    var $button = $el.bootstrapButton()
+
+    assert.ok(typeof $button.data('bs.button') !== 'undefined')
+
+    $button.data('bs.button').dispose()
+
+    assert.ok(typeof $button.data('bs.button') === 'undefined')
+  })
+
+  QUnit.test('should return button version', function (assert) {
+    assert.expect(1)
+
+    if (typeof Button !== 'undefined') {
+      assert.ok(typeof Button.VERSION === 'string')
+    } else {
+      assert.notOk()
+    }
   })
 })

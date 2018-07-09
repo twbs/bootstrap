@@ -1,4 +1,5 @@
-self.importScripts('/assets/js/vendor/{fileName}')
+/* global workbox:false */
 
-const workboxSW = new self.WorkboxSW()
-workboxSW.precache([])
+self.importScripts('assets/js/vendor/{fileName}')
+
+workbox.precaching.precacheAndRoute([])

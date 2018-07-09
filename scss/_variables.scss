@@ -8,7 +8,6 @@
 // Color system
 //
 
-// stylelint-disable
 $white:    #fff !default;
 $gray-100: #f8f9fa !default;
 $gray-200: #e9ecef !default;
@@ -22,17 +21,22 @@ $gray-900: #212529 !default;
 $black:    #000 !default;
 
 $grays: () !default;
-$grays: map-merge((
-  "100": $gray-100,
-  "200": $gray-200,
-  "300": $gray-300,
-  "400": $gray-400,
-  "500": $gray-500,
-  "600": $gray-600,
-  "700": $gray-700,
-  "800": $gray-800,
-  "900": $gray-900
-), $grays);
+// stylelint-disable-next-line scss/dollar-variable-default
+$grays: map-merge(
+  (
+    "100": $gray-100,
+    "200": $gray-200,
+    "300": $gray-300,
+    "400": $gray-400,
+    "500": $gray-500,
+    "600": $gray-600,
+    "700": $gray-700,
+    "800": $gray-800,
+    "900": $gray-900
+  ),
+  $grays
+);
+
 
 $blue:    #007bff !default;
 $indigo:  #6610f2 !default;
@@ -46,21 +50,25 @@ $teal:    #20c997 !default;
 $cyan:    #17a2b8 !default;
 
 $colors: () !default;
-$colors: map-merge((
-  "blue":       $blue,
-  "indigo":     $indigo,
-  "purple":     $purple,
-  "pink":       $pink,
-  "red":        $red,
-  "orange":     $orange,
-  "yellow":     $yellow,
-  "green":      $green,
-  "teal":       $teal,
-  "cyan":       $cyan,
-  "white":      $white,
-  "gray":       $gray-600,
-  "gray-dark":  $gray-800
-), $colors);
+// stylelint-disable-next-line scss/dollar-variable-default
+$colors: map-merge(
+  (
+    "blue":       $blue,
+    "indigo":     $indigo,
+    "purple":     $purple,
+    "pink":       $pink,
+    "red":        $red,
+    "orange":     $orange,
+    "yellow":     $yellow,
+    "green":      $green,
+    "teal":       $teal,
+    "cyan":       $cyan,
+    "white":      $white,
+    "gray":       $gray-600,
+    "gray-dark":  $gray-800
+  ),
+  $colors
+);
 
 $primary:       $blue !default;
 $secondary:     $gray-600 !default;
@@ -72,27 +80,30 @@ $light:         $gray-100 !default;
 $dark:          $gray-800 !default;
 
 $theme-colors: () !default;
-$theme-colors: map-merge((
-  "primary":    $primary,
-  "secondary":  $secondary,
-  "success":    $success,
-  "info":       $info,
-  "warning":    $warning,
-  "danger":     $danger,
-  "light":      $light,
-  "dark":       $dark
-), $theme-colors);
-// stylelint-enable
+// stylelint-disable-next-line scss/dollar-variable-default
+$theme-colors: map-merge(
+  (
+    "primary":    $primary,
+    "secondary":  $secondary,
+    "success":    $success,
+    "info":       $info,
+    "warning":    $warning,
+    "danger":     $danger,
+    "light":      $light,
+    "dark":       $dark
+  ),
+  $theme-colors
+);
 
 // Set a specific jump point for requesting color jumps
 $theme-color-interval:      8% !default;
 
 // The yiq lightness value that determines when the lightness of color changes from "dark" to "light". Acceptable values are between 0 and 255.
-$yiq-contrasted-threshold: 150 !default;
+$yiq-contrasted-threshold:  150 !default;
 
 // Customize the light and dark text colors for use in our YIQ color contrast function.
-$yiq-text-dark: $gray-900 !default;
-$yiq-text-light: $white !default;
+$yiq-text-dark:             $gray-900 !default;
+$yiq-text-light:            $white !default;
 
 // Options
 //
@@ -114,28 +125,34 @@ $enable-print-styles:       true !default;
 // variables. Mostly focused on spacing.
 // You can add more entries to the $spacers map, should you need more variation.
 
-// stylelint-disable
 $spacer: 1rem !default;
 $spacers: () !default;
-$spacers: map-merge((
-  0: 0,
-  1: ($spacer * .25),
-  2: ($spacer * .5),
-  3: $spacer,
-  4: ($spacer * 1.5),
-  5: ($spacer * 3)
-), $spacers);
+// stylelint-disable-next-line scss/dollar-variable-default
+$spacers: map-merge(
+  (
+    0: 0,
+    1: ($spacer * .25),
+    2: ($spacer * .5),
+    3: $spacer,
+    4: ($spacer * 1.5),
+    5: ($spacer * 3)
+  ),
+  $spacers
+);
 
 // This variable affects the `.h-*` and `.w-*` classes.
 $sizes: () !default;
-$sizes: map-merge((
-  25: 25%,
-  50: 50%,
-  75: 75%,
-  100: 100%,
-  auto: auto
-), $sizes);
-// stylelint-enable
+// stylelint-disable-next-line scss/dollar-variable-default
+$sizes: map-merge(
+  (
+    25: 25%,
+    50: 50%,
+    75: 75%,
+    100: 100%,
+    auto: auto
+  ),
+  $sizes
+);
 
 // Body
 //
@@ -211,6 +228,10 @@ $border-color:                $gray-300 !default;
 $border-radius:               .25rem !default;
 $border-radius-lg:            .3rem !default;
 $border-radius-sm:            .2rem !default;
+
+$box-shadow-sm:               0 .125rem .25rem rgba($black, .075) !default;
+$box-shadow:                  0 .5rem 1rem rgba($black, .15) !default;
+$box-shadow-lg:               0 1rem 3rem rgba($black, .175) !default;
 
 $component-active-color:      $white !default;
 $component-active-bg:         theme-color("primary") !default;
@@ -320,6 +341,7 @@ $table-dark-color:            $body-bg !default;
 
 $table-striped-order:         odd !default;
 
+$table-caption-color:         $text-muted !default;
 
 // Buttons + Forms
 //
@@ -446,6 +468,8 @@ $input-group-addon-color:               $input-color !default;
 $input-group-addon-bg:                  $gray-200 !default;
 $input-group-addon-border-color:        $input-border-color !default;
 
+$custom-forms-transition:               background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
+
 $custom-control-gutter:                 1.5rem !default;
 $custom-control-spacer-x:               1rem !default;
 
@@ -455,7 +479,7 @@ $custom-control-indicator-bg-size:      50% 50% !default;
 $custom-control-indicator-box-shadow:   inset 0 .25rem .25rem rgba($black, .1) !default;
 
 $custom-control-indicator-disabled-bg:          $gray-200 !default;
-$custom-control-label-disabled-color:     $gray-600 !default;
+$custom-control-label-disabled-color:           $gray-600 !default;
 
 $custom-control-indicator-checked-color:        $component-active-color !default;
 $custom-control-indicator-checked-bg:           $component-active-bg !default;
@@ -471,16 +495,16 @@ $custom-control-indicator-active-box-shadow:    none !default;
 $custom-checkbox-indicator-border-radius:       $border-radius !default;
 $custom-checkbox-indicator-icon-checked:        str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='#{$custom-control-indicator-checked-color}' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3E%3C/svg%3E"), "#", "%23") !default;
 
-$custom-checkbox-indicator-indeterminate-bg:    $component-active-bg !default;
-$custom-checkbox-indicator-indeterminate-color: $custom-control-indicator-checked-color !default;
-$custom-checkbox-indicator-icon-indeterminate:  str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 4'%3E%3Cpath stroke='#{$custom-checkbox-indicator-indeterminate-color}' d='M0 2h4'/%3E%3C/svg%3E"), "#", "%23") !default;
-$custom-checkbox-indicator-indeterminate-box-shadow: none !default;
+$custom-checkbox-indicator-indeterminate-bg:          $component-active-bg !default;
+$custom-checkbox-indicator-indeterminate-color:       $custom-control-indicator-checked-color !default;
+$custom-checkbox-indicator-icon-indeterminate:        str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 4'%3E%3Cpath stroke='#{$custom-checkbox-indicator-indeterminate-color}' d='M0 2h4'/%3E%3C/svg%3E"), "#", "%23") !default;
+$custom-checkbox-indicator-indeterminate-box-shadow:  none !default;
 
 $custom-radio-indicator-border-radius:          50% !default;
 $custom-radio-indicator-icon-checked:           str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3E%3Ccircle r='3' fill='#{$custom-control-indicator-checked-color}'/%3E%3C/svg%3E"), "#", "%23") !default;
 
 $custom-select-padding-y:           .375rem !default;
-$custom-select-padding-x:          .75rem !default;
+$custom-select-padding-x:           .75rem !default;
 $custom-select-height:              $input-height !default;
 $custom-select-indicator-padding:   1rem !default; // Extra padding to account for the presence of the background-image based indicator
 $custom-select-line-height:         $input-btn-line-height !default;
@@ -494,9 +518,11 @@ $custom-select-indicator:           str-replace(url("data:image/svg+xml;charset=
 $custom-select-border-width:        $input-btn-border-width !default;
 $custom-select-border-color:        $input-border-color !default;
 $custom-select-border-radius:       $border-radius !default;
+$custom-select-box-shadow:          inset 0 1px 2px rgba($black, .075) !default;
 
 $custom-select-focus-border-color:  $input-focus-border-color !default;
-$custom-select-focus-box-shadow:    inset 0 1px 2px rgba($black, .075), 0 0 5px rgba($custom-select-focus-border-color, .5) !default;
+$custom-select-focus-width:         $input-btn-focus-width !default;
+$custom-select-focus-box-shadow:    0 0 0 $custom-select-focus-width rgba($custom-select-focus-border-color, .5) !default;
 
 $custom-select-font-size-sm:        75% !default;
 $custom-select-height-sm:           $input-height-sm !default;
@@ -504,9 +530,27 @@ $custom-select-height-sm:           $input-height-sm !default;
 $custom-select-font-size-lg:        125% !default;
 $custom-select-height-lg:           $input-height-lg !default;
 
+$custom-range-track-width:          100% !default;
+$custom-range-track-height:         .5rem !default;
+$custom-range-track-cursor:         pointer !default;
+$custom-range-track-bg:             $gray-300 !default;
+$custom-range-track-border-radius:  1rem !default;
+$custom-range-track-box-shadow:     inset 0 .25rem .25rem rgba($black, .1) !default;
+
+$custom-range-thumb-width:            1rem !default;
+$custom-range-thumb-height:           $custom-range-thumb-width !default;
+$custom-range-thumb-bg:               $component-active-bg !default;
+$custom-range-thumb-border:           0 !default;
+$custom-range-thumb-border-radius:    1rem !default;
+$custom-range-thumb-box-shadow:       0 .1rem .25rem rgba($black, .1) !default;
+$custom-range-thumb-focus-box-shadow: 0 0 0 1px $body-bg, $input-btn-focus-box-shadow !default;
+$custom-range-thumb-active-bg:        lighten($component-active-bg, 35%) !default;
+
 $custom-file-height:                $input-height !default;
+$custom-file-height-inner:          $input-height-inner !default;
 $custom-file-focus-border-color:    $input-focus-border-color !default;
 $custom-file-focus-box-shadow:      $input-btn-focus-box-shadow !default;
+$custom-file-disabled-bg:           $input-disabled-bg !default;
 
 $custom-file-padding-y:             $input-btn-padding-y !default;
 $custom-file-padding-x:             $input-btn-padding-x !default;
@@ -591,6 +635,9 @@ $nav-pills-border-radius:           $border-radius !default;
 $nav-pills-link-active-color:       $component-active-color !default;
 $nav-pills-link-active-bg:          $component-active-bg !default;
 
+$nav-divider-color:                 $gray-200 !default;
+$nav-divider-margin-y:              ($spacer / 2) !default;
+
 // Navbar
 
 $navbar-padding-y:                  ($spacer / 2) !default;
@@ -639,6 +686,7 @@ $pagination-border-width:           $border-width !default;
 $pagination-border-color:           $gray-300 !default;
 
 $pagination-focus-box-shadow:       $input-btn-focus-box-shadow !default;
+$pagination-focus-outline:          0 !default;
 
 $pagination-hover-color:            $link-hover-color !default;
 $pagination-hover-bg:               $gray-200 !default;
@@ -682,19 +730,19 @@ $card-columns-margin:               $card-spacer-y !default;
 
 // Tooltips
 
-$tooltip-font-size:           $font-size-sm !default;
-$tooltip-max-width:           200px !default;
-$tooltip-color:               $white !default;
-$tooltip-bg:                  $black !default;
-$tooltip-border-radius:        $border-radius !default;
-$tooltip-opacity:             .9 !default;
-$tooltip-padding-y:           .25rem !default;
-$tooltip-padding-x:           .5rem !default;
-$tooltip-margin:              0 !default;
+$tooltip-font-size:                 $font-size-sm !default;
+$tooltip-max-width:                 200px !default;
+$tooltip-color:                     $white !default;
+$tooltip-bg:                        $black !default;
+$tooltip-border-radius:             $border-radius !default;
+$tooltip-opacity:                   .9 !default;
+$tooltip-padding-y:                 .25rem !default;
+$tooltip-padding-x:                 .5rem !default;
+$tooltip-margin:                    0 !default;
 
-$tooltip-arrow-width:         .8rem !default;
-$tooltip-arrow-height:        .4rem !default;
-$tooltip-arrow-color:         $tooltip-bg !default;
+$tooltip-arrow-width:               .8rem !default;
+$tooltip-arrow-height:              .4rem !default;
+$tooltip-arrow-color:               $tooltip-bg !default;
 
 
 // Popovers
@@ -740,26 +788,27 @@ $badge-pill-border-radius:          10rem !default;
 // Modals
 
 // Padding applied to the modal body
-$modal-inner-padding:         1rem !default;
+$modal-inner-padding:               1rem !default;
 
-$modal-dialog-margin:         .5rem !default;
-$modal-dialog-margin-y-sm-up: 1.75rem !default;
+$modal-dialog-margin:               .5rem !default;
+$modal-dialog-margin-y-sm-up:       1.75rem !default;
 
 $modal-title-line-height:           $line-height-base !default;
 
-$modal-content-bg:               $white !default;
-$modal-content-border-color:     rgba($black, .2) !default;
-$modal-content-border-width:     $border-width !default;
-$modal-content-box-shadow-xs:    0 .25rem .5rem rgba($black, .5) !default;
-$modal-content-box-shadow-sm-up: 0 .5rem 1rem rgba($black, .5) !default;
+$modal-content-bg:                  $white !default;
+$modal-content-border-color:        rgba($black, .2) !default;
+$modal-content-border-width:        $border-width !default;
+$modal-content-border-radius:       $border-radius-lg !default;
+$modal-content-box-shadow-xs:       0 .25rem .5rem rgba($black, .5) !default;
+$modal-content-box-shadow-sm-up:    0 .5rem 1rem rgba($black, .5) !default;
 
-$modal-backdrop-bg:           $black !default;
-$modal-backdrop-opacity:      .5 !default;
-$modal-header-border-color:   $gray-200 !default;
-$modal-footer-border-color:   $modal-header-border-color !default;
-$modal-header-border-width:   $modal-content-border-width !default;
-$modal-footer-border-width:   $modal-header-border-width !default;
-$modal-header-padding:        1rem !default;
+$modal-backdrop-bg:                 $black !default;
+$modal-backdrop-opacity:            .5 !default;
+$modal-header-border-color:         $gray-200 !default;
+$modal-footer-border-color:         $modal-header-border-color !default;
+$modal-header-border-width:         $modal-content-border-width !default;
+$modal-footer-border-width:         $modal-header-border-width !default;
+$modal-header-padding:              1rem !default;
 
 $modal-lg:                          800px !default;
 $modal-md:                          500px !default;
@@ -848,7 +897,9 @@ $breadcrumb-margin-bottom:          1rem !default;
 $breadcrumb-bg:                     $gray-200 !default;
 $breadcrumb-divider-color:          $gray-600 !default;
 $breadcrumb-active-color:           $gray-600 !default;
-$breadcrumb-divider:                "/" !default;
+$breadcrumb-divider:                quote("/") !default;
+
+$breadcrumb-border-radius:          $border-radius !default;
 
 
 // Carousel
@@ -870,7 +921,7 @@ $carousel-control-icon-width:       20px !default;
 $carousel-control-prev-icon-bg:     str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='#{$carousel-control-color}' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E"), "#", "%23") !default;
 $carousel-control-next-icon-bg:     str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='#{$carousel-control-color}' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E"), "#", "%23") !default;
 
-$carousel-transition:               transform .6s ease !default;
+$carousel-transition:               transform .6s ease !default; // Define transform transition first if using multiple transitions (e.g., `transform 2s ease, opacity .5s ease-out`)
 
 
 // Close

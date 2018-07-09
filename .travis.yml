@@ -13,8 +13,11 @@ before_install:
 install:
   - bundle install --deployment --jobs=3 --retry=3
   - npm install
+script:
+  - npm test
+  - if [ "$TRAVIS_NODE_VERSION" = "8" ]; then npm run check-broken-links; fi
 after_success:
-  - if [ "$TRAVIS_REPO_SLUG" = twbs-savage/bootstrap ]; then npm run docs-upload-preview; fi
+  - if [ "$TRAVIS_NODE_VERSION" = "8" ]; then npm run coveralls; fi
 stages:
   - test
   - name: browser
@@ -28,7 +31,3 @@ cache:
   directories:
     - node_modules
     - vendor/bundle
-notifications:
-  slack: heybb:iz4wwosL0N0EdaX1gvgkU0NH
-  webhooks:
-    - http://savage.twbsapps.com/savage/travis
