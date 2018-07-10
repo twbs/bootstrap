@@ -86,6 +86,18 @@ Trigger the tooltip via JavaScript:
 $('#example').tooltip(options)
 {% endhighlight %}
 
+{% capture callout %}
+##### Usage with overflow `auto` and `scroll`
+When the parent container has CSS property `overflow` set to values `auto|scroll` (for example when used within `.table-responsive`) the tooltip has weird flickering behaviour.
+
+The solution is to set `boundary` option to anything other than default value `'scrollParent'`. Eg. set it to `'window'`
+
+{% highlight js %}
+$('#example').tooltip({ boundary: 'window' })
+{% endhighlight %}
+{% endcapture %}
+{% include callout.html content=callout type="warning" %}
+
 ### Markup
 
 The required markup for a tooltip is only a `data` attribute and `title` on the HTML element you wish to have a tooltip. The generated markup of a tooltip is rather simple, though it does require a position (by default, set to `top` by the plugin).
