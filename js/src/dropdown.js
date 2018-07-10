@@ -74,7 +74,7 @@ const Dropdown = (($) => {
   const Default = {
     offset      : 0,
     flip        : true,
-    boundary    : 'scrollParent',
+    boundary    : 'window',
     reference   : 'toggle',
     display     : 'dynamic'
   }
