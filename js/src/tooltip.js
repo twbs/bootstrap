@@ -61,7 +61,7 @@ const Tooltip = (($) => {
     offset              : 0,
     container           : false,
     fallbackPlacement   : 'flip',
-    boundary            : 'scrollParent'
+    boundary            : 'window'
   }
 
   const HoverState = {

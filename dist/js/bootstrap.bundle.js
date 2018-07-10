@@ -4000,7 +4000,7 @@
     var Default = {
       offset: 0,
       flip: true,
-      boundary: 'scrollParent',
+      boundary: 'window',
       reference: 'toggle',
       display: 'dynamic'
     };
@@ -4257,6 +4257,10 @@
           var relatedTarget = {
             relatedTarget: toggles[i]
           };
+
+          if (event && event.type === 'click') {
+            relatedTarget.clickEvent = event;
+          }
 
           if (!context) {
             continue;
@@ -5048,7 +5052,7 @@
       offset: 0,
       container: false,
       fallbackPlacement: 'flip',
-      boundary: 'scrollParent'
+      boundary: 'window'
     };
     var HoverState = {
       SHOW: 'show',
@@ -5558,10 +5562,13 @@
         }
       };
 
-      _proto._handlePopperPlacementChange = function _handlePopperPlacementChange(data) {
+      _proto._handlePopperPlacementChange = function _handlePopperPlacementChange(popperData) {
+        var popperInstance = popperData.instance;
+        this.tip = popperInstance.popper;
+
         this._cleanTipClass();
 
-        this.addAttachmentClass(this._getAttachment(data.placement));
+        this.addAttachmentClass(this._getAttachment(popperData.placement));
       };
 
       _proto._fixTransition = function _fixTransition() {

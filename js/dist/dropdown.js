@@ -77,7 +77,7 @@ var Dropdown = function ($) {
   var Default = {
     offset: 0,
     flip: true,
-    boundary: 'scrollParent',
+    boundary: 'window',
     reference: 'toggle',
     display: 'dynamic'
   };
@@ -334,6 +334,10 @@ var Dropdown = function ($) {
         var relatedTarget = {
           relatedTarget: toggles[i]
         };
+
+        if (event && event.type === 'click') {
+          relatedTarget.clickEvent = event;
+        }
 
         if (!context) {
           continue;
