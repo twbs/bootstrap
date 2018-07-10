@@ -88,9 +88,10 @@ $('#example').tooltip(options)
 
 {% capture callout %}
 ##### Usage with overflow `auto` and `scroll`
-When the parent container has CSS property `overflow` set to values `auto|scroll` (for example when used within `.table-responsive`) the tooltip has weird flickering behaviour.
 
-The solution is to set `boundary` option to anything other than default value `'scrollParent'`. Eg. set it to `'window'`
+When the parent container has the CSS property `overflow` set to values `auto` or `scroll` (for example when used within `.table-responsive`) the tooltip has weird flickering behaviour.
+
+The solution is to set the `boundary` option to anything other than default value `'scrollParent'`. For example, set it to `'window'`:
 
 {% highlight js %}
 $('#example').tooltip({ boundary: 'window' })
