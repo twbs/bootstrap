@@ -431,7 +431,6 @@ const Modal = (($) => {
         //   while $(DOMNode).css('padding-right') returns the calculated value or 0 if not set
         const fixedContent = [].slice.call(document.querySelectorAll(Selector.FIXED_CONTENT))
         const stickyContent = [].slice.call(document.querySelectorAll(Selector.STICKY_CONTENT))
-        const navbarToggler = [].slice.call(document.querySelectorAll(Selector.NAVBAR_TOGGLER))
 
         // Adjust fixed content padding
         $(fixedContent).each((index, element) => {
@@ -465,11 +464,8 @@ const Modal = (($) => {
       const fixedContent = [].slice.call(document.querySelectorAll(Selector.FIXED_CONTENT))
       $(fixedContent).each((index, element) => {
         const padding = $(element).data('padding-right')
-        if (typeof padding !== 'undefined') {
-          $(element)
-            .css('padding-right', padding)
-            .removeData('padding-right')
-        }
+        $(element).removeData('padding-right')
+        element.style.paddingRight = padding ? padding : ''
       })
 
       // Restore sticky content
@@ -483,9 +479,8 @@ const Modal = (($) => {
 
       // Restore body padding
       const padding = $(document.body).data('padding-right')
-      if (typeof padding !== 'undefined') {
-        $(document.body).css('padding-right', padding).removeData('padding-right')
-      }
+      $(document.body).removeData('padding-right')
+      document.body.style.paddingRight = padding ? padding : ''
     }
 
     _getScrollbarWidth() { // thx d.walsh
