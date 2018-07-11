@@ -21,7 +21,8 @@ $(function () {
         document.body.removeChild(scrollDiv)
         return scrollbarWidth
       }
-      // Simulate scrollbars in PhantomJS
+
+      // Simulate scrollbars
       $('html').css('padding-right', '16px')
     },
     beforeEach: function () {
