@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="Discover what’s included in Bootstrap, including our precompiled and source code flavors. Remember, Bootstrap’s JavaScript plugins require jQuery.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Jekyll v3.8.0">
+<meta name="generator" content="Jekyll v3.8.3">
 
 <title>Contents · Bootstrap</title>
 
 <!-- Bootstrap core CSS -->
 
-<link href="/docs/4.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+<link href="/docs/4.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
 
 
 <!-- Documentation extras -->
@@ -44,7 +44,7 @@
 <meta property="og:title" content="Contents">
 <meta property="og:description" content="Discover what’s included in Bootstrap, including our precompiled and source code flavors. Remember, Bootstrap’s JavaScript plugins require jQuery.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="http://getbootstrap.com/assets/brand/bootstrap-social.png">
+<meta property="og:image" content="http://getbootstrap.com/docs/4.1/assets/brand/bootstrap-social.png">
 <meta property="og:image:secure_url" content="https://getbootstrap.com/docs/4.1/assets/brand/bootstrap-social.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
@@ -52,13 +52,11 @@
 
 
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
   ga('create', 'UA-146052-10', 'getbootstrap.com');
   ga('send', 'pageview');
 </script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
   </head>
   <body>
@@ -87,7 +85,6 @@
       <li class="nav-item">
         <a class="nav-link" href="https://themes.getbootstrap.com" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Themes');" target="_blank" rel="noopener">Themes</a>
       </li>
-
       <li class="nav-item">
         <a class="nav-link" href="https://expo.getbootstrap.com" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Expo');" target="_blank" rel="noopener">Expo</a>
       </li>
@@ -126,7 +123,7 @@
     </li>
   </ul>
 
-  <a class="btn btn-bd-download d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="https://github.com/twbs/bootstrap/archive/v4.1.1.zip">Download</a>
+  <a class="btn btn-bd-download d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="/docs/4.1/getting-started/download/">Download</a>
 </header>
 
 
@@ -394,20 +391,16 @@
         <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
           <h1 class="bd-title" id="content">Contents</h1>
           <p class="bd-lead">Discover what’s included in Bootstrap, including our precompiled and source code flavors. Remember, Bootstrap’s JavaScript plugins require jQuery.</p>
-          <script async src="https://cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=getbootstrapcom" id="_carbonads_js"></script>
+          <script async src="https://cdn.carbonads.com/carbon.js?serve=CKYIKKJL&placement=getbootstrapcom" id="_carbonads_js"></script>
 
           <h2 id="precompiled-bootstrap">Precompiled Bootstrap</h2>
 
 <p>Once downloaded, unzip the compressed folder and you’ll see something like this:</p>
 
-<!-- NOTE: This info is intentionally duplicated in the README. Copy any changes made here over to the README too. -->
+<!-- NOTE: This info is intentionally duplicated in the README. Copy any changes made here over to the README too, but be sure to keep in mind to add the `dist` folder. -->
 
 <figure class="highlight"><pre><code class="language-plaintext" data-lang="plaintext">bootstrap/
 ├── css/
-│   ├── bootstrap.css
-│   ├── bootstrap.css.map
-│   ├── bootstrap.min.css
-│   ├── bootstrap.min.css.map
 │   ├── bootstrap-grid.css
 │   ├── bootstrap-grid.css.map
 │   ├── bootstrap-grid.min.css
@@ -415,14 +408,22 @@
 │   ├── bootstrap-reboot.css
 │   ├── bootstrap-reboot.css.map
 │   ├── bootstrap-reboot.min.css
-│   └── bootstrap-reboot.min.css.map
+│   ├── bootstrap-reboot.min.css.map
+│   ├── bootstrap.css
+│   ├── bootstrap.css.map
+│   ├── bootstrap.min.css
+│   └── bootstrap.min.css.map
 └── js/
     ├── bootstrap.bundle.js
+    ├── bootstrap.bundle.js.map
     ├── bootstrap.bundle.min.js
+    ├── bootstrap.bundle.min.js.map
     ├── bootstrap.js
-    └── bootstrap.min.js</code></pre></figure>
+    ├── bootstrap.js.map
+    ├── bootstrap.min.js
+    └── bootstrap.min.js.map</code></pre></figure>
 
-<p>This is the most basic form of Bootstrap: precompiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JS (<code class="highlighter-rouge">bootstrap.*</code>), as well as compiled and minified CSS and JS (<code class="highlighter-rouge">bootstrap.min.*</code>). CSS <a href="https://developers.google.com/web/tools/chrome-devtools/javascript/source-maps">source maps</a> (<code class="highlighter-rouge">bootstrap.*.map</code>) are available for use with certain browsers’ developer tools. Bundled JS files (<code class="highlighter-rouge">bootstrap.bundle.js</code> and minified <code class="highlighter-rouge">bootstrap.bundle.min.js</code>) include <a href="https://popper.js.org/">Popper</a>, but not <a href="https://jquery.com/">jQuery</a>.</p>
+<p>This is the most basic form of Bootstrap: precompiled files for quick drop-in usage in nearly any web project. We provide compiled CSS and JS (<code class="highlighter-rouge">bootstrap.*</code>), as well as compiled and minified CSS and JS (<code class="highlighter-rouge">bootstrap.min.*</code>). <a href="https://developers.google.com/web/tools/chrome-devtools/javascript/source-maps">source maps</a> (<code class="highlighter-rouge">bootstrap.*.map</code>) are available for use with certain browsers’ developer tools. Bundled JS files (<code class="highlighter-rouge">bootstrap.bundle.js</code> and minified <code class="highlighter-rouge">bootstrap.bundle.min.js</code>) include <a href="https://popper.js.org/">Popper</a>, but not <a href="https://jquery.com/">jQuery</a>.</p>
 
 <h2 id="css-files">CSS files</h2>
 
@@ -524,8 +525,8 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="/docs/4.1/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+<script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
 
-<script src="/docs/4.1/assets/js/vendor/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script><script src="/docs/4.1/dist/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.1/assets/js/docs.min.js"></script>
+<script src="/docs/4.1/assets/js/vendor/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script><script src="/docs/4.1/dist/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.1/assets/js/docs.min.js"></script>
   </body>
 </html>
