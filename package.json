@@ -17,7 +17,7 @@
     "Twitter, Inc."
   ],
   "scripts": {
-    "start": "npm-run-all --parallel watch-css-main watch-css-docs watch-js-main watch-js-docs docs-watch",
+    "start": "npm-run-all --parallel watch docs-serve",
     "blc": "blc --exclude-external --filter-level 3 --get --ordered --recursive --host-requests 4 --input http://localhost:3000/",
     "http-server": "http-server --silent -p 3000",
     "bundlesize": "bundlesize",
@@ -59,7 +59,7 @@
     "coveralls": "shx cat js/coverage/lcov.info | coveralls",
     "docs": "npm-run-all --parallel css-docs js-docs --sequential docs-compile docs-lint",
     "docs-compile": "bundle exec jekyll build",
-    "docs-watch": "bundle exec jekyll serve",
+    "docs-serve": "bundle exec jekyll serve",
     "postdocs-compile": "npm run docs-workbox-precache",
     "docs-github": "shx echo \"github: true\" > twbsconfig.yml && npm run docs-compile -- --config _config.yml,twbsconfig.yml && shx rm ./twbsconfig.yml",
     "docs-github-serve": "bundle exec jekyll serve --skip-initial-build --no-watch",
@@ -75,7 +75,7 @@
     "saucelabs-test": "node build/saucelabs-unit-test.js",
     "dist": "npm-run-all --parallel css-main js",
     "test": "npm-run-all dist js-test docs-compile docs-lint bundlesize",
-    "watch": "npm-run-all --parallel watch-css-main watch-css-docs watch-js-main watch-js-docs",
+    "watch": "npm-run-all --parallel watch-*",
     "watch-css-main": "nodemon --watch scss/ --ext scss --exec \"npm run css-main\"",
     "watch-css-docs": "nodemon --watch site/docs/4.1/assets/scss/ --ext scss --exec \"npm run css-docs\"",
     "watch-js-main": "nodemon --watch js/src/ --ext js --exec \"npm run js-compile\"",
