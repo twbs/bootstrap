@@ -335,6 +335,10 @@ var Dropdown = function ($) {
           relatedTarget: toggles[i]
         };
 
+        if (event && event.type === 'click') {
+          relatedTarget.clickEvent = event;
+        }
+
         if (!context) {
           continue;
         }

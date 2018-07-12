@@ -63,8 +63,7 @@ var Modal = function ($) {
     DATA_TOGGLE: '[data-toggle="modal"]',
     DATA_DISMISS: '[data-dismiss="modal"]',
     FIXED_CONTENT: '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top',
-    STICKY_CONTENT: '.sticky-top',
-    NAVBAR_TOGGLER: '.navbar-toggler'
+    STICKY_CONTENT: '.sticky-top'
     /**
      * ------------------------------------------------------------------------
      * Class Definition
@@ -431,8 +430,7 @@ var Modal = function ($) {
         // Note: DOMNode.style.paddingRight returns the actual value or '' if not set
         //   while $(DOMNode).css('padding-right') returns the calculated value or 0 if not set
         var fixedContent = [].slice.call(document.querySelectorAll(Selector.FIXED_CONTENT));
-        var stickyContent = [].slice.call(document.querySelectorAll(Selector.STICKY_CONTENT));
-        var navbarToggler = [].slice.call(document.querySelectorAll(Selector.NAVBAR_TOGGLER)); // Adjust fixed content padding
+        var stickyContent = [].slice.call(document.querySelectorAll(Selector.STICKY_CONTENT)); // Adjust fixed content padding
 
         $(fixedContent).each(function (index, element) {
           var actualPadding = element.style.paddingRight;
@@ -444,12 +442,6 @@ var Modal = function ($) {
           var actualMargin = element.style.marginRight;
           var calculatedMargin = $(element).css('margin-right');
           $(element).data('margin-right', actualMargin).css('margin-right', parseFloat(calculatedMargin) - _this9._scrollbarWidth + "px");
-        }); // Adjust navbar-toggler margin
-
-        $(navbarToggler).each(function (index, element) {
-          var actualMargin = element.style.marginRight;
-          var calculatedMargin = $(element).css('margin-right');
-          $(element).data('margin-right', actualMargin).css('margin-right', parseFloat(calculatedMargin) + _this9._scrollbarWidth + "px");
         }); // Adjust body padding
 
         var actualPadding = document.body.style.paddingRight;
@@ -463,13 +455,11 @@ var Modal = function ($) {
       var fixedContent = [].slice.call(document.querySelectorAll(Selector.FIXED_CONTENT));
       $(fixedContent).each(function (index, element) {
         var padding = $(element).data('padding-right');
+        $(element).removeData('padding-right');
+        element.style.paddingRight = padding ? padding : '';
+      }); // Restore sticky content
 
-        if (typeof padding !== 'undefined') {
-          $(element).css('padding-right', padding).removeData('padding-right');
-        }
-      }); // Restore sticky content and navbar-toggler margin
-
-      var elements = [].slice.call(document.querySelectorAll(Selector.STICKY_CONTENT + ", " + Selector.NAVBAR_TOGGLER));
+      var elements = [].slice.call(document.querySelectorAll("" + Selector.STICKY_CONTENT));
       $(elements).each(function (index, element) {
         var margin = $(element).data('margin-right');
 
@@ -479,10 +469,8 @@ var Modal = function ($) {
       }); // Restore body padding
 
       var padding = $(document.body).data('padding-right');
-
-      if (typeof padding !== 'undefined') {
-        $(document.body).css('padding-right', padding).removeData('padding-right');
-      }
+      $(document.body).removeData('padding-right');
+      document.body.style.paddingRight = padding ? padding : '';
     };
 
     _proto._getScrollbarWidth = function _getScrollbarWidth() {
