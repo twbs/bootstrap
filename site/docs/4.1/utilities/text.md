@@ -90,3 +90,14 @@ Change a selection to our monospace font stack with `.text-monospace`.
 <p class="text-monospace">This is in monospace</p>
 {% endcapture %}
 {% include example.html content=example %}
+
+## Reset color
+
+Reset a text or link's color, so that it inherits the color from its parent, with `.text-reset`.
+
+{% capture example %}
+<p class="text-muted">
+  Muted text with a <a href="#" class="text-reset">reset link</a>.
+</p>
+{% endcapture %}
+{% include example.html content=example %}
