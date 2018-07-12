@@ -33,8 +33,8 @@ social_image_path:  /docs/4.1/assets/brand/bootstrap-social.png
 social_logo_path:   /docs/4.1/assets/brand/bootstrap-social-logo.png
 
 # Custom variables
-current_version:      4.1.1
-current_ruby_version: 4.1.1
+current_version:      4.1.2
+current_ruby_version: 4.1.2
 docs_version:         4.1
 repo:                 "https://github.com/twbs/bootstrap"
 slack:                "https://bootstrap-slack.herokuapp.com"
@@ -44,15 +44,15 @@ jobs:                 "https://jobs.getbootstrap.com"
 themes:               "https://themes.getbootstrap.com"
 
 download:
-  source:           "https://github.com/twbs/bootstrap/archive/v4.1.1.zip"
-  dist:             "https://github.com/twbs/bootstrap/releases/download/v4.1.1/bootstrap-4.1.1-dist.zip"
+  source:           "https://github.com/twbs/bootstrap/archive/v4.1.2.zip"
+  dist:             "https://github.com/twbs/bootstrap/releases/download/v4.1.2/bootstrap-4.1.2-dist.zip"
 
 cdn:
   # See https://www.srihash.org for info on how to generate the hashes
-  css:              "https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
-  css_hash:         "sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
-  js:               "https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
-  js_hash:          "sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+  css:              "https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css"
+  css_hash:         "sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
+  js:               "https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"
+  js_hash:          "sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
   jquery:           "https://code.jquery.com/jquery-3.3.1.slim.min.js"
   jquery_hash:      "sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
   popper:           "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
