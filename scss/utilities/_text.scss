@@ -39,17 +39,17 @@
 
 // Contextual colors
 
-.text-white { color: $white !important; }
+@include text-emphasis-variant(".text-white", $white);
 
 @each $color, $value in $theme-colors {
   @include text-emphasis-variant(".text-#{$color}", $value);
 }
 
-.text-body { color: $body-color !important; }
-.text-muted { color: $text-muted !important; }
+@include text-emphasis-variant(".text-body", $body-color);
+@include text-emphasis-variant(".text-muted", $text-muted);
 
-.text-black-50 { color: rgba($black, .5) !important; }
-.text-white-50 { color: rgba($white, .5) !important; }
+@include text-emphasis-variant(".text-black-50", rgba($black, .5));
+@include text-emphasis-variant(".text-white-50", rgba($white, .5));
 
 // Misc
 
