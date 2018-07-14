@@ -129,7 +129,7 @@
       ~ .custom-file-label {
         border-color: $color;
 
-        &::before { border-color: inherit; }
+        &::after { border-color: inherit; }
       }
 
       ~ .#{$state}-feedback,
