@@ -161,6 +161,10 @@ select.form-control {
     height: auto;
   }
 }
+
+textarea.form-control {
+  height: auto;
+}
 // stylelint-enable no-duplicate-selectors
 
 // Form groups
