@@ -10,7 +10,7 @@
 .custom-control {
   position: relative;
   display: block;
-  min-height: (1rem * $line-height-base);
+  min-height: ($font-size-base * $line-height-base);
   padding-left: $custom-control-gutter;
 }
 
@@ -63,7 +63,7 @@
   // Background-color and (when enabled) gradient
   &::before {
     position: absolute;
-    top: (($line-height-base - $custom-control-indicator-size) / 2);
+    top: (($font-size-base * $line-height-base - $custom-control-indicator-size) / 2);
     left: -$custom-control-gutter;
     display: block;
     width: $custom-control-indicator-size;
@@ -78,7 +78,7 @@
   // Foreground (icon)
   &::after {
     position: absolute;
-    top: (($line-height-base - $custom-control-indicator-size) / 2);
+    top: (($font-size-base * $line-height-base - $custom-control-indicator-size) / 2);
     left: -$custom-control-gutter;
     display: block;
     width: $custom-control-indicator-size;
