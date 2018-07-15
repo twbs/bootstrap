@@ -259,7 +259,11 @@
   }
 }
 
-.custom-file:focus-within > .custom-file-label, // workaround for Firefox
+// Use `:focus-within` in addition to `:focus` as Firefox workaround. Focus
+// styles don't appear when tabbing, but do when using inspector tools.
+//
+// See https://github.com/twbs/bootstrap/issues/26563.
+.custom-file:focus-within > .custom-file-label,
 .custom-file-input:focus ~ .custom-file-label {
   border-color: $custom-file-focus-border-color;
   box-shadow: $custom-file-focus-box-shadow;
