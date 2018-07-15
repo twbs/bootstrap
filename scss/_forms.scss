@@ -7,6 +7,7 @@
 .form-control {
   display: block;
   width: 100%;
+  height: $input-height;
   padding: $input-padding-y $input-padding-x;
   font-size: $font-size-base;
   line-height: $input-line-height;
@@ -57,10 +58,6 @@
 }
 
 select.form-control {
-  &:not([size]):not([multiple]) {
-    height: $input-height;
-  }
-
   &:focus::-ms-value {
     // Suppress the nested default white text on blue background highlight given to
     // the selected option text when the (still closed) <select> receives focus
@@ -139,35 +136,36 @@ select.form-control {
 // Build on `.form-control` with modifier classes to decrease or increase the
 // height and font-size of form controls.
 //
-// The `.form-group-* form-control` variations are sadly duplicated to avoid the
-// issue documented in https://github.com/twbs/bootstrap/issues/15074.
+// Repeated in `_input_group.scss` to avoid Sass extend issues.
 
 .form-control-sm {
+  height: $input-height-sm;
   padding: $input-padding-y-sm $input-padding-x-sm;
   font-size: $font-size-sm;
   line-height: $input-line-height-sm;
   @include border-radius($input-border-radius-sm);
 }
 
-select.form-control-sm {
-  &:not([size]):not([multiple]) {
-    height: $input-height-sm;
-  }
-}
-
 .form-control-lg {
+  height: $input-height-lg;
   padding: $input-padding-y-lg $input-padding-x-lg;
   font-size: $font-size-lg;
   line-height: $input-line-height-lg;
   @include border-radius($input-border-radius-lg);
 }
 
-select.form-control-lg {
-  &:not([size]):not([multiple]) {
-    height: $input-height-lg;
+// stylelint-disable no-duplicate-selectors
+select.form-control {
+  &[size],
+  &[multiple] {
+    height: auto;
   }
 }
 
+textarea.form-control {
+  height: auto;
+}
+// stylelint-enable no-duplicate-selectors
 
 // Form groups
 //
