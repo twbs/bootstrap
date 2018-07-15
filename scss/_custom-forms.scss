@@ -320,6 +320,12 @@
 
   &:focus {
     outline: none;
+
+    // Pseudo-elements must be split across multiple rulesets to have an affect.
+    // No box-shadow() mixin for focus accessibility.
+    &::-webkit-slider-thumb { box-shadow: $custom-range-thumb-focus-box-shadow; }
+    &::-moz-range-thumb     { box-shadow: $custom-range-thumb-focus-box-shadow; }
+    &::-ms-thumb            { box-shadow: $custom-range-thumb-focus-box-shadow; }
   }
 
   &::-moz-focus-outer {
@@ -329,18 +335,13 @@
   &::-webkit-slider-thumb {
     width: $custom-range-thumb-width;
     height: $custom-range-thumb-height;
-    margin-top: -($custom-range-thumb-width * .25); // Webkit specific?
+    margin-top: (($custom-range-track-height - $custom-range-thumb-height) / 2); // Webkit specific
     @include gradient-bg($custom-range-thumb-bg);
     border: $custom-range-thumb-border;
     @include border-radius($custom-range-thumb-border-radius);
     @include box-shadow($custom-range-thumb-box-shadow);
     @include transition($custom-forms-transition);
     appearance: none;
-
-    &:focus {
-      outline: none;
-      box-shadow: $custom-range-thumb-focus-box-shadow; // No mixin for focus accessibility
-    }
 
     &:active {
       @include gradient-bg($custom-range-thumb-active-bg);
@@ -368,11 +369,6 @@
     @include transition($custom-forms-transition);
     appearance: none;
 
-    &:focus {
-      outline: none;
-      box-shadow: $custom-range-thumb-focus-box-shadow; // No mixin for focus accessibility
-    }
-
     &:active {
       @include gradient-bg($custom-range-thumb-active-bg);
     }
@@ -392,17 +388,15 @@
   &::-ms-thumb {
     width: $custom-range-thumb-width;
     height: $custom-range-thumb-height;
+    margin-top: 0; // Edge specific
+    margin-right: $custom-range-thumb-focus-box-shadow-width; // Workaround that overflowed box-shadow is hidden.
+    margin-left: $custom-range-thumb-focus-box-shadow-width;  // Workaround that overflowed box-shadow is hidden.
     @include gradient-bg($custom-range-thumb-bg);
     border: $custom-range-thumb-border;
     @include border-radius($custom-range-thumb-border-radius);
     @include box-shadow($custom-range-thumb-box-shadow);
     @include transition($custom-forms-transition);
     appearance: none;
-
-    &:focus {
-      outline: none;
-      box-shadow: $custom-range-thumb-focus-box-shadow; // No mixin for focus accessibility
-    }
 
     &:active {
       @include gradient-bg($custom-range-thumb-active-bg);
