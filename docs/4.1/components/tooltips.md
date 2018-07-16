@@ -87,11 +87,9 @@ $('#example').tooltip(options)
 {% endhighlight %}
 
 {% capture callout %}
-##### Usage with overflow `auto` and `scroll`
+##### Overflow `auto` and `scroll`
 
-When the parent container has the CSS property `overflow` set to values `auto` or `scroll` (for example when used within `.table-responsive`) the tooltip's placement changes to `bottom` but still keeps original placement's positioning.
-
-The solution is to set the `boundary` option to anything other than default value `'scrollParent'`. For example, set it to `'window'`:
+Tooltip position attempts to automatically change when a parent container has `overflow: auto` or `overflow: scroll` like our `.table-responsive`, but still keeps the original placement's positioning. To resolve, set the `boundary` option to anything other than default value, `'scrollParent'`, such as `'window'`:
 
 {% highlight js %}
 $('#example').tooltip({ boundary: 'window' })
