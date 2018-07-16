@@ -2,7 +2,7 @@
 /* eslint no-process-env: 0 */
 
 module.exports = (config) => {
-  const jqueryFile = process.env.USE_OLD_JQUERY ? 'https://code.jquery.com/jquery-1.9.1.min.js' : 'assets/js/vendor/jquery-slim.min.js'
+  const jqueryFile = process.env.USE_OLD_JQUERY ? 'https://code.jquery.com/jquery-1.9.1.min.js' : 'site/docs/4.1/assets/js/vendor/jquery-slim.min.js'
 
   config.set({
     basePath: '../..',
@@ -17,7 +17,7 @@ module.exports = (config) => {
     // list of files / patterns to load in the browser
     files: [
       jqueryFile,
-      'assets/js/vendor/popper.min.js',
+      'site/docs/4.1/assets/js/vendor/popper.min.js',
       'dist/js/bootstrap.js',
       'js/tests/unit/*.js'
     ],
