@@ -776,11 +776,17 @@ Use `.table-responsive{-sm|-md|-lg|-xl}` as needed to create responsive tables u
         <th scope="col">Heading</th>
         <th scope="col">Heading</th>
         <th scope="col">Heading</th>
+        <th scope="col">Heading</th>
+        <th scope="col">Heading</th>
+        <th scope="col">Heading</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <th scope="row">1</th>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
         <td>Cell</td>
         <td>Cell</td>
         <td>Cell</td>
@@ -794,9 +800,15 @@ Use `.table-responsive{-sm|-md|-lg|-xl}` as needed to create responsive tables u
         <td>Cell</td>
         <td>Cell</td>
         <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
       </tr>
       <tr>
         <th scope="row">3</th>
+        <td>Cell</td>
+        <td>Cell</td>
+        <td>Cell</td>
         <td>Cell</td>
         <td>Cell</td>
         <td>Cell</td>
