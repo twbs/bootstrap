@@ -1177,7 +1177,7 @@ Custom checkboxes and radios can also be disabled. Add the `disabled` boolean at
 
 ### Select menu
 
-Custom `<select>` menus need only a custom class, `.custom-select` to trigger the custom styles.
+Custom `<select>` menus need only a custom class, `.custom-select` to trigger the custom styles. Custom styles are limited to the `<select>`'s initial appearance and cannot modify the `<option>`s due to browser limitations.
 
 {% capture example %}
 <select class="custom-select">
