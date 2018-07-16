@@ -47,7 +47,7 @@
     line-height: $line-height-base;
     color: color-yiq($color);
     background-color: rgba($color, $tooltip-opacity);
-    @include border-radius($tooltip-border-radius)
+    @include border-radius($tooltip-border-radius);
   }
 
   .form-control,
