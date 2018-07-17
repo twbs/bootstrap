@@ -7,11 +7,14 @@
   text-shadow: $close-text-shadow;
   opacity: .5;
 
-  &:not(:disabled):not(.disabled) {
+  // Override <a>'s hover style
+  @include hover {
+    color: $close-color;
+    text-decoration: none;
+  }
 
+  &:not(:disabled):not(.disabled) {
     @include hover-focus {
-      color: $close-color;
-      text-decoration: none;
       opacity: .75;
     }
 
@@ -31,4 +34,11 @@ button.close {
   background-color: transparent;
   border: 0;
   appearance: none;
+}
+
+// Future-proof disabling of clicks on `<a>` elements
+
+// stylelint-disable-next-line selector-no-qualifying-type
+a.close.disabled {
+  pointer-events: none;
 }
