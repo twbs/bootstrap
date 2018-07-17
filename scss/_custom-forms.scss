@@ -314,7 +314,7 @@
 
 .custom-range {
   width: 100%;
-  height: calc(#{$custom-range-thumb-height} + #{$input-btn-focus-box-shadow-width * 2});
+  height: calc(#{$custom-range-thumb-height} + #{$custom-range-thumb-focus-box-shadow-width * 2});
   padding: 0; // Need to reset padding
   background-color: transparent;
   appearance: none;
