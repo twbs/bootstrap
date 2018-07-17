@@ -192,7 +192,7 @@
     cursor: pointer;
     background-color: $carousel-indicator-active-bg;
     opacity: .5;
-    transition: $carousel-indicator-transition;
+    @include transition($carousel-indicator-transition);
 
     // Use pseudo classes to increase the hit area by 10px on top and bottom.
     &::before {
