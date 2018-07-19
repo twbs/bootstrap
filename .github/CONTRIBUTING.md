@@ -41,7 +41,7 @@ Our bug tracker utilizes several labels to help organize and identify issues. He
 - `css` - Issues stemming from our compiled CSS or source Sass files.
 - `docs` - Issues for improving or updating our documentation.
 - `examples` - Issues involving the example templates included in our docs.
-- `feature` - Issues asking for a new feature to be added, or an existing one to be extended or modified. New features require a minor version bump (e.g., `v3.0.0` to `v3.1.0`).
+- `feature` - Issues asking for a new feature to be added, or an existing one to be extended or modified. New features require a minor version bump (e.g., `v4.0.0` to `v4.1.0`).
 - `build` - Issues with our build system, which is used to run all our tests, concatenate and compile source files, and more.
 - `help wanted` - Issues we need or would love help from the community to resolve.
 - `js` - Issues stemming from our compiled or source JavaScript files.
@@ -65,7 +65,7 @@ Guidelines for bug reports:
    reported.
 
 2. **Check if the issue has been fixed** &mdash; try to reproduce it using the
-   latest `master` or development branch in the repository.
+   latest version of the `v4-dev` branch in the repository.
 
 3. **Isolate the problem** &mdash; ideally create a [reduced test
    case](https://css-tricks.com/reduced-test-cases/) and a live example.
@@ -139,12 +139,12 @@ project (indentation, accurate comments, etc.) and any other requirements
 
 **Do not edit `bootstrap.css`, or `bootstrap.js`
 directly!** Those files are automatically generated. You should edit the
-source files in [`/bootstrap/scss/`](https://github.com/twbs/bootstrap/tree/master/scss)
-and/or [`/bootstrap/js/`](https://github.com/twbs/bootstrap/tree/master/js) instead.
+source files in [`/bootstrap/scss/`](https://github.com/twbs/bootstrap/tree/v4-dev/scss)
+and/or [`/bootstrap/js/`](https://github.com/twbs/bootstrap/tree/v4-dev/js) instead.
 
 Similarly, when contributing to Bootstrap's documentation, you should edit the
 documentation source files in
-[the `/bootstrap/docs/` directory of the `master` branch](https://github.com/twbs/bootstrap/tree/master/docs).
+[the `/bootstrap/site/docs/` directory of the `v4-dev` branch](https://github.com/twbs/bootstrap/tree/v4-dev/site/docs).
 **Do not edit the `gh-pages` branch.** That branch is generated from the
 documentation source files and is managed separately by the Bootstrap Core Team.
 
@@ -166,8 +166,8 @@ included in the project:
 2. If you cloned a while ago, get the latest changes from upstream:
 
    ```bash
-   git checkout master
-   git pull upstream master
+   git checkout v4-dev
+   git pull upstream v4-dev
    ```
 
 3. Create a new topic branch (off the main project development branch) to
@@ -186,7 +186,7 @@ included in the project:
 5. Locally merge (or rebase) the upstream development branch into your topic branch:
 
    ```bash
-   git pull [--rebase] upstream master
+   git pull [--rebase] upstream v4-dev
    ```
 
 6. Push your topic branch up to your fork:
@@ -196,7 +196,7 @@ included in the project:
    ```
 
 7. [Open a Pull Request](https://help.github.com/articles/about-pull-requests/)
-    with a clear title and description against the `master` branch.
+    with a clear title and description against the `v4-dev` branch.
 
 **IMPORTANT**: By submitting a patch, you agree to allow the project owners to
 license your work under the terms of the [MIT License](LICENSE) (if it
