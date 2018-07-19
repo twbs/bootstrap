@@ -1,7 +1,6 @@
 {
   "env": {
-    "es6": false,
-    "jquery": true
+    "es6": false
   },
   "parserOptions": {
     "ecmaVersion": 5,
@@ -9,6 +8,7 @@
   },
   "extends": "../../../../../.eslintrc.json",
   "rules": {
+    "no-new": "off",
     // Best Practices
     "no-magic-numbers": "off",
     "vars-on-top": "off",
