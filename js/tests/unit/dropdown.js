@@ -956,6 +956,101 @@ $(function () {
     $textarea.trigger('click')
   })
 
+  QUnit.test('should align the dropdown menu', function (assert) {
+    var testCases = [
+      {
+        dropdownClass: '',
+        menuClass: '',
+        placement: 'bottom-start'
+      },
+      {
+        dropdownClass: '',
+        menuClass: 'dropdown-menu-center',
+        placement: 'bottom'
+      },
+      {
+        dropdownClass: '',
+        menuClass: 'dropdown-menu-right',
+        placement: 'bottom-end'
+      },
+      {
+        dropdownClass: 'dropup',
+        menuClass: '',
+        placement: 'top-start'
+      },
+      {
+        dropdownClass: 'dropup',
+        menuClass: 'dropdown-menu-center',
+        placement: 'top'
+      },
+      {
+        dropdownClass: 'dropup',
+        menuClass: 'dropdown-menu-right',
+        placement: 'top-end'
+      },
+      {
+        dropdownClass: 'dropleft',
+        menuClass: '',
+        placement: 'left-start'
+      },
+      {
+        dropdownClass: 'dropleft',
+        menuClass: 'dropdown-menu-center',
+        placement: 'left'
+      },
+      {
+        dropdownClass: 'dropleft',
+        menuClass: 'dropdown-menu-bottom',
+        placement: 'left-end'
+      },
+      {
+        dropdownClass: 'dropright',
+        menuClass: '',
+        placement: 'right-start'
+      },
+      {
+        dropdownClass: 'dropright',
+        menuClass: 'dropdown-menu-center',
+        placement: 'right'
+      },
+      {
+        dropdownClass: 'dropright',
+        menuClass: 'dropdown-menu-bottom',
+        placement: 'right-end'
+      }
+    ]
+
+    assert.expect(testCases.length)
+    var done = assert.async(testCases.length)
+
+    testCases.forEach(function (test) {
+      var dropdownHTML =
+        '<div class="dropdown">' +
+        '<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>' +
+        '<div class="dropdown-menu">' +
+        '<a class="dropdown-item" href="#">Item</a>' +
+        '</div>' +
+        '</div>'
+
+      var $dropdownToggle = $(dropdownHTML)
+        .appendTo('#qunit-fixture')
+        .find('[data-toggle="dropdown"]')
+        .bootstrapDropdown()
+      var $dropdownMenu = $dropdownToggle.next()
+      var $dropdown = $dropdownToggle.parent('.dropdown')
+
+      $dropdown.addClass(test.dropdownClass)
+      $dropdownMenu.addClass(test.menuClass)
+
+      $dropdown.on('shown.bs.dropdown', function () {
+        assert.strictEqual($dropdownMenu.attr('x-placement'), test.placement, test.placement)
+        done()
+      })
+
+      $dropdownToggle.trigger('click')
+    })
+  })
+
   QUnit.test('should not use Popper.js if display set to static', function (assert) {
     assert.expect(1)
     var dropdownHTML =

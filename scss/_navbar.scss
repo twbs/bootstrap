@@ -73,6 +73,7 @@
   .dropdown-menu {
     position: static;
     float: none;
+    transform: none;
   }
 }
 
@@ -160,6 +161,17 @@
 
           .dropdown-menu {
             position: absolute;
+
+            &-center {
+              transform: translateX(-50%);
+            }
+          }
+
+          .dropleft,
+          .dropright {
+            .dropdown-menu-center {
+              transform: translateY(-50%);
+            }
           }
 
           .nav-link {

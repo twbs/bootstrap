@@ -48,6 +48,8 @@ const ClassName = {
   DROPLEFT  : 'dropleft',
   MENURIGHT : 'dropdown-menu-right',
   MENULEFT  : 'dropdown-menu-left',
+  MENUBOTTOM : 'dropdown-menu-bottom',
+  MENUCENTER : 'dropdown-menu-center',
   POSITION_STATIC : 'position-static'
 }
 
@@ -60,14 +62,17 @@ const Selector = {
 }
 
 const AttachmentMap = {
-  TOP       : 'top-start',
-  TOPEND    : 'top-end',
-  BOTTOM    : 'bottom-start',
-  BOTTOMEND : 'bottom-end',
-  RIGHT     : 'right-start',
-  RIGHTEND  : 'right-end',
-  LEFT      : 'left-start',
-  LEFTEND   : 'left-end'
+  TOP          : 'top-start',
+  TOPEND       : 'top-end',
+  TOPCENTER    : 'top',
+  BOTTOM       : 'bottom-start',
+  BOTTOMEND    : 'bottom-end',
+  BOTTOMCENTER : 'bottom',
+  RIGHT        : 'right-start',
+  RIGHTEND     : 'right-end',
+  RIGHTCENTER  : 'right',
+  LEFT         : 'left-start',
+  LEFTEND      : 'left-end'
 }
 
 const Default = {
@@ -251,19 +256,34 @@ class Dropdown {
   _getPlacement() {
     const $parentDropdown = $(this._element.parentNode)
     let placement = AttachmentMap.BOTTOM
+    const $menu = $(this._menu)
 
     // Handle dropup
     if ($parentDropdown.hasClass(ClassName.DROPUP)) {
       placement = AttachmentMap.TOP
-      if ($(this._menu).hasClass(ClassName.MENURIGHT)) {
+      if ($menu.hasClass(ClassName.MENURIGHT)) {
         placement = AttachmentMap.TOPEND
+      } else if ($menu.hasClass(ClassName.MENUCENTER)) {
+        placement = AttachmentMap.TOPCENTER
       }
     } else if ($parentDropdown.hasClass(ClassName.DROPRIGHT)) {
       placement = AttachmentMap.RIGHT
+      if ($menu.hasClass(ClassName.MENUBOTTOM)) {
+        placement = AttachmentMap.RIGHTEND
+      } else if ($menu.hasClass(ClassName.MENUCENTER)) {
+        placement = AttachmentMap.RIGHTCENTER
+      }
     } else if ($parentDropdown.hasClass(ClassName.DROPLEFT)) {
       placement = AttachmentMap.LEFT
-    } else if ($(this._menu).hasClass(ClassName.MENURIGHT)) {
+      if ($menu.hasClass(ClassName.MENUBOTTOM)) {
+        placement = AttachmentMap.LEFTEND
+      } else if ($menu.hasClass(ClassName.MENUCENTER)) {
+        placement = AttachmentMap.LEFTCENTER
+      }
+    } else if ($menu.hasClass(ClassName.MENURIGHT)) {
       placement = AttachmentMap.BOTTOMEND
+    } else if ($menu.hasClass(ClassName.MENUCENTER)) {
+      placement = AttachmentMap.BOTTOMCENTER
     }
     return placement
   }

@@ -33,6 +33,11 @@
   @include box-shadow($dropdown-box-shadow);
 }
 
+.dropdown-menu-center {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .dropdown-menu-right {
   right: 0;
   left: auto;
@@ -84,6 +89,19 @@
     &::before {
       vertical-align: 0;
     }
+  }
+}
+
+.dropright,
+.dropleft {
+  .dropdown-menu-center {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .dropdown-menu-bottom {
+    top: auto;
+    bottom: 0;
   }
 }
 
