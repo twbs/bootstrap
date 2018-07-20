@@ -274,12 +274,9 @@ img {
 
 svg {
   vertical-align: middle;
-
-  &:not(:root) {
-    // Workaround for the SVG overflow bug in IE10/11 is still required.
-    // See https://github.com/twbs/bootstrap/issues/26878
-    overflow: hidden;
-  }
+  // Workaround for the SVG overflow bug in IE10/11 is still required.
+  // See https://github.com/twbs/bootstrap/issues/26878
+  overflow: hidden;
 }
 
 
