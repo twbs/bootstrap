@@ -24,7 +24,7 @@
   padding: $navbar-padding-y $navbar-padding-x;
 
   // Because flex properties aren't inherited, we need to redeclare these first
-  // few properities so that content nested within behave properly.
+  // few properties so that content nested within behave properly.
   > .container,
   > .container-fluid {
     display: flex;
@@ -94,7 +94,7 @@
 // Powered by the collapse Bootstrap JavaScript plugin.
 
 // When collapsed, prevent the toggleable navbar contents from appearing in
-// the default flexbox row orienation. Requires the use of `flex-wrap: wrap`
+// the default flexbox row orientation. Requires the use of `flex-wrap: wrap`
 // on the `.navbar` parent.
 .navbar-collapse {
   flex-basis: 100%;

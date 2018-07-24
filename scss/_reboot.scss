@@ -42,7 +42,7 @@ html {
 
 // stylelint-disable selector-list-comma-newline-after
 // Shim for "new" HTML5 structural elements to display correctly (IE10, older browsers)
-article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, section {
+article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block;
 }
 // stylelint-enable selector-list-comma-newline-after
@@ -232,15 +232,13 @@ a:not([href]):not([tabindex]) {
 // Code
 //
 
-// stylelint-disable font-family-no-duplicate-names
 pre,
 code,
 kbd,
 samp {
-  font-family: monospace, monospace; // Correct the inheritance and scaling of font size in all browsers.
+  font-family: $font-family-monospace;
   font-size: 1em; // Correct the odd `em` font sizing in all browsers.
 }
-// stylelint-enable font-family-no-duplicate-names
 
 pre {
   // Remove browser default top margin
@@ -274,8 +272,11 @@ img {
   border-style: none; // Remove the border on images inside links in IE 10-.
 }
 
-svg:not(:root) {
-  overflow: hidden; // Hide the overflow in IE
+svg {
+  // Workaround for the SVG overflow bug in IE10/11 is still required.
+  // See https://github.com/twbs/bootstrap/issues/26878
+  overflow: hidden;
+  vertical-align: middle;
 }
 
 

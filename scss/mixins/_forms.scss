@@ -41,13 +41,13 @@
     z-index: 5;
     display: none;
     max-width: 100%; // Contain to parent when possible
-    padding: .5rem;
+    padding: $tooltip-padding-y $tooltip-padding-x;
     margin-top: .1rem;
-    font-size: .875rem;
-    line-height: 1;
-    color: $white;
-    background-color: rgba($color, .8);
-    border-radius: .2rem;
+    font-size: $tooltip-font-size;
+    line-height: $line-height-base;
+    color: color-yiq($color);
+    background-color: rgba($color, $tooltip-opacity);
+    @include border-radius($tooltip-border-radius);
   }
 
   .form-control,
@@ -61,6 +61,16 @@
         box-shadow: 0 0 0 $input-focus-width rgba($color, .25);
       }
 
+      ~ .#{$state}-feedback,
+      ~ .#{$state}-tooltip {
+        display: block;
+      }
+    }
+  }
+
+  .form-control-file {
+    .was-validated &:#{$state},
+    &.is-#{$state} {
       ~ .#{$state}-feedback,
       ~ .#{$state}-tooltip {
         display: block;
@@ -119,7 +129,7 @@
       ~ .custom-file-label {
         border-color: $color;
 
-        &::before { border-color: inherit; }
+        &::after { border-color: inherit; }
       }
 
       ~ .#{$state}-feedback,
