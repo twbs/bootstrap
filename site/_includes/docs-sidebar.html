@@ -1,0 +1,57 @@
+<form class="bd-search d-flex align-items-center">
+  <input type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off" data-siteurl="{{ site.url }}" data-docs-version="{{ site.docs_version }}">
+  <button class="btn btn-link bd-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#bd-docs-nav" aria-controls="bd-docs-nav" aria-expanded="false" aria-label="Toggle docs navigation">
+    {%- include icons/menu.svg width="30" height="30" -%}
+  </button>
+</form>
+
+<nav class="collapse bd-links" id="bd-docs-nav">
+  {%- assign page_slug = page.url | split: '/' | last -%}
+  {%- for group in site.data.nav -%}
+  {%- assign link = group.pages | first -%}
+  {%- assign link_slug = link.title | slugify -%}
+  {%- assign group_slug = group.title | slugify -%}
+  {%- assign active = nil -%}
+
+  {%- if page.group == group_slug -%}
+    {%- assign active = 'active' -%}
+  {%- endif -%}
+
+  <div class="bd-toc-item{% unless active == nil %} {{ active }}{% endunless %}">
+      <a class="bd-toc-link" href="{{ site.baseurl }}/docs/{{ site.docs_version }}/{{ group_slug }}/{{ link_slug }}{% if link_slug %}/{% endif %}">
+        {{ group.title }}
+      </a>
+
+      <ul class="nav bd-sidenav">
+        {%- for doc in group.pages -%}
+          {%- assign doc_slug = doc.title | slugify -%}
+          {%- assign active = nil -%}
+
+          {%- if page.group == group_slug and page_slug == doc_slug -%}
+            {%- assign active = 'active bd-sidenav-active' -%}
+          {%- endif -%}
+
+          <li{% unless active == nil %} class="{{ active }}"{% endunless %}>
+            <a href="{{ site.baseurl }}/docs/{{ site.docs_version }}/{{ group_slug }}/{{ doc_slug }}/">
+              {{ doc.title }}
+            </a>
+
+            {%- comment -%}
+            {% unless doc.sections == nil %}
+              <ul class="nav">
+                {% for section in doc.sections %}
+                  <li>
+                    <a href="#{{ section.title | downcase | replace: ' ', '-' }}">
+                      {{ section.title }}
+                    </a>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endunless %}
+            {%- endcomment -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  {%- endfor -%}
+</nav>

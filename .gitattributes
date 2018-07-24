@@ -8,7 +8,9 @@
 *.scss  text eol=lf
 *.svg   text eol=lf
 *.txt   text eol=lf
+*.xml   text eol=lf
 *.yml   text eol=lf
+
 # Don't diff or textually merge source maps
 *.map   binary
 
