@@ -86,6 +86,17 @@ Trigger the tooltip via JavaScript:
 $('#example').tooltip(options)
 {% endhighlight %}
 
+{% capture callout %}
+##### Overflow `auto` and `scroll`
+
+Tooltip position attempts to automatically change when a parent container has `overflow: auto` or `overflow: scroll` like our `.table-responsive`, but still keeps the original placement's positioning. To resolve, set the `boundary` option to anything other than default value, `'scrollParent'`, such as `'window'`:
+
+{% highlight js %}
+$('#example').tooltip({ boundary: 'window' })
+{% endhighlight %}
+{% endcapture %}
+{% include callout.html content=callout type="warning" %}
+
 ### Markup
 
 The required markup for a tooltip is only a `data` attribute and `title` on the HTML element you wish to have a tooltip. The generated markup of a tooltip is rather simple, though it does require a position (by default, set to `top` by the plugin).
