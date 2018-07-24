@@ -4,9 +4,14 @@
 // .modal-content   - actual modal w/ bg and corners and stuff
 
 
-// Kill the scroll on the body
 .modal-open {
+  // Kill the scroll on the body
   overflow: hidden;
+
+  .modal {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
 }
 
 // Container that the modal scrolls within
@@ -25,11 +30,6 @@
   // We deliberately don't use `-webkit-overflow-scrolling: touch;` due to a
   // gnarly iOS Safari bug: https://bugs.webkit.org/show_bug.cgi?id=158342
   // See also https://github.com/twbs/bootstrap/issues/17695
-
-  .modal-open & {
-    overflow-x: hidden;
-    overflow-y: auto;
-  }
 }
 
 // Shell div to position the modal with bottom padding
@@ -54,6 +54,13 @@
   display: flex;
   align-items: center;
   min-height: calc(100% - (#{$modal-dialog-margin} * 2));
+
+  // Ensure `modal-dialog-centered` extends the full height of the view (IE10/11)
+  &::before {
+    display: block; // IE10
+    height: calc(100vh - (#{$modal-dialog-margin} * 2));
+    content: "";
+  }
 }
 
 // Actual modal
@@ -153,6 +160,11 @@
 
   .modal-dialog-centered {
     min-height: calc(100% - (#{$modal-dialog-margin-y-sm-up} * 2));
+
+    &::before {
+      height: calc(100vh - (#{$modal-dialog-margin-y-sm-up} * 2));
+    }
+
   }
 
   .modal-content {

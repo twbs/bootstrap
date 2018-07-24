@@ -4,7 +4,7 @@ import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.1.1): tooltip.js
+ * Bootstrap (v4.1.2): tooltip.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -17,7 +17,7 @@ const Tooltip = (($) => {
    */
 
   const NAME               = 'tooltip'
-  const VERSION            = '4.1.1'
+  const VERSION            = '4.1.2'
   const DATA_KEY           = 'bs.tooltip'
   const EVENT_KEY          = `.${DATA_KEY}`
   const JQUERY_NO_CONFLICT = $.fn[NAME]
@@ -660,9 +660,11 @@ const Tooltip = (($) => {
       }
     }
 
-    _handlePopperPlacementChange(data) {
+    _handlePopperPlacementChange(popperData) {
+      const popperInstance = popperData.instance
+      this.tip = popperInstance.popper
       this._cleanTipClass()
-      this.addAttachmentClass(this._getAttachment(data.placement))
+      this.addAttachmentClass(this._getAttachment(popperData.placement))
     }
 
     _fixTransition() {
