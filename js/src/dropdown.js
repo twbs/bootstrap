@@ -234,7 +234,7 @@ class Dropdown {
 
     Manipulator.toggleClass(this._menu, ClassName.SHOW)
     Manipulator.toggleClass(parent, ClassName.SHOW)
-    EventHandler.trigger(parent, Event.SHOWN, relatedTarget)
+    EventHandler.trigger(parent, Event.HIDDEN, relatedTarget)
   }
 
   dispose() {

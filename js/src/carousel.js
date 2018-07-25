@@ -178,7 +178,7 @@ class Carousel {
       this._interval = null
     }
 
-    if (this._config.interval && !this._isPaused) {
+    if (this._config && this._config.interval && !this._isPaused) {
       this._interval = setInterval(
         (document.visibilityState ? this.nextWhenVisible : this.next).bind(this),
         this._config.interval
@@ -298,7 +298,7 @@ class Carousel {
     }
 
     const end = (event) => {
-      if (this._pointerEvent && PointerType[event.originalEvent.pointerType.toUpperCase()]) {
+      if (this._pointerEvent && PointerType[event.pointerType.toUpperCase()]) {
         this.touchDeltaX = event.clientX - this.touchStartX
       }
 
@@ -463,6 +463,14 @@ class Carousel {
 
       activeElement.classList.add(directionalClassName)
       nextElement.classList.add(directionalClassName)
+
+      const nextElementInterval = parseInt(nextElement.getAttribute('data-interval'), 10)
+      if (nextElementInterval) {
+        this._config.defaultInterval = this._config.defaultInterval || this._config.interval
+        this._config.interval = nextElementInterval
+      } else {
+        this._config.interval = this._config.defaultInterval || this._config.interval
+      }
 
       const transitionDuration = Util.getTransitionDurationFromElement(activeElement)
 

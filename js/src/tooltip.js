@@ -682,8 +682,7 @@ class Tooltip {
         }
       })
 
-    if (typeof config !== 'undefined' &&
-      typeof config.container === 'object' && config.container.jquery) {
+    if (config && typeof config.container === 'object' && config.container.jquery) {
       config.container = config.container[0]
     }
 
