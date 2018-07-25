@@ -3,7 +3,7 @@ import Util from '../util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.1.1): dom/eventHandler.js
+ * Bootstrap (v4.1.3): dom/eventHandler.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -32,6 +32,7 @@ const EventHandler = (() => {
     'keydown', 'keypress', 'keyup',
     'orientationchange',
     'touchstart', 'touchmove', 'touchend', 'touchcancel',
+    'pointerdown', 'pointermove', 'pointerup', 'pointerleave', 'pointercancel',
     'gesturestart', 'gesturechange', 'gestureend',
     'focus', 'blur', 'change', 'reset', 'select', 'submit', 'focusin', 'focusout',
     'load', 'unload', 'beforeunload', 'resize', 'move', 'DOMContentLoaded', 'readystatechange',
@@ -313,5 +314,20 @@ const EventHandler = (() => {
     }
   }
 })()
+
+/* istanbul ignore next */
+// focusin and focusout polyfill
+if (Polyfill.focusIn) {
+  (() => {
+    function listenerFocus(event) {
+      EventHandler.trigger(event.target, 'focusin')
+    }
+    function listenerBlur(event) {
+      EventHandler.trigger(event.target, 'focusout')
+    }
+    EventHandler.on(document, 'focus', 'input', listenerFocus)
+    EventHandler.on(document, 'blur', 'input', listenerBlur)
+  })()
+}
 
 export default EventHandler

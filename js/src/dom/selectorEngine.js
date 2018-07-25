@@ -3,7 +3,7 @@ import Util from '../util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.1.1): dom/selectorEngine.js
+ * Bootstrap (v4.1.3): dom/selectorEngine.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */

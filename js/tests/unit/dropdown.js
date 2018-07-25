@@ -517,7 +517,7 @@ $(function () {
         $(document.body).trigger('click')
       })
 
-    $dropdown.trigger('click')
+    $dropdown[0].click()
   })
 
   QUnit.test('should fire hide and hidden event without a clickEvent if event type is not click', function (assert) {
@@ -547,12 +547,13 @@ $(function () {
       })
       .on('shown.bs.dropdown', function () {
         assert.ok(true, 'shown was fired')
-        $dropdown.trigger($.Event('keydown', {
-          which: 27
-        }))
+
+        var keyDown = new Event('keydown')
+        keyDown.which = 27
+        $dropdown[0].dispatchEvent(keyDown)
       })
 
-    $dropdown.trigger('click')
+    $dropdown[0].click()
   })
 
   QUnit.test('should ignore keyboard events within <input>s and <textarea>s', function (assert) {
@@ -1132,38 +1133,6 @@ $(function () {
     assert.ok(dropdown._element === null)
   })
 
-  QUnit.test('should show dropdown', function (assert) {
-    assert.expect(2)
-
-    var dropdownHTML =
-      '<div class="dropdown">' +
-      '  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>' +
-      '  <div class="dropdown-menu">' +
-      '    <a class="dropdown-item" href="#">Another link</a>' +
-      '  </div>' +
-      '</div>'
-
-    var $dropdown = $(dropdownHTML)
-      .appendTo('#qunit-fixture')
-      .find('[data-toggle="dropdown"]')
-      .bootstrapDropdown()
-
-    var dropdown = $dropdown.data('bs.dropdown')
-    var done = assert.async()
-
-    $dropdown
-      .parent('.dropdown')
-      .on('show.bs.dropdown', function () {
-        assert.ok(true, 'show was fired')
-      })
-      .on('shown.bs.dropdown', function () {
-        assert.ok($dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is shown')
-        done()
-      })
-
-    dropdown.show()
-  })
-
   QUnit.test('should hide dropdown', function (assert) {
     assert.expect(2)
 
@@ -1180,12 +1149,14 @@ $(function () {
       .find('[data-toggle="dropdown"]')
       .bootstrapDropdown()
 
-    var dropdown = $dropdown.data('bs.dropdown')
+    var dropdown = Dropdown._getInstance($dropdown[0])
     var done = assert.async()
-    $dropdown.trigger('click')
 
     $dropdown
       .parent('.dropdown')
+      .on('shown.bs.dropdown', function () {
+        dropdown.hide()
+      })
       .on('hide.bs.dropdown', function () {
         assert.ok(true, 'hide was fired')
       })
@@ -1194,7 +1165,7 @@ $(function () {
         done()
       })
 
-    dropdown.hide()
+    dropdown.show()
   })
 
   QUnit.test('should not hide dropdown', function (assert) {
@@ -1213,7 +1184,7 @@ $(function () {
       .find('[data-toggle="dropdown"]')
       .bootstrapDropdown()
 
-    var dropdown = $dropdown.data('bs.dropdown')
+    var dropdown = Dropdown._getInstance($dropdown[0])
     $dropdown.trigger('click')
     dropdown.show()
 
@@ -1236,7 +1207,7 @@ $(function () {
       .find('[data-toggle="dropdown"]')
       .bootstrapDropdown()
 
-    var dropdown = $dropdown.data('bs.dropdown')
+    var dropdown = Dropdown._getInstance($dropdown[0])
     dropdown.hide()
     assert.ok(!$dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is still hidden')
   })
@@ -1257,7 +1228,7 @@ $(function () {
       .find('[data-toggle="dropdown"]')
       .bootstrapDropdown()
 
-    var dropdown = $dropdown.data('bs.dropdown')
+    var dropdown = Dropdown._getInstance($dropdown[0])
     var done = assert.async()
 
     $dropdown
@@ -1289,7 +1260,7 @@ $(function () {
       .find('[data-toggle="dropdown"]')
       .bootstrapDropdown()
 
-    var dropdown = $dropdown.data('bs.dropdown')
+    var dropdown = Dropdown._getInstance($dropdown[0])
     var done = assert.async()
 
     $dropdown
@@ -1319,19 +1290,21 @@ $(function () {
       .find('[data-toggle="dropdown"]')
       .bootstrapDropdown()
 
-    var dropdown = $dropdown.data('bs.dropdown')
+    var dropdown = Dropdown._getInstance($dropdown[0])
     var done = assert.async()
-    $dropdown.trigger('click')
 
     $dropdown
       .parent('.dropdown')
+      .on('shown.bs.dropdown', function () {
+        dropdown.hide()
+      })
       .on('hide.bs.dropdown', function (event) {
         event.preventDefault()
+        assert.ok($dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is shown')
         done()
       })
 
-    dropdown.hide()
-    assert.ok($dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is shown')
+    dropdown.show()
   })
 
   QUnit.test('should not open dropdown via show method if target is disabled via attribute', function (assert) {
