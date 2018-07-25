@@ -314,7 +314,8 @@
 
 .custom-range {
   width: 100%;
-  padding-left: 0; // Firefox specific
+  height: calc(#{$custom-range-thumb-height} + #{$custom-range-thumb-focus-box-shadow-width * 2});
+  padding: 0; // Need to reset padding
   background-color: transparent;
   appearance: none;
 
