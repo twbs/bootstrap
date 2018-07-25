@@ -3,7 +3,7 @@ import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.1.1): modal.js
+ * Bootstrap (v4.1.3): modal.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -16,7 +16,7 @@ const Modal = (($) => {
    */
 
   const NAME               = 'modal'
-  const VERSION            = '4.1.1'
+  const VERSION            = '4.1.3'
   const DATA_KEY           = 'bs.modal'
   const EVENT_KEY          = `.${DATA_KEY}`
   const DATA_API_KEY       = '.data-api'
@@ -64,8 +64,7 @@ const Modal = (($) => {
     DATA_TOGGLE        : '[data-toggle="modal"]',
     DATA_DISMISS       : '[data-dismiss="modal"]',
     FIXED_CONTENT      : '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top',
-    STICKY_CONTENT     : '.sticky-top',
-    NAVBAR_TOGGLER     : '.navbar-toggler'
+    STICKY_CONTENT     : '.sticky-top'
   }
 
   /**
@@ -432,7 +431,6 @@ const Modal = (($) => {
         //   while $(DOMNode).css('padding-right') returns the calculated value or 0 if not set
         const fixedContent = [].slice.call(document.querySelectorAll(Selector.FIXED_CONTENT))
         const stickyContent = [].slice.call(document.querySelectorAll(Selector.STICKY_CONTENT))
-        const navbarToggler = [].slice.call(document.querySelectorAll(Selector.NAVBAR_TOGGLER))
 
         // Adjust fixed content padding
         $(fixedContent).each((index, element) => {
@@ -452,15 +450,6 @@ const Modal = (($) => {
             .css('margin-right', `${parseFloat(calculatedMargin) - this._scrollbarWidth}px`)
         })
 
-        // Adjust navbar-toggler margin
-        $(navbarToggler).each((index, element) => {
-          const actualMargin = element.style.marginRight
-          const calculatedMargin = $(element).css('margin-right')
-          $(element)
-            .data('margin-right', actualMargin)
-            .css('margin-right', `${parseFloat(calculatedMargin) + this._scrollbarWidth}px`)
-        })
-
         // Adjust body padding
         const actualPadding = document.body.style.paddingRight
         const calculatedPadding = $(document.body).css('padding-right')
@@ -475,15 +464,12 @@ const Modal = (($) => {
       const fixedContent = [].slice.call(document.querySelectorAll(Selector.FIXED_CONTENT))
       $(fixedContent).each((index, element) => {
         const padding = $(element).data('padding-right')
-        if (typeof padding !== 'undefined') {
-          $(element)
-            .css('padding-right', padding)
-            .removeData('padding-right')
-        }
+        $(element).removeData('padding-right')
+        element.style.paddingRight = padding ? padding : ''
       })
 
-      // Restore sticky content and navbar-toggler margin
-      const elements = [].slice.call(document.querySelectorAll(`${Selector.STICKY_CONTENT}, ${Selector.NAVBAR_TOGGLER}`))
+      // Restore sticky content
+      const elements = [].slice.call(document.querySelectorAll(`${Selector.STICKY_CONTENT}`))
       $(elements).each((index, element) => {
         const margin = $(element).data('margin-right')
         if (typeof margin !== 'undefined') {
@@ -493,9 +479,8 @@ const Modal = (($) => {
 
       // Restore body padding
       const padding = $(document.body).data('padding-right')
-      if (typeof padding !== 'undefined') {
-        $(document.body).css('padding-right', padding).removeData('padding-right')
-      }
+      $(document.body).removeData('padding-right')
+      document.body.style.paddingRight = padding ? padding : ''
     }
 
     _getScrollbarWidth() { // thx d.walsh
