@@ -3,7 +3,7 @@ import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.1.1): alert.js
+ * Bootstrap (v4.1.3): alert.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -16,7 +16,7 @@ const Alert = (($) => {
    */
 
   const NAME                = 'alert'
-  const VERSION             = '4.1.1'
+  const VERSION             = '4.1.3'
   const DATA_KEY            = 'bs.alert'
   const EVENT_KEY           = `.${DATA_KEY}`
   const DATA_API_KEY        = '.data-api'
@@ -84,7 +84,7 @@ const Alert = (($) => {
       let parent     = false
 
       if (selector) {
-        parent = $(selector)[0]
+        parent = document.querySelector(selector)
       }
 
       if (!parent) {

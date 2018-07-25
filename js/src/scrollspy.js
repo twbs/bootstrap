@@ -3,7 +3,7 @@ import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.1.1): scrollspy.js
+ * Bootstrap (v4.1.3): scrollspy.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -16,7 +16,7 @@ const ScrollSpy = (($) => {
    */
 
   const NAME               = 'scrollspy'
-  const VERSION            = '4.1.1'
+  const VERSION            = '4.1.3'
   const DATA_KEY           = 'bs.scrollspy'
   const EVENT_KEY          = `.${DATA_KEY}`
   const DATA_API_KEY       = '.data-api'
@@ -115,7 +115,7 @@ const ScrollSpy = (($) => {
 
       this._scrollHeight = this._getScrollHeight()
 
-      const targets = $.makeArray($(this._selector))
+      const targets = [].slice.call(document.querySelectorAll(this._selector))
 
       targets
         .map((element) => {
@@ -123,7 +123,7 @@ const ScrollSpy = (($) => {
           const targetSelector = Util.getSelectorFromElement(element)
 
           if (targetSelector) {
-            target = $(targetSelector)[0]
+            target = document.querySelector(targetSelector)
           }
 
           if (target) {
@@ -225,7 +225,8 @@ const ScrollSpy = (($) => {
         return
       }
 
-      for (let i = this._offsets.length; i--;) {
+      const offsetLength = this._offsets.length
+      for (let i = offsetLength; i--;) {
         const isActiveTarget = this._activeTarget !== this._targets[i] &&
             scrollTop >= this._offsets[i] &&
             (typeof this._offsets[i + 1] === 'undefined' ||
@@ -249,7 +250,7 @@ const ScrollSpy = (($) => {
                `${selector}[href="${target}"]`
       })
 
-      const $link = $(queries.join(','))
+      const $link = $([].slice.call(document.querySelectorAll(queries.join(','))))
 
       if ($link.hasClass(ClassName.DROPDOWN_ITEM)) {
         $link.closest(Selector.DROPDOWN).find(Selector.DROPDOWN_TOGGLE).addClass(ClassName.ACTIVE)
@@ -270,7 +271,8 @@ const ScrollSpy = (($) => {
     }
 
     _clear() {
-      $(this._selector).filter(Selector.ACTIVE).removeClass(ClassName.ACTIVE)
+      const nodes = [].slice.call(document.querySelectorAll(this._selector))
+      $(nodes).filter(Selector.ACTIVE).removeClass(ClassName.ACTIVE)
     }
 
     // Static
@@ -302,9 +304,10 @@ const ScrollSpy = (($) => {
    */
 
   $(window).on(Event.LOAD_DATA_API, () => {
-    const scrollSpys = $.makeArray($(Selector.DATA_SPY))
+    const scrollSpys = [].slice.call(document.querySelectorAll(Selector.DATA_SPY))
 
-    for (let i = scrollSpys.length; i--;) {
+    const scrollSpysLength = scrollSpys.length
+    for (let i = scrollSpysLength; i--;) {
       const $spy = $(scrollSpys[i])
       ScrollSpy._jQueryInterface.call($spy, $spy.data())
     }

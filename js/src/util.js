@@ -2,7 +2,7 @@ import $ from 'jquery'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.1.1): util.js
+ * Bootstrap (v4.1.3): util.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -82,8 +82,7 @@ const Util = (($) => {
       }
 
       try {
-        const $selector = $(document).find(selector)
-        return $selector.length > 0 ? selector : null
+        return document.querySelector(selector) ? selector : null
       } catch (err) {
         return null
       }

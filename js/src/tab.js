@@ -3,7 +3,7 @@ import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.1.1): tab.js
+ * Bootstrap (v4.1.3): tab.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -16,7 +16,7 @@ const Tab = (($) => {
    */
 
   const NAME               = 'tab'
-  const VERSION            = '4.1.1'
+  const VERSION            = '4.1.3'
   const DATA_KEY           = 'bs.tab'
   const EVENT_KEY          = `.${DATA_KEY}`
   const DATA_API_KEY       = '.data-api'
@@ -106,7 +106,7 @@ const Tab = (($) => {
       }
 
       if (selector) {
-        target = $(selector)[0]
+        target = document.querySelector(selector)
       }
 
       this._activate(
@@ -199,7 +199,8 @@ const Tab = (($) => {
           $(element.parentNode).hasClass(ClassName.DROPDOWN_MENU)) {
         const dropdownElement = $(element).closest(Selector.DROPDOWN)[0]
         if (dropdownElement) {
-          $(dropdownElement).find(Selector.DROPDOWN_TOGGLE).addClass(ClassName.ACTIVE)
+          const dropdownToggleList = [].slice.call(dropdownElement.querySelectorAll(Selector.DROPDOWN_TOGGLE))
+          $(dropdownToggleList).addClass(ClassName.ACTIVE)
         }
 
         element.setAttribute('aria-expanded', true)
