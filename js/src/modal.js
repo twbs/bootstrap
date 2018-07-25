@@ -117,7 +117,7 @@ class Modal {
       relatedTarget
     })
 
-    if (this._isShown || showEvent.isDefaultPrevented()) {
+    if (this._isShown || showEvent.defaultPrevented) {
       return
     }
 
@@ -159,7 +159,7 @@ class Modal {
 
     const hideEvent = EventHandler.trigger(this._element, Event.HIDE)
 
-    if (!this._isShown || hideEvent.isDefaultPrevented()) {
+    if (!this._isShown || hideEvent.defaultPrevented) {
       return
     }
 
@@ -275,16 +275,14 @@ class Modal {
   }
 
   _enforceFocus() {
-    if (this._isShown && this._config.keyboard) {
-      EventHandler.on(this._element, Event.KEYDOWN_DISMISS, (event) => {
-        if (event.which === ESCAPE_KEYCODE) {
-          event.preventDefault()
-          this.hide()
-        }
-      })
-    } else if (!this._isShown) {
-      EventHandler.off(this._element, Event.KEYDOWN_DISMISS)
-    }
+    EventHandler.off(document, Event.FOCUSIN) // guard against infinite focus loop
+    EventHandler.on(document, Event.FOCUSIN, (event) => {
+      if (document !== event.target &&
+          this._element !== event.target &&
+          !this._element.contains(event.target)) {
+        this._element.focus()
+      }
+    })
   }
 
   _setEscapeEvent() {
@@ -376,7 +374,7 @@ class Modal {
       const backdropTransitionDuration = Util.getTransitionDurationFromElement(this._backdrop)
 
       EventHandler.one(this._backdrop, Util.TRANSITION_END, callback)
-      Util.emulateTransitionEnd(backdropTransitionDuration)
+      Util.emulateTransitionEnd(this._backdrop, backdropTransitionDuration)
     } else if (!this._isShown && this._backdrop) {
       this._backdrop.classList.remove(ClassName.SHOW)
 
