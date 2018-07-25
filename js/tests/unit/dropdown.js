@@ -543,7 +543,7 @@ $(function () {
         $(document.body).trigger('click')
       })
 
-    $dropdown.trigger('click')
+    $dropdown[0].click()
   })
 
   QUnit.test('should fire hide and hidden event without a clickEvent if event type is not click', function (assert) {
@@ -573,12 +573,13 @@ $(function () {
       })
       .on('shown.bs.dropdown', function () {
         assert.ok(true, 'shown was fired')
-        $dropdown.trigger($.Event('keydown', {
-          which: 27
-        }))
+
+        var keyDown = new Event('keydown')
+        keyDown.which = 27
+        $dropdown[0].dispatchEvent(keyDown)
       })
 
-    $dropdown.trigger('click')
+    $dropdown[0].click()
   })
 
   QUnit.test('should ignore keyboard events within <input>s and <textarea>s', function (assert) {
