@@ -140,6 +140,16 @@ class Alert {
     })
   }
 
+  static _handleDismiss(alertInstance) {
+    return function (event) {
+      if (event) {
+        event.preventDefault()
+      }
+
+      alertInstance.close(this)
+    }
+  }
+
   static _getInstance(element) {
     return Data.getData(element, DATA_KEY)
   }

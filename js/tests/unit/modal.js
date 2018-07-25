@@ -2,6 +2,7 @@ $(function () {
   'use strict'
 
   window.Util = typeof bootstrap !== 'undefined' ? bootstrap.Util : Util
+  var Modal = typeof window.bootstrap !== 'undefined' ? window.bootstrap.Modal : window.Modal
 
   QUnit.module('modal plugin')
 
@@ -624,43 +625,6 @@ $(function () {
     assert.ok(evt.defaultPrevented, 'model shown instead of navigating to href')
   })
 
-  QUnit.test('should not parse target as html', function (assert) {
-    assert.expect(1)
-    var done = assert.async()
-
-    var $toggleBtn = $('<button data-toggle="modal" data-target="&lt;div id=&quot;modal-test&quot;&gt;&lt;div class=&quot;contents&quot;&lt;div&lt;div id=&quot;close&quot; data-dismiss=&quot;modal&quot;/&gt;&lt;/div&gt;&lt;/div&gt;"/>')
-      .appendTo('#qunit-fixture')
-
-    $toggleBtn.trigger('click')
-    setTimeout(function () {
-      assert.strictEqual($('#modal-test').length, 0, 'target has not been parsed and added to the document')
-      done()
-    }, 0)
-  })
-
-  QUnit.test('should not execute js from target', function (assert) {
-    assert.expect(0)
-    var done = assert.async()
-
-    // This toggle button contains XSS payload in its data-target
-    // Note: it uses the onerror handler of an img element to execute the js, because a simple script element does not work here
-    //       a script element works in manual tests though, so here it is likely blocked by the qunit framework
-    var $toggleBtn = $('<button data-toggle="modal" data-target="&lt;div&gt;&lt;image src=&quot;missing.png&quot; onerror=&quot;$(&apos;#qunit-fixture button.control&apos;).trigger(&apos;click&apos;)&quot;&gt;&lt;/div&gt;"/>')
-      .appendTo('#qunit-fixture')
-    // The XSS payload above does not have a closure over this function and cannot access the assert object directly
-    // However, it can send a click event to the following control button, which will then fail the assert
-    $('<button>')
-      .addClass('control')
-      .on('click', function () {
-        assert.notOk(true, 'XSS payload is not executed as js')
-      })
-      .appendTo('#qunit-fixture')
-
-    $toggleBtn.trigger('click')
-
-    setTimeout(done, 500)
-  })
-
   QUnit.test('should not try to open a modal which is already visible', function (assert) {
     assert.expect(1)
     var done = assert.async()
@@ -717,7 +681,7 @@ $(function () {
   })
 
   QUnit.test('should dispose modal', function (assert) {
-    assert.expect(3)
+    assert.expect(2)
     var done = assert.async()
 
     var $modal = $([
@@ -731,31 +695,19 @@ $(function () {
     ].join('')).appendTo('#qunit-fixture')
 
     $modal.on('shown.bs.modal', function () {
-      var spy = sinon.spy($.fn, 'off')
+      var modal = Modal._getInstance($modal[0])
+      var spy = sinon.spy($modal[0], 'removeEventListener')
 
-      $(this).bootstrapModal('dispose')
+      modal.dispose()
 
-      var modalDataApiEvent = []
-      $._data(document, 'events').click
-        .forEach(function (e) {
-          if (e.namespace === 'bs.data-api.modal') {
-            modalDataApiEvent.push(e)
-          }
-        })
-
-      assert.ok(typeof $(this).data('bs.modal') === 'undefined', 'modal data object was disposed')
-
-      assert.ok(spy.callCount === 4, '`jQuery.off` was called')
-
-      assert.ok(modalDataApiEvent.length === 1, '`Event.CLICK_DATA_API` on `document` was not removed')
-
-      $.fn.off.restore()
+      assert.ok(!Modal._getInstance($modal[0]), 'modal data object was disposed')
+      assert.ok(spy.called)
       done()
     }).bootstrapModal('show')
   })
 
   QUnit.test('should enforce focus', function (assert) {
-    assert.expect(4)
+    assert.expect(2)
     var done = assert.async()
 
     var $modal = $([
@@ -770,27 +722,26 @@ $(function () {
       .bootstrapModal()
       .appendTo('#qunit-fixture')
 
-    var modal = $modal.data('bs.modal')
+    var modal = Modal._getInstance($modal[0])
     var spy = sinon.spy(modal, '_enforceFocus')
-    var spyDocOff = sinon.spy($(document), 'off')
-    var spyDocOn = sinon.spy($(document), 'on')
 
     $modal.one('shown.bs.modal', function () {
       assert.ok(spy.called, '_enforceFocus called')
-      assert.ok(spyDocOff.withArgs('focusin.bs.modal'))
-      assert.ok(spyDocOn.withArgs('focusin.bs.modal'))
-
       var spyFocus = sinon.spy(modal._element, 'focus')
-      var event = $.Event('focusin', {
-        target: $('#qunit-fixture')[0]
-      })
 
-      $(document).one('focusin', function () {
+      function focusInListener() {
         assert.ok(spyFocus.called)
+        document.removeEventListener('focusin', focusInListener)
         done()
+      }
+      document.addEventListener('focusin', focusInListener)
+
+      var focusInEvent = new Event('focusin')
+      Object.defineProperty(focusInEvent, 'target', {
+        value: $('#qunit-fixture')[0]
       })
 
-      $(document).trigger(event)
+      document.dispatchEvent(focusInEvent)
     })
       .bootstrapModal('show')
   })

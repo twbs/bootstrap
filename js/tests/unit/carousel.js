@@ -541,16 +541,19 @@ $(function () {
         '<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>' +
         '<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>' +
         '</div>'
-    var $carousel = $(templateHTML)
 
-    $carousel.appendTo('body')
+    var $carousel = $(templateHTML).appendTo('#qunit-fixture')
     $carousel.bootstrapCarousel(1)
-    assert.strictEqual($carousel.data('bs.carousel')._config.interval, 3814)
+    var carousel = Carousel._getInstance($carousel[0])
+    assert.strictEqual(carousel._config.interval, 3814)
+    carousel.dispose()
     $carousel.remove()
 
-    $carousel.appendTo('body')
+    $carousel = $carousel.appendTo('#qunit-fixture')
     $carousel.bootstrapCarousel(2)
-    assert.strictEqual($carousel.data('bs.carousel')._config.interval, 1814, 'reverts to default interval if no data-interval is set')
+    carousel = Carousel._getInstance($carousel[0])
+
+    assert.strictEqual(carousel._config.interval, 1814, 'reverts to default interval if no data-interval is set')
     $carousel.remove()
   })
 
@@ -1080,7 +1083,7 @@ $(function () {
     var $carousel = $(carouselHTML).appendTo('#qunit-fixture')
     var $item = $('#item')
     $carousel.bootstrapCarousel()
-    var carousel = $carousel.data('bs.carousel')
+    var carousel = Carousel._getInstance($carousel[0])
     var spy = sinon.spy(carousel, 'prev')
 
     $carousel.one('slid.bs.carousel', function () {
@@ -1122,7 +1125,7 @@ $(function () {
     $carousel.appendTo('#qunit-fixture')
     var $item = $('#item')
     $carousel.bootstrapCarousel()
-    var carousel = $carousel.data('bs.carousel')
+    var carousel = Carousel._getInstance($carousel[0])
     var spy = sinon.spy(carousel, 'prev')
 
     $carousel.one('slid.bs.carousel', function () {
@@ -1169,7 +1172,7 @@ $(function () {
     $carousel.appendTo('#qunit-fixture')
     var $item = $('#item')
     $carousel.bootstrapCarousel()
-    var carousel = $carousel.data('bs.carousel')
+    var carousel = Carousel._getInstance($carousel[0])
     var spy = sinon.spy(carousel, 'next')
 
     $carousel.one('slid.bs.carousel', function () {
@@ -1212,7 +1215,7 @@ $(function () {
     $carousel.appendTo('#qunit-fixture')
     var $item = $('#item')
     $carousel.bootstrapCarousel()
-    var carousel = $carousel.data('bs.carousel')
+    var carousel = Carousel._getInstance($carousel[0])
     var spy = sinon.spy(carousel, 'next')
 
     $carousel.one('slid.bs.carousel', function () {
@@ -1264,7 +1267,7 @@ $(function () {
     $carousel.appendTo('#qunit-fixture')
     $carousel.bootstrapCarousel()
 
-    var carousel = $carousel.data('bs.carousel')
+    var carousel = Carousel._getInstance($carousel[0])
 
     var spy = sinon.spy(carousel, '_slide')
 
@@ -1283,7 +1286,7 @@ $(function () {
     $carousel.appendTo('#qunit-fixture')
     $carousel.bootstrapCarousel()
 
-    var carousel = $carousel.data('bs.carousel')
+    var carousel = Carousel._getInstance($carousel[0])
 
     var spy = sinon.spy(carousel, 'next')
     var sandbox = sinon.createSandbox()
