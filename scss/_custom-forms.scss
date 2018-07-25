@@ -424,6 +424,28 @@
     background-color: $custom-range-track-bg;
     @include border-radius($custom-range-track-border-radius);
   }
+
+  &:disabled {
+    &::-webkit-slider-thumb {
+      background-color: $custom-range-thumb-disabled-bg;
+    }
+
+    &::-webkit-slider-runnable-track {
+      cursor: default;
+    }
+
+    &::-moz-range-thumb {
+      background-color: $custom-range-thumb-disabled-bg;
+    }
+
+    &::-moz-range-track {
+      cursor: default;
+    }
+
+    &::-ms-thumb {
+      background-color: $custom-range-thumb-disabled-bg;
+    }
+  }
 }
 
 .custom-control-label::before,

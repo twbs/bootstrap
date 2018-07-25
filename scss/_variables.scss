@@ -548,6 +548,7 @@ $custom-range-thumb-box-shadow:              0 .1rem .25rem rgba($black, .1) !de
 $custom-range-thumb-focus-box-shadow:        0 0 0 1px $body-bg, $input-btn-focus-box-shadow !default;
 $custom-range-thumb-focus-box-shadow-width:  $input-btn-focus-width !default; // For focus box shadow issue in IE/Edge
 $custom-range-thumb-active-bg:               lighten($component-active-bg, 35%) !default;
+$custom-range-thumb-disabled-bg:             $gray-500 !default;
 
 $custom-file-height:                $input-height !default;
 $custom-file-height-inner:          $input-height-inner !default;
