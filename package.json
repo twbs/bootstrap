@@ -61,14 +61,12 @@
     "coveralls": "shx cat js/coverage/lcov.info | coveralls",
     "docs": "npm-run-all --parallel css-docs js-docs --sequential docs-compile docs-lint",
     "docs-compile": "bundle exec jekyll build",
-    "postdocs-compile": "npm run docs-workbox-precache",
     "docs-production": "cross-env JEKYLL_ENV=production npm run docs-compile",
     "docs-lint": "npm-run-all docs-lint-*",
     "docs-lint-htmllint": "htmllint --rc build/.htmllintrc \"_gh_pages/**/*.html\" \"js/tests/**/*.html\"",
     "docs-lint-vnu-jar": "node build/vnu-jar.js",
     "docs-serve": "bundle exec jekyll serve",
     "docs-serve-only": "npm run docs-serve -- --skip-initial-build --no-watch",
-    "docs-workbox-precache": "node build/workbox.js",
     "update-deps": "ncu -a -x jquery -x bundlesize && npm update && bundle update && shx echo Manually update \"site/docs/4.1/assets/js/vendor/\"",
     "release": "npm run dist && npm run release-sri && npm run release-zip && npm run docs-production",
     "release-sri": "node build/generate-sri.js",
@@ -144,8 +142,7 @@
     "stylelint-order": "^1.0.0",
     "stylelint-scss": "^3.3.1",
     "uglify-js": "^3.4.9",
-    "vnu-jar": "18.8.29",
-    "workbox-build": "^3.6.2"
+    "vnu-jar": "18.8.29"
   },
   "engines": {
     "node": ">=6"
