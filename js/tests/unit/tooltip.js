@@ -951,7 +951,7 @@ $(function () {
     var $tipTest = $('<div class="bs-tooltip" />')
       .appendTo('#qunit-fixture')
 
-    var tooltip = $tooltip.data('bs.tooltip')
+    var tooltip = Tooltip._getInstance($tooltip[0])
     tooltip.tip = null
 
     tooltip._handlePopperPlacementChange({

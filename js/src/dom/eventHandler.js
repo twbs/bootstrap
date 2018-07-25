@@ -3,7 +3,7 @@ import Util from '../util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.1.1): dom/eventHandler.js
+ * Bootstrap (v4.1.3): dom/eventHandler.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -313,5 +313,20 @@ const EventHandler = (() => {
     }
   }
 })()
+
+/* istanbul ignore next */
+// focusin and focusout polyfill
+if (Polyfill.focusIn) {
+  (() => {
+    function listenerFocus(event) {
+      EventHandler.trigger(event.target, 'focusin')
+    }
+    function listenerBlur(event) {
+      EventHandler.trigger(event.target, 'focusout')
+    }
+    EventHandler.on(document, 'focus', 'input', listenerFocus)
+    EventHandler.on(document, 'blur', 'input', listenerBlur)
+  })()
+}
 
 export default EventHandler

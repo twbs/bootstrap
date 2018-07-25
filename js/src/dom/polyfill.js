@@ -2,7 +2,7 @@ import Util from '../util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.1.1): dom/polyfill.js
+ * Bootstrap (v4.1.3): dom/polyfill.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
