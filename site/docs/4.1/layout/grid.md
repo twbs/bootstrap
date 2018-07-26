@@ -324,6 +324,20 @@ Don't want your columns to simply stack in some grid tiers? Use a combination of
 {% include example.html content=example %}
 </div>
 
+### Gutters
+
+Gutters can be responsively adjusted by breakpoint-specific padding and negative margin utility classes. To change the gutters in a given row, pair a negative margin utility on the `.row` and matching padding utilities on the `.col`s.
+
+Here's an example of customizing the Bootstrap grid at the large (`lg`) breakpoint and above. We've increased the `.col` padding with `.px-lg-5` and then counteracted that with `.mx-lg-n5` on the parent `.row`.
+
+{% capture example %}
+<div class="row mx-lg-n5">
+  <div class="col py-3 px-lg-5 border bg-light">Custom column padding</div>
+  <div class="col py-3 px-lg-5 border bg-light">Custom column padding</div>
+</div>
+{% endcapture %}
+{% include example.html content=example %}
+
 ## Alignment
 
 Use flexbox alignment utilities to vertically and horizontally align columns.

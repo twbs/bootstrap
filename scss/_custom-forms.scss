@@ -314,7 +314,8 @@
 
 .custom-range {
   width: 100%;
-  padding-left: 0; // Firefox specific
+  height: calc(#{$custom-range-thumb-height} + #{$custom-range-thumb-focus-box-shadow-width * 2});
+  padding: 0; // Need to reset padding
   background-color: transparent;
   appearance: none;
 
@@ -423,6 +424,28 @@
     margin-right: 15px; // arbitrary?
     background-color: $custom-range-track-bg;
     @include border-radius($custom-range-track-border-radius);
+  }
+
+  &:disabled {
+    &::-webkit-slider-thumb {
+      background-color: $custom-range-thumb-disabled-bg;
+    }
+
+    &::-webkit-slider-runnable-track {
+      cursor: default;
+    }
+
+    &::-moz-range-thumb {
+      background-color: $custom-range-thumb-disabled-bg;
+    }
+
+    &::-moz-range-track {
+      cursor: default;
+    }
+
+    &::-ms-thumb {
+      background-color: $custom-range-thumb-disabled-bg;
+    }
   }
 }
 
