@@ -8657,6 +8657,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   .subnav {
     position: relative;
     height: 128px !important;
+    min-height: 64px;
   }
   .subnav::before {
     position: absolute;
@@ -8672,13 +8673,19 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
     background-color: #2e4369;
     border-top: none;
   }
-  .subnav .navbar-nav > li > a.dropdown-toggle,
-  .subnav .navbar-nav > li button.dropdown-toggle {
-    height: 60px;
+  .subnav .navbar-nav > li > a {
+    padding-top: 13px;
+  }
+  .subnav .navbar-nav > li > button {
+    height: 64px;
+  }
+  .subnav .navbar-btn,
+  .subnav .navbar-brand {
+    margin-top: 16px;
   }
   .subnav-menu {
     position: absolute;
-    top: 68px;
+    top: 64px;
   }
 }
 .breadcrumb {
