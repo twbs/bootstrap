@@ -1049,7 +1049,7 @@
   .navbar + .jumbotron-image,
   .navbar + .jumbotron-image-inverse,
   .jumbotron-image-adjacent-to-navbar {
-    margin-top: (-1 * @navbar-height);
+    margin-top: (-1 * @navbar-height - 2px);
   }
 
   .navbar.affix + .jumbotron,
@@ -1272,6 +1272,7 @@
   .subnav {
     height: (@navbar-secondary-height * 2) !important; //this line is necessary until we solve the style="height:0;" in navbar-collapse added when closing the mobile menu
     position: relative;
+    min-height: @navbar-secondary-height;
 
     &::before {
       content: "";
@@ -1292,22 +1293,23 @@
     }
 
     .navbar-nav > li {
-      > a,
-      button {
-        &.dropdown-toggle {
-          height: 60px;
-        }
+      > a {
+        padding-top: (@navbar-secondary-padding-vertical + 1);
       }
+
+      > button {
+        height: @navbar-secondary-height;
+      }
+    }
+
+    .navbar-btn,
+    .navbar-brand {
+      margin-top: (@navbar-secondary-padding-vertical + @padding-small-vertical);
     }
   }
 
   .subnav-menu {
     position: absolute;
-    top: (@navbar-secondary-height + @padding-small-vertical);
-  }
-
-  .navbar {
-    min-height: @navbar-secondary-height;
-    padding-top: 2px;
+    top: @navbar-secondary-height;
   }
 }
