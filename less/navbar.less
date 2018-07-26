@@ -1049,7 +1049,7 @@
   .navbar + .jumbotron-image,
   .navbar + .jumbotron-image-inverse,
   .jumbotron-image-adjacent-to-navbar {
-    margin-top: (-1 * @navbar-height);
+    margin-top: (-1 * @navbar-height - 2px);
   }
 
   .navbar.affix + .jumbotron,
@@ -1306,8 +1306,8 @@
     top: (@navbar-secondary-height + @padding-small-vertical);
   }
 
-  .navbar {
-    min-height: @navbar-secondary-height;
-    padding-top: 2px;
-  }
+  // .navbar {
+  //   min-height: @navbar-secondary-height;
+  //   padding-top: 2px;
+  // }
 }
