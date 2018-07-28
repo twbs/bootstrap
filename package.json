@@ -154,11 +154,11 @@
   "bundlesize": [
     {
       "path": "./dist/css/bootstrap-grid.css",
-      "maxSize": "5 kB"
+      "maxSize": "6 kB"
     },
     {
       "path": "./dist/css/bootstrap-grid.min.css",
-      "maxSize": "5 kB"
+      "maxSize": "6 kB"
     },
     {
       "path": "./dist/css/bootstrap-reboot.css",
