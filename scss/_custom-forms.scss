@@ -169,8 +169,8 @@
   line-height: $custom-select-line-height;
   color: $custom-select-color;
   vertical-align: middle;
-  background: $custom-select-bg $custom-select-indicator no-repeat right $custom-select-padding-x center;
-  background-size: $custom-select-bg-size;
+  background: $custom-select-background;
+  background-color: $custom-select-bg;
   border: $custom-select-border-width solid $custom-select-border-color;
   @if $enable-rounded {
     border-radius: $custom-select-border-radius;

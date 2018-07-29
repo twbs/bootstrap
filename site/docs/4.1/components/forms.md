@@ -767,9 +767,9 @@ With that in mind, consider the following demos for our custom form validation s
 
 ### Custom styles
 
-For custom Bootstrap form validation messages, you'll need to add the `novalidate` boolean attribute to your `<form>`. This disables the browser default feedback tooltips, but still provides access to the form validation APIs in JavaScript. Try to submit the form below; our JavaScript will intercept the submit button and relay feedback to you.
+For custom Bootstrap form validation messages, you'll need to add the `novalidate` boolean attribute to your `<form>`. This disables the browser default feedback tooltips, but still provides access to the form validation APIs in JavaScript. Try to submit the form below; our JavaScript will intercept the submit button and relay feedback to you. When attempting to submit, you'll see the `:invalid` and `:valid` styles applied to your form controls.
 
-When attempting to submit, you'll see the `:invalid` and `:valid` styles applied to your form controls.
+Custom feedback styles apply custom colors, borders, focus styles, and background icons to better communicate feedback. Background icons for `<select>`s are only available with `.custom-select`, and not `.form-control`.
 
 {% capture example %}
 <form class="needs-validation" novalidate>
@@ -990,10 +990,18 @@ We recommend using client side validation, but in case you require server side, 
 
 ### Supported elements
 
-Our example forms show native textual `<input>`s above, but form validation styles are available for our custom form controls, too.
+Our example forms show native textual `<input>`s above, but form validation styles are also available for `<textarea>`s and custom form controls.
 
 {% capture example %}
 <form class="was-validated">
+  <div class="mb-3">
+    <label for="validationTextarea">Textarea</label>
+    <textarea class="form-control is-invalid" id="validationTextarea" placeholder="Required example textarea" required></textarea>
+    <div class="invalid-feedback">
+      Please enter a message in the textarea.
+    </div>
+  </div>
+
   <div class="custom-control custom-checkbox mb-3">
     <input type="checkbox" class="custom-control-input" id="customControlValidation1" required>
     <label class="custom-control-label" for="customControlValidation1">Check this custom checkbox</label>
