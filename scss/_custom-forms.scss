@@ -220,15 +220,17 @@
 
 .custom-select-sm {
   height: $custom-select-height-sm;
-  padding-top: $custom-select-padding-y;
-  padding-bottom: $custom-select-padding-y;
+  padding-top: $custom-select-padding-y-sm;
+  padding-bottom: $custom-select-padding-y-sm;
+  padding-left: $custom-select-padding-x-sm;
   font-size: $custom-select-font-size-sm;
 }
 
 .custom-select-lg {
   height: $custom-select-height-lg;
-  padding-top: $custom-select-padding-y;
-  padding-bottom: $custom-select-padding-y;
+  padding-top: $custom-select-padding-y-lg;
+  padding-bottom: $custom-select-padding-y-lg;
+  padding-left: $custom-select-padding-x-lg;
   font-size: $custom-select-font-size-lg;
 }
 
