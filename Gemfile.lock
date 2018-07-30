@@ -60,7 +60,7 @@ GEM
     rouge (3.1.1)
     ruby_dep (1.5.0)
     safe_yaml (1.0.4)
-    sass (3.5.6)
+    sass (3.5.7)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -77,4 +77,4 @@ DEPENDENCIES
   jekyll-toc (~> 0.6.0)
 
 BUNDLED WITH
-   1.16.2
+   1.16.3
