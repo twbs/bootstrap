@@ -191,6 +191,7 @@
     cursor: pointer;
     background-color: $carousel-indicator-active-bg;
     background-clip: padding-box;
+    // Use transparent borders to increase the hit area by 10px on top and bottom.
     border-top: 10px solid transparent;
     border-bottom: 10px solid transparent;
     opacity: .5;
