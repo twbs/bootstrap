@@ -63,6 +63,58 @@
   }
 }
 
+.modal-dialog-left-side {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  width: 100%;
+  min-height: 100%;
+  // stylelint-disable-next-line declaration-no-important
+  margin: 0 !important;
+
+  .modal-content {
+    // IE fix:
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+      min-height: 100vh;
+    }
+    border-width: 0;
+    border-radius: 0;
+  }
+
+  .modal.fade & {
+    transform: translate(-$modal-side-animation-offset, 0);
+  }
+}
+
+.modal-dialog-right-side {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  width: 100%;
+  min-height: 100%;
+  // stylelint-disable-next-line declaration-no-important
+  margin: 0 !important;
+
+  .modal-content {
+    // IE fix:
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+      min-height: 100vh;
+    }
+    border-width: 0;
+    border-radius: 0;
+  }
+
+  .modal.fade & {
+    transform: translate($modal-side-animation-offset, 0);
+  }
+}
+
+.modal.show .modal-dialog {
+  transform: translate(0, 0);
+}
+
 // Actual modal
 .modal-content {
   position: relative;
@@ -124,7 +176,7 @@
   position: relative;
   // Enable `flex-grow: 1` so that the body take up as much space as possible
   // when should there be a fixed height on `.modal-dialog`.
-  flex: 1 1 auto;
+  flex: 1 0 auto;
   padding: $modal-inner-padding;
 }
 
@@ -164,6 +216,18 @@
 
     &::before {
       height: calc(100vh - (#{$modal-dialog-margin-y-sm-up} * 2));
+    }
+  }
+
+  .modal-dialog-left-side {
+    .modal-content {
+      border-width: 0 $modal-content-border-width 0 0;
+    }
+  }
+
+  .modal-dialog-right-side {
+    .modal-content {
+      border-width: 0 0 0 $modal-content-border-width;
     }
   }
 
