@@ -22,6 +22,7 @@
       "numeric", {
         "ignore": ["relative"]
     }],
+    "function-linear-gradient-no-nonstandard-direction": null,
     "function-url-no-scheme-relative": true,
     "function-url-quotes": "always",
     "length-zero-no-unit": true,

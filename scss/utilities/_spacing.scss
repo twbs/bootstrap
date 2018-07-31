@@ -15,7 +15,7 @@
         }
         .#{$abbrev}r#{$infix}-#{$size},
         .#{$abbrev}x#{$infix}-#{$size} {
-          #{$prop}-right: $length !important;
+          #{$prop}-#{$right}: $length !important;
         }
         .#{$abbrev}b#{$infix}-#{$size},
         .#{$abbrev}y#{$infix}-#{$size} {
@@ -23,7 +23,7 @@
         }
         .#{$abbrev}l#{$infix}-#{$size},
         .#{$abbrev}x#{$infix}-#{$size} {
-          #{$prop}-left: $length !important;
+          #{$prop}-#{$left}: $length !important;
         }
       }
     }
@@ -38,7 +38,7 @@
         }
         .mr#{$infix}-n#{$size},
         .mx#{$infix}-n#{$size} {
-          margin-right: -$length !important;
+          margin-#{$right}: -$length !important;
         }
         .mb#{$infix}-n#{$size},
         .my#{$infix}-n#{$size} {
@@ -46,7 +46,7 @@
         }
         .ml#{$infix}-n#{$size},
         .mx#{$infix}-n#{$size} {
-          margin-left: -$length !important;
+          margin-#{$left}: -$length !important;
         }
       }
     }
@@ -59,7 +59,7 @@
     }
     .mr#{$infix}-auto,
     .mx#{$infix}-auto {
-      margin-right: auto !important;
+      margin-#{$right}: auto !important;
     }
     .mb#{$infix}-auto,
     .my#{$infix}-auto {
@@ -67,7 +67,7 @@
     }
     .ml#{$infix}-auto,
     .mx#{$infix}-auto {
-      margin-left: auto !important;
+      margin-#{$left}: auto !important;
     }
   }
 }

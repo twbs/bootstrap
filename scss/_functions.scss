@@ -84,3 +84,21 @@
 
   @return mix($color-base, $color, $level * $theme-color-interval);
 }
+
+
+// Set the `left` and `right` directions for internationilization based on $dir varibale being set to either `rtl` or 'ltr`
+@function set-dir($primary: left) {
+  @if $dir == rtl {
+    @if $primary == right {
+      @return left;
+    } @else if $primary == left {
+      @return right;
+    }
+  } @else {
+    @if $primary == left {
+      @return left;
+    } @else if $primary == right {
+      @return right;
+    }
+  }
+}
