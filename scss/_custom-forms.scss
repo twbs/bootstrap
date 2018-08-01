@@ -11,12 +11,12 @@
   position: relative;
   display: block;
   min-height: ($font-size-base * $line-height-base);
-  padding-left: $custom-control-gutter;
+  padding-#{$default}: $custom-control-gutter;
 }
 
 .custom-control-inline {
   display: inline-flex;
-  margin-right: $custom-control-spacer-x;
+  margin-#{$opposite}: $custom-control-spacer-x;
 }
 
 .custom-control-input {
@@ -64,7 +64,7 @@
   &::before {
     position: absolute;
     top: (($font-size-base * $line-height-base - $custom-control-indicator-size) / 2);
-    left: -$custom-control-gutter;
+    #{$default}: -$custom-control-gutter;
     display: block;
     width: $custom-control-indicator-size;
     height: $custom-control-indicator-size;
@@ -79,7 +79,7 @@
   &::after {
     position: absolute;
     top: (($font-size-base * $line-height-base - $custom-control-indicator-size) / 2);
-    left: -$custom-control-gutter;
+    #{$default}: -$custom-control-gutter;
     display: block;
     width: $custom-control-indicator-size;
     height: $custom-control-indicator-size;
@@ -203,7 +203,7 @@
   &[multiple],
   &[size]:not([size="1"]) {
     height: auto;
-    padding-right: $custom-select-padding-x;
+    padding-#{$opposite}: $custom-select-padding-x;
     background-image: none;
   }
 
@@ -222,7 +222,7 @@
   height: $custom-select-height-sm;
   padding-top: $custom-select-padding-y-sm;
   padding-bottom: $custom-select-padding-y-sm;
-  padding-left: $custom-select-padding-x-sm;
+  padding-#{$default}: $custom-select-padding-x-sm;
   font-size: $custom-select-font-size-sm;
 }
 
@@ -230,7 +230,7 @@
   height: $custom-select-height-lg;
   padding-top: $custom-select-padding-y-lg;
   padding-bottom: $custom-select-padding-y-lg;
-  padding-left: $custom-select-padding-x-lg;
+  padding-#{$default}: $custom-select-padding-x-lg;
   font-size: $custom-select-font-size-lg;
 }
 
@@ -278,8 +278,8 @@
 .custom-file-label {
   position: absolute;
   top: 0;
-  right: 0;
-  left: 0;
+  #{$opposite}: 0;
+  #{$default}: 0;
   z-index: 1;
   height: $custom-file-height;
   padding: $custom-file-padding-y $custom-file-padding-x;
@@ -293,7 +293,7 @@
   &::after {
     position: absolute;
     top: 0;
-    right: 0;
+    #{$opposite}: 0;
     bottom: 0;
     z-index: 3;
     display: block;
@@ -303,7 +303,7 @@
     color: $custom-file-button-color;
     content: "Browse";
     @include gradient-bg($custom-file-button-bg);
-    border-left: $custom-file-border-width solid $custom-file-border-color;
+    border-#{$default}: $custom-file-border-width solid $custom-file-border-color;
     @include border-radius(0 $custom-file-border-radius $custom-file-border-radius 0);
   }
 }
@@ -392,8 +392,8 @@
     width: $custom-range-thumb-width;
     height: $custom-range-thumb-height;
     margin-top: 0; // Edge specific
-    margin-right: $custom-range-thumb-focus-box-shadow-width; // Workaround that overflowed box-shadow is hidden.
-    margin-left: $custom-range-thumb-focus-box-shadow-width;  // Workaround that overflowed box-shadow is hidden.
+    margin-#{$opposite}: $custom-range-thumb-focus-box-shadow-width; // Workaround that overflowed box-shadow is hidden.
+    margin-#{$default}: $custom-range-thumb-focus-box-shadow-width;  // Workaround that overflowed box-shadow is hidden.
     @include gradient-bg($custom-range-thumb-bg);
     border: $custom-range-thumb-border;
     @include border-radius($custom-range-thumb-border-radius);
@@ -423,7 +423,7 @@
   }
 
   &::-ms-fill-upper {
-    margin-right: 15px; // arbitrary?
+    margin-#{$opposite}: 15px; // arbitrary?
     background-color: $custom-range-track-bg;
     @include border-radius($custom-range-track-border-radius);
   }
