@@ -11,12 +11,12 @@
   position: relative;
   display: block;
   min-height: (1rem * $line-height-base);
-  padding-#{$default}: $custom-control-gutter;
+  padding-left: $custom-control-gutter;
 }
 
 .custom-control-inline {
   display: inline-flex;
-  margin-#{$opposite}: $custom-control-spacer-x;
+  margin-right: $custom-control-spacer-x;
 }
 
 .custom-control-input {
@@ -64,7 +64,7 @@
   &::before {
     position: absolute;
     top: (($line-height-base - $custom-control-indicator-size) / 2);
-    #{$default}: -$custom-control-gutter;
+    left: -$custom-control-gutter;
     display: block;
     width: $custom-control-indicator-size;
     height: $custom-control-indicator-size;
@@ -79,7 +79,7 @@
   &::after {
     position: absolute;
     top: (($line-height-base - $custom-control-indicator-size) / 2);
-    #{$default}: -$custom-control-gutter;
+    left: -$custom-control-gutter;
     display: block;
     width: $custom-control-indicator-size;
     height: $custom-control-indicator-size;
@@ -169,8 +169,8 @@
   line-height: $custom-select-line-height;
   color: $custom-select-color;
   vertical-align: middle;
-  background: $custom-select-background;
-  background-color: $custom-select-bg;
+  background: $custom-select-bg $custom-select-indicator no-repeat right $custom-select-padding-x center;
+  background-size: $custom-select-bg-size;
   border: $custom-select-border-width solid $custom-select-border-color;
   @if $enable-rounded {
     border-radius: $custom-select-border-radius;
@@ -203,7 +203,7 @@
   &[multiple],
   &[size]:not([size="1"]) {
     height: auto;
-    padding-#{$opposite}: $custom-select-padding-x;
+    padding-right: $custom-select-padding-x;
     background-image: none;
   }
 
@@ -276,8 +276,8 @@
 .custom-file-label {
   position: absolute;
   top: 0;
-  #{$opposite}: 0;
-  #{$default}: 0;
+  right: 0;
+  left: 0;
   z-index: 1;
   height: $custom-file-height;
   padding: $custom-file-padding-y $custom-file-padding-x;
@@ -291,7 +291,7 @@
   &::after {
     position: absolute;
     top: 0;
-    #{$opposite}: 0;
+    right: 0;
     bottom: 0;
     z-index: 3;
     display: block;
@@ -301,7 +301,7 @@
     color: $custom-file-button-color;
     content: "Browse";
     @include gradient-bg($custom-file-button-bg);
-    border-#{$default}: $custom-file-border-width solid $custom-file-border-color;
+    border-left: $custom-file-border-width solid $custom-file-border-color;
     @include border-radius(0 $custom-file-border-radius $custom-file-border-radius 0);
   }
 }
@@ -314,7 +314,7 @@
 
 .custom-range {
   width: 100%;
-  padding-#{$default}: 0; // Firefox specific
+  padding-left: 0; // Firefox specific
   background-color: transparent;
   appearance: none;
 
@@ -426,7 +426,7 @@
   }
 
   &::-ms-fill-upper {
-    margin-#{$opposite}: 15px; // arbitrary?
+    margin-right: 15px; // arbitrary?
     background-color: $custom-range-track-bg;
     @include border-radius($custom-range-track-border-radius);
   }
