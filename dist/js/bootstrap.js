@@ -131,6 +131,11 @@
 
     var Util = {
       TRANSITION_END: 'bsTransitionEnd',
+      getPageDirection: function getPageDirection() {
+        var htmlElement = document.getElementsByTagName('html')[0];
+        var direction = htmlElement.dir || 'ltr';
+        return direction;
+      },
       getUID: function getUID(prefix) {
         do {
           // eslint-disable-next-line no-bitwise
@@ -1419,6 +1424,8 @@
    */
 
   var Dropdown = function ($$$1) {
+    var _AttachmentMap;
+
     /**
      * ------------------------------------------------------------------------
      * Constants
@@ -1443,6 +1450,7 @@
     var RIGHT_MOUSE_BUTTON_WHICH = 3; // MouseEvent.which value for the right button (assuming a right-handed mouse)
 
     var REGEXP_KEYDOWN = new RegExp(ARROW_UP_KEYCODE + "|" + ARROW_DOWN_KEYCODE + "|" + ESCAPE_KEYCODE);
+    var RTL = Util.getPageDirection() === 'rtl' ? true : false;
     var Event = {
       HIDE: "hide" + EVENT_KEY,
       HIDDEN: "hidden" + EVENT_KEY,
@@ -1470,16 +1478,7 @@
       NAVBAR_NAV: '.navbar-nav',
       VISIBLE_ITEMS: '.dropdown-menu .dropdown-item:not(.disabled):not(:disabled)'
     };
-    var AttachmentMap = {
-      TOP: 'top-start',
-      TOPEND: 'top-end',
-      BOTTOM: 'bottom-start',
-      BOTTOMEND: 'bottom-end',
-      RIGHT: 'right-start',
-      RIGHTEND: 'right-end',
-      LEFT: 'left-start',
-      LEFTEND: 'left-end'
-    };
+    var AttachmentMap = (_AttachmentMap = {}, _AttachmentMap[RTL ? 'TOPEND' : 'TOP'] = 'top-start', _AttachmentMap[RTL ? 'TOP' : 'TOPEND'] = 'top-end', _AttachmentMap[RTL ? 'BOTTOMEND' : 'BOTTOM'] = 'bottom-start', _AttachmentMap[RTL ? 'BOTTOM' : 'BOTTOMEND'] = 'bottom-end', _AttachmentMap[RTL ? 'LEFT' : 'RIGHT'] = 'right-start', _AttachmentMap[RTL ? 'LEFTEND' : 'RIGHTEND'] = 'right-end', _AttachmentMap[RTL ? 'RIGHT' : 'LEFT'] = 'left-start', _AttachmentMap[RTL ? 'RIGHTEND' : 'LEFTEND'] = 'left-end', _AttachmentMap);
     var Default = {
       offset: 0,
       flip: true,
@@ -2478,6 +2477,8 @@
    */
 
   var Tooltip = function ($$$1) {
+    var _AttachmentMap;
+
     /**
      * ------------------------------------------------------------------------
      * Constants
@@ -2490,6 +2491,7 @@
     var JQUERY_NO_CONFLICT = $$$1.fn[NAME];
     var CLASS_PREFIX = 'bs-tooltip';
     var BSCLS_PREFIX_REGEX = new RegExp("(^|\\s)" + CLASS_PREFIX + "\\S+", 'g');
+    var RTL = Util.getPageDirection() === 'rtl' ? true : false;
     var DefaultType = {
       animation: 'boolean',
       template: 'string',
@@ -2504,13 +2506,10 @@
       fallbackPlacement: '(string|array)',
       boundary: '(string|element)'
     };
-    var AttachmentMap = {
+    var AttachmentMap = (_AttachmentMap = {
       AUTO: 'auto',
-      TOP: 'top',
-      RIGHT: 'right',
-      BOTTOM: 'bottom',
-      LEFT: 'left'
-    };
+      TOP: 'top'
+    }, _AttachmentMap[RTL ? 'LEFT' : 'RIGHT'] = 'right', _AttachmentMap.BOTTOM = 'bottom', _AttachmentMap[RTL ? 'RIGHT' : 'LEFT'] = 'left', _AttachmentMap);
     var Default = {
       animation: true,
       template: '<div class="tooltip" role="tooltip">' + '<div class="arrow"></div>' + '<div class="tooltip-inner"></div></div>',

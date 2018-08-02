@@ -69,6 +69,11 @@
 
     var Util = {
       TRANSITION_END: 'bsTransitionEnd',
+      getPageDirection: function getPageDirection() {
+        var htmlElement = document.getElementsByTagName('html')[0];
+        var direction = htmlElement.dir || 'ltr';
+        return direction;
+      },
       getUID: function getUID(prefix) {
         do {
           // eslint-disable-next-line no-bitwise

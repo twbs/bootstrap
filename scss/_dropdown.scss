@@ -15,7 +15,11 @@
 .dropdown-menu {
   position: absolute;
   top: 100%;
-  #{$left}: 0;
+  @if $dir == ltr {
+    left: 0;
+  } @else {
+    left: auto;
+  }
   z-index: $zindex-dropdown;
   display: none; // none by default, but block on "open" of the menu
   float: $left;
@@ -89,15 +93,17 @@
 
 // When enabled Popper.js, reset basic dropdown position
 // stylelint-disable no-duplicate-selectors
-.dropdown-menu {
-  &[x-placement^="top"],
-  &[x-placement^="right"],
-  &[x-placement^="bottom"],
-  &[x-placement^="left"] {
-    #{$right}: auto;
-    bottom: auto;
+// @if $dir == ltr {
+  .dropdown-menu {
+    &[x-placement^="top"],
+    &[x-placement^="right"],
+    &[x-placement^="bottom"],
+    &[x-placement^="left"] {
+      #{$right}: auto;
+      bottom: auto;
+    }
   }
-}
+// }
 // stylelint-enable no-duplicate-selectors
 
 // Dividers (basically an `<hr>`) within the dropdown

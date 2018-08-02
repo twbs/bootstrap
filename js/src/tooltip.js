@@ -23,6 +23,7 @@ const Tooltip = (($) => {
   const JQUERY_NO_CONFLICT = $.fn[NAME]
   const CLASS_PREFIX       = 'bs-tooltip'
   const BSCLS_PREFIX_REGEX = new RegExp(`(^|\\s)${CLASS_PREFIX}\\S+`, 'g')
+  const RTL                = Util.getPageDirection() === 'rtl' ? true : false
 
   const DefaultType = {
     animation           : 'boolean',
@@ -42,9 +43,9 @@ const Tooltip = (($) => {
   const AttachmentMap = {
     AUTO   : 'auto',
     TOP    : 'top',
-    RIGHT  : 'right',
+    [RTL ? 'LEFT' : 'RIGHT']  : 'right',
     BOTTOM : 'bottom',
-    LEFT   : 'left'
+    [RTL ? 'RIGHT' : 'LEFT']  : 'left'
   }
 
   const Default = {

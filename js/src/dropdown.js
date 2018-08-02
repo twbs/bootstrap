@@ -29,6 +29,7 @@ const Dropdown = (($) => {
   const ARROW_DOWN_KEYCODE       = 40 // KeyboardEvent.which value for down arrow key
   const RIGHT_MOUSE_BUTTON_WHICH = 3 // MouseEvent.which value for the right button (assuming a right-handed mouse)
   const REGEXP_KEYDOWN           = new RegExp(`${ARROW_UP_KEYCODE}|${ARROW_DOWN_KEYCODE}|${ESCAPE_KEYCODE}`)
+  const RTL                    = Util.getPageDirection() === 'rtl' ? true : false
 
   const Event = {
     HIDE             : `hide${EVENT_KEY}`,
@@ -61,14 +62,14 @@ const Dropdown = (($) => {
   }
 
   const AttachmentMap = {
-    TOP       : 'top-start',
-    TOPEND    : 'top-end',
-    BOTTOM    : 'bottom-start',
-    BOTTOMEND : 'bottom-end',
-    RIGHT     : 'right-start',
-    RIGHTEND  : 'right-end',
-    LEFT      : 'left-start',
-    LEFTEND   : 'left-end'
+    [RTL ? 'TOPEND' : 'TOP']        : 'top-start',
+    [RTL ? 'TOP' : 'TOPEND']        : 'top-end',
+    [RTL ? 'BOTTOMEND' : 'BOTTOM']  : 'bottom-start',
+    [RTL ? 'BOTTOM' : 'BOTTOMEND']  : 'bottom-end',
+    [RTL ? 'LEFT' : 'RIGHT']        : 'right-start',
+    [RTL ? 'LEFTEND' : 'RIGHTEND']  : 'right-end',
+    [RTL ? 'RIGHT' : 'LEFT']        : 'left-start',
+    [RTL ? 'RIGHTEND' : 'LEFTEND']  : 'left-end'
   }
 
   const Default = {

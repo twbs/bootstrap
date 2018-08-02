@@ -67,6 +67,13 @@ const Util = (($) => {
 
     TRANSITION_END: 'bsTransitionEnd',
 
+    getPageDirection() {
+      let htmlElement = document.getElementsByTagName('html')[0];
+      let direction = htmlElement.dir || 'ltr';
+
+      return direction;
+    },
+
     getUID(prefix) {
       do {
         // eslint-disable-next-line no-bitwise
