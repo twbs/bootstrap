@@ -19,7 +19,7 @@ toc: true
 {% endcapture %}
 {% include example.html content=example %}
 
-Contextual text classes also work well on anchors with the provided hover and focus states. **Note that the `.text-white` and `.text-muted` class has no link styling.**
+Contextual text classes also work well on anchors with the provided hover and focus states. **Note that the `.text-white` and `.text-muted` class has no additional link styling beyond underline.**
 
 {% capture example %}
 {% for color in site.data.theme-colors %}
