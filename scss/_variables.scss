@@ -279,32 +279,43 @@ $headings-font-weight:        500 !default;
 $headings-line-height:        1.2 !default;
 $headings-color:              inherit !default;
 
+$display1-size:               6rem !default;
+$display2-size:               5.5rem !default;
+$display3-size:               4.5rem !default;
+$display4-size:               3.5rem !default;
+$display1-weight:             300 !default;
+$display2-weight:             300 !default;
+$display3-weight:             300 !default;
+$display4-weight:             300 !default;
+$display-line-height:         $headings-line-height !default;
 
 $displays: () !default;
-// stylelint-disable
-$displays: map-merge((
-  1: (
-    font-size: 6rem,
-    font-weight: 300,
-    line-height: $headings-line-height
+// stylelint-disable-next-line scss/dollar-variable-default
+$displays: map-merge(
+  (
+    1: (
+      font-size: $display1-size,
+      font-weight: $display1-weight,
+      line-height: $displays-line-height
+    ),
+    2: (
+      font-size: $display2-size,
+      font-weight: $display2-weight,
+      line-height: $displays-line-height
+    ),
+    3: (
+      font-size: $display3-size,
+      font-weight: $display3-weight,
+      line-height: $displays-line-height
+    ),
+    4: (
+      font-size: $display4-size,
+      font-weight: $display4-weight,
+      line-height: $displays-line-height
+    )
   ),
-  2: (
-    font-size: 5.5rem,
-    font-weight: 300,
-    line-height: $headings-line-height
-  ),
-  3: (
-    font-size: 4.5rem,
-    font-weight: 300,
-    line-height: $headings-line-height
-  ),
-  4: (
-    font-size: 3.5rem,
-    font-weight: 300,
-    line-height: $headings-line-height
-  )
-), $displays);
-// stylelint-enable
+  $displays
+);
 
 $lead-font-size:              ($font-size-base * 1.25) !default;
 $lead-font-weight:            300 !default;
