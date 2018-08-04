@@ -3,7 +3,7 @@ import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.1.1): collapse.js
+ * Bootstrap (v4.1.3): collapse.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -16,7 +16,7 @@ const Collapse = (($) => {
    */
 
   const NAME                = 'collapse'
-  const VERSION             = '4.1.1'
+  const VERSION             = '4.1.3'
   const DATA_KEY            = 'bs.collapse'
   const EVENT_KEY           = `.${DATA_KEY}`
   const DATA_API_KEY        = '.data-api'
@@ -68,15 +68,18 @@ const Collapse = (($) => {
       this._isTransitioning = false
       this._element         = element
       this._config          = this._getConfig(config)
-      this._triggerArray    = $.makeArray($(
+      this._triggerArray    = $.makeArray(document.querySelectorAll(
         `[data-toggle="collapse"][href="#${element.id}"],` +
         `[data-toggle="collapse"][data-target="#${element.id}"]`
       ))
-      const tabToggles = $(Selector.DATA_TOGGLE)
-      for (let i = 0; i < tabToggles.length; i++) {
-        const elem = tabToggles[i]
+      const toggleList = [].slice.call(document.querySelectorAll(Selector.DATA_TOGGLE))
+      for (let i = 0, len = toggleList.length; i < len; i++) {
+        const elem = toggleList[i]
         const selector = Util.getSelectorFromElement(elem)
-        if (selector !== null && $(selector).filter(element).length > 0) {
+        const filterElement = [].slice.call(document.querySelectorAll(selector))
+          .filter((foundElem) => foundElem === element)
+
+        if (selector !== null && filterElement.length > 0) {
           this._selector = selector
           this._triggerArray.push(elem)
         }
@@ -123,11 +126,9 @@ const Collapse = (($) => {
       let activesData
 
       if (this._parent) {
-        actives = $.makeArray(
-          $(this._parent)
-            .find(Selector.ACTIVES)
-            .filter(`[data-parent="${this._config.parent}"]`)
-        )
+        actives = [].slice.call(this._parent.querySelectorAll(Selector.ACTIVES))
+          .filter((elem) => elem.getAttribute('data-parent') === this._config.parent)
+
         if (actives.length === 0) {
           actives = null
         }
@@ -161,7 +162,7 @@ const Collapse = (($) => {
 
       this._element.style[dimension] = 0
 
-      if (this._triggerArray.length > 0) {
+      if (this._triggerArray.length) {
         $(this._triggerArray)
           .removeClass(ClassName.COLLAPSED)
           .attr('aria-expanded', true)
@@ -216,12 +217,13 @@ const Collapse = (($) => {
         .removeClass(ClassName.COLLAPSE)
         .removeClass(ClassName.SHOW)
 
-      if (this._triggerArray.length > 0) {
-        for (let i = 0; i < this._triggerArray.length; i++) {
+      const triggerArrayLength = this._triggerArray.length
+      if (triggerArrayLength > 0) {
+        for (let i = 0; i < triggerArrayLength; i++) {
           const trigger = this._triggerArray[i]
           const selector = Util.getSelectorFromElement(trigger)
           if (selector !== null) {
-            const $elem = $(selector)
+            const $elem = $([].slice.call(document.querySelectorAll(selector)))
             if (!$elem.hasClass(ClassName.SHOW)) {
               $(trigger).addClass(ClassName.COLLAPSED)
                 .attr('aria-expanded', false)
@@ -289,13 +291,14 @@ const Collapse = (($) => {
           parent = this._config.parent[0]
         }
       } else {
-        parent = $(this._config.parent)[0]
+        parent = document.querySelector(this._config.parent)
       }
 
       const selector =
         `[data-toggle="collapse"][data-parent="${this._config.parent}"]`
 
-      $(parent).find(selector).each((i, element) => {
+      const children = [].slice.call(parent.querySelectorAll(selector))
+      $(children).each((i, element) => {
         this._addAriaAndCollapsedClass(
           Collapse._getTargetFromElement(element),
           [element]
@@ -309,7 +312,7 @@ const Collapse = (($) => {
       if (element) {
         const isOpen = $(element).hasClass(ClassName.SHOW)
 
-        if (triggerArray.length > 0) {
+        if (triggerArray.length) {
           $(triggerArray)
             .toggleClass(ClassName.COLLAPSED, !isOpen)
             .attr('aria-expanded', isOpen)
@@ -321,7 +324,7 @@ const Collapse = (($) => {
 
     static _getTargetFromElement(element) {
       const selector = Util.getSelectorFromElement(element)
-      return selector ? $(selector)[0] : null
+      return selector ? document.querySelector(selector) : null
     }
 
     static _jQueryInterface(config) {
@@ -367,7 +370,8 @@ const Collapse = (($) => {
 
     const $trigger = $(this)
     const selector = Util.getSelectorFromElement(this)
-    $(selector).each(function () {
+    const selectors = [].slice.call(document.querySelectorAll(selector))
+    $(selectors).each(function () {
       const $target = $(this)
       const data    = $target.data(DATA_KEY)
       const config  = data ? 'toggle' : $trigger.data()

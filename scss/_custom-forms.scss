@@ -10,7 +10,7 @@
 .custom-control {
   position: relative;
   display: block;
-  min-height: (1rem * $line-height-base);
+  min-height: ($font-size-base * $line-height-base);
   padding-left: $custom-control-gutter;
 }
 
@@ -63,7 +63,7 @@
   // Background-color and (when enabled) gradient
   &::before {
     position: absolute;
-    top: (($line-height-base - $custom-control-indicator-size) / 2);
+    top: (($font-size-base * $line-height-base - $custom-control-indicator-size) / 2);
     left: -$custom-control-gutter;
     display: block;
     width: $custom-control-indicator-size;
@@ -78,7 +78,7 @@
   // Foreground (icon)
   &::after {
     position: absolute;
-    top: (($line-height-base - $custom-control-indicator-size) / 2);
+    top: (($font-size-base * $line-height-base - $custom-control-indicator-size) / 2);
     left: -$custom-control-gutter;
     display: block;
     width: $custom-control-indicator-size;
@@ -169,20 +169,25 @@
   line-height: $custom-select-line-height;
   color: $custom-select-color;
   vertical-align: middle;
-  background: $custom-select-bg $custom-select-indicator no-repeat right $custom-select-padding-x center;
-  background-size: $custom-select-bg-size;
+  background: $custom-select-background;
+  background-color: $custom-select-bg;
   border: $custom-select-border-width solid $custom-select-border-color;
   @if $enable-rounded {
     border-radius: $custom-select-border-radius;
   } @else {
     border-radius: 0;
   }
+  @include box-shadow($custom-select-box-shadow);
   appearance: none;
 
   &:focus {
     border-color: $custom-select-focus-border-color;
     outline: 0;
-    box-shadow: $custom-select-focus-box-shadow;
+    @if $enable-shadows {
+      box-shadow: $custom-select-box-shadow, $custom-select-focus-box-shadow;
+    } @else {
+      box-shadow: $custom-select-focus-box-shadow;
+    }
 
     &::-ms-value {
       // For visual consistency with other platforms/browsers,
@@ -215,15 +220,17 @@
 
 .custom-select-sm {
   height: $custom-select-height-sm;
-  padding-top: $custom-select-padding-y;
-  padding-bottom: $custom-select-padding-y;
+  padding-top: $custom-select-padding-y-sm;
+  padding-bottom: $custom-select-padding-y-sm;
+  padding-left: $custom-select-padding-x-sm;
   font-size: $custom-select-font-size-sm;
 }
 
 .custom-select-lg {
   height: $custom-select-height-lg;
-  padding-top: $custom-select-padding-y;
-  padding-bottom: $custom-select-padding-y;
+  padding-top: $custom-select-padding-y-lg;
+  padding-bottom: $custom-select-padding-y-lg;
+  padding-left: $custom-select-padding-x-lg;
   font-size: $custom-select-font-size-lg;
 }
 
@@ -255,6 +262,10 @@
     &::after {
       border-color: $custom-file-focus-border-color;
     }
+  }
+
+  &:disabled ~ .custom-file-label {
+    background-color: $custom-file-disabled-bg;
   }
 
   @each $lang, $value in $custom-file-text {
@@ -305,12 +316,19 @@
 
 .custom-range {
   width: 100%;
-  padding-left: 0; // Firefox specific
+  height: calc(#{$custom-range-thumb-height} + #{$custom-range-thumb-focus-box-shadow-width * 2});
+  padding: 0; // Need to reset padding
   background-color: transparent;
   appearance: none;
 
   &:focus {
     outline: none;
+
+    // Pseudo-elements must be split across multiple rulesets to have an affect.
+    // No box-shadow() mixin for focus accessibility.
+    &::-webkit-slider-thumb { box-shadow: $custom-range-thumb-focus-box-shadow; }
+    &::-moz-range-thumb     { box-shadow: $custom-range-thumb-focus-box-shadow; }
+    &::-ms-thumb            { box-shadow: $custom-range-thumb-focus-box-shadow; }
   }
 
   &::-moz-focus-outer {
@@ -320,17 +338,13 @@
   &::-webkit-slider-thumb {
     width: $custom-range-thumb-width;
     height: $custom-range-thumb-height;
-    margin-top: -($custom-range-thumb-width * .25); // Webkit specific?
+    margin-top: (($custom-range-track-height - $custom-range-thumb-height) / 2); // Webkit specific
     @include gradient-bg($custom-range-thumb-bg);
     border: $custom-range-thumb-border;
     @include border-radius($custom-range-thumb-border-radius);
     @include box-shadow($custom-range-thumb-box-shadow);
+    @include transition($custom-forms-transition);
     appearance: none;
-
-    &:focus {
-      outline: none;
-      box-shadow: $custom-range-thumb-focus-box-shadow; // No mixin for focus accessibility
-    }
 
     &:active {
       @include gradient-bg($custom-range-thumb-active-bg);
@@ -355,12 +369,8 @@
     border: $custom-range-thumb-border;
     @include border-radius($custom-range-thumb-border-radius);
     @include box-shadow($custom-range-thumb-box-shadow);
+    @include transition($custom-forms-transition);
     appearance: none;
-
-    &:focus {
-      outline: none;
-      box-shadow: $custom-range-thumb-focus-box-shadow; // No mixin for focus accessibility
-    }
 
     &:active {
       @include gradient-bg($custom-range-thumb-active-bg);
@@ -381,16 +391,15 @@
   &::-ms-thumb {
     width: $custom-range-thumb-width;
     height: $custom-range-thumb-height;
+    margin-top: 0; // Edge specific
+    margin-right: $custom-range-thumb-focus-box-shadow-width; // Workaround that overflowed box-shadow is hidden.
+    margin-left: $custom-range-thumb-focus-box-shadow-width;  // Workaround that overflowed box-shadow is hidden.
     @include gradient-bg($custom-range-thumb-bg);
     border: $custom-range-thumb-border;
     @include border-radius($custom-range-thumb-border-radius);
     @include box-shadow($custom-range-thumb-box-shadow);
+    @include transition($custom-forms-transition);
     appearance: none;
-
-    &:focus {
-      outline: none;
-      box-shadow: $custom-range-thumb-focus-box-shadow; // No mixin for focus accessibility
-    }
 
     &:active {
       @include gradient-bg($custom-range-thumb-active-bg);
@@ -418,4 +427,32 @@
     background-color: $custom-range-track-bg;
     @include border-radius($custom-range-track-border-radius);
   }
+
+  &:disabled {
+    &::-webkit-slider-thumb {
+      background-color: $custom-range-thumb-disabled-bg;
+    }
+
+    &::-webkit-slider-runnable-track {
+      cursor: default;
+    }
+
+    &::-moz-range-thumb {
+      background-color: $custom-range-thumb-disabled-bg;
+    }
+
+    &::-moz-range-track {
+      cursor: default;
+    }
+
+    &::-ms-thumb {
+      background-color: $custom-range-thumb-disabled-bg;
+    }
+  }
+}
+
+.custom-control-label::before,
+.custom-file-label,
+.custom-select {
+  @include transition($custom-forms-transition);
 }
