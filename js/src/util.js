@@ -68,10 +68,10 @@ const Util = (($) => {
     TRANSITION_END: 'bsTransitionEnd',
 
     getPageDirection() {
-      let htmlElement = document.getElementsByTagName('html')[0];
-      let direction = htmlElement.dir || 'ltr';
+      const htmlElement = document.getElementsByTagName('html')[0]
+      const direction = htmlElement.dir || 'ltr'
 
-      return direction;
+      return direction
     },
 
     getUID(prefix) {
