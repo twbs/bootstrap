@@ -86,7 +86,7 @@
 }
 
 
-// Set the `left` and `right` directions for internationilization based on $dir varibale being set to either `rtl` or 'ltr`
+// Set the `left` and `right` directions for internationalization based on $dir variable being set to either `rtl` or 'ltr`
 @function set-dir($primary: left) {
   @if $dir == rtl {
     @if $primary == right {
