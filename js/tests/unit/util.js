@@ -83,6 +83,11 @@ $(function () {
     assert.strictEqual(Util.getTransitionDurationFromElement($div[0]), 0)
   })
 
+  QUnit.test('', function (assert) {
+    assert.expect(1);
+    assert.ok(Util.getPageDirection());
+  })
+
   QUnit.test('Util.getUID should generate a new id uniq', function (assert) {
     assert.expect(2)
     var id = Util.getUID('test')
