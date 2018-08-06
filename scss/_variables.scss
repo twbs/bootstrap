@@ -4,7 +4,7 @@
 // consistent naming. Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.
 
 // Internationalisation
-$dir: rtl !default;
+$dir: ltr !default;
 $right: set-dir(right) !default;
 $left: set-dir(left) !default;
 
@@ -918,7 +918,7 @@ $breadcrumb-margin-bottom:          1rem !default;
 $breadcrumb-bg:                     $gray-200 !default;
 $breadcrumb-divider-color:          $gray-600 !default;
 $breadcrumb-active-color:           $gray-600 !default;
-$breadcrumb-divider:                quote("/") !default;
+$breadcrumb-divider:                if($dir == ltr, quote("/"), quote("\005C")) !default;
 
 $breadcrumb-border-radius:          $border-radius !default;
 

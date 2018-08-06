@@ -24,6 +24,10 @@
   box-sizing: border-box; // 1
 }
 
+* {
+  direction: $dir;
+}
+
 html {
   font-family: sans-serif; // 2
   line-height: 1.15; // 3

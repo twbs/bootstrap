@@ -93,17 +93,15 @@
 
 // When enabled Popper.js, reset basic dropdown position
 // stylelint-disable no-duplicate-selectors
-// @if $dir == ltr {
-  .dropdown-menu {
-    &[x-placement^="top"],
-    &[x-placement^="right"],
-    &[x-placement^="bottom"],
-    &[x-placement^="left"] {
-      #{$right}: auto;
-      bottom: auto;
-    }
+.dropdown-menu {
+  &[x-placement^="top"],
+  &[x-placement^="right"],
+  &[x-placement^="bottom"],
+  &[x-placement^="left"] {
+    #{$right}: auto;
+    bottom: auto;
   }
-// }
+}
 // stylelint-enable no-duplicate-selectors
 
 // Dividers (basically an `<hr>`) within the dropdown

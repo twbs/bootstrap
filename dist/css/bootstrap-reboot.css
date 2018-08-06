@@ -11,6 +11,10 @@
   box-sizing: border-box;
 }
 
+* {
+  direction: ltr;
+}
+
 html {
   font-family: sans-serif;
   line-height: 1.15;
@@ -35,7 +39,7 @@ body {
   font-weight: 400;
   line-height: 1.5;
   color: #212529;
-  text-align: right;
+  text-align: left;
   background-color: #fff;
 }
 
@@ -62,6 +66,7 @@ p {
 abbr[title],
 abbr[data-original-title] {
   text-decoration: underline;
+  -webkit-text-decoration: underline dotted;
   text-decoration: underline dotted;
   cursor: help;
   border-bottom: 0;
@@ -93,7 +98,7 @@ dt {
 
 dd {
   margin-bottom: .5rem;
-  margin-right: 0;
+  margin-left: 0;
 }
 
 blockquote {
@@ -192,7 +197,7 @@ caption {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
   color: #6c757d;
-  text-align: right;
+  text-align: left;
   caption-side: bottom;
 }
 
@@ -327,5 +332,4 @@ template {
 [hidden] {
   display: none !important;
 }
-
 /*# sourceMappingURL=bootstrap-reboot.css.map */
