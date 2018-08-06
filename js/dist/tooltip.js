@@ -80,7 +80,7 @@
     var JQUERY_NO_CONFLICT = $$$1.fn[NAME];
     var CLASS_PREFIX = 'bs-tooltip';
     var BSCLS_PREFIX_REGEX = new RegExp("(^|\\s)" + CLASS_PREFIX + "\\S+", 'g');
-    var RTL = Util.getPageDirection() === 'rtl' ? true : false;
+    var RTL = Util.getPageDirection() === 'rtl';
     var DefaultType = {
       animation: 'boolean',
       template: 'string',

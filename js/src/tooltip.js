@@ -23,7 +23,7 @@ const Tooltip = (($) => {
   const JQUERY_NO_CONFLICT = $.fn[NAME]
   const CLASS_PREFIX       = 'bs-tooltip'
   const BSCLS_PREFIX_REGEX = new RegExp(`(^|\\s)${CLASS_PREFIX}\\S+`, 'g')
-  const RTL                = Util.getPageDirection() === 'rtl' ? true : false
+  const RTL                = Util.getPageDirection() === 'rtl'
 
   const DefaultType = {
     animation           : 'boolean',

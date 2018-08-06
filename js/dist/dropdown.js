@@ -92,7 +92,7 @@
     var RIGHT_MOUSE_BUTTON_WHICH = 3; // MouseEvent.which value for the right button (assuming a right-handed mouse)
 
     var REGEXP_KEYDOWN = new RegExp(ARROW_UP_KEYCODE + "|" + ARROW_DOWN_KEYCODE + "|" + ESCAPE_KEYCODE);
-    var RTL = Util.getPageDirection() === 'rtl' ? true : false;
+    var RTL = Util.getPageDirection() === 'rtl';
     var Event = {
       HIDE: "hide" + EVENT_KEY,
       HIDDEN: "hidden" + EVENT_KEY,
