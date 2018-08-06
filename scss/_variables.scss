@@ -297,22 +297,22 @@ $displays: map-merge(
     1: (
       font-size: $display1-size,
       font-weight: $display1-weight,
-      line-height: $displays-line-height
+      line-height: $display-line-height
     ),
     2: (
       font-size: $display2-size,
       font-weight: $display2-weight,
-      line-height: $displays-line-height
+      line-height: $display-line-height
     ),
     3: (
       font-size: $display3-size,
       font-weight: $display3-weight,
-      line-height: $displays-line-height
+      line-height: $display-line-height
     ),
     4: (
       font-size: $display4-size,
       font-weight: $display4-weight,
-      line-height: $displays-line-height
+      line-height: $display-line-height
     )
   ),
   $displays
