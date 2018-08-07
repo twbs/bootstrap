@@ -66,8 +66,6 @@
    */
 
   var Tooltip = function ($$$1) {
-    var _AttachmentMap;
-
     /**
      * ------------------------------------------------------------------------
      * Constants
@@ -80,7 +78,6 @@
     var JQUERY_NO_CONFLICT = $$$1.fn[NAME];
     var CLASS_PREFIX = 'bs-tooltip';
     var BSCLS_PREFIX_REGEX = new RegExp("(^|\\s)" + CLASS_PREFIX + "\\S+", 'g');
-    var RTL = Util.getPageDirection() === 'rtl';
     var DefaultType = {
       animation: 'boolean',
       template: 'string',
@@ -95,10 +92,13 @@
       fallbackPlacement: '(string|array)',
       boundary: '(string|element)'
     };
-    var AttachmentMap = (_AttachmentMap = {
+    var AttachmentMap = {
       AUTO: 'auto',
-      TOP: 'top'
-    }, _AttachmentMap[RTL ? 'LEFT' : 'RIGHT'] = 'right', _AttachmentMap.BOTTOM = 'bottom', _AttachmentMap[RTL ? 'RIGHT' : 'LEFT'] = 'left', _AttachmentMap);
+      TOP: 'top',
+      RIGHT: 'right',
+      BOTTOM: 'bottom',
+      LEFT: 'left'
+    };
     var Default = {
       animation: true,
       template: '<div class="tooltip" role="tooltip">' + '<div class="arrow"></div>' + '<div class="tooltip-inner"></div></div>',
