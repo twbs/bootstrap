@@ -68,7 +68,7 @@ const Util = (($) => {
     TRANSITION_END: 'bsTransitionEnd',
 
     getPageDirection() {
-      const htmlElement = document.getElementsByTagName('html')[0]
+      const htmlElement = document.documentElement
       const direction = htmlElement.dir || 'ltr'
 
       return direction
