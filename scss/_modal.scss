@@ -46,7 +46,7 @@
     transform: $modal-fade-transform;
   }
   .modal.show & {
-    transform: translate(0, 0);
+    transform: $modal-show-transform;
   }
 }
 
