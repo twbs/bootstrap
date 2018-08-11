@@ -84,7 +84,7 @@ const Util = (($) => {
       }
 
       const validSelector = selector
-      if (selector.charAt(0) === '#') {
+      if (selector.charAt(0) === '#' && selector.indexOf(',') === -1) {
         selector = selector.substr(1)
         method = 'getElementById'
       }
