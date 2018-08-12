@@ -12,8 +12,6 @@ Win Opera 15+ is not currently supported by Sauce Labs
 iOS Chrome is not currently supported by Sauce Labs
 */
 
-'use strict'
-
 const path = require('path')
 const JSUnitSaucelabs = require('jsunitsaucelabs')
 
