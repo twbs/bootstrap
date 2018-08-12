@@ -483,7 +483,7 @@ const Dropdown = (($) => {
 
   $.fn[NAME] = Dropdown._jQueryInterface
   $.fn[NAME].Constructor = Dropdown
-  $.fn[NAME].noConflict = function () {
+  $.fn[NAME].noConflict = () => {
     $.fn[NAME] = JQUERY_NO_CONFLICT
     return Dropdown._jQueryInterface
   }
