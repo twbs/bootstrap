@@ -32,6 +32,19 @@ $(function () {
     assert.ok(spy.called)
   })
 
+  QUnit.test('Util.getSelectorFromElement should use querySelector when there are multi ids', function (assert) {
+    assert.expect(2)
+
+    var spy = sinon.spy(document, 'querySelector')
+
+    var $el = $('<div data-target="#j7, #j8"></div>').appendTo($('#qunit-fixture'))
+    $('<div id="j7" />').appendTo($('#qunit-fixture'))
+    $('<div id="j8" />').appendTo($('#qunit-fixture'))
+
+    assert.strictEqual(Util.getSelectorFromElement($el[0]), '#j7, #j8')
+    assert.ok(spy.called)
+  })
+
   QUnit.test('Util.typeCheckConfig should thrown an error when a bad config is passed', function (assert) {
     assert.expect(1)
     var namePlugin = 'collapse'

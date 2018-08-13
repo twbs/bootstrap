@@ -10,7 +10,7 @@ module.exports = {
     ]
   ],
   plugins: [
-    '@babel/proposal-object-rest-spread'
+    '@babel/plugin-proposal-object-rest-spread'
   ],
   env: {
     test: {

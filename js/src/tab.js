@@ -253,7 +253,7 @@ const Tab = (($) => {
 
   $.fn[NAME] = Tab._jQueryInterface
   $.fn[NAME].Constructor = Tab
-  $.fn[NAME].noConflict = function () {
+  $.fn[NAME].noConflict = () => {
     $.fn[NAME] = JQUERY_NO_CONFLICT
     return Tab._jQueryInterface
   }
