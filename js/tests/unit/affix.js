@@ -104,4 +104,19 @@ $(function () {
       }, 250)
     }, 250)
   })
+
+  QUnit.test('should raise exception to avoid xss on target', function (assert) {
+    assert.expect(1)
+    assert.throws(function () {
+
+      var templateHTML = '<div id="affixTarget"></div>'
+      $(templateHTML).appendTo(document.body)
+
+      $('#affixTarget').bootstrapAffix({
+        target: '<img src=1 onerror=\'alert(0)\'>'
+      })
+
+    },  new Error('Syntax error, unrecognized expression: <img src=1 onerror=\'alert(0)\'>'))
+  })
+
 })
