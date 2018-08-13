@@ -99,9 +99,9 @@
   "devDependencies": {
     "@babel/cli": "7.0.0-rc.1",
     "@babel/core": "7.0.0-rc.1",
-    "@babel/plugin-proposal-object-rest-spread": "^7.0.0-rc.1",
+    "@babel/plugin-proposal-object-rest-spread": "7.0.0-rc.1",
     "@babel/preset-env": "7.0.0-rc.1",
-    "autoprefixer": "^9.1.0",
+    "autoprefixer": "^9.1.1",
     "babel-eslint": "9.0.0-beta.3",
     "babel-plugin-istanbul": "^5.0.1",
     "broken-link-checker": "^0.7.8",
