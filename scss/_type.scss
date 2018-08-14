@@ -120,6 +120,6 @@ mark,
   color: $blockquote-small-color;
 
   &::before {
-    content: "\2014 \00A0"; // em dash, nbsp
+    content: "\2014\00A0"; // em dash, nbsp
   }
 }
