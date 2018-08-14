@@ -22,13 +22,13 @@
   }
   z-index: $zindex-dropdown;
   display: none; // none by default, but block on "open" of the menu
-  float: $left;
+  float: $start;
   min-width: $dropdown-min-width;
   padding: $dropdown-padding-y 0;
   margin: $dropdown-spacer 0 0; // override default ul
   font-size: $font-size-base; // Redeclare because nesting can cause inheritance issues
   color: $body-color;
-  text-align: $left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
+  text-align: $start; // Ensures proper alignment if parent has it changed (e.g., modal footer)
   list-style: none;
   background-color: $dropdown-bg;
   background-clip: padding-box;
@@ -38,8 +38,8 @@
 }
 
 .dropdown-menu-right {
-  #{$right}: 0;
-  #{$left}: auto;
+  #{$end}: 0;
+  #{$start}: auto;
 }
 
 // Allow for dropdowns to go bottom up (aka, dropup-menu)
@@ -60,14 +60,14 @@
 .dropright {
   .dropdown-menu {
     top: 0;
-    #{$right}: auto;
-    #{$left}: 100%;
+    #{$end}: auto;
+    #{$start}: 100%;
     margin-top: 0;
-    margin-#{$left}: $dropdown-spacer;
+    margin-#{$start}: $dropdown-spacer;
   }
 
   .dropdown-toggle {
-    @include caret($right);
+    @include caret($end);
     &::after {
       vertical-align: 0;
     }
@@ -77,14 +77,14 @@
 .dropleft {
   .dropdown-menu {
     top: 0;
-    #{$right}: 100%;
-    #{$left}: auto;
+    #{$end}: 100%;
+    #{$start}: auto;
     margin-top: 0;
-    margin-#{$right}: $dropdown-spacer;
+    margin-#{$end}: $dropdown-spacer;
   }
 
   .dropdown-toggle {
-    @include caret($left);
+    @include caret($start);
     &::before {
       vertical-align: 0;
     }
@@ -98,7 +98,7 @@
   &[x-placement^="right"],
   &[x-placement^="bottom"],
   &[x-placement^="left"] {
-    #{$right}: auto;
+    #{$end}: auto;
     bottom: auto;
   }
 }

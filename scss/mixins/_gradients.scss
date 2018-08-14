@@ -12,7 +12,7 @@
 //
 // Creates two color stops, start and end, by specifying a color and position for each color stop.
 @mixin gradient-x($start-color: $gray-700, $end-color: $gray-800, $start-percent: 0%, $end-percent: 100%) {
-  background-image: linear-gradient(to $right, $start-color $start-percent, $end-color $end-percent); // sass-lint:disable-line function-linear-gradient-no-nonstandard-direction
+  background-image: linear-gradient(to $end, $start-color $start-percent, $end-color $end-percent); // sass-lint:disable-line function-linear-gradient-no-nonstandard-direction
   background-repeat: repeat-x;
 }
 

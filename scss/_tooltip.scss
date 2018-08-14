@@ -47,14 +47,14 @@
   padding: 0 $tooltip-arrow-height;
 
   .arrow {
-    #{$left}: 0;
+    #{$start}: 0;
     width: $tooltip-arrow-height;
     height: $tooltip-arrow-width;
 
     &::before {
-      #{$right}: 0;
+      #{$end}: 0;
       border-width: ($tooltip-arrow-width / 2) $tooltip-arrow-height ($tooltip-arrow-width / 2) 0;
-      border-#{$right}-color: $tooltip-arrow-color;
+      border-#{$end}-color: $tooltip-arrow-color;
     }
   }
 }
@@ -77,14 +77,14 @@
   padding: 0 $tooltip-arrow-height;
 
   .arrow {
-    #{$right}: 0;
+    #{$end}: 0;
     width: $tooltip-arrow-height;
     height: $tooltip-arrow-width;
 
     &::before {
-      #{$left}: 0;
+      #{$start}: 0;
       border-width: ($tooltip-arrow-width / 2) 0 ($tooltip-arrow-width / 2) $tooltip-arrow-height;
-      border-#{$left}-color: $tooltip-arrow-color;
+      border-#{$start}-color: $tooltip-arrow-color;
     }
   }
 }

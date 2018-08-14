@@ -11,12 +11,12 @@
   position: relative;
   display: block;
   min-height: ($font-size-base * $line-height-base);
-  padding-#{$left}: $custom-control-gutter;
+  padding-#{$start}: $custom-control-gutter;
 }
 
 .custom-control-inline {
   display: inline-flex;
-  margin-#{$right}: $custom-control-spacer-x;
+  margin-#{$end}: $custom-control-spacer-x;
 }
 
 .custom-control-input {
@@ -64,7 +64,7 @@
   &::before {
     position: absolute;
     top: (($font-size-base * $line-height-base - $custom-control-indicator-size) / 2);
-    #{$left}: -$custom-control-gutter;
+    #{$start}: -$custom-control-gutter;
     display: block;
     width: $custom-control-indicator-size;
     height: $custom-control-indicator-size;
@@ -79,7 +79,7 @@
   &::after {
     position: absolute;
     top: (($font-size-base * $line-height-base - $custom-control-indicator-size) / 2);
-    #{$left}: -$custom-control-gutter;
+    #{$start}: -$custom-control-gutter;
     display: block;
     width: $custom-control-indicator-size;
     height: $custom-control-indicator-size;

@@ -133,13 +133,13 @@
   }
 }
 .carousel-control-prev {
-  #{$left}: 0;
+  #{$start}: 0;
   @if $enable-gradients {
     background: linear-gradient(90deg, rgba($black, .25), rgba($black, .001));
   }
 }
 .carousel-control-next {
-  #{$right}: 0;
+  #{$end}: 0;
   @if $enable-gradients {
     background: linear-gradient(270deg, rgba($black, .25), rgba($black, .001));
   }
@@ -169,16 +169,16 @@
 
 .carousel-indicators {
   position: absolute;
-  #{$right}: 0;
+  #{$end}: 0;
   bottom: 10px;
-  #{$left}: 0;
+  #{$start}: 0;
   z-index: 15;
   display: flex;
   justify-content: center;
-  padding-#{$left}: 0; // override <ol> default
+  padding-#{$start}: 0; // override <ol> default
   // Use the .carousel-control's width as margin so we don't overlay those
-  margin-#{$right}: $carousel-control-width;
-  margin-#{$left}: $carousel-control-width;
+  margin-#{$end}: $carousel-control-width;
+  margin-#{$start}: $carousel-control-width;
   list-style: none;
 
   li {
@@ -186,8 +186,8 @@
     flex: 0 1 auto;
     width: $carousel-indicator-width;
     height: $carousel-indicator-height;
-    margin-#{$right}: $carousel-indicator-spacer;
-    margin-#{$left}: $carousel-indicator-spacer;
+    margin-#{$end}: $carousel-indicator-spacer;
+    margin-#{$start}: $carousel-indicator-spacer;
     text-indent: -999px;
     cursor: pointer;
     background-color: $carousel-indicator-active-bg;
@@ -198,7 +198,7 @@
     &::before {
       position: absolute;
       top: -10px;
-      #{$left}: 0;
+      #{$start}: 0;
       display: inline-block;
       width: 100%;
       height: 10px;
@@ -207,7 +207,7 @@
     &::after {
       position: absolute;
       bottom: -10px;
-      #{$left}: 0;
+      #{$start}: 0;
       display: inline-block;
       width: 100%;
       height: 10px;
@@ -227,9 +227,9 @@
 
 .carousel-caption {
   position: absolute;
-  #{$right}: ((100% - $carousel-caption-width) / 2);
+  #{$end}: ((100% - $carousel-caption-width) / 2);
   bottom: 20px;
-  #{$left}: ((100% - $carousel-caption-width) / 2);
+  #{$start}: ((100% - $carousel-caption-width) / 2);
   z-index: 10;
   padding-top: 20px;
   padding-bottom: 20px;
