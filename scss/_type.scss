@@ -116,7 +116,7 @@ mark,
 
 .blockquote-footer {
   display: block;
-  font-size: 80%; // back to default font-size
+  font-size: $blockquote-small-font-size;
   color: $blockquote-small-color;
 
   &::before {
