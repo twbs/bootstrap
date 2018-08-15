@@ -8,10 +8,22 @@
   @include media-breakpoint-up($breakpoint) {
     $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
-    .flex#{$infix}-row            { flex-direction: row !important; }
-    .flex#{$infix}-column         { flex-direction: column !important; }
-    .flex#{$infix}-row-reverse    { flex-direction: row-reverse !important; }
-    .flex#{$infix}-column-reverse { flex-direction: column-reverse !important; }
+    .flex#{$infix}-row {
+      display: flex;
+      flex-direction: row !important;
+    }
+    .flex#{$infix}-column {
+      display: flex;
+      flex-direction: column !important;
+    }
+    .flex#{$infix}-row-reverse {
+      display: flex;
+      flex-direction: row-reverse !important;
+    }
+    .flex#{$infix}-column-reverse {
+      display: flex;
+      flex-direction: column-reverse !important;
+    }
 
     .flex#{$infix}-wrap         { flex-wrap: wrap !important; }
     .flex#{$infix}-nowrap       { flex-wrap: nowrap !important; }
