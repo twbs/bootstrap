@@ -37,6 +37,8 @@ Similar to the contextual text color classes, easily set the background of an el
 {% for color in site.data.theme-colors %}
 <div class="p-3 mb-2 bg-{{ color.name }} {% if color.name == "light" or color.name == "warning" %}text-dark{% else %}text-white{% endif %}">.bg-{{ color.name }}</div>{% endfor %}
 <div class="p-3 mb-2 bg-white text-dark">.bg-white</div>
+<div class="p-3 mb-2 bg-black-25 text-white">.bg-black-25</div>
+<div class="p-3 mb-2 bg-white-25 text-dark">.bg-white-25</div>
 <div class="p-3 mb-2 bg-transparent text-dark">.bg-transparent</div>
 {% endcapture %}
 {% include example.html content=example %}
