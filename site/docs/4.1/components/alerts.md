@@ -94,7 +94,7 @@ Note that closing an alert will remove it from the DOM.
 
 ### Methods
 
-You can create an alert instance with the alert constructor for example:
+You can create an alert instance with the alert constructor, for example:
 
 {% highlight js %}
 var myAlert = document.getElementById('myAlert')
@@ -107,7 +107,7 @@ This makes an alert listen for click events on descendant elements which have th
 | --- | --- |
 | `close` | Closes an alert by removing it from the DOM. If the `.fade` and `.show` classes are present on the element, the alert will fade out before it is removed. |
 | `dispose` | Destroys an element's alert. |
-| `_getInstance` | *Static* method which allows you to get the alert instance associate to a DOM element, you can use it like this: `bootstrap.Alert._getInstance(alert)` |
+| `_getInstance` | *Static* method which allows you to get the alert instance associated to a DOM element, you can use it like this: `bootstrap.Alert._getInstance(alert)` |
 
 {% highlight js %}
 var alertNode = document.querySelector('.alert')
