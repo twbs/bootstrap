@@ -9,6 +9,13 @@
   @include img-fluid;
 }
 
+.img-cover {
+  object-fit: cover;
+}
+
+.img-contain {
+  object-fit: contain;
+}
 
 // Image thumbnails
 .img-thumbnail {
