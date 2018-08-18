@@ -188,10 +188,10 @@ const Modal = (($) => {
         const transitionDuration  = Util.getTransitionDurationFromElement(this._element)
 
         $(this._element)
-          .one(Util.TRANSITION_END, (event) => this._hideModal(event))
+          .one(Util.TRANSITION_END, () => this._hideModal(event))
           .emulateTransitionEnd(transitionDuration)
       } else {
-        this._hideModal()
+        this._hideModal(event)
       }
     }
 
@@ -304,16 +304,38 @@ const Modal = (($) => {
       }
     }
 
-    _hideModal() {
+    _hideModal(event) {
       this._element.style.display = 'none'
       this._element.setAttribute('aria-hidden', true)
       this._isTransitioning = false
       this._showBackdrop(() => {
-        $(document.body).removeClass(ClassName.OPEN)
+
+      	if (this._canRemoveOpenClass(event)) {
+          $(document.body).removeClass(ClassName.OPEN)
+        }
+        
         this._resetAdjustments()
         this._resetScrollbar()
         $(this._element).trigger(Event.HIDDEN)
       })
+    }
+
+    _canRemoveOpenClass(event) {
+      if (event) {
+        for (let i = 0; i < event.originalEvent.path.length; i++) {
+          let element = event.originalEvent.path[i]
+          if (element instanceof HTMLElement) {
+            let dismisModal = element.getAttribute("data-dismiss")
+            let dataToggle = element.getAttribute("data-toggle")
+
+            if (dismisModal === "modal" && dataToggle === "modal") {
+              return false
+            }
+          }
+        }
+      }
+
+      return true
     }
 
     _removeBackdrop() {
