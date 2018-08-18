@@ -1269,7 +1269,7 @@ By default, range inputs "snap" to integer values. To change this, you can speci
 ### File browser
 
 {% capture callout %}
-Recommanded plugin to animate custom file input: [bs-custom-file-input](https://www.npmjs.com/package/bs-custom-file-input/)
+Recommended plugin to animate custom file input: [bs-custom-file-input](https://www.npmjs.com/package/bs-custom-file-input)
 {% endcapture %}
 {% include callout.html content=callout type="info" %}
 
