@@ -1321,23 +1321,4 @@ $(function () {
       }
     })
   })
-
-  QUnit.test('should raise exception to avoid xss on data-container', function (assert) {
-    assert.expect(1)
-    assert.throws(function () {
-      $('<button data-toggle="tooltip" data-container="<img src=1 onerror=\'alert(0)\'>" title="Tooltip on right">Tooltip on right</button>')
-        .appendTo('#qunit-fixture')
-        .bootstrapTooltip('show')
-    },  new Error('Syntax error, unrecognized expression: <img src=1 onerror=\'alert(0)\'>'))
-  })
-
-  QUnit.test('should raise exception to avoid xss on data-viewport', function (assert) {
-    assert.expect(1)
-    assert.throws(function () {
-      $('<button data-toggle="tooltip" data-viewport="<img src=1 onerror=\'alert(0)\'>" title="Tooltip on right">Tooltip on right</button>')
-        .appendTo('#qunit-fixture')
-        .bootstrapTooltip('show')
-    },  new Error('Syntax error, unrecognized expression: <img src=1 onerror=\'alert(0)\'>'))
-  })
-
 })

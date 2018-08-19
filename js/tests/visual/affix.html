@@ -54,6 +54,8 @@
 
   <div class="page-header js-page-header">
     <h1>Affix <small>Bootstrap Visual Test</small></h1>
+
+    <div id="affixTarget">Affix target with XSS</div>
   </div>
 
   <div class="col-md-3">
@@ -277,6 +279,14 @@
 <!-- JavaScript Test -->
 <script>
 $(function () {
+  try {
+    $('#affixTarget').bootstrapAffix({
+      target: '<img src=1 onerror=\'alert(0)\'>'
+    })
+  } catch (e) {
+    console.error(e)
+  }
+
   $('.js-affixed-element-top').affix({
     offset: {
       top: $('.js-page-header').outerHeight(true) - 10

@@ -439,15 +439,4 @@ $(function () {
       })
       .bootstrapCollapse('show')
   })
-
-  QUnit.test('should raise exception to avoid xss on data-parent', function (assert) {
-    assert.expect(1)
-    assert.throws(function () {
-      $('<a role="button" data-toggle="collapse" data-parent="<img src=1 onerror=\'alert(0)\'>" href="#collapseThree">')
-        .appendTo('#qunit-fixture')
-        .bootstrapCollapse('show')
-        .trigger('click');
-    },  new Error('Syntax error, unrecognized expression: <img src=1 onerror=\'alert(0)\'>'))
-  })
-
 })

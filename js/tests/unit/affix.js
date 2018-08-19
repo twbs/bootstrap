@@ -26,7 +26,7 @@ $(function () {
 
   QUnit.test('should return jquery collection containing the element', function (assert) {
     assert.expect(2)
-    var $el = $('<div/>')
+    var $el = $('<div/>').appendTo('#qunit-fixture')
     var $affix = $el.bootstrapAffix()
     assert.ok($affix instanceof $, 'returns jquery collection')
     assert.strictEqual($affix[0], $el[0], 'collection contains element')
@@ -104,19 +104,4 @@ $(function () {
       }, 250)
     }, 250)
   })
-
-  QUnit.test('should raise exception to avoid xss on target', function (assert) {
-    assert.expect(1)
-    assert.throws(function () {
-
-      var templateHTML = '<div id="affixTarget"></div>'
-      $(templateHTML).appendTo(document.body)
-
-      $('#affixTarget').bootstrapAffix({
-        target: '<img src=1 onerror=\'alert(0)\'>'
-      })
-
-    },  new Error('Syntax error, unrecognized expression: <img src=1 onerror=\'alert(0)\'>'))
-  })
-
 })
