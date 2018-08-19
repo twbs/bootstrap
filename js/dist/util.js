@@ -79,13 +79,21 @@
       },
       getSelectorFromElement: function getSelectorFromElement(element) {
         var selector = element.getAttribute('data-target');
+        var method = 'querySelector';
 
         if (!selector || selector === '#') {
-          selector = element.getAttribute('href') || '';
+          selector = (element.getAttribute('href') || '').trim();
+        }
+
+        var validSelector = selector;
+
+        if (selector.charAt(0) === '#' && selector.indexOf(',') === -1) {
+          selector = selector.substr(1);
+          method = 'getElementById';
         }
 
         try {
-          return document.querySelector(selector) ? selector : null;
+          return document[method](selector) ? validSelector : null;
         } catch (err) {
           return null;
         }
