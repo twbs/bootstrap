@@ -150,6 +150,8 @@
   overflow: scroll;
 }
 
+.modal-sm { max-width: $modal-sm; }
+
 // Scale up the modal
 @include media-breakpoint-up(sm) {
   // Automatically set modal's width for larger viewports
@@ -176,7 +178,7 @@
 }
 
 @include media-breakpoint-up(lg) {
-  .modal-lg { max-width: $modal-lg; }
+  .modal-lg, .modal-xl { max-width: $modal-lg; }
 }
 
 @include media-breakpoint-up(xl) {
