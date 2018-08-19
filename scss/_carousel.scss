@@ -182,9 +182,10 @@
   list-style: none;
 
   li {
+    box-sizing: content-box;
     flex: 0 1 auto;
     width: $carousel-indicator-width;
-    height: ($carousel-indicator-height + 20px);
+    height: $carousel-indicator-height;
     margin-right: $carousel-indicator-spacer;
     margin-left: $carousel-indicator-spacer;
     text-indent: -999px;
@@ -192,8 +193,8 @@
     background-color: $carousel-indicator-active-bg;
     background-clip: padding-box;
     // Use transparent borders to increase the hit area by 10px on top and bottom.
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
+    border-top: $carousel-indicator-hit-area-height solid transparent;
+    border-bottom: $carousel-indicator-hit-area-height solid transparent;
     opacity: .5;
     @include transition($carousel-indicator-transition);
   }
