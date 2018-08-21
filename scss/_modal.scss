@@ -150,7 +150,6 @@
   overflow: scroll;
 }
 
-.modal-sm { max-width: $modal-sm; }
 
 // Scale up the modal
 @include media-breakpoint-up(sm) {
