@@ -132,6 +132,12 @@ const Toast = (($) => {
 
     dispose() {
       clearTimeout(this._timeout)
+      this._timeout = null
+
+      if (this._element.classList.contains(ClassName.SHOW)) {
+        this._element.classList.remove(ClassName.SHOW)
+      }
+
       $.removeData(this._element, DATA_KEY)
       this._element = null
       this._config  = null

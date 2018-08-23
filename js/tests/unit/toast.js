@@ -153,6 +153,37 @@ $(function () {
     assert.ok(typeof $toast.data('bs.toast') === 'undefined')
   })
 
+  QUnit.test('should allow to destroy toast and hide it before that', function (assert) {
+    assert.expect(4)
+    var done = assert.async()
+
+    var toastHtml =
+      '<div class="toast" data-delay="0" data-autohide="false">' +
+        '<div class="toast-body">' +
+          'a simple toast' +
+        '</div>' +
+      '</div>'
+
+    var $toast = $(toastHtml)
+      .bootstrapToast()
+      .appendTo($('#qunit-fixture'))
+
+    $toast.one('shown.bs.toast', function () {
+      setTimeout(function () {
+        assert.ok($toast.hasClass('show'))
+        assert.ok(typeof $toast.data('bs.toast') !== 'undefined')
+
+        $toast.bootstrapToast('dispose')
+
+        assert.ok(typeof $toast.data('bs.toast') === 'undefined')
+        assert.ok($toast.hasClass('show') === false)
+
+        done()
+      }, 1)
+    })
+      .bootstrapToast('show')
+  })
+
   QUnit.test('should allow to pass delay object in html', function (assert) {
     assert.expect(1)
     var done = assert.async()
