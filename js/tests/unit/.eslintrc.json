@@ -9,7 +9,8 @@
     "sinon": false,
     "Util": false,
     "Alert": false,
-    "Button": false
+    "Button": false,
+    "Toast": false
   },
   "parserOptions": {
     "ecmaVersion": 5,
