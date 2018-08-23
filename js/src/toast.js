@@ -153,13 +153,6 @@ const Toast = (($) => {
         }
       }
 
-      if (typeof config.delay === 'string') {
-        config.delay = {
-          ...Default.delay,
-          ...JSON.parse(config.delay)
-        }
-      }
-
       Util.typeCheckConfig(
         NAME,
         config,
