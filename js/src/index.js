@@ -8,6 +8,7 @@ import Modal from './modal'
 import Popover from './popover'
 import Scrollspy from './scrollspy'
 import Tab from './tab'
+import Toast from './toast'
 import Tooltip from './tooltip'
 import Util from './util'
 
@@ -46,5 +47,6 @@ export {
   Popover,
   Scrollspy,
   Tab,
+  Toast,
   Tooltip
 }
