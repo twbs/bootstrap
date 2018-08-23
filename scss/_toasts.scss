@@ -1,4 +1,5 @@
 .toast {
+  display: none;
   max-width: $toast-max-width;
   overflow: hidden; // cheap rounded corners on nested items
   font-size: $toast-font-size; // knock it down to 14px
@@ -12,6 +13,10 @@
   + .toast {
     margin-top: $toast-padding-x;
   }
+}
+
+.toast.show {
+  display: inherit;
 }
 
 .toast-header {
