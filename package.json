@@ -190,7 +190,7 @@
     },
     {
       "path": "./dist/js/bootstrap.js",
-      "maxSize": "22 kB"
+      "maxSize": "23 kB"
     },
     {
       "path": "./dist/js/bootstrap.min.js",
