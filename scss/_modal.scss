@@ -135,6 +135,7 @@
   justify-content: flex-end; // Right align buttons with flex property because text-align doesn't work on flex items
   padding: $modal-inner-padding;
   border-top: $modal-footer-border-width solid $modal-footer-border-color;
+  @include border-bottom-radius($modal-content-border-radius);
 
   // Easily place margin between footer elements
   > :not(:first-child) { margin-left: .25rem; }
