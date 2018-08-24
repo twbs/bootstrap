@@ -509,7 +509,7 @@ const Carousel = (($) => {
 
   $.fn[NAME] = Carousel._jQueryInterface
   $.fn[NAME].Constructor = Carousel
-  $.fn[NAME].noConflict = function () {
+  $.fn[NAME].noConflict = () => {
     $.fn[NAME] = JQUERY_NO_CONFLICT
     return Carousel._jQueryInterface
   }

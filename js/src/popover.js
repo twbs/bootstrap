@@ -177,7 +177,7 @@ const Popover = (($) => {
 
   $.fn[NAME] = Popover._jQueryInterface
   $.fn[NAME].Constructor = Popover
-  $.fn[NAME].noConflict = function () {
+  $.fn[NAME].noConflict = () => {
     $.fn[NAME] = JQUERY_NO_CONFLICT
     return Popover._jQueryInterface
   }
