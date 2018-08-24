@@ -79,7 +79,10 @@ You can see this in action with a live demo:
 Enable dismissal of an alert via JavaScript:
 
 {% highlight js %}
-$('.alert').alert()
+var alertList = document.querySelectorAll('.alert')
+alertList.forEach(function (alert) {
+  new bootstrap.Alert(alert)
+})
 {% endhighlight %}
 
 Or with `data` attributes on a button **within the alert**, as demonstrated above:
@@ -94,13 +97,26 @@ Note that closing an alert will remove it from the DOM.
 
 ### Methods
 
+You can create an alert instance with the alert constructor, for example:
+
+{% highlight js %}
+var myAlert = document.getElementById('myAlert')
+var bsAlert = new bootstrap.Alert(myAlert)
+{% endhighlight %}
+
+This makes an alert listen for click events on descendant elements which have the `data-dismiss="alert"` attribute. (Not necessary when using the data-api's auto-initialization.)
+
 | Method | Description |
 | --- | --- |
-| `$().alert()` | Makes an alert listen for click events on descendant elements which have the `data-dismiss="alert"` attribute. (Not necessary when using the data-api's auto-initialization.) |
-| `$().alert('close')` | Closes an alert by removing it from the DOM. If the `.fade` and `.show` classes are present on the element, the alert will fade out before it is removed. |
-| `$().alert('dispose')` | Destroys an element's alert. |
+| `close` | Closes an alert by removing it from the DOM. If the `.fade` and `.show` classes are present on the element, the alert will fade out before it is removed. |
+| `dispose` | Destroys an element's alert. |
+| `_getInstance` | *Static* method which allows you to get the alert instance associated to a DOM element, you can use it like this: `bootstrap.Alert._getInstance(alert)` |
 
-{% highlight js %}$('.alert').alert('close'){% endhighlight %}
+{% highlight js %}
+var alertNode = document.querySelector('.alert')
+var alert = bootstrap.Alert._getInstance(alertNode)
+alert.close()
+{% endhighlight %}
 
 ### Events
 
@@ -112,7 +128,8 @@ Bootstrap's alert plugin exposes a few events for hooking into alert functionali
 | `closed.bs.alert` | This event is fired when the alert has been closed (will wait for CSS transitions to complete). |
 
 {% highlight js %}
-$('#myAlert').on('closed.bs.alert', function () {
-  // do something...
+var myAlert = document.getElementById('myAlert')
+myAlert.addEventListener('closed.bs.alert', function () {
+  // do something…
 })
 {% endhighlight %}
