@@ -12,21 +12,22 @@ Bootstrap supports the **latest, stable releases** of all major browsers and pla
 
 Alternative browsers which use the latest version of WebKit, Blink, or Gecko, whether directly or via the platform's web view API, are not explicitly supported. However, Bootstrap should (in most cases) display and function correctly in these browsers as well. More specific support information is provided below.
 
-You can find our supported range of browsers and their versions [in our `package.json`]({{ site.repo }}/blob/v4-dev/package.json):
+You can find our supported range of browsers and their versions [in our `.browserslistrc file`]({{ site.repo }}/blob/v4-dev/.browserslistrc):
 
-```json
-"browserslist": [
-  "last 1 major version",
-  ">= 1%",
-  "Chrome >= 45",
-  "Firefox >= 38",
-  "Edge >= 12",
-  "Explorer >= 10",
-  "iOS >= 9",
-  "Safari >= 9",
-  "Android >= 4.4",
-  "Opera >= 30"
-]
+```
+# https://github.com/browserslist/browserslist#readme
+
+>= 1%
+last 1 major version
+not dead
+Chrome >= 45
+Firefox >= 38
+Edge >= 12
+Explorer >= 10
+iOS >= 9
+Safari >= 9
+Android >= 4.4
+Opera >= 30
 ```
 
 We use [Autoprefixer](https://github.com/postcss/autoprefixer) to handle intended browser support via CSS prefixes, which uses [Browserslist](https://github.com/browserslist/browserslist) to manage these browser versions. Consult their documentation for how to integrate these tools into your projects.
