@@ -93,7 +93,7 @@ Change a selection to our monospace font stack with `.text-monospace`.
 
 ## Reset color
 
-Reset a text or link's color, so that it inherits the color from its parent, with `.text-reset`.
+Reset a text or link's color with `.text-reset`, so that it inherits the color from its parent.
 
 {% capture example %}
 <p class="text-muted">
