@@ -66,10 +66,23 @@
     text-align: left !important;
   }
 
+  .algolia-docsearch-suggestion--subcategory-inline {
+    display: block !important;
+    font-size: .875rem;
+    color: $gray-700;
+
+    &::after {
+      padding: 0 .25rem;
+      content: "/";
+    }
+  }
+
   .algolia-docsearch-suggestion--content {
+    display: flex;
+    flex-wrap: wrap;
     float: none !important;
     width: 100% !important;
-    padding: 0 !important;
+    padding: .25rem 1rem !important;
 
     // Vertical divider between column header and content
     &::before {
@@ -93,18 +106,19 @@
 
   .algolia-docsearch-suggestion--title {
     display: block;
-    padding: .25rem 1rem !important;
     margin-bottom: 0 !important;
     font-size: .875rem !important;
     font-weight: 400 !important;
   }
 
   .algolia-docsearch-suggestion--text {
-    padding: 0 1rem .5rem !important;
-    margin-top: -.25rem;
-    font-size: .875rem !important;
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding: .2rem 0;
+    font-size: .8125rem !important;
     font-weight: 400;
     line-height: 1.25 !important;
+    color: $gray-600;
   }
 
   .algolia-docsearch-footer {
