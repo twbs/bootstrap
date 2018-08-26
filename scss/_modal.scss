@@ -165,7 +165,6 @@
     &::before {
       height: calc(100vh - (#{$modal-dialog-margin-y-sm-up} * 2));
     }
-
   }
 
   .modal-content {
@@ -173,7 +172,6 @@
   }
 
   .modal-sm { max-width: $modal-sm; }
-
 }
 
 @include media-breakpoint-up(lg) {
