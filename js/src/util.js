@@ -77,20 +77,13 @@ const Util = (($) => {
 
     getSelectorFromElement(element) {
       let selector = element.getAttribute('data-target')
-      let method = 'querySelector'
 
       if (!selector || selector === '#') {
         selector = (element.getAttribute('href') || '').trim()
       }
 
-      const validSelector = selector
-      if (selector.charAt(0) === '#' && selector.indexOf(',') === -1) {
-        selector = selector.substr(1)
-        method = 'getElementById'
-      }
-
       try {
-        return document[method](selector) ? validSelector : null
+        return document.querySelector(selector) ? selector : null
       } catch (err) {
         return null
       }
