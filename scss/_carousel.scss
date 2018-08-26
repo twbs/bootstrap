@@ -190,7 +190,9 @@
     margin-left: $carousel-indicator-spacer;
     text-indent: -999px;
     cursor: pointer;
-    background-color: rgba($carousel-indicator-active-bg, .5);
+    background-color: $carousel-indicator-active-bg;
+    opacity: .5;
+    @include transition($carousel-indicator-transition);
 
     // Use pseudo classes to increase the hit area by 10px on top and bottom.
     &::before {
@@ -214,7 +216,7 @@
   }
 
   .active {
-    background-color: $carousel-indicator-active-bg;
+    opacity: 1;
   }
 }
 

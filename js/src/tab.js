@@ -3,7 +3,7 @@ import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.1.1): tab.js
+ * Bootstrap (v4.1.3): tab.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -16,7 +16,7 @@ const Tab = (($) => {
    */
 
   const NAME               = 'tab'
-  const VERSION            = '4.1.1'
+  const VERSION            = '4.1.3'
   const DATA_KEY           = 'bs.tab'
   const EVENT_KEY          = `.${DATA_KEY}`
   const DATA_API_KEY       = '.data-api'
@@ -253,7 +253,7 @@ const Tab = (($) => {
 
   $.fn[NAME] = Tab._jQueryInterface
   $.fn[NAME].Constructor = Tab
-  $.fn[NAME].noConflict = function () {
+  $.fn[NAME].noConflict = () => {
     $.fn[NAME] = JQUERY_NO_CONFLICT
     return Tab._jQueryInterface
   }

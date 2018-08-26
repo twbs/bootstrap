@@ -2,7 +2,7 @@ import $ from 'jquery'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.1.1): util.js
+ * Bootstrap (v4.1.3): util.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -77,12 +77,20 @@ const Util = (($) => {
 
     getSelectorFromElement(element) {
       let selector = element.getAttribute('data-target')
+      let method = 'querySelector'
+
       if (!selector || selector === '#') {
-        selector = element.getAttribute('href') || ''
+        selector = (element.getAttribute('href') || '').trim()
+      }
+
+      const validSelector = selector
+      if (selector.charAt(0) === '#' && selector.indexOf(',') === -1) {
+        selector = selector.substr(1)
+        method = 'getElementById'
       }
 
       try {
-        return document.querySelector(selector) ? selector : null
+        return document[method](selector) ? validSelector : null
       } catch (err) {
         return null
       }
