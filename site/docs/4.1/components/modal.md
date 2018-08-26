@@ -448,6 +448,12 @@ $('#exampleModal').on('show.bs.modal', function (event) {
 })
 {% endhighlight %}
 
+### Change animation
+
+The `$modal-fade-transform` variable determines the transform state of `.modal-dialog` before the modal fade-in animation, the `$modal-show-transform` variable determines the transform of `.modal-dialog` at the end of the modal fade-in animation.
+
+If you want for example a zoom-in animation, you can set `$modal-fade-transform: scale(.8)`.
+
 ### Remove animation
 
 For modals that simply appear rather than fade in to view, remove the `.fade` class from your modal markup.

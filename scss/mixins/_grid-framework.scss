@@ -8,7 +8,6 @@
   %grid-column {
     position: relative;
     width: 100%;
-    min-height: 1px; // Prevent columns from collapsing when empty
     padding-#{$opposite}: ($gutter / 2);
     padding-#{$default}: ($gutter / 2);
   }
