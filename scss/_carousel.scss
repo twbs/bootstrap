@@ -170,7 +170,7 @@
 .carousel-indicators {
   position: absolute;
   right: 0;
-  bottom: 10px;
+  bottom: 0;
   left: 0;
   z-index: 15;
   display: flex;
@@ -182,7 +182,7 @@
   list-style: none;
 
   li {
-    position: relative;
+    box-sizing: content-box;
     flex: 0 1 auto;
     width: $carousel-indicator-width;
     height: $carousel-indicator-height;
@@ -191,28 +191,12 @@
     text-indent: -999px;
     cursor: pointer;
     background-color: $carousel-indicator-active-bg;
+    background-clip: padding-box;
+    // Use transparent borders to increase the hit area by 10px on top and bottom.
+    border-top: $carousel-indicator-hit-area-height solid transparent;
+    border-bottom: $carousel-indicator-hit-area-height solid transparent;
     opacity: .5;
     @include transition($carousel-indicator-transition);
-
-    // Use pseudo classes to increase the hit area by 10px on top and bottom.
-    &::before {
-      position: absolute;
-      top: -10px;
-      left: 0;
-      display: inline-block;
-      width: 100%;
-      height: 10px;
-      content: "";
-    }
-    &::after {
-      position: absolute;
-      bottom: -10px;
-      left: 0;
-      display: inline-block;
-      width: 100%;
-      height: 10px;
-      content: "";
-    }
   }
 
   .active {
