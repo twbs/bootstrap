@@ -178,6 +178,8 @@
     border-radius: 0;
   }
   @include box-shadow($custom-select-box-shadow);
+  -webkit-appearance: none;
+  -moz-appearance: none;
   appearance: none;
 
   &:focus {
