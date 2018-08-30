@@ -24,7 +24,7 @@ A basic toast can include a header (though it doesn't strictly need one) with wh
 
 <div class="bg-light">
 {% capture example %}
-<div class="toast">
+<div role="alert" aria-live="assertive" aria-atomic="true">
   <div class="toast-header">
     <img class="rounded mr-2" data-src="holder.js/20x20?size=1&text=.&bg=#007aff" alt="">
     <strong class="mr-auto">Bootstrap</strong>
@@ -45,7 +45,7 @@ They're slightly translucent, too, so they blend over whatever they might appear
 
 <div class="bg-dark">
 {% capture example %}
-<div class="toast">
+<div role="alert" aria-live="assertive" aria-atomic="true">
   <div class="toast-header">
     <img class="rounded mr-2" data-src="holder.js/20x20?size=1&text=.&bg=#007aff" alt="">
     <strong class="mr-auto">Bootstrap</strong>
@@ -66,7 +66,7 @@ Plus, they'll easily stack.
 
 <div class="bg-light">
 {% capture example %}
-<div class="toast">
+<div role="alert" aria-live="assertive" aria-atomic="true">
   <div class="toast-header">
     <img class="rounded mr-2" data-src="holder.js/20x20?size=1&text=.&bg=#007aff" alt="">
     <strong class="mr-auto">Bootstrap</strong>
@@ -80,7 +80,7 @@ Plus, they'll easily stack.
   </div>
 </div>
 
-<div class="toast">
+<div role="alert" aria-live="assertive" aria-atomic="true">
   <div class="toast-header">
     <img class="rounded mr-2" data-src="holder.js/20x20?size=1&text=.&bg=#007aff" alt="">
     <strong class="mr-auto">Bootstrap</strong>
@@ -105,7 +105,7 @@ You also need to adapt the `role` and `aria-live` level depending on the content
 
 {% highlight html %}
 <div role="alert" aria-live="assertive" aria-atomic="true">
-  <div class="toast">...</div>
+  <div role="alert" aria-live="assertive" aria-atomic="true">...</div>
 </div>
 {% endhighlight %}
 
@@ -143,7 +143,7 @@ For systems that generate more notifications, consider using a wrapping element 
   <div style="position: absolute; top: 0; right: 0;">
 
     <!-- Then put toasts within -->
-    <div class="toast">
+    <div role="alert" aria-live="assertive" aria-atomic="true">
       <div class="toast-header">
         <img class="rounded mr-2" data-src="holder.js/20x20?size=1&text=.&bg=#007aff" alt="">
         <strong class="mr-auto">Bootstrap</strong>
@@ -157,7 +157,7 @@ For systems that generate more notifications, consider using a wrapping element 
       </div>
     </div>
 
-    <div class="toast">
+    <div role="alert" aria-live="assertive" aria-atomic="true">
       <div class="toast-header">
         <img class="rounded mr-2" data-src="holder.js/20x20?size=1&text=.&bg=#007aff" alt="">
         <strong class="mr-auto">Bootstrap</strong>
@@ -185,7 +185,7 @@ You can also get fancy with flexbox utilities.
   <div class="d-flex justify-content-center" style="position: absolute; top: 0; right: 0; left: 0;">
 
     <!-- Then put toasts within -->
-    <div class="toast">
+    <div role="alert" aria-live="assertive" aria-atomic="true">
       <div class="toast-header">
         <img class="rounded mr-2" data-src="holder.js/20x20?size=1&text=.&bg=#007aff" alt="">
         <strong class="mr-auto">Bootstrap</strong>
