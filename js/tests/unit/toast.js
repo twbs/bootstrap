@@ -239,7 +239,7 @@ $(function () {
     var done = assert.async()
 
     var toastHtml =
-      '<div class="toast" data-autohide="false">' +
+      '<div class="toast" data-delay="1" data-autohide="false" data-animation="false">' +
         '<button type="button" class="ml-2 mb-1 close" data-dismiss="toast">' +
           'close' +
         '</button>' +
@@ -252,7 +252,8 @@ $(function () {
     $toast
       .on('shown.bs.toast', function () {
         assert.strictEqual($toast.hasClass('show'), true)
-        $toast.find('.close').trigger('click')
+        var button = $toast.find('.close')
+        button.trigger('click')
       })
       .on('hidden.bs.toast', function () {
         assert.strictEqual($toast.hasClass('show'), false)

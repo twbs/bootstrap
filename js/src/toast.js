@@ -86,18 +86,18 @@ const Toast = (($) => {
         this._element.classList.add(ClassName.FADE)
       }
 
+      $(this._element).on(
+        Event.CLICK_DISMISS,
+        Selector.DATA_DISMISS,
+        () => this.hide(true)
+      )
+
       const complete = () => {
         $(this._element).trigger(Event.SHOWN)
 
         if (this._config.autohide) {
           this.hide()
         }
-
-        $(this._element).on(
-          Event.CLICK_DISMISS,
-          Selector.DATA_DISMISS,
-          () => this.close()
-        )
       }
 
       this._timeout = setTimeout(() => {
@@ -115,16 +115,20 @@ const Toast = (($) => {
       }, this._config.delay.show)
     }
 
-    hide() {
+    hide(withoutTimeout) {
       if (!this._element.classList.contains(ClassName.SHOW)) {
         return
       }
 
       $(this._element).trigger(Event.HIDE)
 
-      this._timeout = setTimeout(() => {
+      if (withoutTimeout) {
         this.close()
-      }, this._config.delay.hide)
+      } else {
+        this._timeout = setTimeout(() => {
+          this.close()
+        }, this._config.delay.hide)
+      }
     }
 
     close() {
