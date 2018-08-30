@@ -96,7 +96,7 @@ const Toast = (($) => {
         $(this._element).on(
           Event.CLICK_DISMISS,
           Selector.DATA_DISMISS,
-          () => this.hide()
+          () => this.close()
         )
       }
 
@@ -122,25 +122,27 @@ const Toast = (($) => {
 
       $(this._element).trigger(Event.HIDE)
 
+      this._timeout = setTimeout(() => {
+        this.close()
+      }, this._config.delay.hide)
+    }
+
+    close() {
       const complete = () => {
         $(this._element).trigger(Event.HIDDEN)
       }
 
+      this._element.classList.remove(ClassName.SHOW)
       $(this._element).off(Event.CLICK_DISMISS)
+      if (this._config.animation) {
+        const transitionDuration = Util.getTransitionDurationFromElement(this._element)
 
-      this._timeout = setTimeout(() => {
-        this._element.classList.remove(ClassName.SHOW)
-
-        if (this._config.animation) {
-          const transitionDuration = Util.getTransitionDurationFromElement(this._element)
-
-          $(this._element)
-            .one(Util.TRANSITION_END, complete)
-            .emulateTransitionEnd(transitionDuration)
-        } else {
-          complete()
-        }
-      }, this._config.delay.hide)
+        $(this._element)
+          .one(Util.TRANSITION_END, complete)
+          .emulateTransitionEnd(transitionDuration)
+      } else {
+        complete()
+      }
     }
 
     dispose() {
