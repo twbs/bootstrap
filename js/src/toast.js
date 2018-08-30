@@ -22,10 +22,11 @@ const Toast = (($) => {
   const JQUERY_NO_CONFLICT = $.fn[NAME]
 
   const Event = {
-    HIDE   : `hide${EVENT_KEY}`,
-    HIDDEN : `hidden${EVENT_KEY}`,
-    SHOW   : `show${EVENT_KEY}`,
-    SHOWN  : `shown${EVENT_KEY}`
+    CLICK_DISMISS     : `click.dismiss${EVENT_KEY}`,
+    HIDE              : `hide${EVENT_KEY}`,
+    HIDDEN            : `hidden${EVENT_KEY}`,
+    SHOW              : `show${EVENT_KEY}`,
+    SHOWN             : `shown${EVENT_KEY}`
   }
 
   const ClassName = {
@@ -47,6 +48,10 @@ const Toast = (($) => {
       show: 0,
       hide: 500
     }
+  }
+
+  const Selector = {
+    DATA_DISMISS       : '[data-dismiss="toast"]'
   }
 
   /**
@@ -87,6 +92,12 @@ const Toast = (($) => {
         if (this._config.autohide) {
           this.hide()
         }
+
+        $(this._element).on(
+          Event.CLICK_DISMISS,
+          Selector.DATA_DISMISS,
+          () => this.hide()
+        )
       }
 
       this._timeout = setTimeout(() => {
@@ -114,6 +125,8 @@ const Toast = (($) => {
       const complete = () => {
         $(this._element).trigger(Event.HIDDEN)
       }
+
+      $(this._element).off(Event.CLICK_DISMISS)
 
       this._timeout = setTimeout(() => {
         this._element.classList.remove(ClassName.SHOW)

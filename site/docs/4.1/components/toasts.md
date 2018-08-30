@@ -29,6 +29,9 @@ A basic toast can include a header (though it doesn't strictly need one) with wh
     <img class="rounded mr-2" data-src="holder.js/20x20?size=1&text=.&bg=#007aff" alt="">
     <strong class="mr-auto">Bootstrap</strong>
     <small>11 mins ago</small>
+    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
   </div>
   <div class="toast-body">
     Hello, world! This is a toast message.
@@ -47,6 +50,9 @@ They're slightly translucent, too, so they blend over whatever they might appear
     <img class="rounded mr-2" data-src="holder.js/20x20?size=1&text=.&bg=#007aff" alt="">
     <strong class="mr-auto">Bootstrap</strong>
     <small class="text-muted">11 mins ago</small>
+    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
   </div>
   <div class="toast-body">
     Hello, world! This is a toast message.
@@ -65,6 +71,9 @@ Plus, they'll easily stack.
     <img class="rounded mr-2" data-src="holder.js/20x20?size=1&text=.&bg=#007aff" alt="">
     <strong class="mr-auto">Bootstrap</strong>
     <small class="text-muted">just now</small>
+    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
   </div>
   <div class="toast-body">
     See? Just like this.
@@ -76,6 +85,9 @@ Plus, they'll easily stack.
     <img class="rounded mr-2" data-src="holder.js/20x20?size=1&text=.&bg=#007aff" alt="">
     <strong class="mr-auto">Bootstrap</strong>
     <small class="text-muted">2 seconds ago</small>
+    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
   </div>
   <div class="toast-body">
     Heads up, toasts will stack automatically
@@ -88,9 +100,11 @@ Plus, they'll easily stack.
 ## Accessibility
 
 Toasts are intended to be small interruptions to your visitors or users, so to help those on screen readers, you should wrap your toasts in an [`aria-live` region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions). This allows screen readers the ability to see suggested interruptions without any visual cues.
+To improve accessibility level, we strongly recomend to use `autohide: false` and add a `close` button into the header to let user dismiss that element.
+You also need to adapt the `role` and `aria-live` level depending on the content. If it's an important message like error, use an `alert` role `assertive` otherwise use a role `status` with a `polite` level. 
 
 {% highlight html %}
-<div role="region" aria-live="polite">
+<div role="alert" aria-live="assertive" aria-atomic="true">
   <div class="toast">...</div>
 </div>
 {% endhighlight %}
@@ -107,6 +121,9 @@ Place toasts with custom CSS as you need them. The top right is often used for n
       <img class="rounded mr-2" data-src="holder.js/20x20?size=1&text=.&bg=#007aff" alt="">
       <strong class="mr-auto">Bootstrap</strong>
       <small>11 mins ago</small>
+      <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
     <div class="toast-body">
       Hello, world! This is a toast message.
@@ -131,6 +148,9 @@ For systems that generate more notifications, consider using a wrapping element 
         <img class="rounded mr-2" data-src="holder.js/20x20?size=1&text=.&bg=#007aff" alt="">
         <strong class="mr-auto">Bootstrap</strong>
         <small class="text-muted">just now</small>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
       <div class="toast-body">
         See? Just like this.
@@ -142,6 +162,9 @@ For systems that generate more notifications, consider using a wrapping element 
         <img class="rounded mr-2" data-src="holder.js/20x20?size=1&text=.&bg=#007aff" alt="">
         <strong class="mr-auto">Bootstrap</strong>
         <small class="text-muted">2 seconds ago</small>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
       <div class="toast-body">
         Heads up, toasts will stack automatically
@@ -167,6 +190,9 @@ You can also get fancy with flexbox utilities.
         <img class="rounded mr-2" data-src="holder.js/20x20?size=1&text=.&bg=#007aff" alt="">
         <strong class="mr-auto">Bootstrap</strong>
         <small>11 mins ago</small>
+        <button type="button" class="close" data-dismiss="toast" aria-label="Close" style="">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
       <div class="toast-body">
         Hello, world! This is a toast message.
