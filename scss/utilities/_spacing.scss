@@ -87,5 +87,23 @@
     .mx#{$infix}-gutter {
       margin-left: ($grid-gutter-width / -2) !important;
     }
+
+    .p#{$infix}-gutter { padding: ($grid-gutter-width / -2) !important; }
+    .pt#{$infix}-gutter,
+    .py#{$infix}-gutter {
+      padding-top: ($grid-gutter-width / -2) !important;
+    }
+    .pr#{$infix}-gutter,
+    .px#{$infix}-gutter {
+      padding-right: ($grid-gutter-width / -2) !important;
+    }
+    .pb#{$infix}-gutter,
+    .py#{$infix}-gutter {
+      padding-bottom: ($grid-gutter-width / -2) !important;
+    }
+    .pl#{$infix}-gutter,
+    .px#{$infix}-gutter {
+      padding-left: ($grid-gutter-width / -2) !important;
+    }
   }
 }
