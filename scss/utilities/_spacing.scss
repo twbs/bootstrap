@@ -69,5 +69,41 @@
     .mx#{$infix}-auto {
       margin-left: auto !important;
     }
+
+    .m#{$infix}-gutter { margin: ($grid-gutter-width / -2) !important; }
+    .mt#{$infix}-gutter,
+    .my#{$infix}-gutter {
+      margin-top: ($grid-gutter-width / -2) !important;
+    }
+    .mr#{$infix}-gutter,
+    .mx#{$infix}-gutter {
+      margin-right: ($grid-gutter-width / -2) !important;
+    }
+    .mb#{$infix}-gutter,
+    .my#{$infix}-gutter {
+      margin-bottom: ($grid-gutter-width / -2) !important;
+    }
+    .ml#{$infix}-gutter,
+    .mx#{$infix}-gutter {
+      margin-left: ($grid-gutter-width / -2) !important;
+    }
+
+    .p#{$infix}-gutter { padding: ($grid-gutter-width / 2) !important; }
+    .pt#{$infix}-gutter,
+    .py#{$infix}-gutter {
+      padding-top: ($grid-gutter-width / 2) !important;
+    }
+    .pr#{$infix}-gutter,
+    .px#{$infix}-gutter {
+      padding-right: ($grid-gutter-width / 2) !important;
+    }
+    .pb#{$infix}-gutter,
+    .py#{$infix}-gutter {
+      padding-bottom: ($grid-gutter-width / 2) !important;
+    }
+    .pl#{$infix}-gutter,
+    .px#{$infix}-gutter {
+      padding-left: ($grid-gutter-width / 2) !important;
+    }
   }
 }
