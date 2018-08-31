@@ -22,10 +22,11 @@ const Toast = (($) => {
   const JQUERY_NO_CONFLICT = $.fn[NAME]
 
   const Event = {
-    HIDE   : `hide${EVENT_KEY}`,
-    HIDDEN : `hidden${EVENT_KEY}`,
-    SHOW   : `show${EVENT_KEY}`,
-    SHOWN  : `shown${EVENT_KEY}`
+    CLICK_DISMISS : `click.dismiss${EVENT_KEY}`,
+    HIDE          : `hide${EVENT_KEY}`,
+    HIDDEN        : `hidden${EVENT_KEY}`,
+    SHOW          : `show${EVENT_KEY}`,
+    SHOWN         : `shown${EVENT_KEY}`
   }
 
   const ClassName = {
@@ -49,6 +50,10 @@ const Toast = (($) => {
     }
   }
 
+  const Selector = {
+    DATA_DISMISS : '[data-dismiss="toast"]'
+  }
+
   /**
    * ------------------------------------------------------------------------
    * Class Definition
@@ -60,6 +65,7 @@ const Toast = (($) => {
       this._element = element
       this._config  = this._getConfig(config)
       this._timeout = null
+      this._setListeners()
     }
 
     // Getters
@@ -104,30 +110,20 @@ const Toast = (($) => {
       }, this._config.delay.show)
     }
 
-    hide() {
+    hide(withoutTimeout) {
       if (!this._element.classList.contains(ClassName.SHOW)) {
         return
       }
 
       $(this._element).trigger(Event.HIDE)
 
-      const complete = () => {
-        $(this._element).trigger(Event.HIDDEN)
+      if (withoutTimeout) {
+        this._close()
+      } else {
+        this._timeout = setTimeout(() => {
+          this._close()
+        }, this._config.delay.hide)
       }
-
-      this._timeout = setTimeout(() => {
-        this._element.classList.remove(ClassName.SHOW)
-
-        if (this._config.animation) {
-          const transitionDuration = Util.getTransitionDurationFromElement(this._element)
-
-          $(this._element)
-            .one(Util.TRANSITION_END, complete)
-            .emulateTransitionEnd(transitionDuration)
-        } else {
-          complete()
-        }
-      }, this._config.delay.hide)
     }
 
     dispose() {
@@ -137,6 +133,8 @@ const Toast = (($) => {
       if (this._element.classList.contains(ClassName.SHOW)) {
         this._element.classList.remove(ClassName.SHOW)
       }
+
+      $(this._element).off(Event.CLICK_DISMISS)
 
       $.removeData(this._element, DATA_KEY)
       this._element = null
@@ -166,6 +164,32 @@ const Toast = (($) => {
       )
 
       return config
+    }
+
+    _setListeners() {
+      $(this._element).on(
+        Event.CLICK_DISMISS,
+        Selector.DATA_DISMISS,
+        () => this.hide(true)
+      )
+    }
+
+    _close() {
+      const complete = () => {
+        $(this._element).trigger(Event.HIDDEN)
+      }
+
+      this._element.classList.remove(ClassName.SHOW)
+
+      if (this._config.animation) {
+        const transitionDuration = Util.getTransitionDurationFromElement(this._element)
+
+        $(this._element)
+          .one(Util.TRANSITION_END, complete)
+          .emulateTransitionEnd(transitionDuration)
+      } else {
+        complete()
+      }
     }
 
     // Static

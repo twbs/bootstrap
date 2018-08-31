@@ -232,4 +232,33 @@ $(function () {
     })
       .bootstrapToast('show')
   })
+
+
+  QUnit.test('should close toast when close element with data-dismiss attribute is set', function (assert) {
+    assert.expect(2)
+    var done = assert.async()
+
+    var toastHtml =
+      '<div class="toast" data-delay="1" data-autohide="false" data-animation="false">' +
+        '<button type="button" class="ml-2 mb-1 close" data-dismiss="toast">' +
+          'close' +
+        '</button>' +
+      '</div>'
+
+    var $toast = $(toastHtml)
+      .bootstrapToast()
+      .appendTo($('#qunit-fixture'))
+
+    $toast
+      .on('shown.bs.toast', function () {
+        assert.strictEqual($toast.hasClass('show'), true)
+        var button = $toast.find('.close')
+        button.trigger('click')
+      })
+      .on('hidden.bs.toast', function () {
+        assert.strictEqual($toast.hasClass('show'), false)
+        done()
+      })
+      .bootstrapToast('show')
+  })
 })
