@@ -8,5 +8,17 @@
   }
 }
 
+@each $bp, $value in $grid-breakpoints {
+  @each $prop, $abbrev in (width: w, height: h) {
+    @include media-breakpoint-up($bp, $grid-breakpoints) {
+      @each $size, $length in $sizes {
+        .#{$abbrev}-#{$bp}-#{$size} {
+          #{$prop}: $length !important;
+        }
+      }
+    }
+  }
+}
+
 .mw-100 { max-width: 100% !important; }
 .mh-100 { max-height: 100% !important; }
