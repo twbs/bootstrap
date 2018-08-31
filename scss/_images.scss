@@ -28,7 +28,8 @@
 
 .figure {
   // Ensures the caption's text aligns with the image.
-  display: inline-block;
+  // Allows the figure margin to be set to auto.
+  display: table;
 }
 
 .figure-img {
