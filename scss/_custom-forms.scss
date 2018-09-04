@@ -258,10 +258,6 @@
   &:focus ~ .custom-file-label {
     border-color: $custom-file-focus-border-color;
     box-shadow: $custom-file-focus-box-shadow;
-
-    &::after {
-      border-color: $custom-file-focus-border-color;
-    }
   }
 
   &:disabled ~ .custom-file-label {
@@ -303,7 +299,7 @@
     color: $custom-file-button-color;
     content: "Browse";
     @include gradient-bg($custom-file-button-bg);
-    border-left: $custom-file-border-width solid $custom-file-border-color;
+    border-left: inherit;
     @include border-radius(0 $custom-file-border-radius $custom-file-border-radius 0);
   }
 }
