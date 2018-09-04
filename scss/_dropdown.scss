@@ -60,8 +60,8 @@
 .dropright {
   .dropdown-menu {
     top: 0;
-    #{$end}: auto;
-    #{$start}: 100%;
+    #{$start}: auto;
+    #{$end}: 100%;
     margin-top: 0;
     margin-#{$start}: $dropdown-spacer;
   }
