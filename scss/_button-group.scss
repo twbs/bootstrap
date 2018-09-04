@@ -129,7 +129,7 @@
   > .btn-group + .btn,
   > .btn-group + .btn-group {
     margin-top: -$btn-border-width;
-    margin-left: 0;
+    margin-#{$start}: 0;
   }
 
   // Reset rounded corners
