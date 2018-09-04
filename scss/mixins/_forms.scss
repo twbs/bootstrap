@@ -180,8 +180,6 @@
     &.is-#{$state} {
       ~ .custom-file-label {
         border-color: $color;
-
-        &::after { border-color: inherit; }
       }
 
       ~ .#{$state}-feedback,
@@ -191,6 +189,7 @@
 
       &:focus {
         ~ .custom-file-label {
+          border-color: $color;
           box-shadow: 0 0 0 $input-focus-width rgba($color, .25);
         }
       }
