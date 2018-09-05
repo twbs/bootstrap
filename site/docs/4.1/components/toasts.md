@@ -71,9 +71,6 @@ Plus, they'll easily stack.
     <img class="rounded mr-2" data-src="holder.js/20x20?size=1&text=.&bg=#007aff" alt="">
     <strong class="mr-auto">Bootstrap</strong>
     <small class="text-muted">just now</small>
-    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
   </div>
   <div class="toast-body">
     See? Just like this.
@@ -85,9 +82,6 @@ Plus, they'll easily stack.
     <img class="rounded mr-2" data-src="holder.js/20x20?size=1&text=.&bg=#007aff" alt="">
     <strong class="mr-auto">Bootstrap</strong>
     <small class="text-muted">2 seconds ago</small>
-    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
   </div>
   <div class="toast-body">
     Heads up, toasts will stack automatically
@@ -99,15 +93,38 @@ Plus, they'll easily stack.
 
 ## Accessibility
 
-Toasts are intended to be small interruptions to your visitors or users, so to help those on screen readers, you should wrap your toasts in an [`aria-live` region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions). This allows screen readers the ability to see suggested interruptions without any visual cues.
-To improve accessibility level, we strongly recomend to use `autohide: false` and add a `close` button into the header to let user dismiss that element.
-You also need to adapt the `role` and `aria-live` level depending on the content. If it's an important message like error, use an `alert` role `assertive` otherwise use a role `status` with a `polite` level. 
+Toasts are intended to be small interruptions to your visitors or users, so to help those on screen readers, you should wrap your toasts in an [`aria-live` region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions). This allows screen readers the ability to see suggested interruptions without any visual cues. If the information needed is important for the process, e.g. for a list of errors in a form, then use the [alert component]({{ site.baseurl }}/docs/{{ site.docs_version }}/components/alerts/) instead of toast.
+
+You also need to adapt the `role` and `aria-live` level depending on the content. If it's an important message like an error, use `role="alert" aria-live="assertive"`, otherwise use `role="status" aria-live="polite"` attributes.
+
+As the content you're displaying changes, be sure to update the [`delay` timeout](#options) to ensure people have enough time to read the toast.
 
 {% highlight html %}
-<div role="alert" aria-live="assertive" aria-atomic="true">
+<div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="10000">
   <div role="alert" aria-live="assertive" aria-atomic="true">...</div>
 </div>
 {% endhighlight %}
+
+When using `autohide: false`, you must add a close button to allow users to dismiss the toast.
+
+<div class="bg-light">
+{% capture example %}
+<div role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-autohide="false">
+  <div class="toast-header">
+    <img class="rounded mr-2" data-src="holder.js/20x20?size=1&text=.&bg=#007aff" alt="">
+    <strong class="mr-auto">Bootstrap</strong>
+    <small>11 mins ago</small>
+    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="toast-body">
+    Hello, world! This is a toast message.
+  </div>
+</div>
+{% endcapture %}
+{% include example.html content=example %}
+</div>
 
 ## Placement
 
@@ -121,9 +138,6 @@ Place toasts with custom CSS as you need them. The top right is often used for n
       <img class="rounded mr-2" data-src="holder.js/20x20?size=1&text=.&bg=#007aff" alt="">
       <strong class="mr-auto">Bootstrap</strong>
       <small>11 mins ago</small>
-      <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
     </div>
     <div class="toast-body">
       Hello, world! This is a toast message.
@@ -148,9 +162,6 @@ For systems that generate more notifications, consider using a wrapping element 
         <img class="rounded mr-2" data-src="holder.js/20x20?size=1&text=.&bg=#007aff" alt="">
         <strong class="mr-auto">Bootstrap</strong>
         <small class="text-muted">just now</small>
-        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
       </div>
       <div class="toast-body">
         See? Just like this.
@@ -162,9 +173,6 @@ For systems that generate more notifications, consider using a wrapping element 
         <img class="rounded mr-2" data-src="holder.js/20x20?size=1&text=.&bg=#007aff" alt="">
         <strong class="mr-auto">Bootstrap</strong>
         <small class="text-muted">2 seconds ago</small>
-        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
       </div>
       <div class="toast-body">
         Heads up, toasts will stack automatically
@@ -190,9 +198,6 @@ You can also get fancy with flexbox utilities.
         <img class="rounded mr-2" data-src="holder.js/20x20?size=1&text=.&bg=#007aff" alt="">
         <strong class="mr-auto">Bootstrap</strong>
         <small>11 mins ago</small>
-        <button type="button" class="close" data-dismiss="toast" aria-label="Close" style="">
-          <span aria-hidden="true">&times;</span>
-        </button>
       </div>
       <div class="toast-body">
         Hello, world! This is a toast message.
