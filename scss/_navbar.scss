@@ -15,6 +15,14 @@
 // Provide a static navbar from which we expand to create full-width, fixed, and
 // other navbar variations.
 
+$combined-container-max-widths: map-merge(
+  (
+    xs: 0,
+    fluid: 9999px,
+  ),
+  $container-max-widths
+) !default;
+
 .navbar {
   position: relative;
   display: flex;
@@ -24,13 +32,19 @@
   padding: $navbar-padding-y $navbar-padding-x;
 
   // Because flex properties aren't inherited, we need to redeclare these first
-  // few properities so that content nested within behave properly.
-  > .container,
-  > .container-fluid {
+  // few properties so that content nested within behave properly.
+
+  %container-flex-properties {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
+  }
+
+  @each $breakpoint, $container-max-width in $combined-container-max-widths {
+    > .container#{breakpoint-infix($breakpoint, $combined-container-max-widths)} {
+      @extend %container-flex-properties;
+    }
   }
 }
 
@@ -144,10 +158,14 @@
 
     &#{$infix} {
       @include media-breakpoint-down($breakpoint) {
-        > .container,
-        > .container-fluid {
+        %container-navbar-expand-#{$breakpoint} {
           padding-right: 0;
           padding-left: 0;
+        }
+        @each $size, $container-max-width in $combined-container-max-widths {
+          > .container#{breakpoint-infix($size, $combined-container-max-widths)} {
+            @extend %container-navbar-expand-#{$breakpoint};
+          }
         }
       }
 
@@ -174,9 +192,14 @@
         }
 
         // For nesting containers, have to redeclare for alignment purposes
-        > .container,
-        > .container-fluid {
+        %container-nesting-#{$breakpoint} {
           flex-wrap: nowrap;
+        }
+
+        @each $size, $container-max-width in $combined-container-max-widths {
+          > .container#{breakpoint-infix($size, $combined-container-max-widths)} {
+            @extend %container-nesting-#{$breakpoint};
+          }
         }
 
         .navbar-collapse {
