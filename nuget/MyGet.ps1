@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # set env vars usually set by MyGet (enable for local testing)
 #$env:SourcesPath = '..'
 #$env:NuGet = "./nuget.exe" #https://dist.nuget.org/win-x86-commandline/latest/nuget.exe
@@ -16,3 +17,13 @@ if ($bsversionParts.Length -gt 1)
 # create packages
 & $nuget pack "$env:SourcesPath\nuget\bootstrap.nuspec" -Verbosity detailed -NonInteractive -NoPackageAnalysis -BasePath $env:SourcesPath -Version $bsversion
 & $nuget pack "$env:SourcesPath\nuget\bootstrap.sass.nuspec" -Verbosity detailed -NonInteractive -NoPackageAnalysis -BasePath $env:SourcesPath -Version $bsversion
+=======
+$nuget = $env:NuGet
+
+# parse the version number out of package.json
+$bsversion = ((Get-Content $env:SourcesPath\package.json) -join "`n" | ConvertFrom-Json).version
+
+# create packages
+& $nuget pack "nuget\bootstrap.nuspec" -Verbosity detailed -NonInteractive -NoPackageAnalysis -BasePath $env:SourcesPath -Version $bsversion
+& $nuget pack "nuget\bootstrap.less.nuspec" -Verbosity detailed -NonInteractive -NoPackageAnalysis -BasePath $env:SourcesPath -Version $bsversion
+>>>>>>> 2c2ac3356425e192f7537227508c809a14aa5850

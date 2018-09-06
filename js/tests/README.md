@@ -20,6 +20,7 @@ To run the unit test suite via a real web browser, open `index.html` in the brow
 
 **Note:** Your new unit tests should fail before your changes are applied to the plugin, and should pass after your changes are applied to the plugin.
 
+
 ## What should a unit test look like?
 
 * Each test should have a unique name clearly stating what unit is being tested.
