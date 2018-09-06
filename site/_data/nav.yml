@@ -1,0 +1,86 @@
+- title: Getting started
+  pages:
+    - title: Introduction
+    - title: Download
+    - title: Contents
+    - title: Browsers & devices
+    - title: JavaScript
+    - title: Theming
+    - title: Build tools
+    # - title: Best practices # TODO: Write this content
+    - title: Webpack
+    - title: Accessibility
+
+- title: Layout
+  pages:
+    - title: Overview
+    - title: Grid
+    - title: Media object
+    - title: Utilities for layout
+
+- title: Content
+  pages:
+    - title: Reboot
+    - title: Typography
+    - title: Code
+    - title: Images
+    - title: Tables
+    - title: Figures
+
+- title: Components
+  pages:
+    - title: Alerts
+    - title: Badge
+    - title: Breadcrumb
+    - title: Buttons
+    - title: Button group
+    - title: Card
+    - title: Carousel
+    - title: Collapse
+    - title: Dropdowns
+    - title: Forms
+    - title: Input group
+    - title: Jumbotron
+    - title: List group
+    - title: Modal
+    - title: Navs
+    - title: Navbar
+    - title: Pagination
+    - title: Popovers
+    - title: Progress
+    - title: Scrollspy
+    - title: Tooltips
+
+- title: Utilities
+  pages:
+    - title: Borders
+    - title: Clearfix
+    - title: Close icon
+    - title: Colors
+    - title: Display
+    - title: Embed
+    - title: Flex
+    - title: Float
+    - title: Image replacement
+    - title: Position
+    - title: Screenreaders
+    - title: Shadows
+    - title: Sizing
+    - title: Spacing
+    - title: Text
+    - title: Vertical align
+    - title: Visibility
+
+- title: Extend
+  pages:
+    - title: Approach
+    - title: Icons
+
+- title: Migration
+
+- title: About
+  pages:
+    - title: Overview
+    - title: Brand
+    - title: License
+    - title: Translations

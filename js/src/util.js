@@ -2,7 +2,7 @@ import $ from 'jquery'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0): util.js
+ * Bootstrap (v4.1.3): util.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -14,9 +14,9 @@ const Util = (($) => {
    * ------------------------------------------------------------------------
    */
 
-  let transition = false
-
+  const TRANSITION_END = 'transitionend'
   const MAX_UID = 1000000
+  const MILLISECONDS_MULTIPLIER = 1000
 
   // Shoutout AngusCroll (https://goo.gl/pxwQGp)
   function toType(obj) {
@@ -25,24 +25,14 @@ const Util = (($) => {
 
   function getSpecialTransitionEndEvent() {
     return {
-      bindType: transition.end,
-      delegateType: transition.end,
+      bindType: TRANSITION_END,
+      delegateType: TRANSITION_END,
       handle(event) {
         if ($(event.target).is(this)) {
           return event.handleObj.handler.apply(this, arguments) // eslint-disable-line prefer-rest-params
         }
         return undefined // eslint-disable-line no-undefined
       }
-    }
-  }
-
-  function transitionEndTest() {
-    if (typeof window !== 'undefined' && window.QUnit) {
-      return false
-    }
-
-    return {
-      end: 'transitionend'
     }
   }
 
@@ -63,13 +53,8 @@ const Util = (($) => {
   }
 
   function setTransitionEndSupport() {
-    transition = transitionEndTest()
-
     $.fn.emulateTransitionEnd = transitionEndEmulator
-
-    if (Util.supportsTransitionEnd()) {
-      $.event.special[Util.TRANSITION_END] = getSpecialTransitionEndEvent()
-    }
+    $.event.special[Util.TRANSITION_END] = getSpecialTransitionEndEvent()
   }
 
   /**
@@ -92,16 +77,36 @@ const Util = (($) => {
 
     getSelectorFromElement(element) {
       let selector = element.getAttribute('data-target')
+
       if (!selector || selector === '#') {
-        selector = element.getAttribute('href') || ''
+        selector = (element.getAttribute('href') || '').trim()
       }
 
       try {
-        const $selector = $(document).find(selector)
-        return $selector.length > 0 ? selector : null
+        return document.querySelector(selector) ? selector : null
       } catch (err) {
         return null
       }
+    },
+
+    getTransitionDurationFromElement(element) {
+      if (!element) {
+        return 0
+      }
+
+      // Get transition-duration of the element
+      let transitionDuration = $(element).css('transition-duration')
+      const floatTransitionDuration = parseFloat(transitionDuration)
+
+      // Return 0 if element or transition duration is not found
+      if (!floatTransitionDuration) {
+        return 0
+      }
+
+      // If multiple durations are defined, take the first
+      transitionDuration = transitionDuration.split(',')[0]
+
+      return parseFloat(transitionDuration) * MILLISECONDS_MULTIPLIER
     },
 
     reflow(element) {
@@ -109,11 +114,12 @@ const Util = (($) => {
     },
 
     triggerTransitionEnd(element) {
-      $(element).trigger(transition.end)
+      $(element).trigger(TRANSITION_END)
     },
 
+    // TODO: Remove in v5
     supportsTransitionEnd() {
-      return Boolean(transition)
+      return Boolean(TRANSITION_END)
     },
 
     isElement(obj) {

@@ -3,7 +3,7 @@ import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0): tab.js
+ * Bootstrap (v4.1.3): tab.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -15,13 +15,12 @@ const Tab = (($) => {
    * ------------------------------------------------------------------------
    */
 
-  const NAME                = 'tab'
-  const VERSION             = '4.0.0'
-  const DATA_KEY            = 'bs.tab'
-  const EVENT_KEY           = `.${DATA_KEY}`
-  const DATA_API_KEY        = '.data-api'
-  const JQUERY_NO_CONFLICT  = $.fn[NAME]
-  const TRANSITION_DURATION = 150
+  const NAME               = 'tab'
+  const VERSION            = '4.1.3'
+  const DATA_KEY           = 'bs.tab'
+  const EVENT_KEY          = `.${DATA_KEY}`
+  const DATA_API_KEY       = '.data-api'
+  const JQUERY_NO_CONFLICT = $.fn[NAME]
 
   const Event = {
     HIDE           : `hide${EVENT_KEY}`,
@@ -107,7 +106,7 @@ const Tab = (($) => {
       }
 
       if (selector) {
-        target = $(selector)[0]
+        target = document.querySelector(selector)
       }
 
       this._activate(
@@ -152,7 +151,6 @@ const Tab = (($) => {
 
       const active = activeElements[0]
       const isTransitioning = callback &&
-        Util.supportsTransitionEnd() &&
         (active && $(active).hasClass(ClassName.FADE))
 
       const complete = () => this._transitionComplete(
@@ -162,9 +160,11 @@ const Tab = (($) => {
       )
 
       if (active && isTransitioning) {
+        const transitionDuration = Util.getTransitionDurationFromElement(active)
+
         $(active)
           .one(Util.TRANSITION_END, complete)
-          .emulateTransitionEnd(TRANSITION_DURATION)
+          .emulateTransitionEnd(transitionDuration)
       } else {
         complete()
       }
@@ -199,7 +199,8 @@ const Tab = (($) => {
           $(element.parentNode).hasClass(ClassName.DROPDOWN_MENU)) {
         const dropdownElement = $(element).closest(Selector.DROPDOWN)[0]
         if (dropdownElement) {
-          $(dropdownElement).find(Selector.DROPDOWN_TOGGLE).addClass(ClassName.ACTIVE)
+          const dropdownToggleList = [].slice.call(dropdownElement.querySelectorAll(Selector.DROPDOWN_TOGGLE))
+          $(dropdownToggleList).addClass(ClassName.ACTIVE)
         }
 
         element.setAttribute('aria-expanded', true)
@@ -252,7 +253,7 @@ const Tab = (($) => {
 
   $.fn[NAME] = Tab._jQueryInterface
   $.fn[NAME].Constructor = Tab
-  $.fn[NAME].noConflict = function () {
+  $.fn[NAME].noConflict = () => {
     $.fn[NAME] = JQUERY_NO_CONFLICT
     return Tab._jQueryInterface
   }
