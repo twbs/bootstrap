@@ -145,13 +145,6 @@ module.exports = function (grunt) {
       }
     },
 
-    qunit: {
-      options: {
-        inject: 'js/tests/unit/phantom.js'
-      },
-      files: 'js/tests/index.html'
-    },
-
     less: {
       compileCore: {
         options: {
@@ -366,11 +359,11 @@ module.exports = function (grunt) {
     watch: {
       src: {
         files: '<%= jshint.core.src %>',
-        tasks: ['jshint:core', 'qunit', 'concat']
+        tasks: ['jshint:core', 'exec:qunit', 'concat']
       },
       test: {
         files: '<%= jshint.test.src %>',
-        tasks: ['jshint:test', 'qunit']
+        tasks: ['jshint:test', 'exec:qunit']
       },
       less: {
         files: 'less/**/*.less',
@@ -382,22 +375,15 @@ module.exports = function (grunt) {
       }
     },
 
-    'saucelabs-qunit': {
-      all: {
-        options: {
-          build: process.env.TRAVIS_JOB_ID,
-          throttled: 10,
-          maxRetries: 3,
-          maxPollRetries: 4,
-          urls: ['http://127.0.0.1:3000/js/tests/index.html?hidepassed'],
-          browsers: grunt.file.readYAML('grunt/sauce_browsers.yml')
-        }
-      }
-    },
-
     exec: {
       npmUpdate: {
         command: 'npm update'
+      },
+      browserstack: {
+        command: 'cross-env BROWSER=true karma start grunt/karma.conf.js'
+      },
+      qunit: {
+        command: 'karma start grunt/karma.conf.js'
       }
     },
 
@@ -451,17 +437,15 @@ module.exports = function (grunt) {
       isUndefOrNonZero(process.env.TWBS_DO_VALIDATOR)) {
     testSubtasks.push('validate-html');
   }
-  // Only run Sauce Labs tests if there's a Sauce access key
-  if (typeof process.env.SAUCE_ACCESS_KEY !== 'undefined' &&
-      // Skip Sauce if running a different subset of the test suite
-      runSubset('sauce-js-unit') &&
-      // Skip Sauce on Travis when [skip sauce] is in the commit message
-      isUndefOrNonZero(process.env.TWBS_DO_SAUCE)) {
-    testSubtasks.push('connect');
-    testSubtasks.push('saucelabs-qunit');
+  // Only run BrowserStack tests if there's a BrowserStack access key
+  if (typeof process.env.BROWSER_STACK_USERNAME !== 'undefined' &&
+      // Skip BrowserStack if running a different subset of the test suite
+      runSubset('browserstack')) {
+    testSubtasks.push('exec:browserstack');
   }
+
   grunt.registerTask('test', testSubtasks);
-  grunt.registerTask('test-js', ['jshint:core', 'jshint:test', 'jshint:grunt', 'jscs:core', 'jscs:test', 'jscs:grunt', 'qunit']);
+  grunt.registerTask('test-js', ['jshint:core', 'jshint:test', 'jshint:grunt', 'jscs:core', 'jscs:test', 'jscs:grunt', 'exec:qunit']);
 
   // JS distribution task.
   grunt.registerTask('dist-js', ['concat', 'uglify:core', 'commonjs']);

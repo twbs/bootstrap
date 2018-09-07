@@ -16,6 +16,7 @@ $(function () {
     afterEach: function () {
       $.fn.modal = $.fn.bootstrapModal
       delete $.fn.bootstrapModal
+      $('#qunit-fixture').html('')
     }
   })
 
@@ -26,7 +27,7 @@ $(function () {
 
   QUnit.test('should return jquery collection containing the element', function (assert) {
     assert.expect(2)
-    var $el = $('<div id="modal-test"/>')
+    var $el = $('<div id="modal-test"/>').appendTo('#qunit-fixture')
     var $modal = $el.bootstrapModal()
     assert.ok($modal instanceof $, 'returns jquery collection')
     assert.strictEqual($modal[0], $el[0], 'collection contains element')
@@ -42,6 +43,7 @@ $(function () {
     var done = assert.async()
 
     $('<div id="modal-test"/>')
+      .appendTo('#qunit-fixture')
       .on('shown.bs.modal', function () {
         assert.notEqual($('#modal-test').length, 0, 'modal inserted into dom')
         done()
@@ -54,6 +56,7 @@ $(function () {
     var done = assert.async()
 
     $('<div id="modal-test"/>')
+      .appendTo('#qunit-fixture')
       .on('show.bs.modal', function () {
         assert.ok(true, 'show event fired')
         done()
@@ -66,6 +69,7 @@ $(function () {
     var done = assert.async()
 
     $('<div id="modal-test"/>')
+      .appendTo('#qunit-fixture')
       .on('show.bs.modal', function (e) {
         e.preventDefault()
         assert.ok(true, 'show event fired')
@@ -82,6 +86,7 @@ $(function () {
     var done = assert.async()
 
     $('<div id="modal-test"/>')
+      .appendTo('#qunit-fixture')
       .on('shown.bs.modal', function () {
         assert.ok($('#modal-test').is(':visible'), 'modal visible')
         assert.notEqual($('#modal-test').length, 0, 'modal inserted into dom')
@@ -99,6 +104,7 @@ $(function () {
     var done = assert.async()
 
     $('<div id="modal-test"/>')
+      .appendTo('#qunit-fixture')
       .on('shown.bs.modal', function () {
         assert.ok($('#modal-test').is(':visible'), 'modal visible')
         assert.notEqual($('#modal-test').length, 0, 'modal inserted into dom')
@@ -116,6 +122,7 @@ $(function () {
     var done = assert.async()
 
     $('<div id="modal-test"><span class="close" data-dismiss="modal"/></div>')
+      .appendTo('#qunit-fixture')
       .on('shown.bs.modal', function () {
         assert.ok($('#modal-test').is(':visible'), 'modal visible')
         assert.notEqual($('#modal-test').length, 0, 'modal inserted into dom')
@@ -133,6 +140,7 @@ $(function () {
     var done = assert.async()
 
     $('<div id="modal-test" data-backdrop="false"/>')
+      .appendTo('#qunit-fixture')
       .on('shown.bs.modal', function () {
         assert.ok($('#modal-test').is(':visible'), 'modal visible')
         $(this).bootstrapModal('hide')
@@ -149,6 +157,7 @@ $(function () {
     var done = assert.async()
 
     $('<div id="modal-test"><div class="contents"/></div>')
+      .appendTo('#qunit-fixture')
       .on('shown.bs.modal', function () {
         assert.notEqual($('#modal-test').length, 0, 'modal inserted into dom')
         $('.contents').trigger('click')
@@ -166,7 +175,7 @@ $(function () {
     assert.expect(3)
     var done = assert.async()
 
-    var $div = $('<div id="modal-test"/>')
+    var $div = $('<div id="modal-test"/>').appendTo('#qunit-fixture')
     $div
       .on('shown.bs.modal', function () {
         assert.ok($('#modal-test').length, 'modal inserted into dom')
@@ -186,7 +195,7 @@ $(function () {
     assert.expect(3)
     var done = assert.async()
 
-    var $div = $('<div id="modal-test"/>')
+    var $div = $('<div id="modal-test"/>').appendTo('#qunit-fixture')
     $div
       .on('shown.bs.modal', function () {
         assert.ok($('#modal-test').length, 'modal inserted into dom')
@@ -209,6 +218,7 @@ $(function () {
     var triggered
 
     $('<div id="modal-test"><div class="contents"/></div>')
+      .appendTo('#qunit-fixture')
       .on('shown.bs.modal', function () {
         triggered = 0
         $('#modal-test').trigger('click')
@@ -226,6 +236,7 @@ $(function () {
     var done = assert.async()
 
     $('<div id="modal-test"><div class="contents"><div id="close" data-dismiss="modal"/></div></div>')
+      .appendTo('#qunit-fixture')
       .one('shown.bs.modal', function () {
         $('#close').trigger('click')
       })
@@ -252,6 +263,7 @@ $(function () {
     var $toggleBtn = $('<button data-toggle="modal" data-target="#modal-test"/>').appendTo('#qunit-fixture')
 
     $('<div id="modal-test"><div class="contents"><div id="close" data-dismiss="modal"/></div></div>')
+      .appendTo('#qunit-fixture')
       .on('hidden.bs.modal', function () {
         setTimeout(function () {
           assert.ok($(document.activeElement).is($toggleBtn), 'toggling element is once again focused')
@@ -273,6 +285,7 @@ $(function () {
     var $otherBtn = $('<button id="other-btn"/>').appendTo('#qunit-fixture')
 
     $('<div id="modal-test"><div class="contents"><div id="close" data-dismiss="modal"/></div>')
+      .appendTo('#qunit-fixture')
       .one('show.bs.modal', function (e) {
         e.preventDefault()
         $otherBtn.trigger('focus')
