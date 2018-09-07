@@ -36,7 +36,7 @@ env:
   matrix:
     - TWBS_TEST=core
     - TWBS_TEST=validate-html
-    - TWBS_TEST=sauce-js-unit
+    - TWBS_TEST=browserstack
 matrix:
   fast_finish: true
 notifications:

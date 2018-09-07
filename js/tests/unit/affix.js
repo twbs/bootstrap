@@ -34,12 +34,21 @@ $(function () {
 
   QUnit.test('should exit early if element is not visible', function (assert) {
     assert.expect(1)
-    var $affix = $('<div style="display: none"/>').bootstrapAffix()
+    var $affix = $('<div style="display: none"/>')
+      .appendTo('#qunit-fixture')
+      .bootstrapAffix()
+
     $affix.data('bs.affix').checkPosition()
     assert.ok(!$affix.hasClass('affix'), 'affix class was not added')
   })
 
   QUnit.test('should trigger affixed event after affix', function (assert) {
+    // Disable for iOS because of: https://bugs.webkit.org/show_bug.cgi?id=172854
+    if (window.navigator.userAgent.match(/iPhone/i)) {
+      assert.expect(0)
+      return
+    }
+
     assert.expect(2)
     var done = assert.async()
 
@@ -66,15 +75,22 @@ $(function () {
       })
 
     setTimeout(function () {
-      window.scrollTo(0, document.body.scrollHeight)
+      window.scrollTo(0, document.body.scrollHeight - 5)
 
+      // for testing in a browser
       setTimeout(function () {
         window.scroll(0, 0)
-      }, 16) // for testing in a browser
+      }, 150)
     }, 0)
   })
 
   QUnit.test('should affix-top when scrolling up to offset when parent has padding', function (assert) {
+    // Disable for iOS because of: https://bugs.webkit.org/show_bug.cgi?id=172854
+    if (window.navigator.userAgent.match(/iPhone/i)) {
+      assert.expect(0)
+      return
+    }
+
     assert.expect(1)
     var done = assert.async()
 
@@ -97,11 +113,11 @@ $(function () {
       })
 
     setTimeout(function () {
-      window.scrollTo(0, document.body.scrollHeight)
+      window.scrollTo(0, document.body.scrollHeight - 5)
 
       setTimeout(function () {
         window.scroll(0, 119)
       }, 250)
-    }, 250)
+    }, 0)
   })
 })

@@ -34,10 +34,15 @@ $(function () {
 
   QUnit.test('should show a collapsed element', function (assert) {
     assert.expect(2)
-    var $el = $('<div class="collapse"/>').bootstrapCollapse('show')
+    var done = assert.async()
 
-    assert.ok($el.hasClass('in'), 'has class "in"')
-    assert.ok(!/height/i.test($el.attr('style')), 'has height reset')
+    $('<div class="collapse"/>')
+      .on('shown.bs.collapse', function () {
+        assert.ok($(this).hasClass('in'), 'has class "in"')
+        assert.ok(!/height/i.test($(this).attr('style')), 'has height reset')
+        done()
+      })
+      .bootstrapCollapse('show')
   })
 
   QUnit.test('should hide a collapsed element', function (assert) {

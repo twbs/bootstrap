@@ -3,12 +3,11 @@
 Bootstrap uses [QUnit](http://api.qunitjs.com/), a powerful, easy-to-use JavaScript unit test framework. Each plugin has a file dedicated to its tests in `unit/<plugin-name>.js`.
 
 * `unit/` contains the unit test files for each Bootstrap plugin.
-* `vendor/` contains third-party testing-related code (QUnit and jQuery).
+* `vendor/` contains jQuery.
 * `visual/` contains "visual" tests which are run interactively in real browsers and require manual verification by humans.
 
-To run the unit test suite via [PhantomJS](http://phantomjs.org/), run `grunt test-js`.
-
-To run the unit test suite via a real web browser, open `index.html` in the browser.
+To run our unit tests on a real web browser [Karma](https://karma-runner.github.io/2.0/index.html), run `grunt test-js` or you can 
+open `index.html`.
 
 
 ## How do I add a new unit test?
