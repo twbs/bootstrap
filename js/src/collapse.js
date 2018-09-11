@@ -127,7 +127,13 @@ const Collapse = (($) => {
 
       if (this._parent) {
         actives = [].slice.call(this._parent.querySelectorAll(Selector.ACTIVES))
-          .filter((elem) => elem.getAttribute('data-parent') === this._config.parent)
+          .filter((elem) => {
+            if (typeof this._config.parent === 'string') {
+              return elem.getAttribute('data-parent') === this._config.parent
+            }
+
+            return elem.classList.contains(ClassName.COLLAPSE)
+          })
 
         if (actives.length === 0) {
           actives = null
@@ -282,7 +288,8 @@ const Collapse = (($) => {
     }
 
     _getParent() {
-      let parent = null
+      let parent
+
       if (Util.isElement(this._config.parent)) {
         parent = this._config.parent
 
@@ -309,14 +316,12 @@ const Collapse = (($) => {
     }
 
     _addAriaAndCollapsedClass(element, triggerArray) {
-      if (element) {
-        const isOpen = $(element).hasClass(ClassName.SHOW)
+      const isOpen = $(element).hasClass(ClassName.SHOW)
 
-        if (triggerArray.length) {
-          $(triggerArray)
-            .toggleClass(ClassName.COLLAPSED, !isOpen)
-            .attr('aria-expanded', isOpen)
-        }
+      if (triggerArray.length) {
+        $(triggerArray)
+          .toggleClass(ClassName.COLLAPSED, !isOpen)
+          .attr('aria-expanded', isOpen)
       }
     }
 
