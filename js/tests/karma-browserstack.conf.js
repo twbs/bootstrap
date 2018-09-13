@@ -27,9 +27,9 @@ module.exports = (config) => {
     files: [
       'site/docs/4.1/assets/js/vendor/jquery-slim.min.js',
       'site/docs/4.1/assets/js/vendor/popper.min.js',
-      'js/coverage/dist/util.js',
-      'js/coverage/dist/tooltip.js',
-      'js/coverage/dist/!(util|index|tooltip).js', // include all of our js/dist files except util.js, index.js and tooltip.js
+      'js/dist/util.js',
+      'js/dist/tooltip.js',
+      'js/dist/!(util|index|tooltip).js', // include all of our js/dist files except util.js, index.js and tooltip.js
       'js/tests/unit/*.js'
     ],
     customLaunchers: browsers,
