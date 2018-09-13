@@ -33,6 +33,9 @@
     cursor: pointer;
   }
 }
+span.page-link {
+  pointer-events: none;
+}
 
 .page-item {
   &:first-child {
