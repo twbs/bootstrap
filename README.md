@@ -2,18 +2,16 @@
   <a href="https://getbootstrap.com/">
     <img src="https://getbootstrap.com/docs/4.1/assets/brand/bootstrap-solid.svg" alt="Bootstrap logo" width=72 height=72>
   </a>
-
-  <h3 align="center">Bootstrap</h3>
-
+  <h3 align="center">Bootstrap Framework</h3>
   <p align="center">
-    Sleek, intuitive, and powerful front-end framework for faster and easier web development.
+    Sleek, intuitive, and powerful front-end framework for web development faster and easier .
     <br>
     <a href="https://getbootstrap.com/docs/4.1/"><strong>Explore Bootstrap docs »</strong></a>
     <br>
     <br>
-    <a href="https://github.com/twbs/bootstrap/issues/new?template=bug.md">Report bug</a>
+    <a href="https://github.com/twbs/bootstrap/issues/new?template=bug.md">Report a bug</a>
     ·
-    <a href="https://github.com/twbs/bootstrap/issues/new?template=feature.md&labels=feature">Request feature</a>
+    <a href="https://github.com/twbs/bootstrap/issues/new?template=feature.md&labels=feature">Requesta feature</a>
     ·
     <a href="https://themes.getbootstrap.com/">Themes</a>
     ·
@@ -22,9 +20,7 @@
     <a href="https://blog.getbootstrap.com/">Blog</a>
   </p>
 </p>
-
 <br>
-
 ## Table of contents
 
 - [Quick start](#quick-start)
@@ -118,19 +114,15 @@ Documentation search is powered by [Algolia's DocSearch](https://community.algol
 1. Run through the [tooling setup](https://getbootstrap.com/docs/4.1/getting-started/build-tools/#tooling-setup) to install Jekyll (the site builder) and other Ruby dependencies with `bundle install`.
 2. Run `npm install` to install Node.js dependencies.
 3. Run `npm start` to compile CSS and JavaScript files, generate our docs, and watch for changes.
-4. Open `http://localhost:9001` in your browser, and voilà.
+4. Open `http://localhost:9001` in your browser.
 
-Learn more about using Jekyll by reading its [documentation](https://jekyllrb.com/docs/).
-
+Learn more jekyll by reading its [documentation](https://jekyllrb.com/docs/).
 ### Documentation for previous releases
 
 - For v2.3.2: <https://getbootstrap.com/2.3.2/>
 - For v3.3.x: <https://getbootstrap.com/docs/3.3/>
 - For v4.0.x: <https://getbootstrap.com/docs/4.0/>
-
 [Previous releases](https://github.com/twbs/bootstrap/releases) and their documentation are also available for download.
-
-
 ## Contributing
 
 Please read through our [contributing guidelines](https://github.com/twbs/bootstrap/blob/master/CONTRIBUTING.md). Included are directions for opening issues, coding standards, and notes on development.
@@ -138,10 +130,7 @@ Please read through our [contributing guidelines](https://github.com/twbs/bootst
 Moreover, if your pull request contains JavaScript patches or features, you must include [relevant unit tests](https://github.com/twbs/bootstrap/tree/master/js/tests). All HTML and CSS should conform to the [Code Guide](https://github.com/mdo/code-guide), maintained by [Mark Otto](https://github.com/mdo).
 
 Editor preferences are available in the [editor config](https://github.com/twbs/bootstrap/blob/master/.editorconfig) for easy use in common text editors. Read more and download plugins at <https://editorconfig.org/>.
-
-
 ## Community
-
 Get updates on Bootstrap's development and chat with the project maintainers and community members.
 
 - Follow [@getbootstrap on Twitter](https://twitter.com/getbootstrap).
@@ -150,34 +139,25 @@ Get updates on Bootstrap's development and chat with the project maintainers and
 - Chat with fellow Bootstrappers in IRC. On the `irc.freenode.net` server, in the `##bootstrap` channel.
 - Implementation help may be found at Stack Overflow (tagged [`bootstrap-4`](https://stackoverflow.com/questions/tagged/bootstrap-4)).
 - Developers should use the keyword `bootstrap` on packages which modify or add to the functionality of Bootstrap when distributing through [npm](https://www.npmjs.com/browse/keyword/bootstrap) or similar delivery mechanisms for maximum discoverability.
-
-
 ## Versioning
 
 For transparency into our release cycle and in striving to maintain backward compatibility, Bootstrap is maintained under [the Semantic Versioning guidelines](https://semver.org/). Sometimes we screw up, but we'll adhere to those rules whenever possible.
 
 See [the Releases section of our GitHub project](https://github.com/twbs/bootstrap/releases) for changelogs for each release version of Bootstrap. Release announcement posts on [the official Bootstrap blog](https://blog.getbootstrap.com/) contain summaries of the most noteworthy changes made in each release.
-
-
 ## Creators
-
 **Mark Otto**
 
 - <https://twitter.com/mdo>
 - <https://github.com/mdo>
 
 **Jacob Thornton**
-
 - <https://twitter.com/fat>
 - <https://github.com/fat>
-
 
 ## Thanks
 
 <img src="https://live.browserstack.com/images/opensource/browserstack-logo.svg" alt="BrowserStack Logo" width="490" height="106">
 
 Thanks to [BrowserStack](https://www.browserstack.com/) for providing the infrastructure that allows us to test in real browsers!
-
 ## Copyright and license
-
-Code and documentation copyright 2011-2018 the [Bootstrap Authors](https://github.com/twbs/bootstrap/graphs/contributors) and [Twitter, Inc.](https://twitter.com) Code released under the [MIT License](https://github.com/twbs/bootstrap/blob/master/LICENSE). Docs released under [Creative Commons](https://github.com/twbs/bootstrap/blob/master/docs/LICENSE).
+  Copyright 2018-2019 the [Bootstrap Authors](https://github.com/twbs/bootstrap/graphs/contributors) and [Twitter, Inc.](https://twitter.com) Code released under the [MIT License](https://github.com/twbs/bootstrap/blob/master/LICENSE). Docs released under [Creative Commons](https://github.com/twbs/bootstrap/blob/master/docs/LICENSE).

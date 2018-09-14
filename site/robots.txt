@@ -7,3 +7,5 @@
 User-agent: *
 Disallow:
 Sitemap: {{ site.url }}/sitemap.xml
+
+#https://getbosstrap.com

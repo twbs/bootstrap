@@ -1,5 +1,3 @@
----
----
 {
     "name": "Bootstrap",
     "short_name": "Bootstrap",
@@ -16,7 +14,7 @@
         }
     ],
     "start_url": "/",
-    "theme_color": "#563d7c",
-    "background_color": "#563d7c",
+    "theme_color": "#563d00",
+    "background_color": "#563d00",
     "display": "standalone"
 }

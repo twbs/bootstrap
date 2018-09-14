@@ -1,15 +1,7 @@
-/*!
- * Script to build our plugins to use them separately.
- * Copyright 2018 The Bootstrap Authors
- * Copyright 2018 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */
-
 const rollup  = require('rollup')
 const path    = require('path')
 const babel   = require('rollup-plugin-babel')
 const TEST    = process.env.NODE_ENV === 'test'
-
 const plugins = [
   babel({
     exclude: 'node_modules/**', // Only transpile our source code
@@ -38,11 +30,9 @@ const bsPlugins = {
   Tooltip: path.resolve(__dirname, '../js/src/tooltip.js'),
   Util: path.resolve(__dirname, '../js/src/util.js')
 }
-
 Object.keys(bsPlugins)
   .forEach((pluginKey) => {
     console.log(`Building ${pluginKey} plugin...`)
-
     const external = ['jquery', 'popper.js']
     const globals = {
       jquery: 'jQuery', // Ensure we use jQuery which is always available even in noConflict mode
