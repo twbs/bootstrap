@@ -11,7 +11,6 @@
  * ------------------------------------------------------------------------
  */
 
-const TRANSITION_END = 'transitionend'
 const MAX_UID = 1000000
 const MILLISECONDS_MULTIPLIER = 1000
 
@@ -20,9 +19,14 @@ function toType(obj) {
   return {}.toString.call(obj).match(/\s([a-z]+)/i)[1].toLowerCase()
 }
 
-const Util = {
+/**
+ * --------------------------------------------------------------------------
+ * Public Util Api
+ * --------------------------------------------------------------------------
+ */
 
-  TRANSITION_END: 'bsTransitionEnd',
+const Util = {
+  TRANSITION_END: 'transitionend',
 
   getUID(prefix) {
     do {
@@ -79,19 +83,25 @@ const Util = {
     element.dispatchEvent(new Event(Util.TRANSITION_END))
   },
 
-  // TODO: Remove in v5
-  supportsTransitionEnd() {
-    return Boolean(TRANSITION_END)
-  },
-
   isElement(obj) {
     return (obj[0] || obj).nodeType
   },
 
   emulateTransitionEnd(element, duration) {
+    let called = false
+    const durationPadding = 5
+    const emulatedDuration = duration + durationPadding
+    function listener() {
+      called = true
+      element.removeEventListener(Util.TRANSITION_END, listener)
+    }
+
+    element.addEventListener(Util.TRANSITION_END, listener)
     setTimeout(() => {
-      Util.triggerTransitionEnd(element)
-    }, duration)
+      if (!called) {
+        Util.triggerTransitionEnd(element)
+      }
+    }, emulatedDuration)
   },
 
   typeCheckConfig(componentName, config, configTypes) {
@@ -117,13 +127,7 @@ const Util = {
       return []
     }
 
-    const strRepresentation = Object.prototype.toString.call(nodeList)
-    if (strRepresentation === '[object NodeList]' ||
-      strRepresentation === '[object HTMLCollection]' || strRepresentation === '[object Array]') {
-      return Array.prototype.slice.call(nodeList)
-    }
-
-    return [nodeList]
+    return [].slice.call(nodeList)
   },
 
   isVisible(element) {

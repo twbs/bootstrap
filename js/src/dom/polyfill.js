@@ -77,8 +77,9 @@ const Polyfill = (() => {
   }
 
   // matches polyfill (see: https://mzl.la/2ikXneG)
-  if (!Element.prototype.matches) {
-    Element.prototype.matches =
+  let matches = Element.prototype.matches
+  if (!matches) {
+    matches =
       Element.prototype.msMatchesSelector ||
       Element.prototype.webkitMatchesSelector
   }
@@ -86,15 +87,16 @@ const Polyfill = (() => {
   // closest polyfill (see: https://mzl.la/2vXggaI)
   let closest
   if (!Element.prototype.closest) {
+    const nodeText = 3
     closest = (element, selector) => {
       let ancestor = element
       do {
-        if (ancestor.matches(selector)) {
+        if (matches.call(ancestor, selector)) {
           return ancestor
         }
 
         ancestor = ancestor.parentElement
-      } while (ancestor !== null && ancestor.nodeType === Node.ELEMENT_NODE)
+      } while (ancestor !== null && ancestor.nodeType === Node.ELEMENT_NODE && ancestor.nodeType !== nodeText)
 
       return null
     }
@@ -186,6 +188,7 @@ const Polyfill = (() => {
     defaultPreventedPreservedOnDispatch,
     focusIn: typeof window.onfocusin === 'undefined',
     closest,
+    matches,
     find,
     findOne
   }
