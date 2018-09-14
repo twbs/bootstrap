@@ -86,10 +86,6 @@
   },
   "bugs": {
     "url": "https://github.com/twbs/bootstrap/issues"
-  },  "dependencies": {},
-  "peerDependencies": {
-    "jquery": "1.9.1 - 3",
-    "popper.js": "^1.14.3"
   },
   "devDependencies": {
     "@babel/cli": "7.0.0-beta.44",
@@ -216,11 +212,10 @@
         ],
         "exports": "$"
       }
-    },
-    "dependencies": {},
+    },  "dependencies": {},
     "peerDependencies": {
       "jquery": "1.9.1 - 3",
-      "popper.js": "^1.14.1"
+      "popper.js": "^1.14.3"
     }
   }
 }
