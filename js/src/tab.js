@@ -128,8 +128,8 @@ const Tab = (($) => {
       }
 
       if (target) {
-        for (let i = 0;i < target.length; i++) {
-          this._activate(target[i], target[i].parentNode, complete);
+        for (let i = 0; i < target.length; i++) {
+          this._activate(target[i], target[i].parentNode, complete)
         }
       } else {
         complete()
