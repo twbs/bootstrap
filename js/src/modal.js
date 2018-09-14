@@ -394,9 +394,8 @@ class Modal {
 
       if (this._element.classList.contains(ClassName.FADE)) {
         const backdropTransitionDuration = Util.getTransitionDurationFromElement(this._backdrop)
-
         EventHandler.one(this._backdrop, Util.TRANSITION_END, callbackRemove)
-        Util.emulateTransitionEnd(backdropTransitionDuration)
+        Util.emulateTransitionEnd(this._backdrop, backdropTransitionDuration)
       } else {
         callbackRemove()
       }
