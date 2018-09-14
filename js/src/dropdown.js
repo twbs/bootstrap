@@ -270,7 +270,7 @@ class Dropdown {
   }
 
   _detectNavbar() {
-    return Util.makeArray(SelectorEngine.closest(this._element, '.navbar')).length > 0
+    return Boolean(SelectorEngine.closest(this._element, '.navbar'))
   }
 
   _getPopperConfig() {
