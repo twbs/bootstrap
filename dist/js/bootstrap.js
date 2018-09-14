@@ -1481,7 +1481,6 @@
           } // Disable Popper.js if we have a static display
 
         };
-
         if (this._config.display === 'static') {
           popperConfig.modifiers.applyStyle = {
             enabled: false
@@ -1499,17 +1498,14 @@
             data = new Dropdown(this, _config);
             $$$1(this).data(DATA_KEY, data);
           }
-
           if (typeof config === 'string') {
             if (typeof data[config] === 'undefined') {
               throw new TypeError("No method named \"" + config + "\"");
             }
-
             data[config]();
           }
         });
       };
-
       Dropdown._clearMenus = function _clearMenus(event) {
         if (event && (event.which === RIGHT_MOUSE_BUTTON_WHICH || event.type === 'keyup' && event.which !== TAB_KEYCODE)) {
           return;
@@ -1585,7 +1581,6 @@
         if (/input|textarea/i.test(event.target.tagName) ? event.which === SPACE_KEYCODE || event.which !== ESCAPE_KEYCODE && (event.which !== ARROW_DOWN_KEYCODE && event.which !== ARROW_UP_KEYCODE || $$$1(event.target).closest(Selector.MENU).length) : !REGEXP_KEYDOWN.test(event.which)) {
           return;
         }
-
         event.preventDefault();
         event.stopPropagation();
 
@@ -1679,44 +1674,32 @@
       $$$1.fn[NAME] = JQUERY_NO_CONFLICT;
       return Dropdown._jQueryInterface;
     };
-
     return Dropdown;
   }($, Popper);
-
-  /**
-   * --------------------------------------------------------------------------
-   * Bootstrap (v4.1.3): modal.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
-   * --------------------------------------------------------------------------
-   */
-
   var Modal = function ($$$1) {
     /**
      * ------------------------------------------------------------------------
      * Constants
      * ------------------------------------------------------------------------
      */
-    var NAME = 'modal';
-    var VERSION = '4.1.3';
-    var DATA_KEY = 'bs.modal';
-    var EVENT_KEY = "." + DATA_KEY;
-    var DATA_API_KEY = '.data-api';
-    var JQUERY_NO_CONFLICT = $$$1.fn[NAME];
-    var ESCAPE_KEYCODE = 27; // KeyboardEvent.which value for Escape (Esc) key
-
-    var Default = {
+    var NAME = 'modal',
+        VERSION = '4.1.3',
+        DATA_KEY = 'bs.modal',
+        EVENT_KEY = "." + DATA_KEY,
+        DATA_API_KEY = '.data-api',
+        JQUERY_NO_CONFLICT = $$$1.fn[NAME],
+        ESCAPE_KEYCODE = 27, // KeyboardEvent.which value for Escape (Esc) ke
+    Default = {
       backdrop: true,
       keyboard: true,
       focus: true,
       show: true
-    };
-    var DefaultType = {
+    },DefaultType = {
       backdrop: '(boolean|string)',
       keyboard: 'boolean',
       focus: 'boolean',
       show: 'boolean'
-    };
-    var Event = {
+    },Event = {
       HIDE: "hide" + EVENT_KEY,
       HIDDEN: "hidden" + EVENT_KEY,
       SHOW: "show" + EVENT_KEY,
@@ -1728,15 +1711,13 @@
       MOUSEUP_DISMISS: "mouseup.dismiss" + EVENT_KEY,
       MOUSEDOWN_DISMISS: "mousedown.dismiss" + EVENT_KEY,
       CLICK_DATA_API: "click" + EVENT_KEY + DATA_API_KEY
-    };
-    var ClassName = {
+    },ClassName = {
       SCROLLBAR_MEASURER: 'modal-scrollbar-measure',
       BACKDROP: 'modal-backdrop',
       OPEN: 'modal-open',
       FADE: 'fade',
       SHOW: 'show'
-    };
-    var Selector = {
+    },Selector = {
       DIALOG: '.modal-dialog',
       DATA_TOGGLE: '[data-toggle="modal"]',
       DATA_DISMISS: '[data-dismiss="modal"]',
@@ -1747,10 +1728,7 @@
        * Class Definition
        * ------------------------------------------------------------------------
        */
-
-    };
-
-    var Modal =
+    },Modal =
     /*#__PURE__*/
     function () {
       function Modal(element, config) {
@@ -1763,10 +1741,7 @@
         this._ignoreBackdropClick = false;
         this._scrollbarWidth = 0;
       } // Getters
-
-
       var _proto = Modal.prototype;
-
       // Public
       _proto.toggle = function toggle(relatedTarget) {
         return this._isShown ? this.hide() : this.show(relatedTarget);
@@ -2037,7 +2012,6 @@
           if (animate) {
             Util.reflow(this._backdrop);
           }
-
           $$$1(this._backdrop).addClass(ClassName.SHOW);
 
           if (!callback) {
