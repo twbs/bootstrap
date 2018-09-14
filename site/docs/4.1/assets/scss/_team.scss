@@ -1,0 +1,32 @@
+.bd-team {
+  margin-bottom: 1.5rem;
+
+  .team-member {
+    line-height: 2rem;
+    color: #555;
+  }
+
+  .team-member:hover,
+  .team-member:focus {
+    color: #333;
+  }
+
+  .team-member:hover {
+    text-decoration: none;
+  }
+
+  .github-btn {
+    float: right;
+    width: 180px;
+    height: 1.25rem;
+    margin-top: .25rem;
+    border: 0;
+  }
+
+  img {
+    float: left;
+    width: 2rem;
+    margin-right: .5rem;
+    border-radius: .25rem;
+  }
+}
