@@ -311,13 +311,13 @@ class Collapse {
     const selector =
       `[data-toggle="collapse"][data-parent="${this._config.parent}"]`
 
-    const elements = Util.makeArray(SelectorEngine.find(selector, parent))
-    elements.forEach((element) => {
-      this._addAriaAndCollapsedClass(
-        Collapse._getTargetFromElement(element),
-        [element]
-      )
-    })
+    Util.makeArray(SelectorEngine.find(selector, parent))
+      .forEach((element) => {
+        this._addAriaAndCollapsedClass(
+          Collapse._getTargetFromElement(element),
+          [element]
+        )
+      })
 
     return parent
   }
