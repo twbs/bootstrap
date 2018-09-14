@@ -26,7 +26,7 @@ jobs:
   include:
     - stage: browser
       node_js: 8
-      script: if ! git log --format=%B --no-merges -n 1 | grep '\[skip browser\]'; then npm test && npm run js-test-cloud; fi
+      script: if ! git log --format=%B --no-merges -n 1 | grep '\[skip browser\]'; then npm run js-test-cloud; fi
 cache:
   directories:
     - node_modules
