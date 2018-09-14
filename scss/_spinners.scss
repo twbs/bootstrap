@@ -17,10 +17,7 @@
   border: $spinner-border-width solid;
   border-color: currentColor transparent currentColor currentColor;
   border-radius: 50%;
-  animation-name: spinner-border;
-  animation-duration: .75s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
+  animation: spinner-border .75s linear infinite;
 }
 
 .spinner-border-sm {
@@ -57,10 +54,7 @@
   vertical-align: text-bottom;
   background-color: currentColor;
   border-radius: 50%;
-  animation-name: spinner-grow;
-  animation-duration: .75s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
+  animation: spinner-grow .75s linear infinite;
 }
 
 .spinner-grow-sm {
