@@ -1,19 +1,7 @@
 import $ from 'jquery'
 import Util from './util'
 
-/**
- * --------------------------------------------------------------------------
- * Bootstrap (v4.1.3): carousel.js
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- * --------------------------------------------------------------------------
- */
-
 const Carousel = (($) => {
-  /**
-   * ------------------------------------------------------------------------
-   * Constants
-   * ------------------------------------------------------------------------
-   */
 
   const NAME                   = 'carousel'
   const VERSION                = '4.1.3'

@@ -71,14 +71,14 @@
      * Constants
      * ------------------------------------------------------------------------
      */
-    var NAME = 'tooltip';
-    var VERSION = '4.1.3';
-    var DATA_KEY = 'bs.tooltip';
-    var EVENT_KEY = "." + DATA_KEY;
-    var JQUERY_NO_CONFLICT = $$$1.fn[NAME];
-    var CLASS_PREFIX = 'bs-tooltip';
-    var BSCLS_PREFIX_REGEX = new RegExp("(^|\\s)" + CLASS_PREFIX + "\\S+", 'g');
-    var DefaultType = {
+    var NAME = 'bstooltip',
+     VERSION = '4.1.3',
+     DATA_KEY = 'bs.tooltip',
+     EVENT_KEY = "." + DATA_KEY,
+     JQUERY_NO_CONFLICT = $$$1.fn[NAME],
+     CLASS_PREFIX = 'bs-tooltip',
+     BSCLS_PREFIX_REGEX = new RegExp("(^|\\s)" + CLASS_PREFIX + "\\S+", 'g')
+      , DefaultType = {
       animation: 'boolean',
       template: 'string',
       title: '(string|element|function)',
@@ -91,15 +91,13 @@
       container: '(string|element|boolean)',
       fallbackPlacement: '(string|array)',
       boundary: '(string|element)'
-    };
-    var AttachmentMap = {
+    }, AttachmentMap = {
       AUTO: 'auto',
       TOP: 'top',
       RIGHT: 'right',
       BOTTOM: 'bottom',
       LEFT: 'left'
-    };
-    var Default = {
+    },Default = {
       animation: true,
       template: '<div class="tooltip" role="tooltip">' + '<div class="arrow"></div>' + '<div class="tooltip-inner"></div></div>',
       trigger: 'hover focus',
@@ -112,12 +110,10 @@
       container: false,
       fallbackPlacement: 'flip',
       boundary: 'scrollParent'
-    };
-    var HoverState = {
+    }, HoverState = {
       SHOW: 'show',
       OUT: 'out'
-    };
-    var Event = {
+    }, Event = {
       HIDE: "hide" + EVENT_KEY,
       HIDDEN: "hidden" + EVENT_KEY,
       SHOW: "show" + EVENT_KEY,
@@ -128,17 +124,14 @@
       FOCUSOUT: "focusout" + EVENT_KEY,
       MOUSEENTER: "mouseenter" + EVENT_KEY,
       MOUSELEAVE: "mouseleave" + EVENT_KEY
-    };
-    var ClassName = {
+    },ClassName = {
       FADE: 'fade',
       SHOW: 'show'
-    };
-    var Selector = {
+    },Selector = {
       TOOLTIP: '.tooltip',
       TOOLTIP_INNER: '.tooltip-inner',
       ARROW: '.arrow'
-    };
-    var Trigger = {
+    }, Trigger = {
       HOVER: 'hover',
       FOCUS: 'focus',
       CLICK: 'click',
@@ -149,9 +142,7 @@
        * ------------------------------------------------------------------------
        */
 
-    };
-
-    var Tooltip =
+    }, Tooltip =
     /*#__PURE__*/
     function () {
       function Tooltip(element, config) {
@@ -162,29 +153,21 @@
         if (typeof Popper === 'undefined') {
           throw new TypeError('Bootstrap tooltips require Popper.js (https://popper.js.org)');
         } // private
-
-
         this._isEnabled = true;
         this._timeout = 0;
         this._hoverState = '';
         this._activeTrigger = {};
         this._popper = null; // Protected
-
         this.element = element;
         this.config = this._getConfig(config);
         this.tip = null;
-
         this._setListeners();
       } // Getters
-
-
       var _proto = Tooltip.prototype;
-
       // Public
       _proto.enable = function enable() {
         this._isEnabled = true;
       };
-
       _proto.disable = function disable() {
         this._isEnabled = false;
       };
@@ -192,21 +175,18 @@
       _proto.toggleEnabled = function toggleEnabled() {
         this._isEnabled = !this._isEnabled;
       };
-
       _proto.toggle = function toggle(event) {
         if (!this._isEnabled) {
           return;
         }
 
         if (event) {
-          var dataKey = this.constructor.DATA_KEY;
-          var context = $$$1(event.currentTarget).data(dataKey);
+          var dataKey = this.constructor.DATA_KEY,context = $$$1(event.currentTarget).data(dataKey);
 
           if (!context) {
             context = new this.constructor(event.currentTarget, this._getDelegateConfig());
             $$$1(event.currentTarget).data(dataKey, context);
           }
-
           context._activeTrigger.click = !context._activeTrigger.click;
 
           if (context._isWithActiveTrigger()) {

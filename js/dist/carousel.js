@@ -64,7 +64,7 @@
   }
 
   var Carousel = function ($$$1) {
-    var NAME = 'carousel', 
+    var NAME = 'bscarousel', 
     VERSION = '4.1.3',
     DATA_KEY = 'bs.carousel',
     EVENT_KEY = "." + DATA_KEY, 

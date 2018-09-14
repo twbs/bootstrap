@@ -30,7 +30,7 @@
      * Constants
      * ------------------------------------------------------------------------
      */
-    var NAME = 'button',
+    var NAME = 'bsbutton',
        VERSION = '4.1.3',
         DATA_KEY = 'bs.button',
         EVENT_KEY = "." + DATA_KEY,
