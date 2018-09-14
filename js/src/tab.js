@@ -9,253 +9,250 @@ import Util from './util'
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
-const Tab = (() => {
-  /**
-   * ------------------------------------------------------------------------
-   * Constants
-   * ------------------------------------------------------------------------
-   */
 
-  const NAME               = 'tab'
-  const VERSION            = '4.1.3'
-  const DATA_KEY           = 'bs.tab'
-  const EVENT_KEY          = `.${DATA_KEY}`
-  const DATA_API_KEY       = '.data-api'
+/**
+ * ------------------------------------------------------------------------
+ * Constants
+ * ------------------------------------------------------------------------
+ */
 
-  const Event = {
-    HIDE           : `hide${EVENT_KEY}`,
-    HIDDEN         : `hidden${EVENT_KEY}`,
-    SHOW           : `show${EVENT_KEY}`,
-    SHOWN          : `shown${EVENT_KEY}`,
-    CLICK_DATA_API : `click${EVENT_KEY}${DATA_API_KEY}`
+const NAME               = 'tab'
+const VERSION            = '4.1.3'
+const DATA_KEY           = 'bs.tab'
+const EVENT_KEY          = `.${DATA_KEY}`
+const DATA_API_KEY       = '.data-api'
+
+const Event = {
+  HIDE           : `hide${EVENT_KEY}`,
+  HIDDEN         : `hidden${EVENT_KEY}`,
+  SHOW           : `show${EVENT_KEY}`,
+  SHOWN          : `shown${EVENT_KEY}`,
+  CLICK_DATA_API : `click${EVENT_KEY}${DATA_API_KEY}`
+}
+
+const ClassName = {
+  DROPDOWN_MENU : 'dropdown-menu',
+  ACTIVE        : 'active',
+  DISABLED      : 'disabled',
+  FADE          : 'fade',
+  SHOW          : 'show'
+}
+
+const Selector = {
+  DROPDOWN              : '.dropdown',
+  NAV_LIST_GROUP        : '.nav, .list-group',
+  ACTIVE                : '.active',
+  ACTIVE_UL             : ':scope > li > .active',
+  DATA_TOGGLE           : '[data-toggle="tab"], [data-toggle="pill"], [data-toggle="list"]',
+  DROPDOWN_TOGGLE       : '.dropdown-toggle',
+  DROPDOWN_ACTIVE_CHILD : ':scope > .dropdown-menu .active'
+}
+
+/**
+ * ------------------------------------------------------------------------
+ * Class Definition
+ * ------------------------------------------------------------------------
+ */
+
+class Tab {
+  constructor(element) {
+    this._element = element
+
+    Data.setData(this._element, DATA_KEY, this)
   }
 
-  const ClassName = {
-    DROPDOWN_MENU : 'dropdown-menu',
-    ACTIVE        : 'active',
-    DISABLED      : 'disabled',
-    FADE          : 'fade',
-    SHOW          : 'show'
+  // Getters
+
+  static get VERSION() {
+    return VERSION
   }
 
-  const Selector = {
-    DROPDOWN              : '.dropdown',
-    NAV_LIST_GROUP        : '.nav, .list-group',
-    ACTIVE                : '.active',
-    ACTIVE_UL             : ':scope > li > .active',
-    DATA_TOGGLE           : '[data-toggle="tab"], [data-toggle="pill"], [data-toggle="list"]',
-    DROPDOWN_TOGGLE       : '.dropdown-toggle',
-    DROPDOWN_ACTIVE_CHILD : ':scope > .dropdown-menu .active'
-  }
+  // Public
 
-  /**
-   * ------------------------------------------------------------------------
-   * Class Definition
-   * ------------------------------------------------------------------------
-   */
-
-  class Tab {
-    constructor(element) {
-      this._element = element
-
-      Data.setData(this._element, DATA_KEY, this)
+  show() {
+    if (this._element.parentNode &&
+        this._element.parentNode.nodeType === Node.ELEMENT_NODE &&
+        this._element.classList.contains(ClassName.ACTIVE) ||
+        this._element.classList.contains(ClassName.DISABLED)) {
+      return
     }
 
-    // Getters
+    let target
+    let previous
+    const listElement = SelectorEngine.closest(this._element, Selector.NAV_LIST_GROUP)
+    const selector    = Util.getSelectorFromElement(this._element)
 
-    static get VERSION() {
-      return VERSION
+    if (listElement) {
+      const itemSelector = listElement.nodeName === 'UL' ? Selector.ACTIVE_UL : Selector.ACTIVE
+      previous = Util.makeArray(SelectorEngine.find(itemSelector, listElement))
+      previous = previous[previous.length - 1]
     }
 
-    // Public
+    let hideEvent = null
 
-    show() {
-      if (this._element.parentNode &&
-          this._element.parentNode.nodeType === Node.ELEMENT_NODE &&
-          this._element.classList.contains(ClassName.ACTIVE) ||
-          this._element.classList.contains(ClassName.DISABLED)) {
-        return
-      }
+    if (previous) {
+      hideEvent = EventHandler.trigger(previous, Event.HIDE, {
+        relatedTarget: this._element
+      })
+    }
 
-      let target
-      let previous
-      const listElement = SelectorEngine.closest(this._element, Selector.NAV_LIST_GROUP)
-      const selector    = Util.getSelectorFromElement(this._element)
+    const showEvent = EventHandler.trigger(this._element, Event.SHOW, {
+      relatedTarget: previous
+    })
 
-      if (listElement) {
-        const itemSelector = listElement.nodeName === 'UL' ? Selector.ACTIVE_UL : Selector.ACTIVE
-        previous = Util.makeArray(SelectorEngine.find(itemSelector, listElement))
-        previous = previous[previous.length - 1]
-      }
+    if (showEvent.defaultPrevented ||
+      hideEvent !== null && hideEvent.defaultPrevented) {
+      return
+    }
 
-      let hideEvent = null
+    if (selector) {
+      target = SelectorEngine.findOne(selector)
+    }
 
-      if (previous) {
-        hideEvent = EventHandler.trigger(previous, Event.HIDE, {
-          relatedTarget: this._element
-        })
-      }
+    this._activate(
+      this._element,
+      listElement
+    )
 
-      const showEvent = EventHandler.trigger(this._element, Event.SHOW, {
+    const complete = () => {
+      EventHandler.trigger(previous, Event.HIDDEN, {
+        relatedTarget: this._element
+      })
+      EventHandler.trigger(this._element, Event.SHOWN, {
         relatedTarget: previous
       })
-
-      if (showEvent.defaultPrevented ||
-        hideEvent !== null && hideEvent.defaultPrevented) {
-        return
-      }
-
-      if (selector) {
-        target = SelectorEngine.findOne(selector)
-      }
-
-      this._activate(
-        this._element,
-        listElement
-      )
-
-      const complete = () => {
-        EventHandler.trigger(previous, Event.HIDDEN, {
-          relatedTarget: this._element
-        })
-        EventHandler.trigger(this._element, Event.SHOWN, {
-          relatedTarget: previous
-        })
-      }
-
-      if (target) {
-        this._activate(target, target.parentNode, complete)
-      } else {
-        complete()
-      }
     }
 
-    dispose() {
-      Data.removeData(this._element, DATA_KEY)
-      this._element = null
-    }
-
-    // Private
-
-    _activate(element, container, callback) {
-      const activeElements = container.nodeName === 'UL'
-        ? SelectorEngine.find(Selector.ACTIVE_UL, container)
-        : SelectorEngine.children(container, Selector.ACTIVE)
-
-      const active          = activeElements[0]
-      const isTransitioning = callback &&
-        (active && active.classList.contains(ClassName.FADE))
-
-      const complete = () => this._transitionComplete(
-        element,
-        active,
-        callback
-      )
-
-      if (active && isTransitioning) {
-        const transitionDuration = Util.getTransitionDurationFromElement(active)
-        EventHandler.one(active, Util.TRANSITION_END, complete)
-        Util.emulateTransitionEnd(active, transitionDuration)
-      } else {
-        complete()
-      }
-
-      if (active) {
-        active.classList.remove(ClassName.SHOW)
-      }
-    }
-
-    _transitionComplete(element, active, callback) {
-      if (active) {
-        active.classList.remove(ClassName.ACTIVE)
-        active.classList.remove(ClassName.SHOW)
-
-        const dropdownChild = SelectorEngine.findOne(Selector.DROPDOWN_ACTIVE_CHILD, active.parentNode)
-        if (dropdownChild) {
-          dropdownChild.classList.remove(ClassName.ACTIVE)
-        }
-
-        if (active.getAttribute('role') === 'tab') {
-          active.setAttribute('aria-selected', false)
-        }
-      }
-
-      element.classList.add(ClassName.ACTIVE)
-      if (element.getAttribute('role') === 'tab') {
-        element.setAttribute('aria-selected', true)
-      }
-
-      Util.reflow(element)
-      element.classList.add(ClassName.SHOW)
-
-      if (element.parentNode &&
-          element.parentNode.classList.contains(ClassName.DROPDOWN_MENU)) {
-        const dropdownElement = SelectorEngine.closest(element, Selector.DROPDOWN)
-        if (dropdownElement) {
-          SelectorEngine
-            .findOne(Selector.DROPDOWN_TOGGLE, dropdownElement)
-            .classList.add(ClassName.ACTIVE)
-        }
-
-        element.setAttribute('aria-expanded', true)
-      }
-
-      if (callback) {
-        callback()
-      }
-    }
-
-    // Static
-
-    static _jQueryInterface(config) {
-      return this.each(function () {
-        const data = Data.getData(this, DATA_KEY) || new Tab(this)
-
-        if (typeof config === 'string') {
-          if (typeof data[config] === 'undefined') {
-            throw new TypeError(`No method named "${config}"`)
-          }
-          data[config]()
-        }
-      })
-    }
-
-    static _getInstance(element) {
-      return Data.getData(element, DATA_KEY)
+    if (target) {
+      this._activate(target, target.parentNode, complete)
+    } else {
+      complete()
     }
   }
 
-  /**
-   * ------------------------------------------------------------------------
-   * Data Api implementation
-   * ------------------------------------------------------------------------
-   */
+  dispose() {
+    Data.removeData(this._element, DATA_KEY)
+    this._element = null
+  }
 
-  EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
-    event.preventDefault()
+  // Private
 
-    const data = Data.getData(this, DATA_KEY) || new Tab(this)
-    data.show()
-  })
+  _activate(element, container, callback) {
+    const activeElements = container.nodeName === 'UL'
+      ? SelectorEngine.find(Selector.ACTIVE_UL, container)
+      : SelectorEngine.children(container, Selector.ACTIVE)
 
-  /**
-   * ------------------------------------------------------------------------
-   * jQuery
-   * ------------------------------------------------------------------------
-   */
+    const active          = activeElements[0]
+    const isTransitioning = callback &&
+      (active && active.classList.contains(ClassName.FADE))
 
-  const $ = Util.jQuery
-  if (typeof $ !== 'undefined') {
-    const JQUERY_NO_CONFLICT = $.fn[NAME]
-    $.fn[NAME]               = Tab._jQueryInterface
-    $.fn[NAME].Constructor   = Tab
-    $.fn[NAME].noConflict    = () => {
-      $.fn[NAME] = JQUERY_NO_CONFLICT
-      return Tab._jQueryInterface
+    const complete = () => this._transitionComplete(
+      element,
+      active,
+      callback
+    )
+
+    if (active && isTransitioning) {
+      const transitionDuration = Util.getTransitionDurationFromElement(active)
+      EventHandler.one(active, Util.TRANSITION_END, complete)
+      Util.emulateTransitionEnd(active, transitionDuration)
+    } else {
+      complete()
+    }
+
+    if (active) {
+      active.classList.remove(ClassName.SHOW)
     }
   }
 
-  return Tab
-})()
+  _transitionComplete(element, active, callback) {
+    if (active) {
+      active.classList.remove(ClassName.ACTIVE)
+      active.classList.remove(ClassName.SHOW)
+
+      const dropdownChild = SelectorEngine.findOne(Selector.DROPDOWN_ACTIVE_CHILD, active.parentNode)
+      if (dropdownChild) {
+        dropdownChild.classList.remove(ClassName.ACTIVE)
+      }
+
+      if (active.getAttribute('role') === 'tab') {
+        active.setAttribute('aria-selected', false)
+      }
+    }
+
+    element.classList.add(ClassName.ACTIVE)
+    if (element.getAttribute('role') === 'tab') {
+      element.setAttribute('aria-selected', true)
+    }
+
+    Util.reflow(element)
+    element.classList.add(ClassName.SHOW)
+
+    if (element.parentNode &&
+        element.parentNode.classList.contains(ClassName.DROPDOWN_MENU)) {
+      const dropdownElement = SelectorEngine.closest(element, Selector.DROPDOWN)
+      if (dropdownElement) {
+        SelectorEngine
+          .findOne(Selector.DROPDOWN_TOGGLE, dropdownElement)
+          .classList.add(ClassName.ACTIVE)
+      }
+
+      element.setAttribute('aria-expanded', true)
+    }
+
+    if (callback) {
+      callback()
+    }
+  }
+
+  // Static
+
+  static _jQueryInterface(config) {
+    return this.each(function () {
+      const data = Data.getData(this, DATA_KEY) || new Tab(this)
+
+      if (typeof config === 'string') {
+        if (typeof data[config] === 'undefined') {
+          throw new TypeError(`No method named "${config}"`)
+        }
+        data[config]()
+      }
+    })
+  }
+
+  static _getInstance(element) {
+    return Data.getData(element, DATA_KEY)
+  }
+}
+
+/**
+ * ------------------------------------------------------------------------
+ * Data Api implementation
+ * ------------------------------------------------------------------------
+ */
+
+EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
+  event.preventDefault()
+
+  const data = Data.getData(this, DATA_KEY) || new Tab(this)
+  data.show()
+})
+
+/**
+ * ------------------------------------------------------------------------
+ * jQuery
+ * ------------------------------------------------------------------------
+ */
+
+const $ = Util.jQuery
+if (typeof $ !== 'undefined') {
+  const JQUERY_NO_CONFLICT = $.fn[NAME]
+  $.fn[NAME]               = Tab._jQueryInterface
+  $.fn[NAME].Constructor   = Tab
+  $.fn[NAME].noConflict    = () => {
+    $.fn[NAME] = JQUERY_NO_CONFLICT
+    return Tab._jQueryInterface
+  }
+}
 
 export default Tab
