@@ -1,3 +1,9 @@
+ /**
+   * --------------------------------------------------------------------------
+   * Bootstrap (v4.1.3): modal.js
+   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+   * --------------------------------------------------------------------------
+   */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('jquery'), require('./util.js')) :
   typeof define === 'function' && define.amd ? define(['jquery', './util.js'], factory) :
@@ -6,7 +12,6 @@
 
   $ = $ && $.hasOwnProperty('default') ? $['default'] : $;
   Util = Util && Util.hasOwnProperty('default') ? Util['default'] : Util;
-
   function _defineProperties(target, props) {
     for (var i = 0; i < props.length; i++) {
       var descriptor = props[i];
@@ -16,7 +21,6 @@
       Object.defineProperty(target, descriptor.key, descriptor);
     }
   }
-
   function _createClass(Constructor, protoProps, staticProps) {
     if (protoProps) _defineProperties(Constructor.prototype, protoProps);
     if (staticProps) _defineProperties(Constructor, staticProps);
@@ -34,10 +38,8 @@
     } else {
       obj[key] = value;
     }
-
     return obj;
   }
-
   function _objectSpread(target) {
     for (var i = 1; i < arguments.length; i++) {
       var source = arguments[i] != null ? arguments[i] : {};
@@ -48,49 +50,30 @@
           return Object.getOwnPropertyDescriptor(source, sym).enumerable;
         }));
       }
-
       ownKeys.forEach(function (key) {
         _defineProperty(target, key, source[key]);
       });
-    }
-
-    return target;
+    }    return target;
   }
-
-  /**
-   * --------------------------------------------------------------------------
-   * Bootstrap (v4.1.3): modal.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
-   * --------------------------------------------------------------------------
-   */
-
   var Modal = function ($$$1) {
-    /**
-     * ------------------------------------------------------------------------
-     * Constants
-     * ------------------------------------------------------------------------
-     */
-    var NAME = 'modal';
-    var VERSION = '4.1.3';
-    var DATA_KEY = 'bs.modal';
-    var EVENT_KEY = "." + DATA_KEY;
-    var DATA_API_KEY = '.data-api';
-    var JQUERY_NO_CONFLICT = $$$1.fn[NAME];
-    var ESCAPE_KEYCODE = 27; // KeyboardEvent.which value for Escape (Esc) key
-
-    var Default = {
+    var NAME = 'bsmodal',
+    VERSION = '4.1.3',
+    DATA_KEY = 'bs.modal',
+    EVENT_KEY = "." + DATA_KEY,
+    DATA_API_KEY = '.data-api',
+    JQUERY_NO_CONFLICT = $$$1.fn[NAME],
+    ESCAPE_KEYCODE = 27,
+    Default = {
       backdrop: true,
       keyboard: true,
       focus: true,
       show: true
-    };
-    var DefaultType = {
+    },DefaultType = {
       backdrop: '(boolean|string)',
       keyboard: 'boolean',
       focus: 'boolean',
       show: 'boolean'
-    };
-    var Event = {
+    },Event = {
       HIDE: "hide" + EVENT_KEY,
       HIDDEN: "hidden" + EVENT_KEY,
       SHOW: "show" + EVENT_KEY,
@@ -102,28 +85,19 @@
       MOUSEUP_DISMISS: "mouseup.dismiss" + EVENT_KEY,
       MOUSEDOWN_DISMISS: "mousedown.dismiss" + EVENT_KEY,
       CLICK_DATA_API: "click" + EVENT_KEY + DATA_API_KEY
-    };
-    var ClassName = {
+    },ClassName = {
       SCROLLBAR_MEASURER: 'modal-scrollbar-measure',
       BACKDROP: 'modal-backdrop',
       OPEN: 'modal-open',
       FADE: 'fade',
       SHOW: 'show'
-    };
-    var Selector = {
+    },Selector = {
       DIALOG: '.modal-dialog',
       DATA_TOGGLE: '[data-toggle="modal"]',
       DATA_DISMISS: '[data-dismiss="modal"]',
       FIXED_CONTENT: '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top',
       STICKY_CONTENT: '.sticky-top'
-      /**
-       * ------------------------------------------------------------------------
-       * Class Definition
-       * ------------------------------------------------------------------------
-       */
-
     };
-
     var Modal =
     /*#__PURE__*/
     function () {
@@ -137,43 +111,30 @@
         this._ignoreBackdropClick = false;
         this._scrollbarWidth = 0;
       } // Getters
-
-
       var _proto = Modal.prototype;
-
       // Public
       _proto.toggle = function toggle(relatedTarget) {
         return this._isShown ? this.hide() : this.show(relatedTarget);
       };
-
       _proto.show = function show(relatedTarget) {
         var _this = this;
-
         if (this._isTransitioning || this._isShown) {
           return;
         }
-
         if ($$$1(this._element).hasClass(ClassName.FADE)) {
           this._isTransitioning = true;
         }
-
         var showEvent = $$$1.Event(Event.SHOW, {
           relatedTarget: relatedTarget
         });
         $$$1(this._element).trigger(showEvent);
-
         if (this._isShown || showEvent.isDefaultPrevented()) {
           return;
         }
-
         this._isShown = true;
-
         this._checkScrollbar();
-
         this._setScrollbar();
-
         this._adjustDialog();
-
         $$$1(document.body).addClass(ClassName.OPEN);
 
         this._setEscapeEvent();

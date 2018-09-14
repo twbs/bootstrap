@@ -2,18 +2,16 @@
   <a href="https://getbootstrap.com/">
     <img src="https://getbootstrap.com/docs/4.1/assets/brand/bootstrap-solid.svg" alt="Bootstrap logo" width=72 height=72>
   </a>
-
-  <h3 align="center">Bootstrap</h3>
-
+  <h3 align="center">Bootstrap Framework</h3>
   <p align="center">
-    Sleek, intuitive, and powerful front-end framework for faster and easier web development.
+    Sleek, intuitive, and powerful front-end framework for web development faster and easier .
     <br>
     <a href="https://getbootstrap.com/docs/4.1/"><strong>Explore Bootstrap docs »</strong></a>
     <br>
     <br>
-    <a href="https://github.com/twbs/bootstrap/issues/new?template=bug.md">Report bug</a>
+    <a href="https://github.com/twbs/bootstrap/issues/new?template=bug.md">Report a bug</a>
     ·
-    <a href="https://github.com/twbs/bootstrap/issues/new?template=feature.md&labels=feature">Request feature</a>
+    <a href="https://github.com/twbs/bootstrap/issues/new?template=feature.md&labels=feature">Requesta feature</a>
     ·
     <a href="https://themes.getbootstrap.com/">Themes</a>
     ·
@@ -22,9 +20,7 @@
     <a href="https://blog.getbootstrap.com/">Blog</a>
   </p>
 </p>
-
 <br>
-
 ## Table of contents
 
 - [Quick start](#quick-start)
@@ -118,7 +114,7 @@ Documentation search is powered by [Algolia's DocSearch](https://community.algol
 1. Run through the [tooling setup](https://getbootstrap.com/docs/4.1/getting-started/build-tools/#tooling-setup) to install Jekyll (the site builder) and other Ruby dependencies with `bundle install`.
 2. Run `npm install` to install Node.js dependencies.
 3. Run `npm start` to compile CSS and JavaScript files, generate our docs, and watch for changes.
-4. Open `http://localhost:9001` in your browser, and voilà.
+4. Open `http://localhost:9001` in your browser.
 
 Learn more about using Jekyll by reading its [documentation](https://jekyllrb.com/docs/).
 
@@ -127,10 +123,7 @@ Learn more about using Jekyll by reading its [documentation](https://jekyllrb.co
 - For v2.3.2: <https://getbootstrap.com/2.3.2/>
 - For v3.3.x: <https://getbootstrap.com/docs/3.3/>
 - For v4.0.x: <https://getbootstrap.com/docs/4.0/>
-
 [Previous releases](https://github.com/twbs/bootstrap/releases) and their documentation are also available for download.
-
-
 ## Contributing
 
 Please read through our [contributing guidelines](https://github.com/twbs/bootstrap/blob/master/CONTRIBUTING.md). Included are directions for opening issues, coding standards, and notes on development.
@@ -167,10 +160,8 @@ See [the Releases section of our GitHub project](https://github.com/twbs/bootstr
 - <https://github.com/mdo>
 
 **Jacob Thornton**
-
 - <https://twitter.com/fat>
 - <https://github.com/fat>
-
 
 ## Thanks
 
@@ -180,4 +171,4 @@ Thanks to [BrowserStack](https://www.browserstack.com/) for providing the infras
 
 ## Copyright and license
 
-Code and documentation copyright 2011-2018 the [Bootstrap Authors](https://github.com/twbs/bootstrap/graphs/contributors) and [Twitter, Inc.](https://twitter.com) Code released under the [MIT License](https://github.com/twbs/bootstrap/blob/master/LICENSE). Docs released under [Creative Commons](https://github.com/twbs/bootstrap/blob/master/docs/LICENSE).
+  Copyright 2018-2019 the [Bootstrap Authors](https://github.com/twbs/bootstrap/graphs/contributors) and [Twitter, Inc.](https://twitter.com) Code released under the [MIT License](https://github.com/twbs/bootstrap/blob/master/LICENSE). Docs released under [Creative Commons](https://github.com/twbs/bootstrap/blob/master/docs/LICENSE).

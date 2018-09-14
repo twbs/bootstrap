@@ -9,7 +9,6 @@ const rollup  = require('rollup')
 const path    = require('path')
 const babel   = require('rollup-plugin-babel')
 const TEST    = process.env.NODE_ENV === 'test'
-
 const plugins = [
   babel({
     exclude: 'node_modules/**', // Only transpile our source code

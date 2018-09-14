@@ -14,11 +14,8 @@ const fs = require('fs')
 const path = require('path')
 const sriToolbox = require('sri-toolbox')
 const sh = require('shelljs')
-
 sh.config.fatal = true
-
 const configFile = path.join(__dirname, '../_config.yml')
-
 // Array of objects which holds the files to generate SRI hashes for.
 // `file` is the path from the root folder
 // `configPropertyName` is the _config.yml variable's name of the file
@@ -46,13 +43,10 @@ files.forEach((file) => {
     if (err) {
       throw err
     }
-
     const integrity = sriToolbox.generate({
       algorithms: ['sha384']
     }, data)
-
-    console.log(`${file.configPropertyName}: ${integrity}`)
-
+   // console.log(`${file.configPropertyName}: ${integrity}`)
     sh.sed('-i', new RegExp(`(\\s${file.configPropertyName}:\\s+"|')(\\S+)("|')`), `$1${integrity}$3`, configFile)
   })
 })
