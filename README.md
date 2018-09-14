@@ -2,11 +2,9 @@
   <a href="https://getbootstrap.com/">
     <img src="https://getbootstrap.com/docs/4.1/assets/brand/bootstrap-solid.svg" alt="Bootstrap logo" width=72 height=72>
   </a>
-
   <h3 align="center">Bootstrap</h3>
-
   <p align="center">
-    Sleek, intuitive, and powerful front-end framework for faster and easier web development.
+    Sleek, intuitive, and powerful front-end framework for web development faster and easier .
     <br>
     <a href="https://getbootstrap.com/docs/4.1/"><strong>Explore Bootstrap docs »</strong></a>
     <br>
@@ -22,9 +20,7 @@
     <a href="https://blog.getbootstrap.com/">Blog</a>
   </p>
 </p>
-
 <br>
-
 ## Table of contents
 
 - [Quick start](#quick-start)
