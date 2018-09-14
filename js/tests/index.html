@@ -63,9 +63,7 @@
       QUnit.config.requireExpects = true
 
       // See https://github.com/axemclion/grunt-saucelabs#test-result-details-with-qunit
-      var log = []
-      var testName
-
+      var log = [], testName
       QUnit.done(function(testResults) {
         var tests = []
         for (var i = 0; i < log.length; i++) {
@@ -79,10 +77,8 @@
           })
         }
         testResults.tests = tests
-
         window.global_test_results = testResults
       })
-
       QUnit.testStart(function(testDetails) {
         QUnit.log(function(details) {
           if (!details.result) {

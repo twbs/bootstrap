@@ -1,15 +1,12 @@
 ## How does Bootstrap's test suite work?
 
-Bootstrap uses [QUnit](https://qunitjs.com/) and [Sinon](https://sinonjs.org/). Each plugin has a file dedicated to its tests in `unit/<plugin-name>.js`.
+Bootstrap  [QUnit](https://qunitjs.com/) and [Sinon](https://sinonjs.org/). Each plugin has a file dedicated to its tests in `unit/<plugin-name>.js`.
 
 * `unit/` contains the unit test files for each Bootstrap plugin.
 * `vendor/` contains third-party testing-related code (QUnit, jQuery and Sinon).
 * `visual/` contains "visual" tests which are run interactively in real browsers and require manual verification by humans.
-
 To run the unit test suite via [Karma](https://karma-runner.github.io/), run `npm run js-test`.
-
 To run the unit test suite via a real web browser, open `index.html` in the browser.
-
 
 ## How do I add a new unit test?
 
@@ -28,11 +25,8 @@ To run the unit test suite via a real web browser, open `index.html` in the brow
 * Each test should follow the project's [JavaScript Code Guidelines](https://github.com/twbs/bootstrap/blob/master/CONTRIBUTING.md#js)
 
 ## Code coverage
-
-Currently we're aiming for at least 80% test coverage for our code. To ensure your changes meet or exceed this limit, run `npm run js-compile && npm run js-test` and open the file in `js/coverage/lcov-report/index.html` to see the code coverage for each plugin. See more details when you select a plugin and ensure your change is fully covered by unit tests.
-
+Currently we're aiming for at least 90% test coverage for our code. To ensure your changes meet or exceed this limit, run `npm run js-compile && npm run js-test` and open the file in `js/coverage/lcov-report/index.html` to see the code coverage for each plugin. See more details when you select a plugin and ensure your change is fully covered by unit tests.
 ### Example tests
-
 ```js
 // Synchronous test
 QUnit.test('should describe the unit being tested', function (assert) {
@@ -42,13 +36,10 @@ QUnit.test('should describe the unit being tested', function (assert) {
         '<p><strong>Template necessary for the test.</p>' +
         '</div>'
   var $alert = $(templateHTML).appendTo('#qunit-fixture').bootstrapAlert()
-
   $alert.find('.close').trigger('click')
-
   // Make assertion
   assert.strictEqual($alert.hasClass('show'), false, 'remove .show class on .close click')
 })
-
 // Asynchronous test
 QUnit.test('should describe the unit being tested', function (assert) {
   assert.expect(2)
@@ -63,7 +54,6 @@ QUnit.test('should describe the unit being tested', function (assert) {
       assert.ok(true, '"shown" event was fired after calling "show"')
       assert.ok(spyShow.called, 'show called')
       done()
-    })
-    .bootstrapTooltip('show')
+    }).bootstrapTooltip('show')
 })
 ```

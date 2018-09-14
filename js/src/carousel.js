@@ -1,8 +1,6 @@
 import $ from 'jquery'
 import Util from './util'
-
 const Carousel = (($) => {
-
   const NAME                   = 'carousel'
   const VERSION                = '4.1.3'
   const DATA_KEY               = 'bs.carousel'
