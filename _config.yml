@@ -9,7 +9,7 @@ kramdown:
 permalink:      pretty
 
 # Server
-source:         "."
+source:         "site"
 destination:    ./_gh_pages
 host:           0.0.0.0
 port:           9001
@@ -17,25 +17,7 @@ baseurl:        ""
 url:            "https://getbootstrap.com"
 encoding:       UTF-8
 exclude:
-  - .git/
-  - .github/
-  - assets/scss/
-  - build/
-  - js/
-  - node_modules/
-  - nuget/
-  - scss/
-  - vendor/
-  - CODE_OF_CONDUCT.md
-  - composer.json
-  - Gemfile
-  - Gemfile.lock
-  - package.js
-  - package.json
-  - package-lock.json
-  - README.md
-  - sache.json
-  - twbsconfig.yml
+  - docs/4.1/assets/scss/
 
 plugins:
   - jekyll-redirect-from
@@ -47,12 +29,12 @@ title:              Bootstrap
 description:        "The most popular HTML, CSS, and JS library in the world."
 twitter:            getbootstrap
 authors:            "Mark Otto, Jacob Thornton, and Bootstrap contributors"
-social_image_path:  /assets/brand/bootstrap-social.png
-social_logo_path:   /assets/brand/bootstrap-social-logo.png
+social_image_path:  /docs/4.1/assets/brand/bootstrap-social.png
+social_logo_path:   /docs/4.1/assets/brand/bootstrap-social-logo.png
 
 # Custom variables
-current_version:      4.1.1
-current_ruby_version: 4.1.1
+current_version:      4.1.3
+current_ruby_version: 4.1.3
 docs_version:         4.1
 repo:                 "https://github.com/twbs/bootstrap"
 slack:                "https://bootstrap-slack.herokuapp.com"
@@ -62,15 +44,15 @@ jobs:                 "https://jobs.getbootstrap.com"
 themes:               "https://themes.getbootstrap.com"
 
 download:
-  source:           "https://github.com/twbs/bootstrap/archive/v4.1.1.zip"
-  dist:             "https://github.com/twbs/bootstrap/releases/download/v4.1.1/bootstrap-4.1.1-dist.zip"
+  source:           "https://github.com/twbs/bootstrap/archive/v4.1.3.zip"
+  dist:             "https://github.com/twbs/bootstrap/releases/download/v4.1.3/bootstrap-4.1.3-dist.zip"
 
 cdn:
   # See https://www.srihash.org for info on how to generate the hashes
-  css:              "https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
-  css_hash:         "sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
-  js:               "https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
-  js_hash:          "sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+  css:              "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+  css_hash:         "sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+  js:               "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+  js_hash:          "sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
   jquery:           "https://code.jquery.com/jquery-3.3.1.slim.min.js"
   jquery_hash:      "sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
   popper:           "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
