@@ -1,16 +1,10 @@
 body {
   font-size: .875rem;
-}
-
-.feather {
+}.feather {
   width: 16px;
   height: 16px;
   vertical-align: text-bottom;
 }
-
-/*
- * Sidebar
- */
 
 .sidebar {
   position: fixed;
@@ -48,15 +42,9 @@ body {
   color: #999;
 }
 
-.sidebar .nav-link.active {
-  color: #007bff;
-}
-
+.sidebar .nav-link.active {  color: #007bff;}
 .sidebar .nav-link:hover .feather,
-.sidebar .nav-link.active .feather {
-  color: inherit;
-}
-
+.sidebar .nav-link.active .feather {  color: inherit;}
 .sidebar-heading {
   font-size: .75rem;
   text-transform: uppercase;
