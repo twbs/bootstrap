@@ -5,7 +5,7 @@ const pkg     = require(path.resolve(__dirname, '../package.json'))
 const BUNDLE  = process.env.BUNDLE === 'true'
 const year    = new Date().getFullYear()
 let fileDest  = 'bootstrap.js'
-const external = ['jquery', 'popper.js']
+const external = ['js','jquery', 'popper.js']
 const plugins = [
   babel({
     exclude: 'node_modules/**', // Only transpile our source code
