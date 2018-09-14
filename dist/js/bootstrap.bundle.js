@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap v4.1.1 (https://getbootstrap.com/)
+  * Bootstrap v4.1.3 (https://getbootstrap.com/)
   * Copyright 2011-2018 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
   */
@@ -69,7 +69,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.1.1): util.js
+   * Bootstrap (v4.1.3): util.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -140,13 +140,21 @@
       },
       getSelectorFromElement: function getSelectorFromElement(element) {
         var selector = element.getAttribute('data-target');
+        var method = 'querySelector';
 
         if (!selector || selector === '#') {
-          selector = element.getAttribute('href') || '';
+          selector = (element.getAttribute('href') || '').trim();
+        }
+
+        var validSelector = selector;
+
+        if (selector.charAt(0) === '#' && selector.indexOf(',') === -1) {
+          selector = selector.substr(1);
+          method = 'getElementById';
         }
 
         try {
-          return document.querySelector(selector) ? selector : null;
+          return document[method](selector) ? validSelector : null;
         } catch (err) {
           return null;
         }
@@ -201,7 +209,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.1.1): alert.js
+   * Bootstrap (v4.1.3): alert.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -213,7 +221,7 @@
      * ------------------------------------------------------------------------
      */
     var NAME = 'alert';
-    var VERSION = '4.1.1';
+    var VERSION = '4.1.3';
     var DATA_KEY = 'bs.alert';
     var EVENT_KEY = "." + DATA_KEY;
     var DATA_API_KEY = '.data-api';
@@ -376,7 +384,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.1.1): button.js
+   * Bootstrap (v4.1.3): button.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -388,7 +396,7 @@
      * ------------------------------------------------------------------------
      */
     var NAME = 'button';
-    var VERSION = '4.1.1';
+    var VERSION = '4.1.3';
     var DATA_KEY = 'bs.button';
     var EVENT_KEY = "." + DATA_KEY;
     var DATA_API_KEY = '.data-api';
@@ -540,7 +548,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.1.1): carousel.js
+   * Bootstrap (v4.1.3): carousel.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -552,7 +560,7 @@
      * ------------------------------------------------------------------------
      */
     var NAME = 'carousel';
-    var VERSION = '4.1.1';
+    var VERSION = '4.1.3';
     var DATA_KEY = 'bs.carousel';
     var EVENT_KEY = "." + DATA_KEY;
     var DATA_API_KEY = '.data-api';
@@ -1044,7 +1052,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.1.1): collapse.js
+   * Bootstrap (v4.1.3): collapse.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -1056,7 +1064,7 @@
      * ------------------------------------------------------------------------
      */
     var NAME = 'collapse';
-    var VERSION = '4.1.1';
+    var VERSION = '4.1.3';
     var DATA_KEY = 'bs.collapse';
     var EVENT_KEY = "." + DATA_KEY;
     var DATA_API_KEY = '.data-api';
@@ -1412,7 +1420,7 @@
 
   /**!
    * @fileOverview Kickass library to create and place poppers near their reference elements.
-   * @version 1.14.3
+   * @version 1.14.4
    * @license
    * Copyright (c) 2016 Federico Zivolo and contributors
    *
@@ -1749,10 +1757,10 @@
   }
 
   function getSize(axis, body, html, computedStyle) {
-    return Math.max(body['offset' + axis], body['scroll' + axis], html['client' + axis], html['offset' + axis], html['scroll' + axis], isIE(10) ? html['offset' + axis] + computedStyle['margin' + (axis === 'Height' ? 'Top' : 'Left')] + computedStyle['margin' + (axis === 'Height' ? 'Bottom' : 'Right')] : 0);
+    return Math.max(body['offset' + axis], body['scroll' + axis], html['client' + axis], html['offset' + axis], html['scroll' + axis], isIE(10) ? parseInt(html['offset' + axis]) + parseInt(computedStyle['margin' + (axis === 'Height' ? 'Top' : 'Left')]) + parseInt(computedStyle['margin' + (axis === 'Height' ? 'Bottom' : 'Right')]) : 0);
   }
 
-  function getWindowSizes() {
+  function getWindowSizes(document) {
     var body = document.body;
     var html = document.documentElement;
     var computedStyle = isIE(10) && getComputedStyle(html);
@@ -1869,7 +1877,7 @@
     };
 
     // subtract scrollbar size from sizes
-    var sizes = element.nodeName === 'HTML' ? getWindowSizes() : {};
+    var sizes = element.nodeName === 'HTML' ? getWindowSizes(element.ownerDocument) : {};
     var width = sizes.width || element.clientWidth || result.right - result.left;
     var height = sizes.height || element.clientHeight || result.bottom - result.top;
 
@@ -1904,7 +1912,7 @@
     var borderLeftWidth = parseFloat(styles.borderLeftWidth, 10);
 
     // In cases where the parent is fixed, we must ignore negative scroll in offset calc
-    if (fixedPosition && parent.nodeName === 'HTML') {
+    if (fixedPosition && isHTML) {
       parentRect.top = Math.max(parentRect.top, 0);
       parentRect.left = Math.max(parentRect.left, 0);
     }
@@ -2042,7 +2050,7 @@
 
       // In case of HTML, we need a different computation
       if (boundariesNode.nodeName === 'HTML' && !isFixed(offsetParent)) {
-        var _getWindowSizes = getWindowSizes(),
+        var _getWindowSizes = getWindowSizes(popper.ownerDocument),
             height = _getWindowSizes.height,
             width = _getWindowSizes.width;
 
@@ -2057,10 +2065,12 @@
     }
 
     // Add paddings
-    boundaries.left += padding;
-    boundaries.top += padding;
-    boundaries.right -= padding;
-    boundaries.bottom -= padding;
+    padding = padding || 0;
+    var isPaddingNumber = typeof padding === 'number';
+    boundaries.left += isPaddingNumber ? padding : padding.left || 0;
+    boundaries.top += isPaddingNumber ? padding : padding.top || 0;
+    boundaries.right -= isPaddingNumber ? padding : padding.right || 0;
+    boundaries.bottom -= isPaddingNumber ? padding : padding.bottom || 0;
 
     return boundaries;
   }
@@ -2385,7 +2395,7 @@
   }
 
   /**
-   * Destroy the popper
+   * Destroys the popper.
    * @method
    * @memberof Popper
    */
@@ -2492,7 +2502,7 @@
 
   /**
    * It will remove resize/scroll events and won't recalculate popper position
-   * when they are triggered. It also won't trigger onUpdate callback anymore,
+   * when they are triggered. It also won't trigger `onUpdate` callback anymore,
    * unless you call `update` method manually.
    * @method
    * @memberof Popper
@@ -2669,12 +2679,22 @@
     var left = void 0,
         top = void 0;
     if (sideA === 'bottom') {
-      top = -offsetParentRect.height + offsets.bottom;
+      // when offsetParent is <html> the positioning is relative to the bottom of the screen (excluding the scrollbar)
+      // and not the bottom of the html element
+      if (offsetParent.nodeName === 'HTML') {
+        top = -offsetParent.clientHeight + offsets.bottom;
+      } else {
+        top = -offsetParentRect.height + offsets.bottom;
+      }
     } else {
       top = offsets.top;
     }
     if (sideB === 'right') {
-      left = -offsetParentRect.width + offsets.right;
+      if (offsetParent.nodeName === 'HTML') {
+        left = -offsetParent.clientWidth + offsets.right;
+      } else {
+        left = -offsetParentRect.width + offsets.right;
+      }
     } else {
       left = offsets.left;
     }
@@ -2783,7 +2803,7 @@
 
     //
     // extends keepTogether behavior making sure the popper and its
-    // reference have enough pixels in conjuction
+    // reference have enough pixels in conjunction
     //
 
     // top/left side
@@ -2853,7 +2873,7 @@
    * - `top-end` (on top of reference, right aligned)
    * - `right-start` (on right of reference, top aligned)
    * - `bottom` (on bottom, centered)
-   * - `auto-right` (on the side with more space available, alignment depends by placement)
+   * - `auto-end` (on the side with more space available, alignment depends by placement)
    *
    * @static
    * @type {Array}
@@ -3395,7 +3415,7 @@
      * The `offset` modifier can shift your popper on both its axis.
      *
      * It accepts the following units:
-     * - `px` or unitless, interpreted as pixels
+     * - `px` or unit-less, interpreted as pixels
      * - `%` or `%r`, percentage relative to the length of the reference element
      * - `%p`, percentage relative to the length of the popper element
      * - `vw`, CSS viewport width unit
@@ -3403,7 +3423,7 @@
      *
      * For length is intended the main axis relative to the placement of the popper.<br />
      * This means that if the placement is `top` or `bottom`, the length will be the
-     * `width`. In case of `left` or `right`, it will be the height.
+     * `width`. In case of `left` or `right`, it will be the `height`.
      *
      * You can provide a single value (as `Number` or `String`), or a pair of values
      * as `String` divided by a comma or one (or more) white spaces.<br />
@@ -3424,7 +3444,7 @@
      * ```
      * > **NB**: If you desire to apply offsets to your poppers in a way that may make them overlap
      * > with their reference element, unfortunately, you will have to disable the `flip` modifier.
-     * > More on this [reading this issue](https://github.com/FezVrasta/popper.js/issues/373)
+     * > You can read more on this at this [issue](https://github.com/FezVrasta/popper.js/issues/373).
      *
      * @memberof modifiers
      * @inner
@@ -3445,7 +3465,7 @@
     /**
      * Modifier used to prevent the popper from being positioned outside the boundary.
      *
-     * An scenario exists where the reference itself is not within the boundaries.<br />
+     * A scenario exists where the reference itself is not within the boundaries.<br />
      * We can say it has "escaped the boundaries" — or just "escaped".<br />
      * In this case we need to decide whether the popper should either:
      *
@@ -3475,23 +3495,23 @@
       /**
        * @prop {number} padding=5
        * Amount of pixel used to define a minimum distance between the boundaries
-       * and the popper this makes sure the popper has always a little padding
+       * and the popper. This makes sure the popper always has a little padding
        * between the edges of its container
        */
       padding: 5,
       /**
        * @prop {String|HTMLElement} boundariesElement='scrollParent'
-       * Boundaries used by the modifier, can be `scrollParent`, `window`,
+       * Boundaries used by the modifier. Can be `scrollParent`, `window`,
        * `viewport` or any DOM element.
        */
       boundariesElement: 'scrollParent'
     },
 
     /**
-     * Modifier used to make sure the reference and its popper stay near eachothers
-     * without leaving any gap between the two. Expecially useful when the arrow is
-     * enabled and you want to assure it to point to its reference element.
-     * It cares only about the first axis, you can still have poppers with margin
+     * Modifier used to make sure the reference and its popper stay near each other
+     * without leaving any gap between the two. Especially useful when the arrow is
+     * enabled and you want to ensure that it points to its reference element.
+     * It cares only about the first axis. You can still have poppers with margin
      * between the popper and its reference element.
      * @memberof modifiers
      * @inner
@@ -3509,7 +3529,7 @@
      * This modifier is used to move the `arrowElement` of the popper to make
      * sure it is positioned between the reference element and its popper element.
      * It will read the outer size of the `arrowElement` node to detect how many
-     * pixels of conjuction are needed.
+     * pixels of conjunction are needed.
      *
      * It has no effect if no `arrowElement` is provided.
      * @memberof modifiers
@@ -3548,7 +3568,7 @@
        * @prop {String|Array} behavior='flip'
        * The behavior used to change the popper's placement. It can be one of
        * `flip`, `clockwise`, `counterclockwise` or an array with a list of valid
-       * placements (with optional variations).
+       * placements (with optional variations)
        */
       behavior: 'flip',
       /**
@@ -3558,9 +3578,9 @@
       padding: 5,
       /**
        * @prop {String|HTMLElement} boundariesElement='viewport'
-       * The element which will define the boundaries of the popper position,
-       * the popper will never be placed outside of the defined boundaries
-       * (except if keepTogether is enabled)
+       * The element which will define the boundaries of the popper position.
+       * The popper will never be placed outside of the defined boundaries
+       * (except if `keepTogether` is enabled)
        */
       boundariesElement: 'viewport'
     },
@@ -3624,8 +3644,8 @@
       fn: computeStyle,
       /**
        * @prop {Boolean} gpuAcceleration=true
-       * If true, it uses the CSS 3d transformation to position the popper.
-       * Otherwise, it will use the `top` and `left` properties.
+       * If true, it uses the CSS 3D transformation to position the popper.
+       * Otherwise, it will use the `top` and `left` properties
        */
       gpuAcceleration: true,
       /**
@@ -3652,7 +3672,7 @@
      * Note that if you disable this modifier, you must make sure the popper element
      * has its position set to `absolute` before Popper.js can do its work!
      *
-     * Just disable this modifier and define you own to achieve the desired effect.
+     * Just disable this modifier and define your own to achieve the desired effect.
      *
      * @memberof modifiers
      * @inner
@@ -3669,27 +3689,27 @@
       /**
        * @deprecated since version 1.10.0, the property moved to `computeStyle` modifier
        * @prop {Boolean} gpuAcceleration=true
-       * If true, it uses the CSS 3d transformation to position the popper.
-       * Otherwise, it will use the `top` and `left` properties.
+       * If true, it uses the CSS 3D transformation to position the popper.
+       * Otherwise, it will use the `top` and `left` properties
        */
       gpuAcceleration: undefined
     }
   };
 
   /**
-   * The `dataObject` is an object containing all the informations used by Popper.js
-   * this object get passed to modifiers and to the `onCreate` and `onUpdate` callbacks.
+   * The `dataObject` is an object containing all the information used by Popper.js.
+   * This object is passed to modifiers and to the `onCreate` and `onUpdate` callbacks.
    * @name dataObject
    * @property {Object} data.instance The Popper.js instance
    * @property {String} data.placement Placement applied to popper
    * @property {String} data.originalPlacement Placement originally defined on init
    * @property {Boolean} data.flipped True if popper has been flipped by flip modifier
-   * @property {Boolean} data.hide True if the reference element is out of boundaries, useful to know when to hide the popper.
+   * @property {Boolean} data.hide True if the reference element is out of boundaries, useful to know when to hide the popper
    * @property {HTMLElement} data.arrowElement Node used as arrow by arrow modifier
-   * @property {Object} data.styles Any CSS property defined here will be applied to the popper, it expects the JavaScript nomenclature (eg. `marginBottom`)
-   * @property {Object} data.arrowStyles Any CSS property defined here will be applied to the popper arrow, it expects the JavaScript nomenclature (eg. `marginBottom`)
+   * @property {Object} data.styles Any CSS property defined here will be applied to the popper. It expects the JavaScript nomenclature (eg. `marginBottom`)
+   * @property {Object} data.arrowStyles Any CSS property defined here will be applied to the popper arrow. It expects the JavaScript nomenclature (eg. `marginBottom`)
    * @property {Object} data.boundaries Offsets of the popper boundaries
-   * @property {Object} data.offsets The measurements of popper, reference and arrow elements.
+   * @property {Object} data.offsets The measurements of popper, reference and arrow elements
    * @property {Object} data.offsets.popper `top`, `left`, `width`, `height` values
    * @property {Object} data.offsets.reference `top`, `left`, `width`, `height` values
    * @property {Object} data.offsets.arrow] `top` and `left` offsets, only one of them will be different from 0
@@ -3697,9 +3717,9 @@
 
   /**
    * Default options provided to Popper.js constructor.<br />
-   * These can be overriden using the `options` argument of Popper.js.<br />
-   * To override an option, simply pass as 3rd argument an object with the same
-   * structure of this object, example:
+   * These can be overridden using the `options` argument of Popper.js.<br />
+   * To override an option, simply pass an object with the same
+   * structure of the `options` object, as the 3rd argument. For example:
    * ```
    * new Popper(ref, pop, {
    *   modifiers: {
@@ -3713,7 +3733,7 @@
    */
   var Defaults = {
     /**
-     * Popper's placement
+     * Popper's placement.
      * @prop {Popper.placements} placement='bottom'
      */
     placement: 'bottom',
@@ -3725,7 +3745,7 @@
     positionFixed: false,
 
     /**
-     * Whether events (resize, scroll) are initially enabled
+     * Whether events (resize, scroll) are initially enabled.
      * @prop {Boolean} eventsEnabled=true
      */
     eventsEnabled: true,
@@ -3739,17 +3759,17 @@
 
     /**
      * Callback called when the popper is created.<br />
-     * By default, is set to no-op.<br />
+     * By default, it is set to no-op.<br />
      * Access Popper.js instance with `data.instance`.
      * @prop {onCreate}
      */
     onCreate: function onCreate() {},
 
     /**
-     * Callback called when the popper is updated, this callback is not called
+     * Callback called when the popper is updated. This callback is not called
      * on the initialization/creation of the popper, but only on subsequent
      * updates.<br />
-     * By default, is set to no-op.<br />
+     * By default, it is set to no-op.<br />
      * Access Popper.js instance with `data.instance`.
      * @prop {onUpdate}
      */
@@ -3757,7 +3777,7 @@
 
     /**
      * List of modifiers used to modify the offsets before they are applied to the popper.
-     * They provide most of the functionalities of Popper.js
+     * They provide most of the functionalities of Popper.js.
      * @prop {modifiers}
      */
     modifiers: modifiers
@@ -3777,10 +3797,10 @@
   // Methods
   var Popper = function () {
     /**
-     * Create a new Popper.js instance
+     * Creates a new Popper.js instance.
      * @class Popper
      * @param {HTMLElement|referenceObject} reference - The reference element used to position the popper
-     * @param {HTMLElement} popper - The HTML element used as popper.
+     * @param {HTMLElement} popper - The HTML element used as the popper
      * @param {Object} options - Your custom options to override the ones defined in [Defaults](#defaults)
      * @return {Object} instance - The generated Popper.js instance
      */
@@ -3876,7 +3896,7 @@
       }
 
       /**
-       * Schedule an update, it will run on the next UI update available
+       * Schedules an update. It will run on the next UI update available.
        * @method scheduleUpdate
        * @memberof Popper
        */
@@ -3913,7 +3933,7 @@
    * new Popper(referenceObject, popperNode);
    * ```
    *
-   * NB: This feature isn't supported in Internet Explorer 10
+   * NB: This feature isn't supported in Internet Explorer 10.
    * @name referenceObject
    * @property {Function} data.getBoundingClientRect
    * A function that returns a set of coordinates compatible with the native `getBoundingClientRect` method.
@@ -3930,7 +3950,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.1.1): dropdown.js
+   * Bootstrap (v4.1.3): dropdown.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -3942,7 +3962,7 @@
      * ------------------------------------------------------------------------
      */
     var NAME = 'dropdown';
-    var VERSION = '4.1.1';
+    var VERSION = '4.1.3';
     var DATA_KEY = 'bs.dropdown';
     var EVENT_KEY = "." + DATA_KEY;
     var DATA_API_KEY = '.data-api';
@@ -4258,6 +4278,10 @@
             relatedTarget: toggles[i]
           };
 
+          if (event && event.type === 'click') {
+            relatedTarget.clickEvent = event;
+          }
+
           if (!context) {
             continue;
           }
@@ -4414,7 +4438,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.1.1): modal.js
+   * Bootstrap (v4.1.3): modal.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -4426,7 +4450,7 @@
      * ------------------------------------------------------------------------
      */
     var NAME = 'modal';
-    var VERSION = '4.1.1';
+    var VERSION = '4.1.3';
     var DATA_KEY = 'bs.modal';
     var EVENT_KEY = "." + DATA_KEY;
     var DATA_API_KEY = '.data-api';
@@ -4470,8 +4494,7 @@
       DATA_TOGGLE: '[data-toggle="modal"]',
       DATA_DISMISS: '[data-dismiss="modal"]',
       FIXED_CONTENT: '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top',
-      STICKY_CONTENT: '.sticky-top',
-      NAVBAR_TOGGLER: '.navbar-toggler'
+      STICKY_CONTENT: '.sticky-top'
       /**
        * ------------------------------------------------------------------------
        * Class Definition
@@ -4838,8 +4861,7 @@
           // Note: DOMNode.style.paddingRight returns the actual value or '' if not set
           //   while $(DOMNode).css('padding-right') returns the calculated value or 0 if not set
           var fixedContent = [].slice.call(document.querySelectorAll(Selector.FIXED_CONTENT));
-          var stickyContent = [].slice.call(document.querySelectorAll(Selector.STICKY_CONTENT));
-          var navbarToggler = [].slice.call(document.querySelectorAll(Selector.NAVBAR_TOGGLER)); // Adjust fixed content padding
+          var stickyContent = [].slice.call(document.querySelectorAll(Selector.STICKY_CONTENT)); // Adjust fixed content padding
 
           $$$1(fixedContent).each(function (index, element) {
             var actualPadding = element.style.paddingRight;
@@ -4851,12 +4873,6 @@
             var actualMargin = element.style.marginRight;
             var calculatedMargin = $$$1(element).css('margin-right');
             $$$1(element).data('margin-right', actualMargin).css('margin-right', parseFloat(calculatedMargin) - _this9._scrollbarWidth + "px");
-          }); // Adjust navbar-toggler margin
-
-          $$$1(navbarToggler).each(function (index, element) {
-            var actualMargin = element.style.marginRight;
-            var calculatedMargin = $$$1(element).css('margin-right');
-            $$$1(element).data('margin-right', actualMargin).css('margin-right', parseFloat(calculatedMargin) + _this9._scrollbarWidth + "px");
           }); // Adjust body padding
 
           var actualPadding = document.body.style.paddingRight;
@@ -4870,13 +4886,11 @@
         var fixedContent = [].slice.call(document.querySelectorAll(Selector.FIXED_CONTENT));
         $$$1(fixedContent).each(function (index, element) {
           var padding = $$$1(element).data('padding-right');
+          $$$1(element).removeData('padding-right');
+          element.style.paddingRight = padding ? padding : '';
+        }); // Restore sticky content
 
-          if (typeof padding !== 'undefined') {
-            $$$1(element).css('padding-right', padding).removeData('padding-right');
-          }
-        }); // Restore sticky content and navbar-toggler margin
-
-        var elements = [].slice.call(document.querySelectorAll(Selector.STICKY_CONTENT + ", " + Selector.NAVBAR_TOGGLER));
+        var elements = [].slice.call(document.querySelectorAll("" + Selector.STICKY_CONTENT));
         $$$1(elements).each(function (index, element) {
           var margin = $$$1(element).data('margin-right');
 
@@ -4886,10 +4900,8 @@
         }); // Restore body padding
 
         var padding = $$$1(document.body).data('padding-right');
-
-        if (typeof padding !== 'undefined') {
-          $$$1(document.body).css('padding-right', padding).removeData('padding-right');
-        }
+        $$$1(document.body).removeData('padding-right');
+        document.body.style.paddingRight = padding ? padding : '';
       };
 
       _proto._getScrollbarWidth = function _getScrollbarWidth() {
@@ -4997,7 +5009,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.1.1): tooltip.js
+   * Bootstrap (v4.1.3): tooltip.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -5009,7 +5021,7 @@
      * ------------------------------------------------------------------------
      */
     var NAME = 'tooltip';
-    var VERSION = '4.1.1';
+    var VERSION = '4.1.3';
     var DATA_KEY = 'bs.tooltip';
     var EVENT_KEY = "." + DATA_KEY;
     var JQUERY_NO_CONFLICT = $$$1.fn[NAME];
@@ -5558,10 +5570,13 @@
         }
       };
 
-      _proto._handlePopperPlacementChange = function _handlePopperPlacementChange(data) {
+      _proto._handlePopperPlacementChange = function _handlePopperPlacementChange(popperData) {
+        var popperInstance = popperData.instance;
+        this.tip = popperInstance.popper;
+
         this._cleanTipClass();
 
-        this.addAttachmentClass(this._getAttachment(data.placement));
+        this.addAttachmentClass(this._getAttachment(popperData.placement));
       };
 
       _proto._fixTransition = function _fixTransition() {
@@ -5664,7 +5679,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.1.1): popover.js
+   * Bootstrap (v4.1.3): popover.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -5676,7 +5691,7 @@
      * ------------------------------------------------------------------------
      */
     var NAME = 'popover';
-    var VERSION = '4.1.1';
+    var VERSION = '4.1.3';
     var DATA_KEY = 'bs.popover';
     var EVENT_KEY = "." + DATA_KEY;
     var JQUERY_NO_CONFLICT = $$$1.fn[NAME];
@@ -5782,7 +5797,7 @@
 
           var _config = typeof config === 'object' ? config : null;
 
-          if (!data && /destroy|hide/.test(config)) {
+          if (!data && /dispose|hide/.test(config)) {
             return;
           }
 
@@ -5861,7 +5876,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.1.1): scrollspy.js
+   * Bootstrap (v4.1.3): scrollspy.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -5873,7 +5888,7 @@
      * ------------------------------------------------------------------------
      */
     var NAME = 'scrollspy';
-    var VERSION = '4.1.1';
+    var VERSION = '4.1.3';
     var DATA_KEY = 'bs.scrollspy';
     var EVENT_KEY = "." + DATA_KEY;
     var DATA_API_KEY = '.data-api';
@@ -6177,7 +6192,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.1.1): tab.js
+   * Bootstrap (v4.1.3): tab.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -6189,7 +6204,7 @@
      * ------------------------------------------------------------------------
      */
     var NAME = 'tab';
-    var VERSION = '4.1.1';
+    var VERSION = '4.1.3';
     var DATA_KEY = 'bs.tab';
     var EVENT_KEY = "." + DATA_KEY;
     var DATA_API_KEY = '.data-api';
@@ -6426,7 +6441,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.1.1): index.js
+   * Bootstrap (v4.1.3): index.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
