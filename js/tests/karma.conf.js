@@ -1,7 +1,5 @@
 const ip = require('ip')
-const {
-  browsers,
-  browsersKeys
+const {browsers,browsersKeys
 } = require('./browsers')
 const path = require('path')
 const jsCoveragePath = path.resolve(__dirname, '../coverage')
