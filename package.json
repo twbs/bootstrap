@@ -15,9 +15,7 @@
   ],
   "homepage": "https://getbootstrap.com/",
   "author": "The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)",
-  "contributors": [
-    "Twitter, Inc."
-  ],
+  "contributors":["Twitter, Inc."],
   "scripts": {
     "start": "npm-run-all --parallel watch docs-serve",
     "blc": "blc --exclude-external --filter-level 3 --get --ordered --recursive --host-requests 4 --input http://localhost:3000/",
