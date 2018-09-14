@@ -1,3 +1,10 @@
+
+  /**
+   * --------------------------------------------------------------------------
+   * Bootstrap (v4.1.3): popover.js
+   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+   * --------------------------------------------------------------------------
+   */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('jquery'), require('./tooltip.js')) :
   typeof define === 'function' && define.amd ? define(['jquery', './tooltip.js'], factory) :
@@ -62,28 +69,19 @@
     subClass.prototype.constructor = subClass;
     subClass.__proto__ = superClass;
   }
-
-  /**
-   * --------------------------------------------------------------------------
-   * Bootstrap (v4.1.3): popover.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
-   * --------------------------------------------------------------------------
-   */
-
   var Popover = function ($$$1) {
     /**
      * ------------------------------------------------------------------------
      * Constants
      * ------------------------------------------------------------------------
      */
-    var NAME = 'popover';
-    var VERSION = '4.1.3';
-    var DATA_KEY = 'bs.popover';
-    var EVENT_KEY = "." + DATA_KEY;
-    var JQUERY_NO_CONFLICT = $$$1.fn[NAME];
-    var CLASS_PREFIX = 'bs-popover';
-    var BSCLS_PREFIX_REGEX = new RegExp("(^|\\s)" + CLASS_PREFIX + "\\S+", 'g');
-
+    var NAME = 'bspopover',
+        VERSION = '4.1.3';
+        DATA_KEY = 'bs.popover',
+        EVENT_KEY = "." + DATA_KEY,
+        JQUERY_NO_CONFLICT = $$$1.fn[NAME],
+        CLASS_PREFIX = 'bs-popover',
+        BSCLS_PREFIX_REGEX = new RegExp("(^|\\s)" + CLASS_PREFIX + "\\S+", 'g');
     var Default = _objectSpread({}, Tooltip.Default, {
       placement: 'right',
       trigger: 'click',

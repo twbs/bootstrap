@@ -4,23 +4,18 @@
  * Copyright 2017-2018 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
-
 const fs = require('fs')
 const path = require('path')
 const swBuild = require('workbox-build')
 const config = require('./workbox.config.json')
-
 const buildPrefix = '_gh_pages/'
-
 const workboxSWSrcPath = require.resolve('workbox-sw')
 const wbFileName = path.basename(workboxSWSrcPath)
 const workboxSWDestPath = `${buildPrefix}docs/4.1/assets/js/vendor/${wbFileName}`
 const workboxSWSrcMapPath = `${workboxSWSrcPath}.map`
 const workboxSWDestMapPath = `${workboxSWDestPath}.map`
-
 fs.createReadStream(workboxSWSrcPath).pipe(fs.createWriteStream(workboxSWDestPath))
 fs.createReadStream(workboxSWSrcMapPath).pipe(fs.createWriteStream(workboxSWDestMapPath))
-
 const updateUrl = (manifestEntries) => {
   const manifest = manifestEntries.map((entry) => {
     if (entry.url.startsWith(buildPrefix)) {
@@ -48,9 +43,8 @@ swBuild.injectManifest(config).then(({
     }
     const swFileContents = data.replace(wbSwRegex, wbFileName)
     fs.writeFile(config.swDest, swFileContents, () => {
-      console.log(`Pre-cache Manifest generated. Pre-cached ${count} files, totalling ${size} bytes.`)
+      console.log(`Pre-cache Manifest generated. Pre-cached ${count} are files, totalling ${size} bytes.`)
     })
   })
-}).catch((error) => {
-  console.error(`Something went wrong: ${error}`)
+}).catch((error)=>{ //console.error(`Something went wrong: ${error}`)
 })
