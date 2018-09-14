@@ -106,7 +106,7 @@ const Tab = (($) => {
       }
 
       if (selector) {
-        target = document.querySelector(selector)
+        target = document.querySelectorAll(selector)
       }
 
       this._activate(
@@ -128,7 +128,9 @@ const Tab = (($) => {
       }
 
       if (target) {
-        this._activate(target, target.parentNode, complete)
+        for (let i = 0;i < target.length; i++) {
+          this._activate(target[i], target[i].parentNode, complete);
+        }
       } else {
         complete()
       }
