@@ -24,12 +24,7 @@
     if (staticProps) _defineProperties(Constructor, staticProps);
     return Constructor;
   }
-  var Button = function ($$$1) {
-    /**
-     * ------------------------------------------------------------------------
-     * Constants
-     * ------------------------------------------------------------------------
-     */
+  var Button = function ($$$1){
     var NAME = 'bsbutton',
        VERSION = '4.1.3',
         DATA_KEY = 'bs.button',
