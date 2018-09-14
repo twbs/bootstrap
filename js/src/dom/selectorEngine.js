@@ -16,12 +16,14 @@ const SelectorEngine = (() => {
    */
 
   const closest = Polyfill.closest
+  const matchesFn = Polyfill.matches
   const find = Polyfill.find
   const findOne = Polyfill.findOne
+  const nodeText = 3
 
   return {
     matches(element, selector) {
-      return element.matches(selector)
+      return matchesFn.call(element, selector)
     },
 
     find(selector, element = document.documentElement) {
@@ -57,8 +59,8 @@ const SelectorEngine = (() => {
       const parents = []
 
       let ancestor = element.parentNode
-      while (ancestor && ancestor.nodeType === Node.ELEMENT_NODE) {
-        if (ancestor.matches(selector)) {
+      while (ancestor && ancestor.nodeType === Node.ELEMENT_NODE && ancestor.nodeType !== nodeText) {
+        if (this.matches(ancestor, selector)) {
           parents.push(ancestor)
         }
 
@@ -84,8 +86,8 @@ const SelectorEngine = (() => {
       const siblings = []
 
       let previous = element.previousSibling
-      while (previous) {
-        if (previous.matches(selector)) {
+      while (previous && previous.nodeType === Node.ELEMENT_NODE && previous.nodeType !== nodeText) {
+        if (this.matches(previous, selector)) {
           siblings.push(previous)
         }
 
