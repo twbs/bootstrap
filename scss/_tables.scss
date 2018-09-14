@@ -179,7 +179,7 @@
 
         // Prevent double border on horizontal scroll due to use of `display: block;`
         > .table-bordered {
-          border: 0;
+          border: 2px solid black;
         }
       }
     }

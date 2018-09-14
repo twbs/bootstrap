@@ -1,12 +1,4 @@
 // Notes on the classes:
-//
-// 1. The .carousel-item-left and .carousel-item-right is used to indicate where
-//    the active slide is heading.
-// 2. .active.carousel-item is the current slide.
-// 3. .active.carousel-item-left and .active.carousel-item-right is the current
-//    slide in its in-transition state. Only one of these occurs at a time.
-// 4. .carousel-item-next.carousel-item-left and .carousel-item-prev.carousel-item-right
-//    is the upcoming slide in transition.
 
 .carousel {
   position: relative;
@@ -67,10 +59,7 @@
   }
 }
 
-
-//
 // Alternate transitions
-//
 
 .carousel-fade {
   .carousel-item {
@@ -103,10 +92,7 @@
   }
 }
 
-
-//
 // Left/right controls for nav
-//
 
 .carousel-control-prev,
 .carousel-control-next {
@@ -129,7 +115,7 @@
     color: $carousel-control-color;
     text-decoration: none;
     outline: 0;
-    opacity: .9;
+    opacity: .7;
   }
 }
 .carousel-control-prev {
@@ -144,7 +130,6 @@
     background: linear-gradient(270deg, rgba($black, .25), rgba($black, .001));
   }
 }
-
 // Icons for within
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
@@ -160,12 +145,7 @@
 .carousel-control-next-icon {
   background-image: $carousel-control-next-icon-bg;
 }
-
-
 // Optional indicator pips
-//
-// Add an ordered list with the following class and add a list item for each
-// slide your carousel holds.
 
 .carousel-indicators {
   position: absolute;
@@ -197,18 +177,11 @@
     border-bottom: $carousel-indicator-hit-area-height solid transparent;
     opacity: .5;
     @include transition($carousel-indicator-transition);
-  }
-
-  .active {
+  }  .active {
     opacity: 1;
   }
 }
-
-
 // Optional captions
-//
-//
-
 .carousel-caption {
   position: absolute;
   right: ((100% - $carousel-caption-width) / 2);

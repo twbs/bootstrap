@@ -1,13 +1,10 @@
+'use strict';
 $(function () {
-  'use strict'
-
   QUnit.module('button plugin')
-
   QUnit.test('should be defined on jquery object', function (assert) {
     assert.expect(1)
     assert.ok($(document.body).button, 'button method is defined')
   })
-
   QUnit.module('button', {
     beforeEach: function () {
       // Run all tests in noConflict mode -- it's the only way to ensure that the plugin works in noConflict mode
@@ -19,12 +16,10 @@ $(function () {
       $('#qunit-fixture').html('')
     }
   })
-
   QUnit.test('should provide no conflict', function (assert) {
     assert.expect(1)
     assert.strictEqual(typeof $.fn.button, 'undefined', 'button was set back to undefined (org value)')
   })
-
   QUnit.test('should return jquery collection containing the element', function (assert) {
     assert.expect(2)
     var $el = $('<div/>')
@@ -32,7 +27,6 @@ $(function () {
     assert.ok($button instanceof $, 'returns jquery collection')
     assert.strictEqual($button[0], $el[0], 'collection contains element')
   })
-
   QUnit.test('should toggle active', function (assert) {
     assert.expect(2)
     var $btn = $('<button class="btn" data-toggle="button">mdo</button>')
@@ -40,11 +34,9 @@ $(function () {
     $btn.bootstrapButton('toggle')
     assert.ok($btn.hasClass('active'), 'btn has class active')
   })
-
   QUnit.test('should toggle active when btn children are clicked', function (assert) {
     assert.expect(2)
-    var $btn = $('<button class="btn" data-toggle="button">mdo</button>')
-    var $inner = $('<i/>')
+    var $btn = $('<button class="btn" data-toggle="button">mdo</button>'),$inner = $('<i/>')
     $btn
       .append($inner)
       .appendTo('#qunit-fixture')
@@ -52,7 +44,6 @@ $(function () {
     $inner.trigger('click')
     assert.ok($btn.hasClass('active'), 'btn has class active')
   })
-
   QUnit.test('should toggle aria-pressed', function (assert) {
     assert.expect(2)
     var $btn = $('<button class="btn" data-toggle="button" aria-pressed="false">redux</button>')
@@ -60,7 +51,6 @@ $(function () {
     $btn.bootstrapButton('toggle')
     assert.strictEqual($btn.attr('aria-pressed'), 'true', 'btn aria-pressed state is true')
   })
-
   QUnit.test('should toggle aria-pressed on buttons with container', function (assert) {
     assert.expect(1)
     var groupHTML = '<div class="btn-group" data-toggle="buttons">' +
@@ -74,8 +64,7 @@ $(function () {
 
   QUnit.test('should toggle aria-pressed when btn children are clicked', function (assert) {
     assert.expect(2)
-    var $btn = $('<button class="btn" data-toggle="button" aria-pressed="false">redux</button>')
-    var $inner = $('<i/>')
+    var $btn = $('<button class="btn" data-toggle="button" aria-pressed="false">redux</button>'),$inner = $('<i/>')
     $btn
       .append($inner)
       .appendTo('#qunit-fixture')
@@ -86,24 +75,18 @@ $(function () {
 
   QUnit.test('should trigger input change event when toggled button has input field', function (assert) {
     assert.expect(1)
-    var done = assert.async()
-
-    var groupHTML = '<div class="btn-group" data-toggle="buttons">' +
+    var done = assert.async(),groupHTML = '<div class="btn-group" data-toggle="buttons">' +
       '<label class="btn btn-primary">' +
       '<input type="radio" id="radio" autocomplete="off">Radio' +
       '</label>' +
       '</div>'
     var $group = $(groupHTML).appendTo('#qunit-fixture')
-
     $group.find('input').on('change', function (e) {
       e.preventDefault()
       assert.ok(true, 'change event fired')
       done()
-    })
-
-    $group.find('label').trigger('click')
+    });    $group.find('label').trigger('click')
   })
-
   QUnit.test('should check for closest matching toggle', function (assert) {
     assert.expect(12)
     var groupHTML = '<div class="btn-group" data-toggle="buttons">' +
@@ -117,11 +100,9 @@ $(function () {
       '<input type="radio" name="options" id="option3"> Option 3' +
       '</label>' +
       '</div>'
-    var $group = $(groupHTML).appendTo('#qunit-fixture')
-
-    var $btn1 = $group.children().eq(0)
-    var $btn2 = $group.children().eq(1)
-
+    var $group = $(groupHTML).appendTo('#qunit-fixture'),
+        $btn1 = $group.children().eq(0),
+        $btn2 = $group.children().eq(1)
     assert.ok($btn1.hasClass('active'), 'btn1 has active class')
     assert.ok($btn1.find('input').prop('checked'), 'btn1 is checked')
     assert.ok(!$btn2.hasClass('active'), 'btn2 does not have active class')
@@ -145,18 +126,14 @@ $(function () {
       '<label class="btn btn-primary"><input type="checkbox" autocomplete="off"> Checkbox</label>' +
       '<label class="btn btn-primary"><input type="radio" name="options" autocomplete="off"> Radio</label>' +
       '</div>'
-    var $group = $(groupHTML).appendTo('#qunit-fixture')
-
-    var $btn1 = $group.children().eq(0)
-    var $btn2 = $group.children().eq(1)
-
+    var $group = $(groupHTML).appendTo('#qunit-fixture'),
+        $btn1 = $group.children().eq(0),
+        $btn2 = $group.children().eq(1)
     $btn1.find('input').trigger('click')
     assert.ok($btn1.is(':not([aria-pressed])'), 'label for nested checkbox input has not been given an aria-pressed attribute')
-
     $btn2.find('input').trigger('click')
     assert.ok($btn2.is(':not([aria-pressed])'), 'label for nested radio input has not been given an aria-pressed attribute')
   })
-
   QUnit.test('should handle disabled attribute on non-button elements', function (assert) {
     assert.expect(2)
     var groupHTML = '<div class="btn-group disabled" data-toggle="buttons" aria-disabled="true" disabled>' +
@@ -176,24 +153,15 @@ $(function () {
 
   QUnit.test('dispose should remove data and the element', function (assert) {
     assert.expect(2)
-
-    var $el = $('<div/>')
-    var $button = $el.bootstrapButton()
-
+    var $el = $('<div/>'),$button = $el.bootstrapButton()
     assert.ok(typeof $button.data('bs.button') !== 'undefined')
-
     $button.data('bs.button').dispose()
-
     assert.ok(typeof $button.data('bs.button') === 'undefined')
   })
-
   QUnit.test('should return button version', function (assert) {
     assert.expect(1)
-
     if (typeof Button !== 'undefined') {
       assert.ok(typeof Button.VERSION === 'string')
-    } else {
-      assert.notOk()
-    }
+    } else {      assert.notOk()}
   })
 })

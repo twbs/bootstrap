@@ -1,19 +1,7 @@
 import $ from 'jquery'
 import Util from './util'
 
-/**
- * --------------------------------------------------------------------------
- * Bootstrap (v4.1.3): collapse.js
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- * --------------------------------------------------------------------------
- */
-
 const Collapse = (($) => {
-  /**
-   * ------------------------------------------------------------------------
-   * Constants
-   * ------------------------------------------------------------------------
-   */
 
   const NAME                = 'collapse'
   const VERSION             = '4.1.3'
