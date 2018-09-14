@@ -216,30 +216,6 @@ $(function () {
     $dropdown.trigger('click')
   })
 
-  QUnit.test('should test if element has a # before assuming it\'s a selector', function (assert) {
-    assert.expect(1)
-    var done = assert.async()
-    var dropdownHTML = '<div class="tabs">' +
-        '<div class="dropdown">' +
-        '<a href="/foo/" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>' +
-        '<div class="dropdown-menu">' +
-        '<a class="dropdown-item" href="#">Secondary link</a>' +
-        '<a class="dropdown-item" href="#">Something else here</a>' +
-        '<div class="divider"/>' +
-        '<a class="dropdown-item" href="#">Another link</a>' +
-        '</div>' +
-        '</div>' +
-        '</div>'
-    var $dropdown = $(dropdownHTML).find('[data-toggle="dropdown"]').bootstrapDropdown()
-    $dropdown
-      .parent('.dropdown')
-      .on('shown.bs.dropdown', function () {
-        assert.ok($dropdown.parent('.dropdown').hasClass('show'), '"show" class added on click')
-        done()
-      })
-    $dropdown.trigger('click')
-  })
-
   QUnit.test('should remove "show" class if body is clicked', function (assert) {
     assert.expect(2)
     var done = assert.async()
