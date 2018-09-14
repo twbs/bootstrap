@@ -1,5 +1,5 @@
 {
-  "name": "Bootstrap ",
+  "name": "Bootstrap",
   "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
   "version": "4.1.3",
   "keywords": [
@@ -90,13 +90,10 @@
   },
   "bugs": {
     "url": "https://github.com/twbs/bootstrap/issues"
-<<<<<<< HEAD
-=======
   },  "dependencies": {},
   "peerDependencies": {
     "jquery": "1.9.1 - 3",
     "popper.js": "^1.14.4"
->>>>>>> eb9c039f761c75f75a4fd16609e490e5b8beb632
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0",
@@ -213,11 +210,7 @@
     },  "dependencies": {},
     "peerDependencies": {
       "jquery": "1.9.1 - 3",
-<<<<<<< HEAD
-      "popper.js": "^1.14.3"
-=======
       "popper.js": "^1.14.4"
->>>>>>> eb9c039f761c75f75a4fd16609e490e5b8beb632
     }
   }
 }
