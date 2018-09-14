@@ -3,7 +3,7 @@
     <img src="https://getbootstrap.com/docs/4.1/assets/brand/bootstrap-solid.svg" alt="Bootstrap logo" width=72 height=72>
   </a>
 
-  <h3 align="center">Bootstrap</h3>
+  <h3 align="center">bootstrap</h3>
 
   <p align="center">
     Sleek, intuitive, and powerful front-end framework for faster and easier web development.

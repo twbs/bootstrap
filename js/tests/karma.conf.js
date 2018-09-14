@@ -1,5 +1,3 @@
-/* eslint-env node */
-/* eslint no-process-env: 0 */
 const ip = require('ip')
 const {
   browsers,
@@ -7,45 +5,27 @@ const {
 } = require('./browsers')
 const path = require('path')
 const jsCoveragePath = path.resolve(__dirname, '../coverage')
-
 const jqueryFile = process.env.USE_OLD_JQUERY ? 'https://code.jquery.com/jquery-1.9.1.min.js' : 'site/docs/4.1/assets/js/vendor/jquery-slim.min.js'
 const bundle = process.env.BUNDLE === 'true'
 const browserStack = process.env.BROWSER === 'true'
-
-const frameworks = [
-  'qunit',
-  'sinon'
-]
-
-const plugins = [
-  'karma-qunit',
-  'karma-sinon'
-]
-
+const frameworks = [ 'qunit',  'sinon']
+const plugins = [ 'karma-qunit','karma-sinon']
 const reporters = ['dots']
-
-const detectBrowsers = {
+const detectBrowsers={
   usePhantomJS: false,
   postDetection(availableBrowser) {
     if (typeof process.env.TRAVIS_JOB_ID !== 'undefined' || availableBrowser.includes('Chrome')) {
       return ['ChromeHeadless']
     }
-
     if (availableBrowser.includes('Firefox')) {
       return ['FirefoxHeadless']
     }
-
     throw new Error('Please install Firefox or Chrome')
   }
 }
-
 const customLaunchers = {
-  FirefoxHeadless: {
-    base: 'Firefox',
-    flags: ['-headless']
-  }
+  FirefoxHeadless: { base: 'Firefox',flags: ['-headless']}
 }
-
 let files = ['site/docs/4.1/assets/js/vendor/popper.min.js']
 const conf = {
   basePath: '../..',
@@ -55,12 +35,9 @@ const conf = {
   singleRun: true,
   concurrency: Infinity,
   client: {
-    qunit: {
-      showUI: true
-    }
+    qunit: {      showUI: true}
   }
 }
-
 if (bundle) {
   frameworks.push('detectBrowsers')
   plugins.push(
@@ -124,14 +101,11 @@ if (bundle) {
     }
   }
 }
-
 files.push('js/tests/unit/*.js')
-
 conf.frameworks = frameworks
 conf.plugins = plugins
 conf.reporters = reporters
 conf.files = files
-
 module.exports = (karmaConfig) => {
   // possible values: karmaConfig.LOG_DISABLE || karmaConfig.LOG_ERROR || karmaConfig.LOG_WARN || karmaConfig.LOG_INFO || karmaConfig.LOG_DEBUG
   conf.logLevel = karmaConfig.LOG_ERROR || karmaConfig.LOG_WARN

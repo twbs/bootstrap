@@ -11,13 +11,6 @@ import Tab from './tab'
 import Tooltip from './tooltip'
 import Util from './util'
 
-/**
- * --------------------------------------------------------------------------
- * Bootstrap (v4.1.3): index.js
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- * --------------------------------------------------------------------------
- */
-
 (($) => {
   if (typeof $ === 'undefined') {
     throw new TypeError('Bootstrap\'s JavaScript requires jQuery. jQuery must be included before Bootstrap\'s JavaScript.')

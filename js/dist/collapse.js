@@ -70,7 +70,7 @@
      * Constants
      * ------------------------------------------------------------------------
      */
-    var NAME = 'collapse';
+    var NAME = 'bscollapse';
     var VERSION = '4.1.3';
     var DATA_KEY = 'bs.collapse';
     var EVENT_KEY = "." + DATA_KEY;

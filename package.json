@@ -1,5 +1,5 @@
 {
-  "name": "bootstrap",
+  "name": "Bootstrap",
   "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
   "version": "4.1.3",
   "keywords": [
@@ -9,7 +9,9 @@
     "responsive",
     "front-end",
     "framework",
-    "web"
+    "web",
+    "html",
+    "javascript"
   ],
   "homepage": "https://getbootstrap.com/",
   "author": "The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)",
@@ -88,9 +90,7 @@
   },
   "bugs": {
     "url": "https://github.com/twbs/bootstrap/issues"
-  },
-  "license": "MIT",
-  "dependencies": {},
+  },  "dependencies": {},
   "peerDependencies": {
     "jquery": "1.9.1 - 3",
     "popper.js": "^1.14.4"
@@ -207,8 +207,7 @@
         ],
         "exports": "$"
       }
-    },
-    "dependencies": {},
+    },  "dependencies": {},
     "peerDependencies": {
       "jquery": "1.9.1 - 3",
       "popper.js": "^1.14.4"

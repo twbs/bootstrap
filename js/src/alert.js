@@ -1,20 +1,11 @@
 import $ from 'jquery'
 import Util from './util'
-
-/**
- * --------------------------------------------------------------------------
- * Bootstrap (v4.1.3): alert.js
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- * --------------------------------------------------------------------------
- */
-
 const Alert = (($) => {
   /**
    * ------------------------------------------------------------------------
    * Constants
    * ------------------------------------------------------------------------
    */
-
   const NAME                = 'alert'
   const VERSION             = '4.1.3'
   const DATA_KEY            = 'bs.alert'
@@ -25,7 +16,6 @@ const Alert = (($) => {
   const Selector = {
     DISMISS : '[data-dismiss="alert"]'
   }
-
   const Event = {
     CLOSE          : `close${EVENT_KEY}`,
     CLOSED         : `closed${EVENT_KEY}`,
@@ -38,11 +28,6 @@ const Alert = (($) => {
     SHOW  : 'show'
   }
 
-  /**
-   * ------------------------------------------------------------------------
-   * Class Definition
-   * ------------------------------------------------------------------------
-   */
 
   class Alert {
     constructor(element) {
@@ -157,18 +142,10 @@ const Alert = (($) => {
    * Data Api implementation
    * ------------------------------------------------------------------------
    */
-
   $(document).on(
     Event.CLICK_DATA_API,
     Selector.DISMISS,
-    Alert._handleDismiss(new Alert())
-  )
-
-  /**
-   * ------------------------------------------------------------------------
-   * jQuery
-   * ------------------------------------------------------------------------
-   */
+    Alert._handleDismiss(new Alert()))
 
   $.fn[NAME]             = Alert._jQueryInterface
   $.fn[NAME].Constructor = Alert
@@ -176,8 +153,6 @@ const Alert = (($) => {
     $.fn[NAME] = JQUERY_NO_CONFLICT
     return Alert._jQueryInterface
   }
-
   return Alert
 })($)
-
 export default Alert

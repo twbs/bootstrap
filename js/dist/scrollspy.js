@@ -70,7 +70,7 @@
      * Constants
      * ------------------------------------------------------------------------
      */
-    var NAME = 'scrollspy';
+    var NAME = 'bsscrollspy';
     var VERSION = '4.1.3';
     var DATA_KEY = 'bs.scrollspy';
     var EVENT_KEY = "." + DATA_KEY;

@@ -1,6 +1,3 @@
-/* eslint-env node */
-/* eslint-disable camelcase */
-
 const browsers = {
   safariMac: {
     base: 'BrowserStack',

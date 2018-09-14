@@ -36,7 +36,7 @@
      * Constants
      * ------------------------------------------------------------------------
      */
-    var NAME = 'tab';
+    var NAME = 'bstab';
     var VERSION = '4.1.3';
     var DATA_KEY = 'bs.tab';
     var EVENT_KEY = "." + DATA_KEY;
