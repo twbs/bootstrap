@@ -7,15 +7,14 @@ group: about
 
 Bootstrap is maintained by the founding team and a small group of invaluable core contributors, with the massive support and involvement of our community.
 
-<div class="list-group bd-team">
+<div class="list-group mb-3">
   {% for member in site.data.core-team %}
-    <div class="list-group-item">
-      <iframe class="github-btn" src="https://ghbtns.com/github-btn.html?user={{ member.user }}&amp;type=follow"></iframe>
-      <a class="team-member" href="https://github.com/{{ member.user }}">
-        <img src="https://secure.gravatar.com/avatar/{{ member.gravatar }}" alt="@{{ member.user }}" width="32" height="32">
-        <strong>{{ member.name }}</strong> <small>@{{ member.user }}</small>
-      </a>
-    </div>
+    <a class="list-group-item list-group-item-action d-flex align-items-center" href="https://github.com/{{ member.user }}">
+      <img src="https://github.com/{{ member.user }}.png" alt="@{{ member.user }}" width="32" height="32" class="rounded mr-2">
+      <span>
+        <strong>{{ member.name }}</strong> @{{ member.user }}
+      </span>
+    </a>
   {% endfor %}
 </div>
 
