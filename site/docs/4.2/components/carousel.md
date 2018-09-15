@@ -235,7 +235,8 @@ The `data-ride="carousel"` attribute is used to mark a carousel as animating sta
 Call carousel manually with:
 
 {% highlight js %}
-$('.carousel').carousel()
+var myCarousel = document.querySelector('#myCarousel')
+var carousel = new bootstrap.Carousel(myCarousel)
 {% endhighlight %}
 
 ### Options
@@ -272,8 +273,8 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <p>On touch-enabled devices, when set to <code>"hover"</code>, cycling will pause on <code>touchend</code> (once the user finished interacting with the carousel) for two intervals, before automatically resuming. Note that this is in addition to the above mouse behavior.</p></td>
     </tr>
     <tr>
-      <td>ride</td>
-      <td>string</td>
+      <td>slide</td>
+      <td>string | boolean</td>
       <td>false</td>
       <td>Autoplays the carousel after the user manually cycles the first item. If "carousel", autoplays the carousel on load.</td>
     </tr>
@@ -296,39 +297,26 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 
 {% include callout-danger-async-methods.md %}
 
-#### `.carousel(options)`
-
-Initializes the carousel with an optional options `object` and starts cycling through items.
+You can create a carousel instance with the carousel constructor, for example, to initialize with additional options and start cycling through items:
 
 {% highlight js %}
-$('.carousel').carousel({
-  interval: 2000
+var myCarousel = document.querySelector('#myCarousel')
+var carousel = new bootstrap.Carousel(myCarousel, {
+  interval: 2000,
+  wrap: false
 })
 {% endhighlight %}
 
-#### `.carousel('cycle')`
 
-Cycles through the carousel items from left to right.
-
-#### `.carousel('pause')`
-
-Stops the carousel from cycling through items.
-
-#### `.carousel(number)`
-
-Cycles the carousel to a particular frame (0 based, similar to an array). **Returns to the caller before the target item has been shown** (i.e. before the `slid.bs.carousel` event occurs).
-
-#### `.carousel('prev')`
-
-Cycles to the previous item. **Returns to the caller before the previous item has been shown** (i.e. before the `slid.bs.carousel` event occurs).
-
-#### `.carousel('next')`
-
-Cycles to the next item. **Returns to the caller before the next item has been shown** (i.e. before the `slid.bs.carousel` event occurs).
-
-#### `.carousel('dispose')`
-
-Destroys an element's carousel.
+| Method | Description |
+| --- | --- |
+| `cycle` | Cycles through the carousel items from left to right. |
+| `pause` | Stops the carousel from cycling through items. |
+| `prev` | Cycles to the previous item. **Returns to the caller before the previous item has been shown** (i.e. before the `slid.bs.carousel` event occurs). |
+| `next` | Cycles to the next item. **Returns to the caller before the next item has been shown** (i.e. before the `slid.bs.carousel` event occurs). |
+| `nextWhenVisible` | Only go to the next slide when the page, carousel and the carousel parent is visible. |
+| `to` | Cycles the carousel to a particular frame (0 based, similar to an array). **Returns to the caller before the target item has been shown** (i.e. before the `slid.bs.carousel` event occurs). |
+| `dispose` | Destroys an element's carousel. |
 
 ### Events
 
