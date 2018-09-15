@@ -46,23 +46,23 @@
     @include media-breakpoint-up($breakpoint) {
       .no-#{$breakpoint}-gutters {
         margin-right: 0;
-        margin-left:  0;
+        margin-left: 0;
 
         > .col,
         > [class*="col-"] {
           padding-right: 0;
-          padding-left:  0;
+          padding-left: 0;
         }
       }
 
       .gutters-#{$breakpoint} {
         margin-right: ($grid-gutter-width / -2);
-        margin-left:  ($grid-gutter-width / -2);
+        margin-left: ($grid-gutter-width / -2);
 
         > .col,
         > [class*="col-"] {
           padding-right: ($grid-gutter-width / 2);
-          padding-left:  ($grid-gutter-width / 2);
+          padding-left: ($grid-gutter-width / 2);
         }
       }
     }
@@ -70,12 +70,12 @@
 
   .gutters {
     margin-right: ($grid-gutter-width / -2);
-    margin-left:  ($grid-gutter-width / -2);
+    margin-left: ($grid-gutter-width / -2);
 
     > .col,
     > [class*="col-"] {
       padding-right: ($grid-gutter-width / 2);
-      padding-left:  ($grid-gutter-width / 2);
+      padding-left: ($grid-gutter-width / 2);
     }
   }
 }
