@@ -77,23 +77,13 @@ const Util = (($) => {
 
     getSelectorFromElement(element) {
       let selector = element.getAttribute('data-target')
-      let method = 'querySelector'
 
       if (!selector || selector === '#') {
-        selector = (element.getAttribute('href') || '').trim()
+        const hrefAttr = element.getAttribute('href')
+        selector = hrefAttr && hrefAttr !== '#' ? hrefAttr.trim() : ''
       }
 
-      const validSelector = selector
-      if (selector.charAt(0) === '#' && selector.indexOf(',') === -1) {
-        selector = selector.substr(1)
-        method = 'getElementById'
-      }
-
-      try {
-        return document[method](selector) ? validSelector : null
-      } catch (err) {
-        return null
-      }
+      return selector && document.querySelector(selector) ? selector : null
     },
 
     getTransitionDurationFromElement(element) {
