@@ -158,7 +158,24 @@ Note that pre-checked buttons require you to manually add the `.active` class to
 
 ### Methods
 
-| Method | Description |
-| --- | --- |
-| `$().button('toggle')` | Toggles push state. Gives the button the appearance that it has been activated. |
-| `$().button('dispose')` | Destroys an element's button. |
+You can create a button instance with the button constructor, for example:
+
+{% highlight js %}
+var button = document.getElementById('myButton')
+var bsButton = new bootstrap.Button(button)
+{% endhighlight %}
+
+| Method    | Description                                                                     |
+| --------- | ------------------------------------------------------------------------------- |
+| `toggle`  | Toggles push state. Gives the button the appearance that it has been activated. |
+| `dispose` | Destroys an element's button.                                                   |
+
+For example, to toggle all buttons
+
+{% highlight js %}
+var buttons = document.querySelectorAll('.btn')
+buttons.forEach(function (button) {
+  var button = new bootstrap.Button(button)
+  button.toggle()
+})
+{% endhighlight %}
