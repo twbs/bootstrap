@@ -9,7 +9,7 @@ node_js:
   - "6"
   - "8"
 before_install:
-  - if [[ `npm -v` != 5* ]]; then npm install -g npm@5; fi
+  - if [[ $(npm -v | cut -d. -f1) -lt "5" ]]; then npm install -g npm@5; fi
 install:
   - bundle install --deployment --jobs=3 --retry=3
   - npm install
