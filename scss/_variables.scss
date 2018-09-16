@@ -523,7 +523,7 @@ $custom-select-padding-y:           .375rem !default;
 $custom-select-padding-x:           .75rem !default;
 $custom-select-height:              $input-height !default;
 $custom-select-indicator-padding:   1rem !default; // Extra padding to account for the presence of the background-image based indicator
-$custom-select-line-height:         $input-btn-line-height !default;
+$custom-select-line-height:         $input-line-height !default;
 $custom-select-color:               $input-color !default;
 $custom-select-disabled-color:      $gray-600 !default;
 $custom-select-bg:                  $input-bg !default;
@@ -533,22 +533,22 @@ $custom-select-indicator-color:     $gray-800 !default;
 $custom-select-indicator:           str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='#{$custom-select-indicator-color}' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E"), "#", "%23") !default;
 $custom-select-background:          $custom-select-indicator no-repeat right $custom-select-padding-x center / $custom-select-bg-size !default; // Used so we can have multiple background elements (e.g., arrow and feedback icon)
 
-$custom-select-border-width:        $input-btn-border-width !default;
+$custom-select-border-width:        $input-border-width !default;
 $custom-select-border-color:        $input-border-color !default;
 $custom-select-border-radius:       $border-radius !default;
 $custom-select-box-shadow:          inset 0 1px 2px rgba($black, .075) !default;
 
 $custom-select-focus-border-color:  $input-focus-border-color !default;
-$custom-select-focus-width:         $input-btn-focus-width !default;
+$custom-select-focus-width:         $input-focus-width !default;
 $custom-select-focus-box-shadow:    0 0 0 $custom-select-focus-width rgba($custom-select-focus-border-color, .5) !default;
 
-$custom-select-padding-y-sm:        $input-btn-padding-y-sm !default;
-$custom-select-padding-x-sm:        $input-btn-padding-x-sm !default;
+$custom-select-padding-y-sm:        $input-padding-y-sm !default;
+$custom-select-padding-x-sm:        $input-padding-x-sm !default;
 $custom-select-font-size-sm:        $input-btn-font-size-sm !default;
 $custom-select-height-sm:           $input-height-sm !default;
 
-$custom-select-padding-y-lg:        $input-btn-padding-y-lg !default;
-$custom-select-padding-x-lg:        $input-btn-padding-x-lg !default;
+$custom-select-padding-y-lg:        $input-padding-y-lg !default;
+$custom-select-padding-x-lg:        $input-padding-x-lg !default;
 $custom-select-font-size-lg:        $input-btn-font-size-lg !default;
 $custom-select-height-lg:           $input-height-lg !default;
 
@@ -565,23 +565,23 @@ $custom-range-thumb-bg:                      $component-active-bg !default;
 $custom-range-thumb-border:                  0 !default;
 $custom-range-thumb-border-radius:           1rem !default;
 $custom-range-thumb-box-shadow:              0 .1rem .25rem rgba($black, .1) !default;
-$custom-range-thumb-focus-box-shadow:        0 0 0 1px $body-bg, $input-btn-focus-box-shadow !default;
-$custom-range-thumb-focus-box-shadow-width:  $input-btn-focus-width !default; // For focus box shadow issue in IE/Edge
+$custom-range-thumb-focus-box-shadow:        0 0 0 1px $body-bg, $input-focus-box-shadow !default;
+$custom-range-thumb-focus-box-shadow-width:  $input-focus-width !default; // For focus box shadow issue in IE/Edge
 $custom-range-thumb-active-bg:               lighten($component-active-bg, 35%) !default;
 $custom-range-thumb-disabled-bg:             $gray-500 !default;
 
 $custom-file-height:                $input-height !default;
 $custom-file-height-inner:          $input-height-inner !default;
 $custom-file-focus-border-color:    $input-focus-border-color !default;
-$custom-file-focus-box-shadow:      $input-btn-focus-box-shadow !default;
+$custom-file-focus-box-shadow:      $input-focus-box-shadow !default;
 $custom-file-disabled-bg:           $input-disabled-bg !default;
 
-$custom-file-padding-y:             $input-btn-padding-y !default;
-$custom-file-padding-x:             $input-btn-padding-x !default;
-$custom-file-line-height:           $input-btn-line-height !default;
+$custom-file-padding-y:             $input-padding-y !default;
+$custom-file-padding-x:             $input-padding-x !default;
+$custom-file-line-height:           $input-line-height !default;
 $custom-file-color:                 $input-color !default;
 $custom-file-bg:                    $input-bg !default;
-$custom-file-border-width:          $input-btn-border-width !default;
+$custom-file-border-width:          $input-border-width !default;
 $custom-file-border-color:          $input-border-color !default;
 $custom-file-border-radius:         $input-border-radius !default;
 $custom-file-box-shadow:            $input-box-shadow !default;
