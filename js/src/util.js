@@ -79,14 +79,11 @@ const Util = (($) => {
       let selector = element.getAttribute('data-target')
 
       if (!selector || selector === '#') {
-        selector = (element.getAttribute('href') || '').trim()
+        const hrefAttr = element.getAttribute('href')
+        selector = hrefAttr && hrefAttr !== '#' ? hrefAttr.trim() : ''
       }
 
-      try {
-        return document.querySelector(selector) ? selector : null
-      } catch (err) {
-        return null
-      }
+      return selector && document.querySelector(selector) ? selector : null
     },
 
     getTransitionDurationFromElement(element) {
