@@ -101,7 +101,8 @@
   @include transition($carousel-control-transition);
 
   // Hover/focus state
-  @include hover-focus {
+  &:hover,
+  &:focus {
     color: $carousel-control-color;
     text-decoration: none;
     outline: 0;

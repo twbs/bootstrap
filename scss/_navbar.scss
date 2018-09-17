@@ -48,7 +48,8 @@
   line-height: inherit;
   white-space: nowrap;
 
-  @include hover-focus {
+  &:hover,
+  &:focus {
     text-decoration: none;
   }
 }
@@ -112,7 +113,8 @@
   border: $border-width solid transparent; // remove default button style
   @include border-radius($navbar-toggler-border-radius);
 
-  @include hover-focus {
+  &:hover,
+  &:focus {
     text-decoration: none;
   }
 }
@@ -193,7 +195,8 @@
   .navbar-brand {
     color: $navbar-light-brand-color;
 
-    @include hover-focus {
+    &:hover,
+    &:focus {
       color: $navbar-light-brand-hover-color;
     }
   }
@@ -202,7 +205,8 @@
     .nav-link {
       color: $navbar-light-color;
 
-      @include hover-focus {
+      &:hover,
+      &:focus {
         color: $navbar-light-hover-color;
       }
 
@@ -230,12 +234,11 @@
 
   .navbar-text {
     color: $navbar-light-color;
-    a {
-      color: $navbar-light-active-color;
 
-      @include hover-focus {
-        color: $navbar-light-active-color;
-      }
+    a,
+    a:hover,
+    a:focus  {
+      color: $navbar-light-active-color;
     }
   }
 }
@@ -245,7 +248,8 @@
   .navbar-brand {
     color: $navbar-dark-brand-color;
 
-    @include hover-focus {
+    &:hover,
+    &:focus {
       color: $navbar-dark-brand-hover-color;
     }
   }
@@ -254,7 +258,8 @@
     .nav-link {
       color: $navbar-dark-color;
 
-      @include hover-focus {
+      &:hover,
+      &:focus {
         color: $navbar-dark-hover-color;
       }
 
@@ -282,12 +287,10 @@
 
   .navbar-text {
     color: $navbar-dark-color;
-    a {
+    a,
+    a:hover,
+    a:focus {
       color: $navbar-dark-active-color;
-
-      @include hover-focus {
-        color: $navbar-dark-active-color;
-      }
     }
   }
 }
