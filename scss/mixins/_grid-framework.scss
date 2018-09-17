@@ -31,12 +31,10 @@
       .col#{$infix} {
         flex-basis: 0;
         flex-grow: 1;
-        max-width: 100%;
       }
       .col#{$infix}-auto {
         flex: 0 0 auto;
         width: auto;
-        max-width: 100%; // Reset earlier grid tiers
       }
 
       @for $i from 1 through $columns {
