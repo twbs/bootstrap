@@ -42,7 +42,7 @@
   browser: >
     Firefox
   summary: >
-    Implement the [`of <selector-list>` clause](http://caniuse.com/#feat=css-nth-child-of) of the `:nth-child()` pseudo-class
+    Implement the [`of <selector-list>` clause](https://caniuse.com/#feat=css-nth-child-of) of the `:nth-child()` pseudo-class
   upstream_bug: >
     Mozilla#854148
   origin: >
@@ -62,7 +62,7 @@
   browser: >
     Chrome
   summary: >
-    Implement the [`of <selector-list>` clause](http://caniuse.com/#feat=css-nth-child-of) of the `:nth-child()` pseudo-class
+    Implement the [`of <selector-list>` clause](https://caniuse.com/#feat=css-nth-child-of) of the `:nth-child()` pseudo-class
   upstream_bug: >
     Chromium#304163
   origin: >

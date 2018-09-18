@@ -9,7 +9,7 @@ title: Bootstrap &middot; The world's most popular mobile-first and responsive f
     <span class="bs-docs-booticon bs-docs-booticon-lg bs-docs-booticon-outline">B</span>
     <p class="lead">Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile first projects on the web.</p>
     <p class="lead">
-      <a href="getting-started#download" class="btn btn-outline-inverse btn-lg" onclick="ga('send', 'event', 'Jumbotron actions', 'Download', 'Download {{ site.current_version }}');">Download Bootstrap</a>
+      <a href="{{ site.baseurl }}/getting-started/#download" class="btn btn-outline-inverse btn-lg" onclick="ga('send', 'event', 'Jumbotron actions', 'Download', 'Download {{ site.current_version }}');">Download Bootstrap</a>
     </p>
     <p class="version">Currently v{{ site.current_version }}</p>
     {% include ads.html %}
@@ -25,17 +25,17 @@ title: Bootstrap &middot; The world's most popular mobile-first and responsive f
 
     <div class="row">
       <div class="col-sm-4">
-        <img src="assets/img/sass-less.png" alt="Sass and Less support" class="img-responsive" width="1000" height="360">
+        <img src="{{ site.baseurl }}/assets/img/sass-less.png" alt="Sass and Less support" class="img-responsive" width="1000" height="360">
         <h3>Preprocessors</h3>
         <p>Bootstrap ships with vanilla CSS, but its source code utilizes the two most popular CSS preprocessors, <a href="{{ site.baseurl }}/css/#less">Less</a> and <a href="{{ site.baseurl }}/css/#sass">Sass</a>. Quickly get started with precompiled CSS or build on the source.</p>
       </div>
       <div class="col-sm-4">
-        <img src="assets/img/devices.png" alt="Responsive across devices" class="img-responsive" width="1000" height="360">
+        <img src="{{ site.baseurl }}/assets/img/devices.png" alt="Responsive across devices" class="img-responsive" width="1000" height="360">
         <h3>One framework, every device.</h3>
         <p>Bootstrap easily and efficiently scales your websites and applications with a single code base, from phones to tablets to desktops with CSS media queries.</p>
       </div>
       <div class="col-sm-4">
-        <img src="assets/img/components.png" alt="Components" class="img-responsive" width="1000" height="360">
+        <img src="{{ site.baseurl }}/assets/img/components.png" alt="Components" class="img-responsive" width="1000" height="360">
         <h3>Full of features</h3>
         <p>With Bootstrap, you get extensive and beautiful documentation for common HTML elements, dozens of custom HTML and CSS components, and awesome jQuery plugins.</p>
       </div>
@@ -59,7 +59,7 @@ title: Bootstrap &middot; The world's most popular mobile-first and responsive f
       <a href="{{ site.themes }}" class="btn btn-outline btn-lg">Browse themes</a>
     </p>
 
-    <img class="img-fluid mx-auto" src="{{ site.baseurl }}/assets/img/bs-themes.png" alt="Bootstrap Themes" width="1024" height="388">
+    <img class="img-responsive" src="{{ site.baseurl }}/assets/img/bs-themes.png" alt="Bootstrap Themes" width="1024" height="388">
   </div>
 </div>
 
@@ -73,7 +73,7 @@ title: Bootstrap &middot; The world's most popular mobile-first and responsive f
 
     <div class="row bs-docs-featured-sites">
     {% for showcase in site.data.showcase %}
-      <div class="col-xs-6 col-sm-3">
+      <div class="col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-0">
         <a href="{{ showcase.expo_url }}" target="_blank" title="{{ showcase.name }}">
           <img src="{{ site.baseurl }}/assets/img/expo-{{ showcase.img }}.jpg" alt="{{ showcase.name }}" class="img-responsive" width="800" height="600">
         </a>

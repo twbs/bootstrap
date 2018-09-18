@@ -1,12 +1,7 @@
 - name: Chinese
   code: zh
   description: Bootstrap 中文文档
-  url: http://v3.bootcss.com/
-
-- name: Chinese (Traditional)
-  code: zh-TW
-  description: Bootstrap 3 中文手冊
-  url: https://kkbruce.tw/bs3/
+  url: https://v3.bootcss.com/
 
 - name: Danish
   code: da
@@ -26,7 +21,7 @@
 - name: Italian
   code: it
   description: Bootstrap in Italiano
-  url: http://www.hackerstribe.com/guide/IT-bootstrap-3.1.1/
+  url: https://www.hackerstribe.com/guide/IT-bootstrap-3.1.1/
 
 - name: Korean
   code: ko
@@ -36,7 +31,7 @@
 - name: Brazilian Portuguese
   code: pt-BR
   description: Bootstrap em Português do Brasil
-  url: http://bootstrapbrasil.github.io/
+  url: https://getbootstrap.com.br/
 
 - name: Russian
   code: ru
@@ -56,7 +51,7 @@
 - name: Ukrainian
   code: uk
   description: Bootstrap українською
-  url: http://twbs.docs.org.ua
+  url: https://twbs.docs.org.ua/
 
 - name: Vietnamese
   code: vi

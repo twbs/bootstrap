@@ -10,7 +10,7 @@ source:           docs
 destination:      _gh_pages
 host:             0.0.0.0
 port:             9001
-url:              http://getbootstrap.com
+url:              https://getbootstrap.com
 baseurl:          /docs/3.4
 encoding:         UTF-8
 exclude:
@@ -30,9 +30,9 @@ download:
   dist:           https://github.com/twbs/bootstrap/releases/download/v3.4.0/bootstrap-3.4.0-dist.zip
   sass:           https://github.com/twbs/bootstrap-sass/archive/v3.4.0.tar.gz
 
-blog:             http://blog.getbootstrap.com
-expo:             http://expo.getbootstrap.com
-themes:           http://themes.getbootstrap.com
+blog:             https://blog.getbootstrap.com
+expo:             https://expo.getbootstrap.com
+themes:           https://themes.getbootstrap.com
 
 cdn:
   # See https://www.srihash.org for info on how to generate the hashes

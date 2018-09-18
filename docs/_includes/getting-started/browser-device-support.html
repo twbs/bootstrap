@@ -75,7 +75,7 @@
 
   <p>On Windows, <strong>we support Internet Explorer 8-11</strong>.</p>
 
-  <p>For Firefox, in addition to the latest normal stable release, we also support the latest <a href="https://www.mozilla.org/en-US/firefox/organizations/faq/">Extended Support Release (ESR)</a> version of Firefox.</p>
+  <p>For Firefox, in addition to the latest normal stable release, we also support the latest <a href="https://www.mozilla.org/en-US/firefox/organizations/">Extended Support Release (ESR)</a> version of Firefox.</p>
 
   <p>Unofficially, Bootstrap should look and behave well enough in Chromium and Chrome for Linux, Firefox for Linux, and Internet Explorer 7, as well as Microsoft Edge, though they are not officially supported.</p>
   <p>For a list of some of the browser bugs that Bootstrap has to grapple with, see our <a href="{{ site.baseurl }}/browser-bugs/">Wall of browser bugs</a>.</p>
@@ -119,7 +119,7 @@
     </table>
   </div>
 
-  <p>Visit <a href="http://caniuse.com/">Can I use...</a> for details on browser support of CSS3 and HTML5 features.</p>
+  <p>Visit <a href="https://caniuse.com/">Can I use...</a> for details on browser support of CSS3 and HTML5 features.</p>
 
   <h2 id="support-ie8-respondjs">Internet Explorer 8 and Respond.js</h2>
   <p>Beware of the following caveats when using Respond.js in your development and production environments for Internet Explorer 8.</p>
@@ -143,14 +143,14 @@
 {% endhighlight %}
   <p>Confirm the document mode by opening the debugging tools: press <kbd>F12</kbd> and check the "Document Mode".</p>
   <p>This tag is included in all of Bootstrap's documentation and examples to ensure the best rendering possible in each supported version of Internet Explorer.</p>
-  <p>See <a href="https://stackoverflow.com/questions/6771258/whats-the-difference-if-meta-http-equiv-x-ua-compatible-content-ie-edge">this StackOverflow question</a> for more information.</p>
+  <p>See <a href="https://stackoverflow.com/questions/6771258/what-does-meta-http-equiv-x-ua-compatible-content-ie-edge-do">this StackOverflow question</a> for more information.</p>
 
   <h2 id="support-ie10-width">Internet Explorer 10 in Windows 8 and Windows Phone 8</h2>
   <p>Internet Explorer 10 doesn't differentiate <strong>device width</strong> from <strong>viewport width</strong>, and thus doesn't properly apply the media queries in Bootstrap's CSS. Normally you'd just add a quick snippet of CSS to fix this:</p>
 {% highlight scss %}
 @-ms-viewport       { width: device-width; }
 {% endhighlight %}
-  <p>However, this doesn't work for devices running Windows Phone 8 versions older than <a href="http://blogs.windows.com/windows_phone/b/wpdev/archive/2013/10/14/introducing-windows-phone-preview-for-developers.aspx">Update 3 (a.k.a. GDR3)</a>, as it causes such devices to show a mostly desktop view instead of narrow "phone" view. To address this, you'll need to <strong>include the following CSS and JavaScript to work around the bug</strong>.</p>
+  <p>However, this doesn't work for devices running Windows Phone 8 versions older than <a href="https://blogs.windows.com/buildingapps/2013/10/14/introducing-windows-phone-preview-for-developers/">Update 3 (a.k.a. GDR3)</a>, as it causes such devices to show a mostly desktop view instead of narrow "phone" view. To address this, you'll need to <strong>include the following CSS and JavaScript to work around the bug</strong>.</p>
 {% highlight scss %}
 @-ms-viewport       { width: device-width; }
 @-o-viewport        { width: device-width; }
@@ -170,7 +170,7 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
   document.querySelector('head').appendChild(msViewportStyle)
 }
 {% endhighlight %}
-  <p>For more information and usage guidelines, read <a href="http://timkadlec.com/2013/01/windows-phone-8-and-device-width/">Windows Phone 8 and Device-Width</a>.</p>
+  <p>For more information and usage guidelines, read <a href="https://timkadlec.com/2013/01/windows-phone-8-and-device-width/">Windows Phone 8 and Device-Width</a>.</p>
   <p>As a heads up, we include this in all of Bootstrap's documentation and examples as a demonstration.</p>
 
   <h2 id="support-safari-percentages">Safari percent rounding</h2>
@@ -228,7 +228,7 @@ $(function () {
 })
 </script>
 {% endhighlight %}
-  <p>Want to see an example? <a href="http://jsbin.com/kuvoz/1">Check out this JS Bin demo.</a></p>
+  <p>Want to see an example? <a href="http://output.jsbin.com/kuvoz/1">Check out this JS Bin demo.</a></p>
 
   <h2 id="support-validators">Validators</h2>
   <p>In order to provide the best possible experience to old and buggy browsers, Bootstrap uses <a href="http://browserhacks.com">CSS browser hacks</a> in several places to target special CSS to certain browser versions in order to work around bugs in the browsers themselves. These hacks understandably cause CSS validators to complain that they are invalid. In a couple places, we also use bleeding-edge CSS features that aren't yet fully standardized, but these are used purely for progressive enhancement.</p>
