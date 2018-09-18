@@ -3,7 +3,7 @@
 // ++++++++++++++++++++++++++++++++++++++++++
 
 /*!
- * JavaScript for Bootstrap's docs (http://getbootstrap.com)
+ * JavaScript for Bootstrap's docs (https://getbootstrap.com/)
  * Copyright 2011-2018 Twitter, Inc.
  * Licensed under the Creative Commons Attribution 3.0 Unported License. For
  * details, see https://creativecommons.org/licenses/by/3.0/.

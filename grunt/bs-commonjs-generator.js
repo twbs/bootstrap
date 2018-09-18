@@ -1,6 +1,6 @@
 /*!
  * Bootstrap Grunt task for the CommonJS module generation
- * http://getbootstrap.com
+ * https://getbootstrap.com/
  * Copyright 2014-2018 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */

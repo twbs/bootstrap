@@ -15,7 +15,7 @@ module Jekyll
       upstream_map.each do |key, data|
         url = data.is_a?(Array) ? data[0] : data
         label = data.is_a?(Array) ? "#{data[1]} " : ""
-        input = input.gsub(/#{key}#(\d+)/, "<a href=\"#{url}\\1\">#{label}#\\1</a>")
+        input = input.gsub(/#{key}#(\d+)/, "<a href=\"#{url}\\1#{key === 'Edge' ? '/' : ''}\">#{label}#\\1</a>")
       end
 
       return input
