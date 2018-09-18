@@ -71,7 +71,7 @@
     "maintenance-dependencies": "ncu -a -x jquery && npm update && bundle update && shx echo \"Manually update site/docs/4.1/assets/js/vendor/*, js/tests/vendor/* and .travis.yml\"",
     "release-sri": "node build/generate-sri.js",
     "release-version": "node build/change-version.js",
-    "release-zip": "cd dist/ && zip -r9 bootstrap-$npm_package_version-dist.zip * && shx mv bootstrap-$npm_package_version-dist.zip ..",
+    "release-zip": "cross-env-shell \"shx cp -r dist/ bootstrap-$npm_package_version-dist && zip -r9 bootstrap-$npm_package_version-dist.zip bootstrap-$npm_package_version-dist && shx rm -rf bootstrap-$npm_package_version-dist\"",
     "dist": "npm-run-all --parallel css js",
     "test": "npm-run-all dist js-test docs-compile docs-lint bundlesize",
     "watch": "npm-run-all --parallel watch-*",
