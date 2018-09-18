@@ -49,7 +49,7 @@
     "js-minify": "npm-run-all --parallel js-minify-*",
     "js-minify-standalone": "uglifyjs --compress typeofs=false --mangle --comments \"/^!/\" --source-map \"content=dist/js/bootstrap.js.map,includeSources,url=bootstrap.min.js.map\" --output dist/js/bootstrap.min.js dist/js/bootstrap.js",
     "js-minify-bundle": "uglifyjs --compress typeofs=false --mangle --comments \"/^!/\" --source-map \"content=dist/js/bootstrap.bundle.js.map,includeSources,url=bootstrap.bundle.min.js.map\" --output dist/js/bootstrap.bundle.min.js dist/js/bootstrap.bundle.js",
-    "js-minify-docs": "uglifyjs --mangle --comments \"/^!/\" --output site/docs/4.1/assets/js/docs.min.js site/docs/4.1/assets/js/vendor/anchor.min.js site/docs/4.1/assets/js/vendor/clipboard.min.js site/docs/4.1/assets/js/vendor/holder.min.js \"site/docs/4.1/assets/js/src/*.js\"",
+    "js-minify-docs": "uglifyjs --mangle --comments \"/^!/\" --output site/docs/4.1/assets/js/docs.min.js site/docs/4.1/assets/js/vendor/anchor.min.js site/docs/4.1/assets/js/vendor/clipboard.min.js site/docs/4.1/assets/js/vendor/holder.min.js site/docs/4.1/assets/js/vendor/bs-custom-file-input.min.js \"site/docs/4.1/assets/js/src/*.js\"",
     "js-test": "npm-run-all js-test-karma*",
     "js-test-karma": "karma start js/tests/karma.conf.js",
     "js-test-karma-old": "cross-env USE_OLD_JQUERY=true npm run js-test-karma",
