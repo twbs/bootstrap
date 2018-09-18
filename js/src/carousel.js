@@ -385,6 +385,14 @@ const Carousel = (($) => {
         $(activeElement).addClass(directionalClassName)
         $(nextElement).addClass(directionalClassName)
 
+        const nextElementInterval = parseInt(nextElement.getAttribute('data-interval'), 10)
+        if (nextElementInterval) {
+          this._config.defaultInterval = this._config.defaultInterval || this._config.interval
+          this._config.interval = nextElementInterval
+        } else {
+          this._config.interval = this._config.defaultInterval || this._config.interval
+        }
+
         const transitionDuration = Util.getTransitionDurationFromElement(activeElement)
 
         $(activeElement)
