@@ -97,10 +97,10 @@ Toasts are intended to be small interruptions to your visitors or users, so to h
 
 You also need to adapt the `role` and `aria-live` level depending on the content. If it's an important message like an error, use `role="alert" aria-live="assertive"`, otherwise use `role="status" aria-live="polite"` attributes.
 
-Be carefull to adapt the [`hide` timeout](#options) depending on the content to give all users enough time to read the content.
+Be carefull to adapt the [`delay` timeout](#options) depending on the content to give all users enough time to read the content.
 
 {% highlight html %}
-<div role="alert" aria-live="assertive" aria-atomic="true" data-delay='{"show": 0, "hide": 10000}'>
+<div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="10000">
   <div role="alert" aria-live="assertive" aria-atomic="true">...</div>
 </div>
 {% endhighlight %}
