@@ -97,7 +97,7 @@ Toasts are intended to be small interruptions to your visitors or users, so to h
 
 You also need to adapt the `role` and `aria-live` level depending on the content. If it's an important message like an error, use `role="alert" aria-live="assertive"`, otherwise use `role="status" aria-live="polite"` attributes.
 
-Be carefull to adapt the [`delay` timeout](#options) depending on the content to give all users enough time to read the content.
+As the content you're displaying changes, be sure to update the [`delay` timeout](#options) to ensure people have enough time to read the toast.
 
 {% highlight html %}
 <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="10000">
@@ -105,7 +105,7 @@ Be carefull to adapt the [`delay` timeout](#options) depending on the content to
 </div>
 {% endhighlight %}
 
-If you use `autohide: false` then you need to add a `close` button into the header to enable users to dismiss that element.
+When using `autohide: false`, you must add a close button to allow users to dismiss the toast.
 
 <div class="bg-light">
 {% capture example %}
