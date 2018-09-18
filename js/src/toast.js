@@ -38,16 +38,13 @@ const Toast = (($) => {
   const DefaultType = {
     animation : 'boolean',
     autohide  : 'boolean',
-    delay     : '(number|object)'
+    delay     : 'number'
   }
 
   const Default = {
     animation : true,
     autohide  : true,
-    delay     : {
-      show: 0,
-      hide: 500
-    }
+    delay     : 500
   }
 
   const Selector = {
@@ -95,19 +92,16 @@ const Toast = (($) => {
         }
       }
 
-      this._timeout = setTimeout(() => {
-        this._element.classList.add(ClassName.SHOW)
+      this._element.classList.add(ClassName.SHOW)
+      if (this._config.animation) {
+        const transitionDuration = Util.getTransitionDurationFromElement(this._element)
 
-        if (this._config.animation) {
-          const transitionDuration = Util.getTransitionDurationFromElement(this._element)
-
-          $(this._element)
-            .one(Util.TRANSITION_END, complete)
-            .emulateTransitionEnd(transitionDuration)
-        } else {
-          complete()
-        }
-      }, this._config.delay.show)
+        $(this._element)
+          .one(Util.TRANSITION_END, complete)
+          .emulateTransitionEnd(transitionDuration)
+      } else {
+        complete()
+      }
     }
 
     hide(withoutTimeout) {
@@ -122,7 +116,7 @@ const Toast = (($) => {
       } else {
         this._timeout = setTimeout(() => {
           this._close()
-        }, this._config.delay.hide)
+        }, this._config.delay)
       }
     }
 
@@ -148,13 +142,6 @@ const Toast = (($) => {
         ...Default,
         ...$(this._element).data(),
         ...typeof config === 'object' && config ? config : {}
-      }
-
-      if (typeof config.delay === 'number') {
-        config.delay = {
-          show: config.delay,
-          hide: config.delay
-        }
       }
 
       Util.typeCheckConfig(

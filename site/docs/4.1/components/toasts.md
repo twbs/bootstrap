@@ -242,15 +242,11 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
     </tr>
     <tr>
       <td>delay</td>
-      <td>number | object</td>
+      <td>number</td>
       <td>
-        <code>{ show: 0, hide: 500 }</code>
+        <code>500</code>
       </td>
-      <td>
-        <p>Delay showing and hiding the toast (ms)</p>
-        <p>If a number is supplied, delay is applied to both hide/show</p>
-        <p>Object structure is: <code>delay: { "show": 500, "hide": 100 }</code></p>
-      </td>
+      <td>Delay hiding the toast (ms)</td>
     </tr>
   </tbody>
 </table>

@@ -184,28 +184,6 @@ $(function () {
       .bootstrapToast('show')
   })
 
-  QUnit.test('should allow to pass delay object in html', function (assert) {
-    assert.expect(1)
-    var done = assert.async()
-
-    var toastHtml =
-      '<div class="toast" data-delay=\'{"show": 0, "hide": 1}\'>' +
-        '<div class="toast-body">' +
-          'a simple toast' +
-        '</div>' +
-      '</div>'
-
-    var $toast = $(toastHtml)
-      .bootstrapToast()
-      .appendTo($('#qunit-fixture'))
-
-    $toast.on('shown.bs.toast', function () {
-      assert.strictEqual($toast.hasClass('show'), true)
-      done()
-    })
-      .bootstrapToast('show')
-  })
-
   QUnit.test('should allow to config in js', function (assert) {
     assert.expect(1)
     var done = assert.async()
@@ -219,10 +197,7 @@ $(function () {
 
     var $toast = $(toastHtml)
       .bootstrapToast({
-        delay: {
-          show: 0,
-          hide: 1
-        }
+        delay: 1
       })
       .appendTo($('#qunit-fixture'))
 

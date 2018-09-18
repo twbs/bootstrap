@@ -26,7 +26,7 @@
     </div>
 
     <div class="notifications">
-      <div id="toastAutoHide" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div id="toastAutoHide" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="2000">
         <div class="toast-header">
           <img class="rounded mr-2" data-src="holder.js/20x20?size=1&text=.&bg=#007aff" alt="">
           <strong class="mr-auto">Bootstrap</strong>
@@ -60,10 +60,6 @@
     <script src="../../dist/toast.js"></script>
     <script>
       $(function () {
-        $('#toastAutoHide').attr('data-delay', JSON.stringify({
-          show: 0,
-          hide: 2000
-        }))
         $('.toast').toast()
 
         $('#btnShowToast').on('click', function () {
