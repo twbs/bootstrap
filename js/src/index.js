@@ -13,19 +13,19 @@ import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-alpha.6): index.js
+ * Bootstrap (v4.1.3): index.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
 
 (($) => {
   if (typeof $ === 'undefined') {
-    throw new Error('Bootstrap\'s JavaScript requires jQuery. jQuery must be included before Bootstrap\'s JavaScript.')
+    throw new TypeError('Bootstrap\'s JavaScript requires jQuery. jQuery must be included before Bootstrap\'s JavaScript.')
   }
 
   const version = $.fn.jquery.split(' ')[0].split('.')
   const minMajor = 1
-  const ltMajor  = 2
+  const ltMajor = 2
   const minMinor = 9
   const minPatch = 1
   const maxMajor = 4

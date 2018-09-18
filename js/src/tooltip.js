@@ -2,29 +2,26 @@ import $ from 'jquery'
 import Popper from 'popper.js'
 import Util from './util'
 
-
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-beta.2): tooltip.js
+ * Bootstrap (v4.1.3): tooltip.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
 
 const Tooltip = (($) => {
-
   /**
    * ------------------------------------------------------------------------
    * Constants
    * ------------------------------------------------------------------------
    */
 
-  const NAME                = 'tooltip'
-  const VERSION             = '4.0.0-beta.2'
-  const DATA_KEY            = 'bs.tooltip'
-  const EVENT_KEY           = `.${DATA_KEY}`
-  const JQUERY_NO_CONFLICT  = $.fn[NAME]
-  const TRANSITION_DURATION = 150
-  const CLASS_PREFIX        = 'bs-tooltip'
+  const NAME               = 'tooltip'
+  const VERSION            = '4.1.3'
+  const DATA_KEY           = 'bs.tooltip'
+  const EVENT_KEY          = `.${DATA_KEY}`
+  const JQUERY_NO_CONFLICT = $.fn[NAME]
+  const CLASS_PREFIX       = 'bs-tooltip'
   const BSCLS_PREFIX_REGEX = new RegExp(`(^|\\s)${CLASS_PREFIX}\\S+`, 'g')
 
   const DefaultType = {
@@ -52,9 +49,9 @@ const Tooltip = (($) => {
 
   const Default = {
     animation           : true,
-    template            : '<div class="tooltip" role="tooltip">'
-                        + '<div class="arrow"></div>'
-                        + '<div class="tooltip-inner"></div></div>',
+    template            : '<div class="tooltip" role="tooltip">' +
+                        '<div class="arrow"></div>' +
+                        '<div class="tooltip-inner"></div></div>',
     trigger             : 'hover focus',
     title               : '',
     delay               : 0,
@@ -111,14 +108,13 @@ const Tooltip = (($) => {
    */
 
   class Tooltip {
-
     constructor(element, config) {
       /**
        * Check for Popper dependency
        * Popper - https://popper.js.org
        */
       if (typeof Popper === 'undefined') {
-        throw new Error('Bootstrap tooltips require Popper.js (https://popper.js.org)')
+        throw new TypeError('Bootstrap tooltips require Popper.js (https://popper.js.org)')
       }
 
       // private
@@ -128,17 +124,15 @@ const Tooltip = (($) => {
       this._activeTrigger = {}
       this._popper        = null
 
-      // protected
+      // Protected
       this.element = element
       this.config  = this._getConfig(config)
       this.tip     = null
 
       this._setListeners()
-
     }
 
-
-    // getters
+    // Getters
 
     static get VERSION() {
       return VERSION
@@ -168,8 +162,7 @@ const Tooltip = (($) => {
       return DefaultType
     }
 
-
-    // public
+    // Public
 
     enable() {
       this._isEnabled = true
@@ -207,9 +200,7 @@ const Tooltip = (($) => {
         } else {
           context._leave(null, context)
         }
-
       } else {
-
         if ($(this.getTipElement()).hasClass(ClassName.SHOW)) {
           this._leave(null, this)
           return
@@ -275,14 +266,14 @@ const Tooltip = (($) => {
           $(tip).addClass(ClassName.FADE)
         }
 
-        const placement  = typeof this.config.placement === 'function' ?
-          this.config.placement.call(this, tip, this.element) :
-          this.config.placement
+        const placement  = typeof this.config.placement === 'function'
+          ? this.config.placement.call(this, tip, this.element)
+          : this.config.placement
 
         const attachment = this._getAttachment(placement)
         this.addAttachmentClass(attachment)
 
-        const container = this.config.container === false ? document.body : $(this.config.container)
+        const container = this.config.container === false ? document.body : $(document).find(this.config.container)
 
         $(tip).data(this.constructor.DATA_KEY, this)
 
@@ -313,19 +304,19 @@ const Tooltip = (($) => {
               this._handlePopperPlacementChange(data)
             }
           },
-          onUpdate : (data) => {
+          onUpdate: (data) => {
             this._handlePopperPlacementChange(data)
           }
         })
 
         $(tip).addClass(ClassName.SHOW)
 
-        // if this is a touch-enabled device we add extra
+        // If this is a touch-enabled device we add extra
         // empty mouseover listeners to the body's immediate children;
         // only needed because of broken event delegation on iOS
         // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
         if ('ontouchstart' in document.documentElement) {
-          $('body').children().on('mouseover', null, $.noop)
+          $(document.body).children().on('mouseover', null, $.noop)
         }
 
         const complete = () => {
@@ -342,10 +333,12 @@ const Tooltip = (($) => {
           }
         }
 
-        if (Util.supportsTransitionEnd() && $(this.tip).hasClass(ClassName.FADE)) {
+        if ($(this.tip).hasClass(ClassName.FADE)) {
+          const transitionDuration = Util.getTransitionDurationFromElement(this.tip)
+
           $(this.tip)
             .one(Util.TRANSITION_END, complete)
-            .emulateTransitionEnd(Tooltip._TRANSITION_DURATION)
+            .emulateTransitionEnd(transitionDuration)
         } else {
           complete()
         }
@@ -355,7 +348,7 @@ const Tooltip = (($) => {
     hide(callback) {
       const tip       = this.getTipElement()
       const hideEvent = $.Event(this.constructor.Event.HIDE)
-      const complete  = () => {
+      const complete = () => {
         if (this._hoverState !== HoverState.SHOW && tip.parentNode) {
           tip.parentNode.removeChild(tip)
         }
@@ -380,29 +373,27 @@ const Tooltip = (($) => {
 
       $(tip).removeClass(ClassName.SHOW)
 
-      // if this is a touch-enabled device we remove the extra
+      // If this is a touch-enabled device we remove the extra
       // empty mouseover listeners we added for iOS support
       if ('ontouchstart' in document.documentElement) {
-        $('body').children().off('mouseover', null, $.noop)
+        $(document.body).children().off('mouseover', null, $.noop)
       }
 
       this._activeTrigger[Trigger.CLICK] = false
       this._activeTrigger[Trigger.FOCUS] = false
       this._activeTrigger[Trigger.HOVER] = false
 
-      if (Util.supportsTransitionEnd() &&
-          $(this.tip).hasClass(ClassName.FADE)) {
+      if ($(this.tip).hasClass(ClassName.FADE)) {
+        const transitionDuration = Util.getTransitionDurationFromElement(tip)
 
         $(tip)
           .one(Util.TRANSITION_END, complete)
-          .emulateTransitionEnd(TRANSITION_DURATION)
-
+          .emulateTransitionEnd(transitionDuration)
       } else {
         complete()
       }
 
       this._hoverState = ''
-
     }
 
     update() {
@@ -411,7 +402,7 @@ const Tooltip = (($) => {
       }
     }
 
-    // protected
+    // Protected
 
     isWithContent() {
       return Boolean(this.getTitle())
@@ -427,15 +418,15 @@ const Tooltip = (($) => {
     }
 
     setContent() {
-      const $tip = $(this.getTipElement())
-      this.setElementContent($tip.find(Selector.TOOLTIP_INNER), this.getTitle())
-      $tip.removeClass(`${ClassName.FADE} ${ClassName.SHOW}`)
+      const tip = this.getTipElement()
+      this.setElementContent($(tip.querySelectorAll(Selector.TOOLTIP_INNER)), this.getTitle())
+      $(tip).removeClass(`${ClassName.FADE} ${ClassName.SHOW}`)
     }
 
     setElementContent($element, content) {
       const html = this.config.html
       if (typeof content === 'object' && (content.nodeType || content.jquery)) {
-        // content is a DOM node or a jQuery
+        // Content is a DOM node or a jQuery
         if (html) {
           if (!$(content).parent().is($element)) {
             $element.empty().append(content)
@@ -452,16 +443,15 @@ const Tooltip = (($) => {
       let title = this.element.getAttribute('data-original-title')
 
       if (!title) {
-        title = typeof this.config.title === 'function' ?
-          this.config.title.call(this.element) :
-          this.config.title
+        title = typeof this.config.title === 'function'
+          ? this.config.title.call(this.element)
+          : this.config.title
       }
 
       return title
     }
 
-
-    // private
+    // Private
 
     _getAttachment(placement) {
       return AttachmentMap[placement.toUpperCase()]
@@ -477,14 +467,13 @@ const Tooltip = (($) => {
             this.config.selector,
             (event) => this.toggle(event)
           )
-
         } else if (trigger !== Trigger.MANUAL) {
-          const eventIn  = trigger === Trigger.HOVER ?
-            this.constructor.Event.MOUSEENTER :
-            this.constructor.Event.FOCUSIN
-          const eventOut = trigger === Trigger.HOVER ?
-            this.constructor.Event.MOUSELEAVE :
-            this.constructor.Event.FOCUSOUT
+          const eventIn = trigger === Trigger.HOVER
+            ? this.constructor.Event.MOUSEENTER
+            : this.constructor.Event.FOCUSIN
+          const eventOut = trigger === Trigger.HOVER
+            ? this.constructor.Event.MOUSELEAVE
+            : this.constructor.Event.FOCUSOUT
 
           $(this.element)
             .on(
@@ -508,8 +497,8 @@ const Tooltip = (($) => {
       if (this.config.selector) {
         this.config = {
           ...this.config,
-          trigger  : 'manual',
-          selector : ''
+          trigger: 'manual',
+          selector: ''
         }
       } else {
         this._fixTitle()
@@ -622,13 +611,13 @@ const Tooltip = (($) => {
       config = {
         ...this.constructor.Default,
         ...$(this.element).data(),
-        ...config
+        ...typeof config === 'object' && config ? config : {}
       }
 
       if (typeof config.delay === 'number') {
         config.delay = {
-          show : config.delay,
-          hide : config.delay
+          show: config.delay,
+          hide: config.delay
         }
       }
 
@@ -666,18 +655,20 @@ const Tooltip = (($) => {
     _cleanTipClass() {
       const $tip = $(this.getTipElement())
       const tabClass = $tip.attr('class').match(BSCLS_PREFIX_REGEX)
-      if (tabClass !== null && tabClass.length > 0) {
+      if (tabClass !== null && tabClass.length) {
         $tip.removeClass(tabClass.join(''))
       }
     }
 
-    _handlePopperPlacementChange(data) {
+    _handlePopperPlacementChange(popperData) {
+      const popperInstance = popperData.instance
+      this.tip = popperInstance.popper
       this._cleanTipClass()
-      this.addAttachmentClass(this._getAttachment(data.placement))
+      this.addAttachmentClass(this._getAttachment(popperData.placement))
     }
 
     _fixTransition() {
-      const tip                 = this.getTipElement()
+      const tip = this.getTipElement()
       const initConfigAnimation = this.config.animation
       if (tip.getAttribute('x-placement') !== null) {
         return
@@ -689,11 +680,11 @@ const Tooltip = (($) => {
       this.config.animation = initConfigAnimation
     }
 
-    // static
+    // Static
 
     static _jQueryInterface(config) {
       return this.each(function () {
-        let data      = $(this).data(DATA_KEY)
+        let data = $(this).data(DATA_KEY)
         const _config = typeof config === 'object' && config
 
         if (!data && /dispose|hide/.test(config)) {
@@ -707,7 +698,7 @@ const Tooltip = (($) => {
 
         if (typeof config === 'string') {
           if (typeof data[config] === 'undefined') {
-            throw new Error(`No method named "${config}"`)
+            throw new TypeError(`No method named "${config}"`)
           }
           data[config]()
         }
@@ -715,22 +706,20 @@ const Tooltip = (($) => {
     }
   }
 
-
   /**
    * ------------------------------------------------------------------------
    * jQuery
    * ------------------------------------------------------------------------
    */
 
-  $.fn[NAME]             = Tooltip._jQueryInterface
+  $.fn[NAME] = Tooltip._jQueryInterface
   $.fn[NAME].Constructor = Tooltip
-  $.fn[NAME].noConflict  = function () {
+  $.fn[NAME].noConflict = () => {
     $.fn[NAME] = JQUERY_NO_CONFLICT
     return Tooltip._jQueryInterface
   }
 
   return Tooltip
-
 })($, Popper)
 
 export default Tooltip

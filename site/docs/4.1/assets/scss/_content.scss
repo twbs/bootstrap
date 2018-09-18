@@ -1,0 +1,119 @@
+// stylelint-disable no-duplicate-selectors, selector-max-combinators, selector-max-compound-selectors, selector-max-type, selector-no-qualifying-type
+
+//
+// Automatically style Markdown-based tables like a Bootstrap `.table`.
+//
+
+.bd-content {
+  order: 1;
+
+  // Hack the sticky header
+  > h2[id],
+  > h3[id],
+  > h4[id] {
+    pointer-events: none;
+
+    > div,
+    > a {
+      pointer-events: auto;
+    }
+
+    &::before {
+      display: block;
+      height: 6rem;
+      margin-top: -6rem;
+      visibility: hidden;
+      content: "";
+    }
+  }
+
+  > table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 1rem;
+
+    @include media-breakpoint-down(md) {
+      display: block;
+      overflow-x: auto;
+      -ms-overflow-style: -ms-autohiding-scrollbar; // See https://github.com/twbs/bootstrap/pull/10057
+
+      &.table-bordered {
+        border: 0;
+      }
+    }
+
+    // Cells
+    > thead,
+    > tbody,
+    > tfoot {
+      > tr {
+        > th,
+        > td {
+          padding: $table-cell-padding;
+          vertical-align: top;
+          border: 1px solid $table-border-color;
+
+          > p:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+
+    // Prevent breaking of code (e.g., Grunt tasks list)
+    td:first-child > code {
+      white-space: nowrap;
+    }
+  }
+}
+
+//
+// Docs sections
+//
+
+.bd-content {
+  > h2:not(:first-child) {
+    margin-top: 3rem;
+  }
+
+  > h3 {
+    margin-top: 1.5rem;
+  }
+
+  > ul li,
+  > ol li {
+    margin-bottom: .25rem;
+  }
+
+  @include media-breakpoint-up(lg) {
+    > ul,
+    > ol,
+    > p {
+      max-width: 80%;
+    }
+  }
+}
+
+.bd-title {
+  margin-top: 1rem;
+  margin-bottom: .5rem;
+  font-weight: 300;
+
+  @include media-breakpoint-up(sm) {
+    font-size: 3rem;
+  }
+}
+
+.bd-lead {
+  font-size: 1.125rem;
+  font-weight: 300;
+
+  @include media-breakpoint-up(sm) {
+    max-width: 80%;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+  }
+}
+
+.bd-text-purple { color: $bd-purple; }
+.bd-text-purple-bright { color: $bd-purple-bright; }

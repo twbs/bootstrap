@@ -1,17 +1,14 @@
 import $ from 'jquery'
 import Util from './util'
 
-
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-beta.2): scrollspy.js
+ * Bootstrap (v4.1.3): scrollspy.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
 
 const ScrollSpy = (($) => {
-
-
   /**
    * ------------------------------------------------------------------------
    * Constants
@@ -19,7 +16,7 @@ const ScrollSpy = (($) => {
    */
 
   const NAME               = 'scrollspy'
-  const VERSION            = '4.0.0-beta.2'
+  const VERSION            = '4.1.3'
   const DATA_KEY           = 'bs.scrollspy'
   const EVENT_KEY          = `.${DATA_KEY}`
   const DATA_API_KEY       = '.data-api'
@@ -66,7 +63,6 @@ const ScrollSpy = (($) => {
     POSITION : 'position'
   }
 
-
   /**
    * ------------------------------------------------------------------------
    * Class Definition
@@ -74,14 +70,13 @@ const ScrollSpy = (($) => {
    */
 
   class ScrollSpy {
-
     constructor(element, config) {
       this._element       = element
       this._scrollElement = element.tagName === 'BODY' ? window : element
       this._config        = this._getConfig(config)
-      this._selector      = `${this._config.target} ${Selector.NAV_LINKS},`
-                          + `${this._config.target} ${Selector.LIST_ITEMS},`
-                          + `${this._config.target} ${Selector.DROPDOWN_ITEMS}`
+      this._selector      = `${this._config.target} ${Selector.NAV_LINKS},` +
+                            `${this._config.target} ${Selector.LIST_ITEMS},` +
+                            `${this._config.target} ${Selector.DROPDOWN_ITEMS}`
       this._offsets       = []
       this._targets       = []
       this._activeTarget  = null
@@ -93,8 +88,7 @@ const ScrollSpy = (($) => {
       this._process()
     }
 
-
-    // getters
+    // Getters
 
     static get VERSION() {
       return VERSION
@@ -104,25 +98,24 @@ const ScrollSpy = (($) => {
       return Default
     }
 
-
-    // public
+    // Public
 
     refresh() {
-      const autoMethod = this._scrollElement !== this._scrollElement.window ?
-        OffsetMethod.POSITION : OffsetMethod.OFFSET
+      const autoMethod = this._scrollElement === this._scrollElement.window
+        ? OffsetMethod.OFFSET : OffsetMethod.POSITION
 
-      const offsetMethod = this._config.method === 'auto' ?
-        autoMethod : this._config.method
+      const offsetMethod = this._config.method === 'auto'
+        ? autoMethod : this._config.method
 
-      const offsetBase = offsetMethod === OffsetMethod.POSITION ?
-        this._getScrollTop() : 0
+      const offsetBase = offsetMethod === OffsetMethod.POSITION
+        ? this._getScrollTop() : 0
 
       this._offsets = []
       this._targets = []
 
       this._scrollHeight = this._getScrollHeight()
 
-      const targets = $.makeArray($(this._selector))
+      const targets = [].slice.call(document.querySelectorAll(this._selector))
 
       targets
         .map((element) => {
@@ -130,13 +123,13 @@ const ScrollSpy = (($) => {
           const targetSelector = Util.getSelectorFromElement(element)
 
           if (targetSelector) {
-            target = $(targetSelector)[0]
+            target = document.querySelector(targetSelector)
           }
 
           if (target) {
             const targetBCR = target.getBoundingClientRect()
             if (targetBCR.width || targetBCR.height) {
-              // todo (fat): remove sketch reliance on jQuery position/offset
+              // TODO (fat): remove sketch reliance on jQuery position/offset
               return [
                 $(target)[offsetMethod]().top + offsetBase,
                 targetSelector
@@ -145,8 +138,8 @@ const ScrollSpy = (($) => {
           }
           return null
         })
-        .filter((item)  => item)
-        .sort((a, b)    => a[0] - b[0])
+        .filter((item) => item)
+        .sort((a, b) => a[0] - b[0])
         .forEach((item) => {
           this._offsets.push(item[0])
           this._targets.push(item[1])
@@ -167,13 +160,12 @@ const ScrollSpy = (($) => {
       this._scrollHeight  = null
     }
 
-
-    // private
+    // Private
 
     _getConfig(config) {
       config = {
         ...Default,
-        ...config
+        ...typeof config === 'object' && config ? config : {}
       }
 
       if (typeof config.target !== 'string') {
@@ -191,8 +183,8 @@ const ScrollSpy = (($) => {
     }
 
     _getScrollTop() {
-      return this._scrollElement === window ?
-          this._scrollElement.pageYOffset : this._scrollElement.scrollTop
+      return this._scrollElement === window
+        ? this._scrollElement.pageYOffset : this._scrollElement.scrollTop
     }
 
     _getScrollHeight() {
@@ -203,16 +195,16 @@ const ScrollSpy = (($) => {
     }
 
     _getOffsetHeight() {
-      return this._scrollElement === window ?
-          window.innerHeight : this._scrollElement.getBoundingClientRect().height
+      return this._scrollElement === window
+        ? window.innerHeight : this._scrollElement.getBoundingClientRect().height
     }
 
     _process() {
       const scrollTop    = this._getScrollTop() + this._config.offset
       const scrollHeight = this._getScrollHeight()
-      const maxScroll    = this._config.offset
-        + scrollHeight
-        - this._getOffsetHeight()
+      const maxScroll    = this._config.offset +
+        scrollHeight -
+        this._getOffsetHeight()
 
       if (this._scrollHeight !== scrollHeight) {
         this.refresh()
@@ -233,10 +225,11 @@ const ScrollSpy = (($) => {
         return
       }
 
-      for (let i = this._offsets.length; i--;) {
-        const isActiveTarget = this._activeTarget !== this._targets[i]
-            && scrollTop >= this._offsets[i]
-            && (typeof this._offsets[i + 1] === 'undefined' ||
+      const offsetLength = this._offsets.length
+      for (let i = offsetLength; i--;) {
+        const isActiveTarget = this._activeTarget !== this._targets[i] &&
+            scrollTop >= this._offsets[i] &&
+            (typeof this._offsets[i + 1] === 'undefined' ||
                 scrollTop < this._offsets[i + 1])
 
         if (isActiveTarget) {
@@ -252,12 +245,12 @@ const ScrollSpy = (($) => {
 
       let queries = this._selector.split(',')
       // eslint-disable-next-line arrow-body-style
-      queries     = queries.map((selector) => {
+      queries = queries.map((selector) => {
         return `${selector}[data-target="${target}"],` +
                `${selector}[href="${target}"]`
       })
 
-      const $link = $(queries.join(','))
+      const $link = $([].slice.call(document.querySelectorAll(queries.join(','))))
 
       if ($link.hasClass(ClassName.DROPDOWN_ITEM)) {
         $link.closest(Selector.DROPDOWN).find(Selector.DROPDOWN_TOGGLE).addClass(ClassName.ACTIVE)
@@ -278,15 +271,15 @@ const ScrollSpy = (($) => {
     }
 
     _clear() {
-      $(this._selector).filter(Selector.ACTIVE).removeClass(ClassName.ACTIVE)
+      const nodes = [].slice.call(document.querySelectorAll(this._selector))
+      $(nodes).filter(Selector.ACTIVE).removeClass(ClassName.ACTIVE)
     }
 
-
-    // static
+    // Static
 
     static _jQueryInterface(config) {
       return this.each(function () {
-        let data      = $(this).data(DATA_KEY)
+        let data = $(this).data(DATA_KEY)
         const _config = typeof config === 'object' && config
 
         if (!data) {
@@ -296,16 +289,13 @@ const ScrollSpy = (($) => {
 
         if (typeof config === 'string') {
           if (typeof data[config] === 'undefined') {
-            throw new Error(`No method named "${config}"`)
+            throw new TypeError(`No method named "${config}"`)
           }
           data[config]()
         }
       })
     }
-
-
   }
-
 
   /**
    * ------------------------------------------------------------------------
@@ -314,14 +304,14 @@ const ScrollSpy = (($) => {
    */
 
   $(window).on(Event.LOAD_DATA_API, () => {
-    const scrollSpys = $.makeArray($(Selector.DATA_SPY))
+    const scrollSpys = [].slice.call(document.querySelectorAll(Selector.DATA_SPY))
 
-    for (let i = scrollSpys.length; i--;) {
+    const scrollSpysLength = scrollSpys.length
+    for (let i = scrollSpysLength; i--;) {
       const $spy = $(scrollSpys[i])
       ScrollSpy._jQueryInterface.call($spy, $spy.data())
     }
   })
-
 
   /**
    * ------------------------------------------------------------------------
@@ -329,15 +319,14 @@ const ScrollSpy = (($) => {
    * ------------------------------------------------------------------------
    */
 
-  $.fn[NAME]             = ScrollSpy._jQueryInterface
+  $.fn[NAME] = ScrollSpy._jQueryInterface
   $.fn[NAME].Constructor = ScrollSpy
-  $.fn[NAME].noConflict  = function () {
+  $.fn[NAME].noConflict = () => {
     $.fn[NAME] = JQUERY_NO_CONFLICT
     return ScrollSpy._jQueryInterface
   }
 
   return ScrollSpy
-
 })($)
 
 export default ScrollSpy

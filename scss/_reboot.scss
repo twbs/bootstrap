@@ -30,7 +30,7 @@ html {
   -webkit-text-size-adjust: 100%; // 4
   -ms-text-size-adjust: 100%; // 4
   -ms-overflow-style: scrollbar; // 5
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); // 6
+  -webkit-tap-highlight-color: rgba($black, 0); // 6
 }
 
 // IE10+ doesn't honor `<meta name="viewport">` in some cases.
@@ -42,7 +42,7 @@ html {
 
 // stylelint-disable selector-list-comma-newline-after
 // Shim for "new" HTML5 structural elements to display correctly (IE10, older browsers)
-article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, section {
+article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block;
 }
 // stylelint-enable selector-list-comma-newline-after
@@ -199,7 +199,6 @@ a {
   color: $link-color;
   text-decoration: $link-decoration;
   background-color: transparent; // Remove the gray background on active links in IE 10.
-  -webkit-text-decoration-skip: objects; // Remove gaps in links underline in iOS 8+ and Safari 8+.
 
   @include hover {
     color: $link-hover-color;
@@ -232,15 +231,13 @@ a:not([href]):not([tabindex]) {
 // Code
 //
 
-// stylelint-disable font-family-no-duplicate-names
 pre,
 code,
 kbd,
 samp {
-  font-family: monospace, monospace; // Correct the inheritance and scaling of font size in all browsers.
+  font-family: $font-family-monospace;
   font-size: 1em; // Correct the odd `em` font sizing in all browsers.
 }
-// stylelint-enable font-family-no-duplicate-names
 
 pre {
   // Remove browser default top margin
@@ -274,31 +271,11 @@ img {
   border-style: none; // Remove the border on images inside links in IE 10-.
 }
 
-svg:not(:root) {
-  overflow: hidden; // Hide the overflow in IE
-}
-
-
-// Avoid 300ms click delay on touch devices that support the `touch-action` CSS property.
-//
-// In particular, unlike most other browsers, IE11+Edge on Windows 10 on touch devices and IE Mobile 10-11
-// DON'T remove the click delay when `<meta name="viewport" content="width=device-width">` is present.
-// However, they DO support removing the click delay via `touch-action: manipulation`.
-// See:
-// * https://getbootstrap.com/docs/4.0/content/reboot/#click-delay-optimization-for-touch
-// * https://caniuse.com/#feat=css-touch-action
-// * https://patrickhlauke.github.io/touch/tests/results/#suppressing-300ms-delay
-
-a,
-area,
-button,
-[role="button"],
-input:not([type="range"]),
-label,
-select,
-summary,
-textarea {
-  touch-action: manipulation;
+svg {
+  // Workaround for the SVG overflow bug in IE10/11 is still required.
+  // See https://github.com/twbs/bootstrap/issues/26878
+  overflow: hidden;
+  vertical-align: middle;
 }
 
 
@@ -313,7 +290,7 @@ table {
 caption {
   padding-top: $table-cell-padding;
   padding-bottom: $table-cell-padding;
-  color: $text-muted;
+  color: $table-caption-color;
   text-align: left;
   caption-side: bottom;
 }
@@ -332,7 +309,7 @@ th {
 label {
   // Allow labels to use `margin` for spacing.
   display: inline-block;
-  margin-bottom: .5rem;
+  margin-bottom: $label-margin-bottom;
 }
 
 // Remove the default `border-radius` that macOS Chrome adds.
@@ -491,6 +468,7 @@ output {
 
 summary {
   display: list-item; // Add the correct display in all browsers
+  cursor: pointer;
 }
 
 template {

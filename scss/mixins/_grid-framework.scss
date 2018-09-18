@@ -8,7 +8,6 @@
   %grid-column {
     position: relative;
     width: 100%;
-    min-height: 1px; // Prevent columns from collapsing when empty
     padding-right: ($gutter / 2);
     padding-left: ($gutter / 2);
   }
@@ -37,7 +36,7 @@
       .col#{$infix}-auto {
         flex: 0 0 auto;
         width: auto;
-        max-width: none; // Reset earlier grid tiers
+        max-width: 100%; // Reset earlier grid tiers
       }
 
       @for $i from 1 through $columns {
@@ -46,14 +45,12 @@
         }
       }
 
-      .order#{$infix}-first {
-        order: -1;
-      }
+      .order#{$infix}-first { order: -1; }
 
-      @for $i from 1 through $columns {
-        .order#{$infix}-#{$i} {
-          order: $i;
-        }
+      .order#{$infix}-last { order: $columns + 1; }
+
+      @for $i from 0 through $columns {
+        .order#{$infix}-#{$i} { order: $i; }
       }
 
       // `$columns - 1` because offsetting by the width of an entire row isn't possible

@@ -29,18 +29,20 @@
 }
 
 // Maximum breakpoint width. Null for the largest (last) breakpoint.
-// The maximum value is calculated as the minimum of the next one less 0.01px
+// The maximum value is calculated as the minimum of the next one less 0.02px
 // to work around the limitations of `min-` and `max-` prefixes and viewports with fractional widths.
 // See https://www.w3.org/TR/mediaqueries-4/#mq-min-max
+// Uses 0.02px rather than 0.01px to work around a current rounding bug in Safari.
+// See https://bugs.webkit.org/show_bug.cgi?id=178261
 //
 //    >> breakpoint-max(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
-//    767px
+//    767.98px
 @function breakpoint-max($name, $breakpoints: $grid-breakpoints) {
   $next: breakpoint-next($name, $breakpoints);
-  @return if($next, breakpoint-min($next, $breakpoints) - .01px, null);
+  @return if($next, breakpoint-min($next, $breakpoints) - .02px, null);
 }
 
-// Returns a blank string if smallest breakpoint, otherwise returns the name with a dash infront.
+// Returns a blank string if smallest breakpoint, otherwise returns the name with a dash in front.
 // Useful for making responsive utilities.
 //
 //    >> breakpoint-infix(xs, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
@@ -88,11 +90,11 @@
       @content;
     }
   } @else if $max == null {
-    @include media-breakpoint-up($lower) {
+    @include media-breakpoint-up($lower, $breakpoints) {
       @content;
     }
   } @else if $min == null {
-    @include media-breakpoint-down($upper) {
+    @include media-breakpoint-down($upper, $breakpoints) {
       @content;
     }
   }
@@ -110,11 +112,11 @@
       @content;
     }
   } @else if $max == null {
-    @include media-breakpoint-up($name) {
+    @include media-breakpoint-up($name, $breakpoints) {
       @content;
     }
   } @else if $min == null {
-    @include media-breakpoint-down($name) {
+    @include media-breakpoint-down($name, $breakpoints) {
       @content;
     }
   }
