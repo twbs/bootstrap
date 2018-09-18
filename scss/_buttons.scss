@@ -7,15 +7,18 @@
 .btn {
   display: inline-block;
   font-weight: $btn-font-weight;
+  color: $body-color;
   text-align: center;
   vertical-align: middle;
   user-select: none;
+  background-color: transparent;
   border: $btn-border-width solid transparent;
   @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-line-height, $btn-border-radius);
   @include transition($btn-transition);
 
   // Share hover and focus styles
   @include hover-focus {
+    color: $body-color;
     text-decoration: none;
   }
 
@@ -79,19 +82,15 @@ fieldset:disabled a.btn {
 .btn-link {
   font-weight: $font-weight-normal;
   color: $link-color;
-  background-color: transparent;
 
   @include hover {
     color: $link-hover-color;
     text-decoration: $link-hover-decoration;
-    background-color: transparent;
-    border-color: transparent;
   }
 
   &:focus,
   &.focus {
     text-decoration: $link-hover-decoration;
-    border-color: transparent;
     box-shadow: none;
   }
 
