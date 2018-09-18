@@ -2,7 +2,7 @@
 // IT'S JUST JUNK FOR OUR DOCS!
 // ++++++++++++++++++++++++++++++++++++++++++
 /*!
- * Copyright 2014-2015 Twitter, Inc.
+ * Copyright 2014-2018 Twitter, Inc.
  *
  * Licensed under the Creative Commons Attribution 3.0 Unported License. For
  * details, see https://creativecommons.org/licenses/by/3.0/.
