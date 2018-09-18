@@ -22,18 +22,13 @@ Alternatively, you may **import plugins individually** as needed:
 
 {% highlight js %}
 import 'bootstrap/js/dist/util';
-import 'bootstrap/js/dist/dropdown';
+import 'bootstrap/js/dist/alert';
 ...
 {% endhighlight %}
 
 Bootstrap is dependent on [jQuery](https://jquery.com/) and [Popper](https://popper.js.org/),
 these are defined as `peerDependencies`, this means that you will have to make sure to add both of them
 to your `package.json` using `npm install --save jquery popper.js`.
-
-{% capture callout %}
-Notice that if you chose to **import plugins individually**, you must also install [exports-loader](https://github.com/webpack-contrib/exports-loader)
-{% endcapture %}
-{% include callout.html content=callout type="warning" %}
 
 ## Importing Styles
 

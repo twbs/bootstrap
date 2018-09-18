@@ -767,9 +767,9 @@ With that in mind, consider the following demos for our custom form validation s
 
 ### Custom styles
 
-For custom Bootstrap form validation messages, you'll need to add the `novalidate` boolean attribute to your `<form>`. This disables the browser default feedback tooltips, but still provides access to the form validation APIs in JavaScript. Try to submit the form below; our JavaScript will intercept the submit button and relay feedback to you.
+For custom Bootstrap form validation messages, you'll need to add the `novalidate` boolean attribute to your `<form>`. This disables the browser default feedback tooltips, but still provides access to the form validation APIs in JavaScript. Try to submit the form below; our JavaScript will intercept the submit button and relay feedback to you. When attempting to submit, you'll see the `:invalid` and `:valid` styles applied to your form controls.
 
-When attempting to submit, you'll see the `:invalid` and `:valid` styles applied to your form controls.
+Custom feedback styles apply custom colors, borders, focus styles, and background icons to better communicate feedback. Background icons for `<select>`s are only available with `.custom-select`, and not `.form-control`.
 
 {% capture example %}
 <form class="needs-validation" novalidate>
@@ -917,7 +917,7 @@ While these feedback styles cannot be styled with CSS, you can still customize t
 
 ### Server side
 
-We recommend using client side validation, but in case you require server side, you can indicate invalid and valid form fields with `.is-invalid` and `.is-valid`. Note that `.invalid-feedback` is also supported with these classes.
+We recommend using client-side validation, but in case you require server-side validation, you can indicate invalid and valid form fields with `.is-invalid` and `.is-valid`. Note that `.invalid-feedback` is also supported with these classes.
 
 {% capture example %}
 <form>
@@ -990,10 +990,18 @@ We recommend using client side validation, but in case you require server side, 
 
 ### Supported elements
 
-Our example forms show native textual `<input>`s above, but form validation styles are available for our custom form controls, too.
+Our example forms show native textual `<input>`s above, but form validation styles are also available for `<textarea>`s and custom form controls.
 
 {% capture example %}
 <form class="was-validated">
+  <div class="mb-3">
+    <label for="validationTextarea">Textarea</label>
+    <textarea class="form-control is-invalid" id="validationTextarea" placeholder="Required example textarea" required></textarea>
+    <div class="invalid-feedback">
+      Please enter a message in the textarea.
+    </div>
+  </div>
+
   <div class="custom-control custom-checkbox mb-3">
     <input type="checkbox" class="custom-control-input" id="customControlValidation1" required>
     <label class="custom-control-label" for="customControlValidation1">Check this custom checkbox</label>
@@ -1097,13 +1105,13 @@ For even more customization and cross browser consistency, use our completely cu
 
 ### Checkboxes and radios
 
-Each checkbox and radio is wrapped in a `<div>` with a sibling `<span>` to create our custom control and a `<label>` for the accompanying text. Structurally, this is the same approach as our default `.form-check`.
+Each checkbox and radio `<input>` and `<label>` pairing is wrapped in a `<div>` to create our custom control. Structurally, this is the same approach as our default `.form-check`.
 
 We use the sibling selector (`~`) for all our `<input>` states—like `:checked`—to properly style our custom form indicator. When combined with the `.custom-control-label` class, we can also style the text for each item based on the `<input>`'s state.
 
 We hide the default `<input>` with `opacity` and use the `.custom-control-label` to build a new custom form indicator in its place with `::before` and `::after`. Unfortunately we can't build a custom one from just the `<input>` because CSS's `content` doesn't work on that element.
 
-In the checked states, we use **base64 embedded SVG icons** from [Open Iconic](https://useiconic.com/open). This provides us the best control for styling and positioning across browsers and devices.
+In the checked states, we use **base64 embedded SVG icons** from [Open Iconic](https://github.com/iconic/open-iconic). This provides us the best control for styling and positioning across browsers and devices.
 
 #### Checkboxes
 
@@ -1177,7 +1185,7 @@ Custom checkboxes and radios can also be disabled. Add the `disabled` boolean at
 
 ### Select menu
 
-Custom `<select>` menus need only a custom class, `.custom-select` to trigger the custom styles.
+Custom `<select>` menus need only a custom class, `.custom-select` to trigger the custom styles. Custom styles are limited to the `<select>`'s initial appearance and cannot modify the `<option>`s due to browser limitations.
 
 {% capture example %}
 <select class="custom-select">
@@ -1259,6 +1267,11 @@ By default, range inputs "snap" to integer values. To change this, you can speci
 {% include example.html content=example %}
 
 ### File browser
+
+{% capture callout %}
+Recommended plugin to animate custom file input: [bs-custom-file-input](https://www.npmjs.com/package/bs-custom-file-input)
+{% endcapture %}
+{% include callout.html content=callout type="info" %}
 
 The file input is the most gnarly of the bunch and requires additional JavaScript if you'd like to hook them up with functional *Choose file...* and selected file name text.
 

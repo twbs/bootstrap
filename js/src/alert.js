@@ -3,7 +3,7 @@ import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.1.2): alert.js
+ * Bootstrap (v4.1.3): alert.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -16,7 +16,7 @@ const Alert = (($) => {
    */
 
   const NAME                = 'alert'
-  const VERSION             = '4.1.2'
+  const VERSION             = '4.1.3'
   const DATA_KEY            = 'bs.alert'
   const EVENT_KEY           = `.${DATA_KEY}`
   const DATA_API_KEY        = '.data-api'
@@ -172,7 +172,7 @@ const Alert = (($) => {
 
   $.fn[NAME]             = Alert._jQueryInterface
   $.fn[NAME].Constructor = Alert
-  $.fn[NAME].noConflict  = function () {
+  $.fn[NAME].noConflict  = () => {
     $.fn[NAME] = JQUERY_NO_CONFLICT
     return Alert._jQueryInterface
   }

@@ -3,7 +3,7 @@ import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.1.2): collapse.js
+ * Bootstrap (v4.1.3): collapse.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -16,7 +16,7 @@ const Collapse = (($) => {
    */
 
   const NAME                = 'collapse'
-  const VERSION             = '4.1.2'
+  const VERSION             = '4.1.3'
   const DATA_KEY            = 'bs.collapse'
   const EVENT_KEY           = `.${DATA_KEY}`
   const DATA_API_KEY        = '.data-api'
@@ -127,7 +127,13 @@ const Collapse = (($) => {
 
       if (this._parent) {
         actives = [].slice.call(this._parent.querySelectorAll(Selector.ACTIVES))
-          .filter((elem) => elem.getAttribute('data-parent') === this._config.parent)
+          .filter((elem) => {
+            if (typeof this._config.parent === 'string') {
+              return elem.getAttribute('data-parent') === this._config.parent
+            }
+
+            return elem.classList.contains(ClassName.COLLAPSE)
+          })
 
         if (actives.length === 0) {
           actives = null
@@ -282,7 +288,8 @@ const Collapse = (($) => {
     }
 
     _getParent() {
-      let parent = null
+      let parent
+
       if (Util.isElement(this._config.parent)) {
         parent = this._config.parent
 
@@ -309,14 +316,12 @@ const Collapse = (($) => {
     }
 
     _addAriaAndCollapsedClass(element, triggerArray) {
-      if (element) {
-        const isOpen = $(element).hasClass(ClassName.SHOW)
+      const isOpen = $(element).hasClass(ClassName.SHOW)
 
-        if (triggerArray.length) {
-          $(triggerArray)
-            .toggleClass(ClassName.COLLAPSED, !isOpen)
-            .attr('aria-expanded', isOpen)
-        }
+      if (triggerArray.length) {
+        $(triggerArray)
+          .toggleClass(ClassName.COLLAPSED, !isOpen)
+          .attr('aria-expanded', isOpen)
       }
     }
 
@@ -387,7 +392,7 @@ const Collapse = (($) => {
 
   $.fn[NAME] = Collapse._jQueryInterface
   $.fn[NAME].Constructor = Collapse
-  $.fn[NAME].noConflict = function () {
+  $.fn[NAME].noConflict = () => {
     $.fn[NAME] = JQUERY_NO_CONFLICT
     return Collapse._jQueryInterface
   }

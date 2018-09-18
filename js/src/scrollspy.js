@@ -3,7 +3,7 @@ import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.1.2): scrollspy.js
+ * Bootstrap (v4.1.3): scrollspy.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -16,7 +16,7 @@ const ScrollSpy = (($) => {
    */
 
   const NAME               = 'scrollspy'
-  const VERSION            = '4.1.2'
+  const VERSION            = '4.1.3'
   const DATA_KEY           = 'bs.scrollspy'
   const EVENT_KEY          = `.${DATA_KEY}`
   const DATA_API_KEY       = '.data-api'
@@ -321,7 +321,7 @@ const ScrollSpy = (($) => {
 
   $.fn[NAME] = ScrollSpy._jQueryInterface
   $.fn[NAME].Constructor = ScrollSpy
-  $.fn[NAME].noConflict = function () {
+  $.fn[NAME].noConflict = () => {
     $.fn[NAME] = JQUERY_NO_CONFLICT
     return ScrollSpy._jQueryInterface
   }

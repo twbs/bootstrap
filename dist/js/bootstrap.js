@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap v4.1.2 (https://getbootstrap.com/)
+  * Bootstrap v4.1.3 (https://getbootstrap.com/)
   * Copyright 2011-2018 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
   */
@@ -70,7 +70,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.1.2): util.js
+   * Bootstrap (v4.1.3): util.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -143,14 +143,11 @@
         var selector = element.getAttribute('data-target');
 
         if (!selector || selector === '#') {
-          selector = element.getAttribute('href') || '';
+          var hrefAttr = element.getAttribute('href');
+          selector = hrefAttr && hrefAttr !== '#' ? hrefAttr.trim() : '';
         }
 
-        try {
-          return document.querySelector(selector) ? selector : null;
-        } catch (err) {
-          return null;
-        }
+        return selector && document.querySelector(selector) ? selector : null;
       },
       getTransitionDurationFromElement: function getTransitionDurationFromElement(element) {
         if (!element) {
@@ -202,7 +199,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.1.2): alert.js
+   * Bootstrap (v4.1.3): alert.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -214,7 +211,7 @@
      * ------------------------------------------------------------------------
      */
     var NAME = 'alert';
-    var VERSION = '4.1.2';
+    var VERSION = '4.1.3';
     var DATA_KEY = 'bs.alert';
     var EVENT_KEY = "." + DATA_KEY;
     var DATA_API_KEY = '.data-api';
@@ -377,7 +374,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.1.2): button.js
+   * Bootstrap (v4.1.3): button.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -389,7 +386,7 @@
      * ------------------------------------------------------------------------
      */
     var NAME = 'button';
-    var VERSION = '4.1.2';
+    var VERSION = '4.1.3';
     var DATA_KEY = 'bs.button';
     var EVENT_KEY = "." + DATA_KEY;
     var DATA_API_KEY = '.data-api';
@@ -541,7 +538,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.1.2): carousel.js
+   * Bootstrap (v4.1.3): carousel.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -553,7 +550,7 @@
      * ------------------------------------------------------------------------
      */
     var NAME = 'carousel';
-    var VERSION = '4.1.2';
+    var VERSION = '4.1.3';
     var DATA_KEY = 'bs.carousel';
     var EVENT_KEY = "." + DATA_KEY;
     var DATA_API_KEY = '.data-api';
@@ -1045,7 +1042,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.1.2): collapse.js
+   * Bootstrap (v4.1.3): collapse.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -1057,7 +1054,7 @@
      * ------------------------------------------------------------------------
      */
     var NAME = 'collapse';
-    var VERSION = '4.1.2';
+    var VERSION = '4.1.3';
     var DATA_KEY = 'bs.collapse';
     var EVENT_KEY = "." + DATA_KEY;
     var DATA_API_KEY = '.data-api';
@@ -1157,7 +1154,11 @@
 
         if (this._parent) {
           actives = [].slice.call(this._parent.querySelectorAll(Selector.ACTIVES)).filter(function (elem) {
-            return elem.getAttribute('data-parent') === _this._config.parent;
+            if (typeof _this._config.parent === 'string') {
+              return elem.getAttribute('data-parent') === _this._config.parent;
+            }
+
+            return elem.classList.contains(ClassName.COLLAPSE);
           });
 
           if (actives.length === 0) {
@@ -1294,7 +1295,7 @@
       _proto._getParent = function _getParent() {
         var _this3 = this;
 
-        var parent = null;
+        var parent;
 
         if (Util.isElement(this._config.parent)) {
           parent = this._config.parent; // It's a jQuery object
@@ -1315,12 +1316,10 @@
       };
 
       _proto._addAriaAndCollapsedClass = function _addAriaAndCollapsedClass(element, triggerArray) {
-        if (element) {
-          var isOpen = $$$1(element).hasClass(ClassName.SHOW);
+        var isOpen = $$$1(element).hasClass(ClassName.SHOW);
 
-          if (triggerArray.length) {
-            $$$1(triggerArray).toggleClass(ClassName.COLLAPSED, !isOpen).attr('aria-expanded', isOpen);
-          }
+        if (triggerArray.length) {
+          $$$1(triggerArray).toggleClass(ClassName.COLLAPSED, !isOpen).attr('aria-expanded', isOpen);
         }
       }; // Static
 
@@ -1413,7 +1412,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.1.2): dropdown.js
+   * Bootstrap (v4.1.3): dropdown.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -1425,7 +1424,7 @@
      * ------------------------------------------------------------------------
      */
     var NAME = 'dropdown';
-    var VERSION = '4.1.2';
+    var VERSION = '4.1.3';
     var DATA_KEY = 'bs.dropdown';
     var EVENT_KEY = "." + DATA_KEY;
     var DATA_API_KEY = '.data-api';
@@ -1901,7 +1900,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.1.2): modal.js
+   * Bootstrap (v4.1.3): modal.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -1913,7 +1912,7 @@
      * ------------------------------------------------------------------------
      */
     var NAME = 'modal';
-    var VERSION = '4.1.2';
+    var VERSION = '4.1.3';
     var DATA_KEY = 'bs.modal';
     var EVENT_KEY = "." + DATA_KEY;
     var DATA_API_KEY = '.data-api';
@@ -2472,7 +2471,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.1.2): tooltip.js
+   * Bootstrap (v4.1.3): tooltip.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -2484,7 +2483,7 @@
      * ------------------------------------------------------------------------
      */
     var NAME = 'tooltip';
-    var VERSION = '4.1.2';
+    var VERSION = '4.1.3';
     var DATA_KEY = 'bs.tooltip';
     var EVENT_KEY = "." + DATA_KEY;
     var JQUERY_NO_CONFLICT = $$$1.fn[NAME];
@@ -3142,7 +3141,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.1.2): popover.js
+   * Bootstrap (v4.1.3): popover.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -3154,7 +3153,7 @@
      * ------------------------------------------------------------------------
      */
     var NAME = 'popover';
-    var VERSION = '4.1.2';
+    var VERSION = '4.1.3';
     var DATA_KEY = 'bs.popover';
     var EVENT_KEY = "." + DATA_KEY;
     var JQUERY_NO_CONFLICT = $$$1.fn[NAME];
@@ -3260,7 +3259,7 @@
 
           var _config = typeof config === 'object' ? config : null;
 
-          if (!data && /destroy|hide/.test(config)) {
+          if (!data && /dispose|hide/.test(config)) {
             return;
           }
 
@@ -3339,7 +3338,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.1.2): scrollspy.js
+   * Bootstrap (v4.1.3): scrollspy.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -3351,7 +3350,7 @@
      * ------------------------------------------------------------------------
      */
     var NAME = 'scrollspy';
-    var VERSION = '4.1.2';
+    var VERSION = '4.1.3';
     var DATA_KEY = 'bs.scrollspy';
     var EVENT_KEY = "." + DATA_KEY;
     var DATA_API_KEY = '.data-api';
@@ -3655,7 +3654,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.1.2): tab.js
+   * Bootstrap (v4.1.3): tab.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -3667,7 +3666,7 @@
      * ------------------------------------------------------------------------
      */
     var NAME = 'tab';
-    var VERSION = '4.1.2';
+    var VERSION = '4.1.3';
     var DATA_KEY = 'bs.tab';
     var EVENT_KEY = "." + DATA_KEY;
     var DATA_API_KEY = '.data-api';
@@ -3904,7 +3903,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.1.2): index.js
+   * Bootstrap (v4.1.3): index.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */

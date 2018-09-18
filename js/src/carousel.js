@@ -3,7 +3,7 @@ import Util from './util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.1.2): carousel.js
+ * Bootstrap (v4.1.3): carousel.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -16,7 +16,7 @@ const Carousel = (($) => {
    */
 
   const NAME                   = 'carousel'
-  const VERSION                = '4.1.2'
+  const VERSION                = '4.1.3'
   const DATA_KEY               = 'bs.carousel'
   const EVENT_KEY              = `.${DATA_KEY}`
   const DATA_API_KEY           = '.data-api'
@@ -509,7 +509,7 @@ const Carousel = (($) => {
 
   $.fn[NAME] = Carousel._jQueryInterface
   $.fn[NAME].Constructor = Carousel
-  $.fn[NAME].noConflict = function () {
+  $.fn[NAME].noConflict = () => {
     $.fn[NAME] = JQUERY_NO_CONFLICT
     return Carousel._jQueryInterface
   }

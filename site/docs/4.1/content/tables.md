@@ -764,8 +764,10 @@ Across every breakpoint, use `.table-responsive` for horizontally scrolling tabl
 
 Use `.table-responsive{-sm|-md|-lg|-xl}` as needed to create responsive tables up to a particular breakpoint. From that breakpoint and up, the table will behave normally and not scroll horizontally.
 
-<div class="bd-example">
+**These tables may appear broken until their responsive styles apply at specific viewport widths.**
+
 {% for bp in site.data.breakpoints %}{% unless bp.breakpoint == "xs" %}
+<div class="bd-example">
 <div class="table-responsive{{ bp.abbr }}">
   <table class="table">
     <thead>
@@ -818,15 +820,12 @@ Use `.table-responsive{-sm|-md|-lg|-xl}` as needed to create responsive tables u
     </tbody>
   </table>
 </div>
-{% endunless %}{% endfor %}
 </div>
-
 {% highlight html %}
-{% for bp in site.data.breakpoints %}{% unless bp.breakpoint == "xs" %}
 <div class="table-responsive{{ bp.abbr }}">
   <table class="table">
     ...
   </table>
 </div>
-{% endunless %}{% endfor %}
 {% endhighlight %}
+{% endunless %}{% endfor %}

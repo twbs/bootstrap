@@ -35,6 +35,11 @@
     z-index: 3;
   }
 
+  // Bring the custom file input above the label
+  > .custom-file .custom-file-input:focus {
+    z-index: 4;
+  }
+
   > .form-control,
   > .custom-select {
     &:not(:last-child) { @include border-right-radius(0); }
