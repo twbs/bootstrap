@@ -1,3 +1,5 @@
+/* stylelint-disable selector-no-qualifying-type */
+
 //
 // Buttons
 // --------------------------------------------------
@@ -11,12 +13,12 @@
   margin-bottom: 0; // For input.btn
   font-weight: @btn-font-weight;
   text-align: center;
+  white-space: nowrap;
   vertical-align: middle;
   touch-action: manipulation;
   cursor: pointer;
   background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
   border: 1px solid transparent;
-  white-space: nowrap;
   .button-size(@padding-base-vertical; @padding-base-horizontal; @font-size-base; @line-height-base; @btn-border-radius-base);
   .user-select(none);
 
@@ -38,9 +40,9 @@
 
   &:active,
   &.active {
-    outline: 0;
     background-image: none;
-    .box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
+    outline: 0;
+    .box-shadow(inset 0 3px 5px rgba(0, 0, 0, .125));
   }
 
   &.disabled,
@@ -92,8 +94,8 @@
 
 // Make a button look and behave like a link
 .btn-link {
+  font-weight: 400;
   color: @link-color;
-  font-weight: normal;
   border-radius: 0;
 
   &,

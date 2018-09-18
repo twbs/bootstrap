@@ -1,5 +1,5 @@
 /* ========================================================================
- * Bootstrap: modal.js v3.3.7
+ * Bootstrap: modal.js v3.4.0
  * http://getbootstrap.com/javascript/#modals
  * ========================================================================
  * Copyright 2011-2016 Twitter, Inc.
@@ -33,7 +33,7 @@
     }
   }
 
-  Modal.VERSION  = '3.3.7'
+  Modal.VERSION  = '3.4.0'
 
   Modal.TRANSITION_DURATION = 300
   Modal.BACKDROP_TRANSITION_DURATION = 150
@@ -322,7 +322,10 @@
   $(document).on('click.bs.modal.data-api', '[data-toggle="modal"]', function (e) {
     var $this   = $(this)
     var href    = $this.attr('href')
-    var $target = $($this.attr('data-target') || (href && href.replace(/.*(?=#[^\s]+$)/, ''))) // strip for ie7
+    var target  = $this.attr('data-target') ||
+      (href && href.replace(/.*(?=#[^\s]+$)/, '')) // strip for ie7
+
+    var $target = $(document).find(target)
     var option  = $target.data('bs.modal') ? 'toggle' : $.extend({ remote: !/#/.test(href) && href }, $target.data(), $this.data())
 
     if ($this.is('a')) e.preventDefault()

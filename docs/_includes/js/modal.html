@@ -12,7 +12,7 @@
   </div>
   <div class="bs-callout bs-callout-warning" id="callout-modal-mobile-caveats">
     <h4>Mobile device caveats</h4>
-    <p>There are some caveats regarding using modals on mobile devices. <a href="../getting-started/#support-fixed-position-keyboards">See our browser support docs</a> for details.</p>
+    <p>There are some caveats regarding using modals on mobile devices. <a href="{{ site.baseurl }}/getting-started/#support-fixed-position-keyboards">See our browser support docs</a> for details.</p>
   </div>
 
   <p><strong class="text-danger">Due to how HTML5 defines its semantics, the <code>autofocus</code> HTML attribute has no effect in Bootstrap modals.</strong> To achieve the same effect, use some custom JavaScript:</p>
@@ -160,7 +160,7 @@ $('#myModal').on('shown.bs.modal', function () {
 <!-- Large modal -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>
 
-<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       ...
@@ -171,7 +171,7 @@ $('#myModal').on('shown.bs.modal', function () {
 <!-- Small modal -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Small modal</button>
 
-<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
   <div class="modal-dialog modal-sm" role="document">
     <div class="modal-content">
       ...

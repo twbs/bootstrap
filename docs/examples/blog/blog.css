@@ -1,3 +1,5 @@
+/* stylelint-disable selector-list-comma-newline-after, property-no-vendor-prefix */
+
 /*
  * Globals
  */
@@ -15,7 +17,7 @@ h5, .h5,
 h6, .h6 {
   margin-top: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: normal;
+  font-weight: 400;
   color: #333;
 }
 
@@ -37,8 +39,8 @@ h6, .h6 {
 
 .blog-masthead {
   background-color: #428bca;
-  -webkit-box-shadow: inset 0 -2px 5px rgba(0,0,0,.1);
-          box-shadow: inset 0 -2px 5px rgba(0,0,0,.1);
+  -webkit-box-shadow: inset 0 -2px 5px rgba(0, 0, 0, .1);
+  box-shadow: inset 0 -2px 5px rgba(0, 0, 0, .1);
 }
 
 /* Nav links */
@@ -59,7 +61,7 @@ h6, .h6 {
 .blog-nav .active {
   color: #fff;
 }
-.blog-nav .active:after {
+.blog-nav .active::after {
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -86,7 +88,7 @@ h6, .h6 {
   margin-top: 30px;
   margin-bottom: 0;
   font-size: 60px;
-  font-weight: normal;
+  font-weight: 400;
 }
 .blog-description {
   font-size: 20px;

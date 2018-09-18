@@ -174,6 +174,17 @@ module.exports = function (grunt) {
         },
         src: 'less/theme.less',
         dest: 'dist/css/<%= pkg.name %>-theme.css'
+      },
+      compileDocs: {
+        options: {
+          strictMath: true,
+          sourceMap: true,
+          outputSourceFiles: true,
+          sourceMapURL: 'docs.css.map',
+          sourceMapFilename: 'docs/assets/css/docs.css.map'
+        },
+        src: 'docs/assets/less/docs.less',
+        dest: 'docs/assets/css/docs.css'
       }
     },
 
@@ -194,7 +205,10 @@ module.exports = function (grunt) {
         src: 'dist/css/<%= pkg.name %>-theme.css'
       },
       docs: {
-        src: ['docs/assets/css/src/docs.css']
+        options: {
+          map: true
+        },
+        src: 'docs/assets/css/src/docs.css'
       },
       examples: {
         expand: true,
@@ -204,24 +218,25 @@ module.exports = function (grunt) {
       }
     },
 
-    csslint: {
+    stylelint: {
       options: {
-        csslintrc: 'less/.csslintrc'
+        configFile: 'grunt/.stylelintrc',
+        formatter: 'string',
+        ignoreDisables: false,
+        failOnError: true,
+        outputFile: '',
+        reportNeedlessDisables: false,
+        syntax: ''
       },
       dist: [
-        'dist/css/bootstrap.css',
-        'dist/css/bootstrap-theme.css'
+        'less/**/*.less'
+      ],
+      docs: [
+        'docs/assets/less/**/*.less'
       ],
       examples: [
         'docs/examples/**/*.css'
-      ],
-      docs: {
-        options: {
-          ids: false,
-          'overqualified-elements': false
-        },
-        src: 'docs/assets/css/src/docs.css'
-      }
+      ]
     },
 
     cssmin: {
@@ -242,35 +257,9 @@ module.exports = function (grunt) {
         src: 'dist/css/<%= pkg.name %>-theme.css',
         dest: 'dist/css/<%= pkg.name %>-theme.min.css'
       },
-      docs: {
-        src: [
-          'docs/assets/css/ie10-viewport-bug-workaround.css',
-          'docs/assets/css/src/pygments-manni.css',
-          'docs/assets/css/src/docs.css'
-        ],
+      minifyDocs: {
+        src: 'docs/assets/css/docs.css',
         dest: 'docs/assets/css/docs.min.css'
-      }
-    },
-
-    csscomb: {
-      options: {
-        config: 'less/.csscomb.json'
-      },
-      dist: {
-        expand: true,
-        cwd: 'dist/css/',
-        src: ['*.css', '!*.min.css'],
-        dest: 'dist/css/'
-      },
-      examples: {
-        expand: true,
-        cwd: 'docs/examples/',
-        src: '**/*.css',
-        dest: 'docs/examples/'
-      },
-      docs: {
-        src: 'docs/assets/css/src/docs.css',
-        dest: 'docs/assets/css/src/docs.css'
       }
     },
 
@@ -385,7 +374,11 @@ module.exports = function (grunt) {
       },
       less: {
         files: 'less/**/*.less',
-        tasks: 'less'
+        tasks: ['less', 'copy']
+      },
+      docs: {
+        files: 'docs/assets/less/**/*.less',
+        tasks: ['less']
       }
     },
 
@@ -450,7 +443,7 @@ module.exports = function (grunt) {
   if (runSubset('core') &&
       // Skip core tests if this is a Savage build
       process.env.TRAVIS_REPO_SLUG !== 'twbs-savage/bootstrap') {
-    testSubtasks = testSubtasks.concat(['dist-css', 'dist-js', 'csslint:dist', 'test-js', 'docs']);
+    testSubtasks = testSubtasks.concat(['dist-css', 'dist-js', 'stylelint:dist', 'test-js', 'docs']);
   }
   // Skip HTML validation if running a different subset of the test suite
   if (runSubset('validate-html') &&
@@ -474,8 +467,8 @@ module.exports = function (grunt) {
   grunt.registerTask('dist-js', ['concat', 'uglify:core', 'commonjs']);
 
   // CSS distribution task.
-  grunt.registerTask('less-compile', ['less:compileCore', 'less:compileTheme']);
-  grunt.registerTask('dist-css', ['less-compile', 'autoprefixer:core', 'autoprefixer:theme', 'csscomb:dist', 'cssmin:minifyCore', 'cssmin:minifyTheme']);
+  grunt.registerTask('less-compile', ['less:compileCore', 'less:compileTheme', 'less:compileDocs']);
+  grunt.registerTask('dist-css', ['less-compile', 'autoprefixer:core', 'autoprefixer:theme', 'cssmin:minifyCore', 'cssmin:minifyTheme']);
 
   // Full distribution task.
   grunt.registerTask('dist', ['clean:dist', 'dist-css', 'copy:fonts', 'dist-js']);
@@ -500,8 +493,8 @@ module.exports = function (grunt) {
   });
 
   // Docs task.
-  grunt.registerTask('docs-css', ['autoprefixer:docs', 'autoprefixer:examples', 'csscomb:docs', 'csscomb:examples', 'cssmin:docs']);
-  grunt.registerTask('lint-docs-css', ['csslint:docs', 'csslint:examples']);
+  grunt.registerTask('docs-css', ['autoprefixer:docs', 'autoprefixer:examples', 'cssmin:minifyDocs']);
+  grunt.registerTask('lint-docs-css', ['stylelint:docs', 'stylelint:examples']);
   grunt.registerTask('docs-js', ['uglify:docsJs', 'uglify:customize']);
   grunt.registerTask('lint-docs-js', ['jshint:assets', 'jscs:assets']);
   grunt.registerTask('docs', ['docs-css', 'lint-docs-css', 'docs-js', 'lint-docs-js', 'clean:docs', 'copy:docs', 'build-glyphicons-data', 'build-customizer']);

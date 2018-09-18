@@ -1,5 +1,5 @@
 /* ========================================================================
- * Bootstrap: collapse.js v3.3.7
+ * Bootstrap: collapse.js v3.4.0
  * http://getbootstrap.com/javascript/#collapse
  * ========================================================================
  * Copyright 2011-2016 Twitter, Inc.
@@ -30,7 +30,7 @@
     if (this.options.toggle) this.toggle()
   }
 
-  Collapse.VERSION  = '3.3.7'
+  Collapse.VERSION  = '3.4.0'
 
   Collapse.TRANSITION_DURATION = 350
 
@@ -137,7 +137,7 @@
   }
 
   Collapse.prototype.getParent = function () {
-    return $(this.options.parent)
+    return $(document).find(this.options.parent)
       .find('[data-toggle="collapse"][data-parent="' + this.options.parent + '"]')
       .each($.proxy(function (i, element) {
         var $element = $(element)
@@ -160,7 +160,7 @@
     var target = $trigger.attr('data-target')
       || (href = $trigger.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '') // strip for ie7
 
-    return $(target)
+    return $(document).find(target)
   }
 
 

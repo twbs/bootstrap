@@ -14,14 +14,14 @@
 
 // Container that the modal scrolls within
 .modal {
-  display: none;
-  overflow: hidden;
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   z-index: @zindex-modal;
+  display: none;
+  overflow: hidden;
   -webkit-overflow-scrolling: touch;
 
   // Prevent Chrome on Windows from adding a focus outline. For details, see
@@ -51,11 +51,11 @@
 .modal-content {
   position: relative;
   background-color: @modal-content-bg;
+  background-clip: padding-box;
   border: 1px solid @modal-content-fallback-border-color; //old browsers fallback (ie8 etc)
   border: 1px solid @modal-content-border-color;
   border-radius: @border-radius-large;
-  .box-shadow(0 3px 9px rgba(0,0,0,.5));
-  background-clip: padding-box;
+  .box-shadow(0 3px 9px rgba(0, 0, 0, .5));
   // Remove focus outline from opened modal
   outline: 0;
 }
@@ -108,8 +108,8 @@
 
   // Properly space out buttons
   .btn + .btn {
-    margin-left: 5px;
     margin-bottom: 0; // account for input[type="submit"] which gets the bottom margin like all other inputs
+    margin-left: 5px;
   }
   // but override that for button groups
   .btn-group .btn + .btn {
@@ -138,7 +138,7 @@
     margin: 30px auto;
   }
   .modal-content {
-    .box-shadow(0 5px 15px rgba(0,0,0,.5));
+    .box-shadow(0 5px 15px rgba(0, 0, 0, .5));
   }
 
   // Modal sizes

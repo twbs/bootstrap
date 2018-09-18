@@ -1,0 +1,64 @@
+// Logo series wrapper
+.bs-brand-logos {
+  display: table;
+  width: 100%;
+  margin-bottom: 15px;
+  overflow: hidden;
+  color: #563d7c;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+}
+
+// Individual items
+.bs-brand-item {
+  padding: 60px 0;
+  text-align: center;
+}
+.bs-brand-item + .bs-brand-item {
+  border-top: 1px solid #fff;
+}
+.bs-brand-logos .inverse {
+  color: #fff;
+  background-color: #563d7c;
+}
+
+// Heading content within
+.bs-brand-item h1,
+.bs-brand-item h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.bs-brand-item .bs-docs-booticon {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+// Make the icons stand out on what is/isn't okay
+.bs-brand-item .glyphicon {
+  width: 30px;
+  height: 30px;
+  margin: 10px auto -10px;
+  line-height: 30px;
+  color: #fff;
+  border-radius: 50%;
+}
+.bs-brand-item .glyphicon-ok {
+  background-color: #5cb85c;
+}
+.bs-brand-item .glyphicon-remove {
+  background-color: #d9534f;
+}
+
+@media (min-width: @screen-sm-min) {
+  .bs-brand-item {
+    display: table-cell;
+    width: 1%;
+  }
+  .bs-brand-item + .bs-brand-item {
+    border-top: 0;
+    border-left: 1px solid #fff;
+  }
+  .bs-brand-item h1 {
+    font-size: 60px;
+  }
+}

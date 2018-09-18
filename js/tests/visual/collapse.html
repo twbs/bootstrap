@@ -66,7 +66,13 @@
       </div>
     </div>
   </div>
+  <button class="btn" data-toggle="collapse" data-target="<img src=x onerror=alert(0)>">
+    Collapse with an XSS
+  </button>
 
+  <button class="btn" data-toggle="collapse" data-parent="<img src=1 onerror=\'alert(0)\'>" href="#collapseThree">
+    Collapse with an XSS in data-parent
+  </button>
 </div>
 
 <!-- JavaScript Includes -->
