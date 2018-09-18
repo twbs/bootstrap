@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
 group :development, :test do
-  gem 'jekyll', '~> 3.1.2'
-  gem 'jekyll-sitemap', '~> 0.11.0'
+  gem 'jekyll', '~> 3.8.4'
+  gem 'jekyll-sitemap', '~> 1.2.0'
 end

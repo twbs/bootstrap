@@ -33,7 +33,7 @@
   <script src="{{ site.baseurl }}/assets/js/docs.min.js"></script>
 {% else %}
   {% for file in site.data.configBridge.paths.docsJs %}
-  <script src="{{ file }}"></script>
+  <script src="{{ file | replace_first: '..', site.baseurl }}"></script>
   {% endfor %}
 {% endif %}
 
@@ -61,7 +61,7 @@
     <script src="{{ site.baseurl }}/assets/js/customize.min.js"></script>
   {% else %}
     {% for file in site.data.configBridge.paths.customizerJs %}
-    <script src="{{ file }}"></script>
+    <script src="{{ file | replace_first: '..', site.baseurl }}"></script>
     {% endfor %}
   {% endif %}
 {% endif %}

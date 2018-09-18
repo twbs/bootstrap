@@ -5,41 +5,21 @@ git:
   depth: 10
 node_js:
   - "6"
-before_install:
-  # Remove ./node_modules/.bin from PATH so node-which doesn't replace Unix which and cause RVM to barf. See https://github.com/travis-ci/travis-ci/issues/5092
-  - export PATH=$(python -c 'from sys import argv;from collections import OrderedDict as od;print(":".join(od((p,None) for p in argv[1].split(":") if p.startswith("/")).keys()))' "$PATH")
-  - rvm install 2.2
-  - rvm use 2.2 --fuzzy
-  - "export TRAVIS_COMMIT_MSG=\"$(git log --format=%B --no-merges -n 1)\""
-  - echo "$TRAVIS_COMMIT_MSG" | grep '\[skip validator\]'; export TWBS_DO_VALIDATOR=$?; true
-  - echo "$TRAVIS_COMMIT_MSG" | grep '\[skip sauce\]'; export TWBS_DO_SAUCE=$?; true
-  - if [ "$TRAVIS_REPO_SLUG" = twbs-savage/bootstrap ]; then export TWBS_DO_VALIDATOR=0; fi
-install:
-  - bundle install --deployment --jobs=1
-  - cp grunt/npm-shrinkwrap.json ./
-  - npm install
-# Undo `_JAVA_OPTIONS` environment variable;
-# see https://github.com/travis-ci/travis-ci/issues/8408
-before_script:
-  - _JAVA_OPTIONS=
-cache:
-  directories:
-    - node_modules
-    - vendor/bundle
 env:
-  global:
-    - NPM_CONFIG_PROGRESS="false"
-    - SAUCE_USERNAME="bootstrap"
-    - secure: "pJkBwnuae9dKU5tEcCqccfS1QQw7/meEcfz63fM7ba7QJNjoA6BaXj08L5Z3Vb5vBmVPwBawxo5Hp0jC0r/Z/O0hGnAmz/Cz09L+cy7dSAZ9x4hvZePSja/UAusaB5ogMoO8l2b773MzgQeSmrLbExr9BWLeqEfjC2hFgdgHLaQ="
-    - secure: "RKWpS+P20b4tG9tawzCMJSmQftoonmC7tJzyGYiHuEM1TcpHALLBcnzKlr/+DiPTfzDJWY4kS8pxfhK4uXOe8OHnhpMNub7LEWtFPePlZIervOJcsOydaQocTKqVVWD6OUubMeQmQ+tZmvmpjoJ1uPPEbFs9ciF7+dv3U5tLUZ0="
-    - secure: "XswSKBY0HJ/aO9VOBeWlvGpqSFF/DsJmNKz7o5RkJMJX340qe44J929uUNwwOwlv9YrgptzC2W6l8bpmZQV+p6IYs99SoSA8CCaUfIJaqeU9x/UiT5vIHgqaNax+vFJwvzHLpF5v/ggFqFEKCd54gCDasePLTztHeC4oL104iaQ="
   matrix:
     - TWBS_TEST=core
     - TWBS_TEST=validate-html
     - TWBS_TEST=browserstack
+before_install:
+  - "export TRAVIS_COMMIT_MSG=\"$(git log --format=%B --no-merges -n 1)\""
+  - echo "$TRAVIS_COMMIT_MSG" | grep '\[skip validator\]'; export TWBS_DO_VALIDATOR=$?; true
+  - echo "$TRAVIS_COMMIT_MSG" | grep '\[skip browserstack\]'; export TWBS_DO_BROWSERSTACK=$?; true
+install:
+  - bundle install --deployment --jobs=3 --retry=3
+  - npm install
 matrix:
   fast_finish: true
-notifications:
-  slack: heybb:iz4wwosL0N0EdaX1gvgkU0NH
-  webhooks:
-    - http://savage1.twbsapps.com/savage/travis
+cache:
+  directories:
+    - node_modules
+    - vendor/bundle

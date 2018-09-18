@@ -13,8 +13,10 @@ port:             9001
 url:              http://getbootstrap.com
 baseurl:          /docs/3.4
 encoding:         UTF-8
+exclude:
+  - assets/less/
 
-gems:
+plugins:
   - jekyll-sitemap
 
 # Custom vars
