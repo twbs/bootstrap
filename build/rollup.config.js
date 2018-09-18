@@ -1,5 +1,3 @@
-'use strict'
-
 const path    = require('path')
 const babel   = require('rollup-plugin-babel')
 const resolve = require('rollup-plugin-node-resolve')

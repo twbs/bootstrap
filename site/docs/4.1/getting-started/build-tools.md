@@ -48,7 +48,7 @@ Running our documentation locally requires the use of Jekyll, a decently flexibl
 2. From the root `/bootstrap` directory, run `npm run docs-serve` in the command line.
 3. Open `http://localhost:9001` in your browser, and voilà.
 
-Learn more about using Jekyll by reading its [documentation](https://jekyllrb.com/docs/home/).
+Learn more about using Jekyll by reading its [documentation](https://jekyllrb.com/docs/).
 
 ## Troubleshooting
 

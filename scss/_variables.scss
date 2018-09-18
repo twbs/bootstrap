@@ -4,9 +4,7 @@
 // consistent naming. Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.
 
 
-//
 // Color system
-//
 
 $white:    #fff !default;
 $gray-100: #f8f9fa !default;
@@ -36,7 +34,6 @@ $grays: map-merge(
   ),
   $grays
 );
-
 
 $blue:    #007bff !default;
 $indigo:  #6610f2 !default;
@@ -105,6 +102,7 @@ $yiq-contrasted-threshold:  150 !default;
 $yiq-text-dark:             $gray-900 !default;
 $yiq-text-light:            $white !default;
 
+
 // Options
 //
 // Quickly modify global styling by enabling or disabling optional features.
@@ -118,6 +116,7 @@ $enable-hover-media-query:  false !default; // Deprecated, no longer affects any
 $enable-grid-classes:       true !default;
 $enable-print-styles:       true !default;
 $enable-validation-icons:   true !default;
+
 
 // Spacing
 //
@@ -154,12 +153,14 @@ $sizes: map-merge(
   $sizes
 );
 
+
 // Body
 //
 // Settings for the `<body>` element.
 
 $body-bg:                   $white !default;
 $body-color:                $gray-900 !default;
+
 
 // Links
 //
@@ -169,6 +170,7 @@ $link-color:                theme-color("primary") !default;
 $link-decoration:           none !default;
 $link-hover-color:          darken($link-color, 15%) !default;
 $link-hover-decoration:     underline !default;
+
 
 // Paragraphs
 //
@@ -214,6 +216,7 @@ $container-max-widths: (
 
 $grid-columns:                12 !default;
 $grid-gutter-width:           30px !default;
+
 
 // Components
 //
@@ -298,6 +301,7 @@ $small-font-size:             80% !default;
 $text-muted:                  $gray-600 !default;
 
 $blockquote-small-color:      $gray-600 !default;
+$blockquote-small-font-size:  $small-font-size !default;
 $blockquote-font-size:        ($font-size-base * 1.25) !default;
 
 $hr-border-color:             rgba($black, .1) !default;
@@ -344,6 +348,7 @@ $table-dark-color:            $body-bg !default;
 $table-striped-order:         odd !default;
 
 $table-caption-color:         $text-muted !default;
+
 
 // Buttons + Forms
 //
@@ -588,6 +593,7 @@ $custom-file-text: (
 
 
 // Form validation
+
 $form-feedback-margin-top:          $form-text-margin-top !default;
 $form-feedback-font-size:           $small-font-size !default;
 $form-feedback-valid-color:         theme-color("success") !default;
@@ -641,6 +647,7 @@ $zindex-modal:                      1050 !default;
 $zindex-popover:                    1060 !default;
 $zindex-tooltip:                    1070 !default;
 
+
 // Navs
 
 $nav-link-padding-y:                .5rem !default;
@@ -661,6 +668,7 @@ $nav-pills-link-active-bg:          $component-active-bg !default;
 
 $nav-divider-color:                 $gray-200 !default;
 $nav-divider-margin-y:              ($spacer / 2) !default;
+
 
 // Navbar
 
@@ -693,6 +701,11 @@ $navbar-light-active-color:         rgba($black, .9) !default;
 $navbar-light-disabled-color:       rgba($black, .3) !default;
 $navbar-light-toggler-icon-bg:      str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='#{$navbar-light-color}' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"), "#", "%23") !default;
 $navbar-light-toggler-border-color: rgba($black, .1) !default;
+
+$navbar-light-brand-color:                $navbar-light-active-color !default;
+$navbar-light-brand-hover-color:          $navbar-light-active-color !default;
+$navbar-dark-brand-color:                 $navbar-dark-active-color !default;
+$navbar-dark-brand-hover-color:           $navbar-dark-active-color !default;
 
 
 // Pagination
@@ -840,6 +853,8 @@ $modal-lg:                          800px !default;
 $modal-md:                          500px !default;
 $modal-sm:                          300px !default;
 
+$modal-fade-transform:              translate(0, -50px) !default;
+$modal-show-transform:              none !default;
 $modal-transition:                  transform .3s ease-out !default;
 
 
@@ -870,6 +885,7 @@ $progress-bar-color:                $white !default;
 $progress-bar-bg:                   theme-color("primary") !default;
 $progress-bar-animation-timing:     1s linear infinite !default;
 $progress-bar-transition:           width .6s ease !default;
+
 
 // List group
 
@@ -930,25 +946,26 @@ $breadcrumb-border-radius:          $border-radius !default;
 
 // Carousel
 
-$carousel-control-color:            $white !default;
-$carousel-control-width:            15% !default;
-$carousel-control-opacity:          .5 !default;
+$carousel-control-color:             $white !default;
+$carousel-control-width:             15% !default;
+$carousel-control-opacity:           .5 !default;
 
-$carousel-indicator-width:          30px !default;
-$carousel-indicator-height:         3px !default;
-$carousel-indicator-spacer:         3px !default;
-$carousel-indicator-active-bg:      $white !default;
-$carousel-indicator-transition:     opacity .6s ease !default;
+$carousel-indicator-width:           30px !default;
+$carousel-indicator-height:          3px !default;
+$carousel-indicator-hit-area-height: 10px !default;
+$carousel-indicator-spacer:          3px !default;
+$carousel-indicator-active-bg:       $white !default;
+$carousel-indicator-transition:      opacity .6s ease !default;
 
-$carousel-caption-width:            70% !default;
-$carousel-caption-color:            $white !default;
+$carousel-caption-width:             70% !default;
+$carousel-caption-color:             $white !default;
 
-$carousel-control-icon-width:       20px !default;
+$carousel-control-icon-width:        20px !default;
 
-$carousel-control-prev-icon-bg:     str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='#{$carousel-control-color}' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E"), "#", "%23") !default;
-$carousel-control-next-icon-bg:     str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='#{$carousel-control-color}' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E"), "#", "%23") !default;
+$carousel-control-prev-icon-bg:      str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='#{$carousel-control-color}' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E"), "#", "%23") !default;
+$carousel-control-next-icon-bg:      str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='#{$carousel-control-color}' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E"), "#", "%23") !default;
 
-$carousel-transition:               transform .6s ease !default; // Define transform transition first if using multiple transitions (e.g., `transform 2s ease, opacity .5s ease-out`)
+$carousel-transition:                transform .6s ease !default; // Define transform transition first if using multiple transitions (e.g., `transform 2s ease, opacity .5s ease-out`)
 
 
 // Close
@@ -957,6 +974,7 @@ $close-font-size:                   $font-size-base * 1.5 !default;
 $close-font-weight:                 $font-weight-bold !default;
 $close-color:                       $black !default;
 $close-text-shadow:                 0 1px 0 $white !default;
+
 
 // Code
 
@@ -974,5 +992,6 @@ $pre-scrollable-max-height:         340px !default;
 
 
 // Printing
+
 $print-page-size:                   a3 !default;
 $print-body-min-width:              map-get($grid-breakpoints, "lg") !default;

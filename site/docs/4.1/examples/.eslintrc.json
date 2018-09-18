@@ -7,5 +7,5 @@
     "ecmaVersion": 5,
     "sourceType": "script"
   },
-  "extends": "../../../js/tests/unit/.eslintrc.json"
+  "extends": "../../../../js/tests/unit/.eslintrc.json"
 }

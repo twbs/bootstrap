@@ -143,14 +143,11 @@
         var selector = element.getAttribute('data-target');
 
         if (!selector || selector === '#') {
-          selector = element.getAttribute('href') || '';
+          var hrefAttr = element.getAttribute('href');
+          selector = hrefAttr && hrefAttr !== '#' ? hrefAttr.trim() : '';
         }
 
-        try {
-          return document.querySelector(selector) ? selector : null;
-        } catch (err) {
-          return null;
-        }
+        return selector && document.querySelector(selector) ? selector : null;
       },
       getTransitionDurationFromElement: function getTransitionDurationFromElement(element) {
         if (!element) {
@@ -1157,7 +1154,11 @@
 
         if (this._parent) {
           actives = [].slice.call(this._parent.querySelectorAll(Selector.ACTIVES)).filter(function (elem) {
-            return elem.getAttribute('data-parent') === _this._config.parent;
+            if (typeof _this._config.parent === 'string') {
+              return elem.getAttribute('data-parent') === _this._config.parent;
+            }
+
+            return elem.classList.contains(ClassName.COLLAPSE);
           });
 
           if (actives.length === 0) {
@@ -1294,7 +1295,7 @@
       _proto._getParent = function _getParent() {
         var _this3 = this;
 
-        var parent = null;
+        var parent;
 
         if (Util.isElement(this._config.parent)) {
           parent = this._config.parent; // It's a jQuery object
@@ -1315,12 +1316,10 @@
       };
 
       _proto._addAriaAndCollapsedClass = function _addAriaAndCollapsedClass(element, triggerArray) {
-        if (element) {
-          var isOpen = $$$1(element).hasClass(ClassName.SHOW);
+        var isOpen = $$$1(element).hasClass(ClassName.SHOW);
 
-          if (triggerArray.length) {
-            $$$1(triggerArray).toggleClass(ClassName.COLLAPSED, !isOpen).attr('aria-expanded', isOpen);
-          }
+        if (triggerArray.length) {
+          $$$1(triggerArray).toggleClass(ClassName.COLLAPSED, !isOpen).attr('aria-expanded', isOpen);
         }
       }; // Static
 
@@ -3260,7 +3259,7 @@
 
           var _config = typeof config === 'object' ? config : null;
 
-          if (!data && /destroy|hide/.test(config)) {
+          if (!data && /dispose|hide/.test(config)) {
             return;
           }
 

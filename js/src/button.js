@@ -164,7 +164,7 @@ const Button = (($) => {
 
   $.fn[NAME] = Button._jQueryInterface
   $.fn[NAME].Constructor = Button
-  $.fn[NAME].noConflict = function () {
+  $.fn[NAME].noConflict = () => {
     $.fn[NAME] = JQUERY_NO_CONFLICT
     return Button._jQueryInterface
   }

@@ -448,6 +448,12 @@ $('#exampleModal').on('show.bs.modal', function (event) {
 })
 {% endhighlight %}
 
+### Change animation
+
+The `$modal-fade-transform` variable determines the transform state of `.modal-dialog` before the modal fade-in animation, the `$modal-show-transform` variable determines the transform of `.modal-dialog` at the end of the modal fade-in animation.
+
+If you want for example a zoom-in animation, you can set `$modal-fade-transform: scale(.8)`.
+
 ### Remove animation
 
 For modals that simply appear rather than fade in to view, remove the `.fade` class from your modal markup.
@@ -516,7 +522,7 @@ Our default modal without modifier class constitutes the "medium" size modal.
 
 {% highlight html %}
 <!-- Extra large modal -->
-<button class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl">Extra large modal</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl">Extra large modal</button>
 
 <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl">

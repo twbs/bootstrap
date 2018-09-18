@@ -321,7 +321,7 @@ const ScrollSpy = (($) => {
 
   $.fn[NAME] = ScrollSpy._jQueryInterface
   $.fn[NAME].Constructor = ScrollSpy
-  $.fn[NAME].noConflict = function () {
+  $.fn[NAME].noConflict = () => {
     $.fn[NAME] = JQUERY_NO_CONFLICT
     return ScrollSpy._jQueryInterface
   }
