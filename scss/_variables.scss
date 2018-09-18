@@ -4,9 +4,7 @@
 // consistent naming. Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.
 
 
-//
 // Color system
-//
 
 $white:    #fff !default;
 $gray-100: #f8f9fa !default;
@@ -36,7 +34,6 @@ $grays: map-merge(
   ),
   $grays
 );
-
 
 $blue:    #007bff !default;
 $indigo:  #6610f2 !default;
@@ -105,6 +102,7 @@ $yiq-contrasted-threshold:  150 !default;
 $yiq-text-dark:             $gray-900 !default;
 $yiq-text-light:            $white !default;
 
+
 // Options
 //
 // Quickly modify global styling by enabling or disabling optional features.
@@ -118,6 +116,7 @@ $enable-hover-media-query:  false !default; // Deprecated, no longer affects any
 $enable-grid-classes:       true !default;
 $enable-print-styles:       true !default;
 $enable-validation-icons:   true !default;
+
 
 // Spacing
 //
@@ -154,12 +153,14 @@ $sizes: map-merge(
   $sizes
 );
 
+
 // Body
 //
 // Settings for the `<body>` element.
 
 $body-bg:                   $white !default;
 $body-color:                $gray-900 !default;
+
 
 // Links
 //
@@ -169,6 +170,7 @@ $link-color:                theme-color("primary") !default;
 $link-decoration:           none !default;
 $link-hover-color:          darken($link-color, 15%) !default;
 $link-hover-decoration:     underline !default;
+
 
 // Paragraphs
 //
@@ -214,6 +216,7 @@ $container-max-widths: (
 
 $grid-columns:                12 !default;
 $grid-gutter-width:           30px !default;
+
 
 // Components
 //
@@ -345,6 +348,7 @@ $table-dark-color:            $body-bg !default;
 $table-striped-order:         odd !default;
 
 $table-caption-color:         $text-muted !default;
+
 
 // Buttons + Forms
 //
@@ -580,6 +584,7 @@ $custom-file-text: (
 
 
 // Form validation
+
 $form-feedback-margin-top:          $form-text-margin-top !default;
 $form-feedback-font-size:           $small-font-size !default;
 $form-feedback-valid-color:         theme-color("success") !default;
@@ -633,6 +638,7 @@ $zindex-modal:                      1050 !default;
 $zindex-popover:                    1060 !default;
 $zindex-tooltip:                    1070 !default;
 
+
 // Navs
 
 $nav-link-padding-y:                .5rem !default;
@@ -653,6 +659,7 @@ $nav-pills-link-active-bg:          $component-active-bg !default;
 
 $nav-divider-color:                 $gray-200 !default;
 $nav-divider-margin-y:              ($spacer / 2) !default;
+
 
 // Navbar
 
@@ -870,6 +877,7 @@ $progress-bar-bg:                   theme-color("primary") !default;
 $progress-bar-animation-timing:     1s linear infinite !default;
 $progress-bar-transition:           width .6s ease !default;
 
+
 // List group
 
 $list-group-bg:                     $white !default;
@@ -958,6 +966,7 @@ $close-font-weight:                 $font-weight-bold !default;
 $close-color:                       $black !default;
 $close-text-shadow:                 0 1px 0 $white !default;
 
+
 // Code
 
 $code-font-size:                    87.5% !default;
@@ -974,5 +983,6 @@ $pre-scrollable-max-height:         340px !default;
 
 
 // Printing
+
 $print-page-size:                   a3 !default;
 $print-body-min-width:              map-get($grid-breakpoints, "lg") !default;
