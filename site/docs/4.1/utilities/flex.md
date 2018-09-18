@@ -219,11 +219,11 @@ Responsive variations also exist for `align-self`.
 
 ## Fill
 
-Use the `.flex-fill` class on a series of sibling elements to force them into equal widths while taking up all available horizontal space. [Especially useful for equal-width, or justified, navigation]({{ site.baseurl }}/docs/{{ site.docs_version }}/components/navs/#working-with-flex-utilities).
+Use the `.flex-fill` class on a series of sibling elements to force them into widths equal to their content (or equal widths if their content does not surpass their border-boxes) while taking up all available horizontal space. 
 
 {% capture example %}
 <div class="d-flex bd-highlight">
-  <div class="p-2 flex-fill bd-highlight">Flex item</div>
+  <div class="p-2 flex-fill bd-highlight">Flex item with a lot of content</div>
   <div class="p-2 flex-fill bd-highlight">Flex item</div>
   <div class="p-2 flex-fill bd-highlight">Flex item</div>
 </div>
