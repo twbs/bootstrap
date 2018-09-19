@@ -1,0 +1,2 @@
+*.js    @twbs/js-review
+*.scss  @twbs/css-review
