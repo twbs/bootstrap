@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -70,9 +70,9 @@
     Collapse with an XSS
   </button>
 
-  <button class="btn" data-toggle="collapse" data-parent="<img src=1 onerror=\'alert(0)\'>" href="#collapseThree">
+  <a role="button" class="btn btn-primary" data-toggle="collapse" data-parent="<img src=1 onerror=\'alert(0)\'>" href="#collapseThree">
     Collapse with an XSS in data-parent
-  </button>
+  </a>
 </div>
 
 <!-- JavaScript Includes -->
