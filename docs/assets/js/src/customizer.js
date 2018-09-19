@@ -32,12 +32,6 @@ window.onload = function () { // wait for load in a dumb way because B-0
     throw err
   }
 
-  function showSuccess(msg) {
-    $('<div class="bs-callout bs-callout-info">' +
-      '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + msg +
-    '</div>').insertAfter('.bs-customize-download')
-  }
-
   function showAlert(type, msg, insertAfter) {
     $('<div class="alert alert-' + type + '">' + msg + '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>')
       .insertAfter(insertAfter)
@@ -47,42 +41,6 @@ window.onload = function () { // wait for load in a dumb way because B-0
     key = key.replace(/[*+?^$.\[\]{}()|\\\/]/g, '\\$&') // escape RegEx meta chars
     var match = location.search.match(new RegExp('[?&]' + key + '=([^&]+)(&|$)'))
     return match && decodeURIComponent(match[1].replace(/\+/g, ' '))
-  }
-
-  function createGist(configJson, callback) {
-    var data = {
-      description: 'Bootstrap Customizer Config',
-      'public': true,
-      files: {
-        'config.json': {
-          content: configJson
-        }
-      }
-    }
-    $.ajax({
-      url: 'https://api.github.com/gists',
-      type: 'POST',
-      contentType: 'application/json; charset=UTF-8',
-      dataType: 'json',
-      data: JSON.stringify(data)
-    })
-    .success(function (result) {
-      var gistUrl = result.html_url;
-      var origin = window.location.protocol + '//' + window.location.host
-      var customizerUrl = origin + window.location.pathname + '?id=' + result.id
-      showSuccess('<strong>Success!</strong> Your configuration has been saved to <a href="' + gistUrl + '">' + gistUrl + '</a> ' +
-        'and can be revisited here at <a href="' + customizerUrl + '">' + customizerUrl + '</a> for further customization.')
-      history.replaceState(false, document.title, customizerUrl)
-      callback(gistUrl, customizerUrl)
-    })
-    .error(function (err) {
-      try {
-        showError('<strong>Ruh roh!</strong> Could not save gist file, configuration not saved.', err)
-      } catch (sameErr) {
-        // deliberately ignore the error
-      }
-      callback('<none>', '<none>')
-    })
   }
 
   function getCustomizerData() {
@@ -252,8 +210,8 @@ window.onload = function () { // wait for load in a dumb way because B-0
         return promise.reject(parseErr)
       }
       try {
-        intoResult[baseFilename + '.css']     = cw + tree.toCSS()
-        intoResult[baseFilename + '.min.css'] = cw + tree.toCSS({ compress: true })
+        intoResult[baseFilename + '.css']     = tree.toCSS()
+        intoResult[baseFilename + '.min.css'] = tree.toCSS({ compress: true })
       } catch (compileErr) {
         return promise.reject(compileErr)
       }
@@ -335,7 +293,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
       .toArray()
       .join('\n')
 
-    preamble = cw + preamble
+    preamble = preamble + cw
     js = jqueryCheck + jqueryVersionCheck + js
 
     return {
@@ -437,21 +395,19 @@ window.onload = function () { // wait for load in a dumb way because B-0
   var $compileBtn = $('#btn-compile')
 
   $compileBtn.on('click', function (e) {
-    var configData = getCustomizerData()
-    var configJson = JSON.stringify(configData, null, 2)
-
     e.preventDefault()
 
     $compileBtn.attr('disabled', 'disabled')
 
-    createGist(configJson, function (gistUrl, customizerUrl) {
-      configData.customizerUrl = customizerUrl
-      configJson = JSON.stringify(configData, null, 2)
+    function generate() {
+      var configData = getCustomizerData()
+      var configJson = JSON.stringify(configData, null, 2)
+      var origin = window.location.protocol + '//' + window.location.host
+      var customizerUrl = origin + window.location.pathname
 
       var preamble = '/*!\n' +
         ' * Generated using the Bootstrap Customizer (' + customizerUrl + ')\n' +
-        ' * Config saved to config.json and ' + gistUrl + '\n' +
-        ' */\n'
+        ' */\n\n'
 
       $.when(
         generateCSS(preamble),
@@ -465,7 +421,9 @@ window.onload = function () { // wait for load in a dumb way because B-0
           }, 0)
         })
       })
-    })
+    }
+
+    generate()
   });
 
   parseUrl()
