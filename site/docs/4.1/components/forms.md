@@ -1172,13 +1172,13 @@ Custom checkboxes and radios can also be disabled. Add the `disabled` boolean at
 
 {% capture example %}
 <div class="custom-control custom-checkbox">
-  <input type="checkbox" class="custom-control-input" id="customCheckDisabled" disabled>
-  <label class="custom-control-label" for="customCheckDisabled">Check this custom checkbox</label>
+  <input type="checkbox" class="custom-control-input" id="customCheckDisabled1" disabled>
+  <label class="custom-control-label" for="customCheckDisabled1">Check this custom checkbox</label>
 </div>
 
 <div class="custom-control custom-radio">
-  <input type="radio" id="radio3" name="radioDisabled" id="customRadioDisabled" class="custom-control-input" disabled>
-  <label class="custom-control-label" for="customRadioDisabled">Toggle this custom radio</label>
+  <input type="radio" name="radioDisabled" id="customRadioDisabled2" class="custom-control-input" disabled>
+  <label class="custom-control-label" for="customRadioDisabled2">Toggle this custom radio</label>
 </div>
 {% endcapture %}
 {% include example.html content=example %}
