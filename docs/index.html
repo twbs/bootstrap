@@ -74,7 +74,7 @@ title: Bootstrap &middot; The world's most popular mobile-first and responsive f
     <div class="row bs-docs-featured-sites">
     {% for showcase in site.data.showcase %}
       <div class="col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-0">
-        <a href="{{ showcase.expo_url }}" target="_blank" title="{{ showcase.name }}">
+        <a href="{{ showcase.expo_url }}" rel="noopener" target="_blank" title="{{ showcase.name }}">
           <img src="{{ site.baseurl }}/assets/img/expo-{{ showcase.img }}.jpg" alt="{{ showcase.name }}" class="img-responsive" width="800" height="600">
         </a>
       </div>
