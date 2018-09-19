@@ -13,14 +13,16 @@ Toasts are lightweight notifications designed to mimic the push notifications th
 Things to know when using the toast plugin:
 
 - If you're building our JavaScript from source, it [requires `util.js`]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/javascript/#util).
-- Toast are opt-in for performance reasons, so **you must initialize them yourself**.
-- Toast will auto hide if you do not specify `autohide: false`
-
-Got all that? Great, let's see how they work with some examples.
+- Toasts are opt-in for performance reasons, so **you must initialize them yourself**.
+- Toasts will automatically hide if you do not specify `autohide: false`.
 
 ## Examples
 
-A basic toast can include a header (though it doesn't strictly need one) with whatever contents you like. The header is also `display: flex`, so `.mr-auto` and `.ml-auto` can be used for easy pushing of content, as well as all our flexbox utilities.
+### Basic
+
+To encourage extensible and predictable toasts, we recommend a header and body. Toast headers use `display: flex`, allowing easy alignment of content thanks to our margin and flexbox utilities.
+
+Toasts are as flexible as you need and have very little required markup. At a minimum, we require a single element to contain your "toasted" content and strongly encourage a dismiss button.
 
 <div class="bg-light">
 {% capture example %}
@@ -41,7 +43,9 @@ A basic toast can include a header (though it doesn't strictly need one) with wh
 {% include example.html content=example %}
 </div>
 
-They're slightly translucent, too, so they blend over whatever they might appear over. For browsers that support `backdrop-filter`, we'll also attempt to blur the elements under a toast.
+### Translucent
+
+Toasts are slightly translucent, too, so they blend over whatever they might appear over. For browsers that support the `backdrop-filter` CSS property, we'll also attempt to blur the elements under a toast.
 
 <div class="bg-dark">
 {% capture example %}
@@ -62,7 +66,9 @@ They're slightly translucent, too, so they blend over whatever they might appear
 {% include example.html content=example %}
 </div>
 
-Plus, they'll easily stack.
+### Stacking
+
+When you have multiple toasts, we default to vertiaclly stacking them in a readable manner.
 
 <div class="bg-light">
 {% capture example %}
@@ -71,6 +77,9 @@ Plus, they'll easily stack.
     <img class="rounded mr-2" data-src="holder.js/20x20?size=1&text=.&bg=#007aff" alt="">
     <strong class="mr-auto">Bootstrap</strong>
     <small class="text-muted">just now</small>
+    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
   </div>
   <div class="toast-body">
     See? Just like this.
@@ -82,6 +91,9 @@ Plus, they'll easily stack.
     <img class="rounded mr-2" data-src="holder.js/20x20?size=1&text=.&bg=#007aff" alt="">
     <strong class="mr-auto">Bootstrap</strong>
     <small class="text-muted">2 seconds ago</small>
+    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
   </div>
   <div class="toast-body">
     Heads up, toasts will stack automatically
@@ -91,16 +103,111 @@ Plus, they'll easily stack.
 {% include example.html content=example %}
 </div>
 
+## Placement
+
+Place toasts with custom CSS as you need them. The top right is often used for notifications, as is the top middle. If you're only ever going to show one toast at a time, put the positioning styles right on the `.toast`.
+
+<div class="bg-dark">
+{% capture example %}
+<div aria-live="polite" aria-atomic="true" style="position: relative; min-height: 200px;">
+  <div class="toast" style="position: absolute; top: 0; right: 0;">
+    <div class="toast-header">
+      <img class="rounded mr-2" data-src="holder.js/20x20?size=1&text=.&bg=#007aff" alt="">
+      <strong class="mr-auto">Bootstrap</strong>
+      <small>11 mins ago</small>
+      <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="toast-body">
+      Hello, world! This is a toast message.
+    </div>
+  </div>
+</div>
+{% endcapture %}
+{% include example.html content=example %}
+</div>
+
+For systems that generate more notifications, consider using a wrapping element so they can easily stack.
+
+<div class="bg-dark">
+{% capture example %}
+<div aria-live="polite" aria-atomic="true" style="position: relative; min-height: 200px;">
+  <!-- Position it -->
+  <div style="position: absolute; top: 0; right: 0;">
+
+    <!-- Then put toasts within -->
+    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <img class="rounded mr-2" data-src="holder.js/20x20?size=1&text=.&bg=#007aff" alt="">
+        <strong class="mr-auto">Bootstrap</strong>
+        <small class="text-muted">just now</small>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="toast-body">
+        See? Just like this.
+      </div>
+    </div>
+
+    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <img class="rounded mr-2" data-src="holder.js/20x20?size=1&text=.&bg=#007aff" alt="">
+        <strong class="mr-auto">Bootstrap</strong>
+        <small class="text-muted">2 seconds ago</small>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="toast-body">
+        Heads up, toasts will stack automatically
+      </div>
+    </div>
+  </div>
+</div>
+{% endcapture %}
+{% include example.html content=example %}
+</div>
+
+You can also get fancy with flexbox utilities to align toasts horizontally and/or vertically.
+
+<div class="bg-dark">
+{% capture example html %}
+<!-- Flexbox container for aligning the toasts -->
+<div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center" style="min-height: 200px;">
+
+  <!-- Then put toasts within -->
+  <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <img class="rounded mr-2" data-src="holder.js/20x20?size=1&text=.&bg=#007aff" alt="">
+      <strong class="mr-auto">Bootstrap</strong>
+      <small>11 mins ago</small>
+      <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="toast-body">
+      Hello, world! This is a toast message.
+    </div>
+  </div>
+</div>
+{% endcapture %}
+{% include example.html content=example %}
+</div>
+
 ## Accessibility
 
-Toasts are intended to be small interruptions to your visitors or users, so to help those on screen readers, you should wrap your toasts in an [`aria-live` region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions). This allows screen readers the ability to see suggested interruptions without any visual cues. If the information needed is important for the process, e.g. for a list of errors in a form, then use the [alert component]({{ site.baseurl }}/docs/{{ site.docs_version }}/components/alerts/) instead of toast.
+Toasts are intended to be small interruptions to your visitors or users, so to help those with screen readers and similar assistive technologies, you should wrap your toasts in an [`aria-live` region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions). Changes to live regions (such as injecting/updating a toast component) are automatically announced by screen readers without needing to move the user's focus or otherwise interrupt the user. Additionally, include `aria-atomic="true"` to ensure that the entire toast is always announced as a single (atomic) unit, rather than announcing what was changed (which could lead to problems if you only update part of the toast's content, or if displaying the same toast content at a later point in time). If the information needed is important for the process, e.g. for a list of errors in a form, then use the [alert component]({{ site.baseurl }}/docs/{{ site.docs_version }}/components/alerts/) instead of toast.
+
+Note that the live region needs to be present in the markup *before* the toast is generated or updated. If you dynamically generate both at the same time and inject them into the page, they will generally not be announced by assistive technologies.
 
 You also need to adapt the `role` and `aria-live` level depending on the content. If it's an important message like an error, use `role="alert" aria-live="assertive"`, otherwise use `role="status" aria-live="polite"` attributes.
 
 As the content you're displaying changes, be sure to update the [`delay` timeout](#options) to ensure people have enough time to read the toast.
 
 {% highlight html %}
-<div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="10000">
+<div class="toast" role="alert" aria-live="polite" aria-atomic="true" data-delay="10000">
   <div role="alert" aria-live="assertive" aria-atomic="true">...</div>
 </div>
 {% endhighlight %}
@@ -120,89 +227,6 @@ When using `autohide: false`, you must add a close button to allow users to dism
   </div>
   <div class="toast-body">
     Hello, world! This is a toast message.
-  </div>
-</div>
-{% endcapture %}
-{% include example.html content=example %}
-</div>
-
-## Placement
-
-Place toasts with custom CSS as you need them. The top right is often used for notifications, as is the top middle. If you're only ever going to show one toast at a time, put the positioning styles right on the `.toast.`
-
-<div class="bg-dark">
-{% capture example %}
-<div style="position: relative; min-height: 200px;">
-  <div class="toast" style="position: absolute; top: 0; right: 0;">
-    <div class="toast-header">
-      <img class="rounded mr-2" data-src="holder.js/20x20?size=1&text=.&bg=#007aff" alt="">
-      <strong class="mr-auto">Bootstrap</strong>
-      <small>11 mins ago</small>
-    </div>
-    <div class="toast-body">
-      Hello, world! This is a toast message.
-    </div>
-  </div>
-</div>
-{% endcapture %}
-{% include example.html content=example %}
-</div>
-
-For systems that generate more notifications, consider using a wrapping element so they can easily stack.
-
-<div class="bg-dark">
-{% capture example %}
-<div style="position: relative; min-height: 200px;">
-  <!-- Position it -->
-  <div style="position: absolute; top: 0; right: 0;">
-
-    <!-- Then put toasts within -->
-    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-      <div class="toast-header">
-        <img class="rounded mr-2" data-src="holder.js/20x20?size=1&text=.&bg=#007aff" alt="">
-        <strong class="mr-auto">Bootstrap</strong>
-        <small class="text-muted">just now</small>
-      </div>
-      <div class="toast-body">
-        See? Just like this.
-      </div>
-    </div>
-
-    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-      <div class="toast-header">
-        <img class="rounded mr-2" data-src="holder.js/20x20?size=1&text=.&bg=#007aff" alt="">
-        <strong class="mr-auto">Bootstrap</strong>
-        <small class="text-muted">2 seconds ago</small>
-      </div>
-      <div class="toast-body">
-        Heads up, toasts will stack automatically
-      </div>
-    </div>
-  </div>
-</div>
-{% endcapture %}
-{% include example.html content=example %}
-</div>
-
-You can also get fancy with flexbox utilities.
-
-<div class="bg-dark">
-{% capture example html %}
-<div style="position: relative; min-height: 200px;">
-  <!-- Position it -->
-  <div class="d-flex justify-content-center" style="position: absolute; top: 0; right: 0; left: 0;">
-
-    <!-- Then put toasts within -->
-    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-      <div class="toast-header">
-        <img class="rounded mr-2" data-src="holder.js/20x20?size=1&text=.&bg=#007aff" alt="">
-        <strong class="mr-auto">Bootstrap</strong>
-        <small>11 mins ago</small>
-      </div>
-      <div class="toast-body">
-        Hello, world! This is a toast message.
-      </div>
-    </div>
   </div>
 </div>
 {% endcapture %}
