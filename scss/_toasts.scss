@@ -13,10 +13,10 @@
   + .toast {
     margin-top: $toast-padding-x;
   }
-}
 
-.toast.show {
-  display: inherit;
+  &.show {
+    display: block;
+  }
 }
 
 .toast-header {
