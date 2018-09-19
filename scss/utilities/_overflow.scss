@@ -1,0 +1,18 @@
+// stylelint-disable scss/dollar-variable-default
+$directions: x, y;
+$name-map: (
+  hidden: hidden,
+  auto: auto,
+  scroll: scroll,
+  visible: visible,
+);
+
+@each $name, $value in $name-map {
+  .overflow-#{$name} { overflow: $value; }
+}
+
+@each $name, $value in $name-map {
+  @each $direction in $directions {
+    .overflow-#{$direction}-#{$name} { overflow-#{$direction}: $value; }
+  }
+}
