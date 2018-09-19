@@ -204,19 +204,20 @@
     }
   }
 
-  .navbar-nav {
-    .nav-link {
-      color: $navbar-light-color;
+  .nav-link,
+  .btn-link {
+    color: $navbar-light-color;
 
-      @include hover-focus {
-        color: $navbar-light-hover-color;
-      }
-
-      &.disabled {
-        color: $navbar-light-disabled-color;
-      }
+    @include hover-focus {
+      color: $navbar-light-hover-color;
     }
 
+    &.disabled {
+      color: $navbar-light-disabled-color;
+    }
+  }
+
+  .navbar-nav {
     .show > .nav-link,
     .active > .nav-link,
     .nav-link.show,
@@ -256,19 +257,20 @@
     }
   }
 
-  .navbar-nav {
-    .nav-link {
-      color: $navbar-dark-color;
+  .nav-link,
+  .btn-link {
+    color: $navbar-dark-color;
 
-      @include hover-focus {
-        color: $navbar-dark-hover-color;
-      }
-
-      &.disabled {
-        color: $navbar-dark-disabled-color;
-      }
+    @include hover-focus {
+      color: $navbar-dark-hover-color;
     }
 
+    &.disabled {
+      color: $navbar-dark-disabled-color;
+    }
+  }
+
+  .navbar-nav {
     .show > .nav-link,
     .active > .nav-link,
     .nav-link.show,
