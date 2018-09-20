@@ -29,30 +29,16 @@
   <script src="{{ site.baseurl }}/dist/js/bootstrap.js"></script>
 {% endif %}
 
+{% if page.layout == "default" %}
+<script src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+{% endif %}
+
 {% if site.github %}
   <script src="{{ site.baseurl }}/assets/js/docs.min.js"></script>
 {% else %}
   {% for file in site.data.configBridge.paths.docsJs %}
   <script src="{{ file | replace_first: '..', site.baseurl }}"></script>
   {% endfor %}
-{% endif %}
-
-{% if page.slug == "getting-started" or page.slug == "css" or page.slug == "components" or page.slug == "js" %}
-<script src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
-<script>
-  var docsearch = docsearch({
-    apiKey: 'c6aa63796ef2f94c7e7e7f0b93b4a223',
-    indexName: 'bootstrap-v3',
-    inputSelector: '#search-input',
-    transformData: function (hits) {
-      return hits.map(function (hit) {
-        hit.url = hit.url.replace('https://getbootstrap.com/', '');
-        return hit;
-      });
-    },
-    debug: false // Set debug to true if you want to inspect the dropdown
-  });
-</script>
 {% endif %}
 
 {% if page.slug == "customize" %}
