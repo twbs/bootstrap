@@ -14,7 +14,8 @@
       "/docs/3.4/assets/js/vendor/holder.min.js",
       "/docs/3.4/assets/js/vendor/clipboard.min.js",
       "/docs/3.4/assets/js/vendor/anchor.min.js",
-      "/docs/3.4/assets/js/src/application.js"
+      "/docs/3.4/assets/js/src/application.js",
+      "/docs/3.4/assets/js/src/search.js"
     ]
   },
   "config": {
