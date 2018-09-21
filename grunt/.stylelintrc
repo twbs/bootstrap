@@ -247,6 +247,7 @@
     "property-no-vendor-prefix": true,
     "rule-empty-line-before": null,
     "selector-attribute-quotes": "always",
+    "selector-pseudo-element-colon-notation": "single",
     "selector-list-comma-newline-after": "always",
     "selector-list-comma-newline-before": "never-multi-line",
     "selector-list-comma-space-after": "always-single-line",

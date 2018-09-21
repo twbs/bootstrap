@@ -31,12 +31,12 @@
   &.left { margin-left: -@popover-arrow-width; }
 
   // Arrows
-  // .arrow is outer, .arrow::after is inner
+  // .arrow is outer, .arrow:after is inner
   > .arrow {
     border-width: @popover-arrow-outer-width;
 
     &,
-    &::after {
+    &:after {
       position: absolute;
       display: block;
       width: 0;
@@ -45,7 +45,7 @@
       border-style: solid;
     }
 
-    &::after {
+    &:after {
       content: "";
       border-width: @popover-arrow-width;
     }
@@ -73,7 +73,7 @@
     border-top-color: @popover-arrow-outer-fallback-color; // IE8 fallback
     border-top-color: @popover-arrow-outer-color;
     border-bottom-width: 0;
-    &::after {
+    &:after {
       bottom: 1px;
       margin-left: -@popover-arrow-width;
       content: " ";
@@ -88,7 +88,7 @@
     border-right-color: @popover-arrow-outer-fallback-color; // IE8 fallback
     border-right-color: @popover-arrow-outer-color;
     border-left-width: 0;
-    &::after {
+    &:after {
       bottom: -@popover-arrow-width;
       left: 1px;
       content: " ";
@@ -103,7 +103,7 @@
     border-top-width: 0;
     border-bottom-color: @popover-arrow-outer-fallback-color; // IE8 fallback
     border-bottom-color: @popover-arrow-outer-color;
-    &::after {
+    &:after {
       top: 1px;
       margin-left: -@popover-arrow-width;
       content: " ";
@@ -119,7 +119,7 @@
     border-right-width: 0;
     border-left-color: @popover-arrow-outer-fallback-color; // IE8 fallback
     border-left-color: @popover-arrow-outer-color;
-    &::after {
+    &:after {
       right: 1px;
       bottom: -@popover-arrow-width;
       content: " ";
