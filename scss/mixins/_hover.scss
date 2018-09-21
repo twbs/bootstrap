@@ -11,8 +11,8 @@
 
 @mixin hover {
   &:hover,
-  &.hover { 
-    @content; 
+  &.hover {
+    @content;
   }
 }
 
