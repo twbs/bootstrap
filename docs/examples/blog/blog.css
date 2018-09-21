@@ -61,7 +61,7 @@ h6, .h6 {
 .blog-nav .active {
   color: #fff;
 }
-.blog-nav .active::after {
+.blog-nav .active:after {
   position: absolute;
   bottom: 0;
   left: 50%;

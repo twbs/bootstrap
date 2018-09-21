@@ -261,7 +261,7 @@ blockquote {
     line-height: @line-height-base;
     color: @blockquote-small-color;
 
-    &::before {
+    &:before {
       content: "\2014 \00A0"; // em dash, nbsp
     }
   }
@@ -282,8 +282,8 @@ blockquote.pull-right {
   footer,
   small,
   .small {
-    &::before { content: ""; }
-    &::after {
+    &:before { content: ""; }
+    &:after {
       content: "\00A0 \2014"; // nbsp, em dash
     }
   }
