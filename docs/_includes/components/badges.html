@@ -27,6 +27,33 @@
 <a href="#">Inbox <span class="badge badge-success">new</span></a>
 {% endhighlight %}
 
+  <h4>Navigation Icon</h4>
+  <p>Use <code>.icon +.badge</code> contextual class. It's responsive to handle inverse case.</p>
+  <div class="bs-example" data-example-id="badges-icon-nav-inverse">
+    <nav class="navbar navbar-default m-b-0 simple-nav">
+      <ul class="nav navbar-nav">
+        <li class="m-r-0">
+          <a class="p-r-0">
+            <span class="icon icon-notification m-r-0"></span>
+            <span class="badge">20</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+{% highlight html %}
+<nav class="navbar navbar-default m-b-0 simple-nav">
+  <ul class="nav navbar-nav">
+    <li class="m-r-0">
+      <a class="p-r-0">
+        <span class="icon icon-notification m-r-0"></span>
+        <span class="badge">20</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+{% endhighlight %}
+
   <h4>Self collapsing</h4>
   <p>When there are no new or unread items, badges will simply collapse (via CSS's <code>:empty</code> selector) provided no content exists within.</p>
 
