@@ -4,9 +4,7 @@
     "stylelint-order"
   ],
   "rules": {
-    "at-rule-empty-line-before": [null,
-      "except": ["first-nested"]
-    ],
+    "at-rule-empty-line-before": null,
     "at-rule-name-space-after": "always",
     "at-rule-no-vendor-prefix": true,
     "at-rule-semicolon-space-before": "never",
@@ -20,7 +18,10 @@
     "declaration-empty-line-before": null,
     "declaration-no-important": true,
     "font-family-name-quotes": "always-where-recommended",
-    "font-weight-notation": "numeric",
+    "font-weight-notation": [
+      "numeric", {
+        "ignore": ["relative"]
+    }],
     "function-url-no-scheme-relative": true,
     "function-url-quotes": "always",
     "length-zero-no-unit": true,
@@ -33,6 +34,9 @@
     "no-descending-specificity": null,
     "no-duplicate-selectors": true,
     "number-leading-zero": "never",
+    "media-feature-name-no-unknown": [true, {
+      "ignoreMediaFeatureNames": ["prefers-reduced-motion"]
+    }],
     "order/properties-order": [
       "position",
       "top",
