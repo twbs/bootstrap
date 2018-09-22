@@ -1,5 +1,3 @@
-// stylelint-disable no-duplicate-selectors
-
 //
 // Tooltips
 // --------------------------------------------------
@@ -34,28 +32,8 @@
     padding: 0 @tooltip-arrow-width;
     margin-left: -3px;
   }
-}
 
-// Wrapper for the tooltip content
-.tooltip-inner {
-  max-width: @tooltip-max-width;
-  padding: 3px 8px;
-  color: @tooltip-color;
-  text-align: center;
-  background-color: @tooltip-bg;
-  border-radius: @border-radius-base;
-}
-
-// Arrows
-.tooltip-arrow {
-  position: absolute;
-  width: 0;
-  height: 0;
-  border-color: transparent;
-  border-style: solid;
-}
-// Note: Deprecated .top-left, .top-right, .bottom-left, and .bottom-right as of v3.3.1
-.tooltip {
+  // Note: Deprecated .top-left, .top-right, .bottom-left, and .bottom-right as of v3.3.1
   &.top .tooltip-arrow {
     bottom: 0;
     left: 50%;
@@ -112,4 +90,23 @@
     border-width: 0 @tooltip-arrow-width @tooltip-arrow-width;
     border-bottom-color: @tooltip-arrow-color;
   }
+}
+
+// Wrapper for the tooltip content
+.tooltip-inner {
+  max-width: @tooltip-max-width;
+  padding: 3px 8px;
+  color: @tooltip-color;
+  text-align: center;
+  background-color: @tooltip-bg;
+  border-radius: @border-radius-base;
+}
+
+// Arrows
+.tooltip-arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
 }
