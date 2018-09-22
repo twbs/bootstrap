@@ -1,18 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 17.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 180 612 612" enable-background="new 0 180 612 612" xml:space="preserve">
-<g id="punchout" sodipodi:docname="twitter_bootstrap_logo.svg" inkscape:version="0.48.1 r9760" xmlns:svg="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
-	<g>
-		<path fill="#FFFFFF" d="M383.5,521.8c-10.5-9.5-25.2-14.2-44.2-14.2H228.8V619h110.5c19,0,33.8-4.9,44.2-14.8
-			c10.5-9.8,15.8-23.8,15.8-41.8C399.2,544.8,394,531.2,383.5,521.8z"/>
-		<path fill="#FFFFFF" d="M368.2,449.8c10-8.5,15-20.8,15-36.8c0-18-4.5-30.7-13.5-38s-22-11-39-11h-102v98.5h102
-			C345.7,462.5,358.2,458.2,368.2,449.8z"/>
-		<path fill="#FFFFFF" d="M510,180H102C45.9,180,0,225.9,0,282v408c0,56.1,45.9,102,102,102h408c56.1,0,102-45.9,102-102V282
-			C612,225.9,566.1,180,510,180z M454.2,609.8c-5,12.2-12.8,22.7-23.5,31.5s-24.3,15.8-41,21s-36.5,7.8-59.5,7.8h-164V313h173.5
-			c32,0,57.7,7.3,77,22s29,36.8,29,66.5c0,18-4.4,33.4-13.2,46.2c-8.8,12.8-21.4,22.8-37.8,29.8v1c22,4.7,38.7,15.1,50,31.2
-			c11.3,16.2,17,36.4,17,60.8C461.7,584.5,459.2,597.6,454.2,609.8z"/>
-	</g>
-</g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 180 612 612">
+  <g fill="#FFF">
+    <path d="M383.5 521.8c-10.5-9.5-25.2-14.2-44.2-14.2H228.8V619h110.5c19 0 33.8-4.9 44.2-14.8 10.5-9.8 15.8-23.8 15.8-41.8-.1-17.6-5.3-31.2-15.8-40.6zm-15.3-72c10-8.5 15-20.8 15-36.8 0-18-4.5-30.7-13.5-38s-22-11-39-11h-102v98.5h102c15 0 27.5-4.3 37.5-12.7z"/>
+    <path d="M510 180H102C45.9 180 0 225.9 0 282v408c0 56.1 45.9 102 102 102h408c56.1 0 102-45.9 102-102V282c0-56.1-45.9-102-102-102zm-55.8 429.8c-5 12.2-12.8 22.7-23.5 31.5s-24.3 15.8-41 21-36.5 7.8-59.5 7.8h-164V313h173.5c32 0 57.7 7.3 77 22s29 36.8 29 66.5c0 18-4.4 33.4-13.2 46.2-8.8 12.8-21.4 22.8-37.8 29.8v1c22 4.7 38.7 15.1 50 31.2 11.3 16.2 17 36.4 17 60.8 0 14-2.5 27.1-7.5 39.3z"/>
+  </g>
 </svg>
