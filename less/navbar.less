@@ -1,4 +1,4 @@
-// stylelint-disable selector-max-type, selector-max-compound-selectors, selector-max-combinators, selector-max-class, declaration-no-important, selector-no-qualifying-type, no-duplicate-selectors
+// stylelint-disable selector-max-type, selector-max-compound-selectors, selector-max-combinators, selector-max-class, declaration-no-important, selector-no-qualifying-type
 
 //
 // Navbars
@@ -98,6 +98,27 @@
       max-height: 200px;
     }
   }
+
+  // Fix the top/bottom navbars when screen real estate supports it
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: @zindex-navbar-fixed;
+
+  // Undo the rounded corners
+  @media (min-width: @grid-float-breakpoint) {
+    border-radius: 0;
+  }
+}
+
+.navbar-fixed-top {
+  top: 0;
+  border-width: 0 0 1px;
+}
+.navbar-fixed-bottom {
+  bottom: 0;
+  margin-bottom: 0; // override .navbar defaults
+  border-width: 1px 0 0;
 }
 
 
@@ -134,29 +155,6 @@
   @media (min-width: @grid-float-breakpoint) {
     border-radius: 0;
   }
-}
-
-// Fix the top/bottom navbars when screen real estate supports it
-.navbar-fixed-top,
-.navbar-fixed-bottom {
-  position: fixed;
-  right: 0;
-  left: 0;
-  z-index: @zindex-navbar-fixed;
-
-  // Undo the rounded corners
-  @media (min-width: @grid-float-breakpoint) {
-    border-radius: 0;
-  }
-}
-.navbar-fixed-top {
-  top: 0;
-  border-width: 0 0 1px;
-}
-.navbar-fixed-bottom {
-  bottom: 0;
-  margin-bottom: 0; // override .navbar defaults
-  border-width: 1px 0 0;
 }
 
 
@@ -437,26 +435,8 @@
         background-color: @navbar-default-link-disabled-bg;
       }
     }
-  }
 
-  .navbar-toggle {
-    border-color: @navbar-default-toggle-border-color;
-    &:hover,
-    &:focus {
-      background-color: @navbar-default-toggle-hover-bg;
-    }
-    .icon-bar {
-      background-color: @navbar-default-toggle-icon-bar-bg;
-    }
-  }
-
-  .navbar-collapse,
-  .navbar-form {
-    border-color: @navbar-default-border;
-  }
-
-  // Dropdown menu items
-  .navbar-nav {
+    // Dropdown menu items
     // Remove background color from open dropdown
     > .open > a {
       &,
@@ -496,6 +476,22 @@
         }
       }
     }
+  }
+
+  .navbar-toggle {
+    border-color: @navbar-default-toggle-border-color;
+    &:hover,
+    &:focus {
+      background-color: @navbar-default-toggle-hover-bg;
+    }
+    .icon-bar {
+      background-color: @navbar-default-toggle-icon-bar-bg;
+    }
+  }
+
+  .navbar-collapse,
+  .navbar-form {
+    border-color: @navbar-default-border;
   }
 
 
@@ -571,27 +567,8 @@
         background-color: @navbar-inverse-link-disabled-bg;
       }
     }
-  }
 
-  // Darken the responsive nav toggle
-  .navbar-toggle {
-    border-color: @navbar-inverse-toggle-border-color;
-    &:hover,
-    &:focus {
-      background-color: @navbar-inverse-toggle-hover-bg;
-    }
-    .icon-bar {
-      background-color: @navbar-inverse-toggle-icon-bar-bg;
-    }
-  }
-
-  .navbar-collapse,
-  .navbar-form {
-    border-color: darken(@navbar-inverse-bg, 7%);
-  }
-
-  // Dropdowns
-  .navbar-nav {
+    // Dropdowns
     > .open > a {
       &,
       &:hover,
@@ -636,6 +613,23 @@
         }
       }
     }
+  }
+
+  // Darken the responsive nav toggle
+  .navbar-toggle {
+    border-color: @navbar-inverse-toggle-border-color;
+    &:hover,
+    &:focus {
+      background-color: @navbar-inverse-toggle-hover-bg;
+    }
+    .icon-bar {
+      background-color: @navbar-inverse-toggle-icon-bar-bg;
+    }
+  }
+
+  .navbar-collapse,
+  .navbar-form {
+    border-color: darken(@navbar-inverse-bg, 7%);
   }
 
   .navbar-link {
