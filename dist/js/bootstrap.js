@@ -1,4 +1,5 @@
 /*!
+<<<<<<< HEAD
   * Bootstrap v4.1.3 (https://getbootstrap.com/)
   * Copyright 2011-2018 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
@@ -19,6 +20,48 @@
       descriptor.configurable = true;
       if ("value" in descriptor) descriptor.writable = true;
       Object.defineProperty(target, descriptor.key, descriptor);
+=======
+ * Bootstrap v3.4.0 (http://getbootstrap.com)
+ * Copyright 2011-2018 Twitter, Inc.
+ * Licensed under the MIT license
+ */
+
+if (typeof jQuery === 'undefined') {
+  throw new Error('Bootstrap\'s JavaScript requires jQuery')
+}
+
++function ($) {
+  'use strict';
+  var version = $.fn.jquery.split(' ')[0].split('.')
+  if ((version[0] < 2 && version[1] < 9) || (version[0] == 1 && version[1] == 9 && version[2] < 1) || (version[0] > 3)) {
+    throw new Error('Bootstrap\'s JavaScript requires jQuery version 1.9.1 or higher, but lower than version 4')
+  }
+}(jQuery);
+
+/* ========================================================================
+ * Bootstrap: transition.js v3.4.0
+ * http://getbootstrap.com/javascript/#transitions
+ * ========================================================================
+ * Copyright 2011-2016 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * ======================================================================== */
+
+
++function ($) {
+  'use strict';
+
+  // CSS TRANSITION SUPPORT (Shoutout: http://www.modernizr.com/)
+  // ============================================================
+
+  function transitionEnd() {
+    var el = document.createElement('bootstrap')
+
+    var transEndEventNames = {
+      WebkitTransition : 'webkitTransitionEnd',
+      MozTransition    : 'transitionend',
+      OTransition      : 'oTransitionEnd otransitionend',
+      transition       : 'transitionend'
+>>>>>>> cee8e8653dc009b5d86af4a8e2ad3a5e0688ca4c
     }
   }
 
@@ -40,8 +83,18 @@
       obj[key] = value;
     }
 
+<<<<<<< HEAD
     return obj;
   }
+=======
+/* ========================================================================
+ * Bootstrap: alert.js v3.4.0
+ * http://getbootstrap.com/javascript/#alerts
+ * ========================================================================
+ * Copyright 2011-2016 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * ======================================================================== */
+>>>>>>> cee8e8653dc009b5d86af4a8e2ad3a5e0688ca4c
 
   function _objectSpread(target) {
     for (var i = 1; i < arguments.length; i++) {
@@ -62,11 +115,15 @@
     return target;
   }
 
+<<<<<<< HEAD
   function _inheritsLoose(subClass, superClass) {
     subClass.prototype = Object.create(superClass.prototype);
     subClass.prototype.constructor = subClass;
     subClass.__proto__ = superClass;
   }
+=======
+  Alert.VERSION = '3.4.0'
+>>>>>>> cee8e8653dc009b5d86af4a8e2ad3a5e0688ca4c
 
   /**
    * --------------------------------------------------------------------------
@@ -89,6 +146,7 @@
       return {}.toString.call(obj).match(/\s([a-z]+)/i)[1].toLowerCase();
     }
 
+<<<<<<< HEAD
     function getSpecialTransitionEndEvent() {
       return {
         bindType: TRANSITION_END,
@@ -97,6 +155,12 @@
           if ($$$1(event.target).is(this)) {
             return event.handleObj.handler.apply(this, arguments); // eslint-disable-line prefer-rest-params
           }
+=======
+    selector    = selector === '#' ? [] : selector
+    var $parent = $(document).find(selector)
+
+    if (e) e.preventDefault()
+>>>>>>> cee8e8653dc009b5d86af4a8e2ad3a5e0688ca4c
 
           return undefined; // eslint-disable-line no-undefined
         }
@@ -298,8 +362,18 @@
         if (!$$$1(element).hasClass(ClassName.FADE)) {
           this._destroyElement(element);
 
+<<<<<<< HEAD
           return;
         }
+=======
+/* ========================================================================
+ * Bootstrap: button.js v3.4.0
+ * http://getbootstrap.com/javascript/#buttons
+ * ========================================================================
+ * Copyright 2011-2016 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * ======================================================================== */
+>>>>>>> cee8e8653dc009b5d86af4a8e2ad3a5e0688ca4c
 
         var transitionDuration = Util.getTransitionDurationFromElement(element);
         $$$1(element).one(Util.TRANSITION_END, function (event) {
@@ -474,6 +548,10 @@
         this._element = null;
       }; // Static
 
+<<<<<<< HEAD
+=======
+  Button.VERSION  = '3.4.0'
+>>>>>>> cee8e8653dc009b5d86af4a8e2ad3a5e0688ca4c
 
       Button._jQueryInterface = function _jQueryInterface(config) {
         return this.each(function () {
@@ -505,6 +583,18 @@
      * ------------------------------------------------------------------------
      */
 
+<<<<<<< HEAD
+=======
+      if (state == 'loadingText') {
+        this.isLoading = true
+        $el.addClass(d).attr(d, d).prop(d, true)
+      } else if (this.isLoading) {
+        this.isLoading = false
+        $el.removeClass(d).removeAttr(d).prop(d, false)
+      }
+    }, this), 0)
+  }
+>>>>>>> cee8e8653dc009b5d86af4a8e2ad3a5e0688ca4c
 
     $$$1(document).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE_CARROT, function (event) {
       event.preventDefault();
@@ -690,9 +780,66 @@
       _proto.to = function to(index) {
         var _this = this;
 
+<<<<<<< HEAD
         this._activeElement = this._element.querySelector(Selector.ACTIVE_ITEM);
 
         var activeIndex = this._getItemIndex(this._activeElement);
+=======
+  // BUTTON DATA-API
+  // ===============
+
+  $(document)
+    .on('click.bs.button.data-api', '[data-toggle^="button"]', function (e) {
+      var $btn = $(e.target).closest('.btn')
+      Plugin.call($btn, 'toggle')
+      if (!($(e.target).is('input[type="radio"], input[type="checkbox"]'))) {
+        // Prevent double click on radios, and the double selections (so cancellation) on checkboxes
+        e.preventDefault()
+        // The target component still receive the focus
+        if ($btn.is('input,button')) $btn.trigger('focus')
+        else $btn.find('input:visible,button:visible').first().trigger('focus')
+      }
+    })
+    .on('focus.bs.button.data-api blur.bs.button.data-api', '[data-toggle^="button"]', function (e) {
+      $(e.target).closest('.btn').toggleClass('focus', /^focus(in)?$/.test(e.type))
+    })
+
+}(jQuery);
+
+/* ========================================================================
+ * Bootstrap: carousel.js v3.4.0
+ * http://getbootstrap.com/javascript/#carousel
+ * ========================================================================
+ * Copyright 2011-2016 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * ======================================================================== */
+
+
++function ($) {
+  'use strict';
+
+  // CAROUSEL CLASS DEFINITION
+  // =========================
+
+  var Carousel = function (element, options) {
+    this.$element    = $(element)
+    this.$indicators = this.$element.find('.carousel-indicators')
+    this.options     = options
+    this.paused      = null
+    this.sliding     = null
+    this.interval    = null
+    this.$active     = null
+    this.$items      = null
+
+    this.options.keyboard && this.$element.on('keydown.bs.carousel', $.proxy(this.keydown, this))
+
+    this.options.pause == 'hover' && !('ontouchstart' in document.documentElement) && this.$element
+      .on('mouseenter.bs.carousel', $.proxy(this.pause, this))
+      .on('mouseleave.bs.carousel', $.proxy(this.cycle, this))
+  }
+
+  Carousel.VERSION  = '3.4.0'
+>>>>>>> cee8e8653dc009b5d86af4a8e2ad3a5e0688ca4c
 
         if (index > this._items.length - 1 || index < 0) {
           return;
@@ -857,10 +1004,37 @@
 
         var nextElementIndex = this._getItemIndex(nextElement);
 
+<<<<<<< HEAD
         var isCycling = Boolean(this._interval);
         var directionalClassName;
         var orderClassName;
         var eventDirectionName;
+=======
+    var slidEvent = $.Event('slid.bs.carousel', { relatedTarget: relatedTarget, direction: direction }) // yes, "slid"
+    if ($.support.transition && this.$element.hasClass('slide')) {
+      $next.addClass(type)
+      if (typeof $next === 'object' && $next.length) {
+        $next[0].offsetWidth // force reflow
+      }
+      $active.addClass(direction)
+      $next.addClass(direction)
+      $active
+        .one('bsTransitionEnd', function () {
+          $next.removeClass([type, direction].join(' ')).addClass('active')
+          $active.removeClass(['active', direction].join(' '))
+          that.sliding = false
+          setTimeout(function () {
+            that.$element.trigger(slidEvent)
+          }, 0)
+        })
+        .emulateTransitionEnd(Carousel.TRANSITION_DURATION)
+    } else {
+      $active.removeClass('active')
+      $next.addClass('active')
+      this.sliding = false
+      this.$element.trigger(slidEvent)
+    }
+>>>>>>> cee8e8653dc009b5d86af4a8e2ad3a5e0688ca4c
 
         if (direction === Direction.NEXT) {
           directionalClassName = ClassName.LEFT;
@@ -949,7 +1123,25 @@
             _config = _objectSpread({}, _config, config);
           }
 
+<<<<<<< HEAD
           var action = typeof config === 'string' ? config : _config.slide;
+=======
+  var clickHandler = function (e) {
+    var $this   = $(this)
+    var href    = $this.attr('href')
+    if (href) {
+      href = href.replace(/.*(?=#[^\s]+$)/, '') // strip for ie7
+    }
+
+    var target  = $this.attr('data-target') || href
+    var $target = $(document).find(target)
+
+    if (!$target.hasClass('carousel')) return
+
+    var options = $.extend({}, $target.data(), $this.data())
+    var slideIndex = $this.attr('data-slide-to')
+    if (slideIndex) options.interval = false
+>>>>>>> cee8e8653dc009b5d86af4a8e2ad3a5e0688ca4c
 
           if (!data) {
             data = new Carousel(this, _config);
@@ -980,11 +1172,23 @@
 
         var target = $$$1(selector)[0];
 
+<<<<<<< HEAD
         if (!target || !$$$1(target).hasClass(ClassName.CAROUSEL)) {
           return;
         }
 
         var config = _objectSpread({}, $$$1(target).data(), $$$1(this).data());
+=======
+/* ========================================================================
+ * Bootstrap: collapse.js v3.4.0
+ * http://getbootstrap.com/javascript/#collapse
+ * ========================================================================
+ * Copyright 2011-2016 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * ======================================================================== */
+
+/* jshint latedef: false */
+>>>>>>> cee8e8653dc009b5d86af4a8e2ad3a5e0688ca4c
 
         var slideIndex = this.getAttribute('data-slide-to');
 
@@ -1001,6 +1205,7 @@
         event.preventDefault();
       };
 
+<<<<<<< HEAD
       _createClass(Carousel, null, [{
         key: "VERSION",
         get: function get() {
@@ -1012,6 +1217,9 @@
           return Default;
         }
       }]);
+=======
+  Collapse.VERSION  = '3.4.0'
+>>>>>>> cee8e8653dc009b5d86af4a8e2ad3a5e0688ca4c
 
       return Carousel;
     }();
@@ -1209,9 +1417,21 @@
 
         this.setTransitioning(true);
 
+<<<<<<< HEAD
         var complete = function complete() {
           $$$1(_this._element).removeClass(ClassName.COLLAPSING).addClass(ClassName.COLLAPSE).addClass(ClassName.SHOW);
           _this._element.style[dimension] = '';
+=======
+  Collapse.prototype.getParent = function () {
+    return $(document).find(this.options.parent)
+      .find('[data-toggle="collapse"][data-parent="' + this.options.parent + '"]')
+      .each($.proxy(function (i, element) {
+        var $element = $(element)
+        this.addAriaAndCollapsedClass(getTargetFromTrigger($element), $element)
+      }, this))
+      .end()
+  }
+>>>>>>> cee8e8653dc009b5d86af4a8e2ad3a5e0688ca4c
 
           _this.setTransitioning(false);
 
@@ -1225,8 +1445,13 @@
         this._element.style[dimension] = this._element[scrollSize] + "px";
       };
 
+<<<<<<< HEAD
       _proto.hide = function hide() {
         var _this2 = this;
+=======
+    return $(document).find(target)
+  }
+>>>>>>> cee8e8653dc009b5d86af4a8e2ad3a5e0688ca4c
 
         if (this._isTransitioning || !$$$1(this._element).hasClass(ClassName.SHOW)) {
           return;
@@ -1292,9 +1517,19 @@
         config = _objectSpread({}, Default, config);
         config.toggle = Boolean(config.toggle); // Coerce string values
 
+<<<<<<< HEAD
         Util.typeCheckConfig(NAME, config, DefaultType);
         return config;
       };
+=======
+/* ========================================================================
+ * Bootstrap: dropdown.js v3.4.0
+ * http://getbootstrap.com/javascript/#dropdowns
+ * ========================================================================
+ * Copyright 2011-2016 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * ======================================================================== */
+>>>>>>> cee8e8653dc009b5d86af4a8e2ad3a5e0688ca4c
 
       _proto._getDimension = function _getDimension() {
         var hasWidth = $$$1(this._element).hasClass(Dimension.WIDTH);
@@ -1309,12 +1544,16 @@
         if (Util.isElement(this._config.parent)) {
           parent = this._config.parent; // It's a jQuery object
 
+<<<<<<< HEAD
           if (typeof this._config.parent.jquery !== 'undefined') {
             parent = this._config.parent[0];
           }
         } else {
           parent = document.querySelector(this._config.parent);
         }
+=======
+  Dropdown.VERSION = '3.4.0'
+>>>>>>> cee8e8653dc009b5d86af4a8e2ad3a5e0688ca4c
 
         var selector = "[data-toggle=\"collapse\"][data-parent=\"" + this._config.parent + "\"]";
         var children = [].slice.call(parent.querySelectorAll(selector));
@@ -1327,10 +1566,14 @@
       _proto._addAriaAndCollapsedClass = function _addAriaAndCollapsedClass(element, triggerArray) {
         var isOpen = $$$1(element).hasClass(ClassName.SHOW);
 
+<<<<<<< HEAD
         if (triggerArray.length) {
           $$$1(triggerArray).toggleClass(ClassName.COLLAPSED, !isOpen).attr('aria-expanded', isOpen);
         }
       }; // Static
+=======
+    var $parent = selector && $(document).find(selector)
+>>>>>>> cee8e8653dc009b5d86af4a8e2ad3a5e0688ca4c
 
 
       Collapse._getTargetFromElement = function _getTargetFromElement(element) {
@@ -1551,6 +1794,7 @@
           return;
         } // Disable totally Popper.js for Dropdown in Navbar
 
+<<<<<<< HEAD
 
         if (!this._inNavbar) {
           /**
@@ -1560,6 +1804,56 @@
           if (typeof Popper === 'undefined') {
             throw new TypeError('Bootstrap dropdown require Popper.js (https://popper.js.org)');
           }
+=======
+  // APPLY TO STANDARD DROPDOWN ELEMENTS
+  // ===================================
+
+  $(document)
+    .on('click.bs.dropdown.data-api', clearMenus)
+    .on('click.bs.dropdown.data-api', '.dropdown form', function (e) { e.stopPropagation() })
+    .on('click.bs.dropdown.data-api', toggle, Dropdown.prototype.toggle)
+    .on('keydown.bs.dropdown.data-api', toggle, Dropdown.prototype.keydown)
+    .on('keydown.bs.dropdown.data-api', '.dropdown-menu', Dropdown.prototype.keydown)
+
+}(jQuery);
+
+/* ========================================================================
+ * Bootstrap: modal.js v3.4.0
+ * http://getbootstrap.com/javascript/#modals
+ * ========================================================================
+ * Copyright 2011-2016 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * ======================================================================== */
+
+
++function ($) {
+  'use strict';
+
+  // MODAL CLASS DEFINITION
+  // ======================
+
+  var Modal = function (element, options) {
+    this.options             = options
+    this.$body               = $(document.body)
+    this.$element            = $(element)
+    this.$dialog             = this.$element.find('.modal-dialog')
+    this.$backdrop           = null
+    this.isShown             = null
+    this.originalBodyPad     = null
+    this.scrollbarWidth      = 0
+    this.ignoreBackdropClick = false
+
+    if (this.options.remote) {
+      this.$element
+        .find('.modal-content')
+        .load(this.options.remote, $.proxy(function () {
+          this.$element.trigger('loaded.bs.modal')
+        }, this))
+    }
+  }
+
+  Modal.VERSION  = '3.4.0'
+>>>>>>> cee8e8653dc009b5d86af4a8e2ad3a5e0688ca4c
 
           var referenceElement = this._element;
 
@@ -1689,6 +1983,7 @@
           offsetConf.offset = this._config.offset;
         }
 
+<<<<<<< HEAD
         var popperConfig = {
           placement: this._getPlacement(),
           modifiers: {
@@ -1707,6 +2002,16 @@
           popperConfig.modifiers.applyStyle = {
             enabled: false
           };
+=======
+  Modal.prototype.enforceFocus = function () {
+    $(document)
+      .off('focusin.bs.modal') // guard against infinite focus loop
+      .on('focusin.bs.modal', $.proxy(function (e) {
+        if (document !== e.target &&
+            this.$element[0] !== e.target &&
+            !this.$element.has(e.target).length) {
+          this.$element.trigger('focus')
+>>>>>>> cee8e8653dc009b5d86af4a8e2ad3a5e0688ca4c
         }
 
         return popperConfig;
@@ -1827,9 +2132,20 @@
             $$$1(toggle).trigger('focus');
           }
 
+<<<<<<< HEAD
           $$$1(this).trigger('click');
           return;
         }
+=======
+  $(document).on('click.bs.modal.data-api', '[data-toggle="modal"]', function (e) {
+    var $this   = $(this)
+    var href    = $this.attr('href')
+    var target  = $this.attr('data-target') ||
+      (href && href.replace(/.*(?=#[^\s]+$)/, '')) // strip for ie7
+
+    var $target = $(document).find(target)
+    var option  = $target.data('bs.modal') ? 'toggle' : $.extend({ remote: !/#/.test(href) && href }, $target.data(), $this.data())
+>>>>>>> cee8e8653dc009b5d86af4a8e2ad3a5e0688ca4c
 
         var items = [].slice.call(parent.querySelectorAll(Selector.VISIBLE_ITEMS));
 
@@ -1839,10 +2155,21 @@
 
         var index = items.indexOf(event.target);
 
+<<<<<<< HEAD
         if (event.which === ARROW_UP_KEYCODE && index > 0) {
           // Up
           index--;
         }
+=======
+/* ========================================================================
+ * Bootstrap: tooltip.js v3.4.0
+ * http://getbootstrap.com/javascript/#tooltip
+ * Inspired by the original jQuery.tipsy by Jason Frame
+ * ========================================================================
+ * Copyright 2011-2016 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * ======================================================================== */
+>>>>>>> cee8e8653dc009b5d86af4a8e2ad3a5e0688ca4c
 
         if (event.which === ARROW_DOWN_KEYCODE && index < items.length - 1) {
           // Down
@@ -2007,6 +2334,7 @@
           this._isTransitioning = true;
         }
 
+<<<<<<< HEAD
         var showEvent = $$$1.Event(Event.SHOW, {
           relatedTarget: relatedTarget
         });
@@ -2015,6 +2343,35 @@
         if (this._isShown || showEvent.isDefaultPrevented()) {
           return;
         }
+=======
+  Tooltip.VERSION  = '3.4.0'
+
+  Tooltip.TRANSITION_DURATION = 150
+
+  Tooltip.DEFAULTS = {
+    animation: true,
+    placement: 'top',
+    selector: false,
+    template: '<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>',
+    trigger: 'hover focus',
+    title: '',
+    delay: 0,
+    html: false,
+    container: false,
+    viewport: {
+      selector: 'body',
+      padding: 0
+    }
+  }
+
+  Tooltip.prototype.init = function (type, element, options) {
+    this.enabled   = true
+    this.type      = type
+    this.$element  = $(element)
+    this.options   = this.getOptions(options)
+    this.$viewport = this.options.viewport && $(document).find($.isFunction(this.options.viewport) ? this.options.viewport.call(this, this.$element) : (this.options.viewport.selector || this.options.viewport))
+    this.inState   = { click: false, hover: false, focus: false }
+>>>>>>> cee8e8653dc009b5d86af4a8e2ad3a5e0688ca4c
 
         this._isShown = true;
 
@@ -2301,6 +2658,11 @@
       // todo (fat): these should probably be refactored out of modal.js
       // ----------------------------------------------------------------------
 
+<<<<<<< HEAD
+=======
+      this.options.container ? $tip.appendTo($(document).find(this.options.container)) : $tip.insertAfter(this.$element)
+      this.$element.trigger('inserted.bs.' + this.type)
+>>>>>>> cee8e8653dc009b5d86af4a8e2ad3a5e0688ca4c
 
       _proto._adjustDialog = function _adjustDialog() {
         var isModalOverflowing = this._element.scrollHeight > document.documentElement.clientHeight;
@@ -2446,11 +2808,42 @@
         event.preventDefault();
       }
 
+<<<<<<< HEAD
       var $target = $$$1(target).one(Event.SHOW, function (showEvent) {
         if (showEvent.isDefaultPrevented()) {
           // Only register focus restorer if modal will actually get shown
           return;
         }
+=======
+  Tooltip.prototype.replaceArrow = function (delta, dimension, isVertical) {
+    this.arrow()
+      .css(isVertical ? 'left' : 'top', 50 * (1 - delta / dimension) + '%')
+      .css(isVertical ? 'top' : 'left', '')
+  }
+
+  Tooltip.prototype.setContent = function () {
+    var $tip  = this.tip()
+    var title = this.getTitle()
+
+    $tip.find('.tooltip-inner')[this.options.html ? 'html' : 'text'](title)
+    $tip.removeClass('fade in top bottom left right')
+  }
+
+  Tooltip.prototype.hide = function (callback) {
+    var that = this
+    var $tip = $(this.$tip)
+    var e    = $.Event('hide.bs.' + this.type)
+
+    function complete() {
+      if (that.hoverState != 'in') $tip.detach()
+      if (that.$element) { // TODO: Check whether guarding this code with this `if` is really necessary.
+        that.$element
+          .removeAttr('aria-describedby')
+          .trigger('hidden.bs.' + that.type)
+      }
+      callback && callback()
+    }
+>>>>>>> cee8e8653dc009b5d86af4a8e2ad3a5e0688ca4c
 
         $target.one(Event.HIDDEN, function () {
           if ($$$1(_this10).is(':visible')) {
@@ -2660,9 +3053,23 @@
         this._hoverState = null;
         this._activeTrigger = null;
 
+<<<<<<< HEAD
         if (this._popper !== null) {
           this._popper.destroy();
         }
+=======
+    var elRect    = el.getBoundingClientRect()
+    if (elRect.width == null) {
+      // width and height are missing in IE8, so compute them manually; see https://github.com/twbs/bootstrap/issues/14093
+      elRect = $.extend({}, elRect, { width: elRect.right - elRect.left, height: elRect.bottom - elRect.top })
+    }
+    var isSvg = window.SVGElement && el instanceof window.SVGElement
+    // Avoid using $.offset() on SVGs since it gives incorrect results in jQuery 3.
+    // See https://github.com/twbs/bootstrap/issues/20280
+    var elOffset  = isBody ? { top: 0, left: 0 } : (isSvg ? null : $element.offset())
+    var scroll    = { scroll: isBody ? document.documentElement.scrollTop || document.body.scrollTop : $element.scrollTop() }
+    var outerDims = isBody ? { width: $(window).width(), height: $(window).height() } : null
+>>>>>>> cee8e8653dc009b5d86af4a8e2ad3a5e0688ca4c
 
         this._popper = null;
         this.element = null;
@@ -2817,8 +3224,25 @@
           complete();
         }
 
+<<<<<<< HEAD
         this._hoverState = '';
       };
+=======
+  Tooltip.prototype.destroy = function () {
+    var that = this
+    clearTimeout(this.timeout)
+    this.hide(function () {
+      that.$element.off('.' + that.type).removeData('bs.' + that.type)
+      if (that.$tip) {
+        that.$tip.detach()
+      }
+      that.$tip = null
+      that.$arrow = null
+      that.$viewport = null
+      that.$element = null
+    })
+  }
+>>>>>>> cee8e8653dc009b5d86af4a8e2ad3a5e0688ca4c
 
       _proto.update = function update() {
         if (this._popper !== null) {
@@ -2939,8 +3363,18 @@
           return;
         }
 
+<<<<<<< HEAD
         clearTimeout(context._timeout);
         context._hoverState = HoverState.SHOW;
+=======
+/* ========================================================================
+ * Bootstrap: popover.js v3.4.0
+ * http://getbootstrap.com/javascript/#popovers
+ * ========================================================================
+ * Copyright 2011-2016 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * ======================================================================== */
+>>>>>>> cee8e8653dc009b5d86af4a8e2ad3a5e0688ca4c
 
         if (!context.config.delay || !context.config.delay.show) {
           context.show();
@@ -2967,9 +3401,13 @@
           context._activeTrigger[event.type === 'focusout' ? Trigger.FOCUS : Trigger.HOVER] = false;
         }
 
+<<<<<<< HEAD
         if (context._isWithActiveTrigger()) {
           return;
         }
+=======
+  Popover.VERSION  = '3.4.0'
+>>>>>>> cee8e8653dc009b5d86af4a8e2ad3a5e0688ca4c
 
         clearTimeout(context._timeout);
         context._hoverState = HoverState.OUT;
@@ -3076,10 +3514,20 @@
             return;
           }
 
+<<<<<<< HEAD
           if (!data) {
             data = new Tooltip(this, _config);
             $$$1(this).data(DATA_KEY, data);
           }
+=======
+/* ========================================================================
+ * Bootstrap: scrollspy.js v3.4.0
+ * http://getbootstrap.com/javascript/#scrollspy
+ * ========================================================================
+ * Copyright 2011-2016 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * ======================================================================== */
+>>>>>>> cee8e8653dc009b5d86af4a8e2ad3a5e0688ca4c
 
           if (typeof config === 'string') {
             if (typeof data[config] === 'undefined') {
@@ -3223,9 +3671,13 @@
         return this.getTitle() || this._getContent();
       };
 
+<<<<<<< HEAD
       _proto.addAttachmentClass = function addAttachmentClass(attachment) {
         $$$1(this.getTipElement()).addClass(CLASS_PREFIX + "-" + attachment);
       };
+=======
+  ScrollSpy.VERSION  = '3.4.0'
+>>>>>>> cee8e8653dc009b5d86af4a8e2ad3a5e0688ca4c
 
       _proto.getTipElement = function getTipElement() {
         this.tip = this.tip || $$$1(this.config.template)[0];
@@ -3539,7 +3991,17 @@
         if (this._activeTarget && scrollTop < this._offsets[0] && this._offsets[0] > 0) {
           this._activeTarget = null;
 
+<<<<<<< HEAD
           this._clear();
+=======
+/* ========================================================================
+ * Bootstrap: tab.js v3.4.0
+ * http://getbootstrap.com/javascript/#tabs
+ * ========================================================================
+ * Copyright 2011-2016 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * ======================================================================== */
+>>>>>>> cee8e8653dc009b5d86af4a8e2ad3a5e0688ca4c
 
           return;
         }
@@ -3555,18 +4017,54 @@
         }
       };
 
+<<<<<<< HEAD
       _proto._activate = function _activate(target) {
         this._activeTarget = target;
+=======
+  Tab.VERSION = '3.4.0'
+>>>>>>> cee8e8653dc009b5d86af4a8e2ad3a5e0688ca4c
 
         this._clear();
 
         var queries = this._selector.split(','); // eslint-disable-next-line arrow-body-style
 
 
+<<<<<<< HEAD
         queries = queries.map(function (selector) {
           return selector + "[data-target=\"" + target + "\"]," + (selector + "[href=\"" + target + "\"]");
         });
         var $link = $$$1([].slice.call(document.querySelectorAll(queries.join(','))));
+=======
+    if ($this.parent('li').hasClass('active')) return
+
+    var $previous = $ul.find('.active:last a')
+    var hideEvent = $.Event('hide.bs.tab', {
+      relatedTarget: $this[0]
+    })
+    var showEvent = $.Event('show.bs.tab', {
+      relatedTarget: $previous[0]
+    })
+
+    $previous.trigger(hideEvent)
+    $this.trigger(showEvent)
+
+    if (showEvent.isDefaultPrevented() || hideEvent.isDefaultPrevented()) return
+
+    var $target = $(document).find(selector)
+
+    this.activate($this.closest('li'), $ul)
+    this.activate($target, $target.parent(), function () {
+      $previous.trigger({
+        type: 'hidden.bs.tab',
+        relatedTarget: $this[0]
+      })
+      $this.trigger({
+        type: 'shown.bs.tab',
+        relatedTarget: $previous[0]
+      })
+    })
+  }
+>>>>>>> cee8e8653dc009b5d86af4a8e2ad3a5e0688ca4c
 
         if ($link.hasClass(ClassName.DROPDOWN_ITEM)) {
           $link.closest(Selector.DROPDOWN).find(Selector.DROPDOWN_TOGGLE).addClass(ClassName.ACTIVE);
@@ -3739,12 +4237,22 @@
           previous = previous[previous.length - 1];
         }
 
+<<<<<<< HEAD
         var hideEvent = $$$1.Event(Event.HIDE, {
           relatedTarget: this._element
         });
         var showEvent = $$$1.Event(Event.SHOW, {
           relatedTarget: previous
         });
+=======
+/* ========================================================================
+ * Bootstrap: affix.js v3.4.0
+ * http://getbootstrap.com/javascript/#affix
+ * ========================================================================
+ * Copyright 2011-2016 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * ======================================================================== */
+>>>>>>> cee8e8653dc009b5d86af4a8e2ad3a5e0688ca4c
 
         if (previous) {
           $$$1(previous).trigger(hideEvent);
@@ -3760,6 +4268,7 @@
           target = document.querySelector(selector);
         }
 
+<<<<<<< HEAD
         this._activate(this._element, listElement);
 
         var complete = function complete() {
@@ -3779,6 +4288,13 @@
           complete();
         }
       };
+=======
+    var target = this.options.target === Affix.DEFAULTS.target ? $(this.options.target) : $(document).find(this.options.target)
+
+    this.$target = target
+      .on('scroll.bs.affix.data-api', $.proxy(this.checkPosition, this))
+      .on('click.bs.affix.data-api',  $.proxy(this.checkPositionWithEventLoop, this))
+>>>>>>> cee8e8653dc009b5d86af4a8e2ad3a5e0688ca4c
 
       _proto.dispose = function dispose() {
         $$$1.removeData(this._element, DATA_KEY);
@@ -3786,8 +4302,12 @@
       }; // Private
 
 
+<<<<<<< HEAD
       _proto._activate = function _activate(element, container, callback) {
         var _this2 = this;
+=======
+  Affix.VERSION  = '3.4.0'
+>>>>>>> cee8e8653dc009b5d86af4a8e2ad3a5e0688ca4c
 
         var activeElements;
 

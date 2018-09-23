@@ -513,6 +513,7 @@ $(function () {
       })
       .bootstrapCollapse('show')
   })
+<<<<<<< HEAD
 
   QUnit.test('should allow accordion to use children other than card', function (assert) {
     assert.expect(4)
@@ -889,4 +890,6 @@ $(function () {
 
     $collapse2.bootstrapCollapse('toggle')
   })
+=======
+>>>>>>> cee8e8653dc009b5d86af4a8e2ad3a5e0688ca4c
 })

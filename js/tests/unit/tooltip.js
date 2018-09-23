@@ -963,7 +963,10 @@ $(function () {
       },
       placement: 'auto'
     })
+<<<<<<< HEAD
 
     assert.ok(tooltip.tip === $tipTest[0])
+=======
+>>>>>>> cee8e8653dc009b5d86af4a8e2ad3a5e0688ca4c
   })
 })

@@ -2,8 +2,14 @@
   font-family: $font-family-base;
   // We deliberately do NOT reset font-size or word-wrap.
   font-style: normal;
+<<<<<<< HEAD:scss/mixins/_reset-text.scss
   font-weight: $font-weight-normal;
   line-height: $line-height-base;
+=======
+  font-weight: 400;
+  line-height: @line-height-base;
+  line-break: auto;
+>>>>>>> cee8e8653dc009b5d86af4a8e2ad3a5e0688ca4c:less/mixins/reset-text.less
   text-align: left; // Fallback for where `start` is not supported
   text-align: start; // stylelint-disable-line declaration-block-no-duplicate-properties
   text-decoration: none;
@@ -12,6 +18,11 @@
   letter-spacing: normal;
   word-break: normal;
   word-spacing: normal;
+<<<<<<< HEAD:scss/mixins/_reset-text.scss
   white-space: normal;
   line-break: auto;
+=======
+  word-wrap: normal;
+  white-space: normal;
+>>>>>>> cee8e8653dc009b5d86af4a8e2ad3a5e0688ca4c:less/mixins/reset-text.less
 }

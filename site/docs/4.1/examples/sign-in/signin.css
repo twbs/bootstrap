@@ -1,4 +1,9 @@
+<<<<<<< HEAD:site/docs/4.1/examples/sign-in/signin.css
 html,
+=======
+/* stylelint-disable selector-no-qualifying-type, property-no-vendor-prefix */
+
+>>>>>>> cee8e8653dc009b5d86af4a8e2ad3a5e0688ca4c:docs/examples/signin/signin.css
 body {
   height: 100%;
 }
@@ -24,6 +29,11 @@ body {
 }
 .form-signin .form-control {
   position: relative;
+<<<<<<< HEAD:site/docs/4.1/examples/sign-in/signin.css
+=======
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+>>>>>>> cee8e8653dc009b5d86af4a8e2ad3a5e0688ca4c:docs/examples/signin/signin.css
   box-sizing: border-box;
   height: auto;
   padding: 10px;

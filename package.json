@@ -1,7 +1,11 @@
 {
   "name": "bootstrap",
   "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
+<<<<<<< HEAD
   "version": "4.1.3",
+=======
+  "version": "3.4.0",
+>>>>>>> cee8e8653dc009b5d86af4a8e2ad3a5e0688ca4c
   "keywords": [
     "css",
     "sass",
@@ -17,6 +21,7 @@
     "Twitter, Inc."
   ],
   "scripts": {
+<<<<<<< HEAD
     "start": "npm-run-all --parallel watch docs-serve",
     "blc": "blc --exclude-external --filter-level 3 --get --ordered --recursive --host-requests 4 --input http://localhost:3000/",
     "http-server": "http-server --silent -p 3000",
@@ -79,6 +84,11 @@
     "watch-css-docs": "nodemon --watch site/docs/4.1/assets/scss/ --ext scss --exec \"npm run css-docs\"",
     "watch-js-main": "nodemon --watch js/src/ --ext js --exec \"npm run js-compile\"",
     "watch-js-docs": "nodemon --watch site/docs/4.1/assets/js/src/ --ext js --exec \"npm run js-docs\""
+=======
+    "change-version": "node grunt/change-version.js",
+    "update-shrinkwrap": "npm shrinkwrap --dev && shx mv ./npm-shrinkwrap.json ./grunt/npm-shrinkwrap.json",
+    "test": "grunt test"
+>>>>>>> cee8e8653dc009b5d86af4a8e2ad3a5e0688ca4c
   },
   "style": "dist/css/bootstrap.css",
   "sass": "scss/bootstrap.scss",
@@ -97,6 +107,7 @@
     "popper.js": "^1.14.4"
   },
   "devDependencies": {
+<<<<<<< HEAD
     "@babel/cli": "^7.0.0",
     "@babel/core": "^7.0.0",
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
@@ -144,6 +155,39 @@
     "uglify-js": "^3.4.9",
     "vnu-jar": "^18.8.29",
     "workbox-build": "^3.4.1"
+=======
+    "btoa": "~1.2.1",
+    "glob": "~7.1.2",
+    "grunt": "~1.0.1",
+    "grunt-autoprefixer": "~3.0.4",
+    "grunt-contrib-clean": "~1.1.0",
+    "grunt-contrib-compress": "~1.4.3",
+    "grunt-contrib-concat": "~1.0.0",
+    "grunt-contrib-connect": "~1.0.0",
+    "grunt-contrib-copy": "~1.0.0",
+    "grunt-contrib-cssmin": "~2.2.1",
+    "grunt-contrib-htmlmin": "~2.4.0",
+    "grunt-contrib-jshint": "~1.1.0",
+    "grunt-contrib-less": "~1.4.1",
+    "grunt-contrib-pug": "~1.0.0",
+    "grunt-contrib-qunit": "~2.0.0",
+    "grunt-contrib-uglify": "~3.3.0",
+    "grunt-contrib-watch": "~1.0.0",
+    "grunt-exec": "~3.0.0",
+    "grunt-html": "~9.0.0",
+    "grunt-jekyll": "~0.4.4",
+    "grunt-jscs": "~3.0.1",
+    "grunt-saucelabs": "~9.0.0",
+    "grunt-stylelint": "^0.10.0",
+    "load-grunt-tasks": "~3.5.0",
+    "markdown-it": "^8.4.0",
+    "shelljs": "^0.8.1",
+    "shx": "^0.2.2",
+    "stylelint": "^9.2.0",
+    "stylelint-config-standard": "^18.2.0",
+    "stylelint-order": "^0.8.1",
+    "time-grunt": "^1.3.0"
+>>>>>>> cee8e8653dc009b5d86af4a8e2ad3a5e0688ca4c
   },
   "engines": {
     "node": ">=6"
@@ -210,10 +254,21 @@
         "exports": "$"
       }
     },
+<<<<<<< HEAD
     "dependencies": {},
     "peerDependencies": {
       "jquery": "1.9.1 - 3",
       "popper.js": "^1.14.4"
     }
+=======
+    "files": [
+      "css",
+      "fonts",
+      "js"
+    ]
+  },
+  "dependencies": {
+    "postcss": "^6.0.21"
+>>>>>>> cee8e8653dc009b5d86af4a8e2ad3a5e0688ca4c
   }
 }
