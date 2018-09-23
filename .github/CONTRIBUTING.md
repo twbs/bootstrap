@@ -18,32 +18,19 @@ the preferred channel for [bug reports](#bug-reports), [features requests](#feat
 and [submitting pull requests](#pull-requests), but please respect the following
 restrictions:
 
-<<<<<<< HEAD:.github/CONTRIBUTING.md
-* Please **do not** use the issue tracker for personal support requests.  Stack
-  Overflow ([`bootstrap-4`](https://stackoverflow.com/questions/tagged/bootstrap-4) tag), [Slack](https://bootstrap-slack.herokuapp.com/) or [IRC](README.md#community) are better places to get help.
-=======
 * Please **do not** use the issue tracker for personal support requests. Stack
   Overflow ([`twitter-bootstrap-3`](https://stackoverflow.com/questions/tagged/twitter-bootstrap-3) tag), [Slack](https://bootstrap-slack.herokuapp.com/) or [IRC](README.md#community) are better places to get help.
->>>>>>> cee8e8653dc009b5d86af4a8e2ad3a5e0688ca4c:CONTRIBUTING.md
 
 * Please **do not** derail or troll issues. Keep the discussion on topic and
   respect the opinions of others.
 
 * Please **do not** post comments consisting solely of "+1" or ":thumbsup:".
-<<<<<<< HEAD:.github/CONTRIBUTING.md
-  Use [GitHub's "reactions" feature](https://blog.github.com/2016-03-10-add-reactions-to-pull-requests-issues-and-comments/)
-  instead. We reserve the right to delete comments which violate this rule.
-
-* Please **do not** open issues regarding the official themes offered on <https://themes.getbootstrap.com/>.
-  Instead, please email any questions or feedback regarding those themes to `themes AT getbootstrap DOT com`.
-=======
   Use [GitHub's "reactions" feature](https://github.com/blog/2119-add-reactions-to-pull-requests-issues-and-comments)
   instead. We reserve the right to delete comments which violate this rule.
 
 * Please **do not** open issues or pull requests regarding the code in
   [`Normalize`](https://github.com/necolas/normalize.css) (open them in
   their respective repositories).
->>>>>>> cee8e8653dc009b5d86af4a8e2ad3a5e0688ca4c:CONTRIBUTING.md
 
 * Please **do not** open issues regarding the official themes offered on <http://themes.getbootstrap.com/>.
   Instead, please email any questions or feedback regarding those themes to `themes AT getbootstrap DOT com`.
@@ -55,12 +42,8 @@ Our bug tracker utilizes several labels to help organize and identify issues. He
 
 - `browser bug` - Issues that are reported to us, but actually are the result of a browser-specific bug. These are diagnosed with reduced test cases and result in an issue opened on that browser's own bug tracker.
 - `confirmed` - Issues that have been confirmed with a reduced test case and identify a bug in Bootstrap.
-<<<<<<< HEAD:.github/CONTRIBUTING.md
-- `css` - Issues stemming from our compiled CSS or source Sass files.
-=======
 - `css` - Issues stemming from our compiled CSS or source Less/Sass files.
 - `customizer` - Issues with our web-based Customizer.
->>>>>>> cee8e8653dc009b5d86af4a8e2ad3a5e0688ca4c:CONTRIBUTING.md
 - `docs` - Issues for improving or updating our documentation.
 - `examples` - Issues involving the example templates included in our docs.
 - `feature` - Issues asking for a new feature to be added, or an existing one to be extended or modified. New features require a minor version bump (e.g., `v3.0.0` to `v3.1.0`).
@@ -179,13 +162,8 @@ project (indentation, accurate comments, etc.) and any other requirements
 
 **Do not edit `bootstrap.css`, or `bootstrap.js`
 directly!** Those files are automatically generated. You should edit the
-<<<<<<< HEAD:.github/CONTRIBUTING.md
-source files in [`/bootstrap/scss/`](https://github.com/twbs/bootstrap/tree/master/scss)
-and/or [`/bootstrap/js/`](https://github.com/twbs/bootstrap/tree/master/js) instead.
-=======
 source files in [`/bootstrap/scss/`](https://github.com/twbs/bootstrap/tree/v4-dev/scss)
 and/or [`/bootstrap/js/`](https://github.com/twbs/bootstrap/tree/v4-dev/js) instead.
->>>>>>> cee8e8653dc009b5d86af4a8e2ad3a5e0688ca4c:CONTRIBUTING.md
 
 Similarly, when contributing to Bootstrap's documentation, you should edit the
 documentation source files in
@@ -223,15 +201,9 @@ included in the project:
    ```
 
 4. Commit your changes in logical chunks. Please adhere to these [git commit
-<<<<<<< HEAD:.github/CONTRIBUTING.md
-   message guidelines](https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
-   or your code is unlikely be merged into the main project. Use Git's
-   [interactive rebase](https://help.github.com/articles/about-git-rebase/)
-=======
    message guidelines](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
    or your code is unlikely to be merged into the main project. Use Git's
    [interactive rebase](https://help.github.com/articles/interactive-rebase)
->>>>>>> cee8e8653dc009b5d86af4a8e2ad3a5e0688ca4c:CONTRIBUTING.md
    feature to tidy up your commits before making them public.
 
 5. Locally merge (or rebase) the upstream development branch into your topic branch:
@@ -246,13 +218,8 @@ included in the project:
    git push origin <topic-branch-name>
    ```
 
-<<<<<<< HEAD:.github/CONTRIBUTING.md
-7. [Open a Pull Request](https://help.github.com/articles/about-pull-requests/)
-    with a clear title and description against the `master` branch.
-=======
 7. [Open a Pull Request](https://help.github.com/articles/using-pull-requests/)
     with a clear title and description against the `v4-dev` branch.
->>>>>>> cee8e8653dc009b5d86af4a8e2ad3a5e0688ca4c:CONTRIBUTING.md
 
 **IMPORTANT**: By submitting a patch, you agree to allow the project owners to
 license your work under the terms of the [MIT License](LICENSE) (if it
@@ -275,13 +242,8 @@ includes code changes) and under the terms of the
 
 [Adhere to the Code Guide.](http://codeguide.co/#css)
 
-<<<<<<< HEAD:.github/CONTRIBUTING.md
-- When feasible, default color palettes should comply with [WCAG color contrast guidelines](https://www.w3.org/TR/WCAG20/#visual-audio-contrast).
-- Except in rare cases, don't remove default `:focus` styles (via e.g. `outline: none;`) without providing alternative styles. See [this A11Y Project post](https://a11yproject.com/posts/never-remove-css-outlines/) for more details.
-=======
 - When feasible, default color palettes should comply with [WCAG color contrast guidelines](http://www.w3.org/TR/WCAG20/#visual-audio-contrast).
 - Except in rare cases, don't remove default `:focus` styles (via e.g. `outline: none;`) without providing alternative styles. See [this A11Y Project post](http://a11yproject.com/posts/never-remove-css-outlines) for more details.
->>>>>>> cee8e8653dc009b5d86af4a8e2ad3a5e0688ca4c:CONTRIBUTING.md
 
 ### JS
 
@@ -289,11 +251,7 @@ includes code changes) and under the terms of the
 - 2 spaces (no tabs)
 - strict mode
 - "Attractive"
-<<<<<<< HEAD:.github/CONTRIBUTING.md
-- Don't use [jQuery event alias convenience methods](https://github.com/jquery/jquery/blob/master/src/event/alias.js) (such as `$().focus()`). Instead, use [`$().trigger(eventType, ...)`](https://api.jquery.com/trigger/) or [`$().on(eventType, ...)`](https://api.jquery.com/on/), depending on whether you're firing an event or listening for an event. (For example, `$().trigger('focus')` or `$().on('focus', function (event) { /* handle focus event */ })`) We do this to be compatible with custom builds of jQuery where the event aliases module has been excluded.
-=======
 - Don't use [jQuery event alias convenience methods](https://github.com/jquery/jquery/blob/master/src/event/alias.js) (such as `$().focus()`). Instead, use [`$().trigger(eventType, ...)`](http://api.jquery.com/trigger/) or [`$().on(eventType, ...)`](http://api.jquery.com/on/), depending on whether you're firing an event or listening for an event. (For example, `$().trigger('focus')` or `$().on('focus', function (event) { /* handle focus event */ })`) We do this to be compatible with custom builds of jQuery where the event aliases module has been excluded.
->>>>>>> cee8e8653dc009b5d86af4a8e2ad3a5e0688ca4c:CONTRIBUTING.md
 
 ### Checking coding style
 
