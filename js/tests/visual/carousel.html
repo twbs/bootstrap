@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="../../../dist/css/bootstrap.min.css">
-    <title>Carousel</title>
+    <title>Carousel Bootstrap</title>
     <style>
       .carousel-item {
         transition: transform 2s ease, opacity .5s ease;
@@ -30,9 +30,9 @@
 
       <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
-          <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-          <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="1" class="active"></li>
           <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="3"></li>
         </ol>
         <div class="carousel-inner">
           <div class="carousel-item active">
@@ -62,7 +62,6 @@
     <script>
       $(function() {
         var t0, t1;
-
         // Test to show that the carousel doesn't slide when the current tab isn't visible
         // Test to show that transition-duration can be changed with css
         $('#carousel-example-generic').on('slid.bs.carousel', function(event) {

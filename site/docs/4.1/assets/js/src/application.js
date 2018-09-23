@@ -1,29 +1,12 @@
-// NOTICE!! DO NOT USE ANY OF THIS JAVASCRIPT
-// IT'S ALL JUST JUNK FOR OUR DOCS!
-// ++++++++++++++++++++++++++++++++++++++++++
-
-/*!
- * JavaScript for Bootstrap's docs (https://getbootstrap.com/)
- * Copyright 2011-2018 The Bootstrap Authors
- * Copyright 2011-2018 Twitter, Inc.
- * Licensed under the Creative Commons Attribution 3.0 Unported License. For
- * details, see https://creativecommons.org/licenses/by/3.0/.
- */
-
-/* global ClipboardJS: false, anchors: false, Holder: false */
-
 (function ($) {
   'use strict'
-
   $(function () {
     // Tooltip and popover demos
     $('.tooltip-demo').tooltip({
       selector: '[data-toggle="tooltip"]',
       container: 'body'
     })
-
     $('[data-toggle="popover"]').popover()
-
     // Demos within modals
     $('.tooltip-test').tooltip()
     $('.popover-test').popover()

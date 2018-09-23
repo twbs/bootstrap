@@ -1,3 +1,9 @@
+ /**
+   * --------------------------------------------------------------------------
+   * Bootstrap (v4.1.3): util.js
+   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+   * --------------------------------------------------------------------------
+   */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('jquery')) :
   typeof define === 'function' && define.amd ? define(['jquery'], factory) :
@@ -5,28 +11,16 @@
 }(this, (function ($) { 'use strict';
 
   $ = $ && $.hasOwnProperty('default') ? $['default'] : $;
-
-  /**
-   * --------------------------------------------------------------------------
-   * Bootstrap (v4.1.3): util.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
-   * --------------------------------------------------------------------------
-   */
-
   var Util = function ($$$1) {
     /**
      * ------------------------------------------------------------------------
      * Private TransitionEnd Helpers
      * ------------------------------------------------------------------------
      */
-    var TRANSITION_END = 'transitionend';
-    var MAX_UID = 1000000;
-    var MILLISECONDS_MULTIPLIER = 1000; // Shoutout AngusCroll (https://goo.gl/pxwQGp)
-
+    var TRANSITION_END = 'transitionend',MAX_UID = 1000000,MILLISECONDS_MULTIPLIER = 1000; // Shoutout AngusCroll (https://goo.gl/pxwQGp)
     function toType(obj) {
       return {}.toString.call(obj).match(/\s([a-z]+)/i)[1].toLowerCase();
     }
-
     function getSpecialTransitionEndEvent() {
       return {
         bindType: TRANSITION_END,
@@ -65,8 +59,6 @@
      * Public Util Api
      * --------------------------------------------------------------------------
      */
-
-
     var Util = {
       TRANSITION_END: 'bsTransitionEnd',
       getUID: function getUID(prefix) {
@@ -74,7 +66,6 @@
           // eslint-disable-next-line no-bitwise
           prefix += ~~(Math.random() * MAX_UID); // "~~" acts like a faster Math.floor() here
         } while (document.getElementById(prefix));
-
         return prefix;
       },
       getSelectorFromElement: function getSelectorFromElement(element) {
@@ -85,16 +76,29 @@
           selector = hrefAttr && hrefAttr !== '#' ? hrefAttr.trim() : '';
         }
 
+<<<<<<< HEAD
         return selector && document.querySelector(selector) ? selector : null;
+=======
+        var validSelector = selector;
+
+        if (selector.charAt(0) === '#' && selector.indexOf(',') === -1) {
+          selector = selector.substr(1);
+          method = 'getElementById';
+        }
+        try {
+          return document[method](selector) ? validSelector : null;
+        } catch (err) {
+          return null;
+        }
+>>>>>>> 13ee81a00a0ac9daf9ecae52df7e8731d930424d
       },
       getTransitionDurationFromElement: function getTransitionDurationFromElement(element) {
         if (!element) {
           return 0;
         } // Get transition-duration of the element
 
-
-        var transitionDuration = $$$1(element).css('transition-duration');
-        var floatTransitionDuration = parseFloat(transitionDuration); // Return 0 if element or transition duration is not found
+        var transitionDuration = $$$1(element).css('transition-duration'),
+            floatTransitionDuration = parseFloat(transitionDuration); // Return 0 if element or transition duration is not found
 
         if (!floatTransitionDuration) {
           return 0;
@@ -134,8 +138,6 @@
     setTransitionEndSupport();
     return Util;
   }($);
-
   return Util;
-
 })));
 //# sourceMappingURL=util.js.map

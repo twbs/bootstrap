@@ -5,7 +5,7 @@
 <<<<<<< HEAD
     <version>4.1.0</version>
     <title>Bootstrap CSS</title>
-    <authors>The Bootstrap Authors, Twitter Inc.</authors>
+    <authors>The Bootstrap Author, Twitter Inc.</authors>
     <owners>bootstrap</owners>
     <description>The most popular front-end framework for developing responsive, mobile first projects on the web.</description>
     <releaseNotes>https://blog.getbootstrap.com/</releaseNotes>
@@ -20,7 +20,7 @@
       <dependency id="jQuery" version="[3.0.0,4)" />
       <dependency id="popper.js" version="[1.14.0,2)" />
     </dependencies>
-    <tags>css mobile-first responsive front-end framework web</tags>
+    <tags>css mobile-first responsive front-end web framework</tags>
   </metadata>
   <files>
     <file src="dist\css\*.*" target="content\Content" />

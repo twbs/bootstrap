@@ -1,8 +1,8 @@
+/*workbox*/
 {
   "globDirectory": "./",
   "globPatterns": [
     "_gh_pages/**/*.{html,css,js,json,png,svg}"
-  ],
-  "swSrc": "./site/sw.js",
+  ],  "swSrc": "./site/sw.js",
   "swDest": "./_gh_pages/sw.js"
 }

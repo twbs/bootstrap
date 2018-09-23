@@ -1,29 +1,14 @@
-#!/usr/bin/env node
-
-/*!
- * Script to update version number references in the project.
- * Copyright 2017-2018 The Bootstrap Authors
- * Copyright 2017-2018 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */
-
 const fs = require('fs')
 const path = require('path')
 const sh = require('shelljs')
-
 sh.config.fatal = true
-
 // Blame TC39... https://github.com/benjamingr/RegExp.escape/issues/37
 function regExpQuote(string) {
   return string.replace(/[-\\^$*+?.()|[\]{}]/g, '\\$&')
-}
-
-function regExpQuoteReplacement(string) {
+};function regExpQuoteReplacement(string) {
   return string.replace(/[$]/g, '$$')
 }
-
 const DRY_RUN = false
-
 function walkAsync(directory, excludedDirectories, fileCallback, errback) {
   if (excludedDirectories.has(path.parse(directory).base)) {
     return
@@ -95,8 +80,6 @@ function main(args) {
     '.scss',
     '.txt',
     '.yml'
-  ])
-  replaceRecursively('.', EXCLUDED_DIRS, INCLUDED_EXTENSIONS, oldVersion, newVersion)
+  ]);replaceRecursively('.', EXCLUDED_DIRS, INCLUDED_EXTENSIONS, oldVersion, newVersion)
 }
-
 main(process.argv.slice(2))

@@ -1,3 +1,9 @@
+ /**
+   * --------------------------------------------------------------------------
+   * Bootstrap (v4.1.3): carousel.js
+   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+   * --------------------------------------------------------------------------
+   */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('jquery'), require('./util.js')) :
   typeof define === 'function' && define.amd ? define(['jquery', './util.js'], factory) :
@@ -57,32 +63,17 @@
     return target;
   }
 
-  /**
-   * --------------------------------------------------------------------------
-   * Bootstrap (v4.1.3): carousel.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
-   * --------------------------------------------------------------------------
-   */
-
   var Carousel = function ($$$1) {
-    /**
-     * ------------------------------------------------------------------------
-     * Constants
-     * ------------------------------------------------------------------------
-     */
-    var NAME = 'carousel';
-    var VERSION = '4.1.3';
-    var DATA_KEY = 'bs.carousel';
-    var EVENT_KEY = "." + DATA_KEY;
-    var DATA_API_KEY = '.data-api';
-    var JQUERY_NO_CONFLICT = $$$1.fn[NAME];
-    var ARROW_LEFT_KEYCODE = 37; // KeyboardEvent.which value for left arrow key
-
-    var ARROW_RIGHT_KEYCODE = 39; // KeyboardEvent.which value for right arrow key
-
-    var TOUCHEVENT_COMPAT_WAIT = 500; // Time for mouse compat events to fire after touch
-
-    var Default = {
+    var NAME = 'bscarousel', 
+    VERSION = '4.1.3',
+    DATA_KEY = 'bs.carousel',
+    EVENT_KEY = "." + DATA_KEY, 
+    DATA_API_KEY = '.data-api',
+    JQUERY_NO_CONFLICT = $$$1.fn[NAME],
+    ARROW_LEFT_KEYCODE = 37,
+    ARROW_RIGHT_KEYCODE = 39,
+    TOUCHEVENT_COMPAT_WAIT = 500,
+    Default = {
       interval: 5000,
       keyboard: true,
       slide: false,
@@ -155,9 +146,7 @@
         this._addEventListeners();
       } // Getters
 
-
       var _proto = Carousel.prototype;
-
       // Public
       _proto.next = function next() {
         if (!this._isSliding) {
@@ -172,23 +161,19 @@
           this.next();
         }
       };
-
       _proto.prev = function prev() {
         if (!this._isSliding) {
           this._slide(Direction.PREV);
         }
       };
-
       _proto.pause = function pause(event) {
         if (!event) {
           this._isPaused = true;
         }
-
         if (this._element.querySelector(Selector.NEXT_PREV)) {
           Util.triggerTransitionEnd(this._element);
           this.cycle(true);
         }
-
         clearInterval(this._interval);
         this._interval = null;
       };
@@ -322,29 +307,22 @@
       };
 
       _proto._getItemByDirection = function _getItemByDirection(direction, activeElement) {
-        var isNextDirection = direction === Direction.NEXT;
-        var isPrevDirection = direction === Direction.PREV;
-
-        var activeIndex = this._getItemIndex(activeElement);
-
-        var lastItemIndex = this._items.length - 1;
-        var isGoingToWrap = isPrevDirection && activeIndex === 0 || isNextDirection && activeIndex === lastItemIndex;
-
+        var isNextDirection = direction === Direction.NEXT,
+        isPrevDirection = direction === Direction.PREV,
+        activeIndex = this._getItemIndex(activeElement),
+        lastItemIndex = this._items.length - 1,
+        isGoingToWrap = isPrevDirection && activeIndex === 0 || isNextDirection && activeIndex === lastItemIndex;
         if (isGoingToWrap && !this._config.wrap) {
           return activeElement;
         }
-
-        var delta = direction === Direction.PREV ? -1 : 1;
-        var itemIndex = (activeIndex + delta) % this._items.length;
+        var delta = direction === Direction.PREV ? -1 : 1,
+        itemIndex = (activeIndex + delta) % this._items.length;
         return itemIndex === -1 ? this._items[this._items.length - 1] : this._items[itemIndex];
       };
-
       _proto._triggerSlideEvent = function _triggerSlideEvent(relatedTarget, eventDirectionName) {
-        var targetIndex = this._getItemIndex(relatedTarget);
-
-        var fromIndex = this._getItemIndex(this._element.querySelector(Selector.ACTIVE_ITEM));
-
-        var slideEvent = $$$1.Event(Event.SLIDE, {
+        var targetIndex = this._getItemIndex(relatedTarget),
+        fromIndex = this._getItemIndex(this._element.querySelector(Selector.ACTIVE_ITEM)),
+        slideEvent = $$$1.Event(Event.SLIDE, {
           relatedTarget: relatedTarget,
           direction: eventDirectionName,
           from: fromIndex,
@@ -353,14 +331,11 @@
         $$$1(this._element).trigger(slideEvent);
         return slideEvent;
       };
-
       _proto._setActiveIndicatorElement = function _setActiveIndicatorElement(element) {
         if (this._indicatorsElement) {
           var indicators = [].slice.call(this._indicatorsElement.querySelectorAll(Selector.ACTIVE));
-          $$$1(indicators).removeClass(ClassName.ACTIVE);
-
-          var nextIndicator = this._indicatorsElement.children[this._getItemIndex(element)];
-
+          $$$1(indicators).removeClass(ClassName.ACTIVE),
+          nextIndicator = this._indicatorsElement.children[this._getItemIndex(element)];
           if (nextIndicator) {
             $$$1(nextIndicator).addClass(ClassName.ACTIVE);
           }
@@ -368,20 +343,15 @@
       };
 
       _proto._slide = function _slide(direction, element) {
-        var _this3 = this;
-
-        var activeElement = this._element.querySelector(Selector.ACTIVE_ITEM);
-
-        var activeElementIndex = this._getItemIndex(activeElement);
-
-        var nextElement = element || activeElement && this._getItemByDirection(direction, activeElement);
-
-        var nextElementIndex = this._getItemIndex(nextElement);
-
-        var isCycling = Boolean(this._interval);
-        var directionalClassName;
-        var orderClassName;
-        var eventDirectionName;
+        var _this3 = this,
+        activeElement = this._element.querySelector(Selector.ACTIVE_ITEM);
+        var activeElementIndex = this._getItemIndex(activeElement),
+        nextElement = element || activeElement && this._getItemByDirection(direction, activeElement),
+        nextElementIndex = this._getItemIndex(nextElement),
+        isCycling = Boolean(this._interval),
+        directionalClassName,
+        orderClassName,
+        eventDirectionName;
 
         if (direction === Direction.NEXT) {
           directionalClassName = ClassName.LEFT;
@@ -397,20 +367,15 @@
           this._isSliding = false;
           return;
         }
-
         var slideEvent = this._triggerSlideEvent(nextElement, eventDirectionName);
-
         if (slideEvent.isDefaultPrevented()) {
           return;
         }
-
         if (!activeElement || !nextElement) {
           // Some weirdness is happening, so we bail
           return;
         }
-
         this._isSliding = true;
-
         if (isCycling) {
           this.pause();
         }
@@ -423,7 +388,6 @@
           from: activeElementIndex,
           to: nextElementIndex
         });
-
         if ($$$1(this._element).hasClass(ClassName.SLIDE)) {
           $$$1(nextElement).addClass(orderClassName);
           Util.reflow(nextElement);
@@ -453,13 +417,10 @@
           this._isSliding = false;
           $$$1(this._element).trigger(slidEvent);
         }
-
         if (isCycling) {
           this.cycle();
         }
       }; // Static
-
-
       Carousel._jQueryInterface = function _jQueryInterface(config) {
         return this.each(function () {
           var data = $$$1(this).data(DATA_KEY);
@@ -469,9 +430,7 @@
           if (typeof config === 'object') {
             _config = _objectSpread({}, _config, config);
           }
-
           var action = typeof config === 'string' ? config : _config.slide;
-
           if (!data) {
             data = new Carousel(this, _config);
             $$$1(this).data(DATA_KEY, data);

@@ -2,13 +2,6 @@ import $ from 'jquery'
 import Popper from 'popper.js'
 import Util from './util'
 
-/**
- * --------------------------------------------------------------------------
- * Bootstrap (v4.1.3): dropdown.js
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- * --------------------------------------------------------------------------
- */
-
 const Dropdown = (($) => {
   /**
    * ------------------------------------------------------------------------

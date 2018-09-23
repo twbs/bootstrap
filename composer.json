@@ -24,14 +24,12 @@
   ],
   "support": {
     "issues": "https://github.com/twbs/bootstrap/issues"
-  },
-  "license": "MIT",
+  }, "license": "MIT",
   "extra": {
     "branch-alias": {
       "dev-master": "3.4.x-dev"
     }
-  },
-  "replace": {
+  },  "replace": {
     "twitter/bootstrap": "self.version"
   }
 }

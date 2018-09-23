@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # [Bootstrap](http://getbootstrap.com)
 
 [![Slack](https://bootstrap-slack.herokuapp.com/badge.svg)](https://bootstrap-slack.herokuapp.com)
@@ -13,6 +14,31 @@ Bootstrap is a sleek, intuitive, and powerful front-end framework for faster and
 To get started, check out <http://getbootstrap.com>!
 
 
+=======
+<p align="center">
+  <a href="https://getbootstrap.com/">
+    <img src="https://getbootstrap.com/docs/4.1/assets/brand/bootstrap-solid.svg" alt="Bootstrap logo" width=72 height=72>
+  </a>
+  <h3 align="center">Bootstrap Framework</h3>
+  <p align="center">
+    Sleek, intuitive, and powerful front-end framework for web development faster and easier .
+    <br>
+    <a href="https://getbootstrap.com/docs/4.1/"><strong>Explore Bootstrap docs »</strong></a>
+    <br>
+    <br>
+    <a href="https://github.com/twbs/bootstrap/issues/new?template=bug.md">Report a bug</a>
+    ·
+    <a href="https://github.com/twbs/bootstrap/issues/new?template=feature.md&labels=feature">Requesta feature</a>
+    ·
+    <a href="https://themes.getbootstrap.com/">Themes</a>
+    ·
+    <a href="https://jobs.getbootstrap.com/">Jobs</a>
+    ·
+    <a href="https://blog.getbootstrap.com/">Blog</a>
+  </p>
+</p>
+<br>
+>>>>>>> 13ee81a00a0ac9daf9ecae52df7e8731d930424d
 ## Table of contents
 
 - [Quick start](#quick-start)
@@ -118,6 +144,7 @@ Documentation search is powered by [Algolia's DocSearch](https://community.algol
 1. Run through the [tooling setup](https://getbootstrap.com/docs/4.1/getting-started/build-tools/#tooling-setup) to install Jekyll (the site builder) and other Ruby dependencies with `bundle install`.
 2. Run `npm install` to install Node.js dependencies.
 3. Run `npm start` to compile CSS and JavaScript files, generate our docs, and watch for changes.
+<<<<<<< HEAD
 =======
 1. If necessary, [install Jekyll](http://jekyllrb.com/docs/installation) and other Ruby dependencies with `bundle install`.
    **Note for Windows users:** Read [this unofficial guide](http://jekyll-windows.juthilo.com/) to get Jekyll up and running without problems.
@@ -126,16 +153,17 @@ Documentation search is powered by [Algolia's DocSearch](https://community.algol
 4. Open `http://localhost:9001` in your browser, and voilà.
 
 Learn more about using Jekyll by reading its [documentation](https://jekyllrb.com/docs/).
+=======
+4. Open `http://localhost:9001` in your browser.
+>>>>>>> 13ee81a00a0ac9daf9ecae52df7e8731d930424d
 
+Learn more jekyll by reading its [documentation](https://jekyllrb.com/docs/).
 ### Documentation for previous releases
 
 - For v2.3.2: <https://getbootstrap.com/2.3.2/>
 - For v3.3.x: <https://getbootstrap.com/docs/3.3/>
 - For v4.0.x: <https://getbootstrap.com/docs/4.0/>
-
 [Previous releases](https://github.com/twbs/bootstrap/releases) and their documentation are also available for download.
-
-
 ## Contributing
 
 Please read through our [contributing guidelines](https://github.com/twbs/bootstrap/blob/master/CONTRIBUTING.md). Included are directions for opening issues, coding standards, and notes on development.
@@ -144,6 +172,7 @@ Moreover, if your pull request contains JavaScript patches or features, you must
 
 <<<<<<< HEAD
 Editor preferences are available in the [editor config](https://github.com/twbs/bootstrap/blob/master/.editorconfig) for easy use in common text editors. Read more and download plugins at <https://editorconfig.org/>.
+<<<<<<< HEAD
 =======
 **Bootstrap v3 is now closed off to new features.** It has gone into maintenance mode so that we can focus our efforts on [Bootstrap v4](https://github.com/twbs/bootstrap/tree/v4-dev), the future of the framework. Pull requests which add new features (rather than fix bugs) should target [Bootstrap v4 (the `v4-dev` git branch)](https://github.com/twbs/bootstrap/tree/v4-dev) instead.
 
@@ -151,8 +180,9 @@ Editor preferences are available in the [editor config](https://github.com/twbs/
 >>>>>>> cee8e8653dc009b5d86af4a8e2ad3a5e0688ca4c
 
 
+=======
+>>>>>>> 13ee81a00a0ac9daf9ecae52df7e8731d930424d
 ## Community
-
 Get updates on Bootstrap's development and chat with the project maintainers and community members.
 
 - Follow [@getbootstrap on Twitter](https://twitter.com/getbootstrap).
@@ -161,25 +191,28 @@ Get updates on Bootstrap's development and chat with the project maintainers and
 - Chat with fellow Bootstrappers in IRC. On the `irc.freenode.net` server, in the `##bootstrap` channel.
 - Implementation help may be found at Stack Overflow (tagged [`bootstrap-4`](https://stackoverflow.com/questions/tagged/bootstrap-4)).
 - Developers should use the keyword `bootstrap` on packages which modify or add to the functionality of Bootstrap when distributing through [npm](https://www.npmjs.com/browse/keyword/bootstrap) or similar delivery mechanisms for maximum discoverability.
+<<<<<<< HEAD
 
+=======
+>>>>>>> 13ee81a00a0ac9daf9ecae52df7e8731d930424d
 ## Versioning
 
 For transparency into our release cycle and in striving to maintain backward compatibility, Bootstrap is maintained under [the Semantic Versioning guidelines](https://semver.org/). Sometimes we screw up, but we'll adhere to those rules whenever possible.
 
 See [the Releases section of our GitHub project](https://github.com/twbs/bootstrap/releases) for changelogs for each release version of Bootstrap. Release announcement posts on [the official Bootstrap blog](https://blog.getbootstrap.com/) contain summaries of the most noteworthy changes made in each release.
+<<<<<<< HEAD
 
+=======
+>>>>>>> 13ee81a00a0ac9daf9ecae52df7e8731d930424d
 ## Creators
-
 **Mark Otto**
 
 - <https://twitter.com/mdo>
 - <https://github.com/mdo>
 
 **Jacob Thornton**
-
 - <https://twitter.com/fat>
 - <https://github.com/fat>
-
 
 ## Thanks
 
@@ -187,8 +220,8 @@ See [the Releases section of our GitHub project](https://github.com/twbs/bootstr
 
 <<<<<<< HEAD
 Thanks to [BrowserStack](https://www.browserstack.com/) for providing the infrastructure that allows us to test in real browsers!
-
 ## Copyright and license
+<<<<<<< HEAD
 
 Code and documentation copyright 2011-2018 the [Bootstrap Authors](https://github.com/twbs/bootstrap/graphs/contributors) and [Twitter, Inc.](https://twitter.com) Code released under the [MIT License](https://github.com/twbs/bootstrap/blob/master/LICENSE). Docs released under [Creative Commons](https://github.com/twbs/bootstrap/blob/master/docs/LICENSE).
 =======
@@ -196,3 +229,6 @@ Code and documentation copyright 2011-2018 the [Bootstrap Authors](https://githu
 
 Code and documentation copyright 2011-2016 Twitter, Inc. Code released under [the MIT license](https://github.com/twbs/bootstrap/blob/master/LICENSE). Docs released under [Creative Commons](https://github.com/twbs/bootstrap/blob/master/docs/LICENSE).
 >>>>>>> cee8e8653dc009b5d86af4a8e2ad3a5e0688ca4c
+=======
+  Copyright 2018-2019 the [Bootstrap Authors](https://github.com/twbs/bootstrap/graphs/contributors) and [Twitter, Inc.](https://twitter.com) Code released under the [MIT License](https://github.com/twbs/bootstrap/blob/master/LICENSE). Docs released under [Creative Commons](https://github.com/twbs/bootstrap/blob/master/docs/LICENSE).
+>>>>>>> 13ee81a00a0ac9daf9ecae52df7e8731d930424d

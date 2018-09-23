@@ -1,10 +1,13 @@
 // Variables
 //
+<<<<<<< HEAD
 // Variables should follow the `$component-state-property-size` formula for
 // consistent naming. Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.
 
 
 // Color system
+=======
+>>>>>>> 13ee81a00a0ac9daf9ecae52df7e8731d930424d
 
 $white:    #fff !default;
 $gray-100: #f8f9fa !default;
@@ -20,8 +23,7 @@ $black:    #000 !default;
 
 $grays: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
-$grays: map-merge(
-  (
+$grays: map-merge( (
     "100": $gray-100,
     "200": $gray-200,
     "300": $gray-300,
@@ -31,10 +33,12 @@ $grays: map-merge(
     "700": $gray-700,
     "800": $gray-800,
     "900": $gray-900
-  ),
-  $grays
+  ),  $grays
 );
+<<<<<<< HEAD
 
+=======
+>>>>>>> 13ee81a00a0ac9daf9ecae52df7e8731d930424d
 $blue:    #007bff !default;
 $indigo:  #6610f2 !default;
 $purple:  #6f42c1 !default;
@@ -45,7 +49,6 @@ $yellow:  #ffc107 !default;
 $green:   #28a745 !default;
 $teal:    #20c997 !default;
 $cyan:    #17a2b8 !default;
-
 $colors: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $colors: map-merge(

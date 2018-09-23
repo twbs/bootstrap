@@ -1,8 +1,3 @@
-/*!
-  * Bootstrap v4.1.3 (https://getbootstrap.com/)
-  * Copyright 2011-2018 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
-  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
-  */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('jquery')) :
   typeof define === 'function' && define.amd ? define(['exports', 'jquery'], factory) :
@@ -66,28 +61,19 @@
     subClass.prototype.constructor = subClass;
     subClass.__proto__ = superClass;
   }
-
-  /**
-   * --------------------------------------------------------------------------
-   * Bootstrap (v4.1.3): util.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
-   * --------------------------------------------------------------------------
-   */
-
   var Util = function ($$$1) {
     /**
      * ------------------------------------------------------------------------
      * Private TransitionEnd Helpers
      * ------------------------------------------------------------------------
      */
-    var TRANSITION_END = 'transitionend';
-    var MAX_UID = 1000000;
-    var MILLISECONDS_MULTIPLIER = 1000; // Shoutout AngusCroll (https://goo.gl/pxwQGp)
+    var TRANSITION_END = 'transitionend',
+    MAX_UID = 1000000,
+     MILLISECONDS_MULTIPLIER = 1000; // Shoutout AngusCroll (https://goo.gl/pxwQGp)
 
     function toType(obj) {
       return {}.toString.call(obj).match(/\s([a-z]+)/i)[1].toLowerCase();
     }
-
     function getSpecialTransitionEndEvent() {
       return {
         bindType: TRANSITION_END,
@@ -96,16 +82,13 @@
           if ($$$1(event.target).is(this)) {
             return event.handleObj.handler.apply(this, arguments); // eslint-disable-line prefer-rest-params
           }
-
           return undefined; // eslint-disable-line no-undefined
         }
       };
     }
 
     function transitionEndEmulator(duration) {
-      var _this = this;
-
-      var called = false;
+      var _this = this,called = false;
       $$$1(this).one(Util.TRANSITION_END, function () {
         called = true;
       });
@@ -121,12 +104,6 @@
       $$$1.fn.emulateTransitionEnd = transitionEndEmulator;
       $$$1.event.special[Util.TRANSITION_END] = getSpecialTransitionEndEvent();
     }
-    /**
-     * --------------------------------------------------------------------------
-     * Public Util Api
-     * --------------------------------------------------------------------------
-     */
-
 
     var Util = {
       TRANSITION_END: 'bsTransitionEnd',
@@ -135,33 +112,45 @@
           // eslint-disable-next-line no-bitwise
           prefix += ~~(Math.random() * MAX_UID); // "~~" acts like a faster Math.floor() here
         } while (document.getElementById(prefix));
-
-        return prefix;
+       return prefix;
       },
       getSelectorFromElement: function getSelectorFromElement(element) {
+<<<<<<< HEAD
         var selector = element.getAttribute('data-target');
 
+=======
+        var selector = element.getAttribute('data-target'),method = 'querySelector';
+>>>>>>> 13ee81a00a0ac9daf9ecae52df7e8731d930424d
         if (!selector || selector === '#') {
           var hrefAttr = element.getAttribute('href');
           selector = hrefAttr && hrefAttr !== '#' ? hrefAttr.trim() : '';
         }
+<<<<<<< HEAD
 
         return selector && document.querySelector(selector) ? selector : null;
+=======
+        var validSelector = selector;
+        if (selector.charAt(0) === '#' && selector.indexOf(',') === -1) {
+          selector = selector.substr(1);
+          method = 'getElementById';
+        }
+        try {
+          return document[method](selector) ? validSelector : null;
+        } catch (err) {
+          return null;
+        }
+>>>>>>> 13ee81a00a0ac9daf9ecae52df7e8731d930424d
       },
       getTransitionDurationFromElement: function getTransitionDurationFromElement(element) {
         if (!element) {
           return 0;
         } // Get transition-duration of the element
-
-
-        var transitionDuration = $$$1(element).css('transition-duration');
-        var floatTransitionDuration = parseFloat(transitionDuration); // Return 0 if element or transition duration is not found
+        var transitionDuration = $$$1(element).css('transition-duration'),
+        floatTransitionDuration = parseFloat(transitionDuration); // Return 0 if element or transition duration is not found
 
         if (!floatTransitionDuration) {
           return 0;
         } // If multiple durations are defined, take the first
-
-
         transitionDuration = transitionDuration.split(',')[0];
         return parseFloat(transitionDuration) * MILLISECONDS_MULTIPLIER;
       },
@@ -196,34 +185,25 @@
     return Util;
   }($);
 
-  /**
-   * --------------------------------------------------------------------------
-   * Bootstrap (v4.1.3): alert.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
-   * --------------------------------------------------------------------------
-   */
-
   var Alert = function ($$$1) {
     /**
      * ------------------------------------------------------------------------
      * Constants
      * ------------------------------------------------------------------------
      */
-    var NAME = 'alert';
-    var VERSION = '4.1.3';
-    var DATA_KEY = 'bs.alert';
-    var EVENT_KEY = "." + DATA_KEY;
-    var DATA_API_KEY = '.data-api';
-    var JQUERY_NO_CONFLICT = $$$1.fn[NAME];
-    var Selector = {
+    var NAME = 'alert',
+    VERSION = '4.1.3', 
+    DATA_KEY = 'bs.alert',
+    EVENT_KEY = "." + DATA_KEY,
+    DATA_API_KEY = '.data-api',
+    JQUERY_NO_CONFLICT = $$$1.fn[NAME],
+    Selector = {
       DISMISS: '[data-dismiss="alert"]'
-    };
-    var Event = {
+    },Event = {
       CLOSE: "close" + EVENT_KEY,
       CLOSED: "closed" + EVENT_KEY,
       CLICK_DATA_API: "click" + EVENT_KEY + DATA_API_KEY
-    };
-    var ClassName = {
+    }, ClassName = {
       ALERT: 'alert',
       FADE: 'fade',
       SHOW: 'show'
@@ -233,79 +213,55 @@
        * ------------------------------------------------------------------------
        */
 
-    };
-
-    var Alert =
+    },Alert =
     /*#__PURE__*/
     function () {
       function Alert(element) {
         this._element = element;
       } // Getters
-
-
       var _proto = Alert.prototype;
-
       // Public
       _proto.close = function close(element) {
         var rootElement = this._element;
-
         if (element) {
           rootElement = this._getRootElement(element);
         }
-
         var customEvent = this._triggerCloseEvent(rootElement);
-
         if (customEvent.isDefaultPrevented()) {
           return;
         }
-
         this._removeElement(rootElement);
       };
-
       _proto.dispose = function dispose() {
         $$$1.removeData(this._element, DATA_KEY);
         this._element = null;
       }; // Private
-
-
       _proto._getRootElement = function _getRootElement(element) {
-        var selector = Util.getSelectorFromElement(element);
-        var parent = false;
-
+        var selector = Util.getSelectorFromElement(element),parent = false;
         if (selector) {
           parent = document.querySelector(selector);
         }
-
         if (!parent) {
           parent = $$$1(element).closest("." + ClassName.ALERT)[0];
-        }
-
-        return parent;
+        };return parent;
       };
-
       _proto._triggerCloseEvent = function _triggerCloseEvent(element) {
         var closeEvent = $$$1.Event(Event.CLOSE);
         $$$1(element).trigger(closeEvent);
         return closeEvent;
       };
-
       _proto._removeElement = function _removeElement(element) {
         var _this = this;
-
         $$$1(element).removeClass(ClassName.SHOW);
-
         if (!$$$1(element).hasClass(ClassName.FADE)) {
           this._destroyElement(element);
-
           return;
         }
-
         var transitionDuration = Util.getTransitionDurationFromElement(element);
         $$$1(element).one(Util.TRANSITION_END, function (event) {
           return _this._destroyElement(element, event);
         }).emulateTransitionEnd(transitionDuration);
       };
-
       _proto._destroyElement = function _destroyElement(element) {
         $$$1(element).detach().trigger(Event.CLOSED).remove();
       }; // Static
@@ -384,43 +340,28 @@
      * Constants
      * ------------------------------------------------------------------------
      */
-    var NAME = 'button';
-    var VERSION = '4.1.3';
-    var DATA_KEY = 'bs.button';
-    var EVENT_KEY = "." + DATA_KEY;
-    var DATA_API_KEY = '.data-api';
-    var JQUERY_NO_CONFLICT = $$$1.fn[NAME];
-    var ClassName = {
+    var NAME = 'button',VERSION = '4.1.3',DATA_KEY = 'bs.button',
+    EVENT_KEY = "." + DATA_KEY,DATA_API_KEY = '.data-api',
+    JQUERY_NO_CONFLICT = $$$1.fn[NAME]
+    ,ClassName = {
       ACTIVE: 'active',
       BUTTON: 'btn',
       FOCUS: 'focus'
-    };
-    var Selector = {
+    },Selector = {
       DATA_TOGGLE_CARROT: '[data-toggle^="button"]',
       DATA_TOGGLE: '[data-toggle="buttons"]',
       INPUT: 'input',
       ACTIVE: '.active',
       BUTTON: '.btn'
-    };
-    var Event = {
+    },Event = {
       CLICK_DATA_API: "click" + EVENT_KEY + DATA_API_KEY,
       FOCUS_BLUR_DATA_API: "focus" + EVENT_KEY + DATA_API_KEY + " " + ("blur" + EVENT_KEY + DATA_API_KEY)
-      /**
-       * ------------------------------------------------------------------------
-       * Class Definition
-       * ------------------------------------------------------------------------
-       */
-
-    };
-
-    var Button =
+    }, Button =
     /*#__PURE__*/
     function () {
       function Button(element) {
         this._element = element;
       } // Getters
-
-
       var _proto = Button.prototype;
 
       // Public
@@ -548,39 +489,33 @@
      * Constants
      * ------------------------------------------------------------------------
      */
-    var NAME = 'carousel';
-    var VERSION = '4.1.3';
-    var DATA_KEY = 'bs.carousel';
-    var EVENT_KEY = "." + DATA_KEY;
-    var DATA_API_KEY = '.data-api';
-    var JQUERY_NO_CONFLICT = $$$1.fn[NAME];
-    var ARROW_LEFT_KEYCODE = 37; // KeyboardEvent.which value for left arrow key
-
-    var ARROW_RIGHT_KEYCODE = 39; // KeyboardEvent.which value for right arrow key
-
-    var TOUCHEVENT_COMPAT_WAIT = 500; // Time for mouse compat events to fire after touch
-
-    var Default = {
+    var NAME = 'carousel',
+        VERSION = '4.1.3',
+        DATA_KEY = 'bs.carousel',
+        EVENT_KEY = "." + DATA_KEY,
+        DATA_API_KEY = '.data-api',
+        JQUERY_NO_CONFLICT = $$$1.fn[NAME],
+        ARROW_LEFT_KEYCODE = 37,
+        ARROW_RIGHT_KEYCODE = 39,
+        TOUCHEVENT_COMPAT_WAIT = 500,
+        Default = {
       interval: 5000,
       keyboard: true,
       slide: false,
       pause: 'hover',
       wrap: true
-    };
-    var DefaultType = {
+    },DefaultType = {
       interval: '(number|boolean)',
       keyboard: 'boolean',
       slide: '(boolean|string)',
       pause: '(string|boolean)',
       wrap: 'boolean'
-    };
-    var Direction = {
+    },Direction = {
       NEXT: 'next',
       PREV: 'prev',
       LEFT: 'left',
       RIGHT: 'right'
-    };
-    var Event = {
+    },Event = {
       SLIDE: "slide" + EVENT_KEY,
       SLID: "slid" + EVENT_KEY,
       KEYDOWN: "keydown" + EVENT_KEY,
@@ -589,8 +524,7 @@
       TOUCHEND: "touchend" + EVENT_KEY,
       LOAD_DATA_API: "load" + EVENT_KEY + DATA_API_KEY,
       CLICK_DATA_API: "click" + EVENT_KEY + DATA_API_KEY
-    };
-    var ClassName = {
+    }, ClassName = {
       CAROUSEL: 'carousel',
       ACTIVE: 'active',
       SLIDE: 'slide',
@@ -599,8 +533,7 @@
       NEXT: 'carousel-item-next',
       PREV: 'carousel-item-prev',
       ITEM: 'carousel-item'
-    };
-    var Selector = {
+    }, Selector = {
       ACTIVE: '.active',
       ACTIVE_ITEM: '.active.carousel-item',
       ITEM: '.carousel-item',
@@ -614,9 +547,7 @@
        * ------------------------------------------------------------------------
        */
 
-    };
-
-    var Carousel =
+    }, Carousel =
     /*#__PURE__*/
     function () {
       function Carousel(element, config) {
@@ -629,7 +560,6 @@
         this._config = this._getConfig(config);
         this._element = $$$1(element)[0];
         this._indicatorsElement = this._element.querySelector(Selector.INDICATORS);
-
         this._addEventListeners();
       } // Getters
 

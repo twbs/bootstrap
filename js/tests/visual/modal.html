@@ -5,12 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="../../../dist/css/bootstrap.min.css">
-    <title>Modal</title>
+    <title>Modal Bootstrap</title>
     <style>
-      #tall {
-        height: 1500px;
-        width: 100px;
-      }
+      #tall {height: 1700px; width: 100px;}
     </style>
   </head>
   <body>
@@ -26,15 +23,13 @@
             <a class="nav-link" href="#">Link</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link" href="#">second Link</a>
           </li>
         </ul>
       </div>
     </nav>
-
     <div class="container mt-3">
       <h1>Modal <small>Bootstrap Visual Test</small></h1>
-
       <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -137,10 +132,8 @@
             <div class="modal-body">
               <h4>Text in a modal</h4>
               <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
-
               <h4>Popover in a modal</h4>
               <p>This <button type="button" class="btn btn-primary" data-toggle="popover" data-placement="left" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">button</button> should trigger a popover on click.</p>
-
 
               <h4>Tooltips in a modal</h4>
               <p><a href="#" data-toggle="tooltip" data-placement="top" title="Tooltip on top">This link</a> and <a href="#" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">that link</a> should have tooltips on hover.</p>
@@ -150,11 +143,10 @@
                   <div class="card-header" role="tab" id="headingOne">
                     <h5 class="mb-0">
                       <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        Collapsible Group Item #1
+                        Collapsible Group Item nº1
                       </a>
                     </h5>
                   </div>
-
                   <div id="collapseOne" class="collapse show" data-parent="#accordion" role="tabpanel" aria-labelledby="headingOne">
                     <div class="card-body">
                       Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
@@ -165,7 +157,7 @@
                   <div class="card-header" role="tab" id="headingTwo">
                     <h5 class="mb-0">
                       <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        Collapsible Group Item #2
+                        Collapsible Group Item nº2
                       </a>
                     </h5>
                   </div>
@@ -179,7 +171,7 @@
                   <div class="card-header" role="tab" id="headingThree">
                     <h5 class="mb-0">
                       <a class="collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                        Collapsible Group Item #3
+                        Collapsible Group Item nº3
                       </a>
                     </h5>
                   </div>
@@ -190,9 +182,7 @@
                   </div>
                 </div>
               </div>
-
               <hr>
-
               <h4>Overflowing text to show scroll behavior</h4>
               <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
               <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
@@ -211,7 +201,6 @@
           </div>
         </div>
       </div>
-
       <div class="modal fade" id="firefoxModal" tabindex="-1" role="dialog" aria-labelledby="firefoxModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -257,46 +246,38 @@
           </div>
         </div>
       </div>
-
       <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-        Launch demo modal
+        Launch modal
       </button>
-
       <button type="button" class="btn btn-primary btn-lg" id="tall-toggle">
         Toggle tall &lt;body&gt; content
       </button>
-
       <br><br>
-
       <button type="button" class="btn btn-secondary btn-lg" data-toggle="modal" data-target="#firefoxModal">
-        Launch Firefox bug test modal
+        Launch Firefox bug test
       </button>
       (<a href="https://github.com/twbs/bootstrap/issues/18365">See Issue #18365</a>)
-
       <br><br>
-
       <button type="button" class="btn btn-secondary btn-lg" data-toggle="modal" data-target="#slowModal">
-        Launch modal with slow transition
+        Launch modal slow
       </button>
-
       <br><br>
-
       <div class="bg-dark text-white p-2" id="tall" style="display: none;">
         Tall body content to force the page to have a scrollbar.
       </div>
-
       <button type="button" class="btn btn-secondary btn-lg" data-toggle="modal" data-target="&#x3C;div class=&#x22;modal fade the-bad&#x22; tabindex=&#x22;-1&#x22; role=&#x22;dialog&#x22;&#x3E;&#x3C;div class=&#x22;modal-dialog&#x22; role=&#x22;document&#x22;&#x3E;&#x3C;div class=&#x22;modal-content&#x22;&#x3E;&#x3C;div class=&#x22;modal-header&#x22;&#x3E;&#x3C;button type=&#x22;button&#x22; class=&#x22;close&#x22; data-dismiss=&#x22;modal&#x22; aria-label=&#x22;Close&#x22;&#x3E;&#x3C;span aria-hidden=&#x22;true&#x22;&#x3E;&#x26;times;&#x3C;/span&#x3E;&#x3C;/button&#x3E;&#x3C;h4 class=&#x22;modal-title&#x22;&#x3E;The Bad Modal&#x3C;/h4&#x3E;&#x3C;/div&#x3E;&#x3C;div class=&#x22;modal-body&#x22;&#x3E;This modal&#x27;s HTTML source code is declared inline, inside the data-target attribute of it&#x27;s show-button&#x3C;/div&#x3E;&#x3C;/div&#x3E;&#x3C;/div&#x3E;&#x3C;/div&#x3E;">
         Modal with an XSS inside the data-target
       </button>
-
       <br><br>
-
       <button type="button" class="btn btn-secondary btn-lg" id="btnPreventModal">
         Launch prevented modal on hide (to see the result open your console)
       </button>
     </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> 13ee81a00a0ac9daf9ecae52df7e8731d930424d
     <script src="../../../site/docs/4.1/assets/js/vendor/jquery-slim.min.js"></script>
     <script src="../../../site/docs/4.1/assets/js/vendor/popper.min.js"></script>
     <script src="../../dist/util.js"></script>
@@ -304,7 +285,6 @@
     <script src="../../dist/collapse.js"></script>
     <script src="../../dist/tooltip.js"></script>
     <script src="../../dist/popover.js"></script>
-
     <script>
       var firefoxTestDone = false
       function reportFirefoxTestResult(result) {
@@ -314,7 +294,6 @@
             .text(result ? 'PASS' : 'FAIL')
         }
       }
-
       $(function () {
         $('[data-toggle="popover"]').popover()
         $('[data-toggle="tooltip"]').tooltip()
@@ -322,12 +301,10 @@
         $('#tall-toggle').click(function () {
           $('#tall').toggle()
         })
-
         $('#ff-bug-input').one('focus', function () {
           $('#firefoxModal').on('focus', reportFirefoxTestResult.bind(false))
           $('#ff-bug-input').on('focus', reportFirefoxTestResult.bind(true))
         })
-
         $('#btnPreventModal').on('click', function () {
           $('#firefoxModal').one('shown.bs.modal', function () {
             $(this).modal('hide')
@@ -340,20 +317,16 @@
               console.log('Test passed')
               $(this).modal('hide') // work as expected
             }
-          })
-          .modal('show')
+          }).modal('show')
         })
-
         // Test transition duration
         var t0, t1;
-
         $('#slowModal').on('shown.bs.modal', function(){
           t1 = performance.now()
           console.log('transition-duration took ' + (t1 - t0) + 'ms.')
         }).on('show.bs.modal', function(){
           t0 = performance.now()
         })
-
       })
     </script>
   </body>
