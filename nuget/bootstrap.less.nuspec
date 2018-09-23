@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>bootstrap.less</id>
-    <version>3.3.7</version>
+    <version>3.4.0</version>
     <title>Bootstrap Less</title>
     <authors>Twitter, Inc.</authors>
     <owners>bootstrap</owners>

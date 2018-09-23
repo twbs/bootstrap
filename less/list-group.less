@@ -1,3 +1,5 @@
+/* stylelint-disable selector-no-qualifying-type */
+
 //
 // List groups
 // --------------------------------------------------
@@ -9,8 +11,8 @@
 
 .list-group {
   // No need to set list-style: none; since .list-group-item is block level
-  margin-bottom: 20px;
   padding-left: 0; // reset padding because ul and ol
+  margin-bottom: 20px;
 }
 
 
@@ -35,44 +37,14 @@
     margin-bottom: 0;
     .border-bottom-radius(@list-group-border-radius);
   }
-}
 
-
-// Interactive list items
-//
-// Use anchor or button elements instead of `li`s or `div`s to create interactive items.
-// Includes an extra `.active` modifier class for showing selected items.
-
-a.list-group-item,
-button.list-group-item {
-  color: @list-group-link-color;
-
-  .list-group-item-heading {
-    color: @list-group-link-heading-color;
-  }
-
-  // Hover state
-  &:hover,
-  &:focus {
-    text-decoration: none;
-    color: @list-group-link-hover-color;
-    background-color: @list-group-hover-bg;
-  }
-}
-
-button.list-group-item {
-  width: 100%;
-  text-align: left;
-}
-
-.list-group-item {
   // Disabled state
   &.disabled,
   &.disabled:hover,
   &.disabled:focus {
-    background-color: @list-group-disabled-bg;
     color: @list-group-disabled-color;
     cursor: @cursor-disabled;
+    background-color: @list-group-disabled-bg;
 
     // Force color to inherit for custom content
     .list-group-item-heading {
@@ -102,6 +74,34 @@ button.list-group-item {
       color: @list-group-active-text-color;
     }
   }
+}
+
+
+// Interactive list items
+//
+// Use anchor or button elements instead of `li`s or `div`s to create interactive items.
+// Includes an extra `.active` modifier class for showing selected items.
+
+a.list-group-item,
+button.list-group-item {
+  color: @list-group-link-color;
+
+  .list-group-item-heading {
+    color: @list-group-link-heading-color;
+  }
+
+  // Hover state
+  &:hover,
+  &:focus {
+    color: @list-group-link-hover-color;
+    text-decoration: none;
+    background-color: @list-group-hover-bg;
+  }
+}
+
+button.list-group-item {
+  width: 100%;
+  text-align: left;
 }
 
 

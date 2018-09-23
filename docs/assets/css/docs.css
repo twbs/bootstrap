@@ -1,41 +1,244 @@
 /*!
  * Bootstrap Docs (http://getbootstrap.com)
- * Copyright 2011-2016 Twitter, Inc.
+ * Copyright 2011-2017 Twitter, Inc.
  * Licensed under the Creative Commons Attribution 3.0 Unported License. For
  * details, see https://creativecommons.org/licenses/by/3.0/.
  */
-
-
-/*
- * Bootstrap Documentation
- * Special styles for presenting Bootstrap's documentation and code examples.
+/* stylelint-disable declaration-block-single-line-max-declarations */
+.hll {
+  background-color: #ffc;
+}
+.c {
+  color: #999;
+}
+.err {
+  color: #a00;
+  background-color: #faa;
+}
+.k {
+  color: #069;
+}
+.o {
+  color: #555;
+}
+.cm {
+  color: #999;
+}
+.cp {
+  color: #099;
+}
+.c1 {
+  color: #999;
+}
+.cs {
+  color: #999;
+}
+.gd {
+  background-color: #fcc;
+  border: 1px solid #c00;
+}
+.ge {
+  font-style: italic;
+}
+.gr {
+  color: #f00;
+}
+.gh {
+  color: #030;
+}
+.gi {
+  background-color: #cfc;
+  border: 1px solid #0c0;
+}
+.go {
+  color: #aaa;
+}
+.gp {
+  color: #009;
+}
+.gu {
+  color: #030;
+}
+.gt {
+  color: #9c6;
+}
+.kc {
+  color: #069;
+}
+.kd {
+  color: #069;
+}
+.kn {
+  color: #069;
+}
+.kp {
+  color: #069;
+}
+.kr {
+  color: #069;
+}
+.kt {
+  color: #078;
+}
+.m {
+  color: #f60;
+}
+.s {
+  color: #d44950;
+}
+.na {
+  color: #4f9fcf;
+}
+.nb {
+  color: #366;
+}
+.nc {
+  color: #0a8;
+}
+.no {
+  color: #360;
+}
+.nd {
+  color: #99f;
+}
+.ni {
+  color: #999;
+}
+.ne {
+  color: #c00;
+}
+.nf {
+  color: #c0f;
+}
+.nl {
+  color: #99f;
+}
+.nn {
+  color: #0cf;
+}
+.nt {
+  color: #2f6f9f;
+}
+.nv {
+  color: #033;
+}
+.ow {
+  color: #000;
+}
+.w {
+  color: #bbb;
+}
+.mf {
+  color: #f60;
+}
+.mh {
+  color: #f60;
+}
+.mi {
+  color: #f60;
+}
+.mo {
+  color: #f60;
+}
+.sb {
+  color: #c30;
+}
+.sc {
+  color: #c30;
+}
+.sd {
+  font-style: italic;
+  color: #c30;
+}
+.s2 {
+  color: #c30;
+}
+.se {
+  color: #c30;
+}
+.sh {
+  color: #c30;
+}
+.si {
+  color: #a00;
+}
+.sx {
+  color: #c30;
+}
+.sr {
+  color: #3aa;
+}
+.s1 {
+  color: #c30;
+}
+.ss {
+  color: #fc3;
+}
+.bp {
+  color: #366;
+}
+.vc {
+  color: #033;
+}
+.vg {
+  color: #033;
+}
+.vi {
+  color: #033;
+}
+.il {
+  color: #f60;
+}
+.css .o,
+.css .o + .nt,
+.css .nt + .nt {
+  color: #999;
+}
+.highlight {
+  padding: 9px 14px;
+  margin-bottom: 14px;
+  background-color: #f7f7f9;
+  border: 1px solid #e1e1e8;
+  border-radius: 4px;
+}
+.highlight pre {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  word-break: normal;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
+}
+.highlight pre code {
+  font-size: inherit;
+  color: #333;
+}
+.highlight pre code:first-child {
+  display: inline-block;
+  padding-right: 45px;
+}
+/* stylelint-disable at-rule-no-vendor-prefix */
+/*!
+ * IE10 viewport hack for Surface/desktop Windows 8 bug
+ * Copyright 2014-2015 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
-
-
-/*
- * Scaffolding
- *
- * Update the basics of our documents to prep for docs content.
- */
-
-body {
-  position: relative; /* For scrollspy */
+@-ms-viewport {
+  width: device-width;
 }
-
-/* Keep code small in tables on account of limited space */
-.table code {
-  font-size: 13px;
-  font-weight: normal;
+@-o-viewport {
+  width: device-width;
 }
-
-/* Inline code within headings retain the heading's background-color */
-h2 code,
-h3 code,
-h4 code {
-  background-color: inherit;
+@viewport {
+  width: device-width;
 }
-
-/* Outline button for use within the docs */
+/* stylelint-disable value-keyword-case */
+/* stylelint-disable font-family-name-quotes, font-family-no-missing-generic-family-keyword */
+/* stylelint-disable media-feature-name-no-vendor-prefix, media-feature-parentheses-space-inside, media-feature-name-no-unknown, indentation, at-rule-name-space-after */
+/* stylelint-disable declaration-no-important */
+/* stylelint-disable indentation, property-no-vendor-prefix, selector-no-vendor-prefix */
+/* stylelint-disable value-no-vendor-prefix, selector-max-id */
 .btn-outline {
   color: #563d7c;
   background-color: transparent;
@@ -48,8 +251,6 @@ h4 code {
   background-color: #563d7c;
   border-color: #563d7c;
 }
-
-/* Inverted outline button (white on dark) */
 .btn-outline-inverse {
   color: #fff;
   background-color: transparent;
@@ -63,8 +264,6 @@ h4 code {
   background-color: #fff;
   border-color: #fff;
 }
-
-/* Bootstrap "B" icon */
 .bs-docs-booticon {
   display: block;
   font-weight: 500;
@@ -94,15 +293,7 @@ h4 code {
   background-color: transparent;
   border: 1px solid #cdbfe3;
 }
-
-
-/*
- * Fancy skip link
- *
- * Make it look a bit less "bare bones"
- * Also includes focus suppression for the Chrome tabindex="-1" workaround
- */
-
+/* stylelint-disable selector-max-id */
 #skippy {
   display: block;
   padding: 1em;
@@ -110,35 +301,29 @@ h4 code {
   background-color: #6f5499;
   outline: 0;
 }
-
 #skippy .skiplink-text {
   padding: .5em;
   outline: 1px dotted;
 }
-
 #content:focus {
   outline: none;
 }
-
-
-/*
- * Main navigation
- *
- * Turn the `.navbar` at the top of the docs purple.
- */
-
 .bs-docs-nav {
   margin-bottom: 0;
   background-color: #fff;
   border-bottom: 0;
 }
-.bs-home-nav .bs-nav-b {
+.bs-docs-nav .bs-nav-b {
   display: none;
 }
 .bs-docs-nav .navbar-brand,
 .bs-docs-nav .navbar-nav > li > a {
   font-weight: 500;
   color: #563d7c;
+}
+.bs-docs-nav .navbar-nav > li > a {
+  padding-right: 10px;
+  padding-left: 10px;
 }
 .bs-docs-nav .navbar-nav > li > a:hover,
 .bs-docs-nav .navbar-nav > .active > a,
@@ -157,14 +342,11 @@ h4 code {
   background-color: #f9f9f9;
   border-color: #f9f9f9;
 }
-
-
-/*
- * Footer
- *
- * Separated section of content at the bottom of all pages, save the homepage.
- */
-
+@media (min-width: 768px) and (max-width: 992px) {
+  .bs-docs-nav .navbar-right {
+    display: none;
+  }
+}
 .bs-docs-footer {
   padding-top: 50px;
   padding-bottom: 50px;
@@ -186,7 +368,6 @@ h4 code {
 .bs-docs-footer-links li + li {
   margin-left: 15px;
 }
-
 @media (min-width: 768px) {
   .bs-docs-footer {
     text-align: left;
@@ -195,32 +376,22 @@ h4 code {
     margin-bottom: 0;
   }
 }
-
-
-/*
- * Homepage
- *
- * Tweaks to the custom homepage and the masthead (main jumbotron).
- */
-
-/* Share masthead with page headers */
+/* stylelint-disable value-no-vendor-prefix, function-name-case */
 .bs-docs-masthead,
 .bs-docs-header {
   position: relative;
   padding: 30px 0;
   color: #cdbfe3;
   text-align: center;
-  text-shadow: 0 1px 0 rgba(0,0,0,.1);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
   background-color: #6f5499;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#563d7c), to(#6f5499));
   background-image: -webkit-linear-gradient(top, #563d7c 0%, #6f5499 100%);
-  background-image:      -o-linear-gradient(top, #563d7c 0%, #6f5499 100%);
-  background-image:         linear-gradient(to bottom, #563d7c 0%, #6f5499 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#563d7c', endColorstr='#6F5499', GradientType=0);
+  background-image: -o-linear-gradient(top, #563d7c 0%, #6f5499 100%);
+  background-image: linear-gradient(to bottom, #563d7c 0%, #6f5499 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#563d7c", endColorstr="#6F5499", GradientType=0);
   background-repeat: repeat-x;
 }
-
-/* Masthead (headings and download button) */
 .bs-docs-masthead .bs-docs-booticon {
   margin: 0 auto 30px;
 }
@@ -244,13 +415,11 @@ h4 code {
   padding: 15px 30px;
   font-size: 20px;
 }
-
 @media (min-width: 480px) {
   .bs-docs-masthead .btn {
     width: auto;
   }
 }
-
 @media (min-width: 768px) {
   .bs-docs-masthead {
     padding: 80px 0;
@@ -262,22 +431,12 @@ h4 code {
     font-size: 24px;
   }
 }
-
 @media (min-width: 992px) {
   .bs-docs-masthead .lead {
     width: 80%;
     font-size: 30px;
   }
 }
-
-
-/*
- * Page headers
- *
- * Jumbotron-esque headers at the top of every page that's not the homepage.
- */
-
-/* Page headers */
 .bs-docs-header {
   margin-bottom: 40px;
   font-size: 20px;
@@ -294,7 +453,6 @@ h4 code {
 .bs-docs-header .container {
   position: relative;
 }
-
 @media (min-width: 768px) {
   .bs-docs-header {
     padding-top: 60px;
@@ -307,102 +465,55 @@ h4 code {
     line-height: 1;
   }
 }
-
 @media (min-width: 992px) {
   .bs-docs-header h1,
   .bs-docs-header p {
     margin-right: 380px;
   }
 }
-
-
-/*
- * Carbon ads
- *
- * Single display ad that shows on all pages (except homepage) in page headers.
- * The hella `!important` is required for any pre-set property.
- */
-
-.carbonad {
-  width: auto !important;
-  height: auto !important;
-  padding: 20px !important;
-  margin: 30px -15px -31px !important;
-  overflow: hidden; /* clearfix */
-  font-size: 13px !important;
-  line-height: 16px !important;
+/* stylelint-disable selector-max-id, declaration-no-important */
+#carbonads {
+  display: block;
+  padding: 15px 15px 15px 160px;
+  margin: 50px -15px -30px;
+  overflow: hidden;
+  font-size: 13px;
+  line-height: 1.5;
   text-align: left;
-  background: transparent !important;
-  border: solid #866ab3 !important;
-  border-width: 1px 0 !important;
+  border: solid #866ab3;
+  border-width: 1px 0 0;
 }
-.carbonad-img {
-  margin: 0 !important;
+#carbonads a {
+  color: #fff;
+  text-decoration: none;
 }
-.carbonad-text,
-.carbonad-tag {
-  display: block !important;
-  float: none !important;
-  width: auto !important;
-  height: auto !important;
-  margin-left: 145px !important;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
-}
-.carbonad-text {
-  padding-top: 0 !important;
-}
-.carbonad-tag {
-  color: inherit !important;
-  text-align: left !important;
-}
-.carbonad-text a,
-.carbonad-tag a {
-  color: #fff !important;
-}
-.carbonad #azcarbon > img {
-  display: none; /* hide what I assume are tracking images */
-}
-
-@media (min-width: 480px) {
-  .carbonad {
-    width: 330px !important;
-    margin: 20px auto !important;
-    border-width: 1px !important;
+@media (min-width: 768px) {
+  #carbonads {
+    max-width: 330px;
+    margin: 50px auto 0;
+    border-width: 1px;
     border-radius: 4px;
   }
-  .bs-docs-masthead .carbonad {
-    margin: 50px auto 0 !important;
-  }
 }
-
-@media (min-width: 768px) {
-  .carbonad {
-    margin-right: 0 !important;
-    margin-left: 0 !important;
-  }
-}
-
 @media (min-width: 992px) {
-  .carbonad {
+  #carbonads {
     position: absolute;
     top: 0;
-    right: 15px; /* 15px instead of 0 since box-sizing */
-    width: 330px !important;
-    padding: 15px !important;
-    margin: 0 !important;
+    right: 15px;
+    margin-top: 0;
   }
-  .bs-docs-masthead .carbonad {
+  .bs-docs-masthead #carbonads {
     position: static;
   }
 }
-
-
-/*
- * Homepage featurettes
- *
- * Reasons to use Bootstrap, entries from the Expo, and more.
- */
-
+.carbon-img {
+  float: left;
+  margin-left: -145px;
+}
+.carbon-poweredby {
+  display: block;
+  color: #cdbfe3 !important;
+}
 .bs-docs-featurette {
   padding-top: 40px;
   padding-bottom: 40px;
@@ -417,11 +528,10 @@ h4 code {
   margin-top: 0;
   border-top: 0;
 }
-
 .bs-docs-featurette-title {
   margin-bottom: 5px;
   font-size: 30px;
-  font-weight: normal;
+  font-weight: 400;
   color: #333;
 }
 .half-rule {
@@ -430,7 +540,7 @@ h4 code {
 }
 .bs-docs-featurette h3 {
   margin-bottom: 5px;
-  font-weight: normal;
+  font-weight: 400;
   color: #333;
 }
 .bs-docs-featurette-img {
@@ -446,7 +556,6 @@ h4 code {
   display: block;
   margin-bottom: 15px;
 }
-
 @media (min-width: 480px) {
   .bs-docs-featurette .img-responsive {
     margin-top: 30px;
@@ -469,14 +578,6 @@ h4 code {
     margin-top: 0;
   }
 }
-
-
-/*
- * Featured sites
- *
- * Homepage thumbnails from the Expo.
- */
-
 .bs-docs-featured-sites {
   margin-right: -1px;
   margin-left: -1px;
@@ -487,7 +588,6 @@ h4 code {
 .bs-docs-featured-sites .img-responsive {
   margin-top: 0;
 }
-
 @media (min-width: 768px) {
   .bs-docs-featured-sites .col-sm-3:first-child img {
     border-top-left-radius: 4px;
@@ -498,14 +598,6 @@ h4 code {
     border-bottom-right-radius: 4px;
   }
 }
-
-
-/*
- * Examples
- *
- * Linked docs examples.
- */
-
 .bs-examples .thumbnail {
   margin-bottom: 10px;
 }
@@ -515,7 +607,6 @@ h4 code {
 .bs-examples p {
   margin-bottom: 20px;
 }
-
 @media (max-width: 480px) {
   .bs-examples {
     margin-right: -10px;
@@ -526,16 +617,7 @@ h4 code {
     padding-left: 10px;
   }
 }
-
-
-/*
- * Side navigation
- *
- * Scrollspy and affixed enhanced navigation to highlight sections and secondary
- * sections of docs content.
- */
-
-/* By default it's not affixed in mobile views, so undo that */
+/* stylelint-disable selector-max-compound-selectors */
 .bs-docs-sidebar.affix {
   position: static;
 }
@@ -544,14 +626,14 @@ h4 code {
     padding-left: 20px;
   }
 }
-
-/* First level of nav */
+.bs-docs-search {
+  margin-bottom: 20px;
+  margin-left: 20px;
+}
 .bs-docs-sidenav {
   margin-top: 20px;
   margin-bottom: 20px;
 }
-
-/* All levels of nav */
 .bs-docs-sidebar .nav > li > a {
   display: block;
   padding: 4px 20px;
@@ -571,15 +653,13 @@ h4 code {
 .bs-docs-sidebar .nav > .active:hover > a,
 .bs-docs-sidebar .nav > .active:focus > a {
   padding-left: 18px;
-  font-weight: bold;
+  font-weight: 700;
   color: #563d7c;
   background-color: transparent;
   border-left: 2px solid #563d7c;
 }
-
-/* Nav: second level (shown on .active) */
 .bs-docs-sidebar .nav .nav {
-  display: none; /* Hide by default, but at >768px, show it */
+  display: none;
   padding-bottom: 10px;
 }
 .bs-docs-sidebar .nav .nav > li > a {
@@ -587,7 +667,7 @@ h4 code {
   padding-bottom: 1px;
   padding-left: 30px;
   font-size: 12px;
-  font-weight: normal;
+  font-weight: 400;
 }
 .bs-docs-sidebar .nav .nav > li > a:hover,
 .bs-docs-sidebar .nav .nav > li > a:focus {
@@ -599,8 +679,6 @@ h4 code {
   padding-left: 28px;
   font-weight: 500;
 }
-
-/* Back to top (hidden on mobile) */
 .back-to-top,
 .bs-docs-theme-toggle {
   display: none;
@@ -619,30 +697,26 @@ h4 code {
 .bs-docs-theme-toggle {
   margin-top: 0;
 }
-
 @media (min-width: 768px) {
   .back-to-top,
   .bs-docs-theme-toggle {
     display: block;
   }
 }
-
-/* Show and affix the side nav when space allows it */
 @media (min-width: 992px) {
   .bs-docs-sidebar .nav > .active > ul {
     display: block;
   }
-  /* Widen the fixed sidebar */
   .bs-docs-sidebar.affix,
   .bs-docs-sidebar.affix-bottom {
     width: 213px;
   }
   .bs-docs-sidebar.affix {
-    position: fixed; /* Undo the static from mobile first approach */
+    position: fixed;
     top: 20px;
   }
   .bs-docs-sidebar.affix-bottom {
-    position: absolute; /* Undo the static from mobile first approach */
+    position: absolute;
   }
   .bs-docs-sidebar.affix-bottom .bs-docs-sidenav,
   .bs-docs-sidebar.affix .bs-docs-sidenav {
@@ -651,42 +725,274 @@ h4 code {
   }
 }
 @media (min-width: 1200px) {
-  /* Widen the fixed sidebar again */
   .bs-docs-sidebar.affix-bottom,
   .bs-docs-sidebar.affix {
     width: 263px;
   }
 }
-
-
-/*
- * Docs sections
- *
- * Content blocks for each component or feature.
- */
-
-/* Space things out */
-.bs-docs-section {
-  margin-bottom: 60px;
+/* stylelint-disable property-no-vendor-prefix, selector-max-id, selector-no-qualifying-type */
+.show-grid {
+  margin-bottom: 15px;
 }
-.bs-docs-section:last-child {
+.show-grid [class^="col-"] {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #eee;
+  background-color: rgba(86, 61, 124, 0.15);
+  border: 1px solid #ddd;
+  border: 1px solid rgba(86, 61, 124, 0.2);
+}
+.bs-example {
+  position: relative;
+  padding: 45px 15px 15px;
+  margin: 0 -15px 15px;
+  border-color: #e5e5e5 #eee #eee;
+  border-style: solid;
+  border-width: 1px 0;
+  -webkit-box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.05);
+}
+.bs-example::after {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #959595;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  content: "Example";
+}
+.bs-example-padded-bottom {
+  padding-bottom: 24px;
+}
+.bs-example + .highlight,
+.bs-example + .zero-clipboard + .highlight {
+  margin: -15px -15px 15px;
+  border-width: 0 0 1px;
+  border-radius: 0;
+}
+@media (min-width: 768px) {
+  .bs-example {
+    margin-right: 0;
+    margin-left: 0;
+    background-color: #fff;
+    border-color: #ddd;
+    border-width: 1px;
+    border-radius: 4px 4px 0 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+  .bs-example + .highlight,
+  .bs-example + .zero-clipboard + .highlight {
+    margin-top: -16px;
+    margin-right: 0;
+    margin-left: 0;
+    border-width: 1px;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+  }
+  .bs-example-standalone {
+    border-radius: 4px;
+  }
+}
+.bs-example .container {
+  width: auto;
+}
+.bs-example > p:last-child,
+.bs-example > ul:last-child,
+.bs-example > ol:last-child,
+.bs-example > blockquote:last-child,
+.bs-example > .form-control:last-child,
+.bs-example > .table:last-child,
+.bs-example > .navbar:last-child,
+.bs-example > .jumbotron:last-child,
+.bs-example > .alert:last-child,
+.bs-example > .panel:last-child,
+.bs-example > .list-group:last-child,
+.bs-example > .well:last-child,
+.bs-example > .progress:last-child,
+.bs-example > .table-responsive:last-child > .table {
   margin-bottom: 0;
 }
-
-h1[id] {
-  padding-top: 20px;
+.bs-example > p > .close {
+  float: none;
+}
+.bs-example-type .table .type-info {
+  color: #767676;
+  vertical-align: middle;
+}
+.bs-example-type .table td {
+  padding: 15px 0;
+  border-color: #eee;
+}
+.bs-example-type .table tr:first-child td {
+  border-top: 0;
+}
+.bs-example-type h1,
+.bs-example-type h2,
+.bs-example-type h3,
+.bs-example-type h4,
+.bs-example-type h5,
+.bs-example-type h6 {
+  margin: 0;
+}
+.bs-example-bg-classes p {
+  padding: 15px;
+}
+.bs-example > .img-circle,
+.bs-example > .img-rounded,
+.bs-example > .img-thumbnail {
+  margin: 5px;
+}
+.bs-example > .table-responsive > .table {
+  background-color: #fff;
+}
+.bs-example > .btn,
+.bs-example > .btn-group {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.bs-example > .btn-toolbar + .btn-toolbar {
+  margin-top: 10px;
+}
+.bs-example-control-sizing select,
+.bs-example-control-sizing input[type="text"] + input[type="text"] {
+  margin-top: 10px;
+}
+.bs-example-form .input-group {
+  margin-bottom: 10px;
+}
+.bs-example > textarea.form-control {
+  resize: vertical;
+}
+.bs-example > .list-group {
+  max-width: 400px;
+}
+.bs-example .navbar:last-child {
+  margin-bottom: 0;
+}
+.bs-navbar-top-example,
+.bs-navbar-bottom-example {
+  z-index: 1;
+  padding: 0;
+  overflow: hidden;
+}
+.bs-navbar-top-example .navbar-header,
+.bs-navbar-bottom-example .navbar-header {
+  margin-left: 0;
+}
+.bs-navbar-top-example .navbar-fixed-top,
+.bs-navbar-bottom-example .navbar-fixed-bottom {
+  position: relative;
+  margin-right: 0;
+  margin-left: 0;
+}
+.bs-navbar-top-example {
+  padding-bottom: 45px;
+}
+.bs-navbar-top-example::after {
+  top: auto;
+  bottom: 15px;
+}
+.bs-navbar-top-example .navbar-fixed-top {
+  top: -1px;
+}
+.bs-navbar-bottom-example {
+  padding-top: 45px;
+}
+.bs-navbar-bottom-example .navbar-fixed-bottom {
+  bottom: -1px;
+}
+.bs-navbar-bottom-example .navbar {
+  margin-bottom: 0;
+}
+@media (min-width: 768px) {
+  .bs-navbar-top-example .navbar-fixed-top,
+  .bs-navbar-bottom-example .navbar-fixed-bottom {
+    position: absolute;
+  }
+}
+.bs-example .pagination {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.bs-example > .pager {
   margin-top: 0;
 }
-
-
-/*
- * Callouts
- *
- * Not quite alerts, but custom and helpful notes for folks reading the docs.
- * Requires a base and modifier class.
- */
-
-/* Common styles for all types */
+.bs-example-modal {
+  background-color: #f5f5f5;
+}
+.bs-example-modal .modal {
+  position: relative;
+  top: auto;
+  right: auto;
+  bottom: auto;
+  left: auto;
+  z-index: 1;
+  display: block;
+}
+.bs-example-modal .modal-dialog {
+  left: auto;
+  margin-right: auto;
+  margin-left: auto;
+}
+.bs-example > .dropdown > .dropdown-toggle {
+  float: left;
+}
+.bs-example > .dropdown > .dropdown-menu {
+  position: static;
+  display: block;
+  margin-bottom: 5px;
+  clear: left;
+}
+.bs-example-tabs .nav-tabs {
+  margin-bottom: 15px;
+}
+.bs-example-tooltips {
+  text-align: center;
+}
+.bs-example-tooltips > .btn {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.bs-example-tooltip .tooltip {
+  position: relative;
+  display: inline-block;
+  margin: 10px 20px;
+  opacity: 1;
+}
+.bs-example-popover {
+  padding-bottom: 24px;
+  background-color: #f9f9f9;
+}
+.bs-example-popover .popover {
+  position: relative;
+  display: block;
+  float: left;
+  width: 260px;
+  margin: 20px;
+}
+.scrollspy-example {
+  position: relative;
+  height: 200px;
+  margin-top: 10px;
+  overflow: auto;
+}
+.bs-example > .nav-pills-stacked-example {
+  max-width: 300px;
+}
+#collapseExample .well {
+  margin-bottom: 0;
+}
+#focusedInput {
+  border-color: #cccccc;
+  border-color: rgba(82, 168, 236, 0.8);
+  outline: 0;
+  outline: thin dotted \9;
+  -webkit-box-shadow: 0 0 8px rgba(82, 168, 236, 0.6);
+  box-shadow: 0 0 8px rgba(82, 168, 236, 0.6);
+}
 .bs-callout {
   padding: 20px;
   margin: 20px 0;
@@ -704,13 +1010,9 @@ h1[id] {
 .bs-callout code {
   border-radius: 3px;
 }
-
-/* Tighten up space between multiple callouts */
 .bs-callout + .bs-callout {
   margin-top: -5px;
 }
-
-/* Variations */
 .bs-callout-danger {
   border-left-color: #ce4844;
 }
@@ -729,17 +1031,10 @@ h1[id] {
 .bs-callout-info h4 {
   color: #1b809e;
 }
-
-
-/*
- * Color swatches
- *
- * Color swatches and associated values for our grayscale and brand colors.
- */
-
 .color-swatches {
   margin: 0 -5px;
-  overflow: hidden; /* clearfix */
+  overflow: hidden;
+  /* clearfix */
 }
 .color-swatch {
   float: left;
@@ -748,15 +1043,12 @@ h1[id] {
   margin: 0 5px;
   border-radius: 3px;
 }
-
 @media (min-width: 768px) {
   .color-swatch {
     width: 100px;
     height: 100px;
   }
 }
-
-/* Framework colors */
 .color-swatches .gray-darker {
   background-color: #222;
 }
@@ -787,8 +1079,6 @@ h1[id] {
 .color-swatches .brand-info {
   background-color: #5bc0de;
 }
-
-/* Docs colors */
 .color-swatches .bs-purple {
   background-color: #563d7c;
 }
@@ -801,14 +1091,6 @@ h1[id] {
 .color-swatches .bs-gray {
   background-color: #f9f9f9;
 }
-
-
-/*
- * Team members
- *
- * Avatars, names, and usernames for core team.
- */
-
 .bs-team .team-member {
   line-height: 32px;
   color: #555;
@@ -830,410 +1112,18 @@ h1[id] {
   margin-right: 10px;
   border-radius: 4px;
 }
-
-
-/*
- * Wall of Browser Bugs
- *
- * Better display for the responsive table on the Wall of Browser Bugs.
- */
-
-.bs-docs-browser-bugs td p {
-  margin-bottom: 0;
-}
-
-.bs-docs-browser-bugs th:first-child {
-  width: 18%;
-}
-
-
-/*
- * Grid examples
- *
- * Highlight the grid columns within the docs so folks can see their padding,
- * alignment, sizing, etc.
- */
-
-.show-grid {
-  margin-bottom: 15px;
-}
-.show-grid [class^="col-"] {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  background-color: #eee;
-  background-color: rgba(86,61,124,.15);
-  border: 1px solid #ddd;
-  border: 1px solid rgba(86,61,124,.2);
-}
-
-
-/*
- * Examples
- *
- * Isolated sections of example content for each component or feature. Usually
- * followed by a code snippet.
- */
-
-.bs-example {
-  position: relative;
-  padding: 45px 15px 15px;
-  margin: 0 -15px 15px;
-  border-color: #e5e5e5 #eee #eee;
-  border-style: solid;
-  border-width: 1px 0;
-  -webkit-box-shadow: inset 0 3px 6px rgba(0,0,0,.05);
-          box-shadow: inset 0 3px 6px rgba(0,0,0,.05);
-}
-/* Echo out a label for the example */
-.bs-example:after {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  font-size: 12px;
-  font-weight: bold;
-  color: #959595;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  content: "Example";
-}
-
-.bs-example-padded-bottom {
-  padding-bottom: 24px;
-}
-
-/* Tweak display of the code snippets when following an example */
-.bs-example + .highlight,
-.bs-example + .zero-clipboard + .highlight {
-  margin: -15px -15px 15px;
-  border-width: 0 0 1px;
-  border-radius: 0;
-}
-
-/* Make the examples and snippets not full-width */
-@media (min-width: 768px) {
-  .bs-example {
-    margin-right: 0;
-    margin-left: 0;
-    background-color: #fff;
-    border-color: #ddd;
-    border-width: 1px;
-    border-radius: 4px 4px 0 0;
-    -webkit-box-shadow: none;
-            box-shadow: none;
-  }
-  .bs-example + .highlight,
-  .bs-example + .zero-clipboard + .highlight {
-    margin-top: -16px;
-    margin-right: 0;
-    margin-left: 0;
-    border-width: 1px;
-    border-bottom-right-radius: 4px;
-    border-bottom-left-radius: 4px;
-  }
-  .bs-example-standalone {
-    border-radius: 4px;
-  }
-}
-
-/* Undo width of container */
-.bs-example .container {
-  width: auto;
-}
-
-/* Tweak content of examples for optimum awesome */
-.bs-example > p:last-child,
-.bs-example > ul:last-child,
-.bs-example > ol:last-child,
-.bs-example > blockquote:last-child,
-.bs-example > .form-control:last-child,
-.bs-example > .table:last-child,
-.bs-example > .navbar:last-child,
-.bs-example > .jumbotron:last-child,
-.bs-example > .alert:last-child,
-.bs-example > .panel:last-child,
-.bs-example > .list-group:last-child,
-.bs-example > .well:last-child,
-.bs-example > .progress:last-child,
-.bs-example > .table-responsive:last-child > .table {
-  margin-bottom: 0;
-}
-.bs-example > p > .close {
-  float: none;
-}
-
-/* Typography */
-.bs-example-type .table .type-info {
-  color: #767676;
-  vertical-align: middle;
-}
-.bs-example-type .table td {
-  padding: 15px 0;
-  border-color: #eee;
-}
-.bs-example-type .table tr:first-child td {
-  border-top: 0;
-}
-.bs-example-type h1,
-.bs-example-type h2,
-.bs-example-type h3,
-.bs-example-type h4,
-.bs-example-type h5,
-.bs-example-type h6 {
-  margin: 0;
-}
-
-/* Contextual background colors */
-.bs-example-bg-classes p {
-  padding: 15px;
-}
-
-/* Images */
-.bs-example > .img-circle,
-.bs-example > .img-rounded,
-.bs-example > .img-thumbnail {
-  margin: 5px;
-}
-
-/* Tables */
-.bs-example > .table-responsive > .table {
-  background-color: #fff;
-}
-
-/* Buttons */
-.bs-example > .btn,
-.bs-example > .btn-group {
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
-.bs-example > .btn-toolbar + .btn-toolbar {
-  margin-top: 10px;
-}
-
-/* Forms */
-.bs-example-control-sizing select,
-.bs-example-control-sizing input[type="text"] + input[type="text"] {
-  margin-top: 10px;
-}
-.bs-example-form .input-group {
-  margin-bottom: 10px;
-}
-.bs-example > textarea.form-control {
-  resize: vertical;
-}
-
-/* List groups */
-.bs-example > .list-group {
-  max-width: 400px;
-}
-
-/* Navbars */
-.bs-example .navbar:last-child {
-  margin-bottom: 0;
-}
-.bs-navbar-top-example,
-.bs-navbar-bottom-example {
-  z-index: 1;
-  padding: 0;
-  overflow: hidden; /* cut the drop shadows off */
-}
-.bs-navbar-top-example .navbar-header,
-.bs-navbar-bottom-example .navbar-header {
-  margin-left: 0;
-}
-.bs-navbar-top-example .navbar-fixed-top,
-.bs-navbar-bottom-example .navbar-fixed-bottom {
-  position: relative;
-  margin-right: 0;
-  margin-left: 0;
-}
-.bs-navbar-top-example {
-  padding-bottom: 45px;
-}
-.bs-navbar-top-example:after {
-  top: auto;
-  bottom: 15px;
-}
-.bs-navbar-top-example .navbar-fixed-top {
-  top: -1px;
-}
-.bs-navbar-bottom-example {
-  padding-top: 45px;
-}
-.bs-navbar-bottom-example .navbar-fixed-bottom {
-  bottom: -1px;
-}
-.bs-navbar-bottom-example .navbar {
-  margin-bottom: 0;
-}
-@media (min-width: 768px) {
-  .bs-navbar-top-example .navbar-fixed-top,
-  .bs-navbar-bottom-example .navbar-fixed-bottom {
-    position: absolute;
-  }
-}
-
-/* Pagination */
-.bs-example .pagination {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-/* Pager */
-.bs-example > .pager {
-  margin-top: 0;
-}
-
-/* Example modals */
-.bs-example-modal {
-  background-color: #f5f5f5;
-}
-.bs-example-modal .modal {
-  position: relative;
-  top: auto;
-  right: auto;
-  bottom: auto;
-  left: auto;
-  z-index: 1;
-  display: block;
-}
-.bs-example-modal .modal-dialog {
-  left: auto;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-/* Example dropdowns */
-.bs-example > .dropdown > .dropdown-toggle {
-  float: left;
-}
-.bs-example > .dropdown > .dropdown-menu {
-  position: static;
-  display: block;
-  margin-bottom: 5px;
-  clear: left;
-}
-
-/* Example tabbable tabs */
-.bs-example-tabs .nav-tabs {
-  margin-bottom: 15px;
-}
-
-/* Tooltips */
-.bs-example-tooltips {
-  text-align: center;
-}
-.bs-example-tooltips > .btn {
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
-.bs-example-tooltip .tooltip {
-  position: relative;
-  display: inline-block;
-  margin: 10px 20px;
-  opacity: 1;
-}
-
-/* Popovers */
-.bs-example-popover {
-  padding-bottom: 24px;
-  background-color: #f9f9f9;
-}
-.bs-example-popover .popover {
-  position: relative;
-  display: block;
-  float: left;
-  width: 260px;
-  margin: 20px;
-}
-
-/* Scrollspy demo on fixed height div */
-.scrollspy-example {
-  position: relative;
-  height: 200px;
-  margin-top: 10px;
-  overflow: auto;
-}
-
-.bs-example > .nav-pills-stacked-example {
-  max-width: 300px;
-}
-
-/* Simple collapse example */
-#collapseExample .well {
-  margin-bottom: 0;
-}
-
-/* Don't wrap event names in Events tables in JS plugin docs */
-.bs-events-table > thead > tr > th:first-child,
-.bs-events-table > tbody > tr > td:first-child {
-  white-space: nowrap;
-}
-
-.bs-events-table > thead > tr > th:first-child {
-  width: 150px;
-}
-
-.js-options-table > thead > tr > th:nth-child(1),
-.js-options-table > thead > tr > th:nth-child(2) {
-  width: 100px;
-}
-
-.js-options-table > thead > tr > th:nth-child(3) {
-  width: 50px;
-}
-
-/*
- * Code snippets
- *
- * Generated via Pygments and Jekyll, these are snippets of HTML, CSS, and JS.
- */
-
-.highlight {
-  padding: 9px 14px;
-  margin-bottom: 14px;
-  background-color: #f7f7f9;
-  border: 1px solid #e1e1e8;
-  border-radius: 4px;
-}
-.highlight pre {
-  padding: 0;
-  margin-top: 0;
-  margin-bottom: 0;
-  word-break: normal;
-  white-space: nowrap;
-  background-color: transparent;
-  border: 0;
-}
-.highlight pre code {
-  font-size: inherit;
-  color: #333; /* Effectively the base text color */
-}
-.highlight pre code:first-child {
-  display: inline-block;
-  padding-right: 45px;
-}
-
-
-/*
- * Responsive tests
- *
- * Generate a set of tests to show the responsive utilities in action.
- */
-
-/* Responsive (scrollable) doc tables */
+/* stylelint-disable selector-no-qualifying-type, declaration-no-important */
 .table-responsive .highlight pre {
   white-space: normal;
 }
-
-/* Utility classes table  */
 .bs-table th small,
 .responsive-utilities th small {
   display: block;
-  font-weight: normal;
+  font-weight: 400;
   color: #999;
 }
 .responsive-utilities tbody th {
-  font-weight: normal;
+  font-weight: 400;
 }
 .responsive-utilities td {
   text-align: center;
@@ -1246,8 +1136,6 @@ h1[id] {
   color: #ccc;
   background-color: #f9f9f9 !important;
 }
-
-/* Responsive tests */
 .responsive-utilities-test {
   margin-top: 5px;
 }
@@ -1258,7 +1146,7 @@ h1[id] {
   display: block;
   padding: 15px 10px;
   font-size: 14px;
-  font-weight: bold;
+  font-weight: 700;
   line-height: 1.1;
   text-align: center;
   border-radius: 4px;
@@ -1286,14 +1174,6 @@ h1[id] {
   background-color: #dff0d8;
   border: 1px solid #d6e9c6;
 }
-
-
-/*
- * Glyphicons
- *
- * Special styles for displaying the icons and their classes in the docs.
- */
-
 .bs-glyphicons {
   margin: 0 -10px 20px;
   overflow: hidden;
@@ -1321,13 +1201,12 @@ h1[id] {
 .bs-glyphicons .glyphicon-class {
   display: block;
   text-align: center;
-  word-wrap: break-word; /* Help out IE10+ with class names */
+  word-wrap: break-word;
 }
 .bs-glyphicons li:hover {
   color: #fff;
   background-color: #563d7c;
 }
-
 @media (min-width: 768px) {
   .bs-glyphicons {
     margin-right: 0;
@@ -1338,22 +1217,11 @@ h1[id] {
     font-size: 12px;
   }
 }
-
-
-/*
- * Customizer
- *
- * Since this is so form control heavy, we have quite a few styles to customize
- * the display of inputs, headings, and more. Also included are all the download
- * buttons and actions.
- */
-
+/* stylelint-disable property-no-vendor-prefix, selector-max-id, selector-no-qualifying-type */
 .bs-customizer .toggle {
   float: right;
   margin-top: 25px;
 }
-
-/* Headings and form contrls */
 .bs-customizer label {
   margin-top: 10px;
   font-weight: 500;
@@ -1372,7 +1240,7 @@ h1[id] {
   margin-bottom: 0;
 }
 .bs-customizer .bs-callout h4 {
-  margin-top: 0; /* lame, but due to specificity we have to duplicate */
+  margin-top: 0;
   margin-bottom: 5px;
 }
 .bs-customizer input[type="text"] {
@@ -1383,18 +1251,12 @@ h1[id] {
   margin-bottom: 5px;
   font-size: 12px;
 }
-
-/* For the variables, use regular weight */
 #less-section label {
-  font-weight: normal;
+  font-weight: 400;
 }
-
-/* Downloads */
 .bs-customize-download .btn-outline {
   padding: 20px;
 }
-
-/* Error handling */
 .bs-customizer-alert {
   position: fixed;
   top: 0;
@@ -1405,8 +1267,8 @@ h1[id] {
   color: #fff;
   background-color: #d9534f;
   border-bottom: 1px solid #b94441;
-  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.25);
-          box-shadow: inset 0 1px 0 rgba(255,255,255,.25);
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 .bs-customizer-alert .close {
   margin-top: -4px;
@@ -1423,10 +1285,9 @@ h1[id] {
   color: #fff;
   background-color: #a83c3a;
   border-color: #973634;
-  -webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,.05), 0 1px 0 rgba(255,255,255,.1);
-          box-shadow: inset 0 2px 4px rgba(0,0,0,.05), 0 1px 0 rgba(255,255,255,.1);
+  -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1);
 }
-
 .bs-dropzone {
   position: relative;
   padding: 20px;
@@ -1447,23 +1308,15 @@ h1[id] {
 }
 .bs-dropzone .lead {
   margin-bottom: 10px;
-  font-weight: normal;
+  font-weight: 400;
   color: #333;
 }
-/*.bs-dropzone*/ #import-manual-trigger {
+#import-manual-trigger {
   cursor: pointer;
 }
 .bs-dropzone p:last-child {
   margin-bottom: 0;
 }
-
-/*
- * Brand guidelines
- *
- * Extra styles for displaying wordmarks, logos, etc.
- */
-
-/* Logo series wrapper */
 .bs-brand-logos {
   display: table;
   width: 100%;
@@ -1473,8 +1326,6 @@ h1[id] {
   background-color: #f9f9f9;
   border-radius: 4px;
 }
-
-/* Individual items */
 .bs-brand-item {
   padding: 60px 0;
   text-align: center;
@@ -1486,8 +1337,6 @@ h1[id] {
   color: #fff;
   background-color: #563d7c;
 }
-
-/* Heading content within */
 .bs-brand-item h1,
 .bs-brand-item h3 {
   margin-top: 0;
@@ -1497,8 +1346,6 @@ h1[id] {
   margin-right: auto;
   margin-left: auto;
 }
-
-/* Make the icons stand out on what is/isn't okay */
 .bs-brand-item .glyphicon {
   width: 30px;
   height: 30px;
@@ -1513,7 +1360,6 @@ h1[id] {
 .bs-brand-item .glyphicon-remove {
   background-color: #d9534f;
 }
-
 @media (min-width: 768px) {
   .bs-brand-item {
     display: table-cell;
@@ -1527,12 +1373,6 @@ h1[id] {
     font-size: 60px;
   }
 }
-
-
-/*
- * ZeroClipboard styles
- */
-
 .zero-clipboard {
   position: relative;
   display: none;
@@ -1549,14 +1389,13 @@ h1[id] {
   cursor: pointer;
   background-color: #fff;
   border: 1px solid #e1e1e8;
-  border-radius: 0 4px 0 4px;
+  border-radius: 0 4px;
 }
 .btn-clipboard-hover {
   color: #fff;
   background-color: #563d7c;
   border-color: #563d7c;
 }
-
 @media (min-width: 768px) {
   .zero-clipboard {
     display: block;
@@ -1566,54 +1405,184 @@ h1[id] {
     border-top-right-radius: 0;
   }
 }
-
-/*
- * AnchorJS Styles
- */
+/* stylelint-disable property-no-vendor-prefix */
 .anchorjs-link {
   color: inherit;
 }
-
 @media (max-width: 480px) {
   .anchorjs-link {
     display: none;
   }
 }
-
 *:hover > .anchorjs-link {
   opacity: .75;
   -webkit-transition: color .16s linear;
-       -o-transition: color .16s linear;
-          transition: color .16s linear;
+  -o-transition: color .16s linear;
+  transition: color .16s linear;
 }
-
 *:hover > .anchorjs-link:hover,
 .anchorjs-link:focus {
   text-decoration: none;
   opacity: 1;
 }
-
-/*
- * Miscellaneous
- *
- * Odds and ends for optimum docs display.
- */
-
-/* Pseudo :focus state for showing how it looks in the docs */
-#focusedInput {
-  border-color: rgb(204,204,204); /* Restate unfocused value to make CSSLint happy that there's a pre-CSS3 fallback*/
-  border-color: rgba(82,168,236,.8);
-  outline: 0;
-  outline: thin dotted \9; /* IE6-9 */
-  -webkit-box-shadow: 0 0 8px rgba(82,168,236,.6);
-          box-shadow: 0 0 8px rgba(82,168,236,.6);
+/* stylelint-disable declaration-no-important, selector-attribute-quotes */
+.algolia-autocomplete {
+  display: block !important;
 }
-
-/* v4 notice above main navbar */
+.algolia-autocomplete .ds-dropdown-menu {
+  width: 100%;
+  min-width: 0 !important;
+  max-width: none !important;
+  padding: 10px 0 !important;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ddd;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.175);
+}
+@media min-width (768px) {
+  .algolia-autocomplete .ds-dropdown-menu {
+    width: 175%;
+  }
+}
+.algolia-autocomplete .ds-dropdown-menu::before {
+  display: none !important;
+}
+.algolia-autocomplete .ds-dropdown-menu [class^=ds-dataset-] {
+  padding: 0 !important;
+  overflow: visible !important;
+  background-color: transparent !important;
+  border: 0 !important;
+}
+.algolia-autocomplete .ds-dropdown-menu .ds-suggestions {
+  margin-top: 0 !important;
+}
+.algolia-autocomplete .algolia-docsearch-suggestion {
+  padding: 0 !important;
+  overflow: visible !important;
+}
+.algolia-autocomplete .algolia-docsearch-suggestion--category-header {
+  padding: 2px 15px !important;
+  margin-top: 0 !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  color: #7952b3 !important;
+  border-bottom: 0 !important;
+}
+.algolia-autocomplete .algolia-docsearch-suggestion--wrapper {
+  float: none !important;
+  padding-top: 0 !important;
+}
+.algolia-autocomplete .algolia-docsearch-suggestion--subcategory-column {
+  float: none !important;
+  width: auto !important;
+  padding: 0 !important;
+  text-align: left !important;
+}
+.algolia-autocomplete .algolia-docsearch-suggestion--content {
+  float: none !important;
+  width: auto !important;
+  padding: 0 !important;
+}
+.algolia-autocomplete .algolia-docsearch-suggestion--content::before {
+  display: none !important;
+}
+.algolia-autocomplete .ds-suggestion:not(:first-child) .algolia-docsearch-suggestion--category-header {
+  padding-top: 10px !important;
+  margin-top: 10px !important;
+  border-top: 1px solid #eee;
+}
+.algolia-autocomplete .ds-suggestion .algolia-docsearch-suggestion--subcategory-column {
+  display: none !important;
+}
+.algolia-autocomplete .algolia-docsearch-suggestion--title {
+  display: block;
+  padding: 4px 15px !important;
+  margin-bottom: 0 !important;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+}
+.algolia-autocomplete .algolia-docsearch-suggestion--text {
+  padding: 0 15px 8px !important;
+  margin-top: -4px;
+  font-size: 13px !important;
+  font-weight: 400;
+  line-height: 1.25 !important;
+}
+.algolia-autocomplete .algolia-docsearch-footer {
+  float: none !important;
+  width: auto !important;
+  height: auto !important;
+  padding: 10px 15px 0;
+  font-size: 10px !important;
+  line-height: 1 !important;
+  color: #767676 !important;
+  border-top: 1px solid #eee;
+}
+.algolia-autocomplete .algolia-docsearch-footer--logo {
+  display: inline !important;
+  overflow: visible !important;
+  color: inherit !important;
+  text-indent: 0 !important;
+  background: none !important;
+}
+.algolia-autocomplete .algolia-docsearch-suggestion--highlight {
+  color: #5f2dab;
+  background-color: #eee;
+}
+.algolia-autocomplete .algolia-docsearch-suggestion--text .algolia-docsearch-suggestion--highlight {
+  box-shadow: inset 0 -2px 0 0 rgba(95, 45, 171, 0.5) !important;
+}
+.algolia-autocomplete .ds-suggestion.ds-cursor .algolia-docsearch-suggestion--content {
+  background-color: #e5e5e5 !important;
+}
+/* stylelint-disable selector-max-type, selector-no-qualifying-type, declaration-no-important */
+body {
+  position: relative;
+}
+.table code {
+  font-size: 13px;
+  font-weight: 400;
+}
+h2 code,
+h3 code,
+h4 code {
+  background-color: inherit;
+}
+.bs-docs-section {
+  margin-bottom: 60px;
+}
+.bs-docs-section:last-child {
+  margin-bottom: 0;
+}
+h1[id] {
+  padding-top: 20px;
+  margin-top: 0;
+}
+.bs-docs-browser-bugs td p {
+  margin-bottom: 0;
+}
+.bs-docs-browser-bugs th:first-child {
+  width: 18%;
+}
+.bs-events-table > thead > tr > th:first-child,
+.bs-events-table > tbody > tr > td:first-child {
+  white-space: nowrap;
+}
+.bs-events-table > thead > tr > th:first-child {
+  width: 150px;
+}
+.js-options-table > thead > tr > th:nth-child(1),
+.js-options-table > thead > tr > th:nth-child(2) {
+  width: 100px;
+}
+.js-options-table > thead > tr > th:nth-child(3) {
+  width: 50px;
+}
 .v4-tease {
   display: block;
   padding: 15px 20px;
-  font-weight: bold;
+  font-weight: 700;
   color: #fff;
   text-align: center;
   background-color: #0275d8;
@@ -1623,10 +1592,10 @@ h1[id] {
   text-decoration: none;
   background-color: #0269c2;
 }
-
 /* Nullify ill-advised printing of hrefs; see #18711 */
 @media print {
-  a[href]:after {
+  a[href]::after {
     content: "" !important;
   }
 }
+/*# sourceMappingURL=docs.css.map */

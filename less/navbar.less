@@ -1,3 +1,5 @@
+/* stylelint-disable selector-max-type, selector-max-compound-selectors, selector-max-combinators, selector-max-class, declaration-no-important, selector-no-qualifying-type, no-duplicate-selectors */
+
 //
 // Navbars
 // --------------------------------------------------
@@ -48,11 +50,11 @@
 // content for the user's viewport.
 
 .navbar-collapse {
-  overflow-x: visible;
   padding-right: @navbar-padding-horizontal;
-  padding-left:  @navbar-padding-horizontal;
+  padding-left: @navbar-padding-horizontal;
+  overflow-x: visible;
   border-top: 1px solid transparent;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.1);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1);
   &:extend(.clearfix all);
   -webkit-overflow-scrolling: touch;
 
@@ -81,8 +83,8 @@
     .navbar-fixed-top &,
     .navbar-static-top &,
     .navbar-fixed-bottom & {
-      padding-left: 0;
       padding-right: 0;
+      padding-left: 0;
     }
   }
 }
@@ -108,11 +110,11 @@
   > .navbar-header,
   > .navbar-collapse {
     margin-right: -@navbar-padding-horizontal;
-    margin-left:  -@navbar-padding-horizontal;
+    margin-left: -@navbar-padding-horizontal;
 
     @media (min-width: @grid-float-breakpoint) {
       margin-right: 0;
-      margin-left:  0;
+      margin-left: 0;
     }
   }
 }
@@ -162,10 +164,10 @@
 
 .navbar-brand {
   float: left;
+  height: @navbar-height;
   padding: @navbar-padding-vertical @navbar-padding-horizontal;
   font-size: @font-size-large;
   line-height: @line-height-computed;
-  height: @navbar-height;
 
   &:hover,
   &:focus {
@@ -193,8 +195,8 @@
 .navbar-toggle {
   position: relative;
   float: right;
-  margin-right: @navbar-padding-horizontal;
   padding: 9px 10px;
+  margin-right: @navbar-padding-horizontal;
   .navbar-vertical-align(34px);
   background-color: transparent;
   background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
@@ -233,7 +235,7 @@
   margin: (@navbar-padding-vertical / 2) -@navbar-padding-horizontal;
 
   > li > a {
-    padding-top:    10px;
+    padding-top: 10px;
     padding-bottom: 10px;
     line-height: @line-height-computed;
   }
@@ -270,7 +272,7 @@
     > li {
       float: left;
       > a {
-        padding-top:    @navbar-padding-vertical;
+        padding-top: @navbar-padding-vertical;
         padding-bottom: @navbar-padding-vertical;
       }
     }
@@ -284,12 +286,12 @@
 // our navbars.
 
 .navbar-form {
-  margin-left: -@navbar-padding-horizontal;
-  margin-right: -@navbar-padding-horizontal;
   padding: 10px @navbar-padding-horizontal;
+  margin-right: -@navbar-padding-horizontal;
+  margin-left: -@navbar-padding-horizontal;
   border-top: 1px solid transparent;
   border-bottom: 1px solid transparent;
-  @shadow: inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.1);
+  @shadow: inset 0 1px 0 rgba(255, 255, 255, .1), 0 1px 0 rgba(255, 255, 255, .1);
   .box-shadow(@shadow);
 
   // Mixin behavior for optimum display
@@ -311,11 +313,11 @@
   // Undo 100% width for pull classes
   @media (min-width: @grid-float-breakpoint) {
     width: auto;
-    border: 0;
-    margin-left: 0;
-    margin-right: 0;
     padding-top: 0;
     padding-bottom: 0;
+    margin-right: 0;
+    margin-left: 0;
+    border: 0;
     .box-shadow(none);
   }
 }
@@ -361,8 +363,8 @@
 
   @media (min-width: @grid-float-breakpoint) {
     float: left;
-    margin-left: @navbar-padding-horizontal;
     margin-right: @navbar-padding-horizontal;
+    margin-left: @navbar-padding-horizontal;
   }
 }
 
@@ -460,8 +462,8 @@
       &,
       &:hover,
       &:focus {
-        background-color: @navbar-default-link-active-bg;
         color: @navbar-default-link-active-color;
+        background-color: @navbar-default-link-active-bg;
       }
     }
 
@@ -594,8 +596,8 @@
       &,
       &:hover,
       &:focus {
-        background-color: @navbar-inverse-link-active-bg;
         color: @navbar-inverse-link-active-color;
+        background-color: @navbar-inverse-link-active-bg;
       }
     }
 

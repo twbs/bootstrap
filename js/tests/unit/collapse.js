@@ -439,5 +439,4 @@ $(function () {
       })
       .bootstrapCollapse('show')
   })
-
 })

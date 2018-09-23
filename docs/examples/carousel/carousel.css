@@ -1,6 +1,6 @@
 /* GLOBAL STYLES
--------------------------------------------------- */
-/* Padding below the footer and lighter body text */
+ * Padding below the footer and lighter body text
+* -------------------------------------------------- */
 
 body {
   padding-bottom: 40px;
@@ -42,9 +42,8 @@ body {
   height: 500px;
   margin-bottom: 60px;
 }
-/* Since positioning the image, we need to help out the caption */
 .carousel-caption {
-  z-index: 10;
+  z-index: 10; /* Since positioning the image, we need to help out the caption */
 }
 
 /* Declare heights because of positioning of img element */
@@ -70,7 +69,7 @@ body {
   text-align: center;
 }
 .marketing h2 {
-  font-weight: normal;
+  font-weight: 400;
 }
 .marketing .col-lg-4 p {
   margin-right: 10px;
@@ -108,11 +107,7 @@ body {
   .navbar-wrapper .navbar {
     padding-right: 0;
     padding-left: 0;
-  }
-
-  /* The navbar becomes detached from the top, so we round the corners */
-  .navbar-wrapper .navbar {
-    border-radius: 4px;
+    border-radius: 4px; /* The navbar becomes detached from the top, so we round the corners */
   }
 
   /* Bump up size of carousel content */
