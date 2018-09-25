@@ -9,6 +9,7 @@ const rollup  = require('rollup')
 const path    = require('path')
 const babel   = require('rollup-plugin-babel')
 const TEST    = process.env.NODE_ENV === 'test'
+const banner  = require(path.resolve(__dirname, './banner.js'))
 
 const plugins = [
   babel({
@@ -67,6 +68,7 @@ Object.keys(bsPlugins)
       external
     }).then((bundle) => {
       bundle.write({
+        banner,
         format,
         name: pluginKey,
         sourcemap: true,
