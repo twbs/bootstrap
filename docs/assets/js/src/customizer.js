@@ -417,7 +417,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
     var dependencies = this.getAttribute('data-dependencies')
     if (!dependencies) return
     dependencies = dependencies.split(',')
-    for (var i = 0; i < dependencies.length; i++) {
+    for (var i = 0, len = dependencies.length; i < len; i++) {
       var $dependency = $('[value="' + dependencies[i] + '"]')
       $dependency && $dependency.prop('checked', true)
     }
@@ -428,7 +428,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
     var dependents = this.getAttribute('data-dependents')
     if (!dependents) return
     dependents = dependents.split(',')
-    for (var i = 0; i < dependents.length; i++) {
+    for (var i = 0, len = dependents.length; i < len; i++) {
       var $dependent = $('[value="' + dependents[i] + '"]')
       $dependent && $dependent.prop('checked', false)
     }
