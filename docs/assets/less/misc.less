@@ -71,11 +71,13 @@ h1[id] {
   color: #fff;
   text-align: center;
   background-color: #0275d8;
-}
-.v4-tease:hover {
-  color: #fff;
-  text-decoration: none;
-  background-color: #0269c2;
+
+  &:focus,
+  &:hover {
+    color: #fff;
+    text-decoration: none;
+    background-color: #0269c2;
+  }
 }
 
 /* Nullify ill-advised printing of hrefs; see #18711 */
