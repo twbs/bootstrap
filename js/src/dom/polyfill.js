@@ -9,47 +9,6 @@ import Util from '../util'
 
 /* istanbul ignore next */
 const Polyfill = (() => {
-  // defaultPrevented is broken in IE
-  const workingDefaultPrevented = (() => {
-    const e = document.createEvent('CustomEvent')
-    e.initEvent('Bootstrap', true, true)
-    e.preventDefault()
-    return e.defaultPrevented
-  })()
-
-  if (!workingDefaultPrevented) {
-    const origPreventDefault = Event.prototype.preventDefault
-    Event.prototype.preventDefault = function () {
-      if (!this.cancelable) {
-        return
-      }
-
-      origPreventDefault.call(this)
-      Object.defineProperty(this, 'defaultPrevented', {
-        get() {
-          return true
-        },
-        configurable: true
-      })
-    }
-  }
-
-  // CustomEvent polyfill for IE (see: https://mzl.la/2v76Zvn)
-  if (typeof window.CustomEvent !== 'function') {
-    window.CustomEvent = (event, params) => {
-      params = params || {
-        bubbles: false,
-        cancelable: false,
-        detail: null
-      }
-      const evt = document.createEvent('CustomEvent')
-      evt.initCustomEvent(event, params.bubbles, params.cancelable, params.detail)
-      return evt
-    }
-
-    window.CustomEvent.prototype = window.Event.prototype
-  }
-
   // MSEdge resets defaultPrevented flag upon dispatchEvent call if at least one listener is attached
   const defaultPreventedPreservedOnDispatch = (() => {
     const e = new CustomEvent('Bootstrap', {
@@ -76,14 +35,6 @@ const Polyfill = (() => {
     window.Event.prototype = origEvent.prototype
   }
 
-  // matches polyfill (see: https://mzl.la/2ikXneG)
-  let matches = Element.prototype.matches
-  if (!matches) {
-    matches =
-      Element.prototype.msMatchesSelector ||
-      Element.prototype.webkitMatchesSelector
-  }
-
   // closest polyfill (see: https://mzl.la/2vXggaI)
   let closest
   if (!Element.prototype.closest) {
@@ -91,7 +42,7 @@ const Polyfill = (() => {
     closest = (element, selector) => {
       let ancestor = element
       do {
-        if (matches.call(ancestor, selector)) {
+        if (ancestor.matches(selector)) {
           return ancestor
         }
 
@@ -188,7 +139,6 @@ const Polyfill = (() => {
     defaultPreventedPreservedOnDispatch,
     focusIn: typeof window.onfocusin === 'undefined',
     closest,
-    matches,
     find,
     findOne
   }
