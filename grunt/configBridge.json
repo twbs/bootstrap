@@ -15,7 +15,9 @@
       "../assets/js/vendor/clipboard.min.js",
       "../assets/js/vendor/anchor.min.js",
       "../assets/js/src/application.js",
-      "../assets/js/src/search.js"
+      "../assets/js/src/search.js",
+      "../assets/js/ie10-viewport-bug-workaround.js",
+      "../assets/js/ie-emulation-modes-warning.js"
     ]
   },
   "config": {
