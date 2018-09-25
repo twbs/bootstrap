@@ -28,20 +28,6 @@ function normalizeDataKey(key) {
 }
 
 const Manipulator = {
-  setChecked(input, val) {
-    if (input instanceof HTMLInputElement) {
-      input.checked = val
-      input.bsChecked = val
-    }
-  },
-
-  isChecked(input) {
-    if (input instanceof HTMLInputElement) {
-      return input.bsChecked || input.checked
-    }
-    throw new Error('INPUT parameter is not an HTMLInputElement')
-  },
-
   setDataAttribute(element, key, value) {
     element.setAttribute(`data-${normalizeDataKey(key)}`, value)
   },

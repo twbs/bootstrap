@@ -15,7 +15,7 @@ import Util from '../util'
  */
 
 const closest = Polyfill.closest
-const matchesFn = Polyfill.matches
+const matchesFn = Element.prototype.matches
 const find = Polyfill.find
 const findOne = Polyfill.findOne
 const nodeText = 3

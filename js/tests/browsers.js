@@ -30,13 +30,6 @@ const browsers = {
     browser: 'Edge',
     browser_version: 'latest'
   },
-  ie11Win10: {
-    base: 'BrowserStack',
-    os: 'Windows',
-    os_version: '10',
-    browser: 'IE',
-    browser_version: '11.0'
-  },
   chromeWin10: {
     base: 'BrowserStack',
     os: 'Windows',
@@ -50,13 +43,6 @@ const browsers = {
     os_version: '10',
     browser: 'Firefox',
     browser_version: 'latest'
-  },
-  ie10Win8: {
-    base: 'BrowserStack',
-    os: 'Windows',
-    os_version: '8',
-    browser: 'IE',
-    browser_version: '10.0'
   },
   iphoneX: {
     base: 'BrowserStack',
