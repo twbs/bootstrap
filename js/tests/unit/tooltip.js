@@ -495,8 +495,8 @@ $(function () {
 
     function rightTooltip() {
       var $rightTooltip = $('<div style="right: 0;" rel="tooltip" title="Right tooltip">Right Dynamic Tooltip</div>')
-      .appendTo($container)
-      .bootstrapTooltip({ placement: 'right auto', viewport: '#qunit-fixture' })
+        .appendTo($container)
+        .bootstrapTooltip({ placement: 'right auto', viewport: '#qunit-fixture' })
 
       $rightTooltip
         .one('shown.bs.tooltip', function () {
@@ -1258,7 +1258,7 @@ $(function () {
     var $styles = $(styles).appendTo('head')
 
     $('#qunit-fixture').append(
-        '<div style="position: fixed; top: 0; left: 0;">'
+      '<div style="position: fixed; top: 0; left: 0;">'
       + '  <svg width="200" height="200">'
       + '    <circle cx="100" cy="100" r="10" title="m" id="theCircle" />'
       + '  </svg>'
@@ -1500,28 +1500,28 @@ $(function () {
     function showingTooltip() { return $tooltip.hasClass('in') || tooltip.hoverState == 'in' }
 
     var tests = [
-        ['mouseenter', 'mouseleave'],
+      ['mouseenter', 'mouseleave'],
 
-        ['focusin', 'focusout'],
+      ['focusin', 'focusout'],
 
-        ['click', 'click'],
+      ['click', 'click'],
 
-        ['mouseenter', 'focusin', 'focusout', 'mouseleave'],
-        ['mouseenter', 'focusin', 'mouseleave', 'focusout'],
+      ['mouseenter', 'focusin', 'focusout', 'mouseleave'],
+      ['mouseenter', 'focusin', 'mouseleave', 'focusout'],
 
-        ['focusin', 'mouseenter', 'mouseleave', 'focusout'],
-        ['focusin', 'mouseenter', 'focusout', 'mouseleave'],
+      ['focusin', 'mouseenter', 'mouseleave', 'focusout'],
+      ['focusin', 'mouseenter', 'focusout', 'mouseleave'],
 
-        ['click', 'focusin', 'mouseenter', 'focusout', 'mouseleave', 'click'],
-        ['mouseenter', 'click', 'focusin', 'focusout', 'mouseleave', 'click'],
-        ['mouseenter', 'focusin', 'click', 'click', 'mouseleave', 'focusout']
+      ['click', 'focusin', 'mouseenter', 'focusout', 'mouseleave', 'click'],
+      ['mouseenter', 'click', 'focusin', 'focusout', 'mouseleave', 'click'],
+      ['mouseenter', 'focusin', 'click', 'click', 'mouseleave', 'focusout']
     ]
 
     assert.ok(!showingTooltip())
 
     $.each(tests, function (idx, triggers) {
       for (var i = 0, len = triggers.length; i < len; i++) {
-        $el.trigger(triggers[i]);
+        $el.trigger(triggers[i])
         assert.equal(i < (len - 1), showingTooltip())
       }
     })

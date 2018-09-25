@@ -95,17 +95,17 @@ $(function () {
 
     $(dropHTML)
       .find('ul > li:first a')
-        .bootstrapTab('show')
+      .bootstrapTab('show')
       .end()
       .find('ul > li:last a')
-        .on('show.bs.tab', function (e) {
-          assert.strictEqual(e.relatedTarget.hash, '#1-1', 'references correct element as relatedTarget')
-        })
-        .on('shown.bs.tab', function (e) {
-          assert.strictEqual(e.relatedTarget.hash, '#1-1', 'references correct element as relatedTarget')
-          done()
-        })
-        .bootstrapTab('show')
+      .on('show.bs.tab', function (e) {
+        assert.strictEqual(e.relatedTarget.hash, '#1-1', 'references correct element as relatedTarget')
+      })
+      .on('shown.bs.tab', function (e) {
+        assert.strictEqual(e.relatedTarget.hash, '#1-1', 'references correct element as relatedTarget')
+        done()
+      })
+      .bootstrapTab('show')
   })
 
   QUnit.test('should fire hide and hidden events', function (assert) {
@@ -119,24 +119,24 @@ $(function () {
 
     $(tabsHTML)
       .find('li:first a')
-        .on('hide.bs.tab', function () {
-          assert.ok(true, 'hide event fired')
-        })
-        .bootstrapTab('show')
+      .on('hide.bs.tab', function () {
+        assert.ok(true, 'hide event fired')
+      })
+      .bootstrapTab('show')
       .end()
       .find('li:last a')
-        .bootstrapTab('show')
+      .bootstrapTab('show')
 
     $(tabsHTML)
       .find('li:first a')
-        .on('hidden.bs.tab', function () {
-          assert.ok(true, 'hidden event fired')
-          done()
-        })
-        .bootstrapTab('show')
+      .on('hidden.bs.tab', function () {
+        assert.ok(true, 'hidden event fired')
+        done()
+      })
+      .bootstrapTab('show')
       .end()
       .find('li:last a')
-        .bootstrapTab('show')
+      .bootstrapTab('show')
   })
 
   QUnit.test('should not fire hidden when hide is prevented', function (assert) {
@@ -150,18 +150,18 @@ $(function () {
 
     $(tabsHTML)
       .find('li:first a')
-        .on('hide.bs.tab', function (e) {
-          e.preventDefault()
-          assert.ok(true, 'hide event fired')
-          done()
-        })
-        .on('hidden.bs.tab', function () {
-          assert.ok(false, 'hidden event fired')
-        })
-        .bootstrapTab('show')
+      .on('hide.bs.tab', function (e) {
+        e.preventDefault()
+        assert.ok(true, 'hide event fired')
+        done()
+      })
+      .on('hidden.bs.tab', function () {
+        assert.ok(false, 'hidden event fired')
+      })
+      .bootstrapTab('show')
       .end()
       .find('li:last a')
-        .bootstrapTab('show')
+      .bootstrapTab('show')
   })
 
   QUnit.test('hide and hidden events contain correct relatedTarget', function (assert) {
@@ -175,17 +175,17 @@ $(function () {
 
     $(tabsHTML)
       .find('li:first a')
-        .on('hide.bs.tab', function (e) {
-          assert.strictEqual(e.relatedTarget.hash, '#profile', 'references correct element as relatedTarget')
-        })
-        .on('hidden.bs.tab', function (e) {
-          assert.strictEqual(e.relatedTarget.hash, '#profile', 'references correct element as relatedTarget')
-          done()
-        })
-        .bootstrapTab('show')
+      .on('hide.bs.tab', function (e) {
+        assert.strictEqual(e.relatedTarget.hash, '#profile', 'references correct element as relatedTarget')
+      })
+      .on('hidden.bs.tab', function (e) {
+        assert.strictEqual(e.relatedTarget.hash, '#profile', 'references correct element as relatedTarget')
+        done()
+      })
+      .bootstrapTab('show')
       .end()
       .find('li:last a')
-        .bootstrapTab('show')
+      .bootstrapTab('show')
   })
 
   QUnit.test('selected tab should have aria-expanded', function (assert) {
