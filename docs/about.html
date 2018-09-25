@@ -26,11 +26,10 @@ lead: "Learn about the project's history, meet the maintaining teams, and find o
 
   <h2 id="team-core">Core team</h2>
   <div class="list-group bs-team">
-    {% for member in site.data.core-team %}
+    {% for member in site.data.team %}
       <div class="list-group-item">
-        <iframe class="github-btn" src="https://ghbtns.com/github-btn.html?user={{ member.user }}&amp;type=follow"></iframe>
         <a class="team-member" href="https://github.com/{{ member.user }}">
-          <img src="https://secure.gravatar.com/avatar/{{ member.gravatar }}.jpg?s=32" alt="@{{ member.user }} avatar" width="32" height="32">
+          <img src="https://github.com/{{ member.user }}.png?s=64" alt="@{{ member.user }} avatar" width="32" height="32">
           <strong>{{ member.name }}</strong> <small>@{{ member.user }}</small>
         </a>
       </div>
@@ -42,9 +41,8 @@ lead: "Learn about the project's history, meet the maintaining teams, and find o
   <div class="list-group bs-team">
     {% for member in site.data.sass-team %}
       <div class="list-group-item">
-        <iframe class="github-btn" src="https://ghbtns.com/github-btn.html?user={{ member.user }}&amp;type=follow"></iframe>
         <a class="team-member" href="https://github.com/{{ member.user }}">
-          <img src="https://secure.gravatar.com/avatar/{{ member.gravatar }}.jpg?s=32" alt="@{{ member.user }} avatar" width="32" height="32">
+          <img src="https://github.com/{{ member.user }}.png?s=64" alt="@{{ member.user }} avatar" width="32" height="32">
           <strong>{{ member.name }}</strong> <small>@{{ member.user }}</small>
         </a>
       </div>
