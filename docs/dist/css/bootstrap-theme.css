@@ -1,15 +1,8 @@
-/* stylelint-disable selector-no-qualifying-type, selector-max-compound-selectors */
 /*!
- * Bootstrap v3.4.0 (http://getbootstrap.com)
- * Copyright 2011-2016 Twitter, Inc.
+ * Bootstrap v3.4.0 (https://getbootstrap.com/)
+ * Copyright 2011-2018 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
-/* stylelint-disable value-keyword-case */
-/* stylelint-disable font-family-name-quotes, font-family-no-missing-generic-family-keyword */
-/* stylelint-disable media-feature-name-no-vendor-prefix, media-feature-parentheses-space-inside, media-feature-name-no-unknown, indentation, at-rule-name-space-after */
-/* stylelint-disable declaration-no-important */
-/* stylelint-disable indentation, property-no-vendor-prefix, selector-no-vendor-prefix */
-/* stylelint-disable value-no-vendor-prefix, selector-max-id */
 .btn-default,
 .btn-primary,
 .btn-success,

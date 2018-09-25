@@ -1,10 +1,9 @@
 /*!
- * Bootstrap Docs (http://getbootstrap.com)
- * Copyright 2011-2017 Twitter, Inc.
+ * Bootstrap Docs (https://getbootstrap.com/)
+ * Copyright 2011-2018 Twitter, Inc.
  * Licensed under the Creative Commons Attribution 3.0 Unported License. For
  * details, see https://creativecommons.org/licenses/by/3.0/.
  */
-/* stylelint-disable declaration-block-single-line-max-declarations */
 .hll {
   background-color: #ffc;
 }
@@ -218,27 +217,25 @@
   display: inline-block;
   padding-right: 45px;
 }
-/* stylelint-disable at-rule-no-vendor-prefix */
+.language-bash:before {
+  color: #033;
+  content: "$ ";
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
 /*!
  * IE10 viewport hack for Surface/desktop Windows 8 bug
- * Copyright 2014-2015 Twitter, Inc.
+ * Copyright 2014-2018 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 @-ms-viewport {
   width: device-width;
 }
-@-o-viewport {
-  width: device-width;
-}
 @viewport {
   width: device-width;
 }
-/* stylelint-disable value-keyword-case */
-/* stylelint-disable font-family-name-quotes, font-family-no-missing-generic-family-keyword */
-/* stylelint-disable media-feature-name-no-vendor-prefix, media-feature-parentheses-space-inside, media-feature-name-no-unknown, indentation, at-rule-name-space-after */
-/* stylelint-disable declaration-no-important */
-/* stylelint-disable indentation, property-no-vendor-prefix, selector-no-vendor-prefix */
-/* stylelint-disable value-no-vendor-prefix, selector-max-id */
 .btn-outline {
   color: #563d7c;
   background-color: transparent;
@@ -293,7 +290,6 @@
   background-color: transparent;
   border: 1px solid #cdbfe3;
 }
-/* stylelint-disable selector-max-id */
 #skippy {
   display: block;
   padding: 1em;
@@ -302,7 +298,7 @@
   outline: 0;
 }
 #skippy .skiplink-text {
-  padding: .5em;
+  padding: 0.5em;
   outline: 1px dotted;
 }
 #content:focus {
@@ -376,7 +372,6 @@
     margin-bottom: 0;
   }
 }
-/* stylelint-disable value-no-vendor-prefix, function-name-case */
 .bs-docs-masthead,
 .bs-docs-header {
   position: relative;
@@ -471,7 +466,6 @@
     margin-right: 380px;
   }
 }
-/* stylelint-disable selector-max-id, declaration-no-important */
 #carbonads {
   display: block;
   padding: 15px 15px 15px 160px;
@@ -582,18 +576,18 @@
   margin-right: -1px;
   margin-left: -1px;
 }
-.bs-docs-featured-sites .col-xs-6 {
+.bs-docs-featured-sites .col-xs-8 {
   padding: 1px;
 }
 .bs-docs-featured-sites .img-responsive {
   margin-top: 0;
 }
 @media (min-width: 768px) {
-  .bs-docs-featured-sites .col-sm-3:first-child img {
+  .bs-docs-featured-sites .col-sm-4:first-child img {
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
   }
-  .bs-docs-featured-sites .col-sm-3:last-child img {
+  .bs-docs-featured-sites .col-sm-4:last-child img {
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;
   }
@@ -617,7 +611,6 @@
     padding-left: 10px;
   }
 }
-/* stylelint-disable selector-max-compound-selectors */
 .bs-docs-sidebar.affix {
   position: static;
 }
@@ -730,7 +723,6 @@
     width: 263px;
   }
 }
-/* stylelint-disable property-no-vendor-prefix, selector-max-id, selector-no-qualifying-type */
 .show-grid {
   margin-bottom: 15px;
 }
@@ -752,7 +744,7 @@
   -webkit-box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.05);
   box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.05);
 }
-.bs-example::after {
+.bs-example:after {
   position: absolute;
   top: 15px;
   left: 15px;
@@ -767,7 +759,7 @@
   padding-bottom: 24px;
 }
 .bs-example + .highlight,
-.bs-example + .zero-clipboard + .highlight {
+.bs-example + .bs-clipboard + .highlight {
   margin: -15px -15px 15px;
   border-width: 0 0 1px;
   border-radius: 0;
@@ -784,13 +776,17 @@
     box-shadow: none;
   }
   .bs-example + .highlight,
-  .bs-example + .zero-clipboard + .highlight {
+  .bs-example + .bs-clipboard + .highlight {
     margin-top: -16px;
     margin-right: 0;
     margin-left: 0;
     border-width: 1px;
     border-bottom-right-radius: 4px;
     border-bottom-left-radius: 4px;
+  }
+  .bs-example + .bs-clipboard .btn-clipboard {
+    top: -15px;
+    border-top-right-radius: 0;
   }
   .bs-example-standalone {
     border-radius: 4px;
@@ -891,7 +887,7 @@
 .bs-navbar-top-example {
   padding-bottom: 45px;
 }
-.bs-navbar-top-example::after {
+.bs-navbar-top-example:after {
   top: auto;
   bottom: 15px;
 }
@@ -1112,7 +1108,6 @@
   margin-right: 10px;
   border-radius: 4px;
 }
-/* stylelint-disable selector-no-qualifying-type, declaration-no-important */
 .table-responsive .highlight pre {
   white-space: normal;
 }
@@ -1217,7 +1212,6 @@
     font-size: 12px;
   }
 }
-/* stylelint-disable property-no-vendor-prefix, selector-max-id, selector-no-qualifying-type */
 .bs-customizer .toggle {
   float: right;
   margin-top: 25px;
@@ -1300,7 +1294,7 @@
 .bs-dropzone .import-header {
   margin-bottom: 5px;
 }
-.bs-dropzone .glyphicon-download-alt {
+.bs-dropzone .glyphicon-folder-open {
   font-size: 40px;
 }
 .bs-dropzone hr {
@@ -1373,9 +1367,13 @@
     font-size: 60px;
   }
 }
-.zero-clipboard {
+.bs-clipboard {
   position: relative;
   display: none;
+  float: right;
+}
+.bs-clipboard + .highlight {
+  margin-top: 0;
 }
 .btn-clipboard {
   position: absolute;
@@ -1383,29 +1381,24 @@
   right: 0;
   z-index: 10;
   display: block;
-  padding: 5px 8px;
+  padding: 4px 8px;
   font-size: 12px;
-  color: #767676;
+  color: #818a91;
   cursor: pointer;
-  background-color: #fff;
-  border: 1px solid #e1e1e8;
-  border-radius: 0 4px;
+  background-color: transparent;
+  border: 0;
+  border-top-right-radius: 4px;
+  border-bottom-left-radius: 4px;
 }
-.btn-clipboard-hover {
+.btn-clipboard:hover {
   color: #fff;
-  background-color: #563d7c;
-  border-color: #563d7c;
+  background-color: #027de7;
 }
 @media (min-width: 768px) {
-  .zero-clipboard {
+  .bs-clipboard {
     display: block;
   }
-  .bs-example + .zero-clipboard .btn-clipboard {
-    top: -16px;
-    border-top-right-radius: 0;
-  }
 }
-/* stylelint-disable property-no-vendor-prefix */
 .anchorjs-link {
   color: inherit;
 }
@@ -1415,17 +1408,16 @@
   }
 }
 *:hover > .anchorjs-link {
-  opacity: .75;
-  -webkit-transition: color .16s linear;
-  -o-transition: color .16s linear;
-  transition: color .16s linear;
+  opacity: 0.75;
+  -webkit-transition: color 0.16s linear;
+  -o-transition: color 0.16s linear;
+  transition: color 0.16s linear;
 }
 *:hover > .anchorjs-link:hover,
 .anchorjs-link:focus {
   text-decoration: none;
   opacity: 1;
 }
-/* stylelint-disable declaration-no-important, selector-attribute-quotes */
 .algolia-autocomplete {
   display: block !important;
 }
@@ -1438,17 +1430,18 @@
   background-clip: padding-box;
   border: 1px solid #ddd;
   border: 1px solid rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 8px 15px rgba(0, 0, 0, 0.175);
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.175);
 }
-@media min-width (768px) {
+@media (min-width: 768px) {
   .algolia-autocomplete .ds-dropdown-menu {
     width: 175%;
   }
 }
-.algolia-autocomplete .ds-dropdown-menu::before {
+.algolia-autocomplete .ds-dropdown-menu:before {
   display: none !important;
 }
-.algolia-autocomplete .ds-dropdown-menu [class^=ds-dataset-] {
+.algolia-autocomplete .ds-dropdown-menu [class^="ds-dataset-"] {
   padding: 0 !important;
   overflow: visible !important;
   background-color: transparent !important;
@@ -1484,7 +1477,7 @@
   width: auto !important;
   padding: 0 !important;
 }
-.algolia-autocomplete .algolia-docsearch-suggestion--content::before {
+.algolia-autocomplete .algolia-docsearch-suggestion--content:before {
   display: none !important;
 }
 .algolia-autocomplete .ds-suggestion:not(:first-child) .algolia-docsearch-suggestion--category-header {
@@ -1531,12 +1524,12 @@
   background-color: #eee;
 }
 .algolia-autocomplete .algolia-docsearch-suggestion--text .algolia-docsearch-suggestion--highlight {
+  -webkit-box-shadow: inset 0 -2px 0 0 rgba(95, 45, 171, 0.5) !important;
   box-shadow: inset 0 -2px 0 0 rgba(95, 45, 171, 0.5) !important;
 }
 .algolia-autocomplete .ds-suggestion.ds-cursor .algolia-docsearch-suggestion--content {
   background-color: #e5e5e5 !important;
 }
-/* stylelint-disable selector-max-type, selector-no-qualifying-type, declaration-no-important */
 body {
   position: relative;
 }
@@ -1587,6 +1580,7 @@ h1[id] {
   text-align: center;
   background-color: #0275d8;
 }
+.v4-tease:focus,
 .v4-tease:hover {
   color: #fff;
   text-decoration: none;
@@ -1594,7 +1588,7 @@ h1[id] {
 }
 /* Nullify ill-advised printing of hrefs; see #18711 */
 @media print {
-  a[href]::after {
+  a[href]:after {
     content: "" !important;
   }
 }
