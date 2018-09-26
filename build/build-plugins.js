@@ -8,8 +8,8 @@
 const rollup  = require('rollup')
 const path    = require('path')
 const babel   = require('rollup-plugin-babel')
-const TEST    = process.env.NODE_ENV === 'test'
 const banner  = require(path.resolve(__dirname, './banner.js'))
+const TEST    = process.env.NODE_ENV === 'test'
 
 const plugins = [
   babel({
@@ -62,18 +62,20 @@ Object.keys(bsPlugins)
       globals[bsPlugins.Tooltip] = 'Tooltip'
     }
 
+    const pluginFilename = `${pluginKey.toLowerCase()}.js`
+
     rollup.rollup({
       input: bsPlugins[pluginKey],
       plugins,
       external
     }).then((bundle) => {
       bundle.write({
-        banner,
+        banner: banner(pluginFilename),
         format,
         name: pluginKey,
         sourcemap: true,
         globals,
-        file: path.resolve(__dirname, `${rootPath}${pluginKey.toLowerCase()}.js`)
+        file: path.resolve(__dirname, `${rootPath}${pluginFilename}`)
       })
         .then(() => console.log(`Building ${pluginKey} plugin... Done!`))
         .catch((err) => console.error(`${pluginKey}: ${err}`))
