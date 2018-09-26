@@ -8,7 +8,7 @@
 const rollup  = require('rollup')
 const path    = require('path')
 const babel   = require('rollup-plugin-babel')
-const banner  = require(path.resolve(__dirname, './banner.js'))
+const banner  = require('./banner.js')
 const TEST    = process.env.NODE_ENV === 'test'
 
 const plugins = [
