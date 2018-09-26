@@ -391,6 +391,7 @@ Turn an image into a card background and overlay your card's text. Depending on 
 </div>
 {% endcapture %}
 {% include example.html content=example %}
+{% include callout-info-content-iamge-overlay-overflow.md %}
 
 ## Card styles
 
