@@ -41,7 +41,8 @@
 // Use on `li`s or `div`s within the `.list-group` parent.
 
 .list-group-item {
-  position: relative;
+  // Fixed issue #27293  
+  position: static;
   display: block;
   padding: $list-group-item-padding-y $list-group-item-padding-x;
   // Place the border on the list items and negative margin up for better styling
