@@ -3152,6 +3152,7 @@ input[type="button"].btn-block {
 
 .dropdown-item.disabled, .dropdown-item:disabled {
   color: #6c757d;
+  pointer-events: none;
   background-color: transparent;
 }
 
@@ -5189,6 +5190,7 @@ a.badge-dark:hover, a.badge-dark:focus {
 
 .list-group-item.disabled, .list-group-item:disabled {
   color: #6c757d;
+  pointer-events: none;
   background-color: #fff;
 }
 
@@ -9360,6 +9362,10 @@ button.bg-dark:focus {
 
 .text-capitalize {
   text-transform: capitalize !important;
+}
+
+.text-none {
+  text-transform: none !important;
 }
 
 .font-weight-light {
