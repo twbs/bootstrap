@@ -8,14 +8,11 @@
     <!-- jQuery -->
     <script>
       (function () {
-        var path = '../../site/docs/4.2/assets/js/vendor/jquery-slim.min.js'
         // get jquery param from the query string.
         var jQueryVersion = location.search.match(/[?&]jquery=(.*?)(?=&|$)/)
 
         // If a version was specified, use that version from jQuery CDN
-        if (jQueryVersion) {
-          path = 'https://code.jquery.com/jquery-' + jQueryVersion[1] + '.min.js'
-        }
+        var path = 'https://code.jquery.com/jquery-' + (jQueryVersion ? jQueryVersion[1] : '3.3.1') + '.min.js'
         document.write('<script src="' + path + '"><\/script>')
       }())
     </script>
