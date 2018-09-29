@@ -122,7 +122,7 @@ fieldset:disabled a.btn {
 //
 
 .btn-rounded {
-  @include rounded-pill(1.5rem);
+  border-radius: 1.5rem;
 }
 
 //

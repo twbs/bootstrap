@@ -33,11 +33,3 @@
     border-bottom-left-radius: $radius;
   }
 }
-
-// Rounded pill used for utility class
-
-@mixin rounded-pill($radius) {
-  @if $enable-rounded {
-    border-radius: $radius !important; /* stylelint-disable-line declaration-no-important */
-  }
-}

@@ -61,7 +61,6 @@ Add classes to an element to easily round its corners.
   <img data-src="holder.js/75x75" class="rounded-bottom" alt="Example bottom rounded image">
   <img data-src="holder.js/75x75" class="rounded-left" alt="Example left rounded image">
   <img data-src="holder.js/75x75" class="rounded-circle" alt="Completely round image">
-  <img data-src="holder.js/75x75" class="rounded-pill" alt="Example rounded pill image">
   <img data-src="holder.js/75x75" class="rounded-0" alt="Example non-rounded image (overrides rounding applied elsewhere)">
 </div>
 
@@ -72,6 +71,5 @@ Add classes to an element to easily round its corners.
 <img src="..." alt="..." class="rounded-bottom">
 <img src="..." alt="..." class="rounded-left">
 <img src="..." alt="..." class="rounded-circle">
-<img src="..." alt="..." class="rounded-pill">
 <img src="..." alt="..." class="rounded-0">
 {% endhighlight %}
