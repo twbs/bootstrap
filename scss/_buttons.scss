@@ -118,6 +118,14 @@ fieldset:disabled a.btn {
 
 
 //
+// Button Rounded
+//
+
+.btn-rounded {
+  @include rounded-pill(50px);
+}
+
+//
 // Block button
 //
 

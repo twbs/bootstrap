@@ -70,6 +70,16 @@ Create block level buttons—those that span the full width of a parent—by add
 {% endcapture %}
 {% include example.html content=example %}
 
+## Rounded
+
+Need to create a rounded button? Add `.btn-rounded` to any `.btn`.
+
+{% capture example %}
+<button type="button" class="btn btn-primary btn-rounded">Rounded button</button>
+<button type="button" class="btn btn-secondary btn-rounded">Rounded button</button>
+{% endcapture %}
+{% include example.html content=example %}
+
 ## Active state
 
 Buttons will appear pressed (with a darker background, darker border, and inset shadow) when active. **There's no need to add a class to `<button>`s as they use a pseudo-class**. However, you can still force the same active appearance with `.active` (and include the <code>aria-pressed="true"</code> attribute) should you need to replicate the state programmatically.
