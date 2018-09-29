@@ -122,7 +122,7 @@ fieldset:disabled a.btn {
 //
 
 .btn-rounded {
-  @include rounded-pill(50px);
+  @include rounded-pill(3.125rem);
 }
 
 //
