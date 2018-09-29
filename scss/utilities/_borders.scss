@@ -55,7 +55,7 @@
 }
 
 .rounded-pill {
-  border-radius: 1.5rem !important;
+  @include rounded-pill(1.5rem);
 }
 
 .rounded-0 {

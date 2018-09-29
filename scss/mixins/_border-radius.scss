@@ -38,6 +38,6 @@
 
 @mixin rounded-pill($radius) {
   @if $enable-rounded {
-    border-radius: $radius;
+    border-radius: $radius !important;  /* stylelint-disable-line */
   }
 }
