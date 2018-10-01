@@ -1,7 +1,7 @@
 <p align="center">
-  <a href="https://getbootstrap.com/">
-    <img src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width=72 height=72>
-  </a>
+<a href="https://getbootstrap.com/">
+<img src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width=72 height=72>
+</a>
 
   <h3 align="center">Bootstrap</h3>
 
@@ -38,7 +38,7 @@
 
 Several quick start options are available:
 
-- [Download the latest release.](https://github.com/twbs/bootstrap/archive/v4.0.0-beta.2.zip)
+- [Download the latest release.] http://getbootstrap.com/docs/4.1/getting-started/download/
 - Clone the repo: `git clone https://github.com/twbs/bootstrap.git`
 - Install with [npm](https://www.npmjs.com/): `npm install bootstrap@4.0.0-beta.2`
 - Install with [yarn](https://yarnpkg.com/): `yarn add bootstrap@4.0.0-beta.2`
