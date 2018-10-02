@@ -502,10 +502,10 @@ $(document)
 
 $(window).on(Event.LOAD_DATA_API, () => {
   const carousels = [].slice.call(document.querySelectorAll(Selector.DATA_RIDE))
-  for (let i = 0, len = carousels.length; i < len; i++) {
-    const $carousel = $(carousels[i])
+  carousels.map((carousel) => {
+    const $carousel = $(carousel)
     Carousel._jQueryInterface.call($carousel, $carousel.data())
-  }
+  })
 })
 
 /**

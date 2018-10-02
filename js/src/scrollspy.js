@@ -224,7 +224,6 @@ class ScrollSpy {
       return
     }
 
-    const offsetLength = this._offsets.length
     for (let i = offsetLength; i--;) {
       const isActiveTarget = this._activeTarget !== this._targets[i] &&
           scrollTop >= this._offsets[i] &&
@@ -305,11 +304,10 @@ class ScrollSpy {
 $(window).on(Event.LOAD_DATA_API, () => {
   const scrollSpys = [].slice.call(document.querySelectorAll(Selector.DATA_SPY))
 
-  const scrollSpysLength = scrollSpys.length
-  for (let i = scrollSpysLength; i--;) {
-    const $spy = $(scrollSpys[i])
+  scrollSpys.map((scrollspy) => {
+    const $spy = $(scrollspy)
     ScrollSpy._jQueryInterface.call($spy, $spy.data())
-  }
+  })
 })
 
 /**

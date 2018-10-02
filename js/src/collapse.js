@@ -72,17 +72,16 @@ class Collapse {
       `[data-toggle="collapse"][data-target="#${element.id}"]`
     ))
     const toggleList = [].slice.call(document.querySelectorAll(Selector.DATA_TOGGLE))
-    for (let i = 0, len = toggleList.length; i < len; i++) {
-      const elem = toggleList[i]
-      const selector = Util.getSelectorFromElement(elem)
+    toggleList.map((toggle) => {
+      const selector = Util.getSelectorFromElement(toggle)
       const filterElement = [].slice.call(document.querySelectorAll(selector))
         .filter((foundElem) => foundElem === element)
 
       if (selector !== null && filterElement.length > 0) {
         this._selector = selector
-        this._triggerArray.push(elem)
+        this._triggerArray.push(toggle)
       }
-    }
+    })
 
     this._parent = this._config.parent ? this._getParent() : null
 
