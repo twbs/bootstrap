@@ -505,6 +505,7 @@ $(window).on(Event.LOAD_DATA_API, () => {
   carousels.map((carousel) => {
     const $carousel = $(carousel)
     Carousel._jQueryInterface.call($carousel, $carousel.data())
+    return null
   })
 })
 

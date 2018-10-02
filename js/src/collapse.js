@@ -81,6 +81,7 @@ class Collapse {
         this._selector = selector
         this._triggerArray.push(toggle)
       }
+      return null
     })
 
     this._parent = this._config.parent ? this._getParent() : null

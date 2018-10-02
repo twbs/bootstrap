@@ -223,7 +223,7 @@ class ScrollSpy {
       this._clear()
       return
     }
-    
+
     const offsetLength = this._offsets.length
     for (let i = offsetLength; i--;) {
       const isActiveTarget = this._activeTarget !== this._targets[i] &&
@@ -308,6 +308,7 @@ $(window).on(Event.LOAD_DATA_API, () => {
   scrollSpys.map((scrollspy) => {
     const $spy = $(scrollspy)
     ScrollSpy._jQueryInterface.call($spy, $spy.data())
+    return null
   })
 })
 
