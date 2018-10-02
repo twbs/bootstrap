@@ -305,11 +305,11 @@ class ScrollSpy {
 $(window).on(Event.LOAD_DATA_API, () => {
   const scrollSpys = [].slice.call(document.querySelectorAll(Selector.DATA_SPY))
 
-  const scrollSpysLength = scrollSpys.length
-  for (let i = scrollSpysLength; i--;) {
-    const $spy = $(scrollSpys[i])
+  scrollSpys.map((scrollspy) => {
+    const $spy = $(scrollspy)
     ScrollSpy._jQueryInterface.call($spy, $spy.data())
-  }
+    return null
+  })
 })
 
 /**
