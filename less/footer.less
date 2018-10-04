@@ -38,7 +38,20 @@
 
   .icon {
     margin: 0 5px;
-    font-size: 50px !important;
+    font-size: 32px !important;
+    width: 24px;
+  }
+
+  .link-icon {
+    svg {
+      fill: @brand-grey-plus-10;
+
+      &:hover,
+      &:active,
+      &:focus {
+        fill: @gray-darker;
+      }
+    }
   }
 
   &.footer-inverse {
@@ -52,6 +65,16 @@
       &:active,
       &:focus {
         color: @brand-smoke-minus-10;
+      }
+
+      svg {
+        fill: @brand-smoke-plus-20;
+
+        &:hover,
+        &:active,
+        &:focus {
+          fill: @brand-smoke-minus-10;
+        }
       }
     }
 
