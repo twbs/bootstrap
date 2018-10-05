@@ -10,8 +10,6 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
-'use strict'
-
 const fs = require('fs')
 const path = require('path')
 const sriToolbox = require('sri-toolbox')
@@ -34,11 +32,11 @@ const files = [
     configPropertyName: 'js_hash'
   },
   {
-    file: 'assets/js/vendor/jquery-slim.min.js',
+    file: 'site/docs/4.1/assets/js/vendor/jquery-slim.min.js',
     configPropertyName: 'jquery_hash'
   },
   {
-    file: 'assets/js/vendor/popper.min.js',
+    file: 'site/docs/4.1/assets/js/vendor/popper.min.js',
     configPropertyName: 'popper_hash'
   }
 ]
