@@ -232,6 +232,8 @@ $border-radius:               .25rem !default;
 $border-radius-lg:            .3rem !default;
 $border-radius-sm:            .2rem !default;
 
+$rounded-pill:                50rem !default;
+
 $box-shadow-sm:               0 .125rem .25rem rgba($black, .075) !default;
 $box-shadow:                  0 .5rem 1rem rgba($black, .15) !default;
 $box-shadow-lg:               0 1rem 3rem rgba($black, .175) !default;
@@ -412,6 +414,8 @@ $btn-block-spacing-y:         .5rem !default;
 $btn-border-radius:           $border-radius !default;
 $btn-border-radius-lg:        $border-radius-lg !default;
 $btn-border-radius-sm:        $border-radius-sm !default;
+
+$btn-rounded:                 1.5rem !default;
 
 $btn-transition:              color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
 

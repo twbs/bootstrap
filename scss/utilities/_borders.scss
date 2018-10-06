@@ -54,6 +54,10 @@
   border-radius: 50% !important;
 }
 
+.rounded-pill {
+  border-radius: $rounded-pill !important;
+}
+
 .rounded-0 {
   border-radius: 0 !important;
 }
