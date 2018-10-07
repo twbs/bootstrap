@@ -1097,4 +1097,69 @@ $(function () {
     assert.ok(dropdown._menu === null)
     assert.ok(dropdown._element === null)
   })
+
+  QUnit.test('should show dropdown', function (assert) {
+    assert.expect(2)
+
+    var dropdownHTML =
+      '<div class="dropdown">' +
+      '  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>' +
+      '  <div class="dropdown-menu">' +
+      '    <a class="dropdown-item" href="#">Another link</a>' +
+      '  </div>' +
+      '</div>'
+
+    var $dropdown = $(dropdownHTML)
+      .appendTo('#qunit-fixture')
+      .find('[data-toggle="dropdown"]')
+      .bootstrapDropdown()
+
+    var dropdown = $dropdown.data('bs.dropdown')
+    var done = assert.async()
+
+    $dropdown
+      .parent('.dropdown')
+      .on('show.bs.dropdown', function () {
+        assert.ok(true, 'show was fired')
+      })
+      .on('shown.bs.dropdown', function () {
+        assert.ok($dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is shown')
+        done()
+      })
+
+    dropdown.show()
+  })
+
+  QUnit.test('should hide dropdown', function (assert) {
+    assert.expect(2)
+
+    var dropdownHTML =
+      '<div class="dropdown">' +
+      '  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>' +
+      '  <div class="dropdown-menu">' +
+      '    <a class="dropdown-item" href="#">Another link</a>' +
+      '  </div>' +
+      '</div>'
+
+    var $dropdown = $(dropdownHTML)
+      .appendTo('#qunit-fixture')
+      .find('[data-toggle="dropdown"]')
+      .bootstrapDropdown()
+
+    var dropdown = $dropdown.data('bs.dropdown')
+    var done = assert.async()
+    $dropdown.trigger('click')
+
+    $dropdown
+      .parent('.dropdown')
+      .on('hide.bs.dropdown', function () {
+        assert.ok(true, 'hide was fired')
+      })
+      .on('hidden.bs.dropdown', function () {
+        assert.ok(!$dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is hidden')
+        done()
+      })
+
+    dropdown.hide()
+  })
 })

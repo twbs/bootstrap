@@ -203,9 +203,10 @@ class Dropdown {
       return
     }
 
-    const showEvent = $.Event(Event.SHOW, {
+    const relatedTarget = {
       relatedTarget: this._element
-    })
+    }
+    const showEvent = $.Event(Event.SHOW, relatedTarget)
 
     const parent   = Dropdown._getParentFromElement(this._element)
     $(parent).trigger(showEvent)
@@ -215,6 +216,9 @@ class Dropdown {
     }
 
     $(this._menu).toggleClass(ClassName.SHOW)
+    $(parent)
+      .toggleClass(ClassName.SHOW)
+      .trigger($.Event(Event.SHOWN, relatedTarget))
   }
 
   hide() {
@@ -227,9 +231,10 @@ class Dropdown {
       return
     }
 
-    const hideEvent = $.Event(Event.HIDE, {
+    const relatedTarget = {
       relatedTarget: this._element
-    })
+    }
+    const hideEvent = $.Event(Event.HIDE, relatedTarget)
 
     const parent   = Dropdown._getParentFromElement(this._element)
     $(parent).trigger(hideEvent)
@@ -239,6 +244,9 @@ class Dropdown {
     }
 
     $(this._menu).toggleClass(ClassName.SHOW)
+    $(parent)
+      .toggleClass(ClassName.SHOW)
+      .trigger($.Event(Event.HIDDEN, relatedTarget))
   }
 
   dispose() {
