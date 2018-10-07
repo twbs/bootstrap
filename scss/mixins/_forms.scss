@@ -41,13 +41,13 @@
     z-index: 5;
     display: none;
     max-width: 100%; // Contain to parent when possible
-    padding: $tooltip-padding-y $tooltip-padding-x;
+    padding: $form-feedback-tooltip-padding-y $form-feedback-tooltip-padding-x;
     margin-top: .1rem;
-    font-size: $tooltip-font-size;
-    line-height: $line-height-base;
+    font-size: $form-feedback-tooltip-font-size;
+    line-height: $form-feedback-tooltip-line-height;
     color: color-yiq($color);
-    background-color: rgba($color, $tooltip-opacity);
-    @include border-radius($tooltip-border-radius);
+    background-color: rgba($color, $form-feedback-tooltip-opacity);
+    @include border-radius($form-feedback-tooltip-border-radius);
   }
 
   .form-control {
