@@ -28,7 +28,7 @@ const detectBrowsers = {
   usePhantomJS: false,
   postDetection(availableBrowser) {
     if (typeof process.env.TRAVIS_JOB_ID !== 'undefined' || availableBrowser.includes('Chrome')) {
-      return ['ChromeHeadless']
+      return ['HeadlessChrome']
     }
 
     if (availableBrowser.includes('Firefox')) {
@@ -40,6 +40,11 @@ const detectBrowsers = {
 }
 
 const customLaunchers = {
+  HeadlessChrome: {
+    base: 'ChromeHeadless',
+    flags: ['--no-sandbox']
+  },
+
   FirefoxHeadless: {
     base: 'Firefox',
     flags: ['-headless']
