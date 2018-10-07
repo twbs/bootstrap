@@ -17,7 +17,6 @@ window.onload = function () { // wait for load in a dumb way because B-0
            ' * Licensed under the MIT license\n' +
            ' */\n\n'
 
-  var supportsFile = window.File && window.FileReader && window.FileList && window.Blob
   var $importDropTarget = $('#import-drop-target')
 
   function showError(msg, err) {
@@ -310,8 +309,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
     e.stopPropagation()
     e.preventDefault()
 
-    var file = e.originalEvent.hasOwnProperty('dataTransfer') ? e.originalEvent.dataTransfer.files[0] : e.originalEvent.target.files[0]
-
+    var file = e.originalEvent.target.files[0]
     var reader = new FileReader()
 
     reader.onload = function (e) {
@@ -332,20 +330,6 @@ window.onload = function () { // wait for load in a dumb way because B-0
     }
 
     reader.readAsText(file, 'utf-8')
-  }
-
-  function handleConfigDragOver(e) {
-    e.stopPropagation()
-    e.preventDefault()
-    e.originalEvent.dataTransfer.dropEffect = 'copy'
-
-    removeImportAlerts()
-  }
-
-  if (supportsFile) {
-    $importDropTarget
-      .on('dragover', handleConfigDragOver)
-      .on('drop', handleConfigFileSelect)
   }
 
   $('#import-file-select').on('change', handleConfigFileSelect)
