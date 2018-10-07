@@ -245,7 +245,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
     var bsLessSource    = preamble + generateLESS('bootstrap.less', lessFileIncludes, vars)
     var themeLessSource = preamble + generateLESS('theme.less',     lessFileIncludes, vars)
 
-    var prefixer = autoprefixer({ browsers: __configBridge.autoprefixerBrowsers })
+    var prefixer = autoprefixer(__configBridge.autoprefixer)
 
     $.when(
       compileLESS(bsLessSource, 'bootstrap', result),
