@@ -38,14 +38,14 @@
 }
 
 @mixin make-col($size, $columns: $grid-columns) {
-  flex: 0 0 percentage($size / $columns);
+  flex: 0 0 calc(100% / #{$columns} * #{$size});
   // Add a `max-width` to ensure content within each column does not blow out
   // the width of the column. Applies to IE10+ and Firefox. Chrome and Safari
   // do not appear to require this.
-  max-width: percentage($size / $columns);
+  max-width: calc(100% / #{$columns} * #{$size});
 }
 
 @mixin make-col-offset($size, $columns: $grid-columns) {
   $num: $size / $columns;
-  margin-left: if($num == 0, 0, percentage($num));
+  margin-left: if($num == 0, 0, calc(100% / #{$columns} * #{$size}));
 }
