@@ -208,7 +208,7 @@ class Dropdown {
     }
     const showEvent = $.Event(Event.SHOW, relatedTarget)
 
-    const parent   = Dropdown._getParentFromElement(this._element)
+    const parent = Dropdown._getParentFromElement(this._element)
     $(parent).trigger(showEvent)
 
     if (showEvent.isDefaultPrevented()) {
@@ -236,7 +236,7 @@ class Dropdown {
     }
     const hideEvent = $.Event(Event.HIDE, relatedTarget)
 
-    const parent   = Dropdown._getParentFromElement(this._element)
+    const parent = Dropdown._getParentFromElement(this._element)
     $(parent).trigger(hideEvent)
 
     if (hideEvent.isDefaultPrevented()) {
