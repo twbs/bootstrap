@@ -145,7 +145,7 @@ class Tab {
     if (container.nodeName === 'UL') {
       activeElements = $(container).find(Selector.ACTIVE_UL)
     } else {
-      activeElements = $(container).children(Selector.ACTIVE)
+      activeElements = $(container).find(Selector.ACTIVE)
     }
 
     const active = activeElements[0]
