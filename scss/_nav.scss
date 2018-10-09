@@ -22,6 +22,8 @@
   // Disabled state lightens text
   &.disabled {
     color: $nav-link-disabled-color;
+    pointer-events: none;
+    cursor: default;
   }
 }
 
@@ -48,6 +50,8 @@
       color: $nav-link-disabled-color;
       background-color: transparent;
       border-color: transparent;
+      pointer-events: none;
+      cursor: default;
     }
   }
 
