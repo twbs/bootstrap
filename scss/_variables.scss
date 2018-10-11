@@ -153,6 +153,18 @@ $sizes: map-merge(
   $sizes
 );
 
+$viewport-sizes: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$viewport-sizes: map-merge(
+  (
+    25,
+    50,
+    75,
+    100
+  ),
+  $viewport-sizes
+);
+
 
 // Body
 //

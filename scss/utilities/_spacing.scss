@@ -71,3 +71,29 @@
     }
   }
 }
+
+@each $unit in (vh, vw) {
+  @each $prop, $abbrev in (margin: m, padding: p) {
+    @each $size, $length in $viewport-sizes {
+      .#{$abbrev}-#{$unit}-#{$size} {
+        #{$prop}: #{$size}#{$unit} !important;
+      }
+      .#{$abbrev}t-#{$unit}-#{$size},
+      .#{$abbrev}y-#{$unit}-#{$size} {
+        #{$prop}-top: #{$size}#{$unit} !important;
+      }
+      .#{$abbrev}r-#{$unit}-#{$size},
+      .#{$abbrev}x-#{$unit}-#{$size} {
+        #{$prop}-right: #{$size}#{$unit} !important;
+      }
+      .#{$abbrev}b-#{$unit}-#{$size},
+      .#{$abbrev}y-#{$unit}-#{$size} {
+        #{$prop}-bottom: #{$size}#{$unit} !important;
+      }
+      .#{$abbrev}l-#{$unit}-#{$size},
+      .#{$abbrev}x-#{$unit}-#{$size} {
+        #{$prop}-left: #{$size}#{$unit} !important;
+      }
+    }
+  }
+}
