@@ -32,6 +32,10 @@
   &.disabled,
   &:disabled {
     opacity: $btn-disabled-opacity;
+    // Remove CSS gradients if they're enabled
+    @if $enable-gradients {
+      background-image: none;
+    }
     @include box-shadow(none);
   }
 
