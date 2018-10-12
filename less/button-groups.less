@@ -358,10 +358,20 @@
   }
 }
 
-.btn-group .dropdown-menu {
+.btn-group {
+  .dropdown-menu {
     max-height: 90vh;
     overflow: auto;
+  }
+
+  // allow select input options to wrap into multiple lines
+  .btn-input + .dropdown-menu {
+    > li > a {
+      white-space: normal;
+    }
+  }
 }
+
 @media (min-height: 592px) {
     .btn-group .dropdown-menu {
         max-height: 592px;	// (12 * 48) + 16 = 592
