@@ -69,7 +69,7 @@ Multiple `<button>` or `<a>` can show and hide an element if they each reference
 
 ## Accordion example
 
-Using the [card]({{ site.baseurl }}/docs/{{ site.docs_version }}/components/card/) component, you can extend the default collapse behavior to create an accordion.
+Using the [card]({{ site.baseurl }}/docs/{{ site.docs_version }}/components/card/) component, you can extend the default collapse behavior to create an accordion. To properly achieve the accordion style, be sure to use `.accordion` as a wrapper.
 
 {% capture example %}
 <div class="accordion" id="accordionExample">
