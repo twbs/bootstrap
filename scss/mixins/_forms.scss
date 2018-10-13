@@ -26,6 +26,20 @@
 }
 
 
+// If $state is an unknown pseudo class, returns nothing
+// This allows to have states like "warning", "info", "pending"... by calling
+// @include form-validation-state("warning", ...)
+// Why? If the pseudo class is not recognized (e.g :warning, :info...), the browser ignores the whole CSS rule
+// See [Bootstrap 4, is-pending form validation state](https://stackoverflow.com/q/50068551)
+@function _pseudo-class($state) {
+  @if $state == "valid" or $state == "invalid" {
+    @return "&:#{$state}";
+  }
+  @else {
+    @return "";
+  }
+}
+
 @mixin form-validation-state($state, $color) {
   .#{$state}-feedback {
     display: none;
@@ -51,7 +65,7 @@
   }
 
   .form-control {
-    .was-validated &:#{$state},
+    .was-validated #{_pseudo-class($state)},
     &.is-#{$state} {
       border-color: $color;
 
@@ -82,7 +96,7 @@
 
   // stylelint-disable selector-no-qualifying-type
   textarea.form-control {
-    .was-validated &:#{$state},
+    .was-validated #{_pseudo-class($state)},
     &.is-#{$state} {
       @if $enable-validation-icons {
         padding-right: $input-height-inner;
@@ -93,7 +107,7 @@
   // stylelint-enable selector-no-qualifying-type
 
   .custom-select {
-    .was-validated &:#{$state},
+    .was-validated #{_pseudo-class($state)},
     &.is-#{$state} {
       border-color: $color;
 
@@ -121,7 +135,7 @@
 
 
   .form-control-file {
-    .was-validated &:#{$state},
+    .was-validated #{_pseudo-class($state)},
     &.is-#{$state} {
       ~ .#{$state}-feedback,
       ~ .#{$state}-tooltip {
@@ -131,7 +145,7 @@
   }
 
   .form-check-input {
-    .was-validated &:#{$state},
+    .was-validated #{_pseudo-class($state)},
     &.is-#{$state} {
       ~ .form-check-label {
         color: $color;
@@ -145,7 +159,7 @@
   }
 
   .custom-control-input {
-    .was-validated &:#{$state},
+    .was-validated #{_pseudo-class($state)},
     &.is-#{$state} {
       ~ .custom-control-label {
         color: $color;
@@ -176,7 +190,7 @@
 
   // custom file
   .custom-file-input {
-    .was-validated &:#{$state},
+    .was-validated #{_pseudo-class($state)},
     &.is-#{$state} {
       ~ .custom-file-label {
         border-color: $color;
