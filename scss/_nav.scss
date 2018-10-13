@@ -49,8 +49,8 @@
     &.disabled {
       color: $nav-link-disabled-color;
       background-color: transparent;
-      border-color: transparent;
       pointer-events: none;
+      border-color: transparent;
       cursor: default;
     }
   }
