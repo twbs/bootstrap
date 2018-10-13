@@ -69,6 +69,7 @@
     "docs-serve": "bundle exec jekyll serve",
     "docs-workbox-precache": "node build/workbox.js",
     "update-deps": "ncu -a -x jquery -x bundlesize && npm update && bundle update && shx echo Manually update \"site/docs/4.1/assets/js/vendor/\"",
+    "release": "npm run dist && npm run release-sri && npm run release-zip && npm run docs-github",
     "release-sri": "node build/generate-sri.js",
     "release-version": "node build/change-version.js",
     "release-zip": "cross-env-shell \"shx cp -r dist/ bootstrap-$npm_package_version-dist && zip -r9 bootstrap-$npm_package_version-dist.zip bootstrap-$npm_package_version-dist && shx rm -rf bootstrap-$npm_package_version-dist\"",
