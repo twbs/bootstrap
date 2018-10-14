@@ -3,8 +3,6 @@ $(function () {
 
   window.Carousel = typeof bootstrap !== 'undefined' ? bootstrap.Carousel : Carousel
 
-  var touchSupported = 'ontouchstart' in document.documentElement || navigator.maxTouchPoints > 0
-
   QUnit.module('carousel plugin')
 
   QUnit.test('should be defined on jQuery object', function (assert) {
@@ -1009,13 +1007,8 @@ $(function () {
   })
 
   QUnit.test('should allow swiperight and call prev', function (assert) {
-    if (!touchSupported) {
-      assert.expect(0)
-
-      return
-    }
-
-    assert.expect(2)
+    Simulator.setType('touch')
+    assert.expect(3)
     var done = assert.async()
     document.documentElement.ontouchstart = $.noop
 
@@ -1035,10 +1028,13 @@ $(function () {
     $carousel.appendTo('#qunit-fixture')
     var $item = $('#item')
     $carousel.bootstrapCarousel()
+    var carousel = $carousel.data('bs.carousel')
+    var spy = sinon.spy(carousel, 'prev')
 
     $carousel.one('slid.bs.carousel', function () {
       assert.ok(true, 'slid event fired')
       assert.ok($item.hasClass('active'))
+      assert.ok(spy.called)
       delete document.documentElement.ontouchstart
       done()
     })
@@ -1049,40 +1045,10 @@ $(function () {
     })
   })
 
-  QUnit.test('should not use HammerJS when touch option is false', function (assert) {
-    assert.expect(1)
-
-    var $carousel = $('<div></div>').appendTo('#qunit-fixture')
-    $carousel.bootstrapCarousel({
-      touch: false
-    })
-
-    var carousel = $carousel.data('bs.carousel')
-
-    assert.strictEqual(carousel.hammer, null)
-  })
-
-  QUnit.test('should use HammerJS when touch option is true', function (assert) {
-    assert.expect(1)
-
-    document.documentElement.ontouchstart = $.noop
-
-    var $carousel = $('<div></div>').appendTo('#qunit-fixture')
-    $carousel.bootstrapCarousel()
-
-    var carousel = $carousel.data('bs.carousel')
-
-    assert.ok(carousel.hammer !== null)
-  })
-
   QUnit.test('should allow swipeleft and call next', function (assert) {
-    if (!touchSupported) {
-      assert.expect(0)
+    assert.expect(3)
+    Simulator.setType('touch')
 
-      return
-    }
-
-    assert.expect(2)
     var done = assert.async()
     document.documentElement.ontouchstart = $.noop
 
@@ -1102,11 +1068,13 @@ $(function () {
     $carousel.appendTo('#qunit-fixture')
     var $item = $('#item')
     $carousel.bootstrapCarousel()
+    var carousel = $carousel.data('bs.carousel')
+    var spy = sinon.spy(carousel, 'next')
 
     $carousel.one('slid.bs.carousel', function () {
       assert.ok(true, 'slid event fired')
       assert.ok(!$item.hasClass('active'))
-      delete document.documentElement.ontouchstart
+      assert.ok(spy.called)
       done()
     })
 
@@ -1114,6 +1082,27 @@ $(function () {
       pos: [300, 10],
       deltaX: -300,
       deltaY: 0
+    })
+  })
+
+  QUnit.test('should not allow pinch', function (assert) {
+    assert.expect(0)
+    Simulator.setType('touch')
+    var done = assert.async()
+    document.documentElement.ontouchstart = $.noop
+
+    var carouselHTML = '<div class="carousel" data-interval="false"></div>'
+    var $carousel = $(carouselHTML)
+    $carousel.appendTo('#qunit-fixture')
+    $carousel.bootstrapCarousel()
+
+    Simulator.gestures.swipe($carousel[0], {
+      pos: [300, 10],
+      deltaX: -300,
+      deltaY: 0,
+      touches: 2
+    }, function () {
+      done()
     })
   })
 })
