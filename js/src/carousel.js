@@ -56,22 +56,28 @@ const Event = {
   KEYDOWN        : `keydown${EVENT_KEY}`,
   MOUSEENTER     : `mouseenter${EVENT_KEY}`,
   MOUSELEAVE     : `mouseleave${EVENT_KEY}`,
-  TOUCHEND       : `touchend${EVENT_KEY}`,
   TOUCHSTART     : `touchstart${EVENT_KEY}`,
   TOUCHMOVE      : `touchmove${EVENT_KEY}`,
+  TOUCHEND       : `touchend${EVENT_KEY}`,
+  POINTERDOWN    : `pointerdown${EVENT_KEY}`,
+  POINTERMOVE    : `pointermove${EVENT_KEY}`,
+  POINTERUP      : `pointerup${EVENT_KEY}`,
+  POINTERLEAVE   : `pointerleave${EVENT_KEY}`,
+  POINTERCANCEL  : `pointercancel${EVENT_KEY}`,
   LOAD_DATA_API  : `load${EVENT_KEY}${DATA_API_KEY}`,
   CLICK_DATA_API : `click${EVENT_KEY}${DATA_API_KEY}`
 }
 
 const ClassName = {
-  CAROUSEL : 'carousel',
-  ACTIVE   : 'active',
-  SLIDE    : 'slide',
-  RIGHT    : 'carousel-item-right',
-  LEFT     : 'carousel-item-left',
-  NEXT     : 'carousel-item-next',
-  PREV     : 'carousel-item-prev',
-  ITEM     : 'carousel-item'
+  CAROUSEL      : 'carousel',
+  ACTIVE        : 'active',
+  SLIDE         : 'slide',
+  RIGHT         : 'carousel-item-right',
+  LEFT          : 'carousel-item-left',
+  NEXT          : 'carousel-item-next',
+  PREV          : 'carousel-item-prev',
+  ITEM          : 'carousel-item',
+  POINTER_EVENT : 'pointer-event'
 }
 
 const Selector = {
@@ -82,6 +88,11 @@ const Selector = {
   INDICATORS  : '.carousel-indicators',
   DATA_SLIDE  : '[data-slide], [data-slide-to]',
   DATA_RIDE   : '[data-ride="carousel"]'
+}
+
+const PointerType = {
+  TOUCH : 'touch',
+  PEN   : 'pen'
 }
 
 /**
@@ -103,7 +114,8 @@ class Carousel {
     this._config            = this._getConfig(config)
     this._element           = element
     this._indicatorsElement = this._element.querySelector(Selector.INDICATORS)
-    this._touchSupported    = 'ontouchstart' in document.documentElement
+    this._touchSupported    = 'ontouchstart' in document.documentElement || navigator.maxTouchPoints > 0
+    this._pointerEvent      = Boolean(window.PointerEvent || window.MSPointerEvent)
 
     this._addEventListeners()
   }
@@ -265,22 +277,35 @@ class Carousel {
       return
     }
 
-    $(this._element).on(Event.TOUCHSTART, (event) => {
-      this.touchStartX = event.originalEvent.touches[0].pageX
-    })
+    const start = (event) => {
+      event.preventDefault()
+      const originEvent = event.originalEvent
 
-    $(this._element).on(Event.TOUCHMOVE, (event) => {
+      if (this._pointerEvent && (originEvent.pointerType === PointerType.TOUCH || originEvent.pointerType === PointerType.PEN)) {
+        this.touchStartX = originEvent.clientX
+      } else {
+        this.touchStartX = originEvent.touches[0].pageX
+      }
+    }
+
+    const move = (event) => {
       event.preventDefault()
 
       // ensure swiping with one touch and not pinching
-      if (event.originalEvent.touches.length > 1) {
+      if (event.originalEvent.touches && event.originalEvent.touches.length > 1) {
         return
       }
 
-      this.touchDeltaX = event.originalEvent.touches[0].pageX - this.touchStartX
-    })
+      if (!this._pointerEvent) {
+        this.touchDeltaX = event.originalEvent.touches[0].pageX - this.touchStartX
+      }
+    }
 
-    $(this._element).on(Event.TOUCHEND, () => {
+    const end = (event) => {
+      if (this._pointerEvent) {
+        this.touchDeltaX = event.originalEvent.clientX - this.touchStartX
+      }
+
       this._handleSwipe()
 
       if (this._config.pause === 'hover') {
@@ -298,7 +323,21 @@ class Carousel {
         }
         this.touchTimeout = setTimeout((event) => this.cycle(event), TOUCHEVENT_COMPAT_WAIT + this._config.interval)
       }
-    })
+    }
+
+    if (this._pointerEvent) {
+      $(this._element).on(Event.POINTERDOWN, (event) => start(event))
+      $(this._element).on(Event.POINTERMOVE, (event) => move(event))
+      $(this._element).on(Event.POINTERUP, (event) => end(event))
+      $(this._element).on(Event.POINTERLEAVE, (event) => end(event))
+      $(this._element).on(Event.POINTERCANCEL, (event) => end(event))
+
+      this._element.classList.add(ClassName.POINTER_EVENT)
+    } else {
+      $(this._element).on(Event.TOUCHSTART, (event) => start(event))
+      $(this._element).on(Event.TOUCHMOVE, (event) => move(event))
+      $(this._element).on(Event.TOUCHEND, (event) => end(event))
+    }
   }
 
   _keydown(event) {

@@ -3,6 +3,26 @@ $(function () {
 
   window.Carousel = typeof bootstrap !== 'undefined' ? bootstrap.Carousel : Carousel
 
+  var originWinPointerEvent = window.PointerEvent
+  var originMsPointerEvent = window.MSPointerEvent
+  var supportPointerEvent = Boolean(window.PointerEvent || window.MSPointerEvent)
+
+  function clearPointerEvents() {
+    window.PointerEvent = null
+    window.MSPointerEvent = null
+  }
+
+  function restorePointerEvents() {
+    window.PointerEvent = originWinPointerEvent
+    window.MSPointerEvent = originMsPointerEvent
+  }
+
+  var stylesCarousel = [
+    '<style>',
+    '  .carousel.pointer-event { -ms-touch-action: pan-x; touch-action: pan-x; }',
+    '</style>'
+  ].join('')
+
   QUnit.module('carousel plugin')
 
   QUnit.test('should be defined on jQuery object', function (assert) {
@@ -1006,8 +1026,55 @@ $(function () {
     }, 80)
   })
 
-  QUnit.test('should allow swiperight and call prev', function (assert) {
+  QUnit.test('should allow swiperight and call prev with pointer events', function (assert) {
+    if (!supportPointerEvent) {
+      assert.expect(0)
+      return
+    }
+
+    Simulator.setType('pointer')
+    assert.expect(3)
+    var $styles = $(stylesCarousel).appendTo('head')
+    var done = assert.async()
+    document.documentElement.ontouchstart = $.noop
+
+    var carouselHTML =
+        '<div class="carousel" data-interval="false">' +
+        '  <div class="carousel-inner">' +
+        '    <div id="item" class="carousel-item">' +
+        '      <img alt="">' +
+        '    </div>' +
+        '    <div class="carousel-item active">' +
+        '      <img alt="">' +
+        '    </div>' +
+        '  </div>' +
+        '</div>'
+
+    var $carousel = $(carouselHTML)
+    $carousel.appendTo('#qunit-fixture')
+    var $item = $('#item')
+    $carousel.bootstrapCarousel()
+    var carousel = $carousel.data('bs.carousel')
+    var spy = sinon.spy(carousel, 'prev')
+
+    $carousel.one('slid.bs.carousel', function () {
+      assert.ok(true, 'slid event fired')
+      assert.ok($item.hasClass('active'))
+      assert.ok(spy.called)
+      delete document.documentElement.ontouchstart
+      $styles.remove()
+      done()
+    })
+
+    Simulator.gestures.swipe($carousel[0], {
+      deltaX: 300,
+      deltaY: 0
+    })
+  })
+
+  QUnit.test('should allow swiperight and call prev with touch events', function (assert) {
     Simulator.setType('touch')
+    clearPointerEvents()
     assert.expect(3)
     var done = assert.async()
     document.documentElement.ontouchstart = $.noop
@@ -1036,6 +1103,7 @@ $(function () {
       assert.ok($item.hasClass('active'))
       assert.ok(spy.called)
       delete document.documentElement.ontouchstart
+      restorePointerEvents()
       done()
     })
 
@@ -1045,8 +1113,56 @@ $(function () {
     })
   })
 
-  QUnit.test('should allow swipeleft and call next', function (assert) {
+  QUnit.test('should allow swipeleft and call next with pointer events', function (assert) {
+    if (!supportPointerEvent) {
+      assert.expect(0)
+      return
+    }
+
     assert.expect(3)
+    Simulator.setType('pointer')
+
+    var $styles = $(stylesCarousel).appendTo('head')
+    var done = assert.async()
+    document.documentElement.ontouchstart = $.noop
+
+    var carouselHTML =
+        '<div class="carousel" data-interval="false">' +
+        '  <div class="carousel-inner">' +
+        '    <div id="item" class="carousel-item active">' +
+        '      <img alt="">' +
+        '    </div>' +
+        '    <div class="carousel-item">' +
+        '      <img alt="">' +
+        '    </div>' +
+        '  </div>' +
+        '</div>'
+
+    var $carousel = $(carouselHTML)
+    $carousel.appendTo('#qunit-fixture')
+    var $item = $('#item')
+    $carousel.bootstrapCarousel()
+    var carousel = $carousel.data('bs.carousel')
+    var spy = sinon.spy(carousel, 'next')
+
+    $carousel.one('slid.bs.carousel', function () {
+      assert.ok(true, 'slid event fired')
+      assert.ok(!$item.hasClass('active'))
+      assert.ok(spy.called)
+      $styles.remove()
+      done()
+    })
+
+    Simulator.gestures.swipe($carousel[0], {
+      pos: [300, 10],
+      deltaX: -300,
+      deltaY: 0
+    })
+  })
+
+  QUnit.test('should allow swipeleft and call next with touch events', function (assert) {
+    assert.expect(3)
+    clearPointerEvents()
     Simulator.setType('touch')
 
     var done = assert.async()
@@ -1075,6 +1191,7 @@ $(function () {
       assert.ok(true, 'slid event fired')
       assert.ok(!$item.hasClass('active'))
       assert.ok(spy.called)
+      restorePointerEvents()
       done()
     })
 
@@ -1085,8 +1202,9 @@ $(function () {
     })
   })
 
-  QUnit.test('should not allow pinch', function (assert) {
+  QUnit.test('should not allow pinch with touch events', function (assert) {
     assert.expect(0)
+    clearPointerEvents()
     Simulator.setType('touch')
     var done = assert.async()
     document.documentElement.ontouchstart = $.noop
@@ -1102,6 +1220,7 @@ $(function () {
       deltaY: 0,
       touches: 2
     }, function () {
+      restorePointerEvents()
       done()
     })
   })
