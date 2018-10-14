@@ -12,6 +12,10 @@
   position: relative;
 }
 
+.carousel.pointer-event {
+  touch-action: pan-x;
+}
+
 .carousel-inner {
   position: relative;
   width: 100%;
