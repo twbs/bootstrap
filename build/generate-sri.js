@@ -10,9 +10,9 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
+const crypto = require('crypto')
 const fs = require('fs')
 const path = require('path')
-const sriToolbox = require('sri-toolbox')
 const sh = require('shelljs')
 
 sh.config.fatal = true
@@ -47,9 +47,9 @@ files.forEach((file) => {
       throw err
     }
 
-    const integrity = sriToolbox.generate({
-      algorithms: ['sha384']
-    }, data)
+    const algo = 'sha384'
+    const hash = crypto.createHash(algo).update(data, 'utf8').digest('base64')
+    const integrity = `${algo}-${hash}`
 
     console.log(`${file.configPropertyName}: ${integrity}`)
 
