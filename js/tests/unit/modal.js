@@ -387,4 +387,80 @@ $(function () {
       })
       .bootstrapModal('show')
   })
+
+  QUnit.test('should add padding-right of scrollbar width to .navbar-fixed-top and .navbar-fixed-bottom before open', function (assert) {
+    assert.expect(2)
+    var Modal = $.fn.bootstrapModal.Constructor
+    var done = assert.async()
+    var $body = $(document.body)
+    var scrollbarWidth
+
+    // simulate overflow scroll
+    $body.css({ height: '2000px' })
+
+    var $fixedTop = $('<nav class="navbar navbar-fixed-top" />').appendTo($body)
+    var $fixedBottom = $('<nav class="navbar navbar-fixed-bottom" />').appendTo($body)
+
+    // patch setScrollbar function to get scrollbar width
+    var setScrollbar = Modal.prototype.setScrollbar
+    Modal.prototype.setScrollbar = function () {
+      setScrollbar.call(this)
+      scrollbarWidth = this.scrollbarWidth + 'px'
+    }
+
+    $('<div id="modal-test"/>')
+      .on('hidden.bs.modal', function () {
+        $fixedTop.remove()
+        $fixedBottom.remove()
+        $body.removeAttr('style')
+        // restore original setScrollbar
+        Modal.prototype.setScrollbar = setScrollbar
+        done()
+      })
+      .on('shown.bs.modal', function () {
+        var fixedTopPaddingRight = $fixedTop.css('padding-right')
+        var fixedBottomPaddingRight = $fixedBottom.css('padding-right')
+
+        assert.strictEqual(scrollbarWidth, fixedTopPaddingRight,
+          '.navbar-fixed-top has padding-right (' + fixedTopPaddingRight + ') equal to scrollbar width (' + scrollbarWidth + ')')
+
+        assert.strictEqual(scrollbarWidth, fixedBottomPaddingRight,
+          '.navbar-fixed-bottom has padding-right (' + fixedBottomPaddingRight + ') equal to scrollbar width (' + scrollbarWidth + ')')
+
+        $(this).bootstrapModal('hide')
+      })
+      .bootstrapModal('show')
+  })
+
+  QUnit.test('should restore inline padding-right for .navbar-fixed-top and .navbar-fixed-bottom after close', function (assert) {
+    assert.expect(2)
+    var done = assert.async()
+    var $body = $(document.body)
+
+    var $styleshhet = $('<link rel="stylesheet" href="../../dist/css/bootstrap.css" />').appendTo(document.head)
+    var $fixedTop = $('<nav class="navbar navbar-fixed-top" style="padding-right: 10px;" />').appendTo($body)
+    var $fixedBottom = $('<nav class="navbar navbar-fixed-bottom" style="padding-right: 5%;" />').appendTo($body)
+
+    // simulate overflow scroll
+    $body.css({ height: '2000px' })
+
+    $('<div id="modal-test"/>')
+      .on('hidden.bs.modal', function () {
+        assert.strictEqual($fixedTop.css('padding-right'), '10px',
+          '.navbar-fixed-top has inline padding-right restored')
+
+        assert.strictEqual($fixedBottom[0].style.paddingRight, '5%',
+          '.navbar-fixed-bottom has right padding-right restored')
+
+        $fixedTop.remove()
+        $fixedBottom.remove()
+        $body.removeAttr('style')
+        $styleshhet.remove()
+        done()
+      })
+      .on('shown.bs.modal', function () {
+        $(this).bootstrapModal('hide')
+      })
+      .bootstrapModal('show')
+  })
 })
