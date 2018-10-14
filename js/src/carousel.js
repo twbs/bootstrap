@@ -1,13 +1,12 @@
-import $ from 'jquery'
-import Hammer from 'hammerjs'
-import Util from './util'
-
 /**
  * --------------------------------------------------------------------------
  * Bootstrap (v4.1.3): carousel.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
+
+import $ from 'jquery'
+import Util from './util'
 
 /**
  * ------------------------------------------------------------------------
@@ -24,7 +23,7 @@ const JQUERY_NO_CONFLICT     = $.fn[NAME]
 const ARROW_LEFT_KEYCODE     = 37 // KeyboardEvent.which value for left arrow key
 const ARROW_RIGHT_KEYCODE    = 39 // KeyboardEvent.which value for right arrow key
 const TOUCHEVENT_COMPAT_WAIT = 500 // Time for mouse compat events to fire after touch
-const HAMMER_ENABLED         = typeof Hammer !== 'undefined'
+const SWIPE_THRESHOLD        = 40
 
 const Default = {
   interval : 5000,
@@ -58,10 +57,10 @@ const Event = {
   MOUSEENTER     : `mouseenter${EVENT_KEY}`,
   MOUSELEAVE     : `mouseleave${EVENT_KEY}`,
   TOUCHEND       : `touchend${EVENT_KEY}`,
+  TOUCHSTART     : `touchstart${EVENT_KEY}`,
+  TOUCHMOVE      : `touchmove${EVENT_KEY}`,
   LOAD_DATA_API  : `load${EVENT_KEY}${DATA_API_KEY}`,
-  CLICK_DATA_API : `click${EVENT_KEY}${DATA_API_KEY}`,
-  SWIPELEFT      : 'swipeleft',
-  SWIPERIGHT     : 'swiperight'
+  CLICK_DATA_API : `click${EVENT_KEY}${DATA_API_KEY}`
 }
 
 const ClassName = {
@@ -98,22 +97,13 @@ class Carousel {
     this._isPaused      = false
     this._isSliding     = false
     this.touchTimeout   = null
-    this.hammer         = null
+    this.touchStartX    = 0
+    this.touchDeltaX    = 0
 
     this._config            = this._getConfig(config)
     this._element           = element
     this._indicatorsElement = this._element.querySelector(Selector.INDICATORS)
-    this._touchSupported    = 'ontouchstart' in document.documentElement || navigator.maxTouchPoints > 0
-
-    if (HAMMER_ENABLED && this._touchSupported && this._config.touch) {
-      this.hammer = new Hammer(this._element, {
-        recognizers: [[
-          Hammer.Swipe, {
-            direction: Hammer.DIRECTION_HORIZONTAL
-          }
-        ]]
-      })
-    }
+    this._touchSupported    = 'ontouchstart' in document.documentElement
 
     this._addEventListeners()
   }
@@ -235,22 +225,65 @@ class Carousel {
     return config
   }
 
+  _handleSwipe() {
+    const absDeltax = Math.abs(this.touchDeltaX)
+
+    if (absDeltax <= SWIPE_THRESHOLD) {
+      return
+    }
+
+    const direction = absDeltax / this.touchDeltaX
+
+    // swipe left
+    if (direction > 0) {
+      this.prev()
+    }
+
+    // swipe right
+    if (direction < 0) {
+      this.next()
+    }
+  }
+
   _addEventListeners() {
     if (this._config.keyboard) {
       $(this._element)
         .on(Event.KEYDOWN, (event) => this._keydown(event))
     }
 
-    if (this.hammer) {
-      this.hammer.on(Event.SWIPELEFT, () => this.next())
-      this.hammer.on(Event.SWIPERIGHT, () => this.prev())
-    }
-
     if (this._config.pause === 'hover') {
       $(this._element)
         .on(Event.MOUSEENTER, (event) => this.pause(event))
         .on(Event.MOUSELEAVE, (event) => this.cycle(event))
-      if (this._touchSupported) {
+    }
+
+    this._addTouchEventListeners()
+  }
+
+  _addTouchEventListeners() {
+    if (!this._touchSupported) {
+      return
+    }
+
+    $(this._element).on(Event.TOUCHSTART, (event) => {
+      this.touchStartX = event.originalEvent.touches[0].pageX
+    })
+
+    $(this._element).on(Event.TOUCHMOVE, (event) => {
+      event.preventDefault()
+
+      // ensure swiping with one touch and not pinching
+      if (event.originalEvent.touches.length > 1) {
+        return
+      }
+
+      this.touchDeltaX = event.originalEvent.touches[0].pageX - this.touchStartX
+    })
+
+    $(this._element).on(Event.TOUCHEND, () => {
+      this._handleSwipe()
+
+      if (this._config.pause === 'hover') {
         // If it's a touch-enabled device, mouseenter/leave are fired as
         // part of the mouse compatibility events on first tap - the carousel
         // would stop cycling until user tapped out of it;
@@ -258,15 +291,14 @@ class Carousel {
         // (as if it's the second time we tap on it, mouseenter compat event
         // is NOT fired) and after a timeout (to allow for mouse compatibility
         // events to fire) we explicitly restart cycling
-        $(this._element).on(Event.TOUCHEND, () => {
-          this.pause()
-          if (this.touchTimeout) {
-            clearTimeout(this.touchTimeout)
-          }
-          this.touchTimeout = setTimeout((event) => this.cycle(event), TOUCHEVENT_COMPAT_WAIT + this._config.interval)
-        })
+
+        this.pause()
+        if (this.touchTimeout) {
+          clearTimeout(this.touchTimeout)
+        }
+        this.touchTimeout = setTimeout((event) => this.cycle(event), TOUCHEVENT_COMPAT_WAIT + this._config.interval)
       }
-    }
+    })
   }
 
   _keydown(event) {

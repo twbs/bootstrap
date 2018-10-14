@@ -5,10 +5,10 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
-const path   = require('path')
-const rollup = require('rollup')
-const babel  = require('rollup-plugin-babel')
-const banner = require('./banner.js')
+const path    = require('path')
+const rollup  = require('rollup')
+const babel   = require('rollup-plugin-babel')
+const banner  = require('./banner.js')
 
 const TEST    = process.env.NODE_ENV === 'test'
 const plugins = [
@@ -41,9 +41,8 @@ const rootPath = TEST ? '../js/coverage/dist/' : '../js/dist/'
 function build(plugin) {
   console.log(`Building ${plugin} plugin...`)
 
-  const external = ['hammerjs', 'jquery', 'popper.js']
+  const external = ['jquery', 'popper.js']
   const globals = {
-    hammerjs: 'Hammer',
     jquery: 'jQuery', // Ensure we use jQuery which is always available even in noConflict mode
     'popper.js': 'Popper'
   }

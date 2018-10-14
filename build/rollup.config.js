@@ -1,13 +1,12 @@
-const path     = require('path')
-const babel    = require('rollup-plugin-babel')
-const resolve  = require('rollup-plugin-node-resolve')
-const commonjs = require('rollup-plugin-commonjs')
-const banner   = require('./banner.js')
+const path    = require('path')
+const babel   = require('rollup-plugin-babel')
+const resolve = require('rollup-plugin-node-resolve')
+const banner  = require('./banner.js')
 
 const BUNDLE  = process.env.BUNDLE === 'true'
 
-let fileDest   = 'bootstrap.js'
-const external = ['jquery', 'hammerjs', 'popper.js']
+let fileDest  = 'bootstrap.js'
+const external = ['jquery', 'popper.js']
 const plugins = [
   babel({
     exclude: 'node_modules/**', // Only transpile our source code
@@ -22,22 +21,15 @@ const plugins = [
 ]
 const globals = {
   jquery: 'jQuery', // Ensure we use jQuery which is always available even in noConflict mode
-  hammerjs: 'Hammer',
   'popper.js': 'Popper'
 }
 
 if (BUNDLE) {
   fileDest = 'bootstrap.bundle.js'
-  // We just keep jQuery as external
-  external.length = 1
+  // Remove last entry in external array to bundle Popper
+  external.pop()
   delete globals['popper.js']
-  delete globals.hammerjs
-  plugins.push(
-    commonjs({
-      include: 'node_modules/**'
-    }),
-    resolve()
-  )
+  plugins.push(resolve())
 }
 
 module.exports = {
