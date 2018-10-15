@@ -40,7 +40,7 @@
     "js-main": "npm-run-all js-lint js-compile js-minify",
     "js-docs": "npm-run-all js-lint-docs js-minify-docs",
     "js-lint": "eslint js/src js/tests build/",
-    "js-lint-docs": "eslint site/docs/4.1/assets/js/ site/sw.js",
+    "js-lint-docs": "eslint site/",
     "js-compile": "npm-run-all --parallel js-compile-* --sequential js-copy",
     "js-compile-standalone": "rollup --environment BUNDLE:false --config build/rollup.config.js --sourcemap",
     "js-compile-bundle": "rollup --environment BUNDLE:true --config build/rollup.config.js --sourcemap",
