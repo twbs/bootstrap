@@ -13,7 +13,7 @@
 }
 
 .carousel.pointer-event {
-  touch-action: pan-x;
+  touch-action: pan-y pinch-zoom;
 }
 
 .carousel-inner {

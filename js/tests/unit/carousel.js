@@ -19,7 +19,7 @@ $(function () {
 
   var stylesCarousel = [
     '<style>',
-    '  .carousel.pointer-event { -ms-touch-action: pan-x; touch-action: pan-x; }',
+    '  .carousel.pointer-event { -ms-touch-action: pan-y pinch-zoom; touch-action: pan-y pinch-zoom; }',
     '</style>'
   ].join('')
 
