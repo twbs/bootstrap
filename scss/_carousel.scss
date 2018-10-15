@@ -1,11 +1,14 @@
 // Notes on the classes:
 //
-// 1. The .carousel-item-left and .carousel-item-right is used to indicate where
+// 1. .carousel.pointer-event should ideally be pan-y (to allow for users to scroll vertically)
+//    even when their scroll action started on a carousel, but for compatibility (with Firefox)
+//    we're preventing all actions instead
+// 2. The .carousel-item-left and .carousel-item-right is used to indicate where
 //    the active slide is heading.
-// 2. .active.carousel-item is the current slide.
-// 3. .active.carousel-item-left and .active.carousel-item-right is the current
+// 3. .active.carousel-item is the current slide.
+// 4. .active.carousel-item-left and .active.carousel-item-right is the current
 //    slide in its in-transition state. Only one of these occurs at a time.
-// 4. .carousel-item-next.carousel-item-left and .carousel-item-prev.carousel-item-right
+// 5. .carousel-item-next.carousel-item-left and .carousel-item-prev.carousel-item-right
 //    is the upcoming slide in transition.
 
 .carousel {
@@ -13,7 +16,7 @@
 }
 
 .carousel.pointer-event {
-  touch-action: pan-y pinch-zoom;
+  touch-action: none;
 }
 
 .carousel-inner {
