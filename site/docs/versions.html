@@ -16,7 +16,7 @@ description: An appendix of hosted documentation for nearly every release of Boo
   <div class="row">
   {% for release in site.data.docs-versions %}
     <div class="col-md">
-      <h1>{{ release.group }}</h1>
+      <h2>{{ release.group }}</h2>
       <p>{{ release.description }}</p>
       {% for version in release.versions %}
         {% if forloop.first %}<div class="list-group">{% endif %}
