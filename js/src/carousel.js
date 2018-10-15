@@ -283,8 +283,8 @@ class Carousel {
 
       if (this._pointerEvent && (originEvent.pointerType === PointerType.TOUCH || originEvent.pointerType === PointerType.PEN)) {
         this.touchStartX = originEvent.clientX
-      } else {
-        this.touchStartX = originEvent.touches[0].pageX
+      } else if (!this._pointerEvent) {
+        this.touchStartX = originEvent.touches[0].clientX
       }
     }
 
@@ -293,11 +293,12 @@ class Carousel {
 
       // ensure swiping with one touch and not pinching
       if (event.originalEvent.touches && event.originalEvent.touches.length > 1) {
+        this.touchDeltaX = 0;
         return
       }
 
       if (!this._pointerEvent) {
-        this.touchDeltaX = event.originalEvent.touches[0].pageX - this.touchStartX
+        this.touchDeltaX = event.originalEvent.touches[0].clientX - this.touchStartX
       }
     }
 
