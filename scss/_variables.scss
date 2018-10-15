@@ -157,10 +157,10 @@ $viewport-sizes: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $viewport-sizes: map-merge(
   (
-    25,
-    50,
-    75,
-    100
+    25: 25%,
+    50: 50%,
+    75: 75%,
+    100: 100%
   ),
   $viewport-sizes
 );
