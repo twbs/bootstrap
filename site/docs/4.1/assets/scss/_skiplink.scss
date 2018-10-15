@@ -1,10 +1,14 @@
 .skiplink {
   display: block;
   padding: 1em;
-  color: #fff;
+  color: $white;
   text-align: center;
   background-color: $bd-purple;
   outline: 0;
+
+  @include hover {
+    color: $white;
+  }
 }
 
 .skiplink-text {
