@@ -4,35 +4,25 @@ title: Versions
 description: An appendix of hosted documentation for nearly every release of Bootstrap, from v1 through v4.
 ---
 
-<header class="d-flex flex-column flex-md-row align-items-md-center p-5 bg-light">
-  <div class="pt-md-3 pb-md-4">
-    <h1 class="bd-title mt-0">{{ page.title | smartify }}</h1>
-    <p class="bd-lead">{{ page.description | smartify }}</p>
+<div class="row">
+{% for release in site.data.docs-versions %}
+  <div class="col-md">
+    <h2>{{ release.group }}</h2>
+    <p>{{ release.description }}</p>
+    {% for version in release.versions %}
+      {% if forloop.first %}<div class="list-group">{% endif %}
+        {% if version.v == site.docs_version %}
+          <a class="list-group-item list-group-item-action py-2 text-primary d-flex justify-content-between align-items-center" href="{{ release.baseurl }}/{{ version.v }}/">
+            {{ version.v }}
+            <span class="badge badge-primary">Latest</span>
+          </a>
+        {% else %}
+          <a class="list-group-item list-group-item-action py-2 text-primary" href="{{ release.baseurl }}/{{ version.v }}/">
+            {{ version.v }}
+          </a>
+        {% endif %}
+      {% if forloop.last %}</div>{% endif %}
+    {% endfor %}
   </div>
-  {% include ads.html %}
-</header>
-
-<main class="bd-content p-5">
-  <div class="row">
-  {% for release in site.data.docs-versions %}
-    <div class="col-md">
-      <h2>{{ release.group }}</h2>
-      <p>{{ release.description }}</p>
-      {% for version in release.versions %}
-        {% if forloop.first %}<div class="list-group">{% endif %}
-          {% if version.v == site.docs_version %}
-            <a class="list-group-item list-group-item-action py-2 text-primary d-flex justify-content-between align-items-center" href="{{ release.baseurl }}/{{ version.v }}/">
-              {{ version.v }}
-              <span class="badge badge-primary">Latest</span>
-            </a>
-          {% else %}
-            <a class="list-group-item list-group-item-action py-2 text-primary" href="{{ release.baseurl }}/{{ version.v }}/">
-              {{ version.v }}
-            </a>
-          {% endif %}
-        {% if forloop.last %}</div>{% endif %}
-      {% endfor %}
-    </div>
-  {% endfor %}
-  </div>
-</main>
+{% endfor %}
+</div>
