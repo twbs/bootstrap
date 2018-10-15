@@ -278,32 +278,29 @@ class Carousel {
     }
 
     const start = (event) => {
-      event.preventDefault()
-      const originEvent = event.originalEvent
-
-      if (this._pointerEvent && (originEvent.pointerType === PointerType.TOUCH || originEvent.pointerType === PointerType.PEN)) {
-        this.touchStartX = originEvent.clientX
+      if (this._pointerEvent && (event.originalEvent.pointerType === PointerType.TOUCH || event.originalEvent.pointerType === PointerType.PEN)) {
+        this.touchStartX = event.originalEvent.clientX
       } else if (!this._pointerEvent) {
-        this.touchStartX = originEvent.touches[0].clientX
+        event.preventDefault()
+        this.touchStartX = event.originalEvent.touches[0].clientX
       }
     }
 
     const move = (event) => {
-      event.preventDefault()
-
-      // ensure swiping with one touch and not pinching
-      if (event.originalEvent.touches && event.originalEvent.touches.length > 1) {
-        this.touchDeltaX = 0;
-        return
-      }
-
       if (!this._pointerEvent) {
-        this.touchDeltaX = event.originalEvent.touches[0].clientX - this.touchStartX
+        event.preventDefault()
+
+        // ensure swiping with one touch and not pinching
+        if (event.originalEvent.touches && event.originalEvent.touches.length > 1) {
+          this.touchDeltaX = 0
+        } else {
+          this.touchDeltaX = event.originalEvent.touches[0].clientX - this.touchStartX
+        }
       }
     }
 
     const end = (event) => {
-      if (this._pointerEvent) {
+      if (this._pointerEvent && (event.originalEvent.pointerType === PointerType.TOUCH || event.originalEvent.pointerType === PointerType.PEN)) {
         this.touchDeltaX = event.originalEvent.clientX - this.touchStartX
       }
 
@@ -329,7 +326,6 @@ class Carousel {
     if (this._pointerEvent) {
       $(this._element).on(Event.POINTERDOWN, (event) => start(event))
       $(this._element).on(Event.POINTERUP, (event) => end(event))
-      $(this._element).on(Event.POINTERCANCEL, (event) => end(event))
 
       this._element.classList.add(ClassName.POINTER_EVENT)
     } else {
