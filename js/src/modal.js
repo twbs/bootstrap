@@ -81,6 +81,7 @@ class Modal {
     this._isShown             = false
     this._isBodyOverflowing   = false
     this._ignoreBackdropClick = false
+    this._isTransitioning     = false
     this._scrollbarWidth      = 0
   }
 
@@ -101,7 +102,7 @@ class Modal {
   }
 
   show(relatedTarget) {
-    if (this._isTransitioning || this._isShown) {
+    if (this._isShown || this._isTransitioning) {
       return
     }
 
@@ -153,7 +154,7 @@ class Modal {
       event.preventDefault()
     }
 
-    if (this._isTransitioning || !this._isShown) {
+    if (!this._isShown || this._isTransitioning) {
       return
     }
 
@@ -206,6 +207,7 @@ class Modal {
     this._isShown             = null
     this._isBodyOverflowing   = null
     this._ignoreBackdropClick = null
+    this._isTransitioning     = null
     this._scrollbarWidth      = null
   }
 
