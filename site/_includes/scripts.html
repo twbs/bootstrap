@@ -2,7 +2,7 @@
 <script>window.jQuery || document.write('<script src="{{ site.baseurl }}/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
 
 {%- if site.github -%}
-  <script src="{{ site.baseurl }}/docs/{{ site.docs_version }}/dist/js/bootstrap.bundle.min.js" integrity="{{ site.cdn.js_hash }}" crossorigin="anonymous"></script>
+  <script src="{{ site.baseurl }}/docs/{{ site.docs_version }}/dist/js/bootstrap.bundle.min.js" integrity="{{ site.cdn.js_bundle_hash }}" crossorigin="anonymous"></script>
 {%- else -%}
   <script src="{{ site.baseurl }}/docs/{{ site.docs_version }}/dist/js/bootstrap.bundle.js"></script>
 {%- endif -%}
