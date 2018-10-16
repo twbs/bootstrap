@@ -64,6 +64,7 @@ const Event = {
   POINTERUP      : `pointerup${EVENT_KEY}`,
   POINTERLEAVE   : `pointerleave${EVENT_KEY}`,
   POINTERCANCEL  : `pointercancel${EVENT_KEY}`,
+  DRAG_START     : `dragstart${EVENT_KEY}`,
   LOAD_DATA_API  : `load${EVENT_KEY}${DATA_API_KEY}`,
   CLICK_DATA_API : `click${EVENT_KEY}${DATA_API_KEY}`
 }
@@ -84,6 +85,7 @@ const Selector = {
   ACTIVE      : '.active',
   ACTIVE_ITEM : '.active.carousel-item',
   ITEM        : '.carousel-item',
+  ITEM_IMG    : '.carousel-item img',
   NEXT_PREV   : '.carousel-item-next, .carousel-item-prev',
   INDICATORS  : '.carousel-indicators',
   DATA_SLIDE  : '[data-slide], [data-slide-to]',
@@ -323,6 +325,7 @@ class Carousel {
       }
     }
 
+    $(this._element.querySelectorAll(Selector.ITEM_IMG)).on(Event.DRAG_START, (e) => e.preventDefault())
     if (this._pointerEvent) {
       $(this._element).on(Event.POINTERDOWN, (event) => start(event))
       $(this._element).on(Event.POINTERUP, (event) => end(event))
