@@ -1001,6 +1001,12 @@ $pre-color:                         $gray-900 !default;
 $pre-scrollable-max-height:         340px !default;
 
 
+// Utilities
+
+$overflows: auto, hidden !default;
+$positions: static, relative, absolute, fixed, sticky !default;
+
+
 // Printing
 
 $print-page-size:                   a3 !default;

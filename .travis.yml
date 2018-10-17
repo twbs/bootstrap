@@ -1,5 +1,4 @@
 sudo: required
-dist: trusty
 addons:
   chrome: stable
 language: node_js
@@ -9,7 +8,7 @@ node_js:
   - "6"
   - "8"
 install:
-  - bundle install --deployment --jobs=3 --retry=3
+  - bundle install --deployment --jobs=3 --retry=3 --clean
   - npm install
 script:
   - npm test
@@ -29,3 +28,5 @@ cache:
   directories:
     - node_modules
     - vendor/bundle
+notifications:
+  email: false
