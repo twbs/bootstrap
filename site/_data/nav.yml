@@ -62,6 +62,7 @@
     - title: Flex
     - title: Float
     - title: Image replacement
+    - title: Overflow
     - title: Position
     - title: Screenreaders
     - title: Shadows
@@ -81,6 +82,7 @@
 - title: About
   pages:
     - title: Overview
+    - title: Team
     - title: Brand
     - title: License
     - title: Translations
