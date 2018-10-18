@@ -195,11 +195,7 @@ class Dropdown {
   }
 
   show() {
-    if (this._element.disabled || $(this._element).hasClass(ClassName.DISABLED)) {
-      return
-    }
-    const isActive = $(this._menu).hasClass(ClassName.SHOW)
-    if (isActive) {
+    if (this._element.disabled || $(this._element).hasClass(ClassName.DISABLED) || $(this._menu).hasClass(ClassName.SHOW)) {
       return
     }
 
@@ -222,12 +218,7 @@ class Dropdown {
   }
 
   hide() {
-    if (this._element.disabled || $(this._element).hasClass(ClassName.DISABLED)) {
-      return
-    }
-
-    const isActive = $(this._menu).hasClass(ClassName.SHOW)
-    if (!isActive) {
+    if (this._element.disabled || $(this._element).hasClass(ClassName.DISABLED) || !$(this._menu).hasClass(ClassName.SHOW)) {
       return
     }
 
