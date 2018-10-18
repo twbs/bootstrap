@@ -697,4 +697,37 @@ $(function () {
 
     beginTimestamp = Date.now()
   })
+
+  QUnit.test('should dispose modal', function (assert) {
+    assert.expect(3)
+    var done = assert.async()
+
+    var $modal = $([
+      '<div id="modal-test">',
+      '  <div class="modal-dialog">',
+      '    <div class="modal-content">',
+      '      <div class="modal-body" />',
+      '    </div>',
+      '  </div>',
+      '</div>'
+    ].join('')).appendTo('#qunit-fixture')
+
+    $modal.on('shown.bs.modal', function () {
+      var spy = sinon.spy($.fn, 'off')
+
+      $(this).bootstrapModal('dispose')
+
+      const modalDataApiEvent = $._data(document, 'events').click
+        .find((e) => e.namespace === 'bs.data-api.modal')
+
+      assert.ok(typeof $(this).data('bs.modal') === 'undefined', 'modal data object was disposed')
+
+      assert.ok(spy.callCount === 4, '`jQuery.off` was called')
+
+      assert.ok(typeof modalDataApiEvent !== 'undefined', '`Event.CLICK_DATA_API` on `document` was not removed')
+
+      $.fn.off.restore()
+      done()
+    }).bootstrapModal('show')
+  })
 })
