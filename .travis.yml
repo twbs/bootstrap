@@ -1,4 +1,4 @@
-sudo: false
+sudo: required
 language: node_js
 git:
   depth: 3
