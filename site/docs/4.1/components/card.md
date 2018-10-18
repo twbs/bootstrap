@@ -392,6 +392,11 @@ Turn an image into a card background and overlay your card's text. Depending on 
 {% endcapture %}
 {% include example.html content=example %}
 
+{% capture callout %}
+Note that content should not be larger than the height of the image. If content is larger than the image the content will be displayed outside the image.
+{% endcapture %}
+{% include callout.html content=callout type="info" %}
+
 ## Card styles
 
 Cards include various options for customizing their backgrounds, borders, and color.
