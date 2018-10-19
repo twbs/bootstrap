@@ -20,13 +20,12 @@
   border: 1px solid @popover-fallback-border-color;
   border: 1px solid @popover-border-color;
   border-radius: @border-radius-large;
-  .box-shadow(0px 20px 66px 0px rgba(34,48,73,.2));
+  .box-shadow(0px 20px 66px 0px rgba(34, 48, 73, 0.2));
 
   position: absolute;
 
-
   &.animate {
-    transition: transform .25s;
+    transition: transform 0.25s;
   }
   &.scale-down {
     transform: scale(0);
@@ -37,26 +36,49 @@
     margin-top: -@popover-arrow-width;
     transform-origin: 50% 100%;
   }
+  &.top-left {
+    margin-top: -@popover-arrow-width;
+    transform-origin: calc(100% - 29px) 100%;
+  }
+  &.top-right {
+    margin-top: -@popover-arrow-width;
+    transform-origin: 29px 100%;
+  }
   &.right {
     margin-left: @popover-arrow-width;
     transform-origin: 0% 50%;
+  }
+  &.right-top {
+    margin-left: @popover-arrow-width;
+    transform-origin: 0% 29px;
+  }
+  &.right-bottom {
+    margin-left: @popover-arrow-width;
+    transform-origin: 0% calc(100% - 29px);
   }
   &.bottom {
     margin-top: @popover-arrow-width;
     transform-origin: 50% 0%;
   }
+  &.bottom-left {
+    margin-top: @popover-arrow-width;
+    transform-origin: calc(100% - 29px) 0%;
+  }
+  &.bottom-right {
+    margin-top: @popover-arrow-width;
+    transform-origin: 29px 0%;
+  }
   &.left {
     margin-left: -@popover-arrow-width;
     transform-origin: 100% 50%;
   }
-
-  &.left-top  {
+  &.left-top {
     margin-left: -@popover-arrow-width;
     transform-origin: 100% 29px;
   }
-  &.right-top {
-    margin-left: @popover-arrow-width;
-    transform-origin: 0% 29px;
+  &.left-bottom {
+    margin-left: -@popover-arrow-width;
+    transform-origin: 100% calc(100% - 29px);
   }
 
   .arrow-pointer(@popover-arrow-width);
@@ -67,16 +89,54 @@
     left: 50%;
     margin-left: (@popover-arrow-width / -2);
   }
-  &.bottom:before {
-    top: (@popover-arrow-width / -2);
-    bottom: auto;
-    left: 50%;
+  &.top-left:before {
+    top: auto;
+    bottom: (@popover-arrow-width / -2);
+    right: 29px;
+    left: auto;
+    margin-left: (@popover-arrow-width / -2);
+  }
+  &.top-right:before {
+    top: auto;
+    bottom: (@popover-arrow-width / -2);
+    left: 29px;
+    right: auto;
     margin-left: (@popover-arrow-width / -2);
   }
   &.right:before {
     top: 50%;
     margin-top: (@popover-arrow-width / -2);
     left: (@popover-arrow-width / -2);
+  }
+  &.right-top:before {
+    top: 29px;
+    margin-top: (@popover-arrow-width / -2);
+    left: (@popover-arrow-width / -2);
+  }
+  &.right-bottom:before {
+    top: calc(100% - 29px);
+    margin-top: (@popover-arrow-width / -2);
+    left: (@popover-arrow-width / -2);
+  }
+  &.bottom:before {
+    top: (@popover-arrow-width / -2);
+    bottom: auto;
+    left: 50%;
+    margin-left: (@popover-arrow-width / -2);
+  }
+  &.bottom-left:before {
+    top: (@popover-arrow-width / -2);
+    bottom: auto;
+    right: 29px;
+    left: auto;
+    margin-left: (@popover-arrow-width / -2);
+  }
+  &.bottom-right:before {
+    top: (@popover-arrow-width / -2);
+    bottom: auto;
+    left: 29px;
+    right: auto;
+    margin-left: (@popover-arrow-width / -2);
   }
   &.left:before {
     top: 50%;
@@ -90,10 +150,11 @@
     left: auto;
     right: (@popover-arrow-width / -2);
   }
-  &.right-top:before {
-    top: 29px;
+  &.left-bottom:before {
+    top: calc(100% - 29px);
     margin-top: (@popover-arrow-width / -2);
-    left: (@popover-arrow-width / -2);
+    left: auto;
+    right: (@popover-arrow-width / -2);
   }
 
   img,
@@ -129,7 +190,7 @@
   .close();
 }
 
-[data-toggle=popover] {
+[data-toggle='popover'] {
   &:not(.btn) {
     color: inherit !important;
     font-weight: inherit !important;
@@ -147,7 +208,6 @@
     border-bottom: 0;
   }
 }
-
 
 @media (max-width: @screen-md-max) {
   .popover-modal {
@@ -177,13 +237,12 @@
   }
 }
 
-
 @keyframes cover-fade-in {
   from {
     opacity: 0;
   }
   to {
-    opacity: .7;
+    opacity: 0.7;
   }
 }
 
@@ -197,8 +256,8 @@
   height: 100vh;
   cursor: pointer;
   background-color: @brand-navy-minus-20;
-  opacity: .7;
-  animation: cover-fade-in .35s 0s linear forwards;
+  opacity: 0.7;
+  animation: cover-fade-in 0.35s 0s linear forwards;
 }
 @media (max-width: @screen-md-max) {
   .popover-modal-cover {
@@ -265,13 +324,8 @@
  */
 .promoted.promoted {
   .button-variant(
-      @btn-primary-color;
-      #FFF;
-      @btn-primary-bg;
-      @btn-primary-bg-hover;
-      @btn-primary-bg-active;
-      @btn-primary-border;
-      @btn-primary-border-hover;
+    @btn-primary-color; #FFF; @btn-primary-bg; @btn-primary-bg-hover;
+      @btn-primary-bg-active; @btn-primary-border; @btn-primary-border-hover;
       @btn-primary-border-active
   );
 }
