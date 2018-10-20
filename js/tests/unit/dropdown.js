@@ -1097,4 +1097,268 @@ $(function () {
     assert.ok(dropdown._menu === null)
     assert.ok(dropdown._element === null)
   })
+
+  QUnit.test('should show dropdown', function (assert) {
+    assert.expect(2)
+
+    var dropdownHTML =
+      '<div class="dropdown">' +
+      '  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>' +
+      '  <div class="dropdown-menu">' +
+      '    <a class="dropdown-item" href="#">Another link</a>' +
+      '  </div>' +
+      '</div>'
+
+    var $dropdown = $(dropdownHTML)
+      .appendTo('#qunit-fixture')
+      .find('[data-toggle="dropdown"]')
+      .bootstrapDropdown()
+
+    var dropdown = $dropdown.data('bs.dropdown')
+    var done = assert.async()
+
+    $dropdown
+      .parent('.dropdown')
+      .on('show.bs.dropdown', function () {
+        assert.ok(true, 'show was fired')
+      })
+      .on('shown.bs.dropdown', function () {
+        assert.ok($dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is shown')
+        done()
+      })
+
+    dropdown.show()
+  })
+
+  QUnit.test('should hide dropdown', function (assert) {
+    assert.expect(2)
+
+    var dropdownHTML =
+      '<div class="dropdown">' +
+      '  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>' +
+      '  <div class="dropdown-menu">' +
+      '    <a class="dropdown-item" href="#">Another link</a>' +
+      '  </div>' +
+      '</div>'
+
+    var $dropdown = $(dropdownHTML)
+      .appendTo('#qunit-fixture')
+      .find('[data-toggle="dropdown"]')
+      .bootstrapDropdown()
+
+    var dropdown = $dropdown.data('bs.dropdown')
+    var done = assert.async()
+    $dropdown.trigger('click')
+
+    $dropdown
+      .parent('.dropdown')
+      .on('hide.bs.dropdown', function () {
+        assert.ok(true, 'hide was fired')
+      })
+      .on('hidden.bs.dropdown', function () {
+        assert.ok(!$dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is hidden')
+        done()
+      })
+
+    dropdown.hide()
+  })
+
+  QUnit.test('should not hide dropdown', function (assert) {
+    assert.expect(1)
+
+    var dropdownHTML =
+      '<div class="dropdown">' +
+      '  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>' +
+      '  <div class="dropdown-menu">' +
+      '    <a class="dropdown-item" href="#">Another link</a>' +
+      '  </div>' +
+      '</div>'
+
+    var $dropdown = $(dropdownHTML)
+      .appendTo('#qunit-fixture')
+      .find('[data-toggle="dropdown"]')
+      .bootstrapDropdown()
+
+    var dropdown = $dropdown.data('bs.dropdown')
+    $dropdown.trigger('click')
+    dropdown.show()
+
+    assert.ok($dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is still shown')
+  })
+
+  QUnit.test('should not show dropdown', function (assert) {
+    assert.expect(1)
+
+    var dropdownHTML =
+      '<div class="dropdown">' +
+      '  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>' +
+      '  <div class="dropdown-menu">' +
+      '    <a class="dropdown-item" href="#">Another link</a>' +
+      '  </div>' +
+      '</div>'
+
+    var $dropdown = $(dropdownHTML)
+      .appendTo('#qunit-fixture')
+      .find('[data-toggle="dropdown"]')
+      .bootstrapDropdown()
+
+    var dropdown = $dropdown.data('bs.dropdown')
+    dropdown.hide()
+    assert.ok(!$dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is still hidden')
+  })
+
+  QUnit.test('should show dropdown', function (assert) {
+    assert.expect(2)
+
+    var dropdownHTML =
+      '<div class="dropdown">' +
+      '  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>' +
+      '  <div class="dropdown-menu">' +
+      '    <a class="dropdown-item" href="#">Another link</a>' +
+      '  </div>' +
+      '</div>'
+
+    var $dropdown = $(dropdownHTML)
+      .appendTo('#qunit-fixture')
+      .find('[data-toggle="dropdown"]')
+      .bootstrapDropdown()
+
+    var dropdown = $dropdown.data('bs.dropdown')
+    var done = assert.async()
+
+    $dropdown
+      .parent('.dropdown')
+      .on('show.bs.dropdown', function () {
+        assert.ok(true, 'show was fired')
+      })
+      .on('shown.bs.dropdown', function () {
+        assert.ok($dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is shown')
+        done()
+      })
+
+    dropdown.show()
+  })
+
+  QUnit.test('should prevent default event on show method call', function (assert) {
+    assert.expect(1)
+
+    var dropdownHTML =
+      '<div class="dropdown">' +
+      '  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>' +
+      '  <div class="dropdown-menu">' +
+      '    <a class="dropdown-item" href="#">Another link</a>' +
+      '  </div>' +
+      '</div>'
+
+    var $dropdown = $(dropdownHTML)
+      .appendTo('#qunit-fixture')
+      .find('[data-toggle="dropdown"]')
+      .bootstrapDropdown()
+
+    var dropdown = $dropdown.data('bs.dropdown')
+    var done = assert.async()
+
+    $dropdown
+      .parent('.dropdown')
+      .on('show.bs.dropdown', function (event) {
+        event.preventDefault()
+        done()
+      })
+
+    dropdown.show()
+    assert.ok(!$dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is hidden')
+  })
+
+  QUnit.test('should prevent default event on hide method call', function (assert) {
+    assert.expect(1)
+
+    var dropdownHTML =
+      '<div class="dropdown">' +
+      '  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>' +
+      '  <div class="dropdown-menu">' +
+      '    <a class="dropdown-item" href="#">Another link</a>' +
+      '  </div>' +
+      '</div>'
+
+    var $dropdown = $(dropdownHTML)
+      .appendTo('#qunit-fixture')
+      .find('[data-toggle="dropdown"]')
+      .bootstrapDropdown()
+
+    var dropdown = $dropdown.data('bs.dropdown')
+    var done = assert.async()
+    $dropdown.trigger('click')
+
+    $dropdown
+      .parent('.dropdown')
+      .on('hide.bs.dropdown', function (event) {
+        event.preventDefault()
+        done()
+      })
+
+    dropdown.hide()
+    assert.ok($dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is shown')
+  })
+
+  QUnit.test('should not open dropdown via show method if target is disabled via attribute', function (assert) {
+    assert.expect(1)
+    var dropdownHTML =
+        '<div class="dropdown">' +
+        '  <button disabled href="#" class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>' +
+        '  <div class="dropdown-menu">' +
+        '    <a class="dropdown-item" href="#">Another link</a>' +
+        '  </div>' +
+        '</div>'
+    $(dropdownHTML).appendTo('#qunit-fixture')
+    var $dropdown = $('#qunit-fixture').find('[data-toggle="dropdown"]').bootstrapDropdown()
+    $dropdown.show()
+    assert.ok(!$dropdown.parent('.dropdown').hasClass('show'))
+  })
+
+  QUnit.test('should not open dropdown via show method if target is disabled via class', function (assert) {
+    assert.expect(1)
+    var dropdownHTML =
+        '<div class="dropdown">' +
+        '  <button href="#" class="btn dropdown-toggle disabled" data-toggle="dropdown">Dropdown</button>' +
+        '  <div class="dropdown-menu">' +
+        '    <a class="dropdown-item" href="#">Another link</a>' +
+        '  </div>' +
+        '</div>'
+
+    $(dropdownHTML).appendTo('#qunit-fixture')
+    var $dropdown = $('#qunit-fixture').find('[data-toggle="dropdown"]').bootstrapDropdown()
+    $dropdown.show()
+    assert.ok(!$dropdown.parent('.dropdown').hasClass('show'))
+  })
+
+  QUnit.test('should not hide dropdown via hide method if target is disabled via attribute', function (assert) {
+    assert.expect(1)
+    var dropdownHTML =
+        '<div class="dropdown show">' +
+        '  <button disabled href="#" class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>' +
+        '  <div class="dropdown-menu">' +
+        '    <a class="dropdown-item" href="#">Another link</a>' +
+        '  </div>' +
+        '</div>'
+    $(dropdownHTML).appendTo('#qunit-fixture')
+    var $dropdown = $('#qunit-fixture').find('[data-toggle="dropdown"]').bootstrapDropdown()
+    $dropdown.hide()
+    assert.ok($dropdown.parent('.dropdown').hasClass('show'))
+  })
+
+  QUnit.test('should not hide dropdown via hide method if target is disabled via class', function (assert) {
+    assert.expect(1)
+    var dropdownHTML =
+        '<div class="dropdown show">' +
+        '  <button href="#" class="btn dropdown-toggle disabled" data-toggle="dropdown">Dropdown</button>' +
+        '  <div class="dropdown-menu">' +
+        '    <a class="dropdown-item" href="#">Another link</a>' +
+        '  </div>' +
+        '</div>'
+
+    $(dropdownHTML).appendTo('#qunit-fixture')
+    var $dropdown = $('#qunit-fixture').find('[data-toggle="dropdown"]').bootstrapDropdown()
+    $dropdown.hide()
+    assert.ok($dropdown.parent('.dropdown').hasClass('show'))
+  })
 })
