@@ -1,6 +1,4 @@
 sudo: required
-addons:
-  chrome: stable
 language: node_js
 git:
   depth: 3
