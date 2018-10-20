@@ -908,6 +908,15 @@
           Util.reflow(nextElement);
           $$$1(activeElement).addClass(directionalClassName);
           $$$1(nextElement).addClass(directionalClassName);
+          var nextElementInterval = parseInt(nextElement.getAttribute('data-interval'), 10);
+
+          if (nextElementInterval) {
+            this._config.defaultInterval = this._config.defaultInterval || this._config.interval;
+            this._config.interval = nextElementInterval;
+          } else {
+            this._config.interval = this._config.defaultInterval || this._config.interval;
+          }
+
           var transitionDuration = Util.getTransitionDurationFromElement(activeElement);
           $$$1(activeElement).one(Util.TRANSITION_END, function () {
             $$$1(nextElement).removeClass(directionalClassName + " " + orderClassName).addClass(ClassName.ACTIVE);
