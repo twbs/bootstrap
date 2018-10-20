@@ -70,7 +70,6 @@
     height: $custom-control-indicator-size;
     pointer-events: none;
     content: "";
-    user-select: none;
     background-color: $custom-control-indicator-bg;
     @include box-shadow($custom-control-indicator-box-shadow);
   }
@@ -166,6 +165,7 @@
   width: 100%;
   height: $custom-select-height;
   padding: $custom-select-padding-y ($custom-select-padding-x + $custom-select-indicator-padding) $custom-select-padding-y $custom-select-padding-x;
+  font-weight: $custom-select-font-weight;
   line-height: $custom-select-line-height;
   color: $custom-select-color;
   vertical-align: middle;
@@ -258,10 +258,6 @@
   &:focus ~ .custom-file-label {
     border-color: $custom-file-focus-border-color;
     box-shadow: $custom-file-focus-box-shadow;
-
-    &::after {
-      border-color: $custom-file-focus-border-color;
-    }
   }
 
   &:disabled ~ .custom-file-label {
@@ -283,6 +279,7 @@
   z-index: 1;
   height: $custom-file-height;
   padding: $custom-file-padding-y $custom-file-padding-x;
+  font-weight: $custom-file-font-weight;
   line-height: $custom-file-line-height;
   color: $custom-file-color;
   background-color: $custom-file-bg;
@@ -303,7 +300,7 @@
     color: $custom-file-button-color;
     content: "Browse";
     @include gradient-bg($custom-file-button-bg);
-    border-left: $custom-file-border-width solid $custom-file-border-color;
+    border-left: inherit;
     @include border-radius(0 $custom-file-border-radius $custom-file-border-radius 0);
   }
 }

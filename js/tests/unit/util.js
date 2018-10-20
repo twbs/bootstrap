@@ -20,29 +20,17 @@ $(function () {
     assert.strictEqual(Util.getSelectorFromElement($el2[0]), null)
   })
 
-  QUnit.test('Util.getSelectorFromElement should use getElementById', function (assert) {
+  QUnit.test('Util.getSelectorFromElement should throw error when there is a bad selector', function (assert) {
     assert.expect(2)
 
-    var spy = sinon.spy(document, 'getElementById')
+    var $el = $('<div data-target="#1"></div>').appendTo($('#qunit-fixture'))
 
-    var $el = $('<div data-target="#7"></div>').appendTo($('#qunit-fixture'))
-    $('<div id="7" />').appendTo($('#qunit-fixture'))
-
-    assert.strictEqual(Util.getSelectorFromElement($el[0]), '#7')
-    assert.ok(spy.called)
-  })
-
-  QUnit.test('Util.getSelectorFromElement should use querySelector when there are multi ids', function (assert) {
-    assert.expect(2)
-
-    var spy = sinon.spy(document, 'querySelector')
-
-    var $el = $('<div data-target="#j7, #j8"></div>').appendTo($('#qunit-fixture'))
-    $('<div id="j7" />').appendTo($('#qunit-fixture'))
-    $('<div id="j8" />').appendTo($('#qunit-fixture'))
-
-    assert.strictEqual(Util.getSelectorFromElement($el[0]), '#j7, #j8')
-    assert.ok(spy.called)
+    try {
+      assert.ok(true, 'trying to use a bad selector')
+      Util.getSelectorFromElement($el[0])
+    } catch (e) {
+      assert.ok(e instanceof DOMException)
+    }
   })
 
   QUnit.test('Util.typeCheckConfig should thrown an error when a bad config is passed', function (assert) {
