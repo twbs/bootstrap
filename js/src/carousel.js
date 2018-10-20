@@ -1,12 +1,12 @@
-import $ from 'jquery'
-import Util from './util'
-
 /**
  * --------------------------------------------------------------------------
  * Bootstrap (v4.1.3): carousel.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
+
+import $ from 'jquery'
+import Util from './util'
 
 /**
  * ------------------------------------------------------------------------
@@ -23,13 +23,15 @@ const JQUERY_NO_CONFLICT     = $.fn[NAME]
 const ARROW_LEFT_KEYCODE     = 37 // KeyboardEvent.which value for left arrow key
 const ARROW_RIGHT_KEYCODE    = 39 // KeyboardEvent.which value for right arrow key
 const TOUCHEVENT_COMPAT_WAIT = 500 // Time for mouse compat events to fire after touch
+const SWIPE_THRESHOLD        = 40
 
 const Default = {
   interval : 5000,
   keyboard : true,
   slide    : false,
   pause    : 'hover',
-  wrap     : true
+  wrap     : true,
+  touch    : true
 }
 
 const DefaultType = {
@@ -37,7 +39,8 @@ const DefaultType = {
   keyboard : 'boolean',
   slide    : '(boolean|string)',
   pause    : '(string|boolean)',
-  wrap     : 'boolean'
+  wrap     : 'boolean',
+  touch    : 'boolean'
 }
 
 const Direction = {
@@ -53,30 +56,45 @@ const Event = {
   KEYDOWN        : `keydown${EVENT_KEY}`,
   MOUSEENTER     : `mouseenter${EVENT_KEY}`,
   MOUSELEAVE     : `mouseleave${EVENT_KEY}`,
+  TOUCHSTART     : `touchstart${EVENT_KEY}`,
+  TOUCHMOVE      : `touchmove${EVENT_KEY}`,
   TOUCHEND       : `touchend${EVENT_KEY}`,
+  POINTERDOWN    : `pointerdown${EVENT_KEY}`,
+  POINTERMOVE    : `pointermove${EVENT_KEY}`,
+  POINTERUP      : `pointerup${EVENT_KEY}`,
+  POINTERLEAVE   : `pointerleave${EVENT_KEY}`,
+  POINTERCANCEL  : `pointercancel${EVENT_KEY}`,
+  DRAG_START     : `dragstart${EVENT_KEY}`,
   LOAD_DATA_API  : `load${EVENT_KEY}${DATA_API_KEY}`,
   CLICK_DATA_API : `click${EVENT_KEY}${DATA_API_KEY}`
 }
 
 const ClassName = {
-  CAROUSEL : 'carousel',
-  ACTIVE   : 'active',
-  SLIDE    : 'slide',
-  RIGHT    : 'carousel-item-right',
-  LEFT     : 'carousel-item-left',
-  NEXT     : 'carousel-item-next',
-  PREV     : 'carousel-item-prev',
-  ITEM     : 'carousel-item'
+  CAROUSEL      : 'carousel',
+  ACTIVE        : 'active',
+  SLIDE         : 'slide',
+  RIGHT         : 'carousel-item-right',
+  LEFT          : 'carousel-item-left',
+  NEXT          : 'carousel-item-next',
+  PREV          : 'carousel-item-prev',
+  ITEM          : 'carousel-item',
+  POINTER_EVENT : 'pointer-event'
 }
 
 const Selector = {
   ACTIVE      : '.active',
   ACTIVE_ITEM : '.active.carousel-item',
   ITEM        : '.carousel-item',
+  ITEM_IMG    : '.carousel-item img',
   NEXT_PREV   : '.carousel-item-next, .carousel-item-prev',
   INDICATORS  : '.carousel-indicators',
   DATA_SLIDE  : '[data-slide], [data-slide-to]',
   DATA_RIDE   : '[data-ride="carousel"]'
+}
+
+const PointerType = {
+  TOUCH : 'touch',
+  PEN   : 'pen'
 }
 
 /**
@@ -84,21 +102,22 @@ const Selector = {
  * Class Definition
  * ------------------------------------------------------------------------
  */
-
 class Carousel {
   constructor(element, config) {
-    this._items              = null
-    this._interval           = null
-    this._activeElement      = null
+    this._items         = null
+    this._interval      = null
+    this._activeElement = null
+    this._isPaused      = false
+    this._isSliding     = false
+    this.touchTimeout   = null
+    this.touchStartX    = 0
+    this.touchDeltaX    = 0
 
-    this._isPaused           = false
-    this._isSliding          = false
-
-    this.touchTimeout        = null
-
-    this._config             = this._getConfig(config)
-    this._element            = $(element)[0]
-    this._indicatorsElement  = this._element.querySelector(Selector.INDICATORS)
+    this._config            = this._getConfig(config)
+    this._element           = element
+    this._indicatorsElement = this._element.querySelector(Selector.INDICATORS)
+    this._touchSupported    = 'ontouchstart' in document.documentElement || navigator.maxTouchPoints > 0
+    this._pointerEvent      = Boolean(window.PointerEvent || window.MSPointerEvent)
 
     this._addEventListeners()
   }
@@ -220,6 +239,26 @@ class Carousel {
     return config
   }
 
+  _handleSwipe() {
+    const absDeltax = Math.abs(this.touchDeltaX)
+
+    if (absDeltax <= SWIPE_THRESHOLD) {
+      return
+    }
+
+    const direction = absDeltax / this.touchDeltaX
+
+    // swipe left
+    if (direction > 0) {
+      this.prev()
+    }
+
+    // swipe right
+    if (direction < 0) {
+      this.next()
+    }
+  }
+
   _addEventListeners() {
     if (this._config.keyboard) {
       $(this._element)
@@ -230,7 +269,46 @@ class Carousel {
       $(this._element)
         .on(Event.MOUSEENTER, (event) => this.pause(event))
         .on(Event.MOUSELEAVE, (event) => this.cycle(event))
-      if ('ontouchstart' in document.documentElement) {
+    }
+
+    this._addTouchEventListeners()
+  }
+
+  _addTouchEventListeners() {
+    if (!this._touchSupported) {
+      return
+    }
+
+    const start = (event) => {
+      if (this._pointerEvent && (event.originalEvent.pointerType === PointerType.TOUCH || event.originalEvent.pointerType === PointerType.PEN)) {
+        this.touchStartX = event.originalEvent.clientX
+      } else if (!this._pointerEvent) {
+        event.preventDefault()
+        this.touchStartX = event.originalEvent.touches[0].clientX
+      }
+    }
+
+    const move = (event) => {
+      if (!this._pointerEvent) {
+        event.preventDefault()
+
+        // ensure swiping with one touch and not pinching
+        if (event.originalEvent.touches && event.originalEvent.touches.length > 1) {
+          this.touchDeltaX = 0
+        } else {
+          this.touchDeltaX = event.originalEvent.touches[0].clientX - this.touchStartX
+        }
+      }
+    }
+
+    const end = (event) => {
+      if (this._pointerEvent && (event.originalEvent.pointerType === PointerType.TOUCH || event.originalEvent.pointerType === PointerType.PEN)) {
+        this.touchDeltaX = event.originalEvent.clientX - this.touchStartX
+      }
+
+      this._handleSwipe()
+
+      if (this._config.pause === 'hover') {
         // If it's a touch-enabled device, mouseenter/leave are fired as
         // part of the mouse compatibility events on first tap - the carousel
         // would stop cycling until user tapped out of it;
@@ -238,14 +316,25 @@ class Carousel {
         // (as if it's the second time we tap on it, mouseenter compat event
         // is NOT fired) and after a timeout (to allow for mouse compatibility
         // events to fire) we explicitly restart cycling
-        $(this._element).on(Event.TOUCHEND, () => {
-          this.pause()
-          if (this.touchTimeout) {
-            clearTimeout(this.touchTimeout)
-          }
-          this.touchTimeout = setTimeout((event) => this.cycle(event), TOUCHEVENT_COMPAT_WAIT + this._config.interval)
-        })
+
+        this.pause()
+        if (this.touchTimeout) {
+          clearTimeout(this.touchTimeout)
+        }
+        this.touchTimeout = setTimeout((event) => this.cycle(event), TOUCHEVENT_COMPAT_WAIT + this._config.interval)
       }
+    }
+
+    $(this._element.querySelectorAll(Selector.ITEM_IMG)).on(Event.DRAG_START, (e) => e.preventDefault())
+    if (this._pointerEvent) {
+      $(this._element).on(Event.POINTERDOWN, (event) => start(event))
+      $(this._element).on(Event.POINTERUP, (event) => end(event))
+
+      this._element.classList.add(ClassName.POINTER_EVENT)
+    } else {
+      $(this._element).on(Event.TOUCHSTART, (event) => start(event))
+      $(this._element).on(Event.TOUCHMOVE, (event) => move(event))
+      $(this._element).on(Event.TOUCHEND, (event) => end(event))
     }
   }
 
