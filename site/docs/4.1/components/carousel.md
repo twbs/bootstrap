@@ -281,6 +281,12 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <td>true</td>
       <td>Whether the carousel should cycle continuously or have hard stops.</td>
     </tr>
+    <tr>
+      <td>touch</td>
+      <td>boolean</td>
+      <td>true</td>
+      <td>Whether the carousel should support left/right swipe interactions on touchscreen devices.</td>
+    </tr>
   </tbody>
 </table>
 
