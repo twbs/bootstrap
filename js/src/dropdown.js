@@ -194,6 +194,52 @@ class Dropdown {
       .trigger($.Event(Event.SHOWN, relatedTarget))
   }
 
+  show() {
+    if (this._element.disabled || $(this._element).hasClass(ClassName.DISABLED) || $(this._menu).hasClass(ClassName.SHOW)) {
+      return
+    }
+
+    const relatedTarget = {
+      relatedTarget: this._element
+    }
+    const showEvent = $.Event(Event.SHOW, relatedTarget)
+
+    const parent = Dropdown._getParentFromElement(this._element)
+    $(parent).trigger(showEvent)
+
+    if (showEvent.isDefaultPrevented()) {
+      return
+    }
+
+    $(this._menu).toggleClass(ClassName.SHOW)
+    $(parent)
+      .toggleClass(ClassName.SHOW)
+      .trigger($.Event(Event.SHOWN, relatedTarget))
+  }
+
+  hide() {
+    if (this._element.disabled || $(this._element).hasClass(ClassName.DISABLED) || !$(this._menu).hasClass(ClassName.SHOW)) {
+      return
+    }
+
+    const relatedTarget = {
+      relatedTarget: this._element
+    }
+    const hideEvent = $.Event(Event.HIDE, relatedTarget)
+
+    const parent = Dropdown._getParentFromElement(this._element)
+    $(parent).trigger(hideEvent)
+
+    if (hideEvent.isDefaultPrevented()) {
+      return
+    }
+
+    $(this._menu).toggleClass(ClassName.SHOW)
+    $(parent)
+      .toggleClass(ClassName.SHOW)
+      .trigger($.Event(Event.HIDDEN, relatedTarget))
+  }
+
   dispose() {
     $.removeData(this._element, DATA_KEY)
     $(this._element).off(EVENT_KEY)
