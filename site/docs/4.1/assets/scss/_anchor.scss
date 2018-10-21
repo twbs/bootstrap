@@ -1,7 +1,7 @@
 .anchorjs-link {
   font-weight: 400;
   color: rgba($link-color, .5);
-  transition: color .16s linear;
+  @include transition(color .16s linear);
 
   &:hover {
     color: $link-color;
