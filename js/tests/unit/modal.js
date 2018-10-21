@@ -13,14 +13,7 @@ $(function () {
       // Enable the scrollbar measurer
       $('<style type="text/css"> .modal-scrollbar-measure { position: absolute; top: -9999px; width: 50px; height: 50px; overflow: scroll; } </style>').appendTo('head')
       // Function to calculate the scrollbar width which is then compared to the padding or margin changes
-      $.fn.getScrollbarWidth = function () {
-        var scrollDiv = document.createElement('div')
-        scrollDiv.className = 'modal-scrollbar-measure'
-        document.body.appendChild(scrollDiv)
-        var scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth
-        document.body.removeChild(scrollDiv)
-        return scrollbarWidth
-      }
+      $.fn.getScrollbarWidth = $.fn.modal.Constructor.prototype._getScrollbarWidth
 
       // Simulate scrollbars
       $('html').css('padding-right', '16px')
