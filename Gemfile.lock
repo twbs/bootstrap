@@ -35,7 +35,7 @@ GEM
       sass (~> 3.4)
     jekyll-sitemap (1.2.0)
       jekyll (~> 3.3)
-    jekyll-toc (0.7.1)
+    jekyll-toc (0.8.0)
       nokogiri (~> 1.7)
     jekyll-watch (2.1.1)
       listen (~> 3.0)
@@ -74,7 +74,7 @@ DEPENDENCIES
   jekyll (~> 3.8.4)
   jekyll-redirect-from (~> 0.14.0)
   jekyll-sitemap (~> 1.2.0)
-  jekyll-toc (~> 0.7.1)
+  jekyll-toc (~> 0.8.0)
 
 BUNDLED WITH
    1.16.6
