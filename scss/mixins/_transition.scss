@@ -1,3 +1,4 @@
+// stylelint-disable property-blacklist
 @mixin transition($transition...) {
   @if $enable-transitions {
     @if length($transition) == 0 {
@@ -5,5 +6,9 @@
     } @else {
       transition: $transition;
     }
+  }
+
+  @media screen and (prefers-reduced-motion: reduce) {
+    transition: none;
   }
 }

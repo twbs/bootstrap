@@ -1,13 +1,11 @@
-// stylelint-disable indentation
-
 // Hover mixin and `$enable-hover-media-query` are deprecated.
 //
-// Origally added during our alphas and maintained during betas, this mixin was
-// designed to prevent `:hover` stickiness on iOS—an issue where hover styles
+// Originally added during our alphas and maintained during betas, this mixin was
+// designed to prevent `:hover` stickiness on iOS-an issue where hover styles
 // would persist after initial touch.
 //
 // For backward compatibility, we've kept these mixins and updated them to
-// always return their regular psuedo-classes instead of a shimmed media query.
+// always return their regular pseudo-classes instead of a shimmed media query.
 //
 // Issue: https://github.com/twbs/bootstrap/issues/25195
 

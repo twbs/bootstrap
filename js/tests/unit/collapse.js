@@ -16,6 +16,7 @@ $(function () {
     afterEach: function () {
       $.fn.collapse = $.fn.bootstrapCollapse
       delete $.fn.bootstrapCollapse
+      $('#qunit-fixture').html('')
     }
   })
 
@@ -45,10 +46,14 @@ $(function () {
 
   QUnit.test('should show a collapsed element', function (assert) {
     assert.expect(2)
-    var $el = $('<div class="collapse"/>').bootstrapCollapse('show')
+    var done = assert.async()
+    var $el = $('<div class="collapse"/>')
 
-    assert.ok($el.hasClass('show'), 'has class "show"')
-    assert.ok(!/height/i.test($el.attr('style')), 'has height reset')
+    $el.one('shown.bs.collapse', function () {
+      assert.ok($el.hasClass('show'), 'has class "show"')
+      assert.ok(!/height/i.test($el.attr('style')), 'has height reset')
+      done()
+    }).bootstrapCollapse('show')
   })
 
   QUnit.test('should show multiple collapsed elements', function (assert) {
@@ -849,5 +854,39 @@ $(function () {
     } catch (err) {
       assert.ok(false, 'collapse not created')
     }
+  })
+
+  QUnit.test('should find collapse children if they have collapse class too not only data-parent', function (assert) {
+    assert.expect(2)
+    var done = assert.async()
+
+    var html =
+    '<div class="my-collapse">' +
+    '  <div class="item">' +
+    '    <a data-toggle="collapse" href="#">Toggle item 1</a>' +
+    '    <div id="collapse1" class="collapse show">Lorem ipsum 1</div>' +
+    '  </div>' +
+    '  <div class="item">' +
+    '    <a id="triggerCollapse2" data-toggle="collapse" href="#">Toggle item 2</a>' +
+    '    <div id="collapse2" class="collapse">Lorem ipsum 2</div>' +
+    '  </div>' +
+    '</div>'
+
+    $(html).appendTo('#qunit-fixture')
+
+    var $parent = $('.my-collapse')
+    var $collapse2 = $('#collapse2')
+    $parent.find('.collapse').bootstrapCollapse({
+      parent: $parent,
+      toggle: false
+    })
+
+    $collapse2.on('shown.bs.collapse', function () {
+      assert.ok($collapse2.hasClass('show'))
+      assert.ok(!$('#collapse1').hasClass('show'))
+      done()
+    })
+
+    $collapse2.bootstrapCollapse('toggle')
   })
 })
