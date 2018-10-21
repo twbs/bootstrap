@@ -41,13 +41,13 @@
     z-index: 5;
     display: none;
     max-width: 100%; // Contain to parent when possible
-    padding: $tooltip-padding-y $tooltip-padding-x;
+    padding: $form-feedback-tooltip-padding-y $form-feedback-tooltip-padding-x;
     margin-top: .1rem;
-    font-size: $tooltip-font-size;
-    line-height: $line-height-base;
+    font-size: $form-feedback-tooltip-font-size;
+    line-height: $form-feedback-tooltip-line-height;
     color: color-yiq($color);
-    background-color: rgba($color, $tooltip-opacity);
-    @include border-radius($tooltip-border-radius);
+    background-color: rgba($color, $form-feedback-tooltip-opacity);
+    @include border-radius($form-feedback-tooltip-border-radius);
   }
 
   .form-control {
@@ -151,7 +151,7 @@
         color: $color;
 
         &::before {
-          background-color: lighten($color, 25%);
+          border-color: $color;
         }
       }
 
@@ -162,13 +162,18 @@
 
       &:checked {
         ~ .custom-control-label::before {
+          border-color: lighten($color, 10%);
           @include gradient-bg(lighten($color, 10%));
         }
       }
 
       &:focus {
         ~ .custom-control-label::before {
-          box-shadow: 0 0 0 1px $body-bg, 0 0 0 $input-focus-width rgba($color, .25);
+          box-shadow: 0 0 0 $input-focus-width rgba($color, .25);
+        }
+
+        &:not(:checked) ~ .custom-control-label::before {
+          border-color: $color;
         }
       }
     }
@@ -180,8 +185,6 @@
     &.is-#{$state} {
       ~ .custom-file-label {
         border-color: $color;
-
-        &::after { border-color: inherit; }
       }
 
       ~ .#{$state}-feedback,
@@ -191,6 +194,7 @@
 
       &:focus {
         ~ .custom-file-label {
+          border-color: $color;
           box-shadow: 0 0 0 $input-focus-width rgba($color, .25);
         }
       }
