@@ -241,6 +241,7 @@ You can find and customize these variables for key global options in Bootstrap's
 | `$enable-grid-classes`      | `true` (default) or `false`        | Enables the generation of CSS classes for the grid system (e.g., `.container`, `.row`, `.col-md-1`, etc.). |
 | `$enable-caret`             | `true` (default) or `false`        | Enables pseudo element caret on `.dropdown-toggle`. |
 | `$enable-print-styles`      | `true` (default) or `false`        | Enables styles for optimizing printing. |
+| `$enable-validation-icons`  | `true` (default) or `false`        | Enables `background-image` icons within textual inputs and some custom forms for validation states. |
 
 ## Color
 
@@ -421,7 +422,7 @@ a {
 
 ### Breakpoint variables
 
-While we originally included breakpoints in our CSS variables (e.g., `--breakpoint-md`), **these are not supported in media queries**, but they can still be used _within_ rulesets in media queries. These breakpoint variables remain in the compiled CSS for backward compatibility given they can be utilized by JavaScript. [Learn more in the spec.](https://www.w3.org/TR/css-variables-1/#using-variables)
+While we originally included breakpoints in our CSS variables (e.g., `--breakpoint-md`), **these are not supported in media queries**, but they can still be used _within_ rulesets in media queries. These breakpoint variables remain in the compiled CSS for backward compatibility given they can be utilized by JavaScript. [Learn more in the spec](https://www.w3.org/TR/css-variables-1/#using-variables).
 
 Here's an example of **what's not supported:**
 
