@@ -82,8 +82,8 @@
 .carousel-fade {
   .carousel-item {
     opacity: 0;
-    transition-duration: .6s;
     transition-property: opacity;
+    transform: none;
   }
 
   .carousel-item.active,
@@ -95,18 +95,6 @@
   .active.carousel-item-left,
   .active.carousel-item-right {
     opacity: 0;
-  }
-
-  .carousel-item-next,
-  .carousel-item-prev,
-  .carousel-item.active,
-  .active.carousel-item-left,
-  .active.carousel-item-prev {
-    transform: translateX(0);
-
-    @supports (transform-style: preserve-3d) {
-      transform: translate3d(0, 0, 0);
-    }
   }
 }
 
