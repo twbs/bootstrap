@@ -37,7 +37,7 @@ GEM
       jekyll (~> 3.3)
     jekyll-toc (0.8.0)
       nokogiri (~> 1.7)
-    jekyll-watch (2.1.1)
+    jekyll-watch (2.1.2)
       listen (~> 3.0)
     kramdown (1.17.0)
     liquid (4.0.1)
