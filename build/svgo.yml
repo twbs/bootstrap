@@ -1,0 +1,52 @@
+# Usage:
+# install svgo globally: `npm i -g svgo`
+# svgo --config=build/svgo.yml --input=foo.svg
+
+# https://github.com/svg/svgo/blob/master/docs/how-it-works/en.md
+# replace default config
+
+multipass: true
+#full: true
+
+# https://github.com/svg/svgo/blob/master/lib/svgo/js2svg.js#L6 for more config options
+
+js2svg:
+  pretty: true
+  indent: 2
+
+plugins:
+  - cleanupAttrs: true
+  - cleanupEnableBackground: true
+  - cleanupIDs: true
+  - cleanupListOfValues: true
+  - cleanupNumericValues: true
+  - collapseGroups: true
+  - convertColors: true
+  - convertPathData: true
+  - convertShapeToPath: true
+  - convertStyleToAttrs: true
+  - convertTransform: true
+  - inlineStyles: true
+  - mergePaths: true
+  - minifyStyles: true
+  - moveElemsAttrsToGroup: true
+  - moveGroupAttrsToElems: true
+  - removeComments: true
+  - removeDesc: true
+  - removeDoctype: true
+  - removeEditorsNSData: true
+  - removeEmptyAttrs: true
+  - removeEmptyContainers: true
+  - removeEmptyText: true
+  - removeHiddenElems: true
+  - removeMetadata: true
+  - removeNonInheritableGroupAttrs: true
+  - removeTitle: true
+  - removeUnknownsAndDefaults: true
+  - removeUnusedNS: true
+  - removeUselessDefs: true
+  - removeUselessStrokeAndFill: true
+  - removeViewBox: false
+  - removeXMLNS: false
+  - removeXMLProcInst: true
+  - sortAttrs: true
