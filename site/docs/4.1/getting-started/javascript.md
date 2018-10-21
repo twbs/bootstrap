@@ -74,7 +74,7 @@ Each plugin also exposes its raw constructor on a `Constructor` property: `$.fn.
 
 ### Asynchronous functions and transitions
 
-All programmatic API methods are **asynchronous** and returns to the caller once the transition is started but **before it ends**.
+All programmatic API methods are **asynchronous** and return to the caller once the transition is started but **before it ends**.
 
 In order to execute an action once the transition is complete, you can listen to the corresponding event.
 
