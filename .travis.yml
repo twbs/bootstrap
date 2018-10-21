@@ -1,20 +1,18 @@
 sudo: required
-dist: trusty
-addons:
-  chrome: stable
 language: node_js
 git:
   depth: 3
 node_js:
   - "6"
   - "8"
-before_install:
-  - if [[ `npm -v` != 5* ]]; then npm install -g npm@5; fi
 install:
-  - bundle install --deployment --jobs=3 --retry=3
+  - bundle install --deployment --jobs=3 --retry=3 --clean
   - npm install
+script:
+  - npm test
+  - if [ "$TRAVIS_NODE_VERSION" = "8" ]; then npm run check-broken-links; fi
 after_success:
-  - if [ "$TRAVIS_REPO_SLUG" = twbs-savage/bootstrap ]; then npm run docs-upload-preview; fi
+  - if [ "$TRAVIS_NODE_VERSION" = "8" ]; then npm run coveralls; fi
 stages:
   - test
   - name: browser
@@ -23,12 +21,10 @@ jobs:
   include:
     - stage: browser
       node_js: 8
-      script: if ! git log --format=%B --no-merges -n 1 | grep '\[skip browser\]'; then npm test && npm run js-test-cloud; fi
+      script: if ! git log --format=%B --no-merges -n 1 | grep '\[skip browser\]'; then npm run js-test-cloud; fi
 cache:
   directories:
     - node_modules
     - vendor/bundle
 notifications:
-  slack: heybb:iz4wwosL0N0EdaX1gvgkU0NH
-  webhooks:
-    - http://savage.twbsapps.com/savage/travis
+  email: false

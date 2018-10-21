@@ -54,10 +54,24 @@
             </div>
           </div>
         </div>
+        <div class="card">
+          <div class="card-header" role="tab" id="headingFour">
+            <h5 class="mb-0">
+              <a class="collapsed" data-toggle="collapse" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                Collapsible Group Item with XSS in data-parent
+              </a>
+            </h5>
+          </div>
+          <div id="collapseFour" class="collapse" data-parent="<img src=1 onerror=alert(123) />" role="tabpanel" aria-labelledby="headingFour">
+            <div class="card-body">
+              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <script src="../../../assets/js/vendor/jquery-slim.min.js"></script>
+    <script src="../../../site/docs/4.1/assets/js/vendor/jquery-slim.min.js"></script>
     <script src="../../dist/util.js"></script>
     <script src="../../dist/collapse.js"></script>
   </body>
