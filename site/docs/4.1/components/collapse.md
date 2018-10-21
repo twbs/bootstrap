@@ -22,7 +22,7 @@ Click the buttons below to show and hide another element via class changes:
 
 You can use a link with the `href` attribute, or a button with the `data-target` attribute. In both cases, the `data-toggle="collapse"` is required.
 
-{% capture example %}
+{% example html %}
 <p>
   <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
     Link with href
@@ -36,15 +36,14 @@ You can use a link with the `href` attribute, or a button with the `data-target`
     Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
   </div>
 </div>
-{% endcapture %}
-{% include example.html content=example %}
+{% endexample %}
 
 ## Multiple targets
 
 A `<button>` or `<a>` can show and hide multiple elements by referencing them with a JQuery selector in its `href` or `data-target` attribute.
 Multiple `<button>` or `<a>` can show and hide an element if they each reference it with their `href` or `data-target` attribute
 
-{% capture example %}
+{% example html %}
 <p>
   <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Toggle first element</a>
   <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Toggle second element</button>
@@ -66,14 +65,13 @@ Multiple `<button>` or `<a>` can show and hide an element if they each reference
     </div>
   </div>
 </div>
-{% endcapture %}
-{% include example.html content=example %}
+{% endexample %}
 
 ## Accordion example
 
 Using the [card]({{ site.baseurl }}/docs/{{ site.docs_version }}/components/card/) component, you can extend the default collapse behavior to create an accordion. To properly achieve the accordion style, be sure to use `.accordion` as a wrapper.
 
-{% capture example %}
+{% example html %}
 <div class="accordion" id="accordionExample">
   <div class="card">
     <div class="card-header" id="headingOne">
@@ -119,8 +117,7 @@ Using the [card]({{ site.baseurl }}/docs/{{ site.docs_version }}/components/card
     </div>
   </div>
 </div>
-{% endcapture %}
-{% include example.html content=example %}
+{% endexample %}
 
 ## Accessibility
 

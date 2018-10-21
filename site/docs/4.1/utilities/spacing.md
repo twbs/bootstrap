@@ -96,10 +96,9 @@ The syntax is nearly the same as the default, positive margin utilities, but wit
 
 Here's an example of customizing the Bootstrap grid at the medium (`md`) breakpoint and above. We've increased the `.col` padding with `.px-md-5` and then counteracted that with `.mx-md-n5` on the parent `.row`.
 
-{% capture example %}
+{% example html %}
 <div class="row mx-md-n5">
   <div class="col py-3 px-md-5 border bg-light">Custom column padding</div>
   <div class="col py-3 px-md-5 border bg-light">Custom column padding</div>
 </div>
-{% endcapture %}
-{% include example.html content=example %}
+{% endexample %}

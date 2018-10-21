@@ -12,10 +12,9 @@ Hide an element to all devices **except screen readers** with `.sr-only`. Combin
 Necessary for following [accessibility best practices]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/#accessibility).
 {%- endcomment -%}
 
-{% capture example %}
+{% example html %}
 <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
-{% endcapture %}
-{% include example.html content=example %}
+{% endexample %}
 
 {% highlight scss %}
 // Usage as a mixin

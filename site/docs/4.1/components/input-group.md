@@ -10,7 +10,7 @@ toc: true
 
 Place one add-on or button on either side of an input. You may also place one on both sides of an input. Remember to place `<label>`s outside the input group.
 
-{% capture example %}
+{% example html %}
 <div class="input-group mb-3">
   <div class="input-group-prepend">
     <span class="input-group-text" id="basic-addon1">@</span>
@@ -49,22 +49,20 @@ Place one add-on or button on either side of an input. You may also place one on
   </div>
   <textarea class="form-control" aria-label="With textarea"></textarea>
 </div>
-{% endcapture %}
-{% include example.html content=example %}
+{% endexample %}
 
 ## Wrapping
 
 Input groups wrap by default via `flex-wrap: wrap` in order to accommodate custom form field validation within an input group. You may disable this with `.flex-nowrap`.
 
-{% capture example %}
+{% example html %}
 <div class="input-group flex-nowrap">
   <div class="input-group-prepend">
     <span class="input-group-text" id="addon-wrapping">@</span>
   </div>
   <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
 </div>
-{% endcapture %}
-{% include example.html content=example %}
+{% endexample %}
 
 ## Sizing
 
@@ -72,7 +70,7 @@ Add the relative form sizing classes to the `.input-group` itself and contents w
 
 **Sizing on the individual input group elements isn't supported.**
 
-{% capture example %}
+{% example html %}
 <div class="input-group input-group-sm mb-3">
   <div class="input-group-prepend">
     <span class="input-group-text" id="inputGroup-sizing-sm">Small</span>
@@ -93,14 +91,13 @@ Add the relative form sizing classes to the `.input-group` itself and contents w
   </div>
   <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
 </div>
-{% endcapture %}
-{% include example.html content=example %}
+{% endexample %}
 
 ## Checkboxes and radios
 
 Place any checkbox or radio option within an input group's addon instead of text.
 
-{% capture example %}
+{% example html %}
 <div class="input-group mb-3">
   <div class="input-group-prepend">
     <div class="input-group-text">
@@ -118,14 +115,13 @@ Place any checkbox or radio option within an input group's addon instead of text
   </div>
   <input type="text" class="form-control" aria-label="Text input with radio button">
 </div>
-{% endcapture %}
-{% include example.html content=example %}
+{% endexample %}
 
 ## Multiple inputs
 
 While multiple `<input>`s are supported visually, validation styles are only available for input groups with a single `<input>`.
 
-{% capture example %}
+{% example html %}
 <div class="input-group">
   <div class="input-group-prepend">
     <span class="input-group-text">First and last name</span>
@@ -133,14 +129,13 @@ While multiple `<input>`s are supported visually, validation styles are only ava
   <input type="text" aria-label="First name" class="form-control">
   <input type="text" aria-label="Last name" class="form-control">
 </div>
-{% endcapture %}
-{% include example.html content=example %}
+{% endexample %}
 
 ## Multiple addons
 
 Multiple add-ons are supported and can be mixed with checkbox and radio input versions.
 
-{% capture example %}
+{% example html %}
 <div class="input-group mb-3">
   <div class="input-group-prepend">
     <span class="input-group-text">$</span>
@@ -156,12 +151,11 @@ Multiple add-ons are supported and can be mixed with checkbox and radio input ve
     <span class="input-group-text">0.00</span>
   </div>
 </div>
-{% endcapture %}
-{% include example.html content=example %}
+{% endexample %}
 
 ## Button addons
 
-{% capture example %}
+{% example html %}
 <div class="input-group mb-3">
   <div class="input-group-prepend">
     <button class="btn btn-outline-secondary" type="button" id="button-addon1">Button</button>
@@ -191,12 +185,11 @@ Multiple add-ons are supported and can be mixed with checkbox and radio input ve
     <button class="btn btn-outline-secondary" type="button">Button</button>
   </div>
 </div>
-{% endcapture %}
-{% include example.html content=example %}
+{% endexample %}
 
 ## Buttons with dropdowns
 
-{% capture example %}
+{% example html %}
 <div class="input-group mb-3">
   <div class="input-group-prepend">
     <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</button>
@@ -224,12 +217,11 @@ Multiple add-ons are supported and can be mixed with checkbox and radio input ve
     </div>
   </div>
 </div>
-{% endcapture %}
-{% include example.html content=example %}
+{% endexample %}
 
 ## Segmented buttons
 
-{% capture example %}
+{% example html %}
 <div class="input-group mb-3">
   <div class="input-group-prepend">
     <button type="button" class="btn btn-outline-secondary">Action</button>
@@ -263,8 +255,7 @@ Multiple add-ons are supported and can be mixed with checkbox and radio input ve
     </div>
   </div>
 </div>
-{% endcapture %}
-{% include example.html content=example %}
+{% endexample %}
 
 ## Custom forms
 
@@ -272,7 +263,7 @@ Input groups include support for custom selects and custom file inputs. Browser 
 
 ### Custom select
 
-{% capture example %}
+{% example html %}
 <div class="input-group mb-3">
   <div class="input-group-prepend">
     <label class="input-group-text" for="inputGroupSelect01">Options</label>
@@ -320,12 +311,11 @@ Input groups include support for custom selects and custom file inputs. Browser 
     <button class="btn btn-outline-secondary" type="button">Button</button>
   </div>
 </div>
-{% endcapture %}
-{% include example.html content=example %}
+{% endexample %}
 
 ### Custom file input
 
-{% capture example %}
+{% example html %}
 <div class="input-group mb-3">
   <div class="input-group-prepend">
     <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
@@ -365,8 +355,7 @@ Input groups include support for custom selects and custom file inputs. Browser 
     <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Button</button>
   </div>
 </div>
-{% endcapture %}
-{% include example.html content=example %}
+{% endexample %}
 
 ## Accessibility
 

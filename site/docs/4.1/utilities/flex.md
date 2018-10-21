@@ -10,15 +10,13 @@ toc: true
 
 Apply `display` utilities to create a flexbox container and transform **direct children elements** into flex items. Flex containers and items are able to be modified further with additional flex properties.
 
-{% capture example %}
+{% example html %}
 <div class="d-flex p-2 bd-highlight">I'm a flexbox container!</div>
-{% endcapture %}
-{% include example.html content=example %}
+{% endexample %}
 
-{% capture example %}
+{% example html %}
 <div class="d-inline-flex p-2 bd-highlight">I'm an inline flexbox container!</div>
-{% endcapture %}
-{% include example.html content=example %}
+{% endexample %}
 
 Responsive variations also exist for `.d-flex` and `.d-inline-flex`.
 
@@ -32,7 +30,7 @@ Set the direction of flex items in a flex container with direction utilities. In
 
 Use `.flex-row` to set a horizontal direction (the browser default), or `.flex-row-reverse` to start the horizontal direction from the opposite side.
 
-{% capture example %}
+{% example html %}
 <div class="d-flex flex-row bd-highlight mb-3">
   <div class="p-2 bd-highlight">Flex item 1</div>
   <div class="p-2 bd-highlight">Flex item 2</div>
@@ -43,12 +41,11 @@ Use `.flex-row` to set a horizontal direction (the browser default), or `.flex-r
   <div class="p-2 bd-highlight">Flex item 2</div>
   <div class="p-2 bd-highlight">Flex item 3</div>
 </div>
-{% endcapture %}
-{% include example.html content=example %}
+{% endexample %}
 
 Use `.flex-column` to set a vertical direction, or `.flex-column-reverse`  to start the vertical direction from the opposite side.
 
-{% capture example %}
+{% example html %}
 <div class="d-flex flex-column bd-highlight mb-3">
   <div class="p-2 bd-highlight">Flex item 1</div>
   <div class="p-2 bd-highlight">Flex item 2</div>
@@ -59,8 +56,7 @@ Use `.flex-column` to set a vertical direction, or `.flex-column-reverse`  to st
   <div class="p-2 bd-highlight">Flex item 2</div>
   <div class="p-2 bd-highlight">Flex item 3</div>
 </div>
-{% endcapture %}
-{% include example.html content=example %}
+{% endexample %}
 
 Responsive variations also exist for `flex-direction`.
 
@@ -221,14 +217,13 @@ Responsive variations also exist for `align-self`.
 
 Use the `.flex-fill` class on a series of sibling elements to force them into widths equal to their content (or equal widths if their content does not surpass their border-boxes) while taking up all available horizontal space.
 
-{% capture example %}
+{% example html %}
 <div class="d-flex bd-highlight">
   <div class="p-2 flex-fill bd-highlight">Flex item with a lot of content</div>
   <div class="p-2 flex-fill bd-highlight">Flex item</div>
   <div class="p-2 flex-fill bd-highlight">Flex item</div>
 </div>
-{% endcapture %}
-{% include example.html content=example %}
+{% endexample %}
 
 Responsive variations also exist for `flex-fill`.
 
@@ -239,24 +234,22 @@ Responsive variations also exist for `flex-fill`.
 
 Use `.flex-grow-*` utilities to toggle a flex item's ability to grow to fill available space. In the example below, the `.flex-grow-1` elements uses all available space it can, while allowing the remaining two flex items their necessary space.
 
-{% capture example %}
+{% example html %}
 <div class="d-flex bd-highlight">
   <div class="p-2 flex-grow-1 bd-highlight">Flex item</div>
   <div class="p-2 bd-highlight">Flex item</div>
   <div class="p-2 bd-highlight">Third flex item</div>
 </div>
-{% endcapture %}
-{% include example.html content=example %}
+{% endexample %}
 
 Use `.flex-shrink-*` utilities to toggle a flex item's ability to shrink if necessary. In the example below, the second flex item with `.flex-shrink-1` is forced to wrap it's contents to a new line, "shrinking" to allow more space for the previous flex item with `.w-100`.
 
-{% capture example %}
+{% example html %}
 <div class="d-flex bd-highlight">
   <div class="p-2 w-100 bd-highlight">Flex item</div>
   <div class="p-2 flex-shrink-1 bd-highlight">Flex item</div>
 </div>
-{% endcapture %}
-{% include example.html content=example %}
+{% endexample %}
 
 Responsive variations also exist for `flex-grow` and `flex-shrink`.
 
@@ -270,7 +263,7 @@ Flexbox can do some pretty awesome things when you mix flex alignments with auto
 
 **Unfortunately, IE10 and IE11 do not properly support auto margins on flex items whose parent has a non-default `justify-content` value.** [See this StackOverflow answer](https://stackoverflow.com/a/37535548) for more details.
 
-{% capture example %}
+{% example html %}
 <div class="d-flex bd-highlight mb-3">
   <div class="p-2 bd-highlight">Flex item</div>
   <div class="p-2 bd-highlight">Flex item</div>
@@ -288,14 +281,13 @@ Flexbox can do some pretty awesome things when you mix flex alignments with auto
   <div class="p-2 bd-highlight">Flex item</div>
   <div class="ml-auto p-2 bd-highlight">Flex item</div>
 </div>
-{% endcapture %}
-{% include example.html content=example %}
+{% endexample %}
 
 ### With align-items
 
 Vertically move one flex item to the top or bottom of a container by mixing `align-items`, `flex-direction: column`, and `margin-top: auto` or `margin-bottom: auto`.
 
-{% capture example %}
+{% example html %}
 <div class="d-flex align-items-start flex-column bd-highlight mb-3" style="height: 200px;">
   <div class="mb-auto p-2 bd-highlight">Flex item</div>
   <div class="p-2 bd-highlight">Flex item</div>
@@ -307,8 +299,7 @@ Vertically move one flex item to the top or bottom of a container by mixing `ali
   <div class="p-2 bd-highlight">Flex item</div>
   <div class="mt-auto p-2 bd-highlight">Flex item</div>
 </div>
-{% endcapture %}
-{% include example.html content=example %}
+{% endexample %}
 
 ## Wrap
 
@@ -394,14 +385,13 @@ Responsive variations also exist for `flex-wrap`.
 
 Change the _visual_ order of specific flex items with a handful of `order` utilities. We only provide options for making an item first or last, as well as a reset to use the DOM order. As `order` takes any integer value (e.g., `5`), add custom CSS for any additional values needed.
 
-{% capture example %}
+{% example html %}
 <div class="d-flex flex-nowrap bd-highlight">
   <div class="order-3 p-2 bd-highlight">First flex item</div>
   <div class="order-2 p-2 bd-highlight">Second flex item</div>
   <div class="order-1 p-2 bd-highlight">Third flex item</div>
 </div>
-{% endcapture %}
-{% include example.html content=example %}
+{% endexample %}
 
 Responsive variations also exist for `order`.
 

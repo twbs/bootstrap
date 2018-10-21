@@ -28,7 +28,7 @@ Carousels don't automatically normalize slide dimensions. As such, you may need 
 
 Here's a carousel with slides only. Note the presence of the `.d-block` and `.w-100` on carousel images to prevent browser default image alignment.
 
-{% capture example %}
+{% example html %}
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
@@ -42,14 +42,13 @@ Here's a carousel with slides only. Note the presence of the `.d-block` and `.w-
     </div>
   </div>
 </div>
-{% endcapture %}
-{% include example.html content=example %}
+{% endexample %}
 
 ### With controls
 
 Adding in the previous and next controls:
 
-{% capture example %}
+{% example html %}
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
@@ -71,14 +70,13 @@ Adding in the previous and next controls:
     <span class="sr-only">Next</span>
   </a>
 </div>
-{% endcapture %}
-{% include example.html content=example %}
+{% endexample %}
 
 ### With indicators
 
 You can also add the indicators to the carousel, alongside the controls, too.
 
-{% capture example %}
+{% example html %}
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -105,8 +103,7 @@ You can also add the indicators to the carousel, alongside the controls, too.
     <span class="sr-only">Next</span>
   </a>
 </div>
-{% endcapture %}
-{% include example.html content=example %}
+{% endexample %}
 
 ### With captions
 
@@ -167,7 +164,7 @@ Add captions to your slides easily with the `.carousel-caption` element within a
 
 Add `.carousel-fade` to your carousel to animate slides with a fade transition instead of a slide.
 
-{% capture example %}
+{% example html %}
 <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
@@ -189,14 +186,13 @@ Add `.carousel-fade` to your carousel to animate slides with a fade transition i
     <span class="sr-only">Next</span>
   </a>
 </div>
-{% endcapture %}
-{% include example.html content=example %}
+{% endexample %}
 
 ### Individual `.carousel-item` interval
 
 Add `data-interval=""` to a `.carousel-item` to change the amount of time to delay between automatically cycling to the next item.
 
-{% capture example %}
+{% example html %}
 <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active" data-interval="10000">
@@ -218,8 +214,7 @@ Add `data-interval=""` to a `.carousel-item` to change the amount of time to del
     <span class="sr-only">Next</span>
   </a>
 </div>
-{% endcapture %}
-{% include example.html content=example %}
+{% endexample %}
 
 
 ## Usage

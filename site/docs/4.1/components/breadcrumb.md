@@ -7,7 +7,7 @@ group: components
 
 ## Example
 
-{% capture example %}
+{% example html %}
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item active" aria-current="page">Home</li>
@@ -28,8 +28,7 @@ group: components
     <li class="breadcrumb-item active" aria-current="page">Data</li>
   </ol>
 </nav>
-{% endcapture %}
-{% include example.html content=example %}
+{% endexample %}
 
 ## Changing the separator
 
