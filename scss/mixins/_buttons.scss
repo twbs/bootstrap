@@ -62,7 +62,7 @@
   color: $color;
   border-color: $color;
 
-  &:hover {
+  @include hover {
     color: $color-hover;
     background-color: $active-background;
     border-color: $active-border;
