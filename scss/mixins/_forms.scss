@@ -151,7 +151,7 @@
         color: $color;
 
         &::before {
-          background-color: lighten($color, 25%);
+          border-color: $color;
         }
       }
 
@@ -162,13 +162,18 @@
 
       &:checked {
         ~ .custom-control-label::before {
+          border-color: lighten($color, 10%);
           @include gradient-bg(lighten($color, 10%));
         }
       }
 
       &:focus {
         ~ .custom-control-label::before {
-          box-shadow: 0 0 0 1px $body-bg, 0 0 0 $input-focus-width rgba($color, .25);
+          box-shadow: 0 0 0 $input-focus-width rgba($color, .25);
+        }
+
+        &:not(:checked) ~ .custom-control-label::before {
+          border-color: $color;
         }
       }
     }
