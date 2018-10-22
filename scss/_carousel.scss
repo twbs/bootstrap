@@ -1,15 +1,22 @@
 // Notes on the classes:
 //
-// 1. The .carousel-item-left and .carousel-item-right is used to indicate where
+// 1. .carousel.pointer-event should ideally be pan-y (to allow for users to scroll vertically)
+//    even when their scroll action started on a carousel, but for compatibility (with Firefox)
+//    we're preventing all actions instead
+// 2. The .carousel-item-left and .carousel-item-right is used to indicate where
 //    the active slide is heading.
-// 2. .active.carousel-item is the current slide.
-// 3. .active.carousel-item-left and .active.carousel-item-right is the current
+// 3. .active.carousel-item is the current slide.
+// 4. .active.carousel-item-left and .active.carousel-item-right is the current
 //    slide in its in-transition state. Only one of these occurs at a time.
-// 4. .carousel-item-next.carousel-item-left and .carousel-item-prev.carousel-item-right
+// 5. .carousel-item-next.carousel-item-left and .carousel-item-prev.carousel-item-right
 //    is the upcoming slide in transition.
 
 .carousel {
   position: relative;
+}
+
+.carousel.pointer-event {
+  touch-action: none;
 }
 
 .carousel-inner {
@@ -75,8 +82,8 @@
 .carousel-fade {
   .carousel-item {
     opacity: 0;
-    transition-duration: .6s;
     transition-property: opacity;
+    transform: none;
   }
 
   .carousel-item.active,
@@ -88,18 +95,6 @@
   .active.carousel-item-left,
   .active.carousel-item-right {
     opacity: 0;
-  }
-
-  .carousel-item-next,
-  .carousel-item-prev,
-  .carousel-item.active,
-  .active.carousel-item-left,
-  .active.carousel-item-prev {
-    transform: translateX(0);
-
-    @supports (transform-style: preserve-3d) {
-      transform: translate3d(0, 0, 0);
-    }
   }
 }
 
@@ -121,15 +116,14 @@
   color: $carousel-control-color;
   text-align: center;
   opacity: $carousel-control-opacity;
-  // We can't have a transition here because WebKit cancels the carousel
-  // animation if you trip this while in the middle of another animation.
+  @include transition($carousel-control-transition);
 
   // Hover/focus state
   @include hover-focus {
     color: $carousel-control-color;
     text-decoration: none;
     outline: 0;
-    opacity: .9;
+    opacity: $carousel-control-hover-opacity;
   }
 }
 .carousel-control-prev {

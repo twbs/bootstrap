@@ -79,24 +79,13 @@
       },
       getSelectorFromElement: function getSelectorFromElement(element) {
         var selector = element.getAttribute('data-target');
-        var method = 'querySelector';
 
         if (!selector || selector === '#') {
-          selector = (element.getAttribute('href') || '').trim();
+          var hrefAttr = element.getAttribute('href');
+          selector = hrefAttr && hrefAttr !== '#' ? hrefAttr.trim() : '';
         }
 
-        var validSelector = selector;
-
-        if (selector.charAt(0) === '#' && selector.indexOf(',') === -1) {
-          selector = selector.substr(1);
-          method = 'getElementById';
-        }
-
-        try {
-          return document[method](selector) ? validSelector : null;
-        } catch (err) {
-          return null;
-        }
+        return selector && document.querySelector(selector) ? selector : null;
       },
       getTransitionDurationFromElement: function getTransitionDurationFromElement(element) {
         if (!element) {

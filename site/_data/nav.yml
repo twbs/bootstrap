@@ -15,7 +15,6 @@
   pages:
     - title: Overview
     - title: Grid
-    - title: Media object
     - title: Utilities for layout
 
 - title: Content
@@ -42,6 +41,7 @@
     - title: Input group
     - title: Jumbotron
     - title: List group
+    - title: Media object
     - title: Modal
     - title: Navs
     - title: Navbar
@@ -62,6 +62,7 @@
     - title: Flex
     - title: Float
     - title: Image replacement
+    - title: Overflow
     - title: Position
     - title: Screenreaders
     - title: Shadows
@@ -81,6 +82,7 @@
 - title: About
   pages:
     - title: Overview
+    - title: Team
     - title: Brand
     - title: License
     - title: Translations

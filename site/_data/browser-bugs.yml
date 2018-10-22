@@ -170,16 +170,6 @@
 
 -
   browser: >
-    Chrome (Android)
-  summary: >
-    Tapping on an `<input>` in a scrollable overlay doesn't scroll the `<input>` into view
-  upstream_bug: >
-    Chromium#595210
-  origin: >
-    Bootstrap#17338
-
--
-  browser: >
     Chrome (macOS)
   summary: >
     Clicking above `<input type="number">` increment button flashes the decrement button.
@@ -212,16 +202,6 @@
   browser: >
     Chrome
   summary: >
-    Clicking scrollbar in `<select multiple>` with overflowed options will select nearby `<option>`
-  upstream_bug: >
-    Chromium#597642
-  origin: >
-    Bootstrap#19810
-
--
-  browser: >
-    Chrome
-  summary: >
     Don't make `:hover` sticky on touch-friendly webpages
   upstream_bug: >
     Chromium#370155
@@ -237,16 +217,6 @@
     Chromium#269061
   origin: >
     Bootstrap#20161
-
--
-  browser: >
-    Chrome (Windows & Linux)
-  summary: >
-    Animation glitch when returning to inactive tab after animations occurred while tab was hidden.
-  upstream_bug: >
-    Chromium#449180
-  origin: >
-    Bootstrap#15298
 
 -
   browser: >
