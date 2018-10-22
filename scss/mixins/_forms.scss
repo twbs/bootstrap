@@ -97,13 +97,9 @@
       border-color: $color;
 
       @if $enable-validation-icons {
-        padding-right: $input-height-inner;
-
-        @if $state == "valid" {
-          background: $custom-select-background, $form-feedback-icon-valid no-repeat center right ($input-height-inner * .9) / calc(#{$input-height-inner} / 2) calc(#{$input-height-inner} / 2);
-        } @else {
-          background: $custom-select-background, $form-feedback-icon-invalid no-repeat center right ($input-height-inner * .9) / calc(#{$input-height-inner} / 2) calc(#{$input-height-inner} / 2);
-        }
+        $form-feedback-icon: if($state == "valid", $form-feedback-icon-valid, $form-feedback-icon-invalid);
+        padding-right: $custom-select-feedback-icon-padding-right;
+        background: $custom-select-background, $form-feedback-icon no-repeat $custom-select-feedback-icon-position / $custom-select-feedback-icon-size;
       }
 
       &:focus {
