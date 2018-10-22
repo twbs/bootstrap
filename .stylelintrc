@@ -261,6 +261,7 @@
       "fill",
       "stroke"
     ],
+    "property-blacklist": ["transition"],
     "property-no-vendor-prefix": true,
     "rule-empty-line-before": null,
     "scss/at-function-named-arguments": "never",
