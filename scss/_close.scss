@@ -7,14 +7,15 @@
   text-shadow: $close-text-shadow;
   opacity: .5;
 
-  @include hover-focus {
-    color: $close-color;
-    text-decoration: none;
-    opacity: .75;
-  }
-
-  // Opinionated: add "hand" cursor to non-disabled .close elements
   &:not(:disabled):not(.disabled) {
+
+    @include hover-focus {
+      color: $close-color;
+      text-decoration: none;
+      opacity: .75;
+    }
+
+    // Opinionated: add "hand" cursor to non-disabled .close elements
     cursor: pointer;
   }
 }
