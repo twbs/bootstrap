@@ -94,19 +94,13 @@ All HTML headings, `<h1>` through `<h6>`, are available.
 
 Use the included utility classes to recreate the small secondary heading text from Bootstrap 3.
 
-<div class="bd-example">
-  <span class="h3">
-    Fancy display heading
-    <small class="text-muted">With faded secondary text</small>
-  </span>
-</div>
-
-{% highlight html %}
+{% capture example %}
 <h3>
   Fancy display heading
   <small class="text-muted">With faded secondary text</small>
 </h3>
-{% endhighlight %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Display headings
 
