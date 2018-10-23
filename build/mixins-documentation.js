@@ -55,6 +55,7 @@ scss.forEach((file) => {
         // slice to remove leading ./
         output += `<p class="small">File: <code>${file.slice(2)}</code></p>\n\n`
         if (mixinDocumentation !== '') {
+          mixinDocumentation = `${mixinDocumentation.replace(/(\bhttps?:\/\/\S+)/g, '[$1]($1)')}\n`
           output += `${mixinDocumentation}\n\n`
         }
         output += `\`\`\`scss\n${mixin}\`\`\`\n\n`
