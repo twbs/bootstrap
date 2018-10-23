@@ -943,4 +943,27 @@ $(function () {
 
     assert.ok(tooltip._popper === null)
   })
+
+  QUnit.test('should use Popper.js to get the tip on placement change', function (assert) {
+    assert.expect(1)
+
+    var $tooltip = $('<a href="#" rel="tooltip" data-trigger="click" title="Another tooltip"/>')
+      .appendTo('#qunit-fixture')
+      .bootstrapTooltip()
+
+    var $tipTest = $('<div class="bs-tooltip" />')
+      .appendTo('#qunit-fixture')
+
+    var tooltip = $tooltip.data('bs.tooltip')
+    tooltip.tip = null
+
+    tooltip._handlePopperPlacementChange({
+      instance: {
+        popper: $tipTest[0]
+      },
+      placement: 'auto'
+    })
+
+    assert.ok(tooltip.tip === $tipTest[0])
+  })
 })

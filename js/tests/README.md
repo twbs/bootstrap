@@ -1,6 +1,6 @@
 ## How does Bootstrap's test suite work?
 
-Bootstrap uses [QUnit](https://qunitjs.com/) and [Sinon](http://sinonjs.org/). Each plugin has a file dedicated to its tests in `unit/<plugin-name>.js`.
+Bootstrap uses [QUnit](https://qunitjs.com/) and [Sinon](https://sinonjs.org/). Each plugin has a file dedicated to its tests in `unit/<plugin-name>.js`.
 
 * `unit/` contains the unit test files for each Bootstrap plugin.
 * `vendor/` contains third-party testing-related code (QUnit, jQuery and Sinon).
