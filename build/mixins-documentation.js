@@ -5,8 +5,7 @@ const readLine = require('readline')
 const sh = require('shelljs')
 const Stream = require('stream')
 
-const stylelintLineRegex = /^\s*?\/\/\s?stylelint/
-const stylelintCommentToRemoveRegex = /\s*?\/\/\s?stylelint.*/
+const stylelintLineRegex = /\s*?\/\/\s?stylelint.*/
 
 let mixinName
 let mixin
@@ -48,7 +47,7 @@ scss.forEach((file) => {
         mixin = `${line}\n`
       }
     } else if (!stylelintLineRegex.test(line)) {
-      mixin += `${line.replace(stylelintCommentToRemoveRegex, '')}\n`
+      mixin += `${line.replace(stylelintLineRegex, '')}\n`
 
       // End of the mixin:
       if (line === '}') {
