@@ -51,7 +51,7 @@ scss.forEach((file) => {
 
       // End of the mixin:
       if (line === '}') {
-        output += `## ${mixinName}\n\n`
+        output += `## ${mixinName.trim()}\n\n`
         // slice to remove leading ./
         output += `<p class="small">File: <code>${file.slice(2)}</code></p>\n\n`
         if (mixinDocumentation !== '') {
