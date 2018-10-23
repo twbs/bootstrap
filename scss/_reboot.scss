@@ -40,12 +40,11 @@ html {
   }
 }
 
-// stylelint-disable selector-list-comma-newline-after
 // Shim for "new" HTML5 structural elements to display correctly (IE10, older browsers)
-article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, section {
+// stylelint-disable-next-line selector-list-comma-newline-after
+article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block;
 }
-// stylelint-enable selector-list-comma-newline-after
 
 // Body
 //
@@ -95,12 +94,11 @@ hr {
 //
 // By default, `<h1>`-`<h6>` all receive top and bottom margins. We nuke the top
 // margin for easier control within type scales as it avoids margin collapsing.
-// stylelint-disable selector-list-comma-newline-after
+// stylelint-disable-next-line selector-list-comma-newline-after
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
   margin-bottom: $headings-margin-bottom;
 }
-// stylelint-enable selector-list-comma-newline-after
 
 // Reset margins on paragraphs
 //
@@ -163,12 +161,10 @@ dfn {
   font-style: italic; // Add the correct font style in Android 4.3-
 }
 
-// stylelint-disable font-weight-notation
 b,
 strong {
   font-weight: bolder; // Add the correct font weight in Chrome, Edge, and Safari
 }
-// stylelint-enable font-weight-notation
 
 small {
   font-size: 80%; // Add the correct font size in all browsers
@@ -199,7 +195,6 @@ a {
   color: $link-color;
   text-decoration: $link-decoration;
   background-color: transparent; // Remove the gray background on active links in IE 10.
-  -webkit-text-decoration-skip: objects; // Remove gaps in links underline in iOS 8+ and Safari 8+.
 
   @include hover {
     color: $link-hover-color;
@@ -232,15 +227,13 @@ a:not([href]):not([tabindex]) {
 // Code
 //
 
-// stylelint-disable font-family-no-duplicate-names
 pre,
 code,
 kbd,
 samp {
-  font-family: monospace, monospace; // Correct the inheritance and scaling of font size in all browsers.
+  font-family: $font-family-monospace;
   font-size: 1em; // Correct the odd `em` font sizing in all browsers.
 }
-// stylelint-enable font-family-no-duplicate-names
 
 pre {
   // Remove browser default top margin
@@ -274,8 +267,11 @@ img {
   border-style: none; // Remove the border on images inside links in IE 10-.
 }
 
-svg:not(:root) {
-  overflow: hidden; // Hide the overflow in IE
+svg {
+  // Workaround for the SVG overflow bug in IE10/11 is still required.
+  // See https://github.com/twbs/bootstrap/issues/26878
+  overflow: hidden;
+  vertical-align: middle;
 }
 
 

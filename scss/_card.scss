@@ -68,6 +68,7 @@
 .card-header {
   padding: $card-spacer-y $card-spacer-x;
   margin-bottom: 0; // Removes the default margin-bottom of <hN>
+  color: $card-cap-color;
   background-color: $card-cap-bg;
   border-bottom: $card-border-width solid $card-border-color;
 
@@ -277,25 +278,33 @@
 //
 
 .accordion {
-  .card:not(:first-of-type):not(:last-of-type) {
-    border-bottom: 0;
-    border-radius: 0;
-  }
+  .card {
+    overflow: hidden;
 
-  .card:not(:first-of-type) {
-    .card-header:first-child {
-      border-radius: 0;
+    &:not(:first-of-type) {
+      .card-header:first-child {
+        border-radius: 0;
+      }
+
+      &:not(:last-of-type) {
+        border-bottom: 0;
+        border-radius: 0;
+      }
     }
-  }
 
-  .card:first-of-type {
-    border-bottom: 0;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
-  }
+    &:first-of-type {
+      border-bottom: 0;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+    }
 
-  .card:last-of-type {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
+    &:last-of-type {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+
+    .card-header {
+      margin-bottom: -$card-border-width;
+    }
   }
 }

@@ -16,6 +16,7 @@ $(function () {
     afterEach: function () {
       $.fn.alert = $.fn.bootstrapAlert
       delete $.fn.bootstrapAlert
+      $('#qunit-fixture').html('')
     }
   })
 
@@ -79,5 +80,44 @@ $(function () {
         assert.ok(false, 'closed event fired')
       })
       .bootstrapAlert('close')
+  })
+
+  QUnit.test('close should use internal _element if no element provided', function (assert) {
+    assert.expect(1)
+
+    var done = assert.async()
+    var $el = $('<div/>')
+    var $alert = $el.bootstrapAlert()
+    var alertInstance = $alert.data('bs.alert')
+
+    $alert.one('closed.bs.alert', function () {
+      assert.ok('alert closed')
+      done()
+    })
+
+    alertInstance.close()
+  })
+
+  QUnit.test('dispose should remove data and the element', function (assert) {
+    assert.expect(2)
+
+    var $el = $('<div/>')
+    var $alert = $el.bootstrapAlert()
+
+    assert.ok(typeof $alert.data('bs.alert') !== 'undefined')
+
+    $alert.data('bs.alert').dispose()
+
+    assert.ok(typeof $alert.data('bs.button') === 'undefined')
+  })
+
+  QUnit.test('should return alert version', function (assert) {
+    assert.expect(1)
+
+    if (typeof Alert !== 'undefined') {
+      assert.ok(typeof Alert.VERSION === 'string')
+    } else {
+      assert.notOk()
+    }
   })
 })

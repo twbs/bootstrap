@@ -33,7 +33,6 @@
   // always setting `width: 100%;`. This works because we use `flex` values
   // later on to override this initial width.
   width: 100%;
-  min-height: 1px; // Prevent collapsing
   padding-right: ($grid-gutter-width / 2);
   padding-left: ($grid-gutter-width / 2);
 }
