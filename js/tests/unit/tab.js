@@ -16,6 +16,7 @@ $(function () {
     afterEach: function () {
       $.fn.tab = $.fn.bootstrapTab
       delete $.fn.bootstrapTab
+      $('#qunit-fixture').html('')
     }
   })
 
@@ -185,8 +186,8 @@ $(function () {
         '<ul class="drop nav">' +
         '  <li class="dropdown"><a data-toggle="dropdown" href="#">1</a>' +
         '    <ul class="dropdown-menu nav">' +
-        '      <li><a href="#1-1" data-toggle="tab">1-1</a></li>' +
-        '      <li><a href="#1-2" data-toggle="tab">1-2</a></li>' +
+        '      <li><a href="#a1-1" data-toggle="tab">1-1</a></li>' +
+        '      <li><a href="#a1-2" data-toggle="tab">1-2</a></li>' +
         '    </ul>' +
         '  </li>' +
         '</ul>'
@@ -197,10 +198,10 @@ $(function () {
       .end()
       .find('ul > li:last-child a')
       .on('show.bs.tab', function (e) {
-        assert.strictEqual(e.relatedTarget.hash, '#1-1', 'references correct element as relatedTarget')
+        assert.strictEqual(e.relatedTarget.hash, '#a1-1', 'references correct element as relatedTarget')
       })
       .on('shown.bs.tab', function (e) {
-        assert.strictEqual(e.relatedTarget.hash, '#1-1', 'references correct element as relatedTarget')
+        assert.strictEqual(e.relatedTarget.hash, '#a1-1', 'references correct element as relatedTarget')
         done()
       })
       .bootstrapTab('show')

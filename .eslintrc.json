@@ -5,15 +5,13 @@
     "browser": true,
     "es6": true
   },
-  "extends": "eslint:recommended",
-  "plugins": ["compat"],
+  "extends": ["eslint:recommended"],
   "rules": {
     // Possible Errors
     "no-await-in-loop": "error",
     "no-extra-parens": "error",
     "no-prototype-builtins": "error",
     "no-template-curly-in-string": "error",
-    "compat/compat": "error",
     "valid-jsdoc": "error",
 
     // Best Practices
