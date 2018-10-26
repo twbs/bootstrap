@@ -260,7 +260,7 @@ class Modal {
     }
 
     if (transition) {
-      const transitionDuration  = Util.getTransitionDurationFromElement(this._element)
+      const transitionDuration  = Util.getTransitionDurationFromElement(this._dialog)
 
       $(this._dialog)
         .one(Util.TRANSITION_END, transitionComplete)
