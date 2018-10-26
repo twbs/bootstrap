@@ -46,7 +46,11 @@ const customLaunchers = {
   }
 }
 
-let files = ['node_modules/popper.js/dist/umd/popper.min.js']
+let files = [
+  'node_modules/popper.js/dist/umd/popper.min.js',
+  'node_modules/hammer-simulator/index.js'
+]
+
 const conf = {
   basePath: '../..',
   port: 9876,

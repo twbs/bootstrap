@@ -10,6 +10,10 @@
   + .highlight {
     margin-top: 0;
   }
+
+  @include media-breakpoint-up(md) {
+    display: block;
+  }
 }
 
 .btn-clipboard {
@@ -27,13 +31,7 @@
   border-radius: .25rem;
 
   &:hover {
-    color: #fff;
+    color: $white;
     background-color: #027de7;
-  }
-}
-
-@media (min-width: 768px) {
-  .bd-clipboard {
-    display: block;
   }
 }

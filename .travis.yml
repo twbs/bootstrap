@@ -1,6 +1,4 @@
 sudo: required
-addons:
-  chrome: stable
 language: node_js
 git:
   depth: 3
@@ -8,7 +6,7 @@ node_js:
   - "6"
   - "8"
 install:
-  - bundle install --deployment --jobs=3 --retry=3
+  - bundle install --deployment --jobs=3 --retry=3 --clean
   - npm install
 script:
   - npm test
