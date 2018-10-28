@@ -4,11 +4,14 @@ const fs = require('fs')
 const readLine = require('readline')
 const sh = require('shelljs')
 const Stream = require('stream')
+const pkg = require('../package.json')
 
 const stylelintLineRegex = /\s*?\/\/\s?stylelint.*/
+const fileUrl = `https://github.com/twbs/bootstrap/blob/v${pkg.version}/`
 
 let mixinName
 let mixin
+let mixinStartLine
 let mixinDocumentation = ''
 let inMixin = false
 let output = ''
@@ -22,9 +25,10 @@ scss.forEach((file) => {
   const inStream = fs.createReadStream(file)
   const OutStream = new Stream()
   const rl = readLine.createInterface(inStream, OutStream)
+  const lineCounter = ((i = 0) => () => ++i)()
 
   // Loop through all lines
-  rl.on('line', (line) => {
+  rl.on('line', (line, lineNumber = lineCounter()) => {
     if (!inMixin) {
       // Add documentation
       if (line.startsWith('//')) {
@@ -36,6 +40,8 @@ scss.forEach((file) => {
         // Clear documentation
         mixinDocumentation = ''
       } else if (line.startsWith('@mixin ')) {
+        // Store line number to use it later
+        mixinStartLine = lineNumber
         if (line.includes('(')) {
           // If mixin has parameters
           mixinName = line.slice(6, line.indexOf('('))
@@ -53,7 +59,8 @@ scss.forEach((file) => {
       if (line === '}') {
         output += `## ${mixinName.trim()}\n\n`
         // slice to remove leading ./
-        output += `<p class="small">File: <code>${file.slice(2)}</code></p>\n\n`
+        const filePath = file.slice(2)
+        output += `<p class="small">File: <a href="${fileUrl + filePath}#L${mixinStartLine}"><code>${filePath}</code></a></p>\n\n`
         if (mixinDocumentation !== '') {
           mixinDocumentation = `${mixinDocumentation.replace(/(\bhttps?:\/\/\S+)/g, '[$1]($1)')}\n`
           output += `${mixinDocumentation}\n\n`
