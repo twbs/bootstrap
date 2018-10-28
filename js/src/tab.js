@@ -162,7 +162,7 @@ class Tab {
       const transitionDuration = Util.getTransitionDurationFromElement(active)
 
       $(active)
-        .removeClass(`${ClassName.SHOW}`)
+        .removeClass(ClassName.SHOW)
         .one(Util.TRANSITION_END, complete)
         .emulateTransitionEnd(transitionDuration)
     } else {
@@ -172,7 +172,7 @@ class Tab {
 
   _transitionComplete(element, active, callback) {
     if (active) {
-      $(active).removeClass(`${ClassName.ACTIVE}`)
+      $(active).removeClass(ClassName.ACTIVE)
 
       const dropdownChild = $(active.parentNode).find(
         Selector.DROPDOWN_ACTIVE_CHILD
