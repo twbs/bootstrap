@@ -89,12 +89,15 @@
   .carousel-item.active,
   .carousel-item-next.carousel-item-left,
   .carousel-item-prev.carousel-item-right {
+    z-index: 1;
     opacity: 1;
   }
 
   .active.carousel-item-left,
   .active.carousel-item-right {
+    z-index: 0;
     opacity: 0;
+    @include transition(0s $carousel-transition-duration opacity);
   }
 }
 
@@ -108,6 +111,7 @@
   position: absolute;
   top: 0;
   bottom: 0;
+  z-index: 1;
   // Use flex for alignment (1-3)
   display: flex; // 1. allow flex styles
   align-items: center; // 2. vertically center contents
