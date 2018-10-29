@@ -1226,4 +1226,48 @@ $(function () {
       done()
     })
   })
+
+  QUnit.test('should not call _slide if the carousel is sliding', function (assert) {
+    assert.expect(1)
+
+    var carouselHTML = '<div class="carousel" data-interval="false"></div>'
+    var $carousel = $(carouselHTML)
+    $carousel.appendTo('#qunit-fixture')
+    $carousel.bootstrapCarousel()
+
+    var carousel = $carousel.data('bs.carousel')
+
+    var spy = sinon.spy(carousel, '_slide')
+
+    carousel._isSliding = true
+
+    carousel.next()
+
+    assert.strictEqual(spy.called, false)
+  })
+
+  QUnit.test('should call next when the page is visible', function (assert) {
+    assert.expect(1)
+
+    var carouselHTML = '<div class="carousel" data-interval="false"></div>'
+    var $carousel = $(carouselHTML)
+    $carousel.appendTo('#qunit-fixture')
+    $carousel.bootstrapCarousel()
+
+    var carousel = $carousel.data('bs.carousel')
+
+    var spy = sinon.spy(carousel, 'next')
+    var sandbox = sinon.createSandbox()
+
+    sandbox.replaceGetter(document, 'hidden', function () {
+      return false
+    })
+    sandbox.stub($carousel, 'is').returns(true)
+    sandbox.stub($carousel, 'css').returns('block')
+
+    carousel.nextWhenVisible()
+
+    assert.strictEqual(spy.called, true)
+    sandbox.restore()
+  })
 })
