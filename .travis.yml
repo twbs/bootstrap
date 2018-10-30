@@ -16,7 +16,6 @@ after_success:
 stages:
   - test
   - name: browser
-    if: type = push
 jobs:
   include:
     - stage: browser
