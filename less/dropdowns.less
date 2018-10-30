@@ -61,6 +61,11 @@
     .nav-divider(@dropdown-divider-bg);
   }
 
+  //Force color to text-primary because the dropdowns are white regardless the context
+  .text-primary {
+    color: @brand-navy-minus-10 !important;
+  }
+
   // Links within the dropdown menu
   > li > a {
     display: block;
