@@ -75,12 +75,11 @@
     - title: Vertical align
     - title: Visibility
 
-- title: Mixins
-
 - title: Extend
   pages:
     - title: Approach
     - title: Icons
+    - title: Mixins
 
 - title: Migration
 

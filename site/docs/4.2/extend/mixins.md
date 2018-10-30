@@ -2,8 +2,8 @@
 layout: docs
 title: Bootstrap mixins
 description: A full list of all the mixins used by Bootstrap.
-group: mixins
 toc: true
+group: extend
 ---
 
 {% comment %}
