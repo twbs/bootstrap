@@ -78,10 +78,10 @@ $(function () {
   QUnit.test('Util.getTransitionDurationFromElement should return the addition of transition-delay and transition-duration', function (assert) {
     assert.expect(2)
     var $fixture = $('#qunit-fixture')
-    var $div = $('<div style="transition: all 0s 2ms ease-out;"></div>').appendTo($fixture)
+    var $div = $('<div style="transition: all 0s 150ms ease-out;"></div>').appendTo($fixture)
     var $div2 = $('<div style="transition: all .25s 30ms ease-out;"></div>').appendTo($fixture)
 
-    assert.strictEqual(Util.getTransitionDurationFromElement($div[0]), 2)
+    assert.strictEqual(Util.getTransitionDurationFromElement($div[0]), 150)
     assert.strictEqual(Util.getTransitionDurationFromElement($div2[0]), 280)
   })
 
