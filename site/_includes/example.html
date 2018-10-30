@@ -11,7 +11,7 @@ optional: hide_markup - disabled (default)
 {%- assign preview_class = include.class -%}
 
 {%- if include.hide_preview == null -%}
-<div{% if preview_id %} id="{{ preview_id }}"{% endif %} class="bd-example no_toc_section{% if preview_class %} {{ preview_class }}{% endif %}">
+<div{% if preview_id %} id="{{ preview_id }}"{% endif %} class="bd-example{% if preview_class %} {{ preview_class }}{% endif %}">
   {{- include.content -}}
 </div>
 {%- endif -%}

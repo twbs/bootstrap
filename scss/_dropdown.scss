@@ -105,7 +105,7 @@
 }
 
 // When enabled Popper.js, reset basic dropdown position
-// stylelint-disable no-duplicate-selectors
+// stylelint-disable-next-line no-duplicate-selectors
 .dropdown-menu {
   &[x-placement^="top"],
   &[x-placement^="right"],
@@ -115,7 +115,6 @@
     bottom: auto;
   }
 }
-// stylelint-enable no-duplicate-selectors
 
 // Dividers (basically an `<hr>`) within the dropdown
 .dropdown-divider {
