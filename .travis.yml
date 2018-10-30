@@ -10,9 +10,9 @@ install:
   - npm install
 script:
   - npm test
-  - if [ "$TRAVIS_NODE_VERSION" = "8" ]; then npm run check-broken-links; fi
+  - if [[ "$TRAVIS_NODE_VERSION" = "8" && "$TRAVIS_BUILD_STAGE_NAME" = "Test" ]]; then npm run check-broken-links; fi
 after_success:
-  - if [ "$TRAVIS_NODE_VERSION" = "8" ]; then npm run coveralls; fi
+  - if [[ "$TRAVIS_NODE_VERSION" = "8" && "$TRAVIS_BUILD_STAGE_NAME" = "Test" ]]; then npm run coveralls; fi
 stages:
   - test
   - name: browser
