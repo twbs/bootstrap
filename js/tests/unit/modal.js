@@ -717,14 +717,19 @@ $(function () {
 
       $(this).bootstrapModal('dispose')
 
-      const modalDataApiEvent = $._data(document, 'events').click
-        .find((e) => e.namespace === 'bs.data-api.modal')
+      var modalDataApiEvent = []
+      $._data(document, 'events').click
+        .forEach(function (e) {
+          if (e.namespace === 'bs.data-api.modal') {
+            modalDataApiEvent.push(e)
+          }
+        })
 
       assert.ok(typeof $(this).data('bs.modal') === 'undefined', 'modal data object was disposed')
 
       assert.ok(spy.callCount === 4, '`jQuery.off` was called')
 
-      assert.ok(typeof modalDataApiEvent !== 'undefined', '`Event.CLICK_DATA_API` on `document` was not removed')
+      assert.ok(modalDataApiEvent.length === 1, '`Event.CLICK_DATA_API` on `document` was not removed')
 
       $.fn.off.restore()
       done()
