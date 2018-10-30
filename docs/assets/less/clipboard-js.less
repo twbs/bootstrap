@@ -1,0 +1,40 @@
+// clipboard.js
+//
+// JS-based `Copy` buttons for code snippets.
+
+.bs-clipboard {
+  position: relative;
+  display: none;
+  float: right;
+
+  + .highlight {
+    margin-top: 0;
+  }
+}
+
+.btn-clipboard {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  display: block;
+  padding: 4px 8px;
+  font-size: 12px;
+  color: #818a91;
+  cursor: pointer;
+  background-color: transparent;
+  border: 0;
+  border-top-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+
+  &:hover {
+    color: #fff;
+    background-color: #027de7;
+  }
+}
+
+@media (min-width: @screen-sm-min) {
+  .bs-clipboard {
+    display: block;
+  }
+}

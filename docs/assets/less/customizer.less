@@ -1,0 +1,108 @@
+// stylelint-disable selector-max-id, selector-no-qualifying-type
+
+.bs-customizer .toggle {
+  float: right;
+  margin-top: 25px;
+}
+
+// Headings and form contrls
+.bs-customizer label {
+  margin-top: 10px;
+  font-weight: 500;
+  color: #555;
+}
+.bs-customizer h2 {
+  padding-top: 30px;
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+.bs-customizer h3 {
+  margin-bottom: 0;
+}
+.bs-customizer h4 {
+  margin-top: 15px;
+  margin-bottom: 0;
+}
+.bs-customizer .bs-callout h4 {
+  margin-top: 0; // lame, but due to specificity we have to duplicate
+  margin-bottom: 5px;
+}
+.bs-customizer input[type="text"] {
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  background-color: #fafafa;
+}
+.bs-customizer .help-block {
+  margin-bottom: 5px;
+  font-size: 12px;
+}
+
+// For the variables, use regular weight
+#less-section label {
+  font-weight: 400;
+}
+
+// Downloads
+.bs-customize-download .btn-outline {
+  padding: 20px;
+}
+
+// Error handling
+.bs-customizer-alert {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+  padding: 15px 0;
+  color: #fff;
+  background-color: #d9534f;
+  border-bottom: 1px solid #b94441;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .25);
+}
+.bs-customizer-alert .close {
+  margin-top: -4px;
+  font-size: 24px;
+}
+.bs-customizer-alert p {
+  margin-bottom: 0;
+}
+.bs-customizer-alert .glyphicon {
+  margin-right: 5px;
+}
+.bs-customizer-alert pre {
+  margin: 10px 0 0;
+  color: #fff;
+  background-color: #a83c3a;
+  border-color: #973634;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, .05), 0 1px 0 rgba(255, 255, 255, .1);
+}
+
+.bs-dropzone {
+  position: relative;
+  padding: 20px;
+  margin-bottom: 20px;
+  color: #777;
+  text-align: center;
+  border: 2px dashed #eee;
+  border-radius: 4px;
+}
+.bs-dropzone .import-header {
+  margin-bottom: 5px;
+}
+.bs-dropzone .glyphicon-folder-open {
+  font-size: 40px;
+}
+.bs-dropzone hr {
+  width: 100px;
+}
+.bs-dropzone .lead {
+  margin-bottom: 10px;
+  font-weight: 400;
+  color: #333;
+}
+#import-manual-trigger {
+  cursor: pointer;
+}
+.bs-dropzone p:last-child {
+  margin-bottom: 0;
+}

@@ -1,0 +1,63 @@
+<div class="bs-docs-section">
+  <h1 id="download" class="page-header">Download</h1>
+
+  <p class="lead">Bootstrap (currently v{{ site.current_version }}) has a few easy ways to quickly get started, each one appealing to a different skill level and use case. Read through to see what suits your particular needs.</p>
+
+  <div class="row bs-downloads">
+    <div class="col-sm-4">
+      <h3 id="download-bootstrap">Bootstrap</h3>
+      <p>Compiled and minified CSS, JavaScript, and fonts. No docs or original source files are included.</p>
+      <p>
+        <a href="{{ site.download.dist }}" class="btn btn-lg btn-outline" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download compiled');">Download Bootstrap</a>
+      </p>
+    </div>
+    <div class="col-sm-4">
+      <h3 id="download-source">Source code</h3>
+      <p>Source Less, JavaScript, and font files, along with our docs. <strong>Requires a Less compiler and <a href="#grunt">some setup.</a></strong></p>
+      <p>
+        <a href="{{ site.download.source }}" class="btn btn-lg btn-outline" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download source');">Download source</a>
+      </p>
+    </div>
+    <div class="col-sm-4">
+      <h3 id="download-sass">Sass</h3>
+      <p><a href="{{ site.sass_repo }}">Bootstrap ported from Less to Sass</a> for easy inclusion in Rails, Compass, or Sass-only projects.</p>
+      <p>
+        <a href="{{ site.download.sass }}" class="btn btn-lg btn-outline" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download Sass');">Download Sass</a>
+      </p>
+    </div>
+  </div>
+
+  <h2 id="download-cdn">BootstrapCDN</h2>
+  <p>The folks over at <a href="https://www.stackpath.com/">StackPath</a> graciously provide CDN support for Bootstrap's CSS and JavaScript. Just use these <a href="https://www.bootstrapcdn.com/">BootstrapCDN</a> links.</p>
+{% highlight html %}
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="{{ site.cdn.css }}" integrity="{{ site.cdn.css_hash }}" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="{{ site.cdn.css_theme }}" integrity="{{ site.cdn.css_theme_hash }}" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="{{ site.cdn.js }}" integrity="{{ site.cdn.js_hash }}" crossorigin="anonymous"></script>
+{% endhighlight %}
+
+  <h2 id="download-bower">Install with Bower</h2>
+  <p>You can also install and manage Bootstrap's Less, CSS, JavaScript, and fonts using <a href="https://bower.io/">Bower</a>:</p>
+  {% highlight bash %}bower install bootstrap{% endhighlight %}
+
+  <h2 id="download-npm">Install with npm</h2>
+  <p>You can also install Bootstrap using <a href="https://www.npmjs.com/">npm</a>:</p>
+  {% highlight bash %}npm install bootstrap@3{% endhighlight %}
+  <p><code>require('bootstrap')</code> will load all of Bootstrap's jQuery plugins onto the jQuery object. The <code>bootstrap</code> module itself does not export anything. You can manually load Bootstrap's jQuery plugins individually by loading the <code>/js/*.js</code> files under the package's top-level directory.</p>
+  <p>Bootstrap's <code>package.json</code> contains some additional metadata under the following keys:</p>
+  <ul>
+    <li><code>less</code> - path to Bootstrap's main <a href="http://lesscss.org/">Less</a> source file</li>
+    <li><code>style</code> - path to Bootstrap's non-minified CSS that's been precompiled using the default settings (no customization)</li>
+  </ul>
+
+  <h2 id="download-composer">Install with Composer</h2>
+  <p>You can also install and manage Bootstrap's Less, CSS, JavaScript, and fonts using <a href="https://getcomposer.org/">Composer</a>:</p>
+  {% highlight bash %}composer require twbs/bootstrap{% endhighlight %}
+
+  <h2 id="download-autoprefixer">Autoprefixer required for Less/Sass</h2>
+  <p>Bootstrap uses <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a> to deal with <a href="https://www.lifewire.com/css-vendor-prefixes-3466867">CSS vendor prefixes</a>. If you're compiling Bootstrap from its Less/Sass source and not using our Gruntfile, you'll need to integrate Autoprefixer into your build process yourself. If you're using precompiled Bootstrap or using our Gruntfile, you don't need to worry about this because Autoprefixer is already integrated into our Gruntfile.</p>
+</div>

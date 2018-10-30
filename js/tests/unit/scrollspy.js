@@ -248,6 +248,7 @@ $(function () {
       var scrollHeight = Math.ceil($content.scrollTop() + $(target).position().top)
       $content.one('scroll', function () {
         assert.ok($(element).hasClass('active'), 'target:' + target + ', element' + element)
+<<<<<<< HEAD
         deferred.resolve()
       })
       $content.scrollTop(scrollHeight)
@@ -292,12 +293,17 @@ $(function () {
       var scrollHeight = Math.ceil($content.scrollTop() + $(target).position().top)
       $content.one('scroll', function () {
         assert.ok($(element).hasClass('active'), 'target:' + target + ', element' + element)
+||||||| merged common ancestors
+        done()
+=======
+>>>>>>> 7aaabebdedb6cd1483ea6de37d84d578a131cfbc
         deferred.resolve()
       })
       $content.scrollTop(scrollHeight)
       return deferred.promise()
     }
 
+<<<<<<< HEAD
     $.when(testElementIsActiveAfterScroll('#a-1', '#div-1'))
       .then(function () {
         return testElementIsActiveAfterScroll('#a-2', '#div-2')
@@ -305,6 +311,14 @@ $(function () {
       .then(function () {
         done()
       })
+||||||| merged common ancestors
+    $.when(testElementIsActiveAfterScroll('#li-1', '#div-1'))
+      .then(function () { return testElementIsActiveAfterScroll('#li-2', '#div-2') })
+=======
+    $.when(testElementIsActiveAfterScroll('#li-1', '#div-1'))
+      .then(function () { return testElementIsActiveAfterScroll('#li-2', '#div-2') })
+      .then(function () { done() })
+>>>>>>> 7aaabebdedb6cd1483ea6de37d84d578a131cfbc
   })
 
   QUnit.test('should add the active class correctly when there are nested elements at 0 scroll offset', function (assert) {
@@ -615,6 +629,7 @@ $(function () {
 
     var done = assert.async()
     $.when(testElementIsActiveAfterScroll('#li-100-5', '#div-100-5'))
+<<<<<<< HEAD
       .then(function () {
         return testElementIsActiveAfterScroll('#li-100-4', '#div-100-4')
       })
@@ -630,6 +645,18 @@ $(function () {
       .then(function () {
         done()
       })
+||||||| merged common ancestors
+      .then(function () { return testElementIsActiveAfterScroll('#li-100-4', '#div-100-4') })
+      .then(function () { return testElementIsActiveAfterScroll('#li-100-3', '#div-100-3') })
+      .then(function () { return testElementIsActiveAfterScroll('#li-100-2', '#div-100-2') })
+      .then(function () { return testElementIsActiveAfterScroll('#li-100-1', '#div-100-1') })
+=======
+      .then(function () { return testElementIsActiveAfterScroll('#li-100-4', '#div-100-4') })
+      .then(function () { return testElementIsActiveAfterScroll('#li-100-3', '#div-100-3') })
+      .then(function () { return testElementIsActiveAfterScroll('#li-100-2', '#div-100-2') })
+      .then(function () { return testElementIsActiveAfterScroll('#li-100-1', '#div-100-1') })
+      .then(function () { done() })
+>>>>>>> 7aaabebdedb6cd1483ea6de37d84d578a131cfbc
   })
 
   QUnit.test('should allow passed in option offset method: offset', function (assert) {

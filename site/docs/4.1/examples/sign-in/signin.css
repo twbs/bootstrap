@@ -1,4 +1,10 @@
+<<<<<<< HEAD:site/docs/4.1/examples/sign-in/signin.css
 html,
+||||||| merged common ancestors
+=======
+/* stylelint-disable selector-no-qualifying-type, property-no-vendor-prefix */
+
+>>>>>>> 7aaabebdedb6cd1483ea6de37d84d578a131cfbc:docs/examples/signin/signin.css
 body {
   height: 100%;
 }
@@ -24,8 +30,20 @@ body {
 }
 .form-signin .form-control {
   position: relative;
+<<<<<<< HEAD:site/docs/4.1/examples/sign-in/signin.css
   box-sizing: border-box;
   height: auto;
+||||||| merged common ancestors
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+=======
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  height: auto;
+>>>>>>> 7aaabebdedb6cd1483ea6de37d84d578a131cfbc:docs/examples/signin/signin.css
   padding: 10px;
   font-size: 16px;
 }

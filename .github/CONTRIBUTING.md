@@ -18,15 +18,40 @@ the preferred channel for [bug reports](#bug-reports), [features requests](#feat
 and [submitting pull requests](#pull-requests), but please respect the following
 restrictions:
 
+<<<<<<< HEAD:.github/CONTRIBUTING.md
 * Please **do not** use the issue tracker for personal support requests.  Stack
   Overflow ([`bootstrap-4`](https://stackoverflow.com/questions/tagged/bootstrap-4) tag), [Slack](https://bootstrap-slack.herokuapp.com/) or [IRC](README.md#community) are better places to get help.
+||||||| merged common ancestors
+* Please **do not** use the issue tracker for personal support requests.  Stack
+  Overflow ([`twitter-bootstrap-3`](https://stackoverflow.com/questions/tagged/twitter-bootstrap-3) tag), [Slack](https://bootstrap-slack.herokuapp.com/) or [IRC](README.md#community) are better places to get help.
+=======
+* Please **do not** use the issue tracker for personal support requests. Stack
+  Overflow ([`twitter-bootstrap-3`](https://stackoverflow.com/questions/tagged/twitter-bootstrap-3) tag), [Slack](https://bootstrap-slack.herokuapp.com/) or [IRC](README.md#community) are better places to get help.
+>>>>>>> 7aaabebdedb6cd1483ea6de37d84d578a131cfbc:CONTRIBUTING.md
 
 * Please **do not** derail or troll issues. Keep the discussion on topic and
   respect the opinions of others.
 
+<<<<<<< HEAD:.github/CONTRIBUTING.md
 * Please **do not** post comments consisting solely of "+1" or ":thumbsup:".
   Use [GitHub's "reactions" feature](https://blog.github.com/2016-03-10-add-reactions-to-pull-requests-issues-and-comments/)
   instead. We reserve the right to delete comments which violate this rule.
+
+* Please **do not** open issues regarding the official themes offered on <https://themes.getbootstrap.com/>.
+  Instead, please email any questions or feedback regarding those themes to `themes AT getbootstrap DOT com`.
+||||||| merged common ancestors
+* Please **do not** open issues or pull requests regarding the code in
+  [`Normalize`](https://github.com/necolas/normalize.css) (open them in
+  their respective repositories).
+=======
+* Please **do not** post comments consisting solely of "+1" or ":thumbsup:".
+  Use [GitHub's "reactions" feature](https://blog.github.com/2016-03-10-add-reactions-to-pull-requests-issues-and-comments/)
+  instead. We reserve the right to delete comments which violate this rule.
+
+* Please **do not** open issues or pull requests regarding the code in
+  [`Normalize`](https://github.com/necolas/normalize.css) (open them in
+  their respective repositories).
+>>>>>>> 7aaabebdedb6cd1483ea6de37d84d578a131cfbc:CONTRIBUTING.md
 
 * Please **do not** open issues regarding the official themes offered on <https://themes.getbootstrap.com/>.
   Instead, please email any questions or feedback regarding those themes to `themes AT getbootstrap DOT com`.
@@ -38,7 +63,15 @@ Our bug tracker utilizes several labels to help organize and identify issues. He
 
 - `browser bug` - Issues that are reported to us, but actually are the result of a browser-specific bug. These are diagnosed with reduced test cases and result in an issue opened on that browser's own bug tracker.
 - `confirmed` - Issues that have been confirmed with a reduced test case and identify a bug in Bootstrap.
+<<<<<<< HEAD:.github/CONTRIBUTING.md
 - `css` - Issues stemming from our compiled CSS or source Sass files.
+||||||| merged common ancestors
+- `css` - Issues stemming from our compiled CSS or source Less files.
+- `customizer` - Issues with our web-based Customizer.
+=======
+- `css` - Issues stemming from our compiled CSS or source Less/Sass files.
+- `customizer` - Issues with our web-based Customizer.
+>>>>>>> 7aaabebdedb6cd1483ea6de37d84d578a131cfbc:CONTRIBUTING.md
 - `docs` - Issues for improving or updating our documentation.
 - `examples` - Issues involving the example templates included in our docs.
 - `feature` - Issues asking for a new feature to be added, or an existing one to be extended or modified. New features require a minor version bump (e.g., `v3.0.0` to `v3.1.0`).
@@ -100,14 +133,30 @@ Example:
 ### Reporting upstream browser bugs
 
 Sometimes bugs reported to us are actually caused by bugs in the browser(s) themselves, not bugs in Bootstrap per se.
+<<<<<<< HEAD:.github/CONTRIBUTING.md
 When feasible, we aim to report such upstream bugs to the relevant browser vendor(s), and then list them on our [Wall of Browser Bugs](https://getbootstrap.com/browser-bugs/) and [document them in MDN](https://developer.mozilla.org/en-US/docs/Web).
+||||||| merged common ancestors
+When feasible, we aim to report such upstream bugs to the relevant browser vendor(s), and then list them on our [Wall of Browser Bugs](http://getbootstrap.com/browser-bugs/) and [document them in MDN](https://developer.mozilla.org/en-US/docs/Web).
+=======
+When feasible, we aim to report such upstream bugs to the relevant browser vendor(s), and then list them on our [Wall of Browser Bugs](https://getbootstrap.com/docs/3.4/browser-bugs/) and [document them in MDN](https://developer.mozilla.org/en-US/docs/Web).
+>>>>>>> 7aaabebdedb6cd1483ea6de37d84d578a131cfbc:CONTRIBUTING.md
 
 | Vendor(s)     | Browser(s)                   | Rendering engine | Bug reporting website(s)                                                              | Notes                                                    |
 | ------------- | ---------------------------- | ---------------- | ------------------------------------------------------------------------------------- | -------------------------------------------------------- |
 | Mozilla       | Firefox                      | Gecko            | https://bugzilla.mozilla.org/enter_bug.cgi                                            | "Core" is normally the right product option to choose.   |
+<<<<<<< HEAD:.github/CONTRIBUTING.md
 | Apple         | Safari                       | WebKit           | https://bugs.webkit.org/enter_bug.cgi?product=WebKit <br> https://bugreport.apple.com/ | In Apple's bug reporter, choose "Safari" as the product. |
 | Google, Opera | Chrome, Chromium, Opera v15+ | Blink            | https://bugs.chromium.org/p/chromium/issues/list                                      | Click the "New issue" button.                            |
 | Microsoft     | Edge                         | EdgeHTML         | https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/                 |                                                          |
+||||||| merged common ancestors
+| Apple         | Safari                       | WebKit           | https://bugs.webkit.org/enter_bug.cgi?product=WebKit <br> https://bugreport.apple.com | In Apple's bug reporter, choose "Safari" as the product. |
+| Google, Opera | Chrome, Chromium, Opera v15+ | Blink            | https://code.google.com/p/chromium/issues/list                                        | Click the "New issue" button.                            |
+| Microsoft     | Internet Explorer            | Trident          | https://connect.microsoft.com/IE/feedback/LoadSubmitFeedbackForm                      |                                                          |
+=======
+| Apple         | Safari                       | WebKit           | https://bugs.webkit.org/enter_bug.cgi?product=WebKit <br> https://bugreport.apple.com | In Apple's bug reporter, choose "Safari" as the product. |
+| Google, Opera | Chrome, Chromium, Opera v15+ | Blink            | https://code.google.com/p/chromium/issues/list                                        | Click the "New issue" button.                            |
+| Microsoft     | Edge                         | EdgeHTML         | https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/                 |                                                          |
+>>>>>>> 7aaabebdedb6cd1483ea6de37d84d578a131cfbc:CONTRIBUTING.md
 
 ### Issues bots
 
@@ -116,7 +165,13 @@ When feasible, we aim to report such upstream bugs to the relevant browser vendo
 
 ## Feature requests
 
-Feature requests are welcome. But take a moment to find out whether your idea
+Feature requests are welcome, but please note that they **must target
+[Bootstrap v4](https://github.com/twbs/bootstrap/tree/v4-dev),** because
+Bootstrap v3 is now in maintenance mode and is closed off to new features.
+This is so that we can focus our efforts on Bootstrap v4, the future of the
+framework.
+
+Before opening a feature request, please take a moment to find out whether your idea
 fits with the scope and aims of the project. It's up to *you* to make a strong
 case to convince the project's developers of the merits of this feature. Please
 provide as much detail and context as possible.
@@ -133,13 +188,27 @@ implementing features, refactoring code, porting to a different language),
 otherwise you risk spending a lot of time working on something that the
 project's developers might not want to merge into the project.
 
+In particular, **pull requests that add new features to Bootstrap v3 will be
+rejected.** Bootstrap v3 is now in maintenance mode and is therefore closed
+off to new features, so that we can focus our efforts on Bootstrap v4, the
+future of the framework. Pull requests that add new features should target
+[Bootstrap v4 (the `v4-dev` git branch)](https://github.com/twbs/bootstrap/tree/v4-dev)
+instead, where they will be welcomed and duly considered.
+
 Please adhere to the [coding guidelines](#code-guidelines) used throughout the
 project (indentation, accurate comments, etc.) and any other requirements
 (such as test coverage).
 
 **Do not edit `bootstrap.css`, or `bootstrap.js`
 directly!** Those files are automatically generated. You should edit the
+<<<<<<< HEAD:.github/CONTRIBUTING.md
 source files in [`/bootstrap/scss/`](https://github.com/twbs/bootstrap/tree/master/scss)
+||||||| merged common ancestors
+source files in [`/bootstrap/less/`](https://github.com/twbs/bootstrap/tree/master/less)
+=======
+source files in [`/bootstrap/less/`](https://github.com/twbs/bootstrap/tree/master/less),
+[`/bootstrap/scss/`](https://github.com/twbs/bootstrap/tree/v4-dev/scss) (for Bootstrap v4),
+>>>>>>> 7aaabebdedb6cd1483ea6de37d84d578a131cfbc:CONTRIBUTING.md
 and/or [`/bootstrap/js/`](https://github.com/twbs/bootstrap/tree/master/js) instead.
 
 Similarly, when contributing to Bootstrap's documentation, you should edit the
@@ -178,9 +247,19 @@ included in the project:
    ```
 
 4. Commit your changes in logical chunks. Please adhere to these [git commit
+<<<<<<< HEAD:.github/CONTRIBUTING.md
    message guidelines](https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
    or your code is unlikely be merged into the main project. Use Git's
    [interactive rebase](https://help.github.com/articles/about-git-rebase/)
+||||||| merged common ancestors
+   message guidelines](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
+   or your code is unlikely be merged into the main project. Use Git's
+   [interactive rebase](https://help.github.com/articles/interactive-rebase)
+=======
+   message guidelines](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
+   or your code is unlikely to be merged into the main project. Use Git's
+   [interactive rebase](https://help.github.com/articles/about-git-rebase/)
+>>>>>>> 7aaabebdedb6cd1483ea6de37d84d578a131cfbc:CONTRIBUTING.md
    feature to tidy up your commits before making them public.
 
 5. Locally merge (or rebase) the upstream development branch into your topic branch:

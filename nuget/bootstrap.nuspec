@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
@@ -31,3 +32,34 @@
     <file src="dist\js\bootstrap*.js.map" target="contentFiles\Scripts" />
   </files>
 </package>
+||||||| merged common ancestors
+=======
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>bootstrap</id>
+    <version>3.4.0</version>
+    <title>Bootstrap CSS</title>
+    <authors>Twitter, Inc.</authors>
+    <owners>bootstrap</owners>
+    <description>The most popular front-end framework for developing responsive, mobile first projects on the web.</description>
+    <releaseNotes>https://blog.getbootstrap.com/</releaseNotes>
+    <summary>Bootstrap framework in CSS. Includes fonts and JavaScript</summary>
+    <language>en-us</language>
+    <projectUrl>https://getbootstrap.com/</projectUrl>
+    <iconUrl>https://getbootstrap.com/apple-touch-icon.png</iconUrl>
+    <licenseUrl>https://github.com/twbs/bootstrap/blob/master/LICENSE</licenseUrl>
+    <copyright>Copyright 2018</copyright>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <dependencies>
+      <dependency id="jQuery" version="[1.9.1,4)" />
+    </dependencies>
+    <tags>css js less mobile-first responsive front-end framework web</tags>
+  </metadata>
+  <files>
+    <file src="dist\css\*.*" target="content\Content" />
+    <file src="dist\fonts\*.*" target="content\fonts" />
+    <file src="dist\js\bootstrap*.js" target="content\Scripts" />
+  </files>
+</package>
+>>>>>>> 7aaabebdedb6cd1483ea6de37d84d578a131cfbc

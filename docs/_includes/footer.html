@@ -1,0 +1,56 @@
+<!-- Footer
+================================================== -->
+<footer class="bs-docs-footer">
+  <div class="container">
+
+    <ul class="bs-docs-footer-links">
+      <li><a href="{{ site.repo }}">GitHub</a></li>
+      <li><a href="https://twitter.com/getbootstrap">Twitter</a></li>
+      <li><a href="{{ site.baseurl }}/getting-started/#examples">Examples</a></li>
+      <li><a href="{{ site.baseurl }}/about/">About</a></li>
+    </ul>
+
+    <p>Designed and built with all the love in the world by <a href="https://twitter.com/mdo" rel="noopener" target="_blank">@mdo</a> and <a href="https://twitter.com/fat" rel="noopener" target="_blank">@fat</a>. Maintained by the <a href="https://github.com/orgs/twbs/people">core team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</p>
+
+    <p>Code licensed <a href="https://github.com/twbs/bootstrap/blob/master/LICENSE" rel="license noopener" target="_blank">MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" rel="license noopener" target="_blank">CC BY 3.0</a>.</p>
+
+  </div>
+</footer>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="{{ site.baseurl }}/assets/js/vendor/jquery.min.js"><\/script>')</script>
+
+{% if site.github %}
+  <script src="{{ site.baseurl }}/dist/js/bootstrap.min.js"></script>
+{% else %}
+  <script src="{{ site.baseurl }}/dist/js/bootstrap.js"></script>
+{% endif %}
+
+{% if page.layout == "default" %}
+<script src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+{% endif %}
+
+{% if site.github %}
+  <script src="{{ site.baseurl }}/assets/js/docs.min.js"></script>
+{% else %}
+  {% for file in site.data.configBridge.paths.docsJs %}
+  <script src="{{ file }}"></script>
+  {% endfor %}
+{% endif %}
+
+{% if page.slug == "customize" %}
+  <script>var __configBridge = {{ site.data.configBridge.config | jsonify }}</script>
+  {% if site.github %}
+    <script src="{{ site.baseurl }}/assets/js/customize.min.js"></script>
+  {% else %}
+    {% for file in site.data.configBridge.paths.customizerJs %}
+    <script src="{{ file }}"></script>
+    {% endfor %}
+  {% endif %}
+{% endif %}
+
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="{{ site.baseurl }}/assets/js/ie10-viewport-bug-workaround.js"></script>

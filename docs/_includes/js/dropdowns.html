@@ -1,0 +1,201 @@
+<div class="bs-docs-section">
+  <h1 id="dropdowns" class="page-header">Dropdowns <small>dropdown.js</small></h1>
+
+  <h2 id="dropdowns-examples">Examples</h2>
+  <p>Add dropdown menus to nearly anything with this simple plugin, including the navbar, tabs, and pills.</p>
+
+  <h3>Within a navbar</h3>
+  <div class="bs-example">
+    <nav id="navbar-example" class="navbar navbar-default navbar-static">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-example-js-navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Project Name</a>
+        </div>
+        <div class="collapse navbar-collapse bs-example-js-navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a id="drop1" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                Dropdown
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="drop1">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a id="drop2" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                Dropdown
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="drop2">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li id="fat-menu" class="dropdown">
+              <a id="drop3" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                Dropdown
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="drop3">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav> <!-- /navbar-example -->
+  </div> <!-- /example -->
+
+  <h3>Within pills</h3>
+  <div class="bs-example">
+    <ul class="nav nav-pills" role="tablist">
+      <li role="presentation" class="active"><a href="#">Regular link</a></li>
+      <li role="presentation" class="dropdown">
+        <a id="drop4" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+          <span class="caret"></span>
+        </a>
+        <ul id="menu1" class="dropdown-menu" aria-labelledby="drop4">
+          <li><a href="#">Action</a></li>
+          <li><a href="#">Another action</a></li>
+          <li><a href="#">Something else here</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="#">Separated link</a></li>
+        </ul>
+      </li>
+      <li role="presentation" class="dropdown">
+        <a id="drop5" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+          <span class="caret"></span>
+        </a>
+        <ul id="menu2" class="dropdown-menu" aria-labelledby="drop5">
+          <li><a href="#">Action</a></li>
+          <li><a href="#">Another action</a></li>
+          <li><a href="#">Something else here</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="#">Separated link</a></li>
+        </ul>
+      </li>
+      <li role="presentation" class="dropdown">
+        <a id="drop6" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+          <span class="caret"></span>
+        </a>
+        <ul id="menu3" class="dropdown-menu" aria-labelledby="drop6">
+          <li><a href="#">Action</a></li>
+          <li><a href="#">Another action</a></li>
+          <li><a href="#">Something else here</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="#">Separated link</a></li>
+        </ul>
+      </li>
+    </ul> <!-- /pills -->
+  </div> <!-- /example -->
+
+
+  <h2 id="dropdowns-usage">Usage</h2>
+  <p>Via data attributes or JavaScript, the dropdown plugin toggles hidden content (dropdown menus) by toggling the <code>.open</code> class on the parent list item.</p>
+  <p>On mobile devices, opening a dropdown adds a <code>.dropdown-backdrop</code> as a tap area for closing dropdown menus when tapping outside the menu, a requirement for proper iOS support. <strong class="text-danger">This means that switching from an open dropdown menu to a different dropdown menu requires an extra tap on mobile.</strong></p>
+  <p>Note: The <code>data-toggle="dropdown"</code> attribute is relied on for closing dropdown menus at an application level, so it's a good idea to always use it.</p>
+
+  <h3>Via data attributes</h3>
+  <p>Add <code>data-toggle="dropdown"</code> to a link or button to toggle a dropdown.</p>
+{% highlight html %}
+<div class="dropdown">
+  <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Dropdown trigger
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dLabel">
+    ...
+  </ul>
+</div>
+{% endhighlight %}
+  <p>To keep URLs intact with link buttons, use the <code>data-target</code> attribute instead of <code>href="#"</code>.</p>
+{% highlight html %}
+<div class="dropdown">
+  <a id="dLabel" data-target="#" href="http://example.com/" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+    Dropdown trigger
+    <span class="caret"></span>
+  </a>
+
+  <ul class="dropdown-menu" aria-labelledby="dLabel">
+    ...
+  </ul>
+</div>
+{% endhighlight %}
+
+  <h3>Via JavaScript</h3>
+  <p>Call the dropdowns via JavaScript:</p>
+{% highlight js %}
+$('.dropdown-toggle').dropdown()
+{% endhighlight %}
+  <div class="bs-callout bs-callout-info" id="callout-dropdowns-data-required">
+    <h4><code>data-toggle="dropdown"</code> still required</h4>
+    <p>Regardless of whether you call your dropdown via JavaScript or instead use the data-api, <code>data-toggle="dropdown"</code> is always required to be present on the dropdown's trigger element.</p>
+  </div>
+
+  <h3 id="dropdowns-options">Options</h3>
+  <p><em>None</em></p>
+
+  <h3 id="dropdowns-methods">Methods</h3>
+  <h4><code>$().dropdown('toggle')</code></h4>
+  <p>Toggles the dropdown menu of a given navbar or tabbed navigation.</p>
+
+  <h3 id="dropdowns-events">Events</h3>
+  <p>All dropdown events are fired at the <code>.dropdown-menu</code>'s parent element.</p>
+  <p>All dropdown events have a <code>relatedTarget</code> property, whose value is the toggling anchor element.</p>
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped bs-events-table">
+      <thead>
+        <tr>
+          <th>Event Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>show.bs.dropdown</td>
+          <td>This event fires immediately when the show instance method is called.</td>
+        </tr>
+        <tr>
+          <td>shown.bs.dropdown</td>
+          <td>This event is fired when the dropdown has been made visible to the user (will wait for CSS transitions, to complete).</td>
+        </tr>
+        <tr>
+          <td>hide.bs.dropdown</td>
+          <td>This event is fired immediately when the hide instance method has been called.</td>
+        </tr>
+        <tr>
+          <td>hidden.bs.dropdown</td>
+          <td>This event is fired when the dropdown has finished being hidden from the user (will wait for CSS transitions, to complete).</td>
+        </tr>
+      </tbody>
+    </table>
+  </div><!-- ./bs-table-responsive -->
+{% highlight js %}
+$('#myDropdown').on('show.bs.dropdown', function () {
+  // do something…
+})
+{% endhighlight %}
+</div>

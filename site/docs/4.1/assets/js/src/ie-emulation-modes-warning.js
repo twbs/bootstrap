@@ -1,7 +1,23 @@
 // NOTICE!! DO NOT USE ANY OF THIS JAVASCRIPT
 // IT'S ALL JUST JUNK FOR OUR DOCS!
 // ++++++++++++++++++++++++++++++++++++++++++
+<<<<<<< HEAD:site/docs/4.1/assets/js/src/ie-emulation-modes-warning.js
 
+||||||| merged common ancestors
+/*!
+ * Copyright 2014-2015 Twitter, Inc.
+ *
+ * Licensed under the Creative Commons Attribution 3.0 Unported License. For
+ * details, see https://creativecommons.org/licenses/by/3.0/.
+ */
+=======
+/*!
+ * Copyright 2014-2018 Twitter, Inc.
+ *
+ * Licensed under the Creative Commons Attribution 3.0 Unported License. For
+ * details, see https://creativecommons.org/licenses/by/3.0/.
+ */
+>>>>>>> 7aaabebdedb6cd1483ea6de37d84d578a131cfbc:docs/assets/js/ie-emulation-modes-warning.js
 // Intended to prevent false-positive bug reports about Bootstrap not working properly in old versions of IE due to folks testing using IE's unreliable emulation modes.
 (function () {
   'use strict'

@@ -46,6 +46,7 @@ $(function () {
 
   QUnit.test('should show a collapsed element', function (assert) {
     assert.expect(2)
+<<<<<<< HEAD
     var done = assert.async()
     var $el = $('<div class="collapse"/>')
 
@@ -73,7 +74,13 @@ $(function () {
     })
     $target.trigger('click')
   })
+||||||| merged common ancestors
+    var $el = $('<div class="collapse"/>').bootstrapCollapse('show')
+=======
+    var done = assert.async()
+>>>>>>> 7aaabebdedb6cd1483ea6de37d84d578a131cfbc
 
+<<<<<<< HEAD
   QUnit.test('should collapse only the first collapse', function (assert) {
     assert.expect(2)
     var done = assert.async()
@@ -97,6 +104,18 @@ $(function () {
       assert.ok($el2.hasClass('show'))
       done()
     }).bootstrapCollapse('show')
+||||||| merged common ancestors
+    assert.ok($el.hasClass('in'), 'has class "in"')
+    assert.ok(!/height/i.test($el.attr('style')), 'has height reset')
+=======
+    $('<div class="collapse"/>')
+      .on('shown.bs.collapse', function () {
+        assert.ok($(this).hasClass('in'), 'has class "in"')
+        assert.ok(!/height/i.test($(this).attr('style')), 'has height reset')
+        done()
+      })
+      .bootstrapCollapse('show')
+>>>>>>> 7aaabebdedb6cd1483ea6de37d84d578a131cfbc
   })
 
   QUnit.test('should hide a collapsed element', function (assert) {
@@ -513,6 +532,7 @@ $(function () {
       })
       .bootstrapCollapse('show')
   })
+<<<<<<< HEAD
 
   QUnit.test('should allow accordion to use children other than card', function (assert) {
     assert.expect(4)
@@ -889,4 +909,8 @@ $(function () {
 
     $collapse2.bootstrapCollapse('toggle')
   })
+||||||| merged common ancestors
+
+=======
+>>>>>>> 7aaabebdedb6cd1483ea6de37d84d578a131cfbc
 })

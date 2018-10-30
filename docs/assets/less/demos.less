@@ -1,0 +1,19 @@
+.bs-examples {
+  .thumbnail {
+    margin-bottom: 10px;
+  }
+
+  h4 { margin-bottom: 5px; }
+
+  p { margin-bottom: 20px; }
+
+  @media (max-width: @screen-xs-min) {
+    margin-right: -10px;
+    margin-left: -10px;
+
+    > [class^="col-"] {
+      padding-right: 10px;
+      padding-left: 10px;
+    }
+  }
+}

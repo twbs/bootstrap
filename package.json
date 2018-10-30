@@ -1,8 +1,14 @@
 {
   "name": "bootstrap",
   "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
+<<<<<<< HEAD
   "version": "4.1.3",
   "version_short": "4.1",
+||||||| merged common ancestors
+  "version": "3.3.5",
+=======
+  "version": "3.4.0",
+>>>>>>> 7aaabebdedb6cd1483ea6de37d84d578a131cfbc
   "keywords": [
     "css",
     "sass",
@@ -12,12 +18,21 @@
     "framework",
     "web"
   ],
+<<<<<<< HEAD
   "homepage": "https://getbootstrap.com/",
   "author": "The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)",
   "contributors": [
     "Twitter, Inc."
   ],
+||||||| merged common ancestors
+  "homepage": "http://getbootstrap.com",
+  "author": "Twitter, Inc.",
+=======
+  "homepage": "https://getbootstrap.com/",
+  "author": "Twitter, Inc.",
+>>>>>>> 7aaabebdedb6cd1483ea6de37d84d578a131cfbc
   "scripts": {
+<<<<<<< HEAD
     "start": "npm-run-all --parallel watch docs-serve",
     "blc": "blc --exclude-external --filter-level 3 --get --ordered --recursive --host-requests 4 --input http://localhost:3000/",
     "http-server": "http-server --silent -p 3000",
@@ -80,6 +95,13 @@
     "watch-css-docs": "nodemon --watch \"site/docs/**/assets/scss/\" --ext scss --exec \"npm run css-docs\"",
     "watch-js-main": "nodemon --watch js/src/ --ext js --exec \"npm run js-compile\"",
     "watch-js-docs": "nodemon --watch \"site/docs/**/assets/js/src/\" --ext js --exec \"npm run js-docs\""
+||||||| merged common ancestors
+    "test": "grunt test"
+=======
+    "change-version": "node grunt/change-version.js",
+    "update-shrinkwrap": "npm shrinkwrap --dev && shx mv ./npm-shrinkwrap.json ./grunt/npm-shrinkwrap.json",
+    "test": "grunt test"
+>>>>>>> 7aaabebdedb6cd1483ea6de37d84d578a131cfbc
   },
   "style": "dist/css/bootstrap.css",
   "sass": "scss/bootstrap.scss",
@@ -98,6 +120,7 @@
     "popper.js": "^1.14.4"
   },
   "devDependencies": {
+<<<<<<< HEAD
     "@babel/cli": "^7.1.2",
     "@babel/core": "^7.1.2",
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
@@ -144,6 +167,76 @@
     "stylelint-scss": "^3.3.2",
     "uglify-js": "^3.4.9",
     "vnu-jar": "18.8.29"
+||||||| merged common ancestors
+    "btoa": "~1.1.2",
+    "glob": "~5.0.14",
+    "grunt": "~0.4.5",
+    "grunt-autoprefixer": "~3.0.3",
+    "grunt-contrib-clean": "~0.6.0",
+    "grunt-contrib-compress": "~0.13.0",
+    "grunt-contrib-concat": "~0.5.1",
+    "grunt-contrib-connect": "~0.10.1",
+    "grunt-contrib-copy": "~0.8.0",
+    "grunt-contrib-csslint": "~0.5.0",
+    "grunt-contrib-cssmin": "~0.12.3",
+    "grunt-contrib-htmlmin": "~0.4.0",
+    "grunt-contrib-jade": "~0.15.0",
+    "grunt-contrib-jshint": "~0.11.2",
+    "grunt-contrib-less": "~1.0.1",
+    "grunt-contrib-qunit": "~0.7.0",
+    "grunt-contrib-uglify": "~0.9.1",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-csscomb": "~3.0.1",
+    "grunt-exec": "~0.4.6",
+    "grunt-html": "~4.0.3",
+    "grunt-jekyll": "~0.4.2",
+    "grunt-jscs": "~1.8.0",
+    "grunt-saucelabs": "~8.6.1",
+    "grunt-sed": "twbs/grunt-sed#v0.2.0",
+    "load-grunt-tasks": "~3.2.0",
+    "markdown-it": "^4.4.0",
+    "npm-shrinkwrap": "^200.4.0",
+    "time-grunt": "^1.2.1"
+=======
+    "btoa": "~1.2.1",
+    "cross-env": "^5.2.0",
+    "glob": "~7.1.2",
+    "grunt": "~1.0.1",
+    "grunt-autoprefixer": "~3.0.4",
+    "grunt-contrib-clean": "~1.1.0",
+    "grunt-contrib-compress": "~1.4.3",
+    "grunt-contrib-concat": "~1.0.0",
+    "grunt-contrib-connect": "~1.0.0",
+    "grunt-contrib-copy": "~1.0.0",
+    "grunt-contrib-cssmin": "~2.2.1",
+    "grunt-contrib-htmlmin": "~2.4.0",
+    "grunt-contrib-jshint": "~1.1.0",
+    "grunt-contrib-less": "~1.4.1",
+    "grunt-contrib-pug": "~1.0.0",
+    "grunt-contrib-uglify": "~3.3.0",
+    "grunt-contrib-watch": "~1.0.0",
+    "grunt-exec": "~3.0.0",
+    "grunt-html": "~9.0.0",
+    "grunt-jekyll": "~0.4.4",
+    "grunt-jscs": "~3.0.1",
+    "grunt-stylelint": "^0.10.0",
+    "ip": "^1.1.5",
+    "karma": "^3.0.0",
+    "karma-browserstack-launcher": "^1.3.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-detect-browsers": "^2.3.3",
+    "karma-firefox-launcher": "^1.1.0",
+    "karma-qunit": "^1.2.1",
+    "load-grunt-tasks": "~3.5.0",
+    "markdown-it": "^8.4.0",
+    "qunitjs": "^1.23.1",
+    "shelljs": "^0.8.1",
+    "shx": "^0.2.2",
+    "stylelint": "^9.2.0",
+    "stylelint-config-standard": "^18.2.0",
+    "stylelint-order": "^0.8.1",
+    "time-grunt": "^1.3.0"
+>>>>>>> 7aaabebdedb6cd1483ea6de37d84d578a131cfbc
   },
   "engines": {
     "node": ">=6"
@@ -210,10 +303,27 @@
         "exports": "$"
       }
     },
+<<<<<<< HEAD
     "dependencies": {},
     "peerDependencies": {
       "jquery": "1.9.1 - 3",
       "popper.js": "^1.14.4"
     }
+||||||| merged common ancestors
+    "files": [
+      "css",
+      "fonts",
+      "js"
+    ]
+=======
+    "files": [
+      "css",
+      "fonts",
+      "js"
+    ]
+  },
+  "dependencies": {
+    "postcss": "^6.0.21"
+>>>>>>> 7aaabebdedb6cd1483ea6de37d84d578a131cfbc
   }
 }

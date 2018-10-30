@@ -49,15 +49,30 @@ $(function () {
 
   QUnit.test('should remove element when clicking .close', function (assert) {
     assert.expect(2)
+<<<<<<< HEAD
     var done = assert.async()
     var alertHTML = '<div class="alert alert-danger fade show">' +
         '<a class="close" href="#" data-dismiss="alert">×</a>' +
         '<p><strong>Holy guacamole!</strong> Best check yo self, you\'re not looking too good.</p>' +
         '</div>'
+||||||| merged common ancestors
+    var alertHTML = '<div class="alert alert-danger fade in">'
+        + '<a class="close" href="#" data-dismiss="alert">×</a>'
+        + '<p><strong>Holy guacamole!</strong> Best check yo self, you\'re not looking too good.</p>'
+        + '</div>'
+=======
+    var done = assert.async()
+
+    var alertHTML = '<div class="alert alert-danger fade in">'
+        + '<a class="close" href="#" data-dismiss="alert">×</a>'
+        + '<p><strong>Holy guacamole!</strong> Best check yo self, you\'re not looking too good.</p>'
+        + '</div>'
+>>>>>>> 7aaabebdedb6cd1483ea6de37d84d578a131cfbc
     var $alert = $(alertHTML).appendTo('#qunit-fixture').bootstrapAlert()
 
     assert.notEqual($('#qunit-fixture').find('.alert').length, 0, 'element added to dom')
 
+<<<<<<< HEAD
     $alert
       .one('closed.bs.alert', function () {
         assert.strictEqual($('#qunit-fixture').find('.alert').length, 0, 'element removed from dom')
@@ -65,6 +80,18 @@ $(function () {
       })
       .find('.close')
       .trigger('click')
+||||||| merged common ancestors
+    $alert.find('.close').trigger('click')
+
+    assert.strictEqual($('#qunit-fixture').find('.alert').length, 0, 'element removed from dom')
+=======
+    $alert.on('closed.bs.alert', function () {
+      assert.strictEqual($('#qunit-fixture').find('.alert').length, 0, 'element removed from dom')
+      done()
+    })
+
+    $alert.find('.close').trigger('click')
+>>>>>>> 7aaabebdedb6cd1483ea6de37d84d578a131cfbc
   })
 
   QUnit.test('should not fire closed when close is prevented', function (assert) {

@@ -8,6 +8,7 @@
     <!-- jQuery -->
     <script>
       (function () {
+<<<<<<< HEAD
         var path = '../../site/docs/4.1/assets/js/vendor/jquery-slim.min.js'
         // get jquery param from the query string.
         var jQueryVersion = location.search.match(/[?&]jquery=(.*?)(?=&|$)/)
@@ -15,6 +16,80 @@
         // If a version was specified, use that version from jQuery CDN
         if (jQueryVersion) {
           path = 'https://code.jquery.com/jquery-' + jQueryVersion[1] + '.min.js'
+||||||| merged common ancestors
+        var eventAliases = [
+          'blur',
+          'focus',
+          'focusin',
+          'focusout',
+          'load',
+          'resize',
+          'scroll',
+          'unload',
+          'click',
+          'dblclick',
+          'mousedown',
+          'mouseup',
+          'mousemove',
+          'mouseover',
+          'mouseout',
+          'mouseenter',
+          'mouseleave',
+          'change',
+          'select',
+          'submit',
+          'keydown',
+          'keypress',
+          'keyup',
+          'error',
+          'contextmenu',
+          'hover',
+          'bind',
+          'unbind',
+          'delegate',
+          'undelegate'
+        ]
+        for (var i = 0; i < eventAliases.length; i++) {
+          $.fn[eventAliases[i]] = undefined
+=======
+        var eventAliases = [
+          'blur',
+          'focus',
+          'focusin',
+          'focusout',
+          'load',
+          'resize',
+          'scroll',
+          'unload',
+          'click',
+          'dblclick',
+          'mousedown',
+          'mouseup',
+          'mousemove',
+          'mouseover',
+          'mouseout',
+          'mouseenter',
+          'mouseleave',
+          'change',
+          'select',
+          'submit',
+          'keydown',
+          'keypress',
+          'keyup',
+          'error',
+          'contextmenu',
+          'hover',
+          'bind',
+          'unbind',
+          'delegate',
+          'undelegate'
+        ]
+        for (var i = 0, len = eventAliases.length; i < len; i++) {
+          var eventAlias = eventAliases[i]
+          $.fn[eventAlias] = function () {
+            throw new Error('Using the ".' + eventAlias + '()" method is not allowed, so that Bootstrap can be compatible with custom jQuery builds which exclude the "event aliases" module that defines said method. See https://github.com/twbs/bootstrap/blob/master/CONTRIBUTING.md#js')
+          }
+>>>>>>> 7aaabebdedb6cd1483ea6de37d84d578a131cfbc
         }
         document.write('<script src="' + path + '"><\/script>')
       }())
@@ -22,6 +97,7 @@
     <script src="../../node_modules/popper.js/dist/umd/popper.min.js"></script>
 
     <!-- QUnit -->
+<<<<<<< HEAD
     <link rel="stylesheet" href="../../node_modules/qunit/qunit/qunit.css" media="screen">
     <script src="../../node_modules/qunit/qunit/qunit.js"></script>
 
@@ -31,6 +107,13 @@
     <!-- Hammer simulator -->
     <script src="../../node_modules/hammer-simulator/index.js"></script>
 
+||||||| merged common ancestors
+    <link rel="stylesheet" href="vendor/qunit.css" media="screen">
+    <script src="vendor/qunit.js"></script>
+=======
+    <link rel="stylesheet" href="../../node_modules/qunitjs/qunit/qunit.css" media="screen">
+    <script src="../../node_modules/qunitjs/qunit/qunit.js"></script>
+>>>>>>> 7aaabebdedb6cd1483ea6de37d84d578a131cfbc
     <script>
       // Disable jQuery event aliases to ensure we don't accidentally use any of them
       [
@@ -106,8 +189,69 @@
           $('#qunit-fixture').css({ top: '', left: '' })
         })
       }
+<<<<<<< HEAD
+||||||| merged common ancestors
+
+      // Disable deprecated global QUnit method aliases in preparation for QUnit v2
+      (function () {
+        var methodNames = [
+          'async',
+          'asyncTest',
+          'deepEqual',
+          'equal',
+          'expect',
+          'module',
+          'notDeepEqual',
+          'notEqual',
+          'notPropEqual',
+          'notStrictEqual',
+          'ok',
+          'propEqual',
+          'push',
+          'start',
+          'stop',
+          'strictEqual',
+          'test',
+          'throws'
+        ];
+        for (var i = 0; i < methodNames.length; i++) {
+          var methodName = methodNames[i];
+          window[methodName] = undefined;
+        }
+      })();
+=======
+
+      // Disable deprecated global QUnit method aliases in preparation for QUnit v2
+      (function () {
+        var methodNames = [
+          'async',
+          'asyncTest',
+          'deepEqual',
+          'equal',
+          'expect',
+          'module',
+          'notDeepEqual',
+          'notEqual',
+          'notPropEqual',
+          'notStrictEqual',
+          'ok',
+          'propEqual',
+          'push',
+          'start',
+          'stop',
+          'strictEqual',
+          'test',
+          'throws'
+        ];
+        for (var i = 0, len = methodNames.length; i < len; i++) {
+          var methodName = methodNames[i];
+          window[methodName] = undefined;
+        }
+      })();
+>>>>>>> 7aaabebdedb6cd1483ea6de37d84d578a131cfbc
     </script>
 
+<<<<<<< HEAD
     <!-- Transpiled Plugins -->
     <script src="../dist/util.js"></script>
     <script src="../dist/alert.js"></script>
@@ -120,6 +264,34 @@
     <script src="../dist/tab.js"></script>
     <script src="../dist/tooltip.js"></script>
     <script src="../dist/popover.js"></script>
+||||||| merged common ancestors
+    <!-- Plugin sources -->
+    <script>$.support.transition = false</script>
+    <script src="../../js/alert.js"></script>
+    <script src="../../js/button.js"></script>
+    <script src="../../js/carousel.js"></script>
+    <script src="../../js/collapse.js"></script>
+    <script src="../../js/dropdown.js"></script>
+    <script src="../../js/modal.js"></script>
+    <script src="../../js/scrollspy.js"></script>
+    <script src="../../js/tab.js"></script>
+    <script src="../../js/tooltip.js"></script>
+    <script src="../../js/popover.js"></script>
+    <script src="../../js/affix.js"></script>
+=======
+    <!-- Plugin sources -->
+    <script src="../../js/alert.js"></script>
+    <script src="../../js/button.js"></script>
+    <script src="../../js/carousel.js"></script>
+    <script src="../../js/collapse.js"></script>
+    <script src="../../js/dropdown.js"></script>
+    <script src="../../js/modal.js"></script>
+    <script src="../../js/scrollspy.js"></script>
+    <script src="../../js/tab.js"></script>
+    <script src="../../js/tooltip.js"></script>
+    <script src="../../js/popover.js"></script>
+    <script src="../../js/affix.js"></script>
+>>>>>>> 7aaabebdedb6cd1483ea6de37d84d578a131cfbc
 
     <!-- Unit Tests -->
     <script src="unit/alert.js"></script>

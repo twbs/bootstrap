@@ -193,9 +193,18 @@ $(function () {
         '</ul>'
 
     $(dropHTML)
+<<<<<<< HEAD
       .find('ul > li:first-child a')
       .bootstrapTab('show')
+||||||| merged common ancestors
+      .find('ul > li:first a')
+        .bootstrapTab('show')
+=======
+      .find('ul > li:first a')
+      .bootstrapTab('show')
+>>>>>>> 7aaabebdedb6cd1483ea6de37d84d578a131cfbc
       .end()
+<<<<<<< HEAD
       .find('ul > li:last-child a')
       .on('show.bs.tab', function (e) {
         assert.strictEqual(e.relatedTarget.hash, '#a1-1', 'references correct element as relatedTarget')
@@ -205,6 +214,27 @@ $(function () {
         done()
       })
       .bootstrapTab('show')
+||||||| merged common ancestors
+      .find('ul > li:last a')
+        .on('show.bs.tab', function (e) {
+          assert.strictEqual(e.relatedTarget.hash, '#1-1', 'references correct element as relatedTarget')
+        })
+        .on('shown.bs.tab', function (e) {
+          assert.strictEqual(e.relatedTarget.hash, '#1-1', 'references correct element as relatedTarget')
+          done()
+        })
+        .bootstrapTab('show')
+=======
+      .find('ul > li:last a')
+      .on('show.bs.tab', function (e) {
+        assert.strictEqual(e.relatedTarget.hash, '#1-1', 'references correct element as relatedTarget')
+      })
+      .on('shown.bs.tab', function (e) {
+        assert.strictEqual(e.relatedTarget.hash, '#1-1', 'references correct element as relatedTarget')
+        done()
+      })
+      .bootstrapTab('show')
+>>>>>>> 7aaabebdedb6cd1483ea6de37d84d578a131cfbc
   })
 
   QUnit.test('should fire hide and hidden events', function (assert) {
@@ -217,25 +247,71 @@ $(function () {
         '</ul>'
 
     $(tabsHTML)
+<<<<<<< HEAD
       .find('li:first-child a')
       .on('hide.bs.tab', function () {
         assert.ok(true, 'hide event fired')
       })
       .bootstrapTab('show')
+||||||| merged common ancestors
+      .find('li:first a')
+        .on('hide.bs.tab', function () {
+          assert.ok(true, 'hide event fired')
+        })
+        .bootstrapTab('show')
+=======
+      .find('li:first a')
+      .on('hide.bs.tab', function () {
+        assert.ok(true, 'hide event fired')
+      })
+      .bootstrapTab('show')
+>>>>>>> 7aaabebdedb6cd1483ea6de37d84d578a131cfbc
       .end()
+<<<<<<< HEAD
       .find('li:last-child a')
       .bootstrapTab('show')
+||||||| merged common ancestors
+      .find('li:last a')
+        .bootstrapTab('show')
+=======
+      .find('li:last a')
+      .bootstrapTab('show')
+>>>>>>> 7aaabebdedb6cd1483ea6de37d84d578a131cfbc
 
     $(tabsHTML)
+<<<<<<< HEAD
       .find('li:first-child a')
       .on('hidden.bs.tab', function () {
         assert.ok(true, 'hidden event fired')
         done()
       })
       .bootstrapTab('show')
+||||||| merged common ancestors
+      .find('li:first a')
+        .on('hidden.bs.tab', function () {
+          assert.ok(true, 'hidden event fired')
+          done()
+        })
+        .bootstrapTab('show')
+=======
+      .find('li:first a')
+      .on('hidden.bs.tab', function () {
+        assert.ok(true, 'hidden event fired')
+        done()
+      })
+      .bootstrapTab('show')
+>>>>>>> 7aaabebdedb6cd1483ea6de37d84d578a131cfbc
       .end()
+<<<<<<< HEAD
       .find('li:last-child a')
       .bootstrapTab('show')
+||||||| merged common ancestors
+      .find('li:last a')
+        .bootstrapTab('show')
+=======
+      .find('li:last a')
+      .bootstrapTab('show')
+>>>>>>> 7aaabebdedb6cd1483ea6de37d84d578a131cfbc
   })
 
   QUnit.test('should not fire hidden when hide is prevented', function (assert) {
@@ -248,6 +324,7 @@ $(function () {
         '</ul>'
 
     $(tabsHTML)
+<<<<<<< HEAD
       .find('li:first-child a')
       .on('hide.bs.tab', function (e) {
         e.preventDefault()
@@ -258,9 +335,40 @@ $(function () {
         assert.ok(false, 'hidden event fired')
       })
       .bootstrapTab('show')
+||||||| merged common ancestors
+      .find('li:first a')
+        .on('hide.bs.tab', function (e) {
+          e.preventDefault()
+          assert.ok(true, 'hide event fired')
+          done()
+        })
+        .on('hidden.bs.tab', function () {
+          assert.ok(false, 'hidden event fired')
+        })
+        .bootstrapTab('show')
+=======
+      .find('li:first a')
+      .on('hide.bs.tab', function (e) {
+        e.preventDefault()
+        assert.ok(true, 'hide event fired')
+        done()
+      })
+      .on('hidden.bs.tab', function () {
+        assert.ok(false, 'hidden event fired')
+      })
+      .bootstrapTab('show')
+>>>>>>> 7aaabebdedb6cd1483ea6de37d84d578a131cfbc
       .end()
+<<<<<<< HEAD
       .find('li:last-child a')
       .bootstrapTab('show')
+||||||| merged common ancestors
+      .find('li:last a')
+        .bootstrapTab('show')
+=======
+      .find('li:last a')
+      .bootstrapTab('show')
+>>>>>>> 7aaabebdedb6cd1483ea6de37d84d578a131cfbc
   })
 
   QUnit.test('hide and hidden events contain correct relatedTarget', function (assert) {
@@ -273,6 +381,7 @@ $(function () {
         '</ul>'
 
     $(tabsHTML)
+<<<<<<< HEAD
       .find('li:first-child a')
       .on('hide.bs.tab', function (e) {
         assert.strictEqual(e.relatedTarget.hash, '#profile', 'references correct element as relatedTarget')
@@ -282,9 +391,38 @@ $(function () {
         done()
       })
       .bootstrapTab('show')
+||||||| merged common ancestors
+      .find('li:first a')
+        .on('hide.bs.tab', function (e) {
+          assert.strictEqual(e.relatedTarget.hash, '#profile', 'references correct element as relatedTarget')
+        })
+        .on('hidden.bs.tab', function (e) {
+          assert.strictEqual(e.relatedTarget.hash, '#profile', 'references correct element as relatedTarget')
+          done()
+        })
+        .bootstrapTab('show')
+=======
+      .find('li:first a')
+      .on('hide.bs.tab', function (e) {
+        assert.strictEqual(e.relatedTarget.hash, '#profile', 'references correct element as relatedTarget')
+      })
+      .on('hidden.bs.tab', function (e) {
+        assert.strictEqual(e.relatedTarget.hash, '#profile', 'references correct element as relatedTarget')
+        done()
+      })
+      .bootstrapTab('show')
+>>>>>>> 7aaabebdedb6cd1483ea6de37d84d578a131cfbc
       .end()
+<<<<<<< HEAD
       .find('li:last-child a')
       .bootstrapTab('show')
+||||||| merged common ancestors
+      .find('li:last a')
+        .bootstrapTab('show')
+=======
+      .find('li:last a')
+      .bootstrapTab('show')
+>>>>>>> 7aaabebdedb6cd1483ea6de37d84d578a131cfbc
   })
 
   QUnit.test('selected tab should have aria-selected', function (assert) {

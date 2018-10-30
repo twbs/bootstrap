@@ -1,7 +1,13 @@
 The MIT License (MIT)
 
+<<<<<<< HEAD
 Copyright (c) 2011-2018 Twitter, Inc.
 Copyright (c) 2011-2018 The Bootstrap Authors
+||||||| merged common ancestors
+Copyright (c) 2011-2015 Twitter, Inc
+=======
+Copyright (c) 2011-2018 Twitter, Inc.
+>>>>>>> 7aaabebdedb6cd1483ea6de37d84d578a131cfbc
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

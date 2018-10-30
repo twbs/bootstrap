@@ -47,8 +47,16 @@ $(function () {
 
   QUnit.test('should render popover element', function (assert) {
     assert.expect(2)
+<<<<<<< HEAD
     var done = assert.async()
     $('<a href="#" title="mdo" data-content="https://twitter.com/mdo">@mdo</a>')
+||||||| merged common ancestors
+    var $popover = $('<a href="#" title="mdo" data-content="https://twitter.com/mdo">@mdo</a>')
+=======
+    var done = assert.async()
+
+    $('<a href="#" title="mdo" data-content="https://twitter.com/mdo">@mdo</a>')
+>>>>>>> 7aaabebdedb6cd1483ea6de37d84d578a131cfbc
       .appendTo('#qunit-fixture')
       .on('shown.bs.popover', function () {
         assert.notEqual($('.popover').length, 0, 'popover was inserted')
@@ -81,7 +89,13 @@ $(function () {
 
   QUnit.test('should get title and content from options', function (assert) {
     assert.expect(4)
+<<<<<<< HEAD
     var done = assert.async()
+||||||| merged common ancestors
+=======
+    var done = assert.async()
+
+>>>>>>> 7aaabebdedb6cd1483ea6de37d84d578a131cfbc
     var $popover = $('<a href="#">@fat</a>')
       .appendTo('#qunit-fixture')
       .bootstrapPopover({
@@ -92,7 +106,12 @@ $(function () {
           return 'loves writing tests （╯°□°）╯︵ ┻━┻'
         }
       })
+      .on('shown.bs.popover', function () {
+        assert.notEqual($('.popover').length, 0, 'popover was inserted')
+        assert.strictEqual($('.popover .popover-title').text(), '@fat', 'title correctly inserted')
+        assert.strictEqual($('.popover .popover-content').text(), 'loves writing tests （╯°□°）╯︵ ┻━┻', 'content correctly inserted')
 
+<<<<<<< HEAD
     $popover
       .one('shown.bs.popover', function () {
         assert.notEqual($('.popover').length, 0, 'popover was inserted')
@@ -141,12 +160,33 @@ $(function () {
       })
 
     $popover.bootstrapPopover('show')
+||||||| merged common ancestors
+    $popover.bootstrapPopover('show')
 
+    assert.notEqual($('.popover').length, 0, 'popover was inserted')
+    assert.strictEqual($('.popover .popover-title').text(), '@fat', 'title correctly inserted')
+    assert.strictEqual($('.popover .popover-content').text(), 'loves writing tests （╯°□°）╯︵ ┻━┻', 'content correctly inserted')
+=======
+        $popover.bootstrapPopover('hide')
+      })
+      .on('hidden.bs.popover', function () {
+        assert.strictEqual($('.popover').length, 0, 'popover was removed')
+        done()
+      })
+>>>>>>> 7aaabebdedb6cd1483ea6de37d84d578a131cfbc
+
+<<<<<<< HEAD
     assert.notEqual($('.popover').length, 0, 'popover inserted')
     assert.strictEqual($('.popover .popover-header').text(), '@glebm <3 writing tests', 'title inserted')
     assert.ok(!$.contains($('.popover').get(0), title), 'title node copied, not moved')
     assert.strictEqual($('.popover .popover-body').html(), '¯\\_(ツ)_/¯', 'content inserted')
     assert.ok(!$.contains($('.popover').get(0), content), 'content node copied, not moved')
+||||||| merged common ancestors
+    $popover.bootstrapPopover('hide')
+    assert.strictEqual($('.popover').length, 0, 'popover was removed')
+=======
+    $popover.bootstrapPopover('show')
+>>>>>>> 7aaabebdedb6cd1483ea6de37d84d578a131cfbc
   })
 
   QUnit.test('should not duplicate HTML object', function (assert) {
@@ -163,6 +203,7 @@ $(function () {
         }
       })
 
+<<<<<<< HEAD
     function popoverInserted() {
       assert.notEqual($('.popover').length, 0, 'popover was inserted')
       assert.equal($('.popover .popover-body').html(), $div[0].outerHTML, 'content correctly inserted')
@@ -171,13 +212,53 @@ $(function () {
     $popover
       .one('shown.bs.popover', function () {
         popoverInserted()
+||||||| merged common ancestors
+    $popover.bootstrapPopover('show')
+    assert.notEqual($('.popover').length, 0, 'popover was inserted')
+    assert.equal($('.popover .popover-content').html(), $div, 'content correctly inserted')
+=======
+    $popover.one('shown.bs.popover', function () {
+      assert.notEqual($('.popover').length, 0, 'popover was inserted')
+      assert.equal($('.popover .popover-content').html(), $div, 'content correctly inserted')
+>>>>>>> 7aaabebdedb6cd1483ea6de37d84d578a131cfbc
 
+<<<<<<< HEAD
         $popover.one('hidden.bs.popover', function () {
           assert.strictEqual($('.popover').length, 0, 'popover was removed')
+||||||| merged common ancestors
+    $popover.bootstrapPopover('hide')
+    assert.strictEqual($('.popover').length, 0, 'popover was removed')
+=======
+      $popover.one('hidden.bs.popover', function () {
+        assert.strictEqual($('.popover').length, 0, 'popover was removed')
+>>>>>>> 7aaabebdedb6cd1483ea6de37d84d578a131cfbc
 
+<<<<<<< HEAD
           $popover.one('shown.bs.popover', function () {
             popoverInserted()
+||||||| merged common ancestors
+    $popover.bootstrapPopover('show')
+    assert.notEqual($('.popover').length, 0, 'popover was inserted')
+    assert.equal($('.popover .popover-content').html(), $div, 'content correctly inserted')
+=======
+        $popover.one('shown.bs.popover', function () {
+          assert.notEqual($('.popover').length, 0, 'popover was inserted')
+          assert.equal($('.popover .popover-content').html(), $div, 'content correctly inserted')
 
+          $popover.one('hidden.bs.popover', function () {
+            assert.strictEqual($('.popover').length, 0, 'popover was removed')
+            done()
+          })
+          $popover.bootstrapPopover('hide')
+        })
+        $popover.bootstrapPopover('show')
+      })
+
+      $popover.bootstrapPopover('hide')
+    })
+>>>>>>> 7aaabebdedb6cd1483ea6de37d84d578a131cfbc
+
+<<<<<<< HEAD
             $popover.one('hidden.bs.popover', function () {
               assert.strictEqual($('.popover').length, 0, 'popover was removed')
               done()
@@ -186,14 +267,29 @@ $(function () {
         }).bootstrapPopover('hide')
       })
       .bootstrapPopover('show')
+||||||| merged common ancestors
+    $popover.bootstrapPopover('hide')
+    assert.strictEqual($('.popover').length, 0, 'popover was removed')
+=======
+    $popover.bootstrapPopover('show')
+>>>>>>> 7aaabebdedb6cd1483ea6de37d84d578a131cfbc
   })
 
   QUnit.test('should get title and content from attributes', function (assert) {
     assert.expect(4)
+<<<<<<< HEAD
     var done = assert.async()
     var $popover = $('<a href="#" title="@mdo" data-content="loves data attributes (づ｡◕‿‿◕｡)づ ︵ ┻━┻" >@mdo</a>')
+||||||| merged common ancestors
+    var $popover = $('<a href="#" title="@mdo" data-content="loves data attributes (づ｡◕‿‿◕｡)づ ︵ ┻━┻" >@mdo</a>')
+=======
+    var done = assert.async()
+
+    $('<a href="#" title="@mdo" data-content="loves data attributes (づ｡◕‿‿◕｡)づ ︵ ┻━┻" >@mdo</a>')
+>>>>>>> 7aaabebdedb6cd1483ea6de37d84d578a131cfbc
       .appendTo('#qunit-fixture')
       .bootstrapPopover()
+<<<<<<< HEAD
       .one('shown.bs.popover', function () {
         assert.notEqual($('.popover').length, 0, 'popover was inserted')
         assert.strictEqual($('.popover .popover-header').text(), '@mdo', 'title correctly inserted')
@@ -205,17 +301,49 @@ $(function () {
         done()
       })
       .bootstrapPopover('show')
+||||||| merged common ancestors
+      .bootstrapPopover('show')
+
+    assert.notEqual($('.popover').length, 0, 'popover was inserted')
+    assert.strictEqual($('.popover .popover-title').text(), '@mdo', 'title correctly inserted')
+    assert.strictEqual($('.popover .popover-content').text(), 'loves data attributes (づ｡◕‿‿◕｡)づ ︵ ┻━┻', 'content correctly inserted')
+
+    $popover.bootstrapPopover('hide')
+    assert.strictEqual($('.popover').length, 0, 'popover was removed')
+=======
+      .one('shown.bs.popover', function () {
+        assert.notEqual($('.popover').length, 0, 'popover was inserted')
+        assert.strictEqual($('.popover .popover-title').text(), '@mdo', 'title correctly inserted')
+        assert.strictEqual($('.popover .popover-content').text(), 'loves data attributes (づ｡◕‿‿◕｡)づ ︵ ┻━┻', 'content correctly inserted')
+
+        $(this).bootstrapPopover('hide')
+      })
+      .one('hidden.bs.popover', function () {
+        assert.strictEqual($('.popover').length, 0, 'popover was removed')
+        done()
+      })
+      .bootstrapPopover('show')
+>>>>>>> 7aaabebdedb6cd1483ea6de37d84d578a131cfbc
   })
 
   QUnit.test('should get title and content from attributes ignoring options passed via js', function (assert) {
     assert.expect(4)
+<<<<<<< HEAD
     var done = assert.async()
     var $popover = $('<a href="#" title="@mdo" data-content="loves data attributes (づ｡◕‿‿◕｡)づ ︵ ┻━┻" >@mdo</a>')
+||||||| merged common ancestors
+    var $popover = $('<a href="#" title="@mdo" data-content="loves data attributes (づ｡◕‿‿◕｡)づ ︵ ┻━┻" >@mdo</a>')
+=======
+    var done = assert.async()
+
+    $('<a href="#" title="@mdo" data-content="loves data attributes (づ｡◕‿‿◕｡)づ ︵ ┻━┻" >@mdo</a>')
+>>>>>>> 7aaabebdedb6cd1483ea6de37d84d578a131cfbc
       .appendTo('#qunit-fixture')
       .bootstrapPopover({
         title: 'ignored title option',
         content: 'ignored content option'
       })
+<<<<<<< HEAD
       .one('shown.bs.popover', function () {
         assert.notEqual($('.popover').length, 0, 'popover was inserted')
         assert.strictEqual($('.popover .popover-header').text(), '@mdo', 'title correctly inserted')
@@ -227,18 +355,50 @@ $(function () {
         done()
       })
       .bootstrapPopover('show')
+||||||| merged common ancestors
+      .bootstrapPopover('show')
+
+    assert.notEqual($('.popover').length, 0, 'popover was inserted')
+    assert.strictEqual($('.popover .popover-title').text(), '@mdo', 'title correctly inserted')
+    assert.strictEqual($('.popover .popover-content').text(), 'loves data attributes (づ｡◕‿‿◕｡)づ ︵ ┻━┻', 'content correctly inserted')
+
+    $popover.bootstrapPopover('hide')
+    assert.strictEqual($('.popover').length, 0, 'popover was removed')
+=======
+      .one('shown.bs.popover', function () {
+        assert.notEqual($('.popover').length, 0, 'popover was inserted')
+        assert.strictEqual($('.popover .popover-title').text(), '@mdo', 'title correctly inserted')
+        assert.strictEqual($('.popover .popover-content').text(), 'loves data attributes (づ｡◕‿‿◕｡)づ ︵ ┻━┻', 'content correctly inserted')
+
+        $(this).bootstrapPopover('hide')
+      })
+      .one('hidden.bs.popover', function () {
+        assert.strictEqual($('.popover').length, 0, 'popover was removed')
+        done()
+      })
+      .bootstrapPopover('show')
+>>>>>>> 7aaabebdedb6cd1483ea6de37d84d578a131cfbc
   })
 
   QUnit.test('should respect custom template', function (assert) {
     assert.expect(3)
+<<<<<<< HEAD
     var done = assert.async()
     var $popover = $('<a href="#">@fat</a>')
+||||||| merged common ancestors
+    var $popover = $('<a href="#">@fat</a>')
+=======
+    var done = assert.async()
+
+    $('<a href="#">@fat</a>')
+>>>>>>> 7aaabebdedb6cd1483ea6de37d84d578a131cfbc
       .appendTo('#qunit-fixture')
       .bootstrapPopover({
         title: 'Test',
         content: 'Test',
         template: '<div class="popover foobar"><div class="arrow"></div><div class="inner"><h3 class="title"/><div class="content"><p/></div></div></div>'
       })
+<<<<<<< HEAD
       .one('shown.bs.popover', function () {
         assert.notEqual($('.popover').length, 0, 'popover was inserted')
         assert.ok($('.popover').hasClass('foobar'), 'custom class is present')
@@ -249,6 +409,28 @@ $(function () {
         done()
       })
       .bootstrapPopover('show')
+||||||| merged common ancestors
+
+    $popover.bootstrapPopover('show')
+
+    assert.notEqual($('.popover').length, 0, 'popover was inserted')
+    assert.ok($('.popover').hasClass('foobar'), 'custom class is present')
+
+    $popover.bootstrapPopover('hide')
+    assert.strictEqual($('.popover').length, 0, 'popover was removed')
+=======
+      .one('shown.bs.popover', function () {
+        assert.notEqual($('.popover').length, 0, 'popover was inserted')
+        assert.ok($('.popover').hasClass('foobar'), 'custom class is present')
+
+        $(this).bootstrapPopover('hide')
+      })
+      .one('hidden.bs.popover', function () {
+        assert.strictEqual($('.popover').length, 0, 'popover was removed')
+        done()
+      })
+      .bootstrapPopover('show')
+>>>>>>> 7aaabebdedb6cd1483ea6de37d84d578a131cfbc
   })
 
   QUnit.test('should destroy popover', function (assert) {
@@ -274,7 +456,13 @@ $(function () {
 
   QUnit.test('should render popover element using delegated selector', function (assert) {
     assert.expect(2)
+<<<<<<< HEAD
     var done = assert.async()
+||||||| merged common ancestors
+=======
+    var done = assert.async()
+
+>>>>>>> 7aaabebdedb6cd1483ea6de37d84d578a131cfbc
     var $div = $('<div><a href="#" title="mdo" data-content="https://twitter.com/mdo">@mdo</a></div>')
       .appendTo('#qunit-fixture')
       .bootstrapPopover({
@@ -290,7 +478,26 @@ $(function () {
         done()
       })
 
+<<<<<<< HEAD
     $div.find('a').trigger('click')
+||||||| merged common ancestors
+    $div.find('a').trigger('click')
+    assert.notEqual($('.popover').length, 0, 'popover was inserted')
+
+    $div.find('a').trigger('click')
+    assert.strictEqual($('.popover').length, 0, 'popover was removed')
+=======
+    $div.one('shown.bs.popover', function () {
+      assert.notEqual($('.popover').length, 0, 'popover was inserted')
+
+      $div.find('a').trigger('click')
+    })
+    .one('hidden.bs.popover', function () {
+      assert.strictEqual($('.popover').length, 0, 'popover was removed')
+      done()
+    })
+    $div.find('a').trigger('click')
+>>>>>>> 7aaabebdedb6cd1483ea6de37d84d578a131cfbc
   })
 
   QUnit.test('should detach popover content rather than removing it so that event handlers are left intact', function (assert) {

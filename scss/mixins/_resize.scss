@@ -1,6 +1,18 @@
 // Resize anything
 
+<<<<<<< HEAD:scss/mixins/_resize.scss
 @mixin resizable($direction) {
+||||||| merged common ancestors
+.resizable(@direction) {
+  resize: @direction; // Options: horizontal, vertical, both
+=======
+.resizable(@direction) {
+>>>>>>> 7aaabebdedb6cd1483ea6de37d84d578a131cfbc:less/mixins/resize.less
   overflow: auto; // Per CSS3 UI, `resize` only applies when `overflow` isn't `visible`
+<<<<<<< HEAD:scss/mixins/_resize.scss
   resize: $direction; // Options: horizontal, vertical, both
+||||||| merged common ancestors
+=======
+  resize: @direction; // Options: horizontal, vertical, both
+>>>>>>> 7aaabebdedb6cd1483ea6de37d84d578a131cfbc:less/mixins/resize.less
 }

@@ -1,0 +1,51 @@
+.bs-docs-nav {
+  margin-bottom: 0;
+  background-color: #fff;
+  border-bottom: 0;
+
+  .bs-nav-b {
+    display: none;
+  }
+
+  .navbar-brand,
+  .navbar-nav > li > a {
+    font-weight: 500;
+    color: #563d7c;
+  }
+
+  .navbar-nav {
+    > li > a {
+      padding-right: 10px;
+      padding-left: 10px;
+    }
+
+    > li > a:hover,
+    > .active > a,
+    > .active > a:hover {
+      color: #463265;
+      background-color: #f9f9f9;
+    }
+  }
+
+  .navbar-toggle .icon-bar {
+    background-color: #563d7c;
+  }
+
+  .navbar-header {
+    .navbar-toggle {
+      border-color: #fff;
+
+      &:hover,
+      &:focus {
+        background-color: #f9f9f9;
+        border-color: #f9f9f9;
+      }
+    }
+  }
+
+  .navbar-right {
+    @media (min-width: 768px) and (max-width: 992px) {
+      display: none;
+    }
+  }
+}

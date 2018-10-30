@@ -1,0 +1,88 @@
+// stylelint-disable selector-max-type, selector-no-qualifying-type, declaration-no-important
+
+//
+// Misc
+//
+
+// For scrollspy
+body {
+  position: relative;
+}
+
+// Keep code small in tables on account of limited space
+.table code {
+  font-size: 13px;
+  font-weight: 400;
+}
+
+// Inline code within headings retain the heading's background-color
+h2 code,
+h3 code,
+h4 code {
+  background-color: inherit;
+}
+
+// Space docs sections out
+.bs-docs-section {
+  margin-bottom: 60px;
+}
+.bs-docs-section:last-child {
+  margin-bottom: 0;
+}
+
+h1[id] {
+  padding-top: 20px;
+  margin-top: 0;
+}
+
+// Wall of Browser Bugs
+.bs-docs-browser-bugs td p {
+  margin-bottom: 0;
+}
+
+.bs-docs-browser-bugs th:first-child {
+  width: 18%;
+}
+
+// Don't wrap event names in Events tables in JS plugin docs
+.bs-events-table > thead > tr > th:first-child,
+.bs-events-table > tbody > tr > td:first-child {
+  white-space: nowrap;
+}
+
+.bs-events-table > thead > tr > th:first-child {
+  width: 150px;
+}
+
+.js-options-table > thead > tr > th:nth-child(1),
+.js-options-table > thead > tr > th:nth-child(2) {
+  width: 100px;
+}
+
+.js-options-table > thead > tr > th:nth-child(3) {
+  width: 50px;
+}
+
+// v4 notice above main navbar
+.v4-tease {
+  display: block;
+  padding: 15px 20px;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  background-color: #0275d8;
+
+  &:focus,
+  &:hover {
+    color: #fff;
+    text-decoration: none;
+    background-color: #0269c2;
+  }
+}
+
+/* Nullify ill-advised printing of hrefs; see #18711 */
+@media print {
+  a[href]:after {
+    content: "" !important;
+  }
+}
