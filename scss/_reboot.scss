@@ -40,12 +40,11 @@ html {
   }
 }
 
-// stylelint-disable selector-list-comma-newline-after
 // Shim for "new" HTML5 structural elements to display correctly (IE10, older browsers)
+// stylelint-disable-next-line selector-list-comma-newline-after
 article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block;
 }
-// stylelint-enable selector-list-comma-newline-after
 
 // Body
 //
@@ -95,12 +94,11 @@ hr {
 //
 // By default, `<h1>`-`<h6>` all receive top and bottom margins. We nuke the top
 // margin for easier control within type scales as it avoids margin collapsing.
-// stylelint-disable selector-list-comma-newline-after
+// stylelint-disable-next-line selector-list-comma-newline-after
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
   margin-bottom: $headings-margin-bottom;
 }
-// stylelint-enable selector-list-comma-newline-after
 
 // Reset margins on paragraphs
 //
@@ -163,12 +161,10 @@ dfn {
   font-style: italic; // Add the correct font style in Android 4.3-
 }
 
-// stylelint-disable font-weight-notation
 b,
 strong {
   font-weight: bolder; // Add the correct font weight in Chrome, Edge, and Safari
 }
-// stylelint-enable font-weight-notation
 
 small {
   font-size: 80%; // Add the correct font size in all browsers
