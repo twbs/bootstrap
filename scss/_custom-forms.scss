@@ -453,9 +453,3 @@
     }
   }
 }
-
-.custom-control-label::before,
-.custom-file-label,
-.custom-select {
-  @include transition($custom-forms-transition);
-}

@@ -38,8 +38,8 @@
     $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
     .dropdown-menu#{$infix}-right {
-      right: 0;
-      left: auto;
+      #{$opposite}: 0;
+      #{$default}: auto;
     }
   }
 }
@@ -49,8 +49,8 @@
     $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
     .dropdown-menu#{$infix}-left {
-      right: auto;
-      left: 0;
+      #{$opposite}: auto;
+      #{$default}: 0;
     }
   }
 }

@@ -294,13 +294,13 @@
 
     &:first-of-type {
       border-bottom: 0;
-      border-bottom-right-radius: 0;
-      border-bottom-left-radius: 0;
+      border-bottom-#{$opposite}-radius: 0;
+      border-bottom-#{$default}-radius: 0;
     }
 
     &:last-of-type {
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
+      border-top-#{$default}-radius: 0;
+      border-top-#{$opposite}-radius: 0;
     }
 
     .card-header {
