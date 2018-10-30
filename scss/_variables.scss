@@ -249,7 +249,7 @@ $box-shadow-lg:               0 1rem 3rem rgba($black, .175) !default;
 
 $component-active-color:      $white !default;
 $component-active-bg:         $primary !default;
-$component-active-bg-light:   lighten($primary, 35%) !default;
+$component-active-bg-light:   lighten($component-active-bg, 35%) !default;
 
 $caret-width:                 .3em !default;
 
@@ -464,7 +464,7 @@ $input-border-radius-lg:                $border-radius-lg !default;
 $input-border-radius-sm:                $border-radius-sm !default;
 
 $input-focus-bg:                        $input-bg !default;
-$input-focus-border-color:              $component-active-bg !default;
+$input-focus-border-color:              $component-active-bg-light !default;
 $input-focus-color:                     $input-color !default;
 $input-focus-width:                     $input-btn-focus-width !default;
 $input-focus-box-shadow:                $input-btn-focus-box-shadow !default;
@@ -526,7 +526,7 @@ $custom-control-indicator-focus-box-shadow:     $input-btn-focus-box-shadow !def
 $custom-control-indicator-focus-border-color:   $input-focus-border-color !default;
 
 $custom-control-indicator-active-color:         $component-active-color !default;
-$custom-control-indicator-active-bg:            $component-active-bg !default;
+$custom-control-indicator-active-bg:            $component-active-bg-light !default;
 $custom-control-indicator-active-box-shadow:    none !default;
 $custom-control-indicator-active-border-color:  $custom-control-indicator-active-bg !default;
 
@@ -595,7 +595,7 @@ $custom-range-thumb-border-radius:           1rem !default;
 $custom-range-thumb-box-shadow:              0 .1rem .25rem rgba($black, .1) !default;
 $custom-range-thumb-focus-box-shadow:        0 0 0 1px $body-bg, $input-focus-box-shadow !default;
 $custom-range-thumb-focus-box-shadow-width:  $input-focus-width !default; // For focus box shadow issue in IE/Edge
-$custom-range-thumb-active-bg:               $component-active-bg !default;
+$custom-range-thumb-active-bg:               $component-active-bg-light !default;
 $custom-range-thumb-disabled-bg:             $gray-500 !default;
 
 $custom-file-height:                $input-height !default;
