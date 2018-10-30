@@ -1,6 +1,8 @@
 $(function () {
   'use strict'
 
+  window.Util = typeof bootstrap !== 'undefined' ? bootstrap.Util : Util
+
   QUnit.module('modal plugin')
 
   QUnit.test('should be defined on jquery object', function (assert) {
@@ -650,5 +652,87 @@ $(function () {
       .bootstrapModal('show')
       .bootstrapModal('show')
       .bootstrapModal('hide')
+  })
+
+  QUnit.test('transition duration should be the modal-dialog duration before triggering shown event', function (assert) {
+    assert.expect(2)
+    var done = assert.async()
+    var style = [
+      '<style>',
+      '  .modal.fade .modal-dialog {',
+      '    transition: -webkit-transform .3s ease-out;',
+      '    transition: transform .3s ease-out;',
+      '    transition: transform .3s ease-out,-webkit-transform .3s ease-out;',
+      '    -webkit-transform: translate(0,-50px);',
+      '    transform: translate(0,-50px);',
+      '  }',
+      '</style>'
+    ].join('')
+
+    var $style = $(style).appendTo('head')
+    var modalHTML = [
+      '<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">',
+      '  <div class="modal-dialog" role="document">',
+      '    <div class="modal-content">',
+      '      <div class="modal-body">...</div>',
+      '    </div>',
+      '  </div>',
+      '</div>'
+    ].join('')
+
+    var beginTimestamp = 0
+    var $modal = $(modalHTML).appendTo('#qunit-fixture')
+    var $modalDialog = $('.modal-dialog')
+    var transitionDuration  = Util.getTransitionDurationFromElement($modalDialog[0])
+
+    assert.strictEqual(transitionDuration, 300)
+
+    $modal.on('shown.bs.modal', function () {
+      var diff = Date.now() - beginTimestamp
+      assert.ok(diff < 400)
+      $style.remove()
+      done()
+    })
+      .bootstrapModal('show')
+
+    beginTimestamp = Date.now()
+  })
+
+  QUnit.test('should dispose modal', function (assert) {
+    assert.expect(3)
+    var done = assert.async()
+
+    var $modal = $([
+      '<div id="modal-test">',
+      '  <div class="modal-dialog">',
+      '    <div class="modal-content">',
+      '      <div class="modal-body" />',
+      '    </div>',
+      '  </div>',
+      '</div>'
+    ].join('')).appendTo('#qunit-fixture')
+
+    $modal.on('shown.bs.modal', function () {
+      var spy = sinon.spy($.fn, 'off')
+
+      $(this).bootstrapModal('dispose')
+
+      var modalDataApiEvent = []
+      $._data(document, 'events').click
+        .forEach(function (e) {
+          if (e.namespace === 'bs.data-api.modal') {
+            modalDataApiEvent.push(e)
+          }
+        })
+
+      assert.ok(typeof $(this).data('bs.modal') === 'undefined', 'modal data object was disposed')
+
+      assert.ok(spy.callCount === 4, '`jQuery.off` was called')
+
+      assert.ok(modalDataApiEvent.length === 1, '`Event.CLICK_DATA_API` on `document` was not removed')
+
+      $.fn.off.restore()
+      done()
+    }).bootstrapModal('show')
   })
 })

@@ -44,7 +44,7 @@
     border-color: $custom-control-indicator-focus-border-color;
   }
 
-  &:active ~ .custom-control-label::before {
+  &:not(:disabled):active ~ .custom-control-label::before {
     color: $custom-control-indicator-active-color;
     background-color: $custom-control-indicator-active-bg;
     border-color: $custom-control-indicator-active-border-color;

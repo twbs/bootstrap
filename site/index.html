@@ -16,9 +16,13 @@ layout: home
         <p class="lead mb-4">
           Bootstrap is an open source toolkit for developing with HTML, CSS, and JS. Quickly prototype your ideas or build your entire app with our Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful plugins built on jQuery.
         </p>
-        <div class="d-flex flex-column flex-md-row lead mb-3">
-          <a href="{{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/introduction/" class="btn btn-lg btn-bd-primary mb-3 mb-md-0 mr-md-3" onclick="ga('send', 'event', 'Jumbotron actions', 'Get started', 'Get started');">Get started</a>
-          <a href="{{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/download/" class="btn btn-lg btn-outline-secondary" onclick="ga('send', 'event', 'Jumbotron actions', 'Download', 'Download {{ site.current_version }}');">Download</a>
+        <div class="row mx-n2">
+          <div class="col-md px-2">
+            <a href="{{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/introduction/" class="btn btn-lg btn-bd-primary w-100 mb-3" onclick="ga('send', 'event', 'Jumbotron actions', 'Get started', 'Get started');">Get started</a>
+          </div>
+          <div class="col-md px-2">
+            <a href="{{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/download/" class="btn btn-lg btn-outline-secondary w-100 mb-3" onclick="ga('send', 'event', 'Jumbotron actions', 'Download', 'Download {{ site.current_version }}');">Download</a>
+          </div>
         </div>
         <p class="text-muted mb-0">
           Currently v{{ site.current_version }}
