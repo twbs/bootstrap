@@ -1,4 +1,4 @@
-<p align="center">
+﻿<p align="center">
   <a href="https://getbootstrap.com/">
     <img src="https://getbootstrap.com/docs/4.1/assets/brand/bootstrap-solid.svg" alt="Bootstrap logo" width=72 height=72>
   </a>
@@ -163,7 +163,7 @@ See [the Releases section of our GitHub project](https://github.com/twbs/bootstr
 
 **Mark Otto**
 
-- <https://twitter.com/mdo>
+-- <https://twitter.com/mdo>
 - <https://github.com/mdo>
 
 **Jacob Thornton**
