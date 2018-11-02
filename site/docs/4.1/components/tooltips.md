@@ -20,6 +20,8 @@ Things to know when using the tooltip plugin:
 - When triggered from hyperlinks that span multiple lines, tooltips will be centered. Use `white-space: nowrap;` on your `<a>`s to avoid this behavior.
 - Tooltips must be hidden before their corresponding elements have been removed from the DOM.
 
+{% include callout-info-prefersreducedmotion.md %}
+
 Got all that? Great, let's see how they work with some examples.
 
 ## Example: Enable tooltips everywhere
