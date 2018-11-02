@@ -119,7 +119,7 @@
   }
 
   > .btn:not(:first-child),
-  > .btn-group:not(:first-child), {
+  > .btn-group:not(:first-child) {
     margin-top: -$btn-border-width;
   }
 
