@@ -23,6 +23,7 @@
     margin-bottom: 0;
 
     + .form-control,
+    + .form-control-plaintext,
     + .custom-select,
     + .custom-file {
       margin-left: -$input-border-width;
