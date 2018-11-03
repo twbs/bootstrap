@@ -45,7 +45,7 @@ For visually hidden interactive controls, such as traditional "skip" links, `.sr
 
 ### Reduced motion
 
-Bootstrap includes support for the [`prefers-reduced-motion` media feature](https://drafts.csswg.org/mediaqueries-5/#prefers-reduced-motion). In browsers/environments that allow the user to specify their preference for reduced motion, most CSS transition effects in Bootstrap (for instance, when a modal dialog is opened or closed) will be disabled. Currently, support is limited to Safari on macOS and iOS.
+Bootstrap includes support for the [`prefers-reduced-motion` media feature](https://drafts.csswg.org/mediaqueries-5/#prefers-reduced-motion). In browsers/environments that allow the user to specify their preference for reduced motion, most CSS transition effects in Bootstrap (for instance, when a modal dialog is opened or closed, or the sliding animation in carousels) will be disabled.
 
 ## Additional resources
 

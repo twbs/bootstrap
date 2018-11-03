@@ -8,7 +8,9 @@
     }
   }
 
-  @media screen and (prefers-reduced-motion: reduce) {
-    transition: none;
+  @if $enable-prefers-reduced-motion-media-query {
+    @media screen and (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
   }
 }
