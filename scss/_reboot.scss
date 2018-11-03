@@ -40,6 +40,7 @@ html {
 }
 
 // Shim for "new" HTML5 structural elements to display correctly (IE10, older browsers)
+// TODO: remove in v5
 // stylelint-disable-next-line selector-list-comma-newline-after
 article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block;
