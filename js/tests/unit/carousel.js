@@ -172,26 +172,26 @@ $(function () {
 
   QUnit.test('should support multiple carousel indicators', function (assert) {
     assert.expect(15)
-    var carouselHTML = '<div id="carousel-example-generic" class="carousel slide">'
-        + '<ol id="carousel-indicators-1" class="carousel-indicators">'
-        + '<li data-target="#carousel-example-generic" data-slide-to="0" class="active"/>'
-        + '<li data-target="#carousel-example-generic" data-slide-to="1"/>'
-        + '</ol>'
-        + '<ol id="carousel-indicators-2" class="carousel-indicators">'
-        + '<li data-target="#carousel-example-generic" data-slide-to="0" class="active"/>'
-        + '<li data-target="#carousel-example-generic" data-slide-to="1"/>'
-        + '</ol>'
-        + '<div class="carousel-inner">'
-        + '<div class="carousel-item active">'
-        + '<div class="carousel-caption"/>'
-        + '</div>'
-        + '<div class="carousel-item">'
-        + '<div class="carousel-caption"/>'
-        + '</div>'
-        + '</div>'
-        + '<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"/>'
-        + '<a class="right carousel-control" href="#carousel-example-generic" data-slide="next"/>'
-        + '</div>'
+    var carouselHTML = '<div id="carousel-example-generic" class="carousel slide">' +
+      '<ol id="carousel-indicators-1" class="carousel-indicators">' +
+      '<li data-target="#carousel-example-generic" data-slide-to="0" class="active"/>' +
+      '<li data-target="#carousel-example-generic" data-slide-to="1"/>' +
+      '</ol>' +
+      '<ol id="carousel-indicators-2" class="carousel-indicators">' +
+      '<li data-target="#carousel-example-generic" data-slide-to="0" class="active"/>' +
+      '<li data-target="#carousel-example-generic" data-slide-to="1"/>' +
+      '</ol>' +
+      '<div class="carousel-inner">' +
+      '<div class="carousel-item active">' +
+      '<div class="carousel-caption"/>' +
+      '</div>' +
+      '<div class="carousel-item">' +
+      '<div class="carousel-caption"/>' +
+      '</div>' +
+      '</div>' +
+      '<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"/>' +
+      '<a class="right carousel-control" href="#carousel-example-generic" data-slide="next"/>' +
+      '</div>'
     var $carousel = $(carouselHTML)
 
     var done = assert.async()
