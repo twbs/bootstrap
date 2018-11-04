@@ -31,6 +31,15 @@ For left, right, and center alignment, responsive classes are available that use
 
 ## Text wrapping and overflow
 
+Wrap text with a `.text-wrap` class.
+
+{% capture example %}
+<div class="text-wrap bd-highlight" style="width: 6rem;">
+  This text should wrap.
+</div>
+{% endcapture %}
+{% include example.html content=example %}
+
 Prevent text from wrapping with a `.text-nowrap` class.
 
 {% capture example %}
