@@ -151,7 +151,7 @@ class Dropdown {
        * Popper - https://popper.js.org
        */
       if (typeof Popper === 'undefined') {
-        throw new TypeError('Bootstrap dropdown require Popper.js (https://popper.js.org)')
+        throw new TypeError('Bootstrap\'s dropdowns require Popper.js (https://popper.js.org/)')
       }
 
       let referenceElement = this._element

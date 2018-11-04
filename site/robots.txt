@@ -5,5 +5,5 @@
 
 # Allow crawling of all content
 User-agent: *
-Disallow:
+Disallow:{% if jekyll.environment != "production" %} /{% endif %}
 Sitemap: {{ site.url }}/sitemap.xml
