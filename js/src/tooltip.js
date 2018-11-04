@@ -113,7 +113,7 @@ class Tooltip {
      * Popper - https://popper.js.org
      */
     if (typeof Popper === 'undefined') {
-      throw new TypeError('Bootstrap tooltips require Popper.js (https://popper.js.org)')
+      throw new TypeError('Bootstrap\'s tooltips require Popper.js (https://popper.js.org/)')
     }
 
     // private
@@ -486,12 +486,16 @@ class Tooltip {
             (event) => this._leave(event)
           )
       }
-
-      $(this.element).closest('.modal').on(
-        'hide.bs.modal',
-        () => this.hide()
-      )
     })
+
+    $(this.element).closest('.modal').on(
+      'hide.bs.modal',
+      () => {
+        if (this.element) {
+          this.hide()
+        }
+      }
+    )
 
     if (this.config.selector) {
       this.config = {

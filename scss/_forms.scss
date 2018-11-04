@@ -155,7 +155,7 @@ select.form-control {
   @include border-radius($input-border-radius-lg);
 }
 
-// stylelint-disable no-duplicate-selectors
+// stylelint-disable-next-line no-duplicate-selectors
 select.form-control {
   &[size],
   &[multiple] {
@@ -163,10 +163,10 @@ select.form-control {
   }
 }
 
+// stylelint-disable-next-line no-duplicate-selectors
 textarea.form-control {
   height: auto;
 }
-// stylelint-enable no-duplicate-selectors
 
 // Form groups
 //
