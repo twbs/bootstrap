@@ -12,6 +12,7 @@
   width: 100%;
 
   > .form-control,
+  > .form-control-plaintext,
   > .custom-select,
   > .custom-file {
     position: relative; // For focus state's z-index
@@ -21,16 +22,23 @@
     width: 1%;
     margin-bottom: 0;
 
-    // Bring the "active" form control to the top of surrounding elements
-    &:focus {
-      z-index: 3;
-    }
-
     + .form-control,
     + .custom-select,
     + .custom-file {
       margin-left: -$input-border-width;
     }
+  }
+
+  // Bring the "active" form control to the top of surrounding elements
+  > .form-control:focus,
+  > .custom-select:focus,
+  > .custom-file .custom-file-input:focus ~ .custom-file-label {
+    z-index: 3;
+  }
+
+  // Bring the custom file input above the label
+  > .custom-file .custom-file-input:focus {
+    z-index: 4;
   }
 
   > .form-control,
@@ -68,6 +76,10 @@
   .btn {
     position: relative;
     z-index: 2;
+
+    &:focus {
+      z-index: 3;
+    }
   }
 
   .btn + .btn,
@@ -120,7 +132,11 @@
 .input-group-lg > .input-group-append > .input-group-text,
 .input-group-lg > .input-group-prepend > .btn,
 .input-group-lg > .input-group-append > .btn {
-  @extend .form-control-lg;
+  height: $input-height-lg;
+  padding: $input-padding-y-lg $input-padding-x-lg;
+  font-size: $font-size-lg;
+  line-height: $input-line-height-lg;
+  @include border-radius($input-border-radius-lg);
 }
 
 .input-group-sm > .form-control,
@@ -128,7 +144,11 @@
 .input-group-sm > .input-group-append > .input-group-text,
 .input-group-sm > .input-group-prepend > .btn,
 .input-group-sm > .input-group-append > .btn {
-  @extend .form-control-sm;
+  height: $input-height-sm;
+  padding: $input-padding-y-sm $input-padding-x-sm;
+  font-size: $font-size-sm;
+  line-height: $input-line-height-sm;
+  @include border-radius($input-border-radius-sm);
 }
 
 

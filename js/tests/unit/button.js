@@ -16,6 +16,7 @@ $(function () {
     afterEach: function () {
       $.fn.button = $.fn.bootstrapButton
       delete $.fn.bootstrapButton
+      $('#qunit-fixture').html('')
     }
   })
 
