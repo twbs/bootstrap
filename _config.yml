@@ -11,7 +11,7 @@ permalink:      pretty
 # Server
 source:         "site"
 destination:    ./_gh_pages
-host:           0.0.0.0
+host:           "localhost"
 port:           9001
 baseurl:        ""
 url:            "https://getbootstrap.com"
@@ -62,3 +62,4 @@ cdn:
 toc:
   min_level:        2
   max_level:        4
+  no_toc_section_class: "bd-example"

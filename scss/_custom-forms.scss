@@ -26,18 +26,28 @@
 
   &:checked ~ .custom-control-label::before {
     color: $custom-control-indicator-checked-color;
+    border-color: $custom-control-indicator-checked-border-color;
     @include gradient-bg($custom-control-indicator-checked-bg);
     @include box-shadow($custom-control-indicator-checked-box-shadow);
   }
 
   &:focus ~ .custom-control-label::before {
     // the mixin is not used here to make sure there is feedback
-    box-shadow: $custom-control-indicator-focus-box-shadow;
+    @if $enable-shadows {
+      box-shadow: $input-box-shadow, $input-focus-box-shadow;
+    } @else {
+      box-shadow: $custom-control-indicator-focus-box-shadow;
+    }
   }
 
-  &:active ~ .custom-control-label::before {
+  &:focus:not(:checked) ~ .custom-control-label::before {
+    border-color: $custom-control-indicator-focus-border-color;
+  }
+
+  &:not(:disabled):active ~ .custom-control-label::before {
     color: $custom-control-indicator-active-color;
     background-color: $custom-control-indicator-active-bg;
+    border-color: $custom-control-indicator-active-border-color;
     @include box-shadow($custom-control-indicator-active-box-shadow);
   }
 
@@ -59,6 +69,7 @@
 .custom-control-label {
   position: relative;
   margin-bottom: 0;
+  vertical-align: top;
 
   // Background-color and (when enabled) gradient
   &::before {
@@ -71,6 +82,7 @@
     pointer-events: none;
     content: "";
     background-color: $custom-control-indicator-bg;
+    border: $custom-control-indicator-border-color solid $custom-control-indicator-border-width;
     @include box-shadow($custom-control-indicator-box-shadow);
   }
 
@@ -100,9 +112,6 @@
   }
 
   .custom-control-input:checked ~ .custom-control-label {
-    &::before {
-      @include gradient-bg($custom-control-indicator-checked-bg);
-    }
     &::after {
       background-image: $custom-checkbox-indicator-icon-checked;
     }
@@ -110,6 +119,7 @@
 
   .custom-control-input:indeterminate ~ .custom-control-label {
     &::before {
+      border-color: $custom-checkbox-indicator-indeterminate-border-color;
       @include gradient-bg($custom-checkbox-indicator-indeterminate-bg);
       @include box-shadow($custom-checkbox-indicator-indeterminate-box-shadow);
     }
@@ -138,9 +148,6 @@
   }
 
   .custom-control-input:checked ~ .custom-control-label {
-    &::before {
-      @include gradient-bg($custom-control-indicator-checked-bg);
-    }
     &::after {
       background-image: $custom-radio-indicator-icon-checked;
     }
@@ -354,7 +361,7 @@
   &:focus {
     outline: none;
 
-    // Pseudo-elements must be split across multiple rulesets to have an affect.
+    // Pseudo-elements must be split across multiple rulesets to have an effect.
     // No box-shadow() mixin for focus accessibility.
     &::-webkit-slider-thumb { box-shadow: $custom-range-thumb-focus-box-shadow; }
     &::-moz-range-thumb     { box-shadow: $custom-range-thumb-focus-box-shadow; }

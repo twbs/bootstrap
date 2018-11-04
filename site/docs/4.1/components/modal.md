@@ -23,6 +23,8 @@ $('#myModal').on('shown.bs.modal', function () {
 })
 {% endhighlight %}
 
+{% include callout-info-prefersreducedmotion.md %}
+
 Keep reading for demos and usage guidelines.
 
 ## Examples
