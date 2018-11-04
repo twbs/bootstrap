@@ -22,7 +22,7 @@ To get started, check out <https://getbootstrap.com/>!
 * [Community](#community)
 * [Versioning](#versioning)
 * [Creators](#creators)
-- [Thanks](#thanks)
+* [Thanks](#thanks)
 * [Copyright and license](#copyright-and-license)
 
 
