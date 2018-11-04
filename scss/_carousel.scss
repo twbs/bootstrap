@@ -16,7 +16,7 @@
 }
 
 .carousel.pointer-event {
-  touch-action: none;
+  touch-action: pan-y;
 }
 
 .carousel-inner {
