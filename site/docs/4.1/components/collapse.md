@@ -10,6 +10,8 @@ toc: true
 
 The collapse JavaScript plugin is used to show and hide content. Buttons or anchors are used as triggers that are mapped to specific elements you toggle. Collapsing an element will animate the `height` from its current value to `0`. Given how CSS handles animations, you cannot use `padding` on a `.collapse` element. Instead, use the class as an independent wrapping element.
 
+{% include callout-info-prefersreducedmotion.md %}
+
 ## Example
 
 Click the buttons below to show and hide another element via class changes:
