@@ -17,6 +17,8 @@ Here's what you need to know before getting started with the navbar:
 - Navbars are hidden by default when printing. Force them to be printed by adding `.d-print` to the `.navbar`. See the [display]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/display/) utility class.
 - Ensure accessibility by using a `<nav>` element or, if using a more generic element such as a `<div>`, add a `role="navigation"` to every navbar to explicitly identify it as a landmark region for users of assistive technologies.
 
+{% include callout-info-prefersreducedmotion.md %}
+
 Read on for an example and list of supported sub-components.
 
 ## Supported content

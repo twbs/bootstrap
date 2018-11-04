@@ -219,7 +219,7 @@ Responsive variations also exist for `align-self`.
 
 ## Fill
 
-Use the `.flex-fill` class on a series of sibling elements to force them into widths equal to their content (or equal widths if their content does not surpass their border-boxes) while taking up all available horizontal space. 
+Use the `.flex-fill` class on a series of sibling elements to force them into widths equal to their content (or equal widths if their content does not surpass their border-boxes) while taking up all available horizontal space.
 
 {% capture example %}
 <div class="d-flex bd-highlight">

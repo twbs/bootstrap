@@ -121,8 +121,8 @@ if (bundle) {
       emitWarning: false,
       global: {
         statements: 90,
-        branches: 84,
-        functions: 87,
+        branches: 86,
+        functions: 89,
         lines: 90
       }
     }
