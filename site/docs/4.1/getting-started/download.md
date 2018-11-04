@@ -63,6 +63,14 @@ Bootstrap's `package.json` contains some additional metadata under the following
 - `sass` - path to Bootstrap's main [Sass](https://sass-lang.com/) source file
 - `style` - path to Bootstrap's non-minified CSS that's been precompiled using the default settings (no customization)
 
+### yarn
+
+Install Bootstrap in your Node.js powered apps with [the yarn package](https://yarnpkg.com/en/package/yarn):
+
+{% highlight sh %}
+yarn add bootstrap
+{% endhighlight %}
+
 ### RubyGems
 
 Install Bootstrap in your Ruby apps using [Bundler](https://bundler.io/) (**recommended**) and [RubyGems](https://rubygems.org/) by adding the following line to your [`Gemfile`](https://bundler.io/gemfile.html):

@@ -283,21 +283,16 @@ class Carousel {
       if (this._pointerEvent && (event.originalEvent.pointerType === PointerType.TOUCH || event.originalEvent.pointerType === PointerType.PEN)) {
         this.touchStartX = event.originalEvent.clientX
       } else if (!this._pointerEvent) {
-        event.preventDefault()
         this.touchStartX = event.originalEvent.touches[0].clientX
       }
     }
 
     const move = (event) => {
-      if (!this._pointerEvent) {
-        event.preventDefault()
-
-        // ensure swiping with one touch and not pinching
-        if (event.originalEvent.touches && event.originalEvent.touches.length > 1) {
-          this.touchDeltaX = 0
-        } else {
-          this.touchDeltaX = event.originalEvent.touches[0].clientX - this.touchStartX
-        }
+      // ensure swiping with one touch and not pinching
+      if (event.originalEvent.touches && event.originalEvent.touches.length > 1) {
+        this.touchDeltaX = 0
+      } else {
+        this.touchDeltaX = event.originalEvent.touches[0].clientX - this.touchStartX
       }
     }
 
@@ -307,7 +302,6 @@ class Carousel {
       }
 
       this._handleSwipe()
-
       if (this._config.pause === 'hover') {
         // If it's a touch-enabled device, mouseenter/leave are fired as
         // part of the mouse compatibility events on first tap - the carousel
