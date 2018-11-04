@@ -115,15 +115,6 @@ fieldset:disabled a.btn {
   @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-line-height-sm, $btn-border-radius-sm);
 }
 
-
-//
-// Button Rounded
-//
-
-.btn-rounded {
-  border-radius: $btn-rounded;
-}
-
 //
 // Block button
 //
