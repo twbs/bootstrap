@@ -22,7 +22,7 @@
 </p>
 
 
-# Table of contents
+## Table of contents
 
 - [Quick start](#quick-start)
 - [Status](#status)
