@@ -41,26 +41,83 @@
     z-index: 5;
     display: none;
     max-width: 100%; // Contain to parent when possible
-    padding: .5rem;
+    padding: $form-feedback-tooltip-padding-y $form-feedback-tooltip-padding-x;
     margin-top: .1rem;
-    font-size: .875rem;
-    line-height: 1;
-    color: #fff;
-    background-color: rgba($color, .8);
-    border-radius: .2rem;
+    font-size: $form-feedback-tooltip-font-size;
+    line-height: $form-feedback-tooltip-line-height;
+    color: color-yiq($color);
+    background-color: rgba($color, $form-feedback-tooltip-opacity);
+    @include border-radius($form-feedback-tooltip-border-radius);
   }
 
-  .form-control,
-  .custom-select {
+  .form-control {
     .was-validated &:#{$state},
     &.is-#{$state} {
       border-color: $color;
+
+      @if $enable-validation-icons {
+        padding-right: $input-height-inner;
+        background-repeat: no-repeat;
+        background-position: center right calc(#{$input-height-inner} / 4);
+        background-size: calc(#{$input-height-inner} / 2) calc(#{$input-height-inner} / 2);
+
+        @if $state == "valid" {
+          background-image: $form-feedback-icon-valid;
+        } @else {
+          background-image: $form-feedback-icon-invalid;
+        }
+      }
 
       &:focus {
         border-color: $color;
         box-shadow: 0 0 0 $input-focus-width rgba($color, .25);
       }
 
+      ~ .#{$state}-feedback,
+      ~ .#{$state}-tooltip {
+        display: block;
+      }
+    }
+  }
+
+  // stylelint-disable-next-line selector-no-qualifying-type
+  textarea.form-control {
+    .was-validated &:#{$state},
+    &.is-#{$state} {
+      @if $enable-validation-icons {
+        padding-right: $input-height-inner;
+        background-position: top calc(#{$input-height-inner} / 4) right calc(#{$input-height-inner} / 4);
+      }
+    }
+  }
+
+  .custom-select {
+    .was-validated &:#{$state},
+    &.is-#{$state} {
+      border-color: $color;
+
+      @if $enable-validation-icons {
+        $form-feedback-icon: if($state == "valid", $form-feedback-icon-valid, $form-feedback-icon-invalid);
+        padding-right: $custom-select-feedback-icon-padding-right;
+        background: $custom-select-background, $form-feedback-icon no-repeat $custom-select-feedback-icon-position / $custom-select-feedback-icon-size;
+      }
+
+      &:focus {
+        border-color: $color;
+        box-shadow: 0 0 0 $input-focus-width rgba($color, .25);
+      }
+
+      ~ .#{$state}-feedback,
+      ~ .#{$state}-tooltip {
+        display: block;
+      }
+    }
+  }
+
+
+  .form-control-file {
+    .was-validated &:#{$state},
+    &.is-#{$state} {
       ~ .#{$state}-feedback,
       ~ .#{$state}-tooltip {
         display: block;
@@ -89,7 +146,7 @@
         color: $color;
 
         &::before {
-          background-color: lighten($color, 25%);
+          border-color: $color;
         }
       }
 
@@ -100,13 +157,18 @@
 
       &:checked {
         ~ .custom-control-label::before {
+          border-color: lighten($color, 10%);
           @include gradient-bg(lighten($color, 10%));
         }
       }
 
       &:focus {
         ~ .custom-control-label::before {
-          box-shadow: 0 0 0 1px $body-bg, 0 0 0 $input-focus-width rgba($color, .25);
+          box-shadow: 0 0 0 $input-focus-width rgba($color, .25);
+        }
+
+        &:not(:checked) ~ .custom-control-label::before {
+          border-color: $color;
         }
       }
     }
@@ -118,8 +180,6 @@
     &.is-#{$state} {
       ~ .custom-file-label {
         border-color: $color;
-
-        &::before { border-color: inherit; }
       }
 
       ~ .#{$state}-feedback,
@@ -129,6 +189,7 @@
 
       &:focus {
         ~ .custom-file-label {
+          border-color: $color;
           box-shadow: 0 0 0 $input-focus-width rgba($color, .25);
         }
       }

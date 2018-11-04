@@ -7,16 +7,17 @@
 .btn {
   display: inline-block;
   font-weight: $btn-font-weight;
+  color: $body-color;
   text-align: center;
-  white-space: nowrap;
   vertical-align: middle;
   user-select: none;
+  background-color: transparent;
   border: $btn-border-width solid transparent;
-  @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-line-height, $btn-border-radius);
+  @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size, $btn-line-height, $btn-border-radius);
   @include transition($btn-transition);
 
-  // Share hover and focus styles
-  @include hover-focus {
+  @include hover {
+    color: $body-color;
     text-decoration: none;
   }
 
@@ -40,7 +41,6 @@
 
   &:not(:disabled):not(.disabled):active,
   &:not(:disabled):not(.disabled).active {
-    background-image: none;
     @include box-shadow($btn-active-box-shadow);
 
     &:focus {
@@ -81,25 +81,22 @@ fieldset:disabled a.btn {
 .btn-link {
   font-weight: $font-weight-normal;
   color: $link-color;
-  background-color: transparent;
 
   @include hover {
     color: $link-hover-color;
     text-decoration: $link-hover-decoration;
-    background-color: transparent;
-    border-color: transparent;
   }
 
   &:focus,
   &.focus {
     text-decoration: $link-hover-decoration;
-    border-color: transparent;
     box-shadow: none;
   }
 
   &:disabled,
   &.disabled {
     color: $btn-link-disabled-color;
+    pointer-events: none;
   }
 
   // No need for an active state here
@@ -111,11 +108,11 @@ fieldset:disabled a.btn {
 //
 
 .btn-lg {
-  @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $font-size-lg, $btn-line-height-lg, $btn-border-radius-lg);
+  @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg, $btn-line-height-lg, $btn-border-radius-lg);
 }
 
 .btn-sm {
-  @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $font-size-sm, $btn-line-height-sm, $btn-border-radius-sm);
+  @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $btn-font-size-sm, $btn-line-height-sm, $btn-border-radius-sm);
 }
 
 
