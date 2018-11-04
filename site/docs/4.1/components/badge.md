@@ -10,23 +10,15 @@ toc: true
 
 Badges scale to match the size of the immediate parent element by using relative font sizing and `em` units.
 
-<div class="bd-example">
-<div class="h1">Example heading <span class="badge badge-secondary">New</span></div>
-<div class="h2">Example heading <span class="badge badge-secondary">New</span></div>
-<div class="h3">Example heading <span class="badge badge-secondary">New</span></div>
-<div class="h4">Example heading <span class="badge badge-secondary">New</span></div>
-<div class="h5">Example heading <span class="badge badge-secondary">New</span></div>
-<div class="h6">Example heading <span class="badge badge-secondary">New</span></div>
-</div>
-
-{% highlight html %}
+{% capture example %}
 <h1>Example heading <span class="badge badge-secondary">New</span></h1>
 <h2>Example heading <span class="badge badge-secondary">New</span></h2>
 <h3>Example heading <span class="badge badge-secondary">New</span></h3>
 <h4>Example heading <span class="badge badge-secondary">New</span></h4>
 <h5>Example heading <span class="badge badge-secondary">New</span></h5>
 <h6>Example heading <span class="badge badge-secondary">New</span></h6>
-{% endhighlight %}
+{% endcapture %}
+{% include example.html content=example %}
 
 Badges can be used as part of links or buttons to provide a counter.
 

@@ -13,7 +13,7 @@
 </title>
 
 <!-- Bootstrap core CSS -->
-{% if site.github %}
+{% if jekyll.environment == "production" %}
 <link href="{{ site.baseurl }}/docs/{{ site.docs_version }}/dist/css/bootstrap.min.css" rel="stylesheet" integrity="{{ site.cdn.css_hash }}" crossorigin="anonymous">
 {% else %}
 <link href="{{ site.baseurl }}/docs/{{ site.docs_version }}/dist/css/bootstrap.css" rel="stylesheet">

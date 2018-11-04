@@ -46,7 +46,11 @@ const customLaunchers = {
   }
 }
 
-let files = ['node_modules/popper.js/dist/umd/popper.min.js']
+let files = [
+  'node_modules/popper.js/dist/umd/popper.min.js',
+  'node_modules/hammer-simulator/index.js'
+]
+
 const conf = {
   basePath: '../..',
   port: 9876,
@@ -117,8 +121,8 @@ if (bundle) {
       emitWarning: false,
       global: {
         statements: 90,
-        branches: 84,
-        functions: 87,
+        branches: 86,
+        functions: 89,
         lines: 90
       }
     }

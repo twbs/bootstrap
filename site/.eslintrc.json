@@ -7,7 +7,7 @@
     "ecmaVersion": 5,
     "sourceType": "script"
   },
-  "extends": "../../../../../.eslintrc.json",
+  "extends": "../.eslintrc.json",
   "rules": {
     // Best Practices
     "no-magic-numbers": "off",
