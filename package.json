@@ -56,7 +56,6 @@
     "js-test-karma-old": "cross-env USE_OLD_JQUERY=true npm run js-test-karma",
     "js-test-karma-bundle": "cross-env BUNDLE=true npm run js-test-karma",
     "js-test-karma-bundle-old": "cross-env BUNDLE=true USE_OLD_JQUERY=true npm run js-test-karma",
-    "prejs-test-cloud": "npm run js-compile && npm run js-test-karma",
     "js-test-cloud": "cross-env BROWSER=true npm run js-test-karma",
     "lint": "npm-run-all --parallel js-lint* css-lint*",
     "coveralls": "shx cat js/coverage/lcov.info | coveralls",
