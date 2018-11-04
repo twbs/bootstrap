@@ -10,18 +10,10 @@ install:
   - npm install
 script:
   - npm test
-  - if [[ "$TRAVIS_NODE_VERSION" = "8" && "$TRAVIS_BUILD_STAGE_NAME" = "Test" ]]; then npm run check-broken-links; fi
+  - if [[ "$TRAVIS_NODE_VERSION" = "8" ]]; then npm run check-broken-links; fi
+  - if [[ "$TRAVIS_NODE_VERSION" = "8" && "$TRAVIS_EVENT_TYPE" = "push" && ! `git log --format=%B --no-merges -n 1 | grep '\[skip browser\]'` ]]; then npm run js-test-cloud; fi
 after_success:
-  - if [[ "$TRAVIS_NODE_VERSION" = "8" && "$TRAVIS_BUILD_STAGE_NAME" = "Test" ]]; then npm run coveralls; fi
-stages:
-  - test
-  - name: browser
-    if: type = push
-jobs:
-  include:
-    - stage: browser
-      node_js: 8
-      script: if ! git log --format=%B --no-merges -n 1 | grep '\[skip browser\]'; then npm run js-test-cloud; fi
+  - if [[ "$TRAVIS_NODE_VERSION" = "8" ]]; then npm run coveralls; fi
 cache:
   directories:
     - node_modules
