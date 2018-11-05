@@ -51,6 +51,11 @@ body {
   margin-right: .75rem;
   margin-left: .75rem;
 }
+.marketing .rounded-circle {
+  width: 140px;
+  height: 140px;
+  background-color: #777;
+}
 
 
 /* Featurettes
