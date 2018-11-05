@@ -20,6 +20,19 @@ $(function () {
     assert.strictEqual(Util.getSelectorFromElement($el2[0]), null)
   })
 
+  QUnit.test('Util.getSelectorFromElement should throw error when there is a bad selector', function (assert) {
+    assert.expect(2)
+
+    var $el = $('<div data-target="#1"></div>').appendTo($('#qunit-fixture'))
+
+    try {
+      assert.ok(true, 'trying to use a bad selector')
+      Util.getSelectorFromElement($el[0])
+    } catch (e) {
+      assert.ok(e instanceof DOMException)
+    }
+  })
+
   QUnit.test('Util.typeCheckConfig should thrown an error when a bad config is passed', function (assert) {
     assert.expect(1)
     var namePlugin = 'collapse'
@@ -60,6 +73,16 @@ $(function () {
     var $div = $('<div style="transition: all .4s ease-out;"></div>').appendTo($('#qunit-fixture'))
 
     assert.strictEqual(Util.getTransitionDurationFromElement($div[0]), 400)
+  })
+
+  QUnit.test('Util.getTransitionDurationFromElement should return the addition of transition-delay and transition-duration', function (assert) {
+    assert.expect(2)
+    var $fixture = $('#qunit-fixture')
+    var $div = $('<div style="transition: all 0s 150ms ease-out;"></div>').appendTo($fixture)
+    var $div2 = $('<div style="transition: all .25s 30ms ease-out;"></div>').appendTo($fixture)
+
+    assert.strictEqual(Util.getTransitionDurationFromElement($div[0]), 150)
+    assert.strictEqual(Util.getTransitionDurationFromElement($div2[0]), 280)
   })
 
   QUnit.test('Util.getTransitionDurationFromElement should get the first transition duration if multiple transition durations are defined', function (assert) {

@@ -1,0 +1,25 @@
+---
+layout: simple
+title: Examples
+description: Quickly get a project started with any of our examples ranging from using parts of the framework to custom components and layouts.
+redirect_from:
+  - "/examples/"
+  - "/docs/4.0/examples/tooltip-viewport/"
+  - "/docs/4.1/examples/tooltip-viewport/"
+---
+
+{% for entry in site.data.examples %}
+  <h2>{{ entry.category | capitalize }}</h2>
+  <p>{{ entry.description }}</p>
+  {% for example in entry.examples %}
+    {% if forloop.first %}<div class="row">{% endif %}
+      <div class="col-sm-6 col-md-4 col-xl-3 mb-3">
+        <a href="{{ site.baseurl }}/docs/{{ site.docs_version }}/examples/{{ example.name | slugify }}/">
+          <img class="img-thumbnail mb-3" src="{{ site.baseurl }}/docs/{{ site.docs_version }}/examples/screenshots/{{ example.name | slugify }}.png" alt="{{ example.name }} screenshot" width="960" height="600">
+          <h5 class="mb-1">{{ example.name }}</h5>
+        </a>
+        <p class="text-muted">{{ example.description }}</p>
+      </div>
+    {% if forloop.last %}</div>{% endif %}
+  {% endfor %}
+{% endfor %}
