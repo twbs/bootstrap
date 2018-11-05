@@ -4,7 +4,8 @@
   @include border-radius();
 }
 
-.page-label, .page-link {
+.page-label,
+.page-link {
     position: relative;
     display: block;
     padding: $pagination-padding-y $pagination-padding-x;
