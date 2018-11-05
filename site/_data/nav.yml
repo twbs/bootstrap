@@ -15,7 +15,6 @@
   pages:
     - title: Overview
     - title: Grid
-    - title: Media object
     - title: Utilities for layout
 
 - title: Content
@@ -42,6 +41,7 @@
     - title: Input group
     - title: Jumbotron
     - title: List group
+    - title: Media object
     - title: Modal
     - title: Navs
     - title: Navbar

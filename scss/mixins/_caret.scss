@@ -29,8 +29,6 @@
   @if $enable-caret {
     &::after {
       display: inline-block;
-      width: 0;
-      height: 0;
       margin-left: $caret-width * .85;
       vertical-align: $caret-width * .85;
       content: "";
@@ -50,8 +48,6 @@
 
       &::before {
         display: inline-block;
-        width: 0;
-        height: 0;
         margin-right: $caret-width * .85;
         vertical-align: $caret-width * .85;
         content: "";
