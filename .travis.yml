@@ -9,7 +9,7 @@ install:
   - bundle install --deployment --jobs=3 --retry=3 --clean
   - npm install
 script:
-  - npm test
+  - npm test || travis_terminate 1
   - if [[ "$TRAVIS_NODE_VERSION" = "8" ]]; then npm run check-broken-links; fi
   - if [[ "$TRAVIS_NODE_VERSION" = "8" && "$TRAVIS_EVENT_TYPE" = "push" && ! `git log --format=%B --no-merges -n 1 | grep '\[skip browser\]'` ]]; then npm run js-test-cloud; fi
 after_success:
