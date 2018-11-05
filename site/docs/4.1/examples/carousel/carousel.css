@@ -15,6 +15,7 @@ body {
 /* Carousel base class */
 .carousel {
   margin-bottom: 4rem;
+  background-color: #777;
 }
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
@@ -25,7 +26,6 @@ body {
 /* Declare heights because of positioning of img element */
 .carousel-item {
   height: 32rem;
-  background-color: #777;
 }
 .carousel-item > img {
   position: absolute;
