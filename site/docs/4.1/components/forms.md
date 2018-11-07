@@ -721,7 +721,7 @@ Add the `disabled` attribute to a `<fieldset>` to disable all the controls withi
         Can't check this
       </label>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary mt-3">Submit</button>
   </fieldset>
 </form>
 {% endcapture %}

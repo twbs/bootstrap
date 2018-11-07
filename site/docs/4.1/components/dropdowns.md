@@ -721,7 +721,7 @@ Put a form within a dropdown menu, or make it into a dropdown menu, and use [mar
         Remember me
       </label>
     </div>
-    <button type="submit" class="btn btn-primary">Sign in</button>
+    <button type="submit" class="btn btn-primary mt-3">Sign in</button>
   </form>
   <div class="dropdown-divider"></div>
   <a class="dropdown-item" href="#">New around here? Sign up</a>
@@ -746,7 +746,7 @@ Put a form within a dropdown menu, or make it into a dropdown menu, and use [mar
       Remember me
     </label>
   </div>
-  <button type="submit" class="btn btn-primary">Sign in</button>
+  <button type="submit" class="btn btn-primary mt-3">Sign in</button>
 </form>
 {% endcapture %}
 {% include example.html content=example %}
