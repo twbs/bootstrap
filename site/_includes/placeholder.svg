@@ -1,0 +1,41 @@
+{%- comment -%}
+Usage: {% include placeholder.svg size="64x64" %},
+size - null (default)
+optional: text - "[width]x[height]" (default)
+optional: bg - "#777" (default)
+optional: fg - "#ddd" (default)
+optional: text_size - "16" (default)
+{%- endcomment -%}
+
+{%- assign size = include.size | split: "x" -%}
+{%- assign width = size[0] | default: "800" -%}
+{%- assign height = size[1] | default: "400" -%}
+
+{%- if include.text == null -%}
+  {%- assign text = width | append: 'x' | append: height -%}
+{%- else -%}
+  {%- assign text = include.text -%}
+{%- endif -%}
+
+{%- assign background = include.bg | default: "#777" -%}
+{%- assign text_color = include.fg | default: "#ddd" -%}
+{%- assign text_size = include.text_size | default: "16" -%}
+
+{%- capture svg -%}
+<svg xmlns='http://www.w3.org/2000/svg' width='{{ width }}' height='{{ height }}' viewBox='0 0 {{ width }} {{ height }}'>
+  <rect fill='{{ background }}' width='100%' height='100%'/>
+  <text fill='{{ text_color }}' x='50%' y='50%' dy='5' font-family='sans-serif' font-size='{{ text_size }}' text-anchor='middle'>{{ text }}</text>
+</svg>
+{%- endcapture -%}
+
+{%- assign normalized_svg = svg
+  | normalize_whitespace
+  | strip_newlines
+  | replace: "%", "%25"
+  | replace: " ", "%20"
+  | replace: "#", "%23"
+  | replace: "<", "%3C"
+  | replace: ">", "%3E"
+  | replace: '"', "%22" -%}
+
+{{- normalized_svg | prepend: "data:image/svg+xml," -}}
