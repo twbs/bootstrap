@@ -1,0 +1,36 @@
+{%- if include.width -%}
+  {% assign width = include.width %}
+{%- else -%}
+  {% assign width = '100%' %}
+{%- endif -%}
+
+{%- if include.height -%}
+  {% assign height = include.height %}
+{%- else -%}
+  {% assign height = 180 %}
+{%- endif -%}
+
+{%- if include.text -%}
+  {% assign text = include.text %}
+{%- else -%}
+  {% assign text = width | append: 'x' | append: height %}
+{%- endif -%}
+
+{%- if include.class -%}
+  {% assign class = include.class| prepend: ' ' %}
+{%- endif -%}
+
+{%- if include.color -%}
+  {% assign color = include.color %}
+{%- else -%}
+  {% assign color = '#ddd' %}
+{%- endif -%}
+
+{%- if include.background -%}
+  {% assign background = include.background %}
+{%- else -%}
+  {% assign background = '#777' %}
+{%- endif -%}
+
+<svg class="bd-placeholder-img{{ class }}" width="{{ width }}" height="{{ height }}" xmlns="http://www.w3.org/2000/svg"{% if include.viewBox %} viewBox="{{ include.viewBox }}"{% endif %} preserveAspectRatio="xMidYMid slice">{% if include.title %}<title>{{ include.title }}</title>{% endif %}<rect fill="{{ background }}" width="100%" height="100%" /><text x="50%" y="50%" dy=".3em" fill="{{ color }}">{{ text }}</text></svg>
+{{- '' -}}

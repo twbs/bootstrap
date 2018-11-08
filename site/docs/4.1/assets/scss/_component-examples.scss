@@ -212,8 +212,9 @@
 }
 
 // Images
-.bd-example > img {
-  + img {
+.bd-example {
+  > svg + svg,
+  > img + img {
     margin-left: .5rem;
   }
 }
