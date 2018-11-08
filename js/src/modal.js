@@ -238,7 +238,7 @@ const Modal = (($) => {
 
     // Util worthy?
     _isTouchDevice() {
-      return 'ontouchstart' in window || window.DocumentTouch && document instanceof DocumentTouch
+      return 'ontouchstart' in window || window.DocumentTouch && document instanceof window.DocumentTouch
     }
 
     _showElement(relatedTarget) {
@@ -290,7 +290,7 @@ const Modal = (($) => {
     }
 
     _autofocus() {
-      $(this._element).find(':input:not(:hidden)[autofocus]').eq(0).trigger('focus')
+      $(this._element).find(':input[autofocus]:not(:hidden)').eq(0).trigger('focus')
     }
 
     _enforceFocus() {
@@ -367,7 +367,6 @@ const Modal = (($) => {
       if (prevNext === 'prev') {
         // eq() accepts negative index
         $focusable.eq(curFocusIdx - 1).trigger('focus')
-        return
       } else if (curFocusIdx === $focusable.length - 1) {
         // last btn is focused, wrap back to first
         $focusable.eq(0).trigger('focus')
