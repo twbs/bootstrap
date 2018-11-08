@@ -63,13 +63,10 @@ const Manipulator = {
       }
     }
 
-    for (const key in attributes) {
-      if (!Object.prototype.hasOwnProperty.call(attributes, key)) {
-        continue
-      }
-
-      attributes[key] = normalizeData(attributes[key])
-    }
+    Object.keys(attributes)
+      .forEach((key) => {
+        attributes[key] = normalizeData(attributes[key])
+      })
 
     return attributes
   },

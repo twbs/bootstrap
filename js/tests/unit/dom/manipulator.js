@@ -41,15 +41,18 @@ $(function () {
   })
 
   QUnit.test('should get data attributes', function (assert) {
-    assert.expect(2)
+    assert.expect(4)
 
     var $div = $('<div data-test="js" data-test2="js2" />').appendTo('#qunit-fixture')
     var $div2 = $('<div data-test3="js" data-test4="js2" />').appendTo('#qunit-fixture')
+    var $div3 = $('<div attri="1" />').appendTo('#qunit-fixture')
 
     assert.propEqual(Manipulator.getDataAttributes($div[0]), {
       test: 'js',
       test2: 'js2'
     })
+
+    assert.propEqual(Manipulator.getDataAttributes(null), {})
 
     var stub = sinon
       .stub(Object, 'getOwnPropertyDescriptor')
@@ -61,6 +64,8 @@ $(function () {
       test3: 'js',
       test4: 'js2'
     })
+
+    assert.propEqual(Manipulator.getDataAttributes($div3[0]), {})
 
     stub.restore()
   })
