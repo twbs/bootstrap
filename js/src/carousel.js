@@ -23,7 +23,7 @@ const JQUERY_NO_CONFLICT     = $.fn[NAME]
 const ARROW_LEFT_KEYCODE     = 37 // KeyboardEvent.which value for left arrow key
 const ARROW_RIGHT_KEYCODE    = 39 // KeyboardEvent.which value for right arrow key
 const TOUCHEVENT_COMPAT_WAIT = 500 // Time for mouse compat events to fire after touch
-const SWIPE_THRESHOLD        = 40
+const SWIPE_THRESHOLD        = 40 // Minimum swipe displacement in unit of DOM coordinate, usually in "px"
 
 const Default = {
   interval : 5000,
