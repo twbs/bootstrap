@@ -471,6 +471,10 @@ The `autofocus` attribute may be given to inputs and buttons in modal.  By defau
 
 By default, keyboard left & right arrow-keys can be used to focus buttons within the modal (ie change between "close" and "save").
 
+The `autofocus` attribute may be given to inputs and buttons in modal.  By default, when not on a touch-device, focus will be given to the autofocus input/button when the modal is shown.
+
+By default, keyboard left & right arrow-keys can be used to focus buttons within the modal (ie change between "close" and "save").
+
 ### Embedding YouTube videos
 
 Embedding YouTube videos in modals requires additional JavaScript not in Bootstrap to automatically stop playback and more. [See this helpful Stack Overflow post](https://stackoverflow.com/questions/18622508/bootstrap-3-and-youtube-in-modal) for more information.
