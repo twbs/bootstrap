@@ -16,6 +16,7 @@ $(function () {
     afterEach: function () {
       $.fn.tab = $.fn.bootstrapTab
       delete $.fn.bootstrapTab
+      $('#qunit-fixture').html('')
     }
   })
 
@@ -185,8 +186,8 @@ $(function () {
         '<ul class="drop nav">' +
         '  <li class="dropdown"><a data-toggle="dropdown" href="#">1</a>' +
         '    <ul class="dropdown-menu nav">' +
-        '      <li><a href="#1-1" data-toggle="tab">1-1</a></li>' +
-        '      <li><a href="#1-2" data-toggle="tab">1-2</a></li>' +
+        '      <li><a href="#a1-1" data-toggle="tab">1-1</a></li>' +
+        '      <li><a href="#a1-2" data-toggle="tab">1-2</a></li>' +
         '    </ul>' +
         '  </li>' +
         '</ul>'
@@ -197,10 +198,10 @@ $(function () {
       .end()
       .find('ul > li:last-child a')
       .on('show.bs.tab', function (e) {
-        assert.strictEqual(e.relatedTarget.hash, '#1-1', 'references correct element as relatedTarget')
+        assert.strictEqual(e.relatedTarget.hash, '#a1-1', 'references correct element as relatedTarget')
       })
       .on('shown.bs.tab', function (e) {
-        assert.strictEqual(e.relatedTarget.hash, '#1-1', 'references correct element as relatedTarget')
+        assert.strictEqual(e.relatedTarget.hash, '#a1-1', 'references correct element as relatedTarget')
         done()
       })
       .bootstrapTab('show')
@@ -411,6 +412,51 @@ $(function () {
           })
           .trigger($.Event('click'))
       })
+      .trigger($.Event('click'))
+  })
+
+  QUnit.test('should handle removed tabs', function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+
+    var html = [
+      '<ul class="nav nav-tabs" role="tablist">',
+      '  <li class="nav-item">',
+      '    <a class="nav-link nav-tab" href="#profile" role="tab" data-toggle="tab">',
+      '      <button class="close"><span aria-hidden="true">&times;</span></button>',
+      '    </a>',
+      '  </li>',
+      '  <li class="nav-item">',
+      '    <a id="secondNav" class="nav-link nav-tab" href="#buzz" role="tab" data-toggle="tab">',
+      '      <button class="close"><span aria-hidden="true">&times;</span></button>',
+      '    </a>',
+      '  </li>',
+      '  <li class="nav-item">',
+      '    <a class="nav-link nav-tab" href="#references" role="tab" data-toggle="tab">',
+      '      <button id="btnClose" class="close"><span aria-hidden="true">&times;</span></button>',
+      '    </a>',
+      '  </li>',
+      '</ul>',
+      '<div class="tab-content">',
+      '  <div role="tabpanel" class="tab-pane fade show active" id="profile">test 1</div>',
+      '  <div role="tabpanel" class="tab-pane fade" id="buzz">test 2</div>',
+      '  <div role="tabpanel" class="tab-pane fade" id="references">test 3</div>',
+      '</div>'
+    ].join('')
+
+    $(html).appendTo('#qunit-fixture')
+
+    $('#secondNav').on('shown.bs.tab', function () {
+      assert.strictEqual($('.nav-tab').length, 2)
+      done()
+    })
+
+    $('#btnClose').one('click', function () {
+      var tabId = $(this).parents('a').attr('href')
+      $(this).parents('li').remove()
+      $(tabId).remove()
+      $('.nav-tabs a:last').bootstrapTab('show')
+    })
       .trigger($.Event('click'))
   })
 })

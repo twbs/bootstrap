@@ -4,7 +4,7 @@
     "node": true
   },
   "parserOptions": {
-    "sourceType": "script"
+    "sourceType": "module"
   },
   "extends": "../.eslintrc.json",
   "rules": {
