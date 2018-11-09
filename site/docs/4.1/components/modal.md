@@ -428,7 +428,8 @@ Below is a live demo followed by example HTML and JavaScript. For more informati
     </div>
   </div>
 </div>
-{% endexample %}
+{% endcapture %}
+{% include example.html content=example %}
 
 {% highlight js %}
 $('#exampleModal').on('show.bs.modal', function (event) {
@@ -441,6 +442,12 @@ $('#exampleModal').on('show.bs.modal', function (event) {
   modal.find('.modal-body input').val(recipient)
 })
 {% endhighlight %}
+
+### Change animation
+
+The `$modal-fade-transform` variable determines the transform state of `.modal-dialog` before the modal fade-in animation, the `$modal-show-transform` variable determines the transform of `.modal-dialog` at the end of the modal fade-in animation.
+
+If you want for example a zoom-in animation, you can set `$modal-fade-transform: scale(.8)`.
 
 ### Remove animation
 
