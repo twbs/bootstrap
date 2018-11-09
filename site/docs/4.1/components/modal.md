@@ -467,11 +467,7 @@ If the height of a modal changes while it is open, you should call `$('#myModal'
 
 Be sure to add `role="dialog"` and `aria-labelledby="..."`, referencing the modal title, to `.modal`, and `role="document"` to the `.modal-dialog` itself. Additionally, you may give a description of your modal dialog with `aria-describedby` on `.modal`.
 
-The `autofocus` attribute may be given to inputs and buttons in modal.  By default, when not on a touch-device, focus will be given to the autofocus input/button when the modal is shown.
-
-By default, keyboard left & right arrow-keys can be used to focus buttons within the modal (ie change between "close" and "save").
-
-The `autofocus` attribute may be given to inputs and buttons in modal.  By default, when not on a touch-device, focus will be given to the autofocus input/button when the modal is shown.
+The `autofocus` attribute may be given to inputs and buttons in modals.  By default, when not on a touch-device, focus will be given to the autofocus input/button when the modal is shown.
 
 By default, keyboard left & right arrow-keys can be used to focus buttons within the modal (ie change between "close" and "save").
 
@@ -668,7 +664,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <td>keyboardBtnNav</td>
       <td>boolean</td>
       <td>true</td>
-      <td>Whether keyboard's left &amp; right arrow keys should move focus to/between `.btn` elements.
+      <td>Whether keyboard's left and right arrow keys should move focus to/between `.btn` elements.
         <span class="text-muted">(focus will not be taken from input elements)</span>
       </td>
     </tr>
