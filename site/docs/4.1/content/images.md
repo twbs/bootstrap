@@ -11,11 +11,11 @@ toc: true
 Images in Bootstrap are made responsive with `.img-fluid`. `max-width: 100%;` and `height: auto;` are applied to the image so that it scales with the parent element.
 
 <div class="bd-example">
-  <img src="{% include placeholder.svg size="640x250" %}" class="img-fluid" alt="Generic responsive image">
+  <img src="{% include placeholder.svg size="100%x250" text_size="48" %}" class="img-fluid w-100" alt="Generic responsive image">
 </div>
 
 {% highlight html %}
-<img src="..." class="img-fluid" alt="Responsive image">
+<img src="..." class="img-fluid" alt="Generic responsive image">
 {% endhighlight %}
 
 {% capture callout %}
