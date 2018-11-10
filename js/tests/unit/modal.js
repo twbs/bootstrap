@@ -27,6 +27,7 @@ $(function () {
     afterEach: function () {
       $('.modal-backdrop, #modal-test').remove()
       $(document.body).removeClass('modal-open')
+      $(document).off('focusin.bs.modal keydown.bs.modal')
       $.fn.modal = $.fn.bootstrapModal
       delete $.fn.bootstrapModal
       $('#qunit-fixture').html('')
@@ -734,5 +735,55 @@ $(function () {
       $.fn.off.restore()
       done()
     }).bootstrapModal('show')
+  })
+
+  QUnit.test('should focus the last tabbable element in a modal by shift+tab key down when no elements are focused', function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+    var $div = $('<div id="modal-test"><button id="first"></button><button id="last"></button></div>')
+
+    $div.on('shown.bs.modal', function () {
+      $div.trigger($.Event('keydown', {
+        which: 9, // Tab key
+        shiftKey: true
+      }))
+      assert.strictEqual(document.activeElement, $('#last')[0], 'The last element in the modal is not focused')
+      done()
+    })
+      .bootstrapModal('show')
+  })
+
+  QUnit.test('should cycle focus backwards by shift+tab key down when the first tabbable element in a modal is focused', function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+    var $div = $('<div id="modal-test"><button id="first"></button><button id="last"></button></div>')
+
+    $div.on('shown.bs.modal', function () {
+      $div.find('#first').trigger('focus')
+      $div.trigger($.Event('keydown', {
+        which: 9, // Tab key
+        shiftKey: true
+      }))
+      assert.strictEqual(document.activeElement, $('#last')[0], 'The last element in the modal is not focused')
+      done()
+    })
+      .bootstrapModal('show')
+  })
+
+  QUnit.test('should cycle focus backwards by shift+tab key down when a modal contains elements with negative tabindex values', function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+    var $div = $('<div id="modal-test"><div id="focusable" tabindex="-1">not tabbable</div><button tabindex="-1">not tabbable</button><button id="first">tabbable</button><div id="last" tabindex="0">tabbable</div><div>not tabbable</div></div>')
+
+    $div.on('shown.bs.modal', function () {
+      $div.find('#focusable').trigger('focus')
+      $div.trigger($.Event('keydown', {
+        which: 9, // Tab key
+        shiftKey: true
+      }))
+      assert.strictEqual(document.activeElement, $('#last')[0], 'The last element in the modal is not focused')
+      done()
+    })
+      .bootstrapModal('show')
   })
 })

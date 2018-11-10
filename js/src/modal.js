@@ -21,6 +21,7 @@ const EVENT_KEY          = `.${DATA_KEY}`
 const DATA_API_KEY       = '.data-api'
 const JQUERY_NO_CONFLICT = $.fn[NAME]
 const ESCAPE_KEYCODE     = 27 // KeyboardEvent.which value for Escape (Esc) key
+const TAB_KEYCODE        = 9 // KeyboardEvent.which value for Tab key
 
 const Default = {
   backdrop : true,
@@ -39,6 +40,7 @@ const DefaultType = {
 const Event = {
   HIDE              : `hide${EVENT_KEY}`,
   HIDDEN            : `hidden${EVENT_KEY}`,
+  KEYDOWN           : `keydown${EVENT_KEY}`,
   SHOW              : `show${EVENT_KEY}`,
   SHOWN             : `shown${EVENT_KEY}`,
   FOCUSIN           : `focusin${EVENT_KEY}`,
@@ -59,11 +61,13 @@ const ClassName = {
 }
 
 const Selector = {
-  DIALOG         : '.modal-dialog',
-  DATA_TOGGLE    : '[data-toggle="modal"]',
-  DATA_DISMISS   : '[data-dismiss="modal"]',
-  FIXED_CONTENT  : '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top',
-  STICKY_CONTENT : '.sticky-top'
+  DIALOG             : '.modal-dialog',
+  DATA_TOGGLE        : '[data-toggle="modal"]',
+  DATA_DISMISS       : '[data-dismiss="modal"]',
+  FIXED_CONTENT      : '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top',
+  STICKY_CONTENT     : '.sticky-top',
+  FOCUSABLE          : 'a[href], area[href], input, button, select, textarea, ' +
+    'audio[controls], video[controls], iframe, object, embed, [tabindex], [contenteditable]'
 }
 
 /**
@@ -176,7 +180,7 @@ class Modal {
     this._setEscapeEvent()
     this._setResizeEvent()
 
-    $(document).off(Event.FOCUSIN)
+    $(document).off(`${Event.FOCUSIN} ${Event.KEYDOWN}`)
 
     $(this._element).removeClass(ClassName.SHOW)
 
@@ -200,11 +204,11 @@ class Modal {
       .forEach((htmlElement) => $(htmlElement).off(EVENT_KEY))
 
     /**
-     * `document` has 2 events `Event.FOCUSIN` and `Event.CLICK_DATA_API`
+     * `document` has 3 events `Event.FOCUSIN`, `Event.KEYDOWN', and `Event.CLICK_DATA_API`
      * Do not move `document` in `htmlElements` array
      * It will remove `Event.CLICK_DATA_API` event that should remain
      */
-    $(document).off(Event.FOCUSIN)
+    $(document).off(`${Event.FOCUSIN} ${Event.KEYDOWN}`)
 
     $.removeData(this._element, DATA_KEY)
 
@@ -288,6 +292,31 @@ class Modal {
             this._element !== event.target &&
             $(this._element).has(event.target).length === 0) {
           this._element.focus()
+        }
+      })
+      .on(Event.KEYDOWN, (event) => {
+        if (event.isDefaultPrevented()) {
+          return
+        }
+        if (event.shiftKey && event.which === TAB_KEYCODE) {
+          const currentFocus = $(document.activeElement)
+          const tabbables = $(this._element).find(Selector.FOCUSABLE)
+            .filter(':visible:not(:disabled,[tabindex^="-"])')
+          if (tabbables.length === 0) {
+            return
+          }
+          if ($(this._element).has(currentFocus).length === 0 ||
+            tabbables[0] === currentFocus[0] ||
+            /* eslint-disable no-bitwise */
+            tabbables[0].compareDocumentPosition(currentFocus[0]) &
+            (Node.DOCUMENT_POSITION_DISCONNECTED |
+            Node.DOCUMENT_POSITION_PRECEDING |
+            Node.DOCUMENT_POSITION_CONTAINS)
+            /* eslint-enable no-bitwise */
+          ) {
+            event.preventDefault()
+            tabbables.last().trigger('focus')
+          }
         }
       })
   }
