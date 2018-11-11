@@ -18,6 +18,21 @@ optional: hide_markup - disabled (default)
 
 {%- if include.hide_markup == null -%}
   {%- highlight html -%}
-    {{- include.content | replace: 'data-src="holder.js', 'src="...' -}}
+    {%- if include.content contains 'data-src="holder.js' -%}
+      {%- assign modified_content = include.content
+        | replace: 'data-src="holder.js', 'src="✂️holder.js'
+        | replace: '" ', '✂️" '
+        | split: '✂️' -%}
+
+      {%- for content_chunk in modified_content -%}
+        {%- if content_chunk contains 'holder.js' -%}
+          {{- "..." -}}
+        {%- else -%}
+          {{- content_chunk -}}
+        {%- endif -%}
+      {%- endfor -%}
+    {%- else -%}
+      {{- include.content -}}
+    {%- endif -%}
   {%- endhighlight -%}
 {%- endif -%}
