@@ -1,36 +1,22 @@
-<!doctype html>
-<html lang="en" class="h-100">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../../../favicon.ico">
+---
+layout: examples
+title: Sticky Footer Template
+extra_css: "sticky-footer.css"
+html_class: "h-100"
+body_class: "d-flex flex-column h-100"
+---
 
-    <title>Sticky Footer Template for Bootstrap</title>
+<!-- Begin page content -->
+<main role="main" class="flex-shrink-0">
+  <div class="container">
+    <h1 class="mt-5">Sticky footer</h1>
+    <p class="lead">Pin a footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS.</p>
+    <p>Use <a href="{{ site.baseurl }}/docs/{{ site.docs_version }}/examples/sticky-footer-navbar/">the sticky footer with a fixed navbar</a> if need be, too.</p>
+  </div>
+</main>
 
-    <!-- Bootstrap core CSS -->
-    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="sticky-footer.css" rel="stylesheet">
-  </head>
-
-  <body class="d-flex flex-column h-100">
-
-    <!-- Begin page content -->
-    <main role="main" class="flex-shrink-0">
-      <div class="container">
-        <h1 class="mt-5">Sticky footer</h1>
-        <p class="lead">Pin a footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS.</p>
-        <p>Use <a href="../sticky-footer-navbar/">the sticky footer with a fixed navbar</a> if need be, too.</p>
-      </div>
-    </main>
-
-    <footer class="footer mt-auto py-3">
-      <div class="container">
-        <span class="text-muted">Place sticky footer content here.</span>
-      </div>
-    </footer>
-  </body>
-</html>
+<footer class="footer mt-auto py-3">
+  <div class="container">
+    <span class="text-muted">Place sticky footer content here.</span>
+  </div>
+</footer>
