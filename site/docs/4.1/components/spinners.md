@@ -23,18 +23,13 @@ Use the border spinners for a lightweight loading indicator.
 
 ### Colors
 
-The border spinner uses `currentColor` for its `border-color`, meaning you can customize the color with [text color utilities][color]. Here's the regular border spinner in blue.
+The border spinner uses `currentColor` for its `border-color`, meaning you can customize the color with [text color utilities][color]. You can use any of our text color utilities on the standard spinner.
 
-<div class="bd-example">
-  <div class="spinner-border text-primary" role="status">Loading...</div>
-</div>
-
-Use any of our text color utilities on the standard spinner.
-
-{% highlight html %}
+{% capture example %}
 {% for color in site.data.theme-colors %}
 <div class="spinner-border text-{{ color.name }}" role="status">Loading...</div>{% endfor %}
-{% endhighlight %}
+{% endcapture %}
+{% include example.html content=example %}
 
 {% capture callout %}
 **Why not use `border-color` utilities?** Each border spinner specifies a `transparent` border for at least one side, so `.border-{color}` utilities would override that.
@@ -52,14 +47,11 @@ If you don't fancy a border spinner, switch to the grow spinner. While it doesn'
 
 Once again, this spinner is built with `currentColor`, so you can easily change its appearance with [text color utilities][color]. Here it is in blue, along with the supported variants.
 
-<div class="bd-example">
-  <div class="spinner-grow text-primary" role="status">Loading...</div>
-</div>
-
-{% highlight html %}
+{% capture example %}
 {% for color in site.data.theme-colors %}
 <div class="spinner-grow text-{{ color.name }}" role="status">Loading...</div>{% endfor %}
-{% endhighlight %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Alignment
 
