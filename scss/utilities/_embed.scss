@@ -27,26 +27,13 @@
   }
 }
 
-.embed-responsive-21by9 {
-  &::before {
-    padding-top: percentage(9 / 21);
-  }
-}
+@each $embed-responsive-aspect-ratio in $embed-responsive-aspect-ratios {
+  $embed-responsive-aspect-ratio-x: nth($embed-responsive-aspect-ratio, 1);
+  $embed-responsive-aspect-ratio-y: nth($embed-responsive-aspect-ratio, 2);
 
-.embed-responsive-16by9 {
-  &::before {
-    padding-top: percentage(9 / 16);
-  }
-}
-
-.embed-responsive-4by3 {
-  &::before {
-    padding-top: percentage(3 / 4);
-  }
-}
-
-.embed-responsive-1by1 {
-  &::before {
-    padding-top: percentage(1 / 1);
+  .embed-responsive-#{$embed-responsive-aspect-ratio-x}by#{$embed-responsive-aspect-ratio-y} {
+    &::before {
+      padding-top: percentage($embed-responsive-aspect-ratio-y / $embed-responsive-aspect-ratio-x);
+    }
   }
 }
