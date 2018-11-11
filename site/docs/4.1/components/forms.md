@@ -737,7 +737,7 @@ By default, browsers will treat all native form controls (`<input>`, `<select>` 
 {% include callout.html content=callout type="warning" %}
 
 {% capture callout %}
-#### Cross-browser compatibility
+##### Cross-browser compatibility
 
 While Bootstrap will apply these styles in all browsers, Internet Explorer 11 and below don't fully support the `disabled` attribute on a `<fieldset>`. Use custom JavaScript to disable the fieldset in these browsers.
 {% endcapture %}
