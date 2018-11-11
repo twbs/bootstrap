@@ -1,12 +1,8 @@
 //
-// Rotating border
+// Spinners
 //
 
-@keyframes spinner-border {
-  to { transform: rotate(360deg); }
-}
-
-.spinner-border {
+%spinner {
   position: relative;
   display: inline-block;
   width: $spinner-width;
@@ -14,23 +10,36 @@
   overflow: hidden;
   text-indent: -999em;
   vertical-align: text-bottom;
+}
+
+//
+// Rotating border
+//
+
+@keyframes rotate {
+  to { transform: rotate(360deg); }
+}
+
+.spinner-border {
+  @extend %spinner;
   border: $spinner-border-width solid;
   border-color: currentColor transparent currentColor currentColor;
   border-radius: 50%;
-  animation: spinner-border .75s linear infinite;
+  animation: rotate .75s linear infinite;
+
+  &.spinner-sm {
+    width: $spinner-width-sm;
+    height: $spinner-height-sm;
+    border-width: $spinner-border-width-sm;
+  }
 }
 
-.spinner-border-sm {
-  width: $spinner-width-sm;
-  height: $spinner-height-sm;
-  border-width: $spinner-border-width-sm;
-}
 
 //
 // Growing circle
 //
 
-@keyframes spinner-grow {
+@keyframes grow {
   0% {
     opacity: 0;
     transform: scale(0);
@@ -45,19 +54,13 @@
 }
 
 .spinner-grow {
-  position: relative;
-  display: inline-block;
-  width: $spinner-width;
-  height: $spinner-height;
-  overflow: hidden;
-  text-indent: -999em;
-  vertical-align: text-bottom;
+  @extend %spinner;
   background-color: currentColor;
   border-radius: 50%;
-  animation: spinner-grow .75s linear infinite;
-}
+  animation: grow .75s linear infinite;
 
-.spinner-grow-sm {
-  width: $spinner-width-sm;
-  height: $spinner-height-sm;
+  &.spinner-sm {
+    width: $spinner-width-sm;
+    height: $spinner-height-sm;
+  }
 }
