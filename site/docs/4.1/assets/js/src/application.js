@@ -10,7 +10,7 @@
  * details, see https://creativecommons.org/licenses/by/3.0/.
  */
 
-/* global ClipboardJS: false, anchors: false, Holder: false */
+/* global ClipboardJS: false, anchors: false, Holder: false, bsCustomFileInput: false */
 
 (function ($) {
   'use strict'
@@ -108,5 +108,7 @@
       font: 'Helvetica',
       fontweight: 'normal'
     })
+
+    bsCustomFileInput.init()
   })
 }(jQuery))
