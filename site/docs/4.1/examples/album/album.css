@@ -1,17 +1,13 @@
-:root {
-  --jumbotron-padding-y: 3rem;
-}
-
 .jumbotron {
-  padding-top: var(--jumbotron-padding-y);
-  padding-bottom: var(--jumbotron-padding-y);
+  padding-top: 3rem;
+  padding-bottom: 3rem;
   margin-bottom: 0;
   background-color: #fff;
 }
 @media (min-width: 768px) {
   .jumbotron {
-    padding-top: calc(var(--jumbotron-padding-y) * 2);
-    padding-bottom: calc(var(--jumbotron-padding-y) * 2);
+    padding-top: 6rem;
+    padding-bottom: 6rem;
   }
 }
 
