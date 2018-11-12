@@ -1,36 +1,35 @@
-{%- if include.width -%}
-  {% assign width = include.width %}
-{%- else -%}
-  {% assign width = '100%' %}
-{%- endif -%}
+{%- comment -%}
+  Usage: include icons/placeholder.svg args
 
-{%- if include.height -%}
-  {% assign height = include.height %}
-{%- else -%}
-  {% assign height = 180 %}
-{%- endif -%}
+  args can be one of the following:
+    title: Used in the SVG `title` tag
+    text: The text to show in the image - default: 'width x height'
+    class: default: 'bd-placeholder-img'
+    color: The text color (foreground) - default: '#ddd'
+    background: The background color - default: '#777'
+    width: default: 100%
+    height: default: 180px
+{%- endcomment -%}
+
+{%- assign title = include.title | default: 'Generic Placeholder Image' -%}
+{%- assign class = include.class | default: '' -%}
+{%- assign color = include.color | default: '#ddd' -%}
+{%- assign background = include.background | default: '#777' -%}
+{%- assign width = include.width | default: '100%' -%}
+{%- assign height = include.height | default: '180' -%}
 
 {%- if include.text -%}
-  {% assign text = include.text %}
+  {%- assign text = include.text -%}
 {%- else -%}
-  {% assign text = width | append: 'x' | append: height %}
+  {%- assign text = width | append: 'x' | append: height -%}
 {%- endif -%}
 
-{%- if include.class -%}
-  {% assign class = include.class| prepend: ' ' %}
-{%- endif -%}
+{%- capture svg -%}
+<svg class="bd-placeholder-img{% if class != '' %} {{ class }}{% endif %}" width="{{ width }}" height="{{ height }}" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+  {% if title != ' ' %}<title>{{ title }}</title>{% endif %}
+  <rect fill="{{ background }}" width="100%" height="100%"/>
+  {% if text != ' ' %}<text fill="{{ color }}" dy=".3em" x="50%" y="50%">{{ text }}</text>{% endif %}
+</svg>
+{%- endcapture -%}
 
-{%- if include.color -%}
-  {% assign color = include.color %}
-{%- else -%}
-  {% assign color = '#ddd' %}
-{%- endif -%}
-
-{%- if include.background -%}
-  {% assign background = include.background %}
-{%- else -%}
-  {% assign background = '#777' %}
-{%- endif -%}
-
-<svg class="bd-placeholder-img{{ class }}" width="{{ width }}" height="{{ height }}" xmlns="http://www.w3.org/2000/svg"{% if include.viewBox %} viewBox="{{ include.viewBox }}"{% endif %} preserveAspectRatio="xMidYMid slice">{% if include.title %}<title>{{ include.title }}</title>{% endif %}<rect fill="{{ background }}" width="100%" height="100%" /><text x="50%" y="50%" dy=".3em" fill="{{ color }}">{{ text }}</text></svg>
-{{- '' -}}
+{{- svg | replace: '  ', '' | strip_newlines -}}
