@@ -2,8 +2,8 @@
 Usage: {% include placeholder.svg size="64x64" %},
 size - null (default)
 optional: text - "[width]x[height]" (default)
-optional: bg - "#777" (default)
-optional: fg - "#ddd" (default)
+optional: bg - "#6c757d" (default)
+optional: fg - "#dee2e6" (default)
 optional: text_size - "16" (default)
 {%- endcomment -%}
 
@@ -17,8 +17,8 @@ optional: text_size - "16" (default)
   {%- assign text = include.text -%}
 {%- endif -%}
 
-{%- assign background = include.bg | default: "#777" -%}
-{%- assign text_color = include.fg | default: "#ddd" -%}
+{%- assign background = include.bg | default: "#6c757d" -%}
+{%- assign text_color = include.fg | default: "#dee2e6" -%}
 {%- assign text_size = include.text_size | default: "16" -%}
 
 {%- capture svg -%}
