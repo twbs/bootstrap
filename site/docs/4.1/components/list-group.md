@@ -42,7 +42,7 @@ Add `.disabled` to a `.list-group-item` to make it _appear_ disabled. Note that 
 
 {% capture example %}
 <ul class="list-group">
-  <li class="list-group-item disabled">Cras justo odio</li>
+  <li class="list-group-item disabled" aria-disabled="true">Cras justo odio</li>
   <li class="list-group-item">Dapibus ac facilisis in</li>
   <li class="list-group-item">Morbi leo risus</li>
   <li class="list-group-item">Porta ac consectetur ac</li>
@@ -65,7 +65,7 @@ Be sure to **not use the standard `.btn` classes here**.
   <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
   <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
   <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
-  <a href="#" class="list-group-item list-group-item-action disabled">Vestibulum at eros</a>
+  <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true">Vestibulum at eros</a>
 </div>
 {% endcapture %}
 {% include example.html content=example %}
