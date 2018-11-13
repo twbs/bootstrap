@@ -276,6 +276,10 @@
       content: $value;
     }
   }
+
+  ~ .custom-file-label[data-browse]::after {
+    content: attr(data-browse);
+  }
 }
 
 .custom-file-label {
