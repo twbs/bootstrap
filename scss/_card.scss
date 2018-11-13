@@ -305,6 +305,10 @@
 
     .card-header {
       margin-bottom: -$card-border-width;
+
+      .btn {
+        white-space: normal;
+      }
     }
   }
 }
