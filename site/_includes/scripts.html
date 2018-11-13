@@ -1,0 +1,24 @@
+<script src="{{ site.cdn.jquery }}" integrity="{{ site.cdn.jquery_hash }}" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="{{ site.baseurl }}/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+
+{%- if jekyll.environment == "production" -%}
+  <script src="{{ site.baseurl }}/docs/{{ site.docs_version }}/dist/js/bootstrap.bundle.min.js" integrity="{{ site.cdn.js_bundle_hash }}" crossorigin="anonymous"></script>
+{%- else -%}
+  <script src="{{ site.baseurl }}/docs/{{ site.docs_version }}/dist/js/bootstrap.bundle.js"></script>
+{%- endif -%}
+
+{%- if page.layout == "docs" -%}
+<script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+{%- endif -%}
+
+{%- if jekyll.environment == "production" -%}
+  <script src="{{ site.baseurl }}/docs/{{ site.docs_version }}/assets/js/docs.min.js"></script>
+{%- else -%}
+  <script src="{{ site.baseurl }}/docs/{{ site.docs_version }}/assets/js/vendor/anchor.min.js"></script>
+  <script src="{{ site.baseurl }}/docs/{{ site.docs_version }}/assets/js/vendor/clipboard.min.js"></script>
+  <script src="{{ site.baseurl }}/docs/{{ site.docs_version }}/assets/js/vendor/holder.min.js"></script>
+  <script src="{{ site.baseurl }}/docs/{{ site.docs_version }}/assets/js/vendor/bs-custom-file-input.min.js"></script>
+  <script src="{{ site.baseurl }}/docs/{{ site.docs_version }}/assets/js/src/application.js"></script>
+  <script src="{{ site.baseurl }}/docs/{{ site.docs_version }}/assets/js/src/search.js"></script>
+  <script src="{{ site.baseurl }}/docs/{{ site.docs_version }}/assets/js/src/ie-emulation-modes-warning.js"></script>
+{%- endif -%}

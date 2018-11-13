@@ -16,6 +16,11 @@
     .flex#{$infix}-wrap         { flex-wrap: wrap !important; }
     .flex#{$infix}-nowrap       { flex-wrap: nowrap !important; }
     .flex#{$infix}-wrap-reverse { flex-wrap: wrap-reverse !important; }
+    .flex#{$infix}-fill         { flex: 1 1 auto !important; }
+    .flex#{$infix}-grow-0       { flex-grow: 0 !important; }
+    .flex#{$infix}-grow-1       { flex-grow: 1 !important; }
+    .flex#{$infix}-shrink-0     { flex-shrink: 0 !important; }
+    .flex#{$infix}-shrink-1     { flex-shrink: 1 !important; }
 
     .justify-content#{$infix}-start   { justify-content: flex-start !important; }
     .justify-content#{$infix}-end     { justify-content: flex-end !important; }

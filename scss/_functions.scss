@@ -1,6 +1,6 @@
 // Bootstrap functions
 //
-// Utility mixins and functions for evalutating source code across our variables, maps, and mixins.
+// Utility mixins and functions for evaluating source code across our variables, maps, and mixins.
 
 // Ascending
 // Used to evaluate Sass maps like our grid breakpoints.
@@ -8,7 +8,7 @@
   $prev-key: null;
   $prev-num: null;
   @each $key, $num in $map {
-    @if $prev-num == null {
+    @if $prev-num == null or unit($num) == "%" {
       // Do nothing
     } @else if not comparable($prev-num, $num) {
       @warn "Potentially invalid value for #{$map-name}: This map must be in ascending order, but key '#{$key}' has value #{$num} whose unit makes it incomparable to #{$prev-num}, the value of the previous key '#{$prev-key}' !";
@@ -49,7 +49,7 @@
 }
 
 // Color contrast
-@function color-yiq($color) {
+@function color-yiq($color, $dark: $yiq-text-dark, $light: $yiq-text-light) {
   $r: red($color);
   $g: green($color);
   $b: blue($color);
@@ -57,9 +57,9 @@
   $yiq: (($r * 299) + ($g * 587) + ($b * 114)) / 1000;
 
   @if ($yiq >= $yiq-contrasted-threshold) {
-    @return $yiq-text-dark;
+    @return $dark;
   } @else {
-    @return $yiq-text-light;
+    @return $light;
   }
 }
 
@@ -79,7 +79,7 @@
 // Request a theme color level
 @function theme-color-level($color-name: "primary", $level: 0) {
   $color: theme-color($color-name);
-  $color-base: if($level > 0, #000, #fff);
+  $color-base: if($level > 0, $black, $white);
   $level: abs($level);
 
   @return mix($color-base, $color, $level * $theme-color-interval);

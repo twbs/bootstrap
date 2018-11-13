@@ -1,5 +1,3 @@
-'use strict'
-
 module.exports = (ctx) => ({
   map: ctx.file.dirname.includes('examples') ? false : {
     inline: false,
@@ -7,6 +5,8 @@ module.exports = (ctx) => ({
     sourcesContent: true
   },
   plugins: {
-    autoprefixer: { cascade: false }
+    autoprefixer: {
+      cascade: false
+    }
   }
 })
