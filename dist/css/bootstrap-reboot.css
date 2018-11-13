@@ -15,7 +15,6 @@ html {
   font-family: sans-serif;
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
   -ms-overflow-style: scrollbar;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -30,7 +29,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, Noto Sans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -99,10 +98,6 @@ dd {
 
 blockquote {
   margin: 0 0 1rem;
-}
-
-dfn {
-  font-style: italic;
 }
 
 b,
@@ -236,7 +231,7 @@ select {
 }
 
 button,
-html [type="button"],
+[type="button"],
 [type="reset"],
 [type="submit"] {
   -webkit-appearance: button;
@@ -301,7 +296,6 @@ progress {
   -webkit-appearance: none;
 }
 
-[type="search"]::-webkit-search-cancel-button,
 [type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
