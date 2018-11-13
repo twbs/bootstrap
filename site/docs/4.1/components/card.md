@@ -635,7 +635,7 @@ Cards can be organized into [Masonry](https://masonry.desandro.com/)-like column
   <div class="card bg-primary text-white text-center p-3">
     <blockquote class="blockquote mb-0">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
-      <footer class="blockquote-footer">
+      <footer class="blockquote-footer text-white">
         <small>
           Someone famous in <cite title="Source Title">Source Title</cite>
         </small>

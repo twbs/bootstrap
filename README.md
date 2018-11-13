@@ -17,13 +17,10 @@
     ·
     <a href="https://themes.getbootstrap.com/">Themes</a>
     ·
-    <a href="https://jobs.getbootstrap.com/">Jobs</a>
-    ·
     <a href="https://blog.getbootstrap.com/">Blog</a>
   </p>
 </p>
 
-<br>
 
 ## Table of contents
 
@@ -39,6 +36,7 @@
 - [Thanks](#thanks)
 - [Copyright and license](#copyright-and-license)
 
+
 ## Quick start
 
 Several quick start options are available:
@@ -51,6 +49,7 @@ Several quick start options are available:
 - Install with [NuGet](https://www.nuget.org/): CSS: `Install-Package bootstrap` Sass: `Install-Package bootstrap.sass`
 
 Read the [Getting started page](https://getbootstrap.com/docs/4.1/getting-started/introduction/) for information on the framework contents, templates and examples, and more.
+
 
 ## Status
 
@@ -68,11 +67,12 @@ Read the [Getting started page](https://getbootstrap.com/docs/4.1/getting-starte
 [![JS gzip size](https://img.badgesize.io/twbs/bootstrap/v4-dev/dist/js/bootstrap.min.js?compression=gzip&label=JS+gzip+size)](https://github.com/twbs/bootstrap/tree/v4-dev/dist/js/bootstrap.min.js)
 [![BrowserStack Status](https://www.browserstack.com/automate/badge.svg?badge_key=SkxZcStBeExEdVJqQ2hWYnlWckpkNmNEY213SFp6WHFETWk2bGFuY3pCbz0tLXhqbHJsVlZhQnRBdEpod3NLSDMzaHc9PQ==--3d0b75245708616eb93113221beece33e680b229)](https://www.browserstack.com/automate/public-build/SkxZcStBeExEdVJqQ2hWYnlWckpkNmNEY213SFp6WHFETWk2bGFuY3pCbz0tLXhqbHJsVlZhQnRBdEpod3NLSDMzaHc9PQ==--3d0b75245708616eb93113221beece33e680b229)
 
+
 ## What's included
 
 Within the download you'll find the following directories and files, logically grouping common assets and providing both compiled and minified variations. You'll see something like this:
 
-```
+```text
 bootstrap/
 └── dist/
     ├── css/
@@ -174,9 +174,12 @@ See [the Releases section of our GitHub project](https://github.com/twbs/bootstr
 
 ## Thanks
 
-<img src="https://live.browserstack.com/images/opensource/browserstack-logo.svg" alt="BrowserStack Logo" width="490" height="106">
+<a href="https://www.browserstack.com/">
+  <img src="https://live.browserstack.com/images/opensource/browserstack-logo.svg" alt="BrowserStack Logo" width="490" height="106">
+</a>
 
 Thanks to [BrowserStack](https://www.browserstack.com/) for providing the infrastructure that allows us to test in real browsers!
+
 
 ## Copyright and license
 
