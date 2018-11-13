@@ -36,6 +36,11 @@
   // as much space as possible, ensuring footers are aligned to the bottom.
   flex: 1 1 auto;
   padding: $card-spacer-x;
+
+  .card-table + &,
+  .table-responsive + & {
+    border-top: $table-border-width solid $table-border-color;
+  }
 }
 
 .card-title {
@@ -61,6 +66,20 @@
   }
 }
 
+.card-table {
+  margin-bottom: 0;
+
+  td,
+  th {
+    &:first-child:not(.not-first-cell) {
+      padding-left: $card-spacer-x;
+    }
+    &:last-child:not(.not-last-cell) {
+      padding-right: $card-spacer-x;
+    }
+  }
+}
+
 //
 // Optional textual caps
 //
@@ -80,6 +99,11 @@
     .list-group-item:first-child {
       border-top: 0;
     }
+  }
+
+  + .card-table,
+  + .table-responsive {
+    margin-top: -$table-border-width;
   }
 }
 

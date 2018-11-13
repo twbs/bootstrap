@@ -107,9 +107,85 @@ Create lists of content in a card with a flush list group.
 {% endcapture %}
 {% include example.html content=example %}
 
+### Tables
+
+The `.card-table` class is used to align the table cells with the rest of the card, the `.table` class is used to theme the tables as [Bootstrap tables]({{ site.baseurl }}/docs/{{ site.docs_version }}/content/tables/). The table can also be wrapped in a `<div class="table-responsive"></div>` to [make them responsive]({{ site.baseurl }}/docs/{{ site.docs_version }}/content/tables/#responsive-tables).
+
+{% capture example %}
+<div class="card" style="width: 18rem;">
+  <div class="card-header">
+    Table in a card
+  </div>
+  <table class="card-table table">
+    <thead>
+      <tr>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <td colspan="2">Larry the Bird</td>
+        <td>@twitter</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+{% endcapture %}
+{% include example.html content=example %}
+
+Card table cells use the `:first-child` and `:last-child` selector to align the first and last cell in a card. If rowspans are used, this could lead to misaligned cells. To prevent this misalignment, the `.not-first-cell` or `.not-last-cell` class can be added to these cells.
+
+{% capture example %}
+<div class="card" style="width: 18rem;">
+  <div class="card-header">
+    Table in a card
+  </div>
+  <table class="card-table table">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td rowspan="3">Name 01</td>
+        <td>data 1</td>
+      </tr>
+      <tr>
+        <td class="not-first-cell">data 2</td>
+      </tr>
+      <tr>
+        <td class="not-first-cell">data 3</td>
+      </tr>
+      <tr>
+        <td rowspan="2">Name 02</td>
+        <td class="not-first-cell">data 1</td>
+      </tr>
+      <tr>
+        <td class="not-first-cell">data 2</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+{% endcapture %}
+{% include example.html content=example %}
+
 ### Kitchen sink
 
-Mix and match multiple content types to create the card you need, or throw everything in there. Shown below are image styles, blocks, text styles, and a list group—all wrapped in a fixed-width card.
+Mix and match multiple content types to create the card you need, or throw everything in there. Shown below are image styles, blocks, text styles, a table with a row background and a list group—all wrapped in a fixed-width card.
 
 {% capture example %}
 <div class="card" style="width: 18rem;">
@@ -127,6 +203,31 @@ Mix and match multiple content types to create the card you need, or throw every
     <a href="#" class="card-link">Card link</a>
     <a href="#" class="card-link">Another link</a>
   </div>
+  <table class="card-table table">
+    <thead>
+      <tr>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr class="table-primary">
+        <td colspan="2">Larry the Bird</td>
+        <td>@twitter</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 {% endcapture %}
 {% include example.html content=example %}
