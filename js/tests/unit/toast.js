@@ -146,11 +146,11 @@ $(function () {
       .bootstrapToast()
       .appendTo($('#qunit-fixture'))
 
-    assert.ok(typeof $toast.data('bs.toast') !== 'undefined')
+    assert.ok(typeof Toast._getInstance($toast[0]) !== 'undefined')
 
     $toast.bootstrapToast('dispose')
 
-    assert.ok(typeof $toast.data('bs.toast') === 'undefined')
+    assert.ok(Toast._getInstance($toast[0]) === null)
   })
 
   QUnit.test('should allow to destroy toast and hide it before that', function (assert) {
@@ -171,11 +171,11 @@ $(function () {
     $toast.one('shown.bs.toast', function () {
       setTimeout(function () {
         assert.ok($toast.hasClass('show'))
-        assert.ok(typeof $toast.data('bs.toast') !== 'undefined')
+        assert.ok(typeof Toast._getInstance($toast[0]) !== 'undefined')
 
         $toast.bootstrapToast('dispose')
 
-        assert.ok(typeof $toast.data('bs.toast') === 'undefined')
+        assert.ok(Toast._getInstance($toast[0]) === null)
         assert.ok($toast.hasClass('show') === false)
 
         done()
