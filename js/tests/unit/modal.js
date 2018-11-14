@@ -893,7 +893,7 @@ $(function () {
       .bootstrapModal('show')
   })
 
-  QUnit.test('right arrow should not take focus from input', function (assert) {
+  QUnit.test('left arrow should not take focus from input', function (assert) {
     assert.expect(1)
     var done = assert.async()
     var $div = $('<div id="modal-test"><div class="contents">' +
@@ -917,7 +917,7 @@ $(function () {
       .bootstrapModal('show')
   })
 
-  QUnit.test(':input[autofocus] should get focus', function (assert) {
+  QUnit.test(':input[autofocus] should get focus when autofocus opt = true', function (assert) {
     assert.expect(2)
     var done = assert.async()
     $('body').append('<div id="modal-test" class="modal" data-autofocus="true"><div class="contents">' +
@@ -932,7 +932,7 @@ $(function () {
       .bootstrapModal('show')
   })
 
-  QUnit.test(':input[autofocus] should not get focus (default)', function (assert) {
+  QUnit.test(':input[autofocus] should not get focus when autofocus opt = false', function (assert) {
     assert.expect(1)
     var done = assert.async()
     $('body').append(
