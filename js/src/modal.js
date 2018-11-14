@@ -92,6 +92,7 @@ class Modal {
     this._ignoreBackdropClick = false
     this._isTransitioning     = false
     this._scrollbarWidth      = 0
+    this._touchSupported      = 'ontouchstart' in document.documentElement || navigator.maxTouchPoints > 0
   }
 
   // Getters
@@ -245,11 +246,6 @@ class Modal {
     return config
   }
 
-  // Util worthy?
-  _isTouchDevice() {
-    return 'ontouchstart' in window || window.DocumentTouch && document instanceof window.DocumentTouch
-  }
-
   _showElement(relatedTarget) {
     const transition = $(this._element).hasClass(ClassName.FADE)
 
@@ -281,7 +277,7 @@ class Modal {
       if (this._config.focus) {
         this._element.focus()
       }
-      if (this._config.autofocus === true || this._config.autofocus === 'notTouch' && !this._isTouchDevice()) {
+      if (this._config.autofocus === true || this._config.autofocus === 'notTouch' && !this._touchSupported) {
         this._autofocus()
       }
       this._isTransitioning = false
