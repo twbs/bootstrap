@@ -1,12 +1,12 @@
-import $ from 'jquery'
-import Tooltip from './tooltip'
-
 /**
  * --------------------------------------------------------------------------
  * Bootstrap (v4.1.3): popover.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
+
+import $ from 'jquery'
+import Tooltip from './tooltip'
 
 /**
  * ------------------------------------------------------------------------
