@@ -18,15 +18,32 @@ optional: hide_markup - disabled (default)
 
 {%- if include.hide_markup == null -%}
   {%- highlight html -%}
-    {%- if include.content contains 'data-src="holder.js' -%}
+    {%- if include.content contains '<svg class="bd-placeholder-img' -%}
       {%- assign modified_content = include.content
-        | replace: 'data-src="holder.js', 'src="✂️holder.js'
-        | replace: '" ', '✂️" '
+        | replace: '<svg class="bd-placeholder-img', '✂️<svg class="bd-placeholder-img'
+        | replace: '</svg>', '</svg>✂️'
         | split: '✂️' -%}
 
+      {%- if include.content contains 'bd-placeholder-img ' -%}
+        {%- assign image_class = include.content
+          | replace_first: 'bd-placeholder-img', 'bd-placeholder-img ✂️'
+          | replace: '" width="', '✂️" width="'
+          | split: '✂️' -%}
+        {%- assign image_class = image_class[1] | replace: 'bd-placeholder-img-lg', '' | strip -%}
+      {%- endif -%}
+
+      {%- assign image_alt = include.content
+        | replace: '<title>', '<title>✂️'
+        | replace: '</title>', '✂️</title>'
+        | split: '✂️' -%}
+      {%- assign image_alt = image_alt[1] -%}
+
       {%- for content_chunk in modified_content -%}
-        {%- if content_chunk contains 'holder.js' -%}
-          {{- "..." -}}
+        {%- if content_chunk contains '<svg class="bd-placeholder-img' -%}
+          {%- capture img_placeholder -%}
+            <img src="..." {% if image_class %}class="{{ image_class }}" {% endif %}alt="{{ image_alt }}">
+          {%- endcapture -%}
+          {{- img_placeholder -}}
         {%- else -%}
           {{- content_chunk -}}
         {%- endif -%}
