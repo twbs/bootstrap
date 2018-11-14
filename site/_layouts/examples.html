@@ -41,10 +41,6 @@
         <script src="{{ site.baseurl }}/docs/{{ site.docs_version }}/dist/js/bootstrap.bundle.js"></script>
       {%- endif -%}
 
-      {%- if page.include_holder == true -%}
-        <script src="{{ site.baseurl }}/docs/{{ site.docs_version }}/assets/js/vendor/holder.min.js"></script>
-      {%- endif -%}
-
       {%- for js in page.extra_js %}
         <script src="{{ js }}"></script>
       {%- endfor %}

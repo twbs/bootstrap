@@ -10,7 +10,7 @@
  * details, see https://creativecommons.org/licenses/by/3.0/.
  */
 
-/* global ClipboardJS: false, Holder: false, bsCustomFileInput: false */
+/* global ClipboardJS: false, bsCustomFileInput: false */
 
 (function ($) {
   'use strict'
@@ -102,14 +102,6 @@
     })
 
     $('.bd-content > h2, .bd-content > h3, .bd-content > h4, .bd-content > h5').wrapInner('<div></div>')
-
-    // Holder
-    Holder.addTheme('gray', {
-      bg: '#777',
-      fg: 'rgba(255,255,255,.75)',
-      font: 'Helvetica',
-      fontweight: 'normal'
-    })
 
     bsCustomFileInput.init()
   })
