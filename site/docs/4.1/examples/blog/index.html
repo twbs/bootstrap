@@ -4,7 +4,6 @@ title: Blog Template
 extra_css:
   - "https://fonts.googleapis.com/css?family=Playfair+Display:700,900"
   - "blog.css"
-include_holder: true
 ---
 
 <div class="container">
@@ -62,7 +61,7 @@ include_holder: true
           <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
           <a href="#">Continue reading</a>
         </div>
-        <img class="card-img-right flex-auto d-none d-lg-block" data-src="holder.js/200x250?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
+        {% include icons/placeholder.svg width="200" height="250" background="#55595c" color="#eceeef" class="card-img-right flex-auto d-none d-lg-block" text="Thumbnail" title="Card image cap" %}
       </div>
     </div>
     <div class="col-md-6">
@@ -76,7 +75,7 @@ include_holder: true
           <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
           <a href="#">Continue reading</a>
         </div>
-        <img class="card-img-right flex-auto d-none d-lg-block" data-src="holder.js/200x250?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
+        {% include icons/placeholder.svg width="200" height="250" background="#55595c" color="#eceeef" class="card-img-right flex-auto d-none d-lg-block" text="Thumbnail" title="Card image cap" %}
       </div>
     </div>
   </div>

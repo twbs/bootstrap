@@ -10,6 +10,19 @@
 
     {% include stylesheet.html %}
 
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
     {%- for css in page.extra_css %}
     <!-- Custom styles for this template -->
     <link href="{{ css }}" rel="stylesheet">
