@@ -298,7 +298,8 @@ class Modal {
   }
 
   _autofocus() {
-    $(this._element).find(':input[autofocus]:not(:hidden)').eq(0).trigger('focus')
+    const selector = 'input[autofocus], select[autofocus], textarea[autofocus], button[autofocus]'
+    $(this._element.querySelectorAll(selector)).filter(':not(:hidden)').eq(0).trigger('focus')
   }
 
   _enforceFocus() {
@@ -361,7 +362,7 @@ class Modal {
   }
 
   _keyboardNav(prevNext) {
-    const $focusable = $(this._element).find('.btn')
+    const $focusable = $(this._element.querySelectorAll('.btn')).filter(':not(:hidden)')
     let curFocusIdx = $focusable.index(document.activeElement)
     if ($(document.activeElement).is(':input:not(:button)')) {
       // we're currently focused on an input, stay put
