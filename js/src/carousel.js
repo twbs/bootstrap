@@ -60,10 +60,7 @@ const Event = {
   TOUCHMOVE      : `touchmove${EVENT_KEY}`,
   TOUCHEND       : `touchend${EVENT_KEY}`,
   POINTERDOWN    : `pointerdown${EVENT_KEY}`,
-  POINTERMOVE    : `pointermove${EVENT_KEY}`,
   POINTERUP      : `pointerup${EVENT_KEY}`,
-  POINTERLEAVE   : `pointerleave${EVENT_KEY}`,
-  POINTERCANCEL  : `pointercancel${EVENT_KEY}`,
   DRAG_START     : `dragstart${EVENT_KEY}`,
   LOAD_DATA_API  : `load${EVENT_KEY}${DATA_API_KEY}`,
   CLICK_DATA_API : `click${EVENT_KEY}${DATA_API_KEY}`
@@ -280,7 +277,7 @@ class Carousel {
     }
 
     const start = (event) => {
-      if (this._pointerEvent && (event.originalEvent.pointerType === PointerType.TOUCH || event.originalEvent.pointerType === PointerType.PEN)) {
+      if (this._pointerEvent && PointerType[event.originalEvent.pointerType.toUpperCase()]) {
         this.touchStartX = event.originalEvent.clientX
       } else if (!this._pointerEvent) {
         this.touchStartX = event.originalEvent.touches[0].clientX
@@ -297,7 +294,7 @@ class Carousel {
     }
 
     const end = (event) => {
-      if (this._pointerEvent && (event.originalEvent.pointerType === PointerType.TOUCH || event.originalEvent.pointerType === PointerType.PEN)) {
+      if (this._pointerEvent && PointerType[event.originalEvent.pointerType.toUpperCase()]) {
         this.touchDeltaX = event.originalEvent.clientX - this.touchStartX
       }
 

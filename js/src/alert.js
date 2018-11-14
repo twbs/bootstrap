@@ -1,12 +1,12 @@
-import $ from 'jquery'
-import Util from './util'
-
 /**
  * --------------------------------------------------------------------------
  * Bootstrap (v4.1.3): alert.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
+
+import $ from 'jquery'
+import Util from './util'
 
 /**
  * ------------------------------------------------------------------------
