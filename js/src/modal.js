@@ -66,6 +66,8 @@ const ClassName = {
 }
 
 const Selector = {
+  AUTOFOCUSABLE      : 'input[autofocus], select[autofocus], textarea[autofocus], button[autofocus]',
+  BTN                : '.btn',
   DIALOG             : '.modal-dialog',
   DATA_TOGGLE        : '[data-toggle="modal"]',
   DATA_DISMISS       : '[data-dismiss="modal"]',
@@ -298,8 +300,7 @@ class Modal {
   }
 
   _autofocus() {
-    const selector = 'input[autofocus], select[autofocus], textarea[autofocus], button[autofocus]'
-    $(this._element.querySelectorAll(selector)).filter(':not(:hidden)').eq(0).trigger('focus')
+    $(this._element.querySelectorAll(Selector.AUTOFOCUSABLE)).filter(':not(:hidden)').eq(0).trigger('focus')
   }
 
   _enforceFocus() {
@@ -362,7 +363,7 @@ class Modal {
   }
 
   _keyboardNav(prevNext) {
-    const $focusable = $(this._element.querySelectorAll('.btn')).filter(':not(:hidden)')
+    const $focusable = $(this._element.querySelectorAll(Selector.BTN)).filter(':not(:hidden)')
     let curFocusIdx = $focusable.index(document.activeElement)
     if ($(document.activeElement).is(':input:not(:button)')) {
       // we're currently focused on an input, stay put
