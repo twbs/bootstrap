@@ -661,7 +661,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <td>Closes the modal when escape key is pressed</td>
     </tr>
     <tr>
-      <td>keyboardBtnNav</td>
+      <td>keyboardNav</td>
       <td>boolean</td>
       <td>true</td>
       <td>Whether keyboard's left and right arrow keys should move focus to/between `.btn` elements.

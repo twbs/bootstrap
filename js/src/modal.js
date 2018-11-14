@@ -28,7 +28,7 @@ const Default = {
   autofocus: 'notTouch',      // true|false|notTouch
   backdrop : true,
   keyboard : true,
-  keyboardBtnNav: true,  // ability to use arrows to nav button focus
+  keyboardNav: true,  // ability to use arrows to nav button focus
   focus    : true,
   show     : true
 }
@@ -37,7 +37,7 @@ const DefaultType = {
   autofocus: '(boolean|string)',
   backdrop : '(boolean|string)',
   keyboard : 'boolean',
-  keyboardBtnNav: 'boolean',
+  keyboardNav: 'boolean',
   focus    : 'boolean',
   show     : 'boolean'
 }
@@ -327,12 +327,12 @@ class Modal {
   }
 
   _setKeyNavEvent() {
-    if (this._isShown && this._config.keyboardBtnNav) {
+    if (this._isShown && this._config.keyboardNav) {
       $(this._element).on(Event.KEYDOWN_NAV, (event) => {
         if (event.which === LEFT_KEYCODE) {
-          this._keyboardBtnNav('prev')
+          this._keyboardNav('prev')
         } else if (event.which === RIGHT_KEYCODE) {
-          this._keyboardBtnNav('next')
+          this._keyboardNav('next')
         }
       })
     } else if (!this._isShown) {
@@ -360,7 +360,7 @@ class Modal {
     })
   }
 
-  _keyboardBtnNav(prevNext) {
+  _keyboardNav(prevNext) {
     const $focusable = $(this._element).find('.btn')
     let curFocusIdx = $focusable.index(document.activeElement)
     if ($(document.activeElement).is(':input:not(:button)')) {
