@@ -22,7 +22,7 @@ optional: text_size - "16" (default)
 {%- assign text_size = include.text_size | default: "16" -%}
 
 {%- capture svg -%}
-<svg xmlns='http://www.w3.org/2000/svg' width='{{ width }}' height='{{ height }}' viewBox='0 0 {{ width }} {{ height }}' preserveAspectRatio='meet'>
+<svg xmlns='http://www.w3.org/2000/svg' width='{{ width }}' height='{{ height }}' viewBox='0 0 {{ width }} {{ height }}'>
   <rect fill='{{ background }}' width='100%' height='100%'/>
   <text fill='{{ text_color }}' x='50%' y='50%' font-family='Helvetica,Arial,sans-serif' font-size='{{ text_size }}' dominant-baseline='central' text-anchor='middle'>{{ text }}</text>
 </svg>
