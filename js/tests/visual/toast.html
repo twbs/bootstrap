@@ -52,19 +52,34 @@
       </div>
     </div>
 
+    <script src="../../dist/dom/polyfill.js"></script>
     <script src="../../dist/util.js"></script>
+    <script src="../../dist/dom/manipulator.js"></script>
+    <script src="../../dist/dom/data.js"></script>
+    <script src="../../dist/dom/eventHandler.js"></script>
     <script src="../../dist/toast.js"></script>
     <script>
-      $(function () {
-        $('.toast').toast()
+      window.addEventListener('load', function () {
+        Util.makeArray(document.querySelectorAll('.toast'))
+          .forEach(function (toastNode) {
+            new Toast(toastNode)
+          })
 
-        $('#btnShowToast').on('click', function () {
-          $('.toast').toast('show')
-        })
+          document.getElementById('btnShowToast').addEventListener('click', function () {
+            Util.makeArray(document.querySelectorAll('.toast'))
+              .forEach(function (toastNode) {
+                var toast = Toast._getInstance(toastNode)
+                toast.show()
+              })
+          })
 
-        $('#btnHideToast').on('click', function () {
-          $('.toast').toast('hide')
-        })
+          document.getElementById('btnHideToast').addEventListener('click', function () {
+            Util.makeArray(document.querySelectorAll('.toast'))
+              .forEach(function (toastNode) {
+                var toast = Toast._getInstance(toastNode)
+                toast.hide()
+              })
+          })
       })
     </script>
   </body>
