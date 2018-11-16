@@ -1,17 +1,19 @@
 {%- comment -%}
-Usage: {% include example.html content=markup %},
-where content is a capture with the HTML content
-id - null (default)
-class - "bd-example" (default)
-optional: hide_preview - disabled (default)
-optional: hide_markup - disabled (default)
+  Usage: include example.html content=markup [args],
+  where content is a capture with the HTML content
+
+  args can be one of the following:
+    id - null (default)
+    class - "bd-example" (default)
+    optional: hide_preview - disabled (default)
+    optional: hide_markup - disabled (default)
 {%- endcomment -%}
 
-{%- assign preview_id = include.id -%}
-{%- assign preview_class = include.class -%}
+{%- assign id = include.id -%}
+{%- assign class = include.class -%}
 
 {%- if include.hide_preview == null -%}
-<div{% if preview_id %} id="{{ preview_id }}"{% endif %} class="bd-example{% if preview_class %} {{ preview_class }}{% endif %}">
+<div{% if id %} id="{{ id }}"{% endif %} class="bd-example{% if class %} {{ class }}{% endif %}">
   {{- include.content -}}
 </div>
 {%- endif -%}

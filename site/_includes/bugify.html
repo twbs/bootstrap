@@ -1,7 +1,7 @@
 {%- comment -%}
-Usage: {% include bugify.html content=text %},
-where content is a string that contains a bug reference name and id.
-e.g. Bootstrap#19984
+  Usage: include bugify.html content=text,
+  where content is a string that contains a bug reference name and id.
+  e.g. Bootstrap#19984
 {%- endcomment -%}
 
 {%- assign words = include.content | split: " " -%}
