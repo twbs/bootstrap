@@ -7,15 +7,14 @@
 }
 
 .spinner-border {
-  position: relative;
   display: inline-block;
   width: $spinner-width;
   height: $spinner-height;
   overflow: hidden;
   text-indent: -999em;
   vertical-align: text-bottom;
-  border: $spinner-border-width solid;
-  border-color: currentColor transparent currentColor currentColor;
+  border: $spinner-border-width solid currentColor;
+  border-right-color: transparent;
   border-radius: 50%;
   animation: spinner-border .75s linear infinite;
 }
@@ -32,20 +31,14 @@
 
 @keyframes spinner-grow {
   0% {
-    opacity: 0;
     transform: scale(0);
   }
   50% {
     opacity: 1;
   }
-  100% {
-    opacity: 0;
-    transform: scale(1);
-  }
 }
 
 .spinner-grow {
-  position: relative;
   display: inline-block;
   width: $spinner-width;
   height: $spinner-height;
@@ -54,6 +47,7 @@
   vertical-align: text-bottom;
   background-color: currentColor;
   border-radius: 50%;
+  opacity: 0;
   animation: spinner-grow .75s linear infinite;
 }
 

@@ -1,12 +1,12 @@
-import $ from 'jquery'
-import Util from './util'
-
 /**
  * --------------------------------------------------------------------------
  * Bootstrap (v4.1.3): tab.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
+
+import $ from 'jquery'
+import Util from './util'
 
 /**
  * ------------------------------------------------------------------------
@@ -141,17 +141,12 @@ class Tab {
   // Private
 
   _activate(element, container, callback) {
-    let activeElements
-    if (container && container.nodeName === 'UL') {
-      activeElements = $(container).find(Selector.ACTIVE_UL)
-    } else {
-      activeElements = $(container).children(Selector.ACTIVE)
-    }
+    const activeElements = container && container.nodeName === 'UL'
+      ? $(container).find(Selector.ACTIVE_UL)
+      : $(container).children(Selector.ACTIVE)
 
     const active = activeElements[0]
-    const isTransitioning = callback &&
-      (active && $(active).hasClass(ClassName.FADE))
-
+    const isTransitioning = callback && (active && $(active).hasClass(ClassName.FADE))
     const complete = () => this._transitionComplete(
       element,
       active,
@@ -195,11 +190,12 @@ class Tab {
     Util.reflow(element)
     $(element).addClass(ClassName.SHOW)
 
-    if (element.parentNode &&
-        $(element.parentNode).hasClass(ClassName.DROPDOWN_MENU)) {
+    if (element.parentNode && $(element.parentNode).hasClass(ClassName.DROPDOWN_MENU)) {
       const dropdownElement = $(element).closest(Selector.DROPDOWN)[0]
+
       if (dropdownElement) {
         const dropdownToggleList = [].slice.call(dropdownElement.querySelectorAll(Selector.DROPDOWN_TOGGLE))
+
         $(dropdownToggleList).addClass(ClassName.ACTIVE)
       }
 
