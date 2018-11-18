@@ -128,27 +128,34 @@
 // manipulation.
 
 .input-group-lg > .form-control,
+.input-group-lg > .custom-select,
 .input-group-lg > .input-group-prepend > .input-group-text,
 .input-group-lg > .input-group-append > .input-group-text,
 .input-group-lg > .input-group-prepend > .btn,
 .input-group-lg > .input-group-append > .btn {
   height: $input-height-lg;
   padding: $input-padding-y-lg $input-padding-x-lg;
-  font-size: $font-size-lg;
+  font-size: $input-font-size-lg;
   line-height: $input-line-height-lg;
   @include border-radius($input-border-radius-lg);
 }
 
 .input-group-sm > .form-control,
+.input-group-sm > .custom-select,
 .input-group-sm > .input-group-prepend > .input-group-text,
 .input-group-sm > .input-group-append > .input-group-text,
 .input-group-sm > .input-group-prepend > .btn,
 .input-group-sm > .input-group-append > .btn {
   height: $input-height-sm;
   padding: $input-padding-y-sm $input-padding-x-sm;
-  font-size: $font-size-sm;
+  font-size: $input-font-size-sm;
   line-height: $input-line-height-sm;
   @include border-radius($input-border-radius-sm);
+}
+
+.input-group-lg > .custom-select,
+.input-group-sm > .custom-select {
+  padding-right: ($custom-select-padding-x + $custom-select-indicator-padding);
 }
 
 
