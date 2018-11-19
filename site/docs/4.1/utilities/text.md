@@ -118,6 +118,6 @@ Reset a text or link's color with `.text-reset`, so that it inherits the color f
 Remove a text decoration with a `.text-decoration-none` class.
 
 {% capture example %}
-<a href="#" class="text-decoration-none">Non-underline link</a>
+<a href="#" class="text-decoration-none">Non-underlined link</a>
 {% endcapture %}
 {% include example.html content=example %}
