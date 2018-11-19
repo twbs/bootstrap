@@ -46,7 +46,7 @@ You can also use `max-width: 100%;` and `max-height: 100%;` utilities as needed.
 
 ## Relative to the viewport
 
-You can also use utilities for set the width and height relative to the viewport.
+You can also use utilities to set the width and height relative to the viewport.
 
 {% highlight html %}
 <div class="min-vw-100">Min-width 100vw</div>
