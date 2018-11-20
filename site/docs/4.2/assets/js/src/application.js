@@ -17,48 +17,51 @@
 
   document.addEventListener('DOMContentLoaded', function () {
     // Tooltip and popover demos
-    var tooltipDemoList = [].slice.call(document.querySelectorAll('.tooltip-demo'))
-    tooltipDemoList.forEach(function (tooltip) {
-      new bootstrap.Tooltip(tooltip, {
-        selector: '[data-toggle="tooltip"]'
+    bootstrap.Util.makeArray(document.querySelectorAll('.tooltip-demo'))
+      .forEach(function (tooltip) {
+        new bootstrap.Tooltip(tooltip, {
+          selector: '[data-toggle="tooltip"]'
+        })
       })
-    })
 
-    var popoverList = [].slice.call(document.querySelectorAll('[data-toggle="popover"]'))
-    popoverList.forEach(function (popover) {
-      new bootstrap.Popover(popover)
-    })
-
-    $('.toast')
-      .toast({
-        autohide: false
+    bootstrap.Util.makeArray(document.querySelectorAll('[data-toggle="popover"]'))
+      .forEach(function (popover) {
+        new bootstrap.Popover(popover)
       })
-      .toast('show')
+
+    bootstrap.Util.makeArray(document.querySelectorAll('.toast'))
+      .forEach(function (toastNode) {
+        var toast = new bootstrap.Toast(toastNode, {
+          autohide: false
+        })
+
+        toast.show()
+      })
 
     // Demos within modals
-    var tooltipTestList = [].slice.call(document.querySelectorAll('.tooltip-test'))
-    tooltipTestList.forEach(function (tooltip) {
-      new bootstrap.Tooltip(tooltip)
-    })
+    bootstrap.Util.makeArray(document.querySelectorAll('.tooltip-test'))
+      .forEach(function (tooltip) {
+        new bootstrap.Tooltip(tooltip)
+      })
 
-    var popoverTestList = [].slice.call(document.querySelectorAll('.popover-test'))
-    popoverTestList.forEach(function (popover) {
-      new bootstrap.Popover(popover)
-    })
+    bootstrap.Util.makeArray(document.querySelectorAll('.popover-test'))
+      .forEach(function (popover) {
+        new bootstrap.Popover(popover)
+      })
 
     // Indeterminate checkbox example
-    var indeterminateCheckboxList = [].slice.call(document.querySelectorAll('.bd-example-indeterminate [type="checkbox"]'))
-    indeterminateCheckboxList.forEach(function (checkbox) {
-      checkbox.indeterminate = true
-    })
+    bootstrap.Util.makeArray(document.querySelectorAll('.bd-example-indeterminate [type="checkbox"]'))
+      .forEach(function (checkbox) {
+        checkbox.indeterminate = true
+      })
 
     // Disable empty links in docs examples
-    var emptyLinkList = [].slice.call(document.querySelectorAll('.bd-content [href="#"]'))
-    emptyLinkList.forEach(function (link) {
-      link.addEventListener('click', function (e) {
-        e.preventDefault()
+    bootstrap.Util.makeArray(document.querySelectorAll('.bd-content [href="#"]'))
+      .forEach(function (link) {
+        link.addEventListener('click', function (e) {
+          e.preventDefault()
+        })
       })
-    })
 
     // Modal relatedTarget demo
     var exampleModal = document.getElementById('exampleModal')
@@ -78,35 +81,35 @@
     }
 
     // Activate animated progress bar
-    var animatedProgressBarList = [].slice.call(document.querySelectorAll('.bd-toggle-animated-progress > .progress-bar-striped'))
-    animatedProgressBarList.forEach(function (progressBar) {
-      progressBar.addEventListener('click', function () {
-        if (progressBar.classList.contains('progress-bar-animated')) {
-          progressBar.classList.remove('progress-bar-animated')
-        } else {
-          progressBar.classList.add('progress-bar-animated')
-        }
+    bootstrap.Util.makeArray(document.querySelectorAll('.bd-toggle-animated-progress > .progress-bar-striped'))
+      .forEach(function (progressBar) {
+        progressBar.addEventListener('click', function () {
+          if (progressBar.classList.contains('progress-bar-animated')) {
+            progressBar.classList.remove('progress-bar-animated')
+          } else {
+            progressBar.classList.add('progress-bar-animated')
+          }
+        })
       })
-    })
 
     // Insert copy to clipboard button before .highlight
     var btnHtml = '<div class="bd-clipboard"><button type="button" class="btn-clipboard" title="Copy to clipboard">Copy</button></div>'
-    var highList = [].slice.call(document.querySelectorAll('figure.highlight, div.highlight'))
-    highList.forEach(function (element) {
-      element.insertAdjacentHTML('beforebegin', btnHtml)
-    })
-
-    var copyBtnList = [].slice.call(document.querySelectorAll('.btn-clipboard'))
-    copyBtnList.forEach(function (btn) {
-      var tooltipBtn = new bootstrap.Tooltip(btn)
-
-      btn.addEventListener('mouseleave', function () {
-        // Explicitly hide tooltip, since after clicking it remains
-        // focused (as it's a button), so tooltip would otherwise
-        // remain visible until focus is moved away
-        tooltipBtn.hide()
+    bootstrap.Util.makeArray(document.querySelectorAll('figure.highlight, div.highlight'))
+      .forEach(function (element) {
+        element.insertAdjacentHTML('beforebegin', btnHtml)
       })
-    })
+
+    bootstrap.Util.makeArray(document.querySelectorAll('.btn-clipboard'))
+      .forEach(function (btn) {
+        var tooltipBtn = new bootstrap.Tooltip(btn)
+
+        btn.addEventListener('mouseleave', function () {
+          // Explicitly hide tooltip, since after clicking it remains
+          // focused (as it's a button), so tooltip would otherwise
+          // remain visible until focus is moved away
+          tooltipBtn.hide()
+        })
+      })
 
     var clipboard = new ClipboardJS('.btn-clipboard', {
       target: function (trigger) {
@@ -145,13 +148,13 @@
     anchors.add('.bd-content > h2, .bd-content > h3, .bd-content > h4, .bd-content > h5')
 
     // Wrap inner
-    var hList = [].slice.call(document.querySelectorAll('.bd-content > h2, .bd-content > h3, .bd-content > h4, .bd-content > h5'))
-    hList.forEach(function (hEl) {
-      var span = document.createElement('span')
-      span.classList.add('bd-content-title')
-      hEl.parentElement.insertBefore(span, hEl)
-      span.appendChild(hEl)
-    })
+    bootstrap.Util.makeArray(document.querySelectorAll('.bd-content > h2, .bd-content > h3, .bd-content > h4, .bd-content > h5'))
+      .forEach(function (hEl) {
+        var span = document.createElement('span')
+        span.classList.add('bd-content-title')
+        hEl.parentElement.insertBefore(span, hEl)
+        span.appendChild(hEl)
+      })
 
     bsCustomFileInput.init()
   })
