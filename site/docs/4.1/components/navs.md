@@ -35,7 +35,7 @@ The base `.nav` component does not include any `.active` state. The following ex
 {% endcapture %}
 {% include example.html content=example %}
 
-Classes are used throughout, so your markup can be super flexible. Use `<ul>`s like above, or roll your own with say a `<nav>` element. Because the `.nav` uses `display: flex`, the nav links behave the same as nav items would, but without the extra markup.
+Classes are used throughout, so your markup can be super flexible. Use `<ul>`s like above, `<ol>` if the order of your items is important, or roll your own with a `<nav>` element. Because the `.nav` uses `display: flex`, the nav links behave the same as nav items would, but without the extra markup.
 
 {% capture example %}
 <nav class="nav">

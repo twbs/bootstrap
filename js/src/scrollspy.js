@@ -1,12 +1,12 @@
-import $ from 'jquery'
-import Util from './util'
-
 /**
  * --------------------------------------------------------------------------
  * Bootstrap (v4.1.3): scrollspy.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
+
+import $ from 'jquery'
+import Util from './util'
 
 /**
  * ------------------------------------------------------------------------
@@ -242,12 +242,9 @@ class ScrollSpy {
 
     this._clear()
 
-    let queries = this._selector.split(',')
-    // eslint-disable-next-line arrow-body-style
-    queries = queries.map((selector) => {
-      return `${selector}[data-target="${target}"],` +
-              `${selector}[href="${target}"]`
-    })
+    const queries = this._selector
+      .split(',')
+      .map((selector) => `${selector}[data-target="${target}"],${selector}[href="${target}"]`)
 
     const $link = $([].slice.call(document.querySelectorAll(queries.join(','))))
 
@@ -270,8 +267,9 @@ class ScrollSpy {
   }
 
   _clear() {
-    const nodes = [].slice.call(document.querySelectorAll(this._selector))
-    $(nodes).filter(Selector.ACTIVE).removeClass(ClassName.ACTIVE)
+    [].slice.call(document.querySelectorAll(this._selector))
+      .filter((node) => node.classList.contains(ClassName.ACTIVE))
+      .forEach((node) => node.classList.remove(ClassName.ACTIVE))
   }
 
   // Static
@@ -304,8 +302,8 @@ class ScrollSpy {
 
 $(window).on(Event.LOAD_DATA_API, () => {
   const scrollSpys = [].slice.call(document.querySelectorAll(Selector.DATA_SPY))
-
   const scrollSpysLength = scrollSpys.length
+
   for (let i = scrollSpysLength; i--;) {
     const $spy = $(scrollSpys[i])
     ScrollSpy._jQueryInterface.call($spy, $spy.data())
