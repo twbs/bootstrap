@@ -150,10 +150,7 @@
     // Wrap inner
     bootstrap.Util.makeArray(document.querySelectorAll('.bd-content > h2, .bd-content > h3, .bd-content > h4, .bd-content > h5'))
       .forEach(function (hEl) {
-        var span = document.createElement('span')
-        span.classList.add('bd-content-title')
-        hEl.parentElement.insertBefore(span, hEl)
-        span.appendChild(hEl)
+        hEl.innerHTML = '<span class="bd-content-title">' + hEl.innerHTML + '</span>'
       })
 
     bsCustomFileInput.init()
