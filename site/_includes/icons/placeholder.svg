@@ -6,15 +6,15 @@
     text: The text to show in the image - default: 'width x height'
     class: default: 'bd-placeholder-img'
     color: The text color (foreground) - default: '#dee2e6'
-    background: The background color - default: '#6c757d'
+    background: The background color - default: '#868e96'
     width: default: 100%
     height: default: 180px
 {%- endcomment -%}
 
 {%- assign title = include.title | default: 'Generic Placeholder Image' -%}
 {%- assign class = include.class | default: '' -%}
-{%- assign color = include.color | default: '#dee2e6' -%}
-{%- assign background = include.background | default: '#6c757d' -%}
+{%- assign color = include.color | default: site.data.grays[2].hex -%}
+{%- assign background = include.background | default: site.data.grays[5].hex -%}
 {%- assign width = include.width | default: '100%' -%}
 {%- assign height = include.height | default: '180' -%}
 
