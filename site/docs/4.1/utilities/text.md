@@ -85,8 +85,10 @@ Quickly change the weight (boldness) of text or italicize text.
 
 {% capture example %}
 <p class="font-weight-bold">Bold text.</p>
+<p class="font-weight-bolder">Bolder weight text (relative to the parent element).</p>
 <p class="font-weight-normal">Normal weight text.</p>
 <p class="font-weight-light">Light weight text.</p>
+<p class="font-weight-lighter">Lighter weight text (relative to the parent element).</p>
 <p class="font-italic">Italic text.</p>
 {% endcapture %}
 {% include example.html content=example %}
@@ -108,5 +110,14 @@ Reset a text or link's color with `.text-reset`, so that it inherits the color f
 <p class="text-muted">
   Muted text with a <a href="#" class="text-reset">reset link</a>.
 </p>
+{% endcapture %}
+{% include example.html content=example %}
+
+## Text decoration
+
+Remove a text decoration with a `.text-decoration-none` class.
+
+{% capture example %}
+<a href="#" class="text-decoration-none">Non-underlined link</a>
 {% endcapture %}
 {% include example.html content=example %}

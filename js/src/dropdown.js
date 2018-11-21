@@ -1,13 +1,13 @@
-import $ from 'jquery'
-import Popper from 'popper.js'
-import Util from './util'
-
 /**
  * --------------------------------------------------------------------------
  * Bootstrap (v4.1.3): dropdown.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
+
+import $ from 'jquery'
+import Popper from 'popper.js'
+import Util from './util'
 
 /**
  * ------------------------------------------------------------------------
@@ -41,13 +41,13 @@ const Event = {
 }
 
 const ClassName = {
-  DISABLED  : 'disabled',
-  SHOW      : 'show',
-  DROPUP    : 'dropup',
-  DROPRIGHT : 'dropright',
-  DROPLEFT  : 'dropleft',
-  MENURIGHT : 'dropdown-menu-right',
-  MENULEFT  : 'dropdown-menu-left',
+  DISABLED        : 'disabled',
+  SHOW            : 'show',
+  DROPUP          : 'dropup',
+  DROPRIGHT       : 'dropright',
+  DROPLEFT        : 'dropleft',
+  MENURIGHT       : 'dropdown-menu-right',
+  MENULEFT        : 'dropdown-menu-left',
   POSITION_STATIC : 'position-static'
 }
 
@@ -71,19 +71,19 @@ const AttachmentMap = {
 }
 
 const Default = {
-  offset      : 0,
-  flip        : true,
-  boundary    : 'scrollParent',
-  reference   : 'toggle',
-  display     : 'dynamic'
+  offset    : 0,
+  flip      : true,
+  boundary  : 'scrollParent',
+  reference : 'toggle',
+  display   : 'dynamic'
 }
 
 const DefaultType = {
-  offset      : '(number|string|function)',
-  flip        : 'boolean',
-  boundary    : '(string|element)',
-  reference   : '(string|element)',
-  display     : 'string'
+  offset    : '(number|string|function)',
+  flip      : 'boolean',
+  boundary  : '(string|element)',
+  reference : '(string|element)',
+  display   : 'string'
 }
 
 /**
@@ -203,8 +203,8 @@ class Dropdown {
       relatedTarget: this._element
     }
     const showEvent = $.Event(Event.SHOW, relatedTarget)
-
     const parent = Dropdown._getParentFromElement(this._element)
+
     $(parent).trigger(showEvent)
 
     if (showEvent.isDefaultPrevented()) {
@@ -226,8 +226,8 @@ class Dropdown {
       relatedTarget: this._element
     }
     const hideEvent = $.Event(Event.HIDE, relatedTarget)
-
     const parent = Dropdown._getParentFromElement(this._element)
+
     $(parent).trigger(hideEvent)
 
     if (hideEvent.isDefaultPrevented()) {
@@ -287,6 +287,7 @@ class Dropdown {
   _getMenuElement() {
     if (!this._menu) {
       const parent = Dropdown._getParentFromElement(this._element)
+
       if (parent) {
         this._menu = parent.querySelector(Selector.MENU)
       }
@@ -382,6 +383,7 @@ class Dropdown {
     }
 
     const toggles = [].slice.call(document.querySelectorAll(Selector.DATA_TOGGLE))
+
     for (let i = 0, len = toggles.length; i < len; i++) {
       const parent = Dropdown._getParentFromElement(toggles[i])
       const context = $(toggles[i]).data(DATA_KEY)
