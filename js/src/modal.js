@@ -463,8 +463,9 @@ class Modal {
       $(document.body)
         .data('padding-right', actualPadding)
         .css('padding-right', `${parseFloat(calculatedPadding) + this._scrollbarWidth}px`)
-        .addClass(ClassName.OPEN)
     }
+
+    $(document.body).addClass(ClassName.OPEN)
   }
 
   _resetScrollbar() {
