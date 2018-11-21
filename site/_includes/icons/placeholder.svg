@@ -5,16 +5,16 @@
     title: Used in the SVG `title` tag
     text: The text to show in the image - default: 'width x height'
     class: default: 'bd-placeholder-img'
-    color: The text color (foreground) - default: '#ddd'
-    background: The background color - default: '#777'
+    color: The text color (foreground) - default: '#dee2e6'
+    background: The background color - default: '#868e96'
     width: default: 100%
     height: default: 180px
 {%- endcomment -%}
 
 {%- assign title = include.title | default: 'Generic Placeholder Image' -%}
 {%- assign class = include.class | default: '' -%}
-{%- assign color = include.color | default: '#ddd' -%}
-{%- assign background = include.background | default: '#777' -%}
+{%- assign color = include.color | default: site.data.grays[2].hex -%}
+{%- assign background = include.background | default: site.data.grays[5].hex -%}
 {%- assign width = include.width | default: '100%' -%}
 {%- assign height = include.height | default: '180' -%}
 
