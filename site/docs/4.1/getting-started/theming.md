@@ -15,7 +15,7 @@ Now, theming is accomplished by Sass variables, Sass maps, and custom CSS. There
 
 ## Sass
 
-Utilize our source Sass files to take advantage of variables, maps, mixins, and more.
+Utilize our source Sass files to take advantage of variables, maps, mixins, and more. In our build we've increased the Sass rounding precision to 6 (by default it's 5) to prevent issues with browser rounding.
 
 ### File structure
 
