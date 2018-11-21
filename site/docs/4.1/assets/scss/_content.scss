@@ -13,16 +13,10 @@
   > h4[id] {
     pointer-events: none;
 
-    > div,
-    > a {
-      pointer-events: auto;
-    }
-
     &::before {
       display: block;
       height: 6rem;
       margin-top: -6rem;
-      visibility: hidden;
       content: "";
     }
   }
@@ -65,6 +59,11 @@
       white-space: nowrap;
     }
   }
+}
+
+.bd-content-title {
+  display: block;
+  pointer-events: auto;
 }
 
 //
