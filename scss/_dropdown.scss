@@ -137,11 +137,11 @@
   border: 0; // For `<button>`s
 
   &:first-child {
-    @include border-top-radius($dropdown-border-radius);
+    @include border-top-radius($dropdown-inner-border-radius);
   }
 
   &:last-child {
-    @include border-bottom-radius($dropdown-border-radius);
+    @include border-bottom-radius($dropdown-inner-border-radius);
   }
 
   @include hover-focus {
