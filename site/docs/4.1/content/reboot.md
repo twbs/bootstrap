@@ -307,7 +307,7 @@ The `<address>` element is updated to reset the browser default `font-style` fro
 
   <address>
     <strong>Full Name</strong><br>
-    <a href="mailto:#">first.last@example.com</a>
+    <a href="mailto:first.last@example.com">first.last@example.com</a>
   </address>
 </div>
 

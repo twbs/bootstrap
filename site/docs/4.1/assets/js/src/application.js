@@ -38,7 +38,7 @@
     $('.bd-example-indeterminate [type="checkbox"]').prop('indeterminate', true)
 
     // Disable empty links in docs examples
-    $('.bd-content [href="#"], .bd-content [href="mailto:#"]').click(function (e) {
+    $('.bd-content [href="#"]').click(function (e) {
       e.preventDefault()
     })
 
