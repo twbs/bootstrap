@@ -42,7 +42,7 @@ Add `.disabled` to a `.list-group-item` to make it _appear_ disabled. Note that 
 
 {% capture example %}
 <ul class="list-group">
-  <li class="list-group-item disabled">Cras justo odio</li>
+  <li class="list-group-item disabled" aria-disabled="true">Cras justo odio</li>
   <li class="list-group-item">Dapibus ac facilisis in</li>
   <li class="list-group-item">Morbi leo risus</li>
   <li class="list-group-item">Porta ac consectetur ac</li>
@@ -65,7 +65,7 @@ Be sure to **not use the standard `.btn` classes here**.
   <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
   <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
   <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
-  <a href="#" class="list-group-item list-group-item-action disabled">Vestibulum at eros</a>
+  <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true">Vestibulum at eros</a>
 </div>
 {% endcapture %}
 {% include example.html content=example %}
@@ -156,7 +156,7 @@ Add nearly any HTML within, even for linked list groups like the one below, with
 
 {% capture example %}
 <div class="list-group">
-  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+  <a href="#" class="list-group-item list-group-item-action active">
     <div class="d-flex w-100 justify-content-between">
       <h5 class="mb-1">List group item heading</h5>
       <small>3 days ago</small>
@@ -164,7 +164,7 @@ Add nearly any HTML within, even for linked list groups like the one below, with
     <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
     <small>Donec id elit non mi porta.</small>
   </a>
-  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+  <a href="#" class="list-group-item list-group-item-action">
     <div class="d-flex w-100 justify-content-between">
       <h5 class="mb-1">List group item heading</h5>
       <small class="text-muted">3 days ago</small>
@@ -172,7 +172,7 @@ Add nearly any HTML within, even for linked list groups like the one below, with
     <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
     <small class="text-muted">Donec id elit non mi porta.</small>
   </a>
-  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+  <a href="#" class="list-group-item list-group-item-action">
     <div class="d-flex w-100 justify-content-between">
       <h5 class="mb-1">List group item heading</h5>
       <small class="text-muted">3 days ago</small>

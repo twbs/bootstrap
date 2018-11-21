@@ -35,8 +35,10 @@ $(document).off('.alert.data-api')
 {% endhighlight %}
 
 {% capture callout %}
-##### Escaping selectors
-If you use special selectors, for example: `collapse:Example`, be sure to escape them, because they'll be passed through jQuery.
+## Selectors
+
+Currently to query DOM elements we use the native methods `querySelector` and `querySelectorAll` for performance reasons, so you have to use [valid selectors](https://www.w3.org/TR/CSS21/syndata.html#value-def-identifier).
+If you use special selectors, for example: `collapse:Example` be sure to escape them.
 {% endcapture %}
 {% include callout.html content=callout type="warning" %}
 
@@ -72,7 +74,7 @@ Each plugin also exposes its raw constructor on a `Constructor` property: `$.fn.
 
 ### Asynchronous functions and transitions
 
-All programmatic API methods are **asynchronous** and returns to the caller once the transition is started but **before it ends**.
+All programmatic API methods are **asynchronous** and return to the caller once the transition is started but **before it ends**.
 
 In order to execute an action once the transition is complete, you can listen to the corresponding event.
 

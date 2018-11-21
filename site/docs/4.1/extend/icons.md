@@ -20,7 +20,7 @@ We've tested and used these icon sets ourselves.
 While we haven't tried these out, they do look promising and provide multiple formats—including SVG.
 
 - [Bytesize](https://github.com/danklammer/bytesize-icons)
-- [Google Material icons](https://material.io/icons/)
+- [Google Material icons](https://material.io/tools/icons/)
 - [Ionicons](https://ionicons.com/)
 - [Feather](https://feathericons.com/)
 - [Dripicons](http://demo.amitjakhu.com/dripicons/)

@@ -38,7 +38,7 @@ Run `npm run` to see all the npm scripts.
 
 Bootstrap uses [Autoprefixer][autoprefixer] (included in our build process) to automatically add vendor prefixes to some CSS properties at build time. Doing so saves us time and code by allowing us to write key parts of our CSS a single time while eliminating the need for vendor mixins like those found in v3.
 
-We maintain the list of browsers supported through Autoprefixer in a separate file within our GitHub repository. See [/package.json]({{ site.repo }}/blob/v{{ site.current_version }}/package.json) for details.
+We maintain the list of browsers supported through Autoprefixer in a separate file within our GitHub repository. See [/.browserslistrc]({{ site.repo }}/blob/v{{ site.current_version }}/.browserslistrc) for details.
 
 ## Local documentation
 
@@ -48,7 +48,7 @@ Running our documentation locally requires the use of Jekyll, a decently flexibl
 2. From the root `/bootstrap` directory, run `npm run docs-serve` in the command line.
 3. Open `http://localhost:9001` in your browser, and voilà.
 
-Learn more about using Jekyll by reading its [documentation](https://jekyllrb.com/docs/home/).
+Learn more about using Jekyll by reading its [documentation](https://jekyllrb.com/docs/).
 
 ## Troubleshooting
 

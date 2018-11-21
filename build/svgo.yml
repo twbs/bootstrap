@@ -6,7 +6,7 @@
 # replace default config
 
 multipass: true
-full: true
+#full: true
 
 # https://github.com/svg/svgo/blob/master/lib/svgo/js2svg.js#L6 for more config options
 
@@ -48,5 +48,5 @@ plugins:
   - removeUselessStrokeAndFill: true
   - removeViewBox: false
   - removeXMLNS: false
-  - removeXMLProcInst: false
+  - removeXMLProcInst: true
   - sortAttrs: true

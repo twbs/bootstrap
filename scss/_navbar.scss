@@ -197,10 +197,10 @@
 // Dark links against a light background
 .navbar-light {
   .navbar-brand {
-    color: $navbar-light-active-color;
+    color: $navbar-light-brand-color;
 
     @include hover-focus {
-      color: $navbar-light-active-color;
+      color: $navbar-light-brand-hover-color;
     }
   }
 
@@ -249,10 +249,10 @@
 // White links against a dark background
 .navbar-dark {
   .navbar-brand {
-    color: $navbar-dark-active-color;
+    color: $navbar-dark-brand-color;
 
     @include hover-focus {
-      color: $navbar-dark-active-color;
+      color: $navbar-dark-brand-hover-color;
     }
   }
 

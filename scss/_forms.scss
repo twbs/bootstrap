@@ -9,7 +9,8 @@
   width: 100%;
   height: $input-height;
   padding: $input-padding-y $input-padding-x;
-  font-size: $font-size-base;
+  font-size: $input-font-size;
+  font-weight: $input-font-weight;
   line-height: $input-line-height;
   color: $input-color;
   background-color: $input-bg;
@@ -94,14 +95,14 @@ select.form-control {
 .col-form-label-lg {
   padding-top: calc(#{$input-padding-y-lg} + #{$input-border-width});
   padding-bottom: calc(#{$input-padding-y-lg} + #{$input-border-width});
-  font-size: $font-size-lg;
+  font-size: $input-font-size-lg;
   line-height: $input-line-height-lg;
 }
 
 .col-form-label-sm {
   padding-top: calc(#{$input-padding-y-sm} + #{$input-border-width});
   padding-bottom: calc(#{$input-padding-y-sm} + #{$input-border-width});
-  font-size: $font-size-sm;
+  font-size: $input-font-size-sm;
   line-height: $input-line-height-sm;
 }
 
@@ -141,7 +142,7 @@ select.form-control {
 .form-control-sm {
   height: $input-height-sm;
   padding: $input-padding-y-sm $input-padding-x-sm;
-  font-size: $font-size-sm;
+  font-size: $input-font-size-sm;
   line-height: $input-line-height-sm;
   @include border-radius($input-border-radius-sm);
 }
@@ -149,12 +150,12 @@ select.form-control {
 .form-control-lg {
   height: $input-height-lg;
   padding: $input-padding-y-lg $input-padding-x-lg;
-  font-size: $font-size-lg;
+  font-size: $input-font-size-lg;
   line-height: $input-line-height-lg;
   @include border-radius($input-border-radius-lg);
 }
 
-// stylelint-disable no-duplicate-selectors
+// stylelint-disable-next-line no-duplicate-selectors
 select.form-control {
   &[size],
   &[multiple] {
@@ -162,10 +163,10 @@ select.form-control {
   }
 }
 
+// stylelint-disable-next-line no-duplicate-selectors
 textarea.form-control {
   height: auto;
 }
-// stylelint-enable no-duplicate-selectors
 
 // Form groups
 //

@@ -8,7 +8,7 @@ toc: true
 
 ## Overview
 
-Dropdowns are toggleable, contextual overlays for displaying lists of links and more. They're made interactive with the included Bootstrap dropdown JavaScript plugin. They're toggled by clicking, not by hovering; this is [an intentional design decision.](http://markdotto.com/2012/02/27/bootstrap-explained-dropdowns/)
+Dropdowns are toggleable, contextual overlays for displaying lists of links and more. They're made interactive with the included Bootstrap dropdown JavaScript plugin. They're toggled by clicking, not by hovering; this is [an intentional design decision](http://markdotto.com/2012/02/27/bootstrap-explained-dropdowns/).
 
 Dropdowns are built on a third party library, [Popper.js](https://popper.js.org/), which provides dynamic positioning and viewport detection. Be sure to include [popper.min.js]({{ site.cdn.popper }}) before Bootstrap's JavaScript or use `bootstrap.bundle.min.js` / `bootstrap.bundle.js` which contains Popper.js. Popper.js isn't used to position dropdowns in navbars though as dynamic positioning isn't required.
 
@@ -587,7 +587,7 @@ Add `.disabled` to items in the dropdown to **style them as disabled**.
 {% capture example %}
 <div class="dropdown-menu">
   <a class="dropdown-item" href="#">Regular link</a>
-  <a class="dropdown-item disabled" href="#">Disabled link</a>
+  <a class="dropdown-item disabled" href="#" tabindex="-1" aria-disabled="true">Disabled link</a>
   <a class="dropdown-item" href="#">Another link</a>
 </div>
 {% endcapture %}
@@ -615,6 +615,44 @@ By default, a dropdown menu is automatically positioned 100% from the top and al
 </div>
 {% endcapture %}
 {% include example.html content=example %}
+
+### Responsive alignment
+
+If you want to use responsive alignment, disable dynamic positioning by adding the `data-display="static"` attribute and use the responsive variation classes.
+
+To align **right** the dropdown menu with the given breakpoint or larger, add `.dropdown-menu{-sm|-md|-lg|-xl}-right`.
+
+{% capture example %}
+<div class="btn-group">
+  <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+    Left-aligned but right aligned when large screen
+  </button>
+  <div class="dropdown-menu dropdown-menu-lg-right">
+    <button class="dropdown-item" type="button">Action</button>
+    <button class="dropdown-item" type="button">Another action</button>
+    <button class="dropdown-item" type="button">Something else here</button>
+  </div>
+</div>
+{% endcapture %}
+{% include example.html content=example %}
+
+To align **left** the dropdown menu with the given breakpoint or larger, add `.dropdown-menu-right` and `.dropdown-menu{-sm|-md|-lg|-xl}-left`.
+
+{% capture example %}
+<div class="btn-group">
+  <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+    Right-aligned but left aligned when large screen
+  </button>
+  <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
+    <button class="dropdown-item" type="button">Action</button>
+    <button class="dropdown-item" type="button">Another action</button>
+    <button class="dropdown-item" type="button">Something else here</button>
+  </div>
+</div>
+{% endcapture %}
+{% include example.html content=example %}
+
+Note that you don't need to add a `data-display="static"` attribute to dropdown buttons in navbars, since Popper.js isn't used in navbars.
 
 ## Menu content
 
@@ -677,11 +715,13 @@ Put a form within a dropdown menu, or make it into a dropdown menu, and use [mar
       <label for="exampleDropdownFormPassword1">Password</label>
       <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
     </div>
-    <div class="form-check">
-      <input type="checkbox" class="form-check-input" id="dropdownCheck">
-      <label class="form-check-label" for="dropdownCheck">
-        Remember me
-      </label>
+    <div class="form-group">
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="dropdownCheck">
+        <label class="form-check-label" for="dropdownCheck">
+          Remember me
+        </label>
+      </div>
     </div>
     <button type="submit" class="btn btn-primary">Sign in</button>
   </form>
@@ -702,11 +742,13 @@ Put a form within a dropdown menu, or make it into a dropdown menu, and use [mar
     <label for="exampleDropdownFormPassword2">Password</label>
     <input type="password" class="form-control" id="exampleDropdownFormPassword2" placeholder="Password">
   </div>
-  <div class="form-check">
-    <input type="checkbox" class="form-check-input" id="dropdownCheck2">
-    <label class="form-check-label" for="dropdownCheck2">
-      Remember me
-    </label>
+  <div class="form-group">
+    <div class="form-check">
+      <input type="checkbox" class="form-check-input" id="dropdownCheck2">
+      <label class="form-check-label" for="dropdownCheck2">
+        Remember me
+      </label>
+    </div>
   </div>
   <button type="submit" class="btn btn-primary">Sign in</button>
 </form>
@@ -839,6 +881,8 @@ Note when `boundary` is set to any value other than `'scrollParent'`, the style 
 | Method | Description |
 | --- | --- |
 | `$().dropdown('toggle')` | Toggles the dropdown menu of a given navbar or tabbed navigation. |
+| `$().dropdown('show')` | Shows the dropdown menu of a given navbar or tabbed navigation. |
+| `$().dropdown('hide')` | Hides the dropdown menu of a given navbar or tabbed navigation. |
 | `$().dropdown('update')` | Updates the position of an element's dropdown. |
 | `$().dropdown('dispose')` | Destroys an element's dropdown. |
 
