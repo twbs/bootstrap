@@ -28,12 +28,6 @@
     apiKey: 'c8948afa20e6437a6e829f7e87b9ac11',
     indexName: 'bootstrap-v3',
     inputSelector: '#search-input',
-    handleSelected: function (input, event, suggestion) {
-      var url = suggestion.url
-      url = suggestion.isLvl1 ? url.split('#')[0] : url
-      // If it's a title we remove the anchor so it does not jump.
-      window.location.href = url
-    },
     transformData: function (hits) {
       return hits.map(function (hit) {
         var siteurl = getOrigin()
@@ -42,6 +36,12 @@
         // When in production, return the result as is,
         // otherwise remove our url from it.
         hit.url = siteurl.match(urlRE) ? hit.url : hit.url.replace(urlRE, '')
+
+        // Prevent jumping to first header
+        if (hit.anchor === 'content') {
+          hit.url = hit.url.replace(/#content$/, '')
+          hit.anchor = null
+        }
 
         return hit
       })
