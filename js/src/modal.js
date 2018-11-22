@@ -26,20 +26,20 @@ const RIGHT_KEYCODE      = 39
 
 const Default = {
   autofocus: 'notTouch',      // true|false|notTouch
-  backdrop : true,
-  keyboard : true,
+  backdrop: true,
+  keyboard: true,
   keyboardNav: true,  // ability to use arrows to nav button focus
-  focus    : true,
-  show     : true
+  focus: true,
+  show: true
 }
 
 const DefaultType = {
   autofocus: '(boolean|string)',
-  backdrop : '(boolean|string)',
-  keyboard : 'boolean',
+  backdrop: '(boolean|string)',
+  keyboard: 'boolean',
   keyboardNav: 'boolean',
-  focus    : 'boolean',
-  show     : 'boolean'
+  focus: 'boolean',
+  show: 'boolean'
 }
 
 const Event = {
