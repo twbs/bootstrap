@@ -30,16 +30,22 @@ Width and height utilities are generated from the `$sizes` Sass map in `_variabl
 {% endcapture %}
 {% include example.html content=example %}
 
-You can also use `max-width: 100%;` and `max-height: 100%;` utilities as needed.
+You can also use `max-width` and `max-height` utilities as needed.
 
 {% capture example %}
-{% include icons/placeholder.svg width="100%" height="100" class="mw-100" text="Max-width 100%" title="Max-width 100%" %}
+<div class="mw-25 p-3" style="width: 100%; background-color: #eee;">Max-width 25%</div>
+<div class="mw-50 p-3" style="width: 100%; background-color: #eee;">Max-width 50%</div>
+<div class="mw-75 p-3" style="width: 100%; background-color: #eee;">Max-width 75%</div>
+<div class="mw-100 p-3" style="width: 100%; background-color: #eee;">Max-width 100%</div>
 {% endcapture %}
 {% include example.html content=example %}
 
 {% capture example %}
 <div style="height: 100px; background-color: rgba(255,0,0,0.1);">
-  <div class="mh-100" style="width: 100px; height: 200px; background-color: rgba(0,0,255,0.1);">Max-height 100%</div>
+  <div class="mh-25 d-inline-block" style="width: 140px; height: 200px; background-color: rgba(0,0,255,.1);">Max-height 25%</div>
+  <div class="mh-50 d-inline-block" style="width: 140px; height: 200px; background-color: rgba(0,0,255,.1);">Max-height 50%</div>
+  <div class="mh-75 d-inline-block" style="width: 140px; height: 200px; background-color: rgba(0,0,255,.1);">Max-height 75%</div>
+  <div class="mh-100 d-inline-block" style="width: 140px; height: 200px; background-color: rgba(0,0,255,.1);">Max-height 100%</div>
 </div>
 {% endcapture %}
 {% include example.html content=example %}

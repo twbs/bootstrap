@@ -8,8 +8,15 @@
   }
 }
 
-.mw-100 { max-width: 100% !important; }
-.mh-100 { max-height: 100% !important; }
+// Max-width and -height
+@each $prop, $abbrev in (max-width: mw, max-height: mh) {
+  @each $size, $length in $sizes {
+    // Exclude auto, as this is not a valid value for max-width or max-height
+    @if $size != auto {
+      .#{$abbrev}-#{$size} { #{$prop}: $length !important; }
+    }
+  }
+}
 
 // Viewport additional helpers
 
