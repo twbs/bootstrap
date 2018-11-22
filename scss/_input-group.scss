@@ -127,17 +127,26 @@
 // Remix the default form control sizing classes into new ones for easier
 // manipulation.
 
+.input-group-lg > .form-control:not(textarea),
+.input-group-lg > .custom-select {
+  height: $input-height-lg;
+}
+
 .input-group-lg > .form-control,
 .input-group-lg > .custom-select,
 .input-group-lg > .input-group-prepend > .input-group-text,
 .input-group-lg > .input-group-append > .input-group-text,
 .input-group-lg > .input-group-prepend > .btn,
 .input-group-lg > .input-group-append > .btn {
-  height: $input-height-lg;
   padding: $input-padding-y-lg $input-padding-x-lg;
   font-size: $input-font-size-lg;
   line-height: $input-line-height-lg;
   @include border-radius($input-border-radius-lg);
+}
+
+.input-group-sm > .form-control:not(textarea),
+.input-group-sm > .custom-select {
+  height: $input-height-sm;
 }
 
 .input-group-sm > .form-control,
@@ -146,7 +155,6 @@
 .input-group-sm > .input-group-append > .input-group-text,
 .input-group-sm > .input-group-prepend > .btn,
 .input-group-sm > .input-group-append > .btn {
-  height: $input-height-sm;
   padding: $input-padding-y-sm $input-padding-x-sm;
   font-size: $input-font-size-sm;
   line-height: $input-line-height-sm;
