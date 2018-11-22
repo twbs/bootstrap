@@ -276,6 +276,10 @@
       content: $value;
     }
   }
+
+  ~ .custom-file-label[data-browse]::after {
+    content: attr(data-browse);
+  }
 }
 
 .custom-file-label {
@@ -328,7 +332,7 @@
   &:focus {
     outline: none;
 
-    // Pseudo-elements must be split across multiple rulesets to have an affect.
+    // Pseudo-elements must be split across multiple rulesets to have an effect.
     // No box-shadow() mixin for focus accessibility.
     &::-webkit-slider-thumb { box-shadow: $custom-range-thumb-focus-box-shadow; }
     &::-moz-range-thumb     { box-shadow: $custom-range-thumb-focus-box-shadow; }

@@ -587,7 +587,7 @@ Add `.disabled` to items in the dropdown to **style them as disabled**.
 {% capture example %}
 <div class="dropdown-menu">
   <a class="dropdown-item" href="#">Regular link</a>
-  <a class="dropdown-item disabled" href="#">Disabled link</a>
+  <a class="dropdown-item disabled" href="#" tabindex="-1" aria-disabled="true">Disabled link</a>
   <a class="dropdown-item" href="#">Another link</a>
 </div>
 {% endcapture %}
@@ -715,11 +715,13 @@ Put a form within a dropdown menu, or make it into a dropdown menu, and use [mar
       <label for="exampleDropdownFormPassword1">Password</label>
       <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
     </div>
-    <div class="form-check">
-      <input type="checkbox" class="form-check-input" id="dropdownCheck">
-      <label class="form-check-label" for="dropdownCheck">
-        Remember me
-      </label>
+    <div class="form-group">
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="dropdownCheck">
+        <label class="form-check-label" for="dropdownCheck">
+          Remember me
+        </label>
+      </div>
     </div>
     <button type="submit" class="btn btn-primary">Sign in</button>
   </form>
@@ -740,11 +742,13 @@ Put a form within a dropdown menu, or make it into a dropdown menu, and use [mar
     <label for="exampleDropdownFormPassword2">Password</label>
     <input type="password" class="form-control" id="exampleDropdownFormPassword2" placeholder="Password">
   </div>
-  <div class="form-check">
-    <input type="checkbox" class="form-check-input" id="dropdownCheck2">
-    <label class="form-check-label" for="dropdownCheck2">
-      Remember me
-    </label>
+  <div class="form-group">
+    <div class="form-check">
+      <input type="checkbox" class="form-check-input" id="dropdownCheck2">
+      <label class="form-check-label" for="dropdownCheck2">
+        Remember me
+      </label>
+    </div>
   </div>
   <button type="submit" class="btn btn-primary">Sign in</button>
 </form>
