@@ -61,12 +61,12 @@ const ClassName = {
 }
 
 const Selector = {
-  DIALOG             : '.modal-dialog',
-  DATA_TOGGLE        : '[data-toggle="modal"]',
-  DATA_DISMISS       : '[data-dismiss="modal"]',
-  FIXED_CONTENT      : '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top',
-  STICKY_CONTENT     : '.sticky-top',
-  FOCUSABLE          : 'a[href], area[href], input, button, select, textarea, ' +
+  DIALOG         : '.modal-dialog',
+  DATA_TOGGLE    : '[data-toggle="modal"]',
+  DATA_DISMISS   : '[data-dismiss="modal"]',
+  FIXED_CONTENT  : '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top',
+  STICKY_CONTENT : '.sticky-top',
+  FOCUSABLE      : 'a[href], area[href], input, button, select, textarea, ' +
     'audio[controls], video[controls], iframe, object, embed, [tabindex], [contenteditable]'
 }
 
