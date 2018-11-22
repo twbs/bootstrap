@@ -212,7 +212,8 @@
       color: $navbar-light-hover-color;
     }
 
-    &.disabled {
+    &.disabled,
+    &:disabled {
       color: $navbar-light-disabled-color;
     }
   }
@@ -265,7 +266,8 @@
       color: $navbar-dark-hover-color;
     }
 
-    &.disabled {
+    &.disabled,
+    &:disabled {
       color: $navbar-dark-disabled-color;
     }
   }
