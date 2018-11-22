@@ -55,14 +55,14 @@ Change the border color using utilities built on our theme colors.
 Add classes to an element to easily round its corners.
 
 <div class="bd-example bd-example-images">
-  <img data-src="holder.js/75x75" class="rounded" alt="Example rounded image">
-  <img data-src="holder.js/75x75" class="rounded-top" alt="Example top rounded image">
-  <img data-src="holder.js/75x75" class="rounded-right" alt="Example right rounded image">
-  <img data-src="holder.js/75x75" class="rounded-bottom" alt="Example bottom rounded image">
-  <img data-src="holder.js/75x75" class="rounded-left" alt="Example left rounded image">
-  <img data-src="holder.js/75x75" class="rounded-circle" alt="Completely round image">
-  <img data-src="holder.js/150x75" class="rounded-pill" alt="Rounded pill image">
-  <img data-src="holder.js/75x75" class="rounded-0" alt="Example non-rounded image (overrides rounding applied elsewhere)">
+  {%- include icons/placeholder.svg width="75" height="75" class="rounded" title="Example rounded image" -%}
+  {%- include icons/placeholder.svg width="75" height="75" class="rounded-top" title="Example top rounded image" -%}
+  {%- include icons/placeholder.svg width="75" height="75" class="rounded-right" title="Example right rounded image" -%}
+  {%- include icons/placeholder.svg width="75" height="75" class="rounded-bottom" title="Example bottom rounded image" -%}
+  {%- include icons/placeholder.svg width="75" height="75" class="rounded-left" title="Example left rounded image" -%}
+  {%- include icons/placeholder.svg width="75" height="75" class="rounded-circle" title="Completely round image" -%}
+  {%- include icons/placeholder.svg width="150" height="75" class="rounded-pill" title="Rounded pill image" -%}
+  {%- include icons/placeholder.svg width="75" height="75" class="rounded-0" title="Example non-rounded image (overrides rounding applied elsewhere)" -%}
 </div>
 
 {% highlight html %}
