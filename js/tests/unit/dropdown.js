@@ -168,6 +168,33 @@ $(function () {
     $(document.body).trigger('click')
   })
 
+  QUnit.test('should set "position: fixed" on the dropdown menu when positionFixed is enabled', function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+
+    var dropdownHTML =
+      '<div class="dropdown">' +
+      '<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-position-fixed="true">Dropdown</a>' +
+      '<div class="dropdown-menu">' +
+      '<a class="dropdown-item" href="#">Item</a>' +
+      '</div>' +
+      '</div>'
+
+    var $dropdownToggle = $(dropdownHTML)
+      .appendTo('#qunit-fixture')
+      .find('[data-toggle="dropdown"]')
+      .bootstrapDropdown()
+    var $dropdownMenu = $dropdownToggle.next()
+    var $dropdown = $dropdownToggle.parent('.dropdown')
+
+    $dropdown.on('shown.bs.dropdown', function () {
+      assert.strictEqual($dropdownMenu.css('position'), 'fixed', 'position is set to "fixed"')
+      done()
+    })
+
+    $dropdownToggle.trigger('click')
+  })
+
   QUnit.test('should not open dropdown if target is disabled via class', function (assert) {
     assert.expect(1)
     var done = assert.async()

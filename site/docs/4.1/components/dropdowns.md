@@ -871,6 +871,12 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <td>'dynamic'</td>
       <td>By default, we use Popper.js for dynamic positioning. Disable this with <code>static</code>.</td>
     </tr>
+    <tr>
+      <td>positionFixed</td>
+      <td>boolean</td>
+      <td>false</td>
+      <td>Dropdown menu is positioned absolutely by default. Set this to <code>fixed</code> if you want popper to position itself in 'fixed' mode. For more information refer to Popper.js's <a href="https://popper.js.org/popper-documentation.html#Popper.Defaults.positionFixed">positionFixed docs</a>.</td>
+    </tr>
   </tbody>
 </table>
 

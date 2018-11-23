@@ -75,7 +75,8 @@ const Default = {
   flip      : true,
   boundary  : 'scrollParent',
   reference : 'toggle',
-  display   : 'dynamic'
+  display   : 'dynamic',
+  positionFixed : false
 }
 
 const DefaultType = {
@@ -83,7 +84,8 @@ const DefaultType = {
   flip      : 'boolean',
   boundary  : '(string|element)',
   reference : '(string|element)',
-  display   : 'string'
+  display   : 'string',
+  positionFixed : 'boolean'
 }
 
 /**
@@ -343,7 +345,8 @@ class Dropdown {
         preventOverflow: {
           boundariesElement: this._config.boundary
         }
-      }
+      },
+      positionFixed: this._config.positionFixed
     }
 
     // Disable Popper.js if we have a static display
