@@ -1,15 +1,10 @@
-.bd-anchor {
-  padding-left: .25rem;
+.anchorjs-link {
   font-weight: 400;
-  color: $link-color;
-  opacity: 0;
-  @include transition(opacity .16s linear);
+  color: rgba($link-color, .5);
+  @include transition(color .16s linear);
 
-  :hover > &,
-  &:hover,
-  &:focus {
+  &:hover {
     color: $link-color;
     text-decoration: none;
-    opacity: 1;
   }
 }
