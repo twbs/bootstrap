@@ -25,7 +25,7 @@ const LEFT_KEYCODE       = 37
 const RIGHT_KEYCODE      = 39
 
 const Default = {
-  autofocus: 'notTouch',      // true|false|notTouch
+  autofocus: 'notTouch', // true|false|notTouch
   backdrop: true,
   keyboard: true,
   keyboardNav: true,  // ability to use arrows to nav button focus
