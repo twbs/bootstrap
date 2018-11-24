@@ -40,8 +40,8 @@ body {
   margin-bottom: 0; /* Override default `<label>` margin */
   line-height: 1.5;
   color: #495057;
+  pointer-events: none;
   cursor: text; /* Match the input under the label */
-  user-select: none;
   border: 1px solid transparent;
   border-radius: .25rem;
   transition: all .1s ease-in-out;
