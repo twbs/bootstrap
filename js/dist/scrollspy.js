@@ -63,13 +63,6 @@
   }
 
   /**
-   * --------------------------------------------------------------------------
-   * Bootstrap (v4.1.3): scrollspy.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
-   * --------------------------------------------------------------------------
-   */
-
-  /**
    * ------------------------------------------------------------------------
    * Constants
    * ------------------------------------------------------------------------
@@ -277,12 +270,10 @@
 
       this._clear();
 
-      var queries = this._selector.split(','); // eslint-disable-next-line arrow-body-style
-
-
-      queries = queries.map(function (selector) {
-        return selector + "[data-target=\"" + target + "\"]," + (selector + "[href=\"" + target + "\"]");
+      var queries = this._selector.split(',').map(function (selector) {
+        return selector + "[data-target=\"" + target + "\"]," + selector + "[href=\"" + target + "\"]";
       });
+
       var $link = $([].slice.call(document.querySelectorAll(queries.join(','))));
 
       if ($link.hasClass(ClassName.DROPDOWN_ITEM)) {
@@ -304,8 +295,11 @@
     };
 
     _proto._clear = function _clear() {
-      var nodes = [].slice.call(document.querySelectorAll(this._selector));
-      $(nodes).filter(Selector.ACTIVE).removeClass(ClassName.ACTIVE);
+      [].slice.call(document.querySelectorAll(this._selector)).filter(function (node) {
+        return node.classList.contains(ClassName.ACTIVE);
+      }).forEach(function (node) {
+        return node.classList.remove(ClassName.ACTIVE);
+      });
     }; // Static
 
 
