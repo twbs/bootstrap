@@ -64,13 +64,6 @@
   }
 
   /**
-   * --------------------------------------------------------------------------
-   * Bootstrap (v4.1.3): tooltip.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
-   * --------------------------------------------------------------------------
-   */
-
-  /**
    * ------------------------------------------------------------------------
    * Constants
    * ------------------------------------------------------------------------
@@ -317,7 +310,7 @@
             }
           },
           onUpdate: function onUpdate(data) {
-            _this._handlePopperPlacementChange(data);
+            return _this._handlePopperPlacementChange(data);
           }
         });
         $(tip).addClass(ClassName.SHOW); // If this is a touch-enabled device we add extra
