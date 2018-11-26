@@ -1,12 +1,12 @@
-import $ from 'jquery'
-import Util from './util'
-
 /**
  * --------------------------------------------------------------------------
  * Bootstrap (v4.1.3): modal.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
+
+import $ from 'jquery'
+import Util from './util'
 
 /**
  * ------------------------------------------------------------------------
@@ -59,11 +59,11 @@ const ClassName = {
 }
 
 const Selector = {
-  DIALOG             : '.modal-dialog',
-  DATA_TOGGLE        : '[data-toggle="modal"]',
-  DATA_DISMISS       : '[data-dismiss="modal"]',
-  FIXED_CONTENT      : '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top',
-  STICKY_CONTENT     : '.sticky-top'
+  DIALOG         : '.modal-dialog',
+  DATA_TOGGLE    : '[data-toggle="modal"]',
+  DATA_DISMISS   : '[data-dismiss="modal"]',
+  FIXED_CONTENT  : '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top',
+  STICKY_CONTENT : '.sticky-top'
 }
 
 /**
@@ -126,8 +126,6 @@ class Modal {
     this._setScrollbar()
 
     this._adjustDialog()
-
-    $(document.body).addClass(ClassName.OPEN)
 
     this._setEscapeEvent()
     this._setResizeEvent()
@@ -466,6 +464,8 @@ class Modal {
         .data('padding-right', actualPadding)
         .css('padding-right', `${parseFloat(calculatedPadding) + this._scrollbarWidth}px`)
     }
+
+    $(document.body).addClass(ClassName.OPEN)
   }
 
   _resetScrollbar() {

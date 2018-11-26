@@ -1,0 +1,16 @@
+//
+// Placeholder svg used in the docs.
+//
+
+// Remember to update `site/_layouts/examples.html` too if this changes!
+
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+}
+
+.bd-placeholder-img-lg {
+  @include media-breakpoint-up(md) {
+    font-size: 3.5rem;
+  }
+}

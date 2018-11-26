@@ -10,7 +10,7 @@
  * details, see https://creativecommons.org/licenses/by/3.0/.
  */
 
-/* global ClipboardJS: false, anchors: false, Holder: false, bsCustomFileInput: false */
+/* global ClipboardJS: false, anchors: false, bsCustomFileInput: false */
 
 (function ($) {
   'use strict'
@@ -105,15 +105,7 @@
       icon: '#'
     }
     anchors.add('.bd-content > h2, .bd-content > h3, .bd-content > h4, .bd-content > h5')
-    $('.bd-content > h2, .bd-content > h3, .bd-content > h4, .bd-content > h5').wrapInner('<div></div>')
-
-    // Holder
-    Holder.addTheme('gray', {
-      bg: '#777',
-      fg: 'rgba(255,255,255,.75)',
-      font: 'Helvetica',
-      fontweight: 'normal'
-    })
+    $('.bd-content').children('h2, h3, h4, h5').wrapInner('<span class="bd-content-title"></span>')
 
     bsCustomFileInput.init()
   })
