@@ -113,10 +113,7 @@
     TOUCHMOVE: "touchmove" + EVENT_KEY,
     TOUCHEND: "touchend" + EVENT_KEY,
     POINTERDOWN: "pointerdown" + EVENT_KEY,
-    POINTERMOVE: "pointermove" + EVENT_KEY,
     POINTERUP: "pointerup" + EVENT_KEY,
-    POINTERLEAVE: "pointerleave" + EVENT_KEY,
-    POINTERCANCEL: "pointercancel" + EVENT_KEY,
     DRAG_START: "dragstart" + EVENT_KEY,
     LOAD_DATA_API: "load" + EVENT_KEY + DATA_API_KEY,
     CLICK_DATA_API: "click" + EVENT_KEY + DATA_API_KEY
@@ -323,7 +320,7 @@
       }
 
       var start = function start(event) {
-        if (_this3._pointerEvent && (event.originalEvent.pointerType === PointerType.TOUCH || event.originalEvent.pointerType === PointerType.PEN)) {
+        if (_this3._pointerEvent && PointerType[event.originalEvent.pointerType.toUpperCase()]) {
           _this3.touchStartX = event.originalEvent.clientX;
         } else if (!_this3._pointerEvent) {
           _this3.touchStartX = event.originalEvent.touches[0].clientX;
@@ -340,7 +337,7 @@
       };
 
       var end = function end(event) {
-        if (_this3._pointerEvent && (event.originalEvent.pointerType === PointerType.TOUCH || event.originalEvent.pointerType === PointerType.PEN)) {
+        if (_this3._pointerEvent && PointerType[event.originalEvent.pointerType.toUpperCase()]) {
           _this3.touchDeltaX = event.originalEvent.clientX - _this3.touchStartX;
         }
 

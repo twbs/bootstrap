@@ -36,7 +36,7 @@ npm run release-version "$current_version" "$1"
 
 # Build release
 printf "\n%s=======================================================%s" $magenta $end
-printf "\n%sBuilding release..%s" $magenta $end
+printf "\n%sBuilding release...%s" $magenta $end
 printf "\n%s=======================================================\n%s" $magenta $end
 npm run release
 
