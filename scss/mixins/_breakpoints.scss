@@ -30,9 +30,9 @@
 
 @function breakpoint-prev($name, $breakpoints: $grid-breakpoints, $breakpoint-names: map-keys($breakpoints)) {
   @if ($n == 1) {
-      @return null;
-    }
-    @return if($n <= length($breakpoint-names), nth($breakpoint-names, $n - 1), null);
+    @return null;
+  }
+  @return if($n <= length($breakpoint-names), nth($breakpoint-names, $n - 1), null);
 }
 
 // Minimum breakpoint width. Null for the smallest (first) breakpoint.
