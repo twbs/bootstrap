@@ -29,6 +29,7 @@
 //    sm
 
 @function breakpoint-prev($name, $breakpoints: $grid-breakpoints, $breakpoint-names: map-keys($breakpoints)) {
+  $n: index($breakpoint-names, $name);
   @if ($n == 1) {
     @return null;
   }
