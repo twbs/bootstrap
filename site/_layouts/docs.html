@@ -24,7 +24,7 @@
           <h1 class="bd-title" id="content">{{ page.title | smartify }}</h1>
           <p class="bd-lead">{{ page.description | smartify }}</p>
           {% include ads.html %}
-          {% include vendor/anchor_headings.html html=content h_min=2 h_max=5 anchorBody="#" anchorTitle="Permalink" anchorClass="bd-anchor" %}
+          {{ content }}
         </main>
       </div>
     </div>
