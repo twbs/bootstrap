@@ -19,9 +19,9 @@
   &.focus {
     // Avoid using mixin so we can pass custom focus shadow properly
     @if $enable-shadows {
-      box-shadow: $btn-box-shadow, 0 0 0 $btn-focus-width rgba($border, .5);
+      box-shadow: $btn-box-shadow, 0 0 0 $btn-focus-width rgba(mix(color-yiq($background), $border, 15%), .5);
     } @else {
-      box-shadow: 0 0 0 $btn-focus-width rgba($border, .5);
+      box-shadow: 0 0 0 $btn-focus-width rgba(mix(color-yiq($background), $border, 15%), .5);
     }
   }
 
@@ -31,6 +31,10 @@
     color: color-yiq($background);
     background-color: $background;
     border-color: $border;
+    // Remove CSS gradients if they're enabled
+    @if $enable-gradients {
+      background-image: none;
+    }
   }
 
   &:not(:disabled):not(.disabled):active,
@@ -46,9 +50,9 @@
     &:focus {
       // Avoid using mixin so we can pass custom focus shadow properly
       @if $enable-shadows {
-        box-shadow: $btn-active-box-shadow, 0 0 0 $btn-focus-width rgba($border, .5);
+        box-shadow: $btn-active-box-shadow, 0 0 0 $btn-focus-width rgba(mix(color-yiq($background), $border, 15%), .5);
       } @else {
-        box-shadow: 0 0 0 $btn-focus-width rgba($border, .5);
+        box-shadow: 0 0 0 $btn-focus-width rgba(mix(color-yiq($background), $border, 15%), .5);
       }
     }
   }
@@ -56,11 +60,9 @@
 
 @mixin button-outline-variant($color, $color-hover: color-yiq($color), $active-background: $color, $active-border: $color) {
   color: $color;
-  background-color: transparent;
-  background-image: none;
   border-color: $color;
 
-  &:hover {
+  @include hover {
     color: $color-hover;
     background-color: $active-background;
     border-color: $active-border;

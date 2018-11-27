@@ -33,9 +33,26 @@
   @include box-shadow($dropdown-box-shadow);
 }
 
-.dropdown-menu-right {
-  right: 0;
-  left: auto;
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    .dropdown-menu#{$infix}-right {
+      right: 0;
+      left: auto;
+    }
+  }
+}
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    .dropdown-menu#{$infix}-left {
+      right: auto;
+      left: 0;
+    }
+  }
 }
 
 // Allow for dropdowns to go bottom up (aka, dropup-menu)
@@ -88,7 +105,7 @@
 }
 
 // When enabled Popper.js, reset basic dropdown position
-// stylelint-disable no-duplicate-selectors
+// stylelint-disable-next-line no-duplicate-selectors
 .dropdown-menu {
   &[x-placement^="top"],
   &[x-placement^="right"],
@@ -98,7 +115,6 @@
     bottom: auto;
   }
 }
-// stylelint-enable no-duplicate-selectors
 
 // Dividers (basically an `<hr>`) within the dropdown
 .dropdown-divider {
@@ -120,6 +136,14 @@
   background-color: transparent; // For `<button>`s
   border: 0; // For `<button>`s
 
+  &:first-child {
+    @include border-top-radius($dropdown-inner-border-radius);
+  }
+
+  &:last-child {
+    @include border-bottom-radius($dropdown-inner-border-radius);
+  }
+
   @include hover-focus {
     color: $dropdown-link-hover-color;
     text-decoration: none;
@@ -136,6 +160,7 @@
   &.disabled,
   &:disabled {
     color: $dropdown-link-disabled-color;
+    pointer-events: none;
     background-color: transparent;
     // Remove CSS gradients if they're enabled
     @if $enable-gradients {

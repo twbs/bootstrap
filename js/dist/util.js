@@ -1,15 +1,28 @@
-/**
- * --------------------------------------------------------------------------
- * Bootstrap (v4.1.0): util.js
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- * --------------------------------------------------------------------------
- */
-var Util = function ($) {
+/*!
+  * Bootstrap util.js v4.1.3 (https://getbootstrap.com/)
+  * Copyright 2011-2018 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+  */
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('jquery')) :
+  typeof define === 'function' && define.amd ? define(['jquery'], factory) :
+  (global.Util = factory(global.jQuery));
+}(this, (function ($) { 'use strict';
+
+  $ = $ && $.hasOwnProperty('default') ? $['default'] : $;
+
+  /**
+   * --------------------------------------------------------------------------
+   * Bootstrap (v4.1.3): util.js
+   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+   * --------------------------------------------------------------------------
+   */
   /**
    * ------------------------------------------------------------------------
    * Private TransitionEnd Helpers
    * ------------------------------------------------------------------------
    */
+
   var TRANSITION_END = 'transitionend';
   var MAX_UID = 1000000;
   var MILLISECONDS_MULTIPLIER = 1000; // Shoutout AngusCroll (https://goo.gl/pxwQGp)
@@ -72,15 +85,11 @@ var Util = function ($) {
       var selector = element.getAttribute('data-target');
 
       if (!selector || selector === '#') {
-        selector = element.getAttribute('href') || '';
+        var hrefAttr = element.getAttribute('href');
+        selector = hrefAttr && hrefAttr !== '#' ? hrefAttr.trim() : '';
       }
 
-      try {
-        var $selector = $(document).find(selector);
-        return $selector.length > 0 ? selector : null;
-      } catch (err) {
-        return null;
-      }
+      return selector && document.querySelector(selector) ? selector : null;
     },
     getTransitionDurationFromElement: function getTransitionDurationFromElement(element) {
       if (!element) {
@@ -89,15 +98,18 @@ var Util = function ($) {
 
 
       var transitionDuration = $(element).css('transition-duration');
-      var floatTransitionDuration = parseFloat(transitionDuration); // Return 0 if element or transition duration is not found
+      var transitionDelay = $(element).css('transition-delay');
+      var floatTransitionDuration = parseFloat(transitionDuration);
+      var floatTransitionDelay = parseFloat(transitionDelay); // Return 0 if element or transition duration is not found
 
-      if (!floatTransitionDuration) {
+      if (!floatTransitionDuration && !floatTransitionDelay) {
         return 0;
       } // If multiple durations are defined, take the first
 
 
       transitionDuration = transitionDuration.split(',')[0];
-      return parseFloat(transitionDuration) * MILLISECONDS_MULTIPLIER;
+      transitionDelay = transitionDelay.split(',')[0];
+      return (parseFloat(transitionDuration) + parseFloat(transitionDelay)) * MILLISECONDS_MULTIPLIER;
     },
     reflow: function reflow(element) {
       return element.offsetHeight;
@@ -127,6 +139,8 @@ var Util = function ($) {
     }
   };
   setTransitionEndSupport();
+
   return Util;
-}($);
+
+})));
 //# sourceMappingURL=util.js.map
