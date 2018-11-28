@@ -254,7 +254,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 </table>
 
 {% capture callout %}
-##### Data attributes for individual tooltips
+#### Data attributes for individual tooltips
 
 Options for individual tooltips can alternatively be specified through the use of data attributes, as explained above.
 {% endcapture %}
