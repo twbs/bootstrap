@@ -67,7 +67,6 @@
 // Build the custom controls out of pseudo-elements.
 
 .custom-control-label {
-  position: relative;
   margin-bottom: 0;
   vertical-align: top;
 
@@ -75,7 +74,7 @@
   &::before {
     position: absolute;
     top: (($font-size-base * $line-height-base - $custom-control-indicator-size) / 2);
-    left: -$custom-control-gutter;
+    left: 0;
     display: block;
     width: $custom-control-indicator-size;
     height: $custom-control-indicator-size;
@@ -90,7 +89,7 @@
   &::after {
     position: absolute;
     top: (($font-size-base * $line-height-base - $custom-control-indicator-size) / 2);
-    left: -$custom-control-gutter;
+    left: 0;
     display: block;
     width: $custom-control-indicator-size;
     height: $custom-control-indicator-size;
