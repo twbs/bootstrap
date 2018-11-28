@@ -109,6 +109,10 @@ const Util = {
     return (parseFloat(transitionDuration) + parseFloat(transitionDelay)) * MILLISECONDS_MULTIPLIER
   },
 
+  isTouchSupported() {
+    return 'ontouchstart' in document.documentElement || navigator.maxTouchPoints > 0
+  },
+
   reflow(element) {
     return element.offsetHeight
   },

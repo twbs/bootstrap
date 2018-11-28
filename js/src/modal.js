@@ -92,7 +92,7 @@ class Modal {
     this._ignoreBackdropClick = false
     this._isTransitioning     = false
     this._scrollbarWidth      = 0
-    this._touchSupported      = 'ontouchstart' in document.documentElement || navigator.maxTouchPoints > 0
+    this._touchSupported      = Util.isTouchSupported()
   }
 
   // Getters
