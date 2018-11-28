@@ -62,4 +62,6 @@ cdn:
 toc:
   min_level:        2
   max_level:        4
-  no_toc_section_class: "bd-example"
+  no_toc_section_class:
+    - "bd-callout"
+    - "bd-example"
