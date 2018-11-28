@@ -94,7 +94,7 @@ Use [flexbox utilities][flex], [float utilities][float], or [text alignment][tex
 {% capture example %}
 <div class="d-flex align-items-center">
   <strong>Loading...</strong>
-  <div class="spinner-border ml-auto" role="status"></div>
+  <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
 </div>
 {% endcapture %}
 {% include example.html content=example %}
@@ -153,11 +153,11 @@ Use spinners within buttons to indicate an action is currently processing or tak
 
 {% capture example %}
 <button class="btn btn-primary" type="button" disabled>
-  <span class="spinner-border spinner-border-sm" role="status"></span>
+  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
   <span class="sr-only">Loading...</span>
 </button>
 <button class="btn btn-primary" type="button" disabled>
-  <span class="spinner-border spinner-border-sm" role="status"></span>
+  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
   Loading...
 </button>
 {% endcapture %}
@@ -165,11 +165,11 @@ Use spinners within buttons to indicate an action is currently processing or tak
 
 {% capture example %}
 <button class="btn btn-primary" type="button" disabled>
-  <span class="spinner-grow spinner-grow-sm" role="status"></span>
+  <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
   <span class="sr-only">Loading...</span>
 </button>
 <button class="btn btn-primary" type="button" disabled>
-  <span class="spinner-grow spinner-grow-sm" role="status"></span>
+  <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
   Loading...
 </button>
 {% endcapture %}
