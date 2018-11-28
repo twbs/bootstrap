@@ -257,14 +257,14 @@ $('body').scrollspy({ target: '#navbar-example' })
 {% endhighlight %}
 
 {% capture callout %}
-##### Resolvable ID targets required
+#### Resolvable ID targets required
 
 Navbar links must have resolvable id targets. For example, a `<a href="#home">home</a>` must correspond to something in the DOM like `<div id="home"></div>`.
 {% endcapture %}
 {% include callout.html content=callout type="danger" %}
 
 {% capture callout %}
-##### Non-`:visible` target elements ignored
+#### Non-`:visible` target elements ignored
 
 Target elements that are not [`:visible` according to jQuery](https://api.jquery.com/visible-selector/) will be ignored and their corresponding nav items will never be highlighted.
 {% endcapture %}
