@@ -7,6 +7,8 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
+'use strict'
+
 const childProcess = require('child_process')
 const vnu = require('vnu-jar')
 
