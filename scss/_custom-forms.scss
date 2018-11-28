@@ -172,24 +172,33 @@
     &::before {
       left: -$custom-control-gutter * 1.5;
       width: $custom-switch-width;
+      pointer-events: all;
       border-radius: $custom-switch-indicator-border-radius;
     }
 
     &::after {
-      left: -$custom-control-gutter * 1.5;
-      width: $custom-control-indicator-size * 1.75;
-      background-image: $custom-switch-indicator-icon;
-      background-position: left center;
+      top: calc(#{(($font-size-base * $line-height-base - $custom-control-indicator-size) / 2)} + #{$custom-control-indicator-border-width * 2});
+      left: calc(#{-$custom-control-gutter * 1.5} + #{$custom-control-indicator-border-width * 2});
+      width: $custom-switch-indicator-size;
+      height: $custom-switch-indicator-size;
+      background-color: $custom-control-indicator-border-color;
       background-size: $custom-control-indicator-size;
+      border-radius: $custom-switch-indicator-border-radius;
+      @include transition(transform .15s ease-in-out, $custom-forms-transition);
     }
   }
 
-  .custom-control-input:checked ~ .custom-control-label::after {
-    background-position: right center;
+  .custom-control-input:checked ~ .custom-control-label {
+    &::after {
+      background-color: $custom-control-indicator-bg;
+      transform: translateX($custom-switch-width - $custom-control-indicator-size);
+    }
   }
 
-  &-animated .custom-control-label::after {
-    transition: background-position .1s;
+  .custom-control-input:disabled {
+    &:checked ~ .custom-control-label::before {
+      background-color: $custom-control-indicator-checked-disabled-bg;
+    }
   }
 }
 
