@@ -4,6 +4,6 @@
   and type is one of: info (default), danger, warning
 {%- endcomment -%}
 {%- assign css_class = include.type | default: "info" -%}
-<div class="bd-callout bd-callout-{{ css_class }} no_toc_section">
+<div class="bd-callout bd-callout-{{ css_class }}">
   {{- include.content | markdownify -}}
 </div>
