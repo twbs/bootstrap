@@ -1,0 +1,34 @@
+.toast {
+  display: none;
+  max-width: $toast-max-width;
+  overflow: hidden; // cheap rounded corners on nested items
+  font-size: $toast-font-size; // knock it down to 14px
+  background-color: $toast-background-color;
+  background-clip: padding-box;
+  border: $toast-border-width solid $toast-border-color;
+  border-radius: $toast-border-radius;
+  box-shadow: $toast-box-shadow;
+  backdrop-filter: blur(10px);
+
+  + .toast {
+    margin-top: $toast-padding-x;
+  }
+
+  &.show {
+    display: block;
+  }
+}
+
+.toast-header {
+  display: flex;
+  align-items: center;
+  padding: $toast-padding-y $toast-padding-x;
+  color: $toast-header-color;
+  background-color: $toast-header-background-color;
+  background-clip: padding-box;
+  border-bottom: $toast-border-width solid $toast-header-border-color;
+}
+
+.toast-body {
+  padding: $toast-padding-x; // apply to both vertical and horizontal
+}

@@ -10,6 +10,8 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
+'use strict'
+
 const crypto = require('crypto')
 const fs = require('fs')
 const path = require('path')

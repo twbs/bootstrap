@@ -5,6 +5,8 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
+'use strict'
+
 const path    = require('path')
 const rollup  = require('rollup')
 const babel   = require('rollup-plugin-babel')
@@ -33,6 +35,7 @@ const bsPlugins = {
   Popover: path.resolve(__dirname, '../js/src/popover.js'),
   ScrollSpy: path.resolve(__dirname, '../js/src/scrollspy.js'),
   Tab: path.resolve(__dirname, '../js/src/tab.js'),
+  Toast: path.resolve(__dirname, '../js/src/toast.js'),
   Tooltip: path.resolve(__dirname, '../js/src/tooltip.js'),
   Util: path.resolve(__dirname, '../js/src/util.js')
 }
