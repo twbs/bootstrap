@@ -2301,7 +2301,7 @@
       this._isTransitioning = false;
 
       this._showBackdrop(function () {
-        $(document.body).removeClass(ClassName$5.OPEN);
+        $(".modal.show").length && $(document.body).removeClass(ClassName$5.OPEN);
 
         _this7._resetAdjustments();
 

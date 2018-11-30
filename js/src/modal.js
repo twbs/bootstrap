@@ -316,7 +316,7 @@ class Modal {
     this._element.setAttribute('aria-hidden', true)
     this._isTransitioning = false
     this._showBackdrop(() => {
-      $(document.body).removeClass(ClassName.OPEN)
+      $(".modal.show").length && $(document.body).removeClass(ClassName.OPEN)
       this._resetAdjustments()
       this._resetScrollbar()
       $(this._element).trigger(Event.HIDDEN)
