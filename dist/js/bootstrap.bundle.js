@@ -4832,7 +4832,7 @@
       this._isTransitioning = false;
 
       this._showBackdrop(function () {
-        $(document.body).removeClass(ClassName$5.OPEN);
+        $(".modal." + ClassName$5.SHOW).length || $(document.body).removeClass(ClassName$5.OPEN);
 
         _this7._resetAdjustments();
 
