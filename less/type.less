@@ -231,6 +231,13 @@ dd {
 // Misc
 // -------------------------
 
+// Abbreviations and acronyms
+// Add data-* attribute to help out our tooltip plugin, per https://github.com/twbs/bootstrap/issues/5257
+abbr[title],
+abbr[data-original-title] {
+  cursor: help;
+}
+
 .initialism {
   font-size: 90%;
   .text-uppercase();
