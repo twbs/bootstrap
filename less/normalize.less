@@ -106,11 +106,14 @@ a:hover {
 // ==========================================================================
 
 //
-// Address styling not present in IE 8/9/10/11, Safari, and Chrome.
+// 1. Remove the bottom border in Chrome 57- and Firefox 39-.
+// 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
 //
 
 abbr[title] {
-  border-bottom: 1px dotted;
+  border-bottom: none; // 1
+  text-decoration: underline; // 2
+  text-decoration: underline dotted; // 2
 }
 
 //
