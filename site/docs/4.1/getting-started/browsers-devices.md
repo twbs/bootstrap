@@ -121,9 +121,7 @@ For a list of some of the browser bugs that Bootstrap has to grapple with, see o
 
 ## Internet Explorer
 
-Internet Explorer 10+ is supported; IE9 and down is not. Please be aware that some CSS3 properties and HTML5 elements are not fully supported in IE10, or require prefixed properties for full functionality. Visit [Can I use...](https://caniuse.com/) for details on browser support of CSS3 and HTML5 features.
-
-**If you require IE8-9 support, use Bootstrap 3.** It's the most stable version of our code and is still supported by our team for critical bugfixes and documentation changes. However, no new features will be added to it.
+Internet Explorer 10+ is supported; IE9 and down is not. Please be aware that some CSS3 properties and HTML5 elements are not fully supported in IE10, or require prefixed properties for full functionality. Visit [Can I use...](https://caniuse.com/) for details on browser support of CSS3 and HTML5 features. **If you require IE8-9 support, use Bootstrap 3.**
 
 ## Modals and dropdowns on mobile
 
@@ -183,7 +181,7 @@ $(function () {
 </script>
 {% endhighlight %}
 
-Want to see an example? [Check out this JS Bin demo.](http://jsbin.com/OyaqoDO/2)
+Want to see an example? [Check out this JS Bin demo](http://jsbin.com/OyaqoDO/2).
 
 ## Validators
 

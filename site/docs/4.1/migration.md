@@ -8,7 +8,7 @@ toc: true
 
 ## Stable changes
 
-Moving from Beta 3 to our stable v4.0 release, there are no breaking changes, but there are some notable changes.
+Moving from Beta 3 to our stable v4.x release, there are no breaking changes, but there are some notable changes.
 
 ### Printing
 - Fixed broken print utilities. Previously, using a `.d-print-*` class would unexpectedly overrule any other `.d-*` class. Now, they match our other display utilities and only apply to that media (`@media print`).
@@ -288,7 +288,7 @@ Dropped entirely for the new card component.
 
 - **Display, hidden, and more:**
   - Made display utilities responsive (e.g., `.d-none` and `d-{sm,md,lg,xl}-none`).
-  - Dropped the bulk of `.hidden-*` utilities for new [display utilities]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/display/). For example, instead of `.hidden-sm-up`, use `.d-sm-none`. Renamed the `.hidden-print` utilities to use the display utility naming scheme. [More info under the Responsive utilities section of this page.](#responsive-utilities)
+  - Dropped the bulk of `.hidden-*` utilities for new [display utilities]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/display/). For example, instead of `.hidden-sm-up`, use `.d-sm-none`. Renamed the `.hidden-print` utilities to use the display utility naming scheme. More info under the [Responsive utilities](#responsive-utilities) section of this page.
   - Added `.float-{sm,md,lg,xl}-{left,right,none}` classes for responsive floats and removed `.pull-left` and `.pull-right` since they're redundant to `.float-left` and `.float-right`.
 - **Type:**
   - Added responsive variations to our text alignment classes `.text-{sm,md,lg,xl}-{left,center,right}`.

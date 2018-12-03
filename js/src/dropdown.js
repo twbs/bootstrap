@@ -1,13 +1,13 @@
-import $ from 'jquery'
-import Popper from 'popper.js'
-import Util from './util'
-
 /**
  * --------------------------------------------------------------------------
  * Bootstrap (v4.1.3): dropdown.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
+
+import $ from 'jquery'
+import Popper from 'popper.js'
+import Util from './util'
 
 /**
  * ------------------------------------------------------------------------
@@ -41,13 +41,13 @@ const Event = {
 }
 
 const ClassName = {
-  DISABLED  : 'disabled',
-  SHOW      : 'show',
-  DROPUP    : 'dropup',
-  DROPRIGHT : 'dropright',
-  DROPLEFT  : 'dropleft',
-  MENURIGHT : 'dropdown-menu-right',
-  MENULEFT  : 'dropdown-menu-left',
+  DISABLED        : 'disabled',
+  SHOW            : 'show',
+  DROPUP          : 'dropup',
+  DROPRIGHT       : 'dropright',
+  DROPLEFT        : 'dropleft',
+  MENURIGHT       : 'dropdown-menu-right',
+  MENULEFT        : 'dropdown-menu-left',
   POSITION_STATIC : 'position-static'
 }
 
@@ -71,19 +71,19 @@ const AttachmentMap = {
 }
 
 const Default = {
-  offset      : 0,
-  flip        : true,
-  boundary    : 'scrollParent',
-  reference   : 'toggle',
-  display     : 'dynamic'
+  offset    : 0,
+  flip      : true,
+  boundary  : 'scrollParent',
+  reference : 'toggle',
+  display   : 'dynamic'
 }
 
 const DefaultType = {
-  offset      : '(number|string|function)',
-  flip        : 'boolean',
-  boundary    : '(string|element)',
-  reference   : '(string|element)',
-  display     : 'string'
+  offset    : '(number|string|function)',
+  flip      : 'boolean',
+  boundary  : '(string|element)',
+  reference : '(string|element)',
+  display   : 'string'
 }
 
 /**
@@ -151,7 +151,7 @@ class Dropdown {
        * Popper - https://popper.js.org
        */
       if (typeof Popper === 'undefined') {
-        throw new TypeError('Bootstrap dropdown require Popper.js (https://popper.js.org)')
+        throw new TypeError('Bootstrap\'s dropdowns require Popper.js (https://popper.js.org/)')
       }
 
       let referenceElement = this._element
@@ -192,6 +192,52 @@ class Dropdown {
     $(parent)
       .toggleClass(ClassName.SHOW)
       .trigger($.Event(Event.SHOWN, relatedTarget))
+  }
+
+  show() {
+    if (this._element.disabled || $(this._element).hasClass(ClassName.DISABLED) || $(this._menu).hasClass(ClassName.SHOW)) {
+      return
+    }
+
+    const relatedTarget = {
+      relatedTarget: this._element
+    }
+    const showEvent = $.Event(Event.SHOW, relatedTarget)
+    const parent = Dropdown._getParentFromElement(this._element)
+
+    $(parent).trigger(showEvent)
+
+    if (showEvent.isDefaultPrevented()) {
+      return
+    }
+
+    $(this._menu).toggleClass(ClassName.SHOW)
+    $(parent)
+      .toggleClass(ClassName.SHOW)
+      .trigger($.Event(Event.SHOWN, relatedTarget))
+  }
+
+  hide() {
+    if (this._element.disabled || $(this._element).hasClass(ClassName.DISABLED) || !$(this._menu).hasClass(ClassName.SHOW)) {
+      return
+    }
+
+    const relatedTarget = {
+      relatedTarget: this._element
+    }
+    const hideEvent = $.Event(Event.HIDE, relatedTarget)
+    const parent = Dropdown._getParentFromElement(this._element)
+
+    $(parent).trigger(hideEvent)
+
+    if (hideEvent.isDefaultPrevented()) {
+      return
+    }
+
+    $(this._menu).toggleClass(ClassName.SHOW)
+    $(parent)
+      .toggleClass(ClassName.SHOW)
+      .trigger($.Event(Event.HIDDEN, relatedTarget))
   }
 
   dispose() {
@@ -241,6 +287,7 @@ class Dropdown {
   _getMenuElement() {
     if (!this._menu) {
       const parent = Dropdown._getParentFromElement(this._element)
+
       if (parent) {
         this._menu = parent.querySelector(Selector.MENU)
       }
@@ -336,6 +383,7 @@ class Dropdown {
     }
 
     const toggles = [].slice.call(document.querySelectorAll(Selector.DATA_TOGGLE))
+
     for (let i = 0, len = toggles.length; i < len; i++) {
       const parent = Dropdown._getParentFromElement(toggles[i])
       const context = $(toggles[i]).data(DATA_KEY)

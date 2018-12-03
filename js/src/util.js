@@ -1,5 +1,3 @@
-import $ from 'jquery'
-
 /**
  * --------------------------------------------------------------------------
  * Bootstrap (v4.1.3): util.js
@@ -7,6 +5,7 @@ import $ from 'jquery'
  * --------------------------------------------------------------------------
  */
 
+import $ from 'jquery'
 
 /**
  * ------------------------------------------------------------------------
@@ -93,17 +92,21 @@ const Util = {
 
     // Get transition-duration of the element
     let transitionDuration = $(element).css('transition-duration')
+    let transitionDelay = $(element).css('transition-delay')
+
     const floatTransitionDuration = parseFloat(transitionDuration)
+    const floatTransitionDelay = parseFloat(transitionDelay)
 
     // Return 0 if element or transition duration is not found
-    if (!floatTransitionDuration) {
+    if (!floatTransitionDuration && !floatTransitionDelay) {
       return 0
     }
 
     // If multiple durations are defined, take the first
     transitionDuration = transitionDuration.split(',')[0]
+    transitionDelay = transitionDelay.split(',')[0]
 
-    return parseFloat(transitionDuration) * MILLISECONDS_MULTIPLIER
+    return (parseFloat(transitionDuration) + parseFloat(transitionDelay)) * MILLISECONDS_MULTIPLIER
   },
 
   reflow(element) {

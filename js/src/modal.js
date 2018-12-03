@@ -1,12 +1,12 @@
-import $ from 'jquery'
-import Util from './util'
-
 /**
  * --------------------------------------------------------------------------
  * Bootstrap (v4.1.3): modal.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
+
+import $ from 'jquery'
+import Util from './util'
 
 /**
  * ------------------------------------------------------------------------
@@ -59,11 +59,11 @@ const ClassName = {
 }
 
 const Selector = {
-  DIALOG             : '.modal-dialog',
-  DATA_TOGGLE        : '[data-toggle="modal"]',
-  DATA_DISMISS       : '[data-dismiss="modal"]',
-  FIXED_CONTENT      : '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top',
-  STICKY_CONTENT     : '.sticky-top'
+  DIALOG         : '.modal-dialog',
+  DATA_TOGGLE    : '[data-toggle="modal"]',
+  DATA_DISMISS   : '[data-dismiss="modal"]',
+  FIXED_CONTENT  : '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top',
+  STICKY_CONTENT : '.sticky-top'
 }
 
 /**
@@ -81,6 +81,7 @@ class Modal {
     this._isShown             = false
     this._isBodyOverflowing   = false
     this._ignoreBackdropClick = false
+    this._isTransitioning     = false
     this._scrollbarWidth      = 0
   }
 
@@ -101,7 +102,7 @@ class Modal {
   }
 
   show(relatedTarget) {
-    if (this._isTransitioning || this._isShown) {
+    if (this._isShown || this._isTransitioning) {
       return
     }
 
@@ -125,8 +126,6 @@ class Modal {
     this._setScrollbar()
 
     this._adjustDialog()
-
-    $(document.body).addClass(ClassName.OPEN)
 
     this._setEscapeEvent()
     this._setResizeEvent()
@@ -153,7 +152,7 @@ class Modal {
       event.preventDefault()
     }
 
-    if (this._isTransitioning || !this._isShown) {
+    if (!this._isShown || this._isTransitioning) {
       return
     }
 
@@ -195,9 +194,17 @@ class Modal {
   }
 
   dispose() {
-    $.removeData(this._element, DATA_KEY)
+    [window, this._element, this._dialog]
+      .forEach((htmlElement) => $(htmlElement).off(EVENT_KEY))
 
-    $(window, document, this._element, this._backdrop).off(EVENT_KEY)
+    /**
+     * `document` has 2 events `Event.FOCUSIN` and `Event.CLICK_DATA_API`
+     * Do not move `document` in `htmlElements` array
+     * It will remove `Event.CLICK_DATA_API` event that should remain
+     */
+    $(document).off(Event.FOCUSIN)
+
+    $.removeData(this._element, DATA_KEY)
 
     this._config              = null
     this._element             = null
@@ -206,6 +213,7 @@ class Modal {
     this._isShown             = null
     this._isBodyOverflowing   = null
     this._ignoreBackdropClick = null
+    this._isTransitioning     = null
     this._scrollbarWidth      = null
   }
 
@@ -260,7 +268,7 @@ class Modal {
     }
 
     if (transition) {
-      const transitionDuration  = Util.getTransitionDurationFromElement(this._element)
+      const transitionDuration  = Util.getTransitionDurationFromElement(this._dialog)
 
       $(this._dialog)
         .one(Util.TRANSITION_END, transitionComplete)
@@ -456,6 +464,8 @@ class Modal {
         .data('padding-right', actualPadding)
         .css('padding-right', `${parseFloat(calculatedPadding) + this._scrollbarWidth}px`)
     }
+
+    $(document.body).addClass(ClassName.OPEN)
   }
 
   _resetScrollbar() {

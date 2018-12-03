@@ -15,7 +15,7 @@ Now, theming is accomplished by Sass variables, Sass maps, and custom CSS. There
 
 ## Sass
 
-Utilize our source Sass files to take advantage of variables, maps, mixins, and more.
+Utilize our source Sass files to take advantage of variables, maps, mixins, and more. In our build we've increased the Sass rounding precision to 6 (by default it's 5) to prevent issues with browser rounding.
 
 ### File structure
 
@@ -237,6 +237,7 @@ You can find and customize these variables for key global options in Bootstrap's
 | `$enable-shadows`           | `true` or `false` (default)        | Enables predefined `box-shadow` styles on various components. |
 | `$enable-gradients`         | `true` or `false` (default)        | Enables predefined gradients via `background-image` styles on various components. |
 | `$enable-transitions`       | `true` (default) or `false`        | Enables predefined `transition`s on various components. |
+| `$enable-prefers-reduced-motion-media-query`       | `true` (default) or `false`        | Enables the [`prefers-reduced-motion` media query]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/accessibility/#reduced-motion), which suppresses certain animations/transitions based on the users' browser/operating system preferences. |
 | `$enable-hover-media-query` | `true` or `false` (default)        | **Deprecated** |
 | `$enable-grid-classes`      | `true` (default) or `false`        | Enables the generation of CSS classes for the grid system (e.g., `.container`, `.row`, `.col-md-1`, etc.). |
 | `$enable-caret`             | `true` (default) or `false`        | Enables pseudo element caret on `.dropdown-toggle`. |
@@ -422,7 +423,7 @@ a {
 
 ### Breakpoint variables
 
-While we originally included breakpoints in our CSS variables (e.g., `--breakpoint-md`), **these are not supported in media queries**, but they can still be used _within_ rulesets in media queries. These breakpoint variables remain in the compiled CSS for backward compatibility given they can be utilized by JavaScript. [Learn more in the spec.](https://www.w3.org/TR/css-variables-1/#using-variables)
+While we originally included breakpoints in our CSS variables (e.g., `--breakpoint-md`), **these are not supported in media queries**, but they can still be used _within_ rulesets in media queries. These breakpoint variables remain in the compiled CSS for backward compatibility given they can be utilized by JavaScript. [Learn more in the spec](https://www.w3.org/TR/css-variables-1/#using-variables).
 
 Here's an example of **what's not supported:**
 

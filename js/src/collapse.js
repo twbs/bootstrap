@@ -1,12 +1,12 @@
-import $ from 'jquery'
-import Util from './util'
-
 /**
  * --------------------------------------------------------------------------
  * Bootstrap (v4.1.3): collapse.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
+
+import $ from 'jquery'
+import Util from './util'
 
 /**
  * ------------------------------------------------------------------------
@@ -67,10 +67,11 @@ class Collapse {
     this._isTransitioning = false
     this._element         = element
     this._config          = this._getConfig(config)
-    this._triggerArray    = $.makeArray(document.querySelectorAll(
+    this._triggerArray    = [].slice.call(document.querySelectorAll(
       `[data-toggle="collapse"][href="#${element.id}"],` +
       `[data-toggle="collapse"][data-target="#${element.id}"]`
     ))
+
     const toggleList = [].slice.call(document.querySelectorAll(Selector.DATA_TOGGLE))
     for (let i = 0, len = toggleList.length; i < len; i++) {
       const elem = toggleList[i]
@@ -227,6 +228,7 @@ class Collapse {
       for (let i = 0; i < triggerArrayLength; i++) {
         const trigger = this._triggerArray[i]
         const selector = Util.getSelectorFromElement(trigger)
+
         if (selector !== null) {
           const $elem = $([].slice.call(document.querySelectorAll(selector)))
           if (!$elem.hasClass(ClassName.SHOW)) {
@@ -375,6 +377,7 @@ $(document).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
   const $trigger = $(this)
   const selector = Util.getSelectorFromElement(this)
   const selectors = [].slice.call(document.querySelectorAll(selector))
+
   $(selectors).each(function () {
     const $target = $(this)
     const data    = $target.data(DATA_KEY)
