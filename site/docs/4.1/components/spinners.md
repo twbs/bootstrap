@@ -10,7 +10,7 @@ toc: true
 
 Bootstrap "spinners" can be used to show the loading state in your projects. They're built only with HTML and CSS, meaning you don't need any JavaScript to create them. You will, however, need some custom JavaScript to toggle their visibility. Their appearance, alignment, and sizing can be easily customized with our amazing utility classes.
 
-For accessibility purposes, each loader here includes `role="status"` and `<span class="sr-only">Loading...</span>` within.
+For accessibility purposes, each loader here includes `role="status"` and a nested `<span class="sr-only">Loading...</span>`.
 
 ## Border spinner
 
