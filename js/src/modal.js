@@ -127,8 +127,6 @@ class Modal {
 
     this._adjustDialog()
 
-    $(document.body).addClass(ClassName.OPEN)
-
     this._setEscapeEvent()
     this._setResizeEvent()
 
@@ -466,6 +464,8 @@ class Modal {
         .data('padding-right', actualPadding)
         .css('padding-right', `${parseFloat(calculatedPadding) + this._scrollbarWidth}px`)
     }
+
+    $(document.body).addClass(ClassName.OPEN)
   }
 
   _resetScrollbar() {

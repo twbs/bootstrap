@@ -5,6 +5,8 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
+'use strict'
+
 const path    = require('path')
 const rollup  = require('rollup')
 const babel   = require('rollup-plugin-babel')
