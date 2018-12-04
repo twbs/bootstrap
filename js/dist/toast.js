@@ -63,215 +63,205 @@
   }
 
   /**
-   * --------------------------------------------------------------------------
-   * Bootstrap (v4.1.3): toast.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
-   * --------------------------------------------------------------------------
+   * ------------------------------------------------------------------------
+   * Constants
+   * ------------------------------------------------------------------------
    */
 
-  var Toast = function ($$$1) {
+  var NAME = 'toast';
+  var VERSION = '4.1.3';
+  var DATA_KEY = 'bs.toast';
+  var EVENT_KEY = "." + DATA_KEY;
+  var JQUERY_NO_CONFLICT = $.fn[NAME];
+  var Event = {
+    CLICK_DISMISS: "click.dismiss" + EVENT_KEY,
+    HIDE: "hide" + EVENT_KEY,
+    HIDDEN: "hidden" + EVENT_KEY,
+    SHOW: "show" + EVENT_KEY,
+    SHOWN: "shown" + EVENT_KEY
+  };
+  var ClassName = {
+    FADE: 'fade',
+    HIDE: 'hide',
+    SHOW: 'show'
+  };
+  var DefaultType = {
+    animation: 'boolean',
+    autohide: 'boolean',
+    delay: 'number'
+  };
+  var Default = {
+    animation: true,
+    autohide: true,
+    delay: 500
+  };
+  var Selector = {
+    DATA_DISMISS: '[data-dismiss="toast"]'
     /**
      * ------------------------------------------------------------------------
-     * Constants
+     * Class Definition
      * ------------------------------------------------------------------------
      */
-    var NAME = 'toast';
-    var VERSION = '4.1.3';
-    var DATA_KEY = 'bs.toast';
-    var EVENT_KEY = "." + DATA_KEY;
-    var JQUERY_NO_CONFLICT = $$$1.fn[NAME];
-    var Event = {
-      CLICK_DISMISS: "click.dismiss" + EVENT_KEY,
-      HIDE: "hide" + EVENT_KEY,
-      HIDDEN: "hidden" + EVENT_KEY,
-      SHOW: "show" + EVENT_KEY,
-      SHOWN: "shown" + EVENT_KEY
-    };
-    var ClassName = {
-      FADE: 'fade',
-      HIDE: 'hide',
-      SHOW: 'show'
-    };
-    var DefaultType = {
-      animation: 'boolean',
-      autohide: 'boolean',
-      delay: 'number'
-    };
-    var Default = {
-      animation: true,
-      autohide: true,
-      delay: 500
-    };
-    var Selector = {
-      DATA_DISMISS: '[data-dismiss="toast"]'
-      /**
-       * ------------------------------------------------------------------------
-       * Class Definition
-       * ------------------------------------------------------------------------
-       */
 
-    };
+  };
 
-    var Toast =
-    /*#__PURE__*/
-    function () {
-      function Toast(element, config) {
-        this._element = element;
-        this._config = this._getConfig(config);
-        this._timeout = null;
+  var Toast =
+  /*#__PURE__*/
+  function () {
+    function Toast(element, config) {
+      this._element = element;
+      this._config = this._getConfig(config);
+      this._timeout = null;
 
-        this._setListeners();
-      } // Getters
+      this._setListeners();
+    } // Getters
 
 
-      var _proto = Toast.prototype;
+    var _proto = Toast.prototype;
 
-      // Public
-      _proto.show = function show() {
-        var _this = this;
+    // Public
+    _proto.show = function show() {
+      var _this = this;
 
-        $$$1(this._element).trigger(Event.SHOW);
+      $(this._element).trigger(Event.SHOW);
 
-        if (this._config.animation) {
-          this._element.classList.add(ClassName.FADE);
-        }
+      if (this._config.animation) {
+        this._element.classList.add(ClassName.FADE);
+      }
 
-        var complete = function complete() {
-          $$$1(_this._element).trigger(Event.SHOWN);
+      var complete = function complete() {
+        $(_this._element).trigger(Event.SHOWN);
 
-          if (_this._config.autohide) {
-            _this.hide();
-          }
-        };
-
-        this._element.classList.add(ClassName.SHOW);
-
-        if (this._config.animation) {
-          var transitionDuration = Util.getTransitionDurationFromElement(this._element);
-          $$$1(this._element).one(Util.TRANSITION_END, complete).emulateTransitionEnd(transitionDuration);
-        } else {
-          complete();
+        if (_this._config.autohide) {
+          _this.hide();
         }
       };
 
-      _proto.hide = function hide(withoutTimeout) {
-        var _this2 = this;
+      this._element.classList.add(ClassName.SHOW);
 
-        if (!this._element.classList.contains(ClassName.SHOW)) {
-          return;
-        }
+      if (this._config.animation) {
+        var transitionDuration = Util.getTransitionDurationFromElement(this._element);
+        $(this._element).one(Util.TRANSITION_END, complete).emulateTransitionEnd(transitionDuration);
+      } else {
+        complete();
+      }
+    };
 
-        $$$1(this._element).trigger(Event.HIDE);
+    _proto.hide = function hide(withoutTimeout) {
+      var _this2 = this;
 
-        if (withoutTimeout) {
-          this._close();
-        } else {
-          this._timeout = setTimeout(function () {
-            _this2._close();
-          }, this._config.delay);
-        }
-      };
+      if (!this._element.classList.contains(ClassName.SHOW)) {
+        return;
+      }
 
-      _proto.dispose = function dispose() {
-        clearTimeout(this._timeout);
-        this._timeout = null;
+      $(this._element).trigger(Event.HIDE);
 
-        if (this._element.classList.contains(ClassName.SHOW)) {
-          this._element.classList.remove(ClassName.SHOW);
-        }
+      if (withoutTimeout) {
+        this._close();
+      } else {
+        this._timeout = setTimeout(function () {
+          _this2._close();
+        }, this._config.delay);
+      }
+    };
 
-        $$$1(this._element).off(Event.CLICK_DISMISS);
-        $$$1.removeData(this._element, DATA_KEY);
-        this._element = null;
-        this._config = null;
-      }; // Private
+    _proto.dispose = function dispose() {
+      clearTimeout(this._timeout);
+      this._timeout = null;
 
-
-      _proto._getConfig = function _getConfig(config) {
-        config = _objectSpread({}, Default, $$$1(this._element).data(), typeof config === 'object' && config ? config : {});
-        Util.typeCheckConfig(NAME, config, this.constructor.DefaultType);
-        return config;
-      };
-
-      _proto._setListeners = function _setListeners() {
-        var _this3 = this;
-
-        $$$1(this._element).on(Event.CLICK_DISMISS, Selector.DATA_DISMISS, function () {
-          return _this3.hide(true);
-        });
-      };
-
-      _proto._close = function _close() {
-        var _this4 = this;
-
-        var complete = function complete() {
-          $$$1(_this4._element).trigger(Event.HIDDEN);
-        };
-
+      if (this._element.classList.contains(ClassName.SHOW)) {
         this._element.classList.remove(ClassName.SHOW);
+      }
 
-        if (this._config.animation) {
-          var transitionDuration = Util.getTransitionDurationFromElement(this._element);
-          $$$1(this._element).one(Util.TRANSITION_END, complete).emulateTransitionEnd(transitionDuration);
-        } else {
-          complete();
-        }
-      }; // Static
+      $(this._element).off(Event.CLICK_DISMISS);
+      $.removeData(this._element, DATA_KEY);
+      this._element = null;
+      this._config = null;
+    }; // Private
 
 
-      Toast._jQueryInterface = function _jQueryInterface(config) {
-        return this.each(function () {
-          var $element = $$$1(this);
-          var data = $element.data(DATA_KEY);
+    _proto._getConfig = function _getConfig(config) {
+      config = _objectSpread({}, Default, $(this._element).data(), typeof config === 'object' && config ? config : {});
+      Util.typeCheckConfig(NAME, config, this.constructor.DefaultType);
+      return config;
+    };
 
-          var _config = typeof config === 'object' && config;
+    _proto._setListeners = function _setListeners() {
+      var _this3 = this;
 
-          if (!data) {
-            data = new Toast(this, _config);
-            $element.data(DATA_KEY, data);
-          }
+      $(this._element).on(Event.CLICK_DISMISS, Selector.DATA_DISMISS, function () {
+        return _this3.hide(true);
+      });
+    };
 
-          if (typeof config === 'string') {
-            if (typeof data[config] === 'undefined') {
-              throw new TypeError("No method named \"" + config + "\"");
-            }
+    _proto._close = function _close() {
+      var _this4 = this;
 
-            data[config](this);
-          }
-        });
+      var complete = function complete() {
+        $(_this4._element).trigger(Event.HIDDEN);
       };
 
-      _createClass(Toast, null, [{
-        key: "VERSION",
-        get: function get() {
-          return VERSION;
+      this._element.classList.remove(ClassName.SHOW);
+
+      if (this._config.animation) {
+        var transitionDuration = Util.getTransitionDurationFromElement(this._element);
+        $(this._element).one(Util.TRANSITION_END, complete).emulateTransitionEnd(transitionDuration);
+      } else {
+        complete();
+      }
+    }; // Static
+
+
+    Toast._jQueryInterface = function _jQueryInterface(config) {
+      return this.each(function () {
+        var $element = $(this);
+        var data = $element.data(DATA_KEY);
+
+        var _config = typeof config === 'object' && config;
+
+        if (!data) {
+          data = new Toast(this, _config);
+          $element.data(DATA_KEY, data);
         }
-      }, {
-        key: "DefaultType",
-        get: function get() {
-          return DefaultType;
+
+        if (typeof config === 'string') {
+          if (typeof data[config] === 'undefined') {
+            throw new TypeError("No method named \"" + config + "\"");
+          }
+
+          data[config](this);
         }
-      }]);
-
-      return Toast;
-    }();
-    /**
-     * ------------------------------------------------------------------------
-     * jQuery
-     * ------------------------------------------------------------------------
-     */
-
-
-    $$$1.fn[NAME] = Toast._jQueryInterface;
-    $$$1.fn[NAME].Constructor = Toast;
-
-    $$$1.fn[NAME].noConflict = function () {
-      $$$1.fn[NAME] = JQUERY_NO_CONFLICT;
-      return Toast._jQueryInterface;
+      });
     };
+
+    _createClass(Toast, null, [{
+      key: "VERSION",
+      get: function get() {
+        return VERSION;
+      }
+    }, {
+      key: "DefaultType",
+      get: function get() {
+        return DefaultType;
+      }
+    }]);
 
     return Toast;
-  }($);
+  }();
+  /**
+   * ------------------------------------------------------------------------
+   * jQuery
+   * ------------------------------------------------------------------------
+   */
+
+
+  $.fn[NAME] = Toast._jQueryInterface;
+  $.fn[NAME].Constructor = Toast;
+
+  $.fn[NAME].noConflict = function () {
+    $.fn[NAME] = JQUERY_NO_CONFLICT;
+    return Toast._jQueryInterface;
+  };
 
   return Toast;
 

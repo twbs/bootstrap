@@ -735,4 +735,45 @@ $(function () {
       done()
     }).bootstrapModal('show')
   })
+
+  QUnit.test('should enforce focus', function (assert) {
+    assert.expect(4)
+    var done = assert.async()
+
+    var $modal = $([
+      '<div id="modal-test" data-show="false">',
+      '  <div class="modal-dialog">',
+      '    <div class="modal-content">',
+      '      <div class="modal-body" />',
+      '    </div>',
+      '  </div>',
+      '</div>'
+    ].join(''))
+      .bootstrapModal()
+      .appendTo('#qunit-fixture')
+
+    var modal = $modal.data('bs.modal')
+    var spy = sinon.spy(modal, '_enforceFocus')
+    var spyDocOff = sinon.spy($(document), 'off')
+    var spyDocOn = sinon.spy($(document), 'on')
+
+    $modal.one('shown.bs.modal', function () {
+      assert.ok(spy.called, '_enforceFocus called')
+      assert.ok(spyDocOff.withArgs('focusin.bs.modal'))
+      assert.ok(spyDocOn.withArgs('focusin.bs.modal'))
+
+      var spyFocus = sinon.spy(modal._element, 'focus')
+      var event = $.Event('focusin', {
+        target: $('#qunit-fixture')[0]
+      })
+
+      $(document).one('focusin', function () {
+        assert.ok(spyFocus.called)
+        done()
+      })
+
+      $(document).trigger(event)
+    })
+      .bootstrapModal('show')
+  })
 })
