@@ -80,7 +80,7 @@ class Tab {
     const selector = Util.getSelectorFromElement(this._element)
 
     if (listElement) {
-      const itemSelector = listElement.nodeName === 'UL' ? Selector.ACTIVE_UL : Selector.ACTIVE
+      const itemSelector = listElement.nodeName === 'UL' || listElement.nodeName === 'OL' ? Selector.ACTIVE_UL : Selector.ACTIVE
       previous = $.makeArray($(listElement).find(itemSelector))
       previous = previous[previous.length - 1]
     }
@@ -141,7 +141,7 @@ class Tab {
   // Private
 
   _activate(element, container, callback) {
-    const activeElements = container && container.nodeName === 'UL'
+    const activeElements = container && (container.nodeName === 'UL' || container.nodeName === 'OL')
       ? $(container).find(Selector.ACTIVE_UL)
       : $(container).children(Selector.ACTIVE)
 

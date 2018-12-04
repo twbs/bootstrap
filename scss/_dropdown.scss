@@ -136,6 +136,14 @@
   background-color: transparent; // For `<button>`s
   border: 0; // For `<button>`s
 
+  &:first-child {
+    @include border-top-radius($dropdown-inner-border-radius);
+  }
+
+  &:last-child {
+    @include border-bottom-radius($dropdown-inner-border-radius);
+  }
+
   @include hover-focus {
     color: $dropdown-link-hover-color;
     text-decoration: none;
