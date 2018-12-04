@@ -14,7 +14,7 @@ Below is an example of a single media object. Only two classes are required—th
 
 {% capture example %}
 <div class="media">
-  <img class="mr-3" data-src="holder.js/64x64" alt="Generic placeholder image">
+  {% include icons/placeholder.svg width="64" height="64" class="mr-3" title="Generic placeholder image" %}
   <div class="media-body">
     <h5 class="mt-0">Media heading</h5>
     Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
@@ -38,14 +38,14 @@ Media objects can be infinitely nested, though we suggest you stop at some point
 
 {% capture example %}
 <div class="media">
-  <img class="mr-3" data-src="holder.js/64x64" alt="Generic placeholder image">
+  {% include icons/placeholder.svg width="64" height="64" class="mr-3" title="Generic placeholder image" %}
   <div class="media-body">
     <h5 class="mt-0">Media heading</h5>
     Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
 
     <div class="media mt-3">
       <a class="mr-3" href="#">
-        <img data-src="holder.js/64x64" alt="Generic placeholder image">
+        {% include icons/placeholder.svg width="64" height="64" title="Generic placeholder image" %}
       </a>
       <div class="media-body">
         <h5 class="mt-0">Media heading</h5>
@@ -63,7 +63,7 @@ Media in a media object can be aligned with flexbox utilities to the top (defaul
 
 {% capture example %}
 <div class="media">
-  <img class="align-self-start mr-3" data-src="holder.js/64x64" alt="Generic placeholder image">
+  {% include icons/placeholder.svg width="64" height="64" class="align-self-start mr-3" title="Generic placeholder image" %}
   <div class="media-body">
     <h5 class="mt-0">Top-aligned media</h5>
     <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
@@ -75,7 +75,7 @@ Media in a media object can be aligned with flexbox utilities to the top (defaul
 
 {% capture example %}
 <div class="media">
-  <img class="align-self-center mr-3" data-src="holder.js/64x64" alt="Generic placeholder image">
+  {% include icons/placeholder.svg width="64" height="64" class="align-self-center mr-3" title="Generic placeholder image" %}
   <div class="media-body">
     <h5 class="mt-0">Center-aligned media</h5>
     <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
@@ -87,7 +87,7 @@ Media in a media object can be aligned with flexbox utilities to the top (defaul
 
 {% capture example %}
 <div class="media">
-  <img class="align-self-end mr-3" data-src="holder.js/64x64" alt="Generic placeholder image">
+  {% include icons/placeholder.svg width="64" height="64" class="align-self-end mr-3" title="Generic placeholder image" %}
   <div class="media-body">
     <h5 class="mt-0">Bottom-aligned media</h5>
     <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
@@ -107,7 +107,7 @@ Change the order of content in media objects by modifying the HTML itself, or by
     <h5 class="mt-0 mb-1">Media object</h5>
     Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
   </div>
-  <img class="ml-3" data-src="holder.js/64x64" alt="Generic placeholder image">
+  {% include icons/placeholder.svg width="64" height="64" class="ml-3" title="Generic placeholder image" %}
 </div>
 {% endcapture %}
 {% include example.html content=example %}
@@ -119,21 +119,21 @@ Because the media object has so few structural requirements, you can also use th
 {% capture example %}
 <ul class="list-unstyled">
   <li class="media">
-    <img class="mr-3" data-src="holder.js/64x64" alt="Generic placeholder image">
+    {% include icons/placeholder.svg width="64" height="64" class="mr-3" title="Generic placeholder image" %}
     <div class="media-body">
       <h5 class="mt-0 mb-1">List-based media object</h5>
       Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
     </div>
   </li>
   <li class="media my-4">
-    <img class="mr-3" data-src="holder.js/64x64" alt="Generic placeholder image">
+    {% include icons/placeholder.svg width="64" height="64" class="mr-3" title="Generic placeholder image" %}
     <div class="media-body">
       <h5 class="mt-0 mb-1">List-based media object</h5>
       Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
     </div>
   </li>
   <li class="media">
-    <img class="mr-3" data-src="holder.js/64x64" alt="Generic placeholder image">
+    {% include icons/placeholder.svg width="64" height="64" class="mr-3" title="Generic placeholder image" %}
     <div class="media-body">
       <h5 class="mt-0 mb-1">List-based media object</h5>
       Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.

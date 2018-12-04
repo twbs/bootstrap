@@ -8,7 +8,7 @@ toc: true
 
 ## Stable changes
 
-Moving from Beta 3 to our stable v4.0 release, there are no breaking changes, but there are some notable changes.
+Moving from Beta 3 to our stable v4.x release, there are no breaking changes, but there are some notable changes.
 
 ### Printing
 - Fixed broken print utilities. Previously, using a `.d-print-*` class would unexpectedly overrule any other `.d-*` class. Now, they match our other display utilities and only apply to that media (`@media print`).

@@ -33,9 +33,9 @@ The default web fonts (Helvetica Neue, Helvetica, and Arial) have been dropped i
 
 {% highlight sass %}
 $font-family-sans-serif:
-  // Safari for OS X and iOS (San Francisco)
+  // Safari for macOS and iOS (San Francisco)
   -apple-system,
-  // Chrome < 56 for OS X (San Francisco)
+  // Chrome < 56 for macOS (San Francisco)
   BlinkMacSystemFont,
   // Windows
   "Segoe UI",
@@ -307,7 +307,7 @@ The `<address>` element is updated to reset the browser default `font-style` fro
 
   <address>
     <strong>Full Name</strong><br>
-    <a href="mailto:#">first.last@example.com</a>
+    <a href="mailto:first.last@example.com">first.last@example.com</a>
   </address>
 </div>
 
