@@ -272,8 +272,7 @@ class Tooltip {
       const attachment = this._getAttachment(placement)
       this.addAttachmentClass(attachment)
 
-      const container = this.config.container === false ? document.body : $(document).find(this.config.container)
-
+      const container = this._getContainer()
       $(tip).data(this.constructor.DATA_KEY, this)
 
       if (!$.contains(this.element.ownerDocument.documentElement, this.tip)) {
@@ -449,6 +448,18 @@ class Tooltip {
   }
 
   // Private
+
+  _getContainer() {
+    if (this.config.container === false) {
+      return document.body
+    }
+
+    if (Util.isElement(this.config.container)) {
+      return $(this.config.container)
+    }
+
+    return $(document).find(this.config.container)
+  }
 
   _getAttachment(placement) {
     return AttachmentMap[placement.toUpperCase()]
