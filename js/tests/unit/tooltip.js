@@ -414,6 +414,52 @@ $(function () {
       .bootstrapTooltip('show')
   })
 
+  QUnit.test('should place tooltips inside a specific container when container is an element', function (assert) {
+    assert.expect(3)
+    var done = assert.async()
+    var $container = $('<div></div>').appendTo('#qunit-fixture')
+    var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"/>')
+      .appendTo('#qunit-fixture')
+      .bootstrapTooltip({
+        container: $container[0]
+      })
+
+    $tooltip
+      .one('shown.bs.tooltip', function () {
+        assert.strictEqual($container.find('.tooltip').length, 1)
+        assert.strictEqual($('#qunit-fixture > .tooltip').length, 0, 'tooltip is not in parent')
+        $tooltip.bootstrapTooltip('hide')
+      })
+      .one('hidden.bs.tooltip', function () {
+        assert.strictEqual($container.find('.tooltip').length, 0, 'tooltip was removed from dom')
+        done()
+      })
+      .bootstrapTooltip('show')
+  })
+
+  QUnit.test('should place tooltips inside a specific container when container is a selector', function (assert) {
+    assert.expect(3)
+    var done = assert.async()
+    var $container = $('<div id="container"></div>').appendTo('#qunit-fixture')
+    var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"/>')
+      .appendTo('#qunit-fixture')
+      .bootstrapTooltip({
+        container: '#container'
+      })
+
+    $tooltip
+      .one('shown.bs.tooltip', function () {
+        assert.strictEqual($container.find('.tooltip').length, 1)
+        assert.strictEqual($('#qunit-fixture > .tooltip').length, 0, 'tooltip is not in parent')
+        $tooltip.bootstrapTooltip('hide')
+      })
+      .one('hidden.bs.tooltip', function () {
+        assert.strictEqual($container.find('.tooltip').length, 0, 'tooltip was removed from dom')
+        done()
+      })
+      .bootstrapTooltip('show')
+  })
+
   QUnit.test('should add position class before positioning so that position-specific styles are taken into account', function (assert) {
     assert.expect(2)
     var done = assert.async()
