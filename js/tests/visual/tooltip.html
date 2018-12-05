@@ -51,8 +51,11 @@
           <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="left" title="Tooltip with XSS" data-container="<img src=1 onerror=alert(123) />">
             Tooltip with XSS
           </button>
-          <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="left" title="Tooltip with container" data-container="#customContainer">
-            Tooltip with container
+          <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="left" title="Tooltip with container (selector)" data-container="#customContainer">
+            Tooltip with container (selector)
+          </button>
+          <button id="tooltipElement" type="button" class="btn btn-secondary" data-placement="left" title="Tooltip with container (element)">
+            Tooltip with container (element)
           </button>
           <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-html="true" title="<em>Tooltip</em> <u>with</u> <b>HTML</b>">
             Tooltip with HTML
@@ -70,6 +73,9 @@
     <script>
       $(function () {
         $('[data-toggle="tooltip"]').tooltip()
+        $('#tooltipElement').tooltip({
+          container: $('#customContainer')[0]
+        })
         $('#target').tooltip({
           placement : 'top',
           trigger : 'manual'
