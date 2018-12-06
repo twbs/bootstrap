@@ -137,7 +137,6 @@ $(function () {
     var shadowRoot = $div[0].attachShadow({
       mode: 'open'
     })
-    console.warn($div[0].attachShadow, shadowRoot)
 
     assert.equal(shadowRoot, Util.findShadowRoot(shadowRoot))
     shadowRoot.innerHTML = '<button>Shadow Button</button>'
