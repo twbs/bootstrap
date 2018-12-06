@@ -98,14 +98,14 @@
   "dependencies": {},
   "peerDependencies": {
     "jquery": "1.9.1 - 3",
-    "popper.js": "^1.14.5"
+    "popper.js": "^1.14.6"
   },
   "devDependencies": {
-    "@babel/cli": "^7.1.5",
-    "@babel/core": "^7.1.6",
-    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
-    "@babel/preset-env": "^7.1.6",
-    "autoprefixer": "^9.3.1",
+    "@babel/cli": "^7.2.0",
+    "@babel/core": "^7.2.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.2.0",
+    "@babel/preset-env": "^7.2.0",
+    "autoprefixer": "^9.4.2",
     "babel-eslint": "^10.0.1",
     "babel-plugin-istanbul": "^5.1.0",
     "broken-link-checker": "^0.7.8",
@@ -119,7 +119,7 @@
     "hammer-simulator": "0.0.1",
     "http-server": "^0.11.1",
     "ip": "^1.1.5",
-    "karma": "^3.1.1",
+    "karma": "^3.1.3",
     "karma-browserstack-launcher": "^1.3.0",
     "karma-chrome-launcher": "^2.2.0",
     "karma-coverage-istanbul-reporter": "^2.0.4",
@@ -128,22 +128,22 @@
     "karma-qunit": "^2.1.0",
     "karma-sinon": "^1.0.5",
     "node-sass": "^4.10.0",
-    "nodemon": "^1.18.6",
+    "nodemon": "^1.18.7",
     "npm-run-all": "^4.1.5",
-    "popper.js": "^1.14.5",
+    "popper.js": "^1.14.6",
     "postcss-cli": "^6.0.1",
     "qunit": "^2.8.0",
-    "rollup": "^0.67.3",
+    "rollup": "^0.67.4",
     "rollup-plugin-babel": "^4.0.3",
     "rollup-plugin-node-resolve": "^3.4.0",
     "shelljs": "^0.8.3",
     "shx": "^0.3.2",
     "sinon": "^7.1.1",
-    "stylelint": "^9.8.0",
+    "stylelint": "^9.9.0",
     "stylelint-config-recommended-scss": "^3.2.0",
     "stylelint-config-standard": "^18.2.0",
     "stylelint-order": "^2.0.0",
-    "stylelint-scss": "^3.4.0",
+    "stylelint-scss": "^3.4.1",
     "uglify-js": "^3.4.9",
     "vnu-jar": "18.11.5"
   },
@@ -215,7 +215,7 @@
     "dependencies": {},
     "peerDependencies": {
       "jquery": "1.9.1 - 3",
-      "popper.js": "^1.14.5"
+      "popper.js": "^1.14.6"
     }
   }
 }
