@@ -120,20 +120,15 @@
     border-left: 0;
     @include border-radius(0);
 
+    &:first-child {
+      border-top-width: 0;
+
+      .list-group-flush + & {
+        border-top-width: $list-group-border-width;
+      }
+    }
+
     &:last-child {
-      margin-bottom: -$list-group-border-width;
-    }
-  }
-
-  &:first-of-type {
-    .list-group-item:first-child {
-      border-top: 0;
-    }
-  }
-
-  &:last-of-type {
-    .list-group-item:last-child {
-      margin-bottom: 0;
       border-bottom: 0;
     }
   }
