@@ -1058,7 +1058,12 @@ $close-font-size:                   $font-size-base * 1.5 !default;
 $close-font-weight:                 $font-weight-bold !default;
 $close-color:                       $black !default;
 $close-text-shadow:                 0 1px 0 $white !default;
+$close-opacity:                     .5 !default;
 
+$close-hover-color:                 $close-color !default;
+$close-hover-opacity:               .75 !default;
+
+$close-disabled-opacity:            $close-opacity !default;
 
 // Code
 
