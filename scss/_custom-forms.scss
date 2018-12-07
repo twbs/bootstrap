@@ -11,7 +11,7 @@
   position: relative;
   display: block;
   min-height: ($font-size-base * $line-height-base);
-  padding-left: $custom-control-gutter;
+  padding-left: ($custom-control-gutter + $custom-control-indicator-size);
 }
 
 .custom-control-inline {
@@ -75,7 +75,7 @@
   &::before {
     position: absolute;
     top: (($font-size-base * $line-height-base - $custom-control-indicator-size) / 2);
-    left: -$custom-control-gutter;
+    left: -($custom-control-gutter + $custom-control-indicator-size);
     display: block;
     width: $custom-control-indicator-size;
     height: $custom-control-indicator-size;
@@ -90,7 +90,7 @@
   &::after {
     position: absolute;
     top: (($font-size-base * $line-height-base - $custom-control-indicator-size) / 2);
-    left: -$custom-control-gutter;
+    left: -($custom-control-gutter + $custom-control-indicator-size);
     display: block;
     width: $custom-control-indicator-size;
     height: $custom-control-indicator-size;
