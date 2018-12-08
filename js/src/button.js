@@ -29,7 +29,7 @@ const ClassName = {
 const Selector = {
   DATA_TOGGLE_CARROT : '[data-toggle^="button"]',
   DATA_TOGGLE        : '[data-toggle="buttons"]',
-  VISIBLE_INPUT      : 'input:not([type="hidden"])',
+  INPUT              : 'input:not([type="hidden"])',
   ACTIVE             : '.active',
   BUTTON             : '.btn'
 }
@@ -67,7 +67,7 @@ class Button {
     )[0]
 
     if (rootElement) {
-      const input = this._element.querySelector(Selector.VISIBLE_INPUT)
+      const input = this._element.querySelector(Selector.INPUT)
 
       if (input) {
         if (input.type === 'radio') {
