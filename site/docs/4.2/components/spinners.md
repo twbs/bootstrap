@@ -16,6 +16,10 @@ For accessibility purposes, each loader here includes `role="status"` and a nest
 
 Use the border spinners for a lightweight loading indicator.
 
+<button type="button" class="btn btn-secondary bd-toggle-spinner" data-toggle="button" aria-pressed="false" autocomplete="off">
+  Toggle Spinner
+</button>
+
 {% capture example %}
 <div class="spinner-border" role="status">
   <span class="sr-only">Loading...</span>
@@ -26,6 +30,10 @@ Use the border spinners for a lightweight loading indicator.
 ### Colors
 
 The border spinner uses `currentColor` for its `border-color`, meaning you can customize the color with [text color utilities][color]. You can use any of our text color utilities on the standard spinner.
+
+<button type="button" class="btn btn-secondary bd-toggle-spinner" data-toggle="button" aria-pressed="false" autocomplete="off">
+  Toggle Spinner
+</button>
 
 {% capture example %}
 {% for color in site.data.theme-colors %}
@@ -44,6 +52,10 @@ The border spinner uses `currentColor` for its `border-color`, meaning you can c
 
 If you don't fancy a border spinner, switch to the grow spinner. While it doesn't technically spin, it does repeatedly grow!
 
+<button type="button" class="btn btn-secondary bd-toggle-spinner" data-toggle="button" aria-pressed="false" autocomplete="off">
+  Toggle Spinner
+</button>
+
 {% capture example %}
 <div class="spinner-grow" role="status">
   <span class="sr-only">Loading...</span>
@@ -52,6 +64,10 @@ If you don't fancy a border spinner, switch to the grow spinner. While it doesn'
 {% include example.html content=example %}
 
 Once again, this spinner is built with `currentColor`, so you can easily change its appearance with [text color utilities][color]. Here it is in blue, along with the supported variants.
+
+<button type="button" class="btn btn-secondary bd-toggle-spinner" data-toggle="button" aria-pressed="false" autocomplete="off">
+  Toggle Spinner
+</button>
 
 {% capture example %}
 {% for color in site.data.theme-colors %}
@@ -69,6 +85,10 @@ Spinners in Bootstrap are built with `rem`s, `currentColor`, and `display: inlin
 
 Use [margin utilities][margin] like `.m-5` for easy spacing.
 
+<button type="button" class="btn btn-secondary bd-toggle-spinner" data-toggle="button" aria-pressed="false" autocomplete="off">
+  Toggle Spinner
+</button>
+
 {% capture example %}
 <div class="spinner-border m-5" role="status">
   <span class="sr-only">Loading...</span>
@@ -82,6 +102,10 @@ Use [flexbox utilities][flex], [float utilities][float], or [text alignment][tex
 
 #### Flex
 
+<button type="button" class="btn btn-secondary bd-toggle-spinner" data-toggle="button" aria-pressed="false" autocomplete="off">
+  Toggle Spinner
+</button>
+
 {% capture example %}
 <div class="d-flex justify-content-center">
   <div class="spinner-border" role="status">
@@ -90,6 +114,10 @@ Use [flexbox utilities][flex], [float utilities][float], or [text alignment][tex
 </div>
 {% endcapture %}
 {% include example.html content=example %}
+
+<button type="button" class="btn btn-secondary bd-toggle-spinner" data-toggle="button" aria-pressed="false" autocomplete="off">
+  Toggle Spinner
+</button>
 
 {% capture example %}
 <div class="d-flex align-items-center">
@@ -101,6 +129,10 @@ Use [flexbox utilities][flex], [float utilities][float], or [text alignment][tex
 
 #### Floats
 
+<button type="button" class="btn btn-secondary bd-toggle-spinner" data-toggle="button" aria-pressed="false" autocomplete="off">
+  Toggle Spinner
+</button>
+
 {% capture example %}
 <div class="clearfix">
   <div class="spinner-border float-right" role="status">
@@ -111,6 +143,10 @@ Use [flexbox utilities][flex], [float utilities][float], or [text alignment][tex
 {% include example.html content=example %}
 
 #### Text align
+
+<button type="button" class="btn btn-secondary bd-toggle-spinner" data-toggle="button" aria-pressed="false" autocomplete="off">
+  Toggle Spinner
+</button>
 
 {% capture example %}
 <div class="text-center">
@@ -125,6 +161,10 @@ Use [flexbox utilities][flex], [float utilities][float], or [text alignment][tex
 
 Add `.spinner-border-sm` and `.spinner-grow-sm` to make a smaller spinner that can quickly be used within other components.
 
+<button type="button" class="btn btn-secondary bd-toggle-spinner" data-toggle="button" aria-pressed="false" autocomplete="off">
+  Toggle Spinner
+</button>
+
 {% capture example %}
 <div class="spinner-border spinner-border-sm" role="status">
   <span class="sr-only">Loading...</span>
@@ -136,6 +176,10 @@ Add `.spinner-border-sm` and `.spinner-grow-sm` to make a smaller spinner that c
 {% include example.html content=example %}
 
 Or, use custom CSS or inline styles to change the dimensions as needed.
+
+<button type="button" class="btn btn-secondary bd-toggle-spinner" data-toggle="button" aria-pressed="false" autocomplete="off">
+  Toggle Spinner
+</button>
 
 {% capture example %}
 <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
@@ -151,6 +195,10 @@ Or, use custom CSS or inline styles to change the dimensions as needed.
 
 Use spinners within buttons to indicate an action is currently processing or taking place. You may also swap the text out of the spinner element and utilize button text as needed.
 
+<button type="button" class="btn btn-secondary bd-toggle-spinner" data-toggle="button" aria-pressed="false" autocomplete="off">
+  Toggle Spinner
+</button>
+
 {% capture example %}
 <button class="btn btn-primary" type="button" disabled>
   <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
@@ -162,6 +210,10 @@ Use spinners within buttons to indicate an action is currently processing or tak
 </button>
 {% endcapture %}
 {% include example.html content=example %}
+
+<button type="button" class="btn btn-secondary bd-toggle-spinner" data-toggle="button" aria-pressed="false" autocomplete="off">
+  Toggle Spinner
+</button>
 
 {% capture example %}
 <button class="btn btn-primary" type="button" disabled>
