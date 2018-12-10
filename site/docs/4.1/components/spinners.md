@@ -10,14 +10,16 @@ toc: true
 
 Bootstrap "spinners" can be used to show the loading state in your projects. They're built only with HTML and CSS, meaning you don't need any JavaScript to create them. You will, however, need some custom JavaScript to toggle their visibility. Their appearance, alignment, and sizing can be easily customized with our amazing utility classes.
 
-For accessibility purposes, each loader here includes `role="status"` and `Loading...` text within. We account for this in our CSS, using a text hiding technique to prevent it from rendering on screen.
+For accessibility purposes, each loader here includes `role="status"` and a nested `<span class="sr-only">Loading...</span>`.
 
 ## Border spinner
 
 Use the border spinners for a lightweight loading indicator.
 
 {% capture example %}
-<div class="spinner-border" role="status">Loading...</div>
+<div class="spinner-border" role="status">
+  <span class="sr-only">Loading...</span>
+</div>
 {% endcapture %}
 {% include example.html content=example %}
 
@@ -27,7 +29,9 @@ The border spinner uses `currentColor` for its `border-color`, meaning you can c
 
 {% capture example %}
 {% for color in site.data.theme-colors %}
-<div class="spinner-border text-{{ color.name }}" role="status">Loading...</div>{% endfor %}
+<div class="spinner-border text-{{ color.name }}" role="status">
+  <span class="sr-only">Loading...</span>
+</div>{% endfor %}
 {% endcapture %}
 {% include example.html content=example %}
 
@@ -41,7 +45,9 @@ The border spinner uses `currentColor` for its `border-color`, meaning you can c
 If you don't fancy a border spinner, switch to the grow spinner. While it doesn't technically spin, it does repeatedly grow!
 
 {% capture example %}
-<div class="spinner-grow" role="status">Loading...</div>
+<div class="spinner-grow" role="status">
+  <span class="sr-only">Loading...</span>
+</div>
 {% endcapture %}
 {% include example.html content=example %}
 
@@ -49,7 +55,9 @@ Once again, this spinner is built with `currentColor`, so you can easily change 
 
 {% capture example %}
 {% for color in site.data.theme-colors %}
-<div class="spinner-grow text-{{ color.name }}" role="status">Loading...</div>{% endfor %}
+<div class="spinner-grow text-{{ color.name }}" role="status">
+  <span class="sr-only">Loading...</span>
+</div>{% endfor %}
 {% endcapture %}
 {% include example.html content=example %}
 
@@ -62,7 +70,9 @@ Spinners in Bootstrap are built with `rem`s, `currentColor`, and `display: inlin
 Use [margin utilities][margin] like `.m-5` for easy spacing.
 
 {% capture example %}
-<div class="spinner-border m-5" role="status">Loading...</div>
+<div class="spinner-border m-5" role="status">
+  <span class="sr-only">Loading...</span>
+</div>
 {% endcapture %}
 {% include example.html content=example %}
 
@@ -74,7 +84,9 @@ Use [flexbox utilities][flex], [float utilities][float], or [text alignment][tex
 
 {% capture example %}
 <div class="d-flex justify-content-center">
-  <div class="spinner-border" role="status">Loading...</div>
+  <div class="spinner-border" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
 </div>
 {% endcapture %}
 {% include example.html content=example %}
@@ -82,7 +94,7 @@ Use [flexbox utilities][flex], [float utilities][float], or [text alignment][tex
 {% capture example %}
 <div class="d-flex align-items-center">
   <strong>Loading...</strong>
-  <div class="spinner-border ml-auto" role="status"></div>
+  <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
 </div>
 {% endcapture %}
 {% include example.html content=example %}
@@ -91,7 +103,9 @@ Use [flexbox utilities][flex], [float utilities][float], or [text alignment][tex
 
 {% capture example %}
 <div class="clearfix">
-  <div class="spinner-border float-right" role="status">Loading...</div>
+  <div class="spinner-border float-right" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
 </div>
 {% endcapture %}
 {% include example.html content=example %}
@@ -100,7 +114,9 @@ Use [flexbox utilities][flex], [float utilities][float], or [text alignment][tex
 
 {% capture example %}
 <div class="text-center">
-  <div class="spinner-border" role="status">Loading...</div>
+  <div class="spinner-border" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
 </div>
 {% endcapture %}
 {% include example.html content=example %}
@@ -110,16 +126,24 @@ Use [flexbox utilities][flex], [float utilities][float], or [text alignment][tex
 Add `.spinner-border-sm` and `.spinner-grow-sm` to make a smaller spinner that can quickly be used within other components.
 
 {% capture example %}
-<div class="spinner-border spinner-border-sm" role="status">Loading...</div>
-<div class="spinner-grow spinner-grow-sm" role="status">Loading...</div>
+<div class="spinner-border spinner-border-sm" role="status">
+  <span class="sr-only">Loading...</span>
+</div>
+<div class="spinner-grow spinner-grow-sm" role="status">
+  <span class="sr-only">Loading...</span>
+</div>
 {% endcapture %}
 {% include example.html content=example %}
 
 Or, use custom CSS or inline styles to change the dimensions as needed.
 
 {% capture example %}
-<div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">Loading...</div>
-<div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status">Loading...</div>
+<div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+  <span class="sr-only">Loading...</span>
+</div>
+<div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status">
+  <span class="sr-only">Loading...</span>
+</div>
 {% endcapture %}
 {% include example.html content=example %}
 
@@ -129,10 +153,11 @@ Use spinners within buttons to indicate an action is currently processing or tak
 
 {% capture example %}
 <button class="btn btn-primary" type="button" disabled>
-  <span class="spinner-border spinner-border-sm" role="status">Loading...</span>
+  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+  <span class="sr-only">Loading...</span>
 </button>
 <button class="btn btn-primary" type="button" disabled>
-  <span class="spinner-border spinner-border-sm" role="status"></span>
+  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
   Loading...
 </button>
 {% endcapture %}
@@ -140,10 +165,11 @@ Use spinners within buttons to indicate an action is currently processing or tak
 
 {% capture example %}
 <button class="btn btn-primary" type="button" disabled>
-  <span class="spinner-grow spinner-grow-sm" role="status">Loading...</span>
+  <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+  <span class="sr-only">Loading...</span>
 </button>
 <button class="btn btn-primary" type="button" disabled>
-  <span class="spinner-grow spinner-grow-sm" role="status"></span>
+  <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
   Loading...
 </button>
 {% endcapture %}

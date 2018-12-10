@@ -20,6 +20,7 @@ Things to know when using the popover plugin:
 - Popovers for `.disabled` or `disabled` elements must be triggered on a wrapper element.
 - When triggered from anchors that wrap across multiple lines, popovers will be centered between the anchors' overall width. Use `.text-nowrap` on your `<a>`s to avoid this behavior.
 - Popovers must be hidden before their corresponding elements have been removed from the DOM.
+- Popovers can be triggered thanks to an element inside a shadow DOM.
 
 {% include callout-info-prefersreducedmotion.md %}
 
