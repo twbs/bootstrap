@@ -58,9 +58,14 @@
       $(this).siblings('.progress').find('.progress-bar-striped').toggleClass('progress-bar-animated')
     })
 
-    // Activate animated progress bar
-    $('.bd-toggle-spinner').on('click', function () {
-      $(this).parent().next().toggleClass('active')
+    // Add Toggle Spinner buttons
+    $('.bd-example-spinner').each(function (i, el) {
+      var btnHtml = '<button type="button" class="btn btn-secondary btn-spinner" data-toggle="button" aria-pressed="false" autocomplete="off">Toggle Spinner</button>'
+
+      $(el).before(btnHtml)
+      $(el).prev().on('click', function () {
+        $(el).toggleClass('active')
+      })
     })
 
     // Insert copy to clipboard button before .highlight
