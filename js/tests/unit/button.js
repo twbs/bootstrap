@@ -139,6 +139,29 @@ $(function () {
     assert.ok($btn2.find('input').prop('checked'), 'btn2 is checked')
   })
 
+  QUnit.test('should only toggle selectable inputs', function (assert) {
+    assert.expect(6)
+    var groupHTML = '<div class="btn-group" data-toggle="buttons">' +
+      '<label class="btn btn-primary active">' +
+      '<input type="hidden" name="option1" id="option1-default" value="false">' +
+      '<input type="checkbox" name="option1" id="option1" checked="true"> Option 1' +
+      '</label>' +
+      '</div>'
+    var $group = $(groupHTML).appendTo('#qunit-fixture')
+
+    var $btn = $group.children().eq(0)
+    var $hidden = $btn.find('input#option1-default')
+    var $cb = $btn.find('input#option1')
+
+    assert.ok($btn.hasClass('active'), 'btn has active class')
+    assert.ok($cb.prop('checked'), 'btn is checked')
+    assert.ok(!$hidden.prop('checked'), 'hidden is not checked')
+    $btn.trigger('click')
+    assert.ok(!$btn.hasClass('active'), 'btn does not have active class')
+    assert.ok(!$cb.prop('checked'), 'btn is not checked')
+    assert.ok(!$hidden.prop('checked'), 'hidden is not checked') // should not be changed
+  })
+
   QUnit.test('should not add aria-pressed on labels for radio/checkbox inputs in a data-toggle="buttons" group', function (assert) {
     assert.expect(2)
     var groupHTML = '<div class="btn-group" data-toggle="buttons">' +

@@ -1,5 +1,4 @@
 .toast {
-  display: none;
   max-width: $toast-max-width;
   overflow: hidden; // cheap rounded corners on nested items
   font-size: $toast-font-size; // knock it down to 14px
@@ -9,13 +8,23 @@
   border-radius: $toast-border-radius;
   box-shadow: $toast-box-shadow;
   backdrop-filter: blur(10px);
+  opacity: 0;
 
   + .toast {
     margin-top: $toast-padding-x;
   }
 
+  &.showing {
+    opacity: 1;
+  }
+
   &.show {
     display: block;
+    opacity: 1;
+  }
+
+  &.hide {
+    display: none;
   }
 }
 

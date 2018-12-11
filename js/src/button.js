@@ -29,7 +29,7 @@ const ClassName = {
 const Selector = {
   DATA_TOGGLE_CARROT : '[data-toggle^="button"]',
   DATA_TOGGLE        : '[data-toggle="buttons"]',
-  INPUT              : 'input',
+  INPUT              : 'input:not([type="hidden"])',
   ACTIVE             : '.active',
   BUTTON             : '.btn'
 }
