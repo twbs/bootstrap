@@ -15,6 +15,10 @@ js2svg:
   indent: 2
 
 plugins:
+  # remove this with IE 11 is no longer supported
+  - addAttributesToSVGElement:
+      attributes:
+        - focusable: false
   - cleanupAttrs: true
   - cleanupEnableBackground: true
   - cleanupIDs: true
@@ -41,8 +45,9 @@ plugins:
   - removeHiddenElems: true
   - removeMetadata: true
   - removeNonInheritableGroupAttrs: true
-  - removeTitle: true
-  - removeUnknownsAndDefaults: true
+  - removeTitle: false
+  - removeUnknownsAndDefaults:
+      keepRoleAttr: true
   - removeUnusedNS: true
   - removeUselessDefs: true
   - removeUselessStrokeAndFill: true
