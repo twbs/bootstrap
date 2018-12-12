@@ -555,6 +555,10 @@ $custom-checkbox-indicator-indeterminate-border-color: $custom-checkbox-indicato
 $custom-radio-indicator-border-radius:          50% !default;
 $custom-radio-indicator-icon-checked:           str-replace(url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='#{$custom-control-indicator-checked-color}'/%3e%3c/svg%3e"), "#", "%23") !default;
 
+$custom-switch-width:                           $custom-control-indicator-size * 1.75 !default;
+$custom-switch-indicator-border-radius:         $custom-control-indicator-size / 2 !default;
+$custom-switch-indicator-size:                  calc(#{$custom-control-indicator-size} - #{$custom-control-indicator-border-width * 4}) !default;
+
 $custom-select-padding-y:           $input-btn-padding-y !default;
 $custom-select-padding-x:           $input-btn-padding-x !default;
 $custom-select-height:              $input-height !default;
