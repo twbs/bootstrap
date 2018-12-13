@@ -17,6 +17,8 @@ const fs = require('fs')
 const path = require('path')
 const sh = require('shelljs')
 
+const pkg = require('../package.json')
+
 sh.config.fatal = true
 
 const configFile = path.join(__dirname, '../_config.yml')
@@ -34,7 +36,7 @@ const files = [
     configPropertyName: 'js_hash'
   },
   {
-    file: 'site/docs/4.1/assets/js/vendor/jquery-slim.min.js',
+    file: `site/docs/${pkg.version_short}/assets/js/vendor/jquery-slim.min.js`,
     configPropertyName: 'jquery_hash'
   },
   {
