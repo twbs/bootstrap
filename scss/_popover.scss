@@ -113,7 +113,7 @@
     left: 50%;
     display: block;
     width: $popover-arrow-width;
-    margin-left: ($popover-arrow-width / -2);
+    margin-left: -$popover-arrow-width / 2;
     content: "";
     border-bottom: $popover-border-width solid $popover-header-bg;
   }
