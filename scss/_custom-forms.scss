@@ -10,8 +10,8 @@
 .custom-control {
   position: relative;
   display: block;
-  min-height: ($font-size-base * $line-height-base);
-  padding-left: ($custom-control-gutter + $custom-control-indicator-size);
+  min-height: $font-size-base * $line-height-base;
+  padding-left: $custom-control-gutter + $custom-control-indicator-size;
 }
 
 .custom-control-inline {
@@ -74,7 +74,7 @@
   // Background-color and (when enabled) gradient
   &::before {
     position: absolute;
-    top: (($font-size-base * $line-height-base - $custom-control-indicator-size) / 2);
+    top: ($font-size-base * $line-height-base - $custom-control-indicator-size) / 2;
     left: -($custom-control-gutter + $custom-control-indicator-size);
     display: block;
     width: $custom-control-indicator-size;
@@ -89,7 +89,7 @@
   // Foreground (icon)
   &::after {
     position: absolute;
-    top: (($font-size-base * $line-height-base - $custom-control-indicator-size) / 2);
+    top: ($font-size-base * $line-height-base - $custom-control-indicator-size) / 2;
     left: -($custom-control-gutter + $custom-control-indicator-size);
     display: block;
     width: $custom-control-indicator-size;
@@ -387,7 +387,7 @@
   &::-webkit-slider-thumb {
     width: $custom-range-thumb-width;
     height: $custom-range-thumb-height;
-    margin-top: (($custom-range-track-height - $custom-range-thumb-height) / 2); // Webkit specific
+    margin-top: ($custom-range-track-height - $custom-range-thumb-height) / 2; // Webkit specific
     @include gradient-bg($custom-range-thumb-bg);
     border: $custom-range-thumb-border;
     @include border-radius($custom-range-thumb-border-radius);
@@ -462,7 +462,7 @@
     cursor: $custom-range-track-cursor;
     background-color: transparent;
     border-color: transparent;
-    border-width: ($custom-range-thumb-height * .5);
+    border-width: $custom-range-thumb-height / 2;
     @include box-shadow($custom-range-track-box-shadow);
   }
 
