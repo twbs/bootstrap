@@ -11,7 +11,7 @@
   position: relative;
   display: block;
   min-height: ($font-size-base * $line-height-base);
-  padding-left: $custom-control-gutter;
+  padding-left: ($custom-control-gutter + $custom-control-indicator-size);
 }
 
 .custom-control-inline {
@@ -75,7 +75,7 @@
   &::before {
     position: absolute;
     top: (($font-size-base * $line-height-base - $custom-control-indicator-size) / 2);
-    left: -$custom-control-gutter;
+    left: -($custom-control-gutter + $custom-control-indicator-size);
     display: block;
     width: $custom-control-indicator-size;
     height: $custom-control-indicator-size;
@@ -90,7 +90,7 @@
   &::after {
     position: absolute;
     top: (($font-size-base * $line-height-base - $custom-control-indicator-size) / 2);
-    left: -$custom-control-gutter;
+    left: -($custom-control-gutter + $custom-control-indicator-size);
     display: block;
     width: $custom-control-indicator-size;
     height: $custom-control-indicator-size;
@@ -150,6 +150,47 @@
   .custom-control-input:checked ~ .custom-control-label {
     &::after {
       background-image: $custom-radio-indicator-icon-checked;
+    }
+  }
+
+  .custom-control-input:disabled {
+    &:checked ~ .custom-control-label::before {
+      background-color: $custom-control-indicator-checked-disabled-bg;
+    }
+  }
+}
+
+
+// switches
+//
+// Tweak a few things for switches
+
+.custom-switch {
+  padding-left: $custom-switch-width + ($custom-control-gutter - $custom-control-indicator-size);
+
+  .custom-control-label {
+    &::before {
+      left: -($custom-switch-width + ($custom-control-gutter - $custom-control-indicator-size));
+      width: $custom-switch-width;
+      pointer-events: all;
+      border-radius: $custom-switch-indicator-border-radius;
+    }
+
+    &::after {
+      top: calc(#{(($font-size-base * $line-height-base - $custom-control-indicator-size) / 2)} + #{$custom-control-indicator-border-width * 2});
+      left: calc(#{-($custom-switch-width + ($custom-control-gutter - $custom-control-indicator-size))} + #{$custom-control-indicator-border-width * 2});
+      width: $custom-switch-indicator-size;
+      height: $custom-switch-indicator-size;
+      background-color: $custom-control-indicator-border-color;
+      border-radius: $custom-switch-indicator-border-radius;
+      @include transition(transform .15s ease-in-out, $custom-forms-transition);
+    }
+  }
+
+  .custom-control-input:checked ~ .custom-control-label {
+    &::after {
+      background-color: $custom-control-indicator-bg;
+      transform: translateX($custom-switch-width - $custom-control-indicator-size);
     }
   }
 
