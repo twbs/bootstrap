@@ -1,13 +1,13 @@
 ---
 layout: docs
 title: Stretched link
-description: Easily make an element which contains a stretched link clickable.
+description: Make any HTML element or Bootstrap component clickable by "stretching" a nested link via CSS.
 group: utilities
 ---
 
-Adding the `.stretched-link` class to a link will make the [containing block](https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block) of the `::after` pseudo element of the link clickable. In most cases, this means that an element with `position: relative;` which contains a link with the `.stretched-link` class is clickable.
+Add `.stretched-link` to a link to make it's [containing block](https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block) clickable via a `::after` pseudo element. In most cases, this means that an element with `position: relative;` that contains a link with the `.stretched-link` class is clickable.
 
-Cards are relative by default, so in this case you can safely add the `.stretched-link` class to a link in the card.
+Cards have `position: relative` by default in Bootstrap, so in this case you can safely add the `.stretched-link` class to a link in the card without any other HTML changes.
 
 {% capture example %}
 <div class="card" style="width: 18rem;">
@@ -21,7 +21,7 @@ Cards are relative by default, so in this case you can safely add the `.stretche
 {% endcapture %}
 {% include example.html content=example %}
 
-Media objects are not relative by default, we need to add the `.position-relative` here to prevent the link from stretching outside the media object.
+Media objects do not have `position: relative` by default, so we need to add the `.position-relative` here to prevent the link from stretching outside the media object.
 
 {% capture example %}
 <div class="media position-relative">
@@ -35,7 +35,7 @@ Media objects are not relative by default, we need to add the `.position-relativ
 {% endcapture %}
 {% include example.html content=example %}
 
-Columns are relative by default, so if we want to stretch the link over a row, we need to add the `.position-static` class to column and add the `.position-relative` to the row.
+Columns are `position: relative` by default, so clickable columns only require the `.stretched-link` class on a link. However, stretching a link over an entire `.row` requires `.position-static` on the column and `.position-relative` on the row.
 
 {% capture example %}
 <div class="row no-gutters bg-light position-relative">
