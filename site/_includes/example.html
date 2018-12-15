@@ -34,16 +34,10 @@
         {%- assign image_class = image_class[1] | replace: 'bd-placeholder-img-lg', '' | strip -%}
       {%- endif -%}
 
-      {%- assign image_alt = include.content
-        | replace: '<title>', '<title>✂️'
-        | replace: '</title>', '✂️</title>'
-        | split: '✂️' -%}
-      {%- assign image_alt = image_alt[1] -%}
-
       {%- for content_chunk in modified_content -%}
         {%- if content_chunk contains '<svg class="bd-placeholder-img' -%}
           {%- capture img_placeholder -%}
-            <img src="..." {% if image_class %}class="{{ image_class }}" {% endif %}alt="{{ image_alt }}">
+            <img src="..." {% if image_class %}class="{{ image_class }}" {% endif %}alt="...">
           {%- endcapture -%}
           {{- img_placeholder -}}
         {%- else -%}

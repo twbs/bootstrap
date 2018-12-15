@@ -32,13 +32,13 @@ Here's a carousel with slides only. Note the presence of the `.d-block` and `.w-
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-        {% include icons/placeholder.svg width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#555" background="#777" text="First slide" title="First slide" %}
+        {% include icons/placeholder.svg width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#555" background="#777" text="First slide" %}
     </div>
     <div class="carousel-item">
-      {% include icons/placeholder.svg width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#444" background="#666" text="Second slide" title="Second slide" %}
+      {% include icons/placeholder.svg width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#444" background="#666" text="Second slide" %}
     </div>
     <div class="carousel-item">
-      {% include icons/placeholder.svg width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#333" background="#555" text="Third slide" title="Third slide" %}
+      {% include icons/placeholder.svg width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#333" background="#555" text="Third slide" %}
     </div>
   </div>
 </div>
@@ -53,13 +53,13 @@ Adding in the previous and next controls:
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      {% include icons/placeholder.svg width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#555" background="#777" text="First slide" title="First slide" %}
+      {% include icons/placeholder.svg width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#555" background="#777" text="First slide" %}
     </div>
     <div class="carousel-item">
-      {% include icons/placeholder.svg width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#444" background="#666" text="Second slide" title="Second slide" %}
+      {% include icons/placeholder.svg width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#444" background="#666" text="Second slide" %}
     </div>
     <div class="carousel-item">
-      {% include icons/placeholder.svg width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#333" background="#555" text="Third slide" title="Third slide" %}
+      {% include icons/placeholder.svg width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#333" background="#555" text="Third slide" %}
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -87,13 +87,13 @@ You can also add the indicators to the carousel, alongside the controls, too.
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      {% include icons/placeholder.svg width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#555" background="#777" text="First slide" title="First slide" %}
+      {% include icons/placeholder.svg width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#555" background="#777" text="First slide" %}
     </div>
     <div class="carousel-item">
-      {% include icons/placeholder.svg width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#444" background="#666" text="Second slide" title="Second slide" %}
+      {% include icons/placeholder.svg width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#444" background="#666" text="Second slide" %}
     </div>
     <div class="carousel-item">
-      {% include icons/placeholder.svg width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#333" background="#555" text="Third slide" title="Third slide" %}
+      {% include icons/placeholder.svg width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#333" background="#555" text="Third slide" %}
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -121,21 +121,21 @@ Add captions to your slides easily with the `.carousel-caption` element within a
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        {% include icons/placeholder.svg width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#555" background="#777" text="First slide" title="First slide" %}
+        {% include icons/placeholder.svg width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#555" background="#777" text="First slide" %}
         <div class="carousel-caption d-none d-md-block">
           <h5>First slide label</h5>
           <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
         </div>
       </div>
       <div class="carousel-item">
-        {% include icons/placeholder.svg width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#444" background="#666" text="Second slide" title="Second slide" %}
+        {% include icons/placeholder.svg width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#444" background="#666" text="Second slide" %}
         <div class="carousel-caption d-none d-md-block">
           <h5>Second slide label</h5>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
       </div>
       <div class="carousel-item">
-        {% include icons/placeholder.svg width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#333" background="#555" text="Third slide" title="Third slide" %}
+        {% include icons/placeholder.svg width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#333" background="#555" text="Third slide" %}
         <div class="carousel-caption d-none d-md-block">
           <h5>Third slide label</h5>
           <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
@@ -171,13 +171,13 @@ Add `.carousel-fade` to your carousel to animate slides with a fade transition i
 <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      {% include icons/placeholder.svg width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#555" background="#777" text="First slide" title="First slide" %}
+      {% include icons/placeholder.svg width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#555" background="#777" text="First slide" %}
     </div>
     <div class="carousel-item">
-      {% include icons/placeholder.svg width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#444" background="#666" text="Second slide" title="Second slide" %}
+      {% include icons/placeholder.svg width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#444" background="#666" text="Second slide" %}
     </div>
     <div class="carousel-item">
-      {% include icons/placeholder.svg width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#333" background="#555" text="Third slide" title="Third slide" %}
+      {% include icons/placeholder.svg width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#333" background="#555" text="Third slide" %}
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
@@ -200,13 +200,13 @@ Add `data-interval=""` to a `.carousel-item` to change the amount of time to del
 <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active" data-interval="10000">
-      {% include icons/placeholder.svg width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#555" background="#777" text="First slide" title="First slide" %}
+      {% include icons/placeholder.svg width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#555" background="#777" text="First slide" %}
     </div>
     <div class="carousel-item" data-interval="2000">
-      {% include icons/placeholder.svg width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#444" background="#666" text="Second slide" title="Second slide" %}
+      {% include icons/placeholder.svg width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#444" background="#666" text="Second slide" %}
     </div>
     <div class="carousel-item">
-      {% include icons/placeholder.svg width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#333" background="#555" text="Third slide" title="Third slide" %}
+      {% include icons/placeholder.svg width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#333" background="#555" text="Third slide" %}
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">

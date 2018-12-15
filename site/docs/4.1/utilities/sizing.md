@@ -33,7 +33,7 @@ Width and height utilities are generated from the `$sizes` Sass map in `_variabl
 You can also use `max-width: 100%;` and `max-height: 100%;` utilities as needed.
 
 {% capture example %}
-{% include icons/placeholder.svg width="100%" height="100" class="mw-100" text="Max-width 100%" title="Max-width 100%" %}
+{% include icons/placeholder.svg width="100%" height="100" class="mw-100" text="Max-width 100%" %}
 {% endcapture %}
 {% include example.html content=example %}
 

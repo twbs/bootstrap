@@ -10,8 +10,8 @@
   backdrop-filter: blur(10px);
   opacity: 0;
 
-  + .toast {
-    margin-top: $toast-padding-x;
+  &:not(:last-child) {
+    margin-bottom: $toast-padding-x;
   }
 
   &.showing {
