@@ -363,10 +363,10 @@ $table-border-color:          $gray-300 !default;
 $table-head-bg:               $gray-200 !default;
 $table-head-color:            $gray-700 !default;
 
-$table-dark-bg:               $gray-900 !default;
+$table-dark-bg:               $gray-800 !default;
 $table-dark-accent-bg:        rgba($white, .05) !default;
 $table-dark-hover-bg:         rgba($white, .075) !default;
-$table-dark-border-color:     lighten($gray-900, 7.5%) !default;
+$table-dark-border-color:     lighten($table-dark-bg, 7.5%) !default;
 $table-dark-color:            $white !default;
 
 $table-striped-order:         odd !default;
