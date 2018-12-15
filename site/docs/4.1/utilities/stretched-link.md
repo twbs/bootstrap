@@ -21,7 +21,7 @@ Cards are relative by default, so in this case you can safely add the `.stretche
 {% endcapture %}
 {% include example.html content=example %}
 
-Media objects are not relative by default, we need to add the `.position-relative` here to prevent the link from stretching outside the media object.
+Media objects do not have `position: relative` by default, so we need to add the `.position-relative` here to prevent the link from stretching outside the media object.
 
 {% capture example %}
 <div class="media position-relative">
