@@ -5,7 +5,7 @@ description: Make any HTML element or Bootstrap component clickable by "stretchi
 group: utilities
 ---
 
-Adding the `.stretched-link` class to a link will make the [containing block](https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block) of the `::after` pseudo element of the link clickable. In most cases, this means that an element with `position: relative;` which contains a link with the `.stretched-link` class is clickable.
+Add `.stretched-link` to a link to make it's [containing block](https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block) clickable via a `::after` pseudo element. In most cases, this means that an element with `position: relative;` that contains a link with the `.stretched-link` class is clickable.
 
 Cards are relative by default, so in this case you can safely add the `.stretched-link` class to a link in the card.
 
