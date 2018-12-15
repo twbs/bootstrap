@@ -4,8 +4,8 @@
 
 @mixin make-container($gutter: $grid-gutter-width) {
   width: 100%;
-  padding-right: ($gutter / 2);
-  padding-left: ($gutter / 2);
+  padding-right: $gutter / 2;
+  padding-left: $gutter / 2;
   margin-right: auto;
   margin-left: auto;
 }
@@ -23,8 +23,8 @@
 @mixin make-row($gutter: $grid-gutter-width) {
   display: flex;
   flex-wrap: wrap;
-  margin-right: ($gutter / -2);
-  margin-left: ($gutter / -2);
+  margin-right: -$gutter / 2;
+  margin-left: -$gutter / 2;
 }
 
 @mixin make-col-ready($gutter: $grid-gutter-width) {
@@ -33,8 +33,8 @@
   // always setting `width: 100%;`. This works because we use `flex` values
   // later on to override this initial width.
   width: 100%;
-  padding-right: ($gutter / 2);
-  padding-left: ($gutter / 2);
+  padding-right: $gutter / 2;
+  padding-left: $gutter / 2;
 }
 
 @mixin make-col($size, $columns: $grid-columns) {
