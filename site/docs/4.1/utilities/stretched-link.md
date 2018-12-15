@@ -35,7 +35,7 @@ Media objects do not have `position: relative` by default, so we need to add the
 {% endcapture %}
 {% include example.html content=example %}
 
-Columns are relative by default, so if we want to stretch the link over a row, we need to add the `.position-static` class to column and add the `.position-relative` to the row.
+Columns are `position: relative` by default, so clickable columns only require the `.stretched-link` class on a link. However, stretching a link over an entire `.row` requires `.position-static` on the column and `.position-relative` on the row.
 
 {% capture example %}
 <div class="row no-gutters bg-light position-relative">
