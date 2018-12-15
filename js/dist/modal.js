@@ -285,6 +285,8 @@
 
       this._element.removeAttribute('aria-hidden');
 
+      this._element.setAttribute('aria-modal', true);
+
       this._element.scrollTop = 0;
 
       if (transition) {
@@ -363,6 +365,8 @@
       this._element.style.display = 'none';
 
       this._element.setAttribute('aria-hidden', true);
+
+      this._element.removeAttribute('aria-modal');
 
       this._isTransitioning = false;
 
