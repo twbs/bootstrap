@@ -563,7 +563,6 @@ $(function () {
       $tooltip.bootstrapTooltip('show')
     } catch (err) {
       passed = false
-      console.log(err)
     }
 
     assert.ok(passed, '.tooltip(\'show\') should not throw an error if element no longer is in dom')

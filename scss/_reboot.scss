@@ -14,9 +14,7 @@
 // 2. Change the default font family in all browsers.
 // 3. Correct the line height in all browsers.
 // 4. Prevent adjustments of font size after orientation changes in IE on Windows Phone and in iOS.
-// 5. Setting @viewport causes scrollbars to overlap content in IE11 and Edge, so
-//    we force a non-overlapping, non-auto-hiding scrollbar to counteract.
-// 6. Change the default tap highlight to be completely transparent in iOS.
+// 5. Change the default tap highlight to be completely transparent in iOS.
 
 *,
 *::before,
@@ -28,15 +26,7 @@ html {
   font-family: sans-serif; // 2
   line-height: 1.15; // 3
   -webkit-text-size-adjust: 100%; // 4
-  -ms-overflow-style: scrollbar; // 5
-  -webkit-tap-highlight-color: rgba($black, 0); // 6
-}
-
-// IE10+ doesn't honor `<meta name="viewport">` in some cases.
-@at-root {
-  @-ms-viewport {
-    width: device-width;
-  }
+  -webkit-tap-highlight-color: rgba($black, 0); // 5
 }
 
 // Shim for "new" HTML5 structural elements to display correctly (IE10, older browsers)
@@ -161,7 +151,7 @@ blockquote {
 
 b,
 strong {
-  font-weight: bolder; // Add the correct font weight in Chrome, Edge, and Safari
+  font-weight: $font-weight-bolder; // Add the correct font weight in Chrome, Edge, and Safari
 }
 
 small {
@@ -240,9 +230,6 @@ pre {
   margin-bottom: 1rem;
   // Don't allow content to break outside
   overflow: auto;
-  // We have @viewport set which causes scrollbars to overlap content in IE11 and Edge, so
-  // we force a non-overlapping, non-auto-hiding scrollbar to counteract.
-  -ms-overflow-style: scrollbar;
 }
 
 

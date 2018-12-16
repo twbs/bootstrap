@@ -109,7 +109,7 @@ Here are the big ticket items you'll want to be aware of when moving from v3 to 
 
 - **Dropped panels, thumbnails, and wells** for a new all-encompassing component, [cards]({{ site.baseurl }}/docs/{{ site.docs_version }}/components/card/).
 - **Dropped the Glyphicons icon font.** If you need icons, some options are:
-  - the upstream version of [Glyphicons](https://glyphicons.com/)
+  - the upstream version of [Glyphicons](https://www.glyphicons.com/)
   - [Octicons](https://octicons.github.com/)
   - [Font Awesome](https://fontawesome.com/)
   - See the [Extend page]({{ site.baseurl }}/docs/{{ site.docs_version }}/extend/icons/) for a list of alternatives. Have additional suggestions? Please open an issue or PR.
