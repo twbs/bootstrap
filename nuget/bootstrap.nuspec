@@ -24,5 +24,8 @@
     <file src="dist\css\*.*" target="content\Content" />
     <file src="dist\fonts\*.*" target="content\fonts" />
     <file src="dist\js\bootstrap*.js" target="content\Scripts" />
+    <file src="dist\css\*.*" target="contentFiles\Content" />
+    <file src="dist\fonts\*.*" target="contentFiles\fonts" />
+    <file src="dist\js\bootstrap*.js" target="contentFiles\Scripts" />
   </files>
 </package>
