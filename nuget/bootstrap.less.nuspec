@@ -24,5 +24,8 @@
     <file src="less\**\*.less" target="content\Content\bootstrap" />
     <file src="fonts\*.*" target="content\Content\fonts" />
     <file src="dist\js\bootstrap*.js" target="content\Scripts" />
+    <file src="less\**\*.less" target="contentFiles\Content\bootstrap" />
+    <file src="fonts\*.*" target="contentFiles\Content\fonts" />
+    <file src="dist\js\bootstrap*.js" target="contentFiles\Scripts" />
   </files>
 </package>
