@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap v4.1.3 (https://getbootstrap.com/)
+  * Bootstrap v4.2.0 (https://getbootstrap.com/)
   * Copyright 2011-2018 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
   */
@@ -69,7 +69,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.1.3): util.js
+   * Bootstrap (v4.2.0): util.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -225,7 +225,7 @@
    */
 
   var NAME = 'alert';
-  var VERSION = '4.1.3';
+  var VERSION = '4.2.0';
   var DATA_KEY = 'bs.alert';
   var EVENT_KEY = "." + DATA_KEY;
   var DATA_API_KEY = '.data-api';
@@ -390,7 +390,7 @@
    */
 
   var NAME$1 = 'button';
-  var VERSION$1 = '4.1.3';
+  var VERSION$1 = '4.2.0';
   var DATA_KEY$1 = 'bs.button';
   var EVENT_KEY$1 = "." + DATA_KEY$1;
   var DATA_API_KEY$1 = '.data-api';
@@ -544,7 +544,7 @@
    */
 
   var NAME$2 = 'carousel';
-  var VERSION$2 = '4.1.3';
+  var VERSION$2 = '4.2.0';
   var DATA_KEY$2 = 'bs.carousel';
   var EVENT_KEY$2 = "." + DATA_KEY$2;
   var DATA_API_KEY$2 = '.data-api';
@@ -1142,7 +1142,7 @@
    */
 
   var NAME$3 = 'collapse';
-  var VERSION$3 = '4.1.3';
+  var VERSION$3 = '4.2.0';
   var DATA_KEY$3 = 'bs.collapse';
   var EVENT_KEY$3 = "." + DATA_KEY$3;
   var DATA_API_KEY$3 = '.data-api';
@@ -4072,7 +4072,7 @@
    */
 
   var NAME$4 = 'dropdown';
-  var VERSION$4 = '4.1.3';
+  var VERSION$4 = '4.2.0';
   var DATA_KEY$4 = 'bs.dropdown';
   var EVENT_KEY$4 = "." + DATA_KEY$4;
   var DATA_API_KEY$4 = '.data-api';
@@ -4594,7 +4594,7 @@
    */
 
   var NAME$5 = 'modal';
-  var VERSION$5 = '4.1.3';
+  var VERSION$5 = '4.2.0';
   var DATA_KEY$5 = 'bs.modal';
   var EVENT_KEY$5 = "." + DATA_KEY$5;
   var DATA_API_KEY$5 = '.data-api';
@@ -5170,7 +5170,7 @@
    */
 
   var NAME$6 = 'tooltip';
-  var VERSION$6 = '4.1.3';
+  var VERSION$6 = '4.2.0';
   var DATA_KEY$6 = 'bs.tooltip';
   var EVENT_KEY$6 = "." + DATA_KEY$6;
   var JQUERY_NO_CONFLICT$6 = $.fn[NAME$6];
@@ -5846,7 +5846,7 @@
    */
 
   var NAME$7 = 'popover';
-  var VERSION$7 = '4.1.3';
+  var VERSION$7 = '4.2.0';
   var DATA_KEY$7 = 'bs.popover';
   var EVENT_KEY$7 = "." + DATA_KEY$7;
   var JQUERY_NO_CONFLICT$7 = $.fn[NAME$7];
@@ -6033,7 +6033,7 @@
    */
 
   var NAME$8 = 'scrollspy';
-  var VERSION$8 = '4.1.3';
+  var VERSION$8 = '4.2.0';
   var DATA_KEY$8 = 'bs.scrollspy';
   var EVENT_KEY$8 = "." + DATA_KEY$8;
   var DATA_API_KEY$6 = '.data-api';
@@ -6340,7 +6340,7 @@
    */
 
   var NAME$9 = 'tab';
-  var VERSION$9 = '4.1.3';
+  var VERSION$9 = '4.2.0';
   var DATA_KEY$9 = 'bs.tab';
   var EVENT_KEY$9 = "." + DATA_KEY$9;
   var DATA_API_KEY$7 = '.data-api';
@@ -6572,7 +6572,7 @@
    */
 
   var NAME$a = 'toast';
-  var VERSION$a = '4.1.3';
+  var VERSION$a = '4.2.0';
   var DATA_KEY$a = 'bs.toast';
   var EVENT_KEY$a = "." + DATA_KEY$a;
   var JQUERY_NO_CONFLICT$a = $.fn[NAME$a];
@@ -6777,7 +6777,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.1.3): index.js
+   * Bootstrap (v4.2.0): index.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
