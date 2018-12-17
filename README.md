@@ -183,13 +183,6 @@ See [the Releases section of our GitHub project](https://github.com/twbs/bootstr
 Thanks to [BrowserStack](https://www.browserstack.com/) for providing the infrastructure that allows us to test in real browsers!
 
 
-## Contributors
-
-This project exists thanks to all the people who contribute.
-
-[![Contributors](https://opencollective.com/bootstrap/contributors.svg?width=890&button=false)](https://github.com/twbs/bootstrap/graphs/contributors)
-
-
 ## Backers
 
 Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com/bootstrap#backer)]
