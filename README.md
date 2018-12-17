@@ -183,40 +183,36 @@ See [the Releases section of our GitHub project](https://github.com/twbs/bootstr
 Thanks to [BrowserStack](https://www.browserstack.com/) for providing the infrastructure that allows us to test in real browsers!
 
 
+## Copyright and license
+
+Code and documentation copyright 2011-2018 the [Bootstrap Authors](https://github.com/twbs/bootstrap/graphs/contributors) and [Twitter, Inc.](https://twitter.com) Code released under the [MIT License](https://github.com/twbs/bootstrap/blob/master/LICENSE). Docs released under [Creative Commons](https://github.com/twbs/bootstrap/blob/master/docs/LICENSE).
+
+
 ## Contributors
 
 This project exists thanks to all the people who contribute.
 
-<a href="https://github.com/twbs/bootstrap/graphs/contributors">
-  <img src="https://opencollective.com/bootstrap/contributors.svg?width=890&button=false">
-</a>
+[![Contributors](https://opencollective.com/bootstrap/contributors.svg?width=890&button=false)](https://github.com/twbs/bootstrap/graphs/contributors)
 
 
 ## Backers
 
 Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com/bootstrap#backer)]
 
-<a href="https://opencollective.com/bootstrap#backers">
-  <img src="https://opencollective.com/bootstrap/backers.svg?width=890">
-</a>
+[![Bakers](https://opencollective.com/bootstrap/backers.svg?width=890)](https://opencollective.com/bootstrap#backers)
 
 
 ## Sponsors
 
 Support this project by becoming a sponsor. Your logo will show up here with a link to your website. [[Become a sponsor](https://opencollective.com/bootstrap#sponsor)]
 
-<a href="https://opencollective.com/bootstrap/sponsor/0/website"><img src="https://opencollective.com/bootstrap/sponsor/0/avatar.svg"></a>
-<a href="https://opencollective.com/bootstrap/sponsor/1/website"><img src="https://opencollective.com/bootstrap/sponsor/1/avatar.svg"></a>
-<a href="https://opencollective.com/bootstrap/sponsor/2/website"><img src="https://opencollective.com/bootstrap/sponsor/2/avatar.svg"></a>
-<a href="https://opencollective.com/bootstrap/sponsor/3/website"><img src="https://opencollective.com/bootstrap/sponsor/3/avatar.svg"></a>
-<a href="https://opencollective.com/bootstrap/sponsor/4/website"><img src="https://opencollective.com/bootstrap/sponsor/4/avatar.svg"></a>
-<a href="https://opencollective.com/bootstrap/sponsor/5/website"><img src="https://opencollective.com/bootstrap/sponsor/5/avatar.svg"></a>
-<a href="https://opencollective.com/bootstrap/sponsor/6/website"><img src="https://opencollective.com/bootstrap/sponsor/6/avatar.svg"></a>
-<a href="https://opencollective.com/bootstrap/sponsor/7/website"><img src="https://opencollective.com/bootstrap/sponsor/7/avatar.svg"></a>
-<a href="https://opencollective.com/bootstrap/sponsor/8/website"><img src="https://opencollective.com/bootstrap/sponsor/8/avatar.svg"></a>
-<a href="https://opencollective.com/bootstrap/sponsor/9/website"><img src="https://opencollective.com/bootstrap/sponsor/9/avatar.svg"></a>
-
-
-## Copyright and license
-
-Code and documentation copyright 2011-2018 the [Bootstrap Authors](https://github.com/twbs/bootstrap/graphs/contributors) and [Twitter, Inc.](https://twitter.com) Code released under the [MIT License](https://github.com/twbs/bootstrap/blob/master/LICENSE). Docs released under [Creative Commons](https://github.com/twbs/bootstrap/blob/master/docs/LICENSE).
+[![](https://opencollective.com/bootstrap/sponsor/0/avatar.svg)](https://opencollective.com/bootstrap/sponsor/0/website)
+[![](https://opencollective.com/bootstrap/sponsor/1/avatar.svg)](https://opencollective.com/bootstrap/sponsor/1/website)
+[![](https://opencollective.com/bootstrap/sponsor/2/avatar.svg)](https://opencollective.com/bootstrap/sponsor/2/website)
+[![](https://opencollective.com/bootstrap/sponsor/3/avatar.svg)](https://opencollective.com/bootstrap/sponsor/3/website)
+[![](https://opencollective.com/bootstrap/sponsor/4/avatar.svg)](https://opencollective.com/bootstrap/sponsor/4/website)
+[![](https://opencollective.com/bootstrap/sponsor/5/avatar.svg)](https://opencollective.com/bootstrap/sponsor/5/website)
+[![](https://opencollective.com/bootstrap/sponsor/6/avatar.svg)](https://opencollective.com/bootstrap/sponsor/6/website)
+[![](https://opencollective.com/bootstrap/sponsor/7/avatar.svg)](https://opencollective.com/bootstrap/sponsor/7/website)
+[![](https://opencollective.com/bootstrap/sponsor/8/avatar.svg)](https://opencollective.com/bootstrap/sponsor/8/website)
+[![](https://opencollective.com/bootstrap/sponsor/9/avatar.svg)](https://opencollective.com/bootstrap/sponsor/9/website)
