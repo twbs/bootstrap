@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap carousel.js v4.1.3 (https://getbootstrap.com/)
+  * Bootstrap carousel.js v4.2.0 (https://getbootstrap.com/)
   * Copyright 2011-2018 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
   */
@@ -69,7 +69,7 @@
    */
 
   var NAME = 'carousel';
-  var VERSION = '4.1.3';
+  var VERSION = '4.2.0';
   var DATA_KEY = 'bs.carousel';
   var EVENT_KEY = "." + DATA_KEY;
   var DATA_API_KEY = '.data-api';

@@ -3,8 +3,8 @@ layout: docs
 title: About
 description: Learn more about the team maintaining Bootstrap, how and why the project started, and how to get involved.
 redirect_from:
-  - "/docs/4.1/about/"
-  - "/docs/4.1/history/"
+  - "/docs/4.2/about/"
+  - "/docs/4.2/history/"
 group: about
 ---
 
