@@ -318,6 +318,7 @@ textarea.form-control {
     }
     .form-check-input {
       position: relative;
+      flex-shrink: 0;
       margin-top: 0;
       margin-right: $form-check-input-margin-x;
       margin-left: 0;
