@@ -111,6 +111,17 @@
 }
 
 
+// Zebra-striping
+//
+// Default zebra-stripe styles (alternating gray and transparent backgrounds)
+
+.list-group-striped {
+  .list-group-item:nth-of-type(#{$list-group-striped-order}) {
+    background-color: $list-group-striped-bg;
+  }
+}
+
+
 // Contextual variants
 //
 // Add modifier classes to change text and background color on individual items.

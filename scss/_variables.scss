@@ -985,6 +985,8 @@ $list-group-action-hover-color:     $list-group-action-color !default;
 $list-group-action-active-color:    $body-color !default;
 $list-group-action-active-bg:       $gray-200 !default;
 
+$list-group-striped-order:          odd !default;
+$list-group-striped-bg:             darken($list-group-bg, 5%) !default;
 
 // Image thumbnails
 
