@@ -221,6 +221,46 @@ Add `data-interval=""` to a `.carousel-item` to change the amount of time to del
 {% endcapture %}
 {% include example.html content=example %}
 
+### Dark carousel
+
+Have lighter background content for your carousels? Swap the white text, slide controls, and indicators for dark gray ones by adding `.carousel-dark`.
+
+{% capture example %}
+<div id="carouselExampleDark" class="carousel slide carousel-dark" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      {% include icons/placeholder.svg width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#999" background="#fff" text="First slide" %}
+      <div class="carousel-caption d-none d-md-block">
+        <h5>First slide label</h5>
+        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      {% include icons/placeholder.svg width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#888" background="#f5f5f5" text="Second slide" %}
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Second slide label</h5>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      {% include icons/placeholder.svg width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#777" background="#eee" text="Third slide" %}
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Third slide label</h5>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+      </div>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleDark" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleDark" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+{% endcapture %}
+{% include example.html content=example %}
 
 ## Usage
 

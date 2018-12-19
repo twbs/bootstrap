@@ -208,6 +208,16 @@
   .carousel-control-next {
     color: $carousel-dark-control-color;
   }
-  .carousel-indicators li { background-color: $carousel-dark-indicator-active-bg; }
-  .carousel-caption { color: $carousel-dark-caption-color; }
+  .carousel-control-prev-icon {
+    background-image: $carousel-dark-control-prev-icon-bg;
+  }
+  .carousel-control-next-icon {
+    background-image: $carousel-dark-control-next-icon-bg;
+  }
+  .carousel-indicators li {
+    background-color: $carousel-dark-indicator-active-bg;
+  }
+  .carousel-caption {
+    color: $carousel-dark-caption-color;
+  }
 }
