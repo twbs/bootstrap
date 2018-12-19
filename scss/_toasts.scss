@@ -5,10 +5,10 @@
   background-color: $toast-background-color;
   background-clip: padding-box;
   border: $toast-border-width solid $toast-border-color;
-  border-radius: $toast-border-radius;
   box-shadow: $toast-box-shadow;
   backdrop-filter: blur(10px);
   opacity: 0;
+  @include border-radius($toast-border-radius);
 
   &:not(:last-child) {
     margin-bottom: $toast-padding-x;
