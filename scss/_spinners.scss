@@ -10,8 +10,6 @@
   display: inline-block;
   width: $spinner-width;
   height: $spinner-height;
-  overflow: hidden;
-  text-indent: -999em;
   vertical-align: text-bottom;
   border: $spinner-border-width solid currentColor;
   border-right-color: transparent;
@@ -42,8 +40,6 @@
   display: inline-block;
   width: $spinner-width;
   height: $spinner-height;
-  overflow: hidden;
-  text-indent: -999em;
   vertical-align: text-bottom;
   background-color: currentColor;
   border-radius: 50%;

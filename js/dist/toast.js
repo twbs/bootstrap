@@ -83,7 +83,8 @@
   var ClassName = {
     FADE: 'fade',
     HIDE: 'hide',
-    SHOW: 'show'
+    SHOW: 'show',
+    SHOWING: 'showing'
   };
   var DefaultType = {
     animation: 'boolean',
@@ -130,6 +131,10 @@
       }
 
       var complete = function complete() {
+        _this._element.classList.remove(ClassName.SHOWING);
+
+        _this._element.classList.add(ClassName.SHOW);
+
         $(_this._element).trigger(Event.SHOWN);
 
         if (_this._config.autohide) {
@@ -137,7 +142,9 @@
         }
       };
 
-      this._element.classList.add(ClassName.SHOW);
+      this._element.classList.remove(ClassName.HIDE);
+
+      this._element.classList.add(ClassName.SHOWING);
 
       if (this._config.animation) {
         var transitionDuration = Util.getTransitionDurationFromElement(this._element);
@@ -198,6 +205,8 @@
       var _this4 = this;
 
       var complete = function complete() {
+        _this4._element.classList.add(ClassName.HIDE);
+
         $(_this4._element).trigger(Event.HIDDEN);
       };
 

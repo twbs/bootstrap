@@ -29,9 +29,10 @@ const Event = {
 }
 
 const ClassName = {
-  FADE : 'fade',
-  HIDE : 'hide',
-  SHOW : 'show'
+  FADE    : 'fade',
+  HIDE    : 'hide',
+  SHOW    : 'show',
+  SHOWING : 'showing'
 }
 
 const DefaultType = {
@@ -84,6 +85,9 @@ class Toast {
     }
 
     const complete = () => {
+      this._element.classList.remove(ClassName.SHOWING)
+      this._element.classList.add(ClassName.SHOW)
+
       $(this._element).trigger(Event.SHOWN)
 
       if (this._config.autohide) {
@@ -91,7 +95,8 @@ class Toast {
       }
     }
 
-    this._element.classList.add(ClassName.SHOW)
+    this._element.classList.remove(ClassName.HIDE)
+    this._element.classList.add(ClassName.SHOWING)
     if (this._config.animation) {
       const transitionDuration = Util.getTransitionDurationFromElement(this._element)
 
@@ -162,11 +167,11 @@ class Toast {
 
   _close() {
     const complete = () => {
+      this._element.classList.add(ClassName.HIDE)
       $(this._element).trigger(Event.HIDDEN)
     }
 
     this._element.classList.remove(ClassName.SHOW)
-
     if (this._config.animation) {
       const transitionDuration = Util.getTransitionDurationFromElement(this._element)
 
