@@ -299,8 +299,8 @@
       if (this._popper !== null) {
         this._popper.scheduleUpdate();
       }
-    } // Private
-    ;
+    }; // Private
+
 
     _proto._addEventListeners = function _addEventListeners() {
       var _this = this;
@@ -391,8 +391,8 @@
       }
 
       return popperConfig;
-    } // Static
-    ;
+    }; // Static
+
 
     Dropdown._jQueryInterface = function _jQueryInterface(config) {
       return this.each(function () {
@@ -476,8 +476,8 @@
       }
 
       return parent || element.parentNode;
-    } // eslint-disable-next-line complexity
-    ;
+    }; // eslint-disable-next-line complexity
+
 
     Dropdown._dataApiKeydownHandler = function _dataApiKeydownHandler(event) {
       // If not input/textarea:

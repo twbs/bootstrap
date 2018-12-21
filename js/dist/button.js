@@ -120,8 +120,8 @@
     _proto.dispose = function dispose() {
       $.removeData(this._element, DATA_KEY);
       this._element = null;
-    } // Static
-    ;
+    }; // Static
+
 
     Button._jQueryInterface = function _jQueryInterface(config) {
       return this.each(function () {

@@ -405,8 +405,8 @@
       if (this._popper !== null) {
         this._popper.scheduleUpdate();
       }
-    } // Protected
-    ;
+    }; // Protected
+
 
     _proto.isWithContent = function isWithContent() {
       return Boolean(this.getTitle());
@@ -452,8 +452,8 @@
       }
 
       return title;
-    } // Private
-    ;
+    }; // Private
+
 
     _proto._getContainer = function _getContainer() {
       if (this.config.container === false) {
@@ -657,8 +657,8 @@
       this.hide();
       this.show();
       this.config.animation = initConfigAnimation;
-    } // Static
-    ;
+    }; // Static
+
 
     Tooltip._jQueryInterface = function _jQueryInterface(config) {
       return this.each(function () {

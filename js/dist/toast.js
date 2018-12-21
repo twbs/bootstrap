@@ -184,8 +184,8 @@
       $.removeData(this._element, DATA_KEY);
       this._element = null;
       this._config = null;
-    } // Private
-    ;
+    }; // Private
+
 
     _proto._getConfig = function _getConfig(config) {
       config = _objectSpread({}, Default, $(this._element).data(), typeof config === 'object' && config ? config : {});
@@ -218,8 +218,8 @@
       } else {
         complete();
       }
-    } // Static
-    ;
+    }; // Static
+
 
     Toast._jQueryInterface = function _jQueryInterface(config) {
       return this.each(function () {

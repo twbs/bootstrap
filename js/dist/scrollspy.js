@@ -192,8 +192,8 @@
       this._targets = null;
       this._activeTarget = null;
       this._scrollHeight = null;
-    } // Private
-    ;
+    }; // Private
+
 
     _proto._getConfig = function _getConfig(config) {
       config = _objectSpread({}, Default, typeof config === 'object' && config ? config : {});
@@ -300,8 +300,8 @@
       }).forEach(function (node) {
         return node.classList.remove(ClassName.ACTIVE);
       });
-    } // Static
-    ;
+    }; // Static
+
 
     ScrollSpy._jQueryInterface = function _jQueryInterface(config) {
       return this.each(function () {

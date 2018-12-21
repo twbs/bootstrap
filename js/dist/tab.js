@@ -143,8 +143,8 @@
     _proto.dispose = function dispose() {
       $.removeData(this._element, DATA_KEY);
       this._element = null;
-    } // Private
-    ;
+    }; // Private
+
 
     _proto._activate = function _activate(element, container, callback) {
       var _this2 = this;
@@ -202,8 +202,8 @@
       if (callback) {
         callback();
       }
-    } // Static
-    ;
+    }; // Static
+
 
     Tab._jQueryInterface = function _jQueryInterface(config) {
       return this.each(function () {
