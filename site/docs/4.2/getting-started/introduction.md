@@ -5,8 +5,8 @@ description: Get started with Bootstrap, the world's most popular framework for 
 group: getting-started
 redirect_from:
   - /docs/
-  - /docs/4.1/
-  - /docs/4.1/getting-started/
+  - /docs/4.2/
+  - /docs/4.2/getting-started/
   - /docs/getting-started/
 toc: true
 ---
@@ -65,7 +65,7 @@ Be sure to have your pages set up with the latest design and development standar
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ site.cdn.css }}" integrity="{{ site.cdn.css_hash }}" crossorigin="anonymous">
@@ -106,7 +106,7 @@ Bootstrap requires the use of the HTML5 doctype. Without it, you'll see some fun
 Bootstrap is developed *mobile first*, a strategy in which we optimize code for mobile devices first and then scale up components as necessary using CSS media queries. To ensure proper rendering and touch zooming for all devices, **add the responsive viewport meta tag** to your `<head>`.
 
 {% highlight html %}
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 {% endhighlight %}
 
 You can see an example of this in action in the [starter template](#starter-template).
