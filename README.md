@@ -128,6 +128,7 @@ Learn more about using Jekyll by reading its [documentation](https://jekyllrb.co
 
 - For v2.3.2: <https://getbootstrap.com/2.3.2/>
 - For v3.3.x: <https://getbootstrap.com/docs/3.3/>
+- For v3.4.0: <https://getbootstrap.com/docs/3.4/>
 - For v4.0.x: <https://getbootstrap.com/docs/4.0/>
 - For v4.1.x: <https://getbootstrap.com/docs/4.1/>
 
