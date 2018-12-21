@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.1.3): modal.js
+ * Bootstrap (v4.2.0): modal.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -15,7 +15,7 @@ import Util from './util'
  */
 
 const NAME               = 'modal'
-const VERSION            = '4.1.3'
+const VERSION            = '4.2.0'
 const DATA_KEY           = 'bs.modal'
 const EVENT_KEY          = `.${DATA_KEY}`
 const DATA_API_KEY       = '.data-api'
