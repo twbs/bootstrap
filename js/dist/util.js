@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap util.js v4.2.0 (https://getbootstrap.com/)
+  * Bootstrap util.js v4.2.1 (https://getbootstrap.com/)
   * Copyright 2011-2018 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
   */
@@ -13,7 +13,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.2.0): util.js
+   * Bootstrap (v4.2.1): util.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
