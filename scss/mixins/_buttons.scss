@@ -9,7 +9,8 @@
   border-color: $border;
   @include box-shadow($btn-box-shadow);
 
-  @include hover {
+  // Hover and focus base styles are shared
+  @include hover-focus {
     color: color-yiq($hover-background);
     @include gradient-bg($hover-background);
     border-color: $hover-border;
