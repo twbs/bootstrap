@@ -33,8 +33,8 @@ social_image_path:  /docs/4.2/assets/brand/bootstrap-social.png
 social_logo_path:   /docs/4.2/assets/brand/bootstrap-social-logo.png
 
 # Custom variables
-current_version:      4.2.0
-current_ruby_version: 4.2.0
+current_version:      4.2.1
+current_ruby_version: 4.2.1
 docs_version:         4.2
 repo:                 "https://github.com/twbs/bootstrap"
 slack:                "https://bootstrap-slack.herokuapp.com"
@@ -43,17 +43,17 @@ expo:                 "https://expo.getbootstrap.com"
 themes:               "https://themes.getbootstrap.com"
 
 download:
-  source:           "https://github.com/twbs/bootstrap/archive/v4.2.0.zip"
-  dist:             "https://github.com/twbs/bootstrap/releases/download/v4.2.0/bootstrap-4.2.0-dist.zip"
+  source:           "https://github.com/twbs/bootstrap/archive/v4.2.1.zip"
+  dist:             "https://github.com/twbs/bootstrap/releases/download/v4.2.1/bootstrap-4.2.1-dist.zip"
 
 cdn:
   # See https://www.srihash.org for info on how to generate the hashes
-  css:              "https://stackpath.bootstrapcdn.com/bootstrap/4.2.0/css/bootstrap.min.css"
-  css_hash:         "sha384-SlJL6LojdN8eNCOoIfK7KJ7SgRFeYBDu8tB1uxELbSAv+RVgD12pZmOcxTUTPXIg"
-  js:               "https://stackpath.bootstrapcdn.com/bootstrap/4.2.0/js/bootstrap.min.js"
-  js_hash:          "sha384-1AHwFvFDF+iQPDBasw2LKa8PdkI8aYv2ad2o197DHC8qr4LuwSe44JY1THkowrqg"
-  js_bundle:        "https://stackpath.bootstrapcdn.com/bootstrap/4.2.0/js/bootstrap.bundle.min.js"
-  js_bundle_hash:   "sha384-DzxYXig+LjvgMPAmuesvYZSTCE+bYqgfCLpnqxglyMvZGL5gNcalAK2mVo9klgWS"
+  css:              "https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+  css_hash:         "sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+  js:               "https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+  js_hash:          "sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+  js_bundle:        "https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.bundle.min.js"
+  js_bundle_hash:   "sha384-zDnhMsjVZfS3hiP7oCBRmfjkQC4fzxVxFhBx8Hkz2aZX8gEvA/jsP3eXRCvzTofP"
   jquery:           "https://code.jquery.com/jquery-3.3.1.slim.min.js"
   jquery_hash:      "sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
   popper:           "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
