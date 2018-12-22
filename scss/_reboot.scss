@@ -297,7 +297,8 @@ label {
 //
 // Details at https://github.com/twbs/bootstrap/issues/24093
 button {
-  @include border-radius(0);
+  // stylelint-disable-next-line property-blacklist
+  border-radius: 0;
 }
 
 // Work around a Firefox/IE bug where the transparent `button` background
