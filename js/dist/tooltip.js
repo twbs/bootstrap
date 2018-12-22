@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap tooltip.js v4.2.0 (https://getbootstrap.com/)
+  * Bootstrap tooltip.js v4.2.1 (https://getbootstrap.com/)
   * Copyright 2011-2018 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
   */
@@ -70,7 +70,7 @@
    */
 
   var NAME = 'tooltip';
-  var VERSION = '4.2.0';
+  var VERSION = '4.2.1';
   var DATA_KEY = 'bs.tooltip';
   var EVENT_KEY = "." + DATA_KEY;
   var JQUERY_NO_CONFLICT = $.fn[NAME];

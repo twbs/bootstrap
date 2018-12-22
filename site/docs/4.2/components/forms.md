@@ -992,7 +992,13 @@ We recommend using client-side validation, but in case you require server-side v
 
 ### Supported elements
 
-Our example forms show native textual `<input>`s above, but form validation styles are also available for `<textarea>`s and custom form controls.
+Validation styles are available for the following form controls and components:
+
+- `<input>`s and `<textarea>`s with `.form-control` (including up to one `.form-control` in input groups)
+- `<select>`s with `.form-select` or `.custom-select`
+- `.form-check`s
+- `.custom-checkbox`s and `.custom-radio`s
+- `.custom-file`
 
 {% capture example %}
 <form class="was-validated">
