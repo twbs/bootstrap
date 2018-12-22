@@ -66,6 +66,15 @@ For longer content, you can add a `.text-truncate` class to truncate the text wi
 {% endcapture %}
 {% include example.html content=example %}
 
+## Word break
+
+Prevent long strings of text from breaking your components' layout by using `.text-break` to set `word-break: break-word`.
+
+{% capture example %}
+<p class="text-break">mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm</p>
+{% endcapture %}
+{% include example.html content=example %}
+
 ## Text transform
 
 Transform text in components with text capitalization classes.
