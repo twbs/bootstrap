@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap dropdown.js v4.1.3 (https://getbootstrap.com/)
+  * Bootstrap dropdown.js v4.2.1 (https://getbootstrap.com/)
   * Copyright 2011-2018 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
   */
@@ -70,7 +70,7 @@
    */
 
   var NAME = 'dropdown';
-  var VERSION = '4.1.3';
+  var VERSION = '4.2.1';
   var DATA_KEY = 'bs.dropdown';
   var EVENT_KEY = "." + DATA_KEY;
   var DATA_API_KEY = '.data-api';
@@ -502,7 +502,7 @@
 
       var isActive = $(parent).hasClass(ClassName.SHOW);
 
-      if (!isActive && (event.which !== ESCAPE_KEYCODE || event.which !== SPACE_KEYCODE) || isActive && (event.which === ESCAPE_KEYCODE || event.which === SPACE_KEYCODE)) {
+      if (!isActive || isActive && (event.which === ESCAPE_KEYCODE || event.which === SPACE_KEYCODE)) {
         if (event.which === ESCAPE_KEYCODE) {
           var toggle = parent.querySelector(Selector.DATA_TOGGLE);
           $(toggle).trigger('focus');

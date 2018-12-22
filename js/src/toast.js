@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.1.3): toast.js
+ * Bootstrap (v4.2.1): toast.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -15,7 +15,7 @@ import Util from './util'
  */
 
 const NAME               = 'toast'
-const VERSION            = '4.1.3'
+const VERSION            = '4.2.1'
 const DATA_KEY           = 'bs.toast'
 const EVENT_KEY          = `.${DATA_KEY}`
 const JQUERY_NO_CONFLICT = $.fn[NAME]
@@ -29,9 +29,10 @@ const Event = {
 }
 
 const ClassName = {
-  FADE : 'fade',
-  HIDE : 'hide',
-  SHOW : 'show'
+  FADE    : 'fade',
+  HIDE    : 'hide',
+  SHOW    : 'show',
+  SHOWING : 'showing'
 }
 
 const DefaultType = {
@@ -84,6 +85,9 @@ class Toast {
     }
 
     const complete = () => {
+      this._element.classList.remove(ClassName.SHOWING)
+      this._element.classList.add(ClassName.SHOW)
+
       $(this._element).trigger(Event.SHOWN)
 
       if (this._config.autohide) {
@@ -91,7 +95,8 @@ class Toast {
       }
     }
 
-    this._element.classList.add(ClassName.SHOW)
+    this._element.classList.remove(ClassName.HIDE)
+    this._element.classList.add(ClassName.SHOWING)
     if (this._config.animation) {
       const transitionDuration = Util.getTransitionDurationFromElement(this._element)
 
@@ -162,11 +167,11 @@ class Toast {
 
   _close() {
     const complete = () => {
+      this._element.classList.add(ClassName.HIDE)
       $(this._element).trigger(Event.HIDDEN)
     }
 
     this._element.classList.remove(ClassName.SHOW)
-
     if (this._config.animation) {
       const transitionDuration = Util.getTransitionDurationFromElement(this._element)
 

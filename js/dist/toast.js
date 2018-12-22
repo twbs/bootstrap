@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap toast.js v4.1.3 (https://getbootstrap.com/)
+  * Bootstrap toast.js v4.2.1 (https://getbootstrap.com/)
   * Copyright 2011-2018 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
   */
@@ -69,7 +69,7 @@
    */
 
   var NAME = 'toast';
-  var VERSION = '4.1.3';
+  var VERSION = '4.2.1';
   var DATA_KEY = 'bs.toast';
   var EVENT_KEY = "." + DATA_KEY;
   var JQUERY_NO_CONFLICT = $.fn[NAME];
@@ -83,7 +83,8 @@
   var ClassName = {
     FADE: 'fade',
     HIDE: 'hide',
-    SHOW: 'show'
+    SHOW: 'show',
+    SHOWING: 'showing'
   };
   var DefaultType = {
     animation: 'boolean',
@@ -130,6 +131,10 @@
       }
 
       var complete = function complete() {
+        _this._element.classList.remove(ClassName.SHOWING);
+
+        _this._element.classList.add(ClassName.SHOW);
+
         $(_this._element).trigger(Event.SHOWN);
 
         if (_this._config.autohide) {
@@ -137,7 +142,9 @@
         }
       };
 
-      this._element.classList.add(ClassName.SHOW);
+      this._element.classList.remove(ClassName.HIDE);
+
+      this._element.classList.add(ClassName.SHOWING);
 
       if (this._config.animation) {
         var transitionDuration = Util.getTransitionDurationFromElement(this._element);
@@ -198,6 +205,8 @@
       var _this4 = this;
 
       var complete = function complete() {
+        _this4._element.classList.add(ClassName.HIDE);
+
         $(_this4._element).trigger(Event.HIDDEN);
       };
 
