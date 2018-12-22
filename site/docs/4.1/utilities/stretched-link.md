@@ -9,6 +9,8 @@ Add `.stretched-link` to a link to make it's [containing block](https://develope
 
 Cards have `position: relative` by default in Bootstrap, so in this case you can safely add the `.stretched-link` class to a link in the card without any other HTML changes.
 
+Multiple links and tap targets are not recommended with stretched links. However, some `position` and `z-index` styles can help should this be required.
+
 {% capture example %}
 <div class="card" style="width: 18rem;">
   {% include icons/placeholder.svg width="100%" height="180" class="card-img-top" text=" " title="Card image cap" %}
@@ -46,28 +48,6 @@ Columns are `position: relative` by default, so clickable columns only require t
     <h5 class="mt-0">Columns with stretched link</h5>
     <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
     <a href="#" class="stretched-link">Go somewhere</a>
-  </div>
-</div>
-{% endcapture %}
-{% include example.html content=example %}
-
-Multiple links can be added to elements with a stretched link, but their `z-index` must be increased to be become clickable.
-
-{% capture example %}
-<div class="card" style="width: 18rem;">
-  {% include icons/placeholder.svg width="100%" height="180" class="card-img-top" text=" " title="Card image cap" %}
-  <div class="card-body">
-    <h5 class="card-title">Card with multiple links</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <p class="card-text">
-      <a href="#" class="stretched-link">The whole card will be linked to this link</a>
-    </p>
-    <p class="card-text">
-      <a href="#" class="text-danger">This link will be unclickable, because the previous link is stretched over this link</a>
-    </p>
-    <p class="card-text">
-      <a href="#" style="position: relative; z-index: 2;" class="text-success">This link will be clickable because <code>position: relative</code> is added and the z-index is higher than the z-index of the <code>::after</code> pseudo element of the stretched link</a>
-    </p>
   </div>
 </div>
 {% endcapture %}
