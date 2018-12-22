@@ -12,7 +12,7 @@
     <language>en-us</language>
     <projectUrl>https://getbootstrap.com/</projectUrl>
     <iconUrl>https://getbootstrap.com/docs/4.2/assets/img/favicons/apple-touch-icon.png</iconUrl>
-    <licenseUrl>https://github.com/twbs/bootstrap/blob/master/LICENSE</licenseUrl>
+    <license type="file">LICENSE.txt</license>
     <copyright>Copyright 2017-2018</copyright>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <dependencies>
@@ -22,6 +22,8 @@
     <tags>css sass mobile-first responsive front-end framework web</tags>
   </metadata>
   <files>
+    <file src="LICENSE.txt" target="" />
+
     <file src="scss\**\*.scss" target="content\Content\bootstrap" />
     <file src="dist\js\bootstrap*.js" target="content\Scripts" />
     <file src="dist\js\bootstrap*.js.map" target="content\Scripts" />
