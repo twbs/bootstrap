@@ -22,8 +22,8 @@
     <tags>css sass mobile-first responsive front-end framework web</tags>
   </metadata>
   <files>
-	<file src="LICENSE.txt" target="" />
-	
+    <file src="LICENSE.txt" target="" />
+
     <file src="scss\**\*.scss" target="content\Content\bootstrap" />
     <file src="dist\js\bootstrap*.js" target="content\Scripts" />
     <file src="dist\js\bootstrap*.js.map" target="content\Scripts" />
