@@ -27,7 +27,7 @@
 // Expand the right padding and account for the close button's positioning.
 
 .alert-dismissible {
-  padding-right: ($close-font-size + $alert-padding-x * 2);
+  padding-right: $close-font-size + $alert-padding-x * 2;
 
   // Adjust close link position
   .close {

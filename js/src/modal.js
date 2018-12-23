@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.1.3): modal.js
+ * Bootstrap (v4.2.1): modal.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -15,7 +15,7 @@ import Util from './util'
  */
 
 const NAME               = 'modal'
-const VERSION            = '4.1.3'
+const VERSION            = '4.2.1'
 const DATA_KEY           = 'bs.modal'
 const EVENT_KEY          = `.${DATA_KEY}`
 const DATA_API_KEY       = '.data-api'
@@ -243,6 +243,7 @@ class Modal {
 
     this._element.style.display = 'block'
     this._element.removeAttribute('aria-hidden')
+    this._element.setAttribute('aria-modal', true)
     this._element.scrollTop = 0
 
     if (transition) {
@@ -314,6 +315,7 @@ class Modal {
   _hideModal() {
     this._element.style.display = 'none'
     this._element.setAttribute('aria-hidden', true)
+    this._element.removeAttribute('aria-modal')
     this._isTransitioning = false
     this._showBackdrop(() => {
       $(document.body).removeClass(ClassName.OPEN)
