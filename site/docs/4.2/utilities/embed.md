@@ -55,7 +55,7 @@ Within `_variables.scss`, you can change the aspect ratios you want to use. Here
 $embed-responsive-aspect-ratios: (
   (21 9),
   (16 9),
-  (3 4),
+  (4 3),
   (1 1)
 ) !default;
 {% endhighlight %}
