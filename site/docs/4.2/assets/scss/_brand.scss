@@ -10,7 +10,7 @@
   overflow: hidden;
   color: $bd-purple;
   background-color: #f9f9f9;
-  border-radius: .25rem;
+  @include border-radius;
 
   .inverse {
     color: $white;
@@ -79,7 +79,7 @@
   height: 4rem;
   margin-right: .25rem;
   margin-left: .25rem;
-  border-radius: .25rem;
+  @include border-radius;
 
   @include media-breakpoint-up(md) {
     width: 6rem;

@@ -1,8 +1,12 @@
+// stylelint-disable property-blacklist
 // Single side border-radius
 
-@mixin border-radius($radius: $border-radius) {
+@mixin border-radius($radius: $border-radius, $fallback-border-radius: false) {
   @if $enable-rounded {
     border-radius: $radius;
+  }
+  @else if $fallback-border-radius != false {
+    border-radius: $fallback-border-radius;
   }
 }
 

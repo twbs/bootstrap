@@ -23,7 +23,7 @@
 
   @include media-breakpoint-up(sm) {
     max-width: 330px;
-    border-radius: 4px;
+    @include border-radius(4px);
   }
 }
 

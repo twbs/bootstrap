@@ -297,6 +297,7 @@ label {
 //
 // Details at https://github.com/twbs/bootstrap/issues/24093
 button {
+  // stylelint-disable-next-line property-blacklist
   border-radius: 0;
 }
 
