@@ -144,6 +144,7 @@
 
 .custom-radio {
   .custom-control-label::before {
+    // stylelint-disable-next-line property-blacklist
     border-radius: $custom-radio-indicator-border-radius;
   }
 
@@ -173,6 +174,7 @@
       left: -($custom-switch-width + $custom-control-gutter);
       width: $custom-switch-width;
       pointer-events: all;
+      // stylelint-disable-next-line property-blacklist
       border-radius: $custom-switch-indicator-border-radius;
     }
 
@@ -182,6 +184,7 @@
       width: $custom-switch-indicator-size;
       height: $custom-switch-indicator-size;
       background-color: $custom-control-indicator-border-color;
+      // stylelint-disable-next-line property-blacklist
       border-radius: $custom-switch-indicator-border-radius;
       @include transition(transform .15s ease-in-out, $custom-forms-transition);
     }
@@ -220,11 +223,7 @@
   background: $custom-select-background;
   background-color: $custom-select-bg;
   border: $custom-select-border-width solid $custom-select-border-color;
-  @if $enable-rounded {
-    border-radius: $custom-select-border-radius;
-  } @else {
-    border-radius: 0;
-  }
+  @include border-radius($custom-select-border-radius, 0);
   @include box-shadow($custom-select-box-shadow);
   appearance: none;
 
