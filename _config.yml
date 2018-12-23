@@ -38,6 +38,7 @@ current_ruby_version: 4.2.1
 docs_version:         4.2
 repo:                 "https://github.com/twbs/bootstrap"
 slack:                "https://bootstrap-slack.herokuapp.com"
+opencollective:       "https://opencollective.com/bootstrap"
 blog:                 "https://blog.getbootstrap.com"
 expo:                 "https://expo.getbootstrap.com"
 themes:               "https://themes.getbootstrap.com"
