@@ -28,7 +28,7 @@
   cursor: pointer;
   background-color: transparent;
   border: 0;
-  border-radius: .25rem;
+  @include border-radius;
 
   &:hover {
     color: $white;

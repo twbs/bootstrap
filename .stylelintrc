@@ -261,7 +261,14 @@
       "fill",
       "stroke"
     ],
-    "property-blacklist": ["transition"],
+    "property-blacklist": [
+      "border-radius",
+      "border-top-left-radius",
+      "border-top-right-radius",
+      "border-bottom-right-radius",
+      "border-bottom-left-radius",
+      "transition"
+    ],
     "property-no-vendor-prefix": true,
     "rule-empty-line-before": null,
     "scss/at-function-named-arguments": "never",
