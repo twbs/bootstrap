@@ -118,7 +118,7 @@
 
 // Dividers (basically an `<hr>`) within the dropdown
 .dropdown-divider {
-  @include nav-divider($dropdown-divider-bg);
+  @include nav-divider($dropdown-divider-bg, $dropdown-divider-margin-y);
 }
 
 // Links, buttons, and more within the dropdown menu
