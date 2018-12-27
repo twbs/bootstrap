@@ -20,17 +20,16 @@ $(function () {
     assert.strictEqual(Util.getSelectorFromElement($el2[0]), null)
   })
 
-  QUnit.test('Util.getSelectorFromElement should throw error when there is a bad selector', function (assert) {
+  QUnit.test('Util.getSelectorFromElement should return null when there is a bad selector', function (assert) {
     assert.expect(2)
 
     var $el = $('<div data-target="#1"></div>').appendTo($('#qunit-fixture'))
 
-    try {
-      assert.ok(true, 'trying to use a bad selector')
-      Util.getSelectorFromElement($el[0])
-    } catch (e) {
-      assert.ok(e instanceof DOMException)
-    }
+    assert.strictEqual(Util.getSelectorFromElement($el[0]), null)
+
+    var $el2 = $('<a href="/posts"></a>').appendTo($('#qunit-fixture'))
+
+    assert.strictEqual(Util.getSelectorFromElement($el2[0]), null)
   })
 
   QUnit.test('Util.typeCheckConfig should thrown an error when a bad config is passed', function (assert) {
