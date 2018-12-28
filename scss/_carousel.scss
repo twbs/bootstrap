@@ -13,6 +13,7 @@
 
 .carousel {
   position: relative;
+  color: $carousel-color;
 }
 
 .carousel.pointer-event {
@@ -128,13 +129,14 @@
   display: inline-block;
   width: $carousel-control-icon-width;
   height: $carousel-control-icon-width;
-  background: no-repeat 50% / 100% 100%;
+  fill: $carousel-control-icon-color;
+  // background: no-repeat 50% / 100% 100%;
 }
 .carousel-control-prev-icon {
-  background-image: escape-svg($carousel-control-prev-icon-bg);
+  // background-image: escape-svg($carousel-control-prev-icon-bg);
 }
 .carousel-control-next-icon {
-  background-image: escape-svg($carousel-control-next-icon-bg);
+  // background-image: escape-svg($carousel-control-next-icon-bg);
 }
 
 
@@ -158,7 +160,8 @@
   list-style: none;
 
   li {
-    box-sizing: content-box;
+    position: relative;
+    // box-sizing: content-box;
     flex: 0 1 auto;
     width: $carousel-indicator-width;
     height: $carousel-indicator-height;
@@ -166,13 +169,26 @@
     margin-left: $carousel-indicator-spacer;
     text-indent: -999px;
     cursor: pointer;
-    background-color: $carousel-indicator-active-bg;
-    background-clip: padding-box;
+    // background-color: $carousel-indicator-active-bg;
+    // background-clip: padding-box;
+    border-bottom: $carousel-indicator-height solid;
     // Use transparent borders to increase the hit area by 10px on top and bottom.
-    border-top: $carousel-indicator-hit-area-height solid transparent;
-    border-bottom: $carousel-indicator-hit-area-height solid transparent;
+    // border-top: $carousel-indicator-hit-area-height solid transparent;
+    // border-bottom: $carousel-indicator-hit-area-height solid transparent;
     opacity: .5;
     @include transition($carousel-indicator-transition);
+
+    &::after {
+      position: absolute;
+      top: -$carousel-indicator-hit-area-height;
+      right: -$carousel-indicator-hit-area-height / 2;
+      bottom: -$carousel-indicator-hit-area-height;
+      left: -$carousel-indicator-hit-area-height / 2;
+      display: block;
+      height: $carousel-indicator-hit-area-height * 3;
+      content: "";
+      background-color: rgba(255, 0, 0, .1);
+    }
   }
 
   .active {
