@@ -180,7 +180,6 @@
 
   &:not(.active) .spinner-border,
   &:not(.active) .spinner-grow {
-    //animation-duration: 0s;
     animation-play-state: paused;
   }
 }
