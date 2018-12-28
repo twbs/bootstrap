@@ -1,0 +1,10 @@
+.anchorjs-link {
+  font-weight: 400;
+  color: rgba($link-color, .5);
+  @include transition(color .15s ease-in-out, opacity .15s ease-in-out);
+
+  &:hover {
+    color: $link-color;
+    text-decoration: none;
+  }
+}

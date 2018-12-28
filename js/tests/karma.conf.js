@@ -1,6 +1,8 @@
 /* eslint-env node */
 /* eslint no-process-env: 0 */
+
 const ip = require('ip')
+const pkg = require('../../package.json')
 const {
   browsers,
   browsersKeys
@@ -8,7 +10,7 @@ const {
 const path = require('path')
 const jsCoveragePath = path.resolve(__dirname, '../coverage')
 
-const jqueryFile = process.env.USE_OLD_JQUERY ? 'https://code.jquery.com/jquery-1.9.1.min.js' : 'site/docs/4.1/assets/js/vendor/jquery-slim.min.js'
+const jqueryFile = process.env.USE_OLD_JQUERY ? 'https://code.jquery.com/jquery-1.9.1.min.js' : `site/docs/${pkg.version_short}/assets/js/vendor/jquery-slim.min.js`
 const bundle = process.env.BUNDLE === 'true'
 const browserStack = process.env.BROWSER === 'true'
 
@@ -92,7 +94,7 @@ if (bundle) {
   conf.browsers = browsersKeys
   reporters.push('BrowserStack')
   files = files.concat([
-    'site/docs/4.1/assets/js/vendor/jquery-slim.min.js',
+    `site/docs/${pkg.version_short}/assets/js/vendor/jquery-slim.min.js`,
     'js/dist/util.js',
     'js/dist/tooltip.js',
     'js/dist/!(util|index|tooltip).js' // include all of our js/dist files except util.js, index.js and tooltip.js

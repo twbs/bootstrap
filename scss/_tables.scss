@@ -5,6 +5,7 @@
 .table {
   width: 100%;
   margin-bottom: $spacer;
+  color: $table-color;
   background-color: $table-bg; // Reset for nesting within parents with `background-color`.
 
   th,
@@ -56,7 +57,7 @@
   thead {
     th,
     td {
-      border-bottom-width: (2 * $table-border-width);
+      border-bottom-width: 2 * $table-border-width;
     }
   }
 }
@@ -88,6 +89,7 @@
 .table-hover {
   tbody tr {
     @include hover {
+      color: $table-hover-color;
       background-color: $table-hover-bg;
     }
   }
@@ -152,6 +154,7 @@
   &.table-hover {
     tbody tr {
       @include hover {
+        color: $table-dark-hover-color;
         background-color: $table-dark-hover-bg;
       }
     }

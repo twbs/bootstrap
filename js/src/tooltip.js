@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.1.3): tooltip.js
+ * Bootstrap (v4.2.1): tooltip.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -16,7 +16,7 @@ import Util from './util'
  */
 
 const NAME               = 'tooltip'
-const VERSION            = '4.1.3'
+const VERSION            = '4.2.1'
 const DATA_KEY           = 'bs.tooltip'
 const EVENT_KEY          = `.${DATA_KEY}`
 const JQUERY_NO_CONFLICT = $.fn[NAME]
@@ -244,8 +244,9 @@ class Tooltip {
     if (this.isWithContent() && this._isEnabled) {
       $(this.element).trigger(showEvent)
 
+      const shadowRoot = Util.findShadowRoot(this.element)
       const isInTheDom = $.contains(
-        this.element.ownerDocument.documentElement,
+        shadowRoot !== null ? shadowRoot : this.element.ownerDocument.documentElement,
         this.element
       )
 
@@ -272,8 +273,7 @@ class Tooltip {
       const attachment = this._getAttachment(placement)
       this.addAttachmentClass(attachment)
 
-      const container = this.config.container === false ? document.body : $(document).find(this.config.container)
-
+      const container = this._getContainer()
       $(tip).data(this.constructor.DATA_KEY, this)
 
       if (!$.contains(this.element.ownerDocument.documentElement, this.tip)) {
@@ -449,6 +449,18 @@ class Tooltip {
   }
 
   // Private
+
+  _getContainer() {
+    if (this.config.container === false) {
+      return document.body
+    }
+
+    if (Util.isElement(this.config.container)) {
+      return $(this.config.container)
+    }
+
+    return $(document).find(this.config.container)
+  }
 
   _getAttachment(placement) {
     return AttachmentMap[placement.toUpperCase()]
