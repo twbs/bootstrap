@@ -14,6 +14,7 @@ Things to know when using the toast plugin:
 
 - If you're building our JavaScript from source, it [requires `util.js`]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/javascript/#util).
 - Toasts are opt-in for performance reasons, so **you must initialize them yourself**.
+- **Please note that you are responsible for positioning toasts.**
 - Toasts will automatically hide if you do not specify `autohide: false`.
 
 ## Examples
