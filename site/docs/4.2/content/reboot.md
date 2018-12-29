@@ -280,12 +280,14 @@ These changes, and more, are demonstrated below.
     <p>
       <button type="submit">Button submit</button>
       <input type="submit" value="Input submit button">
+      <input type="reset" value="Input reset button">
       <input type="button" value="Input button">
     </p>
 
     <p>
       <button type="submit" disabled>Button submit</button>
       <input type="submit" value="Input submit button" disabled>
+      <input type="reset" value="Input reset button" disabled>
       <input type="button" value="Input button" disabled>
     </p>
   </fieldset>

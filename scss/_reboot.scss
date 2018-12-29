@@ -349,6 +349,18 @@ button,
   -webkit-appearance: button; // 2
 }
 
+// Opinionated: add "hand" cursor to non-disabled button elements.
+@if $enable-pointer-cursor-for-buttons {
+  button,
+  [type="button"],
+  [type="reset"],
+  [type="submit"] {
+    &:not(:disabled) {
+      cursor: pointer;
+    }
+  }
+}
+
 // Remove inner border and padding from Firefox, but don't restore the outline like Normalize.
 button::-moz-focus-inner,
 [type="button"]::-moz-focus-inner,
