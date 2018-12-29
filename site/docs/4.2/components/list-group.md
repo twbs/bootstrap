@@ -87,7 +87,7 @@ With `<button>`s, you can also make use of the `disabled` attribute instead of t
 
 ## Flush
 
-Add `.list-group-flush` to remove some borders and rounded corners to render list group items edge-to-edge in a parent container (e.g., cards).
+Add `.list-group-flush` to remove some borders and rounded corners to render list group items edge-to-edge in a parent container (e.g., cards). You can also attach this class to a `.list-group-horizontal`.
 
 {% capture example %}
 <ul class="list-group list-group-flush">
@@ -96,6 +96,55 @@ Add `.list-group-flush` to remove some borders and rounded corners to render lis
   <li class="list-group-item">Morbi leo risus</li>
   <li class="list-group-item">Porta ac consectetur ac</li>
   <li class="list-group-item">Vestibulum at eros</li>
+</ul>
+{% endcapture %}
+{% include example.html content=example %}
+
+## Horizontal List Group
+
+Add `.list-group-horizontal` to any `.list-group` to make it horizontal.
+
+{% capture example %}
+<ul class="list-group list-group-horizontal">
+  <li class="list-group-item">Cras justo odio</li>
+  <li class="list-group-item">Dapibus ac facilisis in</li>
+  <li class="list-group-item">Morbi leo risus</li>
+</ul>
+{% endcapture %}
+{% include example.html content=example %}
+
+## Responsive Horizontal List Group
+
+Add `.list-group-horizontal-responsive` to any `.list-group-horizontal` to automatically make it responsive. You can also add one of our breakpoint variants to choose when to make it responsive, e.g: `.list-group-horizontal-responsive{-sm|-md|-lg|-xl}`. Resize your browser window to see the responsive behaviour.
+
+{% capture example %}
+<ul class="list-group list-group-horizontal list-group-horizontal-responsive-sm">
+  <li class="list-group-item">Cras justo odio</li>
+  <li class="list-group-item">Dapibus ac facilisis in</li>
+</ul>
+{% endcapture %}
+{% include example.html content=example %}
+
+{% capture example %}
+<ul class="list-group list-group-horizontal list-group-horizontal-responsive-md">
+  <li class="list-group-item">Cras justo odio</li>
+  <li class="list-group-item">Dapibus ac facilisis in</li>
+</ul>
+{% endcapture %}
+{% include example.html content=example %}
+
+{% capture example %}
+<ul class="list-group list-group-horizontal list-group-horizontal-responsive-lg">
+  <li class="list-group-item">Cras justo odio</li>
+  <li class="list-group-item">Dapibus ac facilisis in</li>
+</ul>
+{% endcapture %}
+{% include example.html content=example %}
+
+{% capture example %}
+<ul class="list-group list-group-horizontal list-group-horizontal-responsive-xl">
+  <li class="list-group-item">Cras justo odio</li>
+  <li class="list-group-item">Dapibus ac facilisis in</li>
 </ul>
 {% endcapture %}
 {% include example.html content=example %}

@@ -12,6 +12,94 @@
 }
 
 
+// Horizontal List Group
+//
+// Extends .list-group and other list group classes.
+
+.list-group-horizontal {
+  flex-direction: row;
+
+  .list-group-item {
+    margin-right: -$list-group-border-width;
+    margin-bottom: 0;
+
+    &:first-child {
+      @include border-left-radius($list-group-border-radius);
+      @include border-top-right-radius(0);
+    }
+
+    &:last-child {
+      margin-right: 0;
+      @include border-right-radius($list-group-border-radius);
+      @include border-bottom-left-radius(0);
+    }
+  }
+
+  &.list-group-flush {
+    @include border-radius(0);
+
+    .list-group-item {
+      border: $list-group-border-width solid $list-group-border-color;
+      border-top: 0;
+      border-bottom: 0;
+    }
+  }
+}
+
+
+// Responsve Horizontal List Group
+//
+// Add .list-group-horizontal-responsive to any .list-group-horizontal.
+
+.list-group-horizontal-responsive {
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    $next: breakpoint-next($breakpoint, $grid-breakpoints);
+    $infix: breakpoint-infix($next, $grid-breakpoints);
+
+    &#{$infix} {
+      @include media-breakpoint-down($breakpoint) {
+        flex-direction: column;
+
+        &.list-group-flush {
+          .list-group-item {
+            border: $list-group-border-width solid $list-group-border-color;
+
+            &:first-child {
+              border-top: $list-group-border-width solid $list-group-border-color;
+              @include border-top-radius($list-group-border-radius);
+              @include border-bottom-left-radius(0);
+            }
+
+            &:last-child {
+              margin-bottom: 0;
+              border-bottom: $list-group-border-width solid $list-group-border-color;
+              @include border-bottom-radius($list-group-border-radius);
+              @include border-top-right-radius(0);
+            }
+          }
+        }
+
+        .list-group-item {
+          margin-right: 0;
+          margin-bottom: -$list-group-border-width;
+
+          &:first-child {
+            @include border-top-radius($list-group-border-radius);
+            @include border-bottom-left-radius(0);
+          }
+
+          &:last-child {
+            margin-bottom: 0;
+            @include border-bottom-radius($list-group-border-radius);
+            @include border-top-right-radius(0);
+          }
+        }
+      }
+    }
+  }
+}
+
+
 // Interactive list items
 //
 // Use anchor or button elements instead of `li`s or `div`s to create interactive
