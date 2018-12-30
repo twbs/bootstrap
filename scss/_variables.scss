@@ -101,6 +101,205 @@ $yiq-contrasted-threshold:  150 !default;
 $yiq-text-dark:             $gray-900 !default;
 $yiq-text-light:            $white !default;
 
+$blue-100: shade-color($blue, 8) !default;
+$blue-200: shade-color($blue, 6) !default;
+$blue-300: shade-color($blue, 4) !default;
+$blue-400: shade-color($blue, 2) !default;
+$blue-500: $blue !default;
+$blue-600: tint-color($blue, 2) !default;
+$blue-700: tint-color($blue, 4) !default;
+$blue-800: tint-color($blue, 6) !default;
+$blue-900: tint-color($blue, 8) !default;
+
+$indigo-100: shade-color($indigo, 8) !default;
+$indigo-200: shade-color($indigo, 6) !default;
+$indigo-300: shade-color($indigo, 4) !default;
+$indigo-400: shade-color($indigo, 2) !default;
+$indigo-500: $indigo !default;
+$indigo-600: tint-color($indigo, 2) !default;
+$indigo-700: tint-color($indigo, 4) !default;
+$indigo-800: tint-color($indigo, 6) !default;
+$indigo-900: tint-color($indigo, 8) !default;
+
+$purple-100: shade-color($purple, 8) !default;
+$purple-200: shade-color($purple, 6) !default;
+$purple-300: shade-color($purple, 4) !default;
+$purple-400: shade-color($purple, 2) !default;
+$purple-500: $purple !default;
+$purple-600: tint-color($purple, 2) !default;
+$purple-700: tint-color($purple, 4) !default;
+$purple-800: tint-color($purple, 6) !default;
+$purple-900: tint-color($purple, 8) !default;
+
+$pink-100: shade-color($pink, 8) !default;
+$pink-200: shade-color($pink, 6) !default;
+$pink-300: shade-color($pink, 4) !default;
+$pink-400: shade-color($pink, 2) !default;
+$pink-500: $pink !default;
+$pink-600: tint-color($pink, 2) !default;
+$pink-700: tint-color($pink, 4) !default;
+$pink-800: tint-color($pink, 6) !default;
+$pink-900: tint-color($pink, 8) !default;
+
+$red-100: shade-color($red, 8) !default;
+$red-200: shade-color($red, 6) !default;
+$red-300: shade-color($red, 4) !default;
+$red-400: shade-color($red, 2) !default;
+$red-500: $red !default;
+$red-600: tint-color($red, 2) !default;
+$red-700: tint-color($red, 4) !default;
+$red-800: tint-color($red, 6) !default;
+$red-900: tint-color($red, 8) !default;
+
+$orange-100: shade-color($orange, 8) !default;
+$orange-200: shade-color($orange, 6) !default;
+$orange-300: shade-color($orange, 4) !default;
+$orange-400: shade-color($orange, 2) !default;
+$orange-500: $orange !default;
+$orange-600: tint-color($orange, 2) !default;
+$orange-700: tint-color($orange, 4) !default;
+$orange-800: tint-color($orange, 6) !default;
+$orange-900: tint-color($orange, 8) !default;
+
+$yellow-100: shade-color($yellow, 8) !default;
+$yellow-200: shade-color($yellow, 6) !default;
+$yellow-300: shade-color($yellow, 4) !default;
+$yellow-400: shade-color($yellow, 2) !default;
+$yellow-500: $yellow !default;
+$yellow-600: tint-color($yellow, 2) !default;
+$yellow-700: tint-color($yellow, 4) !default;
+$yellow-800: tint-color($yellow, 6) !default;
+$yellow-900: tint-color($yellow, 8) !default;
+
+$green-100: shade-color($green, 8) !default;
+$green-200: shade-color($green, 6) !default;
+$green-300: shade-color($green, 4) !default;
+$green-400: shade-color($green, 2) !default;
+$green-500: $green !default;
+$green-600: tint-color($green, 2) !default;
+$green-700: tint-color($green, 4) !default;
+$green-800: tint-color($green, 6) !default;
+$green-900: tint-color($green, 8) !default;
+
+$teal-100: shade-color($teal, 8) !default;
+$teal-200: shade-color($teal, 6) !default;
+$teal-300: shade-color($teal, 4) !default;
+$teal-400: shade-color($teal, 2) !default;
+$teal-500: $teal !default;
+$teal-600: tint-color($teal, 2) !default;
+$teal-700: tint-color($teal, 4) !default;
+$teal-800: tint-color($teal, 6) !default;
+$teal-900: tint-color($teal, 8) !default;
+
+$cyan-100: shade-color($cyan, 8) !default;
+$cyan-200: shade-color($cyan, 6) !default;
+$cyan-300: shade-color($cyan, 4) !default;
+$cyan-400: shade-color($cyan, 2) !default;
+$cyan-500: $cyan !default;
+$cyan-600: tint-color($cyan, 2) !default;
+$cyan-700: tint-color($cyan, 4) !default;
+$cyan-800: tint-color($cyan, 6) !default;
+$cyan-900: tint-color($cyan, 8) !default;
+
+.blue-100 { background-color: $blue-100; }
+.blue-200 { background-color: $blue-200; }
+.blue-300 { background-color: $blue-300; }
+.blue-400 { background-color: $blue-400; }
+.blue-500 { background-color: $blue-500; }
+.blue-600 { background-color: $blue-600; }
+.blue-700 { background-color: $blue-700; }
+.blue-800 { background-color: $blue-800; }
+.blue-900 { background-color: $blue-900; }
+
+.indigo-100 { background-color: $indigo-100; }
+.indigo-200 { background-color: $indigo-200; }
+.indigo-300 { background-color: $indigo-300; }
+.indigo-400 { background-color: $indigo-400; }
+.indigo-500 { background-color: $indigo-500; }
+.indigo-600 { background-color: $indigo-600; }
+.indigo-700 { background-color: $indigo-700; }
+.indigo-800 { background-color: $indigo-800; }
+.indigo-900 { background-color: $indigo-900; }
+
+.purple-100 { background-color: $purple-100; }
+.purple-200 { background-color: $purple-200; }
+.purple-300 { background-color: $purple-300; }
+.purple-400 { background-color: $purple-400; }
+.purple-500 { background-color: $purple-500; }
+.purple-600 { background-color: $purple-600; }
+.purple-700 { background-color: $purple-700; }
+.purple-800 { background-color: $purple-800; }
+.purple-900 { background-color: $purple-900; }
+
+.pink-100 { background-color: $pink-100; }
+.pink-200 { background-color: $pink-200; }
+.pink-300 { background-color: $pink-300; }
+.pink-400 { background-color: $pink-400; }
+.pink-500 { background-color: $pink-500; }
+.pink-600 { background-color: $pink-600; }
+.pink-700 { background-color: $pink-700; }
+.pink-800 { background-color: $pink-800; }
+.pink-900 { background-color: $pink-900; }
+
+.red-100 { background-color: $red-100; }
+.red-200 { background-color: $red-200; }
+.red-300 { background-color: $red-300; }
+.red-400 { background-color: $red-400; }
+.red-500 { background-color: $red-500; }
+.red-600 { background-color: $red-600; }
+.red-700 { background-color: $red-700; }
+.red-800 { background-color: $red-800; }
+.red-900 { background-color: $red-900; }
+
+.orange-100 { background-color: $orange-100; }
+.orange-200 { background-color: $orange-200; }
+.orange-300 { background-color: $orange-300; }
+.orange-400 { background-color: $orange-400; }
+.orange-500 { background-color: $orange-500; }
+.orange-600 { background-color: $orange-600; }
+.orange-700 { background-color: $orange-700; }
+.orange-800 { background-color: $orange-800; }
+.orange-900 { background-color: $orange-900; }
+
+.yellow-100 { background-color: $yellow-100; }
+.yellow-200 { background-color: $yellow-200; }
+.yellow-300 { background-color: $yellow-300; }
+.yellow-400 { background-color: $yellow-400; }
+.yellow-500 { background-color: $yellow-500; }
+.yellow-600 { background-color: $yellow-600; }
+.yellow-700 { background-color: $yellow-700; }
+.yellow-800 { background-color: $yellow-800; }
+.yellow-900 { background-color: $yellow-900; }
+
+.green-100 { background-color: $green-100; }
+.green-200 { background-color: $green-200; }
+.green-300 { background-color: $green-300; }
+.green-400 { background-color: $green-400; }
+.green-500 { background-color: $green-500; }
+.green-600 { background-color: $green-600; }
+.green-700 { background-color: $green-700; }
+.green-800 { background-color: $green-800; }
+.green-900 { background-color: $green-900; }
+
+.teal-100 { background-color: $teal-100; }
+.teal-200 { background-color: $teal-200; }
+.teal-300 { background-color: $teal-300; }
+.teal-400 { background-color: $teal-400; }
+.teal-500 { background-color: $teal-500; }
+.teal-600 { background-color: $teal-600; }
+.teal-700 { background-color: $teal-700; }
+.teal-800 { background-color: $teal-800; }
+.teal-900 { background-color: $teal-900; }
+
+.cyan-100 { background-color: $cyan-100; }
+.cyan-200 { background-color: $cyan-200; }
+.cyan-300 { background-color: $cyan-300; }
+.cyan-400 { background-color: $cyan-400; }
+.cyan-500 { background-color: $cyan-500; }
+.cyan-600 { background-color: $cyan-600; }
+.cyan-700 { background-color: $cyan-700; }
+.cyan-800 { background-color: $cyan-800; }
+.cyan-900 { background-color: $cyan-900; }
 
 // Options
 //
@@ -169,7 +368,7 @@ $body-color:                $gray-900 !default;
 //
 // Style anchor elements.
 
-$link-color:                              theme-color("primary") !default;
+$link-color:                              $primary !default;
 $link-decoration:                         none !default;
 $link-hover-color:                        darken($link-color, 15%) !default;
 $link-hover-decoration:                   underline !default;
@@ -243,7 +442,7 @@ $box-shadow:                  0 .5rem 1rem rgba($black, .15) !default;
 $box-shadow-lg:               0 1rem 3rem rgba($black, .175) !default;
 
 $component-active-color:      $white !default;
-$component-active-bg:         theme-color("primary") !default;
+$component-active-bg:         $primary !default;
 
 $caret-width:                 .3em !default;
 $caret-vertical-align:        $caret-width * .85 !default;
@@ -532,7 +731,7 @@ $custom-control-label-disabled-color:           $gray-600 !default;
 
 $custom-control-indicator-checked-color:        $component-active-color !default;
 $custom-control-indicator-checked-bg:           $component-active-bg !default;
-$custom-control-indicator-checked-disabled-bg:  rgba(theme-color("primary"), .5) !default;
+$custom-control-indicator-checked-disabled-bg:  rgba($primary, .5) !default;
 $custom-control-indicator-checked-box-shadow:   none !default;
 $custom-control-indicator-checked-border-color: $custom-control-indicator-checked-bg !default;
 
@@ -646,8 +845,8 @@ $custom-file-text: (
 
 $form-feedback-margin-top:          $form-text-margin-top !default;
 $form-feedback-font-size:           $small-font-size !default;
-$form-feedback-valid-color:         theme-color("success") !default;
-$form-feedback-invalid-color:       theme-color("danger") !default;
+$form-feedback-valid-color:         $success !default;
+$form-feedback-invalid-color:       $danger !default;
 
 $form-feedback-icon-valid-color:    $form-feedback-valid-color !default;
 $form-feedback-icon-valid:          str-replace(url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='#{$form-feedback-icon-valid-color}' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e"), "#", "%23") !default;
@@ -986,7 +1185,7 @@ $progress-bg:                       $gray-200 !default;
 $progress-border-radius:            $border-radius !default;
 $progress-box-shadow:               inset 0 .1rem .1rem rgba($black, .1) !default;
 $progress-bar-color:                $white !default;
-$progress-bar-bg:                   theme-color("primary") !default;
+$progress-bar-bg:                   $primary !default;
 $progress-bar-animation-timing:     1s linear infinite !default;
 $progress-bar-transition:           width .6s ease !default;
 

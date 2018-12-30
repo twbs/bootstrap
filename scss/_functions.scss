@@ -63,24 +63,27 @@
   }
 }
 
-// Retrieve color Sass maps
-@function color($key: "blue") {
-  @return map-get($colors, $key);
-}
-
-@function theme-color($key: "primary") {
-  @return map-get($theme-colors, $key);
-}
-
-@function gray($key: "100") {
-  @return map-get($grays, $key);
-}
-
 // Request a theme color level
 @function theme-color-level($color-name: "primary", $level: 0) {
-  $color: theme-color($color-name);
+  $color: map-get($theme-colors, $color-name);
   $color-base: if($level > 0, $black, $white);
   $level: abs($level);
 
   @return mix($color-base, $color, $level * $theme-color-interval);
+}
+
+// @function color-level($color-name: "blue", $level: 0) {
+//   $color: map-get($colors, $color-name);
+//   $color-base: if($level > 0, $black, $white);
+//   $level: abs($level);
+//
+//   @return mix($color-base, $color, $level * $theme-color-interval);
+// }
+
+@function tint-color($color, $level) {
+  @return mix(black, $color, $level * $theme-color-interval);
+}
+
+@function shade-color($color, $level) {
+  @return mix(white, $color, $level * $theme-color-interval);
 }
