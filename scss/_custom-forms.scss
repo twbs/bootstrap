@@ -67,15 +67,15 @@
 
 .custom-control-label {
   position: relative;
+  padding-left: $custom-control-gutter + $custom-control-indicator-size;
   margin-bottom: 0;
   vertical-align: top;
-  padding-left: $custom-control-gutter + $custom-control-indicator-size;
 
   // Background-color and (when enabled) gradient
   &::before {
     position: absolute;
     top: ($font-size-base * $line-height-base - $custom-control-indicator-size) / 2;
-    left: -($custom-control-gutter + $custom-control-indicator-size);
+    left: 0;
     display: block;
     width: $custom-control-indicator-size;
     height: $custom-control-indicator-size;
@@ -90,7 +90,7 @@
   &::after {
     position: absolute;
     top: ($font-size-base * $line-height-base - $custom-control-indicator-size) / 2;
-    left: -($custom-control-gutter + $custom-control-indicator-size);
+    left: 0;
     display: block;
     width: $custom-control-indicator-size;
     height: $custom-control-indicator-size;
@@ -167,11 +167,11 @@
 // Tweak a few things for switches
 
 .custom-switch {
-  padding-left: $custom-switch-width + $custom-control-gutter;
-
   .custom-control-label {
+    padding-left: $custom-switch-width + $custom-control-gutter;
+
     &::before {
-      left: -($custom-switch-width + $custom-control-gutter);
+      left: 0;
       width: $custom-switch-width;
       pointer-events: all;
       // stylelint-disable-next-line property-blacklist
@@ -180,7 +180,7 @@
 
     &::after {
       top: calc(#{(($font-size-base * $line-height-base - $custom-control-indicator-size) / 2)} + #{$custom-control-indicator-border-width * 2});
-      left: calc(#{-($custom-switch-width + $custom-control-gutter)} + #{$custom-control-indicator-border-width * 2});
+      left: $custom-control-indicator-border-width * 2;
       width: $custom-switch-indicator-size;
       height: $custom-switch-indicator-size;
       background-color: $custom-control-indicator-border-color;
