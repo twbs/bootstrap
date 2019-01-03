@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.1.3): util.js
+ * Bootstrap (v4.2.1): util.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -82,7 +82,11 @@ const Util = {
       selector = hrefAttr && hrefAttr !== '#' ? hrefAttr.trim() : ''
     }
 
-    return selector && document.querySelector(selector) ? selector : null
+    try {
+      return document.querySelector(selector) ? selector : null
+    } catch (err) {
+      return null
+    }
   },
 
   getTransitionDurationFromElement(element) {
