@@ -69,7 +69,7 @@ Toasts are slightly translucent, too, so they blend over whatever they might app
 
 ### Stacking
 
-When you have multiple toasts, we default to vertiaclly stacking them in a readable manner.
+When you have multiple toasts, we default to vertically stacking them in a readable manner.
 
 <div class="bg-light">
 {% capture example %}
