@@ -1,21 +1,30 @@
 .toast {
-  display: none;
   max-width: $toast-max-width;
   overflow: hidden; // cheap rounded corners on nested items
   font-size: $toast-font-size; // knock it down to 14px
   background-color: $toast-background-color;
   background-clip: padding-box;
   border: $toast-border-width solid $toast-border-color;
-  border-radius: $toast-border-radius;
   box-shadow: $toast-box-shadow;
   backdrop-filter: blur(10px);
+  opacity: 0;
+  @include border-radius($toast-border-radius);
 
-  + .toast {
-    margin-top: $toast-padding-x;
+  &:not(:last-child) {
+    margin-bottom: $toast-padding-x;
+  }
+
+  &.showing {
+    opacity: 1;
   }
 
   &.show {
     display: block;
+    opacity: 1;
+  }
+
+  &.hide {
+    display: none;
   }
 }
 

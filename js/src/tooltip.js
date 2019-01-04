@@ -1,13 +1,13 @@
-import $ from 'jquery'
-import Popper from 'popper.js'
-import Util from './util'
-
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.1.3): tooltip.js
+ * Bootstrap (v4.2.1): tooltip.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
+
+import $ from 'jquery'
+import Popper from 'popper.js'
+import Util from './util'
 
 /**
  * ------------------------------------------------------------------------
@@ -16,7 +16,7 @@ import Util from './util'
  */
 
 const NAME               = 'tooltip'
-const VERSION            = '4.1.3'
+const VERSION            = '4.2.1'
 const DATA_KEY           = 'bs.tooltip'
 const EVENT_KEY          = `.${DATA_KEY}`
 const JQUERY_NO_CONFLICT = $.fn[NAME]
@@ -24,18 +24,18 @@ const CLASS_PREFIX       = 'bs-tooltip'
 const BSCLS_PREFIX_REGEX = new RegExp(`(^|\\s)${CLASS_PREFIX}\\S+`, 'g')
 
 const DefaultType = {
-  animation           : 'boolean',
-  template            : 'string',
-  title               : '(string|element|function)',
-  trigger             : 'string',
-  delay               : '(number|object)',
-  html                : 'boolean',
-  selector            : '(string|boolean)',
-  placement           : '(string|function)',
-  offset              : '(number|string)',
-  container           : '(string|element|boolean)',
-  fallbackPlacement   : '(string|array)',
-  boundary            : '(string|element)'
+  animation         : 'boolean',
+  template          : 'string',
+  title             : '(string|element|function)',
+  trigger           : 'string',
+  delay             : '(number|object)',
+  html              : 'boolean',
+  selector          : '(string|boolean)',
+  placement         : '(string|function)',
+  offset            : '(number|string)',
+  container         : '(string|element|boolean)',
+  fallbackPlacement : '(string|array)',
+  boundary          : '(string|element)'
 }
 
 const AttachmentMap = {
@@ -47,20 +47,20 @@ const AttachmentMap = {
 }
 
 const Default = {
-  animation           : true,
-  template            : '<div class="tooltip" role="tooltip">' +
-                      '<div class="arrow"></div>' +
-                      '<div class="tooltip-inner"></div></div>',
-  trigger             : 'hover focus',
-  title               : '',
-  delay               : 0,
-  html                : false,
-  selector            : false,
-  placement           : 'top',
-  offset              : 0,
-  container           : false,
-  fallbackPlacement   : 'flip',
-  boundary            : 'scrollParent'
+  animation         : true,
+  template          : '<div class="tooltip" role="tooltip">' +
+                    '<div class="arrow"></div>' +
+                    '<div class="tooltip-inner"></div></div>',
+  trigger           : 'hover focus',
+  title             : '',
+  delay             : 0,
+  html              : false,
+  selector          : false,
+  placement         : 'top',
+  offset            : 0,
+  container         : false,
+  fallbackPlacement : 'flip',
+  boundary          : 'scrollParent'
 }
 
 const HoverState = {
@@ -244,8 +244,9 @@ class Tooltip {
     if (this.isWithContent() && this._isEnabled) {
       $(this.element).trigger(showEvent)
 
+      const shadowRoot = Util.findShadowRoot(this.element)
       const isInTheDom = $.contains(
-        this.element.ownerDocument.documentElement,
+        shadowRoot !== null ? shadowRoot : this.element.ownerDocument.documentElement,
         this.element
       )
 
@@ -272,8 +273,7 @@ class Tooltip {
       const attachment = this._getAttachment(placement)
       this.addAttachmentClass(attachment)
 
-      const container = this.config.container === false ? document.body : $(document).find(this.config.container)
-
+      const container = this._getContainer()
       $(tip).data(this.constructor.DATA_KEY, this)
 
       if (!$.contains(this.element.ownerDocument.documentElement, this.tip)) {
@@ -303,9 +303,7 @@ class Tooltip {
             this._handlePopperPlacementChange(data)
           }
         },
-        onUpdate: (data) => {
-          this._handlePopperPlacementChange(data)
-        }
+        onUpdate: (data) => this._handlePopperPlacementChange(data)
       })
 
       $(tip).addClass(ClassName.SHOW)
@@ -452,6 +450,18 @@ class Tooltip {
 
   // Private
 
+  _getContainer() {
+    if (this.config.container === false) {
+      return document.body
+    }
+
+    if (Util.isElement(this.config.container)) {
+      return $(this.config.container)
+    }
+
+    return $(document).find(this.config.container)
+  }
+
   _getAttachment(placement) {
     return AttachmentMap[placement.toUpperCase()]
   }
@@ -510,19 +520,19 @@ class Tooltip {
 
   _fixTitle() {
     const titleType = typeof this.element.getAttribute('data-original-title')
-    if (this.element.getAttribute('title') ||
-        titleType !== 'string') {
+
+    if (this.element.getAttribute('title') || titleType !== 'string') {
       this.element.setAttribute(
         'data-original-title',
         this.element.getAttribute('title') || ''
       )
+
       this.element.setAttribute('title', '')
     }
   }
 
   _enter(event, context) {
     const dataKey = this.constructor.DATA_KEY
-
     context = context || $(event.currentTarget).data(dataKey)
 
     if (!context) {
@@ -539,8 +549,7 @@ class Tooltip {
       ] = true
     }
 
-    if ($(context.getTipElement()).hasClass(ClassName.SHOW) ||
-        context._hoverState === HoverState.SHOW) {
+    if ($(context.getTipElement()).hasClass(ClassName.SHOW) || context._hoverState === HoverState.SHOW) {
       context._hoverState = HoverState.SHOW
       return
     }
@@ -563,7 +572,6 @@ class Tooltip {
 
   _leave(event, context) {
     const dataKey = this.constructor.DATA_KEY
-
     context = context || $(event.currentTarget).data(dataKey)
 
     if (!context) {
@@ -673,9 +681,11 @@ class Tooltip {
   _fixTransition() {
     const tip = this.getTipElement()
     const initConfigAnimation = this.config.animation
+
     if (tip.getAttribute('x-placement') !== null) {
       return
     }
+
     $(tip).removeClass(ClassName.FADE)
     this.config.animation = false
     this.hide()

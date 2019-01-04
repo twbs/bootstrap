@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap scrollspy.js v4.1.3 (https://getbootstrap.com/)
+  * Bootstrap scrollspy.js v4.2.1 (https://getbootstrap.com/)
   * Copyright 2011-2018 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
   */
@@ -63,20 +63,13 @@
   }
 
   /**
-   * --------------------------------------------------------------------------
-   * Bootstrap (v4.1.3): scrollspy.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
-   * --------------------------------------------------------------------------
-   */
-
-  /**
    * ------------------------------------------------------------------------
    * Constants
    * ------------------------------------------------------------------------
    */
 
   var NAME = 'scrollspy';
-  var VERSION = '4.1.3';
+  var VERSION = '4.2.1';
   var DATA_KEY = 'bs.scrollspy';
   var EVENT_KEY = "." + DATA_KEY;
   var DATA_API_KEY = '.data-api';
@@ -277,12 +270,10 @@
 
       this._clear();
 
-      var queries = this._selector.split(','); // eslint-disable-next-line arrow-body-style
-
-
-      queries = queries.map(function (selector) {
-        return selector + "[data-target=\"" + target + "\"]," + (selector + "[href=\"" + target + "\"]");
+      var queries = this._selector.split(',').map(function (selector) {
+        return selector + "[data-target=\"" + target + "\"]," + selector + "[href=\"" + target + "\"]";
       });
+
       var $link = $([].slice.call(document.querySelectorAll(queries.join(','))));
 
       if ($link.hasClass(ClassName.DROPDOWN_ITEM)) {
@@ -304,8 +295,11 @@
     };
 
     _proto._clear = function _clear() {
-      var nodes = [].slice.call(document.querySelectorAll(this._selector));
-      $(nodes).filter(Selector.ACTIVE).removeClass(ClassName.ACTIVE);
+      [].slice.call(document.querySelectorAll(this._selector)).filter(function (node) {
+        return node.classList.contains(ClassName.ACTIVE);
+      }).forEach(function (node) {
+        return node.classList.remove(ClassName.ACTIVE);
+      });
     }; // Static
 
 

@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap modal.js v4.1.3 (https://getbootstrap.com/)
+  * Bootstrap modal.js v4.2.1 (https://getbootstrap.com/)
   * Copyright 2011-2018 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
   */
@@ -63,20 +63,13 @@
   }
 
   /**
-   * --------------------------------------------------------------------------
-   * Bootstrap (v4.1.3): modal.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
-   * --------------------------------------------------------------------------
-   */
-
-  /**
    * ------------------------------------------------------------------------
    * Constants
    * ------------------------------------------------------------------------
    */
 
   var NAME = 'modal';
-  var VERSION = '4.1.3';
+  var VERSION = '4.2.1';
   var DATA_KEY = 'bs.modal';
   var EVENT_KEY = "." + DATA_KEY;
   var DATA_API_KEY = '.data-api';
@@ -179,8 +172,6 @@
       this._setScrollbar();
 
       this._adjustDialog();
-
-      $(document.body).addClass(ClassName.OPEN);
 
       this._setEscapeEvent();
 
@@ -294,6 +285,8 @@
 
       this._element.removeAttribute('aria-hidden');
 
+      this._element.setAttribute('aria-modal', true);
+
       this._element.scrollTop = 0;
 
       if (transition) {
@@ -372,6 +365,8 @@
       this._element.style.display = 'none';
 
       this._element.setAttribute('aria-hidden', true);
+
+      this._element.removeAttribute('aria-modal');
 
       this._isTransitioning = false;
 
@@ -516,6 +511,8 @@
         var calculatedPadding = $(document.body).css('padding-right');
         $(document.body).data('padding-right', actualPadding).css('padding-right', parseFloat(calculatedPadding) + this._scrollbarWidth + "px");
       }
+
+      $(document.body).addClass(ClassName.OPEN);
     };
 
     _proto._resetScrollbar = function _resetScrollbar() {

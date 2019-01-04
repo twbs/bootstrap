@@ -20,7 +20,7 @@
   },
   "extends": "../../../.eslintrc.json",
   "rules": {
-    "no-console": "off",
+    "no-console": "error",
     // Best Practices
     "consistent-return": "off",
     "no-magic-numbers": "off",

@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap carousel.js v4.1.3 (https://getbootstrap.com/)
+  * Bootstrap carousel.js v4.2.1 (https://getbootstrap.com/)
   * Copyright 2011-2018 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
   */
@@ -69,7 +69,7 @@
    */
 
   var NAME = 'carousel';
-  var VERSION = '4.1.3';
+  var VERSION = '4.2.1';
   var DATA_KEY = 'bs.carousel';
   var EVENT_KEY = "." + DATA_KEY;
   var DATA_API_KEY = '.data-api';
@@ -113,10 +113,7 @@
     TOUCHMOVE: "touchmove" + EVENT_KEY,
     TOUCHEND: "touchend" + EVENT_KEY,
     POINTERDOWN: "pointerdown" + EVENT_KEY,
-    POINTERMOVE: "pointermove" + EVENT_KEY,
     POINTERUP: "pointerup" + EVENT_KEY,
-    POINTERLEAVE: "pointerleave" + EVENT_KEY,
-    POINTERCANCEL: "pointercancel" + EVENT_KEY,
     DRAG_START: "dragstart" + EVENT_KEY,
     LOAD_DATA_API: "load" + EVENT_KEY + DATA_API_KEY,
     CLICK_DATA_API: "click" + EVENT_KEY + DATA_API_KEY
@@ -323,7 +320,7 @@
       }
 
       var start = function start(event) {
-        if (_this3._pointerEvent && (event.originalEvent.pointerType === PointerType.TOUCH || event.originalEvent.pointerType === PointerType.PEN)) {
+        if (_this3._pointerEvent && PointerType[event.originalEvent.pointerType.toUpperCase()]) {
           _this3.touchStartX = event.originalEvent.clientX;
         } else if (!_this3._pointerEvent) {
           _this3.touchStartX = event.originalEvent.touches[0].clientX;
@@ -340,7 +337,7 @@
       };
 
       var end = function end(event) {
-        if (_this3._pointerEvent && (event.originalEvent.pointerType === PointerType.TOUCH || event.originalEvent.pointerType === PointerType.PEN)) {
+        if (_this3._pointerEvent && PointerType[event.originalEvent.pointerType.toUpperCase()]) {
           _this3.touchDeltaX = event.originalEvent.clientX - _this3.touchStartX;
         }
 
