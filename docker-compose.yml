@@ -1,0 +1,18 @@
+version: '3'
+services:
+  app:
+    image: jekyll/jekyll
+    volumes:
+      - .:/app
+      - /usr/local/bundle
+    working_dir: /app
+    ports:
+      - 9001:9001
+    command:
+      - bash
+      - -c
+      - |
+        set -ex
+        bundle install -j 4
+        npm install
+        npm start

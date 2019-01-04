@@ -124,6 +124,11 @@ Documentation search is powered by [Algolia's DocSearch](https://community.algol
 
 Learn more about using Jekyll by reading its [documentation](https://jekyllrb.com/docs/).
 
+### Running documentation in Docker
+
+1. Setup [Docker](https://docker.com)
+2. Run `docker-compose up` to setup Jekyll, Node.js dependencies and start serving documentation.
+
 ### Documentation for previous releases
 
 - For v2.3.2: <https://getbootstrap.com/2.3.2/>
