@@ -1080,7 +1080,7 @@ $(function () {
         offset: getOffset
       })
 
-    var tooltip = $trigger.data('bs.tooltip')
+    var tooltip = Tooltip._getInstance($trigger[0])
     var offset = tooltip._getOffset()
 
     assert.ok(typeof offset.offset === 'undefined')
@@ -1097,7 +1097,7 @@ $(function () {
         offset: myOffset
       })
 
-    var tooltip = $trigger.data('bs.tooltip')
+    var tooltip = Tooltip._getInstance($trigger[0])
     var offset = tooltip._getOffset()
 
     assert.strictEqual(offset.offset, myOffset)

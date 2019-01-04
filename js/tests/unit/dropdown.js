@@ -1391,7 +1391,7 @@ $(function () {
         offset: getOffset
       })
 
-    var dropdown = $dropdown.data('bs.dropdown')
+    var dropdown = Dropdown._getInstance($dropdown[0])
     var offset = dropdown._getOffset()
 
     assert.ok(typeof offset.offset === 'undefined')
@@ -1417,7 +1417,7 @@ $(function () {
         offset: myOffset
       })
 
-    var dropdown = $dropdown.data('bs.dropdown')
+    var dropdown = Dropdown._getInstance($dropdown[0])
     var offset = dropdown._getOffset()
 
     assert.strictEqual(offset.offset, myOffset)
