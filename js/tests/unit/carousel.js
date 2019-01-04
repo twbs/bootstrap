@@ -1335,13 +1335,13 @@ $(function () {
     assert.expect(1)
 
     var done = assert.async()
-    var spy = sinon.spy(Carousel, '_jQueryInterface')
+    var spy = sinon.spy(Carousel, '_carouselInterface')
 
     var carouselHTML = '<div class="carousel" data-ride="carousel"></div>'
     var $carousel = $(carouselHTML)
     $carousel.appendTo('#qunit-fixture')
 
-    $(window).trigger($.Event('load'))
+    window.dispatchEvent(new Event('load'))
 
     setTimeout(function () {
       assert.strictEqual(spy.called, true)

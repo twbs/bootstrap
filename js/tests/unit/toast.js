@@ -253,7 +253,7 @@ $(function () {
     var $toast = $(toastHtml)
       .bootstrapToast()
 
-    var toast = $toast.data('bs.toast')
+    var toast = Toast._getInstance($toast[0])
     assert.strictEqual(toast._config.delay, defaultDelay)
   })
 })

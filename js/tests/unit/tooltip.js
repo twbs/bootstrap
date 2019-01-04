@@ -1080,7 +1080,7 @@ $(function () {
         offset: getOffset
       })
 
-    var tooltip = $trigger.data('bs.tooltip')
+    var tooltip = Tooltip._getInstance($trigger[0])
     var offset = tooltip._getOffset()
 
     assert.ok(typeof offset.offset === 'undefined')
@@ -1097,7 +1097,7 @@ $(function () {
         offset: myOffset
       })
 
-    var tooltip = $trigger.data('bs.tooltip')
+    var tooltip = Tooltip._getInstance($trigger[0])
     var offset = tooltip._getOffset()
 
     assert.strictEqual(offset.offset, myOffset)
@@ -1113,7 +1113,7 @@ $(function () {
         sanitize: false
       })
 
-    var tooltip = $trigger.data('bs.tooltip')
+    var tooltip = Tooltip._getInstance($trigger[0])
     assert.strictEqual(tooltip.config.sanitize, false)
   })
 
@@ -1131,7 +1131,7 @@ $(function () {
         ].join('')
       })
 
-    var tooltip = $trigger.data('bs.tooltip')
+    var tooltip = Tooltip._getInstance($trigger[0])
     assert.strictEqual(tooltip.config.template.indexOf('script'), -1)
   })
 
@@ -1148,7 +1148,7 @@ $(function () {
         ].join('')
       })
 
-    var tooltip = $trigger.data('bs.tooltip')
+    var tooltip = Tooltip._getInstance($trigger[0])
     assert.strictEqual(tooltip.config.template.indexOf('onError'), -1)
   })
 
@@ -1166,7 +1166,7 @@ $(function () {
         ].join('')
       })
 
-    var tooltip = $trigger.data('bs.tooltip')
+    var tooltip = Tooltip._getInstance($trigger[0])
     assert.strictEqual(tooltip.config.template.indexOf('script'), -1)
   })
 
@@ -1185,7 +1185,7 @@ $(function () {
         }
       })
 
-    var tooltip = $trigger.data('bs.tooltip')
+    var tooltip = Tooltip._getInstance($trigger[0])
 
     assert.strictEqual(tooltip.config.template.indexOf('<a'), -1)
     assert.ok(tooltip.config.template.indexOf('span') !== -1)
@@ -1205,7 +1205,7 @@ $(function () {
         }
       })
 
-    var tooltip = $trigger.data('bs.tooltip')
+    var tooltip = Tooltip._getInstance($trigger[0])
 
     assert.ok(tooltip.config.template.indexOf('span') !== -1)
   })
@@ -1221,7 +1221,7 @@ $(function () {
         ].join('')
       })
 
-    var tooltip = $trigger.data('bs.tooltip')
+    var tooltip = Tooltip._getInstance($trigger[0])
 
     assert.ok(tooltip.config.template.indexOf('aria-pressed') !== -1)
   })
@@ -1242,7 +1242,7 @@ $(function () {
         sanitize: false
       })
 
-    var tooltip = $trigger.data('bs.tooltip')
+    var tooltip = Tooltip._getInstance($trigger[0])
     tooltip.setElementContent($element, content)
 
     assert.strictEqual($element[0].innerHTML, content)
@@ -1259,7 +1259,7 @@ $(function () {
         ].join('')
       })
 
-    var tooltip = $trigger.data('bs.tooltip')
+    var tooltip = Tooltip._getInstance($trigger[0])
 
     assert.strictEqual(tooltip.config.sanitize, true)
   })
