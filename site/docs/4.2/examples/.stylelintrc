@@ -1,5 +1,7 @@
 {
-  "extends": "../../../../.stylelintrc",
+  "extends": [
+    "stylelint-config-bootstrap/css"
+  ],
   "rules": {
     "at-rule-no-vendor-prefix": null,
     "comment-empty-line-before": null,
