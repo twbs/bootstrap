@@ -488,7 +488,8 @@ $(function () {
       assert.strictEqual($('.show').length, 0)
       done()
     })
-      .trigger($.Event('click'))
+
+    $('#secondNav')[0].click()
   })
 
   QUnit.test('should add show class to tab panes if there is a `.fade` class', function (assert) {
@@ -516,6 +517,7 @@ $(function () {
       assert.strictEqual($('.show').length, 1)
       done()
     })
-      .trigger($.Event('click'))
+
+    $('#secondNav')[0].click()
   })
 })
