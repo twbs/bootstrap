@@ -4,10 +4,11 @@ title: Introduction
 description: Get started with Bootstrap, the world's most popular framework for building responsive, mobile-first sites, with BootstrapCDN and a template starter page.
 group: getting-started
 redirect_from:
-  - /docs/
-  - /docs/4.2/
-  - /docs/4.2/getting-started/
-  - /docs/getting-started/
+  - "/docs/"
+  - "/docs/4.2/"
+  - "/docs/4.2/getting-started/"
+  - "/docs/getting-started/"
+  - "/getting-started/"
 toc: true
 ---
 
