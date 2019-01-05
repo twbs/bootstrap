@@ -143,10 +143,7 @@
     "shx": "^0.3.2",
     "sinon": "^7.2.2",
     "stylelint": "^9.9.0",
-    "stylelint-config-recommended-scss": "^3.2.0",
-    "stylelint-config-standard": "^18.2.0",
-    "stylelint-order": "^2.0.0",
-    "stylelint-scss": "^3.4.4",
+    "stylelint-config-bootstrap": "twbs/stylelint-config-bootstrap#v0.1.0",
     "uglify-js": "^3.4.9",
     "vnu-jar": "18.11.5"
   },
