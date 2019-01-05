@@ -64,7 +64,7 @@
     "js-test-karma-bundle-old": "cross-env BUNDLE=true USE_OLD_JQUERY=true npm run js-test-karma",
     "js-test-integration": "rollup --config js/tests/integration/rollup.bundle.js",
     "js-test-cloud": "cross-env BROWSER=true npm run js-test-karma",
-    "lint": "npm-run-all js-lint css-lint",
+    "lint": "npm-run-all --parallel js-lint css-lint",
     "coveralls": "shx cat js/coverage/lcov.info | coveralls",
     "docs": "npm-run-all css-docs js-docs docs-compile docs-lint",
     "docs-compile": "bundle exec jekyll build",
