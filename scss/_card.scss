@@ -258,7 +258,7 @@
 //
 
 .accordion {
-  .card {
+  > .card {
     overflow: hidden;
 
     &:not(:first-of-type) {
