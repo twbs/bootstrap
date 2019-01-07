@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.1.3): carousel.js
+ * Bootstrap (v4.2.1): carousel.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -15,7 +15,7 @@ import Util from './util'
  */
 
 const NAME                   = 'carousel'
-const VERSION                = '4.1.3'
+const VERSION                = '4.2.1'
 const DATA_KEY               = 'bs.carousel'
 const EVENT_KEY              = `.${DATA_KEY}`
 const DATA_API_KEY           = '.data-api'
@@ -531,7 +531,7 @@ class Carousel {
           throw new TypeError(`No method named "${action}"`)
         }
         data[action]()
-      } else if (_config.interval) {
+      } else if (_config.interval && _config.ride) {
         data.pause()
         data.cycle()
       }

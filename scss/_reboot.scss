@@ -297,6 +297,7 @@ label {
 //
 // Details at https://github.com/twbs/bootstrap/issues/24093
 button {
+  // stylelint-disable-next-line property-blacklist
   border-radius: 0;
 }
 
@@ -330,6 +331,14 @@ select {
   text-transform: none; // Remove the inheritance of text transform in Firefox
 }
 
+// Remove the inheritance of word-wrap in Safari.
+//
+// Details at https://github.com/twbs/bootstrap/issues/24990
+select {
+  word-wrap: normal;
+}
+
+
 // 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
 //    controls in Android 4.
 // 2. Correct the inability to style clickable types in iOS and Safari.
@@ -338,6 +347,18 @@ button,
 [type="reset"],
 [type="submit"] {
   -webkit-appearance: button; // 2
+}
+
+// Opinionated: add "hand" cursor to non-disabled button elements.
+@if $enable-pointer-cursor-for-buttons {
+  button,
+  [type="button"],
+  [type="reset"],
+  [type="submit"] {
+    &:not(:disabled) {
+      cursor: pointer;
+    }
+  }
 }
 
 // Remove inner border and padding from Firefox, but don't restore the outline like Normalize.
@@ -421,7 +442,7 @@ progress {
 }
 
 //
-// Remove the inner padding and cancel buttons in Chrome and Safari on macOS.
+// Remove the inner padding in Chrome and Safari on macOS.
 //
 
 [type="search"]::-webkit-search-decoration {
