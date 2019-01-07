@@ -10,11 +10,10 @@
   display: inline-block;
   width: $spinner-width;
   height: $spinner-height;
-  overflow: hidden;
-  text-indent: -999em;
   vertical-align: text-bottom;
   border: $spinner-border-width solid currentColor;
   border-right-color: transparent;
+  // stylelint-disable-next-line property-blacklist
   border-radius: 50%;
   animation: spinner-border .75s linear infinite;
 }
@@ -42,10 +41,9 @@
   display: inline-block;
   width: $spinner-width;
   height: $spinner-height;
-  overflow: hidden;
-  text-indent: -999em;
   vertical-align: text-bottom;
   background-color: currentColor;
+  // stylelint-disable-next-line property-blacklist
   border-radius: 50%;
   opacity: 0;
   animation: spinner-grow .75s linear infinite;

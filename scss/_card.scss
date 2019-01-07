@@ -43,7 +43,7 @@
 }
 
 .card-subtitle {
-  margin-top: -($card-spacer-y / 2);
+  margin-top: -$card-spacer-y / 2;
   margin-bottom: 0;
 }
 
@@ -99,15 +99,15 @@
 //
 
 .card-header-tabs {
-  margin-right: -($card-spacer-x / 2);
+  margin-right: -$card-spacer-x / 2;
   margin-bottom: -$card-spacer-y;
-  margin-left: -($card-spacer-x / 2);
+  margin-left: -$card-spacer-x / 2;
   border-bottom: 0;
 }
 
 .card-header-pills {
-  margin-right: -($card-spacer-x / 2);
-  margin-left: -($card-spacer-x / 2);
+  margin-right: -$card-spacer-x / 2;
+  margin-left: -$card-spacer-x / 2;
 }
 
 // Card image
@@ -195,53 +195,33 @@
 
       // Handle rounded corners
       @if $enable-rounded {
-        &:first-child {
+        &:not(:last-child) {
           @include border-right-radius(0);
 
           .card-img-top,
           .card-header {
+            // stylelint-disable-next-line property-blacklist
             border-top-right-radius: 0;
           }
           .card-img-bottom,
           .card-footer {
+            // stylelint-disable-next-line property-blacklist
             border-bottom-right-radius: 0;
           }
         }
 
-        &:last-child {
+        &:not(:first-child) {
           @include border-left-radius(0);
 
           .card-img-top,
           .card-header {
+            // stylelint-disable-next-line property-blacklist
             border-top-left-radius: 0;
           }
           .card-img-bottom,
           .card-footer {
+            // stylelint-disable-next-line property-blacklist
             border-bottom-left-radius: 0;
-          }
-        }
-
-        &:only-child {
-          @include border-radius($card-border-radius);
-
-          .card-img-top,
-          .card-header {
-            @include border-top-radius($card-border-radius);
-          }
-          .card-img-bottom,
-          .card-footer {
-            @include border-bottom-radius($card-border-radius);
-          }
-        }
-
-        &:not(:first-child):not(:last-child):not(:only-child) {
-          @include border-radius(0);
-
-          .card-img-top,
-          .card-img-bottom,
-          .card-header,
-          .card-footer {
-            @include border-radius(0);
           }
         }
       }
@@ -278,29 +258,27 @@
 //
 
 .accordion {
-  .card {
+  > .card {
     overflow: hidden;
 
     &:not(:first-of-type) {
       .card-header:first-child {
-        border-radius: 0;
+        @include border-radius(0);
       }
 
       &:not(:last-of-type) {
         border-bottom: 0;
-        border-radius: 0;
+        @include border-radius(0);
       }
     }
 
     &:first-of-type {
       border-bottom: 0;
-      border-bottom-right-radius: 0;
-      border-bottom-left-radius: 0;
+      @include border-bottom-radius(0);
     }
 
     &:last-of-type {
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
+      @include border-top-radius(0);
     }
 
     .card-header {
