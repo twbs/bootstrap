@@ -114,6 +114,7 @@ $enable-transitions:                          true !default;
 $enable-prefers-reduced-motion-media-query:   true !default;
 $enable-hover-media-query:                    false !default; // Deprecated, no longer affects any compiled CSS
 $enable-grid-classes:                         true !default;
+$enable-pointer-cursor-for-buttons:           true !default;
 $enable-print-styles:                         true !default;
 $enable-validation-icons:                     true !default;
 
@@ -281,8 +282,8 @@ $font-family-base:            $font-family-sans-serif !default;
 // stylelint-enable value-keyword-case
 
 $font-size-base:              1rem !default; // Assumes the browser default, typically `16px`
-$font-size-lg:                ($font-size-base * 1.25) !default;
-$font-size-sm:                ($font-size-base * .875) !default;
+$font-size-lg:                $font-size-base * 1.25 !default;
+$font-size-sm:                $font-size-base * .875 !default;
 
 $font-weight-lighter:         lighter !default;
 $font-weight-light:           300 !default;
@@ -317,7 +318,7 @@ $display3-weight:             300 !default;
 $display4-weight:             300 !default;
 $display-line-height:         $headings-line-height !default;
 
-$lead-font-size:              ($font-size-base * 1.25) !default;
+$lead-font-size:              $font-size-base * 1.25 !default;
 $lead-font-weight:            300 !default;
 
 $small-font-size:             80% !default;
@@ -326,7 +327,7 @@ $text-muted:                  $gray-600 !default;
 
 $blockquote-small-color:      $gray-600 !default;
 $blockquote-small-font-size:  $small-font-size !default;
-$blockquote-font-size:        ($font-size-base * 1.25) !default;
+$blockquote-font-size:        $font-size-base * 1.25 !default;
 
 $hr-border-color:             rgba($black, .1) !default;
 $hr-border-width:             $border-width !default;
@@ -590,7 +591,7 @@ $custom-select-box-shadow:          inset 0 1px 2px rgba($black, .075) !default;
 
 $custom-select-focus-border-color:  $input-focus-border-color !default;
 $custom-select-focus-width:         $input-focus-width !default;
-$custom-select-focus-box-shadow:    0 0 0 $custom-select-focus-width rgba($custom-select-focus-border-color, .5) !default;
+$custom-select-focus-box-shadow:    0 0 0 $custom-select-focus-width $input-btn-focus-color !default;
 
 $custom-select-padding-y-sm:        $input-padding-y-sm !default;
 $custom-select-padding-x-sm:        $input-padding-x-sm !default;
@@ -960,7 +961,7 @@ $alert-color-level:                 6 !default;
 // Progress bars
 
 $progress-height:                   1rem !default;
-$progress-font-size:                ($font-size-base * .75) !default;
+$progress-font-size:                $font-size-base * .75 !default;
 $progress-bg:                       $gray-200 !default;
 $progress-border-radius:            $border-radius !default;
 $progress-box-shadow:               inset 0 .1rem .1rem rgba($black, .1) !default;
