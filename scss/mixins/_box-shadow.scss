@@ -1,5 +1,14 @@
 @mixin box-shadow($shadow...) {
   @if $enable-shadows {
-    box-shadow: $shadow;
+    $result: ();
+
+    @for $i from 1 through length($shadow) {
+      @if nth($shadow, $i) != "none" {
+        $result: append($result, nth($shadow, $i), "comma");
+      }
+    }
+    @if (length($result) > 0) {
+      box-shadow: $result;
+    }
   }
 }
