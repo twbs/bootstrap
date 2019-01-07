@@ -100,6 +100,22 @@ Add `.list-group-flush` to remove some borders and rounded corners to render lis
 {% endcapture %}
 {% include example.html content=example %}
 
+## Horizontal
+
+Add `.list-group-horizontal` to change the layout of list group items from vertical to horizontal across all breakpoints. Alternatively, choose a responsive variant `.list-group-horizontal-{sm|md|lg|xl}` to make a list group horizontal starting at that breakpoint's `min-width`. Currently **horizontal list groups cannot be combined with flush list groups.**
+
+**ProTip:** Want equal-width list group items when horizontal? Add `.flex-fill` to each list group item.
+
+{% for bp in site.data.breakpoints %}
+{% capture example %}
+<ul class="list-group list-group-horizontal{{ bp.abbr }}">
+  <li class="list-group-item">Cras justo odio</li>
+  <li class="list-group-item">Dapibus ac facilisis in</li>
+  <li class="list-group-item">Morbi leo risus</li>
+</ul>
+{% endcapture %}
+{% include example.html content=example %}{% endfor %}
+
 ## Contextual classes
 
 Use contextual classes to style list items with a stateful background and color.

@@ -246,6 +246,9 @@
 .bd-example > .list-group {
   max-width: 400px;
 }
+.bd-example > [class*="list-group-horizontal"] {
+  max-width: 100%;
+}
 
 // Navbars
 .bd-example {
