@@ -1,13 +1,13 @@
 /*!
   * Bootstrap popover.js v4.2.1 (https://getbootstrap.com/)
-  * Copyright 2011-2018 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Copyright 2011-2019 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
   */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('jquery'), require('./tooltip.js')) :
   typeof define === 'function' && define.amd ? define(['jquery', './tooltip.js'], factory) :
-  (global.Popover = factory(global.jQuery,global.Tooltip));
-}(this, (function ($,Tooltip) { 'use strict';
+  (global = global || self, global.Popover = factory(global.jQuery, global.Tooltip));
+}(this, function ($, Tooltip) { 'use strict';
 
   $ = $ && $.hasOwnProperty('default') ? $['default'] : $;
   Tooltip = Tooltip && Tooltip.hasOwnProperty('default') ? Tooltip['default'] : Tooltip;
@@ -158,8 +158,8 @@
 
       this.setElementContent($tip.find(Selector.CONTENT), content);
       $tip.removeClass(ClassName.FADE + " " + ClassName.SHOW);
-    }; // Private
-
+    } // Private
+    ;
 
     _proto._getContent = function _getContent() {
       return this.element.getAttribute('data-content') || this.config.content;
@@ -172,8 +172,8 @@
       if (tabClass !== null && tabClass.length > 0) {
         $tip.removeClass(tabClass.join(''));
       }
-    }; // Static
-
+    } // Static
+    ;
 
     Popover._jQueryInterface = function _jQueryInterface(config) {
       return this.each(function () {
@@ -257,5 +257,5 @@
 
   return Popover;
 
-})));
+}));
 //# sourceMappingURL=popover.js.map
