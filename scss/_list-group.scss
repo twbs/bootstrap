@@ -84,24 +84,22 @@
   @include media-breakpoint-up($breakpoint) {
     $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
-    @each $value in $displays {
-      .list-group-horizontal#{$infix} {
-        flex-direction: row;
+    .list-group-horizontal#{$infix} {
+      flex-direction: row;
 
-        .list-group-item {
-          margin-right: -$list-group-border-width;
-          margin-bottom: 0;
+      .list-group-item {
+        margin-right: -$list-group-border-width;
+        margin-bottom: 0;
 
-          &:first-child {
-            @include border-left-radius($list-group-border-radius);
-            @include border-top-right-radius(0);
-          }
+        &:first-child {
+          @include border-left-radius($list-group-border-radius);
+          @include border-top-right-radius(0);
+        }
 
-          &:last-child {
-            margin-right: 0;
-            @include border-right-radius($list-group-border-radius);
-            @include border-bottom-left-radius(0);
-          }
+        &:last-child {
+          margin-right: 0;
+          @include border-right-radius($list-group-border-radius);
+          @include border-bottom-left-radius(0);
         }
       }
     }
