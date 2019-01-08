@@ -24,6 +24,7 @@
 
   // Hover state
   @include hover-focus {
+    z-index: 1; // Place hover/focus items above their siblings for proper border styling
     color: $list-group-action-hover-color;
     text-decoration: none;
     background-color: $list-group-hover-bg;
@@ -56,11 +57,6 @@
   &:last-child {
     margin-bottom: 0;
     @include border-bottom-radius($list-group-border-radius);
-  }
-
-  @include hover-focus {
-    z-index: 1; // Place hover/active items above their siblings for proper border styling
-    text-decoration: none;
   }
 
   &.disabled,
