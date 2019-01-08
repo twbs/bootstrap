@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {{ block "head" . }}
+      {{ partial "header" . }}
+    {{ end }}
+  </head>
+  <body>
+    {{ partial "skippy" . }}
+
+    {{ partial "docs-navbar" . }}
+
+    {{ block "header" . }}
+    <header class="d-flex flex-column flex-md-row align-items-md-center p-5 bg-light">
+      <div class="pt-md-3 pb-md-4">
+        <h1 class="bd-title mt-0">{{ .Title | markdownify }}</h1>
+        <p class="bd-lead">{{ .Page.Params.Description | markdownify }}</p>
+        {{ if eq .Title "Examples" }}
+        <a href="{{ .Site.Params.download.source }}" class="btn btn-lg btn-bd-primary" onclick="ga('send', 'event', 'Examples', 'Hero', 'Download');">Download source code</a>
+        {{ end }}
+      </div>
+      {{ partial "ads" . }}
+    </header>
+    {{ end }}
+
+    {{ block "main" . }}
+      <main class="bd-content p-5" id="content" role="main">
+        {{ .Content }}
+      </main>
+    {{ end }}
+
+    {{ partial "footer" . }}
+    {{ partial "scripts" . }}
+  </body>
+</html>
