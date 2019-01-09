@@ -1,13 +1,13 @@
 /*!
   * Bootstrap tooltip.js v4.2.1 (https://getbootstrap.com/)
-  * Copyright 2011-2018 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Copyright 2011-2019 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
   */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('jquery'), require('popper.js'), require('./util.js')) :
   typeof define === 'function' && define.amd ? define(['jquery', 'popper.js', './util.js'], factory) :
-  (global.Tooltip = factory(global.jQuery,global.Popper,global.Util));
-}(this, (function ($,Popper,Util) { 'use strict';
+  (global = global || self, global.Tooltip = factory(global.jQuery, global.Popper, global.Util));
+}(this, function ($, Popper, Util) { 'use strict';
 
   $ = $ && $.hasOwnProperty('default') ? $['default'] : $;
   Popper = Popper && Popper.hasOwnProperty('default') ? Popper['default'] : Popper;
@@ -405,8 +405,8 @@
       if (this._popper !== null) {
         this._popper.scheduleUpdate();
       }
-    }; // Protected
-
+    } // Protected
+    ;
 
     _proto.isWithContent = function isWithContent() {
       return Boolean(this.getTitle());
@@ -452,8 +452,8 @@
       }
 
       return title;
-    }; // Private
-
+    } // Private
+    ;
 
     _proto._getContainer = function _getContainer() {
       if (this.config.container === false) {
@@ -657,8 +657,8 @@
       this.hide();
       this.show();
       this.config.animation = initConfigAnimation;
-    }; // Static
-
+    } // Static
+    ;
 
     Tooltip._jQueryInterface = function _jQueryInterface(config) {
       return this.each(function () {
@@ -741,5 +741,5 @@
 
   return Tooltip;
 
-})));
+}));
 //# sourceMappingURL=tooltip.js.map

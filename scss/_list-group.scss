@@ -24,6 +24,7 @@
 
   // Hover state
   @include hover-focus {
+    z-index: 1; // Place hover/focus items above their siblings for proper border styling
     color: $list-group-action-hover-color;
     text-decoration: none;
     background-color: $list-group-hover-bg;
@@ -58,11 +59,6 @@
     @include border-bottom-radius($list-group-border-radius);
   }
 
-  @include hover-focus {
-    z-index: 1; // Place hover/active items above their siblings for proper border styling
-    text-decoration: none;
-  }
-
   &.disabled,
   &:disabled {
     color: $list-group-disabled-color;
@@ -76,6 +72,37 @@
     color: $list-group-active-color;
     background-color: $list-group-active-bg;
     border-color: $list-group-active-border-color;
+  }
+}
+
+
+// Horizontal
+//
+// Change the layout of list group items from vertical (default) to horizontal.
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    .list-group-horizontal#{$infix} {
+      flex-direction: row;
+
+      .list-group-item {
+        margin-right: -$list-group-border-width;
+        margin-bottom: 0;
+
+        &:first-child {
+          @include border-left-radius($list-group-border-radius);
+          @include border-top-right-radius(0);
+        }
+
+        &:last-child {
+          margin-right: 0;
+          @include border-right-radius($list-group-border-radius);
+          @include border-bottom-left-radius(0);
+        }
+      }
+    }
   }
 }
 
