@@ -64,7 +64,7 @@
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
-  // Fix for #26287: navbar-nav list type not being respected on refresh in Edge
+  // Fix for #26287: navbar-nav list type not being respected on refresh in IE/Edge
   list-style-image: url("data:0");
 
   .nav-link {
