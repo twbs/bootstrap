@@ -31,49 +31,60 @@
 //
 
 .rounded {
-  $enable-rounded: true;
-  @include border-radius($border-radius, $enable-rounded: true);
+  border-radius: $border-radius !important;
   &.rounded-sm {
-    @include border-radius($border-radius-sm, $enable-rounded: true);
+    border-radius: $border-radius-sm !important;
   }
   &.rounded-lg {
-    @include border-radius($border-radius-lg, $enable-rounded: true);
+    border-radius: $border-radius-lg !important;
   }
 }
 .rounded-top {
-  @include border-top-radius($border-radius, true);
+  border-top-left-radius: $border-radius !important;
+  border-top-right-radius: $border-radius !important;
   &.rounded-sm {
-    @include border-top-radius($border-radius-sm, true);
+    border-top-left-radius: $border-radius-sm !important;
+    border-top-right-radius: $border-radius-sm !important;
   }
   &.rounded-lg {
-    @include border-top-radius($border-radius-lg, true);
+    border-top-left-radius: $border-radius-lg !important;
+    border-top-right-radius: $border-radius-lg !important;
   }
 }
 .rounded-right {
-  @include border-right-radius($border-radius, true);
+  border-top-right-radius: $border-radius !important;
+  border-bottom-right-radius: $border-radius !important;
   &.rounded-sm {
-    @include border-right-radius($border-radius-sm, true);
+    border-top-right-radius: $border-radius-sm !important;
+    border-bottom-right-radius: $border-radius-sm !important;
   }
   &.rounded-lg {
-    @include border-right-radius($border-radius-lg, true);
+    border-top-right-radius: $border-radius-lg !important;
+    border-bottom-right-radius: $border-radius-lg !important;
   }
 }
 .rounded-bottom {
-  @include border-bottom-radius($border-radius, true);
+  border-bottom-right-radius: $border-radius !important;
+  border-bottom-left-radius: $border-radius !important;
   &.rounded-sm {
-    @include border-bottom-radius($border-radius-sm, true);
+    border-bottom-right-radius: $border-radius-sm !important;
+    border-bottom-left-radius: $border-radius-sm !important;
   }
   &.rounded-lg {
-    @include border-bottom-radius($border-radius-lg, true);
+    border-bottom-right-radius: $border-radius-lg !important;
+    border-bottom-left-radius: $border-radius-lg !important;
   }
 }
 .rounded-left {
-  @include border-left-radius($border-radius, true);
+  border-top-left-radius: $border-radius !important;
+  border-bottom-left-radius: $border-radius !important;
   &.rounded-sm {
-    @include border-left-radius($border-radius-sm, true);
+    border-top-left-radius: $border-radius-sm !important;
+    border-bottom-left-radius: $border-radius-sm !important;
   }
   &.rounded-lg {
-    @include border-left-radius($border-radius-lg, true);
+    border-top-left-radius: $border-radius-lg !important;
+    border-bottom-left-radius: $border-radius-lg !important;
   }
 }
 
