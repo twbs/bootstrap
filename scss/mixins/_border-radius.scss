@@ -1,7 +1,7 @@
 // stylelint-disable property-blacklist
 // Single side border-radius
 
-@mixin border-radius($radius: $border-radius, $fallback-border-radius: false, $enable-rounded: $enable-rounded) {
+@mixin border-radius($radius: $border-radius, $fallback-border-radius: false) {
   @if $enable-rounded {
     border-radius: $radius;
   }
@@ -10,41 +10,41 @@
   }
 }
 
-@mixin border-top-radius($radius, $enable-rounded: $enable-rounded) {
+@mixin border-top-radius($radius) {
   @if $enable-rounded {
     border-top-left-radius: $radius;
     border-top-right-radius: $radius;
   }
 }
 
-@mixin border-right-radius($radius, $enable-rounded: $enable-rounded) {
+@mixin border-right-radius($radius) {
   @if $enable-rounded {
     border-top-right-radius: $radius;
     border-bottom-right-radius: $radius;
   }
 }
 
-@mixin border-bottom-radius($radius, $enable-rounded: $enable-rounded) {
+@mixin border-bottom-radius($radius) {
   @if $enable-rounded {
     border-bottom-right-radius: $radius;
     border-bottom-left-radius: $radius;
   }
 }
 
-@mixin border-left-radius($radius, $enable-rounded: $enable-rounded) {
+@mixin border-left-radius($radius) {
   @if $enable-rounded {
     border-top-left-radius: $radius;
     border-bottom-left-radius: $radius;
   }
 }
 
-@mixin border-top-right-radius($radius, $enable-rounded: $enable-rounded) {
+@mixin border-top-right-radius($radius) {
   @if $enable-rounded {
     border-top-right-radius: $radius;
   }
 }
 
-@mixin border-bottom-left-radius($radius, $enable-rounded: $enable-rounded) {
+@mixin border-bottom-left-radius($radius) {
   @if $enable-rounded {
     border-bottom-left-radius: $radius;
   }
