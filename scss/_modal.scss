@@ -50,6 +50,24 @@
   }
 }
 
+.modal-dialog-scrollable {
+  display: flex; // IE10/11
+
+  .modal-content {
+    max-height: calc(100vh - #{$modal-dialog-margin * 2});
+    overflow: hidden;
+  }
+
+  .modal-header,
+  .modal-footer {
+    flex-shrink: 0;
+  }
+
+  .modal-body {
+    overflow-y: auto;
+  }
+}
+
 .modal-dialog-centered {
   display: flex;
   align-items: center;
@@ -60,6 +78,22 @@
     display: block; // IE10
     height: calc(100vh - #{$modal-dialog-margin * 2});
     content: "";
+  }
+
+  // Ensure `.modal-body` shows scrollbar (IE10/11)
+  &.modal-dialog-scrollable {
+    flex-direction: column;
+    justify-content: center;
+    height: calc(100vh - #{$modal-dialog-margin * 2});
+    overflow: hidden;
+
+    .modal-content {
+      max-height: none;
+    }
+
+    &::before {
+      content: none;
+    }
   }
 }
 
@@ -159,10 +193,15 @@
     margin: $modal-dialog-margin-y-sm-up auto;
   }
 
+  .modal-dialog-scrollable .modal-content {
+    max-height: calc(100vh - #{$modal-dialog-margin-y-sm-up * 2});
+  }
+
   .modal-dialog-centered {
     min-height: calc(100% - #{$modal-dialog-margin-y-sm-up * 2});
 
-    &::before {
+    &::before,
+    &.modal-dialog-scrollable {
       height: calc(100vh - #{$modal-dialog-margin-y-sm-up * 2});
     }
   }
