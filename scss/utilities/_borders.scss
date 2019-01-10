@@ -30,62 +30,36 @@
 // Border-radius
 //
 
+.rounded-sm {
+  border-radius: $border-radius-sm !important;
+}
+
 .rounded {
   border-radius: $border-radius !important;
-  &.rounded-sm {
-    border-radius: $border-radius-sm !important;
-  }
-  &.rounded-lg {
-    border-radius: $border-radius-lg !important;
-  }
 }
+
 .rounded-top {
   border-top-left-radius: $border-radius !important;
   border-top-right-radius: $border-radius !important;
-  &.rounded-sm {
-    border-top-left-radius: $border-radius-sm !important;
-    border-top-right-radius: $border-radius-sm !important;
-  }
-  &.rounded-lg {
-    border-top-left-radius: $border-radius-lg !important;
-    border-top-right-radius: $border-radius-lg !important;
-  }
 }
+
 .rounded-right {
   border-top-right-radius: $border-radius !important;
   border-bottom-right-radius: $border-radius !important;
-  &.rounded-sm {
-    border-top-right-radius: $border-radius-sm !important;
-    border-bottom-right-radius: $border-radius-sm !important;
-  }
-  &.rounded-lg {
-    border-top-right-radius: $border-radius-lg !important;
-    border-bottom-right-radius: $border-radius-lg !important;
-  }
 }
+
 .rounded-bottom {
   border-bottom-right-radius: $border-radius !important;
   border-bottom-left-radius: $border-radius !important;
-  &.rounded-sm {
-    border-bottom-right-radius: $border-radius-sm !important;
-    border-bottom-left-radius: $border-radius-sm !important;
-  }
-  &.rounded-lg {
-    border-bottom-right-radius: $border-radius-lg !important;
-    border-bottom-left-radius: $border-radius-lg !important;
-  }
 }
+
 .rounded-left {
   border-top-left-radius: $border-radius !important;
   border-bottom-left-radius: $border-radius !important;
-  &.rounded-sm {
-    border-top-left-radius: $border-radius-sm !important;
-    border-bottom-left-radius: $border-radius-sm !important;
-  }
-  &.rounded-lg {
-    border-top-left-radius: $border-radius-lg !important;
-    border-bottom-left-radius: $border-radius-lg !important;
-  }
+}
+
+.rounded-lg {
+  border-radius: $border-radius-lg !important;
 }
 
 .rounded-circle {
