@@ -166,19 +166,19 @@
     },
     {
       "path": "./dist/css/bootstrap-reboot.css",
-      "maxSize": "3 kB"
+      "maxSize": "2 kB"
     },
     {
       "path": "./dist/css/bootstrap-reboot.min.css",
-      "maxSize": "3 kB"
+      "maxSize": "2 kB"
     },
     {
       "path": "./dist/css/bootstrap.css",
-      "maxSize": "25.5 kB"
+      "maxSize": "25 kB"
     },
     {
       "path": "./dist/css/bootstrap.min.css",
-      "maxSize": "23.5 kB"
+      "maxSize": "23 kB"
     },
     {
       "path": "./dist/js/bootstrap.bundle.js",
@@ -186,15 +186,15 @@
     },
     {
       "path": "./dist/js/bootstrap.bundle.min.js",
-      "maxSize": "25 kB"
+      "maxSize": "21 kB"
     },
     {
       "path": "./dist/js/bootstrap.js",
-      "maxSize": "23 kB"
+      "maxSize": "22.5 kB"
     },
     {
       "path": "./dist/js/bootstrap.min.js",
-      "maxSize": "15 kB"
+      "maxSize": "14.5 kB"
     }
   ],
   "jspm": {
