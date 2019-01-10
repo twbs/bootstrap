@@ -242,6 +242,7 @@ You can find and customize these variables for key global options in Bootstrap's
 | `$enable-caret`                              | `true` (default) or `false`        | Enables pseudo element caret on `.dropdown-toggle`. |
 | `$enable-pointer-cursor-for-buttons`         | `true` (default) or `false`        | Add "hand" cursor to non-disabled button elements. |
 | `$enable-print-styles`                       | `true` (default) or `false`        | Enables styles for optimizing printing. |
+| `$enable-responsive-font-sizes`              | `true` or `false` (default)        | Enables [responsive font sizes]({{ site.baseurl }}/docs/{{ site.docs_version }}/content/typography/#responsive-font-sizes). |
 | `$enable-validation-icons`                   | `true` (default) or `false`        | Enables `background-image` icons within textual inputs and some custom forms for validation states. |
 | `$enable-deprecation-messages`               | `true` or `false` (default)        | Set to `true` to show warnings when using any of the deprecated mixins and functions that are planned to be removed in `v5`. |
 
