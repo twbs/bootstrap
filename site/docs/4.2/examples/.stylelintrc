@@ -1,6 +1,6 @@
 {
   "extends": [
-    "stylelint-config-bootstrap/css"
+    "stylelint-config-twbs-bootstrap/css"
   ],
   "rules": {
     "at-rule-no-vendor-prefix": null,
