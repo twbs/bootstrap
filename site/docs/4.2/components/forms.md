@@ -1109,24 +1109,32 @@ If your form layout allows it, you can swap the `.{valid|invalid}-feedback` clas
 
 ### Customizing
 
-Validation states can be customized via Sass with the `$form-validation-states` map. Located in our `_variables.scss` file, this Sass map is looped over to generate the default `valid`/`invalid` validation states. While no other states are supported by browsers, those using custom styles can easily add more complex form feedback.
+Validation states can be customized via Sass with the `$form-validation-states` map. Located in our `_variables.scss` file, this Sass map is looped over to generate the default `valid`/`invalid` validation states. Included is a nested map for customizing each state's color and icon. While no other states are supported by browsers, those using custom styles can easily add more complex form feedback.
 
 Please note that we do not recommend customizing these values without also modifying the `form-validation-state` mixin.
 
 {% highlight scss %}
 // Sass map from `_variables.scss`
-// Change this and recompile your Sass to generate different states
+// Override this and recompile your Sass to generate different states
 $form-validation-states: map-merge(
   (
-    "valid": $form-feedback-valid-color,
-    "invalid": $form-feedback-invalid-color
+    "valid": (
+      "color": $form-feedback-valid-color,
+      "icon": $form-feedback-icon-valid
+    ),
+    "invalid": (
+      "color": $form-feedback-invalid-color,
+      "icon": $form-feedback-icon-invalid
+    ),
   ),
   $form-validation-states
 );
 
 // Loop from `_forms.scss`
-@each $state, $color in $form-validation-states {
-  @include form-validation-state($state, $color);
+// Any modifications to the above Sass map will be reflected in your compiled
+// CSS via this loop.
+@each $state, $data in $form-validation-states {
+  @include form-validation-state($state, map-get($data, color), map-get($data, icon));
 }
 {% endhighlight %}
 
