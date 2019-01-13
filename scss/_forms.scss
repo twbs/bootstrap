@@ -241,8 +241,9 @@ textarea.form-control {
 // pseudo-classes but also includes `.is-invalid` and `.is-valid` classes for
 // server side validation.
 
-@include form-validation-state("valid", $form-feedback-valid-color);
-@include form-validation-state("invalid", $form-feedback-invalid-color);
+@each $state, $data in $form-validation-states {
+  @include form-validation-state($state, map-get($data, color), map-get($data, icon));
+}
 
 // Inline forms
 //
