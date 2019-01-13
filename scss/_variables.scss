@@ -542,7 +542,7 @@ $custom-control-indicator-checked-disabled-bg:  rgba(theme-color("primary"), .5)
 $custom-control-indicator-checked-box-shadow:   none !default;
 $custom-control-indicator-checked-border-color: $custom-control-indicator-checked-bg !default;
 
-$custom-control-indicator-focus-box-shadow:     $input-btn-focus-box-shadow !default;
+$custom-control-indicator-focus-box-shadow:     $input-focus-box-shadow !default;
 $custom-control-indicator-focus-border-color:   $input-focus-border-color !default;
 
 $custom-control-indicator-active-color:         $component-active-color !default;
@@ -566,8 +566,8 @@ $custom-switch-width:                           $custom-control-indicator-size *
 $custom-switch-indicator-border-radius:         $custom-control-indicator-size / 2 !default;
 $custom-switch-indicator-size:                  calc(#{$custom-control-indicator-size} - #{$custom-control-indicator-border-width * 4}) !default;
 
-$custom-select-padding-y:           $input-btn-padding-y !default;
-$custom-select-padding-x:           $input-btn-padding-x !default;
+$custom-select-padding-y:           $input-padding-y !default;
+$custom-select-padding-x:           $input-padding-x !default;
 $custom-select-font-size:           $input-font-size !default;
 $custom-select-height:              $input-height !default;
 $custom-select-indicator-padding:   1rem !default; // Extra padding to account for the presence of the background-image based indicator
