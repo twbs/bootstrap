@@ -1238,6 +1238,20 @@ A switch has the markup of a custom checkbox but uses the `.custom-switch` class
 {% endcapture %}
 {% include example.html content=example %}
 
+Add the `.right` class to render a toggle switch with label text before.
+
+{% capture example %}
+<div class="custom-control custom-switch right">
+  <input type="checkbox" class="custom-control-input" id="customSwitch3">
+  <label class="custom-control-label" for="customSwitch3">Toggle this switch element right aligned</label>
+</div>
+<div class="custom-control custom-switch right">
+  <input type="checkbox" class="custom-control-input" disabled id="customSwitch4">
+  <label class="custom-control-label" for="customSwitch4">Disabled switch element right aligned</label>
+</div>
+{% endcapture %}
+{% include example.html content=example %}
+
 ### Select menu
 
 Custom `<select>` menus need only a custom class, `.custom-select` to trigger the custom styles. Custom styles are limited to the `<select>`'s initial appearance and cannot modify the `<option>`s due to browser limitations.

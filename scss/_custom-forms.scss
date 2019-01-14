@@ -188,6 +188,22 @@
     }
   }
 
+  &.right {
+    padding-left: 0;
+    .custom-control-label {
+      padding-right: $custom-switch-width + $custom-control-gutter;
+      &::before {
+        right: 0;
+        left: auto;
+      }
+
+      &::after {
+        right: calc(#{($custom-switch-width / 2)} + #{$custom-control-indicator-border-width});
+        left: auto;
+      }
+    }
+  }
+
   .custom-control-input:checked ~ .custom-control-label {
     &::after {
       background-color: $custom-control-indicator-bg;
