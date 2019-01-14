@@ -44,7 +44,7 @@
     "js-copy": "cross-env-shell shx mkdir -p site/docs/$npm_package_version_short/dist/ && cross-env-shell shx cp -r dist/js/ site/docs/$npm_package_version_short/dist/",
     "js-main": "npm-run-all js-lint js-compile-main js-minify-main",
     "js-docs": "npm-run-all js-lint-docs js-minify-docs",
-    "js-compile": "npm-run-all --parallel js-compile-* --sequential js-copy",
+    "js-compile": "shx rm -rf js/dist/* && npm-run-all --parallel js-compile-* --sequential js-copy",
     "js-compile-standalone": "rollup --environment BUNDLE:false --config build/rollup.config.js --sourcemap",
     "js-compile-bundle": "rollup --environment BUNDLE:true --config build/rollup.config.js --sourcemap",
     "js-compile-plugins": "node build/build-plugins.js",
