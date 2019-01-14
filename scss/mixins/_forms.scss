@@ -26,7 +26,7 @@
 }
 
 
-@mixin form-validation-state($state, $color) {
+@mixin form-validation-state($state, $color, $icon) {
   .#{$state}-feedback {
     display: none;
     width: 100%;
@@ -57,15 +57,10 @@
 
       @if $enable-validation-icons {
         padding-right: $input-height-inner;
+        background-image: $icon;
         background-repeat: no-repeat;
         background-position: center right calc(#{$input-height-inner} / 4);
         background-size: calc(#{$input-height-inner} / 2) calc(#{$input-height-inner} / 2);
-
-        @if $state == "valid" {
-          background-image: $form-feedback-icon-valid;
-        } @else {
-          background-image: $form-feedback-icon-invalid;
-        }
       }
 
       &:focus {
@@ -97,9 +92,8 @@
       border-color: $color;
 
       @if $enable-validation-icons {
-        $form-feedback-icon: if($state == "valid", $form-feedback-icon-valid, $form-feedback-icon-invalid);
         padding-right: $custom-select-feedback-icon-padding-right;
-        background: $custom-select-background, $form-feedback-icon no-repeat $custom-select-feedback-icon-position / $custom-select-feedback-icon-size;
+        background: $custom-select-background, $icon no-repeat $custom-select-feedback-icon-position / $custom-select-feedback-icon-size;
       }
 
       &:focus {
