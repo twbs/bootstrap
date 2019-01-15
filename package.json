@@ -42,7 +42,7 @@
     "css-prefix-docs": "postcss --config build/postcss.config.js --replace \"site/docs/**/*.css\" \"site/docs/**/*.css\"",
     "js": "npm-run-all js-compile js-minify js-copy",
     "js-copy": "cross-env-shell shx mkdir -p site/docs/$npm_package_version_short/dist/ && cross-env-shell shx cp -r dist/js/ site/docs/$npm_package_version_short/dist/",
-    "js-main": "npm-run-all js-lint js-compile-main js-minify-main",
+    "js-main": "npm-run-all js-lint js-compile js-minify-main",
     "js-docs": "npm-run-all js-lint-docs js-minify-docs",
     "js-compile": "npm-run-all --parallel js-compile-* --sequential js-copy",
     "js-compile-standalone": "rollup --environment BUNDLE:false --config build/rollup.config.js --sourcemap",
