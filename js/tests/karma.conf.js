@@ -114,7 +114,7 @@ if (bundle) {
   conf.customLaunchers = customLaunchers
   conf.detectBrowsers = detectBrowsers
   conf.coverageIstanbulReporter = {
-    dir: '../coverage',
+    dir: '../coverage/',
     reports: ['lcov', 'text-summary'],
     thresholds: {
       emitWarning: false,
