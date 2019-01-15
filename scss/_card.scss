@@ -280,6 +280,11 @@
     &:last-of-type {
       @include border-top-radius(0);
     }
+    
+    &:first-of-type:last-of-type {
+      border-bottom: $card-border-width solid $card-border-color;
+      @include border-radius($card-border-radius);
+    }
 
     .card-header {
       margin-bottom: -$card-border-width;
