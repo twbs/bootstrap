@@ -42,7 +42,7 @@
     "css-prefix-docs": "postcss --config build/postcss.config.js --replace \"site/docs/**/*.css\" \"site/docs/**/*.css\"",
     "js": "npm-run-all js-compile js-minify js-copy",
     "js-copy": "cross-env-shell shx mkdir -p site/docs/$npm_package_version_short/dist/ && cross-env-shell shx cp -r dist/js/ site/docs/$npm_package_version_short/dist/",
-    "js-main": "npm-run-all js-lint js-compile-main js-minify-main",
+    "js-main": "npm-run-all js-lint js-compile js-minify-main",
     "js-docs": "npm-run-all js-lint-docs js-minify-docs",
     "js-compile": "npm-run-all --parallel js-compile-* --sequential js-copy",
     "js-compile-standalone": "rollup --environment BUNDLE:false --config build/rollup.config.js --sourcemap",
@@ -135,15 +135,15 @@
     "popper.js": "^1.14.6",
     "postcss-cli": "^6.1.1",
     "qunit": "^2.9.1",
-    "rollup": "^1.0.2",
-    "rollup-plugin-babel": "^4.2.0",
+    "rollup": "^1.1.0",
+    "rollup-plugin-babel": "^4.3.0",
     "rollup-plugin-commonjs": "^9.2.0",
     "rollup-plugin-node-resolve": "^4.0.0",
     "shelljs": "^0.8.3",
     "shx": "^0.3.2",
     "sinon": "^7.2.2",
     "stylelint": "^9.9.0",
-    "stylelint-config-bootstrap": "twbs/stylelint-config-bootstrap#v0.1.0",
+    "stylelint-config-twbs-bootstrap": "^0.2.1",
     "uglify-js": "^3.4.9",
     "vnu-jar": "18.11.5"
   },
@@ -166,19 +166,19 @@
     },
     {
       "path": "./dist/css/bootstrap-reboot.css",
-      "maxSize": "3 kB"
+      "maxSize": "2 kB"
     },
     {
       "path": "./dist/css/bootstrap-reboot.min.css",
-      "maxSize": "3 kB"
+      "maxSize": "2 kB"
     },
     {
       "path": "./dist/css/bootstrap.css",
-      "maxSize": "25.5 kB"
+      "maxSize": "25 kB"
     },
     {
       "path": "./dist/css/bootstrap.min.css",
-      "maxSize": "23.5 kB"
+      "maxSize": "23 kB"
     },
     {
       "path": "./dist/js/bootstrap.bundle.js",
@@ -186,15 +186,15 @@
     },
     {
       "path": "./dist/js/bootstrap.bundle.min.js",
-      "maxSize": "25 kB"
+      "maxSize": "21 kB"
     },
     {
       "path": "./dist/js/bootstrap.js",
-      "maxSize": "23.1 kB"
+      "maxSize": "22.5 kB"
     },
     {
       "path": "./dist/js/bootstrap.min.js",
-      "maxSize": "15 kB"
+      "maxSize": "14.5 kB"
     }
   ],
   "jspm": {

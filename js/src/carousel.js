@@ -268,7 +268,9 @@ class Carousel {
         .on(Event.MOUSELEAVE, (event) => this.cycle(event))
     }
 
-    this._addTouchEventListeners()
+    if (this._config.touch) {
+      this._addTouchEventListeners()
+    }
   }
 
   _addTouchEventListeners() {
