@@ -4,17 +4,25 @@
 // Border
 //
 
-.border         { border: $border-width solid $border-color !important; }
-.border-top     { border-top: $border-width solid $border-color !important; }
-.border-right   { border-right: $border-width solid $border-color !important; }
-.border-bottom  { border-bottom: $border-width solid $border-color !important; }
-.border-left    { border-left: $border-width solid $border-color !important; }
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
-.border-0        { border: 0 !important; }
-.border-top-0    { border-top: 0 !important; }
-.border-right-0  { border-right: 0 !important; }
-.border-bottom-0 { border-bottom: 0 !important; }
-.border-left-0   { border-left: 0 !important; }
+    @each $size, $length in $spacers {
+      .border#{$infix}         { border: $border-width solid $border-color !important; }
+      .border#{$infix}-top     { border-top: $border-width solid $border-color !important; }
+      .border#{$infix}-right   { border-right: $border-width solid $border-color !important; }
+      .border#{$infix}-bottom  { border-bottom: $border-width solid $border-color !important; }
+      .border#{$infix}-left    { border-left: $border-width solid $border-color !important; }
+
+      .border#{$infix}-0        { border: 0 !important; }
+      .border#{$infix}-top-0    { border-top: 0 !important; }
+      .border#{$infix}-right-0  { border-right: 0 !important; }
+      .border#{$infix}-bottom-0 { border-bottom: 0 !important; }
+      .border#{$infix}-left-0   { border-left: 0 !important; }
+    }
+  }
+}
 
 @each $color, $value in $theme-colors {
   .border-#{$color} {
