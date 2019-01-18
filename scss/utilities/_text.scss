@@ -63,6 +63,7 @@
 .text-decoration-none { text-decoration: none !important; }
 
 .text-break {
+  // Add `hyphens: auto;` as workaround to force Firefox to break:
   hyphens: auto;
   word-break: break-word !important;
 }
