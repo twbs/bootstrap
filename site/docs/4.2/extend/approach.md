@@ -2,6 +2,7 @@
 layout: docs
 title: Approach
 description: Learn about the guiding principles, strategies, and techniques used to build and maintain Bootstrap so you can more easily customize and extend it yourself.
+redirect_from: "/docs/4.2/extend/"
 group: extend
 ---
 
