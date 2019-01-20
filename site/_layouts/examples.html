@@ -8,6 +8,8 @@
     <meta name="generator" content="Jekyll v{{ jekyll.version }}">
     <title>{{ page.title | smartify }} · {{ site.title | smartify }}</title>
 
+    <link rel="canonical" href="{{ site.url | append: page.url }}">
+
     {% include stylesheet.html %}
 
     <style>
