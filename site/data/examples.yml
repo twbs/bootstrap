@@ -51,6 +51,8 @@
       description: "Beautifully simple forms with floating labels over your inputs."
     - name: Offcanvas
       description: "Turn your expandable navbar into a sliding offcanvas menu."
+    - name: Carousel Experiment
+      description: "A carousel experiment of showing 3 items on >= 768px."
 
 - category: Integrations
   description: "Integrations with external libraries."

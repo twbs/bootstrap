@@ -1,0 +1,57 @@
+/* GLOBAL STYLES
+-------------------------------------------------- */
+/* Padding below the footer and lighter body text */
+
+body {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  color: #5a5a5a;
+}
+
+
+/* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
+
+@media (min-width: 768px) {
+  .carousel-show-three .carousel-item-next,
+  .carousel-show-three .carousel-item-prev,
+  .carousel-show-three .carousel-item.active {
+    display: flex;
+  }
+
+  .carousel-show-three .carousel-item-next.carousel-item-left,
+  .carousel-show-three .carousel-item-prev.carousel-item-right {
+    transform: translateX(0);
+  }
+
+  @supports (transform-style: preserve-3d) {
+    .carousel-show-three .carousel-item-next.carousel-item-left,
+    .carousel-show-three .carousel-item-prev.carousel-item-right {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  .carousel-show-three .carousel-item-next,
+  .carousel-show-three .active.carousel-item-right {
+    transform: translateX(33.333333%);
+  }
+
+  @supports (transform-style: preserve-3d) {
+    .carousel-show-three .carousel-item-next,
+    .carousel-show-three .active.carousel-item-right {
+      transform: translate3d(33.333333%, 0, 0);
+    }
+  }
+
+  .carousel-show-three .carousel-item-prev,
+  .carousel-show-three .active.carousel-item-left {
+    transform: translateX(-33.333333%);
+  }
+
+  @supports (transform-style: preserve-3d) {
+    .carousel-show-three .carousel-item-prev,
+    .carousel-show-three .active.carousel-item-left {
+      transform: translate3d(-33.333333%, 0, 0);
+    }
+  }
+}

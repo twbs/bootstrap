@@ -1,0 +1,77 @@
+---
+layout: examples
+title: Carousel Template - Show 3 items
+extra_css:
+  - "carousel.css"
+extra_js:
+  - src: "carousel.js"
+---
+
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Carousel</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto mb-2 mb-md-0">
+          <li class="nav-item active">
+            <a class="nav-link" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          </li>
+        </ul>
+        <form class="d-flex">
+          <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <div class="container">
+    <div id="myCarousel" class="carousel slide carousel-show-three my-5" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item justify-content-around active">
+          {{< placeholder class="mx-auto d-block" width="250" height="300" background="#e9332d" color="#000" text="1" >}}
+        </div>
+        <div class="carousel-item justify-content-around">
+          {{< placeholder class="mx-auto d-block" width="250" height="300" background="#b4c372" color="#000" text="2" >}}
+        </div>
+        <div class="carousel-item justify-content-around">
+          {{< placeholder class="mx-auto d-block" width="250" height="300" background="#715359" color="#000" text="3" >}}
+        </div>
+        <div class="carousel-item justify-content-around">
+          {{< placeholder class="mx-auto d-block" width="250" height="300" background="#5f3951" color="#fff" text="4" >}}
+        </div>
+        <div class="carousel-item justify-content-around">
+          {{< placeholder class="mx-auto d-block" width="250" height="300" background="#c46d46" color="#000" text="5" >}}
+        </div>
+        <div class="carousel-item justify-content-around">
+          {{< placeholder class="mx-auto d-block" width="250" height="300" background="#b10e5b" color="#fff" text="6" >}}
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div> <!-- /.container -->
+
+  <!-- FOOTER -->
+  <footer class="container">
+    <p class="float-right"><a href="#">Back to top</a></p>
+    <p>&copy; 2017-{{< year >}} Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+  </footer>
+</main>
