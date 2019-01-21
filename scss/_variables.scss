@@ -117,13 +117,7 @@ $enable-grid-classes:                         true !default;
 $enable-pointer-cursor-for-buttons:           true !default;
 $enable-print-styles:                         true !default;
 $enable-validation-icons:                     true !default;
-
-// Show deprecation messages
-//
-// Some mixins and functions will be removed in v5, the `deprecate()` mixin will warn you if you're using one of these.
-// These warnings can be suppressed by setting this variable to `false`:
-
-$show-deprecation-messages:                   true !default;
+$enable-deprecation-messages:                 true !default;
 
 
 // Spacing

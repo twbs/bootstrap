@@ -7,7 +7,5 @@
   background-color: transparent;
   border: 0;
 
-  @if ($ignore-warning != true) {
-    @include deprecate("`text-hide()`", "v4.1.0", "v5");
-  }
+  @include deprecate("`text-hide()`", "v4.1.0", "v5", $ignore-warning);
 }
