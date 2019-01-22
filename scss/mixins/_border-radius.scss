@@ -55,3 +55,9 @@
     border-bottom-left-radius: $radius;
   }
 }
+
+@mixin border-bottom-right-radius($radius) {
+  @if $enable-rounded {
+    border-bottom-right-radius: $radius;
+  }
+}
