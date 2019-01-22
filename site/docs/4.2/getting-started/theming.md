@@ -243,7 +243,7 @@ You can find and customize these variables for key global options in Bootstrap's
 | `$enable-pointer-cursor-for-buttons`         | `true` (default) or `false`        | Add "hand" cursor to non-disabled button elements. |
 | `$enable-print-styles`                       | `true` (default) or `false`        | Enables styles for optimizing printing. |
 | `$enable-validation-icons`                   | `true` (default) or `false`        | Enables `background-image` icons within textual inputs and some custom forms for validation states. |
-| `$enable-deprecation-messages`               | `true` or `false` (default)        | Some mixins and functions will be removed in `v5`, if this variable is set to `true` the `deprecate()` mixin will warn you if you're using one of these. |
+| `$enable-deprecation-messages`               | `true` or `false` (default)        | Set to `true` to show warnings when using any of the deprecated mixins and functions that are planned to be removed in `v5`. |
 
 ## Color
 
