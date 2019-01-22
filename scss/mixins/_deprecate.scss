@@ -1,7 +1,7 @@
 // Deprecate mixin
 //
 // This mixin can be used to deprecate mixins or functions.
-// `$show-deprecation-messages` is a global variable, `$ignore-warning` is a variable that can be passed to
+// `$enable-deprecation-messages` is a global variable, `$ignore-warning` is a variable that can be passed to
 // some deprecated mixins to suppress the warning (for example if the mixin is still be used in the current version of Bootstrap)
 @mixin deprecate($name, $deprecate-version, $remove-version, $ignore-warning) {
   @if ($enable-deprecation-messages != false and $ignore-warning != true) {
