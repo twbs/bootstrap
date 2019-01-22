@@ -47,6 +47,7 @@
   padding: $list-group-item-padding-y $list-group-item-padding-x;
   // Place the border on the list items and negative margin up for better styling
   margin-bottom: -$list-group-border-width;
+  color: $list-group-color;
   background-color: $list-group-bg;
   border: $list-group-border-width solid $list-group-border-color;
 
