@@ -44,6 +44,12 @@
   }
 }
 
+@mixin border-top-left-radius($radius) {
+  @if $enable-rounded {
+    border-top-left-radius: $radius;
+  }
+}
+
 @mixin border-bottom-left-radius($radius) {
   @if $enable-rounded {
     border-bottom-left-radius: $radius;
