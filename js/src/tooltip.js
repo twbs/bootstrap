@@ -89,7 +89,7 @@ const ClassName = {
 const Selector = {
   TOOLTIP       : '.tooltip',
   TOOLTIP_INNER : '.tooltip-inner',
-  TOOLTIP_ARROW         : '.tooltip-arrow'
+  TOOLTIP_ARROW : '.tooltip-arrow'
 }
 
 const Trigger = {
