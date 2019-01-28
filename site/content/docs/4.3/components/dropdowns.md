@@ -303,7 +303,7 @@ Button dropdowns work with buttons of all sizes, including default and split dro
       </div>
     </div><!-- /btn-group -->
   </div><!-- /btn-toolbar -->
-</div><!-- /example -->
+</div>
 
 {{< highlight html >}}
 <!-- Large button groups (default and split) -->
