@@ -141,8 +141,8 @@
 
     &:last-child {
       @include border-bottom-radius($dropdown-inner-border-radius);
-   }
- }
+    }
+  }
 
   @include hover-focus {
     color: $dropdown-link-hover-color;
