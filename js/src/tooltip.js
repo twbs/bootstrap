@@ -32,7 +32,7 @@ const DefaultType = {
   html              : 'boolean',
   selector          : '(string|boolean)',
   placement         : '(string|function)',
-  offset            : '(number|string)',
+  offset            : '(number|string|function)',
   container         : '(string|element|boolean)',
   fallbackPlacement : '(string|array)',
   boundary          : '(string|element)'
@@ -273,6 +273,16 @@ class Tooltip {
       const attachment = this._getAttachment(placement)
       this.addAttachmentClass(attachment)
 
+      const offsetConf = {}
+      if (typeof this.config.offset === 'function') {
+        offsetConf.fn = (data) => {
+          data.offsets = $.extend({}, data.offsets, this.config.offset(data.offsets, this.element) || {})
+          return data
+        }
+      } else {
+        offsetConf.offset = this.config.offset
+      }
+
       const container = this._getContainer()
       $(tip).data(this.constructor.DATA_KEY, this)
 
@@ -285,9 +295,7 @@ class Tooltip {
       this._popper = new Popper(this.element, tip, {
         placement: attachment,
         modifiers: {
-          offset: {
-            offset: this.config.offset
-          },
+          offset: offsetConf,
           flip: {
             behavior: this.config.fallbackPlacement
           },
