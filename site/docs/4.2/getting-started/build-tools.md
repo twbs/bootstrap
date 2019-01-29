@@ -8,7 +8,7 @@ toc: true
 
 ## Tooling setup
 
-Bootstrap uses [NPM scripts](https://docs.npmjs.com/misc/scripts) for its build system. Our [package.json]({{ site.repo }}/blob/v{{ site.current_version }}/package.json) includes convenient methods for working with the framework, including compiling code, running tests, and more.
+Bootstrap uses [npm scripts](https://docs.npmjs.com/misc/scripts) for its build system. Our [package.json]({{ site.repo }}/blob/v{{ site.current_version }}/package.json) includes convenient methods for working with the framework, including compiling code, running tests, and more.
 
 To use our build system and run our documentation locally, you'll need a copy of Bootstrap's source files and Node. Follow these steps and you should be ready to rock:
 
@@ -22,13 +22,13 @@ When completed, you'll be able to run the various commands provided from the com
 [install-ruby]: https://www.ruby-lang.org/en/documentation/installation/
 [gembundler]: https://bundler.io/
 
-## Using NPM scripts
+## Using npm scripts
 
 Our [package.json]({{ site.repo }}/blob/v{{ site.current_version }}/package.json) includes the following commands and tasks:
 
 | Task | Description |
 | --- | --- |
-| `npm run dist` | `npm run dist` creates the `/dist` directory with compiled files. **Uses [Sass](https://sass-lang.com/), [Autoprefixer][autoprefixer], and [UglifyJS](https://github.com/mishoo/UglifyJS2).** |
+| `npm run dist` | `npm run dist` creates the `/dist/` directory with compiled files. **Uses [Sass](https://sass-lang.com/), [Autoprefixer][autoprefixer], and [UglifyJS](https://github.com/mishoo/UglifyJS2).** |
 | `npm test` | Same as `npm run dist` plus it runs tests locally |
 | `npm run docs` | Builds and lints CSS and JavaScript for docs. You can then run the documentation locally via `npm run docs-serve`. |
 
@@ -38,7 +38,7 @@ Run `npm run` to see all the npm scripts.
 
 Bootstrap uses [Autoprefixer][autoprefixer] (included in our build process) to automatically add vendor prefixes to some CSS properties at build time. Doing so saves us time and code by allowing us to write key parts of our CSS a single time while eliminating the need for vendor mixins like those found in v3.
 
-We maintain the list of browsers supported through Autoprefixer in a separate file within our GitHub repository. See [/.browserslistrc]({{ site.repo }}/blob/v{{ site.current_version }}/.browserslistrc) for details.
+We maintain the list of browsers supported through Autoprefixer in a separate file within our GitHub repository. See [.browserslistrc]({{ site.repo }}/blob/v{{ site.current_version }}/.browserslistrc) for details.
 
 ## Local documentation
 
