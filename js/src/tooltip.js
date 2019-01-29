@@ -273,16 +273,6 @@ class Tooltip {
       const attachment = this._getAttachment(placement)
       this.addAttachmentClass(attachment)
 
-      const offsetConf = {}
-      if (typeof this.config.offset === 'function') {
-        offsetConf.fn = (data) => {
-          data.offsets = $.extend({}, data.offsets, this.config.offset(data.offsets, this.element) || {})
-          return data
-        }
-      } else {
-        offsetConf.offset = this.config.offset
-      }
-
       const container = this._getContainer()
       $(tip).data(this.constructor.DATA_KEY, this)
 
@@ -295,7 +285,7 @@ class Tooltip {
       this._popper = new Popper(this.element, tip, {
         placement: attachment,
         modifiers: {
-          offset: offsetConf,
+          offset: this._getOffset(),
           flip: {
             behavior: this.config.fallbackPlacement
           },
@@ -457,6 +447,25 @@ class Tooltip {
   }
 
   // Private
+
+  _getOffset() {
+    const offset = {}
+
+    if (typeof this.config.offset === 'function') {
+      offset.fn = (data) => {
+        data.offsets = {
+          ...data.offsets,
+          ...this.config.offset(data.offsets, this.element) || {}
+        }
+
+        return data
+      }
+    } else {
+      offset.offset = this.config.offset
+    }
+
+    return offset
+  }
 
   _getContainer() {
     if (this.config.container === false) {
