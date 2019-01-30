@@ -368,7 +368,6 @@ Trigger dropdown menus above elements by adding `.dropup` to the parent element.
       <a class="dropdown-item" href="#">Separated link</a>
     </div>
   </div>
-
   <div class="btn-group dropup">
     <button type="button" class="btn btn-secondary">
       Split dropup
@@ -428,7 +427,6 @@ Trigger dropdown menus at the right of the elements by adding `.dropright` to th
       <a class="dropdown-item" href="#">Separated link</a>
     </div>
   </div>
-
   <div class="btn-group dropright">
     <button type="button" class="btn btn-secondary">
       Split dropright
@@ -488,7 +486,6 @@ Trigger dropdown menus at the left of the elements by adding `.dropleft` to the 
       <a class="dropdown-item" href="#">Separated link</a>
     </div>
   </div>
-
   <div class="btn-group">
     <div class="btn-group dropleft" role="group">
       <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false">
