@@ -98,8 +98,8 @@ Here's an example of customizing the Bootstrap grid at the medium (`md`) breakpo
 
 {% capture example %}
 <div class="row mx-md-n5">
-  <div class="col py-3 px-md-5 border bg-light">Custom column padding</div>
-  <div class="col py-3 px-md-5 border bg-light">Custom column padding</div>
+  <div class="col px-md-5"><div class="p-3 border bg-light">Custom column padding</div></div>
+  <div class="col px-md-5"><div class="p-3 border bg-light">Custom column padding</div></div>
 </div>
 {% endcapture %}
 {% include example.html content=example %}
