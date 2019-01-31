@@ -211,17 +211,32 @@ Multiple add-ons are supported and can be mixed with checkbox and radio input ve
   <input type="text" class="form-control" aria-label="Text input with dropdown button">
 </div>
 
-<div class="input-group">
+<div class="input-group mb-3">
   <input type="text" class="form-control" aria-label="Text input with dropdown button">
   <div class="input-group-append">
     <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</button>
-    <div class="dropdown-menu">
+    <div class="dropdown-menu dropdown-menu-right">
       <a class="dropdown-item" href="#">Action</a>
       <a class="dropdown-item" href="#">Another action</a>
       <a class="dropdown-item" href="#">Something else here</a>
       <div role="separator" class="dropdown-divider"></div>
       <a class="dropdown-item" href="#">Separated link</a>
     </div>
+  </div>
+</div>
+
+<div class="input-group">
+  <input type="text" class="form-control" aria-label="Text input with dropdown button">
+  <div class="input-group-append">
+    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</button>
+    <div class="dropdown-menu dropdown-menu-right">
+      <a class="dropdown-item" href="#">Action</a>
+      <a class="dropdown-item" href="#">Another action</a>
+      <a class="dropdown-item" href="#">Something else here</a>
+      <div role="separator" class="dropdown-divider"></div>
+      <a class="dropdown-item" href="#">Separated link</a>
+    </div>
+    <button class="btn btn-outline-secondary" type="button">Button</button>
   </div>
 </div>
 {% endcapture %}

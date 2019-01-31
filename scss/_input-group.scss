@@ -82,11 +82,11 @@
     }
   }
 
-  .btn + .btn,
-  .btn + .input-group-text,
-  .input-group-text + .input-group-text,
-  .input-group-text + .btn {
-    margin-left: -$input-border-width;
+  .input-group-text,
+  .btn {
+    &:not(:first-child) {
+      margin-left: -$input-border-width;
+    }
   }
 }
 
@@ -179,6 +179,7 @@
 .input-group > .input-group-append:not(:last-child) > .btn,
 .input-group > .input-group-append:not(:last-child) > .input-group-text,
 .input-group > .input-group-append:last-child > .btn:not(:last-child):not(.dropdown-toggle),
+.input-group > .input-group-append:last-child > .dropdown-toggle:nth-last-child(n + 3),
 .input-group > .input-group-append:last-child > .input-group-text:not(:last-child) {
   @include border-right-radius(0);
 }
