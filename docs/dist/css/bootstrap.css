@@ -1,6 +1,6 @@
 /*!
- * Bootstrap v5.18.7 (http://bootstrap.transferwise.com)
- * Copyright 2011-2018 Twitter, Inc.
+ * Bootstrap v5.18.8 (http://bootstrap.transferwise.com)
+ * Copyright 2011-2019 Twitter, Inc.
  * Licensed under MIT (https://github.com/transferwise/bootstrap/blob/master/LICENSE)
  */
 
@@ -6435,7 +6435,7 @@ tbody.collapse.in {
   -moz-osx-font-smoothing: grayscale;
 }
 .caret:before {
-  content: "\e114";
+  content: '\e114';
 }
 .dropup,
 .dropdown {
@@ -6578,6 +6578,31 @@ tbody.collapse.in {
   -webkit-animation: showDropdown .2s cubic-bezier(.6, .2, .1, 1) both;
        -o-animation: showDropdown .2s cubic-bezier(.6, .2, .1, 1) both;
           animation: showDropdown .2s cubic-bezier(.6, .2, .1, 1) both;
+}
+.open > .dropdown-menu > .overlay-back-button,
+.open > .dropdown-menu > .overlay-title {
+  display: none;
+}
+@media (max-width: 576px) {
+  .open > .dropdown-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100vw;
+    max-width: none;
+    height: 100vh;
+    margin: 0;
+    overflow-y: auto;
+    background-color: #fff;
+    -webkit-animation: listSlideOver .15s ease-out forwards;
+         -o-animation: listSlideOver .15s ease-out forwards;
+            animation: listSlideOver .15s ease-out forwards;
+  }
+  .open > .dropdown-menu-overlay > .overlay-back-button,
+  .open > .dropdown-menu-overlay > .overlay-title {
+    display: block;
+  }
 }
 .open > a {
   outline: 0;

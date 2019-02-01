@@ -2,7 +2,6 @@
 // Dropdown menus
 // --------------------------------------------------
 
-
 // Dropdown arrow/caret
 .caret {
   vertical-align: middle;
@@ -18,9 +17,11 @@
   margin-left: 1px;
   text-align: center;
   width: 16px;
-  transition: transform .15s linear;
+  transition: transform 0.15s linear;
 
-  &:before { content: "\e114"; }
+  &:before {
+    content: '\e114';
+  }
 }
 
 // The dropdown wrapper (div)
@@ -47,7 +48,7 @@
   // border: 1px solid @dropdown-fallback-border; // IE8 fallback
   border: 0px solid @dropdown-border;
   border-radius: @border-radius-base;
-  .box-shadow(0px 20px 66px 0px rgba(34,48,73,.2));
+  .box-shadow(0px 20px 66px 0px rgba(34, 48, 73, 0.2));
   background-clip: padding-box;
 
   // Bit of a hack for our calculators to make the two controls the same width.
@@ -87,16 +88,16 @@
     }
   }
   > li:first-child > a {
-    .border-top-radius((@border-radius-base - 1px))
+    .border-top-radius((@border-radius-base - 1px));
   }
   > li:last-child > a {
-    .border-bottom-radius((@border-radius-base - 1px))
+    .border-bottom-radius((@border-radius-base - 1px));
   }
 }
 
 .dropdown-menu,
-.btn-group .dropdown-menu  {
-  max-width: ~"calc(100vw - 32px)";
+.btn-group .dropdown-menu {
+  max-width: ~'calc(100vw - 32px)';
   &.dropdown-menu-sm {
     width: 220px;
   }
@@ -182,7 +183,33 @@
   // Show the menu
   > .dropdown-menu {
     display: block;
-    animation: showDropdown 0.2s cubic-bezier( 0.6, 0.2, 0.1, 1 ) both;
+    animation: showDropdown 0.2s cubic-bezier(0.6, 0.2, 0.1, 1) both;
+
+    > .overlay-back-button,
+    > .overlay-title {
+      display: none;
+    }
+  }
+
+  @media (max-width: @screen-sm-min) {
+    > .dropdown-menu-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      max-width: none;
+      margin: 0;
+      overflow-y: auto;
+      background-color: #fff;
+      animation: listSlideOver 0.15s ease-out forwards;
+      z-index: 1;
+
+      > .overlay-back-button,
+      > .overlay-title {
+        display: block;
+      }
+    }
   }
 
   // Remove the outline when :focus is triggered
@@ -194,11 +221,11 @@
 @keyframes showDropdown {
   from {
     opacity: 0;
-    transform: translateY(-10px) scale(0.95,0.95);
+    transform: translateY(-10px) scale(0.95, 0.95);
   }
   to {
     opacity: 1;
-    transform:none;
+    transform: none;
   }
 }
 
@@ -299,7 +326,6 @@
   }
 }
 
-
 // Component alignment
 //
 // Reiterate per navbar.less and the modified component alignment there.
@@ -318,5 +344,5 @@
 }
 
 .bootstrap-select .dropdown-menu {
-    margin: -8px 0 -6px 0;
+  margin: -8px 0 -6px 0;
 }
