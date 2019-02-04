@@ -55,13 +55,13 @@ Bootstrap includes several components that function as an overlay of some kind. 
 
 Each overlay component increases it's `z-index` value slightly in such a way that common UI principles allow user focused or hovered elements to remain in view at all times. For example, a modal is document blocking (e.g., you cannot take any other action save for the modal's action), so we put that above our navbars.
 
-Learn more about this in our [`z-index` layout page](/docs/{{< param docs_version >}}/layout/overview/#z-index).
+Learn more about this in our [`z-index` layout page]({{< docsref "/layout/overview#z-index" >}}).
 
 ## HTML and CSS over JS
 
 Whenever possible, we prefer to write HTML and CSS over JavaScript. In general, HTML and CSS are more prolific and accessible to more people of all different experience levels. HTML and CSS are also faster in your browser than JavaScript, and your browser generally provides a great deal of functionality for you.
 
-This principle is our first-class JavaScript API is `data` attributes. You don't need to write nearly any JavaScript to use our JavaScript plugins; instead, write HTML. Read more about this in [our JavaScript overview page](/docs/{{< param docs_version >}}/getting-started/javascript/#data-attributes).
+This principle is our first-class JavaScript API is `data` attributes. You don't need to write nearly any JavaScript to use our JavaScript plugins; instead, write HTML. Read more about this in [our JavaScript overview page]({{< docsref "/getting-started/javascript#data-attributes" >}}).
 
 Lastly, our styles build on the fundamental behaviors of common web elements. Whenever possible, we prefer to use what the browser provides. For example, you can put a `.btn` class on nearly any element, but most elements don't provide any semantic value or browser functionality. So instead, we use `<button>`s and `<a>`s.
 

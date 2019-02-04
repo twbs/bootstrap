@@ -168,10 +168,10 @@ Use spinners within buttons to indicate an action is currently processing or tak
 {{< /example >}}
 
 
-[color]:   /docs/{{< param docs_version >}}/utilities/colors/
-[display]: /docs/{{< param docs_version >}}/utilities/display/
-[flex]:    /docs/{{< param docs_version >}}/utilities/flex/
-[float]:   /docs/{{< param docs_version >}}/utilities/float/
-[margin]:  /docs/{{< param docs_version >}}/utilities/spacing/
-[sizing]:  /docs/{{< param docs_version >}}/utilities/sizing/
-[text]:    /docs/{{< param docs_version >}}/content/typography/
+[color]:   {{< docsref "/utilities/colors" >}}
+[display]: {{< docsref "/utilities/display" >}}
+[flex]:    {{< docsref "/utilities/flex" >}}
+[float]:   {{< docsref "/utilities/float" >}}
+[margin]:  {{< docsref "/utilities/spacing" >}}
+[sizing]:  {{< docsref "/utilities/sizing" >}}
+[text]:    {{< docsref "/content/typography" >}}

@@ -12,7 +12,7 @@ Dropdowns are toggleable, contextual overlays for displaying lists of links and 
 
 Dropdowns are built on a third party library, [Popper.js](https://popper.js.org/), which provides dynamic positioning and viewport detection. Be sure to include [popper.min.js]({{< param "cdn.popper" >}}) before Bootstrap's JavaScript or use `bootstrap.bundle.min.js` / `bootstrap.bundle.js` which contains Popper.js. Popper.js isn't used to position dropdowns in navbars though as dynamic positioning isn't required.
 
-If you're building our JavaScript from source, it [requires `util.js`](/docs/{{< param docs_version >}}/getting-started/javascript/#util).
+If you're building our JavaScript from source, it [requires `util.js`]({{< docsref "/getting-started/javascript#util" >}}).
 
 ## Accessibility
 
@@ -671,7 +671,7 @@ Separate groups of related menu items with a divider.
 
 ### Text
 
-Place any freeform text within a dropdown menu with text and use [spacing utilities](/docs/{{< param docs_version >}}/utilities/spacing/). Note that you'll likely need additional sizing styles to constrain the menu width.
+Place any freeform text within a dropdown menu with text and use [spacing utilities]({{< docsref "/utilities/spacing" >}}). Note that you'll likely need additional sizing styles to constrain the menu width.
 
 {{< example >}}
 <div class="dropdown-menu p-4 text-muted" style="max-width: 200px;">
@@ -686,7 +686,7 @@ Place any freeform text within a dropdown menu with text and use [spacing utilit
 
 ### Forms
 
-Put a form within a dropdown menu, or make it into a dropdown menu, and use [margin or padding utilities](/docs/{{< param docs_version >}}/utilities/spacing/) to give it the negative space you require.
+Put a form within a dropdown menu, or make it into a dropdown menu, and use [margin or padding utilities]({{< docsref "/utilities/spacing" >}}) to give it the negative space you require.
 
 {{< example >}}
 <div class="dropdown-menu">
