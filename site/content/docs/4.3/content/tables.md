@@ -550,7 +550,7 @@ Use contextual classes to color table rows or individual cells.
 </tr>
 {{< /highlight >}}
 
-Regular table background variants are not available with the dark table, however, you may use [text or background utilities](/docs/{{< param docs_version >}}/utilities/colors/) to achieve similar styles.
+Regular table background variants are not available with the dark table, however, you may use [text or background utilities]({{< docsref "/utilities/colors" >}}) to achieve similar styles.
 
 <div class="bd-example">
   <table class="table table-dark">

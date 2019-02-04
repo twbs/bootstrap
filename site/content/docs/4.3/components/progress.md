@@ -35,7 +35,7 @@ Put that all together, and you have the following examples.
 </div>
 {{< /example >}}
 
-Bootstrap provides a handful of [utilities for setting width](/docs/{{< param docs_version >}}/utilities/sizing/). Depending on your needs, these may help with quickly configuring progress.
+Bootstrap provides a handful of [utilities for setting width]({{< docsref "/utilities/sizing" >}}). Depending on your needs, these may help with quickly configuring progress.
 
 {{< example >}}
 <div class="progress">

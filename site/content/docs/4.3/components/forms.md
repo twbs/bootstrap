@@ -8,7 +8,7 @@ toc: true
 
 ## Overview
 
-Bootstrap's form controls expand on [our Rebooted form styles](/docs/{{< param docs_version >}}/content/reboot/#forms) with classes. Use these classes to opt into their customized displays for a more consistent rendering across browsers and devices.
+Bootstrap's form controls expand on [our Rebooted form styles]({{< docsref "/content/reboot#forms" >}}) with classes. Use these classes to opt into their customized displays for a more consistent rendering across browsers and devices.
 
 Be sure to use an appropriate `type` attribute on all inputs (e.g., `email` for email address or `number` for numerical information) to take advantage of newer input controls like email verification, number selection, and more.
 
@@ -572,11 +572,11 @@ And of course [custom form controls](#custom-forms) are supported.
 
 Use the `.form-inline` class to display a series of labels, form controls, and buttons on a single horizontal row. Form controls within inline forms vary slightly from their default states.
 
-- Controls are `display: flex`, collapsing any HTML white space and allowing you to provide alignment control with [spacing](/docs/{{< param docs_version >}}/utilities/spacing/) and [flexbox](/docs/{{< param docs_version >}}/utilities/flex/) utilities.
+- Controls are `display: flex`, collapsing any HTML white space and allowing you to provide alignment control with [spacing]({{< docsref "/utilities/spacing" >}}) and [flexbox]({{< docsref "/utilities/flex" >}}) utilities.
 - Controls and input groups receive `width: auto` to override the Bootstrap default `width: 100%`.
 - Controls **only appear inline in viewports that are at least 576px wide** to account for narrow viewports on mobile devices.
 
-You may need to manually address the width and alignment of individual form controls with [spacing utilities](/docs/{{< param docs_version >}}/utilities/spacing/) (as shown below). Lastly, be sure to always include a `<label>` with each form control, even if you need to hide it from non-screenreader visitors with `.sr-only`.
+You may need to manually address the width and alignment of individual form controls with [spacing utilities]({{< docsref "/utilities/spacing" >}}) (as shown below). Lastly, be sure to always include a `<label>` with each form control, even if you need to hide it from non-screenreader visitors with `.sr-only`.
 
 {{< example >}}
 <form class="form-inline">

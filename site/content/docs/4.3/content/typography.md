@@ -8,9 +8,9 @@ toc: true
 
 ## Global settings
 
-Bootstrap sets basic global display, typography, and link styles. When more control is needed, check out the [textual utility classes](/docs/{{< param docs_version >}}/utilities/text/).
+Bootstrap sets basic global display, typography, and link styles. When more control is needed, check out the [textual utility classes]({{< docsref "/utilities/text" >}}).
 
-- Use a [native font stack](/docs/{{< param docs_version >}}/content/reboot/#native-font-stack) that selects the best `font-family` for each OS and device.
+- Use a [native font stack]({{< docsref "/content/reboot#native-font-stack" >}}) that selects the best `font-family` for each OS and device.
 - For a more inclusive and accessible type scale, we assume the browser default root `font-size` (typically 16px) so visitors can customize their browser defaults as needed.
 - Use the `$font-family-base`, `$font-size-base`, and `$line-height-base` attributes as our typographic base applied to the `<body>`.
 - Set the global link color via `$link-color` and apply link underlines only on `:hover`.
@@ -161,7 +161,7 @@ While not shown above, feel free to use `<b>` and `<i>` in HTML5. `<b>` is meant
 
 ## Text utilities
 
-Change text alignment, transform, style, weight, and color with our [text utilities](/docs/{{< param docs_version >}}/utilities/text/) and [color utilities](/docs/{{< param docs_version >}}/utilities/colors/).
+Change text alignment, transform, style, weight, and color with our [text utilities]({{< docsref "/utilities/text" >}}) and [color utilities]({{< docsref "/utilities/colors" >}}).
 
 ## Abbreviations
 

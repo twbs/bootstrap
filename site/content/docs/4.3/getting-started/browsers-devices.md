@@ -105,11 +105,11 @@ For Firefox, in addition to the latest normal stable release, we also support th
 
 Unofficially, Bootstrap should look and behave well enough in Chromium and Chrome for Linux, Firefox for Linux, and Internet Explorer 9, though they are not officially supported.
 
-For a list of some of the browser bugs that Bootstrap has to grapple with, see our [Wall of browser bugs](/docs/{{< param docs_version >}}/browser-bugs/).
+For a list of some of the browser bugs that Bootstrap has to grapple with, see our [Wall of browser bugs]({{< docsref "/browser-bugs" >}}).
 
 ## Internet Explorer
 
-Internet Explorer 11 is not supported officially. However, if you build Bootstrap yourself, you can add the needed CSS prefixes and follow the instructions on the [JavaScript page](/docs/{{< param docs_version >}}/getting-started/javascript/#compatibility-with-ie-11). Please note that this might break at any time. **If you require Internet Explorer 10/11 support, use Bootstrap 4.**
+Internet Explorer 11 is not supported officially. However, if you build Bootstrap yourself, you can add the needed CSS prefixes and follow the instructions on the [JavaScript page]({{< docsref "/getting-started/javascript#compatibility-with-ie-11" >}}). Please note that this might break at any time. **If you require Internet Explorer 10/11 support, use Bootstrap 4.**
 
 ## Modals and dropdowns on mobile
 

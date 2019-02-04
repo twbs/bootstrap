@@ -12,7 +12,7 @@ A **card** is a flexible and extensible content container. It includes options f
 
 ## Example
 
-Cards are built with as little markup and styles as possible, but still manage to deliver a ton of control and customization. Built with flexbox, they offer easy alignment and mix well with other Bootstrap components. They have no `margin` by default, so use [spacing utilities](/docs/{{< param docs_version >}}/utilities/spacing/) as needed.
+Cards are built with as little markup and styles as possible, but still manage to deliver a ton of control and customization. Built with flexbox, they offer easy alignment and mix well with other Bootstrap components. They have no `margin` by default, so use [spacing utilities]({{< docsref "/utilities/spacing" >}}) as needed.
 
 Below is an example of a basic card with mixed content and a fixed width. Cards have no fixed width to start, so they'll naturally fill the full width of its parent element. This is easily customized with our various [sizing options](#sizing).
 
@@ -217,7 +217,7 @@ Using the grid, wrap cards in columns and rows as needed.
 
 ### Using utilities
 
-Use our handful of [available sizing utilities](/docs/{{< param docs_version >}}/utilities/sizing/) to quickly set a card's width.
+Use our handful of [available sizing utilities]({{< docsref "/utilities/sizing" >}}) to quickly set a card's width.
 
 {{< example >}}
 <div class="card w-75">
@@ -253,7 +253,7 @@ Use custom CSS in your stylesheets or as inline styles to set a width.
 
 ## Text alignment
 
-You can quickly change the text alignment of any card—in its entirety or specific parts—with our [text align classes](/docs/{{< param docs_version >}}/utilities/text/#text-alignment).
+You can quickly change the text alignment of any card—in its entirety or specific parts—with our [text align classes]({{< docsref "/utilities/text#text-alignment" >}}).
 
 {{< example >}}
 <div class="card" style="width: 18rem;">
@@ -283,7 +283,7 @@ You can quickly change the text alignment of any card—in its entirety or speci
 
 ## Navigation
 
-Add some navigation to a card's header (or block) with Bootstrap's [nav components](/docs/{{< param docs_version >}}/components/navs/).
+Add some navigation to a card's header (or block) with Bootstrap's [nav components]({{< docsref "/components/navs" >}}).
 
 {{< example >}}
 <div class="card text-center">
@@ -404,7 +404,7 @@ Cards include various options for customizing their backgrounds, borders, and co
 
 ### Background and color
 
-Use [text and background utilities](/docs/{{< param docs_version >}}/utilities/colors/) to change the appearance of a card.
+Use [text and background utilities]({{< docsref "/utilities/colors" >}}) to change the appearance of a card.
 
 {{< example >}}
 {{< card.inline >}}
@@ -426,7 +426,7 @@ Use [text and background utilities](/docs/{{< param docs_version >}}/utilities/c
 
 ### Border
 
-Use [border utilities](/docs/{{< param docs_version >}}/utilities/borders/) to change just the `border-color` of a card. Note that you can put `.text-{color}` classes on the parent `.card` or a subset of the card's contents as shown below.
+Use [border utilities]({{< docsref "/utilities/borders" >}}) to change just the `border-color` of a card. Note that you can put `.text-{color}` classes on the parent `.card` or a subset of the card's contents as shown below.
 
 {{< example >}}
 {{< card.inline >}}
