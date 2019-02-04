@@ -8,7 +8,7 @@ toc: true
 
 ## Basic example
 
-Wrap a series of buttons with `.btn` in `.btn-group`. Add on optional JavaScript radio and checkbox style behavior with [our buttons plugin](/docs/{{< param docs_version >}}/components/buttons/#button-plugin).
+Wrap a series of buttons with `.btn` in `.btn-group`. Add on optional JavaScript radio and checkbox style behavior with [our buttons plugin]({{< docsref "/components/buttons#button-plugin" >}}).
 
 {{< example >}}
 <div class="btn-group" role="group" aria-label="Basic example">
