@@ -1,5 +1,5 @@
 /*!
- * Bootstrap v5.18.8 (http://bootstrap.transferwise.com)
+ * Bootstrap v5.18.9 (http://bootstrap.transferwise.com)
  * Copyright 2011-2019 Twitter, Inc.
  * Licensed under MIT (https://github.com/transferwise/bootstrap/blob/master/LICENSE)
  */
@@ -6588,13 +6588,14 @@ tbody.collapse.in {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1;
     width: 100vw;
     max-width: none;
     height: 100vh;
-    margin: 0;
     overflow-y: auto;
-    background-color: #fff;
+    border: 0;
+    border-radius: 0;
+    -webkit-box-shadow: none;
+            box-shadow: none;
     -webkit-animation: listSlideOver .15s ease-out forwards;
          -o-animation: listSlideOver .15s ease-out forwards;
             animation: listSlideOver .15s ease-out forwards;
@@ -8021,6 +8022,11 @@ select[multiple].input-group-sm > .input-group-addon {
 .navbar-nav > li > .dropdown-menu > .active > a:focus {
   background-color: #f2f5f7;
 }
+@media (max-width: 576px) {
+  .navbar-nav > li > .dropdown-menu-overlay {
+    margin-top: 0;
+  }
+}
 .navbar-nav > li.dropdown:active > a,
 .navbar-nav > li.dropdown:focus > a,
 .navbar-nav > li.dropdown:focus-within > a,
@@ -8441,11 +8447,11 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
             transition: opacity .35s ease;
   }
   .navbar-collapse.in .cover,
-  .navbar-collapse[aria-expanded=true] .cover {
+  .navbar-collapse[aria-expanded='true'] .cover {
     opacity: .9;
   }
   .navbar-collapse.in .navbar-collapse-panel,
-  .navbar-collapse[aria-expanded=true] .navbar-collapse-panel {
+  .navbar-collapse[aria-expanded='true'] .navbar-collapse-panel {
     -webkit-transform: translateX(0);
         -ms-transform: translateX(0);
          -o-transform: translateX(0);
@@ -8496,10 +8502,10 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
     max-width: 220px;
   }
 }
-.navbar[data-spy~=affix] + * {
+.navbar[data-spy~='affix'] + * {
   margin-top: 0;
 }
-.navbar[data-spy~=affix].affix + * {
+.navbar[data-spy~='affix'].affix + * {
   margin-top: 56px;
 }
 @media (min-width: 768px) {
@@ -8708,7 +8714,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
     left: 0;
     width: 100%;
     height: 64px;
-    content: "";
+    content: '';
     background-color: transparent;
     border-top: #f2f5f7 solid 1px;
   }

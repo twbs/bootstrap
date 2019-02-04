@@ -2,7 +2,6 @@
 // Navbars
 // --------------------------------------------------
 
-
 // Wrapper and base class
 //
 // Provide a static navbar from which we expand to create full-width, fixed, and
@@ -14,9 +13,7 @@
   min-height: @navbar-height; // Ensure a navbar always shows (e.g., without a .navbar-brand in collapsed mode)
   margin-bottom: @navbar-margin-bottom;
   border: 0 solid transparent;
-  transition:
-    border-top-width 0s linear,
-    background-color 0.2s linear;
+  transition: border-top-width 0s linear, background-color 0.2s linear;
 
   // Prevent floats from breaking the navbar
   &:extend(.clearfix all);
@@ -131,7 +128,7 @@
   background-color: @navbar-collapse-bg;
 
   .navbar-nav > li {
-     > a,
+    > a,
     .navbar-title,
     .navbar-text {
       color: @navbar-inverse-color;
@@ -141,12 +138,11 @@
       }
     }
     &.active {
-      > a{
+      > a {
         color: @nav-link-active-color;
       }
     }
   }
-
 
   // Undo the rounded corners
   @media (min-width: @grid-float-breakpoint) {
@@ -157,9 +153,7 @@
 .navbar.affix {
   top: (-1 * @navbar-height);
   border-top-width: @navbar-height;
-  transition:
-    border-top-width 0.2s ease-out,
-    background-color 0.2s ease-out;
+  transition: border-top-width 0.2s ease-out, background-color 0.2s ease-out;
 }
 
 .navbar-fixed-top {
@@ -185,7 +179,8 @@
 
 .navbar-brand {
   float: left;
-  padding: @navbar-padding-vertical @navbar-padding-horizontal (@navbar-padding-vertical - 3px);
+  padding: @navbar-padding-vertical @navbar-padding-horizontal
+    (@navbar-padding-vertical - 3px);
   font-size: @font-size-large;
   line-height: @navbar-line-height;
   margin-top: 12px;
@@ -332,7 +327,7 @@
       > button {
         font-size: @navbar-font-size-mobile;
         padding: @navbar-padding-mobile;
-        -webkit-touch-callout: none;// When a target is touched and held on iPhone OS, Safari displays a callout information about the link. This property allows disabling that behavior.
+        -webkit-touch-callout: none; // When a target is touched and held on iPhone OS, Safari displays a callout information about the link. This property allows disabling that behavior.
       }
     }
 
@@ -452,7 +447,7 @@
         @media (max-width: @grid-float-breakpoint) {
           padding: @navbar-padding-mobile;
           position: relative;
-          -webkit-touch-callout: none;// When a target is touched and held on iPhone OS, Safari displays a callout information about the link. This property allows disabling that behavior.
+          -webkit-touch-callout: none; // When a target is touched and held on iPhone OS, Safari displays a callout information about the link. This property allows disabling that behavior.
 
           .badge {
             position: absolute;
@@ -476,6 +471,12 @@
         &:focus {
           background-color: @dropdown-link-hover-bg;
         }
+      }
+    }
+
+    @media (max-width: @screen-sm-min) {
+      > .dropdown-menu-overlay {
+        margin-top: 0;
       }
     }
 
@@ -581,7 +582,9 @@
 // Declared after the navbar components to ensure more specificity on the margins.
 
 @media (min-width: @grid-float-breakpoint) {
-  .navbar-left { .pull-xs-left(); }
+  .navbar-left {
+    .pull-xs-left();
+  }
 
   .navbar-right {
     .pull-xs-right();
@@ -977,7 +980,7 @@
     }
 
     &.in,
-    &[aria-expanded=true] {
+    &[aria-expanded='true'] {
       .cover {
         opacity: 0.9;
       }
@@ -1036,11 +1039,11 @@
   }
 }
 
-.navbar[data-spy~=affix] + * {
+.navbar[data-spy~='affix'] + * {
   margin-top: 0;
 }
 
-.navbar[data-spy~=affix].affix + * {
+.navbar[data-spy~='affix'].affix + * {
   margin-top: @navbar-height;
 }
 
@@ -1194,7 +1197,7 @@
 @media (min-width: @screen-lg-min) {
   .column-layout .nav-toolbar.affix {
     // Use comment to allow older LESS compilers to work.
-    width: ~"calc(100% - @{column-width})";
+    width: ~'calc(100% - @{column-width})';
   }
 }
 
@@ -1209,10 +1212,10 @@
 
   .navbar-header {
     padding-top: 4px;
-    width: ~"calc(100% - 140px)";
+    width: ~'calc(100% - 140px)';
 
     @media (min-width: @screen-md-min) {
-      width: ~"calc(100% - 340px)";
+      width: ~'calc(100% - 340px)';
     }
   }
 
@@ -1220,7 +1223,7 @@
     height: @nav-toolbar-height;
   }
 
-  >.navbar-right  li > a {
+  > .navbar-right li > a {
     // HACK - better to make things only collapse if inside collapse
     float: right;
   }
@@ -1270,12 +1273,14 @@
 
 @media (min-width: @grid-float-breakpoint) {
   .subnav {
-    height: (@navbar-secondary-height * 2) !important; //this line is necessary until we solve the style="height:0;" in navbar-collapse added when closing the mobile menu
+    height: (
+      @navbar-secondary-height * 2
+    ) !important; //this line is necessary until we solve the style="height:0;" in navbar-collapse added when closing the mobile menu
     position: relative;
     min-height: @navbar-secondary-height;
 
     &::before {
-      content: "";
+      content: '';
       background-color: @navbar-secondary-bg;
       width: 100%;
       height: @navbar-secondary-height;
@@ -1304,7 +1309,9 @@
 
     .navbar-btn,
     .navbar-brand {
-      margin-top: (@navbar-secondary-padding-vertical + @padding-small-vertical);
+      margin-top: (
+        @navbar-secondary-padding-vertical + @padding-small-vertical
+      );
     }
   }
 
