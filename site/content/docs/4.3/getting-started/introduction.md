@@ -37,20 +37,7 @@ Curious which components explicitly require our JavaScript and Popper.js? Click 
 
 Our `bootstrap.bundle.js` and `bootstrap.bundle.min.js` include [Popper](https://popper.js.org/). For more information about what's included in Bootstrap, please see our [contents](/docs/{{< param docs_version >}}/getting-started/contents/#precompiled-bootstrap) section.
 
-<details>
-<summary class="text-primary mb-3">Show components requiring JavaScript</summary>
-{{< markdown >}}
-- Alerts for dismissing
-- Buttons for toggling states and checkbox/radio functionality
-- Carousel for all slide behaviors, controls, and indicators
-- Collapse for toggling visibility of content
-- Dropdowns for displaying and positioning (also requires [Popper.js](https://popper.js.org/))
-- Modals for displaying, positioning, and scroll behavior
-- Navbar for extending our Collapse plugin to implement responsive behavior
-- Tooltips and popovers for displaying and positioning (also requires [Popper.js](https://popper.js.org/))
-- Scrollspy for scroll behavior and navigation updates
-{{< /markdown >}}
-</details>
+{{< partial "getting-started/components-requiring-javascript" >}}
 
 ## Starter template
 
