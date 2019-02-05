@@ -30,8 +30,8 @@ See also:
     <tr>
       <td>{{ .browser | chomp }}</td>
       <td>{{ .summary | markdownify }}</td>
-      <td>{% include bugify.html content=bug.upstream_bug %}</td>
-      <td>{% include bugify.html content=bug.origin %}</td>
+      <td>{{ partial "bugify" .upstream_bug }}</td>
+      <td>{{ partial "bugify" .origin }}</td>
     </tr>
     {{- end }}
     {{< /bug.inline >}}
@@ -59,8 +59,8 @@ We publicly list these "most wanted" feature requests here, in the hopes of expe
     <tr>
       <td>{{ .browser }}</td>
       <td>{{ .summary | markdownify }}</td>
-      <td>{% include bugify.html content=feat.upstream_bug %}</td>
-      <td>{% include bugify.html content=feat.origin %}</td>
+      <td>{{ partial "bugify" .upstream_bug }}</td>
+      <td>{{ partial "bugify" .origin }}</td>
     </tr>
     {{ end }}
     {{< /feat.inline >}}
