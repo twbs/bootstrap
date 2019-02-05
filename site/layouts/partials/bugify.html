@@ -1,4 +1,4 @@
-{{- $words := (split .Inner " ") -}}
+{{- $words := (split . " ") -}}
 
 {{- range $word := $words -}}
   {{- if (strings.Contains $word "#") -}}
