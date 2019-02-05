@@ -67,6 +67,16 @@ Toasts are slightly translucent, too, so they blend over whatever they might app
 {% include example.html content=example %}
 </div>
 
+### Dark
+
+{% capture example %}
+<div class="toast bg-dark text-white" role="alert" aria-live="assertive" aria-atomic="true">
+  <div class="toast-body">
+    Hello, world! This is a toast message.
+  </div>
+</div>
+{% endcapture %}
+
 ### Stacking
 
 When you have multiple toasts, we default to vertically stacking them in a readable manner.
