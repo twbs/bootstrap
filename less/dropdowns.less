@@ -93,6 +93,10 @@
   > li:last-child > a {
     .border-bottom-radius((@border-radius-base - 1px));
   }
+  > .overlay-back-button,
+  > .overlay-title {
+    display: none;
+  }
 }
 
 .dropdown-menu,
@@ -184,11 +188,6 @@
   > .dropdown-menu {
     display: block;
     animation: showDropdown 0.2s cubic-bezier(0.6, 0.2, 0.1, 1) both;
-
-    > .overlay-back-button,
-    > .overlay-title {
-      display: none;
-    }
   }
 
   @media (max-width: @screen-sm-min) {
