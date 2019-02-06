@@ -15,7 +15,7 @@ Multiple links and tap targets are not recommended with stretched links. However
 <div class="card" style="width: 18rem;">
   {{< placeholder width="100%" height="180" class="card-img-top" text="false" title="Card image cap" >}}
   <div class="card-body">
-    <h5 class="card-title">Card with stretched link</h5>
+    <h2 class="card-title h5">Card with stretched link</h2>
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
     <a href="#" class="btn btn-primary stretched-link">Go somewhere</a>
   </div>
@@ -28,7 +28,7 @@ Media objects do not have `position: relative` by default, so we need to add the
 <div class="media position-relative">
   {{< placeholder width="144" height="144" class="mr-3" text="false" title="Generic placeholder image" >}}
   <div class="media-body">
-    <h5 class="mt-0">Media with stretched link</h5>
+    <h2 class="mt-0 h5">Media with stretched link</h2>
     <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
     <a href="#" class="stretched-link">Go somewhere</a>
   </div>
@@ -43,7 +43,7 @@ Columns are `position: relative` by default, so clickable columns only require t
     {{< placeholder width="100%" height="200" class="w-100" text="false" title="Generic placeholder image" >}}
   </div>
   <div class="col-md-6 position-static p-4 pl-md-0">
-    <h5 class="mt-0">Columns with stretched link</h5>
+    <h2 class="mt-0 h5">Columns with stretched link</h2>
     <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
     <a href="#" class="stretched-link">Go somewhere</a>
   </div>
@@ -63,7 +63,7 @@ If the stretched link doesn't seem to work, the [containing block](https://devel
 <div class="card" style="width: 18rem;">
   {{< placeholder width="100%" height="180" class="card-img-top" text="false" title="Card image cap" >}}
   <div class="card-body">
-    <h5 class="card-title">Card with stretched links</h5>
+    <h2 class="card-title h5">Card with stretched links</h2>
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
     <p class="card-text">
       <a href="#" class="stretched-link text-danger" style="position: relative;">Stretched link will not work here, because <code>position: relative</code> is added to the link</a>

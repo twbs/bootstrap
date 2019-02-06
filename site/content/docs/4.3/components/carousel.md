@@ -123,21 +123,21 @@ Add captions to your slides easily with the `.carousel-caption` element within a
       <div class="carousel-item active">
         {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#555" background="#777" text="First slide" >}}
         <div class="carousel-caption d-none d-md-block">
-          <h5>First slide label</h5>
+          <h4>First slide label</h4>
           <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
         </div>
       </div>
       <div class="carousel-item">
         {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#444" background="#666" text="Second slide" >}}
         <div class="carousel-caption d-none d-md-block">
-          <h5>Second slide label</h5>
+          <h4>Second slide label</h4>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
       </div>
       <div class="carousel-item">
         {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#333" background="#555" text="Third slide" >}}
         <div class="carousel-caption d-none d-md-block">
-          <h5>Third slide label</h5>
+          <h4>Third slide label</h4>
           <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
         </div>
       </div>

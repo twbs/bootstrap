@@ -2,7 +2,7 @@
   <div class="col-12 col-md-4 p-3 p-md-5 bg-light border border-white">
     {{ "<!-- Icon by Bytesize https://github.com/danklammer/bytesize-icons -->" | safeHTML }}
     {{ partial "icons/import.svg" (dict "class" "text-primary mb-2" "width" "32" "height" "32") }}
-    <h3>Installation</h3>
+    <h2 class="h3">Installation</h2>
     <p>Include Bootstrap’s source Sass and JavaScript files via npm, Composer or Meteor. Package managed installs don’t include documentation, but do include our build system and readme.</p>
 
     {{ highlight "npm install bootstrap" "sh" "" }}
@@ -19,10 +19,10 @@
     <h3>BootstrapCDN</h3>
     <p>When you only need to include Bootstrap’s compiled CSS or JS, you can use <a href="https://www.bootstrapcdn.com/">BootstrapCDN</a>.</p>
 
-    <h5>CSS only</h5>
+    <h4 class="h5">CSS only</h4>
     {{ highlight (printf (`<link rel="stylesheet" href="%s" integrity="%s" crossorigin="anonymous">`) .Site.Params.cdn.css .Site.Params.cdn.css_hash) "html" "" }}
 
-    <h5>JS and Popper.js</h5>
+    <h4 class="h5">JS and Popper.js</h4>
     {{ highlight (printf (`<script src="%s" integrity="%s" crossorigin="anonymous"></script>
 <script src="%s" integrity="%s" crossorigin="anonymous"></script>
 `) .Site.Params.cdn.popper .Site.Params.cdn.popper_hash .Site.Params.cdn.js .Site.Params.cdn.js_hash) "html" "" }}

@@ -649,7 +649,7 @@ Add a header to label sections of actions in any dropdown menu.
 
 {{< example >}}
 <div class="dropdown-menu">
-  <h6 class="dropdown-header">Dropdown header</h6>
+  <h4 class="dropdown-header">Dropdown header</h4>
   <a class="dropdown-item" href="#">Action</a>
   <a class="dropdown-item" href="#">Another action</a>
 </div>
@@ -801,7 +801,7 @@ $('.dropdown-toggle').dropdown()
 {{< /highlight >}}
 
 {{< callout info >}}
-##### `data-toggle="dropdown"` still required
+#### `data-toggle="dropdown"` still required
 
 Regardless of whether you call your dropdown via JavaScript or instead use the data-api, `data-toggle="dropdown"` is always required to be present on the dropdown's trigger element.
 {{< /callout >}}
