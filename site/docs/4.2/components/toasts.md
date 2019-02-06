@@ -69,6 +69,7 @@ Toasts are slightly translucent, too, so they blend over whatever they might app
 
 ### Dark
 
+<div class="bg-light">
 {% capture example %}
 <div class="toast bg-dark text-white" role="alert" aria-live="assertive" aria-atomic="true">
   <div class="toast-body">
@@ -76,6 +77,8 @@ Toasts are slightly translucent, too, so they blend over whatever they might app
   </div>
 </div>
 {% endcapture %}
+{% include example.html content=example %}
+</div>
 
 ### Stacking
 
