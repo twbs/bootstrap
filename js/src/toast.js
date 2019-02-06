@@ -74,7 +74,7 @@ class Toast {
   static get DefaultType() {
     return DefaultType
   }
-  
+
   static get Default() {
     return Default
   }
