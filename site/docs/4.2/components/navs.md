@@ -183,7 +183,7 @@ Force your `.nav`'s contents to extend the full available width one of two modif
     <a class="nav-link active" href="#">Active</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Longer nav link</a>
+    <a class="nav-link" href="#">Much longer nav link</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="#">Link</a>
@@ -200,7 +200,7 @@ When using a `<nav>`-based navigation, be sure to include `.nav-item` on the anc
 {% capture example %}
 <nav class="nav nav-pills nav-fill">
   <a class="nav-item nav-link active" href="#">Active</a>
-  <a class="nav-item nav-link" href="#">Link</a>
+  <a class="nav-item nav-link" href="#">Much longer nav link</a>
   <a class="nav-item nav-link" href="#">Link</a>
   <a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
 </nav>
@@ -210,12 +210,20 @@ When using a `<nav>`-based navigation, be sure to include `.nav-item` on the anc
 For equal-width elements, use `.nav-justified`. All horizontal space will be occupied by nav links, but unlike the `.nav-fill` above, every nav item will be the same width.
 
 {% capture example %}
-<nav class="nav nav-pills nav-justified">
-  <a class="nav-link active" href="#">Active</a>
-  <a class="nav-link" href="#">Longer nav link</a>
-  <a class="nav-link" href="#">Link</a>
-  <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-</nav>
+<ul class="nav nav-pills nav-justified">
+  <li class="nav-item">
+    <a class="nav-link active" href="#">Active</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Much longer nav link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" href="#">Disabled</a>
+  </li>
+</ul>
 {% endcapture %}
 {% include example.html content=example %}
 
@@ -224,7 +232,7 @@ Similar to the `.nav-fill` example using a `<nav>`-based navigation, be sure to 
 {% capture example %}
 <nav class="nav nav-pills nav-justified">
   <a class="nav-item nav-link active" href="#">Active</a>
-  <a class="nav-item nav-link" href="#">Link</a>
+  <a class="nav-item nav-link" href="#">Much longer nav link</a>
   <a class="nav-item nav-link" href="#">Link</a>
   <a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
 </nav>
@@ -238,7 +246,7 @@ If you need responsive nav variations, consider using a series of [flexbox utili
 {% capture example %}
 <nav class="nav nav-pills flex-column flex-sm-row">
   <a class="flex-sm-fill text-sm-center nav-link active" href="#">Active</a>
-  <a class="flex-sm-fill text-sm-center nav-link" href="#">Link</a>
+  <a class="flex-sm-fill text-sm-center nav-link" href="#">Longer nav link</a>
   <a class="flex-sm-fill text-sm-center nav-link" href="#">Link</a>
   <a class="flex-sm-fill text-sm-center nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
 </nav>
