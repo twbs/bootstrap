@@ -17,7 +17,8 @@ const plugins = [
       'createClass',
       'inheritsLoose',
       'defineProperty',
-      'objectSpread'
+      'objectSpread',
+      'classPrivateMethodGet'
     ]
   })
 ]

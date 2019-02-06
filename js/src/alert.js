@@ -59,7 +59,7 @@ class Alert {
   close(element) {
     let rootElement = this._element
     if (element) {
-      rootElement = this._getRootElement(element)
+      rootElement = this.#getRootElement(element)
     }
 
     const customEvent = this._triggerCloseEvent(rootElement)
@@ -78,9 +78,9 @@ class Alert {
 
   // Private
 
-  _getRootElement(element) {
+  #getRootElement(element) {
     const selector = Util.getSelectorFromElement(element)
-    let parent     = false
+    let parent = false
 
     if (selector) {
       parent = document.querySelector(selector)
