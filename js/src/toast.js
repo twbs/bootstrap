@@ -75,6 +75,10 @@ class Toast {
     return DefaultType
   }
 
+  static get Default() {
+    return Default
+  }
+
   // Public
 
   show() {
