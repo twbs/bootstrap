@@ -845,7 +845,11 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <td>offset</td>
       <td>number | string | function</td>
       <td>0</td>
-      <td>Offset of the dropdown relative to its target. For more information refer to Popper.js's <a href="https://popper.js.org/popper-documentation.html#modifiers..offset.offset">offset docs</a>.</td>
+      <td>
+        <p>Offset of the dropdown relative to its target.</p>
+        <p>When a function is used to determine the offset, it is called with an object containing the offset data as its first argument. The function must return an object with the same structure. The triggering element DOM node is passed as the second argument.</p>
+        <p>For more information refer to Popper.js's <a href="https://popper.js.org/popper-documentation.html#modifiers..offset.offset">offset docs</a>.</p>
+      </td>
     </tr>
     <tr>
       <td>flip</td>
