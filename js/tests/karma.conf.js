@@ -1,6 +1,7 @@
 /* eslint-env node */
 /* eslint no-process-env: 0 */
 
+const path = require('path')
 const ip = require('ip')
 const {
   browsers,
@@ -114,7 +115,7 @@ if (bundle) {
   conf.customLaunchers = customLaunchers
   conf.detectBrowsers = detectBrowsers
   conf.coverageIstanbulReporter = {
-    dir: '../coverage/',
+    dir: path.resolve(__dirname, '../coverage/'),
     reports: ['lcov', 'text-summary'],
     thresholds: {
       emitWarning: false,
