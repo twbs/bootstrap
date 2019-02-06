@@ -460,7 +460,7 @@ $(function () {
       .trigger($.Event('click'))
   })
 
-  QUnit.test('should not add show class to tab panes if there are no fade classes', function (assert) {
+  QUnit.test('should not add show class to tab panes if there is no `.fade` class', function (assert) {
     assert.expect(1)
     var done = assert.async()
 
@@ -488,7 +488,7 @@ $(function () {
       .trigger($.Event('click'))
   })
 
-  QUnit.test('should add show class to tab panes if there are fade classes', function (assert) {
+  QUnit.test('should add show class to tab panes if there is a `.fade` class', function (assert) {
     assert.expect(1)
     var done = assert.async()
 
