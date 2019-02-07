@@ -3,7 +3,6 @@ layout: docs
 title: Overflow
 description: Use these shorthand utilities for quickly configuring how content overflows an element.
 group: utilities
-toc: true
 ---
 
 Barebones `overflow` functionality is provided for two values by default, and they are not responsive.
