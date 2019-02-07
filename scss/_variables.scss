@@ -381,6 +381,7 @@ $table-border-level:          -6 !default;
 
 $input-btn-padding-y:         .375rem !default;
 $input-btn-padding-x:         .75rem !default;
+$input-btn-font-family:       null !default;
 $input-btn-font-size:         $font-size-base !default;
 $input-btn-line-height:       $line-height-base !default;
 
@@ -407,6 +408,7 @@ $input-btn-border-width:      $border-width !default;
 
 $btn-padding-y:               $input-btn-padding-y !default;
 $btn-padding-x:               $input-btn-padding-x !default;
+$btn-font-family:             $input-btn-font-family !default;
 $btn-font-size:               $input-btn-font-size !default;
 $btn-line-height:             $input-btn-line-height !default;
 
@@ -447,6 +449,7 @@ $label-margin-bottom:                   .5rem !default;
 
 $input-padding-y:                       $input-btn-padding-y !default;
 $input-padding-x:                       $input-btn-padding-x !default;
+$input-font-family:                     $input-btn-font-family !default;
 $input-font-size:                       $input-btn-font-size !default;
 $input-font-weight:                     $font-weight-base !default;
 $input-line-height:                     $input-btn-line-height !default;
@@ -559,6 +562,7 @@ $custom-switch-indicator-size:                  calc(#{$custom-control-indicator
 
 $custom-select-padding-y:           $input-padding-y !default;
 $custom-select-padding-x:           $input-padding-x !default;
+$custom-select-font-family:         $input-font-family !default;
 $custom-select-font-size:           $input-font-size !default;
 $custom-select-height:              $input-height !default;
 $custom-select-indicator-padding:   1rem !default; // Extra padding to account for the presence of the background-image based indicator
@@ -623,6 +627,7 @@ $custom-file-disabled-bg:           $input-disabled-bg !default;
 $custom-file-padding-y:             $input-padding-y !default;
 $custom-file-padding-x:             $input-padding-x !default;
 $custom-file-line-height:           $input-line-height !default;
+$custom-file-font-family:           $input-font-family !default;
 $custom-file-font-weight:           $input-font-weight !default;
 $custom-file-color:                 $input-color !default;
 $custom-file-bg:                    $input-bg !default;
