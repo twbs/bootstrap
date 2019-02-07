@@ -260,7 +260,7 @@
 
   // Hides the default caret in IE11
   &::-ms-expand {
-    opacity: 0;
+    display: none;
   }
 }
 

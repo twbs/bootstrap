@@ -93,7 +93,7 @@
 
       @if $enable-validation-icons {
         padding-right: $custom-select-feedback-icon-padding-right;
-        background: $custom-select-background, $icon no-repeat $custom-select-feedback-icon-position / $custom-select-feedback-icon-size;
+        background: $custom-select-background, $icon $custom-select-bg no-repeat $custom-select-feedback-icon-position / $custom-select-feedback-icon-size;
       }
 
       &:focus {
