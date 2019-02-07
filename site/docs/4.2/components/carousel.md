@@ -112,6 +112,7 @@ You can also add the indicators to the carousel, alongside the controls, too.
 
 Add captions to your slides easily with the `.carousel-caption` element within any `.carousel-item`. They can be easily hidden on smaller viewports, as shown below, with optional [display utilities]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/display/). We hide them initially with `.d-none` and bring them back on medium-sized devices with `.d-md-block`.
 
+{% capture example %}
 <div class="bd-example">
   <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
@@ -152,16 +153,8 @@ Add captions to your slides easily with the `.carousel-caption` element within a
     </a>
   </div>
 </div>
-
-{% highlight html %}
-<div class="carousel-item">
-  <img src="..." alt="...">
-  <div class="carousel-caption d-none d-md-block">
-    <h5>...</h5>
-    <p>...</p>
-  </div>
-</div>
-{% endhighlight %}
+{% endcapture %}
+{% include example.html content=example %}
 
 ### Crossfade
 

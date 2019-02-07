@@ -32,4 +32,5 @@
     background-image: url($file-2x);
     background-size: $width-1x $height-1x;
   }
+  @include deprecate("`img-retina()`", "v4.3.0", "v5");
 }

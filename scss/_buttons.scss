@@ -6,6 +6,7 @@
 
 .btn {
   display: inline-block;
+  font-family: $btn-font-family;
   font-weight: $btn-font-weight;
   color: $body-color;
   text-align: center;
@@ -76,6 +77,7 @@ fieldset:disabled a.btn {
 .btn-link {
   font-weight: $font-weight-normal;
   color: $link-color;
+  text-decoration: $link-decoration;
 
   @include hover {
     color: $link-hover-color;

@@ -45,7 +45,7 @@ There are two `z-index` scales in Bootstrap—elements within a component and ov
 
 - Some components in Bootstrap are built with overlapping elements to prevent double borders without modifying the `border` property. For example, button groups, input groups, and pagination.
 - These components share a standard `z-index` scale of `0` through `3`.
-- `0` is default (initial), `1` is `:hover`, `2` is `:active`/`.active`, and , `3` is `:focus`.
+- `0` is default (initial), `1` is `:hover`, `2` is `:active`/`.active`, and `3` is `:focus`.
 - This approach matches our expectations of highest user priority. If an element is focused, it's in view and at the user's attention. Active elements are second highest because they indicate state. Hover is third highest because it indicates user intent, but nearly _anything_ can be hovered.
 
 ### Overlay components
