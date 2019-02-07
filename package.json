@@ -72,7 +72,7 @@
     "docs-production": "cross-env HUGO_ENV=production npm run docs-build",
     "docs-lint": "node build/vnu-jar.js",
     "predocs-serve": "npm-run-all css-copy js-copy",
-    "docs-serve": "hugo server --port 9001 --disableFastRender --renderToDisk",
+    "docs-serve": "hugo server --port 9001 --disableFastRender",
     "docs-serve-only": "http-server _gh_pages -p 9001 -a localhost",
     "update-deps": "ncu -a -x jquery -x bundlesize && npm update && cross-env-shell echo Manually update \\\"site/static/docs/$npm_package_version_short/assets/js/vendor/\\\"",
     "release": "npm-run-all dist release-sri release-zip docs-production",
