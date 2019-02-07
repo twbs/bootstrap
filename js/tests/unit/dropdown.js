@@ -1361,4 +1361,59 @@ $(function () {
     $dropdown.hide()
     assert.ok($dropdown.parent('.dropdown').hasClass('show'))
   })
+
+  QUnit.test('should create offset modifier correctly when offset option is a function', function (assert) {
+    assert.expect(2)
+
+    var getOffset = function (offsets) {
+      return offsets
+    }
+
+    var dropdownHTML =
+      '<div class="dropdown">' +
+      '  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>' +
+      '  <div class="dropdown-menu">' +
+      '    <a class="dropdown-item" href="#">Another link</a>' +
+      '  </div>' +
+      '</div>'
+
+    var $dropdown = $(dropdownHTML)
+      .appendTo('#qunit-fixture')
+      .find('[data-toggle="dropdown"]')
+      .bootstrapDropdown({
+        offset: getOffset
+      })
+
+    var dropdown = $dropdown.data('bs.dropdown')
+    var offset = dropdown._getOffset()
+
+    assert.ok(typeof offset.offset === 'undefined')
+    assert.ok(typeof offset.fn === 'function')
+  })
+
+  QUnit.test('should create offset modifier correctly when offset option is not a function', function (assert) {
+    assert.expect(2)
+
+    var dropdownHTML =
+      '<div class="dropdown">' +
+      '  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>' +
+      '  <div class="dropdown-menu">' +
+      '    <a class="dropdown-item" href="#">Another link</a>' +
+      '  </div>' +
+      '</div>'
+
+    var myOffset = 42
+    var $dropdown = $(dropdownHTML)
+      .appendTo('#qunit-fixture')
+      .find('[data-toggle="dropdown"]')
+      .bootstrapDropdown({
+        offset: myOffset
+      })
+
+    var dropdown = $dropdown.data('bs.dropdown')
+    var offset = dropdown._getOffset()
+
+    assert.strictEqual(offset.offset, myOffset)
+    assert.ok(typeof offset.fn === 'undefined')
+  })
 })

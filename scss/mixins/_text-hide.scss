@@ -7,7 +7,5 @@
   background-color: transparent;
   border: 0;
 
-  @if ($ignore-warning != true) {
-    @warn "The `text-hide()` mixin has been deprecated as of v4.1.0. It will be removed entirely in v5.";
-  }
+  @include deprecate("`text-hide()`", "v4.1.0", "v5", $ignore-warning);
 }

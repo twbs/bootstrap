@@ -3,7 +3,6 @@ layout: docs
 title: Image replacement
 description: Swap text for background images with the image replacement class.
 group: utilities
-toc: true
 ---
 
 {% capture callout %}
@@ -33,5 +32,5 @@ Use the `.text-hide` class to maintain the accessibility and SEO benefits of hea
 </div>
 
 {% highlight html %}
-<h1 class="text-hide" style="background-image: url('..');">Bootstrap</h1>
+<h1 class="text-hide" style="background-image: url('...');">Bootstrap</h1>
 {% endhighlight %}

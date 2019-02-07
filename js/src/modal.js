@@ -51,6 +51,7 @@ const Event = {
 }
 
 const ClassName = {
+  SCROLLABLE         : 'modal-dialog-scrollable',
   SCROLLBAR_MEASURER : 'modal-scrollbar-measure',
   BACKDROP           : 'modal-backdrop',
   OPEN               : 'modal-open',
@@ -60,6 +61,7 @@ const ClassName = {
 
 const Selector = {
   DIALOG         : '.modal-dialog',
+  MODAL_BODY     : '.modal-body',
   DATA_TOGGLE    : '[data-toggle="modal"]',
   DATA_DISMISS   : '[data-dismiss="modal"]',
   FIXED_CONTENT  : '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top',
@@ -244,7 +246,12 @@ class Modal {
     this._element.style.display = 'block'
     this._element.removeAttribute('aria-hidden')
     this._element.setAttribute('aria-modal', true)
-    this._element.scrollTop = 0
+
+    if ($(this._dialog).hasClass(ClassName.SCROLLABLE)) {
+      this._dialog.querySelector(Selector.MODAL_BODY).scrollTop = 0
+    } else {
+      this._element.scrollTop = 0
+    }
 
     if (transition) {
       Util.reflow(this._element)

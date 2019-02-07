@@ -17,13 +17,14 @@ Apply `.visible` or `.invisible` as needed.
 {% highlight scss %}
 // Class
 .visible {
-  visibility: visible;
+  visibility: visible !important;
 }
 .invisible {
-  visibility: hidden;
+  visibility: hidden !important;
 }
 
 // Usage as a mixin
+// Warning: The `invisible()` mixin has been deprecated as of v4.3.0. It will be removed entirely in v5.
 .element {
   @include invisible(visible);
 }

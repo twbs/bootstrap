@@ -669,7 +669,7 @@ $(function () {
   })
 
   QUnit.test('transition duration should be the modal-dialog duration before triggering shown event', function (assert) {
-    assert.expect(2)
+    assert.expect(1)
     var done = assert.async()
     var style = [
       '<style>',
@@ -694,22 +694,17 @@ $(function () {
       '</div>'
     ].join('')
 
-    var beginTimestamp = 0
     var $modal = $(modalHTML).appendTo('#qunit-fixture')
-    var $modalDialog = $('.modal-dialog')
-    var transitionDuration  = Util.getTransitionDurationFromElement($modalDialog[0])
-
-    assert.strictEqual(transitionDuration, 300)
+    var expectedTransitionDuration = 300
+    var spy = sinon.spy(Util, 'getTransitionDurationFromElement')
 
     $modal.on('shown.bs.modal', function () {
-      var diff = Date.now() - beginTimestamp
-      assert.ok(diff < 400)
+      assert.ok(spy.returned(expectedTransitionDuration))
       $style.remove()
+      spy.restore()
       done()
     })
       .bootstrapModal('show')
-
-    beginTimestamp = Date.now()
   })
 
   QUnit.test('should dispose modal', function (assert) {
@@ -787,6 +782,33 @@ $(function () {
       })
 
       $(document).trigger(event)
+    })
+      .bootstrapModal('show')
+  })
+
+  QUnit.test('should scroll to top of the modal body if the modal has .modal-dialog-scrollable class', function (assert) {
+    assert.expect(2)
+    var done = assert.async()
+
+    var $modal = $([
+      '<div id="modal-test">',
+      '  <div class="modal-dialog modal-dialog-scrollable">',
+      '    <div class="modal-content">',
+      '      <div class="modal-body" style="height: 100px; overflow-y: auto;">',
+      '        <div style="height: 200px" />',
+      '      </div>',
+      '    </div>',
+      '  </div>',
+      '</div>'
+    ].join('')).appendTo('#qunit-fixture')
+
+    var $modalBody = $('.modal-body')
+    $modalBody.scrollTop(100)
+    assert.strictEqual($modalBody.scrollTop(), 100)
+
+    $modal.on('shown.bs.modal', function () {
+      assert.strictEqual($modalBody.scrollTop(), 0, 'modal body scrollTop should be 0 when opened')
+      done()
     })
       .bootstrapModal('show')
   })
