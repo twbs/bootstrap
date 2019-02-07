@@ -132,12 +132,16 @@
   background-color: transparent; // For `<button>`s
   border: 0; // For `<button>`s
 
-  &:first-child {
-    @include border-top-radius($dropdown-inner-border-radius);
-  }
+  // Prevent dropdown overflow if there's no padding
+  // See https://github.com/twbs/bootstrap/pull/27703
+  @if $dropdown-padding-y == 0 {
+    &:first-child {
+      @include border-top-radius($dropdown-inner-border-radius);
+    }
 
-  &:last-child {
-    @include border-bottom-radius($dropdown-inner-border-radius);
+    &:last-child {
+      @include border-bottom-radius($dropdown-inner-border-radius);
+    }
   }
 
   @include hover-focus {
