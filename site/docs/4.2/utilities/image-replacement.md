@@ -33,5 +33,5 @@ Use the `.text-hide` class to maintain the accessibility and SEO benefits of hea
 </div>
 
 {% highlight html %}
-<h1 class="text-hide" style="background-image: url('..');">Bootstrap</h1>
+<h1 class="text-hide" style="background-image: url('...');">Bootstrap</h1>
 {% endhighlight %}
