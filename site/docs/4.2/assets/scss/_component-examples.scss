@@ -406,7 +406,7 @@
     border: 0;
   }
   pre code {
-    font-size: inherit;
+    @include font-size(inherit);
     color: $gray-900; // Effectively the base text color
   }
 }

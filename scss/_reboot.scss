@@ -46,7 +46,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 body {
   margin: 0; // 1
   font-family: $font-family-base;
-  font-size: $font-size-base;
+  @include font-size($font-size-base);
   font-weight: $font-weight-base;
   line-height: $line-height-base;
   color: $body-color;
@@ -155,7 +155,7 @@ strong {
 }
 
 small {
-  font-size: 80%; // Add the correct font size in all browsers
+  @include font-size(80%); // Add the correct font size in all browsers
 }
 
 //
@@ -166,7 +166,7 @@ small {
 sub,
 sup {
   position: relative;
-  font-size: 75%;
+  @include font-size(75%);
   line-height: 0;
   vertical-align: baseline;
 }
@@ -220,7 +220,7 @@ code,
 kbd,
 samp {
   font-family: $font-family-monospace;
-  font-size: 1em; // Correct the odd `em` font sizing in all browsers.
+  @include font-size(1em); // Correct the odd `em` font sizing in all browsers.
 }
 
 pre {
@@ -317,7 +317,7 @@ optgroup,
 textarea {
   margin: 0; // Remove the margin in Firefox and Safari
   font-family: inherit;
-  font-size: inherit;
+  @include font-size(inherit);
   line-height: inherit;
 }
 
@@ -416,7 +416,7 @@ legend {
   max-width: 100%; // 1
   padding: 0;
   margin-bottom: .5rem;
-  font-size: 1.5rem;
+  @include font-size(1.5rem);
   line-height: inherit;
   color: inherit; // 2
   white-space: normal; // 1

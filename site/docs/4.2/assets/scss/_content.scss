@@ -71,6 +71,18 @@
 //
 
 .bd-content {
+  > h2 {
+    @include font-size($h2-font-size);
+  }
+
+  > h3 {
+    @include font-size($h3-font-size);
+  }
+
+  > h4 {
+    @include font-size($h4-font-size);
+  }
+
   > h2:not(:first-child) {
     margin-top: 3rem;
   }
@@ -97,20 +109,15 @@
   margin-top: 1rem;
   margin-bottom: .5rem;
   font-weight: 300;
-
-  @include media-breakpoint-up(sm) {
-    font-size: 3rem;
-  }
+  @include font-size(3rem);
 }
 
 .bd-lead {
-  font-size: 1.125rem;
+  @include font-size(1.125rem);
   font-weight: 300;
 
-  @include media-breakpoint-up(sm) {
+  @include media-breakpoint-up(lg) {
     max-width: 80%;
-    margin-bottom: 1rem;
-    font-size: 1.5rem;
   }
 }
 

@@ -1,6 +1,6 @@
 .close {
   float: right;
-  font-size: $close-font-size;
+  @include font-size($close-font-size);
   font-weight: $close-font-weight;
   line-height: 1;
   color: $close-color;
