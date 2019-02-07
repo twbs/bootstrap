@@ -4,7 +4,7 @@
 // Text
 //
 
-.text-monospace { font-family: $font-family-monospace; }
+.text-monospace { font-family: $font-family-monospace !important; }
 
 // Alignment
 
@@ -61,6 +61,11 @@
 }
 
 .text-decoration-none { text-decoration: none !important; }
+
+.text-break {
+  word-break: break-word !important; // IE & < Edge 18
+  overflow-wrap: break-word !important;
+}
 
 // Reset
 

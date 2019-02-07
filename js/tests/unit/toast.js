@@ -236,4 +236,24 @@ $(function () {
       })
       .bootstrapToast('show')
   })
+
+  QUnit.test('should expose default setting to allow to override them', function (assert) {
+    assert.expect(1)
+
+    var defaultDelay = 1000
+    Toast.Default.delay = defaultDelay
+
+    var toastHtml =
+      '<div class="toast" data-autohide="false" data-animation="false">' +
+        '<button type="button" class="ml-2 mb-1 close" data-dismiss="toast">' +
+          'close' +
+        '</button>' +
+      '</div>'
+
+    var $toast = $(toastHtml)
+      .bootstrapToast()
+
+    var toast = $toast.data('bs.toast')
+    assert.strictEqual(toast._config.delay, defaultDelay)
+  })
 })

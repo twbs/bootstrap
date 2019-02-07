@@ -4,6 +4,9 @@
 <meta name="author" content="{{ site.authors }}">
 <meta name="generator" content="Jekyll v{{ jekyll.version }}">
 
+<meta name="docsearch:language" content="en">
+<meta name="docsearch:version" content="{{ site.docs_version }}">
+
 <title>
   {%- if page.title -%}
     {{ page.title | smartify }} · {{ site.title | smartify }}
@@ -11,6 +14,8 @@
     {{ site.title | smartify }} · {{ site.description | smartify }}
   {%- endif -%}
 </title>
+
+<link rel="canonical" href="{{ site.url | append: page.url }}">
 
 {% include stylesheet.html %}
 {% include favicons.html %}
