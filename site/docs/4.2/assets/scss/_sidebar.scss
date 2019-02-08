@@ -14,7 +14,7 @@
   order: 2;
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
-  font-size: .875rem;
+  @include font-size(.875rem);
 }
 
 .section-nav {
@@ -32,7 +32,7 @@
   a {
     display: block;
     padding: .125rem 1.5rem;
-    color: #99979c;
+    color: #77757a;
 
     &:hover {
       color: $blue;
@@ -144,7 +144,7 @@
 .bd-sidebar .nav > li > a {
   display: block;
   padding: .25rem 1.5rem;
-  font-size: 90%;
+  @include font-size(90%);
   color: rgba(0, 0, 0, .65);
 }
 

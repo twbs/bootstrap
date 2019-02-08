@@ -182,10 +182,6 @@
 // Typography
 .bd-example-type {
   .table {
-    .type-info {
-      color: #999;
-      vertical-align: middle;
-    }
     td {
       padding: 1rem 0;
       border-color: #eee;
@@ -410,7 +406,7 @@
     border: 0;
   }
   pre code {
-    font-size: inherit;
+    @include font-size(inherit);
     color: $gray-900; // Effectively the base text color
   }
 }

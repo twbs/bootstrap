@@ -1,9 +1,8 @@
 ---
 layout: docs
-title: Screenreaders
-description: Use screenreader utilities to hide elements on all devices except screen readers.
+title: Screen readers
+description: Use screen reader utilities to hide elements on all devices except screen readers.
 group: utilities
-toc: true
 ---
 
 Hide an element to all devices **except screen readers** with `.sr-only`. Combine `.sr-only` with `.sr-only-focusable` to show the element again when it's focused (e.g. by a keyboard-only user). Can also be used as mixins.
