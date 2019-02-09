@@ -8,7 +8,7 @@ redirect_from: "/docs/4.2/extend/"
 
 While the getting started pages provide an introductory tour of the project and what it offers, this document focuses on _why_ we do the things we do in Bootstrap. It explains our philosophy to building on the web so that others can learn from us, contribute with us, and help us improve.
 
-See something that doesn't sound right, or perhaps could be done better? [Open an issue](https://github.com/twbs/bootstrap/issues/new)—we'd love to discuss it with you.
+See something that doesn't sound right, or perhaps could be done better? [Open an issue]({{ site.repo }}/issues/new)—we'd love to discuss it with you.
 
 ## Summary
 
