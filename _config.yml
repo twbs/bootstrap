@@ -17,6 +17,7 @@ exclude:
   - assets/less/
 
 plugins:
+  - jekyll-redirect-from
   - jekyll-sitemap
 
 # Custom vars
