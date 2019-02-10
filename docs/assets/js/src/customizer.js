@@ -1,5 +1,5 @@
 /*!
- * Bootstrap Customizer (http://getbootstrap.com/customize/)
+ * Bootstrap Customizer (https://getbootstrap.com/customize/)
  * Copyright 2011-2018 Twitter, Inc.
  *
  * Licensed under the Creative Commons Attribution 3.0 Unported License. For
