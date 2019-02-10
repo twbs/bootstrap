@@ -904,6 +904,6 @@ All dropdown events are fired at the `.dropdown-menu`'s parent element and have 
 
 {% highlight js %}
 $('#myDropdown').on('show.bs.dropdown', function () {
-  // do something…
+  // do something...
 })
 {% endhighlight %}

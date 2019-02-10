@@ -65,9 +65,9 @@ $('.btn.danger').button('toggle').addClass('fat')
 All methods should accept an optional options object, a string which targets a particular method, or nothing (which initiates a plugin with default behavior):
 
 {% highlight js %}
-$('#myModal').modal()                      // initialized with defaults
-$('#myModal').modal({ keyboard: false })   // initialized with no keyboard
-$('#myModal').modal('show')                // initializes and invokes show immediately
+$('#myModal').modal() // initialized with defaults
+$('#myModal').modal({ keyboard: false }) // initialized with no keyboard
+$('#myModal').modal('show') // initializes and invokes show immediately
 {% endhighlight %}
 
 Each plugin also exposes its raw constructor on a `Constructor` property: `$.fn.popover.Constructor`. If you'd like to get a particular plugin instance, retrieve it directly from an element: `$('[rel="popover"]').data('popover')`.
@@ -100,7 +100,8 @@ $('#myCarousel').carousel('2') // !! Will be ignored, as the transition to the s
 You can change the default settings for a plugin by modifying the plugin's `Constructor.Default` object:
 
 {% highlight js %}
-$.fn.modal.Constructor.Default.keyboard = false // changes default for the modal plugin's `keyboard` option to false
+// changes default for the modal plugin's `keyboard` option to false
+$.fn.modal.Constructor.Default.keyboard = false
 {% endhighlight %}
 
 ## No conflict
@@ -109,7 +110,7 @@ Sometimes it is necessary to use Bootstrap plugins with other UI frameworks. In 
 
 {% highlight js %}
 var bootstrapButton = $.fn.button.noConflict() // return $.fn.button to previously assigned value
-$.fn.bootstrapBtn = bootstrapButton            // give $().bootstrapBtn the Bootstrap functionality
+$.fn.bootstrapBtn = bootstrapButton // give $().bootstrapBtn the Bootstrap functionality
 {% endhighlight %}
 
 ## Version numbers

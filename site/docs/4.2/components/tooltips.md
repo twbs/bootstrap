@@ -356,6 +356,6 @@ Updates the position of an element's tooltip.
 
 {% highlight js %}
 $('#myTooltip').on('hidden.bs.tooltip', function () {
-  // do something…
+  // do something...
 })
 {% endhighlight %}
