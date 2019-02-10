@@ -846,18 +846,36 @@ $(function () {
       .bootstrapModal('show')
   })
 
-  QUnit.test('should cycle focus backwards by shift+tab key down when a modal contains elements with negative tabindex values', function (assert) {
+  QUnit.test('should cycle focus backwards by shift+tab key down when a modal contains non-tabbable elements', function (assert) {
     assert.expect(1)
     var done = assert.async()
-    var $div = $('<div id="modal-test"><div id="focusable" tabindex="-1">not tabbable</div><button tabindex="-1">not tabbable</button><button id="first">tabbable</button><div id="last" tabindex="0">tabbable</div><div>not tabbable</div></div>')
+    const $div = $(
+      '<div id="modal-test">' +
+      '  <style>' +
+      '    .display-block { display: block; }' +
+      '    .display-none { display: none; }' +
+      '  </style>' +
+      '  <button type="button" id="initial-focus" tabindex="-1">button[tabindex="-1"]</button>' +
+      '  <button type="button">button</button>' +
+      '  <div id="focus-expected" class="display-block" hidden tabindex="0">focus-expected</div>' +
+      '  <button type="button" disabled>disabled</button>' +
+      '  <input type="hidden"/>' +
+      '  <script tabindex="0">// this is hidden element</script>' +
+      '  <button type="button" hidden>button[hidden]</button>' +
+      '  <button type="button" class="display-none">display: none</button>' +
+      '  <div class="display-none">' +
+      '    <button type="button">div.display-none button</button>' +
+      '  </div>' +
+      '</div>'
+    )
 
     $div.on('shown.bs.modal', function () {
-      $div.find('#focusable').trigger('focus')
+      $div.find('#initial-focus').trigger('focus')
       $div.trigger($.Event('keydown', {
         which: 9, // Tab key
         shiftKey: true
       }))
-      assert.strictEqual(document.activeElement, $('#last')[0], 'The last element in the modal is not focused')
+      assert.strictEqual(document.activeElement, $('#focus-expected')[0], 'The last tabbable element in the modal is not focused')
       done()
     })
       .bootstrapModal('show')

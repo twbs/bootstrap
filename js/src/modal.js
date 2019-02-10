@@ -68,7 +68,7 @@ const Selector = {
   DATA_DISMISS   : '[data-dismiss="modal"]',
   FIXED_CONTENT  : '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top',
   STICKY_CONTENT : '.sticky-top',
-  FOCUSABLE      : 'a[href], area[href], input, button, select, textarea, ' +
+  MAYBE_TABBABLE : 'a[href], area[href], input, button, select, textarea, ' +
     'audio[controls], video[controls], iframe, object, embed, [tabindex], [contenteditable]'
 }
 
@@ -305,26 +305,41 @@ class Modal {
           return
         }
         if (event.shiftKey && event.which === TAB_KEYCODE) {
-          const currentFocus = $(document.activeElement)
-          const tabbables = $(this._element).find(Selector.FOCUSABLE)
-            .filter(':visible:not(:disabled,[tabindex^="-"])')
+          const currentFocus = document.activeElement
+          const tabbables = this._findTabbableElements()
           if (tabbables.length === 0) {
             return
           }
           if ($(this._element).has(currentFocus).length === 0 ||
-            tabbables[0] === currentFocus[0] ||
+            tabbables[0] === currentFocus ||
             /* eslint-disable no-bitwise */
-            tabbables[0].compareDocumentPosition(currentFocus[0]) &
+            tabbables[0].compareDocumentPosition(currentFocus) &
             (Node.DOCUMENT_POSITION_DISCONNECTED |
             Node.DOCUMENT_POSITION_PRECEDING |
             Node.DOCUMENT_POSITION_CONTAINS)
             /* eslint-enable no-bitwise */
           ) {
             event.preventDefault()
-            tabbables.last().trigger('focus')
+            tabbables[tabbables.length - 1].focus()
           }
         }
       })
+  }
+
+  _findTabbableElements() {
+    const maybeTabbable = this._element.querySelectorAll(Selector.MAYBE_TABBABLE)
+    const tabbables = []
+
+    for (let i = 0; i < maybeTabbable.length; i++) {
+      const tabindex = Number(maybeTabbable[i].getAttribute('tabindex')) || 0
+      if (tabindex >= 0 && !maybeTabbable[i].disabled &&
+        // check visibility
+        (maybeTabbable[i].offsetWidth || maybeTabbable[i].offsetHeight || maybeTabbable[i].getBoundingClientRect().width)) {
+        tabbables.push(maybeTabbable[i])
+      }
+    }
+
+    return tabbables
   }
 
   _setEscapeEvent() {
