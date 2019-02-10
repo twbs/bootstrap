@@ -1,11 +1,13 @@
+// stylelint-disable declaration-no-important
+
 //
 // Visibility utilities
 //
 
 .visible {
-  @include invisible(visible);
+  visibility: visible !important;
 }
 
 .invisible {
-  @include invisible(hidden);
+  visibility: hidden !important;
 }

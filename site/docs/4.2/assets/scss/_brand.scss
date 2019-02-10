@@ -1,0 +1,88 @@
+//
+// Brand guidelines
+//
+
+// Logo series wrapper
+.bd-brand-logos {
+  display: table;
+  width: 100%;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  color: $bd-purple;
+  background-color: #f9f9f9;
+  @include border-radius;
+
+  .inverse {
+    color: $white;
+    background-color: $bd-purple;
+  }
+}
+
+// Individual items
+.bd-brand-item {
+  padding: 4rem 0;
+  text-align: center;
+
+  + .bd-brand-item {
+    border-top: 1px solid $white;
+  }
+
+  // Heading content within
+  h1,
+  h3 {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  @include media-breakpoint-up(md) {
+    display: table-cell;
+    width: 1%;
+
+    + .bd-brand-item {
+      border-top: 0;
+      border-left: 1px solid $white;
+    }
+
+    h1 {
+      @include font-size(4rem);
+    }
+  }
+}
+
+
+//
+// Color swatches
+//
+
+.color-swatches {
+  margin: 0 -5px;
+  overflow: hidden; // clearfix
+
+  // Docs colors
+  .bd-purple {
+    background-color: $bd-purple;
+  }
+  .bd-purple-light {
+    background-color: $bd-purple-light;
+  }
+  .bd-purple-lighter {
+    background-color: #e5e1ea;
+  }
+  .bd-gray {
+    background-color: #f9f9f9;
+  }
+}
+
+.color-swatch {
+  float: left;
+  width: 4rem;
+  height: 4rem;
+  margin-right: .25rem;
+  margin-left: .25rem;
+  @include border-radius;
+
+  @include media-breakpoint-up(md) {
+    width: 6rem;
+    height: 6rem;
+  }
+}

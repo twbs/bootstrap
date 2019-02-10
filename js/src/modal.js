@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.1.3): modal.js
+ * Bootstrap (v4.2.1): modal.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -15,7 +15,7 @@ import Util from './util'
  */
 
 const NAME               = 'modal'
-const VERSION            = '4.1.3'
+const VERSION            = '4.2.1'
 const DATA_KEY           = 'bs.modal'
 const EVENT_KEY          = `.${DATA_KEY}`
 const DATA_API_KEY       = '.data-api'
@@ -53,6 +53,7 @@ const Event = {
 }
 
 const ClassName = {
+  SCROLLABLE         : 'modal-dialog-scrollable',
   SCROLLBAR_MEASURER : 'modal-scrollbar-measure',
   BACKDROP           : 'modal-backdrop',
   OPEN               : 'modal-open',
@@ -62,6 +63,7 @@ const ClassName = {
 
 const Selector = {
   DIALOG         : '.modal-dialog',
+  MODAL_BODY     : '.modal-body',
   DATA_TOGGLE    : '[data-toggle="modal"]',
   DATA_DISMISS   : '[data-dismiss="modal"]',
   FIXED_CONTENT  : '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top',
@@ -130,8 +132,6 @@ class Modal {
     this._setScrollbar()
 
     this._adjustDialog()
-
-    $(document.body).addClass(ClassName.OPEN)
 
     this._setEscapeEvent()
     this._setResizeEvent()
@@ -249,7 +249,13 @@ class Modal {
 
     this._element.style.display = 'block'
     this._element.removeAttribute('aria-hidden')
-    this._element.scrollTop = 0
+    this._element.setAttribute('aria-modal', true)
+
+    if ($(this._dialog).hasClass(ClassName.SCROLLABLE)) {
+      this._dialog.querySelector(Selector.MODAL_BODY).scrollTop = 0
+    } else {
+      this._element.scrollTop = 0
+    }
 
     if (transition) {
       Util.reflow(this._element)
@@ -345,6 +351,7 @@ class Modal {
   _hideModal() {
     this._element.style.display = 'none'
     this._element.setAttribute('aria-hidden', true)
+    this._element.removeAttribute('aria-modal')
     this._isTransitioning = false
     this._showBackdrop(() => {
       $(document.body).removeClass(ClassName.OPEN)
@@ -495,6 +502,8 @@ class Modal {
         .data('padding-right', actualPadding)
         .css('padding-right', `${parseFloat(calculatedPadding) + this._scrollbarWidth}px`)
     }
+
+    $(document.body).addClass(ClassName.OPEN)
   }
 
   _resetScrollbar() {

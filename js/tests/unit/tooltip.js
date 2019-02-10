@@ -414,6 +414,52 @@ $(function () {
       .bootstrapTooltip('show')
   })
 
+  QUnit.test('should place tooltips inside a specific container when container is an element', function (assert) {
+    assert.expect(3)
+    var done = assert.async()
+    var $container = $('<div></div>').appendTo('#qunit-fixture')
+    var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"/>')
+      .appendTo('#qunit-fixture')
+      .bootstrapTooltip({
+        container: $container[0]
+      })
+
+    $tooltip
+      .one('shown.bs.tooltip', function () {
+        assert.strictEqual($container.find('.tooltip').length, 1)
+        assert.strictEqual($('#qunit-fixture > .tooltip').length, 0, 'tooltip is not in parent')
+        $tooltip.bootstrapTooltip('hide')
+      })
+      .one('hidden.bs.tooltip', function () {
+        assert.strictEqual($container.find('.tooltip').length, 0, 'tooltip was removed from dom')
+        done()
+      })
+      .bootstrapTooltip('show')
+  })
+
+  QUnit.test('should place tooltips inside a specific container when container is a selector', function (assert) {
+    assert.expect(3)
+    var done = assert.async()
+    var $container = $('<div id="container"></div>').appendTo('#qunit-fixture')
+    var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"/>')
+      .appendTo('#qunit-fixture')
+      .bootstrapTooltip({
+        container: '#container'
+      })
+
+    $tooltip
+      .one('shown.bs.tooltip', function () {
+        assert.strictEqual($container.find('.tooltip').length, 1)
+        assert.strictEqual($('#qunit-fixture > .tooltip').length, 0, 'tooltip is not in parent')
+        $tooltip.bootstrapTooltip('hide')
+      })
+      .one('hidden.bs.tooltip', function () {
+        assert.strictEqual($container.find('.tooltip').length, 0, 'tooltip was removed from dom')
+        done()
+      })
+      .bootstrapTooltip('show')
+  })
+
   QUnit.test('should add position class before positioning so that position-specific styles are taken into account', function (assert) {
     assert.expect(2)
     var done = assert.async()
@@ -517,7 +563,6 @@ $(function () {
       $tooltip.bootstrapTooltip('show')
     } catch (err) {
       passed = false
-      console.log(err)
     }
 
     assert.ok(passed, '.tooltip(\'show\') should not throw an error if element no longer is in dom')
@@ -1023,5 +1068,42 @@ $(function () {
     tooltip.toggleEnabled()
 
     assert.strictEqual(tooltip._isEnabled, true)
+  })
+
+  QUnit.test('should create offset modifier correctly when offset option is a function', function (assert) {
+    assert.expect(2)
+
+    var getOffset = function (offsets) {
+      return offsets
+    }
+
+    var $trigger = $('<a href="#" rel="tooltip" data-trigger="click" title="Another tooltip"/>')
+      .appendTo('#qunit-fixture')
+      .bootstrapTooltip({
+        offset: getOffset
+      })
+
+    var tooltip = $trigger.data('bs.tooltip')
+    var offset = tooltip._getOffset()
+
+    assert.ok(typeof offset.offset === 'undefined')
+    assert.ok(typeof offset.fn === 'function')
+  })
+
+  QUnit.test('should create offset modifier correctly when offset option is not a function', function (assert) {
+    assert.expect(2)
+
+    var myOffset = 42
+    var $trigger = $('<a href="#" rel="tooltip" data-trigger="click" title="Another tooltip"/>')
+      .appendTo('#qunit-fixture')
+      .bootstrapTooltip({
+        offset: myOffset
+      })
+
+    var tooltip = $trigger.data('bs.tooltip')
+    var offset = tooltip._getOffset()
+
+    assert.strictEqual(offset.offset, myOffset)
+    assert.ok(typeof offset.fn === 'undefined')
   })
 })

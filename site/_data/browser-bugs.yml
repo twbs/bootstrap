@@ -52,16 +52,6 @@
   browser: >
     Edge
   summary: >
-    `@-ms-viewport{width: device-width;}` has side-effect of making scrollbars auto-hide
-  upstream_bug: >
-    Edge#7165383
-  origin: >
-    Bootstrap#18543
-
--
-  browser: >
-    Edge
-  summary: >
     Background color from lower layer bleeds through transparent border in some cases
   upstream_bug: >
     Edge#6274505

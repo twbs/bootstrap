@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.1.3): dropdown.js
+ * Bootstrap (v4.2.1): dropdown.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -16,7 +16,7 @@ import Util from './util'
  */
 
 const NAME                     = 'dropdown'
-const VERSION                  = '4.1.3'
+const VERSION                  = '4.2.1'
 const DATA_KEY                 = 'bs.dropdown'
 const EVENT_KEY                = `.${DATA_KEY}`
 const DATA_API_KEY             = '.data-api'
@@ -319,24 +319,30 @@ class Dropdown {
     return $(this._element).closest('.navbar').length > 0
   }
 
-  _getPopperConfig() {
-    const offsetConf = {}
+  _getOffset() {
+    const offset = {}
+
     if (typeof this._config.offset === 'function') {
-      offsetConf.fn = (data) => {
+      offset.fn = (data) => {
         data.offsets = {
           ...data.offsets,
-          ...this._config.offset(data.offsets) || {}
+          ...this._config.offset(data.offsets, this._element) || {}
         }
+
         return data
       }
     } else {
-      offsetConf.offset = this._config.offset
+      offset.offset = this._config.offset
     }
 
+    return offset
+  }
+
+  _getPopperConfig() {
     const popperConfig = {
       placement: this._getPlacement(),
       modifiers: {
-        offset: offsetConf,
+        offset: this._getOffset(),
         flip: {
           enabled: this._config.flip
         },
@@ -352,6 +358,7 @@ class Dropdown {
         enabled: false
       }
     }
+
     return popperConfig
   }
 
@@ -468,8 +475,7 @@ class Dropdown {
     const parent   = Dropdown._getParentFromElement(this)
     const isActive = $(parent).hasClass(ClassName.SHOW)
 
-    if (!isActive && (event.which !== ESCAPE_KEYCODE || event.which !== SPACE_KEYCODE) ||
-          isActive && (event.which === ESCAPE_KEYCODE || event.which === SPACE_KEYCODE)) {
+    if (!isActive || isActive && (event.which === ESCAPE_KEYCODE || event.which === SPACE_KEYCODE)) {
       if (event.which === ESCAPE_KEYCODE) {
         const toggle = parent.querySelector(Selector.DATA_TOGGLE)
         $(toggle).trigger('focus')
