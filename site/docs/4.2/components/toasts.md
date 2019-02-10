@@ -174,7 +174,7 @@ For systems that generate more notifications, consider using a wrapping element 
 You can also get fancy with flexbox utilities to align toasts horizontally and/or vertically.
 
 <div class="bg-dark">
-{% capture example html %}
+{% capture example %}
 <!-- Flexbox container for aligning the toasts -->
 <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center" style="min-height: 200px;">
 
