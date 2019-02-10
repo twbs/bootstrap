@@ -339,6 +339,6 @@ Hides an element's toast. Your toast will remain on the DOM but won't show anymo
 
 {% highlight js %}
 $('#myToast').on('hidden.bs.toast', function () {
-  // do something…
+  // do something...
 })
 {% endhighlight %}

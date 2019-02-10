@@ -355,7 +355,7 @@ All carousel events are fired at the carousel itself (i.e. at the `<div class="c
 
 {% highlight js %}
 $('#myCarousel').on('slide.bs.carousel', function () {
-  // do something…
+  // do something...
 })
 {% endhighlight %}
 

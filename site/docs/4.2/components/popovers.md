@@ -351,6 +351,6 @@ Updates the position of an element's popover.
 
 {% highlight js %}
 $('#myPopover').on('hidden.bs.popover', function () {
-  // do something…
+  // do something...
 })
 {% endhighlight %}
