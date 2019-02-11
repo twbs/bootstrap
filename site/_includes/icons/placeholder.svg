@@ -1,0 +1,35 @@
+{%- comment -%}
+  Usage: include icons/placeholder.svg args
+
+  args can be one of the following:
+    title: Used in the SVG `title` tag
+    text: The text to show in the image - default: 'width x height'
+    class: default: 'bd-placeholder-img'
+    color: The text color (foreground) - default: '#dee2e6'
+    background: The background color - default: '#868e96'
+    width: default: 100%
+    height: default: 180px
+{%- endcomment -%}
+
+{%- assign title = include.title | default: 'Placeholder' -%}
+{%- assign class = include.class | default: '' -%}
+{%- assign color = include.color | default: site.data.grays[2].hex -%}
+{%- assign background = include.background | default: site.data.grays[5].hex -%}
+{%- assign width = include.width | default: '100%' -%}
+{%- assign height = include.height | default: '180' -%}
+
+{%- if include.text -%}
+  {%- assign text = include.text -%}
+{%- else -%}
+  {%- assign text = width | append: 'x' | append: height -%}
+{%- endif -%}
+
+{%- capture svg -%}
+<svg class="bd-placeholder-img{% if class != '' %} {{ class }}{% endif %}" width="{{ width }}" height="{{ height }}" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"{% if title != ' ' or text != ' ' %} aria-label="{% if title != ' ' %}{{ title }}{% if text != ' ' %}: {% endif %}{% endif %}{% if text != ' ' %}{{ text }}{% endif %}"{% endif %}>
+  {% if title != ' ' %}<title>{{ title }}</title>{% endif %}
+  <rect width="100%" height="100%" fill="{{ background }}"/>
+  {% if text != ' ' %}<text x="50%" y="50%" fill="{{ color }}" dy=".3em">{{ text }}</text>{% endif %}
+</svg>
+{%- endcapture -%}
+
+{{- svg | replace: '  ', '' | strip_newlines -}}

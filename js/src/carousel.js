@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.1.3): carousel.js
+ * Bootstrap (v4.2.1): carousel.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -15,7 +15,7 @@ import Util from './util'
  */
 
 const NAME                   = 'carousel'
-const VERSION                = '4.1.3'
+const VERSION                = '4.2.1'
 const DATA_KEY               = 'bs.carousel'
 const EVENT_KEY              = `.${DATA_KEY}`
 const DATA_API_KEY           = '.data-api'
@@ -60,10 +60,7 @@ const Event = {
   TOUCHMOVE      : `touchmove${EVENT_KEY}`,
   TOUCHEND       : `touchend${EVENT_KEY}`,
   POINTERDOWN    : `pointerdown${EVENT_KEY}`,
-  POINTERMOVE    : `pointermove${EVENT_KEY}`,
   POINTERUP      : `pointerup${EVENT_KEY}`,
-  POINTERLEAVE   : `pointerleave${EVENT_KEY}`,
-  POINTERCANCEL  : `pointercancel${EVENT_KEY}`,
   DRAG_START     : `dragstart${EVENT_KEY}`,
   LOAD_DATA_API  : `load${EVENT_KEY}${DATA_API_KEY}`,
   CLICK_DATA_API : `click${EVENT_KEY}${DATA_API_KEY}`
@@ -271,7 +268,9 @@ class Carousel {
         .on(Event.MOUSELEAVE, (event) => this.cycle(event))
     }
 
-    this._addTouchEventListeners()
+    if (this._config.touch) {
+      this._addTouchEventListeners()
+    }
   }
 
   _addTouchEventListeners() {
@@ -280,7 +279,7 @@ class Carousel {
     }
 
     const start = (event) => {
-      if (this._pointerEvent && (event.originalEvent.pointerType === PointerType.TOUCH || event.originalEvent.pointerType === PointerType.PEN)) {
+      if (this._pointerEvent && PointerType[event.originalEvent.pointerType.toUpperCase()]) {
         this.touchStartX = event.originalEvent.clientX
       } else if (!this._pointerEvent) {
         this.touchStartX = event.originalEvent.touches[0].clientX
@@ -297,7 +296,7 @@ class Carousel {
     }
 
     const end = (event) => {
-      if (this._pointerEvent && (event.originalEvent.pointerType === PointerType.TOUCH || event.originalEvent.pointerType === PointerType.PEN)) {
+      if (this._pointerEvent && PointerType[event.originalEvent.pointerType.toUpperCase()]) {
         this.touchDeltaX = event.originalEvent.clientX - this.touchStartX
       }
 
@@ -534,7 +533,7 @@ class Carousel {
           throw new TypeError(`No method named "${action}"`)
         }
         data[action]()
-      } else if (_config.interval) {
+      } else if (_config.interval && _config.ride) {
         data.pause()
         data.cycle()
       }

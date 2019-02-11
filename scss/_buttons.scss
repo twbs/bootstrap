@@ -6,6 +6,7 @@
 
 .btn {
   display: inline-block;
+  font-family: $btn-font-family;
   font-weight: $btn-font-weight;
   color: $body-color;
   text-align: center;
@@ -32,11 +33,6 @@
   &:disabled {
     opacity: $btn-disabled-opacity;
     @include box-shadow(none);
-  }
-
-  // Opinionated: add "hand" cursor to non-disabled .btn elements
-  &:not(:disabled):not(.disabled) {
-    cursor: pointer;
   }
 
   &:not(:disabled):not(.disabled):active,
@@ -81,6 +77,7 @@ fieldset:disabled a.btn {
 .btn-link {
   font-weight: $font-weight-normal;
   color: $link-color;
+  text-decoration: $link-decoration;
 
   @include hover {
     color: $link-hover-color;

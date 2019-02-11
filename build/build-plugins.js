@@ -1,9 +1,11 @@
 /*!
  * Script to build our plugins to use them separately.
- * Copyright 2018 The Bootstrap Authors
- * Copyright 2018 Twitter, Inc.
+ * Copyright 2019 The Bootstrap Authors
+ * Copyright 2019 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+
+'use strict'
 
 const path    = require('path')
 const rollup  = require('rollup')
