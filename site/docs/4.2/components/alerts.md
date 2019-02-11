@@ -3,6 +3,9 @@ layout: docs
 title: Alerts
 description: Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages.
 group: components
+redirect_from:
+  - "/components/"
+  - "/docs/4.2/components/"
 toc: true
 ---
 
@@ -97,7 +100,7 @@ Note that closing an alert will remove it from the DOM.
 | `$().alert('close')` | Closes an alert by removing it from the DOM. If the `.fade` and `.show` classes are present on the element, the alert will fade out before it is removed. |
 | `$().alert('dispose')` | Destroys an element's alert. |
 
-{% highlight js %}$(".alert").alert('close'){% endhighlight %}
+{% highlight js %}$('.alert').alert('close'){% endhighlight %}
 
 ### Events
 
@@ -110,6 +113,6 @@ Bootstrap's alert plugin exposes a few events for hooking into alert functionali
 
 {% highlight js %}
 $('#myAlert').on('closed.bs.alert', function () {
-  // do something…
+  // do something...
 })
 {% endhighlight %}

@@ -246,6 +246,6 @@ Bootstrap's collapse class exposes a few events for hooking into collapse functi
 
 {% highlight js %}
 $('#myCollapsible').on('hidden.bs.collapse', function () {
-  // do something…
+  // do something...
 })
 {% endhighlight %}

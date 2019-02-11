@@ -188,7 +188,10 @@ class Tab {
     }
 
     Util.reflow(element)
-    $(element).addClass(ClassName.SHOW)
+
+    if (element.classList.contains(ClassName.FADE)) {
+      element.classList.add(ClassName.SHOW)
+    }
 
     if (element.parentNode && $(element.parentNode).hasClass(ClassName.DROPDOWN_MENU)) {
       const dropdownElement = $(element).closest(Selector.DROPDOWN)[0]

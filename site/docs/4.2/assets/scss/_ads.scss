@@ -11,7 +11,7 @@
   padding: 15px 15px 15px 160px;
   margin: 2rem 0;
   overflow: hidden;
-  font-size: 13px;
+  @include font-size(.8125rem);
   line-height: 1.4;
   text-align: left;
   background-color: rgba(0, 0, 0, .05);

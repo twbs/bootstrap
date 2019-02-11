@@ -3,7 +3,7 @@
 //
 
 .bd-footer {
-  font-size: 85%;
+  @include font-size(.875rem);
   text-align: center;
   background-color: #f7f7f7;
 

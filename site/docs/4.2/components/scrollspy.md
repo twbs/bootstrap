@@ -340,6 +340,6 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 
 {% highlight js %}
 $('[data-spy="scroll"]').on('activate.bs.scrollspy', function () {
-  // do something…
+  // do something...
 })
 {% endhighlight %}

@@ -127,8 +127,7 @@
   display: inline-block;
   width: $carousel-control-icon-width;
   height: $carousel-control-icon-width;
-  background: transparent no-repeat center center;
-  background-size: 100% 100%;
+  background: no-repeat 50% / 100% 100%;
 }
 .carousel-control-prev-icon {
   background-image: $carousel-control-prev-icon-bg;

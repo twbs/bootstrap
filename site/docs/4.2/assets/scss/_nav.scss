@@ -16,7 +16,6 @@
       height: 2.5rem;
       margin-top: .25rem;
       overflow: hidden;
-      font-size: .875rem;
 
       .navbar-nav {
         padding-bottom: 2rem;
@@ -61,7 +60,7 @@
   }
 
   .dropdown-menu {
-    font-size: .875rem;
+    @include font-size(.875rem);
   }
 
   .dropdown-item.active {
