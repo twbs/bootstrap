@@ -2,7 +2,7 @@
   "name": "bootstrap",
   "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
   "version": "4.3.0",
-  "version_short": "4.2",
+  "version_short": "4.3",
   "keywords": [
     "css",
     "sass",
@@ -111,7 +111,7 @@
     "babel-plugin-istanbul": "^5.1.0",
     "broken-link-checker": "^0.7.8",
     "bundlesize": "0.15.3",
-    "clean-css-cli": "^4.3.0",
+    "clean-css-cli": "^4.2.1",
     "coveralls": "^3.0.2",
     "cross-env": "^5.2.0",
     "eslint": "^5.13.0",
