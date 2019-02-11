@@ -29,7 +29,7 @@ const Default = {
   trigger   : 'click',
   content   : '',
   template  : '<div class="popover" role="tooltip">' +
-              '<div class="arrow"></div>' +
+              '<div class="popover-arrow"></div>' +
               '<h3 class="popover-header"></h3>' +
               '<div class="popover-body"></div></div>'
 }
