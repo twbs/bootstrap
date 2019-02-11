@@ -50,7 +50,9 @@ All infinitive events provide [`preventDefault()`](https://developer.mozilla.org
 
 {% highlight js %}
 $('#myModal').on('show.bs.modal', function (e) {
-  if (!data) return e.preventDefault() // stops modal from being shown
+  if (!data) {
+    return e.preventDefault() // stops modal from being shown
+  }
 })
 {% endhighlight %}
 
