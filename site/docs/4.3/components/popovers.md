@@ -212,12 +212,12 @@ Note that for security reasons the `sanitize`, `sanitizeFn` and `whiteList` opti
     <tr>
       <td>template</td>
       <td>string</td>
-      <td><code>'&lt;div class="popover" role="tooltip"&gt;&lt;div class="arrow"&gt;&lt;/div&gt;&lt;h3 class="popover-header"&gt;&lt;/h3&gt;&lt;div class="popover-body"&gt;&lt;/div&gt;&lt;/div&gt;'</code></td>
+      <td><code>'&lt;div class="popover" role="tooltip"&gt;&lt;div class="popover-arrow"&gt;&lt;/div&gt;&lt;h3 class="popover-header"&gt;&lt;/h3&gt;&lt;div class="popover-body"&gt;&lt;/div&gt;&lt;/div&gt;'</code></td>
       <td>
         <p>Base HTML to use when creating the popover.</p>
         <p>The popover's <code>title</code> will be injected into the <code>.popover-header</code>.</p>
         <p>The popover's <code>content</code> will be injected into the <code>.popover-body</code>.</p>
-        <p><code>.arrow</code> will become the popover's arrow.</p>
+        <p><code>.popover-arrow</code> will become the popover's arrow.</p>
         <p>The outermost wrapper element should have the <code>.popover</code> class.</p>
       </td>
     </tr>
