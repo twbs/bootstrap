@@ -119,7 +119,7 @@ Additionally, do not rely solely on `hover` as the trigger for your tooltip, as 
 
 <!-- Generated markup by the plugin -->
 <div class="tooltip bs-tooltip-top" role="tooltip">
-  <div class="arrow"></div>
+  <div class="tooltip-arrow"></div>
   <div class="tooltip-inner">
     Some tooltip text!
   </div>
@@ -205,11 +205,11 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
     <tr>
       <td>template</td>
       <td>string</td>
-      <td><code>'&lt;div class="tooltip" role="tooltip"&gt;&lt;div class="arrow"&gt;&lt;/div&gt;&lt;div class="tooltip-inner"&gt;&lt;/div&gt;&lt;/div&gt;'</code></td>
+      <td><code>'&lt;div class="tooltip" role="tooltip"&gt;&lt;div class="tooltip-arrow"&gt;&lt;/div&gt;&lt;div class="tooltip-inner"&gt;&lt;/div&gt;&lt;/div&gt;'</code></td>
       <td>
         <p>Base HTML to use when creating the tooltip.</p>
         <p>The tooltip's <code>title</code> will be injected into the <code>.tooltip-inner</code>.</p>
-        <p><code>.arrow</code> will become the tooltip's arrow.</p>
+        <p><code>.tooltip-arrow</code> will become the tooltip's arrow.</p>
         <p>The outermost wrapper element should have the <code>.tooltip</code> class and <code>role="tooltip"</code>.</p>
       </td>
     </tr>

@@ -51,7 +51,7 @@ const AttachmentMap = {
 const Default = {
   animation         : true,
   template          : '<div class="tooltip" role="tooltip">' +
-                    '<div class="arrow"></div>' +
+                    '<div class="tooltip-arrow"></div>' +
                     '<div class="tooltip-inner"></div></div>',
   trigger           : 'hover focus',
   title             : '',
@@ -91,7 +91,7 @@ const ClassName = {
 const Selector = {
   TOOLTIP       : '.tooltip',
   TOOLTIP_INNER : '.tooltip-inner',
-  ARROW         : '.arrow'
+  TOOLTIP_ARROW : '.tooltip-arrow'
 }
 
 const Trigger = {
@@ -290,7 +290,7 @@ class Tooltip {
             behavior: this.config.fallbackPlacement
           },
           arrow: {
-            element: Selector.ARROW
+            element: Selector.TOOLTIP_ARROW
           },
           preventOverflow: {
             boundariesElement: this.config.boundary
