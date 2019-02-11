@@ -245,7 +245,7 @@ class Modal {
     this._element.removeAttribute('aria-hidden')
     this._element.setAttribute('aria-modal', true)
 
-    if ($(this._dialog).hasClass(ClassName.SCROLLABLE)) {
+    if (this._dialog.classList.contains(ClassName.SCROLLABLE)) {
       this._dialog.querySelector(Selector.MODAL_BODY).scrollTop = 0
     } else {
       this._element.scrollTop = 0
