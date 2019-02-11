@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap toast.js v4.2.1 (https://getbootstrap.com/)
+  * Bootstrap toast.js v4.3.0 (https://getbootstrap.com/)
   * Copyright 2011-2019 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
   */
@@ -69,7 +69,7 @@
    */
 
   var NAME = 'toast';
-  var VERSION = '4.2.1';
+  var VERSION = '4.3.0';
   var DATA_KEY = 'bs.toast';
   var EVENT_KEY = "." + DATA_KEY;
   var JQUERY_NO_CONFLICT = $.fn[NAME];
@@ -252,6 +252,11 @@
       key: "DefaultType",
       get: function get() {
         return DefaultType;
+      }
+    }, {
+      key: "Default",
+      get: function get() {
+        return Default;
       }
     }]);
 
