@@ -3,7 +3,7 @@ import Util from '../util'
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.1.3): dom/eventHandler.js
+ * Bootstrap (v4.3.1): dom/eventHandler.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
