@@ -6,7 +6,6 @@
 
 .form-control {
   display: block;
-  width: 100%;
   height: $input-height;
   padding: $input-padding-y $input-padding-x;
   font-family: $input-font-family;
@@ -17,6 +16,10 @@
   background-color: $input-bg;
   background-clip: padding-box;
   border: $input-border-width solid $input-border-color;
+  
+  &:not(.flex-grow-1) {
+    width: 100%;
+  }
 
   // Note: This has no effect on <select>s in some browsers, due to the limited stylability of `<select>`s in CSS.
   @include border-radius($input-border-radius, 0);
