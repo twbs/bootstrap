@@ -1243,7 +1243,7 @@ $(function () {
       })
 
     var tooltip = Tooltip._getInstance($trigger[0])
-    tooltip.setElementContent($element, content)
+    tooltip.setElementContent($element[0], content)
 
     assert.strictEqual($element[0].innerHTML, content)
   })
