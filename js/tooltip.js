@@ -74,7 +74,7 @@
   var DATA_URL_PATTERN = /^data:(?:image\/(?:bmp|gif|jpeg|jpg|png|tiff|webp)|video\/(?:mpeg|mp4|ogg|webm)|audio\/(?:mp3|oga|ogg|opus));base64,[a-z0-9+/]+=*$/i
 
   function allowedAttribute(attr, allowedAttributeList) {
-    const attrName = attr.nodeName.toLowerCase()
+    var attrName = attr.nodeName.toLowerCase()
 
     if ($.inArray(attrName, allowedAttributeList) !== -1) {
       if ($.inArray(attrName, uriAttrs) !== -1) {
@@ -115,7 +115,7 @@
     var createdDocument = document.implementation.createHTMLDocument('sanitization')
     createdDocument.body.innerHTML = unsafeHtml
 
-    var whitelistKeys = Object.keys(whiteList)
+    var whitelistKeys = $.map(whiteList, function (el, i) { return i })
     var elements = $(createdDocument.body).find('*')
 
     for (var i = 0, len = elements.length; i < len; i++) {
@@ -131,11 +131,11 @@
       var attributeList = $.map(el.attributes, function (el) { return el })
       var whitelistedAttributes = [].concat(whiteList['*'] || [], whiteList[elName] || [])
 
-      attributeList.forEach((attr) => {
-        if (!allowedAttribute(attr, whitelistedAttributes)) {
-          el.removeAttribute(attr.nodeName)
+      for (var j = 0, len2 = attributeList.length; j < len2; j++) {
+        if (!allowedAttribute(attributeList[j], whitelistedAttributes)) {
+          el.removeAttribute(attributeList[j].nodeName)
         }
-      })
+      }
     }
 
     return createdDocument.body.innerHTML
@@ -217,7 +217,7 @@
   }
 
   Tooltip.prototype.getOptions = function (options) {
-    const dataAttributes = this.$element.data()
+    var dataAttributes = this.$element.data()
 
     for (var dataAttr in dataAttributes) {
       if (dataAttributes.hasOwnProperty(dataAttr) && $.inArray(dataAttr, DISALLOWED_ATTRIBUTES) !== -1) {
@@ -235,7 +235,7 @@
     }
 
     if (options.sanitize) {
-      config.template = sanitizeHtml(config.template, config.whiteList, config.sanitizeFn)
+      options.template = sanitizeHtml(options.template, options.whiteList, options.sanitizeFn)
     }
 
     return options
