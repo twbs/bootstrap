@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap popover.js v4.2.1 (https://getbootstrap.com/)
+  * Bootstrap popover.js v4.3.0 (https://getbootstrap.com/)
   * Copyright 2011-2019 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
   */
@@ -75,7 +75,7 @@
    */
 
   var NAME = 'popover';
-  var VERSION = '4.2.1';
+  var VERSION = '4.3.0';
   var DATA_KEY = 'bs.popover';
   var EVENT_KEY = "." + DATA_KEY;
   var JQUERY_NO_CONFLICT = $.fn[NAME];

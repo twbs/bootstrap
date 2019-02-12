@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.2.1): tab.js
+ * Bootstrap (v4.3.0): tab.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -15,7 +15,7 @@ import Util from './util'
  */
 
 const NAME               = 'tab'
-const VERSION            = '4.2.1'
+const VERSION            = '4.3.0'
 const DATA_KEY           = 'bs.tab'
 const EVENT_KEY          = `.${DATA_KEY}`
 const DATA_API_KEY       = '.data-api'
@@ -188,7 +188,10 @@ class Tab {
     }
 
     Util.reflow(element)
-    $(element).addClass(ClassName.SHOW)
+
+    if (element.classList.contains(ClassName.FADE)) {
+      element.classList.add(ClassName.SHOW)
+    }
 
     if (element.parentNode && $(element.parentNode).hasClass(ClassName.DROPDOWN_MENU)) {
       const dropdownElement = $(element).closest(Selector.DROPDOWN)[0]

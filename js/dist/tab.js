@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap tab.js v4.2.1 (https://getbootstrap.com/)
+  * Bootstrap tab.js v4.3.0 (https://getbootstrap.com/)
   * Copyright 2011-2019 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
   */
@@ -35,7 +35,7 @@
    */
 
   var NAME = 'tab';
-  var VERSION = '4.2.1';
+  var VERSION = '4.3.0';
   var DATA_KEY = 'bs.tab';
   var EVENT_KEY = "." + DATA_KEY;
   var DATA_API_KEY = '.data-api';
@@ -186,7 +186,10 @@
       }
 
       Util.reflow(element);
-      $(element).addClass(ClassName.SHOW);
+
+      if (element.classList.contains(ClassName.FADE)) {
+        element.classList.add(ClassName.SHOW);
+      }
 
       if (element.parentNode && $(element.parentNode).hasClass(ClassName.DROPDOWN_MENU)) {
         var dropdownElement = $(element).closest(Selector.DROPDOWN)[0];

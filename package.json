@@ -1,8 +1,8 @@
 {
   "name": "bootstrap",
   "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
-  "version": "4.2.1",
-  "version_short": "4.2",
+  "version": "4.3.0",
+  "version_short": "4.3",
   "keywords": [
     "css",
     "sass",
@@ -99,14 +99,14 @@
   "dependencies": {},
   "peerDependencies": {
     "jquery": "1.9.1 - 3",
-    "popper.js": "^1.14.6"
+    "popper.js": "^1.14.7"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.2",
-    "@babel/plugin-proposal-object-rest-spread": "^7.3.1",
+    "@babel/plugin-proposal-object-rest-spread": "^7.3.2",
     "@babel/preset-env": "^7.3.1",
-    "autoprefixer": "^9.4.6",
+    "autoprefixer": "^9.4.7",
     "babel-eslint": "^10.0.1",
     "babel-plugin-istanbul": "^5.1.0",
     "broken-link-checker": "^0.7.8",
@@ -114,7 +114,7 @@
     "clean-css-cli": "^4.2.1",
     "coveralls": "^3.0.2",
     "cross-env": "^5.2.0",
-    "eslint": "^5.12.1",
+    "eslint": "^5.13.0",
     "find-unused-sass-variables": "^0.3.2",
     "glob": "^7.1.3",
     "hammer-simulator": "0.0.1",
@@ -132,7 +132,7 @@
     "node-sass": "^4.11.0",
     "nodemon": "^1.18.9",
     "npm-run-all": "^4.1.5",
-    "popper.js": "^1.14.6",
+    "popper.js": "^1.14.7",
     "postcss-cli": "^6.1.1",
     "qunit": "^2.9.1",
     "rollup": "^1.1.2",
@@ -182,7 +182,7 @@
     },
     {
       "path": "./dist/js/bootstrap.bundle.js",
-      "maxSize": "45.25 kB"
+      "maxSize": "45 kB"
     },
     {
       "path": "./dist/js/bootstrap.bundle.min.js",
@@ -190,7 +190,7 @@
     },
     {
       "path": "./dist/js/bootstrap.js",
-      "maxSize": "23.25 kB"
+      "maxSize": "23 kB"
     },
     {
       "path": "./dist/js/bootstrap.min.js",
@@ -215,7 +215,7 @@
     "dependencies": {},
     "peerDependencies": {
       "jquery": "1.9.1 - 3",
-      "popper.js": "^1.14.6"
+      "popper.js": "^1.14.7"
     }
   }
 }

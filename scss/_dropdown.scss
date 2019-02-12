@@ -24,7 +24,7 @@
   min-width: $dropdown-min-width;
   padding: $dropdown-padding-y 0;
   margin: $dropdown-spacer 0 0; // override default ul
-  font-size: $dropdown-font-size;
+  @include font-size($dropdown-font-size);
   color: $dropdown-color;
   text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
   list-style: none;
@@ -132,12 +132,16 @@
   background-color: transparent; // For `<button>`s
   border: 0; // For `<button>`s
 
-  &:first-child {
-    @include border-top-radius($dropdown-inner-border-radius);
-  }
+  // Prevent dropdown overflow if there's no padding
+  // See https://github.com/twbs/bootstrap/pull/27703
+  @if $dropdown-padding-y == 0 {
+    &:first-child {
+      @include border-top-radius($dropdown-inner-border-radius);
+    }
 
-  &:last-child {
-    @include border-bottom-radius($dropdown-inner-border-radius);
+    &:last-child {
+      @include border-bottom-radius($dropdown-inner-border-radius);
+    }
   }
 
   @include hover-focus {
@@ -174,7 +178,7 @@
   display: block;
   padding: $dropdown-padding-y $dropdown-item-padding-x;
   margin-bottom: 0; // for use with heading elements
-  font-size: $font-size-sm;
+  @include font-size($font-size-sm);
   color: $dropdown-header-color;
   white-space: nowrap; // as with > li > a
 }

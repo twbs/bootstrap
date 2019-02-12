@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.2.1): toast.js
+ * Bootstrap (v4.3.0): toast.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -15,7 +15,7 @@ import Util from './util'
  */
 
 const NAME               = 'toast'
-const VERSION            = '4.2.1'
+const VERSION            = '4.3.0'
 const DATA_KEY           = 'bs.toast'
 const EVENT_KEY          = `.${DATA_KEY}`
 const JQUERY_NO_CONFLICT = $.fn[NAME]
@@ -73,6 +73,10 @@ class Toast {
 
   static get DefaultType() {
     return DefaultType
+  }
+
+  static get Default() {
+    return Default
   }
 
   // Public
