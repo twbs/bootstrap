@@ -190,7 +190,7 @@ $(function () {
       .bootstrapPopover({
         title: 'Test',
         content: 'Test',
-        template: '<div class="popover foobar"><div class="arrow"></div><div class="inner"><h3 class="title"/><div class="content"><p/></div></div></div>'
+        template: '<div class="popover foobar"><div class="arrow"></div><div class="inner"><h3 class="title"></h3><div class="content"><p></p></div></div></div>'
       })
       .one('shown.bs.popover', function () {
         assert.notEqual($('.popover').length, 0, 'popover was inserted')
