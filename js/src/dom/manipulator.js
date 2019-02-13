@@ -37,30 +37,12 @@ const Manipulator = {
   },
 
   getDataAttributes(element) {
-    if (typeof element === 'undefined' || element === null) {
+    if (!element) {
       return {}
     }
 
-    let attributes
-    if (Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'dataset')) {
-      attributes = {
-        ...element.dataset
-      }
-    } else {
-      attributes = {}
-      for (let i = 0; i < element.attributes.length; i++) {
-        const attribute = element.attributes[i]
-
-        if (attribute.nodeName.indexOf('data-') !== -1) {
-          // remove 'data-' part of the attribute name
-          const attributeName = attribute
-            .nodeName
-            .substring('data-'.length)
-            .replace(/-./g, (str) => str.charAt(1).toUpperCase())
-
-          attributes[attributeName] = attribute.nodeValue
-        }
-      }
+    const attributes = {
+      ...element.dataset
     }
 
     Object.keys(attributes)
