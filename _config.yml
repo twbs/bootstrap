@@ -21,15 +21,15 @@ plugins:
   - jekyll-sitemap
 
 # Custom vars
-current_version:  3.4.0
+current_version:  3.4.1
 docs_version:     3.4
 repo:             https://github.com/twbs/bootstrap
 sass_repo:        https://github.com/twbs/bootstrap-sass
 
 download:
-  source:         https://github.com/twbs/bootstrap/archive/v3.4.0.zip
-  dist:           https://github.com/twbs/bootstrap/releases/download/v3.4.0/bootstrap-3.4.0-dist.zip
-  sass:           https://github.com/twbs/bootstrap-sass/archive/v3.4.0.tar.gz
+  source:         https://github.com/twbs/bootstrap/archive/v3.4.1.zip
+  dist:           https://github.com/twbs/bootstrap/releases/download/v3.4.1/bootstrap-3.4.1-dist.zip
+  sass:           https://github.com/twbs/bootstrap-sass/archive/v3.4.1.tar.gz
 
 blog:             https://blog.getbootstrap.com
 expo:             https://expo.getbootstrap.com
@@ -37,9 +37,9 @@ themes:           https://themes.getbootstrap.com
 
 cdn:
   # See https://www.srihash.org for info on how to generate the hashes
-  css:            https://stackpath.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css
+  css:            https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css
   css_hash:       "sha384-PmY9l28YgO4JwMKbTvgaS7XNZJ30MK9FAZjjzXtlqyZCqBY6X6bXIkM++IkyinN+"
-  css_theme:      https://stackpath.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap-theme.min.css
+  css_theme:      https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css
   css_theme_hash: "sha384-jzngWsPS6op3fgRCDTESqrEJwRKck+CILhJVO5VvaAZCq8JYf8HsR/HPpBOOPZfR"
-  js:             https://stackpath.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js
+  js:             https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js
   js_hash:        "sha384-vhJnz1OVIdLktyixHY4Uk3OHEwdQqPppqYR8+5mjsauETgLOcEynD9oPHhhz18Nw"
