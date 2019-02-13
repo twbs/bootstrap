@@ -1,5 +1,5 @@
 /* ========================================================================
- * Bootstrap: tooltip.js v3.4.0
+ * Bootstrap: tooltip.js v3.4.1
  * https://getbootstrap.com/docs/3.4/javascript/#tooltip
  * Inspired by the original jQuery.tipsy by Jason Frame
  * ========================================================================
@@ -156,7 +156,7 @@
     this.init('tooltip', element, options)
   }
 
-  Tooltip.VERSION  = '3.4.0'
+  Tooltip.VERSION  = '3.4.1'
 
   Tooltip.TRANSITION_DURATION = 150
 

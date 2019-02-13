@@ -1,5 +1,5 @@
 /* ========================================================================
- * Bootstrap: carousel.js v3.4.0
+ * Bootstrap: carousel.js v3.4.1
  * https://getbootstrap.com/docs/3.4/javascript/#carousel
  * ========================================================================
  * Copyright 2011-2019 Twitter, Inc.
@@ -30,7 +30,7 @@
       .on('mouseleave.bs.carousel', $.proxy(this.cycle, this))
   }
 
-  Carousel.VERSION  = '3.4.0'
+  Carousel.VERSION  = '3.4.1'
 
   Carousel.TRANSITION_DURATION = 600
 

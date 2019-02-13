@@ -1,5 +1,5 @@
 /* ========================================================================
- * Bootstrap: popover.js v3.4.0
+ * Bootstrap: popover.js v3.4.1
  * https://getbootstrap.com/docs/3.4/javascript/#popovers
  * ========================================================================
  * Copyright 2011-2019 Twitter, Inc.
@@ -19,7 +19,7 @@
 
   if (!$.fn.tooltip) throw new Error('Popover requires tooltip.js')
 
-  Popover.VERSION  = '3.4.0'
+  Popover.VERSION  = '3.4.1'
 
   Popover.DEFAULTS = $.extend({}, $.fn.tooltip.Constructor.DEFAULTS, {
     placement: 'right',
