@@ -29,7 +29,7 @@
 
 - group: v3.x
   baseurl: https://getbootstrap.com/docs
-  description: Our previous major release and its minor versions. Last update was v3.4.0.
+  description: Our previous major release and its minor versions. Last update was v3.4.1.
   versions:
     - v: 3.3
     - v: 3.4

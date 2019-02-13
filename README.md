@@ -126,12 +126,7 @@ Learn more about using Jekyll by reading its [documentation](https://jekyllrb.co
 
 ### Documentation for previous releases
 
-- For v2.3.2: <https://getbootstrap.com/2.3.2/>
-- For v3.3.x: <https://getbootstrap.com/docs/3.3/>
-- For v3.4.0: <https://getbootstrap.com/docs/3.4/>
-- For v4.0.x: <https://getbootstrap.com/docs/4.0/>
-- For v4.1.x: <https://getbootstrap.com/docs/4.1/>
-- For v4.2.x: <https://getbootstrap.com/docs/4.2/>
+You can find all our previous releases docs on <https://getbootstrap.com/docs/versions/>.
 
 [Previous releases](https://github.com/twbs/bootstrap/releases) and their documentation are also available for download.
 
