@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.2.1): popover.js
+ * Bootstrap (v4.3.1): popover.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -15,7 +15,7 @@ import Tooltip from './tooltip'
  */
 
 const NAME                = 'popover'
-const VERSION             = '4.2.1'
+const VERSION             = '4.3.1'
 const DATA_KEY            = 'bs.popover'
 const EVENT_KEY           = `.${DATA_KEY}`
 const JQUERY_NO_CONFLICT  = $.fn[NAME]

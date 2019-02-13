@@ -112,7 +112,7 @@
 }
 
 .bd-lead {
-  @include font-size(1.125rem);
+  @include font-size(1.5rem);
   font-weight: 300;
 
   @include media-breakpoint-up(lg) {
