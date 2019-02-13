@@ -123,7 +123,7 @@ const Util = {
   },
 
   makeArray(nodeList) {
-    if (typeof nodeList === 'undefined' || nodeList === null) {
+    if (!nodeList) {
       return []
     }
 
@@ -131,7 +131,7 @@ const Util = {
   },
 
   isVisible(element) {
-    if (typeof element === 'undefined' || element === null) {
+    if (!element) {
       return false
     }
 

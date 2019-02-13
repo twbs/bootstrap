@@ -76,7 +76,7 @@ const Manipulator = {
   },
 
   toggleClass(element, className) {
-    if (typeof element === 'undefined' || element === null) {
+    if (!element) {
       return
     }
 
