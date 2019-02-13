@@ -1,6 +1,3 @@
-import Polyfill from './polyfill'
-import Util from '../util'
-
 /**
  * --------------------------------------------------------------------------
  * Bootstrap (v4.3.1): dom/selectorEngine.js
@@ -8,21 +5,22 @@ import Util from '../util'
  * --------------------------------------------------------------------------
  */
 
+import Polyfill from './polyfill'
+import Util from '../util'
+
 /**
  * ------------------------------------------------------------------------
  * Constants
  * ------------------------------------------------------------------------
  */
 
-const closest = Polyfill.closest
-const matchesFn = Element.prototype.matches
-const find = Polyfill.find
+const findFn = Polyfill.find
 const findOne = Polyfill.findOne
-const nodeText = 3
+const NODE_TEXT = 3
 
 const SelectorEngine = {
   matches(element, selector) {
-    return matchesFn.call(element, selector)
+    return element.matches(selector)
   },
 
   find(selector, element = document.documentElement) {
@@ -30,7 +28,7 @@ const SelectorEngine = {
       return null
     }
 
-    return find.call(element, selector)
+    return findFn.call(element, selector)
   },
 
   findOne(selector, element = document.documentElement) {
@@ -47,6 +45,7 @@ const SelectorEngine = {
     }
 
     const children = Util.makeArray(element.children)
+
     return children.filter((child) => this.matches(child, selector))
   },
 
@@ -56,9 +55,9 @@ const SelectorEngine = {
     }
 
     const parents = []
-
     let ancestor = element.parentNode
-    while (ancestor && ancestor.nodeType === Node.ELEMENT_NODE && ancestor.nodeType !== nodeText) {
+
+    while (ancestor && ancestor.nodeType === Node.ELEMENT_NODE && ancestor.nodeType !== NODE_TEXT) {
       if (this.matches(ancestor, selector)) {
         parents.push(ancestor)
       }
@@ -74,7 +73,7 @@ const SelectorEngine = {
       return null
     }
 
-    return closest(element, selector)
+    return element.closest(selector)
   },
 
   prev(element, selector) {
@@ -83,9 +82,9 @@ const SelectorEngine = {
     }
 
     const siblings = []
-
     let previous = element.previousSibling
-    while (previous && previous.nodeType === Node.ELEMENT_NODE && previous.nodeType !== nodeText) {
+
+    while (previous && previous.nodeType === Node.ELEMENT_NODE && previous.nodeType !== NODE_TEXT) {
       if (this.matches(previous, selector)) {
         siblings.push(previous)
       }

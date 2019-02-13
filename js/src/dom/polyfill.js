@@ -23,40 +23,13 @@ const Polyfill = (() => {
     return e.defaultPrevented
   })()
 
-  // Event constructor shim
-  if (!window.Event || typeof window.Event !== 'function') {
-    const origEvent = window.Event
-    window.Event = (inType, params) => {
-      params = params || {}
-      const e = document.createEvent('Event')
-      e.initEvent(inType, Boolean(params.bubbles), Boolean(params.cancelable))
-      return e
-    }
-    window.Event.prototype = origEvent.prototype
-  }
+  let find = Element.prototype.querySelectorAll
+  let findOne = Element.prototype.querySelector
 
-  // closest polyfill (see: https://mzl.la/2vXggaI)
-  let closest
-  if (!Element.prototype.closest) {
-    const nodeText = 3
-    closest = (element, selector) => {
-      let ancestor = element
-      do {
-        if (ancestor.matches(selector)) {
-          return ancestor
-        }
-
-        ancestor = ancestor.parentElement
-      } while (ancestor !== null && ancestor.nodeType === Node.ELEMENT_NODE && ancestor.nodeType !== nodeText)
-
-      return null
-    }
-  } else {
-    closest = (element, selector) => element.closest(selector)
-  }
-
+  const scopeSelectorRegex = /:scope\b/
   const supportScopeQuery = (() => {
     const element = document.createElement('div')
+
     try {
       element.querySelectorAll(':scope *')
     } catch (e) {
@@ -66,10 +39,6 @@ const Polyfill = (() => {
     return true
   })()
 
-  const scopeSelectorRegex = /:scope\b/
-  let find = Element.prototype.querySelectorAll
-  let findOne = Element.prototype.querySelector
-
   if (!supportScopeQuery) {
     find = function (selector) {
       if (!scopeSelectorRegex.test(selector)) {
@@ -77,6 +46,7 @@ const Polyfill = (() => {
       }
 
       const hasId = Boolean(this.id)
+
       if (!hasId) {
         this.id = Util.getUID('scope')
       }
@@ -100,6 +70,7 @@ const Polyfill = (() => {
       }
 
       const matches = find.call(this, selector)
+
       if (typeof matches[0] !== 'undefined') {
         return matches[0]
       }
@@ -108,37 +79,8 @@ const Polyfill = (() => {
     }
   }
 
-  if (typeof Object.assign !== 'function') {
-    Object.defineProperty(Object, 'assign', {
-      value: (target, ...args) => {
-        if (target === null || typeof target === 'undefined') {
-          throw new TypeError('Cannot convert undefined or null to object')
-        }
-
-        const to = Object(target)
-
-        for (let index = 1; index < args.length; index++) {
-          const nextSource = args[index]
-
-          if (nextSource !== null || !nextSource) {
-            for (const nextKey in nextSource) {
-              if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) {
-                to[nextKey] = nextSource[nextKey]
-              }
-            }
-          }
-        }
-        return to
-      },
-      writable: true,
-      configurable: true
-    })
-  }
-
   return {
     defaultPreventedPreservedOnDispatch,
-    focusIn: typeof window.onfocusin === 'undefined',
-    closest,
     find,
     findOne
   }
