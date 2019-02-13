@@ -230,13 +230,13 @@
           }
         }
 
-        document.querySelectorAll('[data-toggle="popover"]')
+        [].slice.call(document.querySelectorAll('[data-toggle="popover"]'))
           .forEach(function (popover) {
             new Popover(popover)
           })
 
-        document.querySelectorAll('[data-toggle="tooltip"]')
-          .forEach(function (tooltip) {
+        var tooltipList = [].slice.call(document.querySelectorAll('[data-toggle="tooltip"]'))
+        tooltipList.forEach(function (tooltip) {
             new Tooltip(tooltip)
           })
 

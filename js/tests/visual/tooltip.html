@@ -97,7 +97,7 @@
           })
         }
 
-        document.querySelectorAll('[data-toggle="tooltip"]')
+        [].slice.call(document.querySelectorAll('[data-toggle="tooltip"]'))
           .forEach(function (tooltip) {
             new Tooltip(tooltip)
           })
