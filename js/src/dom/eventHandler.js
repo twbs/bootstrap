@@ -132,7 +132,7 @@ function normalizeParams(originalTypeEvent, handler, delegationFn) {
 }
 
 function addHandler(element, originalTypeEvent, handler, delegationFn, oneOff) {
-  if (typeof originalTypeEvent !== 'string' || (typeof element === 'undefined' || element === null)) {
+  if (typeof originalTypeEvent !== 'string' || !element) {
     return
   }
 
@@ -198,7 +198,7 @@ const EventHandler = {
   },
 
   off(element, originalTypeEvent, handler, delegationFn) {
-    if (typeof originalTypeEvent !== 'string' || (typeof element === 'undefined' || element === null)) {
+    if (typeof originalTypeEvent !== 'string' || !element) {
       return
     }
 
@@ -243,8 +243,7 @@ const EventHandler = {
   },
 
   trigger(element, event, args) {
-    if (typeof event !== 'string' ||
-        (typeof element === 'undefined' || element === null)) {
+    if (typeof event !== 'string' || !element) {
       return null
     }
 
