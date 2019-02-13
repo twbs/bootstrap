@@ -42,7 +42,7 @@
     <script src="../../dist/popover.js"></script>
     <script>
       document.addEventListener('DOMContentLoaded', function () {
-        document.querySelectorAll('[data-toggle="popover"]')
+        [].slice.call(document.querySelectorAll('[data-toggle="popover"]'))
           .forEach(function (popover) {
             new Popover(popover)
           })
