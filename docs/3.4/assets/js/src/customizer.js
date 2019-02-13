@@ -1,6 +1,6 @@
 /*!
- * Bootstrap Customizer (http://getbootstrap.com/customize/)
- * Copyright 2011-2018 Twitter, Inc.
+ * Bootstrap Customizer (https://getbootstrap.com/customize/)
+ * Copyright 2011-2019 Twitter, Inc.
  *
  * Licensed under the Creative Commons Attribution 3.0 Unported License. For
  * details, see https://creativecommons.org/licenses/by/3.0/.
@@ -12,7 +12,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
   'use strict';
 
   var cw = '/*!\n' +
-           ' * Bootstrap v3.4.0 (https://getbootstrap.com/)\n' +
+           ' * Bootstrap v3.4.1 (https://getbootstrap.com/)\n' +
            ' * Copyright 2011-' + new Date().getFullYear() + ' Twitter, Inc.\n' +
            ' * Licensed under the MIT license\n' +
            ' */\n\n'
