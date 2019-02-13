@@ -152,7 +152,7 @@
   },
   "files": [
     "dist/{css,js}/*.{css,js,map}",
-    "js/{src,dist}/**/**.{js,map}",
+    "js/{src,dist}/**/*.{js,map}",
     "scss/**/*.scss"
   ],
   "bundlesize": [
