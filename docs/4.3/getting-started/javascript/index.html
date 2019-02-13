@@ -15,7 +15,7 @@
 <link rel="canonical" href="https://getbootstrap.com/docs/4.3/getting-started/javascript/">
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/4.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-PDle/QlgIONtM1aqA2Qemk5gPOE7wFq8+Em+G/hmo5Iq0CCmYZLv3fVRDJ4MMwEA" crossorigin="anonymous">
+<link href="/docs/4.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <!-- Documentation extras -->
 
 <link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
@@ -479,6 +479,7 @@
 <li class="toc-entry toc-h2"><a href="#version-numbers">Version numbers</a></li>
 <li class="toc-entry toc-h2"><a href="#no-special-fallbacks-when-javascript-is-disabled">No special fallbacks when JavaScript is disabled</a></li>
 <li class="toc-entry toc-h2"><a href="#util">Util</a></li>
+<li class="toc-entry toc-h2"><a href="#sanitizer">Sanitizer</a></li>
 </ul>
           </div>
         
@@ -496,7 +497,7 @@
 
 <h2 id="dependencies">Dependencies</h2>
 
-<p>Some plugins and CSS components depend on other plugins. If you include plugins individually, make sure to check for these dependencies in the docs. Also note that <strong>all plugins depend on jQuery</strong> (this means jQuery must be included <strong>before</strong> the plugin files). <a href="https://github.com/twbs/bootstrap/blob/v4.3.0/package.json">Consult our <code class="highlighter-rouge">package.json</code></a> to see which versions of jQuery are supported.</p>
+<p>Some plugins and CSS components depend on other plugins. If you include plugins individually, make sure to check for these dependencies in the docs. Also note that <strong>all plugins depend on jQuery</strong> (this means jQuery must be included <strong>before</strong> the plugin files). <a href="https://github.com/twbs/bootstrap/blob/v4.3.1/package.json">Consult our <code class="highlighter-rouge">package.json</code></a> to see which versions of jQuery are supported.</p>
 
 <p>Our dropdowns, popovers and tooltips also depend on <a href="https://popper.js.org/">Popper.js</a>.</p>
 
@@ -582,7 +583,7 @@ If you use special selectors, for example: <code class="highlighter-rouge">colla
 
 <p>The version of each of Bootstrap’s jQuery plugins can be accessed via the <code class="highlighter-rouge">VERSION</code> property of the plugin’s constructor. For example, for the tooltip plugin:</p>
 
-<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">tooltip</span><span class="p">.</span><span class="nx">Constructor</span><span class="p">.</span><span class="nx">VERSION</span> <span class="c1">// =&gt; "4.3.0"</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">tooltip</span><span class="p">.</span><span class="nx">Constructor</span><span class="p">.</span><span class="nx">VERSION</span> <span class="c1">// =&gt; "4.3.1"</span></code></pre></figure>
 
 <h2 id="no-special-fallbacks-when-javascript-is-disabled">No special fallbacks when JavaScript is disabled</h2>
 
@@ -600,11 +601,76 @@ If you use special selectors, for example: <code class="highlighter-rouge">colla
 
 <p><code class="highlighter-rouge">util.js</code> includes utility functions and a basic helper for <code class="highlighter-rouge">transitionEnd</code> events as well as a CSS transition emulator. It’s used by the other plugins to check for CSS transition support and to catch hanging transitions.</p>
 
+<h2 id="sanitizer">Sanitizer</h2>
+
+<p>Tooltips and Popovers use our built-in sanitizer to sanitize options which accept HTML.</p>
+
+<p>The default <code class="highlighter-rouge">whiteList</code> value is the following:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">ARIA_ATTRIBUTE_PATTERN</span> <span class="o">=</span> <span class="sr">/^aria-</span><span class="se">[\w</span><span class="sr">-</span><span class="se">]</span><span class="sr">*$/i</span>
+<span class="kd">var</span> <span class="nx">DefaultWhitelist</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="c1">// Global attributes allowed on any supplied element below.</span>
+  <span class="s1">'*'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'class'</span><span class="p">,</span> <span class="s1">'dir'</span><span class="p">,</span> <span class="s1">'id'</span><span class="p">,</span> <span class="s1">'lang'</span><span class="p">,</span> <span class="s1">'role'</span><span class="p">,</span> <span class="nx">ARIA_ATTRIBUTE_PATTERN</span><span class="p">],</span>
+  <span class="na">a</span><span class="p">:</span> <span class="p">[</span><span class="s1">'target'</span><span class="p">,</span> <span class="s1">'href'</span><span class="p">,</span> <span class="s1">'title'</span><span class="p">,</span> <span class="s1">'rel'</span><span class="p">],</span>
+  <span class="na">area</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="na">b</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="na">br</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="na">col</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="na">code</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="na">div</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="na">em</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="na">hr</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="na">h1</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="na">h2</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="na">h3</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="na">h4</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="na">h5</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="na">h6</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="na">i</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="na">img</span><span class="p">:</span> <span class="p">[</span><span class="s1">'src'</span><span class="p">,</span> <span class="s1">'alt'</span><span class="p">,</span> <span class="s1">'title'</span><span class="p">,</span> <span class="s1">'width'</span><span class="p">,</span> <span class="s1">'height'</span><span class="p">],</span>
+  <span class="na">li</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="na">ol</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="na">p</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="na">pre</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="na">s</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="na">small</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="na">span</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="na">sub</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="na">sup</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="na">strong</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="na">u</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="na">ul</span><span class="p">:</span> <span class="p">[]</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>If you want to add new values to this default <code class="highlighter-rouge">whiteList</code> you can do the following:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">myDefaultWhiteList</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">tooltip</span><span class="p">.</span><span class="nx">Constructor</span><span class="p">.</span><span class="nx">Default</span><span class="p">.</span><span class="nx">whiteList</span>
+
+<span class="c1">// To allow table elements</span>
+<span class="nx">myDefaultWhiteList</span><span class="p">.</span><span class="nx">table</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1">// To allow td elements and data-option attributes on td elements</span>
+<span class="nx">myDefaultWhiteList</span><span class="p">.</span><span class="nx">td</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'data-option'</span><span class="p">]</span>
+
+<span class="c1">// You can push your custom regex to validate your attributes.</span>
+<span class="c1">// Be careful about your regular expressions being too lax</span>
+<span class="kd">var</span> <span class="nx">myCustomRegex</span> <span class="o">=</span> <span class="sr">/^data-my-app-</span><span class="se">[\w</span><span class="sr">-</span><span class="se">]</span><span class="sr">+/</span>
+<span class="nx">myDefaultWhiteList</span><span class="p">[</span><span class="s1">'*'</span><span class="p">].</span><span class="nx">push</span><span class="p">(</span><span class="nx">myCustomRegex</span><span class="p">)</span></code></pre></figure>
+
+<p>If you want to bypass our sanitizer because you prefer to use a dedicated library, for example <a href="https://www.npmjs.com/package/dompurify">DOMPurify</a>, you should do the following:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#yourTooltip'</span><span class="p">).</span><span class="nx">tooltip</span><span class="p">({</span>
+  <span class="na">sanitizeFn</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">content</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">DOMPurify</span><span class="p">.</span><span class="nx">sanitize</span><span class="p">(</span><span class="nx">content</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">})</span></code></pre></figure>
+
+
         </main>
       </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script><script src="/docs/4.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-VoPFvGr9GxhDT3n8vqqZ46twP5lgex+raTCfICQy73NLhN7ZqSfCtfSn4mLA2EFA" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.3/assets/js/docs.min.js"></script>
+<script>window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script><script src="/docs/4.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.3/assets/js/docs.min.js"></script>
   </body>
 </html>
