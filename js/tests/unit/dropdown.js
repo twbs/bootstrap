@@ -420,4 +420,35 @@ $(function () {
 
     assert.ok($dropdown.parent('.btn-group').hasClass('open'), 'dropdown menu is open')
   })
+
+  QUnit.test('should handle # in data-target', function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+
+    var html = [
+      '<div class="dropdown">',
+      '  <a id="dLabel" data-target="#" href="http://example.com/" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">',
+      '    Dropdown trigger',
+      '  </a>',
+      '  <ul class="dropdown-menu" aria-labelledby="dLabel">',
+      '    <li><a href="/test">One</a></li>',
+      '    <li><a href="/test2">Two</a></li>',
+      '  </ul>',
+      '</div>'
+    ].join('')
+
+    var $dropdown = $(html)
+      .appendTo('#qunit-fixture')
+      .find('[data-toggle="dropdown"]')
+      .bootstrapDropdown()
+
+    $dropdown
+      .parent('.dropdown')
+      .on('shown.bs.dropdown', function () {
+        assert.ok($dropdown.parent('.dropdown').hasClass('open'), '"open" class added on click')
+        done()
+      })
+
+    $dropdown.trigger('click')
+  })
 })
