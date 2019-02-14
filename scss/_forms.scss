@@ -87,11 +87,11 @@ select.form-control {
   line-height: $input-line-height;
 }
 
-.col-form-label-lg {
-  padding-top: calc(#{$input-padding-y-lg} + #{$input-border-width});
-  padding-bottom: calc(#{$input-padding-y-lg} + #{$input-border-width});
-  @include font-size($input-font-size-lg);
-  line-height: $input-line-height-lg;
+.col-form-label-xs {
+  padding-top: calc(#{$input-padding-y-xs} + #{$input-border-width});
+  padding-bottom: calc(#{$input-padding-y-xs} + #{$input-border-width});
+  @include font-size($input-font-size-xs);
+  line-height: $input-line-height-xs;
 }
 
 .col-form-label-sm {
@@ -101,6 +101,12 @@ select.form-control {
   line-height: $input-line-height-sm;
 }
 
+.col-form-label-lg {
+  padding-top: calc(#{$input-padding-y-lg} + #{$input-border-width});
+  padding-bottom: calc(#{$input-padding-y-lg} + #{$input-border-width});
+  @include font-size($input-font-size-lg);
+  line-height: $input-line-height-lg;
+}
 
 // Readonly controls as plain text
 //
@@ -133,6 +139,14 @@ select.form-control {
 // height and font-size of form controls.
 //
 // Repeated in `_input_group.scss` to avoid Sass extend issues.
+
+.form-control-xs {
+  height: $input-height-xs;
+  padding: $input-padding-y-xs $input-padding-x-xs;
+  @include font-size($input-font-size-xs);
+  line-height: $input-line-height-xs;
+  @include border-radius($input-border-radius-xs);
+}
 
 .form-control-sm {
   height: $input-height-sm;

@@ -88,12 +88,13 @@ For file inputs, swap the `.form-control` for `.form-control-file`.
 
 ### Sizing
 
-Set heights using classes like `.form-control-lg` and `.form-control-sm`.
+Set heights using classes like `.form-control-lg`, `.form-control-sm` and `.form-control-xs`.
 
 {% capture example %}
 <input class="form-control form-control-lg" type="text" placeholder=".form-control-lg">
 <input class="form-control" type="text" placeholder="Default input">
 <input class="form-control form-control-sm" type="text" placeholder=".form-control-sm">
+<input class="form-control form-control-xs" type="text" placeholder=".form-control-xs">
 {% endcapture %}
 {% include example.html content=example %}
 
@@ -106,6 +107,9 @@ Set heights using classes like `.form-control-lg` and `.form-control-sm`.
 </select>
 <select class="form-control form-control-sm">
   <option>Small select</option>
+</select>
+<select class="form-control form-control-xs">
+  <option>Extra small select</option>
 </select>
 {% endcapture %}
 {% include example.html content=example %}

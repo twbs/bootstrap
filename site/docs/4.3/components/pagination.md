@@ -135,6 +135,22 @@ Fancy larger or smaller pagination? Add `.pagination-lg` or `.pagination-sm` for
 {% endcapture %}
 {% include example.html content=example %}
 
+{% capture example %}
+<nav aria-label="...">
+  <ul class="pagination pagination-xs">
+    <li class="page-item active" aria-current="page">
+      <span class="page-link">
+        1
+        <span class="sr-only">(current)</span>
+      </span>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+  </ul>
+</nav>
+{% endcapture %}
+{% include example.html content=example %}
+
 ## Alignment
 
 Change the alignment of pagination components with [flexbox utilities]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/flex/).

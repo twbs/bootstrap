@@ -127,21 +127,21 @@
 // Remix the default form control sizing classes into new ones for easier
 // manipulation.
 
-.input-group-lg > .form-control:not(textarea),
-.input-group-lg > .custom-select {
-  height: $input-height-lg;
+.input-group-xs > .form-control:not(textarea),
+.input-group-xs > .custom-select {
+  height: $input-height-xs;
 }
 
-.input-group-lg > .form-control,
-.input-group-lg > .custom-select,
-.input-group-lg > .input-group-prepend > .input-group-text,
-.input-group-lg > .input-group-append > .input-group-text,
-.input-group-lg > .input-group-prepend > .btn,
-.input-group-lg > .input-group-append > .btn {
-  padding: $input-padding-y-lg $input-padding-x-lg;
-  @include font-size($input-font-size-lg);
-  line-height: $input-line-height-lg;
-  @include border-radius($input-border-radius-lg);
+.input-group-xs > .form-control,
+.input-group-xs > .custom-select,
+.input-group-xs > .input-group-prepend > .input-group-text,
+.input-group-xs > .input-group-append > .input-group-text,
+.input-group-xs > .input-group-prepend > .btn,
+.input-group-xs > .input-group-append > .btn {
+  padding: $input-padding-y-xs $input-padding-x-xs;
+  @include font-size($input-font-size-xs);
+  line-height: $input-line-height-xs;
+  @include border-radius($input-border-radius-xs);
 }
 
 .input-group-sm > .form-control:not(textarea),
@@ -161,15 +161,33 @@
   @include border-radius($input-border-radius-sm);
 }
 
+.input-group-lg > .form-control:not(textarea),
+.input-group-lg > .custom-select {
+  height: $input-height-lg;
+}
+
+.input-group-lg > .form-control,
 .input-group-lg > .custom-select,
-.input-group-sm > .custom-select {
+.input-group-lg > .input-group-prepend > .input-group-text,
+.input-group-lg > .input-group-append > .input-group-text,
+.input-group-lg > .input-group-prepend > .btn,
+.input-group-lg > .input-group-append > .btn {
+  padding: $input-padding-y-lg $input-padding-x-lg;
+  @include font-size($input-font-size-lg);
+  line-height: $input-line-height-lg;
+  @include border-radius($input-border-radius-lg);
+}
+
+.input-group-xs > .custom-select,
+.input-group-sm > .custom-select,
+.input-group-lg > .custom-select {
   padding-right: $custom-select-padding-x + $custom-select-indicator-padding;
 }
 
 
 // Prepend and append rounded corners
 //
-// These rulesets must come after the sizing ones to properly override sm and lg
+// These rulesets must come after the sizing ones to properly override xs, sm and lg
 // border-radius values when extending. They're more specific than we'd like
 // with the `.input-group >` part, but without it, we cannot override the sizing.
 

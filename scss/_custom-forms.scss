@@ -265,6 +265,14 @@
   }
 }
 
+.custom-select-xs {
+  height: $custom-select-height-xs;
+  padding-top: $custom-select-padding-y-xs;
+  padding-bottom: $custom-select-padding-y-xs;
+  padding-left: $custom-select-padding-x-xs;
+  @include font-size($custom-select-font-size-xs);
+}
+
 .custom-select-sm {
   height: $custom-select-height-sm;
   padding-top: $custom-select-padding-y-sm;
