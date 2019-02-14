@@ -1,0 +1,20 @@
+// Input group
+
+@mixin input-group-size($height, $padding-y, $padding-x, $font-size, $line-height, $border-radius) {
+  > .form-control:not(textarea),
+  > .custom-select {
+    height: $height;
+  }
+
+  > .form-control,
+  > .custom-select,
+  > .input-group-prepend > .input-group-text,
+  > .input-group-append > .input-group-text,
+  > .input-group-prepend > .btn,
+  > .input-group-append > .btn {
+    padding: $padding-y $padding-x;
+    @include font-size($font-size);
+    line-height: $line-height;
+    @include border-radius($badge-border-radius);
+  }
+}
