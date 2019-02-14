@@ -140,6 +140,11 @@ Enable popovers via JavaScript:
 
 Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-`, as in `data-animation=""`.
 
+{% capture callout %}
+Note that for security reasons the `sanitize`, `sanitizeFn` and `whiteList` options cannot be supplied using data attributes.
+{% endcapture %}
+{% include callout.html content=callout type="warning" %}
+
 <table class="table table-bordered table-striped">
   <thead>
     <tr>
@@ -249,6 +254,24 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <td>string | element</td>
       <td>'scrollParent'</td>
       <td>Overflow constraint boundary of the popover. Accepts the values of <code>'viewport'</code>, <code>'window'</code>, <code>'scrollParent'</code>, or an HTMLElement reference (JavaScript only). For more information refer to Popper.js's <a href="https://popper.js.org/popper-documentation.html#modifiers..preventOverflow.boundariesElement">preventOverflow docs</a>.</td>
+    </tr>
+    <tr>
+      <td>sanitize</td>
+      <td>boolean</td>
+      <td>true</td>
+      <td>Enable or disable the sanitization. If activated <code>'template'</code>, <code>'content'</code> and <code>'title'</code> options will be sanitized.</td>
+    </tr>
+    <tr>
+      <td>whiteList</td>
+      <td>object</td>
+      <td><a href="{{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/javascript/#sanitizer">Default value</a></td>
+      <td>Object which contains allowed attributes and tags</td>
+    </tr>
+    <tr>
+      <td>sanitizeFn</td>
+      <td>null | function</td>
+      <td>null</td>
+      <td>Here you can supply your own sanitize function. This can be useful if you prefer to use a dedicated library to perform sanitization.</td>
     </tr>
   </tbody>
 </table>

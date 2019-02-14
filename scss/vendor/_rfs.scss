@@ -202,11 +202,3 @@ $rfs-breakpoint-unit-cache: unit($rfs-breakpoint);
 @mixin responsive-font-size($fs, $important: false) {
   @include rfs($fs, $important);
 }
-
-$rfs-is-included: false !default;
-
-@if $rfs-is-included {
-  @warn "Watch out, RFS is included more than once!";
-}
-
-$rfs-is-included: true;

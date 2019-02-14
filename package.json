@@ -1,7 +1,7 @@
 {
   "name": "bootstrap",
   "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
-  "version": "4.3.0",
+  "version": "4.3.1",
   "version_short": "4.3",
   "keywords": [
     "css",
@@ -152,7 +152,7 @@
   },
   "files": [
     "dist/{css,js}/*.{css,js,map}",
-    "js/{src,dist}/*.{js,map}",
+    "js/{src,dist}/**/*.{js,map}",
     "scss/**/*.scss"
   ],
   "bundlesize": [
@@ -182,19 +182,19 @@
     },
     {
       "path": "./dist/js/bootstrap.bundle.js",
-      "maxSize": "45 kB"
+      "maxSize": "47 kB"
     },
     {
       "path": "./dist/js/bootstrap.bundle.min.js",
-      "maxSize": "21.25 kB"
+      "maxSize": "22 kB"
     },
     {
       "path": "./dist/js/bootstrap.js",
-      "maxSize": "23 kB"
+      "maxSize": "25 kB"
     },
     {
       "path": "./dist/js/bootstrap.min.js",
-      "maxSize": "14.5 kB"
+      "maxSize": "15.5 kB"
     }
   ],
   "jspm": {
