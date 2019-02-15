@@ -2,7 +2,7 @@
  * Bootstrap Grunt task for Glyphicons data generation
  * https://getbootstrap.com/
  * Copyright 2014-2019 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/v3-dev/LICENSE)
  */
 
 'use strict';
