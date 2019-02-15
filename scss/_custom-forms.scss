@@ -21,7 +21,7 @@
 
 .custom-control-input {
   position: absolute;
-  z-index: -1; // Put the input behind the label so it doesn't overlay text
+  pointer-events: none;
   opacity: 0;
 
   &:checked ~ .custom-control-label::before {
