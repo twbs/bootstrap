@@ -12,7 +12,7 @@
     <language>en-us</language>
     <projectUrl>https://getbootstrap.com/</projectUrl>
     <iconUrl>https://getbootstrap.com/apple-touch-icon.png</iconUrl>
-    <licenseUrl>https://github.com/twbs/bootstrap/blob/master/LICENSE</licenseUrl>
+    <licenseUrl>https://github.com/twbs/bootstrap/blob/v3-dev/LICENSE</licenseUrl>
     <copyright>Copyright 2019</copyright>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <dependencies>

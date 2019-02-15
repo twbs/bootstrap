@@ -9,7 +9,7 @@
  *
  * Copyright 2017-2019 The Bootstrap Authors
  * Copyright 2017-2019 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/v3-dev/LICENSE)
  */
 
 var crypto = require('crypto');

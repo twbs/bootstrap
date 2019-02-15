@@ -25,7 +25,7 @@ open `index.html`.
 * Each test should have a unique name clearly stating what unit is being tested.
 * Each test should test only one unit per test, although one test can include several assertions. Create multiple tests for multiple units of functionality.
 * Each test should begin with [`assert.expect`](https://api.qunitjs.com/expect/) to ensure that the expected assertions are run.
-* Each test should follow the project's [JavaScript Code Guidelines](https://github.com/twbs/bootstrap/blob/master/CONTRIBUTING.md#js)
+* Each test should follow the project's [JavaScript Code Guidelines](https://github.com/twbs/bootstrap/blob/v3-dev/CONTRIBUTING.md#js)
 
 ### Example tests
 
