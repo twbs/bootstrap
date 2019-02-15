@@ -14,6 +14,7 @@
   "homepage": "https://getbootstrap.com/",
   "author": "Twitter, Inc.",
   "scripts": {
+    "netlify": "grunt dist docs-css docs-js copy:docs build-glyphicons-data build-customizer && npm run sri && grunt jekyll:netlify",
     "sri": "node grunt/generate-sri.js",
     "release": "grunt prep-release && npm run sri && npm run release-zip",
     "release-zip": "cross-env-shell \"shx rm -rf bootstrap-$npm_package_version-dist && shx cp -r dist/ bootstrap-$npm_package_version-dist && zip -r9 bootstrap-$npm_package_version-dist.zip bootstrap-$npm_package_version-dist && shx rm -rf bootstrap-$npm_package_version-dist\"",
