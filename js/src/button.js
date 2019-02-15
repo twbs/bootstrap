@@ -16,30 +16,30 @@ import Util from './util'
  * ------------------------------------------------------------------------
  */
 
-const NAME                = 'button'
-const VERSION             = '4.3.1'
-const DATA_KEY            = 'bs.button'
-const EVENT_KEY           = `.${DATA_KEY}`
-const DATA_API_KEY        = '.data-api'
+const NAME = 'button'
+const VERSION = '4.3.1'
+const DATA_KEY = 'bs.button'
+const EVENT_KEY = `.${DATA_KEY}`
+const DATA_API_KEY = '.data-api'
 
 const ClassName = {
-  ACTIVE : 'active',
-  BUTTON : 'btn',
-  FOCUS  : 'focus'
+  ACTIVE: 'active',
+  BUTTON: 'btn',
+  FOCUS: 'focus'
 }
 
 const Selector = {
-  DATA_TOGGLE_CARROT : '[data-toggle^="button"]',
-  DATA_TOGGLE        : '[data-toggle="buttons"]',
-  INPUT              : 'input:not([type="hidden"])',
-  ACTIVE             : '.active',
-  BUTTON             : '.btn'
+  DATA_TOGGLE_CARROT: '[data-toggle^="button"]',
+  DATA_TOGGLE: '[data-toggle="buttons"]',
+  INPUT: 'input:not([type="hidden"])',
+  ACTIVE: '.active',
+  BUTTON: '.btn'
 }
 
 const Event = {
-  CLICK_DATA_API      : `click${EVENT_KEY}${DATA_API_KEY}`,
-  FOCUS_DATA_API      : `focus${EVENT_KEY}${DATA_API_KEY}`,
-  BLUR_DATA_API       : `blur${EVENT_KEY}${DATA_API_KEY}`
+  CLICK_DATA_API: `click${EVENT_KEY}${DATA_API_KEY}`,
+  FOCUS_DATA_API: `focus${EVENT_KEY}${DATA_API_KEY}`,
+  BLUR_DATA_API: `blur${EVENT_KEY}${DATA_API_KEY}`
 }
 
 /**
@@ -76,8 +76,7 @@ class Button {
 
       if (input) {
         if (input.type === 'radio') {
-          if (input.checked &&
-            this._element.classList.contains(ClassName.ACTIVE)) {
+          if (input.checked && this._element.classList.contains(ClassName.ACTIVE)) {
             triggerChangeEvent = false
           } else {
             const activeElement = SelectorEngine.findOne(Selector.ACTIVE, rootElement)
@@ -182,11 +181,11 @@ EventHandler.on(document, Event.BLUR_DATA_API, Selector.DATA_TOGGLE_CARROT, (eve
 
 const $ = Util.jQuery
 if (typeof $ !== 'undefined') {
-  const JQUERY_NO_CONFLICT  = $.fn[NAME]
-  $.fn[NAME]                = Button._jQueryInterface
-  $.fn[NAME].Constructor    = Button
+  const JQUERY_NO_CONFLICT = $.fn[NAME]
+  $.fn[NAME] = Button._jQueryInterface
+  $.fn[NAME].Constructor = Button
 
-  $.fn[NAME].noConflict  = () => {
+  $.fn[NAME].noConflict = () => {
     $.fn[NAME] = JQUERY_NO_CONFLICT
     return Button._jQueryInterface
   }

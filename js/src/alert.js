@@ -16,26 +16,26 @@ import Util from './util'
  * ------------------------------------------------------------------------
  */
 
-const NAME                = 'alert'
-const VERSION             = '4.3.1'
-const DATA_KEY            = 'bs.alert'
-const EVENT_KEY           = `.${DATA_KEY}`
-const DATA_API_KEY        = '.data-api'
+const NAME = 'alert'
+const VERSION = '4.3.1'
+const DATA_KEY = 'bs.alert'
+const EVENT_KEY = `.${DATA_KEY}`
+const DATA_API_KEY = '.data-api'
 
 const Selector = {
-  DISMISS : '[data-dismiss="alert"]'
+  DISMISS: '[data-dismiss="alert"]'
 }
 
 const Event = {
-  CLOSE          : `close${EVENT_KEY}`,
-  CLOSED         : `closed${EVENT_KEY}`,
-  CLICK_DATA_API : `click${EVENT_KEY}${DATA_API_KEY}`
+  CLOSE: `close${EVENT_KEY}`,
+  CLOSED: `closed${EVENT_KEY}`,
+  CLICK_DATA_API: `click${EVENT_KEY}${DATA_API_KEY}`
 }
 
 const ClassName = {
-  ALERT : 'alert',
-  FADE  : 'fade',
-  SHOW  : 'show'
+  ALERT: 'alert',
+  FADE: 'fade',
+  SHOW: 'show'
 }
 
 /**
@@ -84,7 +84,7 @@ class Alert {
 
   _getRootElement(element) {
     const selector = Util.getSelectorFromElement(element)
-    let parent     = false
+    let parent = false
 
     if (selector) {
       parent = SelectorEngine.findOne(selector)
@@ -112,7 +112,7 @@ class Alert {
     const transitionDuration = Util.getTransitionDurationFromElement(element)
 
     EventHandler
-      .one(element, Util.TRANSITION_END, (event) => this._destroyElement(element, event))
+      .one(element, Util.TRANSITION_END, event => this._destroyElement(element, event))
     Util.emulateTransitionEnd(element, transitionDuration)
   }
 
@@ -173,9 +173,9 @@ EventHandler
 const $ = Util.jQuery
 if (typeof $ !== 'undefined') {
   const JQUERY_NO_CONFLICT = $.fn[NAME]
-  $.fn[NAME]               = Alert._jQueryInterface
-  $.fn[NAME].Constructor   = Alert
-  $.fn[NAME].noConflict    = () => {
+  $.fn[NAME] = Alert._jQueryInterface
+  $.fn[NAME].Constructor = Alert
+  $.fn[NAME].noConflict = () => {
     $.fn[NAME] = JQUERY_NO_CONFLICT
     return Alert._jQueryInterface
   }

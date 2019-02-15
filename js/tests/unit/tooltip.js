@@ -336,7 +336,7 @@ $(function () {
     assert.expect(3)
     var $tooltip = $('<div/>')
       .bootstrapTooltip()
-      .on('click.foo', function () {})  // eslint-disable-line no-empty-function
+      .on('click.foo', function () {}) // eslint-disable-line no-empty-function
 
     assert.ok(Tooltip._getInstance($tooltip[0]), 'tooltip has data')
 
@@ -459,10 +459,10 @@ $(function () {
   QUnit.test('should add position class before positioning so that position-specific styles are taken into account', function (assert) {
     assert.expect(2)
     var done = assert.async()
-    var styles = '<style>' +
-      '.bs-tooltip-right { white-space: nowrap; }' +
-      '.bs-tooltip-right .tooltip-inner { max-width: none; }' +
-      '</style>'
+    var styles = '<style>'
+      + '.bs-tooltip-right { white-space: nowrap; }'
+      + '.bs-tooltip-right .tooltip-inner { max-width: none; }'
+      + '</style>'
     var $styles = $(styles).appendTo('head')
 
     var $container = $('<div/>').appendTo('#qunit-fixture')
@@ -874,15 +874,15 @@ $(function () {
   QUnit.test('should hide tooltip when their containing modal is closed', function (assert) {
     assert.expect(1)
     var done = assert.async()
-    var templateHTML = '<div id="modal-test" class="modal">' +
-                          '<div class="modal-dialog" role="document">' +
-                            '<div class="modal-content">' +
-                              '<div class="modal-body">' +
-                                '<a id="tooltipTest" href="#" data-toggle="tooltip" title="Some tooltip text!">Tooltip</a>' +
-                              '</div>' +
-                            '</div>' +
-                          '</div>' +
-                        '</div>'
+    var templateHTML = '<div id="modal-test" class="modal">'
+                          + '<div class="modal-dialog" role="document">'
+                            + '<div class="modal-content">'
+                              + '<div class="modal-body">'
+                                + '<a id="tooltipTest" href="#" data-toggle="tooltip" title="Some tooltip text!">Tooltip</a>'
+                              + '</div>'
+                            + '</div>'
+                          + '</div>'
+                        + '</div>'
 
     $(templateHTML).appendTo('#qunit-fixture')
     $('#tooltipTest')

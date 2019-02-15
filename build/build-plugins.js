@@ -7,12 +7,12 @@
 
 'use strict'
 
-const path    = require('path')
-const rollup  = require('rollup')
-const babel   = require('rollup-plugin-babel')
-const banner  = require('./banner.js')
+const path = require('path')
+const rollup = require('rollup')
+const babel = require('rollup-plugin-babel')
+const banner = require('./banner.js')
 
-const TEST    = process.env.NODE_ENV === 'test'
+const TEST = process.env.NODE_ENV === 'test'
 const plugins = [
   babel({
     exclude: 'node_modules/**', // Only transpile our source code
@@ -159,8 +159,8 @@ function build(plugin) {
   console.log(`Building ${plugin} plugin...`)
 
   const config = getConfigByPluginKey(plugin)
-  const external = config.external
-  const globals = config.globals
+  const { external } = config
+  const { globals } = config
 
   const pluginPath = [
     'Data',
@@ -186,8 +186,8 @@ function build(plugin) {
       file: path.resolve(__dirname, `${pluginPath}${pluginFilename}`)
     })
       .then(() => console.log(`Building ${plugin} plugin... Done!`))
-      .catch((err) => console.error(`${plugin}: ${err}`))
+      .catch(err => console.error(`${plugin}: ${err}`))
   })
 }
 
-Object.keys(bsPlugins).forEach((plugin) => build(plugin))
+Object.keys(bsPlugins).forEach(plugin => build(plugin))

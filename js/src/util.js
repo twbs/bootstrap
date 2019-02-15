@@ -29,11 +29,14 @@ const Util = {
   TRANSITION_END: 'transitionend',
 
   getUID(prefix) {
+    let uid
+
     do {
       // eslint-disable-next-line no-bitwise
-      prefix += ~~(Math.random() * MAX_UID) // "~~" acts like a faster Math.floor() here
+      uid += ~~(Math.random() * MAX_UID) // "~~" acts like a faster Math.floor() here
     } while (document.getElementById(prefix))
-    return prefix
+
+    return uid
   },
 
   getSelectorFromElement(element) {
@@ -57,8 +60,7 @@ const Util = {
     }
 
     // Get transition-duration of the element
-    let transitionDuration = window.getComputedStyle(element).transitionDuration
-    let transitionDelay = window.getComputedStyle(element).transitionDelay
+    let { transitionDuration, transitionDelay } = window.getComputedStyle(element)
 
     const floatTransitionDuration = parseFloat(transitionDuration)
     const floatTransitionDelay = parseFloat(transitionDelay)
@@ -69,8 +71,8 @@ const Util = {
     }
 
     // If multiple durations are defined, take the first
-    transitionDuration = transitionDuration.split(',')[0]
-    transitionDelay = transitionDelay.split(',')[0]
+    transitionDuration = transitionDuration.split(',').shift()
+    transitionDelay = transitionDelay.split(',').shift()
 
     return (parseFloat(transitionDuration) + parseFloat(transitionDelay)) * MILLISECONDS_MULTIPLIER
   },
@@ -105,21 +107,22 @@ const Util = {
   },
 
   typeCheckConfig(componentName, config, configTypes) {
-    for (const property in configTypes) {
-      if (Object.prototype.hasOwnProperty.call(configTypes, property)) {
+    Object.keys(configTypes)
+      .forEach((property) => {
         const expectedTypes = configTypes[property]
-        const value         = config[property]
-        const valueType     = value && Util.isElement(value)
-          ? 'element' : toType(value)
+        const value = config[property]
+        const valueType = value && Util.isElement(value) ?
+          'element' : toType(value)
 
         if (!new RegExp(expectedTypes).test(valueType)) {
           throw new Error(
-            `${componentName.toUpperCase()}: ` +
-            `Option "${property}" provided type "${valueType}" ` +
-            `but expected type "${expectedTypes}".`)
+            `${componentName.toUpperCase()}:
+            Option "${property}" provided type "${valueType}"
+            but expected type "${expectedTypes}".
+            `
+          )
         }
-      }
-    }
+      })
   },
 
   makeArray(nodeList) {

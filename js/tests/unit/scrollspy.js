@@ -50,32 +50,32 @@ $(function () {
     assert.expect(1)
     var done = assert.async()
 
-    var sectionHTML = '<div id="root" class="active">' +
-        '<div class="topbar">' +
-        '<div class="topbar-inner">' +
-        '<div class="container" id="ss-target">' +
-        '<ul class="nav">' +
-        '<li class="nav-item"><a href="#masthead">Overview</a></li>' +
-        '<li class="nav-item"><a href="#detail">Detail</a></li>' +
-        '</ul>' +
-        '</div>' +
-        '</div>' +
-        '</div>' +
-        '<div id="scrollspy-example" style="height: 100px; overflow: auto;">' +
-        '<div style="height: 200px;">' +
-        '<h4 id="masthead">Overview</h4>' +
-        '<p style="height: 200px">' +
-        'Ad leggings keytar, brunch id art party dolor labore.' +
-        '</p>' +
-        '</div>' +
-        '<div style="height: 200px;">' +
-        '<h4 id="detail">Detail</h4>' +
-        '<p style="height: 200px">' +
-        'Veniam marfa mustache skateboard, adipisicing fugiat velit pitchfork beard.' +
-        '</p>' +
-        '</div>' +
-        '</div>' +
-        '</div>'
+    var sectionHTML = '<div id="root" class="active">'
+        + '<div class="topbar">'
+        + '<div class="topbar-inner">'
+        + '<div class="container" id="ss-target">'
+        + '<ul class="nav">'
+        + '<li class="nav-item"><a href="#masthead">Overview</a></li>'
+        + '<li class="nav-item"><a href="#detail">Detail</a></li>'
+        + '</ul>'
+        + '</div>'
+        + '</div>'
+        + '</div>'
+        + '<div id="scrollspy-example" style="height: 100px; overflow: auto;">'
+        + '<div style="height: 200px;">'
+        + '<h4 id="masthead">Overview</h4>'
+        + '<p style="height: 200px">'
+        + 'Ad leggings keytar, brunch id art party dolor labore.'
+        + '</p>'
+        + '</div>'
+        + '<div style="height: 200px;">'
+        + '<h4 id="detail">Detail</h4>'
+        + '<p style="height: 200px">'
+        + 'Veniam marfa mustache skateboard, adipisicing fugiat velit pitchfork beard.'
+        + '</p>'
+        + '</div>'
+        + '</div>'
+        + '</div>'
     var $section = $(sectionHTML).appendTo('#qunit-fixture')
 
     var $scrollspy = $section
@@ -97,32 +97,32 @@ $(function () {
     assert.expect(1)
     var done = assert.async()
 
-    var sectionHTML = '<div id="root" class="active">' +
-        '<div class="topbar">' +
-        '<div class="topbar-inner">' +
-        '<div class="container" id="ss-target">' +
-        '<ul class="nav">' +
-        '<li class="nav-item"><a href="#masthead">Overview</a></li>' +
-        '<li class="nav-item"><a href="#detail">Detail</a></li>' +
-        '</ul>' +
-        '</div>' +
-        '</div>' +
-        '</div>' +
-        '<div id="scrollspy-example" style="height: 100px; overflow: auto;">' +
-        '<div style="height: 200px;">' +
-        '<h4 id="masthead">Overview</h4>' +
-        '<p style="height: 200px">' +
-        'Ad leggings keytar, brunch id art party dolor labore.' +
-        '</p>' +
-        '</div>' +
-        '<div style="height: 200px;">' +
-        '<h4 id="detail">Detail</h4>' +
-        '<p style="height: 200px">' +
-        'Veniam marfa mustache skateboard, adipisicing fugiat velit pitchfork beard.' +
-        '</p>' +
-        '</div>' +
-        '</div>' +
-        '</div>'
+    var sectionHTML = '<div id="root" class="active">'
+        + '<div class="topbar">'
+        + '<div class="topbar-inner">'
+        + '<div class="container" id="ss-target">'
+        + '<ul class="nav">'
+        + '<li class="nav-item"><a href="#masthead">Overview</a></li>'
+        + '<li class="nav-item"><a href="#detail">Detail</a></li>'
+        + '</ul>'
+        + '</div>'
+        + '</div>'
+        + '</div>'
+        + '<div id="scrollspy-example" style="height: 100px; overflow: auto;">'
+        + '<div style="height: 200px;">'
+        + '<h4 id="masthead">Overview</h4>'
+        + '<p style="height: 200px">'
+        + 'Ad leggings keytar, brunch id art party dolor labore.'
+        + '</p>'
+        + '</div>'
+        + '<div style="height: 200px;">'
+        + '<h4 id="detail">Detail</h4>'
+        + '<p style="height: 200px">'
+        + 'Veniam marfa mustache skateboard, adipisicing fugiat velit pitchfork beard.'
+        + '</p>'
+        + '</div>'
+        + '</div>'
+        + '</div>'
     var $section = $(sectionHTML).appendTo('#qunit-fixture')
 
     var $scrollspy = $section
@@ -144,19 +144,19 @@ $(function () {
     assert.expect(3)
     var done = assert.async()
 
-    var sectionHTML = '<div id="header" style="height: 500px;"></div>' +
-        '<nav id="navigation" class="navbar">' +
-        '<ul class="navbar-nav">' +
-        '<li class="nav-item active"><a class="nav-link" id="one-link" href="#one">One</a></li>' +
-        '<li class="nav-item"><a class="nav-link" id="two-link" href="#two">Two</a></li>' +
-        '<li class="nav-item"><a class="nav-link" id="three-link" href="#three">Three</a></li>' +
-        '</ul>' +
-        '</nav>' +
-        '<div id="content" style="height: 200px; overflow-y: auto;">' +
-        '<div id="one" style="height: 500px;"></div>' +
-        '<div id="two" style="height: 300px;"></div>' +
-        '<div id="three" style="height: 10px;"></div>' +
-        '</div>'
+    var sectionHTML = '<div id="header" style="height: 500px;"></div>'
+        + '<nav id="navigation" class="navbar">'
+        + '<ul class="navbar-nav">'
+        + '<li class="nav-item active"><a class="nav-link" id="one-link" href="#one">One</a></li>'
+        + '<li class="nav-item"><a class="nav-link" id="two-link" href="#two">Two</a></li>'
+        + '<li class="nav-item"><a class="nav-link" id="three-link" href="#three">Three</a></li>'
+        + '</ul>'
+        + '</nav>'
+        + '<div id="content" style="height: 200px; overflow-y: auto;">'
+        + '<div id="one" style="height: 500px;"></div>'
+        + '<div id="two" style="height: 300px;"></div>'
+        + '<div id="three" style="height: 10px;"></div>'
+        + '</div>'
     var $section = $(sectionHTML).appendTo('#qunit-fixture')
     var $scrollspy = $section
       .show()
@@ -179,18 +179,16 @@ $(function () {
 
   QUnit.test('should add the active class to the correct element', function (assert) {
     assert.expect(2)
-    var navbarHtml =
-      '<nav class="navbar">' +
-      '<ul class="nav">' +
-      '<li class="nav-item"><a class="nav-link" id="a-1" href="#div-1">div 1</a></li>' +
-      '<li class="nav-item"><a class="nav-link" id="a-2" href="#div-2">div 2</a></li>' +
-      '</ul>' +
-      '</nav>'
-    var contentHtml =
-        '<div class="content" style="overflow: auto; height: 50px">' +
-      '<div id="div-1" style="height: 100px; padding: 0; margin: 0">div 1</div>' +
-      '<div id="div-2" style="height: 200px; padding: 0; margin: 0">div 2</div>' +
-      '</div>'
+    var navbarHtml = '<nav class="navbar">'
+      + '<ul class="nav">'
+      + '<li class="nav-item"><a class="nav-link" id="a-1" href="#div-1">div 1</a></li>'
+      + '<li class="nav-item"><a class="nav-link" id="a-2" href="#div-2">div 2</a></li>'
+      + '</ul>'
+      + '</nav>'
+    var contentHtml = '<div class="content" style="overflow: auto; height: 50px">'
+      + '<div id="div-1" style="height: 100px; padding: 0; margin: 0">div 1</div>'
+      + '<div id="div-2" style="height: 200px; padding: 0; margin: 0">div 2</div>'
+      + '</div>'
 
     $(navbarHtml).appendTo('#qunit-fixture')
     var $content = $(contentHtml)
@@ -223,18 +221,16 @@ $(function () {
 
   QUnit.test('should add the active class to the correct element (nav markup)', function (assert) {
     assert.expect(2)
-    var navbarHtml =
-      '<nav class="navbar">' +
-      '<nav class="nav">' +
-      '<a class="nav-link" id="a-1" href="#div-1">div 1</a>' +
-      '<a class="nav-link" id="a-2" href="#div-2">div 2</a>' +
-      '</nav>' +
-      '</nav>'
-    var contentHtml =
-        '<div class="content" style="overflow: auto; height: 50px">' +
-      '<div id="div-1" style="height: 100px; padding: 0; margin: 0">div 1</div>' +
-      '<div id="div-2" style="height: 200px; padding: 0; margin: 0">div 2</div>' +
-      '</div>'
+    var navbarHtml = '<nav class="navbar">'
+      + '<nav class="nav">'
+      + '<a class="nav-link" id="a-1" href="#div-1">div 1</a>'
+      + '<a class="nav-link" id="a-2" href="#div-2">div 2</a>'
+      + '</nav>'
+      + '</nav>'
+    var contentHtml = '<div class="content" style="overflow: auto; height: 50px">'
+      + '<div id="div-1" style="height: 100px; padding: 0; margin: 0">div 1</div>'
+      + '<div id="div-2" style="height: 200px; padding: 0; margin: 0">div 2</div>'
+      + '</div>'
 
     $(navbarHtml).appendTo('#qunit-fixture')
     var $content = $(contentHtml)
@@ -267,18 +263,16 @@ $(function () {
 
   QUnit.test('should add the active class to the correct element (list-group markup)', function (assert) {
     assert.expect(2)
-    var navbarHtml =
-      '<nav class="navbar">' +
-      '<div class="list-group">' +
-      '<a class="list-group-item" id="a-1" href="#div-1">div 1</a>' +
-      '<a class="list-group-item" id="a-2" href="#div-2">div 2</a>' +
-      '</div>' +
-      '</nav>'
-    var contentHtml =
-        '<div class="content" style="overflow: auto; height: 50px">' +
-      '<div id="div-1" style="height: 100px; padding: 0; margin: 0">div 1</div>' +
-      '<div id="div-2" style="height: 200px; padding: 0; margin: 0">div 2</div>' +
-      '</div>'
+    var navbarHtml = '<nav class="navbar">'
+      + '<div class="list-group">'
+      + '<a class="list-group-item" id="a-1" href="#div-1">div 1</a>'
+      + '<a class="list-group-item" id="a-2" href="#div-2">div 2</a>'
+      + '</div>'
+      + '</nav>'
+    var contentHtml = '<div class="content" style="overflow: auto; height: 50px">'
+      + '<div id="div-1" style="height: 100px; padding: 0; margin: 0">div 1</div>'
+      + '<div id="div-2" style="height: 200px; padding: 0; margin: 0">div 2</div>'
+      + '</div>'
 
     $(navbarHtml).appendTo('#qunit-fixture')
     var $content = $(contentHtml)
@@ -313,21 +307,21 @@ $(function () {
     assert.expect(6)
     var times = 0
     var done = assert.async()
-    var navbarHtml = '<nav id="navigation" class="navbar">' +
-      '<ul class="nav">' +
-      '<li class="nav-item"><a id="a-1" class="nav-link" href="#div-1">div 1</a>' +
-      '<ul class="nav">' +
-      '<li class="nav-item"><a id="a-2" class="nav-link" href="#div-2">div 2</a></li>' +
-      '</ul>' +
-      '</li>' +
-      '</ul>' +
-      '</nav>'
+    var navbarHtml = '<nav id="navigation" class="navbar">'
+      + '<ul class="nav">'
+      + '<li class="nav-item"><a id="a-1" class="nav-link" href="#div-1">div 1</a>'
+      + '<ul class="nav">'
+      + '<li class="nav-item"><a id="a-2" class="nav-link" href="#div-2">div 2</a></li>'
+      + '</ul>'
+      + '</li>'
+      + '</ul>'
+      + '</nav>'
 
-    var contentHtml = '<div class="content" style="position: absolute; top: 0px; overflow: auto; height: 50px">' +
-      '<div id="div-1" style="padding: 0; margin: 0">' +
-      '<div id="div-2" style="height: 200px; padding: 0; margin: 0">div 2</div>' +
-      '</div>' +
-      '</div>'
+    var contentHtml = '<div class="content" style="position: absolute; top: 0px; overflow: auto; height: 50px">'
+      + '<div id="div-1" style="padding: 0; margin: 0">'
+      + '<div id="div-2" style="height: 200px; padding: 0; margin: 0">div 2</div>'
+      + '</div>'
+      + '</div>'
 
     $(navbarHtml).appendTo('#qunit-fixture')
 
@@ -359,20 +353,20 @@ $(function () {
     assert.expect(6)
     var times = 0
     var done = assert.async()
-    var navbarHtml = '<nav id="navigation" class="navbar">' +
-      '<nav class="nav">' +
-      '<a id="a-1" class="nav-link" href="#div-1">div 1</a>' +
-      '<nav class="nav">' +
-      '<a id="a-2" class="nav-link" href="#div-2">div 2</a>' +
-      '</nav>' +
-      '</nav>' +
-      '</nav>'
+    var navbarHtml = '<nav id="navigation" class="navbar">'
+      + '<nav class="nav">'
+      + '<a id="a-1" class="nav-link" href="#div-1">div 1</a>'
+      + '<nav class="nav">'
+      + '<a id="a-2" class="nav-link" href="#div-2">div 2</a>'
+      + '</nav>'
+      + '</nav>'
+      + '</nav>'
 
-    var contentHtml = '<div class="content" style="position: absolute; top: 0px; overflow: auto; height: 50px">' +
-      '<div id="div-1" style="padding: 0; margin: 0">' +
-      '<div id="div-2" style="height: 200px; padding: 0; margin: 0">div 2</div>' +
-      '</div>' +
-      '</div>'
+    var contentHtml = '<div class="content" style="position: absolute; top: 0px; overflow: auto; height: 50px">'
+      + '<div id="div-1" style="padding: 0; margin: 0">'
+      + '<div id="div-2" style="height: 200px; padding: 0; margin: 0">div 2</div>'
+      + '</div>'
+      + '</div>'
 
     $(navbarHtml).appendTo('#qunit-fixture')
 
@@ -404,20 +398,20 @@ $(function () {
     assert.expect(6)
     var times = 0
     var done = assert.async()
-    var navbarHtml = '<nav id="navigation" class="navbar">' +
-      '<ul class="nav">' +
-      '<li class="nav-item"><a id="a-1" class="nav-link" href="#div-1">div 1</a></li>' +
-      '<ul class="nav">' +
-      '<li class="nav-item"><a id="a-2" class="nav-link" href="#div-2">div 2</a></li>' +
-      '</ul>' +
-      '</ul>' +
-      '</nav>'
+    var navbarHtml = '<nav id="navigation" class="navbar">'
+      + '<ul class="nav">'
+      + '<li class="nav-item"><a id="a-1" class="nav-link" href="#div-1">div 1</a></li>'
+      + '<ul class="nav">'
+      + '<li class="nav-item"><a id="a-2" class="nav-link" href="#div-2">div 2</a></li>'
+      + '</ul>'
+      + '</ul>'
+      + '</nav>'
 
-    var contentHtml = '<div class="content" style="position: absolute; top: 0px; overflow: auto; height: 50px">' +
-      '<div id="div-1" style="padding: 0; margin: 0">' +
-      '<div id="div-2" style="height: 200px; padding: 0; margin: 0">div 2</div>' +
-      '</div>' +
-      '</div>'
+    var contentHtml = '<div class="content" style="position: absolute; top: 0px; overflow: auto; height: 50px">'
+      + '<div id="div-1" style="padding: 0; margin: 0">'
+      + '<div id="div-2" style="height: 200px; padding: 0; margin: 0">div 2</div>'
+      + '</div>'
+      + '</div>'
 
     $(navbarHtml).appendTo('#qunit-fixture')
 
@@ -449,20 +443,20 @@ $(function () {
     assert.expect(6)
     var times = 0
     var done = assert.async()
-    var navbarHtml = '<nav id="navigation" class="navbar">' +
-      '<div class="list-group">' +
-      '<a id="a-1" class="list-group-item" href="#div-1">div 1</a>' +
-      '<div class="list-group">' +
-      '<a id="a-2" class="list-group-item" href="#div-2">div 2</a>' +
-      '</div>' +
-      '</div>' +
-      '</nav>'
+    var navbarHtml = '<nav id="navigation" class="navbar">'
+      + '<div class="list-group">'
+      + '<a id="a-1" class="list-group-item" href="#div-1">div 1</a>'
+      + '<div class="list-group">'
+      + '<a id="a-2" class="list-group-item" href="#div-2">div 2</a>'
+      + '</div>'
+      + '</div>'
+      + '</nav>'
 
-    var contentHtml = '<div class="content" style="position: absolute; top: 0px; overflow: auto; height: 50px">' +
-      '<div id="div-1" style="padding: 0; margin: 0">' +
-      '<div id="div-2" style="height: 200px; padding: 0; margin: 0">div 2</div>' +
-      '</div>' +
-      '</div>'
+    var contentHtml = '<div class="content" style="position: absolute; top: 0px; overflow: auto; height: 50px">'
+      + '<div id="div-1" style="padding: 0; margin: 0">'
+      + '<div id="div-2" style="height: 200px; padding: 0; margin: 0">div 2</div>'
+      + '</div>'
+      + '</div>'
 
     $(navbarHtml).appendTo('#qunit-fixture')
 
@@ -494,23 +488,23 @@ $(function () {
     assert.expect(3)
     var done = assert.async()
 
-    var sectionHTML = '<div id="header" style="height: 500px;"></div>' +
-        '<nav id="navigation" class="navbar">' +
-        '<ul class="navbar-nav">' +
-        '<li class="nav-item"><a id="one-link"   class="nav-link active" href="#one">One</a></li>' +
-        '<li class="nav-item"><a id="two-link"   class="nav-link" href="#two">Two</a></li>' +
-        '<li class="nav-item"><a id="three-link" class="nav-link" href="#three">Three</a></li>' +
-        '</ul>' +
-        '</nav>'
+    var sectionHTML = '<div id="header" style="height: 500px;"></div>'
+        + '<nav id="navigation" class="navbar">'
+        + '<ul class="navbar-nav">'
+        + '<li class="nav-item"><a id="one-link"   class="nav-link active" href="#one">One</a></li>'
+        + '<li class="nav-item"><a id="two-link"   class="nav-link" href="#two">Two</a></li>'
+        + '<li class="nav-item"><a id="three-link" class="nav-link" href="#three">Three</a></li>'
+        + '</ul>'
+        + '</nav>'
     $(sectionHTML).appendTo('#qunit-fixture')
 
-    var scrollspyHTML = '<div id="content" style="height: 200px; overflow-y: auto;">' +
-        '<div id="spacer" style="height: 100px;"/>' +
-        '<div id="one" style="height: 100px;"/>' +
-        '<div id="two" style="height: 100px;"/>' +
-        '<div id="three" style="height: 100px;"/>' +
-        '<div id="spacer" style="height: 100px;"/>' +
-        '</div>'
+    var scrollspyHTML = '<div id="content" style="height: 200px; overflow-y: auto;">'
+        + '<div id="spacer" style="height: 100px;"/>'
+        + '<div id="one" style="height: 100px;"/>'
+        + '<div id="two" style="height: 100px;"/>'
+        + '<div id="three" style="height: 100px;"/>'
+        + '<div id="spacer" style="height: 100px;"/>'
+        + '</div>'
     var $scrollspy = $(scrollspyHTML).appendTo('#qunit-fixture')
 
     $scrollspy
@@ -535,25 +529,25 @@ $(function () {
     assert.expect(4)
     var done = assert.async()
 
-    var sectionHTML = '<div id="header" style="height: 500px;"></div>' +
-        '<nav id="navigation" class="navbar">' +
-        '<ul class="navbar-nav">' +
-        '<li class="nav-item"><a id="one-link"   class="nav-link active" href="#one">One</a></li>' +
-        '<li class="nav-item"><a id="two-link"   class="nav-link" href="#two">Two</a></li>' +
-        '<li class="nav-item"><a id="three-link" class="nav-link" href="#three">Three</a></li>' +
-        '</ul>' +
-        '</nav>'
+    var sectionHTML = '<div id="header" style="height: 500px;"></div>'
+        + '<nav id="navigation" class="navbar">'
+        + '<ul class="navbar-nav">'
+        + '<li class="nav-item"><a id="one-link"   class="nav-link active" href="#one">One</a></li>'
+        + '<li class="nav-item"><a id="two-link"   class="nav-link" href="#two">Two</a></li>'
+        + '<li class="nav-item"><a id="three-link" class="nav-link" href="#three">Three</a></li>'
+        + '</ul>'
+        + '</nav>'
     $(sectionHTML).appendTo('#qunit-fixture')
 
     var negativeHeight = -10
     var startOfSectionTwo = 101
 
-    var scrollspyHTML = '<div id="content" style="height: 200px; overflow-y: auto;">' +
-        '<div id="one" style="height: 100px;"/>' +
-        '<div id="two" style="height: 100px;"/>' +
-        '<div id="three" style="height: 100px;"/>' +
-        '<div id="spacer" style="height: 100px;"/>' +
-        '</div>'
+    var scrollspyHTML = '<div id="content" style="height: 200px; overflow-y: auto;">'
+        + '<div id="one" style="height: 100px;"/>'
+        + '<div id="two" style="height: 100px;"/>'
+        + '<div id="three" style="height: 100px;"/>'
+        + '<div id="spacer" style="height: 100px;"/>'
+        + '</div>'
     var $scrollspy = $(scrollspyHTML).appendTo('#qunit-fixture')
 
     $scrollspy
@@ -577,24 +571,22 @@ $(function () {
 
   QUnit.test('should correctly select navigation element on backward scrolling when each target section height is 100%', function (assert) {
     assert.expect(5)
-    var navbarHtml =
-      '<nav class="navbar">' +
-      '<ul class="nav">' +
-      '<li class="nav-item"><a id="li-100-1" class="nav-link" href="#div-100-1">div 1</a></li>' +
-      '<li class="nav-item"><a id="li-100-2" class="nav-link" href="#div-100-2">div 2</a></li>' +
-      '<li class="nav-item"><a id="li-100-3" class="nav-link" href="#div-100-3">div 3</a></li>' +
-      '<li class="nav-item"><a id="li-100-4" class="nav-link" href="#div-100-4">div 4</a></li>' +
-      '<li class="nav-item"><a id="li-100-5" class="nav-link" href="#div-100-5">div 5</a></li>' +
-      '</ul>' +
-      '</nav>'
-    var contentHtml =
-        '<div class="content" style="position: relative; overflow: auto; height: 100px">' +
-      '<div id="div-100-1" style="position: relative; height: 100%; padding: 0; margin: 0">div 1</div>' +
-      '<div id="div-100-2" style="position: relative; height: 100%; padding: 0; margin: 0">div 2</div>' +
-      '<div id="div-100-3" style="position: relative; height: 100%; padding: 0; margin: 0">div 3</div>' +
-      '<div id="div-100-4" style="position: relative; height: 100%; padding: 0; margin: 0">div 4</div>' +
-      '<div id="div-100-5" style="position: relative; height: 100%; padding: 0; margin: 0">div 5</div>' +
-      '</div>'
+    var navbarHtml = '<nav class="navbar">'
+      + '<ul class="nav">'
+      + '<li class="nav-item"><a id="li-100-1" class="nav-link" href="#div-100-1">div 1</a></li>'
+      + '<li class="nav-item"><a id="li-100-2" class="nav-link" href="#div-100-2">div 2</a></li>'
+      + '<li class="nav-item"><a id="li-100-3" class="nav-link" href="#div-100-3">div 3</a></li>'
+      + '<li class="nav-item"><a id="li-100-4" class="nav-link" href="#div-100-4">div 4</a></li>'
+      + '<li class="nav-item"><a id="li-100-5" class="nav-link" href="#div-100-5">div 5</a></li>'
+      + '</ul>'
+      + '</nav>'
+    var contentHtml = '<div class="content" style="position: relative; overflow: auto; height: 100px">'
+      + '<div id="div-100-1" style="position: relative; height: 100%; padding: 0; margin: 0">div 1</div>'
+      + '<div id="div-100-2" style="position: relative; height: 100%; padding: 0; margin: 0">div 2</div>'
+      + '<div id="div-100-3" style="position: relative; height: 100%; padding: 0; margin: 0">div 3</div>'
+      + '<div id="div-100-4" style="position: relative; height: 100%; padding: 0; margin: 0">div 4</div>'
+      + '<div id="div-100-5" style="position: relative; height: 100%; padding: 0; margin: 0">div 5</div>'
+      + '</div>'
 
     $(navbarHtml).appendTo('#qunit-fixture')
     var $content = $(contentHtml)
@@ -639,20 +631,20 @@ $(function () {
 
     var testOffsetMethod = function (type) {
       var $navbar = $(
-        '<nav class="navbar"' + (type === 'data' ? ' id="navbar-offset-method-menu"' : '') + '>' +
-        '<ul class="nav">' +
-        '<li class="nav-item"><a id="li-' + type + 'm-1" class="nav-link" href="#div-' + type + 'm-1">div 1</a></li>' +
-        '<li class="nav-item"><a id="li-' + type + 'm-2" class="nav-link" href="#div-' + type + 'm-2">div 2</a></li>' +
-        '<li class="nav-item"><a id="li-' + type + 'm-3" class="nav-link" href="#div-' + type + 'm-3">div 3</a></li>' +
-        '</ul>' +
-        '</nav>'
+        '<nav class="navbar"' + (type === 'data' ? ' id="navbar-offset-method-menu"' : '') + '>'
+        + '<ul class="nav">'
+        + '<li class="nav-item"><a id="li-' + type + 'm-1" class="nav-link" href="#div-' + type + 'm-1">div 1</a></li>'
+        + '<li class="nav-item"><a id="li-' + type + 'm-2" class="nav-link" href="#div-' + type + 'm-2">div 2</a></li>'
+        + '<li class="nav-item"><a id="li-' + type + 'm-3" class="nav-link" href="#div-' + type + 'm-3">div 3</a></li>'
+        + '</ul>'
+        + '</nav>'
       )
       var $content = $(
-        '<div class="content"' + (type === 'data' ? ' data-spy="scroll" data-target="#navbar-offset-method-menu" data-offset="0" data-method="offset"' : '') + ' style="position: relative; overflow: auto; height: 100px">' +
-        '<div id="div-' + type + 'm-1" style="position: relative; height: 200px; padding: 0; margin: 0">div 1</div>' +
-        '<div id="div-' + type + 'm-2" style="position: relative; height: 150px; padding: 0; margin: 0">div 2</div>' +
-        '<div id="div-' + type + 'm-3" style="position: relative; height: 250px; padding: 0; margin: 0">div 3</div>' +
-        '</div>'
+        '<div class="content"' + (type === 'data' ? ' data-spy="scroll" data-target="#navbar-offset-method-menu" data-offset="0" data-method="offset"' : '') + ' style="position: relative; overflow: auto; height: 100px">'
+        + '<div id="div-' + type + 'm-1" style="position: relative; height: 200px; padding: 0; margin: 0">div 1</div>'
+        + '<div id="div-' + type + 'm-2" style="position: relative; height: 150px; padding: 0; margin: 0">div 2</div>'
+        + '<div id="div-' + type + 'm-3" style="position: relative; height: 250px; padding: 0; margin: 0">div 3</div>'
+        + '</div>'
       )
 
       $navbar.appendTo('#qunit-fixture')
@@ -686,20 +678,20 @@ $(function () {
 
     var testOffsetMethod = function (type) {
       var $navbar = $(
-        '<nav class="navbar"' + (type === 'data' ? ' id="navbar-offset-method-menu"' : '') + '>' +
-        '<ul class="nav">' +
-        '<li class="nav-item"><a class="nav-link" id="li-' + type + 'm-1" href="#div-' + type + 'm-1">div 1</a></li>' +
-        '<li class="nav-item"><a class="nav-link" id="li-' + type + 'm-2" href="#div-' + type + 'm-2">div 2</a></li>' +
-        '<li class="nav-item"><a class="nav-link" id="li-' + type + 'm-3" href="#div-' + type + 'm-3">div 3</a></li>' +
-        '</ul>' +
-        '</nav>'
+        '<nav class="navbar"' + (type === 'data' ? ' id="navbar-offset-method-menu"' : '') + '>'
+        + '<ul class="nav">'
+        + '<li class="nav-item"><a class="nav-link" id="li-' + type + 'm-1" href="#div-' + type + 'm-1">div 1</a></li>'
+        + '<li class="nav-item"><a class="nav-link" id="li-' + type + 'm-2" href="#div-' + type + 'm-2">div 2</a></li>'
+        + '<li class="nav-item"><a class="nav-link" id="li-' + type + 'm-3" href="#div-' + type + 'm-3">div 3</a></li>'
+        + '</ul>'
+        + '</nav>'
       )
       var $content = $(
-        '<div class="content"' + (type === 'data' ? ' data-spy="scroll" data-target="#navbar-offset-method-menu" data-offset="0" data-method="position"' : '') + ' style="position: relative; overflow: auto; height: 100px">' +
-        '<div id="div-' + type + 'm-1" style="position: relative; height: 200px; padding: 0; margin: 0">div 1</div>' +
-        '<div id="div-' + type + 'm-2" style="position: relative; height: 150px; padding: 0; margin: 0">div 2</div>' +
-        '<div id="div-' + type + 'm-3" style="position: relative; height: 250px; padding: 0; margin: 0">div 3</div>' +
-        '</div>'
+        '<div class="content"' + (type === 'data' ? ' data-spy="scroll" data-target="#navbar-offset-method-menu" data-offset="0" data-method="position"' : '') + ' style="position: relative; overflow: auto; height: 100px">'
+        + '<div id="div-' + type + 'm-1" style="position: relative; height: 200px; padding: 0; margin: 0">div 1</div>'
+        + '<div id="div-' + type + 'm-2" style="position: relative; height: 150px; padding: 0; margin: 0">div 2</div>'
+        + '<div id="div-' + type + 'm-3" style="position: relative; height: 250px; padding: 0; margin: 0">div 3</div>'
+        + '</div>'
       )
 
       $navbar.appendTo('#qunit-fixture')

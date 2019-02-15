@@ -1,6 +1,6 @@
-$(function () {
-  'use strict'
+'use strict'
 
+$(function () {
   window.Util = typeof bootstrap !== 'undefined' ? bootstrap.Util : Util
 
   QUnit.module('util', {

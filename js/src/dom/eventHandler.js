@@ -1,3 +1,4 @@
+/* eslint no-use-before-define: ["error", { "variables": false }] */
 /**
  * --------------------------------------------------------------------------
  * Bootstrap (v4.3.1): dom/eventHandler.js
@@ -16,15 +17,15 @@ import Util from '../util'
 
 const namespaceRegex = /[^.]*(?=\..*)\.|.*/
 const stripNameRegex = /\..*/
-const keyEventRegex  = /^key/
-const stripUidRegex  = /::\d+$/
-const eventRegistry  = {}   // Events storage
-let uidEvent         = 1
-const customEvents   = {
+const keyEventRegex = /^key/
+const stripUidRegex = /::\d+$/
+const eventRegistry = {} // Events storage
+let uidEvent = 1
+const customEvents = {
   mouseenter: 'mouseover',
   mouseleave: 'mouseout'
 }
-const nativeEvents   = [
+const nativeEvents = [
   'click', 'dblclick', 'mouseup', 'mousedown', 'contextmenu',
   'mousewheel', 'DOMMouseScroll',
   'mouseover', 'mouseout', 'mousemove', 'selectstart', 'selectend',
@@ -45,14 +46,16 @@ const nativeEvents   = [
  */
 
 function getUidEvent(element, uid) {
-  return uid && `${uid}::${uidEvent++}` || element.uidEvent || uidEvent++
+  return uid && (`${uid}::${uidEvent++}` || element.uidEvent || uidEvent++)
 }
 
 function getEvent(element) {
   const uid = getUidEvent(element)
-  element.uidEvent = uid
 
-  return eventRegistry[uid] = eventRegistry[uid] || {}
+  element.uidEvent = uid
+  eventRegistry[uid] = eventRegistry[uid] || {}
+
+  return eventRegistry[uid]
 }
 
 function fixEvent(event, element) {
@@ -67,6 +70,7 @@ function fixEvent(event, element) {
 function bootstrapHandler(element, fn) {
   return function handler(event) {
     fixEvent(event, element)
+
     if (handler.oneOff) {
       EventHandler.off(element, event.type, fn)
     }
@@ -79,7 +83,7 @@ function bootstrapDelegationHandler(element, selector, fn) {
   return function handler(event) {
     const domElements = element.querySelectorAll(selector)
 
-    for (let target = event.target; target && target !== this; target = target.parentNode) {
+    for (let { target } = event; target && target !== this; target = target.parentNode) {
       for (let i = domElements.length; i--;) {
         if (domElements[i] === target) {
           fixEvent(event, target)
@@ -145,8 +149,8 @@ function addHandler(element, originalTypeEvent, handler, delegationFn, oneOff) {
   }
 
   const [delegation, originalHandler, typeEvent] = normalizeParams(originalTypeEvent, handler, delegationFn)
-  const events     = getEvent(element)
-  const handlers   = events[typeEvent] || (events[typeEvent] = {})
+  const events = getEvent(element)
+  const handlers = events[typeEvent] || (events[typeEvent] = {})
   const previousFn = findHandler(handlers, originalHandler, delegation ? handler : null)
 
   if (previousFn) {
@@ -156,7 +160,7 @@ function addHandler(element, originalTypeEvent, handler, delegationFn, oneOff) {
   }
 
   const uid = getUidEvent(originalHandler, originalTypeEvent.replace(namespaceRegex, ''))
-  const fn  = !delegation ? bootstrapHandler(element, handler) : bootstrapDelegationHandler(element, handler, delegationFn)
+  const fn = !delegation ? bootstrapHandler(element, handler) : bootstrapDelegationHandler(element, handler, delegationFn)
 
   fn.delegationSelector = delegation ? handler : null
   fn.originalHandler = originalHandler
@@ -245,9 +249,9 @@ const EventHandler = {
       return null
     }
 
-    const typeEvent   = event.replace(stripNameRegex, '')
+    const typeEvent = event.replace(stripNameRegex, '')
     const inNamespace = event !== typeEvent
-    const isNative    = nativeEvents.indexOf(typeEvent) > -1
+    const isNative = nativeEvents.indexOf(typeEvent) > -1
     const $ = Util.jQuery
 
     let jQueryEvent

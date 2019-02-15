@@ -79,7 +79,7 @@ function allowedAttribute(attr, allowedAttributeList) {
     return true
   }
 
-  const regExp = allowedAttributeList.filter((attrRegex) => attrRegex instanceof RegExp)
+  const regExp = allowedAttributeList.filter(attrRegex => attrRegex instanceof RegExp)
 
   // Check if a regular expression validates the attribute.
   for (let i = 0, l = regExp.length; i < l; i++) {

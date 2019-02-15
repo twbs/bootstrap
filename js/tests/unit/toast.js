@@ -59,12 +59,11 @@ $(function () {
     assert.expect(1)
     var done = assert.async()
 
-    var toastHtml =
-      '<div class="toast" data-delay="1">' +
-        '<div class="toast-body">' +
-          'a simple toast' +
-        '</div>' +
-      '</div>'
+    var toastHtml = '<div class="toast" data-delay="1">'
+        + '<div class="toast-body">'
+          + 'a simple toast'
+        + '</div>'
+      + '</div>'
 
     var $toast = $(toastHtml)
       .bootstrapToast()
@@ -81,12 +80,11 @@ $(function () {
     assert.expect(1)
     var done = assert.async()
 
-    var toastHtml =
-      '<div class="toast" data-delay="1" data-animation="false">' +
-        '<div class="toast-body">' +
-          'a simple toast' +
-        '</div>' +
-      '</div>'
+    var toastHtml = '<div class="toast" data-delay="1" data-animation="false">'
+        + '<div class="toast-body">'
+          + 'a simple toast'
+        + '</div>'
+      + '</div>'
 
     var $toast = $(toastHtml)
       .bootstrapToast()
@@ -103,12 +101,11 @@ $(function () {
     assert.expect(1)
     var done = assert.async()
 
-    var toastHtml =
-      '<div class="toast" data-delay="1" data-autohide="false">' +
-        '<div class="toast-body">' +
-          'a simple toast' +
-        '</div>' +
-      '</div>'
+    var toastHtml = '<div class="toast" data-delay="1" data-autohide="false">'
+        + '<div class="toast-body">'
+          + 'a simple toast'
+        + '</div>'
+      + '</div>'
 
     var $toast = $(toastHtml)
       .bootstrapToast()
@@ -157,12 +154,11 @@ $(function () {
     assert.expect(4)
     var done = assert.async()
 
-    var toastHtml =
-      '<div class="toast" data-delay="0" data-autohide="false">' +
-        '<div class="toast-body">' +
-          'a simple toast' +
-        '</div>' +
-      '</div>'
+    var toastHtml = '<div class="toast" data-delay="0" data-autohide="false">'
+        + '<div class="toast-body">'
+          + 'a simple toast'
+        + '</div>'
+      + '</div>'
 
     var $toast = $(toastHtml)
       .bootstrapToast()
@@ -188,12 +184,11 @@ $(function () {
     assert.expect(1)
     var done = assert.async()
 
-    var toastHtml =
-      '<div class="toast">' +
-        '<div class="toast-body">' +
-          'a simple toast' +
-        '</div>' +
-      '</div>'
+    var toastHtml = '<div class="toast">'
+        + '<div class="toast-body">'
+          + 'a simple toast'
+        + '</div>'
+      + '</div>'
 
     var $toast = $(toastHtml)
       .bootstrapToast({
@@ -213,12 +208,11 @@ $(function () {
     assert.expect(2)
     var done = assert.async()
 
-    var toastHtml =
-      '<div class="toast" data-delay="1" data-autohide="false" data-animation="false">' +
-        '<button type="button" class="ml-2 mb-1 close" data-dismiss="toast">' +
-          'close' +
-        '</button>' +
-      '</div>'
+    var toastHtml = '<div class="toast" data-delay="1" data-autohide="false" data-animation="false">'
+        + '<button type="button" class="ml-2 mb-1 close" data-dismiss="toast">'
+          + 'close'
+        + '</button>'
+      + '</div>'
 
     var $toast = $(toastHtml)
       .bootstrapToast()
@@ -243,12 +237,11 @@ $(function () {
     var defaultDelay = 1000
     Toast.Default.delay = defaultDelay
 
-    var toastHtml =
-      '<div class="toast" data-autohide="false" data-animation="false">' +
-        '<button type="button" class="ml-2 mb-1 close" data-dismiss="toast">' +
-          'close' +
-        '</button>' +
-      '</div>'
+    var toastHtml = '<div class="toast" data-autohide="false" data-animation="false">'
+        + '<button type="button" class="ml-2 mb-1 close" data-dismiss="toast">'
+          + 'close'
+        + '</button>'
+      + '</div>'
 
     var $toast = $(toastHtml)
       .bootstrapToast()

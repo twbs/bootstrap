@@ -129,26 +129,26 @@ $(function () {
 
   QUnit.test('should reset when slide is prevented', function (assert) {
     assert.expect(6)
-    var carouselHTML = '<div id="carousel-example-generic" class="carousel slide">' +
-        '<ol class="carousel-indicators">' +
-        '<li data-target="#carousel-example-generic" data-slide-to="0" class="active"/>' +
-        '<li data-target="#carousel-example-generic" data-slide-to="1"/>' +
-        '<li data-target="#carousel-example-generic" data-slide-to="2"/>' +
-        '</ol>' +
-        '<div class="carousel-inner">' +
-        '<div class="carousel-item active">' +
-        '<div class="carousel-caption"/>' +
-        '</div>' +
-        '<div class="carousel-item">' +
-        '<div class="carousel-caption"/>' +
-        '</div>' +
-        '<div class="carousel-item">' +
-        '<div class="carousel-caption"/>' +
-        '</div>' +
-        '</div>' +
-        '<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"/>' +
-        '<a class="right carousel-control" href="#carousel-example-generic" data-slide="next"/>' +
-        '</div>'
+    var carouselHTML = '<div id="carousel-example-generic" class="carousel slide">'
+        + '<ol class="carousel-indicators">'
+        + '<li data-target="#carousel-example-generic" data-slide-to="0" class="active"/>'
+        + '<li data-target="#carousel-example-generic" data-slide-to="1"/>'
+        + '<li data-target="#carousel-example-generic" data-slide-to="2"/>'
+        + '</ol>'
+        + '<div class="carousel-inner">'
+        + '<div class="carousel-item active">'
+        + '<div class="carousel-caption"/>'
+        + '</div>'
+        + '<div class="carousel-item">'
+        + '<div class="carousel-caption"/>'
+        + '</div>'
+        + '<div class="carousel-item">'
+        + '<div class="carousel-caption"/>'
+        + '</div>'
+        + '</div>'
+        + '<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"/>'
+        + '<a class="right carousel-control" href="#carousel-example-generic" data-slide="next"/>'
+        + '</div>'
     var $carousel = $(carouselHTML)
     $carousel.appendTo('#qunit-fixture')
 
@@ -181,39 +181,39 @@ $(function () {
 
   QUnit.test('should fire slide event with direction', function (assert) {
     assert.expect(4)
-    var carouselHTML = '<div id="myCarousel" class="carousel slide">' +
-        '<div class="carousel-inner">' +
-        '<div class="carousel-item active">' +
-        '<img alt="">' +
-        '<div class="carousel-caption">' +
-        '<h4>First Thumbnail label</h4>' +
-        '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec ' +
-        'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ' +
-        'ultricies vehicula ut id elit.</p>' +
-        '</div>' +
-        '</div>' +
-        '<div class="carousel-item">' +
-        '<img alt="">' +
-        '<div class="carousel-caption">' +
-        '<h4>Second Thumbnail label</h4>' +
-        '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec ' +
-        'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ' +
-        'ultricies vehicula ut id elit.</p>' +
-        '</div>' +
-        '</div>' +
-        '<div class="carousel-item">' +
-        '<img alt="">' +
-        '<div class="carousel-caption">' +
-        '<h4>Third Thumbnail label</h4>' +
-        '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec ' +
-        'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ' +
-        'ultricies vehicula ut id elit.</p>' +
-        '</div>' +
-        '</div>' +
-        '</div>' +
-        '<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>' +
-        '<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>' +
-        '</div>'
+    var carouselHTML = '<div id="myCarousel" class="carousel slide">'
+        + '<div class="carousel-inner">'
+        + '<div class="carousel-item active">'
+        + '<img alt="">'
+        + '<div class="carousel-caption">'
+        + '<h4>First Thumbnail label</h4>'
+        + '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec '
+        + 'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh '
+        + 'ultricies vehicula ut id elit.</p>'
+        + '</div>'
+        + '</div>'
+        + '<div class="carousel-item">'
+        + '<img alt="">'
+        + '<div class="carousel-caption">'
+        + '<h4>Second Thumbnail label</h4>'
+        + '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec '
+        + 'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh '
+        + 'ultricies vehicula ut id elit.</p>'
+        + '</div>'
+        + '</div>'
+        + '<div class="carousel-item">'
+        + '<img alt="">'
+        + '<div class="carousel-caption">'
+        + '<h4>Third Thumbnail label</h4>'
+        + '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec '
+        + 'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh '
+        + 'ultricies vehicula ut id elit.</p>'
+        + '</div>'
+        + '</div>'
+        + '</div>'
+        + '<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>'
+        + '<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>'
+        + '</div>'
     var $carousel = $(carouselHTML)
     $carousel.appendTo('#qunit-fixture')
 
@@ -240,39 +240,39 @@ $(function () {
 
   QUnit.test('should fire slid event with direction', function (assert) {
     assert.expect(4)
-    var carouselHTML = '<div id="myCarousel" class="carousel slide">' +
-        '<div class="carousel-inner">' +
-        '<div class="carousel-item active">' +
-        '<img alt="">' +
-        '<div class="carousel-caption">' +
-        '<h4>First Thumbnail label</h4>' +
-        '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec ' +
-        'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ' +
-        'ultricies vehicula ut id elit.</p>' +
-        '</div>' +
-        '</div>' +
-        '<div class="carousel-item">' +
-        '<img alt="">' +
-        '<div class="carousel-caption">' +
-        '<h4>Second Thumbnail label</h4>' +
-        '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec ' +
-        'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ' +
-        'ultricies vehicula ut id elit.</p>' +
-        '</div>' +
-        '</div>' +
-        '<div class="carousel-item">' +
-        '<img alt="">' +
-        '<div class="carousel-caption">' +
-        '<h4>Third Thumbnail label</h4>' +
-        '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec ' +
-        'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ' +
-        'ultricies vehicula ut id elit.</p>' +
-        '</div>' +
-        '</div>' +
-        '</div>' +
-        '<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>' +
-        '<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>' +
-        '</div>'
+    var carouselHTML = '<div id="myCarousel" class="carousel slide">'
+        + '<div class="carousel-inner">'
+        + '<div class="carousel-item active">'
+        + '<img alt="">'
+        + '<div class="carousel-caption">'
+        + '<h4>First Thumbnail label</h4>'
+        + '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec '
+        + 'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh '
+        + 'ultricies vehicula ut id elit.</p>'
+        + '</div>'
+        + '</div>'
+        + '<div class="carousel-item">'
+        + '<img alt="">'
+        + '<div class="carousel-caption">'
+        + '<h4>Second Thumbnail label</h4>'
+        + '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec '
+        + 'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh '
+        + 'ultricies vehicula ut id elit.</p>'
+        + '</div>'
+        + '</div>'
+        + '<div class="carousel-item">'
+        + '<img alt="">'
+        + '<div class="carousel-caption">'
+        + '<h4>Third Thumbnail label</h4>'
+        + '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec '
+        + 'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh '
+        + 'ultricies vehicula ut id elit.</p>'
+        + '</div>'
+        + '</div>'
+        + '</div>'
+        + '<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>'
+        + '<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>'
+        + '</div>'
     var $carousel = $(carouselHTML)
     $carousel.appendTo('#qunit-fixture')
 
@@ -300,39 +300,39 @@ $(function () {
 
   QUnit.test('should fire slide event with relatedTarget', function (assert) {
     assert.expect(2)
-    var template = '<div id="myCarousel" class="carousel slide">' +
-        '<div class="carousel-inner">' +
-        '<div class="carousel-item active">' +
-        '<img alt="">' +
-        '<div class="carousel-caption">' +
-        '<h4>First Thumbnail label</h4>' +
-        '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec ' +
-        'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ' +
-        'ultricies vehicula ut id elit.</p>' +
-        '</div>' +
-        '</div>' +
-        '<div class="carousel-item">' +
-        '<img alt="">' +
-        '<div class="carousel-caption">' +
-        '<h4>Second Thumbnail label</h4>' +
-        '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec ' +
-        'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ' +
-        'ultricies vehicula ut id elit.</p>' +
-        '</div>' +
-        '</div>' +
-        '<div class="carousel-item">' +
-        '<img alt="">' +
-        '<div class="carousel-caption">' +
-        '<h4>Third Thumbnail label</h4>' +
-        '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec ' +
-        'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ' +
-        'ultricies vehicula ut id elit.</p>' +
-        '</div>' +
-        '</div>' +
-        '</div>' +
-        '<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>' +
-        '<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>' +
-        '</div>'
+    var template = '<div id="myCarousel" class="carousel slide">'
+        + '<div class="carousel-inner">'
+        + '<div class="carousel-item active">'
+        + '<img alt="">'
+        + '<div class="carousel-caption">'
+        + '<h4>First Thumbnail label</h4>'
+        + '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec '
+        + 'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh '
+        + 'ultricies vehicula ut id elit.</p>'
+        + '</div>'
+        + '</div>'
+        + '<div class="carousel-item">'
+        + '<img alt="">'
+        + '<div class="carousel-caption">'
+        + '<h4>Second Thumbnail label</h4>'
+        + '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec '
+        + 'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh '
+        + 'ultricies vehicula ut id elit.</p>'
+        + '</div>'
+        + '</div>'
+        + '<div class="carousel-item">'
+        + '<img alt="">'
+        + '<div class="carousel-caption">'
+        + '<h4>Third Thumbnail label</h4>'
+        + '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec '
+        + 'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh '
+        + 'ultricies vehicula ut id elit.</p>'
+        + '</div>'
+        + '</div>'
+        + '</div>'
+        + '<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>'
+        + '<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>'
+        + '</div>'
 
     var done = assert.async()
     var $carousel = $(template)
@@ -351,39 +351,39 @@ $(function () {
 
   QUnit.test('should fire slid event with relatedTarget', function (assert) {
     assert.expect(2)
-    var template = '<div id="myCarousel" class="carousel slide">' +
-        '<div class="carousel-inner">' +
-        '<div class="carousel-item active">' +
-        '<img alt="">' +
-        '<div class="carousel-caption">' +
-        '<h4>First Thumbnail label</h4>' +
-        '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec ' +
-        'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ' +
-        'ultricies vehicula ut id elit.</p>' +
-        '</div>' +
-        '</div>' +
-        '<div class="carousel-item">' +
-        '<img alt="">' +
-        '<div class="carousel-caption">' +
-        '<h4>Second Thumbnail label</h4>' +
-        '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec ' +
-        'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ' +
-        'ultricies vehicula ut id elit.</p>' +
-        '</div>' +
-        '</div>' +
-        '<div class="carousel-item">' +
-        '<img alt="">' +
-        '<div class="carousel-caption">' +
-        '<h4>Third Thumbnail label</h4>' +
-        '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec ' +
-        'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ' +
-        'ultricies vehicula ut id elit.</p>' +
-        '</div>' +
-        '</div>' +
-        '</div>' +
-        '<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>' +
-        '<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>' +
-        '</div>'
+    var template = '<div id="myCarousel" class="carousel slide">'
+        + '<div class="carousel-inner">'
+        + '<div class="carousel-item active">'
+        + '<img alt="">'
+        + '<div class="carousel-caption">'
+        + '<h4>First Thumbnail label</h4>'
+        + '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec '
+        + 'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh '
+        + 'ultricies vehicula ut id elit.</p>'
+        + '</div>'
+        + '</div>'
+        + '<div class="carousel-item">'
+        + '<img alt="">'
+        + '<div class="carousel-caption">'
+        + '<h4>Second Thumbnail label</h4>'
+        + '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec '
+        + 'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh '
+        + 'ultricies vehicula ut id elit.</p>'
+        + '</div>'
+        + '</div>'
+        + '<div class="carousel-item">'
+        + '<img alt="">'
+        + '<div class="carousel-caption">'
+        + '<h4>Third Thumbnail label</h4>'
+        + '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec '
+        + 'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh '
+        + 'ultricies vehicula ut id elit.</p>'
+        + '</div>'
+        + '</div>'
+        + '</div>'
+        + '<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>'
+        + '<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>'
+        + '</div>'
 
     var done = assert.async()
     var $carousel = $(template)
@@ -400,30 +400,30 @@ $(function () {
 
   QUnit.test('should fire slid and slide events with from and to', function (assert) {
     assert.expect(4)
-    var template = '<div id="myCarousel" class="carousel slide">' +
-        '<div class="carousel-inner">' +
-        '<div class="carousel-item active">' +
-        '<img alt="">' +
-        '<div class="carousel-caption">' +
-        '<h4>First Thumbnail label</h4>' +
-        '</div>' +
-        '</div>' +
-        '<div class="carousel-item">' +
-        '<img alt="">' +
-        '<div class="carousel-caption">' +
-        '<h4>Second Thumbnail label</h4>' +
-        '</div>' +
-        '</div>' +
-        '<div class="carousel-item">' +
-        '<img alt="">' +
-        '<div class="carousel-caption">' +
-        '<h4>Third Thumbnail label</h4>' +
-        '</div>' +
-        '</div>' +
-        '</div>' +
-        '<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>' +
-        '<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>' +
-        '</div>'
+    var template = '<div id="myCarousel" class="carousel slide">'
+        + '<div class="carousel-inner">'
+        + '<div class="carousel-item active">'
+        + '<img alt="">'
+        + '<div class="carousel-caption">'
+        + '<h4>First Thumbnail label</h4>'
+        + '</div>'
+        + '</div>'
+        + '<div class="carousel-item">'
+        + '<img alt="">'
+        + '<div class="carousel-caption">'
+        + '<h4>Second Thumbnail label</h4>'
+        + '</div>'
+        + '</div>'
+        + '<div class="carousel-item">'
+        + '<img alt="">'
+        + '<div class="carousel-caption">'
+        + '<h4>Third Thumbnail label</h4>'
+        + '</div>'
+        + '</div>'
+        + '</div>'
+        + '<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>'
+        + '<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>'
+        + '</div>'
 
     var done = assert.async()
     var $carousel = $(template)
@@ -444,39 +444,39 @@ $(function () {
 
   QUnit.test('should set interval from data attribute', function (assert) {
     assert.expect(4)
-    var templateHTML = '<div id="myCarousel" class="carousel slide">' +
-        '<div class="carousel-inner">' +
-        '<div class="carousel-item active">' +
-        '<img alt="">' +
-        '<div class="carousel-caption">' +
-        '<h4>First Thumbnail label</h4>' +
-        '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec ' +
-        'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ' +
-        'ultricies vehicula ut id elit.</p>' +
-        '</div>' +
-        '</div>' +
-        '<div class="carousel-item">' +
-        '<img alt="">' +
-        '<div class="carousel-caption">' +
-        '<h4>Second Thumbnail label</h4>' +
-        '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec ' +
-        'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ' +
-        'ultricies vehicula ut id elit.</p>' +
-        '</div>' +
-        '</div>' +
-        '<div class="carousel-item">' +
-        '<img alt="">' +
-        '<div class="carousel-caption">' +
-        '<h4>Third Thumbnail label</h4>' +
-        '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec ' +
-        'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ' +
-        'ultricies vehicula ut id elit.</p>' +
-        '</div>' +
-        '</div>' +
-        '</div>' +
-        '<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>' +
-        '<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>' +
-        '</div>'
+    var templateHTML = '<div id="myCarousel" class="carousel slide">'
+        + '<div class="carousel-inner">'
+        + '<div class="carousel-item active">'
+        + '<img alt="">'
+        + '<div class="carousel-caption">'
+        + '<h4>First Thumbnail label</h4>'
+        + '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec '
+        + 'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh '
+        + 'ultricies vehicula ut id elit.</p>'
+        + '</div>'
+        + '</div>'
+        + '<div class="carousel-item">'
+        + '<img alt="">'
+        + '<div class="carousel-caption">'
+        + '<h4>Second Thumbnail label</h4>'
+        + '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec '
+        + 'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh '
+        + 'ultricies vehicula ut id elit.</p>'
+        + '</div>'
+        + '</div>'
+        + '<div class="carousel-item">'
+        + '<img alt="">'
+        + '<div class="carousel-caption">'
+        + '<h4>Third Thumbnail label</h4>'
+        + '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec '
+        + 'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh '
+        + 'ultricies vehicula ut id elit.</p>'
+        + '</div>'
+        + '</div>'
+        + '</div>'
+        + '<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>'
+        + '<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>'
+        + '</div>'
     var $carousel = $(templateHTML)
     $carousel.attr('data-interval', 1814)
 
@@ -508,39 +508,39 @@ $(function () {
 
   QUnit.test('should set interval from data attribute on individual carousel-item', function (assert) {
     assert.expect(2)
-    var templateHTML = '<div id="myCarousel" class="carousel slide" data-interval="1814">' +
-        '<div class="carousel-inner">' +
-        '<div class="carousel-item active" data-interval="2814">' +
-        '<img alt="">' +
-        '<div class="carousel-caption">' +
-        '<h4>First Thumbnail label</h4>' +
-        '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec ' +
-        'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ' +
-        'ultricies vehicula ut id elit.</p>' +
-        '</div>' +
-        '</div>' +
-        '<div class="carousel-item" data-interval="3814">' +
-        '<img alt="">' +
-        '<div class="carousel-caption">' +
-        '<h4>Second Thumbnail label</h4>' +
-        '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec ' +
-        'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ' +
-        'ultricies vehicula ut id elit.</p>' +
-        '</div>' +
-        '</div>' +
-        '<div class="carousel-item">' +
-        '<img alt="">' +
-        '<div class="carousel-caption">' +
-        '<h4>Third Thumbnail label</h4>' +
-        '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec ' +
-        'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ' +
-        'ultricies vehicula ut id elit.</p>' +
-        '</div>' +
-        '</div>' +
-        '</div>' +
-        '<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>' +
-        '<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>' +
-        '</div>'
+    var templateHTML = '<div id="myCarousel" class="carousel slide" data-interval="1814">'
+        + '<div class="carousel-inner">'
+        + '<div class="carousel-item active" data-interval="2814">'
+        + '<img alt="">'
+        + '<div class="carousel-caption">'
+        + '<h4>First Thumbnail label</h4>'
+        + '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec '
+        + 'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh '
+        + 'ultricies vehicula ut id elit.</p>'
+        + '</div>'
+        + '</div>'
+        + '<div class="carousel-item" data-interval="3814">'
+        + '<img alt="">'
+        + '<div class="carousel-caption">'
+        + '<h4>Second Thumbnail label</h4>'
+        + '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec '
+        + 'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh '
+        + 'ultricies vehicula ut id elit.</p>'
+        + '</div>'
+        + '</div>'
+        + '<div class="carousel-item">'
+        + '<img alt="">'
+        + '<div class="carousel-caption">'
+        + '<h4>Third Thumbnail label</h4>'
+        + '<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec '
+        + 'id elit non mi porta gravida at eget metus. Nullam id dolor id nibh '
+        + 'ultricies vehicula ut id elit.</p>'
+        + '</div>'
+        + '</div>'
+        + '</div>'
+        + '<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>'
+        + '<a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>'
+        + '</div>'
 
     var $carousel = $(templateHTML).appendTo('#qunit-fixture')
     $carousel.bootstrapCarousel(1)
@@ -559,19 +559,19 @@ $(function () {
 
   QUnit.test('should skip over non-items when using item indices', function (assert) {
     assert.expect(2)
-    var templateHTML = '<div id="myCarousel" class="carousel" data-interval="1814">' +
-        '<div class="carousel-inner">' +
-        '<div class="carousel-item active">' +
-        '<img alt="">' +
-        '</div>' +
-        '<script type="text/x-metamorph" id="thingy"/>' +
-        '<div class="carousel-item">' +
-        '<img alt="">' +
-        '</div>' +
-        '<div class="carousel-item">' +
-        '</div>' +
-        '</div>' +
-        '</div>'
+    var templateHTML = '<div id="myCarousel" class="carousel" data-interval="1814">'
+        + '<div class="carousel-inner">'
+        + '<div class="carousel-item active">'
+        + '<img alt="">'
+        + '</div>'
+        + '<script type="text/x-metamorph" id="thingy"/>'
+        + '<div class="carousel-item">'
+        + '<img alt="">'
+        + '</div>'
+        + '<div class="carousel-item">'
+        + '</div>'
+        + '</div>'
+        + '</div>'
     var $template = $(templateHTML)
 
     $template.bootstrapCarousel()
@@ -585,19 +585,19 @@ $(function () {
 
   QUnit.test('should skip over non-items when using next/prev methods', function (assert) {
     assert.expect(2)
-    var templateHTML = '<div id="myCarousel" class="carousel" data-interval="1814">' +
-        '<div class="carousel-inner">' +
-        '<div class="carousel-item active">' +
-        '<img alt="">' +
-        '</div>' +
-        '<script type="text/x-metamorph" id="thingy"/>' +
-        '<div class="carousel-item">' +
-        '<img alt="">' +
-        '</div>' +
-        '<div class="carousel-item">' +
-        '</div>' +
-        '</div>' +
-        '</div>'
+    var templateHTML = '<div id="myCarousel" class="carousel" data-interval="1814">'
+        + '<div class="carousel-inner">'
+        + '<div class="carousel-item active">'
+        + '<img alt="">'
+        + '</div>'
+        + '<script type="text/x-metamorph" id="thingy"/>'
+        + '<div class="carousel-item">'
+        + '<img alt="">'
+        + '</div>'
+        + '<div class="carousel-item">'
+        + '</div>'
+        + '</div>'
+        + '</div>'
     var $template = $(templateHTML)
 
     $template.bootstrapCarousel()
@@ -611,19 +611,19 @@ $(function () {
 
   QUnit.test('should go to previous item if left arrow key is pressed', function (assert) {
     assert.expect(2)
-    var templateHTML = '<div id="myCarousel" class="carousel" data-interval="false">' +
-        '<div class="carousel-inner">' +
-        '<div id="first" class="carousel-item">' +
-        '<img alt="">' +
-        '</div>' +
-        '<div id="second" class="carousel-item active">' +
-        '<img alt="">' +
-        '</div>' +
-        '<div id="third" class="carousel-item">' +
-        '<img alt="">' +
-        '</div>' +
-        '</div>' +
-        '</div>'
+    var templateHTML = '<div id="myCarousel" class="carousel" data-interval="false">'
+        + '<div class="carousel-inner">'
+        + '<div id="first" class="carousel-item">'
+        + '<img alt="">'
+        + '</div>'
+        + '<div id="second" class="carousel-item active">'
+        + '<img alt="">'
+        + '</div>'
+        + '<div id="third" class="carousel-item">'
+        + '<img alt="">'
+        + '</div>'
+        + '</div>'
+        + '</div>'
     var $template = $(templateHTML)
 
     $template.bootstrapCarousel()
@@ -639,19 +639,19 @@ $(function () {
 
   QUnit.test('should go to next item if right arrow key is pressed', function (assert) {
     assert.expect(2)
-    var templateHTML = '<div id="myCarousel" class="carousel" data-interval="false">' +
-        '<div class="carousel-inner">' +
-        '<div id="first" class="carousel-item active">' +
-        '<img alt="">' +
-        '</div>' +
-        '<div id="second" class="carousel-item">' +
-        '<img alt="">' +
-        '</div>' +
-        '<div id="third" class="carousel-item">' +
-        '<img alt="">' +
-        '</div>' +
-        '</div>' +
-        '</div>'
+    var templateHTML = '<div id="myCarousel" class="carousel" data-interval="false">'
+        + '<div class="carousel-inner">'
+        + '<div id="first" class="carousel-item active">'
+        + '<img alt="">'
+        + '</div>'
+        + '<div id="second" class="carousel-item">'
+        + '<img alt="">'
+        + '</div>'
+        + '<div id="third" class="carousel-item">'
+        + '<img alt="">'
+        + '</div>'
+        + '</div>'
+        + '</div>'
     var $template = $(templateHTML)
 
     $template.bootstrapCarousel()
@@ -667,13 +667,13 @@ $(function () {
 
   QUnit.test('should not prevent keydown if key is not ARROW_LEFT or ARROW_RIGHT', function (assert) {
     assert.expect(2)
-    var templateHTML = '<div id="myCarousel" class="carousel" data-interval="false">' +
-        '<div class="carousel-inner">' +
-        '<div id="first" class="carousel-item active">' +
-        '<img alt="">' +
-        '</div>' +
-        '</div>' +
-        '</div>'
+    var templateHTML = '<div id="myCarousel" class="carousel" data-interval="false">'
+        + '<div class="carousel-inner">'
+        + '<div id="first" class="carousel-item active">'
+        + '<img alt="">'
+        + '</div>'
+        + '</div>'
+        + '</div>'
     var $template = $(templateHTML)
 
     $template.bootstrapCarousel()
@@ -705,19 +705,19 @@ $(function () {
 
   QUnit.test('should support disabling the keyboard navigation', function (assert) {
     assert.expect(3)
-    var templateHTML = '<div id="myCarousel" class="carousel" data-interval="false" data-keyboard="false">' +
-        '<div class="carousel-inner">' +
-        '<div id="first" class="carousel-item active">' +
-        '<img alt="">' +
-        '</div>' +
-        '<div id="second" class="carousel-item">' +
-        '<img alt="">' +
-        '</div>' +
-        '<div id="third" class="carousel-item">' +
-        '<img alt="">' +
-        '</div>' +
-        '</div>' +
-        '</div>'
+    var templateHTML = '<div id="myCarousel" class="carousel" data-interval="false" data-keyboard="false">'
+        + '<div class="carousel-inner">'
+        + '<div id="first" class="carousel-item active">'
+        + '<img alt="">'
+        + '</div>'
+        + '<div id="second" class="carousel-item">'
+        + '<img alt="">'
+        + '</div>'
+        + '<div id="third" class="carousel-item">'
+        + '<img alt="">'
+        + '</div>'
+        + '</div>'
+        + '</div>'
     var $template = $(templateHTML)
 
     $template.bootstrapCarousel()
@@ -739,21 +739,21 @@ $(function () {
 
   QUnit.test('should ignore keyboard events within <input>s and <textarea>s', function (assert) {
     assert.expect(7)
-    var templateHTML = '<div id="myCarousel" class="carousel" data-interval="false">' +
-        '<div class="carousel-inner">' +
-        '<div id="first" class="carousel-item active">' +
-        '<img alt="">' +
-        '<input type="text" id="in-put">' +
-        '<textarea id="text-area"></textarea>' +
-        '</div>' +
-        '<div id="second" class="carousel-item">' +
-        '<img alt="">' +
-        '</div>' +
-        '<div id="third" class="carousel-item">' +
-        '<img alt="">' +
-        '</div>' +
-        '</div>' +
-        '</div>'
+    var templateHTML = '<div id="myCarousel" class="carousel" data-interval="false">'
+        + '<div class="carousel-inner">'
+        + '<div id="first" class="carousel-item active">'
+        + '<img alt="">'
+        + '<input type="text" id="in-put">'
+        + '<textarea id="text-area"></textarea>'
+        + '</div>'
+        + '<div id="second" class="carousel-item">'
+        + '<img alt="">'
+        + '</div>'
+        + '<div id="third" class="carousel-item">'
+        + '<img alt="">'
+        + '</div>'
+        + '</div>'
+        + '</div>'
     var $template = $(templateHTML)
     var $input = $template.find('#in-put')
     var $textarea = $template.find('#text-area')
@@ -788,26 +788,26 @@ $(function () {
 
   QUnit.test('should wrap around from end to start when wrap option is true', function (assert) {
     assert.expect(3)
-    var carouselHTML = '<div id="carousel-example-generic" class="carousel slide" data-wrap="true">' +
-        '<ol class="carousel-indicators">' +
-        '<li data-target="#carousel-example-generic" data-slide-to="0" class="active"/>' +
-        '<li data-target="#carousel-example-generic" data-slide-to="1"/>' +
-        '<li data-target="#carousel-example-generic" data-slide-to="2"/>' +
-        '</ol>' +
-        '<div class="carousel-inner">' +
-        '<div class="carousel-item active" id="one">' +
-        '<div class="carousel-caption"/>' +
-        '</div>' +
-        '<div class="carousel-item" id="two">' +
-        '<div class="carousel-caption"/>' +
-        '</div>' +
-        '<div class="carousel-item" id="three">' +
-        '<div class="carousel-caption"/>' +
-        '</div>' +
-        '</div>' +
-        '<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"/>' +
-        '<a class="right carousel-control" href="#carousel-example-generic" data-slide="next"/>' +
-        '</div>'
+    var carouselHTML = '<div id="carousel-example-generic" class="carousel slide" data-wrap="true">'
+        + '<ol class="carousel-indicators">'
+        + '<li data-target="#carousel-example-generic" data-slide-to="0" class="active"/>'
+        + '<li data-target="#carousel-example-generic" data-slide-to="1"/>'
+        + '<li data-target="#carousel-example-generic" data-slide-to="2"/>'
+        + '</ol>'
+        + '<div class="carousel-inner">'
+        + '<div class="carousel-item active" id="one">'
+        + '<div class="carousel-caption"/>'
+        + '</div>'
+        + '<div class="carousel-item" id="two">'
+        + '<div class="carousel-caption"/>'
+        + '</div>'
+        + '<div class="carousel-item" id="three">'
+        + '<div class="carousel-caption"/>'
+        + '</div>'
+        + '</div>'
+        + '<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"/>'
+        + '<a class="right carousel-control" href="#carousel-example-generic" data-slide="next"/>'
+        + '</div>'
     var $carousel = $(carouselHTML)
     var done = assert.async()
     var getActiveId = function () {
@@ -838,26 +838,26 @@ $(function () {
 
   QUnit.test('should wrap around from start to end when wrap option is true', function (assert) {
     assert.expect(1)
-    var carouselHTML = '<div id="carousel-example-generic" class="carousel slide" data-wrap="true">' +
-        '<ol class="carousel-indicators">' +
-        '<li data-target="#carousel-example-generic" data-slide-to="0" class="active"/>' +
-        '<li data-target="#carousel-example-generic" data-slide-to="1"/>' +
-        '<li data-target="#carousel-example-generic" data-slide-to="2"/>' +
-        '</ol>' +
-        '<div class="carousel-inner">' +
-        '<div class="carousel-item active" id="one">' +
-        '<div class="carousel-caption"/>' +
-        '</div>' +
-        '<div class="carousel-item" id="two">' +
-        '<div class="carousel-caption"/>' +
-        '</div>' +
-        '<div class="carousel-item" id="three">' +
-        '<div class="carousel-caption"/>' +
-        '</div>' +
-        '</div>' +
-        '<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"/>' +
-        '<a class="right carousel-control" href="#carousel-example-generic" data-slide="next"/>' +
-        '</div>'
+    var carouselHTML = '<div id="carousel-example-generic" class="carousel slide" data-wrap="true">'
+        + '<ol class="carousel-indicators">'
+        + '<li data-target="#carousel-example-generic" data-slide-to="0" class="active"/>'
+        + '<li data-target="#carousel-example-generic" data-slide-to="1"/>'
+        + '<li data-target="#carousel-example-generic" data-slide-to="2"/>'
+        + '</ol>'
+        + '<div class="carousel-inner">'
+        + '<div class="carousel-item active" id="one">'
+        + '<div class="carousel-caption"/>'
+        + '</div>'
+        + '<div class="carousel-item" id="two">'
+        + '<div class="carousel-caption"/>'
+        + '</div>'
+        + '<div class="carousel-item" id="three">'
+        + '<div class="carousel-caption"/>'
+        + '</div>'
+        + '</div>'
+        + '<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"/>'
+        + '<a class="right carousel-control" href="#carousel-example-generic" data-slide="next"/>'
+        + '</div>'
     var $carousel = $(carouselHTML)
 
     var done = assert.async()
@@ -871,26 +871,26 @@ $(function () {
 
   QUnit.test('should stay at the end when the next method is called and wrap is false', function (assert) {
     assert.expect(3)
-    var carouselHTML = '<div id="carousel-example-generic" class="carousel slide" data-wrap="false">' +
-        '<ol class="carousel-indicators">' +
-        '<li data-target="#carousel-example-generic" data-slide-to="0" class="active"/>' +
-        '<li data-target="#carousel-example-generic" data-slide-to="1"/>' +
-        '<li data-target="#carousel-example-generic" data-slide-to="2"/>' +
-        '</ol>' +
-        '<div class="carousel-inner">' +
-        '<div class="carousel-item active" id="one">' +
-        '<div class="carousel-caption"/>' +
-        '</div>' +
-        '<div class="carousel-item" id="two">' +
-        '<div class="carousel-caption"/>' +
-        '</div>' +
-        '<div class="carousel-item" id="three">' +
-        '<div class="carousel-caption"/>' +
-        '</div>' +
-        '</div>' +
-        '<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"/>' +
-        '<a class="right carousel-control" href="#carousel-example-generic" data-slide="next"/>' +
-        '</div>'
+    var carouselHTML = '<div id="carousel-example-generic" class="carousel slide" data-wrap="false">'
+        + '<ol class="carousel-indicators">'
+        + '<li data-target="#carousel-example-generic" data-slide-to="0" class="active"/>'
+        + '<li data-target="#carousel-example-generic" data-slide-to="1"/>'
+        + '<li data-target="#carousel-example-generic" data-slide-to="2"/>'
+        + '</ol>'
+        + '<div class="carousel-inner">'
+        + '<div class="carousel-item active" id="one">'
+        + '<div class="carousel-caption"/>'
+        + '</div>'
+        + '<div class="carousel-item" id="two">'
+        + '<div class="carousel-caption"/>'
+        + '</div>'
+        + '<div class="carousel-item" id="three">'
+        + '<div class="carousel-caption"/>'
+        + '</div>'
+        + '</div>'
+        + '<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"/>'
+        + '<a class="right carousel-control" href="#carousel-example-generic" data-slide="next"/>'
+        + '</div>'
     var $carousel = $(carouselHTML).appendTo('#qunit-fixture')
     var getActiveId = function () {
       return $carousel.find('.carousel-item.active').attr('id')
@@ -917,26 +917,26 @@ $(function () {
 
   QUnit.test('should stay at the start when the prev method is called and wrap is false', function (assert) {
     assert.expect(1)
-    var carouselHTML = '<div id="carousel-example-generic" class="carousel slide" data-wrap="false">' +
-        '<ol class="carousel-indicators">' +
-        '<li data-target="#carousel-example-generic" data-slide-to="0" class="active"/>' +
-        '<li data-target="#carousel-example-generic" data-slide-to="1"/>' +
-        '<li data-target="#carousel-example-generic" data-slide-to="2"/>' +
-        '</ol>' +
-        '<div class="carousel-inner">' +
-        '<div class="carousel-item active" id="one">' +
-        '<div class="carousel-caption"/>' +
-        '</div>' +
-        '<div class="carousel-item" id="two">' +
-        '<div class="carousel-caption"/>' +
-        '</div>' +
-        '<div class="carousel-item" id="three">' +
-        '<div class="carousel-caption"/>' +
-        '</div>' +
-        '</div>' +
-        '<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"/>' +
-        '<a class="right carousel-control" href="#carousel-example-generic" data-slide="next"/>' +
-        '</div>'
+    var carouselHTML = '<div id="carousel-example-generic" class="carousel slide" data-wrap="false">'
+        + '<ol class="carousel-indicators">'
+        + '<li data-target="#carousel-example-generic" data-slide-to="0" class="active"/>'
+        + '<li data-target="#carousel-example-generic" data-slide-to="1"/>'
+        + '<li data-target="#carousel-example-generic" data-slide-to="2"/>'
+        + '</ol>'
+        + '<div class="carousel-inner">'
+        + '<div class="carousel-item active" id="one">'
+        + '<div class="carousel-caption"/>'
+        + '</div>'
+        + '<div class="carousel-item" id="two">'
+        + '<div class="carousel-caption"/>'
+        + '</div>'
+        + '<div class="carousel-item" id="three">'
+        + '<div class="carousel-caption"/>'
+        + '</div>'
+        + '</div>'
+        + '<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"/>'
+        + '<a class="right carousel-control" href="#carousel-example-generic" data-slide="next"/>'
+        + '</div>'
     var $carousel = $(carouselHTML)
 
     $carousel[0].addEventListener('slid.bs.carousel', function () {
@@ -948,16 +948,16 @@ $(function () {
 
   QUnit.test('should not prevent keydown for inputs and textareas', function (assert) {
     assert.expect(2)
-    var templateHTML = '<div id="myCarousel" class="carousel" data-interval="false">' +
-        '<div class="carousel-inner">' +
-          '<div id="first" class="carousel-item">' +
-            '<input type="text" id="inputText" />' +
-          '</div>' +
-          '<div id="second" class="carousel-item active">' +
-            '<textarea id="txtArea"></textarea>' +
-          '</div>' +
-        '</div>' +
-        '</div>'
+    var templateHTML = '<div id="myCarousel" class="carousel" data-interval="false">'
+        + '<div class="carousel-inner">'
+          + '<div id="first" class="carousel-item">'
+            + '<input type="text" id="inputText" />'
+          + '</div>'
+          + '<div id="second" class="carousel-item active">'
+            + '<textarea id="txtArea"></textarea>'
+          + '</div>'
+        + '</div>'
+        + '</div>'
     var $template = $(templateHTML)
     var done = assert.async()
     $template.appendTo('#qunit-fixture')
@@ -983,20 +983,20 @@ $(function () {
   QUnit.test('should not go to the next item when the carousel is not visible', function (assert) {
     assert.expect(2)
     var done = assert.async()
-    var html = '<div id="myCarousel" class="carousel slide" data-interval="50" style="display: none;">' +
-             '  <div class="carousel-inner">' +
-             '    <div id="firstItem" class="carousel-item active">' +
-             '      <img alt="">' +
-             '    </div>' +
-             '    <div class="carousel-item">' +
-             '      <img alt="">' +
-             '    </div>' +
-             '    <div class="carousel-item">' +
-             '      <img alt="">' +
-             '    </div>' +
-             '  <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>' +
-             '  <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>' +
-             '</div>'
+    var html = '<div id="myCarousel" class="carousel slide" data-interval="50" style="display: none;">'
+             + '  <div class="carousel-inner">'
+             + '    <div id="firstItem" class="carousel-item active">'
+             + '      <img alt="">'
+             + '    </div>'
+             + '    <div class="carousel-item">'
+             + '      <img alt="">'
+             + '    </div>'
+             + '    <div class="carousel-item">'
+             + '      <img alt="">'
+             + '    </div>'
+             + '  <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>'
+             + '  <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>'
+             + '</div>'
     var $html = $(html)
     $html
       .appendTo('#qunit-fixture')
@@ -1020,22 +1020,22 @@ $(function () {
   QUnit.test('should not go to the next item when the parent of the carousel is not visible', function (assert) {
     assert.expect(2)
     var done = assert.async()
-    var html = '<div id="parent" style="display: none;">' +
-             '  <div id="myCarousel" class="carousel slide" data-interval="50" style="display: none;">' +
-             '    <div class="carousel-inner">' +
-             '      <div id="firstItem" class="carousel-item active">' +
-             '        <img alt="">' +
-             '      </div>' +
-             '      <div class="carousel-item">' +
-             '        <img alt="">' +
-             '      </div>' +
-             '      <div class="carousel-item">' +
-             '        <img alt="">' +
-             '      </div>' +
-             '    <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>' +
-             '    <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>' +
-             '  </div>' +
-             '</div>'
+    var html = '<div id="parent" style="display: none;">'
+             + '  <div id="myCarousel" class="carousel slide" data-interval="50" style="display: none;">'
+             + '    <div class="carousel-inner">'
+             + '      <div id="firstItem" class="carousel-item active">'
+             + '        <img alt="">'
+             + '      </div>'
+             + '      <div class="carousel-item">'
+             + '        <img alt="">'
+             + '      </div>'
+             + '      <div class="carousel-item">'
+             + '        <img alt="">'
+             + '      </div>'
+             + '    <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>'
+             + '    <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>'
+             + '  </div>'
+             + '</div>'
     var $html = $(html)
     $html.appendTo('#qunit-fixture')
     var $parent = $html.find('#parent')
@@ -1068,17 +1068,16 @@ $(function () {
     var $styles = $(stylesCarousel).appendTo('head')
     var done = assert.async()
 
-    var carouselHTML =
-        '<div class="carousel" data-interval="false">' +
-        '  <div class="carousel-inner">' +
-        '    <div id="item" class="carousel-item">' +
-        '      <img alt="">' +
-        '    </div>' +
-        '    <div class="carousel-item active">' +
-        '      <img alt="">' +
-        '    </div>' +
-        '  </div>' +
-        '</div>'
+    var carouselHTML = '<div class="carousel" data-interval="false">'
+        + '  <div class="carousel-inner">'
+        + '    <div id="item" class="carousel-item">'
+        + '      <img alt="">'
+        + '    </div>'
+        + '    <div class="carousel-item active">'
+        + '      <img alt="">'
+        + '    </div>'
+        + '  </div>'
+        + '</div>'
 
     var $carousel = $(carouselHTML).appendTo('#qunit-fixture')
     var $item = $('#item')
@@ -1109,17 +1108,16 @@ $(function () {
     var done = assert.async()
     document.documentElement.ontouchstart = $.noop
 
-    var carouselHTML =
-        '<div class="carousel" data-interval="false">' +
-        '  <div class="carousel-inner">' +
-        '    <div id="item" class="carousel-item">' +
-        '      <img alt="">' +
-        '    </div>' +
-        '    <div class="carousel-item active">' +
-        '      <img alt="">' +
-        '    </div>' +
-        '  </div>' +
-        '</div>'
+    var carouselHTML = '<div class="carousel" data-interval="false">'
+        + '  <div class="carousel-inner">'
+        + '    <div id="item" class="carousel-item">'
+        + '      <img alt="">'
+        + '    </div>'
+        + '    <div class="carousel-item active">'
+        + '      <img alt="">'
+        + '    </div>'
+        + '  </div>'
+        + '</div>'
 
     var $carousel = $(carouselHTML)
     $carousel.appendTo('#qunit-fixture')
@@ -1156,17 +1154,16 @@ $(function () {
     var $styles = $(stylesCarousel).appendTo('head')
     var done = assert.async()
 
-    var carouselHTML =
-        '<div class="carousel" data-interval="false">' +
-        '  <div class="carousel-inner">' +
-        '    <div id="item" class="carousel-item active">' +
-        '      <img alt="">' +
-        '    </div>' +
-        '    <div class="carousel-item">' +
-        '      <img alt="">' +
-        '    </div>' +
-        '  </div>' +
-        '</div>'
+    var carouselHTML = '<div class="carousel" data-interval="false">'
+        + '  <div class="carousel-inner">'
+        + '    <div id="item" class="carousel-item active">'
+        + '      <img alt="">'
+        + '    </div>'
+        + '    <div class="carousel-item">'
+        + '      <img alt="">'
+        + '    </div>'
+        + '  </div>'
+        + '</div>'
 
     var $carousel = $(carouselHTML)
     $carousel.appendTo('#qunit-fixture')
@@ -1199,17 +1196,16 @@ $(function () {
 
     var done = assert.async()
 
-    var carouselHTML =
-        '<div class="carousel" data-interval="false">' +
-        '  <div class="carousel-inner">' +
-        '    <div id="item" class="carousel-item active">' +
-        '      <img alt="">' +
-        '    </div>' +
-        '    <div class="carousel-item">' +
-        '      <img alt="">' +
-        '    </div>' +
-        '  </div>' +
-        '</div>'
+    var carouselHTML = '<div class="carousel" data-interval="false">'
+        + '  <div class="carousel-inner">'
+        + '    <div id="item" class="carousel-item active">'
+        + '      <img alt="">'
+        + '    </div>'
+        + '    <div class="carousel-item">'
+        + '      <img alt="">'
+        + '    </div>'
+        + '  </div>'
+        + '</div>'
 
     var $carousel = $(carouselHTML)
     $carousel.appendTo('#qunit-fixture')

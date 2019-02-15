@@ -2,7 +2,8 @@
   "env": {
     "es6": false,
     "jquery": true,
-    "qunit": true
+    "qunit": true,
+    "browser": true
   },
   "globals": {
     "bootstrap": false,
@@ -22,9 +23,19 @@
     "ecmaVersion": 5,
     "sourceType": "script"
   },
-  "extends": "../../../.eslintrc.json",
+  "extends": "airbnb-base/legacy",
   "rules": {
+    "semi": ["error", "never"],
+    "no-underscore-dangle": "off",
+    "max-len": "off",
+    "func-names": "off",
+    "comma-dangle": "off",
     "no-console": "error",
+    "no-var": "off",
+    "prefer-arrow-callback": "off",
+    "object-shorthand": "off",
+    "prefer-template": "off",
+
     // Best Practices
     "consistent-return": "off",
     "no-magic-numbers": "off",
@@ -32,13 +43,6 @@
 
     // Stylistic Issues
     "func-style": "off",
-    "spaced-comment": "off",
-
-    // ECMAScript 6
-    "no-var": "off",
-    "object-shorthand": "off",
-    "prefer-arrow-callback": "off",
-    "prefer-template": "off",
-    "prefer-rest-params": "off"
+    "spaced-comment": "off"
   }
 }

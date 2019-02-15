@@ -1,13 +1,13 @@
 'use strict'
 
-const path    = require('path')
-const babel   = require('rollup-plugin-babel')
+const path = require('path')
+const babel = require('rollup-plugin-babel')
 const resolve = require('rollup-plugin-node-resolve')
-const banner  = require('./banner.js')
+const banner = require('./banner.js')
 
-const BUNDLE  = process.env.BUNDLE === 'true'
+const BUNDLE = process.env.BUNDLE === 'true'
 
-let fileDest  = 'bootstrap.js'
+let fileDest = 'bootstrap.js'
 const external = ['popper.js']
 const plugins = [
   babel({

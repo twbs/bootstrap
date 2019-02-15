@@ -16,40 +16,40 @@ import Util from './util'
  * ------------------------------------------------------------------------
  */
 
-const NAME      = 'toast'
-const VERSION   = '4.3.1'
-const DATA_KEY  = 'bs.toast'
+const NAME = 'toast'
+const VERSION = '4.3.1'
+const DATA_KEY = 'bs.toast'
 const EVENT_KEY = `.${DATA_KEY}`
 
 const Event = {
-  CLICK_DISMISS : `click.dismiss${EVENT_KEY}`,
-  HIDE          : `hide${EVENT_KEY}`,
-  HIDDEN        : `hidden${EVENT_KEY}`,
-  SHOW          : `show${EVENT_KEY}`,
-  SHOWN         : `shown${EVENT_KEY}`
+  CLICK_DISMISS: `click.dismiss${EVENT_KEY}`,
+  HIDE: `hide${EVENT_KEY}`,
+  HIDDEN: `hidden${EVENT_KEY}`,
+  SHOW: `show${EVENT_KEY}`,
+  SHOWN: `shown${EVENT_KEY}`
 }
 
 const ClassName = {
-  FADE    : 'fade',
-  HIDE    : 'hide',
-  SHOW    : 'show',
-  SHOWING : 'showing'
+  FADE: 'fade',
+  HIDE: 'hide',
+  SHOW: 'show',
+  SHOWING: 'showing'
 }
 
 const DefaultType = {
-  animation : 'boolean',
-  autohide  : 'boolean',
-  delay     : 'number'
+  animation: 'boolean',
+  autohide: 'boolean',
+  delay: 'number'
 }
 
 const Default = {
-  animation : true,
-  autohide  : true,
-  delay     : 500
+  animation: true,
+  autohide: true,
+  delay: 500
 }
 
 const Selector = {
-  DATA_DISMISS : '[data-dismiss="toast"]'
+  DATA_DISMISS: '[data-dismiss="toast"]'
 }
 
 /**
@@ -61,7 +61,7 @@ const Selector = {
 class Toast {
   constructor(element, config) {
     this._element = element
-    this._config  = this._getConfig(config)
+    this._config = this._getConfig(config)
     this._timeout = null
     this._setListeners()
     Data.setData(element, DATA_KEY, this)
@@ -141,7 +141,7 @@ class Toast {
     Data.removeData(this._element, DATA_KEY)
 
     this._element = null
-    this._config  = null
+    this._config = null
   }
 
   // Private
@@ -192,8 +192,8 @@ class Toast {
 
   static _jQueryInterface(config) {
     return this.each(function () {
-      let data       = Data.getData(this, DATA_KEY)
-      const _config  = typeof config === 'object' && config
+      let data = Data.getData(this, DATA_KEY)
+      const _config = typeof config === 'object' && config
 
       if (!data) {
         data = new Toast(this, _config)
@@ -224,9 +224,9 @@ class Toast {
 const $ = Util.jQuery
 if (typeof $ !== 'undefined') {
   const JQUERY_NO_CONFLICT = $.fn[NAME]
-  $.fn[NAME]               = Toast._jQueryInterface
-  $.fn[NAME].Constructor   = Toast
-  $.fn[NAME].noConflict    = () => {
+  $.fn[NAME] = Toast._jQueryInterface
+  $.fn[NAME].Constructor = Toast
+  $.fn[NAME].noConflict = () => {
     $.fn[NAME] = JQUERY_NO_CONFLICT
     return Toast._jQueryInterface
   }

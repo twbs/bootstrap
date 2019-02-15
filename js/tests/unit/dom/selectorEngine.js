@@ -54,10 +54,9 @@ $(function () {
 
   QUnit.test('should find the closest element according to the selector', function (assert) {
     assert.expect(2)
-    var html =
-      '<div class="test">' +
-      '  <button class="btn"></button>' +
-      '</div>'
+    var html = '<div class="test">'
+      + '  <button class="btn"></button>'
+      + '</div>'
 
     $(html).appendTo('#qunit-fixture')
     assert.strictEqual(SelectorEngine.closest($('.btn')[0], {}), null)
@@ -66,9 +65,8 @@ $(function () {
 
   QUnit.test('should fin previous element', function (assert) {
     assert.expect(2)
-    var html =
-      '<div class="test"></div>' +
-      '<button class="btn"></button>'
+    var html = '<div class="test"></div>'
+      + '<button class="btn"></button>'
 
     $(html).appendTo('#qunit-fixture')
     assert.strictEqual(SelectorEngine.prev($('.btn')[0], {}), null)

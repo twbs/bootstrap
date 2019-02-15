@@ -65,10 +65,10 @@ $(function () {
 
   QUnit.test('should toggle aria-pressed on buttons with container', function (assert) {
     assert.expect(1)
-    var groupHTML = '<div class="btn-group" data-toggle="buttons">' +
-        '<button id="btn1" class="btn btn-secondary" type="button">One</button>' +
-        '<button class="btn btn-secondary" type="button">Two</button>' +
-      '</div>'
+    var groupHTML = '<div class="btn-group" data-toggle="buttons">'
+        + '<button id="btn1" class="btn btn-secondary" type="button">One</button>'
+        + '<button class="btn btn-secondary" type="button">Two</button>'
+      + '</div>'
     $('#qunit-fixture').append(groupHTML)
     $('#btn1').bootstrapButton('toggle')
     assert.strictEqual($('#btn1').attr('aria-pressed'), 'true')
@@ -90,11 +90,11 @@ $(function () {
     assert.expect(1)
     var done = assert.async()
 
-    var groupHTML = '<div class="btn-group" data-toggle="buttons">' +
-      '<label class="btn btn-primary">' +
-      '<input type="radio" id="radio" autocomplete="off">Radio' +
-      '</label>' +
-      '</div>'
+    var groupHTML = '<div class="btn-group" data-toggle="buttons">'
+      + '<label class="btn btn-primary">'
+      + '<input type="radio" id="radio" autocomplete="off">Radio'
+      + '</label>'
+      + '</div>'
     var $group = $(groupHTML).appendTo('#qunit-fixture')
 
     $group.find('input').on('change', function (e) {
@@ -108,18 +108,17 @@ $(function () {
 
   QUnit.test('should check for closest matching toggle', function (assert) {
     assert.expect(12)
-    var groupHTML =
-      '<div class="btn-group" data-toggle="buttons">' +
-      '  <label class="btn btn-primary active">' +
-      '    <input type="radio" name="options" id="option1" checked="true"> Option 1' +
-      '  </label>' +
-      '  <label class="btn btn-primary">' +
-      '    <input type="radio" name="options" id="option2"> Option 2' +
-      '  </label>' +
-      '  <label class="btn btn-primary">' +
-      '    <input type="radio" name="options" id="option3"> Option 3' +
-      '  </label>' +
-      '</div>'
+    var groupHTML = '<div class="btn-group" data-toggle="buttons">'
+      + '  <label class="btn btn-primary active">'
+      + '    <input type="radio" name="options" id="option1" checked="true"> Option 1'
+      + '  </label>'
+      + '  <label class="btn btn-primary">'
+      + '    <input type="radio" name="options" id="option2"> Option 2'
+      + '  </label>'
+      + '  <label class="btn btn-primary">'
+      + '    <input type="radio" name="options" id="option3"> Option 3'
+      + '  </label>'
+      + '</div>'
 
     var $group = $(groupHTML).appendTo('#qunit-fixture')
 
@@ -149,12 +148,12 @@ $(function () {
 
   QUnit.test('should only toggle selectable inputs', function (assert) {
     assert.expect(6)
-    var groupHTML = '<div class="btn-group" data-toggle="buttons">' +
-      '<label class="btn btn-primary active">' +
-      '<input type="hidden" name="option1" id="option1-default" value="false">' +
-      '<input type="checkbox" name="option1" id="option1" checked="true"> Option 1' +
-      '</label>' +
-      '</div>'
+    var groupHTML = '<div class="btn-group" data-toggle="buttons">'
+      + '<label class="btn btn-primary active">'
+      + '<input type="hidden" name="option1" id="option1-default" value="false">'
+      + '<input type="checkbox" name="option1" id="option1" checked="true"> Option 1'
+      + '</label>'
+      + '</div>'
     var $group = $(groupHTML).appendTo('#qunit-fixture')
 
     var $btn = $group.children().eq(0)
@@ -172,10 +171,10 @@ $(function () {
 
   QUnit.test('should not add aria-pressed on labels for radio/checkbox inputs in a data-toggle="buttons" group', function (assert) {
     assert.expect(2)
-    var groupHTML = '<div class="btn-group" data-toggle="buttons">' +
-      '<label class="btn btn-primary"><input type="checkbox" autocomplete="off"> Checkbox</label>' +
-      '<label class="btn btn-primary"><input type="radio" name="options" autocomplete="off"> Radio</label>' +
-      '</div>'
+    var groupHTML = '<div class="btn-group" data-toggle="buttons">'
+      + '<label class="btn btn-primary"><input type="checkbox" autocomplete="off"> Checkbox</label>'
+      + '<label class="btn btn-primary"><input type="radio" name="options" autocomplete="off"> Radio</label>'
+      + '</div>'
     var $group = $(groupHTML).appendTo('#qunit-fixture')
 
     var $btn1 = $group.children().eq(0)
@@ -190,11 +189,11 @@ $(function () {
 
   QUnit.test('should handle disabled attribute on non-button elements', function (assert) {
     assert.expect(2)
-    var groupHTML = '<div class="btn-group disabled" data-toggle="buttons" aria-disabled="true" disabled>' +
-      '<label class="btn btn-danger disabled" aria-disabled="true" disabled>' +
-      '<input type="checkbox" aria-disabled="true" autocomplete="off" disabled class="disabled"/>' +
-      '</label>' +
-      '</div>'
+    var groupHTML = '<div class="btn-group disabled" data-toggle="buttons" aria-disabled="true" disabled>'
+      + '<label class="btn btn-danger disabled" aria-disabled="true" disabled>'
+      + '<input type="checkbox" aria-disabled="true" autocomplete="off" disabled class="disabled"/>'
+      + '</label>'
+      + '</div>'
     var $group = $(groupHTML).appendTo('#qunit-fixture')
 
     var $btn = $group.children().eq(0)

@@ -17,57 +17,57 @@ import Util from './util'
  * ------------------------------------------------------------------------
  */
 
-const NAME               = 'modal'
-const VERSION            = '4.3.1'
-const DATA_KEY           = 'bs.modal'
-const EVENT_KEY          = `.${DATA_KEY}`
-const DATA_API_KEY       = '.data-api'
-const ESCAPE_KEYCODE     = 27 // KeyboardEvent.which value for Escape (Esc) key
+const NAME = 'modal'
+const VERSION = '4.3.1'
+const DATA_KEY = 'bs.modal'
+const EVENT_KEY = `.${DATA_KEY}`
+const DATA_API_KEY = '.data-api'
+const ESCAPE_KEYCODE = 27 // KeyboardEvent.which value for Escape (Esc) key
 
 const Default = {
-  backdrop : true,
-  keyboard : true,
-  focus    : true,
-  show     : true
+  backdrop: true,
+  keyboard: true,
+  focus: true,
+  show: true
 }
 
 const DefaultType = {
-  backdrop : '(boolean|string)',
-  keyboard : 'boolean',
-  focus    : 'boolean',
-  show     : 'boolean'
+  backdrop: '(boolean|string)',
+  keyboard: 'boolean',
+  focus: 'boolean',
+  show: 'boolean'
 }
 
 const Event = {
-  HIDE              : `hide${EVENT_KEY}`,
-  HIDDEN            : `hidden${EVENT_KEY}`,
-  SHOW              : `show${EVENT_KEY}`,
-  SHOWN             : `shown${EVENT_KEY}`,
-  FOCUSIN           : `focusin${EVENT_KEY}`,
-  RESIZE            : `resize${EVENT_KEY}`,
-  CLICK_DISMISS     : `click.dismiss${EVENT_KEY}`,
-  KEYDOWN_DISMISS   : `keydown.dismiss${EVENT_KEY}`,
-  MOUSEUP_DISMISS   : `mouseup.dismiss${EVENT_KEY}`,
-  MOUSEDOWN_DISMISS : `mousedown.dismiss${EVENT_KEY}`,
-  CLICK_DATA_API    : `click${EVENT_KEY}${DATA_API_KEY}`
+  HIDE: `hide${EVENT_KEY}`,
+  HIDDEN: `hidden${EVENT_KEY}`,
+  SHOW: `show${EVENT_KEY}`,
+  SHOWN: `shown${EVENT_KEY}`,
+  FOCUSIN: `focusin${EVENT_KEY}`,
+  RESIZE: `resize${EVENT_KEY}`,
+  CLICK_DISMISS: `click.dismiss${EVENT_KEY}`,
+  KEYDOWN_DISMISS: `keydown.dismiss${EVENT_KEY}`,
+  MOUSEUP_DISMISS: `mouseup.dismiss${EVENT_KEY}`,
+  MOUSEDOWN_DISMISS: `mousedown.dismiss${EVENT_KEY}`,
+  CLICK_DATA_API: `click${EVENT_KEY}${DATA_API_KEY}`
 }
 
 const ClassName = {
-  SCROLLABLE         : 'modal-dialog-scrollable',
-  SCROLLBAR_MEASURER : 'modal-scrollbar-measure',
-  BACKDROP           : 'modal-backdrop',
-  OPEN               : 'modal-open',
-  FADE               : 'fade',
-  SHOW               : 'show'
+  SCROLLABLE: 'modal-dialog-scrollable',
+  SCROLLBAR_MEASURER: 'modal-scrollbar-measure',
+  BACKDROP: 'modal-backdrop',
+  OPEN: 'modal-open',
+  FADE: 'fade',
+  SHOW: 'show'
 }
 
 const Selector = {
-  DIALOG         : '.modal-dialog',
-  MODAL_BODY     : '.modal-body',
-  DATA_TOGGLE    : '[data-toggle="modal"]',
-  DATA_DISMISS   : '[data-dismiss="modal"]',
-  FIXED_CONTENT  : '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top',
-  STICKY_CONTENT : '.sticky-top'
+  DIALOG: '.modal-dialog',
+  MODAL_BODY: '.modal-body',
+  DATA_TOGGLE: '[data-toggle="modal"]',
+  DATA_DISMISS: '[data-dismiss="modal"]',
+  FIXED_CONTENT: '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top',
+  STICKY_CONTENT: '.sticky-top'
 }
 
 /**
@@ -78,15 +78,15 @@ const Selector = {
 
 class Modal {
   constructor(element, config) {
-    this._config              = this._getConfig(config)
-    this._element             = element
-    this._dialog              = SelectorEngine.findOne(Selector.DIALOG, element)
-    this._backdrop            = null
-    this._isShown             = false
-    this._isBodyOverflowing   = false
+    this._config = this._getConfig(config)
+    this._element = element
+    this._dialog = SelectorEngine.findOne(Selector.DIALOG, element)
+    this._backdrop = null
+    this._isShown = false
+    this._isBodyOverflowing = false
     this._ignoreBackdropClick = false
-    this._isTransitioning     = false
-    this._scrollbarWidth      = 0
+    this._isTransitioning = false
+    this._scrollbarWidth = 0
     Data.setData(element, DATA_KEY, this)
   }
 
@@ -136,8 +136,7 @@ class Modal {
     EventHandler.on(this._element,
       Event.CLICK_DISMISS,
       Selector.DATA_DISMISS,
-      (event) => this.hide(event)
-    )
+      event => this.hide(event))
 
     EventHandler.on(this._dialog, Event.MOUSEDOWN_DISMISS, () => {
       EventHandler.one(this._element, Event.MOUSEUP_DISMISS, (event) => {
@@ -184,9 +183,9 @@ class Modal {
 
 
     if (transition) {
-      const transitionDuration  = Util.getTransitionDurationFromElement(this._element)
+      const transitionDuration = Util.getTransitionDurationFromElement(this._element)
 
-      EventHandler.one(this._element, Util.TRANSITION_END, (event) => this._hideModal(event))
+      EventHandler.one(this._element, Util.TRANSITION_END, eventTransition => this._hideModal(eventTransition))
       Util.emulateTransitionEnd(this._element, transitionDuration)
     } else {
       this._hideModal()
@@ -195,7 +194,7 @@ class Modal {
 
   dispose() {
     [window, this._element, this._dialog]
-      .forEach((htmlElement) => EventHandler.off(htmlElement, EVENT_KEY))
+      .forEach(htmlElement => EventHandler.off(htmlElement, EVENT_KEY))
 
     /**
      * `document` has 2 events `Event.FOCUSIN` and `Event.CLICK_DATA_API`
@@ -206,15 +205,15 @@ class Modal {
 
     Data.removeData(this._element, DATA_KEY)
 
-    this._config              = null
-    this._element             = null
-    this._dialog              = null
-    this._backdrop            = null
-    this._isShown             = null
-    this._isBodyOverflowing   = null
+    this._config = null
+    this._element = null
+    this._dialog = null
+    this._backdrop = null
+    this._isShown = null
+    this._isBodyOverflowing = null
     this._ignoreBackdropClick = null
-    this._isTransitioning     = null
-    this._scrollbarWidth      = null
+    this._isTransitioning = null
+    this._scrollbarWidth = null
   }
 
   handleUpdate() {
@@ -272,7 +271,7 @@ class Modal {
     }
 
     if (transition) {
-      const transitionDuration  = Util.getTransitionDurationFromElement(this._dialog)
+      const transitionDuration = Util.getTransitionDurationFromElement(this._dialog)
 
       EventHandler.one(this._dialog, Util.TRANSITION_END, transitionComplete)
       Util.emulateTransitionEnd(this._dialog, transitionDuration)
@@ -307,7 +306,7 @@ class Modal {
 
   _setResizeEvent() {
     if (this._isShown) {
-      EventHandler.on(window, Event.RESIZE, (event) => this.handleUpdate(event))
+      EventHandler.on(window, Event.RESIZE, event => this.handleUpdate(event))
     } else {
       EventHandler.off(window, Event.RESIZE)
     }
@@ -334,9 +333,9 @@ class Modal {
   }
 
   _showBackdrop(callback) {
-    const animate = this._element.classList.contains(ClassName.FADE)
-      ? ClassName.FADE
-      : ''
+    const animate = this._element.classList.contains(ClassName.FADE) ?
+      ClassName.FADE :
+      ''
 
     if (this._isShown && this._config.backdrop) {
       this._backdrop = document.createElement('div')
@@ -410,8 +409,7 @@ class Modal {
   // ----------------------------------------------------------------------
 
   _adjustDialog() {
-    const isModalOverflowing =
-      this._element.scrollHeight > document.documentElement.clientHeight
+    const isModalOverflowing = this._element.scrollHeight > document.documentElement.clientHeight
 
     if (!this._isBodyOverflowing && isModalOverflowing) {
       this._element.style.paddingLeft = `${this._scrollbarWidth}px`
@@ -552,8 +550,8 @@ EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (
     target = SelectorEngine.findOne(selector)
   }
 
-  const config = Data.getData(target, DATA_KEY)
-    ? 'toggle' : {
+  const config = Data.getData(target, DATA_KEY) ?
+    'toggle' : {
       ...Manipulator.getDataAttributes(target),
       ...Manipulator.getDataAttributes(this)
     }
@@ -592,9 +590,9 @@ EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (
 const $ = Util.jQuery
 if (typeof $ !== 'undefined') {
   const JQUERY_NO_CONFLICT = $.fn[NAME]
-  $.fn[NAME]               = Modal._jQueryInterface
-  $.fn[NAME].Constructor   = Modal
-  $.fn[NAME].noConflict    = () => {
+  $.fn[NAME] = Modal._jQueryInterface
+  $.fn[NAME].Constructor = Modal
+  $.fn[NAME].noConflict = () => {
     $.fn[NAME] = JQUERY_NO_CONFLICT
     return Modal._jQueryInterface
   }
