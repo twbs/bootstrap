@@ -289,6 +289,11 @@ module.exports = function (grunt) {
         incremental: false
       },
       docs: {},
+      netlify: {
+        options: {
+          raw: 'github: true\nbaseurl: ""'
+        }
+      },
       github: {
         options: {
           raw: 'github: true'
