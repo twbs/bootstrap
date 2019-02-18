@@ -34,7 +34,7 @@
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
-    "autoprefixer": "^9.4.7",
+    "autoprefixer": "^9.4.9",
     "btoa": "^1.2.1",
     "cross-env": "^5.2.0",
     "glob": "^7.1.3",
