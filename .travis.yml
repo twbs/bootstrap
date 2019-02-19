@@ -13,7 +13,7 @@ before_script:
   - google-chrome-stable --product-version
 script:
   - npm test || travis_terminate 1
-  - if [[ "$TRAVIS_NODE_VERSION" = "8" ]]; then npm run check-broken-links; fi
+  - if [[ "$TRAVIS_NODE_VERSION" = "8" ]]; then npm run linkinator; fi
   - if [[ "$TRAVIS_NODE_VERSION" = "8" && "$TRAVIS_EVENT_TYPE" = "push" && ! `git log --format=%B --no-merges -n 1 | grep '\[skip browser\]'` ]]; then npm run js-test-cloud; fi
 after_success:
   - if [[ "$TRAVIS_NODE_VERSION" = "8" ]]; then npm run coveralls; fi
