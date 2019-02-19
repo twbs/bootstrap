@@ -15,6 +15,6 @@
     padding: $padding-y $padding-x;
     @include font-size($font-size);
     line-height: $line-height;
-    @include border-radius($badge-border-radius);
+    @include border-radius($border-radius);
   }
 }
