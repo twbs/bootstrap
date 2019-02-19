@@ -117,7 +117,7 @@
     "hammer-simulator": "0.0.1",
     "ip": "^1.1.5",
     "jquery": "^3.3.1",
-    "karma": "^3.1.4",
+    "karma": "^4.0.0",
     "karma-browserstack-launcher": "^1.4.0",
     "karma-chrome-launcher": "^2.2.0",
     "karma-coverage-istanbul-reporter": "^2.0.5",
