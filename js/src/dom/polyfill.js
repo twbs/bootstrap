@@ -1,11 +1,11 @@
-import Util from '../util'
-
 /**
  * --------------------------------------------------------------------------
  * Bootstrap (v4.3.1): dom/polyfill.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
+
+import Util from '../util'
 
 /* istanbul ignore next */
 const Polyfill = (() => {

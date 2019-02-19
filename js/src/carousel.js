@@ -320,7 +320,7 @@ class Carousel {
       }
     }
 
-    [].slice.call(SelectorEngine.find(Selector.ITEM_IMG, this._element)).forEach((itemImg) => {
+    Util.makeArray(SelectorEngine.find(Selector.ITEM_IMG, this._element)).forEach((itemImg) => {
       EventHandler.on(itemImg, Event.DRAG_START, (e) => e.preventDefault())
     })
 
@@ -356,7 +356,7 @@ class Carousel {
 
   _getItemIndex(element) {
     this._items = element && element.parentNode
-      ? [].slice.call(SelectorEngine.find(Selector.ITEM, element.parentNode))
+      ? Util.makeArray(SelectorEngine.find(Selector.ITEM, element.parentNode))
       : []
 
     return this._items.indexOf(element)
