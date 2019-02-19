@@ -482,7 +482,7 @@ class Dropdown {
       return
     }
 
-    const items = [].slice.call(parent.querySelectorAll(Selector.VISIBLE_ITEMS))
+    const items = Util.makeArray(parent.querySelectorAll(Selector.VISIBLE_ITEMS))
 
     if (!items.length) {
       return

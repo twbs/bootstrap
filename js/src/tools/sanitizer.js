@@ -5,6 +5,8 @@
  * --------------------------------------------------------------------------
  */
 
+import Util from '../util'
+
 const uriAttrs = [
   'background',
   'cite',
@@ -101,7 +103,7 @@ export function sanitizeHtml(unsafeHtml, whiteList, sanitizeFn) {
   const domParser = new window.DOMParser()
   const createdDocument = domParser.parseFromString(unsafeHtml, 'text/html')
   const whitelistKeys = Object.keys(whiteList)
-  const elements = [].slice.call(createdDocument.body.querySelectorAll('*'))
+  const elements = Util.makeArray(createdDocument.body.querySelectorAll('*'))
 
   for (let i = 0, len = elements.length; i < len; i++) {
     const el = elements[i]
@@ -113,7 +115,7 @@ export function sanitizeHtml(unsafeHtml, whiteList, sanitizeFn) {
       continue
     }
 
-    const attributeList = [].slice.call(el.attributes)
+    const attributeList = Util.makeArray(el.attributes)
     const whitelistedAttributes = [].concat(whiteList['*'] || [], whiteList[elName] || [])
 
     attributeList.forEach((attr) => {
