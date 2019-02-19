@@ -727,7 +727,7 @@ $(function () {
     var done = assert.async()
     var html = '<nav class="navbar navbar-expand-md navbar-light bg-light">' +
         '<div class="dropdown">' +
-        '  <a class="nav-link dropdown-toggle" href="#" id="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>' +
+        '  <a class="nav-link dropdown-toggle" href="#" id="dropdown" data-toggle="dropdown" aria-expanded="false">Dropdown</a>' +
         '  <div class="dropdown-menu" aria-labelledby="dropdown">' +
         '    <a class="dropdown-item" href="#">Action</a>' +
         '    <a class="dropdown-item" href="#">Another action</a>' +
