@@ -17,8 +17,6 @@ const fs = require('fs')
 const path = require('path')
 const sh = require('shelljs')
 
-const pkg = require('../package.json')
-
 sh.config.fatal = true
 
 const configFile = path.join(__dirname, '../_config.yml')
@@ -38,10 +36,6 @@ const files = [
   {
     file: 'dist/js/bootstrap.bundle.min.js',
     configPropertyName: 'js_bundle_hash'
-  },
-  {
-    file: `site/docs/${pkg.version_short}/assets/js/vendor/jquery-slim.min.js`,
-    configPropertyName: 'jquery_hash'
   },
   {
     file: 'node_modules/popper.js/dist/umd/popper.min.js',

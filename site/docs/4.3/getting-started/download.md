@@ -13,7 +13,7 @@ Download ready-to-use compiled code for **Bootstrap v{{ site.current_version}}**
 - Compiled and minified CSS bundles (see [CSS files comparison]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/contents/#css-files))
 - Compiled and minified JavaScript plugins
 
-This doesn't include documentation, source files, or any optional JavaScript dependencies (jQuery and Popper.js).
+This doesn't include documentation, source files, or any optional JavaScript dependencies like Popper.js.
 
 <a href="{{ site.download.dist }}" class="btn btn-bd-primary" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download Bootstrap');">Download</a>
 
@@ -37,10 +37,9 @@ Skip the download with [BootstrapCDN](https://www.bootstrapcdn.com/) to deliver 
 <script src="{{ site.cdn.js }}" integrity="{{ site.cdn.js_hash }}" crossorigin="anonymous"></script>
 {% endhighlight %}
 
-If you're using our compiled JavaScript, don't forget to include CDN versions of jQuery and Popper.js before it.
+If you're using our compiled JavaScript, don't forget to include Popper.js, via a CDN preferably, before our JS.
 
 {% highlight html %}
-<script src="{{ site.cdn.jquery }}" integrity="{{ site.cdn.jquery_hash }}" crossorigin="anonymous"></script>
 <script src="{{ site.cdn.popper }}" integrity="{{ site.cdn.popper_hash }}" crossorigin="anonymous"></script>
 {% endhighlight %}
 
@@ -56,7 +55,7 @@ Install Bootstrap in your Node.js powered apps with [the npm package](https://ww
 npm install bootstrap
 {% endhighlight %}
 
-`require('bootstrap')` will load all of Bootstrap's jQuery plugins onto the jQuery object. The `bootstrap` module itself does not export anything. You can manually load Bootstrap's jQuery plugins individually by loading the `/js/*.js` files under the package's top-level directory.
+`require('bootstrap')` will load all of Bootstrap's plugins onto the `window` object. The `bootstrap` module itself does not export anything. You can manually load Bootstrap's plugins individually by loading the `/js/*.js` files under the package's top-level directory.
 
 Bootstrap's `package.json` contains some additional metadata under the following keys:
 

@@ -192,7 +192,7 @@ Note that for security reasons the `sanitize`, `sanitizeFn` and `whiteList` opti
       <td>html</td>
       <td>boolean</td>
       <td>false</td>
-      <td>Insert HTML into the popover. If false, jQuery's <code>text</code> method will be used to insert content into the DOM. Use text if you're worried about XSS attacks.</td>
+      <td>Insert HTML into the popover. If false, <code>innerText</code> property will be used to insert content into the DOM. Use text if you're worried about XSS attacks.</td>
     </tr>
     <tr>
       <td>placement</td>
