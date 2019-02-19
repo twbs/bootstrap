@@ -209,3 +209,45 @@ $('#yourTooltip').tooltip({
   }
 })
 {% endhighlight %}
+
+## Compatibility with IE 11
+
+Our v5 isn't designed to work with Internet Explorer 11, but you can add the following polyfills to make it work:
+
+{% capture callout %}
+Note that while we continue adding new features, it's possible that Internet Explorer 11 compatibility breaks in the future.
+{% endcapture %}
+{% include callout.html content=callout type="warning" %}
+
+{% highlight html %}
+<!-- Polyfill.io will load polyfills your browser needs -->
+<script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js"></script>
+<script>
+  // Fix preventDefault for IE
+  (function () {
+    var workingDefaultPrevented = (function () {
+      var e = document.createEvent('CustomEvent')
+      e.initEvent('Bootstrap', true, true)
+      e.preventDefault()
+      return e.defaultPrevented
+    })()
+
+    if (!workingDefaultPrevented) {
+      var origPreventDefault = Event.prototype.preventDefault
+      Event.prototype.preventDefault = function () {
+        if (!this.cancelable) {
+          return
+        }
+
+        origPreventDefault.call(this)
+        Object.defineProperty(this, 'defaultPrevented', {
+          get: function () {
+            return true
+          },
+          configurable: true
+        })
+      }
+    }
+  })()
+</script>
+{% endhighlight %}
