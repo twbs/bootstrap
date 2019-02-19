@@ -145,7 +145,7 @@
     "vnu-jar": "18.11.5"
   },
   "engines": {
-    "node": ">=6"
+    "node": ">=8"
   },
   "files": [
     "dist/{css,js}/*.{css,js,map}",
