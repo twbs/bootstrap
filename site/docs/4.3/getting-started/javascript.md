@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: JavaScript
-description: Bring Bootstrap to life with our optional JavaScript plugins built on jQuery. Learn about each plugin, our data and programmatic API options, and more.
+description: Bring Bootstrap to life with our optional JavaScript plugins. Learn about each plugin, our data and programmatic API options, and more.
 group: getting-started
 toc: true
 ---
@@ -14,7 +14,7 @@ If you use a bundler (Webpack, Rollup...), you can use `/js/dist/*.js` files whi
 
 ## Dependencies
 
-Some plugins and CSS components depend on other plugins. If you include plugins individually, make sure to check for these dependencies in the docs. Also note that **all plugins depend on jQuery** (this means jQuery must be included **before** the plugin files). [Consult our `package.json`]({{ site.repo }}/blob/v{{ site.current_version }}/package.json) to see which versions of jQuery are supported.
+Some plugins and CSS components depend on other plugins. If you include plugins individually, make sure to check for these dependencies in the docs.
 
 Our dropdowns, popovers and tooltips also depend on [Popper.js](https://popper.js.org/).
 
@@ -117,7 +117,7 @@ $.fn.bootstrapBtn = bootstrapButton // give $().bootstrapBtn the Bootstrap funct
 
 ## Version numbers
 
-The version of each of Bootstrap's jQuery plugins can be accessed via the `VERSION` property of the plugin's constructor. For example, for the tooltip plugin:
+The version of each of Bootstrap's plugins can be accessed via the `VERSION` property of the plugin's constructor. For example, for the tooltip plugin:
 
 {% highlight js %}
 $.fn.tooltip.Constructor.VERSION // => "{{ site.current_version }}"
