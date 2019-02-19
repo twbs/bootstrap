@@ -33,7 +33,7 @@ Scroll the area below the navbar and watch the active class change. The dropdown
         <a class="nav-link" href="#mdo">@mdo</a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">Dropdown</a>
         <div class="dropdown-menu">
           <a class="dropdown-item" href="#one">one</a>
           <a class="dropdown-item" href="#two">two</a>
@@ -70,7 +70,7 @@ Scroll the area below the navbar and watch the active class change. The dropdown
       <a class="nav-link" href="#mdo">@mdo</a>
     </li>
     <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">Dropdown</a>
       <div class="dropdown-menu">
         <a class="dropdown-item" href="#one">one</a>
         <a class="dropdown-item" href="#two">two</a>
