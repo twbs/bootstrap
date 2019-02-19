@@ -188,7 +188,7 @@ Note that for security reasons the `sanitize`, `sanitizeFn` and `whiteList` opti
       <td>false</td>
       <td>
         <p>Allow HTML in the tooltip.</p>
-        <p>If true, HTML tags in the tooltip's <code>title</code> will be rendered in the tooltip. If false, jQuery's <code>text</code> method will be used to insert content into the DOM.</p>
+        <p>If true, HTML tags in the tooltip's <code>title</code> will be rendered in the tooltip. If false, <code>innerText</code> property will be used to insert content into the DOM.</p>
         <p>Use text if you're worried about XSS attacks.</p>
       </td>
     </tr>
