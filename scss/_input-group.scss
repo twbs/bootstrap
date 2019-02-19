@@ -128,11 +128,11 @@
 // manipulation.
 
 .input-group-lg {
-  @include input-group-size($input-height-lg, $input-padding-y-lg, $input-padding-x-lg, $input-font-size-lg, $input-line-height-lg, $input-border-radius-lg)
+  @include input-group-size($input-height-lg, $input-padding-y-lg, $input-padding-x-lg, $input-font-size-lg, $input-line-height-lg, $input-border-radius-lg);
 }
 
 .input-group-sm {
-  @include input-group-size($input-height-sm, $input-padding-y-sm, $input-padding-x-sm, $input-font-size-sm, $input-line-height-sm, $input-border-radius-sm)
+  @include input-group-size($input-height-sm, $input-padding-y-sm, $input-padding-x-sm, $input-font-size-sm, $input-line-height-sm, $input-border-radius-sm);
 }
 
 .input-group-lg > .custom-select,
