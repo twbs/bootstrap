@@ -18,13 +18,6 @@ Images in Bootstrap are made responsive with `.img-fluid`. `max-width: 100%;` an
 <img src="..." class="img-fluid" alt="Responsive image">
 {% endhighlight %}
 
-{% capture callout %}
-##### SVG images and IE 10
-
-In Internet Explorer 10, SVG images with `.img-fluid` are disproportionately sized. To fix this, add `width: 100% \9;` where necessary. This fix improperly sizes other image formats, so Bootstrap doesn't apply it automatically.
-{% endcapture %}
-{% include callout.html content=callout type="warning" %}
-
 ## Image thumbnails
 
 In addition to our [border-radius utilities]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/borders/), you can use `.img-thumbnail` to give an image a rounded 1px border appearance.
