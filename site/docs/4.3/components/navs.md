@@ -221,7 +221,7 @@ For equal-width elements, use `.nav-justified`. All horizontal space will be occ
     <a class="nav-link" href="#">Link</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link disabled" href="#">Disabled</a>
+    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
   </li>
 </ul>
 {% endcapture %}
