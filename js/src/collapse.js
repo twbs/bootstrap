@@ -74,11 +74,11 @@ class Collapse {
       `[data-toggle="collapse"][data-target="#${element.id}"]`
     ))
 
-    const toggleList = Util.makeArray(document.querySelectorAll(Selector.DATA_TOGGLE))
+    const toggleList = Util.makeArray(SelectorEngine.find(Selector.DATA_TOGGLE))
     for (let i = 0, len = toggleList.length; i < len; i++) {
       const elem = toggleList[i]
       const selector = Util.getSelectorFromElement(elem)
-      const filterElement = Util.makeArray(document.querySelectorAll(selector))
+      const filterElement = Util.makeArray(SelectorEngine.find(selector))
         .filter((foundElem) => foundElem === element)
 
       if (selector !== null && filterElement.length) {
@@ -130,7 +130,7 @@ class Collapse {
     let activesData
 
     if (this._parent) {
-      actives = Util.makeArray(this._parent.querySelectorAll(Selector.ACTIVES))
+      actives = Util.makeArray(SelectorEngine.find(Selector.ACTIVES, this._parent))
         .filter((elem) => {
           if (typeof this._config.parent === 'string') {
             return elem.getAttribute('data-parent') === this._config.parent
@@ -343,7 +343,7 @@ class Collapse {
 
   static _getTargetFromElement(element) {
     const selector = Util.getSelectorFromElement(element)
-    return selector ? document.querySelector(selector) : null
+    return selector ? SelectorEngine.findOne(selector) : null
   }
 
   static _collapseInterface(element, config) {

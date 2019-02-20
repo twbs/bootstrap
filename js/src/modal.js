@@ -246,7 +246,7 @@ class Modal {
     this._element.setAttribute('aria-modal', true)
 
     if (this._dialog.classList.contains(ClassName.SCROLLABLE)) {
-      this._dialog.querySelector(Selector.MODAL_BODY).scrollTop = 0
+      SelectorEngine.findOne(Selector.MODAL_BODY, this._dialog).scrollTop = 0
     } else {
       this._element.scrollTop = 0
     }
