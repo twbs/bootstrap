@@ -118,7 +118,7 @@ class ScrollSpy {
 
     this._scrollHeight = this._getScrollHeight()
 
-    const targets = Util.makeArray(document.querySelectorAll(this._selector))
+    const targets = Util.makeArray(SelectorEngine.find(this._selector))
 
     targets
       .map((element) => {
@@ -126,7 +126,7 @@ class ScrollSpy {
         const targetSelector = Util.getSelectorFromElement(element)
 
         if (targetSelector) {
-          target = document.querySelector(targetSelector)
+          target = SelectorEngine.findOne(targetSelector)
         }
 
         if (target) {
@@ -284,7 +284,7 @@ class ScrollSpy {
   }
 
   _clear() {
-    Util.makeArray(document.querySelectorAll(this._selector))
+    Util.makeArray(SelectorEngine.find(this._selector))
       .filter((node) => node.classList.contains(ClassName.ACTIVE))
       .forEach((node) => node.classList.remove(ClassName.ACTIVE))
   }

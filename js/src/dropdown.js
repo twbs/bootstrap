@@ -152,7 +152,7 @@ class Dropdown {
        * Popper - https://popper.js.org
        */
       if (typeof Popper === 'undefined') {
-        throw new TypeError('Bootstrap\'s dropdowns require Popper.js (https://popper.js.org/)')
+        throw new TypeError('Bootstrap\'s dropdowns require Popper.js (https://popper.js.org)')
       }
 
       let referenceElement = this._element
@@ -286,7 +286,7 @@ class Dropdown {
       const parent = Dropdown._getParentFromElement(this._element)
 
       if (parent) {
-        this._menu = parent.querySelector(Selector.MENU)
+        this._menu = SelectorEngine.findOne(Selector.MENU, parent)
       }
     }
     return this._menu
@@ -442,7 +442,7 @@ class Dropdown {
     const selector = Util.getSelectorFromElement(element)
 
     if (selector) {
-      parent = document.querySelector(selector)
+      parent = SelectorEngine.findOne(selector)
     }
 
     return parent || element.parentNode
@@ -482,7 +482,7 @@ class Dropdown {
       return
     }
 
-    const items = Util.makeArray(parent.querySelectorAll(Selector.VISIBLE_ITEMS))
+    const items = Util.makeArray(SelectorEngine.find(Selector.VISIBLE_ITEMS, parent))
 
     if (!items.length) {
       return

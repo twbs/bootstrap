@@ -106,7 +106,7 @@ class Tab {
     }
 
     if (selector) {
-      target = document.querySelector(selector)
+      target = SelectorEngine.findOne(selector)
     }
 
     this._activate(
@@ -193,7 +193,7 @@ class Tab {
       const dropdownElement = SelectorEngine.closest(element, Selector.DROPDOWN)
 
       if (dropdownElement) {
-        Util.makeArray(dropdownElement.querySelectorAll(Selector.DROPDOWN_TOGGLE))
+        Util.makeArray(SelectorEngine.find(Selector.DROPDOWN_TOGGLE))
           .forEach((dropdown) => dropdown.classList.add(ClassName.ACTIVE))
       }
 
