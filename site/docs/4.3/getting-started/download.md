@@ -55,7 +55,8 @@ Install Bootstrap in your Node.js powered apps with [the npm package](https://ww
 npm install bootstrap
 {% endhighlight %}
 
-`require('bootstrap')` will load all of Bootstrap's plugins onto the `window` object. The `bootstrap` module itself does not export anything. You can manually load Bootstrap's plugins individually by loading the `/js/*.js` files under the package's top-level directory.
+`const bootstrap = require('bootstrap')` or `import bootstrap from 'bootstrap'` will load all of Bootstrap's plugins onto a `bootstrap` object.
+The `bootstrap` module itself exports all of our plugins. You can manually load Bootstrap's plugins individually by loading the `/js/dist/*.js` files under the package's top-level directory.
 
 Bootstrap's `package.json` contains some additional metadata under the following keys:
 
