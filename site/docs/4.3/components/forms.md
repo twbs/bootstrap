@@ -1164,10 +1164,9 @@ Custom checkboxes can also utilize the `:indeterminate` pseudo class when manual
   </div>
 </div>
 
-If you're using jQuery, something like this should suffice:
-
 {% highlight js %}
-$('.your-checkbox').prop('indeterminate', true)
+var checkbox = document.querySelector('.your-checkbox')
+checkbox.indeterminate = true
 {% endhighlight %}
 
 #### Radios
