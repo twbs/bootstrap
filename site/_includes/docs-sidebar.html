@@ -5,7 +5,7 @@
   </button>
 </form>
 
-<nav class="collapse bd-links" id="bd-docs-nav">
+<nav class="collapse bd-links" id="bd-docs-nav" aria-label="Main navigation">
   {%- assign page_slug = page.url | split: '/' | last -%}
   {%- for group in site.data.nav -%}
   {%- assign link = group.pages | first -%}
