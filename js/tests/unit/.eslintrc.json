@@ -1,6 +1,6 @@
 {
+  "root": true,
   "env": {
-    "es6": false,
     "jquery": true,
     "qunit": true
   },
@@ -23,23 +23,35 @@
     "ecmaVersion": 5,
     "sourceType": "script"
   },
-  "extends": "../../../.eslintrc.json",
+  "extends": [
+    "plugin:unicorn/recommended",
+    "xo",
+    "xo/browser"
+  ],
   "rules": {
-    "no-console": "error",
-    // Best Practices
-    "consistent-return": "off",
-    "no-magic-numbers": "off",
-    "vars-on-top": "off",
-
-    // Stylistic Issues
-    "func-style": "off",
-    "spaced-comment": "off",
-
-    // ECMAScript 6
-    "no-var": "off",
-    "object-shorthand": "off",
-    "prefer-arrow-callback": "off",
-    "prefer-template": "off",
-    "prefer-rest-params": "off"
+    "capitalized-comments": "off",
+    "indent": [
+      "error",
+      2,
+      {
+        "MemberExpression": "off",
+        "SwitchCase": 1
+      }
+    ],
+    "multiline-ternary": [
+      "error",
+      "always-multiline"
+    ],
+    "object-curly-spacing": [
+      "error",
+      "always"
+    ],
+    "semi": [
+      "error",
+      "never"
+    ],
+    "strict": "error",
+    "unicorn/filename-case": "off",
+    "unicorn/no-unused-properties": "error"
   }
 }

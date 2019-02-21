@@ -1,7 +1,7 @@
 $(function () {
   'use strict'
 
-  var Tab = typeof window.bootstrap !== 'undefined' ? window.bootstrap.Tab : window.Tab
+  var Tab = typeof window.bootstrap === 'undefined' ? window.Tab : window.bootstrap.Tab
 
   QUnit.module('tabs plugin')
 

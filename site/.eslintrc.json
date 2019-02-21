@@ -1,26 +1,36 @@
 {
-  "env": {
-    "es6": false
-  },
+  "root": true,
   "parserOptions": {
-    "ecmaVersion": 5,
     "sourceType": "script"
   },
-  "extends": "../.eslintrc.json",
+  "extends": [
+    "plugin:unicorn/recommended",
+    "xo",
+    "xo/browser"
+  ],
   "rules": {
-    "no-new": "off",
-    // Best Practices
-    "no-magic-numbers": "off",
-    "vars-on-top": "off",
-
-    // Stylistic Issues
-    "spaced-comment": "off",
-
-    // ECMAScript 6
-    "no-var": "off",
-    "object-shorthand": "off",
-    "prefer-arrow-callback": "off",
-    "prefer-template": "off",
-    "prefer-rest-params": "off"
+    "capitalized-comments": "off",
+    "indent": [
+      "error",
+      2,
+      {
+        "MemberExpression": "off",
+        "SwitchCase": 1
+      }
+    ],
+    "multiline-ternary": [
+      "error",
+      "always-multiline"
+    ],
+    "object-curly-spacing": [
+      "error",
+      "always"
+    ],
+    "semi": [
+      "error",
+      "never"
+    ],
+    "strict": "error",
+    "unicorn/prefer-query-selector": "off"
   }
 }
