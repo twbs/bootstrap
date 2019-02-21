@@ -217,86 +217,83 @@
     <script src="../../dist/tooltip.js"></script>
     <script src="../../dist/popover.js"></script>
     <script>
+      var ffBugTestResult = document.getElementById('ff-bug-test-result')
       var firefoxTestDone = false
-      document.addEventListener('DOMContentLoaded', function () {
-        var ffBugTestResult = document.getElementById('ff-bug-test-result')
 
-        function reportFirefoxTestResult(result) {
-          if (!firefoxTestDone) {
-            ffBugTestResult.classList
-              .add(result ? 'text-success' : 'text-danger')
+      function reportFirefoxTestResult(result) {
+        if (!firefoxTestDone) {
+          ffBugTestResult.classList.add(result ? 'text-success' : 'text-danger')
+          ffBugTestResult.innerHTML = result ? 'PASS' : 'FAIL'
+        }
+      }
 
-            ffBugTestResult.innerHTML = result ? 'PASS' : 'FAIL'
-          }
+      [].slice.call(document.querySelectorAll('[data-toggle="popover"]'))
+        .forEach(function (popover) {
+          new Popover(popover)
+        })
+
+      var tooltipList = [].slice.call(document.querySelectorAll('[data-toggle="tooltip"]'))
+      tooltipList.forEach(function (tooltip) {
+        new Tooltip(tooltip)
+      })
+
+      var tallToggle = document.getElementById('tall-toggle')
+      var tall = document.getElementById('tall')
+      tallToggle.addEventListener('click', function () {
+        if (tall.style.display === 'none') {
+          tall.style.display = 'block'
+        } else {
+          tall.style.display = 'none'
+        }
+      })
+
+      var ffBugInput = document.getElementById('ff-bug-input')
+      var firefoxModal = document.getElementById('firefoxModal')
+      function handlerClickFfBugInput() {
+        firefoxModal.addEventListener('focus', reportFirefoxTestResult.bind(false))
+        ffBugInput.addEventListener('focus', reportFirefoxTestResult.bind(true))
+        ffBugInput.removeEventListener('focus', handlerClickFfBugInput)
+      }
+      ffBugInput.addEventListener('focus', handlerClickFfBugInput)
+
+      var btnPreventModal = document.getElementById('btnPreventModal')
+      var modalFf = new Modal(firefoxModal)
+
+      btnPreventModal.addEventListener('click', function () {
+        function shownFirefoxModal() {
+          modalFf.hide()
+          firefoxModal.removeEventListener('shown.bs.modal', hideFirefoxModal)
         }
 
-        [].slice.call(document.querySelectorAll('[data-toggle="popover"]'))
-          .forEach(function (popover) {
-            new Popover(popover)
-          })
+        function hideFirefoxModal(event) {
+          event.preventDefault()
+          firefoxModal.removeEventListener('hide.bs.modal', hideFirefoxModal)
 
-        var tooltipList = [].slice.call(document.querySelectorAll('[data-toggle="tooltip"]'))
-        tooltipList.forEach(function (tooltip) {
-            new Tooltip(tooltip)
-          })
-
-        var tallToggle = document.getElementById('tall-toggle')
-        var tall = document.getElementById('tall')
-        tallToggle.addEventListener('click', function () {
-          if (tall.style.display === 'none') {
-            tall.style.display = 'block'
+          if (modalFf._isTransitioning) {
+            console.error('Modal plugin should not set _isTransitioning when hide event is prevented')
           } else {
-            tall.style.display = 'none'
+            console.log('Test passed')
+            modalFf.hide() // work as expected
           }
-        })
-
-        var ffBugInput = document.getElementById('ff-bug-input')
-        var firefoxModal = document.getElementById('firefoxModal')
-        function handlerClickFfBugInput() {
-          firefoxModal.addEventListener('focus', reportFirefoxTestResult.bind(false))
-          ffBugInput.addEventListener('focus', reportFirefoxTestResult.bind(true))
-          ffBugInput.removeEventListener('focus', handlerClickFfBugInput)
         }
-        ffBugInput.addEventListener('focus', handlerClickFfBugInput)
 
-        var btnPreventModal = document.getElementById('btnPreventModal')
-        var modalFf = new Modal(firefoxModal)
+        firefoxModal.addEventListener('shown.bs.modal', shownFirefoxModal)
+        firefoxModal.addEventListener('hide.bs.modal', hideFirefoxModal)
+        modalFf.show()
+      })
 
-        btnPreventModal.addEventListener('click', function () {
-          function shownFirefoxModal() {
-            modalFf.hide()
-            firefoxModal.removeEventListener('shown.bs.modal', hideFirefoxModal)
-          }
+      // Test transition duration
+      var t0
+      var t1
+      var slowModal = document.getElementById('slowModal')
 
-          function hideFirefoxModal(event) {
-            event.preventDefault()
-            firefoxModal.removeEventListener('hide.bs.modal', hideFirefoxModal)
+      slowModal.addEventListener('shown.bs.modal', function () {
+        t1 = performance.now()
+        console.log('transition-duration took ' + (t1 - t0) + 'ms.')
+      })
 
-            if (modalFf._isTransitioning) {
-              console.error('Modal plugin should not set _isTransitioning when hide event is prevented')
-            } else {
-              console.log('Test passed')
-              modalFf.hide() // work as expected
-            }
-          }
-
-          firefoxModal.addEventListener('shown.bs.modal', shownFirefoxModal)
-          firefoxModal.addEventListener('hide.bs.modal', hideFirefoxModal)
-          modalFf.show()
-        })
-
-        // Test transition duration
-        var t0, t1;
-        var slowModal = document.getElementById('slowModal')
-
-        slowModal.addEventListener('shown.bs.modal', function () {
-          t1 = performance.now()
-          console.log('transition-duration took ' + (t1 - t0) + 'ms.')
-        })
-
-        slowModal.addEventListener('show.bs.modal', function () {
-          t0 = performance.now()
-        })
+      slowModal.addEventListener('show.bs.modal', function () {
+        t0 = performance.now()
       })
     </script>
   </body>

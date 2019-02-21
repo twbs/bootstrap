@@ -41,12 +41,10 @@
     <script src="../../dist/tooltip.js"></script>
     <script src="../../dist/popover.js"></script>
     <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        [].slice.call(document.querySelectorAll('[data-toggle="popover"]'))
-          .forEach(function (popover) {
-            new Popover(popover)
-          })
-      })
+      [].slice.call(document.querySelectorAll('[data-toggle="popover"]'))
+        .forEach(function (popover) {
+          new Popover(popover)
+        })
     </script>
   </body>
 </html>
