@@ -119,11 +119,6 @@ $(function () {
     assert.ok(id !== id2, id + ' !== ' + id2)
   })
 
-  QUnit.test('Util.supportsTransitionEnd should return true', function (assert) {
-    assert.expect(1)
-    assert.ok(Util.supportsTransitionEnd())
-  })
-
   QUnit.test('Util.findShadowRoot should find the shadow DOM root', function (assert) {
     // Only for newer browsers
     if (!document.documentElement.attachShadow) {
@@ -159,5 +154,40 @@ $(function () {
       assert.equal(null, Util.findShadowRoot($div[0]))
       sandbox.restore()
     }
+  })
+
+  QUnit.test('noop should return an empty function', function (assert) {
+    assert.expect(1)
+    Util.noop().call()
+    assert.ok(typeof Util.noop() === 'function')
+  })
+
+  QUnit.test('should return jQuery if present', function (assert) {
+    assert.expect(2)
+
+    assert.equal(Util.jQuery, $)
+
+    $.noConflict()
+
+    assert.equal(Util.jQuery, jQuery)
+
+    window.$ = jQuery
+  })
+
+  QUnit.test('Util.emulateTransitionEnd should emulate transition end', function (assert) {
+    assert.expect(1)
+    var $div = $('<div></div>').appendTo($('#qunit-fixture'))
+
+    var spy = sinon.spy($div[0], 'removeEventListener')
+
+    Util.emulateTransitionEnd($div[0], 7)
+
+    assert.ok(spy.notCalled)
+  })
+
+  QUnit.test('Util.makeArray should return empty array on null', function (assert) {
+    assert.expect(1)
+
+    assert.ok(Util.makeArray(null).length === 0)
   })
 })

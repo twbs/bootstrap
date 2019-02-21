@@ -5,55 +5,18 @@
  * --------------------------------------------------------------------------
  */
 
-import $ from 'jquery'
-
 /**
  * ------------------------------------------------------------------------
  * Private TransitionEnd Helpers
  * ------------------------------------------------------------------------
  */
 
-const TRANSITION_END = 'transitionend'
 const MAX_UID = 1000000
 const MILLISECONDS_MULTIPLIER = 1000
 
 // Shoutout AngusCroll (https://goo.gl/pxwQGp)
 function toType(obj) {
   return {}.toString.call(obj).match(/\s([a-z]+)/i)[1].toLowerCase()
-}
-
-function getSpecialTransitionEndEvent() {
-  return {
-    bindType: TRANSITION_END,
-    delegateType: TRANSITION_END,
-    handle(event) {
-      if ($(event.target).is(this)) {
-        return event.handleObj.handler.apply(this, arguments) // eslint-disable-line prefer-rest-params
-      }
-      return undefined // eslint-disable-line no-undefined
-    }
-  }
-}
-
-function transitionEndEmulator(duration) {
-  let called = false
-
-  $(this).one(Util.TRANSITION_END, () => {
-    called = true
-  })
-
-  setTimeout(() => {
-    if (!called) {
-      Util.triggerTransitionEnd(this)
-    }
-  }, duration)
-
-  return this
-}
-
-function setTransitionEndSupport() {
-  $.fn.emulateTransitionEnd = transitionEndEmulator
-  $.event.special[Util.TRANSITION_END] = getSpecialTransitionEndEvent()
 }
 
 /**
@@ -63,8 +26,7 @@ function setTransitionEndSupport() {
  */
 
 const Util = {
-
-  TRANSITION_END: 'bsTransitionEnd',
+  TRANSITION_END: 'transitionend',
 
   getUID(prefix) {
     do {
@@ -95,8 +57,8 @@ const Util = {
     }
 
     // Get transition-duration of the element
-    let transitionDuration = $(element).css('transition-duration')
-    let transitionDelay = $(element).css('transition-delay')
+    let transitionDuration = window.getComputedStyle(element).transitionDuration
+    let transitionDelay = window.getComputedStyle(element).transitionDelay
 
     const floatTransitionDuration = parseFloat(transitionDuration)
     const floatTransitionDelay = parseFloat(transitionDelay)
@@ -118,16 +80,28 @@ const Util = {
   },
 
   triggerTransitionEnd(element) {
-    $(element).trigger(TRANSITION_END)
-  },
-
-  // TODO: Remove in v5
-  supportsTransitionEnd() {
-    return Boolean(TRANSITION_END)
+    element.dispatchEvent(new Event(Util.TRANSITION_END))
   },
 
   isElement(obj) {
     return (obj[0] || obj).nodeType
+  },
+
+  emulateTransitionEnd(element, duration) {
+    let called = false
+    const durationPadding = 5
+    const emulatedDuration = duration + durationPadding
+    function listener() {
+      called = true
+      element.removeEventListener(Util.TRANSITION_END, listener)
+    }
+
+    element.addEventListener(Util.TRANSITION_END, listener)
+    setTimeout(() => {
+      if (!called) {
+        Util.triggerTransitionEnd(element)
+      }
+    }, emulatedDuration)
   },
 
   typeCheckConfig(componentName, config, configTypes) {
@@ -146,6 +120,27 @@ const Util = {
         }
       }
     }
+  },
+
+  makeArray(nodeList) {
+    if (!nodeList) {
+      return []
+    }
+
+    return [].slice.call(nodeList)
+  },
+
+  isVisible(element) {
+    if (!element) {
+      return false
+    }
+
+    if (element.style !== null && element.parentNode !== null && typeof element.parentNode.style !== 'undefined') {
+      return element.style.display !== 'none' &&
+        element.parentNode.style.display !== 'none' &&
+        element.style.visibility !== 'hidden'
+    }
+    return false
   },
 
   findShadowRoot(element) {
@@ -169,9 +164,16 @@ const Util = {
     }
 
     return Util.findShadowRoot(element.parentNode)
+  },
+
+  noop() {
+    // eslint-disable-next-line no-empty-function
+    return function () {}
+  },
+
+  get jQuery() {
+    return window.jQuery
   }
 }
-
-setTransitionEndSupport()
 
 export default Util

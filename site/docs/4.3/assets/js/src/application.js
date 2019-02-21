@@ -10,67 +10,105 @@
  * For details, see https://creativecommons.org/licenses/by/3.0/.
  */
 
-/* global ClipboardJS: false, anchors: false, bsCustomFileInput: false */
+/* global ClipboardJS: false, anchors: false, bootstrap: false, bsCustomFileInput: false */
 
-(function ($) {
+(function () {
   'use strict'
 
-  $(function () {
+  document.addEventListener('DOMContentLoaded', function () {
     // Tooltip and popover demos
-    $('.tooltip-demo').tooltip({
-      selector: '[data-toggle="tooltip"]',
-      container: 'body'
-    })
-
-    $('[data-toggle="popover"]').popover()
-
-    $('.toast')
-      .toast({
-        autohide: false
+    bootstrap.Util.makeArray(document.querySelectorAll('.tooltip-demo'))
+      .forEach(function (tooltip) {
+        new bootstrap.Tooltip(tooltip, {
+          selector: '[data-toggle="tooltip"]'
+        })
       })
-      .toast('show')
+
+    bootstrap.Util.makeArray(document.querySelectorAll('[data-toggle="popover"]'))
+      .forEach(function (popover) {
+        new bootstrap.Popover(popover)
+      })
+
+    bootstrap.Util.makeArray(document.querySelectorAll('.toast'))
+      .forEach(function (toastNode) {
+        var toast = new bootstrap.Toast(toastNode, {
+          autohide: false
+        })
+
+        toast.show()
+      })
 
     // Demos within modals
-    $('.tooltip-test').tooltip()
-    $('.popover-test').popover()
+    bootstrap.Util.makeArray(document.querySelectorAll('.tooltip-test'))
+      .forEach(function (tooltip) {
+        new bootstrap.Tooltip(tooltip)
+      })
+
+    bootstrap.Util.makeArray(document.querySelectorAll('.popover-test'))
+      .forEach(function (popover) {
+        new bootstrap.Popover(popover)
+      })
 
     // Indeterminate checkbox example
-    $('.bd-example-indeterminate [type="checkbox"]').prop('indeterminate', true)
+    bootstrap.Util.makeArray(document.querySelectorAll('.bd-example-indeterminate [type="checkbox"]'))
+      .forEach(function (checkbox) {
+        checkbox.indeterminate = true
+      })
 
     // Disable empty links in docs examples
-    $('.bd-content [href="#"]').click(function (e) {
-      e.preventDefault()
-    })
+    bootstrap.Util.makeArray(document.querySelectorAll('.bd-content [href="#"]'))
+      .forEach(function (link) {
+        link.addEventListener('click', function (e) {
+          e.preventDefault()
+        })
+      })
 
     // Modal relatedTarget demo
-    $('#exampleModal').on('show.bs.modal', function (event) {
-      var $button = $(event.relatedTarget)      // Button that triggered the modal
-      var recipient = $button.data('whatever')  // Extract info from data-* attributes
-      // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-      // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-      var $modal = $(this)
-      $modal.find('.modal-title').text('New message to ' + recipient)
-      $modal.find('.modal-body input').val(recipient)
-    })
+    var exampleModal = document.getElementById('exampleModal')
+    if (exampleModal) {
+      exampleModal.addEventListener('show.bs.modal', function (event) {
+        var button = event.relatedTarget // Button that triggered the modal
+        var recipient = button.getAttribute('data-whatever') // Extract info from data-* attributes
+
+        // Update the modal's content.
+        var modalTitle = exampleModal.querySelector('.modal-title')
+        var modalBodyInput = exampleModal.querySelector('.modal-body input')
+
+        modalTitle.innerHTML = 'New message to ' + recipient
+        modalBodyInput.value = recipient
+      })
+    }
 
     // Activate animated progress bar
-    $('.bd-toggle-animated-progress').on('click', function () {
-      $(this).siblings('.progress').find('.progress-bar-striped').toggleClass('progress-bar-animated')
-    })
+    bootstrap.Util.makeArray(document.querySelectorAll('.bd-toggle-animated-progress > .progress-bar-striped'))
+      .forEach(function (progressBar) {
+        progressBar.addEventListener('click', function () {
+          if (progressBar.classList.contains('progress-bar-animated')) {
+            progressBar.classList.remove('progress-bar-animated')
+          } else {
+            progressBar.classList.add('progress-bar-animated')
+          }
+        })
+      })
 
     // Insert copy to clipboard button before .highlight
-    $('figure.highlight, div.highlight').each(function () {
-      var btnHtml = '<div class="bd-clipboard"><button type="button" class="btn-clipboard" title="Copy to clipboard">Copy</button></div>'
-      $(this).before(btnHtml)
-      $('.btn-clipboard')
-        .tooltip()
-        .on('mouseleave', function () {
+    var btnHtml = '<div class="bd-clipboard"><button type="button" class="btn-clipboard" title="Copy to clipboard">Copy</button></div>'
+    bootstrap.Util.makeArray(document.querySelectorAll('figure.highlight, div.highlight'))
+      .forEach(function (element) {
+        element.insertAdjacentHTML('beforebegin', btnHtml)
+      })
+
+    bootstrap.Util.makeArray(document.querySelectorAll('.btn-clipboard'))
+      .forEach(function (btn) {
+        var tooltipBtn = new bootstrap.Tooltip(btn)
+
+        btn.addEventListener('mouseleave', function () {
           // Explicitly hide tooltip, since after clicking it remains
           // focused (as it's a button), so tooltip would otherwise
           // remain visible until focus is moved away
-          $(this).tooltip('hide')
+          tooltipBtn.hide()
         })
-    })
+      })
 
     var clipboard = new ClipboardJS('.btn-clipboard', {
       target: function (trigger) {
@@ -79,34 +117,41 @@
     })
 
     clipboard.on('success', function (e) {
-      $(e.trigger)
-        .attr('title', 'Copied!')
-        .tooltip('_fixTitle')
-        .tooltip('show')
-        .attr('title', 'Copy to clipboard')
-        .tooltip('_fixTitle')
+      var tooltipBtn = bootstrap.Tooltip._getInstance(e.trigger)
 
+      e.trigger.setAttribute('title', 'Copied!')
+      tooltipBtn._fixTitle()
+      tooltipBtn.show()
+
+      e.trigger.setAttribute('title', 'Copy to clipboard')
+      tooltipBtn._fixTitle()
       e.clearSelection()
     })
 
     clipboard.on('error', function (e) {
       var modifierKey = /Mac/i.test(navigator.userAgent) ? '\u2318' : 'Ctrl-'
       var fallbackMsg = 'Press ' + modifierKey + 'C to copy'
+      var tooltipBtn = bootstrap.Tooltip._getInstance(e.trigger)
 
-      $(e.trigger)
-        .attr('title', fallbackMsg)
-        .tooltip('_fixTitle')
-        .tooltip('show')
-        .attr('title', 'Copy to clipboard')
-        .tooltip('_fixTitle')
+      e.trigger.setAttribute('title', fallbackMsg)
+      tooltipBtn._fixTitle()
+      tooltipBtn.show()
+
+      e.trigger.setAttribute('title', 'Copy to clipboard')
+      tooltipBtn._fixTitle()
     })
 
     anchors.options = {
       icon: '#'
     }
     anchors.add('.bd-content > h2, .bd-content > h3, .bd-content > h4, .bd-content > h5')
-    $('.bd-content').children('h2, h3, h4, h5').wrapInner('<span class="bd-content-title"></span>')
+
+    // Wrap inner
+    bootstrap.Util.makeArray(document.querySelectorAll('.bd-content > h2, .bd-content > h3, .bd-content > h4, .bd-content > h5'))
+      .forEach(function (hEl) {
+        hEl.innerHTML = '<span class="bd-content-title">' + hEl.innerHTML + '</span>'
+      })
 
     bsCustomFileInput.init()
   })
-}(jQuery))
+}())
