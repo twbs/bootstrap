@@ -5,10 +5,18 @@
  * --------------------------------------------------------------------------
  */
 
+import {
+  jQuery as $,
+  TRANSITION_END,
+  emulateTransitionEnd,
+  getSelectorFromElement,
+  getTransitionDurationFromElement,
+  makeArray,
+  reflow
+} from './util/index'
 import Data from './dom/data'
 import EventHandler from './dom/eventHandler'
 import SelectorEngine from './dom/selectorEngine'
-import Util from './util'
 
 /**
  * ------------------------------------------------------------------------
@@ -80,11 +88,11 @@ class Tab {
     let target
     let previous
     const listElement = SelectorEngine.closest(this._element, Selector.NAV_LIST_GROUP)
-    const selector = Util.getSelectorFromElement(this._element)
+    const selector = getSelectorFromElement(this._element)
 
     if (listElement) {
       const itemSelector = listElement.nodeName === 'UL' || listElement.nodeName === 'OL' ? Selector.ACTIVE_UL : Selector.ACTIVE
-      previous = Util.makeArray(SelectorEngine.find(itemSelector, listElement))
+      previous = makeArray(SelectorEngine.find(itemSelector, listElement))
       previous = previous[previous.length - 1]
     }
 
@@ -153,11 +161,11 @@ class Tab {
     )
 
     if (active && isTransitioning) {
-      const transitionDuration = Util.getTransitionDurationFromElement(active)
+      const transitionDuration = getTransitionDurationFromElement(active)
       active.classList.remove(ClassName.SHOW)
 
-      EventHandler.one(active, Util.TRANSITION_END, complete)
-      Util.emulateTransitionEnd(active, transitionDuration)
+      EventHandler.one(active, TRANSITION_END, complete)
+      emulateTransitionEnd(active, transitionDuration)
     } else {
       complete()
     }
@@ -183,7 +191,7 @@ class Tab {
       element.setAttribute('aria-selected', true)
     }
 
-    Util.reflow(element)
+    reflow(element)
 
     if (element.classList.contains(ClassName.FADE)) {
       element.classList.add(ClassName.SHOW)
@@ -193,7 +201,7 @@ class Tab {
       const dropdownElement = SelectorEngine.closest(element, Selector.DROPDOWN)
 
       if (dropdownElement) {
-        Util.makeArray(SelectorEngine.find(Selector.DROPDOWN_TOGGLE))
+        makeArray(SelectorEngine.find(Selector.DROPDOWN_TOGGLE))
           .forEach((dropdown) => dropdown.classList.add(ClassName.ACTIVE))
       }
 
@@ -242,9 +250,9 @@ EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (
  * ------------------------------------------------------------------------
  * jQuery
  * ------------------------------------------------------------------------
+ * add .tab to jQuery only if jQuery is present
  */
 
-const $ = Util.jQuery
 if (typeof $ !== 'undefined') {
   const JQUERY_NO_CONFLICT = $.fn[NAME]
   $.fn[NAME]               = Tab._jQueryInterface

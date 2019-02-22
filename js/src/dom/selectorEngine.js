@@ -6,7 +6,9 @@
  */
 
 import Polyfill from './polyfill'
-import Util from '../util'
+import {
+  makeArray
+} from '../util/index'
 
 /**
  * ------------------------------------------------------------------------
@@ -44,7 +46,7 @@ const SelectorEngine = {
       return null
     }
 
-    const children = Util.makeArray(element.children)
+    const children = makeArray(element.children)
 
     return children.filter((child) => this.matches(child, selector))
   },

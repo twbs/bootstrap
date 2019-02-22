@@ -6,15 +6,26 @@
  */
 
 import {
+  jQuery as $,
+  TRANSITION_END,
+  emulateTransitionEnd,
+  findShadowRoot,
+  getTransitionDurationFromElement,
+  getUID,
+  isElement,
+  makeArray,
+  noop,
+  typeCheckConfig
+} from './util/index'
+import {
   DefaultWhitelist,
   sanitizeHtml
-} from './tools/sanitizer'
+} from './util/sanitizer'
 import Data from './dom/data'
 import EventHandler from './dom/eventHandler'
 import Manipulator from './dom/manipulator'
 import Popper from 'popper.js'
 import SelectorEngine from './dom/selectorEngine'
-import Util from './util'
 
 /**
  * ------------------------------------------------------------------------
@@ -257,7 +268,7 @@ class Tooltip {
 
     if (this.isWithContent() && this._isEnabled) {
       const showEvent = EventHandler.trigger(this.element, this.constructor.Event.SHOW)
-      const shadowRoot = Util.findShadowRoot(this.element)
+      const shadowRoot = findShadowRoot(this.element)
       const isInTheDom = shadowRoot !== null
         ? shadowRoot.contains(this.element)
         : this.element.ownerDocument.documentElement.contains(this.element)
@@ -267,7 +278,7 @@ class Tooltip {
       }
 
       const tip   = this.getTipElement()
-      const tipId = Util.getUID(this.constructor.NAME)
+      const tipId = getUID(this.constructor.NAME)
 
       tip.setAttribute('id', tipId)
       this.element.setAttribute('aria-describedby', tipId)
@@ -323,8 +334,8 @@ class Tooltip {
       // only needed because of broken event delegation on iOS
       // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
       if ('ontouchstart' in document.documentElement) {
-        Util.makeArray(document.body.children).forEach((element) => {
-          EventHandler.on(element, 'mouseover', Util.noop())
+        makeArray(document.body.children).forEach((element) => {
+          EventHandler.on(element, 'mouseover', noop())
         })
       }
 
@@ -343,9 +354,9 @@ class Tooltip {
       }
 
       if (this.tip.classList.contains(ClassName.FADE)) {
-        const transitionDuration = Util.getTransitionDurationFromElement(this.tip)
-        EventHandler.one(this.tip, Util.TRANSITION_END, complete)
-        Util.emulateTransitionEnd(this.tip, transitionDuration)
+        const transitionDuration = getTransitionDurationFromElement(this.tip)
+        EventHandler.one(this.tip, TRANSITION_END, complete)
+        emulateTransitionEnd(this.tip, transitionDuration)
       } else {
         complete()
       }
@@ -381,8 +392,8 @@ class Tooltip {
     // If this is a touch-enabled device we remove the extra
     // empty mouseover listeners we added for iOS support
     if ('ontouchstart' in document.documentElement) {
-      Util.makeArray(document.body.children)
-        .forEach((element) => EventHandler.off(element, 'mouseover', Util.noop))
+      makeArray(document.body.children)
+        .forEach((element) => EventHandler.off(element, 'mouseover', noop))
     }
 
     this._activeTrigger[Trigger.CLICK] = false
@@ -390,9 +401,10 @@ class Tooltip {
     this._activeTrigger[Trigger.HOVER] = false
 
     if (this.tip.classList.contains(ClassName.FADE)) {
-      const transitionDuration = Util.getTransitionDurationFromElement(tip)
-      EventHandler.one(tip, Util.TRANSITION_END, complete)
-      Util.emulateTransitionEnd(tip, transitionDuration)
+      const transitionDuration = getTransitionDurationFromElement(tip)
+
+      EventHandler.one(tip, TRANSITION_END, complete)
+      emulateTransitionEnd(tip, transitionDuration)
     } else {
       complete()
     }
@@ -507,7 +519,7 @@ class Tooltip {
       return document.body
     }
 
-    if (Util.isElement(this.config.container)) {
+    if (isElement(this.config.container)) {
       return this.config.container
     }
 
@@ -705,7 +717,7 @@ class Tooltip {
       config.content = config.content.toString()
     }
 
-    Util.typeCheckConfig(
+    typeCheckConfig(
       NAME,
       config,
       this.constructor.DefaultType
@@ -795,8 +807,9 @@ class Tooltip {
  * ------------------------------------------------------------------------
  * jQuery
  * ------------------------------------------------------------------------
+ * add .tooltip to jQuery only if jQuery is present
  */
-const $ = Util.jQuery
+
 if (typeof $ !== 'undefined') {
   const JQUERY_NO_CONFLICT  = $.fn[NAME]
   $.fn[NAME]                = Tooltip._jQueryInterface

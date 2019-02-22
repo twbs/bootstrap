@@ -15,20 +15,24 @@
 (function () {
   'use strict'
 
+  function makeArray(list) {
+    return [].slice.call(list)
+  }
+
   // Tooltip and popover demos
-  bootstrap.Util.makeArray(document.querySelectorAll('.tooltip-demo'))
+  makeArray(document.querySelectorAll('.tooltip-demo'))
     .forEach(function (tooltip) {
       new bootstrap.Tooltip(tooltip, {
         selector: '[data-toggle="tooltip"]'
       })
     })
 
-  bootstrap.Util.makeArray(document.querySelectorAll('[data-toggle="popover"]'))
+  makeArray(document.querySelectorAll('[data-toggle="popover"]'))
     .forEach(function (popover) {
       new bootstrap.Popover(popover)
     })
 
-  bootstrap.Util.makeArray(document.querySelectorAll('.toast'))
+  makeArray(document.querySelectorAll('.toast'))
     .forEach(function (toastNode) {
       var toast = new bootstrap.Toast(toastNode, {
         autohide: false
@@ -38,24 +42,24 @@
     })
 
   // Demos within modals
-  bootstrap.Util.makeArray(document.querySelectorAll('.tooltip-test'))
+  makeArray(document.querySelectorAll('.tooltip-test'))
     .forEach(function (tooltip) {
       new bootstrap.Tooltip(tooltip)
     })
 
-  bootstrap.Util.makeArray(document.querySelectorAll('.popover-test'))
+  makeArray(document.querySelectorAll('.popover-test'))
     .forEach(function (popover) {
       new bootstrap.Popover(popover)
     })
 
   // Indeterminate checkbox example
-  bootstrap.Util.makeArray(document.querySelectorAll('.bd-example-indeterminate [type="checkbox"]'))
+  makeArray(document.querySelectorAll('.bd-example-indeterminate [type="checkbox"]'))
     .forEach(function (checkbox) {
       checkbox.indeterminate = true
     })
 
   // Disable empty links in docs examples
-  bootstrap.Util.makeArray(document.querySelectorAll('.bd-content [href="#"]'))
+  makeArray(document.querySelectorAll('.bd-content [href="#"]'))
     .forEach(function (link) {
       link.addEventListener('click', function (e) {
         e.preventDefault()
@@ -79,7 +83,7 @@
   }
 
   // Activate animated progress bar
-  bootstrap.Util.makeArray(document.querySelectorAll('.bd-toggle-animated-progress > .progress-bar-striped'))
+  makeArray(document.querySelectorAll('.bd-toggle-animated-progress > .progress-bar-striped'))
     .forEach(function (progressBar) {
       progressBar.addEventListener('click', function () {
         if (progressBar.classList.contains('progress-bar-animated')) {
@@ -92,12 +96,12 @@
 
   // Insert copy to clipboard button before .highlight
   var btnHtml = '<div class="bd-clipboard"><button type="button" class="btn-clipboard" title="Copy to clipboard">Copy</button></div>'
-  bootstrap.Util.makeArray(document.querySelectorAll('figure.highlight, div.highlight'))
+  makeArray(document.querySelectorAll('figure.highlight, div.highlight'))
     .forEach(function (element) {
       element.insertAdjacentHTML('beforebegin', btnHtml)
     })
 
-  bootstrap.Util.makeArray(document.querySelectorAll('.btn-clipboard'))
+  makeArray(document.querySelectorAll('.btn-clipboard'))
     .forEach(function (btn) {
       var tooltipBtn = new bootstrap.Tooltip(btn)
 
@@ -146,7 +150,7 @@
   anchors.add('.bd-content > h2, .bd-content > h3, .bd-content > h4, .bd-content > h5')
 
   // Wrap inner
-  bootstrap.Util.makeArray(document.querySelectorAll('.bd-content > h2, .bd-content > h3, .bd-content > h4, .bd-content > h5'))
+  makeArray(document.querySelectorAll('.bd-content > h2, .bd-content > h3, .bd-content > h4, .bd-content > h5'))
     .forEach(function (hEl) {
       hEl.innerHTML = '<span class="bd-content-title">' + hEl.innerHTML + '</span>'
     })

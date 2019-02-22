@@ -5,11 +5,17 @@
  * --------------------------------------------------------------------------
  */
 
+import {
+  jQuery as $,
+  getSelectorFromElement,
+  getUID,
+  makeArray,
+  typeCheckConfig
+} from './util/index'
 import Data from './dom/data'
 import EventHandler from './dom/eventHandler'
 import Manipulator from './dom/manipulator'
 import SelectorEngine from './dom/selectorEngine'
-import Util from './util'
 
 /**
  * ------------------------------------------------------------------------
@@ -118,12 +124,12 @@ class ScrollSpy {
 
     this._scrollHeight = this._getScrollHeight()
 
-    const targets = Util.makeArray(SelectorEngine.find(this._selector))
+    const targets = makeArray(SelectorEngine.find(this._selector))
 
     targets
       .map((element) => {
         let target
-        const targetSelector = Util.getSelectorFromElement(element)
+        const targetSelector = getSelectorFromElement(element)
 
         if (targetSelector) {
           target = SelectorEngine.findOne(targetSelector)
@@ -174,13 +180,13 @@ class ScrollSpy {
     if (typeof config.target !== 'string') {
       let id = config.target.id
       if (!id) {
-        id = Util.getUID(NAME)
+        id = getUID(NAME)
         config.target.id = id
       }
       config.target = `#${id}`
     }
 
-    Util.typeCheckConfig(NAME, config, DefaultType)
+    typeCheckConfig(NAME, config, DefaultType)
 
     return config
   }
@@ -284,7 +290,7 @@ class ScrollSpy {
   }
 
   _clear() {
-    Util.makeArray(SelectorEngine.find(this._selector))
+    makeArray(SelectorEngine.find(this._selector))
       .filter((node) => node.classList.contains(ClassName.ACTIVE))
       .forEach((node) => node.classList.remove(ClassName.ACTIVE))
   }
@@ -321,7 +327,7 @@ class ScrollSpy {
  */
 
 EventHandler.on(window, Event.LOAD_DATA_API, () => {
-  Util.makeArray(SelectorEngine.find(Selector.DATA_SPY))
+  makeArray(SelectorEngine.find(Selector.DATA_SPY))
     .forEach((spy) => new ScrollSpy(spy, Manipulator.getDataAttributes(spy)))
 })
 
@@ -331,7 +337,6 @@ EventHandler.on(window, Event.LOAD_DATA_API, () => {
  * ------------------------------------------------------------------------
  */
 
-const $ = Util.jQuery
 if (typeof $ !== 'undefined') {
   const JQUERY_NO_CONFLICT = $.fn[NAME]
   $.fn[NAME]               = ScrollSpy._jQueryInterface

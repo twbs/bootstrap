@@ -56,6 +56,7 @@
     "js-minify-bundle": "terser --compress --mangle --comments \"/^!/\" --source-map \"content=dist/js/bootstrap.bundle.js.map,includeSources,url=bootstrap.bundle.min.js.map\" --output dist/js/bootstrap.bundle.min.js dist/js/bootstrap.bundle.js",
     "js-minify-docs": "cross-env-shell terser --mangle --comments \\\"/^!/\\\" --output site/docs/$npm_package_version_short/assets/js/docs.min.js site/docs/$npm_package_version_short/assets/js/vendor/anchor.min.js site/docs/$npm_package_version_short/assets/js/vendor/clipboard.min.js site/docs/$npm_package_version_short/assets/js/vendor/bs-custom-file-input.min.js \"site/docs/$npm_package_version_short/assets/js/src/*.js\"",
     "js-test": "npm-run-all js-test-karma* js-test-integration",
+    "js-debug": "cross-env DEBUG=true karma start js/tests/karma.conf.js",
     "js-test-karma": "karma start js/tests/karma.conf.js",
     "js-test-karma-old": "cross-env USE_OLD_JQUERY=true npm run js-test-karma",
     "js-test-karma-bundle": "cross-env BUNDLE=true npm run js-test-karma",
