@@ -1,8 +1,6 @@
 $(function () {
   'use strict'
 
-  window.Util = typeof bootstrap !== 'undefined' ? bootstrap.Util : Util
-
   QUnit.module('util', {
     afterEach: function () {
       $('#qunit-fixture').html('')

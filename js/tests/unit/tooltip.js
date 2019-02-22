@@ -722,8 +722,10 @@ $(function () {
 
   QUnit.test('should not reload the tooltip on subsequent mouseenter events', function (assert) {
     assert.expect(1)
+    var fakeId = 1
     var titleHtml = function () {
-      var uid = Util.getUID('tooltip')
+      var uid = fakeId
+      fakeId++
       return '<p id="tt-content">' + uid + '</p><p>' + uid + '</p><p>' + uid + '</p>'
     }
 
@@ -753,8 +755,10 @@ $(function () {
   QUnit.test('should not reload the tooltip if the mouse leaves and re-enters before hiding', function (assert) {
     assert.expect(4)
 
+    var fakeId = 1
     var titleHtml = function () {
-      var uid = Util.getUID('tooltip')
+      var uid = 'tooltip' + fakeId
+      fakeId++
       return '<p id="tt-content">' + uid + '</p><p>' + uid + '</p><p>' + uid + '</p>'
     }
 
@@ -1150,24 +1154,6 @@ $(function () {
 
     var tooltip = Tooltip._getInstance($trigger[0])
     assert.strictEqual(tooltip.config.template.indexOf('onError'), -1)
-  })
-
-  QUnit.test('should sanitize template by removing tags with XSS', function (assert) {
-    assert.expect(1)
-
-    var $trigger = $('<a href="#" rel="tooltip" data-trigger="click" title="Another tooltip"/>')
-      .appendTo('#qunit-fixture')
-      .bootstrapTooltip({
-        template: [
-          '<div>',
-          '  <a href="javascript:alert(7)">Click me</a>',
-          '  <span>Some content</span>',
-          '</div>'
-        ].join('')
-      })
-
-    var tooltip = Tooltip._getInstance($trigger[0])
-    assert.strictEqual(tooltip.config.template.indexOf('script'), -1)
   })
 
   QUnit.test('should allow custom sanitization rules', function (assert) {

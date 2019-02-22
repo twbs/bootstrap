@@ -11,6 +11,7 @@ const {
 const jqueryFile = process.env.USE_OLD_JQUERY ? 'https://code.jquery.com/jquery-1.9.1.min.js' : 'node_modules/jquery/dist/jquery.slim.min.js'
 const bundle = process.env.BUNDLE === 'true'
 const browserStack = process.env.BROWSER === 'true'
+const debug = process.env.DEBUG === 'true'
 
 const frameworks = [
   'qunit',
@@ -28,11 +29,11 @@ const detectBrowsers = {
   usePhantomJS: false,
   postDetection(availableBrowser) {
     if (typeof process.env.TRAVIS_JOB_ID !== 'undefined' || availableBrowser.includes('Chrome')) {
-      return ['ChromeHeadless']
+      return debug ? ['Chrome'] : ['ChromeHeadless']
     }
 
     if (availableBrowser.includes('Firefox')) {
-      return ['FirefoxHeadless']
+      return debug ? ['Firefox'] : ['FirefoxHeadless']
     }
 
     throw new Error('Please install Firefox or Chrome')
@@ -76,7 +77,8 @@ if (bundle) {
   conf.detectBrowsers = detectBrowsers
   files = files.concat([
     jqueryFile,
-    'dist/js/bootstrap.js'
+    'dist/js/bootstrap.js',
+    'js/tests/unit/*.js'
   ])
 } else if (browserStack) {
   conf.hostname = ip.address()
@@ -93,7 +95,8 @@ if (bundle) {
   reporters.push('BrowserStack')
   files = files.concat([
     'node_modules/jquery/dist/jquery.slim.min.js',
-    'js/coverage/dist/util.js',
+    'js/coverage/dist/util/util.js',
+    'js/coverage/dist/util/sanitizer.js',
     'js/coverage/dist/dom/polyfill.js',
     'js/coverage/dist/dom/eventHandler.js',
     'js/coverage/dist/dom/selectorEngine.js',
@@ -103,7 +106,8 @@ if (bundle) {
     'js/coverage/dist/tooltip.js',
     'js/coverage/dist/!(util|index|tooltip).js', // include all of our js/dist files except util.js, index.js and tooltip.js
     'js/tests/unit/*.js',
-    'js/tests/unit/dom/*.js'
+    'js/tests/unit/dom/*.js',
+    'js/tests/unit/util/*.js'
   ])
 } else {
   frameworks.push('detectBrowsers')
@@ -115,7 +119,8 @@ if (bundle) {
   )
   files = files.concat([
     jqueryFile,
-    'js/coverage/dist/util.js',
+    'js/coverage/dist/util/util.js',
+    'js/coverage/dist/util/sanitizer.js',
     'js/coverage/dist/dom/polyfill.js',
     'js/coverage/dist/dom/eventHandler.js',
     'js/coverage/dist/dom/selectorEngine.js',
@@ -125,7 +130,8 @@ if (bundle) {
     'js/coverage/dist/tooltip.js',
     'js/coverage/dist/!(util|index|tooltip).js', // include all of our js/dist files except util.js, index.js and tooltip.js
     'js/tests/unit/*.js',
-    'js/tests/unit/dom/*.js'
+    'js/tests/unit/dom/*.js',
+    'js/tests/unit/util/*.js'
   ])
   reporters.push('coverage-istanbul')
   conf.customLaunchers = customLaunchers
@@ -153,9 +159,12 @@ if (bundle) {
       }
     }
   }
-}
 
-files.push('js/tests/unit/*.js')
+  if (debug) {
+    conf.singleRun = false
+    conf.autoWatch = true
+  }
+}
 
 conf.frameworks = frameworks
 conf.plugins = plugins

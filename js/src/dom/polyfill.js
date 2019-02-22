@@ -5,7 +5,9 @@
  * --------------------------------------------------------------------------
  */
 
-import Util from '../util'
+import {
+  getUID
+} from '../util/index'
 
 /* istanbul ignore next */
 const Polyfill = (() => {
@@ -48,7 +50,7 @@ const Polyfill = (() => {
       const hasId = Boolean(this.id)
 
       if (!hasId) {
-        this.id = Util.getUID('scope')
+        this.id = getUID('scope')
       }
 
       let nodeList = null

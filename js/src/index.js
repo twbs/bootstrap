@@ -16,10 +16,8 @@ import ScrollSpy from './scrollspy'
 import Tab from './tab'
 import Toast from './toast'
 import Tooltip from './tooltip'
-import Util from './util'
 
 export {
-  Util,
   Alert,
   Button,
   Carousel,

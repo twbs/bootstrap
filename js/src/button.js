@@ -5,10 +5,12 @@
  * --------------------------------------------------------------------------
  */
 
+import {
+  jQuery as $
+} from './util/index'
 import Data from './dom/data'
 import EventHandler from './dom/eventHandler'
 import SelectorEngine from './dom/selectorEngine'
-import Util from './util'
 
 /**
  * ------------------------------------------------------------------------
@@ -180,7 +182,6 @@ EventHandler.on(document, Event.BLUR_DATA_API, Selector.DATA_TOGGLE_CARROT, (eve
  * add .button to jQuery only if jQuery is present
  */
 
-const $ = Util.jQuery
 if (typeof $ !== 'undefined') {
   const JQUERY_NO_CONFLICT  = $.fn[NAME]
   $.fn[NAME]                = Button._jQueryInterface

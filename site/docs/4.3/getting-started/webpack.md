@@ -21,7 +21,6 @@ import 'bootstrap';
 Alternatively, you may **import plugins individually** as needed:
 
 {% highlight js %}
-import 'bootstrap/js/dist/util';
 import 'bootstrap/js/dist/alert';
 ...
 {% endhighlight %}
