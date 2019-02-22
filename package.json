@@ -47,7 +47,7 @@
     "js-compile-bundle": "rollup --environment BUNDLE:true --config build/rollup.config.js --sourcemap",
     "js-compile-plugins": "node build/build-plugins.js",
     "js-compile-plugins-coverage": "cross-env NODE_ENV=test node build/build-plugins.js",
-    "js-lint": "npm-run-all --parallel js-lint-*",
+    "js-lint": "npm-run-all --continue-on-error --parallel js-lint-*",
     "js-lint-main": "eslint --cache --cache-location .cache/.eslintcache js/src js/tests build/",
     "js-lint-docs": "eslint --cache --cache-location .cache/.eslintcache site/",
     "js-minify": "npm-run-all --parallel js-minify-main js-minify-docs",
