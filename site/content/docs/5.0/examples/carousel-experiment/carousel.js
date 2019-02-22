@@ -1,53 +1,75 @@
-(function ($) {
+(function () {
   'use strict'
 
-  var $win = $(window)
-  var $carouselItems = $('.carousel-show-three .carousel-item')
-  var $hasRun = false
+  var carouselItems = document.querySelectorAll('.carousel-show-three .carousel-item')
+  var hasRun = false
+
+  /* https://gomakethings.com/how-to-get-all-of-an-elements-siblings-with-vanilla-js/ */
+  function getSiblings(elem) {
+    // Setup siblings array and get the first sibling
+    var siblings = []
+    var sibling = elem.parentNode.firstChild
+
+    // Loop through each sibling and push to the array
+    while (sibling) {
+      if (sibling.nodeType === 1 && sibling !== elem) {
+        siblings.push(sibling)
+      }
+
+      sibling = sibling.nextSibling
+    }
+
+    return siblings
+  }
 
   function removeCarouselItems() {
-    if ($win.width() >= 768) {
+    if (window.matchMedia('(min-width: 768px)').matches) {
       return
     }
 
-    $carouselItems.each(function (i, el) {
+    [].slice.call(carouselItems).forEach(function (el) {
+      // Get the first carousel item's child
+      var siblings = getSiblings(el.querySelector(':first-child'));
+
       // Remove .carousel-item's first child next elements
-      $(el).children(':first-child').nextAll().remove()
+      [].slice.call(siblings).forEach(function (ele) {
+        ele.parentNode.removeChild()
+      })
     })
 
-    $hasRun = false
+    hasRun = false
   }
 
   // For every slide in carousel, copy the next slide's item in the slide.
   // Do the same for the next, next item.
   function populateCarouselItems() {
-    if ($win.width() < 768 || $hasRun === true) {
+    if (window.matchMedia('(max-width: 768px)').matches || hasRun === true) {
       return
     }
 
-    $carouselItems.each(function (i, el) {
-      var $next = $(el).next()
+    [].slice.call(carouselItems).forEach(function (el) {
+      var next = el.nextElementSibling
 
-      if ($next.length === 0) {
-        $next = $(el).siblings(':first')
+      if (next.length === 0) {
+        next = getSiblings(el.querySelector(':first'))
       }
 
-      $next.children(':first-child').clone().appendTo($(el))
+      el.appendChild(next.querySelector(':first-child').cloneNode(true))
 
-      if ($next.next().length > 0) {
-        $next.next().children(':first-child').clone().appendTo($(el))
+      if (next.nextElementSibling.length > 0) {
+        el.appendChild(next.nextElementSibling.querySelector(':first-child').cloneNode(true))
       } else {
-        $(el).siblings(':first').children(':first-child').clone().appendTo($(el))
+        el.appendChild(getSiblings(el.querySelector(':first')).querySelector(':first-child').cloneNode(true))
       }
     })
 
-    $hasRun = true
+    hasRun = true
   }
 
   populateCarouselItems()
 
-  $win.on('resize', function () {
+  window.addEventListener('resize', function () {
     removeCarouselItems()
     populateCarouselItems()
   })
-}(jQuery))
+})()
