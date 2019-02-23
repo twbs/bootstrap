@@ -13,7 +13,5 @@
     // Just in case `pointer-events: none` is set on a parent
     pointer-events: auto;
     content: "";
-    // IE10 bugfix, see https://stackoverflow.com/questions/16947967/ie10-hover-pseudo-class-doesnt-work-without-background-color
-    background-color: rgba(0, 0, 0, 0);
   }
 }

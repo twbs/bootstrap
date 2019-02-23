@@ -29,13 +29,6 @@ html {
   -webkit-tap-highlight-color: rgba($black, 0); // 5
 }
 
-// Shim for "new" HTML5 structural elements to display correctly (IE10, older browsers)
-// TODO: remove in v5
-// stylelint-disable-next-line selector-list-comma-newline-after
-article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
-  display: block;
-}
-
 // Body
 //
 // 1. Remove the margin in all browsers.
@@ -257,9 +250,6 @@ img {
 }
 
 svg {
-  // Workaround for the SVG overflow bug in IE10/11 is still required.
-  // See https://github.com/twbs/bootstrap/issues/26878
-  overflow: hidden;
   vertical-align: middle;
 }
 
