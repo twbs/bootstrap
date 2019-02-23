@@ -66,12 +66,12 @@ body {
  * Content
  */
 
-[role="main"] {
+.dashboard-main {
   padding-top: 133px; /* Space for fixed navbar */
 }
 
 @media (min-width: 768px) {
-  [role="main"] {
+  .dashboard-main {
     padding-top: 48px; /* Space for fixed navbar */
   }
 }
