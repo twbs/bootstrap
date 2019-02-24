@@ -8,10 +8,12 @@ const {
   browsersKeys
 } = require('./browsers')
 
+const env = process.env
+const bundle = env.BUNDLE === 'true'
+const browserStack = env.BROWSER === 'true'
+const debug = env.DEBUG === 'true'
+
 const jqueryFile = 'node_modules/jquery/dist/jquery.slim.min.js'
-const bundle = process.env.BUNDLE === 'true'
-const browserStack = process.env.BROWSER === 'true'
-const debug = process.env.DEBUG === 'true'
 
 const frameworks = [
   'qunit',
@@ -28,7 +30,7 @@ const reporters = ['dots']
 const detectBrowsers = {
   usePhantomJS: false,
   postDetection(availableBrowser) {
-    if (typeof process.env.TRAVIS_JOB_ID !== 'undefined' || availableBrowser.includes('Chrome')) {
+    if (typeof env.TRAVIS_JOB_ID !== 'undefined' || availableBrowser.includes('Chrome')) {
       return debug ? ['Chrome'] : ['ChromeHeadless']
     }
 
@@ -83,8 +85,8 @@ if (bundle) {
 } else if (browserStack) {
   conf.hostname = ip.address()
   conf.browserStack = {
-    username: process.env.BROWSER_STACK_USERNAME,
-    accessKey: process.env.BROWSER_STACK_ACCESS_KEY,
+    username: env.BROWSER_STACK_USERNAME,
+    accessKey: env.BROWSER_STACK_ACCESS_KEY,
     build: `bootstrap-${new Date().toISOString()}`,
     project: 'Bootstrap',
     retryLimit: 2
