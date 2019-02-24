@@ -80,40 +80,38 @@
     <script src="../../dist/dom/selectorEngine.js"></script>
     <script src="../../dist/tooltip.js"></script>
     <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        if (typeof document.body.attachShadow === 'function') {
-          var shadowRoot = document.getElementById('shadow').attachShadow({ mode: 'open' })
-          shadowRoot.innerHTML =
-            '<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top in a shadow dom">' +
-            '  Tooltip on top in a shadow dom' +
-            '</button>' +
-            '<button id="secondTooltip" type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top in a shadow dom with container option">' +
-            '  Tooltip on top in a shadow dom' +
-            '</button>'
+      if (typeof document.body.attachShadow === 'function') {
+        var shadowRoot = document.getElementById('shadow').attachShadow({ mode: 'open' })
+        shadowRoot.innerHTML =
+          '<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top in a shadow dom">' +
+          '  Tooltip on top in a shadow dom' +
+          '</button>' +
+          '<button id="secondTooltip" type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top in a shadow dom with container option">' +
+          '  Tooltip on top in a shadow dom' +
+          '</button>'
 
-          var firstChildTooltip = new Tooltip(shadowRoot.firstChild)
-          var secondChildTooltip = new Tooltip(shadowRoot.getElementById('secondTooltip'), {
-            container: shadowRoot
-          })
-        }
+        var firstChildTooltip = new Tooltip(shadowRoot.firstChild)
+        var secondChildTooltip = new Tooltip(shadowRoot.getElementById('secondTooltip'), {
+          container: shadowRoot
+        })
+      }
 
-        [].slice.call(document.querySelectorAll('[data-toggle="tooltip"]'))
-          .forEach(function (tooltip) {
-            new Tooltip(tooltip)
-          })
-
-        var tooltipElement = document.getElementById('tooltipElement')
-        var tooltipElementInstance = new Tooltip(tooltipElement, {
-          container: document.getElementById('customContainer')
+      [].slice.call(document.querySelectorAll('[data-toggle="tooltip"]'))
+        .forEach(function (tooltip) {
+          new Tooltip(tooltip)
         })
 
-        var target = document.getElementById('target')
-        var targetTooltip = new Tooltip(target, {
-          placement : 'top',
-          trigger : 'manual'
-        })
-        targetTooltip.show()
+      var tooltipElement = document.getElementById('tooltipElement')
+      var tooltipElementInstance = new Tooltip(tooltipElement, {
+        container: document.getElementById('customContainer')
       })
+
+      var target = document.getElementById('target')
+      var targetTooltip = new Tooltip(target, {
+        placement : 'top',
+        trigger : 'manual'
+      })
+      targetTooltip.show()
     </script>
   </body>
 </html>
