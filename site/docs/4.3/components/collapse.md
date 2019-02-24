@@ -41,7 +41,7 @@ You can use a link with the `href` attribute, or a button with the `data-target`
 
 ## Multiple targets
 
-A `<button>` or `<a>` can show and hide multiple elements by referencing them with a JQuery selector in its `href` or `data-target` attribute.
+A `<button>` or `<a>` can show and hide multiple elements by referencing them with a selector in its `href` or `data-target` attribute.
 Multiple `<button>` or `<a>` can show and hide an element if they each reference it with their `href` or `data-target` attribute
 
 {% capture example %}
@@ -187,31 +187,23 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 
 {% include callout-danger-async-methods.md %}
 
-#### `.collapse(options)`
-
 Activates your content as a collapsible element. Accepts an optional options `object`.
 
+You can create a collapse instance with the constructor, for example:
+
 {% highlight js %}
-$('#myCollapsible').collapse({
+var myCollapse = document.getElementById('myCollapse')
+var bsCollapse = new bootstrap.Collapse(myCollapse, {
   toggle: false
 })
 {% endhighlight %}
 
-#### `.collapse('toggle')`
-
-Toggles a collapsible element to shown or hidden. **Returns to the caller before the collapsible element has actually been shown or hidden** (i.e. before the `shown.bs.collapse` or `hidden.bs.collapse` event occurs).
-
-#### `.collapse('show')`
-
-Shows a collapsible element. **Returns to the caller before the collapsible element has actually been shown** (i.e. before the `shown.bs.collapse` event occurs).
-
-#### `.collapse('hide')`
-
-Hides a collapsible element. **Returns to the caller before the collapsible element has actually been hidden** (i.e. before the `hidden.bs.collapse` event occurs).
-
-#### `.collapse('dispose')`
-
-Destroys an element's collapse.
+| Method | Description |
+| --- | --- |
+| `toggle` | Toggles a collapsible element to shown or hidden. **Returns to the caller before the collapsible element has actually been shown or hidden** (i.e. before the `shown.bs.collapse` or `hidden.bs.collapse` event occurs). |
+| `show` | Shows a collapsible element. **Returns to the caller before the collapsible element has actually been shown** (i.e. before the `shown.bs.collapse` event occurs).|
+| `hide` | Hides a collapsible element. **Returns to the caller before the collapsible element has actually been hidden** (i.e. before the `hidden.bs.collapse` event occurs).|
+| `dispose` | Destroys an element's collapse. |
 
 ### Events
 
