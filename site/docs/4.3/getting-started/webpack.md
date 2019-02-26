@@ -26,9 +26,8 @@ import 'bootstrap/js/dist/alert';
 ...
 {% endhighlight %}
 
-Bootstrap is dependent on [jQuery](https://jquery.com/) and [Popper](https://popper.js.org/),
-these are defined as `peerDependencies`, this means that you will have to make sure to add both of them
-to your `package.json` using `npm install jquery popper.js`.
+Bootstrap dependends on [Popper](https://popper.js.org/), which is speicified in the `peerDependencies` property.
+This means that you will have to make sure to add both of them to your `package.json` using `npm install popper.js`.
 
 ## Importing Styles
 

@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: JavaScript
-description: Bring Bootstrap to life with our optional JavaScript plugins built on jQuery. Learn about each plugin, our data and programmatic API options, and more.
+description: Bring Bootstrap to life with our optional JavaScript plugins. Learn about each plugin, our data and programmatic API options, and more.
 group: getting-started
 toc: true
 ---
@@ -14,7 +14,7 @@ If you use a bundler (Webpack, Rollup...), you can use `/js/dist/*.js` files whi
 
 ## Dependencies
 
-Some plugins and CSS components depend on other plugins. If you include plugins individually, make sure to check for these dependencies in the docs. Also note that **all plugins depend on jQuery** (this means jQuery must be included **before** the plugin files). [Consult our `package.json`]({{ site.repo }}/blob/v{{ site.current_version }}/package.json) to see which versions of jQuery are supported.
+Some plugins and CSS components depend on other plugins. If you include plugins individually, make sure to check for these dependencies in the docs.
 
 Our dropdowns, popovers and tooltips also depend on [Popper.js](https://popper.js.org/).
 
@@ -117,7 +117,7 @@ $.fn.bootstrapBtn = bootstrapButton // give $().bootstrapBtn the Bootstrap funct
 
 ## Version numbers
 
-The version of each of Bootstrap's jQuery plugins can be accessed via the `VERSION` property of the plugin's constructor. For example, for the tooltip plugin:
+The version of each of Bootstrap's plugins can be accessed via the `VERSION` property of the plugin's constructor. For example, for the tooltip plugin:
 
 {% highlight js %}
 $.fn.tooltip.Constructor.VERSION // => "{{ site.current_version }}"
@@ -208,4 +208,41 @@ $('#yourTooltip').tooltip({
     return DOMPurify.sanitize(content)
   }
 })
+{% endhighlight %}
+
+## Compatibility with IE 11
+
+Bootstrap v5 isn't designed to work with Internet Explorer 11, but you can add the following polyfills to make it work:
+
+{% highlight html %}
+<!-- Polyfill.io will load polyfills your browser needs -->
+<script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js"></script>
+<script>
+  // Fix preventDefault for IE
+  (function () {
+    var workingDefaultPrevented = (function () {
+      var e = document.createEvent('CustomEvent')
+      e.initEvent('Bootstrap', true, true)
+      e.preventDefault()
+      return e.defaultPrevented
+    })()
+
+    if (!workingDefaultPrevented) {
+      var origPreventDefault = Event.prototype.preventDefault
+      Event.prototype.preventDefault = function () {
+        if (!this.cancelable) {
+          return
+        }
+
+        origPreventDefault.call(this)
+        Object.defineProperty(this, 'defaultPrevented', {
+          get: function () {
+            return true
+          },
+          configurable: true
+        })
+      }
+    }
+  })()
+</script>
 {% endhighlight %}

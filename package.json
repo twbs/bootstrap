@@ -47,13 +47,13 @@
     "js-compile-bundle": "rollup --environment BUNDLE:true --config build/rollup.config.js --sourcemap",
     "js-compile-plugins": "node build/build-plugins.js",
     "js-compile-plugins-coverage": "cross-env NODE_ENV=test node build/build-plugins.js",
-    "js-lint": "npm-run-all --parallel js-lint-*",
+    "js-lint": "npm-run-all --continue-on-error --parallel js-lint-*",
     "js-lint-main": "eslint --cache --cache-location .cache/.eslintcache js/src js/tests build/",
     "js-lint-docs": "eslint --cache --cache-location .cache/.eslintcache site/",
     "js-minify": "npm-run-all --parallel js-minify-main js-minify-docs",
     "js-minify-main": "npm-run-all js-minify-standalone js-minify-bundle",
-    "js-minify-standalone": "terser --compress typeofs=false --mangle --comments \"/^!/\" --source-map \"content=dist/js/bootstrap.js.map,includeSources,url=bootstrap.min.js.map\" --output dist/js/bootstrap.min.js dist/js/bootstrap.js",
-    "js-minify-bundle": "terser --compress typeofs=false --mangle --comments \"/^!/\" --source-map \"content=dist/js/bootstrap.bundle.js.map,includeSources,url=bootstrap.bundle.min.js.map\" --output dist/js/bootstrap.bundle.min.js dist/js/bootstrap.bundle.js",
+    "js-minify-standalone": "terser --compress --mangle --comments \"/^!/\" --source-map \"content=dist/js/bootstrap.js.map,includeSources,url=bootstrap.min.js.map\" --output dist/js/bootstrap.min.js dist/js/bootstrap.js",
+    "js-minify-bundle": "terser --compress --mangle --comments \"/^!/\" --source-map \"content=dist/js/bootstrap.bundle.js.map,includeSources,url=bootstrap.bundle.min.js.map\" --output dist/js/bootstrap.bundle.min.js dist/js/bootstrap.bundle.js",
     "js-minify-docs": "cross-env-shell terser --mangle --comments \\\"/^!/\\\" --output site/docs/$npm_package_version_short/assets/js/docs.min.js site/docs/$npm_package_version_short/assets/js/vendor/anchor.min.js site/docs/$npm_package_version_short/assets/js/vendor/clipboard.min.js site/docs/$npm_package_version_short/assets/js/vendor/bs-custom-file-input.min.js \"site/docs/$npm_package_version_short/assets/js/src/*.js\"",
     "js-test": "npm-run-all js-test-karma* js-test-integration",
     "js-test-karma": "karma start js/tests/karma.conf.js",
@@ -96,7 +96,6 @@
   "license": "MIT",
   "dependencies": {},
   "peerDependencies": {
-    "jquery": "1.9.1 - 3",
     "popper.js": "^1.14.7"
   },
   "devDependencies": {
@@ -179,19 +178,19 @@
     },
     {
       "path": "./dist/js/bootstrap.bundle.js",
-      "maxSize": "47 kB"
+      "maxSize": "51 kB"
     },
     {
       "path": "./dist/js/bootstrap.bundle.min.js",
-      "maxSize": "22 kB"
+      "maxSize": "24 kB"
     },
     {
       "path": "./dist/js/bootstrap.js",
-      "maxSize": "25 kB"
+      "maxSize": "29 kB"
     },
     {
       "path": "./dist/js/bootstrap.min.js",
-      "maxSize": "15.5 kB"
+      "maxSize": "17.5 kB"
     }
   ],
   "jspm": {
@@ -203,15 +202,12 @@
     "shim": {
       "js/bootstrap": {
         "deps": [
-          "jquery",
           "popper.js"
-        ],
-        "exports": "$"
+        ]
       }
     },
     "dependencies": {},
     "peerDependencies": {
-      "jquery": "1.9.1 - 3",
       "popper.js": "^1.14.7"
     }
   }

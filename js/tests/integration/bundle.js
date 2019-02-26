@@ -1,8 +1,9 @@
 import 'popper.js'
-import $ from 'jquery'
 import bootstrap from '../../../dist/js/bootstrap'
 
-$(() => {
-  $('#resultUID').text(bootstrap.Util.getUID('bs'))
-  $('[data-toggle="tooltip"]').tooltip()
+window.addEventListener('load', () => {
+  document.getElementById('resultUID').innerHTML = bootstrap.Util.getUID('bs')
+
+  bootstrap.Util.makeArray(document.querySelectorAll('[data-toggle="tooltip"]'))
+    .map((tooltipNode) => new bootstrap.Tooltip(tooltipNode))
 })
