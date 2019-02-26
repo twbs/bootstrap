@@ -87,9 +87,11 @@ function getUidEvent(element, uid) {
 
 function getEvent(element) {
   const uid = getUidEvent(element)
-  element.uidEvent = uid
 
-  return eventRegistry[uid] = eventRegistry[uid] || {}
+  element.uidEvent = uid
+  eventRegistry[uid] = eventRegistry[uid] || {}
+
+  return eventRegistry[uid]
 }
 
 function fixEvent(event, element) {
