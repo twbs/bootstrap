@@ -49,7 +49,6 @@ const Event = {
 
 const ClassName = {
   DROPDOWN_ITEM: 'dropdown-item',
-  DROPDOWN_MENU: 'dropdown-menu',
   ACTIVE: 'active'
 }
 

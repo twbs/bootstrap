@@ -56,7 +56,6 @@ const ClassName = {
   DROPRIGHT: 'dropright',
   DROPLEFT: 'dropleft',
   MENURIGHT: 'dropdown-menu-right',
-  MENULEFT: 'dropdown-menu-left',
   POSITION_STATIC: 'position-static'
 }
 
