@@ -897,4 +897,9 @@ $(function () {
 
     $collapse2.bootstrapCollapse('toggle')
   })
+
+  QUnit.test('should return the version', function (assert) {
+    assert.expect(1)
+    assert.strictEqual(typeof Collapse.VERSION, 'string')
+  })
 })

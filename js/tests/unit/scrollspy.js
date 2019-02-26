@@ -727,4 +727,9 @@ $(function () {
     testOffsetMethod('js')
     testOffsetMethod('data')
   })
+
+  QUnit.test('should return the version', function (assert) {
+    assert.expect(1)
+    assert.strictEqual(typeof ScrollSpy.VERSION, 'string')
+  })
 })
