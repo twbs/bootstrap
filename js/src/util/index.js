@@ -8,10 +8,10 @@
 const MAX_UID = 1000000
 const MILLISECONDS_MULTIPLIER = 1000
 const TRANSITION_END = 'transitionend'
-const jQuery = window.jQuery
+const { jQuery } = window
 
 // Shoutout AngusCroll (https://goo.gl/pxwQGp)
-const toType = (obj) => ({}.toString.call(obj).match(/\s([a-z]+)/i)[1].toLowerCase())
+const toType = obj => ({}.toString.call(obj).match(/\s([a-z]+)/i)[1].toLowerCase())
 
 /**
  * --------------------------------------------------------------------------
@@ -19,15 +19,16 @@ const toType = (obj) => ({}.toString.call(obj).match(/\s([a-z]+)/i)[1].toLowerCa
  * --------------------------------------------------------------------------
  */
 
-const getUID = (prefix) => {
+const getUID = prefix => {
   do {
     // eslint-disable-next-line no-bitwise
     prefix += ~~(Math.random() * MAX_UID) // "~~" acts like a faster Math.floor() here
   } while (document.getElementById(prefix))
+
   return prefix
 }
 
-const getSelectorFromElement = (element) => {
+const getSelectorFromElement = element => {
   let selector = element.getAttribute('data-target')
 
   if (!selector || selector === '#') {
@@ -38,12 +39,12 @@ const getSelectorFromElement = (element) => {
 
   try {
     return document.querySelector(selector) ? selector : null
-  } catch (err) {
+  } catch (error) {
     return null
   }
 }
 
-const getTransitionDurationFromElement = (element) => {
+const getTransitionDurationFromElement = element => {
   if (!element) {
     return 0
   }
@@ -69,11 +70,11 @@ const getTransitionDurationFromElement = (element) => {
   return (parseFloat(transitionDuration) + parseFloat(transitionDelay)) * MILLISECONDS_MULTIPLIER
 }
 
-const triggerTransitionEnd = (element) => {
+const triggerTransitionEnd = element => {
   element.dispatchEvent(new Event(TRANSITION_END))
 }
 
-const isElement = (obj) => (obj[0] || obj).nodeType
+const isElement = obj => (obj[0] || obj).nodeType
 
 const emulateTransitionEnd = (element, duration) => {
   let called = false
@@ -94,11 +95,12 @@ const emulateTransitionEnd = (element, duration) => {
 
 const typeCheckConfig = (componentName, config, configTypes) => {
   Object.keys(configTypes)
-    .forEach((property) => {
+    .forEach(property => {
       const expectedTypes = configTypes[property]
-      const value         = config[property]
-      const valueType     = value && isElement(value)
-        ? 'element' : toType(value)
+      const value = config[property]
+      const valueType = value && isElement(value) ?
+        'element' :
+        toType(value)
 
       if (!new RegExp(expectedTypes).test(valueType)) {
         throw new Error(
@@ -109,7 +111,7 @@ const typeCheckConfig = (componentName, config, configTypes) => {
     })
 }
 
-const makeArray = (nodeList) => {
+const makeArray = nodeList => {
   if (!nodeList) {
     return []
   }
@@ -117,7 +119,7 @@ const makeArray = (nodeList) => {
   return [].slice.call(nodeList)
 }
 
-const isVisible = (element) => {
+const isVisible = element => {
   if (!element) {
     return false
   }
@@ -131,7 +133,7 @@ const isVisible = (element) => {
   return false
 }
 
-const findShadowRoot = (element) => {
+const findShadowRoot = element => {
   if (!document.documentElement.attachShadow) {
     return null
   }
@@ -157,7 +159,7 @@ const findShadowRoot = (element) => {
 // eslint-disable-next-line no-empty-function
 const noop = () => function () {}
 
-const reflow = (element) => element.offsetHeight
+const reflow = element => element.offsetHeight
 
 export {
   jQuery,
