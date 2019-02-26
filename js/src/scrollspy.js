@@ -55,13 +55,11 @@ const ClassName = {
 
 const Selector = {
   DATA_SPY: '[data-spy="scroll"]',
-  ACTIVE: '.active',
   NAV_LIST_GROUP: '.nav, .list-group',
   NAV_LINKS: '.nav-link',
   NAV_ITEMS: '.nav-item',
   LIST_ITEMS: '.list-group-item',
   DROPDOWN: '.dropdown',
-  DROPDOWN_ITEMS: '.dropdown-item',
   DROPDOWN_TOGGLE: '.dropdown-toggle'
 }
 
@@ -83,7 +81,7 @@ class ScrollSpy {
     this._config = this._getConfig(config)
     this._selector = `${this._config.target} ${Selector.NAV_LINKS},` +
                           `${this._config.target} ${Selector.LIST_ITEMS},` +
-                          `${this._config.target} ${Selector.DROPDOWN_ITEMS}`
+                          `${this._config.target} .${ClassName.DROPDOWN_ITEM}`
     this._offsets = []
     this._targets = []
     this._activeTarget = null
