@@ -23,15 +23,6 @@ Below is an example of a single media object. Only two classes are required—th
 {% endcapture %}
 {% include example.html content=example %}
 
-{% capture callout %}
-##### Flexbug #12: Inline elements aren't treated as flex items
-
-Internet Explorer 10-11 do not render inline elements like links or images (or `::before` and `::after` pseudo-elements) as flex items. The only workaround is to set a non-inline `display` value (e.g., `block`, `inline-block`, or `flex`). We suggest using `.d-flex`, one of our [display utilities]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/display/), as an easy fix.
-
-**Source:** [Flexbugs on GitHub](https://github.com/philipwalton/flexbugs#flexbug-12)
-{% endcapture %}
-{% include callout.html content=callout type="warning" %}
-
 ## Nesting
 
 Media objects can be infinitely nested, though we suggest you stop at some point. Place nested `.media` within the `.media-body` of a parent media object.
