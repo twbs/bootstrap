@@ -5,10 +5,16 @@
  * --------------------------------------------------------------------------
  */
 
+import {
+  jQuery as $,
+  TRANSITION_END,
+  emulateTransitionEnd,
+  getTransitionDurationFromElement,
+  typeCheckConfig
+} from './util/index'
 import Data from './dom/data'
 import EventHandler from './dom/eventHandler'
 import Manipulator from './dom/manipulator'
-import Util from './util'
 
 /**
  * ------------------------------------------------------------------------
@@ -104,10 +110,10 @@ class Toast {
     this._element.classList.remove(ClassName.HIDE)
     this._element.classList.add(ClassName.SHOWING)
     if (this._config.animation) {
-      const transitionDuration = Util.getTransitionDurationFromElement(this._element)
+      const transitionDuration = getTransitionDurationFromElement(this._element)
 
-      EventHandler.one(this._element, Util.TRANSITION_END, complete)
-      Util.emulateTransitionEnd(this._element, transitionDuration)
+      EventHandler.one(this._element, TRANSITION_END, complete)
+      emulateTransitionEnd(this._element, transitionDuration)
     } else {
       complete()
     }
@@ -153,7 +159,7 @@ class Toast {
       ...typeof config === 'object' && config ? config : {}
     }
 
-    Util.typeCheckConfig(
+    typeCheckConfig(
       NAME,
       config,
       this.constructor.DefaultType
@@ -179,10 +185,10 @@ class Toast {
 
     this._element.classList.remove(ClassName.SHOW)
     if (this._config.animation) {
-      const transitionDuration = Util.getTransitionDurationFromElement(this._element)
+      const transitionDuration = getTransitionDurationFromElement(this._element)
 
-      EventHandler.one(this._element, Util.TRANSITION_END, complete)
-      Util.emulateTransitionEnd(this._element, transitionDuration)
+      EventHandler.one(this._element, TRANSITION_END, complete)
+      emulateTransitionEnd(this._element, transitionDuration)
     } else {
       complete()
     }
@@ -221,7 +227,6 @@ class Toast {
  *  add .toast to jQuery only if jQuery is present
  */
 
-const $ = Util.jQuery
 if (typeof $ !== 'undefined') {
   const JQUERY_NO_CONFLICT = $.fn[NAME]
   $.fn[NAME]               = Toast._jQueryInterface

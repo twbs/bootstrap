@@ -41,23 +41,25 @@ const bsPlugins = {
   ScrollSpy: path.resolve(__dirname, '../js/src/scrollspy.js'),
   Tab: path.resolve(__dirname, '../js/src/tab.js'),
   Toast: path.resolve(__dirname, '../js/src/toast.js'),
-  Tooltip: path.resolve(__dirname, '../js/src/tooltip.js'),
-  Util: path.resolve(__dirname, '../js/src/util.js')
+  Tooltip: path.resolve(__dirname, '../js/src/tooltip.js')
 }
 const rootPath = TEST ? '../js/coverage/dist/' : '../js/dist/'
+
+if (TEST) {
+  bsPlugins.Util = path.resolve(__dirname, '../js/src/util/index.js')
+  bsPlugins.Sanitizer = path.resolve(__dirname, '../js/src/util/sanitizer.js')
+}
 
 const defaultPluginConfig = {
   external: [
     bsPlugins.Data,
     bsPlugins.EventHandler,
-    bsPlugins.SelectorEngine,
-    bsPlugins.Util
+    bsPlugins.SelectorEngine
   ],
   globals: {
     [bsPlugins.Data]: 'Data',
     [bsPlugins.EventHandler]: 'EventHandler',
-    [bsPlugins.SelectorEngine]: 'SelectorEngine',
-    [bsPlugins.Util]: 'Util'
+    [bsPlugins.SelectorEngine]: 'SelectorEngine'
   }
 }
 
@@ -65,7 +67,9 @@ function getConfigByPluginKey(pluginKey) {
   if (
     pluginKey === 'Data' ||
     pluginKey === 'Manipulator' ||
-    pluginKey === 'Util'
+    pluginKey === 'Polyfill' ||
+    pluginKey === 'Util' ||
+    pluginKey === 'Sanitizer'
   ) {
     return {
       external: [],
@@ -76,21 +80,10 @@ function getConfigByPluginKey(pluginKey) {
   if (pluginKey === 'EventHandler' || pluginKey === 'SelectorEngine') {
     return {
       external: [
-        bsPlugins.Polyfill,
-        bsPlugins.Util
+        bsPlugins.Polyfill
       ],
       globals: {
-        [bsPlugins.Polyfill]: 'Polyfill',
-        [bsPlugins.Util]: 'Util'
-      }
-    }
-  }
-
-  if (pluginKey === 'Polyfill') {
-    return {
-      external: [bsPlugins.Util],
-      globals: {
-        [bsPlugins.Util]: 'Util'
+        [bsPlugins.Polyfill]: 'Polyfill'
       }
     }
   }
@@ -125,14 +118,12 @@ function getConfigByPluginKey(pluginKey) {
       external: [
         bsPlugins.Data,
         bsPlugins.SelectorEngine,
-        bsPlugins.Tooltip,
-        bsPlugins.Util
+        bsPlugins.Tooltip
       ],
       globals: {
         [bsPlugins.Data]: 'Data',
         [bsPlugins.SelectorEngine]: 'SelectorEngine',
-        [bsPlugins.Tooltip]: 'Tooltip',
-        [bsPlugins.Util]: 'Util'
+        [bsPlugins.Tooltip]: 'Tooltip'
       }
     }
   }
@@ -142,14 +133,12 @@ function getConfigByPluginKey(pluginKey) {
       external: [
         bsPlugins.Data,
         bsPlugins.EventHandler,
-        bsPlugins.Manipulator,
-        bsPlugins.Util
+        bsPlugins.Manipulator
       ],
       globals: {
         [bsPlugins.Data]: 'Data',
         [bsPlugins.EventHandler]: 'EventHandler',
-        [bsPlugins.Manipulator]: 'Manipulator',
-        [bsPlugins.Util]: 'Util'
+        [bsPlugins.Manipulator]: 'Manipulator'
       }
     }
   }
@@ -161,14 +150,28 @@ function build(plugin) {
   const config = getConfigByPluginKey(plugin)
   const external = config.external
   const globals = config.globals
+  let pluginPath = rootPath
 
-  const pluginPath = [
+  const utilObjects = [
+    'Util',
+    'Sanitizer'
+  ]
+
+  const domObjects = [
     'Data',
     'EventHandler',
     'Manipulator',
     'Polyfill',
     'SelectorEngine'
-  ].includes(plugin) ? `${rootPath}/dom/` : rootPath
+  ]
+
+  if (utilObjects.includes(plugin)) {
+    pluginPath = `${rootPath}/util/`
+  }
+
+  if (domObjects.includes(plugin)) {
+    pluginPath = `${rootPath}/dom/`
+  }
 
   const pluginFilename = `${plugin.toLowerCase()}.js`
 

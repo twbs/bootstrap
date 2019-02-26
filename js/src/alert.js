@@ -5,10 +5,16 @@
  * --------------------------------------------------------------------------
  */
 
+import {
+  jQuery as $,
+  TRANSITION_END,
+  emulateTransitionEnd,
+  getSelectorFromElement,
+  getTransitionDurationFromElement
+} from './util/index'
 import Data from './dom/data'
 import EventHandler from './dom/eventHandler'
 import SelectorEngine from './dom/selectorEngine'
-import Util from './util'
 
 /**
  * ------------------------------------------------------------------------
@@ -83,7 +89,7 @@ class Alert {
   // Private
 
   _getRootElement(element) {
-    const selector = Util.getSelectorFromElement(element)
+    const selector = getSelectorFromElement(element)
     let parent     = false
 
     if (selector) {
@@ -109,11 +115,11 @@ class Alert {
       return
     }
 
-    const transitionDuration = Util.getTransitionDurationFromElement(element)
+    const transitionDuration = getTransitionDurationFromElement(element)
 
     EventHandler
-      .one(element, Util.TRANSITION_END, (event) => this._destroyElement(element, event))
-    Util.emulateTransitionEnd(element, transitionDuration)
+      .one(element, TRANSITION_END, (event) => this._destroyElement(element, event))
+    emulateTransitionEnd(element, transitionDuration)
   }
 
   _destroyElement(element) {
@@ -170,7 +176,6 @@ EventHandler
  * add .alert to jQuery only if jQuery is present
  */
 
-const $ = Util.jQuery
 if (typeof $ !== 'undefined') {
   const JQUERY_NO_CONFLICT = $.fn[NAME]
   $.fn[NAME]               = Alert._jQueryInterface

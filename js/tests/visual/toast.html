@@ -60,13 +60,13 @@
     <script src="../../dist/toast.js"></script>
     <script>
       window.addEventListener('load', function () {
-        Util.makeArray(document.querySelectorAll('.toast'))
+        Array.from(document.querySelectorAll('.toast'))
           .forEach(function (toastNode) {
             new Toast(toastNode)
           })
 
           document.getElementById('btnShowToast').addEventListener('click', function () {
-            Util.makeArray(document.querySelectorAll('.toast'))
+            Array.from(document.querySelectorAll('.toast'))
               .forEach(function (toastNode) {
                 var toast = Toast._getInstance(toastNode)
                 toast.show()
@@ -74,7 +74,7 @@
           })
 
           document.getElementById('btnHideToast').addEventListener('click', function () {
-            Util.makeArray(document.querySelectorAll('.toast'))
+            Array.from(document.querySelectorAll('.toast'))
               .forEach(function (toastNode) {
                 var toast = Toast._getInstance(toastNode)
                 toast.hide()

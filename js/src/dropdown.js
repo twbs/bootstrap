@@ -5,12 +5,19 @@
  * --------------------------------------------------------------------------
  */
 
+import {
+  jQuery as $,
+  getSelectorFromElement,
+  isElement,
+  makeArray,
+  noop,
+  typeCheckConfig
+} from './util/index'
 import Data from './dom/data'
 import EventHandler from './dom/eventHandler'
 import Manipulator from './dom/manipulator'
 import Popper from 'popper.js'
 import SelectorEngine from './dom/selectorEngine'
-import Util from './util'
 
 /**
  * ------------------------------------------------------------------------
@@ -159,7 +166,7 @@ class Dropdown {
 
       if (this._config.reference === 'parent') {
         referenceElement = parent
-      } else if (Util.isElement(this._config.reference)) {
+      } else if (isElement(this._config.reference)) {
         referenceElement = this._config.reference
 
         // Check if it's jQuery element
@@ -182,9 +189,9 @@ class Dropdown {
     // only needed because of broken event delegation on iOS
     // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
     if ('ontouchstart' in document.documentElement &&
-      !Util.makeArray(SelectorEngine.closest(parent, Selector.NAVBAR_NAV)).length) {
-      Util.makeArray(document.body.children)
-        .forEach((elem) => EventHandler.on(elem, 'mouseover', null, Util.noop()))
+      !makeArray(SelectorEngine.closest(parent, Selector.NAVBAR_NAV)).length) {
+      makeArray(document.body.children)
+        .forEach((elem) => EventHandler.on(elem, 'mouseover', null, noop()))
     }
 
     this._element.focus()
@@ -272,7 +279,7 @@ class Dropdown {
       ...config
     }
 
-    Util.typeCheckConfig(
+    typeCheckConfig(
       NAME,
       config,
       this.constructor.DefaultType
@@ -389,7 +396,7 @@ class Dropdown {
       return
     }
 
-    const toggles = Util.makeArray(SelectorEngine.find(Selector.DATA_TOGGLE))
+    const toggles = makeArray(SelectorEngine.find(Selector.DATA_TOGGLE))
     for (let i = 0, len = toggles.length; i < len; i++) {
       const parent        = Dropdown._getParentFromElement(toggles[i])
       const context       = Data.getData(toggles[i], DATA_KEY)
@@ -425,8 +432,8 @@ class Dropdown {
       // If this is a touch-enabled device we remove the extra
       // empty mouseover listeners we added for iOS support
       if ('ontouchstart' in document.documentElement) {
-        Util.makeArray(document.body.children)
-          .forEach((elem) => EventHandler.off(elem, 'mouseover', null, Util.noop()))
+        makeArray(document.body.children)
+          .forEach((elem) => EventHandler.off(elem, 'mouseover', null, noop()))
       }
 
       toggles[i].setAttribute('aria-expanded', 'false')
@@ -439,7 +446,7 @@ class Dropdown {
 
   static _getParentFromElement(element) {
     let parent
-    const selector = Util.getSelectorFromElement(element)
+    const selector = getSelectorFromElement(element)
 
     if (selector) {
       parent = SelectorEngine.findOne(selector)
@@ -482,7 +489,7 @@ class Dropdown {
       return
     }
 
-    const items = Util.makeArray(SelectorEngine.find(Selector.VISIBLE_ITEMS, parent))
+    const items = makeArray(SelectorEngine.find(Selector.VISIBLE_ITEMS, parent))
 
     if (!items.length) {
       return
@@ -535,7 +542,6 @@ EventHandler
  * add .dropdown to jQuery only if jQuery is present
  */
 
-const $ = Util.jQuery
 if (typeof $ !== 'undefined') {
   const JQUERY_NO_CONFLICT = $.fn[NAME]
   $.fn[NAME]               = Dropdown._jQueryInterface

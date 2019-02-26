@@ -5,11 +5,21 @@
  * --------------------------------------------------------------------------
  */
 
+import {
+  jQuery as $,
+  TRANSITION_END,
+  emulateTransitionEnd,
+  getSelectorFromElement,
+  getTransitionDurationFromElement,
+  isVisible,
+  makeArray,
+  reflow,
+  typeCheckConfig
+} from './util/index'
 import Data from './dom/data'
 import EventHandler from './dom/eventHandler'
 import Manipulator from './dom/manipulator'
 import SelectorEngine from './dom/selectorEngine'
-import Util from './util'
 
 /**
  * ------------------------------------------------------------------------
@@ -184,10 +194,10 @@ class Modal {
 
 
     if (transition) {
-      const transitionDuration  = Util.getTransitionDurationFromElement(this._element)
+      const transitionDuration = getTransitionDurationFromElement(this._element)
 
-      EventHandler.one(this._element, Util.TRANSITION_END, (event) => this._hideModal(event))
-      Util.emulateTransitionEnd(this._element, transitionDuration)
+      EventHandler.one(this._element, TRANSITION_END, (event) => this._hideModal(event))
+      emulateTransitionEnd(this._element, transitionDuration)
     } else {
       this._hideModal()
     }
@@ -228,7 +238,7 @@ class Modal {
       ...Default,
       ...config
     }
-    Util.typeCheckConfig(NAME, config, DefaultType)
+    typeCheckConfig(NAME, config, DefaultType)
     return config
   }
 
@@ -252,7 +262,7 @@ class Modal {
     }
 
     if (transition) {
-      Util.reflow(this._element)
+      reflow(this._element)
     }
 
     this._element.classList.add(ClassName.SHOW)
@@ -272,10 +282,10 @@ class Modal {
     }
 
     if (transition) {
-      const transitionDuration  = Util.getTransitionDurationFromElement(this._dialog)
+      const transitionDuration  = getTransitionDurationFromElement(this._dialog)
 
-      EventHandler.one(this._dialog, Util.TRANSITION_END, transitionComplete)
-      Util.emulateTransitionEnd(this._dialog, transitionDuration)
+      EventHandler.one(this._dialog, TRANSITION_END, transitionComplete)
+      emulateTransitionEnd(this._dialog, transitionDuration)
     } else {
       transitionComplete()
     }
@@ -364,7 +374,7 @@ class Modal {
       })
 
       if (animate) {
-        Util.reflow(this._backdrop)
+        reflow(this._backdrop)
       }
 
       this._backdrop.classList.add(ClassName.SHOW)
@@ -378,10 +388,10 @@ class Modal {
         return
       }
 
-      const backdropTransitionDuration = Util.getTransitionDurationFromElement(this._backdrop)
+      const backdropTransitionDuration = getTransitionDurationFromElement(this._backdrop)
 
-      EventHandler.one(this._backdrop, Util.TRANSITION_END, callback)
-      Util.emulateTransitionEnd(this._backdrop, backdropTransitionDuration)
+      EventHandler.one(this._backdrop, TRANSITION_END, callback)
+      emulateTransitionEnd(this._backdrop, backdropTransitionDuration)
     } else if (!this._isShown && this._backdrop) {
       this._backdrop.classList.remove(ClassName.SHOW)
 
@@ -393,9 +403,9 @@ class Modal {
       }
 
       if (this._element.classList.contains(ClassName.FADE)) {
-        const backdropTransitionDuration = Util.getTransitionDurationFromElement(this._backdrop)
-        EventHandler.one(this._backdrop, Util.TRANSITION_END, callbackRemove)
-        Util.emulateTransitionEnd(this._backdrop, backdropTransitionDuration)
+        const backdropTransitionDuration = getTransitionDurationFromElement(this._backdrop)
+        EventHandler.one(this._backdrop, TRANSITION_END, callbackRemove)
+        emulateTransitionEnd(this._backdrop, backdropTransitionDuration)
       } else {
         callbackRemove()
       }
@@ -439,7 +449,7 @@ class Modal {
       //   while $(DOMNode).css('padding-right') returns the calculated value or 0 if not set
 
       // Adjust fixed content padding
-      Util.makeArray(SelectorEngine.find(Selector.FIXED_CONTENT))
+      makeArray(SelectorEngine.find(Selector.FIXED_CONTENT))
         .forEach((element) => {
           const actualPadding = element.style.paddingRight
           const calculatedPadding = window.getComputedStyle(element)['padding-right']
@@ -448,7 +458,7 @@ class Modal {
         })
 
       // Adjust sticky content margin
-      Util.makeArray(SelectorEngine.find(Selector.STICKY_CONTENT))
+      makeArray(SelectorEngine.find(Selector.STICKY_CONTENT))
         .forEach((element) => {
           const actualMargin = element.style.marginRight
           const calculatedMargin = window.getComputedStyle(element)['margin-right']
@@ -469,7 +479,7 @@ class Modal {
 
   _resetScrollbar() {
     // Restore fixed content padding
-    Util.makeArray(SelectorEngine.find(Selector.FIXED_CONTENT))
+    makeArray(SelectorEngine.find(Selector.FIXED_CONTENT))
       .forEach((element) => {
         const padding = Manipulator.getDataAttribute(element, 'padding-right')
         if (typeof padding !== 'undefined') {
@@ -479,7 +489,7 @@ class Modal {
       })
 
     // Restore sticky content and navbar-toggler margin
-    Util.makeArray(SelectorEngine.find(`${Selector.STICKY_CONTENT}`))
+    makeArray(SelectorEngine.find(`${Selector.STICKY_CONTENT}`))
       .forEach((element) => {
         const margin = Manipulator.getDataAttribute(element, 'margin-right')
         if (typeof margin !== 'undefined') {
@@ -546,7 +556,7 @@ class Modal {
 
 EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
   let target
-  const selector = Util.getSelectorFromElement(this)
+  const selector = getSelectorFromElement(this)
 
   if (selector) {
     target = SelectorEngine.findOne(selector)
@@ -569,7 +579,7 @@ EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (
     }
 
     EventHandler.one(target, Event.HIDDEN, () => {
-      if (Util.isVisible(this)) {
+      if (isVisible(this)) {
         this.focus()
       }
     })
@@ -589,7 +599,6 @@ EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (
  * ------------------------------------------------------------------------
  */
 
-const $ = Util.jQuery
 if (typeof $ !== 'undefined') {
   const JQUERY_NO_CONFLICT = $.fn[NAME]
   $.fn[NAME]               = Modal._jQueryInterface
