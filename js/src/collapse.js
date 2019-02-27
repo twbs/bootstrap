@@ -5,11 +5,21 @@
  * --------------------------------------------------------------------------
  */
 
+import {
+  jQuery as $,
+  TRANSITION_END,
+  emulateTransitionEnd,
+  getSelectorFromElement,
+  getTransitionDurationFromElement,
+  isElement,
+  makeArray,
+  reflow,
+  typeCheckConfig
+} from './util/index'
 import Data from './dom/data'
 import EventHandler from './dom/eventHandler'
 import Manipulator from './dom/manipulator'
 import SelectorEngine from './dom/selectorEngine'
-import Util from './util'
 
 /**
  * ------------------------------------------------------------------------
@@ -69,16 +79,16 @@ class Collapse {
     this._isTransitioning = false
     this._element         = element
     this._config          = this._getConfig(config)
-    this._triggerArray    = Util.makeArray(SelectorEngine.find(
+    this._triggerArray    = makeArray(SelectorEngine.find(
       `[data-toggle="collapse"][href="#${element.id}"],` +
       `[data-toggle="collapse"][data-target="#${element.id}"]`
     ))
 
-    const toggleList = Util.makeArray(SelectorEngine.find(Selector.DATA_TOGGLE))
+    const toggleList = makeArray(SelectorEngine.find(Selector.DATA_TOGGLE))
     for (let i = 0, len = toggleList.length; i < len; i++) {
       const elem = toggleList[i]
-      const selector = Util.getSelectorFromElement(elem)
-      const filterElement = Util.makeArray(SelectorEngine.find(selector))
+      const selector = getSelectorFromElement(elem)
+      const filterElement = makeArray(SelectorEngine.find(selector))
         .filter((foundElem) => foundElem === element)
 
       if (selector !== null && filterElement.length) {
@@ -130,7 +140,7 @@ class Collapse {
     let activesData
 
     if (this._parent) {
-      actives = Util.makeArray(SelectorEngine.find(Selector.ACTIVES, this._parent))
+      actives = makeArray(SelectorEngine.find(Selector.ACTIVES, this._parent))
         .filter((elem) => {
           if (typeof this._config.parent === 'string') {
             return elem.getAttribute('data-parent') === this._config.parent
@@ -201,11 +211,11 @@ class Collapse {
 
     const capitalizedDimension = dimension[0].toUpperCase() + dimension.slice(1)
     const scrollSize = `scroll${capitalizedDimension}`
-    const transitionDuration = Util.getTransitionDurationFromElement(this._element)
+    const transitionDuration = getTransitionDurationFromElement(this._element)
 
-    EventHandler.one(this._element, Util.TRANSITION_END, complete)
+    EventHandler.one(this._element, TRANSITION_END, complete)
 
-    Util.emulateTransitionEnd(this._element, transitionDuration)
+    emulateTransitionEnd(this._element, transitionDuration)
     this._element.style[dimension] = `${this._element[scrollSize]}px`
   }
 
@@ -224,7 +234,7 @@ class Collapse {
 
     this._element.style[dimension] = `${this._element.getBoundingClientRect()[dimension]}px`
 
-    Util.reflow(this._element)
+    reflow(this._element)
 
     this._element.classList.add(ClassName.COLLAPSING)
     this._element.classList.remove(ClassName.COLLAPSE)
@@ -234,7 +244,7 @@ class Collapse {
     if (triggerArrayLength > 0) {
       for (let i = 0; i < triggerArrayLength; i++) {
         const trigger = this._triggerArray[i]
-        const selector = Util.getSelectorFromElement(trigger)
+        const selector = getSelectorFromElement(trigger)
 
         if (selector !== null) {
           const elem = SelectorEngine.findOne(selector)
@@ -257,10 +267,10 @@ class Collapse {
     }
 
     this._element.style[dimension] = ''
-    const transitionDuration = Util.getTransitionDurationFromElement(this._element)
+    const transitionDuration = getTransitionDurationFromElement(this._element)
 
-    EventHandler.one(this._element, Util.TRANSITION_END, complete)
-    Util.emulateTransitionEnd(this._element, transitionDuration)
+    EventHandler.one(this._element, TRANSITION_END, complete)
+    emulateTransitionEnd(this._element, transitionDuration)
   }
 
   setTransitioning(isTransitioning) {
@@ -285,7 +295,7 @@ class Collapse {
       ...config
     }
     config.toggle = Boolean(config.toggle) // Coerce string values
-    Util.typeCheckConfig(NAME, config, DefaultType)
+    typeCheckConfig(NAME, config, DefaultType)
     return config
   }
 
@@ -297,7 +307,7 @@ class Collapse {
   _getParent() {
     let parent
 
-    if (Util.isElement(this._config.parent)) {
+    if (isElement(this._config.parent)) {
       parent = this._config.parent
 
       // it's a jQuery object
@@ -311,7 +321,7 @@ class Collapse {
     const selector =
       `[data-toggle="collapse"][data-parent="${this._config.parent}"]`
 
-    Util.makeArray(SelectorEngine.find(selector, parent))
+    makeArray(SelectorEngine.find(selector, parent))
       .forEach((element) => {
         this._addAriaAndCollapsedClass(
           Collapse._getTargetFromElement(element),
@@ -342,7 +352,7 @@ class Collapse {
   // Static
 
   static _getTargetFromElement(element) {
-    const selector = Util.getSelectorFromElement(element)
+    const selector = getSelectorFromElement(element)
     return selector ? SelectorEngine.findOne(selector) : null
   }
 
@@ -394,8 +404,8 @@ EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (
   }
 
   const triggerData      = Manipulator.getDataAttributes(this)
-  const selector         = Util.getSelectorFromElement(this)
-  const selectorElements = Util.makeArray(SelectorEngine.find(selector))
+  const selector         = getSelectorFromElement(this)
+  const selectorElements = makeArray(SelectorEngine.find(selector))
 
   selectorElements.forEach((element) => {
     const data = Data.getData(element, DATA_KEY)
@@ -422,7 +432,6 @@ EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (
  * add .collapse to jQuery only if jQuery is present
  */
 
-const $ = Util.jQuery
 if (typeof $ !== 'undefined') {
   const JQUERY_NO_CONFLICT  = $.fn[NAME]
   $.fn[NAME]                = Collapse._jQueryInterface

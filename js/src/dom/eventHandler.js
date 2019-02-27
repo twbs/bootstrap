@@ -5,8 +5,10 @@
  * --------------------------------------------------------------------------
  */
 
+import {
+  jQuery as $
+} from '../util/index'
 import Polyfill from './polyfill'
-import Util from '../util'
 
 /**
  * ------------------------------------------------------------------------
@@ -248,7 +250,6 @@ const EventHandler = {
     const typeEvent   = event.replace(stripNameRegex, '')
     const inNamespace = event !== typeEvent
     const isNative    = nativeEvents.indexOf(typeEvent) > -1
-    const $ = Util.jQuery
 
     let jQueryEvent
     let bubbles = true

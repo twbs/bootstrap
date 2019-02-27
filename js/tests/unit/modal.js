@@ -695,13 +695,10 @@ $(function () {
     ].join('')
 
     var $modal = $(modalHTML).appendTo('#qunit-fixture')
-    var expectedTransitionDuration = 300
-    var spy = sinon.spy(Util, 'getTransitionDurationFromElement')
 
     $modal.on('shown.bs.modal', function () {
-      assert.ok(spy.returned(expectedTransitionDuration))
       $style.remove()
-      spy.restore()
+      assert.ok(true)
       done()
     })
       .bootstrapModal('show')
@@ -798,5 +795,10 @@ $(function () {
       done()
     })
       .bootstrapModal('show')
+  })
+
+  QUnit.test('should return the version', function (assert) {
+    assert.expect(1)
+    assert.strictEqual(typeof Modal.VERSION, 'string')
   })
 })

@@ -218,13 +218,8 @@ $(function () {
     assert.ok(Button._getInstance($button[0]) === null)
   })
 
-  QUnit.test('should return button version', function (assert) {
+  QUnit.test('should return the version', function (assert) {
     assert.expect(1)
-
-    if (typeof Button !== 'undefined') {
-      assert.ok(typeof Button.VERSION === 'string')
-    } else {
-      assert.notOk()
-    }
+    assert.strictEqual(typeof Button.VERSION, 'string')
   })
 })
