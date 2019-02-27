@@ -21,10 +21,6 @@
   <a href="https://blog.getbootstrap.com/">Blog</a>
 </p>
 
-## GitHub 사용법 참고
-<p align="center">
-https://github.com/tadkim/infra/wiki/GitHub-::-%EA%B9%83%ED%97%88%EB%B8%8C-%EC%82%AC%EC%9A%A9%EB%B2%95-1
-</p>
 ## Table of contents
 
 - [Quick start](#quick-start)
