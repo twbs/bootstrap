@@ -1,6 +1,8 @@
 $(function () {
   'use strict'
 
+  var Tab = typeof window.bootstrap !== 'undefined' ? window.bootstrap.Tab : window.Tab
+
   QUnit.module('tabs plugin')
 
   QUnit.test('should be defined on jquery object', function (assert) {
@@ -519,5 +521,10 @@ $(function () {
     })
 
     $('#secondNav')[0].click()
+  })
+
+  QUnit.test('should return the version', function (assert) {
+    assert.expect(1)
+    assert.strictEqual(typeof Tab.VERSION, 'string')
   })
 })
