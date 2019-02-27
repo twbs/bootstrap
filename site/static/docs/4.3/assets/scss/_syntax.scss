@@ -70,20 +70,25 @@
 /* LiteralStringOther */ .chroma .sx { color: #c30; }
 /* TextWhitespace */ .chroma .w { color: #bbb; }
 
-.chroma .language-bash::before,
-.chroma .language-sh::before {
-  color: #009;
-  content: "$ ";
-  user-select: none;
-}
+.chroma {
+  .language-bash,
+  .language-sh {
+    &::before {
+      color: #009;
+      content: "$ ";
+      user-select: none;
+    }
 
-.chroma .language-bash .m,
-.chroma .language-sh .m {
-  color: initial;
-}
+    // This is just to work around a Chroma bug;
+    // should be removed when fixed upstream
+    .m {
+      color: inherit;
+    }
+  }
 
-.chroma .language-powershell::before {
-  color: #009;
-  content: "PM> ";
-  user-select: none;
+  .language-powershell::before {
+    color: #009;
+    content: "PM> ";
+    user-select: none;
+  }
 }
