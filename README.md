@@ -36,7 +36,7 @@
 - [Copyright and license](#copyright-and-license)
 
 ## Github Guide
-- Guide URL : https://github.com/ok00577/bootstrap/edit/master/README.md
+- Guide URL :https://github.com/tadkim/infra/wiki/GitHub-::-%EA%B9%83%ED%97%88%EB%B8%8C-%EC%82%AC%EC%9A%A9%EB%B2%95-1
 
 ## Quick start
 
