@@ -104,7 +104,7 @@ Similarly, the latest versions of most desktop browsers are supported.
       <th scope="row">Windows</th>
       <td class="text-success">Supported</td>
       <td class="text-success">Supported</td>
-      <td class="text-success">Not supported</td>
+      <td class="text-danger">Not supported</td>
       <td class="text-success">Supported</td>
       <td class="text-success">Supported</td>
       <td class="text-danger">Not supported</td>
