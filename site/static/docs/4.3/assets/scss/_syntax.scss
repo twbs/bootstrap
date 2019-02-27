@@ -77,6 +77,11 @@
   user-select: none;
 }
 
+.chroma .language-bash .m,
+.chroma .language-sh .m {
+  color: initial;
+}
+
 .chroma .language-powershell::before {
   color: #009;
   content: "PM> ";
