@@ -1423,4 +1423,9 @@ $(function () {
     assert.strictEqual(offset.offset, myOffset)
     assert.ok(typeof offset.fn === 'undefined')
   })
+
+  QUnit.test('should return the version', function (assert) {
+    assert.expect(1)
+    assert.strictEqual(typeof Dropdown.VERSION, 'string')
+  })
 })

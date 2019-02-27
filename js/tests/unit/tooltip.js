@@ -1249,4 +1249,9 @@ $(function () {
 
     assert.strictEqual(tooltip.config.sanitize, true)
   })
+
+  QUnit.test('should return the version', function (assert) {
+    assert.expect(1)
+    assert.strictEqual(typeof Tooltip.VERSION, 'string')
+  })
 })

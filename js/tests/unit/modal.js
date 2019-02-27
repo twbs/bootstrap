@@ -796,4 +796,9 @@ $(function () {
     })
       .bootstrapModal('show')
   })
+
+  QUnit.test('should return the version', function (assert) {
+    assert.expect(1)
+    assert.strictEqual(typeof Modal.VERSION, 'string')
+  })
 })

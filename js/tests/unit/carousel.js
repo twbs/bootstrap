@@ -46,9 +46,8 @@ $(function () {
     assert.strictEqual(typeof $.fn.carousel, 'undefined', 'carousel was set back to undefined (orig value)')
   })
 
-  QUnit.test('should return version', function (assert) {
+  QUnit.test('should return the version', function (assert) {
     assert.expect(1)
-
     assert.strictEqual(typeof Carousel.VERSION, 'string')
   })
 
