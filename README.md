@@ -35,6 +35,8 @@
 - [Thanks](#thanks)
 - [Copyright and license](#copyright-and-license)
 
+## Github Guide
+- Guide URL : https://github.com/ok00577/bootstrap/edit/master/README.md
 
 ## Quick start
 
