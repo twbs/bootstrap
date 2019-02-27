@@ -5,18 +5,20 @@
  * --------------------------------------------------------------------------
  */
 
-const regexDataKey = /[A-Z]/g
-
 function normalizeData(val) {
   if (val === 'true') {
     return true
-  } else if (val === 'false') {
+  }
+
+  if (val === 'false') {
     return false
-  } else if (val === 'null') {
-    return null
-  } else if (val === Number(val).toString()) {
+  }
+
+  if (val === Number(val).toString()) {
     return Number(val)
-  } else if (val === '') {
+  }
+
+  if (val === '' || val === 'null') {
     return null
   }
 
@@ -24,7 +26,7 @@ function normalizeData(val) {
 }
 
 function normalizeDataKey(key) {
-  return key.replace(regexDataKey, (chr) => chr.toLowerCase())
+  return key.replace(/[A-Z]/g, (chr) => chr.toLowerCase())
 }
 
 const Manipulator = {
@@ -45,18 +47,15 @@ const Manipulator = {
       ...element.dataset
     }
 
-    Object.keys(attributes)
-      .forEach((key) => {
-        attributes[key] = normalizeData(attributes[key])
-      })
+    Object.keys(attributes).forEach((key) => {
+      attributes[key] = normalizeData(attributes[key])
+    })
 
     return attributes
   },
 
   getDataAttribute(element, key) {
-    return normalizeData(element
-      .getAttribute(`data-${normalizeDataKey(key)}`)
-    )
+    return normalizeData(element.getAttribute(`data-${normalizeDataKey(key)}`))
   },
 
   offset(element) {
