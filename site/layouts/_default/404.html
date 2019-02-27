@@ -3,12 +3,12 @@
   <head>
     {{ partial "header" . }}
   </head>
-  <body>
+  <body class="d-flex flex-column min-vh-100">
     {{ partial "skippy" . }}
 
     {{ partial "docs-navbar" . }}
 
-    <main class="bd-content p-5" id="content" role="main">
+    <main class="my-auto p-5" id="content" role="main">
       {{ .Content }}
     </main>
 
