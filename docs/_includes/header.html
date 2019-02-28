@@ -5,12 +5,14 @@
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
 
 <title>
-  {% if page.layout == "home" %}
-    {{ page.title }}
-  {% else %}
-    {{ page.title }} &middot; Bootstrap
-  {% endif %}
+  {%- if page.title -%}
+    {{ page.title | smartify }} · {{ site.title | smartify }}
+  {%- else -%}
+    {{ site.title | smartify }} · {{ site.description | smartify }}
+  {%- endif -%}
 </title>
+
+<link rel="canonical" href="{{ site.url | append: site.baseurl | append: page.url }}">
 
 <!-- Bootstrap core CSS -->
 {% if site.github %}

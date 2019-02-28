@@ -20,6 +20,8 @@ plugins:
   - jekyll-sitemap
 
 # Custom vars
+title:            Bootstrap
+description:      "The world's most popular mobile-first and responsive front-end framework."
 current_version:  3.4.1
 docs_version:     3.4
 repo:             https://github.com/twbs/bootstrap
