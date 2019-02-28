@@ -305,17 +305,15 @@ class Collapse {
   }
 
   _getParent() {
-    let parent
+    let { parent } = this._config
 
-    if (isElement(this._config.parent)) {
-      { parent } = this._config
-
+    if (isElement(parent)) {
       // it's a jQuery object
-      if (typeof this._config.parent.jquery !== 'undefined' || typeof this._config.parent[0] !== 'undefined') {
-        parent = this._config.parent[0]
+      if (typeof parent.jquery !== 'undefined' || typeof parent[0] !== 'undefined') {
+        parent = parent[0]
       }
     } else {
-      parent = SelectorEngine.findOne(this._config.parent)
+      parent = SelectorEngine.findOne(parent)
     }
 
     const selector = `[data-toggle="collapse"][data-parent="${parent}"]`
