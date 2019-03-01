@@ -8,9 +8,12 @@ const {
   browsersKeys
 } = require('./browsers')
 
-const jqueryFile = process.env.USE_OLD_JQUERY ? 'https://code.jquery.com/jquery-1.9.1.min.js' : 'node_modules/jquery/dist/jquery.slim.min.js'
-const bundle = process.env.BUNDLE === 'true'
-const browserStack = process.env.BROWSER === 'true'
+const env = process.env
+const bundle = env.BUNDLE === 'true'
+const browserStack = env.BROWSER === 'true'
+const debug = env.DEBUG === 'true'
+
+const jqueryFile = 'node_modules/jquery/dist/jquery.slim.min.js'
 
 const frameworks = [
   'qunit',
@@ -27,12 +30,12 @@ const reporters = ['dots']
 const detectBrowsers = {
   usePhantomJS: false,
   postDetection(availableBrowser) {
-    if (typeof process.env.TRAVIS_JOB_ID !== 'undefined' || availableBrowser.includes('Chrome')) {
-      return ['ChromeHeadless']
+    if (typeof env.TRAVIS_JOB_ID !== 'undefined' || availableBrowser.includes('Chrome')) {
+      return debug ? ['Chrome'] : ['ChromeHeadless']
     }
 
     if (availableBrowser.includes('Firefox')) {
-      return ['FirefoxHeadless']
+      return debug ? ['Firefox'] : ['FirefoxHeadless']
     }
 
     throw new Error('Please install Firefox or Chrome')
@@ -76,13 +79,14 @@ if (bundle) {
   conf.detectBrowsers = detectBrowsers
   files = files.concat([
     jqueryFile,
-    'dist/js/bootstrap.js'
+    'dist/js/bootstrap.js',
+    'js/tests/unit/*.js'
   ])
 } else if (browserStack) {
   conf.hostname = ip.address()
   conf.browserStack = {
-    username: process.env.BROWSER_STACK_USERNAME,
-    accessKey: process.env.BROWSER_STACK_ACCESS_KEY,
+    username: env.BROWSER_STACK_USERNAME,
+    accessKey: env.BROWSER_STACK_ACCESS_KEY,
     build: `bootstrap-${new Date().toISOString()}`,
     project: 'Bootstrap',
     retryLimit: 2
@@ -92,10 +96,20 @@ if (bundle) {
   conf.browsers = browsersKeys
   reporters.push('BrowserStack')
   files = files.concat([
-    'node_modules/jquery/dist/jquery.slim.min.js',
-    'js/dist/util.js',
-    'js/dist/tooltip.js',
-    'js/dist/!(util|index|tooltip).js' // include all of our js/dist files except util.js, index.js and tooltip.js
+    jqueryFile,
+    'js/coverage/dist/util/util.js',
+    'js/coverage/dist/util/sanitizer.js',
+    'js/coverage/dist/dom/polyfill.js',
+    'js/coverage/dist/dom/eventHandler.js',
+    'js/coverage/dist/dom/selectorEngine.js',
+    'js/coverage/dist/dom/data.js',
+    'js/coverage/dist/dom/manipulator.js',
+    'js/coverage/dist/dom/!(polyfill).js',
+    'js/coverage/dist/tooltip.js',
+    'js/coverage/dist/!(util|index|tooltip).js', // include all of our js/dist files except util.js, index.js and tooltip.js
+    'js/tests/unit/*.js',
+    'js/tests/unit/dom/*.js',
+    'js/tests/unit/util/*.js'
   ])
 } else {
   frameworks.push('detectBrowsers')
@@ -107,9 +121,19 @@ if (bundle) {
   )
   files = files.concat([
     jqueryFile,
-    'js/coverage/dist/util.js',
+    'js/coverage/dist/util/util.js',
+    'js/coverage/dist/util/sanitizer.js',
+    'js/coverage/dist/dom/polyfill.js',
+    'js/coverage/dist/dom/eventHandler.js',
+    'js/coverage/dist/dom/selectorEngine.js',
+    'js/coverage/dist/dom/data.js',
+    'js/coverage/dist/dom/manipulator.js',
+    'js/coverage/dist/dom/!(polyfill).js',
     'js/coverage/dist/tooltip.js',
-    'js/coverage/dist/!(util|index|tooltip).js' // include all of our js/dist files except util.js, index.js and tooltip.js
+    'js/coverage/dist/!(util|index|tooltip).js', // include all of our js/dist files except util.js, index.js and tooltip.js
+    'js/tests/unit/*.js',
+    'js/tests/unit/dom/*.js',
+    'js/tests/unit/util/*.js'
   ])
   reporters.push('coverage-istanbul')
   conf.customLaunchers = customLaunchers
@@ -124,12 +148,25 @@ if (bundle) {
         branches: 86,
         functions: 89,
         lines: 90
+      },
+      each: {
+        overrides: {
+          'js/src/dom/polyfill.js': {
+            statements: 39,
+            lines: 37,
+            branches: 19,
+            functions: 50
+          }
+        }
       }
     }
   }
-}
 
-files.push('js/tests/unit/*.js')
+  if (debug) {
+    conf.singleRun = false
+    conf.autoWatch = true
+  }
+}
 
 conf.frameworks = frameworks
 conf.plugins = plugins

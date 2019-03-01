@@ -17,7 +17,7 @@
   @include border-radius($popover-border-radius);
   @include box-shadow($popover-box-shadow);
 
-  .arrow {
+  .popover-arrow {
     position: absolute;
     display: block;
     width: $popover-arrow-width;
@@ -38,7 +38,7 @@
 .bs-popover-top {
   margin-bottom: $popover-arrow-height;
 
-  > .arrow {
+  > .popover-arrow {
     bottom: calc((#{$popover-arrow-height} + #{$popover-border-width}) * -1);
 
     &::before {
@@ -58,7 +58,7 @@
 .bs-popover-right {
   margin-left: $popover-arrow-height;
 
-  > .arrow {
+  > .popover-arrow {
     left: calc((#{$popover-arrow-height} + #{$popover-border-width}) * -1);
     width: $popover-arrow-height;
     height: $popover-arrow-width;
@@ -81,7 +81,7 @@
 .bs-popover-bottom {
   margin-top: $popover-arrow-height;
 
-  > .arrow {
+  > .popover-arrow {
     top: calc((#{$popover-arrow-height} + #{$popover-border-width}) * -1);
 
     &::before {
@@ -113,7 +113,7 @@
 .bs-popover-left {
   margin-right: $popover-arrow-height;
 
-  > .arrow {
+  > .popover-arrow {
     right: calc((#{$popover-arrow-height} + #{$popover-border-width}) * -1);
     width: $popover-arrow-height;
     height: $popover-arrow-width;
