@@ -353,7 +353,7 @@
     content: "Browse";
     @include gradient-bg($custom-file-button-bg);
     border-left: inherit;
-    @include border-radius(0 $custom-file-border-radius $custom-file-border-radius 0);
+    @include border-radius(0 $custom-file-border-radius-after $custom-file-border-radius-after 0);
   }
 }
 
