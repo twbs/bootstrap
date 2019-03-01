@@ -44,6 +44,7 @@
     "js-docs": "npm-run-all js-lint-docs js-minify-docs",
     "js-compile": "npm-run-all --parallel js-compile-* --sequential js-copy",
     "js-compile-standalone": "rollup --environment BUNDLE:false --config build/rollup.config.js --sourcemap",
+    "js-compile-standalone-esm": "cross-env ESM=true rollup --environment BUNDLE:false --config build/rollup.config.js --sourcemap",
     "js-compile-bundle": "rollup --environment BUNDLE:true --config build/rollup.config.js --sourcemap",
     "js-compile-plugins": "node build/build-plugins.js",
     "js-compile-plugins-coverage": "cross-env NODE_ENV=test node build/build-plugins.js",
@@ -53,6 +54,7 @@
     "js-minify": "npm-run-all --parallel js-minify-main js-minify-docs",
     "js-minify-main": "npm-run-all js-minify-standalone js-minify-bundle",
     "js-minify-standalone": "terser --compress --mangle --comments \"/^!/\" --source-map \"content=dist/js/bootstrap.js.map,includeSources,url=bootstrap.min.js.map\" --output dist/js/bootstrap.min.js dist/js/bootstrap.js",
+    "js-minify-standalone-esm": "terser --compress --mangle --comments \"/^!/\" --source-map \"content=dist/js/bootstrap.esm.js.map,includeSources,url=bootstrap.esm.min.js.map\" --output dist/js/bootstrap.esm.min.js dist/js/bootstrap.esm.js",
     "js-minify-bundle": "terser --compress --mangle --comments \"/^!/\" --source-map \"content=dist/js/bootstrap.bundle.js.map,includeSources,url=bootstrap.bundle.min.js.map\" --output dist/js/bootstrap.bundle.min.js dist/js/bootstrap.bundle.js",
     "js-minify-docs": "cross-env-shell terser --mangle --comments \\\"/^!/\\\" --output site/docs/$npm_package_version_short/assets/js/docs.min.js site/docs/$npm_package_version_short/assets/js/vendor/anchor.min.js site/docs/$npm_package_version_short/assets/js/vendor/clipboard.min.js site/docs/$npm_package_version_short/assets/js/vendor/bs-custom-file-input.min.js \"site/docs/$npm_package_version_short/assets/js/src/*.js\"",
     "js-test": "npm-run-all js-test-karma* js-test-integration",
@@ -84,7 +86,8 @@
   },
   "style": "dist/css/bootstrap.css",
   "sass": "scss/bootstrap.scss",
-  "main": "dist/js/bootstrap",
+  "main": "dist/js/bootstrap.js",
+  "module": "dist/js/bootstrap.esm.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/twbs/bootstrap.git"
@@ -135,7 +138,6 @@
     "qunit": "^2.9.2",
     "rollup": "^1.4.0",
     "rollup-plugin-babel": "^4.3.2",
-    "rollup-plugin-commonjs": "^9.2.1",
     "rollup-plugin-node-resolve": "^4.0.1",
     "shelljs": "^0.8.3",
     "shx": "^0.3.2",
