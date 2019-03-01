@@ -9,5 +9,5 @@ Edge >= 15.15063
 Explorer 11
 iOS >= 10
 Safari >= 10
-Android >= 5
-Opera >= 50
+Android >= 6
+not ExplorerMobile <= 11
