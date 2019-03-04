@@ -1162,16 +1162,16 @@
       }
     }
 
-    .btn-info,
-    .btn-warning,
-    .btn-danger {
+    .btn-info:not([disabled]),
+    .btn-warning:not([disabled]),
+    .btn-danger:not([disabled]) {
       color: @brand-light-blue;
       border-color: @brand-light-blue;
     }
 
-    .btn-info:hover,
-    .btn-warning:hover,
-    .btn-danger:hover {
+    .btn-info:not([disabled]):hover,
+    .btn-warning:not([disabled]):hover,
+    .btn-danger:not([disabled]):hover {
       color: @brand-white;
     }
 
