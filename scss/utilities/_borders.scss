@@ -73,3 +73,17 @@
 .rounded-0 {
   border-radius: 0 !important;
 }
+
+
+// Responsive alignment
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    .border#{$infix}-top    { border-top: $border-width solid $border-color !important; }
+    .border#{$infix}-right  { border-right: $border-width solid $border-color !important; }
+    .border#{$infix}-bottom { border-bottom: $border-width solid $border-color !important; }
+    .border#{$infix}-left   { border-left: $border-width solid $border-color !important; }
+  }
+}
