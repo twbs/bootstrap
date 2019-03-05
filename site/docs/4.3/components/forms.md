@@ -806,9 +806,12 @@ Custom feedback styles apply custom colors, borders, focus styles, and backgroun
     </div>
     <div class="col-md-3 mb-3">
       <label for="validationCustom04">State</label>
-      <input type="text" class="form-control" id="validationCustom04" required>
+      <select id="inputState" class="form-control" id="validationCustom04" required>
+        <option invalid selected disabled value = ''>Choose...</option>
+        <option>...</option>
+      </select>
       <div class="invalid-feedback">
-        Please provide a valid state.
+        Please select a valid state.
       </div>
     </div>
     <div class="col-md-3 mb-3">
@@ -890,7 +893,10 @@ While these feedback styles cannot be styled with CSS, you can still customize t
     </div>
     <div class="col-md-3 mb-3">
       <label for="validationDefault04">State</label>
-      <input type="text" class="form-control" id="validationDefault04" required>
+      <select class="form-control" id="validationDefault04" required>
+        <option invalid selected disabled value = ''>Choose...</option>
+        <option>...</option>
+      </select>
     </div>
     <div class="col-md-3 mb-3">
       <label for="validationDefault05">Zip</label>
@@ -954,9 +960,12 @@ We recommend using client-side validation, but in case you require server-side v
     </div>
     <div class="col-md-3 mb-3">
       <label for="validationServer04">State</label>
-      <input type="text" class="form-control is-invalid" id="validationServer04" required>
+      <select class="form-control is-invalid" id="validationServer04" required>
+        <option invalid selected disabled value = ''>Choose...</option>
+        <option>...</option>
+      </select>
       <div class="invalid-feedback">
-        Please provide a valid state.
+        Please select a valid state.
       </div>
     </div>
     <div class="col-md-3 mb-3">
@@ -988,7 +997,7 @@ We recommend using client-side validation, but in case you require server-side v
 Validation styles are available for the following form controls and components:
 
 - `<input>`s and `<textarea>`s with `.form-control` (including up to one `.form-control` in input groups)
-- `<select>`s with `.form-select` or `.custom-select`
+- `<select>`s with `.form-control` or `.custom-select`
 - `.form-check`s
 - `.custom-checkbox`s and `.custom-radio`s
 - `.custom-file`
@@ -1082,9 +1091,12 @@ If your form layout allows it, you can swap the `.{valid|invalid}-feedback` clas
     </div>
     <div class="col-md-3 mb-3">
       <label for="validationTooltip04">State</label>
-      <input type="text" class="form-control" id="validationTooltip04" required>
+      <select class="form-control" id="validationTooltip04" required>
+        <option invalid selected disabled value = ''>Choose...</option>
+        <option>...</option>
+      </select>
       <div class="invalid-tooltip">
-        Please provide a valid state.
+        Please select a valid state.
       </div>
     </div>
     <div class="col-md-3 mb-3">
