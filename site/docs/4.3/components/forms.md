@@ -18,12 +18,12 @@ Here's a quick example to demonstrate Bootstrap's form styles. Keep reading for 
 <form>
   <div class="form-group">
     <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter password">
+    <input type="password" class="form-control" id="exampleInputPassword1">
   </div>
   <div class="form-group form-check">
     <input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -806,7 +806,7 @@ Custom feedback styles apply custom colors, borders, focus styles, and backgroun
     </div>
     <div class="col-md-3 mb-3">
       <label for="validationCustom04">State</label>
-      <input type="text" class="form-control" id="validationCustom04" placeholder="Choose..." required>
+      <input type="text" class="form-control" id="validationCustom04" required>
       <div class="invalid-feedback">
         Please provide a valid state.
       </div>
@@ -890,7 +890,7 @@ While these feedback styles cannot be styled with CSS, you can still customize t
     </div>
     <div class="col-md-3 mb-3">
       <label for="validationDefault04">State</label>
-      <input type="text" class="form-control" id="validationDefault04" placeholder="Choose..." required>
+      <input type="text" class="form-control" id="validationDefault04" required>
     </div>
     <div class="col-md-3 mb-3">
       <label for="validationDefault05">Zip</label>
@@ -954,7 +954,7 @@ We recommend using client-side validation, but in case you require server-side v
     </div>
     <div class="col-md-3 mb-3">
       <label for="validationServer04">State</label>
-      <input type="text" class="form-control is-invalid" id="validationServer04" placeholder="Choose..." required>
+      <input type="text" class="form-control is-invalid" id="validationServer04" required>
       <div class="invalid-feedback">
         Please provide a valid state.
       </div>
@@ -1082,7 +1082,7 @@ If your form layout allows it, you can swap the `.{valid|invalid}-feedback` clas
     </div>
     <div class="col-md-3 mb-3">
       <label for="validationTooltip04">State</label>
-      <input type="text" class="form-control" id="validationTooltip04" placeholder="Choose..." required>
+      <input type="text" class="form-control" id="validationTooltip04" required>
       <div class="invalid-tooltip">
         Please provide a valid state.
       </div>
