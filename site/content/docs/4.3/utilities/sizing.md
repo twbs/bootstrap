@@ -11,11 +11,11 @@ toc: true
 Width and height utilities are generated from the `$sizes` Sass map in `_variables.scss`. Includes support for `25%`, `50%`, `75%`, `100%`, and `auto` by default. Modify those values as you need to generate different utilities here.
 
 {{< example >}}
-<div class="w-25 p-3" style="background-color: #eee;">Width 25%</div>
-<div class="w-50 p-3" style="background-color: #eee;">Width 50%</div>
-<div class="w-75 p-3" style="background-color: #eee;">Width 75%</div>
-<div class="w-100 p-3" style="background-color: #eee;">Width 100%</div>
-<div class="w-auto p-3" style="background-color: #eee;">Width auto</div>
+<div class="w-25 p-3 mb-1" style="background-color: #eee;">.w-25</div>
+<div class="w-50 p-3 mb-1" style="background-color: #eee;">.w-50</div>
+<div class="w-75 p-3 mb-1" style="background-color: #eee;">.w-75</div>
+<div class="w-100 p-3 mb-1" style="background-color: #eee;">.w-100</div>
+<div class="w-auto p-3" style="background-color: #eee;">.w-auto</div>
 {{< /example >}}
 
 {{< example >}}
@@ -39,6 +39,20 @@ You can also use `max-width: 100%;` and `max-height: 100%;` utilities as needed.
   <div class="mh-100" style="width: 100px; height: 200px; background-color: rgba(0,0,255,.1);">Max-height 100%</div>
 </div>
 {{< /example >}}
+
+## Responsive
+
+The `width` and `height` utilities are also responsive and can be adjusted by breakpoint. Here's the same example from above, but overridden from the medium breakpoint and up.
+
+**Please note that `max-width`, `max-height`, and viewport size utilities are not currently responsive.**
+
+{{< example >}}
+<div class="w-25 w-md-100 p-3 mb-1" style="background-color: #eee;">.w-md-100</div>
+<div class="w-50 w-md-75 p-3 mb-1" style="background-color: #eee;">.w-md-75</div>
+<div class="w-75 w-md-50 p-3 mb-1" style="background-color: #eee;">.w-md-50</div>
+<div class="w-100 w-md-25 p-3 mb-1" style="background-color: #eee;">.w-md-25</div>
+<div class="w-auto w-md-100 p-3" style="background-color: #eee;">.w-md-100</div>
+{{< /example >}}}
 
 ## Relative to the viewport
 
