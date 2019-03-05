@@ -498,6 +498,12 @@ $input-height-lg:                       calc(#{$input-line-height-lg * 1em} + #{
 
 $input-transition:                      border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
 
+
+$flex-check-input-width:  1.25em !default;
+$flex-check-min-height:   $font-size-base * $line-height-base !default;
+$flex-check-padding-left: $flex-check-input-width + .5em !default;
+
+
 $form-text-margin-top:                  .25rem !default;
 
 $form-check-input-gutter:               1.25rem !default;

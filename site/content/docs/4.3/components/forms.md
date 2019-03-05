@@ -163,6 +163,91 @@ Set horizontally scrollable range inputs using `.form-control-range`.
 
 ## Checkboxes and radios
 
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  var checkbox = document.getElementById("flexCheckIndeterminate");
+  checkbox.indeterminate = true;
+});
+</script>
+
+{{< example >}}
+<!-- Default -->
+<div class="flex-check">
+  <input class="flex-check-input" type="checkbox" value="" id="flexCheckDefault">
+  <label class="flex-check-label" for="flexCheckDefault">
+    Default checkbox
+  </label>
+</div>
+<div class="flex-check">
+  <input class="flex-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+  <label class="flex-check-label" for="flexCheckChecked">
+    Checked checkbox
+  </label>
+</div>
+<div class="flex-check">
+  <input class="flex-check-input" type="checkbox" value="" id="flexCheckIndeterminate">
+  <label class="flex-check-label" for="flexCheckIndeterminate">
+    Indeterminate checkbox
+  </label>
+</div>
+<div class="flex-check">
+  <input class="flex-check-input" type="checkbox" value="" id="flexCheckDisabled" disabled>
+  <label class="flex-check-label" for="flexCheckDisabled">
+    Disabled checkbox
+  </label>
+</div>
+<div class="flex-check mb-3">
+  <input class="flex-check-input" type="checkbox" value="" id="flexCheckCheckedDisabled" checked disabled>
+  <label class="flex-check-label" for="flexCheckCheckedDisabled">
+    Disabled checked checkbox
+  </label>
+</div>
+
+<!-- Radio -->
+<div class="flex-check">
+  <input class="flex-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+  <label class="flex-check-label" for="flexRadioDefault1">
+    Default radio
+  </label>
+</div>
+<div class="flex-check mb-2">
+  <input class="flex-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+  <label class="flex-check-label" for="flexRadioDefault2">
+    Default checked radio
+  </label>
+</div>
+<div class="flex-check">
+  <input class="flex-check-input" type="radio" name="flexRadioDisabled" id="flexRadioDisabled" disabled>
+  <label class="flex-check-label" for="flexRadioDisabled">
+    Disabled radio
+  </label>
+</div>
+<div class="flex-check mb-3">
+  <input class="flex-check-input" type="radio" name="flexRadioDisabled" id="flexRadioCheckedDisabled" checked disabled>
+  <label class="flex-check-label" for="flexRadioCheckedDisabled">
+    Disabled checked radio
+  </label>
+</div>
+
+<!-- Switch -->
+<div class="flex-check flex-switch">
+  <input class="flex-check-input" type="checkbox" id="flexSwitchCheckDefault">
+  <label class="flex-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
+</div>
+<div class="flex-check flex-switch">
+  <input class="flex-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
+  <label class="flex-check-label" for="flexSwitchCheckChecked">Checked switch checkbox input</label>
+</div>
+<div class="flex-check flex-switch">
+  <input class="flex-check-input" type="checkbox" id="flexSwitchCheckDisabled" disabled>
+  <label class="flex-check-label" for="flexSwitchCheckDisabled">Disabled switch checkbox input</label>
+</div>
+<div class="flex-check flex-switch">
+  <input class="flex-check-input" type="checkbox" id="flexSwitchCheckCheckedDisabled" checked disabled>
+  <label class="flex-check-label" for="flexSwitchCheckCheckedDisabled">Disabled checked switch checkbox input</label>
+</div>
+{{< /example >}}
+
 Default checkboxes and radios are improved upon with the help of `.form-check`, **a single class for both input types that improves the layout and behavior of their HTML elements**. Checkboxes are for selecting one or several options in a list, while radios are for selecting one option from many.
 
 Disabled checkboxes and radios are supported. The `disabled` attribute will apply a lighter color to help indicate the input's state.
