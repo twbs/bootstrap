@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="../../favicon.ico">
+  <title>Action bar buttons for Bootstrap</title>
+  <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="p-a-3">
+  <h1>Nav-toolbar</h1>
+  <h2>With enabled buttons</h2>
+</div>
+
+<div class="nav-toolbar">
+  <div class="container m-l-0">
+    <form class="row">
+      <div class="action-buttons m-b-2 col-sm-8 col-md-9 col-xs-6">
+        <div class="btn-toolbar btn-toolbar-sm">
+
+          <!-- Dropdown menu on small layout -->
+          <div class="btn-group btn-block visible-xs-block m-b-0">
+            <button type="button" class="btn btn-sm btn-block dropdown-toggle btn-success" data-toggle="dropdown"
+                    aria-expanded="false">
+              <span>Send money</span>
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-lg" role="menu">
+              <li>
+                <a href="/transferFlow">
+                  <i class="icon icon-send"></i>Send money
+                </a>
+              </li>
+              <li>
+                <a href="/borderless-account/dashboard/add-money/start/">
+                  <i class="icon icon-add"></i>Add money
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Regular desktop buttons -->
+          <a class="btn btn-sm btn-success hidden-xs m-b-0" data-id="SEND_MONEY" href="/transferFlow">
+            Send money
+          </a>
+
+          <a class="btn btn-sm btn-info hidden-xs" data-id="BORDERLESS_ADD_MONEY"
+             href="/borderless-account/dashboard/add-money/start/">
+            Add money
+          </a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<div class="p-a-3">
+  <h2>With disabled buttons</h2>
+</div>
+
+<div class="nav-toolbar">
+  <div class="container m-l-0">
+    <form class="row">
+      <div class="action-buttons m-b-2 col-sm-8 col-md-9 col-xs-6">
+        <div class="btn-toolbar btn-toolbar-sm">
+
+          <!-- Dropdown menu on small layout -->
+          <div class="btn-group btn-block visible-xs-block m-b-0">
+            <button type="button" class="btn btn-sm btn-block dropdown-toggle btn-success" data-toggle="dropdown"
+                    aria-expanded="false">
+              <span>Send money</span>
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-lg" role="menu">
+              <li>
+                <a class="btn-link disabled" disabled="disabled">
+                  <i class="icon icon-send"></i>Send money
+                </a>
+              </li>
+              <li>
+                <a class="btn-link disabled" disabled="disabled">
+                  <i class="icon icon-add"></i>Add money
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Regular desktop buttons -->
+          <a class="btn btn-sm btn-success hidden-xs m-b-0" data-id="SEND_MONEY" disabled="disabled">
+            Send money
+          </a>
+
+          <a class="btn btn-sm btn-info hidden-xs" data-id="BORDERLESS_ADD_MONEY" disabled="disabled">
+            Add money
+          </a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Bootstrap core JavaScript
+  ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="../../dist/js/bootstrap.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+
+</body>
+
+</html>
