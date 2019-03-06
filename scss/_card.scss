@@ -6,7 +6,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  min-width: 0;
+  min-width: 0; // See https://github.com/twbs/bootstrap/pull/22740#issuecomment-305868106
   word-wrap: break-word;
   background-color: $card-bg;
   background-clip: border-box;
@@ -36,6 +36,7 @@
   // as much space as possible, ensuring footers are aligned to the bottom.
   flex: 1 1 auto;
   padding: $card-spacer-x;
+  color: $card-color;
 }
 
 .card-title {
@@ -272,7 +273,7 @@
       }
     }
 
-    &:first-of-type {
+    &:first-of-type:not(:last-of-type) {
       border-bottom: 0;
       @include border-bottom-radius(0);
     }

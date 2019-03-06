@@ -146,11 +146,11 @@ $(function () {
       .bootstrapToast()
       .appendTo($('#qunit-fixture'))
 
-    assert.ok(typeof $toast.data('bs.toast') !== 'undefined')
+    assert.ok(typeof Toast._getInstance($toast[0]) !== 'undefined')
 
     $toast.bootstrapToast('dispose')
 
-    assert.ok(typeof $toast.data('bs.toast') === 'undefined')
+    assert.ok(Toast._getInstance($toast[0]) === null)
   })
 
   QUnit.test('should allow to destroy toast and hide it before that', function (assert) {
@@ -171,11 +171,11 @@ $(function () {
     $toast.one('shown.bs.toast', function () {
       setTimeout(function () {
         assert.ok($toast.hasClass('show'))
-        assert.ok(typeof $toast.data('bs.toast') !== 'undefined')
+        assert.ok(typeof Toast._getInstance($toast[0]) !== 'undefined')
 
         $toast.bootstrapToast('dispose')
 
-        assert.ok(typeof $toast.data('bs.toast') === 'undefined')
+        assert.ok(Toast._getInstance($toast[0]) === null)
         assert.ok($toast.hasClass('show') === false)
 
         done()
@@ -235,5 +235,25 @@ $(function () {
         done()
       })
       .bootstrapToast('show')
+  })
+
+  QUnit.test('should expose default setting to allow to override them', function (assert) {
+    assert.expect(1)
+
+    var defaultDelay = 1000
+    Toast.Default.delay = defaultDelay
+
+    var toastHtml =
+      '<div class="toast" data-autohide="false" data-animation="false">' +
+        '<button type="button" class="ml-2 mb-1 close" data-dismiss="toast">' +
+          'close' +
+        '</button>' +
+      '</div>'
+
+    var $toast = $(toastHtml)
+      .bootstrapToast()
+
+    var toast = Toast._getInstance($toast[0])
+    assert.strictEqual(toast._config.delay, defaultDelay)
   })
 })

@@ -1,12 +1,21 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.2.1): scrollspy.js
+ * Bootstrap (v4.3.1): scrollspy.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
 
-import $ from 'jquery'
-import Util from './util'
+import {
+  jQuery as $,
+  getSelectorFromElement,
+  getUID,
+  makeArray,
+  typeCheckConfig
+} from './util/index'
+import Data from './dom/data'
+import EventHandler from './dom/eventHandler'
+import Manipulator from './dom/manipulator'
+import SelectorEngine from './dom/selectorEngine'
 
 /**
  * ------------------------------------------------------------------------
@@ -15,11 +24,10 @@ import Util from './util'
  */
 
 const NAME               = 'scrollspy'
-const VERSION            = '4.2.1'
+const VERSION            = '4.3.1'
 const DATA_KEY           = 'bs.scrollspy'
 const EVENT_KEY          = `.${DATA_KEY}`
 const DATA_API_KEY       = '.data-api'
-const JQUERY_NO_CONFLICT = $.fn[NAME]
 
 const Default = {
   offset : 10,
@@ -81,10 +89,12 @@ class ScrollSpy {
     this._activeTarget  = null
     this._scrollHeight  = 0
 
-    $(this._scrollElement).on(Event.SCROLL, (event) => this._process(event))
+    EventHandler.on(this._scrollElement, Event.SCROLL, (event) => this._process(event))
 
     this.refresh()
     this._process()
+
+    Data.setData(element, DATA_KEY, this)
   }
 
   // Getters
@@ -114,15 +124,15 @@ class ScrollSpy {
 
     this._scrollHeight = this._getScrollHeight()
 
-    const targets = [].slice.call(document.querySelectorAll(this._selector))
+    const targets = makeArray(SelectorEngine.find(this._selector))
 
     targets
       .map((element) => {
         let target
-        const targetSelector = Util.getSelectorFromElement(element)
+        const targetSelector = getSelectorFromElement(element)
 
         if (targetSelector) {
-          target = document.querySelector(targetSelector)
+          target = SelectorEngine.findOne(targetSelector)
         }
 
         if (target) {
@@ -130,7 +140,7 @@ class ScrollSpy {
           if (targetBCR.width || targetBCR.height) {
             // TODO (fat): remove sketch reliance on jQuery position/offset
             return [
-              $(target)[offsetMethod]().top + offsetBase,
+              Manipulator[offsetMethod](target).top + offsetBase,
               targetSelector
             ]
           }
@@ -146,8 +156,8 @@ class ScrollSpy {
   }
 
   dispose() {
-    $.removeData(this._element, DATA_KEY)
-    $(this._scrollElement).off(EVENT_KEY)
+    Data.removeData(this._element, DATA_KEY)
+    EventHandler.off(this._scrollElement, EVENT_KEY)
 
     this._element       = null
     this._scrollElement = null
@@ -168,15 +178,15 @@ class ScrollSpy {
     }
 
     if (typeof config.target !== 'string') {
-      let id = $(config.target).attr('id')
+      let id = config.target.id
       if (!id) {
-        id = Util.getUID(NAME)
-        $(config.target).attr('id', id)
+        id = getUID(NAME)
+        config.target.id = id
       }
       config.target = `#${id}`
     }
 
-    Util.typeCheckConfig(NAME, config, DefaultType)
+    typeCheckConfig(NAME, config, DefaultType)
 
     return config
   }
@@ -242,32 +252,45 @@ class ScrollSpy {
 
     this._clear()
 
-    const queries = this._selector
-      .split(',')
+    const queries = this._selector.split(',')
       .map((selector) => `${selector}[data-target="${target}"],${selector}[href="${target}"]`)
 
-    const $link = $([].slice.call(document.querySelectorAll(queries.join(','))))
+    const link = SelectorEngine.findOne(queries.join(','))
 
-    if ($link.hasClass(ClassName.DROPDOWN_ITEM)) {
-      $link.closest(Selector.DROPDOWN).find(Selector.DROPDOWN_TOGGLE).addClass(ClassName.ACTIVE)
-      $link.addClass(ClassName.ACTIVE)
+    if (link.classList.contains(ClassName.DROPDOWN_ITEM)) {
+      SelectorEngine
+        .findOne(Selector.DROPDOWN_TOGGLE, SelectorEngine.closest(link, Selector.DROPDOWN))
+        .classList.add(ClassName.ACTIVE)
+
+      link.classList.add(ClassName.ACTIVE)
     } else {
       // Set triggered link as active
-      $link.addClass(ClassName.ACTIVE)
-      // Set triggered links parents as active
-      // With both <ul> and <nav> markup a parent is the previous sibling of any nav ancestor
-      $link.parents(Selector.NAV_LIST_GROUP).prev(`${Selector.NAV_LINKS}, ${Selector.LIST_ITEMS}`).addClass(ClassName.ACTIVE)
-      // Handle special case when .nav-link is inside .nav-item
-      $link.parents(Selector.NAV_LIST_GROUP).prev(Selector.NAV_ITEMS).children(Selector.NAV_LINKS).addClass(ClassName.ACTIVE)
+      link.classList.add(ClassName.ACTIVE)
+
+      SelectorEngine
+        .parents(link, Selector.NAV_LIST_GROUP)
+        .forEach((listGroup) => {
+          // Set triggered links parents as active
+          // With both <ul> and <nav> markup a parent is the previous sibling of any nav ancestor
+          SelectorEngine.prev(listGroup, `${Selector.NAV_LINKS}, ${Selector.LIST_ITEMS}`)
+            .forEach((item) => item.classList.add(ClassName.ACTIVE))
+
+          // Handle special case when .nav-link is inside .nav-item
+          SelectorEngine.prev(listGroup, Selector.NAV_ITEMS)
+            .forEach((navItem) => {
+              SelectorEngine.children(navItem, Selector.NAV_LINKS)
+                .forEach((item) => item.classList.add(ClassName.ACTIVE))
+            })
+        })
     }
 
-    $(this._scrollElement).trigger(Event.ACTIVATE, {
+    EventHandler.trigger(this._scrollElement, Event.ACTIVATE, {
       relatedTarget: target
     })
   }
 
   _clear() {
-    [].slice.call(document.querySelectorAll(this._selector))
+    makeArray(SelectorEngine.find(this._selector))
       .filter((node) => node.classList.contains(ClassName.ACTIVE))
       .forEach((node) => node.classList.remove(ClassName.ACTIVE))
   }
@@ -276,12 +299,11 @@ class ScrollSpy {
 
   static _jQueryInterface(config) {
     return this.each(function () {
-      let data = $(this).data(DATA_KEY)
+      let data = Data.getData(this, DATA_KEY)
       const _config = typeof config === 'object' && config
 
       if (!data) {
         data = new ScrollSpy(this, _config)
-        $(this).data(DATA_KEY, data)
       }
 
       if (typeof config === 'string') {
@@ -292,6 +314,10 @@ class ScrollSpy {
       }
     })
   }
+
+  static _getInstance(element) {
+    return Data.getData(element, DATA_KEY)
+  }
 }
 
 /**
@@ -300,14 +326,9 @@ class ScrollSpy {
  * ------------------------------------------------------------------------
  */
 
-$(window).on(Event.LOAD_DATA_API, () => {
-  const scrollSpys = [].slice.call(document.querySelectorAll(Selector.DATA_SPY))
-  const scrollSpysLength = scrollSpys.length
-
-  for (let i = scrollSpysLength; i--;) {
-    const $spy = $(scrollSpys[i])
-    ScrollSpy._jQueryInterface.call($spy, $spy.data())
-  }
+EventHandler.on(window, Event.LOAD_DATA_API, () => {
+  makeArray(SelectorEngine.find(Selector.DATA_SPY))
+    .forEach((spy) => new ScrollSpy(spy, Manipulator.getDataAttributes(spy)))
 })
 
 /**
@@ -316,11 +337,14 @@ $(window).on(Event.LOAD_DATA_API, () => {
  * ------------------------------------------------------------------------
  */
 
-$.fn[NAME] = ScrollSpy._jQueryInterface
-$.fn[NAME].Constructor = ScrollSpy
-$.fn[NAME].noConflict = () => {
-  $.fn[NAME] = JQUERY_NO_CONFLICT
-  return ScrollSpy._jQueryInterface
+if (typeof $ !== 'undefined') {
+  const JQUERY_NO_CONFLICT = $.fn[NAME]
+  $.fn[NAME]               = ScrollSpy._jQueryInterface
+  $.fn[NAME].Constructor   = ScrollSpy
+  $.fn[NAME].noConflict    = () => {
+    $.fn[NAME] = JQUERY_NO_CONFLICT
+    return ScrollSpy._jQueryInterface
+  }
 }
 
 export default ScrollSpy

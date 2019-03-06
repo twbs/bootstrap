@@ -7,14 +7,14 @@
   // Our parent element can be arbitrary since tooltips are by default inserted as a sibling of their target element.
   // So reset our font and text properties to avoid inheriting weird values.
   @include reset-text();
-  font-size: $tooltip-font-size;
+  @include font-size($tooltip-font-size);
   // Allow breaking very long words so they don't overflow the tooltip's bounds
   word-wrap: break-word;
   opacity: 0;
 
   &.show { opacity: $tooltip-opacity; }
 
-  .arrow {
+  .tooltip-arrow {
     position: absolute;
     display: block;
     width: $tooltip-arrow-width;
@@ -32,7 +32,7 @@
 .bs-tooltip-top {
   padding: $tooltip-arrow-height 0;
 
-  .arrow {
+  .tooltip-arrow {
     bottom: 0;
 
     &::before {
@@ -46,7 +46,7 @@
 .bs-tooltip-right {
   padding: 0 $tooltip-arrow-height;
 
-  .arrow {
+  .tooltip-arrow {
     left: 0;
     width: $tooltip-arrow-height;
     height: $tooltip-arrow-width;
@@ -62,7 +62,7 @@
 .bs-tooltip-bottom {
   padding: $tooltip-arrow-height 0;
 
-  .arrow {
+  .tooltip-arrow {
     top: 0;
 
     &::before {
@@ -76,7 +76,7 @@
 .bs-tooltip-left {
   padding: 0 $tooltip-arrow-height;
 
-  .arrow {
+  .tooltip-arrow {
     right: 0;
     width: $tooltip-arrow-height;
     height: $tooltip-arrow-width;

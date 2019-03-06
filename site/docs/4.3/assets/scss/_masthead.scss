@@ -1,0 +1,52 @@
+// stylelint-disable declaration-no-important
+
+.bd-masthead {
+  position: relative;
+  padding: 3rem ($grid-gutter-width / 2);
+  // background-image: linear-gradient(45deg, #fafafa, #f5f5f5);
+
+  h1 {
+    @include font-size(4rem);
+    line-height: 1;
+  }
+
+  .btn {
+    padding: .8rem 2rem;
+    font-weight: 600;
+    @include font-size(1.25rem);
+  }
+
+  .carbonad {
+    margin-top: 0 !important;
+    margin-bottom: -3rem !important;
+  }
+
+  @include media-breakpoint-up(sm) {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+
+    .carbonad {
+      margin-bottom: 0 !important;
+    }
+  }
+
+  @include media-breakpoint-up(md) {
+    .carbonad {
+      margin-top: 3rem !important;
+    }
+  }
+}
+
+.half-rule {
+  width: 6rem;
+  margin: 2.5rem 0;
+}
+
+.masthead-followup {
+  .bd-clipboard { display: none; }
+
+  .highlight {
+    padding: .5rem 0;
+    background-color: transparent;
+  }
+}

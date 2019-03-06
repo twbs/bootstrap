@@ -8,11 +8,16 @@
     "bootstrap": false,
     "sinon": false,
     "Util": false,
+    "Sanitizer": false,
+    "Data": false,
     "Alert": false,
     "Button": false,
     "Carousel": false,
     "Simulator": false,
-    "Toast": false
+    "Toast": false,
+    "EventHandler": false,
+    "Manipulator": false,
+    "SelectorEngine": false
   },
   "parserOptions": {
     "ecmaVersion": 5,
