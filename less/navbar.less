@@ -491,16 +491,14 @@
         }
 
         .dropdown-menu {
-          display: block;
-          animation: showDropdown 0.2s cubic-bezier(0.6, 0.2, 0.1, 1) both;
+          .dropdown-menu-open();
         }
       }
 
       &:hover {
         @media (min-width: @grid-float-breakpoint) {
           .dropdown-menu {
-            display: block;
-            animation: showDropdown 0.2s cubic-bezier(0.6, 0.2, 0.1, 1) both;
+            .dropdown-menu-open();
           }
         }
       }

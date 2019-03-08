@@ -1068,9 +1068,17 @@ h4 code {
 }
 .bs-example > .dropdown > .dropdown-menu {
   position: static;
-  display: block;
   margin-bottom: 8px;
   clear: left;
+  visibility: visible;
+  opacity: 1;
+  -webkit-transform: none;
+      -ms-transform: none;
+       -o-transform: none;
+          transform: none;
+  -webkit-animation: none;
+       -o-animation: none;
+          animation: none;
 }
 
 /* Example tabbable tabs */

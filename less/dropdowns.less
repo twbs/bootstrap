@@ -36,7 +36,6 @@
   top: 0; //100%;
   left: 0;
   z-index: @zindex-dropdown;
-  display: none; // none by default, but block on "open" of the menu
   float: left;
 
   padding: @padding-base-vertical;
@@ -66,6 +65,8 @@
   .text-primary {
     color: @brand-navy-minus-10 !important;
   }
+
+  .dropdown-menu-closed();
 
   // Links within the dropdown menu
   > li > a {
@@ -97,6 +98,30 @@
   > .overlay-title {
     display: none;
   }
+
+}
+
+.dropdown-menu-open() {
+  transition:
+    opacity 0.2s cubic-bezier(0.6, 0.2, 0.1, 1),
+    transform 0.2s cubic-bezier(0.6, 0.2, 0.1, 1),
+    visibility 0s linear 0s;
+
+  visibility: visible;
+  opacity: 1;
+  transform: none;
+}
+
+.dropdown-menu-closed() {
+  // the visibility transition here allows us to wait for the opacity/transform animation to finish before we make it hidden.
+  transition:
+    opacity 0.2s cubic-bezier(0.6, 0.2, 0.1, 1),
+    transform 0.2s cubic-bezier(0.6, 0.2, 0.1, 1),
+    visibility 0s linear 0.2s;
+
+  opacity: 0;
+  transform: translateY(-10px) scale(0.95, 0.95);
+  visibility: hidden;
 }
 
 .dropdown-menu,
@@ -184,10 +209,8 @@
 
 // Open state for the dropdown
 .open {
-  // Show the menu
   > .dropdown-menu {
-    display: block;
-    animation: showDropdown 0.2s cubic-bezier(0.6, 0.2, 0.1, 1) both;
+    .dropdown-menu-open();
   }
 
   @media (max-width: @screen-sm-min) {
@@ -214,17 +237,6 @@
   // Remove the outline when :focus is triggered
   > a {
     outline: 0;
-  }
-}
-
-@keyframes showDropdown {
-  from {
-    opacity: 0;
-    transform: translateY(-10px) scale(0.95, 0.95);
-  }
-  to {
-    opacity: 1;
-    transform: none;
   }
 }
 
