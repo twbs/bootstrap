@@ -26,6 +26,19 @@
     - title: Tables
     - title: Figures
 
+- title: Forms
+  pages:
+    - title: Overview
+    - title: Labels
+    - title: Form control
+    - title: Select
+    - title: Check
+    - title: File
+    - title: Range
+    - title: Layout
+    - title: Input group
+    - title: Validation
+
 - title: Components
   pages:
     - title: Alerts
@@ -37,8 +50,8 @@
     - title: Carousel
     - title: Collapse
     - title: Dropdowns
-    - title: Forms
-    - title: Input group
+    # - title: Forms
+    # - title: Input group
     - title: Jumbotron
     - title: List group
     - title: Media object
