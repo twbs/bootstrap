@@ -1,0 +1,183 @@
+// stylelint-disable media-feature-name-no-unknown, declaration-no-important, selector-max-type, selector-max-id
+
+@media (prefers-color-scheme: dark) {
+  // Globals
+  body {
+    color: rgba(255, 255, 255, .75);
+    background-color: darken(desaturate($bd-purple, 25%), 25%);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  a {
+    color: $white;
+  }
+
+  code {
+    color: lighten($code-color, 15%);
+  }
+
+  // Navbar
+  .bd-navbar {
+    background-color: darken($bd-purple, 15%);
+  }
+
+  // Sidebar
+  .bd-sidebar {
+    background-color: rgba(0, 0, 0, .1);
+    border-color: rgba(255, 255, 255, .05);
+  }
+  .bd-toc-link,
+  .bd-sidebar .nav > li > a {
+    color: rgba(255, 255, 255, .75);
+  }
+  .bd-toc-link:hover,
+  .bd-sidebar .nav > li > a:hover,
+  .bd-sidebar .nav > .active > a,
+  .bd-sidebar .nav > .active:hover > a,
+  .bd-toc-item.active > .bd-toc-link {
+    color: #fff;
+  }
+  .ds-input {
+    background-color: rgba(0, 0, 0, .25);
+    border-color: rgba(255, 255, 255, .1);
+
+    &:focus {
+      background-color: rgba(0, 0, 0, .5);
+    }
+  }
+
+  // Footer
+  .bd-footer {
+    color: rgba(255, 255, 255, .5) !important;
+    background-color: rgba(0, 0, 0, .15) !important;
+    border-top: 1px solid $gray-900;
+
+    a {
+      color: rgba(255, 255, 255, .75);
+
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+
+  // Content
+  .bd-content {
+    a:not(.btn):not(.anchorjs-link):not(.carbon-img):not(.carbon-text):not(.carbon-poweredby) {
+      border-bottom: 1px solid rgba(255, 255, 255, .375);
+
+      &:hover {
+        color: $white;
+        text-decoration: none;
+        border-bottom-color: rgba(255, 255, 255, .75);
+      }
+    }
+
+    > table {
+      color: rgba(255, 255, 255, .5);
+
+      td,
+      th {
+        border-color: $gray-800 !important;
+      }
+      th,
+      thead td:first-child {
+        color: rgba(255, 255, 255, .75);
+        background-color: rgba(255, 255, 255, .05);
+      }
+      .bg-light {
+        background-color: rgba(255, 255, 255, .05) !important;
+      }
+    }
+  }
+
+  .bd-callout {
+    border-width: 0 0 0 .25rem;
+    @include border-radius(0);
+  }
+
+  // Ads
+  .bd-content,
+  .bd-masthead {
+    #carbonads {
+      background-color: rgba(0, 0, 0, .15);
+      border: 1px solid rgba(255, 255, 255, .1);
+    }
+    .anchorjs-link,
+    .carbon-img,
+    .carbon-poweredby {
+      color: rgba(255, 255, 255, .5) !important;
+    }
+    .carbon-text {
+      color: rgba(255, 255, 255, .75) !important;
+
+      &:hover {
+        color: $white !important;
+      }
+    }
+  }
+
+  // Code snippets
+  .highlight {
+    color: rgba(255, 255, 255, .5);
+    background-color: rgba(0, 0, 0, .5);
+
+    pre code {
+      color: rgba(255, 255, 255, .5);
+    }
+  }
+  .language-sh::before,
+  .language-bash::before,
+  .language-powershell::before {
+    color: $bd-info;
+  }
+
+  // Examples
+  .bd-example {
+    // color: rgba(255, 255, 255, .5);
+    // background-color: rgba(0, 0, 0, .5);
+    color: $body-color;
+    border-color: rgba(0, 0, 0, .5);
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: inherit;
+    }
+  }
+  .bd-example-row .col,
+  .bd-example-row [class^="col-"] {
+    color: rgba(255, 255, 255, .5);
+  }
+
+  // ToC
+  .section-nav {
+    border-left-color: rgba(255, 255, 255, .1);
+
+    a {
+      color: rgba(255, 255, 255, .5);
+
+      &:hover {
+        color: $white;
+      }
+    }
+  }
+
+  // Homepage
+  .masthead-followup {
+    border-color: $gray-900 !important;
+
+    .bg-light {
+      background-color: rgba(0, 0, 0, .15) !important;
+      border-color: $gray-900 !important;
+    }
+  }
+}
