@@ -1,8 +1,8 @@
 $(function () {
   'use strict'
 
-  window.Util = typeof bootstrap !== 'undefined' ? bootstrap.Util : Util
-  var Modal = typeof window.bootstrap !== 'undefined' ? window.bootstrap.Modal : window.Modal
+  window.Util = typeof bootstrap === 'undefined' ? Util : bootstrap.Util
+  var Modal = typeof window.bootstrap === 'undefined' ? window.Modal : window.bootstrap.Modal
 
   QUnit.module('modal plugin')
 
@@ -45,8 +45,8 @@ $(function () {
     $el.bootstrapModal()
     try {
       $el.bootstrapModal('noMethod')
-    } catch (err) {
-      assert.strictEqual(err.message, 'No method named "noMethod"')
+    } catch (error) {
+      assert.strictEqual(error.message, 'No method named "noMethod"')
     }
   })
 
@@ -460,8 +460,8 @@ $(function () {
     var originalPadding = $body.css('padding-right')
 
     // Hide scrollbars to prevent the body overflowing
-    $body.css('overflow', 'hidden')        // Real scrollbar (for in-browser testing)
-    $('html').css('padding-right', '0px')  // Simulated scrollbar (for PhantomJS)
+    $body.css('overflow', 'hidden') // Real scrollbar (for in-browser testing)
+    $('html').css('padding-right', '0px') // Simulated scrollbar (for PhantomJS)
 
     $('<div id="modal-test"><div class="modal-dialog" /></div>')
       .on('shown.bs.modal', function () {
@@ -758,6 +758,7 @@ $(function () {
         document.removeEventListener('focusin', focusInListener)
         done()
       }
+
       document.addEventListener('focusin', focusInListener)
 
       var focusInEvent = new Event('focusin')

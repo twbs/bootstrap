@@ -74,7 +74,8 @@
   var MAX_UID = 1000000;
   var MILLISECONDS_MULTIPLIER = 1000;
   var TRANSITION_END = 'transitionend';
-  var jQuery = window.jQuery; // Shoutout AngusCroll (https://goo.gl/pxwQGp)
+  var _window = window,
+      jQuery = _window.jQuery; // Shoutout AngusCroll (https://goo.gl/pxwQGp)
 
   var toType = function toType(obj) {
     return {}.toString.call(obj).match(/\s([a-z]+)/i)[1].toLowerCase();
@@ -388,7 +389,6 @@
     SHOW: 'show'
   };
   var Selector = {
-    TOOLTIP: '.tooltip',
     TOOLTIP_INNER: '.tooltip-inner',
     TOOLTIP_ARROW: '.tooltip-arrow'
   };
@@ -516,7 +516,7 @@
       if (this.isWithContent() && this._isEnabled) {
         var showEvent = EventHandler.trigger(this.element, this.constructor.Event.SHOW);
         var shadowRoot = findShadowRoot(this.element);
-        var isInTheDom = shadowRoot !== null ? shadowRoot.contains(this.element) : this.element.ownerDocument.documentElement.contains(this.element);
+        var isInTheDom = shadowRoot === null ? this.element.ownerDocument.documentElement.contains(this.element) : shadowRoot.contains(this.element);
 
         if (showEvent.defaultPrevented || !isInTheDom) {
           return;

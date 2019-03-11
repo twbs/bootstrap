@@ -16,7 +16,8 @@
    * --------------------------------------------------------------------------
    */
   var MAX_UID = 1000000;
-  var jQuery = window.jQuery; // Shoutout AngusCroll (https://goo.gl/pxwQGp)
+  var _window = window,
+      jQuery = _window.jQuery; // Shoutout AngusCroll (https://goo.gl/pxwQGp)
   /**
    * --------------------------------------------------------------------------
    * Public Util Api
@@ -65,7 +66,7 @@
 
       try {
         element.querySelectorAll(':scope *');
-      } catch (e) {
+      } catch (error) {
         return false;
       }
 
