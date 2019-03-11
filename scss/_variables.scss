@@ -303,10 +303,10 @@ $headings-color:              null !default;
 
 //display types as font-size and font-weight
 $displays: (
-        1:(6rem, 300),
-        2:(5.5rem, 300),
-        3:(4.5rem, 300),
-        4:(3.5rem, 300)
+  1:(6rem, 300),
+  2:(5.5rem, 300),
+  3:(4.5rem, 300),
+  4:(3.5rem, 300)
 ) !default;
 $display-line-height:         $headings-line-height !default;
 
