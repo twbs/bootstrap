@@ -1,7 +1,7 @@
 $(function () {
   'use strict'
 
-  var Alert = typeof window.bootstrap !== 'undefined' ? window.bootstrap.Alert : window.Alert
+  var Alert = typeof window.bootstrap === 'undefined' ? window.Alert : window.bootstrap.Alert
 
   QUnit.module('alert plugin')
 

@@ -1,7 +1,7 @@
 $(function () {
   'use strict'
 
-  var Popover = typeof window.bootstrap !== 'undefined' ? window.bootstrap.Popover : window.Popover
+  var Popover = typeof window.bootstrap === 'undefined' ? window.Popover : window.bootstrap.Popover
 
   QUnit.module('popover plugin')
 
@@ -34,8 +34,8 @@ $(function () {
     $el.bootstrapPopover()
     try {
       $el.bootstrapPopover('noMethod')
-    } catch (err) {
-      assert.strictEqual(err.message, 'No method named "noMethod"')
+    } catch (error) {
+      assert.strictEqual(error.message, 'No method named "noMethod"')
     }
   })
 
@@ -367,8 +367,8 @@ $(function () {
 
     try {
       $('<div data-toggle="popover" data-title="some title" data-content="@Johann-S" style="display: none"/>').bootstrapPopover('show')
-    } catch (err) {
-      assert.strictEqual(err.message, 'Please use show on visible elements')
+    } catch (error) {
+      assert.strictEqual(error.message, 'Please use show on visible elements')
       done()
     }
   })
