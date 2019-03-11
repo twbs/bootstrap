@@ -72,7 +72,8 @@
    */
   var MILLISECONDS_MULTIPLIER = 1000;
   var TRANSITION_END = 'transitionend';
-  var jQuery = window.jQuery; // Shoutout AngusCroll (https://goo.gl/pxwQGp)
+  var _window = window,
+      jQuery = _window.jQuery; // Shoutout AngusCroll (https://goo.gl/pxwQGp)
 
   var toType = function toType(obj) {
     return {}.toString.call(obj).match(/\s([a-z]+)/i)[1].toLowerCase();
@@ -88,7 +89,7 @@
 
     try {
       return document.querySelector(selector) ? selector : null;
-    } catch (err) {
+    } catch (error) {
       return null;
     }
   };
@@ -586,7 +587,6 @@
       }
     } // ----------------------------------------------------------------------
     // the following methods are used to handle overflowing modals
-    // todo (fat): these should probably be refactored out of modal.js
     // ----------------------------------------------------------------------
     ;
 
@@ -665,11 +665,11 @@
 
       var padding = Manipulator.getDataAttribute(document.body, 'padding-right');
 
-      if (typeof padding !== 'undefined') {
+      if (typeof padding === 'undefined') {
+        document.body.style.paddingRight = '';
+      } else {
         Manipulator.removeDataAttribute(document.body, 'padding-right');
         document.body.style.paddingRight = padding;
-      } else {
-        document.body.style.paddingRight = '';
       }
     };
 
