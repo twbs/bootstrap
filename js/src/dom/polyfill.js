@@ -34,7 +34,7 @@ const Polyfill = (() => {
 
     try {
       element.querySelectorAll(':scope *')
-    } catch (e) {
+    } catch (error) {
       return false
     }
 

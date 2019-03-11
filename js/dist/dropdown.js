@@ -71,7 +71,8 @@
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
-  var jQuery = window.jQuery; // Shoutout AngusCroll (https://goo.gl/pxwQGp)
+  var _window = window,
+      jQuery = _window.jQuery; // Shoutout AngusCroll (https://goo.gl/pxwQGp)
 
   var toType = function toType(obj) {
     return {}.toString.call(obj).match(/\s([a-z]+)/i)[1].toLowerCase();
@@ -87,7 +88,7 @@
 
     try {
       return document.querySelector(selector) ? selector : null;
-    } catch (err) {
+    } catch (error) {
       return null;
     }
   };
@@ -162,7 +163,6 @@
     DROPRIGHT: 'dropright',
     DROPLEFT: 'dropleft',
     MENURIGHT: 'dropdown-menu-right',
-    MENULEFT: 'dropdown-menu-left',
     POSITION_STATIC: 'position-static'
   };
   var Selector = {
@@ -468,7 +468,7 @@
 
       if (typeof config === 'string') {
         if (typeof data[config] === 'undefined') {
-          throw new Error("No method named \"" + config + "\"");
+          throw new TypeError("No method named \"" + config + "\"");
         }
 
         data[config]();

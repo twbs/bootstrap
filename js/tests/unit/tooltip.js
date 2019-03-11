@@ -1,7 +1,7 @@
 $(function () {
   'use strict'
 
-  var Tooltip = typeof window.bootstrap !== 'undefined' ? window.bootstrap.Tooltip : window.Tooltip
+  var Tooltip = typeof window.bootstrap === 'undefined' ? window.Tooltip : window.bootstrap.Tooltip
 
   QUnit.module('tooltip plugin')
 
@@ -34,8 +34,8 @@ $(function () {
     $el.bootstrapTooltip()
     try {
       $el.bootstrapTooltip('noMethod')
-    } catch (err) {
-      assert.strictEqual(err.message, 'No method named "noMethod"')
+    } catch (error) {
+      assert.strictEqual(error.message, 'No method named "noMethod"')
     }
   })
 
@@ -231,8 +231,8 @@ $(function () {
 
     try {
       $('<div title="tooltip title" style="display: none"/>').bootstrapTooltip('show')
-    } catch (err) {
-      assert.strictEqual(err.message, 'Please use show on visible elements')
+    } catch (error) {
+      assert.strictEqual(error.message, 'Please use show on visible elements')
       done()
     }
   })
@@ -336,7 +336,7 @@ $(function () {
     assert.expect(3)
     var $tooltip = $('<div/>')
       .bootstrapTooltip()
-      .on('click.foo', function () {})  // eslint-disable-line no-empty-function
+      .on('click.foo', function () {}) // eslint-disable-line no-empty-function
 
     assert.ok(Tooltip._getInstance($tooltip[0]), 'tooltip has data')
 
@@ -557,7 +557,7 @@ $(function () {
 
     try {
       $tooltip.bootstrapTooltip('show')
-    } catch (err) {
+    } catch (error) {
       passed = false
     }
 
