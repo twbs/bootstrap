@@ -18,12 +18,12 @@ Here's a quick example to demonstrate Bootstrap's form styles. Keep reading for 
 <form>
   <div class="form-group">
     <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    <input type="password" class="form-control" id="exampleInputPassword1">
   </div>
   <div class="form-group form-check">
     <input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -134,7 +134,7 @@ If you want to have `<input readonly>` elements in your form styled as plain tex
   <div class="form-group row">
     <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
     <div class="col-sm-10">
-      <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+      <input type="password" class="form-control" id="inputPassword">
     </div>
   </div>
 </form>
@@ -282,11 +282,11 @@ The `.form-group` class is the easiest way to add some structure to forms. It pr
 <form>
   <div class="form-group">
     <label for="formGroupExampleInput">Example label</label>
-    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder">
   </div>
   <div class="form-group">
     <label for="formGroupExampleInput2">Another label</label>
-    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input placeholder">
   </div>
 </form>
 {% endcapture %}
@@ -335,11 +335,11 @@ More complex layouts can also be created with the grid system.
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputEmail4">Email</label>
-      <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+      <input type="email" class="form-control" id="inputEmail4">
     </div>
     <div class="form-group col-md-6">
       <label for="inputPassword4">Password</label>
-      <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+      <input type="password" class="form-control" id="inputPassword4">
     </div>
   </div>
   <div class="form-group">
@@ -391,13 +391,13 @@ At times, you maybe need to use margin or padding utilities to create that perfe
   <div class="form-group row">
     <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
     <div class="col-sm-10">
-      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+      <input type="email" class="form-control" id="inputEmail3">
     </div>
   </div>
   <div class="form-group row">
     <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
     <div class="col-sm-10">
-      <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+      <input type="password" class="form-control" id="inputPassword3">
     </div>
   </div>
   <fieldset class="form-group">
@@ -771,14 +771,14 @@ Custom feedback styles apply custom colors, borders, focus styles, and backgroun
   <div class="form-row">
     <div class="col-md-4 mb-3">
       <label for="validationCustom01">First name</label>
-      <input type="text" class="form-control" id="validationCustom01" placeholder="First name" value="Mark" required>
+      <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
       <div class="valid-feedback">
         Looks good!
       </div>
     </div>
     <div class="col-md-4 mb-3">
       <label for="validationCustom02">Last name</label>
-      <input type="text" class="form-control" id="validationCustom02" placeholder="Last name" value="Otto" required>
+      <input type="text" class="form-control" id="validationCustom02" value="Otto" required>
       <div class="valid-feedback">
         Looks good!
       </div>
@@ -789,7 +789,7 @@ Custom feedback styles apply custom colors, borders, focus styles, and backgroun
         <div class="input-group-prepend">
           <span class="input-group-text" id="inputGroupPrepend">@</span>
         </div>
-        <input type="text" class="form-control" id="validationCustomUsername" placeholder="Username" aria-describedby="inputGroupPrepend" required>
+        <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
         <div class="invalid-feedback">
           Please choose a username.
         </div>
@@ -799,21 +799,24 @@ Custom feedback styles apply custom colors, borders, focus styles, and backgroun
   <div class="form-row">
     <div class="col-md-6 mb-3">
       <label for="validationCustom03">City</label>
-      <input type="text" class="form-control" id="validationCustom03" placeholder="City" required>
+      <input type="text" class="form-control" id="validationCustom03" required>
       <div class="invalid-feedback">
         Please provide a valid city.
       </div>
     </div>
     <div class="col-md-3 mb-3">
       <label for="validationCustom04">State</label>
-      <input type="text" class="form-control" id="validationCustom04" placeholder="State" required>
+      <select class="custom-select" id="validationCustom04" required>
+        <option selected disabled value="">Choose...</option>
+        <option>...</option>
+      </select>
       <div class="invalid-feedback">
-        Please provide a valid state.
+        Please select a valid state.
       </div>
     </div>
     <div class="col-md-3 mb-3">
       <label for="validationCustom05">Zip</label>
-      <input type="text" class="form-control" id="validationCustom05" placeholder="Zip" required>
+      <input type="text" class="form-control" id="validationCustom05" required>
       <div class="invalid-feedback">
         Please provide a valid zip.
       </div>
@@ -867,11 +870,11 @@ While these feedback styles cannot be styled with CSS, you can still customize t
   <div class="form-row">
     <div class="col-md-4 mb-3">
       <label for="validationDefault01">First name</label>
-      <input type="text" class="form-control" id="validationDefault01" placeholder="First name" value="Mark" required>
+      <input type="text" class="form-control" id="validationDefault01" value="Mark" required>
     </div>
     <div class="col-md-4 mb-3">
       <label for="validationDefault02">Last name</label>
-      <input type="text" class="form-control" id="validationDefault02" placeholder="Last name" value="Otto" required>
+      <input type="text" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4 mb-3">
       <label for="validationDefaultUsername">Username</label>
@@ -879,22 +882,25 @@ While these feedback styles cannot be styled with CSS, you can still customize t
         <div class="input-group-prepend">
           <span class="input-group-text" id="inputGroupPrepend2">@</span>
         </div>
-        <input type="text" class="form-control" id="validationDefaultUsername" placeholder="Username" aria-describedby="inputGroupPrepend2" required>
+        <input type="text" class="form-control" id="validationDefaultUsername"  aria-describedby="inputGroupPrepend2" required>
       </div>
     </div>
   </div>
   <div class="form-row">
     <div class="col-md-6 mb-3">
       <label for="validationDefault03">City</label>
-      <input type="text" class="form-control" id="validationDefault03" placeholder="City" required>
+      <input type="text" class="form-control" id="validationDefault03" required>
     </div>
     <div class="col-md-3 mb-3">
       <label for="validationDefault04">State</label>
-      <input type="text" class="form-control" id="validationDefault04" placeholder="State" required>
+      <select class="custom-select" id="validationDefault04" required>
+        <option selected disabled value="">Choose...</option>
+        <option>...</option>
+      </select>
     </div>
     <div class="col-md-3 mb-3">
       <label for="validationDefault05">Zip</label>
-      <input type="text" class="form-control" id="validationDefault05" placeholder="Zip" required>
+      <input type="text" class="form-control" id="validationDefault05" required>
     </div>
   </div>
   <div class="form-group">
@@ -919,14 +925,14 @@ We recommend using client-side validation, but in case you require server-side v
   <div class="form-row">
     <div class="col-md-4 mb-3">
       <label for="validationServer01">First name</label>
-      <input type="text" class="form-control is-valid" id="validationServer01" placeholder="First name" value="Mark" required>
+      <input type="text" class="form-control is-valid" id="validationServer01" value="Mark" required>
       <div class="valid-feedback">
         Looks good!
       </div>
     </div>
     <div class="col-md-4 mb-3">
       <label for="validationServer02">Last name</label>
-      <input type="text" class="form-control is-valid" id="validationServer02" placeholder="Last name" value="Otto" required>
+      <input type="text" class="form-control is-valid" id="validationServer02" value="Otto" required>
       <div class="valid-feedback">
         Looks good!
       </div>
@@ -937,7 +943,7 @@ We recommend using client-side validation, but in case you require server-side v
         <div class="input-group-prepend">
           <span class="input-group-text" id="inputGroupPrepend3">@</span>
         </div>
-        <input type="text" class="form-control is-invalid" id="validationServerUsername" placeholder="Username" aria-describedby="inputGroupPrepend3" required>
+        <input type="text" class="form-control is-invalid" id="validationServerUsername" aria-describedby="inputGroupPrepend3" required>
         <div class="invalid-feedback">
           Please choose a username.
         </div>
@@ -947,21 +953,24 @@ We recommend using client-side validation, but in case you require server-side v
   <div class="form-row">
     <div class="col-md-6 mb-3">
       <label for="validationServer03">City</label>
-      <input type="text" class="form-control is-invalid" id="validationServer03" placeholder="City" required>
+      <input type="text" class="form-control is-invalid" id="validationServer03" required>
       <div class="invalid-feedback">
         Please provide a valid city.
       </div>
     </div>
     <div class="col-md-3 mb-3">
       <label for="validationServer04">State</label>
-      <input type="text" class="form-control is-invalid" id="validationServer04" placeholder="State" required>
+      <select class="custom-select is-invalid" id="validationServer04" required>
+        <option selected disabled value="">Choose...</option>
+        <option>...</option>
+      </select>
       <div class="invalid-feedback">
-        Please provide a valid state.
+        Please select a valid state.
       </div>
     </div>
     <div class="col-md-3 mb-3">
       <label for="validationServer05">Zip</label>
-      <input type="text" class="form-control is-invalid" id="validationServer05" placeholder="Zip" required>
+      <input type="text" class="form-control is-invalid" id="validationServer05" required>
       <div class="invalid-feedback">
         Please provide a valid zip.
       </div>
@@ -988,7 +997,7 @@ We recommend using client-side validation, but in case you require server-side v
 Validation styles are available for the following form controls and components:
 
 - `<input>`s and `<textarea>`s with `.form-control` (including up to one `.form-control` in input groups)
-- `<select>`s with `.form-select` or `.custom-select`
+- `<select>`s with `.form-control` or `.custom-select`
 - `.form-check`s
 - `.custom-checkbox`s and `.custom-radio`s
 - `.custom-file`
@@ -1047,14 +1056,14 @@ If your form layout allows it, you can swap the `.{valid|invalid}-feedback` clas
   <div class="form-row">
     <div class="col-md-4 mb-3">
       <label for="validationTooltip01">First name</label>
-      <input type="text" class="form-control" id="validationTooltip01" placeholder="First name" value="Mark" required>
+      <input type="text" class="form-control" id="validationTooltip01" value="Mark" required>
       <div class="valid-tooltip">
         Looks good!
       </div>
     </div>
     <div class="col-md-4 mb-3">
       <label for="validationTooltip02">Last name</label>
-      <input type="text" class="form-control" id="validationTooltip02" placeholder="Last name" value="Otto" required>
+      <input type="text" class="form-control" id="validationTooltip02" value="Otto" required>
       <div class="valid-tooltip">
         Looks good!
       </div>
@@ -1065,7 +1074,7 @@ If your form layout allows it, you can swap the `.{valid|invalid}-feedback` clas
         <div class="input-group-prepend">
           <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
         </div>
-        <input type="text" class="form-control" id="validationTooltipUsername" placeholder="Username" aria-describedby="validationTooltipUsernamePrepend" required>
+        <input type="text" class="form-control" id="validationTooltipUsername" aria-describedby="validationTooltipUsernamePrepend" required>
         <div class="invalid-tooltip">
           Please choose a unique and valid username.
         </div>
@@ -1075,21 +1084,24 @@ If your form layout allows it, you can swap the `.{valid|invalid}-feedback` clas
   <div class="form-row">
     <div class="col-md-6 mb-3">
       <label for="validationTooltip03">City</label>
-      <input type="text" class="form-control" id="validationTooltip03" placeholder="City" required>
+      <input type="text" class="form-control" id="validationTooltip03" required>
       <div class="invalid-tooltip">
         Please provide a valid city.
       </div>
     </div>
     <div class="col-md-3 mb-3">
       <label for="validationTooltip04">State</label>
-      <input type="text" class="form-control" id="validationTooltip04" placeholder="State" required>
+      <select class="custom-select" id="validationTooltip04" required>
+        <option selected disabled value="">Choose...</option>
+        <option>...</option>
+      </select>
       <div class="invalid-tooltip">
-        Please provide a valid state.
+        Please select a valid state.
       </div>
     </div>
     <div class="col-md-3 mb-3">
       <label for="validationTooltip05">Zip</label>
-      <input type="text" class="form-control" id="validationTooltip05" placeholder="Zip" required>
+      <input type="text" class="form-control" id="validationTooltip05" required>
       <div class="invalid-tooltip">
         Please provide a valid zip.
       </div>
