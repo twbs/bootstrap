@@ -911,17 +911,10 @@ $toast-header-border-color:         rgba(0, 0, 0, .05) !default;
 
 $badge-font-size:                   75% !default;
 $badge-font-weight:                 $font-weight-bold !default;
+$badge-color:                       $white !default;
 $badge-padding-y:                   .25em !default;
-$badge-padding-x:                   .4em !default;
+$badge-padding-x:                   .5em !default;
 $badge-border-radius:               $border-radius !default;
-
-$badge-transition:                  $btn-transition !default;
-$badge-focus-width:                 $input-btn-focus-width !default;
-
-$badge-pill-padding-x:              .6em !default;
-// Use a higher than normal value to ensure completely rounded edges when
-// customizing padding or font-size on labels.
-$badge-pill-border-radius:          10rem !default;
 
 
 // Modals
