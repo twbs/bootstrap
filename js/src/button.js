@@ -30,9 +30,6 @@ const ClassName = {
 
 const Selector = {
   DATA_TOGGLE_CARROT: '[data-toggle^="button"]',
-  DATA_TOGGLE: '[data-toggle="buttons"]',
-  INPUT: 'input:not([type="hidden"])',
-  ACTIVE: '.active',
   BUTTON: '.btn'
 }
 
@@ -63,22 +60,10 @@ class Button {
   // Public
 
   toggle() {
-    let triggerChangeEvent = true
-    let addAriaPressed = true
+    this._element.setAttribute('aria-pressed',
+      !this._element.classList.contains(ClassName.ACTIVE))
 
-    const rootElement = SelectorEngine.closest(
-      this._element,
-      Selector.DATA_TOGGLE
-    )
-
-    if (addAriaPressed) {
-      this._element.setAttribute('aria-pressed',
-        !this._element.classList.contains(ClassName.ACTIVE))
-    }
-
-    if (triggerChangeEvent) {
-      this._element.classList.toggle(ClassName.ACTIVE)
-    }
+    this._element.classList.toggle(ClassName.ACTIVE)
   }
 
   dispose() {
