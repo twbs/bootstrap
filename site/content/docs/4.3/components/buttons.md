@@ -140,15 +140,15 @@ Note that pre-checked buttons require you to manually add the `.active` class to
 {{< example >}}
 <div class="btn-group">
   <div class="btn-group">
-    <input type="checkbox" class="btn-group-input" name="btnGroupRadio" id="btnGroupRadio1" checked>
+    <input type="radio" class="btn-group-input" name="btnGroupRadio" id="btnGroupRadio1" checked>
     <label class="btn btn-primary" for="btnGroupRadio1">Radio button</label>
   </div>
   <div class="btn-group">
-    <input type="checkbox" class="btn-group-input" name="btnGroupRadio" id="btnGroupRadio2">
+    <input type="radio" class="btn-group-input" name="btnGroupRadio" id="btnGroupRadio2">
     <label class="btn btn-primary" for="btnGroupRadio2">Radio button</label>
   </div>
   <div class="btn-group">
-    <input type="checkbox" class="btn-group-input" name="btnGroupRadio" id="btnGroupRadio3">
+    <input type="radio" class="btn-group-input" name="btnGroupRadio" id="btnGroupRadio3">
     <label class="btn btn-primary" for="btnGroupRadio3">Radio button</label>
   </div>
 </div>
