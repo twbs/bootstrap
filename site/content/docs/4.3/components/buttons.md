@@ -122,31 +122,35 @@ Add `data-toggle="button"` to toggle a button's `active` state. If you're pre-to
 
 ### Checkbox and radio buttons
 
-Bootstrap's `.button` styles can be applied to other elements, such as `<label>`s, to provide checkbox or radio style button toggling. Add `data-toggle="buttons"` to a `.btn-group` containing those modified buttons to enable their toggling behavior via JavaScript and add `.btn-group-toggle` to style the `<input>`s within your buttons. **Note that you can create single input-powered buttons or groups of them.**
+Bootstrap's `.button` styles can be applied to other elements, such as `<label>`s, to provide checkbox or radio style button toggling.
 
 The checked state for these buttons is **only updated via `click` event** on the button. If you use another method to update the input—e.g., with `<input type="reset">` or by manually applying the input's `checked` property—you'll need to toggle `.active` on the `<label>` manually.
 
 Note that pre-checked buttons require you to manually add the `.active` class to the input's `<label>`.
 
 {{< example >}}
-<div class="btn-group-toggle" data-toggle="buttons">
-  <label class="btn btn-secondary active">
-    <input type="checkbox" checked autocomplete="off"> Checked
+<div class="btn-group">
+  <input type="checkbox" class="btn-group-input" id="btnGroupCheckSingle" checked>
+  <label class="btn btn-primary" for="btnGroupCheckSingle">
+    Checked button
   </label>
 </div>
 {{< /example >}}
 
 {{< example >}}
-<div class="btn-group btn-group-toggle" data-toggle="buttons">
-  <label class="btn btn-secondary active">
-    <input type="radio" name="options" id="option1" autocomplete="off" checked> Active
-  </label>
-  <label class="btn btn-secondary">
-    <input type="radio" name="options" id="option2" autocomplete="off"> Radio
-  </label>
-  <label class="btn btn-secondary">
-    <input type="radio" name="options" id="option3" autocomplete="off"> Radio
-  </label>
+<div class="btn-group">
+  <div class="btn-group">
+    <input type="checkbox" class="btn-group-input" name="btnGroupRadio" id="btnGroupRadio1" checked>
+    <label class="btn btn-primary" for="btnGroupRadio1">Radio button</label>
+  </div>
+  <div class="btn-group">
+    <input type="checkbox" class="btn-group-input" name="btnGroupRadio" id="btnGroupRadio2">
+    <label class="btn btn-primary" for="btnGroupRadio2">Radio button</label>
+  </div>
+  <div class="btn-group">
+    <input type="checkbox" class="btn-group-input" name="btnGroupRadio" id="btnGroupRadio3">
+    <label class="btn btn-primary" for="btnGroupRadio3">Radio button</label>
+  </div>
 </div>
 {{< /example >}}
 

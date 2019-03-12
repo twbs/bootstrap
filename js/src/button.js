@@ -71,40 +71,6 @@ class Button {
       Selector.DATA_TOGGLE
     )
 
-    if (rootElement) {
-      const input = SelectorEngine.findOne(Selector.INPUT, this._element)
-
-      if (input) {
-        if (input.type === 'radio') {
-          if (input.checked &&
-            this._element.classList.contains(ClassName.ACTIVE)) {
-            triggerChangeEvent = false
-          } else {
-            const activeElement = SelectorEngine.findOne(Selector.ACTIVE, rootElement)
-
-            if (activeElement) {
-              activeElement.classList.remove(ClassName.ACTIVE)
-            }
-          }
-        }
-
-        if (triggerChangeEvent) {
-          if (input.hasAttribute('disabled') ||
-            rootElement.hasAttribute('disabled') ||
-            input.classList.contains('disabled') ||
-            rootElement.classList.contains('disabled')) {
-            return
-          }
-
-          input.checked = !this._element.classList.contains(ClassName.ACTIVE)
-          EventHandler.trigger(input, 'change')
-        }
-
-        input.focus()
-        addAriaPressed = false
-      }
-    }
-
     if (addAriaPressed) {
       this._element.setAttribute('aria-pressed',
         !this._element.classList.contains(ClassName.ACTIVE))

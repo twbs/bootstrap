@@ -150,22 +150,8 @@
 // See https://github.com/twbs/bootstrap/pull/12794 and
 // https://github.com/twbs/bootstrap/pull/14559 for more information.
 
-.btn-group-toggle {
-  > .btn,
-  > .btn-group > .btn {
-    margin-bottom: 0; // Override default `<label>` value
-
-    input[type="radio"],
-    input[type="checkbox"] {
-      position: absolute;
-      clip: rect(0, 0, 0, 0);
-      pointer-events: none;
-    }
-  }
-}
-
 .btn-group-input {
   position: absolute;
-  z-index: -1; // Put the input behind the label so it doesn't overlay button
-  opacity: 0;
+  clip: rect(0, 0, 0, 0);
+  pointer-events: none;
 }
