@@ -33,6 +33,8 @@ Many of our components require the use of JavaScript to function. Specifically, 
 <script src="{{ site.cdn.js }}" integrity="{{ site.cdn.js_hash }}" crossorigin="anonymous"></script>
 {% endhighlight %}
 
+If you use `<script type="module">`, please refer to our [using Bootstrap as a module]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/javascript/#using-bootstrap-as-a-module) section.
+
 Curious which components explicitly require our JavaScript and Popper.js? Click the show components link below. If you're at all unsure about the general page structure, keep reading for an example page template.
 
 Our `bootstrap.bundle.js` and `bootstrap.bundle.min.js` include [Popper](https://popper.js.org/). For more information about what's included in Bootstrap, please see our [contents]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/contents/#precompiled-bootstrap) section.

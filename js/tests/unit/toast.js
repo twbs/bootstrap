@@ -41,8 +41,8 @@ $(function () {
 
     try {
       $el.bootstrapToast('noMethod')
-    } catch (err) {
-      assert.strictEqual(err.message, 'No method named "noMethod"')
+    } catch (error) {
+      assert.strictEqual(error.message, 'No method named "noMethod"')
     }
   })
 
@@ -207,7 +207,6 @@ $(function () {
     })
       .bootstrapToast('show')
   })
-
 
   QUnit.test('should close toast when close element with data-dismiss attribute is set', function (assert) {
     assert.expect(2)

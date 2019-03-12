@@ -12,6 +12,26 @@ Plugins can be included individually (using Bootstrap's individual `js/dist/*.js
 
 If you use a bundler (Webpack, Rollup...), you can use `/js/dist/*.js` files which are UMD ready.
 
+## Using Bootstrap as a module
+
+We provide a version of Bootstrap built as `ESM` (`bootstrap.esm.js` and `bootstrap.esm.min.js`) which allows you to use Bootstrap as a module in your browser, if your [targeted browsers support it](https://caniuse.com/#feat=es6-module).
+
+{% highlight html %}
+<script type="module">
+  import { Toast } from 'bootstrap.esm.min.js'
+
+  Array.from(document.querySelectorAll('.toast'))
+    .forEach(toastNode => new Toast(toastNode))
+</script>
+{% endhighlight %}
+
+{% capture callout %}
+## Incompatible plugins
+
+Due to browser limitations, some of our plugins, namely Dropdown, Tooltip and Popover plugins, cannot be used in a `<script>` tag with `module` type because they depend on Popper.js. For more information about the issue see [here](https://developers.google.com/web/fundamentals/primers/modules#specifiers).
+{% endcapture %}
+{% include callout.html content=callout type="warning" %}
+
 ## Dependencies
 
 Some plugins and CSS components depend on other plugins. If you include plugins individually, make sure to check for these dependencies in the docs.

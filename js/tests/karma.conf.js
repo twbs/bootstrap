@@ -8,7 +8,7 @@ const {
   browsersKeys
 } = require('./browsers')
 
-const env = process.env
+const { env } = process
 const bundle = env.BUNDLE === 'true'
 const browserStack = env.BROWSER === 'true'
 const debug = env.DEBUG === 'true'
@@ -173,7 +173,7 @@ conf.plugins = plugins
 conf.reporters = reporters
 conf.files = files
 
-module.exports = (karmaConfig) => {
+module.exports = karmaConfig => {
   // possible values: karmaConfig.LOG_DISABLE || karmaConfig.LOG_ERROR || karmaConfig.LOG_WARN || karmaConfig.LOG_INFO || karmaConfig.LOG_DEBUG
   conf.logLevel = karmaConfig.LOG_ERROR || karmaConfig.LOG_WARN
   karmaConfig.set(conf)
