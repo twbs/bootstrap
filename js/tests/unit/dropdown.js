@@ -1,7 +1,7 @@
 $(function () {
   'use strict'
 
-  var Dropdown = typeof window.bootstrap !== 'undefined' ? window.bootstrap.Dropdown : window.Dropdown
+  var Dropdown = typeof window.bootstrap === 'undefined' ? window.Dropdown : window.bootstrap.Dropdown
 
   QUnit.module('dropdowns plugin')
 
@@ -34,8 +34,8 @@ $(function () {
     $el.bootstrapDropdown()
     try {
       $el.bootstrapDropdown('noMethod')
-    } catch (err) {
-      assert.strictEqual(err.message, 'No method named "noMethod"')
+    } catch (error) {
+      assert.strictEqual(error.message, 'No method named "noMethod"')
     }
   })
 
