@@ -17,7 +17,8 @@
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
-  var jQuery = window.jQuery; // Shoutout AngusCroll (https://goo.gl/pxwQGp)
+  var _window = window,
+      jQuery = _window.jQuery; // Shoutout AngusCroll (https://goo.gl/pxwQGp)
 
   /**
    * --------------------------------------------------------------------------
@@ -56,13 +57,14 @@
   function getEvent(element) {
     var uid = getUidEvent(element);
     element.uidEvent = uid;
-    return eventRegistry[uid] = eventRegistry[uid] || {};
+    eventRegistry[uid] = eventRegistry[uid] || {};
+    return eventRegistry[uid];
   }
 
   function fixEvent(event, element) {
     // Add which for key events
     if (event.which === null && keyEventRegex.test(event.type)) {
-      event.which = event.charCode !== null ? event.charCode : event.keyCode;
+      event.which = event.charCode === null ? event.keyCode : event.charCode;
     }
 
     event.delegateTarget = element;
@@ -167,7 +169,7 @@
     }
 
     var uid = getUidEvent(originalHandler, originalTypeEvent.replace(namespaceRegex, ''));
-    var fn = !delegation ? bootstrapHandler(element, handler) : bootstrapDelegationHandler(element, handler, delegationFn);
+    var fn = delegation ? bootstrapDelegationHandler(element, handler, delegationFn) : bootstrapHandler(element, handler);
     fn.delegationSelector = delegation ? handler : null;
     fn.originalHandler = originalHandler;
     fn.oneOff = oneOff;
