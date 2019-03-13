@@ -6,9 +6,7 @@
  */
 
 import Polyfill from './polyfill'
-import {
-  makeArray
-} from '../util/index'
+import { makeArray } from '../util/index'
 
 /**
  * ------------------------------------------------------------------------
