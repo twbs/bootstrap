@@ -6,7 +6,7 @@ const babel = require('rollup-plugin-babel')
 module.exports = {
   input: 'js/tests/integration/bundle.js',
   output: {
-    file: 'js/coverage/bundle.js',
+    file: 'coverage/bundle.js',
     format: 'iife'
   },
   plugins: [

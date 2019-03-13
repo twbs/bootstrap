@@ -44,5 +44,5 @@ Thumbs.db
 *.komodoproject
 
 # Folders to ignore
-/js/coverage/
+/coverage/
 /node_modules/

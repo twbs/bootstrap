@@ -5,7 +5,7 @@
  * --------------------------------------------------------------------------
  */
 
-import Alert from './src/alert'
+import Alert from './src/alert/alert'
 import Button from './src/button'
 import Carousel from './src/carousel'
 import Collapse from './src/collapse'
