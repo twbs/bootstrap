@@ -29,6 +29,7 @@ h6, .h6 { @include font-size($h6-font-size); }
 @each $index, $display-type in $display-types {
   .display-#{$index} {
     @include font-size(map-get($display-type, font-size));
+    //stylelint-disable-next-line font-weight-notation
     font-weight: map-get($display-type, font-weight);
     line-height: $display-line-height;
   }
