@@ -12,7 +12,6 @@ const rollup = require('rollup')
 const babel = require('rollup-plugin-babel')
 const banner = require('./banner.js')
 
-const TEST = process.env.NODE_ENV === 'test'
 const plugins = [
   babel({
     // Only transpile our source code
@@ -33,7 +32,7 @@ const bsPlugins = {
   Manipulator: path.resolve(__dirname, '../js/src/dom/manipulator.js'),
   Polyfill: path.resolve(__dirname, '../js/src/dom/polyfill.js'),
   SelectorEngine: path.resolve(__dirname, '../js/src/dom/selector-engine.js'),
-  Alert: path.resolve(__dirname, '../js/src/alert.js'),
+  Alert: path.resolve(__dirname, '../js/src/alert/alert.js'),
   Button: path.resolve(__dirname, '../js/src/button.js'),
   Carousel: path.resolve(__dirname, '../js/src/carousel.js'),
   Collapse: path.resolve(__dirname, '../js/src/collapse.js'),
@@ -45,12 +44,7 @@ const bsPlugins = {
   Toast: path.resolve(__dirname, '../js/src/toast.js'),
   Tooltip: path.resolve(__dirname, '../js/src/tooltip.js')
 }
-const rootPath = TEST ? '../js/coverage/dist/' : '../js/dist/'
-
-if (TEST) {
-  bsPlugins.Util = path.resolve(__dirname, '../js/src/util/index.js')
-  bsPlugins.Sanitizer = path.resolve(__dirname, '../js/src/util/sanitizer.js')
-}
+const rootPath = '../js/dist/'
 
 const defaultPluginConfig = {
   external: [

@@ -1,20 +1,16 @@
 ## How does Bootstrap's test suite work?
 
-Bootstrap uses [QUnit](https://qunitjs.com/) and [Sinon](https://sinonjs.org/). Each plugin has a file dedicated to its tests in `unit/<plugin-name>.js`.
+Bootstrap uses [Jasmine](https://jasmine.github.io/). Each plugin has a file dedicated to its tests in `src/<plugin-name>/<plugin-name>.spec.js`.
 
-* `unit/` contains the unit test files for each Bootstrap plugin.
-* `vendor/` contains third-party testing-related code (QUnit, jQuery and Sinon).
 * `visual/` contains "visual" tests which are run interactively in real browsers and require manual verification by humans.
 
 To run the unit test suite via [Karma](https://karma-runner.github.io/), run `npm run js-test`.
-
-To run the unit test suite via a real web browser, open `index.html` in the browser.
-
+To run the unit test suite via [Karma](https://karma-runner.github.io/) and debug, run `npm run js-debug`.
 
 ## How do I add a new unit test?
 
-1. Locate and open the file dedicated to the plugin which you need to add tests to (`unit/<plugin-name>.js`).
-2. Review the [QUnit API Documentation](https://api.qunitjs.com/) and use the existing tests as references for how to structure your new tests.
+1. Locate and open the file dedicated to the plugin which you need to add tests to (`src/<plugin-name>/<plugin-name>.spec.js`).
+2. Review the [Jasmine API Documentation](https://jasmine.github.io/pages/docs_home.html) and use the existing tests as references for how to structure your new tests.
 3. Write the necessary unit test(s) for the new or revised functionality.
 4. Run `npm run js-test` to see the results of your newly-added test(s).
 
@@ -23,47 +19,53 @@ To run the unit test suite via a real web browser, open `index.html` in the brow
 ## What should a unit test look like?
 
 * Each test should have a unique name clearly stating what unit is being tested.
+* Each test should be in the corresponding `describe`.
 * Each test should test only one unit per test, although one test can include several assertions. Create multiple tests for multiple units of functionality.
-* Each test should begin with [`assert.expect`](https://api.qunitjs.com/assert/expect/) to ensure that the expected assertions are run.
+* Each test should use [`expect`](https://jasmine.github.io/api/edge/matchers.html) to ensure something is expected.
 * Each test should follow the project's [JavaScript Code Guidelines](https://github.com/twbs/bootstrap/blob/master/CONTRIBUTING.md#js)
 
 ## Code coverage
 
-Currently we're aiming for at least 80% test coverage for our code. To ensure your changes meet or exceed this limit, run `npm run js-compile && npm run js-test` and open the file in `js/coverage/lcov-report/index.html` to see the code coverage for each plugin. See more details when you select a plugin and ensure your change is fully covered by unit tests.
+Currently we're aiming for at least 90% test coverage for our code. To ensure your changes meet or exceed this limit, run `npm run js-compile && npm run js-test` and open the file in `js/coverage/lcov-report/index.html` to see the code coverage for each plugin. See more details when you select a plugin and ensure your change is fully covered by unit tests.
 
 ### Example tests
 
 ```js
 // Synchronous test
-QUnit.test('should describe the unit being tested', function (assert) {
-  assert.expect(1)
-  var templateHTML = '<div class="alert alert-danger fade show">' +
-        '<a class="close" href="#" data-dismiss="alert">×</a>' +
-        '<p><strong>Template necessary for the test.</p>' +
-        '</div>'
-  var $alert = $(templateHTML).appendTo('#qunit-fixture').bootstrapAlert()
+describe('_getInstance', () => {
+  it('should return null if there is no instance', () => {
+    // Make assertion
+    expect(Tab._getInstance(fixtureEl)).toEqual(null)
+  })
 
-  $alert.find('.close').trigger('click')
+  it('should return this instance', () => {
+    fixtureEl.innerHTML = '<div></div>'
 
-  // Make assertion
-  assert.strictEqual($alert.hasClass('show'), false, 'remove .show class on .close click')
+    const divEl = fixtureEl.querySelector('div')
+    const tab = new Tab(divEl)
+
+    // Make assertion
+    expect(Tab._getInstance(divEl)).toEqual(tab)
+  })
 })
 
 // Asynchronous test
-QUnit.test('should describe the unit being tested', function (assert) {
-  assert.expect(2)
-  var done = assert.async()
+it('should show a tooltip without the animation', done => {
+  fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip"/>'
 
-  var $tooltip = $('<div title="tooltip title"></div>').bootstrapTooltip()
-  var tooltipInstance = $tooltip.data('bs.tooltip')
-  var spyShow = sinon.spy(tooltipInstance, 'show')
+  const tooltipEl = fixtureEl.querySelector('a')
+  const tooltip = new Tooltip(tooltipEl, {
+    animation: false
+  })
 
-  $tooltip.appendTo('#qunit-fixture')
-    .on('shown.bs.tooltip', function () {
-      assert.ok(true, '"shown" event was fired after calling "show"')
-      assert.ok(spyShow.called, 'show called')
-      done()
-    })
-    .bootstrapTooltip('show')
+  tooltipEl.addEventListener('shown.bs.tooltip', () => {
+    const tip = document.querySelector('.tooltip')
+
+    expect(tip).toBeDefined()
+    expect(tip.classList.contains('fade')).toEqual(false)
+    done()
+  })
+
+  tooltip.show()
 })
 ```

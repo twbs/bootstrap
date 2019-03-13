@@ -11,10 +11,10 @@ import {
   emulateTransitionEnd,
   getSelectorFromElement,
   getTransitionDurationFromElement
-} from './util/index'
-import Data from './dom/data'
-import EventHandler from './dom/event-handler'
-import SelectorEngine from './dom/selector-engine'
+} from '../util/index'
+import Data from '../dom/data'
+import EventHandler from '../dom/event-handler'
+import SelectorEngine from '../dom/selector-engine'
 
 /**
  * ------------------------------------------------------------------------
@@ -53,6 +53,7 @@ const ClassName = {
 class Alert {
   constructor(element) {
     this._element = element
+
     if (this._element) {
       Data.setData(element, DATA_KEY, this)
     }
@@ -118,7 +119,7 @@ class Alert {
     const transitionDuration = getTransitionDurationFromElement(element)
 
     EventHandler
-      .one(element, TRANSITION_END, event => this._destroyElement(element, event))
+      .one(element, TRANSITION_END, () => this._destroyElement(element))
     emulateTransitionEnd(element, transitionDuration)
   }
 
@@ -176,6 +177,7 @@ EventHandler
  * add .alert to jQuery only if jQuery is present
  */
 
+/* istanbul ignore if */
 if (typeof $ !== 'undefined') {
   const JQUERY_NO_CONFLICT = $.fn[NAME]
   $.fn[NAME] = Alert._jQueryInterface
