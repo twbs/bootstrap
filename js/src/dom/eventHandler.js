@@ -5,9 +5,7 @@
  * --------------------------------------------------------------------------
  */
 
-import {
-  jQuery as $
-} from '../util/index'
+import { jQuery as $ } from '../util/index'
 import Polyfill from './polyfill'
 
 /**

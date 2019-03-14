@@ -6,9 +6,6 @@ git:
 node_js:
   - "8"
   - "10"
-install:
-  - bundle install --deployment --jobs=3 --retry=3 --clean
-  - npm ci
 before_script:
   - google-chrome-stable --product-version
 script:
@@ -20,6 +17,5 @@ after_success:
 cache:
   directories:
     - "$HOME/.npm"
-    - vendor/bundle
 notifications:
   email: false
