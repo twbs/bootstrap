@@ -1,7 +1,7 @@
 $(function () {
   'use strict'
 
-  var ScrollSpy = typeof window.bootstrap !== 'undefined' ? window.bootstrap.ScrollSpy : window.ScrollSpy
+  var ScrollSpy = typeof window.bootstrap === 'undefined' ? window.ScrollSpy : window.bootstrap.ScrollSpy
 
   QUnit.module('scrollspy plugin')
 
@@ -33,8 +33,8 @@ $(function () {
     $el.bootstrapScrollspy()
     try {
       $el.bootstrapScrollspy('noMethod')
-    } catch (err) {
-      assert.strictEqual(err.message, 'No method named "noMethod"')
+    } catch (error) {
+      assert.strictEqual(error.message, 'No method named "noMethod"')
     }
   })
 

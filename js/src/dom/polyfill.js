@@ -5,9 +5,7 @@
  * --------------------------------------------------------------------------
  */
 
-import {
-  getUID
-} from '../util/index'
+import { getUID } from '../util/index'
 
 /* istanbul ignore next */
 const Polyfill = (() => {
@@ -34,7 +32,7 @@ const Polyfill = (() => {
 
     try {
       element.querySelectorAll(':scope *')
-    } catch (e) {
+    } catch (error) {
       return false
     }
 

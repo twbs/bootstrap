@@ -6,9 +6,7 @@
  */
 
 import Polyfill from './polyfill'
-import {
-  makeArray
-} from '../util/index'
+import { makeArray } from '../util/index'
 
 /**
  * ------------------------------------------------------------------------
@@ -16,8 +14,7 @@ import {
  * ------------------------------------------------------------------------
  */
 
-const findFn = Polyfill.find
-const findOne = Polyfill.findOne
+const { find: findFn, findOne } = Polyfill
 const NODE_TEXT = 3
 
 const SelectorEngine = {
@@ -48,7 +45,7 @@ const SelectorEngine = {
 
     const children = makeArray(element.children)
 
-    return children.filter((child) => this.matches(child, selector))
+    return children.filter(child => this.matches(child, selector))
   },
 
   parents(element, selector) {
