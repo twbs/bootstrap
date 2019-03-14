@@ -46,9 +46,9 @@ Changes to any layout tools and our grid system.
 - **Todo:** Remove `position: relative` from grid columns
 - **Todo:** Integrate CSS grid into our grid system
 
-## Content
+## Content, Reboot, etc
 
-Changes to Reboot, typography, and more.
+Changes to Reboot, typography, tables, and more.
 
 - **Todo:** Make RFS enabled by default
 
