@@ -41,8 +41,8 @@ $(function () {
 
     try {
       $el.bootstrapToast('noMethod')
-    } catch (err) {
-      assert.strictEqual(err.message, 'No method named "noMethod"')
+    } catch (error) {
+      assert.strictEqual(error.message, 'No method named "noMethod"')
     }
   })
 
@@ -146,11 +146,11 @@ $(function () {
       .bootstrapToast()
       .appendTo($('#qunit-fixture'))
 
-    assert.ok(typeof $toast.data('bs.toast') !== 'undefined')
+    assert.ok(typeof Toast._getInstance($toast[0]) !== 'undefined')
 
     $toast.bootstrapToast('dispose')
 
-    assert.ok(typeof $toast.data('bs.toast') === 'undefined')
+    assert.ok(Toast._getInstance($toast[0]) === null)
   })
 
   QUnit.test('should allow to destroy toast and hide it before that', function (assert) {
@@ -171,11 +171,11 @@ $(function () {
     $toast.one('shown.bs.toast', function () {
       setTimeout(function () {
         assert.ok($toast.hasClass('show'))
-        assert.ok(typeof $toast.data('bs.toast') !== 'undefined')
+        assert.ok(typeof Toast._getInstance($toast[0]) !== 'undefined')
 
         $toast.bootstrapToast('dispose')
 
-        assert.ok(typeof $toast.data('bs.toast') === 'undefined')
+        assert.ok(Toast._getInstance($toast[0]) === null)
         assert.ok($toast.hasClass('show') === false)
 
         done()
@@ -207,7 +207,6 @@ $(function () {
     })
       .bootstrapToast('show')
   })
-
 
   QUnit.test('should close toast when close element with data-dismiss attribute is set', function (assert) {
     assert.expect(2)
@@ -253,7 +252,7 @@ $(function () {
     var $toast = $(toastHtml)
       .bootstrapToast()
 
-    var toast = $toast.data('bs.toast')
+    var toast = Toast._getInstance($toast[0])
     assert.strictEqual(toast._config.delay, defaultDelay)
   })
 })

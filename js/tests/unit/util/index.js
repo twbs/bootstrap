@@ -1,0 +1,191 @@
+$(function () {
+  'use strict'
+
+  QUnit.module('util', {
+    afterEach: function () {
+      $('#qunit-fixture').html('')
+    }
+  })
+
+  QUnit.test('Util.getSelectorFromElement should return the correct element', function (assert) {
+    assert.expect(2)
+
+    var $el = $('<div data-target="body"></div>').appendTo($('#qunit-fixture'))
+    assert.strictEqual(Util.getSelectorFromElement($el[0]), 'body')
+
+    // Not found element
+    var $el2 = $('<div data-target="#fakeDiv"></div>').appendTo($('#qunit-fixture'))
+    assert.strictEqual(Util.getSelectorFromElement($el2[0]), null)
+  })
+
+  QUnit.test('Util.getSelectorFromElement should return null when there is a bad selector', function (assert) {
+    assert.expect(2)
+
+    var $el = $('<div data-target="#1"></div>').appendTo($('#qunit-fixture'))
+
+    assert.strictEqual(Util.getSelectorFromElement($el[0]), null)
+
+    var $el2 = $('<a href="/posts"></a>').appendTo($('#qunit-fixture'))
+
+    assert.strictEqual(Util.getSelectorFromElement($el2[0]), null)
+  })
+
+  QUnit.test('Util.typeCheckConfig should thrown an error when a bad config is passed', function (assert) {
+    assert.expect(1)
+    var namePlugin = 'collapse'
+    var defaultType = {
+      toggle: 'boolean',
+      parent: '(string|element)'
+    }
+    var config = {
+      toggle: true,
+      parent: 777
+    }
+
+    try {
+      Util.typeCheckConfig(namePlugin, config, defaultType)
+    } catch (error) {
+      assert.strictEqual(error.message, 'COLLAPSE: Option "parent" provided type "number" but expected type "(string|element)".')
+    }
+  })
+
+  QUnit.test('Util.isElement should check if we passed an element or not', function (assert) {
+    assert.expect(3)
+    var $div = $('<div id="test"></div>').appendTo($('#qunit-fixture'))
+
+    assert.strictEqual(Util.isElement($div), 1)
+    assert.strictEqual(Util.isElement($div[0]), 1)
+    assert.strictEqual(typeof Util.isElement({}) === 'undefined', true)
+  })
+
+  QUnit.test('Util.getTransitionDurationFromElement should accept transition durations in milliseconds', function (assert) {
+    assert.expect(1)
+    var $div = $('<div style="transition: all 300ms ease-out;"></div>').appendTo($('#qunit-fixture'))
+
+    assert.strictEqual(Util.getTransitionDurationFromElement($div[0]), 300)
+  })
+
+  QUnit.test('Util.getTransitionDurationFromElement should accept transition durations in seconds', function (assert) {
+    assert.expect(1)
+    var $div = $('<div style="transition: all .4s ease-out;"></div>').appendTo($('#qunit-fixture'))
+
+    assert.strictEqual(Util.getTransitionDurationFromElement($div[0]), 400)
+  })
+
+  QUnit.test('Util.getTransitionDurationFromElement should return the addition of transition-delay and transition-duration', function (assert) {
+    assert.expect(2)
+    var $fixture = $('#qunit-fixture')
+    var $div = $('<div style="transition: all 0s 150ms ease-out;"></div>').appendTo($fixture)
+    var $div2 = $('<div style="transition: all .25s 30ms ease-out;"></div>').appendTo($fixture)
+
+    assert.strictEqual(Util.getTransitionDurationFromElement($div[0]), 150)
+    assert.strictEqual(Util.getTransitionDurationFromElement($div2[0]), 280)
+  })
+
+  QUnit.test('Util.getTransitionDurationFromElement should get the first transition duration if multiple transition durations are defined', function (assert) {
+    assert.expect(1)
+    var $div = $('<div style="transition: transform .3s ease-out, opacity .2s;"></div>').appendTo($('#qunit-fixture'))
+
+    assert.strictEqual(Util.getTransitionDurationFromElement($div[0]), 300)
+  })
+
+  QUnit.test('Util.getTransitionDurationFromElement should return 0 if transition duration is not defined', function (assert) {
+    assert.expect(1)
+    var $div = $('<div></div>').appendTo($('#qunit-fixture'))
+
+    assert.strictEqual(Util.getTransitionDurationFromElement($div[0]), 0)
+  })
+
+  QUnit.test('Util.getTransitionDurationFromElement should return 0 if element is not found in DOM', function (assert) {
+    assert.expect(1)
+    var $div = $('#fake-id')
+
+    assert.strictEqual(Util.getTransitionDurationFromElement($div[0]), 0)
+  })
+
+  QUnit.test('Util.getUID should generate a new id uniq', function (assert) {
+    assert.expect(2)
+    var id = Util.getUID('test')
+    var id2 = Util.getUID('test')
+
+    assert.ok(id !== id2, id + ' !== ' + id2)
+
+    id = Util.getUID('test')
+    $('<div id="' + id + '"></div>').appendTo($('#qunit-fixture'))
+
+    id2 = Util.getUID('test')
+    assert.ok(id !== id2, id + ' !== ' + id2)
+  })
+
+  QUnit.test('Util.findShadowRoot should find the shadow DOM root', function (assert) {
+    // Only for newer browsers
+    if (!document.documentElement.attachShadow) {
+      assert.expect(0)
+      return
+    }
+
+    assert.expect(2)
+    var $div = $('<div id="test"></div>').appendTo($('#qunit-fixture'))
+    var shadowRoot = $div[0].attachShadow({
+      mode: 'open'
+    })
+
+    assert.equal(shadowRoot, Util.findShadowRoot(shadowRoot))
+    shadowRoot.innerHTML = '<button>Shadow Button</button>'
+    assert.equal(shadowRoot, Util.findShadowRoot(shadowRoot.firstChild))
+  })
+
+  QUnit.test('Util.findShadowRoot should return null when attachShadow is not available', function (assert) {
+    assert.expect(1)
+
+    var $div = $('<div id="test"></div>').appendTo($('#qunit-fixture'))
+    if (document.documentElement.attachShadow) {
+      var sandbox = sinon.createSandbox()
+
+      sandbox.replace(document.documentElement, 'attachShadow', function () {
+        // to avoid empty function
+        return $div
+      })
+
+      assert.equal(null, Util.findShadowRoot($div[0]))
+      sandbox.restore()
+    } else {
+      assert.equal(null, Util.findShadowRoot($div[0]))
+    }
+  })
+
+  QUnit.test('noop should return an empty function', function (assert) {
+    assert.expect(1)
+    Util.noop().call()
+    assert.ok(typeof Util.noop() === 'function')
+  })
+
+  QUnit.test('should return jQuery if present', function (assert) {
+    assert.expect(2)
+
+    assert.equal(Util.jQuery, $)
+
+    $.noConflict()
+
+    assert.equal(Util.jQuery, jQuery)
+
+    window.$ = jQuery
+  })
+
+  QUnit.test('Util.emulateTransitionEnd should emulate transition end', function (assert) {
+    assert.expect(1)
+    var $div = $('<div></div>').appendTo($('#qunit-fixture'))
+
+    var spy = sinon.spy($div[0], 'removeEventListener')
+
+    Util.emulateTransitionEnd($div[0], 7)
+
+    assert.ok(spy.notCalled)
+  })
+
+  QUnit.test('Util.makeArray should return empty array on null', function (assert) {
+    assert.expect(1)
+
+    assert.ok(Util.makeArray(null).length === 0)
+  })
+})

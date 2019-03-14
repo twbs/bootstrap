@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../../../dist/css/bootstrap.min.css">
     <title>Tooltip</title>
     <style>
@@ -71,36 +71,47 @@
       <div id="customContainer"></div>
     </div>
 
-    <script src="../../../node_modules/jquery/dist/jquery.slim.min.js"></script>
     <script src="../../../node_modules/popper.js/dist/umd/popper.min.js"></script>
     <script src="../../dist/util.js"></script>
+    <script src="../../dist/dom/polyfill.js"></script>
+    <script src="../../dist/dom/manipulator.js"></script>
+    <script src="../../dist/dom/data.js"></script>
+    <script src="../../dist/dom/eventHandler.js"></script>
+    <script src="../../dist/dom/selectorEngine.js"></script>
     <script src="../../dist/tooltip.js"></script>
     <script>
-      $(function () {
-        if (typeof document.body.attachShadow === 'function') {
-          var shadowRoot = $('#shadow')[0].attachShadow({ mode: 'open' })
-          shadowRoot.innerHTML =
-            '<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top in a shadow dom">' +
-            '  Tooltip on top in a shadow dom' +
-            '</button>' +
-            '<button id="secondTooltip" type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top in a shadow dom with container option">' +
-            '  Tooltip on top in a shadow dom' +
-            '</button>'
+      if (typeof document.body.attachShadow === 'function') {
+        var shadowRoot = document.getElementById('shadow').attachShadow({ mode: 'open' })
+        shadowRoot.innerHTML =
+          '<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top in a shadow dom">' +
+          '  Tooltip on top in a shadow dom' +
+          '</button>' +
+          '<button id="secondTooltip" type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top in a shadow dom with container option">' +
+          '  Tooltip on top in a shadow dom' +
+          '</button>'
 
-          $(shadowRoot.firstChild).tooltip()
-          $(shadowRoot.getElementById('secondTooltip')).tooltip({
-            container: shadowRoot
-          })
-        }
-        $('[data-toggle="tooltip"]').tooltip()
-        $('#tooltipElement').tooltip({
-          container: $('#customContainer')[0]
+        var firstChildTooltip = new Tooltip(shadowRoot.firstChild)
+        var secondChildTooltip = new Tooltip(shadowRoot.getElementById('secondTooltip'), {
+          container: shadowRoot
         })
-        $('#target').tooltip({
-          placement : 'top',
-          trigger : 'manual'
-        }).tooltip('show')
+      }
+
+      [].slice.call(document.querySelectorAll('[data-toggle="tooltip"]'))
+        .forEach(function (tooltip) {
+          new Tooltip(tooltip)
+        })
+
+      var tooltipElement = document.getElementById('tooltipElement')
+      var tooltipElementInstance = new Tooltip(tooltipElement, {
+        container: document.getElementById('customContainer')
       })
+
+      var target = document.getElementById('target')
+      var targetTooltip = new Tooltip(target, {
+        placement : 'top',
+        trigger : 'manual'
+      })
+      targetTooltip.show()
     </script>
   </body>
 </html>
