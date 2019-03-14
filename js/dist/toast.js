@@ -102,7 +102,9 @@
   };
 
   var triggerTransitionEnd = function triggerTransitionEnd(element) {
-    element.dispatchEvent(new Event(TRANSITION_END));
+    var evt = document.createEvent('HTMLEvents');
+    evt.initEvent(TRANSITION_END, true, true);
+    element.dispatchEvent(evt);
   };
 
   var isElement = function isElement(obj) {
@@ -149,7 +151,7 @@
   var VERSION = '4.3.1';
   var DATA_KEY = 'bs.toast';
   var EVENT_KEY = "." + DATA_KEY;
-  var Event$1 = {
+  var Event = {
     CLICK_DISMISS: "click.dismiss" + EVENT_KEY,
     HIDE: "hide" + EVENT_KEY,
     HIDDEN: "hidden" + EVENT_KEY,
@@ -202,7 +204,7 @@
     _proto.show = function show() {
       var _this = this;
 
-      EventHandler.trigger(this._element, Event$1.SHOW);
+      EventHandler.trigger(this._element, Event.SHOW);
 
       if (this._config.animation) {
         this._element.classList.add(ClassName.FADE);
@@ -213,7 +215,7 @@
 
         _this._element.classList.add(ClassName.SHOW);
 
-        EventHandler.trigger(_this._element, Event$1.SHOWN);
+        EventHandler.trigger(_this._element, Event.SHOWN);
 
         if (_this._config.autohide) {
           _this.hide();
@@ -240,7 +242,7 @@
         return;
       }
 
-      EventHandler.trigger(this._element, Event$1.HIDE);
+      EventHandler.trigger(this._element, Event.HIDE);
 
       if (withoutTimeout) {
         this._close();
@@ -259,7 +261,7 @@
         this._element.classList.remove(ClassName.SHOW);
       }
 
-      EventHandler.off(this._element, Event$1.CLICK_DISMISS);
+      EventHandler.off(this._element, Event.CLICK_DISMISS);
       Data.removeData(this._element, DATA_KEY);
       this._element = null;
       this._config = null;
@@ -275,7 +277,7 @@
     _proto._setListeners = function _setListeners() {
       var _this3 = this;
 
-      EventHandler.on(this._element, Event$1.CLICK_DISMISS, Selector.DATA_DISMISS, function () {
+      EventHandler.on(this._element, Event.CLICK_DISMISS, Selector.DATA_DISMISS, function () {
         return _this3.hide(true);
       });
     };
@@ -286,7 +288,7 @@
       var complete = function complete() {
         _this4._element.classList.add(ClassName.HIDE);
 
-        EventHandler.trigger(_this4._element, Event$1.HIDDEN);
+        EventHandler.trigger(_this4._element, Event.HIDDEN);
       };
 
       this._element.classList.remove(ClassName.SHOW);

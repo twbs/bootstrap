@@ -135,7 +135,9 @@
   };
 
   var triggerTransitionEnd = function triggerTransitionEnd(element) {
-    element.dispatchEvent(new Event(TRANSITION_END));
+    var evt = document.createEvent('HTMLEvents');
+    evt.initEvent(TRANSITION_END, true, true);
+    element.dispatchEvent(evt);
   };
 
   var isElement = function isElement(obj) {
@@ -291,92 +293,144 @@
     }
   };
 
-  /**
-   * --------------------------------------------------------------------------
-   * Bootstrap (v4.3.1): dom/polyfill.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
-   * --------------------------------------------------------------------------
-   */
-  /* istanbul ignore next */
+  /* istanbul ignore file */
+  var _Element$prototype = Element.prototype,
+      matches = _Element$prototype.matches,
+      closest = _Element$prototype.closest;
+  var find = Element.prototype.querySelectorAll;
+  var findOne = Element.prototype.querySelector;
 
-  var Polyfill = function () {
-    // MSEdge resets defaultPrevented flag upon dispatchEvent call if at least one listener is attached
-    var defaultPreventedPreservedOnDispatch = function () {
-      var e = new CustomEvent('Bootstrap', {
-        cancelable: true
-      });
-      var element = document.createElement('div');
-      element.addEventListener('Bootstrap', function () {
-        return null;
-      });
-      e.preventDefault();
-      element.dispatchEvent(e);
-      return e.defaultPrevented;
-    }();
+  var createCustomEvent = function createCustomEvent(eventName, params) {
+    var cEvent = new CustomEvent(eventName, params);
+    return cEvent;
+  };
 
-    var find = Element.prototype.querySelectorAll;
-    var findOne = Element.prototype.querySelector;
-    var scopeSelectorRegex = /:scope\b/;
+  if (typeof window.CustomEvent !== 'function') {
+    createCustomEvent = function createCustomEvent(eventName, params) {
+      params = params || {
+        bubbles: false,
+        cancelable: false,
+        detail: null
+      };
+      var evt = document.createEvent('CustomEvent');
+      evt.initCustomEvent(eventName, params.bubbles, params.cancelable, params.detail);
+      return evt;
+    };
+  }
 
-    var supportScopeQuery = function () {
-      var element = document.createElement('div');
+  var workingDefaultPrevented = function () {
+    var e = document.createEvent('CustomEvent');
+    e.initEvent('Bootstrap', true, true);
+    e.preventDefault();
+    return e.defaultPrevented;
+  }();
 
-      try {
-        element.querySelectorAll(':scope *');
-      } catch (error) {
-        return false;
+  if (!workingDefaultPrevented) {
+    var origPreventDefault = Event.prototype.preventDefault;
+
+    Event.prototype.preventDefault = function () {
+      if (!this.cancelable) {
+        return;
       }
 
-      return true;
-    }();
+      origPreventDefault.call(this);
+      Object.defineProperty(this, 'defaultPrevented', {
+        get: function get() {
+          return true;
+        },
+        configurable: true
+      });
+    };
+  } // MSEdge resets defaultPrevented flag upon dispatchEvent call if at least one listener is attached
 
-    if (!supportScopeQuery) {
-      find = function find(selector) {
-        if (!scopeSelectorRegex.test(selector)) {
-          return this.querySelectorAll(selector);
+
+  var defaultPreventedPreservedOnDispatch = function () {
+    var e = createCustomEvent('Bootstrap', {
+      cancelable: true
+    });
+    var element = document.createElement('div');
+    element.addEventListener('Bootstrap', function () {
+      return null;
+    });
+    e.preventDefault();
+    element.dispatchEvent(e);
+    return e.defaultPrevented;
+  }();
+
+  if (!matches) {
+    matches = Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
+  }
+
+  if (!closest) {
+    closest = function closest(selector) {
+      var element = this;
+
+      do {
+        if (matches.call(element, selector)) {
+          return element;
         }
 
-        var hasId = Boolean(this.id);
+        element = element.parentElement || element.parentNode;
+      } while (element !== null && element.nodeType === 1);
 
-        if (!hasId) {
-          this.id = getUID('scope');
-        }
+      return null;
+    };
+  }
 
-        var nodeList = null;
+  var scopeSelectorRegex = /:scope\b/;
 
-        try {
-          selector = selector.replace(scopeSelectorRegex, "#" + this.id);
-          nodeList = this.querySelectorAll(selector);
-        } finally {
-          if (!hasId) {
-            this.removeAttribute('id');
-          }
-        }
+  var supportScopeQuery = function () {
+    var element = document.createElement('div');
 
-        return nodeList;
-      };
-
-      findOne = function findOne(selector) {
-        if (!scopeSelectorRegex.test(selector)) {
-          return this.querySelector(selector);
-        }
-
-        var matches = find.call(this, selector);
-
-        if (typeof matches[0] !== 'undefined') {
-          return matches[0];
-        }
-
-        return null;
-      };
+    try {
+      element.querySelectorAll(':scope *');
+    } catch (error) {
+      return false;
     }
 
-    return {
-      defaultPreventedPreservedOnDispatch: defaultPreventedPreservedOnDispatch,
-      find: find,
-      findOne: findOne
-    };
+    return true;
   }();
+
+  if (!supportScopeQuery) {
+    find = function find(selector) {
+      if (!scopeSelectorRegex.test(selector)) {
+        return this.querySelectorAll(selector);
+      }
+
+      var hasId = Boolean(this.id);
+
+      if (!hasId) {
+        this.id = getUID('scope');
+      }
+
+      var nodeList = null;
+
+      try {
+        selector = selector.replace(scopeSelectorRegex, "#" + this.id);
+        nodeList = this.querySelectorAll(selector);
+      } finally {
+        if (!hasId) {
+          this.removeAttribute('id');
+        }
+      }
+
+      return nodeList;
+    };
+
+    findOne = function findOne(selector) {
+      if (!scopeSelectorRegex.test(selector)) {
+        return this.querySelector(selector);
+      }
+
+      var matches = find.call(this, selector);
+
+      if (typeof matches[0] !== 'undefined') {
+        return matches[0];
+      }
+
+      return null;
+    };
+  }
 
   /**
    * --------------------------------------------------------------------------
@@ -630,7 +684,7 @@
         evt = document.createEvent('HTMLEvents');
         evt.initEvent(typeEvent, bubbles, true);
       } else {
-        evt = new CustomEvent(event, {
+        evt = createCustomEvent(event, {
           bubbles: bubbles,
           cancelable: true
         });
@@ -650,7 +704,7 @@
       if (defaultPrevented) {
         evt.preventDefault();
 
-        if (!Polyfill.defaultPreventedPreservedOnDispatch) {
+        if (!defaultPreventedPreservedOnDispatch) {
           Object.defineProperty(evt, 'defaultPrevented', {
             get: function get() {
               return true;
@@ -683,14 +737,12 @@
    * ------------------------------------------------------------------------
    */
 
-  var findFn = Polyfill.find,
-      _findOne = Polyfill.findOne;
   var NODE_TEXT = 3;
   var SelectorEngine = {
-    matches: function matches(element, selector) {
-      return element.matches(selector);
+    matches: function matches$1(element, selector) {
+      return matches.call(element, selector);
     },
-    find: function find(selector, element) {
+    find: function find$1(selector, element) {
       if (element === void 0) {
         element = document.documentElement;
       }
@@ -699,9 +751,9 @@
         return null;
       }
 
-      return findFn.call(element, selector);
+      return find.call(element, selector);
     },
-    findOne: function findOne(selector, element) {
+    findOne: function findOne$1(selector, element) {
       if (element === void 0) {
         element = document.documentElement;
       }
@@ -710,7 +762,7 @@
         return null;
       }
 
-      return _findOne.call(element, selector);
+      return findOne.call(element, selector);
     },
     children: function children(element, selector) {
       var _this = this;
@@ -742,12 +794,12 @@
 
       return parents;
     },
-    closest: function closest(element, selector) {
+    closest: function closest$1(element, selector) {
       if (typeof selector !== 'string') {
         return null;
       }
 
-      return element.closest(selector);
+      return closest.call(element, selector);
     },
     prev: function prev(element, selector) {
       if (typeof selector !== 'string') {
@@ -1096,11 +1148,17 @@
   });
   EventHandler.on(document, Event$2.FOCUS_DATA_API, Selector$1.DATA_TOGGLE_CARROT, function (event) {
     var button = SelectorEngine.closest(event.target, Selector$1.BUTTON);
-    button.classList.add(ClassName$1.FOCUS);
+
+    if (button) {
+      button.classList.add(ClassName$1.FOCUS);
+    }
   });
   EventHandler.on(document, Event$2.BLUR_DATA_API, Selector$1.DATA_TOGGLE_CARROT, function (event) {
     var button = SelectorEngine.closest(event.target, Selector$1.BUTTON);
-    button.classList.remove(ClassName$1.FOCUS);
+
+    if (button) {
+      button.classList.remove(ClassName$1.FOCUS);
+    }
   });
   /**
    * ------------------------------------------------------------------------
@@ -1419,7 +1477,8 @@
         return;
       }
 
-      var direction = absDeltax / this.touchDeltaX; // swipe left
+      var direction = absDeltax / this.touchDeltaX;
+      this.touchDeltaX = 0; // swipe left
 
       if (direction > 0) {
         this.prev();
@@ -3071,7 +3130,7 @@
    * @argument value
    * @returns index or -1
    */
-  function find(arr, check) {
+  function find$1(arr, check) {
     // use native find if supported
     if (Array.prototype.find) {
       return arr.find(check);
@@ -3099,7 +3158,7 @@
     }
 
     // use `find` + `indexOf` if `findIndex` isn't supported
-    var match = find(arr, function (obj) {
+    var match = find$1(arr, function (obj) {
       return obj[prop] === value;
     });
     return arr.indexOf(match);
@@ -3516,7 +3575,7 @@
 
     // Remove this legacy support in Popper.js v2
 
-    var legacyGpuAccelerationOption = find(data.instance.modifiers, function (modifier) {
+    var legacyGpuAccelerationOption = find$1(data.instance.modifiers, function (modifier) {
       return modifier.name === 'applyStyle';
     }).gpuAcceleration;
     if (legacyGpuAccelerationOption !== undefined) {
@@ -3611,7 +3670,7 @@
    * @returns {Boolean}
    */
   function isModifierRequired(modifiers, requestingName, requestedName) {
-    var requesting = find(modifiers, function (_ref) {
+    var requesting = find$1(modifiers, function (_ref) {
       var name = _ref.name;
       return name === requestingName;
     });
@@ -3985,7 +4044,7 @@
 
     // Detect if the offset string contains a pair of values or a single one
     // they could be separated by comma or space
-    var divider = fragments.indexOf(find(fragments, function (frag) {
+    var divider = fragments.indexOf(find$1(fragments, function (frag) {
       return frag.search(/,|\s/) !== -1;
     }));
 
@@ -4196,7 +4255,7 @@
     }
 
     var refRect = data.offsets.reference;
-    var bound = find(data.instance.modifiers, function (modifier) {
+    var bound = find$1(data.instance.modifiers, function (modifier) {
       return modifier.name === 'preventOverflow';
     }).boundaries;
 
