@@ -11,7 +11,7 @@ toc: true
 
 See the browser and devices page for details on what is currently supported in Bootstrap 5. Since v4, here's what's changed to our browser support:
 
-- Dropped support for IE10 and IE11
+- Dropped support for Internet Explorer NN
 - Dropped support for Firefox NN - MM
 - Dropped support for Safari NN
 - Dropped support for iOS Safari NN
@@ -20,7 +20,7 @@ See the browser and devices page for details on what is currently supported in B
 
 ## Sass
 
-Changes that have happened to our source Sass files.
+Changes to our source Sass files and compiled CSS.
 
 - **Todo:** Remove previously deprecated mixins
   - `float()`
@@ -32,6 +32,12 @@ Changes that have happened to our source Sass files.
 - **Todo:** Rearrange forms source files (under `scss/forms/`)
 - **Todo:** Rearrange grid source files (under `scss/grid/`)
 
+## JavaScript
+
+Changes to our source and compiled JavaScript files.
+
+- Dropped jQuery dependency and rewrote plugins to be in regular JavaScript.
+
 ## Grid and layout
 
 Changes to any layout tools and our grid system.
@@ -40,7 +46,7 @@ Changes to any layout tools and our grid system.
 - **Todo:** Remove `position: relative` from grid columns
 - **Todo:** Integrate CSS grid into our grid system
 
-## Content changes
+## Content
 
 Changes to Reboot, typography, and more.
 
