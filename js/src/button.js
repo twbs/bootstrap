@@ -5,9 +5,7 @@
  * --------------------------------------------------------------------------
  */
 
-import {
-  jQuery as $
-} from './util/index'
+import { jQuery as $ } from './util/index'
 import Data from './dom/data'
 import EventHandler from './dom/eventHandler'
 import SelectorEngine from './dom/selectorEngine'
