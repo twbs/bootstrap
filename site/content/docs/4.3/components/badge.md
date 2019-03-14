@@ -8,7 +8,7 @@ toc: true
 
 ## Example
 
-Badges scale to match the size of the immediate parent element by using relative font sizing and `em` units. As of v5, badges no longer have focus or hover styles.
+Badges scale to match the size of the immediate parent element by using relative font sizing and `em` units. As of v5, badges no longer have focus or hover styles for links.
 
 {{< example >}}
 <h1>Example heading <span class="badge bg-secondary">New</span></h1>
