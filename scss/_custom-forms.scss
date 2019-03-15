@@ -301,7 +301,6 @@
   height: $custom-file-height;
   margin: 0;
   opacity: 0;
-  overflow: hidden;
 
   &:focus ~ .custom-file-label {
     border-color: $custom-file-focus-border-color;
@@ -339,6 +338,11 @@
   border: $custom-file-border-width solid $custom-file-border-color;
   @include border-radius($custom-file-border-radius);
   @include box-shadow($custom-file-box-shadow);
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  padding-right: 80px;
 
   &::after {
     position: absolute;
