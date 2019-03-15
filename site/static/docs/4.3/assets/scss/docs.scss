@@ -10,10 +10,6 @@
 //
 // Background information on nomenclature and architecture decisions here.
 //
-// - Bootstrap functions, variables, and mixins are included for easy reuse.
-//   Doing so gives us access to the same core utilities provided by Bootstrap.
-//   For example, consistent media queries through those mixins.
-//
 // - Bootstrap's **docs variables** are prefixed with `$bd-`.
 //   These custom colors avoid collision with the components Bootstrap provides.
 //
@@ -23,10 +19,8 @@
 //
 // Happy Bootstrapping!
 
-// Load Bootstrap variables and mixins
-@import "../../../../../../scss/functions";
-@import "../../../../../../scss/variables";
-@import "../../../../../../scss/mixins";
+// Load Bootstrap
+@import "../../../../../../scss/bootstrap";
 
 // Load docs components
 @import "variables";
