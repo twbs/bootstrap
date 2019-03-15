@@ -29,14 +29,14 @@
 - title: Forms
   pages:
     - title: Overview
-    - title: Labels
+    # - title: Labels
     - title: Form control
     - title: Select
-    - title: Check
+    - title: Checks
     - title: File
     - title: Range
-    - title: Layout
     - title: Input group
+    - title: Layout
     - title: Validation
 
 - title: Components
