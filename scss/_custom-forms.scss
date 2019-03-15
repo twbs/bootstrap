@@ -328,26 +328,28 @@
   right: 0;
   left: 0;
   z-index: 1;
+  display: flex;
+  justify-content: space-between; // Push the button to the right side
   height: $custom-file-height;
   padding: $custom-file-padding-y $custom-file-padding-x;
   font-family: $custom-file-font-family;
   font-weight: $custom-file-font-weight;
   line-height: $custom-file-line-height;
   color: $custom-file-color;
+  white-space: nowrap;
   background-color: $custom-file-bg;
   border: $custom-file-border-width solid $custom-file-border-color;
   @include border-radius($custom-file-border-radius);
   @include box-shadow($custom-file-box-shadow);
 
   &::after {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
+    position: relative;
     z-index: 3;
     display: block;
     height: $custom-file-height-inner;
     padding: $custom-file-padding-y $custom-file-padding-x;
+    // Use negatieve margins to undo paddings & add margin to the left to mimic the input padding
+    margin: #{-$custom-file-padding-y} #{-$custom-file-padding-x} #{-$custom-file-padding-y} $custom-file-padding-y;
     line-height: $custom-file-line-height;
     color: $custom-file-button-color;
     content: "Browse";

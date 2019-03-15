@@ -1287,7 +1287,9 @@ The file input is the most gnarly of the bunch and requires additional JavaScrip
 {{< example >}}
 <div class="custom-file">
   <input type="file" class="custom-file-input" id="customFile">
-  <label class="custom-file-label" for="customFile">Choose file</label>
+  <label class="custom-file-label" for="customFile">
+    <span class="text-truncate">Choose file</span>
+  </label>
 </div>
 {{< /example >}}
 
@@ -1309,7 +1311,9 @@ Here's `lang(es)` in action on the custom file input for a Spanish translation:
 {{< example >}}
 <div class="custom-file">
   <input type="file" class="custom-file-input" id="customFileLang" lang="es">
-  <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
+  <label class="custom-file-label" for="customFileLang">
+    <span class="text-truncate">Seleccionar Archivo</span>
+  </label>
 </div>
 {{< /example >}}
 
@@ -1322,6 +1326,8 @@ Bootstrap also provides a way to translate the "Browse" text in HTML with the `d
 {{< example >}}
 <div class="custom-file">
   <input type="file" class="custom-file-input" id="customFileLangHTML">
-  <label class="custom-file-label" for="customFileLangHTML" data-browse="Bestand kiezen">Voeg je document toe</label>
+  <label class="custom-file-label" for="customFileLangHTML" data-browse="Bestand kiezen">
+    <span class="text-truncate">Voeg je document toe</span>
+  </label>
 </div>
 {{< /example >}}
