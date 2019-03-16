@@ -31,7 +31,6 @@ const bsPlugins = {
   Data: path.resolve(__dirname, '../js/src/dom/data.js'),
   EventHandler: path.resolve(__dirname, '../js/src/dom/eventHandler.js'),
   Manipulator: path.resolve(__dirname, '../js/src/dom/manipulator.js'),
-  Polyfill: path.resolve(__dirname, '../js/src/dom/polyfill.js'),
   SelectorEngine: path.resolve(__dirname, '../js/src/dom/selectorEngine.js'),
   Alert: path.resolve(__dirname, '../js/src/alert.js'),
   Button: path.resolve(__dirname, '../js/src/button.js'),
@@ -69,24 +68,14 @@ function getConfigByPluginKey(pluginKey) {
   if (
     pluginKey === 'Data' ||
     pluginKey === 'Manipulator' ||
-    pluginKey === 'Polyfill' ||
+    pluginKey === 'EventHandler' ||
+    pluginKey === 'SelectorEngine' ||
     pluginKey === 'Util' ||
     pluginKey === 'Sanitizer'
   ) {
     return {
       external: [],
       globals: {}
-    }
-  }
-
-  if (pluginKey === 'EventHandler' || pluginKey === 'SelectorEngine') {
-    return {
-      external: [
-        bsPlugins.Polyfill
-      ],
-      globals: {
-        [bsPlugins.Polyfill]: 'Polyfill'
-      }
     }
   }
 
@@ -161,7 +150,6 @@ function build(plugin) {
     'Data',
     'EventHandler',
     'Manipulator',
-    'Polyfill',
     'SelectorEngine'
   ]
 
