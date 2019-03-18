@@ -340,7 +340,7 @@ Here's an example of customizing the Bootstrap grid at the large (`lg`) breakpoi
 
 ## Alignment
 
-Use flexbox alignment utilities to vertically and horizontally align columns.
+Use flexbox alignment utilities to vertically and horizontally align columns. **Internet Explorer 10-11 do not support vertical alignment of flex items when the flex container has a `min-height` as shown below.** [See Flexbugs #3 for more details.](https://github.com/philipwalton/flexbugs#flexbug-3)
 
 ### Vertical alignment
 
