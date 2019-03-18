@@ -1,7 +1,18 @@
 # Ignore docs files
-_gh_pages
-_site
-.ruby-version
+/.bundle/
+/_gh_pages/
+/_site/
+/site/docs/**/dist/
+/site/static/**/dist/
+/bower_components/
+/js/coverage/
+/node_modules/
+/resources/
+/vendor/
+/.ruby-version
+
+# Jekyll metadata
+/docs/.jekyll-metadata
 
 # Numerous always-ignore extensions
 *.diff
@@ -32,12 +43,3 @@ Thumbs.db
 # Komodo
 .komodotools
 *.komodoproject
-
-# Jekyll metadata
-docs/.jekyll-metadata
-
-# Folders to ignore
-/.bundle/
-bower_components
-node_modules
-/vendor/
