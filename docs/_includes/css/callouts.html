@@ -1,0 +1,31 @@
+<div class="bs-docs-section">
+  <h1 id="callouts" class="page-header">Callouts</h1>
+
+  <h2 id="callouts-link">Callout link</h2>
+  <p>A callout link is used to emphasize a link. </p>
+  <form class="bs-example" data-example-id="btn-tags">
+    <a class="link-callout" href="#">Link here</a>
+  </form>
+{% highlight html %}
+<a class="link-callout" href="#">Link here</a>
+{% endhighlight %}
+
+<h2 id="callouts-container">Callout container</h2>
+<p>
+  Callout container does not apply any styles. Instead it's used to modify the behaviour of a callout link. If you nest a callout link inside a callout container, the callout link's chevron will move if you focus or hover the callout container to indicate interactivity.
+</p>
+<form class="bs-example" data-example-id="btn-tags">
+  <div class="well callout-container">
+    <p class="h4 m-b-2">Something's quite cool</p>
+    <span class="link-callout text-primary">Check it out</span>
+  </div>
+</form>
+{% highlight html %}
+<div class="well callout-container">
+  <p class="h4 m-b-2">Something's quite cool</p>
+  <span class="link-callout text-primary">Check it out</span>
+</div>
+{% endhighlight %}
+
+
+</div>

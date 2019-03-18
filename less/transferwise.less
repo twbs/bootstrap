@@ -141,3 +141,26 @@ li .circle {
     color: @brand-smoke-minus-20;
   }
 }
+
+.link-callout::after {
+    content: "\e080";
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    font-size: 10px;
+    margin-left: 10px;
+    transition: transform 0.2s ease-in-out;
+    transform: none;
+    pointer-events: none;
+    color: @link-color;
+}
+
+.link-callout:hover::after,
+.link-callout:focus::after,
+.callout-container:hover .link-callout::after,
+.callout-container:focus .link-callout::after {
+  transform: translateX(10px);
+}
