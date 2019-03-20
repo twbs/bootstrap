@@ -19,5 +19,5 @@
 {{- $styleDark := resources.Get "scss/docs-dark-mode.scss" | toCSS $sassOptions | postCSS $postcssOptions }}
 
 <link rel="stylesheet" href="{{ $style.Permalink | relURL }}">
-<link rel="stylesheet" href="{{ $styleDark.Permalink | relURL }}">
+<link id="dark-mode-css" rel="alternate" href="{{ $styleDark.Permalink | relURL }}">
 {{- end }}
