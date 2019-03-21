@@ -26,3 +26,10 @@ Aligning the figure's caption is easy with our [text utilities]({{ site.baseurl 
 </figure>
 {% endcapture %}
 {% include example.html content=example %}
+
+## Variables
+
+| Variable | Default | Description |
+| --- | --- | --- |
+| $figure-caption-font-size | 90% | Determines the font size for figure captions. |
+| $figure-caption-color | $gray-600 | Determines the font color. |

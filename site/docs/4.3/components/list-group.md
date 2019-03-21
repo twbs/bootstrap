@@ -391,3 +391,25 @@ $('a[data-toggle="list"]').on('shown.bs.tab', function (e) {
   e.relatedTarget // previous active tab
 })
 {% endhighlight %}
+
+## Variables
+
+| Variable | Default | Description |
+| --- | --- | --- |
+| $list-group-color | null | Determines the font color of the list-group element. `null` means that the font color should be whatever the prevailing font color is for the element.|
+| $list-group-bg | $white (`#fff !default`) | Determines the background color of the list group element |
+| $list-group-border-color | rgba($black, .125) (`#000`) | Determines the border's color on the list group element. |
+| $list-group-border-width | $border-width (`1px !default`) | Determines the width of the border on the list group component |
+| $list-group-border-radius | $border-radius (`0.25rem !default`) | Determines the  border radius for the list group component |
+| $list-group-item-padding-y | .75rem | Determines padding along the y-axis |
+| $list-group-item-padding-x | 1.25rem | Determines padding along the x-axis. |
+| $list-group-hover-bg | $gray-100 | Determines the hover background color for the non-active elements in teh list group |
+| $list-group-active-color | $component-active-color | Determines the font color for active elements in the list group |
+| $list-group-active-bg | $component-active-bg | Determines the background color for active elements in the list group |
+| $list-group-active-border-color | $list-group-active-bg | Determines the border color in the `:active` state inside the list group |
+| $list-group-disabled-color | $gray-600 | Determines the font color for a disabled element |
+| $list-group-disabled-bg | $list-group-bg | Determine the background color for a disabled element |
+| $list-group-action-color | $gray-700 | Determines the font color for the actionable items in a list group |
+| $list-group-action-hover-color | $list-group-action-color | Determines the color for the text on hover |
+| $list-group-action-active-color | $body-color | Determines the color for the text for the `:active` state. |
+| $list-group-action-active-bg | $gray-200 | Determines the active background color for elements in the list group. |

@@ -116,3 +116,19 @@ $('#myAlert').on('closed.bs.alert', function () {
   // do something...
 })
 {% endhighlight %}
+
+## Variables
+
+The alert component uses the following variables to help define its look and feel.
+
+| Variable | Default | Purpose |
+| --- | --- | --- |
+| $alert-padding-y | 0.75rem | Determines padding across the y-axis |
+| $alert-padding-x | 1.25rem | Determines padding across the x-axis |
+| $alert-margin-bottom | 1rem | Determines the size of the margin
+| $alert-border-radius | $border-radius(`0.25rem !default`) | Determines the size of the border radius for the alert element. |
+| $alert-link-font-weight: | $font-weight-bold (`700 !default`) | Determines the font weight for links in the alert
+| $alert-border-width: | $border-width(`1px !default`) | Determines the thickness of the borders around the alerts
+| $alert-bg-level: | -10 | Determines amount of mixing with the color variants for the background. <br> *Note* Negative numbers will increase baby the lightness of the color, positive will increase the darkness of the color |
+| $alert-border-level: | -9 | Determines amount of mixing with color variants for the border.  <br> *Note* Negative numbers will increase baby the lightness of the color, positive will increase the darkness of the color |
+| $alert-color-level: | 6 | Determines amount of mixing for the font color. <br> *Note* Negative numbers will increase baby the lightness of the color, positive will increase the darkness of the color.  <br> *Note* Negative numbers will increase baby the lightness of the color, positive will increase the darkness of the color |
