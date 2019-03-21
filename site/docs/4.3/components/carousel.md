@@ -350,3 +350,27 @@ $('#myCarousel').on('slide.bs.carousel', function () {
 ### Change transition duration
 
 The transition duration of `.carousel-item` can be changed with the `$carousel-transition` Sass variable before compiling or custom styles if you're using the compiled CSS. If multiple transitions are applied, make sure the transform transition is defined first (eg. `transition: transform 2s ease, opacity .5s ease-out`).
+
+
+## Variables
+
+| Variable | Default | Description |
+| --- | --- | --- |
+| $carousel-control-color | $white | Determines the color of the carousel controls |
+| $carousel-control-width | 15% | Determines how much width of the carousel each control takes up |
+| $carousel-control-opacity | .5 | Determines how see through the carousel control is (lower numbers means more see through) |
+| $carousel-control-hover-opacity | .9 | Determines how see through the carousel control is when hovered (lower numbers means more see through) |
+| $carousel-control-transition | opacity .15s ease | The transition added onto the carousel controls. |
+| $carousel-indicator-width | 30px | How wide the slide indicators are |
+| $carousel-indicator-height | 3px | How tall the slide indicators are |
+| $carousel-indicator-hit-area-height | 10px | Controls how large the borders are for the indicators. This is accomplished by adding transparent `border-top` and `border-bottom` values. |
+| $carousel-indicator-spacer | 3px | How much sapce is given between each indicator for the carousel. |
+| $carousel-indicator-active-bg | $white | Determines what color the active indicator will be |
+| $carousel-indicator-transition | opacity .6s ease | Determines the indicator transition. |
+| $carousel-caption-width | 70% | How much of the carousel's width the caption will take up. |
+| $carousel-caption-color | $white (`#fff !default`) | Determines the font color of each caption. |
+| $carousel-control-icon-width | 20px | Determines how wide the control icons will be. |
+| $carousel-control-prev-icon-bg | str-replace(url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='#{$carousel-control-color}' viewBox='0 0 8 8'%3e%3cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5  2.5-2.5-1.5-1.5z'/%3e%3c/svg%3e"), "#", "%23") | The url for the previous icon. |
+| $carousel-control-next-icon-bg | str-replace(url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='#{$carousel-control-color}' viewBox='0 0 8 8'%3e%3cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3e%3c/svg%3e"), "#", "%23") | the url for the next icon |
+| $carousel-transition-duration | .6s | Determines the transition duration. |
+| $carousel-transition | transform $carousel-transition-duration ease-in-out | Determines how the transform will be transitioned between slides. |

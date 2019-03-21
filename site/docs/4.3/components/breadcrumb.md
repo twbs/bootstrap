@@ -56,3 +56,17 @@ $breadcrumb-divider: none;
 Since breadcrumbs provide a navigation, it's a good idea to add a meaningful label such as `aria-label="breadcrumb"` to describe the type of navigation provided in the `<nav>` element, as well as applying an `aria-current="page"` to the last item of the set to indicate that it represents the current page.
 
 For more information, see the [WAI-ARIA Authoring Practices for the breadcrumb pattern](https://www.w3.org/TR/wai-aria-practices/#breadcrumb).
+
+## Variables
+
+| Variable | Default | Description |
+| --- | --- | --- |
+| $breadcrumb-padding-y | .75rem | Padding along the x-axis|
+| $breadcrumb-padding-x | 1rem | Padding along the y-axis|
+| $breadcrumb-item-padding | .5rem | Determines how much padding sits between the edge of each breadcrump and the text. This includes the `::before` psuedo element as well|
+| $breadcrumb-margin-bottom | 1rem | Determines how much margin there is below the breadcrumbs |
+| $breadcrumb-bg | $gray-200 | Determines the background color of the `.breadcrumb` element. |
+| $breadcrumb-divider-color | $gray-600 | Determines the color of the divider between each breadcrumb. |
+| $breadcrumb-active-color | $gray-600 | Determines the color of the active breadcrumb element.|
+| $breadcrumb-divider | quote("/") | Determines what text separator to use before each breadcrumb |
+| $breadcrumb-border-radius | $border-radius (`0.25rem`) | Determines the border radius for the breadcrumb component |

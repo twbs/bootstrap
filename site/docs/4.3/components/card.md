@@ -707,3 +707,24 @@ Card columns can also be extended and customized with some additional code. Show
   }
 }
 {% endhighlight %}
+
+## Variables
+
+| Variable | Default | Description | 
+| --- | --- | --- |
+| $card-spacer-y | .75rem | |
+| $card-spacer-x | 1.25rem | |
+| $card-border-width | $border-width | |
+| $card-border-radius | $border-radius | |
+| $card-border-color | rgba($black, .125) | |
+| $card-inner-border-radius | calc(#{$card-border-radius} - #{$card-border-width}) | |
+| $card-cap-bg | rgba($black, .03) | |
+| $card-cap-color | null | |
+| $card-color | null | |
+| $card-bg | $white | |
+| $card-img-overlay-padding | 1.25rem | |
+| $card-group-margin | $grid-gutter-width / 2 | |
+| $card-deck-margin | $card-group-margin | |
+| $card-columns-count | 3 | |
+| $card-columns-gap | 1.25rem | |
+| $card-columns-margin | $card-spacer-y | |

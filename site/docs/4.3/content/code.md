@@ -53,3 +53,17 @@ For indicating sample output from a program use the `<samp>` tag.
 <samp>This text is meant to be treated as sample output from a computer program.</samp>
 {% endcapture %}
 {% include example.html content=example %}
+
+## Variables
+
+| Variable | Default | Description | 
+| --- | --- | -- |
+| $code-font-size | 87.5% | The font size in relation to the text. This gets run through some RFS wizardry. |
+| $code-color | $pink (`#e83e8c !default;`)| The color of the text in the `<code>` elements.|
+| $kbd-padding-y | .2rem | Determines the padding along the x-axis |
+| $kbd-padding-x | .4rem | Determines the padding along the y-axis |
+| $kbd-font-size | $code-font-size | Determines the font size for the KBD element. |
+| $kbd-color | $white (`#fff !default`) | Determines the font color of the `<kbd>` element. |
+| $kbd-bg | $gray-900 | Determines the background color of the `<kbd>`. Note that by default `$gray-900` is set to `#212529` |
+| $pre-color | $gray-900 | Determines the font color of the `<pre>` element. Note that by default `$gray-900` is set to `#212529` |
+| $pre-scrollable-max-height | 340px | The max height for `.pre-scrollable` elements before the scrollbar appears. |

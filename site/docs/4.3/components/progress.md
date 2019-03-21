@@ -144,3 +144,17 @@ The striped gradient can also be animated. Add `.progress-bar-animated` to `.pro
   <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
 </div>
 {% endhighlight %}
+
+## Variables
+
+| Variable | Default | Description |
+| --- | --- | --- |
+| $progress-height | 1rem | Controls how tall the progress bars are. |
+| $progress-font-size | $font-size-base * .75 | Controls how big the font size inside of a progress bar will be. |
+| $progress-bg | $gray-200 | Determines the default background for the main `.progress` element|
+| $progress-border-radius | $border-radius (`0.25rem !default`) | Controls how big the border radius will be. To remove, set to 0|
+| $progress-box-shadow | inset 0 .1rem .1rem rgba($black, .1) default | Controls the box shadow of the progress bar.  |
+| $progress-bar-color | $white (`#fff !default`)| Determines what color the text inside the `.progress-bar` element will be |
+| $progress-bar-bg | theme-color("primary") | The default background color for the `.progress-bar` element. |
+| $progress-bar-animation-timing | 1s linear infinite | Determines how long each transition of progress bar state will be. <br>**Note** Will only work if `$enable-transitions` is true.|
+| $progress-bar-transition | width .6s ease | What transition should be used for the progress bar updates. Will only be applied if `$enable-transitions` is true. |

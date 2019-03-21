@@ -72,3 +72,17 @@ Using the contextual `.badge-*` classes on an `<a>` element quickly provide _act
 <a href="#" class="badge badge-{{ color.name }}">{{ color.name | capitalize }}</a>{% endfor %}
 {% endcapture %}
 {% include example.html content=example %}
+
+## Variables
+
+| Variable | Default | Description | 
+| --- | --- | --- |
+| $badge-font-size | 75% | Determines the font size. This value goes through some RFS magic. |
+| $badge-font-weight | $font-weight-bold (`700 !default`) | Determines the font weight |
+| $badge-padding-y | .25em | Determines the padding along the y-axis |
+| $badge-padding-x | .4em | Determines the padding along the x-axis |
+| $badge-border-radius | $border-radius (`0.25rem`) | Determines the border radius for the badge elements.|
+| $badge-transition | $btn-transition | Determines the badge transition. <br> **Note:** `$btn-transition` is set to `color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out` by default |
+| $badge-focus-width | $input-btn-focus-width | Determines the focus width of the badge element. <br> **Note:** by default, this is set to `.2rem` by default |
+| $badge-pill-padding-x | .6em | Determines the padding for `.badge-pill` along the x-axis. This is done to offset the rounded corners. |
+| $badge-pill-border-radius | 10rem | Determines the border radius for `.badge-pill` elements. |

@@ -183,3 +183,14 @@ Use spinners within buttons to indicate an action is currently processing or tak
 [margin]:  {{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/spacing/
 [sizing]:  {{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/sizing/
 [text]:    {{ site.baseurl }}/docs/{{ site.docs_version }}/content/typography/
+
+## Variables
+
+| Variable | Default | Description |
+| --- | --- | --- |
+| $spinner-width | 2rem | Determines how wide the spinners are|
+| $spinner-height | $spinner-width | Determines how tall the spinners are |
+| $spinner-border-width | .25em | Determines how wide the borders of thes pinner are |
+| $spinner-width-sm | 1rem | Determines how wide the spinners are when set to small |
+| $spinner-height-sm | $spinner-width-sm | Determines how tall the spinners are when set to small |
+| $spinner-border-width-sm | .2em | Determines the border width for the small spinners. |

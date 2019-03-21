@@ -13,3 +13,11 @@ group: utilities
 </button>
 {% endcapture %}
 {% include example.html content=example %}
+
+## Variables
+| Variable | Default | Description |
+| --- | --- | --- |
+| $close-font-size | $font-size-base * 1.5 | Determines the font size for the close icon. Please note that `$font-size-base` by default is 16px.|
+| $close-font-weight | $font-weight-bold | Determines the font eight for close icon. `$font-weight-bold` by default is 700. |
+| $close-color | $black (`#000`) | Determines the font color of the close button.  |
+| $close-text-shadow | 0 1px 0 $white | Determines the shadow cast by the close button. Please note that `$white` by default is `#fff` |

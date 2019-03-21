@@ -205,3 +205,16 @@ Make a set of buttons appear vertically stacked rather than horizontally. **Spli
   ...
 </div>
 {% endhighlight %}
+
+
+## Variables
+
+Please note that the Button Group component does not have its own variables, but it does share variables with the Button component. Below is a list of variables that the Button Group SCSS files use.
+
+| Variable | Default | Description | 
+| --- | --- | --- |
+| $btn-border-width | $input-btn-border-width | Determines with width of the border on the button groups. <br>**Note** This value is intially set to anotehr variable, `$border-width`, whose default value is `1px`|
+| $btn-active-box-shadow | `inset 0 1px 0 rgba($white, .15), 0 1px 1px rgba($black, .075)` | Determines the box shadow of the button group |
+| $btn-padding-x-sm | $input-btn-padding-x-sm | Determines the padding along the x-axis for smaller screens. <br> **Note** The value for this variable is initially set to `.5rem` |
+| $btn-padding-x-lg | $input-btn-padding-x-lg | Determines the padding along the x-axis for larger screens. <br> **Note** The value for this variable is initiall set to `1rem` |
+| $btn-active-box-shadow | `inset 0 3px 5px rgba($black, .125)` | Determines the box shadow for the active element. |
