@@ -112,9 +112,9 @@ class Tab {
       hideEvent !== null && hideEvent.defaultPrevented) {
       return
     }
-    
+
     if (selector) {
-      target = document.querySelectorAll(selector);
+      target = SelectorEngine.find(selector)
     }
 
     this._activate(
@@ -130,11 +130,11 @@ class Tab {
         relatedTarget: previous
       })
     }
-    // for activating multiple tab-contents from one tab
+
     if (target) {
       for (let i = 0, len = target.length; i < len; i++) {
-            this._activate(target[i], target[i].parentNode, complete)
-          }
+        this._activate(target[i], target[i].parentNode, complete)
+      }
     } else {
       complete()
     }
