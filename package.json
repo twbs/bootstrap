@@ -67,6 +67,7 @@
     "lint": "npm-run-all --parallel js-lint css-lint",
     "coveralls": "shx cat js/coverage/lcov.info | coveralls",
     "docs": "npm-run-all css-docs js-docs docs-build docs-lint",
+    "predocs-build": "npm-run-all css-copy js-copy",
     "docs-build": "hugo --cleanDestinationDir",
     "docs-compile": "npm run docs-build",
     "docs-production": "cross-env HUGO_ENV=production npm run docs-build",
