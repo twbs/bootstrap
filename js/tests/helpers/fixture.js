@@ -18,3 +18,21 @@ export const clearFixture = () => {
 
   fixtureEl.innerHTML = ''
 }
+
+export const createEvent = (eventName, params) => {
+  params = params || {}
+  const e = document.createEvent('Event')
+
+  e.initEvent(eventName, Boolean(params.bubbles), Boolean(params.cancelable))
+  return e
+}
+
+export const jQueryMock = {
+  elements: undefined,
+  fn: {},
+  each(fn) {
+    this.elements.forEach(el => {
+      fn.call(el)
+    })
+  }
+}
