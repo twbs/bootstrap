@@ -6,7 +6,7 @@
  */
 
 import Alert from './src/alert/alert'
-import Button from './src/button'
+import Button from './src/button/button'
 import Carousel from './src/carousel'
 import Collapse from './src/collapse'
 import Dropdown from './src/dropdown'

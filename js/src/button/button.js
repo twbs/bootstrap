@@ -5,10 +5,10 @@
  * --------------------------------------------------------------------------
  */
 
-import { jQuery as $ } from './util/index'
-import Data from './dom/data'
-import EventHandler from './dom/event-handler'
-import SelectorEngine from './dom/selector-engine'
+import { jQuery as $ } from '../util/index'
+import Data from '../dom/data'
+import EventHandler from '../dom/event-handler'
+import SelectorEngine from '../dom/selector-engine'
 
 /**
  * ------------------------------------------------------------------------
@@ -158,7 +158,6 @@ EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_TOGGLE_CARROT, eve
   let data = Data.getData(button, DATA_KEY)
   if (!data) {
     data = new Button(button)
-    Data.setData(button, DATA_KEY, data)
   }
 
   data.toggle()
@@ -186,7 +185,7 @@ EventHandler.on(document, Event.BLUR_DATA_API, Selector.DATA_TOGGLE_CARROT, even
  * ------------------------------------------------------------------------
  * add .button to jQuery only if jQuery is present
  */
-
+/* istanbul ignore if */
 if (typeof $ !== 'undefined') {
   const JQUERY_NO_CONFLICT = $.fn[NAME]
   $.fn[NAME] = Button._jQueryInterface
