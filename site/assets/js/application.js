@@ -30,7 +30,12 @@
   })()
 
   var btnToggleDarkMode = document.querySelector('.bd-toggle-dark-mode')
-  var isDarkModeEnabledOnLoad = localStorage.getItem('bs-docs-dark-mode') === '1'
+  var darkModeEnabledStorage = localStorage.getItem('bs-docs-dark-mode')
+  var isDarkModeEnabledOnLoad = darkModeEnabledStorage === '1' ||
+                                  (window.matchMedia('(prefers-color-scheme: dark)').matches &&
+                                  (darkModeEnabledStorage === null ||
+                                    darkModeEnabledStorage === 0
+                                  ))
 
   if (isDarkModeEnabledOnLoad) {
     document.documentElement.classList.add('bs-docs-dark-mode')
