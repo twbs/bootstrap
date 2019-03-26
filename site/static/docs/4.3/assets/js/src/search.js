@@ -34,13 +34,13 @@
     },
     transformData: function (hits) {
       return hits.map(function (hit) {
-        var currentSiteUrl = getOrigin()
+        var currentUrl = getOrigin()
         var liveUrl = 'https://getbootstrap.com'
 
         // When in production, return the result as is,
         // otherwise remove our url from it.
         // eslint-disable-next-line no-negated-condition
-        hit.url = currentSiteUrl.indexOf(liveUrl) !== -1 ?
+        hit.url = currentUrl.indexOf(liveUrl) !== -1 ?
           hit.url :
           hit.url.replace(liveUrl, '')
 
