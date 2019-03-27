@@ -63,55 +63,32 @@ class Button {
   // Public
 
   toggle() {
-    let triggerChangeEvent = true
-    let addAriaPressed = true
-
     const rootElement = SelectorEngine.closest(
       this._element,
       Selector.DATA_TOGGLE
     )
 
     if (rootElement) {
+      const activeElement = SelectorEngine.findOne(Selector.ACTIVE, rootElement)
+
+      if (activeElement) {
+        activeElement.classList.remove(ClassName.ACTIVE)
+      }
+      
       const input = SelectorEngine.findOne(Selector.INPUT, this._element)
 
       if (input) {
-        if (input.type === 'radio') {
-          if (input.checked &&
-            this._element.classList.contains(ClassName.ACTIVE)) {
-            triggerChangeEvent = false
-          } else {
-            const activeElement = SelectorEngine.findOne(Selector.ACTIVE, rootElement)
-
-            if (activeElement) {
-              activeElement.classList.remove(ClassName.ACTIVE)
-            }
-          }
+        if (input.checked) {
+          this._element.classList.add(ClassName.ACTIVE)
+        } else {
+          this._element.classList.remove(ClassName.ACTIVE)
         }
 
-        if (triggerChangeEvent) {
-          if (input.hasAttribute('disabled') ||
-            rootElement.hasAttribute('disabled') ||
-            input.classList.contains('disabled') ||
-            rootElement.classList.contains('disabled')) {
-            return
-          }
-
-          input.checked = !this._element.classList.contains(ClassName.ACTIVE)
-          EventHandler.trigger(input, 'change')
-        }
-
-        input.focus()
-        addAriaPressed = false
       }
-    }
-
-    if (addAriaPressed) {
-      this._element.setAttribute('aria-pressed',
-        !this._element.classList.contains(ClassName.ACTIVE))
-    }
-
-    if (triggerChangeEvent) {
+    } else {
       this._element.classList.toggle(ClassName.ACTIVE)
+      this._element.setAttribute('aria-pressed',
+        this._element.classList.contains(ClassName.ACTIVE))
     }
   }
 
@@ -148,20 +125,21 @@ class Button {
  */
 
 EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_TOGGLE_CARROT, event => {
-  event.preventDefault()
 
   let button = event.target
   if (!button.classList.contains(ClassName.BUTTON)) {
     button = SelectorEngine.closest(button, Selector.BUTTON)
   }
 
-  let data = Data.getData(button, DATA_KEY)
-  if (!data) {
-    data = new Button(button)
-    Data.setData(button, DATA_KEY, data)
-  }
+  if (button) {
+    let data = Data.getData(button, DATA_KEY)
+    if (!data) {
+      data = new Button(button)
+      Data.setData(button, DATA_KEY, data)
+    }
 
-  data.toggle()
+    data.toggle()
+  }
 })
 
 EventHandler.on(document, Event.FOCUS_DATA_API, Selector.DATA_TOGGLE_CARROT, event => {
