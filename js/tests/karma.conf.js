@@ -73,7 +73,9 @@ const rollupPreprocessor = {
   }
 }
 
-let files = []
+let files = [
+  'node_modules/hammer-simulator/index.js'
+]
 
 const conf = {
   basePath: '../..',
