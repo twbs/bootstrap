@@ -2,7 +2,7 @@ import Alert from './alert'
 import { makeArray, getTransitionDurationFromElement } from '../util/index'
 
 /** Test helpers */
-import { getFixture, clearFixture } from '../../tests/helpers/fixture'
+import { getFixture, clearFixture, jQueryMock } from '../../tests/helpers/fixture'
 
 describe('Alert', () => {
   let fixtureEl
@@ -122,6 +122,52 @@ describe('Alert', () => {
       alert.dispose()
 
       expect(Alert._getInstance(alertEl)).toBeNull()
+    })
+  })
+
+  describe('_jQueryInterface', () => {
+    it('should handle config passed and toggle existing alert', () => {
+      fixtureEl.innerHTML = '<div class="alert"></div>'
+
+      const alertEl = fixtureEl.querySelector('.alert')
+      const alert = new Alert(alertEl)
+
+      spyOn(alert, 'close')
+
+      jQueryMock.fn.alert = Alert._jQueryInterface
+      jQueryMock.elements = [alertEl]
+
+      jQueryMock.fn.alert.call(jQueryMock, 'close')
+
+      expect(alert.close).toHaveBeenCalled()
+    })
+
+    it('should create new alert instance and call close', () => {
+      fixtureEl.innerHTML = '<div class="alert"></div>'
+
+      const alertEl = fixtureEl.querySelector('.alert')
+
+      jQueryMock.fn.alert = Alert._jQueryInterface
+      jQueryMock.elements = [alertEl]
+
+      jQueryMock.fn.alert.call(jQueryMock, 'close')
+
+      expect(Alert._getInstance(alertEl)).toBeDefined()
+      expect(fixtureEl.querySelector('.alert')).toBeNull()
+    })
+
+    it('should just create an alert instance without calling close', () => {
+      fixtureEl.innerHTML = '<div class="alert"></div>'
+
+      const alertEl = fixtureEl.querySelector('.alert')
+
+      jQueryMock.fn.alert = Alert._jQueryInterface
+      jQueryMock.elements = [alertEl]
+
+      jQueryMock.fn.alert.call(jQueryMock)
+
+      expect(Alert._getInstance(alertEl)).toBeDefined()
+      expect(fixtureEl.querySelector('.alert')).not.toBeNull()
     })
   })
 })
