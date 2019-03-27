@@ -26,7 +26,7 @@ function normalizeData(val) {
 }
 
 function normalizeDataKey(key) {
-  return key.replace(/[A-Z]/g, (chr) => chr.toLowerCase())
+  return key.replace(/[A-Z]/g, chr => chr.toLowerCase())
 }
 
 const Manipulator = {
@@ -47,7 +47,7 @@ const Manipulator = {
       ...element.dataset
     }
 
-    Object.keys(attributes).forEach((key) => {
+    Object.keys(attributes).forEach(key => {
       attributes[key] = normalizeData(attributes[key])
     })
 

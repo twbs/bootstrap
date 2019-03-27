@@ -1,0 +1,19 @@
+{{ if eq (getenv "HUGO_ENV") "production" -}}
+  <script src="/docs/{{ .Site.Params.docs_version }}/dist/js/bootstrap.bundle.min.js" integrity="{{ .Site.Params.cdn.js_bundle_hash }}" crossorigin="anonymous"></script>
+{{ else -}}
+  <script src="/docs/{{ .Site.Params.docs_version }}/dist/js/bootstrap.bundle.js"></script>
+{{- end }}
+
+{{ if eq .Page.Layout "docs" -}}
+<script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+{{- end }}
+
+{{- if eq (getenv "HUGO_ENV") "production" -}}
+  <script src="/docs/{{ .Site.Params.docs_version }}/assets/js/docs.min.js"></script>
+{{- else -}}
+  <script src="/docs/{{ .Site.Params.docs_version }}/assets/js/vendor/anchor.min.js"></script>
+  <script src="/docs/{{ .Site.Params.docs_version }}/assets/js/vendor/clipboard.min.js"></script>
+  <script src="/docs/{{ .Site.Params.docs_version }}/assets/js/vendor/bs-custom-file-input.min.js"></script>
+  <script src="/docs/{{ .Site.Params.docs_version }}/assets/js/src/application.js"></script>
+  <script src="/docs/{{ .Site.Params.docs_version }}/assets/js/src/search.js"></script>
+{{- end -}}

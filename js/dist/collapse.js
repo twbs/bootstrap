@@ -72,7 +72,8 @@
    */
   var MILLISECONDS_MULTIPLIER = 1000;
   var TRANSITION_END = 'transitionend';
-  var jQuery = window.jQuery; // Shoutout AngusCroll (https://goo.gl/pxwQGp)
+  var _window = window,
+      jQuery = _window.jQuery; // Shoutout AngusCroll (https://goo.gl/pxwQGp)
 
   var toType = function toType(obj) {
     return {}.toString.call(obj).match(/\s([a-z]+)/i)[1].toLowerCase();
@@ -88,7 +89,7 @@
 
     try {
       return document.querySelector(selector) ? selector : null;
-    } catch (err) {
+    } catch (error) {
       return null;
     }
   };
@@ -447,19 +448,18 @@
     _proto._getParent = function _getParent() {
       var _this3 = this;
 
-      var parent;
+      var parent = this._config.parent;
 
-      if (isElement(this._config.parent)) {
-        parent = this._config.parent; // it's a jQuery object
-
-        if (typeof this._config.parent.jquery !== 'undefined' || typeof this._config.parent[0] !== 'undefined') {
-          parent = this._config.parent[0];
+      if (isElement(parent)) {
+        // it's a jQuery object
+        if (typeof parent.jquery !== 'undefined' || typeof parent[0] !== 'undefined') {
+          parent = parent[0];
         }
       } else {
-        parent = SelectorEngine.findOne(this._config.parent);
+        parent = SelectorEngine.findOne(parent);
       }
 
-      var selector = "[data-toggle=\"collapse\"][data-parent=\"" + this._config.parent + "\"]";
+      var selector = "[data-toggle=\"collapse\"][data-parent=\"" + parent + "\"]";
       makeArray(SelectorEngine.find(selector, parent)).forEach(function (element) {
         _this3._addAriaAndCollapsedClass(Collapse._getTargetFromElement(element), [element]);
       });
@@ -472,10 +472,10 @@
 
         if (triggerArray.length) {
           triggerArray.forEach(function (elem) {
-            if (!isOpen) {
-              elem.classList.add(ClassName.COLLAPSED);
-            } else {
+            if (isOpen) {
               elem.classList.remove(ClassName.COLLAPSED);
+            } else {
+              elem.classList.add(ClassName.COLLAPSED);
             }
 
             elem.setAttribute('aria-expanded', isOpen);
@@ -505,7 +505,7 @@
 
       if (typeof config === 'string') {
         if (typeof data[config] === 'undefined') {
-          throw new Error("No method named \"" + config + "\"");
+          throw new TypeError("No method named \"" + config + "\"");
         }
 
         data[config]();

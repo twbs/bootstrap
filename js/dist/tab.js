@@ -37,7 +37,8 @@
    */
   var MILLISECONDS_MULTIPLIER = 1000;
   var TRANSITION_END = 'transitionend';
-  var jQuery = window.jQuery; // Shoutout AngusCroll (https://goo.gl/pxwQGp)
+  var _window = window,
+      jQuery = _window.jQuery; // Shoutout AngusCroll (https://goo.gl/pxwQGp)
 
   var getSelectorFromElement = function getSelectorFromElement(element) {
     var selector = element.getAttribute('data-target');
@@ -49,7 +50,7 @@
 
     try {
       return document.querySelector(selector) ? selector : null;
-    } catch (err) {
+    } catch (error) {
       return null;
     }
   };
