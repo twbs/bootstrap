@@ -7,7 +7,7 @@
 
 import Alert from './src/alert/alert'
 import Button from './src/button/button'
-import Carousel from './src/carousel'
+import Carousel from './src/carousel/carousel'
 import Collapse from './src/collapse'
 import Dropdown from './src/dropdown'
 import Modal from './src/modal'

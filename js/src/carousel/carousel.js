@@ -16,11 +16,11 @@ import {
   reflow,
   triggerTransitionEnd,
   typeCheckConfig
-} from './util/index'
-import Data from './dom/data'
-import EventHandler from './dom/event-handler'
-import Manipulator from './dom/manipulator'
-import SelectorEngine from './dom/selector-engine'
+} from '../util/index'
+import Data from '../dom/data'
+import EventHandler from '../dom/event-handler'
+import Manipulator from '../dom/manipulator'
+import SelectorEngine from '../dom/selector-engine'
 
 /**
  * ------------------------------------------------------------------------
@@ -283,16 +283,12 @@ class Carousel {
         .on(this._element, Event.MOUSELEAVE, event => this.cycle(event))
     }
 
-    if (this._config.touch) {
+    if (this._config.touch && this._touchSupported) {
       this._addTouchEventListeners()
     }
   }
 
   _addTouchEventListeners() {
-    if (!this._touchSupported) {
-      return
-    }
-
     const start = event => {
       if (this._pointerEvent && PointerType[event.pointerType.toUpperCase()]) {
         this.touchStartX = event.clientX
@@ -631,7 +627,7 @@ EventHandler.on(window, Event.LOAD_DATA_API, () => {
  * ------------------------------------------------------------------------
  * add .carousel to jQuery only if jQuery is present
  */
-
+/* istanbul ignore if */
 if (typeof $ !== 'undefined') {
   const JQUERY_NO_CONFLICT = $.fn[NAME]
   $.fn[NAME] = Carousel._jQueryInterface
