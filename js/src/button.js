@@ -74,7 +74,7 @@ class Button {
       if (activeElement) {
         activeElement.classList.remove(ClassName.ACTIVE)
       }
-      
+
       const input = SelectorEngine.findOne(Selector.INPUT, this._element)
 
       if (input) {
@@ -83,7 +83,6 @@ class Button {
         } else {
           this._element.classList.remove(ClassName.ACTIVE)
         }
-
       }
     } else {
       this._element.classList.toggle(ClassName.ACTIVE)
@@ -125,7 +124,6 @@ class Button {
  */
 
 EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_TOGGLE_CARROT, event => {
-
   let button = event.target
   if (!button.classList.contains(ClassName.BUTTON)) {
     button = SelectorEngine.closest(button, Selector.BUTTON)
