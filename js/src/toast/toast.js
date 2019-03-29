@@ -11,10 +11,10 @@ import {
   emulateTransitionEnd,
   getTransitionDurationFromElement,
   typeCheckConfig
-} from './util/index'
-import Data from './dom/data'
-import EventHandler from './dom/event-handler'
-import Manipulator from './dom/manipulator'
+} from '../util/index'
+import Data from '../dom/data'
+import EventHandler from '../dom/event-handler'
+import Manipulator from '../dom/manipulator'
 
 /**
  * ------------------------------------------------------------------------
@@ -226,7 +226,7 @@ class Toast {
  * ------------------------------------------------------------------------
  *  add .toast to jQuery only if jQuery is present
  */
-
+/* istanbul ignore if */
 if (typeof $ !== 'undefined') {
   const JQUERY_NO_CONFLICT = $.fn[NAME]
   $.fn[NAME] = Toast._jQueryInterface
