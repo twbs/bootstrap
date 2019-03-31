@@ -44,7 +44,7 @@
   .bd-sidebar .nav > .active > a,
   .bd-sidebar .nav > .active:hover > a,
   .bd-toc-item.active > .bd-toc-link {
-    color: #fff;
+    color: $white;
   }
   .ds-input {
     background-color: rgba(0, 0, 0, .25);
@@ -65,7 +65,7 @@
       color: rgba(255, 255, 255, .75);
 
       &:hover {
-        color: #fff;
+        color: $white;
       }
     }
   }
@@ -135,10 +135,12 @@
       color: rgba(255, 255, 255, .5);
     }
   }
-  .language-sh::before,
-  .language-bash::before,
-  .language-powershell::before {
-    color: $bd-info;
+  .chroma {
+    .language-sh::before,
+    .language-bash::before,
+    .language-powershell::before {
+      color: $bd-info;
+    }
   }
 
   // Examples
