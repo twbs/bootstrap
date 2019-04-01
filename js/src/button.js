@@ -68,21 +68,21 @@ class Button {
       Selector.DATA_TOGGLE
     )
 
+    const input = SelectorEngine.findOne(Selector.INPUT, this._element)
+
     if (rootElement) {
       const activeElement = SelectorEngine.findOne(Selector.ACTIVE, rootElement)
 
       if (activeElement) {
         activeElement.classList.remove(ClassName.ACTIVE)
       }
+    }
 
-      const input = SelectorEngine.findOne(Selector.INPUT, this._element)
-
-      if (input) {
-        if (input.checked) {
-          this._element.classList.add(ClassName.ACTIVE)
-        } else {
-          this._element.classList.remove(ClassName.ACTIVE)
-        }
+    if (input) {
+      if (input.checked) {
+        this._element.classList.add(ClassName.ACTIVE)
+      } else {
+        this._element.classList.remove(ClassName.ACTIVE)
       }
     } else {
       this._element.classList.toggle(ClassName.ACTIVE)
