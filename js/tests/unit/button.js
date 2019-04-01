@@ -111,7 +111,7 @@ $(function () {
     var groupHTML =
       '<div class="btn-group" data-toggle="buttons">' +
       '  <label class="btn btn-primary active">' +
-      '    <input type="radio" name="options" id="option1" checked="true"> Option 1' +
+      '    <input type="radio" name="options" id="option1" checked> Option 1' +
       '  </label>' +
       '  <label class="btn btn-primary">' +
       '    <input type="radio" name="options" id="option2"> Option 2' +
@@ -130,21 +130,21 @@ $(function () {
     assert.ok($btn1.hasClass('active'), 'btn1 has active class')
     assert.ok($btn1.find('input').prop('checked'), 'btn1 is checked')
     assert.ok(!$btn2.hasClass('active'), 'btn2 does not have active class')
-    assert.ok(!inputBtn2.checked, 'btn2 is not checked')
+    assert.ok(!$btn2.find('input').prop('checked'), 'btn2 is not checked')
 
-    inputBtn2.dispatchEvent(new Event('click'))
-
-    assert.ok(!$btn1.hasClass('active'), 'btn1 does not have active class')
-    assert.ok(!$btn1.find('input').prop('checked'), 'btn1 is not checked')
-    assert.ok($btn2.hasClass('active'), 'btn2 has active class')
-    assert.ok(inputBtn2.checked, 'btn2 is checked')
-
-    inputBtn2.dispatchEvent(new Event('click')) // clicking an already checked radio should not un-check it
+    inputBtn2.click()
 
     assert.ok(!$btn1.hasClass('active'), 'btn1 does not have active class')
     assert.ok(!$btn1.find('input').prop('checked'), 'btn1 is not checked')
     assert.ok($btn2.hasClass('active'), 'btn2 has active class')
-    assert.ok(inputBtn2.checked, 'btn2 is checked')
+    assert.ok($btn2.find('input').prop('checked'), 'btn2 is checked')
+
+    inputBtn2.click() // clicking an already checked radio should not un-check it
+
+    assert.ok(!$btn1.hasClass('active'), 'btn1 does not have active class')
+    assert.ok(!$btn1.find('input').prop('checked'), 'btn1 is not checked')
+    assert.ok($btn2.hasClass('active'), 'btn2 has active class')
+    assert.ok($btn2.find('input').prop('checked'), 'btn2 is checked')
   })
 
   QUnit.test('should only toggle selectable inputs', function (assert) {
