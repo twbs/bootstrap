@@ -30,7 +30,7 @@ const reporters = ['dots']
 const detectBrowsers = {
   usePhantomJS: false,
   postDetection(availableBrowser) {
-    if (typeof env.TRAVIS_JOB_ID !== 'undefined' || availableBrowser.includes('Chrome')) {
+    if (env.CI === true || availableBrowser.includes('Chrome')) {
       return debug ? ['Chrome'] : ['ChromeHeadless']
     }
 
