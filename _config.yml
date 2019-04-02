@@ -60,6 +60,11 @@ cdn:
   popper:           "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
   popper_hash:      "sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
 
+collections:
+  docs:
+    permalink: "/:collection/:path"
+    output: true
+
 toc:
   min_level:        2
   max_level:        4
