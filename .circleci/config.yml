@@ -1,0 +1,80 @@
+version: 2.1
+
+commands:
+  install:
+    parameters:
+      install-commands:
+        description: "Steps that will be executed before the tests"
+        type: steps
+        default: []
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - "{{ .Environment.CIRCLE_JOB }}-{{ .Branch }}-{{ checksum \".circleci/config.yml\" }}-{{ checksum \"package-lock.json\" }}"
+            - "{{ .Environment.CIRCLE_JOB }}-{{ checksum \".circleci/config.yml\" }}-{{ checksum \"package-lock.json\" }}"
+          name: Restoring npm cache
+      - run: node --version
+      - run: npm --version
+      - run: java -version
+      - run: npm ci
+      - save_cache:
+          key: "{{ .Environment.CIRCLE_JOB }}-{{ .Branch }}-{{ checksum \".circleci/config.yml\" }}-{{ checksum \"package-lock.json\" }}"
+          name: Save npm modules
+          paths:
+            - ~/.npm/
+
+  run-tests:
+    parameters:
+      test-commands:
+        description: "Steps that will be executed after the repo is cloned, dependencies are installed and the main tests have run"
+        type: steps
+        default: []
+    steps:
+      - run: npm test
+      - steps: << parameters.test-commands >>
+
+jobs:
+  node-8:
+    docker:
+      - image: circleci/node:8-stretch-browsers
+    steps:
+      - install
+      - run-tests
+
+  node-10:
+    docker:
+      - image: circleci/node:10-stretch-browsers
+    steps:
+      - install
+      - run-tests:
+          test-commands:
+            - run:
+                name: Run BrowserStack tests
+                command: |
+                  if [[ -n "$BROWSER_STACK_ACCESS_KEY" && ! `git log --format=%B --no-merges -n 1 | grep '\[skip browser\]'` ]]; then
+                    npm run js-test-cloud;
+                  fi
+            - run:
+                name: Run docs links checking
+                command: npm run linkinator
+            - run:
+                name: Run coveralls
+                command: npm run coveralls
+                when: on_success
+
+  node-12:
+    docker:
+      - image: circleci/node:12-stretch-browsers
+    steps:
+      - install
+      - run-tests
+
+workflows:
+  version: 2
+  test:
+    jobs:
+      - node-8
+      - node-10:
+          context: BrowserStack
+      - node-12
