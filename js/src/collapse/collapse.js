@@ -15,11 +15,11 @@ import {
   makeArray,
   reflow,
   typeCheckConfig
-} from './util/index'
-import Data from './dom/data'
-import EventHandler from './dom/event-handler'
-import Manipulator from './dom/manipulator'
-import SelectorEngine from './dom/selector-engine'
+} from '../util/index'
+import Data from '../dom/data'
+import EventHandler from '../dom/event-handler'
+import Manipulator from '../dom/manipulator'
+import SelectorEngine from '../dom/selector-engine'
 
 /**
  * ------------------------------------------------------------------------
@@ -320,8 +320,11 @@ class Collapse {
 
     makeArray(SelectorEngine.find(selector, parent))
       .forEach(element => {
+        const selector = getSelectorFromElement(element)
+        const selected = selector ? SelectorEngine.findOne(selector) : null
+
         this._addAriaAndCollapsedClass(
-          Collapse._getTargetFromElement(element),
+          selected,
           [element]
         )
       })
@@ -348,11 +351,6 @@ class Collapse {
   }
 
   // Static
-
-  static _getTargetFromElement(element) {
-    const selector = getSelectorFromElement(element)
-    return selector ? SelectorEngine.findOne(selector) : null
-  }
 
   static _collapseInterface(element, config) {
     let data = Data.getData(element, DATA_KEY)
@@ -431,7 +429,7 @@ EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (
  * ------------------------------------------------------------------------
  * add .collapse to jQuery only if jQuery is present
  */
-
+/* istanbul ignore if */
 if (typeof $ !== 'undefined') {
   const JQUERY_NO_CONFLICT = $.fn[NAME]
   $.fn[NAME] = Collapse._jQueryInterface
