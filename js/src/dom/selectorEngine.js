@@ -5,10 +5,8 @@
  * --------------------------------------------------------------------------
  */
 
-import Polyfill from './polyfill'
-import {
-  makeArray
-} from '../util/index'
+import { find as findFn, findOne, matches, closest } from './polyfill'
+import { makeArray } from '../util/index'
 
 /**
  * ------------------------------------------------------------------------
@@ -16,13 +14,11 @@ import {
  * ------------------------------------------------------------------------
  */
 
-const findFn = Polyfill.find
-const findOne = Polyfill.findOne
 const NODE_TEXT = 3
 
 const SelectorEngine = {
   matches(element, selector) {
-    return element.matches(selector)
+    return matches.call(element, selector)
   },
 
   find(selector, element = document.documentElement) {
@@ -48,7 +44,7 @@ const SelectorEngine = {
 
     const children = makeArray(element.children)
 
-    return children.filter((child) => this.matches(child, selector))
+    return children.filter(child => this.matches(child, selector))
   },
 
   parents(element, selector) {
@@ -75,7 +71,7 @@ const SelectorEngine = {
       return null
     }
 
-    return element.closest(selector)
+    return closest.call(element, selector)
   },
 
   prev(element, selector) {

@@ -44,8 +44,8 @@ $(function () {
 
     try {
       Util.typeCheckConfig(namePlugin, config, defaultType)
-    } catch (err) {
-      assert.strictEqual(err.message, 'COLLAPSE: Option "parent" provided type "number" but expected type "(string|element)".')
+    } catch (error) {
+      assert.strictEqual(error.message, 'COLLAPSE: Option "parent" provided type "number" but expected type "(string|element)".')
     }
   })
 
@@ -139,9 +139,7 @@ $(function () {
     assert.expect(1)
 
     var $div = $('<div id="test"></div>').appendTo($('#qunit-fixture'))
-    if (!document.documentElement.attachShadow) {
-      assert.equal(null, Util.findShadowRoot($div[0]))
-    } else {
+    if (document.documentElement.attachShadow) {
       var sandbox = sinon.createSandbox()
 
       sandbox.replace(document.documentElement, 'attachShadow', function () {
@@ -151,6 +149,8 @@ $(function () {
 
       assert.equal(null, Util.findShadowRoot($div[0]))
       sandbox.restore()
+    } else {
+      assert.equal(null, Util.findShadowRoot($div[0]))
     }
   })
 

@@ -1,7 +1,7 @@
 $(function () {
   'use strict'
 
-  window.Carousel = typeof bootstrap !== 'undefined' ? bootstrap.Carousel : Carousel
+  window.Carousel = typeof bootstrap === 'undefined' ? Carousel : bootstrap.Carousel
 
   var originWinPointerEvent = window.PointerEvent
   window.MSPointerEvent = null
@@ -65,8 +65,8 @@ $(function () {
     $el.bootstrapCarousel()
     try {
       $el.bootstrapCarousel('noMethod')
-    } catch (err) {
-      assert.strictEqual(err.message, 'No method named "noMethod"')
+    } catch (error) {
+      assert.strictEqual(error.message, 'No method named "noMethod"')
     }
   })
 
@@ -89,8 +89,8 @@ $(function () {
 
     try {
       $('<div/>').bootstrapCarousel(config)
-    } catch (err) {
-      message = err.message
+    } catch (error) {
+      message = error.message
     }
 
     assert.ok(message === expectedMessage, 'correct error message')
@@ -102,8 +102,8 @@ $(function () {
 
     try {
       $('<div/>').bootstrapCarousel(config)
-    } catch (err) {
-      message = err.message
+    } catch (error) {
+      message = error.message
     }
 
     assert.ok(message === expectedMessage, 'correct error message')
@@ -161,6 +161,7 @@ $(function () {
       }, 0)
       $carousel[0].removeEventListener('slide.bs.carousel', onSlide)
     }
+
     $carousel[0].addEventListener('slide.bs.carousel', onSlide)
 
     function onSlid() {
@@ -173,6 +174,7 @@ $(function () {
       }, 0)
       $carousel[0].removeEventListener('slid.bs.carousel', onSlid)
     }
+
     $carousel[0].addEventListener('slid.bs.carousel', onSlid)
 
     $carousel.bootstrapCarousel('next')
@@ -682,6 +684,7 @@ $(function () {
       assert.strictEqual(event.defaultPrevented, false)
       $template[0].removeEventListener('keydown', handlerKeydown)
     }
+
     $template[0].addEventListener('keydown', handlerKeydown)
 
     // arrow down
@@ -694,6 +697,7 @@ $(function () {
       $template[0].addEventListener('keydown', handlerKeydown2)
       done()
     }
+
     $template[0].addEventListener('keydown', handlerKeydown2)
 
     // arrow up
@@ -1149,7 +1153,7 @@ $(function () {
     }
 
     document.documentElement.ontouchstart = $.noop
-    assert.expect(3)
+    assert.expect(4)
     Simulator.setType('pointer')
 
     var $styles = $(stylesCarousel).appendTo('head')
@@ -1178,6 +1182,7 @@ $(function () {
       assert.ok(true, 'slid event fired')
       assert.ok(!$item.hasClass('active'))
       assert.ok(spy.called)
+      assert.strictEqual(carousel.touchDeltaX, 0)
       $styles.remove()
       delete document.documentElement.ontouchstart
       done()
@@ -1191,7 +1196,7 @@ $(function () {
   })
 
   QUnit.test('should allow swipeleft and call next with touch events', function (assert) {
-    assert.expect(3)
+    assert.expect(4)
     clearPointerEvents()
     Simulator.setType('touch')
     document.documentElement.ontouchstart = $.noop
@@ -1221,6 +1226,7 @@ $(function () {
       assert.ok(true, 'slid event fired')
       assert.ok(!$item.hasClass('active'))
       assert.ok(spy.called)
+      assert.strictEqual(carousel.touchDeltaX, 0)
       restorePointerEvents()
       delete document.documentElement.ontouchstart
       done()
