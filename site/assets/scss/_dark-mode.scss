@@ -36,10 +36,12 @@
     border-color: rgba(255, 255, 255, .05);
   }
   .bd-toc-link,
+  .bd-toc nav li a,
   .bd-sidebar .nav > li > a {
     color: rgba(255, 255, 255, .75);
   }
   .bd-toc-link:hover,
+  .bd-toc nav li a:hover,
   .bd-sidebar .nav > li > a:hover,
   .bd-sidebar .nav > .active > a,
   .bd-sidebar .nav > .active:hover > a,
