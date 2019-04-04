@@ -6,7 +6,7 @@
  */
 
 import { jQuery as $ } from '../util/index'
-import Polyfill from './polyfill'
+import { createCustomEvent, defaultPreventedPreservedOnDispatch } from './polyfill'
 
 /**
  * ------------------------------------------------------------------------
@@ -305,7 +305,7 @@ const EventHandler = {
       evt = document.createEvent('HTMLEvents')
       evt.initEvent(typeEvent, bubbles, true)
     } else {
-      evt = new CustomEvent(event, {
+      evt = createCustomEvent(event, {
         bubbles,
         cancelable: true
       })
@@ -326,7 +326,7 @@ const EventHandler = {
     if (defaultPrevented) {
       evt.preventDefault()
 
-      if (!Polyfill.defaultPreventedPreservedOnDispatch) {
+      if (!defaultPreventedPreservedOnDispatch) {
         Object.defineProperty(evt, 'defaultPrevented', {
           get: () => true
         })
