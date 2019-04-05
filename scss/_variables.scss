@@ -195,7 +195,7 @@ $grid-breakpoints: (
   lg: 992px,
   xl: 1200px,
   xxl: 1700px,
-  xxxl: 2180px,
+  xxxl: 2180px
 ) !default;
 
 @include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
