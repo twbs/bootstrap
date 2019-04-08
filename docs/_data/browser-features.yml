@@ -10,6 +10,26 @@
 
 -
   browser: >
+    Microsoft Edge
+  summary: >
+    Implement [sticky positioning](http://html5please.com/#position:sticky) from CSS Positioned Layout Level 3
+  upstream_bug: >
+    UserVoice#6263621
+  origin: >
+    Bootstrap#17021
+
+-
+  browser: >
+    Microsoft Edge
+  summary: >
+    Implement the HTML5 [`<dialog>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog)
+  upstream_bug: >
+    UserVoice#6508895
+  origin: >
+    Bootstrap#20175
+
+-
+  browser: >
     Firefox
   summary: >
     Fire a [`transitioncancel` event](https://developer.mozilla.org/en-US/docs/Web/Events/transitioncancel) when a CSS transition is canceled
@@ -27,6 +47,16 @@
     Mozilla#854148
   origin: >
     Bootstrap#20143
+
+-
+  browser: >
+    Firefox
+  summary: >
+    Implement the HTML5 [`<dialog>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog)
+  upstream_bug: >
+    Mozilla#840640
+  origin: >
+    Bootstrap#20175
 
 -
   browser: >
@@ -50,6 +80,16 @@
 
 -
   browser: >
+    Chrome
+  summary: >
+    Implement [sticky positioning](http://html5please.com/#position:sticky) from CSS Positioned Layout Level 3
+  upstream_bug: >
+    Chromium#231752
+  origin: >
+    Bootstrap#17021
+
+-
+  browser: >
     Safari
   summary: >
     Implement the [`:dir()` pseudo-class](https://developer.mozilla.org/en-US/docs/Web/CSS/:dir) from Selectors Level 4
@@ -57,3 +97,13 @@
     WebKit#64861
   origin: >
     Bootstrap#19984
+
+-
+  browser: >
+    Safari
+  summary: >
+    Implement the HTML5 [`<dialog>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog)
+  upstream_bug: >
+    WebKit#84635
+  origin: >
+    Bootstrap#20175

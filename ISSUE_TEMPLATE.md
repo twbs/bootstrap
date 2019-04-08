@@ -5,7 +5,7 @@ Before opening an issue:
 - Prepare a [reduced test case](https://css-tricks.com/reduced-test-cases/) for any bugs
 - Read the [contributing guidelines](https://github.com/twbs/bootstrap/blob/master/CONTRIBUTING.md)
 
-When asking general "how to" questons:
+When asking general "how to" questions:
 
 - Please do not open an issue here
 - Instead, ask for help on [StackOverflow, IRC, or Slack](https://github.com/twbs/bootstrap/blob/master/README.md#community)
