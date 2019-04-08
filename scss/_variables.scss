@@ -898,7 +898,7 @@ $toast-color:                       null !default;
 $toast-background-color:            rgba($white, .85) !default;
 $toast-border-width:                1px !default;
 $toast-border-color:                rgba(0, 0, 0, .1) !default;
-$toast-border-radius:               .25rem !default;
+$toast-border-radius:               $border-radius !default;
 $toast-box-shadow:                  0 .25rem .75rem rgba($black, .1) !default;
 
 $toast-header-color:                $gray-600 !default;
