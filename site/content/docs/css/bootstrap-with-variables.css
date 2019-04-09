@@ -1,17 +1,18 @@
 
 :root {
-  --blue_500: 0, 123, 255; /* not used directly */
-  --blue_400: 39, 143, 255; /* not used directly */
-  --blue_600: 0, 95, 198; /* not used directly */
   --blue_0: 255, 255, 255; /* not used directly */
-  --blue_800: 0, 39, 82; /* not used directly */
-  --blue_900: 0, 36, 74; /* not used directly */
   --blue_50: 204, 229, 255; /* not used directly */
   --blue_100: 182, 217, 255; /* not used directly */
   --blue_200: 138, 194, 255; /* not used directly */
   --blue_300: 120, 185, 255; /* not used directly */
+  --blue_400: 39, 143, 255; /* not used directly */
+  --blue_500: 0, 123, 255; /* not used directly */
+  --blue_600: 0, 95, 198; /* not used directly */
   --blue_700: 0, 64, 133; /* not used directly */
+  --blue_800: 0, 39, 82; /* not used directly */
+  --blue_900: 0, 36, 74; /* not used directly */
   --blue_1000: 0, 4, 9; /* not used directly */
+  
   --indigo_500: 102, 16, 242; /* not used */
   --indigo_400: 124, 50, 244; /* not used */
   --indigo_600: 81, 11, 196; /* not used */
@@ -221,6 +222,9 @@
 
   /* Light Colors */
   --white: var(--gray_0);
+  --light: var(--gray-100);
+  --dark: var(--gray-800);
+  --black: var(--gray-1000);
   /* Dark Colors */
 }
  /*!
