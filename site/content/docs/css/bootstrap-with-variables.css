@@ -24,20 +24,20 @@
   --indigo_300: 173, 127, 248; /* not used */
   --indigo_700: 63, 8, 152; /* not used */
   --indigo_1000: 4, 0, 9; /* not used */
-  --purple_500: 111, 66, 193; /* not used directly */
+  --purple_500: 111, 66, 193; /* not used */
   --purple_400: 131, 92, 202; /* not used */
   --purple_600: 88, 51, 156; /* not used */
   --purple_0: 255, 255, 255; /* not used */
   --purple_800: 49, 29, 87; /* not used */
   --purple_900: 32, 18, 56; /* not used */
-  --purple_50: 236, 236, 246; /* USED DIRECTLY !!! */
+  --purple_50: 236, 236, 246; /* not used */
   --purple_100: 222, 211, 241; /* not used */
   --purple_200: 200, 183, 231; /* not used */
   --purple_300: 178, 153, 222; /* not used */
   --purple_700: 68, 40, 120; /* not used */
   --purple_1000: 4, 2, 7; /* not used */
   --pink_500: 228, 27, 119; /* not used */
-  --pink_400: 232, 62, 140; /* USED DIRECTLY !!! */
+  --pink_400: 232, 62, 140; /* not used */
   --pink_600: 185, 22, 97; /* not used */
   --pink_0: 255, 255, 255; /* not used */
   --pink_800: 104, 12, 54; /* not used */
@@ -120,106 +120,107 @@
   --gray_300: 185, 187, 190;
   --gray_700: 80, 80, 80;
   --gray_1000: 0, 0, 0; */
-  --gray_500: 108, 117, 125; /* USED DIRECTLY !!! */
-  --gray_400: 139, 147, 155; /* not used directly */
-  --gray_600: 87, 95, 101; /* USED DIRECTLY !!! */
+
   --gray_0: 255, 255, 255; /* USED DIRECTLY !!! */
-  --gray_800: 49, 54, 60; /* not used directly */
-  --gray_900: 31, 35, 38; /* USED DIRECTLY !!! */
   --gray_50: 230, 233, 237; /* USED DIRECTLY !!! */
   --gray_100: 219, 224, 228; /* not used directly */
   --gray_200: 207, 210, 215; /* USED DIRECTLY !!! */
   --gray_300: 173, 181, 189; /* USED DIRECTLY !!! */
+  --gray_400: 139, 147, 155; /* not used directly */
+  --gray_500: 108, 117, 125; /* USED DIRECTLY !!! */
+  --gray_600: 87, 95, 101; /* USED DIRECTLY !!! */
   --gray_700: 76, 83, 89; /* not used directly */
+  --gray_800: 49, 54, 60; /* not used directly */
+  --gray_900: 31, 35, 38; /* USED DIRECTLY !!! */
   --gray_1000: 4, 5, 5; /* USED DIRECTLY !!! */
 
 
   /* Primary pallete */
-  --primary_500: var(--blue_500); /* USED DIRECTLY !!! */
-  --primary_400: var(--blue_400); /* not used */
-  --primary_600: var(--blue_600); /* USED DIRECTLY !!! */
   --primary_0: var(--blue_0); /* not used */
-  --primary_800: var(--blue_800); /* USED DIRECTLY !!! */
-  --primary_900: var(--blue_900); /* not used */
   --primary_50: var(--blue_50); /* USED DIRECTLY !!! */
   --primary_100: var(--blue_100); /* USED DIRECTLY !!! */
   --primary_200: var(--blue_200); /* USED DIRECTLY !!! */
   --primary_300: var(--blue_300); /* not used */
+  --primary_400: var(--blue_400); /* not used */
+  --primary_500: var(--blue_500); /* USED DIRECTLY !!! */
+  --primary_600: var(--blue_600); /* USED DIRECTLY !!! */
   --primary_700: var(--blue_700); /* USED DIRECTLY !!! */
+  --primary_800: var(--blue_800); /* USED DIRECTLY !!! */
+  --primary_900: var(--blue_900); /* not used */
   --primary_1000: var(--blue_1000); /* not used */
 
   /* Secondary color */
-  --secondary_500: var(--gray_500); /* USED DIRECTLY !!! */
-  --secondary_400: var(--gray_400); /* not used */
-  --secondary_600: var(--gray_600); /* USED DIRECTLY !!! */
   --secondary_0: var(--gray_0); /* not used */
-  --secondary_800: var(--gray_800); /* USED DIRECTLY !!! */
-  --secondary_900: var(--gray_900); /* USED DIRECTLY !!! */
   --secondary_50: var(--gray_50); /* USED DIRECTLY !!! */
   --secondary_100: var(--gray_100); /* USED DIRECTLY !!! */
   --secondary_200: var(--gray_200); /* USED DIRECTLY !!! */
   --secondary_300: var(--gray_300); /* USED DIRECTLY !!! */
+  --secondary_400: var(--gray_400); /* not used */
+  --secondary_500: var(--gray_500); /* USED DIRECTLY !!! */
+  --secondary_600: var(--gray_600); /* USED DIRECTLY !!! */
   --secondary_700: var(--gray_700); /* USED DIRECTLY !!! */
+  --secondary_800: var(--gray_800); /* USED DIRECTLY !!! */
+  --secondary_900: var(--gray_900); /* USED DIRECTLY !!! */
   --secondary_1000: var(--gray_1000); /* not used */
 
   /* Success color */
-  --success_500: var(--green_500); /* USED DIRECTLY !!! */
-  --success_400: var(--green_400); /* not used */
-  --success_600: var(--green_600); /* USED DIRECTLY !!! */
   --success_0: var(--green_0); /* not used */
-  --success_800: var(--green_800); /* USED DIRECTLY !!! */
-  --success_900: var(--green_900); /* USED DIRECTLY !!! */
   --success_50: var(--green_50); /* USED DIRECTLY !!! */
   --success_100: var(--green_100); /* USED DIRECTLY !!! */
   --success_200: var(--green_200); /* USED DIRECTLY !!! */
   --success_300: var(--green_300); /* USED DIRECTLY !!! */
+  --success_400: var(--green_400); /* not used */
+  --success_500: var(--green_500); /* USED DIRECTLY !!! */
+  --success_600: var(--green_600); /* USED DIRECTLY !!! */
   --success_700: var(--green_700); /* USED DIRECTLY !!! */
+  --success_800: var(--green_800); /* USED DIRECTLY !!! */
+  --success_900: var(--green_900); /* USED DIRECTLY !!! */
   --success_1000: var(--green_1000); /* not used */
 
   /* Danger color */
-  --danger_500: var(--red_500); /* USED DIRECTLY !!! */
-  --danger_400: var(--red_400); /* USED DIRECTLY !!! */
-  --danger_600: var(--red_600); /* USED DIRECTLY !!! */
   --danger_0: var(--red_0); /* not used */
-  --danger_800: var(--red_800); /* USED DIRECTLY !!! */
-  --danger_900: var(--red_900); /* not used */
   --danger_50: var(--red_50); /* USED DIRECTLY !!! */
   --danger_100: var(--red_100); /* USED DIRECTLY !!! */
   --danger_200: var(--red_200); /* USED DIRECTLY !!! */
   --danger_300: var(--red_300); /* not used */
+  --danger_400: var(--red_400); /* USED DIRECTLY !!! */
+  --danger_500: var(--red_500); /* USED DIRECTLY !!! */
+  --danger_600: var(--red_600); /* USED DIRECTLY !!! */
   --danger_700: var(--red_700); /* USED DIRECTLY !!! */
+  --danger_800: var(--red_800); /* USED DIRECTLY !!! */
+  --danger_900: var(--red_900); /* not used */
   --danger_1000: var(--red_1000); /* not used */
 
   /* Warning color */
-  --warning_500: var(--yellow_500); /* USED DIRECTLY !!! */
-  --warning_400: var(--yellow_400); /* not used */
-  --warning_600: var(--yellow_600); /* USED DIRECTLY !!! */
   --warning_0: var(--yellow_0); /* not used */
-  --warning_800: var(--yellow_800); /* USED DIRECTLY !!! */
-  --warning_900: var(--yellow_900); /* not used */
   --warning_50: var(--yellow_50); /* USED DIRECTLY !!! */
   --warning_100: var(--yellow_100); /* USED DIRECTLY !!! */
   --warning_200: var(--yellow_200); /* USED DIRECTLY !!! */
   --warning_300: var(--yellow_300); /* not used */
+  --warning_400: var(--yellow_400); /* not used */
+  --warning_500: var(--yellow_500); /* USED DIRECTLY !!! */
+  --warning_600: var(--yellow_600); /* USED DIRECTLY !!! */
   --warning_700: var(--yellow_700); /* USED DIRECTLY !!! */
+  --warning_800: var(--yellow_800); /* USED DIRECTLY !!! */
+  --warning_900: var(--yellow_900); /* not used */
   --warning_1000: var(--yellow_1000); /* not used */
 
   /* Info colors */
-  --info_500: 28, 200, 227; /* not used directly */
-  --info_400: 63, 208, 231; /* not used directly */
-  --info_600: 23, 162, 184; /* not used directly */
   --info_0: 255, 255, 255; /* not used directly */
-  --info_800: 12, 84, 96; /* not used directly */
-  --info_900: 6, 44, 51; /* not used directly */
   --info_50: 227, 248, 252; /* not used directly */
   --info_100: 209, 236, 241; /* not used directly */
   --info_200: 181, 225, 232; /* not used directly */
   --info_300: 135, 226, 240; /* not used directly */
+  --info_400: 63, 208, 231; /* not used directly */
+  --info_500: 28, 200, 227; /* not used directly */
+  --info_600: 23, 162, 184; /* not used directly */
   --info_700: 17, 122, 139; /* not used directly */
+  --info_800: 12, 84, 96; /* not used directly */
+  --info_900: 6, 44, 51; /* not used directly */
   --info_1000: 1, 7, 8; /* not used directly */
 
   /* Light Colors */
-
+  --white: var(--gray_0);
   /* Dark Colors */
 }
  /*!
@@ -732,7 +733,7 @@ mark,
 
 code {
   font-size: 87.5%;
-  color: rgba(var(--pink_400), 1);
+  color: rgba(var(--gray_1000), 1);
   word-break: break-word;
 }
 
@@ -1903,12 +1904,12 @@ pre {
 }
 
 .table-hover .table-light:hover {
-  background-color: rgba(var(--purple_50), 1);
+  background-color: rgba(var(--gray_50), 1);
 }
 
   .table-hover .table-light:hover > td,
   .table-hover .table-light:hover > th {
-    background-color: rgba(var(--purple_50), 1);
+    background-color: rgba(var(--gray_50), 1);
   }
 
 .table-dark,
@@ -5197,7 +5198,7 @@ input[type="button"].btn-block {
 }
 
   .alert-light hr {
-    border-top-color: rgba(var(--purple_50), 1);
+    border-top-color: rgba(var(--gray_50), 1);
   }
 
   .alert-light .alert-link {
@@ -5461,7 +5462,7 @@ input[type="button"].btn-block {
 
   .list-group-item-light.list-group-item-action:hover, .list-group-item-light.list-group-item-action:focus {
     color: rgba(var(--gray_500), 1);
-    background-color: rgba(var(--purple_50), 1);
+    background-color: rgba(var(--gray_50), 1);
   }
 
   .list-group-item-light.list-group-item-action.active {
