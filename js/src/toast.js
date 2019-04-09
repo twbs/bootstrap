@@ -103,7 +103,9 @@ class Toast {
       EventHandler.trigger(this._element, Event.SHOWN)
 
       if (this._config.autohide) {
-        this.hide()
+        this._timeout = setTimeout(() => {
+          this.hide()
+        }, this._config.delay)
       }
     }
 
@@ -119,20 +121,13 @@ class Toast {
     }
   }
 
-  hide(withoutTimeout) {
+  hide() {
     if (!this._element.classList.contains(ClassName.SHOW)) {
       return
     }
 
     EventHandler.trigger(this._element, Event.HIDE)
-
-    if (withoutTimeout) {
-      this._close()
-    } else {
-      this._timeout = setTimeout(() => {
-        this._close()
-      }, this._config.delay)
-    }
+    this._close()
   }
 
   dispose() {
@@ -173,7 +168,7 @@ class Toast {
       this._element,
       Event.CLICK_DISMISS,
       Selector.DATA_DISMISS,
-      () => this.hide(true)
+      () => this.hide()
     )
   }
 
