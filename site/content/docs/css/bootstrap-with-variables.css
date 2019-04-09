@@ -108,30 +108,18 @@
   --teal_300: 139, 236, 207; /* not used */
   --teal_700: 22, 138, 104; /* not used */
   --teal_1000: 1, 8, 6; /* not used */
-  --info_500: 28, 200, 227; /* not used directly */
-  --info_400: 63, 208, 231; /* not used directly */
-  --info_600: 23, 162, 184; /* not used directly */
-  --info_0: 255, 255, 255; /* not used directly */
-  --info_800: 12, 84, 96; /* not used directly */
-  --info_900: 6, 44, 51; /* not used directly */
-  --info_50: 227, 248, 252; /* not used directly */
-  --info_100: 209, 236, 241; /* not used directly */
-  --info_200: 181, 225, 232; /* not used directly */
-  --info_300: 135, 226, 240; /* not used directly */
-  --info_700: 17, 122, 139; /* not used directly */
-  --info_1000: 1, 7, 8; /* not used directly */
-  --gray_500: 129, 129, 130; /* USED DIRECTLY !!! */
-  --gray_400: 147, 147, 147; /* not used directly */
-  --gray_600: 104, 104, 104; /* USED DIRECTLY !!! */
-  --gray_0: 254, 254, 254; /* USED DIRECTLY !!! */
-  --gray_800: 58, 58, 58; /* not used directly */
-  --gray_900: 24, 27, 30; /* USED DIRECTLY !!! */
-  --gray_50: 241, 241, 241; /* USED DIRECTLY !!! */
-  --gray_100: 226, 226, 226; /* not used directly */
-  --gray_200: 206, 208, 210; /* USED DIRECTLY !!! */
-  --gray_300: 185, 187, 190; /* USED DIRECTLY !!! */
-  --gray_700: 80, 80, 80; /* not used directly */
-  --gray_1000: 0, 0, 0; /* USED DIRECTLY !!! */
+  /* --gray_500: 129, 129, 130;
+  --gray_400: 147, 147, 147;
+  --gray_600: 104, 104, 104;
+  --gray_0: 254, 254, 254;
+  --gray_800: 58, 58, 58;
+  --gray_900: 24, 27, 30;
+  --gray_50: 241, 241, 241;
+  --gray_100: 226, 226, 226;
+  --gray_200: 206, 208, 210;
+  --gray_300: 185, 187, 190;
+  --gray_700: 80, 80, 80;
+  --gray_1000: 0, 0, 0; */
   --gray_500: 108, 117, 125; /* USED DIRECTLY !!! */
   --gray_400: 139, 147, 155; /* not used directly */
   --gray_600: 87, 95, 101; /* USED DIRECTLY !!! */
@@ -144,78 +132,111 @@
   --gray_300: 173, 181, 189; /* USED DIRECTLY !!! */
   --gray_700: 76, 83, 89; /* not used directly */
   --gray_1000: 4, 5, 5; /* USED DIRECTLY !!! */
-  --primary_500: var(--blue_500);
-  --primary_400: var(--blue_400);
-  --primary_600: var(--blue_600);
-  --primary_0: var(--blue_0);
-  --primary_800: var(--blue_800);
-  --primary_900: var(--blue_900);
-  --primary_50: var(--blue_50);
-  --primary_100: var(--blue_100);
-  --primary_200: var(--blue_200);
-  --primary_300: var(--blue_300);
-  --primary_700: var(--blue_700);
-  --primary_1000: var(--blue_1000);
-  --danger_500: var(--red_500);
-  --danger_400: var(--red_400);
-  --danger_600: var(--red_600);
-  --danger_0: var(--red_0);
-  --danger_800: var(--red_800);
-  --danger_900: var(--red_900);
-  --danger_50: var(--red_50);
-  --danger_100: var(--red_100);
-  --danger_200: var(--red_200);
-  --danger_300: var(--red_300);
-  --danger_700: var(--red_700);
-  --danger_1000: var(--red_1000);
-  --warning_500: var(--yellow_500);
-  --warning_400: var(--yellow_400);
-  --warning_600: var(--yellow_600);
-  --warning_0: var(--yellow_0);
-  --warning_800: var(--yellow_800);
-  --warning_900: var(--yellow_900);
-  --warning_50: var(--yellow_50);
-  --warning_100: var(--yellow_100);
-  --warning_200: var(--yellow_200);
-  --warning_300: var(--yellow_300);
-  --warning_700: var(--yellow_700);
-  --warning_1000: var(--yellow_1000);
-  --success_500: var(--green_500);
-  --success_400: var(--green_400);
-  --success_600: var(--green_600);
-  --success_0: var(--green_0);
-  --success_800: var(--green_800);
-  --success_900: var(--green_900);
-  --success_50: var(--green_50);
-  --success_100: var(--green_100);
-  --success_200: var(--green_200);
-  --success_300: var(--green_300);
-  --success_700: var(--green_700);
-  --success_1000: var(--green_1000);
-  --cyan_500: var(--info_500);
-  --cyan_400: var(--info_400);
-  --cyan_600: var(--info_600);
-  --cyan_0: var(--info_0);
-  --cyan_800: var(--info_800);
-  --cyan_900: var(--info_900);
-  --cyan_50: var(--info_50);
-  --cyan_100: var(--info_100);
-  --cyan_200: var(--info_200);
-  --cyan_300: var(--info_300);
-  --cyan_700: var(--info_700);
-  --cyan_1000: var(--info_1000);
-  --secondary_500: var(--gray_500);
-  --secondary_400: var(--gray_400);
-  --secondary_600: var(--gray_600);
-  --secondary_0: var(--gray_0);
-  --secondary_800: var(--gray_800);
-  --secondary_900: var(--gray_900);
-  --secondary_50: var(--gray_50);
-  --secondary_100: var(--gray_100);
-  --secondary_200: var(--gray_200);
-  --secondary_300: var(--gray_300);
-  --secondary_700: var(--gray_700);
-  --secondary_1000: var(--gray_1000);
+
+
+  /* Primary pallete */
+  --primary_500: var(--blue_500); /* USED DIRECTLY !!! */
+  --primary_400: var(--blue_400); /* not used */
+  --primary_600: var(--blue_600); /* USED DIRECTLY !!! */
+  --primary_0: var(--blue_0); /* not used */
+  --primary_800: var(--blue_800); /* USED DIRECTLY !!! */
+  --primary_900: var(--blue_900); /* not used */
+  --primary_50: var(--blue_50); /* USED DIRECTLY !!! */
+  --primary_100: var(--blue_100); /* USED DIRECTLY !!! */
+  --primary_200: var(--blue_200); /* USED DIRECTLY !!! */
+  --primary_300: var(--blue_300); /* not used */
+  --primary_700: var(--blue_700); /* USED DIRECTLY !!! */
+  --primary_1000: var(--blue_1000); /* not used */
+
+  /* Secondary color */
+  --secondary_500: var(--gray_500); /* USED DIRECTLY !!! */
+  --secondary_400: var(--gray_400); /* not used */
+  --secondary_600: var(--gray_600); /* USED DIRECTLY !!! */
+  --secondary_0: var(--gray_0); /* not used */
+  --secondary_800: var(--gray_800); /* USED DIRECTLY !!! */
+  --secondary_900: var(--gray_900); /* USED DIRECTLY !!! */
+  --secondary_50: var(--gray_50); /* USED DIRECTLY !!! */
+  --secondary_100: var(--gray_100); /* USED DIRECTLY !!! */
+  --secondary_200: var(--gray_200); /* USED DIRECTLY !!! */
+  --secondary_300: var(--gray_300); /* USED DIRECTLY !!! */
+  --secondary_700: var(--gray_700); /* USED DIRECTLY !!! */
+  --secondary_1000: var(--gray_1000); /* not used */
+
+  /* Success color */
+  --success_500: var(--green_500); /* USED DIRECTLY !!! */
+  --success_400: var(--green_400); /* not used */
+  --success_600: var(--green_600); /* USED DIRECTLY !!! */
+  --success_0: var(--green_0); /* not used */
+  --success_800: var(--green_800); /* USED DIRECTLY !!! */
+  --success_900: var(--green_900); /* USED DIRECTLY !!! */
+  --success_50: var(--green_50); /* USED DIRECTLY !!! */
+  --success_100: var(--green_100); /* USED DIRECTLY !!! */
+  --success_200: var(--green_200); /* USED DIRECTLY !!! */
+  --success_300: var(--green_300); /* USED DIRECTLY !!! */
+  --success_700: var(--green_700); /* USED DIRECTLY !!! */
+  --success_1000: var(--green_1000); /* not used */
+
+  /* Danger color */
+  --danger_500: var(--red_500); /* USED DIRECTLY !!! */
+  --danger_400: var(--red_400); /* USED DIRECTLY !!! */
+  --danger_600: var(--red_600); /* USED DIRECTLY !!! */
+  --danger_0: var(--red_0); /* not used */
+  --danger_800: var(--red_800); /* USED DIRECTLY !!! */
+  --danger_900: var(--red_900); /* not used */
+  --danger_50: var(--red_50); /* USED DIRECTLY !!! */
+  --danger_100: var(--red_100); /* USED DIRECTLY !!! */
+  --danger_200: var(--red_200); /* USED DIRECTLY !!! */
+  --danger_300: var(--red_300); /* not used */
+  --danger_700: var(--red_700); /* USED DIRECTLY !!! */
+  --danger_1000: var(--red_1000); /* not used */
+
+  /* Warning color */
+  --warning_500: var(--yellow_500); /* USED DIRECTLY !!! */
+  --warning_400: var(--yellow_400); /* not used */
+  --warning_600: var(--yellow_600); /* USED DIRECTLY !!! */
+  --warning_0: var(--yellow_0); /* not used */
+  --warning_800: var(--yellow_800); /* USED DIRECTLY !!! */
+  --warning_900: var(--yellow_900); /* not used */
+  --warning_50: var(--yellow_50); /* USED DIRECTLY !!! */
+  --warning_100: var(--yellow_100); /* USED DIRECTLY !!! */
+  --warning_200: var(--yellow_200); /* USED DIRECTLY !!! */
+  --warning_300: var(--yellow_300); /* not used */
+  --warning_700: var(--yellow_700); /* USED DIRECTLY !!! */
+  --warning_1000: var(--yellow_1000); /* not used */
+
+  /* Info colors */
+  --info_500: 28, 200, 227; /* not used directly */
+  --info_400: 63, 208, 231; /* not used directly */
+  --info_600: 23, 162, 184; /* not used directly */
+  --info_0: 255, 255, 255; /* not used directly */
+  --info_800: 12, 84, 96; /* not used directly */
+  --info_900: 6, 44, 51; /* not used directly */
+  --info_50: 227, 248, 252; /* not used directly */
+  --info_100: 209, 236, 241; /* not used directly */
+  --info_200: 181, 225, 232; /* not used directly */
+  --info_300: 135, 226, 240; /* not used directly */
+  --info_700: 17, 122, 139; /* not used directly */
+  --info_1000: 1, 7, 8; /* not used directly */
+
+  /* Light Colors */
+
+  /* Dark Colors */
+
+  /* Cyan Colors ???? */
+  --cyan_500: var(--info_500); /* not used */
+  --cyan_400: var(--info_400); /* not used */
+  --cyan_600: var(--info_600); /* USED DIRECTLY !!! */
+  --cyan_0: var(--info_0); /* not used */
+  --cyan_800: var(--info_800); /* USED DIRECTLY !!! */
+  --cyan_900: var(--info_900); /* USED DIRECTLY !!! */
+  --cyan_50: var(--info_50); /* not used */
+  --cyan_100: var(--info_100); /* USED DIRECTLY !!! */
+  --cyan_200: var(--info_200); /* USED DIRECTLY !!! */
+  --cyan_300: var(--info_300); /* not used */
+  --cyan_700: var(--info_700); /* USED DIRECTLY !!! */
+  --cyan_1000: var(--info_1000); /* not used */
+
+
 }
  /*!
  * Bootstrap v4.1.3 (https://getbootstrap.com/)
@@ -224,32 +245,32 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 :root {
-  --blue: rgba(var(--primary_500), 1);
-  --indigo: rgba(var(--indigo_500), 1);
-  --purple: rgba(var(--purple_500), 1);
-  --pink: rgba(var(--pink_400), 1);
-  --red: rgba(var(--danger_500), 1);
-  --orange: rgba(var(--orange_500), 1);
-  --yellow: rgba(var(--warning_500), 1);
-  --green: rgba(var(--success_600), 1);
-  --teal: rgba(var(--teal_500), 1);
-  --cyan: rgba(var(--cyan_600), 1);
-  --white: rgba(var(--gray_0), 1);
-  --gray: rgba(var(--secondary_500), 1);
-  --gray-dark: rgba(var(--secondary_800), 1);
-  --primary: rgba(var(--primary_500), 1);
-  --secondary: rgba(var(--secondary_500), 1);
-  --success: rgba(var(--success_600), 1);
-  --info: rgba(var(--cyan_600), 1);
-  --warning: rgba(var(--warning_500), 1);
-  --danger: rgba(var(--danger_500), 1);
-  --light: rgba(var(--gray_0), 1);
-  --dark: rgba(var(--secondary_800), 1);
-  --breakpoint-xs: 0;
-  --breakpoint-sm: 576px;
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 992px;
-  --breakpoint-xl: 1200px;
+  --blue: rgba(var(--primary_500), 1); /* not used */
+  --indigo: rgba(var(--indigo_500), 1); /* not used */
+  --purple: rgba(var(--purple_500), 1); /* not used */
+  --pink: rgba(var(--pink_400), 1); /* not used */
+  --red: rgba(var(--danger_500), 1); /* not used */
+  --orange: rgba(var(--orange_500), 1); /* not used */
+  --yellow: rgba(var(--warning_500), 1); /* not used */
+  --green: rgba(var(--success_600), 1); /* not used */
+  --teal: rgba(var(--teal_500), 1); /* not used */
+  --cyan: rgba(var(--cyan_600), 1); /* not used */
+  --white: rgba(var(--gray_0), 1); /* not used */
+  --gray: rgba(var(--secondary_500), 1); /* not used */
+  --gray-dark: rgba(var(--secondary_800), 1); /* not used */
+  --primary: rgba(var(--primary_500), 1); /* not used */
+  --secondary: rgba(var(--secondary_500), 1); /* not used */
+  --success: rgba(var(--success_600), 1); /* not used */
+  --info: rgba(var(--cyan_600), 1); /* not used */
+  --warning: rgba(var(--warning_500), 1); /* not used */
+  --danger: rgba(var(--danger_500), 1); /* not used */
+  --light: rgba(var(--gray_0), 1); /* not used */
+  --dark: rgba(var(--secondary_800), 1); /* not used */
+  --breakpoint-xs: 0; /* not used */
+  --breakpoint-sm: 576px; /* not used */
+  --breakpoint-md: 768px; /* not used */
+  --breakpoint-lg: 992px; /* not used */
+  --breakpoint-xl: 1200px; /* not used */
   --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
