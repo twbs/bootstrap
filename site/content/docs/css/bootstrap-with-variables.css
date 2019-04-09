@@ -5299,7 +5299,7 @@ input[type="button"].btn-block {
   .list-group-item-action:hover, .list-group-item-action:focus {
     color: rgba(var(--secondary_700), 1);
     text-decoration: none;
-    background-color: rgba(var(--gray_0), 1);
+    background-color: rgba(var(--gray_50), 1);
   }
 
   .list-group-item-action:active {
@@ -5376,7 +5376,7 @@ input[type="button"].btn-block {
 
 .list-group-item-secondary {
   color: rgba(var(--secondary_800), 1);
-  background-color: rgba(var(--secondary_200), 1);
+  background-color: rgba(var(--secondary_100), 1);
 }
 
   .list-group-item-secondary.list-group-item-action:hover, .list-group-item-secondary.list-group-item-action:focus {
@@ -5392,7 +5392,7 @@ input[type="button"].btn-block {
 
 .list-group-item-success {
   color: rgba(var(--success_800), 1);
-  background-color: rgba(var(--success_200), 1);
+  background-color: rgba(var(--success_100), 1);
 }
 
   .list-group-item-success.list-group-item-action:hover, .list-group-item-success.list-group-item-action:focus {
@@ -5408,7 +5408,7 @@ input[type="button"].btn-block {
 
 .list-group-item-info {
   color: rgba(var(--info_800), 1);
-  background-color: rgba(var(--info_200), 1);
+  background-color: rgba(var(--info_100), 1);
 }
 
   .list-group-item-info.list-group-item-action:hover, .list-group-item-info.list-group-item-action:focus {
