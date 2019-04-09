@@ -127,7 +127,21 @@ class Toast {
     }
 
     EventHandler.trigger(this._element, Event.HIDE)
-    this._close()
+
+    const complete = () => {
+      this._element.classList.add(ClassName.HIDE)
+      EventHandler.trigger(this._element, Event.HIDDEN)
+    }
+
+    this._element.classList.remove(ClassName.SHOW)
+    if (this._config.animation) {
+      const transitionDuration = getTransitionDurationFromElement(this._element)
+
+      EventHandler.one(this._element, TRANSITION_END, complete)
+      emulateTransitionEnd(this._element, transitionDuration)
+    } else {
+      complete()
+    }
   }
 
   dispose() {
@@ -170,23 +184,6 @@ class Toast {
       Selector.DATA_DISMISS,
       () => this.hide()
     )
-  }
-
-  _close() {
-    const complete = () => {
-      this._element.classList.add(ClassName.HIDE)
-      EventHandler.trigger(this._element, Event.HIDDEN)
-    }
-
-    this._element.classList.remove(ClassName.SHOW)
-    if (this._config.animation) {
-      const transitionDuration = getTransitionDurationFromElement(this._element)
-
-      EventHandler.one(this._element, TRANSITION_END, complete)
-      emulateTransitionEnd(this._element, transitionDuration)
-    } else {
-      complete()
-    }
   }
 
   // Static
