@@ -221,22 +221,6 @@
   /* Light Colors */
 
   /* Dark Colors */
-
-  /* Cyan Colors ???? */
-  --cyan_500: var(--info_500); /* not used */
-  --cyan_400: var(--info_400); /* not used */
-  --cyan_600: var(--info_600); /* USED DIRECTLY !!! */
-  --cyan_0: var(--info_0); /* not used */
-  --cyan_800: var(--info_800); /* USED DIRECTLY !!! */
-  --cyan_900: var(--info_900); /* USED DIRECTLY !!! */
-  --cyan_50: var(--info_50); /* not used */
-  --cyan_100: var(--info_100); /* USED DIRECTLY !!! */
-  --cyan_200: var(--info_200); /* USED DIRECTLY !!! */
-  --cyan_300: var(--info_300); /* not used */
-  --cyan_700: var(--info_700); /* USED DIRECTLY !!! */
-  --cyan_1000: var(--info_1000); /* not used */
-
-
 }
  /*!
  * Bootstrap v4.1.3 (https://getbootstrap.com/)
@@ -254,14 +238,14 @@
   --yellow: rgba(var(--warning_500), 1); /* not used */
   --green: rgba(var(--success_600), 1); /* not used */
   --teal: rgba(var(--teal_500), 1); /* not used */
-  --cyan: rgba(var(--cyan_600), 1); /* not used */
+  --cyan: rgba(var(--info_600), 1); /* not used */
   --white: rgba(var(--gray_0), 1); /* not used */
   --gray: rgba(var(--secondary_500), 1); /* not used */
   --gray-dark: rgba(var(--secondary_800), 1); /* not used */
   --primary: rgba(var(--primary_500), 1); /* not used */
   --secondary: rgba(var(--secondary_500), 1); /* not used */
   --success: rgba(var(--success_600), 1); /* not used */
-  --info: rgba(var(--cyan_600), 1); /* not used */
+  --info: rgba(var(--info_600), 1); /* not used */
   --warning: rgba(var(--warning_500), 1); /* not used */
   --danger: rgba(var(--danger_500), 1); /* not used */
   --light: rgba(var(--gray_0), 1); /* not used */
@@ -1870,16 +1854,16 @@ pre {
 .table-info,
 .table-info > th,
 .table-info > td {
-  background-color: rgba(var(--cyan_200), 1);
+  background-color: rgba(var(--info_200), 1);
 }
 
 .table-hover .table-info:hover {
-  background-color: rgba(var(--cyan_200), 1);
+  background-color: rgba(var(--info_200), 1);
 }
 
   .table-hover .table-info:hover > td,
   .table-hover .table-info:hover > th {
-    background-color: rgba(var(--cyan_200), 1);
+    background-color: rgba(var(--info_200), 1);
   }
 
 .table-warning,
@@ -2677,36 +2661,36 @@ fieldset:disabled a.btn {
 
 .btn-info {
   color: rgba(var(--gray_0), 1);
-  background-color: rgba(var(--cyan_600), 1);
-  border-color: rgba(var(--cyan_600), 1);
+  background-color: rgba(var(--info_600), 1);
+  border-color: rgba(var(--info_600), 1);
 }
 
   .btn-info:hover {
     color: rgba(var(--gray_0), 1);
-    background-color: rgba(var(--cyan_700), 1);
-    border-color: rgba(var(--cyan_700), 1);
+    background-color: rgba(var(--info_700), 1);
+    border-color: rgba(var(--info_700), 1);
   }
 
   .btn-info:focus, .btn-info.focus {
-    box-shadow: 0 0 0 0.2rem rgba(var(--cyan_600), 0.5);
+    box-shadow: 0 0 0 0.2rem rgba(var(--info_600), 0.5);
   }
 
   .btn-info.disabled, .btn-info:disabled {
     color: rgba(var(--gray_0), 1);
-    background-color: rgba(var(--cyan_600), 1);
-    border-color: rgba(var(--cyan_600), 1);
+    background-color: rgba(var(--info_600), 1);
+    border-color: rgba(var(--info_600), 1);
   }
 
   .btn-info:not(:disabled):not(.disabled):active, .btn-info:not(:disabled):not(.disabled).active,
   .show > .btn-info.dropdown-toggle {
     color: rgba(var(--gray_0), 1);
-    background-color: rgba(var(--cyan_700), 1);
-    border-color: rgba(var(--cyan_700), 1);
+    background-color: rgba(var(--info_700), 1);
+    border-color: rgba(var(--info_700), 1);
   }
 
     .btn-info:not(:disabled):not(.disabled):active:focus, .btn-info:not(:disabled):not(.disabled).active:focus,
     .show > .btn-info.dropdown-toggle:focus {
-      box-shadow: 0 0 0 0.2rem rgba(var(--cyan_600), 0.5);
+      box-shadow: 0 0 0 0.2rem rgba(var(--info_600), 0.5);
     }
 
 .btn-warning {
@@ -2948,37 +2932,37 @@ fieldset:disabled a.btn {
     }
 
 .btn-outline-info {
-  color: rgba(var(--cyan_600), 1);
+  color: rgba(var(--info_600), 1);
   background-color: transparent;
   background-image: none;
-  border-color: rgba(var(--cyan_600), 1);
+  border-color: rgba(var(--info_600), 1);
 }
 
   .btn-outline-info:hover {
     color: rgba(var(--gray_0), 1);
-    background-color: rgba(var(--cyan_600), 1);
-    border-color: rgba(var(--cyan_600), 1);
+    background-color: rgba(var(--info_600), 1);
+    border-color: rgba(var(--info_600), 1);
   }
 
   .btn-outline-info:focus, .btn-outline-info.focus {
-    box-shadow: 0 0 0 0.2rem rgba(var(--cyan_600), 0.5);
+    box-shadow: 0 0 0 0.2rem rgba(var(--info_600), 0.5);
   }
 
   .btn-outline-info.disabled, .btn-outline-info:disabled {
-    color: rgba(var(--cyan_600), 1);
+    color: rgba(var(--info_600), 1);
     background-color: transparent;
   }
 
   .btn-outline-info:not(:disabled):not(.disabled):active, .btn-outline-info:not(:disabled):not(.disabled).active,
   .show > .btn-outline-info.dropdown-toggle {
     color: rgba(var(--gray_0), 1);
-    background-color: rgba(var(--cyan_600), 1);
-    border-color: rgba(var(--cyan_600), 1);
+    background-color: rgba(var(--info_600), 1);
+    border-color: rgba(var(--info_600), 1);
   }
 
     .btn-outline-info:not(:disabled):not(.disabled):active:focus, .btn-outline-info:not(:disabled):not(.disabled).active:focus,
     .show > .btn-outline-info.dropdown-toggle:focus {
-      box-shadow: 0 0 0 0.2rem rgba(var(--cyan_600), 0.5);
+      box-shadow: 0 0 0 0.2rem rgba(var(--info_600), 0.5);
     }
 
 .btn-outline-warning {
@@ -5022,13 +5006,13 @@ input[type="button"].btn-block {
 
 .badge-info {
   color: rgba(var(--gray_0), 1);
-  background-color: rgba(var(--cyan_600), 1);
+  background-color: rgba(var(--info_600), 1);
 }
 
   .badge-info[href]:hover, .badge-info[href]:focus {
     color: rgba(var(--gray_0), 1);
     text-decoration: none;
-    background-color: rgba(var(--cyan_700), 1);
+    background-color: rgba(var(--info_700), 1);
   }
 
 .badge-warning {
@@ -5165,17 +5149,17 @@ input[type="button"].btn-block {
   }
 
 .alert-info {
-  color: rgba(var(--cyan_800), 1);
-  background-color: rgba(var(--cyan_100), 1);
-  border-color: rgba(var(--cyan_200), 1);
+  color: rgba(var(--info_800), 1);
+  background-color: rgba(var(--info_100), 1);
+  border-color: rgba(var(--info_200), 1);
 }
 
   .alert-info hr {
-    border-top-color: rgba(var(--cyan_200), 1);
+    border-top-color: rgba(var(--info_200), 1);
   }
 
   .alert-info .alert-link {
-    color: rgba(var(--cyan_900), 1);
+    color: rgba(var(--info_900), 1);
   }
 
 .alert-warning {
@@ -5423,19 +5407,19 @@ input[type="button"].btn-block {
   }
 
 .list-group-item-info {
-  color: rgba(var(--cyan_800), 1);
-  background-color: rgba(var(--cyan_200), 1);
+  color: rgba(var(--info_800), 1);
+  background-color: rgba(var(--info_200), 1);
 }
 
   .list-group-item-info.list-group-item-action:hover, .list-group-item-info.list-group-item-action:focus {
-    color: rgba(var(--cyan_800), 1);
-    background-color: rgba(var(--cyan_200), 1);
+    color: rgba(var(--info_800), 1);
+    background-color: rgba(var(--info_200), 1);
   }
 
   .list-group-item-info.list-group-item-action.active {
     color: rgba(var(--gray_0), 1);
-    background-color: rgba(var(--cyan_800), 1);
-    border-color: rgba(var(--cyan_800), 1);
+    background-color: rgba(var(--info_800), 1);
+    border-color: rgba(var(--info_800), 1);
   }
 
 .list-group-item-warning {
@@ -6279,13 +6263,13 @@ button.bg-success:focus {
 }
 
 .bg-info {
-  background-color: rgba(var(--cyan_600), 1) !important;
+  background-color: rgba(var(--info_600), 1) !important;
 }
 
 a.bg-info:hover, a.bg-info:focus,
 button.bg-info:hover,
 button.bg-info:focus {
-  background-color: rgba(var(--cyan_700), 1) !important;
+  background-color: rgba(var(--info_700), 1) !important;
 }
 
 .bg-warning {
@@ -6389,7 +6373,7 @@ button.bg-dark:focus {
 }
 
 .border-info {
-  border-color: rgba(var(--cyan_600), 1) !important;
+  border-color: rgba(var(--info_600), 1) !important;
 }
 
 .border-warning {
@@ -9316,11 +9300,11 @@ a.text-success:hover, a.text-success:focus {
 }
 
 .text-info {
-  color: rgba(var(--cyan_600), 1) !important;
+  color: rgba(var(--info_600), 1) !important;
 }
 
 a.text-info:hover, a.text-info:focus {
-  color: rgba(var(--cyan_700), 1) !important;
+  color: rgba(var(--info_700), 1) !important;
 }
 
 .text-warning {
