@@ -68,7 +68,7 @@ The best part is you can do this with any button variant, too:
       <li><a class="dropdown-item" href="#">Action</a></li>
       <li><a class="dropdown-item" href="#">Another action</a></li>
       <li><a class="dropdown-item" href="#">Something else here</a></li>
-      <li class="dropdown-divider"></li>
+      <li><hr class="dropdown-divider"></li>
       <li><a class="dropdown-item" href="#">Separated link</a></li>
     </ul>
   </div><!-- /btn-group -->
@@ -78,7 +78,7 @@ The best part is you can do this with any button variant, too:
       <li><a class="dropdown-item" href="#">Action</a></li>
       <li><a class="dropdown-item" href="#">Another action</a></li>
       <li><a class="dropdown-item" href="#">Something else here</a></li>
-      <li class="dropdown-divider"></li>
+      <li><hr class="dropdown-divider"></li>
       <li><a class="dropdown-item" href="#">Separated link</a></li>
     </ul>
   </div><!-- /btn-group -->
@@ -88,7 +88,7 @@ The best part is you can do this with any button variant, too:
       <li><a class="dropdown-item" href="#">Action</a></li>
       <li><a class="dropdown-item" href="#">Another action</a></li>
       <li><a class="dropdown-item" href="#">Something else here</a></li>
-      <li class="dropdown-divider"></li>
+      <li><hr class="dropdown-divider"></li>
       <li><a class="dropdown-item" href="#">Separated link</a></li>
     </ul>
   </div><!-- /btn-group -->
@@ -98,7 +98,7 @@ The best part is you can do this with any button variant, too:
       <li><a class="dropdown-item" href="#">Action</a></li>
       <li><a class="dropdown-item" href="#">Another action</a></li>
       <li><a class="dropdown-item" href="#">Something else here</a></li>
-      <li class="dropdown-divider"></li>
+      <li><hr class="dropdown-divider"></li>
       <li><a class="dropdown-item" href="#">Separated link</a></li>
     </ul>
   </div><!-- /btn-group -->
@@ -108,7 +108,7 @@ The best part is you can do this with any button variant, too:
       <li><a class="dropdown-item" href="#">Action</a></li>
       <li><a class="dropdown-item" href="#">Another action</a></li>
       <li><a class="dropdown-item" href="#">Something else here</a></li>
-      <li class="dropdown-divider"></li>
+      <li><hr class="dropdown-divider"></li>
       <li><a class="dropdown-item" href="#">Separated link</a></li>
     </ul>
   </div><!-- /btn-group -->
@@ -118,7 +118,7 @@ The best part is you can do this with any button variant, too:
       <li><a class="dropdown-item" href="#">Action</a></li>
       <li><a class="dropdown-item" href="#">Another action</a></li>
       <li><a class="dropdown-item" href="#">Something else here</a></li>
-      <li class="dropdown-divider"></li>
+      <li><hr class="dropdown-divider"></li>
       <li><a class="dropdown-item" href="#">Separated link</a></li>
     </ul>
   </div><!-- /btn-group -->
@@ -134,7 +134,7 @@ The best part is you can do this with any button variant, too:
     <li><a class="dropdown-item" href="#">Action</a></li>
     <li><a class="dropdown-item" href="#">Another action</a></li>
     <li><a class="dropdown-item" href="#">Something else here</a></li>
-    <li class="dropdown-divider"></li>
+    <li><hr class="dropdown-divider"></li>
     <li><a class="dropdown-item" href="#">Separated link</a></li>
   </ul>
 </div>
@@ -156,7 +156,7 @@ We use this extra class to reduce the horizontal `padding` on either side of the
       <li><a class="dropdown-item" href="#">Action</a></li>
       <li><a class="dropdown-item" href="#">Another action</a></li>
       <li><a class="dropdown-item" href="#">Something else here</a></li>
-      <li class="dropdown-divider"></li>
+      <li><hr class="dropdown-divider"></li>
       <li><a class="dropdown-item" href="#">Separated link</a></li>
     </ul>
   </div><!-- /btn-group -->
@@ -169,7 +169,7 @@ We use this extra class to reduce the horizontal `padding` on either side of the
       <li><a class="dropdown-item" href="#">Action</a></li>
       <li><a class="dropdown-item" href="#">Another action</a></li>
       <li><a class="dropdown-item" href="#">Something else here</a></li>
-      <li class="dropdown-divider"></li>
+      <li><hr class="dropdown-divider"></li>
       <li><a class="dropdown-item" href="#">Separated link</a></li>
     </ul>
   </div><!-- /btn-group -->
@@ -182,7 +182,7 @@ We use this extra class to reduce the horizontal `padding` on either side of the
       <li><a class="dropdown-item" href="#">Action</a></li>
       <li><a class="dropdown-item" href="#">Another action</a></li>
       <li><a class="dropdown-item" href="#">Something else here</a></li>
-      <li class="dropdown-divider"></li>
+      <li><hr class="dropdown-divider"></li>
       <li><a class="dropdown-item" href="#">Separated link</a></li>
     </ul>
   </div><!-- /btn-group -->
@@ -195,7 +195,7 @@ We use this extra class to reduce the horizontal `padding` on either side of the
       <li><a class="dropdown-item" href="#">Action</a></li>
       <li><a class="dropdown-item" href="#">Another action</a></li>
       <li><a class="dropdown-item" href="#">Something else here</a></li>
-      <li class="dropdown-divider"></li>
+      <li><hr class="dropdown-divider"></li>
       <li><a class="dropdown-item" href="#">Separated link</a></li>
     </ul>
   </div><!-- /btn-group -->
@@ -208,7 +208,7 @@ We use this extra class to reduce the horizontal `padding` on either side of the
       <li><a class="dropdown-item" href="#">Action</a></li>
       <li><a class="dropdown-item" href="#">Another action</a></li>
       <li><a class="dropdown-item" href="#">Something else here</a></li>
-      <li class="dropdown-divider"></li>
+      <li><hr class="dropdown-divider"></li>
       <li><a class="dropdown-item" href="#">Separated link</a></li>
     </ul>
   </div><!-- /btn-group -->
@@ -221,7 +221,7 @@ We use this extra class to reduce the horizontal `padding` on either side of the
       <li><a class="dropdown-item" href="#">Action</a></li>
       <li><a class="dropdown-item" href="#">Another action</a></li>
       <li><a class="dropdown-item" href="#">Something else here</a></li>
-      <li class="dropdown-divider"></li>
+      <li><hr class="dropdown-divider"></li>
       <li><a class="dropdown-item" href="#">Separated link</a></li>
     </ul>
   </div><!-- /btn-group -->
@@ -238,7 +238,7 @@ We use this extra class to reduce the horizontal `padding` on either side of the
     <li><a class="dropdown-item" href="#">Action</a></li>
     <li><a class="dropdown-item" href="#">Another action</a></li>
     <li><a class="dropdown-item" href="#">Something else here</a></li>
-    <li class="dropdown-divider"></li>
+    <li><hr class="dropdown-divider"></li>
     <li><a class="dropdown-item" href="#">Separated link</a></li>
   </ul>
 </div>
@@ -258,7 +258,7 @@ Button dropdowns work with buttons of all sizes, including default and split dro
         <li><a class="dropdown-item" href="#">Action</a></li>
         <li><a class="dropdown-item" href="#">Another action</a></li>
         <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li class="dropdown-divider"></li>
+        <li><hr class="dropdown-divider"></li>
         <li><a class="dropdown-item" href="#">Separated link</a></li>
       </ul>
     </div><!-- /btn-group -->
@@ -271,7 +271,7 @@ Button dropdowns work with buttons of all sizes, including default and split dro
         <li><a class="dropdown-item" href="#">Action</a></li>
         <li><a class="dropdown-item" href="#">Another action</a></li>
         <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li class="dropdown-divider"></li>
+        <li><hr class="dropdown-divider"></li>
         <li><a class="dropdown-item" href="#">Separated link</a></li>
       </ul>
     </div><!-- /btn-group -->
@@ -285,7 +285,7 @@ Button dropdowns work with buttons of all sizes, including default and split dro
         <li><a class="dropdown-item" href="#">Action</a></li>
         <li><a class="dropdown-item" href="#">Another action</a></li>
         <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li class="dropdown-divider"></li>
+        <li><hr class="dropdown-divider"></li>
         <li><a class="dropdown-item" href="#">Separated link</a></li>
       </ul>
     </div><!-- /btn-group -->
@@ -298,7 +298,7 @@ Button dropdowns work with buttons of all sizes, including default and split dro
         <li><a class="dropdown-item" href="#">Action</a></li>
         <li><a class="dropdown-item" href="#">Another action</a></li>
         <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li class="dropdown-divider"></li>
+        <li><hr class="dropdown-divider"></li>
         <li><a class="dropdown-item" href="#">Separated link</a></li>
       </ul>
     </div><!-- /btn-group -->
@@ -364,7 +364,7 @@ Trigger dropdown menus above elements by adding `.dropup` to the parent element.
       <li><a class="dropdown-item" href="#">Action</a></li>
       <li><a class="dropdown-item" href="#">Another action</a></li>
       <li><a class="dropdown-item" href="#">Something else here</a></li>
-      <li class="dropdown-divider"></li>
+      <li><hr class="dropdown-divider"></li>
       <li><a class="dropdown-item" href="#">Separated link</a></li>
     </ul>
   </div>
@@ -379,7 +379,7 @@ Trigger dropdown menus above elements by adding `.dropup` to the parent element.
       <li><a class="dropdown-item" href="#">Action</a></li>
       <li><a class="dropdown-item" href="#">Another action</a></li>
       <li><a class="dropdown-item" href="#">Something else here</a></li>
-      <li class="dropdown-divider"></li>
+      <li><hr class="dropdown-divider"></li>
       <li><a class="dropdown-item" href="#">Separated link</a></li>
     </ul>
   </div>
@@ -423,7 +423,7 @@ Trigger dropdown menus at the right of the elements by adding `.dropright` to th
       <li><a class="dropdown-item" href="#">Action</a></li>
       <li><a class="dropdown-item" href="#">Another action</a></li>
       <li><a class="dropdown-item" href="#">Something else here</a></li>
-      <li class="dropdown-divider"></li>
+      <li><hr class="dropdown-divider"></li>
       <li><a class="dropdown-item" href="#">Separated link</a></li>
     </ul>
   </div>
@@ -438,7 +438,7 @@ Trigger dropdown menus at the right of the elements by adding `.dropright` to th
       <li><a class="dropdown-item" href="#">Action</a></li>
       <li><a class="dropdown-item" href="#">Another action</a></li>
       <li><a class="dropdown-item" href="#">Something else here</a></li>
-      <li class="dropdown-divider"></li>
+      <li><hr class="dropdown-divider"></li>
       <li><a class="dropdown-item" href="#">Separated link</a></li>
     </ul>
   </div>
@@ -482,7 +482,7 @@ Trigger dropdown menus at the left of the elements by adding `.dropleft` to the 
       <li><a class="dropdown-item" href="#">Action</a></li>
       <li><a class="dropdown-item" href="#">Another action</a></li>
       <li><a class="dropdown-item" href="#">Something else here</a></li>
-      <li class="dropdown-divider"></li>
+      <li><hr class="dropdown-divider"></li>
       <li><a class="dropdown-item" href="#">Separated link</a></li>
     </ul>
   </div>
@@ -495,7 +495,7 @@ Trigger dropdown menus at the left of the elements by adding `.dropleft` to the 
         <li><a class="dropdown-item" href="#">Action</a></li>
         <li><a class="dropdown-item" href="#">Another action</a></li>
         <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li class="dropdown-divider"></li>
+        <li><hr class="dropdown-divider"></li>
         <li><a class="dropdown-item" href="#">Separated link</a></li>
       </ul>
     </div>
@@ -664,7 +664,7 @@ Separate groups of related menu items with a divider.
   <li><a class="dropdown-item" href="#">Action</a></li>
   <li><a class="dropdown-item" href="#">Another action</a></li>
   <li><a class="dropdown-item" href="#">Something else here</a></li>
-  <li class="dropdown-divider"></li>
+  <li><hr class="dropdown-divider"></li>
   <li><a class="dropdown-item" href="#">Separated link</a></li>
 </ul>
 {{< /example >}}
@@ -762,7 +762,7 @@ Use `data-offset` or `data-reference` to change the location of the dropdown.
       <li><a class="dropdown-item" href="#">Action</a></li>
       <li><a class="dropdown-item" href="#">Another action</a></li>
       <li><a class="dropdown-item" href="#">Something else here</a></li>
-      <li class="dropdown-divider"></li>
+      <li><hr class="dropdown-divider"></li>
       <li><a class="dropdown-item" href="#">Separated link</a></li>
     </ul>
   </div>
