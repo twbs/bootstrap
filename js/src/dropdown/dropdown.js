@@ -12,12 +12,12 @@ import {
   makeArray,
   noop,
   typeCheckConfig
-} from './util/index'
-import Data from './dom/data'
-import EventHandler from './dom/event-handler'
-import Manipulator from './dom/manipulator'
+} from '../util/index'
+import Data from '../dom/data'
+import EventHandler from '../dom/event-handler'
+import Manipulator from '../dom/manipulator'
 import Popper from 'popper.js'
-import SelectorEngine from './dom/selector-engine'
+import SelectorEngine from '../dom/selector-engine'
 
 /**
  * ------------------------------------------------------------------------
@@ -289,15 +289,9 @@ class Dropdown {
   }
 
   _getMenuElement() {
-    if (!this._menu) {
-      const parent = Dropdown._getParentFromElement(this._element)
+    const parent = Dropdown._getParentFromElement(this._element)
 
-      if (parent) {
-        this._menu = SelectorEngine.findOne(Selector.MENU, parent)
-      }
-    }
-
-    return this._menu
+    return SelectorEngine.findOne(Selector.MENU, parent)
   }
 
   _getPlacement() {
@@ -545,7 +539,7 @@ EventHandler
  * ------------------------------------------------------------------------
  * add .dropdown to jQuery only if jQuery is present
  */
-
+/* istanbul ignore if */
 if (typeof $ !== 'undefined') {
   const JQUERY_NO_CONFLICT = $.fn[NAME]
   $.fn[NAME] = Dropdown._jQueryInterface
