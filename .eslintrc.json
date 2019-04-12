@@ -4,7 +4,7 @@
   "extends": [
     "plugin:import/errors",
     "plugin:import/warnings",
-    "plugin:unicorn/recommended",
+    "plugin:unicorn/recommended",fdfdsafd
     "xo/esnext",
     "xo/browser"
   ],
