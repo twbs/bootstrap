@@ -23,11 +23,11 @@
   makeArray(document.querySelectorAll('.tooltip-demo'))
     .forEach(function (tooltip) {
       new bootstrap.Tooltip(tooltip, {
-        selector: '[data-toggle="tooltip"]'
+        selector: '[data-toggle = "tooltip"]'
       })
     })
 
-  makeArray(document.querySelectorAll('[data-toggle="popover"]'))
+  makeArray(document.querySelectorAll('[data-toggle = "popover"]'))
     .forEach(function (popover) {
       new bootstrap.Popover(popover)
     })
@@ -59,7 +59,7 @@
     })
 
   // Disable empty links in docs examples
-  makeArray(document.querySelectorAll('.bd-content [href="#"]'))
+  makeArray(document.querySelectorAll('.bd-content [href = "#"]'))
     .forEach(function (link) {
       link.addEventListener('click', function (e) {
         e.preventDefault()
