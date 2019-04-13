@@ -54,7 +54,10 @@
     "strict": "error",
     "unicorn/filename-case": "off",
     "unicorn/no-unused-properties": "error",
+    "unicorn/prefer-includes": "off",
     "unicorn/prefer-node-append": "off",
-    "unicorn/prefer-query-selector": "off"
+    "unicorn/prefer-node-remove": "off",
+    "unicorn/prefer-query-selector": "off",
+    "unicorn/prevent-abbreviations": "off"
   }
 }
