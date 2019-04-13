@@ -374,7 +374,6 @@ $table-dark-accent-bg:        rgba($white, .05) !default;
 $table-dark-hover-color:      $table-dark-color !default;
 $table-dark-hover-bg:         rgba($white, .075) !default;
 $table-dark-border-color:     lighten($table-dark-bg, 7.5%) !default;
-$table-dark-color:            $white !default;
 
 $table-striped-order:         odd !default;
 
@@ -907,7 +906,7 @@ $toast-color:                       null !default;
 $toast-background-color:            rgba($white, .85) !default;
 $toast-border-width:                1px !default;
 $toast-border-color:                rgba(0, 0, 0, .1) !default;
-$toast-border-radius:               .25rem !default;
+$toast-border-radius:               $border-radius !default;
 $toast-box-shadow:                  0 .25rem .75rem rgba($black, .1) !default;
 
 $toast-header-color:                $gray-600 !default;
