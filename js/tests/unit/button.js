@@ -92,7 +92,7 @@ $(function () {
 
     var groupHTML = '<div class="btn-group" data-toggle="buttons">' +
       '<label class="btn btn-primary">' +
-      '<input type="radio" id="radio" autocomplete="off">Radio' +
+      '<input type="radio" id="radio">Radio' +
       '</label>' +
       '</div>'
     var $group = $(groupHTML).appendTo('#qunit-fixture')
@@ -173,8 +173,8 @@ $(function () {
   QUnit.test('should not add aria-pressed on labels for radio/checkbox inputs in a data-toggle="buttons" group', function (assert) {
     assert.expect(2)
     var groupHTML = '<div class="btn-group" data-toggle="buttons">' +
-      '<label class="btn btn-primary"><input type="checkbox" autocomplete="off"> Checkbox</label>' +
-      '<label class="btn btn-primary"><input type="radio" name="options" autocomplete="off"> Radio</label>' +
+      '<label class="btn btn-primary"><input type="checkbox"> Checkbox</label>' +
+      '<label class="btn btn-primary"><input type="radio" name="options"> Radio</label>' +
       '</div>'
     var $group = $(groupHTML).appendTo('#qunit-fixture')
 
@@ -192,7 +192,7 @@ $(function () {
     assert.expect(2)
     var groupHTML = '<div class="btn-group disabled" data-toggle="buttons" aria-disabled="true" disabled>' +
       '<label class="btn btn-danger disabled" aria-disabled="true" disabled>' +
-      '<input type="checkbox" aria-disabled="true" autocomplete="off" disabled class="disabled"/>' +
+      '<input type="checkbox" aria-disabled="true" disabled class="disabled"/>' +
       '</label>' +
       '</div>'
     var $group = $(groupHTML).appendTo('#qunit-fixture')
