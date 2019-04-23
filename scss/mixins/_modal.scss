@@ -1,0 +1,14 @@
+// Modal
+
+// Maximize modal to cover viewport
+@mixin modalFullscreen {
+  width: 100vw;
+  max-width: none;
+  height: 100vh;
+  margin: 0;
+
+  .modal-content {
+    border: 0;
+    @include border-radius(0);
+  }
+}

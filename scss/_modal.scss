@@ -85,6 +85,7 @@
   flex-direction: column;
   width: 100%; // Ensure `.modal-content` extends the full width of the parent `.modal-dialog`
   // counteract the pointer-events: none; in the .modal-dialog
+  height: 100%;
   color: $modal-content-color;
   pointer-events: auto;
   background-color: $modal-content-bg;
@@ -142,6 +143,7 @@
   // when there should be a fixed height on `.modal-dialog`.
   flex: 1 1 auto;
   padding: $modal-inner-padding;
+  overflow-y: auto;
 }
 
 // Footer (for actions)
@@ -203,4 +205,18 @@
 
 @include media-breakpoint-up(xl) {
   .modal-xl { max-width: $modal-xl; }
+}
+
+.modal-fullscreen {
+  @include modalFullscreen();
+}
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-down($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    .modal-fullscreen#{$infix}-down {
+      @include modalFullscreen();
+    }
+  }
 }
