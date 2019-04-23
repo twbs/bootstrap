@@ -227,3 +227,22 @@
 @include media-breakpoint-up(xl) {
   .modal-xl { max-width: $modal-xl; }
 }
+
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-down($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    .modal#{$infix}-full {
+      height: 100vh;
+      margin: 0;
+      max-width: 100vw;
+
+      .modal-content {
+        height: 100%;
+        border: 0;
+        border-radius: 0;
+      }
+    }
+  }
+}

@@ -613,18 +613,35 @@ Modals have three optional sizes, available via modifier classes to be placed on
       <td><code>.modal-xl</code></td>
       <td><code>1140px</code></td>
     </tr>
+    <tr>
+      <td>Full screen</td>
+      <td><code>.modal-full</code></td>
+      <td>Responsive variations ex:<code>.modal-sm-full</code></td>
+    </tr>
   </tbody>
 </table>
 
 Our default modal without modifier class constitutes the "medium" size modal.
 
 <div class="bd-example">
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-full">Full screen modal</button>
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl">Extra large modal</button>
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm">Small modal</button>
 </div>
 
 {{< highlight html >}}
+<!-- Full screen modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-full">Full screen modal</button>
+
+<div class="modal fade bd-example-modal-full" tabindex="-1" role="dialog" aria-labelledby="myFullModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      ...
+    </div>
+  </div>
+</div>
+
 <!-- Extra large modal -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl">Extra large modal</button>
 
@@ -658,6 +675,23 @@ Our default modal without modifier class constitutes the "medium" size modal.
   </div>
 </div>
 {{< /highlight >}}
+
+<div class="modal fade bd-example-modal-full" tabindex="-1" role="dialog" aria-labelledby="myFullModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+  
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title h4" id="myFullModalLabel">Full screen modal</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl">
