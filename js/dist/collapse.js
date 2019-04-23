@@ -118,7 +118,9 @@
   };
 
   var triggerTransitionEnd = function triggerTransitionEnd(element) {
-    element.dispatchEvent(new Event(TRANSITION_END));
+    var evt = document.createEvent('HTMLEvents');
+    evt.initEvent(TRANSITION_END, true, true);
+    element.dispatchEvent(evt);
   };
 
   var isElement = function isElement(obj) {
@@ -186,7 +188,7 @@
     toggle: 'boolean',
     parent: '(string|element)'
   };
-  var Event$1 = {
+  var Event = {
     SHOW: "show" + EVENT_KEY,
     SHOWN: "shown" + EVENT_KEY,
     HIDE: "hide" + EVENT_KEY,
@@ -300,7 +302,7 @@
         }
       }
 
-      var startEvent = EventHandler.trigger(this._element, Event$1.SHOW);
+      var startEvent = EventHandler.trigger(this._element, Event.SHOW);
 
       if (startEvent.defaultPrevented) {
         return;
@@ -346,7 +348,7 @@
 
         _this.setTransitioning(false);
 
-        EventHandler.trigger(_this._element, Event$1.SHOWN);
+        EventHandler.trigger(_this._element, Event.SHOWN);
       };
 
       var capitalizedDimension = dimension[0].toUpperCase() + dimension.slice(1);
@@ -364,7 +366,7 @@
         return;
       }
 
-      var startEvent = EventHandler.trigger(this._element, Event$1.HIDE);
+      var startEvent = EventHandler.trigger(this._element, Event.HIDE);
 
       if (startEvent.defaultPrevented) {
         return;
@@ -408,7 +410,7 @@
 
         _this2._element.classList.add(ClassName.COLLAPSE);
 
-        EventHandler.trigger(_this2._element, Event$1.HIDDEN);
+        EventHandler.trigger(_this2._element, Event.HIDDEN);
       };
 
       this._element.style[dimension] = '';
@@ -543,7 +545,7 @@
    */
 
 
-  EventHandler.on(document, Event$1.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
+  EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
     // preventDefault only for <a> elements (which change the URL) not inside the collapsible element
     if (event.target.tagName === 'A') {
       event.preventDefault();

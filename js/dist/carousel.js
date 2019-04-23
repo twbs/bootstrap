@@ -118,7 +118,9 @@
   };
 
   var triggerTransitionEnd = function triggerTransitionEnd(element) {
-    element.dispatchEvent(new Event(TRANSITION_END));
+    var evt = document.createEvent('HTMLEvents');
+    evt.initEvent(TRANSITION_END, true, true);
+    element.dispatchEvent(evt);
   };
 
   var isElement = function isElement(obj) {
@@ -219,7 +221,7 @@
     LEFT: 'left',
     RIGHT: 'right'
   };
-  var Event$1 = {
+  var Event = {
     SLIDE: "slide" + EVENT_KEY,
     SLID: "slid" + EVENT_KEY,
     KEYDOWN: "keydown" + EVENT_KEY,
@@ -354,7 +356,7 @@
       }
 
       if (this._isSliding) {
-        EventHandler.one(this._element, Event$1.SLID, function () {
+        EventHandler.one(this._element, Event.SLID, function () {
           return _this.to(index);
         });
         return;
@@ -398,7 +400,8 @@
         return;
       }
 
-      var direction = absDeltax / this.touchDeltaX; // swipe left
+      var direction = absDeltax / this.touchDeltaX;
+      this.touchDeltaX = 0; // swipe left
 
       if (direction > 0) {
         this.prev();
@@ -414,16 +417,16 @@
       var _this2 = this;
 
       if (this._config.keyboard) {
-        EventHandler.on(this._element, Event$1.KEYDOWN, function (event) {
+        EventHandler.on(this._element, Event.KEYDOWN, function (event) {
           return _this2._keydown(event);
         });
       }
 
       if (this._config.pause === 'hover') {
-        EventHandler.on(this._element, Event$1.MOUSEENTER, function (event) {
+        EventHandler.on(this._element, Event.MOUSEENTER, function (event) {
           return _this2.pause(event);
         });
-        EventHandler.on(this._element, Event$1.MOUSELEAVE, function (event) {
+        EventHandler.on(this._element, Event.MOUSELEAVE, function (event) {
           return _this2.cycle(event);
         });
       }
@@ -485,28 +488,28 @@
       };
 
       makeArray(SelectorEngine.find(Selector.ITEM_IMG, this._element)).forEach(function (itemImg) {
-        EventHandler.on(itemImg, Event$1.DRAG_START, function (e) {
+        EventHandler.on(itemImg, Event.DRAG_START, function (e) {
           return e.preventDefault();
         });
       });
 
       if (this._pointerEvent) {
-        EventHandler.on(this._element, Event$1.POINTERDOWN, function (event) {
+        EventHandler.on(this._element, Event.POINTERDOWN, function (event) {
           return start(event);
         });
-        EventHandler.on(this._element, Event$1.POINTERUP, function (event) {
+        EventHandler.on(this._element, Event.POINTERUP, function (event) {
           return end(event);
         });
 
         this._element.classList.add(ClassName.POINTER_EVENT);
       } else {
-        EventHandler.on(this._element, Event$1.TOUCHSTART, function (event) {
+        EventHandler.on(this._element, Event.TOUCHSTART, function (event) {
           return start(event);
         });
-        EventHandler.on(this._element, Event$1.TOUCHMOVE, function (event) {
+        EventHandler.on(this._element, Event.TOUCHMOVE, function (event) {
           return move(event);
         });
-        EventHandler.on(this._element, Event$1.TOUCHEND, function (event) {
+        EventHandler.on(this._element, Event.TOUCHEND, function (event) {
           return end(event);
         });
       }
@@ -560,7 +563,7 @@
 
       var fromIndex = this._getItemIndex(SelectorEngine.findOne(Selector.ACTIVE_ITEM, this._element));
 
-      return EventHandler.trigger(this._element, Event$1.SLIDE, {
+      return EventHandler.trigger(this._element, Event.SLIDE, {
         relatedTarget: relatedTarget,
         direction: eventDirectionName,
         from: fromIndex,
@@ -658,7 +661,7 @@
           activeElement.classList.remove(directionalClassName);
           _this4._isSliding = false;
           setTimeout(function () {
-            EventHandler.trigger(_this4._element, Event$1.SLID, {
+            EventHandler.trigger(_this4._element, Event.SLID, {
               relatedTarget: nextElement,
               direction: eventDirectionName,
               from: activeElementIndex,
@@ -671,7 +674,7 @@
         activeElement.classList.remove(ClassName.ACTIVE);
         nextElement.classList.add(ClassName.ACTIVE);
         this._isSliding = false;
-        EventHandler.trigger(this._element, Event$1.SLID, {
+        EventHandler.trigger(this._element, Event.SLID, {
           relatedTarget: nextElement,
           direction: eventDirectionName,
           from: activeElementIndex,
@@ -775,8 +778,8 @@
    */
 
 
-  EventHandler.on(document, Event$1.CLICK_DATA_API, Selector.DATA_SLIDE, Carousel._dataApiClickHandler);
-  EventHandler.on(window, Event$1.LOAD_DATA_API, function () {
+  EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_SLIDE, Carousel._dataApiClickHandler);
+  EventHandler.on(window, Event.LOAD_DATA_API, function () {
     var carousels = makeArray(SelectorEngine.find(Selector.DATA_RIDE));
 
     for (var i = 0, len = carousels.length; i < len; i++) {
