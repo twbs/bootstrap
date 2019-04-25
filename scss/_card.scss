@@ -151,23 +151,19 @@
 // Card deck
 
 .card-deck {
-  display: flex;
-  flex-direction: column;
-
   .card {
     margin-bottom: $card-deck-margin;
   }
 
   @include media-breakpoint-up(sm) {
+    display: flex;
     flex-flow: row wrap;
     margin-right: -$card-deck-margin;
     margin-left: -$card-deck-margin;
 
     .card {
-      display: flex;
       // Flexbugs #4: https://github.com/philipwalton/flexbugs#flexbug-4
       flex: 1 0 0%;
-      flex-direction: column;
       margin-right: $card-deck-margin;
       margin-bottom: 0; // Override the default
       margin-left: $card-deck-margin;
@@ -181,9 +177,6 @@
 //
 
 .card-group {
-  display: flex;
-  flex-direction: column;
-
   // The child selector allows nested `.card` within `.card-group`
   // to display properly.
   > .card {
@@ -191,6 +184,7 @@
   }
 
   @include media-breakpoint-up(sm) {
+    display: flex;
     flex-flow: row wrap;
     // The child selector allows nested `.card` within `.card-group`
     // to display properly.
