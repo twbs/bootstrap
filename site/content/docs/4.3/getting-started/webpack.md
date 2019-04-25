@@ -1,7 +1,7 @@
 ---
 layout: docs
-title: Webpack
-description: Learn how to include Bootstrap in your project using Webpack.
+title: Webpack and bundlers
+description: Learn how to include Bootstrap in your project using Webpack or other bundlers.
 group: getting-started
 toc: true
 ---
@@ -15,13 +15,14 @@ toc: true
 Import [Bootstrap's JavaScript]({{< docsref "/getting-started/javascript" >}}) by adding this line to your app's entry point (usually `index.js` or `app.js`):
 
 {{< highlight js >}}
-import 'bootstrap';
+// You can specify which plugins you need
+import { Tooltip, Toast, Popover } from 'bootstrap';
 {{< /highlight >}}
 
-Alternatively, you may **import plugins individually** as needed:
+Alternatively, if you only need just a few of our plugins, you may **import plugins individually** as needed:
 
 {{< highlight js >}}
-import 'bootstrap/js/dist/alert';
+import Alert from 'bootstrap/js/dist/alert';
 ...
 {{< /highlight >}}
 

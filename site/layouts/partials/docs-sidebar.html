@@ -6,7 +6,7 @@
 </form>
 
 <nav class="collapse bd-links" id="bd-docs-nav" aria-label="Main navigation">
-  {{- $url := split .URL "/" -}}
+  {{- $url := split .Permalink "/" -}}
   {{- $page_slug := index $url (sub (len $url) 2) -}}
 
   {{- range $group := .Site.Data.nav -}}

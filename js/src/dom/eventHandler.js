@@ -6,7 +6,7 @@
  */
 
 import { jQuery as $ } from '../util/index'
-import Polyfill from './polyfill'
+import { createCustomEvent, defaultPreventedPreservedOnDispatch } from './polyfill'
 
 /**
  * ------------------------------------------------------------------------
@@ -136,10 +136,7 @@ function bootstrapDelegationHandler(element, selector, fn) {
 }
 
 function findHandler(events, handler, delegationSelector = null) {
-  const uidList = Object.keys(events)
-
-  for (let i = 0; i < uidList.length; i++) {
-    const uid = uidList[i]
+  for (const uid of Object.keys(events)) {
     const event = events[uid]
 
     if (event.originalHandler === handler && event.delegationSelector === delegationSelector) {
@@ -305,7 +302,7 @@ const EventHandler = {
       evt = document.createEvent('HTMLEvents')
       evt.initEvent(typeEvent, bubbles, true)
     } else {
-      evt = new CustomEvent(event, {
+      evt = createCustomEvent(event, {
         bubbles,
         cancelable: true
       })
@@ -326,7 +323,7 @@ const EventHandler = {
     if (defaultPrevented) {
       evt.preventDefault()
 
-      if (!Polyfill.defaultPreventedPreservedOnDispatch) {
+      if (!defaultPreventedPreservedOnDispatch) {
         Object.defineProperty(evt, 'defaultPrevented', {
           get: () => true
         })
