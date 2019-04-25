@@ -50,6 +50,24 @@ Change the border color using utilities built on our theme colors.
 {{< /example >}}
 </div>
 
+## Border width
+
+<div class="bd-example-border-utils bd-example-border-width">
+  {{< placeholder width="75" height="75" class="border-w-1" title="Example border width 1px" >}}
+  {{< placeholder width="75" height="75" class="border-w-2" title="Example border width 2px" >}}
+  {{< placeholder width="75" height="75" class="border-w-3" title="Example border width 3px" >}}
+  {{< placeholder width="75" height="75" class="border-w-4" title="Example border width 4px" >}}
+  {{< placeholder width="75" height="75" class="border-w-5" title="Example border width 5px" >}}
+ </div>
+
+{{< highlight html >}}
+<img src="..." alt="..." class="border-w-1">
+<img src="..." alt="..." class="border-w-2">
+<img src="..." alt="..." class="border-w-3">
+<img src="..." alt="..." class="border-w-4">
+<img src="..." alt="..." class="border-w-5">
+{{< /highlight >}}
+
 ## Border-radius
 
 Add classes to an element to easily round its corners.

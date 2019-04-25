@@ -73,3 +73,12 @@
 .rounded-0 {
   border-radius: 0 !important;
 }
+
+//
+// Border-width
+//
+@for $i from 1 through 5 {
+  .border-w-#{$i} {
+    border-width: #{$i}px;
+  }
+}
