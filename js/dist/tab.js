@@ -79,7 +79,9 @@
   };
 
   var triggerTransitionEnd = function triggerTransitionEnd(element) {
-    element.dispatchEvent(new Event(TRANSITION_END));
+    var evt = document.createEvent('HTMLEvents');
+    evt.initEvent(TRANSITION_END, true, true);
+    element.dispatchEvent(evt);
   };
 
   var emulateTransitionEnd = function emulateTransitionEnd(element, duration) {
@@ -123,7 +125,7 @@
   var DATA_KEY = 'bs.tab';
   var EVENT_KEY = "." + DATA_KEY;
   var DATA_API_KEY = '.data-api';
-  var Event$1 = {
+  var Event = {
     HIDE: "hide" + EVENT_KEY,
     HIDDEN: "hidden" + EVENT_KEY,
     SHOW: "show" + EVENT_KEY,
@@ -186,12 +188,12 @@
       var hideEvent = null;
 
       if (previous) {
-        hideEvent = EventHandler.trigger(previous, Event$1.HIDE, {
+        hideEvent = EventHandler.trigger(previous, Event.HIDE, {
           relatedTarget: this._element
         });
       }
 
-      var showEvent = EventHandler.trigger(this._element, Event$1.SHOW, {
+      var showEvent = EventHandler.trigger(this._element, Event.SHOW, {
         relatedTarget: previous
       });
 
@@ -206,10 +208,10 @@
       this._activate(this._element, listElement);
 
       var complete = function complete() {
-        EventHandler.trigger(previous, Event$1.HIDDEN, {
+        EventHandler.trigger(previous, Event.HIDDEN, {
           relatedTarget: _this._element
         });
-        EventHandler.trigger(_this._element, Event$1.SHOWN, {
+        EventHandler.trigger(_this._element, Event.SHOWN, {
           relatedTarget: previous
         });
       };
@@ -326,7 +328,7 @@
    */
 
 
-  EventHandler.on(document, Event$1.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
+  EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
     event.preventDefault();
     var data = Data.getData(this, DATA_KEY) || new Tab(this);
     data.show();
