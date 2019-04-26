@@ -622,7 +622,6 @@ $custom-range-thumb-active-bg:               lighten($component-active-bg, 35%) 
 $custom-range-thumb-disabled-bg:             $gray-500 !default;
 
 $custom-file-height:                $input-height !default;
-$custom-file-height-inner:          $input-height-inner !default;
 $custom-file-focus-border-color:    $input-focus-border-color !default;
 $custom-file-focus-box-shadow:      $input-focus-box-shadow !default;
 $custom-file-disabled-bg:           $input-disabled-bg !default;
@@ -640,9 +639,6 @@ $custom-file-border-radius:         $input-border-radius !default;
 $custom-file-box-shadow:            $input-box-shadow !default;
 $custom-file-button-color:          $custom-file-color !default;
 $custom-file-button-bg:             $input-group-addon-bg !default;
-$custom-file-text: (
-  en: "Browse"
-) !default;
 
 
 // Form validation
