@@ -1,4 +1,4 @@
-/**
+/*
  * --------------------------------------------------------------------------
  * Bootstrap (v4.3.1): tooltip.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
@@ -27,7 +27,7 @@ import Manipulator from './dom/manipulator'
 import Popper from 'popper.js'
 import SelectorEngine from './dom/selectorEngine'
 
-/**
+/*
  * ------------------------------------------------------------------------
  * Constants
  * ------------------------------------------------------------------------
@@ -122,7 +122,7 @@ const Trigger = {
   MANUAL: 'manual'
 }
 
-/**
+/*
  * ------------------------------------------------------------------------
  * Class Definition
  * ------------------------------------------------------------------------
@@ -326,10 +326,12 @@ class Tooltip {
 
       tip.classList.add(ClassName.SHOW)
 
-      // If this is a touch-enabled device we add extra
-      // empty mouseover listeners to the body's immediate children;
-      // only needed because of broken event delegation on iOS
-      // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
+      /*
+        If this is a touch-enabled device we add extra
+        empty mouseover listeners to the body's immediate children;
+        only needed because of broken event delegation on iOS
+        https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
+       */
       if ('ontouchstart' in document.documentElement) {
         makeArray(document.body.children).forEach(element => {
           EventHandler.on(element, 'mouseover', noop())
@@ -803,7 +805,7 @@ class Tooltip {
   }
 }
 
-/**
+/*
  * ------------------------------------------------------------------------
  * jQuery
  * ------------------------------------------------------------------------

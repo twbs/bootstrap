@@ -1,7 +1,9 @@
 // Base class
-//
-// Kickstart any navigation component with a set of style resets. Works with
-// `<nav>`s, `<ul>`s or `<ol>`s.
+
+/*
+  Kickstart any navigation component with a set of style resets. Works with
+  `<nav>`s, `<ul>`s or `<ol>`s.
+ */
 
 .nav {
   display: flex;
@@ -27,9 +29,7 @@
   }
 }
 
-//
 // Tabs
-//
 
 .nav-tabs {
   border-bottom: $nav-tabs-border-width solid $nav-tabs-border-color;
@@ -69,9 +69,7 @@
 }
 
 
-//
 // Pills
-//
 
 .nav-pills {
   .nav-link {
@@ -86,10 +84,7 @@
 }
 
 
-//
 // Justified variants
-//
-
 .nav-fill {
   .nav-item {
     flex: 1 1 auto;
@@ -105,9 +100,7 @@
   }
 }
 
-
 // Tabbable tabs
-//
 // Hide tabbable panes to start, show them when `.active`
 
 .tab-content {

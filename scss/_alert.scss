@@ -1,6 +1,4 @@
-//
 // Base styles
-//
 
 .alert {
   position: relative;
@@ -23,7 +21,7 @@
 
 
 // Dismissible alerts
-//
+
 // Expand the right padding and account for the close button's positioning.
 
 .alert-dismissible {
@@ -41,7 +39,7 @@
 
 
 // Alternate styles
-//
+
 // Generate contextual modifier classes for colorizing the alert.
 
 @each $color, $value in $theme-colors {

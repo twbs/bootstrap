@@ -1,19 +1,21 @@
-// Contents
-//
-// Navbar
-// Navbar brand
-// Navbar nav
-// Navbar text
-// Navbar divider
-// Responsive navbar
-// Navbar position
-// Navbar themes
+/*
+ * Contents
+ * Navbar
+ * Navbar brand
+ * Navbar nav
+ * Navbar text
+ * Navbar divider
+ * Responsive navbar
+ * Navbar position
+ * Navbar themes
+ */
 
 
 // Navbar
-//
-// Provide a static navbar from which we expand to create full-width, fixed, and
-// other navbar variations.
+/*
+  Provide a static navbar from which we expand to create full-width, fixed, and
+  other navbar variations.
+ */
 
 .navbar {
   position: relative;
@@ -23,8 +25,10 @@
   justify-content: space-between; // space out brand from logo
   padding: $navbar-padding-y $navbar-padding-x;
 
-  // Because flex properties aren't inherited, we need to redeclare these first
-  // few properties so that content nested within behave properly.
+  /*
+    Because flex properties aren't inherited, we need to redeclare these first
+    few properties so that content nested within behave properly.
+   */
   > .container,
   > .container-fluid {
     display: flex;
@@ -34,9 +38,7 @@
   }
 }
 
-
 // Navbar brand
-//
 // Used for brand, project, or site names.
 
 .navbar-brand {
@@ -53,9 +55,7 @@
   }
 }
 
-
 // Navbar nav
-//
 // Custom navbar navigation (doesn't require `.nav`, but does make use of `.nav-link`).
 
 .navbar-nav {
@@ -78,8 +78,6 @@
 
 
 // Navbar text
-//
-//
 
 .navbar-text {
   display: inline-block;
@@ -89,18 +87,22 @@
 
 
 // Responsive navbar
-//
-// Custom styles for responsive collapsing and toggling of navbar contents.
-// Powered by the collapse Bootstrap JavaScript plugin.
 
-// When collapsed, prevent the toggleable navbar contents from appearing in
-// the default flexbox row orientation. Requires the use of `flex-wrap: wrap`
-// on the `.navbar` parent.
+/*
+  Custom styles for responsive collapsing and toggling of navbar contents.
+  Powered by the collapse Bootstrap JavaScript plugin.
+
+  When collapsed, prevent the toggleable navbar contents from appearing in
+  the default flexbox row orientation. Requires the use of `flex-wrap: wrap`
+  on the `.navbar` parent.
+ */
 .navbar-collapse {
   flex-basis: 100%;
   flex-grow: 1;
-  // For always expanded or extra full navbars, ensure content aligns itself
-  // properly vertically. Can be easily overridden with flex utilities.
+  /*
+    For always expanded or extra full navbars, ensure content aligns itself
+    properly vertically. Can be easily overridden with flex utilities.
+   */
   align-items: center;
 }
 
@@ -118,8 +120,10 @@
   }
 }
 
-// Keep as a separate element so folks can easily override it with another icon
-// or image file as needed.
+/*
+  Keep as a separate element so folks can easily override it with another icon
+  or image file as needed.
+ */
 .navbar-toggler-icon {
   display: inline-block;
   width: 1.5em;
@@ -130,8 +134,10 @@
   background-size: 100% 100%;
 }
 
-// Generate series of `.navbar-expand-*` responsive classes for configuring
-// where your navbar collapses.
+/*
+  Generate series of `.navbar-expand-*` responsive classes for configuring
+  where your navbar collapses.
+ */
 .navbar-expand {
   @each $breakpoint in map-keys($grid-breakpoints) {
     $next: breakpoint-next($breakpoint, $grid-breakpoints);
@@ -186,7 +192,6 @@
 
 
 // Navbar themes
-//
 // Styles for switching between navbars with light or dark background.
 
 // Dark links against a light background

@@ -1,4 +1,4 @@
-/**
+/*
  * --------------------------------------------------------------------------
  * Bootstrap (v4.3.1): modal.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
@@ -21,7 +21,7 @@ import EventHandler from './dom/eventHandler'
 import Manipulator from './dom/manipulator'
 import SelectorEngine from './dom/selectorEngine'
 
-/**
+/*
  * ------------------------------------------------------------------------
  * Constants
  * ------------------------------------------------------------------------
@@ -80,7 +80,7 @@ const Selector = {
   STICKY_CONTENT: '.sticky-top'
 }
 
-/**
+/*
  * ------------------------------------------------------------------------
  * Class Definition
  * ------------------------------------------------------------------------
@@ -206,7 +206,7 @@ class Modal {
     [window, this._element, this._dialog]
       .forEach(htmlElement => EventHandler.off(htmlElement, EVENT_KEY))
 
-    /**
+    /*
      * `document` has 2 events `Event.FOCUSIN` and `Event.CLICK_DATA_API`
      * Do not move `document` in `htmlElements` array
      * It will remove `Event.CLICK_DATA_API` event that should remain
@@ -416,9 +416,10 @@ class Modal {
     }
   }
 
-  // ----------------------------------------------------------------------
-  // the following methods are used to handle overflowing modals
-  // ----------------------------------------------------------------------
+  /* ----------------------------------------------------------------------
+   * the following methods are used to handle overflowing modals
+   * ----------------------------------------------------------------------
+   */
 
   _adjustDialog() {
     const isModalOverflowing =
@@ -446,8 +447,9 @@ class Modal {
 
   _setScrollbar() {
     if (this._isBodyOverflowing) {
-      // Note: DOMNode.style.paddingRight returns the actual value or '' if not set
-      //   while $(DOMNode).css('padding-right') returns the calculated value or 0 if not set
+      /* Note: DOMNode.style.paddingRight returns the actual value or '' if not set
+           while $(DOMNode).css('padding-right') returns the calculated value or 0 if not set
+       */
 
       // Adjust fixed content padding
       makeArray(SelectorEngine.find(Selector.FIXED_CONTENT))
@@ -550,7 +552,7 @@ class Modal {
   }
 }
 
-/**
+/*
  * ------------------------------------------------------------------------
  * Data Api implementation
  * ------------------------------------------------------------------------
@@ -596,7 +598,7 @@ EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (
   data.show(this)
 })
 
-/**
+/*
  * ------------------------------------------------------------------------
  * jQuery
  * ------------------------------------------------------------------------

@@ -2,11 +2,12 @@
 
 // Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css
 
-// ==========================================================================
-// Print styles.
-// Inlined to avoid the additional HTTP request:
-// https://www.phpied.com/delay-loading-your-print-css/
-// ==========================================================================
+/* ==========================================================================
+ * Print styles.
+ * Inlined to avoid the additional HTTP request:
+ * https://www.phpied.com/delay-loading-your-print-css/
+ * ==========================================================================
+ */
 
 @if $enable-print-styles {
   @media print {
@@ -36,10 +37,11 @@
     }
 
     // Bootstrap specific; comment the following selector out
-    //
-    // Don't show links that are fragment identifiers,
-    // or use the `javascript:` pseudo protocol
-    //
+
+    /*
+      Don't show links that are fragment identifiers,
+      or use the `javascript:` pseudo protocol
+     */
 
     //a[href^="#"]::after,
     //a[href^="javascript:"]::after {
@@ -55,10 +57,8 @@
       page-break-inside: avoid;
     }
 
-    //
     // Printing Tables:
     // http://css-discuss.incutio.com/wiki/Printing_Tables
-    //
 
     thead {
       display: table-header-group;
@@ -83,9 +83,11 @@
 
     // Bootstrap specific changes start
 
-    // Specify a size and min-width to make printing closer across browsers.
-    // We don't set margin here because it breaks `size` in Chrome. We also
-    // don't use `!important` on `size` as it breaks in Chrome.
+    /*
+      Specify a size and min-width to make printing closer across browsers.
+      We don't set margin here because it breaks `size` in Chrome. We also
+      don't use `!important` on `size` as it breaks in Chrome.
+     */
     @page {
       size: $print-page-size;
     }

@@ -1,5 +1,5 @@
 // Base class
-//
+
 // Easily usable on <ul>, <ol>, or <div>.
 
 .list-group {
@@ -13,7 +13,6 @@
 
 
 // Interactive list items
-//
 // Use anchor or button elements instead of `li`s or `div`s to create interactive
 // list items. Includes an extra `.active` modifier class for selected items.
 
@@ -38,7 +37,6 @@
 
 
 // Individual list items
-//
 // Use on `li`s or `div`s within the `.list-group` parent.
 
 .list-group-item {
@@ -78,7 +76,6 @@
 
 
 // Horizontal
-//
 // Change the layout of list group items from vertical (default) to horizontal.
 
 @each $breakpoint in map-keys($grid-breakpoints) {
@@ -140,7 +137,6 @@
 
 
 // Contextual variants
-//
 // Add modifier classes to change text and background color on individual items.
 // Organizationally, this must come after the `:hover` states.
 

@@ -1,4 +1,4 @@
-/**
+/*
  * --------------------------------------------------------------------------
  * Bootstrap (v4.3.1): carousel.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
@@ -22,7 +22,7 @@ import EventHandler from './dom/eventHandler'
 import Manipulator from './dom/manipulator'
 import SelectorEngine from './dom/selectorEngine'
 
-/**
+/*
  * ------------------------------------------------------------------------
  * Constants
  * ------------------------------------------------------------------------
@@ -107,7 +107,7 @@ const PointerType = {
   PEN: 'pen'
 }
 
-/**
+/*
  * ------------------------------------------------------------------------
  * Class Definition
  * ------------------------------------------------------------------------
@@ -317,13 +317,15 @@ class Carousel {
 
       this._handleSwipe()
       if (this._config.pause === 'hover') {
-        // If it's a touch-enabled device, mouseenter/leave are fired as
-        // part of the mouse compatibility events on first tap - the carousel
-        // would stop cycling until user tapped out of it;
-        // here, we listen for touchend, explicitly pause the carousel
-        // (as if it's the second time we tap on it, mouseenter compat event
-        // is NOT fired) and after a timeout (to allow for mouse compatibility
-        // events to fire) we explicitly restart cycling
+        /* 
+           If it's a touch-enabled device, mouseenter/leave are fired as
+           part of the mouse compatibility events on first tap - the carousel
+           would stop cycling until user tapped out of it;
+           here, we listen for touchend, explicitly pause the carousel
+           (as if it's the second time we tap on it, mouseenter compat event
+           is NOT fired) and after a timeout (to allow for mouse compatibility
+           events to fire) we explicitly restart cycling
+        */
 
         this.pause()
         if (this.touchTimeout) {
@@ -609,7 +611,7 @@ class Carousel {
   }
 }
 
-/**
+/*
  * ------------------------------------------------------------------------
  * Data Api implementation
  * ------------------------------------------------------------------------
@@ -625,7 +627,7 @@ EventHandler.on(window, Event.LOAD_DATA_API, () => {
   }
 })
 
-/**
+/*
  * ------------------------------------------------------------------------
  * jQuery
  * ------------------------------------------------------------------------

@@ -1,4 +1,4 @@
-/**
+/*
  * --------------------------------------------------------------------------
  * Bootstrap (v4.3.1): collapse.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
@@ -21,7 +21,7 @@ import EventHandler from './dom/eventHandler'
 import Manipulator from './dom/manipulator'
 import SelectorEngine from './dom/selectorEngine'
 
-/**
+/*
  * ------------------------------------------------------------------------
  * Constants
  * ------------------------------------------------------------------------
@@ -68,7 +68,7 @@ const Selector = {
   DATA_TOGGLE: '[data-toggle="collapse"]'
 }
 
-/**
+/*
  * ------------------------------------------------------------------------
  * Class Definition
  * ------------------------------------------------------------------------
@@ -390,7 +390,7 @@ class Collapse {
   }
 }
 
-/**
+/*
  * ------------------------------------------------------------------------
  * Data Api implementation
  * ------------------------------------------------------------------------
@@ -425,7 +425,7 @@ EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (
   })
 })
 
-/**
+/*
  * ------------------------------------------------------------------------
  * jQuery
  * ------------------------------------------------------------------------

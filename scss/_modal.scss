@@ -24,12 +24,15 @@
   width: 100%;
   height: 100%;
   overflow: hidden;
-  // Prevent Chrome on Windows from adding a focus outline. For details, see
-  // https://github.com/twbs/bootstrap/pull/10951.
+  /*
+    Prevent Chrome on Windows from adding a focus outline. For details, see
+    https://github.com/twbs/bootstrap/pull/10951.
+   */
   outline: 0;
-  // We deliberately don't use `-webkit-overflow-scrolling: touch;` due to a
-  // gnarly iOS Safari bug: https://bugs.webkit.org/show_bug.cgi?id=158342
-  // See also https://github.com/twbs/bootstrap/issues/17695
+  /* We deliberately don't use `-webkit-overflow-scrolling: touch;` due to a
+     gnarly iOS Safari bug: https://bugs.webkit.org/show_bug.cgi?id=158342
+     See also https://github.com/twbs/bootstrap/issues/17695
+   */
 }
 
 // Shell div to position the modal with bottom padding

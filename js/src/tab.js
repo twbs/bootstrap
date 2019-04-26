@@ -1,4 +1,4 @@
-/**
+/*
  * --------------------------------------------------------------------------
  * Bootstrap (v4.3.1): tab.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
@@ -18,7 +18,7 @@ import Data from './dom/data'
 import EventHandler from './dom/eventHandler'
 import SelectorEngine from './dom/selectorEngine'
 
-/**
+/*
  * ------------------------------------------------------------------------
  * Constants
  * ------------------------------------------------------------------------
@@ -56,7 +56,7 @@ const Selector = {
   DROPDOWN_ACTIVE_CHILD: ':scope > .dropdown-menu .active'
 }
 
-/**
+/*
  * ------------------------------------------------------------------------
  * Class Definition
  * ------------------------------------------------------------------------
@@ -234,7 +234,7 @@ class Tab {
   }
 }
 
-/**
+/*
  * ------------------------------------------------------------------------
  * Data Api implementation
  * ------------------------------------------------------------------------
@@ -247,7 +247,7 @@ EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (
   data.show()
 })
 
-/**
+/*
  * ------------------------------------------------------------------------
  * jQuery
  * ------------------------------------------------------------------------

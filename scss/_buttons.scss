@@ -1,8 +1,6 @@
 // stylelint-disable selector-no-qualifying-type
 
-//
 // Base styles
-//
 
 .btn {
   display: inline-block;
@@ -52,9 +50,7 @@ fieldset:disabled a.btn {
 }
 
 
-//
 // Alternate buttons
-//
 
 @each $color, $value in $theme-colors {
   .btn-#{$color} {
@@ -69,9 +65,7 @@ fieldset:disabled a.btn {
 }
 
 
-//
 // Link buttons
-//
 
 // Make a button look and behave like a link
 .btn-link {
@@ -100,9 +94,7 @@ fieldset:disabled a.btn {
 }
 
 
-//
 // Button Sizes
-//
 
 .btn-lg {
   @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg, $btn-line-height-lg, $btn-border-radius-lg);
@@ -113,9 +105,7 @@ fieldset:disabled a.btn {
 }
 
 
-//
 // Block button
-//
 
 .btn-block {
   display: block;

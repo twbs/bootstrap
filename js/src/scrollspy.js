@@ -1,4 +1,4 @@
-/**
+/*
  * --------------------------------------------------------------------------
  * Bootstrap (v4.3.1): scrollspy.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
@@ -17,7 +17,7 @@ import EventHandler from './dom/eventHandler'
 import Manipulator from './dom/manipulator'
 import SelectorEngine from './dom/selectorEngine'
 
-/**
+/*
  * ------------------------------------------------------------------------
  * Constants
  * ------------------------------------------------------------------------
@@ -67,7 +67,7 @@ const OffsetMethod = {
   POSITION: 'position'
 }
 
-/**
+/*
  * ------------------------------------------------------------------------
  * Class Definition
  * ------------------------------------------------------------------------
@@ -325,7 +325,7 @@ class ScrollSpy {
   }
 }
 
-/**
+/*
  * ------------------------------------------------------------------------
  * Data Api implementation
  * ------------------------------------------------------------------------
@@ -336,7 +336,7 @@ EventHandler.on(window, Event.LOAD_DATA_API, () => {
     .forEach(spy => new ScrollSpy(spy, Manipulator.getDataAttributes(spy)))
 })
 
-/**
+/*
  * ------------------------------------------------------------------------
  * jQuery
  * ------------------------------------------------------------------------

@@ -1,6 +1,4 @@
-//
 // Base styles
-//
 
 .card {
   position: relative;
@@ -62,9 +60,7 @@
   }
 }
 
-//
 // Optional textual caps
-//
 
 .card-header {
   padding: $card-spacer-y $card-spacer-x;
@@ -95,9 +91,7 @@
 }
 
 
-//
 // Header navs
-//
 
 .card-header-tabs {
   margin-right: -$card-spacer-x / 2;
@@ -166,9 +160,7 @@
 }
 
 
-//
 // Card groups
-//
 
 .card-group {
   display: flex;
@@ -231,9 +223,7 @@
 }
 
 
-//
 // Columns
-//
 
 .card-columns {
   .card {
@@ -254,9 +244,7 @@
 }
 
 
-//
 // Accordion
-//
 
 .accordion {
   > .card {

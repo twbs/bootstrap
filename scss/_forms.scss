@@ -1,8 +1,6 @@
 // stylelint-disable selector-no-qualifying-type
 
-//
 // Textual form controls
-//
 
 .form-control {
   display: block;
@@ -41,10 +39,11 @@
   }
 
   // Disabled and read-only inputs
-  //
-  // HTML5 says that controls under a fieldset > legend:first-child won't be
-  // disabled if the fieldset is disabled. Due to implementation difficulty, we
-  // don't honor that edge case; we style them as disabled anyway.
+
+  /* HTML5 says that controls under a fieldset > legend:first-child won't be
+     disabled if the fieldset is disabled. Due to implementation difficulty, we
+     don't honor that edge case; we style them as disabled anyway.
+   */
   &:disabled,
   &[readonly] {
     background-color: $input-disabled-bg;
@@ -55,11 +54,13 @@
 
 select.form-control {
   &:focus::-ms-value {
-    // Suppress the nested default white text on blue background highlight given to
-    // the selected option text when the (still closed) <select> receives focus
-    // in IE and (under certain conditions) Edge, as it looks bad and cannot be made to
-    // match the appearance of the native widget.
-    // See https://github.com/twbs/bootstrap/issues/19398.
+    /*
+      Suppress the nested default white text on blue background highlight given to
+      the selected option text when the (still closed) <select> receives focus
+      in IE and (under certain conditions) Edge, as it looks bad and cannot be made to
+      match the appearance of the native widget.
+      See https://github.com/twbs/bootstrap/issues/19398.
+     */
     color: $input-color;
     background-color: $input-bg;
   }
@@ -73,12 +74,12 @@ select.form-control {
 }
 
 
-//
 // Labels
-//
 
-// For use with horizontal and inline forms, when you need the label (or legend)
-// text to align with the form controls.
+/*
+  For use with horizontal and inline forms, when you need the label (or legend)
+  text to align with the form controls.
+ */
 .col-form-label {
   padding-top: calc(#{$input-padding-y} + #{$input-border-width});
   padding-bottom: calc(#{$input-padding-y} + #{$input-border-width});
@@ -103,7 +104,7 @@ select.form-control {
 
 
 // Readonly controls as plain text
-//
+
 // Apply class to a readonly input to make it appear like regular plain
 // text (without any border, background color, focus indicator)
 
@@ -129,10 +130,10 @@ select.form-control {
 
 
 // Form control sizing
-//
+
 // Build on `.form-control` with modifier classes to decrease or increase the
 // height and font-size of form controls.
-//
+
 // Repeated in `_input_group.scss` to avoid Sass extend issues.
 
 .form-control-sm {
@@ -164,7 +165,6 @@ textarea.form-control {
 }
 
 // Form groups
-//
 // Designed to help with the organization and spacing of vertical forms. For
 // horizontal forms, use the predefined grid classes.
 
@@ -179,7 +179,6 @@ textarea.form-control {
 
 
 // Form grid
-//
 // Special replacement for our grid system's `.row` for tighter form layouts.
 
 .form-row {
@@ -197,7 +196,6 @@ textarea.form-control {
 
 
 // Checkboxes and radios
-//
 // Indent the labels to position radios/checkboxes as hanging controls.
 
 .form-check {
@@ -239,7 +237,6 @@ textarea.form-control {
 
 
 // Form validation
-//
 // Provide feedback to users when form field values are valid or invalid. Works
 // primarily for client-side validation via scoped `:invalid` and `:valid`
 // pseudo-classes but also includes `.is-invalid` and `.is-valid` classes for
@@ -250,11 +247,10 @@ textarea.form-control {
 }
 
 // Inline forms
-//
 // Make forms appear inline(-block) by adding the `.form-inline` class. Inline
 // forms begin stacked on extra small (mobile) devices and then go inline when
 // viewports reach <768px.
-//
+
 // Requires wrapping inputs and labels with `.form-group` for proper display of
 // default HTML form controls and our custom form controls (e.g., input groups).
 

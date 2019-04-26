@@ -1,4 +1,4 @@
-/**
+/*
  * --------------------------------------------------------------------------
  * Bootstrap (v4.3.1): dropdown.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
@@ -19,7 +19,7 @@ import Manipulator from './dom/manipulator'
 import Popper from 'popper.js'
 import SelectorEngine from './dom/selectorEngine'
 
-/**
+/*
  * ------------------------------------------------------------------------
  * Constants
  * ------------------------------------------------------------------------
@@ -94,7 +94,7 @@ const DefaultType = {
   display: 'string'
 }
 
-/**
+/*
  * ------------------------------------------------------------------------
  * Class Definition
  * ------------------------------------------------------------------------
@@ -153,7 +153,7 @@ class Dropdown {
 
     // Disable totally Popper.js for Dropdown in Navbar
     if (!this._inNavbar) {
-      /**
+      /*
        * Check for Popper dependency
        * Popper - https://popper.js.org
        */
@@ -174,9 +174,11 @@ class Dropdown {
         }
       }
 
-      // If boundary is not `scrollParent`, then set position to `static`
-      // to allow the menu to "escape" the scroll parent's boundaries
-      // https://github.com/twbs/bootstrap/issues/24251
+      /*
+         If boundary is not `scrollParent`, then set position to `static`
+         to allow the menu to "escape" the scroll parent's boundaries
+         https://github.com/twbs/bootstrap/issues/24251
+      */
       if (this._config.boundary !== 'scrollParent') {
         parent.classList.add(ClassName.POSITION_STATIC)
       }
@@ -184,10 +186,12 @@ class Dropdown {
       this._popper = new Popper(referenceElement, this._menu, this._getPopperConfig())
     }
 
-    // If this is a touch-enabled device we add extra
-    // empty mouseover listeners to the body's immediate children;
-    // only needed because of broken event delegation on iOS
-    // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
+    /*
+      If this is a touch-enabled device we add extra
+      empty mouseover listeners to the body's immediate children;
+      only needed because of broken event delegation on iOS
+      https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
+    */
     if ('ontouchstart' in document.documentElement &&
       !makeArray(SelectorEngine.closest(parent, Selector.NAVBAR_NAV)).length) {
       makeArray(document.body.children)
@@ -432,8 +436,10 @@ class Dropdown {
         continue
       }
 
-      // If this is a touch-enabled device we remove the extra
-      // empty mouseover listeners we added for iOS support
+      /*
+        If this is a touch-enabled device we remove the extra
+        empty mouseover listeners we added for iOS support
+      */
       if ('ontouchstart' in document.documentElement) {
         makeArray(document.body.children)
           .forEach(elem => EventHandler.off(elem, 'mouseover', null, noop()))
@@ -459,13 +465,15 @@ class Dropdown {
   }
 
   static _dataApiKeydownHandler(event) {
-    // If not input/textarea:
-    //  - And not a key in REGEXP_KEYDOWN => not a dropdown command
-    // If input/textarea:
-    //  - If space key => not a dropdown command
-    //  - If key is other than escape
-    //    - If key is not up or down => not a dropdown command
-    //    - If trigger inside the menu => not a dropdown command
+    /*
+      If not input/textarea:
+        - And not a key in REGEXP_KEYDOWN => not a dropdown command
+      If input/textarea:
+        - If space key => not a dropdown command
+        - If key is other than escape
+        - If key is not up or down => not a dropdown command
+        - If trigger inside the menu => not a dropdown command
+    */
     if (/input|textarea/i.test(event.target.tagName) ?
       event.which === SPACE_KEYCODE || event.which !== ESCAPE_KEYCODE &&
       (event.which !== ARROW_DOWN_KEYCODE && event.which !== ARROW_UP_KEYCODE ||
@@ -521,7 +529,7 @@ class Dropdown {
   }
 }
 
-/**
+/*
  * ------------------------------------------------------------------------
  * Data Api implementation
  * ------------------------------------------------------------------------
@@ -539,7 +547,7 @@ EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (
 EventHandler
   .on(document, Event.CLICK_DATA_API, Selector.FORM_CHILD, e => e.stopPropagation())
 
-/**
+/*
  * ------------------------------------------------------------------------
  * jQuery
  * ------------------------------------------------------------------------

@@ -1,8 +1,6 @@
 // stylelint-disable selector-no-qualifying-type
 
-//
 // Base styles
-//
 
 .input-group {
   position: relative;
@@ -17,8 +15,10 @@
   > .custom-file {
     position: relative; // For focus state's z-index
     flex: 1 1 auto;
-    // Add width 1% and flex-basis auto to ensure that button will not wrap out
-    // the column. Applies to IE Edge+ and Firefox. Chrome does not require this.
+    /*
+      Add width 1% and flex-basis auto to ensure that button will not wrap out
+      the column. Applies to IE Edge+ and Firefox. Chrome does not require this.
+     */
     width: 1%;
     margin-bottom: 0;
 
@@ -47,8 +47,10 @@
     &:not(:first-child) { @include border-left-radius(0); }
   }
 
-  // Custom file inputs have more complex markup, thus requiring different
-  // border-radius overrides.
+  /*
+    Custom file inputs have more complex markup, thus requiring different
+    border-radius overrides.
+   */
   > .custom-file {
     display: flex;
     align-items: center;
@@ -61,18 +63,24 @@
 
 
 // Prepend and append
-//
-// While it requires one extra layer of HTML for each, dedicated prepend and
-// append elements allow us to 1) be less clever, 2) simplify our selectors, and
-// 3) support HTML5 form validation.
+
+/* While it requires one extra layer of HTML for each, dedicated prepend and
+   append elements allow us to
+     1) be less clever,
+     2) simplify our selectors,
+     and
+     3) support HTML5 form validation.
+ */
 
 .input-group-prepend,
 .input-group-append {
   display: flex;
 
-  // Ensure buttons are always above inputs for more visually pleasing borders.
-  // This isn't needed for `.input-group-text` since it shares the same border-color
-  // as our inputs.
+  /*
+    Ensure buttons are always above inputs for more visually pleasing borders.
+    This isn't needed for `.input-group-text` since it shares the same border-color
+    as our inputs.
+   */
   .btn {
     position: relative;
     z-index: 2;
@@ -95,7 +103,7 @@
 
 
 // Textual addons
-//
+
 // Serves as a catch-all element for any text or radio/checkbox input you wish
 // to prepend or append to an input.
 
@@ -123,7 +131,7 @@
 
 
 // Sizing
-//
+
 // Remix the default form control sizing classes into new ones for easier
 // manipulation.
 
@@ -168,7 +176,7 @@
 
 
 // Prepend and append rounded corners
-//
+
 // These rulesets must come after the sizing ones to properly override sm and lg
 // border-radius values when extending. They're more specific than we'd like
 // with the `.input-group >` part, but without it, we cannot override the sizing.
