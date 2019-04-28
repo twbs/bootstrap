@@ -1303,4 +1303,17 @@ The file input is the most gnarly of the bunch and requires additional JavaScrip
 </div>
 {{< /example >}}
 
+
+Longer placeholder text is truncated and an ellipsis is added when there's not enough space.
+
+{{< example >}}
+<div class="custom-file">
+  <input type="file" class="custom-file-input" id="customFileLong">
+  <label class="custom-file-label" for="customFileLong">
+    <span class="custom-file-text">Lorem ipsum posuere consectetur est at lobortis nulla vitae elit libero a pharetra augue fusce dapibus tellus ac cursus commodo tortor mauris condimentum nibh ut fermentum massa justo sit amet risus cras mattis consectetur purus sit amet fermentum</span>
+    <span class="custom-file-button">Browse</span>
+  </label>
+</div>
+{{< /example >}}
+
 We hide the default file `<input>` via `opacity` and instead style the `<label>`. The button is generated and positioned with `::after`. Lastly, we declare a `width` and `height` on the `<input>` for proper spacing for surrounding content.
