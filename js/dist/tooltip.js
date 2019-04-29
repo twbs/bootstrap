@@ -120,7 +120,9 @@
   };
 
   var triggerTransitionEnd = function triggerTransitionEnd(element) {
-    element.dispatchEvent(new Event(TRANSITION_END));
+    var evt = document.createEvent('HTMLEvents');
+    evt.initEvent(TRANSITION_END, true, true);
+    element.dispatchEvent(evt);
   };
 
   var isElement = function isElement(obj) {
@@ -372,7 +374,7 @@
     SHOW: 'show',
     OUT: 'out'
   };
-  var Event$1 = {
+  var Event = {
     HIDE: "hide" + EVENT_KEY,
     HIDDEN: "hidden" + EVENT_KEY,
     SHOW: "show" + EVENT_KEY,
@@ -1032,7 +1034,7 @@
     }, {
       key: "Event",
       get: function get() {
-        return Event$1;
+        return Event;
       }
     }, {
       key: "EVENT_KEY",
