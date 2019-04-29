@@ -118,7 +118,9 @@
   };
 
   var triggerTransitionEnd = function triggerTransitionEnd(element) {
-    element.dispatchEvent(new Event(TRANSITION_END));
+    var evt = document.createEvent('HTMLEvents');
+    evt.initEvent(TRANSITION_END, true, true);
+    element.dispatchEvent(evt);
   };
 
   var isElement = function isElement(obj) {
@@ -204,7 +206,7 @@
     focus: 'boolean',
     show: 'boolean'
   };
-  var Event$1 = {
+  var Event = {
     HIDE: "hide" + EVENT_KEY,
     HIDDEN: "hidden" + EVENT_KEY,
     SHOW: "show" + EVENT_KEY,
@@ -275,7 +277,7 @@
         this._isTransitioning = true;
       }
 
-      var showEvent = EventHandler.trigger(this._element, Event$1.SHOW, {
+      var showEvent = EventHandler.trigger(this._element, Event.SHOW, {
         relatedTarget: relatedTarget
       });
 
@@ -295,11 +297,11 @@
 
       this._setResizeEvent();
 
-      EventHandler.on(this._element, Event$1.CLICK_DISMISS, Selector.DATA_DISMISS, function (event) {
+      EventHandler.on(this._element, Event.CLICK_DISMISS, Selector.DATA_DISMISS, function (event) {
         return _this.hide(event);
       });
-      EventHandler.on(this._dialog, Event$1.MOUSEDOWN_DISMISS, function () {
-        EventHandler.one(_this._element, Event$1.MOUSEUP_DISMISS, function (event) {
+      EventHandler.on(this._dialog, Event.MOUSEDOWN_DISMISS, function () {
+        EventHandler.one(_this._element, Event.MOUSEUP_DISMISS, function (event) {
           if (event.target === _this._element) {
             _this._ignoreBackdropClick = true;
           }
@@ -322,7 +324,7 @@
         return;
       }
 
-      var hideEvent = EventHandler.trigger(this._element, Event$1.HIDE);
+      var hideEvent = EventHandler.trigger(this._element, Event.HIDE);
 
       if (!this._isShown || hideEvent.defaultPrevented) {
         return;
@@ -340,12 +342,12 @@
 
       this._setResizeEvent();
 
-      EventHandler.off(document, Event$1.FOCUSIN);
+      EventHandler.off(document, Event.FOCUSIN);
 
       this._element.classList.remove(ClassName.SHOW);
 
-      EventHandler.off(this._element, Event$1.CLICK_DISMISS);
-      EventHandler.off(this._dialog, Event$1.MOUSEDOWN_DISMISS);
+      EventHandler.off(this._element, Event.CLICK_DISMISS);
+      EventHandler.off(this._dialog, Event.MOUSEDOWN_DISMISS);
 
       if (transition) {
         var transitionDuration = getTransitionDurationFromElement(this._element);
@@ -368,7 +370,7 @@
        * It will remove `Event.CLICK_DATA_API` event that should remain
        */
 
-      EventHandler.off(document, Event$1.FOCUSIN);
+      EventHandler.off(document, Event.FOCUSIN);
       Data.removeData(this._element, DATA_KEY);
       this._config = null;
       this._element = null;
@@ -430,7 +432,7 @@
         }
 
         _this3._isTransitioning = false;
-        EventHandler.trigger(_this3._element, Event$1.SHOWN, {
+        EventHandler.trigger(_this3._element, Event.SHOWN, {
           relatedTarget: relatedTarget
         });
       };
@@ -447,9 +449,9 @@
     _proto._enforceFocus = function _enforceFocus() {
       var _this4 = this;
 
-      EventHandler.off(document, Event$1.FOCUSIN); // guard against infinite focus loop
+      EventHandler.off(document, Event.FOCUSIN); // guard against infinite focus loop
 
-      EventHandler.on(document, Event$1.FOCUSIN, function (event) {
+      EventHandler.on(document, Event.FOCUSIN, function (event) {
         if (document !== event.target && _this4._element !== event.target && !_this4._element.contains(event.target)) {
           _this4._element.focus();
         }
@@ -460,7 +462,7 @@
       var _this5 = this;
 
       if (this._isShown && this._config.keyboard) {
-        EventHandler.on(this._element, Event$1.KEYDOWN_DISMISS, function (event) {
+        EventHandler.on(this._element, Event.KEYDOWN_DISMISS, function (event) {
           if (event.which === ESCAPE_KEYCODE) {
             event.preventDefault();
 
@@ -468,7 +470,7 @@
           }
         });
       } else if (!this._isShown) {
-        EventHandler.off(this._element, Event$1.KEYDOWN_DISMISS);
+        EventHandler.off(this._element, Event.KEYDOWN_DISMISS);
       }
     };
 
@@ -476,11 +478,11 @@
       var _this6 = this;
 
       if (this._isShown) {
-        EventHandler.on(window, Event$1.RESIZE, function (event) {
+        EventHandler.on(window, Event.RESIZE, function (event) {
           return _this6.handleUpdate(event);
         });
       } else {
-        EventHandler.off(window, Event$1.RESIZE);
+        EventHandler.off(window, Event.RESIZE);
       }
     };
 
@@ -502,7 +504,7 @@
 
         _this7._resetScrollbar();
 
-        EventHandler.trigger(_this7._element, Event$1.HIDDEN);
+        EventHandler.trigger(_this7._element, Event.HIDDEN);
       });
     };
 
@@ -528,7 +530,7 @@
         }
 
         document.body.appendChild(this._backdrop);
-        EventHandler.on(this._element, Event$1.CLICK_DISMISS, function (event) {
+        EventHandler.on(this._element, Event.CLICK_DISMISS, function (event) {
           if (_this8._ignoreBackdropClick) {
             _this8._ignoreBackdropClick = false;
             return;
@@ -731,7 +733,7 @@
    */
 
 
-  EventHandler.on(document, Event$1.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
+  EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
     var _this10 = this;
 
     var target;
@@ -747,13 +749,13 @@
       event.preventDefault();
     }
 
-    EventHandler.one(target, Event$1.SHOW, function (showEvent) {
+    EventHandler.one(target, Event.SHOW, function (showEvent) {
       if (showEvent.defaultPrevented) {
         // only register focus restorer if modal will actually get shown
         return;
       }
 
-      EventHandler.one(target, Event$1.HIDDEN, function () {
+      EventHandler.one(target, Event.HIDDEN, function () {
         if (isVisible(_this10)) {
           _this10.focus();
         }

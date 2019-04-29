@@ -112,6 +112,7 @@ select.form-control {
   width: 100%;
   padding: $input-padding-y 0;
   margin-bottom: 0; // match inputs if this class comes on inputs with default margins
+  @include font-size($input-font-size);
   line-height: $input-line-height;
   color: $input-plaintext-color;
   background-color: transparent;
