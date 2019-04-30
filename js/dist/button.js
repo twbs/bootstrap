@@ -188,11 +188,17 @@
   });
   EventHandler.on(document, Event.FOCUS_DATA_API, Selector.DATA_TOGGLE_CARROT, function (event) {
     var button = SelectorEngine.closest(event.target, Selector.BUTTON);
-    button.classList.add(ClassName.FOCUS);
+
+    if (button) {
+      button.classList.add(ClassName.FOCUS);
+    }
   });
   EventHandler.on(document, Event.BLUR_DATA_API, Selector.DATA_TOGGLE_CARROT, function (event) {
     var button = SelectorEngine.closest(event.target, Selector.BUTTON);
-    button.classList.remove(ClassName.FOCUS);
+
+    if (button) {
+      button.classList.remove(ClassName.FOCUS);
+    }
   });
   /**
    * ------------------------------------------------------------------------

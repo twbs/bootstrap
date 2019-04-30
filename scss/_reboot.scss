@@ -10,39 +10,26 @@
 
 // Document
 //
-// 1. Change from `box-sizing: content-box` so that `width` is not affected by `padding` or `border`.
-// 2. Change the default font family in all browsers.
-// 3. Correct the line height in all browsers.
-// 4. Prevent adjustments of font size after orientation changes in IE on Windows Phone and in iOS.
-// 5. Change the default tap highlight to be completely transparent in iOS.
-
+// Change from `box-sizing: content-box` so that `width` is not affected by `padding` or `border`.
 *,
 *::before,
 *::after {
-  box-sizing: border-box; // 1
+  box-sizing: border-box;
 }
 
-html {
-  font-family: sans-serif; // 2
-  line-height: 1.15; // 3
-  -webkit-text-size-adjust: 100%; // 4
-  -webkit-tap-highlight-color: rgba($black, 0); // 5
-}
-
-// Shim for "new" HTML5 structural elements to display correctly (IE10, older browsers)
-// TODO: remove in v5
-// stylelint-disable-next-line selector-list-comma-newline-after
-article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+// Shim for IE11
+main {
   display: block;
 }
 
 // Body
 //
 // 1. Remove the margin in all browsers.
-// 2. As a best practice, apply a default `background-color`.
-// 3. Set an explicit initial text-align value so that we can later use
+// 2. Set an explicit initial text-align value so that we can later use
 //    the `inherit` value on things like `<th>` elements.
-
+// 3. As a best practice, apply a default `background-color`.
+// 4. Prevent adjustments of font size after orientation changes in IE on Windows Phone and in iOS.
+// 5. Change the default tap highlight to be completely transparent in iOS.
 body {
   margin: 0; // 1
   font-family: $font-family-base;
@@ -50,8 +37,10 @@ body {
   font-weight: $font-weight-base;
   line-height: $line-height-base;
   color: $body-color;
-  text-align: left; // 3
-  background-color: $body-bg; // 2
+  text-align: left; // 2
+  background-color: $body-bg; // 3
+  -webkit-text-size-adjust: 100%; // 4
+  -webkit-tap-highlight-color: rgba($black, 0); // 5
 }
 
 // Future-proof rule: in browsers that support :focus-visible, suppress the focus outline
@@ -70,13 +59,20 @@ body {
 
 // Content grouping
 //
-// 1. Add the correct box sizing in Firefox.
-// 2. Show the overflow in Edge and IE.
+// 1. Reset Firefox's gray color
+// 2. Set correct height and prevent the `size` attribute to make the `hr` look like an input field
+//    See https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_hr_size
 
 hr {
-  box-sizing: content-box; // 1
-  height: 0; // 1
-  overflow: visible; // 2
+  margin: $hr-margin-y 0;
+  color: $hr-color; // 1
+  background-color: currentColor;
+  border: 0;
+  opacity: $hr-opacity;
+}
+
+hr:not([size]) {
+  height: $hr-height; // 2
 }
 
 
@@ -88,11 +84,45 @@ hr {
 //
 // By default, `<h1>`-`<h6>` all receive top and bottom margins. We nuke the top
 // margin for easier control within type scales as it avoids margin collapsing.
-// stylelint-disable-next-line selector-list-comma-newline-after
-h1, h2, h3, h4, h5, h6 {
+%heading {
   margin-top: 0;
   margin-bottom: $headings-margin-bottom;
+  font-family: $headings-font-family;
+  font-weight: $headings-font-weight;
+  line-height: $headings-line-height;
+  color: $headings-color;
 }
+
+h1 {
+  @extend %heading;
+  @include font-size($h1-font-size);
+}
+
+h2 {
+  @extend %heading;
+  @include font-size($h2-font-size);
+}
+
+h3 {
+  @extend %heading;
+  @include font-size($h3-font-size);
+}
+
+h4 {
+  @extend %heading;
+  @include font-size($h4-font-size);
+}
+
+h5 {
+  @extend %heading;
+  @include font-size($h5-font-size);
+}
+
+h6 {
+  @extend %heading;
+  @include font-size($h6-font-size);
+}
+
 
 // Reset margins on paragraphs
 //
@@ -159,7 +189,7 @@ strong {
 }
 
 small {
-  @include font-size(80%); // Add the correct font size in all browsers
+  @include font-size($small-font-size); // Add the correct font size in all browsers
 }
 
 //
@@ -424,6 +454,11 @@ legend {
   line-height: inherit;
   color: inherit; // 2
   white-space: normal; // 1
+}
+
+mark {
+  padding: $mark-padding;
+  background-color: $mark-bg;
 }
 
 progress {
