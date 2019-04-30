@@ -315,16 +315,6 @@
   &[disabled] ~ .custom-file-label {
     background-color: $custom-file-disabled-bg;
   }
-
-  @each $lang, $value in $custom-file-text {
-    &:lang(#{$lang}) ~ .custom-file-label::after {
-      content: $value;
-    }
-  }
-
-  ~ .custom-file-label[data-browse]::after {
-    content: attr(data-browse);
-  }
 }
 
 .custom-file-label {
@@ -333,33 +323,43 @@
   right: 0;
   left: 0;
   z-index: 1;
+  display: flex;
   height: $custom-file-height;
+  border-color: $custom-file-border-color;
+  @include border-radius($custom-file-border-radius);
+  @include box-shadow($custom-file-box-shadow);
+}
+
+.custom-file-text {
+  display: block;
+  flex-grow: 1;
   padding: $custom-file-padding-y $custom-file-padding-x;
+  overflow: hidden;
   font-family: $custom-file-font-family;
   font-weight: $custom-file-font-weight;
   line-height: $custom-file-line-height;
   color: $custom-file-color;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   background-color: $custom-file-bg;
-  border: $custom-file-border-width solid $custom-file-border-color;
-  @include border-radius($custom-file-border-radius);
-  @include box-shadow($custom-file-box-shadow);
+  border-color: inherit;
+  border-style: solid;
+  border-width: $custom-file-border-width;
+  @include border-left-radius(inherit);
+}
 
-  &::after {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 3;
-    display: block;
-    height: $custom-file-height-inner;
-    padding: $custom-file-padding-y $custom-file-padding-x;
-    line-height: $custom-file-line-height;
-    color: $custom-file-button-color;
-    content: "Browse";
-    @include gradient-bg($custom-file-button-bg);
-    border-left: inherit;
-    @include border-radius(0 $custom-file-border-radius $custom-file-border-radius 0);
-  }
+.custom-file-button {
+  display: block;
+  flex-shrink: 0;
+  padding: $custom-file-padding-y $custom-file-padding-x;
+  margin-left: -$custom-file-border-width;
+  line-height: $custom-file-line-height;
+  color: $custom-file-button-color;
+  @include gradient-bg($custom-file-button-bg);
+  border-color: inherit;
+  border-style: solid;
+  border-width: $custom-file-border-width;
+  @include border-right-radius(inherit);
 }
 
 // Range
@@ -507,6 +507,8 @@
 
 .custom-control-label::before,
 .custom-file-label,
+.custom-file-text,
+.custom-file-button,
 .custom-select {
   @include transition($custom-forms-transition);
 }
