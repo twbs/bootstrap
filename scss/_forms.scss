@@ -201,14 +201,11 @@ textarea.form-control {
 // Indent the labels to position radios/checkboxes as hanging controls.
 
 .form-check {
-  position: relative;
   display: block;
   padding-left: $form-check-input-gutter;
 }
 
 .form-check-input {
-  position: absolute;
-  margin-top: $form-check-input-margin-y;
   margin-left: -$form-check-input-gutter;
 
   // Use disabled attribute instead of :disabled pseudo-class
@@ -230,8 +227,6 @@ textarea.form-control {
 
   // Undo .form-check-input defaults and add some `margin-right`.
   .form-check-input {
-    position: static;
-    margin-top: 0;
     margin-right: $form-check-inline-input-margin-x;
     margin-left: 0;
   }

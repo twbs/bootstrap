@@ -204,6 +204,7 @@ Various form elements have been rebooted for simpler base styles. Here are some 
 - `<legend>`s, like fieldsets, have also been restyled to be displayed as a heading of sorts.
 - `<label>`s are set to `display: inline-block` to allow `margin` to be applied.
 - `<input>`s, `<select>`s, `<textarea>`s, and `<button>`s are mostly addressed by Normalize, but Reboot removes their `margin` and sets `line-height: inherit`, too.
+- `<input type="checkbox">` & `<input type="radio">` are aligned based on the line-height of the body. Make sure to alter the `height` of these elements if your line height is altered in custom css.
 - `<textarea>`s are modified to only be resizable vertically as horizontal resizing often "breaks" page layout.
 - `<button>`s and `<input>` button elements have `cursor: pointer` when `:not(:disabled)`.
 

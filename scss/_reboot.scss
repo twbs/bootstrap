@@ -404,10 +404,16 @@ button::-moz-focus-inner,
   border-style: none;
 }
 
+// Fix alignment for checkboxes and radios. We assume the line height is the same
+// as the line height of the body, but since there's no way to set the visual width
+// and height of a native checkbox or radio without altering the appearance, this
+// is the only workaround which works. The checkbox or radio will not be stretched,
+// but be displayed in the middle of its height.
 input[type="radio"],
 input[type="checkbox"] {
-  box-sizing: border-box; // 1. Add the correct box sizing in IE 10-
-  padding: 0; // 2. Remove the padding in IE 10-
+  // stylelint-disable-next-line length-zero-no-unit
+  height: $line-height-base + 0em;
+  vertical-align: top;
 }
 
 
