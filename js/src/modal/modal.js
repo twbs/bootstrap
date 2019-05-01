@@ -15,11 +15,11 @@ import {
   makeArray,
   reflow,
   typeCheckConfig
-} from './util/index'
-import Data from './dom/data'
-import EventHandler from './dom/event-handler'
-import Manipulator from './dom/manipulator'
-import SelectorEngine from './dom/selector-engine'
+} from '../util/index'
+import Data from '../dom/data'
+import EventHandler from '../dom/event-handler'
+import Manipulator from '../dom/manipulator'
+import SelectorEngine from '../dom/selector-engine'
 
 /**
  * ------------------------------------------------------------------------
@@ -171,7 +171,7 @@ class Modal {
 
     const hideEvent = EventHandler.trigger(this._element, Event.HIDE)
 
-    if (!this._isShown || hideEvent.defaultPrevented) {
+    if (hideEvent.defaultPrevented) {
       return
     }
 
@@ -310,14 +310,14 @@ class Modal {
           this.hide()
         }
       })
-    } else if (!this._isShown) {
+    } else {
       EventHandler.off(this._element, Event.KEYDOWN_DISMISS)
     }
   }
 
   _setResizeEvent() {
     if (this._isShown) {
-      EventHandler.on(window, Event.RESIZE, event => this.handleUpdate(event))
+      EventHandler.on(window, Event.RESIZE, () => this._adjustDialog())
     } else {
       EventHandler.off(window, Event.RESIZE)
     }
@@ -337,10 +337,8 @@ class Modal {
   }
 
   _removeBackdrop() {
-    if (this._backdrop) {
-      this._backdrop.parentNode.removeChild(this._backdrop)
-      this._backdrop = null
-    }
+    this._backdrop.parentNode.removeChild(this._backdrop)
+    this._backdrop = null
   }
 
   _showBackdrop(callback) {
@@ -381,10 +379,6 @@ class Modal {
 
       this._backdrop.classList.add(ClassName.SHOW)
 
-      if (!callback) {
-        return
-      }
-
       if (!animate) {
         callback()
         return
@@ -399,9 +393,7 @@ class Modal {
 
       const callbackRemove = () => {
         this._removeBackdrop()
-        if (callback) {
-          callback()
-        }
+        callback()
       }
 
       if (this._element.classList.contains(ClassName.FADE)) {
@@ -411,7 +403,7 @@ class Modal {
       } else {
         callbackRemove()
       }
-    } else if (callback) {
+    } else {
       callback()
     }
   }
@@ -557,19 +549,8 @@ class Modal {
  */
 
 EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
-  let target
   const selector = getSelectorFromElement(this)
-
-  if (selector) {
-    target = SelectorEngine.findOne(selector)
-  }
-
-  const config = Data.getData(target, DATA_KEY) ?
-    'toggle' :
-    {
-      ...Manipulator.getDataAttributes(target),
-      ...Manipulator.getDataAttributes(this)
-    }
+  const target = SelectorEngine.findOne(selector)
 
   if (this.tagName === 'A' || this.tagName === 'AREA') {
     event.preventDefault()
@@ -590,6 +571,11 @@ EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (
 
   let data = Data.getData(target, DATA_KEY)
   if (!data) {
+    const config = {
+      ...Manipulator.getDataAttributes(target),
+      ...Manipulator.getDataAttributes(this)
+    }
+
     data = new Modal(target, config)
   }
 
@@ -600,8 +586,9 @@ EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (
  * ------------------------------------------------------------------------
  * jQuery
  * ------------------------------------------------------------------------
+ * add .modal to jQuery only if jQuery is present
  */
-
+/* istanbul ignore if */
 if (typeof $ !== 'undefined') {
   const JQUERY_NO_CONFLICT = $.fn[NAME]
   $.fn[NAME] = Modal._jQueryInterface
