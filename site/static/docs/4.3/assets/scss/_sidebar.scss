@@ -17,8 +17,8 @@
   @include font-size(.875rem);
 }
 
-// stylelint-disable selector-max-id, selector-max-type, selector-max-compound-selectors
-#TableOfContents {
+// stylelint-disable selector-max-type, selector-max-combinators, selector-max-compound-selectors
+.bd-toc nav {
   padding-left: 0;
   border-left: 1px solid #eee;
 
@@ -50,7 +50,7 @@
     }
   }
 }
-// stylelint-enable selector-max-id, selector-max-type, selector-max-compound-selectors
+// stylelint-enable selector-max-type, selector-max-combinators, selector-max-compound-selectors
 
 //
 // Left side navigation
