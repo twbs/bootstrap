@@ -40,7 +40,7 @@ const files = [
     configPropertyName: 'js_bundle_hash'
   },
   {
-    file: `site/docs/${pkg.version_short}/assets/js/vendor/jquery-slim.min.js`,
+    file: `site/docs/${pkg.version_short}/assets/js/vendor/jquery.slim.min.js`,
     configPropertyName: 'jquery_hash'
   },
   {
