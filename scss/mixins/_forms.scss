@@ -26,6 +26,18 @@
   @include deprecate("The `form-control-focus()` mixin", "v4.3.2", "v5", $ignore-warning);
 }
 
+@mixin form-validation-state-selector($state) {
+  @if ($state == "valid" or $state == "invalid") {
+    .was-validated &:#{$state},
+    &.is-#{$state} {
+      @content;
+    }
+  } @else {
+    &.is-#{$state} {
+      @content;
+    }
+  }
+}
 
 @mixin form-validation-state($state, $color, $icon) {
   .#{$state}-feedback {
@@ -52,8 +64,7 @@
   }
 
   .form-control {
-    .was-validated &:#{$state},
-    &.is-#{$state} {
+    @include form-validation-state-selector($state) {
       border-color: $color;
 
       @if $enable-validation-icons {
@@ -78,8 +89,7 @@
 
   // stylelint-disable-next-line selector-no-qualifying-type
   textarea.form-control {
-    .was-validated &:#{$state},
-    &.is-#{$state} {
+    @include form-validation-state-selector($state) {
       @if $enable-validation-icons {
         padding-right: $input-height-inner;
         background-position: top $input-height-inner-quarter right $input-height-inner-quarter;
@@ -88,8 +98,7 @@
   }
 
   .custom-select {
-    .was-validated &:#{$state},
-    &.is-#{$state} {
+    @include form-validation-state-selector($state) {
       border-color: $color;
 
       @if $enable-validation-icons {
@@ -111,8 +120,7 @@
 
 
   .form-control-file {
-    .was-validated &:#{$state},
-    &.is-#{$state} {
+    @include form-validation-state-selector($state) {
       ~ .#{$state}-feedback,
       ~ .#{$state}-tooltip {
         display: block;
@@ -121,8 +129,7 @@
   }
 
   .form-check-input {
-    .was-validated &:#{$state},
-    &.is-#{$state} {
+    @include form-validation-state-selector($state) {
       ~ .form-check-label {
         color: $color;
       }
@@ -135,8 +142,7 @@
   }
 
   .custom-control-input {
-    .was-validated &:#{$state},
-    &.is-#{$state} {
+    @include form-validation-state-selector($state) {
       ~ .custom-control-label {
         color: $color;
 
@@ -171,8 +177,7 @@
 
   // custom file
   .custom-file-input {
-    .was-validated &:#{$state},
-    &.is-#{$state} {
+    @include form-validation-state-selector($state) {
       ~ .custom-file-label {
         border-color: $color;
       }
