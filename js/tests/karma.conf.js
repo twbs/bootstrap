@@ -30,7 +30,7 @@ const reporters = ['dots']
 const detectBrowsers = {
   usePhantomJS: false,
   postDetection(availableBrowser) {
-    if (typeof env.TRAVIS_JOB_ID !== 'undefined' || availableBrowser.includes('Chrome')) {
+    if (env.CI === true || availableBrowser.includes('Chrome')) {
       return debug ? ['Chrome'] : ['ChromeHeadless']
     }
 
@@ -79,8 +79,9 @@ if (bundle) {
   conf.detectBrowsers = detectBrowsers
   files = files.concat([
     jqueryFile,
+    'js/tests/unit/tests-polyfills.js',
     'dist/js/bootstrap.js',
-    'js/tests/unit/*.js'
+    'js/tests/unit/!(tests-polyfills).js'
   ])
 } else if (browserStack) {
   conf.hostname = ip.address()
@@ -97,6 +98,7 @@ if (bundle) {
   reporters.push('BrowserStack')
   files = files.concat([
     jqueryFile,
+    'js/tests/unit/tests-polyfills.js',
     'js/coverage/dist/util/util.js',
     'js/coverage/dist/util/sanitizer.js',
     'js/coverage/dist/dom/polyfill.js',
@@ -107,7 +109,7 @@ if (bundle) {
     'js/coverage/dist/dom/!(polyfill).js',
     'js/coverage/dist/tooltip.js',
     'js/coverage/dist/!(util|index|tooltip).js', // include all of our js/dist files except util.js, index.js and tooltip.js
-    'js/tests/unit/*.js',
+    'js/tests/unit/!(tests-polyfills).js',
     'js/tests/unit/dom/*.js',
     'js/tests/unit/util/*.js'
   ])
@@ -121,6 +123,7 @@ if (bundle) {
   )
   files = files.concat([
     jqueryFile,
+    'js/tests/unit/tests-polyfills.js',
     'js/coverage/dist/util/util.js',
     'js/coverage/dist/util/sanitizer.js',
     'js/coverage/dist/dom/polyfill.js',
@@ -131,7 +134,7 @@ if (bundle) {
     'js/coverage/dist/dom/!(polyfill).js',
     'js/coverage/dist/tooltip.js',
     'js/coverage/dist/!(util|index|tooltip).js', // include all of our js/dist files except util.js, index.js and tooltip.js
-    'js/tests/unit/*.js',
+    'js/tests/unit/!(tests-polyfills).js',
     'js/tests/unit/dom/*.js',
     'js/tests/unit/util/*.js'
   ])

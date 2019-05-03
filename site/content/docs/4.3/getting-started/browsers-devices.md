@@ -8,7 +8,7 @@ toc: true
 
 ## Supported browsers
 
-Bootstrap supports the **latest, stable releases** of all major browsers and platforms. On Windows, **we only support Microsoft Edge**.
+Bootstrap supports the **latest, stable releases** of all major browsers and platforms. On Windows, **we support Internet Explorer 11 / Microsoft Edge**.
 
 Alternative browsers which use the latest version of WebKit, Blink, or Gecko, whether directly or via the platform's web view API, are not explicitly supported. However, Bootstrap should (in most cases) display and function correctly in these browsers as well. More specific support information is provided below.
 
@@ -93,7 +93,7 @@ Similarly, the latest versions of most desktop browsers are supported.
       <th scope="row">Windows</th>
       <td class="text-success">Supported</td>
       <td class="text-success">Supported</td>
-      <td class="text-danger">Not supported</td>
+      <td class="text-success">Supported, IE11</td>
       <td class="text-success">Supported</td>
       <td class="text-success">Supported</td>
       <td class="text-danger">Not supported</td>
@@ -109,7 +109,7 @@ For a list of some of the browser bugs that Bootstrap has to grapple with, see o
 
 ## Internet Explorer
 
-Internet Explorer 11 is not supported officially. However, if you build Bootstrap yourself, you can add the needed CSS prefixes and follow the instructions on the [JavaScript page]({{< docsref "/getting-started/javascript#compatibility-with-ie-11" >}}). Please note that this might break at any time. **If you require Internet Explorer 10/11 support, use Bootstrap 4.**
+Internet Explorer 11 is supported; IE10 and down is not. Please be aware that some CSS3 properties and HTML5 elements are not fully supported in IE10, or require prefixed properties for full functionality. Visit [Can I use...](https://caniuse.com/) for details on browser support of CSS3 and HTML5 features. **If you require IE8-9 support, use Bootstrap 3.**
 
 ## Modals and dropdowns on mobile
 
