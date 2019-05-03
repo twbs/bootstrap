@@ -6,9 +6,6 @@ group: forms
 toc: true
 ---
 
-
-## Checkboxes and radios
-
 <script>
 document.addEventListener("DOMContentLoaded", function() {
   var checkbox = document.getElementById("flexCheckIndeterminate");
