@@ -731,7 +731,14 @@ $(function () {
   })
 
   QUnit.test('should enforce focus', function (assert) {
-    assert.expect(2)
+    var isIE11 = Boolean(window.MSInputMethodContext) && Boolean(document.documentMode)
+
+    if (isIE11) {
+      assert.expect(1)
+    } else {
+      assert.expect(2)
+    }
+
     var done = assert.async()
 
     var $modal = $([
@@ -759,14 +766,18 @@ $(function () {
         done()
       }
 
-      document.addEventListener('focusin', focusInListener)
+      if (isIE11) {
+        done()
+      } else {
+        document.addEventListener('focusin', focusInListener)
 
-      var focusInEvent = new Event('focusin')
-      Object.defineProperty(focusInEvent, 'target', {
-        value: $('#qunit-fixture')[0]
-      })
+        var focusInEvent = new Event('focusin')
+        Object.defineProperty(focusInEvent, 'target', {
+          value: $('#qunit-fixture')[0]
+        })
 
-      document.dispatchEvent(focusInEvent)
+        document.dispatchEvent(focusInEvent)
+      }
     })
       .bootstrapModal('show')
   })
@@ -789,7 +800,7 @@ $(function () {
 
     var $modalBody = $('.modal-body')
     $modalBody.scrollTop(100)
-    assert.strictEqual($modalBody.scrollTop(), 100)
+    assert.ok($modalBody.scrollTop() > 95 && $modalBody.scrollTop() <= 100)
 
     $modal.on('shown.bs.modal', function () {
       assert.strictEqual($modalBody.scrollTop(), 0, 'modal body scrollTop should be 0 when opened')

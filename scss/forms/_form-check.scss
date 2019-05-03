@@ -85,7 +85,9 @@
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 4'%3e%3cpath stroke='%23fff' d='M0 2h4'/%3e%3c/svg%3e");
   }
 
-  &:disabled {
+  // Use disabled attribute instead of :disabled pseudo-class
+  // Workaround for: https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/11295231
+  &[disabled] {
     opacity: .5;
     pointer-events: none;
     filter: none;

@@ -104,6 +104,7 @@
 //   line-height: $input-line-height-lg;
 // }
 //
+<<<<<<< HEAD
 // .col-form-label-sm {
 //   padding-top: calc(#{$input-padding-y-sm} + #{$input-border-width});
 //   padding-bottom: calc(#{$input-padding-y-sm} + #{$input-border-width});
@@ -116,6 +117,33 @@
 // //
 // // Apply class to a readonly input to make it appear like regular plain
 // // text (without any border, background color, focus indicator)
+=======
+// Apply class to a readonly input to make it appear like regular plain
+// text (without any border, background color, focus indicator)
+
+.form-control-plaintext {
+  display: block;
+  width: 100%;
+  padding-top: $input-padding-y;
+  padding-bottom: $input-padding-y;
+  margin-bottom: 0; // match inputs if this class comes on inputs with default margins
+  @include font-size($input-font-size);
+  line-height: $input-line-height;
+  color: $input-plaintext-color;
+  background-color: transparent;
+  border: solid transparent;
+  border-width: $input-border-width 0;
+
+  &.form-control-sm,
+  &.form-control-lg {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+
+// Form control sizing
+>>>>>>> master
 //
 // .form-control-plaintext {
 //   display: block;
@@ -204,6 +232,34 @@
 //   }
 // }
 
+<<<<<<< HEAD
+=======
+  // Use disabled attribute instead of :disabled pseudo-class
+  // Workaround for: https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/11295231
+  &[disabled] ~ .form-check-label {
+    color: $text-muted;
+  }
+}
+
+.form-check-label {
+  margin-bottom: 0; // Override default `<label>` bottom margin
+}
+
+.form-check-inline {
+  display: inline-flex;
+  align-items: center;
+  padding-left: 0; // Override base .form-check
+  margin-right: $form-check-inline-margin-x;
+
+  // Undo .form-check-input defaults and add some `margin-right`.
+  .form-check-input {
+    position: static;
+    margin-top: 0;
+    margin-right: $form-check-inline-input-margin-x;
+    margin-left: 0;
+  }
+}
+>>>>>>> master
 
 // // Checkboxes and radios
 // //
