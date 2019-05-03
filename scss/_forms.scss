@@ -1,15 +1,14 @@
 // stylelint-disable selector-no-qualifying-type
 
-@import "forms/labels.scss";
-@import "forms/form-control.scss";
-@import "forms/form-select.scss";
-@import "forms/form-check.scss";
-@import "forms/form-file.scss";
-@import "forms/form-range.scss";
-@import "forms/layout.scss";
-@import "forms/input-group.scss";
-@import "forms/validation.scss";
-
+@import "forms/labels";
+@import "forms/form-control";
+@import "forms/form-select";
+@import "forms/form-check";
+@import "forms/form-file";
+@import "forms/form-range";
+@import "forms/layout";
+@import "forms/input-group";
+@import "forms/validation";
 
 //
 // Textual form controls
