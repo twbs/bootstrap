@@ -800,7 +800,7 @@ $(function () {
 
     var $modalBody = $('.modal-body')
     $modalBody.scrollTop(100)
-    assert.strictEqual($modalBody.scrollTop(), 100)
+    assert.ok($modalBody.scrollTop() > 95 && $modalBody.scrollTop() <= 100)
 
     $modal.on('shown.bs.modal', function () {
       assert.strictEqual($modalBody.scrollTop(), 0, 'modal body scrollTop should be 0 when opened')

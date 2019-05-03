@@ -6,6 +6,7 @@ git:
 node_js:
   - "8"
   - "10"
+  - "12"
 before_script:
   - google-chrome-stable --product-version
 script:
@@ -14,8 +15,6 @@ script:
   - if [[ "$TRAVIS_NODE_VERSION" = "10" && "$TRAVIS_EVENT_TYPE" = "push" && ! `git log --format=%B --no-merges -n 1 | grep '\[skip browser\]'` ]]; then npm run js-test-cloud; fi
 after_success:
   - if [[ "$TRAVIS_NODE_VERSION" = "10" ]]; then npm run coveralls; fi
-cache:
-  directories:
-    - "$HOME/.npm"
+cache: npm
 notifications:
   email: false

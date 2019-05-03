@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="{{ .Site.Params.authors }}">
-    <meta name="generator" content="Hugo {{ .Hugo.Version }}">
+    <meta name="generator" content="Hugo {{ hugo.Version }}">
     <title>{{ .Page.Title | markdownify }} · {{ .Site.Title | markdownify }}</title>
 
     <link rel="canonical" href="{{ .Permalink }}">
@@ -15,6 +15,7 @@
     {{- end }}
 
     {{ partial "stylesheet" . }}
+    {{ partial "favicons" . }}
 
     <style>
       .bd-placeholder-img {
