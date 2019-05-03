@@ -3,11 +3,11 @@
 >= 1%
 last 1 major version
 not dead
-Chrome >= 45
-Firefox >= 38
-Edge >= 12
+Chrome >= 60
+Firefox >= 60
+Edge >= 15.15063
 Explorer 11
-iOS >= 9
-Safari >= 9
-Android >= 4.4
-Opera >= 30
+iOS >= 10
+Safari >= 10
+Android >= 6
+not ExplorerMobile <= 11
