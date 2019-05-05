@@ -66,8 +66,8 @@ Read the [Getting started page](https://getbootstrap.com/docs/4.3/getting-starte
 [![CSS gzip size](https://img.badgesize.io/twbs/bootstrap/master/dist/css/bootstrap.min.css?compression=gzip&label=CSS+gzip+size)](https://github.com/twbs/bootstrap/tree/master/dist/css/bootstrap.min.css)
 [![JS gzip size](https://img.badgesize.io/twbs/bootstrap/master/dist/js/bootstrap.min.js?compression=gzip&label=JS+gzip+size)](https://github.com/twbs/bootstrap/tree/master/dist/js/bootstrap.min.js)
 [![BrowserStack Status](https://www.browserstack.com/automate/badge.svg?badge_key=SkxZcStBeExEdVJqQ2hWYnlWckpkNmNEY213SFp6WHFETWk2bGFuY3pCbz0tLXhqbHJsVlZhQnRBdEpod3NLSDMzaHc9PQ==--3d0b75245708616eb93113221beece33e680b229)](https://www.browserstack.com/automate/public-build/SkxZcStBeExEdVJqQ2hWYnlWckpkNmNEY213SFp6WHFETWk2bGFuY3pCbz0tLXhqbHJsVlZhQnRBdEpod3NLSDMzaHc9PQ==--3d0b75245708616eb93113221beece33e680b229)
-[![Backers on Open Collective](https://img.shields.io/opencollective/backers/bootstrap.svg?style=flat)](#backers)
-[![Sponsors on Open Collective](https://img.shields.io/opencollective/sponsors/bootstrap.svg?style=flat)](#sponsors)
+[![Backers on Open Collective](https://img.shields.io/opencollective/backers/bootstrap.svg)](#backers)
+[![Sponsors on Open Collective](https://img.shields.io/opencollective/sponsors/bootstrap.svg)](#sponsors)
 
 
 ## What's included
@@ -95,6 +95,10 @@ bootstrap/
         ├── bootstrap.bundle.js.map
         ├── bootstrap.bundle.min.js
         ├── bootstrap.bundle.min.js.map
+        ├── bootstrap.esm.js
+        ├── bootstrap.esm.js.map
+        ├── bootstrap.esm.min.js
+        ├── bootstrap.esm.min.js.map
         ├── bootstrap.js
         ├── bootstrap.js.map
         ├── bootstrap.min.js
