@@ -702,7 +702,13 @@ Add the `disabled` attribute to a `<fieldset>` to disable all the controls withi
 {{< callout warning >}}
 ##### Caveat with anchors
 
-By default, browsers will treat all native form controls (`<input>`, `<select>` and `<button>` elements) inside a `<fieldset disabled>` as disabled, preventing both keyboard and mouse interactions on them. However, if your form also includes `<a ... class="btn btn-*">` elements, these will only be given a style of `pointer-events: none`.
+By default, browsers will treat all native form controls (`<input>`, `<select>` and `<button>` elements) inside a `<fieldset disabled>` as disabled, preventing both keyboard and mouse interactions on them. However, if your form also includes `<a ... class="btn btn-*">` elements, these will only be given a style of `pointer-events: none`. As noted in the section about [disabled state for buttons]({{< docsref "/components/buttons#disabled-state" >}}) (and specifically in the sub-section for anchor elements), this CSS property is not yet standardized and isn't fully supported in Internet Explorer 10, and won't prevent keyboard users from being able to focus or activate these links. So to be safe, use custom JavaScript to disable such links.
+{{< /callout >}}
+
+{{< callout danger >}}
+#### Cross-browser compatibility
+
+While Bootstrap will apply these styles in all browsers, Internet Explorer 11 and below don't fully support the `disabled` attribute on a `<fieldset>`. Use custom JavaScript to disable the fieldset in these browsers.
 {{< /callout >}}
 
 ## Validation
@@ -1005,7 +1011,10 @@ Validation styles are available for the following form controls and components:
 
   <div class="custom-file">
     <input type="file" class="custom-file-input" id="validatedCustomFile" required>
-    <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+    <label class="custom-file-label" for="validatedCustomFile">
+      <span class="custom-file-text">Choose file...</span>
+      <span class="custom-file-button">Browse</span>
+    </label>
     <div class="invalid-feedback">Example invalid custom file feedback</div>
   </div>
 </form>
@@ -1255,7 +1264,7 @@ As is the `size` attribute:
 
 ### Range
 
-Create custom `<input type="range">` controls with `.custom-range`. The track (the background) and thumb (the value) are both styled to appear the same across browsers. As only Firefox supports "filling" their track from the left or right of the thumb as a means to visually indicate progress, we do not currently support it.
+Create custom `<input type="range">` controls with `.custom-range`. The track (the background) and thumb (the value) are both styled to appear the same across browsers. As only IE and Firefox support "filling" their track from the left or right of the thumb as a means to visually indicate progress, we do not currently support it.
 
 {{< example >}}
 <label for="customRange1">Example range</label>
@@ -1287,41 +1296,24 @@ The file input is the most gnarly of the bunch and requires additional JavaScrip
 {{< example >}}
 <div class="custom-file">
   <input type="file" class="custom-file-input" id="customFile">
-  <label class="custom-file-label" for="customFile">Choose file</label>
+  <label class="custom-file-label" for="customFile">
+    <span class="custom-file-text">Choose file...</span>
+    <span class="custom-file-button">Browse</span>
+  </label>
+</div>
+{{< /example >}}
+
+
+Longer placeholder text is truncated and an ellipsis is added when there's not enough space.
+
+{{< example >}}
+<div class="custom-file">
+  <input type="file" class="custom-file-input" id="customFileLong">
+  <label class="custom-file-label" for="customFileLong">
+    <span class="custom-file-text">Lorem ipsum posuere consectetur est at lobortis nulla vitae elit libero a pharetra augue fusce dapibus tellus ac cursus commodo tortor mauris condimentum nibh ut fermentum massa justo sit amet risus cras mattis consectetur purus sit amet fermentum</span>
+    <span class="custom-file-button">Browse</span>
+  </label>
 </div>
 {{< /example >}}
 
 We hide the default file `<input>` via `opacity` and instead style the `<label>`. The button is generated and positioned with `::after`. Lastly, we declare a `width` and `height` on the `<input>` for proper spacing for surrounding content.
-
-#### Translating or customizing the strings with SCSS
-
-The [`:lang()` pseudo-class](https://developer.mozilla.org/en-US/docs/Web/CSS/:lang) is used to allow for translation of the "Browse" text into other languages. Override or add entries to the `$custom-file-text` Sass variable with the relevant [language tag](https://en.wikipedia.org/wiki/IETF_language_tag) and localized strings. The English strings can be customized the same way. For example, here's how one might add a Spanish translation (Spanish's language code is `es`):
-
-{{< highlight scss >}}
-$custom-file-text: (
-  en: "Browse",
-  es: "Elegir"
-);
-{{< /highlight >}}
-
-Here's `lang(es)` in action on the custom file input for a Spanish translation:
-
-{{< example >}}
-<div class="custom-file">
-  <input type="file" class="custom-file-input" id="customFileLang" lang="es">
-  <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
-</div>
-{{< /example >}}
-
-You'll need to set the language of your document (or subtree thereof) correctly in order for the correct text to be shown. This can be done using [the `lang` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang) on the `<html>` element or the [`Content-Language` HTTP header](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.12), among other methods.
-
-#### Translating or customizing the strings with HTML
-
-Bootstrap also provides a way to translate the "Browse" text in HTML with the `data-browse` attribute which can be added to the custom input label (example in Dutch):
-
-{{< example >}}
-<div class="custom-file">
-  <input type="file" class="custom-file-input" id="customFileLangHTML">
-  <label class="custom-file-label" for="customFileLangHTML" data-browse="Bestand kiezen">Voeg je document toe</label>
-</div>
-{{< /example >}}
