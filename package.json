@@ -19,7 +19,7 @@
   ],
   "scripts": {
     "start": "npm-run-all --parallel watch docs-serve",
-    "linkinator": "linkinator _gh_pages --recurse --skip \"^(?!http://localhost)\"",
+    "linkinator": "linkinator _gh_pages --recurse --silent --skip \"^(?!http://localhost)\"",
     "bundlesize": "bundlesize",
     "css": "npm-run-all css-compile css-prefix css-minify css-copy",
     "css-copy": "cross-env-shell shx mkdir -p site/static/docs/$npm_package_version_short/dist/ && cross-env-shell shx cp -r dist/css/ site/static/docs/$npm_package_version_short/dist/",
