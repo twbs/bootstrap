@@ -41,14 +41,14 @@
     height: 1.5rem;
     margin: $alert-padding-y $alert-padding-x;
 
-    // Icons border
-    border-width: $alert-icon-border-width;
-    border-style: solid;
-    border-radius: 50%;
-
     // Specify Icons family
     font-family: monospace;
     font-weight: bolder;
+
+    // Icons border
+    border-style: solid;
+    border-width: $alert-icon-border-width;
+    border-radius: 50%;
   }
 }
 
