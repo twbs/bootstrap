@@ -21,6 +21,54 @@
   font-weight: $alert-link-font-weight;
 }
 
+// Alert Icons
+.alert-success,
+.alert-info,
+.alert-warning,
+.alert-danger {
+  padding-left: $font-size-base * 1.5 + $alert-padding-x * 1.55;
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    height: 1.5rem;
+    width: 1.5rem;
+
+    // Center Icons
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    // Icons border
+    border-width: $alert-icon-border-width;
+    border-radius: 50%;
+    border-style: solid;
+    margin: $alert-padding-y $alert-padding-x;
+
+    font-weight: bolder;
+    // Specify Icons family
+    font-family: monospace;
+  }
+}
+
+// Specify Icons and their border color
+.alert-success::before {
+  border-color: theme-color-level("success", $alert-color-level) !important;
+  content: "✓";
+}
+.alert-info::before {
+  border-color: theme-color-level("info", $alert-color-level) !important;
+  content: "ℹ";
+}
+.alert-warning::before {
+  border-color: theme-color-level("warning", $alert-color-level) !important;
+  content: "!";
+}
+.alert-danger::before {
+  border-color: theme-color-level("danger", $alert-color-level) !important;
+  content: "✖";
+}
 
 // Dismissible alerts
 //
