@@ -157,8 +157,7 @@
   color: $popover-header-color;
   background-color: $popover-header-bg;
   border-bottom: $popover-border-width solid darken($popover-header-bg, 5%);
-  $offset-border-width: calc(#{$popover-border-radius} - #{$popover-border-width});
-  @include border-top-radius($offset-border-width);
+  @include border-top-radius($popover-inner-border-radius);
 
   &:empty {
     display: none;
