@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap eventhandler.js v4.3.1 (https://getbootstrap.com/)
+  * Bootstrap event-handler.js v4.3.1 (https://getbootstrap.com/)
   * Copyright 2011-2019 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
   */
@@ -175,7 +175,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.3.1): dom/eventHandler.js
+   * Bootstrap (v4.3.1): dom/event-handler.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -467,4 +467,4 @@
   return EventHandler;
 
 }));
-//# sourceMappingURL=eventhandler.js.map
+//# sourceMappingURL=event-handler.js.map
