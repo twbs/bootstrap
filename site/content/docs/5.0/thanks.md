@@ -1,34 +1,34 @@
 ---
 layout: docs
-title: Thanks
-description: To say thanks to our sponsors and services which support us.
+title: Support the team
 group: thanks
 aliases: "/thanks/"
 toc: true
 ---
+
+Through donations and sponsorships we are able to maintain & improve Bootstrap. Feel free to show your support on our [Open Collective page](https://opencollective.com/bootstrap).
 
 ## Sponsors
 
 {{< sponsors.inline >}}
 {{- $ocURL := "https://opencollective.com/bootstrap/members/all.json" -}}
 {{- $sponsors := getJSON $ocURL "?TierId=7193&limit=10&offset=0" -}}
-<div class="row">
+<div class="d-flex flex-wrap mx-n2 text-center font-weight-bold">
   {{- range $sponsors }}
     {{- if .isActive -}}
-      <div class="col-3 d-flex mb-2">
-        <div class="card w-100 text-center">
-          <img src="{{- .image -}}" class="card-img-top" alt="{{- .name -}}">
-          <div class="card-body border-top">
-            <h5 class="card-title">
-              {{ if .website -}}
-              <a href="{{- .website -}}">{{- .name -}}</a>
-              {{ else -}}
-              {{- .name -}}
-              {{ end -}}
-            </h5>
-            {{ with .description }}<p class="card-text">{{ . | chomp }}</p>{{ end }}
+      <div class="m-2 position-relative">
+        <div style="width:100px; height: 100px;" class="img-thumbnail d-flex align-items-center justify-content-center overflow-hidden">
+          <div class="w-100">
+            <img src="{{- .image -}}" alt="{{- .name -}}" class="mh-100 mw-100">
           </div>
         </div>
+        <h3 class="h6 pt-2">
+            {{ if .website -}}
+              <a href="{{- .website -}}" class="stretched-link text-reset">{{- .name -}}</a>
+            {{ else -}}
+              {{- .name -}}
+            {{ end -}}
+        </h3>
       </div>
     {{- end -}}
   {{- end -}}
@@ -40,22 +40,18 @@ toc: true
 {{< backers.inline >}}
 {{- $ocURL := "https://opencollective.com/bootstrap/members/all.json" -}}
 {{- $sponsors := getJSON $ocURL "?TierId=7192&limit=10&offset=0" -}}
-<div class="row">
+<div class="d-flex flex-wrap mx-n1 text-center font-weight-bold">
   {{- range $sponsors }}
     {{- if .isActive -}}
-      <div class="col-3 d-flex mb-2">
-        <div class="card w-100 text-center">
-          <img src="{{- .image -}}" class="card-img-top" alt="{{- .name -}}">
-          <div class="card-body border-top">
-            <h5 class="card-title">
-              {{ if .website -}}
-              <a href="{{- .website -}}">{{- .name -}}</a>
-              {{ else -}}
-              {{- .name -}}
-              {{ end -}}
-            </h5>
-            {{ with .description }}<p class="card-text">{{ . | chomp }}</p>{{ end }}
-          </div>
+      <div class="m-1 position-relative">
+        <div style="width:50px; height: 50px;" class="img-thumbnail d-flex align-items-center justify-content-center overflow-hidden">
+          {{ if .website -}}
+            <a href="{{- .website -}}" class="stretched-link text-reset" title="{{- .name -}}">
+          {{ end -}}
+          <img src="{{- .image -}}" alt="{{- .name -}}" class="mh-100 mw-100">
+          {{ if .website -}}
+            </a>
+          {{ end -}}
         </div>
       </div>
     {{- end -}}
@@ -66,19 +62,17 @@ toc: true
 ## Services
 
 {{< services.inline >}}
-<div class="row">
-  <div class="col-3 d-flex mb-2">
-    <div class="card w-100 text-center">
-      <div style="background-color: #142433">
-        <img src="https://3fxtqy18kygf3on3bu39kh93-wpengine.netdna-ssl.com/wp-content/themes/browserstack/img/browserstack-logo.svg" class="card-img-top" alt="BrowserStack">
-      </div>
-      <div class="card-body border-top">
-        <h5 class="card-title">
-          <a href="https://www.browserstack.com/">BrowserStack</a>
-        </h5>
-        <p class="card-text">Instant access to 2000+ browsers and real iOS and Android devices for cross browser testing. Ship apps and websites that work for everyone, every time. Get Free Trial.</p>
-      </div>
+<div class="d-flex mx-n3 flex-wrap">
+  {{- range (index $.Site.Data "services") }}
+    <div class="m-3 position-relative">
+      {{ if .website -}}
+        <a href="{{- .website -}}" class="stretched-link text-reset" title="{{- .name -}}">
+      {{ end -}}
+      <img src="../assets/img/services/{{- .image -}}" alt="{{- .name -}}" class="mh-100 mw-100">
+      {{ if .website -}}
+        </a>
+      {{ end -}}
     </div>
-  </div>
+  {{ end -}}
 </div>
 {{< /services.inline >}}
