@@ -20,9 +20,13 @@ toc: true
           <img src="{{- .image -}}" class="card-img-top" alt="{{- .name -}}">
           <div class="card-body border-top">
             <h5 class="card-title">
+              {{ if .website -}}
               <a href="{{- .website -}}">{{- .name -}}</a>
+              {{ else -}}
+              {{- .name -}}
+              {{ end -}}
             </h5>
-            <p class="card-text">{{- .description -}}</p>
+            {{ with .description }}<p class="card-text">{{ . | chomp }}</p>{{ end }}
           </div>
         </div>
       </div>
@@ -44,9 +48,13 @@ toc: true
           <img src="{{- .image -}}" class="card-img-top" alt="{{- .name -}}">
           <div class="card-body border-top">
             <h5 class="card-title">
+              {{ if .website -}}
               <a href="{{- .website -}}">{{- .name -}}</a>
+              {{ else -}}
+              {{- .name -}}
+              {{ end -}}
             </h5>
-            <p class="card-text">{{- .description -}}</p>
+            {{ with .description }}<p class="card-text">{{ . | chomp }}</p>{{ end }}
           </div>
         </div>
       </div>
