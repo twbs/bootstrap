@@ -135,23 +135,24 @@ function getConfigByPluginKey(pluginKey) {
   }
 }
 
+const utilObjects = [
+  'Util',
+  'Sanitizer'
+]
+
+const domObjects = [
+  'Data',
+  'EventHandler',
+  'Manipulator',
+  'SelectorEngine'
+]
+
 function build(plugin) {
   console.log(`Building ${plugin} plugin...`)
 
   const { external, globals } = getConfigByPluginKey(plugin)
+  const pluginFilename = path.basename(bsPlugins[plugin])
   let pluginPath = rootPath
-
-  const utilObjects = [
-    'Util',
-    'Sanitizer'
-  ]
-
-  const domObjects = [
-    'Data',
-    'EventHandler',
-    'Manipulator',
-    'SelectorEngine'
-  ]
 
   if (utilObjects.includes(plugin)) {
     pluginPath = `${rootPath}/util/`
@@ -160,8 +161,6 @@ function build(plugin) {
   if (domObjects.includes(plugin)) {
     pluginPath = `${rootPath}/dom/`
   }
-
-  const pluginFilename = `${plugin.toLowerCase()}.js`
 
   rollup.rollup({
     input: bsPlugins[plugin],
@@ -181,4 +180,5 @@ function build(plugin) {
   })
 }
 
-Object.keys(bsPlugins).forEach(plugin => build(plugin))
+Object.keys(bsPlugins)
+  .forEach(plugin => build(plugin))
