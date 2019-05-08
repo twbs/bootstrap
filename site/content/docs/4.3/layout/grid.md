@@ -303,7 +303,7 @@ Don't want your columns to simply stack in some grid tiers? Use a combination of
 <div class="container">
   <!-- Stack the columns on mobile by making one full-width and the other half-width -->
   <div class="row">
-    <div class="col-12 col-md-8">.col-12 .col-md-8</div>
+    <div class="col-md-8">.col-md-8</div>
     <div class="col-6 col-md-4">.col-6 .col-md-4</div>
   </div>
 
@@ -477,7 +477,7 @@ In practice, here's how it looks. Note you can continue to use this with all oth
 <div class="bd-example-row">
 {{< example >}}
 <div class="row no-gutters">
-  <div class="col-12 col-sm-6 col-md-8">.col-12 .col-sm-6 .col-md-8</div>
+  <div class="col-sm-6 col-md-8">.col-sm-6 .col-md-8</div>
   <div class="col-6 col-md-4">.col-6 .col-md-4</div>
 </div>
 {{< /example >}}
