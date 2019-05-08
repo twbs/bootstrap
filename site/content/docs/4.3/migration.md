@@ -43,7 +43,7 @@ Changes to our source and compiled JavaScript files.
 
 Changes to any layout tools and our grid system.
 
-- Dropped `.media` component as it can be built with utility classes
+- Dropped `.media` component as it can be built with utility classes. [See #28265](https://github.com/twbs/bootstrap/pull/28265).
 - **Todo:** Remove `position: relative` from grid columns
 - **Todo:** Integrate CSS grid into our grid system
 
