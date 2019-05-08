@@ -52,7 +52,6 @@
       "never"
     ],
     "strict": "error",
-    "unicorn/filename-case": "off",
     "unicorn/no-unused-properties": "error",
     "unicorn/prefer-includes": "off",
     "unicorn/prefer-node-append": "off",
