@@ -4,7 +4,74 @@ title: Forms
 description: Examples and usage guidelines for form control styles, layout options, and custom components for creating a wide variety of forms.
 group: forms
 toc: true
+subpages:
+  - title: Overview
+  - title: Layout
+  - title: Form control
+  - title: Select
+  - title: Checks
+  - title: File
+  - title: Range
+  - title: Input group
+  - title: Validation
 ---
+
+<div class="row mt-5">
+  <div class="col-md-4 mb-3">
+    <a class="d-block p-4 bg-light rounded text-decoration-none" href="#">
+      <strong class="d-block h5 mb-0">Overview</strong>
+      <span class="text-secondary">Learn about Bootstrap's form components, behaviors, and more.</span>
+    </a>
+  </div>
+  <div class="col-md-4 mb-3">
+    <a class="d-block p-4 bg-light rounded text-decoration-none" href="#">
+      <strong class="d-block h5 mb-0">Layout</strong>
+      <span class="text-secondary">Create inline, horizontal, or complex grid-based layouts with your forms.</span>
+    </a>
+  </div>
+  <div class="col-md-4 mb-3">
+    <a class="d-block p-4 bg-light rounded text-decoration-none" href="#">
+      <strong class="d-block h5 mb-0">Form control</strong>
+      <span class="text-secondary">Style textual inputs quickly and easily.</span>
+    </a>
+  </div>
+  <div class="col-md-4 mb-3">
+    <a class="d-block p-4 bg-light rounded text-decoration-none" href="#">
+      <strong class="d-block h5 mb-0">Select</strong>
+      <span class="text-secondary">Create browser-default select menus with a custom initial appearance.</span>
+    </a>
+  </div>
+  <div class="col-md-4 mb-3">
+    <a class="d-block p-4 bg-light rounded text-decoration-none" href="#">
+      <strong class="d-block h5 mb-0">Checks</strong>
+      <span class="text-secondary">Learn how to use our custom radios and checkboxes.</span>
+    </a>
+  </div>
+  <div class="col-md-4 mb-3">
+    <a class="d-block p-4 bg-light rounded text-decoration-none" href="#">
+      <strong class="d-block h5 mb-0">File</strong>
+      <span class="text-secondary">Replace a native file input with our custom version.</span>
+    </a>
+  </div>
+  <div class="col-md-4 mb-3">
+    <a class="d-block p-4 bg-light rounded text-decoration-none" href="#">
+      <strong class="d-block h5 mb-0">Range</strong>
+      <span class="text-secondary">Style the range input type with our custom CSS.</span>
+    </a>
+  </div>
+  <div class="col-md-4 mb-3">
+    <a class="d-block p-4 bg-light rounded text-decoration-none" href="#">
+      <strong class="d-block h5 mb-0">Input group</strong>
+      <span class="text-secondary">Attach labels and buttons to your inputs for increased semantic value.</span>
+    </a>
+  </div>
+  <div class="col-md-4 mb-3">
+    <a class="d-block p-4 bg-light rounded text-decoration-none" href="#">
+      <strong class="d-block h5 mb-0">Validation</strong>
+      <span class="text-secondary">Validate your forms with custom or native validation behaviors and styles.</span>
+    </a>
+  </div>
+</div>
 
 ## Overview
 
