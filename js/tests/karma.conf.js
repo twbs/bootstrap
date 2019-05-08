@@ -99,7 +99,7 @@ if (bundle) {
   files = files.concat([
     jqueryFile,
     'js/tests/unit/tests-polyfills.js',
-    'js/coverage/dist/util/util.js',
+    'js/coverage/dist/util/index.js',
     'js/coverage/dist/util/sanitizer.js',
     'js/coverage/dist/dom/polyfill.js',
     'js/coverage/dist/dom/eventHandler.js',
@@ -124,7 +124,7 @@ if (bundle) {
   files = files.concat([
     jqueryFile,
     'js/tests/unit/tests-polyfills.js',
-    'js/coverage/dist/util/util.js',
+    'js/coverage/dist/util/index.js',
     'js/coverage/dist/util/sanitizer.js',
     'js/coverage/dist/dom/polyfill.js',
     'js/coverage/dist/dom/eventHandler.js',
