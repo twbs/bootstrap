@@ -5,10 +5,10 @@
  * --------------------------------------------------------------------------
  */
 
-import { jQuery as $ } from './util/index'
-import Data from './dom/data'
-import SelectorEngine from './dom/selector-engine'
-import Tooltip from './tooltip'
+import { jQuery as $ } from '../util/index'
+import Data from '../dom/data'
+import SelectorEngine from '../dom/selector-engine'
+import Tooltip from '../tooltip'
 
 /**
  * ------------------------------------------------------------------------
@@ -178,7 +178,7 @@ class Popover extends Tooltip {
  * jQuery
  * ------------------------------------------------------------------------
  */
-
+/* istanbul ignore if */
 if (typeof $ !== 'undefined') {
   const JQUERY_NO_CONFLICT = $.fn[NAME]
   $.fn[NAME] = Popover._jQueryInterface
