@@ -6,7 +6,7 @@
   background-color: $bd-purple;
   outline: 0;
 
-  @include hover {
+  &:hover {
     color: $white;
   }
 }

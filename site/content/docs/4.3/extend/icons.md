@@ -27,3 +27,4 @@ While we haven't tried these out, they do look promising and provide multiple fo
 - [Ikons](http://ikons.piotrkwiatkowski.co.uk/)
 - [Glyph](https://glyph.smarticons.co/)
 - [Icons8](https://icons8.com/)
+- [icofont](https://icofont.com/)
