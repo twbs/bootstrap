@@ -54,12 +54,16 @@ Changes to Reboot, typography, tables, and more.
 
 ## Forms
 
-- **Todo:** Move forms documentation to it's own top-level section
-- **Todo:** Rearrange source Sass files (under `scss/forms/`)
-- **Todo:** Combine native and custom checkboxes and radios
-- **Todo:** Rewrite checks to support sizing (via `em`/`font-size` or explicit modifier classes)
-- **Todo:** Combine native and custom selects
-- **Todo:** Combine native and custom file and range inputs
+- Rearranged form documentation under its own top-level section.
+  - Split out old Forms page into several subpages
+  - Moved input groups docs under new Forms section
+- Rearranged source Sass files under `scss/forms/`, including moving over input group styles.
+- Combined native and custom checkboxes and radios into single `.form-check` class.
+  - New checks support sizing via `em`/`font-size` or explicit modifier classes now.
+  - Dropped `.custom-control` and associated classes.
+- Combined native and custom selects into `.form-select`.
+  - Dropped `.custom-select` and associated classes.
+- Dropped native `.form-control-file` and `.form-control-range` classes in favor of custom versions.
 
 ## Components
 
