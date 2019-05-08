@@ -83,16 +83,15 @@
   }
 
   // Activate animated progress bar
-  makeArray(document.querySelectorAll('.bd-toggle-animated-progress > .progress-bar-striped'))
-    .forEach(function (progressBar) {
-      progressBar.addEventListener('click', function () {
-        if (progressBar.classList.contains('progress-bar-animated')) {
-          progressBar.classList.remove('progress-bar-animated')
-        } else {
-          progressBar.classList.add('progress-bar-animated')
-        }
-      })
+  var btnToggleAnimatedProgress = document.querySelector('.bd-toggle-animated-progress')
+  if (btnToggleAnimatedProgress) {
+    btnToggleAnimatedProgress.addEventListener('click', function () {
+      btnToggleAnimatedProgress.parentNode
+        .querySelector('.progress-bar-striped')
+        .classList
+        .toggle('progress-bar-animated')
     })
+  }
 
   // Insert copy to clipboard button before .highlight
   var btnHtml = '<div class="bd-clipboard"><button type="button" class="btn-clipboard" title="Copy to clipboard">Copy</button></div>'
