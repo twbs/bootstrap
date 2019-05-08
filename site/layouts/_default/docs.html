@@ -10,7 +10,7 @@
 
     <div class="container-fluid">
       <div class="row flex-xl-nowrap">
-        <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+        <div class="col-md-3 col-xl-2 bd-sidebar">
           {{ partial "docs-sidebar" . }}
         </div>
 
@@ -20,7 +20,7 @@
           </nav>
         {{ end }}
 
-        <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+        <main class="col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
           <h1 class="bd-title" id="content">{{ .Title | markdownify }}</h1>
           <p class="bd-lead">{{ .Page.Params.Description | markdownify }}</p>
           {{ partial "ads" . }}
