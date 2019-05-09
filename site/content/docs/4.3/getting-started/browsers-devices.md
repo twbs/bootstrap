@@ -129,20 +129,6 @@ The `.dropdown-backdrop` element isn't used on iOS in the nav because of the com
 
 Page zooming inevitably presents rendering artifacts in some components, both in Bootstrap and the rest of the web. Depending on the issue, we may be able to fix it (search first and then open an issue if need be). However, we tend to ignore these as they often have no direct solution other than hacky workarounds.
 
-## Printing
-
-Even in some modern browsers, printing can be quirky.
-
-As of Safari v8.0, use of the fixed-width `.container` class can cause Safari to use an unusually small font size when printing. See [issue #14868]({{< param repo >}}/issues/14868) and [WebKit bug #138192](https://bugs.webkit.org/show_bug.cgi?id=138192) for more details. One potential workaround is the following CSS:
-
-{{< highlight css >}}
-@media print {
-  .container {
-    width: auto;
-  }
-}
-{{< /highlight >}}
-
 ## Android stock browser
 
 Out of the box, Android 4.1 (and even some newer releases apparently) ship with the Browser app as the default web browser of choice (as opposed to Chrome). Unfortunately, the Browser app has lots of bugs and inconsistencies with CSS in general.
