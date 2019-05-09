@@ -110,8 +110,7 @@ select.form-control {
 .form-control-plaintext {
   display: block;
   width: 100%;
-  padding-top: $input-padding-y;
-  padding-bottom: $input-padding-y;
+  padding: $input-padding-y 0;
   margin-bottom: 0; // match inputs if this class comes on inputs with default margins
   @include font-size($input-font-size);
   line-height: $input-line-height;
