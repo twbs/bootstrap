@@ -117,7 +117,7 @@
     "cross-env": "^5.2.0",
     "eslint": "^5.16.0",
     "find-unused-sass-variables": "^0.3.3",
-    "glob": "^7.1.3",
+    "glob": "^7.1.4",
     "hammer-simulator": "0.0.1",
     "http-server": "^0.11.1",
     "ip": "^1.1.5",
@@ -136,7 +136,7 @@
     "popper.js": "^1.15.0",
     "postcss-cli": "^6.1.2",
     "qunit": "^2.9.2",
-    "rollup": "^1.10.1",
+    "rollup": "^1.11.3",
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-commonjs": "^9.3.4",
     "rollup-plugin-node-resolve": "^4.2.3",
@@ -145,7 +145,7 @@
     "sinon": "^7.3.2",
     "stylelint": "^9.10.1",
     "stylelint-config-twbs-bootstrap": "^0.3.1",
-    "uglify-js": "^3.5.10",
+    "uglify-js": "^3.5.11",
     "vnu-jar": "18.11.5"
   },
   "engines": {
