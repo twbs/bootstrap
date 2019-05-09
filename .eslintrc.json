@@ -44,7 +44,6 @@
       "never"
     ],
     "unicorn/explicit-length-check": "off",
-    "unicorn/filename-case": "off",
     "unicorn/import-index": "off",
     "unicorn/no-unused-properties": "error",
     "unicorn/prefer-includes": "off",

@@ -17,7 +17,7 @@
   @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size, $btn-line-height, $btn-border-radius);
   @include transition($btn-transition);
 
-  @include hover {
+  &:hover {
     color: $body-color;
     text-decoration: none;
   }
@@ -79,7 +79,7 @@ fieldset:disabled a.btn {
   color: $btn-link-color;
   text-decoration: $link-decoration;
 
-  @include hover {
+  &:hover {
     color: $btn-link-hover-color;
     text-decoration: $link-hover-decoration;
   }

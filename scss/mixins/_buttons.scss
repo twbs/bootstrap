@@ -9,7 +9,7 @@
   border-color: $border;
   @include box-shadow($btn-box-shadow);
 
-  @include hover {
+  &:hover {
     color: color-yiq($hover-background);
     @include gradient-bg($hover-background);
     border-color: $hover-border;
@@ -65,7 +65,7 @@
   color: $color;
   border-color: $color;
 
-  @include hover {
+  &:hover {
     color: $color-hover;
     background-color: $active-background;
     border-color: $active-border;

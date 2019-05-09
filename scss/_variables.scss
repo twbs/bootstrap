@@ -112,10 +112,8 @@ $enable-shadows:                              false !default;
 $enable-gradients:                            false !default;
 $enable-transitions:                          true !default;
 $enable-prefers-reduced-motion-media-query:   true !default;
-$enable-hover-media-query:                    false !default; // Deprecated, no longer affects any compiled CSS
 $enable-grid-classes:                         true !default;
 $enable-pointer-cursor-for-buttons:           true !default;
-$enable-print-styles:                         true !default;
 $enable-responsive-font-sizes:                false !default;
 $enable-validation-icons:                     true !default;
 $enable-deprecation-messages:                 true !default;
@@ -1127,9 +1125,3 @@ $pre-scrollable-max-height:         340px !default;
 $displays: none, inline, inline-block, block, table, table-row, table-cell, flex, inline-flex !default;
 $overflows: auto, hidden !default;
 $positions: static, relative, absolute, fixed, sticky !default;
-
-
-// Printing
-
-$print-page-size:                   a3 !default;
-$print-body-min-width:              map-get($grid-breakpoints, "lg") !default;
