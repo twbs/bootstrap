@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Layout
-description: ...
+description: Give your forms some structure—from inline to horizontal to custom grid implementations—with our form layout options.
 group: forms
 toc: true
 ---

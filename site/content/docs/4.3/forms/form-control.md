@@ -1,14 +1,10 @@
 ---
 layout: docs
 title: Form controls
-description: ...
+description: Give textual form controls like `<input>`s and `<textarea>`s an upgrade with custom styles, sizing, focus states, and more.
 group: forms
 toc: true
 ---
-
-Textual form controls—like `<input>`s, `<select>`s, and `<textarea>`s—are styled with the `.form-control` class. Included are styles for general appearance, focus state, sizing, and more.
-
-Be sure to explore our [custom forms](#custom-forms) to further style `<select>`s.
 
 {{< example >}}
 <form>
