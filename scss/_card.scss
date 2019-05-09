@@ -53,7 +53,7 @@
 }
 
 .card-link {
-  @include hover {
+  &:hover {
     text-decoration: none;
   }
 
@@ -273,7 +273,7 @@
       }
     }
 
-    &:first-of-type {
+    &:first-of-type:not(:last-of-type) {
       border-bottom: 0;
       @include border-bottom-radius(0);
     }

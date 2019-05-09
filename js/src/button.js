@@ -5,10 +5,10 @@
  * --------------------------------------------------------------------------
  */
 
+import { jQuery as $ } from './util/index'
 import Data from './dom/data'
-import EventHandler from './dom/eventHandler'
-import SelectorEngine from './dom/selectorEngine'
-import Util from './util'
+import EventHandler from './dom/event-handler'
+import SelectorEngine from './dom/selector-engine'
 
 /**
  * ------------------------------------------------------------------------
@@ -16,30 +16,30 @@ import Util from './util'
  * ------------------------------------------------------------------------
  */
 
-const NAME                = 'button'
-const VERSION             = '4.3.1'
-const DATA_KEY            = 'bs.button'
-const EVENT_KEY           = `.${DATA_KEY}`
-const DATA_API_KEY        = '.data-api'
+const NAME = 'button'
+const VERSION = '4.3.1'
+const DATA_KEY = 'bs.button'
+const EVENT_KEY = `.${DATA_KEY}`
+const DATA_API_KEY = '.data-api'
 
 const ClassName = {
-  ACTIVE : 'active',
-  BUTTON : 'btn',
-  FOCUS  : 'focus'
+  ACTIVE: 'active',
+  BUTTON: 'btn',
+  FOCUS: 'focus'
 }
 
 const Selector = {
-  DATA_TOGGLE_CARROT : '[data-toggle^="button"]',
-  DATA_TOGGLE        : '[data-toggle="buttons"]',
-  INPUT              : 'input:not([type="hidden"])',
-  ACTIVE             : '.active',
-  BUTTON             : '.btn'
+  DATA_TOGGLE_CARROT: '[data-toggle^="button"]',
+  DATA_TOGGLE: '[data-toggle="buttons"]',
+  INPUT: 'input:not([type="hidden"])',
+  ACTIVE: '.active',
+  BUTTON: '.btn'
 }
 
 const Event = {
-  CLICK_DATA_API      : `click${EVENT_KEY}${DATA_API_KEY}`,
-  FOCUS_DATA_API      : `focus${EVENT_KEY}${DATA_API_KEY}`,
-  BLUR_DATA_API       : `blur${EVENT_KEY}${DATA_API_KEY}`
+  CLICK_DATA_API: `click${EVENT_KEY}${DATA_API_KEY}`,
+  FOCUS_DATA_API: `focus${EVENT_KEY}${DATA_API_KEY}`,
+  BLUR_DATA_API: `blur${EVENT_KEY}${DATA_API_KEY}`
 }
 
 /**
@@ -147,7 +147,7 @@ class Button {
  * ------------------------------------------------------------------------
  */
 
-EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_TOGGLE_CARROT, (event) => {
+EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_TOGGLE_CARROT, event => {
   event.preventDefault()
 
   let button = event.target
@@ -160,17 +160,24 @@ EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_TOGGLE_CARROT, (ev
     data = new Button(button)
     Data.setData(button, DATA_KEY, data)
   }
+
   data.toggle()
 })
 
-EventHandler.on(document, Event.FOCUS_DATA_API, Selector.DATA_TOGGLE_CARROT, (event) => {
+EventHandler.on(document, Event.FOCUS_DATA_API, Selector.DATA_TOGGLE_CARROT, event => {
   const button = SelectorEngine.closest(event.target, Selector.BUTTON)
-  button.classList.add(ClassName.FOCUS)
+
+  if (button) {
+    button.classList.add(ClassName.FOCUS)
+  }
 })
 
-EventHandler.on(document, Event.BLUR_DATA_API, Selector.DATA_TOGGLE_CARROT, (event) => {
+EventHandler.on(document, Event.BLUR_DATA_API, Selector.DATA_TOGGLE_CARROT, event => {
   const button = SelectorEngine.closest(event.target, Selector.BUTTON)
-  button.classList.remove(ClassName.FOCUS)
+
+  if (button) {
+    button.classList.remove(ClassName.FOCUS)
+  }
 })
 
 /**
@@ -180,13 +187,12 @@ EventHandler.on(document, Event.BLUR_DATA_API, Selector.DATA_TOGGLE_CARROT, (eve
  * add .button to jQuery only if jQuery is present
  */
 
-const $ = Util.jQuery
 if (typeof $ !== 'undefined') {
-  const JQUERY_NO_CONFLICT  = $.fn[NAME]
-  $.fn[NAME]                = Button._jQueryInterface
-  $.fn[NAME].Constructor    = Button
+  const JQUERY_NO_CONFLICT = $.fn[NAME]
+  $.fn[NAME] = Button._jQueryInterface
+  $.fn[NAME].Constructor = Button
 
-  $.fn[NAME].noConflict  = () => {
+  $.fn[NAME].noConflict = () => {
     $.fn[NAME] = JQUERY_NO_CONFLICT
     return Button._jQueryInterface
   }

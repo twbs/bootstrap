@@ -5,10 +5,18 @@
  * --------------------------------------------------------------------------
  */
 
+import {
+  jQuery as $,
+  TRANSITION_END,
+  emulateTransitionEnd,
+  getSelectorFromElement,
+  getTransitionDurationFromElement,
+  makeArray,
+  reflow
+} from './util/index'
 import Data from './dom/data'
-import EventHandler from './dom/eventHandler'
-import SelectorEngine from './dom/selectorEngine'
-import Util from './util'
+import EventHandler from './dom/event-handler'
+import SelectorEngine from './dom/selector-engine'
 
 /**
  * ------------------------------------------------------------------------
@@ -16,36 +24,36 @@ import Util from './util'
  * ------------------------------------------------------------------------
  */
 
-const NAME               = 'tab'
-const VERSION            = '4.3.1'
-const DATA_KEY           = 'bs.tab'
-const EVENT_KEY          = `.${DATA_KEY}`
-const DATA_API_KEY       = '.data-api'
+const NAME = 'tab'
+const VERSION = '4.3.1'
+const DATA_KEY = 'bs.tab'
+const EVENT_KEY = `.${DATA_KEY}`
+const DATA_API_KEY = '.data-api'
 
 const Event = {
-  HIDE           : `hide${EVENT_KEY}`,
-  HIDDEN         : `hidden${EVENT_KEY}`,
-  SHOW           : `show${EVENT_KEY}`,
-  SHOWN          : `shown${EVENT_KEY}`,
-  CLICK_DATA_API : `click${EVENT_KEY}${DATA_API_KEY}`
+  HIDE: `hide${EVENT_KEY}`,
+  HIDDEN: `hidden${EVENT_KEY}`,
+  SHOW: `show${EVENT_KEY}`,
+  SHOWN: `shown${EVENT_KEY}`,
+  CLICK_DATA_API: `click${EVENT_KEY}${DATA_API_KEY}`
 }
 
 const ClassName = {
-  DROPDOWN_MENU : 'dropdown-menu',
-  ACTIVE        : 'active',
-  DISABLED      : 'disabled',
-  FADE          : 'fade',
-  SHOW          : 'show'
+  DROPDOWN_MENU: 'dropdown-menu',
+  ACTIVE: 'active',
+  DISABLED: 'disabled',
+  FADE: 'fade',
+  SHOW: 'show'
 }
 
 const Selector = {
-  DROPDOWN              : '.dropdown',
-  NAV_LIST_GROUP        : '.nav, .list-group',
-  ACTIVE                : '.active',
-  ACTIVE_UL             : ':scope > li > .active',
-  DATA_TOGGLE           : '[data-toggle="tab"], [data-toggle="pill"], [data-toggle="list"]',
-  DROPDOWN_TOGGLE       : '.dropdown-toggle',
-  DROPDOWN_ACTIVE_CHILD : ':scope > .dropdown-menu .active'
+  DROPDOWN: '.dropdown',
+  NAV_LIST_GROUP: '.nav, .list-group',
+  ACTIVE: '.active',
+  ACTIVE_UL: ':scope > li > .active',
+  DATA_TOGGLE: '[data-toggle="tab"], [data-toggle="pill"], [data-toggle="list"]',
+  DROPDOWN_TOGGLE: '.dropdown-toggle',
+  DROPDOWN_ACTIVE_CHILD: ':scope > .dropdown-menu .active'
 }
 
 /**
@@ -80,11 +88,11 @@ class Tab {
     let target
     let previous
     const listElement = SelectorEngine.closest(this._element, Selector.NAV_LIST_GROUP)
-    const selector = Util.getSelectorFromElement(this._element)
+    const selector = getSelectorFromElement(this._element)
 
     if (listElement) {
       const itemSelector = listElement.nodeName === 'UL' || listElement.nodeName === 'OL' ? Selector.ACTIVE_UL : Selector.ACTIVE
-      previous = Util.makeArray(SelectorEngine.find(itemSelector, listElement))
+      previous = makeArray(SelectorEngine.find(itemSelector, listElement))
       previous = previous[previous.length - 1]
     }
 
@@ -138,11 +146,11 @@ class Tab {
   // Private
 
   _activate(element, container, callback) {
-    const activeElements = container && (container.nodeName === 'UL' || container.nodeName === 'OL')
-      ? SelectorEngine.find(Selector.ACTIVE_UL, container)
-      : SelectorEngine.children(container, Selector.ACTIVE)
+    const activeElements = container && (container.nodeName === 'UL' || container.nodeName === 'OL') ?
+      SelectorEngine.find(Selector.ACTIVE_UL, container) :
+      SelectorEngine.children(container, Selector.ACTIVE)
 
-    const active          = activeElements[0]
+    const active = activeElements[0]
     const isTransitioning = callback &&
       (active && active.classList.contains(ClassName.FADE))
 
@@ -153,11 +161,11 @@ class Tab {
     )
 
     if (active && isTransitioning) {
-      const transitionDuration = Util.getTransitionDurationFromElement(active)
+      const transitionDuration = getTransitionDurationFromElement(active)
       active.classList.remove(ClassName.SHOW)
 
-      EventHandler.one(active, Util.TRANSITION_END, complete)
-      Util.emulateTransitionEnd(active, transitionDuration)
+      EventHandler.one(active, TRANSITION_END, complete)
+      emulateTransitionEnd(active, transitionDuration)
     } else {
       complete()
     }
@@ -183,7 +191,7 @@ class Tab {
       element.setAttribute('aria-selected', true)
     }
 
-    Util.reflow(element)
+    reflow(element)
 
     if (element.classList.contains(ClassName.FADE)) {
       element.classList.add(ClassName.SHOW)
@@ -193,8 +201,8 @@ class Tab {
       const dropdownElement = SelectorEngine.closest(element, Selector.DROPDOWN)
 
       if (dropdownElement) {
-        Util.makeArray(SelectorEngine.find(Selector.DROPDOWN_TOGGLE))
-          .forEach((dropdown) => dropdown.classList.add(ClassName.ACTIVE))
+        makeArray(SelectorEngine.find(Selector.DROPDOWN_TOGGLE))
+          .forEach(dropdown => dropdown.classList.add(ClassName.ACTIVE))
       }
 
       element.setAttribute('aria-expanded', true)
@@ -215,6 +223,7 @@ class Tab {
         if (typeof data[config] === 'undefined') {
           throw new TypeError(`No method named "${config}"`)
         }
+
         data[config]()
       }
     })
@@ -242,14 +251,14 @@ EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (
  * ------------------------------------------------------------------------
  * jQuery
  * ------------------------------------------------------------------------
+ * add .tab to jQuery only if jQuery is present
  */
 
-const $ = Util.jQuery
 if (typeof $ !== 'undefined') {
   const JQUERY_NO_CONFLICT = $.fn[NAME]
-  $.fn[NAME]               = Tab._jQueryInterface
-  $.fn[NAME].Constructor   = Tab
-  $.fn[NAME].noConflict    = () => {
+  $.fn[NAME] = Tab._jQueryInterface
+  $.fn[NAME].Constructor = Tab
+  $.fn[NAME].noConflict = () => {
     $.fn[NAME] = JQUERY_NO_CONFLICT
     return Tab._jQueryInterface
   }
