@@ -6,31 +6,13 @@ group: forms
 toc: true
 ---
 
+## Example
+
 {{< example >}}
 <form>
   <div class="form-group">
     <label for="exampleFormControlInput1">Email address</label>
     <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-  </div>
-  <div class="form-group">
-    <label for="exampleFormControlSelect1">Example select</label>
-    <select class="form-control" id="exampleFormControlSelect1">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-    </select>
-  </div>
-  <div class="form-group">
-    <label for="exampleFormControlSelect2">Example multiple select</label>
-    <select multiple class="form-control" id="exampleFormControlSelect2">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-    </select>
   </div>
   <div class="form-group">
     <label for="exampleFormControlTextarea1">Example textarea</label>
@@ -39,18 +21,7 @@ toc: true
 </form>
 {{< /example >}}
 
-For file inputs, swap the `.form-control` for `.form-control-file`.
-
-{{< example >}}
-<form>
-  <div class="form-group">
-    <label for="exampleFormControlFile1">Example file input</label>
-    <input type="file" class="form-control-file" id="exampleFormControlFile1">
-  </div>
-</form>
-{{< /example >}}
-
-### Sizing
+## Sizing
 
 Set heights using classes like `.form-control-lg` and `.form-control-sm`.
 
@@ -60,19 +31,7 @@ Set heights using classes like `.form-control-lg` and `.form-control-sm`.
 <input class="form-control form-control-sm" type="text" placeholder=".form-control-sm">
 {{< /example >}}
 
-{{< example >}}
-<select class="form-control form-control-lg">
-  <option>Large select</option>
-</select>
-<select class="form-control">
-  <option>Default select</option>
-</select>
-<select class="form-control form-control-sm">
-  <option>Small select</option>
-</select>
-{{< /example >}}
-
-### Readonly
+## Readonly
 
 Add the `readonly` boolean attribute on an input to prevent modification of the input's value. Read-only inputs appear lighter (just like disabled inputs), but retain the standard cursor.
 
@@ -80,7 +39,7 @@ Add the `readonly` boolean attribute on an input to prevent modification of the 
 <input class="form-control" type="text" placeholder="Readonly input here..." readonly>
 {{< /example >}}
 
-### Readonly plain text
+## Readonly plain text
 
 If you want to have `<input readonly>` elements in your form styled as plain text, use the `.form-control-plaintext` class to remove the default form field styling and preserve the correct margin and padding.
 

@@ -88,7 +88,7 @@ More complex layouts can also be created with the grid system.
     </div>
     <div class="form-group col-md-4">
       <label for="inputState">State</label>
-      <select id="inputState" class="form-control">
+      <select id="inputState" class="form-select">
         <option selected>Choose...</option>
         <option>...</option>
       </select>
@@ -295,8 +295,8 @@ And of course [custom form controls](#custom-forms) are supported.
 <form>
   <div class="form-row align-items-center">
     <div class="col-auto my-1">
-      <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
-      <select class="form-select mr-sm-2" id="inlineFormCustomSelect">
+      <label class="mr-sm-2 sr-only" for="inlineFormSelect">Preference</label>
+      <select class="form-select mr-sm-2" id="inlineFormSelect">
         <option selected>Choose...</option>
         <option value="1">One</option>
         <option value="2">Two</option>
@@ -304,9 +304,9 @@ And of course [custom form controls](#custom-forms) are supported.
       </select>
     </div>
     <div class="col-auto my-1">
-      <div class="custom-control custom-checkbox mr-sm-2">
-        <input type="checkbox" class="custom-control-input" id="customControlAutosizing">
-        <label class="custom-control-label" for="customControlAutosizing">Remember my preference</label>
+      <div class="form-check mr-sm-2">
+        <input type="checkbox" class="form-check-input" id="formCheckAutosizing">
+        <label class="form-check-label" for="formCheckAutosizing">Remember my preference</label>
       </div>
     </div>
     <div class="col-auto my-1">
@@ -354,17 +354,17 @@ Custom form controls and selects are also supported.
 
 {{< example >}}
 <form class="form-inline">
-  <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Preference</label>
-  <select class="form-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+  <label class="my-1 mr-2" for="inlineFormSelectPref">Preference</label>
+  <select class="form-select my-1 mr-sm-2" id="inlineFormSelectPref">
     <option selected>Choose...</option>
     <option value="1">One</option>
     <option value="2">Two</option>
     <option value="3">Three</option>
   </select>
 
-  <div class="custom-control custom-checkbox my-1 mr-sm-2">
-    <input type="checkbox" class="custom-control-input" id="customControlInline">
-    <label class="custom-control-label" for="customControlInline">Remember my preference</label>
+  <div class="form-check my-1 mr-sm-2">
+    <input type="checkbox" class="form-check-input" id="formCheckInline">
+    <label class="form-check-label" for="formCheckInline">Remember my preference</label>
   </div>
 
   <button type="submit" class="btn btn-primary my-1">Submit</button>
