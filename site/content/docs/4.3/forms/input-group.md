@@ -268,7 +268,7 @@ Input groups include support for custom selects and custom file inputs. Browser 
   <div class="input-group-prepend">
     <label class="input-group-text" for="inputGroupSelect01">Options</label>
   </div>
-  <select class="custom-select" id="inputGroupSelect01">
+  <select class="form-select" id="inputGroupSelect01">
     <option selected>Choose...</option>
     <option value="1">One</option>
     <option value="2">Two</option>
@@ -277,7 +277,7 @@ Input groups include support for custom selects and custom file inputs. Browser 
 </div>
 
 <div class="input-group mb-3">
-  <select class="custom-select" id="inputGroupSelect02">
+  <select class="form-select" id="inputGroupSelect02">
     <option selected>Choose...</option>
     <option value="1">One</option>
     <option value="2">Two</option>
@@ -292,7 +292,7 @@ Input groups include support for custom selects and custom file inputs. Browser 
   <div class="input-group-prepend">
     <button class="btn btn-outline-secondary" type="button">Button</button>
   </div>
-  <select class="custom-select" id="inputGroupSelect03" aria-label="Example select with button addon">
+  <select class="form-select" id="inputGroupSelect03" aria-label="Example select with button addon">
     <option selected>Choose...</option>
     <option value="1">One</option>
     <option value="2">Two</option>
@@ -301,7 +301,7 @@ Input groups include support for custom selects and custom file inputs. Browser 
 </div>
 
 <div class="input-group">
-  <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+  <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
     <option selected>Choose...</option>
     <option value="1">One</option>
     <option value="2">Two</option>

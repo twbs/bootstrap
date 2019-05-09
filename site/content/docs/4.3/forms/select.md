@@ -6,10 +6,10 @@ group: forms
 toc: true
 ---
 
-Custom `<select>` menus need only a custom class, `.custom-select` to trigger the custom styles. Custom styles are limited to the `<select>`'s initial appearance and cannot modify the `<option>`s due to browser limitations.
+Custom `<select>` menus need only a custom class, `.form-select` to trigger the custom styles. Custom styles are limited to the `<select>`'s initial appearance and cannot modify the `<option>`s due to browser limitations.
 
 {{< example >}}
-<select class="custom-select">
+<select class="form-select">
   <option selected>Open this select menu</option>
   <option value="1">One</option>
   <option value="2">Two</option>
@@ -20,14 +20,14 @@ Custom `<select>` menus need only a custom class, `.custom-select` to trigger th
 You may also choose from small and large custom selects to match our similarly sized text inputs.
 
 {{< example >}}
-<select class="custom-select custom-select-lg mb-3">
+<select class="form-select form-select-lg mb-3">
   <option selected>Open this select menu</option>
   <option value="1">One</option>
   <option value="2">Two</option>
   <option value="3">Three</option>
 </select>
 
-<select class="custom-select custom-select-sm">
+<select class="form-select form-select-sm">
   <option selected>Open this select menu</option>
   <option value="1">One</option>
   <option value="2">Two</option>
@@ -38,7 +38,7 @@ You may also choose from small and large custom selects to match our similarly s
 The `multiple` attribute is also supported:
 
 {{< example >}}
-<select class="custom-select" multiple>
+<select class="form-select" multiple>
   <option selected>Open this select menu</option>
   <option value="1">One</option>
   <option value="2">Two</option>
@@ -49,7 +49,7 @@ The `multiple` attribute is also supported:
 As is the `size` attribute:
 
 {{< example >}}
-<select class="custom-select" size="3">
+<select class="form-select" size="3">
   <option selected>Open this select menu</option>
   <option value="1">One</option>
   <option value="2">Two</option>

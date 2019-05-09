@@ -578,45 +578,45 @@ $input-group-addon-border-color:        $input-border-color !default;
 
 $custom-forms-transition:               background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
 
-$custom-select-padding-y:           $input-padding-y !default;
-$custom-select-padding-x:           $input-padding-x !default;
-$custom-select-font-family:         $input-font-family !default;
-$custom-select-font-size:           $input-font-size !default;
-$custom-select-height:              $input-height !default;
-$custom-select-indicator-padding:   1rem !default; // Extra padding to account for the presence of the background-image based indicator
-$custom-select-font-weight:         $input-font-weight !default;
-$custom-select-line-height:         $input-line-height !default;
-$custom-select-color:               $input-color !default;
-$custom-select-disabled-color:      $gray-600 !default;
-$custom-select-bg:                  $input-bg !default;
-$custom-select-disabled-bg:         $gray-200 !default;
-$custom-select-bg-size:             8px 10px !default; // In pixels because image dimensions
-$custom-select-indicator-color:     $gray-800 !default;
-$custom-select-indicator:           str-replace(url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='#{$custom-select-indicator-color}' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e"), "#", "%23") !default;
-$custom-select-background:          $custom-select-indicator no-repeat right $custom-select-padding-x center / $custom-select-bg-size !default; // Used so we can have multiple background elements (e.g., arrow and feedback icon)
+$form-select-padding-y:           $input-padding-y !default;
+$form-select-padding-x:           $input-padding-x !default;
+$form-select-font-family:         $input-font-family !default;
+$form-select-font-size:           $input-font-size !default;
+$form-select-height:              $input-height !default;
+$form-select-indicator-padding:   1rem !default; // Extra padding to account for the presence of the background-image based indicator
+$form-select-font-weight:         $input-font-weight !default;
+$form-select-line-height:         $input-line-height !default;
+$form-select-color:               $input-color !default;
+$form-select-disabled-color:      $gray-600 !default;
+$form-select-bg:                  $input-bg !default;
+$form-select-disabled-bg:         $gray-200 !default;
+$form-select-bg-size:             8px 10px !default; // In pixels because image dimensions
+$form-select-indicator-color:     $gray-800 !default;
+$form-select-indicator:           str-replace(url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='#{$form-select-indicator-color}' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e"), "#", "%23") !default;
+$form-select-background:          $form-select-indicator no-repeat right $form-select-padding-x center / $form-select-bg-size !default; // Used so we can have multiple background elements (e.g., arrow and feedback icon)
 
-$custom-select-feedback-icon-padding-right: calc((1em + #{2 * $custom-select-padding-y}) * 3 / 4 + #{$custom-select-padding-x + $custom-select-indicator-padding}) !default;
-$custom-select-feedback-icon-position:      center right ($custom-select-padding-x + $custom-select-indicator-padding) !default;
-$custom-select-feedback-icon-size:          $input-height-inner-half $input-height-inner-half !default;
+$form-select-feedback-icon-padding-right: calc((1em + #{2 * $form-select-padding-y}) * 3 / 4 + #{$form-select-padding-x + $form-select-indicator-padding}) !default;
+$form-select-feedback-icon-position:      center right ($form-select-padding-x + $form-select-indicator-padding) !default;
+$form-select-feedback-icon-size:          $input-height-inner-half $input-height-inner-half !default;
 
-$custom-select-border-width:        $input-border-width !default;
-$custom-select-border-color:        $input-border-color !default;
-$custom-select-border-radius:       $border-radius !default;
-$custom-select-box-shadow:          inset 0 1px 2px rgba($black, .075) !default;
+$form-select-border-width:        $input-border-width !default;
+$form-select-border-color:        $input-border-color !default;
+$form-select-border-radius:       $border-radius !default;
+$form-select-box-shadow:          inset 0 1px 2px rgba($black, .075) !default;
 
-$custom-select-focus-border-color:  $input-focus-border-color !default;
-$custom-select-focus-width:         $input-focus-width !default;
-$custom-select-focus-box-shadow:    0 0 0 $custom-select-focus-width $input-btn-focus-color !default;
+$form-select-focus-border-color:  $input-focus-border-color !default;
+$form-select-focus-width:         $input-focus-width !default;
+$form-select-focus-box-shadow:    0 0 0 $form-select-focus-width $input-btn-focus-color !default;
 
-$custom-select-padding-y-sm:        $input-padding-y-sm !default;
-$custom-select-padding-x-sm:        $input-padding-x-sm !default;
-$custom-select-font-size-sm:        $input-font-size-sm !default;
-$custom-select-height-sm:           $input-height-sm !default;
+$form-select-padding-y-sm:        $input-padding-y-sm !default;
+$form-select-padding-x-sm:        $input-padding-x-sm !default;
+$form-select-font-size-sm:        $input-font-size-sm !default;
+$form-select-height-sm:           $input-height-sm !default;
 
-$custom-select-padding-y-lg:        $input-padding-y-lg !default;
-$custom-select-padding-x-lg:        $input-padding-x-lg !default;
-$custom-select-font-size-lg:        $input-font-size-lg !default;
-$custom-select-height-lg:           $input-height-lg !default;
+$form-select-padding-y-lg:        $input-padding-y-lg !default;
+$form-select-padding-x-lg:        $input-padding-x-lg !default;
+$form-select-font-size-lg:        $input-font-size-lg !default;
+$form-select-height-lg:           $input-height-lg !default;
 
 $custom-range-track-width:          100% !default;
 $custom-range-track-height:         .5rem !default;

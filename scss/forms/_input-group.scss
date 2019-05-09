@@ -13,7 +13,7 @@
 
   > .form-control,
   > .form-control-plaintext,
-  > .custom-select,
+  > .form-select,
   > .custom-file {
     position: relative; // For focus state's z-index
     flex: 1 1 auto;
@@ -23,7 +23,7 @@
     margin-bottom: 0;
 
     + .form-control,
-    + .custom-select,
+    + .form-select,
     + .custom-file {
       margin-left: -$input-border-width;
     }
@@ -31,7 +31,7 @@
 
   // Bring the "active" form control to the top of surrounding elements
   > .form-control:focus,
-  > .custom-select:focus,
+  > .form-select:focus,
   > .custom-file .custom-file-input:focus ~ .custom-file-label {
     z-index: 3;
   }
@@ -42,7 +42,7 @@
   }
 
   > .form-control,
-  > .custom-select {
+  > .form-select {
     &:not(:last-child) { @include border-right-radius(0); }
     &:not(:first-child) { @include border-left-radius(0); }
   }
@@ -128,12 +128,12 @@
 // manipulation.
 
 .input-group-lg > .form-control:not(textarea),
-.input-group-lg > .custom-select {
+.input-group-lg > .form-select {
   height: $input-height-lg;
 }
 
 .input-group-lg > .form-control,
-.input-group-lg > .custom-select,
+.input-group-lg > .form-select,
 .input-group-lg > .input-group-prepend > .input-group-text,
 .input-group-lg > .input-group-append > .input-group-text,
 .input-group-lg > .input-group-prepend > .btn,
@@ -145,12 +145,12 @@
 }
 
 .input-group-sm > .form-control:not(textarea),
-.input-group-sm > .custom-select {
+.input-group-sm > .form-select {
   height: $input-height-sm;
 }
 
 .input-group-sm > .form-control,
-.input-group-sm > .custom-select,
+.input-group-sm > .form-select,
 .input-group-sm > .input-group-prepend > .input-group-text,
 .input-group-sm > .input-group-append > .input-group-text,
 .input-group-sm > .input-group-prepend > .btn,
@@ -161,9 +161,9 @@
   @include border-radius($input-border-radius-sm);
 }
 
-.input-group-lg > .custom-select,
-.input-group-sm > .custom-select {
-  padding-right: $custom-select-padding-x + $custom-select-indicator-padding;
+.input-group-lg > .form-select,
+.input-group-sm > .form-select {
+  padding-right: $form-select-padding-x + $form-select-indicator-padding;
 }
 
 

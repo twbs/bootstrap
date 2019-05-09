@@ -29,7 +29,7 @@ With that in mind, consider the following demos for our custom form validation s
 
 For custom Bootstrap form validation messages, you'll need to add the `novalidate` boolean attribute to your `<form>`. This disables the browser default feedback tooltips, but still provides access to the form validation APIs in JavaScript. Try to submit the form below; our JavaScript will intercept the submit button and relay feedback to you. When attempting to submit, you'll see the `:invalid` and `:valid` styles applied to your form controls.
 
-Custom feedback styles apply custom colors, borders, focus styles, and background icons to better communicate feedback. Background icons for `<select>`s are only available with `.custom-select`, and not `.form-control`.
+Custom feedback styles apply custom colors, borders, focus styles, and background icons to better communicate feedback. Background icons for `<select>`s are only available with `.form-select`, and not `.form-control`.
 
 {{< example >}}
 <form class="needs-validation" novalidate>
@@ -71,7 +71,7 @@ Custom feedback styles apply custom colors, borders, focus styles, and backgroun
     </div>
     <div class="col-md-3 mb-3">
       <label for="validationCustom04">State</label>
-      <select class="custom-select" id="validationCustom04" required>
+      <select class="form-select" id="validationCustom04" required>
         <option selected disabled value="">Choose...</option>
         <option>...</option>
       </select>
@@ -157,7 +157,7 @@ While these feedback styles cannot be styled with CSS, you can still customize t
     </div>
     <div class="col-md-3 mb-3">
       <label for="validationDefault04">State</label>
-      <select class="custom-select" id="validationDefault04" required>
+      <select class="form-select" id="validationDefault04" required>
         <option selected disabled value="">Choose...</option>
         <option>...</option>
       </select>
@@ -223,7 +223,7 @@ We recommend using client-side validation, but in case you require server-side v
     </div>
     <div class="col-md-3 mb-3">
       <label for="validationServer04">State</label>
-      <select class="custom-select is-invalid" id="validationServer04" required>
+      <select class="form-select is-invalid" id="validationServer04" required>
         <option selected disabled value="">Choose...</option>
         <option>...</option>
       </select>
@@ -259,7 +259,7 @@ We recommend using client-side validation, but in case you require server-side v
 Validation styles are available for the following form controls and components:
 
 - `<input>`s and `<textarea>`s with `.form-control` (including up to one `.form-control` in input groups)
-- `<select>`s with `.form-control` or `.custom-select`
+- `<select>`s with `.form-control` or `.form-select`
 - `.form-check`s
 - `.custom-checkbox`s and `.custom-radio`s
 - `.custom-file`
@@ -291,7 +291,7 @@ Validation styles are available for the following form controls and components:
   </div>
 
   <div class="form-group">
-    <select class="custom-select" required>
+    <select class="form-select" required>
       <option value="">Open this select menu</option>
       <option value="1">One</option>
       <option value="2">Two</option>
@@ -352,7 +352,7 @@ If your form layout allows it, you can swap the `.{valid|invalid}-feedback` clas
     </div>
     <div class="col-md-3 mb-3">
       <label for="validationTooltip04">State</label>
-      <select class="custom-select" id="validationTooltip04" required>
+      <select class="form-select" id="validationTooltip04" required>
         <option selected disabled value="">Choose...</option>
         <option>...</option>
       </select>
