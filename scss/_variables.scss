@@ -522,6 +522,7 @@ $input-transition:                      border-color .15s ease-in-out, box-shado
 $form-check-input-width:                  1.25em !default;
 $form-check-min-height:                   $font-size-base * $line-height-base !default;
 $form-check-padding-left:                 $form-check-input-width + .5em !default;
+$form-check-margin-bottom:                .125rem !default;
 
 $form-check-input-active-filter:          brightness(90%) !default;
 
@@ -566,6 +567,8 @@ $form-switch-checked-bg-image:      str-replace(url("data:image/svg+xml,%3csvg x
 $form-switch-checked-bg-position:  right center !default;
 
 $form-text-margin-top:                  .25rem !default;
+
+$form-check-inline-margin-right:        1rem !default;
 
 $form-check-input-margin-x:             .25rem !default;
 

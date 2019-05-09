@@ -6,6 +6,7 @@
   display: block;
   min-height: $form-check-min-height;
   padding-left: $form-check-padding-left;
+  margin-bottom: $form-check-margin-bottom;
 }
 
 .form-check-input {
@@ -107,4 +108,9 @@
       background-position: $form-switch-checked-bg-position;
     }
   }
+}
+
+.form-check-inline {
+  display: inline-block;
+  margin-right: $form-check-inline-margin-right;
 }
