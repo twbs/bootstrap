@@ -94,6 +94,8 @@ Add the `disabled` boolean attribute on an input to prevent user interactions an
 
 Add the `disabled` attribute to a `<fieldset>` to disable all the controls within.
 
+By default, browsers will treat all native form controls (`<input>`, `<select>`, and `<button>` elements) inside a `<fieldset disabled>` as disabled, preventing both keyboard and mouse interactions on them. However, if your form also includes `<a ... class="btn btn-*">` elements, these will only be given a style of `pointer-events: none`.
+
 {{< example >}}
 <form>
   <fieldset disabled>
@@ -103,7 +105,7 @@ Add the `disabled` attribute to a `<fieldset>` to disable all the controls withi
     </div>
     <div class="form-group">
       <label for="disabledSelect">Disabled select menu</label>
-      <select id="disabledSelect" class="form-control">
+      <select id="disabledSelect" class="form-select">
         <option>Disabled select</option>
       </select>
     </div>
@@ -119,9 +121,3 @@ Add the `disabled` attribute to a `<fieldset>` to disable all the controls withi
   </fieldset>
 </form>
 {{< /example >}}
-
-{{< callout warning >}}
-##### Caveat with anchors
-
-By default, browsers will treat all native form controls (`<input>`, `<select>` and `<button>` elements) inside a `<fieldset disabled>` as disabled, preventing both keyboard and mouse interactions on them. However, if your form also includes `<a ... class="btn btn-*">` elements, these will only be given a style of `pointer-events: none`.
-{{< /callout >}}
