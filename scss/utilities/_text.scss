@@ -63,6 +63,11 @@
   overflow-wrap: break-word !important;
 }
 
+.text-break-all {
+  word-break: break-all !important;
+  overflow-wrap: break-all !important;
+}
+
 // Reset
 
 .text-reset { color: inherit !important; }

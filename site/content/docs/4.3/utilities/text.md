@@ -63,7 +63,10 @@ For longer content, you can add a `.text-truncate` class to truncate the text wi
 
 ## Word break
 
-Prevent long strings of text from breaking your components' layout by using `.text-break` to set `overflow-wrap: break-word` (and `word-break: break-word` for IE & Edge compatibility).
+Prevent long strings of text from breaking your components' layout by using `.text-break` or `.text-break-all`.  
+
+`.text-break` will set `overflow-wrap: break-word` (and `word-break: break-word` for IE & Edge compatibility).  
+`.text-break-all` will set `overflow-wrap: break-all` (and `word-break: break-all` for IE & Edge compatibility).
 
 {{< example >}}
 <p class="text-break">mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm</p>
