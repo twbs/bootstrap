@@ -42,7 +42,7 @@ const bsPlugins = {
   ScrollSpy: path.resolve(__dirname, '../js/src/scrollspy.js'),
   Tab: path.resolve(__dirname, '../js/src/tab.js'),
   Toast: path.resolve(__dirname, '../js/src/toast/toast.js'),
-  Tooltip: path.resolve(__dirname, '../js/src/tooltip.js')
+  Tooltip: path.resolve(__dirname, '../js/src/tooltip/tooltip.js')
 }
 const rootPath = '../js/dist/'
 

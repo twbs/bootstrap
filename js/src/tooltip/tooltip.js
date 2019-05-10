@@ -16,16 +16,16 @@ import {
   makeArray,
   noop,
   typeCheckConfig
-} from './util/index'
+} from '../util/index'
 import {
   DefaultWhitelist,
   sanitizeHtml
-} from './util/sanitizer'
-import Data from './dom/data'
-import EventHandler from './dom/event-handler'
-import Manipulator from './dom/manipulator'
+} from '../util/sanitizer'
+import Data from '../dom/data'
+import EventHandler from '../dom/event-handler'
+import Manipulator from '../dom/manipulator'
 import Popper from 'popper.js'
-import SelectorEngine from './dom/selector-engine'
+import SelectorEngine from '../dom/selector-engine'
 
 /**
  * ------------------------------------------------------------------------
@@ -290,7 +290,7 @@ class Tooltip {
         this.config.placement
 
       const attachment = this._getAttachment(placement)
-      this.addAttachmentClass(attachment)
+      this._addAttachmentClass(attachment)
 
       const container = this._getContainer()
       Data.setData(tip, this.constructor.DATA_KEY, this)
@@ -360,7 +360,7 @@ class Tooltip {
     }
   }
 
-  hide(callback) {
+  hide() {
     const tip = this.getTipElement()
     const complete = () => {
       if (this._hoverState !== HoverState.SHOW && tip.parentNode) {
@@ -370,13 +370,7 @@ class Tooltip {
       this._cleanTipClass()
       this.element.removeAttribute('aria-describedby')
       EventHandler.trigger(this.element, this.constructor.Event.HIDDEN)
-      if (this._popper !== null) {
-        this._popper.destroy()
-      }
-
-      if (callback) {
-        callback()
-      }
+      this._popper.destroy()
     }
 
     const hideEvent = EventHandler.trigger(this.element, this.constructor.Event.HIDE)
@@ -421,10 +415,6 @@ class Tooltip {
     return Boolean(this.getTitle())
   }
 
-  addAttachmentClass(attachment) {
-    this.getTipElement().classList.add(`${CLASS_PREFIX}-${attachment}`)
-  }
-
   getTipElement() {
     if (this.tip) {
       return this.tip
@@ -449,7 +439,7 @@ class Tooltip {
       return
     }
 
-    if (typeof content === 'object' && (content.nodeType || content.jquery)) {
+    if (typeof content === 'object' && isElement(content)) {
       if (content.jquery) {
         content = content[0]
       }
@@ -491,6 +481,10 @@ class Tooltip {
   }
 
   // Private
+
+  _addAttachmentClass(attachment) {
+    this.getTipElement().classList.add(`${CLASS_PREFIX}-${attachment}`)
+  }
 
   _getOffset() {
     const offset = {}
@@ -757,7 +751,7 @@ class Tooltip {
     const popperInstance = popperData.instance
     this.tip = popperInstance.popper
     this._cleanTipClass()
-    this.addAttachmentClass(this._getAttachment(popperData.placement))
+    this._addAttachmentClass(this._getAttachment(popperData.placement))
   }
 
   _fixTransition() {
@@ -810,7 +804,7 @@ class Tooltip {
  * ------------------------------------------------------------------------
  * add .tooltip to jQuery only if jQuery is present
  */
-
+/* istanbul ignore if */
 if (typeof $ !== 'undefined') {
   const JQUERY_NO_CONFLICT = $.fn[NAME]
   $.fn[NAME] = Tooltip._jQueryInterface

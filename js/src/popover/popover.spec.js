@@ -16,8 +16,8 @@ describe('Popover', () => {
 
     const popoverList = makeArray(document.querySelectorAll('.popover'))
 
-    popoverList.forEach(backdrop => {
-      document.body.removeChild(backdrop)
+    popoverList.forEach(popoverEl => {
+      document.body.removeChild(popoverEl)
     })
   })
 
