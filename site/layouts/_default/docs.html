@@ -8,33 +8,33 @@
 
     {{ partial "docs-navbar" . }}
 
-    <div class="container-fluid">
+    <div class="container" style="max-width: 1320px;">
       <div class="row flex-xl-nowrap">
-        <div class="col-md-3 col-xl-2 bd-sidebar">
+        <div class="col-md-3 bd-sidebar">
           {{ partial "docs-sidebar" . }}
         </div>
 
-        <main class="col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+        <main class="col-md-9 py-md-3 pl-md-5 bd-content" role="main">
           <h1 class="bd-title" id="content">{{ .Title | markdownify }}</h1>
           <p class="bd-lead">{{ .Page.Params.Description | markdownify }}</p>
           {{ partial "ads" . }}
 
           {{ if .Page.Params.sections }}
-          <div class="row my-5">
-            {{ range .Page.Params.sections }}
-              <div class="col-md-4 mb-3">
-                <a class="d-block p-4 bg-light rounded text-decoration-none" href="../{{ urlize .title }}/">
-                  <strong class="d-block h5 mb-0">{{ .title }}</strong>
-                  <span class="text-secondary">{{ .description }}</span>
-                </a>
-              </div>
-            {{ end }}
-          </div>
+            <div class="row my-5">
+              {{ range .Page.Params.sections }}
+                <div class="col-md-4 mb-3">
+                  <a class="d-block p-4 bg-light rounded text-decoration-none" href="../{{ urlize .title }}/">
+                    <strong class="d-block h5 mb-0">{{ .title }}</strong>
+                    <span class="text-secondary">{{ .description }}</span>
+                  </a>
+                </div>
+              {{ end }}
+            </div>
           {{ end }}
 
           {{ if (eq .Page.Params.toc true) }}
             <strong class="d-block h3 mt-5 mb-3">On this page</strong>
-            <nav class="bd-toc" aria-label="Secondary navigation">
+            <nav class="bd-toc mb-5" aria-label="Secondary navigation">
               {{ .TableOfContents }}
             </nav>
           {{ end }}

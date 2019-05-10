@@ -4,22 +4,8 @@
 // Right side table of contents
 //
 
-// .bd-toc {
-//   @supports (position: sticky) {
-//     position: sticky;
-//     top: 4rem;
-//     height: calc(100vh - 4rem);
-//     overflow-y: auto;
-//   }
-//   order: 2;
-//   padding-top: 1.5rem;
-//   padding-bottom: 1.5rem;
-//   @include font-size(.875rem);
-// }
-
 // stylelint-disable selector-max-type, selector-max-combinators, selector-max-compound-selectors
 .bd-toc nav {
-  // padding-left: 0;
   padding-top: .125em;
   padding-bottom: .125em;
   border-left: .25em solid #eee;
@@ -53,7 +39,6 @@
 
 .bd-sidebar {
   order: 0;
-  // background-color: #f5f2f9;
   border-bottom: 1px solid rgba(0, 0, 0, .1);
 
   @include media-breakpoint-up(md) {
@@ -63,7 +48,6 @@
       z-index: 1000;
       height: calc(100vh - 4rem);
     }
-    border-right: 1px solid rgba(0, 0, 0, .1);
   }
 
   @include media-breakpoint-up(xl) {
@@ -72,7 +56,6 @@
 }
 
 .bd-links {
-  padding-top: 1rem;
   padding-bottom: 1rem;
   margin-right: -15px;
   margin-left: -15px;
@@ -92,10 +75,9 @@
 
 .bd-search {
   position: relative; // To contain the Algolia search
-  padding: 1rem 15px;
+  padding: 1.5rem 15px;
   margin-right: -15px;
   margin-left: -15px;
-  border-bottom: 1px solid rgba(0, 0, 0, .05);
 
   .form-control:focus {
     border-color: $bd-purple-bright;
