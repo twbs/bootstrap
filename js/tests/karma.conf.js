@@ -8,9 +8,12 @@ const {
   browsersKeys
 } = require('./browsers')
 
-const jqueryFile = process.env.USE_OLD_JQUERY ? 'https://code.jquery.com/jquery-1.9.1.min.js' : 'node_modules/jquery/dist/jquery.slim.min.js'
-const bundle = process.env.BUNDLE === 'true'
-const browserStack = process.env.BROWSER === 'true'
+const { env } = process
+const bundle = env.BUNDLE === 'true'
+const browserStack = env.BROWSER === 'true'
+const debug = env.DEBUG === 'true'
+
+const jqueryFile = 'node_modules/jquery/dist/jquery.slim.min.js'
 
 const frameworks = [
   'qunit',
@@ -27,12 +30,12 @@ const reporters = ['dots']
 const detectBrowsers = {
   usePhantomJS: false,
   postDetection(availableBrowser) {
-    if (typeof process.env.TRAVIS_JOB_ID !== 'undefined' || availableBrowser.includes('Chrome')) {
-      return ['ChromeHeadless']
+    if (env.CI === true || availableBrowser.includes('Chrome')) {
+      return debug ? ['Chrome'] : ['ChromeHeadless']
     }
 
     if (availableBrowser.includes('Firefox')) {
-      return ['FirefoxHeadless']
+      return debug ? ['Firefox'] : ['FirefoxHeadless']
     }
 
     throw new Error('Please install Firefox or Chrome')
@@ -76,13 +79,15 @@ if (bundle) {
   conf.detectBrowsers = detectBrowsers
   files = files.concat([
     jqueryFile,
-    'dist/js/bootstrap.js'
+    'js/tests/unit/tests-polyfills.js',
+    'dist/js/bootstrap.js',
+    'js/tests/unit/!(tests-polyfills).js'
   ])
 } else if (browserStack) {
   conf.hostname = ip.address()
   conf.browserStack = {
-    username: process.env.BROWSER_STACK_USERNAME,
-    accessKey: process.env.BROWSER_STACK_ACCESS_KEY,
+    username: env.BROWSER_STACK_USERNAME,
+    accessKey: env.BROWSER_STACK_ACCESS_KEY,
     build: `bootstrap-${new Date().toISOString()}`,
     project: 'Bootstrap',
     retryLimit: 2
@@ -92,18 +97,21 @@ if (bundle) {
   conf.browsers = browsersKeys
   reporters.push('BrowserStack')
   files = files.concat([
-    'node_modules/jquery/dist/jquery.slim.min.js',
-    'js/coverage/dist/util.js',
+    jqueryFile,
+    'js/tests/unit/tests-polyfills.js',
+    'js/coverage/dist/util/index.js',
+    'js/coverage/dist/util/sanitizer.js',
     'js/coverage/dist/dom/polyfill.js',
-    'js/coverage/dist/dom/eventHandler.js',
-    'js/coverage/dist/dom/selectorEngine.js',
+    'js/coverage/dist/dom/event-handler.js',
+    'js/coverage/dist/dom/selector-engine.js',
     'js/coverage/dist/dom/data.js',
     'js/coverage/dist/dom/manipulator.js',
     'js/coverage/dist/dom/!(polyfill).js',
     'js/coverage/dist/tooltip.js',
     'js/coverage/dist/!(util|index|tooltip).js', // include all of our js/dist files except util.js, index.js and tooltip.js
-    'js/tests/unit/*.js',
-    'js/tests/unit/dom/*.js'
+    'js/tests/unit/!(tests-polyfills).js',
+    'js/tests/unit/dom/*.js',
+    'js/tests/unit/util/*.js'
   ])
 } else {
   frameworks.push('detectBrowsers')
@@ -115,17 +123,20 @@ if (bundle) {
   )
   files = files.concat([
     jqueryFile,
-    'js/coverage/dist/util.js',
+    'js/tests/unit/tests-polyfills.js',
+    'js/coverage/dist/util/index.js',
+    'js/coverage/dist/util/sanitizer.js',
     'js/coverage/dist/dom/polyfill.js',
-    'js/coverage/dist/dom/eventHandler.js',
-    'js/coverage/dist/dom/selectorEngine.js',
+    'js/coverage/dist/dom/event-handler.js',
+    'js/coverage/dist/dom/selector-engine.js',
     'js/coverage/dist/dom/data.js',
     'js/coverage/dist/dom/manipulator.js',
     'js/coverage/dist/dom/!(polyfill).js',
     'js/coverage/dist/tooltip.js',
     'js/coverage/dist/!(util|index|tooltip).js', // include all of our js/dist files except util.js, index.js and tooltip.js
-    'js/tests/unit/*.js',
-    'js/tests/unit/dom/*.js'
+    'js/tests/unit/!(tests-polyfills).js',
+    'js/tests/unit/dom/*.js',
+    'js/tests/unit/util/*.js'
   ])
   reporters.push('coverage-istanbul')
   conf.customLaunchers = customLaunchers
@@ -153,16 +164,19 @@ if (bundle) {
       }
     }
   }
-}
 
-files.push('js/tests/unit/*.js')
+  if (debug) {
+    conf.singleRun = false
+    conf.autoWatch = true
+  }
+}
 
 conf.frameworks = frameworks
 conf.plugins = plugins
 conf.reporters = reporters
 conf.files = files
 
-module.exports = (karmaConfig) => {
+module.exports = karmaConfig => {
   // possible values: karmaConfig.LOG_DISABLE || karmaConfig.LOG_ERROR || karmaConfig.LOG_WARN || karmaConfig.LOG_INFO || karmaConfig.LOG_DEBUG
   conf.logLevel = karmaConfig.LOG_ERROR || karmaConfig.LOG_WARN
   karmaConfig.set(conf)

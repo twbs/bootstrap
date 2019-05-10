@@ -1,6 +1,6 @@
 {
+  "root": true,
   "env": {
-    "es6": false,
     "jquery": true,
     "qunit": true
   },
@@ -8,6 +8,7 @@
     "bootstrap": false,
     "sinon": false,
     "Util": false,
+    "Sanitizer": false,
     "Data": false,
     "Alert": false,
     "Button": false,
@@ -22,23 +23,40 @@
     "ecmaVersion": 5,
     "sourceType": "script"
   },
-  "extends": "../../../.eslintrc.json",
+  "extends": [
+    "plugin:unicorn/recommended",
+    "xo",
+    "xo/browser"
+  ],
   "rules": {
-    "no-console": "error",
-    // Best Practices
-    "consistent-return": "off",
-    "no-magic-numbers": "off",
-    "vars-on-top": "off",
-
-    // Stylistic Issues
-    "func-style": "off",
-    "spaced-comment": "off",
-
-    // ECMAScript 6
-    "no-var": "off",
-    "object-shorthand": "off",
-    "prefer-arrow-callback": "off",
-    "prefer-template": "off",
-    "prefer-rest-params": "off"
+    "capitalized-comments": "off",
+    "indent": [
+      "error",
+      2,
+      {
+        "MemberExpression": "off",
+        "SwitchCase": 1
+      }
+    ],
+    "multiline-ternary": [
+      "error",
+      "always-multiline"
+    ],
+    "new-cap": "off",
+    "object-curly-spacing": [
+      "error",
+      "always"
+    ],
+    "semi": [
+      "error",
+      "never"
+    ],
+    "strict": "error",
+    "unicorn/no-unused-properties": "error",
+    "unicorn/prefer-includes": "off",
+    "unicorn/prefer-node-append": "off",
+    "unicorn/prefer-node-remove": "off",
+    "unicorn/prefer-query-selector": "off",
+    "unicorn/prevent-abbreviations": "off"
   }
 }

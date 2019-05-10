@@ -5,10 +5,16 @@
  * --------------------------------------------------------------------------
  */
 
+import {
+  jQuery as $,
+  TRANSITION_END,
+  emulateTransitionEnd,
+  getSelectorFromElement,
+  getTransitionDurationFromElement
+} from './util/index'
 import Data from './dom/data'
-import EventHandler from './dom/eventHandler'
-import SelectorEngine from './dom/selectorEngine'
-import Util from './util'
+import EventHandler from './dom/event-handler'
+import SelectorEngine from './dom/selector-engine'
 
 /**
  * ------------------------------------------------------------------------
@@ -16,26 +22,26 @@ import Util from './util'
  * ------------------------------------------------------------------------
  */
 
-const NAME                = 'alert'
-const VERSION             = '4.3.1'
-const DATA_KEY            = 'bs.alert'
-const EVENT_KEY           = `.${DATA_KEY}`
-const DATA_API_KEY        = '.data-api'
+const NAME = 'alert'
+const VERSION = '4.3.1'
+const DATA_KEY = 'bs.alert'
+const EVENT_KEY = `.${DATA_KEY}`
+const DATA_API_KEY = '.data-api'
 
 const Selector = {
-  DISMISS : '[data-dismiss="alert"]'
+  DISMISS: '[data-dismiss="alert"]'
 }
 
 const Event = {
-  CLOSE          : `close${EVENT_KEY}`,
-  CLOSED         : `closed${EVENT_KEY}`,
-  CLICK_DATA_API : `click${EVENT_KEY}${DATA_API_KEY}`
+  CLOSE: `close${EVENT_KEY}`,
+  CLOSED: `closed${EVENT_KEY}`,
+  CLICK_DATA_API: `click${EVENT_KEY}${DATA_API_KEY}`
 }
 
 const ClassName = {
-  ALERT : 'alert',
-  FADE  : 'fade',
-  SHOW  : 'show'
+  ALERT: 'alert',
+  FADE: 'fade',
+  SHOW: 'show'
 }
 
 /**
@@ -83,8 +89,8 @@ class Alert {
   // Private
 
   _getRootElement(element) {
-    const selector = Util.getSelectorFromElement(element)
-    let parent     = false
+    const selector = getSelectorFromElement(element)
+    let parent = false
 
     if (selector) {
       parent = SelectorEngine.findOne(selector)
@@ -109,11 +115,11 @@ class Alert {
       return
     }
 
-    const transitionDuration = Util.getTransitionDurationFromElement(element)
+    const transitionDuration = getTransitionDurationFromElement(element)
 
     EventHandler
-      .one(element, Util.TRANSITION_END, (event) => this._destroyElement(element, event))
-    Util.emulateTransitionEnd(element, transitionDuration)
+      .one(element, TRANSITION_END, event => this._destroyElement(element, event))
+    emulateTransitionEnd(element, transitionDuration)
   }
 
   _destroyElement(element) {
@@ -170,12 +176,11 @@ EventHandler
  * add .alert to jQuery only if jQuery is present
  */
 
-const $ = Util.jQuery
 if (typeof $ !== 'undefined') {
   const JQUERY_NO_CONFLICT = $.fn[NAME]
-  $.fn[NAME]               = Alert._jQueryInterface
-  $.fn[NAME].Constructor   = Alert
-  $.fn[NAME].noConflict    = () => {
+  $.fn[NAME] = Alert._jQueryInterface
+  $.fn[NAME].Constructor = Alert
+  $.fn[NAME].noConflict = () => {
     $.fn[NAME] = JQUERY_NO_CONFLICT
     return Alert._jQueryInterface
   }

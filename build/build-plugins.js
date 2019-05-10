@@ -7,16 +7,18 @@
 
 'use strict'
 
-const path    = require('path')
-const rollup  = require('rollup')
-const babel   = require('rollup-plugin-babel')
-const banner  = require('./banner.js')
+const path = require('path')
+const rollup = require('rollup')
+const babel = require('rollup-plugin-babel')
+const banner = require('./banner.js')
 
-const TEST    = process.env.NODE_ENV === 'test'
+const TEST = process.env.NODE_ENV === 'test'
 const plugins = [
   babel({
-    exclude: 'node_modules/**', // Only transpile our source code
-    externalHelpersWhitelist: [ // Include only required helpers
+    // Only transpile our source code
+    exclude: 'node_modules/**',
+    // Include only required helpers
+    externalHelpersWhitelist: [
       'defineProperties',
       'createClass',
       'inheritsLoose',
@@ -27,10 +29,9 @@ const plugins = [
 ]
 const bsPlugins = {
   Data: path.resolve(__dirname, '../js/src/dom/data.js'),
-  EventHandler: path.resolve(__dirname, '../js/src/dom/eventHandler.js'),
+  EventHandler: path.resolve(__dirname, '../js/src/dom/event-handler.js'),
   Manipulator: path.resolve(__dirname, '../js/src/dom/manipulator.js'),
-  Polyfill: path.resolve(__dirname, '../js/src/dom/polyfill.js'),
-  SelectorEngine: path.resolve(__dirname, '../js/src/dom/selectorEngine.js'),
+  SelectorEngine: path.resolve(__dirname, '../js/src/dom/selector-engine.js'),
   Alert: path.resolve(__dirname, '../js/src/alert.js'),
   Button: path.resolve(__dirname, '../js/src/button.js'),
   Carousel: path.resolve(__dirname, '../js/src/carousel.js'),
@@ -41,23 +42,25 @@ const bsPlugins = {
   ScrollSpy: path.resolve(__dirname, '../js/src/scrollspy.js'),
   Tab: path.resolve(__dirname, '../js/src/tab.js'),
   Toast: path.resolve(__dirname, '../js/src/toast.js'),
-  Tooltip: path.resolve(__dirname, '../js/src/tooltip.js'),
-  Util: path.resolve(__dirname, '../js/src/util.js')
+  Tooltip: path.resolve(__dirname, '../js/src/tooltip.js')
 }
 const rootPath = TEST ? '../js/coverage/dist/' : '../js/dist/'
+
+if (TEST) {
+  bsPlugins.Util = path.resolve(__dirname, '../js/src/util/index.js')
+  bsPlugins.Sanitizer = path.resolve(__dirname, '../js/src/util/sanitizer.js')
+}
 
 const defaultPluginConfig = {
   external: [
     bsPlugins.Data,
     bsPlugins.EventHandler,
-    bsPlugins.SelectorEngine,
-    bsPlugins.Util
+    bsPlugins.SelectorEngine
   ],
   globals: {
     [bsPlugins.Data]: 'Data',
     [bsPlugins.EventHandler]: 'EventHandler',
-    [bsPlugins.SelectorEngine]: 'SelectorEngine',
-    [bsPlugins.Util]: 'Util'
+    [bsPlugins.SelectorEngine]: 'SelectorEngine'
   }
 }
 
@@ -65,33 +68,14 @@ function getConfigByPluginKey(pluginKey) {
   if (
     pluginKey === 'Data' ||
     pluginKey === 'Manipulator' ||
-    pluginKey === 'Util'
+    pluginKey === 'EventHandler' ||
+    pluginKey === 'SelectorEngine' ||
+    pluginKey === 'Util' ||
+    pluginKey === 'Sanitizer'
   ) {
     return {
       external: [],
       globals: {}
-    }
-  }
-
-  if (pluginKey === 'EventHandler' || pluginKey === 'SelectorEngine') {
-    return {
-      external: [
-        bsPlugins.Polyfill,
-        bsPlugins.Util
-      ],
-      globals: {
-        [bsPlugins.Polyfill]: 'Polyfill',
-        [bsPlugins.Util]: 'Util'
-      }
-    }
-  }
-
-  if (pluginKey === 'Polyfill') {
-    return {
-      external: [bsPlugins.Util],
-      globals: {
-        [bsPlugins.Util]: 'Util'
-      }
     }
   }
 
@@ -125,14 +109,12 @@ function getConfigByPluginKey(pluginKey) {
       external: [
         bsPlugins.Data,
         bsPlugins.SelectorEngine,
-        bsPlugins.Tooltip,
-        bsPlugins.Util
+        bsPlugins.Tooltip
       ],
       globals: {
         [bsPlugins.Data]: 'Data',
         [bsPlugins.SelectorEngine]: 'SelectorEngine',
-        [bsPlugins.Tooltip]: 'Tooltip',
-        [bsPlugins.Util]: 'Util'
+        [bsPlugins.Tooltip]: 'Tooltip'
       }
     }
   }
@@ -142,41 +124,49 @@ function getConfigByPluginKey(pluginKey) {
       external: [
         bsPlugins.Data,
         bsPlugins.EventHandler,
-        bsPlugins.Manipulator,
-        bsPlugins.Util
+        bsPlugins.Manipulator
       ],
       globals: {
         [bsPlugins.Data]: 'Data',
         [bsPlugins.EventHandler]: 'EventHandler',
-        [bsPlugins.Manipulator]: 'Manipulator',
-        [bsPlugins.Util]: 'Util'
+        [bsPlugins.Manipulator]: 'Manipulator'
       }
     }
   }
 }
 
+const utilObjects = [
+  'Util',
+  'Sanitizer'
+]
+
+const domObjects = [
+  'Data',
+  'EventHandler',
+  'Manipulator',
+  'SelectorEngine'
+]
+
 function build(plugin) {
   console.log(`Building ${plugin} plugin...`)
 
-  const config = getConfigByPluginKey(plugin)
-  const external = config.external
-  const globals = config.globals
+  const { external, globals } = getConfigByPluginKey(plugin)
+  const pluginFilename = path.basename(bsPlugins[plugin])
+  let pluginPath = rootPath
 
-  const pluginPath = [
-    'Data',
-    'EventHandler',
-    'Manipulator',
-    'Polyfill',
-    'SelectorEngine'
-  ].includes(plugin) ? `${rootPath}/dom/` : rootPath
+  if (utilObjects.includes(plugin)) {
+    pluginPath = `${rootPath}/util/`
+  }
 
-  const pluginFilename = `${plugin.toLowerCase()}.js`
+  if (domObjects.includes(plugin)) {
+    pluginPath = `${rootPath}/dom/`
+  }
 
   rollup.rollup({
     input: bsPlugins[plugin],
     plugins,
     external
-  }).then((bundle) => {
+  }).then(bundle => {
     bundle.write({
       banner: banner(pluginFilename),
       format: 'umd',
@@ -186,8 +176,9 @@ function build(plugin) {
       file: path.resolve(__dirname, `${pluginPath}${pluginFilename}`)
     })
       .then(() => console.log(`Building ${plugin} plugin... Done!`))
-      .catch((err) => console.error(`${plugin}: ${err}`))
+      .catch(error => console.error(`${plugin}: ${error}`))
   })
 }
 
-Object.keys(bsPlugins).forEach((plugin) => build(plugin))
+Object.keys(bsPlugins)
+  .forEach(plugin => build(plugin))

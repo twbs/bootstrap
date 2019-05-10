@@ -1,7 +1,7 @@
 $(function () {
   'use strict'
 
-  var ScrollSpy = typeof window.bootstrap !== 'undefined' ? window.bootstrap.ScrollSpy : window.ScrollSpy
+  var ScrollSpy = typeof window.bootstrap === 'undefined' ? window.ScrollSpy : window.bootstrap.ScrollSpy
 
   QUnit.module('scrollspy plugin')
 
@@ -33,8 +33,8 @@ $(function () {
     $el.bootstrapScrollspy()
     try {
       $el.bootstrapScrollspy('noMethod')
-    } catch (err) {
-      assert.strictEqual(err.message, 'No method named "noMethod"')
+    } catch (error) {
+      assert.strictEqual(error.message, 'No method named "noMethod"')
     }
   })
 
@@ -203,7 +203,9 @@ $(function () {
     var done = assert.async()
     var testElementIsActiveAfterScroll = function (element, target) {
       var deferred = $.Deferred()
-      var scrollHeight = Math.ceil($content.scrollTop() + $(target).position().top)
+      // add top padding to fix Chrome on Android failures
+      var paddingTop = 5
+      var scrollHeight = Math.ceil($content.scrollTop() + $(target).position().top) + paddingTop
       $content.one('scroll', function () {
         assert.ok($(element).hasClass('active'), 'target:' + target + ', element' + element)
         deferred.resolve()
@@ -247,7 +249,9 @@ $(function () {
     var done = assert.async()
     var testElementIsActiveAfterScroll = function (element, target) {
       var deferred = $.Deferred()
-      var scrollHeight = Math.ceil($content.scrollTop() + $(target).position().top)
+      // add top padding to fix Chrome on Android failures
+      var paddingTop = 5
+      var scrollHeight = Math.ceil($content.scrollTop() + $(target).position().top) + paddingTop
       $content.one('scroll', function () {
         assert.ok($(element).hasClass('active'), 'target:' + target + ', element' + element)
         deferred.resolve()
@@ -291,7 +295,9 @@ $(function () {
     var done = assert.async()
     var testElementIsActiveAfterScroll = function (element, target) {
       var deferred = $.Deferred()
-      var scrollHeight = Math.ceil($content.scrollTop() + $(target).position().top)
+      // add top padding to fix Chrome on Android failures
+      var paddingTop = 5
+      var scrollHeight = Math.ceil($content.scrollTop() + $(target).position().top) + paddingTop
       $content.one('scroll', function () {
         assert.ok($(element).hasClass('active'), 'target:' + target + ', element' + element)
         deferred.resolve()
@@ -606,7 +612,9 @@ $(function () {
 
     var testElementIsActiveAfterScroll = function (element, target) {
       var deferred = $.Deferred()
-      var scrollHeight = Math.ceil($content.scrollTop() + $(target).position().top)
+      // add top padding to fix Chrome on Android failures
+      var paddingTop = 5
+      var scrollHeight = Math.ceil($content.scrollTop() + $(target).position().top) + paddingTop
       $content.one('scroll', function () {
         assert.ok($(element).hasClass('active'), 'target:' + target + ', element: ' + element)
         deferred.resolve()
@@ -726,5 +734,10 @@ $(function () {
 
     testOffsetMethod('js')
     testOffsetMethod('data')
+  })
+
+  QUnit.test('should return the version', function (assert) {
+    assert.expect(1)
+    assert.strictEqual(typeof ScrollSpy.VERSION, 'string')
   })
 })
