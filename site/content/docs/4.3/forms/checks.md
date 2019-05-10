@@ -6,6 +6,10 @@ group: forms
 toc: true
 ---
 
+For even more customization and cross browser consistency, use our custom form check elements. They're built on top of semantic and accessible markup, so they're solid replacements for any default form control.
+
+In the checked states, we use **embedded SVG icons** from [Open Iconic](https://github.com/iconic/open-iconic). This provides us the best control for styling and positioning across browsers and devices.
+
 <script>
 document.addEventListener("DOMContentLoaded", function() {
   var checkbox = document.getElementById("flexCheckIndeterminate");
