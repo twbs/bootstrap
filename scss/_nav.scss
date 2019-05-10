@@ -15,7 +15,8 @@
   display: block;
   padding: $nav-link-padding-y $nav-link-padding-x;
 
-  @include hover-focus {
+  &:hover,
+  &:focus {
     text-decoration: none;
   }
 
@@ -42,7 +43,8 @@
     border: $nav-tabs-border-width solid transparent;
     @include border-top-radius($nav-tabs-border-radius);
 
-    @include hover-focus {
+    &:hover,
+    &:focus {
       border-color: $nav-tabs-link-hover-border-color;
     }
 

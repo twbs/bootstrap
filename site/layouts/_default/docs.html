@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {{ partial "header" . }}
+  </head>
+  <body>
+    {{ partial "skippy" . }}
+
+    {{ partial "docs-navbar" . }}
+
+    <div class="container-fluid">
+      <div class="row flex-xl-nowrap">
+        <div class="col-md-3 col-xl-2 bd-sidebar">
+          {{ partial "docs-sidebar" . }}
+        </div>
+
+        {{ if (eq .Page.Params.toc true) }}
+          <nav class="d-none d-xl-block col-xl-2 bd-toc" aria-label="Secondary navigation">
+            {{ .TableOfContents }}
+          </nav>
+        {{ end }}
+
+        <main class="col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+          <h1 class="bd-title" id="content">{{ .Title | markdownify }}</h1>
+          <p class="bd-lead">{{ .Page.Params.Description | markdownify }}</p>
+          {{ partial "ads" . }}
+          {{ .Content }}
+        </main>
+      </div>
+    </div>
+
+    {{ partial "scripts" . }}
+  </body>
+</html>
