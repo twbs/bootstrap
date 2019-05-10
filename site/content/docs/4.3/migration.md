@@ -22,6 +22,7 @@ See the browser and devices page for details on what is currently supported in B
 
 Changes to our source Sass files and compiled CSS.
 
+- Removed `hover`, `hover-focus`, `plain-hover-focus`, and `hover-focus-active` mixins. Use regular CSS syntax for these moving forward. [See #28267](https://github.com/twbs/bootstrap/pull/28267).
 - **Todo:** Remove previously deprecated mixins
   - `float()`
   - `form-control-mixin()`
@@ -31,6 +32,7 @@ Changes to our source Sass files and compiled CSS.
 - **Todo:** New variables?
 - **Todo:** Rearrange forms source files (under `scss/forms/`)
 - **Todo:** Rearrange grid source files (under `scss/grid/`)
+- Removed print styles and `$enable-print-styles` variable. Print display classes, however, have remained intact. [See #28339](https://github.com/twbs/bootstrap/pull/28339).
 
 ## JavaScript
 
@@ -42,7 +44,7 @@ Changes to our source and compiled JavaScript files.
 
 Changes to any layout tools and our grid system.
 
-- Dropped `.media` component as it can be built with utility classes
+- Dropped `.media` component as it can be built with utility classes. [See #28265](https://github.com/twbs/bootstrap/pull/28265).
 - **Todo:** Remove `position: relative` from grid columns
 - **Todo:** Integrate CSS grid into our grid system
 

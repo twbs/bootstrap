@@ -35,13 +35,13 @@
     - title: Button group
     - title: Card
     - title: Carousel
+    - title: Close icon
     - title: Collapse
     - title: Dropdowns
     - title: Forms
     - title: Input group
     - title: Jumbotron
     - title: List group
-    - title: Media object
     - title: Modal
     - title: Navs
     - title: Navbar
@@ -57,7 +57,6 @@
   pages:
     - title: Borders
     - title: Clearfix
-    - title: Close icon
     - title: Colors
     - title: Display
     - title: Embed
