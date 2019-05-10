@@ -4,50 +4,45 @@
 // Right side table of contents
 //
 
-.bd-toc {
-  @supports (position: sticky) {
-    position: sticky;
-    top: 4rem;
-    height: calc(100vh - 4rem);
-    overflow-y: auto;
-  }
-  order: 2;
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
-  @include font-size(.875rem);
-}
+// .bd-toc {
+//   @supports (position: sticky) {
+//     position: sticky;
+//     top: 4rem;
+//     height: calc(100vh - 4rem);
+//     overflow-y: auto;
+//   }
+//   order: 2;
+//   padding-top: 1.5rem;
+//   padding-bottom: 1.5rem;
+//   @include font-size(.875rem);
+// }
 
 // stylelint-disable selector-max-type, selector-max-combinators, selector-max-compound-selectors
 .bd-toc nav {
-  padding-left: 0;
-  border-left: 1px solid #eee;
+  // padding-left: 0;
+  padding-top: .125em;
+  padding-bottom: .125em;
+  border-left: .25em solid #eee;
 
-  > ul,
-  > ul > li > ul {
-    padding: 0;
+  ul {
+    margin-bottom: 0;
+  }
+
+  > ul > li {
+    display: block;
+  }
+
+  li ul {
+    padding-left: 0;
+  }
+
+  li ul li {
+    margin-bottom: .25rem;
+    list-style-type: disc;
   }
 
   a code {
     font: inherit;
-  }
-
-  li {
-    display: block;
-
-    ul li ul {
-      padding-left: 1rem;
-    }
-
-    a {
-      display: block;
-      padding: .125rem 1.5rem;
-      color: #77757a;
-
-      &:hover {
-        color: $blue;
-        text-decoration: none;
-      }
-    }
   }
 }
 // stylelint-enable selector-max-type, selector-max-combinators, selector-max-compound-selectors

@@ -4,74 +4,24 @@ title: Forms
 description: Examples and usage guidelines for form control styles, layout options, and custom components for creating a wide variety of forms.
 group: forms
 toc: true
-subpages:
-  - title: Overview
+sections:
   - title: Layout
+    description: Create inline, horizontal, or complex grid-based layouts with your forms.
   - title: Form control
+    description: Style textual inputs and textareas quickly and easily.
   - title: Select
+    description: Create browser-default select menus with a custom initial appearance.
   - title: Checks
+    description: Learn how to use our custom radios and checkboxes.
   - title: File
+    description: Replace a native file input with our custom version.
   - title: Range
+    description: Style the range input type with our custom CSS.
   - title: Input group
+    description: Attach labels and buttons to your inputs for increased semantic value.
   - title: Validation
+    description: Validate your forms with custom or native validation behaviors and styles.
 ---
-
-<div class="row mt-5">
-  <div class="col-md-4 mb-3 d-none">
-    <a class="d-block p-4 bg-light rounded text-decoration-none" href="../overview/">
-      <strong class="d-block h5 mb-0">Overview</strong>
-      <span class="text-secondary">Learn about Bootstrap's form components, behaviors, and more.</span>
-    </a>
-  </div>
-  <div class="col-md-4 mb-3">
-    <a class="d-block p-4 bg-light rounded text-decoration-none" href="../layout/">
-      <strong class="d-block h5 mb-0">Layout</strong>
-      <span class="text-secondary">Create inline, horizontal, or complex grid-based layouts with your forms.</span>
-    </a>
-  </div>
-  <div class="col-md-4 mb-3">
-    <a class="d-block p-4 bg-light rounded text-decoration-none" href="../form-control/">
-      <strong class="d-block h5 mb-0">Form control</strong>
-      <span class="text-secondary">Style textual inputs and textareas quickly and easily.</span>
-    </a>
-  </div>
-  <div class="col-md-4 mb-3">
-    <a class="d-block p-4 bg-light rounded text-decoration-none" href="../select/">
-      <strong class="d-block h5 mb-0">Select</strong>
-      <span class="text-secondary">Create browser-default select menus with a custom initial appearance.</span>
-    </a>
-  </div>
-  <div class="col-md-4 mb-3">
-    <a class="d-block p-4 bg-light rounded text-decoration-none" href="../checks/">
-      <strong class="d-block h5 mb-0">Checks</strong>
-      <span class="text-secondary">Learn how to use our custom radios and checkboxes.</span>
-    </a>
-  </div>
-  <div class="col-md-4 mb-3">
-    <a class="d-block p-4 bg-light rounded text-decoration-none" href="../file/">
-      <strong class="d-block h5 mb-0">File</strong>
-      <span class="text-secondary">Replace a native file input with our custom version.</span>
-    </a>
-  </div>
-  <div class="col-md-4 mb-3">
-    <a class="d-block p-4 bg-light rounded text-decoration-none" href="../range/">
-      <strong class="d-block h5 mb-0">Range</strong>
-      <span class="text-secondary">Style the range input type with our custom CSS.</span>
-    </a>
-  </div>
-  <div class="col-md-4 mb-3">
-    <a class="d-block p-4 bg-light rounded text-decoration-none" href="../input-group/">
-      <strong class="d-block h5 mb-0">Input group</strong>
-      <span class="text-secondary">Attach labels and buttons to your inputs for increased semantic value.</span>
-    </a>
-  </div>
-  <div class="col-md-4 mb-3">
-    <a class="d-block p-4 bg-light rounded text-decoration-none" href="../validation/">
-      <strong class="d-block h5 mb-0">Validation</strong>
-      <span class="text-secondary">Validate your forms with custom or native validation behaviors and styles.</span>
-    </a>
-  </div>
-</div>
 
 ## Overview
 
