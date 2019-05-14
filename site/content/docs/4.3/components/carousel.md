@@ -308,6 +308,7 @@ var carousel = new bootstrap.Carousel(myCarousel, {
 | `nextWhenVisible` | Only go to the next slide when the page, carousel and the carousel parent is visible. |
 | `to` | Cycles the carousel to a particular frame (0 based, similar to an array). **Returns to the caller before the target item has been shown** (i.e. before the `slid.bs.carousel` event occurs). |
 | `dispose` | Destroys an element's carousel. |
+| `_getInstance` | *Static* method which allows you to get the carousel instance associated with a DOM element |
 
 ### Events
 
@@ -340,7 +341,9 @@ All carousel events are fired at the carousel itself (i.e. at the `<div class="c
 </table>
 
 {{< highlight js >}}
-$('#myCarousel').on('slide.bs.carousel', function () {
+var myCarousel = document.getElementById('myCarousel')
+
+myCarousel.addEventListener('slide.bs.carousel', function () {
   // do something...
 })
 {{< /highlight >}}
