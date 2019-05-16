@@ -276,17 +276,13 @@
     @include border-top-radius(0);
   }
 
-  //  Only apply bottom border/margin if accordion has multiple cards
   &:not(:only-child) {
-    &:first-of-type,
     &:not(:last-of-type) {
       border-bottom: 0;
-
-      @if ($card-border-width > 0) {
-        .card-header {
-          margin-bottom:  -$card-border-width;
-        }
-      }
     }
+  }
+
+  .card-header {
+    margin-bottom: -$card-border-width;
   }
 }
