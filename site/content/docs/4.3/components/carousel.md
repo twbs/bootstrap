@@ -18,8 +18,6 @@ In browsers where the [Page Visibility API](https://www.w3.org/TR/page-visibilit
 
 Please be aware that nested carousels are not supported, and carousels are generally not compliant with accessibility standards.
 
-Lastly, if you're building our JavaScript from source, it [requires `util.js`]({{< docsref "/getting-started/javascript#util" >}}).
-
 ## Example
 
 Carousels don't automatically normalize slide dimensions. As such, you may need to use additional utilities or custom styles to appropriately size content. While carousels support previous/next controls and indicators, they're not explicitly required. Add and customize as you see fit.
