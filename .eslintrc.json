@@ -47,6 +47,7 @@
     "unicorn/no-fn-reference-in-iterator": "off",
     "unicorn/no-for-loop": "off",
     "unicorn/no-null": "off",
+    "unicorn/no-reduce": "off",
     "unicorn/no-unused-properties": "error",
     "unicorn/no-useless-undefined": "off",
     "unicorn/prefer-dataset": "off",

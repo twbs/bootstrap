@@ -17,6 +17,7 @@ import {
 import Data from './dom/data'
 import EventHandler from './dom/event-handler'
 import Manipulator from './dom/manipulator'
+import SelectorEngine from './dom/selector-engine'
 import BaseComponent from './base-component'
 
 /**
@@ -36,20 +37,30 @@ const EVENT_SHOW = `show${EVENT_KEY}`
 const EVENT_SHOWN = `shown${EVENT_KEY}`
 
 const CLASS_NAME_FADE = 'fade'
-const CLASS_NAME_HIDE = 'hide'
 const CLASS_NAME_SHOW = 'show'
 const CLASS_NAME_SHOWING = 'showing'
+
+const POSITION_TOP_CENTER = 'top-center'
+const POSITION_TOP_LEFT = 'top-left'
+const POSITION_TOP_RIGHT = 'top-right'
+const POSITION_BOTTOM_CENTER = 'bottom-center'
+const POSITION_BOTTOM_LEFT = 'bottom-left'
+const POSITION_BOTTOM_RIGHT = 'bottom-right'
 
 const DefaultType = {
   animation: 'boolean',
   autohide: 'boolean',
-  delay: 'number'
+  delay: 'number',
+  position: 'string',
+  positionMargin: 'number'
 }
 
 const Default = {
   animation: true,
   autohide: true,
-  delay: 5000
+  delay: 5000,
+  position: POSITION_TOP_RIGHT,
+  positionMargin: 10
 }
 
 const SELECTOR_DATA_DISMISS = '[data-bs-dismiss="toast"]'
@@ -85,6 +96,10 @@ class Toast extends BaseComponent {
 
   // Public
 
+  get config() {
+    return this._config
+  }
+
   show() {
     const showEvent = EventHandler.trigger(this._element, EVENT_SHOW)
 
@@ -111,7 +126,7 @@ class Toast extends BaseComponent {
       }
     }
 
-    this._element.classList.remove(CLASS_NAME_HIDE)
+    this._positionToast()
     reflow(this._element)
     this._element.classList.add(CLASS_NAME_SHOWING)
     if (this._config.animation) {
@@ -136,7 +151,8 @@ class Toast extends BaseComponent {
     }
 
     const complete = () => {
-      this._element.classList.add(CLASS_NAME_HIDE)
+      this._clearPositioning()
+      this._repositionExistingToasts()
       EventHandler.trigger(this._element, EVENT_HIDDEN)
     }
 
@@ -165,6 +181,122 @@ class Toast extends BaseComponent {
   }
 
   // Private
+
+  _positionToast() {
+    this._element.style.position = 'absolute'
+    const toastList = SelectorEngine.find(`.toast.${this._config.position}`, this._element.parentNode)
+
+    if (this._config.position.indexOf('top-') > -1) {
+      const top = toastList.reduce((top, toastEl) => {
+        const { height, marginBottom } = window.getComputedStyle(toastEl)
+
+        top += (parseInt(height, 10) + parseInt(marginBottom, 10))
+        return top
+      }, this._config.positionMargin)
+
+      if (this._config.position === POSITION_TOP_RIGHT) {
+        this._element.classList.add(POSITION_TOP_RIGHT)
+        this._element.style.right = `${this._config.positionMargin}px`
+      } else if (this._config.position === POSITION_TOP_LEFT) {
+        this._element.classList.add(POSITION_TOP_LEFT)
+        this._element.style.left = `${this._config.positionMargin}px`
+      } else {
+        const leftPx = this._getMiddleToastPosition()
+
+        this._element.classList.add(POSITION_TOP_CENTER)
+        this._element.style.left = `${leftPx}px`
+      }
+
+      this._element.style.top = `${top}px`
+      return
+    }
+
+    const bottom = toastList.reduce((bottom, toastEl) => {
+      const { height, marginTop } = window.getComputedStyle(toastEl)
+
+      bottom += (parseInt(height, 10) + parseInt(marginTop, 10))
+      return bottom
+    }, this._config.positionMargin)
+
+    if (this._config.position === POSITION_BOTTOM_RIGHT) {
+      this._element.classList.add(POSITION_BOTTOM_RIGHT)
+      this._element.style.right = `${this._config.positionMargin}px`
+    } else if (this._config.position === POSITION_BOTTOM_LEFT) {
+      this._element.classList.add(POSITION_BOTTOM_LEFT)
+      this._element.style.left = `${this._config.positionMargin}px`
+    } else {
+      const leftPx = this._getMiddleToastPosition()
+
+      this._element.classList.add(POSITION_BOTTOM_CENTER)
+      this._element.style.left = `${leftPx}px`
+    }
+
+    this._element.style.bottom = `${bottom}px`
+  }
+
+  _repositionExistingToasts() {
+    if (!this._element.parentNode) {
+      return
+    }
+
+    const toastList = SelectorEngine.find(`.toast.${this._config.position}`, this._element.parentNode)
+
+    toastList.forEach((toastEl, index) => {
+      const toastInstance = Toast.getInstance(toastEl)
+
+      if (toastInstance.config.position.indexOf('top-') > -1) {
+        let top = toastInstance.config.positionMargin
+
+        if (index > 0) {
+          const previousToast = toastList[index - 1]
+          const { height, marginBottom } = window.getComputedStyle(previousToast)
+
+          top += (parseInt(height, 10) + parseInt(marginBottom, 10))
+        }
+
+        toastEl.style.top = `${top}px`
+      }
+
+      if (toastInstance.config.position.indexOf('bottom-') > -1) {
+        let bottom = toastInstance.config.positionMargin
+
+        if (index > 0) {
+          const previousToast = toastList[index - 1]
+          const { height, marginTop } = window.getComputedStyle(previousToast)
+
+          bottom += (parseInt(height, 10) + parseInt(marginTop, 10))
+        }
+
+        toastEl.style.bottom = `${bottom}px`
+      }
+    })
+  }
+
+  _clearPositioning() {
+    this._element.style.position = ''
+
+    this._element.style.right = ''
+    this._element.style.left = ''
+    this._element.style.bottom = ''
+    this._element.style.top = ''
+    this._element.classList.remove(POSITION_TOP_RIGHT)
+    this._element.classList.remove(POSITION_TOP_LEFT)
+    this._element.classList.remove(POSITION_TOP_CENTER)
+    this._element.classList.remove(POSITION_BOTTOM_RIGHT)
+    this._element.classList.remove(POSITION_BOTTOM_LEFT)
+    this._element.classList.remove(POSITION_BOTTOM_CENTER)
+  }
+
+  _getMiddleToastPosition() {
+    const { width: computedWidthToast } = window.getComputedStyle(this._element)
+    const { width: computedWidthContainer } = window.getComputedStyle(this._element.parentNode)
+    const widthContainer = parseInt(computedWidthContainer === 'auto' ? window.innerWidth : computedWidthContainer, 10)
+    const widthToast = parseInt(computedWidthToast === 'auto' ? widthContainer : computedWidthToast, 10)
+    const middleContainerWidth = widthContainer / 2
+    const middleToastWidth = widthToast / 2
+
+    return middleContainerWidth > middleToastWidth ? middleContainerWidth - middleToastWidth : 0
+  }
 
   _getConfig(config) {
     config = {

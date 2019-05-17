@@ -32,7 +32,7 @@ describe('Toast', () => {
 
       const toastEl = fixtureEl.querySelector('div')
       const toast = new Toast(toastEl, {
-        delay: 1
+        autohide: false
       })
 
       toastEl.addEventListener('shown.bs.toast', () => {
@@ -51,7 +51,7 @@ describe('Toast', () => {
       ].join('')
 
       const toastEl = fixtureEl.querySelector('div')
-      const toast = new Toast(toastEl)
+      const toast = new Toast(toastEl, { autohide: false })
 
       toastEl.addEventListener('shown.bs.toast', () => {
         expect(toastEl.classList.contains('show')).toEqual(true)
@@ -118,7 +118,7 @@ describe('Toast', () => {
 
     it('should not add fade class', done => {
       fixtureEl.innerHTML = [
-        '<div class="toast" data-bs-delay="1" data-bs-animation="false">',
+        '<div class="toast" data-bs-animation="false">',
         '  <div class="toast-body">',
         '    a simple toast',
         '  </div>',
@@ -126,7 +126,7 @@ describe('Toast', () => {
       ].join('')
 
       const toastEl = fixtureEl.querySelector('.toast')
-      const toast = new Toast(toastEl)
+      const toast = new Toast(toastEl, { autohide: false })
 
       toastEl.addEventListener('shown.bs.toast', () => {
         expect(toastEl.classList.contains('fade')).toEqual(false)
@@ -138,7 +138,7 @@ describe('Toast', () => {
 
     it('should not trigger shown if show is prevented', done => {
       fixtureEl.innerHTML = [
-        '<div class="toast" data-bs-delay="1" data-bs-animation="false">',
+        '<div class="toast" data-bs-animation="false">',
         '  <div class="toast-body">',
         '    a simple toast',
         '  </div>',
@@ -146,7 +146,7 @@ describe('Toast', () => {
       ].join('')
 
       const toastEl = fixtureEl.querySelector('.toast')
-      const toast = new Toast(toastEl)
+      const toast = new Toast(toastEl, { autohide: false })
 
       const assertDone = () => {
         setTimeout(() => {
@@ -193,16 +193,288 @@ describe('Toast', () => {
 
       toast.show()
     })
+
+    it('should show on top-right', done => {
+      fixtureEl.innerHTML = [
+        '<div class="toast">',
+        '  <div class="toast-body">',
+        '    a simple toast',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const toastEl = fixtureEl.querySelector('.toast')
+      const toast = new Toast(toastEl)
+
+      toastEl.addEventListener('shown.bs.toast', () => {
+        expect(toastEl.classList.contains('show')).toEqual(true)
+        expect(toastEl.classList.contains('top-right')).toEqual(true)
+        done()
+      })
+
+      toast.show()
+    })
+
+    it('should stack top toasts', done => {
+      fixtureEl.innerHTML = [
+        '<div id="t1" class="toast">',
+        '  <div class="toast-body">',
+        '    a simple toast',
+        '  </div>',
+        '</div>',
+        '<div id="t2" class="toast">',
+        '  <div class="toast-body">',
+        '    a simple toast 2',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const firstToastEl = fixtureEl.querySelector('#t1')
+      const secondToastEl = fixtureEl.querySelector('#t2')
+      const firstToast = new Toast(firstToastEl)
+      const secondToast = new Toast(secondToastEl)
+
+      firstToastEl.addEventListener('shown.bs.toast', () => {
+        secondToast.show()
+      })
+
+      secondToastEl.addEventListener('shown.bs.toast', () => {
+        expect(firstToastEl.offsetTop < secondToastEl.offsetTop).toEqual(true)
+        done()
+      })
+
+      firstToast.show()
+    })
+
+    it('should reposition top toasts when one is hidden', done => {
+      fixtureEl.innerHTML = [
+        '<div id="t1" class="toast">',
+        '  <div class="toast-body">',
+        '    a simple toast',
+        '  </div>',
+        '</div>',
+        '<div id="t2" class="toast">',
+        '  <div class="toast-body">',
+        '    a simple toast 2',
+        '  </div>',
+        '</div>',
+        '<div id="t3" class="toast">',
+        '  <div class="toast-body">',
+        '    a simple toast 3',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const firstToastEl = fixtureEl.querySelector('#t1')
+      const secondToastEl = fixtureEl.querySelector('#t2')
+      const thirdToastEl = fixtureEl.querySelector('#t3')
+      const firstToast = new Toast(firstToastEl)
+      const secondToast = new Toast(secondToastEl)
+      const thirdToast = new Toast(thirdToastEl)
+      let offsetSecondToast
+
+      firstToastEl.addEventListener('shown.bs.toast', () => {
+        secondToast.show()
+      })
+
+      secondToastEl.addEventListener('shown.bs.toast', () => {
+        offsetSecondToast = secondToastEl.offsetTop
+        thirdToast.show()
+      })
+
+      thirdToastEl.addEventListener('shown.bs.toast', () => {
+        firstToast.hide()
+      })
+
+      firstToastEl.addEventListener('hidden.bs.toast', () => {
+        expect(offsetSecondToast > secondToastEl.offsetTop).toEqual(true)
+        done()
+      })
+
+      firstToast.show()
+    })
+
+    it('should reposition bottom toasts when one is hidden', done => {
+      fixtureEl.innerHTML = [
+        '<div id="t1" class="toast">',
+        '  <div class="toast-body">',
+        '    a simple toast',
+        '  </div>',
+        '</div>',
+        '<div id="t2" class="toast">',
+        '  <div class="toast-body">',
+        '    a simple toast 2',
+        '  </div>',
+        '</div>',
+        '<div id="t3" class="toast">',
+        '  <div class="toast-body">',
+        '    a simple toast 3',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const firstToastEl = fixtureEl.querySelector('#t1')
+      const secondToastEl = fixtureEl.querySelector('#t2')
+      const thirdToastEl = fixtureEl.querySelector('#t3')
+      const firstToast = new Toast(firstToastEl, {
+        position: 'bottom-right'
+      })
+      const secondToast = new Toast(secondToastEl, {
+        position: 'bottom-right'
+      })
+      const thirdToast = new Toast(thirdToastEl, {
+        position: 'bottom-right'
+      })
+
+      let offsetSecondToast
+
+      firstToastEl.addEventListener('shown.bs.toast', () => {
+        secondToast.show()
+      })
+
+      secondToastEl.addEventListener('shown.bs.toast', () => {
+        thirdToast.show()
+      })
+
+      thirdToastEl.addEventListener('shown.bs.toast', () => {
+        const secondToastRect = secondToastEl.getBoundingClientRect()
+
+        offsetSecondToast = secondToastRect.bottom
+        firstToast.hide()
+      })
+
+      firstToastEl.addEventListener('hidden.bs.toast', () => {
+        const secondToastRect = secondToastEl.getBoundingClientRect()
+
+        expect(offsetSecondToast < secondToastRect.bottom).toEqual(true)
+        done()
+      })
+
+      firstToast.show()
+    })
+
+    it('should show on top-left', done => {
+      fixtureEl.innerHTML = [
+        '<div class="toast">',
+        '  <div class="toast-body">',
+        '    a simple toast',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const toastEl = fixtureEl.querySelector('.toast')
+      const toast = new Toast(toastEl, {
+        position: 'top-left'
+      })
+
+      toastEl.addEventListener('shown.bs.toast', () => {
+        expect(toastEl.classList.contains('show')).toEqual(true)
+        expect(toastEl.classList.contains('top-left')).toEqual(true)
+        done()
+      })
+
+      toast.show()
+    })
+
+    it('should show on top-center', done => {
+      fixtureEl.innerHTML = [
+        '<div class="toast">',
+        '  <div class="toast-body">',
+        '    a simple toast',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const toastEl = fixtureEl.querySelector('.toast')
+      const toast = new Toast(toastEl, {
+        position: 'top-center'
+      })
+
+      toastEl.addEventListener('shown.bs.toast', () => {
+        expect(toastEl.classList.contains('show')).toEqual(true)
+        expect(toastEl.classList.contains('top-center')).toEqual(true)
+        done()
+      })
+
+      toast.show()
+    })
+
+    it('should show on bottom-right', done => {
+      fixtureEl.innerHTML = [
+        '<div class="toast">',
+        '  <div class="toast-body">',
+        '    a simple toast',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const toastEl = fixtureEl.querySelector('.toast')
+      const toast = new Toast(toastEl, {
+        position: 'bottom-right'
+      })
+
+      toastEl.addEventListener('shown.bs.toast', () => {
+        expect(toastEl.classList.contains('show')).toEqual(true)
+        expect(toastEl.classList.contains('bottom-right')).toEqual(true)
+        done()
+      })
+
+      toast.show()
+    })
+
+    it('should show on bottom-left', done => {
+      fixtureEl.innerHTML = [
+        '<div class="toast">',
+        '  <div class="toast-body">',
+        '    a simple toast',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const toastEl = fixtureEl.querySelector('.toast')
+      const toast = new Toast(toastEl, {
+        position: 'bottom-left'
+      })
+
+      toastEl.addEventListener('shown.bs.toast', () => {
+        expect(toastEl.classList.contains('show')).toEqual(true)
+        expect(toastEl.classList.contains('bottom-left')).toEqual(true)
+        done()
+      })
+
+      toast.show()
+    })
+
+    it('should show on bottom-center', done => {
+      fixtureEl.innerHTML = [
+        '<div class="toast">',
+        '  <div class="toast-body">',
+        '    a simple toast',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const toastEl = fixtureEl.querySelector('.toast')
+      const toast = new Toast(toastEl, {
+        position: 'bottom-center'
+      })
+
+      toastEl.addEventListener('shown.bs.toast', () => {
+        expect(toastEl.classList.contains('show')).toEqual(true)
+        expect(toastEl.classList.contains('bottom-center')).toEqual(true)
+        done()
+      })
+
+      toast.show()
+    })
   })
 
   describe('hide', () => {
     it('should allow to hide toast manually', done => {
       fixtureEl.innerHTML = [
         '<div class="toast" data-bs-delay="1" data-bs-autohide="false">',
-        '  <div class="toast-body">',
-        '    a simple toast',
-        '  </div>',
-        '  </div>'
+        '  <div class="toast-body">a simple toast</div>',
+        '</div>'
       ].join('')
 
       const toastEl = fixtureEl.querySelector('.toast')

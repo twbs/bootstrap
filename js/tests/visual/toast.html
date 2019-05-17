@@ -5,28 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="../../../dist/css/bootstrap.min.css" rel="stylesheet">
     <title>Toast</title>
-    <style>
-      .notifications {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-      }
-    </style>
   </head>
   <body>
     <div class="container">
       <h1>Toast <small>Bootstrap Visual Test</small></h1>
 
       <div class="row mt-3">
-        <div class="col-md-12">
+        <div class="col-12">
+          <form>
+            <div class="form-group w-25">
+              <label for="selectToastPlacement">Toast placement</label>
+              <select class="form-select" id="selectToastPlacement">
+                <option value="-1" selected>Select a position...</option>
+                <option value="top-center">Top center</option>
+                <option value="top-left">Top left</option>
+                <option value="top-right">Top right</option>
+                <option value="bottom-center">Bottom center</option>
+                <option value="bottom-left">Bottom left</option>
+                <option value="bottom-right">Bottom right</option>
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="col-12 mt-3">
           <button id="btnShowToast" class="btn btn-primary">Show toast</button>
           <button id="btnHideToast" class="btn btn-primary">Hide toast</button>
         </div>
       </div>
     </div>
 
-    <div class="notifications">
-      <div id="toastAutoHide" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="2000">
+    <div>
+      <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="2000">
         <div class="toast-header">
           <span class="d-block bg-primary rounded mr-2" style="width: 20px; height: 20px;"></span>
           <strong class="mr-auto">Bootstrap</strong>
@@ -37,7 +46,18 @@
         </div>
       </div>
 
-      <div class="toast" data-bs-autohide="false" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="4000">
+        <div class="toast-header">
+          <span class="d-block bg-primary rounded mr-2" style="width: 20px; height: 20px;"></span>
+          <strong class="mr-auto">Bootstrap</strong>
+          <small>11 mins ago</small>
+        </div>
+        <div class="toast-body">
+          Hello, world! This is a toast message with <strong>autohide</strong> in 4 seconds
+        </div>
+      </div>
+
+      <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
         <div class="toast-header">
           <span class="d-block bg-primary rounded mr-2" style="width: 20px; height: 20px;"></span>
           <strong class="mr-auto">Bootstrap</strong>
@@ -61,19 +81,28 @@
             new Toast(toastNode)
           })
 
+          var selectToastPlacement = document.getElementById('selectToastPlacement')
+          selectToastPlacement.addEventListener('change', function () {
+            Array.from(document.querySelectorAll('.toast'))
+              .forEach(function (toastEl) {
+                if (selectToastPlacement.value !== '-1') {
+                  var toast = Toast.getInstance(toastEl)
+                  toast.config.position = selectToastPlacement.value
+                }
+              })
+          })
+
           document.getElementById('btnShowToast').addEventListener('click', function () {
             Array.from(document.querySelectorAll('.toast'))
               .forEach(function (toastNode) {
-                var toast = Toast.getInstance(toastNode)
-                toast.show()
+                Toast.getInstance(toastNode).show()
               })
           })
 
           document.getElementById('btnHideToast').addEventListener('click', function () {
             Array.from(document.querySelectorAll('.toast'))
               .forEach(function (toastNode) {
-                var toast = Toast.getInstance(toastNode)
-                toast.hide()
+                Toast.getInstance(toastNode).hide()
               })
           })
       })
