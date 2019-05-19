@@ -5,8 +5,8 @@
  * Remember to use the same vendor files as the CDN ones,
  * otherwise the hashes won't match!
  *
- * Copyright 2017-2018 The Bootstrap Authors
- * Copyright 2017-2018 Twitter, Inc.
+ * Copyright 2017-2019 The Bootstrap Authors
+ * Copyright 2017-2019 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
@@ -17,15 +17,13 @@ const fs = require('fs')
 const path = require('path')
 const sh = require('shelljs')
 
-const pkg = require('../package.json')
-
 sh.config.fatal = true
 
-const configFile = path.join(__dirname, '../_config.yml')
+const configFile = path.join(__dirname, '../config.yml')
 
 // Array of objects which holds the files to generate SRI hashes for.
 // `file` is the path from the root folder
-// `configPropertyName` is the _config.yml variable's name of the file
+// `configPropertyName` is the config.yml variable's name of the file
 const files = [
   {
     file: 'dist/css/bootstrap.min.css',
@@ -34,10 +32,6 @@ const files = [
   {
     file: 'dist/js/bootstrap.min.js',
     configPropertyName: 'js_hash'
-  },
-  {
-    file: `site/docs/${pkg.version_short}/assets/js/vendor/jquery-slim.min.js`,
-    configPropertyName: 'jquery_hash'
   },
   {
     file: 'dist/js/bootstrap.bundle.min.js',
@@ -49,7 +43,7 @@ const files = [
   }
 ]
 
-files.forEach((file) => {
+files.forEach(file => {
   fs.readFile(file.file, 'utf8', (err, data) => {
     if (err) {
       throw err

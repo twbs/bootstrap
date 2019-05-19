@@ -1,0 +1,43 @@
+<form class="bd-search d-flex align-items-center">
+  <input type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off" data-docs-version="{{ .Site.Params.docs_version }}">
+  <button class="btn btn-link bd-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#bd-docs-nav" aria-controls="bd-docs-nav" aria-expanded="false" aria-label="Toggle docs navigation">
+    {{ partial "icons/menu.svg" (dict "width" "30" "height" "30") }}
+  </button>
+</form>
+
+<nav class="collapse bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  {{- $url := split .Permalink "/" -}}
+  {{- $page_slug := index $url (sub (len $url) 2) -}}
+
+  {{- range $group := .Site.Data.nav -}}
+    {{- $link := $group.title -}}
+    {{- $link_slug := $link | urlize -}}
+
+    {{- if $group.pages -}}
+      {{- $link = index $group.pages 0 -}}
+      {{- $link_slug = $link.title | urlize -}}
+    {{- end -}}
+
+    {{- $group_slug := $group.title | urlize -}}
+    {{- $active_group := eq $.Page.Params.group $group_slug }}
+
+    <div class="bd-toc-item{{ if $active_group }} active{{ end }}">
+        <a class="bd-toc-link" href="/docs/{{ $.Site.Params.docs_version }}/{{ $group_slug }}/{{ if $group.pages }}{{ $link_slug }}/{{ end }}">
+          {{- $group.title -}}
+        </a>
+
+        {{- if and $active_group $group.pages }}
+        <ul class="nav bd-sidenav">
+          {{- range $doc := $group.pages -}}
+            {{- $doc_slug := $doc.title | urlize }}
+            <li{{ if and $active_group (eq $page_slug $doc_slug) }} class="active bd-sidenav-active"{{ end }}>
+              <a href="/docs/{{ $.Site.Params.docs_version }}/{{ $group_slug }}/{{ $doc_slug }}/">
+                {{- $doc.title -}}
+              </a>
+            </li>
+          {{- end }}
+        </ul>
+        {{- end }}
+      </div>
+  {{- end }}
+</nav>

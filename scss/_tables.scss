@@ -23,10 +23,6 @@
   tbody + tbody {
     border-top: (2 * $table-border-width) solid $table-border-color;
   }
-
-  .table {
-    background-color: $body-bg;
-  }
 }
 
 
@@ -88,7 +84,7 @@
 
 .table-hover {
   tbody tr {
-    @include hover {
+    &:hover {
       color: $table-hover-color;
       background-color: $table-hover-bg;
     }
@@ -146,14 +142,14 @@
   }
 
   &.table-striped {
-    tbody tr:nth-of-type(odd) {
+    tbody tr:nth-of-type(#{$table-striped-order}) {
       background-color: $table-dark-accent-bg;
     }
   }
 
   &.table-hover {
     tbody tr {
-      @include hover {
+      &:hover {
         color: $table-dark-hover-color;
         background-color: $table-dark-hover-bg;
       }
@@ -178,7 +174,6 @@
         width: 100%;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
-        -ms-overflow-style: -ms-autohiding-scrollbar; // See https://github.com/twbs/bootstrap/pull/10057
 
         // Prevent double border on horizontal scroll due to use of `display: block;`
         > .table-bordered {

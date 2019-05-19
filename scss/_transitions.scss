@@ -1,5 +1,3 @@
-// stylelint-disable selector-no-qualifying-type
-
 .fade {
   @include transition($transition-fade);
 
