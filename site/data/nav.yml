@@ -35,6 +35,7 @@
     - title: Button group
     - title: Card
     - title: Carousel
+    - title: Close icon
     - title: Collapse
     - title: Dropdowns
     - title: Forms
@@ -56,7 +57,6 @@
   pages:
     - title: Borders
     - title: Clearfix
-    - title: Close icon
     - title: Colors
     - title: Display
     - title: Embed
