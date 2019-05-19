@@ -12,7 +12,6 @@ Toasts are lightweight notifications designed to mimic the push notifications th
 
 Things to know when using the toast plugin:
 
-- If you're building our JavaScript from source, it [requires `util.js`]({{< docsref "/getting-started/javascript#util" >}}).
 - Toasts are opt-in for performance reasons, so **you must initialize them yourself**.
 - **Please note that you are responsible for positioning toasts.**
 - Toasts will automatically hide if you do not specify `autohide: false`.
@@ -220,7 +219,10 @@ When using `autohide: false`, you must add a close button to allow users to dism
 Initialize toasts via JavaScript:
 
 {{< highlight js >}}
-$('.toast').toast(option)
+var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+var toastList = toastElList.map(function (toastEl) {
+  return new bootstrap.Toast(toastEl, option)
+})
 {{< /highlight >}}
 
 ### Options
@@ -266,28 +268,24 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 {{< partial "callout-danger-async-methods.md" >}}
 {{< /callout >}}
 
-#### `$().toast(options)`
-
-Attaches a toast handler to an element collection.
-
-#### `.toast('show')`
+#### show
 
 Reveals an element's toast. **Returns to the caller before the toast has actually been shown** (i.e. before the `shown.bs.toast` event occurs).
 You have to manually call this method, instead your toast won't show.
 
-{{< highlight js >}}$('#element').toast('show'){{< /highlight >}}
+{{< highlight js >}}toast.show(){{< /highlight >}}
 
-#### `.toast('hide')`
+#### hide
 
 Hides an element's toast. **Returns to the caller before the toast has actually been hidden** (i.e. before the `hidden.bs.toast` event occurs). You have to manually call this method if you made `autohide` to `false`.
 
-{{< highlight js >}}$('#element').toast('hide'){{< /highlight >}}
+{{< highlight js >}}toast.hide(){{< /highlight >}}
 
-#### `.toast('dispose')`
+#### dispose
 
 Hides an element's toast. Your toast will remain on the DOM but won't show anymore.
 
-{{< highlight js >}}$('#element').toast('dispose'){{< /highlight >}}
+{{< highlight js >}}toast.dispose(){{< /highlight >}}
 
 ### Events
 
@@ -319,7 +317,8 @@ Hides an element's toast. Your toast will remain on the DOM but won't show anymo
 </table>
 
 {{< highlight js >}}
-$('#myToast').on('hidden.bs.toast', function () {
+var myToastEl = document.getElementById('myToast')
+myToastEl.addEventListener('hidden.bs.toast', function () {
   // do something...
 })
 {{< /highlight >}}
