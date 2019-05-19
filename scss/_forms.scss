@@ -31,7 +31,7 @@
   }
 
   // Customize the `:focus` state to imitate native WebKit styles.
-  @include form-control-focus();
+  @include form-control-focus($ignore-warning: true);
 
   // Placeholder
   &::placeholder {
@@ -110,9 +110,9 @@ select.form-control {
 .form-control-plaintext {
   display: block;
   width: 100%;
-  padding-top: $input-padding-y;
-  padding-bottom: $input-padding-y;
+  padding: $input-padding-y 0;
   margin-bottom: 0; // match inputs if this class comes on inputs with default margins
+  @include font-size($input-font-size);
   line-height: $input-line-height;
   color: $input-plaintext-color;
   background-color: transparent;
@@ -210,7 +210,9 @@ textarea.form-control {
   margin-top: $form-check-input-margin-y;
   margin-left: -$form-check-input-gutter;
 
-  &:disabled ~ .form-check-label {
+  // Use disabled attribute instead of :disabled pseudo-class
+  // Workaround for: https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/11295231
+  &[disabled] ~ .form-check-label {
     color: $text-muted;
   }
 }
@@ -240,7 +242,7 @@ textarea.form-control {
 // Provide feedback to users when form field values are valid or invalid. Works
 // primarily for client-side validation via scoped `:invalid` and `:valid`
 // pseudo-classes but also includes `.is-invalid` and `.is-valid` classes for
-// server side validation.
+// server-side validation.
 
 @each $state, $data in $form-validation-states {
   @include form-validation-state($state, map-get($data, color), map-get($data, icon));

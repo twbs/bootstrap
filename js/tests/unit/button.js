@@ -1,6 +1,8 @@
 $(function () {
   'use strict'
 
+  var Button = typeof window.bootstrap === 'undefined' ? window.Button : window.bootstrap.Button
+
   QUnit.module('button plugin')
 
   QUnit.test('should be defined on jquery object', function (assert) {
@@ -106,37 +108,43 @@ $(function () {
 
   QUnit.test('should check for closest matching toggle', function (assert) {
     assert.expect(12)
-    var groupHTML = '<div class="btn-group" data-toggle="buttons">' +
-      '<label class="btn btn-primary active">' +
-      '<input type="radio" name="options" id="option1" checked="true"> Option 1' +
-      '</label>' +
-      '<label class="btn btn-primary">' +
-      '<input type="radio" name="options" id="option2"> Option 2' +
-      '</label>' +
-      '<label class="btn btn-primary">' +
-      '<input type="radio" name="options" id="option3"> Option 3' +
-      '</label>' +
+    var groupHTML =
+      '<div class="btn-group" data-toggle="buttons">' +
+      '  <label class="btn btn-primary active">' +
+      '    <input type="radio" name="options" id="option1" checked="true"> Option 1' +
+      '  </label>' +
+      '  <label class="btn btn-primary">' +
+      '    <input type="radio" name="options" id="option2"> Option 2' +
+      '  </label>' +
+      '  <label class="btn btn-primary">' +
+      '    <input type="radio" name="options" id="option3"> Option 3' +
+      '  </label>' +
       '</div>'
+
     var $group = $(groupHTML).appendTo('#qunit-fixture')
 
     var $btn1 = $group.children().eq(0)
     var $btn2 = $group.children().eq(1)
+    var inputBtn2 = $btn2.find('input')[0]
 
     assert.ok($btn1.hasClass('active'), 'btn1 has active class')
     assert.ok($btn1.find('input').prop('checked'), 'btn1 is checked')
     assert.ok(!$btn2.hasClass('active'), 'btn2 does not have active class')
-    assert.ok(!$btn2.find('input').prop('checked'), 'btn2 is not checked')
-    $btn2.find('input').trigger('click')
-    assert.ok(!$btn1.hasClass('active'), 'btn1 does not have active class')
-    assert.ok(!$btn1.find('input').prop('checked'), 'btn1 is not checked')
-    assert.ok($btn2.hasClass('active'), 'btn2 has active class')
-    assert.ok($btn2.find('input').prop('checked'), 'btn2 is checked')
+    assert.ok(!inputBtn2.checked, 'btn2 is not checked')
 
-    $btn2.find('input').trigger('click') // Clicking an already checked radio should not un-check it
+    inputBtn2.dispatchEvent(new Event('click'))
+
     assert.ok(!$btn1.hasClass('active'), 'btn1 does not have active class')
     assert.ok(!$btn1.find('input').prop('checked'), 'btn1 is not checked')
     assert.ok($btn2.hasClass('active'), 'btn2 has active class')
-    assert.ok($btn2.find('input').prop('checked'), 'btn2 is checked')
+    assert.ok(inputBtn2.checked, 'btn2 is checked')
+
+    inputBtn2.dispatchEvent(new Event('click')) // clicking an already checked radio should not un-check it
+
+    assert.ok(!$btn1.hasClass('active'), 'btn1 does not have active class')
+    assert.ok(!$btn1.find('input').prop('checked'), 'btn1 is not checked')
+    assert.ok($btn2.hasClass('active'), 'btn2 has active class')
+    assert.ok(inputBtn2.checked, 'btn2 is checked')
   })
 
   QUnit.test('should only toggle selectable inputs', function (assert) {
@@ -203,20 +211,15 @@ $(function () {
     var $el = $('<div/>')
     var $button = $el.bootstrapButton()
 
-    assert.ok(typeof $button.data('bs.button') !== 'undefined')
+    assert.ok(typeof Button._getInstance($button[0]) !== 'undefined')
 
-    $button.data('bs.button').dispose()
+    Button._getInstance($button[0]).dispose()
 
-    assert.ok(typeof $button.data('bs.button') === 'undefined')
+    assert.ok(Button._getInstance($button[0]) === null)
   })
 
-  QUnit.test('should return button version', function (assert) {
+  QUnit.test('should return the version', function (assert) {
     assert.expect(1)
-
-    if (typeof Button !== 'undefined') {
-      assert.ok(typeof Button.VERSION === 'string')
-    } else {
-      assert.notOk()
-    }
+    assert.strictEqual(typeof Button.VERSION, 'string')
   })
 })

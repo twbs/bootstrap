@@ -84,7 +84,7 @@
 
 .table-hover {
   tbody tr {
-    @include hover {
+    &:hover {
       color: $table-hover-color;
       background-color: $table-hover-bg;
     }
@@ -142,14 +142,14 @@
   }
 
   &.table-striped {
-    tbody tr:nth-of-type(odd) {
+    tbody tr:nth-of-type(#{$table-striped-order}) {
       background-color: $table-dark-accent-bg;
     }
   }
 
   &.table-hover {
     tbody tr {
-      @include hover {
+      &:hover {
         color: $table-dark-hover-color;
         background-color: $table-dark-hover-bg;
       }
