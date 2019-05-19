@@ -111,8 +111,7 @@ const ClassName = {
 }
 
 const Selector = {
-  TOOLTIP_INNER: '.tooltip-inner',
-  TOOLTIP_ARROW: '.tooltip-arrow'
+  TOOLTIP_INNER: '.tooltip-inner'
 }
 
 const Trigger = {
@@ -310,7 +309,7 @@ class Tooltip {
             behavior: this.config.fallbackPlacement
           },
           arrow: {
-            element: Selector.TOOLTIP_ARROW
+            element: `.${this.constructor.NAME}-arrow`
           },
           preventOverflow: {
             boundariesElement: this.config.boundary

@@ -12,8 +12,6 @@ Dropdowns are toggleable, contextual overlays for displaying lists of links and 
 
 Dropdowns are built on a third party library, [Popper.js](https://popper.js.org/), which provides dynamic positioning and viewport detection. Be sure to include [popper.min.js]({{< param "cdn.popper" >}}) before Bootstrap's JavaScript or use `bootstrap.bundle.min.js` / `bootstrap.bundle.js` which contains Popper.js. Popper.js isn't used to position dropdowns in navbars though as dynamic positioning isn't required.
 
-If you're building our JavaScript from source, it [requires `util.js`]({{< docsref "/getting-started/javascript#util" >}}).
-
 ## Accessibility
 
 The [<abbr title="Web Accessibility Initiative">WAI</abbr> <abbr title="Accessible Rich Internet Applications">ARIA</abbr>](https://www.w3.org/TR/wai-aria/) standard defines an actual [`role="menu"` widget](https://www.w3.org/WAI/PF/aria/roles#menu), but this is specific to application-like menus which trigger actions or functions. <abbr title="Accessible Rich Internet Applications">ARIA</abbr> menus can only contain menu items, checkbox menu items, radio button menu items, radio button groups, and sub-menus.
@@ -774,7 +772,7 @@ Use `data-offset` or `data-reference` to change the location of the dropdown.
 Via data attributes or JavaScript, the dropdown plugin toggles hidden content (dropdown menus) by toggling the `.show` class on the parent list item. The `data-toggle="dropdown"` attribute is relied on for closing dropdown menus at an application level, so it's a good idea to always use it.
 
 {{< callout info >}}
-On touch-enabled devices, opening a dropdown adds empty (`$.noop`) `mouseover` handlers to the immediate children of the `<body>` element. This admittedly ugly hack is necessary to work around a [quirk in iOS' event delegation](https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html), which would otherwise prevent a tap anywhere outside of the dropdown from triggering the code that closes the dropdown. Once the dropdown is closed, these additional empty `mouseover` handlers are removed.
+On touch-enabled devices, opening a dropdown adds empty `mouseover` handlers to the immediate children of the `<body>` element. This admittedly ugly hack is necessary to work around a [quirk in iOS' event delegation](https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html), which would otherwise prevent a tap anywhere outside of the dropdown from triggering the code that closes the dropdown. Once the dropdown is closed, these additional empty `mouseover` handlers are removed.
 {{< /callout >}}
 
 ### Via data attributes
@@ -797,7 +795,10 @@ Add `data-toggle="dropdown"` to a link or button to toggle a dropdown.
 Call the dropdowns via JavaScript:
 
 {{< highlight js >}}
-$('.dropdown-toggle').dropdown()
+var dropdownElementList = [].slice.call(document.querySelectorAll('.dropdown-toggle'))
+var dropdownList = dropdownElementList.map(function (dropdownToggleEl) {
+  return new bootstrap.Dropdown(dropdownToggleEl)
+})
 {{< /highlight >}}
 
 {{< callout info >}}
@@ -863,11 +864,12 @@ Note when `boundary` is set to any value other than `'scrollParent'`, the style 
 
 | Method | Description |
 | --- | --- |
-| `$().dropdown('toggle')` | Toggles the dropdown menu of a given navbar or tabbed navigation. |
-| `$().dropdown('show')` | Shows the dropdown menu of a given navbar or tabbed navigation. |
-| `$().dropdown('hide')` | Hides the dropdown menu of a given navbar or tabbed navigation. |
-| `$().dropdown('update')` | Updates the position of an element's dropdown. |
-| `$().dropdown('dispose')` | Destroys an element's dropdown. |
+| `toggle` | Toggles the dropdown menu of a given navbar or tabbed navigation. |
+| `show` | Shows the dropdown menu of a given navbar or tabbed navigation. |
+| `hide` | Hides the dropdown menu of a given navbar or tabbed navigation. |
+| `update` | Updates the position of an element's dropdown. |
+| `dispose` | Destroys an element's dropdown. |
+| `_getInstance` | *Static* method which allows you to get the dropdown instance associated with a DOM element |
 
 ### Events
 
@@ -882,7 +884,8 @@ All dropdown events are fired at the `.dropdown-menu`'s parent element and have 
 | `hidden.bs.dropdown`| This event is fired when the dropdown has finished being hidden from the user (will wait for CSS transitions, to complete). |
 
 {{< highlight js >}}
-$('#myDropdown').on('show.bs.dropdown', function () {
+var myDropdown = document.getElementById('myDropdown')
+myDropdown.addEventListener('show.bs.dropdown', function () {
   // do something...
 })
 {{< /highlight >}}

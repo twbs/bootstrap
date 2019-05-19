@@ -90,7 +90,11 @@ class Toast {
   // Public
 
   show() {
-    EventHandler.trigger(this._element, Event.SHOW)
+    const showEvent = EventHandler.trigger(this._element, Event.SHOW)
+
+    if (showEvent.defaultPrevented) {
+      return
+    }
 
     if (this._config.animation) {
       this._element.classList.add(ClassName.FADE)
@@ -126,7 +130,11 @@ class Toast {
       return
     }
 
-    EventHandler.trigger(this._element, Event.HIDE)
+    const hideEvent = EventHandler.trigger(this._element, Event.HIDE)
+
+    if (hideEvent.defaultPrevented) {
+      return
+    }
 
     const complete = () => {
       this._element.classList.add(ClassName.HIDE)
