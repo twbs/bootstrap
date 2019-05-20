@@ -19,6 +19,7 @@
     "release": "grunt prep-release && npm run sri && npm run release-zip",
     "release-zip": "cross-env-shell \"shx rm -rf bootstrap-$npm_package_version-dist && shx cp -r dist/ bootstrap-$npm_package_version-dist && zip -r9 bootstrap-$npm_package_version-dist.zip bootstrap-$npm_package_version-dist && shx rm -rf bootstrap-$npm_package_version-dist\"",
     "change-version": "node grunt/change-version.js",
+    "update-deps": "ncu -a -x \"autoprefixer,grunt-stylelint,karma,karma-qunit,load-grunt-tasks,markdown-it,qunitjs,replace-in-file,stylelint,stylelint-order\" && npm update && bundle update && echo Manually update \"docs/assets/js/vendor/\"",
     "test": "grunt test"
   },
   "style": "dist/css/bootstrap.css",
