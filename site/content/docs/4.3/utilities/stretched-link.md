@@ -22,13 +22,13 @@ Multiple links and tap targets are not recommended with stretched links. However
 </div>
 {{< /example >}}
 
-Media objects do not have `position: relative` by default, so we need to add the `.position-relative` here to prevent the link from stretching outside the media object.
+Most custom components do not have `position: relative` by default, so we need to add the `.position-relative` here to prevent the link from stretching outside the parent element.
 
 {{< example >}}
-<div class="media position-relative">
-  {{< placeholder width="144" height="144" class="mr-3" text="false" title="Generic placeholder image" >}}
-  <div class="media-body">
-    <h5 class="mt-0">Media with stretched link</h5>
+<div class="d-flex position-relative">
+  {{< placeholder width="144" height="144" class="flex-shrink-0 mr-3" text="false" title="Generic placeholder image" >}}
+  <div>
+    <h5 class="mt-0">Custom component with stretched link</h5>
     <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
     <a href="#" class="stretched-link">Go somewhere</a>
   </div>

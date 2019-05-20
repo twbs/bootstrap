@@ -2,7 +2,7 @@
 layout: docs
 title: Close icon
 description: Use a generic close icon for dismissing content like modals and alerts.
-group: utilities
+group: components
 ---
 
 **Be sure to include text for screen readers**, as we've done with `aria-label`.

@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.3.1): dom/eventHandler.js
+ * Bootstrap (v4.3.1): dom/event-handler.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -136,10 +136,7 @@ function bootstrapDelegationHandler(element, selector, fn) {
 }
 
 function findHandler(events, handler, delegationSelector = null) {
-  const uidList = Object.keys(events)
-
-  for (let i = 0; i < uidList.length; i++) {
-    const uid = uidList[i]
+  for (const uid of Object.keys(events)) {
     const event = events[uid]
 
     if (event.originalHandler === handler && event.delegationSelector === delegationSelector) {
