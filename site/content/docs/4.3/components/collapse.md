@@ -150,7 +150,10 @@ To add accordion-like group management to a collapsible area, add the data attri
 Enable manually with:
 
 {{< highlight js >}}
-$('.collapse').collapse()
+var collapseElementList = [].slice.call(document.querySelectorAll('.collapse'))
+var collapseList = collapseElementList.map(function (collapseEl) {
+  return new bootstrap.Collapse(collapseEl)
+})
 {{< /highlight >}}
 
 ### Options
@@ -205,6 +208,7 @@ var bsCollapse = new bootstrap.Collapse(myCollapse, {
 | `show` | Shows a collapsible element. **Returns to the caller before the collapsible element has actually been shown** (i.e. before the `shown.bs.collapse` event occurs).|
 | `hide` | Hides a collapsible element. **Returns to the caller before the collapsible element has actually been hidden** (i.e. before the `hidden.bs.collapse` event occurs).|
 | `dispose` | Destroys an element's collapse. |
+| `_getInstance` | *Static* method which allows you to get the collapse instance associated with a DOM element |
 
 ### Events
 
@@ -238,7 +242,8 @@ Bootstrap's collapse class exposes a few events for hooking into collapse functi
 </table>
 
 {{< highlight js >}}
-$('#myCollapsible').on('hidden.bs.collapse', function () {
+var myCollapsible = document.getElementById('myCollapsible')
+myCollapsible.addEventListener('hidden.bs.collapse', function () {
   // do something...
 })
 {{< /highlight >}}

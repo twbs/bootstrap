@@ -65,7 +65,7 @@ Bootstrap's `package.json` contains some additional metadata under the following
 
 ### yarn
 
-Install Bootstrap in your Node.js powered apps with [the yarn package](https://yarnpkg.com/en/package/yarn):
+Install Bootstrap in your Node.js powered apps with [the yarn package](https://yarnpkg.com/en/package/bootstrap):
 
 {{< highlight sh >}}
 yarn add bootstrap

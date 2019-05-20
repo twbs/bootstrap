@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap selectorengine.js v4.3.1 (https://getbootstrap.com/)
+  * Bootstrap selector-engine.js v4.3.1 (https://getbootstrap.com/)
   * Copyright 2011-2019 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
   */
@@ -183,7 +183,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.3.1): dom/selectorEngine.js
+   * Bootstrap (v4.3.1): dom/selector-engine.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -280,4 +280,4 @@
   return SelectorEngine;
 
 }));
-//# sourceMappingURL=selectorengine.js.map
+//# sourceMappingURL=selector-engine.js.map

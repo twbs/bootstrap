@@ -22,6 +22,7 @@ See the browser and devices page for details on what is currently supported in B
 
 Changes to our source Sass files and compiled CSS.
 
+- Removed `hover`, `hover-focus`, `plain-hover-focus`, and `hover-focus-active` mixins. Use regular CSS syntax for these moving forward. [See #28267](https://github.com/twbs/bootstrap/pull/28267).
 - **Todo:** Remove previously deprecated mixins
   - `float()`
   - `form-control-mixin()`
@@ -31,6 +32,7 @@ Changes to our source Sass files and compiled CSS.
 - **Todo:** New variables?
 - **Todo:** Rearrange forms source files (under `scss/forms/`)
 - **Todo:** Rearrange grid source files (under `scss/grid/`)
+- Removed print styles and `$enable-print-styles` variable. Print display classes, however, have remained intact. [See #28339](https://github.com/twbs/bootstrap/pull/28339).
 
 ## JavaScript
 
@@ -42,7 +44,7 @@ Changes to our source and compiled JavaScript files.
 
 Changes to any layout tools and our grid system.
 
-- Dropped `.media` component as it can be built with utility classes
+- Dropped `.media` component as it can be built with utility classes. [See #28265](https://github.com/twbs/bootstrap/pull/28265).
 - **Todo:** Remove `position: relative` from grid columns
 - **Todo:** Integrate CSS grid into our grid system
 
@@ -74,6 +76,14 @@ Badges were overhauled to better differentiate themselves from buttons and to be
 - **Todo:** Removed and replaced `.badge` modifier classes with background utility classes (e.g., use `.bg-primary` instead of `.badge-primary`)
 - **Todo:** Removed `.badge-pill` for the `.rounded-pill` utility class
 - **Todo:** Removed badge's hover and focus styles for `a.badge` and `button.badge`.
+
+### Popovers
+
+- Renamed `.arrow` to `.popover-arrow`
+
+### Tooltips
+
+- Renamed `.arrow` to `.tooltip-arrow`
 
 ## Utilities
 

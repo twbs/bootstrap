@@ -18,8 +18,6 @@ In browsers where the [Page Visibility API](https://www.w3.org/TR/page-visibilit
 
 Please be aware that nested carousels are not supported, and carousels are generally not compliant with accessibility standards.
 
-Lastly, if you're building our JavaScript from source, it [requires `util.js`]({{< docsref "/getting-started/javascript#util" >}}).
-
 ## Example
 
 Carousels don't automatically normalize slide dimensions. As such, you may need to use additional utilities or custom styles to appropriately size content. While carousels support previous/next controls and indicators, they're not explicitly required. Add and customize as you see fit.
@@ -308,6 +306,7 @@ var carousel = new bootstrap.Carousel(myCarousel, {
 | `nextWhenVisible` | Only go to the next slide when the page, carousel and the carousel parent is visible. |
 | `to` | Cycles the carousel to a particular frame (0 based, similar to an array). **Returns to the caller before the target item has been shown** (i.e. before the `slid.bs.carousel` event occurs). |
 | `dispose` | Destroys an element's carousel. |
+| `_getInstance` | *Static* method which allows you to get the carousel instance associated with a DOM element |
 
 ### Events
 
@@ -340,7 +339,9 @@ All carousel events are fired at the carousel itself (i.e. at the `<div class="c
 </table>
 
 {{< highlight js >}}
-$('#myCarousel').on('slide.bs.carousel', function () {
+var myCarousel = document.getElementById('myCarousel')
+
+myCarousel.addEventListener('slide.bs.carousel', function () {
   // do something...
 })
 {{< /highlight >}}
