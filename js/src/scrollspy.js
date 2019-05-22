@@ -159,13 +159,13 @@ class ScrollSpy {
     Data.removeData(this._element, DATA_KEY)
     EventHandler.off(this._scrollElement, EVENT_KEY)
 
-    this._element = null
-    this._scrollElement = null
-    this._config = null
-    this._selector = null
-    this._offsets = null
-    this._targets = null
-    this._activeTarget = null
+    this._element =
+    this._scrollElement =
+    this._config =
+    this._selector =
+    this._offsets =
+    this._targets =
+    this._activeTarget =
     this._scrollHeight = null
   }
 
