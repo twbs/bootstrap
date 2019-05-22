@@ -280,10 +280,11 @@ class Collapse {
   dispose() {
     Data.removeData(this._element, DATA_KEY)
 
-    this._config = null
-    this._parent = null
-    this._element = null
-    this._triggerArray = null
+    // Assign the variables as null
+    this._config =
+    this._parent =
+    this._element =
+    this._triggerArray =
     this._isTransitioning = null
   }
 

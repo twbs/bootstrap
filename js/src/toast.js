@@ -163,7 +163,8 @@ class Toast {
     EventHandler.off(this._element, Event.CLICK_DISMISS)
     Data.removeData(this._element, DATA_KEY)
 
-    this._element = null
+    //Assign the variables as null
+    this._element =
     this._config = null
   }
 

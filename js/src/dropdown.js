@@ -247,12 +247,13 @@ class Dropdown {
   dispose() {
     Data.removeData(this._element, DATA_KEY)
     EventHandler.off(this._element, EVENT_KEY)
-    this._element = null
-    this._menu = null
     if (this._popper !== null) {
       this._popper.destroy()
-      this._popper = null
     }
+    // Assign the variables as null
+    this._popper =
+    this._element =
+    this._menu = null
   }
 
   update() {

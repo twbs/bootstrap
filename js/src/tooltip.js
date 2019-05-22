@@ -242,18 +242,17 @@ class Tooltip {
     if (this.tip) {
       this.tip.parentNode.removeChild(this.tip)
     }
-
-    this._isEnabled = null
-    this._timeout = null
-    this._hoverState = null
-    this._activeTrigger = null
     if (this._popper !== null) {
       this._popper.destroy()
     }
-
-    this._popper = null
-    this.element = null
-    this.config = null
+    // Assign the variables as null
+    this._popper =
+    this._isEnabled =
+    this._timeout =
+    this._hoverState =
+    this._activeTrigger =
+    this.element =
+    this.config =
     this.tip = null
   }
 

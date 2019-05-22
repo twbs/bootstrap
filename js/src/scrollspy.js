@@ -159,6 +159,7 @@ class ScrollSpy {
     Data.removeData(this._element, DATA_KEY)
     EventHandler.off(this._scrollElement, EVENT_KEY)
 
+    // Assign these variables as null
     this._element =
     this._scrollElement =
     this._config =

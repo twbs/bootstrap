@@ -114,13 +114,19 @@ const PointerType = {
  */
 class Carousel {
   constructor(element, config) {
-    this._items = null
-    this._interval = null
-    this._activeElement = null
-    this._isPaused = false
-    this._isSliding = false
+
+    // Assigns the value of null to multiple variables
+    this._items =
+    this._interval =
+    this._activeElement =
     this.touchTimeout = null
-    this.touchStartX = 0
+
+    // Assigns the value of false to multiple variables
+    this._isPaused =
+    this._isSliding = false
+
+    // Assigns the value of 0 to multiple variables
+    this.touchStartX =
     this.touchDeltaX = 0
 
     this._config = this._getConfig(config)
@@ -227,13 +233,14 @@ class Carousel {
     EventHandler.off(this._element, EVENT_KEY)
     Data.removeData(this._element, DATA_KEY)
 
-    this._items = null
-    this._config = null
-    this._element = null
-    this._interval = null
-    this._isPaused = null
-    this._isSliding = null
-    this._activeElement = null
+    // Assign the variables as null
+    this._items =
+    this._config =
+    this._element =
+    this._interval =
+    this._isPaused =
+    this._isSliding =
+    this._activeElement =
     this._indicatorsElement = null
   }
 
