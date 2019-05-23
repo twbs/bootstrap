@@ -8,7 +8,7 @@
 // Deprecate
 @import "mixins/deprecate";
 
-// Utilities
+// Helpers
 @import "mixins/breakpoints";
 @import "mixins/image";
 @import "mixins/resize";
@@ -16,6 +16,9 @@
 @import "mixins/reset-text";
 @import "mixins/text-emphasis";
 @import "mixins/text-truncate";
+
+// Utilities
+@import "mixins/utilities";
 
 // Components
 @import "mixins/alert";
