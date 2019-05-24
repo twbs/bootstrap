@@ -14,7 +14,7 @@ const vnu = require('vnu-jar')
 
 childProcess.exec('java -version', (error, stdout, stderr) => {
   if (error) {
-    console.warn('Skipping vnu-jar test; Java is missing.')
+    console.error('Skipping vnu-jar test; Java is missing.')
     return
   }
 
