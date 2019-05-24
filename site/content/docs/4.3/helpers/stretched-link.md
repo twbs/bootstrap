@@ -2,7 +2,7 @@
 layout: docs
 title: Stretched link
 description: Make any HTML element or Bootstrap component clickable by "stretching" a nested link via CSS.
-group: utilities
+group: helpers
 ---
 
 Add `.stretched-link` to a link to make its [containing block](https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block) clickable via a `::after` pseudo element. In most cases, this means that an element with `position: relative;` that contains a link with the `.stretched-link` class is clickable.
