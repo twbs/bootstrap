@@ -143,7 +143,9 @@
 // Add an ordered list with the following class and add a list item for each
 // slide your carousel holds.
 
-.carousel-indicators {
+.carousel-indicators,
+.carousel-indicators-square,
+.carousel-indicators-circle {
   position: absolute;
   right: 0;
   bottom: 0;
@@ -160,8 +162,6 @@
   li {
     box-sizing: content-box;
     flex: 0 1 auto;
-    width: $carousel-indicator-width;
-    height: $carousel-indicator-height;
     margin-right: $carousel-indicator-spacer;
     margin-left: $carousel-indicator-spacer;
     text-indent: -999px;
@@ -179,8 +179,20 @@
     opacity: 1;
   }
 }
-
-
+.carousel-indicators li {
+  width: $carousel-indicator-width;
+  height: $carousel-indicator-height;
+}
+.carousel-indicators-square,
+.carousel-indicators-circle {
+  li {
+    width: $carousel-indicator-radius;
+    height: $carousel-indicator-radius;
+  }
+}
+.carousel-indicators-circle li {
+  border-radius: 50%;
+}
 // Optional captions
 //
 //
