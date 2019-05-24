@@ -31,7 +31,7 @@
 }
 
 // Internal Bootstrap function to turn maps into its negative variant.
-// If prefixes the keys with `n` and makes the value negative.
+// It prefixes the keys with `n` and makes the value negative.
 @function negativify-map($map) {
   $result: ();
   @each $key, $value in $map {
