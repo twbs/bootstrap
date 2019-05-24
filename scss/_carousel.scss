@@ -191,7 +191,7 @@
   }
 }
 .carousel-indicators-circle li {
-  border-radius: 50%;
+  @include border-radius($roundRadius);
 }
 // Optional captions
 //
