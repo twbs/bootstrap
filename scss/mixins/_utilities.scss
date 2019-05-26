@@ -5,7 +5,7 @@
 
   // If the values are a list or string, convert it into a map
   @if type-of($values) == "string" or type-of(nth($values, 1)) != "list" {
-    $values: to-map($values)
+    $values: to-map($values);
   }
 
   @each $key, $value in $values {
