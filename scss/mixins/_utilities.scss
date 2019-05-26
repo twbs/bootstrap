@@ -26,7 +26,7 @@
     .#{$property-class + $infix + $property-class-modifier} {
       @each $property in $properties {
         // stylelint-disable-next-line declaration-no-important
-        #{$property}: #{$values} !important;
+        #{$property}: #{$value} !important;
       }
     }
   }
