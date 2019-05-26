@@ -70,35 +70,34 @@
 // ---------------------------------------------------------
 @function to-map($keys, $values: $keys) {
 
-	//return if its already a map
-	@if type-of($keys) == "map" or type-of($values) == "map"  {
-		@return $keys;
-	}
+  //return if its already a map
+  @if type-of($keys) == "map" or type-of($values) == "map"  {
+    @return $keys;
+  }
 
-	//if its a string or a list
-	@if type-of($keys) == "string" or type-of(nth($keys, 1)) != "list" {
-		$map: ();
-		$length-keys: length($keys);
-		$length-values: length($values);
-		$min-length: min($length-keys, $length-values);
+  //if its a string or a list
+  @if type-of($keys) == "string" or type-of(nth($keys, 1)) != "list" {
+    $map: ();
+    $length-keys: length($keys);
+    $length-values: length($values);
+    $min-length: min($length-keys, $length-values);
 
-		// Warn if the Length of keys and values are not the same
-		@if $length-keys != $length-values {
-			@warn "There are #{$length-keys} key(s) for #{$length-values} value(s) in the map for `map-zip`. "
-		  + "Resulting map will only have #{$min-length} pairs.";
-		}
+    // Warn if the Length of keys and values are not the same
+    @if $length-keys != $length-values {
+      @warn "There are #{$length-keys} key(s) for #{$length-values} value(s) in the map for `map-zip`. Resulting map will only have #{$min-length} pairs.";
+    }
 
-		// return if keys and values are empty list
-		@if $min-length == 0 {
-			@return $map;
-		}
+    // return if keys and values are empty list
+    @if $min-length == 0 {
+      @return $map;
+    }
 
-		// Convert to map
-		@for $i from 1 through $min-length {
-			$map: map-merge($map, (nth($keys, $i): nth($values, $i)));
-		}
-		@return $map;
-	}
+    // Convert to map
+    @for $i from 1 through $min-length {
+      $map: map-merge($map, (nth($keys, $i): nth($values, $i)));
+    }
+    @return $map;
+  }
 }
 
 
