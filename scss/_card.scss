@@ -104,6 +104,11 @@
   margin-bottom: -$card-spacer-y;
   margin-left: -$card-spacer-x / 2;
   border-bottom: 0;
+  
+  .nav-link.active {
+    background: $card-bg;
+    border-color: $card-border-color $card-border-color $card-bg;
+  }
 }
 
 .card-header-pills {
