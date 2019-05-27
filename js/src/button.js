@@ -81,6 +81,10 @@ class Button {
               $(activeElement).removeClass(ClassName.ACTIVE)
             }
           }
+        } else if (input.type === 'checkbox') {
+          if (input.checked === this._element.classList.contains(ClassName.ACTIVE)) {
+            triggerChangeEvent = false
+          }
         }
 
         if (triggerChangeEvent) {
@@ -140,8 +144,6 @@ class Button {
 
 $(document)
   .on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE_CARROT, (event) => {
-    event.preventDefault()
-
     let button = event.target
 
     if (!$(button).hasClass(ClassName.BUTTON)) {
