@@ -131,29 +131,16 @@ $spacers: () !default;
 $spacers: map-merge(
   (
     0: 0,
-    1: ($spacer * .25),
-    2: ($spacer * .5),
+    1: $spacer * .25,
+    2: $spacer * .5,
     3: $spacer,
-    4: ($spacer * 1.5),
-    5: ($spacer * 3)
+    4: $spacer * 1.5,
+    5: $spacer * 3,
   ),
   $spacers
 );
 
-// This variable affects the `.h-*` and `.w-*` classes.
-$sizes: () !default;
-// stylelint-disable-next-line scss/dollar-variable-default
-$sizes: map-merge(
-  (
-    25: 25%,
-    50: 50%,
-    75: 75%,
-    100: 100%,
-    auto: auto
-  ),
-  $sizes
-);
-
+$negative-spacers: negativify-map($spacers) !default;
 
 // Body
 //
@@ -1118,10 +1105,3 @@ $kbd-bg:                            $gray-900 !default;
 
 $pre-color:                         $gray-900 !default;
 $pre-scrollable-max-height:         340px !default;
-
-
-// Utilities
-
-$displays: none, inline, inline-block, block, table, table-row, table-cell, flex, inline-flex !default;
-$overflows: auto, hidden !default;
-$positions: static, relative, absolute, fixed, sticky !default;
