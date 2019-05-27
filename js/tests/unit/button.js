@@ -142,11 +142,11 @@ $(function () {
   QUnit.test('should only toggle selectable inputs', function (assert) {
     assert.expect(6)
     var groupHTML = '<div class="btn-group" data-toggle="buttons">' +
-      '<label class="btn btn-primary active">' +
+      '<div class="btn btn-primary active">' +
       '<input type="hidden" name="option1" id="option1-default" value="false">' +
       '<input type="checkbox" name="option1" id="option1" checked="true"> Option 1' +
-      '</label>' +
-      '</div>'
+      '</div>' +
+      '</div>' // use <div> rather than <label>, as not easy to trigger a proper click on a label (short of setting up async event dispatching to the headless browser)
     var $group = $(groupHTML).appendTo('#qunit-fixture')
 
     var $btn = $group.children().eq(0)
