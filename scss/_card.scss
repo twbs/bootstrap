@@ -107,7 +107,7 @@
   
   .nav-link.active {
     background: $card-bg;
-    border-color: $card-border-color $card-border-color $card-bg;
+    border-bottom-color: $card-bg;
   }
 }
 
