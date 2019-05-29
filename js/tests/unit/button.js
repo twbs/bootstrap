@@ -61,6 +61,22 @@ $(function () {
     assert.strictEqual($btn.attr('aria-pressed'), 'true', 'btn aria-pressed state is true')
   })
 
+  QUnit.test('should not toggle aria-pressed on buttons with disabled class', function (assert) {
+    assert.expect(2)
+    var $btn = $('<button class="btn disabled" data-toggle="button" aria-pressed="false">redux</button>')
+    assert.strictEqual($btn.attr('aria-pressed'), 'false', 'btn aria-pressed state is false')
+    $btn.bootstrapButton('toggle')
+    assert.strictEqual($btn.attr('aria-pressed'), 'false', 'btn aria-pressed state is still false')
+  })
+
+  QUnit.test('should not toggle aria-pressed on buttons that are disabled', function (assert) {
+    assert.expect(2)
+    var $btn = $('<button class="btn" data-toggle="button" aria-pressed="false" disabled>redux</button>')
+    assert.strictEqual($btn.attr('aria-pressed'), 'false', 'btn aria-pressed state is false')
+    $btn.bootstrapButton('toggle')
+    assert.strictEqual($btn.attr('aria-pressed'), 'false', 'btn aria-pressed state is still false')
+  })
+
   QUnit.test('should toggle aria-pressed on buttons with container', function (assert) {
     assert.expect(1)
     var groupHTML = '<div class="btn-group" data-toggle="buttons">' +

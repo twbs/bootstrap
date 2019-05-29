@@ -105,13 +105,15 @@ class Button {
       }
     }
 
-    if (addAriaPressed) {
-      this._element.setAttribute('aria-pressed',
-        !this._element.classList.contains(ClassName.ACTIVE))
-    }
+    if (!(this._element.hasAttribute('disabled') || this._element.classList.contains('disabled'))) {
+      if (addAriaPressed) {
+        this._element.setAttribute('aria-pressed',
+          !this._element.classList.contains(ClassName.ACTIVE))
+      }
 
-    if (triggerChangeEvent) {
-      $(this._element).toggleClass(ClassName.ACTIVE)
+      if (triggerChangeEvent) {
+        $(this._element).toggleClass(ClassName.ACTIVE)
+      }
     }
   }
 
