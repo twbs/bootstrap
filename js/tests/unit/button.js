@@ -194,7 +194,7 @@ $(function () {
 
     $btn.click()
     assert.ok($btn.is(':not(.active)'), 'button did not become active')
-    assert.ok(!$input.is(':checked'), 'checkbox did not get checked')
+    assert.ok(!$input.prop('checked'), 'checkbox did not get checked')
   })
 
   QUnit.test('dispose should remove data and the element', function (assert) {
