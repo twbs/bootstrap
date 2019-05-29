@@ -82,7 +82,7 @@
     "release-zip": "cross-env-shell \"shx rm -rf bootstrap-$npm_package_version-dist && shx cp -r dist/ bootstrap-$npm_package_version-dist && zip -r9 bootstrap-$npm_package_version-dist.zip bootstrap-$npm_package_version-dist && shx rm -rf bootstrap-$npm_package_version-dist\"",
     "dist": "npm-run-all --parallel css js",
     "test": "npm-run-all lint dist js-test docs-build docs-lint bundlesize",
-    "netlify": "npm run dist && npm run release-sri && npm run docs-production",
+    "netlify": "npm-run-all dist release-sri docs-production",
     "watch": "npm-run-all --parallel watch-*",
     "watch-css-main": "nodemon --watch scss/ --ext scss --exec \"npm run css-main\"",
     "watch-css-docs": "nodemon --watch \"site/static/**/assets/scss/\" --ext scss --exec \"npm run css-docs\"",
