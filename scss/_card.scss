@@ -104,6 +104,13 @@
   margin-bottom: -$card-spacer-y;
   margin-left: -$card-spacer-x / 2;
   border-bottom: 0;
+
+  @if $nav-tabs-link-active-bg != $card-bg {
+    .nav-link.active {
+      background-color: $card-bg;
+      border-bottom-color: $card-bg;
+    }
+  }
 }
 
 .card-header-pills {
