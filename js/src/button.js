@@ -67,9 +67,17 @@ class Button {
     )[0]
 
     if (rootElement) {
+      if (rootElement.hasAttribute('disabled') || rootElement.classList.contains('disabled')) {
+        return
+      }
+
       const input = this._element.querySelector(Selector.INPUT)
 
       if (input) {
+        if (input.hasAttribute('disabled') || input.classList.contains('disabled')) {
+          return
+        }
+
         if (input.type === 'radio') {
           if (input.checked &&
             this._element.classList.contains(ClassName.ACTIVE)) {
@@ -88,12 +96,6 @@ class Button {
         }
 
         if (triggerChangeEvent) {
-          if (input.hasAttribute('disabled') ||
-            rootElement.hasAttribute('disabled') ||
-            input.classList.contains('disabled') ||
-            rootElement.classList.contains('disabled')) {
-            return
-          }
           input.checked = !this._element.classList.contains(ClassName.ACTIVE)
           $(input).trigger('change')
         }
