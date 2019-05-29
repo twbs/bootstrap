@@ -6,9 +6,13 @@ group: forms
 toc: true
 ---
 
-For even more customization and cross browser consistency, use our custom form check elements. They're built on top of semantic and accessible markup, so they're solid replacements for any default form control.
+## Approach
 
-In the checked states, we use **embedded SVG icons** from [Open Iconic](https://github.com/iconic/open-iconic). This provides us the best control for styling and positioning across browsers and devices.
+Browser default checkboxes and radios are replaced with the help of `.form-check`, a series of classes for both input types that improves the layout and behavior of their HTML elements, that provide greater customization and cross browser consistency. Checkboxes are for selecting one or several options in a list, while radios are for selecting one option from many.
+
+Structurally, our `<input>`s and `<label>`s are sibling elements as opposed to an `<input>` within a `<label>`. This is slightly more verbose as you must specify `id` and `for` attributes to relate the `<input>` and `<label>`. We use the sibling selector (`~`) for all our `<input>` states, like `[checked]` or `[disabled]`. When combined with the `.form-check-label` class, we can easily style the text for each item based on the `<input>`'s state.
+
+Our checks use embedded SVG icons from [Open Iconic](https://github.com/iconic/open-iconic) to indicate checked or indeterminate states.
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
@@ -17,8 +21,9 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 
+## Checks
+
 {{< example >}}
-<!-- Default -->
 <div class="form-check">
   <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
   <label class="form-check-label" for="flexCheckDefault">
@@ -31,52 +36,81 @@ document.addEventListener("DOMContentLoaded", function() {
     Checked checkbox
   </label>
 </div>
+{{< /example >}}
+
+### Indeterminate
+
+Checkboxes can utilize the `:indeterminate` pseudo class when manually set via JavaScript (there is no available HTML attribute for specifying it).
+
+{{< example >}}
 <div class="form-check">
   <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate">
   <label class="form-check-label" for="flexCheckIndeterminate">
     Indeterminate checkbox
   </label>
 </div>
+{{< /example >}}
+
+### Disabled
+
+Add the `disabled` attribute and the associated `<label>`s are automatically styled to match with a lighter color to help indicate the input's state.
+
+{{< example >}}
 <div class="form-check">
   <input class="form-check-input" type="checkbox" value="" id="flexCheckDisabled" disabled>
   <label class="form-check-label" for="flexCheckDisabled">
     Disabled checkbox
   </label>
 </div>
-<div class="form-check mb-3">
+<div class="form-check">
   <input class="form-check-input" type="checkbox" value="" id="flexCheckCheckedDisabled" checked disabled>
   <label class="form-check-label" for="flexCheckCheckedDisabled">
     Disabled checked checkbox
   </label>
 </div>
+{{< /example >}}
 
-<!-- Radio -->
+## Radios
+
+{{< example >}}
 <div class="form-check">
   <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
   <label class="form-check-label" for="flexRadioDefault1">
     Default radio
   </label>
 </div>
-<div class="form-check mb-2">
+<div class="form-check">
   <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
   <label class="form-check-label" for="flexRadioDefault2">
     Default checked radio
   </label>
 </div>
+{{< /example >}}
+
+### Disabled
+
+Add the `disabled` attribute and the associated `<label>`s are automatically styled to match with a lighter color to help indicate the input's state.
+
+{{< example >}}
 <div class="form-check">
   <input class="form-check-input" type="radio" name="flexRadioDisabled" id="flexRadioDisabled" disabled>
   <label class="form-check-label" for="flexRadioDisabled">
     Disabled radio
   </label>
 </div>
-<div class="form-check mb-3">
+<div class="form-check">
   <input class="form-check-input" type="radio" name="flexRadioDisabled" id="flexRadioCheckedDisabled" checked disabled>
   <label class="form-check-label" for="flexRadioCheckedDisabled">
     Disabled checked radio
   </label>
 </div>
+{{< /example >}}
 
-<!-- Switch -->
+## Switches
+
+A switch has the markup of a custom checkbox but uses the `.form-switch` class to render a toggle switch. Switches also support the `disabled` attribute.
+
+{{< example >}}
 <div class="form-check form-switch">
   <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
   <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
@@ -94,12 +128,6 @@ document.addEventListener("DOMContentLoaded", function() {
   <label class="form-check-label" for="flexSwitchCheckCheckedDisabled">Disabled checked switch checkbox input</label>
 </div>
 {{< /example >}}
-
-Default checkboxes and radios are improved upon with the help of `.form-check`, **a single class for both input types that improves the layout and behavior of their HTML elements**. Checkboxes are for selecting one or several options in a list, while radios are for selecting one option from many.
-
-Disabled checkboxes and radios are supported. The `disabled` attribute will apply a lighter color to help indicate the input's state.
-
-Checkboxes and radios use are built to support HTML-based form validation and provide concise, accessible labels. As such, our `<input>`s and `<label>`s are sibling elements as opposed to an `<input>` within a `<label>`. This is slightly more verbose as you must specify `id` and `for` attributes to relate the `<input>` and `<label>`.
 
 ## Default (stacked)
 
