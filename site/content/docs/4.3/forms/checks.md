@@ -101,7 +101,7 @@ Disabled checkboxes and radios are supported. The `disabled` attribute will appl
 
 Checkboxes and radios use are built to support HTML-based form validation and provide concise, accessible labels. As such, our `<input>`s and `<label>`s are sibling elements as opposed to an `<input>` within a `<label>`. This is slightly more verbose as you must specify `id` and `for` attributes to relate the `<input>` and `<label>`.
 
-### Default (stacked)
+## Default (stacked)
 
 By default, any number of checkboxes and radios that are immediate sibling will be vertically stacked and appropriately spaced with `.form-check`.
 
@@ -141,7 +141,7 @@ By default, any number of checkboxes and radios that are immediate sibling will 
 </div>
 {{< /example >}}
 
-### Inline
+## Inline
 
 Group checkboxes or radios on the same horizontal row by adding `.form-check-inline` to any `.form-check`.
 
@@ -175,7 +175,7 @@ Group checkboxes or radios on the same horizontal row by adding `.form-check-inl
 </div>
 {{< /example >}}
 
-### Without labels
+## Without labels
 
 Add `.position-static` to inputs within `.form-check` that don't have any label text. Remember to still provide some form of label for assistive technologies (for instance, using `aria-label`).
 

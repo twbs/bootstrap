@@ -8,7 +8,7 @@ toc: true
 
 Since Bootstrap applies `display: block` and `width: 100%` to almost all our form controls, forms will by default stack vertically. Additional classes can be used to vary this layout on a per-form basis.
 
-### Form groups
+## Form groups
 
 The `.form-group` class is the easiest way to add some structure to forms. It provides a flexible class that encourages proper grouping of labels, controls, optional help text, and form validation messaging. By default it only applies `margin-bottom`, but it picks up additional styles in `.form-inline` as needed. Use it with `<fieldset>`s, `<div>`s, or nearly any other element.
 
@@ -25,7 +25,7 @@ The `.form-group` class is the easiest way to add some structure to forms. It pr
 </form>
 {{< /example >}}
 
-### Form grid
+## Form grid
 
 More complex forms can be built using our grid classes. Use these for form layouts that require multiple columns, varied widths, and additional alignment options.
 
@@ -42,7 +42,7 @@ More complex forms can be built using our grid classes. Use these for form layou
 </form>
 {{< /example >}}
 
-#### Form row
+## Form row
 
 You may also swap `.row` for `.form-row`, a variation of our standard grid row that overrides the default column gutters for tighter and more compact layouts.
 
@@ -110,7 +110,7 @@ More complex layouts can also be created with the grid system.
 </form>
 {{< /example >}}
 
-#### Horizontal form
+## Horizontal form
 
 Create horizontal forms with the grid by adding the `.row` class to form groups and using the `.col-*-*` classes to specify the width of your labels and controls. Be sure to add `.col-form-label` to your `<label>`s as well so they're vertically centered with their associated form controls.
 
@@ -174,7 +174,7 @@ At times, you maybe need to use margin or padding utilities to create that perfe
 </form>
 {{< /example >}}
 
-##### Horizontal form label sizing
+### Horizontal form label sizing
 
 Be sure to use `.col-form-label-sm` or `.col-form-label-lg` to your `<label>`s or `<legend>`s to correctly follow the size of `.form-control-lg` and `.form-control-sm`.
 
@@ -201,7 +201,7 @@ Be sure to use `.col-form-label-sm` or `.col-form-label-lg` to your `<label>`s o
 </form>
 {{< /example >}}
 
-#### Column sizing
+## Column sizing
 
 As shown in the previous examples, our grid system allows you to place any number of `.col`s within a `.row` or `.form-row`. They'll split the available width equally between them. You may also pick a subset of your columns to take up more or less space, while the remaining `.col`s equally split the rest, with specific column classes like `.col-7`.
 
@@ -221,7 +221,7 @@ As shown in the previous examples, our grid system allows you to place any numbe
 </form>
 {{< /example >}}
 
-#### Auto-sizing
+## Auto-sizing
 
 The example below uses a flexbox utility to vertically center the contents and changes `.col` to `.col-auto` so that your columns only take up as much space as needed. Put another way, the column sizes itself based on the contents.
 
@@ -316,7 +316,7 @@ And of course [custom form controls](#custom-forms) are supported.
 </form>
 {{< /example >}}
 
-### Inline forms
+## Inline forms
 
 Use the `.form-inline` class to display a series of labels, form controls, and buttons on a single horizontal row. Form controls within inline forms vary slightly from their default states.
 
@@ -372,7 +372,7 @@ Custom form controls and selects are also supported.
 {{< /example >}}
 
 {{< callout warning >}}
-##### Alternatives to hidden labels
+### Alternatives to hidden labels
 
 Assistive technologies such as screen readers will have trouble with your forms if you don't include a label for every input. For these inline forms, you can hide the labels using the `.sr-only` class. There are further alternative methods of providing a label for assistive technologies, such as the `aria-label`, `aria-labelledby` or `title` attribute. If none of these are present, assistive technologies may resort to using the `placeholder` attribute, if present, but note that use of `placeholder` as a replacement for other labelling methods is not advised.
 {{< /callout >}}

@@ -6,6 +6,8 @@ group: forms
 toc: true
 ---
 
+## Default
+
 Custom `<select>` menus need only a custom class, `.form-select` to trigger the custom styles. Custom styles are limited to the `<select>`'s initial appearance and cannot modify the `<option>`s due to browser limitations.
 
 {{< example >}}
@@ -16,6 +18,8 @@ Custom `<select>` menus need only a custom class, `.form-select` to trigger the 
   <option value="3">Three</option>
 </select>
 {{< /example >}}
+
+## Sizing
 
 You may also choose from small and large custom selects to match our similarly sized text inputs.
 
