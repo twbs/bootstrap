@@ -142,11 +142,11 @@ $(function () {
   QUnit.test('should only toggle selectable inputs', function (assert) {
     assert.expect(6)
     var groupHTML = '<div class="btn-group" data-toggle="buttons">' +
-      '<div class="btn btn-primary active">' +
+      '<label class="btn btn-primary active">' +
       '<input type="hidden" name="option1" id="option1-default" value="false">' +
       '<input type="checkbox" name="option1" id="option1" checked="true"> Option 1' +
-      '</div>' +
-      '</div>' // use <div> rather than <label>, as not easy to trigger a proper click on a label (short of setting up async event dispatching to the headless browser)
+      '</label>' +
+      '</div>'
     var $group = $(groupHTML).appendTo('#qunit-fixture')
 
     var $btn = $group.children().eq(0)
@@ -156,7 +156,7 @@ $(function () {
     assert.ok($btn.hasClass('active'), 'btn has active class')
     assert.ok($cb.prop('checked'), 'btn is checked')
     assert.ok(!$hidden.prop('checked'), 'hidden is not checked')
-    $btn.trigger('click')
+    $btn[0].click() // fire a real click on the DOM node itself, not a click() on the jQuery object that just aliases to trigger('click')
     assert.ok(!$btn.hasClass('active'), 'btn does not have active class')
     assert.ok(!$cb.prop('checked'), 'btn is not checked')
     assert.ok(!$hidden.prop('checked'), 'hidden is not checked') // should not be changed
@@ -184,7 +184,7 @@ $(function () {
     assert.expect(4)
     var groupHTML = '<div class="btn-group disabled" data-toggle="buttons" aria-disabled="true" disabled>' +
       '<label class="btn btn-danger disabled">' +
-      '<input type="checkbox" aria-disabled="true" autocomplete="off" disabled class="disabled"/>' +
+      '<input type="checkbox" aria-disabled="true" autocomplete="off" disabled>' +
       '</label>' +
       '</div>'
     var $group = $(groupHTML).appendTo('#qunit-fixture')
@@ -194,7 +194,7 @@ $(function () {
 
     assert.ok($btn.is(':not(.active)'), 'button is initially not active')
     assert.ok(!$input.prop('checked'), 'checkbox is initially not checked')
-    $btn.click()
+    $btn[0].click() // fire a real click on the DOM node itself, not a click() on the jQuery object that just aliases to trigger('click')
     assert.ok($btn.is(':not(.active)'), 'button did not become active')
     assert.ok(!$input.prop('checked'), 'checkbox did not get checked')
   })
