@@ -5,10 +5,10 @@
 
   // If the values are a list or string, convert it into a map
   @if type-of($values) == "string" or type-of(nth($values, 1)) != "list" {
-    $values: to-map($values);
+    $values: zip($values, $values);
   }
 
-  @each $key, $value in $values {
+  @each $value in $values {
     $properties: map-get($utility, property);
 
     // Multiple properties are possible, for example with vertical or horizontal margins or paddings
@@ -21,12 +21,12 @@
     $property-class: if($property-class, $property-class, nth($properties, 1));
 
     // Don't prefix if value key is null (eg. with shadow class)
-    $property-class-modifier: if($key, "-" + $key, "");
+    $property-class-modifier: if(nth($value, 1), "-" + nth($value, 1), "");
 
     .#{$property-class + $infix + $property-class-modifier} {
       @each $property in $properties {
         // stylelint-disable-next-line declaration-no-important
-        #{$property}: #{$value} !important;
+        #{$property}: #{nth($value, 2)} !important;
       }
     }
   }
