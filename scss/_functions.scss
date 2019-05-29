@@ -84,7 +84,7 @@
 
     // Warn if the Length of keys and values are not the same
     @if $length-keys != $length-values {
-      @warn "There are #{$length-keys} key(s) for #{$length-values} value(s) in the map for `map-zip`. Resulting map will only have #{$min-length} pairs.";
+      @warn "There are #{$length-keys} key(s) for #{$length-values} value(s) in the map . Resulting map will only have #{$min-length} pairs.";
     }
 
     // return if keys and values are empty list
