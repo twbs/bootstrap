@@ -90,7 +90,7 @@ class Button {
             }
           }
         } else if (input.type === 'checkbox') {
-          if (this._element.tagName === 'LABEL' && input.checked === this._element.classList.contains(ClassName.ACTIVE)) {
+          if (this._element.tagName === 'LABEL' && input.checked == this._element.classList.contains(ClassName.ACTIVE)) {
             triggerChangeEvent = false
           }
         }
