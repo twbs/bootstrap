@@ -10,16 +10,13 @@
   padding-bottom: .125em;
   border-left: .25em solid #eee;
 
-  ul {
+  > ul {
+    padding-left: 0;
     margin-bottom: 0;
   }
 
   > ul > li {
     display: block;
-  }
-
-  li ul {
-    padding-left: 0;
   }
 
   li ul li {
