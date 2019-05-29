@@ -65,6 +65,9 @@ class Button {
     const rootElement = $(this._element).closest(
       Selector.DATA_TOGGLE
     )[0]
+    if (this._element.hasAttribute('disabled') || this._element.classList.contains('disabled')) {
+      return
+    }
 
     if (rootElement) {
       if (rootElement.hasAttribute('disabled') || rootElement.classList.contains('disabled')) {
@@ -151,10 +154,17 @@ $(document)
     let button = event.target
 
     if (!$(button).hasClass(ClassName.BUTTON)) {
-      button = $(button).closest(Selector.BUTTON)
+      button = $(button).closest(Selector.BUTTON)[0]
     }
 
-    Button._jQueryInterface.call($(button), 'toggle')
+    if (button) {
+      if (button.hasAttribute('disabled') || button.classList.contains('disabled')) {
+        // work around Firefox bug #1540995
+        event.preventDefault()
+      } else {
+        Button._jQueryInterface.call($(button), 'toggle')
+      }
+    }
   })
   .on(Event.FOCUS_BLUR_DATA_API, Selector.DATA_TOGGLE_CARROT, (event) => {
     const button = $(event.target).closest(Selector.BUTTON)[0]
