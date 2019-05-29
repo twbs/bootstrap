@@ -181,7 +181,7 @@ $(function () {
   })
 
   QUnit.test('should handle disabled attribute on non-button elements', function (assert) {
-    assert.expect(2)
+    assert.expect(4)
     var groupHTML = '<div class="btn-group disabled" data-toggle="buttons" aria-disabled="true" disabled>' +
       '<label class="btn btn-danger disabled">' +
       '<input type="checkbox" aria-disabled="true" autocomplete="off" disabled class="disabled"/>' +
@@ -192,6 +192,8 @@ $(function () {
     var $btn = $group.children().eq(0)
     var $input = $btn.children().eq(0)
 
+    assert.ok($btn.is(':not(.active)'), 'button is initially not active')
+    assert.ok(!$input.prop('checked'), 'checkbox is initially not checked')
     $btn.click()
     assert.ok($btn.is(':not(.active)'), 'button did not become active')
     assert.ok(!$input.prop('checked'), 'checkbox did not get checked')
