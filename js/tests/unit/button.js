@@ -183,16 +183,16 @@ $(function () {
   QUnit.test('should handle disabled attribute on non-button elements', function (assert) {
     assert.expect(2)
     var groupHTML = '<div class="btn-group disabled" data-toggle="buttons" aria-disabled="true" disabled>' +
-      '<div class="btn btn-danger disabled">' +
+      '<label class="btn btn-danger disabled">' +
       '<input type="checkbox" aria-disabled="true" autocomplete="off" disabled class="disabled"/>' +
-      '</div>' +
-      '</div>' // use <div> rather than <label>, as not easy to trigger a proper click on a label (short of setting up async event dispatching to the headless browser)
+      '</label>' +
+      '</div>'
     var $group = $(groupHTML).appendTo('#qunit-fixture')
 
     var $btn = $group.children().eq(0)
     var $input = $btn.children().eq(0)
 
-    $btn.trigger('click')
+    $btn.click()
     assert.ok($btn.is(':not(.active)'), 'button did not become active')
     assert.ok(!$input.is(':checked'), 'checkbox did not get checked')
   })
