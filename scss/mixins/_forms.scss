@@ -71,7 +71,7 @@
         padding-right: $input-height-inner;
         background-image: $icon;
         background-repeat: no-repeat;
-        background-position: center right $input-height-inner-quarter;
+        background-position: right $input-height-inner-quarter center;
         background-size: $input-height-inner-half $input-height-inner-half;
       }
 

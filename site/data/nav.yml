@@ -47,6 +47,7 @@
     - title: Button group
     - title: Card
     - title: Carousel
+    - title: Close icon
     - title: Collapse
     - title: Dropdowns
     # - title: Forms
@@ -64,23 +65,28 @@
     - title: Toasts
     - title: Tooltips
 
+- title: Helpers
+  pages:
+    - title: Clearfix
+    - title: Embed
+    - title: Position
+    - title: Screen readers
+    - title: Stretched link
+    - title: Text
+
 - title: Utilities
   pages:
+    - title: API
     - title: Borders
-    - title: Clearfix
-    - title: Close icon
     - title: Colors
     - title: Display
-    - title: Embed
     - title: Flex
     - title: Float
     - title: Overflow
     - title: Position
-    - title: Screen readers
     - title: Shadows
     - title: Sizing
     - title: Spacing
-    - title: Stretched link
     - title: Text
     - title: Vertical align
     - title: Visibility

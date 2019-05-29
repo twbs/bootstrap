@@ -41,18 +41,6 @@ Our dropdowns, popovers and tooltips also depend on [Popper.js](https://popper.j
 
 Nearly all Bootstrap plugins can be enabled and configured through HTML alone with data attributes (our preferred way of using JavaScript functionality). Be sure to **only use one set of data attributes on a single element** (e.g., you cannot trigger a tooltip and modal from the same button.)
 
-However, in some situations it may be desirable to disable this functionality. To disable the data attribute API, unbind all events on the document namespaced with `data-api` like so:
-
-{{< highlight js >}}
-$(document).off('.data-api')
-{{< /highlight >}}
-
-Alternatively, to target a specific plugin, just include the plugin's name as a namespace along with the data-api namespace like this:
-
-{{< highlight js >}}
-$(document).off('.alert.data-api')
-{{< /highlight >}}
-
 {{< callout warning >}}
 ## Selectors
 
@@ -67,7 +55,9 @@ Bootstrap provides custom events for most plugins' unique actions. Generally, th
 All infinitive events provide [`preventDefault()`](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) functionality. This provides the ability to stop the execution of an action before it starts. Returning false from an event handler will also automatically call `preventDefault()`.
 
 {{< highlight js >}}
-$('#myModal').on('show.bs.modal', function (e) {
+var myModal = document.getElementById('myModal')
+
+myModal.addEventListener('show.bs.modal', function (e) {
   if (!data) {
     return e.preventDefault() // stops modal from being shown
   }
@@ -76,21 +66,16 @@ $('#myModal').on('show.bs.modal', function (e) {
 
 ## Programmatic API
 
-We also believe you should be able to use all Bootstrap plugins purely through the JavaScript API. All public APIs are single, chainable methods, and return the collection acted upon.
+All constructors accept an optional options object or nothing (which initiates a plugin with its default behavior):
 
 {{< highlight js >}}
-$('.btn.danger').button('toggle').addClass('fat')
+var myModalEl = document.getElementById('myModal')
+
+var modal = new bootstrap.Modal(myModalEl) // initialized with defaults
+var modal = new bootstrap.Modal(myModalEl, { keyboard: false }) // initialized with no keyboard
 {{< /highlight >}}
 
-All methods should accept an optional options object, a string which targets a particular method, or nothing (which initiates a plugin with default behavior):
-
-{{< highlight js >}}
-$('#myModal').modal() // initialized with defaults
-$('#myModal').modal({ keyboard: false }) // initialized with no keyboard
-$('#myModal').modal('show') // initializes and invokes show immediately
-{{< /highlight >}}
-
-Each plugin also exposes its raw constructor on a `Constructor` property: `$.fn.popover.Constructor`. If you'd like to get a particular plugin instance, retrieve it directly from an element: `$('[rel="popover"]').data('popover')`.
+If you'd like to get a particular plugin instance, each plugin exposes a `_getInstance` method. In order to retrieve it directly from an element, do this: `bootstrap.Popover._getInstance(myPopoverEl)`.
 
 ### Asynchronous functions and transitions
 
@@ -99,7 +84,9 @@ All programmatic API methods are **asynchronous** and return to the caller once 
 In order to execute an action once the transition is complete, you can listen to the corresponding event.
 
 {{< highlight js >}}
-$('#myCollapse').on('shown.bs.collapse', function (e) {
+var myCollapseEl = document.getElementById('#myCollapse')
+
+myCollapseEl.addEventListener('shown.bs.collapse', function (e) {
   // Action to execute once the collapsible area is expanded
 })
 {{< /highlight >}}
@@ -107,12 +94,15 @@ $('#myCollapse').on('shown.bs.collapse', function (e) {
 In addition a method call on a **transitioning component will be ignored**.
 
 {{< highlight js >}}
-$('#myCarousel').on('slid.bs.carousel', function (e) {
-  $('#myCarousel').carousel('2') // Will slide to the slide 2 as soon as the transition to slide 1 is finished
+var myCarouselEl = document.getElementById('myCarousel')
+var carousel = bootstrap.Carousel._getInstance(myCarouselEl) // Retrieve a Carousel instance
+
+myCarouselEl.addEventListener('slid.bs.carousel', function (e) {
+  carousel.to('2') // Will slide to the slide 2 as soon as the transition to slide 1 is finished
 })
 
-$('#myCarousel').carousel('1') // Will start sliding to the slide 1 and returns to the caller
-$('#myCarousel').carousel('2') // !! Will be ignored, as the transition to the slide 1 is not finished !!
+carousel.to('1') // Will start sliding to the slide 1 and returns to the caller
+carousel.to('2') // !! Will be ignored, as the transition to the slide 1 is not finished !!
 {{< /highlight >}}
 
 ### Default settings
@@ -121,10 +111,10 @@ You can change the default settings for a plugin by modifying the plugin's `Cons
 
 {{< highlight js >}}
 // changes default for the modal plugin's `keyboard` option to false
-$.fn.modal.Constructor.Default.keyboard = false
+bootstrap.Modal.Default.keyboard = false
 {{< /highlight >}}
 
-## No conflict
+## No conflict (only if you use jQuery)
 
 Sometimes it is necessary to use Bootstrap plugins with other UI frameworks. In these circumstances, namespace collisions can occasionally occur. If this happens, you may call `.noConflict` on the plugin you wish to revert the value of.
 
@@ -138,7 +128,7 @@ $.fn.bootstrapBtn = bootstrapButton // give $().bootstrapBtn the Bootstrap funct
 The version of each of Bootstrap's plugins can be accessed via the `VERSION` property of the plugin's constructor. For example, for the tooltip plugin:
 
 {{< highlight js >}}
-$.fn.tooltip.Constructor.VERSION // => "{{< param current_version >}}"
+bootstrap.Tooltip.VERSION // => "{{< param current_version >}}"
 {{< /highlight >}}
 
 ## No special fallbacks when JavaScript is disabled
@@ -197,7 +187,7 @@ var DefaultWhitelist = {
 If you want to add new values to this default `whiteList` you can do the following:
 
 {{< highlight js >}}
-var myDefaultWhiteList = $.fn.tooltip.Constructor.Default.whiteList
+var myDefaultWhiteList = bootstrap.Tooltip.Default.whiteList
 
 // To allow table elements
 myDefaultWhiteList.table = []
@@ -214,7 +204,8 @@ myDefaultWhiteList['*'].push(myCustomRegex)
 If you want to bypass our sanitizer because you prefer to use a dedicated library, for example [DOMPurify](https://www.npmjs.com/package/dompurify), you should do the following:
 
 {{< highlight js >}}
-$('#yourTooltip').tooltip({
+var yourTooltipEl = document.getElementById('yourTooltip')
+var tooltip = new bootstrap.Tooltip(yourTooltipEl, {
   sanitizeFn: function (content) {
     return DOMPurify.sanitize(content)
   }
