@@ -8,9 +8,7 @@
     $values: zip($values, $values);
   }
 
-  @each $value in $values {
-    $key: nth($value, 1);
-    $value: nth($value, 2);
+  @each $key, $value in $values {
     $properties: map-get($utility, property);
 
     // Multiple properties are possible, for example with vertical or horizontal margins or paddings
