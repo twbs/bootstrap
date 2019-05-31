@@ -85,6 +85,10 @@ Badges were overhauled to better differentiate themselves from buttons and to be
 
 - Renamed `.arrow` to `.tooltip-arrow`
 
+## Accessibility
+
+- `.sr-only-focusable` does not require `.sr-only` anymore. [See #28720](https://github.com/twbs/bootstrap/pull/28720).
+
 ## Utilities
 
 - **Todo:** Drop `.text-hide` as it's an antiquated method for hiding text that shouldn't be used anymore

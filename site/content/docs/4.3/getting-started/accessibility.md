@@ -37,10 +37,10 @@ Content which should be visually hidden, but remain accessible to assistive tech
 </p>
 {{< /highlight >}}
 
-For visually hidden interactive controls, such as traditional "skip" links, `.sr-only` can be combined with the `.sr-only-focusable` class. This will ensure that the control becomes visible once focused (for sighted keyboard users).
+For visually hidden interactive controls, such as traditional "skip" links, use the `.sr-only-focusable` class. This will ensure that the control becomes visible once focused (for sighted keyboard users). **Watch out, since Bootstrap 5 the `.sr-only-focusable` class may not be used in combination with the `.sr-only` class.**
 
 {{< highlight html >}}
-<a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+<a class="sr-only-focusable" href="#content">Skip to main content</a>
 {{< /highlight >}}
 
 ### Reduced motion
