@@ -36,6 +36,7 @@
   // as much space as possible, ensuring footers are aligned to the bottom.
   flex: 1 1 auto;
   // Workaround for the image size bug in IE
+  // See: https://github.com/twbs/bootstrap/pull/28855
   min-height: 1px;
   padding: $card-spacer-x;
   color: $card-color;
