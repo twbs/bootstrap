@@ -11,52 +11,13 @@ Through donations and sponsorships we are able to maintain & improve Bootstrap. 
 ## Sponsors
 
 {{< sponsors.inline >}}
-{{- $ocURL := "https://opencollective.com/bootstrap/members/all.json" -}}
-{{- $sponsors := getJSON $ocURL "?TierId=7193&limit=10&offset=0" -}}
-<div class="d-flex flex-wrap mx-n2 text-center font-weight-bold">
-  {{- range $sponsors }}
-    {{- if .isActive -}}
-      <div class="m-2 position-relative">
-        <div style="width:100px; height: 100px;" class="img-thumbnail d-flex align-items-center justify-content-center overflow-hidden">
-          <div class="w-100">
-            <img src="{{- .image -}}" alt="{{- .name -}}" class="mh-100 mw-100">
-          </div>
-        </div>
-        <h3 class="h6 pt-2">
-            {{ if .website -}}
-              <a href="{{- .website -}}" class="stretched-link text-reset">{{- .name -}}</a>
-            {{ else -}}
-              {{- .name -}}
-            {{ end -}}
-        </h3>
-      </div>
-    {{- end -}}
-  {{- end -}}
-</div>
+<div id="sponsorList" class="d-flex flex-wrap mx-n2 text-center font-weight-bold"></div>
 {{< /sponsors.inline >}}
 
 ## Backers
 
 {{< backers.inline >}}
-{{- $ocURL := "https://opencollective.com/bootstrap/members/all.json" -}}
-{{- $sponsors := getJSON $ocURL "?TierId=7192&limit=10&offset=0" -}}
-<div class="d-flex flex-wrap mx-n1 text-center font-weight-bold">
-  {{- range $sponsors }}
-    {{- if .isActive -}}
-      <div class="m-1 position-relative">
-        <div style="width:50px; height: 50px;" class="img-thumbnail d-flex align-items-center justify-content-center overflow-hidden">
-          {{ if .website -}}
-            <a href="{{- .website -}}" class="stretched-link text-reset" title="{{- .name -}}">
-          {{ end -}}
-          <img src="{{- .image -}}" alt="{{- .name -}}" class="mh-100 mw-100">
-          {{ if .website -}}
-            </a>
-          {{ end -}}
-        </div>
-      </div>
-    {{- end -}}
-  {{- end -}}
-</div>
+<div id="backerList" class="d-flex flex-wrap mx-n1 text-center font-weight-bold"></div>
 {{< /backers.inline >}}
 
 ## Services
@@ -75,4 +36,110 @@ Through donations and sponsorships we are able to maintain & improve Bootstrap. 
     </div>
   {{ end -}}
 </div>
+
+<script>
+  function displaySponsors(sponsorList) {
+    var sponsorListEl = document.getElementById('sponsorList')
+    var output = []
+
+    sponsorList.forEach(function (sponsor) {
+      output.push(
+        '<div class="m-2 position-relative">',
+        ' <div style="width:100px; height: 100px;" class="img-thumbnail d-flex align-items-center justify-content-center overflow-hidden">',
+        '   <div class="w-100">',
+        '    <img src="' + sponsor.image + '" alt="' + sponsor.name + '" class="mh-100 mw-100">',
+        '   </div>',
+        ' </div>',
+        ' <h3 class="h6 pt-2">',
+      )
+
+      if (sponsor.website) {
+        output.push('<a href="' + sponsor.website + '" class="stretched-link text-reset">' + sponsor.name + '</a>')
+      } else {
+        output.push(sponsor.name)
+      }
+
+      output.push(
+        ' </h3>',
+        '</div>'
+      )
+    })
+
+    sponsorListEl.innerHTML = output.join('')
+  }
+
+  function displayBackers(backerList) {
+    var backerListEl = document.getElementById('backerList')
+    var output = []
+
+    backerList.forEach(function (backer) {
+      output.push(
+        '<div class="m-1 position-relative">',
+        ' <div style="width:50px; height: 50px;" class="img-thumbnail d-flex align-items-center justify-content-center overflow-hidden">'
+      )
+
+      if (backer.website) {
+        output.push(
+          '<a href="' + backer.website + '" class="stretched-link text-reset" title="' + backer.name + '">'
+        )
+      }
+
+      output.push('<img src="' + backer.image + '" alt="' + backer.name + '" class="mh-100 mw-100">')
+
+      if (backer.website) {
+        output.push('</a>')
+      }
+
+      output.push(
+        ' </div>',
+        '</div>',
+      )
+    })
+
+    backerListEl.innerHTML = output.join('')
+  }
+
+  function requestOC(params, cb) {
+    var ocURL = 'https://opencollective.com/bootstrap/members/all.json'
+    var xhr = new XMLHttpRequest()
+
+    xhr.open('GET', ocURL + params, true)
+    xhr.onload = function () {
+      if (xhr.readyState !== 4) {
+        return
+      }
+
+      if (xhr.status === 200) {
+        cb(JSON.parse(xhr.responseText), null)
+      } else {
+        cb(null, xhr.statusText)
+      }
+    }
+    xhr.send()
+  }
+
+  (function () {
+    requestOC('?TierId=7193', function (sponsorList, error) {
+      if (sponsorList) {
+        sponsorList = sponsorList.filter(function (sponsor) { return sponsor.isActive })
+          .slice(0, 10)
+
+        // Sort by total amount donated
+        sponsorList.sort(function (sponsor1, sponsor2) { return sponsor2.totalAmountDonated - sponsor1.totalAmountDonated })
+        displaySponsors(sponsorList)
+      }
+    })
+
+    requestOC('?TierId=7192', function (backerList, error) {
+      if (backerList) {
+        backerList = backerList.filter(function (backer) { return backer.isActive })
+          .slice(0, 10)
+
+        // Sort by total amount donated
+        backerList.sort(function (backer1, backer2) { return backer2.totalAmountDonated - backer1.totalAmountDonated })
+        displayBackers(backerList)
+      }
+    })
+  })()
+</script>
 {{< /services.inline >}}
