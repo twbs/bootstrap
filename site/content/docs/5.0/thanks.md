@@ -47,7 +47,7 @@ Through donations and sponsorships we are able to maintain & improve Bootstrap. 
         '<div class="m-2 position-relative">',
         ' <div style="width:100px; height: 100px;" class="img-thumbnail d-flex align-items-center justify-content-center overflow-hidden">',
         '   <div class="w-100">',
-        '    <img src="' + sponsor.image + '" alt="' + sponsor.name + '" class="mh-100 mw-100">',
+        '    <img src="' + sponsor.avatar + '" alt="' + sponsor.name + '" class="mh-100 mw-100">',
         '   </div>',
         ' </div>',
         ' <h3 class="h6 pt-2">',
@@ -84,7 +84,7 @@ Through donations and sponsorships we are able to maintain & improve Bootstrap. 
         )
       }
 
-      output.push('<img src="' + backer.image + '" alt="' + backer.name + '" class="mh-100 mw-100">')
+      output.push('<img src="' + backer.avatar + '" alt="' + backer.name + '" class="mh-100 mw-100">')
 
       if (backer.website) {
         output.push('</a>')
@@ -99,11 +99,11 @@ Through donations and sponsorships we are able to maintain & improve Bootstrap. 
     backerListEl.innerHTML = output.join('')
   }
 
-  function requestOC(params, cb) {
-    var ocURL = 'https://opencollective.com/bootstrap/members/all.json'
+  function requestOC(cb) {
+    var ocURL = 'https://opencollective.com/api/groups/bootstrap/backers'
     var xhr = new XMLHttpRequest()
 
-    xhr.open('GET', ocURL + params, true)
+    xhr.open('GET', ocURL, true)
     xhr.onload = function () {
       if (xhr.readyState !== 4) {
         return
@@ -119,26 +119,21 @@ Through donations and sponsorships we are able to maintain & improve Bootstrap. 
   }
 
   (function () {
-    requestOC('?TierId=7193', function (sponsorList, error) {
-      if (sponsorList) {
-        sponsorList = sponsorList.filter(function (sponsor) { return sponsor.isActive })
-          .slice(0, 10)
+    requestOC(function (allBackerList, error) {
+      var backerList = allBackerList.filter(function (backer) { return backer.tier === 'backer' })
+      var sponsorList = allBackerList.filter(function (backer) { return backer.tier === 'sponsor' })
 
-        // Sort by total amount donated
-        sponsorList.sort(function (sponsor1, sponsor2) { return sponsor2.totalAmountDonated - sponsor1.totalAmountDonated })
-        displaySponsors(sponsorList)
-      }
-    })
+      // Sort by total amount donated
+      sponsorList.sort(function (sponsor1, sponsor2) { return sponsor2.directDonations - sponsor1.directDonations })
+      sponsorList = sponsorList.slice(0, 10)
 
-    requestOC('?TierId=7192', function (backerList, error) {
-      if (backerList) {
-        backerList = backerList.filter(function (backer) { return backer.isActive })
-          .slice(0, 10)
+      displaySponsors(sponsorList)
 
-        // Sort by total amount donated
-        backerList.sort(function (backer1, backer2) { return backer2.totalAmountDonated - backer1.totalAmountDonated })
-        displayBackers(backerList)
-      }
+      // Sort by total amount donated
+      backerList.sort(function (backer1, backer2) { return backer2.directDonations - backer1.directDonations })
+      backerList = backerList.slice(0, 10)
+
+      displayBackers(backerList)
     })
   })()
 </script>
