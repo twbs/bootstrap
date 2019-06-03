@@ -205,7 +205,7 @@ includes code changes) and under the terms of the
 
 ### HTML
 
-[Adhere to the Code Guide.](http://codeguide.co/#html)
+[Adhere to the Code Guide.](https://codeguide.co/#html)
 
 - Use tags and elements appropriate for an HTML5 doctype (e.g., self-closing tags).
 - Use CDNs and HTTPS for third-party JS when possible. We don't use protocol-relative URLs in this case because they break when viewing the page locally via `file://`.
@@ -213,7 +213,7 @@ includes code changes) and under the terms of the
 
 ### CSS
 
-[Adhere to the Code Guide.](http://codeguide.co/#css)
+[Adhere to the Code Guide.](https://codeguide.co/#css)
 
 - When feasible, default color palettes should comply with [WCAG color contrast guidelines](https://www.w3.org/TR/WCAG20/#visual-audio-contrast).
 - Except in rare cases, don't remove default `:focus` styles (via e.g. `outline: none;`) without providing alternative styles. See [this A11Y Project post](https://a11yproject.com/posts/never-remove-css-outlines/) for more details.
