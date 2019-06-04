@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Text truncation
-description: Quickly truncation the long text with an ellipsis. 
+description: Truncate long strings of text with an ellipsis.
 group: helpers
 toc: true
 ---
