@@ -192,6 +192,25 @@ $(function () {
     assert.ok(!$input.prop('checked'), 'checkbox did not get checked')
   })
 
+  QUnit.test('should not set active class if inner hidden checkbox is disabled but author forgot to set disabled class on outer button', function (assert) {
+    assert.expect(4)
+    var groupHTML = '<div class="btn-group" data-toggle="buttons">' +
+      '<label class="btn btn-danger">' +
+      '<input type="checkbox" autocomplete="off" disabled>' +
+      '</label>' +
+      '</div>'
+    var $group = $(groupHTML).appendTo('#qunit-fixture')
+
+    var $btn = $group.children().eq(0)
+    var $input = $btn.children().eq(0)
+
+    assert.ok($btn.is(':not(.active)'), 'button is initially not active')
+    assert.ok(!$input.prop('checked'), 'checkbox is initially not checked')
+    $btn[0].click() // fire a real click on the DOM node itself, not a click() on the jQuery object that just aliases to trigger('click')
+    assert.ok($btn.is(':not(.active)'), 'button did not become active')
+    assert.ok(!$input.prop('checked'), 'checkbox did not get checked')
+  })
+
   QUnit.test('should correctly set checked state on input and active class on label when using <label><input></label> structure', function (assert) {
     assert.expect(4)
     var groupHTML = '<div class="btn-group" data-toggle="buttons">' +
