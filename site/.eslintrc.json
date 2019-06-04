@@ -32,6 +32,7 @@
       "never"
     ],
     "strict": "error",
+    "unicorn/no-for-loop": "off",
     "unicorn/prefer-includes": "off",
     "unicorn/prefer-node-append": "off",
     "unicorn/prefer-query-selector": "off",
