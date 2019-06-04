@@ -67,10 +67,6 @@ class Button {
     )[0]
 
     if (rootElement) {
-      if (rootElement.hasAttribute('disabled') || rootElement.classList.contains('disabled')) {
-        return
-      }
-
       const input = this._element.querySelector(Selector.INPUT)
 
       if (input) {
