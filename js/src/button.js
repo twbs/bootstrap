@@ -70,10 +70,6 @@ class Button {
       const input = this._element.querySelector(Selector.INPUT)
 
       if (input) {
-        if (input.hasAttribute('disabled') || input.classList.contains('disabled')) {
-          return
-        }
-
         if (input.type === 'radio') {
           if (input.checked &&
             this._element.classList.contains(ClassName.ACTIVE)) {
@@ -152,8 +148,9 @@ $(document)
 
     if (button) {
       if (button.hasAttribute('disabled') || button.classList.contains('disabled')) {
-        // work around Firefox bug #1540995
-        event.preventDefault()
+        event.preventDefault() // work around Firefox bug #1540995
+      } else if (button.querySelector(Selector.INPUT) && (button.querySelector(Selector.INPUT).hasAttribute('disabled') || button.querySelector(Selector.INPUT).classList.contains('disabled'))) {
+        event.preventDefault() // work around Firefox bug #1540995
       } else {
         Button._jQueryInterface.call($(button), 'toggle')
       }
