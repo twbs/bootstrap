@@ -249,7 +249,7 @@ $(function () {
     assert.ok(!$input.prop('checked'), 'checkbox is not checked after click')
   })
 
-  QUnit.test('should not try and set checked property on an input that is not a radio button or checkbox', function (assert) {
+  QUnit.test('should not try and set checked property on an input of type="hidden"', function (assert) {
     assert.expect(2)
     var groupHTML = '<div class="btn-group" data-toggle="buttons">' +
       '<label class="btn">' +
@@ -264,6 +264,23 @@ $(function () {
     assert.ok(!$input.prop('checked'), 'hidden input initially has no checked property')
     $label[0].click() // fire a real click on the DOM node itself, not a click() on the jQuery object that just aliases to trigger('click')
     assert.ok(!$input.prop('checked'), 'hidden input does not have a checked property')
+  })
+
+  QUnit.test('should not try and set checked property on an input that is not a radio button or checkbox', function (assert) {
+    assert.expect(2)
+    var groupHTML = '<div class="btn-group" data-toggle="buttons">' +
+      '<label class="btn">' +
+      '<input type="text" autocomplete="off">' +
+      '</label>' +
+      '</div>'
+    var $group = $(groupHTML).appendTo('#qunit-fixture')
+
+    var $label = $group.children().eq(0)
+    var $input = $label.children().eq(0)
+
+    assert.ok(!$input.prop('checked'), 'text input initially has no checked property')
+    $label[0].click() // fire a real click on the DOM node itself, not a click() on the jQuery object that just aliases to trigger('click')
+    assert.ok(!$input.prop('checked'), 'text input does not have a checked property')
   })
 
   QUnit.test('dispose should remove data and the element', function (assert) {
