@@ -158,7 +158,7 @@ $(document)
         event.preventDefault() // work around Firefox bug #1540995
         return
       }
-      
+
       Button._jQueryInterface.call($(button), 'toggle')
     }
   })
