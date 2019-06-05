@@ -80,10 +80,10 @@ Quickly change the weight (boldness) of text or italicize text.
 
 ## Monospace
 
-Change a selection to our monospace font stack with `.text-monospace`.
+Change a selection to our monospace font stack with `.font-monospace`.
 
 {{< example >}}
-<p class="text-monospace">This is in monospace</p>
+<p class="font-monospace">This is in monospace</p>
 {{< /example >}}
 
 ## Reset color
