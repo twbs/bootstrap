@@ -230,6 +230,25 @@ $(function () {
     assert.ok($input.prop('checked'), 'checkbox is checked after click')
   })
 
+  QUnit.test('should correctly set checked state on input and active class on the faked button when using <div><input></div> structure', function (assert) {
+    assert.expect(4)
+    var groupHTML = '<div class="btn-group" data-toggle="buttons">' +
+      '<div class="btn">' +
+      '<input type="checkbox" autocomplete="off" aria-label="Check">' +
+      '</div>' +
+      '</div>'
+    var $group = $(groupHTML).appendTo('#qunit-fixture')
+
+    var $btn = $group.children().eq(0)
+    var $input = $btn.children().eq(0)
+
+    assert.ok($btn.is(':not(.active)'), '<div> is initially not active')
+    assert.ok(!$input.prop('checked'), 'checkbox is initially not checked')
+    $btn[0].click() // fire a real click on the DOM node itself, not a click() on the jQuery object that just aliases to trigger('click')
+    assert.ok($btn.is('.active'), '<div> is active after click')
+    assert.ok($input.prop('checked'), 'checkbox is checked after click')
+  })
+
   QUnit.test('should not do anything if the click was just sent to the outer container with data-toggle', function (assert) {
     assert.expect(4)
     var groupHTML = '<div class="btn-group" data-toggle="buttons">' +
