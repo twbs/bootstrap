@@ -73,7 +73,7 @@ To show an element only on a given interval of screen sizes you can combine one 
 | Visible only on xl | `.d-none .d-xl-block` |
 
 {% capture example %}
-<div class="d-lg-none">hide on screens wider than lg</div>
+<div class="d-lg-none">hide on lg and wider screens</div>
 <div class="d-none d-lg-block">hide on screens smaller than lg</div>
 {% endcapture %}
 {% include example.html content=example %}
