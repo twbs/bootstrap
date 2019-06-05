@@ -149,8 +149,7 @@
   > .nav + .nav,
   > .alert + .alert,
   > .navbar + .navbar,
-  > .progress + .progress,
-  > .progress + .btn {
+  > .progress + .progress {
     margin-top: 1rem;
   }
 
@@ -285,11 +284,6 @@
     margin-right: auto;
     margin-left: auto;
   }
-}
-
-// Example tabbable tabs
-.bd-example-tabs .nav-tabs {
-  margin-bottom: 1rem;
 }
 
 // Popovers
