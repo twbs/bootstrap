@@ -197,11 +197,6 @@
   }
 }
 
-// Forms
-.bd-example > textarea.form-control {
-  resize: vertical;
-}
-
 // List groups
 .bd-example > .list-group {
   max-width: 400px;
@@ -270,20 +265,6 @@
     left: auto;
     margin-right: auto;
     margin-left: auto;
-  }
-}
-
-// Popovers
-.bd-example-popover-static {
-  padding-bottom: 1.5rem;
-  background-color: #f9f9f9;
-
-  .popover {
-    position: relative;
-    display: block;
-    float: left;
-    width: 260px;
-    margin: 1.25rem;
   }
 }
 
