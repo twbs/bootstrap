@@ -151,9 +151,14 @@ $(document)
 
     if (!button || button.hasAttribute('disabled') || button.classList.contains('disabled')) {
       event.preventDefault() // work around Firefox bug #1540995
-    } else if (button.querySelector(Selector.INPUT) && (button.querySelector(Selector.INPUT).hasAttribute('disabled') || button.querySelector(Selector.INPUT).classList.contains('disabled'))) {
-      event.preventDefault() // work around Firefox bug #1540995
     } else {
+      const inputBtn = button.querySelector(Selector.INPUT)
+
+      if (inputBtn && (inputBtn.hasAttribute('disabled') || inputBtn.classList.contains('disabled'))) {
+        event.preventDefault() // work around Firefox bug #1540995
+        return
+      }
+      
       Button._jQueryInterface.call($(button), 'toggle')
     }
   })
