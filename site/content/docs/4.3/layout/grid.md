@@ -543,7 +543,7 @@ You may also apply this break at specific breakpoints with our [responsive displ
 
 ### Order classes
 
-Use `.order-` classes for controlling the **visual order** of your content. These classes are responsive, so you can set the `order` by breakpoint (e.g., `.order-1.order-md-2`). Includes support for `1` through `12` across all five grid tiers.
+Use `.order-` classes for controlling the **visual order** of your content. These classes are responsive, so you can set the `order` by breakpoint (e.g., `.order-1.order-md-2`). Includes support for `1` through `5` across all five grid tiers.
 
 <div class="bd-example-row">
 {{< example >}}
@@ -552,7 +552,7 @@ Use `.order-` classes for controlling the **visual order** of your content. Thes
     <div class="col">
       First, but unordered
     </div>
-    <div class="col order-12">
+    <div class="col order-5">
       Second, but last
     </div>
     <div class="col order-1">
@@ -563,7 +563,7 @@ Use `.order-` classes for controlling the **visual order** of your content. Thes
 {{< /example >}}
 </div>
 
-There are also responsive `.order-first` and `.order-last` classes that change the `order` of an element by applying `order: -1` and `order: 13` (`order: $columns + 1`), respectively. These classes can also be intermixed with the numbered `.order-*` classes as needed.
+There are also responsive `.order-first` and `.order-last` classes that change the `order` of an element by applying `order: -1` and `order: 6`, respectively. These classes can also be intermixed with the numbered `.order-*` classes as needed.
 
 <div class="bd-example-row">
 {{< example >}}
