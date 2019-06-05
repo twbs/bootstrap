@@ -18,13 +18,6 @@
   .row + .row {
     margin-top: 1rem;
   }
-
-  .flex-items-top,
-  .flex-items-middle,
-  .flex-items-bottom {
-    min-height: 6rem;
-    background-color: rgba(255, 0, 0, .1);
-  }
 }
 
 .bd-example-row-flex-cols .row {
@@ -147,10 +140,6 @@
     }
   }
 
-  .custom-file-input:lang(es) ~ .custom-file-label::after {
-    content: "Elegir";
-  }
-
   > .form-control {
     + .form-control {
       margin-top: .5rem;
@@ -202,11 +191,6 @@
   }
 }
 
-// Contextual background colors
-.bd-example-bg-classes p {
-  padding: 1rem;
-}
-
 // Images
 .bd-example {
   > svg + svg,
@@ -228,13 +212,6 @@
 }
 
 // Forms
-.bd-example-control-sizing select,
-.bd-example-control-sizing input[type="text"] + input[type="text"] {
-  margin-top: .5rem;
-}
-.bd-example-form .input-group {
-  margin-bottom: .5rem;
-}
 .bd-example > textarea.form-control {
   resize: vertical;
 }
@@ -332,13 +309,6 @@
 // Tooltips
 .tooltip-demo a {
   white-space: nowrap;
-}
-
-.bd-example-tooltip-static .tooltip {
-  position: relative;
-  display: inline-block;
-  margin: 10px 20px;
-  opacity: 1;
 }
 
 // Scrollspy demo on fixed height div
