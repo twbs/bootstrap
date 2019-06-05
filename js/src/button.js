@@ -85,6 +85,9 @@ class Button {
           if (this._element.tagName === 'LABEL' && input.checked === this._element.classList.contains(ClassName.ACTIVE)) {
             triggerChangeEvent = false
           }
+        } else {
+          // if it's not a radio button or checkbox don't add a pointless/invalid checked property to the input
+          triggerChangeEvent = false
         }
 
         if (triggerChangeEvent) {
@@ -146,14 +149,12 @@ $(document)
       button = $(button).closest(Selector.BUTTON)[0]
     }
 
-    if (button) {
-      if (button.hasAttribute('disabled') || button.classList.contains('disabled')) {
-        event.preventDefault() // work around Firefox bug #1540995
-      } else if (button.querySelector(Selector.INPUT) && (button.querySelector(Selector.INPUT).hasAttribute('disabled') || button.querySelector(Selector.INPUT).classList.contains('disabled'))) {
-        event.preventDefault() // work around Firefox bug #1540995
-      } else {
-        Button._jQueryInterface.call($(button), 'toggle')
-      }
+    if (!button || button.hasAttribute('disabled') || button.classList.contains('disabled')) {
+      event.preventDefault() // work around Firefox bug #1540995
+    } else if (button.querySelector(Selector.INPUT) && (button.querySelector(Selector.INPUT).hasAttribute('disabled') || button.querySelector(Selector.INPUT).classList.contains('disabled'))) {
+      event.preventDefault() // work around Firefox bug #1540995
+    } else {
+      Button._jQueryInterface.call($(button), 'toggle')
     }
   })
   .on(Event.FOCUS_BLUR_DATA_API, Selector.DATA_TOGGLE_CARROT, (event) => {
