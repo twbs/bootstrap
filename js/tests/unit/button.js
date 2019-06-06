@@ -113,15 +113,13 @@ $(function () {
 
   QUnit.test('should set focus class when focused, and remove it when it loses focus', function (assert) {
     assert.expect(3)
-    var $btn1 = $('<button class="btn" data-toggle="button" aria-pressed="false">redux</button>')
-    var $btn2 = $('<button class="btn" data-toggle="button" aria-pressed="false">redux</button>')
-    $btn1.appendTo('#qunit-fixture')
-    $btn2.appendTo('#qunit-fixture')
-    assert.ok(!$btn1.hasClass('focus'), 'initial btn doesn\'t have focus class')
-    $btn1.trigger('focus') // use trigger to work around oddity in IE11 which doesn't fire focus/blur handlers consistently when triggered programmatically
-    assert.ok($btn1.hasClass('focus'), 'after focusing, btn has focus class')
-    $btn2.trigger('focus')
-    assert.ok(!$btn1.hasClass('focus'), 'after other button receives focus, btn doesn\'t have focus class')
+    var $btn = $('<button class="btn" data-toggle="button" aria-pressed="false">redux</button>')
+    $btn.appendTo('#qunit-fixture')
+    assert.ok(!$btn.hasClass('focus'), 'initial btn doesn\'t have focus class')
+    $btn[0].focus()
+    assert.ok($btn.hasClass('focus'), 'after focusing, btn has focus class')
+    $btn[0].blur()
+    assert.ok(!$btn.hasClass('focus'), 'after other button receives focus, btn doesn\'t have focus class')
   })
 
   QUnit.test('dispose should remove data and the element', function (assert) {

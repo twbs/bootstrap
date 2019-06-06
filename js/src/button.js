@@ -116,11 +116,19 @@ EventHandler.on(document, Event.CLICK_DATA_API, Selector.BUTTON, event => {
 })
 
 EventHandler.on(document, Event.FOCUS_DATA_API, Selector.BUTTON, event => {
-  event.target.classList.add(ClassName.FOCUS)
+  const button = SelectorEngine.closest(event.target, Selector.BUTTON)
+
+  if (button) {
+    button.classList.add(ClassName.FOCUS)
+  }
 })
 
 EventHandler.on(document, Event.BLUR_DATA_API, Selector.BUTTON, event => {
-  event.target.classList.remove(ClassName.FOCUS)
+  const button = SelectorEngine.closest(event.target, Selector.BUTTON)
+
+  if (button) {
+    button.classList.remove(ClassName.FOCUS)
+  }
 })
 
 /**
