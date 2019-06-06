@@ -106,23 +106,9 @@ Disabled buttons using the `<a>` element behave a bit different:
 The `.disabled` class uses `pointer-events: none` to try to disable the link functionality of `<a>`s, but that CSS property is not yet standardized. In addition, even in browsers that do support `pointer-events: none`, keyboard navigation remains unaffected, meaning that sighted keyboard users and users of assistive technologies will still be able to activate these links. So to be safe, add a `tabindex="-1"` attribute on these links (to prevent them from receiving keyboard focus) and use custom JavaScript to disable their functionality.
 {{< /callout >}}
 
-## Button plugin
+## Checkbox and radio buttons
 
-Do more with buttons. Control button states or create groups of buttons for more components like toolbars.
-
-### Toggle states
-
-Add `data-toggle="button"` to toggle a button's `active` state. If you're pre-toggling a button, you must manually add the `.active` class **and** `aria-pressed="true"` to the `<button>`.
-
-{{< example >}}
-<button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
-  Single toggle
-</button>
-{{< /example >}}
-
-### Checkbox and radio buttons
-
-Bootstrap's `.button` styles can be applied to other elements, such as `<label>`s, to provide checkbox or radio style button toggling.
+Bootstrap lets you create checkboxes and radio buttons that look like regular buttons.
 
 Note that pre-checked buttons require you to manually add the `checked` attribute to the `<input>`.
 
@@ -150,6 +136,20 @@ Note that pre-checked buttons require you to manually add the `checked` attribut
     <label class="btn btn-primary" for="btnGroupRadio3">Radio button</label>
   </div>
 </div>
+{{< /example >}}
+
+## Button plugin
+
+The button plugin allows you to create simple on/off toggle buttons.
+
+### Toggle states
+
+Add `data-toggle="button"` to toggle a button's `active` state and `aria-pressed` attribute. If you're pre-toggling a button, you must manually add the `.active` class **and** `aria-pressed="true"` to the `<button>`.
+
+{{< example >}}
+<button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
+  Single toggle
+</button>
 {{< /example >}}
 
 ### Methods
