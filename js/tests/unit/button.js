@@ -118,9 +118,9 @@ $(function () {
     $btn1.appendTo('#qunit-fixture')
     $btn2.appendTo('#qunit-fixture')
     assert.ok(!$btn1.hasClass('focus'), 'initial btn doesn\'t have focus class')
-    $btn1[0].focus()
+    $btn1.trigger('focus') // use trigger to work around oddity in IE11 which doesn't fire focus/blur handlers consistently when triggered programmatically
     assert.ok($btn1.hasClass('focus'), 'after focusing, btn has focus class')
-    $btn2[0].focus() // rather than $btn[0].blur() as IE11 doesn't let you just blur something without focusing something else
+    $btn2.trigger('focus')
     assert.ok(!$btn1.hasClass('focus'), 'after other button receives focus, btn doesn\'t have focus class')
   })
 
