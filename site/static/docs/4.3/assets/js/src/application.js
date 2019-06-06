@@ -83,7 +83,7 @@
   }
 
   // Activate animated progress bar
-  var btnToggleAnimatedProgress = document.querySelector('.bd-toggle-animated-progress')
+  var btnToggleAnimatedProgress = document.getElementById('btnToggleAnimatedProgress')
   if (btnToggleAnimatedProgress) {
     btnToggleAnimatedProgress.addEventListener('click', function () {
       btnToggleAnimatedProgress.parentNode
