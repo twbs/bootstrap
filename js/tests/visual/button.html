@@ -5,27 +5,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../../../dist/css/bootstrap.min.css">
     <title>Button</title>
+    <style>
+      div.container > div { margin-bottom: 1em; }
+    </style>
   </head>
   <body>
     <div class="container">
       <h1>Button <small>Bootstrap Visual Test</small></h1>
 
-      <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false">
-        Single toggle should visually appear active when pressed and have <code>aria-pressed="true"</code>
-      </button>
+      <p>Verify that these buttons (except the disabled one) show <code>:focus</code> styling when receiving focus, and that they can be toggled correctly.</p>
 
-      <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" disabled>
-        Disabled toggle shouldn't be pressable at all
-      </button>
+      <div>
+        <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false">
+          Single toggle should visually appear active when pressed and have <code>aria-pressed="true"</code>
+        </button>
+      </div>
 
-      <button type="button" class="btn btn-primary" data-toggle="button">
-        Toggle that's missing <code>aria-pressed</code> - after toggling, the attribute should be present
-      </button>
+      <div>
+        <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" disabled>
+          Disabled toggle shouldn't be focusable nor pressable at all
+        </button>
+      </div>
+
+      <div>
+        <button type="button" class="btn btn-primary" data-toggle="button">
+          Toggle that's missing <code>aria-pressed</code> - after toggling, the attribute should be present
+        </button>
+      </div>
+
+      <div>
+        <a href="#" tabindex="0" id="fake1" role="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false">
+          Faked button using <code>&lt;a href="#"&gt;</code>
+        </a>
+      </div>
+
+      <div>
+        <div tabindex="0" id="fake2" role="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false">
+          Faked button using <code>&lt;div&gt;</code>
+        </div>
+      </div>
     </div>
 
     <script src="../../dist/dom/event-handler.js"></script>
     <script src="../../dist/dom/selector-engine.js"></script>
     <script src="../../dist/dom/data.js"></script>
     <script src="../../dist/button.js"></script>
+    <script>
+    /* Quick and dirty extra keyboard handling for fake buttons */
+    var fakes = document.querySelectorAll('div[role="button"]');
+    for(var i = 0; i<fakes.length; i++) {
+      fakes[i].addEventListener('keyup', function (e) {
+        if ((e.keyCode == 13) || (e.keyCode == 32)) {
+          this.click();
+        }
+      })
+    }
+    var fakes = document.querySelectorAll('a[role="button"]');
+    for(var i = 0; i<fakes.length; i++) {
+      fakes[i].addEventListener('keyup', function (e) {
+        if (e.keyCode == 32) {
+          this.click();
+        }
+      })
+    }
+    </script>
   </body>
 </html>

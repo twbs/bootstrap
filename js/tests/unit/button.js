@@ -43,13 +43,58 @@ $(function () {
     assert.ok($btn.hasClass('active'), 'btn has class active')
   })
 
-  QUnit.test('should toggle active', function (assert) {
+  QUnit.test('should toggle active for <button>', function (assert) {
     assert.expect(2)
     var $btn = $('<button class="btn" data-toggle="button">mdo</button>')
     $btn.appendTo('#qunit-fixture')
     assert.ok(!$btn.hasClass('active'), 'btn does not have active class')
     $btn[0].click()
     assert.ok($btn.hasClass('active'), 'btn has class active')
+  })
+
+  QUnit.test('should toggle aria-pressed for <button>', function (assert) {
+    assert.expect(2)
+    var $btn = $('<button class="btn" data-toggle="button" aria-pressed="false">redux</button>')
+    $btn.appendTo('#qunit-fixture')
+    assert.strictEqual($btn.attr('aria-pressed'), 'false', 'btn aria-pressed state is false')
+    $btn[0].click()
+    assert.strictEqual($btn.attr('aria-pressed'), 'true', 'btn aria-pressed state is true')
+  })
+
+  QUnit.test('should toggle active for <div> faked button', function (assert) {
+    assert.expect(2)
+    var $btn = $('<div tabindex="0" role="button" class="btn" data-toggle="button" aria-pressed="false">faker</div>')
+    $btn.appendTo('#qunit-fixture')
+    assert.ok(!$btn.hasClass('active'), 'btn does not have active class')
+    $btn[0].click() // in real-world use, authors will need to add custom keyboard handling to actually fire the click() when pressing ENTER/SPACE
+    assert.ok($btn.hasClass('active'), 'btn has class active')
+  })
+
+  QUnit.test('should toggle aria-pressed for <div> faked button', function (assert) {
+    assert.expect(2)
+    var $btn = $('<div tabindex="0" role="button" class="btn" data-toggle="button" aria-pressed="false">faker</div>')
+    $btn.appendTo('#qunit-fixture')
+    assert.strictEqual($btn.attr('aria-pressed'), 'false', 'btn aria-pressed state is false')
+    $btn[0].click() // in real-world use, authors will need to add custom keyboard handling to actually fire the click() when pressing ENTER/SPACE
+    assert.strictEqual($btn.attr('aria-pressed'), 'true', 'btn aria-pressed state is true')
+  })
+
+  QUnit.test('should toggle active for <a href="#"> faked button', function (assert) {
+    assert.expect(2)
+    var $btn = $('<a href="#" tabindex="0" role="button" class="btn" data-toggle="button" aria-pressed="false">faker</a>')
+    $btn.appendTo('#qunit-fixture')
+    assert.ok(!$btn.hasClass('active'), 'btn does not have active class')
+    $btn[0].click()
+    assert.ok($btn.hasClass('active'), 'btn has class active')
+  })
+
+  QUnit.test('should toggle aria-pressed for <a href="#"> faked button', function (assert) {
+    assert.expect(2)
+    var $btn = $('<a tabindex="0" role="button" class="btn" data-toggle="button" aria-pressed="false">faker</a>')
+    $btn.appendTo('#qunit-fixture')
+    assert.strictEqual($btn.attr('aria-pressed'), 'false', 'btn aria-pressed state is false')
+    $btn[0].click()
+    assert.strictEqual($btn.attr('aria-pressed'), 'true', 'btn aria-pressed state is true')
   })
 
   QUnit.test('should toggle active when btn children are clicked', function (assert) {
@@ -73,15 +118,6 @@ $(function () {
       .appendTo('#qunit-fixture')
     assert.strictEqual($btn.attr('aria-pressed'), 'false', 'btn aria-pressed state is false')
     $inner[0].click()
-    assert.strictEqual($btn.attr('aria-pressed'), 'true', 'btn aria-pressed state is true')
-  })
-
-  QUnit.test('should toggle aria-pressed', function (assert) {
-    assert.expect(2)
-    var $btn = $('<button class="btn" data-toggle="button" aria-pressed="false">redux</button>')
-    $btn.appendTo('#qunit-fixture')
-    assert.strictEqual($btn.attr('aria-pressed'), 'false', 'btn aria-pressed state is false')
-    $btn[0].click()
     assert.strictEqual($btn.attr('aria-pressed'), 'true', 'btn aria-pressed state is true')
   })
 
