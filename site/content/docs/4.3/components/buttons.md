@@ -147,7 +147,7 @@ The button plugin allows you to create simple on/off toggle buttons.
 Add `data-toggle="button"` to toggle a button's `active` state and `aria-pressed` attribute. If you're pre-toggling a button, you must manually add the `.active` class **and** `aria-pressed="true"` to the `<button>`.
 
 {{< example >}}
-<button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
+<button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false">
   Single toggle
 </button>
 {{< /example >}}
