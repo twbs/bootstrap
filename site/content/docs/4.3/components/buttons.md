@@ -124,9 +124,7 @@ Add `data-toggle="button"` to toggle a button's `active` state. If you're pre-to
 
 Bootstrap's `.button` styles can be applied to other elements, such as `<label>`s, to provide checkbox or radio style button toggling.
 
-The checked state for these buttons is **only updated via `click` event** on the button. If you use another method to update the input—e.g., with `<input type="reset">` or by manually applying the input's `checked` property—you'll need to toggle `.active` on the `<label>` manually.
-
-Note that pre-checked buttons require you to manually add the `.active` class to the input's `<label>`.
+Note that pre-checked buttons require you to manually add the `checked` attribute to the `<input>`.
 
 {{< example >}}
 <div class="btn-group">
