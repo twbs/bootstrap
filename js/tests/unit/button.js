@@ -51,8 +51,20 @@ $(function () {
       .append($inner)
       .appendTo('#qunit-fixture')
     assert.ok(!$btn.hasClass('active'), 'btn does not have active class')
-    $inner.trigger('click')
+    $inner[0].click()
     assert.ok($btn.hasClass('active'), 'btn has class active')
+  })
+
+  QUnit.test('should toggle aria-pressed when btn children are clicked', function (assert) {
+    assert.expect(2)
+    var $btn = $('<button class="btn" data-toggle="button" aria-pressed="false">redux</button>')
+    var $inner = $('<i/>')
+    $btn
+      .append($inner)
+      .appendTo('#qunit-fixture')
+    assert.strictEqual($btn.attr('aria-pressed'), 'false', 'btn aria-pressed state is false')
+    $inner[0].click()
+    assert.strictEqual($btn.attr('aria-pressed'), 'true', 'btn aria-pressed state is true')
   })
 
   QUnit.test('should toggle aria-pressed', function (assert) {
@@ -84,18 +96,6 @@ $(function () {
     assert.strictEqual($btn.attr('aria-pressed'), 'false', 'btn aria-pressed state is false')
     $btn.bootstrapButton('toggle')
     assert.strictEqual($btn.attr('aria-pressed'), 'false', 'btn aria-pressed state is still false')
-  })
-
-  QUnit.test('should toggle aria-pressed when btn children are clicked', function (assert) {
-    assert.expect(2)
-    var $btn = $('<button class="btn" data-toggle="button" aria-pressed="false">redux</button>')
-    var $inner = $('<i/>')
-    $btn
-      .append($inner)
-      .appendTo('#qunit-fixture')
-    assert.strictEqual($btn.attr('aria-pressed'), 'false', 'btn aria-pressed state is false')
-    $inner.trigger('click')
-    assert.strictEqual($btn.attr('aria-pressed'), 'true', 'btn aria-pressed state is true')
   })
 
   QUnit.test('should set focus class when focused, and remove it when it loses focus', function (assert) {
