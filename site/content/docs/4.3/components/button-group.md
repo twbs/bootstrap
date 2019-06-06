@@ -1,14 +1,14 @@
 ---
 layout: docs
 title: Button group
-description: Group a series of buttons together on a single line with the button group, and super-power them with JavaScript.
+description: Group a series of buttons together on a single line with the button group.
 group: components
 toc: true
 ---
 
 ## Basic example
 
-Wrap a series of buttons with `.btn` in `.btn-group`. Add on optional JavaScript radio and checkbox style behavior with [our buttons plugin]({{< docsref "/components/buttons#button-plugin" >}}).
+Wrap a series of buttons with `.btn` in `.btn-group`.
 
 {{< example >}}
 <div class="btn-group" role="group" aria-label="Basic example">
