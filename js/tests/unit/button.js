@@ -38,8 +38,9 @@ $(function () {
   QUnit.test('should toggle active', function (assert) {
     assert.expect(2)
     var $btn = $('<button class="btn" data-toggle="button">mdo</button>')
+    $btn.appendTo('#qunit-fixture')
     assert.ok(!$btn.hasClass('active'), 'btn does not have active class')
-    $btn.bootstrapButton('toggle')
+    $btn[0].click()
     assert.ok($btn.hasClass('active'), 'btn has class active')
   })
 
@@ -70,31 +71,35 @@ $(function () {
   QUnit.test('should toggle aria-pressed', function (assert) {
     assert.expect(2)
     var $btn = $('<button class="btn" data-toggle="button" aria-pressed="false">redux</button>')
+    $btn.appendTo('#qunit-fixture')
     assert.strictEqual($btn.attr('aria-pressed'), 'false', 'btn aria-pressed state is false')
-    $btn.bootstrapButton('toggle')
+    $btn[0].click()
     assert.strictEqual($btn.attr('aria-pressed'), 'true', 'btn aria-pressed state is true')
   })
 
   QUnit.test('should add aria-pressed and set to true if original button didn\'t have it', function (assert) {
     assert.expect(1)
     var $btn = $('<button class="btn" data-toggle="button">redux</button>')
-    $btn.bootstrapButton('toggle')
+    $btn.appendTo('#qunit-fixture')
+    $btn[0].click()
     assert.strictEqual($btn.attr('aria-pressed'), 'true', 'btn has aria-pressed and it\'s set to true')
   })
 
   QUnit.test('should not toggle aria-pressed on buttons with disabled class', function (assert) {
     assert.expect(2)
     var $btn = $('<button class="btn disabled" data-toggle="button" aria-pressed="false">redux</button>')
+    $btn.appendTo('#qunit-fixture')
     assert.strictEqual($btn.attr('aria-pressed'), 'false', 'btn aria-pressed state is false')
-    $btn.bootstrapButton('toggle')
+    $btn[0].click()
     assert.strictEqual($btn.attr('aria-pressed'), 'false', 'btn aria-pressed state is still false')
   })
 
   QUnit.test('should not toggle aria-pressed on buttons that are disabled', function (assert) {
     assert.expect(2)
     var $btn = $('<button class="btn" data-toggle="button" aria-pressed="false" disabled>redux</button>')
+    $btn.appendTo('#qunit-fixture')
     assert.strictEqual($btn.attr('aria-pressed'), 'false', 'btn aria-pressed state is false')
-    $btn.bootstrapButton('toggle')
+    $btn[0].click()
     assert.strictEqual($btn.attr('aria-pressed'), 'false', 'btn aria-pressed state is still false')
   })
 
