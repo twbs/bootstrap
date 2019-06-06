@@ -108,7 +108,7 @@ The `.disabled` class uses `pointer-events: none` to try to disable the link fun
 
 ## Checkbox and radio buttons
 
-Bootstrap lets you create checkboxes and radio buttons that look like regular buttons.
+Bootstrap lets you create checkboxes and radio buttons that look like regular buttons. However, they do require a fairly specific markup structure (see below) to ensure that the styles are all applied correctly as they rely on CSS sibling selectors.
 
 Note that pre-checked buttons require you to manually add the `checked` attribute to the `<input>`.
 
