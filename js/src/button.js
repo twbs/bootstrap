@@ -29,8 +29,7 @@ const ClassName = {
 }
 
 const Selector = {
-  DATA_TOGGLE_CARROT: '[data-toggle^="button"]',
-  BUTTON: '.btn'
+  BUTTON: '.btn[data-toggle="button"]'
 }
 
 const Event = {
@@ -100,11 +99,10 @@ class Button {
  * ------------------------------------------------------------------------
  */
 
-EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_TOGGLE_CARROT, event => {
-  event.preventDefault()
-
+EventHandler.on(document, Event.CLICK_DATA_API, Selector.BUTTON, event => {
   let button = event.target
   if (!button.classList.contains(ClassName.BUTTON)) {
+    // the event.target is a child element of the actual toggle button
     button = SelectorEngine.closest(button, Selector.BUTTON)
   }
 
@@ -117,14 +115,12 @@ EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_TOGGLE_CARROT, eve
   data.toggle()
 })
 
-EventHandler.on(document, Event.FOCUS_DATA_API, Selector.DATA_TOGGLE_CARROT, event => {
-  const button = SelectorEngine.closest(event.target, Selector.BUTTON)
-  button.classList.add(ClassName.FOCUS)
+EventHandler.on(document, Event.FOCUS_DATA_API, Selector.BUTTON, event => {
+  event.target.classList.add(ClassName.FOCUS)
 })
 
-EventHandler.on(document, Event.BLUR_DATA_API, Selector.DATA_TOGGLE_CARROT, event => {
-  const button = SelectorEngine.closest(event.target, Selector.BUTTON)
-  button.classList.remove(ClassName.FOCUS)
+EventHandler.on(document, Event.BLUR_DATA_API, Selector.BUTTON, event => {
+  event.target.classList.remove(ClassName.FOCUS)
 })
 
 /**
