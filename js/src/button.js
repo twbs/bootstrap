@@ -24,8 +24,7 @@ const DATA_API_KEY = '.data-api'
 
 const ClassName = {
   ACTIVE: 'active',
-  BUTTON: 'btn',
-  FOCUS: 'focus'
+  BUTTON: 'btn'
 }
 
 const Selector = {
@@ -33,9 +32,7 @@ const Selector = {
 }
 
 const Event = {
-  CLICK_DATA_API: `click${EVENT_KEY}${DATA_API_KEY}`,
-  FOCUS_DATA_API: `focus${EVENT_KEY}${DATA_API_KEY}`,
-  BLUR_DATA_API: `blur${EVENT_KEY}${DATA_API_KEY}`
+  CLICK_DATA_API: `click${EVENT_KEY}${DATA_API_KEY}`
 }
 
 /**
@@ -113,22 +110,6 @@ EventHandler.on(document, Event.CLICK_DATA_API, Selector.BUTTON, event => {
   }
 
   data.toggle()
-})
-
-EventHandler.on(document, Event.FOCUS_DATA_API, Selector.BUTTON, event => {
-  const button = SelectorEngine.closest(event.target, Selector.BUTTON)
-
-  if (button) {
-    button.classList.add(ClassName.FOCUS)
-  }
-})
-
-EventHandler.on(document, Event.BLUR_DATA_API, Selector.BUTTON, event => {
-  const button = SelectorEngine.closest(event.target, Selector.BUTTON)
-
-  if (button) {
-    button.classList.remove(ClassName.FOCUS)
-  }
 })
 
 /**

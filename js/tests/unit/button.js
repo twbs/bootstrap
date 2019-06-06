@@ -111,17 +111,6 @@ $(function () {
     assert.strictEqual($btn.attr('aria-pressed'), 'false', 'btn aria-pressed state is still false')
   })
 
-  QUnit.test('should set focus class when focused, and remove it when it loses focus', function (assert) {
-    assert.expect(3)
-    var $btn = $('<button class="btn" data-toggle="button" aria-pressed="false">redux</button>')
-    $btn.appendTo('#qunit-fixture')
-    assert.ok(!$btn.hasClass('focus'), 'initial btn doesn\'t have focus class')
-    $btn[0].focus()
-    assert.ok($btn.hasClass('focus'), 'after focusing, btn has focus class')
-    $btn[0].blur()
-    assert.ok(!$btn.hasClass('focus'), 'after other button receives focus, btn doesn\'t have focus class')
-  })
-
   QUnit.test('dispose should remove data and the element', function (assert) {
     assert.expect(2)
 
