@@ -303,7 +303,7 @@ Don't want your columns to simply stack in some grid tiers? Use a combination of
 <div class="container">
   <!-- Stack the columns on mobile by making one full-width and the other half-width -->
   <div class="row">
-    <div class="col-12 col-md-8">.col-12 .col-md-8</div>
+    <div class="col-md-8">.col-md-8</div>
     <div class="col-6 col-md-4">.col-6 .col-md-4</div>
   </div>
 
@@ -340,7 +340,7 @@ Here's an example of customizing the Bootstrap grid at the large (`lg`) breakpoi
 
 ## Alignment
 
-Use flexbox alignment utilities to vertically and horizontally align columns.
+Use flexbox alignment utilities to vertically and horizontally align columns. **Internet Explorer 10-11 do not support vertical alignment of flex items when the flex container has a `min-height` as shown below.** [See Flexbugs #3 for more details.](https://github.com/philipwalton/flexbugs#flexbug-3)
 
 ### Vertical alignment
 
@@ -477,7 +477,7 @@ In practice, here's how it looks. Note you can continue to use this with all oth
 <div class="bd-example-row">
 {{< example >}}
 <div class="row no-gutters">
-  <div class="col-12 col-sm-6 col-md-8">.col-12 .col-sm-6 .col-md-8</div>
+  <div class="col-sm-6 col-md-8">.col-sm-6 .col-md-8</div>
   <div class="col-6 col-md-4">.col-6 .col-md-4</div>
 </div>
 {{< /example >}}

@@ -12,7 +12,6 @@ Things to know when using the popover plugin:
 
 - Popovers rely on the 3rd party library [Popper.js](https://popper.js.org/) for positioning. You must include [popper.min.js]({{< param "cdn.popper" >}}) before bootstrap.js or use `bootstrap.bundle.min.js` / `bootstrap.bundle.js` which contains Popper.js in order for popovers to work!
 - Popovers require the [tooltip plugin]({{< docsref "/components/tooltips" >}}) as a dependency.
-- If you're building our JavaScript from source, it [requires `util.js`]({{< docsref "/getting-started/javascript#util" >}}).
 - Popovers are opt-in for performance reasons, so **you must initialize them yourself**.
 - Zero-length `title` and `content` values will never show a popover.
 - Specify `container: 'body'` to avoid rendering problems in more complex components (like our input groups, button groups, etc).
@@ -33,8 +32,9 @@ Keep reading to see how popovers work with some examples.
 One way to initialize all popovers on a page would be to select them by their `data-toggle` attribute:
 
 {{< highlight js >}}
-$(function () {
-  $('[data-toggle="popover"]').popover()
+var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-toggle="popover"]'))
+var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+  return new bootstrap.Popover(popoverTriggerEl)
 })
 {{< /highlight >}}
 
@@ -43,10 +43,8 @@ $(function () {
 When you have some styles on a parent element that interfere with a popover, you'll want to specify a custom `container` so that the popover's HTML appears within that element instead.
 
 {{< highlight js >}}
-$(function () {
-  $('.example-popover').popover({
-    container: 'body'
-  })
+var popover = new bootstrap.Popover(document.querySelector('.example-popover'), {
+  container: 'body'
 })
 {{< /highlight >}}
 
@@ -111,7 +109,7 @@ For proper cross-browser and cross-platform behavior, you must use the `<a>` tag
 {{< /example >}}
 
 {{< highlight js >}}
-$('.popover-dismiss').popover({
+var popover = new bootstrap.Popover(document.querySelector('.popover-dismiss'), {
   trigger: 'focus'
 })
 {{< /highlight >}}
@@ -132,7 +130,20 @@ For disabled popover triggers, you may also prefer `data-trigger="hover"` so tha
 
 Enable popovers via JavaScript:
 
-{{< highlight js >}}$('#example').popover(options){{< /highlight >}}
+{{< highlight js >}}
+var exampleEl = document.getElementById('example')
+var popover = new bootstrap.Popover(exampleEl, options)
+{{< /highlight >}}
+
+{{< callout warning >}}
+### Making popovers work for keyboard and assistive technology users
+
+To allow keyboard users to activate your popovers, you should only add them to HTML elements that are traditionally keyboard-focusable and interactive (such as links or form controls). Although arbitrary HTML elements (such as `<span>`s) can be made focusable by adding the `tabindex="0"` attribute, this will add potentially annoying and confusing tab stops on non-interactive elements for keyboard users, and most assistive technologies currently do not announce the popover's content in this situation. Additionally, do not rely solely on `hover` as the trigger for your popovers, as this will make them impossible to trigger for keyboard users.
+
+While you can insert rich, structured HTML in popovers with the `html` option, we strongly recommend that you avoid adding an excessive amount of content. The way popovers currently work is that, once displayed, their content is tied to the trigger element with the `aria-describedby` attribute. As a result, the entirety of the popover's content will be announced to assistive technology users as one long, uninterrupted stream.
+
+Additionally, while it is possible to also include interactive controls (such as form elements or links) in your popover (by adding these elements to the `whiteList` or allowed attributes and tags), be aware that currently the popover does not manage keyboard focus order. When a keyboard user opens a popover, focus remains on the triggering element, and as the popover usually does not immediately follow the trigger in the document's structure, there is no guarantee that moving forward/pressing <kbd>TAB</kbd> will move a keyboard user into the popover itself. In short, simply adding interactive controls to a popover is likely to make these controls unreachable/unusable for keyboard users and users of assistive technologies, or at the very least make for an illogical overall focus order. In these cases, consider using a modal dialog instead.
+{{< /callout >}}
 
 ### Options
 
@@ -285,57 +296,63 @@ Options for individual popovers can alternatively be specified through the use o
 {{< partial "callout-danger-async-methods.md" >}}
 {{< /callout >}}
 
-#### `$().popover(options)`
 
-Initializes popovers for an element collection.
-
-#### `.popover('show')`
+#### show
 
 Reveals an element's popover. **Returns to the caller before the popover has actually been shown** (i.e. before the `shown.bs.popover` event occurs). This is considered a "manual" triggering of the popover. Popovers whose both title and content are zero-length are never displayed.
 
-{{< highlight js >}}$('#element').popover('show'){{< /highlight >}}
+{{< highlight js >}}myPopover.show(){{< /highlight >}}
 
-#### `.popover('hide')`
+#### hide
 
 Hides an element's popover. **Returns to the caller before the popover has actually been hidden** (i.e. before the `hidden.bs.popover` event occurs). This is considered a "manual" triggering of the popover.
 
-{{< highlight js >}}$('#element').popover('hide'){{< /highlight >}}
+{{< highlight js >}}myPopover.hide(){{< /highlight >}}
 
-#### `.popover('toggle')`
+#### toggle
 
 Toggles an element's popover. **Returns to the caller before the popover has actually been shown or hidden** (i.e. before the `shown.bs.popover` or `hidden.bs.popover` event occurs). This is considered a "manual" triggering of the popover.
 
-{{< highlight js >}}$('#element').popover('toggle'){{< /highlight >}}
+{{< highlight js >}}myPopover.toggle(){{< /highlight >}}
 
-#### `.popover('dispose')`
+#### dispose
 
 Hides and destroys an element's popover. Popovers that use delegation (which are created using [the `selector` option](#options)) cannot be individually destroyed on descendant trigger elements.
 
-{{< highlight js >}}$('#element').popover('dispose'){{< /highlight >}}
+{{< highlight js >}}myPopover.dispose(){{< /highlight >}}
 
-#### `.popover('enable')`
+#### enable
 
 Gives an element's popover the ability to be shown. **Popovers are enabled by default.**
 
-{{< highlight js >}}$('#element').popover('enable'){{< /highlight >}}
+{{< highlight js >}}myPopover.enable(){{< /highlight >}}
 
-#### `.popover('disable')`
+#### disable
 
 Removes the ability for an element's popover to be shown. The popover will only be able to be shown if it is re-enabled.
 
-{{< highlight js >}}$('#element').popover('disable'){{< /highlight >}}
+{{< highlight js >}}myPopover.disable(){{< /highlight >}}
 
-#### `.popover('toggleEnabled')`
+#### toggleEnabled
 
 Toggles the ability for an element's popover to be shown or hidden.
 
-{{< highlight js >}}$('#element').popover('toggleEnabled'){{< /highlight >}}
+{{< highlight js >}}myPopover.toggleEnabled(){{< /highlight >}}
 
-#### `.popover('update')`
+#### update
 
 Updates the position of an element's popover.
 
-{{< highlight js >}}$('#element').popover('update'){{< /highlight >}}
+{{< highlight js >}}myPopover.update(){{< /highlight >}}
+
+#### _getInstance
+
+*Static* method which allows you to get the popover instance associated with a DOM element
+
+{{< highlight js >}}
+var exampleTriggerEl = document.getElementById('example')
+var popover = bootstrap.Popover._getInstance(exampleTriggerEl) // Return a Bootstrap popover instance
+{{< /highlight >}}
 
 ### Events
 
@@ -371,7 +388,8 @@ Updates the position of an element's popover.
 </table>
 
 {{< highlight js >}}
-$('#myPopover').on('hidden.bs.popover', function () {
+var myPopoverTrigger = document.getElementById('myPopover')
+myPopoverTrigger.addEventListener('hidden.bs.popover', function () {
   // do something...
 })
 {{< /highlight >}}

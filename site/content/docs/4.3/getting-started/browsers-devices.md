@@ -8,14 +8,14 @@ toc: true
 
 ## Supported browsers
 
-Bootstrap supports the **latest, stable releases** of all major browsers and platforms. On Windows, **we only support Microsoft Edge**.
+Bootstrap supports the **latest, stable releases** of all major browsers and platforms. On Windows, **we support Internet Explorer 11 / Microsoft Edge**.
 
 Alternative browsers which use the latest version of WebKit, Blink, or Gecko, whether directly or via the platform's web view API, are not explicitly supported. However, Bootstrap should (in most cases) display and function correctly in these browsers as well. More specific support information is provided below.
 
 You can find our supported range of browsers and their versions [in our `.browserslistrc file`]({{< param repo >}}/blob/v{{< param current_version >}}/.browserslistrc):
 
 ```text
-{{< rf.inline >}}{{ readFile ".browserslistrc" }}{{< /rf.inline >}}
+{{< rf.inline >}}{{ readFile ".browserslistrc" | htmlEscape }}{{< /rf.inline >}}
 ```
 
 We use [Autoprefixer](https://github.com/postcss/autoprefixer) to handle intended browser support via CSS prefixes, which uses [Browserslist](https://github.com/browserslist/browserslist) to manage these browser versions. Consult their documentation for how to integrate these tools into your projects.
@@ -93,7 +93,7 @@ Similarly, the latest versions of most desktop browsers are supported.
       <th scope="row">Windows</th>
       <td class="text-success">Supported</td>
       <td class="text-success">Supported</td>
-      <td class="text-danger">Not supported</td>
+      <td class="text-success">Supported, IE11</td>
       <td class="text-success">Supported</td>
       <td class="text-success">Supported</td>
       <td class="text-danger">Not supported</td>
@@ -109,7 +109,7 @@ For a list of some of the browser bugs that Bootstrap has to grapple with, see o
 
 ## Internet Explorer
 
-Internet Explorer 11 is not supported officially. However, if you build Bootstrap yourself, you can add the needed CSS prefixes and follow the instructions on the [JavaScript page]({{< docsref "/getting-started/javascript#compatibility-with-ie-11" >}}). Please note that this might break at any time. **If you require Internet Explorer 10/11 support, use Bootstrap 4.**
+Internet Explorer 11 is supported; IE10 and down is not. Please be aware that some CSS3 properties and HTML5 elements are not fully supported in IE10, or require prefixed properties for full functionality. Visit [Can I use...](https://caniuse.com/) for details on browser support of CSS3 and HTML5 features. **If you require IE8-9 support, use Bootstrap 3.**
 
 ## Modals and dropdowns on mobile
 
@@ -128,48 +128,6 @@ The `.dropdown-backdrop` element isn't used on iOS in the nav because of the com
 ## Browser zooming
 
 Page zooming inevitably presents rendering artifacts in some components, both in Bootstrap and the rest of the web. Depending on the issue, we may be able to fix it (search first and then open an issue if need be). However, we tend to ignore these as they often have no direct solution other than hacky workarounds.
-
-## Sticky `:hover`/`:focus` on iOS
-
-While `:hover` isn't possible on most touch devices, iOS emulates this behavior, resulting in "sticky" hover styles that persist after tapping one element. These hover styles are only removed when users tap another element. This behavior is considered largely undesirable and appears to not be an issue on Android or Windows devices.
-
-Throughout our v4 alpha and beta releases, we included incomplete and commented out code for opting into a media query shim that would disable hover styles in touch device browsers that emulate hovering. This work was never fully completed or enabled, but to avoid complete breakage, we've opted to deprecate [this shim](https://github.com/twbs/mq4-hover-shim) and keep the mixins as shortcuts for the pseudo-classes.
-
-## Printing
-
-Even in some modern browsers, printing can be quirky.
-
-As of Safari v8.0, use of the fixed-width `.container` class can cause Safari to use an unusually small font size when printing. See [issue #14868]({{< param repo >}}/issues/14868) and [WebKit bug #138192](https://bugs.webkit.org/show_bug.cgi?id=138192) for more details. One potential workaround is the following CSS:
-
-{{< highlight css >}}
-@media print {
-  .container {
-    width: auto;
-  }
-}
-{{< /highlight >}}
-
-## Android stock browser
-
-Out of the box, Android 4.1 (and even some newer releases apparently) ship with the Browser app as the default web browser of choice (as opposed to Chrome). Unfortunately, the Browser app has lots of bugs and inconsistencies with CSS in general.
-
-#### Select menu
-
-On `<select>` elements, the Android stock browser will not display the side controls if there is a `border-radius` and/or `border` applied. (See [this StackOverflow question](https://stackoverflow.com/questions/14744437/html-select-box-not-showing-drop-down-arrow-on-android-version-4-0-when-set-with) for details.) Use the snippet of code below to remove the offending CSS and render the `<select>` as an unstyled element on the Android stock browser. The user agent sniffing avoids interference with Chrome, Safari, and Mozilla browsers.
-
-{{< highlight html >}}
-<script>
-$(function () {
-  var nua = navigator.userAgent
-  var isAndroid = (nua.indexOf('Mozilla/5.0') > -1 && nua.indexOf('Android ') > -1 && nua.indexOf('AppleWebKit') > -1 && nua.indexOf('Chrome') === -1)
-  if (isAndroid) {
-    $('select.form-control').removeClass('form-control').css('width', '100%')
-  }
-})
-</script>
-{{< /highlight >}}
-
-Want to see an example? [Check out this JS Bin demo](http://jsbin.com/OyaqoDO/2).
 
 ## Validators
 
