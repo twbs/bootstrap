@@ -60,10 +60,12 @@ class Button {
   // Public
 
   toggle() {
-    this._element.setAttribute('aria-pressed',
-      !this._element.classList.contains(ClassName.ACTIVE))
+    if (!(this._element.hasAttribute('disabled') || this._element.classList.contains('disabled'))) {
+      this._element.setAttribute('aria-pressed',
+        !this._element.classList.contains(ClassName.ACTIVE))
 
-    this._element.classList.toggle(ClassName.ACTIVE)
+      this._element.classList.toggle(ClassName.ACTIVE)
+    }
   }
 
   dispose() {
