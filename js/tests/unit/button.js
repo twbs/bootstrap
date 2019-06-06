@@ -35,6 +35,14 @@ $(function () {
     assert.strictEqual($button[0], $el[0], 'collection contains element')
   })
 
+  QUnit.test('should toggle active (testing using bootStrapButton(\'toggle\') rather than click())', function (assert) {
+    assert.expect(2)
+    var $btn = $('<button class="btn" data-toggle="button">mdo</button>')
+    assert.ok(!$btn.hasClass('active'), 'btn does not have active class')
+    $btn.bootstrapButton('toggle')
+    assert.ok($btn.hasClass('active'), 'btn has class active')
+  })
+
   QUnit.test('should toggle active', function (assert) {
     assert.expect(2)
     var $btn = $('<button class="btn" data-toggle="button">mdo</button>')
