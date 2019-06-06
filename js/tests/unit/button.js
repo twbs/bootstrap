@@ -147,6 +147,17 @@ $(function () {
     assert.strictEqual($btn.attr('aria-pressed'), 'false', 'btn aria-pressed state is still false')
   })
 
+  QUnit.test('should not toggle active nor aria-pressed for <a href="#"> faked button with disabled class', function (assert) {
+    assert.expect(4)
+    var $btn = $('<a tabindex="0" role="button" class="btn disabled" data-toggle="button" aria-pressed="false">faker</a>')
+    $btn.appendTo('#qunit-fixture')
+    assert.ok(!$btn.hasClass('active'), 'initial btn does not have active class')
+    assert.strictEqual($btn.attr('aria-pressed'), 'false', 'initial btn aria-pressed state is false')
+    $btn[0].click()
+    assert.ok(!$btn.hasClass('active'), 'after click btn still does not have active class')
+    assert.strictEqual($btn.attr('aria-pressed'), 'false', 'after click btn aria-pressed state is still false')
+  })
+
   QUnit.test('dispose should remove data and the element', function (assert) {
     assert.expect(2)
 
