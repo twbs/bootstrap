@@ -59,15 +59,16 @@
     <script>
     /* Quick and dirty extra keyboard handling for fake buttons */
     var fakes = document.querySelectorAll('div[role="button"]');
-    for(var i = 0; i<fakes.length; i++) {
+    for (var i = 0; i < fakes.length; i++) {
       fakes[i].addEventListener('keyup', function (e) {
         if ((e.keyCode == 13) || (e.keyCode == 32)) {
           this.click();
         }
       })
     }
+
     var fakes = document.querySelectorAll('a[role="button"]');
-    for(var i = 0; i<fakes.length; i++) {
+    for (var i = 0; i < fakes.length; i++) {
       fakes[i].addEventListener('keyup', function (e) {
         if (e.keyCode == 32) {
           this.click();
