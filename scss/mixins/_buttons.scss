@@ -17,7 +17,7 @@
 
   &:focus,
   &.focus,
-  .btn-input:focus ~ & {
+  .btn-input:focus + & {
     color: color-yiq($hover-background);
     @include gradient-bg($hover-background);
     border-color: $hover-border;
@@ -43,7 +43,7 @@
 
   &:not(:disabled):not(.disabled):active,
   &:not(:disabled):not(.disabled).active,
-  .btn-input:checked ~ &,
+  .btn-input:checked + &,
   .show > &.dropdown-toggle {
     color: color-yiq($active-background);
     background-color: $active-background;
@@ -75,7 +75,7 @@
 
   &:focus,
   &.focus,
-  .btn-input:focus ~ & {
+  .btn-input:focus + & {
     box-shadow: 0 0 0 $btn-focus-width rgba($color, .5);
   }
 
@@ -87,7 +87,7 @@
 
   &:not(:disabled):not(.disabled):active,
   &:not(:disabled):not(.disabled).active,
-  .btn-input:checked ~ &,
+  .btn-input:checked + &,
   .show > &.dropdown-toggle {
     color: color-yiq($active-background);
     background-color: $active-background;
