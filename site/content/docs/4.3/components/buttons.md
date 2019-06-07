@@ -108,34 +108,26 @@ The `.disabled` class uses `pointer-events: none` to try to disable the link fun
 
 ## Checkbox and radio buttons
 
-Bootstrap lets you create checkboxes and radio buttons that look like regular buttons. However, they do require a fairly specific markup structure (see below) to ensure that the styles are all applied correctly as they rely on CSS sibling selectors.
+Bootstrap lets you create checkboxes and radio buttons that look like regular buttons. However, as they rely on CSS next sibling selectors, they require a fairly specific markup structure to ensure that the styles are all applied correctly.
 
 Note that pre-checked buttons require you to manually add the `checked` attribute to the `<input>`.
 
 {{< example >}}
-<div class="btn-group">
-  <input type="checkbox" class="btn-input" id="btnGroupCheckSingle" checked>
-  <label class="btn btn-primary" for="btnGroupCheckSingle">
-    Checked button
-  </label>
-</div>
+<input type="checkbox" class="btn-input" id="btnInputCheckSingle" checked>
+<label class="btn btn-primary" for="btnInputCheckSingle">
+  Checked button
+</label>
 {{< /example >}}
 
 {{< example >}}
-<div class="btn-group">
-  <div class="btn-group">
-    <input type="radio" class="btn-input" name="btnGroupRadio" id="btnGroupRadio1" checked>
-    <label class="btn btn-primary" for="btnGroupRadio1">Radio button</label>
-  </div>
-  <div class="btn-group">
-    <input type="radio" class="btn-input" name="btnGroupRadio" id="btnGroupRadio2">
-    <label class="btn btn-primary" for="btnGroupRadio2">Radio button</label>
-  </div>
-  <div class="btn-group">
-    <input type="radio" class="btn-input" name="btnGroupRadio" id="btnGroupRadio3">
-    <label class="btn btn-primary" for="btnGroupRadio3">Radio button</label>
-  </div>
-</div>
+<input type="radio" class="btn-input" name="btnInputRadio" id="btnInputRadio1" checked>
+<label class="btn btn-primary" for="btnInputRadio1">Radio button</label>
+
+<input type="radio" class="btn-input" name="btnInputRadio" id="btnInputRadio2">
+<label class="btn btn-primary" for="btnInputRadio2">Radio button</label>
+
+<input type="radio" class="btn-input" name="btnInputRadio" id="btnInputRadio3">
+<label class="btn btn-primary" for="btnInputRadio3">Radio button</label>
 {{< /example >}}
 
 ## Button plugin

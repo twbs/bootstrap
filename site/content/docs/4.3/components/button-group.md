@@ -18,6 +18,40 @@ Wrap a series of buttons with `.btn` in `.btn-group`.
 </div>
 {{< /example >}}
 
+## Checkbox and radio button groups
+
+Combine button-like checkboxes and radio buttons into a seamless looking button group.
+
+{{< example >}}
+<div class="btn-group" role="group" aria-label="Checkboxes">
+  <input type="checkbox" class="btn-input" id="btnGroupCheck1" checked>
+  <label class="btn btn-secondary" for="btnGroupCheck1">
+    Checkbox
+  </label>
+  <input type="checkbox" class="btn-input" id="btnGroupCheck2">
+  <label class="btn btn-secondary" for="btnGroupCheck2">
+    Checkbox
+  </label>
+  <input type="checkbox" class="btn-input" id="btnGroupCheck3">
+  <label class="btn btn-secondary" for="btnGroupCheck3">
+    Checkbox
+  </label>
+</div>
+{{< /example >}}
+
+{{< example >}}
+<div class="btn-group" role="group" aria-label="Radio buttons">
+  <input type="radio" class="btn-input" name="btnGroupRadio" id="btnGroupRadio1" checked>
+  <label class="btn btn-secondary" for="btnGroupRadio1">Radio button</label>
+
+  <input type="radio" class="btn-input" name="btnGroupRadio" id="btnGroupRadio2">
+  <label class="btn btn-secondary" for="btnGroupRadio2">Radio button</label>
+
+  <input type="radio" class="btn-input" name="btnGroupRadio" id="btnGroupRadio3">
+  <label class="btn btn-secondary" for="btnGroupRadio3">Radio button</label>
+</div>
+{{< /example >}}
+
 {{< callout warning >}}
 ##### Ensure correct `role` and provide a label
 
@@ -149,7 +183,6 @@ Make a set of buttons appear vertically stacked rather than horizontally. **Spli
   </div>
 </div>
 
-
 <div class="bd-example">
   <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
     <button type="button" class="btn btn-secondary">Button</button>
@@ -192,6 +225,19 @@ Make a set of buttons appear vertically stacked rather than horizontally. **Spli
         <a class="dropdown-item" href="#">Dropdown link</a>
       </div>
     </div>
+  </div>
+</div>
+
+<div class="bd-example">
+  <div class="btn-group-vertical" role="group" aria-label="Radio buttons">
+    <input type="radio" class="btn-input" name="btnGroupVertRadio" id="btnGroupVertRadio1" checked>
+    <label class="btn btn-secondary" for="btnGroupVertRadio1">Radio button</label>
+
+    <input type="radio" class="btn-input" name="btnGroupVertRadio" id="btnGroupVertRadio2">
+    <label class="btn btn-secondary" for="btnGroupVertRadio2">Radio button</label>
+
+    <input type="radio" class="btn-input" name="btnGroupVertRadio" id="btnGroupVertRadio3">
+    <label class="btn btn-secondary" for="btnGroupVertRadio3">Radio button</label>
   </div>
 </div>
 
