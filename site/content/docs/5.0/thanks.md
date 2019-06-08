@@ -27,9 +27,9 @@ Through donations and sponsorships we are able to maintain & improve Bootstrap. 
   {{- range (index $.Site.Data "services") }}
     <div class="m-3 position-relative">
       {{ if .website -}}
-        <a href="{{- .website -}}" class="stretched-link text-reset" title="{{- .name -}}">
+        <a href="{{ .website }}" class="stretched-link text-reset" title="{{ .name }}">
       {{ end -}}
-      <img src="../assets/img/services/{{- .image -}}" alt="{{- .name -}}" class="mh-100 mw-100">
+      <img src="{{ printf ("/docs/%s/assets/img/services/%s") $.Site.Params.docs_version .image }}" alt="{{ .name }}" class="mh-100 mw-100">
       {{ if .website -}}
         </a>
       {{ end -}}
