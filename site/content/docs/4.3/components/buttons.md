@@ -106,28 +106,80 @@ Disabled buttons using the `<a>` element behave a bit different:
 The `.disabled` class uses `pointer-events: none` to try to disable the link functionality of `<a>`s, but that CSS property is not yet standardized. In addition, even in browsers that do support `pointer-events: none`, keyboard navigation remains unaffected, meaning that sighted keyboard users and users of assistive technologies will still be able to activate these links. So to be safe, add a `tabindex="-1"` attribute on these links (to prevent them from receiving keyboard focus) and use custom JavaScript to disable their functionality.
 {{< /callout >}}
 
-## Checkbox and radio buttons
+## Checkboxes and radio buttons
 
-Bootstrap lets you create checkboxes and radio buttons that look like regular buttons. However, as they rely on CSS next sibling selectors, they require a fairly specific markup structure to ensure that the styles are all applied correctly.
+Bootstrap lets you create checkboxes and radio buttons that look like regular buttons. However, as they rely on CSS next sibling selectors, they require a fairly specific markup structure with a `.btn-input-wrapper` to ensure that the styles are all applied correctly.
 
 Note that pre-checked buttons require you to manually add the `checked` attribute to the `<input>`.
 
 {{< example >}}
-<input type="checkbox" class="btn-input" id="btnInputCheckSingle" checked>
-<label class="btn btn-primary" for="btnInputCheckSingle">
-  Checked button
+<!-- Explicit <label> with for/id relationship -->
+<div class="btn-input-wrapper">
+  <input type="checkbox" class="btn-input" id="btnInputCheckSingle1" checked>
+  <label class="btn btn-primary" for="btnInputCheckSingle1">
+    Pre-checked checkbox
+  </label>
+</div>
+
+<div class="btn-input-wrapper">
+  <input type="checkbox" class="btn-input" id="btnInputCheckSingle2">
+  <label class="btn btn-primary" for="btnInputCheckSingle2">
+    Another checkbox
+  </label>
+</div>
+{{< /example >}}
+
+{{< example >}}
+<!-- Implicit <label> -->
+<label class="btn-input-wrapper">
+  <input type="checkbox" class="btn-input" checked>
+  <span class="btn btn-primary">
+    Pre-checked checkbox
+  </span>
+</label>
+
+<label class="btn-input-wrapper">
+  <input type="checkbox" class="btn-input">
+  <span class="btn btn-primary">
+    Another checkbox
+  </span>
 </label>
 {{< /example >}}
 
 {{< example >}}
-<input type="radio" class="btn-input" name="btnInputRadio" id="btnInputRadio1" checked>
-<label class="btn btn-primary" for="btnInputRadio1">Radio button</label>
+<!-- Explicit <label> with for/id relationship -->
+<div class="btn-input-wrapper">
+  <input type="radio" class="btn-input" name="btnInputRadio" id="btnInputRadio1" checked>
+  <label class="btn btn-primary" for="btnInputRadio1">Radio 1</label>
+</div>
 
-<input type="radio" class="btn-input" name="btnInputRadio" id="btnInputRadio2">
-<label class="btn btn-primary" for="btnInputRadio2">Radio button</label>
+<div class="btn-input-wrapper">
+  <input type="radio" class="btn-input" name="btnInputRadio" id="btnInputRadio2">
+  <label class="btn btn-primary" for="btnInputRadio2">Radio 2</label>
+</div>
 
-<input type="radio" class="btn-input" name="btnInputRadio" id="btnInputRadio3">
-<label class="btn btn-primary" for="btnInputRadio3">Radio button</label>
+<div class="btn-input-wrapper">
+  <input type="radio" class="btn-input" name="btnInputRadio" id="btnInputRadio3">
+  <label class="btn btn-primary" for="btnInputRadio3">Radio 3</label>
+</div>
+{{< /example >}}
+
+{{< example >}}
+<!-- Implicit <label> -->
+<label class="btn-input-wrapper">
+  <input type="radio" class="btn-input" name="btnInputRadioImp" checked>
+  <span class="btn btn-primary">Radio 1</span>
+</label>
+
+<label class="btn-input-wrapper">
+  <input type="radio" class="btn-input" name="btnInputRadioImp">
+  <span class="btn btn-primary">Radio 2</span>
+</label>
+
+<label class="btn-input-wrapper">
+  <input type="radio" class="btn-input" name="btnInputRadioImp">
+  <span class="btn btn-primary">Radio 3</span>
+</label>
 {{< /example >}}
 
 ## Button plugin
@@ -139,8 +191,12 @@ The button plugin allows you to create simple on/off toggle buttons.
 Add `data-toggle="button"` to toggle a button's `active` state and `aria-pressed` attribute. If you're pre-toggling a button, you must manually add the `.active` class **and** `aria-pressed="true"` to the `<button>`.
 
 {{< example >}}
+<button type="button" class="btn btn-primary active" data-toggle="button" aria-pressed="true">
+  Pre-toggled toggle
+</button>
+
 <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false">
-  Single toggle
+  Another toggle
 </button>
 {{< /example >}}
 

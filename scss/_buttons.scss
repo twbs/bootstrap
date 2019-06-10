@@ -157,3 +157,30 @@ input[type="button"] {
     margin-bottom: 0; // Override default `<label>` value
   }
 }
+
+// Make the button input wrapper behave like a button
+.btn-input-wrapper {
+  position: relative;
+  display: inline-flex;
+  vertical-align: middle; // match .btn alignment given font-size hack above
+
+  > .btn {
+    position: relative;
+    flex: 1 1 auto;
+  }
+
+  > .btn-input:focus + .btn,
+  > .btn-input:active + .btn {
+    // Bring the buttons for focused abd actuve button inputs to the front to overlay
+    // the borders properly
+
+    z-index: 1;
+  }
+
+  &,
+  & label {
+    // remove the default bottom margin for <label> when used for a button wrapper
+    margin-bottom: 0;
+  }
+
+}

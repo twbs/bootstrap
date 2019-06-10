@@ -23,32 +23,46 @@ Wrap a series of buttons with `.btn` in `.btn-group`.
 Combine button-like checkboxes and radio buttons into a seamless looking button group.
 
 {{< example >}}
+<!-- Implicit <label> -->
 <div class="btn-group" role="group" aria-label="Checkboxes">
-  <input type="checkbox" class="btn-input" id="btnGroupCheck1" checked>
-  <label class="btn btn-secondary" for="btnGroupCheck1">
-    Checkbox
+  <label class="btn-input-wrapper">
+    <input type="checkbox" class="btn-input">
+    <span class="btn btn-secondary">
+      Checkbox 1
+    </span>
   </label>
-  <input type="checkbox" class="btn-input" id="btnGroupCheck2">
-  <label class="btn btn-secondary" for="btnGroupCheck2">
-    Checkbox
+  <label class="btn-input-wrapper">
+    <input type="checkbox" class="btn-input">
+    <span class="btn btn-secondary">
+      Checkbox 2
+    </span>
   </label>
-  <input type="checkbox" class="btn-input" id="btnGroupCheck3">
-  <label class="btn btn-secondary" for="btnGroupCheck3">
-    Checkbox
+  <label class="btn-input-wrapper">
+    <input type="checkbox" class="btn-input">
+    <span class="btn btn-secondary">
+      Checkbox 3
+    </span>
   </label>
 </div>
 {{< /example >}}
 
 {{< example >}}
+<!-- Explicit <label> with for/id relationship -->
 <div class="btn-group" role="group" aria-label="Radio buttons">
-  <input type="radio" class="btn-input" name="btnGroupRadio" id="btnGroupRadio1" checked>
-  <label class="btn btn-secondary" for="btnGroupRadio1">Radio button</label>
+  <div class="btn-input-wrapper">
+    <input type="radio" class="btn-input" name="btnGroupRadio" id="btnGroupRadio1" checked>
+    <label class="btn btn-secondary" for="btnGroupRadio1">Radio 1</label>
+  </div>
 
-  <input type="radio" class="btn-input" name="btnGroupRadio" id="btnGroupRadio2">
-  <label class="btn btn-secondary" for="btnGroupRadio2">Radio button</label>
+  <div class="btn-input-wrapper">
+    <input type="radio" class="btn-input" name="btnGroupRadio" id="btnGroupRadio2">
+    <label class="btn btn-secondary" for="btnGroupRadio2">Radio 2</label>
+  </div>
 
-  <input type="radio" class="btn-input" name="btnGroupRadio" id="btnGroupRadio3">
-  <label class="btn btn-secondary" for="btnGroupRadio3">Radio button</label>
+  <div class="btn-input-wrapper">
+    <input type="radio" class="btn-input" name="btnGroupRadio" id="btnGroupRadio3">
+    <label class="btn btn-secondary" for="btnGroupRadio3">Radio 3</label>
+  </div>
 </div>
 {{< /example >}}
 
@@ -230,14 +244,20 @@ Make a set of buttons appear vertically stacked rather than horizontally. **Spli
 
 <div class="bd-example">
   <div class="btn-group-vertical" role="group" aria-label="Radio buttons">
-    <input type="radio" class="btn-input" name="btnGroupVertRadio" id="btnGroupVertRadio1" checked>
-    <label class="btn btn-secondary" for="btnGroupVertRadio1">Radio button</label>
+    <label class="btn-input-wrapper">
+      <input type="radio" class="btn-input" name="btnGroupVertRadio" checked>
+      <span class="btn btn-secondary">Radio 1</span>
+    </label>
 
-    <input type="radio" class="btn-input" name="btnGroupVertRadio" id="btnGroupVertRadio2">
-    <label class="btn btn-secondary" for="btnGroupVertRadio2">Radio button</label>
+    <label class="btn-input-wrapper">
+      <input type="radio" class="btn-input" name="btnGroupVertRadio">
+      <span class="btn btn-secondary">Radio 2</span>
+    </label>
 
-    <input type="radio" class="btn-input" name="btnGroupVertRadio" id="btnGroupVertRadio3">
-    <label class="btn btn-secondary" for="btnGroupVertRadio3">Radio button</label>
+    <label class="btn-input-wrapper">
+      <input type="radio" class="btn-input" name="btnGroupVertRadio">
+      <span class="btn btn-secondary">Radio 3</span>
+    </label>
   </div>
 </div>
 

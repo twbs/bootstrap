@@ -37,21 +37,22 @@
   // Prevent double borders when buttons are next to each other
   > .btn:not(:first-child),
   > .btn-group:not(:first-child),
-  > .btn:not(:first-of-type) {
+  > .btn-input-wrapper:not(:first-child) {
     margin-left: -$btn-border-width;
   }
 
   // Reset rounded corners
   > .btn:not(:last-child):not(.dropdown-toggle),
-  > .btn:not(:last-of-type):not(.dropdown-toggle),
-  > .btn-group:not(:last-child) > .btn {
+  > .btn-group:not(:last-child) > .btn,
+  > .btn-input-wrapper:not(:last-child) > .btn {
     @include border-right-radius(0);
   }
 
   > .btn + .btn,
-  > .btn:not(:first-of-type),
   > .btn-group + .btn,
-  > .btn-group:not(:first-child) > .btn {
+  > .btn-input-wrapper + .btn,
+  > .btn-group:not(:first-child) > .btn,
+  > .btn-input-wrapper:not(:first-child) > .btn {
     @include border-left-radius(0);
   }
 }
@@ -121,23 +122,25 @@
   }
 
   > .btn:not(:first-child),
-  > .btn:not(:first-of-type),
-  > .btn-group:not(:first-child) {
+  > .btn-group:not(:first-child),
+  > .btn-input-wrapper:not(:first-child) {
     margin-top: -$btn-border-width;
   }
 
   // Reset rounded corners
   > .btn:not(:last-child):not(.dropdown-toggle),
-  > .btn:not(:last-of-type):not(.dropdown-toggle),
-  > .btn-group:not(:last-child) > .btn {
+  > .btn-group:not(:last-child) > .btn,
+  > .btn-input-wrapper:not(:last-child) > .btn {
     @include border-bottom-radius(0);
   }
 
   > .btn + .btn,
-  > .btn ~ .btn:not(:first-of-type),
   > .btn-group + .btn,
   > .btn-group:not(:first-child) > .btn,
-  > .btn-group:not(:first-of-type) > .btn {
+  > .btn-group:not(:first-of-type) > .btn,
+  > .btn-input-wrapper + .btn,
+  > .btn-input-wrapper:not(:first-child) > .btn,
+  > .btn-input-wrapper:not(:first-of-type) > .btn {
     @include border-top-radius(0);
   }
 }

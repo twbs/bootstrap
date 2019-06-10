@@ -15,9 +15,11 @@
     border-color: $hover-border;
   }
 
+  // :active for button checkbox/radio here as well, as focus is only given *after* it's clicked/activated, compared to buttons/links
   &:focus,
   &.focus,
-  .btn-input:focus + & {
+  .btn-input:focus + &,
+  .btn-input:active + & {
     color: color-yiq($hover-background);
     @include gradient-bg($hover-background);
     border-color: $hover-border;
@@ -44,6 +46,7 @@
   &:not(:disabled):not(.disabled):active,
   &:not(:disabled):not(.disabled).active,
   .btn-input:checked + &,
+  .btn-input:active + &,
   .show > &.dropdown-toggle {
     color: color-yiq($active-background);
     background-color: $active-background;
@@ -73,9 +76,11 @@
     border-color: $active-border;
   }
 
+  // :active for button checkbox/radio here as well, as focus is only given *after* it's clicked/activated, compared to buttons/links
   &:focus,
   &.focus,
-  .btn-input:focus + & {
+  .btn-input:focus + &,
+  .btn-input:active + & {
     box-shadow: 0 0 0 $btn-focus-width rgba($color, .5);
   }
 
@@ -88,6 +93,7 @@
   &:not(:disabled):not(.disabled):active,
   &:not(:disabled):not(.disabled).active,
   .btn-input:checked + &,
+  .btn-input:active + &,
   .show > &.dropdown-toggle {
     color: color-yiq($active-background);
     background-color: $active-background;
