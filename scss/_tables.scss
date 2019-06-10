@@ -172,6 +172,7 @@
       @include media-breakpoint-down($breakpoint) {
         display: block;
         width: 100%;
+        max-width: max-content;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
 
