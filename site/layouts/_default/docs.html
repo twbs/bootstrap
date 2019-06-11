@@ -57,8 +57,8 @@
           {{ if .Page.Params.sections }}
             <div class="row my-5">
               {{ range .Page.Params.sections }}
-                <div class="col-md-4 mb-3">
-                  <a class="d-block p-4 bg-light rounded text-decoration-none" href="../{{ urlize .title }}/">
+                <div class="col-md-6 mb-4">
+                  <a class="d-block text-decoration-none" href="../{{ urlize .title }}/">
                     <strong class="d-block h5 mb-0">{{ .title }}</strong>
                     <span class="text-secondary">{{ .description }}</span>
                   </a>
