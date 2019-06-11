@@ -1,7 +1,7 @@
 ---
 layout: docs
-title: Text
-description: Documentation and examples for common text utilities to control alignment, wrapping, weight, and more.
+title: Text truncation
+description: Truncate long strings of text with an ellipsis.
 group: helpers
 toc: true
 ---

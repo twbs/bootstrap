@@ -18,13 +18,6 @@
   .row + .row {
     margin-top: 1rem;
   }
-
-  .flex-items-top,
-  .flex-items-middle,
-  .flex-items-bottom {
-    min-height: 6rem;
-    background-color: rgba(255, 0, 0, .1);
-  }
 }
 
 .bd-example-row-flex-cols .row {
@@ -138,19 +131,6 @@
     margin-top: 2rem;
   }
 
-  .pos-f-t {
-    position: relative;
-    margin: -1rem;
-
-    @include media-breakpoint-up(sm) {
-      margin: -1.5rem;
-    }
-  }
-
-  .custom-file-input:lang(es) ~ .custom-file-label::after {
-    content: "Elegir";
-  }
-
   > .form-control {
     + .form-control {
       margin-top: .5rem;
@@ -160,22 +140,17 @@
   > .nav + .nav,
   > .alert + .alert,
   > .navbar + .navbar,
-  > .progress + .progress,
-  > .progress + .btn {
+  > .progress + .progress {
     margin-top: 1rem;
   }
 
-  > .dropdown-menu:first-child {
+  > .dropdown-menu {
     position: static;
     display: block;
   }
 
   > .form-group:last-child {
     margin-bottom: 0;
-  }
-
-  > .close {
-    float: none;
   }
 }
 
@@ -202,11 +177,6 @@
   }
 }
 
-// Contextual background colors
-.bd-example-bg-classes p {
-  padding: 1rem;
-}
-
 // Images
 .bd-example {
   > svg + svg,
@@ -225,18 +195,6 @@
   > .btn-toolbar + .btn-toolbar {
     margin-top: .5rem;
   }
-}
-
-// Forms
-.bd-example-control-sizing select,
-.bd-example-control-sizing input[type="text"] + input[type="text"] {
-  margin-top: .5rem;
-}
-.bd-example-form .input-group {
-  margin-bottom: .5rem;
-}
-.bd-example > textarea.form-control {
-  resize: vertical;
 }
 
 // List groups
@@ -310,35 +268,9 @@
   }
 }
 
-// Example tabbable tabs
-.bd-example-tabs .nav-tabs {
-  margin-bottom: 1rem;
-}
-
-// Popovers
-.bd-example-popover-static {
-  padding-bottom: 1.5rem;
-  background-color: #f9f9f9;
-
-  .popover {
-    position: relative;
-    display: block;
-    float: left;
-    width: 260px;
-    margin: 1.25rem;
-  }
-}
-
 // Tooltips
 .tooltip-demo a {
   white-space: nowrap;
-}
-
-.bd-example-tooltip-static .tooltip {
-  position: relative;
-  display: inline-block;
-  margin: 10px 20px;
-  opacity: 1;
 }
 
 // Scrollspy demo on fixed height div

@@ -115,7 +115,7 @@ To show an element only on a given interval of screen sizes you can combine one 
 </table>
 
 {{< example >}}
-<div class="d-lg-none">hide on screens wider than lg</div>
+<div class="d-lg-none">hide on lg and wider screens</div>
 <div class="d-none d-lg-block">hide on screens smaller than lg</div>
 {{< /example >}}
 

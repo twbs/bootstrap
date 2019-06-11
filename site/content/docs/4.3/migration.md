@@ -81,6 +81,10 @@ Badges were overhauled to better differentiate themselves from buttons and to be
 - **Todo:** Removed `.badge-pill` for the `.rounded-pill` utility class
 - **Todo:** Removed badge's hover and focus styles for `a.badge` and `button.badge`.
 
+### Jumbotron
+
+- The jumbotron component is removed in favor of utility classes like `.bg-light` for the background color and `.p-*` classes to control padding.
+
 ### Popovers
 
 - Renamed `.arrow` to `.popover-arrow`
@@ -95,6 +99,7 @@ Badges were overhauled to better differentiate themselves from buttons and to be
 
 ## Utilities
 
+- Renamed `.text-monospace` to `.font-monospace`
 - **Todo:** Drop `.text-hide` as it's an antiquated method for hiding text that shouldn't be used anymore
 - **Todo:** Split utilities into property-value utility classes and helpers
 
