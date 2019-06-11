@@ -12,7 +12,7 @@ Browser default checkboxes and radios are replaced with the help of `.form-check
 
 Structurally, our `<input>`s and `<label>`s are sibling elements as opposed to an `<input>` within a `<label>`. This is slightly more verbose as you must specify `id` and `for` attributes to relate the `<input>` and `<label>`. We use the sibling selector (`~`) for all our `<input>` states, like `[checked]` or `[disabled]`. When combined with the `.form-check-label` class, we can easily style the text for each item based on the `<input>`'s state.
 
-Our checks use embedded SVG icons from [Open Iconic](https://github.com/iconic/open-iconic) to indicate checked or indeterminate states.
+Our checks use custom Bootstrap icons to indicate checked or indeterminate states.
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
