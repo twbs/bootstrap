@@ -156,6 +156,25 @@ input[type="button"] {
   + .btn {
     margin-bottom: 0; // Override default `<label>` value
   }
+
+  &:focus + .btn {
+    outline: 0;
+    box-shadow: $btn-focus-box-shadow;
+  }
+
+  // Disabled comes first so active can properly restyle
+  &:disabled + .btn {
+    opacity: $btn-disabled-opacity;
+    @include box-shadow(none);
+  }
+
+  &:not(:disabled):active + .btn {
+    @include box-shadow($btn-active-box-shadow);
+  }
+
+  &:not(:disabled):active:focus + .btn {
+    @include box-shadow($btn-focus-box-shadow, $btn-active-box-shadow);
+  }
 }
 
 // Make the button input wrapper behave like a button

@@ -19,7 +19,7 @@
   &:focus,
   &.focus,
   .btn-input:focus + &,
-  .btn-input:active + & {
+  .btn-input:not(:disabled):active + & {
     color: color-yiq($hover-background);
     @include gradient-bg($hover-background);
     border-color: $hover-border;
@@ -33,7 +33,8 @@
 
   // Disabled comes first so active can properly restyle
   &.disabled,
-  &:disabled {
+  &:disabled,
+  .btn-input:disabled + & {
     color: color-yiq($background);
     background-color: $background;
     border-color: $border;
@@ -45,8 +46,8 @@
 
   &:not(:disabled):not(.disabled):active,
   &:not(:disabled):not(.disabled).active,
-  .btn-input:checked + &,
-  .btn-input:active + &,
+  .btn-input:not(:disabled):checked + &,
+  .btn-input:not(:disabled):active + &,
   .show > &.dropdown-toggle {
     color: color-yiq($active-background);
     background-color: $active-background;
@@ -62,6 +63,20 @@
       } @else {
         box-shadow: 0 0 0 $btn-focus-width rgba(mix(color-yiq($background), $border, 15%), .5);
       }
+    }
+  }
+
+  // Duplicate the disabled styles again specifically to
+  // override the previous :active styles, as button-like
+  // checkbox/radio buttons can't be excluded generically
+  // from the previous set of selectors
+  .btn-input:disabled + &:active {
+    color: color-yiq($background);
+    background-color: $background;
+    border-color: $border;
+    // Remove CSS gradients if they're enabled
+    @if $enable-gradients {
+      background-image: none;
     }
   }
 }
@@ -80,20 +95,22 @@
   &:focus,
   &.focus,
   .btn-input:focus + &,
-  .btn-input:active + & {
+  .btn-input:not(:disabled):active + & {
     box-shadow: 0 0 0 $btn-focus-width rgba($color, .5);
   }
 
   &.disabled,
-  &:disabled {
+  &:disabled,
+  .btn-input:disabled + &,
+  .btn-input:not(:disabled) + &:active {
     color: $color;
     background-color: transparent;
   }
 
   &:not(:disabled):not(.disabled):active,
   &:not(:disabled):not(.disabled).active,
-  .btn-input:checked + &,
-  .btn-input:active + &,
+  .btn-input:not(:disabled):checked + &,
+  .btn-input:not(:disabled):active + &,
   .show > &.dropdown-toggle {
     color: color-yiq($active-background);
     background-color: $active-background;
@@ -107,6 +124,15 @@
         box-shadow: 0 0 0 $btn-focus-width rgba($color, .5);
       }
     }
+  }
+
+  // Duplicate the disabled styles again specifically to
+  // override the previous :active styles, as button-like
+  // checkbox/radio buttons can't be excluded generically
+  // from the previous set of selectors
+  .btn-input:disabled + &:active {
+    color: $color;
+    background-color: transparent;
   }
 }
 
