@@ -41,23 +41,27 @@ Through donations and sponsorships we are able to maintain & improve Bootstrap. 
   (function () {
     'use strict'
 
+    var backerDisplayed = 10
+
     function displaySponsors(sponsorList) {
       var sponsorListEl = document.getElementById('sponsorList')
       var output = []
 
       sponsorList.forEach(function (sponsor) {
+        var sponsorAccount = sponsor.fromAccount
+
         output.push(
           '<div class="m-2 position-relative">',
           ' <div class="img-thumbnail mx-auto d-flex align-items-center justify-content-center overflow-hidden" style="width:100px; height: 100px;">',
-          '  <img class="img-fluid d-block" src="' + sponsor.avatar + '" alt="' + sponsor.name + '">',
+          '  <img class="img-fluid d-block" src="' + sponsorAccount.imageUrl + '" alt="' + sponsorAccount.name + '">',
           ' </div>',
           ' <h3 class="h6 pt-2">',
         )
 
-        if (sponsor.website) {
-          output.push('<a href="' + sponsor.website + '" class="stretched-link text-reset">' + sponsor.name + '</a>')
+        if (sponsorAccount.website) {
+          output.push('<a href="' + sponsorAccount.website + '" class="stretched-link text-reset">' + sponsorAccount.name + '</a>')
         } else {
-          output.push(sponsor.name)
+          output.push(sponsorAccount.name)
         }
 
         output.push(
@@ -74,20 +78,22 @@ Through donations and sponsorships we are able to maintain & improve Bootstrap. 
       var output = []
 
       backerList.forEach(function (backer) {
+        var backerAccount = backer.fromAccount
+
         output.push(
           '<div class="m-1 position-relative">',
           ' <div class="img-thumbnail d-flex align-items-center justify-content-center overflow-hidden" style="width:50px; height: 50px;">'
         )
 
-        if (backer.website) {
+        if (backerAccount.website) {
           output.push(
-            '<a href="' + backer.website + '" class="stretched-link text-reset" title="' + backer.name + '">'
+            '<a href="' + backerAccount.website + '" class="stretched-link text-reset" title="' + backerAccount.name + '">'
           )
         }
 
-        output.push('<img src="' + backer.avatar + '" alt="' + backer.name + '" class=""img-fluid d-block>')
+        output.push('<img src="' + backerAccount.imageUrl + '" alt="' + backerAccount.name + '" class="img-fluid d-block">')
 
-        if (backer.website) {
+        if (backerAccount.website) {
           output.push('</a>')
         }
 
@@ -101,7 +107,7 @@ Through donations and sponsorships we are able to maintain & improve Bootstrap. 
     }
 
     function requestOC(cb) {
-      var ocURL = 'https://opencollective.com/api/groups/bootstrap/backers'
+      var ocURL = 'https://rest.opencollective.com/v2/bootstrap/orders/incoming/active'
       var xhr = new XMLHttpRequest()
 
       xhr.open('GET', ocURL, true)
@@ -121,27 +127,28 @@ Through donations and sponsorships we are able to maintain & improve Bootstrap. 
     }
 
     (function () {
-      requestOC(function (allBackerList) {
+      requestOC(function (data) {
+        var allBackerList = data.nodes
         var backerList = allBackerList.filter(function (backer) {
-          return backer.tier === 'backer'
+          return backer.tier.slug === 'backer'
         })
         var sponsorList = allBackerList.filter(function (backer) {
-          return backer.tier === 'sponsor'
+          return backer.tier.slug === 'sponsor'
         })
 
         // Sort by total amount donated
         sponsorList.sort(function (sponsor1, sponsor2) {
-          return sponsor2.directDonations - sponsor1.directDonations
+          return sponsor2.totalDonations.value - sponsor1.totalDonations.value
         })
-        sponsorList = sponsorList.slice(0, 10)
+        sponsorList = sponsorList.slice(0, backerDisplayed)
 
         displaySponsors(sponsorList)
 
         // Sort by total amount donated
         backerList.sort(function (backer1, backer2) {
-          return backer2.directDonations - backer1.directDonations
+          return backer2.totalDonations.value - backer1.totalDonations.value
         })
-        backerList = backerList.slice(0, 10)
+        backerList = backerList.slice(0, backerDisplayed)
 
         displayBackers(backerList)
       })
