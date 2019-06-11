@@ -21,10 +21,10 @@
     }
   }
 
-  > table {
-    width: 100%;
+  // Override Bootstrap defaults
+  > .table {
     max-width: 100%;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 
     @include media-breakpoint-down(md) {
       display: block;
@@ -35,22 +35,10 @@
       }
     }
 
-    // Cells
-    > thead,
-    > tbody,
-    > tfoot {
-      > tr {
-        > th,
-        > td {
-          padding: $table-cell-padding;
-          vertical-align: top;
-          border: 1px solid $table-border-color;
-
-          > p:last-child {
-            margin-bottom: 0;
-          }
-        }
-      }
+    th,
+    td {
+      &:first-child { padding-left: 0; }
+      &:not(:last-child) { padding-right: 1.5rem; }
     }
 
     // Prevent breaking of code (e.g., Grunt tasks list)
