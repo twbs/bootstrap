@@ -159,7 +159,6 @@ input[type="button"] {
 
   &:focus + .btn {
     outline: 0;
-    box-shadow: $btn-focus-box-shadow;
   }
 
   // Disabled comes first so active can properly restyle
@@ -192,7 +191,6 @@ input[type="button"] {
   > .btn-input:active + .btn {
     // Bring the buttons for focused abd actuve button inputs to the front to overlay
     // the borders properly
-
     z-index: 1;
   }
 
