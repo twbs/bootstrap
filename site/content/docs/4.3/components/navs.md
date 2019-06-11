@@ -615,10 +615,10 @@ When showing a new tab, the events fire in the following order:
 
 If no tab was already active, then the `hide.bs.tab` and `hidden.bs.tab` events will not be fired.
 
-<table class="table table-bordered table-striped">
+<table class="table">
   <thead>
     <tr>
-      <th style="width: 150px;">Event Type</th>
+      <th style="width: 150px;">Event type</th>
       <th>Description</th>
     </tr>
   </thead>

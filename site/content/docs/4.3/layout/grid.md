@@ -53,35 +53,35 @@ While Bootstrap uses `em`s or `rem`s for defining most sizes, `px`s are used for
 
 See how aspects of the Bootstrap grid system work across multiple devices with a handy table.
 
-<table class="table table-bordered table-striped">
+<table class="table">
   <thead>
     <tr>
       <th></th>
-      <th class="text-center">
+      <th>
         Extra small<br>
-        <small>&lt;576px</small>
+        <span class="font-weight-normal">&lt;576px</span>
       </th>
-      <th class="text-center">
+      <th>
         Small<br>
-        <small>&ge;576px</small>
+        <span class="font-weight-normal">&ge;576px</span>
       </th>
-      <th class="text-center">
+      <th>
         Medium<br>
-        <small>&ge;768px</small>
+        <span class="font-weight-normal">&ge;768px</span>
       </th>
-      <th class="text-center">
+      <th>
         Large<br>
-        <small>&ge;992px</small>
+        <span class="font-weight-normal">&ge;992px</span>
       </th>
-      <th class="text-center">
+      <th>
         Extra large<br>
-        <small>&ge;1200px</small>
+        <span class="font-weight-normal">&ge;1200px</span>
       </th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th class="text-nowrap" scope="row">Max container width</th>
+      <th class="text-nowrap" scope="row">Container <code class="font-weight-normal">max-width</code></th>
       <td>None (auto)</td>
       <td>540px</td>
       <td>720px</td>
