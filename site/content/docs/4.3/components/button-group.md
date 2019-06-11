@@ -51,17 +51,17 @@ Combine button-like checkboxes and radio buttons into a seamless looking button 
 <div class="btn-group" role="group" aria-label="Radio buttons">
   <div class="btn-input-wrapper">
     <input type="radio" class="btn-input" name="btnGroupRadio" id="btnGroupRadio1" checked>
-    <label class="btn btn-secondary" for="btnGroupRadio1">Radio 1</label>
+    <label class="btn btn-outline-secondary" for="btnGroupRadio1">Radio 1</label>
   </div>
 
   <div class="btn-input-wrapper">
     <input type="radio" class="btn-input" name="btnGroupRadio" id="btnGroupRadio2">
-    <label class="btn btn-secondary" for="btnGroupRadio2">Radio 2</label>
+    <label class="btn btn-outline-secondary" for="btnGroupRadio2">Radio 2</label>
   </div>
 
   <div class="btn-input-wrapper">
     <input type="radio" class="btn-input" name="btnGroupRadio" id="btnGroupRadio3">
-    <label class="btn btn-secondary" for="btnGroupRadio3">Radio 3</label>
+    <label class="btn btn-outline-secondary" for="btnGroupRadio3">Radio 3</label>
   </div>
 </div>
 {{< /example >}}

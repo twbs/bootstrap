@@ -206,6 +206,31 @@ Note that pre-checked buttons require you to manually add the `checked` attribut
 </label>
 {{< /example >}}
 
+Of course, you can apply the same variations, such as outline buttons and different sizes, to these checkboxes and radio buttons as well.
+
+{{< example >}}
+<!-- Implicit <label> -->
+<label class="btn-input-wrapper">
+  <input type="radio" class="btn-input" name="btnInputRadioVar" checked>
+  <span class="btn btn-outline-danger btn-lg">Radio 1</span>
+</label>
+
+<label class="btn-input-wrapper">
+  <input type="radio" class="btn-input" name="btnInputRadioVar">
+  <span class="btn btn-outline-danger btn-lg">Radio 2</span>
+</label>
+
+<label class="btn-input-wrapper">
+  <input type="radio" class="btn-input" name="btnInputRadioVar">
+  <span class="btn btn-outline-danger btn-lg">Radio 3</span>
+</label>
+
+<label class="btn-input-wrapper">
+  <input type="radio" class="btn-input" name="btnInputRadioVar" disabled>
+  <span class="btn btn-outline-danger btn-lg">Radio 4 (disabled)</span>
+</label>
+{{< /example >}}
+
 ## Button plugin
 
 The button plugin allows you to create simple on/off toggle buttons.
