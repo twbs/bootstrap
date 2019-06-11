@@ -82,30 +82,16 @@
   > ol li {
     margin-bottom: .25rem;
   }
-
-  @include media-breakpoint-up(lg) {
-    > ul,
-    > ol,
-    > p {
-      max-width: 80%;
-    }
-  }
 }
 
 .bd-title {
-  margin-top: 1rem;
   margin-bottom: .5rem;
-  font-weight: 400;
   @include font-size(3rem);
 }
 
 .bd-lead {
   @include font-size(1.5rem);
   font-weight: 300;
-
-  @include media-breakpoint-up(lg) {
-    max-width: 80%;
-  }
 }
 
 .bd-text-purple { color: $bd-purple; }
