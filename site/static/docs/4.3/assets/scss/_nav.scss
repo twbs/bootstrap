@@ -7,7 +7,7 @@
   background-color: $bd-purple;
   box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .05), inset 0 -1px 0 rgba(0, 0, 0, .1);
 
-  @include media-breakpoint-down(md) {
+  @include media-breakpoint-below(md) {
     padding-right: .5rem;
     padding-left: .5rem;
 
@@ -26,7 +26,7 @@
     }
   }
 
-  @include media-breakpoint-up(md) {
+  @include media-breakpoint-above(md) {
     @supports (position: sticky) {
       position: sticky;
       top: 0;

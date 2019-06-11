@@ -2,7 +2,7 @@
 @each $breakpoint in map-keys($grid-breakpoints) {
 
   // Generate media query if needed
-  @include media-breakpoint-up($breakpoint) {
+  @include media-breakpoint-above($breakpoint) {
     $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
     // Loop over each utility property

@@ -21,7 +21,7 @@
     margin-bottom: -3rem !important;
   }
 
-  @include media-breakpoint-up(sm) {
+  @include media-breakpoint-above(sm) {
     padding-top: 5rem;
     padding-bottom: 5rem;
 
@@ -30,7 +30,7 @@
     }
   }
 
-  @include media-breakpoint-up(md) {
+  @include media-breakpoint-above(md) {
     .carbonad {
       margin-top: 3rem !important;
     }

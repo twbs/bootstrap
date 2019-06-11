@@ -61,7 +61,7 @@
   // background-color: #f5f2f9;
   border-bottom: 1px solid rgba(0, 0, 0, .1);
 
-  @include media-breakpoint-up(md) {
+  @include media-breakpoint-above(md) {
     @supports (position: sticky) {
       position: sticky;
       top: 4rem;
@@ -71,7 +71,7 @@
     border-right: 1px solid rgba(0, 0, 0, .1);
   }
 
-  @include media-breakpoint-up(xl) {
+  @include media-breakpoint-above(xl) {
     flex: 0 1 320px;
   }
 }
@@ -82,7 +82,7 @@
   margin-right: -15px;
   margin-left: -15px;
 
-  @include media-breakpoint-up(md) {
+  @include media-breakpoint-above(md) {
     @supports (position: sticky) {
       max-height: calc(100vh - 9rem);
       overflow-y: auto;
@@ -90,7 +90,7 @@
   }
 
   // Override collapse behaviors
-  @include media-breakpoint-up(md) {
+  @include media-breakpoint-above(md) {
     display: block !important;
   }
 }

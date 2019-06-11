@@ -139,7 +139,7 @@
     $infix: breakpoint-infix($next, $grid-breakpoints);
 
     &#{$infix} {
-      @include media-breakpoint-down($breakpoint) {
+      @include media-breakpoint-below($breakpoint) {
         > .container,
         > .container-fluid {
           padding-right: 0;
@@ -147,7 +147,7 @@
         }
       }
 
-      @include media-breakpoint-up($next) {
+      @include media-breakpoint-above($next) {
         flex-flow: row nowrap;
         justify-content: flex-start;
 

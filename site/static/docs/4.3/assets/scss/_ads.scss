@@ -21,7 +21,7 @@
     text-decoration: none;
   }
 
-  @include media-breakpoint-up(sm) {
+  @include media-breakpoint-above(sm) {
     max-width: 330px;
     @include border-radius(4px);
   }

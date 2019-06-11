@@ -26,7 +26,7 @@
     max-width: 100%;
     margin-bottom: 1rem;
 
-    @include media-breakpoint-down(md) {
+    @include media-breakpoint-below(md) {
       display: block;
       overflow-x: auto;
 
@@ -95,7 +95,7 @@
     margin-bottom: .25rem;
   }
 
-  @include media-breakpoint-up(lg) {
+  @include media-breakpoint-above(lg) {
     > ul,
     > ol,
     > p {
@@ -115,7 +115,7 @@
   @include font-size(1.5rem);
   font-weight: 300;
 
-  @include media-breakpoint-up(lg) {
+  @include media-breakpoint-above(lg) {
     max-width: 80%;
   }
 }

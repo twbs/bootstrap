@@ -739,10 +739,10 @@ You can modify the variables to your own custom values, or just use the mixins w
 .example-content-main {
   @include make-col-ready();
 
-  @include media-breakpoint-up(sm) {
+  @include media-breakpoint-above(sm) {
     @include make-col(6);
   }
-  @include media-breakpoint-up(lg) {
+  @include media-breakpoint-above(lg) {
     @include make-col(8);
   }
 }
@@ -750,10 +750,10 @@ You can modify the variables to your own custom values, or just use the mixins w
 .example-content-secondary {
   @include make-col-ready();
 
-  @include media-breakpoint-up(sm) {
+  @include media-breakpoint-above(sm) {
     @include make-col(6);
   }
-  @include media-breakpoint-up(lg) {
+  @include media-breakpoint-above(lg) {
     @include make-col(4);
   }
 }

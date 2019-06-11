@@ -34,7 +34,7 @@
     margin-bottom: 0;
   }
 
-  @include media-breakpoint-up(md) {
+  @include media-breakpoint-above(md) {
     display: table-cell;
     width: 1%;
 
@@ -81,7 +81,7 @@
   margin-left: .25rem;
   @include border-radius;
 
-  @include media-breakpoint-up(md) {
+  @include media-breakpoint-above(md) {
     width: 6rem;
     height: 6rem;
   }

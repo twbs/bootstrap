@@ -169,7 +169,7 @@
     $infix: breakpoint-infix($next, $grid-breakpoints);
 
     &#{$infix} {
-      @include media-breakpoint-down($breakpoint) {
+      @include media-breakpoint-below($breakpoint) {
         display: block;
         width: 100%;
         overflow-x: auto;

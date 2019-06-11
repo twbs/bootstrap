@@ -71,16 +71,16 @@ Since we write our source CSS in Sass, all our media queries are available via S
 
 {{< highlight scss >}}
 // No media query necessary for xs breakpoint as it's effectively `@media (min-width: 0) { ... }`
-@include media-breakpoint-up(sm) { ... }
-@include media-breakpoint-up(md) { ... }
-@include media-breakpoint-up(lg) { ... }
-@include media-breakpoint-up(xl) { ... }
+@include media-breakpoint-above(sm) { ... }
+@include media-breakpoint-above(md) { ... }
+@include media-breakpoint-above(lg) { ... }
+@include media-breakpoint-above(xl) { ... }
 
 // Example: Hide starting at `min-width: 0`, and then show at the `sm` breakpoint
 .custom-class {
   display: none;
 }
-@include media-breakpoint-up(sm) {
+@include media-breakpoint-above(sm) {
   .custom-class {
     display: block;
   }
@@ -113,14 +113,14 @@ We occasionally use media queries that go in the other direction (the given scre
 Once again, these media queries are also available via Sass mixins:
 
 {{< highlight scss >}}
-@include media-breakpoint-down(xs) { ... }
-@include media-breakpoint-down(sm) { ... }
-@include media-breakpoint-down(md) { ... }
-@include media-breakpoint-down(lg) { ... }
+@include media-breakpoint-below(xs) { ... }
+@include media-breakpoint-below(sm) { ... }
+@include media-breakpoint-below(md) { ... }
+@include media-breakpoint-below(lg) { ... }
 // No media query necessary for xl breakpoint as it has no upper bound on its width
 
 // Example: Style from medium breakpoint and down
-@include media-breakpoint-down(md) {
+@include media-breakpoint-below(md) {
   .custom-class {
     display: block;
   }
