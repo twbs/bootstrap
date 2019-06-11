@@ -119,7 +119,7 @@ Once again, these media queries are also available via Sass mixins:
 @include media-breakpoint-below(lg) { ... }
 // No media query necessary for xl breakpoint as it has no upper bound on its width
 
-// Example: Style from medium breakpoint and down
+// Example: Style from medium breakpoint and below
 @include media-breakpoint-below(md) {
   .custom-class {
     display: block;
