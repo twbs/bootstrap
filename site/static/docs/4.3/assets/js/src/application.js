@@ -19,6 +19,20 @@
     return [].slice.call(list)
   }
 
+  var navItems = document.querySelectorAll('.bd-toc-item')
+  var hasNavLinks
+  var navItemLink
+  for (var i = 0; i < navItems.length; i++) {
+    hasNavLinks = Boolean(navItems[i].querySelector('li'))
+    navItemLink = navItems[i].querySelector('a')
+    if (hasNavLinks) {
+      navItemLink.addEventListener('click', function (e) {
+        e.preventDefault()
+        e.target.parentNode.classList.toggle('active')
+      }, true)
+    }
+  }
+
   // Tooltip and popover demos
   makeArray(document.querySelectorAll('.tooltip-demo'))
     .forEach(function (tooltip) {
