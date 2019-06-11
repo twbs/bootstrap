@@ -127,6 +127,13 @@ Note that pre-checked buttons require you to manually add the `checked` attribut
     Another checkbox
   </label>
 </div>
+
+<div class="btn-input-wrapper">
+  <input type="checkbox" class="btn-input" id="btnInputCheckSingle3" disabled>
+  <label class="btn btn-primary" for="btnInputCheckSingle3">
+    A disabled checkbox
+  </label>
+</div>
 {{< /example >}}
 
 {{< example >}}
@@ -142,6 +149,13 @@ Note that pre-checked buttons require you to manually add the `checked` attribut
   <input type="checkbox" class="btn-input">
   <span class="btn btn-primary">
     Another checkbox
+  </span>
+</label>
+
+<label class="btn-input-wrapper">
+  <input type="checkbox" class="btn-input" disabled>
+  <span class="btn btn-primary">
+    A disabled checkbox
   </span>
 </label>
 {{< /example >}}
@@ -162,6 +176,11 @@ Note that pre-checked buttons require you to manually add the `checked` attribut
   <input type="radio" class="btn-input" name="btnInputRadio" id="btnInputRadio3">
   <label class="btn btn-primary" for="btnInputRadio3">Radio 3</label>
 </div>
+
+<div class="btn-input-wrapper">
+  <input type="radio" class="btn-input" name="btnInputRadio" id="btnInputRadio4" disabled>
+  <label class="btn btn-primary" for="btnInputRadio4">Radio 4 (disabled)</label>
+</div>
 {{< /example >}}
 
 {{< example >}}
@@ -180,6 +199,11 @@ Note that pre-checked buttons require you to manually add the `checked` attribut
   <input type="radio" class="btn-input" name="btnInputRadioImp">
   <span class="btn btn-primary">Radio 3</span>
 </label>
+
+<label class="btn-input-wrapper">
+  <input type="radio" class="btn-input" name="btnInputRadioImp" disabled>
+  <span class="btn btn-primary">Radio 4 (disabled)</span>
+</label>
 {{< /example >}}
 
 ## Button plugin
@@ -197,6 +221,10 @@ Add `data-toggle="button"` to toggle a button's `active` state and `aria-pressed
 
 <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false">
   Another toggle
+</button>
+
+<button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" disabled>
+  Disabled toggle
 </button>
 {{< /example >}}
 
