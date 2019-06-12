@@ -237,7 +237,7 @@ class Tooltip {
     Data.removeData(this.element, this.constructor.DATA_KEY)
 
     EventHandler.off(this.element, this.constructor.EVENT_KEY)
-    EventHandler.off(SelectorEngine.closest(this.element, '.modal'), 'hide.bs.modal')
+    EventHandler.off(SelectorEngine.closest(this.element, '.modal'), 'hide.bs.modal.tooltip')
 
     if (this.tip) {
       this.tip.parentNode.removeChild(this.tip)
@@ -559,7 +559,7 @@ class Tooltip {
     })
 
     EventHandler.on(SelectorEngine.closest(this.element, '.modal'),
-      'hide.bs.modal',
+      'hide.bs.modal.tooltip',
       () => {
         if (this.element) {
           this.hide()
