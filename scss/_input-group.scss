@@ -17,8 +17,8 @@
   > .custom-file {
     position: relative; // For focus state's z-index
     flex: 1 1 0%;
-    margin-bottom: 0;
     height: auto;
+    margin-bottom: 0;
 
     + .form-control,
     + .custom-select,
@@ -41,8 +41,12 @@
 
   > .form-control,
   > .custom-select {
-    &:not(:last-child) { @include border-right-radius(0); }
-    &:not(:first-child) { @include border-left-radius(0); }
+    &:not(:last-child) {
+      @include border-right-radius(0);
+    }
+    &:not(:first-child) {
+      @include border-left-radius(0);
+    }
   }
 
   // Custom file inputs have more complex markup, thus requiring different
@@ -51,11 +55,14 @@
     display: flex;
     align-items: center;
 
-    &:not(:last-child) .custom-file-label { @include border-right-radius(0); }
-    &:not(:first-child) .custom-file-label { @include border-left-radius(0); }
+    &:not(:last-child) .custom-file-label {
+      @include border-right-radius(0);
+    }
+    &:not(:first-child) .custom-file-label {
+      @include border-left-radius(0);
+    }
   }
 }
-
 
 // Prepend and append
 //
@@ -87,9 +94,12 @@
   }
 }
 
-.input-group-prepend { margin-right: -$input-border-width; }
-.input-group-append { margin-left: -$input-border-width; }
-
+.input-group-prepend {
+  margin-right: -$input-border-width;
+}
+.input-group-append {
+  margin-left: -$input-border-width;
+}
 
 // Textual addons
 //
@@ -117,7 +127,6 @@
     margin-top: 0;
   }
 }
-
 
 // Sizing
 //
@@ -163,20 +172,22 @@
   padding-right: $custom-select-padding-x + $custom-select-indicator-padding;
 }
 
-
 // Prepend and append rounded corners
 //
 // These rulesets must come after the sizing ones to properly override sm and lg
 // border-radius values when extending. They're more specific than we'd like
 // with the `.input-group >` part, but without it, we cannot override the sizing.
 
-
 .input-group > .input-group-prepend > .btn,
 .input-group > .input-group-prepend > .input-group-text,
 .input-group > .input-group-append:not(:last-child) > .btn,
 .input-group > .input-group-append:not(:last-child) > .input-group-text,
-.input-group > .input-group-append:last-child > .btn:not(:last-child):not(.dropdown-toggle),
-.input-group > .input-group-append:last-child > .input-group-text:not(:last-child) {
+.input-group
+  > .input-group-append:last-child
+  > .btn:not(:last-child):not(.dropdown-toggle),
+.input-group
+  > .input-group-append:last-child
+  > .input-group-text:not(:last-child) {
   @include border-right-radius(0);
 }
 
@@ -185,6 +196,8 @@
 .input-group > .input-group-prepend:not(:first-child) > .btn,
 .input-group > .input-group-prepend:not(:first-child) > .input-group-text,
 .input-group > .input-group-prepend:first-child > .btn:not(:first-child),
-.input-group > .input-group-prepend:first-child > .input-group-text:not(:first-child) {
+.input-group
+  > .input-group-prepend:first-child
+  > .input-group-text:not(:first-child) {
   @include border-left-radius(0);
 }
