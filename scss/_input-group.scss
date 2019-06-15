@@ -18,6 +18,7 @@
     position: relative; // For focus state's z-index
     flex: 1 1 0%;
     margin-bottom: 0;
+    height: auto;
 
     + .form-control,
     + .custom-select,
