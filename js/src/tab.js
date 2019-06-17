@@ -29,13 +29,19 @@ const VERSION = '4.3.1'
 const DATA_KEY = 'bs.tab'
 const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
+const ARROW_LEFT_KEYCODE = 37 // KeyboardEvent.which value for left arrow key
+const ARROW_UP_KEYCODE = 38 // KeyboardEvent.which value for up arrow key
+const ARROW_RIGHT_KEYCODE = 39 // KeyboardEvent.which value for right arrow key
+const ARROW_DOWN_KEYCODE = 40 // KeyboardEvent.which value for down arrow key
 
 const Event = {
   HIDE: `hide${EVENT_KEY}`,
   HIDDEN: `hidden${EVENT_KEY}`,
   SHOW: `show${EVENT_KEY}`,
   SHOWN: `shown${EVENT_KEY}`,
-  CLICK_DATA_API: `click${EVENT_KEY}${DATA_API_KEY}`
+  CLICK_DATA_API: `click${EVENT_KEY}${DATA_API_KEY}`,
+  KEYDOWN_DATA_API: `keydown${EVENT_KEY}${DATA_API_KEY}`,
+  LOAD_DATA_API: `load${EVENT_KEY}${DATA_API_KEY}`
 }
 
 const ClassName = {
@@ -52,6 +58,7 @@ const Selector = {
   ACTIVE: '.active',
   ACTIVE_UL: ':scope > li > .active',
   DATA_TOGGLE: '[data-toggle="tab"], [data-toggle="pill"], [data-toggle="list"]',
+  TABLIST: '[role="tablist"]',
   DROPDOWN_TOGGLE: '.dropdown-toggle',
   DROPDOWN_ACTIVE_CHILD: ':scope > .dropdown-menu .active'
 }
@@ -231,6 +238,48 @@ class Tab {
     })
   }
 
+  static _dataApiKeydownHandler(event) {
+    const tablist = SelectorEngine.closest(event.target, Selector.TABLIST)
+    let tablistorientation = tablist.getAttribute('aria-orientation')
+    if (tablistorientation !== 'vertical') {
+      tablistorientation = 'horizontal'
+    }
+
+    if ((tablistorientation === 'horizontal' && event.which !== ARROW_LEFT_KEYCODE && event.which !== ARROW_RIGHT_KEYCODE) || (tablistorientation === 'vertical' && event.which !== ARROW_UP_KEYCODE && event.which !== ARROW_DOWN_KEYCODE)) {
+      return
+    }
+
+    event.preventDefault()
+    event.stopPropagation()
+
+    if (this.disabled || this.classList.contains(ClassName.DISABLED)) {
+      return
+    }
+
+    const tabs = makeArray(SelectorEngine.find(Selector.DATA_TOGGLE, tablist))
+
+    if (!tabs.length) {
+      return
+    }
+
+    let index = tabs.indexOf(event.target)
+
+    if ((event.which === ARROW_LEFT_KEYCODE || event.which === ARROW_UP_KEYCODE) && index > 0) { // Left / Up
+      index--
+    }
+
+    if ((event.which === ARROW_RIGHT_KEYCODE || event.which === ARROW_DOWN_KEYCODE) && index < tabs.length - 1) { // Right / Down
+      index++
+    }
+
+    if (index < 0) {
+      index = 0
+    }
+
+    tabs[index].focus()
+    tabs[index].click() // WIP naive way of doing this? any better way? calling _activate or something?
+  }
+
   static _getInstance(element) {
     return Data.getData(element, DATA_KEY)
   }
@@ -242,6 +291,36 @@ class Tab {
  * ------------------------------------------------------------------------
  */
 
+EventHandler.on(window, Event.LOAD_DATA_API, () => {
+  const tablists = makeArray(SelectorEngine.find(Selector.TABLIST))
+  if (tablists.length === 0) {
+    return
+  }
+
+  // iterate over all found sets of tab lists
+  for (let i = 0; i < tablists.length; i++) {
+    const tabs = makeArray(SelectorEngine.find(Selector.DATA_TOGGLE, tablists[i]))
+    let selectedTabFound = false
+
+    // iterate over each tab in the tablist, make sure they have correct tabindex/aria-selected
+    for (let j = 0; j < tabs.length; j++) {
+      if (tabs[j].hasAttribute('aria-selected') && tabs[j].getAttribute('aria-selected') === 'true' && selectedTabFound === false) {
+        tabs[j].setAttribute('tabindex', '0')
+        selectedTabFound = true
+      } else {
+        tabs[j].setAttribute('tabindex', '-1')
+        tabs[j].setAttribute('aria-selected', 'false')
+      }
+    }
+
+    // if none of the tabs were explicitly marked as selected, pick first one
+    if (selectedTabFound === false) {
+      tabs[0].setAttribute('tabindex', '0')
+      tabs[0].setAttribute('aria-selected', 'true')
+    }
+  }
+})
+EventHandler.on(document, Event.KEYDOWN_DATA_API, Selector.DATA_TOGGLE, Tab._dataApiKeydownHandler)
 EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
   event.preventDefault()
 
