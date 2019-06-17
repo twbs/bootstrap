@@ -71,6 +71,31 @@ $(function () {
     $dropdown.trigger($.Event('click'))
   })
 
+  QUnit.test('should not open dropdown if escape key was pressed on the toggle', function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+    var dropdownHTML = '<div class="tabs">' +
+        '<div class="dropdown">' +
+        '<button disabled href="#" class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>' +
+        '<div class="dropdown-menu">' +
+        '<a class="dropdown-item" href="#">Secondary link</a>' +
+        '<a class="dropdown-item" href="#">Something else here</a>' +
+        '<div class="divider"/>' +
+        '<a class="dropdown-item" href="#">Another link</a>' +
+        '</div>' +
+        '</div>' +
+        '</div>'
+    $(dropdownHTML).appendTo('#qunit-fixture')
+    var $dropdown = $('#qunit-fixture').find('[data-toggle="dropdown"]').bootstrapDropdown()
+    var $button = $('button[data-toggle="dropdown"]')
+    // Key escape
+    $button.trigger('focus').trigger($.Event('keydown', {
+      which: 27
+    }))
+    assert.ok(!$dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is not shown after escape pressed')
+    done()
+  })
+
   QUnit.test('should not add class position-static to dropdown if boundary not set', function (assert) {
     assert.expect(1)
     var done = assert.async()
