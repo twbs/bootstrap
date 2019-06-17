@@ -183,12 +183,14 @@ class Tab {
 
       if (active.getAttribute('role') === 'tab') {
         active.setAttribute('aria-selected', false)
+        active.setAttribute('tabindex', '-1')
       }
     }
 
     element.classList.add(ClassName.ACTIVE)
     if (element.getAttribute('role') === 'tab') {
       element.setAttribute('aria-selected', true)
+      element.setAttribute('tabindex', '0')
     }
 
     reflow(element)
