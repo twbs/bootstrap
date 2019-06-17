@@ -219,6 +219,41 @@ These changes, and more, are demonstrated below.
     </p>
 
     <p>
+      <label for="email">Example email</label>
+      <input type="email" id="email" placeholder="lorem@ipsum.com">
+    </p>
+
+    <p>
+      <label for="tel">Example telephone</label>
+      <input type="tel" id="tel">
+    </p>
+
+    <p>
+      <label for="url">Example url</label>
+      <input type="url" id="url">
+    </p>
+
+    <p>
+      <label for="number">Example number</label>
+      <input type="number" id="number">
+    </p>
+
+    <p>
+      <label for="search">Example search</label>
+      <input type="search" id="search">
+    </p>
+
+    <p>
+      <label for="range">Example range</label>
+      <input type="range" id="range" min="0" max="10">
+    </p>
+
+    <p>
+      <label for="file">Example file input</label>
+      <input type="file" id="file">
+    </p>
+
+    <p>
       <label for="select">Example select</label>
       <select id="select">
         <option value="">Choose...</option>
@@ -273,6 +308,31 @@ These changes, and more, are demonstrated below.
     </p>
 
     <p>
+      <label for="password">Example password</label>
+      <input type="password" id="password">
+    </p>
+
+    <p>
+      <label for="datetime-local">Example datetime-local</label>
+      <input type="datetime-local" id="datetime-local">
+    </p>
+
+    <p>
+      <label for="week">Example week</label>
+      <input type="week" id="week">
+    </p>
+
+    <p>
+      <label for="month">Example month</label>
+      <input type="month" id="month">
+    </p>
+
+    <p>
+      <label for="color">Example color</label>
+      <input type="color" id="color">
+    </p>
+
+    <p>
       <label for="output">Example output</label>
       <output name="result" id="output">100</output>
     </p>
@@ -292,6 +352,10 @@ These changes, and more, are demonstrated below.
     </p>
   </fieldset>
 </form>
+
+{{< callout warning >}}
+{{< partial "callout-warning-input-support.md" >}}
+{{< /callout >}}
 
 ## Misc elements
 
