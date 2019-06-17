@@ -105,7 +105,7 @@
 }
 
 // Return valid calc
-@function addition($value1, $value2, $return-calc: true) {
+@function add($value1, $value2, $return-calc: true) {
   @if $value1 == 0 {
     @return $value2;
   }
@@ -117,7 +117,7 @@
   @return if($return-calc == true, calc(#{$value1} + #{$value2}), #{$value1} + #{$value2});
 }
 
-@function subtraction($value1, $value2, $return-calc: true) {
+@function subtract($value1, $value2, $return-calc: true) {
   @if $value1 == 0 {
     @return -$value2;
   }
