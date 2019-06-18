@@ -45,7 +45,6 @@ const Event = {
 }
 
 const ClassName = {
-  DROPDOWN_MENU: 'dropdown-menu',
   ACTIVE: 'active',
   DISABLED: 'disabled',
   FADE: 'fade',
@@ -53,14 +52,11 @@ const ClassName = {
 }
 
 const Selector = {
-  DROPDOWN: '.dropdown',
   NAV_LIST_GROUP: '.nav, .list-group',
   ACTIVE: '.active',
   ACTIVE_UL: ':scope > li > .active',
   DATA_TOGGLE: '[data-toggle="tab"], [data-toggle="pill"], [data-toggle="list"]',
-  TABLIST: '[role="tablist"]',
-  DROPDOWN_TOGGLE: '.dropdown-toggle',
-  DROPDOWN_ACTIVE_CHILD: ':scope > .dropdown-menu .active'
+  TABLIST: '[role="tablist"]'
 }
 
 /**
@@ -182,12 +178,6 @@ class Tab {
     if (active) {
       active.classList.remove(ClassName.ACTIVE)
 
-      const dropdownChild = SelectorEngine.findOne(Selector.DROPDOWN_ACTIVE_CHILD, active.parentNode)
-
-      if (dropdownChild) {
-        dropdownChild.classList.remove(ClassName.ACTIVE)
-      }
-
       if (active.getAttribute('role') === 'tab') {
         active.setAttribute('aria-selected', false)
         active.setAttribute('tabindex', '-1')
@@ -204,17 +194,6 @@ class Tab {
 
     if (element.classList.contains(ClassName.FADE)) {
       element.classList.add(ClassName.SHOW)
-    }
-
-    if (element.parentNode && element.parentNode.classList.contains(ClassName.DROPDOWN_MENU)) {
-      const dropdownElement = SelectorEngine.closest(element, Selector.DROPDOWN)
-
-      if (dropdownElement) {
-        makeArray(SelectorEngine.find(Selector.DROPDOWN_TOGGLE))
-          .forEach(dropdown => dropdown.classList.add(ClassName.ACTIVE))
-      }
-
-      element.setAttribute('aria-expanded', true)
     }
 
     if (callback) {
