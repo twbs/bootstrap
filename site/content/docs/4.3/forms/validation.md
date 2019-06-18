@@ -87,7 +87,7 @@ Custom feedback styles apply custom colors, borders, focus styles, and backgroun
       </div>
     </div>
   </div>
-  <div class="form-group">
+  <div class="mb-3">
     <div class="form-check">
       <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
       <label class="form-check-label" for="invalidCheck">
@@ -167,7 +167,7 @@ While these feedback styles cannot be styled with CSS, you can still customize t
       <input type="text" class="form-control" id="validationDefault05" required>
     </div>
   </div>
-  <div class="form-group">
+  <div class="mb-3">
     <div class="form-check">
       <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
       <label class="form-check-label" for="invalidCheck2">
@@ -239,7 +239,7 @@ We recommend using client-side validation, but in case you require server-side v
       </div>
     </div>
   </div>
-  <div class="form-group">
+  <div class="mb-3">
     <div class="form-check">
       <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" required>
       <label class="form-check-label" for="invalidCheck3">
@@ -290,7 +290,7 @@ Validation styles are available for the following form controls and components:
     <div class="invalid-feedback">More example invalid feedback text</div>
   </div>
 
-  <div class="form-group">
+  <div class="mb-3">
     <select class="form-select" required>
       <option value="">Open this select menu</option>
       <option value="1">One</option>

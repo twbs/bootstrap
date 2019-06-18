@@ -16,17 +16,19 @@ Every group of form fields should reside in a `<form>` element. Bootstrap provid
 
 Since Bootstrap applies `display: block` and `width: 100%` to almost all our form controls, forms will by default stack vertically. Additional classes can be used to vary this layout on a per-form basis.
 
-## Form groups
+## Utilities
 
-The `.form-group` class is the easiest way to add some structure to forms. It provides a flexible class that encourages proper grouping of labels, controls, optional help text, and form validation messaging. By default it only applies `margin-bottom`, but it picks up additional styles in `.form-inline` as needed. Use it with `<fieldset>`s, `<div>`s, or nearly any other element.
+[Margin utilities]({{< docsref "/utilities/spacing" >}}) are the easiest way to add some structure to forms. They provide basic grouping of labels, controls, optional help text, and form validation messaging. We recommend sticking to `margin-bottom` utilities, and using a single direction throughout the form for consistency.
+
+Feel free to build your forms however you like, with `<fieldset>`s, `<div>`s, or nearly any other element.
 
 {{< example >}}
 <form>
-  <div class="form-group">
+  <div class="mb-3">
     <label for="formGroupExampleInput">Example label</label>
     <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder">
   </div>
-  <div class="form-group">
+  <div class="mb-3">
     <label for="formGroupExampleInput2">Another label</label>
     <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input placeholder">
   </div>
@@ -35,7 +37,7 @@ The `.form-group` class is the easiest way to add some structure to forms. It pr
 
 ## Form grid
 
-More complex forms can be built using our grid classes. Use these for form layouts that require multiple columns, varied widths, and additional alignment options.
+More complex forms can be built using our grid classes. Use these for form layouts that require multiple columns, varied widths, and additional alignment options. **Requires the `$enable-grid-classes` Sass variable to be enabled** (on by default).
 
 {{< example >}}
 <form>
@@ -52,7 +54,7 @@ More complex forms can be built using our grid classes. Use these for form layou
 
 ## Form row
 
-You may also swap `.row` for `.form-row`, a variation of our standard grid row that overrides the default column gutters for tighter and more compact layouts.
+You may also swap `.row` for `.form-row`, a variation of our standard grid row that overrides the default column gutters for tighter and more compact layouts. **Also requires the `$enable-grid-classes` Sass variable to be enabled** (on by default).
 
 {{< example >}}
 <form>
@@ -72,41 +74,41 @@ More complex layouts can also be created with the grid system.
 {{< example >}}
 <form>
   <div class="form-row">
-    <div class="form-group col-md-6">
+    <div class="mb-3 col-md-6">
       <label for="inputEmail4">Email</label>
       <input type="email" class="form-control" id="inputEmail4">
     </div>
-    <div class="form-group col-md-6">
+    <div class="mb-3 col-md-6">
       <label for="inputPassword4">Password</label>
       <input type="password" class="form-control" id="inputPassword4">
     </div>
   </div>
-  <div class="form-group">
+  <div class="mb-3">
     <label for="inputAddress">Address</label>
     <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
   </div>
-  <div class="form-group">
+  <div class="mb-3">
     <label for="inputAddress2">Address 2</label>
     <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
   </div>
   <div class="form-row">
-    <div class="form-group col-md-6">
+    <div class="mb-3 col-md-6">
       <label for="inputCity">City</label>
       <input type="text" class="form-control" id="inputCity">
     </div>
-    <div class="form-group col-md-4">
+    <div class="mb-3 col-md-4">
       <label for="inputState">State</label>
       <select id="inputState" class="form-select">
         <option selected>Choose...</option>
         <option>...</option>
       </select>
     </div>
-    <div class="form-group col-md-2">
+    <div class="mb-3 col-md-2">
       <label for="inputZip">Zip</label>
       <input type="text" class="form-control" id="inputZip">
     </div>
   </div>
-  <div class="form-group">
+  <div class="mb-3">
     <div class="form-check">
       <input class="form-check-input" type="checkbox" id="gridCheck">
       <label class="form-check-label" for="gridCheck">
@@ -126,19 +128,19 @@ At times, you maybe need to use margin or padding utilities to create that perfe
 
 {{< example >}}
 <form>
-  <div class="form-group row">
+  <div class="mb-3 row">
     <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
     <div class="col-sm-10">
       <input type="email" class="form-control" id="inputEmail3">
     </div>
   </div>
-  <div class="form-group row">
+  <div class="mb-3 row">
     <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
     <div class="col-sm-10">
       <input type="password" class="form-control" id="inputPassword3">
     </div>
   </div>
-  <fieldset class="form-group">
+  <fieldset class="mb-3">
     <div class="row">
       <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
       <div class="col-sm-10">
@@ -163,7 +165,7 @@ At times, you maybe need to use margin or padding utilities to create that perfe
       </div>
     </div>
   </fieldset>
-  <div class="form-group row">
+  <div class="mb-3 row">
     <div class="col-sm-2">Checkbox</div>
     <div class="col-sm-10">
       <div class="form-check">
@@ -174,7 +176,7 @@ At times, you maybe need to use margin or padding utilities to create that perfe
       </div>
     </div>
   </div>
-  <div class="form-group row">
+  <div class="mb-3 row">
     <div class="col-sm-10">
       <button type="submit" class="btn btn-primary">Sign in</button>
     </div>
@@ -188,19 +190,19 @@ Be sure to use `.col-form-label-sm` or `.col-form-label-lg` to your `<label>`s o
 
 {{< example >}}
 <form>
-  <div class="form-group row">
+  <div class="mb-3 row">
     <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Email</label>
     <div class="col-sm-10">
       <input type="email" class="form-control form-control-sm" id="colFormLabelSm" placeholder="col-form-label-sm">
     </div>
   </div>
-  <div class="form-group row">
+  <div class="mb-3 row">
     <label for="colFormLabel" class="col-sm-2 col-form-label">Email</label>
     <div class="col-sm-10">
       <input type="email" class="form-control" id="colFormLabel" placeholder="col-form-label">
     </div>
   </div>
-  <div class="form-group row">
+  <div class="mb-3 row">
     <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Email</label>
     <div class="col-sm-10">
       <input type="email" class="form-control form-control-lg" id="colFormLabelLg" placeholder="col-form-label-lg">

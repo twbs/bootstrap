@@ -66,6 +66,7 @@ Changes to Reboot, typography, tables, and more.
 - Combined native and custom selects into `.form-select`.
   - Dropped `.custom-select` and associated classes.
 - Dropped native `.form-control-file` and `.form-control-range` classes in favor of custom versions.
+- Dropped `.form-group` for margin utilities (we've replaced our docs examples with `.mb-3`).
 
 ## Components
 

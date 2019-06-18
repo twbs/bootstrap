@@ -10,11 +10,11 @@ toc: true
 
 {{< example >}}
 <form>
-  <div class="form-group">
+  <div class="mb-3">
     <label for="exampleFormControlInput1">Email address</label>
     <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
   </div>
-  <div class="form-group">
+  <div class="mb-3">
     <label for="exampleFormControlTextarea1">Example textarea</label>
     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
   </div>
@@ -45,13 +45,13 @@ If you want to have `<input readonly>` elements in your form styled as plain tex
 
 {{< example >}}
 <form>
-  <div class="form-group row">
+  <div class="mb-3 row">
     <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
     <div class="col-sm-10">
       <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
     </div>
   </div>
-  <div class="form-group row">
+  <div class="mb-3 row">
     <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
     <div class="col-sm-10">
       <input type="password" class="form-control" id="inputPassword">
@@ -62,11 +62,11 @@ If you want to have `<input readonly>` elements in your form styled as plain tex
 
 {{< example >}}
 <form class="form-inline">
-  <div class="form-group mb-2">
+  <div class="mb-3 mb-2">
     <label for="staticEmail2" class="sr-only">Email</label>
     <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="email@example.com">
   </div>
-  <div class="form-group mx-sm-3 mb-2">
+  <div class="mb-3 mx-sm-3 mb-2">
     <label for="inputPassword2" class="sr-only">Password</label>
     <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
   </div>
