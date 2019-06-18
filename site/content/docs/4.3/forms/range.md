@@ -6,6 +6,8 @@ group: forms
 toc: true
 ---
 
+## Overview
+
 Create custom `<input type="range">` controls with `.custom-range`. The track (the background) and thumb (the value) are both styled to appear the same across browsers. As only Firefox supports "filling" their track from the left or right of the thumb as a means to visually indicate progress, we do not currently support it.
 
 {{< example >}}
@@ -13,12 +15,16 @@ Create custom `<input type="range">` controls with `.custom-range`. The track (t
 <input type="range" class="custom-range" id="customRange1">
 {{< /example >}}
 
+## Min and max
+
 Range inputs have implicit values for `min` and `max`—`0` and `100`, respectively. You may specify new values for those using the `min` and `max` attributes.
 
 {{< example >}}
 <label for="customRange2">Example range</label>
 <input type="range" class="custom-range" min="0" max="5" id="customRange2">
 {{< /example >}}
+
+## Steps
 
 By default, range inputs "snap" to integer values. To change this, you can specify a `step` value. In the example below, we double the number of steps by using `step="0.5"`.
 
