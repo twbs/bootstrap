@@ -61,7 +61,7 @@
 .bd-toc-item {
   &.active {
     .bd-toc-link-icon {
-      transform: rotate(-90deg);
+      transform: rotate(90deg);
     }
 
     > .bd-toc-link {
