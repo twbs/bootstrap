@@ -10,13 +10,13 @@ sections:
   - title: Form control
     description: Style textual inputs and textareas quickly and easily.
   - title: Select
-    description: Create browser-default select menus with a custom initial appearance.
+    description: Improve browser default select elements with a custom initial appearance.
   - title: Checks
-    description: Learn how to use our custom radios and checkboxes.
+    description: Use our custom radio buttons and checkboxes in forms for selecting input options.
   - title: File
-    description: Replace a native file input with our custom version.
+    description: Replace browser default file inputs with our custom version with optional JavaScript.
   - title: Range
-    description: Style the range input type with our custom CSS.
+    description: Replace browser default range inputs with our custom version.
   - title: Input group
     description: Attach labels and buttons to your inputs for increased semantic value.
   - title: Validation

@@ -6,6 +6,14 @@ group: forms
 toc: true
 ---
 
+## Forms
+
+Every group of form fields should reside in a `<form>` element. Bootstrap provides no default styling for the `<form>` element, but there are some powerful browser features that are provided by default.
+
+- New to browser forms? Consider reviewing [the MDN form docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form) for an overview and complete list of available attributes.
+- `<button>`s within a `<form>` default to `type="submit"`, so strive to be specific and always include a `type`.
+- You can disable every form element within a form with the `disabled` attribute on the `<form>`.
+
 Since Bootstrap applies `display: block` and `width: 100%` to almost all our form controls, forms will by default stack vertically. Additional classes can be used to vary this layout on a per-form basis.
 
 ## Form groups
