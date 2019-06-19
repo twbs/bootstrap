@@ -59,6 +59,11 @@ const Selector = {
   TABLIST: '[role="tablist"]'
 }
 
+const Orientation = {
+  VERTICAL: 'vertical',
+  HORIZONTAL: 'horizontal'
+}
+
 /**
  * ------------------------------------------------------------------------
  * Class Definition
@@ -219,12 +224,12 @@ class Tab {
 
   static _dataApiKeydownHandler(event) {
     const tablist = SelectorEngine.closest(event.target, Selector.TABLIST)
-    let tablistorientation = tablist.getAttribute('aria-orientation')
-    if (tablistorientation !== 'vertical') {
-      tablistorientation = 'horizontal'
+    let tabListOrientation = tablist.getAttribute('aria-orientation')
+    if (tabListOrientation !== Orientation.VERTICAL) {
+      tabListOrientation = Orientation.HORIZONTAL
     }
 
-    if ((tablistorientation === 'horizontal' && event.which !== ARROW_LEFT_KEYCODE && event.which !== ARROW_RIGHT_KEYCODE) || (tablistorientation === 'vertical' && event.which !== ARROW_UP_KEYCODE && event.which !== ARROW_DOWN_KEYCODE)) {
+    if ((tabListOrientation === Orientation.HORIZONTAL && event.which !== ARROW_LEFT_KEYCODE && event.which !== ARROW_RIGHT_KEYCODE) || (tabListOrientation === Orientation.VERTICAL && event.which !== ARROW_UP_KEYCODE && event.which !== ARROW_DOWN_KEYCODE)) {
       return
     }
 
@@ -272,7 +277,7 @@ class Tab {
 
 EventHandler.on(window, Event.LOAD_DATA_API, () => {
   const tablists = makeArray(SelectorEngine.find(Selector.TABLIST))
-  if (tablists.length === 0) {
+  if (!tablists.length) {
     return
   }
 
@@ -283,7 +288,7 @@ EventHandler.on(window, Event.LOAD_DATA_API, () => {
 
     // iterate over each tab in the tablist, make sure they have correct tabindex/aria-selected
     for (let j = 0; j < tabs.length; j++) {
-      if (tabs[j].hasAttribute('aria-selected') && tabs[j].getAttribute('aria-selected') === 'true' && selectedTabFound === false) {
+      if (tabs[j].getAttribute('aria-selected') === 'true' && !selectedTabFound) {
         tabs[j].setAttribute('tabindex', '0')
         selectedTabFound = true
       } else {
@@ -293,7 +298,7 @@ EventHandler.on(window, Event.LOAD_DATA_API, () => {
     }
 
     // if none of the tabs were explicitly marked as selected, pick first one
-    if (selectedTabFound === false) {
+    if (!selectedTabFound) {
       tabs[0].setAttribute('tabindex', '0')
       tabs[0].setAttribute('aria-selected', 'true')
     }
