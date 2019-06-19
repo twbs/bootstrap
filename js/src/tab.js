@@ -261,7 +261,7 @@ class Tab {
     }
 
     tabs[index].focus()
-    tabs[index].click() // WIP naive way of doing this? any better way? calling _activate or something?
+    tabs[index].click()
   }
 
   static _getInstance(element) {
@@ -276,14 +276,8 @@ class Tab {
  */
 
 EventHandler.on(window, Event.LOAD_DATA_API, () => {
-  const tablists = makeArray(SelectorEngine.find(Selector.TABLIST))
-  if (!tablists.length) {
-    return
-  }
-
-  // iterate over all found sets of tab lists
-  for (let i = 0; i < tablists.length; i++) {
-    const tabs = makeArray(SelectorEngine.find(Selector.DATA_TOGGLE, tablists[i]))
+  makeArray(SelectorEngine.find(Selector.TABLIST)).forEach(tablist => {
+    const tabs = makeArray(SelectorEngine.find(Selector.DATA_TOGGLE, tablist))
     let selectedTabFound = false
 
     // iterate over each tab in the tablist, make sure they have correct tabindex/aria-selected
@@ -302,7 +296,7 @@ EventHandler.on(window, Event.LOAD_DATA_API, () => {
       tabs[0].setAttribute('tabindex', '0')
       tabs[0].setAttribute('aria-selected', 'true')
     }
-  }
+  })
 })
 EventHandler.on(document, Event.KEYDOWN_DATA_API, Selector.DATA_TOGGLE, Tab._dataApiKeydownHandler)
 EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
