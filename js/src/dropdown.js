@@ -486,7 +486,7 @@ class Dropdown {
 
     if (!isActive || isActive && (event.which === ESCAPE_KEYCODE || event.which === SPACE_KEYCODE)) {
       if (event.which === ESCAPE_KEYCODE) {
-        EventHandler.trigger(SelectorEngine.findOne(Selector.DATA_TOGGLE, parent), 'focus')
+        SelectorEngine.findOne(Selector.DATA_TOGGLE, parent).focus()
       }
 
       Dropdown._clearMenus()
