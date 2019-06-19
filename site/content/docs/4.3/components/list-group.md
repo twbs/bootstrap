@@ -205,7 +205,7 @@ Use the tab JavaScript plugin—include it individually or through the compiled 
 <div class="bd-example" role="tabpanel">
   <div class="row">
     <div class="col-4">
-      <div class="list-group" id="list-tab" role="tablist">
+      <div class="list-group" id="list-tab" role="tablist" aria-orientation="vertical">
         <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="tab" href="#list-home" role="tab" aria-controls="list-home">Home</a>
         <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="tab" href="#list-profile" role="tab" aria-controls="list-profile">Profile</a>
         <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="tab" href="#list-messages" role="tab" aria-controls="list-messages">Messages</a>
@@ -234,7 +234,7 @@ Use the tab JavaScript plugin—include it individually or through the compiled 
 {{< highlight html >}}
 <div class="row">
   <div class="col-4">
-    <div class="list-group" id="list-tab" role="tablist">
+    <div class="list-group" id="list-tab" role="tablist" aria-orientation="vertical">
       <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Home</a>
       <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profile</a>
       <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Messages</a>
@@ -259,7 +259,7 @@ You can activate a list group navigation without writing any JavaScript by simpl
 <div role="tabpanel">
 {{< highlight html >}}
 <!-- List group -->
-<div class="list-group" id="myList" role="tablist">
+<div class="list-group" id="myList" role="tablist" aria-orientation="vertical">
   <a class="list-group-item list-group-item-action active" data-toggle="list" href="#home" role="tab">Home</a>
   <a class="list-group-item list-group-item-action" data-toggle="list" href="#profile" role="tab">Profile</a>
   <a class="list-group-item list-group-item-action" data-toggle="list" href="#messages" role="tab">Messages</a>
@@ -316,7 +316,7 @@ To make tabs panel fade in, add `.fade` to each `.tab-pane`. The first tab pane 
 Activates a list item element and content container. Tab should have either a `data-target` or an `href` targeting a container node in the DOM.
 
 {{< highlight html >}}
-<div class="list-group" id="myList" role="tablist">
+<div class="list-group" id="myList" role="tablist" aria-orientation="vertical">
   <a class="list-group-item list-group-item-action active" data-toggle="list" href="#home" role="tab">Home</a>
   <a class="list-group-item list-group-item-action" data-toggle="list" href="#profile" role="tab">Profile</a>
   <a class="list-group-item list-group-item-action" data-toggle="list" href="#messages" role="tab">Messages</a>
