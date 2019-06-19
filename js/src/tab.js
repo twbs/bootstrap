@@ -287,15 +287,15 @@ EventHandler.on(window, Event.LOAD_DATA_API, () => {
     let selectedTabFound = false
 
     // iterate over each tab in the tablist, make sure they have correct tabindex/aria-selected
-    for (let j = 0; j < tabs.length; j++) {
-      if (tabs[j].getAttribute('aria-selected') === 'true' && !selectedTabFound) {
-        tabs[j].setAttribute('tabindex', '0')
+    tabs.forEach(tab => {
+      if (tab.getAttribute('aria-selected') === 'true' && !selectedTabFound) {
+        tab.setAttribute('tabindex', '0')
         selectedTabFound = true
       } else {
-        tabs[j].setAttribute('tabindex', '-1')
-        tabs[j].setAttribute('aria-selected', 'false')
+        tab.setAttribute('tabindex', '-1')
+        tab.setAttribute('aria-selected', 'false')
       }
-    }
+    })
 
     // if none of the tabs were explicitly marked as selected, pick first one
     if (!selectedTabFound) {
