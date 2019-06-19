@@ -96,6 +96,7 @@ Badges were overhauled to better differentiate themselves from buttons and to be
 ## Utilities
 
 - Renamed `.text-monospace` to `.font-monospace`
+- Decreased the number of responsive order utilities per breakpoint. The highest order utility with a number now is `.order-5` instead of `.order-12`. [See #28874](https://github.com/twbs/bootstrap/pull/28874).
 - **Todo:** Drop `.text-hide` as it's an antiquated method for hiding text that shouldn't be used anymore
 - **Todo:** Split utilities into property-value utility classes and helpers
 
