@@ -812,7 +812,7 @@ $(function () {
         done()
       })
 
-    $dropdown[0].dispatchEvent(new Event('click'))
+    $dropdown.trigger($.Event('click'))
   })
 
   QUnit.test('should ignore keyboard events for <input>s and <textarea>s within dropdown-menu, except for escape key', function (assert) {
