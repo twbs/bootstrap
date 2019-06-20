@@ -1121,5 +1121,5 @@ $positions: static, relative, absolute, fixed, sticky !default;
 
 // Printing
 
-$print-page-size:                   auto !default;
+$print-page-size:                   null !default;
 $print-body-min-width:              map-get($grid-breakpoints, "lg") !default;
