@@ -149,17 +149,21 @@ For example, here are two grid layouts that apply to every device and viewport, 
 {{< /example >}}
 </div>
 
-Equal-width columns can be broken into multiple lines, but there was a [Safari flexbox bug](https://github.com/philipwalton/flexbugs#flexbug-11) that prevented this from working without an explicit `flex-basis` or `border`. There are workarounds for older browser versions, but they shouldn't be necessary if you're up-to-date.
+### Equal-width multi-line
+
+Create equal-width columns that span multiple lines by inserting a `.w-100` where you want the columns to break to a new line. Make the breaks responsive by mixing the `.w-100` with some [responsive display utilities]({{< docsref "/utilities/display" >}}).
+
+There was a [Safari flexbox bug](https://github.com/philipwalton/flexbugs#flexbug-11) that prevented this from working without an explicit `flex-basis` or `border`. There are workarounds for older browser versions, but they shouldn't be necessary if you're up-to-date.
 
 <div class="bd-example-row">
 {{< example >}}
 <div class="container">
   <div class="row">
-    <div class="col">Column</div>
-    <div class="col">Column</div>
+    <div class="col">col</div>
+    <div class="col">col</div>
     <div class="w-100"></div>
-    <div class="col">Column</div>
-    <div class="col">Column</div>
+    <div class="col">col</div>
+    <div class="col">col</div>
   </div>
 </div>
 {{< /example >}}
@@ -226,24 +230,6 @@ Use `col-{breakpoint}-auto` classes to size columns based on the natural width o
     <div class="col col-lg-2">
       3 of 3
     </div>
-  </div>
-</div>
-{{< /example >}}
-</div>
-
-### Equal-width multi-row
-
-Create equal-width columns that span multiple rows by inserting a `.w-100` where you want the columns to break to a new line. Make the breaks responsive by mixing the `.w-100` with some [responsive display utilities]({{< docsref "/utilities/display" >}}).
-
-<div class="bd-example-row">
-{{< example >}}
-<div class="container">
-  <div class="row">
-    <div class="col">col</div>
-    <div class="col">col</div>
-    <div class="w-100"></div>
-    <div class="col">col</div>
-    <div class="col">col</div>
   </div>
 </div>
 {{< /example >}}
