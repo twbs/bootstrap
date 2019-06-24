@@ -32,6 +32,10 @@
       "never"
     ],
     "strict": "error",
-    "unicorn/prefer-query-selector": "off"
+    "unicorn/no-for-loop": "off",
+    "unicorn/prefer-includes": "off",
+    "unicorn/prefer-node-append": "off",
+    "unicorn/prefer-query-selector": "off",
+    "unicorn/prevent-abbreviations": "off"
   }
 }

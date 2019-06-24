@@ -26,7 +26,7 @@
     $hover-background: darken($background, 5%);
 
     .table-#{$state} {
-      @include hover {
+      &:hover {
         background-color: $hover-background;
 
         > td,

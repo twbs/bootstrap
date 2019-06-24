@@ -16,10 +16,7 @@
   > .custom-select,
   > .custom-file {
     position: relative; // For focus state's z-index
-    flex: 1 1 auto;
-    // Add width 1% and flex-basis auto to ensure that button will not wrap out
-    // the column. Applies to IE Edge+ and Firefox. Chrome does not require this.
-    width: 1%;
+    flex: 1 1 0%;
     margin-bottom: 0;
 
     + .form-control,
@@ -53,8 +50,7 @@
     display: flex;
     align-items: center;
 
-    &:not(:last-child) .custom-file-label,
-    &:not(:last-child) .custom-file-label::after { @include border-right-radius(0); }
+    &:not(:last-child) .custom-file-label { @include border-right-radius(0); }
     &:not(:first-child) .custom-file-label { @include border-left-radius(0); }
   }
 }

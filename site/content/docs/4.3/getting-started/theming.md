@@ -241,7 +241,6 @@ You can find and customize these variables for key global options in Bootstrap's
 | `$enable-grid-classes`                       | `true` (default) or `false`        | Enables the generation of CSS classes for the grid system (e.g., `.container`, `.row`, `.col-md-1`, etc.). |
 | `$enable-caret`                              | `true` (default) or `false`        | Enables pseudo element caret on `.dropdown-toggle`. |
 | `$enable-pointer-cursor-for-buttons`         | `true` (default) or `false`        | Add "hand" cursor to non-disabled button elements. |
-| `$enable-print-styles`                       | `true` (default) or `false`        | Enables styles for optimizing printing. |
 | `$enable-responsive-font-sizes`              | `true` or `false` (default)        | Enables [responsive font sizes]({{< docsref "/content/typography#responsive-font-sizes" >}}). |
 | `$enable-validation-icons`                   | `true` (default) or `false`        | Enables `background-image` icons within textual inputs and some custom forms for validation states. |
 | `$enable-deprecation-messages`               | `true` or `false` (default)        | Set to `true` to show warnings when using any of the deprecated mixins and functions that are planned to be removed in `v5`. |
@@ -284,7 +283,7 @@ In the future, we'll aim to provide Sass maps and variables for shades of each c
 
 ### Theme colors
 
-We use a subset of all colors to create a smaller color palette for generating color schemes, also available as Sass variables and a Sass map in Bootstraps's `scss/_variables.scss` file.
+We use a subset of all colors to create a smaller color palette for generating color schemes, also available as Sass variables and a Sass map in Bootstrap's `scss/_variables.scss` file.
 
 <div class="row">
   {{< theme-colors.inline >}}

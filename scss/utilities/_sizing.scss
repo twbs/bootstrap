@@ -1,13 +1,5 @@
 // stylelint-disable declaration-no-important
 
-// Width and height
-
-@each $prop, $abbrev in (width: w, height: h) {
-  @each $size, $length in $sizes {
-    .#{$abbrev}-#{$size} { #{$prop}: $length !important; }
-  }
-}
-
 .mw-100 { max-width: 100% !important; }
 .mh-100 { max-height: 100% !important; }
 

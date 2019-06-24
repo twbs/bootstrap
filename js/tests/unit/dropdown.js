@@ -765,6 +765,45 @@ $(function () {
     $triggerDropdown[0].dispatchEvent(new Event('click'))
   })
 
+  QUnit.test('should close dropdown and set focus back to toggle when escape is pressed while focused on a dropdown item', function (assert) {
+    assert.expect(3)
+    var done = assert.async()
+
+    var dropdownHTML = '<div class="tabs">' +
+        '<div class="dropdown">' +
+        '<a href="#" class="dropdown-toggle" id="toggle" data-toggle="dropdown">Dropdown</a>' +
+        '<div class="dropdown-menu">' +
+        '<a class="dropdown-item" id="item" href="#">Menu item</a>' +
+        '</div>' +
+        '</div>'
+    var $dropdown = $(dropdownHTML)
+      .appendTo('#qunit-fixture')
+      .find('[data-toggle="dropdown"]')
+      .bootstrapDropdown()
+
+    var $item = $('#item')
+    var $toggle = $('#toggle')
+
+    $dropdown
+      .parent('.dropdown')
+      .on('shown.bs.dropdown', function () {
+        // Forcibly focus first item
+        $item.focus()
+        assert.ok($(document.activeElement)[0] === $item[0], 'menu item initial focus set')
+
+        // Key escape
+        var keydown = new Event('keydown')
+        keydown.which = 27
+        $item[0].dispatchEvent(keydown)
+
+        assert.ok(!$dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu was closed after escape')
+        assert.ok($(document.activeElement)[0] === $toggle[0], 'toggle has focus again once menu was closed after escape')
+        done()
+      })
+
+    $dropdown[0].dispatchEvent(new Event('click'))
+  })
+
   QUnit.test('should ignore keyboard events for <input>s and <textarea>s within dropdown-menu, except for escape key', function (assert) {
     assert.expect(7)
     var done = assert.async()
