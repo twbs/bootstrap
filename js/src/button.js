@@ -179,20 +179,20 @@ $(window).on(Event.LOAD_DATA_API, () => {
     const button = buttons[i]
     const input = button.querySelector(Selector.INPUT)
     if (input.checked || input.hasAttribute('checked')) {
-      $(button).addClass(ClassName.ACTIVE)
+      button.classList.add(ClassName.ACTIVE)
     } else {
-      $(button).removeClass(ClassName.ACTIVE)
+      button.classList.remove(ClassName.ACTIVE)
     }
   }
 
   // find all button toggles
   buttons = [].slice.call(document.querySelectorAll(Selector.DATA_TOGGLE))
   for (let i = 0, len = buttons.length; i < len; i++) {
-    const $button = $(buttons[i])
-    if ($button.attr('aria-pressed') === 'true') {
-      $button.addClass(ClassName.ACTIVE)
+    const button = buttons[i]
+    if (button.getAttribute('aria-pressed') === 'true') {
+      button.classList.add(ClassName.ACTIVE)
     } else {
-      $button.removeClass(ClassName.ACTIVE)
+      button.classList.remove(ClassName.ACTIVE)
     }
   }
 })
