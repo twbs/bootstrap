@@ -423,7 +423,7 @@ Responsive variations also exist for `flex-wrap`.
 
 ## Order
 
-Change the _visual_ order of specific flex items with a handful of `order` utilities. We only provide options for making an item first or last, as well as a reset to use the DOM order. As `order` takes any integer value (e.g., `5`), add custom CSS for any additional values needed.
+Change the _visual_ order of specific flex items with a handful of `order` utilities. We only provide options for making an item first or last, as well as a reset to use the DOM order. As `order` takes any integer value from 0 to 5, add custom CSS for any additional values needed.
 
 {{< example >}}
 <div class="d-flex flex-nowrap bd-highlight">
@@ -438,7 +438,19 @@ Responsive variations also exist for `order`.
 {{< markdown >}}
 {{< flex.inline >}}
 {{- range $bp := $.Site.Data.breakpoints -}}
-{{- range $i, $num := seq 0 12 }}
+{{- range $i, $num := seq 0 5 }}
+- `.order{{ $bp.abbr }}-{{ $i }}`
+{{- end -}}
+{{- end -}}
+{{< /flex.inline >}}
+{{< /markdown >}}
+
+Additionaly there are also responsive `.order-first` and `.order-last` classes that change the `order` of an element by applying `order: -1` and `order: 6`, respectively.
+
+{{< markdown >}}
+{{< flex.inline >}}
+{{- range $bp := $.Site.Data.breakpoints -}}
+{{- range $i := slice "first" "last" }}
 - `.order{{ $bp.abbr }}-{{ $i }}`
 {{- end -}}
 {{- end -}}
