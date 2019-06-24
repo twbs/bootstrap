@@ -349,6 +349,12 @@ $utilities: map-merge(
       class: text,
       values: left right center justify
     ),
+    "line-height": (
+      responsive: true,
+      property: line-height,
+      class: text-lh,
+      values: $spacers
+    ),
     "color": (
       property: color,
       class: text,
