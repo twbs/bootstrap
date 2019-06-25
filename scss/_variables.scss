@@ -161,6 +161,9 @@ $link-hover-decoration:                   underline !default;
 // Darken percentage for links with `.text-*` class (e.g. `.text-success`)
 $emphasized-link-hover-darken-percentage: 15% !default;
 
+$stretched-link-pseudo-element:           after !default;
+$stretched-link-z-index:                  1 !default;
+
 // Paragraphs
 //
 // Style p element.
