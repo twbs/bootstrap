@@ -19,7 +19,6 @@
   ],
   "scripts": {
     "start": "npm-run-all --parallel watch docs-serve",
-    "linkinator": "linkinator _gh_pages --recurse --silent --skip \"^(?!http://localhost)\"",
     "bundlesize": "bundlesize",
     "css": "npm-run-all css-compile css-prefix css-minify css-copy",
     "css-copy": "cross-env-shell shx mkdir -p site/static/docs/$npm_package_version_short/dist/ && cross-env-shell shx cp -r dist/css/ site/static/docs/$npm_package_version_short/dist/",
@@ -71,7 +70,9 @@
     "docs-build": "hugo --cleanDestinationDir",
     "docs-compile": "npm run docs-build",
     "docs-production": "cross-env HUGO_ENV=production npm run docs-build",
-    "docs-lint": "node build/vnu-jar.js",
+    "docs-linkinator": "linkinator _gh_pages --recurse --silent --skip \"^(?!http://localhost)\"",
+    "docs-vnu": "node build/vnu-jar.js",
+    "docs-lint": "npm-run-all --parallel docs-vnu docs-linkinator",
     "predocs-serve": "npm-run-all css-copy js-copy",
     "docs-serve": "hugo server --port 9001 --disableFastRender",
     "docs-serve-only": "http-server _gh_pages -p 9001 -a localhost",
