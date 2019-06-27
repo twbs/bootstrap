@@ -33,12 +33,19 @@
   &:first-child {
     .page-link {
       margin-left: 0;
-      @include border-left-radius($border-radius);
+      @include border-left-radius($pagination-border-radius);
     }
   }
   &:last-child {
     .page-link {
-      @include border-right-radius($border-radius);
+      @include border-right-radius($pagination-border-radius);
+    }
+  }
+
+  //Add border-radius to all pageLinks in case they have left margin
+  @if $pagination-margin-left != ( - $pagination-border-width ) {
+    .page-link {
+      @include border-radius($pagination-border-radius);
     }
   }
 
