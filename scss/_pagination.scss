@@ -30,20 +30,24 @@
 }
 
 .page-item {
-  &:first-child {
-    .page-link {
-      margin-left: 0;
-      @include border-left-radius($pagination-border-radius);
+  @if $pagination-margin-left == - $pagination-border-width {
+    &:first-child {
+      .page-link {
+        margin-left: 0;
+        @include border-left-radius($pagination-border-radius);
+      }
     }
-  }
-  &:last-child {
-    .page-link {
-      @include border-right-radius($pagination-border-radius);
+    &:last-child {
+      .page-link {
+        @include border-right-radius($pagination-border-radius);
+      }
     }
-  }
 
-  //Add border-radius to all pageLinks in case they have left margin
-  @if $pagination-margin-left != -$pagination-border-width {
+  } @else {
+    &:first-child .page-link {
+      margin-left: 0;
+    }
+    //Add border-radius to all pageLinks in case they have left margin
     .page-link {
       @include border-radius($pagination-border-radius);
     }
