@@ -43,7 +43,7 @@
   }
 
   //Add border-radius to all pageLinks in case they have left margin
-  @if $pagination-margin-left != ( - $pagination-border-width ) {
+  @if $pagination-margin-left != -$pagination-border-width {
     .page-link {
       @include border-radius($pagination-border-radius);
     }
