@@ -215,6 +215,8 @@ textarea.form-control {
   &[disabled] ~ .form-check-label {
     color: $text-muted;
   }
+
+  @include form-control-focus($ignore-warning: true);
 }
 
 .form-check-label {
