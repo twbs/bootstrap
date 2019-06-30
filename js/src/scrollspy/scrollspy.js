@@ -11,11 +11,11 @@ import {
   getUID,
   makeArray,
   typeCheckConfig
-} from './util/index'
-import Data from './dom/data'
-import EventHandler from './dom/event-handler'
-import Manipulator from './dom/manipulator'
-import SelectorEngine from './dom/selector-engine'
+} from '../util/index'
+import Data from '../dom/data'
+import EventHandler from '../dom/event-handler'
+import Manipulator from '../dom/manipulator'
+import SelectorEngine from '../dom/selector-engine'
 
 /**
  * ------------------------------------------------------------------------
@@ -341,7 +341,7 @@ EventHandler.on(window, Event.LOAD_DATA_API, () => {
  * jQuery
  * ------------------------------------------------------------------------
  */
-
+/* istanbul ignore if */
 if (typeof $ !== 'undefined') {
   const JQUERY_NO_CONFLICT = $.fn[NAME]
   $.fn[NAME] = ScrollSpy._jQueryInterface
