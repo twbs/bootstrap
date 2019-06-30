@@ -51,3 +51,9 @@
       description: "Beautifully simple forms with floating labels over your inputs."
     - name: Offcanvas
       description: "Turn your expandable navbar into a sliding offcanvas menu."
+
+- category: Integrations
+  description: "Integrations with external libraries."
+  examples:
+    - name: "Masonry"
+      description: "Combine the powers of the Bootstrap grid and the Masonry layout."
