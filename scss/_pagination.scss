@@ -43,7 +43,6 @@
         @include border-right-radius($pagination-border-radius);
       }
     }
-
   } @else {
     &:first-child .page-link {
       margin-left: 0;
