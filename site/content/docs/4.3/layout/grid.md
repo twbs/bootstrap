@@ -149,17 +149,21 @@ For example, here are two grid layouts that apply to every device and viewport, 
 {{< /example >}}
 </div>
 
-Equal-width columns can be broken into multiple lines, but there was a [Safari flexbox bug](https://github.com/philipwalton/flexbugs#flexbug-11) that prevented this from working without an explicit `flex-basis` or `border`. There are workarounds for older browser versions, but they shouldn't be necessary if you're up-to-date.
+### Equal-width multi-line
+
+Create equal-width columns that span multiple lines by inserting a `.w-100` where you want the columns to break to a new line. Make the breaks responsive by mixing `.w-100` with some [responsive display utilities]({{< docsref "/utilities/display" >}}).
+
+There was a [Safari flexbox bug](https://github.com/philipwalton/flexbugs#flexbug-11) that prevented this from working without an explicit `flex-basis` or `border`. There are workarounds for older browser versions, but they shouldn't be necessary if your target browsers don't fall into the buggy versions.
 
 <div class="bd-example-row">
 {{< example >}}
 <div class="container">
   <div class="row">
-    <div class="col">Column</div>
-    <div class="col">Column</div>
+    <div class="col">col</div>
+    <div class="col">col</div>
     <div class="w-100"></div>
-    <div class="col">Column</div>
-    <div class="col">Column</div>
+    <div class="col">col</div>
+    <div class="col">col</div>
   </div>
 </div>
 {{< /example >}}
@@ -231,24 +235,6 @@ Use `col-{breakpoint}-auto` classes to size columns based on the natural width o
 {{< /example >}}
 </div>
 
-### Equal-width multi-row
-
-Create equal-width columns that span multiple rows by inserting a `.w-100` where you want the columns to break to a new line. Make the breaks responsive by mixing the `.w-100` with some [responsive display utilities]({{< docsref "/utilities/display" >}}).
-
-<div class="bd-example-row">
-{{< example >}}
-<div class="container">
-  <div class="row">
-    <div class="col">col</div>
-    <div class="col">col</div>
-    <div class="w-100"></div>
-    <div class="col">col</div>
-    <div class="col">col</div>
-  </div>
-</div>
-{{< /example >}}
-</div>
-
 ## Responsive classes
 
 Bootstrap's grid includes five tiers of predefined classes for building complex responsive layouts. Customize the size of your columns on extra small, small, medium, large, or extra large devices however you see fit.
@@ -303,7 +289,7 @@ Don't want your columns to simply stack in some grid tiers? Use a combination of
 <div class="container">
   <!-- Stack the columns on mobile by making one full-width and the other half-width -->
   <div class="row">
-    <div class="col-12 col-md-8">.col-12 .col-md-8</div>
+    <div class="col-md-8">.col-md-8</div>
     <div class="col-6 col-md-4">.col-6 .col-md-4</div>
   </div>
 
@@ -477,7 +463,7 @@ In practice, here's how it looks. Note you can continue to use this with all oth
 <div class="bd-example-row">
 {{< example >}}
 <div class="row no-gutters">
-  <div class="col-12 col-sm-6 col-md-8">.col-12 .col-sm-6 .col-md-8</div>
+  <div class="col-sm-6 col-md-8">.col-sm-6 .col-md-8</div>
   <div class="col-6 col-md-4">.col-6 .col-md-4</div>
 </div>
 {{< /example >}}
@@ -543,7 +529,7 @@ You may also apply this break at specific breakpoints with our [responsive displ
 
 ### Order classes
 
-Use `.order-` classes for controlling the **visual order** of your content. These classes are responsive, so you can set the `order` by breakpoint (e.g., `.order-1.order-md-2`). Includes support for `1` through `12` across all five grid tiers.
+Use `.order-` classes for controlling the **visual order** of your content. These classes are responsive, so you can set the `order` by breakpoint (e.g., `.order-1.order-md-2`). Includes support for `1` through `5` across all five grid tiers.
 
 <div class="bd-example-row">
 {{< example >}}
@@ -552,7 +538,7 @@ Use `.order-` classes for controlling the **visual order** of your content. Thes
     <div class="col">
       First, but unordered
     </div>
-    <div class="col order-12">
+    <div class="col order-5">
       Second, but last
     </div>
     <div class="col order-1">
@@ -563,7 +549,7 @@ Use `.order-` classes for controlling the **visual order** of your content. Thes
 {{< /example >}}
 </div>
 
-There are also responsive `.order-first` and `.order-last` classes that change the `order` of an element by applying `order: -1` and `order: 13` (`order: $columns + 1`), respectively. These classes can also be intermixed with the numbered `.order-*` classes as needed.
+There are also responsive `.order-first` and `.order-last` classes that change the `order` of an element by applying `order: -1` and `order: 6`, respectively. These classes can also be intermixed with the numbered `.order-*` classes as needed.
 
 <div class="bd-example-row">
 {{< example >}}

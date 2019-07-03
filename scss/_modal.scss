@@ -138,7 +138,7 @@
   justify-content: space-between; // Put modal header elements (title and dismiss) on opposite ends
   padding: $modal-header-padding;
   border-bottom: $modal-header-border-width solid $modal-header-border-color;
-  @include border-top-radius($modal-content-border-radius);
+  @include border-top-radius($modal-content-inner-border-radius);
 
   .close {
     padding: $modal-header-padding;
@@ -158,7 +158,7 @@
 .modal-body {
   position: relative;
   // Enable `flex-grow: 1` so that the body take up as much space as possible
-  // when should there be a fixed height on `.modal-dialog`.
+  // when there should be a fixed height on `.modal-dialog`.
   flex: 1 1 auto;
   padding: $modal-inner-padding;
 }
@@ -170,7 +170,7 @@
   justify-content: flex-end; // Right align buttons with flex property because text-align doesn't work on flex items
   padding: $modal-inner-padding;
   border-top: $modal-footer-border-width solid $modal-footer-border-color;
-  @include border-bottom-radius($modal-content-border-radius);
+  @include border-bottom-radius($modal-content-inner-border-radius);
 
   // Easily place margin between footer elements
   > :not(:first-child) { margin-left: .25rem; }

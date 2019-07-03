@@ -14,10 +14,10 @@ import {
   typeCheckConfig
 } from './util/index'
 import Data from './dom/data'
-import EventHandler from './dom/eventHandler'
+import EventHandler from './dom/event-handler'
 import Manipulator from './dom/manipulator'
 import Popper from 'popper.js'
-import SelectorEngine from './dom/selectorEngine'
+import SelectorEngine from './dom/selector-engine'
 
 /**
  * ------------------------------------------------------------------------
@@ -486,7 +486,7 @@ class Dropdown {
 
     if (!isActive || isActive && (event.which === ESCAPE_KEYCODE || event.which === SPACE_KEYCODE)) {
       if (event.which === ESCAPE_KEYCODE) {
-        EventHandler.trigger(SelectorEngine.findOne(Selector.DATA_TOGGLE, parent), 'focus')
+        SelectorEngine.findOne(Selector.DATA_TOGGLE, parent).focus()
       }
 
       Dropdown._clearMenus()

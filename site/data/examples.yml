@@ -31,8 +31,6 @@
       description: "Nothing but the basics: compiled CSS and JavaScript."
     - name: Grid
       description: "Multiple examples of grid layouts with all four tiers, nesting, and more."
-    - name: Jumbotron
-      description: "Build around the jumbotron with a navbar and some basic grid columns."
 
 - category: Navbars
   description: "Taking the default navbar component and showing how it can be moved, placed, and extended."
