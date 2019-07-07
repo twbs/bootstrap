@@ -745,17 +745,13 @@ Custom feedback styles apply custom colors, borders, focus styles, and backgroun
   <div class="form-row">
     <div class="col-md-4 mb-3">
       <label for="validationCustom01">First name</label>
-      <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
+      <input type="text" class="form-control" id="validationCustom01" data-validation-container="validationCustom01-feedback" data-validation-valid="Looks good!" value="Mark" required>
+      <div class="form-validation-feedback" id="validationCustom01-feedback"></div>
     </div>
     <div class="col-md-4 mb-3">
       <label for="validationCustom02">Last name</label>
-      <input type="text" class="form-control" id="validationCustom02" value="Otto" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
+      <input type="text" class="form-control" id="validationCustom02" data-validation-container="validationCustom02-feedback" data-validation-valid="Looks good!"  value="Otto" required>
+      <div class="form-validation-feedback" id="validationCustom02-feedback"></div>
     </div>
     <div class="col-md-4 mb-3">
       <label for="validationCustomUsername">Username</label>
@@ -763,48 +759,38 @@ Custom feedback styles apply custom colors, borders, focus styles, and backgroun
         <div class="input-group-prepend">
           <span class="input-group-text" id="inputGroupPrepend">@</span>
         </div>
-        <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
-        <div class="invalid-feedback">
-          Please choose a username.
-        </div>
+        <input type="text" class="form-control" id="validationCustomUsername" data-validation-container="validationCustomUsername-feedback" data-validation-invalid="Please choose a username." aria-describedby="inputGroupPrepend" required>
+        <div class="form-validation-feedback" id="validationCustomUsername-feedback"></div>
       </div>
     </div>
   </div>
   <div class="form-row">
     <div class="col-md-6 mb-3">
       <label for="validationCustom03">City</label>
-      <input type="text" class="form-control" id="validationCustom03" required>
-      <div class="invalid-feedback">
-        Please provide a valid city.
-      </div>
+      <input type="text" class="form-control" id="validationCustom03" data-validation-container="validationCustom03-feedback" data-validation-invalid="Please provide a valid city." required>
+      <div class="form-validation-feedback" id="validationCustom03-feedback"></div>
     </div>
     <div class="col-md-3 mb-3">
       <label for="validationCustom04">State</label>
-      <select class="custom-select" id="validationCustom04" required>
+      <select class="custom-select" id="validationCustom04" data-validation-container="validationCustom04-feedback" data-validation-invalid="Please select a valid state." required>
         <option selected disabled value="">Choose...</option>
         <option>...</option>
       </select>
-      <div class="invalid-feedback">
-        Please select a valid state.
-      </div>
+      <div class="form-validation-feedback" id="validationCustom04-feedback"></div>
     </div>
     <div class="col-md-3 mb-3">
       <label for="validationCustom05">Zip</label>
-      <input type="text" class="form-control" id="validationCustom05" required>
-      <div class="invalid-feedback">
-        Please provide a valid zip.
-      </div>
+      <input type="text" class="form-control" id="validationCustom05" data-validation-container="validationCustom05-feedback" data-validation-invalid="Please provide a valid zip." required>
+      <div class="form-validation-feedback" id="validationCustom05-feedback"></div>
     </div>
   </div>
   <div class="form-group">
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+      <input class="form-check-input" type="checkbox" value="" id="invalidCheck" data-validation-container="invalidCheck-feedback" data-validation-invalid="You must agree before submitting." required>
       <label class="form-check-label" for="invalidCheck">
         Agree to terms and conditions
       </label>
-      <div class="invalid-feedback">
-        You must agree before submitting.
-      </div>
+      <div class="form-validation-feedback" id="invalidCheck-feedback"></div>
     </div>
   </div>
   <button class="btn btn-primary" type="submit">Submit form</button>
@@ -825,6 +811,40 @@ Custom feedback styles apply custom colors, borders, focus styles, and backgroun
           event.stopPropagation();
         }
         form.classList.add('was-validated');
+
+        /* go through all form controls */
+        var formControls = form.querySelectorAll(".form-control, form-control-range, .form-check-input");
+        formControls.forEach(formControl => {
+          var validationContainer = formControl.dataset.validationContainer;
+          /* if the control has data-validation-container */
+          if (validationContainer) {
+            var formControlDescribedby = formControl.getAttribute('aria-describedby');
+            if (!formControlDescribedby) {
+              /* if it doesn't have aria-describedby, add it and point it to the data-validation-container */
+              formControl.setAttribute('aria-describedby', validationContainer)
+            } else if (formControlDescribedby.indexOf(validationContainer) === -1) {
+              /* if it has aria-describedby, but it didn't include data-validation-container, add it */
+              formControl.setAttribute('aria-describedby', formControlDescribedby + " " + validationContainer)
+            }
+            var validationContainerElement = document.getElementById(validationContainer);
+            /* empty the validation container */
+            validationContainerElement.innerHTML = null;
+            /* depending on whether the control is valid or invalid, set the correct class and content for the feedback */
+            if (formControl.checkValidity()) {
+              validationContainerElement.classList.remove('invalid-feedback');
+              if (formControl.dataset.validationValid) {
+                validationContainerElement.innerHTML = formControl.dataset.validationValid;
+                validationContainerElement.classList.add('valid-feedback');
+              }
+            } else {
+              validationContainerElement.classList.remove('valid-feedback');
+              if (formControl.dataset.validationInvalid) {
+                validationContainerElement.innerHTML = formControl.dataset.validationInvalid;
+                validationContainerElement.classList.add('invalid-feedback');
+              }
+            }
+          }
+        })
       }, false);
     });
   }, false);
