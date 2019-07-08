@@ -35,19 +35,19 @@
 
 .btn-group {
   // Prevent double borders when buttons are next to each other
-  > .btn:not(:first-child),
-  > .btn-group:not(:first-child) {
+  > .btn:not(:first-of-type),
+  > .btn-group:not(:first-of-type) {
     margin-left: -$btn-border-width;
   }
 
   // Reset rounded corners
-  > .btn:not(:last-child):not(.dropdown-toggle),
-  > .btn-group:not(:last-child) > .btn {
+  > .btn:not(:last-of-type):not(.dropdown-toggle),
+  > .btn-group:not(:last-of-type) > .btn {
     @include border-right-radius(0);
   }
 
-  > .btn:not(:first-child),
-  > .btn-group:not(:first-child) > .btn {
+  > .btn:not(:first-of-type),
+  > .btn-group:not(:first-of-type) > .btn {
     @include border-left-radius(0);
   }
 }
