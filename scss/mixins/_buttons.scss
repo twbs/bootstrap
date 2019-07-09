@@ -69,7 +69,9 @@
 
 @mixin button-outline-variant(
   $color,
-  $color-hover: color-contrast($color),
+  $color-hover: color-yiq($hover-background),
+  $hover-background: mix($color, #FFF, 10%),
+  $hover-border: $color,
   $active-background: $color,
   $active-border: $color,
   $active-color: color-contrast($active-background)
@@ -79,8 +81,8 @@
 
   &:hover {
     color: $color-hover;
-    background-color: $active-background;
-    border-color: $active-border;
+    background-color: $hover-background;
+    border-color: $hover-border;
   }
 
   &:focus,
