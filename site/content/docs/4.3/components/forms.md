@@ -419,7 +419,7 @@ At times, you maybe need to use margin or padding utilities to create that perfe
     </div>
   </div>
   <div class="form-group row">
-    <div class="col-sm-10">
+    <div class="col-sm-10 offset-sm-2">
       <button type="submit" class="btn btn-primary">Sign in</button>
     </div>
   </div>
