@@ -41,7 +41,7 @@
   }
 
   // Reset rounded corners
-  > .btn:not(:last-of-type):not(.dropdown-toggle),
+  > .btn:not(:last-of-type),
   > .btn-group:not(:last-of-type) > .btn {
     @include border-right-radius(0);
   }
@@ -122,7 +122,7 @@
   }
 
   // Reset rounded corners
-  > .btn:not(:last-of-type):not(.dropdown-toggle),
+  > .btn:not(:last-of-type),
   > .btn-group:not(:last-of-type) > .btn {
     @include border-bottom-radius(0);
   }
