@@ -150,6 +150,11 @@
       }
     }
   }
+  .form-check-inline .form-check-input {
+    ~ .#{$state}-feedback {
+      margin-left: .5em;
+    }
+  }
 
   // custom file
   .custom-file-input {
