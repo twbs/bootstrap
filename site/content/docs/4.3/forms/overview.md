@@ -5,10 +5,8 @@ description: Examples and usage guidelines for form control styles, layout optio
 group: forms
 toc: true
 sections:
-  - title: Layout
-    description: Create inline, horizontal, or complex grid-based layouts with your forms.
   - title: Form control
-    description: Style textual inputs and textareas quickly and easily.
+    description: Style textual inputs and textareas with support for multiple states.
   - title: Select
     description: Improve browser default select elements with a custom initial appearance.
   - title: Checks
@@ -19,6 +17,8 @@ sections:
     description: Replace browser default range inputs with our custom version.
   - title: Input group
     description: Attach labels and buttons to your inputs for increased semantic value.
+  - title: Layout
+    description: Create inline, horizontal, or complex grid-based layouts with your forms.
   - title: Validation
     description: Validate your forms with custom or native validation behaviors and styles.
 ---
