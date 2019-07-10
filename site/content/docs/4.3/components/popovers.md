@@ -351,7 +351,7 @@ Updates the position of an element's popover.
 
 {{< highlight js >}}
 var exampleTriggerEl = document.getElementById('example')
-var popover = bootstrap.Popover._getInstance(exampleTriggerEl) // Return a Bootstrap popover instance
+var popover = bootstrap.Popover._getInstance(exampleTriggerEl) // Returns a Bootstrap popover instance
 {{< /highlight >}}
 
 ### Events
