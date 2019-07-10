@@ -70,19 +70,28 @@
       && ($active.length && $active.hasClass('fade') || !!container.find('> .fade').length)
 
     function next() {
+      // Deactivate previous tab.
       $active
         .removeClass('active')
         .find('> .dropdown-menu > .active')
         .removeClass('active')
         .end()
         .find('[data-toggle="tab"]')
-        .attr('aria-expanded', false)
+        .attr('aria-selected', false)
+      // Deactive previous tabpanel.
+      var tabpanel = $('#' + $($active).first().find('a').attr('aria-controls'));
+      tabpanel.attr('aria-expanded', false);
 
+      // Activate next tab.
       element
         .addClass('active')
         .find('[data-toggle="tab"]')
-        .attr('aria-expanded', true)
+        .attr('aria-selected', true)
+      // Activate next tabpanel.
+      var tabpanel = $('#' + $(element).first().find('a').attr('aria-controls'));
+      tabpanel.attr('aria-expanded', true);
 
+      // Animate transition.
       if (transition) {
         element[0].offsetWidth // reflow for transition
         element.addClass('in')
@@ -90,6 +99,7 @@
         element.removeClass('fade')
       }
 
+      // Activate tab's dropdown.
       if (element.parent('.dropdown-menu').length) {
         element
           .closest('li.dropdown')
