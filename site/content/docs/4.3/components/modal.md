@@ -826,7 +826,7 @@ Destroys an element's modal.
 
 {{< highlight js >}}
 var myModalEl = document.getElementById('myModal')
-var modal = bootstrap.Modal._getInstance(myModalEl) // Return a Bootstrap modal instance
+var modal = bootstrap.Modal._getInstance(myModalEl) // Returns a Bootstrap modal instance
 {{< /highlight >}}
 
 ### Events
