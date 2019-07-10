@@ -219,7 +219,8 @@ textarea.form-control {
   @include form-control-focus($ignore-warning: true);
 
   &[type="radio"] {
-    // Note: This has no effect on the appearance of the radio button, but does smooth out the box shadow on focus in most browsers.
+    // Note: This has no effect on the appearance of the radio button,
+    // but does smooth out the box shadow on focus in most browsers.
     @include border-radius($input-border-radius, 0);
   }
 }
