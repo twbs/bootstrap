@@ -113,7 +113,7 @@
     "autoprefixer": "^9.6.0",
     "babel-eslint": "^10.0.2",
     "babel-plugin-istanbul": "^5.1.4",
-    "bundlesize": "^0.17.2",
+    "bundlesize": "^0.18.0",
     "clean-css-cli": "^4.3.0",
     "coveralls": "^3.0.4",
     "cross-env": "^5.2.0",
@@ -161,56 +161,6 @@
     "dist/{css,js}/*.{css,js,map}",
     "js/{src,dist}/**/*.{js,map}",
     "scss/**/*.scss"
-  ],
-  "bundlesize": [
-    {
-      "path": "./dist/css/bootstrap-grid.css",
-      "maxSize": "8 kB"
-    },
-    {
-      "path": "./dist/css/bootstrap-grid.min.css",
-      "maxSize": "7.2 kB"
-    },
-    {
-      "path": "./dist/css/bootstrap-reboot.css",
-      "maxSize": "2 kB"
-    },
-    {
-      "path": "./dist/css/bootstrap-reboot.min.css",
-      "maxSize": "2 kB"
-    },
-    {
-      "path": "./dist/css/bootstrap.css",
-      "maxSize": "25 kB"
-    },
-    {
-      "path": "./dist/css/bootstrap.min.css",
-      "maxSize": "23 kB"
-    },
-    {
-      "path": "./dist/js/bootstrap.bundle.js",
-      "maxSize": "51 kB"
-    },
-    {
-      "path": "./dist/js/bootstrap.bundle.min.js",
-      "maxSize": "24 kB"
-    },
-    {
-      "path": "./dist/js/bootstrap.esm.js",
-      "maxSize": "28 kB"
-    },
-    {
-      "path": "./dist/js/bootstrap.esm.min.js",
-      "maxSize": "19 kB"
-    },
-    {
-      "path": "./dist/js/bootstrap.js",
-      "maxSize": "29 kB"
-    },
-    {
-      "path": "./dist/js/bootstrap.min.js",
-      "maxSize": "17.5 kB"
-    }
   ],
   "jspm": {
     "registry": "npm",
