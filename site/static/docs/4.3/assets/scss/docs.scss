@@ -60,6 +60,6 @@
   margin-right: 1rem;
   margin-bottom: 1rem;
   background-color: #fff;
-  border: 1px solid rgba(0,0,0,.1);
-  border-radius: .25rem;
+  border: 1px solid rgba(0, 0, 0, .1);
+  @include border-radius(.25rem);
 }
