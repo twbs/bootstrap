@@ -15,7 +15,7 @@
           {{ partial "icons/booticon-chevron-right.svg" (dict "class" "booticon d-inline-block mx-2 flex-shrink-0" "width" "12px" "height" "12px") }}
           <a class="link-dark" href="/docs/{{ .Site.Params.docs_version }}/getting-started/introduction/" onclick="ga('send', 'event', 'Subnav', 'click', 'Documentation');">Documentation</a>
           {{ partial "icons/booticon-chevron-right.svg" (dict "class" "booticon d-inline-block mx-2 flex-shrink-0" "width" "12px" "height" "12px") }}
-          {{ partial "docs-versions-dropdown" . }}
+          {{ partial "docs-versions" . }}
           {{ partial "icons/booticon-chevron-right.svg" (dict "class" "booticon d-inline-block mx-2 flex-shrink-0" "width" "12px" "height" "12px") }}
           <span class="text-muted">Examples</span>
         </div>
