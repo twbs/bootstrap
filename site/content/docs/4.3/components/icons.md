@@ -6,19 +6,6 @@ group: components
 toc: true
 ---
 
-<style>
-.booticon {
-  display: inline;
-  width: 4rem;
-  padding: 1rem;
-  margin-right: 1rem;
-  margin-bottom: 1rem;
-  background-color: #fff;
-  border: 1px solid rgba(0,0,0,.1);
-  border-radius: .25rem;
-}
-</style>
-
 <svg class="booticon booticon-chevron-left" viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path stroke="currentColor" stroke-width="2" d="M11 2L5 8l6 6" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"/></svg>
 <svg class="booticon booticon-chevron-right" viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path stroke="currentColor" stroke-width="2" d="M5 14l6-6-6-6" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"/></svg>
 <svg class="booticon booticon-chevron-up" viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path stroke="currentColor" stroke-width="2" d="M2 11l6-6 6 6" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"/></svg>

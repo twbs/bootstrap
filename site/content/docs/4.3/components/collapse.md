@@ -220,7 +220,7 @@ var bsCollapse = new bootstrap.Collapse(myCollapse, {
     </tr>
     <tr>
       <td><code>hide</code></td>
-      <td>Hides a collapsible element. <strong>Returns to the caller before the collapsible element has actually been hidden</strong> (e.g., before the <strong>hidden.bs.collapse</code> event occurs).</td>
+      <td>Hides a collapsible element. <strong>Returns to the caller before the collapsible element has actually been hidden</strong> (e.g., before the <code>hidden.bs.collapse</code> event occurs).</td>
     </tr>
     <tr>
       <td><code>dispose</code></td>
