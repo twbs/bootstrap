@@ -79,8 +79,8 @@
         .find('[data-toggle="tab"]')
         .attr('aria-selected', false)
       // Deactive previous tabpanel.
-      var $active_tabpanel = $('#' + $($active).first().find('a').attr('aria-controls'));
-      $active_tabpanel.attr('aria-expanded', false);
+      var $activeTabpanel = $('#' + $($active).first().find('a').attr('aria-controls'));
+      $activeTabpanel.attr('aria-expanded', false);
 
       // Activate next tab.
       element
@@ -88,8 +88,8 @@
         .find('[data-toggle="tab"]')
         .attr('aria-selected', true)
       // Activate next tabpanel.
-      var element_tabpanel = $('#' + $(element).first().find('a').attr('aria-controls'));
-      element_tabpanel.attr('aria-expanded', true);
+      var elementTabpanel = $('#' + $(element).first().find('a').attr('aria-controls'));
+      elementTabpanel.attr('aria-expanded', true);
 
       // Animate transition.
       if (transition) {
