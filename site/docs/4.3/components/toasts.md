@@ -17,6 +17,8 @@ Things to know when using the toast plugin:
 - **Please note that you are responsible for positioning toasts.**
 - Toasts will automatically hide if you do not specify `autohide: false`.
 
+{% include callout-info-prefersreducedmotion.md %}
+
 ## Examples
 
 ### Basic

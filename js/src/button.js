@@ -27,17 +27,20 @@ const ClassName = {
 }
 
 const Selector = {
-  DATA_TOGGLE_CARROT : '[data-toggle^="button"]',
-  DATA_TOGGLE        : '[data-toggle="buttons"]',
-  INPUT              : 'input:not([type="hidden"])',
-  ACTIVE             : '.active',
-  BUTTON             : '.btn'
+  DATA_TOGGLE_CARROT   : '[data-toggle^="button"]',
+  DATA_TOGGLES         : '[data-toggle="buttons"]',
+  DATA_TOGGLE          : '[data-toggle="button"]',
+  DATA_TOGGLES_BUTTONS : '[data-toggle="buttons"] .btn',
+  INPUT                : 'input:not([type="hidden"])',
+  ACTIVE               : '.active',
+  BUTTON               : '.btn'
 }
 
 const Event = {
   CLICK_DATA_API      : `click${EVENT_KEY}${DATA_API_KEY}`,
   FOCUS_BLUR_DATA_API : `focus${EVENT_KEY}${DATA_API_KEY} ` +
-                          `blur${EVENT_KEY}${DATA_API_KEY}`
+                          `blur${EVENT_KEY}${DATA_API_KEY}`,
+  LOAD_DATA_API       : `load${EVENT_KEY}${DATA_API_KEY}`
 }
 
 /**
@@ -63,7 +66,7 @@ class Button {
     let triggerChangeEvent = true
     let addAriaPressed = true
     const rootElement = $(this._element).closest(
-      Selector.DATA_TOGGLE
+      Selector.DATA_TOGGLES
     )[0]
 
     if (rootElement) {
@@ -166,6 +169,33 @@ $(document)
     const button = $(event.target).closest(Selector.BUTTON)[0]
     $(button).toggleClass(ClassName.FOCUS, /^focus(in)?$/.test(event.type))
   })
+
+$(window).on(Event.LOAD_DATA_API, () => {
+  // ensure correct active class is set to match the controls' actual values/states
+
+  // find all checkboxes/readio buttons inside data-toggle groups
+  let buttons = [].slice.call(document.querySelectorAll(Selector.DATA_TOGGLES_BUTTONS))
+  for (let i = 0, len = buttons.length; i < len; i++) {
+    const button = buttons[i]
+    const input = button.querySelector(Selector.INPUT)
+    if (input.checked || input.hasAttribute('checked')) {
+      button.classList.add(ClassName.ACTIVE)
+    } else {
+      button.classList.remove(ClassName.ACTIVE)
+    }
+  }
+
+  // find all button toggles
+  buttons = [].slice.call(document.querySelectorAll(Selector.DATA_TOGGLE))
+  for (let i = 0, len = buttons.length; i < len; i++) {
+    const button = buttons[i]
+    if (button.getAttribute('aria-pressed') === 'true') {
+      button.classList.add(ClassName.ACTIVE)
+    } else {
+      button.classList.remove(ClassName.ACTIVE)
+    }
+  }
+})
 
 /**
  * ------------------------------------------------------------------------
