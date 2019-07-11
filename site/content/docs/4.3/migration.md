@@ -66,7 +66,9 @@ Changes to Reboot, typography, tables, and more.
   - Dropped `.custom-control` and associated classes.
 - Combined native and custom selects into `.form-select`.
   - Dropped `.custom-select` and associated classes.
-- Dropped native `.form-control-file` and `.form-control-range` classes in favor of custom versions.
+- Dropped native `.form-control-file` and `.form-control-range` components.
+- Renamed `.custom-file` to `.form-file` (including variables).
+- Refactored `.form-file` markup to resolve some visual bugs while allowing translation and button text changes via HTML instead of CSS.
 - Renamed `.custom-range` to `.form-range` (including variables).
 - Dropped `.form-group` for margin utilities (we've replaced our docs examples with `.mb-3`).
 

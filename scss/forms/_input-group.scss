@@ -14,14 +14,14 @@
   > .form-control,
   > .form-control-plaintext,
   > .form-select,
-  > .custom-file {
+  > .form-file {
     position: relative; // For focus state's z-index
     flex: 1 1 0%;
     margin-bottom: 0;
 
     + .form-control,
     + .form-select,
-    + .custom-file {
+    + .form-file {
       margin-left: -$input-border-width;
     }
   }
@@ -29,12 +29,12 @@
   // Bring the "active" form control to the top of surrounding elements
   > .form-control:focus,
   > .form-select:focus,
-  > .custom-file .custom-file-input:focus ~ .custom-file-label {
+  > .form-file .form-file-input:focus ~ .form-file-label {
     z-index: 3;
   }
 
   // Bring the custom file input above the label
-  > .custom-file .custom-file-input:focus {
+  > .form-file .form-file-input:focus {
     z-index: 4;
   }
 
@@ -46,12 +46,12 @@
 
   // Custom file inputs have more complex markup, thus requiring different
   // border-radius overrides.
-  > .custom-file {
+  > .form-file {
     display: flex;
     align-items: center;
 
-    &:not(:last-child) .custom-file-label { @include border-right-radius(0); }
-    &:not(:first-child) .custom-file-label { @include border-left-radius(0); }
+    &:not(:last-child) .form-file-label { @include border-right-radius(0); }
+    &:not(:first-child) .form-file-label { @include border-left-radius(0); }
   }
 }
 

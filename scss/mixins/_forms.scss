@@ -157,9 +157,9 @@
   }
 
   // custom file
-  .custom-file-input {
+  .form-file-input {
     @include form-validation-state-selector($state) {
-      ~ .custom-file-label {
+      ~ .form-file-label {
         border-color: $color;
       }
 
@@ -169,7 +169,7 @@
       }
 
       &:focus {
-        ~ .custom-file-label {
+        ~ .form-file-label {
           border-color: $color;
           box-shadow: 0 0 0 $input-focus-width rgba($color, .25);
         }

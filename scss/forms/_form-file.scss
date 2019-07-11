@@ -1,72 +1,72 @@
-.custom-file {
+.form-file {
   position: relative;
   display: inline-block;
   width: 100%;
-  height: $custom-file-height;
+  height: $form-file-height;
   margin-bottom: 0;
 }
 
-.custom-file-input {
+.form-file-input {
   position: relative;
   z-index: 2;
   width: 100%;
-  height: $custom-file-height;
+  height: $form-file-height;
   margin: 0;
   opacity: 0;
 
-  &:focus ~ .custom-file-label {
-    border-color: $custom-file-focus-border-color;
-    box-shadow: $custom-file-focus-box-shadow;
+  &:focus ~ .form-file-label {
+    border-color: $form-file-focus-border-color;
+    box-shadow: $form-file-focus-box-shadow;
   }
 
   // Use disabled attribute instead of :disabled pseudo-class
   // Workaround for: https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/11295231
-  &[disabled] ~ .custom-file-label {
-    background-color: $custom-file-disabled-bg;
+  &[disabled] ~ .form-file-label {
+    background-color: $form-file-disabled-bg;
   }
 }
 
-.custom-file-label {
+.form-file-label {
   position: absolute;
   top: 0;
   right: 0;
   left: 0;
   z-index: 1;
   display: flex;
-  height: $custom-file-height;
-  border-color: $custom-file-border-color;
-  @include border-radius($custom-file-border-radius);
-  @include box-shadow($custom-file-box-shadow);
+  height: $form-file-height;
+  border-color: $form-file-border-color;
+  @include border-radius($form-file-border-radius);
+  @include box-shadow($form-file-box-shadow);
 }
 
-.custom-file-text {
+.form-file-text {
   display: block;
   flex-grow: 1;
-  padding: $custom-file-padding-y $custom-file-padding-x;
+  padding: $form-file-padding-y $form-file-padding-x;
   overflow: hidden;
-  font-family: $custom-file-font-family;
-  font-weight: $custom-file-font-weight;
-  line-height: $custom-file-line-height;
-  color: $custom-file-color;
+  font-family: $form-file-font-family;
+  font-weight: $form-file-font-weight;
+  line-height: $form-file-line-height;
+  color: $form-file-color;
   text-overflow: ellipsis;
   white-space: nowrap;
-  background-color: $custom-file-bg;
+  background-color: $form-file-bg;
   border-color: inherit;
   border-style: solid;
-  border-width: $custom-file-border-width;
+  border-width: $form-file-border-width;
   @include border-left-radius(inherit);
 }
 
-.custom-file-button {
+.form-file-button {
   display: block;
   flex-shrink: 0;
-  padding: $custom-file-padding-y $custom-file-padding-x;
-  margin-left: -$custom-file-border-width;
-  line-height: $custom-file-line-height;
-  color: $custom-file-button-color;
-  @include gradient-bg($custom-file-button-bg);
+  padding: $form-file-padding-y $form-file-padding-x;
+  margin-left: -$form-file-border-width;
+  line-height: $form-file-line-height;
+  color: $form-file-button-color;
+  @include gradient-bg($form-file-button-bg);
   border-color: inherit;
   border-style: solid;
-  border-width: $custom-file-border-width;
+  border-width: $form-file-border-width;
   @include border-right-radius(inherit);
 }

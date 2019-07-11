@@ -262,7 +262,7 @@ Validation styles are available for the following form controls and components:
 - `<select>`s with `.form-control` or `.form-select`
 - `.form-check`s
 - `.custom-checkbox`s and `.custom-radio`s
-- `.custom-file`
+- `.form-file`
 
 {{< example >}}
 <form class="was-validated">
@@ -300,9 +300,9 @@ Validation styles are available for the following form controls and components:
     <div class="invalid-feedback">Example invalid custom select feedback</div>
   </div>
 
-  <div class="custom-file">
-    <input type="file" class="custom-file-input" id="validatedCustomFile" required>
-    <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+  <div class="form-file">
+    <input type="file" class="form-file-input" id="validatedCustomFile" required>
+    <label class="form-file-label" for="validatedCustomFile">Choose file...</label>
     <div class="invalid-feedback">Example invalid custom file feedback</div>
   </div>
 </form>

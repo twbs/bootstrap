@@ -628,24 +628,24 @@ $form-range-thumb-focus-box-shadow-width:  $input-focus-width !default; // For f
 $form-range-thumb-active-bg:               lighten($component-active-bg, 35%) !default;
 $form-range-thumb-disabled-bg:             $gray-500 !default;
 
-$custom-file-height:                $input-height !default;
-$custom-file-focus-border-color:    $input-focus-border-color !default;
-$custom-file-focus-box-shadow:      $input-focus-box-shadow !default;
-$custom-file-disabled-bg:           $input-disabled-bg !default;
+$form-file-height:                $input-height !default;
+$form-file-focus-border-color:    $input-focus-border-color !default;
+$form-file-focus-box-shadow:      $input-focus-box-shadow !default;
+$form-file-disabled-bg:           $input-disabled-bg !default;
 
-$custom-file-padding-y:             $input-padding-y !default;
-$custom-file-padding-x:             $input-padding-x !default;
-$custom-file-line-height:           $input-line-height !default;
-$custom-file-font-family:           $input-font-family !default;
-$custom-file-font-weight:           $input-font-weight !default;
-$custom-file-color:                 $input-color !default;
-$custom-file-bg:                    $input-bg !default;
-$custom-file-border-width:          $input-border-width !default;
-$custom-file-border-color:          $input-border-color !default;
-$custom-file-border-radius:         $input-border-radius !default;
-$custom-file-box-shadow:            $input-box-shadow !default;
-$custom-file-button-color:          $custom-file-color !default;
-$custom-file-button-bg:             $input-group-addon-bg !default;
+$form-file-padding-y:             $input-padding-y !default;
+$form-file-padding-x:             $input-padding-x !default;
+$form-file-line-height:           $input-line-height !default;
+$form-file-font-family:           $input-font-family !default;
+$form-file-font-weight:           $input-font-weight !default;
+$form-file-color:                 $input-color !default;
+$form-file-bg:                    $input-bg !default;
+$form-file-border-width:          $input-border-width !default;
+$form-file-border-color:          $input-border-color !default;
+$form-file-border-radius:         $input-border-radius !default;
+$form-file-box-shadow:            $input-box-shadow !default;
+$form-file-button-color:          $form-file-color !default;
+$form-file-button-bg:             $input-group-addon-bg !default;
 
 
 // Form validation
