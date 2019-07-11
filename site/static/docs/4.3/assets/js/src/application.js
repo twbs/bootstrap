@@ -22,7 +22,7 @@
   var sidenavGroups = document.querySelectorAll('.js-sidenav-group')
   var groupHasLinks
   var groupLink
-  sidenavGroups.forEach((sidenavGroup) => {
+  sidenavGroups.forEach(sidenavGroup => {
     groupHasLinks = Boolean(sidenavGroup.querySelector('li'))
     groupLink = sidenavGroup.querySelector('a')
     if (groupHasLinks) {
