@@ -140,6 +140,16 @@
 
 -
   browser: >
+    Firefox
+  summary: >
+    Custom file input has no focus styles
+  upstream_bug: >
+    Mozilla#1430196
+  origin: >
+    Bootstrap#26563
+
+-
+  browser: >
     Firefox (Windows)
   summary: >
     Right border of `<select>` menu is sometimes missing when screen is set to uncommon resolution
