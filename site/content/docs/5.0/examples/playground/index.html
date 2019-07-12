@@ -1,0 +1,68 @@
+---
+layout: examples
+title: Playground
+extra_css:
+  - "playground.css"
+---
+
+<div class="button-group my-5 mx-auto">
+  <button type="button" class="button-group-item active">Selected</button>
+  <button type="button" class="button-group-item">Second</button>
+  <button type="button" class="button-group-item">Third</button>
+</div>
+
+<div class="p-5 mx-auto">
+  <nav class="btn-group d-flex justify-content-center mb-n3 rounded">
+    <button class="btn btn-outline-primary active" type="button">Selected</button>
+    <button class="btn btn-outline-primary" type="button">Second</button>
+    <button class="btn btn-outline-primary" type="button">Third</button>
+  </nav>
+  <div class="border rounded p-5 bg-light">
+    Example of a well with macOS style segmented nav above.
+  </div>
+</div>
+
+<div id="carouselExampleIndicators" class="carousel slide mx-auto" data-ride="carousel">
+  <ol class="carousel-indicators d-flex justify-content-end mx-0 mb-1">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100 rounded" color="#555" background="#777" text="First slide" >}}
+    </div>
+    <div class="carousel-item">
+      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100 rounded" color="#444" background="#666" text="Second slide" >}}
+    </div>
+    <div class="carousel-item">
+      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100 rounded" color="#333" background="#555" text="Third slide" >}}
+    </div>
+  </div>
+</div>
+
+<div class="position-relative my-5 mx-auto bg-dark" style="width: 375px; height: 812px; border-radius: 1.5rem;">
+  <div class="text-center p-3">
+    <button type="button" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#modal">Show</button>
+  </div>
+
+  <div class="modal modal-sheet" tabindex="-1" role="dialog" id="modal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header border-bottom-0">
+          <h5 class="modal-title">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body py-0">
+          <p>This is a modal sheet, a variation of the modal that docs itself to the bottom of the viewport like the newer share sheets in iOS.</p>
+        </div>
+        <div class="modal-footer flex-column border-top-0">
+          <button type="button" class="btn btn-lg btn-primary btn-block mx-0 mb-2">Save changes</button>
+          <button type="button" class="btn btn-lg btn-link btn-block mx-0" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
