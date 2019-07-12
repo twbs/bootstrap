@@ -71,6 +71,7 @@ Changes to Reboot, typography, tables, and more.
 - Refactored `.form-file` markup to resolve some visual bugs while allowing translation and button text changes via HTML instead of CSS.
 - Renamed `.custom-range` to `.form-range` (including variables).
 - Dropped `.form-group` for margin utilities (we've replaced our docs examples with `.mb-3`).
+- Dropped support for `.form-control-plaintext` inside `.input-group`s.
 
 ## Components
 
