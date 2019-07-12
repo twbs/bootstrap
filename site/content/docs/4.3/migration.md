@@ -56,6 +56,7 @@ Changes to Reboot, typography, tables, and more.
 
 ## Forms
 
+- Dropped support for `.form-control-plaintext` inside `.input-group`
 - **Todo:** Move forms documentation to it's own top-level section
 - **Todo:** Rearrange source Sass files (under `scss/forms/`)
 - **Todo:** Combine native and custom checkboxes and radios
