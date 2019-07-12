@@ -234,6 +234,7 @@ $rounded-pill:                50rem !default;
 $box-shadow-sm:               0 .125rem .25rem rgba($black, .075) !default;
 $box-shadow:                  0 .5rem 1rem rgba($black, .15) !default;
 $box-shadow-lg:               0 1rem 3rem rgba($black, .175) !default;
+$box-shadow-inset:            inset 0 1px 2px rgba($black, .075) !default;
 
 $component-active-color:      $white !default;
 $component-active-bg:         theme-color("primary") !default;
@@ -479,7 +480,7 @@ $input-disabled-bg:                     $gray-200 !default;
 $input-color:                           $gray-700 !default;
 $input-border-color:                    $gray-400 !default;
 $input-border-width:                    $input-btn-border-width !default;
-$input-box-shadow:                      inset 0 1px 1px rgba($black, .075) !default;
+$input-box-shadow:                      $box-shadow-inset !default;
 
 $input-border-radius:                   $border-radius !default;
 $input-border-radius-lg:                $border-radius-lg !default;
@@ -593,7 +594,7 @@ $form-select-feedback-icon-size:          $input-height-inner-half $input-height
 $form-select-border-width:        $input-border-width !default;
 $form-select-border-color:        $input-border-color !default;
 $form-select-border-radius:       $border-radius !default;
-$form-select-box-shadow:          inset 0 1px 2px rgba($black, .075) !default;
+$form-select-box-shadow:          $box-shadow-inset !default;
 
 $form-select-focus-border-color:  $input-focus-border-color !default;
 $form-select-focus-width:         $input-focus-width !default;
@@ -977,7 +978,7 @@ $progress-height:                   1rem !default;
 $progress-font-size:                $font-size-base * .75 !default;
 $progress-bg:                       $gray-200 !default;
 $progress-border-radius:            $border-radius !default;
-$progress-box-shadow:               inset 0 .1rem .1rem rgba($black, .1) !default;
+$progress-box-shadow:               $box-shadow-inset !default;
 $progress-bar-color:                $white !default;
 $progress-bar-bg:                   theme-color("primary") !default;
 $progress-bar-animation-timing:     1s linear infinite !default;
