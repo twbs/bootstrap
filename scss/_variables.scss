@@ -527,7 +527,7 @@ $form-check-input-checked-bg-color:       $component-active-bg !default;
 $form-check-input-checked-border-color:   $form-check-input-checked-bg-color !default;
 $form-check-input-checked-bg-repeat:      no-repeat !default;
 $form-check-input-checked-bg-position:    center center !default;
-$form-check-input-checked-bg-size:        .75em !default;
+$form-check-input-checked-bg-size:        1em !default;
 $form-check-input-checked-bg-image:       str-replace(url('data:image/svg+xml;utf8,<svg viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path stroke="#{$form-check-input-checked-color}" stroke-width="3" d="M4 8.5L6.5 11l6-6" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"/></svg>'), "#", "%23") !default;
 $form-check-radio-checked-bg-image: str-replace(url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='#{$form-check-input-checked-color}'/%3e%3c/svg%3e"), "#", "%23") !default;
 
