@@ -518,12 +518,13 @@ function findHandler(events, handler, delegationSelector) {
     delegationSelector = null;
   }
 
-  for (var _i = 0, _Object$keys = Object.keys(events); _i < _Object$keys.length; _i++) {
-    var uid = _Object$keys[_i];
-    var event = events[uid];
+  var uidEventList = Object.keys(events);
+
+  for (var i = 0, len = uidEventList.length; i < len; i++) {
+    var event = events[uidEventList[i]];
 
     if (event.originalHandler === handler && event.delegationSelector === delegationSelector) {
-      return events[uid];
+      return event;
     }
   }
 
@@ -587,7 +588,7 @@ function addHandler(element, originalTypeEvent, handler, delegationFn, oneOff) {
 function removeHandler(element, events, typeEvent, handler, delegationSelector) {
   var fn = findHandler(events[typeEvent], handler, delegationSelector);
 
-  if (fn === null) {
+  if (!fn) {
     return;
   }
 
@@ -2746,7 +2747,7 @@ function () {
 
     if (!isActive || isActive && (event.which === ESCAPE_KEYCODE || event.which === SPACE_KEYCODE)) {
       if (event.which === ESCAPE_KEYCODE) {
-        EventHandler.trigger(SelectorEngine.findOne(Selector$4.DATA_TOGGLE, parent), 'focus');
+        SelectorEngine.findOne(Selector$4.DATA_TOGGLE, parent).focus();
       }
 
       Dropdown._clearMenus();
@@ -3641,8 +3642,7 @@ var ClassName$6 = {
   SHOW: 'show'
 };
 var Selector$6 = {
-  TOOLTIP_INNER: '.tooltip-inner',
-  TOOLTIP_ARROW: '.tooltip-arrow'
+  TOOLTIP_INNER: '.tooltip-inner'
 };
 var Trigger = {
   HOVER: 'hover',
@@ -3737,7 +3737,7 @@ function () {
     clearTimeout(this._timeout);
     Data.removeData(this.element, this.constructor.DATA_KEY);
     EventHandler.off(this.element, this.constructor.EVENT_KEY);
-    EventHandler.off(SelectorEngine.closest(this.element, '.modal'), 'hide.bs.modal');
+    EventHandler.off(SelectorEngine.closest(this.element, '.modal'), 'hide.bs.modal', this._hideModalHandler);
 
     if (this.tip) {
       this.tip.parentNode.removeChild(this.tip);
@@ -3807,7 +3807,7 @@ function () {
             behavior: this.config.fallbackPlacement
           },
           arrow: {
-            element: Selector$6.TOOLTIP_ARROW
+            element: "." + this.constructor.NAME + "-arrow"
           },
           preventOverflow: {
             boundariesElement: this.config.boundary
@@ -4043,11 +4043,14 @@ function () {
         });
       }
     });
-    EventHandler.on(SelectorEngine.closest(this.element, '.modal'), 'hide.bs.modal', function () {
+
+    this._hideModalHandler = function () {
       if (_this4.element) {
         _this4.hide();
       }
-    });
+    };
+
+    EventHandler.on(SelectorEngine.closest(this.element, '.modal'), 'hide.bs.modal', this._hideModalHandler);
 
     if (this.config.selector) {
       this.config = _objectSpread({}, this.config, {
@@ -5125,7 +5128,11 @@ function () {
   _proto.show = function show() {
     var _this = this;
 
-    EventHandler.trigger(this._element, Event$b.SHOW);
+    var showEvent = EventHandler.trigger(this._element, Event$b.SHOW);
+
+    if (showEvent.defaultPrevented) {
+      return;
+    }
 
     if (this._config.animation) {
       this._element.classList.add(ClassName$a.FADE);
@@ -5165,7 +5172,11 @@ function () {
       return;
     }
 
-    EventHandler.trigger(this._element, Event$b.HIDE);
+    var hideEvent = EventHandler.trigger(this._element, Event$b.HIDE);
+
+    if (hideEvent.defaultPrevented) {
+      return;
+    }
 
     var complete = function complete() {
       _this2._element.classList.add(ClassName$a.HIDE);
