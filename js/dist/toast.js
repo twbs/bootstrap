@@ -204,7 +204,11 @@
     _proto.show = function show() {
       var _this = this;
 
-      EventHandler.trigger(this._element, Event.SHOW);
+      var showEvent = EventHandler.trigger(this._element, Event.SHOW);
+
+      if (showEvent.defaultPrevented) {
+        return;
+      }
 
       if (this._config.animation) {
         this._element.classList.add(ClassName.FADE);
@@ -244,7 +248,11 @@
         return;
       }
 
-      EventHandler.trigger(this._element, Event.HIDE);
+      var hideEvent = EventHandler.trigger(this._element, Event.HIDE);
+
+      if (hideEvent.defaultPrevented) {
+        return;
+      }
 
       var complete = function complete() {
         _this2._element.classList.add(ClassName.HIDE);

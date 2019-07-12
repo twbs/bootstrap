@@ -19,13 +19,10 @@ body {
     overflow-y: auto;
     visibility: hidden;
     background-color: #343a40;
-    transition: visibility .3s ease-in-out, -webkit-transform .3s ease-in-out;
     transition: transform .3s ease-in-out, visibility .3s ease-in-out;
-    transition: transform .3s ease-in-out, visibility .3s ease-in-out, -webkit-transform .3s ease-in-out;
   }
   .offcanvas-collapse.open {
     visibility: visible;
-    -webkit-transform: translateX(-100%);
     transform: translateX(-100%);
   }
 }
