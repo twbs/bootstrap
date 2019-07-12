@@ -160,7 +160,7 @@ var collapseList = collapseElementList.map(function (collapseEl) {
 
 Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-`, as in `data-parent=""`.
 
-<table class="table table-bordered table-striped">
+<table class="table">
   <thead>
     <tr>
       <th style="width: 100px;">Name</th>
@@ -202,22 +202,45 @@ var bsCollapse = new bootstrap.Collapse(myCollapse, {
 })
 {{< /highlight >}}
 
-| Method | Description |
-| --- | --- |
-| `toggle` | Toggles a collapsible element to shown or hidden. **Returns to the caller before the collapsible element has actually been shown or hidden** (i.e. before the `shown.bs.collapse` or `hidden.bs.collapse` event occurs). |
-| `show` | Shows a collapsible element. **Returns to the caller before the collapsible element has actually been shown** (i.e. before the `shown.bs.collapse` event occurs).|
-| `hide` | Hides a collapsible element. **Returns to the caller before the collapsible element has actually been hidden** (i.e. before the `hidden.bs.collapse` event occurs).|
-| `dispose` | Destroys an element's collapse. |
-| `_getInstance` | *Static* method which allows you to get the collapse instance associated with a DOM element |
+<table class="table">
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>toggle</code></td>
+      <td>Toggles a collapsible element to shown or hidden. <strong>Returns to the caller before the collapsible element has actually been shown or hidden</strong> (i.e. before the <code>shown.bs.collapse</code> or <code>hidden.bs.collapse</code> event occurs).</td>
+    </tr>
+    <tr>
+      <td><code>show</code></td>
+      <td>Shows a collapsible element. <strong>Returns to the caller before the collapsible element has actually been shown</strong> (e.g., before the <code>shown.bs.collapse</code> event occurs). </td>
+    </tr>
+    <tr>
+      <td><code>hide</code></td>
+      <td>Hides a collapsible element. <strong>Returns to the caller before the collapsible element has actually been hidden</strong> (e.g., before the <code>hidden.bs.collapse</code> event occurs).</td>
+    </tr>
+    <tr>
+      <td><code>dispose</code></td>
+      <td>Destroys an element's collapse.</td>
+    </tr>
+    <tr>
+      <td><code>_getInstance</code></td>
+      <td>Static method which allows you to get the collapse instance associated with a DOM element.</td>
+    </tr>
+  </tbody>
+</table>
 
 ### Events
 
 Bootstrap's collapse class exposes a few events for hooking into collapse functionality.
 
-<table class="table table-bordered table-striped">
+<table class="table">
   <thead>
     <tr>
-      <th style="width: 150px;">Event Type</th>
+      <th style="width: 150px;">Event type</th>
       <th>Description</th>
     </tr>
   </thead>

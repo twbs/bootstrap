@@ -2,7 +2,7 @@
 layout: docs
 title: Input group
 description: Easily extend form controls by adding text, buttons, or button groups on either side of textual inputs, custom selects, and custom file inputs.
-group: components
+group: forms
 toc: true
 ---
 
@@ -268,7 +268,7 @@ Input groups include support for custom selects and custom file inputs. Browser 
   <div class="input-group-prepend">
     <label class="input-group-text" for="inputGroupSelect01">Options</label>
   </div>
-  <select class="custom-select" id="inputGroupSelect01">
+  <select class="form-select" id="inputGroupSelect01">
     <option selected>Choose...</option>
     <option value="1">One</option>
     <option value="2">Two</option>
@@ -277,7 +277,7 @@ Input groups include support for custom selects and custom file inputs. Browser 
 </div>
 
 <div class="input-group mb-3">
-  <select class="custom-select" id="inputGroupSelect02">
+  <select class="form-select" id="inputGroupSelect02">
     <option selected>Choose...</option>
     <option value="1">One</option>
     <option value="2">Two</option>
@@ -292,7 +292,7 @@ Input groups include support for custom selects and custom file inputs. Browser 
   <div class="input-group-prepend">
     <button class="btn btn-outline-secondary" type="button">Button</button>
   </div>
-  <select class="custom-select" id="inputGroupSelect03" aria-label="Example select with button addon">
+  <select class="form-select" id="inputGroupSelect03" aria-label="Example select with button addon">
     <option selected>Choose...</option>
     <option value="1">One</option>
     <option value="2">Two</option>
@@ -301,7 +301,7 @@ Input groups include support for custom selects and custom file inputs. Browser 
 </div>
 
 <div class="input-group">
-  <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+  <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
     <option selected>Choose...</option>
     <option value="1">One</option>
     <option value="2">Two</option>
@@ -320,21 +320,21 @@ Input groups include support for custom selects and custom file inputs. Browser 
   <div class="input-group-prepend">
     <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
   </div>
-  <div class="custom-file">
-    <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-    <label class="custom-file-label" for="inputGroupFile01">
-      <span class="custom-file-text">Choose file...</span>
-      <span class="custom-file-button">Browse</span>
+  <div class="form-file">
+    <input type="file" class="form-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+    <label class="form-file-label" for="inputGroupFile01">
+      <span class="form-file-text">Choose file...</span>
+      <span class="form-file-button">Browse</span>
     </label>
   </div>
 </div>
 
 <div class="input-group mb-3">
-  <div class="custom-file">
-    <input type="file" class="custom-file-input" id="inputGroupFile02">
-    <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">
-      <span class="custom-file-text">Choose file...</span>
-      <span class="custom-file-button">Browse</span>
+  <div class="form-file">
+    <input type="file" class="form-file-input" id="inputGroupFile02">
+    <label class="form-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">
+      <span class="form-file-text">Choose file...</span>
+      <span class="form-file-button">Browse</span>
     </label>
   </div>
   <div class="input-group-append">
@@ -346,21 +346,21 @@ Input groups include support for custom selects and custom file inputs. Browser 
   <div class="input-group-prepend">
     <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon03">Button</button>
   </div>
-  <div class="custom-file">
-    <input type="file" class="custom-file-input" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03">
-    <label class="custom-file-label" for="inputGroupFile03">
-      <span class="custom-file-text">Choose file...</span>
-      <span class="custom-file-button">Browse</span>
+  <div class="form-file">
+    <input type="file" class="form-file-input" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03">
+    <label class="form-file-label" for="inputGroupFile03">
+      <span class="form-file-text">Choose file...</span>
+      <span class="form-file-button">Browse</span>
     </label>
   </div>
 </div>
 
 <div class="input-group">
-  <div class="custom-file">
-    <input type="file" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
-    <label class="custom-file-label" for="inputGroupFile04">
-      <span class="custom-file-text">Choose file...</span>
-      <span class="custom-file-button">Browse</span>
+  <div class="form-file">
+    <input type="file" class="form-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
+    <label class="form-file-label" for="inputGroupFile04">
+      <span class="form-file-text">Choose file...</span>
+      <span class="form-file-button">Browse</span>
     </label>
   </div>
   <div class="input-group-append">

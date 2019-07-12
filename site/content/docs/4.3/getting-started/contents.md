@@ -48,7 +48,7 @@ This is the most basic form of Bootstrap: precompiled files for quick drop-in us
 
 Bootstrap includes a handful of options for including some or all of our compiled CSS.
 
-<table class="table table-bordered">
+<table class="table">
   <thead>
     <tr>
       <th scope="col">CSS files</th>
@@ -64,30 +64,30 @@ Bootstrap includes a handful of options for including some or all of our compile
         <div><code class="font-weight-normal text-nowrap">bootstrap.css</code></div>
         <div><code class="font-weight-normal text-nowrap">bootstrap.min.css</code></div>
       </th>
-      <td class="text-success">Included</td>
-      <td class="text-success">Included</td>
-      <td class="text-success">Included</td>
-      <td class="text-success">Included</td>
+      <td>Included</td>
+      <td>Included</td>
+      <td>Included</td>
+      <td>Included</td>
     </tr>
     <tr>
       <th scope="row">
         <div><code class="font-weight-normal text-nowrap">bootstrap-grid.css</code></div>
         <div><code class="font-weight-normal text-nowrap">bootstrap-grid.min.css</code></div>
       </th>
-      <td><a class="text-warning" href="{{< docsref "/layout/grid" >}}">Only grid system</a></td>
-      <td class="bg-light text-muted">Not included</td>
-      <td class="bg-light text-muted">Not included</td>
-      <td><a class="text-warning" href="{{< docsref "/utilities/flex" >}}">Only flex utilities</a></td>
+      <td><a class="text-muted" href="{{< docsref "/layout/grid" >}}">Only grid system</a></td>
+      <td class="text-muted">&mdash;</td>
+      <td class="text-muted">&mdash;</td>
+      <td><a class="text-muted" href="{{< docsref "/utilities/flex" >}}">Only flex utilities</a></td>
     </tr>
     <tr>
       <th scope="row">
         <div><code class="font-weight-normal text-nowrap">bootstrap-reboot.css</code></div>
         <div><code class="font-weight-normal text-nowrap">bootstrap-reboot.min.css</code></div>
       </th>
-      <td class="bg-light text-muted">Not included</td>
-      <td><a class="text-warning" href="{{< docsref "/content/reboot" >}}">Only Reboot</a></td>
-      <td class="bg-light text-muted">Not included</td>
-      <td class="bg-light text-muted">Not included</td>
+      <td class="text-muted">&mdash;</td>
+      <td><a class="text-muted" href="{{< docsref "/content/reboot" >}}">Only Reboot</a></td>
+      <td class="text-muted">&mdash;</td>
+      <td class="text-muted">&mdash;</td>
     </tr>
   </tbody>
 </table>
@@ -96,7 +96,7 @@ Bootstrap includes a handful of options for including some or all of our compile
 
 Similarly, we have options for including some or all of our compiled JavaScript.
 
-<table class="table table-bordered">
+<table class="table">
   <thead>
     <tr>
       <th scope="col">JS files</th>
@@ -109,14 +109,14 @@ Similarly, we have options for including some or all of our compiled JavaScript.
         <div><code class="font-weight-normal text-nowrap">bootstrap.bundle.js</code></div>
         <div><code class="font-weight-normal text-nowrap">bootstrap.bundle.min.js</code></div>
       </th>
-      <td class="text-success">Included</td>
+      <td>Included</td>
     </tr>
     <tr>
       <th scope="row">
         <div><code class="font-weight-normal text-nowrap">bootstrap.js</code></div>
         <div><code class="font-weight-normal text-nowrap">bootstrap.min.js</code></div>
       </th>
-      <td class="bg-light text-muted">Not included</td>
+      <td class="text-muted">&mdash;</td>
     </tr>
   </tbody>
 </table>

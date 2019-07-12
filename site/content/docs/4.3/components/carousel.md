@@ -230,7 +230,7 @@ var carousel = new bootstrap.Carousel(myCarousel)
 
 Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-`, as in `data-interval=""`.
 
-<table class="table table-bordered table-striped">
+<table class="table">
   <thead>
     <tr>
       <th style="width: 100px;">Name</th>
@@ -296,17 +296,44 @@ var carousel = new bootstrap.Carousel(myCarousel, {
 })
 {{< /highlight >}}
 
-
-| Method | Description |
-| --- | --- |
-| `cycle` | Cycles through the carousel items from left to right. |
-| `pause` | Stops the carousel from cycling through items. |
-| `prev` | Cycles to the previous item. **Returns to the caller before the previous item has been shown** (i.e. before the `slid.bs.carousel` event occurs). |
-| `next` | Cycles to the next item. **Returns to the caller before the next item has been shown** (i.e. before the `slid.bs.carousel` event occurs). |
-| `nextWhenVisible` | Only go to the next slide when the page, carousel and the carousel parent is visible. |
-| `to` | Cycles the carousel to a particular frame (0 based, similar to an array). **Returns to the caller before the target item has been shown** (i.e. before the `slid.bs.carousel` event occurs). |
-| `dispose` | Destroys an element's carousel. |
-| `_getInstance` | *Static* method which allows you to get the carousel instance associated with a DOM element |
+<table class="table">
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>cycle</code></td>
+      <td>Cycles through the carousel items from left to right.</td>
+    </tr>
+    <tr>
+      <td><code>pause</code></td>
+      <td>Stops the carousel from cycling through items.</td>
+    </tr>
+    <tr>
+      <td><code>prev</code></td>
+      <td>Cycles to the previous item. <strong>Returns to the caller before the previous item has been shown</strong> (e.g., before the <code>slid.bs.carousel</code> event occurs).</td>
+    </tr>
+    <tr>
+      <td><code>next</code></td>
+      <td>Cycles to the next item. <strong>Returns to the caller before the next item has been shown</strong> (e.g., before the <code>slid.bs.carousel</code> event occurs).</td>
+    </tr>
+    <tr>
+      <td><code>nextWhenVisible</code></td>
+      <td>Cycles the carousel to a particular frame (0 based, similar to an array). <strong>Returns to the caller before the target item has been shown</strong> (e.g., before the <code>slid.bs.carousel</code> event occurs).</td>
+    </tr>
+    <tr>
+      <td><code>dispose</code></td>
+      <td>Destroys an element's carousel.</td>
+    </tr>
+    <tr>
+      <td><code>_getInstance</code></td>
+      <td>Static method which allows you to get the carousel instance associated with a DOM element.</td>
+    </tr>
+  </tbody>
+</table>
 
 ### Events
 
@@ -319,21 +346,21 @@ Bootstrap's carousel class exposes two events for hooking into carousel function
 
 All carousel events are fired at the carousel itself (i.e. at the `<div class="carousel">`).
 
-<table class="table table-bordered table-striped">
+<table class="table">
   <thead>
     <tr>
-      <th style="width: 150px;">Event Type</th>
+      <th style="width: 150px;">Event type</th>
       <th>Description</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>slide.bs.carousel</td>
-      <td>This event fires immediately when the <code>slide</code> instance method is invoked.</td>
+      <td><code>slide.bs.carousel</code></td>
+      <td>Fires immediately when the <code>slide</code> instance method is invoked.</td>
     </tr>
     <tr>
-      <td>slid.bs.carousel</td>
-      <td>This event is fired when the carousel has completed its slide transition.</td>
+      <td><code>slid.bs.carousel</code></td>
+      <td>Fired when the carousel has completed its slide transition.</td>
     </tr>
   </tbody>
 </table>
