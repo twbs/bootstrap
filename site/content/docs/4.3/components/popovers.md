@@ -153,7 +153,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 Note that for security reasons the `sanitize`, `sanitizeFn` and `whiteList` options cannot be supplied using data attributes.
 {{< /callout >}}
 
-<table class="table table-bordered table-striped">
+<table class="table">
   <thead>
     <tr>
       <th style="width: 100px;">Name</th>
@@ -356,10 +356,10 @@ var popover = bootstrap.Popover._getInstance(exampleTriggerEl) // Returns a Boot
 
 ### Events
 
-<table class="table table-bordered table-striped">
+<table class="table">
   <thead>
     <tr>
-      <th style="width: 150px;">Event Type</th>
+      <th style="width: 150px;">Event type</th>
       <th>Description</th>
     </tr>
   </thead>

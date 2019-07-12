@@ -351,8 +351,8 @@ $hr-margin-y:                 $spacer !default;
 //
 // Customizes the `.table` component with basic values, each used across all table variations.
 
-$table-cell-padding:          .75rem !default;
-$table-cell-padding-sm:       .3rem !default;
+$table-cell-padding:          .5rem !default;
+$table-cell-padding-sm:       .25rem !default;
 
 $table-color:                 $body-color !default;
 $table-bg:                    null !default;
@@ -366,6 +366,7 @@ $table-border-color:          $border-color !default;
 
 $table-head-bg:               $gray-200 !default;
 $table-head-color:            $gray-700 !default;
+$table-head-border-color:     $gray-700 !default;
 
 $table-dark-color:            $white !default;
 $table-dark-bg:               $gray-800 !default;
@@ -506,17 +507,61 @@ $input-height-lg:                       calc(#{$input-line-height-lg * 1em} + #{
 
 $input-transition:                      border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
 
+
+$form-check-input-width:                  1.25em !default;
+$form-check-min-height:                   $font-size-base * $line-height-base !default;
+$form-check-padding-left:                 $form-check-input-width + .5em !default;
+$form-check-margin-bottom:                .125rem !default;
+
+$form-check-input-active-filter:          brightness(90%) !default;
+
+$form-check-input-bg:                     $body-bg !default;
+$form-check-input-border:                 1px solid rgba(0, 0, 0, .25) !default;
+$form-check-input-border-radius:          .25em !default;
+$form-check-radio-border-radius:          50% !default;
+$form-check-input-focus-border:           $input-focus-border-color !default;
+$form-check-input-focus-box-shadow:       $input-btn-focus-box-shadow !default;
+
+$form-check-input-checked-color:          $component-active-color !default;
+$form-check-input-checked-bg-color:       $component-active-bg !default;
+$form-check-input-checked-border-color:   $form-check-input-checked-bg-color !default;
+$form-check-input-checked-bg-repeat:      no-repeat !default;
+$form-check-input-checked-bg-position:    center center !default;
+$form-check-input-checked-bg-size:        1em !default;
+$form-check-input-checked-bg-image:       str-replace(url('data:image/svg+xml;utf8,<svg viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path stroke="#{$form-check-input-checked-color}" stroke-width="3" d="M4 8.5L6.5 11l6-6" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"/></svg>'), "#", "%23") !default;
+$form-check-radio-checked-bg-image: str-replace(url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='#{$form-check-input-checked-color}'/%3e%3c/svg%3e"), "#", "%23") !default;
+
+$form-check-input-indeterminate-color:          $component-active-color !default;
+$form-check-input-indeterminate-bg-color:       $component-active-bg !default;
+$form-check-input-indeterminate-border-color:   $form-check-input-indeterminate-bg-color !default;
+$form-check-input-indeterminate-bg-repeat:      no-repeat !default;
+$form-check-input-indeterminate-bg-position:    center center !default;
+$form-check-input-indeterminate-bg-size:        1em !default;
+$form-check-input-indeterminate-bg-image:       str-replace(url('data:image/svg+xml;utf8,<svg viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M5 8h6" stroke="#{$form-check-input-indeterminate-color}" stroke-width="3" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"/></svg>'), "#", "%23") !default;
+
+$form-switch-color:               rgba(0, 0, 0, .25) !default;
+$form-switch-width:               2em !default;
+$form-switch-height:              $form-check-input-width !default;
+$form-switch-padding-left:        $form-switch-width + .5em !default;
+$form-switch-bg-image:            str-replace(url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='#{$form-switch-color}'/%3e%3c/svg%3e"), "#", "%23") !default;
+$form-switch-border-radius:       $form-switch-width !default;
+$form-switch-transition:          .2s ease-in-out !default;
+$form-switch-transition-property: background-position, background-color !default;
+
+$form-switch-focus-color:         hsla(211, 100%, 75%, 1) !default;
+$form-switch-focus-bg-image:      str-replace(url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='#{$form-switch-focus-color}'/%3e%3c/svg%3e"), "#", "%23") !default;
+
+$form-switch-checked-color:       $component-active-color !default;
+$form-switch-checked-bg-image:      str-replace(url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='#{$form-switch-checked-color}'/%3e%3c/svg%3e"), "#", "%23") !default;
+$form-switch-checked-bg-position:  right center !default;
+
 $form-text-margin-top:                  .25rem !default;
 
-$form-check-input-gutter:               1.25rem !default;
-$form-check-input-margin-y:             .3rem !default;
+$form-check-inline-margin-right:        1rem !default;
+
 $form-check-input-margin-x:             .25rem !default;
 
-$form-check-inline-margin-x:            .75rem !default;
-$form-check-inline-input-margin-x:      .3125rem !default;
-
 $form-grid-gutter-width:                10px !default;
-$form-group-margin-bottom:              1rem !default;
 
 $input-group-addon-color:               $input-color !default;
 $input-group-addon-bg:                  $gray-200 !default;
@@ -524,128 +569,83 @@ $input-group-addon-border-color:        $input-border-color !default;
 
 $custom-forms-transition:               background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
 
-$custom-control-gutter:                 .5rem !default;
-$custom-control-spacer-x:               1rem !default;
+$form-select-padding-y:           $input-padding-y !default;
+$form-select-padding-x:           $input-padding-x !default;
+$form-select-font-family:         $input-font-family !default;
+$form-select-font-size:           $input-font-size !default;
+$form-select-height:              $input-height !default;
+$form-select-indicator-padding:   1rem !default; // Extra padding to account for the presence of the background-image based indicator
+$form-select-font-weight:         $input-font-weight !default;
+$form-select-line-height:         $input-line-height !default;
+$form-select-color:               $input-color !default;
+$form-select-disabled-color:      $gray-600 !default;
+$form-select-bg:                  $input-bg !default;
+$form-select-disabled-bg:         $gray-200 !default;
+$form-select-bg-size:             16px 12px !default; // In pixels because image dimensions
+$form-select-indicator-color:     $gray-800 !default;
+$form-select-indicator:           str-replace(url('data:image/svg+xml;utf8,<svg viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path stroke="#{$form-select-indicator-color}" stroke-width="2px" d="M2 5l6 6 6-6" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"/></svg>'), "#", "%23") !default;
 
-$custom-control-indicator-size:         1rem !default;
-$custom-control-indicator-bg:           $input-bg !default;
+$form-select-background:          $form-select-indicator no-repeat right $form-select-padding-x center / $form-select-bg-size !default; // Used so we can have multiple background elements (e.g., arrow and feedback icon)
 
-$custom-control-indicator-bg-size:      50% 50% !default;
-$custom-control-indicator-box-shadow:   $input-box-shadow !default;
-$custom-control-indicator-border-color: $gray-500 !default;
-$custom-control-indicator-border-width: $input-border-width !default;
+$form-select-feedback-icon-padding-right: calc((1em + #{2 * $form-select-padding-y}) * 3 / 4 + #{$form-select-padding-x + $form-select-indicator-padding}) !default;
+$form-select-feedback-icon-position:      center right ($form-select-padding-x + $form-select-indicator-padding) !default;
+$form-select-feedback-icon-size:          $input-height-inner-half $input-height-inner-half !default;
 
-$custom-control-label-color:            null !default;
+$form-select-border-width:        $input-border-width !default;
+$form-select-border-color:        $input-border-color !default;
+$form-select-border-radius:       $border-radius !default;
+$form-select-box-shadow:          inset 0 1px 2px rgba($black, .075) !default;
 
-$custom-control-indicator-disabled-bg:          $input-disabled-bg !default;
-$custom-control-label-disabled-color:           $gray-600 !default;
+$form-select-focus-border-color:  $input-focus-border-color !default;
+$form-select-focus-width:         $input-focus-width !default;
+$form-select-focus-box-shadow:    0 0 0 $form-select-focus-width $input-btn-focus-color !default;
 
-$custom-control-indicator-checked-color:        $component-active-color !default;
-$custom-control-indicator-checked-bg:           $component-active-bg !default;
-$custom-control-indicator-checked-disabled-bg:  rgba(theme-color("primary"), .5) !default;
-$custom-control-indicator-checked-box-shadow:   none !default;
-$custom-control-indicator-checked-border-color: $custom-control-indicator-checked-bg !default;
+$form-select-padding-y-sm:        $input-padding-y-sm !default;
+$form-select-padding-x-sm:        $input-padding-x-sm !default;
+$form-select-font-size-sm:        $input-font-size-sm !default;
+$form-select-height-sm:           $input-height-sm !default;
 
-$custom-control-indicator-focus-box-shadow:     $input-focus-box-shadow !default;
-$custom-control-indicator-focus-border-color:   $input-focus-border-color !default;
+$form-select-padding-y-lg:        $input-padding-y-lg !default;
+$form-select-padding-x-lg:        $input-padding-x-lg !default;
+$form-select-font-size-lg:        $input-font-size-lg !default;
+$form-select-height-lg:           $input-height-lg !default;
 
-$custom-control-indicator-active-color:         $component-active-color !default;
-$custom-control-indicator-active-bg:            lighten($component-active-bg, 35%) !default;
-$custom-control-indicator-active-box-shadow:    none !default;
-$custom-control-indicator-active-border-color:  $custom-control-indicator-active-bg !default;
+$form-range-track-width:          100% !default;
+$form-range-track-height:         .5rem !default;
+$form-range-track-cursor:         pointer !default;
+$form-range-track-bg:             $gray-300 !default;
+$form-range-track-border-radius:  1rem !default;
+$form-range-track-box-shadow:     inset 0 .25rem .25rem rgba($black, .1) !default;
 
-$custom-checkbox-indicator-border-radius:       $border-radius !default;
-$custom-checkbox-indicator-icon-checked:        str-replace(url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='#{$custom-control-indicator-checked-color}' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e"), "#", "%23") !default;
+$form-range-thumb-width:                   1rem !default;
+$form-range-thumb-height:                  $form-range-thumb-width !default;
+$form-range-thumb-bg:                      $component-active-bg !default;
+$form-range-thumb-border:                  0 !default;
+$form-range-thumb-border-radius:           1rem !default;
+$form-range-thumb-box-shadow:              0 .1rem .25rem rgba($black, .1) !default;
+$form-range-thumb-focus-box-shadow:        0 0 0 1px $body-bg, $input-focus-box-shadow !default;
+$form-range-thumb-focus-box-shadow-width:  $input-focus-width !default; // For focus box shadow issue in IE/Edge
+$form-range-thumb-active-bg:               lighten($component-active-bg, 35%) !default;
+$form-range-thumb-disabled-bg:             $gray-500 !default;
 
-$custom-checkbox-indicator-indeterminate-bg:           $component-active-bg !default;
-$custom-checkbox-indicator-indeterminate-color:        $custom-control-indicator-checked-color !default;
-$custom-checkbox-indicator-icon-indeterminate:         str-replace(url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 4'%3e%3cpath stroke='#{$custom-checkbox-indicator-indeterminate-color}' d='M0 2h4'/%3e%3c/svg%3e"), "#", "%23") !default;
-$custom-checkbox-indicator-indeterminate-box-shadow:   none !default;
-$custom-checkbox-indicator-indeterminate-border-color: $custom-checkbox-indicator-indeterminate-bg !default;
+$form-file-height:                $input-height !default;
+$form-file-focus-border-color:    $input-focus-border-color !default;
+$form-file-focus-box-shadow:      $input-focus-box-shadow !default;
+$form-file-disabled-bg:           $input-disabled-bg !default;
 
-$custom-radio-indicator-border-radius:          50% !default;
-$custom-radio-indicator-icon-checked:           str-replace(url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='#{$custom-control-indicator-checked-color}'/%3e%3c/svg%3e"), "#", "%23") !default;
-
-$custom-switch-width:                           $custom-control-indicator-size * 1.75 !default;
-$custom-switch-indicator-border-radius:         $custom-control-indicator-size / 2 !default;
-$custom-switch-indicator-size:                  calc(#{$custom-control-indicator-size} - #{$custom-control-indicator-border-width * 4}) !default;
-
-$custom-select-padding-y:           $input-padding-y !default;
-$custom-select-padding-x:           $input-padding-x !default;
-$custom-select-font-family:         $input-font-family !default;
-$custom-select-font-size:           $input-font-size !default;
-$custom-select-height:              $input-height !default;
-$custom-select-indicator-padding:   1rem !default; // Extra padding to account for the presence of the background-image based indicator
-$custom-select-font-weight:         $input-font-weight !default;
-$custom-select-line-height:         $input-line-height !default;
-$custom-select-color:               $input-color !default;
-$custom-select-disabled-color:      $gray-600 !default;
-$custom-select-bg:                  $input-bg !default;
-$custom-select-disabled-bg:         $gray-200 !default;
-$custom-select-bg-size:             8px 10px !default; // In pixels because image dimensions
-$custom-select-indicator-color:     $gray-800 !default;
-$custom-select-indicator:           str-replace(url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='#{$custom-select-indicator-color}' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e"), "#", "%23") !default;
-$custom-select-background:          $custom-select-indicator no-repeat right $custom-select-padding-x center / $custom-select-bg-size !default; // Used so we can have multiple background elements (e.g., arrow and feedback icon)
-
-$custom-select-feedback-icon-padding-right: calc((1em + #{2 * $custom-select-padding-y}) * 3 / 4 + #{$custom-select-padding-x + $custom-select-indicator-padding}) !default;
-$custom-select-feedback-icon-position:      center right ($custom-select-padding-x + $custom-select-indicator-padding) !default;
-$custom-select-feedback-icon-size:          $input-height-inner-half $input-height-inner-half !default;
-
-$custom-select-border-width:        $input-border-width !default;
-$custom-select-border-color:        $input-border-color !default;
-$custom-select-border-radius:       $border-radius !default;
-$custom-select-box-shadow:          inset 0 1px 2px rgba($black, .075) !default;
-
-$custom-select-focus-border-color:  $input-focus-border-color !default;
-$custom-select-focus-width:         $input-focus-width !default;
-$custom-select-focus-box-shadow:    0 0 0 $custom-select-focus-width $input-btn-focus-color !default;
-
-$custom-select-padding-y-sm:        $input-padding-y-sm !default;
-$custom-select-padding-x-sm:        $input-padding-x-sm !default;
-$custom-select-font-size-sm:        $input-font-size-sm !default;
-$custom-select-height-sm:           $input-height-sm !default;
-
-$custom-select-padding-y-lg:        $input-padding-y-lg !default;
-$custom-select-padding-x-lg:        $input-padding-x-lg !default;
-$custom-select-font-size-lg:        $input-font-size-lg !default;
-$custom-select-height-lg:           $input-height-lg !default;
-
-$custom-range-track-width:          100% !default;
-$custom-range-track-height:         .5rem !default;
-$custom-range-track-cursor:         pointer !default;
-$custom-range-track-bg:             $gray-300 !default;
-$custom-range-track-border-radius:  1rem !default;
-$custom-range-track-box-shadow:     inset 0 .25rem .25rem rgba($black, .1) !default;
-
-$custom-range-thumb-width:                   1rem !default;
-$custom-range-thumb-height:                  $custom-range-thumb-width !default;
-$custom-range-thumb-bg:                      $component-active-bg !default;
-$custom-range-thumb-border:                  0 !default;
-$custom-range-thumb-border-radius:           1rem !default;
-$custom-range-thumb-box-shadow:              0 .1rem .25rem rgba($black, .1) !default;
-$custom-range-thumb-focus-box-shadow:        0 0 0 1px $body-bg, $input-focus-box-shadow !default;
-$custom-range-thumb-focus-box-shadow-width:  $input-focus-width !default; // For focus box shadow issue in IE/Edge
-$custom-range-thumb-active-bg:               lighten($component-active-bg, 35%) !default;
-$custom-range-thumb-disabled-bg:             $gray-500 !default;
-
-$custom-file-height:                $input-height !default;
-$custom-file-focus-border-color:    $input-focus-border-color !default;
-$custom-file-focus-box-shadow:      $input-focus-box-shadow !default;
-$custom-file-disabled-bg:           $input-disabled-bg !default;
-
-$custom-file-padding-y:             $input-padding-y !default;
-$custom-file-padding-x:             $input-padding-x !default;
-$custom-file-line-height:           $input-line-height !default;
-$custom-file-font-family:           $input-font-family !default;
-$custom-file-font-weight:           $input-font-weight !default;
-$custom-file-color:                 $input-color !default;
-$custom-file-bg:                    $input-bg !default;
-$custom-file-border-width:          $input-border-width !default;
-$custom-file-border-color:          $input-border-color !default;
-$custom-file-border-radius:         $input-border-radius !default;
-$custom-file-box-shadow:            $input-box-shadow !default;
-$custom-file-button-color:          $custom-file-color !default;
-$custom-file-button-bg:             $input-group-addon-bg !default;
+$form-file-padding-y:             $input-padding-y !default;
+$form-file-padding-x:             $input-padding-x !default;
+$form-file-line-height:           $input-line-height !default;
+$form-file-font-family:           $input-font-family !default;
+$form-file-font-weight:           $input-font-weight !default;
+$form-file-color:                 $input-color !default;
+$form-file-bg:                    $input-bg !default;
+$form-file-border-width:          $input-border-width !default;
+$form-file-border-color:          $input-border-color !default;
+$form-file-border-radius:         $input-border-radius !default;
+$form-file-box-shadow:            $input-box-shadow !default;
+$form-file-button-color:          $form-file-color !default;
+$form-file-button-bg:             $input-group-addon-bg !default;
 
 
 // Form validation
