@@ -286,9 +286,9 @@ $(function () {
 
   QUnit.test('selected tab should have aria-selected', function (assert) {
     assert.expect(8)
-    var tabsHTML = '<ul class="nav nav-tabs">' +
-        '<li><a class="nav-item active" href="#home" toggle="tab" aria-selected="true">Home</a></li>' +
-        '<li><a class="nav-item" href="#profile" toggle="tab" aria-selected="false">Profile</a></li>' +
+    var tabsHTML = '<ul class="nav nav-tabs" role="tablist">' +
+        '<li><a class="nav-item active" href="#home" data-toggle="tab" role="tab" aria-selected="true">Home</a></li>' +
+        '<li><a class="nav-item" href="#profile" data-toggle="tab" role="tab" aria-selected="false">Profile</a></li>' +
         '</ul>'
     var $tabs = $(tabsHTML).appendTo('#qunit-fixture')
 
