@@ -14,7 +14,7 @@
   margin: 0;
   opacity: 0;
 
-  &:focus ~ .form-file-label {
+  &:focus-within ~ .form-file-label {
     border-color: $form-file-focus-border-color;
     box-shadow: $form-file-focus-box-shadow;
   }
