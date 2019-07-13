@@ -88,10 +88,11 @@ $(function () {
     $(dropdownHTML).appendTo('#qunit-fixture')
     var $dropdown = $('#qunit-fixture').find('[data-toggle="dropdown"]').bootstrapDropdown()
     var $button = $('button[data-toggle="dropdown"]')
+    $button[0].focus()
     // Key escape
-    $button.trigger('focus').trigger($.Event('keydown', {
-      which: 27
-    }))
+    var keydown = new Event('keydown')
+    keydown.which = 27
+    $button[0].dispatchEvent(keydown)
     assert.ok(!$dropdown.parent('.dropdown').hasClass('show'), 'dropdown menu is not shown after escape pressed')
     done()
   })
