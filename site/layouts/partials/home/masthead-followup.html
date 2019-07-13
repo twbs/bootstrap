@@ -44,7 +44,9 @@
   </p>
   <a class="btn btn-lg btn-outline-primary mb-4" href="{{ .Site.Params.themes }}/">Browse themes</a>
   <div class="mx-5 border-bottom">
-    <img class="img-fluid mt-3 mx-auto" src="/docs/{{ .Site.Params.docs_version }}/assets/img/bootstrap-themes@2x.png" alt="Bootstrap Themes" width="600">
+    <img class="img-fluid mt-3 mx-auto" srcset="/docs/{{ .Site.Params.docs_version }}/assets/img/bootstrap-themes.png,
+                                                /docs/{{ .Site.Params.docs_version }}/assets/img/bootstrap-themes@2x.png 2x"
+                                        src="/docs/{{ .Site.Params.docs_version }}/assets/img/bootstrap-themes.png" alt="Bootstrap Themes" width="500" height="200">
   </div>
 </div>
 
