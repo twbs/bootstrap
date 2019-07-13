@@ -505,7 +505,7 @@ $(function () {
     var tabsHTML = '<ul class="nav nav-tabs" role="tablist">' +
         '<li><a class="nav-item active" href="#home" data-toggle="tab" role="tab" aria-selected="true">Home</a></li>' +
         '<li><a class="nav-item" href="#profile" data-toggle="tab" role="tab" aria-selected="true">Profile</a></li>' +
-        '<li><a class="nav-item" href="##contact" data-toggle="tab" role="tab" aria-selected="true">Contact</a></li>' +
+        '<li><a class="nav-item" href="#contact" data-toggle="tab" role="tab" aria-selected="true">Contact</a></li>' +
         '</ul>' /* purposely incorrect, with all set to aria-selected="true" */
     var $tabs = $(tabsHTML).appendTo('#qunit-fixture')
     window.dispatchEvent(new Event('load'))
@@ -527,7 +527,7 @@ $(function () {
     var tabsHTML = '<ul class="nav nav-tabs" role="tablist">' +
         '<li><a class="nav-item active" href="#home" data-toggle="tab">Home</a></li>' +
         '<li><a class="nav-item" href="#profile" data-toggle="tab">Profile</a></li>' +
-        '<li><a class="nav-item" href="##contact" data-toggle="tab">Contact</a></li>' +
+        '<li><a class="nav-item" href="#contact" data-toggle="tab">Contact</a></li>' +
         '</ul>' /* purposely incorrect, left out aria-selected="true" on active one */
     var $tabs = $(tabsHTML).appendTo('#qunit-fixture')
     window.dispatchEvent(new Event('load'))
@@ -538,6 +538,171 @@ $(function () {
       assert.strictEqual($tabs.find('li:nth-child(3) a').attr('aria-selected'), 'false', 'third control has been given aria-selected="false"')
       done()
     }, 10)
+  })
+
+  QUnit.test('should correctly switch tabs in response to left/right cursor keys (for horizontal/default tablist) and ignore up/down cursor keys', function (assert) {
+    assert.expect(27)
+    var done = assert.async()
+
+    var tabsHTML = '<ul class="nav nav-tabs" role="tablist">' +
+        '<li><a class="nav-item active" href="#home" data-toggle="tab" role="tab" tabindex="0" aria-selected="true">Home</a></li>' +
+        '<li><a class="nav-item" href="#profile" data-toggle="tab" role="tab" tabindex="-1" aria-selected="false">Profile</a></li>' +
+        '<li><a class="nav-item" href="#contact" data-toggle="tab" role="tab" tabindex="-1" aria-selected="false">Contact</a></li>' +
+        '</ul>' +
+        '<div class="tab-pane show active" id="home" role="tabpanel">...</div>' +
+        '<div class="tab-pane" id="profile" role="tabpanel">...</div>' +
+        '<div class="tab-pane" id="contact" role="tabpanel">...</div>'
+    var $tabs = $(tabsHTML).appendTo('#qunit-fixture')
+
+    var $firstTab = $tabs.find('li:first-child a')
+    var $secondTab = $tabs.find('li:nth-child(2) a')
+    var $thirdTab = $tabs.find('li:nth-child(3) a')
+    $firstTab[0].focus() /* set focus to first tab */
+    assert.ok(document.activeElement === $firstTab[0], 'first tab successfully focused')
+    /* right cursor key */
+    var keyDown = new Event('keydown')
+    keyDown.which = 39
+    $firstTab[0].dispatchEvent(keyDown)
+    assert.ok(document.activeElement !== $firstTab[0], 'after 1st right cursor key, first tab not focused anymore')
+    assert.ok(!$firstTab.hasClass('active'), 'after 1st right cursor key, first tab not `.active` anymore')
+    assert.ok($firstTab.attr('aria-selected') === 'false', 'after 1st right cursor key, first tab has aria-selected="false"')
+    assert.ok($firstTab.attr('tabindex') === '-1', 'after 1st right cursor key, first tab has tabindex="-1"')
+    assert.ok(document.activeElement === $secondTab[0], 'after 1st right cursor key, second tab is focused')
+    assert.ok($secondTab.hasClass('active'), 'after 1st right cursor key, second tab is `.active`')
+    assert.ok($secondTab.attr('aria-selected') === 'true', 'after 1st right cursor key, second tab has aria-selected="true"')
+    assert.ok($secondTab.attr('tabindex') === '0', 'after 1st right cursor key, second tab has tabindex="0"')
+    /* right cursor key */
+    $secondTab[0].dispatchEvent(keyDown)
+    assert.ok(document.activeElement !== $secondTab[0], 'after 2nd right cursor key, second tab not focused anymore')
+    assert.ok(!$secondTab.hasClass('active'), 'after 2nd right cursor key, second tab not `.active` anymore')
+    assert.ok($secondTab.attr('aria-selected') === 'false', 'after 2nd right cursor key, second tab has aria-selected="false"')
+    assert.ok($secondTab.attr('tabindex') === '-1', 'after 2nd right cursor key, second tab has tabindex="-1"')
+    assert.ok(document.activeElement === $thirdTab[0], 'after 2nd right cursor key, third tab is focused')
+    assert.ok($thirdTab.hasClass('active'), 'after 2nd right cursor key, third tab is `.active`')
+    assert.ok($thirdTab.attr('aria-selected') === 'true', 'after 2nd right cursor key, third tab has aria-selected="true"')
+    assert.ok($thirdTab.attr('tabindex') === '0', 'after 2nd right cursor key, third tab has tabindex="0"')
+    /* left cursor key */
+    keyDown.which = 37
+    $thirdTab[0].dispatchEvent(keyDown)
+    assert.ok(document.activeElement !== $thirdTab[0], 'after left cursor key, third tab not focused anymore')
+    assert.ok(!$thirdTab.hasClass('active'), 'after left cursor key, third tab not `.active` anymore')
+    assert.ok($thirdTab.attr('aria-selected') === 'false', 'after left cursor key, third tab has aria-selected="false"')
+    assert.ok($thirdTab.attr('tabindex') === '-1', 'after left cursor key, third tab has tabindex="-1"')
+    assert.ok(document.activeElement === $secondTab[0], 'after left cursor key, second tab is focused')
+    assert.ok($secondTab.hasClass('active'), 'after left cursor key, second tab is `.active`')
+    assert.ok($secondTab.attr('aria-selected') === 'true', 'after left cursor key, second tab has aria-selected="true"')
+    assert.ok($secondTab.attr('tabindex') === '0', 'after left cursor key, second tab has tabindex="0"')
+    /* up cursor key */
+    keyDown.which = 38
+    $secondTab[0].dispatchEvent(keyDown)
+    assert.ok(document.activeElement === $secondTab[0], 'after up cursor key, second tab is still focused - no change')
+    /* down cursor key */
+    keyDown.which = 40
+    $secondTab[0].dispatchEvent(keyDown)
+    assert.ok(document.activeElement === $secondTab[0], 'after down cursor key, second tab is still focused - no change')
+    done()
+  })
+
+  QUnit.test('should correctly switch tabs in response to up/down cursor keys for vertical tablist and ignore left/right cursor keys', function (assert) {
+    assert.expect(27)
+    var done = assert.async()
+
+    var tabsHTML = '<ul class="nav nav-tabs" role="tablist" aria-orientation="vertical">' +
+        '<li><a class="nav-item active" href="#home" data-toggle="tab" role="tab" tabindex="0" aria-selected="true">Home</a></li>' +
+        '<li><a class="nav-item" href="#profile" data-toggle="tab" role="tab" tabindex="-1" aria-selected="false">Profile</a></li>' +
+        '<li><a class="nav-item" href="#contact" data-toggle="tab" role="tab" tabindex="-1" aria-selected="false">Contact</a></li>' +
+        '</ul>' +
+        '<div class="tab-pane show active" id="home" role="tabpanel">...</div>' +
+        '<div class="tab-pane" id="profile" role="tabpanel">...</div>' +
+        '<div class="tab-pane" id="contact" role="tabpanel">...</div>'
+    var $tabs = $(tabsHTML).appendTo('#qunit-fixture')
+
+    var $firstTab = $tabs.find('li:first-child a')
+    var $secondTab = $tabs.find('li:nth-child(2) a')
+    var $thirdTab = $tabs.find('li:nth-child(3) a')
+    $firstTab[0].focus() /* set focus to first tab */
+    assert.ok(document.activeElement === $firstTab[0], 'first tab successfully focused')
+    /* down cursor key */
+    var keyDown = new Event('keydown')
+    keyDown.which = 40
+    $firstTab[0].dispatchEvent(keyDown)
+    assert.ok(document.activeElement !== $firstTab[0], 'after 1st down cursor key, first tab not focused anymore')
+    assert.ok(!$firstTab.hasClass('active'), 'after 1st down cursor key, first tab not `.active` anymore')
+    assert.ok($firstTab.attr('aria-selected') === 'false', 'after 1st down cursor key, first tab has aria-selected="false"')
+    assert.ok($firstTab.attr('tabindex') === '-1', 'after 1st down cursor key, first tab has tabindex="-1"')
+    assert.ok(document.activeElement === $secondTab[0], 'after 1st down cursor key, second tab is focused')
+    assert.ok($secondTab.hasClass('active'), 'after 1st down cursor key, second tab is `.active`')
+    assert.ok($secondTab.attr('aria-selected') === 'true', 'after 1st down cursor key, second tab has aria-selected="true"')
+    assert.ok($secondTab.attr('tabindex') === '0', 'after 1st down cursor key, second tab has tabindex="0"')
+    /* down cursor key */
+    $secondTab[0].dispatchEvent(keyDown)
+    assert.ok(document.activeElement !== $secondTab[0], 'after 2nd down cursor key, second tab not focused anymore')
+    assert.ok(!$secondTab.hasClass('active'), 'after 2nd down cursor key, second tab not `.active` anymore')
+    assert.ok($secondTab.attr('aria-selected') === 'false', 'after 2nd down cursor key, second tab has aria-selected="false"')
+    assert.ok($secondTab.attr('tabindex') === '-1', 'after 2nd down cursor key, second tab has tabindex="-1"')
+    assert.ok(document.activeElement === $thirdTab[0], 'after 2nd down cursor key, third tab is focused')
+    assert.ok($thirdTab.hasClass('active'), 'after 2nd down cursor key, third tab is `.active`')
+    assert.ok($thirdTab.attr('aria-selected') === 'true', 'after 2nd down cursor key, third tab has aria-selected="true"')
+    assert.ok($thirdTab.attr('tabindex') === '0', 'after 2nd down cursor key, third tab has tabindex="0"')
+    /* up cursor key */
+    keyDown.which = 38
+    $thirdTab[0].dispatchEvent(keyDown)
+    assert.ok(document.activeElement !== $thirdTab[0], 'after up cursor key, third tab not focused anymore')
+    assert.ok(!$thirdTab.hasClass('active'), 'after  up cursor key, third tab not `.active` anymore')
+    assert.ok($thirdTab.attr('aria-selected') === 'false', 'after up cursor key, third tab has aria-selected="false"')
+    assert.ok($thirdTab.attr('tabindex') === '-1', 'after up cursor key, third tab has tabindex="-1"')
+    assert.ok(document.activeElement === $secondTab[0], 'after up cursor key, second tab is focused')
+    assert.ok($secondTab.hasClass('active'), 'after up cursor key, second tab is `.active`')
+    assert.ok($secondTab.attr('aria-selected') === 'true', 'after up cursor key, second tab has aria-selected="true"')
+    assert.ok($secondTab.attr('tabindex') === '0', 'after up cursor key, second tab has tabindex="0"')
+    /* left cursor key */
+    keyDown.which = 37
+    $secondTab[0].dispatchEvent(keyDown)
+    assert.ok(document.activeElement === $secondTab[0], 'after left cursor key, second tab is still focused - no change')
+    /* right cursor key */
+    keyDown.which = 39
+    $secondTab[0].dispatchEvent(keyDown)
+    assert.ok(document.activeElement === $secondTab[0], 'after right cursor key, second tab is still focused - no change')
+    done()
+  })
+
+  QUnit.test('should not switch tabs in response to cursor keys if tab panel still transitioning', function (assert) {
+    assert.expect(13)
+    var done = assert.async()
+
+    var tabsHTML = '<ul class="nav nav-tabs" role="tablist">' +
+        '<li><a class="nav-item active" href="#home" data-toggle="tab" role="tab" tabindex="0" aria-selected="true">Home</a></li>' +
+        '<li><a class="nav-item" href="#profile" data-toggle="tab" role="tab" tabindex="-1" aria-selected="false">Profile</a></li>' +
+        '<li><a class="nav-item" href="#contact" data-toggle="tab" role="tab" tabindex="-1" aria-selected="false">Contact</a></li>' +
+        '</ul>' +
+        '<div class="tab-pane fade show active" id="home" role="tabpanel">...</div>' +
+        '<div class="tab-pane fade" id="profile" role="tabpanel">...</div>' +
+        '<div class="tab-pane fade" id="contact" role="tabpanel">...</div>'
+    var $tabs = $(tabsHTML).appendTo('#qunit-fixture')
+
+    var $firstTab = $tabs.find('li:first-child a')
+    var $secondTab = $tabs.find('li:nth-child(2) a')
+    $firstTab[0].focus() /* set focus to first tab */
+    assert.ok(document.activeElement === $firstTab[0], 'first tab successfully focused')
+    /* right cursor key */
+    var keyDown = new Event('keydown')
+    keyDown.which = 39
+    $firstTab[0].dispatchEvent(keyDown)
+    assert.ok(document.activeElement !== $firstTab[0], 'after 1st right cursor key, first tab not focused anymore')
+    assert.ok(!$firstTab.hasClass('active'), 'after 1st right cursor key, first tab not `.active` anymore')
+    assert.ok($firstTab.attr('aria-selected') === 'false', 'after 1st right cursor key, first tab has aria-selected="false"')
+    assert.ok($firstTab.attr('tabindex') === '-1', 'after 1st right cursor key, first tab has tabindex="-1"')
+    assert.ok(document.activeElement === $secondTab[0], 'after 1st right cursor key, second tab is focused')
+    assert.ok($secondTab.hasClass('active'), 'after 1st right cursor key, second tab is `.active`')
+    assert.ok($secondTab.attr('aria-selected') === 'true', 'after 1st right cursor key, second tab has aria-selected="true"')
+    assert.ok($secondTab.attr('tabindex') === '0', 'after 1st right cursor key, second tab has tabindex="0"')
+    /* right cursor key - as this is fired so quickly, the tab panel is still transitioning */
+    $secondTab[0].dispatchEvent(keyDown)
+    assert.ok(document.activeElement === $secondTab[0], 'after 2nd right cursor key, while tab panel still transitioning, second tab is still focused')
+    assert.ok($secondTab.hasClass('active'), 'after 2nd right cursor key, while tab panel still transitioning, second tab is still `.active`')
+    assert.ok($secondTab.attr('aria-selected') === 'true', 'after 2nd right cursor key, while tab panel still transitioning, second tab still has aria-selected="true"')
+    assert.ok($secondTab.attr('tabindex') === '0', 'after 2nd right cursor key, while tab panel still transitioning, second tab still has tabindex="0"')
+    done()
   })
 
   QUnit.test('should return the version', function (assert) {
