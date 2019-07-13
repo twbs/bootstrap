@@ -245,10 +245,6 @@ class Tab {
 
     const tabs = makeArray(SelectorEngine.find(Selector.DATA_TOGGLE, tablist))
 
-    if (!tabs.length) {
-      return
-    }
-
     let index = tabs.indexOf(event.target)
     const tabInstance = Data.getData(tabs[index], DATA_KEY) || new Tab(tabs[index])
 
@@ -264,10 +260,6 @@ class Tab {
     // Right / Down
     if ((event.which === ARROW_RIGHT_KEYCODE || event.which === ARROW_DOWN_KEYCODE) && index < tabs.length - 1) {
       index++
-    }
-
-    if (index < 0) {
-      index = 0
     }
 
     tabs[index].focus()
