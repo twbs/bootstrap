@@ -2,10 +2,47 @@
 // Main navbar
 //
 
+.bd-subnavbar {
+  background-color: rgba(#fff, .75);
+  backdrop-filter: blur(1rem);
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .05), inset 0 -1px 0 rgba(0, 0, 0, .15);
+
+  .booticon {
+    opacity: .25;
+  }
+
+  .dropdown-toggle {
+    @include font-size(100%);
+    text-decoration: none;
+  }
+
+  .dropdown-menu {
+    @include font-size(90%);
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .05);
+  }
+
+  @include media-breakpoint-up(md) {
+    @supports (position: sticky) {
+      position: sticky;
+      top: 0;
+      z-index: 1071; // over everything in bootstrap
+    }
+  }
+}
+
+.link-dark {
+  font-weight: 500;
+  color: $dark;
+
+  &:hover {
+    color: $blue;
+    text-decoration: none;
+  }
+}
+
 .bd-navbar {
   min-height: 4rem;
-  background-color: $bd-purple;
-  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .05), inset 0 -1px 0 rgba(0, 0, 0, .1);
+  background-color: $bd-purple-bright;
 
   @include media-breakpoint-down(md) {
     padding-right: .5rem;
@@ -23,14 +60,6 @@
         white-space: nowrap;
         -webkit-overflow-scrolling: touch;
       }
-    }
-  }
-
-  @include media-breakpoint-up(md) {
-    @supports (position: sticky) {
-      position: sticky;
-      top: 0;
-      z-index: 1071; // over everything in bootstrap
     }
   }
 

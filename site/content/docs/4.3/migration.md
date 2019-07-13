@@ -53,16 +53,25 @@ Changes to any layout tools and our grid system.
 Changes to Reboot, typography, tables, and more.
 
 - **Todo:** Make RFS enabled by default
+- Reset default horizontal `padding` on `<ul>` and `<ol>` elements from browser default `40px` to `2rem`.
 
 ## Forms
 
-- Dropped support for `.form-control-plaintext` inside `.input-group`
-- **Todo:** Move forms documentation to it's own top-level section
-- **Todo:** Rearrange source Sass files (under `scss/forms/`)
-- **Todo:** Combine native and custom checkboxes and radios
-- **Todo:** Rewrite checks to support sizing (via `em`/`font-size` or explicit modifier classes)
-- **Todo:** Combine native and custom selects
-- **Todo:** Combine native and custom file and range inputs
+- Rearranged form documentation under its own top-level section.
+  - Split out old Forms page into several subpages
+  - Moved input groups docs under new Forms section
+- Rearranged source Sass files under `scss/forms/`, including moving over input group styles.
+- Combined native and custom checkboxes and radios into single `.form-check` class.
+  - New checks support sizing via `em`/`font-size` or explicit modifier classes now.
+  - Dropped `.custom-control` and associated classes.
+- Combined native and custom selects into `.form-select`.
+  - Dropped `.custom-select` and associated classes.
+- Dropped native `.form-control-file` and `.form-control-range` components.
+- Renamed `.custom-file` to `.form-file` (including variables).
+- Refactored `.form-file` markup to resolve some visual bugs while allowing translation and button text changes via HTML instead of CSS.
+- Renamed `.custom-range` to `.form-range` (including variables).
+- Dropped `.form-group` for margin utilities (we've replaced our docs examples with `.mb-3`).
+- Dropped support for `.form-control-plaintext` inside `.input-group`s.
 
 ## Components
 

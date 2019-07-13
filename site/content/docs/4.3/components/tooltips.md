@@ -148,7 +148,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 Note that for security reasons the `sanitize`, `sanitizeFn` and `whiteList` options cannot be supplied using data attributes.
 {{< /callout >}}
 
-<table class="table table-bordered table-striped">
+<table class="table">
   <thead>
     <tr>
       <th style="width: 100px;">Name</th>
@@ -343,10 +343,10 @@ Updates the position of an element's tooltip.
 
 ### Events
 
-<table class="table table-bordered table-striped">
+<table class="table">
   <thead>
     <tr>
-      <th style="width: 150px;">Event Type</th>
+      <th style="width: 150px;">Event type</th>
       <th>Description</th>
     </tr>
   </thead>

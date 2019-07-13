@@ -55,20 +55,64 @@ To hide elements simply use the `.d-none` class or one of the `.d-{sm,md,lg,xl}-
 
 To show an element only on a given interval of screen sizes you can combine one `.d-*-none` class with a `.d-*-*` class, for example `.d-none .d-md-block .d-xl-none` will hide the element for all screen sizes except on medium and large devices.
 
-| Screen Size        | Class |
-| ---                | --- |
-| Hidden on all      | `.d-none` |
-| Hidden only on xs  | `.d-none .d-sm-block` |
-| Hidden only on sm  | `.d-sm-none .d-md-block` |
-| Hidden only on md  | `.d-md-none .d-lg-block` |
-| Hidden only on lg  | `.d-lg-none .d-xl-block` |
-| Hidden only on xl  | `.d-xl-none` |
-| Visible on all     | `.d-block` |
-| Visible only on xs | `.d-block .d-sm-none` |
-| Visible only on sm | `.d-none .d-sm-block .d-md-none` |
-| Visible only on md | `.d-none .d-md-block .d-lg-none` |
-| Visible only on lg | `.d-none .d-lg-block .d-xl-none` |
-| Visible only on xl | `.d-none .d-xl-block` |
+<table>
+  <thead>
+    <tr>
+      <th>Screen size</th>
+      <th>Class</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Hidden on all</td>
+      <td><code>.d-none</code></td>
+    </tr>
+    <tr>
+      <td>Hidden only on xs</td>
+      <td><code>.d-none .d-sm-block</code></td>
+    </tr>
+    <tr>
+      <td>Hidden only on sm</td>
+      <td><code>.d-sm-none .d-md-block</code></td>
+    </tr>
+    <tr>
+      <td>Hidden only on md</td>
+      <td><code>.d-md-none .d-lg-block</code></td>
+    </tr>
+    <tr>
+      <td>Hidden only on lg</td>
+      <td><code>.d-lg-none .d-xl-block</code></td>
+    </tr>
+    <tr>
+      <td>Hidden only on xl</td>
+      <td><code>.d-xl-none</code></td>
+    </tr>
+    <tr>
+      <td>Visible on all</td>
+      <td><code>.d-block</code></td>
+    </tr>
+    <tr>
+      <td>Visible only on xs</td>
+      <td><code>.d-block .d-sm-none</code></td>
+    </tr>
+    <tr>
+      <td>Visible only on sm</td>
+      <td><code>.d-none .d-sm-block .d-md-none</code></td>
+    </tr>
+    <tr>
+      <td>Visible only on md</td>
+      <td><code>.d-none .d-md-block .d-lg-none</code></td>
+    </tr>
+    <tr>
+      <td>Visible only on lg</td>
+      <td><code>.d-none .d-lg-block .d-xl-none</code></td>
+    </tr>
+    <tr>
+      <td>Visible only on xl</td>
+      <td><code>.d-none .d-xl-block</code></td>
+    </tr>
+  </tbody>
+</table>
 
 {{< example >}}
 <div class="d-lg-none">hide on lg and wider screens</div>
