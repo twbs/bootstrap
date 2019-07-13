@@ -105,6 +105,7 @@ class Tab {
     }
 
     let hideEvent = null
+    this.isTransitioning = true
 
     if (previous) {
       hideEvent = EventHandler.trigger(previous, Event.HIDE, {
@@ -137,6 +138,7 @@ class Tab {
       EventHandler.trigger(this._element, Event.SHOWN, {
         relatedTarget: previous
       })
+      this.isTransitioning = false
     }
 
     if (target) {
@@ -229,7 +231,8 @@ class Tab {
       tabListOrientation = Orientation.HORIZONTAL
     }
 
-    if ((tabListOrientation === Orientation.HORIZONTAL && event.which !== ARROW_LEFT_KEYCODE && event.which !== ARROW_RIGHT_KEYCODE) || (tabListOrientation === Orientation.VERTICAL && event.which !== ARROW_UP_KEYCODE && event.which !== ARROW_DOWN_KEYCODE)) {
+    if ((tabListOrientation === Orientation.HORIZONTAL && event.which !== ARROW_LEFT_KEYCODE && event.which !== ARROW_RIGHT_KEYCODE) ||
+      (tabListOrientation === Orientation.VERTICAL && event.which !== ARROW_UP_KEYCODE && event.which !== ARROW_DOWN_KEYCODE)) {
       return
     }
 
@@ -247,12 +250,19 @@ class Tab {
     }
 
     let index = tabs.indexOf(event.target)
+    const tabInstance = Data.getData(tabs[index], DATA_KEY) || new Tab(tabs[index])
 
-    if ((event.which === ARROW_LEFT_KEYCODE || event.which === ARROW_UP_KEYCODE) && index > 0) { // Left / Up
+    if (tabInstance.isTransitioning) {
+      return
+    }
+
+    // Left / Up
+    if ((event.which === ARROW_LEFT_KEYCODE || event.which === ARROW_UP_KEYCODE) && index > 0) {
       index--
     }
 
-    if ((event.which === ARROW_RIGHT_KEYCODE || event.which === ARROW_DOWN_KEYCODE) && index < tabs.length - 1) { // Right / Down
+    // Right / Down
+    if ((event.which === ARROW_RIGHT_KEYCODE || event.which === ARROW_DOWN_KEYCODE) && index < tabs.length - 1) {
       index++
     }
 
@@ -276,27 +286,28 @@ class Tab {
  */
 
 EventHandler.on(window, Event.LOAD_DATA_API, () => {
-  makeArray(SelectorEngine.find(Selector.TABLIST)).forEach(tablist => {
-    const tabs = makeArray(SelectorEngine.find(Selector.DATA_TOGGLE, tablist))
-    let selectedTabFound = false
+  makeArray(SelectorEngine.find(Selector.TABLIST))
+    .forEach(tablist => {
+      const tabs = makeArray(SelectorEngine.find(Selector.DATA_TOGGLE, tablist))
+      let selectedTabFound = false
 
-    // iterate over each tab in the tablist, make sure they have correct tabindex/aria-selected
-    tabs.forEach(tab => {
-      if (tab.getAttribute('aria-selected') === 'true' && !selectedTabFound) {
-        tab.setAttribute('tabindex', '0')
-        selectedTabFound = true
-      } else {
-        tab.setAttribute('tabindex', '-1')
-        tab.setAttribute('aria-selected', 'false')
+      // iterate over each tab in the tablist, make sure they have correct tabindex/aria-selected
+      tabs.forEach(tab => {
+        if (tab.getAttribute('aria-selected') === 'true' && !selectedTabFound) {
+          tab.setAttribute('tabindex', '0')
+          selectedTabFound = true
+        } else {
+          tab.setAttribute('tabindex', '-1')
+          tab.setAttribute('aria-selected', 'false')
+        }
+      })
+
+      // if none of the tabs were explicitly marked as selected, pick first one
+      if (!selectedTabFound) {
+        tabs[0].setAttribute('tabindex', '0')
+        tabs[0].setAttribute('aria-selected', 'true')
       }
     })
-
-    // if none of the tabs were explicitly marked as selected, pick first one
-    if (!selectedTabFound) {
-      tabs[0].setAttribute('tabindex', '0')
-      tabs[0].setAttribute('aria-selected', 'true')
-    }
-  })
 })
 EventHandler.on(document, Event.KEYDOWN_DATA_API, Selector.DATA_TOGGLE, Tab._dataApiKeydownHandler)
 EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
