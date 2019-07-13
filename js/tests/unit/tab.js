@@ -498,6 +498,48 @@ $(function () {
     $('#secondNav')[0].click()
   })
 
+  QUnit.test('should initialize tab list: only one tab control focusable and aria-selected', function (assert) {
+    assert.expect(5)
+    var done = assert.async()
+
+    var tabsHTML = '<ul class="nav nav-tabs" role="tablist">' +
+        '<li><a class="nav-item active" href="#home" data-toggle="tab" role="tab" aria-selected="true">Home</a></li>' +
+        '<li><a class="nav-item" href="#profile" data-toggle="tab" role="tab" aria-selected="true">Profile</a></li>' +
+        '<li><a class="nav-item" href="##contact" data-toggle="tab" role="tab" aria-selected="true">Contact</a></li>' +
+        '</ul>' /* purposely incorrect, with all set to aria-selected="true" */
+    var $tabs = $(tabsHTML).appendTo('#qunit-fixture')
+    window.dispatchEvent(new Event('load'))
+
+    setTimeout(function () {
+      assert.strictEqual($tabs.find('li:first-child a').attr('tabindex'), '0', 'first found aria-selected="true" control has been given tabindex="0"')
+      assert.strictEqual($tabs.find('li:nth-child(2) a').attr('tabindex'), '-1', 'second control has been given tabindex="-1"')
+      assert.strictEqual($tabs.find('li:nth-child(2) a').attr('aria-selected'), 'false', 'second control has been given aria-selected="false"')
+      assert.strictEqual($tabs.find('li:nth-child(3) a').attr('tabindex'), '-1', 'third control has been given tabindex="-1"')
+      assert.strictEqual($tabs.find('li:nth-child(3) a').attr('aria-selected'), 'false', 'third control has been given aria-selected="false"')
+      done()
+    }, 10)
+  })
+
+  QUnit.test('should initialize tab list: if no tab control has aria-selected="true", set it to the first one', function (assert) {
+    assert.expect(3)
+    var done = assert.async()
+
+    var tabsHTML = '<ul class="nav nav-tabs" role="tablist">' +
+        '<li><a class="nav-item active" href="#home" data-toggle="tab">Home</a></li>' +
+        '<li><a class="nav-item" href="#profile" data-toggle="tab">Profile</a></li>' +
+        '<li><a class="nav-item" href="##contact" data-toggle="tab">Contact</a></li>' +
+        '</ul>' /* purposely incorrect, left out aria-selected="true" on active one */
+    var $tabs = $(tabsHTML).appendTo('#qunit-fixture')
+    window.dispatchEvent(new Event('load'))
+
+    setTimeout(function () {
+      assert.strictEqual($tabs.find('li:first-child a').attr('aria-selected'), 'true', 'first control has been given aria-selected="true"')
+      assert.strictEqual($tabs.find('li:nth-child(2) a').attr('aria-selected'), 'false', 'second control has been given aria-selected="false"')
+      assert.strictEqual($tabs.find('li:nth-child(3) a').attr('aria-selected'), 'false', 'third control has been given aria-selected="false"')
+      done()
+    }, 10)
+  })
+
   QUnit.test('should return the version', function (assert) {
     assert.expect(1)
     assert.strictEqual(typeof Tab.VERSION, 'string')
