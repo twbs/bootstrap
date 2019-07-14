@@ -404,11 +404,6 @@ Here are the variables we include (note that the `:root` is required). They're l
   --danger: #dc3545;
   --light: #f8f9fa;
   --dark: #343a40;
-  --breakpoint-xs: 0;
-  --breakpoint-sm: 576px;
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 992px;
-  --breakpoint-xl: 1200px;
   --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
@@ -424,27 +419,5 @@ body {
 }
 a {
   color: var(--blue);
-}
-{{< /highlight >}}
-
-### Breakpoint variables
-
-While we originally included breakpoints in our CSS variables (e.g., `--breakpoint-md`), **these are not supported in media queries**, but they can still be used _within_ rulesets in media queries. These breakpoint variables remain in the compiled CSS for backward compatibility given they can be utilized by JavaScript. [Learn more in the spec](https://www.w3.org/TR/css-variables-1/#using-variables).
-
-Here's an example of **what's not supported:**
-
-{{< highlight css >}}
-@media (min-width: var(--breakpoint-sm)) {
-  ...
-}
-{{< /highlight >}}
-
-And here's an example of **what is supported:**
-
-{{< highlight css >}}
-@media (min-width: 768px) {
-  .custom-element {
-    color: var(--primary);
-  }
 }
 {{< /highlight >}}
