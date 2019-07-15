@@ -87,6 +87,11 @@ Badges were overhauled to better differentiate themselves from buttons and to be
 - **Todo:** Removed `.badge-pill` for the `.rounded-pill` utility class
 - **Todo:** Removed badge's hover and focus styles for `a.badge` and `button.badge`.
 
+### Icons (New!)
+
+- Added new Bootstrap icons to the project for our documentation, form controls, and more.
+- Removed Open Iconic icons from project source code for form controls.
+
 ### Jumbotron
 
 - The jumbotron component is removed in favor of utility classes like `.bg-light` for the background color and `.p-*` classes to control padding.
