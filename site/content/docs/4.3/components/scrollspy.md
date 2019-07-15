@@ -287,7 +287,7 @@ Destroys an element's scrollspy.
 
 Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-`, as in `data-offset=""`.
 
-<table class="table table-bordered table-striped">
+<table class="table">
   <thead>
     <tr>
       <th style="width: 100px;">Name</th>
@@ -320,10 +320,10 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 
 ### Events
 
-<table class="table table-bordered table-striped">
+<table class="table">
   <thead>
     <tr>
-      <th style="width: 150px;">Event Type</th>
+      <th style="width: 150px;">Event type</th>
       <th>Description</th>
     </tr>
   </thead>

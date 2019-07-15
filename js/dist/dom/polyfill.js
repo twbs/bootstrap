@@ -4,10 +4,10 @@
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
   */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-  typeof define === 'function' && define.amd ? define(factory) :
-  (global = global || self, global.Polyfill = factory());
-}(this, function () { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+  typeof define === 'function' && define.amd ? define(['exports'], factory) :
+  (global = global || self, factory(global.Polyfill = {}));
+}(this, function (exports) { 'use strict';
 
   /**
    * --------------------------------------------------------------------------
@@ -34,94 +34,148 @@
     return prefix;
   };
 
-  /**
-   * --------------------------------------------------------------------------
-   * Bootstrap (v4.3.1): dom/polyfill.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
-   * --------------------------------------------------------------------------
-   */
-  /* istanbul ignore next */
+  /* istanbul ignore file */
+  var _Element$prototype = Element.prototype;
+      exports.matches = _Element$prototype.matches;
+      exports.closest = _Element$prototype.closest;
+  exports.find = Element.prototype.querySelectorAll;
+  exports.findOne = Element.prototype.querySelector;
 
-  var Polyfill = function () {
-    // MSEdge resets defaultPrevented flag upon dispatchEvent call if at least one listener is attached
-    var defaultPreventedPreservedOnDispatch = function () {
-      var e = new CustomEvent('Bootstrap', {
-        cancelable: true
-      });
-      var element = document.createElement('div');
-      element.addEventListener('Bootstrap', function () {
-        return null;
-      });
-      e.preventDefault();
-      element.dispatchEvent(e);
-      return e.defaultPrevented;
-    }();
+  exports.createCustomEvent = function createCustomEvent(eventName, params) {
+    var cEvent = new CustomEvent(eventName, params);
+    return cEvent;
+  };
 
-    var find = Element.prototype.querySelectorAll;
-    var findOne = Element.prototype.querySelector;
-    var scopeSelectorRegex = /:scope\b/;
-
-    var supportScopeQuery = function () {
-      var element = document.createElement('div');
-
-      try {
-        element.querySelectorAll(':scope *');
-      } catch (error) {
-        return false;
-      }
-
-      return true;
-    }();
-
-    if (!supportScopeQuery) {
-      find = function find(selector) {
-        if (!scopeSelectorRegex.test(selector)) {
-          return this.querySelectorAll(selector);
-        }
-
-        var hasId = Boolean(this.id);
-
-        if (!hasId) {
-          this.id = getUID('scope');
-        }
-
-        var nodeList = null;
-
-        try {
-          selector = selector.replace(scopeSelectorRegex, "#" + this.id);
-          nodeList = this.querySelectorAll(selector);
-        } finally {
-          if (!hasId) {
-            this.removeAttribute('id');
-          }
-        }
-
-        return nodeList;
+  if (typeof window.CustomEvent !== 'function') {
+    exports.createCustomEvent = function createCustomEvent(eventName, params) {
+      params = params || {
+        bubbles: false,
+        cancelable: false,
+        detail: null
       };
-
-      findOne = function findOne(selector) {
-        if (!scopeSelectorRegex.test(selector)) {
-          return this.querySelector(selector);
-        }
-
-        var matches = find.call(this, selector);
-
-        if (typeof matches[0] !== 'undefined') {
-          return matches[0];
-        }
-
-        return null;
-      };
-    }
-
-    return {
-      defaultPreventedPreservedOnDispatch: defaultPreventedPreservedOnDispatch,
-      find: find,
-      findOne: findOne
+      var evt = document.createEvent('CustomEvent');
+      evt.initCustomEvent(eventName, params.bubbles, params.cancelable, params.detail);
+      return evt;
     };
+  }
+
+  var workingDefaultPrevented = function () {
+    var e = document.createEvent('CustomEvent');
+    e.initEvent('Bootstrap', true, true);
+    e.preventDefault();
+    return e.defaultPrevented;
   }();
 
-  return Polyfill;
+  if (!workingDefaultPrevented) {
+    var origPreventDefault = Event.prototype.preventDefault;
+
+    Event.prototype.preventDefault = function () {
+      if (!this.cancelable) {
+        return;
+      }
+
+      origPreventDefault.call(this);
+      Object.defineProperty(this, 'defaultPrevented', {
+        get: function get() {
+          return true;
+        },
+        configurable: true
+      });
+    };
+  } // MSEdge resets defaultPrevented flag upon dispatchEvent call if at least one listener is attached
+
+
+  var defaultPreventedPreservedOnDispatch = function () {
+    var e = exports.createCustomEvent('Bootstrap', {
+      cancelable: true
+    });
+    var element = document.createElement('div');
+    element.addEventListener('Bootstrap', function () {
+      return null;
+    });
+    e.preventDefault();
+    element.dispatchEvent(e);
+    return e.defaultPrevented;
+  }();
+
+  if (!exports.matches) {
+    exports.matches = Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
+  }
+
+  if (!exports.closest) {
+    exports.closest = function closest(selector) {
+      var element = this;
+
+      do {
+        if (exports.matches.call(element, selector)) {
+          return element;
+        }
+
+        element = element.parentElement || element.parentNode;
+      } while (element !== null && element.nodeType === 1);
+
+      return null;
+    };
+  }
+
+  var scopeSelectorRegex = /:scope\b/;
+
+  var supportScopeQuery = function () {
+    var element = document.createElement('div');
+
+    try {
+      element.querySelectorAll(':scope *');
+    } catch (error) {
+      return false;
+    }
+
+    return true;
+  }();
+
+  if (!supportScopeQuery) {
+    exports.find = function find(selector) {
+      if (!scopeSelectorRegex.test(selector)) {
+        return this.querySelectorAll(selector);
+      }
+
+      var hasId = Boolean(this.id);
+
+      if (!hasId) {
+        this.id = getUID('scope');
+      }
+
+      var nodeList = null;
+
+      try {
+        selector = selector.replace(scopeSelectorRegex, "#" + this.id);
+        nodeList = this.querySelectorAll(selector);
+      } finally {
+        if (!hasId) {
+          this.removeAttribute('id');
+        }
+      }
+
+      return nodeList;
+    };
+
+    exports.findOne = function findOne(selector) {
+      if (!scopeSelectorRegex.test(selector)) {
+        return this.querySelector(selector);
+      }
+
+      var matches = exports.find.call(this, selector);
+
+      if (typeof matches[0] !== 'undefined') {
+        return matches[0];
+      }
+
+      return null;
+    };
+  }
+
+  exports.defaultPreventedPreservedOnDispatch = defaultPreventedPreservedOnDispatch;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
 
 }));
 //# sourceMappingURL=polyfill.js.map

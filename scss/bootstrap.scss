@@ -5,9 +5,16 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
+// Configuration
+
 @import "functions";
 @import "variables";
 @import "mixins";
+@import "utilities";
+
+
+// Layout & components
+
 @import "root";
 @import "reboot";
 @import "type";
@@ -20,15 +27,12 @@
 @import "transitions";
 @import "dropdown";
 @import "button-group";
-@import "input-group";
-@import "custom-forms";
 @import "nav";
 @import "navbar";
 @import "card";
 @import "breadcrumb";
 @import "pagination";
 @import "badge";
-@import "jumbotron";
 @import "alert";
 @import "progress";
 @import "list-group";
@@ -39,4 +43,16 @@
 @import "popover";
 @import "carousel";
 @import "spinners";
-@import "utilities";
+
+
+// Helpers
+
+@import "helpers";
+
+
+// Utilities
+
+@import "utilities/api";
+@import "utilities/sizing";
+@import "utilities/text";
+@import "utilities/visibility";

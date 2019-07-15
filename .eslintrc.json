@@ -45,6 +45,7 @@
     ],
     "unicorn/explicit-length-check": "off",
     "unicorn/import-index": "off",
+    "unicorn/no-for-loop": "off",
     "unicorn/no-unused-properties": "error",
     "unicorn/prefer-includes": "off",
     "unicorn/prefer-node-append": "off",

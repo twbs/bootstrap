@@ -30,6 +30,29 @@
   }
 }
 
+// Internal Bootstrap function to turn maps into its negative variant.
+// It prefixes the keys with `n` and makes the value negative.
+@function negativify-map($map) {
+  $result: ();
+  @each $key, $value in $map {
+    @if $key != 0 {
+      $result: map-merge($result, ("n" + $key: (-$value)));
+    }
+  }
+  @return $result;
+}
+
+// Get multiple keys from a sass map
+@function map-get-multiple($map, $values) {
+  $result: ();
+  @each $key, $value in $map {
+    @if (index($values, $key) != null) {
+      $result: map-merge($result, ($key: $value));
+    }
+  }
+  @return $map;
+}
+
 // Replace `$search` with `$replace` in `$string`
 // Used on our SVG icon backgrounds for custom forms.
 //

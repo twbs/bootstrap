@@ -112,9 +112,7 @@ The required markup for a tooltip is only a `data` attribute and `title` on the 
 {{< callout warning >}}
 ##### Making tooltips work for keyboard and assistive technology users
 
-You should only add tooltips to HTML elements that are traditionally keyboard-focusable and interactive (such as links or form controls). Although arbitrary HTML elements (such as `<span>`s) can be made focusable by adding the `tabindex="0"` attribute, this will add potentially annoying and confusing tab stops on non-interactive elements for keyboard users. In addition, most assistive technologies currently do not announce the tooltip in this situation.
-
-Additionally, do not rely solely on `hover` as the trigger for your tooltip, as this will make your tooltips impossible to trigger for keyboard users.
+You should only add tooltips to HTML elements that are traditionally keyboard-focusable and interactive (such as links or form controls). Although arbitrary HTML elements (such as `<span>`s) can be made focusable by adding the `tabindex="0"` attribute, this will add potentially annoying and confusing tab stops on non-interactive elements for keyboard users, and most assistive technologies currently do not announce the tooltip in this situation. Additionally, do not rely solely on `hover` as the trigger for your tooltip, as this will make your tooltips impossible to trigger for keyboard users.
 {{< /callout >}}
 
 {{< highlight html >}}
@@ -150,7 +148,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 Note that for security reasons the `sanitize`, `sanitizeFn` and `whiteList` options cannot be supplied using data attributes.
 {{< /callout >}}
 
-<table class="table table-bordered table-striped">
+<table class="table">
   <thead>
     <tr>
       <th style="width: 100px;">Name</th>
@@ -345,10 +343,10 @@ Updates the position of an element's tooltip.
 
 ### Events
 
-<table class="table table-bordered table-striped">
+<table class="table">
   <thead>
     <tr>
-      <th style="width: 150px;">Event Type</th>
+      <th style="width: 150px;">Event type</th>
       <th>Description</th>
     </tr>
   </thead>
