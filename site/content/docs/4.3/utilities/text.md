@@ -45,22 +45,6 @@ Prevent text from wrapping with a `.text-nowrap` class.
 </div>
 {{< /example >}}
 
-For longer content, you can add a `.text-truncate` class to truncate the text with an ellipsis. **Requires `display: inline-block` or `display: block`.**
-
-{{< example >}}
-<!-- Block level -->
-<div class="row">
-  <div class="col-2 text-truncate">
-    Praeterea iter est quasdam res quas ex communi.
-  </div>
-</div>
-
-<!-- Inline level -->
-<span class="d-inline-block text-truncate" style="max-width: 150px;">
-  Praeterea iter est quasdam res quas ex communi.
-</span>
-{{< /example >}}
-
 ## Word break
 
 Prevent long strings of text from breaking your components' layout by using `.text-break` to set `overflow-wrap: break-word` (and `word-break: break-word` for IE & Edge compatibility).
@@ -96,10 +80,10 @@ Quickly change the weight (boldness) of text or italicize text.
 
 ## Monospace
 
-Change a selection to our monospace font stack with `.text-monospace`.
+Change a selection to our monospace font stack with `.font-monospace`.
 
 {{< example >}}
-<p class="text-monospace">This is in monospace</p>
+<p class="font-monospace">This is in monospace</p>
 {{< /example >}}
 
 ## Reset color

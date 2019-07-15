@@ -16,6 +16,10 @@ Things to know when using the toast plugin:
 - **Please note that you are responsible for positioning toasts.**
 - Toasts will automatically hide if you do not specify `autohide: false`.
 
+{{< callout info >}}
+{{< partial "callout-info-prefersreducedmotion.md" >}}
+{{< /callout >}}
+
 ## Examples
 
 ### Basic
@@ -229,7 +233,7 @@ var toastList = toastElList.map(function (toastEl) {
 
 Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-`, as in `data-animation=""`.
 
-<table class="table table-bordered table-striped">
+<table class="table">
   <thead>
     <tr>
       <th style="width: 100px;">Name</th>
@@ -289,10 +293,10 @@ Hides an element's toast. Your toast will remain on the DOM but won't show anymo
 
 ### Events
 
-<table class="table table-bordered table-striped">
+<table class="table">
   <thead>
     <tr>
-      <th style="width: 150px;">Event Type</th>
+      <th style="width: 150px;">Event type</th>
       <th>Description</th>
     </tr>
   </thead>

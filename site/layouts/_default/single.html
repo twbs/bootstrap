@@ -8,8 +8,23 @@
 
     {{ partial "docs-navbar" . }}
 
-    <header class="d-flex flex-column flex-md-row align-items-md-center p-5 bg-light">
-      <div class="pt-md-3 pb-md-4">
+    <nav class="bd-subnavbar pt-2 pb-3 pb-md-2 mb-4">
+      <div class="container d-flex align-items-md-center flex-column flex-md-row">
+        <div class="d-flex align-items-center mb-2 mb-md-0 mr-md-auto">
+          <a class="link-dark" href="/" onclick="ga('send', 'event', 'Subnav', 'click', 'Bootstrap');">Bootstrap</a>
+          {{ partial "icons/booticon-chevron-right.svg" (dict "class" "booticon d-inline-block mx-2 flex-shrink-0" "width" "12px" "height" "12px") }}
+          <a class="link-dark" href="/docs/{{ .Site.Params.docs_version }}/getting-started/introduction/" onclick="ga('send', 'event', 'Subnav', 'click', 'Documentation');">Documentation</a>
+          {{ partial "icons/booticon-chevron-right.svg" (dict "class" "booticon d-inline-block mx-2 flex-shrink-0" "width" "12px" "height" "12px") }}
+          {{ partial "docs-versions" . }}
+          {{ partial "icons/booticon-chevron-right.svg" (dict "class" "booticon d-inline-block mx-2 flex-shrink-0" "width" "12px" "height" "12px") }}
+          <span class="text-muted">Examples</span>
+        </div>
+        {{ partial "docs-search" . }}
+      </div>
+    </nav>
+
+    <header class="d-flex flex-column flex-md-row align-items-md-center p-5 border-bottom">
+      <div class="container pt-md-1 pb-md-4">
         <h1 class="bd-title mt-0">{{ .Title | markdownify }}</h1>
         <p class="bd-lead">{{ .Page.Params.Description | markdownify }}</p>
         {{ if eq .Title "Examples" }}
@@ -19,8 +34,10 @@
       {{ partial "ads" . }}
     </header>
 
-    <main class="bd-content p-5" id="content" role="main">
-      {{ .Content }}
+    <main class="bd-content py-5" id="content" role="main">
+      <div class="container">
+        {{ .Content }}
+      </div>
     </main>
 
     {{ partial "footer" . }}

@@ -26,6 +26,18 @@
     - title: Tables
     - title: Figures
 
+- title: Forms
+  pages:
+    - title: Overview
+    - title: Form control
+    - title: Select
+    - title: Checks
+    - title: File
+    - title: Range
+    - title: Input group
+    - title: Layout
+    - title: Validation
+
 - title: Components
   pages:
     - title: Alerts
@@ -38,9 +50,9 @@
     - title: Close icon
     - title: Collapse
     - title: Dropdowns
-    - title: Forms
-    - title: Input group
-    - title: Jumbotron
+    - title: Icons
+    # - title: Forms
+    # - title: Input group
     - title: List group
     - title: Modal
     - title: Navs
@@ -53,22 +65,28 @@
     - title: Toasts
     - title: Tooltips
 
+- title: Helpers
+  pages:
+    - title: Clearfix
+    - title: Embed
+    - title: Position
+    - title: Screen readers
+    - title: Stretched link
+    # - title: Text
+
 - title: Utilities
   pages:
+    - title: API
     - title: Borders
-    - title: Clearfix
     - title: Colors
     - title: Display
-    - title: Embed
     - title: Flex
     - title: Float
     - title: Overflow
     - title: Position
-    - title: Screen readers
     - title: Shadows
     - title: Sizing
     - title: Spacing
-    - title: Stretched link
     - title: Text
     - title: Vertical align
     - title: Visibility
@@ -77,8 +95,6 @@
   pages:
     - title: Approach
     - title: Icons
-
-- title: Migration
 
 - title: About
   pages:
