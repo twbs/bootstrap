@@ -102,7 +102,7 @@ All heading elements—e.g., `<h1>`—and `<p>` are reset to have their `margin-
 
 ## Lists
 
-All lists—`<ul>`, `<ol>`, and `<dl>`—have their `margin-top` removed and a `margin-bottom: 1rem`. Nested lists have no `margin-bottom`. We've also reset the horizontal `padding` on `<ul>` and `<ol>` elements.
+All lists—`<ul>`, `<ol>`, and `<dl>`—have their `margin-top` removed and a `margin-bottom: 1rem`. Nested lists have no `margin-bottom`. We've also reset the `padding-left` on `<ul>` and `<ol>` elements.
 
 <div class="bd-example">
 {{< markdown >}}
