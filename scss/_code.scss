@@ -18,6 +18,7 @@ kbd {
   background-color: $kbd-bg;
   @include border-radius($border-radius-sm);
 
+  // stylelint-disable-next-line no-duplicate-selectors
   & {
     padding: 0;
     @include font-size(100%);
