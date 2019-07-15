@@ -34,7 +34,8 @@
   font-weight: 500;
   color: $dark;
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: $blue;
     text-decoration: none;
   }
@@ -70,7 +71,8 @@
       color: $bd-purple-light;
 
       &.active,
-      &:hover {
+      &:hover,
+      &:focus {
         color: $white;
         background-color: transparent;
       }
