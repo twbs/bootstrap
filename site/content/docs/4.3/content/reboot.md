@@ -53,7 +53,7 @@ This `font-family` is applied to the `<body>` and automatically inherited global
 
 All heading elements—e.g., `<h1>`—and `<p>` are reset to have their `margin-top` removed. Headings have `margin-bottom: .5rem` added and paragraphs `margin-bottom: 1rem` for easy spacing.
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Heading</th>
