@@ -53,7 +53,7 @@ Changes to any layout tools and our grid system.
 Changes to Reboot, typography, tables, and more.
 
 - **Todo:** Make RFS enabled by default
-- Reset default horizontal `padding` on `<ul>` and `<ol>` elements from browser default `40px` to `2rem`.
+- Reset default horizontal `padding-left` on `<ul>` and `<ol>` elements from browser default `40px` to `2rem`.
 
 ## Forms
 
