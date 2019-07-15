@@ -63,12 +63,17 @@ Changes to Reboot, typography, tables, and more.
 - Rearranged source Sass files under `scss/forms/`, including moving over input group styles.
 - Combined native and custom checkboxes and radios into single `.form-check` class.
   - New checks support sizing via `em`/`font-size` or explicit modifier classes now.
+  - New checks now appear larger by default for improved usability.
   - Dropped `.custom-control` and associated classes.
+  - Renamed most `$custom-control` variables to `$form-control` ones.
 - Combined native and custom selects into `.form-select`.
   - Dropped `.custom-select` and associated classes.
-- Dropped native `.form-control-file` and `.form-control-range` components.
-- Renamed `.custom-file` to `.form-file` (including variables).
-- Refactored `.form-file` markup to resolve some visual bugs while allowing translation and button text changes via HTML instead of CSS.
+  - Renamed most `$custom-select` variables to `$form-select` ones.
+- Updated file input component with same overall design, but improved HTML.
+  - Refactored `.form-file` markup to resolve some visual bugs while allowing translation and button text changes via HTML instead of CSS.
+  - Dropped native `.form-control-file` and `.form-control-range` components entirely.
+  - Renamed `.custom-file` to `.form-file` (including variables).
+  - Added support for `:focus` and `:disabled` styles.
 - Renamed `.custom-range` to `.form-range` (including variables).
 - Dropped `.form-group` for margin utilities (we've replaced our docs examples with `.mb-3`).
 - Dropped support for `.form-control-plaintext` inside `.input-group`s.
