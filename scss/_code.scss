@@ -17,13 +17,12 @@ kbd {
   color: $kbd-color;
   background-color: $kbd-bg;
   @include border-radius($border-radius-sm);
-  @include box-shadow($kbd-box-shadow);
 
-  kbd {
+  // stylelint-disable-next-line no-duplicate-selectors
+  & {
     padding: 0;
     @include font-size(100%);
     font-weight: $nested-kbd-font-weight;
-    @include box-shadow(none);
   }
 }
 
