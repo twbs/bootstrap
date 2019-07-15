@@ -45,7 +45,8 @@
 
   > * { pointer-events: none; }
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: rgba(0, 0, 0, .85);
     text-decoration: none;
     background-color: rgba($bd-purple-bright, .1);
@@ -91,7 +92,8 @@
     color: rgba(0, 0, 0, .65);
     @include border-radius(.25rem);
 
-    &:hover {
+    &:hover,
+    &:focus {
       color: rgba(0, 0, 0, .85);
       text-decoration: none;
       background-color: rgba($bd-purple-bright, .1);
@@ -99,7 +101,8 @@
   }
 
   > .active > a,
-  > .active:hover > a {
+  > .active:hover > a,
+  > .active:focus > a {
     font-weight: 600;
     color: rgba(0, 0, 0, .85);
   }
