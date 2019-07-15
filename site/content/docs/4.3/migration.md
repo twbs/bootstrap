@@ -54,6 +54,7 @@ Changes to Reboot, typography, tables, and more.
 
 - **Todo:** Make RFS enabled by default
 - Reset default horizontal `padding-left` on `<ul>` and `<ol>` elements from browser default `40px` to `2rem`.
+- Simplified table styles (no more 2px border on `thead > th` elements) and tightened cell padding.
 
 ## Forms
 
