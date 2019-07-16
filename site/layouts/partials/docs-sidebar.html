@@ -17,7 +17,7 @@
 
       <li class="bd-sidenav-group my-1{{ if $active_group }} active{{ end }} js-sidenav-group">
         <a class="d-inline-flex align-items-center bd-sidenav-group-link" href="/docs/{{ $.Site.Params.docs_version }}/{{ $group_slug }}/{{ if $group.pages }}{{ $link_slug }}/{{ end }}">
-          <svg class="bd-sidenav-group-link-icon" width="16" height="16" viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path stroke="currentColor" stroke-width="2" d="M5 14l6-6-6-6" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          {{- partial "icons/arrow.svg" (dict "class" "bd-sidenav-group-link-icon" "width" "16" "height" "16") -}}
           <div>{{- $group.title -}}</div>
         </a>
 
