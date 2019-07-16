@@ -378,9 +378,12 @@ select {
 //    controls in Android 4.
 // 2. Correct the inability to style clickable types in iOS and Safari.
 button,
-[type="button"], // 1
-[type="reset"],
-[type="submit"] {
+button[type="button"], // 1
+button[type="reset"],
+button[type="submit"],
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
   -webkit-appearance: button; // 2
 }
 
