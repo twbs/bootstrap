@@ -43,6 +43,18 @@
   color: rgba(0, 0, 0, .65);
   @include border-radius(.25rem);
 
+  &::before {
+    display: inline-block;
+    width: .875rem;
+    height: .875rem;
+    margin-right: .25rem;
+    content: "";
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" role="img"><path stroke="currentColor" stroke-width="2" d="M5 14l6-6-6-6" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+    background-repeat: no-repeat;
+    background-position: center center;
+    opacity: .5;
+  }
+
   > * { pointer-events: none; }
 
   &:hover {
@@ -52,15 +64,9 @@
   }
 }
 
-.bd-sidenav-group-link-icon {
-  width: .875rem;
-  margin-right: .25rem;
-  opacity: .5;
-}
-
 .bd-sidenav-group {
   &.active {
-    .bd-sidenav-group-link-icon {
+    .bd-sidenav-group-link::before {
       transform: rotate(90deg);
     }
 
@@ -72,6 +78,11 @@
       display: block;
     }
   }
+}
+
+// Hide icon on last item
+.bd-sidenav-group:last-child .bd-sidenav-group-link::before {
+  display: none;
 }
 
 // All levels of nav
