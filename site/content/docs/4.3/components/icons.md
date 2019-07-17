@@ -131,7 +131,7 @@ For example, you can use the SVG as HTML (remember to specify a `width` and `hei
 <svg class="booticon booticon-chevron-right" width="24" height="24" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 14l6-6-6-6"/></svg>
 {{< /example >}}
 
-You can also use the SVG within your CSS (be sure to escape the `#` to `%23` when specifying hex color values):
+You can also use the SVG within your CSS (**be sure to escape any characters**, such as `#` to `%23` when specifying hex color values):
 
 {{< highlight css >}}
 .booticon::before {
