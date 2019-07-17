@@ -10,15 +10,6 @@
       overflow-y: auto;
     }
   }
-
-  // Override collapse behaviors
-  @include media-breakpoint-up(md) {
-    display: block !important;
-  }
-}
-
-:not(.active) > .bd-sidenav {
-  display: none;
 }
 
 .bd-sidenav-group-link {
@@ -26,8 +17,6 @@
   font-weight: 600;
   color: rgba($black, .65);
   @include border-radius(.25rem);
-
-  > * { pointer-events: none; }
 
   &:hover,
   &:focus {
@@ -53,6 +42,7 @@
   &.active {
     .bd-sidenav-group-link::before {
       transform: rotate(90deg);
+      @include transition(transform .35s ease-in-out);
     }
 
     > .bd-sidenav-group-link {

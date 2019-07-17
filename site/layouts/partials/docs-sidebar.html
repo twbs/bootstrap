@@ -1,4 +1,4 @@
-<nav class="collapse bd-links" id="bd-docs-nav" aria-label="Main navigation">
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
   {{- $url := split .Permalink "/" -}}
   {{- $page_slug := index $url (sub (len $url) 2) -}}
 
@@ -15,13 +15,14 @@
     {{- $group_slug := $group.title | urlize -}}
     {{- $active_group := eq $.Page.Params.group $group_slug }}
 
-      <li class="bd-sidenav-group my-1{{ if $active_group }} active{{ end }} js-sidenav-group{{ if $group.pages }} has-children{{ end }}">
-        <a class="d-inline-flex align-items-center bd-sidenav-group-link" href="/docs/{{ $.Site.Params.docs_version }}/{{ $group_slug }}/{{ if $group.pages }}{{ $link_slug }}/{{ end }}">
-          <div>{{- $group.title -}}</div>
+      <li class="bd-sidenav-group my-1{{ if $active_group }} active{{ end }}{{ if $group.pages }} has-children{{ end }}">
+        {{- $submenuId := printf "%s-%s" $group_slug $link_slug -}}
+        <a class="d-inline-flex align-items-center bd-sidenav-group-link" role="button" data-toggle="collapse" href="{{ printf "#%s" $submenuId }}" aria-expanded="false" aria-controls="{{ $submenuId }}">
+          {{- $group.title -}}
         </a>
 
         {{- if $group.pages }}
-        <ul class="nav bd-sidenav flex-column mb-2">
+        <ul class="nav bd-sidenav flex-column mb-2 collapse{{ if $active_group }} show{{ end }}" id="{{ $submenuId }}">
           {{- range $doc := $group.pages -}}
             {{- $doc_slug := $doc.title | urlize }}
             <li{{ if and $active_group (eq $page_slug $doc_slug) }} class="active bd-sidenav-active"{{ end }}>
