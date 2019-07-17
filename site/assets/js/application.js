@@ -29,20 +29,50 @@
     checkbox.indeterminate = true
   })()
 
-  document.querySelector('.bd-toggle-dark-mode')
-    .addEventListener('click', function () {
-      var isDarkModeEnabled = localStorage.getItem('bs-docs-dark-mode') === 0 || localStorage.getItem('bs-docs-dark-mode') === null
+  var btnToggleDarkMode = document.querySelector('.bd-toggle-dark-mode')
+  var isDarkModeEnabledOnLoad = localStorage.getItem('bs-docs-dark-mode') === '1'
 
-      if (isDarkModeEnabled) {
-        // `alternate` string is not present in `rel` so let's add it
-        localStorage.setItem('bs-docs-dark-mode', '1')
-        document.documentElement.classList.add('bs-docs-dark-mode')
-      } else {
-        // `alternate` string is present in `rel` so let's remove it
+  if (isDarkModeEnabledOnLoad) {
+    document.documentElement.classList.add('bs-docs-dark-mode')
+    btnToggleDarkMode.classList.add('active')
+  }
+
+  function debounce(func, wait, immediate) {
+    var timeout
+
+    return function () {
+      var callNow = immediate && !timeout
+      var context = this
+      var args = arguments
+      var later = function () {
+        timeout = null
+
+        if (!immediate) {
+          func.apply(context, args)
+        }
+      }
+
+      clearTimeout(timeout)
+      timeout = setTimeout(later, wait)
+
+      if (callNow) {
+        func.apply(context, args)
+      }
+    }
+  }
+
+  btnToggleDarkMode
+    .addEventListener('click', debounce(function () {
+      if (document.documentElement.classList.contains('bs-docs-dark-mode')) {
         localStorage.setItem('bs-docs-dark-mode', '0')
         document.documentElement.classList.remove('bs-docs-dark-mode')
+        btnToggleDarkMode.classList.remove('active')
+      } else {
+        localStorage.setItem('bs-docs-dark-mode', '1')
+        document.documentElement.classList.add('bs-docs-dark-mode')
+        btnToggleDarkMode.classList.add('active')
       }
-    })
+    }, 10))
 
   makeArray(document.querySelectorAll('.js-sidenav-group'))
     .forEach(function (sidenavGroup) {
