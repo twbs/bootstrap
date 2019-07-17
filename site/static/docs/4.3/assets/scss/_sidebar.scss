@@ -43,7 +43,17 @@
   color: rgba(0, 0, 0, .65);
   @include border-radius(.25rem);
 
-  &::before {
+  > * { pointer-events: none; }
+
+  &:hover {
+    color: rgba(0, 0, 0, .85);
+    text-decoration: none;
+    background-color: rgba($bd-purple-bright, .1);
+  }
+}
+
+.bd-sidenav-group {
+  &.has-children .bd-sidenav-group-link::before {
     display: inline-block;
     width: .875rem;
     height: .875rem;
@@ -55,16 +65,6 @@
     opacity: .5;
   }
 
-  > * { pointer-events: none; }
-
-  &:hover {
-    color: rgba(0, 0, 0, .85);
-    text-decoration: none;
-    background-color: rgba($bd-purple-bright, .1);
-  }
-}
-
-.bd-sidenav-group {
   &.active {
     .bd-sidenav-group-link::before {
       transform: rotate(90deg);
@@ -78,11 +78,6 @@
       display: block;
     }
   }
-}
-
-// Hide icon on last item
-.bd-sidenav-group:last-child .bd-sidenav-group-link::before {
-  display: none;
 }
 
 // All levels of nav

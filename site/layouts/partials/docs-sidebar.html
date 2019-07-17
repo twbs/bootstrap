@@ -15,7 +15,7 @@
     {{- $group_slug := $group.title | urlize -}}
     {{- $active_group := eq $.Page.Params.group $group_slug }}
 
-      <li class="bd-sidenav-group my-1{{ if $active_group }} active{{ end }} js-sidenav-group">
+      <li class="bd-sidenav-group my-1{{ if $active_group }} active{{ end }} js-sidenav-group{{ if $group.pages }} has-children{{ end }}">
         <a class="d-inline-flex align-items-center bd-sidenav-group-link" href="/docs/{{ $.Site.Params.docs_version }}/{{ $group_slug }}/{{ if $group.pages }}{{ $link_slug }}/{{ end }}">
           <div>{{- $group.title -}}</div>
         </a>
