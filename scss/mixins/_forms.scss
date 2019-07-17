@@ -97,13 +97,13 @@
     }
   }
 
-  .custom-select {
+  .form-select {
     @include form-validation-state-selector($state) {
       border-color: $color;
 
       @if $enable-validation-icons {
-        padding-right: $custom-select-feedback-icon-padding-right;
-        background: $custom-select-background, $icon $custom-select-bg no-repeat $custom-select-feedback-icon-position / $custom-select-feedback-icon-size;
+        padding-right: $form-select-feedback-icon-padding-right;
+        background: $form-select-background, $icon $form-select-bg no-repeat $form-select-feedback-icon-position / $form-select-feedback-icon-size;
       }
 
       &:focus {
@@ -130,6 +130,16 @@
 
   .form-check-input {
     @include form-validation-state-selector($state) {
+      border-color: $color;
+
+      &:checked {
+        @include gradient-bg(lighten($color, 10%));
+      }
+
+      &:focus {
+        box-shadow: 0 0 0 $input-focus-width rgba($color, .25);
+      }
+
       ~ .form-check-label {
         color: $color;
       }
@@ -140,45 +150,16 @@
       }
     }
   }
-
-  .custom-control-input {
-    @include form-validation-state-selector($state) {
-      ~ .custom-control-label {
-        color: $color;
-
-        &::before {
-          border-color: $color;
-        }
-      }
-
-      ~ .#{$state}-feedback,
-      ~ .#{$state}-tooltip {
-        display: block;
-      }
-
-      &:checked {
-        ~ .custom-control-label::before {
-          border-color: lighten($color, 10%);
-          @include gradient-bg(lighten($color, 10%));
-        }
-      }
-
-      &:focus {
-        ~ .custom-control-label::before {
-          box-shadow: 0 0 0 $input-focus-width rgba($color, .25);
-        }
-
-        &:not(:checked) ~ .custom-control-label::before {
-          border-color: $color;
-        }
-      }
+  .form-check-inline .form-check-input {
+    ~ .#{$state}-feedback {
+      margin-left: .5em;
     }
   }
 
   // custom file
-  .custom-file-input {
+  .form-file-input {
     @include form-validation-state-selector($state) {
-      ~ .custom-file-label {
+      ~ .form-file-label {
         border-color: $color;
       }
 
@@ -188,7 +169,7 @@
       }
 
       &:focus {
-        ~ .custom-file-label {
+        ~ .form-file-label {
           border-color: $color;
           box-shadow: 0 0 0 $input-focus-width rgba($color, .25);
         }

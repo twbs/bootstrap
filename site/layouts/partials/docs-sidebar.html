@@ -1,14 +1,8 @@
-<form role="search" class="bd-search d-flex align-items-center">
-  <input type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off" data-docs-version="{{ .Site.Params.docs_version }}">
-  <button class="btn btn-link bd-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#bd-docs-nav" aria-controls="bd-docs-nav" aria-expanded="false" aria-label="Toggle docs navigation">
-    {{ partial "icons/menu.svg" (dict "width" "30" "height" "30") }}
-  </button>
-</form>
-
-<nav class="collapse bd-links" id="bd-docs-nav" aria-label="Main navigation">
+<nav class="collapse bd-links pb-3" id="bd-docs-nav" aria-label="Main navigation">
   {{- $url := split .Permalink "/" -}}
   {{- $page_slug := index $url (sub (len $url) 2) -}}
 
+  <ul class="list-unstyled">
   {{- range $group := .Site.Data.nav -}}
     {{- $link := $group.title -}}
     {{- $link_slug := $link | urlize -}}
@@ -21,13 +15,14 @@
     {{- $group_slug := $group.title | urlize -}}
     {{- $active_group := eq $.Page.Params.group $group_slug }}
 
-    <div class="bd-toc-item{{ if $active_group }} active{{ end }}">
-        <a class="bd-toc-link" href="/docs/{{ $.Site.Params.docs_version }}/{{ $group_slug }}/{{ if $group.pages }}{{ $link_slug }}/{{ end }}">
-          {{- $group.title -}}
+      <li class="bd-sidenav-group my-1{{ if $active_group }} active{{ end }} js-sidenav-group">
+        <a class="d-inline-flex align-items-center bd-sidenav-group-link" href="/docs/{{ $.Site.Params.docs_version }}/{{ $group_slug }}/{{ if $group.pages }}{{ $link_slug }}/{{ end }}">
+          <svg class="bd-sidenav-group-link-icon" viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path stroke="currentColor" stroke-width="2" d="M5 14l6-6-6-6" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div>{{- $group.title -}}</div>
         </a>
 
-        {{- if and $active_group $group.pages }}
-        <ul class="nav bd-sidenav">
+        {{- if $group.pages }}
+        <ul class="nav bd-sidenav mb-2">
           {{- range $doc := $group.pages -}}
             {{- $doc_slug := $doc.title | urlize }}
             <li{{ if and $active_group (eq $page_slug $doc_slug) }} class="active bd-sidenav-active"{{ end }}>
@@ -38,6 +33,12 @@
           {{- end }}
         </ul>
         {{- end }}
-      </div>
-  {{- end }}
+      </li>
+    {{- end }}
+
+    <li class="my-3 mx-4 border-top"></li>
+    <li class="bd-sidenav-group pl-3">
+      <a class="d-inline-flex bd-sidenav-group-link" href="/migration">Migration</a>
+    </li>
+  </ul>
 </nav>

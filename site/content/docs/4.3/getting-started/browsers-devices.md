@@ -24,10 +24,10 @@ We use [Autoprefixer](https://github.com/postcss/autoprefixer) to handle intende
 
 Generally speaking, Bootstrap supports the latest versions of each major platform's default browsers. Note that proxy browsers (such as Opera Mini, Opera Mobile's Turbo mode, UC Browser Mini, Amazon Silk) are not supported.
 
-<table class="table table-bordered table-striped">
+<table class="table">
   <thead>
     <tr>
-      <td></td>
+      <th></th>
       <th>Chrome</th>
       <th>Firefox</th>
       <th>Safari</th>
@@ -38,27 +38,27 @@ Generally speaking, Bootstrap supports the latest versions of each major platfor
   <tbody>
     <tr>
       <th scope="row">Android</th>
-      <td class="text-success">Supported</td>
-      <td class="text-success">Supported</td>
-      <td class="text-muted">N/A</td>
-      <td class="text-success">Android v5.0+ supported</td>
-      <td class="text-success">Supported</td>
+      <td>Supported</td>
+      <td>Supported</td>
+      <td class="text-muted">&mdash;</td>
+      <td>v5.0+</td>
+      <td>Supported</td>
     </tr>
     <tr>
       <th scope="row">iOS</th>
-      <td class="text-success">Supported</td>
-      <td class="text-success">Supported</td>
-      <td class="text-success">Supported</td>
-      <td class="text-muted">N/A</td>
-      <td class="text-success">Supported</td>
+      <td>Supported</td>
+      <td>Supported</td>
+      <td>Supported</td>
+      <td class="text-muted">&mdash;</td>
+      <td>Supported</td>
     </tr>
     <tr>
-      <th scope="row">Windows 10 Mobile</th>
-      <td class="text-muted">N/A</td>
-      <td class="text-muted">N/A</td>
-      <td class="text-muted">N/A</td>
-      <td class="text-muted">N/A</td>
-      <td class="text-success">Supported</td>
+      <th scope="row" class="text-nowrap">Windows 10 Mobile</th>
+      <td class="text-muted">&mdash;</td>
+      <td class="text-muted">&mdash;</td>
+      <td class="text-muted">&mdash;</td>
+      <td class="text-muted">&mdash;</td>
+      <td>Supported</td>
     </tr>
   </tbody>
 </table>
@@ -67,10 +67,10 @@ Generally speaking, Bootstrap supports the latest versions of each major platfor
 
 Similarly, the latest versions of most desktop browsers are supported.
 
-<table class="table table-bordered table-striped">
+<table class="table">
   <thead>
     <tr>
-      <td></td>
+      <th></th>
       <th>Chrome</th>
       <th>Firefox</th>
       <th>Internet Explorer</th>
@@ -82,21 +82,21 @@ Similarly, the latest versions of most desktop browsers are supported.
   <tbody>
     <tr>
       <th scope="row">Mac</th>
-      <td class="text-success">Supported</td>
-      <td class="text-success">Supported</td>
-      <td class="text-muted">N/A</td>
-      <td class="text-muted">N/A</td>
-      <td class="text-success">Supported</td>
-      <td class="text-success">Supported</td>
+      <td>Supported</td>
+      <td>Supported</td>
+      <td class="text-muted">&mdash;</td>
+      <td class="text-muted">&mdash;</td>
+      <td>Supported</td>
+      <td>Supported</td>
     </tr>
     <tr>
       <th scope="row">Windows</th>
-      <td class="text-success">Supported</td>
-      <td class="text-success">Supported</td>
-      <td class="text-success">Supported, IE11</td>
-      <td class="text-success">Supported</td>
-      <td class="text-success">Supported</td>
-      <td class="text-danger">Not supported</td>
+      <td>Supported</td>
+      <td>Supported</td>
+      <td>IE11 only</td>
+      <td>Supported</td>
+      <td>Supported</td>
+      <td class="text-muted">&mdash;</td>
     </tr>
   </tbody>
 </table>

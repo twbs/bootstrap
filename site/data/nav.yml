@@ -26,6 +26,18 @@
     - title: Tables
     - title: Figures
 
+- title: Forms
+  pages:
+    - title: Overview
+    - title: Form control
+    - title: Select
+    - title: Checks
+    - title: File
+    - title: Range
+    - title: Input group
+    - title: Layout
+    - title: Validation
+
 - title: Components
   pages:
     - title: Alerts
@@ -38,8 +50,9 @@
     - title: Close icon
     - title: Collapse
     - title: Dropdowns
-    - title: Forms
-    - title: Input group
+    - title: Icons
+    # - title: Forms
+    # - title: Input group
     - title: List group
     - title: Modal
     - title: Navs
@@ -59,7 +72,7 @@
     - title: Position
     - title: Screen readers
     - title: Stretched link
-    - title: Text truncation
+    # - title: Text
 
 - title: Utilities
   pages:
@@ -82,8 +95,6 @@
   pages:
     - title: Approach
     - title: Icons
-
-- title: Migration
 
 - title: About
   pages:
