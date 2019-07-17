@@ -621,6 +621,94 @@ Just like with card groups, card footers in decks will automatically line up.
 {% endcapture %}
 {% include example.html content=example %}
 
+### Grid cards
+
+Use the Bootstrap grid system and its [`.rol-cols` classes]() to control how many grid columns (wrapped around your cards) you show per row.
+
+{% capture example %}
+<div class="row row-cols-2">
+  <div class="col">
+    <div class="card mb-4">
+      {% include icons/placeholder.svg width="100%" height="140" class="card-img-top" text="Image cap" %}
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card mb-4">
+      {% include icons/placeholder.svg width="100%" height="140" class="card-img-top" text="Image cap" %}
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card mb-4">
+      {% include icons/placeholder.svg width="100%" height="140" class="card-img-top" text="Image cap" %}
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card mb-4">
+      {% include icons/placeholder.svg width="100%" height="140" class="card-img-top" text="Image cap" %}
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endcapture %}
+{% include example.html content=example %}
+
+{% capture example %}
+<div class="row row-cols-3">
+  <div class="col">
+    <div class="card mb-4">
+      {% include icons/placeholder.svg width="100%" height="140" class="card-img-top" text="Image cap" %}
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card mb-4">
+      {% include icons/placeholder.svg width="100%" height="140" class="card-img-top" text="Image cap" %}
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card mb-4">
+      {% include icons/placeholder.svg width="100%" height="140" class="card-img-top" text="Image cap" %}
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card mb-4">
+      {% include icons/placeholder.svg width="100%" height="140" class="card-img-top" text="Image cap" %}
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endcapture %}
+{% include example.html content=example %}
+
 ### Card columns
 
 Cards can be organized into [Masonry](https://masonry.desandro.com/)-like columns with just CSS by wrapping them in `.card-columns`. Cards are built with CSS `column` properties instead of flexbox for easier alignment. Cards are ordered from top to bottom and left to right.

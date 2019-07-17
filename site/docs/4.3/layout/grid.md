@@ -333,6 +333,54 @@ Here's an example of customizing the Bootstrap grid at the large (`lg`) breakpoi
 {% endcapture %}
 {% include example.html content=example %}
 
+### Row columns
+
+Use the responsive `.row-cols-*` classes to quickly set the number of columns that best render your content and layout. Whereas normal `.col-*` classes apply to the individual columns (e.g., `.col-md-4`), the row columns classes are set on the parent `.row` as a shortcut.
+
+Use these row columns classes to quickly create basic grid layouts or to control your card layouts.
+
+<div class="bd-example-row">
+{% capture example %}
+<div class="container">
+  <div class="row row-cols-2">
+    <div class="col">Column</div>
+    <div class="col">Column</div>
+    <div class="col">Column</div>
+    <div class="col">Column</div>
+  </div>
+</div>
+{% endcapture %}
+{% include example.html content=example %}
+</div>
+
+<div class="bd-example-row">
+{% capture example %}
+<div class="container">
+  <div class="row row-cols-3">
+    <div class="col">Column</div>
+    <div class="col">Column</div>
+    <div class="col">Column</div>
+    <div class="col">Column</div>
+  </div>
+</div>
+{% endcapture %}
+{% include example.html content=example %}
+</div>
+
+<div class="bd-example-row">
+{% capture example %}
+<div class="container">
+  <div class="row row-cols-4">
+    <div class="col">Column</div>
+    <div class="col">Column</div>
+    <div class="col">Column</div>
+    <div class="col">Column</div>
+  </div>
+</div>
+{% endcapture %}
+{% include example.html content=example %}
+</div>
+
 ## Alignment
 
 Use flexbox alignment utilities to vertically and horizontally align columns. **Internet Explorer 10-11 do not support vertical alignment of flex items when the flex container has a `min-height` as shown below.** [See Flexbugs #3 for more details.](https://github.com/philipwalton/flexbugs#flexbug-3)
