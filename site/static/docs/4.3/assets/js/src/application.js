@@ -19,6 +19,16 @@
     return [].slice.call(list)
   }
 
+  (function () {
+    var checkbox = document.getElementById('flexCheckIndeterminate')
+
+    if (!checkbox) {
+      return
+    }
+
+    checkbox.indeterminate = true
+  })()
+
   makeArray(document.querySelectorAll('.js-sidenav-group'))
     .forEach(function (sidenavGroup) {
       var groupHasLinks = Boolean(sidenavGroup.querySelector('li'))
