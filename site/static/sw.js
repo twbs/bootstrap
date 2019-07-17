@@ -2,8 +2,6 @@
 // IT'S ALL JUST JUNK FOR OUR DOCS!
 // ++++++++++++++++++++++++++++++++++++++++++
 
-/* eslint-disable max-nested-callbacks */
-
 (function () {
   'use strict'
 
