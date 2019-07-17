@@ -10,6 +10,7 @@
     # - title: Best practices # TODO: Write this content
     - title: Webpack
     - title: Accessibility
+    - title: Approach
 
 - title: Layout
   pages:
@@ -90,11 +91,6 @@
     - title: Text
     - title: Vertical align
     - title: Visibility
-
-- title: Extend
-  pages:
-    - title: Approach
-    - title: Icons
 
 - title: About
   pages:
