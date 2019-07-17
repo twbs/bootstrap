@@ -52,15 +52,21 @@
   }
 }
 
-.bd-sidenav-group-link-icon {
-  width: .875rem;
-  margin-right: .25rem;
-  opacity: .5;
-}
-
 .bd-sidenav-group {
+  &.has-children .bd-sidenav-group-link::before {
+    display: inline-block;
+    width: .875rem;
+    height: .875rem;
+    margin-right: .25rem;
+    content: "";
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center center;
+    opacity: .5;
+  }
+
   &.active {
-    .bd-sidenav-group-link-icon {
+    .bd-sidenav-group-link::before {
       transform: rotate(90deg);
     }
 

@@ -15,9 +15,8 @@
     {{- $group_slug := $group.title | urlize -}}
     {{- $active_group := eq $.Page.Params.group $group_slug }}
 
-      <li class="bd-sidenav-group my-1{{ if $active_group }} active{{ end }} js-sidenav-group">
+      <li class="bd-sidenav-group my-1{{ if $active_group }} active{{ end }} js-sidenav-group{{ if $group.pages }} has-children{{ end }}">
         <a class="d-inline-flex align-items-center bd-sidenav-group-link" href="/docs/{{ $.Site.Params.docs_version }}/{{ $group_slug }}/{{ if $group.pages }}{{ $link_slug }}/{{ end }}">
-          <svg class="bd-sidenav-group-link-icon" viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path stroke="currentColor" stroke-width="2" d="M5 14l6-6-6-6" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <div>{{- $group.title -}}</div>
         </a>
 
@@ -38,7 +37,9 @@
 
     <li class="my-3 mx-4 border-top"></li>
     <li class="bd-sidenav-group pl-3">
-      <a class="d-inline-flex bd-sidenav-group-link" href="/migration">Migration</a>
+      <a class="d-inline-flex align-items-center bd-sidenav-group-link" href="/docs/{{ $.Site.Params.docs_version }}/migration/">
+        <div>Migration</div>
+      </a>
     </li>
   </ul>
 </nav>
