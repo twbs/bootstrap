@@ -14,13 +14,6 @@ Structurally, our `<input>`s and `<label>`s are sibling elements as opposed to a
 
 Our checks use custom Bootstrap icons to indicate checked or indeterminate states.
 
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  var checkbox = document.getElementById("flexCheckIndeterminate");
-  checkbox.indeterminate = true;
-});
-</script>
-
 ## Checks
 
 {{< example >}}
