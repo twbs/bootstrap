@@ -19,15 +19,50 @@ When completed, you'll be able to run the various commands provided from the com
 
 ## Using npm scripts
 
-Our [package.json]({{< param repo >}}/blob/v{{< param current_version >}}/package.json) includes the following commands and tasks:
+Our [package.json]({{< param repo >}}/blob/v{{< param current_version >}}/package.json) includes numerous tasks for developing the project. Run `npm run` to see all the npm scripts in your terminal. **Primary tasks include:**
 
-| Task | Description |
-| --- | --- |
-| `npm run dist` | `npm run dist` creates the `/dist/` directory with compiled files. **Uses [Sass](https://sass-lang.com/), [Autoprefixer][autoprefixer], and [terser](https://github.com/terser-js/terser).** |
-| `npm test` | Same as `npm run dist` plus it runs tests locally |
-| `npm run docs` | Builds and lints CSS and JavaScript for docs. You can then run the documentation locally via `npm run docs-serve`. |
-
-Run `npm run` to see all the npm scripts.
+<table class="table">
+  <thead>
+    <tr>
+      <th>Task</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <code>npm start</code>
+      </td>
+      <td>
+        Compiles CSS and JavaScript, builds the documentation, and starts a local server.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>npm run dist</code>
+      </td>
+      <td>
+       Creates the <code>dist/</code> directory with compiled files. Requires <a href="https://sass-lang.com">Sass</a>, <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a>, and <a href="https://github.com/terser-js/terser">terser</a>.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>npm test</code>
+      </td>
+      <td>
+        Runs tests locally after running <code>npm run dist</code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>npm run docs</code>
+      </td>
+      <td>
+        Builds and lints CSS and JavaScript for docs. You can then run the documentation locally via <code>npm run docs-serve</code>.
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 ## Autoprefixer
 

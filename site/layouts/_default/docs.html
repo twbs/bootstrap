@@ -8,27 +8,59 @@
 
     {{ partial "docs-navbar" . }}
 
-    <div class="container-fluid">
+    <nav class="bd-subnavbar pt-2 pb-3 pb-md-2 mb-4">
+      <div class="container d-flex align-items-md-center flex-column flex-md-row">
+        <div class="d-flex align-items-center mb-2 mb-md-0 mr-md-auto">
+          <a class="link-dark" href="/" onclick="ga('send', 'event', 'Subnav', 'click', 'Bootstrap');">Bootstrap</a>
+          {{ partial "icons/booticon-chevron-right.svg" (dict "class" "booticon d-inline-block mx-2 flex-shrink-0" "width" "12px" "height" "12px") }}
+          <a class="link-dark" href="/docs/{{ .Site.Params.docs_version }}/getting-started/introduction/" onclick="ga('send', 'event', 'Subnav', 'click', 'Documentation');">Documentation</a>
+          {{ partial "icons/booticon-chevron-right.svg" (dict "class" "booticon d-inline-block mx-2 flex-shrink-0" "width" "12px" "height" "12px") }}
+
+          {{ partial "docs-versions" . }}
+        </div>
+        <form class="bd-search d-flex align-items-center">
+          <input type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off" data-docs-version="{{ .Site.Params.docs_version }}">
+        </form>
+      </div>
+    </nav>
+
+    <div class="container">
       <div class="row flex-xl-nowrap">
-        <div class="col-md-3 col-xl-2 bd-sidebar">
+        <div class="col-md-3 bd-sidebar">
           {{ partial "docs-sidebar" . }}
         </div>
 
-        {{ if (eq .Page.Params.toc true) }}
-          <nav class="d-none d-xl-block col-xl-2 bd-toc" aria-label="Secondary navigation">
-            {{ .TableOfContents }}
-          </nav>
-        {{ end }}
-
-        <main class="col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+        <main class="col-md-9 py-md-3 pl-md-5 bd-content" role="main">
           <h1 class="bd-title" id="content">{{ .Title | markdownify }}</h1>
           <p class="bd-lead">{{ .Page.Params.Description | markdownify }}</p>
           {{ partial "ads" . }}
+
+          {{ if .Page.Params.sections }}
+            <div class="row my-5">
+              {{ range .Page.Params.sections }}
+                <div class="col-md-6 mb-4">
+                  <a class="d-block text-decoration-none" href="../{{ urlize .title }}/">
+                    <strong class="d-block h5 mb-0">{{ .title }}</strong>
+                    <span class="text-secondary">{{ .description }}</span>
+                  </a>
+                </div>
+              {{ end }}
+            </div>
+          {{ end }}
+
+          {{ if (eq .Page.Params.toc true) }}
+            <strong class="d-block h3 mt-5 mb-3">On this page</strong>
+            <nav class="bd-toc mb-5" aria-label="Secondary navigation">
+              {{ .TableOfContents }}
+            </nav>
+          {{ end }}
+
           {{ .Content }}
         </main>
       </div>
     </div>
 
+    {{ partial "footer" . }}
     {{ partial "scripts" . }}
   </body>
 </html>

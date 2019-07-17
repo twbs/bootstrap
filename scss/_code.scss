@@ -2,7 +2,7 @@
 code {
   @include font-size($code-font-size);
   color: $code-color;
-  word-break: break-word;
+  word-wrap: break-word;
 
   // Streamline the style when inside anchors to avoid broken underline and more
   a > & {
@@ -17,13 +17,11 @@ kbd {
   color: $kbd-color;
   background-color: $kbd-bg;
   @include border-radius($border-radius-sm);
-  @include box-shadow($kbd-box-shadow);
 
   kbd {
     padding: 0;
     @include font-size(100%);
     font-weight: $nested-kbd-font-weight;
-    @include box-shadow(none);
   }
 }
 

@@ -32,7 +32,6 @@
   height: 540px;
   background-color: #333;
   border-radius: 21px;
-  -webkit-transform: rotate(30deg);
   transform: rotate(30deg);
 }
 

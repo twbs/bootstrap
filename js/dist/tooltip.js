@@ -391,8 +391,7 @@
     SHOW: 'show'
   };
   var Selector = {
-    TOOLTIP_INNER: '.tooltip-inner',
-    TOOLTIP_ARROW: '.tooltip-arrow'
+    TOOLTIP_INNER: '.tooltip-inner'
   };
   var Trigger = {
     HOVER: 'hover',
@@ -487,7 +486,7 @@
       clearTimeout(this._timeout);
       Data.removeData(this.element, this.constructor.DATA_KEY);
       EventHandler.off(this.element, this.constructor.EVENT_KEY);
-      EventHandler.off(SelectorEngine.closest(this.element, '.modal'), 'hide.bs.modal');
+      EventHandler.off(SelectorEngine.closest(this.element, '.modal'), 'hide.bs.modal', this._hideModalHandler);
 
       if (this.tip) {
         this.tip.parentNode.removeChild(this.tip);
@@ -557,7 +556,7 @@
               behavior: this.config.fallbackPlacement
             },
             arrow: {
-              element: Selector.TOOLTIP_ARROW
+              element: "." + this.constructor.NAME + "-arrow"
             },
             preventOverflow: {
               boundariesElement: this.config.boundary
@@ -793,11 +792,14 @@
           });
         }
       });
-      EventHandler.on(SelectorEngine.closest(this.element, '.modal'), 'hide.bs.modal', function () {
+
+      this._hideModalHandler = function () {
         if (_this4.element) {
           _this4.hide();
         }
-      });
+      };
+
+      EventHandler.on(SelectorEngine.closest(this.element, '.modal'), 'hide.bs.modal', this._hideModalHandler);
 
       if (this.config.selector) {
         this.config = _objectSpread({}, this.config, {

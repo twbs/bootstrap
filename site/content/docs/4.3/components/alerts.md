@@ -107,11 +107,40 @@ var bsAlert = new bootstrap.Alert(myAlert)
 
 This makes an alert listen for click events on descendant elements which have the `data-dismiss="alert"` attribute. (Not necessary when using the data-api's auto-initialization.)
 
-| Method | Description |
-| --- | --- |
-| `close` | Closes an alert by removing it from the DOM. If the `.fade` and `.show` classes are present on the element, the alert will fade out before it is removed. |
-| `dispose` | Destroys an element's alert. |
-| `_getInstance` | *Static* method which allows you to get the alert instance associated to a DOM element, you can use it like this: `bootstrap.Alert._getInstance(alert)` |
+<table>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <code>close</code>
+      </td>
+      <td>
+        Closes an alert by removing it from the DOM. If the <code>.fade</code> and <code>.show</code> classes are present on the element, the alert will fade out before it is removed.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>dispose</code>
+      </td>
+      <td>
+        Destroys an element's alert.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>_getInstance</code>
+      </td>
+      <td>
+        Static method which allows you to get the alert instance associated to a DOM element, you can use it like this: <code>bootstrap.Alert._getInstance(alert)</code>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 {{< highlight js >}}
 var alertNode = document.querySelector('.alert')
@@ -123,10 +152,28 @@ alert.close()
 
 Bootstrap's alert plugin exposes a few events for hooking into alert functionality.
 
-| Event | Description |
-| --- | --- |
-| `close.bs.alert` | This event fires immediately when the <code>close</code> instance method is called. |
-| `closed.bs.alert` | This event is fired when the alert has been closed (will wait for CSS transitions to complete). |
+<table>
+  <thead>
+    <tr>
+      <th>Event</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>close.bs.alert</code></td>
+      <td>
+        Fires immediately when the <code>close</code> instance method is called.
+      </td>
+    </tr>
+    <tr>
+      <td><code>closed.bs.alert</code></td>
+      <td>
+        Fired when the alert has been closed and CSS transitions have completed.
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 {{< highlight js >}}
 var myAlert = document.getElementById('myAlert')
