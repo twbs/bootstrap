@@ -23,15 +23,15 @@
       </div>
     </nav>
 
-    <header class="d-flex flex-column flex-md-row align-items-md-center p-5 border-bottom">
+    <header class="py-5 border-bottom">
       <div class="container pt-md-1 pb-md-4">
         <h1 class="bd-title mt-0">{{ .Title | markdownify }}</h1>
         <p class="bd-lead">{{ .Page.Params.Description | markdownify }}</p>
         {{ if eq .Title "Examples" }}
         <a href="{{ .Site.Params.download.source }}" class="btn btn-lg btn-bd-primary" onclick="ga('send', 'event', 'Examples', 'Hero', 'Download');">Download source code</a>
         {{ end }}
+        {{ partial "ads" . }}
       </div>
-      {{ partial "ads" . }}
     </header>
 
     <main class="bd-content py-5" id="content" role="main">
