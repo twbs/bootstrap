@@ -342,3 +342,10 @@
     color: $gray-900; // Effectively the base text color
   }
 }
+
+.bd-booticons-table {
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+}
