@@ -4,7 +4,7 @@
   <script src="/docs/{{ .Site.Params.docs_version }}/dist/js/bootstrap.bundle.js"></script>
 {{- end }}
 
-{{ if eq .Page.Layout "docs" -}}
+{{ if (or (eq .Page.Layout "docs") (eq .Page.Layout "single")) -}}
 <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
 {{- end }}
 
