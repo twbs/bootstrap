@@ -10,7 +10,6 @@ toc: true
 
 Meet the Bootstrap icons, a limited set of icons designed first and foremost to work with Bootstrap's components. From form controls to navigation, these icons are the perfect complement to our toolkit. They're SVGs, so they'll scale quickly and easily to any size, they can be easily recolored with CSS, and more. They're also included in Bootstrap under the MIT license.
 
-
 <table class="table bd-bi-table">
   <thead class="text-left">
     <tr>
@@ -167,15 +166,27 @@ Meet the Bootstrap icons, a limited set of icons designed first and foremost to 
   </tbody>
 </table>
 
-### How to use
+## How to use
 
-bis are SVGs, so you can include them into your HTML in a few ways depending on how your project is setup.
+Bootstrap icons are SVGs, so you can include them into your HTML in a few ways depending on how your project is setup.
+
+### Embedded
 
 For example, you can use the SVG as HTML (remember to specify a `width` and `height`).
 
 {{< example >}}
 <svg class="bi bi-chevron-right" width="24" height="24" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 14l6-6-6-6"/></svg>
 {{< /example >}}
+
+### External image
+
+Copy the Bootstrap icons SVGs to your directory of choice and reference them like normal images with the `<img>` element.
+
+{{< highlight html >}}
+<img src="assets/images/bi-bootstrap.svg" width="24" height="24" title="Bootstrap">
+{{< /highlight >}}
+
+### CSS
 
 You can also use the SVG within your CSS (**be sure to escape any characters**, such as `#` to `%23` when specifying hex color values):
 
@@ -188,7 +199,6 @@ You can also use the SVG within your CSS (**be sure to escape any characters**, 
   background-size: 1rem 1rem;
 }
 {{< /highlight >}}
-
 
 ## Additional libraries
 
