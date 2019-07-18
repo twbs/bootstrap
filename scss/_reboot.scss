@@ -25,11 +25,9 @@ main {
 // Body
 //
 // 1. Remove the margin in all browsers.
-// 2. Set an explicit initial text-align value so that we can later use
-//    the `inherit` value on things like `<th>` elements.
-// 3. As a best practice, apply a default `background-color`.
-// 4. Prevent adjustments of font size after orientation changes in IE on Windows Phone and in iOS.
-// 5. Change the default tap highlight to be completely transparent in iOS.
+// 2. As a best practice, apply a default `background-color`.
+// 3. Prevent adjustments of font size after orientation changes in IE on Windows Phone and in iOS.
+// 4. Change the default tap highlight to be completely transparent in iOS.
 body {
   margin: 0; // 1
   font-family: $font-family-base;
@@ -37,10 +35,10 @@ body {
   font-weight: $font-weight-base;
   line-height: $line-height-base;
   color: $body-color;
-  text-align: left; // 2
-  background-color: $body-bg; // 3
-  -webkit-text-size-adjust: 100%; // 4
-  -webkit-tap-highlight-color: rgba($black, 0); // 5
+  text-align: $body-text-align;
+  background-color: $body-bg; // 2
+  -webkit-text-size-adjust: 100%; // 3
+  -webkit-tap-highlight-color: rgba($black, 0); // 4
 }
 
 // Future-proof rule: in browsers that support :focus-visible, suppress the focus outline
