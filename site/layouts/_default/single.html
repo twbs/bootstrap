@@ -7,21 +7,7 @@
     {{ partial "skippy" . }}
 
     {{ partial "docs-navbar" . }}
-
-    <nav class="bd-subnavbar pt-2 pb-3 pb-md-2 mb-4">
-      <div class="container d-flex align-items-md-center flex-column flex-md-row">
-        <div class="d-flex align-items-center mb-2 mb-md-0 mr-md-auto">
-          <a class="link-dark" href="/" onclick="ga('send', 'event', 'Subnav', 'click', 'Bootstrap');">Bootstrap</a>
-          {{ partial "icons/booticon-chevron-right.svg" (dict "class" "booticon d-inline-block mx-2 flex-shrink-0" "width" "12px" "height" "12px") }}
-          <a class="link-dark" href="/docs/{{ .Site.Params.docs_version }}/getting-started/introduction/" onclick="ga('send', 'event', 'Subnav', 'click', 'Documentation');">Documentation</a>
-          {{ partial "icons/booticon-chevron-right.svg" (dict "class" "booticon d-inline-block mx-2 flex-shrink-0" "width" "12px" "height" "12px") }}
-          {{ partial "docs-versions" . }}
-          {{ partial "icons/booticon-chevron-right.svg" (dict "class" "booticon d-inline-block mx-2 flex-shrink-0" "width" "12px" "height" "12px") }}
-          <span class="text-muted">Examples</span>
-        </div>
-        {{ partial "docs-search" . }}
-      </div>
-    </nav>
+    {{ partial "docs-subnav" . }}
 
     <header class="py-5 border-bottom">
       <div class="container pt-md-1 pb-md-4">
