@@ -1,10 +1,10 @@
 <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
-  <div class="container py-0 px-3">
+  <div class="container flex-wrap flex-md-nowrap py-0 px-3">
     <a class="navbar-brand mr-0 mr-md-2" href="/" aria-label="Bootstrap">
       {{ partial "icons/bootstrap-logo-solid.svg" (dict "class" "d-block" "width" "32" "height" "32") }}
     </a>
 
-    <div class="navbar-nav-scroll">
+    <div class="navbar-nav-scroll order-3 order-md-0 d-flex justify-content-center">
       <ul class="navbar-nav bd-navbar-nav flex-row">
         <li class="nav-item">
           <a class="nav-link{{ if .IsHome }} active{{ end }}" href="/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Bootstrap');">Home</a>
