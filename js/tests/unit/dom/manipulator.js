@@ -53,21 +53,11 @@ $(function () {
     })
 
     assert.propEqual(Manipulator.getDataAttributes(null), {})
-
-    var stub = sinon
-      .stub(Object, 'getOwnPropertyDescriptor')
-      .callsFake(function () {
-        return false
-      })
-
     assert.propEqual(Manipulator.getDataAttributes($div2[0]), {
       test3: 'js',
       test4: 'js2'
     })
-
     assert.propEqual(Manipulator.getDataAttributes($div3[0]), {})
-
-    stub.restore()
   })
 
   QUnit.test('should remove data attribute', function (assert) {

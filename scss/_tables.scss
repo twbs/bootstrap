@@ -6,13 +6,17 @@
   width: 100%;
   margin-bottom: $spacer;
   color: $table-color;
+  vertical-align: $table-cell-vertical-align;
   background-color: $table-bg; // Reset for nesting within parents with `background-color`.
 
   th,
   td {
     padding: $table-cell-padding;
-    vertical-align: top;
     border-bottom: $table-border-width solid $table-border-color;
+  }
+
+  tbody {
+    vertical-align: inherit;
   }
 
   td {

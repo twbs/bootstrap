@@ -355,6 +355,8 @@ $hr-margin-y:                 $spacer !default;
 $table-cell-padding:          .5rem !default;
 $table-cell-padding-sm:       .25rem !default;
 
+$table-cell-vertical-align:   top !default;
+
 $table-color:                 $body-color !default;
 $table-bg:                    null !default;
 $table-accent-bg:             rgba($black, .05) !default;
@@ -529,8 +531,8 @@ $form-check-input-checked-border-color:   $form-check-input-checked-bg-color !de
 $form-check-input-checked-bg-repeat:      no-repeat !default;
 $form-check-input-checked-bg-position:    center center !default;
 $form-check-input-checked-bg-size:        1em !default;
-$form-check-input-checked-bg-image:       str-replace(url('data:image/svg+xml;utf8,<svg viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path stroke="#{$form-check-input-checked-color}" stroke-width="3" d="M4 8.5L6.5 11l6-6" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"/></svg>'), "#", "%23") !default;
-$form-check-radio-checked-bg-image: str-replace(url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='#{$form-check-input-checked-color}'/%3e%3c/svg%3e"), "#", "%23") !default;
+$form-check-input-checked-bg-image:       str-replace(url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath stroke='#{$form-check-input-checked-color}' stroke-width='3' d='M4 8.5L6.5 11l6-6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e"), "#", "%23") !default;
+$form-check-radio-checked-bg-image:       str-replace(url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='#{$form-check-input-checked-color}'/%3e%3c/svg%3e"), "#", "%23") !default;
 
 $form-check-input-indeterminate-color:          $component-active-color !default;
 $form-check-input-indeterminate-bg-color:       $component-active-bg !default;
@@ -538,7 +540,7 @@ $form-check-input-indeterminate-border-color:   $form-check-input-indeterminate-
 $form-check-input-indeterminate-bg-repeat:      no-repeat !default;
 $form-check-input-indeterminate-bg-position:    center center !default;
 $form-check-input-indeterminate-bg-size:        1em !default;
-$form-check-input-indeterminate-bg-image:       str-replace(url('data:image/svg+xml;utf8,<svg viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M5 8h6" stroke="#{$form-check-input-indeterminate-color}" stroke-width="3" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"/></svg>'), "#", "%23") !default;
+$form-check-input-indeterminate-bg-image:       str-replace(url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath d='M5 8h6' stroke='#{$form-check-input-indeterminate-color}' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e"), "#", "%23") !default;
 
 $form-switch-color:               rgba(0, 0, 0, .25) !default;
 $form-switch-width:               2em !default;
@@ -584,7 +586,7 @@ $form-select-bg:                  $input-bg !default;
 $form-select-disabled-bg:         $gray-200 !default;
 $form-select-bg-size:             16px 12px !default; // In pixels because image dimensions
 $form-select-indicator-color:     $gray-800 !default;
-$form-select-indicator:           str-replace(url('data:image/svg+xml;utf8,<svg viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path stroke="#{$form-select-indicator-color}" stroke-width="2px" d="M2 5l6 6 6-6" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"/></svg>'), "#", "%23") !default;
+$form-select-indicator:           str-replace(url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath stroke='#{$form-select-indicator-color}' stroke-width='2px' d='M2 5l6 6 6-6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e"), "#", "%23") !default;
 
 $form-select-background:          $form-select-indicator no-repeat right $form-select-padding-x center / $form-select-bg-size !default; // Used so we can have multiple background elements (e.g., arrow and feedback icon)
 
@@ -659,7 +661,7 @@ $form-feedback-invalid-color:       theme-color("danger") !default;
 $form-feedback-icon-valid-color:    $form-feedback-valid-color !default;
 $form-feedback-icon-valid:          str-replace(url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='#{$form-feedback-icon-valid-color}' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e"), "#", "%23") !default;
 $form-feedback-icon-invalid-color:  $form-feedback-invalid-color !default;
-$form-feedback-icon-invalid:        str-replace(url("data:image/svg+xml,%3csvg width='12' height='12' viewBox='0 0 12 12' xmlns='http://www.w3.org/2000/svg' stroke='#{$form-feedback-icon-invalid-color}' fill='none'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath d='M5.8 3.6h.4L6 6.5z' stroke-linejoin='round'/%3e%3ccircle cx='6' cy='8.2' r='.1'/%3e%3c/svg%3e"), "#", "%23") !default;
+$form-feedback-icon-invalid:        str-replace(url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' stroke='#{$form-feedback-icon-invalid-color}' fill='none'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath d='M5.8 3.6h.4L6 6.5z' stroke-linejoin='round'/%3e%3ccircle cx='6' cy='8.2' r='.1'/%3e%3c/svg%3e"), "#", "%23") !default;
 
 $form-validation-states: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
@@ -735,14 +737,14 @@ $navbar-dark-color:                 rgba($white, .5) !default;
 $navbar-dark-hover-color:           rgba($white, .75) !default;
 $navbar-dark-active-color:          $white !default;
 $navbar-dark-disabled-color:        rgba($white, .25) !default;
-$navbar-dark-toggler-icon-bg:       str-replace(url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='#{$navbar-dark-color}' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"), "#", "%23") !default;
+$navbar-dark-toggler-icon-bg:       str-replace(url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='#{$navbar-dark-color}' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"), "#", "%23") !default;
 $navbar-dark-toggler-border-color:  rgba($white, .1) !default;
 
 $navbar-light-color:                rgba($black, .5) !default;
 $navbar-light-hover-color:          rgba($black, .7) !default;
 $navbar-light-active-color:         rgba($black, .9) !default;
 $navbar-light-disabled-color:       rgba($black, .3) !default;
-$navbar-light-toggler-icon-bg:      str-replace(url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='#{$navbar-light-color}' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"), "#", "%23") !default;
+$navbar-light-toggler-icon-bg:      str-replace(url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='#{$navbar-light-color}' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"), "#", "%23") !default;
 $navbar-light-toggler-border-color: rgba($black, .1) !default;
 
 $navbar-light-brand-color:                $navbar-light-active-color !default;
