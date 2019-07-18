@@ -46,9 +46,6 @@
   background-color: $bd-purple-bright;
 
   @include media-breakpoint-down(md) {
-    padding-right: .5rem;
-    padding-left: .5rem;
-
     .navbar-nav-scroll {
       width: 100%;
       height: 2.5rem;
