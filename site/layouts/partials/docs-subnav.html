@@ -1,0 +1,25 @@
+<nav class="bd-subnavbar pt-2 pb-3 pb-md-2">
+  <div class="container d-flex align-items-md-center flex-column flex-md-row">
+    <div class="d-flex align-items-center mb-2 mb-md-0 mr-md-auto">
+      <a class="link-dark" href="/" onclick="ga('send', 'event', 'Subnav', 'click', 'Bootstrap');">Bootstrap</a>
+      {{ partial "icons/booticon-chevron-right.svg" (dict "class" "booticon d-inline-block mx-2 flex-shrink-0" "width" "12px" "height" "12px") }}
+
+      {{ if (eq .Page.Layout "docs") or (eq .Page.Layout "single") }}
+        <a class="link-dark" href="/docs/{{ .Site.Params.docs_version }}/getting-started/introduction/" onclick="ga('send', 'event', 'Subnav', 'click', 'Documentation');">Documentation</a>
+        {{ partial "icons/booticon-chevron-right.svg" (dict "class" "booticon d-inline-block mx-2 flex-shrink-0" "width" "12px" "height" "12px") }}
+      {{ end }}
+
+      {{ partial "docs-versions" . }}
+
+      {{ if eq .Page.Title "Examples" }}
+        {{ partial "icons/booticon-chevron-right.svg" (dict "class" "booticon d-inline-block mx-2 flex-shrink-0" "width" "12px" "height" "12px") }}
+        <span class="text-muted">Examples</span>
+      {{ end }}
+
+
+    </div>
+    <form class="bd-search d-flex align-items-center">
+      <input type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off" data-docs-version="{{ .Site.Params.docs_version }}">
+    </form>
+  </div>
+</nav>
