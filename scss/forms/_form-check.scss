@@ -46,17 +46,17 @@
     border-color: $form-check-input-checked-border-color;
 
     &[type="checkbox"] {
-      background-image: $form-check-input-checked-bg-image;
+      background-image: escape-svg($form-check-input-checked-bg-image);
     }
 
     &[type="radio"] {
-      background-image: $form-check-radio-checked-bg-image;
+      background-image: escape-svg($form-check-radio-checked-bg-image);
     }
   }
 
   &[type="checkbox"]:indeterminate {
     background-color: $form-check-input-indeterminate-bg-color;
-    background-image: $form-check-input-indeterminate-bg-image;
+    background-image: escape-svg($form-check-input-indeterminate-bg-image);
     background-repeat: $form-check-input-indeterminate-bg-repeat;
     background-position: $form-check-input-indeterminate-bg-position;
     background-size: $form-check-input-indeterminate-bg-size;
@@ -90,7 +90,7 @@
   .form-check-input {
     width: $form-switch-width;
     margin-left: $form-switch-padding-left * -1;
-    background-image: $form-switch-bg-image;
+    background-image: escape-svg($form-switch-bg-image);
     background-repeat: no-repeat;
     background-position: left center;
     background-size: calc(#{$form-switch-height} - 2px); // Get a 1px separation
@@ -100,11 +100,11 @@
     // transition-property: $form-switch-transition-property;
 
     &:focus {
-      background-image: $form-switch-focus-bg-image;
+      background-image: escape-svg($form-switch-focus-bg-image);
     }
 
     &:checked {
-      background-image: $form-switch-checked-bg-image;
+      background-image: escape-svg($form-switch-checked-bg-image);
       background-position: $form-switch-checked-bg-position;
     }
   }
