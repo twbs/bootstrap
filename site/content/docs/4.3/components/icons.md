@@ -72,6 +72,26 @@ You can also use the SVG within your CSS (**be sure to escape any characters**, 
 }
 {{< /highlight >}}
 
+### Customizing
+
+Depending on the icon, you may add `.bi-light` (`1px`) or `.bi-bold` (`3px`) to make an icon's `stoke-width` lighter or bold. Most Bootstrap icons have a `2px` stroke.
+
+{{< example >}}
+<svg class="bi bi-resize bi-light" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 20 20"><path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2px" d="M11.5 8.5L15 5l-3.5 3.5zM12 4h4-4zm4 4V4v4zm-7.5 3.5L5 15l3.5-3.5zM8 16H4h4zm-4-4v4-4z"></path></svg>
+
+<svg class="bi bi-resize" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 20 20"><path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2px" d="M11.5 8.5L15 5l-3.5 3.5zM12 4h4-4zm4 4V4v4zm-7.5 3.5L5 15l3.5-3.5zM8 16H4h4zm-4-4v4-4z"></path></svg>
+
+<svg class="bi bi-resize bi-bold" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 20 20"><path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2px" d="M11.5 8.5L15 5l-3.5 3.5zM12 4h4-4zm4 4V4v4zm-7.5 3.5L5 15l3.5-3.5zM8 16H4h4zm-4-4v4-4z"></path></svg>
+{{< /example >}}
+
+Color can be changed by setting a `.text-*` class or custom CSS:
+
+{{< example >}}
+<div class="text-success">
+  <svg class="bi bi-resize" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 20 20"><path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2px" d="M11.5 8.5L15 5l-3.5 3.5zM12 4h4-4zm4 4V4v4zm-7.5 3.5L5 15l3.5-3.5zM8 16H4h4zm-4-4v4-4z"></path></svg>
+</div>
+{{< /example >}}
+
 ## Additional libraries
 
 Need or want something else? Check out these recommended icon libraries. While most icon sets include multiple file formats, we prefer SVG implementations for their improved accessibility and vector support.

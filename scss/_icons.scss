@@ -1,0 +1,14 @@
+.bi {
+  display: inline-block;
+  vertical-align: text-top;
+  fill: currentColor;
+  stroke: currentColor;
+}
+
+.bi-light path {
+  stroke-width: 1px;
+}
+
+.bi-bold path {
+  stroke-width: 3px;
+}
