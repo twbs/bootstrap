@@ -42,18 +42,16 @@
   <body{{ with .Page.Params.body_class }} class="{{ . }}"{{ end }}>
     {{ .Content }}
 
-    {{ if ne .Page.Params.include_js false }}
-      {{ if eq (getenv "HUGO_ENV") "production" }}
+    {{ if ne .Page.Params.include_js false -}}
+      {{- if eq (getenv "HUGO_ENV") "production" -}}
         <script src="/docs/{{ .Site.Params.docs_version }}/dist/js/bootstrap.bundle.min.js" integrity="{{ .Site.Params.cdn.js_bundle_hash }}" crossorigin="anonymous"></script>
-      {{ else }}
+      {{- else -}}
         <script src="/docs/{{ .Site.Params.docs_version }}/dist/js/bootstrap.bundle.js"></script>
-      {{ end }}
-
-      {{ range .Page.Params.extra_js }}
-        {{ $integrity := .integrity }}
-        {{ $async := .async }}
-        <script src="{{ .src }}"{{ with $integrity }} integrity="{{ $integrity }}"{{ end }}{{ with $async }} async{{ end }} crossorigin="anonymous"></script>
       {{- end }}
-    {{ end }}
+
+      {{ range .Page.Params.extra_js -}}
+        <script{{ with .async }} async{{ end }} src="{{ .src }}"{{ with .integrity }} integrity="{{ . }}"{{ end }} crossorigin="anonymous"></script>
+      {{- end -}}
+    {{- end }}
   </body>
 </html>
