@@ -16,7 +16,7 @@ The `$utilities` map contains all utilities and is later merged with your custom
 - `class` _(optional)_: Variable to change the class name if you don't want it to be the same as the property.
 - `values`: This can be a list of values or a map if you don't want the class name to be the same as the value. If null is used as map key, it isn't rendered.
 - `print` _(optional)_: Boolean indicating if print classes need to be generated. `false` by default.
-  
+
 
 ## Adding utilities to the utility API
 
