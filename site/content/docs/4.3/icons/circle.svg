@@ -1,1 +1,1 @@
-<svg viewBox="0 0 20 20" width="20" height="20" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12zm0-1.5a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9z" fill="#000" fill-rule="nonzero"/></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M10 16a6 6 0 100-12 6 6 0 000 12zm0-1.5a4.5 4.5 0 110-9 4.5 4.5 0 010 9z"/></svg>
