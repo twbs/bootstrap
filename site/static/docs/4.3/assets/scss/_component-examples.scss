@@ -343,9 +343,12 @@
   }
 }
 
-.bd-bi-table {
-  svg {
-    width: 24px;
-    height: 24px;
-  }
+.bd-bi-table svg {
+  width: 24px;
+  height: 24px;
+}
+
+.bd-bi-grid svg {
+  width: 32px;
+  height: 32px;
 }
