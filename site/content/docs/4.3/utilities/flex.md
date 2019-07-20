@@ -445,7 +445,7 @@ Responsive variations also exist for `order`.
 {{< /flex.inline >}}
 {{< /markdown >}}
 
-Additionaly there are also responsive `.order-first` and `.order-last` classes that change the `order` of an element by applying `order: -1` and `order: 6`, respectively.
+Additionally there are also responsive `.order-first` and `.order-last` classes that change the `order` of an element by applying `order: -1` and `order: 6`, respectively.
 
 {{< markdown >}}
 {{< flex.inline >}}
