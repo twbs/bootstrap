@@ -117,7 +117,7 @@
 
   .custom-control-input:checked ~ .custom-control-label {
     &::after {
-      background-image: $custom-checkbox-indicator-icon-checked;
+      background-image: escape-svg($custom-checkbox-indicator-icon-checked);
     }
   }
 
@@ -128,7 +128,7 @@
       @include box-shadow($custom-checkbox-indicator-indeterminate-box-shadow);
     }
     &::after {
-      background-image: $custom-checkbox-indicator-icon-indeterminate;
+      background-image: escape-svg($custom-checkbox-indicator-icon-indeterminate);
     }
   }
 
@@ -154,7 +154,7 @@
 
   .custom-control-input:checked ~ .custom-control-label {
     &::after {
-      background-image: $custom-radio-indicator-icon-checked;
+      background-image: escape-svg($custom-radio-indicator-icon-checked);
     }
   }
 
