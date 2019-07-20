@@ -100,12 +100,19 @@ Some of our Sass maps are merged into empty ones by default. This is done to all
 
 #### Modify map
 
-To modify an existing color in our `$theme-colors` map, add the following to your custom Sass file:
+All variables in the `$theme-colors` map are defined as standalone variables. To modify an existing color in our `$theme-colors` map, add the following to your custom Sass file:
+
+{{< highlight scss >}}
+$primary: #0074d9;
+$danger: #ff4136;
+{{< /highlight >}}
+
+Later on, theses variables are set in Bootstrap's `$theme-colors` map:
 
 {{< highlight scss >}}
 $theme-colors: (
-  "primary": #0074d9,
-  "danger": #ff4136
+  "primary": $primary,
+  "danger": $danger
 );
 {{< /highlight >}}
 
@@ -146,36 +153,19 @@ For example, we use the `primary`, `success`, and `danger` keys from `$theme-col
 
 ### Functions
 
-Bootstrap utilizes several Sass functions, but only a subset are applicable to general theming. We've included three functions for getting values from the color maps:
-
-{{< highlight scss >}}
-@function color($key: "blue") {
-  @return map-get($colors, $key);
-}
-
-@function theme-color($key: "primary") {
-  @return map-get($theme-colors, $key);
-}
-
-@function gray($key: "100") {
-  @return map-get($grays, $key);
-}
-{{< /highlight >}}
-
-These allow you to pick one color from a Sass map much like how you'd use a color variable from v3.
+In Bootstrap 5, we've dropped the `color()`, `theme-color()` and `gray()` functions because the values are also available as standalone variables. So instead of using `theme-color("primary")`, you can now just use the `$primary` variable.
 
 {{< highlight scss >}}
 .custom-element {
-  color: gray("100");
-  background-color: theme-color("dark");
+  color: $gray-100;
+  background-color: $dark;
 }
 {{< /highlight >}}
 
-We also have another function for getting a particular _level_ of color from the `$theme-colors` map. Negative level values will lighten the color, while higher levels will darken.
+We also have a function for getting a particular _level_ of color. Negative level values will lighten the color, while higher levels will darken.
 
 {{< highlight scss >}}
-@function theme-color-level($color-name: "primary", $level: 0) {
-  $color: theme-color($color-name);
+@function color-level($color: $primary, $level: 0) {
   $color-base: if($level > 0, #000, #fff);
   $level: abs($level);
 
@@ -187,11 +177,9 @@ In practice, you'd call the function and pass in two parameters: the name of the
 
 {{< highlight scss >}}
 .custom-element {
-  color: theme-color-level(primary, -10);
+  color: color-level($primary, -10);
 }
 {{< /highlight >}}
-
-Additional functions could be added in the future or your own custom Sass to create level functions for additional Sass maps, or even a generic one if you wanted to be more verbose.
 
 ### Color contrast
 
@@ -219,7 +207,7 @@ You can also specify a base color with our color map functions:
 
 {{< highlight scss >}}
 .custom-element {
-  color: color-yiq(theme-color("dark")); // returns `color: #fff`
+  color: color-yiq($dark); // returns `color: #fff`
 }
 {{< /highlight >}}
 
@@ -272,11 +260,7 @@ All colors available in Bootstrap 4, are available as Sass variables and a Sass 
 Here's how you can use these in your Sass:
 
 {{< highlight scss >}}
-// With variable
 .alpha { color: $purple; }
-
-// From the Sass map with our `color()` function
-.beta { color: color("purple"); }
 {{< /highlight >}}
 
 [Color utility classes]({{< docsref "/utilities/colors" >}}) are also available for setting `color` and `background-color`.
@@ -349,7 +333,7 @@ Here are two examples of how we loop over the `$theme-colors` map to generate mo
 // Generate alert modifier classes
 @each $color, $value in $theme-colors {
   .alert-#{$color} {
-    @include alert-variant(theme-color-level($color, -10), theme-color-level($color, -9), theme-color-level($color, 6));
+    @include alert-variant(color-level($color, -10), color-level($color, -9), color-level($color, 6));
   }
 }
 
