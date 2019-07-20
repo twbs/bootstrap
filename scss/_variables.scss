@@ -1070,10 +1070,10 @@ $carousel-indicator-transition:      opacity .6s ease !default;
 $carousel-caption-width:             70% !default;
 $carousel-caption-color:             $white !default;
 
-$carousel-control-icon-width:        20px !default;
+$carousel-control-icon-width:        32px !default;
 
-$carousel-control-prev-icon-bg:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' fill='#{$carousel-control-color}' viewBox='0 0 8 8'><path d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/></svg>") !default;
-$carousel-control-next-icon-bg:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' fill='#{$carousel-control-color}' viewBox='0 0 8 8'><path d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/></svg>") !default;
+$carousel-control-prev-icon-bg:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path stroke='#{$carousel-control-color}' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' fill='none' d='M11 4l-3 6 3 6'/></svg>") !default;
+$carousel-control-next-icon-bg:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path stroke='#{$carousel-control-color}' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' fill='none' d='M9 16l3-6-3-6'/></svg>") !default;
 
 $carousel-transition-duration:       .6s !default;
 $carousel-transition:                transform $carousel-transition-duration ease-in-out !default; // Define transform transition first if using multiple transitions (e.g., `transform 2s ease, opacity .5s ease-out`)
