@@ -3,42 +3,31 @@
 // Set the container width, and override it for fixed navbars in media queries.
 
 @if $enable-grid-classes {
-  %containers {
+  // Single container class with breakpoint max-widths
+  .container {
+    @include make-container();
+    @include make-container-max-widths();
+  }
+
+  // 100% wide container at all breakpoints 
+  .container-fluid {
     @include make-container();
   }
 
-  .container,
-  .container-fluid {
-    @extend %containers;
-  }
-
+  // Responsive containers that are 100% wide until a breakpoint
   @each $breakpoint, $container-max-width in $container-max-widths {
-    .container#{breakpoint-infix($breakpoint, $container-max-widths)} {
-      @extend %containers;
-    }
-  }
-}
-
-// Responsive containers
-//
-// Set the responsive containers max-widths.
-
-@each $breakpoint, $container-max-width in $container-max-widths {
-  @include media-breakpoint-up($breakpoint, $grid-breakpoints) {
-
-    %responsive-container-#{$breakpoint} {
-      max-width: $container-max-width;
+    .container-#{$breakpoint} {
+      @include make-container();
     }
 
-    @each $name, $width in $grid-breakpoints {
-      @if ($container-max-width > $width or $breakpoint == $name) {
-        .container#{breakpoint-infix($name, $grid-breakpoints)} {
-          @extend %responsive-container-#{$breakpoint};
-        }
+    @include media-breakpoint-up($breakpoint, $grid-breakpoints) {
+      .container-#{$breakpoint} {
+        max-width: $container-max-width;
       }
     }
   }
 }
+
 
 // Row
 //
