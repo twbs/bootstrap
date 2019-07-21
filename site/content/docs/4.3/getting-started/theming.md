@@ -195,7 +195,7 @@ Additional functions could be added in the future or your own custom Sass to cre
 
 ### Color contrast
 
-One additional function we include in Bootstrap is the color contrast function, `color-yiq`. It utilizes the [YIQ color space](https://en.wikipedia.org/wiki/YIQ) to automatically return a light (`#fff`) or dark (`#111`) contrast color based on the specified base color. This function is especially useful for mixins or loops where you're generating multiple classes.
+An additional function we include in Bootstrap is the color contrast function, `color-yiq`. It utilizes the [YIQ color space](https://en.wikipedia.org/wiki/YIQ) to automatically return a light (`#fff`) or dark (`#111`) contrast color based on the specified base color. This function is especially useful for mixins or loops where you're generating multiple classes.
 
 For example, to generate color swatches from our `$theme-colors` map:
 
@@ -222,6 +222,10 @@ You can also specify a base color with our color map functions:
   color: color-yiq(theme-color("dark")); // returns `color: #fff`
 }
 {{< /highlight >}}
+
+## Escape SVG
+
+We use the `escape-svg` function to escape the `<`, `>` and `#` characters for SVG background images. These characters need to be escaped to properly render the background images in IE.
 
 ## Sass options
 

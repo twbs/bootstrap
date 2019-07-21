@@ -229,7 +229,7 @@
   }
 
   .navbar-toggler-icon {
-    background-image: $navbar-light-toggler-icon-bg;
+    background-image: escape-svg($navbar-light-toggler-icon-bg);
   }
 
   .navbar-text {
@@ -282,7 +282,7 @@
   }
 
   .navbar-toggler-icon {
-    background-image: $navbar-dark-toggler-icon-bg;
+    background-image: escape-svg($navbar-dark-toggler-icon-bg);
   }
 
   .navbar-text {

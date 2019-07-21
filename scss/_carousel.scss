@@ -131,10 +131,10 @@
   background: no-repeat 50% / 100% 100%;
 }
 .carousel-control-prev-icon {
-  background-image: $carousel-control-prev-icon-bg;
+  background-image: escape-svg($carousel-control-prev-icon-bg);
 }
 .carousel-control-next-icon {
-  background-image: $carousel-control-next-icon-bg;
+  background-image: escape-svg($carousel-control-next-icon-bg);
 }
 
 
