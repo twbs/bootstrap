@@ -26,13 +26,10 @@
   // Because flex properties aren't inherited, we need to redeclare these first
   // few properties so that content nested within behave properly.
   > [class^="container"] {
-    @extend %container-flex-properties;
-  }
-
-  @each $breakpoint, $container-max-width in $container-max-widths {
-    > .container#{breakpoint-infix($breakpoint, $container-max-widths)} {
-      @extend %container-flex-properties;
-    }
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
   }
 }
 
