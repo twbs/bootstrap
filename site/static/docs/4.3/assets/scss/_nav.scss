@@ -17,8 +17,14 @@
   }
 
   .dropdown-menu {
-    @include font-size(90%);
+    @include font-size(.875rem);
     box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .05);
+  }
+
+  .dropdown-item.active {
+    font-weight: 600;
+    color: $gray-900;
+    background: escape-svg($dropdown-active-icon) no-repeat .4rem .6rem/.75rem .75rem;
   }
 
   @include media-breakpoint-up(md) {
@@ -103,15 +109,5 @@
     width: 1rem;
     height: 1rem;
     vertical-align: text-top;
-  }
-
-  .dropdown-menu {
-    @include font-size(.875rem);
-  }
-
-  .dropdown-item.active {
-    font-weight: 600;
-    color: $gray-900;
-    background: escape-svg($dropdown-active-icon) no-repeat .4rem .6rem/.75rem .75rem;
   }
 }
