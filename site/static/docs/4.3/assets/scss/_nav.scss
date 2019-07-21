@@ -30,6 +30,24 @@
   }
 }
 
+.bd-search {
+  position: relative; // To contain the Algolia search
+
+  @include media-breakpoint-down(sm) {
+    width: 100%;
+  }
+
+  .form-control:focus {
+    border-color: $bd-purple-bright;
+    box-shadow: 0 0 0 3px rgba($bd-purple-bright, .25);
+  }
+}
+
+.bd-search-docs-toggle {
+  line-height: 1;
+  color: $gray-900;
+}
+
 .link-dark {
   font-weight: 500;
   color: $dark;
