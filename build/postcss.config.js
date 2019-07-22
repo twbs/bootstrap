@@ -11,6 +11,7 @@ module.exports = ctx => ({
   plugins: {
     autoprefixer: {
       cascade: false
-    }
+    },
+    cssnano: ctx.env === 'production' ? { preset: 'default' } : false
   }
 })
