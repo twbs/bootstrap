@@ -53,7 +53,8 @@ Changes to any layout tools and our grid system.
 Changes to Reboot, typography, tables, and more.
 
 - **Todo:** Make RFS enabled by default
-- Reset default horizontal `padding` on `<ul>` and `<ol>` elements from browser default `40px` to `2rem`.
+- Reset default horizontal `padding-left` on `<ul>` and `<ol>` elements from browser default `40px` to `2rem`.
+- Simplified table styles (no more 2px border on `thead > th` elements) and tightened cell padding.
 
 ## Forms
 
@@ -63,12 +64,17 @@ Changes to Reboot, typography, tables, and more.
 - Rearranged source Sass files under `scss/forms/`, including moving over input group styles.
 - Combined native and custom checkboxes and radios into single `.form-check` class.
   - New checks support sizing via `em`/`font-size` or explicit modifier classes now.
+  - New checks now appear larger by default for improved usability.
   - Dropped `.custom-control` and associated classes.
+  - Renamed most `$custom-control` variables to `$form-control` ones.
 - Combined native and custom selects into `.form-select`.
   - Dropped `.custom-select` and associated classes.
-- Dropped native `.form-control-file` and `.form-control-range` components.
-- Renamed `.custom-file` to `.form-file` (including variables).
-- Refactored `.form-file` markup to resolve some visual bugs while allowing translation and button text changes via HTML instead of CSS.
+  - Renamed most `$custom-select` variables to `$form-select` ones.
+- Updated file input component with same overall design, but improved HTML.
+  - Refactored `.form-file` markup to resolve some visual bugs while allowing translation and button text changes via HTML instead of CSS.
+  - Dropped native `.form-control-file` and `.form-control-range` components entirely.
+  - Renamed `.custom-file` to `.form-file` (including variables).
+  - Added support for `:focus` and `:disabled` styles.
 - Renamed `.custom-range` to `.form-range` (including variables).
 - Dropped `.form-group` for margin utilities (we've replaced our docs examples with `.mb-3`).
 - Dropped support for `.form-control-plaintext` inside `.input-group`s.
@@ -86,6 +92,11 @@ Badges were overhauled to better differentiate themselves from buttons and to be
 - **Todo:** Removed and replaced `.badge` modifier classes with background utility classes (e.g., use `.bg-primary` instead of `.badge-primary`)
 - **Todo:** Removed `.badge-pill` for the `.rounded-pill` utility class
 - **Todo:** Removed badge's hover and focus styles for `a.badge` and `button.badge`.
+
+### Icons (New!)
+
+- Added new Bootstrap icons to the project for our documentation, form controls, and more.
+- Removed Open Iconic icons from project source code for form controls.
 
 ### Jumbotron
 
