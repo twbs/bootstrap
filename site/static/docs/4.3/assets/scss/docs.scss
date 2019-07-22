@@ -65,3 +65,18 @@
     @include border-radius(.25rem);
   }
 }
+
+.form-control-with-spinner {
+  position: relative;
+
+  > .form-control {
+    padding-right: 2rem;
+  }
+
+  > .spinner-grow,
+  > .spinner-border {
+    position: absolute;
+    top: calc(50% - #{$spinner-width-sm} / 2) ;
+    right: .5rem;
+  }
+}

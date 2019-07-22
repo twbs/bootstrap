@@ -167,6 +167,34 @@ Use spinners within buttons to indicate an action is currently processing or tak
 </button>
 {{< /example >}}
 
+## With inputs
+
+Unlike `<button>`s and other elements, `<input>`s cannot have HTML within them. As such, to place a spinner in a Bootstrap `.form-control` input, we have to place it over the `<input>` with absolute positioning.
+
+Wrap your `<input>` and spinner in a parent `<div>` with class `.form-control-with-spinner`. The class will adjust the `padding-right` of your input and position the spinner.
+
+{{< example >}}
+<label for="exampleWithSpinner">Input with spinner</label>
+<div class="form-control-with-spinner">
+  <input type="text" class="form-control" id="exampleWithSpinner" value="Spinning...">
+  <div class="spinner-border spinner-border-sm" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+{{< /example >}}
+
+This also works with the growing spinner:
+
+{{< example >}}
+<label for="exampleWithSpinner2">Input with spinner</label>
+<div class="form-control-with-spinner">
+  <input type="text" class="form-control" id="exampleWithSpinner2" value="Spinning...">
+  <div class="spinner-grow spinner-grow-sm" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+{{< /example >}}
+
 
 [color]:   {{< docsref "/utilities/colors" >}}
 [display]: {{< docsref "/utilities/display" >}}
