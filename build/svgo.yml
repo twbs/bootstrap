@@ -15,6 +15,9 @@ js2svg:
   indent: 2
 
 plugins:
+#  - addAttributesToSVGElement:
+#      attributes:
+#        - focusable: false
   - cleanupAttrs: true
   - cleanupEnableBackground: true
   - cleanupIDs: true
@@ -31,6 +34,9 @@ plugins:
   - minifyStyles: true
   - moveElemsAttrsToGroup: true
   - moveGroupAttrsToElems: true
+  - removeAttrs:
+      attrs:
+        - "data-name"
   - removeComments: true
   - removeDesc: true
   - removeDoctype: true
