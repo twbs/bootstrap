@@ -21,7 +21,7 @@
         </a>
 
         {{- if $group.pages }}
-        <ul class="nav bd-sidenav mb-2">
+        <ul class="nav bd-sidenav flex-column mb-2">
           {{- range $doc := $group.pages -}}
             {{- $doc_slug := $doc.title | urlize }}
             <li{{ if and $active_group (eq $page_slug $doc_slug) }} class="active bd-sidenav-active"{{ end }}>
