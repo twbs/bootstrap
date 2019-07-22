@@ -13,7 +13,7 @@ import Dropdown from './src/dropdown/dropdown'
 import Modal from './src/modal/modal'
 import Popover from './src/popover/popover'
 import ScrollSpy from './src/scrollspy/scrollspy'
-import Tab from './src/tab'
+import Tab from './src/tab/tab'
 import Toast from './src/toast/toast'
 import Tooltip from './src/tooltip/tooltip'
 

@@ -13,10 +13,10 @@ import {
   getTransitionDurationFromElement,
   makeArray,
   reflow
-} from './util/index'
-import Data from './dom/data'
-import EventHandler from './dom/event-handler'
-import SelectorEngine from './dom/selector-engine'
+} from '../util/index'
+import Data from '../dom/data'
+import EventHandler from '../dom/event-handler'
+import SelectorEngine from '../dom/selector-engine'
 
 /**
  * ------------------------------------------------------------------------
@@ -253,7 +253,7 @@ EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (
  * ------------------------------------------------------------------------
  * add .tab to jQuery only if jQuery is present
  */
-
+/* istanbul ignore if */
 if (typeof $ !== 'undefined') {
   const JQUERY_NO_CONFLICT = $.fn[NAME]
   $.fn[NAME] = Tab._jQueryInterface
