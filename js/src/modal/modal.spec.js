@@ -790,9 +790,6 @@ describe('Modal', () => {
         '<div id="exampleModal" class="modal"><div class="modal-dialog" /></div>'
       ].join('')
 
-      // the element must be displayed, without that activeElement won't change
-      fixtureEl.style.display = 'block'
-
       const modalEl = fixtureEl.querySelector('.modal')
       const trigger = fixtureEl.querySelector('[data-toggle="modal"]')
 
@@ -807,7 +804,6 @@ describe('Modal', () => {
       const hideListener = () => {
         setTimeout(() => {
           expect(trigger.focus).toHaveBeenCalled()
-          fixtureEl.style.display = 'none'
           done()
         }, 20)
       }
@@ -821,8 +817,8 @@ describe('Modal', () => {
 
     it('should not focus the trigger if the modal is not visible', done => {
       fixtureEl.innerHTML = [
-        '<a data-toggle="modal" href="#" data-target="#exampleModal"></a>',
-        '<div id="exampleModal" class="modal"><div class="modal-dialog" /></div>'
+        '<a data-toggle="modal" href="#" data-target="#exampleModal" style="display: none;"></a>',
+        '<div id="exampleModal" class="modal" style="display: none;"><div class="modal-dialog" /></div>'
       ].join('')
 
       const modalEl = fixtureEl.querySelector('.modal')

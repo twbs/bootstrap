@@ -6,7 +6,11 @@ export const getFixture = () => {
   if (!fixtureEl) {
     fixtureEl = document.createElement('div')
     fixtureEl.setAttribute('id', fixtureId)
-    fixtureEl.style.display = 'none'
+    fixtureEl.style.position = 'absolute'
+    fixtureEl.style.top = '-10000px'
+    fixtureEl.style.left = '-10000px'
+    fixtureEl.style.width = '10000px'
+    fixtureEl.style.height = '10000px'
     document.body.appendChild(fixtureEl)
   }
 

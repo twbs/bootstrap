@@ -33,7 +33,6 @@ describe('ScrollSpy', () => {
   })
 
   afterEach(() => {
-    fixtureEl.style.display = 'none'
     clearFixture()
   })
 
@@ -80,7 +79,6 @@ describe('ScrollSpy', () => {
         '</div>'
       ].join('')
 
-      fixtureEl.style.display = 'block'
       const scrollSpy = new ScrollSpy(fixtureEl.querySelector('#content'), {
         target: '#navigation'
       })
@@ -114,7 +112,6 @@ describe('ScrollSpy', () => {
         '</div>'
       ].join('')
 
-      fixtureEl.style.display = 'block'
       const scrollSpyEl = fixtureEl.querySelector('#scrollspy-example')
       const rootEl = fixtureEl.querySelector('#root')
       const scrollSpy = new ScrollSpy(scrollSpyEl, {
@@ -172,7 +169,6 @@ describe('ScrollSpy', () => {
         done()
       })
 
-      fixtureEl.style.display = 'block'
       scrollSpyEl.scrollTop = 350
     })
 
@@ -193,7 +189,6 @@ describe('ScrollSpy', () => {
         '</div>'
       ].join('')
 
-      fixtureEl.style.display = 'block'
       const contentEl = fixtureEl.querySelector('#content')
       const scrollSpy = new ScrollSpy(contentEl, {
         target: '#navigation',
@@ -227,7 +222,6 @@ describe('ScrollSpy', () => {
         '</div>'
       ].join('')
 
-      fixtureEl.style.display = 'block'
       const contentEl = fixtureEl.querySelector('.content')
       const scrollSpy = new ScrollSpy(contentEl, {
         offset: 0,
@@ -268,7 +262,6 @@ describe('ScrollSpy', () => {
         '</div>'
       ].join('')
 
-      fixtureEl.style.display = 'block'
       const contentEl = fixtureEl.querySelector('.content')
       const scrollSpy = new ScrollSpy(contentEl, {
         offset: 0,
@@ -309,7 +302,6 @@ describe('ScrollSpy', () => {
         '</div>'
       ].join('')
 
-      fixtureEl.style.display = 'block'
       const contentEl = fixtureEl.querySelector('.content')
       const scrollSpy = new ScrollSpy(contentEl, {
         offset: 0,
@@ -354,8 +346,6 @@ describe('ScrollSpy', () => {
         '  <div id="spacer" style="height: 100px;"></div>',
         '</div>'
       ].join('')
-
-      fixtureEl.style.display = 'block'
 
       const contentEl = fixtureEl.querySelector('#content')
       const scrollSpy = new ScrollSpy(contentEl, {
@@ -402,8 +392,6 @@ describe('ScrollSpy', () => {
         '  <div id="spacer" style="height: 100px;"></div>',
         '</div>'
       ].join('')
-
-      fixtureEl.style.display = 'block'
 
       const negativeHeight = -10
       const startOfSectionTwo = 101
@@ -455,8 +443,6 @@ describe('ScrollSpy', () => {
         '  <div id="div-100-5" style="position: relative; height: 100%; padding: 0; margin: 0">div 5</div>',
         '</div>'
       ].join('')
-
-      fixtureEl.style.display = 'block'
 
       const contentEl = fixtureEl.querySelector('.content')
       const scrollSpy = new ScrollSpy(contentEl, {
@@ -531,8 +517,6 @@ describe('ScrollSpy', () => {
         '</div>'
       ].join('')
 
-      fixtureEl.style.display = 'block'
-
       const contentEl = fixtureEl.querySelector('.content')
       const targetEl = fixtureEl.querySelector('#div-jsm-2')
       const scrollSpy = new ScrollSpy(contentEl, {
@@ -561,8 +545,6 @@ describe('ScrollSpy', () => {
         '</div>'
       ].join('')
 
-      fixtureEl.style.display = 'block'
-
       const contentEl = fixtureEl.querySelector('.content')
       const targetEl = fixtureEl.querySelector('#div-jsm-2')
       const scrollSpy = new ScrollSpy(contentEl, {
@@ -579,11 +561,13 @@ describe('ScrollSpy', () => {
   describe('dispose', () => {
     it('should dispose a scrollspy', () => {
       spyOn(EventHandler, 'off')
+      fixtureEl.innerHTML = '<div style="display: none;"></div>'
 
-      const scrollSpy = new ScrollSpy(fixtureEl)
+      const divEl = fixtureEl.querySelector('div')
+      const scrollSpy = new ScrollSpy(divEl)
 
       scrollSpy.dispose()
-      expect(EventHandler.off).toHaveBeenCalledWith(fixtureEl, '.bs.scrollspy')
+      expect(EventHandler.off).toHaveBeenCalledWith(divEl, '.bs.scrollspy')
     })
   })
 
