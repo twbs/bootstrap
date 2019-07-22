@@ -25,7 +25,7 @@
     "css-main": "npm-run-all css-lint css-compile-main css-prefix-main css-minify-main css-copy",
     "css-docs": "npm-run-all css-compile-docs css-prefix-docs* css-minify-docs",
     "css-compile": "npm-run-all --parallel css-compile-*",
-    "css-compile-main": "node-sass --output-style expanded --source-map true --source-map-contents true --precision 6 scss/bootstrap.scss dist/css/bootstrap.css && node-sass --output-style expanded --source-map true --source-map-contents true --precision 6 scss/bootstrap-grid.scss dist/css/bootstrap-grid.css && node-sass --output-style expanded --source-map true --source-map-contents true --precision 6 scss/bootstrap-reboot.scss dist/css/bootstrap-reboot.css && npm run css-copy",
+    "css-compile-main": "node-sass --output-style expanded --source-map true --source-map-contents true --precision 6 scss/ -o dist/css/ && npm run css-copy",
     "css-compile-docs": "cross-env-shell node-sass --output-style expanded --source-map true --source-map-contents true --precision 6 site/static/docs/$npm_package_version_short/assets/scss/docs.scss site/static/docs/$npm_package_version_short/assets/css/docs.min.css",
     "css-lint": "npm-run-all --parallel css-lint-*",
     "css-lint-main": "stylelint \"scss/**/*.scss\" --cache --cache-location .cache/.stylelintcache",
