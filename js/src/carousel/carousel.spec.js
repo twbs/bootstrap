@@ -691,9 +691,13 @@ describe('Carousel', () => {
 
   describe('nextWhenVisible', () => {
     it('should not call next when the page is not visible', () => {
-      fixtureEl.innerHTML = '<div class="carousel" data-interval="false"></div>'
+      fixtureEl.innerHTML = [
+        '<div style="display: none;">',
+        '  <div class="carousel" data-interval="false"></div>',
+        '</div>'
+      ].join('')
 
-      const carouselEl = fixtureEl.querySelector('div')
+      const carouselEl = fixtureEl.querySelector('.carousel')
       const carousel = new Carousel(carouselEl)
 
       spyOn(carousel, 'next')

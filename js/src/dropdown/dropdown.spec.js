@@ -1152,9 +1152,6 @@ describe('Dropdown', () => {
         '</div>'
       ].join('')
 
-      // the element must be displayed, without that activeElement won't change
-      fixtureEl.style.display = 'block'
-
       const triggerDropdown = fixtureEl.querySelector('[data-toggle="dropdown"]')
       const dropdown = fixtureEl.querySelector('.dropdown')
       const input = fixtureEl.querySelector('input')
@@ -1173,7 +1170,6 @@ describe('Dropdown', () => {
         textarea.dispatchEvent(keyDown)
 
         expect(document.activeElement).toEqual(textarea, 'textarea still focused')
-        fixtureEl.style.display = 'none'
         done()
       })
 
@@ -1195,9 +1191,6 @@ describe('Dropdown', () => {
       const triggerDropdown = fixtureEl.querySelector('[data-toggle="dropdown"]')
       const dropdown = fixtureEl.querySelector('.dropdown')
 
-      // the element must be displayed, without that activeElement won't change
-      fixtureEl.style.display = 'block'
-
       dropdown.addEventListener('shown.bs.dropdown', () => {
         const keyDown = createEvent('keydown')
         keyDown.which = 40
@@ -1207,7 +1200,6 @@ describe('Dropdown', () => {
 
         expect(document.activeElement.classList.contains('disabled')).toEqual(false, '.disabled not focused')
         expect(document.activeElement.hasAttribute('disabled')).toEqual(false, ':disabled not focused')
-        fixtureEl.style.display = 'none'
         done()
       })
 
@@ -1230,9 +1222,6 @@ describe('Dropdown', () => {
       const item1 = fixtureEl.querySelector('#item1')
       const item2 = fixtureEl.querySelector('#item2')
 
-      // the element must be displayed, without that activeElement won't change
-      fixtureEl.style.display = 'block'
-
       dropdown.addEventListener('shown.bs.dropdown', () => {
         const keyDown40 = createEvent('keydown')
         keyDown40.which = 40
@@ -1249,7 +1238,6 @@ describe('Dropdown', () => {
         document.activeElement.dispatchEvent(keyDown38)
         expect(document.activeElement).toEqual(item1, 'item1 is focused')
 
-        fixtureEl.style.display = 'none'
         done()
       })
 
@@ -1322,9 +1310,6 @@ describe('Dropdown', () => {
         '</div>'
       ].join('')
 
-      // the element must be displayed, without that activeElement won't change
-      fixtureEl.style.display = 'block'
-
       const triggerDropdown = fixtureEl.querySelector('[data-toggle="dropdown"]')
       const dropdown = fixtureEl.querySelector('.dropdown')
       const input = fixtureEl.querySelector('input')
@@ -1385,7 +1370,6 @@ describe('Dropdown', () => {
         input.dispatchEvent(keyDownEscape)
 
         expect(dropdown.classList.contains('show')).toEqual(false, 'dropdown menu is not shown')
-        fixtureEl.style.display = 'none'
         done()
       })
 

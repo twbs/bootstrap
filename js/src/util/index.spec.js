@@ -208,9 +208,13 @@ describe('Util', () => {
     })
 
     it('should return false if the parent element is not visible', () => {
-      fixtureEl.innerHTML = '<div></div>'
+      fixtureEl.innerHTML = [
+        '<div style="display: none;">',
+        '  <div class="content"></div>',
+        '</div>'
+      ].join('')
 
-      const div = fixtureEl.querySelector('div')
+      const div = fixtureEl.querySelector('.content')
 
       expect(Util.isVisible(div)).toEqual(false)
     })
