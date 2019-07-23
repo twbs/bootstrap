@@ -139,7 +139,7 @@
 
     &#{$infix} {
       @include media-breakpoint-down($breakpoint) {
-        > [class^=".container"] {
+        > [class^="container"] {
           padding-right: 0;
           padding-left: 0;
         }
@@ -163,7 +163,7 @@
         }
 
         // For nesting containers, have to redeclare for alignment purposes
-        > [class^=".container"] {
+        > [class^="container"] {
           flex-wrap: nowrap;
         }
 
