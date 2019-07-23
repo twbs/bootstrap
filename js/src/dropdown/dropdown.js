@@ -7,7 +7,7 @@
 
 import {
   jQuery as $,
-  getSelectorFromElement,
+  getElementFromSelector,
   isElement,
   makeArray,
   noop,
@@ -442,14 +442,7 @@ class Dropdown {
   }
 
   static _getParentFromElement(element) {
-    let parent
-    const selector = getSelectorFromElement(element)
-
-    if (selector) {
-      parent = SelectorEngine.findOne(selector)
-    }
-
-    return parent || element.parentNode
+    return getElementFromSelector(element) || element.parentNode
   }
 
   static _dataApiKeydownHandler(event) {

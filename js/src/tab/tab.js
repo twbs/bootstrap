@@ -9,7 +9,7 @@ import {
   jQuery as $,
   TRANSITION_END,
   emulateTransitionEnd,
-  getSelectorFromElement,
+  getElementFromSelector,
   getTransitionDurationFromElement,
   makeArray,
   reflow
@@ -85,10 +85,9 @@ class Tab {
       return
     }
 
-    let target
     let previous
+    const target = getElementFromSelector(this._element)
     const listElement = SelectorEngine.closest(this._element, Selector.NAV_LIST_GROUP)
-    const selector = getSelectorFromElement(this._element)
 
     if (listElement) {
       const itemSelector = listElement.nodeName === 'UL' || listElement.nodeName === 'OL' ? Selector.ACTIVE_UL : Selector.ACTIVE
@@ -111,10 +110,6 @@ class Tab {
     if (showEvent.defaultPrevented ||
       hideEvent !== null && hideEvent.defaultPrevented) {
       return
-    }
-
-    if (selector) {
-      target = SelectorEngine.findOne(selector)
     }
 
     this._activate(
