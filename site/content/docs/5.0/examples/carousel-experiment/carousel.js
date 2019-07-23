@@ -29,7 +29,7 @@
 
     [].slice.call(carouselItems).forEach(function (el) {
       // Get the first carousel item's child
-      var siblings = getSiblings(el.querySelector(':first-child'));
+      var siblings = getSiblings(el.firstChild);
 
       // Remove .carousel-item's first child next elements
       [].slice.call(siblings).forEach(function (ele) {
@@ -50,16 +50,16 @@
     [].slice.call(carouselItems).forEach(function (el) {
       var next = el.nextElementSibling
 
-      if (next.length === 0) {
-        next = getSiblings(el.querySelector(':first'))
-      }
+      if (next) {
+        next = getSiblings(el.firstChild)
 
-      el.appendChild(next.querySelector(':first-child').cloneNode(true))
+        el.appendChild(next[0].cloneNode(true))
 
-      if (next.nextElementSibling.length > 0) {
-        el.appendChild(next.nextElementSibling.querySelector(':first-child').cloneNode(true))
-      } else {
-        el.appendChild(getSiblings(el.querySelector(':first')).querySelector(':first-child').cloneNode(true))
+        if (next.nextElementSibling) {
+          el.appendChild(next.nextElementSibling.querySelector(':first-child').cloneNode(true))
+        } else {
+          el.appendChild(getSiblings(el.firstChild)[0].cloneNode(true))
+        }
       }
     })
 
