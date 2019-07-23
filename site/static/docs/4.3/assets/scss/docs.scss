@@ -76,7 +76,7 @@
   > .spinner-grow,
   > .spinner-border {
     position: absolute;
-    top: calc(50% - #{$spinner-width-sm} / 2) ;
+    top: calc(50% - #{$spinner-width-sm / 2}) ;
     right: .5rem;
   }
 }
