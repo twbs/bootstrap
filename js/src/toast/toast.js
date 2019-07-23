@@ -10,6 +10,7 @@ import {
   TRANSITION_END,
   emulateTransitionEnd,
   getTransitionDurationFromElement,
+  reflow,
   typeCheckConfig
 } from '../util/index'
 import Data from '../dom/data'
@@ -114,6 +115,7 @@ class Toast {
     }
 
     this._element.classList.remove(ClassName.HIDE)
+    reflow(this._element)
     this._element.classList.add(ClassName.SHOWING)
     if (this._config.animation) {
       const transitionDuration = getTransitionDurationFromElement(this._element)
