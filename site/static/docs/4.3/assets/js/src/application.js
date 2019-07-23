@@ -144,12 +144,10 @@
   clipboard.on('success', function (e) {
     var tooltipBtn = bootstrap.Tooltip._getInstance(e.trigger)
 
-    e.trigger.setAttribute('title', 'Copied!')
-    tooltipBtn._fixTitle()
+    e.trigger.setAttribute('data-original-title', 'Copied!')
     tooltipBtn.show()
 
-    e.trigger.setAttribute('title', 'Copy to clipboard')
-    tooltipBtn._fixTitle()
+    e.trigger.setAttribute('data-original-title', 'Copy to clipboard')
     e.clearSelection()
   })
 
