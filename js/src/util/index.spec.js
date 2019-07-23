@@ -64,6 +64,54 @@ describe('Util', () => {
 
       expect(Util.getSelectorFromElement(testEl)).toBeNull()
     })
+
+    it('should return null if no selector', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const testEl = fixtureEl.querySelector('div')
+
+      expect(Util.getSelectorFromElement(testEl)).toBeNull()
+    })
+  })
+
+  describe('getElementFromSelector', () => {
+    it('should get element from data-target', () => {
+      fixtureEl.innerHTML = [
+        '<div id="test" data-target=".target"></div>',
+        '<div class="target"></div>'
+      ].join('')
+
+      const testEl = fixtureEl.querySelector('#test')
+
+      expect(Util.getElementFromSelector(testEl)).toEqual(fixtureEl.querySelector('.target'))
+    })
+
+    it('should get element from href if no data-target set', () => {
+      fixtureEl.innerHTML = [
+        '<a id="test" href=".target"></a>',
+        '<div class="target"></div>'
+      ].join('')
+
+      const testEl = fixtureEl.querySelector('#test')
+
+      expect(Util.getElementFromSelector(testEl)).toEqual(fixtureEl.querySelector('.target'))
+    })
+
+    it('should return null if element not found', () => {
+      fixtureEl.innerHTML = '<a id="test" href=".target"></a>'
+
+      const testEl = fixtureEl.querySelector('#test')
+
+      expect(Util.getElementFromSelector(testEl)).toBeNull()
+    })
+
+    it('should return null if no selector', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const testEl = fixtureEl.querySelector('div')
+
+      expect(Util.getElementFromSelector(testEl)).toBeNull()
+    })
   })
 
   describe('getTransitionDurationFromElement', () => {

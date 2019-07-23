@@ -9,7 +9,7 @@ import {
   jQuery as $,
   TRANSITION_END,
   emulateTransitionEnd,
-  getSelectorFromElement,
+  getElementFromSelector,
   getTransitionDurationFromElement,
   isVisible,
   makeArray,
@@ -549,8 +549,7 @@ class Modal {
  */
 
 EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
-  const selector = getSelectorFromElement(this)
-  const target = SelectorEngine.findOne(selector)
+  const target = getElementFromSelector(this)
 
   if (this.tagName === 'A' || this.tagName === 'AREA') {
     event.preventDefault()
