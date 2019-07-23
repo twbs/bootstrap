@@ -10,48 +10,23 @@ toc: true
 
 Meet the Bootstrap icons, a limited set of icons designed first and foremost to work with Bootstrap's components. From form controls to navigation, these icons are the perfect complement to our toolkit. They're SVGs, so they'll scale quickly and easily to any size, they can be easily recolored with CSS, and more. They're also included in Bootstrap under the MIT license.
 
-<div class="bd-bi-grid d-flex flex-wrap mb-5">
+<div class="bd-bi-grid d-flex flex-wrap mt-4 mb-5 mx-n2">
   {{< listIcons.inline >}}
-  {{- $dirName := printf "site/content/docs/%s/icons/" .Site.Params.docs_version -}}
+  {{- $dirName := printf "site/static/docs/%s/dist/icons/" .Site.Params.docs_version -}}
 
   {{- range (readDir $dirName) -}}
     {{- $filenameWithExt := split .Name "." -}}
     {{- $filename := index $filenameWithExt 0 -}}
     {{- $name := humanize $filename -}}
-    <div class="p-3 mr-2 mb-2 border rounded">
-      {{ readFile (printf "%s%s" $dirName .Name) }}
+    <div class="px-2 mb-4 text-center">
+      <div class="px-3 py-4 mb-2 border rounded">
+        <img src="{{ printf "/docs/4.3/dist/icons/%s" .Name }}" alt="{{ printf $name }}" width="32" height="32">
+      </div>
+      <div class="text-muted">{{ printf $name }}</div>
     </div>
   {{ end -}}
   {{< /listIcons.inline >}}
 </div>
-
-<table class="table bd-bi-table">
-  <thead class="text-left">
-    <tr>
-      <th>Name</th>
-      <th>Icon</th>
-      <th>Class</th>
-    </tr>
-  </thead>
-  <tbody>
-    {{< listIcons.inline >}}
-    {{- $dirName := printf "site/content/docs/%s/icons/" .Site.Params.docs_version -}}
-
-    {{- range (readDir $dirName) -}}
-      {{- $filenameWithExt := split .Name "." -}}
-      {{- $filename := index $filenameWithExt 0 -}}
-      {{- $name := humanize $filename -}}
-        <tr>
-          <td>{{ $name }}</td>
-          <td>{{ readFile (printf "%s%s" $dirName .Name) }}</td>
-          <td>
-            <code>.bi-{{ $filename }}</code>
-          </td>
-        </tr>
-    {{ end -}}
-    {{< /listIcons.inline >}}
-  </tbody>
-</table>
 
 ## How to use
 

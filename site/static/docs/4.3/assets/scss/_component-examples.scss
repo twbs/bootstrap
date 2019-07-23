@@ -324,12 +324,19 @@
   }
 }
 
-.bd-bi-table svg {
-  width: 24px;
-  height: 24px;
-}
+.bd-bi-grid > * {
+  flex: 0 0 calc(100% / 3);
+  @include font-size(.8125rem);
 
-.bd-bi-grid svg {
-  width: 32px;
-  height: 32px;
+  @include media-breakpoint-up(sm) {
+    flex: 0 0 calc(100% / 4);
+  }
+
+  @include media-breakpoint-up(lg) {
+    flex: 0 0 calc(100% / 5);
+  }
+
+  @include media-breakpoint-up(xl) {
+    flex: 0 0 calc(100% / 6);
+  }
 }
