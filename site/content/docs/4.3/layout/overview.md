@@ -45,7 +45,7 @@ Use `.container-fluid` for a full width container, spanning the entire width of 
 
 ### Responsive
 
-Responsive containers are new in Bootstrap v4.4. They allow you to specify a class that is 100% wide until particular breakpoint is reached and a `max-width` is applied. For example, `.container-sm` is 100% wide to start until the `sm` breakpoint is reached, where it will remain through the higher breakpoints.
+Responsive containers are new in Bootstrap v4.4. They allow you to specify a class that is 100% wide until the specified breakpoint is reached, after which we apply `max-width`s for each of the higher breakpoints. For example, `.container-sm` is 100% wide to start until the `sm` breakpoint is reached, where it will scale up with `md`, `lg`, and `xl`.
 
 <div class="bd-example">
   <div class="example-container-element p-3 mb-3">
@@ -62,6 +62,86 @@ Responsive containers are new in Bootstrap v4.4. They allow you to specify a cla
 <div class="container-lg">100% wide until large breakpoint</div>
 <div class="container-xl">100% wide until extra large breakpoint</div>
 {{< /highlight >}}
+
+This table illustrates how each responsive container's `max-width` compares to the original `.container` and `.container-fluid` across each breakpoint.
+
+<table class="table text-left">
+  <thead>
+    <tr>
+      <th></th>
+      <th>
+        Extra small<br>
+        <span class="font-weight-normal">&lt;576px</span>
+      </th>
+      <th>
+        Small<br>
+        <span class="font-weight-normal">&ge;576px</span>
+      </th>
+      <th>
+        Medium<br>
+        <span class="font-weight-normal">&ge;768px</span>
+      </th>
+      <th>
+        Large<br>
+        <span class="font-weight-normal">&ge;992px</span>
+      </th>
+      <th>
+        Extra large<br>
+        <span class="font-weight-normal">&ge;1200px</span>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>.container</code></td>
+      <td class="text-muted">100%</td>
+      <td>540px</td>
+      <td>720px</td>
+      <td>960px</td>
+      <td>1140px</td>
+    </tr>
+    <tr>
+      <td><code>.container-sm</code></td>
+      <td class="text-muted">100%</td>
+      <td>540px</td>
+      <td>720px</td>
+      <td>960px</td>
+      <td>1140px</td>
+    </tr>
+    <tr>
+      <td><code>.container-md</code></td>
+      <td class="text-muted">100%</td>
+      <td class="text-muted">100%</td>
+      <td>720px</td>
+      <td>960px</td>
+      <td>1140px</td>
+    </tr>
+    <tr>
+      <td><code>.container-lg</code></td>
+      <td class="text-muted">100%</td>
+      <td class="text-muted">100%</td>
+      <td class="text-muted">100%</td>
+      <td>960px</td>
+      <td>1140px</td>
+    </tr>
+    <tr>
+      <td><code>.container-xl</code></td>
+      <td class="text-muted">100%</td>
+      <td class="text-muted">100%</td>
+      <td class="text-muted">100%</td>
+      <td class="text-muted">100%</td>
+      <td>1140px</td>
+    </tr>
+    <tr>
+      <td><code>.container-fluid</code></td>
+      <td class="text-muted">100%</td>
+      <td class="text-muted">100%</td>
+      <td class="text-muted">100%</td>
+      <td class="text-muted">100%</td>
+      <td class="text-muted">100%</td>
+    </tr>
+  </tbody>
+</table>
 
 ## Responsive breakpoints
 
