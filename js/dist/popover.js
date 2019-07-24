@@ -4,8 +4,8 @@
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
   */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./dom/data.js'), require('./dom/selector-engine.js'), require('./tooltip.js')) :
-  typeof define === 'function' && define.amd ? define(['./dom/data.js', './dom/selector-engine.js', './tooltip.js'], factory) :
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('../dom/data.js'), require('../dom/selector-engine.js'), require('../tooltip/tooltip.js')) :
+  typeof define === 'function' && define.amd ? define(['../dom/data.js', '../dom/selector-engine.js', '../tooltip/tooltip.js'], factory) :
   (global = global || self, global.Popover = factory(global.Data, global.SelectorEngine, global.Tooltip));
 }(this, function (Data, SelectorEngine, Tooltip) { 'use strict';
 
@@ -48,12 +48,13 @@
     var keys = Object.keys(object);
 
     if (Object.getOwnPropertySymbols) {
-      keys.push.apply(keys, Object.getOwnPropertySymbols(object));
+      var symbols = Object.getOwnPropertySymbols(object);
+      if (enumerableOnly) symbols = symbols.filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+      });
+      keys.push.apply(keys, symbols);
     }
 
-    if (enumerableOnly) keys = keys.filter(function (sym) {
-      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-    });
     return keys;
   }
 
@@ -272,6 +273,8 @@
    * jQuery
    * ------------------------------------------------------------------------
    */
+
+  /* istanbul ignore if */
 
 
   if (typeof jQuery !== 'undefined') {
