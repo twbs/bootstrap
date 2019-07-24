@@ -5,6 +5,32 @@ extra_css:
   - "playground.css"
 ---
 
+<div class="list-group my-5 mx-auto">
+  <div class="list-group-item d-flex align-items-center">
+    <div class="mb-0">Item with switch</div>
+    <div class="form-check form-switch ml-auto" style="font-size: 1.25rem;">
+      <input class="form-check-input ml-0" type="checkbox" id="playgroundSwitch1" checked>
+      <label class="sr-only" for="playgroundSwitch1">Switch label</label>
+    </div>
+  </div>
+  <div class="list-group-item d-flex align-items-center">
+    <div class="mb-0">Another with switch</div>
+    <div class="form-check form-switch ml-auto" style="font-size: 1.25rem;">
+      <input class="form-check-input ml-0" type="checkbox" id="playgroundSwitch2">
+      <label class="sr-only" for="playgroundSwitch2">Another switch label</label>
+    </div>
+  </div>
+  <div class="list-group-item d-flex align-items-center">
+    <div class="mb-0">Choose an option</div>
+    <div class="d-flex align-items-center ml-auto">
+      <span class="text-muted">Selected</span>
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="bi bi-chevron-right" viewBox="0 0 20 20">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l6-6-6-6"/>
+      </svg>
+    </div>
+  </div>
+</div>
+
 <div class="button-group my-5 mx-auto">
   <button type="button" class="button-group-item active">Selected</button>
   <button type="button" class="button-group-item">Second</button>
