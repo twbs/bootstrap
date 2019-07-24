@@ -134,7 +134,7 @@
     "karma-firefox-launcher": "^1.1.0",
     "karma-jasmine": "^2.0.1",
     "karma-jasmine-html-reporter": "^1.4.2",
-    "karma-rollup-preprocessor": "^7.0.0",
+    "karma-rollup-preprocessor": "^7.0.2",
     "linkinator": "^1.5.0",
     "node-sass": "^4.12.0",
     "nodemon": "^1.19.1",
@@ -149,7 +149,7 @@
     "shelljs": "^0.8.3",
     "shx": "^0.3.2",
     "stylelint": "^10.1.0",
-    "stylelint-config-twbs-bootstrap": "^0.3.1",
+    "stylelint-config-twbs-bootstrap": "^0.4.0",
     "terser": "^4.1.2",
     "vnu-jar": "19.6.7"
   },
