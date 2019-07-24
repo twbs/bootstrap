@@ -15,7 +15,7 @@ Meet the Bootstrap icons, a limited set of icons designed first and foremost to 
 {{- range .Site.Data.icons }}
   <div class="px-2 mb-4 text-center">
     <div class="px-3 py-4 mb-2 border rounded">
-      <img src="/docs/4.3/dist/icons/{{ .name }}.svg" alt="{{ humanize .name }}" width="32" height="32">
+      <img src="{{ printf "/docs/%s/dist/icons/%s.svg" $.Site.Params.docs_version .name }}" alt="{{ humanize .name }}" width="32" height="32">
     </div>
     <div class="text-muted">{{ humanize .name }}</div>
   </div>
