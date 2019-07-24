@@ -144,7 +144,7 @@
     }
   }
 
-  @include hover-focus {
+  @include hover-focus() {
     color: $dropdown-link-hover-color;
     text-decoration: none;
     @include gradient-bg($dropdown-link-hover-bg);

@@ -8,13 +8,13 @@
   opacity: .5;
 
   // Override <a>'s hover style
-  @include hover {
+  @include hover() {
     color: $close-color;
     text-decoration: none;
   }
 
   &:not(:disabled):not(.disabled) {
-    @include hover-focus {
+    @include hover-focus() {
       opacity: .75;
     }
   }

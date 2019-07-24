@@ -23,7 +23,7 @@
   text-align: inherit; // For `<button>`s (anchors inherit)
 
   // Hover state
-  @include hover-focus {
+  @include hover-focus() {
     z-index: 1; // Place hover/focus items above their siblings for proper border styling
     color: $list-group-action-hover-color;
     text-decoration: none;
