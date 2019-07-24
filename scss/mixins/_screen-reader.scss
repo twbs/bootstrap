@@ -3,7 +3,7 @@
 // See: https://a11yproject.com/posts/how-to-hide-content/
 // See: https://hugogiraudel.com/2016/10/13/css-hide-and-seek/
 
-@mixin sr-only {
+@mixin sr-only() {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -21,7 +21,7 @@
 //
 // Credit: HTML5 Boilerplate
 
-@mixin sr-only-focusable {
+@mixin sr-only-focusable() {
   &:active,
   &:focus {
     position: static;

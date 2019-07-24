@@ -188,7 +188,7 @@ a {
   text-decoration: $link-decoration;
   background-color: transparent; // Remove the gray background on active links in IE 10.
 
-  @include hover {
+  @include hover() {
     color: $link-hover-color;
     text-decoration: $link-hover-decoration;
   }
@@ -204,7 +204,7 @@ a:not([href]):not([tabindex]) {
   color: inherit;
   text-decoration: none;
 
-  @include hover-focus {
+  @include hover-focus() {
     color: inherit;
     text-decoration: none;
   }
