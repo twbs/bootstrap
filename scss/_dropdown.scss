@@ -10,7 +10,7 @@
   white-space: nowrap;
 
   // Generate the caret automatically
-  @include caret;
+  @include caret();
 }
 
 // The dropdown menu
