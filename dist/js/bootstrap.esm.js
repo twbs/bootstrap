@@ -36,20 +36,35 @@ function _defineProperty(obj, key, value) {
   return obj;
 }
 
-function _objectSpread(target) {
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    if (enumerableOnly) symbols = symbols.filter(function (sym) {
+      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+    });
+    keys.push.apply(keys, symbols);
+  }
+
+  return keys;
+}
+
+function _objectSpread2(target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i] != null ? arguments[i] : {};
-    var ownKeys = Object.keys(source);
 
-    if (typeof Object.getOwnPropertySymbols === 'function') {
-      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
-        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
-      }));
+    if (i % 2) {
+      ownKeys(source, true).forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      ownKeys(source).forEach(function (key) {
+        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+      });
     }
-
-    ownKeys.forEach(function (key) {
-      _defineProperty(target, key, source[key]);
-    });
   }
 
   return target;
@@ -742,10 +757,6 @@ var SelectorEngine = {
       element = document.documentElement;
     }
 
-    if (typeof selector !== 'string') {
-      return null;
-    }
-
     return find.call(element, selector);
   },
   findOne: function findOne$1(selector, element) {
@@ -753,18 +764,10 @@ var SelectorEngine = {
       element = document.documentElement;
     }
 
-    if (typeof selector !== 'string') {
-      return null;
-    }
-
     return findOne.call(element, selector);
   },
   children: function children(element, selector) {
     var _this = this;
-
-    if (typeof selector !== 'string') {
-      return null;
-    }
 
     var children = makeArray(element.children);
     return children.filter(function (child) {
@@ -772,10 +775,6 @@ var SelectorEngine = {
     });
   },
   parents: function parents(element, selector) {
-    if (typeof selector !== 'string') {
-      return null;
-    }
-
     var parents = [];
     var ancestor = element.parentNode;
 
@@ -790,17 +789,9 @@ var SelectorEngine = {
     return parents;
   },
   closest: function closest$1(element, selector) {
-    if (typeof selector !== 'string') {
-      return null;
-    }
-
     return closest.call(element, selector);
   },
   prev: function prev(element, selector) {
-    if (typeof selector !== 'string') {
-      return null;
-    }
-
     var siblings = [];
     var previous = element.previousSibling;
 
@@ -915,8 +906,8 @@ function () {
     }
 
     var transitionDuration = getTransitionDurationFromElement(element);
-    EventHandler.one(element, TRANSITION_END, function (event) {
-      return _this._destroyElement(element, event);
+    EventHandler.one(element, TRANSITION_END, function () {
+      return _this._destroyElement(element);
     });
     emulateTransitionEnd(element, transitionDuration);
   };
@@ -981,6 +972,8 @@ EventHandler.on(document, Event$1.CLICK_DATA_API, Selector.DISMISS, Alert._handl
  * ------------------------------------------------------------------------
  * add .alert to jQuery only if jQuery is present
  */
+
+/* istanbul ignore if */
 
 if (typeof jQuery !== 'undefined') {
   var JQUERY_NO_CONFLICT = jQuery.fn[NAME];
@@ -1136,7 +1129,6 @@ EventHandler.on(document, Event$2.CLICK_DATA_API, Selector$1.DATA_TOGGLE_CARROT,
 
   if (!data) {
     data = new Button(button);
-    Data.setData(button, DATA_KEY$1, data);
   }
 
   data.toggle();
@@ -1161,6 +1153,8 @@ EventHandler.on(document, Event$2.BLUR_DATA_API, Selector$1.DATA_TOGGLE_CARROT, 
  * ------------------------------------------------------------------------
  * add .button to jQuery only if jQuery is present
  */
+
+/* istanbul ignore if */
 
 if (typeof jQuery !== 'undefined') {
   var JQUERY_NO_CONFLICT$1 = jQuery.fn[NAME$1];
@@ -1217,7 +1211,7 @@ var Manipulator = {
       return {};
     }
 
-    var attributes = _objectSpread({}, element.dataset);
+    var attributes = _objectSpread2({}, element.dataset);
 
     Object.keys(attributes).forEach(function (key) {
       attributes[key] = normalizeData(attributes[key]);
@@ -1460,7 +1454,7 @@ function () {
   ;
 
   _proto._getConfig = function _getConfig(config) {
-    config = _objectSpread({}, Default, config);
+    config = _objectSpread2({}, Default, {}, config);
     typeCheckConfig(NAME$2, config, DefaultType);
     return config;
   };
@@ -1503,17 +1497,13 @@ function () {
       });
     }
 
-    if (this._config.touch) {
+    if (this._config.touch && this._touchSupported) {
       this._addTouchEventListeners();
     }
   };
 
   _proto._addTouchEventListeners = function _addTouchEventListeners() {
     var _this3 = this;
-
-    if (!this._touchSupported) {
-      return;
-    }
 
     var start = function start(event) {
       if (_this3._pointerEvent && PointerType[event.pointerType.toUpperCase()]) {
@@ -1763,10 +1753,10 @@ function () {
   Carousel._carouselInterface = function _carouselInterface(element, config) {
     var data = Data.getData(element, DATA_KEY$2);
 
-    var _config = _objectSpread({}, Default, Manipulator.getDataAttributes(element));
+    var _config = _objectSpread2({}, Default, {}, Manipulator.getDataAttributes(element));
 
     if (typeof config === 'object') {
-      _config = _objectSpread({}, _config, config);
+      _config = _objectSpread2({}, _config, {}, config);
     }
 
     var action = typeof config === 'string' ? config : _config.slide;
@@ -1808,7 +1798,7 @@ function () {
       return;
     }
 
-    var config = _objectSpread({}, Manipulator.getDataAttributes(target), Manipulator.getDataAttributes(this));
+    var config = _objectSpread2({}, Manipulator.getDataAttributes(target), {}, Manipulator.getDataAttributes(this));
 
     var slideIndex = this.getAttribute('data-slide-to');
 
@@ -1864,6 +1854,8 @@ EventHandler.on(window, Event$3.LOAD_DATA_API, function () {
  * ------------------------------------------------------------------------
  * add .carousel to jQuery only if jQuery is present
  */
+
+/* istanbul ignore if */
 
 if (typeof jQuery !== 'undefined') {
   var JQUERY_NO_CONFLICT$2 = jQuery.fn[NAME$2];
@@ -2141,7 +2133,7 @@ function () {
   ;
 
   _proto._getConfig = function _getConfig(config) {
-    config = _objectSpread({}, Default$1, config);
+    config = _objectSpread2({}, Default$1, {}, config);
     config.toggle = Boolean(config.toggle); // Coerce string values
 
     typeCheckConfig(NAME$3, config, DefaultType$1);
@@ -2170,7 +2162,10 @@ function () {
 
     var selector = "[data-toggle=\"collapse\"][data-parent=\"" + parent + "\"]";
     makeArray(SelectorEngine.find(selector, parent)).forEach(function (element) {
-      _this3._addAriaAndCollapsedClass(Collapse._getTargetFromElement(element), [element]);
+      var selector = getSelectorFromElement(element);
+      var selected = selector ? SelectorEngine.findOne(selector) : null;
+
+      _this3._addAriaAndCollapsedClass(selected, [element]);
     });
     return parent;
   };
@@ -2194,15 +2189,10 @@ function () {
   } // Static
   ;
 
-  Collapse._getTargetFromElement = function _getTargetFromElement(element) {
-    var selector = getSelectorFromElement(element);
-    return selector ? SelectorEngine.findOne(selector) : null;
-  };
-
   Collapse._collapseInterface = function _collapseInterface(element, config) {
     var data = Data.getData(element, DATA_KEY$3);
 
-    var _config = _objectSpread({}, Default$1, Manipulator.getDataAttributes(element), typeof config === 'object' && config ? config : {});
+    var _config = _objectSpread2({}, Default$1, {}, Manipulator.getDataAttributes(element), {}, typeof config === 'object' && config ? config : {});
 
     if (!data && _config.toggle && /show|hide/.test(config)) {
       _config.toggle = false;
@@ -2286,6 +2276,8 @@ EventHandler.on(document, Event$4.CLICK_DATA_API, Selector$3.DATA_TOGGLE, functi
  * ------------------------------------------------------------------------
  * add .collapse to jQuery only if jQuery is present
  */
+
+/* istanbul ignore if */
 
 if (typeof jQuery !== 'undefined') {
   var JQUERY_NO_CONFLICT$3 = jQuery.fn[NAME$3];
@@ -2549,21 +2541,15 @@ function () {
   };
 
   _proto._getConfig = function _getConfig(config) {
-    config = _objectSpread({}, this.constructor.Default, Manipulator.getDataAttributes(this._element), config);
+    config = _objectSpread2({}, this.constructor.Default, {}, Manipulator.getDataAttributes(this._element), {}, config);
     typeCheckConfig(NAME$4, config, this.constructor.DefaultType);
     return config;
   };
 
   _proto._getMenuElement = function _getMenuElement() {
-    if (!this._menu) {
-      var parent = Dropdown._getParentFromElement(this._element);
+    var parent = Dropdown._getParentFromElement(this._element);
 
-      if (parent) {
-        this._menu = SelectorEngine.findOne(Selector$4.MENU, parent);
-      }
-    }
-
-    return this._menu;
+    return SelectorEngine.findOne(Selector$4.MENU, parent);
   };
 
   _proto._getPlacement = function _getPlacement() {
@@ -2598,7 +2584,7 @@ function () {
 
     if (typeof this._config.offset === 'function') {
       offset.fn = function (data) {
-        data.offsets = _objectSpread({}, data.offsets, _this2._config.offset(data.offsets, _this2._element) || {});
+        data.offsets = _objectSpread2({}, data.offsets, {}, _this2._config.offset(data.offsets, _this2._element) || {});
         return data;
       };
     } else {
@@ -2830,6 +2816,8 @@ EventHandler.on(document, Event$5.CLICK_DATA_API, Selector$4.FORM_CHILD, functio
  * add .dropdown to jQuery only if jQuery is present
  */
 
+/* istanbul ignore if */
+
 if (typeof jQuery !== 'undefined') {
   var JQUERY_NO_CONFLICT$4 = jQuery.fn[NAME$4];
   jQuery.fn[NAME$4] = Dropdown._jQueryInterface;
@@ -2986,7 +2974,7 @@ function () {
 
     var hideEvent = EventHandler.trigger(this._element, Event$6.HIDE);
 
-    if (!this._isShown || hideEvent.defaultPrevented) {
+    if (hideEvent.defaultPrevented) {
       return;
     }
 
@@ -3049,7 +3037,7 @@ function () {
   ;
 
   _proto._getConfig = function _getConfig(config) {
-    config = _objectSpread({}, Default$3, config);
+    config = _objectSpread2({}, Default$3, {}, config);
     typeCheckConfig(NAME$5, config, DefaultType$3);
     return config;
   };
@@ -3129,7 +3117,7 @@ function () {
           _this5.hide();
         }
       });
-    } else if (!this._isShown) {
+    } else {
       EventHandler.off(this._element, Event$6.KEYDOWN_DISMISS);
     }
   };
@@ -3138,8 +3126,8 @@ function () {
     var _this6 = this;
 
     if (this._isShown) {
-      EventHandler.on(window, Event$6.RESIZE, function (event) {
-        return _this6.handleUpdate(event);
+      EventHandler.on(window, Event$6.RESIZE, function () {
+        return _this6._adjustDialog();
       });
     } else {
       EventHandler.off(window, Event$6.RESIZE);
@@ -3169,11 +3157,9 @@ function () {
   };
 
   _proto._removeBackdrop = function _removeBackdrop() {
-    if (this._backdrop) {
-      this._backdrop.parentNode.removeChild(this._backdrop);
+    this._backdrop.parentNode.removeChild(this._backdrop);
 
-      this._backdrop = null;
-    }
+    this._backdrop = null;
   };
 
   _proto._showBackdrop = function _showBackdrop(callback) {
@@ -3213,10 +3199,6 @@ function () {
 
       this._backdrop.classList.add(ClassName$5.SHOW);
 
-      if (!callback) {
-        return;
-      }
-
       if (!animate) {
         callback();
         return;
@@ -3231,9 +3213,7 @@ function () {
       var callbackRemove = function callbackRemove() {
         _this8._removeBackdrop();
 
-        if (callback) {
-          callback();
-        }
+        callback();
       };
 
       if (this._element.classList.contains(ClassName$5.FADE)) {
@@ -3244,7 +3224,7 @@ function () {
       } else {
         callbackRemove();
       }
-    } else if (callback) {
+    } else {
       callback();
     }
   } // ----------------------------------------------------------------------
@@ -3350,7 +3330,7 @@ function () {
     return this.each(function () {
       var data = Data.getData(this, DATA_KEY$5);
 
-      var _config = _objectSpread({}, Default$3, Manipulator.getDataAttributes(this), typeof config === 'object' && config ? config : {});
+      var _config = _objectSpread2({}, Default$3, {}, Manipulator.getDataAttributes(this), {}, typeof config === 'object' && config ? config : {});
 
       if (!data) {
         data = new Modal(this, _config);
@@ -3396,14 +3376,8 @@ function () {
 EventHandler.on(document, Event$6.CLICK_DATA_API, Selector$5.DATA_TOGGLE, function (event) {
   var _this10 = this;
 
-  var target;
   var selector = getSelectorFromElement(this);
-
-  if (selector) {
-    target = SelectorEngine.findOne(selector);
-  }
-
-  var config = Data.getData(target, DATA_KEY$5) ? 'toggle' : _objectSpread({}, Manipulator.getDataAttributes(target), Manipulator.getDataAttributes(this));
+  var target = SelectorEngine.findOne(selector);
 
   if (this.tagName === 'A' || this.tagName === 'AREA') {
     event.preventDefault();
@@ -3424,6 +3398,8 @@ EventHandler.on(document, Event$6.CLICK_DATA_API, Selector$5.DATA_TOGGLE, functi
   var data = Data.getData(target, DATA_KEY$5);
 
   if (!data) {
+    var config = _objectSpread2({}, Manipulator.getDataAttributes(target), {}, Manipulator.getDataAttributes(this));
+
     data = new Modal(target, config);
   }
 
@@ -3433,7 +3409,10 @@ EventHandler.on(document, Event$6.CLICK_DATA_API, Selector$5.DATA_TOGGLE, functi
  * ------------------------------------------------------------------------
  * jQuery
  * ------------------------------------------------------------------------
+ * add .modal to jQuery only if jQuery is present
  */
+
+/* istanbul ignore if */
 
 if (typeof jQuery !== 'undefined') {
   var JQUERY_NO_CONFLICT$5 = jQuery.fn[NAME$5];
@@ -3559,7 +3538,7 @@ function sanitizeHtml(unsafeHtml, whiteList, sanitizeFn) {
   };
 
   for (var i = 0, len = elements.length; i < len; i++) {
-    var _ret = _loop(i, len);
+    var _ret = _loop(i);
 
     if (_ret === "continue") continue;
   }
@@ -3788,7 +3767,7 @@ function () {
 
       var attachment = this._getAttachment(placement);
 
-      this.addAttachmentClass(attachment);
+      this._addAttachmentClass(attachment);
 
       var container = this._getContainer();
 
@@ -3857,7 +3836,7 @@ function () {
     }
   };
 
-  _proto.hide = function hide(callback) {
+  _proto.hide = function hide() {
     var _this2 = this;
 
     var tip = this.getTipElement();
@@ -3873,13 +3852,7 @@ function () {
 
       EventHandler.trigger(_this2.element, _this2.constructor.Event.HIDDEN);
 
-      if (_this2._popper !== null) {
-        _this2._popper.destroy();
-      }
-
-      if (callback) {
-        callback();
-      }
+      _this2._popper.destroy();
     };
 
     var hideEvent = EventHandler.trigger(this.element, this.constructor.Event.HIDE);
@@ -3923,10 +3896,6 @@ function () {
     return Boolean(this.getTitle());
   };
 
-  _proto.addAttachmentClass = function addAttachmentClass(attachment) {
-    this.getTipElement().classList.add(CLASS_PREFIX + "-" + attachment);
-  };
-
   _proto.getTipElement = function getTipElement() {
     if (this.tip) {
       return this.tip;
@@ -3950,7 +3919,7 @@ function () {
       return;
     }
 
-    if (typeof content === 'object' && (content.nodeType || content.jquery)) {
+    if (typeof content === 'object' && isElement(content)) {
       if (content.jquery) {
         content = content[0];
       } // content is a DOM node or a jQuery
@@ -3990,6 +3959,10 @@ function () {
   } // Private
   ;
 
+  _proto._addAttachmentClass = function _addAttachmentClass(attachment) {
+    this.getTipElement().classList.add(CLASS_PREFIX + "-" + attachment);
+  };
+
   _proto._getOffset = function _getOffset() {
     var _this3 = this;
 
@@ -3997,7 +3970,7 @@ function () {
 
     if (typeof this.config.offset === 'function') {
       offset.fn = function (data) {
-        data.offsets = _objectSpread({}, data.offsets, _this3.config.offset(data.offsets, _this3.element) || {});
+        data.offsets = _objectSpread2({}, data.offsets, {}, _this3.config.offset(data.offsets, _this3.element) || {});
         return data;
       };
     } else {
@@ -4053,7 +4026,7 @@ function () {
     EventHandler.on(SelectorEngine.closest(this.element, '.modal'), 'hide.bs.modal', this._hideModalHandler);
 
     if (this.config.selector) {
-      this.config = _objectSpread({}, this.config, {
+      this.config = _objectSpread2({}, this.config, {
         trigger: 'manual',
         selector: ''
       });
@@ -4158,7 +4131,7 @@ function () {
       config.container = config.container[0];
     }
 
-    config = _objectSpread({}, this.constructor.Default, dataAttributes, typeof config === 'object' && config ? config : {});
+    config = _objectSpread2({}, this.constructor.Default, {}, dataAttributes, {}, typeof config === 'object' && config ? config : {});
 
     if (typeof config.delay === 'number') {
       config.delay = {
@@ -4217,7 +4190,7 @@ function () {
 
     this._cleanTipClass();
 
-    this.addAttachmentClass(this._getAttachment(popperData.placement));
+    this._addAttachmentClass(this._getAttachment(popperData.placement));
   };
 
   _proto._fixTransition = function _fixTransition() {
@@ -4310,6 +4283,8 @@ function () {
  * add .tooltip to jQuery only if jQuery is present
  */
 
+/* istanbul ignore if */
+
 
 if (typeof jQuery !== 'undefined') {
   var JQUERY_NO_CONFLICT$6 = jQuery.fn[NAME$6];
@@ -4335,14 +4310,14 @@ var EVENT_KEY$7 = "." + DATA_KEY$7;
 var CLASS_PREFIX$1 = 'bs-popover';
 var BSCLS_PREFIX_REGEX$1 = new RegExp("(^|\\s)" + CLASS_PREFIX$1 + "\\S+", 'g');
 
-var Default$5 = _objectSpread({}, Tooltip.Default, {
+var Default$5 = _objectSpread2({}, Tooltip.Default, {
   placement: 'right',
   trigger: 'click',
   content: '',
   template: '<div class="popover" role="tooltip">' + '<div class="popover-arrow"></div>' + '<h3 class="popover-header"></h3>' + '<div class="popover-body"></div></div>'
 });
 
-var DefaultType$5 = _objectSpread({}, Tooltip.DefaultType, {
+var DefaultType$5 = _objectSpread2({}, Tooltip.DefaultType, {
   content: '(string|element|function)'
 });
 
@@ -4503,6 +4478,8 @@ function (_Tooltip) {
  * ------------------------------------------------------------------------
  */
 
+/* istanbul ignore if */
+
 
 if (typeof jQuery !== 'undefined') {
   var JQUERY_NO_CONFLICT$7 = jQuery.fn[NAME$7];
@@ -4646,7 +4623,7 @@ function () {
   ;
 
   _proto._getConfig = function _getConfig(config) {
-    config = _objectSpread({}, Default$6, typeof config === 'object' && config ? config : {});
+    config = _objectSpread2({}, Default$6, {}, typeof config === 'object' && config ? config : {});
 
     if (typeof config.target !== 'string') {
       var id = config.target.id;
@@ -4816,6 +4793,8 @@ EventHandler.on(window, Event$9.LOAD_DATA_API, function () {
  * jQuery
  * ------------------------------------------------------------------------
  */
+
+/* istanbul ignore if */
 
 if (typeof jQuery !== 'undefined') {
   var JQUERY_NO_CONFLICT$8 = jQuery.fn[NAME$8];
@@ -5054,6 +5033,8 @@ EventHandler.on(document, Event$a.CLICK_DATA_API, Selector$9.DATA_TOGGLE, functi
  * add .tab to jQuery only if jQuery is present
  */
 
+/* istanbul ignore if */
+
 if (typeof jQuery !== 'undefined') {
   var JQUERY_NO_CONFLICT$9 = jQuery.fn[NAME$9];
   jQuery.fn[NAME$9] = Tab._jQueryInterface;
@@ -5154,6 +5135,8 @@ function () {
 
     this._element.classList.remove(ClassName$a.HIDE);
 
+    reflow(this._element);
+
     this._element.classList.add(ClassName$a.SHOWING);
 
     if (this._config.animation) {
@@ -5211,7 +5194,7 @@ function () {
   ;
 
   _proto._getConfig = function _getConfig(config) {
-    config = _objectSpread({}, Default$7, Manipulator.getDataAttributes(this._element), typeof config === 'object' && config ? config : {});
+    config = _objectSpread2({}, Default$7, {}, Manipulator.getDataAttributes(this._element), {}, typeof config === 'object' && config ? config : {});
     typeCheckConfig(NAME$a, config, this.constructor.DefaultType);
     return config;
   };
@@ -5275,6 +5258,8 @@ function () {
  *  add .toast to jQuery only if jQuery is present
  */
 
+/* istanbul ignore if */
+
 
 if (typeof jQuery !== 'undefined') {
   var JQUERY_NO_CONFLICT$a = jQuery.fn[NAME$a];
@@ -5286,13 +5271,6 @@ if (typeof jQuery !== 'undefined') {
     return Toast._jQueryInterface;
   };
 }
-
-/**
- * --------------------------------------------------------------------------
- * Bootstrap (v4.3.1): index.esm.js
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- * --------------------------------------------------------------------------
- */
 
 export { Alert, Button, Carousel, Collapse, Dropdown, Modal, Popover, ScrollSpy, Tab, Toast, Tooltip };
 //# sourceMappingURL=bootstrap.esm.js.map
