@@ -50,7 +50,7 @@
       {{- end }}
 
       {{ range .Page.Params.extra_js -}}
-        <script{{ with .async }} async{{ end }} src="{{ .src }}"{{ with .integrity }} integrity="{{ . }}"{{ end }} crossorigin="anonymous"></script>
+        <script{{ with .async }} async{{ end }} src="{{ .src }}"{{ with .integrity }} integrity="{{ . }}" crossorigin="anonymous"{{ end }}></script>
       {{- end -}}
     {{- end }}
   </body>
