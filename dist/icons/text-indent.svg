@@ -1,1 +1,6 @@
-<svg class="bi bi-text-indent" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path d="M4.5 14.5h11m-6-3h6m-6-3h6m-11-3h11M5 8l2 2-2 2" stroke="currentColor" stroke-linecap="round" fill="none"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="round">
+    <path d="M4.5 14.5h11m-6-3h6m-6-3h6m-11-3h11"/>
+    <path stroke-linejoin="round" d="M5 8l2 2-2 2"/>
+  </g>
+</svg>

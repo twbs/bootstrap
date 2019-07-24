@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="bi bi-clock">
+  <g fill="none" fill-rule="evenodd">
+    <g stroke="currentColor">
+      <g transform="translate(2 2)">
+        <circle cx="8" cy="8" r="7.5"/>
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.5 8H8V2.5"/>
+      </g>
+    </g>
+  </g>
+</svg>

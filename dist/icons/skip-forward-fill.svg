@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="bi bi-skip-forward-fill" viewBox="0 0 20 20">
+  <g fill="none" fill-rule="evenodd">
+    <path stroke="currentColor" stroke-linecap="round" d="M17.5 6v8"/>
+    <path fill="currentColor" fill-rule="nonzero" d="M9.596 10.697l-6.363 3.691c-.54.314-1.233-.065-1.233-.696V6.308c0-.63.693-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+    <path fill="currentColor" fill-rule="nonzero" d="M17.096 10.697l-6.363 3.691c-.54.314-1.233-.065-1.233-.696V6.308c0-.63.693-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+  </g>
+</svg>

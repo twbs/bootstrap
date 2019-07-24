@@ -61,6 +61,7 @@
     "js-test-karma": "karma start js/tests/karma.conf.js",
     "js-test-integration": "rollup --config js/tests/integration/rollup.bundle.js",
     "js-test-cloud": "cross-env BROWSER=true npm run js-test-karma",
+    "icons-prep": "svgo --config=build/svgo.yml --input=dist/icons/",
     "icons-copy": "cross-env-shell shx mkdir -p site/static/docs/$npm_package_version_short/dist/ && cross-env-shell shx cp -r dist/icons/ site/static/docs/$npm_package_version_short/dist/",
     "lint": "npm-run-all --parallel js-lint css-lint",
     "coveralls": "shx cat js/coverage/lcov.info | coveralls",

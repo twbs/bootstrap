@@ -1,23 +1,97 @@
-preferred:
-  - name: Font Awesome
-    website: https://fontawesome.com/
-  - name: Feather
-    website: https://feathericons.com/
-  - name: Octicons
-    website: https://octicons.github.com/
+- name: bootstrap
+- name: bootstrap-fill
+- name: reboot
 
-more:
-  - name: Bytesize
-    website: https://github.com/danklammer/bytesize-icons
-  - name: Google Material icons
-    website: https://material.io/tools/icons/
-  - name: Ionicons
-    website: https://ionicons.com/
-  - name: Dripicons
-    website: http://demo.amitjakhu.com/dripicons/
-  - name: Ikons
-    website: http://ikons.piotrkwiatkowski.co.uk/
-  - name: Icons8
-    website: https://icons8.com/
-  - name: icofont
-    website: https://icofont.com/
+- name: x
+- name: check
+- name: dash
+- name: plus
+- name: dot
+- name: circle
+- name: warning
+
+- name: arrow-up
+- name: arrow-down
+- name: arrow-left
+- name: arrow-right
+- name: arrow-left-right
+- name: arrow-up-down
+- name: arrow-clockwise
+- name: arrow-counter-clockwise
+- name: arrow-repeat
+- name: resize
+- name: fullscreen
+- name: move
+
+- name: chevron-up
+- name: chevron-down
+- name: chevron-left
+- name: chevron-right
+- name: chevron-compact-left
+- name: chevron-compact-right
+
+- name: circle-slash
+- name: code
+- name: credit-card
+- name: diff
+- name: ellipsis
+- name: envelope
+- name: calendar
+- name: image
+
+- name: clock-fill
+- name: clock
+- name: gear-fill
+- name: gear
+- name: heart-filled
+- name: heart-outline
+- name: house-fill
+- name: house
+- name: bookmark-fill
+- name: bookmark
+- name: lock-fill
+- name: lock
+- name: unlock-fill
+- name: unlock
+- name: star-filled
+- name: star-outline
+- name: terminal-fill
+- name: terminal
+
+- name: bold
+- name: italic
+- name: underline
+- name: type
+- name: text-center
+- name: text-indent
+- name: text-left
+- name: text-right
+- name: justify-left
+- name: justify-right
+- name: justify
+- name: list-numbered
+- name: list-unordered
+- name: list
+
+- name: play-fill
+- name: play
+- name: pause-fill
+- name: pause
+- name: stop-fill
+- name: stop
+- name: skip-backward-fill
+- name: skip-backward
+- name: skip-end-fill
+- name: skip-end
+- name: skip-forward-fill
+- name: skip-forward
+- name: skip-start-fill
+- name: skip-start
+
+- name: person
+- name: people
+- name: search
+- name: display
+- name: tv
+- name: tag
+- name: wifi

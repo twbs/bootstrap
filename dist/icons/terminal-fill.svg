@@ -1,1 +1,6 @@
-<svg class="bi bi-terminal-fill" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><g transform="translate(2 3)" stroke="currentColor" fill="none" fill-rule="evenodd"><rect x=".5" y=".5" width="15" height="13" rx="2"/><path d="M9.5 8h-3m-3-4.5l2 2-2 2" stroke-linecap="round"/></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="bi bi-terminal-fill" viewBox="0 0 20 20">
+  <g fill="none" fill-rule="evenodd" stroke="currentColor" transform="translate(2 3)">
+    <rect width="15" height="13" x=".5" y=".5" rx="2"/>
+    <path stroke-linecap="round" d="M9.5 8h-3m-3-4.5l2 2-2 2"/>
+  </g>
+</svg>
