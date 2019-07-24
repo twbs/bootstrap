@@ -8,7 +8,7 @@
   margin-bottom: 1.25rem;
   border: 1px solid #eee;
   border-left-width: .25rem;
-  @include border-radius;
+  @include border-radius();
 
   h4 {
     margin-top: 0;
@@ -20,7 +20,7 @@
   }
 
   code {
-    @include border-radius;
+    @include border-radius();
   }
 
   + .bd-callout {
