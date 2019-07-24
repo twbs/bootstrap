@@ -16,7 +16,7 @@
   @include transition($badge-transition);
 
   @at-root a#{&} {
-    @include hover-focus {
+    @include hover-focus() {
       text-decoration: none;
     }
   }

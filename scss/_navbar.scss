@@ -47,7 +47,7 @@
   line-height: inherit;
   white-space: nowrap;
 
-  @include hover-focus {
+  @include hover-focus() {
     text-decoration: none;
   }
 }
@@ -112,7 +112,7 @@
   border: $border-width solid transparent; // remove default button style
   @include border-radius($navbar-toggler-border-radius);
 
-  @include hover-focus {
+  @include hover-focus() {
     text-decoration: none;
   }
 }
@@ -191,7 +191,7 @@
   .navbar-brand {
     color: $navbar-light-brand-color;
 
-    @include hover-focus {
+    @include hover-focus() {
       color: $navbar-light-brand-hover-color;
     }
   }
@@ -200,7 +200,7 @@
     .nav-link {
       color: $navbar-light-color;
 
-      @include hover-focus {
+      @include hover-focus() {
         color: $navbar-light-hover-color;
       }
 
@@ -231,7 +231,7 @@
     a {
       color: $navbar-light-active-color;
 
-      @include hover-focus {
+      @include hover-focus() {
         color: $navbar-light-active-color;
       }
     }
@@ -243,7 +243,7 @@
   .navbar-brand {
     color: $navbar-dark-brand-color;
 
-    @include hover-focus {
+    @include hover-focus() {
       color: $navbar-dark-brand-hover-color;
     }
   }
@@ -252,7 +252,7 @@
     .nav-link {
       color: $navbar-dark-color;
 
-      @include hover-focus {
+      @include hover-focus() {
         color: $navbar-dark-hover-color;
       }
 
@@ -283,7 +283,7 @@
     a {
       color: $navbar-dark-active-color;
 
-      @include hover-focus {
+      @include hover-focus() {
         color: $navbar-dark-active-color;
       }
     }
