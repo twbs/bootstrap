@@ -369,6 +369,20 @@ Use these row columns classes to quickly create basic grid layouts or to control
 {{< /example >}}
 </div>
 
+You can also use the accompanying Sass mixin, `row-cols()`:
+
+{{< highlight scss >}}
+.element {
+  // Three columns to start
+  @include row-cols(3);
+
+  // Five columns from medium breakpoint up
+  @include media-breakpoint-up(md) {
+    @include row-cols(5);
+  }
+}
+{{< /highlight >}}
+
 ## Alignment
 
 Use flexbox alignment utilities to vertically and horizontally align columns. **Internet Explorer 10-11 do not support vertical alignment of flex items when the flex container has a `min-height` as shown below.** [See Flexbugs #3 for more details.](https://github.com/philipwalton/flexbugs#flexbug-3)
