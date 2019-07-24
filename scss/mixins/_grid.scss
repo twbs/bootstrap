@@ -49,3 +49,14 @@
   $num: $size / $columns;
   margin-left: if($num == 0, 0, percentage($num));
 }
+
+// Row columns
+//
+// Specify on a parent element(e.g., .row) to force immediate children into NN
+// numberof columns. Supports wrapping to new lines, but does not do a Masonry
+// style grid.
+@mixin row-cols($count) {
+  & > [class^="col"] {
+    flex: 0 0 calc(100% / #{$count});
+  }
+}
