@@ -152,6 +152,7 @@
     "shx": "^0.3.2",
     "stylelint": "^10.1.0",
     "stylelint-config-twbs-bootstrap": "^0.4.0",
+    "svgo": "^1.3.0",
     "terser": "^4.1.2",
     "vnu-jar": "19.6.7"
   },
