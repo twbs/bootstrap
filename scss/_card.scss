@@ -175,18 +175,6 @@
   }
 }
 
-$row-columns: 6 !default;
-
-@each $breakpoint in map-keys($grid-breakpoints) {
-  $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
-
-  @for $i from 1 through $row-columns {
-    .row-cols#{$infix}-#{$i} > [class^="col"] {
-      flex: 0 0 calc(100% / #{$i});
-    }
-  }
-}
-
 
 //
 // Card groups
