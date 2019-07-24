@@ -3,5 +3,5 @@
 //
 
 .text-truncate {
-  @include text-truncate;
+  @include text-truncate();
 }
