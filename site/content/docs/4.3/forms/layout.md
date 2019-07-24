@@ -239,17 +239,26 @@ The example below uses a flexbox utility to vertically center the contents and c
 <form>
   <div class="form-row align-items-center">
     <div class="col-auto">
-      <label class="sr-only" for="inlineFormInput">Name</label>
-      <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Jane Doe">
+      <label class="sr-only" for="autoSizingInput">Name</label>
+      <input type="text" class="form-control mb-2" id="autoSizingInput" placeholder="Jane Doe">
     </div>
     <div class="col-auto">
-      <label class="sr-only" for="inlineFormInputGroup">Username</label>
+      <label class="sr-only" for="autoSizingInputGroup">Username</label>
       <div class="input-group mb-2">
         <div class="input-group-prepend">
           <div class="input-group-text">@</div>
         </div>
-        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Username">
+        <input type="text" class="form-control" id="autoSizingInputGroup" placeholder="Username">
       </div>
+    </div>
+    <div class="col-auto">
+      <label class="sr-only" for="autoSizingSelect">Preference</label>
+      <select class="form-select mb-2" id="autoSizingSelect">
+        <option selected>Choose...</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+      </select>
     </div>
     <div class="col-auto">
       <div class="form-check mb-2">
@@ -272,41 +281,21 @@ You can then remix that once again with size-specific column classes.
 <form>
   <div class="form-row align-items-center">
     <div class="col-sm-3 my-1">
-      <label class="sr-only" for="inlineFormInputName">Name</label>
-      <input type="text" class="form-control" id="inlineFormInputName" placeholder="Jane Doe">
+      <label class="sr-only" for="specificSizeInputName">Name</label>
+      <input type="text" class="form-control" id="specificSizeInputName" placeholder="Jane Doe">
     </div>
     <div class="col-sm-3 my-1">
-      <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
+      <label class="sr-only" for="specificSizeInputGroupUsername">Username</label>
       <div class="input-group">
         <div class="input-group-prepend">
           <div class="input-group-text">@</div>
         </div>
-        <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="Username">
+        <input type="text" class="form-control" id="specificSizeInputGroupUsername" placeholder="Username">
       </div>
     </div>
-    <div class="col-auto my-1">
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="autoSizingCheck2">
-        <label class="form-check-label" for="autoSizingCheck2">
-          Remember me
-        </label>
-      </div>
-    </div>
-    <div class="col-auto my-1">
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </div>
-  </div>
-</form>
-{{< /example >}}
-
-And of course [custom form controls](#custom-forms) are supported.
-
-{{< example >}}
-<form>
-  <div class="form-row align-items-center">
-    <div class="col-auto my-1">
-      <label class="mr-sm-2 sr-only" for="inlineFormSelect">Preference</label>
-      <select class="form-select mr-sm-2" id="inlineFormSelect">
+    <div class="col-sm-3 my-1">
+      <label class="sr-only" for="specificSizeSelect">Preference</label>
+      <select class="form-select" id="specificSizeSelect">
         <option selected>Choose...</option>
         <option value="1">One</option>
         <option value="2">Two</option>
@@ -314,9 +303,11 @@ And of course [custom form controls](#custom-forms) are supported.
       </select>
     </div>
     <div class="col-auto my-1">
-      <div class="form-check mr-sm-2">
-        <input type="checkbox" class="form-check-input" id="formCheckAutosizing">
-        <label class="form-check-label" for="formCheckAutosizing">Remember my preference</label>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="autoSizingCheck2">
+        <label class="form-check-label" for="autoSizingCheck2">
+          Remember me
+        </label>
       </div>
     </div>
     <div class="col-auto my-1">
@@ -338,16 +329,24 @@ You may need to manually address the width and alignment of individual form cont
 
 {{< example >}}
 <form class="form-inline">
-  <label class="sr-only" for="inlineFormInputName2">Name</label>
-  <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Jane Doe">
+  <label class="sr-only" for="inlineFormInputName">Name</label>
+  <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName" placeholder="Jane Doe">
 
-  <label class="sr-only" for="inlineFormInputGroupUsername2">Username</label>
+  <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
   <div class="input-group mb-2 mr-sm-2">
     <div class="input-group-prepend">
       <div class="input-group-text">@</div>
     </div>
-    <input type="text" class="form-control" id="inlineFormInputGroupUsername2" placeholder="Username">
+    <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="Username">
   </div>
+
+  <label class="sr-only" for="inlineFormSelectPref">Preference</label>
+  <select class="form-select mb-2 mr-sm-2" id="inlineFormSelectPref">
+    <option selected>Choose...</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </select>
 
   <div class="form-check mb-2 mr-sm-2">
     <input class="form-check-input" type="checkbox" id="inlineFormCheck">
@@ -357,27 +356,6 @@ You may need to manually address the width and alignment of individual form cont
   </div>
 
   <button type="submit" class="btn btn-primary mb-2">Submit</button>
-</form>
-{{< /example >}}
-
-Custom form controls and selects are also supported.
-
-{{< example >}}
-<form class="form-inline">
-  <label class="my-1 mr-2" for="inlineFormSelectPref">Preference</label>
-  <select class="form-select my-1 mr-sm-2" id="inlineFormSelectPref">
-    <option selected>Choose...</option>
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
-  </select>
-
-  <div class="form-check my-1 mr-sm-2">
-    <input type="checkbox" class="form-check-input" id="formCheckInline">
-    <label class="form-check-label" for="formCheckInline">Remember my preference</label>
-  </div>
-
-  <button type="submit" class="btn btn-primary my-1">Submit</button>
 </form>
 {{< /example >}}
 

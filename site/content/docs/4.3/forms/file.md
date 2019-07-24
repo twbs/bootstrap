@@ -46,4 +46,4 @@ Longer placeholder text is truncated and an ellipsis is added when there's not e
 </div>
 {{< /example >}}
 
-We hide the default file `<input>` via `opacity` and instead style the `<label>`. The button is generated and positioned with `::after`. Lastly, we declare a `width` and `height` on the `<input>` for proper spacing for surrounding content.
+We hide the default file `<input>` via `opacity` and instead style the `<label>`, and declare a `width` and `height` on the `<input>` for proper spacing for surrounding content.
