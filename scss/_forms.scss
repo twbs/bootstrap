@@ -160,6 +160,7 @@ select.form-control {
 
 textarea.form-control {
   height: auto;
+  min-height: $input-height;
 }
 
 // Form groups
