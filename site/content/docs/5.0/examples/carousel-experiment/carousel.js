@@ -5,14 +5,14 @@
   var hasRun = false
 
   /* https://gomakethings.com/how-to-get-all-of-an-elements-siblings-with-vanilla-js/ */
-  function getSiblings(elem) {
+  function getSiblings(element) {
     // Setup siblings array and get the first sibling
     var siblings = []
-    var sibling = elem.parentNode.firstChild
+    var sibling = element.parentNode.firstChild
 
     // Loop through each sibling and push to the array
     while (sibling) {
-      if (sibling.nodeType === 1 && sibling !== elem) {
+      if (sibling.nodeType === 1 && sibling !== element) {
         siblings.push(sibling)
       }
 
@@ -27,13 +27,13 @@
       return
     }
 
-    [].slice.call(carouselItems).forEach(function (el) {
+    [].slice.call(carouselItems).forEach(function (carouselItem) {
       // Get the first carousel item's child
-      var siblings = getSiblings(el.firstChild);
+      var siblings = getSiblings(carouselItem.firstChild);
 
       // Remove .carousel-item's first child next elements
-      [].slice.call(siblings).forEach(function (ele) {
-        ele.parentNode.removeChild()
+      [].slice.call(siblings).forEach(function (sibling) {
+        sibling.parentNode.removeChild()
       })
     })
 
@@ -47,18 +47,18 @@
       return
     }
 
-    [].slice.call(carouselItems).forEach(function (el) {
-      var next = el.nextElementSibling
+    [].slice.call(carouselItems).forEach(function (carouselItem) {
+      var next = carouselItem.nextElementSibling
 
       if (next) {
-        next = getSiblings(el.firstChild)
+        next = getSiblings(carouselItem.firstChild)
 
-        el.appendChild(next[0].cloneNode(true))
+        carouselItem.appendChild(next[0].cloneNode(true))
 
         if (next.nextElementSibling) {
-          el.appendChild(next.nextElementSibling.querySelector(':first-child').cloneNode(true))
+          carouselItem.appendChild(next.nextElementSibling.querySelector(':first-child').cloneNode(true))
         } else {
-          el.appendChild(getSiblings(el.firstChild)[0].cloneNode(true))
+          carouselItem.appendChild(getSiblings(carouselItem.firstChild)[0].cloneNode(true))
         }
       }
     })
