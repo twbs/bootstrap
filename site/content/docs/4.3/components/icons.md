@@ -32,7 +32,7 @@ Bootstrap icons are SVGs, so you can include them into your HTML in a few ways d
 For example, you can use the SVG as HTML (remember to specify a `width` and `height`).
 
 {{< example >}}
-<svg class="bi bi-chevron-right" width="24" height="24" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 14l6-6-6-6"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="bi bi-chevron-right" viewBox="0 0 16 16"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 14l6-6-6-6"/></svg>
 {{< /example >}}
 
 ### External image
@@ -51,7 +51,7 @@ You can also use the SVG within your CSS (**be sure to escape any characters**, 
 .bi::before {
   display: inline-block;
   content: "";
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='%23333' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/></svg>");
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='%23333' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/></svg>");
   background-repeat: no-repeat;
   background-size: 1rem 1rem;
 }
