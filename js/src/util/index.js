@@ -28,20 +28,32 @@ const getUID = prefix => {
   return prefix
 }
 
-const getSelectorFromElement = element => {
+const getSelector = element => {
   let selector = element.getAttribute('data-target')
 
   if (!selector || selector === '#') {
     const hrefAttr = element.getAttribute('href')
 
-    selector = hrefAttr && hrefAttr !== '#' ? hrefAttr.trim() : ''
+    selector = hrefAttr && hrefAttr !== '#' ? hrefAttr.trim() : null
   }
 
-  try {
+  return selector
+}
+
+const getSelectorFromElement = element => {
+  const selector = getSelector(element)
+
+  if (selector) {
     return document.querySelector(selector) ? selector : null
-  } catch (error) {
-    return null
   }
+
+  return null
+}
+
+const getElementFromSelector = element => {
+  const selector = getSelector(element)
+
+  return selector ? document.querySelector(selector) : null
 }
 
 const getTransitionDurationFromElement = element => {
@@ -169,6 +181,7 @@ export {
   TRANSITION_END,
   getUID,
   getSelectorFromElement,
+  getElementFromSelector,
   getTransitionDurationFromElement,
   triggerTransitionEnd,
   isElement,

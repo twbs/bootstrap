@@ -27,7 +27,7 @@
   color: #818a91;
   background-color: transparent;
   border: 0;
-  @include border-radius;
+  @include border-radius();
 
   &:hover {
     color: $white;

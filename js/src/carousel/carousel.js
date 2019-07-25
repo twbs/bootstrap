@@ -9,7 +9,7 @@ import {
   jQuery as $,
   TRANSITION_END,
   emulateTransitionEnd,
-  getSelectorFromElement,
+  getElementFromSelector,
   getTransitionDurationFromElement,
   isVisible,
   makeArray,
@@ -569,13 +569,7 @@ class Carousel {
   }
 
   static _dataApiClickHandler(event) {
-    const selector = getSelectorFromElement(this)
-
-    if (!selector) {
-      return
-    }
-
-    const target = SelectorEngine.findOne(selector)
+    const target = getElementFromSelector(this)
 
     if (!target || !target.classList.contains(ClassName.CAROUSEL)) {
       return

@@ -9,7 +9,7 @@ import {
   jQuery as $,
   TRANSITION_END,
   emulateTransitionEnd,
-  getSelectorFromElement,
+  getElementFromSelector,
   getTransitionDurationFromElement
 } from '../util/index'
 import Data from '../dom/data'
@@ -90,12 +90,7 @@ class Alert {
   // Private
 
   _getRootElement(element) {
-    const selector = getSelectorFromElement(element)
-    let parent = false
-
-    if (selector) {
-      parent = SelectorEngine.findOne(selector)
-    }
+    let parent = getElementFromSelector(element)
 
     if (!parent) {
       parent = SelectorEngine.closest(element, `.${ClassName.ALERT}`)

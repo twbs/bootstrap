@@ -10,6 +10,7 @@ import {
   TRANSITION_END,
   emulateTransitionEnd,
   getSelectorFromElement,
+  getElementFromSelector,
   getTransitionDurationFromElement,
   isElement,
   makeArray,
@@ -244,15 +245,11 @@ class Collapse {
     if (triggerArrayLength > 0) {
       for (let i = 0; i < triggerArrayLength; i++) {
         const trigger = this._triggerArray[i]
-        const selector = getSelectorFromElement(trigger)
+        const elem = getElementFromSelector(trigger)
 
-        if (selector !== null) {
-          const elem = SelectorEngine.findOne(selector)
-
-          if (!elem.classList.contains(ClassName.SHOW)) {
-            trigger.classList.add(ClassName.COLLAPSED)
-            trigger.setAttribute('aria-expanded', false)
-          }
+        if (elem && !elem.classList.contains(ClassName.SHOW)) {
+          trigger.classList.add(ClassName.COLLAPSED)
+          trigger.setAttribute('aria-expanded', false)
         }
       }
     }
@@ -320,8 +317,7 @@ class Collapse {
 
     makeArray(SelectorEngine.find(selector, parent))
       .forEach(element => {
-        const selector = getSelectorFromElement(element)
-        const selected = selector ? SelectorEngine.findOne(selector) : null
+        const selected = getElementFromSelector(element)
 
         this._addAriaAndCollapsedClass(
           selected,

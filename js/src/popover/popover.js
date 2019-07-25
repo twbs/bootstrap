@@ -105,10 +105,6 @@ class Popover extends Tooltip {
     return this.getTitle() || this._getContent()
   }
 
-  addAttachmentClass(attachment) {
-    this.getTipElement().classList.add(`${CLASS_PREFIX}-${attachment}`)
-  }
-
   setContent() {
     const tip = this.getTipElement()
 
@@ -123,6 +119,10 @@ class Popover extends Tooltip {
 
     tip.classList.remove(ClassName.FADE)
     tip.classList.remove(ClassName.SHOW)
+  }
+
+  _addAttachmentClass(attachment) {
+    this.getTipElement().classList.add(`${CLASS_PREFIX}-${attachment}`)
   }
 
   // Private
