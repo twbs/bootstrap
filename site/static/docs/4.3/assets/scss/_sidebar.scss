@@ -1,16 +1,12 @@
 // stylelint-disable declaration-no-important
 
-.bd-sidebar {
-  order: 0;
-}
-
 .bd-links {
   @include media-breakpoint-up(md) {
     @supports (position: sticky) {
       position: sticky;
       top: 5rem;
       z-index: 1000;
-      height: calc(100vh - 7rem);
+      height: calc(100vh - 5rem);
       overflow-y: auto;
     }
   }
@@ -21,21 +17,21 @@
   }
 }
 
-.bd-sidenav {
+:not(.active) > .bd-sidenav {
   display: none;
 }
 
 .bd-sidenav-group-link {
   padding: .25rem .625rem .25rem .5rem;
   font-weight: 600;
-  color: rgba(0, 0, 0, .65);
+  color: rgba($black, .65);
   @include border-radius(.25rem);
 
   > * { pointer-events: none; }
 
   &:hover,
   &:focus {
-    color: rgba(0, 0, 0, .85);
+    color: rgba($black, .85);
     text-decoration: none;
     background-color: rgba($bd-purple-bright, .1);
   }
@@ -60,11 +56,7 @@
     }
 
     > .bd-sidenav-group-link {
-      color: rgba(0, 0, 0, .85);
-    }
-
-    > .bd-sidenav {
-      display: block;
+      color: rgba($black, .85);
     }
   }
 }
@@ -77,12 +69,12 @@
     display: inline-block;
     padding: .25rem .5rem;
     @include font-size(.875rem);
-    color: rgba(0, 0, 0, .65);
+    color: rgba($black, .65);
     @include border-radius(.25rem);
 
     &:hover,
     &:focus {
-      color: rgba(0, 0, 0, .85);
+      color: rgba($white, .85);
       text-decoration: none;
       background-color: rgba($bd-purple-bright, .1);
     }
@@ -92,6 +84,6 @@
   > .active:hover > a,
   > .active:focus > a {
     font-weight: 600;
-    color: rgba(0, 0, 0, .85);
+    color: rgba($black, .85);
   }
 }
