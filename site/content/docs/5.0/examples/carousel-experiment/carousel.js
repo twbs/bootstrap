@@ -29,11 +29,14 @@
 
     carouselItems.forEach(function (carouselItem) {
       // Get the first carousel item's child
-      var siblings = getSiblings(carouselItem.firstChild)
+      var firstChild = carouselItem.querySelector(':first-child')
+      var siblings = getSiblings(firstChild)
 
       // Remove .carousel-item's first child next elements
       siblings.forEach(function (sibling) {
-        sibling.parentNode.removeChild()
+        if (sibling !== firstChild) {
+          sibling.remove()
+        }
       })
     })
 
@@ -50,16 +53,16 @@
     carouselItems.forEach(function (carouselItem) {
       var next = carouselItem.nextElementSibling
 
-      if (next) {
-        carouselItem.appendChild(next.querySelector(':first-child').cloneNode(true))
+      if (!next) {
+        next = getSiblings(carouselItem).shift()
+      }
 
-        var nextSiblingsList = getSiblings(carouselItem.firstChild)
+      carouselItem.appendChild(next.querySelector(':first-child').cloneNode(true))
 
-        if (nextSiblingsList.length > 0) {
-          carouselItem.appendChild(next.nextElementSibling.querySelector(':first-child').cloneNode(true))
-        } else {
-          carouselItem.appendChild(carouselItem.nextElementSibling.firstChild.cloneNode(true))
-        }
+      if (next.nextElementSibling) {
+        carouselItem.appendChild(next.nextElementSibling.querySelector(':first-child').cloneNode(true))
+      } else {
+        carouselItem.appendChild(getSiblings(carouselItem).shift().querySelector(':first-child').cloneNode(true))
       }
     })
 
