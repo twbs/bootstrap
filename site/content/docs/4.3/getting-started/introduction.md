@@ -119,8 +119,8 @@ For improved cross-browser rendering, we use [Reboot]({{< docsref "/content/rebo
 Stay up to date on the development of Bootstrap and reach out to the community with these helpful resources.
 
 - Follow [@getbootstrap on Twitter](https://twitter.com/{{< param twitter >}}).
-- Read and subscribe to [The Official Bootstrap Blog]({{< param blog >}}/).
-- Join [the official Slack room]({{< param slack >}}/).
+- Read and subscribe to [The Official Bootstrap Blog]({{< param blog >}}).
+- Join [the official Slack room]({{< param slack >}}).
 - Chat with fellow Bootstrappers in IRC. On the `irc.freenode.net` server, in the `##bootstrap` channel.
 - Implementation help may be found at Stack Overflow (tagged [`bootstrap-4`](https://stackoverflow.com/questions/tagged/bootstrap-4)).
 - Developers should use the keyword `bootstrap` on packages which modify or add to the functionality of Bootstrap when distributing through [npm](https://www.npmjs.com/search?q=keywords:bootstrap) or similar delivery mechanisms for maximum discoverability.
