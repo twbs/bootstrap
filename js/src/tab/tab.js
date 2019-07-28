@@ -210,7 +210,7 @@ class Tab {
 
   // Static
 
-  static _jQueryInterface(config) {
+  static jQueryInterface(config) {
     return this.each(function () {
       const data = Data.getData(this, DATA_KEY) || new Tab(this)
 
@@ -224,7 +224,7 @@ class Tab {
     })
   }
 
-  static _getInstance(element) {
+  static getInstance(element) {
     return Data.getData(element, DATA_KEY)
   }
 }
@@ -251,11 +251,11 @@ EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (
 /* istanbul ignore if */
 if (typeof $ !== 'undefined') {
   const JQUERY_NO_CONFLICT = $.fn[NAME]
-  $.fn[NAME] = Tab._jQueryInterface
+  $.fn[NAME] = Tab.jQueryInterface
   $.fn[NAME].Constructor = Tab
   $.fn[NAME].noConflict = () => {
     $.fn[NAME] = JQUERY_NO_CONFLICT
-    return Tab._jQueryInterface
+    return Tab.jQueryInterface
   }
 }
 

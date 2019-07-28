@@ -366,11 +366,11 @@ describe('Collapse', () => {
         toggle: false
       })
 
-      expect(Collapse._getInstance(collapseEl)).toEqual(collapse)
+      expect(Collapse.getInstance(collapseEl)).toEqual(collapse)
 
       collapse.dispose()
 
-      expect(Collapse._getInstance(collapseEl)).toEqual(null)
+      expect(Collapse.getInstance(collapseEl)).toEqual(null)
     })
   })
 
@@ -760,18 +760,18 @@ describe('Collapse', () => {
     })
   })
 
-  describe('_jQueryInterface', () => {
+  describe('jQueryInterface', () => {
     it('should create a collapse', () => {
       fixtureEl.innerHTML = '<div></div>'
 
       const div = fixtureEl.querySelector('div')
 
-      jQueryMock.fn.collapse = Collapse._jQueryInterface
+      jQueryMock.fn.collapse = Collapse.jQueryInterface
       jQueryMock.elements = [div]
 
       jQueryMock.fn.collapse.call(jQueryMock)
 
-      expect(Collapse._getInstance(div)).toBeDefined()
+      expect(Collapse.getInstance(div)).toBeDefined()
     })
 
     it('should not re create a collapse', () => {
@@ -780,12 +780,12 @@ describe('Collapse', () => {
       const div = fixtureEl.querySelector('div')
       const collapse = new Collapse(div)
 
-      jQueryMock.fn.collapse = Collapse._jQueryInterface
+      jQueryMock.fn.collapse = Collapse.jQueryInterface
       jQueryMock.elements = [div]
 
       jQueryMock.fn.collapse.call(jQueryMock)
 
-      expect(Collapse._getInstance(div)).toEqual(collapse)
+      expect(Collapse.getInstance(div)).toEqual(collapse)
     })
 
     it('should throw error on undefined method', () => {
@@ -794,7 +794,7 @@ describe('Collapse', () => {
       const div = fixtureEl.querySelector('div')
       const action = 'undefinedMethod'
 
-      jQueryMock.fn.collapse = Collapse._jQueryInterface
+      jQueryMock.fn.collapse = Collapse.jQueryInterface
       jQueryMock.elements = [div]
 
       try {
@@ -805,14 +805,14 @@ describe('Collapse', () => {
     })
   })
 
-  describe('_getInstance', () => {
+  describe('getInstance', () => {
     it('should return collapse instance', () => {
       fixtureEl.innerHTML = '<div></div>'
 
       const div = fixtureEl.querySelector('div')
       const collapse = new Collapse(div)
 
-      expect(Collapse._getInstance(div)).toEqual(collapse)
+      expect(Collapse.getInstance(div)).toEqual(collapse)
     })
 
     it('should return null when there is no collapse instance', () => {
@@ -820,7 +820,7 @@ describe('Collapse', () => {
 
       const div = fixtureEl.querySelector('div')
 
-      expect(Collapse._getInstance(div)).toEqual(null)
+      expect(Collapse.getInstance(div)).toEqual(null)
     })
   })
 })

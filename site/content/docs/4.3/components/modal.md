@@ -820,13 +820,13 @@ Destroys an element's modal.
 
 {{< highlight js >}}myModal.dispose(){{< /highlight >}}
 
-#### _getInstance
+#### getInstance
 
 *Static* method which allows you to get the modal instance associated with a DOM element
 
 {{< highlight js >}}
 var myModalEl = document.getElementById('myModal')
-var modal = bootstrap.Modal._getInstance(myModalEl) // Returns a Bootstrap modal instance
+var modal = bootstrap.Modal.getInstance(myModalEl) // Returns a Bootstrap modal instance
 {{< /highlight >}}
 
 ### Events
