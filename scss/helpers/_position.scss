@@ -18,10 +18,17 @@
   z-index: $zindex-fixed;
 }
 
-.sticky-top {
-  @supports (position: sticky) {
-    position: sticky;
-    top: 0;
-    z-index: $zindex-sticky;
+// Responsive sticky top
+@supports (position: sticky) {
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+      $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+      .sticky#{$infix}-top {
+        position: sticky;
+        top: 0;
+        z-index: $zindex-sticky;
+      }
+    }
   }
 }
