@@ -75,7 +75,7 @@ var modal = new bootstrap.Modal(myModalEl) // initialized with defaults
 var modal = new bootstrap.Modal(myModalEl, { keyboard: false }) // initialized with no keyboard
 {{< /highlight >}}
 
-If you'd like to get a particular plugin instance, each plugin exposes a `_getInstance` method. In order to retrieve it directly from an element, do this: `bootstrap.Popover._getInstance(myPopoverEl)`.
+If you'd like to get a particular plugin instance, each plugin exposes a `getInstance` method. In order to retrieve it directly from an element, do this: `bootstrap.Popover.getInstance(myPopoverEl)`.
 
 ### Asynchronous functions and transitions
 
@@ -95,7 +95,7 @@ In addition a method call on a **transitioning component will be ignored**.
 
 {{< highlight js >}}
 var myCarouselEl = document.getElementById('myCarousel')
-var carousel = bootstrap.Carousel._getInstance(myCarouselEl) // Retrieve a Carousel instance
+var carousel = bootstrap.Carousel.getInstance(myCarouselEl) // Retrieve a Carousel instance
 
 myCarouselEl.addEventListener('slid.bs.carousel', function (e) {
   carousel.to('2') // Will slide to the slide 2 as soon as the transition to slide 1 is finished

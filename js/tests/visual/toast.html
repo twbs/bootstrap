@@ -67,7 +67,7 @@
           document.getElementById('btnShowToast').addEventListener('click', function () {
             Array.from(document.querySelectorAll('.toast'))
               .forEach(function (toastNode) {
-                var toast = Toast._getInstance(toastNode)
+                var toast = Toast.getInstance(toastNode)
                 toast.show()
               })
           })
@@ -75,7 +75,7 @@
           document.getElementById('btnHideToast').addEventListener('click', function () {
             Array.from(document.querySelectorAll('.toast'))
               .forEach(function (toastNode) {
-                var toast = Toast._getInstance(toastNode)
+                var toast = Toast.getInstance(toastNode)
                 toast.hide()
               })
           })

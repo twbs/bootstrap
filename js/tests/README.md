@@ -32,10 +32,10 @@ Currently we're aiming for at least 90% test coverage for our code. To ensure yo
 
 ```js
 // Synchronous test
-describe('_getInstance', () => {
+describe('getInstance', () => {
   it('should return null if there is no instance', () => {
     // Make assertion
-    expect(Tab._getInstance(fixtureEl)).toEqual(null)
+    expect(Tab.getInstance(fixtureEl)).toEqual(null)
   })
 
   it('should return this instance', () => {
@@ -45,7 +45,7 @@ describe('_getInstance', () => {
     const tab = new Tab(divEl)
 
     // Make assertion
-    expect(Tab._getInstance(divEl)).toEqual(tab)
+    expect(Tab.getInstance(divEl)).toEqual(tab)
   })
 })
 

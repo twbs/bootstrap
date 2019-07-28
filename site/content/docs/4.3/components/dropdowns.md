@@ -901,7 +901,7 @@ Note when `boundary` is set to any value other than `'scrollParent'`, the style 
       </td>
     </tr>
     <tr>
-      <td><code>_getInstance</code></td>
+      <td><code>getInstance</code></td>
       <td>
         Static method which allows you to get the dropdown instance associated with a DOM element.
       </td>
