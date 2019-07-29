@@ -307,7 +307,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <td>method</td>
       <td>string</td>
       <td>auto</td>
-      <td>Finds which section the spied element is in. <code>auto</code> will choose the best method get scroll coordinates. <code>offset</code> will use the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect"><code>Element.getBoundingClientRect()</code></a> method to get scroll coordinates. <code>position</code> will use the <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetTop"><code>HTMLElement.offsetTop</code></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetLeft"><code>HTMLElement.offsetLeft</code></a> properties to get scroll coordinates.</td>
+      <td>Finds which section the spied element is in. <code>auto</code> will choose the best method to get scroll coordinates. <code>offset</code> will use the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect"><code>Element.getBoundingClientRect()</code></a> method to get scroll coordinates. <code>position</code> will use the <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetTop"><code>HTMLElement.offsetTop</code></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetLeft"><code>HTMLElement.offsetLeft</code></a> properties to get scroll coordinates.</td>
     </tr>
     <tr>
       <td>target</td>

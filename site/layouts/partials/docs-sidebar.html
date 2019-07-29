@@ -3,7 +3,7 @@
   {{- $page_slug := index $url (sub (len $url) 2) -}}
 
   <ul class="list-unstyled">
-  {{- range $group := .Site.Data.nav -}}
+  {{- range $group := .Site.Data.sidebar -}}
     {{- $link := $group.title -}}
     {{- $link_slug := $link | urlize -}}
 
