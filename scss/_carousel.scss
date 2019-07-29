@@ -112,13 +112,13 @@
 .carousel-control-prev {
   left: 0;
   @if $enable-gradients {
-    background: linear-gradient(90deg, rgba($black, .25), rgba($black, .001));
+    background-image: linear-gradient(90deg, rgba($black, .25), rgba($black, .001));
   }
 }
 .carousel-control-next {
   right: 0;
   @if $enable-gradients {
-    background: linear-gradient(270deg, rgba($black, .25), rgba($black, .001));
+    background-image: linear-gradient(270deg, rgba($black, .25), rgba($black, .001));
   }
 }
 
