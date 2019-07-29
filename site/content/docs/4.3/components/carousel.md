@@ -329,7 +329,7 @@ var carousel = new bootstrap.Carousel(myCarousel, {
       <td>Destroys an element's carousel.</td>
     </tr>
     <tr>
-      <td><code>_getInstance</code></td>
+      <td><code>getInstance</code></td>
       <td>Static method which allows you to get the carousel instance associated with a DOM element.</td>
     </tr>
   </tbody>

@@ -173,7 +173,7 @@ class Collapse {
     if (actives) {
       actives.forEach(elemActive => {
         if (container !== elemActive) {
-          Collapse._collapseInterface(elemActive, 'hide')
+          Collapse.collapseInterface(elemActive, 'hide')
         }
 
         if (!activesData) {
@@ -348,7 +348,7 @@ class Collapse {
 
   // Static
 
-  static _collapseInterface(element, config) {
+  static collapseInterface(element, config) {
     let data = Data.getData(element, DATA_KEY)
     const _config = {
       ...Default,
@@ -373,13 +373,13 @@ class Collapse {
     }
   }
 
-  static _jQueryInterface(config) {
+  static jQueryInterface(config) {
     return this.each(function () {
-      Collapse._collapseInterface(this, config)
+      Collapse.collapseInterface(this, config)
     })
   }
 
-  static _getInstance(element) {
+  static getInstance(element) {
     return Data.getData(element, DATA_KEY)
   }
 }
@@ -415,7 +415,7 @@ EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (
       config = triggerData
     }
 
-    Collapse._collapseInterface(element, config)
+    Collapse.collapseInterface(element, config)
   })
 })
 
@@ -428,11 +428,11 @@ EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (
 /* istanbul ignore if */
 if (typeof $ !== 'undefined') {
   const JQUERY_NO_CONFLICT = $.fn[NAME]
-  $.fn[NAME] = Collapse._jQueryInterface
+  $.fn[NAME] = Collapse.jQueryInterface
   $.fn[NAME].Constructor = Collapse
   $.fn[NAME].noConflict = () => {
     $.fn[NAME] = JQUERY_NO_CONFLICT
-    return Collapse._jQueryInterface
+    return Collapse.jQueryInterface
   }
 }
 

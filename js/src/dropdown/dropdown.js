@@ -133,10 +133,10 @@ class Dropdown {
       return
     }
 
-    const parent = Dropdown._getParentFromElement(this._element)
+    const parent = Dropdown.getParentFromElement(this._element)
     const isActive = this._menu.classList.contains(ClassName.SHOW)
 
-    Dropdown._clearMenus()
+    Dropdown.clearMenus()
 
     if (isActive) {
       return
@@ -207,7 +207,7 @@ class Dropdown {
       return
     }
 
-    const parent = Dropdown._getParentFromElement(this._element)
+    const parent = Dropdown.getParentFromElement(this._element)
     const relatedTarget = {
       relatedTarget: this._element
     }
@@ -228,7 +228,7 @@ class Dropdown {
       return
     }
 
-    const parent = Dropdown._getParentFromElement(this._element)
+    const parent = Dropdown.getParentFromElement(this._element)
     const relatedTarget = {
       relatedTarget: this._element
     }
@@ -289,7 +289,7 @@ class Dropdown {
   }
 
   _getMenuElement() {
-    const parent = Dropdown._getParentFromElement(this._element)
+    const parent = Dropdown.getParentFromElement(this._element)
 
     return SelectorEngine.findOne(Selector.MENU, parent)
   }
@@ -364,7 +364,7 @@ class Dropdown {
 
   // Static
 
-  static _dropdownInterface(element, config) {
+  static dropdownInterface(element, config) {
     let data = Data.getData(element, DATA_KEY)
     const _config = typeof config === 'object' ? config : null
 
@@ -381,13 +381,13 @@ class Dropdown {
     }
   }
 
-  static _jQueryInterface(config) {
+  static jQueryInterface(config) {
     return this.each(function () {
-      Dropdown._dropdownInterface(this, config)
+      Dropdown.dropdownInterface(this, config)
     })
   }
 
-  static _clearMenus(event) {
+  static clearMenus(event) {
     if (event && (event.which === RIGHT_MOUSE_BUTTON_WHICH ||
       event.type === 'keyup' && event.which !== TAB_KEYCODE)) {
       return
@@ -395,7 +395,7 @@ class Dropdown {
 
     const toggles = makeArray(SelectorEngine.find(Selector.DATA_TOGGLE))
     for (let i = 0, len = toggles.length; i < len; i++) {
-      const parent = Dropdown._getParentFromElement(toggles[i])
+      const parent = Dropdown.getParentFromElement(toggles[i])
       const context = Data.getData(toggles[i], DATA_KEY)
       const relatedTarget = {
         relatedTarget: toggles[i]
@@ -441,11 +441,11 @@ class Dropdown {
     }
   }
 
-  static _getParentFromElement(element) {
+  static getParentFromElement(element) {
     return getElementFromSelector(element) || element.parentNode
   }
 
-  static _dataApiKeydownHandler(event) {
+  static dataApiKeydownHandler(event) {
     // If not input/textarea:
     //  - And not a key in REGEXP_KEYDOWN => not a dropdown command
     // If input/textarea:
@@ -468,7 +468,7 @@ class Dropdown {
       return
     }
 
-    const parent = Dropdown._getParentFromElement(this)
+    const parent = Dropdown.getParentFromElement(this)
     const isActive = parent.classList.contains(ClassName.SHOW)
 
     if (!isActive || isActive && (event.which === ESCAPE_KEYCODE || event.which === SPACE_KEYCODE)) {
@@ -476,7 +476,7 @@ class Dropdown {
         SelectorEngine.findOne(Selector.DATA_TOGGLE, parent).focus()
       }
 
-      Dropdown._clearMenus()
+      Dropdown.clearMenus()
       return
     }
 
@@ -503,7 +503,7 @@ class Dropdown {
     items[index].focus()
   }
 
-  static _getInstance(element) {
+  static getInstance(element) {
     return Data.getData(element, DATA_KEY)
   }
 }
@@ -514,14 +514,14 @@ class Dropdown {
  * ------------------------------------------------------------------------
  */
 
-EventHandler.on(document, Event.KEYDOWN_DATA_API, Selector.DATA_TOGGLE, Dropdown._dataApiKeydownHandler)
-EventHandler.on(document, Event.KEYDOWN_DATA_API, Selector.MENU, Dropdown._dataApiKeydownHandler)
-EventHandler.on(document, Event.CLICK_DATA_API, Dropdown._clearMenus)
-EventHandler.on(document, Event.KEYUP_DATA_API, Dropdown._clearMenus)
+EventHandler.on(document, Event.KEYDOWN_DATA_API, Selector.DATA_TOGGLE, Dropdown.dataApiKeydownHandler)
+EventHandler.on(document, Event.KEYDOWN_DATA_API, Selector.MENU, Dropdown.dataApiKeydownHandler)
+EventHandler.on(document, Event.CLICK_DATA_API, Dropdown.clearMenus)
+EventHandler.on(document, Event.KEYUP_DATA_API, Dropdown.clearMenus)
 EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
   event.preventDefault()
   event.stopPropagation()
-  Dropdown._dropdownInterface(this, 'toggle')
+  Dropdown.dropdownInterface(this, 'toggle')
 })
 EventHandler
   .on(document, Event.CLICK_DATA_API, Selector.FORM_CHILD, e => e.stopPropagation())
@@ -535,11 +535,11 @@ EventHandler
 /* istanbul ignore if */
 if (typeof $ !== 'undefined') {
   const JQUERY_NO_CONFLICT = $.fn[NAME]
-  $.fn[NAME] = Dropdown._jQueryInterface
+  $.fn[NAME] = Dropdown.jQueryInterface
   $.fn[NAME].Constructor = Dropdown
   $.fn[NAME].noConflict = () => {
     $.fn[NAME] = JQUERY_NO_CONFLICT
-    return Dropdown._jQueryInterface
+    return Dropdown.jQueryInterface
   }
 }
 

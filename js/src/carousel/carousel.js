@@ -528,7 +528,7 @@ class Carousel {
 
   // Static
 
-  static _carouselInterface(element, config) {
+  static carouselInterface(element, config) {
     let data = Data.getData(element, DATA_KEY)
     let _config = {
       ...Default,
@@ -562,13 +562,13 @@ class Carousel {
     }
   }
 
-  static _jQueryInterface(config) {
+  static jQueryInterface(config) {
     return this.each(function () {
-      Carousel._carouselInterface(this, config)
+      Carousel.carouselInterface(this, config)
     })
   }
 
-  static _dataApiClickHandler(event) {
+  static dataApiClickHandler(event) {
     const target = getElementFromSelector(this)
 
     if (!target || !target.classList.contains(ClassName.CAROUSEL)) {
@@ -585,7 +585,7 @@ class Carousel {
       config.interval = false
     }
 
-    Carousel._carouselInterface(target, config)
+    Carousel.carouselInterface(target, config)
 
     if (slideIndex) {
       Data.getData(target, DATA_KEY).to(slideIndex)
@@ -594,7 +594,7 @@ class Carousel {
     event.preventDefault()
   }
 
-  static _getInstance(element) {
+  static getInstance(element) {
     return Data.getData(element, DATA_KEY)
   }
 }
@@ -606,12 +606,12 @@ class Carousel {
  */
 
 EventHandler
-  .on(document, Event.CLICK_DATA_API, Selector.DATA_SLIDE, Carousel._dataApiClickHandler)
+  .on(document, Event.CLICK_DATA_API, Selector.DATA_SLIDE, Carousel.dataApiClickHandler)
 
 EventHandler.on(window, Event.LOAD_DATA_API, () => {
   const carousels = makeArray(SelectorEngine.find(Selector.DATA_RIDE))
   for (let i = 0, len = carousels.length; i < len; i++) {
-    Carousel._carouselInterface(carousels[i], Data.getData(carousels[i], DATA_KEY))
+    Carousel.carouselInterface(carousels[i], Data.getData(carousels[i], DATA_KEY))
   }
 })
 
@@ -624,11 +624,11 @@ EventHandler.on(window, Event.LOAD_DATA_API, () => {
 /* istanbul ignore if */
 if (typeof $ !== 'undefined') {
   const JQUERY_NO_CONFLICT = $.fn[NAME]
-  $.fn[NAME] = Carousel._jQueryInterface
+  $.fn[NAME] = Carousel.jQueryInterface
   $.fn[NAME].Constructor = Carousel
   $.fn[NAME].noConflict = () => {
     $.fn[NAME] = JQUERY_NO_CONFLICT
-    return Carousel._jQueryInterface
+    return Carousel.jQueryInterface
   }
 }
 
