@@ -396,10 +396,27 @@ describe('Modal', () => {
       const modalBody = modalEl.querySelector('.modal-body')
       const modal = new Modal(modalEl)
 
-      spyOn(modal, 'hide').and.callThrough()
-
       modalEl.addEventListener('shown.bs.modal', () => {
         expect(modalBody.scrollTop).toEqual(0)
+        done()
+      })
+
+      modal.show()
+    })
+
+    it('should set .modal\'s scroll top to 0 if .modal-dialog-scrollable and modal body do not exists', done => {
+      fixtureEl.innerHTML = [
+        '<div class="modal fade">',
+        '  <div class="modal-dialog modal-dialog-scrollable">',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const modalEl = fixtureEl.querySelector('.modal')
+      const modal = new Modal(modalEl)
+
+      modalEl.addEventListener('shown.bs.modal', () => {
+        expect(modalEl.scrollTop).toEqual(0)
         done()
       })
 
