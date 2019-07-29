@@ -26,6 +26,25 @@ layoutDir:              "site/layouts"
 staticDir:              "site/static"
 themesDir:              "site/themes"
 
+module:
+  mounts:
+    - source:           dist
+      target:           static/docs/4.3/dist
+    - source:           content
+      target:           content
+    - source:           static
+      target:           static
+    - source:           layouts
+      target:           layouts
+    - source:           data
+      target:           data
+    - source:           assets
+      target:           assets
+    - source:           i18n
+      target:           i18n
+    - source:           archetypes
+      target:           archetypes
+
 params:
   description:          "The most popular HTML, CSS, and JS library in the world."
   authors:              "Mark Otto, Jacob Thornton, and Bootstrap contributors"
