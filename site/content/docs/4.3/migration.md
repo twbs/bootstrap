@@ -41,6 +41,7 @@ Changes to our source Sass files and compiled CSS.
 Changes to our source and compiled JavaScript files.
 
 - Dropped jQuery dependency and rewrote plugins to be in regular JavaScript.
+- Removed underscore from public static methods like `_getInstance()` → `getInstance()`.
 
 ## Grid and layout
 
