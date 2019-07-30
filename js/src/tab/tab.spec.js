@@ -329,26 +329,26 @@ describe('Tab', () => {
       const el = fixtureEl.querySelector('div')
       const tab = new Tab(fixtureEl.querySelector('div'))
 
-      expect(Tab._getInstance(el)).not.toBeNull()
+      expect(Tab.getInstance(el)).not.toBeNull()
 
       tab.dispose()
 
-      expect(Tab._getInstance(el)).toBeNull()
+      expect(Tab.getInstance(el)).toBeNull()
     })
   })
 
-  describe('_jQueryInterface', () => {
+  describe('jQueryInterface', () => {
     it('should create a tab', () => {
       fixtureEl.innerHTML = '<div></div>'
 
       const div = fixtureEl.querySelector('div')
 
-      jQueryMock.fn.tab = Tab._jQueryInterface
+      jQueryMock.fn.tab = Tab.jQueryInterface
       jQueryMock.elements = [div]
 
       jQueryMock.fn.tab.call(jQueryMock)
 
-      expect(Tab._getInstance(div)).toBeDefined()
+      expect(Tab.getInstance(div)).toBeDefined()
     })
 
     it('should not re create a tab', () => {
@@ -357,12 +357,12 @@ describe('Tab', () => {
       const div = fixtureEl.querySelector('div')
       const tab = new Tab(div)
 
-      jQueryMock.fn.tab = Tab._jQueryInterface
+      jQueryMock.fn.tab = Tab.jQueryInterface
       jQueryMock.elements = [div]
 
       jQueryMock.fn.tab.call(jQueryMock)
 
-      expect(Tab._getInstance(div)).toEqual(tab)
+      expect(Tab.getInstance(div)).toEqual(tab)
     })
 
     it('should call a tab method', () => {
@@ -373,12 +373,12 @@ describe('Tab', () => {
 
       spyOn(tab, 'show')
 
-      jQueryMock.fn.tab = Tab._jQueryInterface
+      jQueryMock.fn.tab = Tab.jQueryInterface
       jQueryMock.elements = [div]
 
       jQueryMock.fn.tab.call(jQueryMock, 'show')
 
-      expect(Tab._getInstance(div)).toEqual(tab)
+      expect(Tab.getInstance(div)).toEqual(tab)
       expect(tab.show).toHaveBeenCalled()
     })
 
@@ -388,7 +388,7 @@ describe('Tab', () => {
       const div = fixtureEl.querySelector('div')
       const action = 'undefinedMethod'
 
-      jQueryMock.fn.tab = Tab._jQueryInterface
+      jQueryMock.fn.tab = Tab.jQueryInterface
       jQueryMock.elements = [div]
 
       try {
@@ -399,9 +399,9 @@ describe('Tab', () => {
     })
   })
 
-  describe('_getInstance', () => {
+  describe('getInstance', () => {
     it('should return null if there is no instance', () => {
-      expect(Tab._getInstance(fixtureEl)).toEqual(null)
+      expect(Tab.getInstance(fixtureEl)).toEqual(null)
     })
 
     it('should return this instance', () => {
@@ -410,7 +410,7 @@ describe('Tab', () => {
       const divEl = fixtureEl.querySelector('div')
       const tab = new Tab(divEl)
 
-      expect(Tab._getInstance(divEl)).toEqual(tab)
+      expect(Tab.getInstance(divEl)).toEqual(tab)
     })
   })
 

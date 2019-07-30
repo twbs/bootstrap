@@ -122,7 +122,7 @@ class Button {
 
   // Static
 
-  static _jQueryInterface(config) {
+  static jQueryInterface(config) {
     return this.each(function () {
       let data = Data.getData(this, DATA_KEY)
 
@@ -136,7 +136,7 @@ class Button {
     })
   }
 
-  static _getInstance(element) {
+  static getInstance(element) {
     return Data.getData(element, DATA_KEY)
   }
 }
@@ -188,12 +188,12 @@ EventHandler.on(document, Event.BLUR_DATA_API, Selector.DATA_TOGGLE_CARROT, even
 /* istanbul ignore if */
 if (typeof $ !== 'undefined') {
   const JQUERY_NO_CONFLICT = $.fn[NAME]
-  $.fn[NAME] = Button._jQueryInterface
+  $.fn[NAME] = Button.jQueryInterface
   $.fn[NAME].Constructor = Button
 
   $.fn[NAME].noConflict = () => {
     $.fn[NAME] = JQUERY_NO_CONFLICT
-    return Button._jQueryInterface
+    return Button.jQueryInterface
   }
 }
 

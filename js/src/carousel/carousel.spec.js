@@ -1037,18 +1037,18 @@ describe('Carousel', () => {
     })
   })
 
-  describe('_jQueryInterface', () => {
+  describe('jQueryInterface', () => {
     it('should create a carousel', () => {
       fixtureEl.innerHTML = '<div></div>'
 
       const div = fixtureEl.querySelector('div')
 
-      jQueryMock.fn.carousel = Carousel._jQueryInterface
+      jQueryMock.fn.carousel = Carousel.jQueryInterface
       jQueryMock.elements = [div]
 
       jQueryMock.fn.carousel.call(jQueryMock)
 
-      expect(Carousel._getInstance(div)).toBeDefined()
+      expect(Carousel.getInstance(div)).toBeDefined()
     })
 
     it('should not re create a carousel', () => {
@@ -1057,12 +1057,12 @@ describe('Carousel', () => {
       const div = fixtureEl.querySelector('div')
       const carousel = new Carousel(div)
 
-      jQueryMock.fn.carousel = Carousel._jQueryInterface
+      jQueryMock.fn.carousel = Carousel.jQueryInterface
       jQueryMock.elements = [div]
 
       jQueryMock.fn.carousel.call(jQueryMock)
 
-      expect(Carousel._getInstance(div)).toEqual(carousel)
+      expect(Carousel.getInstance(div)).toEqual(carousel)
     })
 
     it('should call to if the config is a number', () => {
@@ -1074,7 +1074,7 @@ describe('Carousel', () => {
 
       spyOn(carousel, 'to')
 
-      jQueryMock.fn.carousel = Carousel._jQueryInterface
+      jQueryMock.fn.carousel = Carousel.jQueryInterface
       jQueryMock.elements = [div]
 
       jQueryMock.fn.carousel.call(jQueryMock, slideTo)
@@ -1088,7 +1088,7 @@ describe('Carousel', () => {
       const div = fixtureEl.querySelector('div')
       const action = 'undefinedMethod'
 
-      jQueryMock.fn.carousel = Carousel._jQueryInterface
+      jQueryMock.fn.carousel = Carousel.jQueryInterface
       jQueryMock.elements = [div]
 
       try {
@@ -1108,7 +1108,7 @@ describe('Carousel', () => {
 
       window.dispatchEvent(loadEvent)
 
-      expect(Carousel._getInstance(carouselEl)).toBeDefined()
+      expect(Carousel.getInstance(carouselEl)).toBeDefined()
     })
 
     it('should create carousel and go to the next slide on click', done => {

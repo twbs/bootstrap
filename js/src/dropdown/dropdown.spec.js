@@ -1412,18 +1412,18 @@ describe('Dropdown', () => {
     })
   })
 
-  describe('_jQueryInterface', () => {
+  describe('jQueryInterface', () => {
     it('should create a dropdown', () => {
       fixtureEl.innerHTML = '<div></div>'
 
       const div = fixtureEl.querySelector('div')
 
-      jQueryMock.fn.dropdown = Dropdown._jQueryInterface
+      jQueryMock.fn.dropdown = Dropdown.jQueryInterface
       jQueryMock.elements = [div]
 
       jQueryMock.fn.dropdown.call(jQueryMock)
 
-      expect(Dropdown._getInstance(div)).toBeDefined()
+      expect(Dropdown.getInstance(div)).toBeDefined()
     })
 
     it('should not re create a dropdown', () => {
@@ -1432,12 +1432,12 @@ describe('Dropdown', () => {
       const div = fixtureEl.querySelector('div')
       const dropdown = new Dropdown(div)
 
-      jQueryMock.fn.dropdown = Dropdown._jQueryInterface
+      jQueryMock.fn.dropdown = Dropdown.jQueryInterface
       jQueryMock.elements = [div]
 
       jQueryMock.fn.dropdown.call(jQueryMock)
 
-      expect(Dropdown._getInstance(div)).toEqual(dropdown)
+      expect(Dropdown.getInstance(div)).toEqual(dropdown)
     })
 
     it('should throw error on undefined method', () => {
@@ -1446,7 +1446,7 @@ describe('Dropdown', () => {
       const div = fixtureEl.querySelector('div')
       const action = 'undefinedMethod'
 
-      jQueryMock.fn.dropdown = Dropdown._jQueryInterface
+      jQueryMock.fn.dropdown = Dropdown.jQueryInterface
       jQueryMock.elements = [div]
 
       try {
@@ -1457,14 +1457,14 @@ describe('Dropdown', () => {
     })
   })
 
-  describe('_getInstance', () => {
+  describe('getInstance', () => {
     it('should return dropdown instance', () => {
       fixtureEl.innerHTML = '<div></div>'
 
       const div = fixtureEl.querySelector('div')
       const dropdown = new Dropdown(div)
 
-      expect(Dropdown._getInstance(div)).toEqual(dropdown)
+      expect(Dropdown.getInstance(div)).toEqual(dropdown)
     })
 
     it('should return null when there is no dropdown instance', () => {
@@ -1472,7 +1472,7 @@ describe('Dropdown', () => {
 
       const div = fixtureEl.querySelector('div')
 
-      expect(Dropdown._getInstance(div)).toEqual(null)
+      expect(Dropdown.getInstance(div)).toEqual(null)
     })
   })
 })

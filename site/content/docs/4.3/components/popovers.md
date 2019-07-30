@@ -299,7 +299,7 @@ Options for individual popovers can alternatively be specified through the use o
 
 #### show
 
-Reveals an element's popover. **Returns to the caller before the popover has actually been shown** (i.e. before the `shown.bs.popover` event occurs). This is considered a "manual" triggering of the popover. Popovers whose both title and content are zero-length are never displayed.
+Reveals an element's popover. **Returns to the caller before the popover has actually been shown** (i.e. before the `shown.bs.popover` event occurs). This is considered a "manual" triggering of the popover. Popovers whose title and content are both zero-length are never displayed.
 
 {{< highlight js >}}myPopover.show(){{< /highlight >}}
 
@@ -345,13 +345,13 @@ Updates the position of an element's popover.
 
 {{< highlight js >}}myPopover.update(){{< /highlight >}}
 
-#### _getInstance
+#### getInstance
 
 *Static* method which allows you to get the popover instance associated with a DOM element
 
 {{< highlight js >}}
 var exampleTriggerEl = document.getElementById('example')
-var popover = bootstrap.Popover._getInstance(exampleTriggerEl) // Returns a Bootstrap popover instance
+var popover = bootstrap.Popover.getInstance(exampleTriggerEl) // Returns a Bootstrap popover instance
 {{< /highlight >}}
 
 ### Events

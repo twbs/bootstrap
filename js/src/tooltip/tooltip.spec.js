@@ -266,11 +266,11 @@ describe('Tooltip', () => {
       const tooltipEl = fixtureEl.querySelector('a')
       const tooltip = new Tooltip(tooltipEl)
 
-      expect(Tooltip._getInstance(tooltipEl)).toEqual(tooltip)
+      expect(Tooltip.getInstance(tooltipEl)).toEqual(tooltip)
 
       tooltip.dispose()
 
-      expect(Tooltip._getInstance(tooltipEl)).toEqual(null)
+      expect(Tooltip.getInstance(tooltipEl)).toEqual(null)
     })
 
     it('should destroy a tooltip and remove it from the dom', done => {
@@ -926,18 +926,18 @@ describe('Tooltip', () => {
     })
   })
 
-  describe('_jQueryInterface', () => {
+  describe('jQueryInterface', () => {
     it('should create a tooltip', () => {
       fixtureEl.innerHTML = '<div></div>'
 
       const div = fixtureEl.querySelector('div')
 
-      jQueryMock.fn.tooltip = Tooltip._jQueryInterface
+      jQueryMock.fn.tooltip = Tooltip.jQueryInterface
       jQueryMock.elements = [div]
 
       jQueryMock.fn.tooltip.call(jQueryMock)
 
-      expect(Tooltip._getInstance(div)).toBeDefined()
+      expect(Tooltip.getInstance(div)).toBeDefined()
     })
 
     it('should not re create a tooltip', () => {
@@ -946,12 +946,12 @@ describe('Tooltip', () => {
       const div = fixtureEl.querySelector('div')
       const tooltip = new Tooltip(div)
 
-      jQueryMock.fn.tooltip = Tooltip._jQueryInterface
+      jQueryMock.fn.tooltip = Tooltip.jQueryInterface
       jQueryMock.elements = [div]
 
       jQueryMock.fn.tooltip.call(jQueryMock)
 
-      expect(Tooltip._getInstance(div)).toEqual(tooltip)
+      expect(Tooltip.getInstance(div)).toEqual(tooltip)
     })
 
     it('should call a tooltip method', () => {
@@ -962,12 +962,12 @@ describe('Tooltip', () => {
 
       spyOn(tooltip, 'show')
 
-      jQueryMock.fn.tooltip = Tooltip._jQueryInterface
+      jQueryMock.fn.tooltip = Tooltip.jQueryInterface
       jQueryMock.elements = [div]
 
       jQueryMock.fn.tooltip.call(jQueryMock, 'show')
 
-      expect(Tooltip._getInstance(div)).toEqual(tooltip)
+      expect(Tooltip.getInstance(div)).toEqual(tooltip)
       expect(tooltip.show).toHaveBeenCalled()
     })
 
@@ -978,7 +978,7 @@ describe('Tooltip', () => {
 
       spyOn(Tooltip.prototype, 'dispose')
 
-      jQueryMock.fn.tooltip = Tooltip._jQueryInterface
+      jQueryMock.fn.tooltip = Tooltip.jQueryInterface
       jQueryMock.elements = [div]
 
       jQueryMock.fn.tooltip.call(jQueryMock, 'dispose')
@@ -992,7 +992,7 @@ describe('Tooltip', () => {
       const div = fixtureEl.querySelector('div')
       const action = 'undefinedMethod'
 
-      jQueryMock.fn.tooltip = Tooltip._jQueryInterface
+      jQueryMock.fn.tooltip = Tooltip.jQueryInterface
       jQueryMock.elements = [div]
 
       try {

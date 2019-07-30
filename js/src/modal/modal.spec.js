@@ -711,13 +711,13 @@ describe('Modal', () => {
       const modalEl = fixtureEl.querySelector('.modal')
       const modal = new Modal(modalEl)
 
-      expect(Modal._getInstance(modalEl)).toEqual(modal)
+      expect(Modal.getInstance(modalEl)).toEqual(modal)
 
       spyOn(EventHandler, 'off')
 
       modal.dispose()
 
-      expect(Modal._getInstance(modalEl)).toEqual(null)
+      expect(Modal.getInstance(modalEl)).toEqual(null)
       expect(EventHandler.off).toHaveBeenCalledTimes(4)
     })
   })
@@ -813,7 +813,7 @@ describe('Modal', () => {
       spyOn(trigger, 'focus')
 
       modalEl.addEventListener('shown.bs.modal', () => {
-        const modal = Modal._getInstance(modalEl)
+        const modal = Modal.getInstance(modalEl)
 
         modal.hide()
       })
@@ -844,7 +844,7 @@ describe('Modal', () => {
       spyOn(trigger, 'focus')
 
       modalEl.addEventListener('shown.bs.modal', () => {
-        const modal = Modal._getInstance(modalEl)
+        const modal = Modal.getInstance(modalEl)
 
         modal.hide()
       })
@@ -890,18 +890,18 @@ describe('Modal', () => {
     })
   })
 
-  describe('_jQueryInterface', () => {
+  describe('jQueryInterface', () => {
     it('should create a modal', () => {
       fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog" /></div>'
 
       const div = fixtureEl.querySelector('div')
 
-      jQueryMock.fn.modal = Modal._jQueryInterface
+      jQueryMock.fn.modal = Modal.jQueryInterface
       jQueryMock.elements = [div]
 
       jQueryMock.fn.modal.call(jQueryMock)
 
-      expect(Modal._getInstance(div)).toBeDefined()
+      expect(Modal.getInstance(div)).toBeDefined()
     })
 
     it('should not re create a modal', () => {
@@ -910,12 +910,12 @@ describe('Modal', () => {
       const div = fixtureEl.querySelector('div')
       const modal = new Modal(div)
 
-      jQueryMock.fn.modal = Modal._jQueryInterface
+      jQueryMock.fn.modal = Modal.jQueryInterface
       jQueryMock.elements = [div]
 
       jQueryMock.fn.modal.call(jQueryMock)
 
-      expect(Modal._getInstance(div)).toEqual(modal)
+      expect(Modal.getInstance(div)).toEqual(modal)
     })
 
     it('should throw error on undefined method', () => {
@@ -924,7 +924,7 @@ describe('Modal', () => {
       const div = fixtureEl.querySelector('div')
       const action = 'undefinedMethod'
 
-      jQueryMock.fn.modal = Modal._jQueryInterface
+      jQueryMock.fn.modal = Modal.jQueryInterface
       jQueryMock.elements = [div]
 
       try {
@@ -940,7 +940,7 @@ describe('Modal', () => {
       const div = fixtureEl.querySelector('div')
       const modal = new Modal(div)
 
-      jQueryMock.fn.modal = Modal._jQueryInterface
+      jQueryMock.fn.modal = Modal.jQueryInterface
       jQueryMock.elements = [div]
 
       spyOn(modal, 'show')
@@ -955,7 +955,7 @@ describe('Modal', () => {
 
       const div = fixtureEl.querySelector('div')
 
-      jQueryMock.fn.modal = Modal._jQueryInterface
+      jQueryMock.fn.modal = Modal.jQueryInterface
       jQueryMock.elements = [div]
 
       spyOn(Modal.prototype, 'show')
@@ -966,14 +966,14 @@ describe('Modal', () => {
     })
   })
 
-  describe('_getInstance', () => {
+  describe('getInstance', () => {
     it('should return modal instance', () => {
       fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog" /></div>'
 
       const div = fixtureEl.querySelector('div')
       const modal = new Modal(div)
 
-      expect(Modal._getInstance(div)).toEqual(modal)
+      expect(Modal.getInstance(div)).toEqual(modal)
     })
 
     it('should return null when there is no modal instance', () => {
@@ -981,7 +981,7 @@ describe('Modal', () => {
 
       const div = fixtureEl.querySelector('div')
 
-      expect(Modal._getInstance(div)).toEqual(null)
+      expect(Modal.getInstance(div)).toEqual(null)
     })
   })
 })
