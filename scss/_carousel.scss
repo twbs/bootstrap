@@ -75,7 +75,7 @@
   .active.carousel-item-right {
     z-index: 0;
     opacity: 0;
-    @include transition(0s $carousel-transition-duration opacity);
+    @include transition(opacity 0s $carousel-transition-duration);
   }
 }
 
