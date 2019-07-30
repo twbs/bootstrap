@@ -18,31 +18,27 @@ blackfriday:
   fractions:            false
 
 publishDir:             "_gh_pages"
-archetypeDir:           "site/archetypes"
-assetDir:               "site/assets"
-contentDir:             "site/content"
-dataDir:                "site/data"
-layoutDir:              "site/layouts"
-staticDir:              "site/static"
 themesDir:              "site/themes"
 
 module:
   mounts:
     - source:           dist
       target:           static/docs/4.3/dist
-    - source:           content
+    - source:           dist
+      target:           static/dist
+    - source:           site/content
       target:           content
-    - source:           static
+    - source:           site/static
       target:           static
-    - source:           layouts
+    - source:           site/layouts
       target:           layouts
-    - source:           data
+    - source:           site/data
       target:           data
-    - source:           assets
+    - source:           site/assets
       target:           assets
-    - source:           i18n
+    - source:           site/i18n
       target:           i18n
-    - source:           archetypes
+    - source:           site/archetypes
       target:           archetypes
 
 params:
