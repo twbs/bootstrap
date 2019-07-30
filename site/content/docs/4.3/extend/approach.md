@@ -61,7 +61,7 @@ Learn more about this in our [`z-index` layout page]({{< docsref "/layout/overvi
 
 Whenever possible, we prefer to write HTML and CSS over JavaScript. In general, HTML and CSS are more prolific and accessible to more people of all different experience levels. HTML and CSS are also faster in your browser than JavaScript, and your browser generally provides a great deal of functionality for you.
 
-This principle is our first-class JavaScript API is `data` attributes. You don't need to write nearly any JavaScript to use our JavaScript plugins; instead, write HTML. Read more about this in [our JavaScript overview page]({{< docsref "/getting-started/javascript#data-attributes" >}}).
+This principle is our first-class JavaScript API using `data` attributes. You don't need to write nearly any JavaScript to use our JavaScript plugins; instead, write HTML. Read more about this in [our JavaScript overview page]({{< docsref "/getting-started/javascript#data-attributes" >}}).
 
 Lastly, our styles build on the fundamental behaviors of common web elements. Whenever possible, we prefer to use what the browser provides. For example, you can put a `.btn` class on nearly any element, but most elements don't provide any semantic value or browser functionality. So instead, we use `<button>`s and `<a>`s.
 
