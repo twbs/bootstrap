@@ -1,5 +1,14 @@
 'use strict'
 
+const cssnanoOpts = {
+  preset: [
+    'default', {
+      mergeRules: false,
+      svgo: false
+    }
+  ]
+}
+
 module.exports = ctx => ({
   map: ctx.file.dirname.includes('examples') ?
     false :
@@ -12,6 +21,6 @@ module.exports = ctx => ({
     autoprefixer: {
       cascade: false
     },
-    cssnano: ctx.env === 'production' ? { preset: 'default' } : false
+    cssnano: ctx.env === 'production' ? cssnanoOpts : false
   }
 })
