@@ -18,28 +18,19 @@ blackfriday:
   fractions:            false
 
 publishDir:             "_gh_pages"
-themesDir:              "site/themes"
 
 module:
   mounts:
     - source:           dist
       target:           static/docs/4.3/dist
-    - source:           dist
-      target:           static/dist
     - source:           site/content
       target:           content
-    - source:           site/static
-      target:           static
-    - source:           site/layouts
-      target:           layouts
     - source:           site/data
       target:           data
-    - source:           site/assets
-      target:           assets
-    - source:           site/i18n
-      target:           i18n
-    - source:           site/archetypes
-      target:           archetypes
+    - source:           site/layouts
+      target:           layouts
+    - source:           site/static
+      target:           static
 
 params:
   description:          "The most popular HTML, CSS, and JS library in the world."
