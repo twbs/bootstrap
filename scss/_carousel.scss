@@ -75,7 +75,7 @@
   .active.carousel-item-right {
     z-index: 0;
     opacity: 0;
-    @include transition(0s $carousel-transition-duration opacity);
+    @include transition(opacity 0s $carousel-transition-duration);
   }
 }
 
@@ -112,13 +112,13 @@
 .carousel-control-prev {
   left: 0;
   @if $enable-gradients {
-    background: linear-gradient(90deg, rgba($black, .25), rgba($black, .001));
+    background-image: linear-gradient(90deg, rgba($black, .25), rgba($black, .001));
   }
 }
 .carousel-control-next {
   right: 0;
   @if $enable-gradients {
-    background: linear-gradient(270deg, rgba($black, .25), rgba($black, .001));
+    background-image: linear-gradient(270deg, rgba($black, .25), rgba($black, .001));
   }
 }
 

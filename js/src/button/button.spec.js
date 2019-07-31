@@ -236,15 +236,15 @@ describe('Button', () => {
       const btnEl = fixtureEl.querySelector('.btn')
       const button = new Button(btnEl)
 
-      expect(Button._getInstance(btnEl)).toBeDefined()
+      expect(Button.getInstance(btnEl)).toBeDefined()
 
       button.dispose()
 
-      expect(Button._getInstance(btnEl)).toBeNull()
+      expect(Button.getInstance(btnEl)).toBeNull()
     })
   })
 
-  describe('_jQueryInterface', () => {
+  describe('jQueryInterface', () => {
     it('should handle config passed and toggle existing button', () => {
       fixtureEl.innerHTML = '<button class="btn" data-toggle="button"></button>'
 
@@ -253,7 +253,7 @@ describe('Button', () => {
 
       spyOn(button, 'toggle')
 
-      jQueryMock.fn.button = Button._jQueryInterface
+      jQueryMock.fn.button = Button.jQueryInterface
       jQueryMock.elements = [btnEl]
 
       jQueryMock.fn.button.call(jQueryMock, 'toggle')
@@ -266,12 +266,12 @@ describe('Button', () => {
 
       const btnEl = fixtureEl.querySelector('.btn')
 
-      jQueryMock.fn.button = Button._jQueryInterface
+      jQueryMock.fn.button = Button.jQueryInterface
       jQueryMock.elements = [btnEl]
 
       jQueryMock.fn.button.call(jQueryMock, 'toggle')
 
-      expect(Button._getInstance(btnEl)).toBeDefined()
+      expect(Button.getInstance(btnEl)).toBeDefined()
       expect(btnEl.classList.contains('active')).toEqual(true)
     })
 
@@ -280,12 +280,12 @@ describe('Button', () => {
 
       const btnEl = fixtureEl.querySelector('.btn')
 
-      jQueryMock.fn.button = Button._jQueryInterface
+      jQueryMock.fn.button = Button.jQueryInterface
       jQueryMock.elements = [btnEl]
 
       jQueryMock.fn.button.call(jQueryMock)
 
-      expect(Button._getInstance(btnEl)).toBeDefined()
+      expect(Button.getInstance(btnEl)).toBeDefined()
       expect(btnEl.classList.contains('active')).toEqual(false)
     })
   })

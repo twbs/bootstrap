@@ -33,6 +33,10 @@ childProcess.exec('java -version', (error, stdout, stderr) => {
     // Content → Reboot uses various date/time inputs as a visual example.
     // Documentation does not rely on them being usable.
     'The “date” input type is not supported in all browsers.*',
+    'The “week” input type is not supported in all browsers.*',
+    'The “month” input type is not supported in all browsers.*',
+    'The “color” input type is not supported in all browsers.*',
+    'The “datetime-local” input type is not supported in all browsers.*',
     'The “time” input type is not supported in all browsers.*',
     // IE11 doesn't recognise <main> / give the element an implicit "main" landmark.
     // Explicit role="main" is redundant for other modern browsers, but still valid.

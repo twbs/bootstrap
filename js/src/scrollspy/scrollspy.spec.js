@@ -571,18 +571,18 @@ describe('ScrollSpy', () => {
     })
   })
 
-  describe('_jQueryInterface', () => {
+  describe('jQueryInterface', () => {
     it('should create a scrollspy', () => {
       fixtureEl.innerHTML = '<div></div>'
 
       const div = fixtureEl.querySelector('div')
 
-      jQueryMock.fn.scrollspy = ScrollSpy._jQueryInterface
+      jQueryMock.fn.scrollspy = ScrollSpy.jQueryInterface
       jQueryMock.elements = [div]
 
       jQueryMock.fn.scrollspy.call(jQueryMock)
 
-      expect(ScrollSpy._getInstance(div)).toBeDefined()
+      expect(ScrollSpy.getInstance(div)).toBeDefined()
     })
 
     it('should not re create a scrollspy', () => {
@@ -591,12 +591,12 @@ describe('ScrollSpy', () => {
       const div = fixtureEl.querySelector('div')
       const scrollSpy = new ScrollSpy(div)
 
-      jQueryMock.fn.scrollspy = ScrollSpy._jQueryInterface
+      jQueryMock.fn.scrollspy = ScrollSpy.jQueryInterface
       jQueryMock.elements = [div]
 
       jQueryMock.fn.scrollspy.call(jQueryMock)
 
-      expect(ScrollSpy._getInstance(div)).toEqual(scrollSpy)
+      expect(ScrollSpy.getInstance(div)).toEqual(scrollSpy)
     })
 
     it('should call a scrollspy method', () => {
@@ -607,12 +607,12 @@ describe('ScrollSpy', () => {
 
       spyOn(scrollSpy, 'refresh')
 
-      jQueryMock.fn.scrollspy = ScrollSpy._jQueryInterface
+      jQueryMock.fn.scrollspy = ScrollSpy.jQueryInterface
       jQueryMock.elements = [div]
 
       jQueryMock.fn.scrollspy.call(jQueryMock, 'refresh')
 
-      expect(ScrollSpy._getInstance(div)).toEqual(scrollSpy)
+      expect(ScrollSpy.getInstance(div)).toEqual(scrollSpy)
       expect(scrollSpy.refresh).toHaveBeenCalled()
     })
 
@@ -622,7 +622,7 @@ describe('ScrollSpy', () => {
       const div = fixtureEl.querySelector('div')
       const action = 'undefinedMethod'
 
-      jQueryMock.fn.scrollspy = ScrollSpy._jQueryInterface
+      jQueryMock.fn.scrollspy = ScrollSpy.jQueryInterface
       jQueryMock.elements = [div]
 
       try {
@@ -633,9 +633,9 @@ describe('ScrollSpy', () => {
     })
   })
 
-  describe('_getInstance', () => {
+  describe('getInstance', () => {
     it('should return null if there is no instance', () => {
-      expect(ScrollSpy._getInstance(fixtureEl)).toEqual(null)
+      expect(ScrollSpy.getInstance(fixtureEl)).toEqual(null)
     })
   })
 
@@ -647,7 +647,7 @@ describe('ScrollSpy', () => {
 
       window.dispatchEvent(createEvent('load'))
 
-      expect(ScrollSpy._getInstance(scrollSpyEl)).not.toBeNull()
+      expect(ScrollSpy.getInstance(scrollSpyEl)).not.toBeNull()
     })
   })
 })

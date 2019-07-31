@@ -198,7 +198,7 @@ class Toast {
 
   // Static
 
-  static _jQueryInterface(config) {
+  static jQueryInterface(config) {
     return this.each(function () {
       let data = Data.getData(this, DATA_KEY)
       const _config = typeof config === 'object' && config
@@ -217,7 +217,7 @@ class Toast {
     })
   }
 
-  static _getInstance(element) {
+  static getInstance(element) {
     return Data.getData(element, DATA_KEY)
   }
 }
@@ -231,11 +231,11 @@ class Toast {
 /* istanbul ignore if */
 if (typeof $ !== 'undefined') {
   const JQUERY_NO_CONFLICT = $.fn[NAME]
-  $.fn[NAME] = Toast._jQueryInterface
+  $.fn[NAME] = Toast.jQueryInterface
   $.fn[NAME].Constructor = Toast
   $.fn[NAME].noConflict = () => {
     $.fn[NAME] = JQUERY_NO_CONFLICT
-    return Toast._jQueryInterface
+    return Toast.jQueryInterface
   }
 }
 
