@@ -627,7 +627,7 @@ Our default modal without modifier class constitutes the "medium" size modal.
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl">Extra large modal</button>
 
 <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl">
+  <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content">
       ...
     </div>
@@ -638,7 +638,7 @@ Our default modal without modifier class constitutes the "medium" size modal.
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>
 
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       ...
     </div>
@@ -649,7 +649,7 @@ Our default modal without modifier class constitutes the "medium" size modal.
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm">Small modal</button>
 
 <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
+  <div class="modal-dialog modal-sm" role="document">
     <div class="modal-content">
       ...
     </div>
@@ -658,7 +658,7 @@ Our default modal without modifier class constitutes the "medium" size modal.
 {% endhighlight %}
 
 <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl">
+  <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content">
 
       <div class="modal-header">
@@ -675,7 +675,7 @@ Our default modal without modifier class constitutes the "medium" size modal.
 </div>
 
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
 
       <div class="modal-header">
@@ -692,7 +692,7 @@ Our default modal without modifier class constitutes the "medium" size modal.
 </div>
 
 <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
+  <div class="modal-dialog modal-sm" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title h4" id="mySmallModalLabel">Small modal</h5>
