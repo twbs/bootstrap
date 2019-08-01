@@ -67,8 +67,8 @@ myModal.addEventListener('show.bs.modal', function (e) {
 {{< callout warning >}}
 ## jQuery events
 
-Bootstrap detect jQuery only if `jQuery` is present in `window` object. If jQuery is found, Bootstrap will emit events thanks to jQuery event system.
-So if you want to listen Bootstrap's events you'll have to use jQuery methods (`.on`, `.one`).
+Bootstrap will detect jQuery only if `jQuery` is present in the `window` object. If jQuery is found, Bootstrap will emit events thanks to jQuery's event system.
+So if you want to listen to Bootstrap's events, you'll have to use the jQuery methods (`.on`, `.one`).
 
 {{< highlight js >}}
 $('#myTab a').on('shown.bs.tab', function () {
