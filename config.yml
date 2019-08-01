@@ -31,6 +31,10 @@ module:
       target:           layouts
     - source:           site/static
       target:           static
+    - source:           site/static/docs/4.3/assets/img/favicons/apple-touch-icon.png
+      target:           static/apple-touch-icon.png
+    - source:           site/static/docs/4.3/assets/img/favicons/favicon.ico
+      target:           static/favicon.ico
 
 params:
   description:          "The most popular HTML, CSS, and JS library in the world."
