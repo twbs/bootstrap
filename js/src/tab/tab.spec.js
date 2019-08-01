@@ -415,7 +415,7 @@ describe('Tab', () => {
   })
 
   describe('data-api', () => {
-    it('should create dynamicaly a tab', done => {
+    it('should create dynamically a tab', done => {
       fixtureEl.innerHTML = [
         '<ul class="nav nav-tabs" role="tablist">',
         '  <li class="nav-item"><a href="#home" class="nav-link active" role="tab">Home</a></li>',

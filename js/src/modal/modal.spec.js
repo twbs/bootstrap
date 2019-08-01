@@ -354,7 +354,7 @@ describe('Modal', () => {
       modal.show()
     })
 
-    it('should close modal when a click occured on data-dismiss="modal"', done => {
+    it('should close modal when a click occurred on data-dismiss="modal"', done => {
       fixtureEl.innerHTML = [
         '<div class="modal fade">',
         '  <div class="modal-dialog">',
