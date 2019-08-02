@@ -9,61 +9,17 @@ toc: true
 
 ## Containers
 
-Containers are the most basic layout element in Bootstrap and are **required when using our default grid system**. While containers *can* be nested, most layouts do not require a nested container.
+Containers are the most basic layout element in Bootstrap and are **required when using our default grid system**. Containers are used to contain, pad, and (sometimes) center the content within them. While containers *can* be nested, most layouts do not require a nested container.
 
-### All-in-one
+Bootstrap comes with three different containers:
 
-Our default `.container` class is a responsive, fixed-width container, meaning its `max-width` changes at each breakpoint.
+- `.container`, which sets a `max-width` at each responsive breakpoint
+- `.container-fluid`, which is `width: 100%` at all breakpoints
+- `.container-{breakpoint}`, which is `width: 100%` until the specified breakpoint
 
-<div class="bd-example">
-  <div class="example-container-element col-6 p-3 mx-auto">
-    .container
-  </div>
-</div>
+The table below illustrates how each container's `max-width` compares to the original `.container` and `.container-fluid` across each breakpoint.
 
-{{< highlight html >}}
-<div class="container">
-  <!-- Content here -->
-</div>
-{{< /highlight >}}
-
-### Fluid
-
-Use `.container-fluid` for a full width container, spanning the entire width of the viewport.
-
-<div class="bd-example">
-  <div class="example-container-element p-3">
-    .container-fluid
-  </div>
-</div>
-
-{{< highlight html >}}
-<div class="container-fluid">
-  ...
-</div>
-{{< /highlight >}}
-
-### Responsive
-
-Responsive containers are new in Bootstrap v4.4. They allow you to specify a class that is 100% wide until the specified breakpoint is reached, after which we apply `max-width`s for each of the higher breakpoints. For example, `.container-sm` is 100% wide to start until the `sm` breakpoint is reached, where it will scale up with `md`, `lg`, and `xl`.
-
-<div class="bd-example">
-  <div class="example-container-element p-3 mb-3">
-    .container-sm (100% wide until breakpoint)
-  </div>
-  <div class="example-container-element col-6 p-3 mx-auto">
-    .container-sm (With max-width at breakpoint)
-  </div>
-</div>
-
-{{< highlight html >}}
-<div class="container-sm">100% wide until small breakpoint</div>
-<div class="container-md">100% wide until medium breakpoint</div>
-<div class="container-lg">100% wide until large breakpoint</div>
-<div class="container-xl">100% wide until extra large breakpoint</div>
-{{< /highlight >}}
-
-This table illustrates how each responsive container's `max-width` compares to the original `.container` and `.container-fluid` across each breakpoint.
+See them in action and compare them in our [Grid example]({{< docsref "/examples/grid#containers" >}}).
 
 <table class="table text-left">
   <thead>
@@ -142,6 +98,37 @@ This table illustrates how each responsive container's `max-width` compares to t
     </tr>
   </tbody>
 </table>
+
+### All-in-one
+
+Our default `.container` class is a responsive, fixed-width container, meaning its `max-width` changes at each breakpoint.
+
+{{< highlight html >}}
+<div class="container">
+  <!-- Content here -->
+</div>
+{{< /highlight >}}
+
+### Fluid
+
+Use `.container-fluid` for a full width container, spanning the entire width of the viewport.
+
+{{< highlight html >}}
+<div class="container-fluid">
+  ...
+</div>
+{{< /highlight >}}
+
+### Responsive
+
+Responsive containers are new in Bootstrap v4.4. They allow you to specify a class that is 100% wide until the specified breakpoint is reached, after which we apply `max-width`s for each of the higher breakpoints. For example, `.container-sm` is 100% wide to start until the `sm` breakpoint is reached, where it will scale up with `md`, `lg`, and `xl`.
+
+{{< highlight html >}}
+<div class="container-sm">100% wide until small breakpoint</div>
+<div class="container-md">100% wide until medium breakpoint</div>
+<div class="container-lg">100% wide until large breakpoint</div>
+<div class="container-xl">100% wide until extra large breakpoint</div>
+{{< /highlight >}}
 
 ## Responsive breakpoints
 
