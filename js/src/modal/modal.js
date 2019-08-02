@@ -6,7 +6,7 @@
  */
 
 import {
-  jQuery as $,
+  getjQuery,
   TRANSITION_END,
   emulateTransitionEnd,
   getElementFromSelector,
@@ -582,6 +582,8 @@ EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (
   data.show(this)
 })
 
+const $ = getjQuery()
+
 /**
  * ------------------------------------------------------------------------
  * jQuery
@@ -589,7 +591,7 @@ EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (
  * add .modal to jQuery only if jQuery is present
  */
 /* istanbul ignore if */
-if (typeof $ !== 'undefined') {
+if ($) {
   const JQUERY_NO_CONFLICT = $.fn[NAME]
   $.fn[NAME] = Modal.jQueryInterface
   $.fn[NAME].Constructor = Modal

@@ -5,7 +5,7 @@
  * --------------------------------------------------------------------------
  */
 
-import { jQuery as $ } from '../util/index'
+import { getjQuery } from '../util/index'
 import { createCustomEvent, defaultPreventedPreservedOnDispatch } from './polyfill'
 
 /**
@@ -14,6 +14,7 @@ import { createCustomEvent, defaultPreventedPreservedOnDispatch } from './polyfi
  * ------------------------------------------------------------------------
  */
 
+const $ = getjQuery()
 const namespaceRegex = /[^.]*(?=\..*)\.|.*/
 const stripNameRegex = /\..*/
 const keyEventRegex = /^key/
@@ -293,7 +294,7 @@ const EventHandler = {
     let defaultPrevented = false
     let evt = null
 
-    if (inNamespace && typeof $ !== 'undefined') {
+    if (inNamespace && $) {
       jQueryEvent = $.Event(event, args)
 
       $(element).trigger(jQueryEvent)
