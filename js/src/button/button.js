@@ -5,7 +5,7 @@
  * --------------------------------------------------------------------------
  */
 
-import { jQuery as $ } from '../util/index'
+import { getjQuery } from '../util/index'
 import Data from '../dom/data'
 import EventHandler from '../dom/event-handler'
 import SelectorEngine from '../dom/selector-engine'
@@ -179,6 +179,8 @@ EventHandler.on(document, Event.BLUR_DATA_API, Selector.DATA_TOGGLE_CARROT, even
   }
 })
 
+const $ = getjQuery()
+
 /**
  * ------------------------------------------------------------------------
  * jQuery
@@ -186,7 +188,7 @@ EventHandler.on(document, Event.BLUR_DATA_API, Selector.DATA_TOGGLE_CARROT, even
  * add .button to jQuery only if jQuery is present
  */
 /* istanbul ignore if */
-if (typeof $ !== 'undefined') {
+if ($) {
   const JQUERY_NO_CONFLICT = $.fn[NAME]
   $.fn[NAME] = Button.jQueryInterface
   $.fn[NAME].Constructor = Button

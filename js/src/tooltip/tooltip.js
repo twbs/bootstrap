@@ -6,7 +6,7 @@
  */
 
 import {
-  jQuery as $,
+  getjQuery,
   TRANSITION_END,
   emulateTransitionEnd,
   findShadowRoot,
@@ -798,6 +798,8 @@ class Tooltip {
   }
 }
 
+const $ = getjQuery()
+
 /**
  * ------------------------------------------------------------------------
  * jQuery
@@ -805,7 +807,7 @@ class Tooltip {
  * add .tooltip to jQuery only if jQuery is present
  */
 /* istanbul ignore if */
-if (typeof $ !== 'undefined') {
+if ($) {
   const JQUERY_NO_CONFLICT = $.fn[NAME]
   $.fn[NAME] = Tooltip.jQueryInterface
   $.fn[NAME].Constructor = Tooltip
