@@ -252,7 +252,9 @@ body {
 After adding `position: relative;` in your CSS, call the scrollspy via JavaScript:
 
 {{< highlight js >}}
-$('body').scrollspy({ target: '#navbar-example' })
+var scrollSpy = new bootstrap.ScrollSpy(document.body, {
+  target: '#navbar-example'
+})
 {{< /highlight >}}
 
 {{< callout danger >}}
@@ -269,19 +271,30 @@ Target elements that are not visible will be ignored and their corresponding nav
 
 ### Methods
 
-#### `.scrollspy('refresh')`
+#### refresh
 
 When using scrollspy in conjunction with adding or removing of elements from the DOM, you'll need to call the refresh method like so:
 
 {{< highlight js >}}
-$('[data-spy="scroll"]').each(function () {
-  var $spy = $(this).scrollspy('refresh')
+var dataSpyList = [].slice.call(document.querySelectorAll('[data-spy="scroll"]'))
+dataSpyList.forEach(function (dataSpyEl) {
+  bootstrap.ScrollSpy.getInstance(dataSpyEl)
+    .refresh()
 })
 {{< /highlight >}}
 
-#### `.scrollspy('dispose')`
+#### dispose
 
 Destroys an element's scrollspy.
+
+#### getInstance
+
+*Static* method which allows you to get the scrollspy instance associated with a DOM element
+
+{{< highlight js >}}
+var scrollSpyContentEl = document.getElementById('content')
+var scrollSpy = bootstrap.ScrollSpy.getInstance(scrollSpyContentEl) // Returns a Bootstrap scrollspy instance
+{{< /highlight >}}
 
 ### Options
 
@@ -336,7 +349,8 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
 </table>
 
 {{< highlight js >}}
-$('[data-spy="scroll"]').on('activate.bs.scrollspy', function () {
+var firstScrollSpyEl = document.querySelector('[data-spy="scroll"]')
+firstScrollSpyEl.addEventListener('activate.bs.scrollspy', function () {
   // do something...
 })
 {{< /highlight >}}

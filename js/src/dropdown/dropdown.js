@@ -6,7 +6,7 @@
  */
 
 import {
-  jQuery as $,
+  getjQuery,
   getElementFromSelector,
   isElement,
   makeArray,
@@ -526,6 +526,8 @@ EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (
 EventHandler
   .on(document, Event.CLICK_DATA_API, Selector.FORM_CHILD, e => e.stopPropagation())
 
+const $ = getjQuery()
+
 /**
  * ------------------------------------------------------------------------
  * jQuery
@@ -533,7 +535,7 @@ EventHandler
  * add .dropdown to jQuery only if jQuery is present
  */
 /* istanbul ignore if */
-if (typeof $ !== 'undefined') {
+if ($) {
   const JQUERY_NO_CONFLICT = $.fn[NAME]
   $.fn[NAME] = Dropdown.jQueryInterface
   $.fn[NAME].Constructor = Dropdown
