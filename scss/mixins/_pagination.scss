@@ -8,14 +8,22 @@
   }
 
   .page-item {
-    &:first-child {
-      .page-link {
-        @include border-left-radius($border-radius);
+    @if $pagination-margin-left == (-$pagination-border-width) {
+      &:first-child {
+        .page-link {
+          @include border-left-radius($border-radius);
+        }
       }
-    }
-    &:last-child {
+
+      &:last-child {
+        .page-link {
+          @include border-right-radius($border-radius);
+        }
+      }
+    } @else {
+      //Add border-radius to all pageLinks in case they have left margin
       .page-link {
-        @include border-right-radius($border-radius);
+        @include border-radius($border-radius);
       }
     }
   }
