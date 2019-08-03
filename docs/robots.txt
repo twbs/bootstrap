@@ -3,7 +3,9 @@
 
 # www.robotstxt.org/
 
+{% if site.netlify != true and site.github == true -%}
 # Allow crawling of all content
+{%- endif %}
 User-agent: *
-Disallow:
+Disallow:{% if site.netlify == true or site.github != true %} /{% endif %}
 Sitemap: {{ site.url }}/sitemap.xml
