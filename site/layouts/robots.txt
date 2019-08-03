@@ -8,5 +8,18 @@
 # Allow crawling of all content
 {{- end }}
 User-agent: *
-Disallow:{{ if not $allowCrawling }} /{{ end }}
 Sitemap: {{ "/sitemap.xml" | absURL }}
+Disallow:{{ if not $allowCrawling }} /{{ end }}
+
+{{ if $allowCrawling -}}
+{{- range $release := index $.Site.Data "docs-versions" -}}
+{{- range $version := $release.versions -}}
+{{- $verNum := index (split $version.v ".") 0 -}}
+{{- if lt $verNum 3 -}}
+Disallow: /{{ $version.v }}/
+{{ else if not (eq $version.v $.Site.Params.docs_version) -}}
+Disallow: /docs/{{ $version.v }}/
+{{ end }}
+{{- end -}}
+{{- end -}}
+{{- end -}}
