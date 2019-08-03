@@ -1,5 +1,5 @@
 <!-- Bootstrap core CSS -->
-{%- if jekyll.environment == "production" %}
+{%- if jekyll.environment == "production" or jekyll.environment == "netlify" %}
 <link href="{{ site.baseurl }}/docs/{{ site.docs_version }}/dist/css/bootstrap.min.css" rel="stylesheet" integrity="{{ site.cdn.css_hash }}" crossorigin="anonymous">
 {% else %}
 <link href="{{ site.baseurl }}/docs/{{ site.docs_version }}/dist/css/bootstrap.css" rel="stylesheet">
