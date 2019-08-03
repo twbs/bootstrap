@@ -8,12 +8,16 @@
 <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
 {{- end }}
 
-{{- if eq (getenv "HUGO_ENV") "production" -}}
-  <script src="/docs/{{ .Site.Params.docs_version }}/assets/js/docs.min.js"></script>
-{{- else -}}
-  <script src="/docs/{{ .Site.Params.docs_version }}/assets/js/vendor/anchor.min.js"></script>
-  <script src="/docs/{{ .Site.Params.docs_version }}/assets/js/vendor/clipboard.min.js"></script>
-  <script src="/docs/{{ .Site.Params.docs_version }}/assets/js/vendor/bs-custom-file-input.min.js"></script>
-  <script src="/docs/{{ .Site.Params.docs_version }}/assets/js/src/application.js"></script>
-  <script src="/docs/{{ .Site.Params.docs_version }}/assets/js/src/search.js"></script>
-{{- end -}}
+{{- $anchor := resources.Get "js/vendor/anchor.min.js" -}}
+{{- $clipboard := resources.Get "js/vendor/clipboard.min.js" -}}
+{{- $bscfi := resources.Get "js/vendor/bs-custom-file-input.min.js" -}}
+{{- $application := resources.Get "js/src/application.js" -}}
+{{- $search := resources.Get "js/src/search.js" -}}
+{{- $targetDocsJSPath := printf "/docs/%s/assets/js/docs.js" .Site.Params.docs_version -}}
+{{- $docsJs := slice $anchor $clipboard $bscfi $application $search | resources.Concat $targetDocsJSPath -}}
+
+{{- if (eq (getenv "HUGO_ENV") "production") -}}
+  {{- $docsJs = $docsJs | resources.Minify | resources.Fingerprint "sha384" -}}
+{{- end }}
+
+<script src="{{ $docsJs.Permalink | relURL }}"{{ if (eq (getenv "HUGO_ENV") "production") }} integrity="{{ $docsJs.Data.Integrity }}" crossorigin="anonymous"{{ end }}></script>

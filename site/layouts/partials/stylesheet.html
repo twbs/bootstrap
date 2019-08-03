@@ -9,6 +9,22 @@
 {{- "<!-- Documentation extras -->" | safeHTML }}
 <link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
 {{- end -}}
+
 {{- if (ne .Page.Layout "examples") }}
-<link href="/docs/{{ .Site.Params.docs_version }}/assets/css/docs.min.css" rel="stylesheet">
+{{- $targetDocsCssPath := printf "/docs/%s/assets/css/docs.css" .Site.Params.docs_version -}}
+{{- $sassOptions := dict "targetPath" $targetDocsCssPath "precision" 6 -}}
+
+{{- if (eq (getenv "HUGO_ENV") "production") -}}
+  {{- $sassOptions = merge $sassOptions (dict "outputStyle" "compressed") -}}
+{{- else -}}
+  {{- $sassOptions = merge $sassOptions (dict "enableSourceMap" true) -}}
+{{- end -}}
+
+{{- $style := resources.Get "scss/docs.scss" | toCSS $sassOptions -}}
+
+{{- if (eq (getenv "HUGO_ENV") "production") -}}
+  {{- $style = $style | postCSS | fingerprint "sha384" -}}
+{{- end }}
+
+<link rel="stylesheet" href="{{ $style.Permalink | relURL }}"{{ if (eq (getenv "HUGO_ENV") "production") }} integrity="{{ $style.Data.Integrity }}" crossorigin="anonymous"{{ end }}>
 {{- end }}
