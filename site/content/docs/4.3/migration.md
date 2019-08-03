@@ -112,7 +112,7 @@ Badges were overhauled to better differentiate themselves from buttons and to be
 
 ### Pagination
 
-- Pagination links now have customizable `margin-left` and dynamic rounded when separating the links from one another.
+- Pagination links now have customizable `margin-left` that are dynamically rounded on all corners when separated from one another.
 
 ### Popovers
 
