@@ -6,9 +6,8 @@
   padding: 1.25rem;
   margin-top: 1.25rem;
   margin-bottom: 1.25rem;
-  border: 1px solid #eee;
-  border-left-width: .25rem;
-  @include border-radius();
+  background-color: #eee;
+  border-left: .25rem solid #ddd;
 
   h4 {
     margin-top: 0;
@@ -30,11 +29,12 @@
 
 // Variations
 @mixin bs-callout-variant($color) {
-  border-left-color: $color;
+  background-color: rgba($color, .1);
+  border-color: $color;
 
   h4 { color: $color; }
 }
 
 .bd-callout-info { @include bs-callout-variant($bd-info); }
-.bd-callout-warning { @include bs-callout-variant($bd-warning); }
+.bd-callout-warning { @include bs-callout-variant($yellow); }
 .bd-callout-danger { @include bs-callout-variant($bd-danger); }
