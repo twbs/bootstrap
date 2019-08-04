@@ -32,7 +32,7 @@ For left, right, and center alignment, responsive classes are available that use
 Wrap text with a `.text-wrap` class.
 
 {{< example >}}
-<div class="badge badge-primary text-wrap" style="width: 6rem;">
+<div class="badge bg-primary text-wrap" style="width: 6rem;">
   This text should wrap.
 </div>
 {{< /example >}}
