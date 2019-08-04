@@ -139,18 +139,18 @@ describe('Popover', () => {
     })
   })
 
-  describe('_jQueryInterface', () => {
+  describe('jQueryInterface', () => {
     it('should create a popover', () => {
       fixtureEl.innerHTML = '<a href="#" title="Popover" data-content="https://twitter.com/getbootstrap">BS twitter</a>'
 
       const popoverEl = fixtureEl.querySelector('a')
 
-      jQueryMock.fn.popover = Popover._jQueryInterface
+      jQueryMock.fn.popover = Popover.jQueryInterface
       jQueryMock.elements = [popoverEl]
 
       jQueryMock.fn.popover.call(jQueryMock)
 
-      expect(Popover._getInstance(popoverEl)).toBeDefined()
+      expect(Popover.getInstance(popoverEl)).toBeDefined()
     })
 
     it('should create a popover with a config object', () => {
@@ -158,14 +158,14 @@ describe('Popover', () => {
 
       const popoverEl = fixtureEl.querySelector('a')
 
-      jQueryMock.fn.popover = Popover._jQueryInterface
+      jQueryMock.fn.popover = Popover.jQueryInterface
       jQueryMock.elements = [popoverEl]
 
       jQueryMock.fn.popover.call(jQueryMock, {
         content: 'Popover content'
       })
 
-      expect(Popover._getInstance(popoverEl)).toBeDefined()
+      expect(Popover.getInstance(popoverEl)).toBeDefined()
     })
 
     it('should not re create a popover', () => {
@@ -174,12 +174,12 @@ describe('Popover', () => {
       const popoverEl = fixtureEl.querySelector('a')
       const popover = new Popover(popoverEl)
 
-      jQueryMock.fn.popover = Popover._jQueryInterface
+      jQueryMock.fn.popover = Popover.jQueryInterface
       jQueryMock.elements = [popoverEl]
 
       jQueryMock.fn.popover.call(jQueryMock)
 
-      expect(Popover._getInstance(popoverEl)).toEqual(popover)
+      expect(Popover.getInstance(popoverEl)).toEqual(popover)
     })
 
     it('should throw error on undefined method', () => {
@@ -188,7 +188,7 @@ describe('Popover', () => {
       const popoverEl = fixtureEl.querySelector('a')
       const action = 'undefinedMethod'
 
-      jQueryMock.fn.popover = Popover._jQueryInterface
+      jQueryMock.fn.popover = Popover.jQueryInterface
       jQueryMock.elements = [popoverEl]
 
       try {
@@ -204,7 +204,7 @@ describe('Popover', () => {
       const popoverEl = fixtureEl.querySelector('a')
       const popover = new Popover(popoverEl)
 
-      jQueryMock.fn.popover = Popover._jQueryInterface
+      jQueryMock.fn.popover = Popover.jQueryInterface
       jQueryMock.elements = [popoverEl]
 
       spyOn(popover, 'show')
@@ -219,7 +219,7 @@ describe('Popover', () => {
 
       const popoverEl = fixtureEl.querySelector('a')
 
-      jQueryMock.fn.popover = Popover._jQueryInterface
+      jQueryMock.fn.popover = Popover.jQueryInterface
       jQueryMock.elements = [popoverEl]
 
       spyOn(Popover.prototype, 'dispose')
@@ -230,14 +230,14 @@ describe('Popover', () => {
     })
   })
 
-  describe('_getInstance', () => {
+  describe('getInstance', () => {
     it('should return popover instance', () => {
       fixtureEl.innerHTML = '<a href="#" title="Popover" data-content="https://twitter.com/getbootstrap">BS twitter</a>'
 
       const popoverEl = fixtureEl.querySelector('a')
       const popover = new Popover(popoverEl)
 
-      expect(Popover._getInstance(popoverEl)).toEqual(popover)
+      expect(Popover.getInstance(popoverEl)).toEqual(popover)
     })
 
     it('should return null when there is no popover instance', () => {
@@ -245,7 +245,7 @@ describe('Popover', () => {
 
       const popoverEl = fixtureEl.querySelector('a')
 
-      expect(Popover._getInstance(popoverEl)).toEqual(null)
+      expect(Popover.getInstance(popoverEl)).toEqual(null)
     })
   })
 })

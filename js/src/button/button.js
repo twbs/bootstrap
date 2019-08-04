@@ -5,7 +5,7 @@
  * --------------------------------------------------------------------------
  */
 
-import { jQuery as $ } from '../util/index'
+import { getjQuery } from '../util/index'
 import Data from '../dom/data'
 import EventHandler from '../dom/event-handler'
 import SelectorEngine from '../dom/selector-engine'
@@ -122,7 +122,7 @@ class Button {
 
   // Static
 
-  static _jQueryInterface(config) {
+  static jQueryInterface(config) {
     return this.each(function () {
       let data = Data.getData(this, DATA_KEY)
 
@@ -136,7 +136,7 @@ class Button {
     })
   }
 
-  static _getInstance(element) {
+  static getInstance(element) {
     return Data.getData(element, DATA_KEY)
   }
 }
@@ -179,6 +179,8 @@ EventHandler.on(document, Event.BLUR_DATA_API, Selector.DATA_TOGGLE_CARROT, even
   }
 })
 
+const $ = getjQuery()
+
 /**
  * ------------------------------------------------------------------------
  * jQuery
@@ -186,14 +188,14 @@ EventHandler.on(document, Event.BLUR_DATA_API, Selector.DATA_TOGGLE_CARROT, even
  * add .button to jQuery only if jQuery is present
  */
 /* istanbul ignore if */
-if (typeof $ !== 'undefined') {
+if ($) {
   const JQUERY_NO_CONFLICT = $.fn[NAME]
-  $.fn[NAME] = Button._jQueryInterface
+  $.fn[NAME] = Button.jQueryInterface
   $.fn[NAME].Constructor = Button
 
   $.fn[NAME].noConflict = () => {
     $.fn[NAME] = JQUERY_NO_CONFLICT
-    return Button._jQueryInterface
+    return Button.jQueryInterface
   }
 }
 

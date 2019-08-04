@@ -253,11 +253,11 @@ describe('Toast', () => {
       const toastEl = fixtureEl.querySelector('div')
       const toast = new Toast(toastEl)
 
-      expect(Toast._getInstance(toastEl)).toBeDefined()
+      expect(Toast.getInstance(toastEl)).toBeDefined()
 
       toast.dispose()
 
-      expect(Toast._getInstance(toastEl)).toBeNull()
+      expect(Toast.getInstance(toastEl)).toBeNull()
     })
 
     it('should allow to destroy toast and hide it before that', done => {
@@ -273,11 +273,11 @@ describe('Toast', () => {
       const toast = new Toast(toastEl)
       const expected = () => {
         expect(toastEl.classList.contains('show')).toEqual(true)
-        expect(Toast._getInstance(toastEl)).toBeDefined()
+        expect(Toast.getInstance(toastEl)).toBeDefined()
 
         toast.dispose()
 
-        expect(Toast._getInstance(toastEl)).toBeNull()
+        expect(Toast.getInstance(toastEl)).toBeNull()
         expect(toastEl.classList.contains('show')).toEqual(false)
 
         done()
@@ -291,18 +291,18 @@ describe('Toast', () => {
     })
   })
 
-  describe('_jQueryInterface', () => {
+  describe('jQueryInterface', () => {
     it('should create a toast', () => {
       fixtureEl.innerHTML = '<div></div>'
 
       const div = fixtureEl.querySelector('div')
 
-      jQueryMock.fn.toast = Toast._jQueryInterface
+      jQueryMock.fn.toast = Toast.jQueryInterface
       jQueryMock.elements = [div]
 
       jQueryMock.fn.toast.call(jQueryMock)
 
-      expect(Toast._getInstance(div)).toBeDefined()
+      expect(Toast.getInstance(div)).toBeDefined()
     })
 
     it('should not re create a toast', () => {
@@ -311,12 +311,12 @@ describe('Toast', () => {
       const div = fixtureEl.querySelector('div')
       const toast = new Toast(div)
 
-      jQueryMock.fn.toast = Toast._jQueryInterface
+      jQueryMock.fn.toast = Toast.jQueryInterface
       jQueryMock.elements = [div]
 
       jQueryMock.fn.toast.call(jQueryMock)
 
-      expect(Toast._getInstance(div)).toEqual(toast)
+      expect(Toast.getInstance(div)).toEqual(toast)
     })
 
     it('should call a toast method', () => {
@@ -327,12 +327,12 @@ describe('Toast', () => {
 
       spyOn(toast, 'show')
 
-      jQueryMock.fn.toast = Toast._jQueryInterface
+      jQueryMock.fn.toast = Toast.jQueryInterface
       jQueryMock.elements = [div]
 
       jQueryMock.fn.toast.call(jQueryMock, 'show')
 
-      expect(Toast._getInstance(div)).toEqual(toast)
+      expect(Toast.getInstance(div)).toEqual(toast)
       expect(toast.show).toHaveBeenCalled()
     })
 
@@ -342,7 +342,7 @@ describe('Toast', () => {
       const div = fixtureEl.querySelector('div')
       const action = 'undefinedMethod'
 
-      jQueryMock.fn.toast = Toast._jQueryInterface
+      jQueryMock.fn.toast = Toast.jQueryInterface
       jQueryMock.elements = [div]
 
       try {
@@ -353,14 +353,14 @@ describe('Toast', () => {
     })
   })
 
-  describe('_getInstance', () => {
+  describe('getInstance', () => {
     it('should return collapse instance', () => {
       fixtureEl.innerHTML = '<div></div>'
 
       const div = fixtureEl.querySelector('div')
       const toast = new Toast(div)
 
-      expect(Toast._getInstance(div)).toEqual(toast)
+      expect(Toast.getInstance(div)).toEqual(toast)
     })
 
     it('should return null when there is no collapse instance', () => {
@@ -368,7 +368,7 @@ describe('Toast', () => {
 
       const div = fixtureEl.querySelector('div')
 
-      expect(Toast._getInstance(div)).toEqual(null)
+      expect(Toast.getInstance(div)).toEqual(null)
     })
   })
 })

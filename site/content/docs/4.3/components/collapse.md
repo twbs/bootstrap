@@ -227,7 +227,7 @@ var bsCollapse = new bootstrap.Collapse(myCollapse, {
       <td>Destroys an element's collapse.</td>
     </tr>
     <tr>
-      <td><code>_getInstance</code></td>
+      <td><code>getInstance</code></td>
       <td>Static method which allows you to get the collapse instance associated with a DOM element.</td>
     </tr>
   </tbody>
