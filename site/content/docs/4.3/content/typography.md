@@ -22,7 +22,7 @@ These styles can be found within `_reboot.scss`, and the global variables are de
 
 All HTML headings, `<h1>` through `<h6>`, are available.
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Heading</th>

@@ -9,15 +9,15 @@ toc: true
 
 ## Containers
 
-Containers are the most basic layout element in Bootstrap and are **required when using our default grid system**. Choose from a responsive, fixed-width container (meaning its `max-width` changes at each breakpoint) or fluid-width (meaning it's `100%` wide all the time).
+Containers are the most basic layout element in Bootstrap and are **required when using our default grid system**. While containers *can* be nested, most layouts do not require a nested container.
 
-While containers *can* be nested, most layouts do not require a nested container.
+### All-in-one
+
+Our default `.container` class is a responsive, fixed-width container, meaning its `max-width` changes at each breakpoint.
 
 <div class="bd-example">
-  <div class="bd-example-container">
-    <div class="bd-example-container-header"></div>
-    <div class="bd-example-container-sidebar"></div>
-    <div class="bd-example-container-body"></div>
+  <div class="example-container-element col-6 p-3 mx-auto">
+    .container
   </div>
 </div>
 
@@ -27,13 +27,13 @@ While containers *can* be nested, most layouts do not require a nested container
 </div>
 {{< /highlight >}}
 
+### Fluid
+
 Use `.container-fluid` for a full width container, spanning the entire width of the viewport.
 
 <div class="bd-example">
-  <div class="bd-example-container bd-example-container-fluid">
-    <div class="bd-example-container-header"></div>
-    <div class="bd-example-container-sidebar"></div>
-    <div class="bd-example-container-body"></div>
+  <div class="example-container-element p-3">
+    .container-fluid
   </div>
 </div>
 
@@ -43,6 +43,25 @@ Use `.container-fluid` for a full width container, spanning the entire width of 
 </div>
 {{< /highlight >}}
 
+### Responsive
+
+Responsive containers are new in Bootstrap v4.4. They allow you to specify a class that is 100% wide until particular breakpoint is reached and a `max-width` is applied. For example, `.container-sm` is 100% wide to start until the `sm` breakpoint is reached, where it will remain through the higher breakpoints.
+
+<div class="bd-example">
+  <div class="example-container-element p-3 mb-3">
+    .container-sm (100% wide until breakpoint)
+  </div>
+  <div class="example-container-element col-6 p-3 mx-auto">
+    .container-sm (With max-width at breakpoint)
+  </div>
+</div>
+
+{{< highlight html >}}
+<div class="container-sm">100% wide until small breakpoint</div>
+<div class="container-md">100% wide until medium breakpoint</div>
+<div class="container-lg">100% wide until large breakpoint</div>
+<div class="container-xl">100% wide until extra large breakpoint</div>
+{{< /highlight >}}
 
 ## Responsive breakpoints
 

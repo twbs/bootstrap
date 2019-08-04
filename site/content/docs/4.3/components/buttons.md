@@ -159,7 +159,7 @@ var button = document.getElementById('myButton')
 var bsButton = new bootstrap.Button(button)
 {{< /highlight >}}
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Method</th>

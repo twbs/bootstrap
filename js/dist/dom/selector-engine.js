@@ -48,10 +48,6 @@
         element = document.documentElement;
       }
 
-      if (typeof selector !== 'string') {
-        return null;
-      }
-
       return polyfill_js.find.call(element, selector);
     },
     findOne: function findOne(selector, element) {
@@ -59,18 +55,10 @@
         element = document.documentElement;
       }
 
-      if (typeof selector !== 'string') {
-        return null;
-      }
-
       return polyfill_js.findOne.call(element, selector);
     },
     children: function children(element, selector) {
       var _this = this;
-
-      if (typeof selector !== 'string') {
-        return null;
-      }
 
       var children = makeArray(element.children);
       return children.filter(function (child) {
@@ -78,10 +66,6 @@
       });
     },
     parents: function parents(element, selector) {
-      if (typeof selector !== 'string') {
-        return null;
-      }
-
       var parents = [];
       var ancestor = element.parentNode;
 
@@ -96,17 +80,9 @@
       return parents;
     },
     closest: function closest(element, selector) {
-      if (typeof selector !== 'string') {
-        return null;
-      }
-
       return polyfill_js.closest.call(element, selector);
     },
     prev: function prev(element, selector) {
-      if (typeof selector !== 'string') {
-        return null;
-      }
-
       var siblings = [];
       var previous = element.previousSibling;
 

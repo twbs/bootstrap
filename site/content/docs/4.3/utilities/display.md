@@ -55,7 +55,7 @@ To hide elements simply use the `.d-none` class or one of the `.d-{sm,md,lg,xl}-
 
 To show an element only on a given interval of screen sizes you can combine one `.d-*-none` class with a `.d-*-*` class, for example `.d-none .d-md-block .d-xl-none` will hide the element for all screen sizes except on medium and large devices.
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Screen size</th>

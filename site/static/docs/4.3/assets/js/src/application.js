@@ -142,21 +142,19 @@
   })
 
   clipboard.on('success', function (e) {
-    var tooltipBtn = bootstrap.Tooltip._getInstance(e.trigger)
+    var tooltipBtn = bootstrap.Tooltip.getInstance(e.trigger)
 
-    e.trigger.setAttribute('title', 'Copied!')
-    tooltipBtn._fixTitle()
+    e.trigger.setAttribute('data-original-title', 'Copied!')
     tooltipBtn.show()
 
-    e.trigger.setAttribute('title', 'Copy to clipboard')
-    tooltipBtn._fixTitle()
+    e.trigger.setAttribute('data-original-title', 'Copy to clipboard')
     e.clearSelection()
   })
 
   clipboard.on('error', function (e) {
     var modifierKey = /Mac/i.test(navigator.userAgent) ? '\u2318' : 'Ctrl-'
     var fallbackMsg = 'Press ' + modifierKey + 'C to copy'
-    var tooltipBtn = bootstrap.Tooltip._getInstance(e.trigger)
+    var tooltipBtn = bootstrap.Tooltip.getInstance(e.trigger)
 
     e.trigger.setAttribute('title', fallbackMsg)
     tooltipBtn._fixTitle()

@@ -23,6 +23,10 @@ bootstrap/
 │   ├── bootstrap-reboot.css.map
 │   ├── bootstrap-reboot.min.css
 │   ├── bootstrap-reboot.min.css.map
+│   ├── bootstrap-utilities.css
+│   ├── bootstrap-utilities.css.map
+│   ├── bootstrap-utilities.min.css
+│   ├── bootstrap-utilities.min.css.map
 │   ├── bootstrap.css
 │   ├── bootstrap.css.map
 │   ├── bootstrap.min.css
@@ -78,6 +82,16 @@ Bootstrap includes a handful of options for including some or all of our compile
       <td class="text-muted">&mdash;</td>
       <td class="text-muted">&mdash;</td>
       <td><a class="text-muted" href="{{< docsref "/utilities/flex" >}}">Only flex utilities</a></td>
+    </tr>
+    <tr>
+      <th scope="row">
+        <div><code class="font-weight-normal text-nowrap">bootstrap-utilities.css</code></div>
+        <div><code class="font-weight-normal text-nowrap">bootstrap-utilities.min.css</code></div>
+      </th>
+      <td class="text-muted">&mdash;</td>
+      <td class="text-muted">&mdash;</td>
+      <td class="text-muted">&mdash;</td>
+      <td>Included</td>
     </tr>
     <tr>
       <th scope="row">

@@ -53,7 +53,7 @@ This `font-family` is applied to the `<body>` and automatically inherited global
 
 All heading elements—e.g., `<h1>`—and `<p>` are reset to have their `margin-top` removed. Headings have `margin-bottom: .5rem` added and paragraphs `margin-bottom: 1rem` for easy spacing.
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Heading</th>
@@ -102,7 +102,7 @@ All heading elements—e.g., `<h1>`—and `<p>` are reset to have their `margin-
 
 ## Lists
 
-All lists—`<ul>`, `<ol>`, and `<dl>`—have their `margin-top` removed and a `margin-bottom: 1rem`. Nested lists have no `margin-bottom`. We've also reset the horizontal `padding` on `<ul>` and `<ol>` elements.
+All lists—`<ul>`, `<ol>`, and `<dl>`—have their `margin-top` removed and a `margin-bottom: 1rem`. Nested lists have no `margin-bottom`. We've also reset the `padding-left` on `<ul>` and `<ol>` elements.
 
 <div class="bd-example">
 {{< markdown >}}
@@ -144,17 +144,48 @@ For simpler styling, clear hierarchy, and better spacing, description lists have
   </dl>
 </div>
 
-## Preformatted text
+## Inline code
 
-The `<pre>` element is reset to remove its `margin-top` and use `rem` units for its `margin-bottom`.
+Wrap inline snippets of code with `<code>`. Be sure to escape HTML angle brackets.
 
-<div class="bd-example">
-<pre>
-.example-element {
-  margin-bottom: 1rem;
-}
-</pre>
-</div>
+{{< example >}}
+For example, <code>&lt;section&gt;</code> should be wrapped as inline.
+{{< /example >}}
+
+## Code blocks
+
+Use `<pre>`s for multiple lines of code. Once again, be sure to escape any angle brackets in the code for proper rendering. The `<pre>` element is reset to remove its `margin-top` and use `rem` units for its `margin-bottom`.
+
+{{< example >}}
+<pre><code>&lt;p&gt;Sample text here...&lt;/p&gt;
+&lt;p&gt;And another line of sample text here...&lt;/p&gt;
+</code></pre>
+{{< /example >}}
+
+## Variables
+
+For indicating variables use the `<var>` tag.
+
+{{< example >}}
+<var>y</var> = <var>m</var><var>x</var> + <var>b</var>
+{{< /example >}}
+
+## User input
+
+Use the `<kbd>` to indicate input that is typically entered via keyboard.
+
+{{< example >}}
+To switch directories, type <kbd>cd</kbd> followed by the name of the directory.<br>
+To edit settings, press <kbd><kbd>ctrl</kbd> + <kbd>,</kbd></kbd>
+{{< /example >}}
+
+## Sample output
+
+For indicating sample output from a program use the `<samp>` tag.
+
+{{< example >}}
+<samp>This text is meant to be treated as sample output from a computer program.</samp>
+{{< /example >}}
 
 ## Tables
 
@@ -219,6 +250,41 @@ These changes, and more, are demonstrated below.
     </p>
 
     <p>
+      <label for="email">Example email</label>
+      <input type="email" id="email" placeholder="lorem@ipsum.com">
+    </p>
+
+    <p>
+      <label for="tel">Example telephone</label>
+      <input type="tel" id="tel">
+    </p>
+
+    <p>
+      <label for="url">Example url</label>
+      <input type="url" id="url">
+    </p>
+
+    <p>
+      <label for="number">Example number</label>
+      <input type="number" id="number">
+    </p>
+
+    <p>
+      <label for="search">Example search</label>
+      <input type="search" id="search">
+    </p>
+
+    <p>
+      <label for="range">Example range</label>
+      <input type="range" id="range" min="0" max="10">
+    </p>
+
+    <p>
+      <label for="file">Example file input</label>
+      <input type="file" id="file">
+    </p>
+
+    <p>
       <label for="select">Example select</label>
       <select id="select">
         <option value="">Choose...</option>
@@ -273,6 +339,31 @@ These changes, and more, are demonstrated below.
     </p>
 
     <p>
+      <label for="password">Example password</label>
+      <input type="password" id="password">
+    </p>
+
+    <p>
+      <label for="datetime-local">Example datetime-local</label>
+      <input type="datetime-local" id="datetime-local">
+    </p>
+
+    <p>
+      <label for="week">Example week</label>
+      <input type="week" id="week">
+    </p>
+
+    <p>
+      <label for="month">Example month</label>
+      <input type="month" id="month">
+    </p>
+
+    <p>
+      <label for="color">Example color</label>
+      <input type="color" id="color">
+    </p>
+
+    <p>
       <label for="output">Example output</label>
       <output name="result" id="output">100</output>
     </p>
@@ -292,6 +383,10 @@ These changes, and more, are demonstrated below.
     </p>
   </fieldset>
 </form>
+
+{{< callout warning >}}
+{{< partial "callout-warning-input-support.md" >}}
+{{< /callout >}}
 
 ## Misc elements
 

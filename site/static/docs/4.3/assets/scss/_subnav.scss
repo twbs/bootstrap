@@ -1,0 +1,62 @@
+.bd-subnavbar {
+  background-color: rgba(#fff, .75);
+  backdrop-filter: blur(1rem);
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .05), inset 0 -1px 0 rgba(0, 0, 0, .15);
+
+  .booticon {
+    opacity: .25;
+  }
+
+  .dropdown-toggle {
+    @include font-size(100%);
+    text-decoration: none;
+  }
+
+  .dropdown-menu {
+    @include font-size(.875rem);
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .05);
+  }
+
+  .dropdown-item.active {
+    font-weight: 600;
+    color: $gray-900;
+    background: escape-svg($dropdown-active-icon) no-repeat .4rem .6rem/.75rem .75rem;
+  }
+
+  @include media-breakpoint-up(md) {
+    @supports (position: sticky) {
+      position: sticky;
+      top: 0;
+      z-index: 1071; // over everything in bootstrap
+    }
+  }
+}
+
+.bd-search {
+  position: relative; // To contain the Algolia search
+
+  @include media-breakpoint-down(sm) {
+    width: 100%;
+  }
+
+  .form-control:focus {
+    border-color: $bd-purple-bright;
+    box-shadow: 0 0 0 3px rgba($bd-purple-bright, .25);
+  }
+}
+
+.bd-search-docs-toggle {
+  line-height: 1;
+  color: $gray-900;
+}
+
+.link-dark {
+  font-weight: 500;
+  color: $dark;
+
+  &:hover,
+  &:focus {
+    color: $blue;
+    text-decoration: none;
+  }
+}
