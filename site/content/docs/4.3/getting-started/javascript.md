@@ -37,9 +37,9 @@ Some plugins and CSS components depend on other plugins. If you include plugins 
 
 Our dropdowns, popovers and tooltips also depend on [Popper.js](https://popper.js.org/).
 
-## Still wanting to use jQuery? It's possible!
+## Still want to use jQuery? It's possible!
 
-Bootstrap 5 is designed to be used without jQuery, but it's still possible to use our components with jQuery. **If Bootstrap detect `jQuery` in the window object** it'll add all of our components in jQuery's plugin system, it means you'll be able to do: `$('[data-toggle="tooltip"]').tooltip()` to enable tooltips and the same goes for our other components.
+Bootstrap 5 is designed to be used without jQuery, but it's still possible to use our components with jQuery. **If Bootstrap detects `jQuery` in the `window` object** it'll add all of our components in jQuery's plugin system; this means you'll be able to do `$('[data-toggle="tooltip"]').tooltip()` to enable tooltips. The same goes for our other components.
 
 ## Data attributes
 
