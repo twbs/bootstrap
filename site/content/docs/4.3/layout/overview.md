@@ -9,17 +9,99 @@ toc: true
 
 ## Containers
 
-Containers are the most basic layout element in Bootstrap and are **required when using our default grid system**. While containers *can* be nested, most layouts do not require a nested container.
+Containers are the most basic layout element in Bootstrap and are **required when using our default grid system**. Containers are used to contain, pad, and (sometimes) center the content within them. While containers *can* be nested, most layouts do not require a nested container.
+
+Bootstrap comes with three different containers:
+
+- `.container`, which sets a `max-width` at each responsive breakpoint
+- `.container-fluid`, which is `width: 100%` at all breakpoints
+- `.container-{breakpoint}`, which is `width: 100%` until the specified breakpoint
+
+The table below illustrates how each container's `max-width` compares to the original `.container` and `.container-fluid` across each breakpoint.
+
+See them in action and compare them in our [Grid example]({{< docsref "/examples/grid#containers" >}}).
+
+<table class="table text-left">
+  <thead>
+    <tr>
+      <th></th>
+      <th>
+        Extra small<br>
+        <span class="font-weight-normal">&lt;576px</span>
+      </th>
+      <th>
+        Small<br>
+        <span class="font-weight-normal">&ge;576px</span>
+      </th>
+      <th>
+        Medium<br>
+        <span class="font-weight-normal">&ge;768px</span>
+      </th>
+      <th>
+        Large<br>
+        <span class="font-weight-normal">&ge;992px</span>
+      </th>
+      <th>
+        Extra large<br>
+        <span class="font-weight-normal">&ge;1200px</span>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>.container</code></td>
+      <td class="text-muted">100%</td>
+      <td>540px</td>
+      <td>720px</td>
+      <td>960px</td>
+      <td>1140px</td>
+    </tr>
+    <tr>
+      <td><code>.container-sm</code></td>
+      <td class="text-muted">100%</td>
+      <td>540px</td>
+      <td>720px</td>
+      <td>960px</td>
+      <td>1140px</td>
+    </tr>
+    <tr>
+      <td><code>.container-md</code></td>
+      <td class="text-muted">100%</td>
+      <td class="text-muted">100%</td>
+      <td>720px</td>
+      <td>960px</td>
+      <td>1140px</td>
+    </tr>
+    <tr>
+      <td><code>.container-lg</code></td>
+      <td class="text-muted">100%</td>
+      <td class="text-muted">100%</td>
+      <td class="text-muted">100%</td>
+      <td>960px</td>
+      <td>1140px</td>
+    </tr>
+    <tr>
+      <td><code>.container-xl</code></td>
+      <td class="text-muted">100%</td>
+      <td class="text-muted">100%</td>
+      <td class="text-muted">100%</td>
+      <td class="text-muted">100%</td>
+      <td>1140px</td>
+    </tr>
+    <tr>
+      <td><code>.container-fluid</code></td>
+      <td class="text-muted">100%</td>
+      <td class="text-muted">100%</td>
+      <td class="text-muted">100%</td>
+      <td class="text-muted">100%</td>
+      <td class="text-muted">100%</td>
+    </tr>
+  </tbody>
+</table>
 
 ### All-in-one
 
 Our default `.container` class is a responsive, fixed-width container, meaning its `max-width` changes at each breakpoint.
-
-<div class="bd-example">
-  <div class="example-container-element col-6 p-3 mx-auto">
-    .container
-  </div>
-</div>
 
 {{< highlight html >}}
 <div class="container">
@@ -31,12 +113,6 @@ Our default `.container` class is a responsive, fixed-width container, meaning i
 
 Use `.container-fluid` for a full width container, spanning the entire width of the viewport.
 
-<div class="bd-example">
-  <div class="example-container-element p-3">
-    .container-fluid
-  </div>
-</div>
-
 {{< highlight html >}}
 <div class="container-fluid">
   ...
@@ -45,16 +121,7 @@ Use `.container-fluid` for a full width container, spanning the entire width of 
 
 ### Responsive
 
-Responsive containers are new in Bootstrap v4.4. They allow you to specify a class that is 100% wide until particular breakpoint is reached and a `max-width` is applied. For example, `.container-sm` is 100% wide to start until the `sm` breakpoint is reached, where it will remain through the higher breakpoints.
-
-<div class="bd-example">
-  <div class="example-container-element p-3 mb-3">
-    .container-sm (100% wide until breakpoint)
-  </div>
-  <div class="example-container-element col-6 p-3 mx-auto">
-    .container-sm (With max-width at breakpoint)
-  </div>
-</div>
+Responsive containers are new in Bootstrap v4.4. They allow you to specify a class that is 100% wide until the specified breakpoint is reached, after which we apply `max-width`s for each of the higher breakpoints. For example, `.container-sm` is 100% wide to start until the `sm` breakpoint is reached, where it will scale up with `md`, `lg`, and `xl`.
 
 {{< highlight html >}}
 <div class="container-sm">100% wide until small breakpoint</div>
