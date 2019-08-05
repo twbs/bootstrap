@@ -32,7 +32,7 @@ Position an element at the top of the viewport, from edge to edge, but only afte
 <div class="sticky-top">...</div>
 {{< /highlight >}}
 
-## Responsive sticky top
+### Responsive sticky top
 
 Responsive variations also exist for `.sticky-top` utility.
 
