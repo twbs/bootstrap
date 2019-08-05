@@ -21,8 +21,16 @@
     }
 
     @include media-breakpoint-up($breakpoint, $grid-breakpoints) {
-      .container-#{$breakpoint} {
+      %responsive-container-#{$breakpoint} {
         max-width: $container-max-width;
+      }
+
+      @each $name, $width in $grid-breakpoints {
+        @if ($container-max-width > $width or $breakpoint == $name) {
+          .container#{breakpoint-infix($name, $grid-breakpoints)} {
+            @extend %responsive-container-#{$breakpoint};
+          }
+        }
       }
     }
   }
