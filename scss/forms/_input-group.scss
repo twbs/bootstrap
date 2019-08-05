@@ -16,6 +16,7 @@
   > .form-file {
     position: relative; // For focus state's z-index
     flex: 1 1 0%;
+    min-width: 0; // https://github.com/twbs/bootstrap/issues/29204#issuecomment-518292952
     margin-bottom: 0;
 
     + .form-control,
