@@ -41,7 +41,7 @@ Generally speaking, Bootstrap supports the latest versions of each major platfor
       <td>Supported</td>
       <td>Supported</td>
       <td class="text-muted">&mdash;</td>
-      <td>{{< rf.inline >}}{{ (index (findRE "Android .*" (readFile ".browserslistrc") 1) 0) | htmlEscape }}{{< /rf.inline >}}</td>
+      <td>v6.0+</td>
       <td>Supported</td>
     </tr>
     <tr>
