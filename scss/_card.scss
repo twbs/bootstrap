@@ -56,7 +56,7 @@
 }
 
 .card-link {
-  @include hover {
+  @include hover() {
     text-decoration: none;
   }
 

@@ -3,7 +3,9 @@
 
 # www.robotstxt.org/
 
+{% if jekyll.environment != "netlify" -%}
 # Allow crawling of all content
+{%- endif %}
 User-agent: *
-Disallow:{% if jekyll.environment != "production" %} /{% endif %}
+Disallow:{% if jekyll.environment == "netlify" %} /{% endif %}
 Sitemap: {{ site.url }}/sitemap.xml
