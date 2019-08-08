@@ -30,6 +30,12 @@ jobs:
     - name: Run tests
       run: npm test
 
+    - name: Run bundlesize
+      run: npm run bundlesize
+      if: matrix.node == 10 && github.repository == 'twbs/bootstrap'
+      env:
+        BUNDLESIZE_GITHUB_TOKEN: "${{ secrets.BUNDLESIZE_GITHUB_TOKEN }}"
+
     - name: Run BrowserStack tests
       run: npm run js-test-cloud
       if: matrix.node == 10 && github.repository == 'twbs/bootstrap' && github.event_name == 'push'
