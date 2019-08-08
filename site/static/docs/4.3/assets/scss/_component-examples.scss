@@ -1,4 +1,4 @@
-// stylelint-disable no-duplicate-selectors, selector-no-qualifying-type
+// stylelint-disable no-duplicate-selectors
 
 //
 // Grid examples
@@ -71,16 +71,6 @@
   @include media-breakpoint-up(lg) {
     @include make-col(4);
   }
-}
-
-
-//
-// Container illustrations
-//
-
-.example-container-element {
-  background-color: rgba($blue, .25);
-  border: 1px solid rgba($blue, .25);
 }
 
 
