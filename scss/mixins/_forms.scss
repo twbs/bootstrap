@@ -63,7 +63,7 @@
     @include border-radius($form-feedback-tooltip-border-radius);
   }
 
-  .form-control {
+  [class^="form-control"] {
     @include form-validation-state-selector($state) {
       border-color: $color;
 
