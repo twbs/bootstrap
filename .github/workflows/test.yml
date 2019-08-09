@@ -1,14 +1,16 @@
-run:
+name: Run tests
+on: [push, pull_request]
+
+jobs:
+  run:
     name: Node ${{ matrix.node }}
     runs-on: ubuntu-latest
-    needs: test
 
     strategy:
       matrix:
         node: [8, 10, 12]
 
     steps:
-
     - name: this is a pr
       if: github.event_name == 'pull_request'
       run: echo pr
