@@ -2,8 +2,8 @@ name: CI
 on: [push, pull_request]
 
 jobs:
-  test:
-    name: PR
+  run:
+    name: pr push check
     runs-on: ubuntu-latest
 
     - name: this is a pr
