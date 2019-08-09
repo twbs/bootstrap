@@ -346,4 +346,37 @@ describe('Util', () => {
       expect(Util.reflow(div)).toEqual(0)
     })
   })
+
+  describe('getjQuery', () => {
+    const fakejQuery = { trigger() {} }
+
+    beforeEach(() => {
+      Object.defineProperty(window, 'jQuery', {
+        value: fakejQuery,
+        writable: true
+      })
+    })
+
+    afterEach(() => {
+      window.jQuery = undefined
+    })
+
+    it('should return jQuery object when present', () => {
+      expect(Util.getjQuery()).toEqual(fakejQuery)
+    })
+
+    it('should not return jQuery object when present if data-no-jquery', () => {
+      document.body.setAttribute('data-no-jquery', '')
+
+      expect(window.jQuery).toEqual(fakejQuery)
+      expect(Util.getjQuery()).toEqual(null)
+
+      document.body.removeAttribute('data-no-jquery')
+    })
+
+    it('should not return jQuery if not present', () => {
+      window.jQuery = undefined
+      expect(Util.getjQuery()).toEqual(null)
+    })
+  })
 })

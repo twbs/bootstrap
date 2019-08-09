@@ -5,7 +5,7 @@
  * --------------------------------------------------------------------------
  */
 
-import { jQuery as $ } from '../util/index'
+import { getjQuery } from '../util/index'
 import Data from '../dom/data'
 import SelectorEngine from '../dom/selector-engine'
 import Tooltip from '../tooltip/tooltip'
@@ -173,13 +173,15 @@ class Popover extends Tooltip {
   }
 }
 
+const $ = getjQuery()
+
 /**
  * ------------------------------------------------------------------------
  * jQuery
  * ------------------------------------------------------------------------
  */
 /* istanbul ignore if */
-if (typeof $ !== 'undefined') {
+if ($) {
   const JQUERY_NO_CONFLICT = $.fn[NAME]
   $.fn[NAME] = Popover.jQueryInterface
   $.fn[NAME].Constructor = Popover

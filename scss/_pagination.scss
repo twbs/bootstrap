@@ -6,9 +6,6 @@
 .page-link {
   position: relative;
   display: block;
-  padding: $pagination-padding-y $pagination-padding-x;
-  margin-left: -$pagination-border-width;
-  line-height: $pagination-line-height;
   color: $pagination-color;
   background-color: $pagination-bg;
   border: $pagination-border-width solid $pagination-border-color;
@@ -29,16 +26,8 @@
 }
 
 .page-item {
-  &:first-child {
-    .page-link {
-      margin-left: 0;
-      @include border-left-radius($border-radius);
-    }
-  }
-  &:last-child {
-    .page-link {
-      @include border-right-radius($border-radius);
-    }
+  &:not(:first-child) .page-link {
+    margin-left: $pagination-margin-left;
   }
 
   &.active .page-link {
@@ -62,6 +51,7 @@
 //
 // Sizing
 //
+@include pagination-size($pagination-padding-y, $pagination-padding-x, null, $pagination-line-height, $pagination-border-radius);
 
 .pagination-lg {
   @include pagination-size($pagination-padding-y-lg, $pagination-padding-x-lg, $font-size-lg, $line-height-lg, $border-radius-lg);

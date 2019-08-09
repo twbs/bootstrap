@@ -6,7 +6,7 @@
  */
 
 import {
-  jQuery as $,
+  getjQuery,
   TRANSITION_END,
   emulateTransitionEnd,
   getElementFromSelector,
@@ -615,6 +615,8 @@ EventHandler.on(window, Event.LOAD_DATA_API, () => {
   }
 })
 
+const $ = getjQuery()
+
 /**
  * ------------------------------------------------------------------------
  * jQuery
@@ -622,7 +624,7 @@ EventHandler.on(window, Event.LOAD_DATA_API, () => {
  * add .carousel to jQuery only if jQuery is present
  */
 /* istanbul ignore if */
-if (typeof $ !== 'undefined') {
+if ($) {
   const JQUERY_NO_CONFLICT = $.fn[NAME]
   $.fn[NAME] = Carousel.jQueryInterface
   $.fn[NAME].Constructor = Carousel

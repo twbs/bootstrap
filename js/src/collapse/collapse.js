@@ -6,7 +6,7 @@
  */
 
 import {
-  jQuery as $,
+  getjQuery,
   TRANSITION_END,
   emulateTransitionEnd,
   getSelectorFromElement,
@@ -419,6 +419,8 @@ EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (
   })
 })
 
+const $ = getjQuery()
+
 /**
  * ------------------------------------------------------------------------
  * jQuery
@@ -426,7 +428,7 @@ EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (
  * add .collapse to jQuery only if jQuery is present
  */
 /* istanbul ignore if */
-if (typeof $ !== 'undefined') {
+if ($) {
   const JQUERY_NO_CONFLICT = $.fn[NAME]
   $.fn[NAME] = Collapse.jQueryInterface
   $.fn[NAME].Constructor = Collapse

@@ -6,7 +6,7 @@
  */
 
 import {
-  jQuery as $,
+  getjQuery,
   TRANSITION_END,
   emulateTransitionEnd,
   getTransitionDurationFromElement,
@@ -222,6 +222,8 @@ class Toast {
   }
 }
 
+const $ = getjQuery()
+
 /**
  * ------------------------------------------------------------------------
  * jQuery
@@ -229,7 +231,7 @@ class Toast {
  *  add .toast to jQuery only if jQuery is present
  */
 /* istanbul ignore if */
-if (typeof $ !== 'undefined') {
+if ($) {
   const JQUERY_NO_CONFLICT = $.fn[NAME]
   $.fn[NAME] = Toast.jQueryInterface
   $.fn[NAME].Constructor = Toast
