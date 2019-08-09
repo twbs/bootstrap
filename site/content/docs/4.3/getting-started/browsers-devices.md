@@ -41,7 +41,7 @@ Generally speaking, Bootstrap supports the latest versions of each major platfor
       <td>Supported</td>
       <td>Supported</td>
       <td class="text-muted">&mdash;</td>
-      <td>v5.0+</td>
+      <td>v6.0+</td>
       <td>Supported</td>
     </tr>
     <tr>
