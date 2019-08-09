@@ -13,7 +13,9 @@ jobs:
     steps:
     - name: this is a pr
       if: github.event_name == 'pull_request'
-      run: echo pr "$github.event.action"
+      env:
+        GITHUB_CONTEXT: ${{ toJson(github) }}
+      run: echo "$GITHUB_CONTEXT"
 
     - name: this is a push
       if: github.event_name == 'push'
