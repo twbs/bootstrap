@@ -4,8 +4,9 @@ on: [push, pull_request]
 jobs:
   run:
     name: Node ${{ matrix.node }}
+    if: github.event_name == 'pull_request' && github.event.action == 'changed'
+
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action == 'changed')
 
     strategy:
       matrix:
