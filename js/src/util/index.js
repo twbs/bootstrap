@@ -8,7 +8,6 @@
 const MAX_UID = 1000000
 const MILLISECONDS_MULTIPLIER = 1000
 const TRANSITION_END = 'transitionend'
-const { jQuery } = window
 
 // Shoutout AngusCroll (https://goo.gl/pxwQGp)
 const toType = obj => ({}.toString.call(obj).match(/\s([a-z]+)/i)[1].toLowerCase())
@@ -176,8 +175,18 @@ const noop = () => function () {}
 
 const reflow = element => element.offsetHeight
 
+const getjQuery = () => {
+  const { jQuery } = window
+
+  if (jQuery && !document.body.hasAttribute('data-no-jquery')) {
+    return jQuery
+  }
+
+  return null
+}
+
 export {
-  jQuery,
+  getjQuery,
   TRANSITION_END,
   getUID,
   getSelectorFromElement,

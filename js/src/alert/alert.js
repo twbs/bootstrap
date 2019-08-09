@@ -6,7 +6,7 @@
  */
 
 import {
-  jQuery as $,
+  getjQuery,
   TRANSITION_END,
   emulateTransitionEnd,
   getElementFromSelector,
@@ -128,7 +128,7 @@ class Alert {
 
   // Static
 
-  static _jQueryInterface(config) {
+  static jQueryInterface(config) {
     return this.each(function () {
       let data = Data.getData(this, DATA_KEY)
 
@@ -142,7 +142,7 @@ class Alert {
     })
   }
 
-  static _handleDismiss(alertInstance) {
+  static handleDismiss(alertInstance) {
     return function (event) {
       if (event) {
         event.preventDefault()
@@ -152,7 +152,7 @@ class Alert {
     }
   }
 
-  static _getInstance(element) {
+  static getInstance(element) {
     return Data.getData(element, DATA_KEY)
   }
 }
@@ -163,7 +163,9 @@ class Alert {
  * ------------------------------------------------------------------------
  */
 EventHandler
-  .on(document, Event.CLICK_DATA_API, Selector.DISMISS, Alert._handleDismiss(new Alert()))
+  .on(document, Event.CLICK_DATA_API, Selector.DISMISS, Alert.handleDismiss(new Alert()))
+
+const $ = getjQuery()
 
 /**
  * ------------------------------------------------------------------------
@@ -173,13 +175,13 @@ EventHandler
  */
 
 /* istanbul ignore if */
-if (typeof $ !== 'undefined') {
+if ($) {
   const JQUERY_NO_CONFLICT = $.fn[NAME]
-  $.fn[NAME] = Alert._jQueryInterface
+  $.fn[NAME] = Alert.jQueryInterface
   $.fn[NAME].Constructor = Alert
   $.fn[NAME].noConflict = () => {
     $.fn[NAME] = JQUERY_NO_CONFLICT
-    return Alert._jQueryInterface
+    return Alert.jQueryInterface
   }
 }
 

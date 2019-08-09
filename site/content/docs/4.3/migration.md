@@ -41,6 +41,7 @@ Changes to our source Sass files and compiled CSS.
 Changes to our source and compiled JavaScript files.
 
 - Dropped jQuery dependency and rewrote plugins to be in regular JavaScript.
+- Removed underscore from public static methods like `_getInstance()` → `getInstance()`.
 
 ## Grid and layout
 
@@ -108,6 +109,10 @@ Badges were overhauled to better differentiate themselves from buttons and to be
 ### Jumbotron
 
 - The jumbotron component is removed in favor of utility classes like `.bg-light` for the background color and `.p-*` classes to control padding.
+
+### Pagination
+
+- Pagination links now have customizable `margin-left` that are dynamically rounded on all corners when separated from one another.
 
 ### Popovers
 

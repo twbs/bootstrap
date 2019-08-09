@@ -5,7 +5,7 @@
  * --------------------------------------------------------------------------
  */
 
-import { jQuery as $ } from '../util/index'
+import { getjQuery } from '../util/index'
 import Data from '../dom/data'
 import SelectorEngine from '../dom/selector-engine'
 import Tooltip from '../tooltip/tooltip'
@@ -144,7 +144,7 @@ class Popover extends Tooltip {
 
   // Static
 
-  static _jQueryInterface(config) {
+  static jQueryInterface(config) {
     return this.each(function () {
       let data = Data.getData(this, DATA_KEY)
       const _config = typeof config === 'object' ? config : null
@@ -168,10 +168,12 @@ class Popover extends Tooltip {
     })
   }
 
-  static _getInstance(element) {
+  static getInstance(element) {
     return Data.getData(element, DATA_KEY)
   }
 }
+
+const $ = getjQuery()
 
 /**
  * ------------------------------------------------------------------------
@@ -179,13 +181,13 @@ class Popover extends Tooltip {
  * ------------------------------------------------------------------------
  */
 /* istanbul ignore if */
-if (typeof $ !== 'undefined') {
+if ($) {
   const JQUERY_NO_CONFLICT = $.fn[NAME]
-  $.fn[NAME] = Popover._jQueryInterface
+  $.fn[NAME] = Popover.jQueryInterface
   $.fn[NAME].Constructor = Popover
   $.fn[NAME].noConflict = () => {
     $.fn[NAME] = JQUERY_NO_CONFLICT
-    return Popover._jQueryInterface
+    return Popover.jQueryInterface
   }
 }
 

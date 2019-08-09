@@ -20,7 +20,7 @@ describe('Alert', () => {
   })
 
   describe('data-api', () => {
-    it('should close an alert without instanciate it manually', () => {
+    it('should close an alert without instantiate it manually', () => {
       fixtureEl.innerHTML = [
         '<div class="alert">',
         '  <button type="button" data-dismiss="alert">x</button>',
@@ -33,7 +33,7 @@ describe('Alert', () => {
       expect(makeArray(document.querySelectorAll('.alert')).length).toEqual(0)
     })
 
-    it('should close an alert without instanciate it manually with the parent selector', () => {
+    it('should close an alert without instantiate it manually with the parent selector', () => {
       fixtureEl.innerHTML = [
         '<div class="alert">',
         '  <button type="button" data-target=".alert" data-dismiss="alert">x</button>',
@@ -117,15 +117,15 @@ describe('Alert', () => {
       const alertEl = document.querySelector('.alert')
       const alert = new Alert(alertEl)
 
-      expect(Alert._getInstance(alertEl)).toBeDefined()
+      expect(Alert.getInstance(alertEl)).toBeDefined()
 
       alert.dispose()
 
-      expect(Alert._getInstance(alertEl)).toBeNull()
+      expect(Alert.getInstance(alertEl)).toBeNull()
     })
   })
 
-  describe('_jQueryInterface', () => {
+  describe('jQueryInterface', () => {
     it('should handle config passed and toggle existing alert', () => {
       fixtureEl.innerHTML = '<div class="alert"></div>'
 
@@ -134,7 +134,7 @@ describe('Alert', () => {
 
       spyOn(alert, 'close')
 
-      jQueryMock.fn.alert = Alert._jQueryInterface
+      jQueryMock.fn.alert = Alert.jQueryInterface
       jQueryMock.elements = [alertEl]
 
       jQueryMock.fn.alert.call(jQueryMock, 'close')
@@ -147,12 +147,12 @@ describe('Alert', () => {
 
       const alertEl = fixtureEl.querySelector('.alert')
 
-      jQueryMock.fn.alert = Alert._jQueryInterface
+      jQueryMock.fn.alert = Alert.jQueryInterface
       jQueryMock.elements = [alertEl]
 
       jQueryMock.fn.alert.call(jQueryMock, 'close')
 
-      expect(Alert._getInstance(alertEl)).toBeDefined()
+      expect(Alert.getInstance(alertEl)).toBeDefined()
       expect(fixtureEl.querySelector('.alert')).toBeNull()
     })
 
@@ -161,12 +161,12 @@ describe('Alert', () => {
 
       const alertEl = fixtureEl.querySelector('.alert')
 
-      jQueryMock.fn.alert = Alert._jQueryInterface
+      jQueryMock.fn.alert = Alert.jQueryInterface
       jQueryMock.elements = [alertEl]
 
       jQueryMock.fn.alert.call(jQueryMock)
 
-      expect(Alert._getInstance(alertEl)).toBeDefined()
+      expect(Alert.getInstance(alertEl)).toBeDefined()
       expect(fixtureEl.querySelector('.alert')).not.toBeNull()
     })
   })

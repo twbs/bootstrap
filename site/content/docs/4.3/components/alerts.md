@@ -133,10 +133,10 @@ This makes an alert listen for click events on descendant elements which have th
     </tr>
     <tr>
       <td>
-        <code>_getInstance</code>
+        <code>getInstance</code>
       </td>
       <td>
-        Static method which allows you to get the alert instance associated to a DOM element, you can use it like this: <code>bootstrap.Alert._getInstance(alert)</code>
+        Static method which allows you to get the alert instance associated to a DOM element, you can use it like this: <code>bootstrap.Alert.getInstance(alert)</code>
       </td>
     </tr>
   </tbody>
@@ -144,7 +144,7 @@ This makes an alert listen for click events on descendant elements which have th
 
 {{< highlight js >}}
 var alertNode = document.querySelector('.alert')
-var alert = bootstrap.Alert._getInstance(alertNode)
+var alert = bootstrap.Alert.getInstance(alertNode)
 alert.close()
 {{< /highlight >}}
 

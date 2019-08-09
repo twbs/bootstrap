@@ -6,7 +6,7 @@
  */
 
 import {
-  jQuery as $,
+  getjQuery,
   TRANSITION_END,
   emulateTransitionEnd,
   getElementFromSelector,
@@ -513,7 +513,7 @@ class Modal {
 
   // Static
 
-  static _jQueryInterface(config, relatedTarget) {
+  static jQueryInterface(config, relatedTarget) {
     return this.each(function () {
       let data = Data.getData(this, DATA_KEY)
       const _config = {
@@ -538,7 +538,7 @@ class Modal {
     })
   }
 
-  static _getInstance(element) {
+  static getInstance(element) {
     return Data.getData(element, DATA_KEY)
   }
 }
@@ -582,6 +582,8 @@ EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (
   data.show(this)
 })
 
+const $ = getjQuery()
+
 /**
  * ------------------------------------------------------------------------
  * jQuery
@@ -589,13 +591,13 @@ EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (
  * add .modal to jQuery only if jQuery is present
  */
 /* istanbul ignore if */
-if (typeof $ !== 'undefined') {
+if ($) {
   const JQUERY_NO_CONFLICT = $.fn[NAME]
-  $.fn[NAME] = Modal._jQueryInterface
+  $.fn[NAME] = Modal.jQueryInterface
   $.fn[NAME].Constructor = Modal
   $.fn[NAME].noConflict = () => {
     $.fn[NAME] = JQUERY_NO_CONFLICT
-    return Modal._jQueryInterface
+    return Modal.jQueryInterface
   }
 }
 
