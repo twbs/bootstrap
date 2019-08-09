@@ -4,8 +4,6 @@ on: [push, pull_request]
 jobs:
   run:
     name: Node ${{ matrix.node }}
-    if: github.event_name == 'pull_request' && github.event.action == 'changed'
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -16,6 +14,10 @@ jobs:
     - uses: actions/checkout@master
       with:
         fetch-depth: 3
+
+    - name: Test
+      if: github.event_name == 'pull_request' && github.event.action == 'changed'
+      run: echo testing
 
     - name: Set Node.js version
       uses: actions/setup-node@v1.1.0
