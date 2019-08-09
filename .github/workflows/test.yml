@@ -13,7 +13,7 @@ jobs:
     steps:
     - name: this is a pr
       if: github.event_name == 'pull_request'
-      run: echo pr
+      run: echo pr ${{ github.event.action }}
 
     - name: this is a push
       if: github.event_name == 'push'
