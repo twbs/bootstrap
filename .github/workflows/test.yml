@@ -1,10 +1,11 @@
-name: Run tests
+name: CI
 on: [push, pull_request]
 
 jobs:
   run:
     name: Node ${{ matrix.node }}
     runs-on: ubuntu-latest
+    if: github.event_name == 'push' || (github.event_name == 'pull_request' && (github.event.action == 'opened' || github.event.action == 'reopened' || github.event.action == 'synchronize'))
 
     strategy:
       matrix:
