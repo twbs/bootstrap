@@ -75,7 +75,7 @@
   .active.carousel-item-right {
     z-index: 0;
     opacity: 0;
-    @include transition(0s $carousel-transition-duration opacity);
+    @include transition(opacity 0s $carousel-transition-duration);
   }
 }
 
@@ -101,7 +101,7 @@
   @include transition($carousel-control-transition);
 
   // Hover/focus state
-  @include hover-focus {
+  @include hover-focus() {
     color: $carousel-control-color;
     text-decoration: none;
     outline: 0;
@@ -111,13 +111,13 @@
 .carousel-control-prev {
   left: 0;
   @if $enable-gradients {
-    background: linear-gradient(90deg, rgba($black, .25), rgba($black, .001));
+    background-image: linear-gradient(90deg, rgba($black, .25), rgba($black, .001));
   }
 }
 .carousel-control-next {
   right: 0;
   @if $enable-gradients {
-    background: linear-gradient(270deg, rgba($black, .25), rgba($black, .001));
+    background-image: linear-gradient(270deg, rgba($black, .25), rgba($black, .001));
   }
 }
 
@@ -130,10 +130,10 @@
   background: no-repeat 50% / 100% 100%;
 }
 .carousel-control-prev-icon {
-  background-image: $carousel-control-prev-icon-bg;
+  background-image: escape-svg($carousel-control-prev-icon-bg);
 }
 .carousel-control-next-icon {
-  background-image: $carousel-control-next-icon-bg;
+  background-image: escape-svg($carousel-control-next-icon-bg);
 }
 
 

@@ -23,7 +23,7 @@
   text-align: inherit; // For `<button>`s (anchors inherit)
 
   // Hover state
-  @include hover-focus {
+  @include hover-focus() {
     z-index: 1; // Place hover/focus items above their siblings for proper border styling
     color: $list-group-action-hover-color;
     text-decoration: none;
@@ -45,8 +45,6 @@
   position: relative;
   display: block;
   padding: $list-group-item-padding-y $list-group-item-padding-x;
-  // Place the border on the list items and negative margin up for better styling
-  margin-bottom: -$list-group-border-width;
   color: $list-group-color;
   background-color: $list-group-bg;
   border: $list-group-border-width solid $list-group-border-color;
@@ -56,7 +54,6 @@
   }
 
   &:last-child {
-    margin-bottom: 0;
     @include border-bottom-radius($list-group-border-radius);
   }
 
@@ -74,6 +71,15 @@
     background-color: $list-group-active-bg;
     border-color: $list-group-active-border-color;
   }
+
+  & + & {
+    border-top-width: 0;
+
+    &.active {
+      margin-top: -$list-group-border-width;
+      border-top-width: $list-group-border-width;
+    }
+  }
 }
 
 
@@ -89,18 +95,28 @@
       flex-direction: row;
 
       .list-group-item {
-        margin-right: -$list-group-border-width;
-        margin-bottom: 0;
-
         &:first-child {
-          @include border-left-radius($list-group-border-radius);
+          @include border-bottom-left-radius($list-group-border-radius);
           @include border-top-right-radius(0);
         }
 
         &:last-child {
-          margin-right: 0;
-          @include border-right-radius($list-group-border-radius);
+          @include border-top-right-radius($list-group-border-radius);
           @include border-bottom-left-radius(0);
+        }
+
+        &.active {
+          margin-top: 0;
+        }
+
+        & + .list-group-item {
+          border-top-width: $list-group-border-width;
+          border-left-width: 0;
+
+          &.active {
+            margin-left: -$list-group-border-width;
+            border-left-width: $list-group-border-width;
+          }
         }
       }
     }
@@ -115,25 +131,18 @@
 
 .list-group-flush {
   .list-group-item {
-    border-right: 0;
-    border-left: 0;
+    border-right-width: 0;
+    border-left-width: 0;
     @include border-radius(0);
 
-    &:last-child {
-      margin-bottom: -$list-group-border-width;
-    }
-  }
-
-  &:first-child {
-    .list-group-item:first-child {
-      border-top: 0;
+    &:first-child {
+      border-top-width: 0;
     }
   }
 
   &:last-child {
     .list-group-item:last-child {
-      margin-bottom: 0;
-      border-bottom: 0;
+      border-bottom-width: 0;
     }
   }
 }
