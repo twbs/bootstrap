@@ -7,5 +7,5 @@ jobs:
     runs-on: ubuntu-latest
 
     - name: Test
-      if: github.event_name == 'pull_request' && github.event.action == 'synchronize'
-      run: echo success!
+      if: github.event_name == 'pull_request'
+      run: echo success
