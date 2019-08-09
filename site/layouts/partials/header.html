@@ -1,6 +1,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="{{ index .Page.Params "description" | default .Site.Params.description | markdownify }}">
+<meta name="description" content="{{ .Page.Params.description | default .Site.Params.description | markdownify }}">
 <meta name="author" content="{{ .Site.Params.authors }}">
 <meta name="generator" content="Hugo {{ hugo.Version }}">
 

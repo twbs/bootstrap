@@ -107,7 +107,7 @@ var bsAlert = new bootstrap.Alert(myAlert)
 
 This makes an alert listen for click events on descendant elements which have the `data-dismiss="alert"` attribute. (Not necessary when using the data-api's auto-initialization.)
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Method</th>
@@ -133,10 +133,10 @@ This makes an alert listen for click events on descendant elements which have th
     </tr>
     <tr>
       <td>
-        <code>_getInstance</code>
+        <code>getInstance</code>
       </td>
       <td>
-        Static method which allows you to get the alert instance associated to a DOM element, you can use it like this: <code>bootstrap.Alert._getInstance(alert)</code>
+        Static method which allows you to get the alert instance associated to a DOM element, you can use it like this: <code>bootstrap.Alert.getInstance(alert)</code>
       </td>
     </tr>
   </tbody>
@@ -144,7 +144,7 @@ This makes an alert listen for click events on descendant elements which have th
 
 {{< highlight js >}}
 var alertNode = document.querySelector('.alert')
-var alert = bootstrap.Alert._getInstance(alertNode)
+var alert = bootstrap.Alert.getInstance(alertNode)
 alert.close()
 {{< /highlight >}}
 
@@ -152,7 +152,7 @@ alert.close()
 
 Bootstrap's alert plugin exposes a few events for hooking into alert functionality.
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Event</th>

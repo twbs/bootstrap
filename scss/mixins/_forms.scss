@@ -69,7 +69,7 @@
 
       @if $enable-validation-icons {
         padding-right: $input-height-inner;
-        background-image: $icon;
+        background-image: escape-svg($icon);
         background-repeat: no-repeat;
         background-position: right $input-height-inner-quarter center;
         background-size: $input-height-inner-half $input-height-inner-half;
@@ -103,7 +103,7 @@
 
       @if $enable-validation-icons {
         padding-right: $form-select-feedback-icon-padding-right;
-        background: $form-select-background, $icon $form-select-bg no-repeat $form-select-feedback-icon-position / $form-select-feedback-icon-size;
+        background: escape-svg($form-select-indicator) $form-select-background, escape-svg($icon) $form-select-bg no-repeat $form-select-feedback-icon-position / $form-select-feedback-icon-size;
       }
 
       &:focus {

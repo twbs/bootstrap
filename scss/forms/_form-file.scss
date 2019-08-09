@@ -14,7 +14,14 @@
   margin: 0;
   opacity: 0;
 
+  // Separate rules for :focus and :focus-within as IE doesn't support the latter, and
+  // thus ignores the entire ruleset. See https://github.com/twbs/bootstrap/pull/29036.
   &:focus ~ .form-file-label {
+    border-color: $form-file-focus-border-color;
+    box-shadow: $form-file-focus-box-shadow;
+  }
+
+  &:focus-within ~ .form-file-label {
     border-color: $form-file-focus-border-color;
     box-shadow: $form-file-focus-box-shadow;
   }

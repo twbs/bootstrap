@@ -6,13 +6,17 @@
   width: 100%;
   margin-bottom: $spacer;
   color: $table-color;
+  vertical-align: $table-cell-vertical-align;
   background-color: $table-bg; // Reset for nesting within parents with `background-color`.
 
   th,
   td {
     padding: $table-cell-padding;
-    vertical-align: top;
     border-bottom: $table-border-width solid $table-border-color;
+  }
+
+  tbody {
+    vertical-align: inherit;
   }
 
   td {
@@ -102,7 +106,7 @@
 // inheritance to nested tables.
 
 @each $color, $value in $theme-colors {
-  @include table-row-variant($color, theme-color-level($color, $table-bg-level), theme-color-level($color, $table-border-level));
+  @include table-row-variant($color, color-level($value, $table-bg-level), color-level($value, $table-border-level));
 }
 
 @include table-row-variant(active, $table-active-bg);

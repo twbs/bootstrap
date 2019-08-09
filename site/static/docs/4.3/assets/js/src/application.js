@@ -19,19 +19,28 @@
     return [].slice.call(list)
   }
 
-  var sidenavGroups = document.querySelectorAll('.js-sidenav-group')
-  var groupHasLinks
-  var groupLink
-  sidenavGroups.forEach(sidenavGroup => {
-    groupHasLinks = Boolean(sidenavGroup.querySelector('li'))
-    groupLink = sidenavGroup.querySelector('a')
-    if (groupHasLinks) {
-      groupLink.addEventListener('click', function (e) {
-        e.preventDefault()
-        e.target.parentNode.classList.toggle('active')
-      }, true)
+  (function () {
+    var checkbox = document.getElementById('flexCheckIndeterminate')
+
+    if (!checkbox) {
+      return
     }
-  })
+
+    checkbox.indeterminate = true
+  })()
+
+  makeArray(document.querySelectorAll('.js-sidenav-group'))
+    .forEach(function (sidenavGroup) {
+      var groupHasLinks = Boolean(sidenavGroup.querySelector('li'))
+      var groupLink = sidenavGroup.querySelector('a')
+
+      if (groupHasLinks) {
+        groupLink.addEventListener('click', function (e) {
+          e.preventDefault()
+          e.target.parentNode.classList.toggle('active')
+        }, true)
+      }
+    })
 
   // Tooltip and popover demos
   makeArray(document.querySelectorAll('.tooltip-demo'))
@@ -133,21 +142,19 @@
   })
 
   clipboard.on('success', function (e) {
-    var tooltipBtn = bootstrap.Tooltip._getInstance(e.trigger)
+    var tooltipBtn = bootstrap.Tooltip.getInstance(e.trigger)
 
-    e.trigger.setAttribute('title', 'Copied!')
-    tooltipBtn._fixTitle()
+    e.trigger.setAttribute('data-original-title', 'Copied!')
     tooltipBtn.show()
 
-    e.trigger.setAttribute('title', 'Copy to clipboard')
-    tooltipBtn._fixTitle()
+    e.trigger.setAttribute('data-original-title', 'Copy to clipboard')
     e.clearSelection()
   })
 
   clipboard.on('error', function (e) {
     var modifierKey = /Mac/i.test(navigator.userAgent) ? '\u2318' : 'Ctrl-'
     var fallbackMsg = 'Press ' + modifierKey + 'C to copy'
-    var tooltipBtn = bootstrap.Tooltip._getInstance(e.trigger)
+    var tooltipBtn = bootstrap.Tooltip.getInstance(e.trigger)
 
     e.trigger.setAttribute('title', fallbackMsg)
     tooltipBtn._fixTitle()

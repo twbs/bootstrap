@@ -33,12 +33,15 @@ Changes to our source Sass files and compiled CSS.
 - **Todo:** Rearrange forms source files (under `scss/forms/`)
 - **Todo:** Rearrange grid source files (under `scss/grid/`)
 - Removed print styles and `$enable-print-styles` variable. Print display classes, however, have remained intact. [See #28339](https://github.com/twbs/bootstrap/pull/28339).
+- Dropped `color()`, `theme-color()` & `gray()` functions in favor of variables. [See #29083](https://github.com/twbs/bootstrap/pull/29083)
+- The `theme-color-level()` function is renamed to `color-level()` and now accepts any color you want instead of only `$theme-color` colors. [See #29083](https://github.com/twbs/bootstrap/pull/29083)
 
 ## JavaScript
 
 Changes to our source and compiled JavaScript files.
 
 - Dropped jQuery dependency and rewrote plugins to be in regular JavaScript.
+- Removed underscore from public static methods like `_getInstance()` → `getInstance()`.
 
 ## Grid and layout
 
@@ -53,7 +56,9 @@ Changes to any layout tools and our grid system.
 Changes to Reboot, typography, tables, and more.
 
 - **Todo:** Make RFS enabled by default
-- Reset default horizontal `padding` on `<ul>` and `<ol>` elements from browser default `40px` to `2rem`.
+- Reset default horizontal `padding-left` on `<ul>` and `<ol>` elements from browser default `40px` to `2rem`.
+- Simplified table styles (no more 2px border on `thead > th` elements) and tightened cell padding.
+- Dropped `.pre-scrollable` class. [See #29135](https://github.com/twbs/bootstrap/pull/29135)
 
 ## Forms
 
@@ -63,12 +68,17 @@ Changes to Reboot, typography, tables, and more.
 - Rearranged source Sass files under `scss/forms/`, including moving over input group styles.
 - Combined native and custom checkboxes and radios into single `.form-check` class.
   - New checks support sizing via `em`/`font-size` or explicit modifier classes now.
+  - New checks now appear larger by default for improved usability.
   - Dropped `.custom-control` and associated classes.
+  - Renamed most `$custom-control` variables to `$form-control` ones.
 - Combined native and custom selects into `.form-select`.
   - Dropped `.custom-select` and associated classes.
-- Dropped native `.form-control-file` and `.form-control-range` components.
-- Renamed `.custom-file` to `.form-file` (including variables).
-- Refactored `.form-file` markup to resolve some visual bugs while allowing translation and button text changes via HTML instead of CSS.
+  - Renamed most `$custom-select` variables to `$form-select` ones.
+- Updated file input component with same overall design, but improved HTML.
+  - Refactored `.form-file` markup to resolve some visual bugs while allowing translation and button text changes via HTML instead of CSS.
+  - Dropped native `.form-control-file` and `.form-control-range` components entirely.
+  - Renamed `.custom-file` to `.form-file` (including variables).
+  - Added support for `:focus` and `:disabled` styles.
 - Renamed `.custom-range` to `.form-range` (including variables).
 - Dropped `.form-group` for margin utilities (we've replaced our docs examples with `.mb-3`).
 - Dropped support for `.form-control-plaintext` inside `.input-group`s.
@@ -87,9 +97,22 @@ Badges were overhauled to better differentiate themselves from buttons and to be
 - **Todo:** Removed `.badge-pill` for the `.rounded-pill` utility class
 - **Todo:** Removed badge's hover and focus styles for `a.badge` and `button.badge`.
 
+### Cards
+
+- Removed the card columns in favor of a Masonry grid [See #28922](https://github.com/twbs/bootstrap/pull/28922).
+
+### Icons (New!)
+
+- Added new Bootstrap icons to the project for our documentation, form controls, and more.
+- Removed Open Iconic icons from project source code for form controls.
+
 ### Jumbotron
 
 - The jumbotron component is removed in favor of utility classes like `.bg-light` for the background color and `.p-*` classes to control padding.
+
+### Pagination
+
+- Pagination links now have customizable `margin-left` that are dynamically rounded on all corners when separated from one another.
 
 ### Popovers
 

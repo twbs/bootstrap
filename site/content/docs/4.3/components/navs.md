@@ -524,19 +524,25 @@ You can activate a tab or pill navigation without writing any JavaScript by simp
 Enable tabbable tabs via JavaScript (each tab needs to be activated individually):
 
 {{< highlight js >}}
-$('#myTab a').on('click', function (e) {
-  e.preventDefault()
-  $(this).tab('show')
+var triggerTabList = [].slice.call(document.querySelectorAll('#myTab a'))
+triggerTabList.forEach(function (triggerEl) {
+  var tabTrigger = new bootstrap.Tab(triggerEl)
+
+  triggerEl.addEventListener('click', function (e) {
+    e.preventDefault()
+    tabTrigger.show()
+  })
 })
 {{< /highlight >}}
 
 You can activate individual tabs in several ways:
 
 {{< highlight js >}}
-$('#myTab a[href="#profile"]').tab('show') // Select tab by name
-$('#myTab li:first-child a').tab('show') // Select first tab
-$('#myTab li:last-child a').tab('show') // Select last tab
-$('#myTab li:nth-child(3) a').tab('show') // Select third tab
+var triggerEl = document.querySelector('#myTab a[href="#profile"]')
+bootstrap.Tab.getInstance(triggerEl).show() // Select tab by name
+
+var triggerFirstTabEl = document.querySelector('#myTab li:first-child a')
+bootstrap.Tab.getInstance(triggerFirstTabEl).show() // Select first tab
 {{< /highlight >}}
 
 ### Fade effect
@@ -558,7 +564,7 @@ To make tabs fade in, add `.fade` to each `.tab-pane`. The first tab pane must a
 {{< partial "callout-danger-async-methods.md" >}}
 {{< /callout >}}
 
-#### $().tab
+#### constructor
 
 Activates a tab element and content container. Tab should have either a `data-target` or an `href` targeting a container node in the DOM.
 
@@ -586,23 +592,36 @@ Activates a tab element and content container. Tab should have either a `data-ta
 </div>
 
 <script>
-  $(function () {
-    $('#myTab li:last-child a').tab('show')
-  })
+  var firstTabEl = document.querySelector('#myTab li:last-child a')
+  var firstTab = new bootstrap.Tab(firstTabEl)
+
+  firstTab.show()
 </script>
 {{< /highlight >}}
 
-#### .tab('show')
+#### show
 
 Selects the given tab and shows its associated pane. Any other tab that was previously selected becomes unselected and its associated pane is hidden. **Returns to the caller before the tab pane has actually been shown** (i.e. before the `shown.bs.tab` event occurs).
 
 {{< highlight js >}}
-$('#someTab').tab('show')
+  var someTabTriggerEl = document.querySelector('#someTabTrigger')
+  var tab = new bootstrap.Tab(someTabTriggerEl)
+
+  tab.show()
 {{< /highlight >}}
 
-#### .tab('dispose')
+#### dispose
 
 Destroys an element's tab.
+
+#### getInstance
+
+*Static* method which allows you to get the tab instance associated with a DOM element
+
+{{< highlight js >}}
+var triggerEl = document.querySelector('#trigger')
+var tab = bootstrap.Tab.getInstance(triggerEl) // Returns a Bootstrap tab instance
+{{< /highlight >}}
 
 ### Events
 
@@ -643,7 +662,8 @@ If no tab was already active, then the `hide.bs.tab` and `hidden.bs.tab` events 
 </table>
 
 {{< highlight js >}}
-$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+var tabEl = document.querySelector('a[data-toggle="tab"]')
+tabEl.addEventListener('shown.bs.tab', function (e) {
   e.target // newly activated tab
   e.relatedTarget // previous active tab
 })

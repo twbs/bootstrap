@@ -1,4 +1,4 @@
-// stylelint-disable no-duplicate-selectors, selector-no-qualifying-type
+// stylelint-disable no-duplicate-selectors
 
 //
 // Grid examples
@@ -28,6 +28,15 @@
 .bd-highlight {
   background-color: rgba($bd-purple, .15);
   border: 1px solid rgba($bd-purple, .15);
+}
+
+.bd-example-responsive-containers {
+  [class^="container"] {
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+    background-color: rgba(86, 61, 124, .15);
+    border: 1px solid rgba(86, 61, 124, .2);
+  }
 }
 
 // Grid mixins
@@ -62,44 +71,6 @@
   @include media-breakpoint-up(lg) {
     @include make-col(4);
   }
-}
-
-
-//
-// Container illustrations
-//
-
-.bd-example-container {
-  min-width: 16rem;
-  max-width: 25rem;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-.bd-example-container-header {
-  height: 3rem;
-  margin-bottom: .5rem;
-  background-color: lighten($blue, 50%);
-  @include border-radius;
-}
-
-.bd-example-container-sidebar {
-  float: right;
-  width: 4rem;
-  height: 8rem;
-  background-color: lighten($blue, 25%);
-  @include border-radius;
-}
-
-.bd-example-container-body {
-  height: 8rem;
-  margin-right: 4.5rem;
-  background-color: lighten($bd-purple, 25%);
-  @include border-radius;
-}
-
-.bd-example-container-fluid {
-  max-width: none;
 }
 
 
