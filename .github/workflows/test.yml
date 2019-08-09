@@ -4,6 +4,7 @@ on: [push, pull_request]
 jobs:
   run:
     name: Node ${{ matrix.node }}
+    if: github.event_name == 'push' || github.event.action == 'open' || github.event.action == 'synchronize'
     runs-on: ubuntu-latest
 
     strategy:
@@ -11,15 +12,10 @@ jobs:
         node: [8, 10, 12]
 
     steps:
-    - name: this is a pr
-      if: github.event_name == 'pull_request'
+    - name: GitHub context
       env:
         GITHUB_CONTEXT: ${{ toJson(github) }}
       run: echo "$GITHUB_CONTEXT"
-
-    - name: this is a push
-      if: github.event_name == 'push'
-      run: echo push
 
     - uses: actions/checkout@master
       with:
