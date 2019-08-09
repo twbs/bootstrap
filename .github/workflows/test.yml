@@ -3,9 +3,13 @@ on: [push, pull_request]
 
 jobs:
   test:
-    name: Testing
+    name: PR
     runs-on: ubuntu-latest
 
-    - name: Test
+    - name: this is a pr
       if: github.event_name == 'pull_request'
-      run: echo success
+      run: echo pr
+
+    - name: this is a push
+      if: github.event_name == 'push'
+      run: echo push
