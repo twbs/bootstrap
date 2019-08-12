@@ -32,7 +32,7 @@ jobs:
 
       - name: Run bundlesize
         run: npm run bundlesize
-        if: matrix.node == 10 && github.repository == 'twbs/bootstrap'
+        if: matrix.node == 10 && github.repository == 'twbs/bootstrap' && github.event_name == 'push'
         env:
           BUNDLESIZE_GITHUB_TOKEN: "${{ secrets.BUNDLESIZE_GITHUB_TOKEN }}"
 
