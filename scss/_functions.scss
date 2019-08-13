@@ -50,7 +50,7 @@
       $result: map-merge($result, ($key: $value));
     }
   }
-  @return $map;
+  @return $result;
 }
 
 // Replace `$search` with `$replace` in `$string`
