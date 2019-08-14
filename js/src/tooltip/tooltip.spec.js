@@ -109,7 +109,7 @@ describe('Tooltip', () => {
       tooltipInContainerEl.click()
     })
 
-    it('should allow to pass config to popper.js thanks to popperConfig', () => {
+    it('should allow to pass config to popper.js with `popperConfig`', () => {
       fixtureEl.innerHTML = '<a href="#" rel="tooltip"/>'
 
       const tooltipEl = fixtureEl.querySelector('a')

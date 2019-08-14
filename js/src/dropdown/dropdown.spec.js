@@ -100,7 +100,7 @@ describe('Dropdown', () => {
       expect(dropdown.toggle).toHaveBeenCalled()
     })
 
-    it('should allow to pass config to popper.js thanks to popperConfig', () => {
+    it('should allow to pass config to popper.js with `popperConfig`', () => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
         '  <button href="#" class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
