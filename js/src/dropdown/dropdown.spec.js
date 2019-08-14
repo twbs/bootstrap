@@ -99,6 +99,28 @@ describe('Dropdown', () => {
 
       expect(dropdown.toggle).toHaveBeenCalled()
     })
+
+    it('should allow to pass config to popper.js thanks to popperConfig', () => {
+      fixtureEl.innerHTML = [
+        '<div class="dropdown">',
+        '  <button href="#" class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <div class="dropdown-menu">',
+        '    <a class="dropdown-item" href="#">Secondary link</a>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const btnDropdown = fixtureEl.querySelector('[data-toggle="dropdown"]')
+      const dropdown = new Dropdown(btnDropdown, {
+        popperConfig: {
+          placement: 'left'
+        }
+      })
+
+      const popperConfig = dropdown._getPopperConfig()
+
+      expect(popperConfig.placement).toEqual('left')
+    })
   })
 
   describe('toggle', () => {

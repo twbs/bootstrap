@@ -108,6 +108,21 @@ describe('Tooltip', () => {
 
       tooltipInContainerEl.click()
     })
+
+    it('should allow to pass config to popper.js thanks to popperConfig', () => {
+      fixtureEl.innerHTML = '<a href="#" rel="tooltip"/>'
+
+      const tooltipEl = fixtureEl.querySelector('a')
+      const tooltip = new Tooltip(tooltipEl, {
+        popperConfig: {
+          placement: 'left'
+        }
+      })
+
+      const popperConfig = tooltip._getPopperConfig('top')
+
+      expect(popperConfig.placement).toEqual('left')
+    })
   })
 
   describe('enable', () => {
