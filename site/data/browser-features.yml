@@ -32,7 +32,7 @@
   browser: >
     Edge
   summary: >
-    Fire a [`transitioncancel` event](https://developer.mozilla.org/en-US/docs/Web/Events/transitioncancel) when a CSS transition is canceled
+    Fire a [`transitioncancel` event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/transitioncancel_event) when a CSS transition is canceled
   upstream_bug: >
     UserVoice#15939898
   origin: >
