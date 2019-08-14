@@ -859,7 +859,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <td>popperConfig</td>
       <td>null | object</td>
       <td>null</td>
-      <td>To change Bootstrap default Popper.js config, see <a href="https://popper.js.org/popper-documentation.html#Popper.Defaults">Popper.js configuration</a></td>
+      <td>To change Bootstrap's default Popper.js config, see <a href="https://popper.js.org/popper-documentation.html#Popper.Defaults">Popper.js's configuration</a></td>
     </tr>
   </tbody>
 </table>
