@@ -483,15 +483,10 @@ class Tooltip {
       onUpdate: data => this._handlePopperPlacementChange(data)
     }
 
-    let resultConfig = defaultBsConfig
-    if (this.config.popperConfig) {
-      resultConfig = {
-        ...defaultBsConfig,
-        ...this.config.popperConfig
-      }
+    return {
+      ...defaultBsConfig,
+      ...this.config.popperConfig
     }
-
-    return resultConfig
   }
 
   _addAttachmentClass(attachment) {

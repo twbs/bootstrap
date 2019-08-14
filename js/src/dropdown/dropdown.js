@@ -341,7 +341,7 @@ class Dropdown {
   }
 
   _getPopperConfig() {
-    let popperConfig = {
+    const popperConfig = {
       placement: this._getPlacement(),
       modifiers: {
         offset: this._getOffset(),
@@ -361,14 +361,10 @@ class Dropdown {
       }
     }
 
-    if (this._config.popperConfig) {
-      popperConfig = {
-        ...popperConfig,
-        ...this._config.popperConfig
-      }
+    return {
+      ...popperConfig,
+      ...this._config.popperConfig
     }
-
-    return popperConfig
   }
 
   // Static
