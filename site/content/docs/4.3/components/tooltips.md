@@ -278,6 +278,12 @@ Note that for security reasons the `sanitize`, `sanitizeFn` and `whiteList` opti
       <td>null</td>
       <td>Here you can supply your own sanitize function. This can be useful if you prefer to use a dedicated library to perform sanitization.</td>
     </tr>
+    <tr>
+      <td>popperConfig</td>
+      <td>null | object</td>
+      <td>null</td>
+      <td>To change Bootstrap default Popper.js config, see <a href="https://popper.js.org/popper-documentation.html#Popper.Defaults">Popper.js configuration</a></td>
+    </tr>
   </tbody>
 </table>
 

@@ -855,6 +855,12 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <td>'dynamic'</td>
       <td>By default, we use Popper.js for dynamic positioning. Disable this with <code>static</code>.</td>
     </tr>
+    <tr>
+      <td>popperConfig</td>
+      <td>null | object</td>
+      <td>null</td>
+      <td>To change Bootstrap default Popper.js config, see <a href="https://popper.js.org/popper-documentation.html#Popper.Defaults">Popper.js configuration</a></td>
+    </tr>
   </tbody>
 </table>
 
