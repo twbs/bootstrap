@@ -30,6 +30,7 @@
   // Workaround for: https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/11295231
   &[disabled] ~ .form-file-label .form-file-text {
     background-color: $form-file-disabled-bg;
+    border-color: $form-file-disabled-border-color;
   }
 }
 
