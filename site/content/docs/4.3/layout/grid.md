@@ -536,13 +536,13 @@ Use `.order-` classes for controlling the **visual order** of your content. Thes
 <div class="container">
   <div class="row">
     <div class="col">
-      First, but unordered
+      First in DOM, no order applied
     </div>
     <div class="col order-5">
-      Second, but last
+      Second in DOM, with a larger order
     </div>
     <div class="col order-1">
-      Third, but first
+      Third in DOM, with an order of 1
     </div>
   </div>
 </div>
@@ -556,13 +556,13 @@ There are also responsive `.order-first` and `.order-last` classes that change t
 <div class="container">
   <div class="row">
     <div class="col order-last">
-      First, but last
+      First in DOM, ordered last
     </div>
     <div class="col">
-      Second, but unordered
+      Second in DOM, unordered
     </div>
     <div class="col order-first">
-      Third, but first
+      Third in DOM, ordered first
     </div>
   </div>
 </div>
