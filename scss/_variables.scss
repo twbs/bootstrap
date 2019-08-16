@@ -933,6 +933,9 @@ $badge-border-radius:               $border-radius !default;
 // Padding applied to the modal body
 $modal-inner-padding:               1rem !default;
 
+// Margin between elements in footer, must be lower than or equal to 2 * $modal-inner-padding
+$modal-footer-margin-between:       .5rem !default;
+
 $modal-dialog-margin:               .5rem !default;
 $modal-dialog-margin-y-sm-up:       1.75rem !default;
 
