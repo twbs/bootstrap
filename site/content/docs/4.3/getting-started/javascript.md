@@ -28,7 +28,7 @@ We provide a version of Bootstrap built as `ESM` (`bootstrap.esm.js` and `bootst
 {{< callout warning >}}
 ## Incompatible plugins
 
-Due to browser limitations, some of our plugins, namely Dropdown, Tooltip and Popover plugins, cannot be used in a `<script>` tag with `module` type because they depend on Popper.js. For more information about the issue see [here](https://developers.google.com/web/fundamentals/primers/modules#specifiers).
+Due to browser limitations, some of our plugins, namely Dropdown, Tooltip and Popover plugins, cannot be used in a `<script>` tag with `module` type because they depend on Popper.js. For more information about the issue see [here](https://v8.dev/features/modules#specifiers).
 {{< /callout >}}
 
 ## Dependencies
