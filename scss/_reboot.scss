@@ -505,9 +505,9 @@ progress {
 // Fix height of inputs with a type of datetime-local, date, month, week, or time
 // See https://github.com/twbs/bootstrap/issues/18842
 
-::-webkit-inner-spin-button,
-::-webkit-outer-spin-button {
-  height: 0;
+::-webkit-datetime-edit {
+  overflow: visible;
+  line-height: 0;
 }
 
 
