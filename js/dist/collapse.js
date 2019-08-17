@@ -86,27 +86,36 @@
    * --------------------------------------------------------------------------
    */
   var MILLISECONDS_MULTIPLIER = 1000;
-  var TRANSITION_END = 'transitionend';
-  var _window = window,
-      jQuery = _window.jQuery; // Shoutout AngusCroll (https://goo.gl/pxwQGp)
+  var TRANSITION_END = 'transitionend'; // Shoutout AngusCroll (https://goo.gl/pxwQGp)
 
   var toType = function toType(obj) {
     return {}.toString.call(obj).match(/\s([a-z]+)/i)[1].toLowerCase();
   };
 
-  var getSelectorFromElement = function getSelectorFromElement(element) {
+  var getSelector = function getSelector(element) {
     var selector = element.getAttribute('data-target');
 
     if (!selector || selector === '#') {
       var hrefAttr = element.getAttribute('href');
-      selector = hrefAttr && hrefAttr !== '#' ? hrefAttr.trim() : '';
+      selector = hrefAttr && hrefAttr !== '#' ? hrefAttr.trim() : null;
     }
 
-    try {
+    return selector;
+  };
+
+  var getSelectorFromElement = function getSelectorFromElement(element) {
+    var selector = getSelector(element);
+
+    if (selector) {
       return document.querySelector(selector) ? selector : null;
-    } catch (error) {
-      return null;
     }
+
+    return null;
+  };
+
+  var getElementFromSelector = function getElementFromSelector(element) {
+    var selector = getSelector(element);
+    return selector ? document.querySelector(selector) : null;
   };
 
   var getTransitionDurationFromElement = function getTransitionDurationFromElement(element) {
@@ -182,6 +191,17 @@
 
   var reflow = function reflow(element) {
     return element.offsetHeight;
+  };
+
+  var getjQuery = function getjQuery() {
+    var _window = window,
+        jQuery = _window.jQuery;
+
+    if (jQuery && !document.body.hasAttribute('data-no-jquery')) {
+      return jQuery;
+    }
+
+    return null;
   };
 
   /**
@@ -326,7 +346,7 @@
       if (actives) {
         actives.forEach(function (elemActive) {
           if (container !== elemActive) {
-            Collapse._collapseInterface(elemActive, 'hide');
+            Collapse.collapseInterface(elemActive, 'hide');
           }
 
           if (!activesData) {
@@ -403,15 +423,11 @@
       if (triggerArrayLength > 0) {
         for (var i = 0; i < triggerArrayLength; i++) {
           var trigger = this._triggerArray[i];
-          var selector = getSelectorFromElement(trigger);
+          var elem = getElementFromSelector(trigger);
 
-          if (selector !== null) {
-            var elem = SelectorEngine.findOne(selector);
-
-            if (!elem.classList.contains(ClassName.SHOW)) {
-              trigger.classList.add(ClassName.COLLAPSED);
-              trigger.setAttribute('aria-expanded', false);
-            }
+          if (elem && !elem.classList.contains(ClassName.SHOW)) {
+            trigger.classList.add(ClassName.COLLAPSED);
+            trigger.setAttribute('aria-expanded', false);
           }
         }
       }
@@ -478,8 +494,7 @@
 
       var selector = "[data-toggle=\"collapse\"][data-parent=\"" + parent + "\"]";
       makeArray(SelectorEngine.find(selector, parent)).forEach(function (element) {
-        var selector = getSelectorFromElement(element);
-        var selected = selector ? SelectorEngine.findOne(selector) : null;
+        var selected = getElementFromSelector(element);
 
         _this3._addAriaAndCollapsedClass(selected, [element]);
       });
@@ -505,7 +520,7 @@
     } // Static
     ;
 
-    Collapse._collapseInterface = function _collapseInterface(element, config) {
+    Collapse.collapseInterface = function collapseInterface(element, config) {
       var data = Data.getData(element, DATA_KEY);
 
       var _config = _objectSpread2({}, Default, {}, Manipulator.getDataAttributes(element), {}, typeof config === 'object' && config ? config : {});
@@ -527,13 +542,13 @@
       }
     };
 
-    Collapse._jQueryInterface = function _jQueryInterface(config) {
+    Collapse.jQueryInterface = function jQueryInterface(config) {
       return this.each(function () {
-        Collapse._collapseInterface(this, config);
+        Collapse.collapseInterface(this, config);
       });
     };
 
-    Collapse._getInstance = function _getInstance(element) {
+    Collapse.getInstance = function getInstance(element) {
       return Data.getData(element, DATA_KEY);
     };
 
@@ -583,9 +598,10 @@
         config = triggerData;
       }
 
-      Collapse._collapseInterface(element, config);
+      Collapse.collapseInterface(element, config);
     });
   });
+  var $ = getjQuery();
   /**
    * ------------------------------------------------------------------------
    * jQuery
@@ -595,14 +611,14 @@
 
   /* istanbul ignore if */
 
-  if (typeof jQuery !== 'undefined') {
-    var JQUERY_NO_CONFLICT = jQuery.fn[NAME];
-    jQuery.fn[NAME] = Collapse._jQueryInterface;
-    jQuery.fn[NAME].Constructor = Collapse;
+  if ($) {
+    var JQUERY_NO_CONFLICT = $.fn[NAME];
+    $.fn[NAME] = Collapse.jQueryInterface;
+    $.fn[NAME].Constructor = Collapse;
 
-    jQuery.fn[NAME].noConflict = function () {
-      jQuery.fn[NAME] = JQUERY_NO_CONFLICT;
-      return Collapse._jQueryInterface;
+    $.fn[NAME].noConflict = function () {
+      $.fn[NAME] = JQUERY_NO_CONFLICT;
+      return Collapse.jQueryInterface;
     };
   }
 

@@ -15,8 +15,17 @@
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
-  var _window = window,
-      jQuery = _window.jQuery; // Shoutout AngusCroll (https://goo.gl/pxwQGp)
+
+  var getjQuery = function getjQuery() {
+    var _window = window,
+        jQuery = _window.jQuery;
+
+    if (jQuery && !document.body.hasAttribute('data-no-jquery')) {
+      return jQuery;
+    }
+
+    return null;
+  };
 
   /**
    * --------------------------------------------------------------------------
@@ -30,6 +39,7 @@
    * ------------------------------------------------------------------------
    */
 
+  var $ = getjQuery();
   var namespaceRegex = /[^.]*(?=\..*)\.|.*/;
   var stripNameRegex = /\..*/;
   var keyEventRegex = /^key/;
@@ -257,9 +267,9 @@
       var defaultPrevented = false;
       var evt = null;
 
-      if (inNamespace && typeof jQuery !== 'undefined') {
-        jQueryEvent = jQuery.Event(event, args);
-        jQuery(element).trigger(jQueryEvent);
+      if (inNamespace && $) {
+        jQueryEvent = $.Event(event, args);
+        $(element).trigger(jQueryEvent);
         bubbles = !jQueryEvent.isPropagationStopped();
         nativeDispatch = !jQueryEvent.isImmediatePropagationStopped();
         defaultPrevented = jQueryEvent.isDefaultPrevented();
