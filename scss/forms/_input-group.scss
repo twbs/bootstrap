@@ -123,9 +123,12 @@
 // Remix the default form control sizing classes into new ones for easier
 // manipulation.
 
-.input-group-lg > .form-control:not(textarea),
-.input-group-lg > .form-select {
+.input-group-lg > .form-control {
   min-height: $input-height-lg;
+}
+
+.input-group-lg > .form-select {
+  height: $input-height-lg;
 }
 
 .input-group-lg > .form-control,
@@ -140,9 +143,12 @@
   @include border-radius($input-border-radius-lg);
 }
 
-.input-group-sm > .form-control:not(textarea),
-.input-group-sm > .form-select {
+.input-group-sm > .form-control {
   min-height: $input-height-sm;
+}
+
+.input-group-sm > .form-select {
+  height: $input-height-sm;
 }
 
 .input-group-sm > .form-control,
