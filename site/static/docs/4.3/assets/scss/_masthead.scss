@@ -50,7 +50,6 @@
   height: 6rem;
   padding: 1.5rem;
   color: #fff;
-  text-shadow: 0 -.125rem 0 rgba(0, 0, 0, .1);
   @include border-radius(25%);
   box-shadow: 0 .25rem .5rem rgba(0, 0, 0, .15), inset 0 -1px 0 rgba(0, 0, 0, .15);
 
@@ -78,9 +77,4 @@
 
 .masthead-followup {
   .bd-clipboard { display: none; }
-
-  .highlight {
-    // padding: .5rem 0;
-    // background-color: transparent;
-  }
 }
