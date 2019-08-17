@@ -63,6 +63,13 @@
     @include border-radius($form-feedback-tooltip-border-radius);
   }
 
+  @include form-validation-state-selector($state) {
+    ~ .#{$state}-feedback,
+    ~ .#{$state}-tooltip {
+      display: block;
+    }
+  }
+
   .form-control {
     @include form-validation-state-selector($state) {
       border-color: $color;
@@ -78,11 +85,6 @@
       &:focus {
         border-color: $color;
         box-shadow: 0 0 0 $input-focus-width rgba($color, .25);
-      }
-
-      ~ .#{$state}-feedback,
-      ~ .#{$state}-tooltip {
-        display: block;
       }
     }
   }
@@ -110,21 +112,6 @@
         border-color: $color;
         box-shadow: 0 0 0 $input-focus-width rgba($color, .25);
       }
-
-      ~ .#{$state}-feedback,
-      ~ .#{$state}-tooltip {
-        display: block;
-      }
-    }
-  }
-
-
-  .form-control-file {
-    @include form-validation-state-selector($state) {
-      ~ .#{$state}-feedback,
-      ~ .#{$state}-tooltip {
-        display: block;
-      }
     }
   }
 
@@ -143,11 +130,6 @@
       ~ .form-check-label {
         color: $color;
       }
-
-      ~ .#{$state}-feedback,
-      ~ .#{$state}-tooltip {
-        display: block;
-      }
     }
   }
   .form-check-inline .form-check-input {
@@ -161,11 +143,6 @@
     @include form-validation-state-selector($state) {
       ~ .form-file-label {
         border-color: $color;
-      }
-
-      ~ .#{$state}-feedback,
-      ~ .#{$state}-tooltip {
-        display: block;
       }
 
       &:focus {
