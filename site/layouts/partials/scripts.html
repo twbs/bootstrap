@@ -5,7 +5,7 @@
 {{- end }}
 
 {{ if eq .Page.Layout "docs" -}}
-<script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script src="/docs/{{ .Site.Params.docs_version }}/assets/js/vendor/docsearch.min.js"></script>
 {{- end }}
 
 {{- $vendor := resources.Match "js/vendor/*.js" -}}
