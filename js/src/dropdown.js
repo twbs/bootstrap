@@ -71,19 +71,21 @@ const AttachmentMap = {
 }
 
 const Default = {
-  offset    : 0,
-  flip      : true,
-  boundary  : 'scrollParent',
-  reference : 'toggle',
-  display   : 'dynamic'
+  offset       : 0,
+  flip         : true,
+  boundary     : 'scrollParent',
+  reference    : 'toggle',
+  display      : 'dynamic',
+  popperConfig : null
 }
 
 const DefaultType = {
-  offset    : '(number|string|function)',
-  flip      : 'boolean',
-  boundary  : '(string|element)',
-  reference : '(string|element)',
-  display   : 'string'
+  offset       : '(number|string|function)',
+  flip         : 'boolean',
+  boundary     : '(string|element)',
+  reference    : '(string|element)',
+  display      : 'string',
+  popperConfig : '(null|object)'
 }
 
 /**
@@ -359,7 +361,10 @@ class Dropdown {
       }
     }
 
-    return popperConfig
+    return {
+      ...popperConfig,
+      ...this._config.popperConfig
+    }
   }
 
   // Static

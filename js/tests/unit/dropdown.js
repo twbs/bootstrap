@@ -1480,4 +1480,30 @@ $(function () {
     assert.strictEqual(offset.offset, myOffset)
     assert.ok(typeof offset.fn === 'undefined')
   })
+
+  QUnit.test('should allow to pass config to popper.js with `popperConfig`', function (assert) {
+    assert.expect(1)
+
+    var dropdownHTML =
+      '<div class="dropdown">' +
+      '  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown</a>' +
+      '  <div class="dropdown-menu">' +
+      '    <a class="dropdown-item" href="#">Another link</a>' +
+      '  </div>' +
+      '</div>'
+
+    var $dropdown = $(dropdownHTML)
+      .appendTo('#qunit-fixture')
+      .find('[data-toggle="dropdown"]')
+      .bootstrapDropdown({
+        popperConfig: {
+          placement: 'left'
+        }
+      })
+
+    var dropdown = $dropdown.data('bs.dropdown')
+    var popperConfig = dropdown._getPopperConfig()
+
+    assert.strictEqual(popperConfig.placement, 'left')
+  })
 })
