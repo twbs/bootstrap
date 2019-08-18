@@ -51,12 +51,12 @@
 //
 // Sizing
 //
-@include pagination-size($pagination-padding-y, $pagination-padding-x, null, $pagination-line-height, $pagination-border-radius);
+@include pagination-size($pagination-padding-y, $pagination-padding-x, null, $pagination-border-radius);
 
 .pagination-lg {
-  @include pagination-size($pagination-padding-y-lg, $pagination-padding-x-lg, $font-size-lg, $line-height-lg, $border-radius-lg);
+  @include pagination-size($pagination-padding-y-lg, $pagination-padding-x-lg, $font-size-lg, $border-radius-lg);
 }
 
 .pagination-sm {
-  @include pagination-size($pagination-padding-y-sm, $pagination-padding-x-sm, $font-size-sm, $line-height-sm, $border-radius-sm);
+  @include pagination-size($pagination-padding-y-sm, $pagination-padding-x-sm, $font-size-sm, $border-radius-sm);
 }

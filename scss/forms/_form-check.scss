@@ -13,8 +13,7 @@
   float: left;
   width: $form-check-input-width;
   height: $form-check-input-width;
-  // Todo: Change static value to base line-height?
-  margin-top: calc((1.5em - #{$form-check-input-width}) / 2); // line-height minus check height
+  margin-top: ($line-height-base - $form-check-input-width) / 2; // line-height minus check height
   margin-left: $form-check-padding-left * -1;
   background-color: $form-check-input-bg;
   border: $form-check-input-border;
