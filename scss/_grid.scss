@@ -46,6 +46,11 @@
     @include make-row();
   }
 
+  [class*="row-cols-"] {
+    > * {
+      @include make-col-ready();
+    }
+  }
   @each $breakpoint in map-keys($grid-breakpoints) {
     $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 

@@ -334,10 +334,10 @@ Use these row columns classes to quickly create basic grid layouts or to control
 {{< example >}}
 <div class="container">
   <div class="row row-cols-2">
-    <div class="col">Column</div>
-    <div class="col">Column</div>
-    <div class="col">Column</div>
-    <div class="col">Column</div>
+    <div>Column</div>
+    <div>Column</div>
+    <div>Column</div>
+    <div>Column</div>
   </div>
 </div>
 {{< /example >}}
@@ -347,10 +347,10 @@ Use these row columns classes to quickly create basic grid layouts or to control
 {{< example >}}
 <div class="container">
   <div class="row row-cols-3">
-    <div class="col">Column</div>
-    <div class="col">Column</div>
-    <div class="col">Column</div>
-    <div class="col">Column</div>
+    <div>Column</div>
+    <div>Column</div>
+    <div>Column</div>
+    <div>Column</div>
   </div>
 </div>
 {{< /example >}}
@@ -360,10 +360,24 @@ Use these row columns classes to quickly create basic grid layouts or to control
 {{< example >}}
 <div class="container">
   <div class="row row-cols-4">
-    <div class="col">Column</div>
-    <div class="col">Column</div>
-    <div class="col">Column</div>
-    <div class="col">Column</div>
+    <div>Column</div>
+    <div>Column</div>
+    <div>Column</div>
+    <div>Column</div>
+  </div>
+</div>
+{{< /example >}}
+</div>
+
+
+
+<div class="bd-example-row">
+{{< example >}}
+<div class="container">
+  <div class="row row-cols-4">
+    <div>Column</div>
+    <div>Column</div>
+    <div class="col-6">Column</div>
   </div>
 </div>
 {{< /example >}}

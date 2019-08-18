@@ -6,8 +6,7 @@
 
 .bd-example-row {
   .row {
-    > .col,
-    > [class^="col-"] {
+    > * {
       padding-top: .75rem;
       padding-bottom: .75rem;
       background-color: rgba(86, 61, 124, .15);
