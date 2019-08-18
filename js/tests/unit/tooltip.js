@@ -1266,4 +1266,21 @@ $(function () {
 
     assert.strictEqual(tooltip.config.sanitize, true)
   })
+
+  QUnit.test('should allow to pass config to popper.js with `popperConfig`', function (assert) {
+    assert.expect(1)
+
+    var $trigger = $('<a href="#" rel="tooltip" data-trigger="click" title="Another tooltip"/>')
+      .appendTo('#qunit-fixture')
+      .bootstrapTooltip({
+        popperConfig: {
+          placement: 'left'
+        }
+      })
+
+    var tooltip = $trigger.data('bs.tooltip')
+    var popperConfig = tooltip._getPopperConfig('top')
+
+    assert.strictEqual(popperConfig.placement, 'left')
+  })
 })
