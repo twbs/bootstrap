@@ -155,10 +155,6 @@ class Dropdown {
 
     // Disable totally Popper.js for Dropdown in Navbar
     if (!this._inNavbar) {
-      /**
-       * Check for Popper dependency
-       * Popper - https://popper.js.org
-       */
       if (typeof Popper === 'undefined') {
         throw new TypeError('Bootstrap\'s dropdowns require Popper.js (https://popper.js.org)')
       }
@@ -251,7 +247,7 @@ class Dropdown {
     EventHandler.off(this._element, EVENT_KEY)
     this._element = null
     this._menu = null
-    if (this._popper !== null) {
+    if (this._popper) {
       this._popper.destroy()
       this._popper = null
     }
@@ -259,7 +255,7 @@ class Dropdown {
 
   update() {
     this._inNavbar = this._detectNavbar()
-    if (this._popper !== null) {
+    if (this._popper) {
       this._popper.scheduleUpdate()
     }
   }
@@ -439,6 +435,10 @@ class Dropdown {
       }
 
       toggles[i].setAttribute('aria-expanded', 'false')
+
+      if (context._popper) {
+        context._popper.destroy()
+      }
 
       dropdownMenu.classList.remove(ClassName.SHOW)
       parent.classList.remove(ClassName.SHOW)
