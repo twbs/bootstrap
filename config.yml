@@ -18,13 +18,23 @@ blackfriday:
   fractions:            false
 
 publishDir:             "_gh_pages"
-archetypeDir:           "site/archetypes"
-assetDir:               "site/assets"
-contentDir:             "site/content"
-dataDir:                "site/data"
-layoutDir:              "site/layouts"
-staticDir:              "site/static"
-themesDir:              "site/themes"
+
+module:
+  mounts:
+    - source:           dist
+      target:           static/docs/4.3/dist
+    - source:           site/content
+      target:           content
+    - source:           site/data
+      target:           data
+    - source:           site/layouts
+      target:           layouts
+    - source:           site/static
+      target:           static
+    - source:           site/static/docs/4.3/assets/img/favicons/apple-touch-icon.png
+      target:           static/apple-touch-icon.png
+    - source:           site/static/docs/4.3/assets/img/favicons/favicon.ico
+      target:           static/favicon.ico
 
 params:
   description:          "The most popular HTML, CSS, and JS library in the world."
