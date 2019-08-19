@@ -11,58 +11,58 @@ jobs:
         node: [6, 8, 12]
 
     steps:
-    - uses: actions/checkout@master
-      with:
-        fetch-depth: 3
+      - uses: actions/checkout@master
+        with:
+          fetch-depth: 3
 
-    - name: Set Node.js version
-      uses: actions/setup-node@v1.1.0
-      with:
-        version: ${{ matrix.node }}
+      - name: Set Node.js version
+        uses: actions/setup-node@v1.1.0
+        with:
+          version: ${{ matrix.node }}
 
-    - name: Set up Ruby 2.4
-      uses: actions/setup-ruby@v1
-      with:
-        version: 2.4.x
-        
-    - name: Set up Bundler
-      run: gem install bundler
+      - name: Set up Ruby 2.4
+        uses: actions/setup-ruby@v1
+        with:
+          version: 2.4.x
 
-    - run: ruby --version
-    - run: gem --version
-    - run: bundle --version
-    - run: node --version
-    - run: npm --version
-    - run: java -version
+      - name: Set up Bundler
+        run: gem install bundler
 
-    - name: Install npm dependencies
-      run: npm install
+      - run: ruby --version
+      - run: gem --version
+      - run: bundle --version
+      - run: node --version
+      - run: npm --version
+      - run: java -version
 
-    - name: Install bundler dependencies
-      run: bundle install --deployment --jobs=3 --retry=3 --clean
+      - name: Install npm dependencies
+        run: npm install
 
-    - name: Run tests
-      run: npm test
+      - name: Install bundler dependencies
+        run: bundle install --deployment --jobs=3 --retry=3 --clean
 
-    - name: Run bundlesize
-      run: npm run bundlesize
-      if: matrix.node == 8 && github.repository == 'twbs/bootstrap'
-      env:
-        BUNDLESIZE_GITHUB_TOKEN: "${{ secrets.BUNDLESIZE_GITHUB_TOKEN }}"
+      - name: Run tests
+        run: npm test
 
-    - name: Run BrowserStack tests
-      run: npm run js-test-cloud
-      if: matrix.node == 8 && github.repository == 'twbs/bootstrap' && github.event_name == 'push'
-      env:
-        BROWSER_STACK_ACCESS_KEY: "${{ secrets.BROWSER_STACK_ACCESS_KEY }}"
-        BROWSER_STACK_USERNAME: "${{ secrets.BROWSER_STACK_USERNAME }}"
+      - name: Run bundlesize
+        run: npm run bundlesize
+        if: matrix.node == 8 && github.repository == 'twbs/bootstrap'
+        env:
+          BUNDLESIZE_GITHUB_TOKEN: "${{ secrets.BUNDLESIZE_GITHUB_TOKEN }}"
 
-    - name: Run Link Checker
-      run: npm run check-broken-links
-      if: matrix.node == 8
+      - name: Run BrowserStack tests
+        run: npm run js-test-cloud
+        if: matrix.node == 8 && github.repository == 'twbs/bootstrap' && github.event_name == 'push'
+        env:
+          BROWSER_STACK_ACCESS_KEY: "${{ secrets.BROWSER_STACK_ACCESS_KEY }}"
+          BROWSER_STACK_USERNAME: "${{ secrets.BROWSER_STACK_USERNAME }}"
 
-    - name: Run Coveralls
-      run: npm run coveralls
-      if: matrix.node == 8 && github.repository == 'twbs/bootstrap' && github.event_name == 'push'
-      env:
-        COVERALLS_REPO_TOKEN: "${{ secrets.COVERALLS_REPO_TOKEN }}"
+      - name: Run Link Checker
+        run: npm run check-broken-links
+        if: matrix.node == 8
+
+      - name: Run Coveralls
+        run: npm run coveralls
+        if: matrix.node == 8 && github.repository == 'twbs/bootstrap' && github.event_name == 'push'
+        env:
+          COVERALLS_REPO_TOKEN: "${{ secrets.COVERALLS_REPO_TOKEN }}"
