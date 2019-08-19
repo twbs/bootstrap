@@ -489,6 +489,7 @@ $input-line-height-lg:                  $input-btn-line-height-lg !default;
 
 $input-bg:                              $white !default;
 $input-disabled-bg:                     $gray-200 !default;
+$input-disabled-border-color:           null !default;
 
 $input-color:                           $gray-700 !default;
 $input-border-color:                    $gray-400 !default;
@@ -581,23 +582,24 @@ $input-group-addon-bg:                  $gray-200 !default;
 $input-group-addon-border-color:        $input-border-color !default;
 
 
-$form-select-padding-y:           $input-padding-y !default;
-$form-select-padding-x:           $input-padding-x !default;
-$form-select-font-family:         $input-font-family !default;
-$form-select-font-size:           $input-font-size !default;
-$form-select-height:              $input-height !default;
-$form-select-indicator-padding:   1rem !default; // Extra padding to account for the presence of the background-image based indicator
-$form-select-font-weight:         $input-font-weight !default;
-$form-select-line-height:         $input-line-height !default;
-$form-select-color:               $input-color !default;
-$form-select-disabled-color:      $gray-600 !default;
-$form-select-bg:                  $input-bg !default;
-$form-select-disabled-bg:         $gray-200 !default;
-$form-select-bg-size:             16px 12px !default; // In pixels because image dimensions
-$form-select-indicator-color:     $gray-800 !default;
-$form-select-indicator:           url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='#{$form-select-indicator-color}' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/></svg>") !default;
+$form-select-padding-y:             $input-padding-y !default;
+$form-select-padding-x:             $input-padding-x !default;
+$form-select-font-family:           $input-font-family !default;
+$form-select-font-size:             $input-font-size !default;
+$form-select-height:                $input-height !default;
+$form-select-indicator-padding:     1rem !default; // Extra padding to account for the presence of the background-image based indicator
+$form-select-font-weight:           $input-font-weight !default;
+$form-select-line-height:           $input-line-height !default;
+$form-select-color:                 $input-color !default;
+$form-select-disabled-color:        $gray-600 !default;
+$form-select-bg:                    $input-bg !default;
+$form-select-disabled-bg:           $gray-200 !default;
+$form-select-disabled-border-color: $input-disabled-border-color !default;
+$form-select-bg-size:               16px 12px !default; // In pixels because image dimensions
+$form-select-indicator-color:       $gray-800 !default;
+$form-select-indicator:             url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='#{$form-select-indicator-color}' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/></svg>") !default;
 
-$form-select-background:          no-repeat right $form-select-padding-x center / $form-select-bg-size !default; // Used so we can have multiple background elements (e.g., arrow and feedback icon)
+$form-select-background:            no-repeat right $form-select-padding-x center / $form-select-bg-size !default; // Used so we can have multiple background elements (e.g., arrow and feedback icon)
 
 $form-select-feedback-icon-padding-right: calc((1em + #{2 * $form-select-padding-y}) * 3 / 4 + #{$form-select-padding-x + $form-select-indicator-padding}) !default;
 $form-select-feedback-icon-position:      center right ($form-select-padding-x + $form-select-indicator-padding) !default;
@@ -645,6 +647,7 @@ $form-file-height:                $input-height !default;
 $form-file-focus-border-color:    $input-focus-border-color !default;
 $form-file-focus-box-shadow:      $input-focus-box-shadow !default;
 $form-file-disabled-bg:           $input-disabled-bg !default;
+$form-file-disabled-border-color: $input-disabled-border-color !default;
 
 $form-file-padding-y:             $input-padding-y !default;
 $form-file-padding-x:             $input-padding-x !default;

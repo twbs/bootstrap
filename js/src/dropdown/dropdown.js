@@ -83,7 +83,8 @@ const Default = {
   flip: true,
   boundary: 'scrollParent',
   reference: 'toggle',
-  display: 'dynamic'
+  display: 'dynamic',
+  popperConfig: null
 }
 
 const DefaultType = {
@@ -91,7 +92,8 @@ const DefaultType = {
   flip: 'boolean',
   boundary: '(string|element)',
   reference: '(string|element)',
-  display: 'string'
+  display: 'string',
+  popperConfig: '(null|object)'
 }
 
 /**
@@ -359,7 +361,10 @@ class Dropdown {
       }
     }
 
-    return popperConfig
+    return {
+      ...popperConfig,
+      ...this._config.popperConfig
+    }
   }
 
   // Static
