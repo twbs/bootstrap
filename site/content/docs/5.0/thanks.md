@@ -52,7 +52,7 @@ Through donations and sponsorships we are able to maintain & improve Bootstrap. 
 
         output.push(
           '<div class="m-2 position-relative">',
-          ' <div class="img-thumbnail mx-auto d-flex align-items-center justify-content-center overflow-hidden" style="width:100px; height: 100px;">',
+          ' <div class="img-thumbnail mx-auto d-flex align-items-center justify-content-center overflow-hidden sponsor">',
           '  <img class="img-fluid d-block" src="' + sponsorAccount.imageUrl + '" alt="' + sponsorAccount.name + '">',
           ' </div>',
           ' <h3 class="h6 pt-2">',
@@ -82,7 +82,7 @@ Through donations and sponsorships we are able to maintain & improve Bootstrap. 
 
         output.push(
           '<div class="m-1 position-relative">',
-          ' <div class="img-thumbnail d-flex align-items-center justify-content-center overflow-hidden" style="width:50px; height: 50px;">'
+          ' <div class="img-thumbnail d-flex align-items-center justify-content-center overflow-hidden sponsor-sm">'
         )
 
         if (backerAccount.website) {
