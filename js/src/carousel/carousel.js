@@ -424,8 +424,8 @@ class Carousel {
   _slide(direction, element) {
     const activeElement = SelectorEngine.findOne(Selector.ACTIVE_ITEM, this._element)
     const activeElementIndex = this._getItemIndex(activeElement)
-    const nextElement = (element || activeElement) &&
-      this._getItemByDirection(direction, activeElement)
+    const nextElement = element || (activeElement &&
+      this._getItemByDirection(direction, activeElement))
 
     const nextElementIndex = this._getItemIndex(nextElement)
     const isCycling = Boolean(this._interval)
