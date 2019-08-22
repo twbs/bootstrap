@@ -91,7 +91,7 @@
 
 // Builds on `abbr`
 .initialism {
-  @include font-size(90%);
+  @include font-size($initialism-font-size);
   text-transform: uppercase;
 }
 
