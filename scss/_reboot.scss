@@ -213,7 +213,7 @@ small {
 sub,
 sup {
   position: relative;
-  @include font-size(75%);
+  @include font-size($sub-sup-font-size);
   line-height: 0;
   vertical-align: baseline;
 }
@@ -298,7 +298,7 @@ kbd {
 
   kbd {
     padding: 0;
-    @include font-size(100%);
+    @include font-size(1em);
     font-weight: $nested-kbd-font-weight;
   }
 }

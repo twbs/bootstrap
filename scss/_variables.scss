@@ -332,9 +332,13 @@ $display-line-height:         $headings-line-height !default;
 $lead-font-size:              $font-size-base * 1.25 !default;
 $lead-font-weight:            300 !default;
 
-$small-font-size:             80% !default;
+$small-font-size:             .875em !default;
+
+$sub-sup-font-size:           .75em !default;
 
 $text-muted:                  $gray-600 !default;
+
+$initialism-font-size:        $small-font-size !default;
 
 $blockquote-small-color:      $gray-600 !default;
 $blockquote-small-font-size:  $small-font-size !default;
@@ -923,7 +927,7 @@ $toast-header-border-color:         rgba(0, 0, 0, .05) !default;
 
 // Badges
 
-$badge-font-size:                   75% !default;
+$badge-font-size:                   .75em !default;
 $badge-font-weight:                 $font-weight-bold !default;
 $badge-color:                       $white !default;
 $badge-padding-y:                   .25em !default;
@@ -1040,7 +1044,7 @@ $thumbnail-box-shadow:              $box-shadow-sm !default;
 
 // Figures
 
-$figure-caption-font-size:          90% !default;
+$figure-caption-font-size:          $small-font-size !default;
 $figure-caption-color:              $gray-600 !default;
 
 
@@ -1108,7 +1112,7 @@ $close-text-shadow:                 0 1px 0 $white !default;
 
 // Code
 
-$code-font-size:                    87.5% !default;
+$code-font-size:                    $small-font-size !default;
 $code-color:                        $pink !default;
 
 $kbd-padding-y:                     .2rem !default;
