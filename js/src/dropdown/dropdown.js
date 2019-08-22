@@ -135,7 +135,6 @@ class Dropdown {
       return
     }
 
-    const parent = Dropdown.getParentFromElement(this._element)
     const isActive = this._menu.classList.contains(ClassName.SHOW)
 
     Dropdown.clearMenus()
@@ -144,9 +143,19 @@ class Dropdown {
       return
     }
 
+    this.show()
+  }
+
+  show() {
+    if (this._element.disabled || this._element.classList.contains(ClassName.DISABLED) || this._menu.classList.contains(ClassName.SHOW)) {
+      return
+    }
+
+    const parent = Dropdown.getParentFromElement(this._element)
     const relatedTarget = {
       relatedTarget: this._element
     }
+
     const showEvent = EventHandler.trigger(parent, Event.SHOW, relatedTarget)
 
     if (showEvent.defaultPrevented) {
@@ -200,27 +209,6 @@ class Dropdown {
     EventHandler.trigger(parent, Event.SHOWN, relatedTarget)
   }
 
-  show() {
-    if (this._element.disabled || this._element.classList.contains(ClassName.DISABLED) || this._menu.classList.contains(ClassName.SHOW)) {
-      return
-    }
-
-    const parent = Dropdown.getParentFromElement(this._element)
-    const relatedTarget = {
-      relatedTarget: this._element
-    }
-
-    const showEvent = EventHandler.trigger(parent, Event.SHOW, relatedTarget)
-
-    if (showEvent.defaultPrevented) {
-      return
-    }
-
-    Manipulator.toggleClass(this._menu, ClassName.SHOW)
-    Manipulator.toggleClass(parent, ClassName.SHOW)
-    EventHandler.trigger(parent, Event.SHOWN, relatedTarget)
-  }
-
   hide() {
     if (this._element.disabled || this._element.classList.contains(ClassName.DISABLED) || !this._menu.classList.contains(ClassName.SHOW)) {
       return
@@ -235,6 +223,10 @@ class Dropdown {
 
     if (hideEvent.defaultPrevented) {
       return
+    }
+
+    if (this._popper) {
+      this._popper.destroy()
     }
 
     Manipulator.toggleClass(this._menu, ClassName.SHOW)
