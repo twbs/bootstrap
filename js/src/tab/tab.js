@@ -78,9 +78,9 @@ class Tab {
   // Public
 
   show() {
-    if (this._element.parentNode &&
+    if ((this._element.parentNode &&
       this._element.parentNode.nodeType === Node.ELEMENT_NODE &&
-      this._element.classList.contains(ClassName.ACTIVE) ||
+      this._element.classList.contains(ClassName.ACTIVE)) ||
       this._element.classList.contains(ClassName.DISABLED)) {
       return
     }
@@ -108,7 +108,7 @@ class Tab {
     })
 
     if (showEvent.defaultPrevented ||
-      hideEvent !== null && hideEvent.defaultPrevented) {
+      (hideEvent !== null && hideEvent.defaultPrevented)) {
       return
     }
 
