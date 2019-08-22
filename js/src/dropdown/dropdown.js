@@ -390,7 +390,7 @@ class Dropdown {
 
   static clearMenus(event) {
     if (event && (event.which === RIGHT_MOUSE_BUTTON_WHICH ||
-      event.type === 'keyup' && event.which !== TAB_KEYCODE)) {
+      (event.type === 'keyup' && event.which !== TAB_KEYCODE))) {
       return
     }
 
@@ -415,9 +415,9 @@ class Dropdown {
         continue
       }
 
-      if (event && (event.type === 'click' &&
-          /input|textarea/i.test(event.target.tagName) ||
-          event.type === 'keyup' && event.which === TAB_KEYCODE) &&
+      if (event && ((event.type === 'click' &&
+          /input|textarea/i.test(event.target.tagName)) ||
+          (event.type === 'keyup' && event.which === TAB_KEYCODE)) &&
           parent.contains(event.target)) {
         continue
       }
@@ -459,9 +459,9 @@ class Dropdown {
     //    - If key is not up or down => not a dropdown command
     //    - If trigger inside the menu => not a dropdown command
     if (/input|textarea/i.test(event.target.tagName) ?
-      event.which === SPACE_KEYCODE || event.which !== ESCAPE_KEYCODE &&
-      (event.which !== ARROW_DOWN_KEYCODE && event.which !== ARROW_UP_KEYCODE ||
-        SelectorEngine.closest(event.target, Selector.MENU)) :
+      event.which === SPACE_KEYCODE || (event.which !== ESCAPE_KEYCODE &&
+      ((event.which !== ARROW_DOWN_KEYCODE && event.which !== ARROW_UP_KEYCODE) ||
+        SelectorEngine.closest(event.target, Selector.MENU))) :
       !REGEXP_KEYDOWN.test(event.which)) {
       return
     }
@@ -476,7 +476,7 @@ class Dropdown {
     const parent = Dropdown.getParentFromElement(this)
     const isActive = parent.classList.contains(ClassName.SHOW)
 
-    if (!isActive || isActive && (event.which === ESCAPE_KEYCODE || event.which === SPACE_KEYCODE)) {
+    if (!isActive || (isActive && (event.which === ESCAPE_KEYCODE || event.which === SPACE_KEYCODE))) {
       if (event.which === ESCAPE_KEYCODE) {
         SelectorEngine.findOne(Selector.DATA_TOGGLE, parent).focus()
       }
