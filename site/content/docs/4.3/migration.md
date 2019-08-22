@@ -23,9 +23,10 @@ See the browser and devices page for details on what is currently supported in B
 Changes to our source Sass files and compiled CSS.
 
 - Removed `hover`, `hover-focus`, `plain-hover-focus`, and `hover-focus-active` mixins. Use regular CSS syntax for these moving forward. [See #28267](https://github.com/twbs/bootstrap/pull/28267).
-- **Todo:** Remove previously deprecated mixins
+- Remove previously deprecated mixins
   - `float()`
   - `form-control-mixin()`
+  - `nav-divider()`
   - `retina-img()`
   - `text-hide()` (also dropped the associated utility class, `.text-hide`)
   - `visibility()`
