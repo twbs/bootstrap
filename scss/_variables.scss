@@ -724,9 +724,6 @@ $nav-pills-border-radius:           $border-radius !default;
 $nav-pills-link-active-color:       $component-active-color !default;
 $nav-pills-link-active-bg:          $component-active-bg !default;
 
-$nav-divider-color:                 $gray-200 !default;
-$nav-divider-margin-y:              $spacer / 2 !default;
-
 
 // Navbar
 
@@ -781,7 +778,7 @@ $dropdown-border-radius:            $border-radius !default;
 $dropdown-border-width:             $border-width !default;
 $dropdown-inner-border-radius:      calc(#{$dropdown-border-radius} - #{$dropdown-border-width}) !default;
 $dropdown-divider-bg:               $gray-200 !default;
-$dropdown-divider-margin-y:         $nav-divider-margin-y !default;
+$dropdown-divider-margin-y:         $spacer / 2 !default;
 $dropdown-box-shadow:               $box-shadow !default;
 
 $dropdown-link-color:               $gray-900 !default;
