@@ -12,11 +12,14 @@
     text-decoration: none;
   }
 
-  &:not(:disabled):not(.disabled) {
-    &:hover,
-    &:focus {
-      opacity: .75;
-    }
+  &:hover,
+  &:focus {
+    opacity: .75;
+  }
+
+  &:disabled,
+  &.disabled {
+    pointer-events: none;
   }
 }
 
@@ -31,11 +34,4 @@ button.close {
   background-color: transparent;
   border: 0;
   appearance: none;
-}
-
-// Future-proof disabling of clicks on `<a>` elements
-
-// stylelint-disable-next-line selector-no-qualifying-type
-a.close.disabled {
-  pointer-events: none;
 }
