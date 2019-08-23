@@ -407,6 +407,13 @@ select {
   word-wrap: normal;
 }
 
+// Remove the dropdown arrow in Chrome from inputs built with datalists.
+//
+// Source: https://stackoverflow.com/a/54997118
+
+[list]::-webkit-calendar-picker-indicator {
+  display: none;
+}
 
 // 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
 //    controls in Android 4.
