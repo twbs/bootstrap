@@ -147,6 +147,44 @@ describe('Dropdown', () => {
       dropdown.toggle()
     })
 
+    it('should destroy old popper references on toggle', done => {
+      fixtureEl.innerHTML = [
+        '<div class="first dropdown">',
+        '  <button href="#" class="firstBtn btn" data-toggle="dropdown" aria-expanded="false">Dropdown</button>',
+        '  <div class="dropdown-menu">',
+        '    <a class="dropdown-item" href="#">Secondary link</a>',
+        '  </div>',
+        '</div>',
+        '<div class="second dropdown">',
+        '  <button href="#" class="secondBtn btn" data-toggle="dropdown" aria-expanded="false">Dropdown</button>',
+        '  <div class="dropdown-menu">',
+        '    <a class="dropdown-item" href="#">Secondary link</a>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const btnDropdown1 = fixtureEl.querySelector('.firstBtn')
+      const btnDropdown2 = fixtureEl.querySelector('.secondBtn')
+      const firstDropdownEl = fixtureEl.querySelector('.first')
+      const secondDropdownEl = fixtureEl.querySelector('.second')
+      const dropdown1 = new Dropdown(btnDropdown1)
+      const dropdown2 = new Dropdown(btnDropdown2)
+
+      firstDropdownEl.addEventListener('shown.bs.dropdown', () => {
+        expect(firstDropdownEl.classList.contains('show')).toEqual(true)
+        spyOn(dropdown1._popper, 'destroy')
+        dropdown2.toggle()
+        done()
+      })
+
+      secondDropdownEl.addEventListener('shown.bs.dropdown', () => {
+        expect(dropdown1._popper.destroy).toHaveBeenCalled()
+        done()
+      })
+
+      dropdown1.toggle()
+    })
+
     it('should toggle a dropdown and add/remove event listener on mobile', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',

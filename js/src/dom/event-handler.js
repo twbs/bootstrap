@@ -81,7 +81,7 @@ const nativeEvents = [
  */
 
 function getUidEvent(element, uid) {
-  return uid && `${uid}::${uidEvent++}` || element.uidEvent || uidEvent++
+  return (uid && `${uid}::${uidEvent++}`) || element.uidEvent || uidEvent++
 }
 
 function getEvent(element) {

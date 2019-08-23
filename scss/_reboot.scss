@@ -528,6 +528,12 @@ progress {
   -webkit-appearance: none;
 }
 
+// Remove padding around color pickers in webkit browsers
+
+::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
 // 1. Change font properties to `inherit` in Safari.
 // 2. Correct the inability to style clickable types in iOS and Safari.
 

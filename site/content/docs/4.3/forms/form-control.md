@@ -73,3 +73,14 @@ If you want to have `<input readonly>` elements in your form styled as plain tex
   <button type="submit" class="btn btn-primary mb-3">Confirm identity</button>
 </form>
 {{< /example >}}
+
+## Color
+
+Keep in mind color inputs are [not supported in IE](https://caniuse.com/#feat=input-color).
+
+{{< example >}}
+<form>
+  <label for="exampleColorInput">Color picker</label>
+  <input type="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c" title="Choose your color">
+</form>
+{{< /example >}}
