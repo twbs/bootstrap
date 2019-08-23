@@ -74,17 +74,15 @@ class Button {
     if (rootElement) {
       const input = SelectorEngine.findOne(Selector.INPUT, this._element)
 
-      if (input) {
-        if (input.type === 'radio') {
-          if (input.checked &&
-            this._element.classList.contains(ClassName.ACTIVE)) {
-            triggerChangeEvent = false
-          } else {
-            const activeElement = SelectorEngine.findOne(Selector.ACTIVE, rootElement)
+      if (input && input.type === 'radio') {
+        if (input.checked &&
+          this._element.classList.contains(ClassName.ACTIVE)) {
+          triggerChangeEvent = false
+        } else {
+          const activeElement = SelectorEngine.findOne(Selector.ACTIVE, rootElement)
 
-            if (activeElement) {
-              activeElement.classList.remove(ClassName.ACTIVE)
-            }
+          if (activeElement) {
+            activeElement.classList.remove(ClassName.ACTIVE)
           }
         }
 

@@ -27,7 +27,7 @@
       "always-multiline"
     ],
     "new-cap": "off",
-    "no-mixed-operators": "off",
+    "no-mixed-operators": "error",
     "object-curly-spacing": [
       "error",
       "always"
