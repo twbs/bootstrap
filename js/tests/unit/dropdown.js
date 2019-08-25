@@ -1272,7 +1272,7 @@ $(function () {
   })
 
   QUnit.test('should show dropdown', function (assert) {
-    assert.expect(2)
+    assert.expect(3)
 
     var dropdownHTML =
       '<div class="dropdown">' +
@@ -1293,6 +1293,7 @@ $(function () {
     $dropdown
       .parent('.dropdown')
       .on('show.bs.dropdown', function () {
+        assert.ok(dropdown._popper === null)
         assert.ok(true, 'show was fired')
       })
       .on('shown.bs.dropdown', function () {
@@ -1549,5 +1550,39 @@ $(function () {
     })
 
     dropdown1.toggle()
+  })
+
+  QUnit.test('should hide a dropdown and destroy popper', function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+
+    var fixtureHtml = [
+      '<div class="dropdown">',
+      '  <button href="#" class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+      '  <div class="dropdown-menu">',
+      '    <a class="dropdown-item" href="#">Secondary link</a>',
+      '  </div>',
+      '</div>'
+    ].join('')
+
+    $(fixtureHtml).appendTo('#qunit-fixture')
+
+    var $dropdownEl = $('.dropdown')
+    var dropdown = $('[data-toggle="dropdown"]')
+      .bootstrapDropdown()
+      .data('bs.dropdown')
+    var spyPopper
+
+    $dropdownEl.one('shown.bs.dropdown', function () {
+      spyPopper = sinon.spy(dropdown._popper, 'destroy')
+      dropdown.hide()
+    })
+
+    $dropdownEl.one('hidden.bs.dropdown', function () {
+      assert.ok(spyPopper.called)
+      done()
+    })
+
+    dropdown.show(true)
   })
 })
