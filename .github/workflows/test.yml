@@ -7,11 +7,13 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
+      fail-fast: false
       matrix:
         node: [8, 10, 12]
 
     steps:
-      - uses: actions/checkout@master
+      - name: Clone repository
+        uses: actions/checkout@master
         with:
           fetch-depth: 3
 
@@ -32,7 +34,7 @@ jobs:
 
       - name: Run bundlesize
         run: npm run bundlesize
-        if: matrix.node == 10 && github.repository == 'twbs/bootstrap' && github.event_name == 'push'
+        if: matrix.node == 10
         env:
           BUNDLESIZE_GITHUB_TOKEN: "${{ secrets.BUNDLESIZE_GITHUB_TOKEN }}"
 
