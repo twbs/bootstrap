@@ -407,6 +407,13 @@ select {
   word-wrap: normal;
 }
 
+// Remove the dropdown arrow in Chrome from inputs built with datalists.
+//
+// Source: https://stackoverflow.com/a/54997118
+
+[list]::-webkit-calendar-picker-indicator {
+  display: none;
+}
 
 // 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
 //    controls in Android 4.
@@ -526,6 +533,12 @@ progress {
 
 ::-webkit-search-decoration {
   -webkit-appearance: none;
+}
+
+// Remove padding around color pickers in webkit browsers
+
+::-webkit-color-swatch-wrapper {
+  padding: 0;
 }
 
 // 1. Change font properties to `inherit` in Safari.
