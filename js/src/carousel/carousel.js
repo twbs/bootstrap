@@ -377,8 +377,8 @@ class Carousel {
     const isPrevDirection = direction === Direction.PREV
     const activeIndex = this._getItemIndex(activeElement)
     const lastItemIndex = this._items.length - 1
-    const isGoingToWrap = isPrevDirection && activeIndex === 0 ||
-                            isNextDirection && activeIndex === lastItemIndex
+    const isGoingToWrap = (isPrevDirection && activeIndex === 0) ||
+                            (isNextDirection && activeIndex === lastItemIndex)
 
     if (isGoingToWrap && !this._config.wrap) {
       return activeElement
@@ -424,8 +424,8 @@ class Carousel {
   _slide(direction, element) {
     const activeElement = SelectorEngine.findOne(Selector.ACTIVE_ITEM, this._element)
     const activeElementIndex = this._getItemIndex(activeElement)
-    const nextElement = element || activeElement &&
-      this._getItemByDirection(direction, activeElement)
+    const nextElement = element || (activeElement &&
+      this._getItemByDirection(direction, activeElement))
 
     const nextElementIndex = this._getItemIndex(nextElement)
     const isCycling = Boolean(this._interval)

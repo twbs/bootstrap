@@ -16,8 +16,6 @@
    * --------------------------------------------------------------------------
    */
   var MAX_UID = 1000000;
-  var _window = window,
-      jQuery = _window.jQuery; // Shoutout AngusCroll (https://goo.gl/pxwQGp)
   /**
    * --------------------------------------------------------------------------
    * Public Util Api

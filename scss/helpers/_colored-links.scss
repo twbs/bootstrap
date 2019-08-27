@@ -1,0 +1,12 @@
+@each $color, $value in $theme-colors {
+  .link-#{$color} {
+    color: $value;
+
+    @if $emphasized-link-hover-darken-percentage != 0 {
+      &:hover,
+      &:focus {
+        color: darken($value, $emphasized-link-hover-darken-percentage);
+      }
+    }
+  }
+}

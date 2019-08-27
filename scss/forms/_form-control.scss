@@ -7,7 +7,7 @@
 .form-control {
   display: block;
   width: 100%;
-  height: $input-height;
+  min-height: $input-height;
   padding: $input-padding-y $input-padding-x;
   font-family: $input-font-family;
   @include font-size($input-font-size);
@@ -59,6 +59,7 @@
   &:disabled,
   &[readonly] {
     background-color: $input-disabled-bg;
+    border-color: $input-disabled-border-color;
     // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655.
     opacity: 1;
   }
@@ -95,7 +96,7 @@
 // Repeated in `_input_group.scss` to avoid Sass extend issues.
 
 .form-control-sm {
-  height: $input-height-sm;
+  min-height: $input-height-sm;
   padding: $input-padding-y-sm $input-padding-x-sm;
   @include font-size($input-font-size-sm);
   line-height: $input-line-height-sm;
@@ -103,13 +104,22 @@
 }
 
 .form-control-lg {
-  height: $input-height-lg;
+  min-height: $input-height-lg;
   padding: $input-padding-y-lg $input-padding-x-lg;
   @include font-size($input-font-size-lg);
   line-height: $input-line-height-lg;
   @include border-radius($input-border-radius-lg);
 }
 
-textarea.form-control {
-  height: auto;
+.form-control-color {
+  max-width: 3rem;
+  padding: $input-padding-y;
+}
+
+.form-control-color::-moz-color-swatch {
+  @include border-radius($input-border-radius);
+}
+
+.form-control-color::-webkit-color-swatch {
+  @include border-radius($input-border-radius);
 }

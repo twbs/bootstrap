@@ -17,11 +17,13 @@
     }
 
     // Use custom class if present
-    $property-class: map-get($utility, class);
-    $property-class: if($property-class, $property-class, nth($properties, 1));
+    $property-class: if(map-has-key($utility, class), map-get($utility, class), nth($properties, 1));
+    $property-class: if($property-class == null, "", $property-class);
+
+    $infix: if($property-class == "" and str-slice($infix, 1, 1) == "-", str-slice($infix, 2), $infix);
 
     // Don't prefix if value key is null (eg. with shadow class)
-    $property-class-modifier: if($key, "-" + $key, "");
+    $property-class-modifier: if($key, if($property-class == "" and $infix == "", "", "-") + $key, "");
 
     .#{$property-class + $infix + $property-class-modifier} {
       @each $property in $properties {

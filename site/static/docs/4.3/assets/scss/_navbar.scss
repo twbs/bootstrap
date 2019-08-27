@@ -20,15 +20,12 @@
 
   .navbar-nav {
     .nav-link {
-      padding-right: .5rem;
-      padding-left: .5rem;
       color: rgba($white, .85);
 
       &.active,
       &:hover,
       &:focus {
         color: $white;
-        background-color: transparent;
       }
 
       &.active {
