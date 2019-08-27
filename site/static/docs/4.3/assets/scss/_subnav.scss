@@ -49,14 +49,3 @@
   line-height: 1;
   color: $gray-900;
 }
-
-.link-dark {
-  font-weight: 500;
-  color: $dark;
-
-  &:hover,
-  &:focus {
-    color: $blue;
-    text-decoration: none;
-  }
-}

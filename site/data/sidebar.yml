@@ -67,11 +67,12 @@
 - title: Helpers
   pages:
     - title: Clearfix
+    - title: Colored links
     - title: Embed
     - title: Position
     - title: Screen readers
     - title: Stretched link
-    # - title: Text
+    - title: Text truncation
 
 - title: Utilities
   pages:

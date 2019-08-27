@@ -90,8 +90,17 @@
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
-  var _window = window,
-      jQuery = _window.jQuery; // Shoutout AngusCroll (https://goo.gl/pxwQGp)
+
+  var getjQuery = function getjQuery() {
+    var _window = window,
+        jQuery = _window.jQuery;
+
+    if (jQuery && !document.body.hasAttribute('data-no-jquery')) {
+      return jQuery;
+    }
+
+    return null;
+  };
 
   /**
    * ------------------------------------------------------------------------
@@ -160,10 +169,6 @@
       return this.getTitle() || this._getContent();
     };
 
-    _proto.addAttachmentClass = function addAttachmentClass(attachment) {
-      this.getTipElement().classList.add(CLASS_PREFIX + "-" + attachment);
-    };
-
     _proto.setContent = function setContent() {
       var tip = this.getTipElement(); // we use append for html objects to maintain js events
 
@@ -178,6 +183,10 @@
       this.setElementContent(SelectorEngine.findOne(Selector.CONTENT, tip), content);
       tip.classList.remove(ClassName.FADE);
       tip.classList.remove(ClassName.SHOW);
+    };
+
+    _proto._addAttachmentClass = function _addAttachmentClass(attachment) {
+      this.getTipElement().classList.add(CLASS_PREFIX + "-" + attachment);
     } // Private
     ;
 
@@ -199,7 +208,7 @@
     } // Static
     ;
 
-    Popover._jQueryInterface = function _jQueryInterface(config) {
+    Popover.jQueryInterface = function jQueryInterface(config) {
       return this.each(function () {
         var data = Data.getData(this, DATA_KEY);
 
@@ -224,7 +233,7 @@
       });
     };
 
-    Popover._getInstance = function _getInstance(element) {
+    Popover.getInstance = function getInstance(element) {
       return Data.getData(element, DATA_KEY);
     };
 
@@ -268,6 +277,8 @@
 
     return Popover;
   }(Tooltip);
+
+  var $ = getjQuery();
   /**
    * ------------------------------------------------------------------------
    * jQuery
@@ -276,15 +287,14 @@
 
   /* istanbul ignore if */
 
+  if ($) {
+    var JQUERY_NO_CONFLICT = $.fn[NAME];
+    $.fn[NAME] = Popover.jQueryInterface;
+    $.fn[NAME].Constructor = Popover;
 
-  if (typeof jQuery !== 'undefined') {
-    var JQUERY_NO_CONFLICT = jQuery.fn[NAME];
-    jQuery.fn[NAME] = Popover._jQueryInterface;
-    jQuery.fn[NAME].Constructor = Popover;
-
-    jQuery.fn[NAME].noConflict = function () {
-      jQuery.fn[NAME] = JQUERY_NO_CONFLICT;
-      return Popover._jQueryInterface;
+    $.fn[NAME].noConflict = function () {
+      $.fn[NAME] = JQUERY_NO_CONFLICT;
+      return Popover.jQueryInterface;
     };
   }
 

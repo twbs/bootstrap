@@ -86,8 +86,6 @@
    * --------------------------------------------------------------------------
    */
   var MAX_UID = 1000000;
-  var _window = window,
-      jQuery = _window.jQuery; // Shoutout AngusCroll (https://goo.gl/pxwQGp)
 
   var toType = function toType(obj) {
     return {}.toString.call(obj).match(/\s([a-z]+)/i)[1].toLowerCase();
@@ -108,19 +106,25 @@
     return prefix;
   };
 
-  var getSelectorFromElement = function getSelectorFromElement(element) {
+  var getSelector = function getSelector(element) {
     var selector = element.getAttribute('data-target');
 
     if (!selector || selector === '#') {
       var hrefAttr = element.getAttribute('href');
-      selector = hrefAttr && hrefAttr !== '#' ? hrefAttr.trim() : '';
+      selector = hrefAttr && hrefAttr !== '#' ? hrefAttr.trim() : null;
     }
 
-    try {
+    return selector;
+  };
+
+  var getSelectorFromElement = function getSelectorFromElement(element) {
+    var selector = getSelector(element);
+
+    if (selector) {
       return document.querySelector(selector) ? selector : null;
-    } catch (error) {
-      return null;
     }
+
+    return null;
   };
 
   var isElement = function isElement(obj) {
@@ -145,6 +149,17 @@
     }
 
     return [].slice.call(nodeList);
+  };
+
+  var getjQuery = function getjQuery() {
+    var _window = window,
+        jQuery = _window.jQuery;
+
+    if (jQuery && !document.body.hasAttribute('data-no-jquery')) {
+      return jQuery;
+    }
+
+    return null;
   };
 
   /**
@@ -393,7 +408,7 @@
     } // Static
     ;
 
-    ScrollSpy._jQueryInterface = function _jQueryInterface(config) {
+    ScrollSpy.jQueryInterface = function jQueryInterface(config) {
       return this.each(function () {
         var data = Data.getData(this, DATA_KEY);
 
@@ -413,7 +428,7 @@
       });
     };
 
-    ScrollSpy._getInstance = function _getInstance(element) {
+    ScrollSpy.getInstance = function getInstance(element) {
       return Data.getData(element, DATA_KEY);
     };
 
@@ -443,6 +458,7 @@
       return new ScrollSpy(spy, Manipulator.getDataAttributes(spy));
     });
   });
+  var $ = getjQuery();
   /**
    * ------------------------------------------------------------------------
    * jQuery
@@ -451,14 +467,14 @@
 
   /* istanbul ignore if */
 
-  if (typeof jQuery !== 'undefined') {
-    var JQUERY_NO_CONFLICT = jQuery.fn[NAME];
-    jQuery.fn[NAME] = ScrollSpy._jQueryInterface;
-    jQuery.fn[NAME].Constructor = ScrollSpy;
+  if ($) {
+    var JQUERY_NO_CONFLICT = $.fn[NAME];
+    $.fn[NAME] = ScrollSpy.jQueryInterface;
+    $.fn[NAME].Constructor = ScrollSpy;
 
-    jQuery.fn[NAME].noConflict = function () {
-      jQuery.fn[NAME] = JQUERY_NO_CONFLICT;
-      return ScrollSpy._jQueryInterface;
+    $.fn[NAME].noConflict = function () {
+      $.fn[NAME] = JQUERY_NO_CONFLICT;
+      return ScrollSpy.jQueryInterface;
     };
   }
 

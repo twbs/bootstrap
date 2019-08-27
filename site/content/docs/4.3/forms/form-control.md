@@ -73,3 +73,34 @@ If you want to have `<input readonly>` elements in your form styled as plain tex
   <button type="submit" class="btn btn-primary mb-3">Confirm identity</button>
 </form>
 {{< /example >}}
+
+## Color
+
+Keep in mind color inputs are [not supported in IE](https://caniuse.com/#feat=input-color).
+
+{{< example >}}
+<form>
+  <label for="exampleColorInput">Color picker</label>
+  <input type="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c" title="Choose your color">
+</form>
+{{< /example >}}
+
+## Datalists
+
+Datalists allow you to create a group of `<option>`s that can be accessed (and autocompleted) from within an `<input>`. These are similar to `<select>` elements, but come with more menu styling limitations and differences. While most browsers and operating systems include some support for `<datalist>` elements, their styling is inconsistent at best.
+
+Learn more about [support for datalist elements](https://caniuse.com/#feat=datalist).
+
+{{< example >}}
+<form>
+  <label for="exampleDataList">Datalist example</label>
+  <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
+  <datalist id="datalistOptions">
+    <option value="San Francisco">
+    <option value="New York">
+    <option value="Seattle">
+    <option value="Los Angeles">
+    <option value="Chicago">
+  </datalist>
+</form>
+{{< /example >}}
