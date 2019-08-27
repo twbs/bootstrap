@@ -91,6 +91,21 @@ $utilities: map-merge(
         auto: auto
       )
     ),
+    "max-width": (
+      property: max-width,
+      class: mw,
+      values: (100: 100%)
+    ),
+    "viewport-width": (
+      property: width,
+      class: vw,
+      values: (100: 100vw)
+    ),
+    "min-viewport-width": (
+      property: min-width,
+      class: min-vw,
+      values: (100: 100vw)
+    ),
     "height": (
       property: height,
       class: h,
@@ -101,6 +116,21 @@ $utilities: map-merge(
         100: 100%,
         auto: auto
       )
+    ),
+    "max-height": (
+      property: max-height,
+      class: mh,
+      values: (100: 100%)
+    ),
+    "viewport-height": (
+      property: height,
+      class: vh,
+      values: (100: 100vh)
+    ),
+    "min-viewport-height": (
+      property: min-height,
+      class: min-vh,
+      values: (100: 100vh)
     ),
     // Flex utilities
     "flex": (
@@ -352,13 +382,16 @@ $utilities: map-merge(
     "color": (
       property: color,
       class: text,
-      values: (
-        white: $white,
-        body: $body-color,
-        muted: $text-muted,
-        black-50: rgba($black, .5),
-        white-50: rgba($white, .5),
-        reset: inherit,
+      values: map-merge(
+        $theme-colors,
+        (
+          white: $white,
+          body: $body-color,
+          muted: $text-muted,
+          black-50: rgba($black, .5),
+          white-50: rgba($white, .5),
+          reset: inherit,
+        )
       )
     ),
     "background-color": (
@@ -431,6 +464,14 @@ $utilities: map-merge(
       class: rounded-left,
       values: (null: $border-radius)
     ),
+    "visibility": (
+      property: visibility,
+      class: null,
+      values: (
+        visible: visible,
+        invisible: hidden,
+      )
+    )
   ),
   $utilities
 );
