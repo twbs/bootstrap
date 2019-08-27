@@ -8,6 +8,8 @@ toc: true
 
 ## Color
 
+Colorize text with color utilities. If you want to colorize links, you can use the [`.link-*` helper classes]({{< docsref "/helpers/colored-links" >}}) which have `:hover` and `:focus` states.
+
 {{< example >}}
 {{< colors.inline >}}
 {{- range (index $.Site.Data "theme-colors") }}
@@ -19,18 +21,6 @@ toc: true
 <p class="text-white bg-dark">.text-white</p>
 <p class="text-black-50">.text-black-50</p>
 <p class="text-white-50 bg-dark">.text-white-50</p>
-{{< /example >}}
-
-Contextual text classes also work well on anchors with the provided hover and focus states. **Note that the `.text-white` and `.text-muted` class has no additional link styling beyond underline.**
-
-{{< example >}}
-{{< colors.inline >}}
-{{- range (index $.Site.Data "theme-colors") }}
-<p><a href="#" class="text-{{ .name }}{{ if eq .name "light" }} bg-dark{{ end }}">{{ .name | title }} link</a></p>
-{{- end -}}
-{{< /colors.inline >}}
-<p><a href="#" class="text-muted">Muted link</a></p>
-<p><a href="#" class="text-white bg-dark">White link</a></p>
 {{< /example >}}
 
 ## Background color

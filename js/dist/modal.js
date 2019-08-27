@@ -86,27 +86,26 @@
    * --------------------------------------------------------------------------
    */
   var MILLISECONDS_MULTIPLIER = 1000;
-  var TRANSITION_END = 'transitionend';
-  var _window = window,
-      jQuery = _window.jQuery; // Shoutout AngusCroll (https://goo.gl/pxwQGp)
+  var TRANSITION_END = 'transitionend'; // Shoutout AngusCroll (https://goo.gl/pxwQGp)
 
   var toType = function toType(obj) {
     return {}.toString.call(obj).match(/\s([a-z]+)/i)[1].toLowerCase();
   };
 
-  var getSelectorFromElement = function getSelectorFromElement(element) {
+  var getSelector = function getSelector(element) {
     var selector = element.getAttribute('data-target');
 
     if (!selector || selector === '#') {
       var hrefAttr = element.getAttribute('href');
-      selector = hrefAttr && hrefAttr !== '#' ? hrefAttr.trim() : '';
+      selector = hrefAttr && hrefAttr !== '#' ? hrefAttr.trim() : null;
     }
 
-    try {
-      return document.querySelector(selector) ? selector : null;
-    } catch (error) {
-      return null;
-    }
+    return selector;
+  };
+
+  var getElementFromSelector = function getElementFromSelector(element) {
+    var selector = getSelector(element);
+    return selector ? document.querySelector(selector) : null;
   };
 
   var getTransitionDurationFromElement = function getTransitionDurationFromElement(element) {
@@ -194,6 +193,17 @@
 
   var reflow = function reflow(element) {
     return element.offsetHeight;
+  };
+
+  var getjQuery = function getjQuery() {
+    var _window = window,
+        jQuery = _window.jQuery;
+
+    if (jQuery && !document.body.hasAttribute('data-no-jquery')) {
+      return jQuery;
+    }
+
+    return null;
   };
 
   /**
@@ -414,6 +424,8 @@
 
       var transition = this._element.classList.contains(ClassName.FADE);
 
+      var modalBody = SelectorEngine.findOne(Selector.MODAL_BODY, this._dialog);
+
       if (!this._element.parentNode || this._element.parentNode.nodeType !== Node.ELEMENT_NODE) {
         // Don't move modal's DOM position
         document.body.appendChild(this._element);
@@ -425,8 +437,8 @@
 
       this._element.setAttribute('aria-modal', true);
 
-      if (this._dialog.classList.contains(ClassName.SCROLLABLE)) {
-        SelectorEngine.findOne(Selector.MODAL_BODY, this._dialog).scrollTop = 0;
+      if (this._dialog.classList.contains(ClassName.SCROLLABLE) && modalBody) {
+        modalBody.scrollTop = 0;
       } else {
         this._element.scrollTop = 0;
       }
@@ -693,7 +705,7 @@
     } // Static
     ;
 
-    Modal._jQueryInterface = function _jQueryInterface(config, relatedTarget) {
+    Modal.jQueryInterface = function jQueryInterface(config, relatedTarget) {
       return this.each(function () {
         var data = Data.getData(this, DATA_KEY);
 
@@ -715,7 +727,7 @@
       });
     };
 
-    Modal._getInstance = function _getInstance(element) {
+    Modal.getInstance = function getInstance(element) {
       return Data.getData(element, DATA_KEY);
     };
 
@@ -743,8 +755,7 @@
   EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
     var _this10 = this;
 
-    var selector = getSelectorFromElement(this);
-    var target = SelectorEngine.findOne(selector);
+    var target = getElementFromSelector(this);
 
     if (this.tagName === 'A' || this.tagName === 'AREA') {
       event.preventDefault();
@@ -772,6 +783,7 @@
 
     data.show(this);
   });
+  var $ = getjQuery();
   /**
    * ------------------------------------------------------------------------
    * jQuery
@@ -781,14 +793,14 @@
 
   /* istanbul ignore if */
 
-  if (typeof jQuery !== 'undefined') {
-    var JQUERY_NO_CONFLICT = jQuery.fn[NAME];
-    jQuery.fn[NAME] = Modal._jQueryInterface;
-    jQuery.fn[NAME].Constructor = Modal;
+  if ($) {
+    var JQUERY_NO_CONFLICT = $.fn[NAME];
+    $.fn[NAME] = Modal.jQueryInterface;
+    $.fn[NAME].Constructor = Modal;
 
-    jQuery.fn[NAME].noConflict = function () {
-      jQuery.fn[NAME] = JQUERY_NO_CONFLICT;
-      return Modal._jQueryInterface;
+    $.fn[NAME].noConflict = function () {
+      $.fn[NAME] = JQUERY_NO_CONFLICT;
+      return Modal.jQueryInterface;
     };
   }
 

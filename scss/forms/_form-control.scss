@@ -110,3 +110,16 @@
   line-height: $input-line-height-lg;
   @include border-radius($input-border-radius-lg);
 }
+
+.form-control-color {
+  max-width: 3rem;
+  padding: $input-padding-y;
+}
+
+.form-control-color::-moz-color-swatch {
+  @include border-radius($input-border-radius);
+}
+
+.form-control-color::-webkit-color-swatch {
+  @include border-radius($input-border-radius);
+}

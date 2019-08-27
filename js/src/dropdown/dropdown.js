@@ -135,7 +135,6 @@ class Dropdown {
       return
     }
 
-    const parent = Dropdown.getParentFromElement(this._element)
     const isActive = this._menu.classList.contains(ClassName.SHOW)
 
     Dropdown.clearMenus()
@@ -144,9 +143,19 @@ class Dropdown {
       return
     }
 
+    this.show()
+  }
+
+  show() {
+    if (this._element.disabled || this._element.classList.contains(ClassName.DISABLED) || this._menu.classList.contains(ClassName.SHOW)) {
+      return
+    }
+
+    const parent = Dropdown.getParentFromElement(this._element)
     const relatedTarget = {
       relatedTarget: this._element
     }
+
     const showEvent = EventHandler.trigger(parent, Event.SHOW, relatedTarget)
 
     if (showEvent.defaultPrevented) {
@@ -155,10 +164,6 @@ class Dropdown {
 
     // Disable totally Popper.js for Dropdown in Navbar
     if (!this._inNavbar) {
-      /**
-       * Check for Popper dependency
-       * Popper - https://popper.js.org
-       */
       if (typeof Popper === 'undefined') {
         throw new TypeError('Bootstrap\'s dropdowns require Popper.js (https://popper.js.org)')
       }
@@ -204,27 +209,6 @@ class Dropdown {
     EventHandler.trigger(parent, Event.SHOWN, relatedTarget)
   }
 
-  show() {
-    if (this._element.disabled || this._element.classList.contains(ClassName.DISABLED) || this._menu.classList.contains(ClassName.SHOW)) {
-      return
-    }
-
-    const parent = Dropdown.getParentFromElement(this._element)
-    const relatedTarget = {
-      relatedTarget: this._element
-    }
-
-    const showEvent = EventHandler.trigger(parent, Event.SHOW, relatedTarget)
-
-    if (showEvent.defaultPrevented) {
-      return
-    }
-
-    Manipulator.toggleClass(this._menu, ClassName.SHOW)
-    Manipulator.toggleClass(parent, ClassName.SHOW)
-    EventHandler.trigger(parent, Event.SHOWN, relatedTarget)
-  }
-
   hide() {
     if (this._element.disabled || this._element.classList.contains(ClassName.DISABLED) || !this._menu.classList.contains(ClassName.SHOW)) {
       return
@@ -241,6 +225,10 @@ class Dropdown {
       return
     }
 
+    if (this._popper) {
+      this._popper.destroy()
+    }
+
     Manipulator.toggleClass(this._menu, ClassName.SHOW)
     Manipulator.toggleClass(parent, ClassName.SHOW)
     EventHandler.trigger(parent, Event.HIDDEN, relatedTarget)
@@ -251,7 +239,7 @@ class Dropdown {
     EventHandler.off(this._element, EVENT_KEY)
     this._element = null
     this._menu = null
-    if (this._popper !== null) {
+    if (this._popper) {
       this._popper.destroy()
       this._popper = null
     }
@@ -259,7 +247,7 @@ class Dropdown {
 
   update() {
     this._inNavbar = this._detectNavbar()
-    if (this._popper !== null) {
+    if (this._popper) {
       this._popper.scheduleUpdate()
     }
   }
@@ -394,7 +382,7 @@ class Dropdown {
 
   static clearMenus(event) {
     if (event && (event.which === RIGHT_MOUSE_BUTTON_WHICH ||
-      event.type === 'keyup' && event.which !== TAB_KEYCODE)) {
+      (event.type === 'keyup' && event.which !== TAB_KEYCODE))) {
       return
     }
 
@@ -419,9 +407,9 @@ class Dropdown {
         continue
       }
 
-      if (event && (event.type === 'click' &&
-          /input|textarea/i.test(event.target.tagName) ||
-          event.type === 'keyup' && event.which === TAB_KEYCODE) &&
+      if (event && ((event.type === 'click' &&
+          /input|textarea/i.test(event.target.tagName)) ||
+          (event.type === 'keyup' && event.which === TAB_KEYCODE)) &&
           parent.contains(event.target)) {
         continue
       }
@@ -439,6 +427,10 @@ class Dropdown {
       }
 
       toggles[i].setAttribute('aria-expanded', 'false')
+
+      if (context._popper) {
+        context._popper.destroy()
+      }
 
       dropdownMenu.classList.remove(ClassName.SHOW)
       parent.classList.remove(ClassName.SHOW)
@@ -459,9 +451,9 @@ class Dropdown {
     //    - If key is not up or down => not a dropdown command
     //    - If trigger inside the menu => not a dropdown command
     if (/input|textarea/i.test(event.target.tagName) ?
-      event.which === SPACE_KEYCODE || event.which !== ESCAPE_KEYCODE &&
-      (event.which !== ARROW_DOWN_KEYCODE && event.which !== ARROW_UP_KEYCODE ||
-        SelectorEngine.closest(event.target, Selector.MENU)) :
+      event.which === SPACE_KEYCODE || (event.which !== ESCAPE_KEYCODE &&
+      ((event.which !== ARROW_DOWN_KEYCODE && event.which !== ARROW_UP_KEYCODE) ||
+        SelectorEngine.closest(event.target, Selector.MENU))) :
       !REGEXP_KEYDOWN.test(event.which)) {
       return
     }
@@ -476,7 +468,7 @@ class Dropdown {
     const parent = Dropdown.getParentFromElement(this)
     const isActive = parent.classList.contains(ClassName.SHOW)
 
-    if (!isActive || isActive && (event.which === ESCAPE_KEYCODE || event.which === SPACE_KEYCODE)) {
+    if (!isActive || (isActive && (event.which === ESCAPE_KEYCODE || event.which === SPACE_KEYCODE))) {
       if (event.which === ESCAPE_KEYCODE) {
         SelectorEngine.findOne(Selector.DATA_TOGGLE, parent).focus()
       }

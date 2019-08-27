@@ -36,23 +36,22 @@
    * --------------------------------------------------------------------------
    */
   var MILLISECONDS_MULTIPLIER = 1000;
-  var TRANSITION_END = 'transitionend';
-  var _window = window,
-      jQuery = _window.jQuery; // Shoutout AngusCroll (https://goo.gl/pxwQGp)
+  var TRANSITION_END = 'transitionend'; // Shoutout AngusCroll (https://goo.gl/pxwQGp)
 
-  var getSelectorFromElement = function getSelectorFromElement(element) {
+  var getSelector = function getSelector(element) {
     var selector = element.getAttribute('data-target');
 
     if (!selector || selector === '#') {
       var hrefAttr = element.getAttribute('href');
-      selector = hrefAttr && hrefAttr !== '#' ? hrefAttr.trim() : '';
+      selector = hrefAttr && hrefAttr !== '#' ? hrefAttr.trim() : null;
     }
 
-    try {
-      return document.querySelector(selector) ? selector : null;
-    } catch (error) {
-      return null;
-    }
+    return selector;
+  };
+
+  var getElementFromSelector = function getElementFromSelector(element) {
+    var selector = getSelector(element);
+    return selector ? document.querySelector(selector) : null;
   };
 
   var getTransitionDurationFromElement = function getTransitionDurationFromElement(element) {
@@ -100,6 +99,17 @@
         triggerTransitionEnd(element);
       }
     }, emulatedDuration);
+  };
+
+  var getjQuery = function getjQuery() {
+    var _window = window,
+        jQuery = _window.jQuery;
+
+    if (jQuery && !document.body.hasAttribute('data-no-jquery')) {
+      return jQuery;
+    }
+
+    return null;
   };
 
   /**
@@ -171,12 +181,7 @@
     ;
 
     _proto._getRootElement = function _getRootElement(element) {
-      var selector = getSelectorFromElement(element);
-      var parent = false;
-
-      if (selector) {
-        parent = SelectorEngine.findOne(selector);
-      }
+      var parent = getElementFromSelector(element);
 
       if (!parent) {
         parent = SelectorEngine.closest(element, "." + ClassName.ALERT);
@@ -216,7 +221,7 @@
     } // Static
     ;
 
-    Alert._jQueryInterface = function _jQueryInterface(config) {
+    Alert.jQueryInterface = function jQueryInterface(config) {
       return this.each(function () {
         var data = Data.getData(this, DATA_KEY);
 
@@ -230,7 +235,7 @@
       });
     };
 
-    Alert._handleDismiss = function _handleDismiss(alertInstance) {
+    Alert.handleDismiss = function handleDismiss(alertInstance) {
       return function (event) {
         if (event) {
           event.preventDefault();
@@ -240,7 +245,7 @@
       };
     };
 
-    Alert._getInstance = function _getInstance(element) {
+    Alert.getInstance = function getInstance(element) {
       return Data.getData(element, DATA_KEY);
     };
 
@@ -260,7 +265,8 @@
    */
 
 
-  EventHandler.on(document, Event.CLICK_DATA_API, Selector.DISMISS, Alert._handleDismiss(new Alert()));
+  EventHandler.on(document, Event.CLICK_DATA_API, Selector.DISMISS, Alert.handleDismiss(new Alert()));
+  var $ = getjQuery();
   /**
    * ------------------------------------------------------------------------
    * jQuery
@@ -270,14 +276,14 @@
 
   /* istanbul ignore if */
 
-  if (typeof jQuery !== 'undefined') {
-    var JQUERY_NO_CONFLICT = jQuery.fn[NAME];
-    jQuery.fn[NAME] = Alert._jQueryInterface;
-    jQuery.fn[NAME].Constructor = Alert;
+  if ($) {
+    var JQUERY_NO_CONFLICT = $.fn[NAME];
+    $.fn[NAME] = Alert.jQueryInterface;
+    $.fn[NAME].Constructor = Alert;
 
-    jQuery.fn[NAME].noConflict = function () {
-      jQuery.fn[NAME] = JQUERY_NO_CONFLICT;
-      return Alert._jQueryInterface;
+    $.fn[NAME].noConflict = function () {
+      $.fn[NAME] = JQUERY_NO_CONFLICT;
+      return Alert.jQueryInterface;
     };
   }
 
