@@ -71,19 +71,21 @@ const AttachmentMap = {
 }
 
 const Default = {
-  offset    : 0,
-  flip      : true,
-  boundary  : 'scrollParent',
-  reference : 'toggle',
-  display   : 'dynamic'
+  offset       : 0,
+  flip         : true,
+  boundary     : 'scrollParent',
+  reference    : 'toggle',
+  display      : 'dynamic',
+  popperConfig : null
 }
 
 const DefaultType = {
-  offset    : '(number|string|function)',
-  flip      : 'boolean',
-  boundary  : '(string|element)',
-  reference : '(string|element)',
-  display   : 'string'
+  offset       : '(number|string|function)',
+  flip         : 'boolean',
+  boundary     : '(string|element)',
+  reference    : '(string|element)',
+  display      : 'string',
+  popperConfig : '(null|object)'
 }
 
 /**
@@ -124,7 +126,6 @@ class Dropdown {
       return
     }
 
-    const parent   = Dropdown._getParentFromElement(this._element)
     const isActive = $(this._menu).hasClass(ClassName.SHOW)
 
     Dropdown._clearMenus()
@@ -133,10 +134,19 @@ class Dropdown {
       return
     }
 
+    this.show(true)
+  }
+
+  show(usePopper = false) {
+    if (this._element.disabled || $(this._element).hasClass(ClassName.DISABLED) || $(this._menu).hasClass(ClassName.SHOW)) {
+      return
+    }
+
     const relatedTarget = {
       relatedTarget: this._element
     }
     const showEvent = $.Event(Event.SHOW, relatedTarget)
+    const parent = Dropdown._getParentFromElement(this._element)
 
     $(parent).trigger(showEvent)
 
@@ -145,7 +155,7 @@ class Dropdown {
     }
 
     // Disable totally Popper.js for Dropdown in Navbar
-    if (!this._inNavbar) {
+    if (!this._inNavbar && usePopper) {
       /**
        * Check for Popper dependency
        * Popper - https://popper.js.org
@@ -194,29 +204,6 @@ class Dropdown {
       .trigger($.Event(Event.SHOWN, relatedTarget))
   }
 
-  show() {
-    if (this._element.disabled || $(this._element).hasClass(ClassName.DISABLED) || $(this._menu).hasClass(ClassName.SHOW)) {
-      return
-    }
-
-    const relatedTarget = {
-      relatedTarget: this._element
-    }
-    const showEvent = $.Event(Event.SHOW, relatedTarget)
-    const parent = Dropdown._getParentFromElement(this._element)
-
-    $(parent).trigger(showEvent)
-
-    if (showEvent.isDefaultPrevented()) {
-      return
-    }
-
-    $(this._menu).toggleClass(ClassName.SHOW)
-    $(parent)
-      .toggleClass(ClassName.SHOW)
-      .trigger($.Event(Event.SHOWN, relatedTarget))
-  }
-
   hide() {
     if (this._element.disabled || $(this._element).hasClass(ClassName.DISABLED) || !$(this._menu).hasClass(ClassName.SHOW)) {
       return
@@ -232,6 +219,10 @@ class Dropdown {
 
     if (hideEvent.isDefaultPrevented()) {
       return
+    }
+
+    if (this._popper) {
+      this._popper.destroy()
     }
 
     $(this._menu).toggleClass(ClassName.SHOW)
@@ -359,7 +350,10 @@ class Dropdown {
       }
     }
 
-    return popperConfig
+    return {
+      ...popperConfig,
+      ...this._config.popperConfig
+    }
   }
 
   // Static
@@ -430,6 +424,10 @@ class Dropdown {
       }
 
       toggles[i].setAttribute('aria-expanded', 'false')
+
+      if (context._popper) {
+        context._popper.destroy()
+      }
 
       $(dropdownMenu).removeClass(ClassName.SHOW)
       $(parent)
