@@ -1,0 +1,11 @@
+{
+  "standard": "WCAG2AA",
+  "level": "error",
+  "concurrency": 4,
+  "defaults": {
+    "runners": [
+      "htmlcs"
+    ],
+    "hideElements": ".bd-search"
+  }
+}

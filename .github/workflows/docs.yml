@@ -32,3 +32,18 @@ jobs:
 
       - name: Test docs
         run: npm run docs
+
+      - name: Run accessibility tests
+        run: npm run docs-accessibility
+
+      - name: Generate HTML accessibility results
+        run: npm run docs-pa11y-html
+        if: failure()
+
+      - name: Upload accessibility results
+        uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: pa11y-ci-results
+          path: pa11y-ci-report/
+          if-no-files-found: error
