@@ -12,8 +12,8 @@
   backdrop-filter: saturate(180%) blur(20px);
 }
 .site-header a {
-  color: #999;
-  transition: ease-in-out color .15s;
+  color: #727272;
+  transition: color .15s ease-in-out;
 }
 .site-header a:hover {
   color: #fff;
