@@ -39,3 +39,5 @@ Thumbs.db
 # Folders to ignore
 /js/coverage/
 /node_modules/
+/pa11y-ci-report/
+/pa11y-ci-results.json
