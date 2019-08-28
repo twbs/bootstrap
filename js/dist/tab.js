@@ -36,23 +36,22 @@
    * --------------------------------------------------------------------------
    */
   var MILLISECONDS_MULTIPLIER = 1000;
-  var TRANSITION_END = 'transitionend';
-  var _window = window,
-      jQuery = _window.jQuery; // Shoutout AngusCroll (https://goo.gl/pxwQGp)
+  var TRANSITION_END = 'transitionend'; // Shoutout AngusCroll (https://goo.gl/pxwQGp)
 
-  var getSelectorFromElement = function getSelectorFromElement(element) {
+  var getSelector = function getSelector(element) {
     var selector = element.getAttribute('data-target');
 
     if (!selector || selector === '#') {
       var hrefAttr = element.getAttribute('href');
-      selector = hrefAttr && hrefAttr !== '#' ? hrefAttr.trim() : '';
+      selector = hrefAttr && hrefAttr !== '#' ? hrefAttr.trim() : null;
     }
 
-    try {
-      return document.querySelector(selector) ? selector : null;
-    } catch (error) {
-      return null;
-    }
+    return selector;
+  };
+
+  var getElementFromSelector = function getElementFromSelector(element) {
+    var selector = getSelector(element);
+    return selector ? document.querySelector(selector) : null;
   };
 
   var getTransitionDurationFromElement = function getTransitionDurationFromElement(element) {
@@ -112,6 +111,17 @@
 
   var reflow = function reflow(element) {
     return element.offsetHeight;
+  };
+
+  var getjQuery = function getjQuery() {
+    var _window = window,
+        jQuery = _window.jQuery;
+
+    if (jQuery && !document.body.hasAttribute('data-no-jquery')) {
+      return jQuery;
+    }
+
+    return null;
   };
 
   /**
@@ -174,10 +184,9 @@
         return;
       }
 
-      var target;
       var previous;
+      var target = getElementFromSelector(this._element);
       var listElement = SelectorEngine.closest(this._element, Selector.NAV_LIST_GROUP);
-      var selector = getSelectorFromElement(this._element);
 
       if (listElement) {
         var itemSelector = listElement.nodeName === 'UL' || listElement.nodeName === 'OL' ? Selector.ACTIVE_UL : Selector.ACTIVE;
@@ -199,10 +208,6 @@
 
       if (showEvent.defaultPrevented || hideEvent !== null && hideEvent.defaultPrevented) {
         return;
-      }
-
-      if (selector) {
-        target = SelectorEngine.findOne(selector);
       }
 
       this._activate(this._element, listElement);
@@ -294,7 +299,7 @@
     } // Static
     ;
 
-    Tab._jQueryInterface = function _jQueryInterface(config) {
+    Tab.jQueryInterface = function jQueryInterface(config) {
       return this.each(function () {
         var data = Data.getData(this, DATA_KEY) || new Tab(this);
 
@@ -308,7 +313,7 @@
       });
     };
 
-    Tab._getInstance = function _getInstance(element) {
+    Tab.getInstance = function getInstance(element) {
       return Data.getData(element, DATA_KEY);
     };
 
@@ -333,6 +338,7 @@
     var data = Data.getData(this, DATA_KEY) || new Tab(this);
     data.show();
   });
+  var $ = getjQuery();
   /**
    * ------------------------------------------------------------------------
    * jQuery
@@ -342,14 +348,14 @@
 
   /* istanbul ignore if */
 
-  if (typeof jQuery !== 'undefined') {
-    var JQUERY_NO_CONFLICT = jQuery.fn[NAME];
-    jQuery.fn[NAME] = Tab._jQueryInterface;
-    jQuery.fn[NAME].Constructor = Tab;
+  if ($) {
+    var JQUERY_NO_CONFLICT = $.fn[NAME];
+    $.fn[NAME] = Tab.jQueryInterface;
+    $.fn[NAME].Constructor = Tab;
 
-    jQuery.fn[NAME].noConflict = function () {
-      jQuery.fn[NAME] = JQUERY_NO_CONFLICT;
-      return Tab._jQueryInterface;
+    $.fn[NAME].noConflict = function () {
+      $.fn[NAME] = JQUERY_NO_CONFLICT;
+      return Tab.jQueryInterface;
     };
   }
 

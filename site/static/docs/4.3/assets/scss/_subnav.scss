@@ -7,11 +7,6 @@
     opacity: .25;
   }
 
-  .dropdown-toggle {
-    @include font-size(100%);
-    text-decoration: none;
-  }
-
   .dropdown-menu {
     @include font-size(.875rem);
     box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .05);
@@ -48,15 +43,4 @@
 .bd-search-docs-toggle {
   line-height: 1;
   color: $gray-900;
-}
-
-.link-dark {
-  font-weight: 500;
-  color: $dark;
-
-  &:hover,
-  &:focus {
-    color: $blue;
-    text-decoration: none;
-  }
 }

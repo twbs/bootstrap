@@ -86,27 +86,26 @@
    * --------------------------------------------------------------------------
    */
   var MILLISECONDS_MULTIPLIER = 1000;
-  var TRANSITION_END = 'transitionend';
-  var _window = window,
-      jQuery = _window.jQuery; // Shoutout AngusCroll (https://goo.gl/pxwQGp)
+  var TRANSITION_END = 'transitionend'; // Shoutout AngusCroll (https://goo.gl/pxwQGp)
 
   var toType = function toType(obj) {
     return {}.toString.call(obj).match(/\s([a-z]+)/i)[1].toLowerCase();
   };
 
-  var getSelectorFromElement = function getSelectorFromElement(element) {
+  var getSelector = function getSelector(element) {
     var selector = element.getAttribute('data-target');
 
     if (!selector || selector === '#') {
       var hrefAttr = element.getAttribute('href');
-      selector = hrefAttr && hrefAttr !== '#' ? hrefAttr.trim() : '';
+      selector = hrefAttr && hrefAttr !== '#' ? hrefAttr.trim() : null;
     }
 
-    try {
-      return document.querySelector(selector) ? selector : null;
-    } catch (error) {
-      return null;
-    }
+    return selector;
+  };
+
+  var getElementFromSelector = function getElementFromSelector(element) {
+    var selector = getSelector(element);
+    return selector ? document.querySelector(selector) : null;
   };
 
   var getTransitionDurationFromElement = function getTransitionDurationFromElement(element) {
@@ -194,6 +193,17 @@
 
   var reflow = function reflow(element) {
     return element.offsetHeight;
+  };
+
+  var getjQuery = function getjQuery() {
+    var _window = window,
+        jQuery = _window.jQuery;
+
+    if (jQuery && !document.body.hasAttribute('data-no-jquery')) {
+      return jQuery;
+    }
+
+    return null;
   };
 
   /**
@@ -699,7 +709,7 @@
     } // Static
     ;
 
-    Carousel._carouselInterface = function _carouselInterface(element, config) {
+    Carousel.carouselInterface = function carouselInterface(element, config) {
       var data = Data.getData(element, DATA_KEY);
 
       var _config = _objectSpread2({}, Default, {}, Manipulator.getDataAttributes(element));
@@ -728,20 +738,14 @@
       }
     };
 
-    Carousel._jQueryInterface = function _jQueryInterface(config) {
+    Carousel.jQueryInterface = function jQueryInterface(config) {
       return this.each(function () {
-        Carousel._carouselInterface(this, config);
+        Carousel.carouselInterface(this, config);
       });
     };
 
-    Carousel._dataApiClickHandler = function _dataApiClickHandler(event) {
-      var selector = getSelectorFromElement(this);
-
-      if (!selector) {
-        return;
-      }
-
-      var target = SelectorEngine.findOne(selector);
+    Carousel.dataApiClickHandler = function dataApiClickHandler(event) {
+      var target = getElementFromSelector(this);
 
       if (!target || !target.classList.contains(ClassName.CAROUSEL)) {
         return;
@@ -755,7 +759,7 @@
         config.interval = false;
       }
 
-      Carousel._carouselInterface(target, config);
+      Carousel.carouselInterface(target, config);
 
       if (slideIndex) {
         Data.getData(target, DATA_KEY).to(slideIndex);
@@ -764,7 +768,7 @@
       event.preventDefault();
     };
 
-    Carousel._getInstance = function _getInstance(element) {
+    Carousel.getInstance = function getInstance(element) {
       return Data.getData(element, DATA_KEY);
     };
 
@@ -789,14 +793,15 @@
    */
 
 
-  EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_SLIDE, Carousel._dataApiClickHandler);
+  EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_SLIDE, Carousel.dataApiClickHandler);
   EventHandler.on(window, Event.LOAD_DATA_API, function () {
     var carousels = makeArray(SelectorEngine.find(Selector.DATA_RIDE));
 
     for (var i = 0, len = carousels.length; i < len; i++) {
-      Carousel._carouselInterface(carousels[i], Data.getData(carousels[i], DATA_KEY));
+      Carousel.carouselInterface(carousels[i], Data.getData(carousels[i], DATA_KEY));
     }
   });
+  var $ = getjQuery();
   /**
    * ------------------------------------------------------------------------
    * jQuery
@@ -806,14 +811,14 @@
 
   /* istanbul ignore if */
 
-  if (typeof jQuery !== 'undefined') {
-    var JQUERY_NO_CONFLICT = jQuery.fn[NAME];
-    jQuery.fn[NAME] = Carousel._jQueryInterface;
-    jQuery.fn[NAME].Constructor = Carousel;
+  if ($) {
+    var JQUERY_NO_CONFLICT = $.fn[NAME];
+    $.fn[NAME] = Carousel.jQueryInterface;
+    $.fn[NAME].Constructor = Carousel;
 
-    jQuery.fn[NAME].noConflict = function () {
-      jQuery.fn[NAME] = JQUERY_NO_CONFLICT;
-      return Carousel._jQueryInterface;
+    $.fn[NAME].noConflict = function () {
+      $.fn[NAME] = JQUERY_NO_CONFLICT;
+      return Carousel.jQueryInterface;
     };
   }
 

@@ -17,6 +17,14 @@
   box-sizing: border-box;
 }
 
+// Root
+//
+// 1. Ability to the value of the root font sizes, affecting the value of `rem`.
+//    null by default, thus nothing is generated.
+
+:root {
+  font-size: $font-size-root; // 1
+}
 
 // Body
 //
@@ -205,7 +213,7 @@ small {
 sub,
 sup {
   position: relative;
-  @include font-size(75%);
+  @include font-size($sub-sup-font-size);
   line-height: 0;
   vertical-align: baseline;
 }
@@ -290,7 +298,7 @@ kbd {
 
   kbd {
     padding: 0;
-    @include font-size(100%);
+    @include font-size(1em);
     font-weight: $nested-kbd-font-weight;
   }
 }
@@ -407,6 +415,13 @@ select {
   word-wrap: normal;
 }
 
+// Remove the dropdown arrow in Chrome from inputs built with datalists.
+//
+// Source: https://stackoverflow.com/a/54997118
+
+[list]::-webkit-calendar-picker-indicator {
+  display: none;
+}
 
 // 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
 //    controls in Android 4.
@@ -505,9 +520,9 @@ progress {
 // Fix height of inputs with a type of datetime-local, date, month, week, or time
 // See https://github.com/twbs/bootstrap/issues/18842
 
-::-webkit-inner-spin-button,
-::-webkit-outer-spin-button {
-  height: 0;
+::-webkit-datetime-edit {
+  overflow: visible;
+  line-height: 0;
 }
 
 
@@ -526,6 +541,12 @@ progress {
 
 ::-webkit-search-decoration {
   -webkit-appearance: none;
+}
+
+// Remove padding around color pickers in webkit browsers
+
+::-webkit-color-swatch-wrapper {
+  padding: 0;
 }
 
 // 1. Change font properties to `inherit` in Safari.

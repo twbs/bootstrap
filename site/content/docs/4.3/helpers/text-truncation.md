@@ -3,10 +3,8 @@ layout: docs
 title: Text truncation
 description: Truncate long strings of text with an ellipsis.
 group: helpers
-toc: true
+toc: false
 ---
-
-## Text truncation
 
 For longer content, you can add a `.text-truncate` class to truncate the text with an ellipsis. **Requires `display: inline-block` or `display: block`.**
 

@@ -88,9 +88,7 @@
    */
   var MAX_UID = 1000000;
   var MILLISECONDS_MULTIPLIER = 1000;
-  var TRANSITION_END = 'transitionend';
-  var _window = window,
-      jQuery = _window.jQuery; // Shoutout AngusCroll (https://goo.gl/pxwQGp)
+  var TRANSITION_END = 'transitionend'; // Shoutout AngusCroll (https://goo.gl/pxwQGp)
 
   var toType = function toType(obj) {
     return {}.toString.call(obj).match(/\s([a-z]+)/i)[1].toLowerCase();
@@ -111,19 +109,30 @@
     return prefix;
   };
 
-  var getSelectorFromElement = function getSelectorFromElement(element) {
+  var getSelector = function getSelector(element) {
     var selector = element.getAttribute('data-target');
 
     if (!selector || selector === '#') {
       var hrefAttr = element.getAttribute('href');
-      selector = hrefAttr && hrefAttr !== '#' ? hrefAttr.trim() : '';
+      selector = hrefAttr && hrefAttr !== '#' ? hrefAttr.trim() : null;
     }
 
-    try {
+    return selector;
+  };
+
+  var getSelectorFromElement = function getSelectorFromElement(element) {
+    var selector = getSelector(element);
+
+    if (selector) {
       return document.querySelector(selector) ? selector : null;
-    } catch (error) {
-      return null;
     }
+
+    return null;
+  };
+
+  var getElementFromSelector = function getElementFromSelector(element) {
+    var selector = getSelector(element);
+    return selector ? document.querySelector(selector) : null;
   };
 
   var getTransitionDurationFromElement = function getTransitionDurationFromElement(element) {
@@ -239,6 +248,17 @@
 
   var reflow = function reflow(element) {
     return element.offsetHeight;
+  };
+
+  var getjQuery = function getjQuery() {
+    var _window = window,
+        jQuery = _window.jQuery;
+
+    if (jQuery && !document.body.hasAttribute('data-no-jquery')) {
+      return jQuery;
+    }
+
+    return null;
   };
 
   /**
@@ -459,6 +479,7 @@
    * ------------------------------------------------------------------------
    */
 
+  var $ = getjQuery();
   var namespaceRegex = /[^.]*(?=\..*)\.|.*/;
   var stripNameRegex = /\..*/;
   var keyEventRegex = /^key/;
@@ -686,9 +707,9 @@
       var defaultPrevented = false;
       var evt = null;
 
-      if (inNamespace && typeof jQuery !== 'undefined') {
-        jQueryEvent = jQuery.Event(event, args);
-        jQuery(element).trigger(jQueryEvent);
+      if (inNamespace && $) {
+        jQueryEvent = $.Event(event, args);
+        $(element).trigger(jQueryEvent);
         bubbles = !jQueryEvent.isPropagationStopped();
         nativeDispatch = !jQueryEvent.isImmediatePropagationStopped();
         defaultPrevented = jQueryEvent.isDefaultPrevented();
@@ -880,12 +901,7 @@
     ;
 
     _proto._getRootElement = function _getRootElement(element) {
-      var selector = getSelectorFromElement(element);
-      var parent = false;
-
-      if (selector) {
-        parent = SelectorEngine.findOne(selector);
-      }
+      var parent = getElementFromSelector(element);
 
       if (!parent) {
         parent = SelectorEngine.closest(element, "." + ClassName.ALERT);
@@ -925,7 +941,7 @@
     } // Static
     ;
 
-    Alert._jQueryInterface = function _jQueryInterface(config) {
+    Alert.jQueryInterface = function jQueryInterface(config) {
       return this.each(function () {
         var data = Data.getData(this, DATA_KEY);
 
@@ -939,7 +955,7 @@
       });
     };
 
-    Alert._handleDismiss = function _handleDismiss(alertInstance) {
+    Alert.handleDismiss = function handleDismiss(alertInstance) {
       return function (event) {
         if (event) {
           event.preventDefault();
@@ -949,7 +965,7 @@
       };
     };
 
-    Alert._getInstance = function _getInstance(element) {
+    Alert.getInstance = function getInstance(element) {
       return Data.getData(element, DATA_KEY);
     };
 
@@ -969,7 +985,8 @@
    */
 
 
-  EventHandler.on(document, Event$1.CLICK_DATA_API, Selector.DISMISS, Alert._handleDismiss(new Alert()));
+  EventHandler.on(document, Event$1.CLICK_DATA_API, Selector.DISMISS, Alert.handleDismiss(new Alert()));
+  var $$1 = getjQuery();
   /**
    * ------------------------------------------------------------------------
    * jQuery
@@ -979,14 +996,14 @@
 
   /* istanbul ignore if */
 
-  if (typeof jQuery !== 'undefined') {
-    var JQUERY_NO_CONFLICT = jQuery.fn[NAME];
-    jQuery.fn[NAME] = Alert._jQueryInterface;
-    jQuery.fn[NAME].Constructor = Alert;
+  if ($$1) {
+    var JQUERY_NO_CONFLICT = $$1.fn[NAME];
+    $$1.fn[NAME] = Alert.jQueryInterface;
+    $$1.fn[NAME].Constructor = Alert;
 
-    jQuery.fn[NAME].noConflict = function () {
-      jQuery.fn[NAME] = JQUERY_NO_CONFLICT;
-      return Alert._jQueryInterface;
+    $$1.fn[NAME].noConflict = function () {
+      $$1.fn[NAME] = JQUERY_NO_CONFLICT;
+      return Alert.jQueryInterface;
     };
   }
 
@@ -1045,16 +1062,14 @@
       if (rootElement) {
         var input = SelectorEngine.findOne(Selector$1.INPUT, this._element);
 
-        if (input) {
-          if (input.type === 'radio') {
-            if (input.checked && this._element.classList.contains(ClassName$1.ACTIVE)) {
-              triggerChangeEvent = false;
-            } else {
-              var activeElement = SelectorEngine.findOne(Selector$1.ACTIVE, rootElement);
+        if (input && input.type === 'radio') {
+          if (input.checked && this._element.classList.contains(ClassName$1.ACTIVE)) {
+            triggerChangeEvent = false;
+          } else {
+            var activeElement = SelectorEngine.findOne(Selector$1.ACTIVE, rootElement);
 
-              if (activeElement) {
-                activeElement.classList.remove(ClassName$1.ACTIVE);
-              }
+            if (activeElement) {
+              activeElement.classList.remove(ClassName$1.ACTIVE);
             }
           }
 
@@ -1087,7 +1102,7 @@
     } // Static
     ;
 
-    Button._jQueryInterface = function _jQueryInterface(config) {
+    Button.jQueryInterface = function jQueryInterface(config) {
       return this.each(function () {
         var data = Data.getData(this, DATA_KEY$1);
 
@@ -1101,7 +1116,7 @@
       });
     };
 
-    Button._getInstance = function _getInstance(element) {
+    Button.getInstance = function getInstance(element) {
       return Data.getData(element, DATA_KEY$1);
     };
 
@@ -1151,6 +1166,7 @@
       button.classList.remove(ClassName$1.FOCUS);
     }
   });
+  var $$2 = getjQuery();
   /**
    * ------------------------------------------------------------------------
    * jQuery
@@ -1160,14 +1176,14 @@
 
   /* istanbul ignore if */
 
-  if (typeof jQuery !== 'undefined') {
-    var JQUERY_NO_CONFLICT$1 = jQuery.fn[NAME$1];
-    jQuery.fn[NAME$1] = Button._jQueryInterface;
-    jQuery.fn[NAME$1].Constructor = Button;
+  if ($$2) {
+    var JQUERY_NO_CONFLICT$1 = $$2.fn[NAME$1];
+    $$2.fn[NAME$1] = Button.jQueryInterface;
+    $$2.fn[NAME$1].Constructor = Button;
 
-    jQuery.fn[NAME$1].noConflict = function () {
-      jQuery.fn[NAME$1] = JQUERY_NO_CONFLICT$1;
-      return Button._jQueryInterface;
+    $$2.fn[NAME$1].noConflict = function () {
+      $$2.fn[NAME$1] = JQUERY_NO_CONFLICT$1;
+      return Button.jQueryInterface;
     };
   }
 
@@ -1754,7 +1770,7 @@
     } // Static
     ;
 
-    Carousel._carouselInterface = function _carouselInterface(element, config) {
+    Carousel.carouselInterface = function carouselInterface(element, config) {
       var data = Data.getData(element, DATA_KEY$2);
 
       var _config = _objectSpread2({}, Default, {}, Manipulator.getDataAttributes(element));
@@ -1783,20 +1799,14 @@
       }
     };
 
-    Carousel._jQueryInterface = function _jQueryInterface(config) {
+    Carousel.jQueryInterface = function jQueryInterface(config) {
       return this.each(function () {
-        Carousel._carouselInterface(this, config);
+        Carousel.carouselInterface(this, config);
       });
     };
 
-    Carousel._dataApiClickHandler = function _dataApiClickHandler(event) {
-      var selector = getSelectorFromElement(this);
-
-      if (!selector) {
-        return;
-      }
-
-      var target = SelectorEngine.findOne(selector);
+    Carousel.dataApiClickHandler = function dataApiClickHandler(event) {
+      var target = getElementFromSelector(this);
 
       if (!target || !target.classList.contains(ClassName$2.CAROUSEL)) {
         return;
@@ -1810,7 +1820,7 @@
         config.interval = false;
       }
 
-      Carousel._carouselInterface(target, config);
+      Carousel.carouselInterface(target, config);
 
       if (slideIndex) {
         Data.getData(target, DATA_KEY$2).to(slideIndex);
@@ -1819,7 +1829,7 @@
       event.preventDefault();
     };
 
-    Carousel._getInstance = function _getInstance(element) {
+    Carousel.getInstance = function getInstance(element) {
       return Data.getData(element, DATA_KEY$2);
     };
 
@@ -1844,14 +1854,15 @@
    */
 
 
-  EventHandler.on(document, Event$3.CLICK_DATA_API, Selector$2.DATA_SLIDE, Carousel._dataApiClickHandler);
+  EventHandler.on(document, Event$3.CLICK_DATA_API, Selector$2.DATA_SLIDE, Carousel.dataApiClickHandler);
   EventHandler.on(window, Event$3.LOAD_DATA_API, function () {
     var carousels = makeArray(SelectorEngine.find(Selector$2.DATA_RIDE));
 
     for (var i = 0, len = carousels.length; i < len; i++) {
-      Carousel._carouselInterface(carousels[i], Data.getData(carousels[i], DATA_KEY$2));
+      Carousel.carouselInterface(carousels[i], Data.getData(carousels[i], DATA_KEY$2));
     }
   });
+  var $$3 = getjQuery();
   /**
    * ------------------------------------------------------------------------
    * jQuery
@@ -1861,14 +1872,14 @@
 
   /* istanbul ignore if */
 
-  if (typeof jQuery !== 'undefined') {
-    var JQUERY_NO_CONFLICT$2 = jQuery.fn[NAME$2];
-    jQuery.fn[NAME$2] = Carousel._jQueryInterface;
-    jQuery.fn[NAME$2].Constructor = Carousel;
+  if ($$3) {
+    var JQUERY_NO_CONFLICT$2 = $$3.fn[NAME$2];
+    $$3.fn[NAME$2] = Carousel.jQueryInterface;
+    $$3.fn[NAME$2].Constructor = Carousel;
 
-    jQuery.fn[NAME$2].noConflict = function () {
-      jQuery.fn[NAME$2] = JQUERY_NO_CONFLICT$2;
-      return Carousel._jQueryInterface;
+    $$3.fn[NAME$2].noConflict = function () {
+      $$3.fn[NAME$2] = JQUERY_NO_CONFLICT$2;
+      return Carousel.jQueryInterface;
     };
   }
 
@@ -2014,7 +2025,7 @@
       if (actives) {
         actives.forEach(function (elemActive) {
           if (container !== elemActive) {
-            Collapse._collapseInterface(elemActive, 'hide');
+            Collapse.collapseInterface(elemActive, 'hide');
           }
 
           if (!activesData) {
@@ -2091,15 +2102,11 @@
       if (triggerArrayLength > 0) {
         for (var i = 0; i < triggerArrayLength; i++) {
           var trigger = this._triggerArray[i];
-          var selector = getSelectorFromElement(trigger);
+          var elem = getElementFromSelector(trigger);
 
-          if (selector !== null) {
-            var elem = SelectorEngine.findOne(selector);
-
-            if (!elem.classList.contains(ClassName$3.SHOW)) {
-              trigger.classList.add(ClassName$3.COLLAPSED);
-              trigger.setAttribute('aria-expanded', false);
-            }
+          if (elem && !elem.classList.contains(ClassName$3.SHOW)) {
+            trigger.classList.add(ClassName$3.COLLAPSED);
+            trigger.setAttribute('aria-expanded', false);
           }
         }
       }
@@ -2166,8 +2173,7 @@
 
       var selector = "[data-toggle=\"collapse\"][data-parent=\"" + parent + "\"]";
       makeArray(SelectorEngine.find(selector, parent)).forEach(function (element) {
-        var selector = getSelectorFromElement(element);
-        var selected = selector ? SelectorEngine.findOne(selector) : null;
+        var selected = getElementFromSelector(element);
 
         _this3._addAriaAndCollapsedClass(selected, [element]);
       });
@@ -2193,7 +2199,7 @@
     } // Static
     ;
 
-    Collapse._collapseInterface = function _collapseInterface(element, config) {
+    Collapse.collapseInterface = function collapseInterface(element, config) {
       var data = Data.getData(element, DATA_KEY$3);
 
       var _config = _objectSpread2({}, Default$1, {}, Manipulator.getDataAttributes(element), {}, typeof config === 'object' && config ? config : {});
@@ -2215,13 +2221,13 @@
       }
     };
 
-    Collapse._jQueryInterface = function _jQueryInterface(config) {
+    Collapse.jQueryInterface = function jQueryInterface(config) {
       return this.each(function () {
-        Collapse._collapseInterface(this, config);
+        Collapse.collapseInterface(this, config);
       });
     };
 
-    Collapse._getInstance = function _getInstance(element) {
+    Collapse.getInstance = function getInstance(element) {
       return Data.getData(element, DATA_KEY$3);
     };
 
@@ -2271,9 +2277,10 @@
         config = triggerData;
       }
 
-      Collapse._collapseInterface(element, config);
+      Collapse.collapseInterface(element, config);
     });
   });
+  var $$4 = getjQuery();
   /**
    * ------------------------------------------------------------------------
    * jQuery
@@ -2283,14 +2290,14 @@
 
   /* istanbul ignore if */
 
-  if (typeof jQuery !== 'undefined') {
-    var JQUERY_NO_CONFLICT$3 = jQuery.fn[NAME$3];
-    jQuery.fn[NAME$3] = Collapse._jQueryInterface;
-    jQuery.fn[NAME$3].Constructor = Collapse;
+  if ($$4) {
+    var JQUERY_NO_CONFLICT$3 = $$4.fn[NAME$3];
+    $$4.fn[NAME$3] = Collapse.jQueryInterface;
+    $$4.fn[NAME$3].Constructor = Collapse;
 
-    jQuery.fn[NAME$3].noConflict = function () {
-      jQuery.fn[NAME$3] = JQUERY_NO_CONFLICT$3;
-      return Collapse._jQueryInterface;
+    $$4.fn[NAME$3].noConflict = function () {
+      $$4.fn[NAME$3] = JQUERY_NO_CONFLICT$3;
+      return Collapse.jQueryInterface;
     };
   }
 
@@ -4961,14 +4968,16 @@
     flip: true,
     boundary: 'scrollParent',
     reference: 'toggle',
-    display: 'dynamic'
+    display: 'dynamic',
+    popperConfig: null
   };
   var DefaultType$2 = {
     offset: '(number|string|function)',
     flip: 'boolean',
     boundary: '(string|element)',
     reference: '(string|element)',
-    display: 'string'
+    display: 'string',
+    popperConfig: '(null|object)'
     /**
      * ------------------------------------------------------------------------
      * Class Definition
@@ -5001,16 +5010,23 @@
         return;
       }
 
-      var parent = Dropdown._getParentFromElement(this._element);
-
       var isActive = this._menu.classList.contains(ClassName$4.SHOW);
 
-      Dropdown._clearMenus();
+      Dropdown.clearMenus();
 
       if (isActive) {
         return;
       }
 
+      this.show();
+    };
+
+    _proto.show = function show() {
+      if (this._element.disabled || this._element.classList.contains(ClassName$4.DISABLED) || this._menu.classList.contains(ClassName$4.SHOW)) {
+        return;
+      }
+
+      var parent = Dropdown.getParentFromElement(this._element);
       var relatedTarget = {
         relatedTarget: this._element
       };
@@ -5022,10 +5038,6 @@
 
 
       if (!this._inNavbar) {
-        /**
-         * Check for Popper dependency
-         * Popper - https://popper.js.org
-         */
         if (typeof Popper === 'undefined') {
           throw new TypeError('Bootstrap\'s dropdowns require Popper.js (https://popper.js.org)');
         }
@@ -5071,34 +5083,12 @@
       EventHandler.trigger(parent, Event$5.SHOWN, relatedTarget);
     };
 
-    _proto.show = function show() {
-      if (this._element.disabled || this._element.classList.contains(ClassName$4.DISABLED) || this._menu.classList.contains(ClassName$4.SHOW)) {
-        return;
-      }
-
-      var parent = Dropdown._getParentFromElement(this._element);
-
-      var relatedTarget = {
-        relatedTarget: this._element
-      };
-      var showEvent = EventHandler.trigger(parent, Event$5.SHOW, relatedTarget);
-
-      if (showEvent.defaultPrevented) {
-        return;
-      }
-
-      Manipulator.toggleClass(this._menu, ClassName$4.SHOW);
-      Manipulator.toggleClass(parent, ClassName$4.SHOW);
-      EventHandler.trigger(parent, Event$5.SHOWN, relatedTarget);
-    };
-
     _proto.hide = function hide() {
       if (this._element.disabled || this._element.classList.contains(ClassName$4.DISABLED) || !this._menu.classList.contains(ClassName$4.SHOW)) {
         return;
       }
 
-      var parent = Dropdown._getParentFromElement(this._element);
-
+      var parent = Dropdown.getParentFromElement(this._element);
       var relatedTarget = {
         relatedTarget: this._element
       };
@@ -5106,6 +5096,10 @@
 
       if (hideEvent.defaultPrevented) {
         return;
+      }
+
+      if (this._popper) {
+        this._popper.destroy();
       }
 
       Manipulator.toggleClass(this._menu, ClassName$4.SHOW);
@@ -5119,7 +5113,7 @@
       this._element = null;
       this._menu = null;
 
-      if (this._popper !== null) {
+      if (this._popper) {
         this._popper.destroy();
 
         this._popper = null;
@@ -5129,7 +5123,7 @@
     _proto.update = function update() {
       this._inNavbar = this._detectNavbar();
 
-      if (this._popper !== null) {
+      if (this._popper) {
         this._popper.scheduleUpdate();
       }
     } // Private
@@ -5153,8 +5147,7 @@
     };
 
     _proto._getMenuElement = function _getMenuElement() {
-      var parent = Dropdown._getParentFromElement(this._element);
-
+      var parent = Dropdown.getParentFromElement(this._element);
       return SelectorEngine.findOne(Selector$4.MENU, parent);
     };
 
@@ -5221,11 +5214,11 @@
         };
       }
 
-      return popperConfig;
+      return _objectSpread2({}, popperConfig, {}, this._config.popperConfig);
     } // Static
     ;
 
-    Dropdown._dropdownInterface = function _dropdownInterface(element, config) {
+    Dropdown.dropdownInterface = function dropdownInterface(element, config) {
       var data = Data.getData(element, DATA_KEY$4);
 
       var _config = typeof config === 'object' ? config : null;
@@ -5243,13 +5236,13 @@
       }
     };
 
-    Dropdown._jQueryInterface = function _jQueryInterface(config) {
+    Dropdown.jQueryInterface = function jQueryInterface(config) {
       return this.each(function () {
-        Dropdown._dropdownInterface(this, config);
+        Dropdown.dropdownInterface(this, config);
       });
     };
 
-    Dropdown._clearMenus = function _clearMenus(event) {
+    Dropdown.clearMenus = function clearMenus(event) {
       if (event && (event.which === RIGHT_MOUSE_BUTTON_WHICH || event.type === 'keyup' && event.which !== TAB_KEYCODE)) {
         return;
       }
@@ -5257,8 +5250,7 @@
       var toggles = makeArray(SelectorEngine.find(Selector$4.DATA_TOGGLE));
 
       for (var i = 0, len = toggles.length; i < len; i++) {
-        var parent = Dropdown._getParentFromElement(toggles[i]);
-
+        var parent = Dropdown.getParentFromElement(toggles[i]);
         var context = Data.getData(toggles[i], DATA_KEY$4);
         var relatedTarget = {
           relatedTarget: toggles[i]
@@ -5297,24 +5289,22 @@
         }
 
         toggles[i].setAttribute('aria-expanded', 'false');
+
+        if (context._popper) {
+          context._popper.destroy();
+        }
+
         dropdownMenu.classList.remove(ClassName$4.SHOW);
         parent.classList.remove(ClassName$4.SHOW);
         EventHandler.trigger(parent, Event$5.HIDDEN, relatedTarget);
       }
     };
 
-    Dropdown._getParentFromElement = function _getParentFromElement(element) {
-      var parent;
-      var selector = getSelectorFromElement(element);
-
-      if (selector) {
-        parent = SelectorEngine.findOne(selector);
-      }
-
-      return parent || element.parentNode;
+    Dropdown.getParentFromElement = function getParentFromElement(element) {
+      return getElementFromSelector(element) || element.parentNode;
     };
 
-    Dropdown._dataApiKeydownHandler = function _dataApiKeydownHandler(event) {
+    Dropdown.dataApiKeydownHandler = function dataApiKeydownHandler(event) {
       // If not input/textarea:
       //  - And not a key in REGEXP_KEYDOWN => not a dropdown command
       // If input/textarea:
@@ -5333,8 +5323,7 @@
         return;
       }
 
-      var parent = Dropdown._getParentFromElement(this);
-
+      var parent = Dropdown.getParentFromElement(this);
       var isActive = parent.classList.contains(ClassName$4.SHOW);
 
       if (!isActive || isActive && (event.which === ESCAPE_KEYCODE || event.which === SPACE_KEYCODE)) {
@@ -5342,8 +5331,7 @@
           SelectorEngine.findOne(Selector$4.DATA_TOGGLE, parent).focus();
         }
 
-        Dropdown._clearMenus();
-
+        Dropdown.clearMenus();
         return;
       }
 
@@ -5372,7 +5360,7 @@
       items[index].focus();
     };
 
-    Dropdown._getInstance = function _getInstance(element) {
+    Dropdown.getInstance = function getInstance(element) {
       return Data.getData(element, DATA_KEY$4);
     };
 
@@ -5402,19 +5390,19 @@
    */
 
 
-  EventHandler.on(document, Event$5.KEYDOWN_DATA_API, Selector$4.DATA_TOGGLE, Dropdown._dataApiKeydownHandler);
-  EventHandler.on(document, Event$5.KEYDOWN_DATA_API, Selector$4.MENU, Dropdown._dataApiKeydownHandler);
-  EventHandler.on(document, Event$5.CLICK_DATA_API, Dropdown._clearMenus);
-  EventHandler.on(document, Event$5.KEYUP_DATA_API, Dropdown._clearMenus);
+  EventHandler.on(document, Event$5.KEYDOWN_DATA_API, Selector$4.DATA_TOGGLE, Dropdown.dataApiKeydownHandler);
+  EventHandler.on(document, Event$5.KEYDOWN_DATA_API, Selector$4.MENU, Dropdown.dataApiKeydownHandler);
+  EventHandler.on(document, Event$5.CLICK_DATA_API, Dropdown.clearMenus);
+  EventHandler.on(document, Event$5.KEYUP_DATA_API, Dropdown.clearMenus);
   EventHandler.on(document, Event$5.CLICK_DATA_API, Selector$4.DATA_TOGGLE, function (event) {
     event.preventDefault();
     event.stopPropagation();
-
-    Dropdown._dropdownInterface(this, 'toggle');
+    Dropdown.dropdownInterface(this, 'toggle');
   });
   EventHandler.on(document, Event$5.CLICK_DATA_API, Selector$4.FORM_CHILD, function (e) {
     return e.stopPropagation();
   });
+  var $$5 = getjQuery();
   /**
    * ------------------------------------------------------------------------
    * jQuery
@@ -5424,14 +5412,14 @@
 
   /* istanbul ignore if */
 
-  if (typeof jQuery !== 'undefined') {
-    var JQUERY_NO_CONFLICT$4 = jQuery.fn[NAME$4];
-    jQuery.fn[NAME$4] = Dropdown._jQueryInterface;
-    jQuery.fn[NAME$4].Constructor = Dropdown;
+  if ($$5) {
+    var JQUERY_NO_CONFLICT$4 = $$5.fn[NAME$4];
+    $$5.fn[NAME$4] = Dropdown.jQueryInterface;
+    $$5.fn[NAME$4].Constructor = Dropdown;
 
-    jQuery.fn[NAME$4].noConflict = function () {
-      jQuery.fn[NAME$4] = JQUERY_NO_CONFLICT$4;
-      return Dropdown._jQueryInterface;
+    $$5.fn[NAME$4].noConflict = function () {
+      $$5.fn[NAME$4] = JQUERY_NO_CONFLICT$4;
+      return Dropdown.jQueryInterface;
     };
   }
 
@@ -5653,6 +5641,8 @@
 
       var transition = this._element.classList.contains(ClassName$5.FADE);
 
+      var modalBody = SelectorEngine.findOne(Selector$5.MODAL_BODY, this._dialog);
+
       if (!this._element.parentNode || this._element.parentNode.nodeType !== Node.ELEMENT_NODE) {
         // Don't move modal's DOM position
         document.body.appendChild(this._element);
@@ -5664,8 +5654,8 @@
 
       this._element.setAttribute('aria-modal', true);
 
-      if (this._dialog.classList.contains(ClassName$5.SCROLLABLE)) {
-        SelectorEngine.findOne(Selector$5.MODAL_BODY, this._dialog).scrollTop = 0;
+      if (this._dialog.classList.contains(ClassName$5.SCROLLABLE) && modalBody) {
+        modalBody.scrollTop = 0;
       } else {
         this._element.scrollTop = 0;
       }
@@ -5932,7 +5922,7 @@
     } // Static
     ;
 
-    Modal._jQueryInterface = function _jQueryInterface(config, relatedTarget) {
+    Modal.jQueryInterface = function jQueryInterface(config, relatedTarget) {
       return this.each(function () {
         var data = Data.getData(this, DATA_KEY$5);
 
@@ -5954,7 +5944,7 @@
       });
     };
 
-    Modal._getInstance = function _getInstance(element) {
+    Modal.getInstance = function getInstance(element) {
       return Data.getData(element, DATA_KEY$5);
     };
 
@@ -5982,8 +5972,7 @@
   EventHandler.on(document, Event$6.CLICK_DATA_API, Selector$5.DATA_TOGGLE, function (event) {
     var _this10 = this;
 
-    var selector = getSelectorFromElement(this);
-    var target = SelectorEngine.findOne(selector);
+    var target = getElementFromSelector(this);
 
     if (this.tagName === 'A' || this.tagName === 'AREA') {
       event.preventDefault();
@@ -6011,6 +6000,7 @@
 
     data.show(this);
   });
+  var $$6 = getjQuery();
   /**
    * ------------------------------------------------------------------------
    * jQuery
@@ -6020,14 +6010,14 @@
 
   /* istanbul ignore if */
 
-  if (typeof jQuery !== 'undefined') {
-    var JQUERY_NO_CONFLICT$5 = jQuery.fn[NAME$5];
-    jQuery.fn[NAME$5] = Modal._jQueryInterface;
-    jQuery.fn[NAME$5].Constructor = Modal;
+  if ($$6) {
+    var JQUERY_NO_CONFLICT$5 = $$6.fn[NAME$5];
+    $$6.fn[NAME$5] = Modal.jQueryInterface;
+    $$6.fn[NAME$5].Constructor = Modal;
 
-    jQuery.fn[NAME$5].noConflict = function () {
-      jQuery.fn[NAME$5] = JQUERY_NO_CONFLICT$5;
-      return Modal._jQueryInterface;
+    $$6.fn[NAME$5].noConflict = function () {
+      $$6.fn[NAME$5] = JQUERY_NO_CONFLICT$5;
+      return Modal.jQueryInterface;
     };
   }
 
@@ -6180,7 +6170,8 @@
     boundary: '(string|element)',
     sanitize: 'boolean',
     sanitizeFn: '(null|function)',
-    whiteList: 'object'
+    whiteList: 'object',
+    popperConfig: '(null|object)'
   };
   var AttachmentMap$1 = {
     AUTO: 'auto',
@@ -6204,7 +6195,8 @@
     boundary: 'scrollParent',
     sanitize: true,
     sanitizeFn: null,
-    whiteList: DefaultWhitelist
+    whiteList: DefaultWhitelist,
+    popperConfig: null
   };
   var HoverState = {
     SHOW: 'show',
@@ -6246,10 +6238,6 @@
   /*#__PURE__*/
   function () {
     function Tooltip(element, config) {
-      /**
-       * Check for Popper dependency
-       * Popper - https://popper.js.org
-       */
       if (typeof Popper === 'undefined') {
         throw new TypeError('Bootstrap\'s tooltips require Popper.js (https://popper.js.org)');
       } // private
@@ -6333,7 +6321,7 @@
       this._hoverState = null;
       this._activeTrigger = null;
 
-      if (this._popper !== null) {
+      if (this._popper) {
         this._popper.destroy();
       }
 
@@ -6384,29 +6372,7 @@
         }
 
         EventHandler.trigger(this.element, this.constructor.Event.INSERTED);
-        this._popper = new Popper(this.element, tip, {
-          placement: attachment,
-          modifiers: {
-            offset: this._getOffset(),
-            flip: {
-              behavior: this.config.fallbackPlacement
-            },
-            arrow: {
-              element: "." + this.constructor.NAME + "-arrow"
-            },
-            preventOverflow: {
-              boundariesElement: this.config.boundary
-            }
-          },
-          onCreate: function onCreate(data) {
-            if (data.originalPlacement !== data.placement) {
-              _this._handlePopperPlacementChange(data);
-            }
-          },
-          onUpdate: function onUpdate(data) {
-            return _this._handlePopperPlacementChange(data);
-          }
-        });
+        this._popper = new Popper(this.element, tip, this._getPopperConfig(attachment));
         tip.classList.add(ClassName$6.SHOW); // If this is a touch-enabled device we add extra
         // empty mouseover listeners to the body's immediate children;
         // only needed because of broken event delegation on iOS
@@ -6565,18 +6531,47 @@
     } // Private
     ;
 
+    _proto._getPopperConfig = function _getPopperConfig(attachment) {
+      var _this3 = this;
+
+      var defaultBsConfig = {
+        placement: attachment,
+        modifiers: {
+          offset: this._getOffset(),
+          flip: {
+            behavior: this.config.fallbackPlacement
+          },
+          arrow: {
+            element: "." + this.constructor.NAME + "-arrow"
+          },
+          preventOverflow: {
+            boundariesElement: this.config.boundary
+          }
+        },
+        onCreate: function onCreate(data) {
+          if (data.originalPlacement !== data.placement) {
+            _this3._handlePopperPlacementChange(data);
+          }
+        },
+        onUpdate: function onUpdate(data) {
+          return _this3._handlePopperPlacementChange(data);
+        }
+      };
+      return _objectSpread2({}, defaultBsConfig, {}, this.config.popperConfig);
+    };
+
     _proto._addAttachmentClass = function _addAttachmentClass(attachment) {
       this.getTipElement().classList.add(CLASS_PREFIX + "-" + attachment);
     };
 
     _proto._getOffset = function _getOffset() {
-      var _this3 = this;
+      var _this4 = this;
 
       var offset = {};
 
       if (typeof this.config.offset === 'function') {
         offset.fn = function (data) {
-          data.offsets = _objectSpread2({}, data.offsets, {}, _this3.config.offset(data.offsets, _this3.element) || {});
+          data.offsets = _objectSpread2({}, data.offsets, {}, _this4.config.offset(data.offsets, _this4.element) || {});
           return data;
         };
       } else {
@@ -6603,29 +6598,29 @@
     };
 
     _proto._setListeners = function _setListeners() {
-      var _this4 = this;
+      var _this5 = this;
 
       var triggers = this.config.trigger.split(' ');
       triggers.forEach(function (trigger) {
         if (trigger === 'click') {
-          EventHandler.on(_this4.element, _this4.constructor.Event.CLICK, _this4.config.selector, function (event) {
-            return _this4.toggle(event);
+          EventHandler.on(_this5.element, _this5.constructor.Event.CLICK, _this5.config.selector, function (event) {
+            return _this5.toggle(event);
           });
         } else if (trigger !== Trigger.MANUAL) {
-          var eventIn = trigger === Trigger.HOVER ? _this4.constructor.Event.MOUSEENTER : _this4.constructor.Event.FOCUSIN;
-          var eventOut = trigger === Trigger.HOVER ? _this4.constructor.Event.MOUSELEAVE : _this4.constructor.Event.FOCUSOUT;
-          EventHandler.on(_this4.element, eventIn, _this4.config.selector, function (event) {
-            return _this4._enter(event);
+          var eventIn = trigger === Trigger.HOVER ? _this5.constructor.Event.MOUSEENTER : _this5.constructor.Event.FOCUSIN;
+          var eventOut = trigger === Trigger.HOVER ? _this5.constructor.Event.MOUSELEAVE : _this5.constructor.Event.FOCUSOUT;
+          EventHandler.on(_this5.element, eventIn, _this5.config.selector, function (event) {
+            return _this5._enter(event);
           });
-          EventHandler.on(_this4.element, eventOut, _this4.config.selector, function (event) {
-            return _this4._leave(event);
+          EventHandler.on(_this5.element, eventOut, _this5.config.selector, function (event) {
+            return _this5._leave(event);
           });
         }
       });
 
       this._hideModalHandler = function () {
-        if (_this4.element) {
-          _this4.hide();
+        if (_this5.element) {
+          _this5.hide();
         }
       };
 
@@ -6815,7 +6810,7 @@
     } // Static
     ;
 
-    Tooltip._jQueryInterface = function _jQueryInterface(config) {
+    Tooltip.jQueryInterface = function jQueryInterface(config) {
       return this.each(function () {
         var data = Data.getData(this, DATA_KEY$6);
 
@@ -6839,7 +6834,7 @@
       });
     };
 
-    Tooltip._getInstance = function _getInstance(element) {
+    Tooltip.getInstance = function getInstance(element) {
       return Data.getData(element, DATA_KEY$6);
     };
 
@@ -6882,6 +6877,8 @@
 
     return Tooltip;
   }();
+
+  var $$7 = getjQuery();
   /**
    * ------------------------------------------------------------------------
    * jQuery
@@ -6891,15 +6888,14 @@
 
   /* istanbul ignore if */
 
+  if ($$7) {
+    var JQUERY_NO_CONFLICT$6 = $$7.fn[NAME$6];
+    $$7.fn[NAME$6] = Tooltip.jQueryInterface;
+    $$7.fn[NAME$6].Constructor = Tooltip;
 
-  if (typeof jQuery !== 'undefined') {
-    var JQUERY_NO_CONFLICT$6 = jQuery.fn[NAME$6];
-    jQuery.fn[NAME$6] = Tooltip._jQueryInterface;
-    jQuery.fn[NAME$6].Constructor = Tooltip;
-
-    jQuery.fn[NAME$6].noConflict = function () {
-      jQuery.fn[NAME$6] = JQUERY_NO_CONFLICT$6;
-      return Tooltip._jQueryInterface;
+    $$7.fn[NAME$6].noConflict = function () {
+      $$7.fn[NAME$6] = JQUERY_NO_CONFLICT$6;
+      return Tooltip.jQueryInterface;
     };
   }
 
@@ -6970,10 +6966,6 @@
       return this.getTitle() || this._getContent();
     };
 
-    _proto.addAttachmentClass = function addAttachmentClass(attachment) {
-      this.getTipElement().classList.add(CLASS_PREFIX$1 + "-" + attachment);
-    };
-
     _proto.setContent = function setContent() {
       var tip = this.getTipElement(); // we use append for html objects to maintain js events
 
@@ -6988,6 +6980,10 @@
       this.setElementContent(SelectorEngine.findOne(Selector$7.CONTENT, tip), content);
       tip.classList.remove(ClassName$7.FADE);
       tip.classList.remove(ClassName$7.SHOW);
+    };
+
+    _proto._addAttachmentClass = function _addAttachmentClass(attachment) {
+      this.getTipElement().classList.add(CLASS_PREFIX$1 + "-" + attachment);
     } // Private
     ;
 
@@ -7009,7 +7005,7 @@
     } // Static
     ;
 
-    Popover._jQueryInterface = function _jQueryInterface(config) {
+    Popover.jQueryInterface = function jQueryInterface(config) {
       return this.each(function () {
         var data = Data.getData(this, DATA_KEY$7);
 
@@ -7034,7 +7030,7 @@
       });
     };
 
-    Popover._getInstance = function _getInstance(element) {
+    Popover.getInstance = function getInstance(element) {
       return Data.getData(element, DATA_KEY$7);
     };
 
@@ -7078,6 +7074,8 @@
 
     return Popover;
   }(Tooltip);
+
+  var $$8 = getjQuery();
   /**
    * ------------------------------------------------------------------------
    * jQuery
@@ -7086,15 +7084,14 @@
 
   /* istanbul ignore if */
 
+  if ($$8) {
+    var JQUERY_NO_CONFLICT$7 = $$8.fn[NAME$7];
+    $$8.fn[NAME$7] = Popover.jQueryInterface;
+    $$8.fn[NAME$7].Constructor = Popover;
 
-  if (typeof jQuery !== 'undefined') {
-    var JQUERY_NO_CONFLICT$7 = jQuery.fn[NAME$7];
-    jQuery.fn[NAME$7] = Popover._jQueryInterface;
-    jQuery.fn[NAME$7].Constructor = Popover;
-
-    jQuery.fn[NAME$7].noConflict = function () {
-      jQuery.fn[NAME$7] = JQUERY_NO_CONFLICT$7;
-      return Popover._jQueryInterface;
+    $$8.fn[NAME$7].noConflict = function () {
+      $$8.fn[NAME$7] = JQUERY_NO_CONFLICT$7;
+      return Popover.jQueryInterface;
     };
   }
 
@@ -7344,7 +7341,7 @@
     } // Static
     ;
 
-    ScrollSpy._jQueryInterface = function _jQueryInterface(config) {
+    ScrollSpy.jQueryInterface = function jQueryInterface(config) {
       return this.each(function () {
         var data = Data.getData(this, DATA_KEY$8);
 
@@ -7364,7 +7361,7 @@
       });
     };
 
-    ScrollSpy._getInstance = function _getInstance(element) {
+    ScrollSpy.getInstance = function getInstance(element) {
       return Data.getData(element, DATA_KEY$8);
     };
 
@@ -7394,6 +7391,7 @@
       return new ScrollSpy(spy, Manipulator.getDataAttributes(spy));
     });
   });
+  var $$9 = getjQuery();
   /**
    * ------------------------------------------------------------------------
    * jQuery
@@ -7402,14 +7400,14 @@
 
   /* istanbul ignore if */
 
-  if (typeof jQuery !== 'undefined') {
-    var JQUERY_NO_CONFLICT$8 = jQuery.fn[NAME$8];
-    jQuery.fn[NAME$8] = ScrollSpy._jQueryInterface;
-    jQuery.fn[NAME$8].Constructor = ScrollSpy;
+  if ($$9) {
+    var JQUERY_NO_CONFLICT$8 = $$9.fn[NAME$8];
+    $$9.fn[NAME$8] = ScrollSpy.jQueryInterface;
+    $$9.fn[NAME$8].Constructor = ScrollSpy;
 
-    jQuery.fn[NAME$8].noConflict = function () {
-      jQuery.fn[NAME$8] = JQUERY_NO_CONFLICT$8;
-      return ScrollSpy._jQueryInterface;
+    $$9.fn[NAME$8].noConflict = function () {
+      $$9.fn[NAME$8] = JQUERY_NO_CONFLICT$8;
+      return ScrollSpy.jQueryInterface;
     };
   }
 
@@ -7473,10 +7471,9 @@
         return;
       }
 
-      var target;
       var previous;
+      var target = getElementFromSelector(this._element);
       var listElement = SelectorEngine.closest(this._element, Selector$9.NAV_LIST_GROUP);
-      var selector = getSelectorFromElement(this._element);
 
       if (listElement) {
         var itemSelector = listElement.nodeName === 'UL' || listElement.nodeName === 'OL' ? Selector$9.ACTIVE_UL : Selector$9.ACTIVE;
@@ -7498,10 +7495,6 @@
 
       if (showEvent.defaultPrevented || hideEvent !== null && hideEvent.defaultPrevented) {
         return;
-      }
-
-      if (selector) {
-        target = SelectorEngine.findOne(selector);
       }
 
       this._activate(this._element, listElement);
@@ -7593,7 +7586,7 @@
     } // Static
     ;
 
-    Tab._jQueryInterface = function _jQueryInterface(config) {
+    Tab.jQueryInterface = function jQueryInterface(config) {
       return this.each(function () {
         var data = Data.getData(this, DATA_KEY$9) || new Tab(this);
 
@@ -7607,7 +7600,7 @@
       });
     };
 
-    Tab._getInstance = function _getInstance(element) {
+    Tab.getInstance = function getInstance(element) {
       return Data.getData(element, DATA_KEY$9);
     };
 
@@ -7632,6 +7625,7 @@
     var data = Data.getData(this, DATA_KEY$9) || new Tab(this);
     data.show();
   });
+  var $$a = getjQuery();
   /**
    * ------------------------------------------------------------------------
    * jQuery
@@ -7641,14 +7635,14 @@
 
   /* istanbul ignore if */
 
-  if (typeof jQuery !== 'undefined') {
-    var JQUERY_NO_CONFLICT$9 = jQuery.fn[NAME$9];
-    jQuery.fn[NAME$9] = Tab._jQueryInterface;
-    jQuery.fn[NAME$9].Constructor = Tab;
+  if ($$a) {
+    var JQUERY_NO_CONFLICT$9 = $$a.fn[NAME$9];
+    $$a.fn[NAME$9] = Tab.jQueryInterface;
+    $$a.fn[NAME$9].Constructor = Tab;
 
-    jQuery.fn[NAME$9].noConflict = function () {
-      jQuery.fn[NAME$9] = JQUERY_NO_CONFLICT$9;
-      return Tab._jQueryInterface;
+    $$a.fn[NAME$9].noConflict = function () {
+      $$a.fn[NAME$9] = JQUERY_NO_CONFLICT$9;
+      return Tab.jQueryInterface;
     };
   }
 
@@ -7814,7 +7808,7 @@
     } // Static
     ;
 
-    Toast._jQueryInterface = function _jQueryInterface(config) {
+    Toast.jQueryInterface = function jQueryInterface(config) {
       return this.each(function () {
         var data = Data.getData(this, DATA_KEY$a);
 
@@ -7834,7 +7828,7 @@
       });
     };
 
-    Toast._getInstance = function _getInstance(element) {
+    Toast.getInstance = function getInstance(element) {
       return Data.getData(element, DATA_KEY$a);
     };
 
@@ -7857,6 +7851,8 @@
 
     return Toast;
   }();
+
+  var $$b = getjQuery();
   /**
    * ------------------------------------------------------------------------
    * jQuery
@@ -7866,15 +7862,14 @@
 
   /* istanbul ignore if */
 
+  if ($$b) {
+    var JQUERY_NO_CONFLICT$a = $$b.fn[NAME$a];
+    $$b.fn[NAME$a] = Toast.jQueryInterface;
+    $$b.fn[NAME$a].Constructor = Toast;
 
-  if (typeof jQuery !== 'undefined') {
-    var JQUERY_NO_CONFLICT$a = jQuery.fn[NAME$a];
-    jQuery.fn[NAME$a] = Toast._jQueryInterface;
-    jQuery.fn[NAME$a].Constructor = Toast;
-
-    jQuery.fn[NAME$a].noConflict = function () {
-      jQuery.fn[NAME$a] = JQUERY_NO_CONFLICT$a;
-      return Toast._jQueryInterface;
+    $$b.fn[NAME$a].noConflict = function () {
+      $$b.fn[NAME$a] = JQUERY_NO_CONFLICT$a;
+      return Toast.jQueryInterface;
     };
   }
 
