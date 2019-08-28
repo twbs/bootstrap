@@ -7,11 +7,6 @@
     opacity: .25;
   }
 
-  .dropdown-toggle {
-    @include font-size(100%);
-    text-decoration: none;
-  }
-
   .dropdown-menu {
     @include font-size(.875rem);
     box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .05);
