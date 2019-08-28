@@ -46,16 +46,6 @@
     @include make-row();
   }
 
-  @each $breakpoint in map-keys($grid-breakpoints) {
-    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
-
-    @for $i from 1 through $grid-row-columns {
-      .row-cols#{$infix}-#{$i} {
-        @include row-cols($i);
-      }
-    }
-  }
-
   // Remove the negative margin from default .row, then the horizontal padding
   // from all immediate children columns (to prevent runaway style inheritance).
   .no-gutters {
