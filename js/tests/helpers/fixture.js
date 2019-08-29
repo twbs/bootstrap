@@ -23,8 +23,7 @@ export const clearFixture = () => {
   fixtureEl.innerHTML = ''
 }
 
-export const createEvent = (eventName, params) => {
-  params = params || {}
+export const createEvent = (eventName, params = {}) => {
   const e = document.createEvent('Event')
 
   e.initEvent(eventName, Boolean(params.bubbles), Boolean(params.cancelable))
