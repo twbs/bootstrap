@@ -370,20 +370,11 @@ Here are the variables we include (note that the `:root` is required). They're l
 
 {{< highlight css >}}
 {{< root.inline >}}
-{{- $variables := readFile "scss/_variables.scss" -}}
-{{- $fontSansSerif := findRE "(?:\\$font-family-sans-serif:\\s+)(.*)(?: !default)" $variables -}}
-{{- $fontMonospace := findRE "(?:\\$font-family-monospace:\\s+)(.*)(?: !default)" $variables -}}
+{{- $css := readFile "dist/css/bootstrap.css" -}}
+{{- $match := findRE ":root {([^}]*)}" $css 1 -}}
 
-:root {
-  {{- range $.Site.Data.colors }}
-  --{{ .name }}: {{ .hex }};
-  {{- end }}
-  {{- range (index $.Site.Data "theme-colors") }}
-  --{{ .name }}: {{ .hex }};
-  {{- end }}
-  --font-family-sans-serif: {{ $fontSansSerif }};
-  --font-family-monospace: {{ $fontMonospace }};
-}
+{{- index $match 0 -}}
+
 {{< /root.inline >}}
 {{< /highlight >}}
 
