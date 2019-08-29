@@ -434,7 +434,7 @@ $utilities: map-merge(
       values: italic normal
     ),
     "overflow-wrap": (
-      property: overflow-wrap word-break, // word-break for IE & < Edge 18
+      property: overflow-wrap word-wrap, // word-wrap for IE & < Edge 18
       class: text,
       values: (break: break-word)
     ),
