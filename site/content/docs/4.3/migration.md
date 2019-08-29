@@ -91,6 +91,10 @@ Changes to Reboot, typography, tables, and more.
 
 ## Components
 
+### Disabled states
+
+- Disabled states of the buttons, close button, pagination link & form range now have `pointer-events: none` added. This simplifies our codebase and makes it easier to override active states in CSS. [#29296](https://github.com/twbs/bootstrap/pull/29296).
+
 ### Alerts
 
 - **Todo:** Remove auto-darkening of `<hr>` elements in `.alert-*` class variants. `<hr>`s use `rgba()` for their color, so these should naturally blend anyway.
