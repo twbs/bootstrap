@@ -1,3 +1,4 @@
+// Do not forget to update getting-started/theming.md!
 :root {
   // Custom variable values only support SassScript inside `#{}`.
   @each $color, $value in $colors {
