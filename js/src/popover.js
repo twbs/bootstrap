@@ -8,8 +8,8 @@
 import { getjQuery, onDOMContentLoaded } from './util/index'
 import Data from './dom/data'
 import SelectorEngine from './dom/selector-engine'
-import Manipulator from './dom/manipulator'
 import Tooltip from './tooltip'
+import { addClass, removeClass } from './dom/class-list'
 
 /**
  * ------------------------------------------------------------------------
@@ -113,13 +113,13 @@ class Popover extends Tooltip {
     }
 
     this.setElementContent(SelectorEngine.findOne(SELECTOR_CONTENT, tip), content)
-    Manipulator.removeClass(tip, CLASS_NAME_FADE, CLASS_NAME_SHOW)
+    removeClass(tip, CLASS_NAME_FADE, CLASS_NAME_SHOW)
   }
 
   // Private
 
   _addAttachmentClass(attachment) {
-    Manipulator.addClass(this.getTipElement(), `${CLASS_PREFIX}-${attachment}`)
+    addClass(this.getTipElement(), `${CLASS_PREFIX}-${attachment}`)
   }
 
   _getContent() {
@@ -131,9 +131,9 @@ class Popover extends Tooltip {
     const tip = this.getTipElement()
     const tabClass = tip.getAttribute('class').match(BSCLS_PREFIX_REGEX)
 
-    if (tabClass && tabClass.length) {
+    if (tabClass !== null && tabClass.length > 0) {
       tabClass.map(token => token.trim())
-        .forEach(tClass => Manipulator.removeClass(tip, tClass))
+        .forEach(tClass => removeClass(tip, tClass))
     }
   }
 

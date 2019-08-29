@@ -19,6 +19,7 @@ import EventHandler from './dom/event-handler'
 import Manipulator from './dom/manipulator'
 import Popper from 'popper.js'
 import SelectorEngine from './dom/selector-engine'
+import { addClass, removeClass, hasClass, toggleClass } from './dom/class-list'
 
 /**
  * ------------------------------------------------------------------------
@@ -125,11 +126,11 @@ class Dropdown {
   // Public
 
   toggle() {
-    if (this._element.disabled || Manipulator.containsClass(this._element, CLASS_NAME_DISABLED)) {
+    if (this._element.disabled || hasClass(this._element, CLASS_NAME_DISABLED)) {
       return
     }
 
-    const isActive = Manipulator.containsClass(this._menu, CLASS_NAME_SHOW)
+    const isActive = hasClass(this._menu, CLASS_NAME_SHOW)
 
     Dropdown.clearMenus()
 
@@ -141,7 +142,7 @@ class Dropdown {
   }
 
   show() {
-    if (this._element.disabled || Manipulator.containsClass(this._element, CLASS_NAME_DISABLED) || Manipulator.containsClass(this._menu, CLASS_NAME_SHOW)) {
+    if (this._element.disabled || hasClass(this._element, CLASS_NAME_DISABLED) || hasClass(this._menu, CLASS_NAME_SHOW)) {
       return
     }
 
@@ -179,7 +180,7 @@ class Dropdown {
       // to allow the menu to "escape" the scroll parent's boundaries
       // https://github.com/twbs/bootstrap/issues/24251
       if (this._config.boundary !== 'scrollParent') {
-        Manipulator.addClass(parent, CLASS_NAME_POSITION_STATIC)
+        addClass(parent, CLASS_NAME_POSITION_STATIC)
       }
 
       this._popper = new Popper(referenceElement, this._menu, this._getPopperConfig())
@@ -198,13 +199,13 @@ class Dropdown {
     this._element.focus()
     this._element.setAttribute('aria-expanded', true)
 
-    Manipulator.toggleClass(this._menu, CLASS_NAME_SHOW)
-    Manipulator.toggleClass(this._element, CLASS_NAME_SHOW)
+    toggleClass(this._menu, CLASS_NAME_SHOW)
+    toggleClass(this._element, CLASS_NAME_SHOW)
     EventHandler.trigger(parent, EVENT_SHOWN, relatedTarget)
   }
 
   hide() {
-    if (this._element.disabled || Manipulator.containsClass(this._element, CLASS_NAME_DISABLED) || !Manipulator.containsClass(this._menu, CLASS_NAME_SHOW)) {
+    if (this._element.disabled || hasClass(this._element, CLASS_NAME_DISABLED) || !hasClass(this._menu, CLASS_NAME_SHOW)) {
       return
     }
 
@@ -223,8 +224,8 @@ class Dropdown {
       this._popper.destroy()
     }
 
-    Manipulator.toggleClass(this._menu, CLASS_NAME_SHOW)
-    Manipulator.toggleClass(this._element, CLASS_NAME_SHOW)
+    toggleClass(this._menu, CLASS_NAME_SHOW)
+    toggleClass(this._element, CLASS_NAME_SHOW)
     EventHandler.trigger(parent, EVENT_HIDDEN, relatedTarget)
   }
 
@@ -277,15 +278,15 @@ class Dropdown {
     let placement = PLACEMENT_BOTTOM
 
     // Handle dropup
-    if (Manipulator.containsClass(parentDropdown, CLASS_NAME_DROPUP)) {
-      placement = Manipulator.containsClass(this._menu, CLASS_NAME_MENURIGHT) ?
+    if (hasClass(parentDropdown, CLASS_NAME_DROPUP)) {
+      placement = hasClass(this._menu, CLASS_NAME_MENURIGHT) ?
         PLACEMENT_TOPEND :
         PLACEMENT_TOP
-    } else if (Manipulator.containsClass(parentDropdown, CLASS_NAME_DROPRIGHT)) {
+    } else if (hasClass(parentDropdown, CLASS_NAME_DROPRIGHT)) {
       placement = PLACEMENT_RIGHT
-    } else if (Manipulator.containsClass(parentDropdown, CLASS_NAME_DROPLEFT)) {
+    } else if (hasClass(parentDropdown, CLASS_NAME_DROPLEFT)) {
       placement = PLACEMENT_LEFT
-    } else if (Manipulator.containsClass(this._menu, CLASS_NAME_MENURIGHT)) {
+    } else if (hasClass(this._menu, CLASS_NAME_MENURIGHT)) {
       placement = PLACEMENT_BOTTOMEND
     }
 
@@ -392,7 +393,7 @@ class Dropdown {
 
       const dropdownMenu = context._menu
 
-      if (!Manipulator.containsClass(toggles[i], CLASS_NAME_SHOW)) {
+      if (!hasClass(toggles[i], CLASS_NAME_SHOW)) {
         continue
       }
 
@@ -421,8 +422,8 @@ class Dropdown {
         context._popper.destroy()
       }
 
-      Manipulator.removeClass(dropdownMenu, CLASS_NAME_SHOW)
-      Manipulator.removeClass(toggles[i], CLASS_NAME_SHOW)
+      removeClass(dropdownMenu, CLASS_NAME_SHOW)
+      removeClass(toggles[i], CLASS_NAME_SHOW)
       EventHandler.trigger(parent, EVENT_HIDDEN, relatedTarget)
     }
   }
@@ -450,12 +451,12 @@ class Dropdown {
     event.preventDefault()
     event.stopPropagation()
 
-    if (this.disabled || Manipulator.containsClass(this, CLASS_NAME_DISABLED)) {
+    if (this.disabled || hasClass(this, CLASS_NAME_DISABLED)) {
       return
     }
 
     const parent = Dropdown.getParentFromElement(this)
-    const isActive = Manipulator.containsClass(this, CLASS_NAME_SHOW)
+    const isActive = hasClass(this, CLASS_NAME_SHOW)
 
     if (event.key === ESCAPE_KEY) {
       const button = this.matches(SELECTOR_DATA_TOGGLE) ? this : SelectorEngine.prev(this, SELECTOR_DATA_TOGGLE)[0]

@@ -26,6 +26,7 @@ import EventHandler from './dom/event-handler'
 import Manipulator from './dom/manipulator'
 import Popper from 'popper.js'
 import SelectorEngine from './dom/selector-engine'
+import { addClass, removeClass, hasClass } from './dom/class-list'
 
 /**
  * ------------------------------------------------------------------------
@@ -213,7 +214,7 @@ class Tooltip {
         context._leave(null, context)
       }
     } else {
-      if (Manipulator.containsClass(this.getTipElement(), CLASS_NAME_SHOW)) {
+      if (hasClass(this.getTipElement(), CLASS_NAME_SHOW)) {
         this._leave(null, this)
         return
       }
@@ -273,7 +274,7 @@ class Tooltip {
       this.setContent()
 
       if (this.config.animation) {
-        Manipulator.addClass(tip, CLASS_NAME_FADE)
+        addClass(tip, CLASS_NAME_FADE)
       }
 
       const placement = typeof this.config.placement === 'function' ?
@@ -294,7 +295,7 @@ class Tooltip {
 
       this._popper = new Popper(this.element, tip, this._getPopperConfig(attachment))
 
-      Manipulator.addClass(tip, CLASS_NAME_SHOW)
+      addClass(tip, CLASS_NAME_SHOW)
 
       // If this is a touch-enabled device we add extra
       // empty mouseover listeners to the body's immediate children;
@@ -321,7 +322,7 @@ class Tooltip {
         }
       }
 
-      if (Manipulator.containsClass(this.tip, CLASS_NAME_FADE)) {
+      if (hasClass(this.tip, CLASS_NAME_FADE)) {
         const transitionDuration = getTransitionDurationFromElement(this.tip)
 
         EventHandler.one(this.tip, TRANSITION_END, complete)
@@ -354,7 +355,7 @@ class Tooltip {
       return
     }
 
-    Manipulator.removeClass(tip, CLASS_NAME_SHOW)
+    removeClass(tip, CLASS_NAME_SHOW)
 
     // If this is a touch-enabled device we remove the extra
     // empty mouseover listeners we added for iOS support
@@ -367,7 +368,7 @@ class Tooltip {
     this._activeTrigger[TRIGGER_FOCUS] = false
     this._activeTrigger[TRIGGER_HOVER] = false
 
-    if (Manipulator.containsClass(this.tip, CLASS_NAME_FADE)) {
+    if (hasClass(this.tip, CLASS_NAME_FADE)) {
       const transitionDuration = getTransitionDurationFromElement(tip)
 
       EventHandler.one(tip, TRANSITION_END, complete)
@@ -407,7 +408,7 @@ class Tooltip {
     const tip = this.getTipElement()
 
     this.setElementContent(SelectorEngine.findOne(SELECTOR_TOOLTIP_INNER, tip), this.getTitle())
-    Manipulator.removeClass(tip, CLASS_NAME_FADE, CLASS_NAME_SHOW)
+    removeClass(tip, CLASS_NAME_FADE, CLASS_NAME_SHOW)
   }
 
   setElementContent(element, content) {
@@ -488,7 +489,7 @@ class Tooltip {
   }
 
   _addAttachmentClass(attachment) {
-    Manipulator.addClass(this.getTipElement(), `${CLASS_PREFIX}-${attachment}`)
+    addClass(this.getTipElement(), `${CLASS_PREFIX}-${attachment}`)
   }
 
   _getOffset() {
@@ -607,7 +608,7 @@ class Tooltip {
       ] = true
     }
 
-    if (Manipulator.containsClass(context.getTipElement(), CLASS_NAME_SHOW) ||
+    if (hasClass(context.getTipElement(), CLASS_NAME_SHOW) ||
         context._hoverState === HOVER_STATE_SHOW) {
       context._hoverState = HOVER_STATE_SHOW
       return
@@ -738,9 +739,9 @@ class Tooltip {
     const tip = this.getTipElement()
     const tabClass = tip.getAttribute('class').match(BSCLS_PREFIX_REGEX)
 
-    if (tabClass && tabClass.length) {
+    if (tabClass !== null && tabClass.length > 0) {
       tabClass.map(token => token.trim())
-        .forEach(tClass => Manipulator.removeClass(tip, tClass))
+        .forEach(tClass => removeClass(tip, tClass))
     }
   }
 
@@ -757,7 +758,7 @@ class Tooltip {
       return
     }
 
-    Manipulator.removeClass(tip, CLASS_NAME_FADE)
+    removeClass(tip, CLASS_NAME_FADE)
     this.config.animation = false
     this.hide()
     this.show()

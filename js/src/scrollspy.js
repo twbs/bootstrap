@@ -17,6 +17,7 @@ import Data from './dom/data'
 import EventHandler from './dom/event-handler'
 import Manipulator from './dom/manipulator'
 import SelectorEngine from './dom/selector-engine'
+import { addClass, removeClass, hasClass } from './dom/class-list'
 
 /**
  * ------------------------------------------------------------------------
@@ -245,28 +246,28 @@ class ScrollSpy {
 
     const link = SelectorEngine.findOne(queries.join(','))
 
-    if (Manipulator.containsClass(link, CLASS_NAME_DROPDOWN_ITEM)) {
-      Manipulator.addClass(
+    if (hasClass(link, CLASS_NAME_DROPDOWN_ITEM)) {
+      addClass(
         SelectorEngine.findOne(SELECTOR_DROPDOWN_TOGGLE, SelectorEngine.closest(link, SELECTOR_DROPDOWN)),
         CLASS_NAME_ACTIVE
       )
-      Manipulator.addClass(link, CLASS_NAME_ACTIVE)
+      addClass(link, CLASS_NAME_ACTIVE)
     } else {
       // Set triggered link as active
-      Manipulator.addClass(link, CLASS_NAME_ACTIVE)
+      addClass(link, CLASS_NAME_ACTIVE)
 
       SelectorEngine.parents(link, SELECTOR_NAV_LIST_GROUP)
         .forEach(listGroup => {
           // Set triggered links parents as active
           // With both <ul> and <nav> markup a parent is the previous sibling of any nav ancestor
           SelectorEngine.prev(listGroup, `${SELECTOR_NAV_LINKS}, ${SELECTOR_LIST_ITEMS}`)
-            .forEach(item => Manipulator.addClass(item, CLASS_NAME_ACTIVE))
+            .forEach(item => addClass(item, CLASS_NAME_ACTIVE))
 
           // Handle special case when .nav-link is inside .nav-item
           SelectorEngine.prev(listGroup, SELECTOR_NAV_ITEMS)
             .forEach(navItem => {
               SelectorEngine.children(navItem, SELECTOR_NAV_LINKS)
-                .forEach(item => Manipulator.addClass(item, CLASS_NAME_ACTIVE))
+                .forEach(item => addClass(item, CLASS_NAME_ACTIVE))
             })
         })
     }
@@ -278,8 +279,8 @@ class ScrollSpy {
 
   _clear() {
     SelectorEngine.find(this._selector)
-      .filter(node => Manipulator.containsClass(node, CLASS_NAME_ACTIVE))
-      .forEach(node => Manipulator.removeClass(node, CLASS_NAME_ACTIVE))
+      .filter(node => hasClass(node, CLASS_NAME_ACTIVE))
+      .forEach(node => removeClass(node, CLASS_NAME_ACTIVE))
   }
 
   // Static
