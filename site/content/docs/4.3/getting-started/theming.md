@@ -370,6 +370,10 @@ Here are the variables we include (note that the `:root` is required). They're l
 
 {{< highlight css >}}
 {{< root.inline >}}
+{{- $variables := readFile "scss/_variables.scss" -}}
+{{- $fontSansSerif := findRE "(?:\\$font-family-sans-serif:\\s+)(.*)(?: !default)" $variables -}}
+{{- $fontMonospace := findRE "(?:\\$font-family-monospace:\\s+)(.*)(?: !default)" $variables -}}
+
 :root {
   {{- range $.Site.Data.colors }}
   --{{ .name }}: {{ .hex }};
@@ -377,8 +381,8 @@ Here are the variables we include (note that the `:root` is required). They're l
   {{- range (index $.Site.Data "theme-colors") }}
   --{{ .name }}: {{ .hex }};
   {{- end }}
-  --font-family-sans-serif: $font-family-sans-serif;
-  --font-family-monospace: $font-family-monospace;
+  --font-family-sans-serif: {{ $fontSansSerif }};
+  --font-family-monospace: {{ $fontMonospace }};
 }
 {{< /root.inline >}}
 {{< /highlight >}}
