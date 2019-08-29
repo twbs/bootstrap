@@ -369,31 +369,18 @@ Bootstrap 4 includes around two dozen [CSS custom properties (variables)](https:
 Here are the variables we include (note that the `:root` is required). They're located in our `_root.scss` file.
 
 {{< highlight css >}}
+{{< root.inline >}}
 :root {
-  --blue: #007bff;
-  --indigo: #6610f2;
-  --purple: #6f42c1;
-  --pink: #e83e8c;
-  --red: #dc3545;
-  --orange: #fd7e14;
-  --yellow: #ffc107;
-  --green: #28a745;
-  --teal: #20c997;
-  --cyan: #17a2b8;
-  --white: #fff;
-  --gray: #6c757d;
-  --gray-dark: #343a40;
-  --primary: #007bff;
-  --secondary: #6c757d;
-  --success: #28a745;
-  --info: #17a2b8;
-  --warning: #ffc107;
-  --danger: #dc3545;
-  --light: #f8f9fa;
-  --dark: #343a40;
-  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  {{- range $.Site.Data.colors }}
+  --{{ .name }}: {{ .hex }};
+  {{- end }}
+  {{- range (index $.Site.Data "theme-colors") }}
+  --{{ .name }}: {{ .hex }};
+  {{- end }}
+  --font-family-sans-serif: $font-family-sans-serif;
+  --font-family-monospace: $font-family-monospace;
 }
+{{< /root.inline >}}
 {{< /highlight >}}
 
 ### Examples
