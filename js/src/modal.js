@@ -116,7 +116,7 @@ class Modal {
       return
     }
 
-    if (this._element.classList.contains(CLASS_NAME_FADE)) {
+    if (Manipulator.containsClass(this._element, CLASS_NAME_FADE)) {
       this._isTransitioning = true
     }
 
@@ -171,7 +171,7 @@ class Modal {
     }
 
     this._isShown = false
-    const transition = this._element.classList.contains(CLASS_NAME_FADE)
+    const transition = Manipulator.containsClass(this._element, CLASS_NAME_FADE)
 
     if (transition) {
       this._isTransitioning = true
@@ -182,7 +182,7 @@ class Modal {
 
     EventHandler.off(document, EVENT_FOCUSIN)
 
-    this._element.classList.remove(CLASS_NAME_SHOW)
+    Manipulator.removeClass(this._element, CLASS_NAME_SHOW)
 
     EventHandler.off(this._element, EVENT_CLICK_DISMISS)
     EventHandler.off(this._dialog, EVENT_MOUSEDOWN_DISMISS)
@@ -237,7 +237,7 @@ class Modal {
   }
 
   _showElement(relatedTarget) {
-    const transition = this._element.classList.contains(CLASS_NAME_FADE)
+    const transition = Manipulator.containsClass(this._element, CLASS_NAME_FADE)
     const modalBody = SelectorEngine.findOne(SELECTOR_MODAL_BODY, this._dialog)
 
     if (!this._element.parentNode ||
@@ -260,7 +260,7 @@ class Modal {
       reflow(this._element)
     }
 
-    this._element.classList.add(CLASS_NAME_SHOW)
+    Manipulator.addClass(this._element, CLASS_NAME_SHOW)
 
     if (this._config.focus) {
       this._enforceFocus()
@@ -328,7 +328,7 @@ class Modal {
     this._element.removeAttribute('role')
     this._isTransitioning = false
     this._showBackdrop(() => {
-      document.body.classList.remove(CLASS_NAME_OPEN)
+      Manipulator.removeClass(document.body, CLASS_NAME_OPEN)
       this._resetAdjustments()
       this._resetScrollbar()
       EventHandler.trigger(this._element, EVENT_HIDDEN)
@@ -341,7 +341,7 @@ class Modal {
   }
 
   _showBackdrop(callback) {
-    const animate = this._element.classList.contains(CLASS_NAME_FADE) ?
+    const animate = Manipulator.containsClass(this._element, CLASS_NAME_FADE) ?
       CLASS_NAME_FADE :
       ''
 
@@ -350,7 +350,7 @@ class Modal {
       this._backdrop.className = CLASS_NAME_BACKDROP
 
       if (animate) {
-        this._backdrop.classList.add(animate)
+        Manipulator.addClass(this._backdrop, animate)
       }
 
       document.body.appendChild(this._backdrop)
@@ -376,7 +376,7 @@ class Modal {
         reflow(this._backdrop)
       }
 
-      this._backdrop.classList.add(CLASS_NAME_SHOW)
+      Manipulator.addClass(this._backdrop, CLASS_NAME_SHOW)
 
       if (!animate) {
         callback()
@@ -388,14 +388,14 @@ class Modal {
       EventHandler.one(this._backdrop, TRANSITION_END, callback)
       emulateTransitionEnd(this._backdrop, backdropTransitionDuration)
     } else if (!this._isShown && this._backdrop) {
-      this._backdrop.classList.remove(CLASS_NAME_SHOW)
+      Manipulator.removeClass(this._backdrop, CLASS_NAME_SHOW)
 
       const callbackRemove = () => {
         this._removeBackdrop()
         callback()
       }
 
-      if (this._element.classList.contains(CLASS_NAME_FADE)) {
+      if (Manipulator.containsClass(this._element, CLASS_NAME_FADE)) {
         const backdropTransitionDuration = getTransitionDurationFromElement(this._backdrop)
         EventHandler.one(this._backdrop, TRANSITION_END, callbackRemove)
         emulateTransitionEnd(this._backdrop, backdropTransitionDuration)
@@ -419,11 +419,11 @@ class Modal {
       this._element.style.overflowY = 'hidden'
     }
 
-    this._element.classList.add(CLASS_NAME_STATIC)
+    addClass(this._element, CLASS_NAME_STATIC)
     const modalTransitionDuration = getTransitionDurationFromElement(this._dialog)
     EventHandler.off(this._element, TRANSITION_END)
     EventHandler.one(this._element, TRANSITION_END, () => {
-      this._element.classList.remove(CLASS_NAME_STATIC)
+      removeClass(this._element, CLASS_NAME_STATIC)
       if (!isModalOverflowing) {
         EventHandler.one(this._element, TRANSITION_END, () => {
           this._element.style.overflowY = ''
@@ -494,7 +494,7 @@ class Modal {
       document.body.style.paddingRight = `${Number.parseFloat(calculatedPadding) + this._scrollbarWidth}px`
     }
 
-    document.body.classList.add(CLASS_NAME_OPEN)
+    Manipulator.addClass(document.body, CLASS_NAME_OPEN)
   }
 
   _resetScrollbar() {

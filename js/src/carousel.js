@@ -329,7 +329,7 @@ class Carousel {
       EventHandler.on(this._element, EVENT_POINTERDOWN, event => start(event))
       EventHandler.on(this._element, EVENT_POINTERUP, event => end(event))
 
-      this._element.classList.add(CLASS_NAME_POINTER_EVENT)
+      Manipulator.addClass(this._element, CLASS_NAME_POINTER_EVENT)
     } else {
       EventHandler.on(this._element, EVENT_TOUCHSTART, event => start(event))
       EventHandler.on(this._element, EVENT_TOUCHMOVE, event => move(event))
@@ -399,7 +399,7 @@ class Carousel {
     if (this._indicatorsElement) {
       const indicators = SelectorEngine.find(SELECTOR_ACTIVE, this._indicatorsElement)
       for (let i = 0; i < indicators.length; i++) {
-        indicators[i].classList.remove(CLASS_NAME_ACTIVE)
+        Manipulator.removeClass(indicators[i], CLASS_NAME_ACTIVE)
       }
 
       const nextIndicator = this._indicatorsElement.children[
@@ -407,7 +407,7 @@ class Carousel {
       ]
 
       if (nextIndicator) {
-        nextIndicator.classList.add(CLASS_NAME_ACTIVE)
+        Manipulator.addClass(nextIndicator, CLASS_NAME_ACTIVE)
       }
     }
   }
@@ -452,7 +452,7 @@ class Carousel {
       eventDirectionName = DIRECTION_RIGHT
     }
 
-    if (nextElement && nextElement.classList.contains(CLASS_NAME_ACTIVE)) {
+    if (nextElement && Manipulator.containsClass(nextElement, CLASS_NAME_ACTIVE)) {
       this._isSliding = false
       return
     }
@@ -476,22 +476,21 @@ class Carousel {
     this._setActiveIndicatorElement(nextElement)
     this._activeElement = nextElement
 
-    if (this._element.classList.contains(CLASS_NAME_SLIDE)) {
-      nextElement.classList.add(orderClassName)
+    if (Manipulator.containsClass(this._element, CLASS_NAME_SLIDE)) {
+      Manipulator.addClass(nextElement, orderClassName)
 
       reflow(nextElement)
 
-      activeElement.classList.add(directionalClassName)
-      nextElement.classList.add(directionalClassName)
+      Manipulator.addClass(activeElement, directionalClassName)
+      Manipulator.addClass(nextElement, directionalClassName)
 
       const transitionDuration = getTransitionDurationFromElement(activeElement)
 
       EventHandler.one(activeElement, TRANSITION_END, () => {
-        nextElement.classList.remove(directionalClassName, orderClassName)
-        nextElement.classList.add(CLASS_NAME_ACTIVE)
+        Manipulator.removeClass(nextElement, directionalClassName, orderClassName)
+        Manipulator.addClass(nextElement, CLASS_NAME_ACTIVE)
 
-        activeElement.classList.remove(CLASS_NAME_ACTIVE, orderClassName, directionalClassName)
-
+        Manipulator.removeClass(activeElement, CLASS_NAME_ACTIVE, orderClassName, directionalClassName)
         this._isSliding = false
 
         setTimeout(() => {
@@ -506,8 +505,8 @@ class Carousel {
 
       emulateTransitionEnd(activeElement, transitionDuration)
     } else {
-      activeElement.classList.remove(CLASS_NAME_ACTIVE)
-      nextElement.classList.add(CLASS_NAME_ACTIVE)
+      Manipulator.removeClass(activeElement, CLASS_NAME_ACTIVE)
+      Manipulator.addClass(nextElement, CLASS_NAME_ACTIVE)
 
       this._isSliding = false
       EventHandler.trigger(this._element, EVENT_SLID, {
@@ -568,7 +567,7 @@ class Carousel {
   static dataApiClickHandler(event) {
     const target = getElementFromSelector(this)
 
-    if (!target || !target.classList.contains(CLASS_NAME_CAROUSEL)) {
+    if (!target || !Manipulator.containsClass(target, CLASS_NAME_CAROUSEL)) {
       return
     }
 

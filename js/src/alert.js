@@ -15,6 +15,7 @@ import {
 } from './util/index'
 import Data from './dom/data'
 import EventHandler from './dom/event-handler'
+import Manipulator from './dom/manipulator'
 
 /**
  * ------------------------------------------------------------------------
@@ -88,9 +89,9 @@ class Alert {
   }
 
   _removeElement(element) {
-    element.classList.remove(CLASSNAME_SHOW)
+    Manipulator.removeClass(element, CLASSNAME_SHOW)
 
-    if (!element.classList.contains(CLASSNAME_FADE)) {
+    if (!Manipulator.containsClass(element, CLASSNAME_FADE)) {
       this._destroyElement(element)
       return
     }

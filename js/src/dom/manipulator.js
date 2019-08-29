@@ -29,6 +29,18 @@ function normalizeDataKey(key) {
   return key.replace(/[A-Z]/g, chr => `-${chr.toLowerCase()}`)
 }
 
+function addRemoveClass(add, element, className, classNameList) {
+  if (!classNameList.length) {
+    element.classList[add ? 'add' : 'remove'](className)
+
+    return
+  }
+
+  const classList = [className].concat(classNameList)
+
+  classList.forEach(addClassName => element.classList[add ? 'add' : 'remove'](addClassName))
+}
+
 const Manipulator = {
   setDataAttribute(element, key, value) {
     element.setAttribute(`data-bs-${normalizeDataKey(key)}`, value)
@@ -74,6 +86,30 @@ const Manipulator = {
       top: element.offsetTop,
       left: element.offsetLeft
     }
+  },
+
+  toggleClass(element, className) {
+    if (!element) {
+      return
+    }
+
+    if (this.containsClass(element, className)) {
+      this.removeClass(element, className)
+    } else {
+      this.addClass(element, className)
+    }
+  },
+
+  addClass(element, className, ...classNameList) {
+    addRemoveClass(true, element, className, classNameList)
+  },
+
+  removeClass(element, className, ...classNameList) {
+    addRemoveClass(false, element, className, classNameList)
+  },
+
+  containsClass(element, className) {
+    return element.classList.contains(className)
   }
 }
 

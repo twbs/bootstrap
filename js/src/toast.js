@@ -95,12 +95,12 @@ class Toast {
     this._clearTimeout()
 
     if (this._config.animation) {
-      this._element.classList.add(CLASS_NAME_FADE)
+      Manipulator.addClass(this._element, CLASS_NAME_FADE)
     }
 
     const complete = () => {
-      this._element.classList.remove(CLASS_NAME_SHOWING)
-      this._element.classList.add(CLASS_NAME_SHOW)
+      Manipulator.removeClass(this._element, CLASS_NAME_SHOWING)
+      Manipulator.addClass(this._element, CLASS_NAME_SHOW)
 
       EventHandler.trigger(this._element, EVENT_SHOWN)
 
@@ -111,9 +111,10 @@ class Toast {
       }
     }
 
-    this._element.classList.remove(CLASS_NAME_HIDE)
+    Manipulator.removeClass(this._element, CLASS_NAME_HIDE)
     reflow(this._element)
-    this._element.classList.add(CLASS_NAME_SHOWING)
+    Manipulator.addClass(this._element, CLASS_NAME_SHOWING)
+
     if (this._config.animation) {
       const transitionDuration = getTransitionDurationFromElement(this._element)
 
@@ -125,7 +126,7 @@ class Toast {
   }
 
   hide() {
-    if (!this._element.classList.contains(CLASS_NAME_SHOW)) {
+    if (!Manipulator.containsClass(this._element, CLASS_NAME_SHOW)) {
       return
     }
 
@@ -136,11 +137,11 @@ class Toast {
     }
 
     const complete = () => {
-      this._element.classList.add(CLASS_NAME_HIDE)
+      Manipulator.addClass(this._element, CLASS_NAME_HIDE)
       EventHandler.trigger(this._element, EVENT_HIDDEN)
     }
 
-    this._element.classList.remove(CLASS_NAME_SHOW)
+    Manipulator.removeClass(this._element, CLASS_NAME_SHOW)
     if (this._config.animation) {
       const transitionDuration = getTransitionDurationFromElement(this._element)
 
@@ -154,8 +155,8 @@ class Toast {
   dispose() {
     this._clearTimeout()
 
-    if (this._element.classList.contains(CLASS_NAME_SHOW)) {
-      this._element.classList.remove(CLASS_NAME_SHOW)
+    if (Manipulator.containsClass(this._element, CLASS_NAME_SHOW)) {
+      Manipulator.removeClass(this._element, CLASS_NAME_SHOW)
     }
 
     EventHandler.off(this._element, EVENT_CLICK_DISMISS)

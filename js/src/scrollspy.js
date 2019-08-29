@@ -245,27 +245,28 @@ class ScrollSpy {
 
     const link = SelectorEngine.findOne(queries.join(','))
 
-    if (link.classList.contains(CLASS_NAME_DROPDOWN_ITEM)) {
-      SelectorEngine.findOne(SELECTOR_DROPDOWN_TOGGLE, link.closest(SELECTOR_DROPDOWN))
-        .classList.add(CLASS_NAME_ACTIVE)
-
-      link.classList.add(CLASS_NAME_ACTIVE)
+    if (Manipulator.containsClass(link, CLASS_NAME_DROPDOWN_ITEM)) {
+      Manipulator.addClass(
+        SelectorEngine.findOne(SELECTOR_DROPDOWN_TOGGLE, SelectorEngine.closest(link, SELECTOR_DROPDOWN)),
+        CLASS_NAME_ACTIVE
+      )
+      Manipulator.addClass(link, CLASS_NAME_ACTIVE)
     } else {
       // Set triggered link as active
-      link.classList.add(CLASS_NAME_ACTIVE)
+      Manipulator.addClass(link, CLASS_NAME_ACTIVE)
 
       SelectorEngine.parents(link, SELECTOR_NAV_LIST_GROUP)
         .forEach(listGroup => {
           // Set triggered links parents as active
           // With both <ul> and <nav> markup a parent is the previous sibling of any nav ancestor
           SelectorEngine.prev(listGroup, `${SELECTOR_NAV_LINKS}, ${SELECTOR_LIST_ITEMS}`)
-            .forEach(item => item.classList.add(CLASS_NAME_ACTIVE))
+            .forEach(item => Manipulator.addClass(item, CLASS_NAME_ACTIVE))
 
           // Handle special case when .nav-link is inside .nav-item
           SelectorEngine.prev(listGroup, SELECTOR_NAV_ITEMS)
             .forEach(navItem => {
               SelectorEngine.children(navItem, SELECTOR_NAV_LINKS)
-                .forEach(item => item.classList.add(CLASS_NAME_ACTIVE))
+                .forEach(item => Manipulator.addClass(item, CLASS_NAME_ACTIVE))
             })
         })
     }
@@ -277,8 +278,8 @@ class ScrollSpy {
 
   _clear() {
     SelectorEngine.find(this._selector)
-      .filter(node => node.classList.contains(CLASS_NAME_ACTIVE))
-      .forEach(node => node.classList.remove(CLASS_NAME_ACTIVE))
+      .filter(node => Manipulator.containsClass(node, CLASS_NAME_ACTIVE))
+      .forEach(node => Manipulator.removeClass(node, CLASS_NAME_ACTIVE))
   }
 
   // Static

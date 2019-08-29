@@ -8,6 +8,7 @@
 import { getjQuery, onDOMContentLoaded } from './util/index'
 import Data from './dom/data'
 import EventHandler from './dom/event-handler'
+import Manipulator from './dom/manipulator'
 
 /**
  * ------------------------------------------------------------------------
@@ -49,7 +50,7 @@ class Button {
 
   toggle() {
     // Toggle class and sync the `aria-pressed` attribute with the return value of the `.toggle()` method
-    this._element.setAttribute('aria-pressed', this._element.classList.toggle(CLASS_NAME_ACTIVE))
+    this._element.setAttribute('aria-pressed', Manipulator.toggleClass(this._element, CLASS_NAME_ACTIVE))
   }
 
   dispose() {
