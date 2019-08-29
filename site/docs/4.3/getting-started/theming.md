@@ -292,7 +292,7 @@ We use a subset of all colors to create a smaller color palette for generating c
 <div class="row">
   {% for color in site.data.theme-colors %}
     <div class="col-md-4">
-      <div class="p-3 mb-3 swatch-{{ color.name }}">{{ color.name | capitalize }}</div>
+      <div class="p-3 mb-3 bg-{{ color.name }} {% if color.name == "light" or color.name == "warning" %}text-dark{% else %}text-white{% endif %}">{{ color.name | capitalize }}</div>
     </div>
   {% endfor %}
 </div>
