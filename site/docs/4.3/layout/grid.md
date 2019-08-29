@@ -395,6 +395,20 @@ Use these row columns classes to quickly create basic grid layouts or to control
 {% include example.html content=example %}
 </div>
 
+<div class="bd-example-row">
+{% capture example %}
+<div class="container">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
+    <div class="col">Column</div>
+    <div class="col">Column</div>
+    <div class="col">Column</div>
+    <div class="col">Column</div>
+  </div>
+</div>
+{% endcapture %}
+{% include example.html content=example %}
+</div>
+
 You can also use the accompanying Sass mixin, `row-cols()`:
 
 {% highlight scss %}
