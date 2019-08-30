@@ -4,8 +4,6 @@
 
 .bd-footer {
   @include font-size(.875rem);
-  text-align: center;
-  background-color: #f7f7f7;
 
   a {
     font-weight: 600;
@@ -19,10 +17,6 @@
 
   p {
     margin-bottom: 0;
-  }
-
-  @include media-breakpoint-up(sm) {
-    text-align: left;
   }
 }
 
