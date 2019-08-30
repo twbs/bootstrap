@@ -18,7 +18,7 @@
     @supports (position: sticky) {
       position: sticky;
       top: 0;
-      z-index: 1071; // over everything in bootstrap
+      z-index: $zindex-sticky;
     }
   }
 }
