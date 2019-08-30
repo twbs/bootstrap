@@ -212,8 +212,8 @@ Add `data-interval=""` to a `.carousel-item` to change the amount of time to del
 
 Change the color of a carousel's next and previous controls, indicators, and captions with a single `.text-*` utility on the `.carousel`. Need more control? Apply text utilities and custom styles more selectively.
 
-{% capture example %}
-<div id="carouselExampleColors" class="carousel slide text-dark" data-ride="carousel">
+{{< example >}}
+<div id="carouselExampleColors" class="carousel slide text-white" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleColors" data-slide-to="0" class="active"></li>
     <li data-target="#carouselExampleColors" data-slide-to="1"></li>
@@ -221,21 +221,21 @@ Change the color of a carousel's next and previous controls, indicators, and cap
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      {% include icons/placeholder.svg width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#999" background="#f5f5f5" text="First slide" %}
+      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#555" background="#777" text="First slide" >}}
       <div class="carousel-caption d-none d-md-block">
         <h5>First slide label</h5>
         <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
       </div>
     </div>
     <div class="carousel-item">
-      {% include icons/placeholder.svg width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#888" background="#f1f1f1" text="Second slide" %}
+      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#444" background="#666" text="Second slide" >}}
       <div class="carousel-caption d-none d-md-block">
         <h5>Second slide label</h5>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       </div>
     </div>
     <div class="carousel-item">
-      {% include icons/placeholder.svg width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#777" background="#eee" text="Third slide" %}
+      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#333" background="#555" text="Third slide" >}}
       <div class="carousel-caption d-none d-md-block">
         <h5>Third slide label</h5>
         <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
@@ -243,16 +243,19 @@ Change the color of a carousel's next and previous controls, indicators, and cap
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleColors" role="button" data-slide="prev">
-    <svg class="carousel-control-prev-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 8"><path d="M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z"/></svg>
+    <svg class="carousel-control-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+      <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M11 4l-3 6 3 6"></path>
+    </svg>
     <span class="sr-only">Previous</span>
   </a>
   <a class="carousel-control-next" href="#carouselExampleColors" role="button" data-slide="next">
-    <svg class="carousel-control-next-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 8"><path d="M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z"/></svg>
+    <svg class="carousel-control-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+      <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M9 16l3-6-3-6"></path>
+    </svg>
     <span class="sr-only">Next</span>
   </a>
 </div>
-{% endcapture %}
-{% include example.html content=example %}
+{{< /example >}}
 
 ## Usage
 
