@@ -36,6 +36,7 @@ Changes to our source Sass files and compiled CSS.
 - Removed print styles and `$enable-print-styles` variable. Print display classes, however, have remained intact. [See #28339](https://github.com/twbs/bootstrap/pull/28339).
 - Dropped `color()`, `theme-color()` & `gray()` functions in favor of variables. [See #29083](https://github.com/twbs/bootstrap/pull/29083)
 - The `theme-color-level()` function is renamed to `color-level()` and now accepts any color you want instead of only `$theme-color` colors. [See #29083](https://github.com/twbs/bootstrap/pull/29083)
+- Line heights are dropped from several components to simplify our codebase. The `button-size()` and `pagination-size()` do not accept line height parameters anymore. [See #29271](https://github.com/twbs/bootstrap/pull/29271)
 
 ## JavaScript
 
@@ -132,6 +133,7 @@ Badges were overhauled to better differentiate themselves from buttons and to be
 
 - Renamed `.text-monospace` to `.font-monospace`
 - Decreased the number of responsive order utilities per breakpoint. The highest order utility with a number now is `.order-5` instead of `.order-12`. [See #28874](https://github.com/twbs/bootstrap/pull/28874).
+- New `line-height` utilities: `.lh-1`, `.lh-sm`, `.lh-base` and `.lh-lg`. See [here]({{< docsref "/utilities/text#line-height" >}}).
 - **Todo:** Drop `.text-hide` as it's an antiquated method for hiding text that shouldn't be used anymore
 - **Todo:** Split utilities into property-value utility classes and helpers
 
