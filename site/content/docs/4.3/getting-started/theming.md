@@ -242,14 +242,30 @@ Many of Bootstrap's various components and utilities are built through a series 
 
 ### All colors
 
-All colors available in Bootstrap 4, are available as Sass variables and a Sass map in `scss/_variables.scss` file. This will be expanded upon in subsequent minor releases to add additional shades, much like the [grayscale palette](#grays) we already include.
+All colors available in Bootstrap 5, are available as Sass variables and a Sass map in `scss/_variables.scss` file. To avoid increased file sizes, we do not create classes for each of these variables.
+
+Sass cannot programmatically generate variables, so we must manually create them ourselves. We specify the midpoint value (`500`) and use custom color functions to tint (lighten) or shade (darken) our colors via Sass's `mix()` color function. Using `mix()` is not the same as `lighten()` and `darken()`—the former blends the specified color with white or black, while the latter only adjusts the lightness value of each color. The result is a much more complete suite of colors, as [shown in this CodePen demo](https://codepen.io/emdeoh/pen/zYOQOPB).
+
+Our `tint-color()` and `shade-color()` functions use `mix()` alongside our `$theme-color-interval` variable, which specifies a stepped percentage value for each mixed color we need. See the `scss/_functions.scss` and `scss/_variables.scss` files for the full source code.
 
 <div class="row">
   {{< theme-colors.inline >}}
   {{- range $.Site.Data.colors }}
     {{- if (and (not (eq .name "white")) (not (eq .name "gray")) (not (eq .name "gray-dark"))) }}
-    <div class="col-md-4">
-      <div class="p-3 mb-3 swatch-{{ .name }}">{{ .name | title }}</div>
+    <div class="col-md-4 mb-3 font-monospace">
+      <div class="p-3 mb-2 swatch-{{ .name }}">
+        <strong class="d-block">${{ .name }}</strong>
+        {{ .hex }}
+      </div>
+      <div class="p-3 bd-{{ .name }}-100">${{ .name }}-100</div>
+      <div class="p-3 bd-{{ .name }}-200">${{ .name }}-200</div>
+      <div class="p-3 bd-{{ .name }}-300">${{ .name }}-300</div>
+      <div class="p-3 bd-{{ .name }}-400">${{ .name }}-400</div>
+      <div class="p-3 bd-{{ .name }}-500">${{ .name }}-500</div>
+      <div class="p-3 bd-{{ .name }}-600">${{ .name }}-600</div>
+      <div class="p-3 bd-{{ .name }}-700">${{ .name }}-700</div>
+      <div class="p-3 bd-{{ .name }}-800">${{ .name }}-800</div>
+      <div class="p-3 bd-{{ .name }}-900">${{ .name }}-900</div>
     </div>
     {{ end -}}
   {{ end -}}
@@ -260,6 +276,10 @@ Here's how you can use these in your Sass:
 
 {{< highlight scss >}}
 .alpha { color: $purple; }
+.beta {
+  color: $yellow-300;
+  background-color: $indigo-900;
+}
 {{< /highlight >}}
 
 [Color utility classes]({{< docsref "/utilities/colors" >}}) are also available for setting `color` and `background-color`.
