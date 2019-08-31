@@ -601,6 +601,137 @@ Just like with card groups, card footers in decks will automatically line up.
 </div>
 {{< /example >}}
 
-### Card columns (Masonry layout)
+### Grid cards
+
+Use the Bootstrap grid system and its [`.row-cols` classes]({{< docsref "/layout/grid#row-columns" >}}) to control how many grid columns (wrapped around your cards) you show per row. For example, here's `.row-cols-md-2` splitting four cards to equal width across multiple rows, from the medium breakpoint up.
+
+{{< example >}}
+<div class="row row-cols-md-2">
+  <div class="col mb-4">
+    <div class="card">
+      {{< placeholder width="100%" height="140" class="card-img-top" text="Image cap" >}}
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col mb-4">
+    <div class="card">
+      {{< placeholder width="100%" height="140" class="card-img-top" text="Image cap" >}}
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col mb-4">
+    <div class="card">
+      {{< placeholder width="100%" height="140" class="card-img-top" text="Image cap" >}}
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col mb-4">
+    <div class="card">
+      {{< placeholder width="100%" height="140" class="card-img-top" text="Image cap" >}}
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      </div>
+    </div>
+  </div>
+</div>
+{{< /example >}}
+
+Change it to `.row-cols-3` and you'll see the fourth card wrap.
+
+{{< example >}}
+<div class="row row-cols-md-3">
+  <div class="col mb-4">
+    <div class="card">
+      {{< placeholder width="100%" height="140" class="card-img-top" text="Image cap" >}}
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col mb-4">
+    <div class="card">
+      {{< placeholder width="100%" height="140" class="card-img-top" text="Image cap" >}}
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col mb-4">
+    <div class="card">
+      {{< placeholder width="100%" height="140" class="card-img-top" text="Image cap" >}}
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col mb-4">
+    <div class="card">
+      {{< placeholder width="100%" height="140" class="card-img-top" text="Image cap" >}}
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      </div>
+    </div>
+  </div>
+</div>
+{{< /example >}}
+
+When you need equal height, add `.h-100` to the cards.
+
+{{< example >}}
+<div class="row row-cols-md-3">
+  <div class="col mb-4">
+    <div class="card h-100">
+      {{< placeholder width="100%" height="140" class="card-img-top" text="Image cap" >}}
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col mb-4">
+    <div class="card h-100">
+      {{< placeholder width="100%" height="140" class="card-img-top" text="Image cap" >}}
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a short card.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col mb-4">
+    <div class="card h-100">
+      {{< placeholder width="100%" height="140" class="card-img-top" text="Image cap" >}}
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col mb-4">
+    <div class="card h-100">
+      {{< placeholder width="100%" height="140" class="card-img-top" text="Image cap" >}}
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      </div>
+    </div>
+  </div>
+</div>
+{{< /example >}}
+
+### Masonry
 
 In `v4` we used a CSS-only technique to mimic the behavior of [Masonry](https://masonry.desandro.com/)-like columns, but this technique came with lots of unpleasant [side effects](https://github.com/twbs/bootstrap/pull/28922). If you want to have this type of layout in `v5`, you can just make use of Masonry plugin. **Masonry is not included in Bootstrap**, but we've made a [demo example]({{< docsref "/examples/masonry" >}}) to help you get started.
