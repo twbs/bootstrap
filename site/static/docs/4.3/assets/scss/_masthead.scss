@@ -31,7 +31,7 @@
   width: 6rem;
   height: 6rem;
   padding: 1.5rem;
-  color: #fff;
+  color: $white;
   @include border-radius(25%);
   box-shadow: 0 .25rem .5rem rgba(0, 0, 0, .15), inset 0 -1px 0 rgba(0, 0, 0, .15);
 
