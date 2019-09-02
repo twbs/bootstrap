@@ -28,7 +28,7 @@
     {{- $modified_content = replace $modified_content "</svg>\n" "</svg>✂️" -}}
     {{- $modified_content = split $modified_content "✂️" -}}
 
-    {{- range $i, $content_chunk := $modified_content -}}
+    {{- range $content_chunk := $modified_content -}}
       {{- $image_class := "" -}}
 
       {{- if (strings.Contains $content_chunk `<svg class="bd-placeholder-img `) -}}

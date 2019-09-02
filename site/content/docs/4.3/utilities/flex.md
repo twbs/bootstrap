@@ -438,8 +438,8 @@ Responsive variations also exist for `order`.
 {{< markdown >}}
 {{< flex.inline >}}
 {{- range $bp := $.Site.Data.breakpoints -}}
-{{- range $i, $num := seq 0 5 }}
-- `.order{{ $bp.abbr }}-{{ $i }}`
+{{- range (seq 0 5) }}
+- `.order{{ $bp.abbr }}-{{ . }}`
 {{- end -}}
 {{- end -}}
 {{< /flex.inline >}}
@@ -450,8 +450,8 @@ Additionally there are also responsive `.order-first` and `.order-last` classes 
 {{< markdown >}}
 {{< flex.inline >}}
 {{- range $bp := $.Site.Data.breakpoints -}}
-{{- range $i := slice "first" "last" }}
-- `.order{{ $bp.abbr }}-{{ $i }}`
+{{- range (slice "first" "last") }}
+- `.order{{ $bp.abbr }}-{{ . }}`
 {{- end -}}
 {{- end -}}
 {{< /flex.inline >}}
