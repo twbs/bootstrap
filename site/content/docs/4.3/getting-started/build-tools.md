@@ -42,7 +42,7 @@ Our [package.json]({{< param repo >}}/blob/v{{< param current_version >}}/packag
         <code>npm run dist</code>
       </td>
       <td>
-       Creates the <code>dist/</code> directory with compiled files. Requires <a href="https://sass-lang.com">Sass</a>, <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a>, and <a href="https://github.com/terser-js/terser">terser</a>.
+       Creates the <code>dist/</code> directory with compiled files. Requires <a href="https://sass-lang.com/">Sass</a>, <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a>, and <a href="https://github.com/terser/terser">terser</a>.
       </td>
     </tr>
     <tr>
