@@ -44,7 +44,7 @@ Our `bootstrap.bundle.js` and `bootstrap.bundle.min.js` include [Popper](https:/
 Be sure to have your pages set up with the latest design and development standards. That means using an HTML5 doctype and including a viewport meta tag for proper responsive behaviors. Put it all together and your pages should look like this:
 
 {{< highlight html >}}
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -78,7 +78,7 @@ Bootstrap employs a handful of important global styles and settings that you'll 
 Bootstrap requires the use of the HTML5 doctype. Without it, you'll see some funky incomplete styling, but including it shouldn't cause any considerable hiccups.
 
 {{< highlight html >}}
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   ...
 </html>
