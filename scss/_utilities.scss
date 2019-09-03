@@ -394,6 +394,16 @@ $utilities: map-merge(
         )
       )
     ),
+    "line-height": (
+      property: line-height,
+      class: lh,
+      values: (
+        1: 1,
+        sm: $line-height-sm,
+        base: $line-height-base,
+        lg: $line-height-lg,
+      )
+    ),
     "background-color": (
       property: background-color,
       class: bg,

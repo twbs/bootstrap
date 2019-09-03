@@ -770,10 +770,10 @@ Use `.table-responsive{-sm|-md|-lg|-xl}` as needed to create responsive tables u
 **These tables may appear broken until their responsive styles apply at specific viewport widths.**
 
 {{< tables.inline >}}
-{{ range $bp := $.Site.Data.breakpoints }}
-{{ if not (eq $bp "xs") }}
+{{ range $.Site.Data.breakpoints }}
+{{ if not (eq . "xs") }}
 <div class="bd-example">
-  <div class="table-responsive{{ $bp.abbr }}">
+  <div class="table-responsive{{ .abbr }}">
     <table class="table">
       <thead>
         <tr>
@@ -832,9 +832,9 @@ Use `.table-responsive{-sm|-md|-lg|-xl}` as needed to create responsive tables u
 
 {{< highlight html >}}
 {{< tables.inline >}}
-{{- range $bp := $.Site.Data.breakpoints -}}
-{{- if not (eq $bp "xs") }}
-<div class="table-responsive{{ $bp.abbr }}">
+{{- range $.Site.Data.breakpoints -}}
+{{- if not (eq . "xs") }}
+<div class="table-responsive{{ .abbr }}">
   <table class="table">
     ...
   </table>
