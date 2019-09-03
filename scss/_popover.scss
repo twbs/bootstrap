@@ -39,7 +39,7 @@
   margin-bottom: $popover-arrow-height;
 
   > .popover-arrow {
-    bottom: calc((#{$popover-arrow-height} + #{$popover-border-width}) * -1);
+    bottom: subtract(-$popover-arrow-height, $popover-border-width);
 
     &::before {
       bottom: 0;
@@ -59,7 +59,7 @@
   margin-left: $popover-arrow-height;
 
   > .popover-arrow {
-    left: calc((#{$popover-arrow-height} + #{$popover-border-width}) * -1);
+    left: subtract(-$popover-arrow-height, $popover-border-width);
     width: $popover-arrow-height;
     height: $popover-arrow-width;
     margin: $popover-border-radius 0; // make sure the arrow does not touch the popover's rounded corners
@@ -82,7 +82,7 @@
   margin-top: $popover-arrow-height;
 
   > .popover-arrow {
-    top: calc((#{$popover-arrow-height} + #{$popover-border-width}) * -1);
+    top: subtract(-$popover-arrow-height, $popover-border-width);
 
     &::before {
       top: 0;
@@ -114,7 +114,7 @@
   margin-right: $popover-arrow-height;
 
   > .popover-arrow {
-    right: calc((#{$popover-arrow-height} + #{$popover-border-width}) * -1);
+    right: subtract(-$popover-arrow-height, $popover-border-width);
     width: $popover-arrow-height;
     height: $popover-arrow-width;
     margin: $popover-border-radius 0; // make sure the arrow does not touch the popover's rounded corners
