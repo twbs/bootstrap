@@ -36,7 +36,6 @@ body {
   display: block;
   width: 100%;
   margin-bottom: 0; /* Override default `<label>` margin */
-  line-height: 1.5;
   color: #495057;
   pointer-events: none;
   cursor: text; /* Match the input under the label */
