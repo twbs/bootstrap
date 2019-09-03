@@ -215,6 +215,44 @@ You can also specify a base color with our color map functions:
 
 We use the `escape-svg` function to escape the `<`, `>` and `#` characters for SVG background images. These characters need to be escaped to properly render the background images in IE.
 
+## Add and Subtract function
+
+We use the `add` and `subtract` functions instead of the CSS `calc` function. The primary purpose of these functions is to avoid errors when "unitless" 0 is given to the `calc` expression.
+
+Example where the calc is valid:
+
+{{< highlight scss >}}
+$border-radius: .25rem;
+$border-width: 1px;
+
+.element {
+  // Output calc(.25rem - 1px) is valid
+  border-radius: calc($border-radius - $border-width);
+}
+
+.element {
+  // Output the same calc(.25rem - 1px) as above
+  border-radius: subtract($border-radius, $border-width);
+}
+{{< /highlight >}}
+
+Example where the calc is invalid:
+
+{{< highlight scss >}}
+$border-radius: .25rem;
+$border-width: 0;
+
+.element {
+  // Output calc(.25rem - 0) is invalid
+  border-radius: calc($border-radius - $border-width);
+}
+
+.element {
+  // Output .25rem
+  border-radius: subtract($border-radius, $border-width);
+}
+{{< /highlight >}}
+
 ## Sass options
 
 Customize Bootstrap 4 with our built-in custom variables file and easily toggle global CSS preferences with new `$enable-*` Sass variables. Override a variable's value and recompile with `npm run test` as needed.
