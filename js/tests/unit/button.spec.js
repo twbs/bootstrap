@@ -128,4 +128,24 @@ describe('Button', () => {
       expect(btnEl.classList.contains('active')).toEqual(false)
     })
   })
+
+  describe('getInstance', () => {
+    it('should return button instance', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+      const button = new Button(div)
+
+      expect(Button.getInstance(div)).toEqual(button)
+      expect(Button.getInstance(div) instanceof Button).toEqual(true)
+    })
+
+    it('should return null when there is no button instance', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+
+      expect(Button.getInstance(div)).toEqual(null)
+    })
+  })
 })

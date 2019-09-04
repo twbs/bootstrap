@@ -634,6 +634,16 @@ describe('ScrollSpy', () => {
   })
 
   describe('getInstance', () => {
+    it('should return scrollspy instance', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+      const scrollSpy = new ScrollSpy(div)
+
+      expect(ScrollSpy.getInstance(div)).toEqual(scrollSpy)
+      expect(ScrollSpy.getInstance(div) instanceof ScrollSpy).toEqual(true)
+    })
+
     it('should return null if there is no instance', () => {
       expect(ScrollSpy.getInstance(fixtureEl)).toEqual(null)
     })

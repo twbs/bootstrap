@@ -170,4 +170,24 @@ describe('Alert', () => {
       expect(fixtureEl.querySelector('.alert')).not.toBeNull()
     })
   })
+
+  describe('getInstance', () => {
+    it('should return alert instance', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+      const alert = new Alert(div)
+
+      expect(Alert.getInstance(div)).toEqual(alert)
+      expect(Alert.getInstance(div) instanceof Alert).toEqual(true)
+    })
+
+    it('should return null when there is no alert instance', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+
+      expect(Alert.getInstance(div)).toEqual(null)
+    })
+  })
 })
