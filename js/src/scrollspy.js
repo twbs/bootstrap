@@ -17,6 +17,7 @@ import Data from './dom/data'
 import EventHandler from './dom/event-handler'
 import Manipulator from './dom/manipulator'
 import SelectorEngine from './dom/selector-engine'
+import BaseComponent from './base-component'
 
 /**
  * ------------------------------------------------------------------------
@@ -66,9 +67,9 @@ const METHOD_POSITION = 'position'
  * ------------------------------------------------------------------------
  */
 
-class ScrollSpy {
+class ScrollSpy extends BaseComponent {
   constructor(element, config) {
-    this._element = element
+    super(element)
     this._scrollElement = element.tagName === 'BODY' ? window : element
     this._config = this._getConfig(config)
     this._selector = `${this._config.target} ${SELECTOR_NAV_LINKS}, ${this._config.target} ${SELECTOR_LIST_ITEMS}, ${this._config.target} .${CLASS_NAME_DROPDOWN_ITEM}`
@@ -93,6 +94,10 @@ class ScrollSpy {
 
   static get Default() {
     return Default
+  }
+
+  static get DATA_KEY() {
+    return DATA_KEY
   }
 
   // Public
@@ -300,10 +305,6 @@ class ScrollSpy {
         data[config]()
       }
     })
-  }
-
-  static getInstance(element) {
-    return Data.getData(element, DATA_KEY)
   }
 }
 

@@ -15,6 +15,7 @@ import {
 } from './util/index'
 import Data from './dom/data'
 import EventHandler from './dom/event-handler'
+import BaseComponent from './base-component'
 
 /**
  * ------------------------------------------------------------------------
@@ -44,19 +45,15 @@ const CLASSNAME_SHOW = 'show'
  * ------------------------------------------------------------------------
  */
 
-class Alert {
-  constructor(element) {
-    this._element = element
-
-    if (this._element) {
-      Data.setData(element, DATA_KEY, this)
-    }
-  }
-
+class Alert extends BaseComponent {
   // Getters
 
   static get VERSION() {
     return VERSION
+  }
+
+  static get DATA_KEY() {
+    return DATA_KEY
   }
 
   // Public
@@ -133,10 +130,6 @@ class Alert {
 
       alertInstance.close(this)
     }
-  }
-
-  static getInstance(element) {
-    return Data.getData(element, DATA_KEY)
   }
 }
 

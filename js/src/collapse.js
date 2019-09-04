@@ -21,6 +21,7 @@ import Data from './dom/data'
 import EventHandler from './dom/event-handler'
 import Manipulator from './dom/manipulator'
 import SelectorEngine from './dom/selector-engine'
+import BaseComponent from './base-component'
 
 /**
  * ------------------------------------------------------------------------
@@ -67,10 +68,11 @@ const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="collapse"]'
  * ------------------------------------------------------------------------
  */
 
-class Collapse {
+class Collapse extends BaseComponent {
   constructor(element, config) {
+    super(element)
+
     this._isTransitioning = false
-    this._element = element
     this._config = this._getConfig(config)
     this._triggerArray = SelectorEngine.find(
       `${SELECTOR_DATA_TOGGLE}[href="#${element.id}"],` +
@@ -112,6 +114,10 @@ class Collapse {
 
   static get Default() {
     return Default
+  }
+
+  static get DATA_KEY() {
+    return DATA_KEY
   }
 
   // Public
@@ -367,10 +373,6 @@ class Collapse {
     return this.each(function () {
       Collapse.collapseInterface(this, config)
     })
-  }
-
-  static getInstance(element) {
-    return Data.getData(element, DATA_KEY)
   }
 }
 
