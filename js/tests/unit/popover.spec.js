@@ -237,6 +237,7 @@ describe('Popover', () => {
       const popover = new Popover(popoverEl)
 
       expect(Popover.getInstance(popoverEl)).toEqual(popover)
+      expect(Popover.getInstance(popoverEl) instanceof Popover).toEqual(true)
     })
 
     it('should return null when there is no popover instance', () => {

@@ -1612,6 +1612,7 @@ describe('Dropdown', () => {
       const dropdown = new Dropdown(div)
 
       expect(Dropdown.getInstance(div)).toEqual(dropdown)
+      expect(Dropdown.getInstance(div) instanceof Dropdown).toEqual(true)
     })
 
     it('should return null when there is no dropdown instance', () => {

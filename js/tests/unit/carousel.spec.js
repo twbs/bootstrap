@@ -1062,6 +1062,26 @@ describe('Carousel', () => {
     })
   })
 
+  describe('getInstance', () => {
+    it('should return carousel instance', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+      const carousel = new Carousel(div)
+
+      expect(Carousel.getInstance(div)).toEqual(carousel)
+      expect(Carousel.getInstance(div) instanceof Carousel).toEqual(true)
+    })
+
+    it('should return null when there is no carousel instance', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+
+      expect(Carousel.getInstance(div)).toEqual(null)
+    })
+  })
+
   describe('jQueryInterface', () => {
     it('should create a carousel', () => {
       fixtureEl.innerHTML = '<div></div>'

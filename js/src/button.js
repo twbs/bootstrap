@@ -8,6 +8,7 @@
 import { getjQuery, onDOMContentLoaded } from './util/index'
 import Data from './dom/data'
 import EventHandler from './dom/event-handler'
+import BaseComponent from './base-component'
 
 /**
  * ------------------------------------------------------------------------
@@ -33,16 +34,15 @@ const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
  * ------------------------------------------------------------------------
  */
 
-class Button {
-  constructor(element) {
-    this._element = element
-    Data.setData(element, DATA_KEY, this)
-  }
-
+class Button extends BaseComponent {
   // Getters
 
   static get VERSION() {
     return VERSION
+  }
+
+  static get DATA_KEY() {
+    return DATA_KEY
   }
 
   // Public
@@ -71,10 +71,6 @@ class Button {
         data[config]()
       }
     })
-  }
-
-  static getInstance(element) {
-    return Data.getData(element, DATA_KEY)
   }
 }
 

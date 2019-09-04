@@ -812,6 +812,7 @@ describe('Collapse', () => {
       const collapse = new Collapse(div)
 
       expect(Collapse.getInstance(div)).toEqual(collapse)
+      expect(Collapse.getInstance(div) instanceof Collapse).toEqual(true)
     })
 
     it('should return null when there is no collapse instance', () => {

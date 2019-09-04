@@ -975,6 +975,26 @@ describe('Tooltip', () => {
     })
   })
 
+  describe('getInstance', () => {
+    it('should return tooltip instance', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+      const alert = new Tooltip(div)
+
+      expect(Tooltip.getInstance(div)).toEqual(alert)
+      expect(Tooltip.getInstance(div) instanceof Tooltip).toEqual(true)
+    })
+
+    it('should return null when there is no tooltip instance', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+
+      expect(Tooltip.getInstance(div)).toEqual(null)
+    })
+  })
+
   describe('jQueryInterface', () => {
     it('should create a tooltip', () => {
       fixtureEl.innerHTML = '<div></div>'
