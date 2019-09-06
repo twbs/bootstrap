@@ -5,7 +5,6 @@
     @supports (position: sticky) {
       position: sticky;
       top: 5rem;
-      z-index: 1000;
       height: calc(100vh - 7rem);
       overflow-y: auto;
     }
