@@ -731,7 +731,9 @@ Activate a modal without writing JavaScript. Set `data-toggle="modal"` on a cont
 
 Create a modal with a single line of JavaScript:
 
-{{< highlight js >}}var myModal = new bootstrap.Modal(document.getElementById('myModal'), options){{< /highlight >}}
+{{< highlight js >}}
+var myModal = new bootstrap.Modal(document.getElementById('myModal'), options)
+{{< /highlight >}}
 
 ### Options
 
