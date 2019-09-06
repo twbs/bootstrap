@@ -131,7 +131,6 @@
     return [].slice.call(nodeList);
   };
 
-
   var noop = function noop() {
     return function () {};
   };

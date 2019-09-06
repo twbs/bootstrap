@@ -129,13 +129,13 @@ strong {
 }
 
 small {
-  font-size: 80%;
+  font-size: 0.875em;
 }
 
 sub,
 sup {
   position: relative;
-  font-size: 75%;
+  font-size: 0.75em;
   line-height: 0;
   vertical-align: baseline;
 }
@@ -176,7 +176,7 @@ pre {
   margin-top: 0;
   margin-bottom: 1rem;
   overflow: auto;
-  font-size: 87.5%;
+  font-size: 0.875em;
 }
 
 pre code {
@@ -186,7 +186,7 @@ pre code {
 }
 
 code {
-  font-size: 87.5%;
+  font-size: 0.875em;
   color: #e83e8c;
   word-wrap: break-word;
 }
@@ -197,7 +197,7 @@ a > code {
 
 kbd {
   padding: 0.2rem 0.4rem;
-  font-size: 87.5%;
+  font-size: 0.875em;
   color: #fff;
   background-color: #212529;
   border-radius: 0.2rem;
@@ -205,7 +205,7 @@ kbd {
 
 kbd kbd {
   padding: 0;
-  font-size: 100%;
+  font-size: 1em;
   font-weight: 700;
 }
 

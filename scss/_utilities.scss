@@ -437,6 +437,19 @@ $utilities: map-merge(
       class: text,
       values: (break: break-word)
     ),
+    "cursor": (
+      property: cursor,
+      class: cursor,
+      values: (
+        help: $cursor-help,
+        wait: $cursor-wait,
+        crosshair: $cursor-crosshair,
+        not-allowed: $cursor-not-allowed,
+        zoom-in: $cursor-zoom-in,
+        grab: $cursor-grab,
+        pointer: $cursor-pointer,
+      )
+    ),
     "font-family": (
       property: font-family,
       class: font,
