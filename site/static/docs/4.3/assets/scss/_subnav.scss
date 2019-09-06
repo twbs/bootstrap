@@ -1,4 +1,7 @@
 .bd-subnavbar {
+  // The position and z-index are needed for the dropdown to stay on top of the content
+  position: relative;
+  z-index: $zindex-sticky;
   background-color: rgba($white, .75);
   backdrop-filter: blur(1rem);
   box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .05), inset 0 -1px 0 rgba(0, 0, 0, .15);
@@ -15,11 +18,8 @@
   }
 
   @include media-breakpoint-up(md) {
-    @supports (position: sticky) {
-      position: sticky;
-      top: 0;
-      z-index: $zindex-sticky;
-    }
+    position: sticky;
+    top: 0;
   }
 }
 
