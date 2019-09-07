@@ -41,7 +41,7 @@
     display: inline-block;
     margin-right: .25rem;
     line-height: 0; // Align in the middle
-    content: escape-svg($sidebar-colapse-icon);
+    content: escape-svg($sidebar-collapse-icon);
   }
 
   &.active {
