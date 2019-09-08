@@ -128,7 +128,7 @@
     padding: .75rem 1rem 0;
     @include font-size(.75rem, true);
     line-height: 1 !important;
-    color: #767676 !important;
+    color: $gray-600 !important;
     border-top: 1px solid rgba(0, 0, 0, .1);
   }
 

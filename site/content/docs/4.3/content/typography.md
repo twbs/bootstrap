@@ -104,23 +104,11 @@ Use the included utility classes to recreate the small secondary heading text fr
 
 Traditional heading elements are designed to work best in the meat of your page content. When you need a heading to stand out, consider using a **display heading**—a larger, slightly more opinionated heading style. Keep in mind these headings are not responsive by default, but it's possible to enable [responsive font sizes](#responsive-font-sizes).
 
-<div class="bd-example bd-example-type">
-  <table class="table">
-    <tbody>
-      <tr>
-        <td><span class="display-1">Display 1</span></td>
-      </tr>
-      <tr>
-      <td><span class="display-2">Display 2</span></td>
-      </tr>
-      <tr>
-      <td><span class="display-3">Display 3</span></td>
-      </tr>
-      <tr>
-      <td><span class="display-4">Display 4</span></td>
-      </tr>
-    </tbody>
-  </table>
+<div class="bd-example">
+  <div class="display-1 pb-3 mb-3 border-bottom">Display 1</div>
+  <div class="display-2 pb-3 mb-3 border-bottom">Display 2</div>
+  <div class="display-3 pb-3 mb-3 border-bottom">Display 3</div>
+  <div class="display-4">Display 4</div>
 </div>
 
 {{< highlight html >}}
