@@ -24,9 +24,9 @@
 // Happy Bootstrapping!
 
 // Load Bootstrap variables and mixins
-@import "../../../../../../scss/functions";
-@import "../../../../../../scss/variables";
-@import "../../../../../../scss/mixins";
+@import "../../../scss/functions";
+@import "../../../scss/variables";
+@import "../../../scss/mixins";
 
 // Load docs components
 @import "variables";
@@ -60,7 +60,7 @@
     padding: 1rem;
     margin-right: 1rem;
     margin-bottom: 1rem;
-    background-color: #fff;
+    background-color: $white;
     border: 1px solid rgba(0, 0, 0, .1);
     @include border-radius(.25rem);
   }

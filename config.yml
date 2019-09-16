@@ -23,6 +23,8 @@ module:
   mounts:
     - source:           dist
       target:           static/docs/4.3/dist
+    - source:           site/assets
+      target:           assets
     - source:           site/content
       target:           content
     - source:           site/data

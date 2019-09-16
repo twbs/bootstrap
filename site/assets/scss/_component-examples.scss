@@ -125,29 +125,6 @@
   }
 }
 
-// Typography
-.bd-example-type {
-  .table {
-    td {
-      padding: 1rem 0;
-      border-color: #eee;
-    }
-    tr:first-child td {
-      border-top: 0;
-    }
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-}
-
 // Images
 .bd-example {
   > svg + svg,
@@ -172,6 +149,7 @@
 .bd-example > .list-group {
   max-width: 400px;
 }
+
 .bd-example > [class*="list-group-horizontal"] {
   max-width: 100%;
 }
@@ -183,6 +161,7 @@
     position: static;
     margin: -1rem -1rem 1rem;
   }
+
   .fixed-bottom {
     position: static;
     margin: 1rem -1rem -1rem;
@@ -205,37 +184,12 @@
   margin-bottom: .5rem;
 }
 
-// Example modals
-.modal {
-  z-index: 1072;
-
-  .tooltip,
-  .popover {
-    z-index: 1073;
-  }
-}
-
-.modal-backdrop {
-  z-index: 1071;
-}
-
 .bd-example-modal {
   background-color: #fafafa;
 
   .modal {
-    position: relative;
-    top: auto;
-    right: auto;
-    bottom: auto;
-    left: auto;
-    z-index: 1;
+    position: static;
     display: block;
-  }
-
-  .modal-dialog {
-    left: auto;
-    margin-right: auto;
-    margin-left: auto;
   }
 }
 
@@ -308,6 +262,7 @@
     background-color: transparent;
     border: 0;
   }
+
   pre code {
     @include font-size(inherit);
     color: $gray-900; // Effectively the base text color
