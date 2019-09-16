@@ -18,9 +18,9 @@ jobs:
           fetch-depth: 3
 
       - name: Set Node.js version
-        uses: actions/setup-node@v1.1.0
+        uses: actions/setup-node@v1
         with:
-          version: ${{ matrix.node }}
+          node-version: ${{ matrix.node }}
 
       - run: node --version
       - run: npm --version
