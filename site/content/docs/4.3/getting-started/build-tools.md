@@ -55,10 +55,10 @@ Our [package.json]({{< param repo >}}/blob/v{{< param current_version >}}/packag
     </tr>
     <tr>
       <td>
-        <code>npm run docs</code>
+        <code>npm run docs-serve</code>
       </td>
       <td>
-        Builds and lints CSS and JavaScript for docs. You can then run the documentation locally via <code>npm run docs-serve</code>.
+        Builds and runs the documentation locally.
       </td>
     </tr>
   </tbody>
