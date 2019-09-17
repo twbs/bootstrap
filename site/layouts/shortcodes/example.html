@@ -19,7 +19,7 @@
 {{- end -}}
 
 {{- if eq $show_markup true -}}
-  {{- $content := replaceRE `<svg.*class=.bd\-placeholder\-img(?:\-lg)?(?:\s*?bd\-placeholder\-img\-lg)?\s?(.*?)".*?<\/svg>\n` `<img src="..." class="$1" alt="..." >` $input -}}
-  {{- $content = replaceRE `(class="\s*?")` `` $content -}}
-  {{- highlight (trim $content `\n`) `html` `` -}}
+  {{- $content := replaceRE `<svg.*class=.bd\-placeholder\-img(?:\-lg)?(?:\s*?bd\-placeholder\-img\-lg)?\s?(.*?)".*?<\/svg>\n` `<img src="..." class="$1" alt="...">` $input -}}
+  {{- $content = replaceRE `(class="\s*?")` "" $content -}}
+  {{- highlight (trim $content "\n") "html" "" -}}
 {{- end -}}
