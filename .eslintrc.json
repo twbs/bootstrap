@@ -27,17 +27,9 @@
       "always-multiline"
     ],
     "new-cap": "off",
-    "no-mixed-operators": "error",
     "object-curly-spacing": [
       "error",
       "always"
-    ],
-    "prefer-destructuring": [
-      "error",
-      {
-        "object": true,
-        "array": false
-      }
     ],
     "semi": [
       "error",
