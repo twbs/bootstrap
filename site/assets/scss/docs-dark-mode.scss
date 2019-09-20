@@ -1,4 +1,19 @@
+/*!
+ * Bootstrap Docs (Dark Mode) (https://getbootstrap.com/)
+ * Copyright 2019 The Bootstrap Authors
+ * Licensed under the Creative Commons Attribution 3.0 Unported License.
+ * For details, see https://creativecommons.org/licenses/by/3.0/.
+ */
+
 // stylelint-disable media-feature-name-no-unknown, declaration-no-important, selector-max-type, selector-max-id
+
+// Load Bootstrap variables and mixins
+@import "../../../scss/functions";
+@import "../../../scss/variables";
+@import "../../../scss/mixins";
+
+// Load docs components
+@import "variables";
 
 @media (prefers-color-scheme: dark) {
   // Globals

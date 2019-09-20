@@ -7,6 +7,7 @@
 
 {{- if (ne .Page.Layout "examples") }}
 {{- $targetDocsCssPath := printf "/docs/%s/assets/css/docs.css" .Site.Params.docs_version -}}
+{{- $targetDocsDarkCssPath := printf "/docs/%s/assets/css/docs-dark.css" .Site.Params.docs_version -}}
 {{- $sassOptions := dict "targetPath" $targetDocsCssPath "precision" 6 -}}
 {{- $postcssOptions := dict "use" "autoprefixer" "noMap" true -}}
 
@@ -15,6 +16,8 @@
 {{- end -}}
 
 {{- $style := resources.Get "scss/docs.scss" | toCSS $sassOptions | postCSS $postcssOptions }}
+{{- $styleDark := resources.Get "scss/docs-dark-mode.scss" | toCSS $sassOptions | postCSS $postcssOptions }}
 
 <link rel="stylesheet" href="{{ $style.Permalink | relURL }}">
+<link rel="stylesheet" href="{{ $styleDark.Permalink | relURL }}">
 {{- end }}
