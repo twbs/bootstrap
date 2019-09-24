@@ -166,6 +166,21 @@
 }
 
 
+// Fixed header
+//
+// Stick table headers on top so only the <tbody> (and <tfoot>) scrolls.
+
+.table {
+  .thead-fixed {
+    th, td {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+  }
+}
+
+
 // Responsive tables
 //
 // Generate series of `.table-responsive-*` classes for configuring the screen
