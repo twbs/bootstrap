@@ -1,8 +1,8 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    addressable (2.6.0)
-      public_suffix (>= 2.0.2, < 4.0)
+    addressable (2.7.0)
+      public_suffix (>= 2.0.2, < 5.0)
     colorator (1.1.0)
     concurrent-ruby (1.1.5)
     em-websocket (0.5.1)
@@ -53,11 +53,11 @@ GEM
       mini_portile2 (~> 2.4.0)
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
-    public_suffix (3.1.1)
+    public_suffix (4.0.1)
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
-    rouge (3.9.0)
+    rouge (3.11.0)
     ruby_dep (1.5.0)
     safe_yaml (1.0.5)
     sass (3.7.4)
