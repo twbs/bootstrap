@@ -70,12 +70,13 @@ hr {
   margin: $hr-margin-y 0;
   color: $hr-color; // 1
   background-color: currentColor;
-  border: 0;
+  border-style: solid none;
   opacity: $hr-opacity;
 }
 
 hr:not([size]) {
   height: $hr-height; // 2
+  border: 0;
 }
 
 
