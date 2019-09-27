@@ -187,3 +187,19 @@
     }
   }
 }
+
+
+// Fixed header
+//
+// Table header with the `.thead-fixed` class applied fix its cells on top
+// allowing only <tbody> to scroll.
+
+.table {
+  .thead-fixed {
+    th {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+  }
+}
