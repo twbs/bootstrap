@@ -194,12 +194,13 @@
 // Table header with the `.thead-fixed` class applied fix its cells on top
 // allowing only <tbody> to scroll.
 
+// stylelint-disable-next-line no-duplicate-selectors
 .table {
   .thead-fixed {
     th {
       position: sticky;
-      top: 0;
-      z-index: 1;
+      top: $table-head-fixed-margin-top;
+      z-index: $zindex-sticky;
     }
   }
 }
