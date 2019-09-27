@@ -129,6 +129,21 @@
       border-color: $table-border-color;
     }
   }
+
+  // Sticky header
+  //
+  // Table header with the `.thead-sticky` class applied sticks its cells on top
+  // allowing only <tbody> to scroll.
+
+  @supports (position: sticky) {
+    .thead-sticky {
+      th {
+        position: sticky;
+        top: $table-head-sticky-top;
+        z-index: $zindex-sticky;
+      }
+    }
+  }
 }
 
 .table-dark {
@@ -184,23 +199,6 @@
           border: 0;
         }
       }
-    }
-  }
-}
-
-
-// Fixed header
-//
-// Table header with the `.thead-fixed` class applied fix its cells on top
-// allowing only <tbody> to scroll.
-
-// stylelint-disable-next-line no-duplicate-selectors
-.table {
-  .thead-fixed {
-    th {
-      position: sticky;
-      top: $table-head-fixed-margin-top;
-      z-index: $zindex-sticky;
     }
   }
 }
