@@ -9,13 +9,6 @@
   }
 }
 
-@each $color, $value in $theme-colors {
-  .swatch-#{$color} {
-    color: color-yiq($value);
-    background-color: #{$value};
-  }
-}
-
 @each $color, $value in $grays {
   .swatch-#{$color} {
     color: color-yiq($value);

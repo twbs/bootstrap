@@ -161,7 +161,7 @@ While not shown above, feel free to use `<b>` and `<i>` in HTML5. `<b>` is meant
 
 ## Text utilities
 
-Change text alignment, transform, style, weight, and color with our [text utilities]({{< docsref "/utilities/text" >}}) and [color utilities]({{< docsref "/utilities/colors" >}}).
+Change text alignment, transform, style, weight, line-height and color with our [text utilities]({{< docsref "/utilities/text" >}}) and [color utilities]({{< docsref "/utilities/colors" >}}).
 
 ## Abbreviations
 

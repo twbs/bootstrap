@@ -33,6 +33,13 @@
         flex-grow: 1;
         max-width: 100%;
       }
+
+      @for $i from 1 through $grid-row-columns {
+        .row-cols#{$infix}-#{$i} {
+          @include row-cols($i);
+        }
+      }
+
       .col#{$infix}-auto {
         flex: 0 0 auto;
         width: auto;

@@ -1,15 +1,14 @@
 /* eslint-env node */
-/* eslint no-process-env: 0 */
-
 const path = require('path')
 const ip = require('ip')
+const babel = require('rollup-plugin-babel')
+const istanbul = require('rollup-plugin-istanbul')
+const resolve = require('rollup-plugin-node-resolve')
+
 const {
   browsers,
   browsersKeys
 } = require('./browsers')
-const babel = require('rollup-plugin-babel')
-const istanbul = require('rollup-plugin-istanbul')
-const resolve = require('rollup-plugin-node-resolve')
 
 const { env } = process
 const browserStack = env.BROWSER === 'true'
