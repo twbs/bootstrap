@@ -118,7 +118,6 @@
     }
 
     &:checked {
-      background-image: escape-svg($form-switch-checked-bg-image);
       background-position: $form-switch-checked-bg-position;
 
       @if $enable-gradients {
