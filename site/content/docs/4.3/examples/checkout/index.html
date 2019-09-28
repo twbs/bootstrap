@@ -2,7 +2,7 @@
 layout: examples
 title: Checkout example
 extra_css:
-  - "form-validation.css"
+- "form-validation.css"
 extra_js:
   - src: "form-validation.js"
 body_class: "bg-light"
@@ -15,8 +15,8 @@ body_class: "bg-light"
     <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
   </div>
 
-  <div class="row">
-    <div class="col-md-4 order-md-2 mb-4">
+  <div class="row g-3">
+    <div class="col-md-5 col-lg-4 order-md-last">
       <h4 class="d-flex justify-content-between align-items-center mb-3">
         <span class="text-muted">Your cart</span>
         <span class="badge bg-secondary rounded-pill">3</span>
@@ -65,62 +65,61 @@ body_class: "bg-light"
         </div>
       </form>
     </div>
-    <div class="col-md-8 order-md-1">
+    <div class="col-md-7 col-lg-8">
       <h4 class="mb-3">Billing address</h4>
       <form class="needs-validation" novalidate>
-        <div class="row">
-          <div class="col-md-6 mb-3">
+        <div class="row g-3">
+          <div class="col-sm-6">
             <label for="firstName">First name</label>
             <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
             <div class="invalid-feedback">
               Valid first name is required.
             </div>
           </div>
-          <div class="col-md-6 mb-3">
+
+          <div class="col-sm-6">
             <label for="lastName">Last name</label>
             <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
             <div class="invalid-feedback">
               Valid last name is required.
             </div>
           </div>
-        </div>
 
-        <div class="mb-3">
-          <label for="username">Username</label>
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text">@</span>
+          <div class="col-12">
+            <label for="username">Username</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">@</span>
+              </div>
+              <input type="text" class="form-control" id="username" placeholder="Username" required>
+              <div class="invalid-feedback w-100">
+                Your username is required.
+              </div>
             </div>
-            <input type="text" class="form-control" id="username" placeholder="Username" required>
-            <div class="invalid-feedback w-100">
-              Your username is required.
+          </div>
+
+          <div class="col-12">
+            <label for="email">Email <span class="text-muted">(Optional)</span></label>
+            <input type="email" class="form-control" id="email" placeholder="you@example.com">
+            <div class="invalid-feedback">
+              Please enter a valid email address for shipping updates.
             </div>
           </div>
-        </div>
 
-        <div class="mb-3">
-          <label for="email">Email <span class="text-muted">(Optional)</span></label>
-          <input type="email" class="form-control" id="email" placeholder="you@example.com">
-          <div class="invalid-feedback">
-            Please enter a valid email address for shipping updates.
+          <div class="col-12">
+            <label for="address">Address</label>
+            <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
+            <div class="invalid-feedback">
+              Please enter your shipping address.
+            </div>
           </div>
-        </div>
 
-        <div class="mb-3">
-          <label for="address">Address</label>
-          <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
-          <div class="invalid-feedback">
-            Please enter your shipping address.
+          <div class="col-12">
+            <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
+            <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
           </div>
-        </div>
 
-        <div class="mb-3">
-          <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
-          <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
-        </div>
-
-        <div class="row">
-          <div class="col-md-5 mb-3">
+          <div class="col-md-5">
             <label for="country">Country</label>
             <select class="form-select" id="country" required>
               <option value="">Choose...</option>
@@ -130,7 +129,8 @@ body_class: "bg-light"
               Please select a valid country.
             </div>
           </div>
-          <div class="col-md-4 mb-3">
+
+          <div class="col-md-4">
             <label for="state">State</label>
             <select class="form-select" id="state" required>
               <option value="">Choose...</option>
@@ -140,7 +140,8 @@ body_class: "bg-light"
               Please provide a valid state.
             </div>
           </div>
-          <div class="col-md-3 mb-3">
+
+          <div class="col-md-3">
             <label for="zip">Zip</label>
             <input type="text" class="form-control" id="zip" placeholder="" required>
             <div class="invalid-feedback">
@@ -148,20 +149,24 @@ body_class: "bg-light"
             </div>
           </div>
         </div>
-        <hr class="mb-4">
+
+        <hr class="my-4">
+
         <div class="form-check">
           <input type="checkbox" class="form-check-input" id="same-address">
           <label class="form-check-label" for="same-address">Shipping address is the same as my billing address</label>
         </div>
+
         <div class="form-check">
           <input type="checkbox" class="form-check-input" id="save-info">
           <label class="form-check-label" for="save-info">Save this information for next time</label>
         </div>
-        <hr class="mb-4">
+
+        <hr class="my-4">
 
         <h4 class="mb-3">Payment</h4>
 
-        <div class="d-block my-3">
+        <div class="my-3">
           <div class="form-check">
             <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked required>
             <label class="form-check-label" for="credit">Credit card</label>
@@ -175,8 +180,9 @@ body_class: "bg-light"
             <label class="form-check-label" for="paypal">PayPal</label>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-6 mb-3">
+
+        <div class="row gy-3">
+          <div class="col-md-6">
             <label for="cc-name">Name on card</label>
             <input type="text" class="form-control" id="cc-name" placeholder="" required>
             <small class="text-muted">Full name as displayed on card</small>
@@ -184,23 +190,24 @@ body_class: "bg-light"
               Name on card is required
             </div>
           </div>
-          <div class="col-md-6 mb-3">
+
+          <div class="col-md-6">
             <label for="cc-number">Credit card number</label>
             <input type="text" class="form-control" id="cc-number" placeholder="" required>
             <div class="invalid-feedback">
               Credit card number is required
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-md-3 mb-3">
+
+          <div class="col-md-3">
             <label for="cc-expiration">Expiration</label>
             <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
             <div class="invalid-feedback">
               Expiration date required
             </div>
           </div>
-          <div class="col-md-3 mb-3">
+
+          <div class="col-md-3">
             <label for="cc-cvv">CVV</label>
             <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
             <div class="invalid-feedback">
@@ -208,7 +215,9 @@ body_class: "bg-light"
             </div>
           </div>
         </div>
-        <hr class="mb-4">
+
+        <hr class="my-4">
+
         <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
       </form>
     </div>
