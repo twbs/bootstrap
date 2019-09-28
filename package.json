@@ -20,7 +20,6 @@
   "scripts": {
     "start": "npm-run-all --parallel watch docs-serve",
     "bundlesize": "bundlesize",
-    "coveralls": "cat js/coverage/lcov.info | coveralls",
     "css": "npm-run-all css-compile css-prefix css-minify",
     "css-compile": "node-sass --output-style expanded --source-map true --source-map-contents true --precision 6 scss/ -o dist/css/",
     "css-lint": "npm-run-all --continue-on-error --parallel css-lint-*",
@@ -96,7 +95,6 @@
     "babel-plugin-istanbul": "^5.2.0",
     "bundlesize": "^0.18.0",
     "clean-css-cli": "^4.3.0",
-    "coveralls": "^3.0.7",
     "cross-env": "^6.0.3",
     "eslint": "^6.6.0",
     "eslint-config-xo": "^0.27.2",
