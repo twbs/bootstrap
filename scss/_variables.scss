@@ -301,9 +301,10 @@ $container-max-widths: (
 // Set the number of columns and specify the width of the gutters.
 
 $grid-columns:                12 !default;
-$grid-gutter-width:           30px !default;
+$grid-gutter-width:           1.5rem !default;
 $grid-row-columns:            6 !default;
 
+$gutters: $spacers !default;
 
 // Container padding
 
@@ -658,10 +659,6 @@ $form-switch-checked-bg-position: right center !default;
 $form-text-margin-top:                  .25rem !default;
 
 $form-check-inline-margin-right:        1rem !default;
-
-$form-check-input-margin-x:             .25rem !default;
-
-$form-grid-gutter-width:                10px !default;
 
 $input-group-addon-color:               $input-color !default;
 $input-group-addon-bg:                  $gray-200 !default;
