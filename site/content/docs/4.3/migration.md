@@ -55,8 +55,13 @@ Changes to our source and compiled JavaScript files.
 Changes to any layout tools and our grid system.
 
 - Dropped `.media` component as it can be built with utility classes. [See #28265](https://github.com/twbs/bootstrap/pull/28265).
-- **Todo:** Remove `position: relative` from grid columns
-- **Todo:** Integrate CSS grid into our grid system
+- Remove `position: relative` from grid columns.
+- The horizontal padding is added to the direct children in a row instead of the columns themselves.
+  - This simplifies our codebase.
+  - The column classes can now be used stand alone. Whenever they are used outside a `.row`, horizontal padding won't be added.
+- Responsive gutter classes can be used to control the gutter width in as well horizontal, vertical or both directions.
+- The gutter width is now set in `rem` and decreased from `30px` to `1.5rem` (24px).
+- `bootstrap-grid.css` now only applies `box-sizing: border-box` to the column instead of resetting the global box-sizing. This way the grid system can be used, even if `box-sizing: border-box` in not applied to each element.
 
 ## Content, Reboot, etc
 
@@ -90,6 +95,8 @@ Changes to Reboot, typography, tables, and more.
   - Added support for `:focus` and `:disabled` styles.
 - Renamed `.custom-range` to `.form-range` (including variables).
 - Dropped `.form-group` for margin utilities (we've replaced our docs examples with `.mb-3`).
+- Dropped `.form-row` for the more flexible grid gutters.
+- Dropped `.form-inline` for the more flexible grid.
 - Dropped support for `.form-control-plaintext` inside `.input-group`s.
 - Dropped `.form-text` as existing utilities cover this use class's former use case (e.g., `.mt-2`, `.text-small`, and/or `.text-muted`).
 
