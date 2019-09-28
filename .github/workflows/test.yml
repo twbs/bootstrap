@@ -1,4 +1,4 @@
-name: Run tests
+name: Tests
 on: [push, pull_request]
 
 jobs:
@@ -13,7 +13,7 @@ jobs:
 
     steps:
       - name: Clone repository
-        uses: actions/checkout@master
+        uses: actions/checkout@v1
         with:
           fetch-depth: 3
 
