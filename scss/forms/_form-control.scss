@@ -78,6 +78,7 @@
   background-color: transparent;
   border: solid transparent;
   border-width: $input-border-width 0;
+  outline: 0; // WebKit styles fix;
 
   &.form-control-sm,
   &.form-control-lg {
