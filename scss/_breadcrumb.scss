@@ -1,6 +1,7 @@
 .breadcrumb {
   display: flex;
   flex-wrap: wrap;
+  font-size: $breadcrumb-font-size;
   padding: $breadcrumb-padding-y $breadcrumb-padding-x;
   margin-bottom: $breadcrumb-margin-bottom;
   list-style: none;
