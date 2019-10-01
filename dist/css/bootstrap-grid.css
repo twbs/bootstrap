@@ -46,7 +46,11 @@ html {
   }
 }
 
-.container-fluid, .container-sm, .container-md, .container-lg, .container-xl {
+.container-fluid, 
+.container-sm, 
+.container-md, 
+.container-lg, 
+.container-xl {
   width: 100%;
   padding-right: 15px;
   padding-left: 15px;
@@ -55,25 +59,35 @@ html {
 }
 
 @media (min-width: 576px) {
-  .container, .container-sm {
+  .container, 
+  .container-sm {
     max-width: 540px;
   }
 }
 
 @media (min-width: 768px) {
-  .container, .container-sm, .container-md {
+  .container, 
+  .container-sm, 
+  .container-md {
     max-width: 720px;
   }
 }
 
 @media (min-width: 992px) {
-  .container, .container-sm, .container-md, .container-lg {
+  .container, 
+  .container-sm, 
+  .container-md, 
+  .container-lg {
     max-width: 960px;
   }
 }
 
 @media (min-width: 1200px) {
-  .container, .container-sm, .container-md, .container-lg, .container-xl {
+  .container, 
+  .container-sm, 
+  .container-md, 
+  .container-lg, 
+  .container-xl {
     max-width: 1140px;
   }
 }
