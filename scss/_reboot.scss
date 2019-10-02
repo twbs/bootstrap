@@ -465,12 +465,10 @@ input[type="month"] {
 
 // 1. Remove the default vertical scrollbar in IE.
 // 2. Textareas should really only resize vertically so they don't break their (horizontal) containers.
-// 3. Use the same borders as textfields
 
 textarea {
   overflow: auto; // 1
   resize: vertical;  // 2
-  -webkit-appearance: textfield; // 3
 }
 
 // 1. Browsers set a default `min-width: min-content;` on fieldsets,
