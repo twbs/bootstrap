@@ -141,7 +141,6 @@
   "files": [
     "dist/{css,js}/*.{css,js,map}",
     "js/{src,dist}/**/*.{js,map}",
-    "!js/src/**/*.spec.js",
     "scss/**/*.scss"
   ],
   "hugo-bin": {

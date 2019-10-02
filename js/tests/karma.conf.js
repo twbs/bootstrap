@@ -46,39 +46,6 @@ const customLaunchers = {
   }
 }
 
-const rollupPreprocessor = {
-  plugins: [
-    istanbul({
-      exclude: ['js/src/**/*.spec.js']
-    }),
-    babel({
-      // Only transpile our source code
-      exclude: 'node_modules/**',
-      // Include only required helpers
-      externalHelpersWhitelist: [
-        'defineProperties',
-        'createClass',
-        'inheritsLoose',
-        'defineProperty',
-        'objectSpread2'
-      ],
-      plugins: [
-        '@babel/plugin-proposal-object-rest-spread'
-      ]
-    }),
-    resolve()
-  ],
-  output: {
-    format: 'iife',
-    name: 'bootstrapTest',
-    sourcemap: 'inline'
-  }
-}
-
-let files = [
-  'node_modules/hammer-simulator/index.js'
-]
-
 const conf = {
   basePath: '../..',
   port: 9876,
@@ -88,6 +55,41 @@ const conf = {
   concurrency: Infinity,
   client: {
     clearContext: false
+  },
+  files: [
+    'node_modules/hammer-simulator/index.js',
+    { pattern: 'js/tests/units/**/*.spec.js', watched: !browserStack }
+  ],
+  preprocessors: {
+    'js/tests/units/**/*.spec.js': ['rollup']
+  },
+  rollupPreprocessor: {
+    plugins: [
+      istanbul({
+        exclude: ['js/tests/units/**/*.spec.js', 'js/tests/helpers/**/*.js']
+      }),
+      babel({
+        // Only transpile our source code
+        exclude: 'node_modules/**',
+        // Include only required helpers
+        externalHelpersWhitelist: [
+          'defineProperties',
+          'createClass',
+          'inheritsLoose',
+          'defineProperty',
+          'objectSpread2'
+        ],
+        plugins: [
+          '@babel/plugin-proposal-object-rest-spread'
+        ]
+      }),
+      resolve()
+    ],
+    output: {
+      format: 'iife',
+      name: 'bootstrapTest',
+      sourcemap: 'inline'
+    }
   }
 }
 
@@ -104,13 +106,6 @@ if (browserStack) {
   conf.customLaunchers = browsers
   conf.browsers = browsersKeys
   reporters.push('BrowserStack', 'kjhtml')
-  files = files.concat([
-    { pattern: 'js/src/**/*.spec.js', watched: false }
-  ])
-  conf.preprocessors = {
-    'js/src/**/*.spec.js': ['rollup']
-  }
-  conf.rollupPreprocessor = rollupPreprocessor
 } else {
   frameworks.push('detectBrowsers')
   plugins.push(
@@ -119,14 +114,7 @@ if (browserStack) {
     'karma-detect-browsers',
     'karma-coverage-istanbul-reporter'
   )
-  files = files.concat([
-    { pattern: 'js/src/**/*.spec.js', watched: true }
-  ])
   reporters.push('coverage-istanbul')
-  conf.preprocessors = {
-    'js/src/**/*.spec.js': ['rollup']
-  }
-  conf.rollupPreprocessor = rollupPreprocessor
   conf.customLaunchers = customLaunchers
   conf.detectBrowsers = detectBrowsers
   conf.coverageIstanbulReporter = {
@@ -165,7 +153,6 @@ if (browserStack) {
 conf.frameworks = frameworks
 conf.plugins = plugins
 conf.reporters = reporters
-conf.files = files
 
 module.exports = karmaConfig => {
   // possible values: karmaConfig.LOG_DISABLE || karmaConfig.LOG_ERROR || karmaConfig.LOG_WARN || karmaConfig.LOG_INFO || karmaConfig.LOG_DEBUG
