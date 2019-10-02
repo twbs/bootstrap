@@ -11,14 +11,14 @@
   text-align: center;
   vertical-align: middle;
   user-select: none;
-  background-color: transparent;
+  background-color: white;
   border: $btn-border-width solid transparent;
   @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size, $btn-line-height, $btn-border-radius);
   @include transition($btn-transition);
 
   @include hover {
     color: $body-color;
-    text-decoration: none;
+    text-decoration: underline;
   }
 
   &:focus,
