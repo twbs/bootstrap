@@ -10,17 +10,17 @@
 
     <div class="container-fluid">
       <div class="row flex-xl-nowrap">
-        <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+        <div class="col-md-3 col-xl-2 bd-sidebar">
           {% include docs-sidebar.html %}
         </div>
 
         {% if page.toc %}
-          <div class="d-none d-xl-block col-xl-2 bd-toc">
+          <nav class="d-none d-xl-block col-xl-2 bd-toc" aria-label="Secondary navigation">
             {{ content | toc_only }}
-          </div>
+          </nav>
         {% endif %}
 
-        <main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
+        <main class="col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
           <h1 class="bd-title" id="content">{{ page.title | smartify }}</h1>
           <p class="bd-lead">{{ page.description | smartify }}</p>
           {% include ads.html %}

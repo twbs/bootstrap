@@ -1,23 +1,51 @@
 {%- comment -%}
-Usage: {% include example.html content=markup %},
-where content is a capture with the HTML content
-id - null (default)
-class - "bd-example" (default)
-optional: hide_preview - disabled (default)
-optional: hide_markup - disabled (default)
+  Usage: include example.html content=markup [args],
+  where content is a capture with the HTML content
+
+  args can be one of the following:
+    id - null (default)
+    class - "bd-example" (default)
+    optional: hide_preview - disabled (default)
+    optional: hide_markup - disabled (default)
 {%- endcomment -%}
 
-{%- assign preview_id = include.id -%}
-{%- assign preview_class = include.class -%}
+{%- assign id = include.id -%}
+{%- assign class = include.class -%}
 
 {%- if include.hide_preview == null -%}
-<div{% if preview_id %} id="{{ preview_id }}"{% endif %} class="bd-example{% if preview_class %} {{ preview_class }}{% endif %}">
+<div{% if id %} id="{{ id }}"{% endif %} class="bd-example{% if class %} {{ class }}{% endif %}">
   {{- include.content -}}
 </div>
 {%- endif -%}
 
 {%- if include.hide_markup == null -%}
   {%- highlight html -%}
-    {{- include.content | replace: 'data-src="holder.js', 'src="...' -}}
+    {%- if include.content contains '<svg class="bd-placeholder-img' -%}
+      {%- assign modified_content = include.content
+        | replace: '<svg class="bd-placeholder-img', '✂️<svg class="bd-placeholder-img'
+        | replace: '</svg>', '</svg>✂️'
+        | split: '✂️' -%}
+
+      {%- if include.content contains 'bd-placeholder-img ' -%}
+        {%- assign image_class = include.content
+          | replace_first: 'bd-placeholder-img', 'bd-placeholder-img ✂️'
+          | replace: '" width="', '✂️" width="'
+          | split: '✂️' -%}
+        {%- assign image_class = image_class[1] | replace: 'bd-placeholder-img-lg', '' | strip -%}
+      {%- endif -%}
+
+      {%- for content_chunk in modified_content -%}
+        {%- if content_chunk contains '<svg class="bd-placeholder-img' -%}
+          {%- capture img_placeholder -%}
+            <img src="..." {% if image_class %}class="{{ image_class }}" {% endif %}alt="...">
+          {%- endcapture -%}
+          {{- img_placeholder -}}
+        {%- else -%}
+          {{- content_chunk -}}
+        {%- endif -%}
+      {%- endfor -%}
+    {%- else -%}
+      {{- include.content -}}
+    {%- endif -%}
   {%- endhighlight -%}
 {%- endif -%}

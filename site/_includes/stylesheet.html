@@ -1,0 +1,16 @@
+<!-- Bootstrap core CSS -->
+{%- if jekyll.environment == "production" or jekyll.environment == "netlify" %}
+<link href="{{ site.baseurl }}/docs/{{ site.docs_version }}/dist/css/bootstrap.min.css" rel="stylesheet" integrity="{{ site.cdn.css_hash }}" crossorigin="anonymous">
+{% else %}
+<link href="{{ site.baseurl }}/docs/{{ site.docs_version }}/dist/css/bootstrap.css" rel="stylesheet">
+{% endif -%}
+
+{%- if page.layout == "docs" or page.layout != "examples" -%}
+<!-- Documentation extras -->
+{% if page.layout == "docs" %}
+<link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
+{% endif %}
+{% if page.layout != "examples" %}
+<link href="{{ site.baseurl }}/docs/{{ site.docs_version }}/assets/css/docs.min.css" rel="stylesheet">
+{% endif %}
+{%- endif -%}

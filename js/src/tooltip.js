@@ -1,13 +1,17 @@
-import $ from 'jquery'
-import Popper from 'popper.js'
-import Util from './util'
-
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.1.3): tooltip.js
+ * Bootstrap (v4.3.1): tooltip.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
+
+import {
+  DefaultWhitelist,
+  sanitizeHtml
+} from './tools/sanitizer'
+import $ from 'jquery'
+import Popper from 'popper.js'
+import Util from './util'
 
 /**
  * ------------------------------------------------------------------------
@@ -15,27 +19,32 @@ import Util from './util'
  * ------------------------------------------------------------------------
  */
 
-const NAME               = 'tooltip'
-const VERSION            = '4.1.3'
-const DATA_KEY           = 'bs.tooltip'
-const EVENT_KEY          = `.${DATA_KEY}`
-const JQUERY_NO_CONFLICT = $.fn[NAME]
-const CLASS_PREFIX       = 'bs-tooltip'
-const BSCLS_PREFIX_REGEX = new RegExp(`(^|\\s)${CLASS_PREFIX}\\S+`, 'g')
+const NAME                  = 'tooltip'
+const VERSION               = '4.3.1'
+const DATA_KEY              = 'bs.tooltip'
+const EVENT_KEY             = `.${DATA_KEY}`
+const JQUERY_NO_CONFLICT    = $.fn[NAME]
+const CLASS_PREFIX          = 'bs-tooltip'
+const BSCLS_PREFIX_REGEX    = new RegExp(`(^|\\s)${CLASS_PREFIX}\\S+`, 'g')
+const DISALLOWED_ATTRIBUTES = ['sanitize', 'whiteList', 'sanitizeFn']
 
 const DefaultType = {
-  animation           : 'boolean',
-  template            : 'string',
-  title               : '(string|element|function)',
-  trigger             : 'string',
-  delay               : '(number|object)',
-  html                : 'boolean',
-  selector            : '(string|boolean)',
-  placement           : '(string|function)',
-  offset              : '(number|string)',
-  container           : '(string|element|boolean)',
-  fallbackPlacement   : '(string|array)',
-  boundary            : '(string|element)'
+  animation         : 'boolean',
+  template          : 'string',
+  title             : '(string|element|function)',
+  trigger           : 'string',
+  delay             : '(number|object)',
+  html              : 'boolean',
+  selector          : '(string|boolean)',
+  placement         : '(string|function)',
+  offset            : '(number|string|function)',
+  container         : '(string|element|boolean)',
+  fallbackPlacement : '(string|array)',
+  boundary          : '(string|element)',
+  sanitize          : 'boolean',
+  sanitizeFn        : '(null|function)',
+  whiteList         : 'object',
+  popperConfig      : '(null|object)'
 }
 
 const AttachmentMap = {
@@ -47,20 +56,24 @@ const AttachmentMap = {
 }
 
 const Default = {
-  animation           : true,
-  template            : '<div class="tooltip" role="tooltip">' +
-                      '<div class="arrow"></div>' +
-                      '<div class="tooltip-inner"></div></div>',
-  trigger             : 'hover focus',
-  title               : '',
-  delay               : 0,
-  html                : false,
-  selector            : false,
-  placement           : 'top',
-  offset              : 0,
-  container           : false,
-  fallbackPlacement   : 'flip',
-  boundary            : 'scrollParent'
+  animation         : true,
+  template          : '<div class="tooltip" role="tooltip">' +
+                    '<div class="arrow"></div>' +
+                    '<div class="tooltip-inner"></div></div>',
+  trigger           : 'hover focus',
+  title             : '',
+  delay             : 0,
+  html              : false,
+  selector          : false,
+  placement         : 'top',
+  offset            : 0,
+  container         : false,
+  fallbackPlacement : 'flip',
+  boundary          : 'scrollParent',
+  sanitize          : true,
+  sanitizeFn        : null,
+  whiteList         : DefaultWhitelist,
+  popperConfig      : null
 }
 
 const HoverState = {
@@ -108,10 +121,6 @@ const Trigger = {
 
 class Tooltip {
   constructor(element, config) {
-    /**
-     * Check for Popper dependency
-     * Popper - https://popper.js.org
-     */
     if (typeof Popper === 'undefined') {
       throw new TypeError('Bootstrap\'s tooltips require Popper.js (https://popper.js.org/)')
     }
@@ -215,7 +224,7 @@ class Tooltip {
     $.removeData(this.element, this.constructor.DATA_KEY)
 
     $(this.element).off(this.constructor.EVENT_KEY)
-    $(this.element).closest('.modal').off('hide.bs.modal')
+    $(this.element).closest('.modal').off('hide.bs.modal', this._hideModalHandler)
 
     if (this.tip) {
       $(this.tip).remove()
@@ -225,7 +234,7 @@ class Tooltip {
     this._timeout       = null
     this._hoverState    = null
     this._activeTrigger = null
-    if (this._popper !== null) {
+    if (this._popper) {
       this._popper.destroy()
     }
 
@@ -244,8 +253,9 @@ class Tooltip {
     if (this.isWithContent() && this._isEnabled) {
       $(this.element).trigger(showEvent)
 
+      const shadowRoot = Util.findShadowRoot(this.element)
       const isInTheDom = $.contains(
-        this.element.ownerDocument.documentElement,
+        shadowRoot !== null ? shadowRoot : this.element.ownerDocument.documentElement,
         this.element
       )
 
@@ -272,8 +282,7 @@ class Tooltip {
       const attachment = this._getAttachment(placement)
       this.addAttachmentClass(attachment)
 
-      const container = this.config.container === false ? document.body : $(document).find(this.config.container)
-
+      const container = this._getContainer()
       $(tip).data(this.constructor.DATA_KEY, this)
 
       if (!$.contains(this.element.ownerDocument.documentElement, this.tip)) {
@@ -282,31 +291,7 @@ class Tooltip {
 
       $(this.element).trigger(this.constructor.Event.INSERTED)
 
-      this._popper = new Popper(this.element, tip, {
-        placement: attachment,
-        modifiers: {
-          offset: {
-            offset: this.config.offset
-          },
-          flip: {
-            behavior: this.config.fallbackPlacement
-          },
-          arrow: {
-            element: Selector.ARROW
-          },
-          preventOverflow: {
-            boundariesElement: this.config.boundary
-          }
-        },
-        onCreate: (data) => {
-          if (data.originalPlacement !== data.placement) {
-            this._handlePopperPlacementChange(data)
-          }
-        },
-        onUpdate: (data) => {
-          this._handlePopperPlacementChange(data)
-        }
-      })
+      this._popper = new Popper(this.element, tip, this._getPopperConfig(attachment))
 
       $(tip).addClass(ClassName.SHOW)
 
@@ -423,18 +408,27 @@ class Tooltip {
   }
 
   setElementContent($element, content) {
-    const html = this.config.html
     if (typeof content === 'object' && (content.nodeType || content.jquery)) {
       // Content is a DOM node or a jQuery
-      if (html) {
+      if (this.config.html) {
         if (!$(content).parent().is($element)) {
           $element.empty().append(content)
         }
       } else {
         $element.text($(content).text())
       }
+
+      return
+    }
+
+    if (this.config.html) {
+      if (this.config.sanitize) {
+        content = sanitizeHtml(content, this.config.whiteList, this.config.sanitizeFn)
+      }
+
+      $element.html(content)
     } else {
-      $element[html ? 'html' : 'text'](content)
+      $element.text(content)
     }
   }
 
@@ -451,6 +445,66 @@ class Tooltip {
   }
 
   // Private
+
+  _getPopperConfig(attachment) {
+    const defaultBsConfig = {
+      placement: attachment,
+      modifiers: {
+        offset: this._getOffset(),
+        flip: {
+          behavior: this.config.fallbackPlacement
+        },
+        arrow: {
+          element: Selector.ARROW
+        },
+        preventOverflow: {
+          boundariesElement: this.config.boundary
+        }
+      },
+      onCreate: (data) => {
+        if (data.originalPlacement !== data.placement) {
+          this._handlePopperPlacementChange(data)
+        }
+      },
+      onUpdate: (data) => this._handlePopperPlacementChange(data)
+    }
+
+    return {
+      ...defaultBsConfig,
+      ...this.config.popperConfig
+    }
+  }
+
+  _getOffset() {
+    const offset = {}
+
+    if (typeof this.config.offset === 'function') {
+      offset.fn = (data) => {
+        data.offsets = {
+          ...data.offsets,
+          ...this.config.offset(data.offsets, this.element) || {}
+        }
+
+        return data
+      }
+    } else {
+      offset.offset = this.config.offset
+    }
+
+    return offset
+  }
+
+  _getContainer() {
+    if (this.config.container === false) {
+      return document.body
+    }
+
+    if (Util.isElement(this.config.container)) {
+      return $(this.config.container)
+    }
+
+    return $(document).find(this.config.container)
+  }
 
   _getAttachment(placement) {
     return AttachmentMap[placement.toUpperCase()]
@@ -486,12 +540,18 @@ class Tooltip {
             (event) => this._leave(event)
           )
       }
-
-      $(this.element).closest('.modal').on(
-        'hide.bs.modal',
-        () => this.hide()
-      )
     })
+
+    this._hideModalHandler = () => {
+      if (this.element) {
+        this.hide()
+      }
+    }
+
+    $(this.element).closest('.modal').on(
+      'hide.bs.modal',
+      this._hideModalHandler
+    )
 
     if (this.config.selector) {
       this.config = {
@@ -506,19 +566,19 @@ class Tooltip {
 
   _fixTitle() {
     const titleType = typeof this.element.getAttribute('data-original-title')
-    if (this.element.getAttribute('title') ||
-        titleType !== 'string') {
+
+    if (this.element.getAttribute('title') || titleType !== 'string') {
       this.element.setAttribute(
         'data-original-title',
         this.element.getAttribute('title') || ''
       )
+
       this.element.setAttribute('title', '')
     }
   }
 
   _enter(event, context) {
     const dataKey = this.constructor.DATA_KEY
-
     context = context || $(event.currentTarget).data(dataKey)
 
     if (!context) {
@@ -535,8 +595,7 @@ class Tooltip {
       ] = true
     }
 
-    if ($(context.getTipElement()).hasClass(ClassName.SHOW) ||
-        context._hoverState === HoverState.SHOW) {
+    if ($(context.getTipElement()).hasClass(ClassName.SHOW) || context._hoverState === HoverState.SHOW) {
       context._hoverState = HoverState.SHOW
       return
     }
@@ -559,7 +618,6 @@ class Tooltip {
 
   _leave(event, context) {
     const dataKey = this.constructor.DATA_KEY
-
     context = context || $(event.currentTarget).data(dataKey)
 
     if (!context) {
@@ -607,9 +665,18 @@ class Tooltip {
   }
 
   _getConfig(config) {
+    const dataAttributes = $(this.element).data()
+
+    Object.keys(dataAttributes)
+      .forEach((dataAttr) => {
+        if (DISALLOWED_ATTRIBUTES.indexOf(dataAttr) !== -1) {
+          delete dataAttributes[dataAttr]
+        }
+      })
+
     config = {
       ...this.constructor.Default,
-      ...$(this.element).data(),
+      ...dataAttributes,
       ...typeof config === 'object' && config ? config : {}
     }
 
@@ -633,6 +700,10 @@ class Tooltip {
       config,
       this.constructor.DefaultType
     )
+
+    if (config.sanitize) {
+      config.template = sanitizeHtml(config.template, config.whiteList, config.sanitizeFn)
+    }
 
     return config
   }
@@ -669,9 +740,11 @@ class Tooltip {
   _fixTransition() {
     const tip = this.getTipElement()
     const initConfigAnimation = this.config.animation
+
     if (tip.getAttribute('x-placement') !== null) {
       return
     }
+
     $(tip).removeClass(ClassName.FADE)
     this.config.animation = false
     this.hide()

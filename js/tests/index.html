@@ -6,19 +6,7 @@
     <title>Bootstrap Plugin Test Suite</title>
 
     <!-- jQuery -->
-    <script>
-      (function () {
-        var path = '../../site/docs/4.1/assets/js/vendor/jquery-slim.min.js'
-        // get jquery param from the query string.
-        var jQueryVersion = location.search.match(/[?&]jquery=(.*?)(?=&|$)/)
-
-        // If a version was specified, use that version from jQuery CDN
-        if (jQueryVersion) {
-          path = 'https://code.jquery.com/jquery-' + jQueryVersion[1] + '.min.js'
-        }
-        document.write('<script src="' + path + '"><\/script>')
-      }())
-    </script>
+    <script src="../../node_modules/jquery/dist/jquery.slim.min.js"></script>
     <script src="../../node_modules/popper.js/dist/umd/popper.min.js"></script>
 
     <!-- QUnit -->
@@ -120,6 +108,7 @@
     <script src="../dist/tab.js"></script>
     <script src="../dist/tooltip.js"></script>
     <script src="../dist/popover.js"></script>
+    <script src="../dist/toast.js"></script>
 
     <!-- Unit Tests -->
     <script src="unit/alert.js"></script>
@@ -133,6 +122,7 @@
     <script src="unit/tooltip.js"></script>
     <script src="unit/popover.js"></script>
     <script src="unit/util.js"></script>
+    <script src="unit/toast.js"></script>
   </head>
   <body>
     <div id="qunit-container">

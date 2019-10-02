@@ -1,12 +1,11 @@
-import $ from 'jquery'
-
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.1.3): util.js
+ * Bootstrap (v4.3.1): util.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
 
+import $ from 'jquery'
 
 /**
  * ------------------------------------------------------------------------
@@ -83,7 +82,11 @@ const Util = {
       selector = hrefAttr && hrefAttr !== '#' ? hrefAttr.trim() : ''
     }
 
-    return selector && document.querySelector(selector) ? selector : null
+    try {
+      return document.querySelector(selector) ? selector : null
+    } catch (err) {
+      return null
+    }
   },
 
   getTransitionDurationFromElement(element) {
@@ -93,17 +96,21 @@ const Util = {
 
     // Get transition-duration of the element
     let transitionDuration = $(element).css('transition-duration')
+    let transitionDelay = $(element).css('transition-delay')
+
     const floatTransitionDuration = parseFloat(transitionDuration)
+    const floatTransitionDelay = parseFloat(transitionDelay)
 
     // Return 0 if element or transition duration is not found
-    if (!floatTransitionDuration) {
+    if (!floatTransitionDuration && !floatTransitionDelay) {
       return 0
     }
 
     // If multiple durations are defined, take the first
     transitionDuration = transitionDuration.split(',')[0]
+    transitionDelay = transitionDelay.split(',')[0]
 
-    return parseFloat(transitionDuration) * MILLISECONDS_MULTIPLIER
+    return (parseFloat(transitionDuration) + parseFloat(transitionDelay)) * MILLISECONDS_MULTIPLIER
   },
 
   reflow(element) {
@@ -139,9 +146,50 @@ const Util = {
         }
       }
     }
+  },
+
+  findShadowRoot(element) {
+    if (!document.documentElement.attachShadow) {
+      return null
+    }
+
+    // Can find the shadow root otherwise it'll return the document
+    if (typeof element.getRootNode === 'function') {
+      const root = element.getRootNode()
+      return root instanceof ShadowRoot ? root : null
+    }
+
+    if (element instanceof ShadowRoot) {
+      return element
+    }
+
+    // when we don't find a shadow root
+    if (!element.parentNode) {
+      return null
+    }
+
+    return Util.findShadowRoot(element.parentNode)
+  },
+
+  jQueryDetection() {
+    if (typeof $ === 'undefined') {
+      throw new TypeError('Bootstrap\'s JavaScript requires jQuery. jQuery must be included before Bootstrap\'s JavaScript.')
+    }
+
+    const version = $.fn.jquery.split(' ')[0].split('.')
+    const minMajor = 1
+    const ltMajor = 2
+    const minMinor = 9
+    const minPatch = 1
+    const maxMajor = 4
+
+    if (version[0] < ltMajor && version[1] < minMinor || version[0] === minMajor && version[1] === minMinor && version[2] < minPatch || version[0] >= maxMajor) {
+      throw new Error('Bootstrap\'s JavaScript requires at least jQuery v1.9.1 but less than v4.0.0')
+    }
   }
 }
 
+Util.jQueryDetection()
 setTransitionEndSupport()
 
 export default Util

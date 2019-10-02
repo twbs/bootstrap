@@ -1,12 +1,12 @@
-import $ from 'jquery'
-import Util from './util'
-
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.1.3): tab.js
+ * Bootstrap (v4.3.1): tab.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
+
+import $ from 'jquery'
+import Util from './util'
 
 /**
  * ------------------------------------------------------------------------
@@ -15,7 +15,7 @@ import Util from './util'
  */
 
 const NAME               = 'tab'
-const VERSION            = '4.1.3'
+const VERSION            = '4.3.1'
 const DATA_KEY           = 'bs.tab'
 const EVENT_KEY          = `.${DATA_KEY}`
 const DATA_API_KEY       = '.data-api'
@@ -80,7 +80,7 @@ class Tab {
     const selector = Util.getSelectorFromElement(this._element)
 
     if (listElement) {
-      const itemSelector = listElement.nodeName === 'UL' ? Selector.ACTIVE_UL : Selector.ACTIVE
+      const itemSelector = listElement.nodeName === 'UL' || listElement.nodeName === 'OL' ? Selector.ACTIVE_UL : Selector.ACTIVE
       previous = $.makeArray($(listElement).find(itemSelector))
       previous = previous[previous.length - 1]
     }
@@ -141,17 +141,12 @@ class Tab {
   // Private
 
   _activate(element, container, callback) {
-    let activeElements
-    if (container.nodeName === 'UL') {
-      activeElements = $(container).find(Selector.ACTIVE_UL)
-    } else {
-      activeElements = $(container).children(Selector.ACTIVE)
-    }
+    const activeElements = container && (container.nodeName === 'UL' || container.nodeName === 'OL')
+      ? $(container).find(Selector.ACTIVE_UL)
+      : $(container).children(Selector.ACTIVE)
 
     const active = activeElements[0]
-    const isTransitioning = callback &&
-      (active && $(active).hasClass(ClassName.FADE))
-
+    const isTransitioning = callback && (active && $(active).hasClass(ClassName.FADE))
     const complete = () => this._transitionComplete(
       element,
       active,
@@ -162,6 +157,7 @@ class Tab {
       const transitionDuration = Util.getTransitionDurationFromElement(active)
 
       $(active)
+        .removeClass(ClassName.SHOW)
         .one(Util.TRANSITION_END, complete)
         .emulateTransitionEnd(transitionDuration)
     } else {
@@ -171,7 +167,7 @@ class Tab {
 
   _transitionComplete(element, active, callback) {
     if (active) {
-      $(active).removeClass(`${ClassName.SHOW} ${ClassName.ACTIVE}`)
+      $(active).removeClass(ClassName.ACTIVE)
 
       const dropdownChild = $(active.parentNode).find(
         Selector.DROPDOWN_ACTIVE_CHILD
@@ -192,13 +188,17 @@ class Tab {
     }
 
     Util.reflow(element)
-    $(element).addClass(ClassName.SHOW)
 
-    if (element.parentNode &&
-        $(element.parentNode).hasClass(ClassName.DROPDOWN_MENU)) {
+    if (element.classList.contains(ClassName.FADE)) {
+      element.classList.add(ClassName.SHOW)
+    }
+
+    if (element.parentNode && $(element.parentNode).hasClass(ClassName.DROPDOWN_MENU)) {
       const dropdownElement = $(element).closest(Selector.DROPDOWN)[0]
+
       if (dropdownElement) {
         const dropdownToggleList = [].slice.call(dropdownElement.querySelectorAll(Selector.DROPDOWN_TOGGLE))
+
         $(dropdownToggleList).addClass(ClassName.ACTIVE)
       }
 

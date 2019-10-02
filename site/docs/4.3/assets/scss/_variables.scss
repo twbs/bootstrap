@@ -1,0 +1,17 @@
+// stylelint-disable scss/dollar-variable-default
+
+// Local docs variables
+$bd-purple:        #563d7c;
+$bd-purple-bright: lighten(saturate($bd-purple, 5%), 15%);
+$bd-purple-light:  lighten(saturate($bd-purple, 5%), 45%);
+$bd-dark:          #2a2730;
+$bd-download:      #ffe484;
+$bd-info:          #5bc0de;
+$bd-warning:       #f0ad4e;
+$bd-danger:        #d9534f;
+$dropdown-active-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path fill='#292b2c' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/></svg>");
+
+// Enable responsive font sizes for font sizes defined in the docs
+// The weird if test is made as a workaround to prevent a false fusv error.
+//
+$enable-responsive-font-sizes: if($enable-responsive-font-sizes, true, true);

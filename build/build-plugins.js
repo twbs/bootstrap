@@ -1,9 +1,11 @@
 /*!
  * Script to build our plugins to use them separately.
- * Copyright 2018 The Bootstrap Authors
- * Copyright 2018 Twitter, Inc.
+ * Copyright 2019 The Bootstrap Authors
+ * Copyright 2019 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+
+'use strict'
 
 const path    = require('path')
 const rollup  = require('rollup')
@@ -19,7 +21,7 @@ const plugins = [
       'createClass',
       'inheritsLoose',
       'defineProperty',
-      'objectSpread'
+      'objectSpread2'
     ]
   })
 ]
@@ -33,6 +35,7 @@ const bsPlugins = {
   Popover: path.resolve(__dirname, '../js/src/popover.js'),
   ScrollSpy: path.resolve(__dirname, '../js/src/scrollspy.js'),
   Tab: path.resolve(__dirname, '../js/src/tab.js'),
+  Toast: path.resolve(__dirname, '../js/src/toast.js'),
   Tooltip: path.resolve(__dirname, '../js/src/tooltip.js'),
   Util: path.resolve(__dirname, '../js/src/util.js')
 }

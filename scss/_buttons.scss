@@ -6,17 +6,19 @@
 
 .btn {
   display: inline-block;
+  font-family: $btn-font-family;
   font-weight: $btn-font-weight;
   color: $body-color;
   text-align: center;
   vertical-align: middle;
+  cursor: if($enable-pointer-cursor-for-buttons, pointer, null);
   user-select: none;
   background-color: white;
   border: $btn-border-width solid transparent;
   @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size, $btn-line-height, $btn-border-radius);
   @include transition($btn-transition);
 
-  @include hover {
+  @include hover() {
     color: $body-color;
     text-decoration: underline;
   }
@@ -32,11 +34,6 @@
   &:disabled {
     opacity: $btn-disabled-opacity;
     @include box-shadow(none);
-  }
-
-  // Opinionated: add "hand" cursor to non-disabled .btn elements
-  &:not(:disabled):not(.disabled) {
-    cursor: pointer;
   }
 
   &:not(:disabled):not(.disabled):active,
@@ -81,8 +78,9 @@ fieldset:disabled a.btn {
 .btn-link {
   font-weight: $font-weight-normal;
   color: $link-color;
+  text-decoration: $link-decoration;
 
-  @include hover {
+  @include hover() {
     color: $link-hover-color;
     text-decoration: $link-hover-decoration;
   }

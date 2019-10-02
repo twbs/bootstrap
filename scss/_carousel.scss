@@ -16,62 +16,40 @@
 }
 
 .carousel.pointer-event {
-  touch-action: none;
+  touch-action: pan-y;
 }
 
 .carousel-inner {
   position: relative;
   width: 100%;
   overflow: hidden;
+  @include clearfix();
 }
 
 .carousel-item {
   position: relative;
   display: none;
-  align-items: center;
+  float: left;
   width: 100%;
+  margin-right: -100%;
   backface-visibility: hidden;
-  perspective: 1000px;
+  @include transition($carousel-transition);
 }
 
 .carousel-item.active,
 .carousel-item-next,
 .carousel-item-prev {
   display: block;
-  @include transition($carousel-transition);
 }
 
-.carousel-item-next,
-.carousel-item-prev {
-  position: absolute;
-  top: 0;
-}
-
-.carousel-item-next.carousel-item-left,
-.carousel-item-prev.carousel-item-right {
-  transform: translateX(0);
-
-  @supports (transform-style: preserve-3d) {
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-.carousel-item-next,
+.carousel-item-next:not(.carousel-item-left),
 .active.carousel-item-right {
   transform: translateX(100%);
-
-  @supports (transform-style: preserve-3d) {
-    transform: translate3d(100%, 0, 0);
-  }
 }
 
-.carousel-item-prev,
+.carousel-item-prev:not(.carousel-item-right),
 .active.carousel-item-left {
   transform: translateX(-100%);
-
-  @supports (transform-style: preserve-3d) {
-    transform: translate3d(-100%, 0, 0);
-  }
 }
 
 
@@ -89,12 +67,15 @@
   .carousel-item.active,
   .carousel-item-next.carousel-item-left,
   .carousel-item-prev.carousel-item-right {
+    z-index: 1;
     opacity: 1;
   }
 
   .active.carousel-item-left,
   .active.carousel-item-right {
+    z-index: 0;
     opacity: 0;
+    @include transition(opacity 0s $carousel-transition-duration);
   }
 }
 
@@ -108,6 +89,7 @@
   position: absolute;
   top: 0;
   bottom: 0;
+  z-index: 1;
   // Use flex for alignment (1-3)
   display: flex; // 1. allow flex styles
   align-items: center; // 2. vertically center contents
@@ -119,7 +101,7 @@
   @include transition($carousel-control-transition);
 
   // Hover/focus state
-  @include hover-focus {
+  @include hover-focus() {
     color: $carousel-control-color;
     text-decoration: none;
     outline: 0;
@@ -129,13 +111,13 @@
 .carousel-control-prev {
   left: 0;
   @if $enable-gradients {
-    background: linear-gradient(90deg, rgba($black, .25), rgba($black, .001));
+    background-image: linear-gradient(90deg, rgba($black, .25), rgba($black, .001));
   }
 }
 .carousel-control-next {
   right: 0;
   @if $enable-gradients {
-    background: linear-gradient(270deg, rgba($black, .25), rgba($black, .001));
+    background-image: linear-gradient(270deg, rgba($black, .25), rgba($black, .001));
   }
 }
 
@@ -145,14 +127,13 @@
   display: inline-block;
   width: $carousel-control-icon-width;
   height: $carousel-control-icon-width;
-  background: transparent no-repeat center center;
-  background-size: 100% 100%;
+  background: no-repeat 50% / 100% 100%;
 }
 .carousel-control-prev-icon {
-  background-image: $carousel-control-prev-icon-bg;
+  background-image: escape-svg($carousel-control-prev-icon-bg);
 }
 .carousel-control-next-icon {
-  background-image: $carousel-control-next-icon-bg;
+  background-image: escape-svg($carousel-control-next-icon-bg);
 }
 
 
@@ -205,9 +186,9 @@
 
 .carousel-caption {
   position: absolute;
-  right: ((100% - $carousel-caption-width) / 2);
+  right: (100% - $carousel-caption-width) / 2;
   bottom: 20px;
-  left: ((100% - $carousel-caption-width) / 2);
+  left: (100% - $carousel-caption-width) / 2;
   z-index: 10;
   padding-top: 20px;
   padding-bottom: 20px;

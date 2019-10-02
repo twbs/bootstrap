@@ -23,14 +23,9 @@
   }
 
   &:focus {
-    z-index: 2;
+    z-index: 3;
     outline: $pagination-focus-outline;
     box-shadow: $pagination-focus-box-shadow;
-  }
-
-  // Opinionated: add "hand" cursor to non-disabled .page-link elements
-  &:not(:disabled):not(.disabled) {
-    cursor: pointer;
   }
 }
 
@@ -48,7 +43,7 @@
   }
 
   &.active .page-link {
-    z-index: 1;
+    z-index: 3;
     color: $pagination-active-color;
     background-color: $pagination-active-bg;
     border-color: $pagination-active-border-color;

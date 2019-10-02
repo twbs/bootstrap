@@ -1,7 +1,7 @@
 // Base class
 //
 // Kickstart any navigation component with a set of style resets. Works with
-// `<nav>`s or `<ul>`s.
+// `<nav>`s, `<ul>`s or `<ol>`s.
 
 .nav {
   display: flex;
@@ -15,13 +15,15 @@
   display: block;
   padding: $nav-link-padding-y $nav-link-padding-x;
 
-  @include hover-focus {
+  @include hover-focus() {
     text-decoration: none;
   }
 
   // Disabled state lightens text
   &.disabled {
     color: $nav-link-disabled-color;
+    pointer-events: none;
+    cursor: default;
   }
 }
 
@@ -40,7 +42,7 @@
     border: $nav-tabs-border-width solid transparent;
     @include border-top-radius($nav-tabs-border-radius);
 
-    @include hover-focus {
+    @include hover-focus() {
       border-color: $nav-tabs-link-hover-border-color;
     }
 

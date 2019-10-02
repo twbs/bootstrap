@@ -9,18 +9,19 @@ description: An appendix of hosted documentation for nearly every release of Boo
   <div class="col-md">
     <h2>{{ release.group }}</h2>
     <p>{{ release.description }}</p>
-    {% for version in release.versions %}
+    {% assign versions = release.versions | reverse %}
+    {% for version in versions %}
       {% if forloop.first %}<div class="list-group">{% endif %}
-        {% if version.v == site.docs_version %}
-          <a class="list-group-item list-group-item-action py-2 text-primary d-flex justify-content-between align-items-center" href="{{ release.baseurl }}/{{ version.v }}/">
-            {{ version.v }}
-            <span class="badge badge-primary">Latest</span>
-          </a>
-        {% else %}
-          <a class="list-group-item list-group-item-action py-2 text-primary" href="{{ release.baseurl }}/{{ version.v }}/">
-            {{ version.v }}
-          </a>
-        {% endif %}
+      {% if version.v == site.docs_version %}
+        <a class="list-group-item list-group-item-action py-2 text-primary d-flex justify-content-between align-items-center" href="{{ release.baseurl }}/{{ version.v }}/">
+          {{ version.v }}
+          <span class="badge badge-primary">Latest</span>
+        </a>
+      {% else %}
+        <a class="list-group-item list-group-item-action py-2 text-primary" href="{{ release.baseurl }}/{{ version.v }}/">
+          {{ version.v }}
+        </a>
+      {% endif %}
       {% if forloop.last %}</div>{% endif %}
     {% endfor %}
   </div>

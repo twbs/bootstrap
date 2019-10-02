@@ -51,13 +51,13 @@
     }
     pre,
     blockquote {
-      border: $border-width solid $gray-500;   // Bootstrap custom code; using `$border-width` instead of 1px
+      border: $border-width solid $gray-500; // Bootstrap custom code; using `$border-width` instead of 1px
       page-break-inside: avoid;
     }
 
     //
     // Printing Tables:
-    // http://css-discuss.incutio.com/wiki/Printing_Tables
+    // https://web.archive.org/web/20180815150934/http://css-discuss.incutio.com/wiki/Printing_Tables
     //
 
     thead {

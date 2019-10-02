@@ -414,6 +414,52 @@ $(function () {
       .bootstrapTooltip('show')
   })
 
+  QUnit.test('should place tooltips inside a specific container when container is an element', function (assert) {
+    assert.expect(3)
+    var done = assert.async()
+    var $container = $('<div></div>').appendTo('#qunit-fixture')
+    var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"/>')
+      .appendTo('#qunit-fixture')
+      .bootstrapTooltip({
+        container: $container[0]
+      })
+
+    $tooltip
+      .one('shown.bs.tooltip', function () {
+        assert.strictEqual($container.find('.tooltip').length, 1)
+        assert.strictEqual($('#qunit-fixture > .tooltip').length, 0, 'tooltip is not in parent')
+        $tooltip.bootstrapTooltip('hide')
+      })
+      .one('hidden.bs.tooltip', function () {
+        assert.strictEqual($container.find('.tooltip').length, 0, 'tooltip was removed from dom')
+        done()
+      })
+      .bootstrapTooltip('show')
+  })
+
+  QUnit.test('should place tooltips inside a specific container when container is a selector', function (assert) {
+    assert.expect(3)
+    var done = assert.async()
+    var $container = $('<div id="container"></div>').appendTo('#qunit-fixture')
+    var $tooltip = $('<a href="#" rel="tooltip" title="Another tooltip"/>')
+      .appendTo('#qunit-fixture')
+      .bootstrapTooltip({
+        container: '#container'
+      })
+
+    $tooltip
+      .one('shown.bs.tooltip', function () {
+        assert.strictEqual($container.find('.tooltip').length, 1)
+        assert.strictEqual($('#qunit-fixture > .tooltip').length, 0, 'tooltip is not in parent')
+        $tooltip.bootstrapTooltip('hide')
+      })
+      .one('hidden.bs.tooltip', function () {
+        assert.strictEqual($container.find('.tooltip').length, 0, 'tooltip was removed from dom')
+        done()
+      })
+      .bootstrapTooltip('show')
+  })
+
   QUnit.test('should add position class before positioning so that position-specific styles are taken into account', function (assert) {
     assert.expect(2)
     var done = assert.async()
@@ -517,7 +563,6 @@ $(function () {
       $tooltip.bootstrapTooltip('show')
     } catch (err) {
       passed = false
-      console.log(err)
     }
 
     assert.ok(passed, '.tooltip(\'show\') should not throw an error if element no longer is in dom')
@@ -862,6 +907,44 @@ $(function () {
       .modal('show')
   })
 
+  QUnit.test('should allow to close modal if the tooltip element is detached', function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+    var templateHTML = [
+      '<div id="modal-test" class="modal">',
+      '  <div class="modal-dialog" role="document">',
+      '    <div class="modal-content">',
+      '      <div class="modal-body">',
+      '        <a id="tooltipTest" href="#" data-toggle="tooltip" title="Some tooltip text!">Tooltip</a>',
+      '      </div>',
+      '    </div>',
+      '  </div>',
+      '</div>'
+    ].join('')
+
+    $(templateHTML).appendTo('#qunit-fixture')
+    var $tooltip = $('#tooltipTest')
+    var $modal = $('#modal-test')
+
+    $tooltip.on('shown.bs.tooltip', function () {
+      $tooltip.detach()
+      $tooltip.bootstrapTooltip('dispose')
+      $modal.modal('hide')
+    })
+
+    $modal.on('shown.bs.modal', function () {
+      $tooltip.bootstrapTooltip({
+        trigger: 'manuel'
+      })
+        .bootstrapTooltip('show')
+    })
+      .on('hidden.bs.modal', function () {
+        assert.ok(true, 'modal hidden')
+        done()
+      })
+      .modal('show')
+  })
+
   QUnit.test('should reset tip classes when hidden event triggered', function (assert) {
     assert.expect(2)
     var done = assert.async()
@@ -965,5 +1048,239 @@ $(function () {
     })
 
     assert.ok(tooltip.tip === $tipTest[0])
+  })
+
+  QUnit.test('should toggle enabled', function (assert) {
+    assert.expect(3)
+
+    var $tooltip = $('<a href="#" rel="tooltip" data-trigger="click" title="Another tooltip"/>')
+      .appendTo('#qunit-fixture')
+      .bootstrapTooltip()
+
+    var tooltip = $tooltip.data('bs.tooltip')
+
+    assert.strictEqual(tooltip._isEnabled, true)
+
+    tooltip.toggleEnabled()
+
+    assert.strictEqual(tooltip._isEnabled, false)
+
+    tooltip.toggleEnabled()
+
+    assert.strictEqual(tooltip._isEnabled, true)
+  })
+
+  QUnit.test('should create offset modifier correctly when offset option is a function', function (assert) {
+    assert.expect(2)
+
+    var getOffset = function (offsets) {
+      return offsets
+    }
+
+    var $trigger = $('<a href="#" rel="tooltip" data-trigger="click" title="Another tooltip"/>')
+      .appendTo('#qunit-fixture')
+      .bootstrapTooltip({
+        offset: getOffset
+      })
+
+    var tooltip = $trigger.data('bs.tooltip')
+    var offset = tooltip._getOffset()
+
+    assert.ok(typeof offset.offset === 'undefined')
+    assert.ok(typeof offset.fn === 'function')
+  })
+
+  QUnit.test('should create offset modifier correctly when offset option is not a function', function (assert) {
+    assert.expect(2)
+
+    var myOffset = 42
+    var $trigger = $('<a href="#" rel="tooltip" data-trigger="click" title="Another tooltip"/>')
+      .appendTo('#qunit-fixture')
+      .bootstrapTooltip({
+        offset: myOffset
+      })
+
+    var tooltip = $trigger.data('bs.tooltip')
+    var offset = tooltip._getOffset()
+
+    assert.strictEqual(offset.offset, myOffset)
+    assert.ok(typeof offset.fn === 'undefined')
+  })
+
+  QUnit.test('should disable sanitizer', function (assert) {
+    assert.expect(1)
+
+    var $trigger = $('<a href="#" rel="tooltip" data-trigger="click" title="Another tooltip"/>')
+      .appendTo('#qunit-fixture')
+      .bootstrapTooltip({
+        sanitize: false
+      })
+
+    var tooltip = $trigger.data('bs.tooltip')
+    assert.strictEqual(tooltip.config.sanitize, false)
+  })
+
+  QUnit.test('should sanitize template by removing disallowed tags', function (assert) {
+    assert.expect(1)
+
+    var $trigger = $('<a href="#" rel="tooltip" data-trigger="click" title="Another tooltip"/>')
+      .appendTo('#qunit-fixture')
+      .bootstrapTooltip({
+        template: [
+          '<div>',
+          '  <script>console.log("oups script inserted")</script>',
+          '  <span>Some content</span>',
+          '</div>'
+        ].join('')
+      })
+
+    var tooltip = $trigger.data('bs.tooltip')
+    assert.strictEqual(tooltip.config.template.indexOf('script'), -1)
+  })
+
+  QUnit.test('should sanitize template by removing disallowed attributes', function (assert) {
+    assert.expect(1)
+
+    var $trigger = $('<a href="#" rel="tooltip" data-trigger="click" title="Another tooltip"/>')
+      .appendTo('#qunit-fixture')
+      .bootstrapTooltip({
+        template: [
+          '<div>',
+          '  <img src="x" onError="alert(\'test\')">Some content</img>',
+          '</div>'
+        ].join('')
+      })
+
+    var tooltip = $trigger.data('bs.tooltip')
+    assert.strictEqual(tooltip.config.template.indexOf('onError'), -1)
+  })
+
+  QUnit.test('should sanitize template by removing tags with XSS', function (assert) {
+    assert.expect(1)
+
+    var $trigger = $('<a href="#" rel="tooltip" data-trigger="click" title="Another tooltip"/>')
+      .appendTo('#qunit-fixture')
+      .bootstrapTooltip({
+        template: [
+          '<div>',
+          '  <a href="javascript:alert(7)">Click me</a>',
+          '  <span>Some content</span>',
+          '</div>'
+        ].join('')
+      })
+
+    var tooltip = $trigger.data('bs.tooltip')
+    assert.strictEqual(tooltip.config.template.indexOf('script'), -1)
+  })
+
+  QUnit.test('should allow custom sanitization rules', function (assert) {
+    assert.expect(2)
+
+    var $trigger = $('<a href="#" rel="tooltip" data-trigger="click" title="Another tooltip"/>')
+      .appendTo('#qunit-fixture')
+      .bootstrapTooltip({
+        template: [
+          '<a href="javascript:alert(7)">Click me</a>',
+          '<span>Some content</span>'
+        ].join(''),
+        whiteList: {
+          span: null
+        }
+      })
+
+    var tooltip = $trigger.data('bs.tooltip')
+
+    assert.strictEqual(tooltip.config.template.indexOf('<a'), -1)
+    assert.ok(tooltip.config.template.indexOf('span') !== -1)
+  })
+
+  QUnit.test('should allow passing a custom function for sanitization', function (assert) {
+    assert.expect(1)
+
+    var $trigger = $('<a href="#" rel="tooltip" data-trigger="click" title="Another tooltip"/>')
+      .appendTo('#qunit-fixture')
+      .bootstrapTooltip({
+        template: [
+          '<span>Some content</span>'
+        ].join(''),
+        sanitizeFn: function (input) {
+          return input
+        }
+      })
+
+    var tooltip = $trigger.data('bs.tooltip')
+
+    assert.ok(tooltip.config.template.indexOf('span') !== -1)
+  })
+
+  QUnit.test('should allow passing aria attributes', function (assert) {
+    assert.expect(1)
+
+    var $trigger = $('<a href="#" rel="tooltip" data-trigger="click" title="Another tooltip"/>')
+      .appendTo('#qunit-fixture')
+      .bootstrapTooltip({
+        template: [
+          '<span aria-pressed="true">Some content</span>'
+        ].join('')
+      })
+
+    var tooltip = $trigger.data('bs.tooltip')
+
+    assert.ok(tooltip.config.template.indexOf('aria-pressed') !== -1)
+  })
+
+  QUnit.test('should not sanitize element content', function (assert) {
+    assert.expect(1)
+
+    var $element = $('<div />').appendTo('#qunit-fixture')
+    var content = '<script>var test = 1;</script>'
+
+    var $trigger = $('<a href="#" rel="tooltip" data-trigger="click" title="Another tooltip"/>')
+      .appendTo('#qunit-fixture')
+      .bootstrapTooltip({
+        template: [
+          '<span aria-pressed="true">Some content</span>'
+        ].join(''),
+        html: true,
+        sanitize: false
+      })
+
+    var tooltip = $trigger.data('bs.tooltip')
+    tooltip.setElementContent($element, content)
+
+    assert.strictEqual($element[0].innerHTML, content)
+  })
+
+  QUnit.test('should not take into account sanitize in data attributes', function (assert) {
+    assert.expect(1)
+
+    var $trigger = $('<a href="#" rel="tooltip" data-sanitize="false" data-trigger="click" title="Another tooltip"/>')
+      .appendTo('#qunit-fixture')
+      .bootstrapTooltip({
+        template: [
+          '<span aria-pressed="true">Some content</span>'
+        ].join('')
+      })
+
+    var tooltip = $trigger.data('bs.tooltip')
+
+    assert.strictEqual(tooltip.config.sanitize, true)
+  })
+
+  QUnit.test('should allow to pass config to popper.js with `popperConfig`', function (assert) {
+    assert.expect(1)
+
+    var $trigger = $('<a href="#" rel="tooltip" data-trigger="click" title="Another tooltip"/>')
+      .appendTo('#qunit-fixture')
+      .bootstrapTooltip({
+        popperConfig: {
+          placement: 'left'
+        }
+      })
+
+    var tooltip = $trigger.data('bs.tooltip')
+    var popperConfig = tooltip._getPopperConfig('top')
+
+    assert.strictEqual(popperConfig.placement, 'left')
   })
 })

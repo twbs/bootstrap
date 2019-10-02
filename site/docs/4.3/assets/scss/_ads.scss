@@ -1,0 +1,39 @@
+// stylelint-disable declaration-no-important, selector-max-id
+
+//
+// Carbon ads
+//
+
+#carbonads {
+  position: static;
+  display: block;
+  max-width: 400px;
+  padding: 15px 15px 15px 160px;
+  margin: 2rem 0;
+  overflow: hidden;
+  @include font-size(.8125rem);
+  line-height: 1.4;
+  text-align: left;
+  background-color: rgba(0, 0, 0, .05);
+
+  a {
+    color: #333;
+    text-decoration: none;
+  }
+
+  @include media-breakpoint-up(sm) {
+    max-width: 330px;
+    @include border-radius(4px);
+  }
+}
+
+.carbon-img {
+  float: left;
+  margin-left: -145px;
+}
+
+.carbon-poweredby {
+  display: block;
+  margin-top: .75rem;
+  color: #777 !important;
+}

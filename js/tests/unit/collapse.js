@@ -757,7 +757,7 @@ $(function () {
     $trigger3.trigger('click')
   })
 
-  QUnit.test('should set aria-expanded="true" to triggers targeting shown collaspe and aria-expanded="false" only when all the targeted collapses are shown', function (assert) {
+  QUnit.test('should set aria-expanded="true" to triggers targeting shown collapse and aria-expanded="false" only when all the targeted collapses are shown', function (assert) {
     assert.expect(9)
     var done = assert.async()
 

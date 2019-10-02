@@ -3,11 +3,12 @@
 // See: https://a11yproject.com/posts/how-to-hide-content/
 // See: https://hugogiraudel.com/2016/10/13/css-hide-and-seek/
 
-@mixin sr-only {
+@mixin sr-only() {
   position: absolute;
   width: 1px;
   height: 1px;
   padding: 0;
+  margin: -1px; // Fix for https://github.com/twbs/bootstrap/issues/25686
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
@@ -20,7 +21,7 @@
 //
 // Credit: HTML5 Boilerplate
 
-@mixin sr-only-focusable {
+@mixin sr-only-focusable() {
   &:active,
   &:focus {
     position: static;

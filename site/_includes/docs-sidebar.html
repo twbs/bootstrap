@@ -1,11 +1,11 @@
-<form class="bd-search d-flex align-items-center">
+<form role="search" class="bd-search d-flex align-items-center">
   <input type="search" class="form-control" id="search-input" placeholder="Search..." aria-label="Search for..." autocomplete="off" data-docs-version="{{ site.docs_version }}">
   <button class="btn btn-link bd-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#bd-docs-nav" aria-controls="bd-docs-nav" aria-expanded="false" aria-label="Toggle docs navigation">
     {%- include icons/menu.svg width="30" height="30" -%}
   </button>
 </form>
 
-<nav class="collapse bd-links" id="bd-docs-nav">
+<nav class="collapse bd-links" id="bd-docs-nav" aria-label="Main navigation">
   {%- assign page_slug = page.url | split: '/' | last -%}
   {%- for group in site.data.nav -%}
   {%- assign link = group.pages | first -%}
@@ -35,20 +35,6 @@
             <a href="{{ site.baseurl }}/docs/{{ site.docs_version }}/{{ group_slug }}/{{ doc_slug }}/">
               {{ doc.title }}
             </a>
-
-            {%- comment -%}
-            {% unless doc.sections == nil %}
-              <ul class="nav">
-                {% for section in doc.sections %}
-                  <li>
-                    <a href="#{{ section.title | downcase | replace: ' ', '-' }}">
-                      {{ section.title }}
-                    </a>
-                  </li>
-                {% endfor %}
-              </ul>
-            {% endunless %}
-            {%- endcomment -%}
           </li>
         {%- endfor -%}
       </ul>

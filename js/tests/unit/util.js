@@ -20,17 +20,16 @@ $(function () {
     assert.strictEqual(Util.getSelectorFromElement($el2[0]), null)
   })
 
-  QUnit.test('Util.getSelectorFromElement should throw error when there is a bad selector', function (assert) {
+  QUnit.test('Util.getSelectorFromElement should return null when there is a bad selector', function (assert) {
     assert.expect(2)
 
     var $el = $('<div data-target="#1"></div>').appendTo($('#qunit-fixture'))
 
-    try {
-      assert.ok(true, 'trying to use a bad selector')
-      Util.getSelectorFromElement($el[0])
-    } catch (e) {
-      assert.ok(e instanceof DOMException)
-    }
+    assert.strictEqual(Util.getSelectorFromElement($el[0]), null)
+
+    var $el2 = $('<a href="/posts"></a>').appendTo($('#qunit-fixture'))
+
+    assert.strictEqual(Util.getSelectorFromElement($el2[0]), null)
   })
 
   QUnit.test('Util.typeCheckConfig should thrown an error when a bad config is passed', function (assert) {
@@ -75,6 +74,16 @@ $(function () {
     assert.strictEqual(Util.getTransitionDurationFromElement($div[0]), 400)
   })
 
+  QUnit.test('Util.getTransitionDurationFromElement should return the addition of transition-delay and transition-duration', function (assert) {
+    assert.expect(2)
+    var $fixture = $('#qunit-fixture')
+    var $div = $('<div style="transition: all 0s 150ms ease-out;"></div>').appendTo($fixture)
+    var $div2 = $('<div style="transition: all .25s 30ms ease-out;"></div>').appendTo($fixture)
+
+    assert.strictEqual(Util.getTransitionDurationFromElement($div[0]), 150)
+    assert.strictEqual(Util.getTransitionDurationFromElement($div2[0]), 280)
+  })
+
   QUnit.test('Util.getTransitionDurationFromElement should get the first transition duration if multiple transition durations are defined', function (assert) {
     assert.expect(1)
     var $div = $('<div style="transition: transform .3s ease-out, opacity .2s;"></div>').appendTo($('#qunit-fixture'))
@@ -113,5 +122,47 @@ $(function () {
   QUnit.test('Util.supportsTransitionEnd should return true', function (assert) {
     assert.expect(1)
     assert.ok(Util.supportsTransitionEnd())
+  })
+
+  QUnit.test('Util.findShadowRoot should find the shadow DOM root', function (assert) {
+    // Only for newer browsers
+    if (!document.documentElement.attachShadow) {
+      assert.expect(0)
+      return
+    }
+
+    assert.expect(2)
+    var $div = $('<div id="test"></div>').appendTo($('#qunit-fixture'))
+    var shadowRoot = $div[0].attachShadow({
+      mode: 'open'
+    })
+
+    assert.equal(shadowRoot, Util.findShadowRoot(shadowRoot))
+    shadowRoot.innerHTML = '<button>Shadow Button</button>'
+    assert.equal(shadowRoot, Util.findShadowRoot(shadowRoot.firstChild))
+  })
+
+  QUnit.test('Util.findShadowRoot should return null when attachShadow is not available', function (assert) {
+    assert.expect(1)
+
+    var $div = $('<div id="test"></div>').appendTo($('#qunit-fixture'))
+    if (!document.documentElement.attachShadow) {
+      assert.equal(null, Util.findShadowRoot($div[0]))
+    } else {
+      var sandbox = sinon.createSandbox()
+
+      sandbox.replace(document.documentElement, 'attachShadow', function () {
+        // to avoid empty function
+        return $div
+      })
+
+      assert.equal(null, Util.findShadowRoot($div[0]))
+      sandbox.restore()
+    }
+  })
+
+  QUnit.test('Util.jQueryDetection should detect jQuery', function (assert) {
+    assert.expect(0)
+    Util.jQueryDetection()
   })
 })

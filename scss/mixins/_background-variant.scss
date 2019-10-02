@@ -2,16 +2,17 @@
 
 // Contextual backgrounds
 
-@mixin bg-variant($parent, $color) {
+@mixin bg-variant($parent, $color, $ignore-warning: false) {
   #{$parent} {
     background-color: $color !important;
   }
   a#{$parent},
   button#{$parent} {
-    @include hover-focus {
+    @include hover-focus() {
       background-color: darken($color, 10%) !important;
     }
   }
+  @include deprecate("The `bg-variant` mixin", "v4.3.2", "v5", $ignore-warning);
 }
 
 @mixin bg-gradient-variant($parent, $color) {

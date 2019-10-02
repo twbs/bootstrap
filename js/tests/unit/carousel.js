@@ -948,7 +948,7 @@ $(function () {
     $textArea.trigger(eventKeyDown)
   })
 
-  QUnit.test('Should not go to the next item when the carousel is not visible', function (assert) {
+  QUnit.test('should not go to the next item when the carousel is not visible', function (assert) {
     assert.expect(2)
     var done = assert.async()
     var html = '<div id="myCarousel" class="carousel slide" data-interval="50" style="display: none;">' +
@@ -985,7 +985,7 @@ $(function () {
     }, 80)
   })
 
-  QUnit.test('Should not go to the next item when the parent of the carousel is not visible', function (assert) {
+  QUnit.test('should not go to the next item when the parent of the carousel is not visible', function (assert) {
     assert.expect(2)
     var done = assert.async()
     var html = '<div id="parent" style="display: none;">' +
@@ -1118,7 +1118,7 @@ $(function () {
     }
 
     document.documentElement.ontouchstart = $.noop
-    assert.expect(3)
+    assert.expect(4)
     Simulator.setType('pointer')
 
     var $styles = $(stylesCarousel).appendTo('head')
@@ -1147,6 +1147,7 @@ $(function () {
       assert.ok(true, 'slid event fired')
       assert.ok(!$item.hasClass('active'))
       assert.ok(spy.called)
+      assert.strictEqual(carousel.touchDeltaX, 0)
       $styles.remove()
       delete document.documentElement.ontouchstart
       done()
@@ -1160,7 +1161,7 @@ $(function () {
   })
 
   QUnit.test('should allow swipeleft and call next with touch events', function (assert) {
-    assert.expect(3)
+    assert.expect(4)
     clearPointerEvents()
     Simulator.setType('touch')
     document.documentElement.ontouchstart = $.noop
@@ -1190,6 +1191,7 @@ $(function () {
       assert.ok(true, 'slid event fired')
       assert.ok(!$item.hasClass('active'))
       assert.ok(spy.called)
+      assert.strictEqual(carousel.touchDeltaX, 0)
       restorePointerEvents()
       delete document.documentElement.ontouchstart
       done()
@@ -1225,5 +1227,109 @@ $(function () {
       delete document.documentElement.ontouchstart
       done()
     })
+  })
+
+  QUnit.test('should not call _slide if the carousel is sliding', function (assert) {
+    assert.expect(1)
+
+    var carouselHTML = '<div class="carousel" data-interval="false"></div>'
+    var $carousel = $(carouselHTML)
+    $carousel.appendTo('#qunit-fixture')
+    $carousel.bootstrapCarousel()
+
+    var carousel = $carousel.data('bs.carousel')
+
+    var spy = sinon.spy(carousel, '_slide')
+
+    carousel._isSliding = true
+
+    carousel.next()
+
+    assert.strictEqual(spy.called, false)
+  })
+
+  QUnit.test('should call next when the page is visible', function (assert) {
+    assert.expect(1)
+
+    var carouselHTML = '<div class="carousel" data-interval="false"></div>'
+    var $carousel = $(carouselHTML)
+    $carousel.appendTo('#qunit-fixture')
+    $carousel.bootstrapCarousel()
+
+    var carousel = $carousel.data('bs.carousel')
+
+    var spy = sinon.spy(carousel, 'next')
+    var sandbox = sinon.createSandbox()
+
+    sandbox.replaceGetter(document, 'hidden', function () {
+      return false
+    })
+    sandbox.stub($carousel, 'is').returns(true)
+    sandbox.stub($carousel, 'css').returns('block')
+
+    carousel.nextWhenVisible()
+
+    assert.strictEqual(spy.called, true)
+    sandbox.restore()
+  })
+
+  QUnit.test('should not cycle when there is no attribute data-ride', function (assert) {
+    assert.expect(1)
+
+    var spy = sinon.spy(Carousel.prototype, 'cycle')
+
+    var carouselHTML = '<div class="carousel"></div>'
+    var $carousel = $(carouselHTML)
+    $carousel.appendTo('#qunit-fixture')
+    $carousel.bootstrapCarousel()
+
+    assert.strictEqual(spy.called, false)
+    spy.restore()
+  })
+
+  QUnit.test('should cycle when there is data-ride attribute', function (assert) {
+    assert.expect(1)
+
+    var spy = sinon.spy(Carousel.prototype, 'cycle')
+
+    var carouselHTML = '<div class="carousel" data-ride="carousel"></div>'
+    var $carousel = $(carouselHTML)
+    $carousel.appendTo('#qunit-fixture')
+    $carousel.bootstrapCarousel()
+
+    assert.strictEqual(spy.called, true)
+    spy.restore()
+  })
+
+  QUnit.test('should init carousels with data-ride on load event', function (assert) {
+    assert.expect(1)
+
+    var done = assert.async()
+    var spy = sinon.spy(Carousel, '_jQueryInterface')
+
+    var carouselHTML = '<div class="carousel" data-ride="carousel"></div>'
+    var $carousel = $(carouselHTML)
+    $carousel.appendTo('#qunit-fixture')
+
+    $(window).trigger($.Event('load'))
+
+    setTimeout(function () {
+      assert.strictEqual(spy.called, true)
+      spy.restore()
+      done()
+    }, 5)
+  })
+
+  QUnit.test('should not add touch event listeners when touch option set to false', function (assert) {
+    assert.expect(1)
+
+    var spy = sinon.spy(Carousel.prototype, '_addTouchEventListeners')
+    var $carousel = $('<div class="carousel" data-ride="carousel" data-touch="false"></div>')
+
+    $carousel.appendTo('#qunit-fixture')
+    $carousel.bootstrapCarousel()
+
+    assert.strictEqual(spy.called, false)
+    spy.restore()
   })
 })

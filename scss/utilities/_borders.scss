@@ -1,4 +1,4 @@
-// stylelint-disable declaration-no-important
+// stylelint-disable property-blacklist, declaration-no-important
 
 //
 // Border
@@ -30,28 +30,44 @@
 // Border-radius
 //
 
+.rounded-sm {
+  border-radius: $border-radius-sm !important;
+}
+
 .rounded {
   border-radius: $border-radius !important;
 }
+
 .rounded-top {
   border-top-left-radius: $border-radius !important;
   border-top-right-radius: $border-radius !important;
 }
+
 .rounded-right {
   border-top-right-radius: $border-radius !important;
   border-bottom-right-radius: $border-radius !important;
 }
+
 .rounded-bottom {
   border-bottom-right-radius: $border-radius !important;
   border-bottom-left-radius: $border-radius !important;
 }
+
 .rounded-left {
   border-top-left-radius: $border-radius !important;
   border-bottom-left-radius: $border-radius !important;
 }
 
+.rounded-lg {
+  border-radius: $border-radius-lg !important;
+}
+
 .rounded-circle {
   border-radius: 50% !important;
+}
+
+.rounded-pill {
+  border-radius: $rounded-pill !important;
 }
 
 .rounded-0 {
