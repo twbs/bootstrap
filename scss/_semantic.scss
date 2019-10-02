@@ -1,0 +1,30 @@
+$semantic-selector: ".semantic" !default;
+
+$semantic-implications: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$semantic-implications: map-merge(
+  (
+    ".blockquote > footer": ".blockquote-footer",
+    "blockquote > footer": ".blockquote-footer",
+    ".list-inline > li": ".list-inline-item",
+    ".figure > img": ".figure-img",
+    "figure > img": ".figure-img",
+    ".figure > figcaption": ".figure-caption",
+    "figure > figcaption": ".figure-caption",
+    ".breadcrumb > li": ".breadcrumb-item",
+    ".list-group > li": ".list-group-item",
+  ),
+  $semantic-implications
+);
+
+
+@each $selectors, $implied in $semantic-implications {
+  @each $selector in $selectors {
+    $i: str-index($selector, " ") or -1;
+    $selector: str-insert($selector, $semantic-selector, $i);
+
+    #{$selector} {
+      @extend #{$implied};
+    }
+  }
+}
