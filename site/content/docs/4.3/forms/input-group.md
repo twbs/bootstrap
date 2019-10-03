@@ -101,7 +101,7 @@ Place any checkbox or radio option within an input group's addon instead of text
 <div class="input-group mb-3">
   <div class="input-group-prepend">
     <div class="input-group-text">
-      <input type="checkbox" aria-label="Checkbox for following text input">
+      <input class="form-check-input" type="checkbox" value="" aria-label="Checkbox for following text input">
     </div>
   </div>
   <input type="text" class="form-control" aria-label="Text input with checkbox">
@@ -110,7 +110,7 @@ Place any checkbox or radio option within an input group's addon instead of text
 <div class="input-group">
   <div class="input-group-prepend">
     <div class="input-group-text">
-      <input type="radio" aria-label="Radio button for following text input">
+      <input class="form-check-input" type="radio" value="" aria-label="Radio button for following text input">
     </div>
   </div>
   <input type="text" class="form-control" aria-label="Text input with radio button">
