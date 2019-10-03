@@ -646,7 +646,7 @@ Similar to tables and dark tables, use the modifier classes `.thead-light` or `.
 
 ### Sticky header
 
-Add `.thead-sticky` to stick it to the top of the table's parent container. Doing so only the body of the table will scroll in case it exceeds its height.
+Add `.thead-sticky` to a `<thead>` to make it stick to the top of the table's parent container while the `<tbody>` contents continue to scroll.
 
 {{< example >}}
 <table class="table table-striped table-hover">
