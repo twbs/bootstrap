@@ -7,14 +7,17 @@
   min-height: $form-check-min-height;
   padding-left: $form-check-padding-left;
   margin-bottom: $form-check-margin-bottom;
+
+  .form-check-input {
+    float: left;
+    margin-left: $form-check-padding-left * -1;
+  }
 }
 
 .form-check-input {
-  float: left;
   width: $form-check-input-width;
   height: $form-check-input-width;
   margin-top: ($line-height-base - $form-check-input-width) / 2; // line-height minus check height
-  margin-left: $form-check-padding-left * -1;
   background-color: $form-check-input-bg;
   border: $form-check-input-border;
   appearance: none;
