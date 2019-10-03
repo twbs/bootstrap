@@ -840,6 +840,7 @@ $card-border-color:                 rgba($black, .125) !default;
 $card-inner-border-radius:          calc(#{$card-border-radius} - #{$card-border-width}) !default;
 $card-cap-bg:                       rgba($black, .03) !default;
 $card-cap-color:                    null !default;
+$card-height:                       null !default;
 $card-color:                        null !default;
 $card-bg:                           $white !default;
 
