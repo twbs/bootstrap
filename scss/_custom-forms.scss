@@ -268,6 +268,12 @@
   &::-ms-expand {
     display: none;
   }
+
+  // Remove outline from select box in FF
+  &:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 $custom-select-color;
+  }
 }
 
 .custom-select-sm {
