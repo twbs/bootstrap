@@ -8,7 +8,7 @@
   margin-bottom: $alert-margin-bottom;
   border: $alert-border-width solid transparent;
   @include border-radius($alert-border-radius);
-  
+
   > *:last-child {
     margin-bottom: 0;
   }
