@@ -21,6 +21,7 @@ Examples of unacceptable behavior by participants include:
 * Public or private harassment
 * Publishing others' private information, such as a physical or electronic address, without explicit permission
 * Other conduct which could reasonably be considered inappropriate in a professional setting
+* Using any information received about others against them
 
 ## Our Responsibilities
 
