@@ -36,20 +36,20 @@ jobs:
 
       - name: Run bundlesize
         run: npm run bundlesize
-        if: matrix.node == 10
+        if: matrix.node == 12
         env:
           BUNDLESIZE_GITHUB_TOKEN: "${{ secrets.BUNDLESIZE_GITHUB_TOKEN }}"
 
       - name: Run BrowserStack tests
         run: npm run js-test-cloud
-        if: matrix.node == 10 && github.repository == 'twbs/bootstrap' && github.event_name == 'push'
+        if: matrix.node == 12 && github.repository == 'twbs/bootstrap' && github.event_name == 'push'
         env:
           BROWSER_STACK_ACCESS_KEY: "${{ secrets.BROWSER_STACK_ACCESS_KEY }}"
           BROWSER_STACK_USERNAME: "${{ secrets.BROWSER_STACK_USERNAME }}"
 
       - name: Run Coveralls
         run: npm run coveralls
-        if: matrix.node == 10 && github.repository == 'twbs/bootstrap' && github.event_name == 'push'
+        if: matrix.node == 12 && github.repository == 'twbs/bootstrap' && github.event_name == 'push'
         env:
           COVERALLS_REPO_TOKEN: "${{ secrets.COVERALLS_REPO_TOKEN }}"
           COVERALLS_GIT_BRANCH: "${{ github.ref }}"
