@@ -8,7 +8,7 @@
   $border,
   $color: color-yiq($background),
   $hover-background: darken($background, 7.5%),
-  $hover-border: darken($border, 10%), 
+  $hover-border: darken($border, 10%),
   $hover-color: color-yiq($hover-background),
   $active-background: darken($background, 10%),
   $active-border: darken($border, 12.5%),
@@ -71,7 +71,13 @@
   }
 }
 
-@mixin button-outline-variant($color, $color-hover: color-yiq($color), $active-background: $color, $active-border: $color, $active-color: color-yiq($active-background)) {
+@mixin button-outline-variant(
+  $color,
+  $color-hover: color-yiq($color),
+  $active-background: $color,
+  $active-border: $color,
+  $active-color: color-yiq($active-background)
+) {
   color: $color;
   border-color: $color;
 
