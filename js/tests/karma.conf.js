@@ -58,15 +58,15 @@ const conf = {
   },
   files: [
     'node_modules/hammer-simulator/index.js',
-    { pattern: 'js/tests/units/**/*.spec.js', watched: !browserStack }
+    { pattern: 'js/tests/unit/**/*.spec.js', watched: !browserStack }
   ],
   preprocessors: {
-    'js/tests/units/**/*.spec.js': ['rollup']
+    'js/tests/unit/**/*.spec.js': ['rollup']
   },
   rollupPreprocessor: {
     plugins: [
       istanbul({
-        exclude: ['js/tests/units/**/*.spec.js', 'js/tests/helpers/**/*.js']
+        exclude: ['js/tests/unit/**/*.spec.js', 'js/tests/helpers/**/*.js']
       }),
       babel({
         // Only transpile our source code
