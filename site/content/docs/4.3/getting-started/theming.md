@@ -250,22 +250,16 @@ Our `tint-color()` and `shade-color()` functions use `mix()` alongside our `$the
 
 <div class="row">
   {{< theme-colors.inline >}}
-  {{- range $.Site.Data.colors }}
-    {{- if (and (not (eq .name "white")) (not (eq .name "gray")) (not (eq .name "gray-dark"))) }}
+  {{- range $color := $.Site.Data.colors }}
+    {{- if (and (not (eq $color.name "white")) (not (eq $color.name "gray")) (not (eq $color.name "gray-dark"))) }}
     <div class="col-md-4 mb-3 font-monospace">
-      <div class="p-3 mb-2 swatch-{{ .name }}">
-        <strong class="d-block">${{ .name }}</strong>
-        {{ .hex }}
+      <div class="p-3 mb-2 swatch-{{ $color.name }}">
+        <strong class="d-block">${{ $color.name }}</strong>
+        {{ $color.hex }}
       </div>
-      <div class="p-3 bd-{{ .name }}-100">${{ .name }}-100</div>
-      <div class="p-3 bd-{{ .name }}-200">${{ .name }}-200</div>
-      <div class="p-3 bd-{{ .name }}-300">${{ .name }}-300</div>
-      <div class="p-3 bd-{{ .name }}-400">${{ .name }}-400</div>
-      <div class="p-3 bd-{{ .name }}-500">${{ .name }}-500</div>
-      <div class="p-3 bd-{{ .name }}-600">${{ .name }}-600</div>
-      <div class="p-3 bd-{{ .name }}-700">${{ .name }}-700</div>
-      <div class="p-3 bd-{{ .name }}-800">${{ .name }}-800</div>
-      <div class="p-3 bd-{{ .name }}-900">${{ .name }}-900</div>
+      {{ range (seq 100 100 900) }}
+      <div class="p-3 bd-{{ $color.name }}-{{ . }}">${{ $color.name }}-{{ . }}</div>
+      {{ end }}
     </div>
     {{ end -}}
   {{ end -}}
