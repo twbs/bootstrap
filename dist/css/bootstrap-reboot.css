@@ -129,13 +129,13 @@ strong {
 }
 
 small {
-  font-size: 80%;
+  font-size: 0.875em;
 }
 
 sub,
 sup {
   position: relative;
-  font-size: 75%;
+  font-size: 0.75em;
   line-height: 0;
   vertical-align: baseline;
 }
@@ -149,12 +149,12 @@ sup {
 }
 
 a {
-  color: #007bff;
+  color: #0d6efd;
   text-decoration: none;
 }
 
 a:hover {
-  color: #0056b3;
+  color: #024dbc;
   text-decoration: underline;
 }
 
@@ -176,7 +176,7 @@ pre {
   margin-top: 0;
   margin-bottom: 1rem;
   overflow: auto;
-  font-size: 87.5%;
+  font-size: 0.875em;
 }
 
 pre code {
@@ -186,8 +186,8 @@ pre code {
 }
 
 code {
-  font-size: 87.5%;
-  color: #e83e8c;
+  font-size: 0.875em;
+  color: #d63384;
   word-wrap: break-word;
 }
 
@@ -197,7 +197,7 @@ a > code {
 
 kbd {
   padding: 0.2rem 0.4rem;
-  font-size: 87.5%;
+  font-size: 0.875em;
   color: #fff;
   background-color: #212529;
   border-radius: 0.2rem;
@@ -205,7 +205,7 @@ kbd {
 
 kbd kbd {
   padding: 0;
-  font-size: 100%;
+  font-size: 1em;
   font-weight: 700;
 }
 
@@ -310,7 +310,6 @@ input[type="month"] {
 textarea {
   overflow: auto;
   resize: vertical;
-  -webkit-appearance: textfield;
 }
 
 fieldset {

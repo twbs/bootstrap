@@ -4,8 +4,8 @@
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
   */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('../dom/data.js'), require('../dom/event-handler.js'), require('../dom/manipulator.js'), require('../dom/selector-engine.js')) :
-  typeof define === 'function' && define.amd ? define(['../dom/data.js', '../dom/event-handler.js', '../dom/manipulator.js', '../dom/selector-engine.js'], factory) :
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./dom/data.js'), require('./dom/event-handler.js'), require('./dom/manipulator.js'), require('./dom/selector-engine.js')) :
+  typeof define === 'function' && define.amd ? define(['./dom/data.js', './dom/event-handler.js', './dom/manipulator.js', './dom/selector-engine.js'], factory) :
   (global = global || self, global.Modal = factory(global.Data, global.EventHandler, global.Manipulator, global.SelectorEngine));
 }(this, function (Data, EventHandler, Manipulator, SelectorEngine) { 'use strict';
 
@@ -259,13 +259,12 @@
     DATA_DISMISS: '[data-dismiss="modal"]',
     FIXED_CONTENT: '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top',
     STICKY_CONTENT: '.sticky-top'
-    /**
-     * ------------------------------------------------------------------------
-     * Class Definition
-     * ------------------------------------------------------------------------
-     */
-
   };
+  /**
+   * ------------------------------------------------------------------------
+   * Class Definition
+   * ------------------------------------------------------------------------
+   */
 
   var Modal =
   /*#__PURE__*/
