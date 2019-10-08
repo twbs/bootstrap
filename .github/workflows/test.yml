@@ -1,5 +1,7 @@
 name: Tests
 on: [push, pull_request]
+env:
+  CI: true
 
 jobs:
   run:
@@ -28,8 +30,6 @@ jobs:
 
       - name: Install npm dependencies
         run: npm ci
-        env:
-          CI: true
 
       - name: Run tests
         run: npm test
