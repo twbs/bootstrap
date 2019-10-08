@@ -34,10 +34,10 @@ $grays: map-merge(
   $grays
 );
 
-$blue:    #007bff !default;
+$blue:    #0d6efd !default;
 $indigo:  #6610f2 !default;
 $purple:  #6f42c1 !default;
-$pink:    #e83e8c !default;
+$pink:    #d63384 !default;
 $red:     #dc3545 !default;
 $orange:  #fd7e14 !default;
 $yellow:  #ffc107 !default;
@@ -545,7 +545,7 @@ $form-check-input-checked-bg-repeat:      no-repeat !default;
 $form-check-input-checked-bg-position:    center center !default;
 $form-check-input-checked-bg-size:        1em !default;
 $form-check-input-checked-bg-image:       url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='#{$form-check-input-checked-color}' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M4 8.5L6.5 11l6-6'/></svg>") !default;
-$form-check-radio-checked-bg-image:       url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{$form-check-input-checked-color}'/></svg>") !default;
+$form-check-radio-checked-bg-image:       url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='2' fill='#{$form-check-input-checked-color}'/></svg>") !default;
 
 $form-check-input-indeterminate-color:          $component-active-color !default;
 $form-check-input-indeterminate-bg-color:       $component-active-bg !default;
@@ -840,6 +840,7 @@ $card-border-color:                 rgba($black, .125) !default;
 $card-inner-border-radius:          calc(#{$card-border-radius} - #{$card-border-width}) !default;
 $card-cap-bg:                       rgba($black, .03) !default;
 $card-cap-color:                    null !default;
+$card-height:                       null !default;
 $card-color:                        null !default;
 $card-bg:                           $white !default;
 
@@ -1044,6 +1045,8 @@ $figure-caption-color:              $gray-600 !default;
 
 // Breadcrumbs
 
+$breadcrumb-font-size:              null !default;
+
 $breadcrumb-padding-y:              .75rem !default;
 $breadcrumb-padding-x:              1rem !default;
 $breadcrumb-item-padding-x:         .5rem !default;
@@ -1070,7 +1073,9 @@ $carousel-indicator-width:           30px !default;
 $carousel-indicator-height:          3px !default;
 $carousel-indicator-hit-area-height: 10px !default;
 $carousel-indicator-spacer:          3px !default;
+$carousel-indicator-opacity:         .5 !default;
 $carousel-indicator-active-bg:       $white !default;
+$carousel-indicator-active-opacity:  1 !default;
 $carousel-indicator-transition:      opacity .6s ease !default;
 
 $carousel-caption-width:             70% !default;
