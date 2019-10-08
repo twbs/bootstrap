@@ -162,7 +162,7 @@
 }
 
 .border-primary {
-  border-color: #007bff !important;
+  border-color: #0d6efd !important;
 }
 
 .border-secondary {
@@ -1018,7 +1018,7 @@
 }
 
 .text-primary {
-  color: #007bff !important;
+  color: #0d6efd !important;
 }
 
 .text-secondary {
@@ -1073,8 +1073,24 @@
   color: inherit !important;
 }
 
+.lh-1 {
+  line-height: 1 !important;
+}
+
+.lh-sm {
+  line-height: 1.25 !important;
+}
+
+.lh-base {
+  line-height: 1.5 !important;
+}
+
+.lh-lg {
+  line-height: 2 !important;
+}
+
 .bg-primary {
-  background-color: #007bff !important;
+  background-color: #0d6efd !important;
 }
 
 .bg-secondary {
