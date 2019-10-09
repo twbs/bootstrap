@@ -137,7 +137,7 @@
     "vnu-jar": "19.9.4"
   },
   "engines": {
-    "node": ">=8"
+    "node": ">=10"
   },
   "files": [
     "dist/{css,js}/*.{css,js,map}",
