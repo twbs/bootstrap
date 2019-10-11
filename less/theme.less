@@ -12,6 +12,11 @@
 @import "mixins.less";
 @import "select2-bootstrap.less";
 
+// Fix for more complex pages where the wrong pointer shows up even when "auto"
+a {
+  cursor: pointer;
+}
+
 body {
   font-weight: @font-family-weight;
 }

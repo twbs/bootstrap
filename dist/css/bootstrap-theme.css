@@ -629,8 +629,11 @@
 .form-inline .select2-container--bootstrap {
   display: inline-block;
 }
+a {
+  cursor: pointer;
+}
 body {
-  font-weight: 300;
+  font-weight: 400;
 }
 b,
 strong {
