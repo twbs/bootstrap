@@ -239,7 +239,7 @@
 
       if (isNamespace) {
         Object.keys(events).forEach(function (elementEvent) {
-          removeNamespacedHandlers(element, events, elementEvent, originalTypeEvent.substr(1));
+          removeNamespacedHandlers(element, events, elementEvent, originalTypeEvent.slice(1));
         });
       }
 

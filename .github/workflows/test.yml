@@ -1,5 +1,7 @@
 name: Tests
 on: [push, pull_request]
+env:
+  CI: true
 
 jobs:
   run:
@@ -9,7 +11,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node: [8, 10, 12]
+        node: [10, 12]
 
     steps:
       - name: Clone repository
@@ -28,8 +30,6 @@ jobs:
 
       - name: Install npm dependencies
         run: npm ci
-        env:
-          CI: true
 
       - name: Run tests
         run: npm test
