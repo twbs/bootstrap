@@ -227,9 +227,6 @@ $container-padding-x: $grid-gutter-width / 2 !default;
 //
 // Define common padding and border radius sizes and more.
 
-$line-height-sm:              1.25 !default;
-$line-height-lg:              2 !default;
-
 $border-width:                1px !default;
 $border-color:                $gray-300 !default;
 
@@ -303,7 +300,10 @@ $font-weight-bold:            700 !default;
 $font-weight-bolder:          bolder !default;
 
 $font-weight-base:            $font-weight-normal !default;
+
 $line-height-base:            1.5 !default;
+$line-height-lg:              2 !default;
+$line-height-sm:              1.25 !default;
 
 $h1-font-size:                $font-size-base * 2.5 !default;
 $h2-font-size:                $font-size-base * 2 !default;
