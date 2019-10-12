@@ -31,6 +31,8 @@
       description: "Nothing but the basics: compiled CSS and JavaScript."
     - name: Grid
       description: "Multiple examples of grid layouts with all four tiers, nesting, and more."
+    - name: Offcanvas
+      description: "Turn your expandable navbar into a sliding offcanvas menu."
     - name: Cheatsheet
       description: "Kitchen sink of Bootstrap components."
     - name: Cheatsheet RTL
@@ -47,12 +49,6 @@
       description: "Single navbar example with a fixed top navbar along with some additional content."
     - name: Navbar bottom
       description: "Single navbar example with a bottom navbar along with some additional content."
-
-- category: Experiments
-  description: "Examples that focus on future-friendly features or techniques."
-  examples:
-    - name: Offcanvas
-      description: "Turn your expandable navbar into a sliding offcanvas menu."
 
 - category: RTL
   description: "See Bootstrap's RTL version in action with these modified Custom Components examples."

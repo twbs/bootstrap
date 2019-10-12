@@ -902,10 +902,11 @@ $form-validation-states: (
 $zindex-dropdown:                   1000 !default;
 $zindex-sticky:                     1020 !default;
 $zindex-fixed:                      1030 !default;
-$zindex-modal-backdrop:             1040 !default;
-$zindex-modal:                      1050 !default;
-$zindex-popover:                    1060 !default;
-$zindex-tooltip:                    1070 !default;
+$zindex-offcanvas:                  1040 !default;
+$zindex-modal-backdrop:             1050 !default;
+$zindex-modal:                      1060 !default;
+$zindex-popover:                    1070 !default;
+$zindex-tooltip:                    1080 !default;
 // scss-docs-end zindex-stack
 
 
@@ -1429,6 +1430,25 @@ $btn-close-focus-opacity:    1 !default;
 $btn-close-disabled-opacity: .25 !default;
 $btn-close-white-filter:     invert(1) grayscale(100%) brightness(200%) !default;
 // scss-docs-end close-variables
+
+
+// Offcanvas
+
+$offcanvas-padding-y:               $modal-inner-padding !default;
+$offcanvas-padding-x:               $modal-inner-padding !default;
+
+$offcanvas-horizontal-width:        390px !default;
+$offcanvas-horizontal-width-mobile: 100% !default;
+$offcanvas-vertical-max-height:     200px !default;
+$offcanvas-vertical-max-height-mobile: 50% !default;
+$offcanvas-mobile-breakpoint:       md !default;
+$offcanvas-transition-duration:     .3s !default;
+
+$offcanvas-border-color:            $modal-content-border-color !default;
+$offcanvas-border-width:            $modal-content-border-width !default;
+$offcanvas-bg-color:                $modal-content-bg !default;
+$offcanvas-color:                   $modal-content-color !default;
+$offcanvas-body-backdrop-color:     rgba($modal-backdrop-bg, $modal-backdrop-opacity) !default;
 
 
 // Code
