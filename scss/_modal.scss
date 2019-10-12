@@ -48,6 +48,11 @@
   .modal.show & {
     transform: $modal-show-transform;
   }
+
+  // When trying to close, animate focus to scale
+  .modal.scale & {
+    transform: scale(1.02);
+  }
 }
 
 .modal-dialog-scrollable {
