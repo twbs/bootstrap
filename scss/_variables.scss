@@ -706,8 +706,7 @@ $form-select-indicator:             url("data:image/svg+xml,<svg xmlns='http://w
 
 $form-select-background:            no-repeat right $form-select-padding-x center / $form-select-bg-size !default; // Used so we can have multiple background elements (e.g., arrow and feedback icon)
 
-// stylelint-disable-next-line function-blacklist
-$form-select-feedback-icon-padding-right: calc(#{add((#{add(1em, 2 * $form-select-padding-y, false)}) * 3 / 4, $form-select-padding-x + $form-select-indicator-padding, false)}) !default;
+$form-select-feedback-icon-padding-right: add(1em * .75, (2 * $form-select-padding-y * .75) + $form-select-padding-x + $form-select-indicator-padding) !default;
 $form-select-feedback-icon-position:      center right ($form-select-padding-x + $form-select-indicator-padding) !default;
 $form-select-feedback-icon-size:          $input-height-inner-half $input-height-inner-half !default;
 
