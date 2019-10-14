@@ -410,6 +410,7 @@ $utilities: map-merge(
       values: map-merge(
         $theme-colors,
         (
+          body: $body-bg,
           white: $white,
           transparent: transparent
         )
