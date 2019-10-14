@@ -70,7 +70,7 @@ const ClassName = {
   OPEN: 'modal-open',
   FADE: 'fade',
   SHOW: 'show',
-  SCALE: 'scale'
+  STATIC: 'modal-static'
 }
 
 const Selector = {
@@ -309,22 +309,8 @@ class Modal {
     if (this._isShown && this._config.keyboard) {
       EventHandler.on(this._element, Event.KEYDOWN_DISMISS, event => {
         if (event.which === ESCAPE_KEYCODE) {
-          if (this._config.backdrop === 'static') {
-            const hideEvent = EventHandler.trigger(this._element, Event.HIDE_PREVENTED)
-            if (hideEvent.defaultPrevented) {
-              return
-            }
-
-            this._element.classList.add(ClassName.SCALE)
-            const modalTransitionDuration = getTransitionDurationFromElement(this._element)
-            EventHandler.one(this._element, TRANSITION_END, () => {
-              this._element.classList.remove(ClassName.SCALE)
-            })
-            emulateTransitionEnd(this._element, modalTransitionDuration)
-            this._element.focus()
-          } else {
-            this.hide()
-          }
+          // This will trigger a scale transition if the backdrop is static
+          this._triggerBackdropTransition()
         }
       })
     } else {
@@ -383,24 +369,8 @@ class Modal {
           return
         }
 
-        if (this._config.backdrop === 'static') {
-          const hideEvent = EventHandler.trigger(this._element, Event.HIDE_PREVENTED)
-
-          if (hideEvent.defaultPrevented) {
-            return
-          }
-
-          this._element.classList.add(ClassName.SCALE)
-          const modalTransitionDuration = getTransitionDurationFromElement(this._element)
-          EventHandler.one(this._element, TRANSITION_END, () => {
-            this._element.classList.remove(ClassName.SCALE)
-          })
-          emulateTransitionEnd(this._element, modalTransitionDuration)
-
-          this._element.focus()
-        } else {
-          this.hide()
-        }
+        // This will trigger a scale transition if the backdrop is static
+        this._triggerBackdropTransition()
       })
 
       if (animate) {
@@ -435,6 +405,27 @@ class Modal {
       }
     } else {
       callback()
+    }
+  }
+
+  // This function will trigger a HIDE_PREVENTED event and do a scale animation if
+  // the backdrop is static
+  _triggerBackdropTransition() {
+    if (this._config.backdrop === 'static') {
+      const hideEvent = EventHandler.trigger(this._element, Event.HIDE_PREVENTED)
+      if (hideEvent.defaultPrevented) {
+        return
+      }
+
+      this._element.classList.add(ClassName.STATIC)
+      const modalTransitionDuration = getTransitionDurationFromElement(this._element)
+      EventHandler.one(this._element, TRANSITION_END, () => {
+        this._element.classList.remove(ClassName.STATIC)
+      })
+      emulateTransitionEnd(this._element, modalTransitionDuration)
+      this._element.focus()
+    } else {
+      this.hide()
     }
   }
 
