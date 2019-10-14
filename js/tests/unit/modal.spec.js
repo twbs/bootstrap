@@ -541,8 +541,7 @@ describe('Modal', () => {
     })
 
     it('should not close modal when clicking outside of modal-content if backdrop = static', done => {
-      fixtureEl.innerHTML =
-        '<div class="modal" data-backdrop="static" ><div class="modal-dialog" /></div>'
+      fixtureEl.innerHTML = '<div class="modal" data-backdrop="static" ><div class="modal-dialog" /></div>'
 
       const modalEl = fixtureEl.querySelector('.modal')
       const modal = new Modal(modalEl, {
