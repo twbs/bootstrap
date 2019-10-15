@@ -140,7 +140,9 @@ const isVisible = element => {
   if (element.style && element.parentNode && element.parentNode.style) {
     return element.style.display !== 'none' &&
       element.parentNode.style.display !== 'none' &&
-      element.style.visibility !== 'hidden'
+      element.style.visibility !== 'hidden' &&
+      !element.classList.contains('d-none') &&
+      !element.parentNode.classList.contains('d-none')
   }
 
   return false
