@@ -1294,6 +1294,11 @@ describe('Dropdown', () => {
 
     it('should skip hidden element when using keyboard navigation', done => {
       fixtureEl.innerHTML = [
+        '<style>',
+        '  .d-none {',
+        '    display: none;',
+        '  }',
+        '</style>',
         '<div class="dropdown">',
         '  <button href="#" class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu">',
