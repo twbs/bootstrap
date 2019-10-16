@@ -309,7 +309,6 @@ class Modal {
     if (this._isShown && this._config.keyboard) {
       EventHandler.on(this._element, Event.KEYDOWN_DISMISS, event => {
         if (event.which === ESCAPE_KEYCODE) {
-          // This will trigger a scale transition if the backdrop is static
           this._triggerBackdropTransition()
         }
       })
@@ -369,7 +368,6 @@ class Modal {
           return
         }
 
-        // This will trigger a scale transition if the backdrop is static
         this._triggerBackdropTransition()
       })
 
@@ -408,8 +406,6 @@ class Modal {
     }
   }
 
-  // This function will trigger a HIDE_PREVENTED event and do a scale animation if
-  // the backdrop is static
   _triggerBackdropTransition() {
     if (this._config.backdrop === 'static') {
       const hideEvent = EventHandler.trigger(this._element, Event.HIDE_PREVENTED)
