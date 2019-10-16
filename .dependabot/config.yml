@@ -12,6 +12,7 @@ update_configs:
       - "XhmikosR"
     default_labels:
       - "dependencies"
+      - "v5"
     ignored_updates:
       - match:
           dependency_name: "karma-browserstack-launcher"
