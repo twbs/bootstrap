@@ -5,7 +5,7 @@ update_configs:
   # new versions are published to the npm registry
   - package_manager: "javascript"
     directory: "/"
-    update_schedule: "live"
+    update_schedule: "weekly"
     # Apply default reviewer and label to created pull requests
     default_reviewers:
       - "Johann-S"
