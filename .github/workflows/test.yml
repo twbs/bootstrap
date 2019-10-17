@@ -30,7 +30,7 @@ jobs:
           ruby-version: 2.4.x
 
       - name: Set up Bundler
-        run: gem install bundler
+        run: gem install bundler -v "~> 1.17" --no-document
 
       - run: ruby --version
       - run: gem --version
