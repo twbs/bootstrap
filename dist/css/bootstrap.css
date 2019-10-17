@@ -98,6 +98,8 @@ h6, .h6 {
 p {
   margin-top: 0;
   margin-bottom: 1rem;
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
 }
 
 abbr[title],
@@ -174,12 +176,12 @@ sup {
 }
 
 a {
-  color: #0d6efd;
+  color: #0d49fd;
   text-decoration: none;
 }
 
 a:hover {
-  color: #024dbc;
+  color: #0502bc;
   text-decoration: underline;
 }
 
