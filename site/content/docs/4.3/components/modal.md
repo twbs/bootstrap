@@ -154,7 +154,7 @@ When backdrop is set to static, the modal will not close when clicking outside i
         </button>
       </div>
       <div class="modal-body">
-        <p>I'll not close if you click outside me. Don't even try to press escape key.</p>
+        <p>I will not close if you click outside me. Don't even try to press escape key.</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
