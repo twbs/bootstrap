@@ -1,20 +1,14 @@
 ---
 layout: docs
 title: Color
-description: Learn about and customize the color system that supports the entire toolkit.
+description: Bootstrap is supported by an extensive color system that themes our styles and components. This enables more comprehensive customization and extension for any project.
 group: customize
 toc: true
 ---
 
-Many of Bootstrap's various components and utilities are built through a series of colors defined in a Sass map. This map can be looped over in Sass to quickly generate a series of rulesets.
-
 ## All colors
 
 All colors available in Bootstrap are available as Sass variables and a Sass map in `scss/_variables.scss` file. To avoid increased file sizes, we do not create classes for each of these variables.
-
-Sass cannot programmatically generate variables, so we must manually create them ourselves. We specify the midpoint value (`500`) and use custom color functions to tint (lighten) or shade (darken) our colors via Sass's `mix()` color function. Using `mix()` is not the same as `lighten()` and `darken()`—the former blends the specified color with white or black, while the latter only adjusts the lightness value of each color. The result is a much more complete suite of colors, as [shown in this CodePen demo](https://codepen.io/emdeoh/pen/zYOQOPB).
-
-Our `tint-color()` and `shade-color()` functions use `mix()` alongside our `$theme-color-interval` variable, which specifies a stepped percentage value for each mixed color we need. See the `scss/_functions.scss` and `scss/_variables.scss` files for the full source code.
 
 <div class="row">
   {{< theme-colors.inline >}}
@@ -34,6 +28,26 @@ Our `tint-color()` and `shade-color()` functions use `mix()` alongside our `$the
   {{< /theme-colors.inline >}}
 </div>
 
+### Notes on Sass
+
+Sass cannot programmatically generate variables, so we manually created variables for every tint and shade ourselves. We specify the midpoint value (e.g., `$blue-500`) and use custom color functions to tint (lighten) or shade (darken) our colors via Sass's `mix()` color function.
+
+Using `mix()` is not the same as `lighten()` and `darken()`—the former blends the specified color with white or black, while the latter only adjusts the lightness value of each color. The result is a much more complete suite of colors, as [shown in this CodePen demo](https://codepen.io/emdeoh/pen/zYOQOPB).
+
+Our `tint-color()` and `shade-color()` functions use `mix()` alongside our `$theme-color-interval` variable, which specifies a stepped percentage value for each mixed color we produce. See the `scss/_functions.scss` and `scss/_variables.scss` files for the full source code.
+
+### Using Maps
+
+Bootstrap's source Sass files include three maps to help you quickly and easily loop over a list of colors and their hex values.
+
+- `$colors` lists all our available base (`500`) colors
+- `$theme-colors` lists all semantically named theme colors (shown below)
+- `$grays` lists all tins and shades of gray
+
+See the `scss/_variables.scss` file for more information.
+
+### Example
+
 Here's how you can use these in your Sass:
 
 {{< highlight scss >}}
@@ -44,7 +58,7 @@ Here's how you can use these in your Sass:
 }
 {{< /highlight >}}
 
-[Color utility classes]({{< docsref "/utilities/colors" >}}) are also available for setting `color` and `background-color`.
+[Color utility classes]({{< docsref "/utilities/colors" >}}) are also available for setting `color` and `background-color` using the `500` color values.
 
 ## Theme colors
 
