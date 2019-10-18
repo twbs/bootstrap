@@ -125,7 +125,6 @@
         background-size: $form-switch-bg-size, auto;
       } @else {
         background-image: escape-svg($form-switch-checked-bg-image);
-        background-size: $form-switch-bg-size;
       }
     }
   }
