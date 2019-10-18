@@ -15,6 +15,9 @@
         <a class="nav-link {% if page.title == "Examples" %}active{% endif %}" href="{{ site.baseurl }}/docs/{{ site.docs_version }}/examples/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Examples');">Examples</a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" href="{{ .Site.Params.icons }}/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Icons');">Icons</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="{{ site.themes }}/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Themes');" target="_blank" rel="noopener">Themes</a>
       </li>
       <li class="nav-item">
