@@ -7,9 +7,17 @@
     - title: JavaScript
     - title: Theming
     - title: Build tools
-    # - title: Best practices # TODO: Write this content
     - title: Webpack
     - title: Accessibility
+
+- title: Customize
+  pages:
+    - title: Overview
+    - title: Sass
+    - title: Options
+    - title: Color
+    - title: Components
+    - title: CSS variables
 
 - title: Layout
   pages:
