@@ -101,6 +101,108 @@ $yiq-contrasted-threshold:  150 !default;
 $yiq-text-dark:             $gray-900 !default;
 $yiq-text-light:            $white !default;
 
+// fusv-disable
+$blue-100: tint-color($blue, 8) !default;
+$blue-200: tint-color($blue, 6) !default;
+$blue-300: tint-color($blue, 4) !default;
+$blue-400: tint-color($blue, 2) !default;
+$blue-500: $blue !default;
+$blue-600: shade-color($blue, 2) !default;
+$blue-700: shade-color($blue, 4) !default;
+$blue-800: shade-color($blue, 6) !default;
+$blue-900: shade-color($blue, 8) !default;
+
+$indigo-100: tint-color($indigo, 8) !default;
+$indigo-200: tint-color($indigo, 6) !default;
+$indigo-300: tint-color($indigo, 4) !default;
+$indigo-400: tint-color($indigo, 2) !default;
+$indigo-500: $indigo !default;
+$indigo-600: shade-color($indigo, 2) !default;
+$indigo-700: shade-color($indigo, 4) !default;
+$indigo-800: shade-color($indigo, 6) !default;
+$indigo-900: shade-color($indigo, 8) !default;
+
+$purple-100: tint-color($purple, 8) !default;
+$purple-200: tint-color($purple, 6) !default;
+$purple-300: tint-color($purple, 4) !default;
+$purple-400: tint-color($purple, 2) !default;
+$purple-500: $purple !default;
+$purple-600: shade-color($purple, 2) !default;
+$purple-700: shade-color($purple, 4) !default;
+$purple-800: shade-color($purple, 6) !default;
+$purple-900: shade-color($purple, 8) !default;
+
+$pink-100: tint-color($pink, 8) !default;
+$pink-200: tint-color($pink, 6) !default;
+$pink-300: tint-color($pink, 4) !default;
+$pink-400: tint-color($pink, 2) !default;
+$pink-500: $pink !default;
+$pink-600: shade-color($pink, 2) !default;
+$pink-700: shade-color($pink, 4) !default;
+$pink-800: shade-color($pink, 6) !default;
+$pink-900: shade-color($pink, 8) !default;
+
+$red-100: tint-color($red, 8) !default;
+$red-200: tint-color($red, 6) !default;
+$red-300: tint-color($red, 4) !default;
+$red-400: tint-color($red, 2) !default;
+$red-500: $red !default;
+$red-600: shade-color($red, 2) !default;
+$red-700: shade-color($red, 4) !default;
+$red-800: shade-color($red, 6) !default;
+$red-900: shade-color($red, 8) !default;
+
+$orange-100: tint-color($orange, 8) !default;
+$orange-200: tint-color($orange, 6) !default;
+$orange-300: tint-color($orange, 4) !default;
+$orange-400: tint-color($orange, 2) !default;
+$orange-500: $orange !default;
+$orange-600: shade-color($orange, 2) !default;
+$orange-700: shade-color($orange, 4) !default;
+$orange-800: shade-color($orange, 6) !default;
+$orange-900: shade-color($orange, 8) !default;
+
+$yellow-100: tint-color($yellow, 8) !default;
+$yellow-200: tint-color($yellow, 6) !default;
+$yellow-300: tint-color($yellow, 4) !default;
+$yellow-400: tint-color($yellow, 2) !default;
+$yellow-500: $yellow !default;
+$yellow-600: shade-color($yellow, 2) !default;
+$yellow-700: shade-color($yellow, 4) !default;
+$yellow-800: shade-color($yellow, 6) !default;
+$yellow-900: shade-color($yellow, 8) !default;
+
+$green-100: tint-color($green, 8) !default;
+$green-200: tint-color($green, 6) !default;
+$green-300: tint-color($green, 4) !default;
+$green-400: tint-color($green, 2) !default;
+$green-500: $green !default;
+$green-600: shade-color($green, 2) !default;
+$green-700: shade-color($green, 4) !default;
+$green-800: shade-color($green, 6) !default;
+$green-900: shade-color($green, 8) !default;
+
+$teal-100: tint-color($teal, 8) !default;
+$teal-200: tint-color($teal, 6) !default;
+$teal-300: tint-color($teal, 4) !default;
+$teal-400: tint-color($teal, 2) !default;
+$teal-500: $teal !default;
+$teal-600: shade-color($teal, 2) !default;
+$teal-700: shade-color($teal, 4) !default;
+$teal-800: shade-color($teal, 6) !default;
+$teal-900: shade-color($teal, 8) !default;
+
+$cyan-100: tint-color($cyan, 8) !default;
+$cyan-200: tint-color($cyan, 6) !default;
+$cyan-300: tint-color($cyan, 4) !default;
+$cyan-400: tint-color($cyan, 2) !default;
+$cyan-500: $cyan !default;
+$cyan-600: shade-color($cyan, 2) !default;
+$cyan-700: shade-color($cyan, 4) !default;
+$cyan-800: shade-color($cyan, 6) !default;
+$cyan-900: shade-color($cyan, 8) !default;
+// fusv-enable
+
 // Characters which are escaped by the escape-svg function
 $escaped-characters: (
   ("<","%3c"),
