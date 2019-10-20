@@ -106,11 +106,6 @@ Badges were overhauled to better differentiate themselves from buttons and to be
 
 - Removed the card columns in favor of a Masonry grid [See #28922](https://github.com/twbs/bootstrap/pull/28922).
 
-### Icons (New!)
-
-- Added new Bootstrap icons to the project for our documentation, form controls, and more.
-- Removed Open Iconic icons from project source code for form controls.
-
 ### Jumbotron
 
 - The jumbotron component is removed in favor of utility classes like `.bg-light` for the background color and `.p-*` classes to control padding.
