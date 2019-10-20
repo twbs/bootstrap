@@ -1,21 +1,14 @@
-// Color scheme preferences.
+// Color schemes
 //
-// More recent OS versions support a system-wide appearance setting.
-// These utilities will make it easy for dark mode (or light mode if dark is your default style) to be implemented in Bootstrap and websites.
-// See https://webkit.org/blog/8840/dark-mode-support-in-webkit/ and https://drafts.csswg.org/mediaqueries-5/#prefers-color-scheme for information about the prefers-color-scheme media query.
+// Shorthand mixins for scoping styles to a particular color scheme media query.
+// Learn more: https://drafts.csswg.org/mediaqueries-5/#prefers-color-scheme
 
-// Prefers dark color scheme
-// Makes @content apply to a browser that prefers dark mode.
-// Recommended for use by normally light pages.
 @mixin dark-scheme {
   @media (prefers-color-scheme: dark) {
     @content;
   }
 }
 
-// Prefers dark color scheme
-// Makes @content apply to a browser that prefers light mode.
-// Recommended for use by normally dark pages.
 @mixin light-scheme {
   @media (prefers-color-scheme: light) {
     @content;
