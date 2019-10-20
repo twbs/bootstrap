@@ -47,6 +47,14 @@ Changes to our source and compiled JavaScript files.
 - Dropped jQuery dependency and rewrote plugins to be in regular JavaScript.
 - Removed underscore from public static methods like `_getInstance()` → `getInstance()`.
 
+## Color system
+
+We've updated the color system that powers Bootstrap to improve color contrast and provide a much more extensive set of colors.
+
+- Updated blue and pink base colors (`-500`) to ensure AA contrast.
+- Added new tints and shades for every color, providing nine separate colors for each base color.
+- To support our color system, we've added new custom `tint()` and `shade()` functions to mix our colors appropriately.
+
 ## Grid and layout
 
 Changes to any layout tools and our grid system.
