@@ -13,6 +13,7 @@ update_configs:
     default_labels:
       - "dependencies"
       - "v5"
+    version_requirement_updates: "increase_versions"
     ignored_updates:
       - match:
           dependency_name: "karma-browserstack-launcher"
