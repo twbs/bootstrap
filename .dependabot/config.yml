@@ -16,4 +16,4 @@ update_configs:
     ignored_updates:
       - match:
           dependency_name: "karma-browserstack-launcher"
-          version_requirement: "> 1.4.0 < 1.5.2"
+          version_requirement: "1.5.1"
