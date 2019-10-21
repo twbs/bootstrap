@@ -105,7 +105,7 @@
     "find-unused-sass-variables": "^0.6.0",
     "glob": "^7.1.4",
     "hammer-simulator": "0.0.1",
-    "hugo-bin": "^0.46.3",
+    "hugo-bin": "^0.47.0",
     "ip": "^1.1.5",
     "jasmine-core": "^3.5.0",
     "karma": "^4.3.0",
