@@ -112,6 +112,7 @@ describe('Popover', () => {
 
         expect(popoverDisplayed).toBeDefined()
         expect(popoverDisplayed.querySelector('.popover-body').textContent).toEqual('Popover content')
+        expect(popoverDisplayed.querySelector('.popover-header')).toEqual(null)
         done()
       })
 
