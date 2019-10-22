@@ -102,7 +102,7 @@
     "eslint-config-xo": "^0.27.1",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-unicorn": "^12.1.0",
-    "find-unused-sass-variables": "^0.6.0",
+    "find-unused-sass-variables": "^1.0.2",
     "glob": "^7.1.5",
     "hammer-simulator": "0.0.1",
     "hugo-bin": "^0.47.0",
