@@ -1,3 +1,14 @@
+# Releasing the TransferWise Bootstrap
+I am wring thing in *2019*. I hope by now you don't use that repo. For most things you should be doing your changes in the Neptune components. Ask for advice in #design-system on slack. If you still have to do it though here's the steps to release.
+
+* Do your change in the code
+* Bump the version in the `package.json` and `package-lock.json`. Commit both
+* Run `grunt`. Commit the output of that operation
+* Merge.
+* Go to the releases section of Github.
+* Draft a new release. Just write comments etc.
+* Done.
+
 # [Bootstrap](http://getbootstrap.com)
 [![Slack](https://bootstrap-slack.herokuapp.com/badge.svg)](https://bootstrap-slack.herokuapp.com)
 ![Bower version](https://img.shields.io/bower/v/bootstrap.svg?style=flat)
