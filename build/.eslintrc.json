@@ -6,5 +6,8 @@
   "parserOptions": {
     "sourceType": "script"
   },
-  "extends": "../.eslintrc.json"
+  "extends": "../.eslintrc.json",
+  "rules": {
+    "no-console": "off"
+  }
 }
