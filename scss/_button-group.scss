@@ -1,5 +1,3 @@
-// stylelint-disable selector-no-qualifying-type
-
 // Make the div behave like a button
 .btn-group,
 .btn-group-vertical {
@@ -13,9 +11,7 @@
 
     // Bring the hover, focused, and "active" buttons to the front to overlay
     // the borders properly
-    @include hover() {
-      z-index: 1;
-    }
+    &:hover,
     &:focus,
     &:active,
     &.active {
@@ -153,8 +149,8 @@
   > .btn-group > .btn {
     margin-bottom: 0; // Override default `<label>` value
 
-    input[type="radio"],
-    input[type="checkbox"] {
+    [type="radio"],
+    [type="checkbox"] {
       position: absolute;
       clip: rect(0, 0, 0, 0);
       pointer-events: none;
