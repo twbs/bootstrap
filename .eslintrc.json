@@ -9,7 +9,6 @@
     "xo/browser"
   ],
   "rules": {
-    "no-console": "error",
     "capitalized-comments": "off",
     "function-call-argument-newline": "off",
     "indent": [
@@ -29,6 +28,7 @@
       "always-multiline"
     ],
     "new-cap": "off",
+    "no-console": "error",
     "object-curly-spacing": [
       "error",
       "always"
