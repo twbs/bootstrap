@@ -28,6 +28,7 @@
       "always-multiline"
     ],
     "new-cap": "off",
+    "no-console": "error",
     "object-curly-spacing": [
       "error",
       "always"
