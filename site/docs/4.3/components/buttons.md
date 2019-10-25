@@ -20,6 +20,10 @@ Bootstrap includes several predefined button styles, each serving its own semant
 
 {% include callout-warning-color-assistive-technologies.md %}
 
+## Disable text wrapping
+
+If you don't want the button text to wrap, you can add the `.text-nowrap` class to the button. In Sass, you can set `$btn-white-space: nowrap` to disable text wrapping for each button.
+
 ## Button tags
 
 The `.btn` classes are designed to be used with the `<button>` element. However, you can also use these classes on `<a>` or `<input>` elements (though some browsers may apply a slightly different rendering).
