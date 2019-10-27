@@ -10,7 +10,6 @@
   ],
   "rules": {
     "capitalized-comments": "off",
-    "function-call-argument-newline": "off",
     "indent": [
       "error",
       2,
