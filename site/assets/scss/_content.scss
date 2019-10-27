@@ -58,18 +58,6 @@
 //
 
 .bd-content {
-  > h2 {
-    @include font-size($h2-font-size);
-  }
-
-  > h3 {
-    @include font-size($h3-font-size);
-  }
-
-  > h4 {
-    @include font-size($h4-font-size);
-  }
-
   > h2:not(:first-child) {
     margin-top: 3rem;
   }
