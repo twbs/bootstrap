@@ -660,9 +660,9 @@ $form-check-input-indeterminate-bg-image:       url("data:image/svg+xml,<svg xml
 
 $form-switch-color:               rgba(0, 0, 0, .25) !default;
 $form-switch-width:               2em !default;
-$form-switch-height:              $form-check-input-width !default;
 $form-switch-padding-left:        $form-switch-width + .5em !default;
 $form-switch-bg-image:            url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{$form-switch-color}'/></svg>") !default;
+$form-switch-bg-size:             contain !default;
 $form-switch-border-radius:       $form-switch-width !default;
 $form-switch-transition:          .2s ease-in-out !default;
 $form-switch-transition-property: background-position, background-color !default;
