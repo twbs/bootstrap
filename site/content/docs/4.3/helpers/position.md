@@ -31,3 +31,14 @@ Position an element at the top of the viewport, from edge to edge, but only afte
 {{< highlight html >}}
 <div class="sticky-top">...</div>
 {{< /highlight >}}
+
+## Responsive sticky top
+
+Responsive variations also exist for `.sticky-top` utility.
+
+{{< highlight html >}}
+<div class="sticky-sm-top">Stick to the top on viewports sized SM (small) or wider</div>
+<div class="sticky-md-top">Stick to the top on viewports sized MD (medium) or wider</div>
+<div class="sticky-lg-top">Stick to the top on viewports sized LG (large) or wider</div>
+<div class="sticky-xl-top">Stick to the top on viewports sized XL (extra-large) or wider</div>
+{{< /highlight >}}

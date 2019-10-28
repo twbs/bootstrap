@@ -1,0 +1,56 @@
+.bd-masthead {
+  padding: 3rem 0;
+  background-image: linear-gradient(45deg, #fafafa, #f5f5f5);
+
+  h1 {
+    @include font-size(4rem);
+    line-height: 1;
+  }
+
+  p:not(.lead) {
+    color: $gray-700;
+  }
+
+  .btn {
+    padding: .8rem 2rem;
+    font-weight: 600;
+  }
+
+  @include media-breakpoint-up(sm) {
+    padding: 5rem 0;
+  }
+}
+
+.lead-lg {
+  @include font-size(1.5rem);
+}
+
+.home-icon {
+  width: 6rem;
+  height: 6rem;
+  padding: 1.5rem;
+  color: $white;
+  @include border-radius(25%);
+  box-shadow: 0 .25rem .5rem rgba(0, 0, 0, .15), inset 0 -1px 0 rgba(0, 0, 0, .15);
+
+  &-purple {
+    background-image: linear-gradient(180deg, $pink, $purple);
+  }
+
+  &-blue {
+    background-image: linear-gradient(180deg, $teal, $blue);
+  }
+
+  &-yellow {
+    background-image: linear-gradient(180deg, $yellow, $orange);
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .mw-md-75 { max-width: 75%; }
+}
+
+.half-rule {
+  width: 6rem;
+  margin: 2rem 0;
+}

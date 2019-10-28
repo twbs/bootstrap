@@ -26,14 +26,16 @@
   @include deprecate("The `form-control-focus()` mixin", "v4.3.2", "v5", $ignore-warning);
 }
 
+// This mixin uses an `if()` technique to be compatible with Dart Sass
+// See https://github.com/sass/sass/issues/1873#issuecomment-152293725 for more details
 @mixin form-validation-state-selector($state) {
   @if ($state == "valid" or $state == "invalid") {
-    .was-validated &:#{$state},
-    &.is-#{$state} {
+    .was-validated #{if(&, "&", "")}:#{$state},
+    #{if(&, "&", "")}.is-#{$state} {
       @content;
     }
   } @else {
-    &.is-#{$state} {
+    #{if(&, "&", "")}.is-#{$state} {
       @content;
     }
   }

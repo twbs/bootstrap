@@ -7,6 +7,7 @@
   display: flex;
   flex-direction: column;
   min-width: 0; // See https://github.com/twbs/bootstrap/pull/22740#issuecomment-305868106
+  height: $card-height;
   word-wrap: break-word;
   background-color: $card-bg;
   background-clip: border-box;
@@ -131,19 +132,20 @@
   padding: $card-img-overlay-padding;
 }
 
-.card-img {
+.card-img,
+.card-img-top,
+.card-img-bottom {
+  flex-shrink: 0; // For IE: https://github.com/twbs/bootstrap/issues/29396
   width: 100%; // Required because we use flexbox and this inherently applies align-self: stretch
-  @include border-radius($card-inner-border-radius);
 }
 
-// Card image caps
+.card-img,
 .card-img-top {
-  width: 100%; // Required because we use flexbox and this inherently applies align-self: stretch
   @include border-top-radius($card-inner-border-radius);
 }
 
+.card-img,
 .card-img-bottom {
-  width: 100%; // Required because we use flexbox and this inherently applies align-self: stretch
   @include border-bottom-radius($card-inner-border-radius);
 }
 
@@ -151,23 +153,19 @@
 // Card deck
 
 .card-deck {
-  display: flex;
-  flex-direction: column;
-
   .card {
     margin-bottom: $card-deck-margin;
   }
 
   @include media-breakpoint-up(sm) {
+    display: flex;
     flex-flow: row wrap;
     margin-right: -$card-deck-margin;
     margin-left: -$card-deck-margin;
 
     .card {
-      display: flex;
       // Flexbugs #4: https://github.com/philipwalton/flexbugs#flexbug-4
       flex: 1 0 0%;
-      flex-direction: column;
       margin-right: $card-deck-margin;
       margin-bottom: 0; // Override the default
       margin-left: $card-deck-margin;
@@ -181,9 +179,6 @@
 //
 
 .card-group {
-  display: flex;
-  flex-direction: column;
-
   // The child selector allows nested `.card` within `.card-group`
   // to display properly.
   > .card {
@@ -191,6 +186,7 @@
   }
 
   @include media-breakpoint-up(sm) {
+    display: flex;
     flex-flow: row wrap;
     // The child selector allows nested `.card` within `.card-group`
     // to display properly.
@@ -249,27 +245,17 @@
   > .card {
     overflow: hidden;
 
-    &:not(:first-of-type) {
-      .card-header:first-child {
-        @include border-radius(0);
-      }
-
-      &:not(:last-of-type) {
-        border-bottom: 0;
-        @include border-radius(0);
-      }
-    }
-
-    &:first-of-type:not(:last-of-type) {
+    &:not(:last-of-type) {
       border-bottom: 0;
       @include border-bottom-radius(0);
     }
 
-    &:last-of-type {
+    &:not(:first-of-type) {
       @include border-top-radius(0);
     }
 
-    .card-header {
+    > .card-header {
+      @include border-radius(0);
       margin-bottom: -$card-border-width;
     }
   }

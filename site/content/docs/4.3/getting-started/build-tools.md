@@ -42,7 +42,7 @@ Our [package.json]({{< param repo >}}/blob/v{{< param current_version >}}/packag
         <code>npm run dist</code>
       </td>
       <td>
-       Creates the <code>dist/</code> directory with compiled files. Requires <a href="https://sass-lang.com">Sass</a>, <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a>, and <a href="https://github.com/terser-js/terser">terser</a>.
+       Creates the <code>dist/</code> directory with compiled files. Requires <a href="https://sass-lang.com/">Sass</a>, <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a>, and <a href="https://github.com/terser/terser">terser</a>.
       </td>
     </tr>
     <tr>
@@ -55,10 +55,10 @@ Our [package.json]({{< param repo >}}/blob/v{{< param current_version >}}/packag
     </tr>
     <tr>
       <td>
-        <code>npm run docs</code>
+        <code>npm run docs-serve</code>
       </td>
       <td>
-        Builds and lints CSS and JavaScript for docs. You can then run the documentation locally via <code>npm run docs-serve</code>.
+        Builds and runs the documentation locally.
       </td>
     </tr>
   </tbody>

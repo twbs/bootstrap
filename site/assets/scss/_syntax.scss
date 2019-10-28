@@ -1,0 +1,94 @@
+// stylelint-disable comment-empty-line-before, declaration-block-single-line-max-declarations, selector-class-pattern
+
+/* NEW Background .chroma { background-color: #f0f0f0; } */
+/* NEW Error .chroma .err { } */
+/* NEW LineTableTD .chroma .lntd { vertical-align: top; padding: 0; margin: 0; border: 0; } */
+/* NEW LineTable .chroma .lntable { border-spacing: 0; padding: 0; margin: 0; border: 0; width: auto; overflow: auto; display: block; } */
+/* NEW LineHighlight .chroma .hl { display: block; width: 100%; background-color: #ffffcc; } */
+/* NEW LineNumbersTable .chroma .lnt { margin-right: .4em; padding: 0 .4em; } */
+/* NEW LineNumbers .chroma .ln { margin-right: .4em; padding: 0 .4em; } */
+
+/* LiteralStringDelimiter */ .chroma .dl { color: #4070a0; } /* NEW */
+/* Comment */ .chroma .c { color: #727272; }
+/* CommentMultiline */ .chroma .c1 { color: #727272; }
+/* CommentHashbang */ .chroma .ch { font-style: italic; color: #60a0b0; } /* NEW */
+/* CommentMultiline */ .chroma .cm { color: #727272; }
+/* CommentPreproc */ .chroma .cp { color: #008085; }
+/* CommentPreprocFile */ .chroma .cpf { color: #007020; } /* NEW */
+/* CommentSpecial */ .chroma .cs { color: #727272; }
+/* GenericDeleted */ .chroma .gd { background-color: #fcc; border: 1px solid #c00; }
+/* GenericEmph */ .chroma .ge { font-style: italic; }
+/* GenericHeading */ .chroma .gh { color: #030; }
+/* GenericInserted */ .chroma .gi { background-color: #cfc; border: 1px solid #0c0; }
+/* GenericUnderline */ .chroma .gl { text-decoration: underline; } /* NEW */
+/* GenericOutput */ .chroma .go { color: #aaa; }
+/* GenericPrompt */ .chroma .gp { color: #009; }
+/* GenericError */ .chroma .gr { color: #f00; }
+/* GenericStrong */ .chroma .gs { font-weight: 700; } /* NEW */
+/* GenericTraceback */ .chroma .gt { color: #9c6; }
+/* GenericSubheading */ .chroma .gu { color: #030; }
+/* LiteralNumberIntegerLong */ .chroma .il { color: #c24f19; }
+/* Keyword */ .chroma .k { color: #069; }
+/* KeywordConstant */ .chroma .kc { color: #069; }
+/* KeywordDeclaration */ .chroma .kd { color: #069; }
+/* KeywordNamespace */ .chroma .kn { color: #069; }
+/* KeywordPseudo */ .chroma .kp { color: #069; }
+/* KeywordReserved */ .chroma .kr { color: #069; }
+/* KeywordType */ .chroma .kt { color: #078; }
+/* LiteralNumber */ .chroma .m { color: #c24f19; }
+/* LiteralNumberFloat */ .chroma .mf { color: #c24f19; }
+/* LiteralNumberBin */ .chroma .mb { color: #40a070; } /* NEW */
+/* LiteralNumberHex */ .chroma .mh { color: #c24f19; }
+/* LiteralNumberInteger */ .chroma .mi { color: #c24f19; }
+/* LiteralNumberOct */ .chroma .mo { color: #c24f19; }
+/* NameAttribute */ .chroma .na { color: #006ee0; }
+/* NameBuiltin */ .chroma .nb { color: #366; }
+/* NameClass */ .chroma .nc { color: #168174; }
+/* NameDecorator */ .chroma .nd { color: #6b62de; }
+/* NameException */ .chroma .ne { color: #c00; }
+/* NameFunction */ .chroma .nf { color: #b715f4; }
+/* NameEntity */ .chroma .ni { color: #727272; }
+/* NameLabel */ .chroma .nl { color: #6b62de; }
+/* NameNamespace */ .chroma .nn { color: #007ca5; }
+/* NameConstant */ .chroma .no { color: #360; }
+/* NameTag */ .chroma .nt { color: #2f6f9f; }
+/* NameVariable */ .chroma .nv { color: #033; }
+/* Operator */ .chroma .o { color: #555; }
+/* OperatorWord */ .chroma .ow { color: #000; }
+/* LiteralString */ .chroma .s { color: #d73038; }
+/* LiteralStringSingle */ .chroma .s1 { color: #c30; }
+/* LiteralStringDouble */ .chroma .s2 { color: #c30; }
+/* LiteralStringAffix */ .chroma .sa { color: #4070a0; } /* NEW */
+/* LiteralStringBacktick */ .chroma .sb { color: #c30; }
+/* LiteralStringChar */ .chroma .sc { color: #c30; }
+/* LiteralStringDoc */ .chroma .sd { font-style: italic; color: #c30; }
+/* LiteralStringEscape */ .chroma .se { color: #c30; }
+/* LiteralStringHeredoc */ .chroma .sh { color: #c30; }
+/* LiteralStringInterpol */ .chroma .si { color: #a00; }
+/* LiteralStringRegex */ .chroma .sr { color: #337e7e; }
+/* LiteralStringSymbol */ .chroma .ss { color: #fc3; }
+/* LiteralStringOther */ .chroma .sx { color: #c30; }
+/* TextWhitespace */ .chroma .w { color: #bbb; }
+
+.chroma {
+  .language-bash,
+  .language-sh {
+    &::before {
+      color: #009;
+      content: "$ ";
+      user-select: none;
+    }
+
+    // This is just to work around a Chroma bug;
+    // should be removed when fixed upstream
+    .m {
+      color: inherit;
+    }
+  }
+
+  .language-powershell::before {
+    color: #009;
+    content: "PM> ";
+    user-select: none;
+  }
+}

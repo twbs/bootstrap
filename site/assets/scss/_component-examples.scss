@@ -1,0 +1,270 @@
+// stylelint-disable no-duplicate-selectors
+
+//
+// Grid examples
+//
+
+.bd-example-row {
+  .row {
+    > .col,
+    > [class^="col-"] {
+      padding-top: .75rem;
+      padding-bottom: .75rem;
+      background-color: rgba(86, 61, 124, .15);
+      border: 1px solid rgba(86, 61, 124, .2);
+    }
+  }
+
+  .row + .row {
+    margin-top: 1rem;
+  }
+}
+
+.bd-example-row-flex-cols .row {
+  min-height: 10rem;
+  background-color: rgba(255, 0, 0, .1);
+}
+
+.bd-highlight {
+  background-color: rgba($bd-purple, .15);
+  border: 1px solid rgba($bd-purple, .15);
+}
+
+.bd-example-responsive-containers {
+  [class^="container"] {
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+    background-color: rgba(86, 61, 124, .15);
+    border: 1px solid rgba(86, 61, 124, .2);
+  }
+}
+
+// Grid mixins
+.example-container {
+  width: 800px;
+  @include make-container();
+}
+
+.example-row {
+  @include make-row();
+}
+
+.example-content-main {
+  @include make-col-ready();
+
+  @include media-breakpoint-up(sm) {
+    @include make-col(6);
+  }
+
+  @include media-breakpoint-up(lg) {
+    @include make-col(8);
+  }
+}
+
+.example-content-secondary {
+  @include make-col-ready();
+
+  @include media-breakpoint-up(sm) {
+    @include make-col(6);
+  }
+
+  @include media-breakpoint-up(lg) {
+    @include make-col(4);
+  }
+}
+
+
+//
+// Docs examples
+//
+
+.bd-example {
+  position: relative;
+  padding: 1rem;
+  margin: 1rem (-$grid-gutter-width / 2) 0;
+  border: solid $gray-100;
+  border-width: .2rem 0 0;
+  @include clearfix();
+
+  @include media-breakpoint-up(sm) {
+    padding: 1.5rem;
+    margin-right: 0;
+    margin-left: 0;
+    border-width: .2rem;
+  }
+
+  + .highlight,
+  + .clipboard + .highlight {
+    margin-top: 0;
+  }
+
+  + p {
+    margin-top: 2rem;
+  }
+
+  > .form-control {
+    + .form-control {
+      margin-top: .5rem;
+    }
+  }
+
+  > .nav + .nav,
+  > .alert + .alert,
+  > .navbar + .navbar,
+  > .progress + .progress {
+    margin-top: 1rem;
+  }
+
+  > .dropdown-menu {
+    position: static;
+    display: block;
+  }
+
+  > .form-group:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Images
+.bd-example {
+  > svg + svg,
+  > img + img {
+    margin-left: .5rem;
+  }
+}
+
+// Buttons
+.bd-example {
+  > .btn,
+  > .btn-group {
+    margin-top: .25rem;
+    margin-bottom: .25rem;
+  }
+  > .btn-toolbar + .btn-toolbar {
+    margin-top: .5rem;
+  }
+}
+
+// List groups
+.bd-example > .list-group {
+  max-width: 400px;
+}
+
+.bd-example > [class*="list-group-horizontal"] {
+  max-width: 100%;
+}
+
+// Navbars
+.bd-example {
+  .fixed-top,
+  .sticky-top {
+    position: static;
+    margin: -1rem -1rem 1rem;
+  }
+
+  .fixed-bottom {
+    position: static;
+    margin: 1rem -1rem -1rem;
+  }
+
+  @include media-breakpoint-up(sm) {
+    .fixed-top,
+    .sticky-top {
+      margin: -1.5rem -1.5rem 1rem;
+    }
+    .fixed-bottom {
+      margin: 1rem -1.5rem -1.5rem;
+    }
+  }
+}
+
+// Pagination
+.bd-example .pagination {
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+}
+
+.bd-example-modal {
+  background-color: #fafafa;
+
+  .modal {
+    position: static;
+    display: block;
+  }
+}
+
+// Tooltips
+.tooltip-demo a {
+  white-space: nowrap;
+}
+
+// Scrollspy demo on fixed height div
+.scrollspy-example {
+  position: relative;
+  height: 200px;
+  margin-top: .5rem;
+  overflow: auto;
+}
+
+.scrollspy-example-2 {
+  position: relative;
+  height: 350px;
+  overflow: auto;
+}
+
+.bd-example-border-utils {
+  [class^="border"] {
+    display: inline-block;
+    width: 5rem;
+    height: 5rem;
+    margin: .25rem;
+    background-color: #f5f5f5;
+  }
+}
+
+.bd-example-border-utils-0 {
+  [class^="border"] {
+    border: 1px solid $border-color;
+  }
+}
+
+//
+// Code snippets
+//
+
+.highlight {
+  padding: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  background-color: $gray-100;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+
+  @include media-breakpoint-up(sm) {
+    padding: 1.5rem;
+  }
+}
+
+.bd-content .highlight {
+  margin-right: (-$grid-gutter-width / 2);
+  margin-left: (-$grid-gutter-width / 2);
+
+  @include media-breakpoint-up(sm) {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+
+.highlight {
+  pre {
+    padding: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    background-color: transparent;
+    border: 0;
+  }
+
+  pre code {
+    @include font-size(inherit);
+    color: $gray-900; // Effectively the base text color
+  }
+}
