@@ -1,14 +1,14 @@
 ---
 layout: docs
 title: RFS
-description: Bootstrap's resizing engine.
+description: Bootstrap's resizing engine responsively scales common CSS properties to better utilize available space across viewports and devices.
 group: getting-started
 toc: true
 ---
 
 ## What is RFS?
 
-Bootstrap's side project [RFS](https://github.com/twbs/rfs) is a unit resizing engine which was initially developed to resize font sizes (hence its abbreviation for Responsive Font Sizes). Nowadays RFS is capable of rescaling basically every value for any css property with units, like `margin`, `padding`, `border-radius` or even `box-shadow`.
+Bootstrap's side project [RFS](https://github.com/twbs/rfs) is a unit resizing engine which was initially developed to resize font sizes (hence its abbreviation for Responsive Font Sizes). Nowadays RFS is capable of rescaling most CSS properties with unit values like `margin`, `padding`, `border-radius`, or even `box-shadow`.
 
 The mechanism automatically calculates the appropriate values based on the dimensions of the browser viewport. It will be compiled into `calc()` functions with a mix of `rem` and viewport units to enable the responsive scaling behavior.
 
@@ -18,15 +18,13 @@ The mixins are included in Bootstrap and are available once you include Bootstra
 
 ### Using the mixins
 
-The `rfs()` mixin has shorthands for `font-size`, `margin`, `margin-top`, `margin-right`, `margin-bottom`, `margin-left`, `padding`, `padding-top`, `padding-right`, `padding-bottom` and `padding-left` which can be used like this:
+The `rfs()` mixin has shorthands for `font-size`, `margin`, `margin-top`, `margin-right`, `margin-bottom`, `margin-left`, `padding`, `padding-top`, `padding-right`, `padding-bottom`, and `padding-left`. See the example below for source Sass and compiled CSS.
 
 ```scss
 .title {
   @include font-size(4rem);
 }
 ```
-
-which outputs the following CSS:
 
 ```css
 .title {
@@ -83,4 +81,4 @@ In this example we use one of Bootstrap's built-in [responsive breakpoint mixins
 
 ## Extended documentation
 
-RFS is a separate project under the Bootstrap organisation. More about RFS and its configuration can be found on its [GitHub repository](https://github.com/twbs/rfs).
+RFS is a separate project under the Bootstrap organization. More about RFS and its configuration can be found on its [GitHub repository](https://github.com/twbs/rfs).
