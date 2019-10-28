@@ -488,6 +488,7 @@ class Dropdown {
     }
 
     const items = [].slice.call(parent.querySelectorAll(Selector.VISIBLE_ITEMS))
+      .filter((item) => $(item).is(':visible'))
 
     if (items.length === 0) {
       return
