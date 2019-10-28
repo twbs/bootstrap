@@ -833,4 +833,26 @@ $(function () {
     })
       .bootstrapModal('show')
   })
+
+  QUnit.test('should not close modal when clicking outside of modal-content if backdrop = static', function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+    var $modal = $('<div class="modal" data-backdrop="static"><div class="modal-dialog" /></div>').appendTo('#qunit-fixture')
+
+    $modal.on('shown.bs.modal', function () {
+      $modal.trigger('click')
+      setTimeout(function () {
+        var modal = $modal.data('bs.modal')
+
+        assert.strictEqual(modal._isShown, true)
+        done()
+      }, 10)
+    })
+      .on('hidden.bs.modal', function () {
+        assert.strictEqual(true, false, 'should not hide the modal')
+      })
+      .bootstrapModal({
+        backdrop: 'static'
+      })
+  })
 })

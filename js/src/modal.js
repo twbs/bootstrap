@@ -38,6 +38,7 @@ const DefaultType = {
 
 const Event = {
   HIDE              : `hide${EVENT_KEY}`,
+  HIDE_PREVENTED    : `hidePrevented${EVENT_KEY}`,
   HIDDEN            : `hidden${EVENT_KEY}`,
   SHOW              : `show${EVENT_KEY}`,
   SHOWN             : `shown${EVENT_KEY}`,
@@ -56,7 +57,8 @@ const ClassName = {
   BACKDROP           : 'modal-backdrop',
   OPEN               : 'modal-open',
   FADE               : 'fade',
-  SHOW               : 'show'
+  SHOW               : 'show',
+  STATIC             : 'modal-static'
 }
 
 const Selector = {
@@ -234,6 +236,29 @@ class Modal {
     return config
   }
 
+  _triggerBackdropTransition() {
+    if (this._config.backdrop === 'static') {
+      const hideEventPrevented = $.Event(Event.HIDE_PREVENTED)
+
+      $(this._element).trigger(hideEventPrevented)
+      if (hideEventPrevented.defaultPrevented) {
+        return
+      }
+
+      this._element.classList.add(ClassName.STATIC)
+
+      const modalTransitionDuration = Util.getTransitionDurationFromElement(this._element)
+
+      $(this._element).one(Util.TRANSITION_END, () => {
+        this._element.classList.remove(ClassName.STATIC)
+      })
+        .emulateTransitionEnd(modalTransitionDuration)
+      this._element.focus()
+    } else {
+      this.hide()
+    }
+  }
+
   _showElement(relatedTarget) {
     const transition = $(this._element).hasClass(ClassName.FADE)
     const modalBody = this._dialog ? this._dialog.querySelector(Selector.MODAL_BODY) : null
@@ -303,8 +328,7 @@ class Modal {
     if (this._isShown && this._config.keyboard) {
       $(this._element).on(Event.KEYDOWN_DISMISS, (event) => {
         if (event.which === ESCAPE_KEYCODE) {
-          event.preventDefault()
-          this.hide()
+          this._triggerBackdropTransition()
         }
       })
     } else if (!this._isShown) {
@@ -362,11 +386,8 @@ class Modal {
         if (event.target !== event.currentTarget) {
           return
         }
-        if (this._config.backdrop === 'static') {
-          this._element.focus()
-        } else {
-          this.hide()
-        }
+
+        this._triggerBackdropTransition()
       })
 
       if (animate) {
