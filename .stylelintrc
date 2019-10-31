@@ -11,6 +11,12 @@
       "border-bottom-left-radius",
       "transition"
     ],
-    "function-blacklist": ["calc"]
+    "function-blacklist": ["calc"],
+    'scss/dollar-variable-default': [
+      true,
+      {
+        'ignore': 'local'
+      }
+    ]
   }
 }
