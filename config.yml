@@ -46,6 +46,7 @@ params:
 
   current_version:      "4.3.1"
   current_ruby_version: "4.3.1"
+  rfs_version:          "9.0.2"
   docs_version:         "4.3"
   repo:                 "https://github.com/twbs/bootstrap"
   twitter:              "getbootstrap"
