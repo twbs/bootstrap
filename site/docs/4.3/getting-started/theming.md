@@ -233,7 +233,7 @@ We use the `add` and `subtract` functions to wrap the CSS `calc` function. The p
 
 Example where the calc is valid:
 
-{{< highlight scss >}}
+{% highlight scss %}
 $border-radius: .25rem;
 $border-width: 1px;
 
@@ -246,11 +246,11 @@ $border-width: 1px;
   // Output the same calc(.25rem - 1px) as above
   border-radius: subtract($border-radius, $border-width);
 }
-{{< /highlight >}}
+{% endhighlight %}
 
 Example where the calc is invalid:
 
-{{< highlight scss >}}
+{% highlight scss %}
 $border-radius: .25rem;
 $border-width: 0;
 
@@ -263,7 +263,7 @@ $border-width: 0;
   // Output .25rem
   border-radius: subtract($border-radius, $border-width);
 }
-{{< /highlight >}}
+{% endhighlight %}
 
 ## Sass options
 
