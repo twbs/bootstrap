@@ -73,7 +73,7 @@
     "docs-lint": "node build/vnu-jar.js",
     "docs-serve": "bundle exec jekyll serve",
     "docs-serve-only": "npm run docs-serve -- --skip-initial-build --no-watch",
-    "update-deps": "ncu -a -x \"cross-env,eslint,karma,karma-browserstack-launcher,karma-qunit,stylelint,stylelint-config-twbs-bootstrap\" && npm update && bundle update && cross-env-shell echo Manually update \\\"site/docs/$npm_package_version_short/assets/js/vendor/\\\"",
+    "update-deps": "ncu -a -x \"cross-env,eslint,find-unused-sass-variables,karma,karma-browserstack-launcher,karma-qunit,qunit,stylelint,stylelint-config-twbs-bootstrap\" && npm update && bundle update && cross-env-shell echo Manually update \\\"site/docs/$npm_package_version_short/assets/js/vendor/\\\"",
     "release": "npm-run-all dist release-sri release-zip docs-production",
     "release-sri": "node build/generate-sri.js",
     "release-version": "node build/change-version.js",
@@ -101,14 +101,14 @@
   "dependencies": {},
   "peerDependencies": {
     "jquery": "1.9.1 - 3",
-    "popper.js": "^1.15.0"
+    "popper.js": "^1.16.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.4",
     "@babel/core": "^7.6.4",
     "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
     "@babel/preset-env": "^7.6.3",
-    "autoprefixer": "^9.6.5",
+    "autoprefixer": "^9.7.1",
     "babel-eslint": "^10.0.3",
     "babel-plugin-istanbul": "^5.2.0",
     "broken-link-checker": "^0.7.8",
@@ -118,7 +118,7 @@
     "cross-env": "^5.2.1",
     "eslint": "^5.16.0",
     "find-unused-sass-variables": "^0.6.0",
-    "glob": "^7.1.4",
+    "glob": "^7.1.5",
     "hammer-simulator": "0.0.1",
     "http-server": "^0.11.1",
     "ip": "^1.1.5",
@@ -131,13 +131,13 @@
     "karma-firefox-launcher": "^1.2.0",
     "karma-qunit": "^3.1.3",
     "karma-sinon": "^1.0.5",
-    "node-sass": "^4.12.0",
-    "nodemon": "^1.19.3",
+    "node-sass": "^4.13.0",
+    "nodemon": "^1.19.4",
     "npm-run-all": "^4.1.5",
-    "popper.js": "^1.15.0",
+    "popper.js": "^1.16.0",
     "postcss-cli": "^6.1.3",
     "qunit": "2.9.2",
-    "rollup": "^1.23.1",
+    "rollup": "^1.26.2",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
@@ -146,7 +146,7 @@
     "sinon": "^7.5.0",
     "stylelint": "^9.10.1",
     "stylelint-config-twbs-bootstrap": "^0.5.0",
-    "uglify-js": "^3.6.1",
+    "uglify-js": "^3.6.6",
     "vnu-jar": "19.9.4"
   },
   "engines": {
@@ -175,7 +175,7 @@
     "dependencies": {},
     "peerDependencies": {
       "jquery": "1.9.1 - 3",
-      "popper.js": "^1.15.0"
+      "popper.js": "^1.16.0"
     }
   }
 }
