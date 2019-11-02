@@ -12,7 +12,7 @@
       background-color: darken($color, 10%) !important;
     }
   }
-  @include deprecate("The `bg-variant` mixin", "v4.3.2", "v5", $ignore-warning);
+  @include deprecate("The `bg-variant` mixin", "v4.3.1", "v5", $ignore-warning);
 }
 
 @mixin bg-gradient-variant($parent, $color) {
