@@ -57,10 +57,10 @@
 
 .modal-dialog-scrollable {
   display: flex; // IE10/11
-  max-height: calc(100% - #{$modal-dialog-margin * 2});
+  max-height: subtract(100%, $modal-dialog-margin * 2);
 
   .modal-content {
-    max-height: calc(100vh - #{$modal-dialog-margin * 2}); // IE10/11
+    max-height: subtract(100vh, $modal-dialog-margin * 2); // IE10/11
     overflow: hidden;
   }
 
@@ -77,12 +77,12 @@
 .modal-dialog-centered {
   display: flex;
   align-items: center;
-  min-height: calc(100% - #{$modal-dialog-margin * 2});
+  min-height: subtract(100%, $modal-dialog-margin * 2);
 
   // Ensure `modal-dialog-centered` extends the full height of the view (IE10/11)
   &::before {
     display: block; // IE10
-    height: calc(100vh - #{$modal-dialog-margin * 2});
+    height: subtract(100vh, $modal-dialog-margin * 2);
     content: "";
   }
 
@@ -204,18 +204,18 @@
   }
 
   .modal-dialog-scrollable {
-    max-height: calc(100% - #{$modal-dialog-margin-y-sm-up * 2});
+    max-height: subtract(100%, $modal-dialog-margin-y-sm-up * 2);
 
     .modal-content {
-      max-height: calc(100vh - #{$modal-dialog-margin-y-sm-up * 2});
+      max-height: subtract(100vh, $modal-dialog-margin-y-sm-up * 2);
     }
   }
 
   .modal-dialog-centered {
-    min-height: calc(100% - #{$modal-dialog-margin-y-sm-up * 2});
+    min-height: subtract(100%, $modal-dialog-margin-y-sm-up * 2);
 
     &::before {
-      height: calc(100vh - #{$modal-dialog-margin-y-sm-up * 2});
+      height: subtract(100vh, $modal-dialog-margin-y-sm-up * 2);
     }
   }
 
