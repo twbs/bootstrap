@@ -92,8 +92,8 @@ export const DefaultWhitelist = {
 }
 
 export function sanitizeHtml(unsafeHtml, whiteList, sanitizeFn) {
-  if (!unsafeHtml.length) {
-    return unsafeHtml
+  if (!unsafeHtml || !unsafeHtml.length) {
+    return unsafeHtml || ''
   }
 
   if (sanitizeFn && typeof sanitizeFn === 'function') {

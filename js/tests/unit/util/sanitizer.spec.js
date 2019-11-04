@@ -10,6 +10,18 @@ describe('Sanitizer', () => {
       expect(result).toEqual(empty)
     })
 
+    it('should return empty string on falsy input', () => {
+      const empty = ''
+
+      let result = sanitizeHtml(undefined, DefaultWhitelist, null)
+
+      expect(result).toEqual(empty)
+
+      result = sanitizeHtml(null, DefaultWhitelist, null)
+
+      expect(result).toEqual(empty)
+    })
+
     it('should sanitize template by removing tags with XSS', () => {
       const template = [
         '<div>',
