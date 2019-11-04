@@ -68,7 +68,7 @@
     "watch-css-main": "nodemon --watch scss/ --ext scss --exec \"npm-run-all css-lint css-compile css-prefix\"",
     "watch-css-docs": "nodemon --watch site/assets/scss/ --ext scss --exec \"npm run css-lint\"",
     "watch-js-main": "nodemon --watch js/src/ --ext js --exec \"npm-run-all js-lint js-compile\"",
-    "watch-js-docs": "nodemon --watch site/assets/js/src/ --ext js --exec \"npm run js-lint\""
+    "watch-js-docs": "nodemon --watch site/assets/js/ --ext js --exec \"npm run js-lint\""
   },
   "style": "dist/css/bootstrap.css",
   "sass": "scss/bootstrap.scss",
