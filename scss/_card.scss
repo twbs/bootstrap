@@ -8,10 +8,10 @@
   flex-direction: column;
   min-width: 0; // See https://github.com/twbs/bootstrap/pull/22740#issuecomment-305868106
   height: $card-height;
+  overflow: hidden;
   word-wrap: break-word;
   background-color: $card-bg;
   background-clip: border-box;
-  overflow: hidden;
   border: $card-border-width solid $card-border-color;
   @include border-radius($card-border-radius);
 
