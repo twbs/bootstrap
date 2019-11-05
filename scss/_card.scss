@@ -12,6 +12,7 @@
   background-color: $card-bg;
   background-clip: border-box;
   border: $card-border-width solid $card-border-color;
+  overflow: hidden;
   @include border-radius($card-border-radius);
 
   > hr {
@@ -243,7 +244,6 @@
 
 .accordion {
   > .card {
-    overflow: hidden;
 
     &:not(:last-of-type) {
       border-bottom: 0;
