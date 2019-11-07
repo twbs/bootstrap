@@ -163,5 +163,9 @@
     "peerDependencies": {
       "popper.js": "^1.16.0"
     }
+  },
+  "funding": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/bootstrap"
   }
 }
