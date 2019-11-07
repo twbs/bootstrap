@@ -87,8 +87,8 @@
     "popper.js": "^1.16.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.6.4",
-    "@babel/core": "^7.6.4",
+    "@babel/cli": "^7.7.0",
+    "@babel/core": "^7.7.2",
     "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
     "@babel/preset-env": "^7.6.3",
     "autoprefixer": "^9.7.1",
@@ -103,7 +103,7 @@
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-unicorn": "^12.1.0",
     "find-unused-sass-variables": "^1.0.2",
-    "glob": "^7.1.5",
+    "glob": "^7.1.6",
     "hammer-simulator": "0.0.1",
     "hugo-bin": "^0.47.1",
     "ip": "^1.1.5",
