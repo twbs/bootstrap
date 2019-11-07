@@ -76,6 +76,7 @@
   margin-bottom: 0;
   color: $custom-control-label-color;
   vertical-align: top;
+  cursor: $custom-control-cursor;
 
   // Background-color and (when enabled) gradient
   &::before {
