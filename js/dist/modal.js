@@ -7,7 +7,7 @@
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./dom/data.js'), require('./dom/event-handler.js'), require('./dom/manipulator.js'), require('./dom/selector-engine.js')) :
   typeof define === 'function' && define.amd ? define(['./dom/data.js', './dom/event-handler.js', './dom/manipulator.js', './dom/selector-engine.js'], factory) :
   (global = global || self, global.Modal = factory(global.Data, global.EventHandler, global.Manipulator, global.SelectorEngine));
-}(this, function (Data, EventHandler, Manipulator, SelectorEngine) { 'use strict';
+}(this, (function (Data, EventHandler, Manipulator, SelectorEngine) { 'use strict';
 
   Data = Data && Data.hasOwnProperty('default') ? Data['default'] : Data;
   EventHandler = EventHandler && EventHandler.hasOwnProperty('default') ? EventHandler['default'] : EventHandler;
@@ -185,7 +185,9 @@
     }
 
     if (element.style && element.parentNode && element.parentNode.style) {
-      return element.style.display !== 'none' && element.parentNode.style.display !== 'none' && element.style.visibility !== 'hidden';
+      var elementStyle = getComputedStyle(element);
+      var parentNodeStyle = getComputedStyle(element.parentNode);
+      return elementStyle.display !== 'none' && parentNodeStyle.display !== 'none' && elementStyle.visibility !== 'hidden';
     }
 
     return false;
@@ -233,6 +235,7 @@
   };
   var Event = {
     HIDE: "hide" + EVENT_KEY,
+    HIDE_PREVENTED: "hidePrevented" + EVENT_KEY,
     HIDDEN: "hidden" + EVENT_KEY,
     SHOW: "show" + EVENT_KEY,
     SHOWN: "shown" + EVENT_KEY,
@@ -250,7 +253,8 @@
     BACKDROP: 'modal-backdrop',
     OPEN: 'modal-open',
     FADE: 'fade',
-    SHOW: 'show'
+    SHOW: 'show',
+    STATIC: 'modal-static'
   };
   var Selector = {
     DIALOG: '.modal-dialog',
@@ -490,9 +494,7 @@
       if (this._isShown && this._config.keyboard) {
         EventHandler.on(this._element, Event.KEYDOWN_DISMISS, function (event) {
           if (event.which === ESCAPE_KEYCODE) {
-            event.preventDefault();
-
-            _this5.hide();
+            _this5._triggerBackdropTransition();
           }
         });
       } else {
@@ -564,11 +566,7 @@
             return;
           }
 
-          if (_this8._config.backdrop === 'static') {
-            _this8._element.focus();
-          } else {
-            _this8.hide();
-          }
+          _this8._triggerBackdropTransition();
         });
 
         if (animate) {
@@ -605,6 +603,30 @@
       } else {
         callback();
       }
+    };
+
+    _proto._triggerBackdropTransition = function _triggerBackdropTransition() {
+      var _this9 = this;
+
+      if (this._config.backdrop === 'static') {
+        var hideEvent = EventHandler.trigger(this._element, Event.HIDE_PREVENTED);
+
+        if (hideEvent.defaultPrevented) {
+          return;
+        }
+
+        this._element.classList.add(ClassName.STATIC);
+
+        var modalTransitionDuration = getTransitionDurationFromElement(this._element);
+        EventHandler.one(this._element, TRANSITION_END, function () {
+          _this9._element.classList.remove(ClassName.STATIC);
+        });
+        emulateTransitionEnd(this._element, modalTransitionDuration);
+
+        this._element.focus();
+      } else {
+        this.hide();
+      }
     } // ----------------------------------------------------------------------
     // the following methods are used to handle overflowing modals
     // ----------------------------------------------------------------------
@@ -634,7 +656,7 @@
     };
 
     _proto._setScrollbar = function _setScrollbar() {
-      var _this9 = this;
+      var _this10 = this;
 
       if (this._isBodyOverflowing) {
         // Note: DOMNode.style.paddingRight returns the actual value or '' if not set
@@ -644,14 +666,14 @@
           var actualPadding = element.style.paddingRight;
           var calculatedPadding = window.getComputedStyle(element)['padding-right'];
           Manipulator.setDataAttribute(element, 'padding-right', actualPadding);
-          element.style.paddingRight = parseFloat(calculatedPadding) + _this9._scrollbarWidth + "px";
+          element.style.paddingRight = parseFloat(calculatedPadding) + _this10._scrollbarWidth + "px";
         }); // Adjust sticky content margin
 
         makeArray(SelectorEngine.find(Selector.STICKY_CONTENT)).forEach(function (element) {
           var actualMargin = element.style.marginRight;
           var calculatedMargin = window.getComputedStyle(element)['margin-right'];
           Manipulator.setDataAttribute(element, 'margin-right', actualMargin);
-          element.style.marginRight = parseFloat(calculatedMargin) - _this9._scrollbarWidth + "px";
+          element.style.marginRight = parseFloat(calculatedMargin) - _this10._scrollbarWidth + "px";
         }); // Adjust body padding
 
         var actualPadding = document.body.style.paddingRight;
@@ -752,7 +774,7 @@
 
 
   EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
-    var _this10 = this;
+    var _this11 = this;
 
     var target = getElementFromSelector(this);
 
@@ -767,8 +789,8 @@
       }
 
       EventHandler.one(target, Event.HIDDEN, function () {
-        if (isVisible(_this10)) {
-          _this10.focus();
+        if (isVisible(_this11)) {
+          _this11.focus();
         }
       });
     });
@@ -805,5 +827,5 @@
 
   return Modal;
 
-}));
+})));
 //# sourceMappingURL=modal.js.map

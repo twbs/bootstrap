@@ -7,7 +7,7 @@
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./dom/data.js'), require('./dom/event-handler.js'), require('./dom/manipulator.js'), require('./dom/selector-engine.js')) :
   typeof define === 'function' && define.amd ? define(['./dom/data.js', './dom/event-handler.js', './dom/manipulator.js', './dom/selector-engine.js'], factory) :
   (global = global || self, global.Carousel = factory(global.Data, global.EventHandler, global.Manipulator, global.SelectorEngine));
-}(this, function (Data, EventHandler, Manipulator, SelectorEngine) { 'use strict';
+}(this, (function (Data, EventHandler, Manipulator, SelectorEngine) { 'use strict';
 
   Data = Data && Data.hasOwnProperty('default') ? Data['default'] : Data;
   EventHandler = EventHandler && EventHandler.hasOwnProperty('default') ? EventHandler['default'] : EventHandler;
@@ -185,7 +185,9 @@
     }
 
     if (element.style && element.parentNode && element.parentNode.style) {
-      return element.style.display !== 'none' && element.parentNode.style.display !== 'none' && element.style.visibility !== 'hidden';
+      var elementStyle = getComputedStyle(element);
+      var parentNodeStyle = getComputedStyle(element.parentNode);
+      return elementStyle.display !== 'none' && parentNodeStyle.display !== 'none' && elementStyle.visibility !== 'hidden';
     }
 
     return false;
@@ -550,8 +552,6 @@
           event.preventDefault();
           this.next();
           break;
-
-        default:
       }
     };
 
@@ -823,5 +823,5 @@
 
   return Carousel;
 
-}));
+})));
 //# sourceMappingURL=carousel.js.map
