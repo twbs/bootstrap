@@ -1121,6 +1121,10 @@
   background-color: #343a40 !important;
 }
 
+.bg-body {
+  background-color: #fff !important;
+}
+
 .bg-white {
   background-color: #fff !important;
 }
