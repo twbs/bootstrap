@@ -333,6 +333,8 @@
       $tip.attr('id', tipId)
       this.$element.attr('aria-describedby', tipId)
 
+      if (this.options.tooltipClass) $tip.addClass(this.options.tooltipClass)
+
       if (this.options.animation) $tip.addClass('fade')
 
       var placement = typeof this.options.placement == 'function' ?
