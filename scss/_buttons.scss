@@ -11,6 +11,7 @@
   line-height: $btn-line-height;
   color: $body-color;
   text-align: center;
+  white-space: $btn-white-space;
   vertical-align: middle;
   cursor: if($enable-pointer-cursor-for-buttons, pointer, null);
   user-select: none;

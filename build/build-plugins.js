@@ -32,19 +32,19 @@ const bsPlugins = {
   Manipulator: path.resolve(__dirname, '../js/src/dom/manipulator.js'),
   Polyfill: path.resolve(__dirname, '../js/src/dom/polyfill.js'),
   SelectorEngine: path.resolve(__dirname, '../js/src/dom/selector-engine.js'),
-  Alert: path.resolve(__dirname, '../js/src/alert/alert.js'),
-  Button: path.resolve(__dirname, '../js/src/button/button.js'),
-  Carousel: path.resolve(__dirname, '../js/src/carousel/carousel.js'),
-  Collapse: path.resolve(__dirname, '../js/src/collapse/collapse.js'),
-  Dropdown: path.resolve(__dirname, '../js/src/dropdown/dropdown.js'),
-  Modal: path.resolve(__dirname, '../js/src/modal/modal.js'),
-  Popover: path.resolve(__dirname, '../js/src/popover/popover.js'),
-  ScrollSpy: path.resolve(__dirname, '../js/src/scrollspy/scrollspy.js'),
-  Tab: path.resolve(__dirname, '../js/src/tab/tab.js'),
-  Toast: path.resolve(__dirname, '../js/src/toast/toast.js'),
-  Tooltip: path.resolve(__dirname, '../js/src/tooltip/tooltip.js')
+  Alert: path.resolve(__dirname, '../js/src/alert.js'),
+  Button: path.resolve(__dirname, '../js/src/button.js'),
+  Carousel: path.resolve(__dirname, '../js/src/carousel.js'),
+  Collapse: path.resolve(__dirname, '../js/src/collapse.js'),
+  Dropdown: path.resolve(__dirname, '../js/src/dropdown.js'),
+  Modal: path.resolve(__dirname, '../js/src/modal.js'),
+  Popover: path.resolve(__dirname, '../js/src/popover.js'),
+  ScrollSpy: path.resolve(__dirname, '../js/src/scrollspy.js'),
+  Tab: path.resolve(__dirname, '../js/src/tab.js'),
+  Toast: path.resolve(__dirname, '../js/src/toast.js'),
+  Tooltip: path.resolve(__dirname, '../js/src/tooltip.js')
 }
-const rootPath = '../js/dist/'
+const rootPath = path.resolve(__dirname, '../js/dist/')
 
 const defaultPluginConfig = {
   external: [
@@ -172,7 +172,7 @@ function build(plugin) {
       name: plugin,
       sourcemap: true,
       globals,
-      file: path.resolve(__dirname, `${pluginPath}${pluginFilename}`)
+      file: path.resolve(__dirname, `${pluginPath}/${pluginFilename}`)
     })
       .then(() => console.log(`Building ${plugin} plugin... Done!`))
       .catch(error => console.error(`${plugin}: ${error}`))

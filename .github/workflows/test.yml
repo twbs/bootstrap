@@ -1,5 +1,7 @@
 name: Tests
 on: [push, pull_request]
+env:
+  CI: true
 
 jobs:
   run:
@@ -9,7 +11,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node: [8, 10, 12]
+        node: [10, 12]
 
     steps:
       - name: Clone repository
@@ -50,3 +52,4 @@ jobs:
         if: matrix.node == 10 && github.repository == 'twbs/bootstrap' && github.event_name == 'push'
         env:
           COVERALLS_REPO_TOKEN: "${{ secrets.COVERALLS_REPO_TOKEN }}"
+          COVERALLS_GIT_BRANCH: "${{ github.ref }}"

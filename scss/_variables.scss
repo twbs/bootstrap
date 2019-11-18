@@ -101,6 +101,108 @@ $yiq-contrasted-threshold:  150 !default;
 $yiq-text-dark:             $gray-900 !default;
 $yiq-text-light:            $white !default;
 
+// fusv-disable
+$blue-100: tint-color($blue, 8) !default;
+$blue-200: tint-color($blue, 6) !default;
+$blue-300: tint-color($blue, 4) !default;
+$blue-400: tint-color($blue, 2) !default;
+$blue-500: $blue !default;
+$blue-600: shade-color($blue, 2) !default;
+$blue-700: shade-color($blue, 4) !default;
+$blue-800: shade-color($blue, 6) !default;
+$blue-900: shade-color($blue, 8) !default;
+
+$indigo-100: tint-color($indigo, 8) !default;
+$indigo-200: tint-color($indigo, 6) !default;
+$indigo-300: tint-color($indigo, 4) !default;
+$indigo-400: tint-color($indigo, 2) !default;
+$indigo-500: $indigo !default;
+$indigo-600: shade-color($indigo, 2) !default;
+$indigo-700: shade-color($indigo, 4) !default;
+$indigo-800: shade-color($indigo, 6) !default;
+$indigo-900: shade-color($indigo, 8) !default;
+
+$purple-100: tint-color($purple, 8) !default;
+$purple-200: tint-color($purple, 6) !default;
+$purple-300: tint-color($purple, 4) !default;
+$purple-400: tint-color($purple, 2) !default;
+$purple-500: $purple !default;
+$purple-600: shade-color($purple, 2) !default;
+$purple-700: shade-color($purple, 4) !default;
+$purple-800: shade-color($purple, 6) !default;
+$purple-900: shade-color($purple, 8) !default;
+
+$pink-100: tint-color($pink, 8) !default;
+$pink-200: tint-color($pink, 6) !default;
+$pink-300: tint-color($pink, 4) !default;
+$pink-400: tint-color($pink, 2) !default;
+$pink-500: $pink !default;
+$pink-600: shade-color($pink, 2) !default;
+$pink-700: shade-color($pink, 4) !default;
+$pink-800: shade-color($pink, 6) !default;
+$pink-900: shade-color($pink, 8) !default;
+
+$red-100: tint-color($red, 8) !default;
+$red-200: tint-color($red, 6) !default;
+$red-300: tint-color($red, 4) !default;
+$red-400: tint-color($red, 2) !default;
+$red-500: $red !default;
+$red-600: shade-color($red, 2) !default;
+$red-700: shade-color($red, 4) !default;
+$red-800: shade-color($red, 6) !default;
+$red-900: shade-color($red, 8) !default;
+
+$orange-100: tint-color($orange, 8) !default;
+$orange-200: tint-color($orange, 6) !default;
+$orange-300: tint-color($orange, 4) !default;
+$orange-400: tint-color($orange, 2) !default;
+$orange-500: $orange !default;
+$orange-600: shade-color($orange, 2) !default;
+$orange-700: shade-color($orange, 4) !default;
+$orange-800: shade-color($orange, 6) !default;
+$orange-900: shade-color($orange, 8) !default;
+
+$yellow-100: tint-color($yellow, 8) !default;
+$yellow-200: tint-color($yellow, 6) !default;
+$yellow-300: tint-color($yellow, 4) !default;
+$yellow-400: tint-color($yellow, 2) !default;
+$yellow-500: $yellow !default;
+$yellow-600: shade-color($yellow, 2) !default;
+$yellow-700: shade-color($yellow, 4) !default;
+$yellow-800: shade-color($yellow, 6) !default;
+$yellow-900: shade-color($yellow, 8) !default;
+
+$green-100: tint-color($green, 8) !default;
+$green-200: tint-color($green, 6) !default;
+$green-300: tint-color($green, 4) !default;
+$green-400: tint-color($green, 2) !default;
+$green-500: $green !default;
+$green-600: shade-color($green, 2) !default;
+$green-700: shade-color($green, 4) !default;
+$green-800: shade-color($green, 6) !default;
+$green-900: shade-color($green, 8) !default;
+
+$teal-100: tint-color($teal, 8) !default;
+$teal-200: tint-color($teal, 6) !default;
+$teal-300: tint-color($teal, 4) !default;
+$teal-400: tint-color($teal, 2) !default;
+$teal-500: $teal !default;
+$teal-600: shade-color($teal, 2) !default;
+$teal-700: shade-color($teal, 4) !default;
+$teal-800: shade-color($teal, 6) !default;
+$teal-900: shade-color($teal, 8) !default;
+
+$cyan-100: tint-color($cyan, 8) !default;
+$cyan-200: tint-color($cyan, 6) !default;
+$cyan-300: tint-color($cyan, 4) !default;
+$cyan-400: tint-color($cyan, 2) !default;
+$cyan-500: $cyan !default;
+$cyan-600: shade-color($cyan, 2) !default;
+$cyan-700: shade-color($cyan, 4) !default;
+$cyan-800: shade-color($cyan, 6) !default;
+$cyan-900: shade-color($cyan, 8) !default;
+// fusv-enable
+
 // Characters which are escaped by the escape-svg function
 $escaped-characters: (
   ("<","%3c"),
@@ -227,9 +329,6 @@ $container-padding-x: $grid-gutter-width / 2 !default;
 //
 // Define common padding and border radius sizes and more.
 
-$line-height-sm:              1.25 !default;
-$line-height-lg:              2 !default;
-
 $border-width:                1px !default;
 $border-color:                $gray-300 !default;
 
@@ -303,7 +402,10 @@ $font-weight-bold:            700 !default;
 $font-weight-bolder:          bolder !default;
 
 $font-weight-base:            $font-weight-normal !default;
+
 $line-height-base:            1.5 !default;
+$line-height-lg:              2 !default;
+$line-height-sm:              1.25 !default;
 
 $h1-font-size:                $font-size-base * 2.5 !default;
 $h2-font-size:                $font-size-base * 2 !default;
@@ -439,6 +541,7 @@ $btn-padding-x:               $input-btn-padding-x !default;
 $btn-font-family:             $input-btn-font-family !default;
 $btn-font-size:               $input-btn-font-size !default;
 $btn-line-height:             $input-btn-line-height !default;
+$btn-white-space:             null !default; // Set to `nowrap` to prevent text wrapping
 
 $btn-padding-y-sm:            $input-btn-padding-y-sm !default;
 $btn-padding-x-sm:            $input-btn-padding-x-sm !default;
@@ -514,13 +617,13 @@ $input-plaintext-color:                 $body-color !default;
 
 $input-height-border:                   $input-border-width * 2 !default;
 
-$input-height-inner:                    calc(#{$input-line-height * 1em} + #{$input-padding-y * 2}) !default;
-$input-height-inner-half:               calc(#{$input-line-height * .5em} + #{$input-padding-y}) !default;
-$input-height-inner-quarter:            calc(#{$input-line-height * .25em} + #{$input-padding-y / 2}) !default;
+$input-height-inner:                    add($input-line-height * 1em, $input-padding-y * 2) !default;
+$input-height-inner-half:               add($input-line-height * .5em, $input-padding-y) !default;
+$input-height-inner-quarter:            add($input-line-height * .25em, $input-padding-y / 2) !default;
 
-$input-height:                          calc(#{$input-line-height * 1em} + #{$input-padding-y * 2} + #{$input-height-border}) !default;
-$input-height-sm:                       calc(#{$input-line-height * 1em} + #{$input-btn-padding-y-sm * 2} + #{$input-height-border}) !default;
-$input-height-lg:                       calc(#{$input-line-height * 1em} + #{$input-btn-padding-y-lg * 2} + #{$input-height-border}) !default;
+$input-height:                          add($input-line-height * 1em, add($input-padding-y * 2, $input-height-border, false)) !default;
+$input-height-sm:                       add($input-line-height * 1em, add($input-padding-y-sm * 2, $input-height-border, false)) !default;
+$input-height-lg:                       add($input-line-height * 1em, add($input-padding-y-lg * 2, $input-height-border, false)) !default;
 
 $input-transition:                      border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
 
@@ -529,6 +632,7 @@ $form-check-input-width:                  1.25em !default;
 $form-check-min-height:                   $font-size-base * $line-height-base !default;
 $form-check-padding-left:                 $form-check-input-width + .5em !default;
 $form-check-margin-bottom:                .125rem !default;
+$form-check-label-cursor:                 null !default;
 
 $form-check-input-active-filter:          brightness(90%) !default;
 
@@ -546,7 +650,7 @@ $form-check-input-checked-bg-repeat:      no-repeat !default;
 $form-check-input-checked-bg-position:    center center !default;
 $form-check-input-checked-bg-size:        1em !default;
 $form-check-input-checked-bg-image:       url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='#{$form-check-input-checked-color}' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M4 8.5L6.5 11l6-6'/></svg>") !default;
-$form-check-radio-checked-bg-image:       url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{$form-check-input-checked-color}'/></svg>") !default;
+$form-check-radio-checked-bg-image:       url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='2' fill='#{$form-check-input-checked-color}'/></svg>") !default;
 
 $form-check-input-indeterminate-color:          $component-active-color !default;
 $form-check-input-indeterminate-bg-color:       $component-active-bg !default;
@@ -558,9 +662,9 @@ $form-check-input-indeterminate-bg-image:       url("data:image/svg+xml,<svg xml
 
 $form-switch-color:               rgba(0, 0, 0, .25) !default;
 $form-switch-width:               2em !default;
-$form-switch-height:              $form-check-input-width !default;
 $form-switch-padding-left:        $form-switch-width + .5em !default;
 $form-switch-bg-image:            url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{$form-switch-color}'/></svg>") !default;
+$form-switch-bg-size:             contain !default;
 $form-switch-border-radius:       $form-switch-width !default;
 $form-switch-transition:          .2s ease-in-out !default;
 $form-switch-transition-property: background-position, background-color !default;
@@ -604,7 +708,7 @@ $form-select-indicator:             url("data:image/svg+xml,<svg xmlns='http://w
 
 $form-select-background:            no-repeat right $form-select-padding-x center / $form-select-bg-size !default; // Used so we can have multiple background elements (e.g., arrow and feedback icon)
 
-$form-select-feedback-icon-padding-right: calc((1em + #{2 * $form-select-padding-y}) * 3 / 4 + #{$form-select-padding-x + $form-select-indicator-padding}) !default;
+$form-select-feedback-icon-padding-right: add(1em * .75, (2 * $form-select-padding-y * .75) + $form-select-padding-x + $form-select-indicator-padding) !default;
 $form-select-feedback-icon-position:      center right ($form-select-padding-x + $form-select-indicator-padding) !default;
 $form-select-feedback-icon-size:          $input-height-inner-half $input-height-inner-half !default;
 
@@ -731,7 +835,7 @@ $nav-pills-link-active-bg:          $component-active-bg !default;
 // Navbar
 
 $navbar-padding-y:                  $spacer / 2 !default;
-$navbar-padding-x:                  $spacer !default;
+$navbar-padding-x:                  null !default;
 
 $navbar-nav-link-padding-x:         .5rem !default;
 
@@ -779,7 +883,7 @@ $dropdown-bg:                       $white !default;
 $dropdown-border-color:             rgba($black, .15) !default;
 $dropdown-border-radius:            $border-radius !default;
 $dropdown-border-width:             $border-width !default;
-$dropdown-inner-border-radius:      calc(#{$dropdown-border-radius} - #{$dropdown-border-width}) !default;
+$dropdown-inner-border-radius:      subtract($dropdown-border-radius, $dropdown-border-width) !default;
 $dropdown-divider-bg:               $gray-200 !default;
 $dropdown-divider-margin-y:         $spacer / 2 !default;
 $dropdown-box-shadow:               $box-shadow !default;
@@ -838,9 +942,10 @@ $card-spacer-x:                     1.25rem !default;
 $card-border-width:                 $border-width !default;
 $card-border-radius:                $border-radius !default;
 $card-border-color:                 rgba($black, .125) !default;
-$card-inner-border-radius:          calc(#{$card-border-radius} - #{$card-border-width}) !default;
+$card-inner-border-radius:          subtract($card-border-radius, $card-border-width) !default;
 $card-cap-bg:                       rgba($black, .03) !default;
 $card-cap-color:                    null !default;
+$card-height:                       null !default;
 $card-color:                        null !default;
 $card-bg:                           $white !default;
 
@@ -883,7 +988,7 @@ $popover-max-width:                 276px !default;
 $popover-border-width:              $border-width !default;
 $popover-border-color:              rgba($black, .2) !default;
 $popover-border-radius:             $border-radius-lg !default;
-$popover-inner-border-radius:       calc(#{$popover-border-radius} - #{$popover-border-width}) !default;
+$popover-inner-border-radius:       subtract($popover-border-radius, $popover-border-width) !default;
 $popover-box-shadow:                $box-shadow !default;
 
 $popover-header-bg:                 darken($popover-bg, 3%) !default;
@@ -948,7 +1053,7 @@ $modal-content-bg:                  $white !default;
 $modal-content-border-color:        rgba($black, .2) !default;
 $modal-content-border-width:        $border-width !default;
 $modal-content-border-radius:       $border-radius-lg !default;
-$modal-content-inner-border-radius: calc(#{$modal-content-border-radius} - #{$modal-content-border-width}) !default;
+$modal-content-inner-border-radius: subtract($modal-content-border-radius, $modal-content-border-width) !default;
 $modal-content-box-shadow-xs:       $box-shadow-sm !default;
 $modal-content-box-shadow-sm-up:    $box-shadow !default;
 
@@ -970,6 +1075,7 @@ $modal-sm:                          300px !default;
 $modal-fade-transform:              translate(0, -50px) !default;
 $modal-show-transform:              none !default;
 $modal-transition:                  transform .3s ease-out !default;
+$modal-scale-transform:             scale(1.02) !default;
 
 
 // Alerts
@@ -1045,6 +1151,8 @@ $figure-caption-color:              $gray-600 !default;
 
 // Breadcrumbs
 
+$breadcrumb-font-size:              null !default;
+
 $breadcrumb-padding-y:              .75rem !default;
 $breadcrumb-padding-x:              1rem !default;
 $breadcrumb-item-padding-x:         .5rem !default;
@@ -1078,6 +1186,8 @@ $carousel-indicator-transition:      opacity .6s ease !default;
 
 $carousel-caption-width:             70% !default;
 $carousel-caption-color:             $white !default;
+$carousel-caption-padding-y:         1.25rem !default;
+$carousel-caption-spacer:            1.25rem !default;
 
 $carousel-control-icon-width:        20px !default;
 

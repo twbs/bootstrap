@@ -1,0 +1,20 @@
+# https://dependabot.com/docs/config-file/
+version: 1
+update_configs:
+  # Keep package.json (& lockfiles) up to date as soon as
+  # new versions are published to the npm registry
+  - package_manager: "javascript"
+    directory: "/"
+    update_schedule: "weekly"
+    # Apply default reviewer and label to created pull requests
+    default_reviewers:
+      - "Johann-S"
+      - "XhmikosR"
+    default_labels:
+      - "dependencies"
+      - "v5"
+    version_requirement_updates: "increase_versions"
+    ignored_updates:
+      - match:
+          dependency_name: "karma-browserstack-launcher"
+          version_requirement: "1.5.1"

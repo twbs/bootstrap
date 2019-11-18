@@ -4,10 +4,10 @@
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
   */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('../dom/data.js'), require('../dom/selector-engine.js'), require('../tooltip/tooltip.js')) :
-  typeof define === 'function' && define.amd ? define(['../dom/data.js', '../dom/selector-engine.js', '../tooltip/tooltip.js'], factory) :
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./dom/data.js'), require('./dom/selector-engine.js'), require('./tooltip.js')) :
+  typeof define === 'function' && define.amd ? define(['./dom/data.js', './dom/selector-engine.js', './tooltip.js'], factory) :
   (global = global || self, global.Popover = factory(global.Data, global.SelectorEngine, global.Tooltip));
-}(this, function (Data, SelectorEngine, Tooltip) { 'use strict';
+}(this, (function (Data, SelectorEngine, Tooltip) { 'use strict';
 
   Data = Data && Data.hasOwnProperty('default') ? Data['default'] : Data;
   SelectorEngine = SelectorEngine && SelectorEngine.hasOwnProperty('default') ? SelectorEngine['default'] : SelectorEngine;
@@ -145,13 +145,12 @@
     FOCUSOUT: "focusout" + EVENT_KEY,
     MOUSEENTER: "mouseenter" + EVENT_KEY,
     MOUSELEAVE: "mouseleave" + EVENT_KEY
-    /**
-     * ------------------------------------------------------------------------
-     * Class Definition
-     * ------------------------------------------------------------------------
-     */
-
   };
+  /**
+   * ------------------------------------------------------------------------
+   * Class Definition
+   * ------------------------------------------------------------------------
+   */
 
   var Popover =
   /*#__PURE__*/
@@ -300,5 +299,5 @@
 
   return Popover;
 
-}));
+})));
 //# sourceMappingURL=popover.js.map

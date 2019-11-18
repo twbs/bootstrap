@@ -188,10 +188,10 @@
 .carousel-caption {
   position: absolute;
   right: (100% - $carousel-caption-width) / 2;
-  bottom: 20px;
+  bottom: $carousel-caption-spacer;
   left: (100% - $carousel-caption-width) / 2;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: $carousel-caption-padding-y;
+  padding-bottom: $carousel-caption-padding-y;
   color: $carousel-caption-color;
   text-align: center;
 }

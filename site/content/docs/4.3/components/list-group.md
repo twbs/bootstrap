@@ -198,6 +198,63 @@ Add nearly any HTML within, even for linked list groups like the one below, with
 </div>
 {{< /example >}}
 
+## Checkboxes and radios
+
+Place Bootstrap's checkboxes and radios within list group items and customize as needed. You can use them without `<label>`s, but please remember to include an `aria-label` attribute and value for accessibility.
+
+{{< example >}}
+<ul class="list-group">
+  <li class="list-group-item">
+    <input class="form-check-input float-left mr-2" type="checkbox" value="" aria-label="...">
+    Cras justo odio
+  </li>
+  <li class="list-group-item">
+    <input class="form-check-input float-left mr-2" type="checkbox" value="" aria-label="...">
+    Dapibus ac facilisis in
+  </li>
+  <li class="list-group-item">
+    <input class="form-check-input float-left mr-2" type="checkbox" value="" aria-label="...">
+    Morbi leo risus
+  </li>
+  <li class="list-group-item">
+    <input class="form-check-input float-left mr-2" type="checkbox" value="" aria-label="...">
+    Porta ac consectetur ac
+  </li>
+  <li class="list-group-item">
+    <input class="form-check-input float-left mr-2" type="checkbox" value="" aria-label="...">
+    Vestibulum at eros
+  </li>
+</ul>
+{{< /example >}}
+
+And if you want `<label>`s as the `.list-group-item` for large hit areas, you can do that, too.
+
+{{< example >}}
+<div class="list-group">
+  <label class="list-group-item">
+    <input class="form-check-input float-left mr-2" type="checkbox" value="">
+    Cras justo odio
+  </label>
+  <label class="list-group-item">
+    <input class="form-check-input float-left mr-2" type="checkbox" value="">
+    Dapibus ac facilisis in
+  </label>
+  <label class="list-group-item">
+    <input class="form-check-input float-left mr-2" type="checkbox" value="">
+    Morbi leo risus
+  </label>
+  <label class="list-group-item">
+    <input class="form-check-input float-left mr-2" type="checkbox" value="">
+    Porta ac consectetur ac
+  </label>
+  <label class="list-group-item">
+    <input class="form-check-input float-left mr-2" type="checkbox" value="">
+    Vestibulum at eros
+  </label>
+</div>
+{{< /example >}}
+
+
 ## JavaScript behavior
 
 Use the tab JavaScript plugin—include it individually or through the compiled `bootstrap.js` file—to extend our list group to create tabbable panes of local content.

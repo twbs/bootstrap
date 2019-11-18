@@ -7,7 +7,7 @@
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./polyfill.js')) :
   typeof define === 'function' && define.amd ? define(['./polyfill.js'], factory) :
   (global = global || self, global.SelectorEngine = factory(global.Polyfill));
-}(this, function (polyfill_js) { 'use strict';
+}(this, (function (polyfill_js) { 'use strict';
 
   /**
    * --------------------------------------------------------------------------
@@ -98,5 +98,5 @@
 
   return SelectorEngine;
 
-}));
+})));
 //# sourceMappingURL=selector-engine.js.map

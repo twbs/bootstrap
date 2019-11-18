@@ -98,7 +98,6 @@ var toType = function toType(obj) {
 
 var getUID = function getUID(prefix) {
   do {
-    // eslint-disable-next-line no-bitwise
     prefix += ~~(Math.random() * MAX_UID); // "~~" acts like a faster Math.floor() here
   } while (document.getElementById(prefix));
 
@@ -208,7 +207,9 @@ var isVisible = function isVisible(element) {
   }
 
   if (element.style && element.parentNode && element.parentNode.style) {
-    return element.style.display !== 'none' && element.parentNode.style.display !== 'none' && element.style.visibility !== 'hidden';
+    var elementStyle = getComputedStyle(element);
+    var parentNodeStyle = getComputedStyle(element.parentNode);
+    return elementStyle.display !== 'none' && parentNodeStyle.display !== 'none' && elementStyle.visibility !== 'hidden';
   }
 
   return false;
@@ -235,8 +236,7 @@ var findShadowRoot = function findShadowRoot(element) {
   }
 
   return findShadowRoot(element.parentNode);
-}; // eslint-disable-next-line no-empty-function
-
+};
 
 var noop = function noop() {
   return function () {};
@@ -415,7 +415,7 @@ var supportScopeQuery = function () {
 
   try {
     element.querySelectorAll(':scope *');
-  } catch (error) {
+  } catch (_) {
     return false;
   }
 
@@ -675,7 +675,7 @@ var EventHandler = {
 
     if (isNamespace) {
       Object.keys(events).forEach(function (elementEvent) {
-        removeNamespacedHandlers(element, events, elementEvent, originalTypeEvent.substr(1));
+        removeNamespacedHandlers(element, events, elementEvent, originalTypeEvent.slice(1));
       });
     }
 
@@ -851,13 +851,12 @@ var ClassName = {
   ALERT: 'alert',
   FADE: 'fade',
   SHOW: 'show'
-  /**
-   * ------------------------------------------------------------------------
-   * Class Definition
-   * ------------------------------------------------------------------------
-   */
-
 };
+/**
+ * ------------------------------------------------------------------------
+ * Class Definition
+ * ------------------------------------------------------------------------
+ */
 
 var Alert =
 /*#__PURE__*/
@@ -1030,13 +1029,12 @@ var Event$2 = {
   CLICK_DATA_API: "click" + EVENT_KEY$1 + DATA_API_KEY$1,
   FOCUS_DATA_API: "focus" + EVENT_KEY$1 + DATA_API_KEY$1,
   BLUR_DATA_API: "blur" + EVENT_KEY$1 + DATA_API_KEY$1
-  /**
-   * ------------------------------------------------------------------------
-   * Class Definition
-   * ------------------------------------------------------------------------
-   */
-
 };
+/**
+ * ------------------------------------------------------------------------
+ * Class Definition
+ * ------------------------------------------------------------------------
+ */
 
 var Button =
 /*#__PURE__*/
@@ -1211,7 +1209,7 @@ function normalizeData(val) {
 
 function normalizeDataKey(key) {
   return key.replace(/[A-Z]/g, function (chr) {
-    return chr.toLowerCase();
+    return "-" + chr.toLowerCase();
   });
 }
 
@@ -1342,13 +1340,12 @@ var Selector$2 = {
 var PointerType = {
   TOUCH: 'touch',
   PEN: 'pen'
-  /**
-   * ------------------------------------------------------------------------
-   * Class Definition
-   * ------------------------------------------------------------------------
-   */
-
 };
+/**
+ * ------------------------------------------------------------------------
+ * Class Definition
+ * ------------------------------------------------------------------------
+ */
 
 var Carousel =
 /*#__PURE__*/
@@ -1608,8 +1605,6 @@ function () {
         event.preventDefault();
         this.next();
         break;
-
-      default:
     }
   };
 
@@ -1918,13 +1913,12 @@ var Dimension = {
 var Selector$3 = {
   ACTIVES: '.show, .collapsing',
   DATA_TOGGLE: '[data-toggle="collapse"]'
-  /**
-   * ------------------------------------------------------------------------
-   * Class Definition
-   * ------------------------------------------------------------------------
-   */
-
 };
+/**
+ * ------------------------------------------------------------------------
+ * Class Definition
+ * ------------------------------------------------------------------------
+ */
 
 var Collapse =
 /*#__PURE__*/
@@ -2372,13 +2366,12 @@ var DefaultType$2 = {
   reference: '(string|element)',
   display: 'string',
   popperConfig: '(null|object)'
-  /**
-   * ------------------------------------------------------------------------
-   * Class Definition
-   * ------------------------------------------------------------------------
-   */
-
 };
+/**
+ * ------------------------------------------------------------------------
+ * Class Definition
+ * ------------------------------------------------------------------------
+ */
 
 var Dropdown =
 /*#__PURE__*/
@@ -2598,9 +2591,8 @@ function () {
         preventOverflow: {
           boundariesElement: this._config.boundary
         }
-      } // Disable Popper.js if we have a static display
-
-    };
+      }
+    }; // Disable Popper.js if we have a static display
 
     if (this._config.display === 'static') {
       popperConfig.modifiers.applyStyle = {
@@ -2729,7 +2721,7 @@ function () {
       return;
     }
 
-    var items = makeArray(SelectorEngine.find(Selector$4.VISIBLE_ITEMS, parent));
+    var items = makeArray(SelectorEngine.find(Selector$4.VISIBLE_ITEMS, parent)).filter(isVisible);
 
     if (!items.length) {
       return;
@@ -2844,6 +2836,7 @@ var DefaultType$3 = {
 };
 var Event$6 = {
   HIDE: "hide" + EVENT_KEY$5,
+  HIDE_PREVENTED: "hidePrevented" + EVENT_KEY$5,
   HIDDEN: "hidden" + EVENT_KEY$5,
   SHOW: "show" + EVENT_KEY$5,
   SHOWN: "shown" + EVENT_KEY$5,
@@ -2861,7 +2854,8 @@ var ClassName$5 = {
   BACKDROP: 'modal-backdrop',
   OPEN: 'modal-open',
   FADE: 'fade',
-  SHOW: 'show'
+  SHOW: 'show',
+  STATIC: 'modal-static'
 };
 var Selector$5 = {
   DIALOG: '.modal-dialog',
@@ -2870,13 +2864,12 @@ var Selector$5 = {
   DATA_DISMISS: '[data-dismiss="modal"]',
   FIXED_CONTENT: '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top',
   STICKY_CONTENT: '.sticky-top'
-  /**
-   * ------------------------------------------------------------------------
-   * Class Definition
-   * ------------------------------------------------------------------------
-   */
-
 };
+/**
+ * ------------------------------------------------------------------------
+ * Class Definition
+ * ------------------------------------------------------------------------
+ */
 
 var Modal =
 /*#__PURE__*/
@@ -3102,9 +3095,7 @@ function () {
     if (this._isShown && this._config.keyboard) {
       EventHandler.on(this._element, Event$6.KEYDOWN_DISMISS, function (event) {
         if (event.which === ESCAPE_KEYCODE$1) {
-          event.preventDefault();
-
-          _this5.hide();
+          _this5._triggerBackdropTransition();
         }
       });
     } else {
@@ -3176,11 +3167,7 @@ function () {
           return;
         }
 
-        if (_this8._config.backdrop === 'static') {
-          _this8._element.focus();
-        } else {
-          _this8.hide();
-        }
+        _this8._triggerBackdropTransition();
       });
 
       if (animate) {
@@ -3217,6 +3204,30 @@ function () {
     } else {
       callback();
     }
+  };
+
+  _proto._triggerBackdropTransition = function _triggerBackdropTransition() {
+    var _this9 = this;
+
+    if (this._config.backdrop === 'static') {
+      var hideEvent = EventHandler.trigger(this._element, Event$6.HIDE_PREVENTED);
+
+      if (hideEvent.defaultPrevented) {
+        return;
+      }
+
+      this._element.classList.add(ClassName$5.STATIC);
+
+      var modalTransitionDuration = getTransitionDurationFromElement(this._element);
+      EventHandler.one(this._element, TRANSITION_END, function () {
+        _this9._element.classList.remove(ClassName$5.STATIC);
+      });
+      emulateTransitionEnd(this._element, modalTransitionDuration);
+
+      this._element.focus();
+    } else {
+      this.hide();
+    }
   } // ----------------------------------------------------------------------
   // the following methods are used to handle overflowing modals
   // ----------------------------------------------------------------------
@@ -3246,7 +3257,7 @@ function () {
   };
 
   _proto._setScrollbar = function _setScrollbar() {
-    var _this9 = this;
+    var _this10 = this;
 
     if (this._isBodyOverflowing) {
       // Note: DOMNode.style.paddingRight returns the actual value or '' if not set
@@ -3256,14 +3267,14 @@ function () {
         var actualPadding = element.style.paddingRight;
         var calculatedPadding = window.getComputedStyle(element)['padding-right'];
         Manipulator.setDataAttribute(element, 'padding-right', actualPadding);
-        element.style.paddingRight = parseFloat(calculatedPadding) + _this9._scrollbarWidth + "px";
+        element.style.paddingRight = parseFloat(calculatedPadding) + _this10._scrollbarWidth + "px";
       }); // Adjust sticky content margin
 
       makeArray(SelectorEngine.find(Selector$5.STICKY_CONTENT)).forEach(function (element) {
         var actualMargin = element.style.marginRight;
         var calculatedMargin = window.getComputedStyle(element)['margin-right'];
         Manipulator.setDataAttribute(element, 'margin-right', actualMargin);
-        element.style.marginRight = parseFloat(calculatedMargin) - _this9._scrollbarWidth + "px";
+        element.style.marginRight = parseFloat(calculatedMargin) - _this10._scrollbarWidth + "px";
       }); // Adjust body padding
 
       var actualPadding = document.body.style.paddingRight;
@@ -3364,7 +3375,7 @@ function () {
 
 
 EventHandler.on(document, Event$6.CLICK_DATA_API, Selector$5.DATA_TOGGLE, function (event) {
-  var _this10 = this;
+  var _this11 = this;
 
   var target = getElementFromSelector(this);
 
@@ -3379,8 +3390,8 @@ EventHandler.on(document, Event$6.CLICK_DATA_API, Selector$5.DATA_TOGGLE, functi
     }
 
     EventHandler.one(target, Event$6.HIDDEN, function () {
-      if (isVisible(_this10)) {
-        _this10.focus();
+      if (isVisible(_this11)) {
+        _this11.focus();
       }
     });
   });
@@ -3620,13 +3631,12 @@ var Trigger = {
   FOCUS: 'focus',
   CLICK: 'click',
   MANUAL: 'manual'
-  /**
-   * ------------------------------------------------------------------------
-   * Class Definition
-   * ------------------------------------------------------------------------
-   */
-
 };
+/**
+ * ------------------------------------------------------------------------
+ * Class Definition
+ * ------------------------------------------------------------------------
+ */
 
 var Tooltip =
 /*#__PURE__*/
@@ -4336,13 +4346,12 @@ var Event$8 = {
   FOCUSOUT: "focusout" + EVENT_KEY$7,
   MOUSEENTER: "mouseenter" + EVENT_KEY$7,
   MOUSELEAVE: "mouseleave" + EVENT_KEY$7
-  /**
-   * ------------------------------------------------------------------------
-   * Class Definition
-   * ------------------------------------------------------------------------
-   */
-
 };
+/**
+ * ------------------------------------------------------------------------
+ * Class Definition
+ * ------------------------------------------------------------------------
+ */
 
 var Popover =
 /*#__PURE__*/
@@ -4531,13 +4540,12 @@ var Selector$8 = {
 var OffsetMethod = {
   OFFSET: 'offset',
   POSITION: 'position'
-  /**
-   * ------------------------------------------------------------------------
-   * Class Definition
-   * ------------------------------------------------------------------------
-   */
-
 };
+/**
+ * ------------------------------------------------------------------------
+ * Class Definition
+ * ------------------------------------------------------------------------
+ */
 
 var ScrollSpy =
 /*#__PURE__*/
@@ -4838,13 +4846,12 @@ var Selector$9 = {
   DATA_TOGGLE: '[data-toggle="tab"], [data-toggle="pill"], [data-toggle="list"]',
   DROPDOWN_TOGGLE: '.dropdown-toggle',
   DROPDOWN_ACTIVE_CHILD: ':scope > .dropdown-menu .active'
-  /**
-   * ------------------------------------------------------------------------
-   * Class Definition
-   * ------------------------------------------------------------------------
-   */
-
 };
+/**
+ * ------------------------------------------------------------------------
+ * Class Definition
+ * ------------------------------------------------------------------------
+ */
 
 var Tab =
 /*#__PURE__*/
@@ -5075,13 +5082,12 @@ var Default$7 = {
 };
 var Selector$a = {
   DATA_DISMISS: '[data-dismiss="toast"]'
-  /**
-   * ------------------------------------------------------------------------
-   * Class Definition
-   * ------------------------------------------------------------------------
-   */
-
 };
+/**
+ * ------------------------------------------------------------------------
+ * Class Definition
+ * ------------------------------------------------------------------------
+ */
 
 var Toast =
 /*#__PURE__*/

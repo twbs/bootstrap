@@ -7,7 +7,7 @@
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
   typeof define === 'function' && define.amd ? define(['exports'], factory) :
   (global = global || self, factory(global.Polyfill = {}));
-}(this, function (exports) { 'use strict';
+}(this, (function (exports) { 'use strict';
 
   /**
    * --------------------------------------------------------------------------
@@ -25,7 +25,6 @@
 
   var getUID = function getUID(prefix) {
     do {
-      // eslint-disable-next-line no-bitwise
       prefix += ~~(Math.random() * MAX_UID); // "~~" acts like a faster Math.floor() here
     } while (document.getElementById(prefix));
 
@@ -123,7 +122,7 @@
 
     try {
       element.querySelectorAll(':scope *');
-    } catch (error) {
+    } catch (_) {
       return false;
     }
 
@@ -175,5 +174,5 @@
 
   Object.defineProperty(exports, '__esModule', { value: true });
 
-}));
+})));
 //# sourceMappingURL=polyfill.js.map
