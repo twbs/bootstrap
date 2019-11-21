@@ -355,16 +355,6 @@
     <h4>Vertical clipping/truncation</h4>
     <p>Responsive tables make use of <code>overflow-y: hidden</code>, which clips off any content that goes beyond the bottom or top edges of the table. In particular, this can clip off dropdown menus and other third-party widgets.</p>
   </div>
-  <div class="bs-callout bs-callout-warning" id="callout-tables-responsive-ff-fieldset">
-    <h4>Firefox and fieldsets</h4>
-    <p>Firefox has some awkward fieldset styling involving <code>width</code> that interferes with the responsive table. This cannot be overridden without a Firefox-specific hack that we <strong>don't</strong> provide in Bootstrap:</p>
-{% highlight css %}
-@-moz-document url-prefix() {
-  fieldset { display: table-cell; }
-}
-{% endhighlight %}
-    <p>For more information, read <a href="https://stackoverflow.com/questions/17408815/fieldset-resizes-wrong-appears-to-have-unremovable-min-width-min-content/17863685#17863685">this Stack Overflow answer</a>.</p>
-  </div>
 
   <div class="bs-example" data-example-id="simple-responsive-table">
     <div class="table-responsive">
