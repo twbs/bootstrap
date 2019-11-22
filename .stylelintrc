@@ -12,10 +12,10 @@
       "transition"
     ],
     "function-blacklist": ["calc"],
-    'scss/dollar-variable-default': [
+    "scss/dollar-variable-default": [
       true,
       {
-        'ignore': 'local'
+        "ignore": "local"
       }
     ]
   }
