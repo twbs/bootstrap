@@ -117,7 +117,7 @@
     "karma-rollup-preprocessor": "^7.0.2",
     "linkinator": "^1.8.0",
     "node-sass": "^4.13.0",
-    "nodemon": "^2.0.0",
+    "nodemon": "^2.0.1",
     "npm-run-all": "^4.1.5",
     "popper.js": "^1.16.0",
     "postcss-cli": "^6.1.3",
