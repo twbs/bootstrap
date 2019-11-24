@@ -14,7 +14,7 @@ The mechanism automatically calculates the appropriate values based on the dimen
 
 ## Using RFS
 
-The mixins are included in Bootstrap and are available once you include Bootstraps' `scss`. RFS can also be installed [standalone](https://github.com/twbs/rfs/tree/v{{< param "rfs_version" >}}#installation) if needed.
+The mixins are included in Bootstrap and are available once you include Bootstrap's `scss`. RFS can also be [installed standalone](https://github.com/twbs/rfs/tree/v{{< param "rfs_version" >}}#installation) if needed.
 
 ### Using the mixins
 
@@ -56,10 +56,12 @@ Any other property can be passed to the `rfs()` mixin like this:
 
 ### Using the functions
 
+When you don't want to use the includes, there are also two functions:
+
 - `rfs-value()` converts a value into a `rem` value if a `px` value is passed, in other cases it returns the same result.
 - `rfs-fluid-value()` returns the fluid version of a value if the property needs rescaling.
 
-In this example we use one of Bootstrap's built-in [responsive breakpoint mixins]({{< docsref "/layout/overview#responsive-breakpoints" >}}) to only apply styling below the `lg` breakpoint.
+In this example, we use one of Bootstrap's built-in [responsive breakpoint mixins]({{< docsref "/layout/overview#responsive-breakpoints" >}}) to only apply styling below the `lg` breakpoint.
 
 ```scss
 .selector {
