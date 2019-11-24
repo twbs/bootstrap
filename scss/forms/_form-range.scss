@@ -6,7 +6,7 @@
 
 .form-range {
   width: 100%;
-  height: calc(#{$form-range-thumb-height} + #{$form-range-thumb-focus-box-shadow-width * 2});
+  height: add($form-range-thumb-height, $form-range-thumb-focus-box-shadow-width * 2);
   padding: 0; // Need to reset padding
   background-color: transparent;
   appearance: none;

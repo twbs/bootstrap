@@ -1292,6 +1292,43 @@ describe('Dropdown', () => {
       triggerDropdown.click()
     })
 
+    it('should skip hidden element when using keyboard navigation', done => {
+      fixtureEl.innerHTML = [
+        '<style>',
+        '  .d-none {',
+        '    display: none;',
+        '  }',
+        '</style>',
+        '<div class="dropdown">',
+        '  <button href="#" class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <div class="dropdown-menu">',
+        '    <button class="dropdown-item d-none" type="button">Hidden button by class</button>',
+        '    <a class="dropdown-item" href="#sub1" style="display: none">Hidden link</a>',
+        '    <a class="dropdown-item" href="#sub1" style="visibility: hidden">Hidden link</a>',
+        '    <a id="item1" class="dropdown-item" href="#">Another link</a>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const triggerDropdown = fixtureEl.querySelector('[data-toggle="dropdown"]')
+      const dropdown = fixtureEl.querySelector('.dropdown')
+
+      dropdown.addEventListener('shown.bs.dropdown', () => {
+        const keyDown = createEvent('keydown')
+        keyDown.which = 40
+
+        triggerDropdown.dispatchEvent(keyDown)
+
+        expect(document.activeElement.classList.contains('d-none')).toEqual(false, '.d-none not focused')
+        expect(document.activeElement.style.display === 'none').toEqual(false, '"display: none" not focused')
+        expect(document.activeElement.style.visibility === 'hidden').toEqual(false, '"visibility: hidden" not focused')
+
+        done()
+      })
+
+      triggerDropdown.click()
+    })
+
     it('should focus next/previous element when using keyboard navigation', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',

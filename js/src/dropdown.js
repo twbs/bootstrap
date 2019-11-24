@@ -9,6 +9,7 @@ import {
   getjQuery,
   getElementFromSelector,
   isElement,
+  isVisible,
   makeArray,
   noop,
   typeCheckConfig
@@ -478,6 +479,7 @@ class Dropdown {
     }
 
     const items = makeArray(SelectorEngine.find(Selector.VISIBLE_ITEMS, parent))
+      .filter(isVisible)
 
     if (!items.length) {
       return

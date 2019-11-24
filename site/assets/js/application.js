@@ -156,12 +156,10 @@
     var fallbackMsg = 'Press ' + modifierKey + 'C to copy'
     var tooltipBtn = bootstrap.Tooltip.getInstance(e.trigger)
 
-    e.trigger.setAttribute('title', fallbackMsg)
-    tooltipBtn._fixTitle()
+    e.trigger.setAttribute('data-original-title', fallbackMsg)
     tooltipBtn.show()
 
-    e.trigger.setAttribute('title', 'Copy to clipboard')
-    tooltipBtn._fixTitle()
+    e.trigger.setAttribute('data-original-title', 'Copy to clipboard')
   })
 
   anchors.options = {

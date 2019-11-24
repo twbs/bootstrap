@@ -540,6 +540,33 @@ describe('Modal', () => {
       modal.show()
     })
 
+    it('should not close modal when clicking outside of modal-content if backdrop = static', done => {
+      fixtureEl.innerHTML = '<div class="modal" data-backdrop="static" ><div class="modal-dialog" /></div>'
+
+      const modalEl = fixtureEl.querySelector('.modal')
+      const modal = new Modal(modalEl, {
+        backdrop: 'static'
+      })
+
+      const shownCallback = () => {
+        setTimeout(() => {
+          expect(modal._isShown).toEqual(true)
+          done()
+        }, 10)
+      }
+
+      modalEl.addEventListener('shown.bs.modal', () => {
+        modalEl.click()
+        shownCallback()
+      })
+
+      modalEl.addEventListener('hidden.bs.modal', () => {
+        throw new Error('Should not hide a modal')
+      })
+
+      modal.show()
+    })
+
     it('should not adjust the inline body padding when it does not overflow', done => {
       fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog" /></div>'
 

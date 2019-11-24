@@ -41,9 +41,7 @@
       }
 
       .col#{$infix}-auto {
-        flex: 0 0 auto;
-        width: auto;
-        max-width: 100%; // Reset earlier grid tiers
+        @include make-col-auto();
       }
 
       @for $i from 1 through $columns {
