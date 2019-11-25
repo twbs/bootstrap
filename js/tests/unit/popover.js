@@ -468,4 +468,20 @@ $(function () {
 
     $popover.trigger($.Event('click'))
   })
+
+  QUnit.test('popover should allow empty title with html at true', function (assert) {
+    assert.expect(1)
+    var title = null
+    var $popover = $('<a href="#">Bootstrap</a>')
+      .appendTo('#qunit-fixture')
+      .bootstrapPopover({
+        html: true,
+        title: title,
+        trigger: 'manual'
+      })
+
+    var popover = $popover.data('bs.popover')
+
+    assert.strictEqual(popover.config.title, '')
+  })
 })

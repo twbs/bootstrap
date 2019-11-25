@@ -90,8 +90,8 @@ function allowedAttribute(attr, allowedAttributeList) {
 }
 
 export function sanitizeHtml(unsafeHtml, whiteList, sanitizeFn) {
-  if (unsafeHtml.length === 0) {
-    return unsafeHtml
+  if (!unsafeHtml || !unsafeHtml.length) {
+    return unsafeHtml || ''
   }
 
   if (sanitizeFn && typeof sanitizeFn === 'function') {
