@@ -48,8 +48,8 @@ jobs:
           BROWSER_STACK_USERNAME: "${{ secrets.BROWSER_STACK_USERNAME }}"
 
       - name: Run Coveralls
-        run: npm run coveralls
-        if: matrix.node == 10 && github.repository == 'twbs/bootstrap' && github.event_name == 'push'
-        env:
-          COVERALLS_REPO_TOKEN: "${{ secrets.COVERALLS_REPO_TOKEN }}"
-          COVERALLS_GIT_BRANCH: "${{ github.ref }}"
+        uses: coverallsapp/github-action@master
+        if: matrix.node == 10
+        with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+          path-to-lcov: "./js/coverage/lcov.info"
