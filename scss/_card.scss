@@ -254,6 +254,10 @@
       @include border-top-radius(0);
     }
 
+    &:last-of-type {
+      border-bottom: $card-border-width solid $card-border-color;
+    }
+
     > .card-header {
       @include border-radius(0);
       margin-bottom: -$card-border-width;
