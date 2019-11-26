@@ -23,7 +23,7 @@
       box-shadow: $input-focus-box-shadow;
     }
   }
-  @include deprecate("The `form-control-focus()` mixin", "v4.3.1", "v5", $ignore-warning);
+  @include deprecate("The `form-control-focus()` mixin", "v4.4.0", "v5", $ignore-warning);
 }
 
 // This mixin uses an `if()` technique to be compatible with Dart Sass

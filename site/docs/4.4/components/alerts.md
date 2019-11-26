@@ -5,7 +5,7 @@ description: Provide contextual feedback messages for typical user actions with 
 group: components
 redirect_from:
   - "/components/"
-  - "/docs/4.3/components/"
+  - "/docs/4.4/components/"
 toc: true
 ---
 
