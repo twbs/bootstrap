@@ -135,13 +135,25 @@ Styling for common inline HTML5 elements.
 {{< example >}}
 <p>You can use the mark tag to <mark>highlight</mark> text.</p>
 <p><del>This line of text is meant to be treated as deleted text.</del></p>
+<p><s>This line of text is meant to be treated as no longer accurate.</s></p>
 <p><ins>This line of text is meant to be treated as an addition to the document.</ins></p>
+<p><u>This line of text will render as underlined</u></p>
 <p><small>This line of text is meant to be treated as fine print.</small></p>
 <p><strong>This line rendered as bold text.</strong></p>
 <p><em>This line rendered as italicized text.</em></p>
 {{< /example >}}
 
-`.mark` and `.small` classes are also available to apply the same styles as `<mark>` and `<small>` while avoiding any unwanted semantic implications that the tags would bring.
+Beware that those tags should be use for semantic purpose: 
+`<mark>` represents text which is marked or highlighted for reference or notation purposes.
+`<small>` represents side-comments and small print, like copyright and legal text.
+`<s>` represents element that are no longer relevant or no longer accurate.
+`<u>` represents a span of inline text which should be rendered in a way that indicates that it has a non-textual annotation.
+
+If you want to style your text, you should use those css classes instead:
+`.mark` will apply the same styles as `<mark>`.
+`.small` will apply the same styles as `<small>`.
+`.text-decoration-underline` will apply the same styles as `<u>`.
+`.text-decoration-line-through` will apply the same styles as `<s>`.
 
 While not shown above, feel free to use `<b>` and `<i>` in HTML5. `<b>` is meant to highlight words or phrases without conveying additional importance while `<i>` is mostly for voice, technical terms, etc.
 
