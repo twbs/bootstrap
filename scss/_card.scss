@@ -254,9 +254,13 @@
       @include border-top-radius(0);
     }
 
+    &:first-of-type {
+      @include border-top-radius($card-border-radius);
+    }
+
     &:last-of-type {
       border-bottom: $card-border-width solid $card-border-color;
-      @include border-radius($card-border-radius);
+      @include border-bottom-radius($card-border-radius);
     }
 
     > .card-header {
