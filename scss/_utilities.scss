@@ -426,7 +426,7 @@ $utilities: map-merge(
     ),
     "text-decoration": (
       property: text-decoration,
-      values: none
+      values: none underline line-through
     ),
     "font-style": (
       property: font-style,

@@ -109,8 +109,10 @@ Reset a text or link's color with `.text-reset`, so that it inherits the color f
 
 ## Text decoration
 
-Remove a text decoration with a `.text-decoration-none` class.
+Decorate text in components with text decoration classes.
 
 {{< example >}}
-<a href="#" class="text-decoration-none">Non-underlined link</a>
+<p class="text-decoration-underline">This text has a line underneath it.</p>
+<p class="text-decoration-line-through">This text has a line going through it.</p>
+<a href="#" class="text-decoration-none">This link has its text decoration removed</a>
 {{< /example >}}
