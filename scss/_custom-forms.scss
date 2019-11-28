@@ -54,9 +54,9 @@
     @include box-shadow($custom-control-indicator-active-box-shadow);
   }
 
-  // Use disabled attribute instead of :disabled pseudo-class
-  // Workaround for: https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/11295231
-  &[disabled] {
+  // Use [disabled] and :disabled to work around https://github.com/twbs/bootstrap/issues/28247
+  &[disabled],
+  &:disabled {
     ~ .custom-control-label {
       color: $custom-control-label-disabled-color;
 
@@ -319,9 +319,9 @@
     box-shadow: $custom-file-focus-box-shadow;
   }
 
-  // Use disabled attribute instead of :disabled pseudo-class
-  // Workaround for: https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/11295231
-  &[disabled] ~ .custom-file-label {
+  // Use [disabled] and :disabled to work around https://github.com/twbs/bootstrap/issues/28247
+  &[disabled] ~ .custom-file-label,
+  &:disabled ~ .custom-file-label {
     background-color: $custom-file-disabled-bg;
   }
 
