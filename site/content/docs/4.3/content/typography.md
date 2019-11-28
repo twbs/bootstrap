@@ -143,13 +143,25 @@ Styling for common inline HTML5 elements.
 <p><em>This line rendered as italicized text.</em></p>
 {{< /example >}}
 
-`.mark` and `.small` classes are also available to apply the same styles as `<mark>` and `<small>` while avoiding any unwanted semantic implications that the tags would bring.
+Beware that those tags should be used for semantic purpose:
 
-While not shown above, feel free to use `<b>` and `<i>` in HTML5. `<b>` is meant to highlight words or phrases without conveying additional importance while `<i>` is mostly for voice, technical terms, etc.
+* `<mark>` represents text which is marked or highlighted for reference or notation purposes.
+* `<small>` represents side-comments and small print, like copyright and legal text.
+* `<s>` represents element that are no longer relevant or no longer accurate.
+* `<u>` represents a span of inline text which should be rendered in a way that indicates that it has a non-textual annotation.
+
+If you want to style your text, you should use the following classes instead:
+
+* `.mark` will apply the same styles as `<mark>`.
+* `.small` will apply the same styles as `<small>`.
+* `.text-decoration-underline` will apply the same styles as `<u>`.
+* `.text-decoration-line-through` will apply the same styles as `<s>`.
+
+While not shown above, feel free to use `<b>` and `<i>` in HTML5. `<b>` is meant to highlight words or phrases without conveying additional importance, while `<i>` is mostly for voice, technical terms, etc.
 
 ## Text utilities
 
-Change text alignment, transform, style, weight, line-height and color with our [text utilities]({{< docsref "/utilities/text" >}}) and [color utilities]({{< docsref "/utilities/colors" >}}).
+Change text alignment, transform, style, weight, line-height, decoration and color with our [text utilities]({{< docsref "/utilities/text" >}}) and [color utilities]({{< docsref "/utilities/colors" >}}).
 
 ## Abbreviations
 
