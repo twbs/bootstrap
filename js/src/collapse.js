@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.4.0): collapse.js
+ * Bootstrap (v4.4.1): collapse.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -15,7 +15,7 @@ import Util from './util'
  */
 
 const NAME                = 'collapse'
-const VERSION             = '4.4.0'
+const VERSION             = '4.4.1'
 const DATA_KEY            = 'bs.collapse'
 const EVENT_KEY           = `.${DATA_KEY}`
 const DATA_API_KEY        = '.data-api'
