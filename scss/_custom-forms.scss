@@ -54,7 +54,7 @@
     @include box-shadow($custom-control-indicator-active-box-shadow);
   }
 
-  // Use [disabled] and :disabled for workaround https://github.com/twbs/bootstrap/issues/28247
+  // Use [disabled] and :disabled to work around https://github.com/twbs/bootstrap/issues/28247
   &[disabled],
   &:disabled {
     ~ .custom-control-label {
@@ -319,7 +319,7 @@
     box-shadow: $custom-file-focus-box-shadow;
   }
 
-  // Use [disabled] and :disabled for workaround https://github.com/twbs/bootstrap/issues/28247
+  // Use [disabled] and :disabled to work around https://github.com/twbs/bootstrap/issues/28247
   &[disabled] ~ .custom-file-label,
   &:disabled ~ .custom-file-label {
     background-color: $custom-file-disabled-bg;
