@@ -9,7 +9,7 @@
 {{- end }}
 
 {{- $vendor := resources.Match "js/vendor/*.js" -}}
-{{- $js := resources.Match "js/src/*.js" -}}
+{{- $js := resources.Match "js/*.js" -}}
 {{- $targetDocsJSPath := printf "/docs/%s/assets/js/docs.js" .Site.Params.docs_version -}}
 {{- $docsJs := append $js $vendor | resources.Concat $targetDocsJSPath -}}
 
