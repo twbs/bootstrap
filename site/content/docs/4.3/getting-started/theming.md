@@ -412,6 +412,27 @@ These Sass loops aren't limited to color maps, either. You can also generate res
 
 Should you need to modify your `$grid-breakpoints`, your changes will apply to all the loops iterating over that map.
 
+## Dark Mode
+
+If you are ready to implement a dark theme (or light theme), then two easy-to-use mixins are provided for your convenience: `dark-scheme()` and `light-scheme()`. They use WebKit's experiemental [`prefers-color-scheme`](https://caniuse.com/#feat=prefers-color-scheme) media directive to detect system color scheme preference (e.g. Dark Mode on iOS 13 or macOS Mojave). This doesn't work in IE and Edge <= 18.
+
+{{< highlight scss >}}
+// Default styles.
+// These styles outside apply to dark or light mode users, as well as users that don't support prefers-color-scheme.
+
+@include dark-scheme() {
+  // These styles only apply to users in dark mode.
+}
+
+@include light-scheme() {
+  // These styles only apply to users in light mode.
+  // These styles will not apply to users
+  // that don't support prefers-color-scheme.
+}
+{{< /highlight >}}
+
+Note that `light-scheme()` should only be used when the default theme is dark, and `dark-scheme()` should only be used when the default theme is light. Any styles put inside these mixins will only be effective when the user is in the respective light or dark mode.
+
 ## CSS variables
 
 Bootstrap 4 includes around two dozen [CSS custom properties (variables)](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) in its compiled CSS. These provide easy access to commonly used values like our theme colors, breakpoints, and primary font stacks when working in your browser's Inspector, a code sandbox, or general prototyping.
