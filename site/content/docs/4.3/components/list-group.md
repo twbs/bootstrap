@@ -205,23 +205,23 @@ Place Bootstrap's checkboxes and radios within list group items and customize as
 {{< example >}}
 <ul class="list-group">
   <li class="list-group-item">
-    <input class="form-check-input float-left mr-2" type="checkbox" value="" aria-label="...">
+    <input class="form-check-input mr-1" type="checkbox" value="" aria-label="...">
     Cras justo odio
   </li>
   <li class="list-group-item">
-    <input class="form-check-input float-left mr-2" type="checkbox" value="" aria-label="...">
+    <input class="form-check-input mr-1" type="checkbox" value="" aria-label="...">
     Dapibus ac facilisis in
   </li>
   <li class="list-group-item">
-    <input class="form-check-input float-left mr-2" type="checkbox" value="" aria-label="...">
+    <input class="form-check-input mr-1" type="checkbox" value="" aria-label="...">
     Morbi leo risus
   </li>
   <li class="list-group-item">
-    <input class="form-check-input float-left mr-2" type="checkbox" value="" aria-label="...">
+    <input class="form-check-input mr-1" type="checkbox" value="" aria-label="...">
     Porta ac consectetur ac
   </li>
   <li class="list-group-item">
-    <input class="form-check-input float-left mr-2" type="checkbox" value="" aria-label="...">
+    <input class="form-check-input mr-1" type="checkbox" value="" aria-label="...">
     Vestibulum at eros
   </li>
 </ul>
@@ -232,23 +232,23 @@ And if you want `<label>`s as the `.list-group-item` for large hit areas, you ca
 {{< example >}}
 <div class="list-group">
   <label class="list-group-item">
-    <input class="form-check-input float-left mr-2" type="checkbox" value="">
+    <input class="form-check-input mr-1" type="checkbox" value="">
     Cras justo odio
   </label>
   <label class="list-group-item">
-    <input class="form-check-input float-left mr-2" type="checkbox" value="">
+    <input class="form-check-input mr-1" type="checkbox" value="">
     Dapibus ac facilisis in
   </label>
   <label class="list-group-item">
-    <input class="form-check-input float-left mr-2" type="checkbox" value="">
+    <input class="form-check-input mr-1" type="checkbox" value="">
     Morbi leo risus
   </label>
   <label class="list-group-item">
-    <input class="form-check-input float-left mr-2" type="checkbox" value="">
+    <input class="form-check-input mr-1" type="checkbox" value="">
     Porta ac consectetur ac
   </label>
   <label class="list-group-item">
-    <input class="form-check-input float-left mr-2" type="checkbox" value="">
+    <input class="form-check-input mr-1" type="checkbox" value="">
     Vestibulum at eros
   </label>
 </div>
