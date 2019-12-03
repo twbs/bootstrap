@@ -82,7 +82,9 @@ fieldset:disabled a.btn {
   color: $btn-link-color;
   text-decoration: $link-decoration;
 
-  &:hover {
+  &:hover,
+  &:active,
+  &.active {
     color: $btn-link-hover-color;
     text-decoration: $link-hover-decoration;
   }
