@@ -4,7 +4,7 @@
     {{ partial "header" . }}
   </head>
   <body>
-    {{ partial "skippy" . }}
+    {{ partialCached "skippy" . }}
 
     {{ partial "docs-navbar" . }}
 
@@ -15,7 +15,7 @@
 
     {{ .Content }}
 
-    {{ partial "footer" . }}
+    {{ partialCached "footer" . }}
     {{ partial "scripts" . }}
   </body>
 </html>

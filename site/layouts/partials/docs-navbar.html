@@ -1,7 +1,7 @@
 <header class="navbar navbar-expand-md navbar-dark bd-navbar">
   <nav class="container-xxl flex-wrap flex-md-nowrap" aria-label="Main navigation">
     <a class="navbar-brand p-0 mr-2" href="/" aria-label="Bootstrap">
-      {{ partial "icons/bootstrap-white-fill.svg" (dict "class" "d-block my-1" "width" "40" "height" "32") }}
+      {{ partialCached "icons/bootstrap-white-fill.svg" (dict "class" "d-block my-1" "width" "40" "height" "32") }}
     </a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,25 +37,25 @@
       <ul class="navbar-nav flex-row flex-wrap ml-md-auto">
         <li class="nav-item col-6 col-md-auto">
           <a class="nav-link p-2" href="{{ .Site.Params.github_org }}" target="_blank" rel="noopener">
-            {{ partial "icons/github.svg" (dict "class" "navbar-nav-svg d-inline-block align-text-top" "width" "36" "height" "36") }}
+            {{ partialCached "icons/github.svg" (dict "class" "navbar-nav-svg d-inline-block align-text-top" "width" "36" "height" "36") }}
             <small class="d-md-none ml-2">GitHub</small>
           </a>
         </li>
         <li class="nav-item col-6 col-md-auto">
           <a class="nav-link p-2" href="https://twitter.com/{{ .Site.Params.twitter }}" target="_blank" rel="noopener">
-            {{ partial "icons/twitter.svg" (dict "class" "navbar-nav-svg d-inline-block align-text-top" "width" "36" "height" "36") }}
+            {{ partialCached "icons/twitter.svg" (dict "class" "navbar-nav-svg d-inline-block align-text-top" "width" "36" "height" "36") }}
             <small class="d-md-none ml-2">Twitter</small>
           </a>
         </li>
         <li class="nav-item col-6 col-md-auto">
           <a class="nav-link p-2" href="{{ .Site.Params.slack }}" target="_blank" rel="noopener">
-            {{ partial "icons/slack.svg" (dict "class" "navbar-nav-svg d-inline-block align-text-top" "width" "36" "height" "36") }}
+            {{ partialCached "icons/slack.svg" (dict "class" "navbar-nav-svg d-inline-block align-text-top" "width" "36" "height" "36") }}
             <small class="d-md-none ml-2">Slack</small>
           </a>
         </li>
         <li class="nav-item col-6 col-md-auto">
           <a class="nav-link p-2" href="{{ .Site.Params.opencollective }}" target="_blank" rel="noopener">
-            {{ partial "icons/opencollective.svg" (dict "class" "navbar-nav-svg d-inline-block align-text-top" "width" "36" "height" "36") }}
+            {{ partialCached "icons/opencollective.svg" (dict "class" "navbar-nav-svg d-inline-block align-text-top" "width" "36" "height" "36") }}
             <small class="d-md-none ml-2">Open Collective</small>
           </a>
         </li>

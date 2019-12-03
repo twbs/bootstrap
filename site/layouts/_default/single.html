@@ -4,7 +4,7 @@
     {{ partial "header" . }}
   </head>
   <body>
-    {{ partial "skippy" . }}
+    {{ partialCached "skippy" . }}
 
     {{ partial "docs-navbar" . }}
 
@@ -18,7 +18,7 @@
           <a href="{{ .Site.Params.download.source }}" class="btn btn-lg btn-outline-secondary mt-3 mt-sm-0 ml-sm-3" onclick="ga('send', 'event', 'Examples', 'Hero', 'Download');">Download source code</a>
         </div>
         {{ end }}
-        {{ partial "ads" . }}
+        {{ partialCached "ads" . }}
       </div>
     </header>
 
@@ -48,7 +48,7 @@
       </div>
     </main>
 
-    {{ partial "footer" . }}
+    {{ partialCached "footer" . }}
     {{ partial "scripts" . }}
   </body>
 </html>
