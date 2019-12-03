@@ -47,7 +47,7 @@
     "js-test-cloud": "cross-env BROWSER=true npm run js-test-karma",
     "lint": "npm-run-all --parallel js-lint css-lint",
     "docs": "npm-run-all docs-build docs-lint",
-    "docs-build": "hugo --cleanDestinationDir",
+    "docs-build": "hugo --cleanDestinationDir --templateMetrics --templateMetricsHints",
     "docs-compile": "npm run docs-build",
     "docs-production": "cross-env HUGO_ENV=production npm run docs-build",
     "docs-linkinator": "linkinator _gh_pages --recurse --silent --skip \"^(?!http://localhost)\"",

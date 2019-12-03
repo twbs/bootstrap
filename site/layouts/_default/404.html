@@ -4,7 +4,7 @@
     {{ partial "header" . }}
   </head>
   <body class="d-flex flex-column min-vh-100">
-    {{ partial "skippy" . }}
+    {{ partialCached "skippy" . }}
 
     {{ partial "docs-navbar" . }}
 
@@ -12,7 +12,7 @@
       {{ .Content }}
     </main>
 
-    {{ partial "footer" . }}
+    {{ partialCached "footer" . }}
     {{ partial "scripts" . }}
   </body>
 </html>

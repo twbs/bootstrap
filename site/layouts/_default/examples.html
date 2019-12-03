@@ -15,7 +15,7 @@
     {{- end }}
 
     {{ partial "stylesheet" . }}
-    {{ partial "favicons" . }}
+    {{ partialCached "favicons" . }}
 
     <style>
       .bd-placeholder-img {

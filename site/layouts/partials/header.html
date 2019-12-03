@@ -16,6 +16,6 @@
 {{- end }}
 
 {{ partial "stylesheet" . }}
-{{ partial "favicons" . }}
+{{ partialCached "favicons" . }}
 {{ partial "social" . }}
-{{ partial "analytics" . }}
+{{ partialCached "analytics" . }}

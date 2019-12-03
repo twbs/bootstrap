@@ -4,7 +4,7 @@
     {{ partial "header" . }}
   </head>
   <body>
-    {{ partial "skippy" . }}
+    {{ partialCached "skippy" . }}
 
     {{ partial "docs-navbar" . }}
 
@@ -15,7 +15,7 @@
         {{ if eq .Title "Examples" }}
         <a href="{{ .Site.Params.download.source }}" class="btn btn-lg btn-bd-primary" onclick="ga('send', 'event', 'Examples', 'Hero', 'Download');">Download source code</a>
         {{ end }}
-        {{ partial "ads" . }}
+        {{ partialCached "ads" . }}
       </div>
     </header>
 
@@ -25,7 +25,7 @@
       </div>
     </main>
 
-    {{ partial "footer" . }}
+    {{ partialCached "footer" . }}
     {{ partial "scripts" . }}
   </body>
 </html>
