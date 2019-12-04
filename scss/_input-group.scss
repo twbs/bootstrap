@@ -20,11 +20,17 @@
     min-width: 0; // https://stackoverflow.com/questions/36247140/why-dont-flex-items-shrink-past-content-size
     margin-bottom: 0;
 
+    + .form-control-plaintext,
     + .form-control,
     + .custom-select,
     + .custom-file {
       margin-left: -$input-border-width;
     }
+  }
+
+  // It add padding in plain text for default size
+  > .form-control-plaintext {
+    padding: $input-padding-y $input-padding-x;
   }
 
   // Bring the "active" form control to the top of surrounding elements
@@ -125,11 +131,13 @@
 // Remix the default form control sizing classes into new ones for easier
 // manipulation.
 
+.input-group-lg > .form-control-plaintext:not(textarea),
 .input-group-lg > .form-control:not(textarea),
 .input-group-lg > .custom-select {
   height: $input-height-lg;
 }
 
+.input-group-lg > .form-control-plaintext,
 .input-group-lg > .form-control,
 .input-group-lg > .custom-select,
 .input-group-lg > .input-group-prepend > .input-group-text,
@@ -142,11 +150,13 @@
   @include border-radius($input-border-radius-lg);
 }
 
+.input-group-sm > .form-control-plaintext:not(textarea),
 .input-group-sm > .form-control:not(textarea),
 .input-group-sm > .custom-select {
   height: $input-height-sm;
 }
 
+.input-group-sm > .form-control-plaintext,
 .input-group-sm > .form-control,
 .input-group-sm > .custom-select,
 .input-group-sm > .input-group-prepend > .input-group-text,
