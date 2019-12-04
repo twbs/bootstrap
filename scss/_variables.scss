@@ -334,6 +334,10 @@ $blockquote-font-size:        $font-size-base * 1.25 !default;
 $hr-border-color:             rgba($black, .1) !default;
 $hr-border-width:             $border-width !default;
 
+$legend-margin-bottom:        .5rem !default;
+$legend-font-size:            1.5rem !default;
+$legend-font-weight:          null !default;
+
 $mark-padding:                .2em !default;
 
 $dt-font-weight:              $font-weight-bold !default;

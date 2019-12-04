@@ -414,8 +414,9 @@ legend {
   width: 100%;
   max-width: 100%; // 1
   padding: 0;
-  margin-bottom: .5rem;
-  @include font-size(1.5rem);
+  margin-bottom: $legend-margin-bottom;
+  @include font-size($legend-font-size);
+  font-weight: $legend-font-weight;
   line-height: inherit;
   color: inherit; // 2
   white-space: normal; // 1
