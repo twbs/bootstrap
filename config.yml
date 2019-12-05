@@ -42,7 +42,6 @@ params:
   description:          "The most popular HTML, CSS, and JS library in the world."
   authors:              "Mark Otto, Jacob Thornton, and Bootstrap contributors"
   social_image_path:    /docs/4.3/assets/brand/bootstrap-social.png
-  social_logo_path:     /docs/4.3/assets/brand/bootstrap-social-logo.png
 
   current_version:      "4.3.1"
   current_ruby_version: "4.3.1"
