@@ -123,7 +123,7 @@
     @return $value1 + $value2;
   }
 
-  @return if($return-calc == true, calc(#{$value1} + #{$value2}), #{$value1} + #{$value2});
+  @return if($return-calc == true, calc(#{$value1} + #{$value2}), $value1 + unquote(" + ") + $value2);
 }
 
 @function subtract($value1, $value2, $return-calc: true) {
@@ -143,5 +143,5 @@
     @return $value1 - $value2;
   }
 
-  @return if($return-calc == true, calc(#{$value1} - #{$value2}), #{$value1} - #{$value2});
+  @return if($return-calc == true, calc(#{$value1} - #{$value2}), $value1 + unquote(" - ") + $value2);
 }
