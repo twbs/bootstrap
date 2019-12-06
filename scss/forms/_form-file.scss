@@ -26,9 +26,10 @@
     box-shadow: $form-file-focus-box-shadow;
   }
 
-  // Use disabled attribute instead of :disabled pseudo-class
-  // Workaround for: https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/11295231
-  &[disabled] ~ .form-file-label .form-file-text {
+  // Use disabled attribute in addition of :disabled pseudo-class
+  // See: https://github.com/twbs/bootstrap/issues/28247
+  &[disabled] ~ .form-file-label .form-file-text,
+  &:disabled ~ .form-file-label .form-file-text {
     background-color: $form-file-disabled-bg;
     border-color: $form-file-disabled-border-color;
   }
