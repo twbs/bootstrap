@@ -82,13 +82,16 @@
     border-color: $form-check-input-indeterminate-border-color;
   }
 
-  // Use disabled attribute instead of :disabled pseudo-class
-  // Workaround for: https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/11295231
-  &[disabled] {
+  &:disabled {
     pointer-events: none;
     filter: none;
     opacity: .5;
+  }
 
+  // Use disabled attribute in addition of :disabled pseudo-class
+  // See: https://github.com/twbs/bootstrap/issues/28247
+  &[disabled],
+  &:disabled {
     ~ .form-check-label {
       opacity: .5;
     }
