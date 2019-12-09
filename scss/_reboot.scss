@@ -486,20 +486,22 @@ fieldset {
 }
 
 
-// 1. By using `float: left`, the legend will behave like a block element
-// 2. Correct the color inheritance from `fieldset` elements in IE.
-// 3. Correct the text wrapping in Edge and IE.
+// 1. Make the legend behave like a block element
+// 2. Same as above, but these properties are needed for IE
+// 3. Correct the color inheritance from `fieldset` elements in IE.
+// 4. Correct the text wrapping in Edge and IE.
 
 legend {
-  float: left; // 1
-  width: 100%;
+  display: contents; // 1
+  float: left; // 2
+  width: 100%; // 2
   padding: 0;
   margin-bottom: $legend-margin-bottom;
   @include font-size($legend-font-size);
   font-weight: $legend-font-weight;
   line-height: inherit;
-  color: inherit; // 2
-  white-space: normal; // 3
+  color: inherit; // 3
+  white-space: normal; // 4
 }
 
 
