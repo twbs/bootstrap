@@ -98,7 +98,7 @@
     "cross-env": "^6.0.3",
     "eslint": "^6.7.2",
     "eslint-config-xo": "^0.27.2",
-    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-import": "^2.19.1",
     "eslint-plugin-unicorn": "^13.0.0",
     "find-unused-sass-variables": "^1.0.4",
     "glob": "^7.1.6",
