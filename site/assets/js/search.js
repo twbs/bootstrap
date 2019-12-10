@@ -12,6 +12,14 @@
   var inputElement = document.getElementById('search-input')
   var siteDocsVersion = inputElement.getAttribute('data-docs-version')
 
+  document.addEventListener('keydown', function (event) {
+    if (event.key === '/') {
+      event.preventDefault()
+
+      inputElement.focus()
+    }
+  })
+
   function getOrigin() {
     var location = window.location
     var origin = location.origin
