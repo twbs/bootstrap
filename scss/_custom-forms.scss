@@ -43,7 +43,7 @@
     }
   }
 
-  &:focus:not(:checked) ~ .custom-control-label::before {
+  &:focus ~ .custom-control-label::before {
     border-color: $custom-control-indicator-focus-border-color;
   }
 

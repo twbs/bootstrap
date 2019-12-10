@@ -548,7 +548,7 @@ $custom-control-indicator-checked-box-shadow:   none !default;
 $custom-control-indicator-checked-border-color: $custom-control-indicator-checked-bg !default;
 
 $custom-control-indicator-focus-box-shadow:     $input-focus-box-shadow !default;
-$custom-control-indicator-focus-border-color:   $input-focus-border-color !default;
+$custom-control-indicator-focus-border-color:   $custom-control-indicator-checked-border-color !default;
 
 $custom-control-indicator-active-color:         $component-active-color !default;
 $custom-control-indicator-active-bg:            lighten($component-active-bg, 35%) !default;
