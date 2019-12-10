@@ -35,16 +35,14 @@
   }
 
   &:focus ~ .custom-control-label::before {
+    border-color: $custom-control-indicator-focus-border-color;
+
     // the mixin is not used here to make sure there is feedback
     @if $enable-shadows {
       box-shadow: $input-box-shadow, $input-focus-box-shadow;
     } @else {
       box-shadow: $custom-control-indicator-focus-box-shadow;
     }
-  }
-
-  &:focus ~ .custom-control-label::before {
-    border-color: $custom-control-indicator-focus-border-color;
   }
 
   &:not(:disabled):active ~ .custom-control-label::before {
