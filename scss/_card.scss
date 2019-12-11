@@ -71,7 +71,7 @@
 //
 
 .card-header {
-  padding: ($card-spacer-y / 2) $card-spacer-x;
+  padding: $card-spacer-y $card-spacer-x;
   margin-bottom: 0; // Removes the default margin-bottom of <hN>
   color: $card-cap-color;
   background-color: $card-cap-bg;
@@ -89,7 +89,7 @@
 }
 
 .card-footer {
-  padding: ($card-spacer-y / 2) $card-spacer-x;
+  padding: $card-spacer-y $card-spacer-x;
   background-color: $card-cap-bg;
   border-top: $card-border-width solid $card-border-color;
 
@@ -105,7 +105,7 @@
 
 .card-header-tabs {
   margin-right: -$card-spacer-x / 2;
-  margin-bottom: -$card-spacer-y / 2;
+  margin-bottom: -$card-spacer-y;
   margin-left: -$card-spacer-x / 2;
   border-bottom: 0;
 
