@@ -6979,7 +6979,7 @@ a.close.disabled {
 
 .text-break {
   overflow-wrap: break-word !important;
-  word-break: break-word !important;
+  word-break: break-all !important;
 }
 
 .font-monospace {
