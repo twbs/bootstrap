@@ -44,11 +44,11 @@
 }
 
 .card-title {
-  margin-bottom: $card-cap-padding-y;
+  margin-bottom: $card-title-spacer-y;
 }
 
 .card-subtitle {
-  margin-top: -$card-cap-padding-y / 2;
+  margin-top: -$card-title-spacer-y / 2;
   margin-bottom: 0;
 }
 
