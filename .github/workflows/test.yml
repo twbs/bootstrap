@@ -15,9 +15,7 @@ jobs:
 
     steps:
       - name: Clone repository
-        uses: actions/checkout@v1
-        with:
-          fetch-depth: 3
+        uses: actions/checkout@v2
 
       - name: Set Node.js version
         uses: actions/setup-node@v1
