@@ -39,16 +39,16 @@
   // Workaround for the image size bug in IE
   // See: https://github.com/twbs/bootstrap/pull/28855
   min-height: 1px;
-  padding: $card-spacer-x;
+  padding: $card-spacer-y $card-spacer-x;
   color: $card-color;
 }
 
 .card-title {
-  margin-bottom: $card-spacer-y;
+  margin-bottom: $card-title-spacer-y;
 }
 
 .card-subtitle {
-  margin-top: -$card-spacer-y / 2;
+  margin-top: -$card-title-spacer-y / 2;
   margin-bottom: 0;
 }
 
@@ -71,7 +71,7 @@
 //
 
 .card-header {
-  padding: $card-spacer-y $card-spacer-x;
+  padding: $card-cap-padding-y $card-cap-padding-x;
   margin-bottom: 0; // Removes the default margin-bottom of <hN>
   color: $card-cap-color;
   background-color: $card-cap-bg;
@@ -89,7 +89,7 @@
 }
 
 .card-footer {
-  padding: $card-spacer-y $card-spacer-x;
+  padding: $card-cap-padding-y $card-cap-padding-x;
   background-color: $card-cap-bg;
   border-top: $card-border-width solid $card-border-color;
 
@@ -104,9 +104,9 @@
 //
 
 .card-header-tabs {
-  margin-right: -$card-spacer-x / 2;
-  margin-bottom: -$card-spacer-y;
-  margin-left: -$card-spacer-x / 2;
+  margin-right: -$card-cap-padding-x / 2;
+  margin-bottom: -$card-cap-padding-y;
+  margin-left: -$card-cap-padding-x / 2;
   border-bottom: 0;
 
   @if $nav-tabs-link-active-bg != $card-bg {
@@ -118,8 +118,8 @@
 }
 
 .card-header-pills {
-  margin-right: -$card-spacer-x / 2;
-  margin-left: -$card-spacer-x / 2;
+  margin-right: -$card-cap-padding-x / 2;
+  margin-left: -$card-cap-padding-x / 2;
 }
 
 // Card image
