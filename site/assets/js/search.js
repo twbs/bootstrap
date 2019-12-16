@@ -20,7 +20,7 @@
     }
   })
 
-  window.docsearch({
+  var search = window.docsearch({
     apiKey: '5990ad008512000bba2cf951ccf0332f',
     indexName: 'bootstrap',
     inputSelector: '#search-input',
@@ -50,4 +50,15 @@
     // Set debug to `true` if you want to inspect the dropdown
     debug: false
   })
+
+  function hashSearch() {
+    if (window.location.hash && window.location.hash.indexOf('#search=') === 0) {
+      search.input.autocomplete.setVal(window.location.hash.slice(8))
+      search.input.autocomplete.open()
+    }
+  }
+
+  hashSearch()
+  // For the nerds: search by changing the url hash
+  window.addEventListener('hashchange', hashSearch, false)
 })()

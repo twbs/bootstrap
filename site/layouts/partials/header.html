@@ -10,6 +10,7 @@
 <title>{{ if .IsHome }}{{ .Site.Title | markdownify }} · {{ .Site.Params.description | markdownify }}{{ else }}{{ .Title | markdownify }} · {{ .Site.Title | markdownify }} v{{ .Site.Params.docs_version }}{{ end }}</title>
 
 <link rel="canonical" href="{{ .Permalink }}">
+<link rel="search" href="/documentation-search.xml" type="application/opensearchdescription+xml">
 
 {{ with .Params.robots -}}
 <meta name="robots" content="{{ . }}">
