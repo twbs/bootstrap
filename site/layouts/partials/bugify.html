@@ -1,0 +1,40 @@
+{{- $words := (split . " ") -}}
+
+{{- range $word := $words -}}
+  {{- if (strings.Contains $word "#") -}}
+    {{- $separator := false -}}
+
+    {{- if (strings.Contains $word ",") -}}
+      {{- $separator = true -}}
+    {{- end -}}
+
+    {{- $data := split $word "#" -}}
+    {{- $bug_cat := replace (index $data 0) "\n" "" -}}
+    {{- $bug_id := replace (index $data 1) "\n" "" -}}
+    {{- $bug_id = replace $bug_id "," "" -}}
+
+    {{- if (eq $bug_cat "Bootstrap") -}}
+      <a href="https://github.com/twbs/bootstrap/issues/{{ $bug_id }}">#{{ $bug_id }}</a>
+    {{- else if (eq $bug_cat "Edge") -}}
+      <a href="https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/{{ $bug_id }}/">Edge issue #{{ $bug_id }}</a>
+    {{- else if (eq $bug_cat "A11yUserVoice") -}}
+      <a href="https://microsoftaccessibility.uservoice.com/forums/307429-microsoft-accessibility-feedback/suggestions/{{ $bug_id }}">Microsoft A11y UserVoice idea #{{ $bug_id }}</a>
+    {{- else if (eq $bug_cat "UserVoice") -}}
+      <a href="https://wpdev.uservoice.com/forums/257854-microsoft-edge-developer/suggestions/{{ $bug_id }}">Edge UserVoice idea #{{ $bug_id }}</a>
+    {{- else if (eq $bug_cat "Mozilla") -}}
+      <a href="https://bugzilla.mozilla.org/show_bug.cgi?id={{ $bug_id }}">Mozilla bug #{{ $bug_id }}</a>
+    {{- else if (eq $bug_cat "Chromium") -}}
+      <a href="https://bugs.chromium.org/p/chromium/issues/detail?id={{ $bug_id }}">Chromium issue #{{ $bug_id }}</a>
+    {{- else if (eq $bug_cat "WebKit") -}}
+      <a href="https://bugs.webkit.org/show_bug.cgi?id={{ $bug_id }}">WebKit bug #{{ $bug_id }}</a>
+    {{- else if (eq $bug_cat "Safari") -}}
+      <a href="https://openradar.appspot.com/{{ $bug_id }}">Apple Safari Radar #{{ $bug_id }}</a>
+    {{- else if (eq $bug_cat "Normalize") -}}
+      <a href="https://github.com/necolas/normalize.css/issues/{{ $bug_id }}">Normalize #{{ $bug_id }}</a>
+    {{- end -}}
+    {{- if (eq $separator true) }}, {{ end -}}
+
+  {{- else -}}
+    {{- $word -}}
+  {{- end -}}
+{{- end -}}

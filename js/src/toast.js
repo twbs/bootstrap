@@ -13,7 +13,7 @@ import {
   typeCheckConfig
 } from './util/index'
 import Data from './dom/data'
-import EventHandler from './dom/eventHandler'
+import EventHandler from './dom/event-handler'
 import Manipulator from './dom/manipulator'
 
 /**
@@ -90,7 +90,11 @@ class Toast {
   // Public
 
   show() {
-    EventHandler.trigger(this._element, Event.SHOW)
+    const showEvent = EventHandler.trigger(this._element, Event.SHOW)
+
+    if (showEvent.defaultPrevented) {
+      return
+    }
 
     if (this._config.animation) {
       this._element.classList.add(ClassName.FADE)
@@ -103,7 +107,9 @@ class Toast {
       EventHandler.trigger(this._element, Event.SHOWN)
 
       if (this._config.autohide) {
-        this.hide()
+        this._timeout = setTimeout(() => {
+          this.hide()
+        }, this._config.delay)
       }
     }
 
@@ -119,19 +125,30 @@ class Toast {
     }
   }
 
-  hide(withoutTimeout) {
+  hide() {
     if (!this._element.classList.contains(ClassName.SHOW)) {
       return
     }
 
-    EventHandler.trigger(this._element, Event.HIDE)
+    const hideEvent = EventHandler.trigger(this._element, Event.HIDE)
 
-    if (withoutTimeout) {
-      this._close()
+    if (hideEvent.defaultPrevented) {
+      return
+    }
+
+    const complete = () => {
+      this._element.classList.add(ClassName.HIDE)
+      EventHandler.trigger(this._element, Event.HIDDEN)
+    }
+
+    this._element.classList.remove(ClassName.SHOW)
+    if (this._config.animation) {
+      const transitionDuration = getTransitionDurationFromElement(this._element)
+
+      EventHandler.one(this._element, TRANSITION_END, complete)
+      emulateTransitionEnd(this._element, transitionDuration)
     } else {
-      this._timeout = setTimeout(() => {
-        this._close()
-      }, this._config.delay)
+      complete()
     }
   }
 
@@ -173,25 +190,8 @@ class Toast {
       this._element,
       Event.CLICK_DISMISS,
       Selector.DATA_DISMISS,
-      () => this.hide(true)
+      () => this.hide()
     )
-  }
-
-  _close() {
-    const complete = () => {
-      this._element.classList.add(ClassName.HIDE)
-      EventHandler.trigger(this._element, Event.HIDDEN)
-    }
-
-    this._element.classList.remove(ClassName.SHOW)
-    if (this._config.animation) {
-      const transitionDuration = getTransitionDurationFromElement(this._element)
-
-      EventHandler.one(this._element, TRANSITION_END, complete)
-      emulateTransitionEnd(this._element, transitionDuration)
-    } else {
-      complete()
-    }
   }
 
   // Static

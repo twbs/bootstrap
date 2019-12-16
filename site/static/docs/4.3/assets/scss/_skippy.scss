@@ -1,0 +1,17 @@
+.skippy {
+  display: block;
+  padding: 1em;
+  color: $white;
+  text-align: center;
+  background-color: $bd-purple;
+  outline: 0;
+
+  &:hover {
+    color: $white;
+  }
+}
+
+.skippy-text {
+  padding: .5em;
+  outline: 1px dotted;
+}

@@ -27,13 +27,10 @@
   }
 }
 
-@each $embed-responsive-aspect-ratio in $embed-responsive-aspect-ratios {
-  $embed-responsive-aspect-ratio-x: nth($embed-responsive-aspect-ratio, 1);
-  $embed-responsive-aspect-ratio-y: nth($embed-responsive-aspect-ratio, 2);
-
-  .embed-responsive-#{$embed-responsive-aspect-ratio-x}by#{$embed-responsive-aspect-ratio-y} {
+@each $key, $ratio in $embed-responsive-aspect-ratios {
+  .embed-responsive-#{$key} {
     &::before {
-      padding-top: percentage($embed-responsive-aspect-ratio-y / $embed-responsive-aspect-ratio-x);
+      padding-top: percentage(map-get($ratio, y) / map-get($ratio, x));
     }
   }
 }

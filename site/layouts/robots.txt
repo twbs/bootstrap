@@ -1,0 +1,8 @@
+# www.robotstxt.org
+
+{{ if (eq (getenv "HUGO_ENV") "production") -}}
+# Allow crawling of all content
+{{- end }}
+User-agent: *
+Disallow:{{ if (ne (getenv "HUGO_ENV") "production") }} /{{ end }}
+Sitemap: {{ .Site.BaseURL }}/sitemap.xml

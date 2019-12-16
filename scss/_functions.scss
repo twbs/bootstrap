@@ -56,11 +56,7 @@
 
   $yiq: (($r * 299) + ($g * 587) + ($b * 114)) / 1000;
 
-  @if ($yiq >= $yiq-contrasted-threshold) {
-    @return $dark;
-  } @else {
-    @return $light;
-  }
+  @return if($yiq >= $yiq-contrasted-threshold, $dark, $light);
 }
 
 // Retrieve color Sass maps

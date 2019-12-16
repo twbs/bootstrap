@@ -1,0 +1,9 @@
+// Wall of Browser Bugs
+//
+// Better display for the responsive table on the Wall of Browser Bugs.
+
+.bd-browser-bugs {
+  th:first-child {
+    width: 18%;
+  }
+}

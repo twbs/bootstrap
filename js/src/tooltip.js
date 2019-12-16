@@ -22,10 +22,10 @@ import {
   sanitizeHtml
 } from './util/sanitizer'
 import Data from './dom/data'
-import EventHandler from './dom/eventHandler'
+import EventHandler from './dom/event-handler'
 import Manipulator from './dom/manipulator'
 import Popper from 'popper.js'
-import SelectorEngine from './dom/selectorEngine'
+import SelectorEngine from './dom/selector-engine'
 
 /**
  * ------------------------------------------------------------------------
@@ -111,8 +111,7 @@ const ClassName = {
 }
 
 const Selector = {
-  TOOLTIP_INNER: '.tooltip-inner',
-  TOOLTIP_ARROW: '.tooltip-arrow'
+  TOOLTIP_INNER: '.tooltip-inner'
 }
 
 const Trigger = {
@@ -310,7 +309,7 @@ class Tooltip {
             behavior: this.config.fallbackPlacement
           },
           arrow: {
-            element: Selector.TOOLTIP_ARROW
+            element: `.${this.constructor.NAME}-arrow`
           },
           preventOverflow: {
             boundariesElement: this.config.boundary

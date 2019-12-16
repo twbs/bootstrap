@@ -4,8 +4,8 @@
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
   */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./dom/data.js'), require('./dom/eventHandler.js'), require('./dom/selectorEngine.js')) :
-  typeof define === 'function' && define.amd ? define(['./dom/data.js', './dom/eventHandler.js', './dom/selectorEngine.js'], factory) :
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./dom/data.js'), require('./dom/event-handler.js'), require('./dom/selector-engine.js')) :
+  typeof define === 'function' && define.amd ? define(['./dom/data.js', './dom/event-handler.js', './dom/selector-engine.js'], factory) :
   (global = global || self, global.Alert = factory(global.Data, global.EventHandler, global.SelectorEngine));
 }(this, function (Data, EventHandler, SelectorEngine) { 'use strict';
 
@@ -79,7 +79,9 @@
   };
 
   var triggerTransitionEnd = function triggerTransitionEnd(element) {
-    element.dispatchEvent(new Event(TRANSITION_END));
+    var evt = document.createEvent('HTMLEvents');
+    evt.initEvent(TRANSITION_END, true, true);
+    element.dispatchEvent(evt);
   };
 
   var emulateTransitionEnd = function emulateTransitionEnd(element, duration) {
@@ -114,7 +116,7 @@
   var Selector = {
     DISMISS: '[data-dismiss="alert"]'
   };
-  var Event$1 = {
+  var Event = {
     CLOSE: "close" + EVENT_KEY,
     CLOSED: "closed" + EVENT_KEY,
     CLICK_DATA_API: "click" + EVENT_KEY + DATA_API_KEY
@@ -184,7 +186,7 @@
     };
 
     _proto._triggerCloseEvent = function _triggerCloseEvent(element) {
-      return EventHandler.trigger(element, Event$1.CLOSE);
+      return EventHandler.trigger(element, Event.CLOSE);
     };
 
     _proto._removeElement = function _removeElement(element) {
@@ -210,7 +212,7 @@
         element.parentNode.removeChild(element);
       }
 
-      EventHandler.trigger(element, Event$1.CLOSED);
+      EventHandler.trigger(element, Event.CLOSED);
     } // Static
     ;
 
@@ -258,7 +260,7 @@
    */
 
 
-  EventHandler.on(document, Event$1.CLICK_DATA_API, Selector.DISMISS, Alert._handleDismiss(new Alert()));
+  EventHandler.on(document, Event.CLICK_DATA_API, Selector.DISMISS, Alert._handleDismiss(new Alert()));
   /**
    * ------------------------------------------------------------------------
    * jQuery

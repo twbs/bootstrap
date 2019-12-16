@@ -2,10 +2,10 @@
 //
 // Generate semantic grid columns with these mixins.
 
-@mixin make-container($gutter: $grid-gutter-width) {
+@mixin make-container($padding-x: $container-padding-x) {
   width: 100%;
-  padding-right: $gutter / 2;
-  padding-left: $gutter / 2;
+  padding-right: $padding-x;
+  padding-left: $padding-x;
   margin-right: auto;
   margin-left: auto;
 }

@@ -53,8 +53,7 @@
     display: flex;
     align-items: center;
 
-    &:not(:last-child) .custom-file-label,
-    &:not(:last-child) .custom-file-label::after { @include border-right-radius(0); }
+    &:not(:last-child) .custom-file-label { @include border-right-radius(0); }
     &:not(:first-child) .custom-file-label { @include border-left-radius(0); }
   }
 }

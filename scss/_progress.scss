@@ -1,8 +1,7 @@
 // Disable animation if transitions are disabled
 @if $enable-transitions {
   @keyframes progress-bar-stripes {
-    from { background-position: $progress-height 0; }
-    to { background-position: 0 0; }
+    0% { background-position-x: $progress-height; }
   }
 }
 
@@ -36,8 +35,10 @@
   .progress-bar-animated {
     animation: progress-bar-stripes $progress-bar-animation-timing;
 
-    @media (prefers-reduced-motion: reduce) {
-      animation: none;
+    @if $enable-prefers-reduced-motion-media-query {
+      @media (prefers-reduced-motion: reduce) {
+        animation: none;
+      }
     }
   }
 }

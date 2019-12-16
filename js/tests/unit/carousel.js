@@ -1153,7 +1153,7 @@ $(function () {
     }
 
     document.documentElement.ontouchstart = $.noop
-    assert.expect(3)
+    assert.expect(4)
     Simulator.setType('pointer')
 
     var $styles = $(stylesCarousel).appendTo('head')
@@ -1182,6 +1182,7 @@ $(function () {
       assert.ok(true, 'slid event fired')
       assert.ok(!$item.hasClass('active'))
       assert.ok(spy.called)
+      assert.strictEqual(carousel.touchDeltaX, 0)
       $styles.remove()
       delete document.documentElement.ontouchstart
       done()
@@ -1195,7 +1196,7 @@ $(function () {
   })
 
   QUnit.test('should allow swipeleft and call next with touch events', function (assert) {
-    assert.expect(3)
+    assert.expect(4)
     clearPointerEvents()
     Simulator.setType('touch')
     document.documentElement.ontouchstart = $.noop
@@ -1225,6 +1226,7 @@ $(function () {
       assert.ok(true, 'slid event fired')
       assert.ok(!$item.hasClass('active'))
       assert.ok(spy.called)
+      assert.strictEqual(carousel.touchDeltaX, 0)
       restorePointerEvents()
       delete document.documentElement.ontouchstart
       done()

@@ -1,0 +1,71 @@
+<header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
+  <a class="navbar-brand mr-0 mr-md-2" href="/" aria-label="Bootstrap">
+    {{ partial "icons/bootstrap.svg" (dict "class" "d-block" "width" "36" "height" "36") }}
+  </a>
+
+  <div class="navbar-nav-scroll">
+    <ul class="navbar-nav bd-navbar-nav flex-row">
+      <li class="nav-item">
+        <a class="nav-link{{ if .IsHome }} active{{ end }}" href="/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Bootstrap');">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link{{ if eq .Page.Layout "docs" }} active{{ end }}" href="/docs/{{ .Site.Params.docs_version }}/getting-started/introduction/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Docs');">Documentation</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link{{ if eq .Page.Title "Examples" }} active{{ end }}" href="/docs/{{ .Site.Params.docs_version }}/examples/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Examples');">Examples</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ .Site.Params.themes }}/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Themes');" target="_blank" rel="noopener">Themes</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ .Site.Params.expo }}/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Expo');" target="_blank" rel="noopener">Expo</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ .Site.Params.blog }}/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Blog');" target="_blank" rel="noopener">Blog</a>
+      </li>
+    </ul>
+  </div>
+
+  <ul class="navbar-nav ml-md-auto">
+    <li class="nav-item dropdown">
+      <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-versions" data-toggle="dropdown" aria-expanded="false">
+        v{{ .Site.Params.docs_version }}
+      </a>
+      <div class="dropdown-menu dropdown-menu-md-right" aria-labelledby="bd-versions">
+        <a class="dropdown-item active" href="/docs/{{ .Site.Params.docs_version }}/">Latest (4.3.x)</a>
+        <a class="dropdown-item" href="https://getbootstrap.com/docs/4.2/">v4.2.1</a>
+        <a class="dropdown-item" href="https://getbootstrap.com/docs/4.0/">v4.0.0</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="https://v4-alpha.getbootstrap.com/">v4 Alpha 6</a>
+        <a class="dropdown-item" href="https://getbootstrap.com/docs/3.4/">v3.4.1</a>
+        <a class="dropdown-item" href="https://getbootstrap.com/docs/3.3/">v3.3.7</a>
+        <a class="dropdown-item" href="https://getbootstrap.com/2.3.2/">v2.3.2</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="/docs/versions/">All versions</a>
+      </div>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link p-2" href="{{ .Site.Params.repo }}" target="_blank" rel="noopener" aria-label="GitHub">
+        {{ partial "icons/github.svg" (dict "class" "navbar-nav-svg" "width" "36" "height" "36") }}
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link p-2" href="https://twitter.com/{{ .Site.Params.twitter }}" target="_blank" rel="noopener" aria-label="Twitter">
+        {{ partial "icons/twitter.svg" (dict "class" "navbar-nav-svg" "width" "36" "height" "36") }}
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link p-2" href="{{ .Site.Params.slack }}/" target="_blank" rel="noopener" aria-label="Slack">
+        {{ partial "icons/slack.svg" (dict "class" "navbar-nav-svg" "width" "36" "height" "36") }}
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link p-2" href="{{ .Site.Params.opencollective }}/" target="_blank" rel="noopener" aria-label="Open Collective">
+        {{ partial "icons/opencollective.svg" (dict "class" "navbar-nav-svg" "width" "36" "height" "36") }}
+      </a>
+    </li>
+  </ul>
+
+  <a class="btn btn-bd-download d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="/docs/{{ .Site.Params.docs_version }}/getting-started/download/">Download</a>
+</header>

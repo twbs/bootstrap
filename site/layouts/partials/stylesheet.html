@@ -1,0 +1,16 @@
+{{- "<!-- Bootstrap core CSS -->" | safeHTML }}
+{{ if eq (getenv "HUGO_ENV") "production" -}}
+<link href="/docs/{{ .Site.Params.docs_version }}/dist/css/bootstrap.min.css" rel="stylesheet" integrity="{{ .Site.Params.cdn.css_hash }}" crossorigin="anonymous">
+{{- else -}}
+<link href="/docs/{{ .Site.Params.docs_version }}/dist/css/bootstrap.css" rel="stylesheet">
+{{- end }}
+
+{{ if (or (eq .Page.Layout "docs") (ne .Page.Layout "examples")) -}}
+{{- "<!-- Documentation extras -->" | safeHTML }}
+{{ if eq .Page.Layout "docs" -}}
+<link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
+{{- end -}}
+{{- if (ne .Page.Layout "examples") }}
+<link href="/docs/{{ .Site.Params.docs_version }}/assets/css/docs.min.css" rel="stylesheet">
+{{- end -}}
+{{- end }}

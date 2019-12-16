@@ -1,0 +1,53 @@
+{{- /*
+  Usage: `example [args]`
+
+  `args` are optional and can be one of the following:
+    id: the `div`'s id - default: ""
+    class: any extra class(es) to be added to the `div` - default ""
+    show_preview: if the preview should be output in the HTML - default: `true`
+    show_markup: if the markup should be output in the HTML - default: `true`
+*/ -}}
+
+{{- $show_preview := .Get "show_preview" | default true -}}
+{{- $show_markup := .Get "show_markup" | default true -}}
+{{- $input := .Inner -}}
+
+{{- if eq $show_preview true -}}
+<div{{ with .Get "id" }} id="{{ . }}"{{ end }} class="bd-example{{ with .Get "class" }} {{ . }}{{ end }}">
+  {{- $input -}}
+</div>
+{{- end -}}
+
+{{- if eq $show_markup true -}}
+  {{- $.Scratch.Set "highlight_content" $input -}}
+
+  {{- if (strings.Contains $input `<svg class="bd-placeholder-img`) -}}
+    {{- $.Scratch.Set "highlight_content" "" -}}
+    {{- $image_class := "" -}}
+
+    {{- $modified_content := replace $input `<svg class="bd-placeholder-img` `✂️<svg class="bd-placeholder-img` -}}
+    {{- $modified_content = replace $modified_content "</svg>\n" "</svg>✂️" -}}
+    {{- $modified_content = split $modified_content "✂️" -}}
+
+    {{- if (strings.Contains $input `<svg class="bd-placeholder-img `) -}}
+      {{- $image_class = replace $input "bd-placeholder-img " "bd-placeholder-img ✂️ " -}}
+      {{- $image_class = split (replace $image_class `" width="` `✂️" width="`) "✂️" -}}
+      {{- $image_class = replace (index $image_class 1) "bd-placeholder-img-lg" "" -}}
+      {{- $image_class = trim $image_class " " -}}
+    {{- end -}}
+
+    {{- range $i, $content_chunk := $modified_content -}}
+      {{- if (strings.Contains $content_chunk `<svg class="bd-placeholder-img`) -}}
+        {{- if $image_class -}}
+          {{- $.Scratch.Add "highlight_content" (printf `<img src="..." class="%s" alt="...">` $image_class) -}}
+        {{- else -}}
+          {{- $.Scratch.Add "highlight_content" `<img src="..." alt="...">` -}}
+        {{- end -}}
+      {{- else -}}
+        {{- $.Scratch.Add "highlight_content" $content_chunk -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+
+  {{- highlight (trim ($.Scratch.Get "highlight_content") "\n") "html" "" -}}
+{{- end -}}

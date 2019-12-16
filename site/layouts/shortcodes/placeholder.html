@@ -1,0 +1,30 @@
+{{- /*
+  Usage: `placeholder args`
+
+  args can be one of the following:
+    title: Used in the SVG `title` tag, default "Placeholder"
+    text: The text to show in the image - default: "width x height"
+    class: default: "bd-placeholder-img"
+    color: The text color (foreground) - default: "#dee2e6"
+    background: The background color - default: "#868e96"
+    width: default: 100%
+    height: default: 180px
+*/ -}}
+
+{{- $grays := $.Site.Data.grays -}}
+{{- $title := .Get "title" | default "Placeholder" -}}
+{{- $class := .Get "class" -}}
+{{- $color := .Get "color" | default (index $grays 2).hex -}}
+{{- $background := .Get "background" | default (index $grays 5).hex -}}
+{{- $width := .Get "width" | default "100%" -}}
+{{- $height := .Get "height" | default "180" -}}
+{{- $text := .Get "text" | default (printf "%sx%s" $width $height) -}}
+
+{{- $show_title := not (eq $title "false") -}}
+{{- $show_text := not (eq $text "false") -}}
+
+<svg class="bd-placeholder-img{{ with $class }} {{ . }}{{ end }}" width="{{ $width }}" height="{{ $height }}" xmlns="http://www.w3.org/2000/svg"{{ if (or $show_title $show_text) }} aria-label="{{ if $show_title }}{{ $title }}{{ if $show_text }}: {{ end }}{{ end }}{{ if ($show_text) }}{{ $text }}{{ end }}"{{ end }} preserveAspectRatio="xMidYMid slice" role="img">
+  {{- if $show_title -}}<title>{{ $title }}</title>{{- end -}}
+  <rect width="100%" height="100%" fill="{{ $background }}"/>
+  {{- if $show_text -}}<text x="50%" y="50%" fill="{{ $color }}" dy=".3em">{{ $text }}</text>{{- end -}}
+</svg>

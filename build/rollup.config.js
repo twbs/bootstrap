@@ -11,42 +11,18 @@ const ESM = process.env.ESM === 'true'
 let fileDest = `bootstrap${ESM ? '.esm' : ''}`
 const external = ['popper.js']
 const plugins = [
-  babel(ESM ?
-    {
-      // Only transpile our source code
-      exclude: 'node_modules/**',
-      babelrc: false,
-      presets: [
-        [
-          '@babel/env',
-          {
-            loose: true,
-            modules: false,
-            targets: {
-              browsers: [
-                'Chrome >= 60',
-                'Safari >= 10.1',
-                'iOS >= 10.3',
-                'Firefox >= 54',
-                'Edge >= 15'
-              ]
-            }
-          }
-        ]
-      ]
-    } :
-    {
-    // Only transpile our source code
-      exclude: 'node_modules/**',
-      // Include only required helpers
-      externalHelpersWhitelist: [
-        'defineProperties',
-        'createClass',
-        'inheritsLoose',
-        'defineProperty',
-        'objectSpread'
-      ]
-    })
+  babel({
+  // Only transpile our source code
+    exclude: 'node_modules/**',
+    // Include only required helpers
+    externalHelpersWhitelist: [
+      'defineProperties',
+      'createClass',
+      'inheritsLoose',
+      'defineProperty',
+      'objectSpread'
+    ]
+  })
 ]
 const globals = {
   'popper.js': 'Popper'

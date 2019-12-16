@@ -5,9 +5,7 @@
  * --------------------------------------------------------------------------
  */
 
-import {
-  makeArray
-} from './index'
+import { makeArray } from './index'
 
 const uriAttrs = [
   'background',

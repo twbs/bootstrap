@@ -5,11 +5,9 @@
  * --------------------------------------------------------------------------
  */
 
-import {
-  jQuery as $
-} from './util/index'
+import { jQuery as $ } from './util/index'
 import Data from './dom/data'
-import SelectorEngine from './dom/selectorEngine'
+import SelectorEngine from './dom/selector-engine'
 import Tooltip from './tooltip'
 
 /**
