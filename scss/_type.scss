@@ -31,7 +31,8 @@ h6, .h6 { @include font-size($h6-font-size); }
     @include font-size(map-get($display-type, font-size));
     //stylelint-disable-next-line font-weight-notation
     font-weight: map-get($display-type, font-weight);
-    line-height: $display-line-height;
+    //stylelint-disable-next-line font-weight-notation
+    line-height: map-get($display-type, line-height);
   }
 }
 
