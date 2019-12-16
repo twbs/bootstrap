@@ -13,7 +13,7 @@
 
   const siteDocsVersion = searchElement.getAttribute('data-bd-docs-version')
 
-  window.docsearch({
+  const search = window.docsearch({
     apiKey: '3151f502c7b9e9dafd5e6372b691a24e',
     indexName: 'bootstrap',
     appId: 'AK7KMZKZHQ',
@@ -42,4 +42,15 @@
       })
     }
   })
+
+  function hashSearch() {
+    if (window.location.hash && window.location.hash.indexOf('#search=') === 0) {
+      search.input.autocomplete.setVal(window.location.hash.slice(8))
+      search.input.autocomplete.open()
+    }
+  }
+
+  hashSearch()
+  // For the nerds: search by changing the url hash
+  window.addEventListener('hashchange', hashSearch, false)
 })()

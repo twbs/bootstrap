@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/" xmlns:moz="http://www.mozilla.org/2006/browser/search/">
+  <ShortName>Bootstrap Documentation</ShortName>
+  <Description>Search in the latest Bootstrap documentation</Description>
+  <Image height="16" width="16" type="image/x-icon">https://deploy-preview-29872--twbs-bootstrap.netlify.com/favicon.ico</Image>
+  <Url type="text/html" method="get" template="https://deploy-preview-29872--twbs-bootstrap.netlify.com/docs/4.3/getting-started/introduction/#search={searchTerms}" />
+</OpenSearchDescription>
