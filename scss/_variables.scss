@@ -210,6 +210,14 @@ $escaped-characters: (
   ("#","%23"),
 ) !default;
 
+// Selector that could break a selector stack cross-browser compatibility
+$pseudo-vendor-prefixes: (
+  "::-webkit-",
+  "::-moz-",
+  "::-ms-"
+) !default;
+
+
 // Options
 //
 // Quickly modify global styling by enabling or disabling optional features.
