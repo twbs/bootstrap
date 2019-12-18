@@ -9,6 +9,19 @@
   }
 
   @if $enable-prefers-reduced-motion-media-query {
-    @extend %no-transition;
+    $is-infected: false;
+    @each $infected in $quarantine-selectors {
+      @if str-index(quote(&), $infected) {
+        $is-infected: true;
+      }
+    }
+
+    @if $is-infected {
+      @media (prefers-reduced-motion: reduce) {
+        transition: none;
+      }
+    } @else {
+      @extend %no-transition;
+    }
   }
 }
