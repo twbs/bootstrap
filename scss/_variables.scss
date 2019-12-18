@@ -210,8 +210,12 @@ $escaped-characters: (
   ("#","%23"),
 ) !default;
 
-// Selector list to prevent invalid selector stack when extending %no-transition
-$quarantine-selectors: ("::-ms-", "::-webkit-", "::-moz-") !default;
+// Selector that could break a selector stack cross-browser compatibility
+$quarantine-selectors: (
+  "::-webkit-",
+  "::-moz-",
+  "::-ms-"
+) !default;
 
 
 // Options
