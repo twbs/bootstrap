@@ -65,6 +65,10 @@
         min-width: 0; // See https://github.com/twbs/bootstrap/issues/25410
       }
 
+      .row-cols#{$infix}-auto > * {
+        @include make-col-auto();
+      }
+
       @for $i from 1 through $grid-row-columns {
         .row-cols#{$infix}-#{$i} {
           @include row-cols($i);
