@@ -8,12 +8,3 @@
     text-decoration: none;
   }
 }
-
-@if $enable-prefers-reduced-motion-media-query {
-  @media (prefers-reduced-motion: reduce) {
-    %no-transition {
-      // stylelint-disable-next-line property-blacklist
-      transition: none;
-    }
-  }
-}
