@@ -60,9 +60,7 @@ Feel free to mix input groups with button groups in your toolbars. Similar to th
     <button type="button" class="btn btn-secondary">4</button>
   </div>
   <div class="input-group">
-    <div class="input-group-prepend">
-      <div class="input-group-text" id="btnGroupAddon">@</div>
-    </div>
+    <div class="input-group-text" id="btnGroupAddon">@</div>
     <input type="text" class="form-control" placeholder="Input group example" aria-label="Input group example" aria-describedby="btnGroupAddon">
   </div>
 </div>
@@ -75,9 +73,7 @@ Feel free to mix input groups with button groups in your toolbars. Similar to th
     <button type="button" class="btn btn-secondary">4</button>
   </div>
   <div class="input-group">
-    <div class="input-group-prepend">
-      <div class="input-group-text" id="btnGroupAddon2">@</div>
-    </div>
+    <div class="input-group-text" id="btnGroupAddon2">@</div>
     <input type="text" class="form-control" placeholder="Input group example" aria-label="Input group example" aria-describedby="btnGroupAddon2">
   </div>
 </div>

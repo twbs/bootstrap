@@ -1,5 +1,3 @@
-// stylelint-disable selector-no-qualifying-type
-
 //
 // Base styles
 //
@@ -18,13 +16,6 @@
     flex: 1 1 auto;
     width: 1%;
     min-width: 0; // https://stackoverflow.com/questions/36247140/why-dont-flex-items-shrink-past-content-size
-    margin-bottom: 0;
-
-    + .form-control,
-    + .form-select,
-    + .form-file {
-      margin-left: -$input-border-width;
-    }
   }
 
   // Bring the "active" form control to the top of surrounding elements
@@ -35,37 +26,19 @@
   }
 
   // Bring the custom file input above the label
-  > .form-file .form-file-input:focus {
-    z-index: 4;
-  }
-
-  > .form-control,
-  > .form-select {
-    &:not(:last-child) { @include border-right-radius(0); }
-    &:not(:first-child) { @include border-left-radius(0); }
-  }
-
-  // Custom file inputs have more complex markup, thus requiring different
-  // border-radius overrides.
   > .form-file {
-    display: flex;
-    align-items: center;
+    > .form-file-input:focus {
+      z-index: 4;
+    }
 
-    &:not(:last-child) .form-file-label { @include border-right-radius(0); }
-    &:not(:first-child) .form-file-label { @include border-left-radius(0); }
+    &:not(:last-child) > .form-file-label {
+      @include border-right-radius(0);
+    }
+
+    &:not(:first-child) > .form-file-label {
+      @include border-left-radius(0);
+    }
   }
-}
-
-
-// Prepend and append
-//
-// While it requires one extra layer of HTML for each, dedicated prepend and
-// append elements allow us to 1) be less clever, 2) simplify our selectors, and
-// 3) support HTML5 form validation.
-
-.input-group-prepend,
-.input-group-append {
-  display: flex;
 
   // Ensure buttons are always above inputs for more visually pleasing borders.
   // This isn't needed for `.input-group-text` since it shares the same border-color
@@ -78,17 +51,7 @@
       z-index: 3;
     }
   }
-
-  .btn + .btn,
-  .btn + .input-group-text,
-  .input-group-text + .input-group-text,
-  .input-group-text + .btn {
-    margin-left: -$input-border-width;
-  }
 }
-
-.input-group-prepend { margin-right: -$input-border-width; }
-.input-group-append { margin-left: -$input-border-width; }
 
 
 // Textual addons
@@ -128,10 +91,8 @@
 
 .input-group-lg > .form-control,
 .input-group-lg > .form-select,
-.input-group-lg > .input-group-prepend > .input-group-text,
-.input-group-lg > .input-group-append > .input-group-text,
-.input-group-lg > .input-group-prepend > .btn,
-.input-group-lg > .input-group-append > .btn {
+.input-group-lg > .input-group-text,
+.input-group-lg > .btn {
   padding: $input-padding-y-lg $input-padding-x-lg;
   @include font-size($input-font-size-lg);
   @include border-radius($input-border-radius-lg);
@@ -147,10 +108,8 @@
 
 .input-group-sm > .form-control,
 .input-group-sm > .form-select,
-.input-group-sm > .input-group-prepend > .input-group-text,
-.input-group-sm > .input-group-append > .input-group-text,
-.input-group-sm > .input-group-prepend > .btn,
-.input-group-sm > .input-group-append > .btn {
+.input-group-sm > .input-group-text,
+.input-group-sm > .btn {
   padding: $input-padding-y-sm $input-padding-x-sm;
   @include font-size($input-font-size-sm);
   @include border-radius($input-border-radius-sm);
@@ -162,27 +121,21 @@
 }
 
 
-// Prepend and append rounded corners
+// Rounded corners
 //
 // These rulesets must come after the sizing ones to properly override sm and lg
 // border-radius values when extending. They're more specific than we'd like
 // with the `.input-group >` part, but without it, we cannot override the sizing.
 
+// stylelint-disable-next-line no-duplicate-selectors
+.input-group {
+  > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu),
+  > .dropdown-toggle:nth-last-child(n + 3) {
+    @include border-right-radius(0);
+  }
 
-.input-group > .input-group-prepend > .btn,
-.input-group > .input-group-prepend > .input-group-text,
-.input-group > .input-group-append:not(:last-child) > .btn,
-.input-group > .input-group-append:not(:last-child) > .input-group-text,
-.input-group > .input-group-append:last-child > .btn:not(:last-child):not(.dropdown-toggle),
-.input-group > .input-group-append:last-child > .input-group-text:not(:last-child) {
-  @include border-right-radius(0);
-}
-
-.input-group > .input-group-append > .btn,
-.input-group > .input-group-append > .input-group-text,
-.input-group > .input-group-prepend:not(:first-child) > .btn,
-.input-group > .input-group-prepend:not(:first-child) > .input-group-text,
-.input-group > .input-group-prepend:first-child > .btn:not(:first-child),
-.input-group > .input-group-prepend:first-child > .input-group-text:not(:first-child) {
-  @include border-left-radius(0);
+  > :not(:first-child):not(.dropdown-menu) {
+    margin-left: -$input-border-width;
+    @include border-left-radius(0);
+  }
 }
