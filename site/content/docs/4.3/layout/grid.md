@@ -387,61 +387,6 @@ You can also use the accompanying Sass mixin, `row-cols()`:
 
 Use flexbox alignment utilities to vertically and horizontally align columns. **Internet Explorer 10-11 do not support vertical alignment of flex items when the flex container has a `min-height` as shown below.** [See Flexbugs #3 for more details.](https://github.com/philipwalton/flexbugs#flexbug-3)
 
-### Vertical alignment
-
-{{< example class="bd-example-row bd-example-row-flex-cols" >}}
-<div class="container">
-  <div class="row align-items-start">
-    <div class="col">
-      One of three columns
-    </div>
-    <div class="col">
-      One of three columns
-    </div>
-    <div class="col">
-      One of three columns
-    </div>
-  </div>
-  <div class="row align-items-center">
-    <div class="col">
-      One of three columns
-    </div>
-    <div class="col">
-      One of three columns
-    </div>
-    <div class="col">
-      One of three columns
-    </div>
-  </div>
-  <div class="row align-items-end">
-    <div class="col">
-      One of three columns
-    </div>
-    <div class="col">
-      One of three columns
-    </div>
-    <div class="col">
-      One of three columns
-    </div>
-  </div>
-</div>
-{{< /example >}}
-
-{{< example class="bd-example-row bd-example-row-flex-cols" >}}
-<div class="container">
-  <div class="row">
-    <div class="col align-self-start">
-      One of three columns
-    </div>
-    <div class="col align-self-center">
-      One of three columns
-    </div>
-    <div class="col align-self-end">
-      One of three columns
-    </div>
-  </div>
-</div>
-{{< /example >}}
 
 ### Horizontal alignment
 
