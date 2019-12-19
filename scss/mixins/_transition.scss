@@ -9,14 +9,14 @@
   }
 
   @if $enable-prefers-reduced-motion-media-query {
-    $is-infected: false;
-    @each $infected in $quarantine-selectors {
-      @if str-index(quote(&), $infected) {
-        $is-infected: true;
+    $isolate: false;
+    @each $selector in $pseudo-vendor-prefixes {
+      @if str-index(quote(&), $selector) {
+        $isolate: true;
       }
     }
 
-    @if $is-infected {
+    @if $isolate {
       @media (prefers-reduced-motion: reduce) {
         transition: none;
       }

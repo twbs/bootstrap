@@ -211,7 +211,7 @@ $escaped-characters: (
 ) !default;
 
 // Selector that could break a selector stack cross-browser compatibility
-$quarantine-selectors: (
+$pseudo-vendor-prefixes: (
   "::-webkit-",
   "::-moz-",
   "::-ms-"
