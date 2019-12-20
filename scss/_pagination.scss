@@ -47,6 +47,24 @@
   }
 }
 
+.pagination-dark {
+  .page-item {
+    .page-link {
+      color: $pagination-dark-color;
+      background-color: $pagination-dark-bg;
+    }
+    &.active .page-link {
+      z-index: 3;
+      color: $pagination-active-color;
+      background-color: $pagination-active-bg;
+      border-color: $pagination-active-border-color;
+    }
+    &.disabled .page-link {
+      color: $pagination-disabled-color;
+      background-color: $pagination-dark-bg;
+    }
+  }
+}
 
 //
 // Sizing
