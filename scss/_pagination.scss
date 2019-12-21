@@ -47,6 +47,37 @@
   }
 }
 
+.pagination-dark {
+  .page-link {
+    color: $pagination-dark-color;
+    background-color: $pagination-dark-bg;
+    border-color: $pagination-dark-border-color;
+
+    &:hover {
+      color: $pagination-dark-hover-color;
+      background-color: $pagination-dark-hover-bg;
+      border-color: $pagination-dark-hover-border-color;
+    }
+
+    &:focus {
+      outline: $pagination-focus-outline;
+      box-shadow: $pagination-focus-box-shadow;
+    }
+  }
+
+  .page-item {
+    &.active .page-link {
+      color: $pagination-active-color;
+      background-color: $pagination-active-bg;
+      border-color: $pagination-active-border-color;
+    }
+
+    &.disabled .page-link {
+      background-color: $pagination-dark-bg;
+      border-color: $pagination-dark-border-color;
+    }
+  }
+}
 
 //
 // Sizing

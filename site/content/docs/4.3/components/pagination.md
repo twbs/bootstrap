@@ -129,6 +129,22 @@ Fancy larger or smaller pagination? Add `.pagination-lg` or `.pagination-sm` for
 </nav>
 {{< /example >}}
 
+## Dark Color Scheme
+
+If you need the pagination in a dark version, you can simply add the class <code>.pagination-dark</code> to the pagination class to change the appearance of the element.
+
+{{< example >}}
+<nav aria-label="Page navigation example">
+  <ul class="pagination pagination-dark">
+    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  </ul>
+</nav>
+{{< /example >}}
+
 ## Alignment
 
 Change the alignment of pagination components with [flexbox utilities]({{< docsref "/utilities/flex" >}}).
