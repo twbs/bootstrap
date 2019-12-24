@@ -194,4 +194,13 @@
   padding-bottom: $carousel-caption-padding-y;
   color: $carousel-caption-color;
   text-align: center;
+
+  // Vertical caption centered
+  &.caption-centered {
+    top: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 }

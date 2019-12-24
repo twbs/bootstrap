@@ -150,6 +150,51 @@ Add captions to your slides easily with the `.carousel-caption` element within a
 </div>
 {{< /example >}}
 
+#### Caption centered vertically
+
+You can center vertically the caption adding `.caption-centered` to `.carousel-caption`.
+
+{{< example >}}
+<div id="carouselExampleCaptionsCentered" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleCaptionsCentered" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleCaptionsCentered" data-slide-to="1"></li>
+    <li data-target="#carouselExampleCaptionsCentered" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#555" background="#777" text="First slide" >}}
+      <div class="carousel-caption caption-centered">
+        <h5>First slide label</h5>
+        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#444" background="#666" text="Second slide" >}}
+      <div class="carousel-caption caption-centered">
+        <h5>Second slide label</h5>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#333" background="#555" text="Third slide" >}}
+      <div class="carousel-caption caption-centered">
+        <h5>Third slide label</h5>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+      </div>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleCaptionsCentered" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleCaptionsCentered" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+{{< /example >}}
+
 ### Crossfade
 
 Add `.carousel-fade` to your carousel to animate slides with a fade transition instead of a slide.
