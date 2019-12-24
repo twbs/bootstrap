@@ -89,7 +89,7 @@
     "@babel/cli": "^7.7.7",
     "@babel/core": "^7.7.7",
     "@babel/plugin-proposal-object-rest-spread": "^7.7.7",
-    "@babel/preset-env": "^7.7.6",
+    "@babel/preset-env": "^7.7.7",
     "autoprefixer": "^9.7.3",
     "babel-eslint": "^10.0.3",
     "babel-plugin-istanbul": "^5.2.0",
