@@ -133,9 +133,6 @@
     "terser": "^4.4.3",
     "vnu-jar": "19.9.4"
   },
-  "engines": {
-    "node": ">=10"
-  },
   "files": [
     "dist/{css,js}/*.{css,js,map}",
     "js/{src,dist}/**/*.{js,map}",
