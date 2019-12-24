@@ -92,7 +92,7 @@
     "@babel/preset-env": "^7.7.7",
     "autoprefixer": "^9.7.3",
     "babel-eslint": "^10.0.3",
-    "babel-plugin-istanbul": "^5.2.0",
+    "babel-plugin-istanbul": "^6.0.0",
     "bundlesize": "^0.18.0",
     "clean-css-cli": "^4.3.0",
     "cross-env": "^6.0.3",
