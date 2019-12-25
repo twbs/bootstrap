@@ -1,6 +1,6 @@
 /*!
   * Bootstrap tab.js v4.3.1 (https://getbootstrap.com/)
-  * Copyright 2011-2019 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Copyright 2011-2020 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
   */
 (function (global, factory) {
@@ -9,9 +9,9 @@
   (global = global || self, global.Tab = factory(global.Data, global.EventHandler, global.SelectorEngine));
 }(this, (function (Data, EventHandler, SelectorEngine) { 'use strict';
 
-  Data = Data && Data.hasOwnProperty('default') ? Data['default'] : Data;
-  EventHandler = EventHandler && EventHandler.hasOwnProperty('default') ? EventHandler['default'] : EventHandler;
-  SelectorEngine = SelectorEngine && SelectorEngine.hasOwnProperty('default') ? SelectorEngine['default'] : SelectorEngine;
+  Data = Data && Object.prototype.hasOwnProperty.call(Data, 'default') ? Data['default'] : Data;
+  EventHandler = EventHandler && Object.prototype.hasOwnProperty.call(EventHandler, 'default') ? EventHandler['default'] : EventHandler;
+  SelectorEngine = SelectorEngine && Object.prototype.hasOwnProperty.call(SelectorEngine, 'default') ? SelectorEngine['default'] : SelectorEngine;
 
   function _defineProperties(target, props) {
     for (var i = 0; i < props.length; i++) {
@@ -78,9 +78,7 @@
   };
 
   var triggerTransitionEnd = function triggerTransitionEnd(element) {
-    var evt = document.createEvent('HTMLEvents');
-    evt.initEvent(TRANSITION_END, true, true);
-    element.dispatchEvent(evt);
+    element.dispatchEvent(new Event(TRANSITION_END));
   };
 
   var emulateTransitionEnd = function emulateTransitionEnd(element, duration) {
@@ -99,14 +97,6 @@
         triggerTransitionEnd(element);
       }
     }, emulatedDuration);
-  };
-
-  var makeArray = function makeArray(nodeList) {
-    if (!nodeList) {
-      return [];
-    }
-
-    return [].slice.call(nodeList);
   };
 
   var reflow = function reflow(element) {
@@ -135,38 +125,30 @@
   var DATA_KEY = 'bs.tab';
   var EVENT_KEY = "." + DATA_KEY;
   var DATA_API_KEY = '.data-api';
-  var Event = {
-    HIDE: "hide" + EVENT_KEY,
-    HIDDEN: "hidden" + EVENT_KEY,
-    SHOW: "show" + EVENT_KEY,
-    SHOWN: "shown" + EVENT_KEY,
-    CLICK_DATA_API: "click" + EVENT_KEY + DATA_API_KEY
-  };
-  var ClassName = {
-    DROPDOWN_MENU: 'dropdown-menu',
-    ACTIVE: 'active',
-    DISABLED: 'disabled',
-    FADE: 'fade',
-    SHOW: 'show'
-  };
-  var Selector = {
-    DROPDOWN: '.dropdown',
-    NAV_LIST_GROUP: '.nav, .list-group',
-    ACTIVE: '.active',
-    ACTIVE_UL: ':scope > li > .active',
-    DATA_TOGGLE: '[data-toggle="tab"], [data-toggle="pill"], [data-toggle="list"]',
-    DROPDOWN_TOGGLE: '.dropdown-toggle',
-    DROPDOWN_ACTIVE_CHILD: ':scope > .dropdown-menu .active'
-  };
+  var EVENT_HIDE = "hide" + EVENT_KEY;
+  var EVENT_HIDDEN = "hidden" + EVENT_KEY;
+  var EVENT_SHOW = "show" + EVENT_KEY;
+  var EVENT_SHOWN = "shown" + EVENT_KEY;
+  var EVENT_CLICK_DATA_API = "click" + EVENT_KEY + DATA_API_KEY;
+  var CLASS_NAME_DROPDOWN_MENU = 'dropdown-menu';
+  var CLASS_NAME_ACTIVE = 'active';
+  var CLASS_NAME_DISABLED = 'disabled';
+  var CLASS_NAME_FADE = 'fade';
+  var CLASS_NAME_SHOW = 'show';
+  var SELECTOR_DROPDOWN = '.dropdown';
+  var SELECTOR_NAV_LIST_GROUP = '.nav, .list-group';
+  var SELECTOR_ACTIVE = '.active';
+  var SELECTOR_ACTIVE_UL = ':scope > li > .active';
+  var SELECTOR_DATA_TOGGLE = '[data-toggle="tab"], [data-toggle="pill"], [data-toggle="list"]';
+  var SELECTOR_DROPDOWN_TOGGLE = '.dropdown-toggle';
+  var SELECTOR_DROPDOWN_ACTIVE_CHILD = ':scope > .dropdown-menu .active';
   /**
    * ------------------------------------------------------------------------
    * Class Definition
    * ------------------------------------------------------------------------
    */
 
-  var Tab =
-  /*#__PURE__*/
-  function () {
+  var Tab = /*#__PURE__*/function () {
     function Tab(element) {
       this._element = element;
       Data.setData(this._element, DATA_KEY, this);
@@ -179,29 +161,29 @@
     _proto.show = function show() {
       var _this = this;
 
-      if (this._element.parentNode && this._element.parentNode.nodeType === Node.ELEMENT_NODE && this._element.classList.contains(ClassName.ACTIVE) || this._element.classList.contains(ClassName.DISABLED)) {
+      if (this._element.parentNode && this._element.parentNode.nodeType === Node.ELEMENT_NODE && this._element.classList.contains(CLASS_NAME_ACTIVE) || this._element.classList.contains(CLASS_NAME_DISABLED)) {
         return;
       }
 
       var previous;
       var target = getElementFromSelector(this._element);
-      var listElement = SelectorEngine.closest(this._element, Selector.NAV_LIST_GROUP);
+      var listElement = SelectorEngine.closest(this._element, SELECTOR_NAV_LIST_GROUP);
 
       if (listElement) {
-        var itemSelector = listElement.nodeName === 'UL' || listElement.nodeName === 'OL' ? Selector.ACTIVE_UL : Selector.ACTIVE;
-        previous = makeArray(SelectorEngine.find(itemSelector, listElement));
+        var itemSelector = listElement.nodeName === 'UL' || listElement.nodeName === 'OL' ? SELECTOR_ACTIVE_UL : SELECTOR_ACTIVE;
+        previous = SelectorEngine.find(itemSelector, listElement);
         previous = previous[previous.length - 1];
       }
 
       var hideEvent = null;
 
       if (previous) {
-        hideEvent = EventHandler.trigger(previous, Event.HIDE, {
+        hideEvent = EventHandler.trigger(previous, EVENT_HIDE, {
           relatedTarget: this._element
         });
       }
 
-      var showEvent = EventHandler.trigger(this._element, Event.SHOW, {
+      var showEvent = EventHandler.trigger(this._element, EVENT_SHOW, {
         relatedTarget: previous
       });
 
@@ -212,10 +194,10 @@
       this._activate(this._element, listElement);
 
       var complete = function complete() {
-        EventHandler.trigger(previous, Event.HIDDEN, {
+        EventHandler.trigger(previous, EVENT_HIDDEN, {
           relatedTarget: _this._element
         });
-        EventHandler.trigger(_this._element, Event.SHOWN, {
+        EventHandler.trigger(_this._element, EVENT_SHOWN, {
           relatedTarget: previous
         });
       };
@@ -236,9 +218,9 @@
     _proto._activate = function _activate(element, container, callback) {
       var _this2 = this;
 
-      var activeElements = container && (container.nodeName === 'UL' || container.nodeName === 'OL') ? SelectorEngine.find(Selector.ACTIVE_UL, container) : SelectorEngine.children(container, Selector.ACTIVE);
+      var activeElements = container && (container.nodeName === 'UL' || container.nodeName === 'OL') ? SelectorEngine.find(SELECTOR_ACTIVE_UL, container) : SelectorEngine.children(container, SELECTOR_ACTIVE);
       var active = activeElements[0];
-      var isTransitioning = callback && active && active.classList.contains(ClassName.FADE);
+      var isTransitioning = callback && active && active.classList.contains(CLASS_NAME_FADE);
 
       var complete = function complete() {
         return _this2._transitionComplete(element, active, callback);
@@ -246,7 +228,7 @@
 
       if (active && isTransitioning) {
         var transitionDuration = getTransitionDurationFromElement(active);
-        active.classList.remove(ClassName.SHOW);
+        active.classList.remove(CLASS_NAME_SHOW);
         EventHandler.one(active, TRANSITION_END, complete);
         emulateTransitionEnd(active, transitionDuration);
       } else {
@@ -256,11 +238,11 @@
 
     _proto._transitionComplete = function _transitionComplete(element, active, callback) {
       if (active) {
-        active.classList.remove(ClassName.ACTIVE);
-        var dropdownChild = SelectorEngine.findOne(Selector.DROPDOWN_ACTIVE_CHILD, active.parentNode);
+        active.classList.remove(CLASS_NAME_ACTIVE);
+        var dropdownChild = SelectorEngine.findOne(SELECTOR_DROPDOWN_ACTIVE_CHILD, active.parentNode);
 
         if (dropdownChild) {
-          dropdownChild.classList.remove(ClassName.ACTIVE);
+          dropdownChild.classList.remove(CLASS_NAME_ACTIVE);
         }
 
         if (active.getAttribute('role') === 'tab') {
@@ -268,7 +250,7 @@
         }
       }
 
-      element.classList.add(ClassName.ACTIVE);
+      element.classList.add(CLASS_NAME_ACTIVE);
 
       if (element.getAttribute('role') === 'tab') {
         element.setAttribute('aria-selected', true);
@@ -276,16 +258,16 @@
 
       reflow(element);
 
-      if (element.classList.contains(ClassName.FADE)) {
-        element.classList.add(ClassName.SHOW);
+      if (element.classList.contains(CLASS_NAME_FADE)) {
+        element.classList.add(CLASS_NAME_SHOW);
       }
 
-      if (element.parentNode && element.parentNode.classList.contains(ClassName.DROPDOWN_MENU)) {
-        var dropdownElement = SelectorEngine.closest(element, Selector.DROPDOWN);
+      if (element.parentNode && element.parentNode.classList.contains(CLASS_NAME_DROPDOWN_MENU)) {
+        var dropdownElement = SelectorEngine.closest(element, SELECTOR_DROPDOWN);
 
         if (dropdownElement) {
-          makeArray(SelectorEngine.find(Selector.DROPDOWN_TOGGLE)).forEach(function (dropdown) {
-            return dropdown.classList.add(ClassName.ACTIVE);
+          SelectorEngine.find(SELECTOR_DROPDOWN_TOGGLE).forEach(function (dropdown) {
+            return dropdown.classList.add(CLASS_NAME_ACTIVE);
           });
         }
 
@@ -332,7 +314,7 @@
    */
 
 
-  EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
+  EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
     event.preventDefault();
     var data = Data.getData(this, DATA_KEY) || new Tab(this);
     data.show();
