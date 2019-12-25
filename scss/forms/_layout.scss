@@ -22,9 +22,6 @@
 // Make forms appear inline(-block) by adding the `.form-inline` class. Inline
 // forms begin stacked on extra small (mobile) devices and then go inline when
 // viewports reach <768px.
-//
-// Requires wrapping inputs and labels with `.form-group` for proper display of
-// default HTML form controls and our custom form controls (e.g., input groups).
 
 .form-inline {
   display: flex;
@@ -47,19 +44,9 @@
       margin-bottom: 0;
     }
 
-    // Inline-block all the things for "inline"
-    .form-group {
-      display: flex;
-      flex: 0 0 auto;
-      flex-flow: row wrap;
-      align-items: center;
-      margin-bottom: 0;
-    }
-
-    // Allow folks to *not* use `.form-group`
     .form-control {
       display: inline-block;
-      width: auto; // Prevent labels from stacking above inputs in `.form-group`
+      width: auto; // Prevent labels from stacking above inputs
       vertical-align: middle;
     }
 

@@ -7,7 +7,7 @@ aliases: "/docs/4.3/utilities/"
 toc: true
 ---
 
-The bootstrap utilities are generated with the utility API which can be used to change or extend Bootstraps utility classes. If you don't have any idea what Sass maps are, you can consult the [official docs](https://sass-lang.com/documentation/values/maps) to get started.
+The bootstrap utilities are generated with the utility API which can be used to change or extend Bootstrap's utility classes. If you don't have any idea what Sass maps are, you can consult the [official docs](https://sass-lang.com/documentation/values/maps) to get started.
 
 The `$utilities` map contains all utilities and is later merged with your custom `$utilities` map if present. The utility map contains a keyed list of utility groups which accept the following options:
 

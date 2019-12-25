@@ -30,6 +30,7 @@ Changes to our source Sass files and compiled CSS.
   - `retina-img()`
   - `text-hide()` (also dropped the associated utility class, `.text-hide`)
   - `visibility()`
+  - `form-control-focus()`
 - **Todo:** New variables?
 - **Todo:** Rearrange forms source files (under `scss/forms/`)
 - **Todo:** Rearrange grid source files (under `scss/grid/`)
