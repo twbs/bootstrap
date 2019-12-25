@@ -113,7 +113,7 @@
     "karma-detect-browsers": "^2.3.3",
     "karma-firefox-launcher": "^1.2.0",
     "karma-jasmine": "^2.0.1",
-    "karma-jasmine-html-reporter": "^1.4.2",
+    "karma-jasmine-html-reporter": "^1.5.1",
     "karma-rollup-preprocessor": "^7.0.2",
     "linkinator": "^1.8.2",
     "node-sass": "^4.13.0",
