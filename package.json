@@ -114,7 +114,7 @@
     "karma-detect-browsers": "^2.3.3",
     "karma-firefox-launcher": "^1.2.0",
     "karma-jasmine": "^2.0.1",
-    "karma-jasmine-html-reporter": "^1.4.2",
+    "karma-jasmine-html-reporter": "^1.5.1",
     "karma-rollup-preprocessor": "^7.0.2",
     "linkinator": "^1.8.2",
     "node-sass": "^4.13.0",
@@ -128,7 +128,7 @@
     "rollup-plugin-istanbul": "^2.0.1",
     "serve": "^11.2.0",
     "shelljs": "^0.8.3",
-    "stylelint": "^12.0.0",
+    "stylelint": "^12.0.1",
     "stylelint-config-twbs-bootstrap": "^1.0.0",
     "terser": "^4.4.3",
     "vnu-jar": "19.9.4"
