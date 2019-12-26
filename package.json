@@ -72,7 +72,7 @@
     "docs-lint": "node build/vnu-jar.js",
     "docs-serve": "bundle exec jekyll serve",
     "docs-serve-only": "npm run docs-serve -- --skip-initial-build --no-watch",
-    "update-deps": "ncu -u -x \"cross-env,eslint,find-unused-sass-variables,jquery,karma,karma-browserstack-launcher,karma-qunit,nodemon,qunit,rollup,stylelint,stylelint-config-twbs-bootstrap\" && npm update && bundle update && cross-env-shell echo Manually update \\\"site/docs/$npm_package_version_short/assets/js/vendor/\\\"",
+    "update-deps": "ncu -u -x \"babel-plugin-istanbul,cross-env,eslint,find-unused-sass-variables,jquery,karma,karma-browserstack-launcher,karma-qunit,nodemon,qunit,rollup,sinon,stylelint,stylelint-config-twbs-bootstrap\" && npm update && bundle update && cross-env-shell echo Manually update \\\"site/docs/$npm_package_version_short/assets/js/vendor/\\\"",
     "release": "npm-run-all dist release-sri release-zip docs-production",
     "release-sri": "node build/generate-sri.js",
     "release-version": "node build/change-version.js",
@@ -103,10 +103,10 @@
     "popper.js": "^1.16.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.7.5",
-    "@babel/core": "^7.7.5",
-    "@babel/plugin-proposal-object-rest-spread": "^7.7.4",
-    "@babel/preset-env": "^7.7.6",
+    "@babel/cli": "^7.7.7",
+    "@babel/core": "^7.7.7",
+    "@babel/plugin-proposal-object-rest-spread": "^7.7.7",
+    "@babel/preset-env": "^7.7.7",
     "autoprefixer": "^9.7.3",
     "babel-eslint": "^10.0.3",
     "babel-plugin-istanbul": "^5.2.0",
@@ -144,7 +144,7 @@
     "sinon": "^7.5.0",
     "stylelint": "^9.10.1",
     "stylelint-config-twbs-bootstrap": "^0.5.0",
-    "uglify-js": "^3.7.2",
+    "uglify-js": "^3.7.3",
     "vnu-jar": "19.9.4"
   },
   "engines": {
