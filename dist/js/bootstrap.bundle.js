@@ -7,7 +7,7 @@
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
   (global = global || self, global.bootstrap = factory());
-}(this, function () { 'use strict';
+}(this, (function () { 'use strict';
 
   function _defineProperties(target, props) {
     for (var i = 0; i < props.length; i++) {
@@ -211,7 +211,9 @@
     }
 
     if (element.style && element.parentNode && element.parentNode.style) {
-      return element.style.display !== 'none' && element.parentNode.style.display !== 'none' && element.style.visibility !== 'hidden';
+      var elementStyle = getComputedStyle(element);
+      var parentNodeStyle = getComputedStyle(element.parentNode);
+      return elementStyle.display !== 'none' && parentNodeStyle.display !== 'none' && elementStyle.visibility !== 'hidden';
     }
 
     return false;
@@ -1211,7 +1213,7 @@
 
   function normalizeDataKey(key) {
     return key.replace(/[A-Z]/g, function (chr) {
-      return chr.toLowerCase();
+      return "-" + chr.toLowerCase();
     });
   }
 
@@ -1607,8 +1609,6 @@
           event.preventDefault();
           this.next();
           break;
-
-        default:
       }
     };
 
@@ -2297,7 +2297,7 @@
 
   /**!
    * @fileOverview Kickass library to create and place poppers near their reference elements.
-   * @version 1.15.0
+   * @version 1.16.0
    * @license
    * Copyright (c) 2016 Federico Zivolo and contributors
    *
@@ -2319,16 +2319,17 @@
    * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
    * SOFTWARE.
    */
-  var isBrowser = typeof window !== 'undefined' && typeof document !== 'undefined';
+  var isBrowser = typeof window !== 'undefined' && typeof document !== 'undefined' && typeof navigator !== 'undefined';
 
-  var longerTimeoutBrowsers = ['Edge', 'Trident', 'Firefox'];
-  var timeoutDuration = 0;
-  for (var i = 0; i < longerTimeoutBrowsers.length; i += 1) {
-    if (isBrowser && navigator.userAgent.indexOf(longerTimeoutBrowsers[i]) >= 0) {
-      timeoutDuration = 1;
-      break;
+  var timeoutDuration = function () {
+    var longerTimeoutBrowsers = ['Edge', 'Trident', 'Firefox'];
+    for (var i = 0; i < longerTimeoutBrowsers.length; i += 1) {
+      if (isBrowser && navigator.userAgent.indexOf(longerTimeoutBrowsers[i]) >= 0) {
+        return 1;
+      }
     }
-  }
+    return 0;
+  }();
 
   function microtaskDebounce(fn) {
     var called = false;
@@ -2446,6 +2447,17 @@
     }
 
     return getScrollParent(getParentNode(element));
+  }
+
+  /**
+   * Returns the reference node of the reference object, or the reference object itself.
+   * @method
+   * @memberof Popper.Utils
+   * @param {Element|Object} reference - the reference element (the popper will be relative to this)
+   * @returns {Element} parent
+   */
+  function getReferenceNode(reference) {
+    return reference && reference.referenceNode ? reference.referenceNode : reference;
   }
 
   var isIE11 = isBrowser && !!(window.MSInputMethodContext && document.documentMode);
@@ -2756,8 +2768,8 @@
 
     // subtract scrollbar size from sizes
     var sizes = element.nodeName === 'HTML' ? getWindowSizes(element.ownerDocument) : {};
-    var width = sizes.width || element.clientWidth || result.right - result.left;
-    var height = sizes.height || element.clientHeight || result.bottom - result.top;
+    var width = sizes.width || element.clientWidth || result.width;
+    var height = sizes.height || element.clientHeight || result.height;
 
     var horizScrollbar = element.offsetWidth - width;
     var vertScrollbar = element.offsetHeight - height;
@@ -2909,7 +2921,7 @@
     // NOTE: 1 DOM access here
 
     var boundaries = { top: 0, left: 0 };
-    var offsetParent = fixedPosition ? getFixedPositionOffsetParent(popper) : findCommonOffsetParent(popper, reference);
+    var offsetParent = fixedPosition ? getFixedPositionOffsetParent(popper) : findCommonOffsetParent(popper, getReferenceNode(reference));
 
     // Handle viewport case
     if (boundariesElement === 'viewport') {
@@ -3037,7 +3049,7 @@
   function getReferenceOffsets(state, popper, reference) {
     var fixedPosition = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
 
-    var commonOffsetParent = fixedPosition ? getFixedPositionOffsetParent(popper) : findCommonOffsetParent(popper, reference);
+    var commonOffsetParent = fixedPosition ? getFixedPositionOffsetParent(popper) : findCommonOffsetParent(popper, getReferenceNode(reference));
     return getOffsetRectRelativeToArbitraryNode(reference, commonOffsetParent, fixedPosition);
   }
 
@@ -3299,7 +3311,7 @@
 
     this.disableEventListeners();
 
-    // remove the popper if user explicity asked for the deletion on destroy
+    // remove the popper if user explicitly asked for the deletion on destroy
     // do not use `remove` because IE11 doesn't support it
     if (this.options.removeOnDestroy) {
       this.popper.parentNode.removeChild(this.popper);
@@ -5327,7 +5339,7 @@
         return;
       }
 
-      var items = makeArray(SelectorEngine.find(Selector$4.VISIBLE_ITEMS, parent));
+      var items = makeArray(SelectorEngine.find(Selector$4.VISIBLE_ITEMS, parent)).filter(isVisible);
 
       if (!items.length) {
         return;
@@ -5442,6 +5454,7 @@
   };
   var Event$6 = {
     HIDE: "hide" + EVENT_KEY$5,
+    HIDE_PREVENTED: "hidePrevented" + EVENT_KEY$5,
     HIDDEN: "hidden" + EVENT_KEY$5,
     SHOW: "show" + EVENT_KEY$5,
     SHOWN: "shown" + EVENT_KEY$5,
@@ -5459,7 +5472,8 @@
     BACKDROP: 'modal-backdrop',
     OPEN: 'modal-open',
     FADE: 'fade',
-    SHOW: 'show'
+    SHOW: 'show',
+    STATIC: 'modal-static'
   };
   var Selector$5 = {
     DIALOG: '.modal-dialog',
@@ -5699,9 +5713,7 @@
       if (this._isShown && this._config.keyboard) {
         EventHandler.on(this._element, Event$6.KEYDOWN_DISMISS, function (event) {
           if (event.which === ESCAPE_KEYCODE$1) {
-            event.preventDefault();
-
-            _this5.hide();
+            _this5._triggerBackdropTransition();
           }
         });
       } else {
@@ -5773,11 +5785,7 @@
             return;
           }
 
-          if (_this8._config.backdrop === 'static') {
-            _this8._element.focus();
-          } else {
-            _this8.hide();
-          }
+          _this8._triggerBackdropTransition();
         });
 
         if (animate) {
@@ -5814,6 +5822,30 @@
       } else {
         callback();
       }
+    };
+
+    _proto._triggerBackdropTransition = function _triggerBackdropTransition() {
+      var _this9 = this;
+
+      if (this._config.backdrop === 'static') {
+        var hideEvent = EventHandler.trigger(this._element, Event$6.HIDE_PREVENTED);
+
+        if (hideEvent.defaultPrevented) {
+          return;
+        }
+
+        this._element.classList.add(ClassName$5.STATIC);
+
+        var modalTransitionDuration = getTransitionDurationFromElement(this._element);
+        EventHandler.one(this._element, TRANSITION_END, function () {
+          _this9._element.classList.remove(ClassName$5.STATIC);
+        });
+        emulateTransitionEnd(this._element, modalTransitionDuration);
+
+        this._element.focus();
+      } else {
+        this.hide();
+      }
     } // ----------------------------------------------------------------------
     // the following methods are used to handle overflowing modals
     // ----------------------------------------------------------------------
@@ -5843,7 +5875,7 @@
     };
 
     _proto._setScrollbar = function _setScrollbar() {
-      var _this9 = this;
+      var _this10 = this;
 
       if (this._isBodyOverflowing) {
         // Note: DOMNode.style.paddingRight returns the actual value or '' if not set
@@ -5853,14 +5885,14 @@
           var actualPadding = element.style.paddingRight;
           var calculatedPadding = window.getComputedStyle(element)['padding-right'];
           Manipulator.setDataAttribute(element, 'padding-right', actualPadding);
-          element.style.paddingRight = parseFloat(calculatedPadding) + _this9._scrollbarWidth + "px";
+          element.style.paddingRight = parseFloat(calculatedPadding) + _this10._scrollbarWidth + "px";
         }); // Adjust sticky content margin
 
         makeArray(SelectorEngine.find(Selector$5.STICKY_CONTENT)).forEach(function (element) {
           var actualMargin = element.style.marginRight;
           var calculatedMargin = window.getComputedStyle(element)['margin-right'];
           Manipulator.setDataAttribute(element, 'margin-right', actualMargin);
-          element.style.marginRight = parseFloat(calculatedMargin) - _this9._scrollbarWidth + "px";
+          element.style.marginRight = parseFloat(calculatedMargin) - _this10._scrollbarWidth + "px";
         }); // Adjust body padding
 
         var actualPadding = document.body.style.paddingRight;
@@ -5961,7 +5993,7 @@
 
 
   EventHandler.on(document, Event$6.CLICK_DATA_API, Selector$5.DATA_TOGGLE, function (event) {
-    var _this10 = this;
+    var _this11 = this;
 
     var target = getElementFromSelector(this);
 
@@ -5976,8 +6008,8 @@
       }
 
       EventHandler.one(target, Event$6.HIDDEN, function () {
-        if (isVisible(_this10)) {
-          _this10.focus();
+        if (isVisible(_this11)) {
+          _this11.focus();
         }
       });
     });
@@ -7881,5 +7913,5 @@
 
   return index_umd;
 
-}));
+})));
 //# sourceMappingURL=bootstrap.bundle.js.map

@@ -77,7 +77,7 @@ $utilities: map-merge(
     "border-color": (
       property: border-color,
       class: border,
-      values: map-merge($theme-colors, (white: $white))
+      values: map-merge($theme-colors, ("white": $white))
     ),
     // Sizing utilities
     "width": (
@@ -385,12 +385,12 @@ $utilities: map-merge(
       values: map-merge(
         $theme-colors,
         (
-          white: $white,
-          body: $body-color,
-          muted: $text-muted,
-          black-50: rgba($black, .5),
-          white-50: rgba($white, .5),
-          reset: inherit,
+          "white": $white,
+          "body": $body-color,
+          "muted": $text-muted,
+          "black-50": rgba($black, .5),
+          "white-50": rgba($white, .5),
+          "reset": inherit,
         )
       )
     ),
@@ -410,9 +410,9 @@ $utilities: map-merge(
       values: map-merge(
         $theme-colors,
         (
-          body: $body-bg,
-          white: $white,
-          transparent: transparent
+          "body": $body-bg,
+          "white": $white,
+          "transparent": transparent
         )
       )
     ),
@@ -426,12 +426,12 @@ $utilities: map-merge(
     ),
     "text-decoration": (
       property: text-decoration,
-      values: none
+      values: none underline line-through
     ),
     "font-style": (
       property: font-style,
       class: font,
-      values: italic
+      values: italic normal
     ),
     "overflow-wrap": (
       property: overflow-wrap word-break, // word-break for IE & < Edge 18

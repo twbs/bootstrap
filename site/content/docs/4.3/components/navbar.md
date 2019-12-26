@@ -227,7 +227,7 @@ Place various form controls and components within a navbar with `.form-inline`.
 </nav>
 {{< /example >}}
 
-Immediate children elements in `.navbar` use flex layout and will default to `justify-content: between`. Use additional [flex utilities]({{< docsref "/utilities/flex" >}}) as needed to adjust this behavior.
+Immediate children elements in `.navbar` use flex layout and will default to `justify-content: space-between`. Use additional [flex utilities]({{< docsref "/utilities/flex" >}}) as needed to adjust this behavior.
 
 {{< example >}}
 <nav class="navbar navbar-light bg-light">
@@ -325,7 +325,6 @@ Theming the navbar has never been easier thanks to the combination of theming cl
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
       <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
@@ -355,7 +354,6 @@ Theming the navbar has never been easier thanks to the combination of theming cl
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
       <div class="collapse navbar-collapse" id="navbarColor02">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
@@ -385,7 +383,6 @@ Theming the navbar has never been easier thanks to the combination of theming cl
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
       <div class="collapse navbar-collapse" id="navbarColor03">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">

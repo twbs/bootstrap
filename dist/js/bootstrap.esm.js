@@ -207,7 +207,9 @@ var isVisible = function isVisible(element) {
   }
 
   if (element.style && element.parentNode && element.parentNode.style) {
-    return element.style.display !== 'none' && element.parentNode.style.display !== 'none' && element.style.visibility !== 'hidden';
+    var elementStyle = getComputedStyle(element);
+    var parentNodeStyle = getComputedStyle(element.parentNode);
+    return elementStyle.display !== 'none' && parentNodeStyle.display !== 'none' && elementStyle.visibility !== 'hidden';
   }
 
   return false;
@@ -1207,7 +1209,7 @@ function normalizeData(val) {
 
 function normalizeDataKey(key) {
   return key.replace(/[A-Z]/g, function (chr) {
-    return chr.toLowerCase();
+    return "-" + chr.toLowerCase();
   });
 }
 
@@ -1603,8 +1605,6 @@ function () {
         event.preventDefault();
         this.next();
         break;
-
-      default:
     }
   };
 
@@ -2721,7 +2721,7 @@ function () {
       return;
     }
 
-    var items = makeArray(SelectorEngine.find(Selector$4.VISIBLE_ITEMS, parent));
+    var items = makeArray(SelectorEngine.find(Selector$4.VISIBLE_ITEMS, parent)).filter(isVisible);
 
     if (!items.length) {
       return;
@@ -2836,6 +2836,7 @@ var DefaultType$3 = {
 };
 var Event$6 = {
   HIDE: "hide" + EVENT_KEY$5,
+  HIDE_PREVENTED: "hidePrevented" + EVENT_KEY$5,
   HIDDEN: "hidden" + EVENT_KEY$5,
   SHOW: "show" + EVENT_KEY$5,
   SHOWN: "shown" + EVENT_KEY$5,
@@ -2853,7 +2854,8 @@ var ClassName$5 = {
   BACKDROP: 'modal-backdrop',
   OPEN: 'modal-open',
   FADE: 'fade',
-  SHOW: 'show'
+  SHOW: 'show',
+  STATIC: 'modal-static'
 };
 var Selector$5 = {
   DIALOG: '.modal-dialog',
@@ -3093,9 +3095,7 @@ function () {
     if (this._isShown && this._config.keyboard) {
       EventHandler.on(this._element, Event$6.KEYDOWN_DISMISS, function (event) {
         if (event.which === ESCAPE_KEYCODE$1) {
-          event.preventDefault();
-
-          _this5.hide();
+          _this5._triggerBackdropTransition();
         }
       });
     } else {
@@ -3167,11 +3167,7 @@ function () {
           return;
         }
 
-        if (_this8._config.backdrop === 'static') {
-          _this8._element.focus();
-        } else {
-          _this8.hide();
-        }
+        _this8._triggerBackdropTransition();
       });
 
       if (animate) {
@@ -3208,6 +3204,30 @@ function () {
     } else {
       callback();
     }
+  };
+
+  _proto._triggerBackdropTransition = function _triggerBackdropTransition() {
+    var _this9 = this;
+
+    if (this._config.backdrop === 'static') {
+      var hideEvent = EventHandler.trigger(this._element, Event$6.HIDE_PREVENTED);
+
+      if (hideEvent.defaultPrevented) {
+        return;
+      }
+
+      this._element.classList.add(ClassName$5.STATIC);
+
+      var modalTransitionDuration = getTransitionDurationFromElement(this._element);
+      EventHandler.one(this._element, TRANSITION_END, function () {
+        _this9._element.classList.remove(ClassName$5.STATIC);
+      });
+      emulateTransitionEnd(this._element, modalTransitionDuration);
+
+      this._element.focus();
+    } else {
+      this.hide();
+    }
   } // ----------------------------------------------------------------------
   // the following methods are used to handle overflowing modals
   // ----------------------------------------------------------------------
@@ -3237,7 +3257,7 @@ function () {
   };
 
   _proto._setScrollbar = function _setScrollbar() {
-    var _this9 = this;
+    var _this10 = this;
 
     if (this._isBodyOverflowing) {
       // Note: DOMNode.style.paddingRight returns the actual value or '' if not set
@@ -3247,14 +3267,14 @@ function () {
         var actualPadding = element.style.paddingRight;
         var calculatedPadding = window.getComputedStyle(element)['padding-right'];
         Manipulator.setDataAttribute(element, 'padding-right', actualPadding);
-        element.style.paddingRight = parseFloat(calculatedPadding) + _this9._scrollbarWidth + "px";
+        element.style.paddingRight = parseFloat(calculatedPadding) + _this10._scrollbarWidth + "px";
       }); // Adjust sticky content margin
 
       makeArray(SelectorEngine.find(Selector$5.STICKY_CONTENT)).forEach(function (element) {
         var actualMargin = element.style.marginRight;
         var calculatedMargin = window.getComputedStyle(element)['margin-right'];
         Manipulator.setDataAttribute(element, 'margin-right', actualMargin);
-        element.style.marginRight = parseFloat(calculatedMargin) - _this9._scrollbarWidth + "px";
+        element.style.marginRight = parseFloat(calculatedMargin) - _this10._scrollbarWidth + "px";
       }); // Adjust body padding
 
       var actualPadding = document.body.style.paddingRight;
@@ -3355,7 +3375,7 @@ function () {
 
 
 EventHandler.on(document, Event$6.CLICK_DATA_API, Selector$5.DATA_TOGGLE, function (event) {
-  var _this10 = this;
+  var _this11 = this;
 
   var target = getElementFromSelector(this);
 
@@ -3370,8 +3390,8 @@ EventHandler.on(document, Event$6.CLICK_DATA_API, Selector$5.DATA_TOGGLE, functi
     }
 
     EventHandler.one(target, Event$6.HIDDEN, function () {
-      if (isVisible(_this10)) {
-        _this10.focus();
+      if (isVisible(_this11)) {
+        _this11.focus();
       }
     });
   });

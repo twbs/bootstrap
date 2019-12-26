@@ -30,6 +30,7 @@ Changes to our source Sass files and compiled CSS.
   - `retina-img()`
   - `text-hide()` (also dropped the associated utility class, `.text-hide`)
   - `visibility()`
+  - `form-control-focus()`
 - **Todo:** New variables?
 - **Todo:** Rearrange forms source files (under `scss/forms/`)
 - **Todo:** Rearrange grid source files (under `scss/grid/`)
@@ -59,7 +60,7 @@ Changes to any layout tools and our grid system.
 
 Changes to Reboot, typography, tables, and more.
 
-- **Todo:** Make RFS enabled by default
+- [RFS]({{< docsref "/getting-started/rfs" >}}) enabled for automated font size rescaling. [See #29152](https://github.com/twbs/bootstrap/pull/29152)
 - Reset default horizontal `padding-left` on `<ul>` and `<ol>` elements from browser default `40px` to `2rem`.
 - Simplified table styles (no more 2px border on `thead > th` elements) and tightened cell padding.
 - Dropped `.pre-scrollable` class. [See #29135](https://github.com/twbs/bootstrap/pull/29135)

@@ -18,9 +18,11 @@
   width: $form-check-input-width;
   height: $form-check-input-width;
   margin-top: ($line-height-base - $form-check-input-width) / 2; // line-height minus check height
+  vertical-align: top;
   background-color: $form-check-input-bg;
   border: $form-check-input-border;
   appearance: none;
+  color-adjust: exact; // Keep themed appearance for print
 
   &[type="checkbox"] {
     @include border-radius($form-check-input-border-radius);
@@ -80,13 +82,16 @@
     border-color: $form-check-input-indeterminate-border-color;
   }
 
-  // Use disabled attribute instead of :disabled pseudo-class
-  // Workaround for: https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/11295231
-  &[disabled] {
+  &:disabled {
     pointer-events: none;
     filter: none;
     opacity: .5;
+  }
 
+  // Use disabled attribute in addition of :disabled pseudo-class
+  // See: https://github.com/twbs/bootstrap/issues/28247
+  &[disabled],
+  &:disabled {
     ~ .form-check-label {
       opacity: .5;
     }
@@ -95,6 +100,7 @@
 
 .form-check-label {
   margin-bottom: 0;
+  cursor: $form-check-label-cursor;
 }
 
 //
@@ -112,6 +118,7 @@
     background-position: left center;
     background-size: $form-switch-bg-size; // Get a 1px separation
     @include border-radius($form-switch-border-radius);
+    color-adjust: exact; // Keep themed appearance for print
     // Todo: Figure out how to tackle these, with or without mixin?
     // transition: $form-switch-transition;
     // transition-property: $form-switch-transition-property;

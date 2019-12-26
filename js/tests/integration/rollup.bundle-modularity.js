@@ -1,6 +1,6 @@
 /* eslint-env node */
 
-const commonjs = require('rollup-plugin-commonjs')
+const commonjs = require('@rollup/plugin-commonjs')
 const configRollup = require('./rollup.bundle')
 
 const config = {

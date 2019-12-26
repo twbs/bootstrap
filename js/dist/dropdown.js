@@ -7,7 +7,7 @@
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./dom/data.js'), require('./dom/event-handler.js'), require('./dom/manipulator.js'), require('popper.js'), require('./dom/selector-engine.js')) :
   typeof define === 'function' && define.amd ? define(['./dom/data.js', './dom/event-handler.js', './dom/manipulator.js', 'popper.js', './dom/selector-engine.js'], factory) :
   (global = global || self, global.Dropdown = factory(global.Data, global.EventHandler, global.Manipulator, global.Popper, global.SelectorEngine));
-}(this, function (Data, EventHandler, Manipulator, Popper, SelectorEngine) { 'use strict';
+}(this, (function (Data, EventHandler, Manipulator, Popper, SelectorEngine) { 'use strict';
 
   Data = Data && Data.hasOwnProperty('default') ? Data['default'] : Data;
   EventHandler = EventHandler && EventHandler.hasOwnProperty('default') ? EventHandler['default'] : EventHandler;
@@ -129,6 +129,20 @@
     }
 
     return [].slice.call(nodeList);
+  };
+
+  var isVisible = function isVisible(element) {
+    if (!element) {
+      return false;
+    }
+
+    if (element.style && element.parentNode && element.parentNode.style) {
+      var elementStyle = getComputedStyle(element);
+      var parentNodeStyle = getComputedStyle(element.parentNode);
+      return elementStyle.display !== 'none' && parentNodeStyle.display !== 'none' && elementStyle.visibility !== 'hidden';
+    }
+
+    return false;
   };
 
   var noop = function noop() {
@@ -576,7 +590,7 @@
         return;
       }
 
-      var items = makeArray(SelectorEngine.find(Selector.VISIBLE_ITEMS, parent));
+      var items = makeArray(SelectorEngine.find(Selector.VISIBLE_ITEMS, parent)).filter(isVisible);
 
       if (!items.length) {
         return;
@@ -666,5 +680,5 @@
 
   return Dropdown;
 
-}));
+})));
 //# sourceMappingURL=dropdown.js.map
