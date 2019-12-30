@@ -65,6 +65,7 @@ Changes to Reboot, typography, tables, and more.
 - Simplified table styles (no more 2px border on `thead > th` elements) and tightened cell padding.
 - Dropped `.pre-scrollable` class. [See #29135](https://github.com/twbs/bootstrap/pull/29135)
 - `.text-*` utilities do not add hover and focus states to links anymore. `.link-*` helper classes can be used instead. [See #29267](https://github.com/twbs/bootstrap/pull/29267)
+- Drop `.text-justify` class. [See #229793](https://github.com/twbs/bootstrap/pull/29793)
 
 ## Forms
 
