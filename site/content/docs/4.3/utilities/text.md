@@ -22,7 +22,7 @@ Easily realign text to components with text alignment classes. For left, right, 
 {{< /example >}}
 
 {{< callout info >}}
-Notice we don't provide utility classes for justified text. While, aesthetically, justified text can look more appealing, it does make word-spacing more random and therefore harder to read.
+Note that we don't provide utility classes for justified text. While, aesthetically, justified text might look more appealing, it does make word-spacing more random and therefore harder to read.
 {{< /callout >}}
 
 ## Text wrapping and overflow
