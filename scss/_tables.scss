@@ -5,26 +5,27 @@
 .table {
   width: 100%;
   margin-bottom: $spacer;
+  color: $table-color;
+  vertical-align: $table-cell-vertical-align;
   background-color: $table-bg; // Reset for nesting within parents with `background-color`.
 
   th,
   td {
     padding: $table-cell-padding;
-    vertical-align: top;
-    border-top: $table-border-width solid $table-border-color;
+    border-bottom: $table-border-width solid $table-border-color;
+  }
+
+  tbody {
+    vertical-align: inherit;
   }
 
   thead th {
     vertical-align: bottom;
-    border-bottom: (2 * $table-border-width) solid $table-border-color;
+    border-bottom-color: $table-head-border-color;
   }
 
   tbody + tbody {
     border-top: (2 * $table-border-width) solid $table-border-color;
-  }
-
-  .table {
-    background-color: $body-bg;
   }
 }
 
@@ -56,7 +57,7 @@
   thead {
     th,
     td {
-      border-bottom-width: (2 * $table-border-width);
+      border-bottom-width: 2 * $table-border-width;
     }
   }
 }
@@ -87,7 +88,8 @@
 
 .table-hover {
   tbody tr {
-    @include hover {
+    &:hover {
+      color: $table-hover-color;
       background-color: $table-hover-bg;
     }
   }
@@ -100,7 +102,7 @@
 // inheritance to nested tables.
 
 @each $color, $value in $theme-colors {
-  @include table-row-variant($color, theme-color-level($color, -9));
+  @include table-row-variant($color, color-level($value, $table-bg-level), color-level($value, $table-border-level));
 }
 
 @include table-row-variant(active, $table-active-bg);
@@ -144,14 +146,15 @@
   }
 
   &.table-striped {
-    tbody tr:nth-of-type(odd) {
+    tbody tr:nth-of-type(#{$table-striped-order}) {
       background-color: $table-dark-accent-bg;
     }
   }
 
   &.table-hover {
     tbody tr {
-      @include hover {
+      &:hover {
+        color: $table-dark-hover-color;
         background-color: $table-dark-hover-bg;
       }
     }
@@ -175,7 +178,6 @@
         width: 100%;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
-        -ms-overflow-style: -ms-autohiding-scrollbar; // See https://github.com/twbs/bootstrap/pull/10057
 
         // Prevent double border on horizontal scroll due to use of `display: block;`
         > .table-bordered {

@@ -4,20 +4,25 @@
 // .modal-content   - actual modal w/ bg and corners and stuff
 
 
-// Kill the scroll on the body
 .modal-open {
+  // Kill the scroll on the body
   overflow: hidden;
+
+  .modal {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
 }
 
 // Container that the modal scrolls within
 .modal {
   position: fixed;
   top: 0;
-  right: 0;
-  bottom: 0;
   left: 0;
   z-index: $zindex-modal;
   display: none;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
   // Prevent Chrome on Windows from adding a focus outline. For details, see
   // https://github.com/twbs/bootstrap/pull/10951.
@@ -25,11 +30,6 @@
   // We deliberately don't use `-webkit-overflow-scrolling: touch;` due to a
   // gnarly iOS Safari bug: https://bugs.webkit.org/show_bug.cgi?id=158342
   // See also https://github.com/twbs/bootstrap/issues/17695
-
-  .modal-open & {
-    overflow-x: hidden;
-    overflow-y: auto;
-  }
 }
 
 // Shell div to position the modal with bottom padding
@@ -43,17 +43,63 @@
   // When fading in the modal, animate it to slide down
   .modal.fade & {
     @include transition($modal-transition);
-    transform: translate(0, -25%);
+    transform: $modal-fade-transform;
   }
   .modal.show & {
-    transform: translate(0, 0);
+    transform: $modal-show-transform;
+  }
+
+  // When trying to close, animate focus to scale
+  .modal.modal-static & {
+    transform: $modal-scale-transform;
+  }
+}
+
+.modal-dialog-scrollable {
+  display: flex; // IE10/11
+  max-height: subtract(100%, $modal-dialog-margin * 2);
+
+  .modal-content {
+    max-height: subtract(100vh, $modal-dialog-margin * 2); // IE10/11
+    overflow: hidden;
+  }
+
+  .modal-header,
+  .modal-footer {
+    flex-shrink: 0;
+  }
+
+  .modal-body {
+    overflow-y: auto;
   }
 }
 
 .modal-dialog-centered {
   display: flex;
   align-items: center;
-  min-height: calc(100% - (#{$modal-dialog-margin} * 2));
+  min-height: subtract(100%, $modal-dialog-margin * 2);
+
+  // Ensure `modal-dialog-centered` extends the full height of the view (IE10/11)
+  &::before {
+    display: block; // IE10
+    height: subtract(100vh, $modal-dialog-margin * 2);
+    content: "";
+  }
+
+  // Ensure `.modal-body` shows scrollbar (IE10/11)
+  &.modal-dialog-scrollable {
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+
+    .modal-content {
+      max-height: none;
+    }
+
+    &::before {
+      content: none;
+    }
+  }
 }
 
 // Actual modal
@@ -63,6 +109,7 @@
   flex-direction: column;
   width: 100%; // Ensure `.modal-content` extends the full width of the parent `.modal-dialog`
   // counteract the pointer-events: none; in the .modal-dialog
+  color: $modal-content-color;
   pointer-events: auto;
   background-color: $modal-content-bg;
   background-clip: padding-box;
@@ -77,10 +124,10 @@
 .modal-backdrop {
   position: fixed;
   top: 0;
-  right: 0;
-  bottom: 0;
   left: 0;
   z-index: $zindex-modal-backdrop;
+  width: 100vw;
+  height: 100vh;
   background-color: $modal-backdrop-bg;
 
   // Fade for backdrop
@@ -96,12 +143,12 @@
   justify-content: space-between; // Put modal header elements (title and dismiss) on opposite ends
   padding: $modal-header-padding;
   border-bottom: $modal-header-border-width solid $modal-header-border-color;
-  @include border-top-radius($modal-content-border-radius);
+  @include border-top-radius($modal-content-inner-border-radius);
 
   .close {
     padding: $modal-header-padding;
     // auto on the left force icon to the right even when there is no .modal-title
-    margin: (-$modal-header-padding) (-$modal-header-padding) (-$modal-header-padding) auto;
+    margin: (-$modal-header-padding-y) (-$modal-header-padding-x) (-$modal-header-padding-y) auto;
   }
 }
 
@@ -116,7 +163,7 @@
 .modal-body {
   position: relative;
   // Enable `flex-grow: 1` so that the body take up as much space as possible
-  // when should there be a fixed height on `.modal-dialog`.
+  // when there should be a fixed height on `.modal-dialog`.
   flex: 1 1 auto;
   padding: $modal-inner-padding;
 }
@@ -124,14 +171,19 @@
 // Footer (for actions)
 .modal-footer {
   display: flex;
+  flex-wrap: wrap;
   align-items: center; // vertically center
   justify-content: flex-end; // Right align buttons with flex property because text-align doesn't work on flex items
-  padding: $modal-inner-padding;
+  padding: $modal-inner-padding - $modal-footer-margin-between / 2;
   border-top: $modal-footer-border-width solid $modal-footer-border-color;
+  @include border-bottom-radius($modal-content-inner-border-radius);
 
-  // Easily place margin between footer elements
-  > :not(:first-child) { margin-left: .25rem; }
-  > :not(:last-child) { margin-right: .25rem; }
+  // Place margin between footer elements
+  // This solution is far from ideal because of the universal selector usage,
+  // but is needed to fix https://github.com/twbs/bootstrap/issues/24800
+  > * {
+    margin: $modal-footer-margin-between / 2;
+  }
 }
 
 // Measure scrollbar width for padding body during modal show/hide
@@ -151,8 +203,20 @@
     margin: $modal-dialog-margin-y-sm-up auto;
   }
 
+  .modal-dialog-scrollable {
+    max-height: subtract(100%, $modal-dialog-margin-y-sm-up * 2);
+
+    .modal-content {
+      max-height: subtract(100vh, $modal-dialog-margin-y-sm-up * 2);
+    }
+  }
+
   .modal-dialog-centered {
-    min-height: calc(100% - (#{$modal-dialog-margin-y-sm-up} * 2));
+    min-height: subtract(100%, $modal-dialog-margin-y-sm-up * 2);
+
+    &::before {
+      height: subtract(100vh, $modal-dialog-margin-y-sm-up * 2);
+    }
   }
 
   .modal-content {
@@ -160,9 +224,15 @@
   }
 
   .modal-sm { max-width: $modal-sm; }
-
 }
 
 @include media-breakpoint-up(lg) {
-  .modal-lg { max-width: $modal-lg; }
+  .modal-lg,
+  .modal-xl {
+    max-width: $modal-lg;
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  .modal-xl { max-width: $modal-xl; }
 }

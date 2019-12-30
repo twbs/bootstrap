@@ -1,0 +1,44 @@
+{
+  "root": true,
+  "parserOptions": {
+    "ecmaVersion": 5,
+    "sourceType": "script"
+  },
+  "extends": [
+    "plugin:unicorn/recommended",
+    "xo",
+    "xo/browser"
+  ],
+  "rules": {
+    "capitalized-comments": "off",
+    "indent": [
+      "error",
+      2,
+      {
+        "MemberExpression": "off",
+        "SwitchCase": 1
+      }
+    ],
+    "multiline-ternary": [
+      "error",
+      "always-multiline"
+    ],
+    "no-new": "off",
+    "object-curly-spacing": [
+      "error",
+      "always"
+    ],
+    "semi": [
+      "error",
+      "never"
+    ],
+    "strict": "error",
+    "unicorn/consistent-function-scoping": "off",
+    "unicorn/no-for-loop": "off",
+    "unicorn/prefer-dataset": "off",
+    "unicorn/prefer-includes": "off",
+    "unicorn/prefer-node-append": "off",
+    "unicorn/prefer-query-selector": "off",
+    "unicorn/prevent-abbreviations": "off"
+  }
+}

@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../../../dist/css/bootstrap.min.css">
     <title>Tooltip</title>
     <style>
@@ -51,31 +51,66 @@
           <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="left" title="Tooltip with XSS" data-container="<img src=1 onerror=alert(123) />">
             Tooltip with XSS
           </button>
-          <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="left" title="Tooltip with container" data-container="#customContainer">
-            Tooltip with container
+          <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="left" title="Tooltip with container (selector)" data-container="#customContainer">
+            Tooltip with container (selector)
+          </button>
+          <button id="tooltipElement" type="button" class="btn btn-secondary" data-placement="left" title="Tooltip with container (element)">
+            Tooltip with container (element)
           </button>
           <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-html="true" title="<em>Tooltip</em> <u>with</u> <b>HTML</b>">
             Tooltip with HTML
           </button>
         </p>
       </div>
-      <div id="target" title="Test tooltip on transformed element"></div>
+      <div class="row">
+        <div class="col-sm-3">
+          <div id="target" title="Test tooltip on transformed element"></div>
+        </div>
+        <div id="shadow" class="pt-5"></div>
+      </div>
       <div id="customContainer"></div>
     </div>
 
-    <script src="../../../assets/js/vendor/jquery-slim.min.js"></script>
-    <script src="../../../assets/js/vendor/popper.min.js"></script>
-    <script src="../../dist/util.js"></script>
+    <script src="../../../node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <script src="../../dist/dom/polyfill.js"></script>
+    <script src="../../dist/dom/selector-engine.js"></script>
+    <script src="../../dist/dom/event-handler.js"></script>
+    <script src="../../dist/dom/manipulator.js"></script>
+    <script src="../../dist/dom/data.js"></script>
     <script src="../../dist/tooltip.js"></script>
-
     <script>
-      $(function () {
-        $('[data-toggle="tooltip"]').tooltip()
-        $('#target').tooltip({
-          placement : 'top',
-          trigger : 'manual'
-        }).tooltip('show')
+      if (typeof document.body.attachShadow === 'function') {
+        var shadowRoot = document.getElementById('shadow').attachShadow({ mode: 'open' })
+        shadowRoot.innerHTML =
+          '<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top in a shadow dom">' +
+          '  Tooltip on top in a shadow dom' +
+          '</button>' +
+          '<button id="secondTooltip" type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top in a shadow dom with container option">' +
+          '  Tooltip on top in a shadow dom' +
+          '</button>'
+
+        var firstChildTooltip = new Tooltip(shadowRoot.firstChild)
+        var secondChildTooltip = new Tooltip(shadowRoot.getElementById('secondTooltip'), {
+          container: shadowRoot
+        })
+      }
+
+      [].slice.call(document.querySelectorAll('[data-toggle="tooltip"]'))
+        .forEach(function (tooltip) {
+          new Tooltip(tooltip)
+        })
+
+      var tooltipElement = document.getElementById('tooltipElement')
+      var tooltipElementInstance = new Tooltip(tooltipElement, {
+        container: document.getElementById('customContainer')
       })
+
+      var target = document.getElementById('target')
+      var targetTooltip = new Tooltip(target, {
+        placement : 'top',
+        trigger : 'manual'
+      })
+      targetTooltip.show()
     </script>
   </body>
 </html>

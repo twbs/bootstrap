@@ -1,0 +1,25 @@
+{{- /*
+  Usage: `example [args]`
+
+  `args` are optional and can be one of the following:
+    id: the `div`'s id - default: ""
+    class: any extra class(es) to be added to the `div` - default ""
+    show_preview: if the preview should be output in the HTML - default: `true`
+    show_markup: if the markup should be output in the HTML - default: `true`
+*/ -}}
+
+{{- $show_preview := .Get "show_preview" | default true -}}
+{{- $show_markup := .Get "show_markup" | default true -}}
+{{- $input := .Inner -}}
+
+{{- if eq $show_preview true -}}
+<div{{ with .Get "id" }} id="{{ . }}"{{ end }} class="bd-example{{ with .Get "class" }} {{ . }}{{ end }}">
+  {{- $input -}}
+</div>
+{{- end -}}
+
+{{- if eq $show_markup true -}}
+  {{- $content := replaceRE `<svg class="bd\-placeholder\-img(?:\-lg)?(?: *?bd\-placeholder\-img\-lg)? ?(.*?)".*?<\/svg>\n` `<img src="..." class="$1" alt="...">` $input -}}
+  {{- $content = replaceRE `(class=" *?")` "" $content -}}
+  {{- highlight (trim $content "\n") "html" "" -}}
+{{- end -}}

@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../../../dist/css/bootstrap.min.css">
     <title>Popover</title>
   </head>
@@ -31,16 +31,19 @@
       </button>
     </div>
 
-    <script src="../../../assets/js/vendor/jquery-slim.min.js"></script>
-    <script src="../../../assets/js/vendor/popper.min.js"></script>
-    <script src="../../dist/util.js"></script>
+    <script src="../../../node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <script src="../../dist/dom/polyfill.js"></script>
+    <script src="../../dist/dom/event-handler.js"></script>
+    <script src="../../dist/dom/selector-engine.js"></script>
+    <script src="../../dist/dom/manipulator.js"></script>
+    <script src="../../dist/dom/data.js"></script>
     <script src="../../dist/tooltip.js"></script>
     <script src="../../dist/popover.js"></script>
-
     <script>
-      $(function () {
-        $('[data-toggle="popover"]').popover()
-      })
+      [].slice.call(document.querySelectorAll('[data-toggle="popover"]'))
+        .forEach(function (popover) {
+          new Popover(popover)
+        })
     </script>
   </body>
 </html>

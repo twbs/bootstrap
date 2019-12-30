@@ -1,0 +1,82 @@
+// Select
+//
+// Replaces the browser default select with a custom one, mostly pulled from
+// https://primer.github.io/.
+
+.form-select {
+  display: inline-block;
+  width: 100%;
+  height: $form-select-height;
+  padding: $form-select-padding-y ($form-select-padding-x + $form-select-indicator-padding) $form-select-padding-y $form-select-padding-x;
+  font-family: $form-select-font-family;
+  @include font-size($form-select-font-size);
+  font-weight: $form-select-font-weight;
+  line-height: $form-select-line-height;
+  color: $form-select-color;
+  vertical-align: middle;
+  background: $form-select-bg escape-svg($form-select-indicator) $form-select-background;
+  border: $form-select-border-width solid $form-select-border-color;
+  @include border-radius($form-select-border-radius, 0);
+  @include box-shadow($form-select-box-shadow);
+  appearance: none;
+
+  &:focus {
+    border-color: $form-select-focus-border-color;
+    outline: 0;
+    @if $enable-shadows {
+      box-shadow: $form-select-box-shadow, $form-select-focus-box-shadow;
+    } @else {
+      box-shadow: $form-select-focus-box-shadow;
+    }
+
+    &::-ms-value {
+      // For visual consistency with other platforms/browsers,
+      // suppress the default white text on blue background highlight given to
+      // the selected option text when the (still closed) <select> receives focus
+      // in IE and (under certain conditions) Edge.
+      // See https://github.com/twbs/bootstrap/issues/19398.
+      color: $input-color;
+      background-color: $input-bg;
+    }
+  }
+
+  &[multiple],
+  &[size]:not([size="1"]) {
+    height: auto;
+    padding-right: $form-select-padding-x;
+    background-image: none;
+  }
+
+  &:disabled {
+    color: $form-select-disabled-color;
+    background-color: $form-select-disabled-bg;
+    border-color: $form-select-disabled-border-color;
+  }
+
+  // Hides the default caret in IE11
+  &::-ms-expand {
+    display: none;
+  }
+
+  // Remove outline from select box in FF
+  &:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 $form-select-color;
+  }
+}
+
+.form-select-sm {
+  height: $form-select-height-sm;
+  padding-top: $form-select-padding-y-sm;
+  padding-bottom: $form-select-padding-y-sm;
+  padding-left: $form-select-padding-x-sm;
+  @include font-size($form-select-font-size-sm);
+}
+
+.form-select-lg {
+  height: $form-select-height-lg;
+  padding-top: $form-select-padding-y-lg;
+  padding-bottom: $form-select-padding-y-lg;
+  padding-left: $form-select-padding-x-lg;
+  @include font-size($form-select-font-size-lg);
+}

@@ -3,40 +3,45 @@
 // Easily pump out default styles, as well as :hover, :focus, :active,
 // and disabled options for all buttons
 
-@mixin button-variant($background, $border, $hover-background: darken($background, 7.5%), $hover-border: darken($border, 10%), $active-background: darken($background, 10%), $active-border: darken($border, 12.5%)) {
-  color: color-yiq($background);
+@mixin button-variant(
+  $background,
+  $border,
+  $color: color-yiq($background),
+  $hover-background: darken($background, 7.5%),
+  $hover-border: darken($border, 10%),
+  $hover-color: color-yiq($hover-background),
+  $active-background: darken($background, 10%),
+  $active-border: darken($border, 12.5%),
+  $active-color: color-yiq($active-background)
+) {
+  color: $color;
   @include gradient-bg($background);
   border-color: $border;
   @include box-shadow($btn-box-shadow);
 
-  @include hover {
-    color: color-yiq($hover-background);
+  &:hover {
+    color: $hover-color;
     @include gradient-bg($hover-background);
     border-color: $hover-border;
   }
 
   &:focus,
   &.focus {
+    color: $hover-color;
+    @include gradient-bg($hover-background);
+    border-color: $hover-border;
     // Avoid using mixin so we can pass custom focus shadow properly
     @if $enable-shadows {
-      box-shadow: $btn-box-shadow, 0 0 0 $btn-focus-width rgba($border, .5);
+      box-shadow: $btn-box-shadow, 0 0 0 $btn-focus-width rgba(mix($color, $border, 15%), .5);
     } @else {
-      box-shadow: 0 0 0 $btn-focus-width rgba($border, .5);
+      box-shadow: 0 0 0 $btn-focus-width rgba(mix($color, $border, 15%), .5);
     }
   }
 
-  // Disabled comes first so active can properly restyle
-  &.disabled,
-  &:disabled {
-    color: color-yiq($background);
-    background-color: $background;
-    border-color: $border;
-  }
-
-  &:not(:disabled):not(.disabled):active,
-  &:not(:disabled):not(.disabled).active,
+  &:active,
+  &.active,
   .show > &.dropdown-toggle {
-    color: color-yiq($active-background);
+    color: $active-color;
     background-color: $active-background;
     @if $enable-gradients {
       background-image: none; // Remove the gradient for the pressed/active state
@@ -45,19 +50,34 @@
 
     &:focus {
       // Avoid using mixin so we can pass custom focus shadow properly
-      @if $enable-shadows {
-        box-shadow: $btn-active-box-shadow, 0 0 0 $btn-focus-width rgba($border, .5);
+      @if $enable-shadows and $btn-active-box-shadow != none {
+        box-shadow: $btn-active-box-shadow, 0 0 0 $btn-focus-width rgba(mix($color, $border, 15%), .5);
       } @else {
-        box-shadow: 0 0 0 $btn-focus-width rgba($border, .5);
+        box-shadow: 0 0 0 $btn-focus-width rgba(mix($color, $border, 15%), .5);
       }
+    }
+  }
+
+  &:disabled,
+  &.disabled {
+    color: $color;
+    background-color: $background;
+    border-color: $border;
+    // Remove CSS gradients if they're enabled
+    @if $enable-gradients {
+      background-image: none;
     }
   }
 }
 
-@mixin button-outline-variant($color, $color-hover: color-yiq($color), $active-background: $color, $active-border: $color) {
+@mixin button-outline-variant(
+  $color,
+  $color-hover: color-yiq($color),
+  $active-background: $color,
+  $active-border: $color,
+  $active-color: color-yiq($active-background)
+) {
   color: $color;
-  background-color: transparent;
-  background-image: none;
   border-color: $color;
 
   &:hover {
@@ -71,16 +91,10 @@
     box-shadow: 0 0 0 $btn-focus-width rgba($color, .5);
   }
 
-  &.disabled,
-  &:disabled {
-    color: $color;
-    background-color: transparent;
-  }
-
-  &:not(:disabled):not(.disabled):active,
-  &:not(:disabled):not(.disabled).active,
+  &:active,
+  &.active,
   .show > &.dropdown-toggle {
-    color: color-yiq($active-background);
+    color: $active-color;
     background-color: $active-background;
     border-color: $active-border;
 
@@ -93,17 +107,18 @@
       }
     }
   }
+
+  &:disabled,
+  &.disabled {
+    color: $color;
+    background-color: transparent;
+  }
 }
 
 // Button sizes
-@mixin button-size($padding-y, $padding-x, $font-size, $line-height, $border-radius) {
+@mixin button-size($padding-y, $padding-x, $font-size, $border-radius) {
   padding: $padding-y $padding-x;
-  font-size: $font-size;
-  line-height: $line-height;
+  @include font-size($font-size);
   // Manually declare to provide an override to the browser default
-  @if $enable-rounded {
-    border-radius: $border-radius;
-  } @else {
-    border-radius: 0;
-  }
+  @include border-radius($border-radius, 0);
 }

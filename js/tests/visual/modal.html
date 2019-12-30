@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../../../dist/css/bootstrap.min.css">
     <title>Modal</title>
     <style>
@@ -38,10 +38,10 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">Modal title</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
-              <h4 class="modal-title" id="myModalLabel">Modal title</h4>
             </div>
             <div class="modal-body">
               <h4>Text in a modal</h4>
@@ -58,13 +58,13 @@
                 <div class="card">
                   <div class="card-header" role="tab" id="headingOne">
                     <h5 class="mb-0">
-                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                      <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                         Collapsible Group Item #1
                       </a>
                     </h5>
                   </div>
 
-                  <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+                  <div id="collapseOne" class="collapse show" data-parent="#accordion" role="tabpanel" aria-labelledby="headingOne">
                     <div class="card-body">
                       Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
                     </div>
@@ -73,12 +73,12 @@
                 <div class="card">
                   <div class="card-header" role="tab" id="headingTwo">
                     <h5 class="mb-0">
-                      <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                      <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                         Collapsible Group Item #2
                       </a>
                     </h5>
                   </div>
-                  <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+                  <div id="collapseTwo" class="collapse" data-parent="#accordion" role="tabpanel" aria-labelledby="headingTwo">
                     <div class="card-body">
                       Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
                     </div>
@@ -87,12 +87,12 @@
                 <div class="card">
                   <div class="card-header" role="tab" id="headingThree">
                     <h5 class="mb-0">
-                      <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                      <a class="collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                         Collapsible Group Item #3
                       </a>
                     </h5>
                   </div>
-                  <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
+                  <div id="collapseThree" class="collapse" data-parent="#accordion" role="tabpanel" aria-labelledby="headingThree">
                     <div class="card-body">
                       Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
                     </div>
@@ -125,10 +125,10 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
+              <h4 class="modal-title" id="firefoxModalLabel">Firefox Bug Test</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
-              <h4 class="modal-title" id="firefoxModalLabel">Firefox Bug Test</h4>
             </div>
             <div class="modal-body">
               <ol>
@@ -151,10 +151,10 @@
         <div class="modal-dialog" role="document" style="transition-duration: inherit;">
           <div class="modal-content">
             <div class="modal-header">
+              <h4 class="modal-title" id="slowModalLabel">Lorem slowly</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
-              <h4 class="modal-title" id="slowModalLabel">Lorem slowly</h4>
             </div>
             <div class="modal-body">
               <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Nulla vitae elit libero, a pharetra augue.</p>
@@ -205,63 +205,94 @@
       </button>
     </div>
 
-    <script src="../../../assets/js/vendor/jquery-slim.min.js"></script>
-    <script src="../../../assets/js/vendor/popper.min.js"></script>
-    <script src="../../dist/util.js"></script>
+    <script src="../../../node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <script src="../../dist/dom/polyfill.js"></script>
+    <script src="../../dist/dom/event-handler.js"></script>
+    <script src="../../dist/dom/selector-engine.js"></script>
+    <script src="../../dist/dom/data.js"></script>
+    <script src="../../dist/dom/manipulator.js"></script>
     <script src="../../dist/modal.js"></script>
     <script src="../../dist/collapse.js"></script>
     <script src="../../dist/tooltip.js"></script>
     <script src="../../dist/popover.js"></script>
-
     <script>
+      var ffBugTestResult = document.getElementById('ff-bug-test-result')
       var firefoxTestDone = false
+
       function reportFirefoxTestResult(result) {
         if (!firefoxTestDone) {
-          $('#ff-bug-test-result')
-            .addClass(result ? 'text-success' : 'text-danger')
-            .text(result ? 'PASS' : 'FAIL')
+          ffBugTestResult.classList.add(result ? 'text-success' : 'text-danger')
+          ffBugTestResult.innerHTML = result ? 'PASS' : 'FAIL'
         }
       }
 
-      $(function () {
-        $('[data-toggle="popover"]').popover()
-        $('[data-toggle="tooltip"]').tooltip()
-
-        $('#tall-toggle').click(function () {
-          $('#tall').toggle()
+      [].slice.call(document.querySelectorAll('[data-toggle="popover"]'))
+        .forEach(function (popover) {
+          new Popover(popover)
         })
 
-        $('#ff-bug-input').one('focus', function () {
-          $('#firefoxModal').on('focus', reportFirefoxTestResult.bind(false))
-          $('#ff-bug-input').on('focus', reportFirefoxTestResult.bind(true))
-        })
+      var tooltipList = [].slice.call(document.querySelectorAll('[data-toggle="tooltip"]'))
+      tooltipList.forEach(function (tooltip) {
+        new Tooltip(tooltip)
+      })
 
-        $('#btnPreventModal').on('click', function () {
-          $('#firefoxModal').one('shown.bs.modal', function () {
-            $(this).modal('hide')
-          })
-          .one('hide.bs.modal', function (event) {
-            event.preventDefault()
-            if ($(this).data('bs.modal')._isTransitioning) {
-              console.error('Modal plugin should not set _isTransitioning when hide event is prevented')
-            } else {
-              console.log('Test passed')
-              $(this).modal('hide') // work as expected
-            }
-          })
-          .modal('show')
-        })
+      var tallToggle = document.getElementById('tall-toggle')
+      var tall = document.getElementById('tall')
+      tallToggle.addEventListener('click', function () {
+        if (tall.style.display === 'none') {
+          tall.style.display = 'block'
+        } else {
+          tall.style.display = 'none'
+        }
+      })
 
-        // Test transition duration
-        var t0, t1;
+      var ffBugInput = document.getElementById('ff-bug-input')
+      var firefoxModal = document.getElementById('firefoxModal')
+      function handlerClickFfBugInput() {
+        firefoxModal.addEventListener('focus', reportFirefoxTestResult.bind(false))
+        ffBugInput.addEventListener('focus', reportFirefoxTestResult.bind(true))
+        ffBugInput.removeEventListener('focus', handlerClickFfBugInput)
+      }
+      ffBugInput.addEventListener('focus', handlerClickFfBugInput)
 
-        $('#slowModal').on('shown.bs.modal', function(){
-          t1 = performance.now()
-          console.log('transition-duration took ' + (t1 - t0) + 'ms.')
-        }).on('show.bs.modal', function(){
-          t0 = performance.now()
-        })
+      var btnPreventModal = document.getElementById('btnPreventModal')
+      var modalFf = new Modal(firefoxModal)
 
+      btnPreventModal.addEventListener('click', function () {
+        function shownFirefoxModal() {
+          modalFf.hide()
+          firefoxModal.removeEventListener('shown.bs.modal', hideFirefoxModal)
+        }
+
+        function hideFirefoxModal(event) {
+          event.preventDefault()
+          firefoxModal.removeEventListener('hide.bs.modal', hideFirefoxModal)
+
+          if (modalFf._isTransitioning) {
+            console.error('Modal plugin should not set _isTransitioning when hide event is prevented')
+          } else {
+            console.log('Test passed')
+            modalFf.hide() // work as expected
+          }
+        }
+
+        firefoxModal.addEventListener('shown.bs.modal', shownFirefoxModal)
+        firefoxModal.addEventListener('hide.bs.modal', hideFirefoxModal)
+        modalFf.show()
+      })
+
+      // Test transition duration
+      var t0
+      var t1
+      var slowModal = document.getElementById('slowModal')
+
+      slowModal.addEventListener('shown.bs.modal', function () {
+        t1 = performance.now()
+        console.log('transition-duration took ' + (t1 - t0) + 'ms.')
+      })
+
+      slowModal.addEventListener('show.bs.modal', function () {
+        t0 = performance.now()
       })
     </script>
   </body>

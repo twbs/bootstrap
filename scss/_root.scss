@@ -8,10 +8,6 @@
     --#{$color}: #{$value};
   }
 
-  @each $bp, $value in $grid-breakpoints {
-    --breakpoint-#{$bp}: #{$value};
-  }
-
   // Use `inspect` for lists so that quoted items keep the quotes.
   // See https://github.com/sass/sass/issues/2383#issuecomment-336349172
   --font-family-sans-serif: #{inspect($font-family-sans-serif)};

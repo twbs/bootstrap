@@ -2,4 +2,6 @@
 **/dist/
 **/vendor/
 /_gh_pages/
+/js/coverage/
+/site/static/sw.js
 /package.js

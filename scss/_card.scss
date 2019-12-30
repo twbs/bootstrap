@@ -6,7 +6,8 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  min-width: 0;
+  min-width: 0; // See https://github.com/twbs/bootstrap/pull/22740#issuecomment-305868106
+  height: $card-height;
   word-wrap: break-word;
   background-color: $card-bg;
   background-clip: border-box;
@@ -35,15 +36,19 @@
   // Enable `flex-grow: 1` for decks and groups so that card blocks take up
   // as much space as possible, ensuring footers are aligned to the bottom.
   flex: 1 1 auto;
-  padding: $card-spacer-x;
+  // Workaround for the image size bug in IE
+  // See: https://github.com/twbs/bootstrap/pull/28855
+  min-height: 1px;
+  padding: $card-spacer-y $card-spacer-x;
+  color: $card-color;
 }
 
 .card-title {
-  margin-bottom: $card-spacer-y;
+  margin-bottom: $card-title-spacer-y;
 }
 
 .card-subtitle {
-  margin-top: -($card-spacer-y / 2);
+  margin-top: -$card-title-spacer-y / 2;
   margin-bottom: 0;
 }
 
@@ -52,7 +57,7 @@
 }
 
 .card-link {
-  @include hover {
+  &:hover {
     text-decoration: none;
   }
 
@@ -66,8 +71,9 @@
 //
 
 .card-header {
-  padding: $card-spacer-y $card-spacer-x;
+  padding: $card-cap-padding-y $card-cap-padding-x;
   margin-bottom: 0; // Removes the default margin-bottom of <hN>
+  color: $card-cap-color;
   background-color: $card-cap-bg;
   border-bottom: $card-border-width solid $card-border-color;
 
@@ -83,7 +89,7 @@
 }
 
 .card-footer {
-  padding: $card-spacer-y $card-spacer-x;
+  padding: $card-cap-padding-y $card-cap-padding-x;
   background-color: $card-cap-bg;
   border-top: $card-border-width solid $card-border-color;
 
@@ -98,15 +104,22 @@
 //
 
 .card-header-tabs {
-  margin-right: -($card-spacer-x / 2);
-  margin-bottom: -$card-spacer-y;
-  margin-left: -($card-spacer-x / 2);
+  margin-right: -$card-cap-padding-x / 2;
+  margin-bottom: -$card-cap-padding-y;
+  margin-left: -$card-cap-padding-x / 2;
   border-bottom: 0;
+
+  @if $nav-tabs-link-active-bg != $card-bg {
+    .nav-link.active {
+      background-color: $card-bg;
+      border-bottom-color: $card-bg;
+    }
+  }
 }
 
 .card-header-pills {
-  margin-right: -($card-spacer-x / 2);
-  margin-left: -($card-spacer-x / 2);
+  margin-right: -$card-cap-padding-x / 2;
+  margin-left: -$card-cap-padding-x / 2;
 }
 
 // Card image
@@ -119,19 +132,20 @@
   padding: $card-img-overlay-padding;
 }
 
-.card-img {
+.card-img,
+.card-img-top,
+.card-img-bottom {
+  flex-shrink: 0; // For IE: https://github.com/twbs/bootstrap/issues/29396
   width: 100%; // Required because we use flexbox and this inherently applies align-self: stretch
-  @include border-radius($card-inner-border-radius);
 }
 
-// Card image caps
+.card-img,
 .card-img-top {
-  width: 100%; // Required because we use flexbox and this inherently applies align-self: stretch
   @include border-top-radius($card-inner-border-radius);
 }
 
+.card-img,
 .card-img-bottom {
-  width: 100%; // Required because we use flexbox and this inherently applies align-self: stretch
   @include border-bottom-radius($card-inner-border-radius);
 }
 
@@ -139,23 +153,19 @@
 // Card deck
 
 .card-deck {
-  display: flex;
-  flex-direction: column;
-
   .card {
     margin-bottom: $card-deck-margin;
   }
 
   @include media-breakpoint-up(sm) {
+    display: flex;
     flex-flow: row wrap;
     margin-right: -$card-deck-margin;
     margin-left: -$card-deck-margin;
 
     .card {
-      display: flex;
       // Flexbugs #4: https://github.com/philipwalton/flexbugs#flexbug-4
       flex: 1 0 0%;
-      flex-direction: column;
       margin-right: $card-deck-margin;
       margin-bottom: 0; // Override the default
       margin-left: $card-deck-margin;
@@ -169,9 +179,6 @@
 //
 
 .card-group {
-  display: flex;
-  flex-direction: column;
-
   // The child selector allows nested `.card` within `.card-group`
   // to display properly.
   > .card {
@@ -179,6 +186,7 @@
   }
 
   @include media-breakpoint-up(sm) {
+    display: flex;
     flex-flow: row wrap;
     // The child selector allows nested `.card` within `.card-group`
     // to display properly.
@@ -194,79 +202,36 @@
 
       // Handle rounded corners
       @if $enable-rounded {
-        &:first-child {
+        &:not(:last-child) {
           @include border-right-radius(0);
 
           .card-img-top,
           .card-header {
+            // stylelint-disable-next-line property-blacklist
             border-top-right-radius: 0;
           }
           .card-img-bottom,
           .card-footer {
+            // stylelint-disable-next-line property-blacklist
             border-bottom-right-radius: 0;
           }
         }
 
-        &:last-child {
+        &:not(:first-child) {
           @include border-left-radius(0);
 
           .card-img-top,
           .card-header {
+            // stylelint-disable-next-line property-blacklist
             border-top-left-radius: 0;
           }
           .card-img-bottom,
           .card-footer {
+            // stylelint-disable-next-line property-blacklist
             border-bottom-left-radius: 0;
           }
         }
-
-        &:only-child {
-          @include border-radius($card-border-radius);
-
-          .card-img-top,
-          .card-header {
-            @include border-top-radius($card-border-radius);
-          }
-          .card-img-bottom,
-          .card-footer {
-            @include border-bottom-radius($card-border-radius);
-          }
-        }
-
-        &:not(:first-child):not(:last-child):not(:only-child) {
-          @include border-radius(0);
-
-          .card-img-top,
-          .card-img-bottom,
-          .card-header,
-          .card-footer {
-            @include border-radius(0);
-          }
-        }
       }
-    }
-  }
-}
-
-
-//
-// Columns
-//
-
-.card-columns {
-  .card {
-    margin-bottom: $card-columns-margin;
-  }
-
-  @include media-breakpoint-up(sm) {
-    column-count: $card-columns-count;
-    column-gap: $card-columns-gap;
-    orphans: 1;
-    widows: 1;
-
-    .card {
-      display: inline-block; // Don't let them vertically span multiple columns
-      width: 100%; // Don't let their width change
     }
   }
 }
@@ -277,25 +242,21 @@
 //
 
 .accordion {
-  .card:not(:first-of-type):not(:last-of-type) {
-    border-bottom: 0;
-    border-radius: 0;
-  }
+  > .card {
+    overflow: hidden;
 
-  .card:not(:first-of-type) {
-    .card-header:first-child {
-      border-radius: 0;
+    &:not(:last-of-type) {
+      border-bottom: 0;
+      @include border-bottom-radius(0);
     }
-  }
 
-  .card:first-of-type {
-    border-bottom: 0;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
-  }
+    &:not(:first-of-type) {
+      @include border-top-radius(0);
+    }
 
-  .card:last-of-type {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
+    > .card-header {
+      @include border-radius(0);
+      margin-bottom: -$card-border-width;
+    }
   }
 }

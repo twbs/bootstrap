@@ -1,17 +1,12 @@
 /*!
- * Bootstrap Grid v4.1.2 (https://getbootstrap.com/)
- * Copyright 2011-2018 The Bootstrap Authors
- * Copyright 2011-2018 Twitter, Inc.
+ * Bootstrap Grid v4.3.1 (https://getbootstrap.com/)
+ * Copyright 2011-2019 The Bootstrap Authors
+ * Copyright 2011-2019 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
-@at-root {
-  @-ms-viewport { width: device-width; } // stylelint-disable-line at-rule-no-vendor-prefix
-}
-
 html {
   box-sizing: border-box;
-  -ms-overflow-style: scrollbar;
 }
 
 *,
@@ -26,7 +21,49 @@ html {
 @import "mixins/breakpoints";
 @import "mixins/grid-framework";
 @import "mixins/grid";
+@import "mixins/utilities";
 
 @import "grid";
-@import "utilities/display";
-@import "utilities/flex";
+
+@import "utilities";
+// Only use the utilities we need
+// stylelint-disable-next-line scss/dollar-variable-default
+$utilities: map-get-multiple(
+  $utilities,
+  (
+    "display",
+    "order",
+    "flex",
+    "flex-direction",
+    "flex-grow",
+    "flex-shrink"
+    "flex-wrap",
+    "justify-content",
+    "align-items",
+    "align-content",
+    "align-self",
+    "margin",
+    "margin-x",
+    "margin-y",
+    "margin-top",
+    "margin-right",
+    "margin-bottom",
+    "margin-left",
+    "negative-margin",
+    "negative-margin-x",
+    "negative-margin-y",
+    "negative-margin-top",
+    "negative-margin-right",
+    "negative-margin-bottom",
+    "negative-margin-left",
+    "padding",
+    "padding-x",
+    "padding-y",
+    "padding-top",
+    "padding-right",
+    "padding-bottom",
+    "padding-left",
+  )
+);
+
+@import "utilities/api";

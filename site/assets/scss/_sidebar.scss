@@ -1,0 +1,83 @@
+// stylelint-disable declaration-no-important
+
+.bd-links {
+  @include media-breakpoint-up(md) {
+    @supports (position: sticky) {
+      position: sticky;
+      top: 5rem;
+      height: subtract(100vh, 7rem);
+      overflow-y: auto;
+    }
+  }
+
+  // Override collapse behaviors
+  @include media-breakpoint-up(md) {
+    display: block !important;
+  }
+}
+
+:not(.active) > .bd-sidenav {
+  display: none;
+}
+
+.bd-sidenav-group-link {
+  padding: .25rem .625rem .25rem .5rem;
+  font-weight: 600;
+  color: rgba($black, .65);
+  @include border-radius(.25rem);
+
+  > * { pointer-events: none; }
+
+  &:hover,
+  &:focus {
+    color: rgba($black, .85);
+    text-decoration: none;
+    background-color: rgba($bd-purple-bright, .1);
+  }
+}
+
+.bd-sidenav-group {
+  &.has-children .bd-sidenav-group-link::before {
+    display: inline-block;
+    margin-right: .25rem;
+    line-height: 0; // Align in the middle
+    content: escape-svg($sidebar-collapse-icon);
+  }
+
+  &.active {
+    .bd-sidenav-group-link::before {
+      transform: rotate(90deg);
+    }
+
+    > .bd-sidenav-group-link {
+      color: rgba($black, .85);
+    }
+  }
+}
+
+// All levels of nav
+.bd-sidebar .nav {
+  padding-left: 1.25rem;
+
+  > li > a {
+    display: inline-block;
+    padding: .25rem .5rem;
+    @include font-size(.875rem);
+    color: rgba($black, .65);
+    @include border-radius(.25rem);
+
+    &:hover,
+    &:focus {
+      color: rgba($black, .85);
+      text-decoration: none;
+      background-color: rgba($bd-purple-bright, .1);
+    }
+  }
+
+  > .active > a,
+  > .active:hover > a,
+  > .active:focus > a {
+    font-weight: 600;
+    color: rgba($black, .85);
+  }
+}

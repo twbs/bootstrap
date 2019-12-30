@@ -1,0 +1,45 @@
+<nav class="collapse bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  {{- $url := split .Permalink "/" -}}
+  {{- $page_slug := index $url (sub (len $url) 2) -}}
+
+  <ul class="list-unstyled">
+  {{- range $group := .Site.Data.sidebar -}}
+    {{- $link := $group.title -}}
+    {{- $link_slug := $link | urlize -}}
+
+    {{- if $group.pages -}}
+      {{- $link = index $group.pages 0 -}}
+      {{- $link_slug = $link.title | urlize -}}
+    {{- end -}}
+
+    {{- $group_slug := $group.title | urlize -}}
+    {{- $active_group := eq $.Page.Params.group $group_slug }}
+
+    <li class="bd-sidenav-group my-1{{ if $active_group }} active{{ end }} js-sidenav-group{{ if $group.pages }} has-children{{ end }}">
+      <a class="d-inline-flex align-items-center bd-sidenav-group-link" href="/docs/{{ $.Site.Params.docs_version }}/{{ $group_slug }}/{{ if $group.pages }}{{ $link_slug }}/{{ end }}">
+        <div>{{ $group.title }}</div>
+      </a>
+
+      {{- if $group.pages }}
+      <ul class="nav bd-sidenav flex-column mb-2">
+        {{- range $doc := $group.pages -}}
+          {{- $doc_slug := $doc.title | urlize }}
+          <li{{ if and $active_group (eq $page_slug $doc_slug) }} class="active bd-sidenav-active"{{ end }}>
+            <a href="/docs/{{ $.Site.Params.docs_version }}/{{ $group_slug }}/{{ $doc_slug }}/">
+              {{- $doc.title -}}
+            </a>
+          </li>
+        {{- end }}
+      </ul>
+      {{- end }}
+    </li>
+  {{- end }}
+
+    <li class="my-3 mx-4 border-top"></li>
+    <li class="bd-sidenav-group pl-3">
+      <a class="d-inline-flex align-items-center bd-sidenav-group-link" href="/docs/{{ $.Site.Params.docs_version }}/migration/">
+        Migration
+      </a>
+    </li>
+  </ul>
+</nav>

@@ -1,5 +1,3 @@
-// stylelint-disable selector-no-qualifying-type
-
 .fade {
   @include transition($transition-fade);
 
@@ -15,7 +13,6 @@
 }
 
 .collapsing {
-  position: relative;
   height: 0;
   overflow: hidden;
   @include transition($transition-collapse);
