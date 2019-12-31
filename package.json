@@ -128,7 +128,7 @@
     "rollup": "^1.27.14",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-istanbul": "^2.0.1",
-    "serve": "^11.2.0",
+    "serve": "^11.3.0",
     "shelljs": "^0.8.3",
     "stylelint": "^12.0.1",
     "stylelint-config-twbs-bootstrap": "^1.0.0",
