@@ -163,7 +163,8 @@
   })
 
   anchors.options = {
-    icon: '#'
+    icon: '#',
+    visible: 'always'
   }
   anchors.add('.bd-content > h2, .bd-content > h3, .bd-content > h4, .bd-content > h5')
 
