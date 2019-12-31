@@ -3,9 +3,12 @@ title:                  "Bootstrap"
 baseURL:                "https://getbootstrap.com"
 enableInlineShortcodes: true
 
-pygmentsUseClasses:     true
-# you can use ```lang if you want too
-pygmentsCodeFences:     true
+markup:
+  goldmark:
+    renderer:
+      unsafe:           true
+  highlight:
+    noClasses:          false
 
 buildDrafts:            true
 buildFuture:            true

@@ -1,5 +1,3 @@
-// stylelint-disable selector-no-qualifying-type
-
 //
 // Base styles
 //
@@ -31,27 +29,22 @@
     box-shadow: $btn-focus-box-shadow;
   }
 
-  // Disabled comes first so active can properly restyle
-  &.disabled,
-  &:disabled {
-    opacity: $btn-disabled-opacity;
-    @include box-shadow(none);
-  }
-
-  &:not(:disabled):not(.disabled):active,
-  &:not(:disabled):not(.disabled).active {
+  &:active,
+  &.active {
     @include box-shadow($btn-active-box-shadow);
 
     &:focus {
       @include box-shadow($btn-focus-box-shadow, $btn-active-box-shadow);
     }
   }
-}
 
-// Future-proof disabling of clicks on `<a>` elements
-a.btn.disabled,
-fieldset:disabled a.btn {
-  pointer-events: none;
+  &:disabled,
+  &.disabled,
+  fieldset:disabled & { // stylelint-disable-line selector-no-qualifying-type
+    pointer-events: none;
+    opacity: $btn-disabled-opacity;
+    @include box-shadow(none);
+  }
 }
 
 
@@ -96,7 +89,6 @@ fieldset:disabled a.btn {
   &:disabled,
   &.disabled {
     color: $btn-link-disabled-color;
-    pointer-events: none;
   }
 
   // No need for an active state here

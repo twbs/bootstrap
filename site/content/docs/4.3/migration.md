@@ -30,6 +30,7 @@ Changes to our source Sass files and compiled CSS.
   - `retina-img()`
   - `text-hide()` (also dropped the associated utility class, `.text-hide`)
   - `visibility()`
+  - `form-control-focus()`
 - **Todo:** New variables?
 - **Todo:** Rearrange forms source files (under `scss/forms/`)
 - **Todo:** Rearrange grid source files (under `scss/grid/`)
@@ -64,6 +65,7 @@ Changes to Reboot, typography, tables, and more.
 - Simplified table styles (no more 2px border on `thead > th` elements) and tightened cell padding.
 - Dropped `.pre-scrollable` class. [See #29135](https://github.com/twbs/bootstrap/pull/29135)
 - `.text-*` utilities do not add hover and focus states to links anymore. `.link-*` helper classes can be used instead. [See #29267](https://github.com/twbs/bootstrap/pull/29267)
+- Drop `.text-justify` class. [See #229793](https://github.com/twbs/bootstrap/pull/29793)
 
 ## Forms
 
@@ -89,6 +91,10 @@ Changes to Reboot, typography, tables, and more.
 - Dropped support for `.form-control-plaintext` inside `.input-group`s.
 
 ## Components
+
+### Disabled states
+
+- Disabled states of the buttons, close button, pagination link & form range now have `pointer-events: none` added. This simplifies our codebase and makes it easier to override active states in CSS. [#29296](https://github.com/twbs/bootstrap/pull/29296).
 
 ### Alerts
 
