@@ -247,47 +247,38 @@ These changes, and more, are demonstrated below.
 <form class="bd-example">
   <fieldset>
     <legend>Example legend</legend>
-
     <p>
       <label for="input">Example input</label>
       <input type="text" id="input" placeholder="Example input">
     </p>
-
     <p>
       <label for="email">Example email</label>
       <input type="email" id="email" placeholder="lorem@ipsum.com">
     </p>
-
     <p>
       <label for="tel">Example telephone</label>
       <input type="tel" id="tel">
     </p>
-
     <p>
       <label for="url">Example url</label>
       <input type="url" id="url">
     </p>
-
     <p>
       <label for="number">Example number</label>
       <input type="number" id="number">
     </p>
-
     <p>
       <label for="search">Example search</label>
       <input type="search" id="search">
     </p>
-
     <p>
       <label for="range">Example range</label>
       <input type="range" id="range" min="0" max="10">
     </p>
-
     <p>
       <label for="file">Example file input</label>
       <input type="file" id="file">
     </p>
-
     <p>
       <label for="select">Example select</label>
       <select id="select">
@@ -304,14 +295,12 @@ These changes, and more, are demonstrated below.
         </optgroup>
       </select>
     </p>
-
     <p>
       <label>
         <input type="checkbox" value="">
         Check this checkbox
       </label>
     </p>
-
     <p>
       <label>
         <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
@@ -326,59 +315,48 @@ These changes, and more, are demonstrated below.
         Option three is disabled
       </label>
     </p>
-
     <p>
       <label for="textarea">Example textarea</label>
       <textarea id="textarea" rows="3"></textarea>
     </p>
-
     <p>
       <label for="date">Example date</label>
       <input type="date" id="date">
     </p>
-
     <p>
       <label for="time">Example time</label>
       <input type="time" id="time">
     </p>
-
     <p>
       <label for="password">Example password</label>
       <input type="password" id="password">
     </p>
-
     <p>
       <label for="datetime-local">Example datetime-local</label>
       <input type="datetime-local" id="datetime-local">
     </p>
-
     <p>
       <label for="week">Example week</label>
       <input type="week" id="week">
     </p>
-
     <p>
       <label for="month">Example month</label>
       <input type="month" id="month">
     </p>
-
     <p>
       <label for="color">Example color</label>
       <input type="color" id="color">
     </p>
-
     <p>
       <label for="output">Example output</label>
       <output name="result" id="output">100</output>
     </p>
-
     <p>
       <button type="submit">Button submit</button>
       <input type="submit" value="Input submit button">
       <input type="reset" value="Input reset button">
       <input type="button" value="Input button">
     </p>
-
     <p>
       <button type="submit" disabled>Button submit</button>
       <input type="submit" value="Input submit button" disabled>
