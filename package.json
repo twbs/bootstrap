@@ -82,6 +82,10 @@
     "url": "https://github.com/twbs/bootstrap/issues"
   },
   "license": "MIT",
+  "funding": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/bootstrap"
+  },
   "dependencies": {},
   "peerDependencies": {
     "popper.js": "^1.16.0"
@@ -163,9 +167,5 @@
     "peerDependencies": {
       "popper.js": "^1.16.0"
     }
-  },
-  "funding": {
-    "type": "opencollective",
-    "url": "https://opencollective.com/bootstrap"
   }
 }
