@@ -210,7 +210,7 @@ $escaped-characters: (
   ("#","%23"),
 ) !default;
 
-// Selector that could break a selector stack cross-browser compatibility
+// Selectors which are isolated in the transition mixin to prevent invalid selector stack
 $pseudo-vendor-prefixes: (
   "::-webkit-",
   "::-moz-",
