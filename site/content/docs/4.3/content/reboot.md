@@ -40,7 +40,7 @@ $font-family-sans-serif:
   // Windows
   "Segoe UI",
   // Android
-  "Roboto",
+  Roboto,
   // Basic web fallback
   "Helvetica Neue", Arial,
   // Linux
