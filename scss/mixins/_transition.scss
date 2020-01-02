@@ -11,7 +11,7 @@
   @if $enable-prefers-reduced-motion-media-query {
     $isolate: false;
     @each $selector in $pseudo-vendor-prefixes {
-      @if str-index(quote(&), $selector) {
+      @if str-index(quote(#{&}), $selector) {
         $isolate: true;
       }
     }

@@ -75,7 +75,12 @@
 @function escape-svg($string) {
   @if str-index($string, "data:image/svg+xml") {
     @each $char, $encoded in $escaped-characters {
-      $string: str-replace($string, $char, $encoded);
+      // Do not escape the url brackets
+      @if str-index($string, "url(") == 1 {
+        $string: url("#{str-replace(str-slice($string, 6, -3), $char, $encoded)}");
+      } @else {
+        $string: str-replace($string, $char, $encoded);
+      }
     }
   }
 
