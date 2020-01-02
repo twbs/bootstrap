@@ -40,11 +40,15 @@ $font-family-sans-serif:
   // Windows
   "Segoe UI",
   // Android
-  "Roboto",
+  Roboto,
   // Basic web fallback
-  "Helvetica Neue", Arial, sans-serif,
+  "Helvetica Neue", Arial,
+  // Linux
+  "Noto Sans",
+  // Sans serif fallback
+  sans-serif,
   // Emoji fonts
-  "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
+  "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
 {{< /highlight >}}
 
 This `font-family` is applied to the `<body>` and automatically inherited globally throughout Bootstrap. To switch the global `font-family`, update `$font-family-base` and recompile Bootstrap.
