@@ -13,8 +13,8 @@
     {{ with .Params.robots -}}
     <meta name="robots" content="{{ . }}">
     {{- end }}
-
-    {{ partial "stylesheet" . }}
+    {{/* Only this layout sports its own variation of the "stylesheet" partial */}}
+    {{ partialCached "stylesheet" . "examples" }}
     {{ partialCached "favicons" . }}
 
     <style>

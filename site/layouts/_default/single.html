@@ -6,7 +6,8 @@
   <body>
     {{ partialCached "skippy" . }}
 
-    {{ partial "docs-navbar" . }}
+
+    {{ partialCached "docs-navbar" . "single" }}
 
     <header class="py-5 border-bottom">
       <div class="container pt-md-1 pb-md-4">

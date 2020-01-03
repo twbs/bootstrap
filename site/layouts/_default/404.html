@@ -6,7 +6,7 @@
   <body class="d-flex flex-column min-vh-100">
     {{ partialCached "skippy" . }}
 
-    {{ partial "docs-navbar" . }}
+    {{ partialCached "docs-navbar" . "404" }}
 
     <main class="my-auto p-5" id="content" role="main">
       {{ .Content }}
