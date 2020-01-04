@@ -433,8 +433,8 @@ $utilities: map-merge(
       class: font,
       values: italic normal
     ),
-    "overflow-wrap": (
-      property: overflow-wrap word-wrap, // word-wrap for IE & < Edge 18
+    "word-wrap": (
+      property: word-wrap,
       class: text,
       values: (break: break-word)
     ),

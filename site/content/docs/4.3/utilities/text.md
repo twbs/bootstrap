@@ -45,7 +45,7 @@ Prevent text from wrapping with a `.text-nowrap` class.
 
 ## Word break
 
-Prevent long strings of text from breaking your components' layout by using `.text-break` to set `overflow-wrap: break-word` (and `word-wrap: break-word` for IE & Edge compatibility).
+Prevent long strings of text from breaking your components' layout by using `.text-break` to set `word-wrap: break-word`. We use `word-wrap` instead of the more common `overflow-wrap` for wider browser support.
 
 {{< example >}}
 <p class="text-break">mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm</p>
