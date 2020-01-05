@@ -76,7 +76,7 @@ export const DefaultWhitelist = {
   h5: [],
   h6: [],
   i: [],
-  img: ['src', 'alt', 'title', 'width', 'height'],
+  img: ['src', 'srcset', 'alt', 'title', 'width', 'height'],
   li: [],
   ol: [],
   p: [],
