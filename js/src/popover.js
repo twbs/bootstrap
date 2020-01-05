@@ -135,7 +135,6 @@ class Popover extends Tooltip {
   _cleanTipClass() {
     const tip = this.getTipElement()
     const tabClass = tip.getAttribute('class').match(BSCLS_PREFIX_REGEX)
-
     if (tabClass !== null && tabClass.length > 0) {
       tabClass.map(token => token.trim())
         .forEach(tClass => tip.classList.remove(tClass))
