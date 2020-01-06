@@ -1,6 +1,6 @@
 /*!
- * Bootstrap v5.19.1 (http://bootstrap.transferwise.com)
- * Copyright 2011-2019 Twitter, Inc.
+ * Bootstrap v5.19.2 (http://bootstrap.transferwise.com)
+ * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/transferwise/bootstrap/blob/master/LICENSE)
  */
 
@@ -6760,13 +6760,13 @@ tbody.collapse.in {
   margin: 0 0 0 -1px;
 }
 @media (min-width: 992px) {
-  .btn-toolbar {
+  .btn-toolbar:not(.btn-toolbar-xl) {
     margin-right: -4px;
     margin-left: -4px;
   }
-  .btn-toolbar .btn,
-  .btn-toolbar .btn-group,
-  .btn-toolbar .input-group {
+  .btn-toolbar:not(.btn-toolbar-xl) .btn,
+  .btn-toolbar:not(.btn-toolbar-xl) .btn-group,
+  .btn-toolbar:not(.btn-toolbar-xl) .input-group {
     float: left;
     width: auto;
     margin-right: 4px;
