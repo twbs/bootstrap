@@ -110,7 +110,7 @@
     "find-unused-sass-variables": "^1.0.4",
     "glob": "^7.1.6",
     "hammer-simulator": "0.0.1",
-    "hugo-bin": "^0.50.0",
+    "hugo-bin": "^0.50.2",
     "ip": "^1.1.5",
     "jasmine-core": "^3.5.0",
     "karma": "^4.4.1",
@@ -136,7 +136,7 @@
     "shelljs": "^0.8.3",
     "stylelint": "^12.0.1",
     "stylelint-config-twbs-bootstrap": "^1.1.0",
-    "terser": "^4.4.3",
+    "terser": "^4.6.1",
     "vnu-jar": "20.1.2"
   },
   "engines": {
