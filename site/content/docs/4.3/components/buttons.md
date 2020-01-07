@@ -86,7 +86,7 @@ Buttons will appear pressed (with a darker background, darker border, and inset 
 
 ## Disabled state
 
-Make buttons look inactive by adding the `disabled` boolean attribute to any `<button>` element.
+Make buttons look inactive by adding the `disabled` boolean attribute to any `<button>` element. Disabled buttons have `pointer-events: none` applied to, preventing hover and active states from triggering.
 
 {{< example >}}
 <button type="button" class="btn btn-lg btn-primary" disabled>Primary button</button>
