@@ -137,7 +137,7 @@
     "stylelint": "^12.0.1",
     "stylelint-config-twbs-bootstrap": "^1.1.0",
     "terser": "^4.4.3",
-    "vnu-jar": "19.9.4"
+    "vnu-jar": "20.1.2"
   },
   "engines": {
     "node": ">=10"
