@@ -27,15 +27,16 @@
 
   // Because flex properties aren't inherited, we need to redeclare these first
   // few properties so that content nested within behave properly.
+  // The `flex-wrap` property is inherited to simplify the expanded navbars
   %container-flex-properties {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: inherit;
     align-items: center;
     justify-content: space-between;
   }
 
-  .container,
-  .container-fluid {
+  > .container,
+  > .container-fluid {
     @extend %container-flex-properties;
   }
 
@@ -148,7 +149,7 @@
 
     &#{$infix} {
       @include media-breakpoint-up($next) {
-        flex-flow: row nowrap;
+        flex-wrap: nowrap;
         justify-content: flex-start;
 
         .navbar-nav {
@@ -161,22 +162,6 @@
           .nav-link {
             padding-right: $navbar-nav-link-padding-x;
             padding-left: $navbar-nav-link-padding-x;
-          }
-        }
-
-        // For nesting containers, have to redeclare for alignment purposes
-        %container-nesting-#{$breakpoint} {
-          flex-wrap: nowrap;
-        }
-
-        > .container,
-        > .container-fluid {
-          @extend %container-nesting-#{$breakpoint};
-        }
-
-        @each $size, $container-max-width in $container-max-widths {
-          > .container#{breakpoint-infix($size, $container-max-widths)} {
-            @extend %container-nesting-#{$breakpoint};
           }
         }
 
