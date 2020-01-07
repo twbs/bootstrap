@@ -119,20 +119,14 @@
   }
 
   &:disabled {
+    pointer-events: none;
+
     &::-webkit-slider-thumb {
       background-color: $form-range-thumb-disabled-bg;
     }
 
-    &::-webkit-slider-runnable-track {
-      cursor: default;
-    }
-
     &::-moz-range-thumb {
       background-color: $form-range-thumb-disabled-bg;
-    }
-
-    &::-moz-range-track {
-      cursor: default;
     }
 
     &::-ms-thumb {
