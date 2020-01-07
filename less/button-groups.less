@@ -33,8 +33,6 @@
   }
 }
 
-
-
 .expand-toolbar() {
   margin-left: -4px; // Offset the first child's margin
   margin-right: -4px; // Offset the first child's margin
@@ -70,8 +68,10 @@
   // TODO make btn-groups full width when collapsed
 
   @media (min-width: @screen-lg-min) {
-    // Default behaviour collapses on lg, over-ruled by modifiers
-    .expand-toolbar();
+    &:not(.btn-toolbar-xl) {
+      // Default behaviour collapses on lg, over-ruled by modifiers
+      .expand-toolbar();
+    }
   }
   &.btn-toolbar-xs {
     .expand-toolbar();
@@ -138,15 +138,19 @@
   outline: 0;
 }
 
-
 // Sizing
 //
 // Remix the default button sizing classes into new ones for easier manipulation.
 
-.btn-group-xs > .btn { &:extend(.btn-xs); }
-.btn-group-sm > .btn { &:extend(.btn-sm); }
-.btn-group-lg > .btn { &:extend(.btn-lg); }
-
+.btn-group-xs > .btn {
+  &:extend(.btn-xs);
+}
+.btn-group-sm > .btn {
+  &:extend(.btn-sm);
+}
+.btn-group-lg > .btn {
+  &:extend(.btn-lg);
+}
 
 // Split button dropdowns
 // ----------------------
@@ -189,7 +193,6 @@
 .dropup .btn-lg .caret {
   border-width: 0 @caret-width-large @caret-width-large;
 }
-
 
 // Vertical button groups
 // ----------------------
@@ -243,10 +246,11 @@
     .border-bottom-radius(0);
   }
 }
-.btn-group-vertical > .btn-group:last-child:not(:first-child) > .btn:first-child {
+.btn-group-vertical
+  > .btn-group:last-child:not(:first-child)
+  > .btn:first-child {
   .border-top-radius(0);
 }
-
 
 // Justified button groups
 // ----------------------
@@ -271,7 +275,6 @@
   }
 }
 
-
 // Checkbox and radio options
 //
 // In order to support the browser's form validation feedback, powered by the
@@ -290,61 +293,61 @@
     input[type="radio"],
     input[type="checkbox"] {
       position: absolute;
-      clip: rect(0,0,0,0);
+      clip: rect(0, 0, 0, 0);
       pointer-events: none;
     }
   }
 }
 .btn-group .btn {
-    + .btn-success {
-        border-left: 1px solid @brand-green-minus-10
-    }
-    + .btn-primary {
-        border-left: 1px solid @brand-light-blue-minus-10;
-    }
+  + .btn-success {
+    border-left: 1px solid @brand-green-minus-10;
+  }
+  + .btn-primary {
+    border-left: 1px solid @brand-light-blue-minus-10;
+  }
 }
 
 .btn-group.btn-block {
-    display: inline-flex;
-    .clearfix();
+  display: inline-flex;
+  .clearfix();
 
-    .btn {
-        display: block;
-        width: 100%;
+  .btn {
+    display: block;
+    width: 100%;
+  }
+  .btn-input.btn {
+    text-align: left;
+    .caret {
+      position: absolute;
+      right: 16px;
+      top: 16px;
     }
-    .btn-input.btn {
-        text-align: left;
-        .caret {
-            position: absolute;
-            right: 16px;
-            top: 16px;
-        }
-        &.btn-sm .caret {
-            right: 8px;
-        }
+    &.btn-sm .caret {
+      right: 8px;
     }
-    .btn + .dropdown-toggle {
-        flex: 0;
-        .caret {
-            position: relative;
-            top: 0;
-            right: 0;
-        }
+  }
+  .btn + .dropdown-toggle {
+    flex: 0;
+    .caret {
+      position: relative;
+      top: 0;
+      right: 0;
     }
-    .btn-input.btn {
-      &.dropdown-toggle {
-        padding-right: 40px;
-        overflow: hidden;
-        text-overflow: ellipsis;
+  }
+  .btn-input.btn {
+    &.dropdown-toggle {
+      padding-right: 40px;
+      overflow: hidden;
+      text-overflow: ellipsis;
 
-        @media (min-width: @screen-sm-min) {
-          padding-right: 48px;
-        }
-      }
-      &.btn-sm.dropdown-toggle {
-        padding-right: 33px;
+      @media (min-width: @screen-sm-min) {
+        padding-right: 48px;
       }
     }
+    &.btn-sm.dropdown-toggle {
+      padding-right: 33px;
+    }
+  }
 }
 .btn-block {
   .dropdown-menu {
@@ -365,7 +368,7 @@
   }
 
   // allow select input options to wrap into multiple lines
-  .btn-input + .dropdown-menu {
+  .btn-input + .dropdown-menu  {
     > li > a {
       white-space: normal;
     }
@@ -373,9 +376,9 @@
 }
 
 @media (min-height: 592px) {
-    .btn-group .dropdown-menu {
-        max-height: 592px;	// (12 * 48) + 16 = 592
-    }
+  .btn-group .dropdown-menu {
+    max-height: 592px; // (12 * 48) + 16 = 592
+  }
 }
 
 .btn-group {
