@@ -110,7 +110,7 @@
     "find-unused-sass-variables": "^1.0.4",
     "glob": "^7.1.6",
     "hammer-simulator": "0.0.1",
-    "hugo-bin": "^0.50.0",
+    "hugo-bin": "^0.50.2",
     "ip": "^1.1.5",
     "karma": "^4.4.1",
     "karma-browserstack-launcher": "1.4.0",
@@ -118,7 +118,7 @@
     "karma-coverage-istanbul-reporter": "^2.1.1",
     "karma-detect-browsers": "^2.3.3",
     "karma-firefox-launcher": "^1.2.0",
-    "karma-jasmine": "^2.0.1",
+    "karma-jasmine": "^3.0.1",
     "karma-jasmine-html-reporter": "^1.5.1",
     "karma-rollup-preprocessor": "^7.0.2",
     "linkinator": "^1.8.2",
@@ -135,7 +135,7 @@
     "shelljs": "^0.8.3",
     "stylelint": "^12.0.1",
     "stylelint-config-twbs-bootstrap": "^1.1.0",
-    "terser": "^4.4.3",
+    "terser": "^4.6.1",
     "vnu-jar": "20.1.2"
   },
   "engines": {
