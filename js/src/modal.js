@@ -326,7 +326,7 @@ class Modal {
 
   _setEscapeEvent() {
     if (this._isShown) {
-      $(this._element).on(Event.KEYDOWN_DISMISS, event => {
+      $(this._element).on(Event.KEYDOWN_DISMISS, (event) => {
         if (this._config.keyboard && event.which === ESCAPE_KEYCODE) {
           event.preventDefault()
           this.hide()
