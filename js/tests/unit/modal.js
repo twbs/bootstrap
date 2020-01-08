@@ -855,4 +855,54 @@ $(function () {
         backdrop: 'static'
       })
   })
+
+  QUnit.test("should close modal when escape key is pressed with keyboard = true and backdrop is static", function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+    var $modal = $('<div class="modal"></div>').appendTo('#qunit-fixture')
+
+    $modal
+      .on("shown.bs.modal", function() {
+        $modal.trigger(
+          $.Event("keydown", {
+            which: 27
+          })
+        );
+        setTimeout(function() {
+          var modal = $modal.data("bs.modal");
+
+          assert.strictEqual(modal._isShown, false);
+          done();
+        }, 10);
+      })
+      .bootstrapModal({
+        backdrop: "static",
+        keyboard: true
+      });
+  })
+
+  QUnit.test("should not close modal when escape key is pressed with keyboard = false and backdrop = static", function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+    var $modal = $('<div class="modal"></div>').appendTo('#qunit-fixture')
+
+    $modal
+      .on("shown.bs.modal", function() {
+        $modal.trigger(
+          $.Event("keydown", {
+            which: 27
+          })
+        )
+        setTimeout(function() {
+          var modal = $modal.data("bs.modal")
+
+          assert.strictEqual(modal._isShown, true)
+          done()
+        }, 10)
+      })
+      .bootstrapModal({
+        backdrop: "static",
+        keyboard: false
+      })
+  })
 })
