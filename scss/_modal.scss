@@ -174,7 +174,16 @@
   flex-wrap: wrap;
   align-items: center; // vertically center
   justify-content: flex-end; // Right align buttons with flex property because text-align doesn't work on flex items
-  padding: $modal-inner-padding - $modal-footer-margin-between / 2;
+  @if type-of($modal-inner-padding) == list {
+    $calculated-modal-inner-padding: ();
+    @each $padding in $modal-inner-padding {
+      $calculated-modal-inner-padding: append($calculated-modal-inner-padding, $padding - ($modal-footer-margin-between / 2));
+    }
+    
+    padding: $calculated-modal-inner-padding;
+  } @else {
+    padding: $modal-inner-padding - $modal-footer-margin-between / 2;
+  }
   border-top: $modal-footer-border-width solid $modal-footer-border-color;
   @include border-bottom-radius($modal-content-inner-border-radius);
 
