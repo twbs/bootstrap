@@ -179,7 +179,6 @@
     @each $padding in $modal-inner-padding {
       $calculated-modal-inner-padding: append($calculated-modal-inner-padding, $padding - ($modal-footer-margin-between / 2));
     }
-    
     padding: $calculated-modal-inner-padding;
   } @else {
     padding: $modal-inner-padding - $modal-footer-margin-between / 2;
