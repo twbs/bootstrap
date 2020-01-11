@@ -144,6 +144,10 @@
     @return $value1;
   }
 
+  @if type-of($value1) == number and type-of($value2) == number and comparable($value1, $value2) and $value1 < $value2 {
+    @return 0;
+  }
+
   @if type-of($value1) == number and type-of($value2) == number and comparable($value1, $value2) {
     @return $value1 - $value2;
   }
