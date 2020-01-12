@@ -7,11 +7,6 @@
 .modal-open {
   // Kill the scroll on the body
   overflow: hidden;
-
-  .modal {
-    overflow-x: hidden;
-    overflow-y: auto;
-  }
 }
 
 // Container that the modal scrolls within
@@ -80,10 +75,12 @@
   min-height: subtract(100%, $modal-dialog-margin * 2);
 
   // Ensure `modal-dialog-centered` extends the full height of the view (IE10/11)
-  &::before {
-    display: block; // IE10
-    height: subtract(100vh, $modal-dialog-margin * 2);
-    content: "";
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    &::before {
+      display: block; // IE10
+      height: subtract(100vh, $modal-dialog-margin * 2);
+      content: "";
+    }
   }
 
   // Ensure `.modal-body` shows scrollbar (IE10/11)
