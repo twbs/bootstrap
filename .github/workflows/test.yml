@@ -12,7 +12,7 @@ jobs:
       fail-fast: false
       matrix:
         node: [10, 12]
-        ruby: [2.4.x]
+        ruby: [2.6]
 
     steps:
       - name: Clone repository
@@ -23,7 +23,7 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
 
-      - name: Set up Ruby 2.4
+      - name: Set up Ruby
         uses: actions/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
@@ -49,9 +49,6 @@ jobs:
 
       - name: Set up Bundler
         run: gem install bundler -v "~> 1.17"
-
-      - name: Update rubygems
-        run: gem update --system
 
       - run: ruby --version
       - run: gem --version
