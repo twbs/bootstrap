@@ -6,7 +6,7 @@
   <body>
     {{ partialCached "skippy" . }}
 
-    {{ partial "docs-navbar" . }}
+    {{ partialCached "docs-navbar" . "docs" }}
     {{ partialCached "docs-subnav" . }}
 
     <div class="container-xxl my-md-4 bd-layout">

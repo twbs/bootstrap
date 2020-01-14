@@ -14,8 +14,13 @@
 {{ with .Params.robots -}}
 <meta name="robots" content="{{ . }}">
 {{- end }}
-
-{{ partial "stylesheet" . }}
+{{/* stylesheet partial only has two variations: 
+  one for pages with the "example" layout and one other pages.
+  On "default" pages uses the current template file, so we can safely use
+  the "default" variant. */}}
+{{ partialCached "stylesheet" . "default" }}
 {{ partialCached "favicons" . }}
-{{ partial "social" . }}
+{{/* There is only two variations for the social partial.
+  One for the homepage and one for the rest */}}
+{{ partialCached "social" . (cond .IsHome "home" "default") }}
 {{ partialCached "analytics" . }}

@@ -6,7 +6,7 @@
   <body>
     {{ partialCached "skippy" . }}
 
-    {{ partial "docs-navbar" . }}
+    {{ partialCached "docs-navbar" . "home" }}
 
     <main>
       {{ partial "home/masthead" . }}
