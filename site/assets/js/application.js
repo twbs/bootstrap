@@ -4,8 +4,8 @@
 
 /*!
  * JavaScript for Bootstrap's docs (https://getbootstrap.com/)
- * Copyright 2011-2019 The Bootstrap Authors
- * Copyright 2011-2019 Twitter, Inc.
+ * Copyright 2011-2020 The Bootstrap Authors
+ * Copyright 2011-2020 Twitter, Inc.
  * Licensed under the Creative Commons Attribution 3.0 Unported License.
  * For details, see https://creativecommons.org/licenses/by/3.0/.
  */
@@ -152,16 +152,14 @@
   })
 
   clipboard.on('error', function (e) {
-    var modifierKey = /Mac/i.test(navigator.userAgent) ? '\u2318' : 'Ctrl-'
+    var modifierKey = /mac/i.test(navigator.userAgent) ? '\u2318' : 'Ctrl-'
     var fallbackMsg = 'Press ' + modifierKey + 'C to copy'
     var tooltipBtn = bootstrap.Tooltip.getInstance(e.trigger)
 
-    e.trigger.setAttribute('title', fallbackMsg)
-    tooltipBtn._fixTitle()
+    e.trigger.setAttribute('data-original-title', fallbackMsg)
     tooltipBtn.show()
 
-    e.trigger.setAttribute('title', 'Copy to clipboard')
-    tooltipBtn._fixTitle()
+    e.trigger.setAttribute('data-original-title', 'Copy to clipboard')
   })
 
   anchors.options = {

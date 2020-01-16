@@ -50,6 +50,7 @@ const DefaultType = {
 
 const Event = {
   HIDE: `hide${EVENT_KEY}`,
+  HIDE_PREVENTED: `hidePrevented${EVENT_KEY}`,
   HIDDEN: `hidden${EVENT_KEY}`,
   SHOW: `show${EVENT_KEY}`,
   SHOWN: `shown${EVENT_KEY}`,
@@ -68,7 +69,8 @@ const ClassName = {
   BACKDROP: 'modal-backdrop',
   OPEN: 'modal-open',
   FADE: 'fade',
-  SHOW: 'show'
+  SHOW: 'show',
+  STATIC: 'modal-static'
 }
 
 const Selector = {
@@ -304,11 +306,13 @@ class Modal {
   }
 
   _setEscapeEvent() {
-    if (this._isShown && this._config.keyboard) {
+    if (this._isShown) {
       EventHandler.on(this._element, Event.KEYDOWN_DISMISS, event => {
-        if (event.which === ESCAPE_KEYCODE) {
+        if (this._config.keyboard && event.which === ESCAPE_KEYCODE) {
           event.preventDefault()
           this.hide()
+        } else if (!this._config.keyboard && event.which === ESCAPE_KEYCODE) {
+          this._triggerBackdropTransition()
         }
       })
     } else {
@@ -367,11 +371,7 @@ class Modal {
           return
         }
 
-        if (this._config.backdrop === 'static') {
-          this._element.focus()
-        } else {
-          this.hide()
-        }
+        this._triggerBackdropTransition()
       })
 
       if (animate) {
@@ -406,6 +406,25 @@ class Modal {
       }
     } else {
       callback()
+    }
+  }
+
+  _triggerBackdropTransition() {
+    if (this._config.backdrop === 'static') {
+      const hideEvent = EventHandler.trigger(this._element, Event.HIDE_PREVENTED)
+      if (hideEvent.defaultPrevented) {
+        return
+      }
+
+      this._element.classList.add(ClassName.STATIC)
+      const modalTransitionDuration = getTransitionDurationFromElement(this._element)
+      EventHandler.one(this._element, TRANSITION_END, () => {
+        this._element.classList.remove(ClassName.STATIC)
+      })
+      emulateTransitionEnd(this._element, modalTransitionDuration)
+      this._element.focus()
+    } else {
+      this.hide()
     }
   }
 

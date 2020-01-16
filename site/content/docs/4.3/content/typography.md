@@ -102,7 +102,7 @@ Use the included utility classes to recreate the small secondary heading text fr
 
 ## Display headings
 
-Traditional heading elements are designed to work best in the meat of your page content. When you need a heading to stand out, consider using a **display heading**—a larger, slightly more opinionated heading style. Keep in mind these headings are not responsive by default, but it's possible to enable [responsive font sizes](#responsive-font-sizes).
+Traditional heading elements are designed to work best in the meat of your page content. When you need a heading to stand out, consider using a **display heading**—a larger, slightly more opinionated heading style.
 
 <div class="bd-example">
   <div class="display-1 pb-3 mb-3 border-bottom">Display 1</div>
@@ -143,13 +143,25 @@ Styling for common inline HTML5 elements.
 <p><em>This line rendered as italicized text.</em></p>
 {{< /example >}}
 
-`.mark` and `.small` classes are also available to apply the same styles as `<mark>` and `<small>` while avoiding any unwanted semantic implications that the tags would bring.
+Beware that those tags should be used for semantic purpose:
 
-While not shown above, feel free to use `<b>` and `<i>` in HTML5. `<b>` is meant to highlight words or phrases without conveying additional importance while `<i>` is mostly for voice, technical terms, etc.
+* `<mark>` represents text which is marked or highlighted for reference or notation purposes.
+* `<small>` represents side-comments and small print, like copyright and legal text.
+* `<s>` represents element that are no longer relevant or no longer accurate.
+* `<u>` represents a span of inline text which should be rendered in a way that indicates that it has a non-textual annotation.
+
+If you want to style your text, you should use the following classes instead:
+
+* `.mark` will apply the same styles as `<mark>`.
+* `.small` will apply the same styles as `<small>`.
+* `.text-decoration-underline` will apply the same styles as `<u>`.
+* `.text-decoration-line-through` will apply the same styles as `<s>`.
+
+While not shown above, feel free to use `<b>` and `<i>` in HTML5. `<b>` is meant to highlight words or phrases without conveying additional importance, while `<i>` is mostly for voice, technical terms, etc.
 
 ## Text utilities
 
-Change text alignment, transform, style, weight, line-height and color with our [text utilities]({{< docsref "/utilities/text" >}}) and [color utilities]({{< docsref "/utilities/colors" >}}).
+Change text alignment, transform, style, weight, line-height, decoration and color with our [text utilities]({{< docsref "/utilities/text" >}}) and [color utilities]({{< docsref "/utilities/colors" >}}).
 
 ## Abbreviations
 
@@ -272,6 +284,4 @@ Align terms and descriptions horizontally by using our grid system's predefined 
 
 ## Responsive font sizes
 
-Bootstrap v4.3 ships with the option to enable responsive font sizes, allowing text to scale more naturally across device and viewport sizes. <abbr title="Responsive font sizes">RFS</abbr> can be enabled by changing the `$enable-responsive-font-sizes` Sass variable to `true` and recompiling Bootstrap.
-
-To support <abbr title="Responsive font sizes">RFS</abbr>, we use a Sass mixin to replace our normal `font-size` properties. Responsive font sizes will be compiled into `calc()` functions with a mix of `rem` and viewport units to enable the responsive scaling behavior. More about <abbr title="Responsive font sizes">RFS</abbr> and its configuration can be found on its [GitHub repository](https://github.com/twbs/rfs).
+In Bootstrap 5, we've enabled responsive font sizes by default, allowing text to scale more naturally across device and viewport sizes. Have a look at the [RFS page]({{< docsref "/getting-started/rfs" >}}) to find out how this works.

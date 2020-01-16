@@ -8,13 +8,7 @@ toc: true
 
 ## Text alignment
 
-Easily realign text to components with text alignment classes.
-
-{{< example >}}
-<p class="text-justify">Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Cras mattis iudicium purus sit amet fermentum.</p>
-{{< /example >}}
-
-For left, right, and center alignment, responsive classes are available that use the same viewport width breakpoints as the grid system.
+Easily realign text to components with text alignment classes. For left, right, and center alignment, responsive classes are available that use the same viewport width breakpoints as the grid system.
 
 {{< example >}}
 <p class="text-left">Left aligned text on all viewport sizes.</p>
@@ -26,6 +20,10 @@ For left, right, and center alignment, responsive classes are available that use
 <p class="text-lg-left">Left aligned text on viewports sized LG (large) or wider.</p>
 <p class="text-xl-left">Left aligned text on viewports sized XL (extra-large) or wider.</p>
 {{< /example >}}
+
+{{< callout info >}}
+Note that we don't provide utility classes for justified text. While, aesthetically, justified text might look more appealing, it does make word-spacing more random and therefore harder to read.
+{{< /callout >}}
 
 ## Text wrapping and overflow
 
@@ -47,7 +45,7 @@ Prevent text from wrapping with a `.text-nowrap` class.
 
 ## Word break
 
-Prevent long strings of text from breaking your components' layout by using `.text-break` to set `overflow-wrap: break-word` (and `word-break: break-word` for IE & Edge compatibility).
+Prevent long strings of text from breaking your components' layout by using `.text-break` to set `word-wrap: break-word`. We use `word-wrap` instead of the more common `overflow-wrap` for wider browser support.
 
 {{< example >}}
 <p class="text-break">mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm</p>
@@ -76,6 +74,7 @@ Quickly change the weight (boldness) of text or italicize text.
 <p class="font-weight-light">Light weight text.</p>
 <p class="font-weight-lighter">Lighter weight text (relative to the parent element).</p>
 <p class="font-italic">Italic text.</p>
+<p class="font-normal">Text without font style</p>
 {{< /example >}}
 
 ## Line height
@@ -109,8 +108,10 @@ Reset a text or link's color with `.text-reset`, so that it inherits the color f
 
 ## Text decoration
 
-Remove a text decoration with a `.text-decoration-none` class.
+Decorate text in components with text decoration classes.
 
 {{< example >}}
-<a href="#" class="text-decoration-none">Non-underlined link</a>
+<p class="text-decoration-underline">This text has a line underneath it.</p>
+<p class="text-decoration-line-through">This text has a line going through it.</p>
+<a href="#" class="text-decoration-none">This link has its text decoration removed</a>
 {{< /example >}}

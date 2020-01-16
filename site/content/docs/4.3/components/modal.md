@@ -140,6 +140,65 @@ Toggle a working modal demo by clicking the button below. It will slide down and
 </div>
 {{< /highlight >}}
 
+### Static backdrop
+
+When backdrop is set to static, the modal will not close when clicking outside it. Click the button below to try it.
+
+<div id="staticBackdropLive" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLiveLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLiveLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>I will not close if you click outside me. Don't even try to press escape key.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="bd-example">
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdropLive">
+    Launch static backdrop modal
+  </button>
+</div>
+
+{{< highlight html >}}
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+  Launch static backdrop modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div>
+    </div>
+  </div>
+</div>
+{{< /highlight >}}
+
+
 ### Scrolling long content
 
 When modals become too long for the user's viewport or device, they scroll independent of the page itself. Try the demo below to see what we mean.
@@ -668,7 +727,6 @@ Our default modal without modifier class constitutes the "medium" size modal.
 <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content">
-
       <div class="modal-header">
         <h5 class="modal-title h4" id="myExtraLargeModalLabel">Extra large modal</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -685,7 +743,6 @@ Our default modal without modifier class constitutes the "medium" size modal.
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
-
       <div class="modal-header">
         <h5 class="modal-title h4" id="myLargeModalLabel">Large modal</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -858,6 +915,10 @@ Bootstrap's modal class exposes a few events for hooking into modal functionalit
     <tr>
       <td>hidden.bs.modal</td>
       <td>This event is fired when the modal has finished being hidden from the user (will wait for CSS transitions to complete).</td>
+    </tr>
+    <tr>
+      <td>hidePrevented.bs.modal</td>
+      <td>This event is fired when the modal is shown, its backdrop is <code>static</code> and a click outside the modal or an escape key press is performed with the keyboard option or <code>data-keyboard</code> set to <code>false</code>.</td>
     </tr>
   </tbody>
 </table>

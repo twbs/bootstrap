@@ -30,6 +30,7 @@ Changes to our source Sass files and compiled CSS.
   - `retina-img()`
   - `text-hide()` (also dropped the associated utility class, `.text-hide`)
   - `visibility()`
+  - `form-control-focus()`
 - **Todo:** New variables?
 - **Todo:** Rearrange forms source files (under `scss/forms/`)
 - **Todo:** Rearrange grid source files (under `scss/grid/`)
@@ -67,11 +68,12 @@ Changes to any layout tools and our grid system.
 
 Changes to Reboot, typography, tables, and more.
 
-- **Todo:** Make RFS enabled by default
+- [RFS]({{< docsref "/getting-started/rfs" >}}) enabled for automated font size rescaling. [See #29152](https://github.com/twbs/bootstrap/pull/29152)
 - Reset default horizontal `padding-left` on `<ul>` and `<ol>` elements from browser default `40px` to `2rem`.
 - Simplified table styles (no more 2px border on `thead > th` elements) and tightened cell padding.
 - Dropped `.pre-scrollable` class. [See #29135](https://github.com/twbs/bootstrap/pull/29135)
 - `.text-*` utilities do not add hover and focus states to links anymore. `.link-*` helper classes can be used instead. [See #29267](https://github.com/twbs/bootstrap/pull/29267)
+- Drop `.text-justify` class. [See #229793](https://github.com/twbs/bootstrap/pull/29793)
 
 ## Forms
 
@@ -98,6 +100,10 @@ Changes to Reboot, typography, tables, and more.
 
 ## Components
 
+### Disabled states
+
+- Disabled states of the buttons, close button, pagination link & form range now have `pointer-events: none` added. This simplifies our codebase and makes it easier to override active states in CSS. [#29296](https://github.com/twbs/bootstrap/pull/29296).
+
 ### Alerts
 
 - **Todo:** Remove auto-darkening of `<hr>` elements in `.alert-*` class variants. `<hr>`s use `rgba()` for their color, so these should naturally blend anyway.
@@ -117,6 +123,10 @@ Badges were overhauled to better differentiate themselves from buttons and to be
 ### Jumbotron
 
 - The jumbotron component is removed in favor of utility classes like `.bg-light` for the background color and `.p-*` classes to control padding.
+
+### Navbars
+
+- All navbars now require a container within. This drastically simplifies spacing requirements and removes the need for extensive CSS overrides we added for responsive containers in v4.
 
 ### Pagination
 

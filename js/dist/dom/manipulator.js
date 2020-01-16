@@ -7,7 +7,7 @@
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
   (global = global || self, global.Manipulator = factory());
-}(this, function () { 'use strict';
+}(this, (function () { 'use strict';
 
   function _defineProperty(obj, key, value) {
     if (key in obj) {
@@ -86,7 +86,7 @@
 
   function normalizeDataKey(key) {
     return key.replace(/[A-Z]/g, function (chr) {
-      return chr.toLowerCase();
+      return "-" + chr.toLowerCase();
     });
   }
 
@@ -140,5 +140,5 @@
 
   return Manipulator;
 
-}));
+})));
 //# sourceMappingURL=manipulator.js.map

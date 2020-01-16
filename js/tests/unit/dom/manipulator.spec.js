@@ -24,13 +24,13 @@ describe('Manipulator', () => {
       expect(div.getAttribute('data-key')).toEqual('value')
     })
 
-    it('should set data attribute in lower case', () => {
+    it('should set data attribute in kebab case', () => {
       fixtureEl.innerHTML = '<div></div>'
 
       const div = fixtureEl.querySelector('div')
 
-      Manipulator.setDataAttribute(div, 'tEsT', 'value')
-      expect(div.getAttribute('data-test')).toEqual('value')
+      Manipulator.setDataAttribute(div, 'testKey', 'value')
+      expect(div.getAttribute('data-test-key')).toEqual('value')
     })
   })
 
@@ -44,13 +44,13 @@ describe('Manipulator', () => {
       expect(div.getAttribute('data-key')).toBeNull()
     })
 
-    it('should remove data attribute in lower case', () => {
-      fixtureEl.innerHTML = '<div data-testkey="value" ></div>'
+    it('should remove data attribute in kebab case', () => {
+      fixtureEl.innerHTML = '<div data-test-key="value"></div>'
 
       const div = fixtureEl.querySelector('div')
 
-      Manipulator.removeDataAttribute(div, 'tEStKeY')
-      expect(div.getAttribute('data-testkey')).toBeNull()
+      Manipulator.removeDataAttribute(div, 'testKey')
+      expect(div.getAttribute('data-test-key')).toBeNull()
     })
   })
 
@@ -81,12 +81,12 @@ describe('Manipulator', () => {
       expect(Manipulator.getDataAttribute(div, 'test')).toBeNull()
     })
 
-    it('should get data attribute in lower case', () => {
-      fixtureEl.innerHTML = '<div data-test="value" ></div>'
+    it('should get data attribute in kebab case', () => {
+      fixtureEl.innerHTML = '<div data-test-key="value" ></div>'
 
       const div = fixtureEl.querySelector('div')
 
-      expect(Manipulator.getDataAttribute(div, 'tEsT')).toEqual('value')
+      expect(Manipulator.getDataAttribute(div, 'testKey')).toEqual('value')
     })
 
     it('should normalize data', () => {
