@@ -7,7 +7,7 @@
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./polyfill.js')) :
   typeof define === 'function' && define.amd ? define(['./polyfill.js'], factory) :
   (global = global || self, global.EventHandler = factory(global.Polyfill));
-}(this, function (polyfill_js) { 'use strict';
+}(this, (function (polyfill_js) { 'use strict';
 
   /**
    * --------------------------------------------------------------------------
@@ -239,7 +239,7 @@
 
       if (isNamespace) {
         Object.keys(events).forEach(function (elementEvent) {
-          removeNamespacedHandlers(element, events, elementEvent, originalTypeEvent.substr(1));
+          removeNamespacedHandlers(element, events, elementEvent, originalTypeEvent.slice(1));
         });
       }
 
@@ -322,5 +322,5 @@
 
   return EventHandler;
 
-}));
+})));
 //# sourceMappingURL=event-handler.js.map

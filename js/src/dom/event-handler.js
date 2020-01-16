@@ -262,7 +262,7 @@ const EventHandler = {
     if (isNamespace) {
       Object.keys(events)
         .forEach(elementEvent => {
-          removeNamespacedHandlers(element, events, elementEvent, originalTypeEvent.substr(1))
+          removeNamespacedHandlers(element, events, elementEvent, originalTypeEvent.slice(1))
         })
     }
 

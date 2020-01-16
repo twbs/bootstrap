@@ -19,10 +19,6 @@
     vertical-align: inherit;
   }
 
-  td {
-    border-bottom: $table-border-width solid $table-border-color;
-  }
-
   thead th {
     vertical-align: bottom;
     border-bottom-color: $table-head-border-color;

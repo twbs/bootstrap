@@ -30,6 +30,7 @@ Changes to our source Sass files and compiled CSS.
   - `retina-img()`
   - `text-hide()` (also dropped the associated utility class, `.text-hide`)
   - `visibility()`
+  - `form-control-focus()`
 - **Todo:** New variables?
 - **Todo:** Rearrange forms source files (under `scss/forms/`)
 - **Todo:** Rearrange grid source files (under `scss/grid/`)
@@ -37,6 +38,8 @@ Changes to our source Sass files and compiled CSS.
 - Dropped `color()`, `theme-color()` & `gray()` functions in favor of variables. [See #29083](https://github.com/twbs/bootstrap/pull/29083)
 - The `theme-color-level()` function is renamed to `color-level()` and now accepts any color you want instead of only `$theme-color` colors. [See #29083](https://github.com/twbs/bootstrap/pull/29083)
 - Line heights are dropped from several components to simplify our codebase. The `button-size()` and `pagination-size()` do not accept line height parameters anymore. [See #29271](https://github.com/twbs/bootstrap/pull/29271)
+- The `button-variant()` mixin now accepts 3 optional color parameters, for each button state, to override the color provided by `color-yiq()`. By default, these parameters will find which color provides more contrast against the button state's background color with `color-yiq()`.
+- The `button-outline-variant()` mixin now accepts an additional argument, `$active-color`, for setting the button's active state text color. By default, this parameter will find which color provides more contrast against the button's active background color with `color-yiq()`.
 
 ## JavaScript
 
@@ -57,11 +60,12 @@ Changes to any layout tools and our grid system.
 
 Changes to Reboot, typography, tables, and more.
 
-- **Todo:** Make RFS enabled by default
+- [RFS]({{< docsref "/getting-started/rfs" >}}) enabled for automated font size rescaling. [See #29152](https://github.com/twbs/bootstrap/pull/29152)
 - Reset default horizontal `padding-left` on `<ul>` and `<ol>` elements from browser default `40px` to `2rem`.
 - Simplified table styles (no more 2px border on `thead > th` elements) and tightened cell padding.
 - Dropped `.pre-scrollable` class. [See #29135](https://github.com/twbs/bootstrap/pull/29135)
 - `.text-*` utilities do not add hover and focus states to links anymore. `.link-*` helper classes can be used instead. [See #29267](https://github.com/twbs/bootstrap/pull/29267)
+- Drop `.text-justify` class. [See #229793](https://github.com/twbs/bootstrap/pull/29793)
 
 ## Forms
 
@@ -88,6 +92,10 @@ Changes to Reboot, typography, tables, and more.
 
 ## Components
 
+### Disabled states
+
+- Disabled states of the buttons, close button, pagination link & form range now have `pointer-events: none` added. This simplifies our codebase and makes it easier to override active states in CSS. [#29296](https://github.com/twbs/bootstrap/pull/29296).
+
 ### Alerts
 
 - **Todo:** Remove auto-darkening of `<hr>` elements in `.alert-*` class variants. `<hr>`s use `rgba()` for their color, so these should naturally blend anyway.
@@ -104,14 +112,13 @@ Badges were overhauled to better differentiate themselves from buttons and to be
 
 - Removed the card columns in favor of a Masonry grid [See #28922](https://github.com/twbs/bootstrap/pull/28922).
 
-### Icons (New!)
-
-- Added new Bootstrap icons to the project for our documentation, form controls, and more.
-- Removed Open Iconic icons from project source code for form controls.
-
 ### Jumbotron
 
 - The jumbotron component is removed in favor of utility classes like `.bg-light` for the background color and `.p-*` classes to control padding.
+
+### Navbars
+
+- All navbars now require a container within. This drastically simplifies spacing requirements and removes the need for extensive CSS overrides we added for responsive containers in v4.
 
 ### Pagination
 
@@ -134,6 +141,7 @@ Badges were overhauled to better differentiate themselves from buttons and to be
 - Renamed `.text-monospace` to `.font-monospace`
 - Decreased the number of responsive order utilities per breakpoint. The highest order utility with a number now is `.order-5` instead of `.order-12`. [See #28874](https://github.com/twbs/bootstrap/pull/28874).
 - New `line-height` utilities: `.lh-1`, `.lh-sm`, `.lh-base` and `.lh-lg`. See [here]({{< docsref "/utilities/text#line-height" >}}).
+- Added `.bg-body` for quickly setting the `<body>`'s background to additional elements.
 - **Todo:** Drop `.text-hide` as it's an antiquated method for hiding text that shouldn't be used anymore
 - **Todo:** Split utilities into property-value utility classes and helpers
 

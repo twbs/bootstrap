@@ -95,7 +95,7 @@ const supportScopeQuery = (() => {
 
   try {
     element.querySelectorAll(':scope *')
-  } catch (error) {
+  } catch (_) {
     return false
   }
 

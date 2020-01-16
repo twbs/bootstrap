@@ -215,6 +215,44 @@ You can also specify a base color with our color map functions:
 
 We use the `escape-svg` function to escape the `<`, `>` and `#` characters for SVG background images. These characters need to be escaped to properly render the background images in IE.
 
+## Add and Subtract functions
+
+We use the `add` and `subtract` functions to wrap the CSS `calc` function. The primary purpose of these functions is to avoid errors when a "unitless" `0` value is passed into a `calc` expression. Expressions like `calc(10px - 0)` will return an error in all browsers, despite being mathematically correct.
+
+Example where the calc is valid:
+
+{{< highlight scss >}}
+$border-radius: .25rem;
+$border-width: 1px;
+
+.element {
+  // Output calc(.25rem - 1px) is valid
+  border-radius: calc($border-radius - $border-width);
+}
+
+.element {
+  // Output the same calc(.25rem - 1px) as above
+  border-radius: subtract($border-radius, $border-width);
+}
+{{< /highlight >}}
+
+Example where the calc is invalid:
+
+{{< highlight scss >}}
+$border-radius: .25rem;
+$border-width: 0;
+
+.element {
+  // Output calc(.25rem - 0) is invalid
+  border-radius: calc($border-radius - $border-width);
+}
+
+.element {
+  // Output .25rem
+  border-radius: subtract($border-radius, $border-width);
+}
+{{< /highlight >}}
+
 ## Sass options
 
 Customize Bootstrap 4 with our built-in custom variables file and easily toggle global CSS preferences with new `$enable-*` Sass variables. Override a variable's value and recompile with `npm run test` as needed.
@@ -232,7 +270,7 @@ You can find and customize these variables for key global options in Bootstrap's
 | `$enable-grid-classes`                       | `true` (default) or `false`        | Enables the generation of CSS classes for the grid system (e.g., `.container`, `.row`, `.col-md-1`, etc.). |
 | `$enable-caret`                              | `true` (default) or `false`        | Enables pseudo element caret on `.dropdown-toggle`. |
 | `$enable-pointer-cursor-for-buttons`         | `true` (default) or `false`        | Add "hand" cursor to non-disabled button elements. |
-| `$enable-responsive-font-sizes`              | `true` or `false` (default)        | Enables [responsive font sizes]({{< docsref "/content/typography#responsive-font-sizes" >}}). |
+| `$enable-rfs`                                | `true` (default)  or `false`       | Globally enables [RFS]({{< docsref "/getting-started/rfs" >}}). |
 | `$enable-validation-icons`                   | `true` (default) or `false`        | Enables `background-image` icons within textual inputs and some custom forms for validation states. |
 | `$enable-deprecation-messages`               | `true` or `false` (default)        | Set to `true` to show warnings when using any of the deprecated mixins and functions that are planned to be removed in `v5`. |
 
@@ -242,14 +280,24 @@ Many of Bootstrap's various components and utilities are built through a series 
 
 ### All colors
 
-All colors available in Bootstrap 4, are available as Sass variables and a Sass map in `scss/_variables.scss` file. This will be expanded upon in subsequent minor releases to add additional shades, much like the [grayscale palette](#grays) we already include.
+All colors available in Bootstrap 5, are available as Sass variables and a Sass map in `scss/_variables.scss` file. To avoid increased file sizes, we do not create classes for each of these variables.
+
+Sass cannot programmatically generate variables, so we must manually create them ourselves. We specify the midpoint value (`500`) and use custom color functions to tint (lighten) or shade (darken) our colors via Sass's `mix()` color function. Using `mix()` is not the same as `lighten()` and `darken()`—the former blends the specified color with white or black, while the latter only adjusts the lightness value of each color. The result is a much more complete suite of colors, as [shown in this CodePen demo](https://codepen.io/emdeoh/pen/zYOQOPB).
+
+Our `tint-color()` and `shade-color()` functions use `mix()` alongside our `$theme-color-interval` variable, which specifies a stepped percentage value for each mixed color we need. See the `scss/_functions.scss` and `scss/_variables.scss` files for the full source code.
 
 <div class="row">
   {{< theme-colors.inline >}}
-  {{- range $.Site.Data.colors }}
-    {{- if (and (not (eq .name "white")) (not (eq .name "gray")) (not (eq .name "gray-dark"))) }}
-    <div class="col-md-4">
-      <div class="p-3 mb-3 swatch-{{ .name }}">{{ .name | title }}</div>
+  {{- range $color := $.Site.Data.colors }}
+    {{- if (and (not (eq $color.name "white")) (not (eq $color.name "gray")) (not (eq $color.name "gray-dark"))) }}
+    <div class="col-md-4 mb-3 font-monospace">
+      <div class="p-3 mb-2 swatch-{{ $color.name }}">
+        <strong class="d-block">${{ $color.name }}</strong>
+        {{ $color.hex }}
+      </div>
+      {{ range (seq 100 100 900) }}
+      <div class="p-3 bd-{{ $color.name }}-{{ . }}">${{ $color.name }}-{{ . }}</div>
+      {{ end }}
     </div>
     {{ end -}}
   {{ end -}}
@@ -260,6 +308,10 @@ Here's how you can use these in your Sass:
 
 {{< highlight scss >}}
 .alpha { color: $purple; }
+.beta {
+  color: $yellow-300;
+  background-color: $indigo-900;
+}
 {{< /highlight >}}
 
 [Color utility classes]({{< docsref "/utilities/colors" >}}) are also available for setting `color` and `background-color`.
