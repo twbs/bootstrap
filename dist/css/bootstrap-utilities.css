@@ -1,7 +1,7 @@
 /*!
  * Bootstrap Utilities v4.3.1 (https://getbootstrap.com/)
- * Copyright 2011-2019 The Bootstrap Authors
- * Copyright 2011-2019 Twitter, Inc.
+ * Copyright 2011-2020 The Bootstrap Authors
+ * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 .align-baseline {
@@ -1013,10 +1013,6 @@
   text-align: center !important;
 }
 
-.text-justify {
-  text-align: justify !important;
-}
-
 .text-primary {
   color: #0d6efd !important;
 }
@@ -1145,13 +1141,24 @@
   text-decoration: none !important;
 }
 
+.text-decoration-underline {
+  text-decoration: underline !important;
+}
+
+.text-decoration-line-through {
+  text-decoration: line-through !important;
+}
+
 .font-italic {
   font-style: italic !important;
 }
 
+.font-normal {
+  font-style: normal !important;
+}
+
 .text-break {
-  overflow-wrap: break-word !important;
-  word-break: break-word !important;
+  word-wrap: break-word !important;
 }
 
 .font-monospace {
@@ -1796,9 +1803,6 @@
   .text-sm-center {
     text-align: center !important;
   }
-  .text-sm-justify {
-    text-align: justify !important;
-  }
 }
 
 @media (min-width: 768px) {
@@ -2386,9 +2390,6 @@
   }
   .text-md-center {
     text-align: center !important;
-  }
-  .text-md-justify {
-    text-align: justify !important;
   }
 }
 
@@ -2978,9 +2979,6 @@
   .text-lg-center {
     text-align: center !important;
   }
-  .text-lg-justify {
-    text-align: justify !important;
-  }
 }
 
 @media (min-width: 1200px) {
@@ -3568,9 +3566,6 @@
   }
   .text-xl-center {
     text-align: center !important;
-  }
-  .text-xl-justify {
-    text-align: justify !important;
   }
 }
 

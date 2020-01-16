@@ -429,9 +429,9 @@ select {
 // 3. Opinionated: add "hand" cursor to non-disabled button elements.
 
 button,
-[type="button"], // 1
-[type="reset"],
-[type="submit"] {
+input[type="button"], // 1
+input[type="reset"],
+input[type="submit"] {
   -webkit-appearance: button; // 2
 
   @if $enable-pointer-cursor-for-buttons {
