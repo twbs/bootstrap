@@ -7,7 +7,7 @@ toc: true
 ---
 
 {{< callout info >}}
-The recommended plugin to animate custom file input: [bs-custom-file-input](https://www.npmjs.com/package/bs-custom-file-input), that's what we are using currently here in our docs.
+The recommended plugin to animate custom file inputs is [bs-custom-file-input](https://www.npmjs.com/package/bs-custom-file-input); it's what we use here in our docs.
 {{< /callout >}}
 
 ## Default
