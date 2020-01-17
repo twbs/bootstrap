@@ -2,6 +2,12 @@
   min-height: 4rem;
   background-color: $bd-purple-bright;
 
+  &::after {
+    min-height: inherit;
+    font-size: 0;
+    content: "";
+  }
+
   @include media-breakpoint-down(md) {
     .navbar-nav-scroll {
       width: 100%;
