@@ -11,7 +11,7 @@ toc: true
 
 ## How it works
 
-The accordion uses [collapse]({{< docsref "/components/collapse" >}}) internally in order to make it collapsible. In order to render an accordion that's expanded you need to add the `open` class on the `.accordion
+The accordion uses [collapse]({{< docsref "/components/collapse" >}}) internally in order to make it collapsible. In order to render an accordion that's expanded you need to add the `open` class on the `.accordion`
 
 {{< callout info >}}
 {{< partial "callout-info-prefersreducedmotion.md" >}}
@@ -20,8 +20,6 @@ The accordion uses [collapse]({{< docsref "/components/collapse" >}}) internally
 ## Example
 
 Click the accordions below to expand/collapse the accordion content.
-
-## Accordion example
 
 {{< example >}}
 <div class="accordion" id="accordionExample">
