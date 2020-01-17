@@ -112,6 +112,58 @@ Add `.list-group-horizontal` to change the layout of list group items from verti
 {{< /list-group.inline >}}
 {{< /example >}}
 
+## Nested
+
+Listed group and listed group flush with nested lists inside of them.
+
+{{< example >}}
+<div class="container">
+  <div class="mb-2"><b>List Group</b></div>
+  <div class="list-group">
+    <div class="list-group-item">Group item</div>
+    <div class="list-group-item">
+      <b class="mb-2">List Group Horizontal</b>
+      <div class="list-group list-group-horizontal">
+        <div class="list-group-item">Group item 1</div>
+        <div class="list-group-item">Group item 2</div>
+        <div class="list-group-item">Group item 3</div>      
+      </div>
+    </div>  
+    <div class="list-group-item">
+      <b class="mb-2">List Group</b>
+      <div class="list-group">
+        <div class="list-group-item">Group item 1</div>
+        <div class="list-group-item">Group item 2</div>
+        <div class="list-group-item">Group item 3</div>      
+      </div>
+    </div>
+  </div>
+
+  <br class="my-4" />
+
+  <div class="mb-2"><b>List Group Flush</b></div>
+  <div class="list-group list-group-flush">
+    <div class="list-group-item">Group item</div>
+    <div class="list-group-item">
+      <b class="mb-2">List Group Horizontal</b>
+      <div class="list-group list-group-horizontal">
+        <div class="list-group-item">Group item 1</div>
+        <div class="list-group-item">Group item 2</div>
+        <div class="list-group-item">Group item 3</div>      
+      </div>
+    </div>
+    <div class="list-group-item">
+      <b class="mb-2">List Group</b>
+      <div class="list-group">
+        <div class="list-group-item">Group item 1</div>
+        <div class="list-group-item">Group item 2</div>
+        <div class="list-group-item">Group item 3</div>      
+      </div>
+    </div>
+  </div>
+</div>
+{{< /example >}}
+
 ## Contextual classes
 
 Use contextual classes to style list items with a stateful background and color.

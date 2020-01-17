@@ -132,7 +132,7 @@
 // useful within other components (e.g., cards).
 
 .list-group-flush {
-  .list-group-item {
+  > .list-group-item {
     border-right-width: 0;
     border-left-width: 0;
     @include border-radius(0);
@@ -140,10 +140,8 @@
     &:first-child {
       border-top-width: 0;
     }
-  }
 
-  &:last-child {
-    .list-group-item:last-child {
+    &:last-child {
       border-bottom-width: 0;
     }
   }
