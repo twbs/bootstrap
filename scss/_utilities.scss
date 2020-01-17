@@ -443,16 +443,17 @@ $utilities: map-merge(
       class: font,
       values: (monospace: $font-family-monospace)
     ),
-    "rounded": (
+    "border-radius": (
       property: border-radius,
-      class: rounded,
+      responsive: true,
       values: (
         null: $border-radius,
-        sm: $border-radius-sm,
-        lg: $border-radius-lg,
+        0: 0,
+        1: $border-radius-sm,
+        2: $border-radius,
+        3: $border-radius-lg,
         circle: 50%,
         pill: $rounded-pill,
-        0: 0,
       )
     ),
     "rounded-top": (
