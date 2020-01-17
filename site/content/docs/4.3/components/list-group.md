@@ -118,11 +118,11 @@ Listed group and listed group flush with nested lists inside of them.
 
 {{< example >}}
 <div class="container">
-  <div class="mb-2"><b>List Group</b></div>
-  <div class="list-group">
+  <h3>List Group</h3>
+  <div class="list-group mb-4">
     <div class="list-group-item">Group item</div>
     <div class="list-group-item">
-      <b class="mb-2">List Group Horizontal</b>
+      <h4>List Group Horizontal</h4>
       <div class="list-group list-group-horizontal">
         <div class="list-group-item">Group item 1</div>
         <div class="list-group-item">Group item 2</div>
@@ -130,7 +130,7 @@ Listed group and listed group flush with nested lists inside of them.
       </div>
     </div>  
     <div class="list-group-item">
-      <b class="mb-2">List Group</b>
+      <h4>List Group</h4>
       <div class="list-group">
         <div class="list-group-item">Group item 1</div>
         <div class="list-group-item">Group item 2</div>
@@ -139,13 +139,11 @@ Listed group and listed group flush with nested lists inside of them.
     </div>
   </div>
 
-  <br class="my-4" />
-
-  <div class="mb-2"><b>List Group Flush</b></div>
+  <h3>List Group Flush</h3>
   <div class="list-group list-group-flush">
     <div class="list-group-item">Group item</div>
     <div class="list-group-item">
-      <b class="mb-2">List Group Horizontal</b>
+      <h4>List Group Horizontal</h4>
       <div class="list-group list-group-horizontal">
         <div class="list-group-item">Group item 1</div>
         <div class="list-group-item">Group item 2</div>
@@ -153,7 +151,7 @@ Listed group and listed group flush with nested lists inside of them.
       </div>
     </div>
     <div class="list-group-item">
-      <b class="mb-2">List Group</b>
+      <h4>List Group</h4>
       <div class="list-group">
         <div class="list-group-item">Group item 1</div>
         <div class="list-group-item">Group item 2</div>
