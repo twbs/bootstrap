@@ -86,11 +86,23 @@
 //
 // Placed here since it has to come after the potential zebra striping
 
+// stylelint-disable selector-max-type
 .table-hover {
   tbody tr {
     &:hover {
       color: $table-hover-color;
-      background-color: $table-hover-bg;
+
+      > th,
+      > td {
+        background-color: $table-hover-bg;
+
+        // Set background hover color for each table color variant
+        @each $color, $value in $theme-colors {
+          &.table-#{$color} {
+            background-color: darken(color-level($value, $table-bg-level), 5%);
+          }
+        }
+      }
     }
   }
 }

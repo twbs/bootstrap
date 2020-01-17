@@ -19,21 +19,4 @@
       }
     }
   }
-
-  // Hover states for `.table-hover`
-  // Note: this is not available for cells or rows within `thead` or `tfoot`.
-  .table-hover {
-    $hover-background: darken($background, 5%);
-
-    .table-#{$state} {
-      &:hover {
-        background-color: $hover-background;
-
-        > td,
-        > th {
-          background-color: $hover-background;
-        }
-      }
-    }
-  }
 }
