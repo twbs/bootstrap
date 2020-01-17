@@ -963,7 +963,7 @@ $card-group-margin:                 $grid-gutter-width / 2 !default;
 $card-deck-margin:                  $card-group-margin !default;
 
 // Accordion
-$accordion-padding-y:               1rem !default;
+$accordion-padding-y:               1.25rem !default;
 $accordion-padding-x:               1.25rem !default;
 $accordion-bg:                      rgba($black, .03) !default;
 $accordion-color:                   null !default;
@@ -976,6 +976,13 @@ $accordion-header-bg:               $accordion-bg !default;
 $accordion-border-width:            $border-width !default;
 $accordion-border-radius:           $border-radius !default;
 $accordion-border-color:            rgba($black, .125) !default;
+
+$accordion-flush-header-bg:          transparent !default;
+
+$accordion-striped-order:           odd !default;
+$accordion-accent-bg:               rgba($black, .05) !default;
+$accordion-header-accent-bg:        $accordion-accent-bg !default;
+$accordion-body-accent-bg:          null !default;
 
 // Tooltips
 

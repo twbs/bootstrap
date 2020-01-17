@@ -3,11 +3,14 @@
 //
 
 .accordion-header {
-  padding: $accordion-header-padding-y $accordion-header-padding-x;
+  padding: 0;
   margin-bottom: -$accordion-border-width;
   color: $accordion-header-color;
   background-color: $accordion-header-bg;
   @include border-radius(0);
+  > .btn{
+    padding: $accordion-header-padding-y $accordion-header-padding-x;
+  }
 }
 
 .accordion-item {
@@ -31,4 +34,51 @@
 .accordion-body {
   padding: $accordion-body-padding-y $accordion-body-padding-x;
   border-top: $accordion-border-width solid $accordion-border-color;
+}
+
+
+// Flush accordion items
+//
+// Remove borders and border-radius to keep accordion items edge-to-edge.
+
+.accordion-flush {
+  .accordion-header {
+    background-color: $accordion-flush-header-bg;
+  }
+
+  .accordion-item {
+    border-right-width: 0;
+    border-left-width: 0;
+    @include border-radius(0);
+
+    &:first-child {
+      border-top-width: 0;
+    }
+  }
+
+  &:last-child {
+    .accordion-item:last-child {
+      border-bottom-width: 0;
+    }
+  }
+}
+
+
+// Zebra-striping
+//
+// Default zebra-stripe styles (alternating gray and transparent backgrounds)
+
+.accordion-striped {
+  .accordion-header{
+    background-color: transparent;
+  }
+  .accordion-item:nth-of-type(#{$accordion-striped-order}) {
+    .accordion-header {
+      background-color: $accordion-header-accent-bg;
+    }
+
+    .accordion-body {
+      background-color: $accordion-body-accent-bg;
+    }
+  }
 }
