@@ -25,7 +25,7 @@ Click the accordions below to expand/collapse the accordion content.
 <div class="accordion" id="accordionExample">
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingOne">
-      <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+      <button class="accordion-button" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
         Accordion Item #1
       </button>
     </h2>
@@ -35,7 +35,7 @@ Click the accordions below to expand/collapse the accordion content.
   </div>
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingTwo">
-      <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+      <button class="accordion-button collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
         Accordion Item #2
       </button>
     </h2>
@@ -45,7 +45,7 @@ Click the accordions below to expand/collapse the accordion content.
   </div>
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingThree">
-      <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+      <button class="accordion-button collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
         Accordion Item #3
       </button>
     </h2>
@@ -64,7 +64,7 @@ Add `.accordion-flush` to remove some borders and rounded corners to render acco
 <div class="accordion accordion-flush" id="accordionFlushExample">
   <div class="accordion-item">
     <h2 class="accordion-header" id="flush-headingOne">
-      <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#flush-collapseOne" aria-expanded="true" aria-controls="flush-collapseOne">
+      <button class="accordion-button collapsed" type="button" data-toggle="collapse" data-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
         Accordion Item #1
       </button>
     </h2>
@@ -74,7 +74,7 @@ Add `.accordion-flush` to remove some borders and rounded corners to render acco
   </div>
   <div class="accordion-item">
     <h2 class="accordion-header" id="flush-headingTwo">
-      <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+      <button class="accordion-button collapsed" type="button" data-toggle="collapse" data-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
         Accordion Item #2
       </button>
     </h2>
@@ -84,7 +84,7 @@ Add `.accordion-flush` to remove some borders and rounded corners to render acco
   </div>
   <div class="accordion-item">
     <h2 class="accordion-header" id="flush-headingThree">
-      <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+      <button class="accordion-button collapsed" type="button" data-toggle="collapse" data-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
         Accordion Item #3
       </button>
     </h2>
@@ -103,7 +103,7 @@ Use `.accordion-striped` to add zebra-striping to any accordion.
 <div class="accordion accordion-striped" id="accordionStripedExample">
   <div class="accordion-item">
     <h2 class="accordion-header" id="striped-headingOne">
-      <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#striped-collapseOne" aria-expanded="true" aria-controls="striped-collapseOne">
+      <button class="accordion-button collapsed" type="button" data-toggle="collapse" data-target="#striped-collapseOne" aria-expanded="false" aria-controls="striped-collapseOne">
         Accordion Item #1
       </button>
     </h2>
@@ -113,7 +113,7 @@ Use `.accordion-striped` to add zebra-striping to any accordion.
   </div>
   <div class="accordion-item">
     <h2 class="accordion-header" id="striped-headingTwo">
-      <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#striped-collapseTwo" aria-expanded="false" aria-controls="striped-collapseTwo">
+      <button class="accordion-button collapsed" type="button" data-toggle="collapse" data-target="#striped-collapseTwo" aria-expanded="false" aria-controls="striped-collapseTwo">
         Accordion Item #2
       </button>
     </h2>
@@ -123,7 +123,7 @@ Use `.accordion-striped` to add zebra-striping to any accordion.
   </div>
   <div class="accordion-item">
     <h2 class="accordion-header" id="striped-headingThree">
-      <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#striped-collapseThree" aria-expanded="false" aria-controls="striped-collapseThree">
+      <button class="accordion-button collapsed" type="button" data-toggle="collapse" data-target="#striped-collapseThree" aria-expanded="false" aria-controls="striped-collapseThree">
         Accordion Item #3
       </button>
     </h2>

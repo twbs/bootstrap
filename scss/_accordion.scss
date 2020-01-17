@@ -2,37 +2,84 @@
 // Base styles
 //
 
-.accordion-header {
-  margin-bottom: -$accordion-border-width;
-  color: $accordion-header-color;
-  background-color: $accordion-header-bg;
+.accordion-button {
+  @include font-size($font-size-base);
+  display: flex;
+  align-items: baseline;
+  width: 100%;
+  padding: $accordion-button-padding-y $accordion-button-padding-x;
+  color: $accordion-button-color;
+  text-align: left;
+  background-color: $accordion-button-bg;
+  border: $accordion-border-width solid $accordion-border-color;
+  border-bottom: none;
   @include border-radius(0);
-  > .btn{
-    padding: $accordion-header-padding-y $accordion-header-padding-x;
+
+  &[aria-expanded="true"] {
+    color: $accordion-button-active-color !important; // stylelint-disable-line declaration-no-important
+    background-color: $accordion-button-active-bg !important; // stylelint-disable-line declaration-no-important
+    &::after {
+      background-image: escape-svg($accordion-button-active-icon);
+      transform: rotate(180deg);
+    }
+  }
+
+  &::after {
+    flex-shrink: 0;
+    width: 1.5rem;
+    height: 1rem;
+    margin-left: auto;
+    content: "";
+    background-image: escape-svg($accordion-button-icon);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 1.5rem;
+    @include transition($accordion-icon-transition);
+  }
+
+  &:focus,
+  &.focus {
+    position: relative;
+    outline: 0;
+    box-shadow: $btn-focus-box-shadow;
   }
 }
 
+.accordion-header {
+  margin-bottom: 0;
+}
+
 .accordion-item {
-  border: $accordion-border-width solid $accordion-border-color;
   @include border-radius($accordion-border-radius);
 
-  &:not(:last-of-type) {
-    border-bottom: 0;
-    @include border-bottom-radius(0);
+  &:last-of-type {
+    .accordion-button {
+      border-bottom: $accordion-border-width solid $accordion-border-color;
+
+      // Only set a border-radius on the last item if the accordion is collapsed
+      &:not([aria-expanded="true"]) {
+        @include border-bottom-radius($accordion-border-radius);
+      }
+    }
+
+    .accordion-body {
+      border: $accordion-border-width solid $accordion-border-color;
+      border-top: none;
+      @include border-bottom-radius($accordion-border-radius);
+    }
   }
 
-  &:not(:first-of-type) {
-    @include border-top-radius(0);
-  }
-
-  &:not(:last-child) {
-    border-bottom: none;
+  &:first-of-type {
+    .accordion-button {
+      @include border-top-radius($accordion-border-radius);
+    }
   }
 }
 
 .accordion-body {
   padding: $accordion-body-padding-y $accordion-body-padding-x;
-  border-top: $accordion-border-width solid $accordion-border-color;
+  border: $accordion-border-width solid $accordion-border-color;
+  border-bottom: none;
 }
 
 
@@ -41,8 +88,15 @@
 // Remove borders and border-radius to keep accordion items edge-to-edge.
 
 .accordion-flush {
-  .accordion-header {
-    background-color: $accordion-flush-header-bg;
+  .accordion-button {
+    background-color: $accordion-flush-button-bg;
+    border-right: 0;
+    border-left: 0;
+    @include border-radius(0);
+  }
+
+  .accordion-body {
+    border-width: 0;
   }
 
   .accordion-item {
@@ -50,14 +104,22 @@
     border-left-width: 0;
     @include border-radius(0);
 
-    &:first-child {
-      border-top-width: 0;
+    &:first-of-type {
+      .accordion-button {
+        border-top-width: 0;
+        @include border-top-radius(0);
+      }
     }
-  }
 
-  &:last-child {
-    .accordion-item:last-child {
-      border-bottom-width: 0;
+    &:last-of-type {
+      .accordion-button {
+        border-bottom-width: 0;
+        @include border-bottom-radius(0);
+      }
+
+      .accordion-body{
+        border-width: 0;
+      }
     }
   }
 }
@@ -68,12 +130,13 @@
 // Default zebra-stripe styles (alternating gray and transparent backgrounds)
 
 .accordion-striped {
-  .accordion-header{
+  .accordion-button {
     background-color: transparent;
   }
+
   .accordion-item:nth-of-type(#{$accordion-striped-order}) {
-    .accordion-header {
-      background-color: $accordion-header-accent-bg;
+    .accordion-button {
+      background-color: $accordion-button-accent-bg;
     }
 
     .accordion-body {
