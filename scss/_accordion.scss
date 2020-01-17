@@ -7,12 +7,10 @@
   margin-bottom: -$accordion-border-width;
   color: $accordion-header-color;
   background-color: $accordion-header-bg;
-  border-bottom: $accordion-border-width solid $accordion-border-color;
   @include border-radius(0);
 }
 
-.accordion-item{
-  overflow: hidden;
+.accordion-item {
   border: $accordion-border-width solid $accordion-border-color;
   @include border-radius($accordion-border-radius);
 
@@ -25,11 +23,12 @@
     @include border-top-radius(0);
   }
 
-  &:not(:last-child){
+  &:not(:last-child) {
     border-bottom: none;
   }
 }
 
-.accordion-body{
+.accordion-body {
   padding: $accordion-body-padding-y $accordion-body-padding-x;
+  border-top: $accordion-border-width solid $accordion-border-color;
 }
