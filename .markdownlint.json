@@ -1,0 +1,28 @@
+{
+  "default": true,
+  "MD001": false,
+  "MD003": {
+    "style": "atx"
+  },
+  "MD004": {
+    "style": "dash"
+  },
+  "MD007": {
+    "indent": 2
+  },
+  "MD012": {
+    "maximum": 2
+  },
+  "MD013": false,
+  "MD024": false,
+  "MD026": false,
+  "MD033": false,
+  "MD035": {
+    "style": "---"
+  },
+  "MD036": false,
+  "MD041": false,
+  "MD046": {
+    "style": "fenced"
+  }
+}
