@@ -79,3 +79,15 @@
   border-width: $form-file-border-width;
   @include border-right-radius(inherit);
 }
+
+.form-file-sm {
+  height: $form-file-height-sm;
+  padding: $form-file-padding-y-sm $form-file-padding-x-sm;
+  @include font-size($form-file-font-size-sm);
+}
+
+.form-file-lg {
+  height: $form-file-height-lg;
+  padding: $form-file-padding-y-lg $form-file-padding-x-lg;
+  @include font-size($form-file-font-size-lg);
+}
