@@ -962,6 +962,20 @@ $card-img-overlay-padding:          1.25rem !default;
 $card-group-margin:                 $grid-gutter-width / 2 !default;
 $card-deck-margin:                  $card-group-margin !default;
 
+// Accordion
+$accordion-padding-y:               1rem !default;
+$accordion-padding-x:               1.25rem !default;
+$accordion-bg:                      rgba($black, .03) !default;
+$accordion-color:                   null !default;
+$accordion-header-padding-y:        $accordion-padding-y !default;
+$accordion-header-padding-x:        $accordion-padding-x !default;
+$accordion-body-padding-y:          $accordion-padding-y !default;
+$accordion-body-padding-x:          $accordion-padding-x !default;
+$accordion-header-color:            $accordion-color !default;
+$accordion-header-bg:               $accordion-bg !default;
+$accordion-border-width:            $border-width !default;
+$accordion-border-radius:           $border-radius !default;
+$accordion-border-color:            rgba($black, .125) !default;
 
 // Tooltips
 

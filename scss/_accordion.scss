@@ -1,0 +1,35 @@
+//
+// Base styles
+//
+
+.accordion-header {
+  padding: $accordion-header-padding-y $accordion-header-padding-x;
+  margin-bottom: -$accordion-border-width;
+  color: $accordion-header-color;
+  background-color: $accordion-header-bg;
+  border-bottom: $accordion-border-width solid $accordion-border-color;
+  @include border-radius(0);
+}
+
+.accordion-item{
+  overflow: hidden;
+  border: $accordion-border-width solid $accordion-border-color;
+  @include border-radius($accordion-border-radius);
+
+  &:not(:last-of-type) {
+    border-bottom: 0;
+    @include border-bottom-radius(0);
+  }
+
+  &:not(:first-of-type) {
+    @include border-top-radius(0);
+  }
+
+  &:not(:last-child){
+    border-bottom: none;
+  }
+}
+
+.accordion-body{
+  padding: $accordion-body-padding-y $accordion-body-padding-x;
+}
