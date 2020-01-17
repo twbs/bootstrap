@@ -2,6 +2,10 @@
 layout: docs
 title: Accordion
 description: Provides an accordion to collapse content vertically.
+group: components
+aliases:
+  - "/components/"
+  - "/docs/4.3/components/"
 toc: true
 ---
 
