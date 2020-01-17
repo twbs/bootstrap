@@ -14,7 +14,7 @@ We use a subset of all colors to create a smaller color palette for generating c
   {{< theme-colors.inline >}}
   {{- range (index $.Site.Data "theme-colors") }}
     <div class="col-md-4">
-      <div class="p-3 mb-3 bg-{{ .name }} {{ if or (eq .name "light") (eq .name "warning") (eq .name "info") }}text-dark{{ else if (eq .name "info")}}text-body{{ else }}text-white{{ end }}">{{ .name | title }}</div>
+      <div class="p-3 mb-3 bg-{{ .name }} text-{{ .contrast_color }}">{{ .name | title }}</div>
     </div>
   {{ end -}}
   {{< /theme-colors.inline >}}

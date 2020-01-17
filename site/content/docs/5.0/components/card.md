@@ -422,7 +422,7 @@ Use [text and background utilities]({{< docsref "/utilities/colors" >}}) to chan
 {{< example >}}
 {{< card.inline >}}
 {{- range (index $.Site.Data "theme-colors") }}
-<div class="card{{ if (eq .name "info") }} text-body{{ else if not (or (eq .name "light") (eq .name "warning") (eq .name "info")) }} text-white{{ end }} bg-{{ .name }} mb-3" style="max-width: 18rem;">
+<div class="card text-{{ .contrast_color }} bg-{{ .name }} mb-3" style="max-width: 18rem;">
   <div class="card-header">Header</div>
   <div class="card-body">
     <h5 class="card-title">{{ .name | title }} card title</h5>
