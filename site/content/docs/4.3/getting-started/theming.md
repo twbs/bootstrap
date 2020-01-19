@@ -280,7 +280,7 @@ Many of Bootstrap's various components and utilities are built through a series 
 
 ### All colors
 
-All colors available in Bootstrap 5, are available as Sass variables and a Sass map in `scss/_variables.scss` file. To avoid increased file sizes, we do not create classes for each of these variables.
+All colors available in Bootstrap 5 are available as Sass variables and as a Sass map in `scss/_variables.scss`. To avoid increased file sizes, we do not create classes for each of these variables.
 
 Sass cannot programmatically generate variables, so we must manually create them ourselves. We specify the midpoint value (`500`) and use custom color functions to tint (lighten) or shade (darken) our colors via Sass's `mix()` color function. Using `mix()` is not the same as `lighten()` and `darken()`—the former blends the specified color with white or black, while the latter only adjusts the lightness value of each color. The result is a much more complete suite of colors, as [shown in this CodePen demo](https://codepen.io/emdeoh/pen/zYOQOPB).
 
