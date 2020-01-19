@@ -8,7 +8,7 @@ toc: true
 
 ## All colors
 
-All colors available in Bootstrap are available as Sass variables and a Sass map in `scss/_variables.scss` file. To avoid increased file sizes, we do not create classes for each of these variables.
+All Bootstrap colors are available as Sass variables and a Sass map in `scss/_variables.scss` file. To avoid increased file sizes, we don't create text or background color classes for each of these variables. Instead, we choose a subset of these colors for a [theme palette](#theme-colors).
 
 <div class="row">
   {{< theme-colors.inline >}}
