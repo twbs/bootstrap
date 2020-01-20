@@ -142,8 +142,8 @@ Badges were overhauled to better differentiate themselves from buttons and to be
 - Decreased the number of responsive order utilities per breakpoint. The highest order utility with a number now is `.order-5` instead of `.order-12`. [See #28874](https://github.com/twbs/bootstrap/pull/28874).
 - New `line-height` utilities: `.lh-1`, `.lh-sm`, `.lh-base` and `.lh-lg`. See [here]({{< docsref "/utilities/text#line-height" >}}).
 - Added `.bg-body` for quickly setting the `<body>`'s background to additional elements.
-- Renamed the `.rounded` utility class to `.border-radius` for clarity. See [here]({{< docsref "/utilities/borders#border-radius" >}}).
-- Removed `.rounded-sm` and `.rounded-lg`, replaced them with new border-radius utilities (`.border-radius-0`, `.border-radius-1`, `.border-radius-2`, `.border-radius-3`) See [here]({{< docsref "/utilities/borders#sizes" >}}).
+- Renamed the `.rounded` utility class to `.br`. See [here]({{< docsref "/utilities/borders#border-radius" >}}).
+- Removed `.rounded-sm` and `.rounded-lg`, replaced them with new border-radius utilities (`.br-0`, `.br-1`, `.br-2`, `.br-3`) See [here]({{< docsref "/utilities/borders#sizes" >}}).
 - **Todo:** Drop `.text-hide` as it's an antiquated method for hiding text that shouldn't be used anymore
 - **Todo:** Split utilities into property-value utility classes and helpers
 

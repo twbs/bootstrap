@@ -445,6 +445,7 @@ $utilities: map-merge(
     ),
     "border-radius": (
       property: border-radius,
+      class: br,
       responsive: true,
       values: (
         null: $border-radius,
@@ -458,22 +459,22 @@ $utilities: map-merge(
     ),
     "rounded-top": (
       property: border-top-left-radius border-top-right-radius,
-      class: rounded-top,
+      class: br-top,
       values: (null: $border-radius)
     ),
     "rounded-right": (
       property: border-top-right-radius border-bottom-right-radius,
-      class: rounded-right,
+      class: br-right,
       values: (null: $border-radius)
     ),
     "rounded-bottom": (
       property: border-bottom-right-radius border-bottom-left-radius,
-      class: rounded-bottom,
+      class: br-bottom,
       values: (null: $border-radius)
     ),
     "rounded-left": (
       property: border-bottom-left-radius border-top-left-radius,
-      class: rounded-left,
+      class: br-left,
       values: (null: $border-radius)
     ),
     "visibility": (
