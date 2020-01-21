@@ -15,7 +15,7 @@
   border-bottom: none;
   @include border-radius(0);
 
-  &[aria-expanded="true"] {
+  &:not(.collapsed) {
     color: $accordion-button-active-color !important; // stylelint-disable-line declaration-no-important
     background-color: $accordion-button-active-bg !important; // stylelint-disable-line declaration-no-important
     &::after {
