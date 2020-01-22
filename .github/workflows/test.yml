@@ -81,10 +81,6 @@ jobs:
           BROWSER_STACK_ACCESS_KEY: "${{ secrets.BROWSER_STACK_ACCESS_KEY }}"
           BROWSER_STACK_USERNAME: "${{ secrets.BROWSER_STACK_USERNAME }}"
 
-      - name: Run Link Checker
-        run: npm run check-broken-links
-        if: matrix.node == 10
-
       - name: Run Coveralls
         uses: coverallsapp/github-action@master
         if: matrix.node == 10
