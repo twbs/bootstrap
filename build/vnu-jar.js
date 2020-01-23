@@ -37,7 +37,10 @@ childProcess.exec('java -version', (error, stdout, stderr) => {
     'The “month” input type is not supported in all browsers.*',
     'The “color” input type is not supported in all browsers.*',
     'The “datetime-local” input type is not supported in all browsers.*',
-    'The “time” input type is not supported in all browsers.*'
+    'The “time” input type is not supported in all browsers.*',
+    // macOS VoiceOver doesn't expose the contentinfo role in Webkit or Chromium browsers
+    // see https://www.scottohara.me/blog/2019/04/05/landmarks-exposed.html
+    'The “contentinfo” role is unnecessary for element “footer”.'
   ].join('|')
 
   const args = [
