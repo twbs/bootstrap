@@ -1,17 +1,9 @@
 .skippy {
-  display: block;
-  padding: 1em;
+  position: fixed;
+  top: map-get($spacers, 2);
+  left: map-get($spacers, 2);
+  z-index: $zindex-fixed;
+  padding: map-get($spacers, 2);
   color: $white;
-  text-align: center;
   background-color: $bd-purple;
-  outline: 0;
-
-  &:hover {
-    color: $white;
-  }
-}
-
-.skippy-text {
-  padding: .5em;
-  outline: 1px dotted;
 }
