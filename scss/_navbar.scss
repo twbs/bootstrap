@@ -123,13 +123,12 @@
   @include border-radius($navbar-toggler-border-radius);
   @include transition($navbar-toggler-transition);
 
-  &:hover,
-  &:focus {
+  &:hover {
     text-decoration: none;
   }
 
-  &.focus,
   &:focus {
+    text-decoration: none;
     outline: 0;
     box-shadow: 0 0 0 $navbar-toggler-focus-width;
   }
