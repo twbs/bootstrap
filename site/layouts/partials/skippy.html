@@ -1,3 +1,9 @@
 <a class="skippy sr-only-focusable" href="#content">
   <span class="skippy-text">Skip to main content</span>
 </a>
+
+{{ if (eq .Page.Layout "docs") }}
+  <a class="skippy sr-only-focusable" href="#bd-docs-nav">
+    <span class="skippy-text">Skip to main navigation</span>
+  </a>
+{{- end }}
