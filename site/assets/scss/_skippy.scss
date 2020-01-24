@@ -6,4 +6,8 @@
   padding: map-get($spacers, 2);
   color: $white;
   background-color: $bd-purple;
+
+  &:hover {
+    color: $white;
+  }
 }
