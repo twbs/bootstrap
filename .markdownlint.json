@@ -14,8 +14,10 @@
     "maximum": 2
   },
   "MD013": false,
+  "MD022": false,
   "MD024": false,
   "MD026": false,
+  "MD032": false,
   "MD033": false,
   "MD035": {
     "style": "---"
