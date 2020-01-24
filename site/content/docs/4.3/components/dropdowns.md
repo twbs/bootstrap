@@ -560,8 +560,7 @@ You can also create non-interactive dropdown items with `.dropdown-item-text`. F
 
 ### Active
 
-Add `.active` to items in the dropdown to **style them as active**
-Regarding accessibility, the active state should also be indicated with the `aria-current` attribute — using the `page` value for current page, or `true` for current item in a set.
+Add `.active` to items in the dropdown to **style them as active**. Regarding accessibility, the active state should also be indicated with the `aria-current` attribute — using the `page` value for current page, or `true` for current item in a set.
 
 {{< example >}}
 <ul class="dropdown-menu">
