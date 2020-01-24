@@ -53,3 +53,21 @@
   width: $spinner-width-sm;
   height: $spinner-height-sm;
 }
+
+@if $enable-prefers-reduced-motion-media-query {
+  @media (prefers-reduced-motion: reduce) {
+    .spinner-border,
+    .spinner-grow {
+      min-width: 10ch;
+      border: 0;
+      animation: none;
+
+      // `all` is safe here, since its support is better than the `prefers-reduced-motion` query's
+      // see https://caniuse.com/#feat=prefers-reduced-motion
+      // see https://caniuse.com/#feat=css-all
+      .sr-only {
+        all: initial !important; // stylelint-disable declaration-no-important
+      }
+    }
+  }
+}
