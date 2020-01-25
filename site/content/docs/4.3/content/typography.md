@@ -186,13 +186,15 @@ For quoting blocks of content from another source within your document. Wrap `<b
 
 ### Naming a source
 
-Add a `<footer class="blockquote-footer">` for identifying the source. Wrap the name of the source work in `<cite>`.
+Wrap your `<blockquote>` inside a `<figure>` and include a `<figcaption class="blockquote-footer">` for identifying the source. Wrap the name of the source work in `<cite>`.
 
 {{< example >}}
-<blockquote class="blockquote">
-  <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-  <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-</blockquote>
+<figure class="blockquote">
+  <blockquote class="mb-0">
+    <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+  </blockquote>
+  <figcaption class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></figcaption>
+</figure>
 {{< /example >}}
 
 ### Alignment
@@ -200,17 +202,21 @@ Add a `<footer class="blockquote-footer">` for identifying the source. Wrap the 
 Use text utilities as needed to change the alignment of your blockquote.
 
 {{< example >}}
-<blockquote class="blockquote text-center">
-  <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-  <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-</blockquote>
+<figure class="blockquote text-center">
+  <blockquote class="mb-0">
+    <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+  </blockquote>
+  <figcaption class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></figcaption>
+</figure>
 {{< /example >}}
 
 {{< example >}}
-<blockquote class="blockquote text-right">
-  <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-  <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-</blockquote>
+<figure class="blockquote text-right">
+  <blockquote class="mb-0">
+    <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+  </blockquote>
+  <figcaption class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></figcaption>
+</figure>
 {{< /example >}}
 
 ## Lists
