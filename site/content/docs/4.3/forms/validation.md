@@ -303,7 +303,10 @@ Validation styles are available for the following form controls and components:
 
   <div class="form-file">
     <input type="file" class="form-file-input" id="validationFormFile" required>
-    <label class="form-file-label" for="validationFormFile">Choose file...</label>
+    <label class="form-file-label" for="validationFormFile">
+      <span class="form-file-text">Choose file...</span>
+      <span class="form-file-button">Browse</span>
+    </label>
     <div class="invalid-feedback">Example invalid form file feedback</div>
   </div>
 </form>
