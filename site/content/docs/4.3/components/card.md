@@ -159,14 +159,12 @@ Card headers can be styled by adding `.card-header` to `<h*>` elements.
   <div class="card-header">
     Quote
   </div>
-  <div class="card-body">
-    <figure role="group" class="mb-0">
-      <blockquote class="blockquote mb-0">
-        <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      </blockquote>
-      <figcaption class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></figcaption>
-    </figure>
-  </div>
+  <figure role="group" class="card-body mb-0">
+    <blockquote class="blockquote mb-0">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+    </blockquote>
+    <figcaption class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></figcaption>
+  </figure>
 </div>
 {{< /example >}}
 
