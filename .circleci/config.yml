@@ -4,6 +4,7 @@ jobs:
     docker:
        - image: circleci/ruby:2.4.1-node-browsers
 
+    resource_class: xlarge
     working_directory: ~/bootstrap
 
     steps:
