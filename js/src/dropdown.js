@@ -258,6 +258,9 @@ class Dropdown {
 
   _addEventListeners() {
     let parent = Dropdown.getParentFromElement(this._element)
+    const relatedTarget = {
+      relatedTarget: this._element
+    }
     EventHandler.on(this._menu, Event.CLICK, event => {
       EventHandler.trigger(parent, Event.SELECTED, relatedTarget)
     })
