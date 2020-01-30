@@ -96,17 +96,21 @@
     .list-group-horizontal#{$infix} {
       flex-direction: row;
 
+      &:not(.list-group-flush) {
+        .list-group-item {
+          &:first-child {
+            @include border-bottom-left-radius($list-group-border-radius);
+            @include border-top-right-radius(0);
+          }
+
+          &:last-child {
+            @include border-top-right-radius($list-group-border-radius);
+            @include border-bottom-left-radius(0);
+          }
+        }
+      }
+
       .list-group-item {
-        &:first-child {
-          @include border-bottom-left-radius($list-group-border-radius);
-          @include border-top-right-radius(0);
-        }
-
-        &:last-child {
-          @include border-top-right-radius($list-group-border-radius);
-          @include border-bottom-left-radius(0);
-        }
-
         &.active {
           margin-top: 0;
         }
@@ -136,15 +140,19 @@
     border-right-width: 0;
     border-left-width: 0;
     @include border-radius(0);
-
-    &:first-child {
-      border-top-width: 0;
-    }
   }
 
-  &:last-child {
-    .list-group-item:last-child {
-      border-bottom-width: 0;
+  &:not([class*="list-group-horizontal"]) {
+    .list-group-item {
+      &:first-child {
+        border-top-width: 0;
+      }
+    }
+
+    &:last-child {
+      .list-group-item:last-child {
+        border-bottom-width: 0;
+      }
     }
   }
 }

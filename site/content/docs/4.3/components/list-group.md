@@ -112,6 +112,23 @@ Add `.list-group-horizontal` to change the layout of list group items from verti
 {{< /list-group.inline >}}
 {{< /example >}}
 
+## Horizontal with Flush
+
+Use any responsive variant of `.list-group-horizontal-{sm|md|lg|xl}` with `.list-group-flush` to remove left and right borders and rounded corners.
+
+{{< example >}}
+{{< list-group.inline >}}
+{{- range $.Site.Data.breakpoints }}
+<ul class="list-group list-group-horizontal{{ .abbr }} list-group-flush">
+  <li class="list-group-item">Cras justo odio</li>
+  <li class="list-group-item">Dapibus ac facilisis</li>
+  <li class="list-group-item">Morbi leo risus</li>
+</ul>
+{{- end -}}
+{{< /list-group.inline >}}
+{{< /example >}}
+
+
 ## Contextual classes
 
 Use contextual classes to style list items with a stateful background and color.
