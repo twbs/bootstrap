@@ -45,6 +45,7 @@ const Event = {
   SHOW: `show${EVENT_KEY}`,
   SHOWN: `shown${EVENT_KEY}`,
   CLICK: `click${EVENT_KEY}`,
+  SELECTED: `selected${EVENT_KEY}`,
   CLICK_DATA_API: `click${EVENT_KEY}${DATA_API_KEY}`,
   KEYDOWN_DATA_API: `keydown${EVENT_KEY}${DATA_API_KEY}`,
   KEYUP_DATA_API: `keyup${EVENT_KEY}${DATA_API_KEY}`
@@ -256,6 +257,10 @@ class Dropdown {
   // Private
 
   _addEventListeners() {
+    let parent = Dropdown.getParentFromElement(this._element)
+    EventHandler.on(this._menu, Event.CLICK, event => {
+      EventHandler.trigger(parent, Event.SELECTED, relatedTarget)
+    })
     EventHandler.on(this._element, Event.CLICK, event => {
       event.preventDefault()
       event.stopPropagation()
