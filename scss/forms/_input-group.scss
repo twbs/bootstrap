@@ -79,10 +79,10 @@
     }
   }
 
-  .btn + .btn,
-  .btn + .input-group-text,
-  .input-group-text + .input-group-text,
-  .input-group-text + .btn {
+  & > .btn + .btn,
+  & > .btn + .input-group-text,
+  & > .input-group-text + .input-group-text,
+  & > .input-group-text + .btn {
     margin-left: -$input-border-width;
   }
 }
