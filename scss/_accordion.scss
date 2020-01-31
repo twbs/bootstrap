@@ -37,8 +37,7 @@
     @include transition($accordion-icon-transition);
   }
 
-  &:focus,
-  &.focus {
+  &:focus {
     position: relative;
     outline: 0;
     box-shadow: $btn-focus-box-shadow;
@@ -117,7 +116,7 @@
         @include border-bottom-radius(0);
       }
 
-      .accordion-body{
+      .accordion-body {
         border-width: 0;
       }
     }
