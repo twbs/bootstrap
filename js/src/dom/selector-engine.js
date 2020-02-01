@@ -58,14 +58,14 @@ const SelectorEngine = {
   prev(element, selector) {
     const siblings = []
 
-    let previous = element.previousSibling
+    let previous = element.previousElementSibling
 
-    while (previous && previous.nodeType === Node.ELEMENT_NODE && previous.nodeType !== NODE_TEXT) {
+    while (previous) {
       if (this.matches(previous, selector)) {
         siblings.push(previous)
       }
 
-      previous = previous.previousSibling
+      previous = previous.previousElementSibling
     }
 
     return siblings
