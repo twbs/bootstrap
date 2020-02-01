@@ -90,7 +90,7 @@
 
   &:active,
   &.active,
-  .show > &.dropdown-toggle {
+  &.dropdown-toggle.show {
     color: $active-color;
     background-color: $active-background;
     border-color: $active-border;
