@@ -99,7 +99,6 @@
     "@rollup/plugin-node-resolve": "^7.0.0",
     "autoprefixer": "^9.7.4",
     "babel-eslint": "^10.0.3",
-    "babel-plugin-istanbul": "^6.0.0",
     "bundlesize": "^0.18.0",
     "clean-css-cli": "^4.3.0",
     "cross-env": "^7.0.0",
