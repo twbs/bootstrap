@@ -96,7 +96,7 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.8.3",
     "@babel/preset-env": "^7.8.4",
     "@rollup/plugin-commonjs": "^11.0.2",
-    "@rollup/plugin-node-resolve": "^7.0.0",
+    "@rollup/plugin-node-resolve": "^7.1.1",
     "autoprefixer": "^9.7.4",
     "babel-eslint": "^10.0.3",
     "bundlesize": "^0.18.0",
