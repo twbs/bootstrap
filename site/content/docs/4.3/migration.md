@@ -90,6 +90,7 @@ Changes to Reboot, typography, tables, and more.
 - Renamed `.custom-range` to `.form-range` (including variables).
 - Dropped `.form-group` for margin utilities (we've replaced our docs examples with `.mb-3`).
 - Dropped support for `.form-control-plaintext` inside `.input-group`s.
+- Dropped `.form-text` as existing utilities cover this use class's former use case (e.g., `.mt-2`, `.text-small`, and/or `.text-muted`).
 
 ## Components
 
