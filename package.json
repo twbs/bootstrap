@@ -56,7 +56,7 @@
     "docs-serve": "hugo server --port 9001 --disableFastRender",
     "docs-serve-only": "serve _gh_pages --listen 9001",
     "lockfile-lint": "lockfile-lint --allowed-hosts npm --allowed-schemes https: --empty-hostname false --validate-https --type npm --path package-lock.json",
-    "update-deps": "ncu -a -x karma-browserstack-launcher && npm update && echo Manually update site/assets/js/vendor",
+    "update-deps": "ncu -u -x karma-browserstack-launcher,popper.js && npm update && echo Manually update site/assets/js/vendor",
     "release": "npm-run-all dist release-sri release-zip docs-production",
     "release-sri": "node build/generate-sri.js",
     "release-version": "node build/change-version.js",
