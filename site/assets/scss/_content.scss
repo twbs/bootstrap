@@ -1,13 +1,12 @@
-// stylelint-disable no-duplicate-selectors, selector-max-combinators, selector-max-compound-selectors, selector-max-type, selector-no-qualifying-type
-
 //
-// Automatically style Markdown-based tables like a Bootstrap `.table`.
+// Bootstrap docs content theming
 //
 
 .bd-content {
   order: 1;
 
   // Hack the sticky header
+  // stylelint-disable selector-no-qualifying-type
   > h2[id],
   > h3[id],
   > h4[id] {
@@ -19,6 +18,20 @@
       margin-top: -6rem;
       content: "";
     }
+    // stylelint-enable selector-no-qualifying-type
+  }
+
+  > h2:not(:first-child) {
+    margin-top: 3rem;
+  }
+
+  > h3 {
+    margin-top: 1.5rem;
+  }
+
+  > ul li,
+  > ol li {
+    margin-bottom: .25rem;
   }
 
   // Override Bootstrap defaults
@@ -37,11 +50,16 @@
 
     th,
     td {
-      &:first-child { padding-left: 0; }
-      &:not(:last-child) { padding-right: 1.5rem; }
+      &:first-child {
+        padding-left: 0;
+      }
+
+      &:not(:last-child) {
+        padding-right: 1.5rem;
+      }
     }
 
-    // Prevent breaking of code (e.g., Grunt tasks list)
+    // Prevent breaking of code
     td:first-child > code {
       white-space: nowrap;
     }
@@ -53,27 +71,7 @@
   pointer-events: auto;
 }
 
-//
-// Docs sections
-//
-
-.bd-content {
-  > h2:not(:first-child) {
-    margin-top: 3rem;
-  }
-
-  > h3 {
-    margin-top: 1.5rem;
-  }
-
-  > ul li,
-  > ol li {
-    margin-bottom: .25rem;
-  }
-}
-
 .bd-title {
-  margin-bottom: .5rem;
   @include font-size(3rem);
 }
 
@@ -82,5 +80,6 @@
   font-weight: 300;
 }
 
-.bd-text-purple { color: $bd-purple; }
-.bd-text-purple-bright { color: $bd-purple-bright; }
+.bd-text-purple-bright {
+  color: $bd-purple-bright;
+}
