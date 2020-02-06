@@ -15,7 +15,7 @@ The base `.nav` component is built with flexbox and provide a strong foundation 
 {{< callout info >}}
 The base `.nav` component does not include any `.active` state. The following examples include the class, mainly to demonstrate that this particular class does not trigger any special styling.
 
-Regarding accessibility, the active state should also be indicated with the `aria-current` attribute — using the `page` value for current page, or `true` for current item in a set.
+To convey the active state to assistive technologies, use the `aria-current` attribute — using the `page` value for current page, or `true` for current item in a set.
 {{< /callout >}}
 
 {{< example >}}
@@ -247,7 +247,7 @@ If you're using navs to provide a navigation bar, be sure to add a `role="naviga
 
 Note that navigation bars, even if visually styled as tabs with the `.nav-tabs` class, should **not** be given `role="tablist"`, `role="tab"` or `role="tabpanel"` attributes. These are only appropriate for dynamic tabbed interfaces, as described in the [<abbr title="Web Accessibility Initiative">WAI</abbr> <abbr title="Accessible Rich Internet Applications">ARIA</abbr> Authoring Practices](https://www.w3.org/TR/wai-aria-practices/#tabpanel). See [JavaScript behavior](#javascript-behavior) for dynamic tabbed interfaces in this section for an example.
 
-On the other hand, the `aria-current` attribute is useless on dynamic tabbed interfaces since our JavaScript handles the selected state by adding `aria-selected="true"` on the active tab.
+On the other hand, the `aria-current` attribute is not necessary on dynamic tabbed interfaces since our JavaScript handles the selected state by adding `aria-selected="true"` on the active tab.
 
 ## Using dropdowns
 
