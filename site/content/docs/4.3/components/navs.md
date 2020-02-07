@@ -15,7 +15,7 @@ The base `.nav` component is built with flexbox and provide a strong foundation 
 {{< callout info >}}
 The base `.nav` component does not include any `.active` state. The following examples include the class, mainly to demonstrate that this particular class does not trigger any special styling.
 
-To convey the active state to assistive technologies, use the `aria-current` attribute — using the `page` value for current page, or `true` for current item in a set.
+To convey the active state to assistive technologies, use the `aria-current` attribute — using the `page` value for current page, or `true` for the current item in a set.
 {{< /callout >}}
 
 {{< example >}}
