@@ -11,7 +11,7 @@
     <summary>Bootstrap framework in CSS. Includes JavaScript</summary>
     <language>en-us</language>
     <projectUrl>https://getbootstrap.com/</projectUrl>
-    <iconUrl>https://getbootstrap.com/docs/4.4/assets/img/favicons/apple-touch-icon.png</iconUrl>
+    <icon>bootstrap.png</icon>
     <license type="file">LICENSE.txt</license>
     <copyright>Copyright 2017-2020</copyright>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -26,6 +26,7 @@
   </metadata>
   <files>
     <file src="LICENSE.txt" target="" />
+    <file src="bootstrap.png" target="" />
 
     <file src="dist\css\*.*" target="content\Content" />
     <file src="dist\js\bootstrap*.js" target="content\Scripts" />
