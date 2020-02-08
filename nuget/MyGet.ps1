@@ -5,7 +5,6 @@
 $nuget = $env:NuGet
 
 Copy-Item $env:SourcesPath\LICENSE $env:SourcesPath\LICENSE.txt # has to be .txt extension, don't check in
-Copy-Item $env:SourcesPath\site\docs\4.4\assets\img\favicons\mstile-70x70.png $env:SourcesPath\bootstrap.png # for package icon
 
 # parse the version number out of package.json
 $bsversionParts = ((Get-Content $env:SourcesPath\package.json) -join "`n" | ConvertFrom-Json).version.split('-', 2) # split the version on the '-'
