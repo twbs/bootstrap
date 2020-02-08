@@ -267,7 +267,7 @@ You can find and customize these variables for key global options in Bootstrap's
 | `$enable-gradients`                          | `true` or `false` (default)        | Enables predefined gradients via `background-image` styles on various components. |
 | `$enable-transitions`                        | `true` (default) or `false`        | Enables predefined `transition`s on various components. |
 | `$enable-prefers-reduced-motion-media-query` | `true` (default) or `false`        | Enables the [`prefers-reduced-motion` media query]({{< docsref "/getting-started/accessibility#reduced-motion" >}}), which suppresses certain animations/transitions based on the users' browser/operating system preferences. |
-| `$enable-grid-classes`                       | `true` (default) or `false`        | Enables the generation of CSS classes for the grid system (e.g., `.container`, `.row`, `.col-md-1`, etc.). |
+| `$enable-grid-classes`                       | `true` (default) or `false`        | Enables the generation of CSS classes for the grid system (e.g. `.row`, `.col-md-1`, etc.). |
 | `$enable-caret`                              | `true` (default) or `false`        | Enables pseudo element caret on `.dropdown-toggle`. |
 | `$enable-pointer-cursor-for-buttons`         | `true` (default) or `false`        | Add "hand" cursor to non-disabled button elements. |
 | `$enable-rfs`                                | `true` (default)  or `false`       | Globally enables [RFS]({{< docsref "/getting-started/rfs" >}}). |
@@ -281,7 +281,7 @@ Many of Bootstrap's various components and utilities are built through a series 
 
 ### All colors
 
-All colors available in Bootstrap 5, are available as Sass variables and a Sass map in `scss/_variables.scss` file. To avoid increased file sizes, we do not create classes for each of these variables.
+All colors available in Bootstrap 5 are available as Sass variables and as a Sass map in `scss/_variables.scss`. To avoid increased file sizes, we do not create classes for each of these variables.
 
 Sass cannot programmatically generate variables, so we must manually create them ourselves. We specify the midpoint value (`500`) and use custom color functions to tint (lighten) or shade (darken) our colors via Sass's `mix()` color function. Using `mix()` is not the same as `lighten()` and `darken()`—the former blends the specified color with white or black, while the latter only adjusts the lightness value of each color. The result is a much more complete suite of colors, as [shown in this CodePen demo](https://codepen.io/emdeoh/pen/zYOQOPB).
 
