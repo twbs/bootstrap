@@ -2,7 +2,8 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>bootstrap.sass</id>
-    <version>pulled from package.json</version>
+	<!-- pulled from package.json -->
+    <version>5</version>
     <title>Bootstrap Sass</title>
     <authors>The Bootstrap Authors, Twitter Inc.</authors>
     <owners>bootstrap</owners>
@@ -20,7 +21,7 @@
     </dependencies>
     <tags>css sass mobile-first responsive front-end framework web</tags>
 	<contentFiles>
-        <files include="**/contentFiles/*.*" buildAction="Content" />
+        <files include="**/*" buildAction="Content" />
     </contentFiles>
   </metadata>
   <files>
@@ -31,7 +32,7 @@
     <file src="dist\js\bootstrap*.js" target="content\Scripts" />
     <file src="dist\js\bootstrap*.js.map" target="content\Scripts" />
 
-    <file src="scss\**\*.scss" target="contentFiles\Content\any\any\wwwroot\scss" />
+    <file src="scss\**\*.scss" target="contentFiles\any\any\wwwroot\scss" />
     <file src="dist\js\bootstrap*.js" target="contentFiles\any\any\wwwroot\js" />
     <file src="dist\js\bootstrap*.js.map" target="contentFiles\any\any\wwwroot\js" />
   </files>
