@@ -21,7 +21,7 @@
     </dependencies>
     <tags>css mobile-first responsive front-end framework web</tags>
     <contentFiles>
-        <files include="**/*" buildAction="Content" />
+      <files include="**/*" buildAction="Content" />
     </contentFiles>
   </metadata>
   <files>
