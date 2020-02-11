@@ -1208,9 +1208,10 @@ $carousel-transition:                transform $carousel-transition-duration eas
 
 // Spinners
 
-$spinner-width:         2rem !default;
-$spinner-height:        $spinner-width !default;
-$spinner-border-width:  .25em !default;
+$spinner-width:           2rem !default;
+$spinner-height:          $spinner-width !default;
+$spinner-border-width:    .25em !default;
+$spinner-animation-speed: .75s !default;
 
 $spinner-width-sm:        1rem !default;
 $spinner-height-sm:       $spinner-width-sm !default;
