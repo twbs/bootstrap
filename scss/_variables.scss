@@ -963,35 +963,52 @@ $card-group-margin:                 $grid-gutter-width / 2 !default;
 $card-deck-margin:                  $card-group-margin !default;
 
 // Accordion
-$accordion-padding-y:               1.25rem !default;
-$accordion-padding-x:               1.25rem !default;
-$accordion-bg:                      $white !default;
-$accordion-color:                   $body-color !default;
-$accordion-button-active-bg:        lighten($component-active-bg, 45%) !default;
-$accordion-button-active-color:     $primary !default;
-$accordion-button-padding-y:        $accordion-padding-y !default;
-$accordion-button-padding-x:        $accordion-padding-x !default;
-$accordion-body-padding-y:          $accordion-padding-y !default;
-$accordion-body-padding-x:          $accordion-padding-x !default;
-$accordion-button-color:            $accordion-color !default;
-$accordion-button-bg:               $accordion-bg !default;
-$accordion-border-width:            $border-width !default;
-$accordion-border-radius:           $border-radius !default;
-$accordion-border-color:            rgba($black, .125) !default;
-$accordion-icon-color:              $accordion-color !default;
-$accordion-icon-active-color:       $accordion-button-active-color !default;
-$accordion-icon-transition:         $transition-base !default;
-$accordion-button-icon-transform:   rotate(0deg) !default;
-$accordion-button-icon:             url("data:image/svg+xml,<svg viewBox='0 0 20 20' fill='#{$accordion-icon-color}' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd' d='M3.646 6.646a.5.5 0 01.708 0L10 12.293l5.646-5.647a.5.5 0 01.708.708l-6 6a.5.5 0 01-.708 0l-6-6a.5.5 0 010-.708z' clip-rule='evenodd'/></svg>") !default;
-$accordion-button-active-icon:      url("data:image/svg+xml,<svg viewBox='0 0 20 20' fill='#{$accordion-icon-active-color}' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd' d='M3.646 6.646a.5.5 0 01.708 0L10 12.293l5.646-5.647a.5.5 0 01.708.708l-6 6a.5.5 0 01-.708 0l-6-6a.5.5 0 010-.708z' clip-rule='evenodd'/></svg>") !default;
-$accordion-button-active-icon-transform: rotate(180deg) !default;
+$accordion-padding-y:                     1.25rem !default;
+$accordion-padding-x:                     1.25rem !default;
 
-$accordion-flush-button-bg:          transparent !default;
+$accordion-bg:                            $white !default;
+$accordion-color:                         $body-color !default;
+$accordion-button-active-bg:              lighten($component-active-bg, 45%) !default;
+$accordion-button-active-color:           $primary !default;
+$accordion-accent-bg:                     rgba($black, .025) !default;
 
-$accordion-striped-order:           odd !default;
-$accordion-accent-bg:               rgba($black, .025) !default;
-$accordion-button-accent-bg:        $accordion-accent-bg !default;
-$accordion-body-accent-bg:          null !default;
+$accordion-button-padding-y:              $accordion-padding-y !default;
+$accordion-button-padding-x:              $accordion-padding-x !default;
+$accordion-body-padding-y:                $accordion-padding-y !default;
+$accordion-body-padding-x:                $accordion-padding-x !default;
+
+$accordion-button-color:                  $accordion-color !default;
+$accordion-button-bg:                     $accordion-bg !default;
+
+$accordion-border-width:                  $border-width !default;
+$accordion-border-radius:                 $border-radius !default;
+
+$accordion-border-color:                  rgba($black, .125) !default;
+$accordion-icon-color:                    $accordion-color !default;
+$accordion-icon-active-color:             $accordion-button-active-color !default;
+
+$accordion-icon-transition:               $transition-base !default;
+
+$accordion-button-icon-transform:         rotate(0deg) !default;
+$accordion-button-icon:                   url("data:image/svg+xml,<svg viewBox='0 0 20 20' fill='#{$accordion-icon-color}' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd' d='M3.646 6.646a.5.5 0 01.708 0L10 12.293l5.646-5.647a.5.5 0 01.708.708l-6 6a.5.5 0 01-.708 0l-6-6a.5.5 0 010-.708z' clip-rule='evenodd'/></svg>") !default;
+$accordion-button-active-icon:            url("data:image/svg+xml,<svg viewBox='0 0 20 20' fill='#{$accordion-icon-active-color}' xmlns='http://www.w3.org/2000/svg'><path fill-rule='evenodd' d='M3.646 6.646a.5.5 0 01.708 0L10 12.293l5.646-5.647a.5.5 0 01.708.708l-6 6a.5.5 0 01-.708 0l-6-6a.5.5 0 010-.708z' clip-rule='evenodd'/></svg>") !default;
+$accordion-button-active-icon-transform:  rotate(180deg) !default;
+
+$accordion-striped-order:                 odd !default;
+
+$accordion-flush-button-color:             null !default;
+$accordion-flush-button-bg:                transparent !default;
+$accordion-flush-button-active-color:      null !default;
+$accordion-flush-button-active-bg:         $accordion-button-active-bg !default;
+
+$accordion-striped-button-color:                null !default;
+$accordion-striped-button-bg:                   transparent !default;
+$accordion-striped-button-active-bg:            $accordion-button-active-bg !default;
+$accordion-striped-button-accent-color:         null !default;
+$accordion-striped-button-accent-bg:            $accordion-accent-bg !default;
+$accordion-striped-button-accent-active-color:  null !default;
+$accordion-striped-button-accent-active-bg:     $accordion-button-active-bg !default;
+$accordion-striped-body-accent-bg:              null !default;
 
 // Tooltips
 
