@@ -20,7 +20,7 @@
     background-color: $accordion-button-active-bg !important; // stylelint-disable-line declaration-no-important
     &::after {
       background-image: escape-svg($accordion-button-active-icon);
-      transform: rotate($accordion-button-active-icon-rotation);
+      transform: $accordion-button-active-icon-transform;
     }
   }
 
@@ -34,7 +34,7 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: 1.5rem;
-    transform: rotate($accordion-button-icon-rotation);
+    transform: $accordion-button-icon-transform;
     @include transition($accordion-icon-transition);
   }
 
