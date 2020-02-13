@@ -14,7 +14,11 @@
   line-height: $form-select-line-height;
   color: $form-select-color;
   vertical-align: middle;
-  background: $form-select-bg escape-svg($form-select-indicator) $form-select-background;
+  background-color: $form-select-bg;
+  background-image: escape-svg($form-select-indicator);
+  background-repeat: no-repeat;
+  background-position: $form-select-bg-position;
+  background-size: $form-select-bg-size;
   border: $form-select-border-width solid $form-select-border-color;
   @include border-radius($form-select-border-radius, 0);
   @include box-shadow($form-select-box-shadow);
