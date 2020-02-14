@@ -347,6 +347,26 @@ Button dropdowns work with buttons of all sizes, including default and split dro
 </div>
 {{< /highlight >}}
 
+## Dark dropdowns
+
+Opt into darker dropdowns to match a dark navbar or custom style by adding `.dropdown-menu-dark` onto an existing `.dropdown-menu`. No changes are required to the dropdown items.
+
+{{< example >}}
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+    Dropdown button
+  </button>
+  <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton">
+    <li><a class="dropdown-item active" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Another action</a></li>
+    <li><a class="dropdown-item" href="#">Something else here</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="#">Separated link</a></li>
+  </ul>
+</div>
+{{< /example >}}
+
+
 ## Directions
 
 ### Dropup

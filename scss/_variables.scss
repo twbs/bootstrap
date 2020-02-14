@@ -956,6 +956,19 @@ $dropdown-item-padding-x:           $spacer !default;
 $dropdown-header-color:             $gray-600 !default;
 $dropdown-header-padding:           $dropdown-padding-y $dropdown-item-padding-x !default;
 
+$dropdown-dark-color:               $gray-300 !default;
+$dropdown-dark-bg:                  $gray-900 !default;
+$dropdown-dark-border-color:        $dropdown-border-color !default;
+$dropdown-dark-divider-bg:          $dropdown-divider-bg !default;
+$dropdown-dark-box-shadow:          null !default;
+$dropdown-dark-link-color:          $dropdown-dark-color !default;
+$dropdown-dark-link-hover-color:    $white !default;
+$dropdown-dark-link-hover-bg:       rgba($white, .15) !default;
+$dropdown-dark-link-active-color:   $dropdown-link-active-color !default;
+$dropdown-dark-link-active-bg:      $dropdown-link-active-bg !default;
+$dropdown-dark-link-disabled-color: $gray-500 !default;
+$dropdown-dark-header-color:        $gray-500 !default;
+
 
 // Pagination
 
