@@ -1,7 +1,7 @@
 ---
 layout: docs
-title: Behaviors
-description: Utility classes that help to determine how the user is allowed to interact with the content of the website. 
+title: Interactions
+description: Utility classes that change how users interact with contents of a website. 
 group: utilities
 toc: false
 ---
