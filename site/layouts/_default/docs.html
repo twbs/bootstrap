@@ -35,7 +35,7 @@
 
           {{ if (eq .Page.Params.toc true) }}
             <strong class="d-block h3 mt-5 mb-3">On this page</strong>
-            <nav class="bd-toc mb-5" aria-label="Secondary navigation">
+            <nav class="bd-toc mb-5 text-muted" aria-label="Secondary navigation">
               {{ .TableOfContents }}
             </nav>
           {{ end }}
