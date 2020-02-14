@@ -75,12 +75,12 @@
 - title: Utilities
   pages:
     - title: API
-    - title: Behaviors
     - title: Borders
     - title: Colors
     - title: Display
     - title: Flex
     - title: Float
+    - title: Interactions
     - title: Overflow
     - title: Position
     - title: Shadows
