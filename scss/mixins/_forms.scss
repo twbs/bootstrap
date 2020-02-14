@@ -79,7 +79,9 @@
 
       @if $enable-validation-icons {
         padding-right: $form-select-feedback-icon-padding-right;
-        background: escape-svg($form-select-indicator) $form-select-background, escape-svg($icon) $form-select-bg no-repeat $form-select-feedback-icon-position / $form-select-feedback-icon-size;
+        background-image: escape-svg($form-select-indicator), escape-svg($icon);
+        background-position: $form-select-bg-position, $form-select-feedback-icon-position;
+        background-size: $form-select-bg-size, $form-select-feedback-icon-size;
       }
 
       &:focus {

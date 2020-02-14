@@ -20,7 +20,7 @@ describe('Alert', () => {
   })
 
   describe('data-api', () => {
-    it('should close an alert without instantiate it manually', () => {
+    it('should close an alert without instantiating it manually', () => {
       fixtureEl.innerHTML = [
         '<div class="alert">',
         '  <button type="button" data-dismiss="alert">x</button>',
@@ -33,7 +33,7 @@ describe('Alert', () => {
       expect(makeArray(document.querySelectorAll('.alert')).length).toEqual(0)
     })
 
-    it('should close an alert without instantiate it manually with the parent selector', () => {
+    it('should close an alert without instantiating it manually with the parent selector', () => {
       fixtureEl.innerHTML = [
         '<div class="alert">',
         '  <button type="button" data-target=".alert" data-dismiss="alert">x</button>',

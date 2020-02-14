@@ -43,9 +43,8 @@
   .show > &.dropdown-toggle {
     color: $active-color;
     background-color: $active-background;
-    @if $enable-gradients {
-      background-image: none; // Remove the gradient for the pressed/active state
-    }
+    // Remove CSS gradients if they're enabled
+    background-image: if($enable-gradients, none, null);
     border-color: $active-border;
 
     &:focus {
@@ -62,11 +61,9 @@
   &.disabled {
     color: $color;
     background-color: $background;
-    border-color: $border;
     // Remove CSS gradients if they're enabled
-    @if $enable-gradients {
-      background-image: none;
-    }
+    background-image: if($enable-gradients, none, null);
+    border-color: $border;
   }
 }
 
