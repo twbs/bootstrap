@@ -14,12 +14,14 @@ The base `.nav` component is built with flexbox and provide a strong foundation 
 
 {{< callout info >}}
 The base `.nav` component does not include any `.active` state. The following examples include the class, mainly to demonstrate that this particular class does not trigger any special styling.
+
+To convey the active state to assistive technologies, use the `aria-current` attribute — using the `page` value for current page, or `true` for the current item in a set.
 {{< /callout >}}
 
 {{< example >}}
 <ul class="nav">
   <li class="nav-item">
-    <a class="nav-link active" href="#">Active</a>
+    <a class="nav-link active" aria-current="page" href="#">Active</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="#">Link</a>
@@ -37,7 +39,7 @@ Classes are used throughout, so your markup can be super flexible. Use `<ul>`s l
 
 {{< example >}}
 <nav class="nav">
-  <a class="nav-link active" href="#">Active</a>
+  <a class="nav-link active" aria-current="page" href="#">Active</a>
   <a class="nav-link" href="#">Link</a>
   <a class="nav-link" href="#">Link</a>
   <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
@@ -57,7 +59,7 @@ Centered with `.justify-content-center`:
 {{< example >}}
 <ul class="nav justify-content-center">
   <li class="nav-item">
-    <a class="nav-link active" href="#">Active</a>
+    <a class="nav-link active" aria-current="page" href="#">Active</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="#">Link</a>
@@ -76,7 +78,7 @@ Right-aligned with `.justify-content-end`:
 {{< example >}}
 <ul class="nav justify-content-end">
   <li class="nav-item">
-    <a class="nav-link active" href="#">Active</a>
+    <a class="nav-link active" aria-current="page" href="#">Active</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="#">Link</a>
@@ -97,7 +99,7 @@ Stack your navigation by changing the flex item direction with the `.flex-column
 {{< example >}}
 <ul class="nav flex-column">
   <li class="nav-item">
-    <a class="nav-link active" href="#">Active</a>
+    <a class="nav-link active" aria-current="page" href="#">Active</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="#">Link</a>
@@ -115,7 +117,7 @@ As always, vertical navigation is possible without `<ul>`s, too.
 
 {{< example >}}
 <nav class="nav flex-column">
-  <a class="nav-link active" href="#">Active</a>
+  <a class="nav-link active" aria-current="page" href="#">Active</a>
   <a class="nav-link" href="#">Link</a>
   <a class="nav-link" href="#">Link</a>
   <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
@@ -129,7 +131,7 @@ Takes the basic nav from above and adds the `.nav-tabs` class to generate a tabb
 {{< example >}}
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <a class="nav-link active" href="#">Active</a>
+    <a class="nav-link active" aria-current="page" href="#">Active</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="#">Link</a>
@@ -150,7 +152,7 @@ Take that same HTML, but use `.nav-pills` instead:
 {{< example >}}
 <ul class="nav nav-pills">
   <li class="nav-item">
-    <a class="nav-link active" href="#">Active</a>
+    <a class="nav-link active" aria-current="page" href="#">Active</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="#">Link</a>
@@ -171,7 +173,7 @@ Force your `.nav`'s contents to extend the full available width one of two modif
 {{< example >}}
 <ul class="nav nav-pills nav-fill">
   <li class="nav-item">
-    <a class="nav-link active" href="#">Active</a>
+    <a class="nav-link active" aria-current="page" href="#">Active</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="#">Much longer nav link</a>
@@ -189,7 +191,7 @@ When using a `<nav>`-based navigation, be sure to include `.nav-item` on the anc
 
 {{< example >}}
 <nav class="nav nav-pills nav-fill">
-  <a class="nav-item nav-link active" href="#">Active</a>
+  <a class="nav-item nav-link active" aria-current="page" href="#">Active</a>
   <a class="nav-item nav-link" href="#">Much longer nav link</a>
   <a class="nav-item nav-link" href="#">Link</a>
   <a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
@@ -201,7 +203,7 @@ For equal-width elements, use `.nav-justified`. All horizontal space will be occ
 {{< example >}}
 <ul class="nav nav-pills nav-justified">
   <li class="nav-item">
-    <a class="nav-link active" href="#">Active</a>
+    <a class="nav-link active" aria-current="page" href="#">Active</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="#">Much longer nav link</a>
@@ -219,7 +221,7 @@ Similar to the `.nav-fill` example using a `<nav>`-based navigation, be sure to 
 
 {{< example >}}
 <nav class="nav nav-pills nav-justified">
-  <a class="nav-item nav-link active" href="#">Active</a>
+  <a class="nav-item nav-link active" aria-current="page" href="#">Active</a>
   <a class="nav-item nav-link" href="#">Much longer nav link</a>
   <a class="nav-item nav-link" href="#">Link</a>
   <a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
@@ -232,7 +234,7 @@ If you need responsive nav variations, consider using a series of [flexbox utili
 
 {{< example >}}
 <nav class="nav nav-pills flex-column flex-sm-row">
-  <a class="flex-sm-fill text-sm-center nav-link active" href="#">Active</a>
+  <a class="flex-sm-fill text-sm-center nav-link active" aria-current="page" href="#">Active</a>
   <a class="flex-sm-fill text-sm-center nav-link" href="#">Longer nav link</a>
   <a class="flex-sm-fill text-sm-center nav-link" href="#">Link</a>
   <a class="flex-sm-fill text-sm-center nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
@@ -243,7 +245,7 @@ If you need responsive nav variations, consider using a series of [flexbox utili
 
 If you're using navs to provide a navigation bar, be sure to add a `role="navigation"` to the most logical parent container of the `<ul>`, or wrap a `<nav>` element around the whole navigation. Do not add the role to the `<ul>` itself, as this would prevent it from being announced as an actual list by assistive technologies.
 
-Note that navigation bars, even if visually styled as tabs with the `.nav-tabs` class, should **not** be given `role="tablist"`, `role="tab"` or `role="tabpanel"` attributes. These are only appropriate for dynamic tabbed interfaces, as described in the [<abbr title="Web Accessibility Initiative">WAI</abbr> <abbr title="Accessible Rich Internet Applications">ARIA</abbr> Authoring Practices](https://www.w3.org/TR/wai-aria-practices/#tabpanel). See [JavaScript behavior](#javascript-behavior) for dynamic tabbed interfaces in this section for an example.
+Note that navigation bars, even if visually styled as tabs with the `.nav-tabs` class, should **not** be given `role="tablist"`, `role="tab"` or `role="tabpanel"` attributes. These are only appropriate for dynamic tabbed interfaces, as described in the [<abbr title="Web Accessibility Initiative">WAI</abbr> <abbr title="Accessible Rich Internet Applications">ARIA</abbr> Authoring Practices](https://www.w3.org/TR/wai-aria-practices/#tabpanel). See [JavaScript behavior](#javascript-behavior) for dynamic tabbed interfaces in this section for an example. The `aria-current` attribute is not necessary on dynamic tabbed interfaces since our JavaScript handles the selected state by adding `aria-selected="true"` on the active tab.
 
 ## Using dropdowns
 
@@ -254,7 +256,7 @@ Add dropdown menus with a little extra HTML and the [dropdowns JavaScript plugin
 {{< example >}}
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <a class="nav-link active" href="#">Active</a>
+    <a class="nav-link active" aria-current="page" href="#">Active</a>
   </li>
   <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">Dropdown</a>
@@ -280,7 +282,7 @@ Add dropdown menus with a little extra HTML and the [dropdowns JavaScript plugin
 {{< example >}}
 <ul class="nav nav-pills">
   <li class="nav-item">
-    <a class="nav-link active" href="#">Active</a>
+    <a class="nav-link active" aria-current="page" href="#">Active</a>
   </li>
   <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">Dropdown</a>
