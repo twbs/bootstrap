@@ -88,14 +88,38 @@
 }
 
 // Color contrast
-@function color-yiq($color, $dark: $yiq-text-dark, $light: $yiq-text-light) {
-  $r: red($color);
-  $g: green($color);
-  $b: blue($color);
+// See https://github.com/twbs/bootstrap/pull/30168
+@function color-yiq($background, $foreground-dark: $yiq-text-dark, $foreground-light: $yiq-text-light) {
+  $l1: luminance($background);
+  $l2: luminance(opaque($background, $foreground-light));
 
-  $yiq: (($r * 299) + ($g * 587) + ($b * 114)) / 1000;
+  $contrast: if($l1 > $l2, ($l1 + .05) / ($l2 + .05), ($l2 + .05) / ($l1 + .05));
 
-  @return if($yiq >= $yiq-contrasted-threshold, $dark, $light);
+  @return if($contrast < $yiq-contrasted-threshold, $foreground-dark, $foreground-light);
+}
+
+// Return WCAG2.0 relative luminance
+// See https://www.w3.org/WAI/GL/wiki/Relative_luminance
+// See https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
+@function luminance($color) {
+  $rgb: (
+    "r": red($color),
+    "g": green($color),
+    "b": blue($color)
+  );
+
+  @each $name, $value in $rgb {
+    $value: if($value / 255 < .03928, $value / 255 / 12.92, nth($luminance-list, $value + 1));
+    $rgb: map-merge($rgb, ($name: $value));
+  }
+
+  @return (map-get($rgb, "r") * .2126) + (map-get($rgb, "g") * .7152) + (map-get($rgb, "b") * .0722);
+}
+
+// Return opaque color
+// opaque(#fff, rgba(0, 0, 0, .5)) => #808080
+@function opaque($background, $foreground) {
+  @return mix(rgba($foreground, 1), $background, opacity($foreground) * 100);
 }
 
 // Request a color level
