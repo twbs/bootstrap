@@ -9,7 +9,7 @@
 
 <title>
   {%- if page.title -%}
-    {{ page.title | smartify }} · {{ site.title | smartify }}
+    {{ page.title | smartify }} · {{ site.title | smartify }} v{{ site.docs_version }}
   {%- else -%}
     {{ site.title | smartify }} · {{ site.description | smartify }}
   {%- endif -%}
