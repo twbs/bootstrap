@@ -51,3 +51,12 @@
 @import "syntax";
 @import "anchor";
 @import "algolia";
+
+@if $enable-prefers-reduced-motion-media-query {
+  @media (prefers-reduced-motion: reduce) {
+    %no-transition {
+      // stylelint-disable-next-line property-blacklist, declaration-no-important
+      transition: none !important;
+    }
+  }
+}
