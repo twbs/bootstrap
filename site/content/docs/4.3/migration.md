@@ -41,7 +41,6 @@ Changes to our source Sass files and compiled CSS.
 - Line heights are dropped from several components to simplify our codebase. The `button-size()` and `pagination-size()` do not accept line height parameters anymore. [See #29271](https://github.com/twbs/bootstrap/pull/29271)
 - The `button-variant()` mixin now accepts 3 optional color parameters, for each button state, to override the color provided by `color-yiq()`. By default, these parameters will find which color provides more contrast against the button state's background color with `color-yiq()`.
 - The `button-outline-variant()` mixin now accepts an additional argument, `$active-color`, for setting the button's active state text color. By default, this parameter will find which color provides more contrast against the button's active background color with `color-yiq()`.
-- The `transition()` mixin now extends `%no-transition` placeholder to handle `prefers-reduced-motion` media query-except vendor prefixes listed in new `$pseudo-vendor-prefixes` variable. [See #29870](https://github.com/twbs/bootstrap/pull/29870/)
 
 ## JavaScript
 
