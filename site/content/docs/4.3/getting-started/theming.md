@@ -317,10 +317,6 @@ Here's how you can use these in your Sass:
 
 [Color utility classes]({{< docsref "/utilities/colors" >}}) are also available for setting `color` and `background-color`.
 
-{{< callout info >}}
-In the future, we'll aim to provide Sass maps and variables for shades of each color as we've done with the grayscale colors below.
-{{< /callout >}}
-
 ### Theme colors
 
 We use a subset of all colors to create a smaller color palette for generating color schemes, also available as Sass variables and a Sass map in Bootstrap's `scss/_variables.scss` file.
