@@ -306,9 +306,12 @@ class Modal {
   }
 
   _setEscapeEvent() {
-    if (this._isShown && this._config.keyboard) {
+    if (this._isShown) {
       EventHandler.on(this._element, Event.KEYDOWN_DISMISS, event => {
-        if (event.which === ESCAPE_KEYCODE) {
+        if (this._config.keyboard && event.which === ESCAPE_KEYCODE) {
+          event.preventDefault()
+          this.hide()
+        } else if (!this._config.keyboard && event.which === ESCAPE_KEYCODE) {
           this._triggerBackdropTransition()
         }
       })

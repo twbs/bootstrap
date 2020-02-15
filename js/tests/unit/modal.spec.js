@@ -567,6 +567,64 @@ describe('Modal', () => {
       modal.show()
     })
 
+    it('should close modal when escape key is pressed with keyboard = true and backdrop is static', done => {
+      fixtureEl.innerHTML = '<div class="modal" data-backdrop="static"><div class="modal-dialog" /></div>'
+
+      const modalEl = fixtureEl.querySelector('.modal')
+      const modal = new Modal(modalEl, {
+        backdrop: 'static',
+        keyboard: true
+      })
+
+      const shownCallback = () => {
+        setTimeout(() => {
+          expect(modal._isShown).toEqual(false)
+          done()
+        }, 10)
+      }
+
+      modalEl.addEventListener('shown.bs.modal', () => {
+        const keydownEscape = createEvent('keydown')
+        keydownEscape.which = 27
+
+        modalEl.dispatchEvent(keydownEscape)
+        shownCallback()
+      })
+
+      modal.show()
+    })
+
+    it('should not close modal when escape key is pressed with keyboard = false and backdrop = static', done => {
+      fixtureEl.innerHTML = '<div class="modal" data-backdrop="static" data-keyboard="false"><div class="modal-dialog" /></div>'
+
+      const modalEl = fixtureEl.querySelector('.modal')
+      const modal = new Modal(modalEl, {
+        backdrop: 'static',
+        keyboard: false
+      })
+
+      const shownCallback = () => {
+        setTimeout(() => {
+          expect(modal._isShown).toEqual(true)
+          done()
+        }, 10)
+      }
+
+      modalEl.addEventListener('shown.bs.modal', () => {
+        const keydownEscape = createEvent('keydown')
+        keydownEscape.which = 27
+
+        modalEl.dispatchEvent(keydownEscape)
+        shownCallback()
+      })
+
+      modalEl.addEventListener('hidden.bs.modal', () => {
+        throw new Error('Should not hide a modal')
+      })
+
+      modal.show()
+    })
+
     it('should not adjust the inline body padding when it does not overflow', done => {
       fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog" /></div>'
 

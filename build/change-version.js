@@ -2,8 +2,8 @@
 
 /*!
  * Script to update version number references in the project.
- * Copyright 2017-2019 The Bootstrap Authors
- * Copyright 2017-2019 Twitter, Inc.
+ * Copyright 2017-2020 The Bootstrap Authors
+ * Copyright 2017-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
@@ -17,11 +17,11 @@ sh.config.fatal = true
 
 // Blame TC39... https://github.com/benjamingr/RegExp.escape/issues/37
 function regExpQuote(string) {
-  return string.replace(/[-\\^$*+?.()|[\]{}]/g, '\\$&')
+  return string.replace(/[$()*+-.?[\\\]^{|}]/g, '\\$&')
 }
 
 function regExpQuoteReplacement(string) {
-  return string.replace(/[$]/g, '$$')
+  return string.replace(/\$/g, '$$')
 }
 
 const DRY_RUN = false
@@ -102,7 +102,6 @@ function main(args) {
     '.js',
     '.json',
     '.md',
-    '.nuspec',
     '.scss',
     '.txt',
     '.yml'

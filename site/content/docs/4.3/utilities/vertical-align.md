@@ -9,6 +9,8 @@ Change the alignment of elements with the [`vertical-alignment`](https://develop
 
 Choose from `.align-baseline`, `.align-top`, `.align-middle`, `.align-bottom`, `.align-text-bottom`, and `.align-text-top` as needed.
 
+To vertically center non-inline content (like `<div>`s and more), use our [flex box utilities]({{< docsref "/utilities/flex#auto-margins" >}}).
+
 With inline elements:
 
 {{< example >}}

@@ -111,15 +111,11 @@
 }
 .carousel-control-prev {
   left: 0;
-  @if $enable-gradients {
-    background-image: linear-gradient(90deg, rgba($black, .25), rgba($black, .001));
-  }
+  background-image: if($enable-gradients, linear-gradient(90deg, rgba($black, .25), rgba($black, .001)), null);
 }
 .carousel-control-next {
   right: 0;
-  @if $enable-gradients {
-    background-image: linear-gradient(270deg, rgba($black, .25), rgba($black, .001));
-  }
+  background-image: if($enable-gradients, linear-gradient(270deg, rgba($black, .25), rgba($black, .001)), null);
 }
 
 // Icons for within
@@ -128,7 +124,9 @@
   display: inline-block;
   width: $carousel-control-icon-width;
   height: $carousel-control-icon-width;
-  background: no-repeat 50% / 100% 100%;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: 100% 100%;
 }
 .carousel-control-prev-icon {
   background-image: escape-svg($carousel-control-prev-icon-bg);

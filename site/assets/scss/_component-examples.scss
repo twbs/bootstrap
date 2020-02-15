@@ -224,6 +224,12 @@
   }
 }
 
+.bd-example-rounded-utils {
+  [class*="rounded"] {
+    margin: .25rem;
+  }
+}
+
 //
 // Code snippets
 //

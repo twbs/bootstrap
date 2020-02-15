@@ -9,8 +9,19 @@
   }
 
   @if $enable-prefers-reduced-motion-media-query {
-    @media (prefers-reduced-motion: reduce) {
-      transition: none;
+    $isolate: false;
+    @each $selector in $pseudo-vendor-prefixes {
+      @if str-index(quote(#{&}), $selector) {
+        $isolate: true;
+      }
+    }
+
+    @if $isolate {
+      @media (prefers-reduced-motion: reduce) {
+        transition: none;
+      }
+    } @else {
+      @extend %no-transition;
     }
   }
 }
