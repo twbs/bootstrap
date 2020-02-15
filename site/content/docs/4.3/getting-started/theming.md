@@ -94,9 +94,9 @@ Repeat as necessary for any variable in Bootstrap, including the global options 
 
 ### Maps and loops
 
-Bootstrap 4 includes a handful of Sass maps, key value pairs that make it easier to generate families of related CSS. We use Sass maps for our colors, grid breakpoints, and more. Just like Sass variables, all Sass maps include the `!default` flag and can be overridden and extended.
+Bootstrap 5 includes a handful of Sass maps, key value pairs that make it easier to generate families of related CSS. We use Sass maps for our colors, grid breakpoints, and more. Just like Sass variables, all Sass maps include the `!default` flag and can be overridden and extended.
 
-Some of our Sass maps are merged into empty ones by default. This is done to allow easy expansion of a given Sass map, but comes at the cost of making _removing_ items from a map slightly more difficult.
+From Bootstrap 5, we decided to [ditch the map merges](https://github.com/twbs/bootstrap/pull/28508) we had in `v4`. This way we have more control over removing redundant values.
 
 #### Modify map
 
@@ -112,37 +112,45 @@ Later on, theses variables are set in Bootstrap's `$theme-colors` map:
 {{< highlight scss >}}
 $theme-colors: (
   "primary": $primary,
-  "danger": $danger
+  "danger": $danger,
+  ...
 );
 {{< /highlight >}}
 
 #### Add to map
 
-To add a new color to `$theme-colors`, add the new key and value:
+To add a new color to `$theme-colors`, add the new key and value. Keep in mind not to remove the existing colors:
 
 {{< highlight scss >}}
+$my-custom-color: #ffoodd;
+
+// Make sure to define `$primary`, `$secondary`, ect.. first
 $theme-colors: (
-  "custom-color": #900
+  "primary":      $primary,
+  "secondary":    $secondary,
+  "success":      $success,
+  "info":         $info,
+  "warning":      $warning,
+  "danger":       $danger,
+  "light":        $light,
+  "dark":         $dark,
+  "custom-color": $my-custom-color,
 );
 {{< /highlight >}}
 
 #### Remove from map
 
-To remove colors from `$theme-colors`, or any other map, use `map-remove`. Be aware you must insert it between our requirements and options:
+From Bootstrap 5, this is simplified quite a lot, just remove the redundant items from the Sass map:
 
 {{< highlight scss >}}
-// Required
-@import "../node_modules/bootstrap/scss/functions";
-@import "../node_modules/bootstrap/scss/variables";
-@import "../node_modules/bootstrap/scss/mixins";
-
-$theme-colors: map-remove($theme-colors, "info", "light", "dark");
-
-// Optional
-@import "../node_modules/bootstrap/scss/root";
-@import "../node_modules/bootstrap/scss/reboot";
-@import "../node_modules/bootstrap/scss/type";
-...
+// Make sure to define `$primary`, `$secondary`, ect.. first
+$theme-colors: (
+  "primary":      $primary,
+  "secondary":    $secondary,
+  "success":      $success,
+  "warning":      $warning,
+  "danger":       $danger,
+);
 {{< /highlight >}}
 
 #### Required keys
