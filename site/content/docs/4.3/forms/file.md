@@ -57,7 +57,7 @@ You may also choose from small and large file inputs to match our similarly size
 {{< example >}}
 <div class="form-file form-file-lg mb-3">
   <input type="file" class="form-file-input" id="customFileLg">
-  <label class="form-file-label" for="customFile">
+  <label class="form-file-label" for="customFileLg">
     <span class="form-file-text">Choose file...</span>
     <span class="form-file-button">Browse</span>
   </label>
@@ -65,7 +65,7 @@ You may also choose from small and large file inputs to match our similarly size
 
 <div class="form-file form-file-sm">
   <input type="file" class="form-file-input" id="customFileSm">
-  <label class="form-file-label" for="customFile">
+  <label class="form-file-label" for="customFileSm">
     <span class="form-file-text">Choose file...</span>
     <span class="form-file-button">Browse</span>
   </label>
