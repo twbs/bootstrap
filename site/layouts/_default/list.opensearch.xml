@@ -3,6 +3,7 @@
   <ShortName>{{ .Site.Title }}</ShortName>
   <Description>Search {{ .Site.Title }} documentation</Description>
   <InputEncoding>UTF-8</InputEncoding>
-  <Image type="image/x-icon" width="16" height="16">{{ (printf "/docs/%s/assets/img/favicons/favicon.ico" .Site.Params.docs_version) | absURL }}</Image>
+  <Image type="image/png" width="16" height="16">{{ (printf "/docs/%s/assets/img/opensearch/logo-16x16.png" .Site.Params.docs_version) | absURL }}</Image>
+  <Image type="image/png" width="64" height="64">{{ (printf "/docs/%s/assets/img/opensearch/logo-64x64.png" .Site.Params.docs_version) | absURL }}</Image>
   <Url type="text/html" method="get" template="{{ (printf "/docs/%s/getting-started/introduction/" .Site.Params.docs_version) | absURL }}#search={searchTerms}"/>
 </OpenSearchDescription>
