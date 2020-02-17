@@ -193,7 +193,7 @@ In practice, you'd call the function and pass in two parameters: the name of the
 
 Additional functions could be added in the future or your own custom Sass to create level functions for additional Sass maps, or even a generic one if you wanted to be more verbose.
 
-### Color contrast
+#### Color contrast
 
 An additional function we include in Bootstrap is the color contrast function, `color-yiq`. It utilizes the [YIQ color space](https://en.wikipedia.org/wiki/YIQ) to automatically return a light (`#fff`) or dark (`#111`) contrast color based on the specified base color. This function is especially useful for mixins or loops where you're generating multiple classes.
 
@@ -223,11 +223,11 @@ You can also specify a base color with our color map functions:
 }
 {% endhighlight %}
 
-## Escape SVG
+#### Escape SVG
 
 We use the `escape-svg` function to escape the `<`, `>` and `#` characters for SVG background images. These characters need to be escaped to properly render the background images in IE.
 
-## Add and Subtract functions
+#### Add and Subtract functions
 
 We use the `add` and `subtract` functions to wrap the CSS `calc` function. The primary purpose of these functions is to avoid errors when a "unitless" `0` value is passed into a `calc` expression. Expressions like `calc(10px - 0)` will return an error in all browsers, despite being mathematically correct.
 
