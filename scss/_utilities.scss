@@ -443,6 +443,10 @@ $utilities: map-merge(
       class: font,
       values: (monospace: $font-family-monospace)
     ),
+    "user-select": (
+      property: user-select,
+      values: all auto none
+    ),
     "rounded": (
       property: border-radius,
       class: rounded,
