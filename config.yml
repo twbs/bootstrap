@@ -20,6 +20,18 @@ enableRobotsTXT:        true
 metaDataFormat:         "yaml"
 disableKinds:           ["404", "taxonomy", "taxonomyTerm", "RSS"]
 
+outputFormats:
+  OpenSearch:
+    baseName:           opensearch
+    isPlainText:        true
+    mediaType:          application/xml
+    notAlternative:     true
+
+outputs:
+  home:
+    - HTML
+    - OpenSearch
+
 publishDir:             "_gh_pages"
 
 module:
