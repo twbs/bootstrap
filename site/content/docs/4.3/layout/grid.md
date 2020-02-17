@@ -145,24 +145,6 @@ For example, here are two grid layouts that apply to every device and viewport, 
 </div>
 {{< /example >}}
 
-### Equal-width multi-line
-
-Create equal-width columns that span multiple lines by inserting a `.w-100` where you want the columns to break to a new line. Make the breaks responsive by mixing `.w-100` with some [responsive display utilities]({{< docsref "/utilities/display" >}}).
-
-There was a [Safari flexbox bug](https://github.com/philipwalton/flexbugs#flexbug-11) that prevented this from working without an explicit `flex-basis` or `border`. There are workarounds for older browser versions, but they shouldn't be necessary if your target browsers don't fall into the buggy versions.
-
-{{< example class="bd-example-row" >}}
-<div class="container">
-  <div class="row">
-    <div class="col">col</div>
-    <div class="col">col</div>
-    <div class="w-100"></div>
-    <div class="col">col</div>
-    <div class="col">col</div>
-  </div>
-</div>
-{{< /example >}}
-
 ### Setting one column width
 
 Auto-layout for flexbox grid columns also means you can set the width of one column and have the sibling columns automatically resize around it. You may use predefined grid classes (as shown below), grid mixins, or inline widths. Note that the other columns will resize no matter the width of the center column.
