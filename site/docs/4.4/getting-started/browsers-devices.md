@@ -97,7 +97,7 @@ Similarly, the latest versions of most desktop browsers are supported.
       <td class="text-success">Supported</td>
       <td class="text-success">Supported</td>
       <td class="text-muted">N/A</td>
-      <td class="text-muted">N/A</td>
+      <td class="text-success">Supported</td>
       <td class="text-success">Supported</td>
       <td class="text-success">Supported</td>
     </tr>
