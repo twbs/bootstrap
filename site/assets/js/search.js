@@ -52,13 +52,16 @@
   })
 
   function hashSearch() {
-    if (window.location.hash && window.location.hash.indexOf('#search=') === 0) {
-      search.input.autocomplete.setVal(window.location.hash.slice(8))
+    var SEARCH_WORD = '#search='
+
+    if (window.location.hash && window.location.hash.startsWith(SEARCH_WORD)) {
+      search.input.autocomplete.setVal(window.location.hash.slice(SEARCH_WORD.length))
       search.input.autocomplete.open()
     }
   }
 
   hashSearch()
+
   // For the nerds: search by changing the url hash
   window.addEventListener('hashchange', hashSearch, false)
 })()
