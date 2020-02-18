@@ -16,10 +16,6 @@
   }
 }
 
-:not(.active) > .bd-sidenav {
-  display: none;
-}
-
 .bd-sidenav-group-link {
   padding: .25rem .625rem .25rem .5rem;
   font-weight: 600;
@@ -57,6 +53,7 @@
 
 // All levels of nav
 .bd-sidebar .nav {
+  flex-flow: column nowrap;
   padding-left: 1.25rem;
 
   > li > a {
