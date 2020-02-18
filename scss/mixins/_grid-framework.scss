@@ -35,6 +35,11 @@
         max-width: 100%;
       }
 
+      .row-cols#{$infix}-none {
+        flex: auto;
+        max-width: none;
+      }
+
       @for $i from 1 through $grid-row-columns {
         .row-cols#{$infix}-#{$i} {
           @include row-cols($i);
