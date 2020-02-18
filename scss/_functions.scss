@@ -89,13 +89,13 @@
 
 // Color contrast
 // See https://github.com/twbs/bootstrap/pull/30168
-@function color-yiq($background, $foreground-dark: $yiq-text-dark, $foreground-light: $yiq-text-light) {
+@function color-contrast($background, $color-contrast-dark: $color-contrast-dark, $color-contrast-light: $color-contrast-light) {
   $l1: luminance($background);
-  $l2: luminance(opaque($background, $foreground-light));
+  $l2: luminance(opaque($background, $color-contrast-light));
 
   $contrast: if($l1 > $l2, ($l1 + .05) / ($l2 + .05), ($l2 + .05) / ($l1 + .05));
 
-  @return if($contrast < $yiq-contrasted-threshold, $foreground-dark, $foreground-light);
+  @return if($contrast < $min-contrast-ratio, $color-contrast-dark, $color-contrast-light);
 }
 
 // Return WCAG2.0 relative luminance
