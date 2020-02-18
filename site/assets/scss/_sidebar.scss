@@ -40,13 +40,11 @@
     content: escape-svg($sidebar-collapse-icon);
   }
 
-  &.active {
-    .bd-sidenav-group-link::before {
-      transform: rotate(90deg);
-    }
+  [aria-expanded="true"] {
+    color: rgba($black, .85);
 
-    > .bd-sidenav-group-link {
-      color: rgba($black, .85);
+    &::before {
+      transform: rotate(90deg);
     }
   }
 }
@@ -71,9 +69,7 @@
     }
   }
 
-  > .active > a,
-  > .active:hover > a,
-  > .active:focus > a {
+  [aria-current="page"] {
     font-weight: 600;
     color: rgba($black, .85);
   }
