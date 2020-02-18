@@ -15,7 +15,7 @@
     {{- $group_slug := $group.title | urlize -}}
     {{- $active_group := eq $.Page.Params.group $group_slug }}
 
-    <li class="bd-sidenav-group my-1{{ if $active_group }} active{{ end }} js-sidenav-group{{ if $group.pages }} has-children{{ end }}">
+    <li class="bd-sidenav-group my-1{{ if $active_group }} active{{ end }}{{ if $group.pages }} has-children{{ end }}">
       <a class="d-inline-flex align-items-center bd-sidenav-group-link" data-toggle="collapse" href="#{{ $group_slug }}-collapse"
          role="button" aria-expanded="{{ $active_group }}"{{ if $active_group }} aria-current="true"{{ end }}>
         {{ $group.title }}
