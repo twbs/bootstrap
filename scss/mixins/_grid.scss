@@ -50,6 +50,13 @@
   }
 }
 
+@mixin row-cols-none {
+  & > * {
+    flex: auto;
+    max-width: none;
+  }
+}
+
 // Framework grid generation
 //
 // Used only by Bootstrap to generate the correct number of grid classes given
@@ -91,6 +98,10 @@
         .row-cols#{$infix}-#{$i} {
           @include row-cols($i);
         }
+      }
+
+      .row-cols#{$infix}-none {
+        @include row-cols-none;
       }
 
       .col#{$infix}-auto {
