@@ -143,6 +143,12 @@ documentation source files in
 **Do not edit the `gh-pages` branch.** That branch is generated from the
 documentation source files and is managed separately by the Bootstrap Core Team.
 
+### Contribute online with one-click online setup
+
+You can use gitpd(a free online VS Code like IDE) with a single click it will launch a ready to code workspace where the repo is already cloned, all the dependencies pre-installed and the web server running so that you can start straight away without wasting time on the setup.
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/from-referrer/)
+
 Adhering to the following process is the best way to get your work
 included in the project:
 
