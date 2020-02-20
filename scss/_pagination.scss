@@ -7,8 +7,8 @@
   position: relative;
   display: block;
   color: $pagination-color;
-  background-color: $pagination-bg;
   text-decoration: none;
+  background-color: $pagination-bg;
   border: $pagination-border-width solid $pagination-border-color;
 
   &:hover {
