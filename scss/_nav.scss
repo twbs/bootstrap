@@ -13,6 +13,7 @@
 
 .nav-link {
   display: block;
+  text-decoration: if($link-decoration == none, null, none);
   padding: $nav-link-padding-y $nav-link-padding-x;
 
   &:hover,
