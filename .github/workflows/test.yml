@@ -23,7 +23,7 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
 
-      - name: Set up Ruby 2.4
+      - name: Set up Ruby
         uses: actions/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
@@ -64,7 +64,7 @@ jobs:
         run: npm ci
 
       - name: Install bundler dependencies
-        run: bundle install --deployment --jobs=3 --retry=3 --clean
+        run: bundle install --deployment --jobs=4 --retry=3 --clean
 
       - name: Run tests
         run: npm test
