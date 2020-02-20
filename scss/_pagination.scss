@@ -4,12 +4,12 @@
 }
 
 .page-link {
-  color: $pagination-color;
   display: block;
+  color: $pagination-color;
   background-color: $pagination-bg;
-  border: $pagination-border-width solid $pagination-border-color;
-  text-decoration: none;
   position: relative;
+  text-decoration: none;
+  border: $pagination-border-width solid $pagination-border-color;
 
   &:hover {
     z-index: 2;
