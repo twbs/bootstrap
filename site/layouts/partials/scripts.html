@@ -10,8 +10,16 @@
 
 {{- $vendor := resources.Match "js/vendor/*.js" -}}
 {{- $js := resources.Match "js/*.js" -}}
+{{- $docsJs := append $js $vendor -}}
+
+{{- range $docsJs -}}
+  {{- if not . -}}
+    {{- errorf "Error, %q is missing!" . -}}
+  {{- end -}}
+{{- end -}}
+
 {{- $targetDocsJSPath := printf "/docs/%s/assets/js/docs.js" .Site.Params.docs_version -}}
-{{- $docsJs := append $js $vendor | resources.Concat $targetDocsJSPath -}}
+{{- $docsJs = $docsJs | resources.Concat $targetDocsJSPath -}}
 
 {{- if eq hugo.Environment "production" -}}
   {{- $docsJs = $docsJs | resources.Minify -}}
