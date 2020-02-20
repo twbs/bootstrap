@@ -4,10 +4,10 @@
 }
 
 .page-link {
+  position: relative;
   display: block;
   color: $pagination-color;
   background-color: $pagination-bg;
-  position: relative;
   text-decoration: none;
   border: $pagination-border-width solid $pagination-border-color;
 
