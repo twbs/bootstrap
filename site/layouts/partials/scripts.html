@@ -1,4 +1,4 @@
-{{ if eq (getenv "HUGO_ENV") "production" -}}
+{{ if eq hugo.Environment "production" -}}
   <script src="/docs/{{ .Site.Params.docs_version }}/dist/js/bootstrap.bundle.min.js" integrity="{{ .Site.Params.cdn.js_bundle_hash }}" crossorigin="anonymous"></script>
 {{ else -}}
   <script src="/docs/{{ .Site.Params.docs_version }}/dist/js/bootstrap.bundle.js"></script>
@@ -13,7 +13,7 @@
 {{- $targetDocsJSPath := printf "/docs/%s/assets/js/docs.js" .Site.Params.docs_version -}}
 {{- $docsJs := append $js $vendor | resources.Concat $targetDocsJSPath -}}
 
-{{- if (eq (getenv "HUGO_ENV") "production") -}}
+{{- if eq hugo.Environment "production" -}}
   {{- $docsJs = $docsJs | resources.Minify -}}
 {{- end }}
 
