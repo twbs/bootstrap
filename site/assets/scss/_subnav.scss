@@ -14,7 +14,11 @@
   .dropdown-item.active {
     font-weight: 600;
     color: $gray-900;
-    background: escape-svg($dropdown-active-icon) no-repeat .4rem .6rem/.75rem .75rem;
+    background-color: transparent;
+    background-image: escape-svg($dropdown-active-icon);
+    background-repeat: no-repeat;
+    background-position: .4rem .6rem;
+    background-size: .75rem .75rem;
   }
 
   @include media-breakpoint-up(md) {

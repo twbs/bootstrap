@@ -43,7 +43,7 @@
     {{ .Content }}
 
     {{ if ne .Page.Params.include_js false -}}
-      {{- if eq (getenv "HUGO_ENV") "production" -}}
+      {{- if eq hugo.Environment "production" -}}
         <script src="/docs/{{ .Site.Params.docs_version }}/dist/js/bootstrap.bundle.min.js" integrity="{{ .Site.Params.cdn.js_bundle_hash }}" crossorigin="anonymous"></script>
       {{- else -}}
         <script src="/docs/{{ .Site.Params.docs_version }}/dist/js/bootstrap.bundle.js"></script>

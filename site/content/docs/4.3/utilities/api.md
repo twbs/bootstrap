@@ -13,6 +13,7 @@ The `$utilities` map contains all utilities and is later merged with your custom
 
 - `property`: Name of the property, this can be a string or an array of strings (needed for eg. horizontal paddings or margins).
 - `responsive` _(optional)_: Boolean indicating if responsive classes need to be generated. `false` by default.
+- `rfs` _(optional)_: Variable to enable fluid rescaling. Have a look at the [RFS]({{< docsref "/getting-started/rfs" >}}) page to find out how this works. `false` by default.
 - `class` _(optional)_: Variable to change the class name if you don't want it to be the same as the property. In case you don't provide the `class` key and `property` key is an array of strings, the class name will be the first element of the `property` array.
 - `values`: This can be a list of values or a map if you don't want the class name to be the same as the value. If null is used as map key, it isn't rendered.
 - `print` _(optional)_: Boolean indicating if print classes need to be generated. `false` by default.
