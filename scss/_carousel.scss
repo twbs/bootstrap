@@ -118,23 +118,6 @@
   background-image: if($enable-gradients, linear-gradient(270deg, rgba($black, .25), rgba($black, .001)), null);
 }
 
-// Icons for within
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-  display: inline-block;
-  width: $carousel-control-icon-width;
-  height: $carousel-control-icon-width;
-  background-repeat: no-repeat;
-  background-position: 50%;
-  background-size: 100% 100%;
-}
-.carousel-control-prev-icon {
-  background-image: escape-svg($carousel-control-prev-icon-bg);
-}
-.carousel-control-next-icon {
-  background-image: escape-svg($carousel-control-next-icon-bg);
-}
-
 
 // Optional indicator pips
 //

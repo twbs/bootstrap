@@ -61,13 +61,11 @@ Adding in the previous and next controls:
       {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#333" background="#555" text="Third slide" >}}
     </div>
   </div>
-  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev" aria-label="Previous">
+    {{< partial "icons/carousel-prev.svg" >}}
   </a>
-  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next" aria-label="Next">
+    {{< partial "icons/carousel-next.svg" >}}
   </a>
 </div>
 {{< /example >}}
@@ -94,13 +92,11 @@ You can also add the indicators to the carousel, alongside the controls, too.
       {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#333" background="#555" text="Third slide" >}}
     </div>
   </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" aria-label="Previous">
+    {{< partial "icons/carousel-prev.svg" >}}
   </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next" aria-label="Next">
+    {{< partial "icons/carousel-next.svg" >}}
   </a>
 </div>
 {{< /example >}}
@@ -139,13 +135,11 @@ Add captions to your slides easily with the `.carousel-caption` element within a
       </div>
     </div>
   </div>
-  <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
+  <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" aria-label="Previous">
+    {{< partial "icons/carousel-prev.svg" >}}
   </a>
-  <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
+  <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next" aria-label="Next">
+    {{< partial "icons/carousel-next.svg" >}}
   </a>
 </div>
 {{< /example >}}
@@ -167,13 +161,11 @@ Add `.carousel-fade` to your carousel to animate slides with a fade transition i
       {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#333" background="#555" text="Third slide" >}}
     </div>
   </div>
-  <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
+  <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev" aria-label="Previous">
+    {{< partial "icons/carousel-prev.svg" >}}
   </a>
-  <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
+  <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next" aria-label="Next">
+    {{< partial "icons/carousel-next.svg" >}}
   </a>
 </div>
 {{< /example >}}
@@ -195,13 +187,11 @@ Add `data-interval=""` to a `.carousel-item` to change the amount of time to del
       {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#333" background="#555" text="Third slide" >}}
     </div>
   </div>
-  <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
+  <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev" aria-label="Previous">
+    {{< partial "icons/carousel-prev.svg" >}}
   </a>
-  <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
+  <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-slide="next" aria-label="Next">
+    {{< partial "icons/carousel-next.svg" >}}
   </a>
 </div>
 {{< /example >}}
