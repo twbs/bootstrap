@@ -92,7 +92,7 @@ You can also add the indicators to the carousel, alongside the controls, too.
       {{< placeholder width="800" height="400" class="bd-placeholder-img-lg d-block w-100" color="#333" background="#555" text="Third slide" >}}
     </div>
   </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" aria-label="Previous">
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev" aria-label="Previous">
     {{< partial "icons/carousel-prev.svg" >}}
   </a>
   <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next" aria-label="Next">
@@ -135,7 +135,7 @@ Add captions to your slides easily with the `.carousel-caption` element within a
       </div>
     </div>
   </div>
-  <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" aria-label="Previous">
+  <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev" aria-label="Previous">
     {{< partial "icons/carousel-prev.svg" >}}
   </a>
   <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next" aria-label="Next">
