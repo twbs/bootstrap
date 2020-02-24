@@ -6,7 +6,7 @@
   order: 1;
 
   // Offset for the sticky header
-  > * {
+  > [id] {
     @include media-breakpoint-up(md) {
       scroll-margin-top: 4rem;
     }
