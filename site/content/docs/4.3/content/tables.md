@@ -461,11 +461,11 @@ Use contextual classes to color table rows or individual cells.
       </tr>
       {{< table.inline >}}
       {{- range (index $.Site.Data "theme-colors") }}
-          <tr class="table-{{ .name }}">
-            <th scope="row">{{ .name | title }}</th>
-            <td>Cell</td>
-            <td>Cell</td>
-          </tr>
+        <tr class="table-{{ .name }}">
+          <th scope="row">{{ .name | title }}</th>
+          <td>Cell</td>
+          <td>Cell</td>
+        </tr>
       {{- end -}}
       {{< /table.inline >}}
     </tbody>
