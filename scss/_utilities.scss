@@ -447,6 +447,11 @@ $utilities: map-merge(
       property: user-select,
       values: all auto none
     ),
+    "pointer-events": (
+      property: pointer-events,
+      class: pe,
+      values: none auto,
+    ),
     "rounded": (
       property: border-radius,
       class: rounded,
