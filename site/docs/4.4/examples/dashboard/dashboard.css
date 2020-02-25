@@ -28,7 +28,6 @@ body {
   }
 }
 
-
 .sidebar-sticky {
   position: relative;
   top: 0;
@@ -70,20 +69,6 @@ body {
 }
 
 /*
- * Content
- */
-
-[role="main"] {
-  padding-top: 133px; /* Space for fixed navbar */
-}
-
-@media (min-width: 768px) {
-  [role="main"] {
-    padding-top: 48px; /* Space for fixed navbar */
-  }
-}
-
-/*
  * Navbar
  */
 
@@ -96,8 +81,8 @@ body {
 }
 
 .navbar .navbar-toggler {
-  top: 4px;
-  right: 4px;
+  top: .25rem;
+  right: 1rem;
 }
 
 .navbar .form-control {
