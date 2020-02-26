@@ -19,6 +19,7 @@ import EventHandler from './dom/event-handler'
 import Manipulator from './dom/manipulator'
 import Popper from 'popper.js'
 import SelectorEngine from './dom/selector-engine'
+import Transition from './util/transition'
 
 /**
  * ------------------------------------------------------------------------
@@ -85,7 +86,8 @@ const Default = {
   boundary: 'scrollParent',
   reference: 'toggle',
   display: 'dynamic',
-  popperConfig: null
+  popperConfig: null,
+  transitionName: 'fade'
 }
 
 const DefaultType = {
@@ -94,7 +96,8 @@ const DefaultType = {
   boundary: '(string|element)',
   reference: '(string|element)',
   display: 'string',
-  popperConfig: '(null|object)'
+  popperConfig: '(null|object)',
+  transitionName: 'string'
 }
 
 /**
@@ -110,6 +113,7 @@ class Dropdown {
     this._config = this._getConfig(config)
     this._menu = this._getMenuElement()
     this._inNavbar = this._detectNavbar()
+    this._transition = new Transition(this._menu, this._config.transitionName)
 
     this._addEventListeners()
     Data.setData(element, DATA_KEY, this)
@@ -202,12 +206,17 @@ class Dropdown {
         .forEach(elem => EventHandler.on(elem, 'mouseover', null, noop()))
     }
 
+    this._transition.startEnter()
+
     this._element.focus()
     this._element.setAttribute('aria-expanded', true)
 
     Manipulator.toggleClass(this._menu, ClassName.SHOW)
     Manipulator.toggleClass(parent, ClassName.SHOW)
-    EventHandler.trigger(parent, Event.SHOWN, relatedTarget)
+
+    this._transition.endEnter(() => {
+      EventHandler.trigger(parent, Event.SHOWN, relatedTarget)
+    })
   }
 
   hide() {
@@ -226,13 +235,17 @@ class Dropdown {
       return
     }
 
-    if (this._popper) {
-      this._popper.destroy()
-    }
+    this._transition.startLeave()
 
-    Manipulator.toggleClass(this._menu, ClassName.SHOW)
-    Manipulator.toggleClass(parent, ClassName.SHOW)
-    EventHandler.trigger(parent, Event.HIDDEN, relatedTarget)
+    this._transition.endLeave(() => {
+      if (this._popper) {
+        this._popper.destroy()
+      }
+
+      Manipulator.toggleClass(this._menu, ClassName.SHOW)
+      Manipulator.toggleClass(parent, ClassName.SHOW)
+      EventHandler.trigger(parent, Event.HIDDEN, relatedTarget)
+    })
   }
 
   dispose() {
@@ -240,6 +253,7 @@ class Dropdown {
     EventHandler.off(this._element, EVENT_KEY)
     this._element = null
     this._menu = null
+    this._transition = null
     if (this._popper) {
       this._popper.destroy()
       this._popper = null
