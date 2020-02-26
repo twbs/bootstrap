@@ -7,15 +7,12 @@
 
 import {
   getjQuery,
-  TRANSITION_END,
-  nextAnimationFrame,
-  emulateTransitionEnd,
-  getTransitionDurationFromElement,
   typeCheckConfig
 } from './util/index'
 import Data from './dom/data'
 import EventHandler from './dom/event-handler'
 import Manipulator from './dom/manipulator'
+import Transition from './util/transition'
 
 /**
  * ------------------------------------------------------------------------
@@ -67,6 +64,7 @@ class Toast {
     this._element = element
     this._config = this._getConfig(config)
     this._timeout = null
+    this._transition = new Transition(this._element, this._config.transitionName)
     this._setListeners()
     Data.setData(element, DATA_KEY, this)
   }
@@ -94,24 +92,11 @@ class Toast {
       return
     }
 
-    if (this._config.transitionName) {
-      this._element.classList.add(`${this._config.transitionName}-enter`)
-      this._element.classList.add(`${this._config.transitionName}-enter-active`)
-    }
+    this._transition.startEnter()
 
     this._element.classList.add(ClassName.SHOW)
-    const transitionDuration = getTransitionDurationFromElement(this._element)
 
-    if (this._config.transitionName) {
-      nextAnimationFrame(() => {
-        this._element.classList.remove(`${this._config.transitionName}-enter`)
-        this._element.classList.add(`${this._config.transitionName}-enter-to`)
-      })
-    }
-
-    const complete = () => {
-      this._element.classList.remove(`${this._config.transitionName}-enter-active`)
-      this._element.classList.remove(`${this._config.transitionName}-enter-to`)
+    this._transition.endEnter(() => {
       EventHandler.trigger(this._element, Event.SHOWN)
 
       if (this._config.autohide) {
@@ -119,14 +104,7 @@ class Toast {
           this.hide()
         }, this._config.delay)
       }
-    }
-
-    if (transitionDuration) {
-      EventHandler.one(this._element, TRANSITION_END, complete)
-      emulateTransitionEnd(this._element, transitionDuration)
-    } else {
-      complete()
-    }
+    })
   }
 
   hide() {
@@ -140,33 +118,12 @@ class Toast {
       return
     }
 
-    if (this._config.transitionName) {
-      this._element.classList.add(`${this._config.transitionName}-leave`)
-      this._element.classList.add(`${this._config.transitionName}-leave-active`)
-    }
+    this._transition.startLeave()
 
-    const transitionDuration = getTransitionDurationFromElement(this._element)
-
-    if (this._config.transitionName) {
-      nextAnimationFrame(() => {
-        this._element.classList.remove(`${this._config.transitionName}-leave`)
-        this._element.classList.add(`${this._config.transitionName}-leave-to`)
-      })
-    }
-
-    const complete = () => {
-      this._element.classList.remove(`${this._config.transitionName}-leave-active`)
-      this._element.classList.remove(`${this._config.transitionName}-leave-to`)
+    this._transition.endLeave(() => {
       this._element.classList.remove(ClassName.SHOW)
       EventHandler.trigger(this._element, Event.HIDDEN)
-    }
-
-    if (transitionDuration) {
-      EventHandler.one(this._element, TRANSITION_END, complete)
-      emulateTransitionEnd(this._element, transitionDuration)
-    } else {
-      complete()
-    }
+    })
   }
 
   dispose() {
@@ -182,6 +139,7 @@ class Toast {
 
     this._element = null
     this._config = null
+    this._transition = null
   }
 
   // Private
