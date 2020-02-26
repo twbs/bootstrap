@@ -231,7 +231,7 @@ var toastList = toastElList.map(function (toastEl) {
 
 ### Options
 
-Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-`, as in `data-animation=""`.
+Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-`, as in `data-autohide=""`.
 
 <table class="table">
   <thead>
@@ -243,12 +243,6 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>animation</td>
-      <td>boolean</td>
-      <td>true</td>
-      <td>Apply a CSS fade transition to the toast</td>
-    </tr>
     <tr>
       <td>autohide</td>
       <td>boolean</td>
@@ -262,6 +256,14 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
         <code>500</code>
       </td>
       <td>Delay hiding the toast (ms)</td>
+    </tr>
+    <tr>
+      <td>transitionName</td>
+      <td>string</td>
+      <td>
+        <code>fade</code>
+      </td>
+      <td>The prefix of the class names for CSS Transition when show/hide. If set to <code>""</code>, it doesn't add the classes.</td>
     </tr>
   </tbody>
 </table>

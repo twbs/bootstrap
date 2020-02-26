@@ -6,6 +6,27 @@
   }
 }
 
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  @include transition($transition-fade);
+}
+
+.slide-down-enter,
+.slide-down-leave-to {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+
+.slide-down-enter-active,
+.slide-down-leave-active {
+  @include transition($transition-base);
+}
+
 .collapse {
   &:not(.show) {
     display: none;

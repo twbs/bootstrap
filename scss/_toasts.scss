@@ -8,23 +8,13 @@
   border: $toast-border-width solid $toast-border-color;
   box-shadow: $toast-box-shadow;
   backdrop-filter: blur(10px);
-  opacity: 0;
   @include border-radius($toast-border-radius);
 
   &:not(:last-child) {
     margin-bottom: $toast-padding-x;
   }
 
-  &.showing {
-    opacity: 1;
-  }
-
-  &.show {
-    display: block;
-    opacity: 1;
-  }
-
-  &.hide {
+  &:not(.show) {
     display: none;
   }
 }

@@ -45,7 +45,7 @@ describe('Toast', () => {
 
     it('should close toast when close element with data-dismiss attribute is set', done => {
       fixtureEl.innerHTML = [
-        '<div class="toast" data-delay="1" data-autohide="false" data-animation="false">',
+        '<div class="toast" data-delay="1" data-autohide="false" data-transitionName="">',
         '  <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">',
         '    close',
         '  </button>',
@@ -79,7 +79,7 @@ describe('Toast', () => {
       Toast.Default.delay = defaultDelay
 
       fixtureEl.innerHTML = [
-        '<div class="toast" data-autohide="false" data-animation="false">',
+        '<div class="toast" data-autohide="false" data-transitionName="">',
         '  <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">',
         '    close',
         '  </button>',
@@ -122,7 +122,7 @@ describe('Toast', () => {
 
     it('should not add fade class', done => {
       fixtureEl.innerHTML = [
-        '<div class="toast" data-delay="1" data-animation="false">',
+        '<div class="toast" data-delay="1" data-transitionName="">',
         '  <div class="toast-body">',
         '    a simple toast',
         '  </div>',
@@ -142,7 +142,7 @@ describe('Toast', () => {
 
     it('should not trigger shown if show is prevented', done => {
       fixtureEl.innerHTML = [
-        '<div class="toast" data-delay="1" data-animation="false">',
+        '<div class="toast" data-delay="1" data-transitionName="">',
         '  <div class="toast-body">',
         '    a simple toast',
         '  </div>',
@@ -212,7 +212,7 @@ describe('Toast', () => {
 
     it('should not trigger hidden if hide is prevented', done => {
       fixtureEl.innerHTML = [
-        '<div class="toast" data-delay="1" data-animation="false">',
+        '<div class="toast" data-delay="1" data-transitionName="">',
         '  <div class="toast-body">',
         '    a simple toast',
         '  </div>',
