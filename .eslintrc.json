@@ -32,6 +32,7 @@
       "error",
       "always"
     ],
+    "prefer-named-capture-group": "off",
     "semi": [
       "error",
       "never"
