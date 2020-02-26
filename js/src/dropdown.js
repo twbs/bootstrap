@@ -113,7 +113,7 @@ class Dropdown {
     this._config = this._getConfig(config)
     this._menu = this._getMenuElement()
     this._inNavbar = this._detectNavbar()
-    this._transition = new Transition(this._menu, this._config.transitionName)
+    this._transition = new Transition(this._config.transitionName)
 
     this._addEventListeners()
     Data.setData(element, DATA_KEY, this)
@@ -206,7 +206,7 @@ class Dropdown {
         .forEach(elem => EventHandler.on(elem, 'mouseover', null, noop()))
     }
 
-    this._transition.startEnter()
+    this._transition.startEnter(this._menu)
 
     this._element.focus()
     this._element.setAttribute('aria-expanded', true)
@@ -214,7 +214,7 @@ class Dropdown {
     Manipulator.toggleClass(this._menu, ClassName.SHOW)
     Manipulator.toggleClass(parent, ClassName.SHOW)
 
-    this._transition.endEnter(() => {
+    this._transition.endEnter(this._menu, () => {
       EventHandler.trigger(parent, Event.SHOWN, relatedTarget)
     })
   }
@@ -235,9 +235,9 @@ class Dropdown {
       return
     }
 
-    this._transition.startLeave()
+    this._transition.startLeave(this._menu)
 
-    this._transition.endLeave(() => {
+    this._transition.endLeave(this._menu, () => {
       if (this._popper) {
         this._popper.destroy()
       }
@@ -443,13 +443,17 @@ class Dropdown {
 
       toggles[i].setAttribute('aria-expanded', 'false')
 
-      if (context._popper) {
-        context._popper.destroy()
-      }
+      context._transition.startLeave(dropdownMenu)
 
-      dropdownMenu.classList.remove(ClassName.SHOW)
-      parent.classList.remove(ClassName.SHOW)
-      EventHandler.trigger(parent, Event.HIDDEN, relatedTarget)
+      context._transition.endLeave(dropdownMenu, () => {
+        if (context._popper) {
+          context._popper.destroy()
+        }
+
+        dropdownMenu.classList.remove(ClassName.SHOW)
+        parent.classList.remove(ClassName.SHOW)
+        EventHandler.trigger(parent, Event.HIDDEN, relatedTarget)
+      })
     }
   }
 

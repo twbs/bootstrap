@@ -64,7 +64,7 @@ class Toast {
     this._element = element
     this._config = this._getConfig(config)
     this._timeout = null
-    this._transition = new Transition(this._element, this._config.transitionName)
+    this._transition = new Transition(this._config.transitionName)
     this._setListeners()
     Data.setData(element, DATA_KEY, this)
   }
@@ -92,11 +92,11 @@ class Toast {
       return
     }
 
-    this._transition.startEnter()
+    this._transition.startEnter(this._element)
 
     this._element.classList.add(ClassName.SHOW)
 
-    this._transition.endEnter(() => {
+    this._transition.endEnter(this._element, () => {
       EventHandler.trigger(this._element, Event.SHOWN)
 
       if (this._config.autohide) {
@@ -118,9 +118,9 @@ class Toast {
       return
     }
 
-    this._transition.startLeave()
+    this._transition.startLeave(this._element)
 
-    this._transition.endLeave(() => {
+    this._transition.endLeave(this._element, () => {
       this._element.classList.remove(ClassName.SHOW)
       EventHandler.trigger(this._element, Event.HIDDEN)
     })

@@ -14,8 +14,7 @@ import {
 import EventHandler from '../dom/event-handler'
 
 class Transition {
-  constructor(element, transitionName) {
-    this._element = element
+  constructor(transitionName) {
     this._transitionName = transitionName
     this._transitionClass = {
       enter: `${this._transitionName}-enter`,
@@ -30,60 +29,78 @@ class Transition {
 
   // Public
 
-  startEnter() {
+  startEnter(element) {
+    this._clearClass(element)
+    this._cancelCallback(element)
+
     if (this._transitionName) {
-      this._element.classList.add(this._transitionClass.enter)
-      this._element.classList.add(this._transitionClass.enterActive)
+      element.classList.add(this._transitionClass.enter)
+      element.classList.add(this._transitionClass.enterActive)
     }
 
-    this._transitionDuration = getTransitionDurationFromElement(this._element)
+    this._transitionDuration = getTransitionDurationFromElement(element)
 
     if (this._transitionName) {
       nextAnimationFrame(() => {
-        this._element.classList.remove(this._transitionClass.enter)
-        this._element.classList.add(this._transitionClass.enterTo)
+        element.classList.remove(this._transitionClass.enter)
+        element.classList.add(this._transitionClass.enterTo)
       })
     }
   }
 
-  startLeave() {
+  startLeave(element) {
+    this._clearClass(element)
+    this._cancelCallback(element)
+
     if (this._transitionName) {
-      this._element.classList.add(this._transitionClass.leave)
-      this._element.classList.add(this._transitionClass.leaveActive)
+      element.classList.add(this._transitionClass.leave)
+      element.classList.add(this._transitionClass.leaveActive)
     }
 
-    this._transitionDuration = getTransitionDurationFromElement(this._element)
+    this._transitionDuration = getTransitionDurationFromElement(element)
 
     if (this._transitionName) {
       nextAnimationFrame(() => {
-        this._element.classList.remove(this._transitionClass.leave)
-        this._element.classList.add(this._transitionClass.leaveTo)
+        element.classList.remove(this._transitionClass.leave)
+        element.classList.add(this._transitionClass.leaveTo)
       })
     }
   }
 
-  endEnter(callback) {
-    this._endEnterLeave(callback, [this._transitionClass.enterActive, this._transitionClass.enterTo])
+  endEnter(element, callback) {
+    this._endEnterLeave(element, [this._transitionClass.enterActive, this._transitionClass.enterTo], callback)
   }
 
-  endLeave(callback) {
-    this._endEnterLeave(callback, [this._transitionClass.leaveActive, this._transitionClass.leaveTo])
+  endLeave(element, callback) {
+    this._endEnterLeave(element, [this._transitionClass.leaveActive, this._transitionClass.leaveTo], callback)
   }
 
   // Private
 
-  _endEnterLeave(callback, classList) {
+  _endEnterLeave(element, classList, callback) {
     const transitionEnd = () => {
-      classList.forEach(className => this._element.classList.remove(className))
-      callback()
+      classList.forEach(className => element.classList.remove(className))
+      if (callback) {
+        callback()
+      }
     }
 
     if (this._transitionDuration) {
-      EventHandler.one(this._element, TRANSITION_END, transitionEnd)
-      emulateTransitionEnd(this._element, this._transitionDuration)
+      EventHandler.one(element, TRANSITION_END, transitionEnd)
+      emulateTransitionEnd(element, this._transitionDuration)
     } else {
       transitionEnd()
     }
+  }
+
+  _clearClass(element) {
+    Object.keys(this._transitionClass).forEach(key => {
+      element.classList.remove(this._transitionClass[key])
+    })
+  }
+
+  _cancelCallback(element) {
+    EventHandler.off(element, TRANSITION_END)
   }
 }
 
