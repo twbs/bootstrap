@@ -80,6 +80,16 @@ const getTransitionDurationFromElement = element => {
   return (parseFloat(transitionDuration) + parseFloat(transitionDelay)) * MILLISECONDS_MULTIPLIER
 }
 
+const raf = window.requestAnimationFrame ?
+  window.requestAnimationFrame.bind(window) :
+  setTimeout
+
+const nextAnimationFrame = callback => {
+  raf(() => {
+    raf(callback)
+  })
+}
+
 const triggerTransitionEnd = element => {
   const evt = document.createEvent('HTMLEvents')
 
@@ -195,6 +205,7 @@ export {
   getTransitionDurationFromElement,
   triggerTransitionEnd,
   isElement,
+  nextAnimationFrame,
   emulateTransitionEnd,
   typeCheckConfig,
   makeArray,
