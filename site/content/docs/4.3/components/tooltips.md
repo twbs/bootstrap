@@ -142,7 +142,7 @@ Elements with the `disabled` attribute aren't interactive, meaning users cannot 
 
 ### Options
 
-Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-`, as in `data-animation=""`.
+Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-`, as in `data-title=""`.
 
 {{< callout warning >}}
 Note that for security reasons the `sanitize`, `sanitizeFn` and `whiteList` options cannot be supplied using data attributes.
@@ -158,12 +158,6 @@ Note that for security reasons the `sanitize`, `sanitizeFn` and `whiteList` opti
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>animation</td>
-      <td>boolean</td>
-      <td>true</td>
-      <td>Apply a CSS fade transition to the tooltip</td>
-    </tr>
     <tr>
       <td>container</td>
       <td>string | element | false</td>
@@ -283,6 +277,14 @@ Note that for security reasons the `sanitize`, `sanitizeFn` and `whiteList` opti
       <td>null | object</td>
       <td>null</td>
       <td>To change Bootstrap's default Popper.js config, see <a href="https://popper.js.org/popper-documentation.html#Popper.Defaults">Popper.js's configuration</a></td>
+    </tr>
+    <tr>
+      <td>transitionName</td>
+      <td>string</td>
+      <td>
+        <code>fade</code>
+      </td>
+      <td>The prefix of the class names for CSS Transition when show/hide. If set to <code>""</code>, it doesn't add the classes.</td>
     </tr>
   </tbody>
 </table>

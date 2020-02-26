@@ -251,8 +251,10 @@ describe('Tooltip', () => {
       tooltip.toggle()
     })
 
+    jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000
+
     it('should call toggle and hide the tooltip when trigger is "click"', done => {
-      fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip"/>'
+      fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip">to</a>'
 
       const tooltipEl = fixtureEl.querySelector('a')
       const tooltip = new Tooltip(tooltipEl, {
@@ -481,19 +483,18 @@ describe('Tooltip', () => {
       tooltip.show()
     })
 
-    it('should show a tooltip without the animation', done => {
+    it('should show a tooltip without the transition', done => {
       fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip"/>'
 
       const tooltipEl = fixtureEl.querySelector('a')
       const tooltip = new Tooltip(tooltipEl, {
-        animation: false
+        transitionName: ''
       })
 
       tooltipEl.addEventListener('shown.bs.tooltip', () => {
         const tip = document.querySelector('.tooltip')
 
         expect(tip).toBeDefined()
-        expect(tip.classList.contains('fade')).toEqual(false)
         done()
       })
 
@@ -653,12 +654,12 @@ describe('Tooltip', () => {
       tooltip.show()
     })
 
-    it('should hide a tooltip without animation', done => {
+    it('should hide a tooltip without transition', done => {
       fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip"/>'
 
       const tooltipEl = fixtureEl.querySelector('a')
       const tooltip = new Tooltip(tooltipEl, {
-        animation: false
+        transitionName: ''
       })
 
       tooltipEl.addEventListener('shown.bs.tooltip', () => tooltip.hide())
@@ -683,7 +684,7 @@ describe('Tooltip', () => {
 
       const tooltipEl = fixtureEl.querySelector('a')
       const tooltip = new Tooltip(tooltipEl, {
-        animation: false
+        transitionName: ''
       })
 
       tooltipEl.addEventListener('shown.bs.tooltip', () => tooltip.hide())
@@ -792,7 +793,6 @@ describe('Tooltip', () => {
       const tip = tooltip.getTipElement()
 
       expect(tip.classList.contains('show')).toEqual(false)
-      expect(tip.classList.contains('fade')).toEqual(false)
       expect(tip.querySelector('.tooltip-inner').textContent).toEqual('Another tooltip')
     })
   })

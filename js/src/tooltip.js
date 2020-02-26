@@ -7,10 +7,7 @@
 
 import {
   getjQuery,
-  TRANSITION_END,
-  emulateTransitionEnd,
   findShadowRoot,
-  getTransitionDurationFromElement,
   getUID,
   isElement,
   makeArray,
@@ -26,6 +23,7 @@ import EventHandler from './dom/event-handler'
 import Manipulator from './dom/manipulator'
 import Popper from 'popper.js'
 import SelectorEngine from './dom/selector-engine'
+import Transition from './util/transition'
 
 /**
  * ------------------------------------------------------------------------
@@ -42,7 +40,6 @@ const BSCLS_PREFIX_REGEX = new RegExp(`(^|\\s)${CLASS_PREFIX}\\S+`, 'g')
 const DISALLOWED_ATTRIBUTES = ['sanitize', 'whiteList', 'sanitizeFn']
 
 const DefaultType = {
-  animation: 'boolean',
   template: 'string',
   title: '(string|element|function)',
   trigger: 'string',
@@ -57,7 +54,8 @@ const DefaultType = {
   sanitize: 'boolean',
   sanitizeFn: '(null|function)',
   whiteList: 'object',
-  popperConfig: '(null|object)'
+  popperConfig: '(null|object)',
+  transitionName: 'string'
 }
 
 const AttachmentMap = {
@@ -69,7 +67,6 @@ const AttachmentMap = {
 }
 
 const Default = {
-  animation: true,
   template: '<div class="tooltip" role="tooltip">' +
                     '<div class="tooltip-arrow"></div>' +
                     '<div class="tooltip-inner"></div></div>',
@@ -86,7 +83,8 @@ const Default = {
   sanitize: true,
   sanitizeFn: null,
   whiteList: DefaultWhitelist,
-  popperConfig: null
+  popperConfig: null,
+  transitionName: 'fade'
 }
 
 const HoverState = {
@@ -108,7 +106,6 @@ const Event = {
 }
 
 const ClassName = {
-  FADE: 'fade',
   SHOW: 'show'
 }
 
@@ -137,6 +134,7 @@ class Tooltip {
 
     // private
     this._isEnabled = true
+    this._isShown = false
     this._timeout = 0
     this._hoverState = ''
     this._activeTrigger = {}
@@ -146,6 +144,7 @@ class Tooltip {
     this.element = element
     this.config = this._getConfig(config)
     this.tip = null
+    this.transition = new Transition(this.config.transitionName)
 
     this._setListeners()
     Data.setData(element, this.constructor.DATA_KEY, this)
@@ -220,7 +219,7 @@ class Tooltip {
         context._leave(null, context)
       }
     } else {
-      if (this.getTipElement().classList.contains(ClassName.SHOW)) {
+      if (this._isShown) {
         this._leave(null, this)
         return
       }
@@ -242,6 +241,7 @@ class Tooltip {
     }
 
     this._isEnabled = null
+    this._isShown = null
     this._timeout = null
     this._hoverState = null
     this._activeTrigger = null
@@ -279,10 +279,7 @@ class Tooltip {
 
       this.setContent()
 
-      if (this.config.animation) {
-        tip.classList.add(ClassName.FADE)
-      }
-
+      this.transition.startEnter(tip)
       const placement = typeof this.config.placement === 'function' ?
         this.config.placement.call(this, tip, this.element) :
         this.config.placement
@@ -313,50 +310,29 @@ class Tooltip {
         })
       }
 
-      const complete = () => {
-        if (this.config.animation) {
-          this._fixTransition()
-        }
-
+      this.transition.endEnter(this.tip, () => {
         const prevHoverState = this._hoverState
         this._hoverState = null
+        this._isShown = true
 
         EventHandler.trigger(this.element, this.constructor.Event.SHOWN)
 
         if (prevHoverState === HoverState.OUT) {
           this._leave(null, this)
         }
-      }
-
-      if (this.tip.classList.contains(ClassName.FADE)) {
-        const transitionDuration = getTransitionDurationFromElement(this.tip)
-        EventHandler.one(this.tip, TRANSITION_END, complete)
-        emulateTransitionEnd(this.tip, transitionDuration)
-      } else {
-        complete()
-      }
+      })
     }
   }
 
   hide() {
     const tip = this.getTipElement()
-    const complete = () => {
-      if (this._hoverState !== HoverState.SHOW && tip.parentNode) {
-        tip.parentNode.removeChild(tip)
-      }
-
-      this._cleanTipClass()
-      this.element.removeAttribute('aria-describedby')
-      EventHandler.trigger(this.element, this.constructor.Event.HIDDEN)
-      this._popper.destroy()
-    }
 
     const hideEvent = EventHandler.trigger(this.element, this.constructor.Event.HIDE)
     if (hideEvent.defaultPrevented) {
       return
     }
 
-    tip.classList.remove(ClassName.SHOW)
+    this._isShown = false
 
     // If this is a touch-enabled device we remove the extra
     // empty mouseover listeners we added for iOS support
@@ -369,14 +345,20 @@ class Tooltip {
     this._activeTrigger[Trigger.FOCUS] = false
     this._activeTrigger[Trigger.HOVER] = false
 
-    if (this.tip.classList.contains(ClassName.FADE)) {
-      const transitionDuration = getTransitionDurationFromElement(tip)
+    this.transition.startLeave(tip)
 
-      EventHandler.one(tip, TRANSITION_END, complete)
-      emulateTransitionEnd(tip, transitionDuration)
-    } else {
-      complete()
-    }
+    this.transition.endLeave(tip, () => {
+      if (this._hoverState !== HoverState.SHOW && tip.parentNode) {
+        tip.parentNode.removeChild(tip)
+      }
+
+      tip.classList.remove(ClassName.SHOW)
+      this._cleanTipClass()
+      this.element.removeAttribute('aria-describedby')
+
+      EventHandler.trigger(this.element, this.constructor.Event.HIDDEN)
+      this._popper.destroy()
+    })
 
     this._hoverState = ''
   }
@@ -408,7 +390,6 @@ class Tooltip {
   setContent() {
     const tip = this.getTipElement()
     this.setElementContent(SelectorEngine.findOne(Selector.TOOLTIP_INNER, tip), this.getTitle())
-    tip.classList.remove(ClassName.FADE)
     tip.classList.remove(ClassName.SHOW)
   }
 
@@ -612,8 +593,7 @@ class Tooltip {
       ] = true
     }
 
-    if (context.getTipElement().classList.contains(ClassName.SHOW) ||
-        context._hoverState === HoverState.SHOW) {
+    if (context._isShown || context._hoverState === HoverState.SHOW) {
       context._hoverState = HoverState.SHOW
       return
     }
@@ -758,20 +738,6 @@ class Tooltip {
     this.tip = popperInstance.popper
     this._cleanTipClass()
     this._addAttachmentClass(this._getAttachment(popperData.placement))
-  }
-
-  _fixTransition() {
-    const tip = this.getTipElement()
-    const initConfigAnimation = this.config.animation
-    if (tip.getAttribute('x-placement') !== null) {
-      return
-    }
-
-    tip.classList.remove(ClassName.FADE)
-    this.config.animation = false
-    this.hide()
-    this.show()
-    this.config.animation = initConfigAnimation
   }
 
   // Static
