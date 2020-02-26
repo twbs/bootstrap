@@ -861,6 +861,14 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <td>null</td>
       <td>To change Bootstrap's default Popper.js config, see <a href="https://popper.js.org/popper-documentation.html#Popper.Defaults">Popper.js's configuration</a></td>
     </tr>
+    <tr>
+      <td>transitionName</td>
+      <td>string</td>
+      <td>
+        <code>fade</code>
+      </td>
+      <td>The prefix of the class names for CSS Transition when show/hide. If set to <code>""</code>, it doesn't add the classes.</td>
+    </tr>
   </tbody>
 </table>
 
