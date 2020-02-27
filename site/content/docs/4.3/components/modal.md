@@ -695,50 +695,44 @@ Another override is the option to pop up a modal that covers the user viewport, 
       <td>Always</td>
     </tr>
     <tr>
-      <td><code>.modal-fullscreen-xl-down</code></td>
-      <td><code>Below 1200px</code></td>
-    </tr>
-    <tr>
-      <td><code>.modal-fullscreen-lg-down</code></td>
-      <td><code>Below 992px</code></td>
+      <td><code>.modal-fullscreen-sm-down</code></td>
+      <td><code>Below 576px</code></td>
     </tr>
     <tr>
       <td><code>.modal-fullscreen-md-down</code></td>
       <td><code>Below 768px</code></td>
     </tr>
     <tr>
-      <td><code>.modal-fullscreen-sm-down</code></td>
-      <td><code>Below 576px</code></td>
+      <td><code>.modal-fullscreen-lg-down</code></td>
+      <td><code>Below 992px</code></td>
+    </tr>
+    <tr>
+      <td><code>.modal-fullscreen-xl-down</code></td>
+      <td><code>Below 1200px</code></td>
     </tr>
   </tbody>
 </table>
 
 <div class="bd-example">
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-fullscreen">Full screen</button>
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-fullscreen-xl-down">Full screen below xl</button>
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-fullscreen-lg-down">Full screen below lg</button>
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-fullscreen-md-down">Full screen below md</button>
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-fullscreen-sm-down">Full screen below sm</button>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalFullscreen">Full screen</button>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalFullscreenSm">Full screen below sm</button>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalFullscreenMd">Full screen below md</button>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalFullscreenLg">Full screen below lg</button>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalFullscreenXl">Full screen below xl</button>
 </div>
 
 {{< highlight html >}}
 <!-- Full screen modal -->
-<button id="toggleFullScreenBtn" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-fullscreen">Full screen modal</button>
-
-<div class="modal fade bd-example-modal-fullscreen" tabindex="-1" role="dialog" aria-labelledby="toggleFullScreenBtn" aria-hidden="true">
-  <div class="modal-dialog modal-xl-fullscreen">
-    <div class="modal-content">
-      ...
-    </div>
-  </div>
+<div class="modal-dialog modal-fullscreen-sm-down">
+  ...
 </div>
 {{< /highlight >}}
 
-<div class="modal fade bd-example-modal-fullscreen" tabindex="-1" role="dialog" aria-labelledby="myFullModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModalFullscreen" tabindex="-1" role="dialog" aria-labelledby="exampleModalFullscreenLabel" aria-hidden="true">
   <div class="modal-dialog modal-fullscreen">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title h4" id="myFullModalLabel">Full screen modal</h5>
+        <h5 class="modal-title h4" id="exampleModalFullscreenLabel">Full screen modal</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -770,65 +764,77 @@ Another override is the option to pop up a modal that covers the user viewport, 
   </div>
 </div>
 
-<div class="modal fade bd-example-modal-fullscreen-xl-down" tabindex="-1" role="dialog" aria-labelledby="myFullModalLabelXl" aria-hidden="true">
-  <div class="modal-dialog modal-fullscreen-xl-down" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title h4" id="myFullModalLabelXl">Full screen below xl</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade bd-example-modal-fullscreen-lg-down" tabindex="-1" role="dialog" aria-labelledby="myFullModalLabelLg" aria-hidden="true">
-  <div class="modal-dialog modal-fullscreen-lg-down" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title h4" id="myFullModalLabelLg">Full screen below lg</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade bd-example-modal-fullscreen-md-down" tabindex="-1" role="dialog" aria-labelledby="myFullModalLabelMd" aria-hidden="true">
-  <div class="modal-dialog modal-fullscreen-md-down" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title h4" id="myFullModalLabelMd">Full screen below md</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade bd-example-modal-fullscreen-sm-down" tabindex="-1" role="dialog" aria-labelledby="myFullModalLabelSm" aria-hidden="true">
+<div class="modal fade" id="exampleModalFullscreenSm" tabindex="-1" role="dialog" aria-labelledby="exampleModalFullscreenSmLabel" aria-hidden="true">
   <div class="modal-dialog modal-fullscreen-sm-down" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title h4" id="myFullModalLabelSm">Full screen below sm</h5>
+        <h5 class="modal-title h4" id="exampleModalFullscreenSmLabel">Full screen below sm</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModalFullscreenMd" tabindex="-1" role="dialog" aria-labelledby="exampleModalFullscreenMdLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen-md-down" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title h4" id="exampleModalFullscreenMdLabel">Full screen below md</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModalFullscreenLg" tabindex="-1" role="dialog" aria-labelledby="exampleModalFullscreenLgLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen-lg-down" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title h4" id="exampleModalFullscreenLgLabel">Full screen below lg</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModalFullscreenXl" tabindex="-1" role="dialog" aria-labelledby="exampleModalFullscreenXlLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen-xl-down" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title h4" id="exampleModalFullscreenXlLabel">Full screen below xl</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
