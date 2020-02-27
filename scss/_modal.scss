@@ -62,11 +62,6 @@
     overflow: hidden;
   }
 
-  .modal-header,
-  .modal-footer {
-    flex-shrink: 0;
-  }
-
   .modal-body {
     overflow-y: auto;
   }
@@ -116,6 +111,7 @@
 // Top section of the modal w/ title and dismiss
 .modal-header {
   display: flex;
+  flex-shrink: 0;
   align-items: flex-start; // so the close btn always stays on the upper right corner
   justify-content: space-between; // Put modal header elements (title and dismiss) on opposite ends
   padding: $modal-header-padding;
@@ -143,13 +139,13 @@
   // when there should be a fixed height on `.modal-dialog`.
   flex: 1 1 auto;
   padding: $modal-inner-padding;
-  overflow-y: auto;
 }
 
 // Footer (for actions)
 .modal-footer {
   display: flex;
   flex-wrap: wrap;
+  flex-shrink: 0;
   align-items: center; // vertically center
   justify-content: flex-end; // Right align buttons with flex property because text-align doesn't work on flex items
   padding: $modal-inner-padding - $modal-footer-margin-between / 2;
@@ -207,16 +203,25 @@
   .modal-xl { max-width: $modal-xl; }
 }
 
-.modal-fullscreen {
-  @include modalFullscreen();
-}
-
 @each $breakpoint in map-keys($grid-breakpoints) {
-  @include media-breakpoint-down($breakpoint) {
-    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+  $next-breakpoint: breakpoint-next($breakpoint);
+  $postfix: if(breakpoint-max($breakpoint, $grid-breakpoints) == null, "", "-#{$next-breakpoint}-down");
 
-    .modal-fullscreen#{$infix}-down {
-      @include modalFullscreen();
+  @include media-breakpoint-down($breakpoint) {
+    .modal-fullscreen#{$postfix} {
+      width: 100vw;
+      max-width: none;
+      height: 100%;
+      margin: 0;
+
+      .modal-content {
+        border: 0;
+        @include border-radius(0);
+      }
+
+      .modal-body {
+        overflow-y: auto;
+      }
     }
   }
 }
