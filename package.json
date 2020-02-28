@@ -91,9 +91,9 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.8.4",
+    "@babel/core": "^7.8.6",
     "@babel/plugin-proposal-object-rest-spread": "^7.8.3",
-    "@babel/preset-env": "^7.8.4",
+    "@babel/preset-env": "^7.8.6",
     "@rollup/plugin-commonjs": "^11.0.2",
     "@rollup/plugin-node-resolve": "^7.1.1",
     "autoprefixer": "^9.7.4",
@@ -119,7 +119,7 @@
     "karma-jasmine": "^3.1.1",
     "karma-jasmine-html-reporter": "^1.5.2",
     "karma-rollup-preprocessor": "^7.0.3",
-    "linkinator": "^2.0.1",
+    "linkinator": "^2.0.2",
     "lockfile-lint": "^4.0.0",
     "node-sass": "^4.13.1",
     "nodemon": "^2.0.2",
@@ -134,7 +134,7 @@
     "stylelint": "^13.2.0",
     "stylelint-config-twbs-bootstrap": "^2.0.1",
     "terser": "^4.6.4",
-    "vnu-jar": "20.2.25"
+    "vnu-jar": "20.2.28"
   },
   "files": [
     "dist/{css,js}/*.{css,js,map}",
