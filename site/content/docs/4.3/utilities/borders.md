@@ -47,7 +47,7 @@ Change the border color using utilities built on our theme colors.
 
 Add classes to an element to easily round its corners.
 
-{{< example >}}
+{{< example class="bd-example-rounded-utils" >}}
 {{< placeholder width="75" height="75" class="rounded" title="Example rounded image" >}}
 {{< placeholder width="75" height="75" class="rounded-top" title="Example top rounded image" >}}
 {{< placeholder width="75" height="75" class="rounded-right" title="Example right rounded image" >}}
@@ -63,7 +63,7 @@ Add classes to an element to easily round its corners.
 
 Use `.rounded-lg` or `.rounded-sm` for larger or smaller border-radius.
 
-{{< example >}}
+{{< example class="bd-example-rounded-utils" >}}
 {{< placeholder width="75" height="75" class="rounded-sm" title="Example small rounded image" >}}
 {{< placeholder width="75" height="75" class="rounded-lg" title="Example large rounded image" >}}
 {{< /example >}}

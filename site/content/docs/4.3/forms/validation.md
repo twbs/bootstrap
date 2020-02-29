@@ -385,18 +385,15 @@ Please note that we do not recommend customizing these values without also modif
 {{< highlight scss >}}
 // Sass map from `_variables.scss`
 // Override this and recompile your Sass to generate different states
-$form-validation-states: map-merge(
-  (
-    "valid": (
-      "color": $form-feedback-valid-color,
-      "icon": $form-feedback-icon-valid
-    ),
-    "invalid": (
-      "color": $form-feedback-invalid-color,
-      "icon": $form-feedback-icon-invalid
-    )
+$form-validation-states: (
+  "valid": (
+    "color": $form-feedback-valid-color,
+    "icon": $form-feedback-icon-valid
   ),
-  $form-validation-states
+  "invalid": (
+    "color": $form-feedback-invalid-color,
+    "icon": $form-feedback-icon-invalid
+  )
 );
 
 // Loop from `_forms.scss`

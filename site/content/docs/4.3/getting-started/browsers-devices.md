@@ -87,7 +87,7 @@ Similarly, the latest versions of most desktop browsers are supported.
       <td>Supported</td>
       <td>Supported</td>
       <td class="text-muted">&mdash;</td>
-      <td class="text-muted">&mdash;</td>
+      <td>Supported</td>
       <td>Supported</td>
       <td>Supported</td>
     </tr>

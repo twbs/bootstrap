@@ -560,12 +560,12 @@ You can also create non-interactive dropdown items with `.dropdown-item-text`. F
 
 ### Active
 
-Add `.active` to items in the dropdown to **style them as active**.
+Add `.active` to items in the dropdown to **style them as active**. To convey the active state to assistive technologies, use the `aria-current` attribute — using the `page` value for the current page, or `true` for the current item in a set.
 
 {{< example >}}
 <ul class="dropdown-menu">
   <li><a class="dropdown-item" href="#">Regular link</a></li>
-  <li><a class="dropdown-item active" href="#">Active link</a></li>
+  <li><a class="dropdown-item active" href="#" aria-current="true">Active link</a></li>
   <li><a class="dropdown-item" href="#">Another link</a></li>
 </ul>
 {{< /example >}}

@@ -19,10 +19,13 @@ html {
 @import "variables";
 
 @import "mixins/breakpoints";
-@import "mixins/grid-framework";
+@import "mixins/container";
 @import "mixins/grid";
 @import "mixins/utilities";
 
+@import "vendor/rfs";
+
+@import "containers";
 @import "grid";
 
 @import "utilities";
