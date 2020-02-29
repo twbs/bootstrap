@@ -960,6 +960,14 @@ All dropdown events are fired at the `.dropdown-menu`'s parent element and have 
         Fired when the dropdown has finished being hidden from the user and CSS transitions have completed.
       </td>
     </tr>
+    <tr>
+      <td>
+        <code>selected.bs.dropdown</code>
+      </td>
+      <td>
+        Fired when click event happens on one of dropdown list elements.
+      </td>
+    </tr>
   </tbody>
 </table>
 
