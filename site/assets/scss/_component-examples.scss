@@ -239,11 +239,14 @@
   margin-top: 1rem;
   margin-bottom: 1rem;
   background-color: $gray-100;
-  -ms-overflow-style: -ms-autohiding-scrollbar;
 
   @include media-breakpoint-up(sm) {
     padding: 1.5rem;
   }
+}
+
+.highlight pre::-webkit-scrollbar {
+  display: none;
 }
 
 .bd-content .highlight {
@@ -263,10 +266,12 @@
     margin-bottom: 0;
     background-color: transparent;
     border: 0;
+    scrollbar-width: none;
   }
 
   pre code {
     @include font-size(inherit);
     color: $gray-900; // Effectively the base text color
+    word-wrap: normal;
   }
 }
