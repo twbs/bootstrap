@@ -86,7 +86,7 @@ Below is a _static_ modal example (meaning its `position` and `display` have bee
 
 Toggle a working modal demo by clicking the button below. It will slide down and fade in from the top of the page.
 
-<div id="exampleModalLive" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLiveLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModalLive" tabindex="-1" role="dialog" aria-labelledby="exampleModalLiveLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -144,7 +144,7 @@ Toggle a working modal demo by clicking the button below. It will slide down and
 
 When backdrop is set to static, the modal will not close when clicking outside it. Click the button below to try it.
 
-<div id="staticBackdropLive" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLiveLabel" aria-hidden="true">
+<div class="modal fade" id="staticBackdropLive" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLiveLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -203,7 +203,7 @@ When backdrop is set to static, the modal will not close when clicking outside i
 
 When modals become too long for the user's viewport or device, they scroll independent of the page itself. Try the demo below to see what we mean.
 
-<div id="exampleModalLong" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -248,7 +248,7 @@ When modals become too long for the user's viewport or device, they scroll indep
 
 You can also create a scrollable modal that allows scroll the modal body by adding `.modal-dialog-scrollable` to `.modal-dialog`.
 
-<div id="exampleModalScrollable" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+<div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -302,7 +302,7 @@ You can also create a scrollable modal that allows scroll the modal body by addi
 
 Add `.modal-dialog-centered` to `.modal-dialog` to vertically center the modal.
 
-<div id="exampleModalCenter" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -322,7 +322,7 @@ Add `.modal-dialog-centered` to `.modal-dialog` to vertically center the modal.
   </div>
 </div>
 
-<div id="exampleModalCenteredScrollable" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenteredScrollableTitle" aria-hidden="true">
+<div class="modal fade" id="exampleModalCenteredScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenteredScrollableTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -371,7 +371,7 @@ Add `.modal-dialog-centered` to `.modal-dialog` to vertically center the modal.
 
 [Tooltips]({{< docsref "/components/tooltips" >}}) and [popovers]({{< docsref "/components/popovers" >}}) can be placed within modals as needed. When modals are closed, any tooltips and popovers within are also automatically dismissed.
 
-<div id="exampleModalPopovers" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalPopoversLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModalPopovers" tabindex="-1" role="dialog" aria-labelledby="exampleModalPopoversLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -415,7 +415,7 @@ Add `.modal-dialog-centered` to `.modal-dialog` to vertically center the modal.
 
 Utilize the Bootstrap grid system within a modal by nesting `.container-fluid` within the `.modal-body`. Then, use the normal grid system classes as you would anywhere else.
 
-<div id="gridSystemModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
+<div class="modal fade" id="gridSystemModal" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
