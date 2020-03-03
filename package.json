@@ -89,6 +89,11 @@
   "peerDependencies": {
     "popper.js": "^1.16.0"
   },
+  "peerDependenciesMeta": {
+    "popper.js": {
+      "optional": true
+    }
+  },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.8.6",
