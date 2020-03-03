@@ -344,11 +344,12 @@ caption {
   caption-side: bottom;
 }
 
-// Matches default `<td>` alignment by inheriting from the `<body>`, or the
-// closest parent with a set `text-align`.
+// Matches default `<td>` alignment by inheriting `text-align`.
+// 1. Fix alignment for Safari
 
 th {
   text-align: inherit;
+  text-align: -webkit-match-parent; // 1
 }
 
 
