@@ -124,18 +124,18 @@
     position: static;
     display: block;
   }
-}
 
-// Images
-.bd-example {
+  > *:last-child {
+    margin-bottom: 0;
+  }
+
+  // Images
   > svg + svg,
   > img + img {
     margin-left: .5rem;
   }
-}
 
-// Buttons
-.bd-example {
+  // Buttons
   > .btn,
   > .btn-group {
     margin-top: .25rem;
@@ -144,19 +144,17 @@
   > .btn-toolbar + .btn-toolbar {
     margin-top: .5rem;
   }
-}
 
-// List groups
-.bd-example > .list-group {
-  max-width: 400px;
-}
+  // List groups
+  > .list-group {
+    max-width: 400px;
+  }
 
-.bd-example > [class*="list-group-horizontal"] {
-  max-width: 100%;
-}
+  > [class*="list-group-horizontal"] {
+    max-width: 100%;
+  }
 
-// Navbars
-.bd-example {
+  // Navbars
   .fixed-top,
   .sticky-top {
     position: static;
@@ -177,12 +175,12 @@
       margin: 1rem -1.5rem -1.5rem;
     }
   }
-}
 
-// Pagination
-.bd-example .pagination {
-  margin-top: .5rem;
-  margin-bottom: .5rem;
+  // Pagination
+  .pagination {
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+  }
 }
 
 .bd-example-modal {
@@ -247,7 +245,7 @@
   -ms-overflow-style: -ms-autohiding-scrollbar;
 
   @include media-breakpoint-up(sm) {
-    padding: 1.5rem;
+    padding: 1rem 1.5rem;
   }
 }
 
