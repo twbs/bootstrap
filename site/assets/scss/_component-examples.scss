@@ -247,19 +247,7 @@
   @include media-breakpoint-up(sm) {
     padding: 1rem 1.5rem;
   }
-}
 
-.bd-content .highlight {
-  margin-right: (-$grid-gutter-width / 2);
-  margin-left: (-$grid-gutter-width / 2);
-
-  @include media-breakpoint-up(sm) {
-    margin-right: 0;
-    margin-left: 0;
-  }
-}
-
-.highlight {
   pre {
     padding: 0;
     margin-top: 0;
@@ -271,5 +259,15 @@
   pre code {
     @include font-size(inherit);
     color: $gray-900; // Effectively the base text color
+  }
+}
+
+.bd-content .highlight {
+  margin-right: (-$grid-gutter-width / 2);
+  margin-left: (-$grid-gutter-width / 2);
+
+  @include media-breakpoint-up(sm) {
+    margin-right: 0;
+    margin-left: 0;
   }
 }
