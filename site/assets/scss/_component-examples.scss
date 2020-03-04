@@ -98,11 +98,6 @@
     }
   }
 
-  + .highlight,
-  + .bd-clipboard + .highlight {
-    margin-top: 0;
-  }
-
   + p {
     margin-top: 2rem;
   }
@@ -239,7 +234,6 @@
 
 .highlight {
   padding: 1rem;
-  margin-top: 1rem;
   margin-bottom: 1rem;
   background-color: $gray-100;
   -ms-overflow-style: -ms-autohiding-scrollbar;
