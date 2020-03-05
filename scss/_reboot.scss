@@ -401,8 +401,7 @@ button {
 
 // Work around a Firefox/IE bug where the transparent `button` background
 // results in a loss of the default `button` focus styles.
-//
-// Credit: https://github.com/suitcss/base/
+// Credit https://github.com/suitcss/base/
 
 button:focus {
   outline: 1px dotted;
