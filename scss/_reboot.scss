@@ -1,5 +1,6 @@
 // stylelint-disable at-rule-no-vendor-prefix, declaration-no-important, selector-no-qualifying-type, property-no-vendor-prefix
 
+
 // Reboot
 //
 // Normalization of HTML elements, manually forked from Normalize.css to remove
@@ -11,20 +12,23 @@
 // Document
 //
 // Change from `box-sizing: content-box` so that `width` is not affected by `padding` or `border`.
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
+
 // Root
 //
-// 1. Ability to the value of the root font sizes, affecting the value of `rem`.
-//    null by default, thus nothing is generated.
+// Ability to the value of the root font sizes, affecting the value of `rem`.
+// null by default, thus nothing is generated.
 
 :root {
-  font-size: $font-size-root; // 1
+  font-size: $font-size-root;
 }
+
 
 // Body
 //
@@ -32,6 +36,7 @@
 // 2. As a best practice, apply a default `background-color`.
 // 3. Prevent adjustments of font size after orientation changes in IE on Windows Phone and in iOS.
 // 4. Change the default tap highlight to be completely transparent in iOS.
+
 body {
   margin: 0; // 1
   font-family: $font-family-base;
@@ -45,13 +50,13 @@ body {
   -webkit-tap-highlight-color: rgba($black, 0); // 4
 }
 
+
 // Future-proof rule: in browsers that support :focus-visible, suppress the focus outline
 // on elements that programmatically receive focus but wouldn't normally show a visible
 // focus outline. In general, this would mean that the outline is only applied if the
 // interaction that led to the element receiving programmatic focus was a keyboard interaction,
 // or the browser has somehow determined that the user is primarily a keyboard user and/or
 // wants focus outlines to always be presented.
-//
 // See https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible
 // and https://developer.paciellogroup.com/blog/2018/03/focus-visible-and-backwards-compatibility/
 
@@ -153,11 +158,16 @@ abbr[data-original-title] { // 1
 }
 
 
+// Address
+
 address {
   margin-bottom: 1rem;
   font-style: normal;
   line-height: inherit;
 }
+
+
+// Lists
 
 ol,
 ul {
@@ -189,10 +199,16 @@ dd {
   margin-left: 0; // 1
 }
 
+
+// Blockquote
+
 blockquote {
   margin: 0 0 1rem;
 }
 
+
+// Strong
+//
 // Add the correct font weight in Chrome, Edge, and Safari
 
 b,
@@ -201,12 +217,25 @@ strong {
 }
 
 
+// Small
+//
 // Add the correct font size in all browsers
 
 small {
   @include font-size($small-font-size);
 }
 
+
+// Mark
+
+mark {
+  padding: $mark-padding;
+  background-color: $mark-bg;
+}
+
+
+// Sub and Sup
+//
 // Prevent `sub` and `sup` elements from affecting the line height in
 // all browsers.
 
@@ -305,7 +334,7 @@ kbd {
 
 
 // Figures
-
+//
 // Apply a consistent margin strategy (matches our type styles).
 
 figure {
@@ -329,7 +358,7 @@ svg {
 
 
 // Tables
-
+//
 // Prevent double borders
 
 table {
@@ -344,16 +373,17 @@ caption {
   caption-side: bottom;
 }
 
-// Matches default `<td>` alignment by inheriting from the `<body>`, or the
-// closest parent with a set `text-align`.
+// 1. Matches default `<td>` alignment by inheriting `text-align`.
+// 2. Fix alignment for Safari
 
 th {
-  text-align: inherit;
+  text-align: inherit; // 1
+  text-align: -webkit-match-parent; // 2
 }
 
 
 // Forms
-
+//
 // 1. Allow labels to use `margin` for spacing.
 
 label {
@@ -362,8 +392,7 @@ label {
 }
 
 // Remove the default `border-radius` that macOS Chrome adds.
-//
-// Details at https://github.com/twbs/bootstrap/issues/24093
+// See https://github.com/twbs/bootstrap/issues/24093
 
 button {
   // stylelint-disable-next-line property-blacklist
@@ -372,8 +401,7 @@ button {
 
 // Work around a Firefox/IE bug where the transparent `button` background
 // results in a loss of the default `button` focus styles.
-//
-// Credit: https://github.com/suitcss/base/
+// Credit https://github.com/suitcss/base/
 
 button:focus {
   outline: 1px dotted;
@@ -387,7 +415,7 @@ button,
 select,
 optgroup,
 textarea {
-  margin: 0;
+  margin: 0; // 1
   font-family: inherit;
   @include font-size(inherit);
   line-height: inherit;
@@ -408,16 +436,14 @@ select {
 }
 
 // Remove the inheritance of word-wrap in Safari.
-//
-// Details at https://github.com/twbs/bootstrap/issues/24990
+// See https://github.com/twbs/bootstrap/issues/24990
 
 select {
   word-wrap: normal;
 }
 
 // Remove the dropdown arrow in Chrome from inputs built with datalists.
-//
-// Source: https://stackoverflow.com/a/54997118
+// See https://stackoverflow.com/a/54997118
 
 [list]::-webkit-calendar-picker-indicator {
   display: none;
@@ -441,14 +467,12 @@ button,
   }
 }
 
-
 // Remove inner border and padding from Firefox, but don't restore the outline like Normalize.
 
 ::-moz-focus-inner {
   padding: 0;
   border-style: none;
 }
-
 
 // Remove the default appearance of temporal inputs to avoid a Mobile Safari
 // bug where setting a custom line-height prevents text from being vertically
@@ -468,7 +492,7 @@ input[type="month"] {
 
 textarea {
   overflow: auto; // 1
-  resize: vertical;  // 2
+  resize: vertical; // 2
 }
 
 // 1. Browsers set a default `min-width: min-content;` on fieldsets,
@@ -480,11 +504,10 @@ textarea {
 
 fieldset {
   min-width: 0; // 1
-  padding: 0;  // 2
+  padding: 0; // 2
   margin: 0; // 2
   border: 0; // 2
 }
-
 
 // 1. By using `float: left`, the legend will behave like a block element
 // 2. Correct the color inheritance from `fieldset` elements in IE.
@@ -502,19 +525,6 @@ legend {
   white-space: normal; // 3
 }
 
-
-mark {
-  padding: $mark-padding;
-  background-color: $mark-bg;
-}
-
-// Add the correct vertical alignment in Chrome, Firefox, and Opera.
-
-progress {
-  vertical-align: baseline;
-}
-
-
 // Fix height of inputs with a type of datetime-local, date, month, week, or time
 // See https://github.com/twbs/bootstrap/issues/18842
 
@@ -522,7 +532,6 @@ progress {
   overflow: visible;
   line-height: 0;
 }
-
 
 // 1. Correct the outline style in Safari.
 // 2. This overrides the extra rounded corners on search inputs in iOS so that our
@@ -561,6 +570,9 @@ output {
   display: inline-block;
 }
 
+
+// Summary
+//
 // 1. Add the correct display in all browsers
 
 summary {
@@ -568,16 +580,34 @@ summary {
   cursor: pointer;
 }
 
+
+// Template
+//
 // Add the correct display for template & main in IE 11
 
 template {
   display: none;
 }
 
+
+// Main
+
 main {
   display: block;
 }
 
+
+// Progress
+//
+// Add the correct vertical alignment in Chrome, Firefox, and Opera.
+
+progress {
+  vertical-align: baseline;
+}
+
+
+// Hidden attribute
+//
 // Always hide an element with the `hidden` HTML attribute.
 
 [hidden] {
