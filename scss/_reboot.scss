@@ -57,7 +57,6 @@ body {
 // interaction that led to the element receiving programmatic focus was a keyboard interaction,
 // or the browser has somehow determined that the user is primarily a keyboard user and/or
 // wants focus outlines to always be presented.
-//
 // See https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible
 // and https://developer.paciellogroup.com/blog/2018/03/focus-visible-and-backwards-compatibility/
 
@@ -393,8 +392,7 @@ label {
 }
 
 // Remove the default `border-radius` that macOS Chrome adds.
-//
-// Details at https://github.com/twbs/bootstrap/issues/24093
+// See https://github.com/twbs/bootstrap/issues/24093
 
 button {
   // stylelint-disable-next-line property-blacklist
@@ -439,16 +437,14 @@ select {
 }
 
 // Remove the inheritance of word-wrap in Safari.
-//
-// Details at https://github.com/twbs/bootstrap/issues/24990
+// See https://github.com/twbs/bootstrap/issues/24990
 
 select {
   word-wrap: normal;
 }
 
 // Remove the dropdown arrow in Chrome from inputs built with datalists.
-//
-// Source: https://stackoverflow.com/a/54997118
+// See https://stackoverflow.com/a/54997118
 
 [list]::-webkit-calendar-picker-indicator {
   display: none;
