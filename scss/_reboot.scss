@@ -12,6 +12,7 @@
 // Document
 //
 // Change from `box-sizing: content-box` so that `width` is not affected by `padding` or `border`.
+
 *,
 *::before,
 *::after {
@@ -35,6 +36,7 @@
 // 2. As a best practice, apply a default `background-color`.
 // 3. Prevent adjustments of font size after orientation changes in IE on Windows Phone and in iOS.
 // 4. Change the default tap highlight to be completely transparent in iOS.
+
 body {
   margin: 0; // 1
   font-family: $font-family-base;
@@ -207,7 +209,7 @@ blockquote {
 
 
 // Strong
-
+//
 // Add the correct font weight in Chrome, Edge, and Safari
 
 b,
@@ -217,7 +219,7 @@ strong {
 
 
 // Small
-
+//
 // Add the correct font size in all browsers
 
 small {
@@ -234,7 +236,7 @@ mark {
 
 
 // Sub and Sup
-
+//
 // Prevent `sub` and `sup` elements from affecting the line height in
 // all browsers.
 
@@ -333,7 +335,7 @@ kbd {
 
 
 // Figures
-
+//
 // Apply a consistent margin strategy (matches our type styles).
 
 figure {
@@ -357,7 +359,7 @@ svg {
 
 
 // Tables
-
+//
 // Prevent double borders
 
 table {
@@ -382,7 +384,7 @@ th {
 
 
 // Forms
-
+//
 // 1. Allow labels to use `margin` for spacing.
 
 label {
@@ -575,7 +577,7 @@ output {
 
 
 // Summary
-
+//
 // 1. Add the correct display in all browsers
 
 summary {
@@ -585,7 +587,7 @@ summary {
 
 
 // Template
-
+//
 // Add the correct display for template & main in IE 11
 
 template {
@@ -601,7 +603,7 @@ main {
 
 
 // Progress
-
+//
 // Add the correct vertical alignment in Chrome, Firefox, and Opera.
 
 progress {
@@ -610,7 +612,7 @@ progress {
 
 
 // Hidden attribute
-
+//
 // Always hide an element with the `hidden` HTML attribute.
 
 [hidden] {
