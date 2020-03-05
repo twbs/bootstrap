@@ -1,5 +1,6 @@
 // stylelint-disable at-rule-no-vendor-prefix, declaration-no-important, selector-no-qualifying-type, property-no-vendor-prefix
 
+
 // Reboot
 //
 // Normalization of HTML elements, manually forked from Normalize.css to remove
@@ -17,6 +18,7 @@
   box-sizing: border-box;
 }
 
+
 // Root
 //
 // 1. Ability to the value of the root font sizes, affecting the value of `rem`.
@@ -25,6 +27,7 @@
 :root {
   font-size: $font-size-root; // 1
 }
+
 
 // Body
 //
@@ -44,6 +47,7 @@ body {
   -webkit-text-size-adjust: 100%; // 3
   -webkit-tap-highlight-color: rgba($black, 0); // 4
 }
+
 
 // Future-proof rule: in browsers that support :focus-visible, suppress the focus outline
 // on elements that programmatically receive focus but wouldn't normally show a visible
@@ -153,11 +157,16 @@ abbr[data-original-title] { // 1
 }
 
 
+// Address
+
 address {
   margin-bottom: 1rem;
   font-style: normal;
   line-height: inherit;
 }
+
+
+// Lists
 
 ol,
 ul {
@@ -189,9 +198,15 @@ dd {
   margin-left: 0; // 1
 }
 
+
+// Blockquote
+
 blockquote {
   margin: 0 0 1rem;
 }
+
+
+// Strong
 
 // Add the correct font weight in Chrome, Edge, and Safari
 
@@ -201,11 +216,24 @@ strong {
 }
 
 
+// Small
+
 // Add the correct font size in all browsers
 
 small {
   @include font-size($small-font-size);
 }
+
+
+// Mark
+
+mark {
+  padding: $mark-padding;
+  background-color: $mark-bg;
+}
+
+
+// Sub and Sup
 
 // Prevent `sub` and `sup` elements from affecting the line height in
 // all browsers.
@@ -442,14 +470,12 @@ button,
   }
 }
 
-
 // Remove inner border and padding from Firefox, but don't restore the outline like Normalize.
 
 ::-moz-focus-inner {
   padding: 0;
   border-style: none;
 }
-
 
 // Remove the default appearance of temporal inputs to avoid a Mobile Safari
 // bug where setting a custom line-height prevents text from being vertically
@@ -486,7 +512,6 @@ fieldset {
   border: 0; // 2
 }
 
-
 // 1. By using `float: left`, the legend will behave like a block element
 // 2. Correct the color inheritance from `fieldset` elements in IE.
 // 3. Correct the text wrapping in Edge and IE.
@@ -503,19 +528,6 @@ legend {
   white-space: normal; // 3
 }
 
-
-mark {
-  padding: $mark-padding;
-  background-color: $mark-bg;
-}
-
-// Add the correct vertical alignment in Chrome, Firefox, and Opera.
-
-progress {
-  vertical-align: baseline;
-}
-
-
 // Fix height of inputs with a type of datetime-local, date, month, week, or time
 // See https://github.com/twbs/bootstrap/issues/18842
 
@@ -523,7 +535,6 @@ progress {
   overflow: visible;
   line-height: 0;
 }
-
 
 // 1. Correct the outline style in Safari.
 // 2. This overrides the extra rounded corners on search inputs in iOS so that our
@@ -562,6 +573,9 @@ output {
   display: inline-block;
 }
 
+
+// Summary
+
 // 1. Add the correct display in all browsers
 
 summary {
@@ -569,15 +583,33 @@ summary {
   cursor: pointer;
 }
 
+
+// Template
+
 // Add the correct display for template & main in IE 11
 
 template {
   display: none;
 }
 
+
+// Main
+
 main {
   display: block;
 }
+
+
+// Progress
+
+// Add the correct vertical alignment in Chrome, Firefox, and Opera.
+
+progress {
+  vertical-align: baseline;
+}
+
+
+// Hidden attribute
 
 // Always hide an element with the `hidden` HTML attribute.
 
