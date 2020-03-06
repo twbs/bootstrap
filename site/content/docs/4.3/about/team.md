@@ -11,7 +11,7 @@ Bootstrap is maintained by the founding team and a small group of invaluable cor
 <div class="list-group mb-3">
   {{- range (index $.Site.Data "core-team") }}
     <a class="list-group-item list-group-item-action d-flex align-items-center" href="https://github.com/{{ .user }}">
-      <img src="https://github.com/{{ .user }}.png" alt="@{{ .user }}" width="32" height="32" class="rounded mr-2">
+      <img src="https://github.com/{{ .user }}.png" alt="@{{ .user }}" width="32" height="32" class="rounded mr-2" loading="lazy">
       <span>
         <strong>{{ .name }}</strong> @{{ .user }}
       </span>
