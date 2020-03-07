@@ -17,7 +17,10 @@ aliases: "/examples/"
         <a href="/docs/{{ $.Site.Params.docs_version }}/examples/{{ $example.name | urlize }}/">
           <img class="img-thumbnail mb-3" srcset="/docs/{{ $.Site.Params.docs_version }}/assets/img/examples/{{ $example.name | urlize }}.png,
                                                   /docs/{{ $.Site.Params.docs_version }}/assets/img/examples/{{ $example.name | urlize }}@2x.png 2x"
-                                          src="/docs/{{ $.Site.Params.docs_version }}/assets/img/examples/{{ $example.name | urlize }}.png" alt="{{ $example.name }} screenshot" width="480" height="300">
+                                          src="/docs/{{ $.Site.Params.docs_version }}/assets/img/examples/{{ $example.name | urlize }}.png"
+                                          alt="{{ $example.name }} screenshot"
+                                          width="480" height="300"
+                                          loading="lazy">
           <h5 class="mb-1">{{ $example.name }}</h5>
         </a>
         <p class="text-muted">{{ $example.description }}</p>
