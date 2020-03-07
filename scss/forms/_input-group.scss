@@ -15,7 +15,8 @@
   > .form-select,
   > .form-file {
     position: relative; // For focus state's z-index
-    flex: 1 1 0%;
+    flex: 1 1 auto;
+    width: 1%;
     min-width: 0; // https://stackoverflow.com/questions/36247140/why-dont-flex-items-shrink-past-content-size
     margin-bottom: 0;
 
@@ -109,12 +110,6 @@
   background-color: $input-group-addon-bg;
   border: $input-border-width solid $input-group-addon-border-color;
   @include border-radius($input-border-radius);
-
-  // Nuke default margins from checkboxes and radios to vertically center within.
-  input[type="radio"],
-  input[type="checkbox"] {
-    margin-top: 0;
-  }
 }
 
 

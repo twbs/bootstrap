@@ -38,26 +38,13 @@
     }
   }
 
-  // Disabled comes first so active can properly restyle
-  &.disabled,
-  &:disabled {
-    color: $color;
-    background-color: $background;
-    border-color: $border;
-    // Remove CSS gradients if they're enabled
-    @if $enable-gradients {
-      background-image: none;
-    }
-  }
-
-  &:not(:disabled):not(.disabled):active,
-  &:not(:disabled):not(.disabled).active,
+  &:active,
+  &.active,
   .show > &.dropdown-toggle {
     color: $active-color;
     background-color: $active-background;
-    @if $enable-gradients {
-      background-image: none; // Remove the gradient for the pressed/active state
-    }
+    // Remove CSS gradients if they're enabled
+    background-image: if($enable-gradients, none, null);
     border-color: $active-border;
 
     &:focus {
@@ -68,6 +55,15 @@
         box-shadow: 0 0 0 $btn-focus-width rgba(mix($color, $border, 15%), .5);
       }
     }
+  }
+
+  &:disabled,
+  &.disabled {
+    color: $color;
+    background-color: $background;
+    // Remove CSS gradients if they're enabled
+    background-image: if($enable-gradients, none, null);
+    border-color: $border;
   }
 }
 
@@ -92,14 +88,8 @@
     box-shadow: 0 0 0 $btn-focus-width rgba($color, .5);
   }
 
-  &.disabled,
-  &:disabled {
-    color: $color;
-    background-color: transparent;
-  }
-
-  &:not(:disabled):not(.disabled):active,
-  &:not(:disabled):not(.disabled).active,
+  &:active,
+  &.active,
   .show > &.dropdown-toggle {
     color: $active-color;
     background-color: $active-background;
@@ -113,6 +103,12 @@
         box-shadow: 0 0 0 $btn-focus-width rgba($color, .5);
       }
     }
+  }
+
+  &:disabled,
+  &.disabled {
+    color: $color;
+    background-color: transparent;
   }
 }
 

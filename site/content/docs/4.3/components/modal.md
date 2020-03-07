@@ -144,7 +144,7 @@ Toggle a working modal demo by clicking the button below. It will slide down and
 
 When backdrop is set to static, the modal will not close when clicking outside it. Click the button below to try it.
 
-<div id="staticBackdropLive" class="modal fade" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLiveLabel" aria-hidden="true">
+<div id="staticBackdropLive" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLiveLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -177,7 +177,7 @@ When backdrop is set to static, the modal will not close when clicking outside i
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -727,7 +727,6 @@ Our default modal without modifier class constitutes the "medium" size modal.
 <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content">
-
       <div class="modal-header">
         <h5 class="modal-title h4" id="myExtraLargeModalLabel">Extra large modal</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -744,7 +743,6 @@ Our default modal without modifier class constitutes the "medium" size modal.
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
-
       <div class="modal-header">
         <h5 class="modal-title h4" id="myLargeModalLabel">Large modal</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -812,7 +810,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <td>backdrop</td>
       <td>boolean or the string <code>'static'</code></td>
       <td>true</td>
-      <td>Includes a modal-backdrop element. Alternatively, specify <code>static</code> for a backdrop which doesn't close the modal on click or on escape key press.</td>
+      <td>Includes a modal-backdrop element. Alternatively, specify <code>static</code> for a backdrop which doesn't close the modal on click.</td>
     </tr>
     <tr>
       <td>keyboard</td>
@@ -920,7 +918,7 @@ Bootstrap's modal class exposes a few events for hooking into modal functionalit
     </tr>
     <tr>
       <td>hidePrevented.bs.modal</td>
-      <td>This event is fired when the modal is shown, its backdrop is <code>static</code> and a click outside the modal or an escape key press is performed.</td>
+      <td>This event is fired when the modal is shown, its backdrop is <code>static</code> and a click outside the modal or an escape key press is performed with the keyboard option or <code>data-keyboard</code> set to <code>false</code>.</td>
     </tr>
   </tbody>
 </table>

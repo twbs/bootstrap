@@ -3,9 +3,15 @@ title:                  "Bootstrap"
 baseURL:                "https://getbootstrap.com"
 enableInlineShortcodes: true
 
-pygmentsUseClasses:     true
-# you can use ```lang if you want too
-pygmentsCodeFences:     true
+markup:
+  goldmark:
+    renderer:
+      unsafe:           true
+  highlight:
+    noClasses:          false
+  tableOfContents:
+    startLevel:         2
+    endLevel:           6
 
 buildDrafts:            true
 buildFuture:            true
@@ -13,9 +19,6 @@ buildFuture:            true
 enableRobotsTXT:        true
 metaDataFormat:         "yaml"
 disableKinds:           ["404", "taxonomy", "taxonomyTerm", "RSS"]
-
-blackfriday:
-  fractions:            false
 
 publishDir:             "_gh_pages"
 
@@ -46,6 +49,7 @@ params:
 
   current_version:      "4.3.1"
   current_ruby_version: "4.3.1"
+  rfs_version:          "9.0.2"
   docs_version:         "4.3"
   repo:                 "https://github.com/twbs/bootstrap"
   twitter:              "getbootstrap"

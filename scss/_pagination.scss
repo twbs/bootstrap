@@ -7,6 +7,7 @@
   position: relative;
   display: block;
   color: $pagination-color;
+  text-decoration: if($link-decoration == none, null, none);
   background-color: $pagination-bg;
   border: $pagination-border-width solid $pagination-border-color;
 
@@ -40,8 +41,6 @@
   &.disabled .page-link {
     color: $pagination-disabled-color;
     pointer-events: none;
-    // Opinionated: remove the "hand" cursor set previously for .page-link
-    cursor: auto;
     background-color: $pagination-disabled-bg;
     border-color: $pagination-disabled-border-color;
   }

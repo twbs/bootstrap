@@ -27,15 +27,16 @@
 
   // Because flex properties aren't inherited, we need to redeclare these first
   // few properties so that content nested within behave properly.
+  // The `flex-wrap` property is inherited to simplify the expanded navbars
   %container-flex-properties {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: inherit;
     align-items: center;
     justify-content: space-between;
   }
 
-  .container,
-  .container-fluid {
+  > .container,
+  > .container-fluid {
     @extend %container-flex-properties;
   }
 
@@ -52,12 +53,10 @@
 // Used for brand, project, or site names.
 
 .navbar-brand {
-  display: inline-block;
   padding-top: $navbar-brand-padding-y;
   padding-bottom: $navbar-brand-padding-y;
-  margin-right: $navbar-padding-x;
+  margin-right: $navbar-brand-margin-right;
   @include font-size($navbar-brand-font-size);
-  line-height: inherit;
   white-space: nowrap;
 
   &:hover,
@@ -94,7 +93,6 @@
 //
 
 .navbar-text {
-  display: inline-block;
   padding-top: $nav-link-padding-y;
   padding-bottom: $nav-link-padding-y;
 }
@@ -109,8 +107,7 @@
 // the default flexbox row orientation. Requires the use of `flex-wrap: wrap`
 // on the `.navbar` parent.
 .navbar-collapse {
-  flex-basis: 100%;
-  flex-grow: 1;
+  flex: 1 0 100%;
   // For always expanded or extra full navbars, ensure content aligns itself
   // properly vertically. Can be easily overridden with flex utilities.
   align-items: center;
@@ -124,10 +121,16 @@
   background-color: transparent; // remove default button style
   border: $border-width solid transparent; // remove default button style
   @include border-radius($navbar-toggler-border-radius);
+  @include transition($navbar-toggler-transition);
 
-  &:hover,
+  &:hover {
+    text-decoration: none;
+  }
+
   &:focus {
     text-decoration: none;
+    outline: 0;
+    box-shadow: 0 0 0 $navbar-toggler-focus-width;
   }
 }
 
@@ -138,9 +141,9 @@
   width: 1.5em;
   height: 1.5em;
   vertical-align: middle;
-  content: "";
-  background: no-repeat center center;
-  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
 }
 
 // Generate series of `.navbar-expand-*` responsive classes for configuring
@@ -152,7 +155,7 @@
 
     &#{$infix} {
       @include media-breakpoint-up($next) {
-        flex-flow: row nowrap;
+        flex-wrap: nowrap;
         justify-content: flex-start;
 
         .navbar-nav {
@@ -165,22 +168,6 @@
           .nav-link {
             padding-right: $navbar-nav-link-padding-x;
             padding-left: $navbar-nav-link-padding-x;
-          }
-        }
-
-        // For nesting containers, have to redeclare for alignment purposes
-        %container-nesting-#{$breakpoint} {
-          flex-wrap: nowrap;
-        }
-
-        > .container,
-        > .container-fluid {
-          @extend %container-nesting-#{$breakpoint};
-        }
-
-        @each $size, $container-max-width in $container-max-widths {
-          > .container#{breakpoint-infix($size, $container-max-widths)} {
-            @extend %container-nesting-#{$breakpoint};
           }
         }
 
