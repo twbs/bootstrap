@@ -59,6 +59,15 @@
   }
 }
 
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"],
+input[type="month"] {
+  &.form-control {
+    appearance: none; // Fix appearance for date inputs in Safari
+  }
+}
+
 select.form-control {
   &:focus::-ms-value {
     // Suppress the nested default white text on blue background highlight given to
