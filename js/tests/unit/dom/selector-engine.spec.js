@@ -121,7 +121,7 @@ describe('SelectorEngine', () => {
       ].join('')
 
       const btn = fixtureEl.querySelector('.btn')
-      const divTest = fixtureEl.querySelector('.test')[1]
+      const divTest = fixtureEl.querySelectorAll('.test')[1]
 
       expect(SelectorEngine.prev(btn, '.test')).toEqual([divTest])
     })
