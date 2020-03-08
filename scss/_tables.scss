@@ -1,3 +1,5 @@
+// stylelint-disable comment-empty-line-before
+
 //
 // Basic Bootstrap table
 //
@@ -8,11 +10,17 @@
   color: $table-color;
   vertical-align: $table-cell-vertical-align;
   background-color: $table-bg; // Reset for nesting within parents with `background-color`.
+  border-color: $table-border-color;
 
   th,
   td {
     padding: $table-cell-padding;
-    border-bottom: $table-border-width solid $table-border-color;
+    // Table cells will only inherit if you use longhand properties
+    /* clean-css ignore:start */
+    border-color: inherit;
+    border-bottom-style: solid;
+    border-bottom-width: $table-border-width;
+    /* clean-css ignore:end */
   }
 
   tbody {
@@ -21,11 +29,14 @@
 
   thead th {
     vertical-align: bottom;
-    border-bottom-color: $table-head-border-color;
   }
 
   tbody + tbody {
-    border-top: (2 * $table-border-width) solid $table-border-color;
+    /* clean-css ignore:start */
+    border-color: inherit;
+    border-top-style: solid;
+    border-top-width: (2 * $table-border-width);
+    /* clean-css ignore:end */
   }
 }
 
@@ -47,18 +58,14 @@
 // Add or remove borders all around the table and between all the columns.
 
 .table-bordered {
-  border: $table-border-width solid $table-border-color;
+  border-width: $table-border-width;
 
   th,
   td {
-    border: $table-border-width solid $table-border-color;
-  }
-
-  thead {
-    th,
-    td {
-      border-bottom-width: 2 * $table-border-width;
-    }
+    /* clean-css ignore:start */
+    border-style: solid;
+    border-width: $table-border-width;
+    /* clean-css ignore:end */
   }
 }
 
@@ -75,25 +82,33 @@
 //
 // Default zebra-stripe styles (alternating gray and transparent backgrounds)
 
+// stylelint-disable selector-max-type
 .table-striped {
-  tbody tr:nth-of-type(#{$table-striped-order}) {
-    background-color: $table-accent-bg;
+  > tbody > tr:nth-of-type(#{$table-striped-order}) {
+    > td,
+    > th {
+      background-image: linear-gradient($table-accent-bg, $table-accent-bg);
+    }
   }
 }
+// stylelint-enable selector-max-type
 
 
 // Hover effect
 //
 // Placed here since it has to come after the potential zebra striping
 
+// stylelint-disable selector-max-type
 .table-hover {
-  tbody tr {
-    &:hover {
+  > tbody > tr:hover {
+    > td,
+    > th {
       color: $table-hover-color;
-      background-color: $table-hover-bg;
+      background-image: linear-gradient($table-hover-bg, $table-hover-bg);
     }
   }
 }
+// stylelint-enable selector-max-type
 
 
 // Table backgrounds
