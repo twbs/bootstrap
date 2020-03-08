@@ -108,60 +108,6 @@
 @include table-row-variant(active, $table-active-bg);
 
 
-// Dark styles
-//
-// Same table markup, but inverted color scheme: dark background and light text.
-
-// stylelint-disable-next-line no-duplicate-selectors
-.table {
-  .thead-dark {
-    th {
-      color: $table-dark-color;
-      background-color: $table-dark-bg;
-      border-color: $table-dark-border-color;
-    }
-  }
-
-  .thead-light {
-    th {
-      color: $table-head-color;
-      background-color: $table-head-bg;
-      border-color: $table-border-color;
-    }
-  }
-}
-
-.table-dark {
-  color: $table-dark-color;
-  background-color: $table-dark-bg;
-
-  th,
-  td,
-  thead th {
-    border-color: $table-dark-border-color;
-  }
-
-  &.table-bordered {
-    border: 0;
-  }
-
-  &.table-striped {
-    tbody tr:nth-of-type(#{$table-striped-order}) {
-      background-color: $table-dark-accent-bg;
-    }
-  }
-
-  &.table-hover {
-    tbody tr {
-      &:hover {
-        color: $table-dark-hover-color;
-        background-color: $table-dark-hover-bg;
-      }
-    }
-  }
-}
-
-
 // Responsive tables
 //
 // Generate series of `.table-responsive-*` classes for configuring the screen
