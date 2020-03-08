@@ -59,6 +59,10 @@
       }
     }
 
+    thead {
+      border-color: $gray-900;
+    }
+
     // Prevent breaking of code
     td:first-child > code {
       white-space: nowrap;

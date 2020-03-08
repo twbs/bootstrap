@@ -8,7 +8,9 @@ toc: true
 
 ## Overview
 
-Due to the widespread use of `<table>` elements across third-party widgets like calendars and date pickers, Bootstrap's tables are **opt-in**. Add the base class `.table` to any `<table>`, then extend with our optional modifier classes or custom styles. **All table styles are inherited in Bootstrap**, meaning any nested tables will be styled in the same manner as the parent.
+Due to the widespread use of `<table>` elements across third-party widgets like calendars and date pickers, Bootstrap's tables are **opt-in**. Add the base class `.table` to any `<table>`, then extend with our optional modifier classes or custom styles.
+
+**All table styles are inherited in Bootstrap**, meaning any nested tables will be styled in the same manner as the parent. This keeps our selectors fast and lean, and ensures any custom CSS you need is as lightweight as possible, too.
 
 Using the most basic table markup, here's how `.table`-based tables look in Bootstrap.
 
@@ -45,14 +47,47 @@ Using the most basic table markup, here's how `.table`-based tables look in Boot
 </table>
 {{< /example >}}
 
+Since `.table` styles are inherited, nested tables are styled just like their parent. In addition, we've explicitly written our CSS to allow `border` styles to be inherited (normally `border-color` defaults to the current text `color`).
+
+For example, to make your table headers stand out more, consider using a `.border-dark` utility on just the `<thead>` (or if you prefer, on every `<th>`).
+
+{{< example >}}
+<table class="table">
+  <thead class="border-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+  </tbody>
+</table>
+{{< /example >}}
+
+Can't add classes yourself? Change it via custom Sass or CSS.
+
+{{< highlight scss >}}
+thead {
+  border-color: $gray-900;
+}
+{{< /highlight >}}
+
 ## Options
 
 ### Inverted
 
-You can also invert the colors—with light text on dark backgrounds—with `.table-dark`.
+Invert the colors of a table—with light text on dark backgrounds—via [utility classes]({{< docsref "/utilities/api" >}}). Below we've added three classes to accomplish this: `.bg-dark`, `.text-white`, and `.border-gray-700`.
 
 {{< example >}}
-<table class="table table-dark">
+<table class="table bg-dark text-white border-gray-700">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -84,45 +119,10 @@ You can also invert the colors—with light text on dark backgrounds—with `.ta
 </table>
 {{< /example >}}
 
-### Striped rows
+And because this happens with utilities, you have some flexibility in how you style your tables relative to their context. For example, **assuming your page is already dark gray** with lighter text, you don't need to set every utility on the `<table>`—just `.border-gray-700`.
 
-Use `.table-striped` to add zebra-striping to any table row within the `<tbody>`.
-
-{{< example >}}
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
-{{< /example >}}
-
-{{< example >}}
-<table class="table table-striped table-dark">
+{{< example class="bg-dark text-white" >}}
+<table class="table border-gray-700">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -190,8 +190,10 @@ Add `.table-bordered` for borders on all sides of the table and cells.
 </table>
 {{< /example >}}
 
-{{< example >}}
-<table class="table table-bordered table-dark">
+For this dark table, we've assumed a `background-color` and `color` is set by a parent element like `<body>` to help show the `<table>`'s outer border. If that's not the case for you, remember to add `.bg-dark` and `.text-white` to the `<table>`.
+
+{{< example class="bg-dark text-white" >}}
+<table class="table table-bordered border-gray-700">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -261,7 +263,7 @@ Add `.table-borderless` for a table without borders.
 `.table-borderless` can also be used on dark tables.
 
 {{< example >}}
-<table class="table table-borderless table-dark">
+<table class="table table-borderless bg-dark text-white">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -292,9 +294,118 @@ Add `.table-borderless` for a table without borders.
 </table>
 {{< /example >}}
 
+### Striped rows
+
+Use `.table-striped` to add zebra-striping to any table row within the `<tbody>`. You can customize which rows are highlighted by changing the `$table-striped-order` variable from `odd` (default) to `even`.
+
+To ensure background colors also work with striped rows, we use a `background-image` gradient that will overlay onto any `background-color`.
+
+{{< example >}}
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
+{{< /example >}}
+
+Works on dark backgrounds:
+
+{{< example >}}
+<table class="table table-striped bg-dark text-white border-gray-700">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
+{{< /example >}}
+
+And also works with table color classes:
+
+{{< example >}}
+<table class="table table-striped">
+  <thead class="table-primary">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="table-primary">
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr class="table-primary">
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr class="table-primary">
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
+{{< /example >}}
+
 ### Hoverable rows
 
-Add `.table-hover` to enable a hover state on table rows within a `<tbody>`.
+Add `.table-hover` to enable a hover state on table rows within a `<tbody>`. To ensure background colors also work with hovered rows, we use a `background-image` gradient that will overlay onto any `background-color`.
 
 {{< example >}}
 <table class="table table-hover">
@@ -328,8 +439,10 @@ Add `.table-hover` to enable a hover state on table rows within a `<tbody>`.
 </table>
 {{< /example >}}
 
+And with hoverable striped tables:
+
 {{< example >}}
-<table class="table table-hover table-dark">
+<table class="table table-striped table-hover">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -340,6 +453,74 @@ Add `.table-hover` to enable a hover state on table rows within a `<tbody>`.
   </thead>
   <tbody>
     <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td colspan="2">Larry the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
+{{< /example >}}
+
+`.table-hover` also works on dark tables:
+
+{{< example >}}
+<table class="table table-hover bg-dark text-white border-gray-700">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td colspan="2">Larry the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
+{{< /example >}}
+
+As well as table row colors:
+
+{{< example >}}
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="table-primary">
       <th scope="row">1</th>
       <td>Mark</td>
       <td>Otto</td>
@@ -435,9 +616,9 @@ Table cells of `<thead>` are always vertical aligned to the bottom. Table cells 
 </div>
 {{< /example >}}
 
-### Variants
+## Theme colors
 
-Use contextual classes to color table rows or individual cells.
+Use contextual classes from the [our theme colors]({{< docsref "/getting-started/theming" >}}) (generated by the `$theme-colors` Sass map) to color your table rows or individual cells.
 
 <div class="bd-example">
   <table class="table">
@@ -492,10 +673,10 @@ Use contextual classes to color table rows or individual cells.
 </tr>
 {{< /highlight >}}
 
-Regular table background variants are not available with the dark table, however, you may use [text or background utilities]({{< docsref "/utilities/colors" >}}) to achieve similar styles.
+For dark tables, we recommend using our [text or background utilities]({{< docsref "/utilities/colors" >}}) to achieve similar styles.
 
 <div class="bd-example">
-  <table class="table table-dark">
+  <table class="table bg-dark border-gray-700 text-white">
     <thead>
       <tr>
         <th scope="col">#</th>
@@ -575,15 +756,75 @@ Regular table background variants are not available with the dark table, however
 {{< partial "callout-warning-color-assistive-technologies.md" >}}
 {{< /callout >}}
 
+## Nesting
+
+{{< example >}}
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <td colspan="4">
+        <table class="table mb-0">
+          <thead>
+            <tr>
+              <th scope="col">Header</th>
+              <th scope="col">Header</th>
+              <th scope="col">Header</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">A</th>
+              <td>First</td>
+              <td>Last</td>
+            </tr>
+            <tr>
+              <th scope="row">B</th>
+              <td>First</td>
+              <td>Last</td>
+            </tr>
+            <tr>
+              <th scope="row">C</th>
+              <td>First</td>
+              <td>Last</td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
+{{< /example >}}
+
+
 ## Anatomy
 
 ### Table head
 
-Similar to tables and dark tables, use the modifier classes `.thead-light` or `.thead-dark` to make `<thead>`s appear light or dark gray.
+Similar to tables and dark tables, use utility classes to create different colors `<thead>` elements. Here we're using a combination of background-color (`.bg-*`), border-color (`.border-*`), and text color (`.color-`) to create different looks.
 
 {{< example >}}
 <table class="table">
-  <thead class="thead-dark">
+  <thead class="bg-dark text-white border-black">
     <tr>
       <th scope="col">#</th>
       <th scope="col">First</th>
@@ -614,7 +855,7 @@ Similar to tables and dark tables, use the modifier classes `.thead-light` or `.
 </table>
 
 <table class="table">
-  <thead class="thead-light">
+  <thead class="bg-light border-gray-500">
     <tr>
       <th scope="col">#</th>
       <th scope="col">First</th>
@@ -635,6 +876,47 @@ Similar to tables and dark tables, use the modifier classes `.thead-light` or `.
       <td>Thornton</td>
       <td>@fat</td>
     </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
+{{< /example >}}
+
+### Table bodies
+
+When multiple `<tbody>`s are present, we automatically add a thicker border between them. By default, this border is twice as think as the rest of the table borders.
+
+{{< example >}}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+  </tbody>
+  <tbody>
     <tr>
       <th scope="row">3</th>
       <td>Larry</td>
