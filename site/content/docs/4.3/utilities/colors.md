@@ -33,6 +33,8 @@ Similar to the contextual text color classes, easily set the background of an el
 <div class="p-3 mb-2 bg-{{ .name }} {{ if or (eq .name "light") (eq .name "warning") }}text-dark{{ else }}text-white{{ end }}">.bg-{{ .name }}</div>
 {{- end -}}
 {{< /colors.inline >}}
+<div class="p-3 mb-2 bg-gray-600 text-white">.bg-gray-600</div>
+<div class="p-3 mb-2 bg-gray-400 text-dark">.bg-gray-400</div>
 <div class="p-3 mb-2 bg-white text-dark">.bg-white</div>
 <div class="p-3 mb-2 bg-transparent text-dark">.bg-transparent</div>
 {{< /example >}}

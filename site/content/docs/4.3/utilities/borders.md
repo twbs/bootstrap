@@ -32,7 +32,7 @@ Use border utilities to add or remove an element's borders. Choose from all bord
 
 ## Border color
 
-Change the border color using utilities built on our theme colors.
+Change the border color using utilities built on our theme colors. We've also included a subset of our gray colors to provide more flexibility.
 
 {{< example class="bd-example-border-utils" >}}
 {{< border.inline >}}
@@ -40,7 +40,11 @@ Change the border color using utilities built on our theme colors.
 <span class="border border-{{ .name }}"></span>
 {{- end -}}
 {{< /border.inline >}}
+
 <span class="border border-white"></span>
+<span class="border border-gray-500"></span>
+<span class="border border-gray-700"></span>
+<span class="border border-black"></span>
 {{< /example >}}
 
 ## Border-radius

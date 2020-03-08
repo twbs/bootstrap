@@ -77,7 +77,15 @@ $utilities: map-merge(
     "border-color": (
       property: border-color,
       class: border,
-      values: map-merge($theme-colors, ("white": $white))
+      values: map-merge(
+        $theme-colors,
+        (
+          "white": $white,
+          "gray-500": $gray-500,
+          "gray-700": $gray-700,
+          "black": $black
+        )
+      )
     ),
     // Sizing utilities
     "width": (
@@ -412,6 +420,9 @@ $utilities: map-merge(
         (
           "body": $body-bg,
           "white": $white,
+          "black": black,
+          "gray-400": $gray-400,
+          "gray-600": $gray-600,
           "transparent": transparent
         )
       )
