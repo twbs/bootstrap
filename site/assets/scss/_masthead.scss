@@ -32,18 +32,18 @@
   color: $white;
   @include border-radius(25%);
   box-shadow: 0 .25rem .5rem rgba(0, 0, 0, .15), inset 0 -1px 0 rgba(0, 0, 0, .15);
+}
 
-  &-purple {
-    background-image: linear-gradient(180deg, $pink, $purple);
-  }
+.home-icon-purple {
+  background-image: linear-gradient(180deg, $pink, $purple);
+}
 
-  &-blue {
-    background-image: linear-gradient(180deg, $teal, $blue);
-  }
+.home-icon-blue {
+  background-image: linear-gradient(180deg, $teal, $blue);
+}
 
-  &-yellow {
-    background-image: linear-gradient(180deg, $yellow, $orange);
-  }
+.home-icon-yellow {
+  background-image: linear-gradient(180deg, $yellow, $orange);
 }
 
 @include media-breakpoint-up(md) {
