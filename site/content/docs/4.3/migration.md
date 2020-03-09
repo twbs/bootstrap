@@ -11,7 +11,7 @@ toc: true
 
 See the browser and devices page for details on what is currently supported in Bootstrap 5. Since v4, here's what's changed to our browser support:
 
-- Dropped support for Internet Explorer NN
+- Dropped support for Internet Explorer 10 and 11
 - Dropped support for Firefox NN - MM
 - Dropped support for Safari NN
 - Dropped support for iOS Safari NN
