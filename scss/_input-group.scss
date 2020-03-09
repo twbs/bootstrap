@@ -16,7 +16,8 @@
   > .custom-select,
   > .custom-file {
     position: relative; // For focus state's z-index
-    flex: 1 1 0%;
+    flex: 1 1 auto;
+    width: 1%;
     min-width: 0; // https://stackoverflow.com/questions/36247140/why-dont-flex-items-shrink-past-content-size
     margin-bottom: 0;
 

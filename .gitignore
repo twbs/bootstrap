@@ -1,5 +1,6 @@
 # Ignore docs files
 /_gh_pages/
+/site/.jekyll-cache
 /site/.jekyll-metadata
 /site/docs/**/dist/
 # Hugo folders

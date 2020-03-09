@@ -24,6 +24,9 @@ plugins:
   - jekyll-sitemap
   - jekyll-toc
 
+redirect_from:
+  json: false
+
 # Social
 title:              Bootstrap
 description:        "The most popular HTML, CSS, and JS library in the world."
