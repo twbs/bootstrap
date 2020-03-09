@@ -56,11 +56,9 @@
 }
 
 .modal-dialog-scrollable {
-  display: flex; // IE10/11
   max-height: subtract(100%, $modal-dialog-margin * 2);
 
   .modal-content {
-    max-height: subtract(100vh, $modal-dialog-margin * 2); // IE10/11
     overflow: hidden;
   }
 
@@ -78,29 +76,6 @@
   display: flex;
   align-items: center;
   min-height: subtract(100%, $modal-dialog-margin * 2);
-
-  // Ensure `modal-dialog-centered` extends the full height of the view (IE10/11)
-  &::before {
-    display: block; // IE10
-    height: subtract(100vh, $modal-dialog-margin * 2);
-    height: min-content; // Reset height to 0 except on IE
-    content: "";
-  }
-
-  // Ensure `.modal-body` shows scrollbar (IE10/11)
-  &.modal-dialog-scrollable {
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
-
-    .modal-content {
-      max-height: none;
-    }
-
-    &::before {
-      content: none;
-    }
-  }
 }
 
 // Actual modal

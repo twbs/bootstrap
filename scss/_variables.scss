@@ -720,7 +720,7 @@ $form-range-thumb-border:                  0 !default;
 $form-range-thumb-border-radius:           1rem !default;
 $form-range-thumb-box-shadow:              0 .1rem .25rem rgba($black, .1) !default;
 $form-range-thumb-focus-box-shadow:        0 0 0 1px $body-bg, $input-focus-box-shadow !default;
-$form-range-thumb-focus-box-shadow-width:  $input-focus-width !default; // For focus box shadow issue in IE/Edge
+$form-range-thumb-focus-box-shadow-width:  $input-focus-width !default; // For focus box shadow issue in Edge
 $form-range-thumb-active-bg:               lighten($component-active-bg, 35%) !default;
 $form-range-thumb-disabled-bg:             $gray-500 !default;
 $form-range-thumb-transition:              background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
