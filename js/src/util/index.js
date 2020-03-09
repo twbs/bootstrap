@@ -87,10 +87,7 @@ const getTransitionDurationFromElement = element => {
 }
 
 const triggerTransitionEnd = element => {
-  const evt = document.createEvent('HTMLEvents')
-
-  evt.initEvent(TRANSITION_END, true, true)
-  element.dispatchEvent(evt)
+  element.dispatchEvent(new Event(TRANSITION_END))
 }
 
 const isElement = obj => (obj[0] || obj).nodeType

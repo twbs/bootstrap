@@ -5,7 +5,7 @@
  * --------------------------------------------------------------------------
  */
 
-import { find as findFn, findOne, matches, closest } from './polyfill'
+import { find as findFn, findOne } from './polyfill'
 import { makeArray } from '../util/index'
 
 /**
@@ -18,7 +18,7 @@ const NODE_TEXT = 3
 
 const SelectorEngine = {
   matches(element, selector) {
-    return matches.call(element, selector)
+    return element.matches(selector)
   },
 
   find(selector, element = document.documentElement) {
@@ -52,7 +52,7 @@ const SelectorEngine = {
   },
 
   closest(element, selector) {
-    return closest.call(element, selector)
+    return element.closest(selector)
   },
 
   prev(element, selector) {
