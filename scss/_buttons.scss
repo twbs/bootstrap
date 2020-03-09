@@ -9,6 +9,7 @@
   line-height: $btn-line-height;
   color: $body-color;
   text-align: center;
+  text-decoration: if($link-decoration == none, null, none);
   white-space: $btn-white-space;
   vertical-align: middle;
   cursor: if($enable-pointer-cursor-for-buttons, pointer, null);
