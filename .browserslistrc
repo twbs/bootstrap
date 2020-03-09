@@ -6,8 +6,8 @@ not dead
 Chrome >= 60
 Firefox >= 60
 Edge >= 16.16299
-Explorer 11
 iOS >= 10
 Safari >= 10
 Android >= 6
+not Explorer <= 11
 not ExplorerMobile <= 11
