@@ -81,8 +81,8 @@ class Collapse {
     this._element = element
     this._config = this._getConfig(config)
     this._triggerArray = makeArray(SelectorEngine.find(
-      `[data-toggle="collapse"][href="#${element.id}"],` +
-      `[data-toggle="collapse"][data-target="#${element.id}"]`
+      `${Selector.DATA_TOGGLE}[href="#${element.id}"],` +
+      `${Selector.DATA_TOGGLE}[data-target="#${element.id}"]`
     ))
 
     const toggleList = makeArray(SelectorEngine.find(Selector.DATA_TOGGLE))
@@ -313,7 +313,7 @@ class Collapse {
       parent = SelectorEngine.findOne(parent)
     }
 
-    const selector = `[data-toggle="collapse"][data-parent="${parent}"]`
+    const selector = `${Selector.DATA_TOGGLE}[data-parent="${parent}"]`
 
     makeArray(SelectorEngine.find(selector, parent))
       .forEach(element => {
