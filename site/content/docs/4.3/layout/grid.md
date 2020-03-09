@@ -520,7 +520,7 @@ In practice, here's how it looks. Note you can continue to use this with all oth
 
 ## Alignment
 
-Use flexbox alignment utilities to vertically and horizontally align columns. **Internet Explorer 10-11 do not support vertical alignment of flex items when the flex container has a `min-height` as shown below.** [See Flexbugs #3 for more details.](https://github.com/philipwalton/flexbugs#flexbug-3)
+Use flexbox alignment utilities to vertically and horizontally align columns.
 
 ### Vertical alignment
 

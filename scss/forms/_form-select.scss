@@ -57,11 +57,6 @@
     border-color: $form-select-disabled-border-color;
   }
 
-  // Hides the default caret in IE11
-  &::-ms-expand {
-    display: none;
-  }
-
   // Remove outline from select box in FF
   &:-moz-focusring {
     color: transparent;
