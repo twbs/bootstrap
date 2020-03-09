@@ -1,6 +1,5 @@
 {
   "root": true,
-  "parser": "babel-eslint",
   "extends": [
     "plugin:import/errors",
     "plugin:import/warnings",

@@ -97,7 +97,6 @@
     "@rollup/plugin-commonjs": "^11.0.2",
     "@rollup/plugin-node-resolve": "^7.1.1",
     "autoprefixer": "^9.7.4",
-    "babel-eslint": "^10.1.0",
     "bundlesize": "^0.18.0",
     "clean-css-cli": "^4.3.0",
     "cross-env": "^7.0.2",
