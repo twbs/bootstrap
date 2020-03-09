@@ -57,6 +57,7 @@ const ClassName = {
   DROPRIGHT: 'dropright',
   DROPLEFT: 'dropleft',
   MENURIGHT: 'dropdown-menu-right',
+  NAVBAR: 'navbar',
   POSITION_STATIC: 'position-static'
 }
 
@@ -307,7 +308,7 @@ class Dropdown {
   }
 
   _detectNavbar() {
-    return Boolean(SelectorEngine.closest(this._element, '.navbar'))
+    return Boolean(SelectorEngine.closest(this._element, `.${ClassName.NAVBAR}`))
   }
 
   _getOffset() {

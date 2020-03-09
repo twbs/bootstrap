@@ -109,6 +109,7 @@ const Event = {
 
 const ClassName = {
   FADE: 'fade',
+  MODAL: 'modal',
   SHOW: 'show'
 }
 
@@ -235,7 +236,7 @@ class Tooltip {
     Data.removeData(this.element, this.constructor.DATA_KEY)
 
     EventHandler.off(this.element, this.constructor.EVENT_KEY)
-    EventHandler.off(SelectorEngine.closest(this.element, '.modal'), 'hide.bs.modal', this._hideModalHandler)
+    EventHandler.off(SelectorEngine.closest(this.element, `.${ClassName.MODAL}`), 'hide.bs.modal', this._hideModalHandler)
 
     if (this.tip) {
       this.tip.parentNode.removeChild(this.tip)
@@ -565,7 +566,7 @@ class Tooltip {
       }
     }
 
-    EventHandler.on(SelectorEngine.closest(this.element, '.modal'),
+    EventHandler.on(SelectorEngine.closest(this.element, `.${ClassName.MODAL}`),
       'hide.bs.modal',
       this._hideModalHandler
     )
