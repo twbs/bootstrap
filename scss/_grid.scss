@@ -5,18 +5,44 @@
 @if $enable-grid-classes {
   .row {
     @include make-row();
+
+    > * {
+      @include make-col-ready();
+    }
   }
+}
 
-  // Remove the negative margin from default .row, then the horizontal padding
-  // from all immediate children columns (to prevent runaway style inheritance).
-  .no-gutters {
-    margin-right: 0;
-    margin-left: 0;
+// Gutters
+//
+// Make use of `.g-*`, `.gx-*` or `.gy-*` utilities to change spacing between the columns.
 
-    > .col,
-    > [class*="col-"] {
-      padding-right: 0;
-      padding-left: 0;
+@if $enable-grid-classes {
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    @include media-breakpoint-up($breakpoint, $grid-breakpoints) {
+
+      @each $key, $value in $gutters {
+        .g#{$infix}-#{$key},
+        .gx#{$infix}-#{$key} {
+          margin-right: -$value / 2;
+          margin-left: -$value / 2;
+
+          > * {
+            padding-right: $value / 2;
+            padding-left: $value / 2;
+          }
+        }
+
+        .g#{$infix}-#{$key},
+        .gy#{$infix}-#{$key} {
+          margin-top: -$value;
+
+          > * {
+            margin-top: $value;
+          }
+        }
+      }
     }
   }
 }

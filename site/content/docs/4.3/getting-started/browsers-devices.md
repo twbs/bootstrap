@@ -34,7 +34,6 @@ Generally speaking, Bootstrap supports the latest versions of each major platfor
       <th>Firefox</th>
       <th>Safari</th>
       <th>Android Browser &amp; WebView</th>
-      <th>Microsoft Edge</th>
     </tr>
   </thead>
   <tbody>
@@ -44,7 +43,6 @@ Generally speaking, Bootstrap supports the latest versions of each major platfor
       <td>Supported</td>
       <td class="text-muted">&mdash;</td>
       <td>v6.0+</td>
-      <td>Supported</td>
     </tr>
     <tr>
       <th scope="row">iOS</th>
@@ -52,15 +50,6 @@ Generally speaking, Bootstrap supports the latest versions of each major platfor
       <td>Supported</td>
       <td>Supported</td>
       <td class="text-muted">&mdash;</td>
-      <td>Supported</td>
-    </tr>
-    <tr>
-      <th scope="row" class="text-nowrap">Windows 10 Mobile</th>
-      <td class="text-muted">&mdash;</td>
-      <td class="text-muted">&mdash;</td>
-      <td class="text-muted">&mdash;</td>
-      <td class="text-muted">&mdash;</td>
-      <td>Supported</td>
     </tr>
   </tbody>
 </table>
@@ -109,7 +98,7 @@ Unofficially, Bootstrap should look and behave well enough in Chromium and Chrom
 
 ## Internet Explorer
 
-Internet Explorer 11 is supported; IE10 and down is not. Please be aware that some CSS3 properties and HTML5 elements are not fully supported in IE10, or require prefixed properties for full functionality. Visit [Can I use...](https://caniuse.com/) for details on browser support of CSS3 and HTML5 features. **If you require IE8-9 support, use Bootstrap 3.**
+Internet Explorer 11 is supported; IE10 and down is not. Please be aware that some CSS3 properties and HTML5 elements are not fully supported in Internet Explorer, or require prefixed properties for full functionality. Visit [Can I use...](https://caniuse.com/) for details on browser support of CSS3 and HTML5 features. **If you require IE10 support, use Bootstrap 4.**
 
 ## Modals and dropdowns on mobile
 
