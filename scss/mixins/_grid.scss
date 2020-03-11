@@ -58,23 +58,20 @@
     $infix: breakpoint-infix($breakpoint, $breakpoints);
 
     @include media-breakpoint-up($breakpoint, $breakpoints) {
-      .row-cols#{$infix}-auto > * {
-        @include make-col-auto();
-      }
-
       @for $i from 1 through $grid-row-columns {
         .row-cols#{$infix}-#{$i} {
           @include row-cols($i);
         }
       }
 
+      .col#{$infix}-auto,
+      .row-cols#{$infix}-auto > * {
+        @include make-col-auto();
+      }
+
       // Provide basic `.col-{bp}` classes for equal-width flexbox columns
       .col#{$infix} {
         flex: 1 0 0;
-      }
-
-      .col#{$infix}-auto {
-        @include make-col-auto();
       }
 
       @for $i from 1 through $columns {
@@ -90,6 +87,27 @@
             @include make-col-offset($i, $columns);
           }
         }
+      }
+
+      // Gutters
+      //
+      // Make use of `.g-*`, `.gx-*` or `.gy-*` utilities to change spacing between the columns.
+      // Use 0px if $value is 0, to prevent the calc(... - 0) bug
+      @each $key, $value in $gutters {
+        // stylelint-disable length-zero-no-unit
+        .g#{$infix}-#{$key} {
+          --grid-gutter-x: #{if($value == 0, 0px, $value)};
+          --grid-gutter-y: #{if($value == 0, 0px, $value)};
+        }
+
+        .gx#{$infix}-#{$key} {
+          --grid-gutter-x: #{if($value == 0, 0px, $value)};
+        }
+
+        .gy#{$infix}-#{$key} {
+          --grid-gutter-y: #{if($value == 0, 0px, $value)};
+        }
+        // stylelint-enable length-zero-no-unit
       }
     }
   }

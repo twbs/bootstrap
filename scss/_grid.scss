@@ -1,8 +1,10 @@
-// Row
-//
-// Rows contain your columns.
+
 
 @if $enable-grid-classes {
+  // Row
+  //
+  // Rows contain your columns.
+
   .row {
     @include make-row();
 
@@ -10,41 +12,9 @@
       @include make-col-ready();
     }
   }
-}
 
-// Gutters
-//
-// Make use of `.g-*`, `.gx-*` or `.gy-*` utilities to change spacing between the columns.
-
-@if $enable-grid-classes {
-  @each $breakpoint in map-keys($grid-breakpoints) {
-    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
-
-    @include media-breakpoint-up($breakpoint, $grid-breakpoints) {
-
-      @each $key, $value in $gutters {
-        .g#{$infix}-#{$key},
-        .gx#{$infix}-#{$key} {
-          // Use 0px if $value is 0, to prevent the calc(... - 0) bug
-          // stylelint-disable-next-line length-zero-no-unit
-          --grid-gutter-x: #{if($value == 0, 0px, $value)};
-        }
-
-        .g#{$infix}-#{$key},
-        .gy#{$infix}-#{$key} {
-          // Use 0px if $value is 0, to prevent the calc(... - 0) bug
-          // stylelint-disable-next-line length-zero-no-unit
-          --grid-gutter-y: #{if($value == 0, 0px, $value)};
-        }
-      }
-    }
-  }
-}
-
-// Columns
-//
-// Common styles for small and large grid columns
-
-@if $enable-grid-classes {
+  // Columns
+  //
+  // Common styles for small and large grid columns
   @include make-grid-columns();
 }
