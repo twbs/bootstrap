@@ -68,11 +68,56 @@ Fancy larger or smaller buttons? Add `.btn-lg` or `.btn-sm` for additional sizes
 <button type="button" class="btn btn-secondary btn-sm">Small button</button>
 {{< /example >}}
 
-Create block level buttons—those that span the full width of a parent—by adding `.btn-block`.
+## Layout
+
+Layout of buttons can be changed responsively using the grid system.
 
 {{< example >}}
-<button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
-<button type="button" class="btn btn-secondary btn-lg btn-block">Block level button</button>
+<button type="button" class="btn btn-primary col-12 col-sm-auto">Full width when extra small screen</button>
+{{< /example >}}
+
+<div class="bd-example">
+  <div class="row g-2">
+    <div class="col-md-auto">
+      <button type="button" class="btn btn-primary w-100">Full width when smaller screen</button>
+    </div>
+    <div class="col-md-auto">
+      <button type="button" class="btn btn-secondary w-100">Full width when smaller screen</button>
+    </div>
+  </div>
+</div>
+
+{{< highlight html >}}
+<!-- Use column width class -->
+<div class="row g-2">
+  <div class="col-md-auto">
+    <button type="button" class="btn btn-primary w-100">Full width when smaller screen</button>
+  </div>
+  <div class="col-md-auto">
+    <button type="button" class="btn btn-secondary w-100">Full width when smaller screen</button>
+  </div>
+</div>
+
+<!-- Use row columns class -->
+<div class="row row-cols-1 row-cols-md-auto g-2">
+  <div class="col">
+    <button type="button" class="btn btn-primary w-100">Full width when smaller screen</button>
+  </div>
+  <div class="col">
+    <button type="button" class="btn btn-secondary w-100">Full width when smaller screen</button>
+  </div>
+</div>
+{{< /highlight >}}
+
+{{< example >}}
+<div class="row g-2 justify-content-end">
+  <div class="col-6 col-md-2">
+    <button type="button" class="btn btn-outline-secondary w-100">Prev</button>
+  </div>
+  <div class="col-6 col-md-2">
+    <button type="button" class="btn btn-outline-secondary w-100">Next</button>
+  </div>
+</div>
 {{< /example >}}
 
 ## Active state
