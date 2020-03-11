@@ -10,7 +10,13 @@ const MILLISECONDS_MULTIPLIER = 1000
 const TRANSITION_END = 'transitionend'
 
 // Shoutout AngusCroll (https://goo.gl/pxwQGp)
-const toType = obj => ({}.toString.call(obj).match(/\s([a-z]+)/i)[1].toLowerCase())
+const toType = obj => {
+  if (obj === null || obj === undefined) {
+    return `${obj}`
+  }
+
+  return {}.toString.call(obj).match(/\s([a-z]+)/i)[1].toLowerCase()
+}
 
 /**
  * --------------------------------------------------------------------------
