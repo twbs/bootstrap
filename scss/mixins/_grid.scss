@@ -18,7 +18,7 @@
   // Prevent columns from becoming too narrow when at smaller grid tiers by
   // always setting `width: 100%;`. This works because we set the width
   // later on to override this initial width.
-  flex-shrink: 0;
+  flex: 0 0 100%;
   min-width: 0; // See https://github.com/twbs/bootstrap/issues/25410
   max-width: calc(100% - var(--grid-gutter-x)); // Prevent `.col-auto`, `.col` (& responsive variants) from breaking out the grid
   margin-top: var(--grid-gutter-y);
@@ -58,6 +58,12 @@
     $infix: breakpoint-infix($breakpoint, $breakpoints);
 
     @include media-breakpoint-up($breakpoint, $breakpoints) {
+
+      // Provide basic `.col-{bp}` classes for equal-width flexbox columns
+      .col#{$infix} {
+        flex: 1 0 0;
+      }
+
       @for $i from 1 through $grid-row-columns {
         .row-cols#{$infix}-#{$i} {
           @include row-cols($i);
@@ -67,11 +73,6 @@
       .col#{$infix}-auto,
       .row-cols#{$infix}-auto > * {
         @include make-col-auto();
-      }
-
-      // Provide basic `.col-{bp}` classes for equal-width flexbox columns
-      .col#{$infix} {
-        flex: 1 0 0;
       }
 
       @for $i from 1 through $columns {

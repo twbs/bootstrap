@@ -1,5 +1,3 @@
-// stylelint-disable no-duplicate-selectors
-
 //
 // Grid examples
 //
@@ -11,6 +9,11 @@
       padding: .75rem;
       background-color: rgba(39, 41, 43, .03);
       border: 1px solid rgba(39, 41, 43, .1);
+
+      // Show class if divs are empty
+      &:empty::after {
+        content: attr(class);
+      }
     }
   }
 
@@ -22,6 +25,8 @@
 .bd-example-row-flex-cols .row {
   min-height: 10rem;
   background-color: rgba(255, 0, 0, .1);
+  // Counteract row margins:
+  box-shadow: inset $grid-gutter-width $grid-gutter-width $body-bg;
 }
 
 .bd-highlight {

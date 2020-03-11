@@ -212,14 +212,14 @@ For grids that are the same from the smallest of devices to the largest, use the
 
 {{< example class="bd-example-row" >}}
 <div class="row">
-  <div class="col">col</div>
-  <div class="col">col</div>
-  <div class="col">col</div>
-  <div class="col">col</div>
+  <div class="col"></div>
+  <div class="col"></div>
+  <div class="col"></div>
+  <div class="col"></div>
 </div>
 <div class="row">
-  <div class="col-8">col-8</div>
-  <div class="col-4">col-4</div>
+  <div class="col-8"></div>
+  <div class="col-4"></div>
 </div>
 {{< /example >}}
 
@@ -229,13 +229,13 @@ Using a single set of `.col-sm-*` classes, you can create a basic grid system th
 
 {{< example class="bd-example-row" >}}
 <div class="row">
-  <div class="col-sm-8">col-sm-8</div>
-  <div class="col-sm-4">col-sm-4</div>
+  <div class="col-sm-8"></div>
+  <div class="col-sm-4"></div>
 </div>
 <div class="row">
-  <div class="col-sm">col-sm</div>
-  <div class="col-sm">col-sm</div>
-  <div class="col-sm">col-sm</div>
+  <div class="col-sm"></div>
+  <div class="col-sm"></div>
+  <div class="col-sm"></div>
 </div>
 {{< /example >}}
 
@@ -246,21 +246,21 @@ Don't want your columns to simply stack in some grid tiers? Use a combination of
 {{< example class="bd-example-row" >}}
 <!-- Stack the columns on mobile by making one full-width and the other half-width -->
 <div class="row">
-  <div class="col-md-8">.col-md-8</div>
-  <div class="col-6 col-md-4">.col-6 .col-md-4</div>
+  <div class="col-md-8"></div>
+  <div class="col-6 col-md-4"></div>
 </div>
 
 <!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
 <div class="row">
-  <div class="col-6 col-md-4">.col-6 .col-md-4</div>
-  <div class="col-6 col-md-4">.col-6 .col-md-4</div>
-  <div class="col-6 col-md-4">.col-6 .col-md-4</div>
+  <div class="col-6 col-md-4"></div>
+  <div class="col-6 col-md-4"></div>
+  <div class="col-6 col-md-4"></div>
 </div>
 
 <!-- Columns are always 50% wide, on mobile and desktop -->
 <div class="row">
-  <div class="col-6">.col-6</div>
-  <div class="col-6">.col-6</div>
+  <div class="col-6"></div>
+  <div class="col-6"></div>
 </div>
 {{< /example >}}
 
@@ -272,55 +272,55 @@ Use these row columns classes to quickly create basic grid layouts or to control
 
 {{< example class="bd-example-row" >}}
 <div class="row row-cols-2">
-  <div class="col">Column</div>
-  <div class="col">Column</div>
-  <div class="col">Column</div>
-  <div class="col">Column</div>
+  <div class="col"></div>
+  <div class="col"></div>
+  <div class="col"></div>
+  <div class="col"></div>
 </div>
 {{< /example >}}
 
 {{< example class="bd-example-row" >}}
 <div class="row row-cols-3">
-  <div class="col">Column</div>
-  <div class="col">Column</div>
-  <div class="col">Column</div>
-  <div class="col">Column</div>
+  <div class="col"></div>
+  <div class="col"></div>
+  <div class="col"></div>
+  <div class="col"></div>
 </div>
 {{< /example >}}
 
 {{< example class="bd-example-row" >}}
 <div class="row row-cols-auto">
-  <div class="col">Column</div>
-  <div class="col">Column</div>
-  <div class="col">Column</div>
-  <div class="col">Column</div>
+  <div class="col"></div>
+  <div class="col"></div>
+  <div class="col"></div>
+  <div class="col"></div>
 </div>
 {{< /example >}}
 
 {{< example class="bd-example-row" >}}
 <div class="row row-cols-4">
-  <div class="col">Column</div>
-  <div class="col">Column</div>
-  <div class="col">Column</div>
-  <div class="col">Column</div>
+  <div class="col"></div>
+  <div class="col"></div>
+  <div class="col"></div>
+  <div class="col"></div>
 </div>
 {{< /example >}}
 
 {{< example class="bd-example-row" >}}
 <div class="row row-cols-4">
-  <div class="col">Column</div>
-  <div class="col">Column</div>
-  <div class="col-6">Column</div>
-  <div class="col">Column</div>
+  <div class="col"></div>
+  <div class="col"></div>
+  <div class="col-6"></div>
+  <div class="col"></div>
 </div>
 {{< /example >}}
 
 {{< example class="bd-example-row" >}}
 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
-  <div class="col">Column</div>
-  <div class="col">Column</div>
-  <div class="col">Column</div>
-  <div class="col">Column</div>
+  <div class="col"></div>
+  <div class="col"></div>
+  <div class="col"></div>
+  <div class="col"></div>
 </div>
 {{< /example >}}
 
@@ -362,14 +362,10 @@ $gutters: (
 
 `.gx-*` classes can be used to control the horizontal gutter widths:
 
-{{< example >}}
+{{< example class="bd-example-row" >}}
 <div class="row gx-5">
-  <div class="col">
-   <div class="p-3 border bg-light">Custom column padding</div>
-  </div>
-  <div class="col">
-    <div class="p-3 border bg-light">Custom column padding</div>
-  </div>
+  <div class="col"></div>
+  <div class="col"></div>
 </div>
 {{< /example >}}
 
@@ -377,20 +373,12 @@ $gutters: (
 
 `.gy-*` classes can be used to control the vertical gutter widths:
 
-{{< example >}}
+{{< example class="bd-example-row" >}}
 <div class="row gy-5">
-  <div class="col-6">
-    <div class="p-3 border bg-light">Custom column padding</div>
-  </div>
-  <div class="col-6">
-    <div class="p-3 border bg-light">Custom column padding</div>
-  </div>
-  <div class="col-6">
-    <div class="p-3 border bg-light">Custom column padding</div>
-  </div>
-  <div class="col-6">
-    <div class="p-3 border bg-light">Custom column padding</div>
-  </div>
+  <div class="col-6"></div>
+  <div class="col-6"></div>
+  <div class="col-6"></div>
+  <div class="col-6"></div>
 </div>
 {{< /example >}}
 
@@ -398,20 +386,12 @@ $gutters: (
 
 `.g-*` classes can be used to control the horizontal gutter widths, for the following example we use a smaller gutter width, so there won't be a need to add the `.overflow-hidden` wrapper class.
 
-{{< example >}}
+{{< example class="bd-example-row" >}}
 <div class="row g-2">
-  <div class="col-6">
-    <div class="p-3 border bg-light">Custom column padding</div>
-  </div>
-  <div class="col-6">
-    <div class="p-3 border bg-light">Custom column padding</div>
-  </div>
-  <div class="col-6">
-    <div class="p-3 border bg-light">Custom column padding</div>
-  </div>
-  <div class="col-6">
-    <div class="p-3 border bg-light">Custom column padding</div>
-  </div>
+  <div class="col-6"></div>
+  <div class="col-6"></div>
+  <div class="col-6"></div>
+  <div class="col-6"></div>
 </div>
 {{< /example >}}
 
@@ -419,38 +399,18 @@ $gutters: (
 
 Gutter classes can also be added to [row columns](#row-columns). In the following example, we use responsive row columns and responsive gutter classes.
 
-{{< example >}}
+{{< example class="bd-example-row" >}}
 <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
-  <div class="col">
-    <div class="p-3 border bg-light">Row column</div>
-  </div>
-  <div class="col">
-    <div class="p-3 border bg-light">Row column</div>
-  </div>
-  <div class="col">
-    <div class="p-3 border bg-light">Row column</div>
-  </div>
-  <div class="col">
-    <div class="p-3 border bg-light">Row column</div>
-  </div>
-  <div class="col">
-    <div class="p-3 border bg-light">Row column</div>
-  </div>
-  <div class="col">
-    <div class="p-3 border bg-light">Row column</div>
-  </div>
-  <div class="col">
-    <div class="p-3 border bg-light">Row column</div>
-  </div>
-  <div class="col">
-    <div class="p-3 border bg-light">Row column</div>
-  </div>
-  <div class="col">
-    <div class="p-3 border bg-light">Row column</div>
-  </div>
-  <div class="col">
-    <div class="p-3 border bg-light">Row column</div>
-  </div>
+  <div class="col"></div>
+  <div class="col"></div>
+  <div class="col"></div>
+  <div class="col"></div>
+  <div class="col"></div>
+  <div class="col"></div>
+  <div class="col"></div>
+  <div class="col"></div>
+  <div class="col"></div>
+  <div class="col"></div>
 </div>
 {{< /example >}}
 
@@ -462,8 +422,8 @@ In practice, here's how it looks. Note you can continue to use this with all oth
 
 {{< example class="bd-example-row" >}}
 <div class="row g-0">
-  <div class="col-sm-6 col-md-8">.col-sm-6 .col-md-8</div>
-  <div class="col-6 col-md-4">.col-6 .col-md-4</div>
+  <div class="col-sm-6 col-md-8"></div>
+  <div class="col-6 col-md-4"></div>
 </div>
 {{< /example >}}
 
@@ -475,51 +435,27 @@ Use flexbox alignment utilities to vertically and horizontally align columns. **
 
 {{< example class="bd-example-row bd-example-row-flex-cols" >}}
 <div class="row align-items-start">
-  <div class="col">
-    One of three columns
-  </div>
-  <div class="col">
-    One of three columns
-  </div>
-  <div class="col">
-    One of three columns
-  </div>
+  <div class="col"></div>
+  <div class="col"></div>
+  <div class="col"></div>
 </div>
 <div class="row align-items-center">
-  <div class="col">
-    One of three columns
-  </div>
-  <div class="col">
-    One of three columns
-  </div>
-  <div class="col">
-    One of three columns
-  </div>
+  <div class="col"></div>
+  <div class="col"></div>
+  <div class="col"></div>
 </div>
 <div class="row align-items-end">
-  <div class="col">
-    One of three columns
-  </div>
-  <div class="col">
-    One of three columns
-  </div>
-  <div class="col">
-    One of three columns
-  </div>
+  <div class="col"></div>
+  <div class="col"></div>
+  <div class="col"></div>
 </div>
 {{< /example >}}
 
 {{< example class="bd-example-row bd-example-row-flex-cols" >}}
 <div class="row">
-  <div class="col align-self-start">
-    One of three columns
-  </div>
-  <div class="col align-self-center">
-    One of three columns
-  </div>
-  <div class="col align-self-end">
-    One of three columns
-  </div>
+  <div class="col align-self-start"></div>
+  <div class="col align-self-center"></div>
+  <div class="col align-self-end"></div>
 </div>
 {{< /example >}}
 
@@ -527,44 +463,24 @@ Use flexbox alignment utilities to vertically and horizontally align columns. **
 
 {{< example class="bd-example-row" >}}
 <div class="row justify-content-start">
-  <div class="col-4">
-    One of two columns
-  </div>
-  <div class="col-4">
-    One of two columns
-  </div>
+  <div class="col-4"></div>
+  <div class="col-4"></div>
 </div>
 <div class="row justify-content-center">
-  <div class="col-4">
-    One of two columns
-  </div>
-  <div class="col-4">
-    One of two columns
-  </div>
+  <div class="col-4"></div>
+  <div class="col-4"></div>
 </div>
 <div class="row justify-content-end">
-  <div class="col-4">
-    One of two columns
-  </div>
-  <div class="col-4">
-    One of two columns
-  </div>
+  <div class="col-4"></div>
+  <div class="col-4"></div>
 </div>
 <div class="row justify-content-around">
-  <div class="col-4">
-    One of two columns
-  </div>
-  <div class="col-4">
-    One of two columns
-  </div>
+  <div class="col-4"></div>
+  <div class="col-4"></div>
 </div>
 <div class="row justify-content-between">
-  <div class="col-4">
-    One of two columns
-  </div>
-  <div class="col-4">
-    One of two columns
-  </div>
+  <div class="col-4"></div>
+  <div class="col-4"></div>
 </div>
 {{< /example >}}
 
@@ -574,26 +490,26 @@ If more than 12 columns are placed within a single row, each group of extra colu
 
 {{< example class="bd-example-row" >}}
 <div class="row">
-  <div class="col-9">.col-9</div>
-  <div class="col-4">.col-4<br>Since 9 + 4 = 13 &gt; 12, this 4-column-wide div gets wrapped onto a new line as one contiguous unit.</div>
-  <div class="col-6">.col-6<br>Subsequent columns continue along the new line.</div>
+  <div class="col-9">col-9</div>
+  <div class="col-4">col-4<br>Since 9 + 4 = 13 &gt; 12, this 4-column-wide div gets wrapped onto a new line as one contiguous unit.</div>
+  <div class="col-6">col-6<br>Subsequent columns continue along the new line.</div>
 </div>
 {{< /example >}}
 
 ### Column breaks
 
-Breaking columns to a new line in flexbox requires a small hack: add an element with `width: 100%` wherever you want to wrap your columns to a new line. Normally this is accomplished with multiple `.row`s, but not every implementation method can account for this.
+Breaking columns to a new line in flexbox requires a small hack: add an element with `width: 100%` and `margin: 0` wherever you want to wrap your columns to a new line. Normally this is accomplished with multiple `.row`s, but not every implementation method can account for this.
 
 {{< example class="bd-example-row" >}}
 <div class="row">
-  <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
-  <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
+  <div class="col-6 col-sm-3"></div>
+  <div class="col-6 col-sm-3"></div>
 
   <!-- Force next columns to break to new line -->
-  <div class="w-100"></div>
+  <div class="w-100 m-0"></div>
 
-  <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
-  <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
+  <div class="col-6 col-sm-3"></div>
+  <div class="col-6 col-sm-3"></div>
 </div>
 {{< /example >}}
 
@@ -601,14 +517,14 @@ You may also apply this break at specific breakpoints with our [responsive displ
 
 {{< example class="bd-example-row" >}}
 <div class="row">
-  <div class="col-6 col-sm-4">.col-6 .col-sm-4</div>
-  <div class="col-6 col-sm-4">.col-6 .col-sm-4</div>
+  <div class="col-6 col-sm-4"></div>
+  <div class="col-6 col-sm-4"></div>
 
   <!-- Force next columns to break to new line at md breakpoint and up -->
   <div class="w-100 d-none d-md-block"></div>
 
-  <div class="col-6 col-sm-4">.col-6 .col-sm-4</div>
-  <div class="col-6 col-sm-4">.col-6 .col-sm-4</div>
+  <div class="col-6 col-sm-4"></div>
+  <div class="col-6 col-sm-4"></div>
 </div>
 {{< /example >}}
 
@@ -658,15 +574,15 @@ Move columns to the right using `.offset-md-*` classes. These classes increase t
 
 {{< example class="bd-example-row" >}}
 <div class="row">
-  <div class="col-md-4">.col-md-4</div>
-  <div class="col-md-4 offset-md-4">.col-md-4 .offset-md-4</div>
+  <div class="col-md-4"></div>
+  <div class="col-md-4 offset-md-4"></div>
 </div>
 <div class="row">
-  <div class="col-md-3 offset-md-3">.col-md-3 .offset-md-3</div>
-  <div class="col-md-3 offset-md-3">.col-md-3 .offset-md-3</div>
+  <div class="col-md-3 offset-md-3"></div>
+  <div class="col-md-3 offset-md-3"></div>
 </div>
 <div class="row">
-  <div class="col-md-6 offset-md-3">.col-md-6 .offset-md-3</div>
+  <div class="col-md-6 offset-md-3"></div>
 </div>
 {{< /example >}}
 
@@ -674,12 +590,12 @@ In addition to column clearing at responsive breakpoints, you may need to reset 
 
 {{< example class="bd-example-row" >}}
 <div class="row">
-  <div class="col-sm-5 col-md-6">.col-sm-5 .col-md-6</div>
-  <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0">.col-sm-5 .offset-sm-2 .col-md-6 .offset-md-0</div>
+  <div class="col-sm-5 col-md-6"></div>
+  <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0"></div>
 </div>
 <div class="row">
-  <div class="col-sm-6 col-md-5 col-lg-6">.col-sm-6 .col-md-5 .col-lg-6</div>
-  <div class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">.col-sm-6 .col-md-5 .offset-md-2 .col-lg-6 .offset-lg-0</div>
+  <div class="col-sm-6 col-md-5 col-lg-6"></div>
+  <div class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0"></div>
 </div>
 {{< /example >}}
 
@@ -689,16 +605,16 @@ With the move to flexbox in v4, you can use margin utilities like `.mr-auto` to 
 
 {{< example class="bd-example-row" >}}
 <div class="row">
-  <div class="col-md-4">.col-md-4</div>
-  <div class="col-md-4 ml-auto">.col-md-4 .ml-auto</div>
+  <div class="col-md-4"></div>
+  <div class="col-md-4 ml-auto"></div>
 </div>
 <div class="row">
-  <div class="col-md-3 ml-md-auto">.col-md-3 .ml-md-auto</div>
-  <div class="col-md-3 ml-md-auto">.col-md-3 .ml-md-auto</div>
+  <div class="col-md-3 ml-md-auto"></div>
+  <div class="col-md-3 ml-md-auto"></div>
 </div>
 <div class="row">
-  <div class="col-auto mr-auto">.col-auto .mr-auto</div>
-  <div class="col-auto">.col-auto</div>
+  <div class="col-auto mr-auto"></div>
+  <div class="col-auto"></div>
 </div>
 {{< /example >}}
 
