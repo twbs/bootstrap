@@ -536,7 +536,7 @@ When using card groups with footers, their content will automatically line up.
 Use the Bootstrap grid system and its [`.row-cols` classes]({{< docsref "/layout/grid#row-columns" >}}) to control how many grid columns (wrapped around your cards) you show per row. For example, here's `.row-cols-1` laying out the cards on one column, and `.row-cols-md-2` splitting four cards to equal width across multiple rows, from the medium breakpoint up.
 
 {{< example >}}
-<div class="row row-cols-md-2 g-4">
+<div class="row row-cols-md-2">
   <div class="card">
     {{< placeholder width="100%" height="140" class="card-img-top" text="Image cap" >}}
     <div class="card-body">
