@@ -25,6 +25,7 @@ const DATA_API_KEY = '.data-api'
 const ClassName = {
   ACTIVE: 'active',
   BUTTON: 'btn',
+  DISABLED: 'disabled',
   FOCUS: 'focus'
 }
 
@@ -89,8 +90,8 @@ class Button {
         if (triggerChangeEvent) {
           if (input.hasAttribute('disabled') ||
             rootElement.hasAttribute('disabled') ||
-            input.classList.contains('disabled') ||
-            rootElement.classList.contains('disabled')) {
+            input.classList.contains(ClassName.DISABLED) ||
+            rootElement.classList.contains(ClassName.DISABLED)) {
             return
           }
 
