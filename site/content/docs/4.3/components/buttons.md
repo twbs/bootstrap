@@ -70,11 +70,13 @@ Fancy larger or smaller buttons? Add `.btn-lg` or `.btn-sm` for additional sizes
 
 ## Layout
 
-Layout of buttons can be changed responsively using the grid system.
+Layout of buttons can be changed responsively using the grid's column classes:
 
 {{< example >}}
 <button type="button" class="btn btn-primary col-12 col-sm-auto">Full width when extra small screen</button>
 {{< /example >}}
+
+To adjust the button width to the wrapping columns in the grid, just add the `.w-100` class:
 
 <div class="bd-example">
   <div class="row g-2">
@@ -108,6 +110,8 @@ Layout of buttons can be changed responsively using the grid system.
   </div>
 </div>
 {{< /highlight >}}
+
+Combine these classes with [flex utilities]({{< docsref "/utilities/flex#justify-content" >}}) to unveil a truly unique mobile experience:
 
 {{< example >}}
 <div class="row g-2 justify-content-end">
