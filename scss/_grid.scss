@@ -25,12 +25,16 @@
       @each $key, $value in $gutters {
         .g#{$infix}-#{$key},
         .gx#{$infix}-#{$key} {
-          --grid-gutter-x: #{$value};
+          // Use 0px if $value is 0, to prevent the calc(... - 0) bug
+          // stylelint-disable-next-line length-zero-no-unit
+          --grid-gutter-x: #{if($value == 0, 0px, $value)};
         }
 
         .g#{$infix}-#{$key},
         .gy#{$infix}-#{$key} {
-          --grid-gutter-y: #{$value};
+          // Use 0px if $value is 0, to prevent the calc(... - 0) bug
+          // stylelint-disable-next-line length-zero-no-unit
+          --grid-gutter-y: #{if($value == 0, 0px, $value)};
         }
       }
     }
