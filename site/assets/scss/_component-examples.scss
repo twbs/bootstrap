@@ -15,7 +15,7 @@
   }
 
   .row + .row {
-    margin-top: 1rem;
+    margin-top: 0;
   }
 }
 
@@ -27,15 +27,6 @@
 .bd-highlight {
   background-color: rgba($bd-purple, .15);
   border: 1px solid rgba($bd-purple, .15);
-}
-
-.bd-example-responsive-containers {
-  [class^="container"] {
-    padding-top: .75rem;
-    padding-bottom: .75rem;
-    background-color: rgba(86, 61, 124, .15);
-    border: 1px solid rgba(86, 61, 124, .2);
-  }
 }
 
 // Grid mixins

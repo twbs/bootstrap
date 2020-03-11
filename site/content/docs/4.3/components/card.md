@@ -571,7 +571,7 @@ Use the Bootstrap grid system and its [`.row-cols` classes]({{< docsref "/layout
 Change it to `.row-cols-3` and you'll see the fourth card wrap.
 
 {{< example >}}
-<div class="row row-cols-md-3 g-4">
+<div class="row row-cols-md-3">
   <div class="card">
     {{< placeholder width="100%" height="140" class="card-img-top" text="Image cap" >}}
     <div class="card-body">
@@ -607,7 +607,7 @@ Change it to `.row-cols-3` and you'll see the fourth card wrap.
 Just like with card groups, card footers will automatically line up.
 
 {{< example >}}
-<div class="row row-cols-1 row-cols-md-3 g-4">
+<div class="row row-cols-1 row-cols-md-3">
   <div class="card">
     {{< placeholder width="100%" height="180" class="card-img-top" text="Image cap" >}}
     <div class="card-body">
