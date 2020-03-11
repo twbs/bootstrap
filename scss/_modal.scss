@@ -181,19 +181,10 @@
 
   .modal-dialog-scrollable {
     max-height: subtract(100%, $modal-dialog-margin-y-sm-up * 2);
-
-    .modal-content {
-      max-height: subtract(100vh, $modal-dialog-margin-y-sm-up * 2);
-    }
   }
 
   .modal-dialog-centered {
     min-height: subtract(100%, $modal-dialog-margin-y-sm-up * 2);
-
-    &::before {
-      height: subtract(100vh, $modal-dialog-margin-y-sm-up * 2);
-      height: min-content;
-    }
   }
 
   .modal-content {
