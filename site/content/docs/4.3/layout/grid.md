@@ -804,10 +804,10 @@ To nest your content with the default grid, add a new `.row` and set of `.col-sm
 The `.col-*` classes can also be used outside a `.row` to give an element a specific width. Whenever column classes are used as non direct children of a row, the paddings are omitted.
 
 {{< example >}}
-<div class="col-3 bg-light p-3 border">
+<div class="w-25 bg-light p-3 border">
   .col-3: width of 25%
 </div>
-<div class="col-sm-9 bg-light p-3 border">
+<div class="w-75 bg-light p-3 border">
   .col-sm-9: width of 75% above sm breakpoint
 </div>
 {{< /example >}}
@@ -816,7 +816,7 @@ The classes can be used together with utilities to create responsive floated ima
 
 {{< example >}}
 <div class="clearfix">
-  {{< placeholder width="100%" height="210" class="col-md-6 float-md-right mb-3 ml-md-3" text="Responsive floated image" >}}
+  {{< placeholder width="100%" height="210" class="w-md-50 float-md-right mb-3 ml-md-3" text="Responsive floated image" >}}
 
   <p>
     Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue. Fusce dapibus, tellus ac cursus commodo, tortor mauris paddenstoel nibh, ut fermentum massa justo sit amet risus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.

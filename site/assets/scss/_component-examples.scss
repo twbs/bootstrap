@@ -8,8 +8,7 @@
   .row {
     > .col,
     > [class^="col-"] {
-      padding-top: .75rem;
-      padding-bottom: .75rem;
+      padding: .75rem;
       background-color: rgba(39, 41, 43, .03);
       border: 1px solid rgba(39, 41, 43, .1);
     }
