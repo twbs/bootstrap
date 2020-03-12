@@ -1,6 +1,6 @@
 // Progress sizes
-@mixin progress-size ($height, $font-size, $border-radius) {
-    height: $height;
-    @include font-size($font-size);
-    @include border-radius($border-radius);
+@mixin progress-size($height, $font-size, $border-radius) {
+  height: $height;
+  @include font-size($font-size);
+  @include border-radius($border-radius);
 }
