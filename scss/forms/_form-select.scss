@@ -4,7 +4,7 @@
 // https://primer.github.io/.
 
 .form-select {
-  display: inline-block;
+  display: block;
   width: 100%;
   height: $form-select-height;
   padding: $form-select-padding-y ($form-select-padding-x + $form-select-indicator-padding) $form-select-padding-y $form-select-padding-x;
