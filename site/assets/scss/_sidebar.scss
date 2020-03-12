@@ -38,6 +38,7 @@
     margin-right: .25rem;
     line-height: 0; // Align in the middle
     content: escape-svg($sidebar-collapse-icon);
+    @include transition(transform .35s ease);
   }
 
   [aria-expanded="true"] {
