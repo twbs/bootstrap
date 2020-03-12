@@ -55,7 +55,7 @@
   flex-flow: column nowrap;
   padding-left: 1.25rem;
 
-  > li > a {
+  a {
     display: inline-block;
     padding: .25rem .5rem;
     @include font-size(.875rem);
@@ -70,7 +70,7 @@
     }
   }
 
-  [aria-current="page"] {
+  .active {
     font-weight: 600;
     color: rgba($black, .85);
   }
