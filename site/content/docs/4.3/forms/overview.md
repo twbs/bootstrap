@@ -74,10 +74,14 @@ Help text below inputs can be styled with `.form-text`. This class includes `dis
 Inline text can use any typical inline HTML element (be it a `<small>`, `<span>`, or something else) with nothing more than a utility class.
 
 {{< example >}}
-<form class="form-inline">
-  <div class="mb-3">
-    <label for="inputPassword6">Password</label>
-    <input type="password" id="inputPassword6" class="form-control mx-sm-3" aria-describedby="passwordHelpInline">
+<form class="row g-3 align-items-center">
+  <div class="col-auto">
+    <label for="inputPassword6" class="col-form-label">Password</label>
+  </div>
+  <div class="col-auto">
+    <input type="password" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
+  </div>
+  <div class="col-auto">
     <small id="passwordHelpInline" class="text-muted">
       Must be 8-20 characters long.
     </small>

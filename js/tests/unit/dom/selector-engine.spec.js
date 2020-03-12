@@ -110,6 +110,21 @@ describe('SelectorEngine', () => {
 
       expect(SelectorEngine.prev(btn, '.test')).toEqual([divTest])
     })
+
+    it('should return previous element with comments or text nodes between', () => {
+      fixtureEl.innerHTML = [
+        '<div class="test"></div>',
+        '<div class="test"></div>',
+        '<!-- Comment-->',
+        'Text',
+        '<button class="btn"></button>'
+      ].join('')
+
+      const btn = fixtureEl.querySelector('.btn')
+      const divTest = fixtureEl.querySelectorAll('.test')[1]
+
+      expect(SelectorEngine.prev(btn, '.test')).toEqual([divTest])
+    })
   })
 })
 
