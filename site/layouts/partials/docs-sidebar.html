@@ -25,8 +25,8 @@
       <ul class="nav bd-sidenav mb-2 collapse{{ if $active_group }} show{{ end }}" id="{{ $group_slug }}-collapse">
         {{- range $doc := $group.pages -}}
           {{- $doc_slug := $doc.title | urlize }}
-          <li{{ if and $active_group (eq $page_slug $doc_slug) }} class="active bd-sidenav-active"{{ end }}>
-            <a href="/docs/{{ $.Site.Params.docs_version }}/{{ $group_slug }}/{{ $doc_slug }}/"{{ if and $active_group (eq $page_slug $doc_slug) }} aria-current="page"{{ end }}>
+          <li{{ if and $active_group (eq $page_slug $doc_slug) }} class="bd-sidenav-active"{{ end }}>
+            <a href="/docs/{{ $.Site.Params.docs_version }}/{{ $group_slug }}/{{ $doc_slug }}/"{{ if and $active_group (eq $page_slug $doc_slug) }} class="active" aria-current="page"{{ end }}>
               {{- $doc.title -}}
             </a>
           </li>
