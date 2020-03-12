@@ -7,11 +7,9 @@
 
 .progress {
   display: flex;
-  height: $progress-height;
+  @include progress-size($progress-height, $progress-font-size, $progress-border-radius);
   overflow: hidden; // force rounded corners by cropping it
-  @include font-size($progress-font-size);
   background-color: $progress-bg;
-  @include border-radius($progress-border-radius);
   @include box-shadow($progress-box-shadow);
 }
 
@@ -30,6 +28,17 @@
 .progress-bar-striped {
   @include gradient-striped();
   background-size: $progress-height $progress-height;
+}
+
+//
+// Progress Sizes
+//
+.progress-lg {
+  @include progress-size($progress-height-lg, $progress-font-size-lg, $progress-border-radius-lg)
+}
+
+.progress-sm {
+  @include progress-size($progress-height-sm, $progress-font-size-sm, $progress-border-radius-sm)
 }
 
 @if $enable-transitions {

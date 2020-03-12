@@ -1082,6 +1082,14 @@ $progress-bar-bg:                   $primary !default;
 $progress-bar-animation-timing:     1s linear infinite !default;
 $progress-bar-transition:           width .6s ease !default;
 
+$progress-height-sm:                0.5rem !default;
+$progress-font-size-sm:             $progress-font-size !default;
+$progress-border-radius-sm:         $progress-border-radius !default;
+
+$progress-height-lg:                1.5rem !default;
+$progress-font-size-lg:             $progress-font-size !default;
+$progress-border-radius-lg:         $progress-border-radius !default;
+
 
 // List group
 
