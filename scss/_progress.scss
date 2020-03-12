@@ -34,11 +34,11 @@
 // Progress Sizes
 //
 .progress-lg {
-  @include progress-size($progress-height-lg, $progress-font-size-lg, $progress-border-radius-lg)
+  @include progress-size($progress-height-lg, $progress-font-size-lg, $progress-border-radius-lg);
 }
 
 .progress-sm {
-  @include progress-size($progress-height-sm, $progress-font-size-sm, $progress-border-radius-sm)
+  @include progress-size($progress-height-sm, $progress-font-size-sm, $progress-border-radius-sm);
 }
 
 @if $enable-transitions {
