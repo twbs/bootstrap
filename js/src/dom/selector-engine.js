@@ -6,7 +6,6 @@
  */
 
 import { find as findFn, findOne } from './polyfill'
-import { makeArray } from '../util/index'
 
 /**
  * ------------------------------------------------------------------------
@@ -22,7 +21,7 @@ const SelectorEngine = {
   },
 
   find(selector, element = document.documentElement) {
-    return findFn.call(element, selector)
+    return [].concat(...findFn.call(element, selector))
   },
 
   findOne(selector, element = document.documentElement) {
@@ -30,9 +29,9 @@ const SelectorEngine = {
   },
 
   children(element, selector) {
-    const children = makeArray(element.children)
+    const children = [].concat(...element.children)
 
-    return children.filter(child => this.matches(child, selector))
+    return children.filter(child => child.matches(selector))
   },
 
   parents(element, selector) {
@@ -59,7 +58,7 @@ const SelectorEngine = {
     let previous = element.previousElementSibling
 
     while (previous) {
-      if (this.matches(previous, selector)) {
+      if (previous.matches(selector)) {
         return [previous]
       }
 

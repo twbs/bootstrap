@@ -244,20 +244,6 @@ describe('Util', () => {
     })
   })
 
-  describe('makeArray', () => {
-    it('should convert node list to array', () => {
-      const nodeList = document.querySelectorAll('div')
-
-      expect(Array.isArray(nodeList)).toEqual(false)
-      expect(Array.isArray(Util.makeArray(nodeList))).toEqual(true)
-    })
-
-    it('should return an empty array if the nodeList is undefined', () => {
-      expect(Util.makeArray(null)).toEqual([])
-      expect(Util.makeArray(undefined)).toEqual([])
-    })
-  })
-
   describe('isVisible', () => {
     it('should return false if the element is not defined', () => {
       expect(Util.isVisible(null)).toEqual(false)

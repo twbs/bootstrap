@@ -5,8 +5,6 @@
  * --------------------------------------------------------------------------
  */
 
-import { makeArray } from './index'
-
 const uriAttrs = [
   'background',
   'cite',
@@ -103,7 +101,7 @@ export function sanitizeHtml(unsafeHtml, whiteList, sanitizeFn) {
   const domParser = new window.DOMParser()
   const createdDocument = domParser.parseFromString(unsafeHtml, 'text/html')
   const whitelistKeys = Object.keys(whiteList)
-  const elements = makeArray(createdDocument.body.querySelectorAll('*'))
+  const elements = [].concat(...createdDocument.body.querySelectorAll('*'))
 
   for (let i = 0, len = elements.length; i < len; i++) {
     const el = elements[i]
@@ -115,7 +113,7 @@ export function sanitizeHtml(unsafeHtml, whiteList, sanitizeFn) {
       continue
     }
 
-    const attributeList = makeArray(el.attributes)
+    const attributeList = [].concat(...el.attributes)
     const whitelistedAttributes = [].concat(whiteList['*'] || [], whiteList[elName] || [])
 
     attributeList.forEach(attr => {
