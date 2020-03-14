@@ -4,6 +4,14 @@
     $transition: $transition-base;
   }
 
+  @if length($transition) > 1 {
+    @each $value in $transition {
+      @if $value == null or $value == none {
+        @warn "The keyword 'none' or 'null' must be used as a single argument.";
+      }
+    }
+  }
+
   @if $enable-transitions {
     transition: $transition;
 
