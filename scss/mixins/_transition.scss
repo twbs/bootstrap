@@ -13,7 +13,9 @@
   }
 
   @if $enable-transitions {
-    transition: $transition;
+    @if nth($transition, 1) != null {
+      transition: $transition;
+    }
 
     @if $enable-prefers-reduced-motion-media-query and nth($transition, 1) != null and nth($transition, 1) != none {
       @media (prefers-reduced-motion: reduce) {
