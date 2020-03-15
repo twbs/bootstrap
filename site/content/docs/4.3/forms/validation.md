@@ -36,14 +36,14 @@ Custom feedback styles apply custom colors, borders, focus styles, and backgroun
   <div class="col-md-4">
     <label for="validationCustom01" class="form-label">First name</label>
     <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
-    <div class="valid-feedback">
+    <div class="valid-feedback mt-2">
       Looks good!
     </div>
   </div>
   <div class="col-md-4">
     <label for="validationCustom02" class="form-label">Last name</label>
     <input type="text" class="form-control" id="validationCustom02" value="Otto" required>
-    <div class="valid-feedback">
+    <div class="valid-feedback mt-2">
       Looks good!
     </div>
   </div>
@@ -182,14 +182,14 @@ We recommend using client-side validation, but in case you require server-side v
   <div class="col-md-4">
     <label for="validationServer01" class="form-label">First name</label>
     <input type="text" class="form-control is-valid" id="validationServer01" value="Mark" required>
-    <div class="valid-feedback">
+    <div class="valid-feedback mt-2">
       Looks good!
     </div>
   </div>
   <div class="col-md-4">
     <label for="validationServer02" class="form-label">Last name</label>
     <input type="text" class="form-control is-valid" id="validationServer02" value="Otto" required>
-    <div class="valid-feedback">
+    <div class="valid-feedback mt-2">
       Looks good!
     </div>
   </div>
