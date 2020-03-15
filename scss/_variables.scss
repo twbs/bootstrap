@@ -428,6 +428,7 @@ $blockquote-small-color:      $gray-600 !default;
 $blockquote-small-font-size:  $small-font-size !default;
 $blockquote-font-size:        $font-size-base * 1.25 !default;
 
+$hr-margin-y:                 $spacer !default;
 $hr-color:                    inherit !default;
 $hr-height:                   $border-width !default;
 $hr-opacity:                  .25 !default;
@@ -445,8 +446,6 @@ $nested-kbd-font-weight:      $font-weight-bold !default;
 $list-inline-padding:         .5rem !default;
 
 $mark-bg:                     #fcf8e3 !default;
-
-$hr-margin-y:                 $spacer !default;
 
 
 // Tables
