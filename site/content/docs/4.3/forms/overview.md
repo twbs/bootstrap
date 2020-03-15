@@ -57,7 +57,7 @@ Here's a quick example to demonstrate Bootstrap's form styles. Keep reading for 
 Help text should be explicitly associated with the form control it relates to using the `aria-describedby` attribute. This will ensure that assistive technologies—such as screen readers—will announce this help text when the user focuses or enters the control.
 {{< /callout >}}
 
-Help text below inputs can be styled with `.mt-2`, `.text-small`, and/or `.text-muted`.
+Help text below inputs can be styled with `.mt-2`, `.small`, and/or `.text-muted`.
 
 {{< example >}}
 <label for="inputPassword5" class="form-label">Password</label>
