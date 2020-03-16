@@ -84,17 +84,13 @@ class Button {
               $(activeElement).removeClass(ClassName.ACTIVE)
             }
           }
-        } else if (input.type === 'checkbox') {
-          if (this._element.tagName === 'LABEL' && input.checked === this._element.classList.contains(ClassName.ACTIVE)) {
-            triggerChangeEvent = false
-          }
-        } else {
-          // if it's not a radio button or checkbox don't add a pointless/invalid checked property to the input
-          triggerChangeEvent = false
         }
 
         if (triggerChangeEvent) {
-          input.checked = !this._element.classList.contains(ClassName.ACTIVE)
+          // if it's not a radio button or checkbox don't add a pointless/invalid checked property to the input
+          if (input.type === 'checkbox' || input.type === 'radio') {
+            input.checked = !this._element.classList.contains(ClassName.ACTIVE)
+          }
           $(input).trigger('change')
         }
 
@@ -147,6 +143,7 @@ class Button {
 $(document)
   .on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE_CARROT, (event) => {
     let button = event.target
+    const initialButton = button
 
     if (!$(button).hasClass(ClassName.BUTTON)) {
       button = $(button).closest(Selector.BUTTON)[0]
@@ -162,6 +159,9 @@ $(document)
         return
       }
 
+      if (initialButton.tagName === 'LABEL' && inputBtn && inputBtn.type === 'checkbox') {
+        event.preventDefault() // work around event sent to label and input
+      }
       Button._jQueryInterface.call($(button), 'toggle')
     }
   })
