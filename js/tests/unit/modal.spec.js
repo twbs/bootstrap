@@ -2,7 +2,61 @@ import Modal from '../../src/modal'
 import EventHandler from '../../src/dom/event-handler'
 
 /** Test helpers */
-import { getFixture, clearFixture, createEvent, jQueryMock } from '../helpers/fixture'
+import { getFixture, clearFixture, unstyleFixture, createEvent, jQueryMock } from '../helpers/fixture'
+
+const getModalCss = () => {
+  return [
+    '  *,',
+    '  *::before,',
+    '  *::after {',
+    '    box-sizing: border-box;',
+    '  }',
+    '',
+    '  body {',
+    '    margin: 0;',
+    '    line-height: 1.5;',
+    '    -webkit-text-size-adjust: 100%;',
+    '  }',
+    '',
+    '  .modal {',
+    '    position: fixed;',
+    '    top: 0;',
+    '    left: 0;',
+    '    z-index: 1050;',
+    '    display: none;',
+    '    width: 100%;',
+    '    height: 100%;',
+    '    overflow: hidden;',
+    '    outline: 0;',
+    '  }'
+  ].join('\n')
+}
+
+const createTallContent = () => {
+  const tallContent = document.createElement('div')
+  tallContent.id = 'tall-content'
+  tallContent.style.height = window.innerHeight + 100 + 'px'
+  tallContent.style.width = '1px'
+  return tallContent
+}
+
+const getModalInnerHtml = () => {
+  return [
+    '<div class="modal"><div class="modal-dialog" ><div class="modal-content">',
+    '      <div class="modal-body" id="modal-body">',
+    '      </div>',
+    '    </div></div></div>'
+  ].join('\n')
+}
+
+const loadModalCss = () => {
+  const style = document.createElement('style')
+  style.type = 'text/css'
+  style.appendChild(document.createTextNode(getModalCss()))
+  style.id = 'modal-style'
+
+  document.head.appendChild(style)
+}
 
 describe('Modal', () => {
   let fixtureEl
@@ -37,6 +91,16 @@ describe('Modal', () => {
       })
 
     document.body.style.paddingRight = '0px'
+
+    const tallContent = document.getElementById('tall-content')
+    if (tallContent) {
+      tallContent.parentElement.removeChild(tallContent)
+    }
+
+    const modalStyle = document.getElementById('modal-style')
+    if (modalStyle) {
+      modalStyle.parentElement.removeChild(modalStyle)
+    }
   })
 
   afterAll(() => {
@@ -65,6 +129,7 @@ describe('Modal', () => {
       const originalPadding = '0px'
 
       document.body.style.paddingRight = originalPadding
+      document.body.appendChild(createTallContent())
 
       modalEl.addEventListener('shown.bs.modal', () => {
         expect(document.body.getAttribute('data-padding-right')).toEqual(originalPadding, 'original body padding should be stored in data-padding-right')
@@ -88,6 +153,8 @@ describe('Modal', () => {
 
       const fixedEl = fixtureEl.querySelector('.fixed-top')
       const originalPadding = parseInt(window.getComputedStyle(fixedEl).paddingRight, 10)
+      document.body.appendChild(createTallContent())
+
       const modalEl = fixtureEl.querySelector('.modal')
       const modal = new Modal(modalEl)
 
@@ -117,6 +184,7 @@ describe('Modal', () => {
         '<div class="modal"><div class="modal-dialog"></div></div>'
       ].join('')
 
+      document.body.appendChild(createTallContent())
       const stickyTopEl = fixtureEl.querySelector('.sticky-top')
       const originalMargin = parseInt(window.getComputedStyle(stickyTopEl).marginRight, 10)
       const modalEl = fixtureEl.querySelector('.modal')
@@ -200,6 +268,7 @@ describe('Modal', () => {
       fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
 
       document.body.style.paddingRight = '5%'
+      document.body.appendChild(createTallContent())
 
       const modalEl = fixtureEl.querySelector('.modal')
       const modal = new Modal(modalEl)
@@ -729,6 +798,641 @@ describe('Modal', () => {
         })
 
         document.dispatchEvent(focusInEvent)
+      })
+
+      modal.show()
+    })
+
+    it('should not add compensation padding when body boundary width is less than window width with no vertical scrollbar before showing and no vertical scrollbar after showing', done => {
+      loadModalCss()
+      document.body.style.width = window.innerWidth - 1 + 'px'
+      document.body.style.height = '1px'
+      document.documentElement.style.paddingRight = null
+      unstyleFixture()
+
+      fixtureEl.innerHTML = getModalInnerHtml()
+
+      const modalEl = fixtureEl.querySelector('.modal')
+      const modal = new Modal(modalEl)
+
+      modalEl.addEventListener('shown.bs.modal', () => {
+        expect(modalEl.style.paddingRight).toEqual('')
+        done()
+      })
+
+      modal.show()
+    })
+
+    it('should not add compensation padding when body boundary width (including negative margin-left) is greater than window width with no vertical scrollbar before showing and no vertical scrollbar after showing', done => {
+      loadModalCss()
+      document.body.style.width = window.innerWidth + 101 + 'px'
+      document.body.style.height = '1px'
+      document.body.style.marginLeft = '-100px'
+      document.documentElement.style.paddingRight = null
+      unstyleFixture()
+
+      fixtureEl.innerHTML = getModalInnerHtml()
+
+      const modalEl = fixtureEl.querySelector('.modal')
+      const modal = new Modal(modalEl)
+
+      modalEl.addEventListener('shown.bs.modal', () => {
+        expect(modalEl.style.paddingRight).toEqual('')
+        done()
+      })
+
+      modal.show()
+    })
+
+    it('should not add compensation padding when body boundary width (including margin-left) is less than or equal to window width with no vertical scrollbar before showing and no vertical scrollbar after showing', done => {
+      loadModalCss()
+      document.body.style.width = window.innerWidth - 100 + 'px'
+      document.body.style.height = '1px'
+      document.body.style.marginLeft = '100px'
+      document.documentElement.style.paddingRight = null
+      unstyleFixture()
+
+      fixtureEl.innerHTML = getModalInnerHtml()
+
+      const modalEl = fixtureEl.querySelector('.modal')
+      const modal = new Modal(modalEl)
+
+      modalEl.addEventListener('shown.bs.modal', () => {
+        expect(modalEl.style.paddingRight).toEqual('')
+
+        done()
+      })
+
+      modal.show()
+    })
+
+    it('should not add compensation padding when body boundary width (including padding-left) is less than or equal to window width with no vertical scrollbar before showing and no vertical scrollbar after showing', done => {
+      loadModalCss()
+      document.body.style.width = window.innerWidth - 100 + 'px'
+      document.body.style.height = '1px'
+      document.body.style.paddingLeft = '100px'
+      document.documentElement.style.paddingRight = null
+      unstyleFixture()
+
+      fixtureEl.innerHTML = getModalInnerHtml()
+
+      const modalEl = fixtureEl.querySelector('.modal')
+      const modal = new Modal(modalEl)
+
+      modalEl.addEventListener('shown.bs.modal', () => {
+        expect(modalEl.style.paddingRight).toEqual('')
+
+        done()
+      })
+
+      modal.show()
+    })
+
+    it('should not add compensation padding when body boundary height is less than window height with no vertical scrollbar before showing and no vertical scrollbar after showing', done => {
+      loadModalCss()
+      document.body.style.width = '50px'
+      document.body.style.height = window.innerHeight - 1 + 'px'
+      document.documentElement.style.paddingRight = null
+      unstyleFixture()
+
+      fixtureEl.innerHTML = getModalInnerHtml()
+
+      const modalEl = fixtureEl.querySelector('.modal')
+      const modal = new Modal(modalEl)
+
+      modalEl.addEventListener('shown.bs.modal', () => {
+        expect(modalEl.style.paddingRight).toEqual('')
+        done()
+      })
+
+      modal.show()
+    })
+
+    it('should not add compensation padding when body boundary height (including negative margin-top) is less than window height with no vertical scrollbar before showing and no vertical scrollbar after showing', done => {
+      loadModalCss()
+      document.body.style.width = '50px'
+      document.body.style.height = window.innerHeight + 100 + 'px'
+      document.body.style.marginTop = '-100px'
+      document.documentElement.style.paddingRight = null
+      unstyleFixture()
+
+      fixtureEl.innerHTML = getModalInnerHtml()
+
+      const modalEl = fixtureEl.querySelector('.modal')
+      const modal = new Modal(modalEl)
+
+      modalEl.addEventListener('shown.bs.modal', () => {
+        expect(modalEl.style.paddingRight).toEqual('')
+
+        done()
+      })
+
+      modal.show()
+    })
+
+    it('should not add compensation padding when body boundary height (including margin-top) is less than or equal to window height with no vertical scrollbar before showing and no vertical scrollbar after showing', done => {
+      loadModalCss()
+      document.body.style.width = '50px'
+      document.body.style.height = window.innerHeight - 100 + 'px'
+      document.body.style.marginTop = '100px'
+      document.documentElement.style.paddingRight = null
+      unstyleFixture()
+
+      fixtureEl.innerHTML = getModalInnerHtml()
+
+      const modalEl = fixtureEl.querySelector('.modal')
+      const modal = new Modal(modalEl)
+
+      modalEl.addEventListener('shown.bs.modal', () => {
+        expect(modalEl.style.paddingRight).toEqual('')
+
+        done()
+      })
+
+      modal.show()
+    })
+
+    it('should not add compensation padding when body boundary height (including padding-top) is less than or equal to window width with no vertical scrollbar before showing and no vertical scrollbar after showing', done => {
+      loadModalCss()
+      document.body.style.width = '50px'
+      document.body.style.height = '1px'
+      document.body.style.paddingTop = window.innerHeight - 1 + 'px'
+      document.documentElement.style.paddingRight = null
+      unstyleFixture()
+
+      fixtureEl.innerHTML = getModalInnerHtml()
+
+      const modalEl = fixtureEl.querySelector('.modal')
+      const modal = new Modal(modalEl)
+
+      modalEl.addEventListener('shown.bs.modal', () => {
+        expect(modalEl.style.paddingRight).toEqual('')
+
+        done()
+      })
+
+      modal.show()
+    })
+
+    it('should add compensation padding when body boundary height is greater than window height with a vertical scrollbar before showing and no vertical scrollbar after showing', done => {
+      loadModalCss()
+      document.body.style.width = '50px'
+      document.body.style.height = window.innerHeight + 1 + 'px'
+      document.documentElement.style.paddingRight = null
+      unstyleFixture()
+
+      fixtureEl.innerHTML = getModalInnerHtml()
+
+      const modalEl = fixtureEl.querySelector('.modal')
+      const modal = new Modal(modalEl)
+
+      modalEl.addEventListener('shown.bs.modal', () => {
+        expect(parseInt(modalEl.style.paddingRight, 10)).toEqual(modal._getScrollbarWidth())
+        done()
+      })
+
+      modal.show()
+    })
+
+    it('should add compensation padding when body boundary height (including negative margin-top) is greater than window height with a vertical scrollbar before showing and no vertical scrollbar after showing', done => {
+      loadModalCss()
+      document.body.style.width = '50px'
+      document.body.style.height = window.innerHeight + 101 + 'px'
+      document.body.style.marginTop = '-100px'
+      document.documentElement.style.paddingRight = null
+      unstyleFixture()
+
+      fixtureEl.innerHTML = getModalInnerHtml()
+
+      const modalEl = fixtureEl.querySelector('.modal')
+      const modal = new Modal(modalEl)
+
+      modalEl.addEventListener('shown.bs.modal', () => {
+        expect(parseInt(modalEl.style.paddingRight, 10)).toEqual(modal._getScrollbarWidth())
+
+        done()
+      })
+
+      modal.show()
+    })
+
+    it('should add compensation padding when body boundary height (including margin-top) is greater than window height with a vertical scrollbar before showing and no vertical scrollbar after showing', done => {
+      loadModalCss()
+      document.body.style.width = '50px'
+      document.body.style.height = window.innerHeight - 100 + 'px'
+      document.body.style.marginTop = '101px'
+      document.documentElement.style.paddingRight = null
+      unstyleFixture()
+
+      fixtureEl.innerHTML = getModalInnerHtml()
+
+      const modalEl = fixtureEl.querySelector('.modal')
+      const modal = new Modal(modalEl)
+
+      modalEl.addEventListener('shown.bs.modal', () => {
+        expect(parseInt(modalEl.style.paddingRight, 10)).toEqual(modal._getScrollbarWidth())
+
+        done()
+      })
+
+      modal.show()
+    })
+
+    it('should add compensation padding when body boundary height (including padding-top) is greater than window height with a vertical scrollbar before showing and no vertical scrollbar after showing', done => {
+      loadModalCss()
+      document.body.style.width = '50px'
+      document.body.style.height = '1px'
+      document.body.style.paddingTop = window.innerHeight + 1 + 'px'
+      document.documentElement.style.paddingRight = null
+      unstyleFixture()
+
+      fixtureEl.innerHTML = getModalInnerHtml()
+
+      const modalEl = fixtureEl.querySelector('.modal')
+      const modal = new Modal(modalEl)
+
+      modalEl.addEventListener('shown.bs.modal', () => {
+        expect(parseInt(modalEl.style.paddingRight, 10)).toEqual(modal._getScrollbarWidth())
+
+        done()
+      })
+
+      modal.show()
+    })
+
+    it('should add compensation padding when body boundary height is greater than window height, and body boundary width is greater than window width with a vertical scrollbar before showing and no vertical scrollbar after showing', done => {
+      loadModalCss()
+      document.body.style.width = window.innerWidth + 1 + 'px'
+      document.body.style.height = window.innerHeight + 1 + 'px'
+      document.documentElement.style.paddingRight = null
+      unstyleFixture()
+
+      fixtureEl.innerHTML = getModalInnerHtml()
+
+      const modalEl = fixtureEl.querySelector('.modal')
+      const modal = new Modal(modalEl)
+
+      modalEl.addEventListener('shown.bs.modal', () => {
+        expect(parseInt(modalEl.style.paddingRight, 10)).toEqual(modal._getScrollbarWidth())
+
+        done()
+      })
+
+      modal.show()
+    })
+
+    it('should add compensation padding when body boundary height is greater than window height, and body boundary width is less than window width with a vertical scrollbar before showing and no vertical scrollbar after showing', done => {
+      loadModalCss()
+      document.body.style.width = window.innerWidth - 1 + 'px'
+      document.body.style.height = window.innerHeight + 1 + 'px'
+      document.documentElement.style.paddingRight = null
+      unstyleFixture()
+
+      fixtureEl.innerHTML = getModalInnerHtml()
+
+      const modalEl = fixtureEl.querySelector('.modal')
+      const modal = new Modal(modalEl)
+
+      modalEl.addEventListener('shown.bs.modal', () => {
+        expect(parseInt(modalEl.style.paddingRight, 10)).toEqual(modal._getScrollbarWidth())
+
+        done()
+      })
+
+      modal.show()
+    })
+
+    it('should add compensation padding when body boundary height is greater than window height, and body boundary width is greater than window width (including margin-left) with a vertical scrollbar before showing and no vertical scrollbar after showing', done => {
+      loadModalCss()
+      document.body.style.width = window.innerWidth - 100 + 'px'
+      document.body.style.height = window.innerHeight + 1 + 'px'
+      document.body.style.marginLeft = '101px'
+      document.documentElement.style.paddingRight = null
+      unstyleFixture()
+
+      fixtureEl.innerHTML = getModalInnerHtml()
+
+      const modalEl = fixtureEl.querySelector('.modal')
+      const modal = new Modal(modalEl)
+
+      modalEl.addEventListener('shown.bs.modal', () => {
+        expect(parseInt(modalEl.style.paddingRight, 10)).toEqual(modal._getScrollbarWidth())
+
+        done()
+      })
+
+      modal.show()
+    })
+
+    it('should add compensation padding when body boundary height is greater than window height, and body boundary width is less than window width (including margin-left) with a vertical scrollbar before showing and no vertical scrollbar after showing', done => {
+      loadModalCss()
+      document.body.style.width = window.innerWidth - 101 + 'px'
+      document.body.style.height = window.innerHeight + 1 + 'px'
+      document.body.style.marginLeft = '100px'
+      document.documentElement.style.paddingRight = null
+      unstyleFixture()
+
+      fixtureEl.innerHTML = getModalInnerHtml()
+
+      const modalEl = fixtureEl.querySelector('.modal')
+      const modal = new Modal(modalEl)
+
+      modalEl.addEventListener('shown.bs.modal', () => {
+        expect(parseInt(modalEl.style.paddingRight, 10)).toEqual(modal._getScrollbarWidth())
+
+        done()
+      })
+
+      modal.show()
+    })
+
+    it('should add compensation padding when body boundary height is greater than window height, and body boundary width is greater than window width (including negative margin-left) with a vertical scrollbar before showing and no vertical scrollbar after showing', done => {
+      loadModalCss()
+      document.body.style.width = window.innerWidth + 101 + 'px'
+      document.body.style.height = window.innerHeight + 1 + 'px'
+      document.body.style.marginLeft = '-100px'
+      document.documentElement.style.paddingRight = null
+      unstyleFixture()
+
+      fixtureEl.innerHTML = getModalInnerHtml()
+
+      const modalEl = fixtureEl.querySelector('.modal')
+      const modal = new Modal(modalEl)
+
+      modalEl.addEventListener('shown.bs.modal', () => {
+        expect(parseInt(modalEl.style.paddingRight, 10)).toEqual(modal._getScrollbarWidth())
+
+        done()
+      })
+
+      modal.show()
+    })
+
+    it('should add compensation padding when body boundary height is greater than window height, and body boundary width is less than window width (including negative margin-left) with a vertical scrollbar before showing and no vertical scrollbar after showing', done => {
+      loadModalCss()
+      document.body.style.width = window.innerWidth + 100 + 'px'
+      document.body.style.height = window.innerHeight + 1 + 'px'
+      document.body.style.marginLeft = '-101px'
+      document.documentElement.style.paddingRight = null
+      unstyleFixture()
+
+      fixtureEl.innerHTML = getModalInnerHtml()
+
+      const modalEl = fixtureEl.querySelector('.modal')
+      const modal = new Modal(modalEl)
+
+      modalEl.addEventListener('shown.bs.modal', () => {
+        expect(parseInt(modalEl.style.paddingRight, 10)).toEqual(modal._getScrollbarWidth())
+
+        done()
+      })
+
+      modal.show()
+    })
+
+    it('should not add compensation padding when body boundary width is greater than window width with a vertical scrollbar before showing and a vertical scrollbar after showing', done => {
+      loadModalCss()
+      document.body.style.width = window.innerWidth + 1 + 'px'
+      document.body.style.height = window.innerHeight + 1 + 'px'
+      document.documentElement.style.paddingRight = null
+      unstyleFixture()
+
+      fixtureEl.innerHTML = getModalInnerHtml()
+
+      const modalEl = fixtureEl.querySelector('.modal')
+      const modalBodyEl = document.getElementById('modal-body')
+      modalBodyEl.style.height = window.innerHeight + 50 + 'px'
+      const modal = new Modal(modalEl)
+
+      modalEl.addEventListener('shown.bs.modal', () => {
+        expect(modalEl.style.paddingLeft).toEqual('')
+        done()
+      })
+
+      modal.show()
+    })
+
+    it('should not add compensation padding when body boundary width is less than or equal to window width with a vertical scrollbar before showing and a vertical scrollbar after showing', done => {
+      loadModalCss()
+      document.body.style.width = window.innerWidth - 1 + 'px'
+      document.body.style.height = window.innerHeight + 1 + 'px'
+      document.documentElement.style.paddingRight = null
+      unstyleFixture()
+
+      fixtureEl.innerHTML = getModalInnerHtml()
+
+      const modalEl = fixtureEl.querySelector('.modal')
+      const modalBodyEl = document.getElementById('modal-body')
+      modalBodyEl.style.height = window.innerHeight + 50 + 'px'
+      const modal = new Modal(modalEl)
+
+      modalEl.addEventListener('shown.bs.modal', () => {
+        expect(modalEl.style.paddingLeft).toEqual('')
+        expect(modalEl.style.paddingRight).toEqual('')
+        done()
+      })
+
+      modal.show()
+    })
+
+    it('should add compensation padding when body boundary width is less than or equal to window width with no vertical scrollbar before showing and a vertical scrollbar after showing', done => {
+      loadModalCss()
+      document.body.style.width = window.innerWidth - 1 + 'px'
+      document.body.style.height = window.innerHeight - 1 + 'px'
+      document.documentElement.style.paddingRight = null
+      unstyleFixture()
+
+      fixtureEl.innerHTML = getModalInnerHtml()
+
+      const modalEl = fixtureEl.querySelector('.modal')
+      const modalBodyEl = document.getElementById('modal-body')
+      modalBodyEl.style.height = window.innerHeight + 50 + 'px'
+      const modal = new Modal(modalEl)
+
+      modalEl.addEventListener('shown.bs.modal', () => {
+        expect(parseInt(modalEl.style.paddingLeft, 10)).toEqual(modal._getScrollbarWidth())
+        done()
+      })
+
+      modal.show()
+    })
+
+    it('should add compensation padding when body boundary width is greater than window width with no vertical scrollbar before showing and a vertical scrollbar after showing', done => {
+      loadModalCss()
+      document.body.style.width = window.innerWidth + 1 + 'px'
+      document.body.style.height = window.innerHeight - 1 + 'px'
+      document.documentElement.style.paddingRight = null
+      unstyleFixture()
+
+      fixtureEl.innerHTML = getModalInnerHtml()
+
+      const modalEl = fixtureEl.querySelector('.modal')
+      const modalBodyEl = document.getElementById('modal-body')
+      modalBodyEl.style.height = window.innerHeight + 50 + 'px'
+      const modal = new Modal(modalEl)
+
+      modalEl.addEventListener('shown.bs.modal', () => {
+        expect(parseInt(modalEl.style.paddingLeft, 10)).toEqual(modal._getScrollbarWidth())
+        done()
+      })
+
+      modal.show()
+    })
+
+    it('should add compensation padding when body boundary height is less than or equal to window height with vertical scrollbar before showing due to tall content and no vertical scrollbar after showing', done => {
+      loadModalCss()
+      document.body.style.width = window.innerWidth - 1 + 'px'
+      document.body.style.height = window.innerHeight - 1 + 'px'
+      document.body.appendChild(createTallContent())
+      document.documentElement.style.paddingRight = null
+      unstyleFixture()
+
+      fixtureEl.innerHTML = getModalInnerHtml()
+
+      const modalEl = fixtureEl.querySelector('.modal')
+
+      const modal = new Modal(modalEl)
+
+      modalEl.addEventListener('shown.bs.modal', () => {
+        expect(parseInt(modalEl.style.paddingRight, 10)).toEqual(modal._getScrollbarWidth())
+        done()
+      })
+
+      modal.show()
+    })
+
+    it('should add compensation padding when body boundary height is less than or equal to window height with vertical scrollbar before showing due to margin-top and no vertical scrollbar after showing', done => {
+      loadModalCss()
+      document.body.style.width = window.innerWidth - 1 + 'px'
+      document.body.style.height = window.innerHeight - 1 + 'px'
+      document.body.style.marginTop = '2px'
+
+      document.documentElement.style.paddingRight = null
+      unstyleFixture()
+
+      fixtureEl.innerHTML = getModalInnerHtml()
+
+      const modalEl = fixtureEl.querySelector('.modal')
+
+      const modal = new Modal(modalEl)
+
+      modalEl.addEventListener('shown.bs.modal', () => {
+        expect(parseInt(modalEl.style.paddingRight, 10)).toEqual(modal._getScrollbarWidth())
+        done()
+      })
+
+      modal.show()
+    })
+
+    it('should not add compensation padding when body boundary height is less than or equal to window height with vertical scrollbar before showing due to tall content and a vertical scrollbar after showing', done => {
+      loadModalCss()
+      document.body.style.width = window.innerWidth - 1 + 'px'
+      document.body.style.height = window.innerHeight - 1 + 'px'
+      document.body.appendChild(createTallContent())
+      document.documentElement.style.paddingRight = null
+      unstyleFixture()
+
+      fixtureEl.innerHTML = getModalInnerHtml()
+
+      const modalEl = fixtureEl.querySelector('.modal')
+
+      const modal = new Modal(modalEl)
+      const modalBodyEl = document.getElementById('modal-body')
+      modalBodyEl.style.height = window.innerHeight + 50 + 'px'
+
+      modalEl.addEventListener('shown.bs.modal', () => {
+        expect(modalEl.style.paddingLeft).toEqual('')
+        expect(modalEl.style.paddingRight).toEqual('')
+        done()
+      })
+
+      modal.show()
+    })
+
+    it('should have consistent compensation padding when initially showing and after a resize event', done => {
+      loadModalCss()
+      document.body.style.width = window.innerWidth - 1 + 'px'
+      document.body.style.height = window.innerHeight - 1 + 'px'
+
+      document.documentElement.style.paddingRight = null
+      unstyleFixture()
+
+      fixtureEl.innerHTML = getModalInnerHtml()
+
+      const modalEl = fixtureEl.querySelector('.modal')
+
+      const modal = new Modal(modalEl)
+
+      const modalBodyEl = document.getElementById('modal-body')
+      modalBodyEl.style.height = window.innerHeight + 50 + 'px'
+
+      modalEl.addEventListener('shown.bs.modal', () => {
+        const initialPaddingLeft = modalEl.style.paddingLeft
+        const initialPaddingRight = modalEl.style.paddingRight
+
+        const resizeEvent = createEvent('resize')
+
+        window.dispatchEvent(resizeEvent)
+        setTimeout(() => {
+          expect(modalEl.style.paddingLeft).toEqual(initialPaddingLeft)
+          expect(modalEl.style.paddingRight).toEqual(initialPaddingRight)
+          done()
+        }, 10)
+      })
+
+      modal.show()
+    })
+
+    it('should not add compensation padding when body boundary height is less than window height and overflow hidden, with tall content and no vertical scrollbar before showing and no vertical scrollbar after showing', done => {
+      loadModalCss()
+      document.body.style.width = window.innerWidth - 1 + 'px'
+      document.body.style.height = window.innerHeight - 1 + 'px'
+      document.documentElement.style.paddingRight = null
+      unstyleFixture()
+
+      fixtureEl.innerHTML = getModalInnerHtml()
+
+      const modalEl = fixtureEl.querySelector('.modal')
+      const modal = new Modal(modalEl)
+
+      document.body.appendChild(createTallContent())
+      document.body.style.overflowY = 'hidden'
+
+      modalEl.addEventListener('shown.bs.modal', () => {
+        expect(modalEl.style.paddingRight).toEqual('')
+
+        done()
+      })
+
+      modal.show()
+    })
+
+    it('should remove compensation padding no longer needed', done => {
+      loadModalCss()
+      document.body.style.width = window.innerWidth - 1 + 'px'
+      document.body.style.height = window.innerHeight - 1 + 'px'
+      document.documentElement.style.paddingRight = null
+      unstyleFixture()
+
+      fixtureEl.innerHTML = getModalInnerHtml()
+
+      const modalEl = fixtureEl.querySelector('.modal')
+      const modal = new Modal(modalEl)
+
+      const modalBodyEl = document.getElementById('modal-body')
+      modalBodyEl.style.height = window.innerHeight + 50 + 'px'
+      modalEl.addEventListener('shown.bs.modal', () => {
+        const initialPaddingLeft = modalEl.style.paddingLeft
+
+        modalBodyEl.style.height = window.innerHeight - 250 + 'px'
+        const resizeEvent = createEvent('resize')
+
+        window.dispatchEvent(resizeEvent)
+        setTimeout(() => {
+          expect(modalEl.style.paddingLeft).toEqual('')
+          expect(parseInt(initialPaddingLeft, 10)).toEqual(modal._getScrollbarWidth())
+          done()
+        }, 10)
       })
 
       modal.show()

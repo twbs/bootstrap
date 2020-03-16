@@ -132,8 +132,6 @@ class Modal {
     this._checkScrollbar()
     this._setScrollbar()
 
-    this._adjustDialog()
-
     this._setEscapeEvent()
     this._setResizeEvent()
 
@@ -245,7 +243,10 @@ class Modal {
       document.body.appendChild(this._element)
     }
 
+    this._element.style.visibility = 'hidden'
     this._element.style.display = 'block'
+    this._adjustDialog()
+    this._element.style.visibility = null
     this._element.removeAttribute('aria-hidden')
     this._element.setAttribute('aria-modal', true)
     this._element.setAttribute('role', 'dialog')
@@ -442,12 +443,19 @@ class Modal {
     const isModalOverflowing =
       this._element.scrollHeight > document.documentElement.clientHeight
 
+    let hasAdjustment = false
     if (!this._isBodyOverflowing && isModalOverflowing) {
       this._element.style.paddingLeft = `${this._scrollbarWidth}px`
+      hasAdjustment = true
     }
 
     if (this._isBodyOverflowing && !isModalOverflowing) {
       this._element.style.paddingRight = `${this._scrollbarWidth}px`
+      hasAdjustment = true
+    }
+
+    if (!hasAdjustment) {
+      this._resetAdjustments()
     }
   }
 
@@ -457,8 +465,16 @@ class Modal {
   }
 
   _checkScrollbar() {
-    const rect = document.body.getBoundingClientRect()
-    this._isBodyOverflowing = Math.round(rect.left + rect.right) < window.innerWidth
+    let contentHeight = null
+
+    if (window.getComputedStyle(document.body).overflowY === 'hidden') {
+      const { bottom } = document.documentElement.getBoundingClientRect()
+      contentHeight = bottom
+    } else {
+      contentHeight = document.documentElement.scrollHeight
+    }
+
+    this._isBodyOverflowing = Math.round(contentHeight > window.innerHeight)
     this._scrollbarWidth = this._getScrollbarWidth()
   }
 

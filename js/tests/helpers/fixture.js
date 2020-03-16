@@ -6,14 +6,15 @@ export const getFixture = () => {
   if (!fixtureEl) {
     fixtureEl = document.createElement('div')
     fixtureEl.setAttribute('id', fixtureId)
-    fixtureEl.style.position = 'absolute'
-    fixtureEl.style.top = '-10000px'
-    fixtureEl.style.left = '-10000px'
-    fixtureEl.style.width = '10000px'
-    fixtureEl.style.height = '10000px'
     document.body.appendChild(fixtureEl)
   }
 
+  fixtureEl.removeAttribute('style')
+  fixtureEl.style.position = 'absolute'
+  fixtureEl.style.top = '-10000px'
+  fixtureEl.style.left = '-10000px'
+  fixtureEl.style.width = '10000px'
+  fixtureEl.style.height = '10000px'
   return fixtureEl
 }
 
@@ -21,6 +22,15 @@ export const clearFixture = () => {
   const fixtureEl = getFixture()
 
   fixtureEl.innerHTML = ''
+}
+
+export const unstyleFixture = () => {
+  const fixtureEl = getFixture()
+  fixtureEl.style.position = null
+  fixtureEl.style.left = null
+  fixtureEl.style.top = null
+  fixtureEl.style.width = null
+  fixtureEl.style.height = null
 }
 
 export const createEvent = (eventName, params = {}) => {
