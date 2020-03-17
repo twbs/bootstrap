@@ -978,7 +978,7 @@ Validation styles are available for the following form controls and components:
 
 {% capture callout %}
 ##### Input group validations
-For input groups, put feedback messages as a sibling element of the input group and add the `.is-{valid|invalid}` class to the `.input-group`. Placing feedback messages in a input group encounters border radius issues. [See this comment for a workaround](https://github.com/twbs/bootstrap/issues/29439).
+For input groups, put feedback messages as a sibling element of the input group and add the `.is-{valid|invalid}` class to the `.input-group`. Placing feedback messages in a input group encounters border radius issues. [See this comment for workaround](https://github.com/twbs/bootstrap/issues/25110#issuecomment-586565165).
 {% endcapture %}
 {% include callout.html content=callout type="warning" %}
 
