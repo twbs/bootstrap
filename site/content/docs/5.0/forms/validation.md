@@ -287,10 +287,10 @@ You can insert custom feedback messages with the `.valid-feedback` or `.invalid-
 
   <div class="mb-3">
     <div class="form-check">
-      <input type="checkbox" class="form-check-input is-invalid" id="feedbackCheckbox" required>
+      <input type="checkbox" class="form-check-input is-invalid" id="feedbackCheckbox" aria-describedby="messageFeedbackCheckbox" required>
       <label class="form-check-label" for="feedbackCheckbox">Check this checkbox</label>
     </div>
-    <div class="invalid-feedback">
+    <div class="invalid-feedback" id="messageFeedbackCheckbox">
       Example invalid feedback text
     </div>
   </div>
@@ -315,6 +315,9 @@ You can insert custom feedback messages with the `.valid-feedback` or `.invalid-
       <span class="form-file-text">Choose file...</span>
       <span class="form-file-button">Browse</span>
     </label>
+  </div>
+  <div class="invalid-feedback" id="messageFeedbackFile">
+    Example invalid feedback text
   </div>
 </form>
 {{< /example >}}
