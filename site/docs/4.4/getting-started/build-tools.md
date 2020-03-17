@@ -28,7 +28,7 @@ Our [package.json]({{ site.repo }}/blob/v{{ site.current_version }}/package.json
 
 | Task | Description |
 | --- | --- |
-| `npm run dist` | `npm run dist` creates the `/dist/` directory with compiled files. **Uses [Sass](https://sass-lang.com/), [Autoprefixer][autoprefixer], and [UglifyJS](https://github.com/mishoo/UglifyJS2).** |
+| `npm run dist` | `npm run dist` creates the `/dist/` directory with compiled files. **Uses [Sass](https://sass-lang.com/), [Autoprefixer][autoprefixer], and [terser](https://github.com/terser-js/terser).** |
 | `npm test` | Same as `npm run dist` plus it runs tests locally |
 | `npm run docs` | Builds and lints CSS and JavaScript for docs. You can then run the documentation locally via `npm run docs-serve`. |
 
