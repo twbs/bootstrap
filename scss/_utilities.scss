@@ -29,8 +29,8 @@ $utilities: map-merge(
       property: box-shadow,
       class: shadow,
       values: (
-        sm: $box-shadow-sm,
         null: $box-shadow,
+        sm: $box-shadow-sm,
         lg: $box-shadow-lg,
         none: none,
       )
@@ -442,6 +442,15 @@ $utilities: map-merge(
       property: font-family,
       class: font,
       values: (monospace: $font-family-monospace)
+    ),
+    "user-select": (
+      property: user-select,
+      values: all auto none
+    ),
+    "pointer-events": (
+      property: pointer-events,
+      class: pe,
+      values: none auto,
     ),
     "rounded": (
       property: border-radius,

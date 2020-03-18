@@ -10,8 +10,8 @@
     > [class^="col-"] {
       padding-top: .75rem;
       padding-bottom: .75rem;
-      background-color: rgba(86, 61, 124, .15);
-      border: 1px solid rgba(86, 61, 124, .2);
+      background-color: rgba(39, 41, 43, .03);
+      border: 1px solid rgba(39, 41, 43, .1);
     }
   }
 
@@ -28,15 +28,6 @@
 .bd-highlight {
   background-color: rgba($bd-purple, .15);
   border: 1px solid rgba($bd-purple, .15);
-}
-
-.bd-example-responsive-containers {
-  [class^="container"] {
-    padding-top: .75rem;
-    padding-bottom: .75rem;
-    background-color: rgba(86, 61, 124, .15);
-    border: 1px solid rgba(86, 61, 124, .2);
-  }
 }
 
 // Grid mixins
@@ -82,20 +73,20 @@
   position: relative;
   padding: 1rem;
   margin: 1rem (-$grid-gutter-width / 2) 0;
-  border: solid $gray-100;
-  border-width: .2rem 0 0;
+  border: solid $gray-300;
+  border-width: 1px 0 0;
   @include clearfix();
 
   @include media-breakpoint-up(sm) {
     padding: 1.5rem;
     margin-right: 0;
     margin-left: 0;
-    border-width: .2rem;
-  }
+    border-width: 1px;
+    @include border-top-radius(.25rem);
 
-  + .highlight,
-  + .clipboard + .highlight {
-    margin-top: 0;
+    + .bd-clipboard + .highlight {
+      @include border-bottom-radius(.25rem);
+    }
   }
 
   + p {
@@ -119,18 +110,18 @@
     position: static;
     display: block;
   }
-}
 
-// Images
-.bd-example {
+  > :last-child {
+    margin-bottom: 0;
+  }
+
+  // Images
   > svg + svg,
   > img + img {
     margin-left: .5rem;
   }
-}
 
-// Buttons
-.bd-example {
+  // Buttons
   > .btn,
   > .btn-group {
     margin-top: .25rem;
@@ -139,19 +130,17 @@
   > .btn-toolbar + .btn-toolbar {
     margin-top: .5rem;
   }
-}
 
-// List groups
-.bd-example > .list-group {
-  max-width: 400px;
-}
+  // List groups
+  > .list-group {
+    max-width: 400px;
+  }
 
-.bd-example > [class*="list-group-horizontal"] {
-  max-width: 100%;
-}
+  > [class*="list-group-horizontal"] {
+    max-width: 100%;
+  }
 
-// Navbars
-.bd-example {
+  // Navbars
   .fixed-top,
   .sticky-top {
     position: static;
@@ -172,12 +161,12 @@
       margin: 1rem -1.5rem -1.5rem;
     }
   }
-}
 
-// Pagination
-.bd-example .pagination {
-  margin-top: .5rem;
-  margin-bottom: .5rem;
+  // Pagination
+  .pagination {
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+  }
 }
 
 .bd-example-modal {
@@ -224,33 +213,26 @@
   }
 }
 
+.bd-example-rounded-utils {
+  [class*="rounded"] {
+    margin: .25rem;
+  }
+}
+
 //
 // Code snippets
 //
 
 .highlight {
   padding: 1rem;
-  margin-top: 1rem;
   margin-bottom: 1rem;
   background-color: $gray-100;
   -ms-overflow-style: -ms-autohiding-scrollbar;
 
   @include media-breakpoint-up(sm) {
-    padding: 1.5rem;
+    padding: 1rem 1.5rem;
   }
-}
 
-.bd-content .highlight {
-  margin-right: (-$grid-gutter-width / 2);
-  margin-left: (-$grid-gutter-width / 2);
-
-  @include media-breakpoint-up(sm) {
-    margin-right: 0;
-    margin-left: 0;
-  }
-}
-
-.highlight {
   pre {
     padding: 0;
     margin-top: 0;
@@ -262,5 +244,15 @@
   pre code {
     @include font-size(inherit);
     color: $gray-900; // Effectively the base text color
+  }
+}
+
+.bd-content .highlight {
+  margin-right: (-$grid-gutter-width / 2);
+  margin-left: (-$grid-gutter-width / 2);
+
+  @include media-breakpoint-up(sm) {
+    margin-right: 0;
+    margin-left: 0;
   }
 }

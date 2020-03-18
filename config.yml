@@ -9,6 +9,9 @@ markup:
       unsafe:           true
   highlight:
     noClasses:          false
+  tableOfContents:
+    startLevel:         2
+    endLevel:           6
 
 buildDrafts:            true
 buildFuture:            true
@@ -16,9 +19,6 @@ buildFuture:            true
 enableRobotsTXT:        true
 metaDataFormat:         "yaml"
 disableKinds:           ["404", "taxonomy", "taxonomyTerm", "RSS"]
-
-blackfriday:
-  fractions:            false
 
 publishDir:             "_gh_pages"
 
