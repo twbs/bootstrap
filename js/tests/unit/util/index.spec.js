@@ -215,7 +215,7 @@ describe('Util', () => {
       }).toThrow(new Error('COLLAPSE: Option "parent" provided type "number" but expected type "(string|element)".'))
     })
 
-    it('should return null stringified when null passed', () => {
+    it('should return null stringified when null is passed', () => {
       const defaultType = {
         toggle: 'boolean',
         parent: '(null|element)'
@@ -229,7 +229,7 @@ describe('Util', () => {
       expect().nothing()
     })
 
-    it('should return undefined stringified when undefined passed', () => {
+    it('should return undefined stringified when undefined is passed', () => {
       const defaultType = {
         toggle: 'boolean',
         parent: '(undefined|element)'
