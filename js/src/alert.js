@@ -28,21 +28,15 @@ const DATA_KEY = 'bs.alert'
 const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
 
-const Selector = {
-  DISMISS: '[data-dismiss="alert"]'
-}
+const SELECTOR_DISMISS = '[data-dismiss="alert"]'
 
-const Event = {
-  CLOSE: `close${EVENT_KEY}`,
-  CLOSED: `closed${EVENT_KEY}`,
-  CLICK_DATA_API: `click${EVENT_KEY}${DATA_API_KEY}`
-}
+const EVENT_CLOSE = `close${EVENT_KEY}`
+const EVENT_CLOSED = `closed${EVENT_KEY}`
+const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 
-const ClassName = {
-  ALERT: 'alert',
-  FADE: 'fade',
-  SHOW: 'show'
-}
+const CLASSNAME_ALERT = 'alert'
+const CLASSNAME_FADE = 'fade'
+const CLASSNAME_SHOW = 'show'
 
 /**
  * ------------------------------------------------------------------------
@@ -93,20 +87,20 @@ class Alert {
     let parent = getElementFromSelector(element)
 
     if (!parent) {
-      parent = SelectorEngine.closest(element, `.${ClassName.ALERT}`)
+      parent = SelectorEngine.closest(element, `.${CLASSNAME_ALERT}`)
     }
 
     return parent
   }
 
   _triggerCloseEvent(element) {
-    return EventHandler.trigger(element, Event.CLOSE)
+    return EventHandler.trigger(element, EVENT_CLOSE)
   }
 
   _removeElement(element) {
-    element.classList.remove(ClassName.SHOW)
+    element.classList.remove(CLASSNAME_SHOW)
 
-    if (!element.classList.contains(ClassName.FADE)) {
+    if (!element.classList.contains(CLASSNAME_FADE)) {
       this._destroyElement(element)
       return
     }
@@ -123,7 +117,7 @@ class Alert {
       element.parentNode.removeChild(element)
     }
 
-    EventHandler.trigger(element, Event.CLOSED)
+    EventHandler.trigger(element, EVENT_CLOSED)
   }
 
   // Static
@@ -163,7 +157,7 @@ class Alert {
  * ------------------------------------------------------------------------
  */
 EventHandler
-  .on(document, Event.CLICK_DATA_API, Selector.DISMISS, Alert.handleDismiss(new Alert()))
+  .on(document, EVENT_CLICK_DATA_API, SELECTOR_DISMISS, Alert.handleDismiss(new Alert()))
 
 const $ = getjQuery()
 
