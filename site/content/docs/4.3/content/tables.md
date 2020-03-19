@@ -401,36 +401,38 @@ Add `.table-sm` to make any `.table` more compact by cutting all cell `padding` 
 Table cells of `<thead>` are always vertical aligned to the bottom. Table cells in `<tbody>` inherit their alignment from `<table>` and are aligned to the the top by default.
 
 {{< example >}}
-<table class="table align-middle">
-  <thead>
-    <tr>
-      <th scope="col" class="w-25">Heading 1</th>
-      <th scope="col" class="w-25">Heading 2</th>
-      <th scope="col" class="w-25">Heading 2</th>
-      <th scope="col" class="w-25">Heading 4</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>This cell inherits <code>vertical-align: middle;</code> from the table</td>
-      <td>This cell inherits <code>vertical-align: middle;</code> from the table</td>
-      <td>This cell inherits <code>vertical-align: middle;</code> from the table</td>
-      <td>Nulla vitae elit libero, a pharetra augue. Cras mattis consectetur purus sit amet fermentum. Vestibulum id ligula porta felis euismod semper.</td>
-    </tr>
-    <tr class="align-bottom">
-      <td>This cell inherits <code>vertical-align: bottom;</code> from the table row</td>
-      <td>This cell inherits <code>vertical-align: bottom;</code> from the table row</td>
-      <td>This cell inherits <code>vertical-align: bottom;</code> from the table row</td>
-      <td>Nulla vitae elit libero, a pharetra augue. Cras mattis consectetur purus sit amet fermentum. Vestibulum id ligula porta felis euismod semper.</td>
-    </tr>
-    <tr>
-      <td>This cell inherits <code>vertical-align: middle;</code> from the table</td>
-      <td>This cell inherits <code>vertical-align: middle;</code> from the table</td>
-      <td class="align-top">This cell is aligned to the top.</td>
-      <td>Nulla vitae elit libero, a pharetra augue. Cras mattis consectetur purus sit amet fermentum. Vestibulum id ligula porta felis euismod semper.</td>
-    </tr>
-  </tbody>
-</table>
+<div class="table-responsive">
+  <table class="table align-middle">
+    <thead>
+      <tr>
+        <th scope="col" class="w-25">Heading 1</th>
+        <th scope="col" class="w-25">Heading 2</th>
+        <th scope="col" class="w-25">Heading 2</th>
+        <th scope="col" class="w-25">Heading 4</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>This cell inherits <code>vertical-align: middle;</code> from the table</td>
+        <td>This cell inherits <code>vertical-align: middle;</code> from the table</td>
+        <td>This cell inherits <code>vertical-align: middle;</code> from the table</td>
+        <td>Nulla vitae elit libero, a pharetra augue. Cras mattis consectetur purus sit amet fermentum. Vestibulum id ligula porta felis euismod semper.</td>
+      </tr>
+      <tr class="align-bottom">
+        <td>This cell inherits <code>vertical-align: bottom;</code> from the table row</td>
+        <td>This cell inherits <code>vertical-align: bottom;</code> from the table row</td>
+        <td>This cell inherits <code>vertical-align: bottom;</code> from the table row</td>
+        <td>Nulla vitae elit libero, a pharetra augue. Cras mattis consectetur purus sit amet fermentum. Vestibulum id ligula porta felis euismod semper.</td>
+      </tr>
+      <tr>
+        <td>This cell inherits <code>vertical-align: middle;</code> from the table</td>
+        <td>This cell inherits <code>vertical-align: middle;</code> from the table</td>
+        <td class="align-top">This cell is aligned to the top.</td>
+        <td>Nulla vitae elit libero, a pharetra augue. Cras mattis consectetur purus sit amet fermentum. Vestibulum id ligula porta felis euismod semper.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 {{< /example >}}
 
 ### Variants

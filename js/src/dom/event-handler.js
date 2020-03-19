@@ -6,7 +6,7 @@
  */
 
 import { getjQuery } from '../util/index'
-import { createCustomEvent, defaultPreventedPreservedOnDispatch } from './polyfill'
+import { defaultPreventedPreservedOnDispatch } from './polyfill'
 
 /**
  * ------------------------------------------------------------------------
@@ -307,7 +307,7 @@ const EventHandler = {
       evt = document.createEvent('HTMLEvents')
       evt.initEvent(typeEvent, bubbles, true)
     } else {
-      evt = createCustomEvent(event, {
+      evt = new CustomEvent(event, {
         bubbles,
         cancelable: true
       })

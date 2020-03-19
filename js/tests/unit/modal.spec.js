@@ -653,7 +653,6 @@ describe('Modal', () => {
     it('should enforce focus', done => {
       fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog" /></div>'
 
-      const isIE11 = Boolean(window.MSInputMethodContext) && Boolean(document.documentMode)
       const modalEl = fixtureEl.querySelector('.modal')
       const modal = new Modal(modalEl)
 
@@ -667,11 +666,6 @@ describe('Modal', () => {
 
       modalEl.addEventListener('shown.bs.modal', () => {
         expect(modal._enforceFocus).toHaveBeenCalled()
-
-        if (isIE11) {
-          done()
-          return
-        }
 
         spyOn(modal._element, 'focus')
 
