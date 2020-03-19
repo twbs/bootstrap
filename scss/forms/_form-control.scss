@@ -22,12 +22,6 @@
   @include box-shadow($input-box-shadow);
   @include transition($input-transition);
 
-  // Unstyle the caret on `<select>`s in IE10+.
-  &::-ms-expand {
-    background-color: transparent;
-    border: 0;
-  }
-
   // Customize the `:focus` state to imitate native WebKit styles.
   &:focus {
     color: $input-focus-color;

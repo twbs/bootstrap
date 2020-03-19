@@ -11,7 +11,7 @@ toc: true
 
 See the browser and devices page for details on what is currently supported in Bootstrap 5. Since v4, here's what's changed to our browser support:
 
-- Dropped support for Internet Explorer NN
+- Dropped support for Internet Explorer 10 and 11
 - Dropped support for Firefox NN - MM
 - Dropped support for Safari NN
 - Dropped support for iOS Safari NN
@@ -37,9 +37,11 @@ Changes to our source Sass files and compiled CSS.
 - Removed print styles and `$enable-print-styles` variable. Print display classes, however, have remained intact. [See #28339](https://github.com/twbs/bootstrap/pull/28339).
 - Dropped `color()`, `theme-color()` & `gray()` functions in favor of variables. [See #29083](https://github.com/twbs/bootstrap/pull/29083)
 - The `theme-color-level()` function is renamed to `color-level()` and now accepts any color you want instead of only `$theme-color` colors. [See #29083](https://github.com/twbs/bootstrap/pull/29083)
+- `$enable-grid-classes` doesn't disable the generation of container classes anymore [See #29146](https://github.com/twbs/bootstrap/pull/29146)
 - Line heights are dropped from several components to simplify our codebase. The `button-size()` and `pagination-size()` do not accept line height parameters anymore. [See #29271](https://github.com/twbs/bootstrap/pull/29271)
 - The `button-variant()` mixin now accepts 3 optional color parameters, for each button state, to override the color provided by `color-yiq()`. By default, these parameters will find which color provides more contrast against the button state's background color with `color-yiq()`.
 - The `button-outline-variant()` mixin now accepts an additional argument, `$active-color`, for setting the button's active state text color. By default, this parameter will find which color provides more contrast against the button's active background color with `color-yiq()`.
+- Ditch the Sass map merges, which makes it easier to remove redundant values. Keep in mind you now have to define all values in the Sass maps like `$theme-colors`. Check out how to deal with Sass maps on the [theming documentation]({{< docsref "/getting-started/theming#maps-and-loops" >}}).
 
 ## JavaScript
 
@@ -53,8 +55,13 @@ Changes to our source and compiled JavaScript files.
 Changes to any layout tools and our grid system.
 
 - Dropped `.media` component as it can be built with utility classes. [See #28265](https://github.com/twbs/bootstrap/pull/28265).
-- **Todo:** Remove `position: relative` from grid columns
-- **Todo:** Integrate CSS grid into our grid system
+- Remove `position: relative` from grid columns.
+- The horizontal padding is added to the direct children in a row instead of the columns themselves.
+  - This simplifies our codebase.
+  - The column classes can now be used stand alone. Whenever they are used outside a `.row`, horizontal padding won't be added.
+- Responsive gutter classes can be used to control the gutter width in as well horizontal, vertical or both directions.
+- The gutter width is now set in `rem` and decreased from `30px` to `1.5rem` (24px).
+- `bootstrap-grid.css` now only applies `box-sizing: border-box` to the column instead of resetting the global box-sizing. This way the grid system can be used, even if `box-sizing: border-box` in not applied to each element.
 
 ## Content, Reboot, etc
 
@@ -88,7 +95,10 @@ Changes to Reboot, typography, tables, and more.
   - Added support for `:focus` and `:disabled` styles.
 - Renamed `.custom-range` to `.form-range` (including variables).
 - Dropped `.form-group` for margin utilities (we've replaced our docs examples with `.mb-3`).
+- Dropped `.form-row` for the more flexible grid gutters.
+- Dropped `.form-inline` for the more flexible grid.
 - Dropped support for `.form-control-plaintext` inside `.input-group`s.
+- Dropped `.form-text` as existing utilities cover this use class's former use case (e.g., `.mt-2`, `.text-small`, and/or `.text-muted`).
 
 ## Components
 
@@ -111,6 +121,7 @@ Badges were overhauled to better differentiate themselves from buttons and to be
 ### Cards
 
 - Removed the card columns in favor of a Masonry grid [See #28922](https://github.com/twbs/bootstrap/pull/28922).
+- Removed card decks in favor of the grid which adds more flexibility over responsive behaviour.
 
 ### Jumbotron
 

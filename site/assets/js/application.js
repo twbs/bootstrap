@@ -167,11 +167,5 @@
   }
   anchors.add('.bd-content > h2, .bd-content > h3, .bd-content > h4, .bd-content > h5')
 
-  // Wrap inner
-  makeArray(document.querySelectorAll('.bd-content > h2, .bd-content > h3, .bd-content > h4, .bd-content > h5'))
-    .forEach(function (hEl) {
-      hEl.innerHTML = '<span class="bd-content-title">' + hEl.innerHTML + '</span>'
-    })
-
   bsCustomFileInput.init()
 })()
