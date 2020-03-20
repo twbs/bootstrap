@@ -8,7 +8,7 @@ toc: true
 
 ## Supported browsers
 
-Bootstrap supports the **latest, stable releases** of all major browsers and platforms. On Windows, **we support Internet Explorer 11 / Microsoft Edge**.
+Bootstrap supports the **latest, stable releases** of all major browsers and platforms. This also includes the latest version of Legacy Edge (EdgeHTML layout engine).
 
 Alternative browsers which use the latest version of WebKit, Blink, or Gecko, whether directly or via the platform's web view API, are not explicitly supported. However, Bootstrap should (in most cases) display and function correctly in these browsers as well. More specific support information is provided below.
 
@@ -64,7 +64,6 @@ Similarly, the latest versions of most desktop browsers are supported.
       <th></th>
       <th>Chrome</th>
       <th>Firefox</th>
-      <th>Internet Explorer</th>
       <th>Microsoft Edge</th>
       <th>Opera</th>
       <th>Safari</th>
@@ -75,7 +74,6 @@ Similarly, the latest versions of most desktop browsers are supported.
       <th scope="row">Mac</th>
       <td>Supported</td>
       <td>Supported</td>
-      <td class="text-muted">&mdash;</td>
       <td>Supported</td>
       <td>Supported</td>
       <td>Supported</td>
@@ -84,7 +82,6 @@ Similarly, the latest versions of most desktop browsers are supported.
       <th scope="row">Windows</th>
       <td>Supported</td>
       <td>Supported</td>
-      <td>IE11 only</td>
       <td>Supported</td>
       <td>Supported</td>
       <td class="text-muted">&mdash;</td>
@@ -94,11 +91,11 @@ Similarly, the latest versions of most desktop browsers are supported.
 
 For Firefox, in addition to the latest normal stable release, we also support the latest [Extended Support Release (ESR)](https://www.mozilla.org/en-US/firefox/organizations/#faq) version of Firefox.
 
-Unofficially, Bootstrap should look and behave well enough in Chromium and Chrome for Linux, Firefox for Linux, and Internet Explorer 9, though they are not officially supported.
+Unofficially, Bootstrap should look and behave well enough in Chromium and Chrome for Linux, and Firefox for Linux, though they are not officially supported.
 
 ## Internet Explorer
 
-Internet Explorer 11 is supported; IE10 and down is not. Please be aware that some CSS3 properties and HTML5 elements are not fully supported in Internet Explorer, or require prefixed properties for full functionality. Visit [Can I use...](https://caniuse.com/) for details on browser support of CSS3 and HTML5 features. **If you require IE10 support, use Bootstrap 4.**
+Internet Explorer is not supported. **If you require Internet Explorer support, please use Bootstrap v4.**
 
 ## Modals and dropdowns on mobile
 

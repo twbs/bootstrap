@@ -78,8 +78,6 @@ If you want to have `<input readonly>` elements in your form styled as plain tex
 
 ## Color
 
-Keep in mind color inputs are [not supported in IE](https://caniuse.com/#feat=input-color).
-
 {{< example >}}
 <form>
   <label for="exampleColorInput">Color picker</label>

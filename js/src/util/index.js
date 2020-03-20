@@ -10,7 +10,13 @@ const MILLISECONDS_MULTIPLIER = 1000
 const TRANSITION_END = 'transitionend'
 
 // Shoutout AngusCroll (https://goo.gl/pxwQGp)
-const toType = obj => ({}.toString.call(obj).match(/\s([a-z]+)/i)[1].toLowerCase())
+const toType = obj => {
+  if (obj === null || obj === undefined) {
+    return `${obj}`
+  }
+
+  return {}.toString.call(obj).match(/\s([a-z]+)/i)[1].toLowerCase()
+}
 
 /**
  * --------------------------------------------------------------------------
@@ -81,10 +87,7 @@ const getTransitionDurationFromElement = element => {
 }
 
 const triggerTransitionEnd = element => {
-  const evt = document.createEvent('HTMLEvents')
-
-  evt.initEvent(TRANSITION_END, true, true)
-  element.dispatchEvent(evt)
+  element.dispatchEvent(new Event(TRANSITION_END))
 }
 
 const isElement = obj => (obj[0] || obj).nodeType
