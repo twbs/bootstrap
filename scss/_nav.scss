@@ -18,7 +18,7 @@
 
   &:hover,
   &:focus {
-    text-decoration: none;
+    text-decoration: if($link-hover-decoration == underline, none, null);
   }
 
   // Disabled state lightens text
