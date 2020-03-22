@@ -74,7 +74,7 @@ Help text below inputs can be styled with `.form-text`. This class includes `dis
 Inline text can use any typical inline HTML element (be it a `<small>`, `<span>`, or something else) with nothing more than a utility class.
 
 {{< example >}}
-<form class="row g-3 align-items-center">
+<div class="row g-3 align-items-center">
   <div class="col-auto">
     <label for="inputPassword6" class="col-form-label">Password</label>
   </div>
@@ -86,7 +86,7 @@ Inline text can use any typical inline HTML element (be it a `<small>`, `<span>`
       Must be 8-20 characters long.
     </small>
   </div>
-</form>
+</div>
 {{< /example >}}
 
 ## Disabled forms

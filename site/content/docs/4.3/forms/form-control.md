@@ -9,16 +9,14 @@ toc: true
 ## Example
 
 {{< example >}}
-<form>
-  <div class="mb-3">
-    <label for="exampleFormControlInput1">Email address</label>
-    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-  </div>
-  <div class="mb-3">
-    <label for="exampleFormControlTextarea1">Example textarea</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-  </div>
-</form>
+<div class="mb-3">
+  <label for="exampleFormControlInput1">Email address</label>
+  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+</div>
+<div class="mb-3">
+  <label for="exampleFormControlTextarea1">Example textarea</label>
+  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+</div>
 {{< /example >}}
 
 ## Sizing
@@ -44,7 +42,6 @@ Add the `readonly` boolean attribute on an input to prevent modification of the 
 If you want to have `<input readonly>` elements in your form styled as plain text, use the `.form-control-plaintext` class to remove the default form field styling and preserve the correct margin and padding.
 
 {{< example >}}
-<form>
   <div class="mb-3 row">
     <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
     <div class="col-sm-10">
@@ -57,7 +54,6 @@ If you want to have `<input readonly>` elements in your form styled as plain tex
       <input type="password" class="form-control" id="inputPassword">
     </div>
   </div>
-</form>
 {{< /example >}}
 
 {{< example >}}
@@ -79,10 +75,8 @@ If you want to have `<input readonly>` elements in your form styled as plain tex
 ## Color
 
 {{< example >}}
-<form>
-  <label for="exampleColorInput">Color picker</label>
-  <input type="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c" title="Choose your color">
-</form>
+<label for="exampleColorInput">Color picker</label>
+<input type="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c" title="Choose your color">
 {{< /example >}}
 
 ## Datalists
@@ -92,15 +86,13 @@ Datalists allow you to create a group of `<option>`s that can be accessed (and a
 Learn more about [support for datalist elements](https://caniuse.com/#feat=datalist).
 
 {{< example >}}
-<form>
-  <label for="exampleDataList">Datalist example</label>
-  <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
-  <datalist id="datalistOptions">
-    <option value="San Francisco">
-    <option value="New York">
-    <option value="Seattle">
-    <option value="Los Angeles">
-    <option value="Chicago">
-  </datalist>
-</form>
+<label for="exampleDataList">Datalist example</label>
+<input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
+<datalist id="datalistOptions">
+  <option value="San Francisco">
+  <option value="New York">
+  <option value="Seattle">
+  <option value="Los Angeles">
+  <option value="Chicago">
+</datalist>
 {{< /example >}}

@@ -297,6 +297,10 @@ Validation styles are available for the following form controls and components:
     </label>
     <div class="invalid-feedback">Example invalid form file feedback</div>
   </div>
+
+  <div class="mb-3">
+    <button class="btn btn-primary" type="submit" disabled>Submit form</button>
+  </div>
 </form>
 {{< /example >}}
 
