@@ -69,7 +69,7 @@ To show an element only on a given interval of screen sizes you can combine one 
     </tr>
     <tr>
       <td>Hidden only on xs</td>
-      <td><code>.d-none .d-sm-block</code></td>
+      <td><code>.d-xs-none .d-sm-block</code></td>
     </tr>
     <tr>
       <td>Hidden only on sm</td>
