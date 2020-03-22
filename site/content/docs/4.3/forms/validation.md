@@ -280,7 +280,7 @@ Validation styles are available for the following form controls and components:
   </div>
 
   <div class="mb-3">
-    <select class="form-select" required>
+    <select class="form-select" required aria-label="select example">
       <option value="">Open this select menu</option>
       <option value="1">One</option>
       <option value="2">Two</option>
