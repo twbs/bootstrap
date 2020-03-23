@@ -79,14 +79,15 @@ $theme-colors: (
 ) !default;
 
 // Set a specific jump point for requesting color jumps
-$theme-color-interval:      8% !default;
+$theme-color-interval: 8% !default;
 
-// The yiq lightness value that determines when the lightness of color changes from "dark" to "light". Acceptable values are between 0 and 255.
-$yiq-contrasted-threshold:  150 !default;
+// The contrast ratio to reach against white, to determine if color changes from "light" to "dark". Acceptable values for WCAG 2.0 are 3, 4.5 and 7.
+// See https://www.w3.org/TR/WCAG20/#visual-audio-contrast-contrast
+$min-contrast-ratio:   3 !default;
 
-// Customize the light and dark text colors for use in our YIQ color contrast function.
-$yiq-text-dark:             $gray-900 !default;
-$yiq-text-light:            $white !default;
+// Customize the light and dark text colors for use in our color contrast function.
+$color-contrast-dark:      $gray-900 !default;
+$color-contrast-light:     $white !default;
 
 // fusv-disable
 $blue-100: tint-color($blue, 8) !default;
