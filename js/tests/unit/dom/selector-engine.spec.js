@@ -126,5 +126,44 @@ describe('SelectorEngine', () => {
       expect(SelectorEngine.prev(btn, '.test')).toEqual([divTest])
     })
   })
+
+  describe('next', () => {
+    it('should return next element', () => {
+      fixtureEl.innerHTML = '<div class="test"></div><button class="btn"></button>'
+
+      const btn = fixtureEl.querySelector('.btn')
+      const divTest = fixtureEl.querySelector('.test')
+
+      expect(SelectorEngine.next(divTest, '.btn')).toEqual([btn])
+    })
+
+    it('should return next element with an extra element between', () => {
+      fixtureEl.innerHTML = [
+        '<div class="test"></div>',
+        '<span></span>',
+        '<button class="btn"></button>'
+      ].join('')
+
+      const btn = fixtureEl.querySelector('.btn')
+      const divTest = fixtureEl.querySelector('.test')
+
+      expect(SelectorEngine.next(divTest, '.btn')).toEqual([btn])
+    })
+
+    it('should return next element with comments or text nodes between', () => {
+      fixtureEl.innerHTML = [
+        '<div class="test"></div>',
+        '<!-- Comment-->',
+        'Text',
+        '<button class="btn"></button>',
+        '<button class="btn"></button>'
+      ].join('')
+
+      const btn = fixtureEl.querySelector('.btn')
+      const divTest = fixtureEl.querySelector('.test')
+
+      expect(SelectorEngine.next(divTest, '.btn')).toEqual([btn])
+    })
+  })
 })
 
