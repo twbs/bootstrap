@@ -54,6 +54,14 @@ include_js: false
     <div class="col-md-4 themed-grid-col">.col-md-4</div>
   </div>
 
+  <h2 class="mt-4">Three equal columns alternative</h2>
+  <p>By using the <code>.row-cols-*</code> classes, you can easily create a grid with equal columns.</p>
+  <div class="row row-cols-md-3 mb-3">
+    <div class="col themed-grid-col"><code>.col</code> child of <code>.row-cols-md-3</code></div>
+    <div class="col themed-grid-col"><code>.col</code> child of <code>.row-cols-md-3</code></div>
+    <div class="col themed-grid-col"><code>.col</code> child of <code>.row-cols-md-3</code></div>
+  </div>
+
   <h2 class="mt-4">Three unequal columns</h2>
   <p>Get three columns <strong>starting at desktops and scaling to large desktops</strong> of various widths. Remember, grid columns should add up to twelve for a single horizontal block. More than that, and columns start stacking no matter the viewport.</p>
   <div class="row mb-3">
@@ -124,9 +132,41 @@ include_js: false
     <div class="col-6 col-sm-4 themed-grid-col">.col-6 .col-sm-4</div>
   </div>
 
+  <hr class="my-4">
+
+  <h2 class="mt-4">Gutters</h2>
+  <p>With <code>.gx-*</code> classes, the horizontal gutters can be adjusted.</p>
+  <div class="row row-cols-1 row-cols-md-3 gx-4">
+    <div class="col themed-grid-col"><code>.col</code> with <code>.gx-4</code> gutters</div>
+    <div class="col themed-grid-col"><code>.col</code> with <code>.gx-4</code> gutters</div>
+    <div class="col themed-grid-col"><code>.col</code> with <code>.gx-4</code> gutters</div>
+    <div class="col themed-grid-col"><code>.col</code> with <code>.gx-4</code> gutters</div>
+    <div class="col themed-grid-col"><code>.col</code> with <code>.gx-4</code> gutters</div>
+    <div class="col themed-grid-col"><code>.col</code> with <code>.gx-4</code> gutters</div>
+  </div>
+  <p class="mt-4">Use the <code>.gy-*</code> classes to control the vertical gutters.</p>
+  <div class="row row-cols-1 row-cols-md-3 gy-4">
+    <div class="col themed-grid-col"><code>.col</code> with <code>.gy-4</code> gutters</div>
+    <div class="col themed-grid-col"><code>.col</code> with <code>.gy-4</code> gutters</div>
+    <div class="col themed-grid-col"><code>.col</code> with <code>.gy-4</code> gutters</div>
+    <div class="col themed-grid-col"><code>.col</code> with <code>.gy-4</code> gutters</div>
+    <div class="col themed-grid-col"><code>.col</code> with <code>.gy-4</code> gutters</div>
+    <div class="col themed-grid-col"><code>.col</code> with <code>.gy-4</code> gutters</div>
+  </div>
+  <p class="mt-4">With <code>.g-*</code> classes, the gutters in both directions can be adjusted.</p>
+  <div class="row row-cols-1 row-cols-md-3 g-3">
+    <div class="col themed-grid-col"><code>.col</code> with <code>.g-3</code> gutters</div>
+    <div class="col themed-grid-col"><code>.col</code> with <code>.g-3</code> gutters</div>
+    <div class="col themed-grid-col"><code>.col</code> with <code>.g-3</code> gutters</div>
+    <div class="col themed-grid-col"><code>.col</code> with <code>.g-3</code> gutters</div>
+    <div class="col themed-grid-col"><code>.col</code> with <code>.g-3</code> gutters</div>
+    <div class="col themed-grid-col"><code>.col</code> with <code>.g-3</code> gutters</div>
+  </div>
 </div>
 
 <div class="container" id="containers">
+  <hr class="my-4">
+
   <h2 class="mt-4">Containers</h2>
   <p>Additional classes added in Bootstrap v4.4 allow containers that are 100% wide until a particular breakpoint.</p>
 </div>

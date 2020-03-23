@@ -5,19 +5,12 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
-html {
-  box-sizing: border-box;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-}
+$include-column-box-sizing: true !default;
 
 @import "functions";
 @import "variables";
 
+@import "mixins/lists";
 @import "mixins/breakpoints";
 @import "mixins/container";
 @import "mixins/grid";

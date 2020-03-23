@@ -14,10 +14,10 @@ Use either the Bootstrap mark (a capital **B**) or the standard logo (just **Boo
 
 <div class="bd-brand-logos d-sm-flex text-center bg-light rounded overflow-hidden w-100 mb-3">
   <div class="bd-brand-item">
-    <img src="/docs/{{< param docs_version >}}/assets/brand/bootstrap-solid.svg" alt="Bootstrap" width="144" height="144">
+    <img src="/docs/{{< param docs_version >}}/assets/brand/bootstrap-solid.svg" alt="Bootstrap" width="144" height="144" loading="lazy">
   </div>
   <div class="bd-brand-item inverse">
-    <img src="/docs/{{< param docs_version >}}/assets/brand/bootstrap-outline.svg" alt="Bootstrap" width="144" height="144">
+    <img src="/docs/{{< param docs_version >}}/assets/brand/bootstrap-outline.svg" alt="Bootstrap" width="144" height="144" loading="lazy">
   </div>
 </div>
 <div class="bd-brand-logos d-sm-flex text-center bg-light rounded overflow-hidden w-100 mb-3">
@@ -35,13 +35,13 @@ Download the Bootstrap mark in one of three styles, each available as an SVG fil
 
 <div class="bd-brand-logos d-sm-flex text-center bg-light rounded overflow-hidden w-100 mb-3">
   <a href="/docs/{{< param docs_version >}}/assets/brand/bootstrap-solid.svg" download class="bd-brand-item" title="Download solid logo">
-    <img src="/docs/{{< param docs_version >}}/assets/brand/bootstrap-solid.svg" alt="Bootstrap" width="144" height="144">
+    <img src="/docs/{{< param docs_version >}}/assets/brand/bootstrap-solid.svg" alt="Bootstrap" width="144" height="144" loading="lazy">
   </a>
   <a href="/docs/{{< param docs_version >}}/assets/brand/bootstrap-outline.svg" download class="bd-brand-item inverse" title="Download outlined logo">
-    <img src="/docs/{{< param docs_version >}}/assets/brand/bootstrap-outline.svg" alt="Bootstrap" width="144" height="144">
+    <img src="/docs/{{< param docs_version >}}/assets/brand/bootstrap-outline.svg" alt="Bootstrap" width="144" height="144" loading="lazy">
   </a>
   <a href="/docs/{{< param docs_version >}}/assets/brand/bootstrap-punchout.svg" download class="bd-brand-item inverse" title="Download inverted logo">
-    <img src="/docs/{{< param docs_version >}}/assets/brand/bootstrap-punchout.svg" alt="Bootstrap" width="144" height="144">
+    <img src="/docs/{{< param docs_version >}}/assets/brand/bootstrap-punchout.svg" alt="Bootstrap" width="144" height="144" loading="lazy">
   </a>
 </div>
 
