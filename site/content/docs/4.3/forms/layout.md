@@ -232,9 +232,7 @@ The example below uses a flexbox utility to vertically center the contents and c
   <div class="col-auto">
     <label class="sr-only" for="autoSizingInputGroup">Username</label>
     <div class="input-group">
-      <div class="input-group-prepend">
-        <div class="input-group-text">@</div>
-      </div>
+      <div class="input-group-text">@</div>
       <input type="text" class="form-control" id="autoSizingInputGroup" placeholder="Username">
     </div>
   </div>
@@ -272,9 +270,7 @@ You can then remix that once again with size-specific column classes.
   <div class="col-sm-3">
     <label class="sr-only" for="specificSizeInputGroupUsername">Username</label>
     <div class="input-group">
-      <div class="input-group-prepend">
-        <div class="input-group-text">@</div>
-      </div>
+      <div class="input-group-text">@</div>
       <input type="text" class="form-control" id="specificSizeInputGroupUsername" placeholder="Username">
     </div>
   </div>
@@ -317,9 +313,7 @@ Be sure to always include a `<label>` with each form control, even if you need t
   <div class="col-12">
     <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
     <div class="input-group">
-      <div class="input-group-prepend">
-        <div class="input-group-text">@</div>
-      </div>
+      <div class="input-group-text">@</div>
       <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="Username">
     </div>
   </div>
