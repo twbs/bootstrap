@@ -103,7 +103,7 @@ By default, browsers will treat all native form controls (`<input>`, `<select>`,
 
 {{< example >}}
 <form>
-  <fieldset disabled>
+  <fieldset disabled aria-label="Disabled fieldset example">
     <div class="mb-3">
       <label for="disabledTextInput">Disabled input</label>
       <input type="text" id="disabledTextInput" class="form-control" placeholder="Disabled input">
