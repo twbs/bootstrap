@@ -1,9 +1,9 @@
 .skippy {
   position: fixed;
-  top: map-get($spacers, 2);
-  left: map-get($spacers, 2);
+  top: .5rem;
+  left: .5rem;
   z-index: $zindex-fixed;
-  padding: map-get($spacers, 2);
+  padding: .5rem;
   color: $white;
   background-color: $bd-purple;
 
