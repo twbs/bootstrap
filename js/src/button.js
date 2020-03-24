@@ -32,6 +32,7 @@ const Selector = {
   DATA_TOGGLE          : '[data-toggle="button"]',
   DATA_TOGGLES_BUTTONS : '[data-toggle="buttons"] .btn',
   DATA_TOGGLES_INPUTS  : '[data-toggle="buttons"] input:not([type="hidden"])',
+  DATA_TOGGLE_BUTTONS  : '[data-toggle="button"], [data-toggle="buttons"] .btn',
   INPUT                : 'input:not([type="hidden"])',
   ACTIVE               : '.active',
   BUTTON               : '.btn'
@@ -54,7 +55,6 @@ const Event = {
 class Button {
   constructor(element) {
     this._element = element
-    this._input = element.querySelector(Selector.INPUT)
   }
 
   // Getters
@@ -63,42 +63,22 @@ class Button {
     return VERSION
   }
 
-  get checked() {
-    if (this._input) {
-      return this._input.checked
-    }
-    return this._element.getAttribute('aria-pressed') === 'true'
-  }
-
-  get disabled() {
-    return this._element.hasAttribute('disabled') ||
-      this._element.classList.contains('disabled') ||
-      this._input && (
-        this._input.hasAttribute('disabled') ||
-        this._input.classList.contains('disabled')
-      )
-  }
-
-  // Setters
-
-  set checked(c) {
-    if (this.disabled) {
-      return
-    }
-
-    if (this._input) {
-      this._input.checked = c
-      $(this._input).trigger('change')
-    } else {
-      this._element.setAttribute('aria-pressed', c)
-      this._update()
-    }
-  }
-
   // Public
 
   toggle() {
-    this.checked = !this.checked
+    if (Button._disabled(this._element)) {
+      return
+    }
+
+    const c = !Button._checked(this._element)
+    const input = this._element.querySelector(Selector.INPUT)
+    if (input) {
+      input.checked = c
+      $(input).trigger('change')
+    } else {
+      this._element.setAttribute('aria-pressed', c)
+      Button._update(this._element)
+    }
   }
 
   dispose() {
@@ -106,48 +86,44 @@ class Button {
     this._element = null
   }
 
-  // Private
-
-  /**
-   * _update toggles the "active" class on the button according to the checked
-   * status of the toggle.
-   * @return {void}
-   */
-  _update() {
-    this._element.classList.toggle(ClassName.ACTIVE, this.checked)
-  }
-
   // Static
 
+  static _update(e) {
+    e.classList.toggle(ClassName.ACTIVE, Button._checked(e))
+  }
+
+  static _checked(e) {
+    const input = e.querySelector(Selector.INPUT)
+    if (input) {
+      return input.checked
+    }
+    return e.getAttribute('aria-pressed') === 'true'
+  }
+
+  static _disabled(e) {
+    if (e.hasAttribute('disabled') || e.classList.contains('disabled')) {
+      return true
+    }
+
+    const input = e.querySelector(Selector.INPUT)
+    return input && (
+      input.hasAttribute('disabled') ||
+      input.classList.contains('disabled')
+    )
+  }
+
   static _jQueryInterface(config) {
-    switch (config) {
-      case 'checked':
-      case 'disabled':
-        if (!this.length) {
-          return
-        }
-        return get(this[0], config)
-      default:
-        return this.each(function () {
-          return get(this, config)
-        })
-    }
-
-    function get(e, config) {
-      let data = $(e).data(DATA_KEY)
+    return this.each(function () {
+      let data = $(this).data(DATA_KEY)
       if (!data) {
-        data = new Button(e)
-        $(e).data(DATA_KEY, data)
+        data = new Button(this)
+        $(this).data(DATA_KEY, data)
       }
 
-      switch (config) {
-        case 'toggle':
-        case '_update':
-          return data[config]()
-        default:
-          return data[config]
+      if (config === 'toggle') {
+        data[config]()
       }
-    }
+    })
   }
 }
 
@@ -164,7 +140,9 @@ $(document)
     if (event.target.type === 'radio') {
       t = t.add(document.getElementsByName(event.target.name))
     }
-    Button._jQueryInterface.call(t.closest(Selector.BUTTON), '_update')
+    t.closest(Selector.BUTTON).each(function () {
+      Button._update(this)
+    })
   })
   .on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE_CARROT, (event) => {
     // Find the containing .btn.
@@ -172,9 +150,12 @@ $(document)
     if (!btn.hasClass(ClassName.BUTTON)) {
       btn = btn.closest(Selector.BUTTON)
     }
+    if (!btn.length) {
+      return
+    }
 
     // Don't allow disabled buttons to be toggled.
-    if (Button._jQueryInterface.call(btn, 'disabled')) {
+    if (Button._disabled(btn[0])) {
       event.preventDefault() // work around Firefox bug #1540995
       return
     }
@@ -200,7 +181,9 @@ $(document)
 
 $(window).on(Event.LOAD_DATA_API, () => {
   // Ensure correct active class is set to match the controls' actual values/states.
-  Button._jQueryInterface.call($(Selector.DATA_TOGGLE + ', ' + Selector.DATA_TOGGLES_BUTTONS), '_update')
+  $(Selector.DATA_TOGGLE_BUTTONS).each(function () {
+    Button._update(this)
+  })
 })
 
 /**
