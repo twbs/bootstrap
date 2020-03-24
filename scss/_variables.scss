@@ -465,38 +465,48 @@ $mark-bg:                     #fcf8e3 !default;
 //
 // Customizes the `.table` component with basic values, each used across all table variations.
 
+// scss-docs-start table-variables
 $table-cell-padding:          .5rem !default;
 $table-cell-padding-sm:       .25rem !default;
 
 $table-cell-vertical-align:   top !default;
 
 $table-color:                 $body-color !default;
-$table-bg:                    null !default;
-$table-accent-bg:             rgba($black, .05) !default;
-$table-hover-color:           $table-color !default;
-$table-hover-bg:              rgba($black, .075) !default;
-$table-active-bg:             $table-hover-bg !default;
+$table-bg:                    transparent !default;
 
+$table-striped-color:         $table-color !default;
+$table-striped-bg-factor:      .05 !default;
+$table-striped-bg:             rgba($black, $table-striped-bg-factor) !default;
+
+$table-active-color:          $table-color !default;
+$table-active-bg-factor:      .1 !default;
+$table-active-bg:             rgba($black, $table-active-bg-factor) !default;
+
+$table-hover-color:           $table-color !default;
+$table-hover-bg-factor:       .075 !default;
+$table-hover-bg:              rgba($black, $table-hover-bg-factor) !default;
+
+$table-border-factor:         .1 !default;
 $table-border-width:          $border-width !default;
 $table-border-color:          $border-color !default;
-
-$table-head-bg:               $gray-200 !default;
-$table-head-color:            $gray-700 !default;
-$table-head-border-color:     $gray-700 !default;
-
-$table-dark-color:            $white !default;
-$table-dark-bg:               $gray-800 !default;
-$table-dark-accent-bg:        rgba($white, .05) !default;
-$table-dark-hover-color:      $table-dark-color !default;
-$table-dark-hover-bg:         rgba($white, .075) !default;
-$table-dark-border-color:     lighten($table-dark-bg, 7.5%) !default;
 
 $table-striped-order:         odd !default;
 
 $table-caption-color:         $text-muted !default;
 
 $table-bg-level:              -9 !default;
-$table-border-level:          -6 !default;
+
+$table-variants: (
+  "primary":    color-level($primary, $table-bg-level),
+  "secondary":  color-level($secondary, $table-bg-level),
+  "success":    color-level($success, $table-bg-level),
+  "info":       color-level($info, $table-bg-level),
+  "warning":    color-level($warning, $table-bg-level),
+  "danger":     color-level($danger, $table-bg-level),
+  "light":      $light,
+  "dark":       $dark,
+) !default;
+// scss-docs-end table-variables
 
 
 // Buttons + Forms
