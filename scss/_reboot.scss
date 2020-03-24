@@ -355,6 +355,7 @@ svg {
 // Prevent double borders
 
 table {
+  caption-side: bottom;
   border-collapse: collapse;
 }
 
@@ -363,7 +364,6 @@ caption {
   padding-bottom: $table-cell-padding;
   color: $table-caption-color;
   text-align: left;
-  caption-side: bottom;
 }
 
 // 1. Matches default `<td>` alignment by inheriting `text-align`.
