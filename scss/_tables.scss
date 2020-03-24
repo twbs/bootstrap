@@ -3,29 +3,45 @@
 //
 
 .table {
+  --table-bg: #{$table-bg};
+  --table-accent-bg: transparent;
+  --table-striped-color: #{$table-striped-color};
+  --table-striped-bg: #{$table-striped-bg};
+  --table-active-color: #{$table-active-color};
+  --table-active-bg: #{$table-active-bg};
+  --table-hover-color: #{$table-hover-color};
+  --table-hover-bg: #{$table-hover-bg};
+
   width: 100%;
   margin-bottom: $spacer;
   color: $table-color;
   vertical-align: $table-cell-vertical-align;
-  background-color: $table-bg; // Reset for nesting within parents with `background-color`.
+  border-color: $table-border-color;
 
-  th,
-  td {
+  // Target th & td
+  // We need the child combinator to prevent styles leaking to nested tables which doesn't have a `.table` class.
+  // We use the universal selectors here to simplify the selector (else we would need 6 different selectors).
+  // Another advantage is that this generates less code and makes the selector less specific making it easier to override.
+  // stylelint-disable-next-line selector-max-universal
+  > :not(caption) > * > * {
     padding: $table-cell-padding;
-    border-bottom: $table-border-width solid $table-border-color;
+    background-color: var(--table-bg);
+    background-image: linear-gradient(var(--table-accent-bg), var(--table-accent-bg));
+    border-bottom-width: $table-border-width;
   }
 
-  tbody {
+  > tbody {
     vertical-align: inherit;
   }
 
-  thead th {
+  > thead {
     vertical-align: bottom;
-    border-bottom-color: $table-head-border-color;
   }
 
-  tbody + tbody {
-    border-top: (2 * $table-border-width) solid $table-border-color;
+  // Highlight border color between thead, tbody and tfoot.
+  // stylelint-disable-next-line selector-max-universal
+  > :not(:last-child) > :last-child > * {
+    border-bottom-color: currentColor;
   }
 }
 
@@ -34,7 +50,9 @@
 // Change placement of captions with a class
 //
 
-.caption-top { caption-side: top; }
+.caption-top {
+  caption-side: top;
+}
 
 
 //
@@ -42,8 +60,8 @@
 //
 
 .table-sm {
-  th,
-  td {
+  // stylelint-disable-next-line selector-max-universal
+  > :not(caption) > * > * {
     padding: $table-cell-padding-sm;
   }
 }
@@ -52,29 +70,28 @@
 // Border versions
 //
 // Add or remove borders all around the table and between all the columns.
+//
+// When borders are added on all sides of the cells, the corners can render odd when
+// these borders do not have the same color or if they are semi-transparent.
+// Therefor we add top and border bottoms to the `tr`s and left and right borders
+// to the `td`s or `th`s
 
 .table-bordered {
-  border: $table-border-width solid $table-border-color;
+  // stylelint-disable-next-line selector-max-universal
+  > :not(caption) > * {
+    border-width: $table-border-width 0;
 
-  th,
-  td {
-    border: $table-border-width solid $table-border-color;
-  }
-
-  thead {
-    th,
-    td {
-      border-bottom-width: 2 * $table-border-width;
+    // stylelint-disable-next-line selector-max-universal
+    > * {
+      border-width: 0 $table-border-width;
     }
   }
 }
 
 .table-borderless {
-  th,
-  td,
-  thead th,
-  tbody + tbody {
-    border: 0;
+  // stylelint-disable-next-line selector-max-universal
+  > :not(caption) > * > * {
+    border-bottom-width: 0;
   }
 }
 
@@ -83,91 +100,41 @@
 // Default zebra-stripe styles (alternating gray and transparent backgrounds)
 
 .table-striped {
-  tbody tr:nth-of-type(#{$table-striped-order}) {
-    background-color: $table-accent-bg;
+  > tbody > tr:nth-of-type(#{$table-striped-order}) {
+    --table-accent-bg: var(--table-striped-bg);
+    color: var(--table-striped-color);
   }
 }
 
+// Active table
+//
+// The `.table-active` class can be added to highlight rows or cells
+
+.table-active {
+  --table-accent-bg: var(--table-active-bg);
+  color: var(--table-active-color);
+}
 
 // Hover effect
 //
 // Placed here since it has to come after the potential zebra striping
 
 .table-hover {
-  tbody tr {
-    &:hover {
-      color: $table-hover-color;
-      background-color: $table-hover-bg;
-    }
+  > tbody > tr:hover {
+    --table-accent-bg: var(--table-hover-bg);
+    color: var(--table-hover-color);
   }
 }
 
 
-// Table backgrounds
+// Table variants
 //
-// Exact selectors below required to override `.table-striped` and prevent
-// inheritance to nested tables.
+// Table variants set the table cell backgrounds, border colors
+// and the colors of the striped, hovered & active tables
 
-@each $color, $value in $theme-colors {
-  @include table-row-variant($color, color-level($value, $table-bg-level), color-level($value, $table-border-level));
+@each $color, $value in $table-variants {
+  @include table-variant($color, $value);
 }
-
-@include table-row-variant(active, $table-active-bg);
-
-
-// Dark styles
-//
-// Same table markup, but inverted color scheme: dark background and light text.
-
-// stylelint-disable-next-line no-duplicate-selectors
-.table {
-  .thead-dark {
-    th {
-      color: $table-dark-color;
-      background-color: $table-dark-bg;
-      border-color: $table-dark-border-color;
-    }
-  }
-
-  .thead-light {
-    th {
-      color: $table-head-color;
-      background-color: $table-head-bg;
-      border-color: $table-border-color;
-    }
-  }
-}
-
-.table-dark {
-  color: $table-dark-color;
-  background-color: $table-dark-bg;
-
-  th,
-  td,
-  thead th {
-    border-color: $table-dark-border-color;
-  }
-
-  &.table-bordered {
-    border: 0;
-  }
-
-  &.table-striped {
-    tbody tr:nth-of-type(#{$table-striped-order}) {
-      background-color: $table-dark-accent-bg;
-    }
-  }
-
-  &.table-hover {
-    tbody tr {
-      &:hover {
-        color: $table-dark-hover-color;
-        background-color: $table-dark-hover-bg;
-      }
-    }
-  }
-}
-
 
 // Responsive tables
 //
