@@ -733,7 +733,6 @@ $input-group-addon-color:               $input-color !default;
 $input-group-addon-bg:                  $gray-200 !default;
 $input-group-addon-border-color:        $input-border-color !default;
 
-
 $form-select-padding-y:             $input-padding-y !default;
 $form-select-padding-x:             $input-padding-x !default;
 $form-select-font-family:           $input-font-family !default;
@@ -823,6 +822,15 @@ $form-file-padding-y-lg:          $input-padding-y-lg !default;
 $form-file-padding-x-lg:          $input-padding-x-lg !default;
 $form-file-font-size-lg:          $input-font-size-lg !default;
 $form-file-height-lg:             $input-height-lg !default;
+
+$form-floating-height:            3.5rem !default;
+$form-floating-padding-x:         $input-padding-x !default;
+$form-floating-padding-y:         1rem !default;
+$form-floating-input-padding-t:   1.625rem !default;
+$form-floating-input-padding-b:   .375rem !default;
+$form-floating-label-padding-y:   $form-floating-input-padding-b !default;
+$form-floating-label-font-size:   .85rem !default;
+$form-floating-label-color:       $gray-500 !default;
 
 
 // Form validation
