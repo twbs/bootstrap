@@ -12,7 +12,6 @@ import {
   getElementFromSelector,
   getTransitionDurationFromElement,
   isVisible,
-  makeArray,
   reflow,
   triggerTransitionEnd,
   typeCheckConfig
@@ -322,7 +321,7 @@ class Carousel {
       }
     }
 
-    makeArray(SelectorEngine.find(SELECTOR_ITEM_IMG, this._element)).forEach(itemImg => {
+    SelectorEngine.find(SELECTOR_ITEM_IMG, this._element).forEach(itemImg => {
       EventHandler.on(itemImg, EVENT_DRAG_START, e => e.preventDefault())
     })
 
@@ -358,7 +357,7 @@ class Carousel {
 
   _getItemIndex(element) {
     this._items = element && element.parentNode ?
-      makeArray(SelectorEngine.find(SELECTOR_ITEM, element.parentNode)) :
+      SelectorEngine.find(SELECTOR_ITEM, element.parentNode) :
       []
 
     return this._items.indexOf(element)
@@ -601,7 +600,8 @@ EventHandler
   .on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_SLIDE, Carousel.dataApiClickHandler)
 
 EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
-  const carousels = makeArray(SelectorEngine.find(SELECTOR_DATA_RIDE))
+  const carousels = SelectorEngine.find(SELECTOR_DATA_RIDE)
+
   for (let i = 0, len = carousels.length; i < len; i++) {
     Carousel.carouselInterface(carousels[i], Data.getData(carousels[i], DATA_KEY))
   }

@@ -13,7 +13,6 @@ import {
   getTransitionDurationFromElement,
   getUID,
   isElement,
-  makeArray,
   noop,
   typeCheckConfig
 } from './util/index'
@@ -301,7 +300,7 @@ class Tooltip {
       // only needed because of broken event delegation on iOS
       // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
       if ('ontouchstart' in document.documentElement) {
-        makeArray(document.body.children).forEach(element => {
+        [].concat(...document.body.children).forEach(element => {
           EventHandler.on(element, 'mouseover', noop())
         })
       }
@@ -354,7 +353,7 @@ class Tooltip {
     // If this is a touch-enabled device we remove the extra
     // empty mouseover listeners we added for iOS support
     if ('ontouchstart' in document.documentElement) {
-      makeArray(document.body.children)
+      [].concat(...document.body.children)
         .forEach(element => EventHandler.off(element, 'mouseover', noop))
     }
 

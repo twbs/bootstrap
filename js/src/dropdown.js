@@ -10,7 +10,6 @@ import {
   getElementFromSelector,
   isElement,
   isVisible,
-  makeArray,
   noop,
   typeCheckConfig
 } from './util/index'
@@ -190,8 +189,8 @@ class Dropdown {
     // only needed because of broken event delegation on iOS
     // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
     if ('ontouchstart' in document.documentElement &&
-      !makeArray(SelectorEngine.closest(parent, SELECTOR_NAVBAR_NAV)).length) {
-      makeArray(document.body.children)
+      !SelectorEngine.closest(parent, SELECTOR_NAVBAR_NAV)) {
+      [].concat(...document.body.children)
         .forEach(elem => EventHandler.on(elem, 'mouseover', null, noop()))
     }
 
@@ -378,7 +377,8 @@ class Dropdown {
       return
     }
 
-    const toggles = makeArray(SelectorEngine.find(SELECTOR_DATA_TOGGLE))
+    const toggles = SelectorEngine.find(SELECTOR_DATA_TOGGLE)
+
     for (let i = 0, len = toggles.length; i < len; i++) {
       const parent = Dropdown.getParentFromElement(toggles[i])
       const context = Data.getData(toggles[i], DATA_KEY)
@@ -414,7 +414,7 @@ class Dropdown {
       // If this is a touch-enabled device we remove the extra
       // empty mouseover listeners we added for iOS support
       if ('ontouchstart' in document.documentElement) {
-        makeArray(document.body.children)
+        [].concat(...document.body.children)
           .forEach(elem => EventHandler.off(elem, 'mouseover', null, noop()))
       }
 
@@ -472,7 +472,7 @@ class Dropdown {
       return
     }
 
-    const items = makeArray(SelectorEngine.find(SELECTOR_VISIBLE_ITEMS, parent))
+    const items = SelectorEngine.find(SELECTOR_VISIBLE_ITEMS, parent)
       .filter(isVisible)
 
     if (!items.length) {
