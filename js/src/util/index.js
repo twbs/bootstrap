@@ -127,14 +127,6 @@ const typeCheckConfig = (componentName, config, configTypes) => {
     })
 }
 
-const makeArray = nodeList => {
-  if (!nodeList) {
-    return []
-  }
-
-  return [].slice.call(nodeList)
-}
-
 const isVisible = element => {
   if (!element) {
     return false
@@ -200,7 +192,6 @@ export {
   isElement,
   emulateTransitionEnd,
   typeCheckConfig,
-  makeArray,
   isVisible,
   findShadowRoot,
   noop,

@@ -12,7 +12,6 @@ import {
   getElementFromSelector,
   getTransitionDurationFromElement,
   isVisible,
-  makeArray,
   reflow,
   typeCheckConfig
 } from './util/index'
@@ -456,7 +455,7 @@ class Modal {
       //   while $(DOMNode).css('padding-right') returns the calculated value or 0 if not set
 
       // Adjust fixed content padding
-      makeArray(SelectorEngine.find(SELECTOR_FIXED_CONTENT))
+      SelectorEngine.find(SELECTOR_FIXED_CONTENT)
         .forEach(element => {
           const actualPadding = element.style.paddingRight
           const calculatedPadding = window.getComputedStyle(element)['padding-right']
@@ -465,7 +464,7 @@ class Modal {
         })
 
       // Adjust sticky content margin
-      makeArray(SelectorEngine.find(SELECTOR_STICKY_CONTENT))
+      SelectorEngine.find(SELECTOR_STICKY_CONTENT)
         .forEach(element => {
           const actualMargin = element.style.marginRight
           const calculatedMargin = window.getComputedStyle(element)['margin-right']
@@ -486,7 +485,7 @@ class Modal {
 
   _resetScrollbar() {
     // Restore fixed content padding
-    makeArray(SelectorEngine.find(SELECTOR_FIXED_CONTENT))
+    SelectorEngine.find(SELECTOR_FIXED_CONTENT)
       .forEach(element => {
         const padding = Manipulator.getDataAttribute(element, 'padding-right')
         if (typeof padding !== 'undefined') {
@@ -496,7 +495,7 @@ class Modal {
       })
 
     // Restore sticky content and navbar-toggler margin
-    makeArray(SelectorEngine.find(`${SELECTOR_STICKY_CONTENT}`))
+    SelectorEngine.find(`${SELECTOR_STICKY_CONTENT}`)
       .forEach(element => {
         const margin = Manipulator.getDataAttribute(element, 'margin-right')
         if (typeof margin !== 'undefined') {

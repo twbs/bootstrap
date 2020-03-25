@@ -11,7 +11,6 @@ import {
   emulateTransitionEnd,
   getElementFromSelector,
   getTransitionDurationFromElement,
-  makeArray,
   reflow
 } from './util/index'
 import Data from './dom/data'
@@ -85,7 +84,7 @@ class Tab {
 
     if (listElement) {
       const itemSelector = listElement.nodeName === 'UL' || listElement.nodeName === 'OL' ? SELECTOR_ACTIVE_UL : SELECTOR_ACTIVE
-      previous = makeArray(SelectorEngine.find(itemSelector, listElement))
+      previous = SelectorEngine.find(itemSelector, listElement)
       previous = previous[previous.length - 1]
     }
 
@@ -190,7 +189,7 @@ class Tab {
       const dropdownElement = SelectorEngine.closest(element, SELECTOR_DROPDOWN)
 
       if (dropdownElement) {
-        makeArray(SelectorEngine.find(SELECTOR_DROPDOWN_TOGGLE))
+        SelectorEngine.find(SELECTOR_DROPDOWN_TOGGLE)
           .forEach(dropdown => dropdown.classList.add(CLASS_NAME_ACTIVE))
       }
 
