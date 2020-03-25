@@ -39,11 +39,12 @@ const Selector = {
 }
 
 const Event = {
-  CHANGE_DATA_API     : `change${EVENT_KEY}${DATA_API_KEY}`,
-  CLICK_DATA_API      : `click${EVENT_KEY}${DATA_API_KEY}`,
-  FOCUS_BLUR_DATA_API : `focus${EVENT_KEY}${DATA_API_KEY} ` +
-                        `blur${EVENT_KEY}${DATA_API_KEY}`,
-  LOAD_DATA_API       : `load${EVENT_KEY}${DATA_API_KEY}`
+  CHANGE_DATA_API        : `change${EVENT_KEY}${DATA_API_KEY}`,
+  CLICK_DATA_API         : `click${EVENT_KEY}${DATA_API_KEY}`,
+  FOCUS_BLUR_DATA_API    : `focus${EVENT_KEY}${DATA_API_KEY} ` +
+                           `blur${EVENT_KEY}${DATA_API_KEY}`,
+  LOAD_PAGESHOW_DATA_API : `load${EVENT_KEY}${DATA_API_KEY} ` +
+                           `pageshow${EVENT_KEY}${DATA_API_KEY}`
 }
 
 /**
@@ -179,7 +180,7 @@ $(document)
       .toggleClass(ClassName.FOCUS, /^focus(in)?$/.test(event.type))
   })
 
-$(window).on(Event.LOAD_DATA_API, () => {
+$(window).on(Event.LOAD_PAGESHOW_DATA_API, () => {
   // Ensure correct active class is set to match the controls' actual values/states.
   $(Selector.DATA_TOGGLE_BUTTONS).each(function () {
     Button._update(this)
