@@ -23,16 +23,14 @@ Since Bootstrap applies `display: block` and `width: 100%` to almost all our for
 Feel free to build your forms however you like, with `<fieldset>`s, `<div>`s, or nearly any other element.
 
 {{< example >}}
-<form>
-  <div class="mb-3">
-    <label for="formGroupExampleInput">Example label</label>
-    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder">
-  </div>
-  <div class="mb-3">
-    <label for="formGroupExampleInput2">Another label</label>
-    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input placeholder">
-  </div>
-</form>
+<div class="mb-3">
+  <label for="formGroupExampleInput">Example label</label>
+  <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder">
+</div>
+<div class="mb-3">
+  <label for="formGroupExampleInput2">Another label</label>
+  <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input placeholder">
+</div>
 {{< /example >}}
 
 ## Form grid
@@ -40,14 +38,14 @@ Feel free to build your forms however you like, with `<fieldset>`s, `<div>`s, or
 More complex forms can be built using our grid classes. Use these for form layouts that require multiple columns, varied widths, and additional alignment options. **Requires the `$enable-grid-classes` Sass variable to be enabled** (on by default).
 
 {{< example >}}
-<form class="row">
+<div class="row">
   <div class="col">
-    <input type="text" class="form-control" placeholder="First name">
+    <input type="text" class="form-control" placeholder="First name" aria-label="First name">
   </div>
   <div class="col">
-    <input type="text" class="form-control" placeholder="Last name">
+    <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
   </div>
-</form>
+</div>
 {{< /example >}}
 
 ## Gutters
@@ -55,14 +53,14 @@ More complex forms can be built using our grid classes. Use these for form layou
 By adding [gutter modifier classes]({{< docsref "/layout/grid#gutters" >}}), you can have control over the gutter width in as well the inline as block direction. **Also requires the `$enable-grid-classes` Sass variable to be enabled** (on by default).
 
 {{< example >}}
-<form class="row g-3">
+<div class="row g-3">
   <div class="col">
-    <input type="text" class="form-control" placeholder="First name">
+    <input type="text" class="form-control" placeholder="First name" aria-label="First name">
   </div>
   <div class="col">
-    <input type="text" class="form-control" placeholder="Last name">
+    <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
   </div>
-</form>
+</div>
 {{< /example >}}
 
 More complex layouts can also be created with the grid system.
@@ -179,26 +177,24 @@ At times, you maybe need to use margin or padding utilities to create that perfe
 Be sure to use `.col-form-label-sm` or `.col-form-label-lg` to your `<label>`s or `<legend>`s to correctly follow the size of `.form-control-lg` and `.form-control-sm`.
 
 {{< example >}}
-<form>
-  <div class="row mb-3">
-    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Email</label>
-    <div class="col-sm-10">
-      <input type="email" class="form-control form-control-sm" id="colFormLabelSm" placeholder="col-form-label-sm">
-    </div>
+<div class="row mb-3">
+  <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Email</label>
+  <div class="col-sm-10">
+    <input type="email" class="form-control form-control-sm" id="colFormLabelSm" placeholder="col-form-label-sm">
   </div>
-  <div class="row mb-3">
-    <label for="colFormLabel" class="col-sm-2 col-form-label">Email</label>
-    <div class="col-sm-10">
-      <input type="email" class="form-control" id="colFormLabel" placeholder="col-form-label">
-    </div>
+</div>
+<div class="row mb-3">
+  <label for="colFormLabel" class="col-sm-2 col-form-label">Email</label>
+  <div class="col-sm-10">
+    <input type="email" class="form-control" id="colFormLabel" placeholder="col-form-label">
   </div>
-  <div class="row">
-    <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Email</label>
-    <div class="col-sm-10">
-      <input type="email" class="form-control form-control-lg" id="colFormLabelLg" placeholder="col-form-label-lg">
-    </div>
+</div>
+<div class="row">
+  <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Email</label>
+  <div class="col-sm-10">
+    <input type="email" class="form-control form-control-lg" id="colFormLabelLg" placeholder="col-form-label-lg">
   </div>
-</form>
+</div>
 {{< /example >}}
 
 ## Column sizing
@@ -206,17 +202,17 @@ Be sure to use `.col-form-label-sm` or `.col-form-label-lg` to your `<label>`s o
 As shown in the previous examples, our grid system allows you to place any number of `.col`s within a `.row`. They'll split the available width equally between them. You may also pick a subset of your columns to take up more or less space, while the remaining `.col`s equally split the rest, with specific column classes like `.col-sm-7`.
 
 {{< example >}}
-<form class="row g-3">
+<div class="row g-3">
   <div class="col-sm-7">
-    <input type="text" class="form-control" placeholder="City">
+    <input type="text" class="form-control" placeholder="City" aria-label="City">
   </div>
   <div class="col-sm">
-    <input type="text" class="form-control" placeholder="State">
+    <input type="text" class="form-control" placeholder="State" aria-label="State">
   </div>
   <div class="col-sm">
-    <input type="text" class="form-control" placeholder="Zip">
+    <input type="text" class="form-control" placeholder="Zip" aria-label="Zip">
   </div>
-</form>
+</div>
 {{< /example >}}
 
 ## Auto-sizing
@@ -232,9 +228,7 @@ The example below uses a flexbox utility to vertically center the contents and c
   <div class="col-auto">
     <label class="sr-only" for="autoSizingInputGroup">Username</label>
     <div class="input-group">
-      <div class="input-group-prepend">
-        <div class="input-group-text">@</div>
-      </div>
+      <div class="input-group-text">@</div>
       <input type="text" class="form-control" id="autoSizingInputGroup" placeholder="Username">
     </div>
   </div>
@@ -272,9 +266,7 @@ You can then remix that once again with size-specific column classes.
   <div class="col-sm-3">
     <label class="sr-only" for="specificSizeInputGroupUsername">Username</label>
     <div class="input-group">
-      <div class="input-group-prepend">
-        <div class="input-group-text">@</div>
-      </div>
+      <div class="input-group-text">@</div>
       <input type="text" class="form-control" id="specificSizeInputGroupUsername" placeholder="Username">
     </div>
   </div>
@@ -317,9 +309,7 @@ Be sure to always include a `<label>` with each form control, even if you need t
   <div class="col-12">
     <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
     <div class="input-group">
-      <div class="input-group-prepend">
-        <div class="input-group-text">@</div>
-      </div>
+      <div class="input-group-text">@</div>
       <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="Username">
     </div>
   </div>

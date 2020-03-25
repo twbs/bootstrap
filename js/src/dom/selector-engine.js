@@ -66,6 +66,20 @@ const SelectorEngine = {
     }
 
     return []
+  },
+
+  next(element, selector) {
+    let next = element.nextElementSibling
+
+    while (next) {
+      if (this.matches(next, selector)) {
+        return [next]
+      }
+
+      next = next.nextElementSibling
+    }
+
+    return []
   }
 }
 

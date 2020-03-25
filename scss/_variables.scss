@@ -79,14 +79,15 @@ $theme-colors: (
 ) !default;
 
 // Set a specific jump point for requesting color jumps
-$theme-color-interval:      8% !default;
+$theme-color-interval: 8% !default;
 
-// The yiq lightness value that determines when the lightness of color changes from "dark" to "light". Acceptable values are between 0 and 255.
-$yiq-contrasted-threshold:  150 !default;
+// The contrast ratio to reach against white, to determine if color changes from "light" to "dark". Acceptable values for WCAG 2.0 are 3, 4.5 and 7.
+// See https://www.w3.org/TR/WCAG20/#visual-audio-contrast-contrast
+$min-contrast-ratio:   3 !default;
 
-// Customize the light and dark text colors for use in our YIQ color contrast function.
-$yiq-text-dark:             $gray-900 !default;
-$yiq-text-light:            $white !default;
+// Customize the light and dark text colors for use in our color contrast function.
+$color-contrast-dark:      $gray-900 !default;
+$color-contrast-light:     $white !default;
 
 // fusv-disable
 $blue-100: tint-color($blue, 8) !default;
@@ -249,9 +250,9 @@ $body-text-align:           null !default;
 // Style anchor elements.
 
 $link-color:                              $primary !default;
-$link-decoration:                         none !default;
+$link-decoration:                         underline !default;
 $link-hover-color:                        darken($link-color, 15%) !default;
-$link-hover-decoration:                   underline !default;
+$link-hover-decoration:                   null !default;
 // Darken percentage for links with `.text-*` class (e.g. `.text-success`)
 $emphasized-link-hover-darken-percentage: 15% !default;
 
@@ -612,6 +613,7 @@ $form-check-input-width:                  1.25em !default;
 $form-check-min-height:                   $font-size-base * $line-height-base !default;
 $form-check-padding-left:                 $form-check-input-width + .5em !default;
 $form-check-margin-bottom:                .125rem !default;
+$form-check-label-color:                  null !default;
 $form-check-label-cursor:                 null !default;
 
 $form-check-input-active-filter:          brightness(90%) !default;
@@ -744,6 +746,16 @@ $form-file-border-radius:         $input-border-radius !default;
 $form-file-box-shadow:            $input-box-shadow !default;
 $form-file-button-color:          $form-file-color !default;
 $form-file-button-bg:             $input-group-addon-bg !default;
+
+$form-file-padding-y-sm:          $input-padding-y-sm !default;
+$form-file-padding-x-sm:          $input-padding-x-sm !default;
+$form-file-font-size-sm:          $input-font-size-sm !default;
+$form-file-height-sm:             $input-height-sm !default;
+
+$form-file-padding-y-lg:          $input-padding-y-lg !default;
+$form-file-padding-x-lg:          $input-padding-x-lg !default;
+$form-file-font-size-lg:          $input-font-size-lg !default;
+$form-file-height-lg:             $input-height-lg !default;
 
 
 // Form validation

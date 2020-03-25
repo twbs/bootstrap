@@ -50,9 +50,7 @@ Custom feedback styles apply custom colors, borders, focus styles, and backgroun
   <div class="col-md-4">
     <label for="validationCustomUsername">Username</label>
     <div class="input-group">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroupPrepend">@</span>
-      </div>
+      <span class="input-group-text" id="inputGroupPrepend">@</span>
       <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
       <div class="invalid-feedback">
         Please choose a username.
@@ -142,9 +140,7 @@ While these feedback styles cannot be styled with CSS, you can still customize t
   <div class="col-md-4">
     <label for="validationDefaultUsername">Username</label>
     <div class="input-group">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroupPrepend2">@</span>
-      </div>
+      <span class="input-group-text" id="inputGroupPrepend2">@</span>
       <input type="text" class="form-control" id="validationDefaultUsername"  aria-describedby="inputGroupPrepend2" required>
     </div>
   </div>
@@ -200,9 +196,7 @@ We recommend using client-side validation, but in case you require server-side v
   <div class="col-md-4">
     <label for="validationServerUsername">Username</label>
     <div class="input-group">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroupPrepend3">@</span>
-      </div>
+      <span class="input-group-text" id="inputGroupPrepend3">@</span>
       <input type="text" class="form-control is-invalid" id="validationServerUsername" aria-describedby="inputGroupPrepend3" required>
       <div class="invalid-feedback">
         Please choose a username.
@@ -286,7 +280,7 @@ Validation styles are available for the following form controls and components:
   </div>
 
   <div class="mb-3">
-    <select class="form-select" required>
+    <select class="form-select" required aria-label="select example">
       <option value="">Open this select menu</option>
       <option value="1">One</option>
       <option value="2">Two</option>
@@ -302,6 +296,10 @@ Validation styles are available for the following form controls and components:
       <span class="form-file-button">Browse</span>
     </label>
     <div class="invalid-feedback">Example invalid form file feedback</div>
+  </div>
+
+  <div class="mb-3">
+    <button class="btn btn-primary" type="submit" disabled>Submit form</button>
   </div>
 </form>
 {{< /example >}}
@@ -329,9 +327,7 @@ If your form layout allows it, you can swap the `.{valid|invalid}-feedback` clas
   <div class="col-md-4 position-relative">
     <label for="validationTooltipUsername">Username</label>
     <div class="input-group">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
-      </div>
+      <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
       <input type="text" class="form-control" id="validationTooltipUsername" aria-describedby="validationTooltipUsernamePrepend" required>
       <div class="invalid-tooltip">
         Please choose a unique and valid username.

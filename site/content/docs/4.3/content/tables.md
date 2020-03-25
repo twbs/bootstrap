@@ -459,15 +459,15 @@ Use contextual classes to color table rows or individual cells.
         <td>Cell</td>
         <td>Cell</td>
       </tr>
-{{< table.inline >}}
-  {{- range (index $.Site.Data "theme-colors") }}
-      <tr class="table-{{ .name }}">
-        <th scope="row">{{ .name | title }}</th>
-        <td>Cell</td>
-        <td>Cell</td>
-      </tr>
-  {{- end -}}
-{{< /table.inline >}}
+      {{< table.inline >}}
+      {{- range (index $.Site.Data "theme-colors") }}
+        <tr class="table-{{ .name }}">
+          <th scope="row">{{ .name | title }}</th>
+          <td>Cell</td>
+          <td>Cell</td>
+        </tr>
+      {{- end -}}
+      {{< /table.inline >}}
     </tbody>
   </table>
 </div>
@@ -651,6 +651,42 @@ A `<caption>` functions like a heading for a table. It helps users with screen r
 
 {{< example >}}
 <table class="table">
+  <caption>List of users</caption>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
+{{< /example >}}
+
+You can also put the `<caption>` on the top of the table with `.caption-top`.
+
+{{< example >}}
+<table class="table caption-top">
   <caption>List of users</caption>
   <thead>
     <tr>

@@ -32,7 +32,7 @@ group: components
 
 ## Changing the separator
 
-Separators are automatically added in CSS through [`::before`](https://developer.mozilla.org/en-US/docs/Web/CSS/::before) and [`content`](https://developer.mozilla.org/en-US/docs/Web/CSS/content). They can be changed by changing `$breadcrumb-divider`. The [quote](https://sass-lang.com/documentation/functions/string#quote) function is needed to generate the quotes around a string, so if you want `>` as separator, you can use this:
+Separators are automatically added in CSS through [`::before`](https://developer.mozilla.org/en-US/docs/Web/CSS/::before) and [`content`](https://developer.mozilla.org/en-US/docs/Web/CSS/content). They can be changed by changing `$breadcrumb-divider`. The [quote](https://sass-lang.com/documentation/modules/string#quote) function is needed to generate the quotes around a string, so if you want `>` as separator, you can use this:
 
 ```scss
 $breadcrumb-divider: quote(">");

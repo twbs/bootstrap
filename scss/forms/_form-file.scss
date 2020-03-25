@@ -7,7 +7,7 @@
   position: relative;
   z-index: 2;
   width: 100%;
-  height: $form-file-height;
+  height: 100%;
   margin: 0;
   opacity: 0;
 
@@ -32,7 +32,7 @@
   left: 0;
   z-index: 1;
   display: flex;
-  height: $form-file-height;
+  height: 100%;
   border-color: $form-file-border-color;
   @include border-radius($form-file-border-radius);
   @include box-shadow($form-file-box-shadow);
@@ -68,4 +68,24 @@
   border-style: solid;
   border-width: $form-file-border-width;
   @include border-right-radius(inherit);
+}
+
+.form-file-sm {
+  height: $form-file-height-sm;
+  @include font-size($form-file-font-size-sm);
+
+  .form-file-text,
+  .form-file-button {
+    padding: $form-file-padding-y-sm $form-file-padding-x-sm;
+  }
+}
+
+.form-file-lg {
+  height: $form-file-height-lg;
+  @include font-size($form-file-font-size-lg);
+
+  .form-file-text,
+  .form-file-button {
+    padding: $form-file-padding-y-lg $form-file-padding-x-lg;
+  }
 }
