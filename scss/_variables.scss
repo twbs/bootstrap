@@ -648,7 +648,7 @@ $input-bg:                              $white !default;
 $input-disabled-bg:                     $gray-200 !default;
 $input-disabled-border-color:           null !default;
 
-$input-color:                           $gray-700 !default;
+$input-color:                           $body-color !default;
 $input-border-color:                    $gray-400 !default;
 $input-border-width:                    $input-btn-border-width !default;
 $input-box-shadow:                      $box-shadow-inset !default;
@@ -823,14 +823,12 @@ $form-file-padding-x-lg:          $input-padding-x-lg !default;
 $form-file-font-size-lg:          $input-font-size-lg !default;
 $form-file-height-lg:             $input-height-lg !default;
 
-$form-floating-height:            3.5rem !default;
+$form-floating-height:            add(3.75rem, $input-height-border) !default;
 $form-floating-padding-x:         $input-padding-x !default;
 $form-floating-padding-y:         1rem !default;
-$form-floating-input-padding-t:   1.625rem !default;
-$form-floating-input-padding-b:   .375rem !default;
-$form-floating-label-padding-y:   $form-floating-input-padding-b !default;
+$form-floating-input-padding-t:   1.75rem !default;
+$form-floating-input-padding-b:   .5rem !default;
 $form-floating-label-font-size:   .85rem !default;
-$form-floating-label-color:       $gray-500 !default;
 
 
 // Form validation

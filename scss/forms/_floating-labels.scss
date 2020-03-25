@@ -4,7 +4,8 @@
   position: relative;
 
   > label,
-  > .form-control {
+  > .form-control,
+  > .form-select {
     height: $form-floating-height;
     padding: $form-floating-padding-y $form-floating-padding-x;
   }
@@ -16,7 +17,6 @@
     display: block;
     width: 100%;
     margin-bottom: 0; // Override default `<label>` margin
-    // color: inherit;
     pointer-events: none;
     cursor: text; // Match the input under the label
     border: $input-border-width solid transparent;
@@ -32,13 +32,20 @@
     &:not(:placeholder-shown) {
       padding-top: $form-floating-input-padding-t;
       padding-bottom: $form-floating-input-padding-b;
+    }
+  }
 
-      ~ label {
-        padding-top: $form-floating-label-padding-y;
-        padding-bottom: $form-floating-label-padding-y;
-        @include font-size($form-floating-label-font-size);
-        color: $form-floating-label-color;
-      }
+  > .form-select {
+    padding-top: $form-floating-input-padding-t;
+    padding-bottom: $form-floating-input-padding-b;
+  }
+
+  > .form-control:not(:placeholder-shown),
+  > .form-select {
+    ~ label {
+      @include font-size($form-floating-label-font-size);
+      opacity: .65;
+      transform: translate3d(0, -.75rem, 0);
     }
   }
 }
