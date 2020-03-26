@@ -5,12 +5,11 @@ import EventHandler from '../../src/dom/event-handler'
 import { getFixture, clearFixture, createEvent, jQueryMock } from '../helpers/fixture'
 
 describe('Carousel', () => {
-  const { Simulator, PointerEvent, MSPointerEvent } = window
-  const originWinPointerEvent = PointerEvent || MSPointerEvent
-  const supportPointerEvent = Boolean(PointerEvent || MSPointerEvent)
+  const { Simulator, PointerEvent } = window
+  const originWinPointerEvent = PointerEvent
+  const supportPointerEvent = Boolean(PointerEvent)
 
-  window.MSPointerEvent = null
-  const cssStyleCarousel = '.carousel.pointer-event { -ms-touch-action: none; touch-action: none; }'
+  const cssStyleCarousel = '.carousel.pointer-event { touch-action: none; }'
 
   const stylesCarousel = document.createElement('style')
   stylesCarousel.type = 'text/css'
