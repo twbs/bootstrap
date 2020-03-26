@@ -1,6 +1,7 @@
 {
   "root": true,
   "extends": [
+    "plugin:compat/recommended",
     "plugin:import/errors",
     "plugin:import/warnings",
     "plugin:unicorn/recommended",

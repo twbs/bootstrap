@@ -117,8 +117,10 @@ class Carousel {
     this._config = this._getConfig(config)
     this._element = element
     this._indicatorsElement = SelectorEngine.findOne(SELECTOR_INDICATORS, this._element)
+    /* eslint-disable compat/compat */
     this._touchSupported = 'ontouchstart' in document.documentElement || navigator.maxTouchPoints > 0
     this._pointerEvent = Boolean(window.PointerEvent)
+    /* eslint-enable compat/compat */
 
     this._addEventListeners()
     Data.setData(element, DATA_KEY, this)

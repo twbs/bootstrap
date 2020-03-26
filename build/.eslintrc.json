@@ -8,6 +8,7 @@
   },
   "extends": "../.eslintrc.json",
   "rules": {
+    "compat/compat": "off",
     "no-console": "off",
     "strict": "error"
   }
