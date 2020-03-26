@@ -421,7 +421,7 @@ class Tooltip {
           element.appendChild(content)
         }
       } else {
-        element.innerText = content.textContent
+        element.textContent = content.textContent
       }
 
       return
@@ -434,7 +434,7 @@ class Tooltip {
 
       element.innerHTML = content
     } else {
-      element.innerText = content
+      element.textContent = content
     }
   }
 
