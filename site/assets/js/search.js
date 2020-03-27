@@ -39,8 +39,7 @@
 
         // When in production, return the result as is,
         // otherwise remove our url from it.
-        // eslint-disable-next-line no-negated-condition
-        hit.url = currentUrl.indexOf(liveUrl) !== -1 ? // lgtm [js/incomplete-url-substring-sanitization]
+        hit.url = currentUrl.includes(liveUrl) ? // lgtm [js/incomplete-url-substring-sanitization]
           hit.url :
           hit.url.replace(liveUrl, '')
 

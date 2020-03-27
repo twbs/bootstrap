@@ -16,7 +16,7 @@ describe('Popover', () => {
     const popoverList = document.querySelectorAll('.popover')
 
     popoverList.forEach(popoverEl => {
-      document.body.removeChild(popoverEl)
+      popoverEl.remove()
     })
   })
 

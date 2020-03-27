@@ -16,9 +16,9 @@ describe('Modal', () => {
 
     style = document.createElement('style')
     style.type = 'text/css'
-    style.appendChild(document.createTextNode(css))
+    style.append(document.createTextNode(css))
 
-    document.head.appendChild(style)
+    document.head.append(style)
 
     // Simulate scrollbars
     document.documentElement.style.paddingRight = '16px'
@@ -33,14 +33,14 @@ describe('Modal', () => {
 
     document.querySelectorAll('.modal-backdrop')
       .forEach(backdrop => {
-        document.body.removeChild(backdrop)
+        backdrop.remove()
       })
 
     document.body.style.paddingRight = '0px'
   })
 
   afterAll(() => {
-    document.head.removeChild(style)
+    style.remove()
     document.documentElement.style.paddingRight = '0px'
   })
 
@@ -87,13 +87,13 @@ describe('Modal', () => {
       ].join('')
 
       const fixedEl = fixtureEl.querySelector('.fixed-top')
-      const originalPadding = parseInt(window.getComputedStyle(fixedEl).paddingRight, 10)
+      const originalPadding = Number.parseInt(window.getComputedStyle(fixedEl).paddingRight, 10)
       const modalEl = fixtureEl.querySelector('.modal')
       const modal = new Modal(modalEl)
 
       modalEl.addEventListener('shown.bs.modal', () => {
         const expectedPadding = originalPadding + modal._getScrollbarWidth()
-        const currentPadding = parseInt(window.getComputedStyle(modalEl).paddingRight, 10)
+        const currentPadding = Number.parseInt(window.getComputedStyle(modalEl).paddingRight, 10)
 
         expect(fixedEl.getAttribute('data-padding-right')).toEqual('0px', 'original fixed element padding should be stored in data-padding-right')
         expect(currentPadding).toEqual(expectedPadding, 'fixed element padding should be adjusted while opening')
@@ -101,7 +101,7 @@ describe('Modal', () => {
       })
 
       modalEl.addEventListener('hidden.bs.modal', () => {
-        const currentPadding = parseInt(window.getComputedStyle(modalEl).paddingRight, 10)
+        const currentPadding = Number.parseInt(window.getComputedStyle(modalEl).paddingRight, 10)
 
         expect(fixedEl.getAttribute('data-padding-right')).toEqual(null, 'data-padding-right should be cleared after closing')
         expect(currentPadding).toEqual(originalPadding, 'fixed element padding should be reset after closing')
@@ -118,13 +118,13 @@ describe('Modal', () => {
       ].join('')
 
       const stickyTopEl = fixtureEl.querySelector('.sticky-top')
-      const originalMargin = parseInt(window.getComputedStyle(stickyTopEl).marginRight, 10)
+      const originalMargin = Number.parseInt(window.getComputedStyle(stickyTopEl).marginRight, 10)
       const modalEl = fixtureEl.querySelector('.modal')
       const modal = new Modal(modalEl)
 
       modalEl.addEventListener('shown.bs.modal', () => {
         const expectedMargin = originalMargin - modal._getScrollbarWidth()
-        const currentMargin = parseInt(window.getComputedStyle(stickyTopEl).marginRight, 10)
+        const currentMargin = Number.parseInt(window.getComputedStyle(stickyTopEl).marginRight, 10)
 
         expect(stickyTopEl.getAttribute('data-margin-right')).toEqual('0px', 'original sticky element margin should be stored in data-margin-right')
         expect(currentMargin).toEqual(expectedMargin, 'sticky element margin should be adjusted while opening')
@@ -132,7 +132,7 @@ describe('Modal', () => {
       })
 
       modalEl.addEventListener('hidden.bs.modal', () => {
-        const currentMargin = parseInt(window.getComputedStyle(stickyTopEl).marginRight, 10)
+        const currentMargin = Number.parseInt(window.getComputedStyle(stickyTopEl).marginRight, 10)
 
         expect(stickyTopEl.getAttribute('data-margin-right')).toEqual(null, 'data-margin-right should be cleared after closing')
         expect(currentMargin).toEqual(originalMargin, 'sticky element margin should be reset after closing')
@@ -147,8 +147,8 @@ describe('Modal', () => {
       const styleTest = document.createElement('style')
 
       styleTest.type = 'text/css'
-      styleTest.appendChild(document.createTextNode('body { padding-right: 7px; }'))
-      document.head.appendChild(styleTest)
+      styleTest.append(document.createTextNode('body { padding-right: 7px; }'))
+      document.head.append(styleTest)
 
       const modalEl = fixtureEl.querySelector('.modal')
       const modal = new Modal(modalEl)
@@ -159,7 +159,7 @@ describe('Modal', () => {
 
       modalEl.addEventListener('hidden.bs.modal', () => {
         expect(window.getComputedStyle(document.body).paddingLeft).toEqual('0px', 'body does not have inline padding set')
-        document.head.removeChild(styleTest)
+        styleTest.remove()
         done()
       })
 
@@ -171,9 +171,9 @@ describe('Modal', () => {
       const styleTest = document.createElement('style')
 
       styleTest.type = 'text/css'
-      styleTest.appendChild(document.createTextNode('body { padding-right: 7px; }'))
+      styleTest.append(document.createTextNode('body { padding-right: 7px; }'))
 
-      document.head.appendChild(styleTest)
+      document.head.append(styleTest)
       document.body.style.color = 'red'
 
       const modalEl = fixtureEl.querySelector('.modal')
@@ -188,7 +188,7 @@ describe('Modal', () => {
 
         expect(bodyPaddingRight === '0px' || bodyPaddingRight === '').toEqual(true, 'body does not have inline padding set')
         expect(document.body.style.color).toEqual('red', 'body still has other inline styles set')
-        document.head.removeChild(styleTest)
+        styleTest.remove()
         document.body.removeAttribute('style')
         done()
       })
@@ -276,7 +276,7 @@ describe('Modal', () => {
       modalEl.addEventListener('shown.bs.modal', () => {
         const dynamicModal = document.getElementById(id)
         expect(dynamicModal).toBeDefined()
-        dynamicModal.parentNode.removeChild(dynamicModal)
+        dynamicModal.remove()
         done()
       })
 

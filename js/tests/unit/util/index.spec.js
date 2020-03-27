@@ -381,7 +381,7 @@ describe('Util', () => {
     })
 
     it('should not return jQuery object when present if data-no-jquery', () => {
-      document.body.setAttribute('data-no-jquery', '')
+      document.body.dataset.noJquery = ''
 
       expect(window.jQuery).toEqual(fakejQuery)
       expect(Util.getjQuery()).toEqual(null)

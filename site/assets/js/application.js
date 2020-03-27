@@ -117,10 +117,10 @@
   clipboard.on('success', function (e) {
     var tooltipBtn = bootstrap.Tooltip.getInstance(e.trigger)
 
-    e.trigger.setAttribute('data-original-title', 'Copied!')
+    e.trigger.dataset.originalTitle = 'Copied!'
     tooltipBtn.show()
 
-    e.trigger.setAttribute('data-original-title', 'Copy to clipboard')
+    e.trigger.dataset.originalTitle = 'Copy to clipboard'
     e.clearSelection()
   })
 
@@ -129,10 +129,10 @@
     var fallbackMsg = 'Press ' + modifierKey + 'C to copy'
     var tooltipBtn = bootstrap.Tooltip.getInstance(e.trigger)
 
-    e.trigger.setAttribute('data-original-title', fallbackMsg)
+    e.trigger.dataset.originalTitle = fallbackMsg
     tooltipBtn.show()
 
-    e.trigger.setAttribute('data-original-title', 'Copy to clipboard')
+    e.trigger.dataset.originalTitle = 'Copy to clipboard'
   })
 
   anchors.options = {

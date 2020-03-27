@@ -278,10 +278,10 @@ describe('EventHandler', () => {
     it('should remove the correct delegated event listener', () => {
       const element = document.createElement('div')
       const subelement = document.createElement('span')
-      element.appendChild(subelement)
+      element.append(subelement)
 
       const anchor = document.createElement('a')
-      element.appendChild(anchor)
+      element.append(anchor)
 
       let i = 0
       const handler = () => {
@@ -291,7 +291,7 @@ describe('EventHandler', () => {
       EventHandler.on(element, 'click', 'a', handler)
       EventHandler.on(element, 'click', 'span', handler)
 
-      fixtureEl.appendChild(element)
+      fixtureEl.append(element)
 
       EventHandler.trigger(anchor, 'click')
       EventHandler.trigger(subelement, 'click')

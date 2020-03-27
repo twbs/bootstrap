@@ -466,7 +466,7 @@ class Carousel {
       activeElement.classList.add(directionalClassName)
       nextElement.classList.add(directionalClassName)
 
-      const nextElementInterval = parseInt(nextElement.getAttribute('data-interval'), 10)
+      const nextElementInterval = Number.parseInt(nextElement.getAttribute('data-interval'), 10)
       if (nextElementInterval) {
         this._config.defaultInterval = this._config.defaultInterval || this._config.interval
         this._config.interval = nextElementInterval
