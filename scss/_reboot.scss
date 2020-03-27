@@ -34,7 +34,7 @@
 //
 // 1. Remove the margin in all browsers.
 // 2. As a best practice, apply a default `background-color`.
-// 3. Prevent adjustments of font size after orientation changes in IE on Windows Phone and in iOS.
+// 3. Prevent adjustments of font size after orientation changes in iOS.
 // 4. Change the default tap highlight to be completely transparent in iOS.
 
 body {
@@ -145,7 +145,7 @@ p {
 // Abbreviations
 //
 // 1. Duplicate behavior to the data-* attribute for our tooltip plugin
-// 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+// 2. Add the correct text decoration in Chrome, Edge, Opera, and Safari.
 // 3. Add explicit cursor to indicate changed behavior.
 // 4. Prevent the text-decoration to be skipped.
 
@@ -344,15 +344,8 @@ figure {
 
 // Images and content
 
-img {
-  vertical-align: middle;
-}
-
-// 1. Workaround for the SVG overflow bug in IE 11 is still required.
-//    See https://github.com/twbs/bootstrap/issues/26878
-
+img,
 svg {
-  overflow: hidden; // 1
   vertical-align: middle;
 }
 
@@ -362,6 +355,7 @@ svg {
 // Prevent double borders
 
 table {
+  caption-side: bottom;
   border-collapse: collapse;
 }
 
@@ -370,7 +364,6 @@ caption {
   padding-bottom: $table-cell-padding;
   color: $table-caption-color;
   text-align: left;
-  caption-side: bottom;
 }
 
 // 1. Matches default `<td>` alignment by inheriting `text-align`.
@@ -399,7 +392,7 @@ button {
   border-radius: 0;
 }
 
-// Work around a Firefox/IE bug where the transparent `button` background
+// Work around a Firefox bug where the transparent `button` background
 // results in a loss of the default `button` focus styles.
 // Credit https://github.com/suitcss/base/
 
@@ -487,12 +480,10 @@ input[type="month"] {
   -webkit-appearance: textfield;
 }
 
-// 1. Remove the default vertical scrollbar in IE.
-// 2. Textareas should really only resize vertically so they don't break their (horizontal) containers.
+// 1. Textareas should really only resize vertically so they don't break their (horizontal) containers.
 
 textarea {
-  overflow: auto; // 1
-  resize: vertical; // 2
+  resize: vertical; // 1
 }
 
 // 1. Browsers set a default `min-width: min-content;` on fieldsets,
@@ -509,9 +500,11 @@ fieldset {
   border: 0; // 2
 }
 
-// 1. By using `float: left`, the legend will behave like a block element
-// 2. Correct the color inheritance from `fieldset` elements in IE.
-// 3. Correct the text wrapping in Edge and IE.
+// 1. By using `float: left`, the legend will behave like a block element.
+//    This way the border of a fieldset wraps around the legend if present.
+// 2. Correct the text wrapping in Edge.
+// 3. Fix wrapping bug.
+//    See https://github.com/twbs/bootstrap/issues/29712
 
 legend {
   float: left; // 1
@@ -521,16 +514,28 @@ legend {
   @include font-size($legend-font-size);
   font-weight: $legend-font-weight;
   line-height: inherit;
-  color: inherit; // 2
-  white-space: normal; // 3
+  white-space: normal; // 2
+
+  + * {
+    clear: left; // 3
+  }
 }
 
 // Fix height of inputs with a type of datetime-local, date, month, week, or time
 // See https://github.com/twbs/bootstrap/issues/18842
 
-::-webkit-datetime-edit {
-  overflow: visible;
-  line-height: 0;
+::-webkit-datetime-edit-fields-wrapper,
+::-webkit-datetime-edit-text,
+::-webkit-datetime-edit-minute,
+::-webkit-datetime-edit-hour-field,
+::-webkit-datetime-edit-day-field,
+::-webkit-datetime-edit-month-field,
+::-webkit-datetime-edit-year-field {
+  padding: 0;
+}
+
+::-webkit-inner-spin-button {
+  height: auto;
 }
 
 // 1. Correct the outline style in Safari.
@@ -578,22 +583,6 @@ output {
 summary {
   display: list-item; // 1
   cursor: pointer;
-}
-
-
-// Template
-//
-// Add the correct display for template & main in IE 11
-
-template {
-  display: none;
-}
-
-
-// Main
-
-main {
-  display: block;
 }
 
 

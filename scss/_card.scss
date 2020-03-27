@@ -36,9 +36,6 @@
   // Enable `flex-grow: 1` for decks and groups so that card blocks take up
   // as much space as possible, ensuring footers are aligned to the bottom.
   flex: 1 1 auto;
-  // Workaround for the image size bug in IE
-  // See: https://github.com/twbs/bootstrap/pull/28855
-  min-height: 1px;
   padding: $card-spacer-y $card-spacer-x;
   color: $card-color;
 }
@@ -135,7 +132,6 @@
 .card-img,
 .card-img-top,
 .card-img-bottom {
-  flex-shrink: 0; // For IE: https://github.com/twbs/bootstrap/issues/29396
   width: 100%; // Required because we use flexbox and this inherently applies align-self: stretch
 }
 

@@ -57,24 +57,24 @@ See how aspects of the Bootstrap grid system work across multiple devices with a
 <table class="table">
   <thead>
     <tr>
-      <th></th>
-      <th>
+      <th scope="col"></th>
+      <th scope="col">
         Extra small<br>
         <span class="font-weight-normal">&lt;576px</span>
       </th>
-      <th>
+      <th scope="col">
         Small<br>
         <span class="font-weight-normal">&ge;576px</span>
       </th>
-      <th>
+      <th scope="col">
         Medium<br>
         <span class="font-weight-normal">&ge;768px</span>
       </th>
-      <th>
+      <th scope="col">
         Large<br>
         <span class="font-weight-normal">&ge;992px</span>
       </th>
-      <th>
+      <th scope="col">
         Extra large<br>
         <span class="font-weight-normal">&ge;1200px</span>
       </th>
@@ -520,7 +520,7 @@ In practice, here's how it looks. Note you can continue to use this with all oth
 
 ## Alignment
 
-Use flexbox alignment utilities to vertically and horizontally align columns. **Internet Explorer 10-11 do not support vertical alignment of flex items when the flex container has a `min-height` as shown below.** [See Flexbugs #3 for more details.](https://github.com/philipwalton/flexbugs#flexbug-3)
+Use flexbox alignment utilities to vertically and horizontally align columns.
 
 ### Vertical alignment
 

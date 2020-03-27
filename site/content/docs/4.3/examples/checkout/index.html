@@ -59,9 +59,7 @@ body_class: "bg-light"
       <form class="card p-2">
         <div class="input-group">
           <input type="text" class="form-control" placeholder="Promo code">
-          <div class="input-group-append">
-            <button type="submit" class="btn btn-secondary">Redeem</button>
-          </div>
+          <button type="submit" class="btn btn-secondary">Redeem</button>
         </div>
       </form>
     </div>
@@ -88,11 +86,9 @@ body_class: "bg-light"
           <div class="col-12">
             <label for="username">Username</label>
             <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text">@</span>
-              </div>
+              <span class="input-group-text">@</span>
               <input type="text" class="form-control" id="username" placeholder="Username" required>
-              <div class="invalid-feedback w-100">
+            <div class="invalid-feedback">
                 Your username is required.
               </div>
             </div>

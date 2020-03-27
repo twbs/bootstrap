@@ -78,10 +78,10 @@ Bootstrap includes a handful of options for including some or all of our compile
         <div><code class="font-weight-normal text-nowrap">bootstrap-grid.css</code></div>
         <div><code class="font-weight-normal text-nowrap">bootstrap-grid.min.css</code></div>
       </th>
-      <td><a class="text-muted" href="{{< docsref "/layout/grid" >}}">Only grid system</a></td>
+      <td><a class="link-secondary" href="{{< docsref "/layout/grid" >}}">Only grid system</a></td>
       <td class="text-muted">&mdash;</td>
       <td class="text-muted">&mdash;</td>
-      <td><a class="text-muted" href="{{< docsref "/utilities/flex" >}}">Only flex utilities</a></td>
+      <td><a class="link-secondary" href="{{< docsref "/utilities/flex" >}}">Only flex utilities</a></td>
     </tr>
     <tr>
       <th scope="row">
@@ -99,7 +99,7 @@ Bootstrap includes a handful of options for including some or all of our compile
         <div><code class="font-weight-normal text-nowrap">bootstrap-reboot.min.css</code></div>
       </th>
       <td class="text-muted">&mdash;</td>
-      <td><a class="text-muted" href="{{< docsref "/content/reboot" >}}">Only Reboot</a></td>
+      <td><a class="link-secondary" href="{{< docsref "/content/reboot" >}}">Only Reboot</a></td>
       <td class="text-muted">&mdash;</td>
       <td class="text-muted">&mdash;</td>
     </tr>
