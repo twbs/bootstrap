@@ -1,7 +1,7 @@
 /*!
  * Bootstrap Utilities v4.3.1 (https://getbootstrap.com/)
- * Copyright 2011-2019 The Bootstrap Authors
- * Copyright 2011-2019 Twitter, Inc.
+ * Copyright 2011-2020 The Bootstrap Authors
+ * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 .align-baseline {
@@ -84,12 +84,12 @@
   display: inline-flex !important;
 }
 
-.shadow-sm {
-  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
-}
-
 .shadow {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.shadow-sm {
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
 }
 
 .shadow-lg {
@@ -1013,10 +1013,6 @@
   text-align: center !important;
 }
 
-.text-justify {
-  text-align: justify !important;
-}
-
 .text-primary {
   color: #0d6efd !important;
 }
@@ -1145,17 +1141,57 @@
   text-decoration: none !important;
 }
 
+.text-decoration-underline {
+  text-decoration: underline !important;
+}
+
+.text-decoration-line-through {
+  text-decoration: line-through !important;
+}
+
 .font-italic {
   font-style: italic !important;
 }
 
+.font-normal {
+  font-style: normal !important;
+}
+
 .text-break {
-  overflow-wrap: break-word !important;
-  word-break: break-word !important;
+  word-wrap: break-word !important;
 }
 
 .font-monospace {
   font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+}
+
+.user-select-all {
+  -webkit-user-select: all !important;
+  -moz-user-select: all !important;
+  -ms-user-select: all !important;
+  user-select: all !important;
+}
+
+.user-select-auto {
+  -webkit-user-select: auto !important;
+  -moz-user-select: auto !important;
+  -ms-user-select: auto !important;
+  user-select: auto !important;
+}
+
+.user-select-none {
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+}
+
+.pe-none {
+  pointer-events: none !important;
+}
+
+.pe-auto {
+  pointer-events: auto !important;
 }
 
 .rounded {
@@ -1796,9 +1832,6 @@
   .text-sm-center {
     text-align: center !important;
   }
-  .text-sm-justify {
-    text-align: justify !important;
-  }
 }
 
 @media (min-width: 768px) {
@@ -2386,9 +2419,6 @@
   }
   .text-md-center {
     text-align: center !important;
-  }
-  .text-md-justify {
-    text-align: justify !important;
   }
 }
 
@@ -2978,9 +3008,6 @@
   .text-lg-center {
     text-align: center !important;
   }
-  .text-lg-justify {
-    text-align: justify !important;
-  }
 }
 
 @media (min-width: 1200px) {
@@ -3568,9 +3595,6 @@
   }
   .text-xl-center {
     text-align: center !important;
-  }
-  .text-xl-justify {
-    text-align: justify !important;
   }
 }
 
