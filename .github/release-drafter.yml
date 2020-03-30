@@ -2,7 +2,7 @@ name-template: 'v$NEXT_PATCH_VERSION'
 tag-template: 'v$NEXT_PATCH_VERSION'
 prerelease: true
 branches:
-  - 'release-drafter'
+  - release-drafter
 exclude-labels:
   - 'skip-changelog'
 categories:
