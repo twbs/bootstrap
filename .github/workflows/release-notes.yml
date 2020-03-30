@@ -3,7 +3,7 @@ name: Release notes
 on:
   push:
     branches:
-      - 'release-drafter'
+      - "release-drafter"
 
 jobs:
   update_release_draft:
