@@ -48,10 +48,6 @@ body {
   color: transparent;
 }
 
-.form-label-group input:-ms-input-placeholder {
-  color: transparent;
-}
-
 .form-label-group input::-ms-input-placeholder {
   color: transparent;
 }

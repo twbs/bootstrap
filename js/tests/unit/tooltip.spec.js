@@ -913,7 +913,7 @@ describe('Tooltip', () => {
 
       tooltip.setElementContent(tooltip.getTipElement(), 'test')
 
-      expect(tooltip.getTipElement().innerText).toEqual('test')
+      expect(tooltip.getTipElement().textContent).toEqual('test')
     })
   })
 
