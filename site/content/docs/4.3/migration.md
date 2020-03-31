@@ -103,6 +103,7 @@ Changes to Reboot, typography, tables, and more.
 - Dropped support for `.form-control-plaintext` inside `.input-group`s.
 - Dropped `.form-text` as existing utilities cover this use class's former use case (e.g., `.mt-2`, `.text-small`, and/or `.text-muted`).
 - Dropped `.input-group-append` and `.input-group-prepend`. You can now just add buttons and `.input-group-text` as direct children of the input groups.
+- Form labels now require the `.form-label` class. Sass variables are now available to style form labels to your needs. [See #30476](https://github.com/twbs/bootstrap/pull/30476)
 
 ## Components
 
