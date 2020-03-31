@@ -198,8 +198,9 @@ describe('Util', () => {
   })
 
   describe('typeCheckConfig', () => {
+    const namePlugin = 'collapse'
+
     it('should check type of the config object', () => {
-      const namePlugin = 'collapse'
       const defaultType = {
         toggle: 'boolean',
         parent: '(string|element)'
@@ -213,19 +214,33 @@ describe('Util', () => {
         Util.typeCheckConfig(namePlugin, config, defaultType)
       }).toThrow(new Error('COLLAPSE: Option "parent" provided type "number" but expected type "(string|element)".'))
     })
-  })
 
-  describe('makeArray', () => {
-    it('should convert node list to array', () => {
-      const nodeList = document.querySelectorAll('div')
+    it('should return null stringified when null is passed', () => {
+      const defaultType = {
+        toggle: 'boolean',
+        parent: '(null|element)'
+      }
+      const config = {
+        toggle: true,
+        parent: null
+      }
 
-      expect(Array.isArray(nodeList)).toEqual(false)
-      expect(Array.isArray(Util.makeArray(nodeList))).toEqual(true)
+      Util.typeCheckConfig(namePlugin, config, defaultType)
+      expect().nothing()
     })
 
-    it('should return an empty array if the nodeList is undefined', () => {
-      expect(Util.makeArray(null)).toEqual([])
-      expect(Util.makeArray(undefined)).toEqual([])
+    it('should return undefined stringified when undefined is passed', () => {
+      const defaultType = {
+        toggle: 'boolean',
+        parent: '(undefined|element)'
+      }
+      const config = {
+        toggle: true,
+        parent: undefined
+      }
+
+      Util.typeCheckConfig(namePlugin, config, defaultType)
+      expect().nothing()
     })
   })
 

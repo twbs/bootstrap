@@ -15,10 +15,6 @@
   @include box-shadow($dropdown-box-shadow);
 
   @include media-breakpoint-up(md) {
-    // stylelint-disable declaration-no-important
-    right: 0 !important; // Override inline style
-    left: auto !important; // Override inline style
-    // stylelint-enable declaration-no-important
     width: 400px;
   }
 }

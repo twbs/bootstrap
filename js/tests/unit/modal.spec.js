@@ -1,6 +1,5 @@
 import Modal from '../../src/modal'
 import EventHandler from '../../src/dom/event-handler'
-import { makeArray } from '../../src/util/index'
 
 /** Test helpers */
 import { getFixture, clearFixture, createEvent, jQueryMock } from '../helpers/fixture'
@@ -31,11 +30,11 @@ describe('Modal', () => {
     document.body.classList.remove('modal-open')
     document.body.removeAttribute('style')
     document.body.removeAttribute('data-padding-right')
-    const backdropList = makeArray(document.querySelectorAll('.modal-backdrop'))
 
-    backdropList.forEach(backdrop => {
-      document.body.removeChild(backdrop)
-    })
+    document.querySelectorAll('.modal-backdrop')
+      .forEach(backdrop => {
+        document.body.removeChild(backdrop)
+      })
 
     document.body.style.paddingRight = '0px'
   })
@@ -653,7 +652,6 @@ describe('Modal', () => {
     it('should enforce focus', done => {
       fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog" /></div>'
 
-      const isIE11 = Boolean(window.MSInputMethodContext) && Boolean(document.documentMode)
       const modalEl = fixtureEl.querySelector('.modal')
       const modal = new Modal(modalEl)
 
@@ -667,11 +665,6 @@ describe('Modal', () => {
 
       modalEl.addEventListener('shown.bs.modal', () => {
         expect(modal._enforceFocus).toHaveBeenCalled()
-
-        if (isIE11) {
-          done()
-          return
-        }
 
         spyOn(modal._element, 'focus')
 

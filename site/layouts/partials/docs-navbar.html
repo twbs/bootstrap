@@ -1,22 +1,22 @@
-<header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar px-0">
-  <div class="container-xl flex-wrap flex-md-nowrap py-0 px-3">
-    <a class="navbar-brand mr-0 mr-md-2" href="/" aria-label="Bootstrap">
+<header class="navbar navbar-expand navbar-dark bd-navbar">
+  <nav class="container-xl flex-wrap flex-md-nowrap" aria-label="Main navigation">
+    <a class="navbar-brand mr-2" href="/" aria-label="Bootstrap">
       {{ partial "icons/bootstrap-logo-solid.svg" (dict "class" "d-block" "width" "32" "height" "32") }}
     </a>
 
     <div class="navbar-nav-scroll order-3 order-md-0 d-flex justify-content-center justify-content-md-start">
       <ul class="navbar-nav bd-navbar-nav flex-row">
         <li class="nav-item">
-          <a class="nav-link{{ if .IsHome }} active{{ end }}" href="/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Bootstrap');">Home</a>
+          <a class="nav-link{{ if .IsHome }} active" aria-current="page{{ end }}" href="/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Bootstrap');">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link{{ if eq .Page.Layout "docs" }} active{{ end }}" href="/docs/{{ .Site.Params.docs_version }}/getting-started/introduction/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Docs');">Docs</a>
+          <a class="nav-link{{ if eq .Page.Layout "docs" }} active" aria-current="true{{ end }}" href="/docs/{{ .Site.Params.docs_version }}/getting-started/introduction/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Docs');">Docs</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link{{ if eq .Page.Title "Examples" }} active{{ end }}" href="/docs/{{ .Site.Params.docs_version }}/examples/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Examples');">Examples</a>
+          <a class="nav-link{{ if eq .Page.Title "Examples" }} active" aria-current="true{{ end }}" href="/docs/{{ .Site.Params.docs_version }}/examples/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Examples');">Examples</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ .Site.Params.icons }}" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Icons');">Icons</a>
+          <a class="nav-link" href="{{ .Site.Params.icons }}" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Icons');" target="_blank" rel="noopener">Icons</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{{ .Site.Params.themes }}" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Themes');" target="_blank" rel="noopener">Themes</a>
@@ -32,7 +32,7 @@
 
     <ul class="navbar-nav ml-sm-auto">
       <li class="nav-item">
-        <a class="nav-link px-1 mx-1 py-3 my-n2" href="{{ .Site.Params.repo }}" target="_blank" rel="noopener" aria-label="GitHub">
+        <a class="nav-link px-1 mx-1 py-3 my-n2" href="{{ .Site.Params.github_org }}" target="_blank" rel="noopener" aria-label="GitHub">
           {{ partial "icons/github.svg" (dict "class" "navbar-nav-svg" "width" "36" "height" "36") }}
         </a>
       </li>
@@ -54,5 +54,5 @@
     </ul>
 
     <a class="btn btn-bd-download d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="/docs/{{ .Site.Params.docs_version }}/getting-started/download/">Download</a>
-  </div>
+  </nav>
 </header>

@@ -48,6 +48,7 @@
   padding: $list-group-item-padding-y $list-group-item-padding-x;
   margin-bottom: 0; // for <label> variations
   color: $list-group-color;
+  text-decoration: if($link-decoration == none, null, none);
   background-color: $list-group-bg;
   border: $list-group-border-width solid $list-group-border-color;
 

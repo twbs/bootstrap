@@ -9,6 +9,9 @@ markup:
       unsafe:           true
   highlight:
     noClasses:          false
+  tableOfContents:
+    startLevel:         2
+    endLevel:           6
 
 buildDrafts:            true
 buildFuture:            true
@@ -16,9 +19,6 @@ buildFuture:            true
 enableRobotsTXT:        true
 metaDataFormat:         "yaml"
 disableKinds:           ["404", "taxonomy", "taxonomyTerm", "RSS"]
-
-blackfriday:
-  fractions:            false
 
 publishDir:             "_gh_pages"
 
@@ -51,6 +51,7 @@ params:
   current_ruby_version: "4.3.1"
   rfs_version:          "9.0.2"
   docs_version:         "4.3"
+  github_org:           "https://github.com/twbs"
   repo:                 "https://github.com/twbs/bootstrap"
   twitter:              "getbootstrap"
   slack:                "https://bootstrap-slack.herokuapp.com/"

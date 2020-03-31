@@ -1,6 +1,5 @@
 {
   "root": true,
-  "parser": "babel-eslint",
   "extends": [
     "plugin:import/errors",
     "plugin:import/warnings",
@@ -32,6 +31,7 @@
       "error",
       "always"
     ],
+    "prefer-named-capture-group": "off",
     "semi": [
       "error",
       "never"
@@ -45,8 +45,9 @@
     "unicorn/prefer-includes": "off",
     "unicorn/prefer-node-append": "off",
     "unicorn/prefer-node-remove": "off",
+    "unicorn/prefer-number-properties": "off",
     "unicorn/prefer-query-selector": "off",
-    "unicorn/prefer-text-content": "off",
+    "unicorn/prefer-set-has": "off",
     "unicorn/prevent-abbreviations": "off"
   }
 }
