@@ -2,13 +2,13 @@
   <button class="btn btn-bd-light dropdown-toggle" id="bd-versions" data-toggle="dropdown" aria-expanded="false" data-display="static">
     Bootstrap v{{ .Site.Params.docs_version }}
   </button>
-  <div class="dropdown-menu dropdown-menu-md-right" aria-labelledby="bd-versions">
-    <a class="dropdown-item active" aria-current="true" href="/docs/{{ .Site.Params.docs_version }}/">Latest (5.0.x)</a>
-    <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="https://getbootstrap.com/docs/4.4/">v4.4.1</a>
-    <a class="dropdown-item" href="https://getbootstrap.com/docs/3.4/">v3.4.1</a>
-    <a class="dropdown-item" href="https://getbootstrap.com/2.3.2/">v2.3.2</a>
-    <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="/docs/versions/">All versions</a>
-  </div>
+  <ul class="dropdown-menu dropdown-menu-md-right" aria-labelledby="bd-versions">
+    <li><a class="dropdown-item active" aria-current="true" href="/docs/{{ .Site.Params.docs_version }}/">Latest (5.0.x)</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="https://getbootstrap.com/docs/4.4/">v4.4.1</a></li>
+    <li><a class="dropdown-item" href="https://getbootstrap.com/docs/3.4/">v3.4.1</a></li>
+    <li><a class="dropdown-item" href="https://getbootstrap.com/2.3.2/">v2.3.2</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="/docs/versions/">All versions</a></li>
+  </ul>
 </div>
