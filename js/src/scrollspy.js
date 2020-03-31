@@ -33,34 +33,24 @@ const DefaultType = {
   target : '(string|element)'
 }
 
-const Event = {
-  ACTIVATE      : `activate${EVENT_KEY}`,
-  SCROLL        : `scroll${EVENT_KEY}`,
-  LOAD_DATA_API : `load${EVENT_KEY}${DATA_API_KEY}`
-}
+const EVENT_ACTIVATE      = `activate${EVENT_KEY}`
+const EVENT_SCROLL        = `scroll${EVENT_KEY}`
+const EVENT_LOAD_DATA_API = `load${EVENT_KEY}${DATA_API_KEY}`
 
-const ClassName = {
-  DROPDOWN_ITEM : 'dropdown-item',
-  DROPDOWN_MENU : 'dropdown-menu',
-  ACTIVE        : 'active'
-}
+const CLASS_NAME_DROPDOWN_ITEM = 'dropdown-item'
+const CLASS_NAME_ACTIVE        = 'active'
 
-const Selector = {
-  DATA_SPY        : '[data-spy="scroll"]',
-  ACTIVE          : '.active',
-  NAV_LIST_GROUP  : '.nav, .list-group',
-  NAV_LINKS       : '.nav-link',
-  NAV_ITEMS       : '.nav-item',
-  LIST_ITEMS      : '.list-group-item',
-  DROPDOWN        : '.dropdown',
-  DROPDOWN_ITEMS  : '.dropdown-item',
-  DROPDOWN_TOGGLE : '.dropdown-toggle'
-}
+const SELECTOR_DATA_SPY        = '[data-spy="scroll"]'
+const SELECTOR_NAV_LIST_GROUP  = '.nav, .list-group'
+const SELECTOR_NAV_LINKS       = '.nav-link'
+const SELECTOR_NAV_ITEMS       = '.nav-item'
+const SELECTOR_LIST_ITEMS      = '.list-group-item'
+const SELECTOR_DROPDOWN        = '.dropdown'
+const SELECTOR_DROPDOWN_ITEMS  = '.dropdown-item'
+const SELECTOR_DROPDOWN_TOGGLE = '.dropdown-toggle'
 
-const OffsetMethod = {
-  OFFSET   : 'offset',
-  POSITION : 'position'
-}
+const METHOD_OFFSET   = 'offset'
+const METHOD_POSITION = 'position'
 
 /**
  * ------------------------------------------------------------------------
@@ -73,15 +63,15 @@ class ScrollSpy {
     this._element       = element
     this._scrollElement = element.tagName === 'BODY' ? window : element
     this._config        = this._getConfig(config)
-    this._selector      = `${this._config.target} ${Selector.NAV_LINKS},` +
-                          `${this._config.target} ${Selector.LIST_ITEMS},` +
-                          `${this._config.target} ${Selector.DROPDOWN_ITEMS}`
+    this._selector      = `${this._config.target} ${SELECTOR_NAV_LINKS},` +
+                          `${this._config.target} ${SELECTOR_LIST_ITEMS},` +
+                          `${this._config.target} ${SELECTOR_DROPDOWN_ITEMS}`
     this._offsets       = []
     this._targets       = []
     this._activeTarget  = null
     this._scrollHeight  = 0
 
-    $(this._scrollElement).on(Event.SCROLL, (event) => this._process(event))
+    $(this._scrollElement).on(EVENT_SCROLL, (event) => this._process(event))
 
     this.refresh()
     this._process()
@@ -101,12 +91,12 @@ class ScrollSpy {
 
   refresh() {
     const autoMethod = this._scrollElement === this._scrollElement.window
-      ? OffsetMethod.OFFSET : OffsetMethod.POSITION
+      ? METHOD_OFFSET : METHOD_POSITION
 
     const offsetMethod = this._config.method === 'auto'
       ? autoMethod : this._config.method
 
-    const offsetBase = offsetMethod === OffsetMethod.POSITION
+    const offsetBase = offsetMethod === METHOD_POSITION
       ? this._getScrollTop() : 0
 
     this._offsets = []
@@ -248,28 +238,28 @@ class ScrollSpy {
 
     const $link = $([].slice.call(document.querySelectorAll(queries.join(','))))
 
-    if ($link.hasClass(ClassName.DROPDOWN_ITEM)) {
-      $link.closest(Selector.DROPDOWN).find(Selector.DROPDOWN_TOGGLE).addClass(ClassName.ACTIVE)
-      $link.addClass(ClassName.ACTIVE)
+    if ($link.hasClass(CLASS_NAME_DROPDOWN_ITEM)) {
+      $link.closest(SELECTOR_DROPDOWN).find(SELECTOR_DROPDOWN_TOGGLE).addClass(CLASS_NAME_ACTIVE)
+      $link.addClass(CLASS_NAME_ACTIVE)
     } else {
       // Set triggered link as active
-      $link.addClass(ClassName.ACTIVE)
+      $link.addClass(CLASS_NAME_ACTIVE)
       // Set triggered links parents as active
       // With both <ul> and <nav> markup a parent is the previous sibling of any nav ancestor
-      $link.parents(Selector.NAV_LIST_GROUP).prev(`${Selector.NAV_LINKS}, ${Selector.LIST_ITEMS}`).addClass(ClassName.ACTIVE)
+      $link.parents(SELECTOR_NAV_LIST_GROUP).prev(`${SELECTOR_NAV_LINKS}, ${SELECTOR_LIST_ITEMS}`).addClass(CLASS_NAME_ACTIVE)
       // Handle special case when .nav-link is inside .nav-item
-      $link.parents(Selector.NAV_LIST_GROUP).prev(Selector.NAV_ITEMS).children(Selector.NAV_LINKS).addClass(ClassName.ACTIVE)
+      $link.parents(SELECTOR_NAV_LIST_GROUP).prev(SELECTOR_NAV_ITEMS).children(SELECTOR_NAV_LINKS).addClass(CLASS_NAME_ACTIVE)
     }
 
-    $(this._scrollElement).trigger(Event.ACTIVATE, {
+    $(this._scrollElement).trigger(EVENT_ACTIVATE, {
       relatedTarget: target
     })
   }
 
   _clear() {
     [].slice.call(document.querySelectorAll(this._selector))
-      .filter((node) => node.classList.contains(ClassName.ACTIVE))
-      .forEach((node) => node.classList.remove(ClassName.ACTIVE))
+      .filter((node) => node.classList.contains(CLASS_NAME_ACTIVE))
+      .forEach((node) => node.classList.remove(CLASS_NAME_ACTIVE))
   }
 
   // Static
@@ -300,8 +290,8 @@ class ScrollSpy {
  * ------------------------------------------------------------------------
  */
 
-$(window).on(Event.LOAD_DATA_API, () => {
-  const scrollSpys = [].slice.call(document.querySelectorAll(Selector.DATA_SPY))
+$(window).on(EVENT_LOAD_DATA_API, () => {
+  const scrollSpys = [].slice.call(document.querySelectorAll(SELECTOR_DATA_SPY))
   const scrollSpysLength = scrollSpys.length
 
   for (let i = scrollSpysLength; i--;) {
