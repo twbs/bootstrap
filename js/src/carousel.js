@@ -118,7 +118,7 @@ class Carousel {
     this._element = element
     this._indicatorsElement = SelectorEngine.findOne(SELECTOR_INDICATORS, this._element)
     this._touchSupported = 'ontouchstart' in document.documentElement || navigator.maxTouchPoints > 0
-    this._pointerEvent = Boolean(window.PointerEvent || window.MSPointerEvent)
+    this._pointerEvent = Boolean(window.PointerEvent)
 
     this._addEventListeners()
     Data.setData(element, DATA_KEY, this)
