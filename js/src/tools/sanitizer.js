@@ -37,7 +37,7 @@ export const DefaultWhitelist = {
   h5: [],
   h6: [],
   i: [],
-  img: ['src', 'alt', 'title', 'width', 'height'],
+  img: ['src', 'srcset', 'alt', 'title', 'width', 'height'],
   li: [],
   ol: [],
   p: [],
@@ -71,7 +71,7 @@ function allowedAttribute(attr, allowedAttributeList) {
 
   if (allowedAttributeList.indexOf(attrName) !== -1) {
     if (uriAttrs.indexOf(attrName) !== -1) {
-      return Boolean(attr.nodeValue.match(SAFE_URL_PATTERN) || attr.nodeValue.match(DATA_URL_PATTERN))
+      return SAFE_URL_PATTERN.test(attr.nodeValue) || DATA_URL_PATTERN.test(attr.nodeValue)
     }
 
     return true
@@ -80,8 +80,8 @@ function allowedAttribute(attr, allowedAttributeList) {
   const regExp = allowedAttributeList.filter((attrRegex) => attrRegex instanceof RegExp)
 
   // Check if a regular expression validates the attribute.
-  for (let i = 0, l = regExp.length; i < l; i++) {
-    if (attrName.match(regExp[i])) {
+  for (let i = 0, len = regExp.length; i < len; i++) {
+    if (regExp[i].test(attrName)) {
       return true
     }
   }

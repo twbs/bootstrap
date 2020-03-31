@@ -181,7 +181,7 @@ $(function () {
   })
 
   QUnit.test('should check for closest matching toggle', function (assert) {
-    assert.expect(12)
+    assert.expect(18)
     var groupHTML = '<div class="btn-group" data-toggle="buttons">' +
       '<label class="btn btn-primary active">' +
       '<input type="radio" name="options" id="option1" checked="true"> Option 1' +
@@ -213,6 +213,13 @@ $(function () {
     assert.ok(!$btn1.find('input').prop('checked'), 'btn1 is not checked')
     assert.ok($btn2.hasClass('active'), 'btn2 has active class')
     assert.ok($btn2.find('input').prop('checked'), 'btn2 is checked')
+    $btn1.bootstrapButton('toggle')
+    assert.ok($btn1.hasClass('active'), 'btn1 has active class')
+    assert.ok($btn1.find('input').prop('checked'), 'btn1 prop is checked')
+    assert.ok($btn1.find('input')[0].checked, 'btn1 is checked with jquery')
+    assert.ok(!$btn2.hasClass('active'), 'btn2 does not have active class')
+    assert.ok(!$btn2.find('input').prop('checked'), 'btn2 is not checked')
+    assert.ok(!$btn2.find('input')[0].checked, 'btn2 is not checked')
   })
 
   QUnit.test('should not add aria-pressed on labels for radio/checkbox inputs in a data-toggle="buttons" group', function (assert) {
@@ -307,6 +314,27 @@ $(function () {
     $btn[0].click() // fire a real click on the DOM node itself, not a click() on the jQuery object that just aliases to trigger('click')
     assert.ok($btn.is('.active'), '<div> is active after click')
     assert.ok($input.prop('checked'), 'checkbox is checked after click')
+  })
+
+  QUnit.test('should correctly set checked state on input and active class on the label when using button toggle', function (assert) {
+    assert.expect(6)
+    var groupHTML = '<div class="btn-group" data-toggle="buttons">' +
+        '<label class="btn">' +
+          '<input type="checkbox">' +
+        '</label>' +
+      '</div>'
+    var $group = $(groupHTML).appendTo('#qunit-fixture')
+
+    var $btn = $group.children().eq(0)
+    var $input = $btn.children().eq(0)
+
+    assert.ok($btn.is(':not(.active)'), '<label> is initially not active')
+    assert.ok(!$input.prop('checked'), 'checkbox property is initially not checked')
+    assert.ok(!$input[0].checked, 'checkbox is not checked by jquery after click')
+    $btn.bootstrapButton('toggle')
+    assert.ok($btn.is('.active'), '<label> is active after click')
+    assert.ok($input.prop('checked'), 'checkbox property is checked after click')
+    assert.ok($input[0].checked, 'checkbox is checked by jquery after click')
   })
 
   QUnit.test('should not do anything if the click was just sent to the outer container with data-toggle', function (assert) {
