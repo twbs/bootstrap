@@ -19,6 +19,10 @@ const MILLISECONDS_MULTIPLIER = 1000
 
 // Shoutout AngusCroll (https://goo.gl/pxwQGp)
 function toType(obj) {
+  if (obj === null || typeof obj === 'undefined') {
+    return `${obj}`
+  }
+
   return {}.toString.call(obj).match(/\s([a-z]+)/i)[1].toLowerCase()
 }
 
