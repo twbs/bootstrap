@@ -61,7 +61,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
-    rouge (3.16.0)
+    rouge (3.17.0)
     safe_yaml (1.0.5)
     sassc (2.2.1)
       ffi (~> 1.9)
@@ -69,7 +69,7 @@ GEM
       ffi (~> 1.9)
     terminal-table (1.8.0)
       unicode-display_width (~> 1.1, >= 1.1.1)
-    unicode-display_width (1.6.1)
+    unicode-display_width (1.7.0)
     wdm (0.1.1)
 
 PLATFORMS
