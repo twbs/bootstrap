@@ -130,6 +130,7 @@
   font-weight: $font-weight-normal;
   color: $dropdown-link-color;
   text-align: inherit; // For `<button>`s
+  text-decoration: if($link-decoration == none, null, none);
   white-space: nowrap; // prevent links from randomly breaking onto new lines
   background-color: transparent; // For `<button>`s
   border: 0; // For `<button>`s
@@ -149,7 +150,7 @@
   &:hover,
   &:focus {
     color: $dropdown-link-hover-color;
-    text-decoration: none;
+    text-decoration: if($link-hover-decoration == underline, none, null);
     @include gradient-bg($dropdown-link-hover-bg);
   }
 
@@ -166,9 +167,7 @@
     pointer-events: none;
     background-color: transparent;
     // Remove CSS gradients if they're enabled
-    @if $enable-gradients {
-      background-image: none;
-    }
+    background-image: if($enable-gradients, none, null);
   }
 }
 
@@ -179,7 +178,7 @@
 // Dropdown section headers
 .dropdown-header {
   display: block;
-  padding: $dropdown-padding-y $dropdown-item-padding-x;
+  padding: $dropdown-header-padding;
   margin-bottom: 0; // for use with heading elements
   @include font-size($font-size-sm);
   color: $dropdown-header-color;

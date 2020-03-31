@@ -32,7 +32,7 @@
     margin-top: .1rem;
     @include font-size($form-feedback-tooltip-font-size);
     line-height: $form-feedback-tooltip-line-height;
-    color: color-yiq($color);
+    color: color-contrast($color);
     background-color: rgba($color, $form-feedback-tooltip-opacity);
     @include border-radius($form-feedback-tooltip-border-radius);
   }
@@ -58,7 +58,7 @@
 
       &:focus {
         border-color: $color;
-        box-shadow: 0 0 0 $input-focus-width rgba($color, .25);
+        box-shadow: 0 0 0 $input-focus-width rgba($color, $input-btn-focus-color-opacity);
       }
     }
   }
@@ -79,7 +79,9 @@
 
       @if $enable-validation-icons {
         padding-right: $form-select-feedback-icon-padding-right;
-        background: escape-svg($form-select-indicator) $form-select-background, escape-svg($icon) $form-select-bg no-repeat $form-select-feedback-icon-position / $form-select-feedback-icon-size;
+        background-image: escape-svg($form-select-indicator), escape-svg($icon);
+        background-position: $form-select-bg-position, $form-select-feedback-icon-position;
+        background-size: $form-select-bg-size, $form-select-feedback-icon-size;
       }
 
       &:focus {

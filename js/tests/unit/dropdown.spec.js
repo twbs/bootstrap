@@ -39,7 +39,7 @@ describe('Dropdown', () => {
     it('should create offset modifier correctly when offset option is a function', () => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button href="#" class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
@@ -61,7 +61,7 @@ describe('Dropdown', () => {
     it('should create offset modifier correctly when offset option is not a function', () => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button href="#" class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
@@ -83,7 +83,7 @@ describe('Dropdown', () => {
     it('should add a listener on trigger which do not have data-toggle="dropdown"', () => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button href="#" class="btn">Dropdown</button>',
+        '  <button class="btn">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
@@ -103,7 +103,7 @@ describe('Dropdown', () => {
     it('should allow to pass config to popper.js with `popperConfig`', () => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button href="#" class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
@@ -127,7 +127,7 @@ describe('Dropdown', () => {
     it('should toggle a dropdown', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button href="#" class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
@@ -139,7 +139,7 @@ describe('Dropdown', () => {
       const dropdown = new Dropdown(btnDropdown)
 
       dropdownEl.addEventListener('shown.bs.dropdown', () => {
-        expect(dropdownEl.classList.contains('show')).toEqual(true)
+        expect(btnDropdown.classList.contains('show')).toEqual(true)
         expect(btnDropdown.getAttribute('aria-expanded')).toEqual('true')
         done()
       })
@@ -150,13 +150,13 @@ describe('Dropdown', () => {
     it('should destroy old popper references on toggle', done => {
       fixtureEl.innerHTML = [
         '<div class="first dropdown">',
-        '  <button href="#" class="firstBtn btn" data-toggle="dropdown" aria-expanded="false">Dropdown</button>',
+        '  <button class="firstBtn btn" data-toggle="dropdown" aria-expanded="false">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
         '</div>',
         '<div class="second dropdown">',
-        '  <button href="#" class="secondBtn btn" data-toggle="dropdown" aria-expanded="false">Dropdown</button>',
+        '  <button class="secondBtn btn" data-toggle="dropdown" aria-expanded="false">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
@@ -171,7 +171,7 @@ describe('Dropdown', () => {
       const dropdown2 = new Dropdown(btnDropdown2)
 
       firstDropdownEl.addEventListener('shown.bs.dropdown', () => {
-        expect(firstDropdownEl.classList.contains('show')).toEqual(true)
+        expect(btnDropdown1.classList.contains('show')).toEqual(true)
         spyOn(dropdown1._popper, 'destroy')
         dropdown2.toggle()
       })
@@ -187,7 +187,7 @@ describe('Dropdown', () => {
     it('should toggle a dropdown and add/remove event listener on mobile', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button href="#" class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
@@ -204,7 +204,7 @@ describe('Dropdown', () => {
       spyOn(EventHandler, 'off')
 
       dropdownEl.addEventListener('shown.bs.dropdown', () => {
-        expect(dropdownEl.classList.contains('show')).toEqual(true)
+        expect(btnDropdown.classList.contains('show')).toEqual(true)
         expect(btnDropdown.getAttribute('aria-expanded')).toEqual('true')
         expect(EventHandler.on).toHaveBeenCalled()
 
@@ -212,7 +212,7 @@ describe('Dropdown', () => {
       })
 
       dropdownEl.addEventListener('hidden.bs.dropdown', () => {
-        expect(dropdownEl.classList.contains('show')).toEqual(false)
+        expect(btnDropdown.classList.contains('show')).toEqual(false)
         expect(btnDropdown.getAttribute('aria-expanded')).toEqual('false')
         expect(EventHandler.off).toHaveBeenCalled()
 
@@ -226,7 +226,7 @@ describe('Dropdown', () => {
     it('should toggle a dropdown at the right', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button href="#" class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Dropdown</button>',
         '  <div class="dropdown-menu dropdown-menu-right">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
@@ -238,7 +238,7 @@ describe('Dropdown', () => {
       const dropdown = new Dropdown(btnDropdown)
 
       dropdownEl.addEventListener('shown.bs.dropdown', () => {
-        expect(dropdownEl.classList.contains('show')).toEqual(true)
+        expect(btnDropdown.classList.contains('show')).toEqual(true)
         expect(btnDropdown.getAttribute('aria-expanded')).toEqual('true')
         done()
       })
@@ -249,7 +249,7 @@ describe('Dropdown', () => {
     it('should toggle a dropup', done => {
       fixtureEl.innerHTML = [
         '<div class="dropup">',
-        '  <button href="#" class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
@@ -261,7 +261,7 @@ describe('Dropdown', () => {
       const dropdown = new Dropdown(btnDropdown)
 
       dropupEl.addEventListener('shown.bs.dropdown', () => {
-        expect(dropupEl.classList.contains('show')).toEqual(true)
+        expect(btnDropdown.classList.contains('show')).toEqual(true)
         expect(btnDropdown.getAttribute('aria-expanded')).toEqual('true')
         done()
       })
@@ -272,7 +272,7 @@ describe('Dropdown', () => {
     it('should toggle a dropup at the right', done => {
       fixtureEl.innerHTML = [
         '<div class="dropup">',
-        '  <button href="#" class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Dropdown</button>',
         '  <div class="dropdown-menu dropdown-menu-right">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
@@ -284,7 +284,7 @@ describe('Dropdown', () => {
       const dropdown = new Dropdown(btnDropdown)
 
       dropupEl.addEventListener('shown.bs.dropdown', () => {
-        expect(dropupEl.classList.contains('show')).toEqual(true)
+        expect(btnDropdown.classList.contains('show')).toEqual(true)
         expect(btnDropdown.getAttribute('aria-expanded')).toEqual('true')
         done()
       })
@@ -295,7 +295,7 @@ describe('Dropdown', () => {
     it('should toggle a dropright', done => {
       fixtureEl.innerHTML = [
         '<div class="dropright">',
-        '  <button href="#" class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
@@ -307,7 +307,7 @@ describe('Dropdown', () => {
       const dropdown = new Dropdown(btnDropdown)
 
       droprightEl.addEventListener('shown.bs.dropdown', () => {
-        expect(droprightEl.classList.contains('show')).toEqual(true)
+        expect(btnDropdown.classList.contains('show')).toEqual(true)
         expect(btnDropdown.getAttribute('aria-expanded')).toEqual('true')
         done()
       })
@@ -318,7 +318,7 @@ describe('Dropdown', () => {
     it('should toggle a dropleft', done => {
       fixtureEl.innerHTML = [
         '<div class="dropleft">',
-        '  <button href="#" class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
@@ -330,7 +330,7 @@ describe('Dropdown', () => {
       const dropdown = new Dropdown(btnDropdown)
 
       dropleftEl.addEventListener('shown.bs.dropdown', () => {
-        expect(dropleftEl.classList.contains('show')).toEqual(true)
+        expect(btnDropdown.classList.contains('show')).toEqual(true)
         expect(btnDropdown.getAttribute('aria-expanded')).toEqual('true')
         done()
       })
@@ -341,7 +341,7 @@ describe('Dropdown', () => {
     it('should toggle a dropdown with parent reference', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button href="#" class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
@@ -355,7 +355,7 @@ describe('Dropdown', () => {
       })
 
       dropdownEl.addEventListener('shown.bs.dropdown', () => {
-        expect(dropdownEl.classList.contains('show')).toEqual(true)
+        expect(btnDropdown.classList.contains('show')).toEqual(true)
         expect(btnDropdown.getAttribute('aria-expanded')).toEqual('true')
         done()
       })
@@ -366,7 +366,7 @@ describe('Dropdown', () => {
     it('should toggle a dropdown with a dom node reference', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button href="#" class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
@@ -380,7 +380,7 @@ describe('Dropdown', () => {
       })
 
       dropdownEl.addEventListener('shown.bs.dropdown', () => {
-        expect(dropdownEl.classList.contains('show')).toEqual(true)
+        expect(btnDropdown.classList.contains('show')).toEqual(true)
         expect(btnDropdown.getAttribute('aria-expanded')).toEqual('true')
         done()
       })
@@ -391,7 +391,7 @@ describe('Dropdown', () => {
     it('should toggle a dropdown with a jquery object reference', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button href="#" class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
@@ -405,7 +405,7 @@ describe('Dropdown', () => {
       })
 
       dropdownEl.addEventListener('shown.bs.dropdown', () => {
-        expect(dropdownEl.classList.contains('show')).toEqual(true)
+        expect(btnDropdown.classList.contains('show')).toEqual(true)
         expect(btnDropdown.getAttribute('aria-expanded')).toEqual('true')
         done()
       })
@@ -416,7 +416,7 @@ describe('Dropdown', () => {
     it('should not toggle a dropdown if the element is disabled', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button disabled href="#" class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button disabled class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
@@ -442,7 +442,7 @@ describe('Dropdown', () => {
     it('should not toggle a dropdown if the element contains .disabled', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button href="#" class="btn dropdown-toggle disabled" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle disabled" data-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
@@ -468,7 +468,7 @@ describe('Dropdown', () => {
     it('should not toggle a dropdown if the menu is shown', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button href="#" class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu show">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
@@ -494,7 +494,7 @@ describe('Dropdown', () => {
     it('should not toggle a dropdown if show event is prevented', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button href="#" class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
@@ -526,7 +526,7 @@ describe('Dropdown', () => {
     it('should show a dropdown', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button href="#" class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
@@ -538,7 +538,7 @@ describe('Dropdown', () => {
       const dropdown = new Dropdown(btnDropdown)
 
       dropdownEl.addEventListener('shown.bs.dropdown', () => {
-        expect(dropdownEl.classList.contains('show')).toEqual(true)
+        expect(btnDropdown.classList.contains('show')).toEqual(true)
         done()
       })
 
@@ -548,7 +548,7 @@ describe('Dropdown', () => {
     it('should not show a dropdown if the element is disabled', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button disabled href="#" class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button disabled class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
@@ -574,7 +574,7 @@ describe('Dropdown', () => {
     it('should not show a dropdown if the element contains .disabled', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button href="#" class="btn dropdown-toggle disabled" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle disabled" data-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
@@ -600,7 +600,7 @@ describe('Dropdown', () => {
     it('should not show a dropdown if the menu is shown', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button href="#" class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu show">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
@@ -626,7 +626,7 @@ describe('Dropdown', () => {
     it('should not show a dropdown if show event is prevented', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button href="#" class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
@@ -658,7 +658,7 @@ describe('Dropdown', () => {
     it('should hide a dropdown', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button href="#" class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu show">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
@@ -681,7 +681,7 @@ describe('Dropdown', () => {
     it('should hide a dropdown and destroy popper', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button href="#" class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
@@ -708,7 +708,7 @@ describe('Dropdown', () => {
     it('should not hide a dropdown if the element is disabled', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button disabled href="#" class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button disabled class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu show">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
@@ -735,7 +735,7 @@ describe('Dropdown', () => {
     it('should not hide a dropdown if the element contains .disabled', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button href="#" class="btn dropdown-toggle disabled" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle disabled" data-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu show">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
@@ -762,7 +762,7 @@ describe('Dropdown', () => {
     it('should not hide a dropdown if the menu is not shown', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button href="#" class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
@@ -788,7 +788,7 @@ describe('Dropdown', () => {
     it('should not hide a dropdown if hide event is prevented', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button href="#" class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu show">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
@@ -821,7 +821,7 @@ describe('Dropdown', () => {
     it('should dispose dropdown', () => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button href="#" class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
@@ -844,7 +844,7 @@ describe('Dropdown', () => {
     it('should dispose dropdown with popper.js', () => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button href="#" class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
@@ -875,7 +875,7 @@ describe('Dropdown', () => {
     it('should call popper.js and detect navbar on update', () => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button href="#" class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
@@ -901,7 +901,7 @@ describe('Dropdown', () => {
     it('should just detect navbar on update', () => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button href="#" class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
@@ -924,7 +924,7 @@ describe('Dropdown', () => {
     it('should not add class position-static to dropdown if boundary not set', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button href="#" class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
@@ -945,7 +945,7 @@ describe('Dropdown', () => {
     it('should add class position-static to dropdown if boundary not scrollParent', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button href="#" class="btn dropdown-toggle" data-toggle="dropdown" data-boundary="viewport">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-toggle="dropdown" data-boundary="viewport">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
@@ -966,7 +966,7 @@ describe('Dropdown', () => {
     it('should show and hide a dropdown', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button href="#" class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
@@ -983,7 +983,7 @@ describe('Dropdown', () => {
       })
 
       dropdownEl.addEventListener('shown.bs.dropdown', e => {
-        expect(dropdownEl.classList.contains('show')).toEqual(true)
+        expect(btnDropdown.classList.contains('show')).toEqual(true)
         expect(btnDropdown.getAttribute('aria-expanded')).toEqual('true')
         expect(showEventTriggered).toEqual(true)
         expect(e.relatedTarget).toEqual(btnDropdown)
@@ -995,7 +995,7 @@ describe('Dropdown', () => {
       })
 
       dropdownEl.addEventListener('hidden.bs.dropdown', e => {
-        expect(dropdownEl.classList.contains('show')).toEqual(false)
+        expect(btnDropdown.classList.contains('show')).toEqual(false)
         expect(btnDropdown.getAttribute('aria-expanded')).toEqual('false')
         expect(hideEventTriggered).toEqual(true)
         expect(e.relatedTarget).toEqual(btnDropdown)
@@ -1009,7 +1009,7 @@ describe('Dropdown', () => {
       fixtureEl.innerHTML = [
         '<nav class="navbar navbar-expand-md navbar-light bg-light">',
         '  <div class="dropdown">',
-        '    <button href="#" class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Dropdown</button>',
+        '    <button class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Dropdown</button>',
         '    <div class="dropdown-menu">',
         '      <a class="dropdown-item" href="#">Secondary link</a>',
         '    </div>',
@@ -1032,7 +1032,7 @@ describe('Dropdown', () => {
     it('should not use popper.js if display set to static', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button href="#" class="btn dropdown-toggle" data-toggle="dropdown" data-display="static">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-toggle="dropdown" data-display="static">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
@@ -1055,7 +1055,7 @@ describe('Dropdown', () => {
     it('should remove "show" class if tabbing outside of menu', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button href="#" class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
@@ -1066,7 +1066,7 @@ describe('Dropdown', () => {
       const dropdownEl = fixtureEl.querySelector('.dropdown')
 
       dropdownEl.addEventListener('shown.bs.dropdown', () => {
-        expect(dropdownEl.classList.contains('show')).toEqual(true)
+        expect(btnDropdown.classList.contains('show')).toEqual(true)
 
         const keyUp = createEvent('keyup')
 
@@ -1075,7 +1075,7 @@ describe('Dropdown', () => {
       })
 
       dropdownEl.addEventListener('hidden.bs.dropdown', () => {
-        expect(dropdownEl.classList.contains('show')).toEqual(false)
+        expect(btnDropdown.classList.contains('show')).toEqual(false)
         done()
       })
 
@@ -1111,7 +1111,7 @@ describe('Dropdown', () => {
       const btnGroup = last.parentNode
 
       dropdownTestMenu.addEventListener('shown.bs.dropdown', () => {
-        expect(dropdownTestMenu.classList.contains('show')).toEqual(true)
+        expect(first.classList.contains('show')).toEqual(true)
         expect(fixtureEl.querySelectorAll('.dropdown-menu.show').length).toEqual(1)
         document.body.click()
       })
@@ -1122,7 +1122,7 @@ describe('Dropdown', () => {
       })
 
       btnGroup.addEventListener('shown.bs.dropdown', () => {
-        expect(btnGroup.classList.contains('show')).toEqual(true)
+        expect(last.classList.contains('show')).toEqual(true)
         expect(fixtureEl.querySelectorAll('.dropdown-menu.show').length).toEqual(1)
         document.body.click()
       })
@@ -1162,7 +1162,7 @@ describe('Dropdown', () => {
       const btnGroup = last.parentNode
 
       dropdownTestMenu.addEventListener('shown.bs.dropdown', () => {
-        expect(dropdownTestMenu.classList.contains('show')).toEqual(true, '"show" class added on click')
+        expect(first.classList.contains('show')).toEqual(true, '"show" class added on click')
         expect(fixtureEl.querySelectorAll('.dropdown-menu.show').length).toEqual(1, 'only one dropdown is shown')
 
         const keyUp = createEvent('keyup')
@@ -1177,7 +1177,7 @@ describe('Dropdown', () => {
       })
 
       btnGroup.addEventListener('shown.bs.dropdown', () => {
-        expect(btnGroup.classList.contains('show')).toEqual(true, '"show" class added on click')
+        expect(last.classList.contains('show')).toEqual(true, '"show" class added on click')
         expect(fixtureEl.querySelectorAll('.dropdown-menu.show').length).toEqual(1, 'only one dropdown is shown')
 
         const keyUp = createEvent('keyup')
@@ -1197,7 +1197,7 @@ describe('Dropdown', () => {
     it('should fire hide and hidden event without a clickEvent if event type is not click', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button href="#" class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#sub1">Submenu 1</a>',
         '  </div>',
@@ -1229,7 +1229,7 @@ describe('Dropdown', () => {
     it('should ignore keyboard events within <input>s and <textarea>s', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button href="#" class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#sub1">Submenu 1</a>',
         '    <input type="text" />',
@@ -1265,7 +1265,7 @@ describe('Dropdown', () => {
     it('should skip disabled element when using keyboard navigation', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button href="#" class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item disabled" href="#sub1">Submenu 1</a>',
         '    <button class="dropdown-item" type="button" disabled>Disabled button</button>',
@@ -1300,7 +1300,7 @@ describe('Dropdown', () => {
         '  }',
         '</style>',
         '<div class="dropdown">',
-        '  <button href="#" class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <button class="dropdown-item d-none" type="button">Hidden button by class</button>',
         '    <a class="dropdown-item" href="#sub1" style="display: none">Hidden link</a>',
@@ -1332,7 +1332,7 @@ describe('Dropdown', () => {
     it('should focus next/previous element when using keyboard navigation', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button href="#" class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a id="item1" class="dropdown-item" href="#">A link</a>',
         '    <a id="item2" class="dropdown-item" href="#">Another link</a>',
@@ -1370,7 +1370,7 @@ describe('Dropdown', () => {
     it('should not close the dropdown if the user clicks on a text field', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button href="#" class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <input type="text" />',
         '  </div>',
@@ -1382,12 +1382,12 @@ describe('Dropdown', () => {
       const input = fixtureEl.querySelector('input')
 
       input.addEventListener('click', () => {
-        expect(dropdown.classList.contains('show')).toEqual(true, 'dropdown menu is shown')
+        expect(triggerDropdown.classList.contains('show')).toEqual(true, 'dropdown menu is shown')
         done()
       })
 
       dropdown.addEventListener('shown.bs.dropdown', () => {
-        expect(dropdown.classList.contains('show')).toEqual(true, 'dropdown menu is shown')
+        expect(triggerDropdown.classList.contains('show')).toEqual(true, 'dropdown menu is shown')
         input.dispatchEvent(createEvent('click'))
       })
 
@@ -1397,7 +1397,7 @@ describe('Dropdown', () => {
     it('should not close the dropdown if the user clicks on a textarea', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button href="#" class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <textarea></textarea>',
         '  </div>',
@@ -1409,12 +1409,12 @@ describe('Dropdown', () => {
       const textarea = fixtureEl.querySelector('textarea')
 
       textarea.addEventListener('click', () => {
-        expect(dropdown.classList.contains('show')).toEqual(true, 'dropdown menu is shown')
+        expect(triggerDropdown.classList.contains('show')).toEqual(true, 'dropdown menu is shown')
         done()
       })
 
       dropdown.addEventListener('shown.bs.dropdown', () => {
-        expect(dropdown.classList.contains('show')).toEqual(true, 'dropdown menu is shown')
+        expect(triggerDropdown.classList.contains('show')).toEqual(true, 'dropdown menu is shown')
         textarea.dispatchEvent(createEvent('click'))
       })
 
@@ -1424,7 +1424,7 @@ describe('Dropdown', () => {
     it('should ignore keyboard events for <input>s and <textarea>s within dropdown-menu, except for escape key', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
-        '  <button href="#" class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#sub1">Submenu 1</a>',
         '    <input type="text" />',
@@ -1492,7 +1492,7 @@ describe('Dropdown', () => {
         input.focus()
         input.dispatchEvent(keyDownEscape)
 
-        expect(dropdown.classList.contains('show')).toEqual(false, 'dropdown menu is not shown')
+        expect(triggerDropdown.classList.contains('show')).toEqual(false, 'dropdown menu is not shown')
         done()
       })
 
@@ -1503,7 +1503,7 @@ describe('Dropdown', () => {
       fixtureEl.innerHTML = [
         '<div class="tabs">',
         '  <div class="dropdown">',
-        '    <button disabled href="#" class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '    <button disabled class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
         '    <div class="dropdown-menu">',
         '      <a class="dropdown-item" href="#">Secondary link</a>',
         '      <a class="dropdown-item" href="#">Something else here</a>',
@@ -1529,7 +1529,7 @@ describe('Dropdown', () => {
 
       setTimeout(() => {
         expect(dropdown.toggle).not.toHaveBeenCalled()
-        expect(triggerDropdown.parentNode.classList.contains('show')).toEqual(false)
+        expect(triggerDropdown.classList.contains('show')).toEqual(false)
         done()
       }, 20)
     })

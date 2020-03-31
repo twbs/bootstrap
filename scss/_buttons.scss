@@ -9,6 +9,7 @@
   line-height: $btn-line-height;
   color: $body-color;
   text-align: center;
+  text-decoration: if($link-decoration == none, null, none);
   white-space: $btn-white-space;
   vertical-align: middle;
   cursor: if($enable-pointer-cursor-for-buttons, pointer, null);
@@ -20,7 +21,7 @@
 
   &:hover {
     color: $body-color;
-    text-decoration: none;
+    text-decoration: if($link-hover-decoration == underline, none, null);
   }
 
   &:focus,
@@ -83,7 +84,6 @@
   &:focus,
   &.focus {
     text-decoration: $link-hover-decoration;
-    box-shadow: none;
   }
 
   &:disabled,

@@ -75,6 +75,7 @@ const conf = {
         externalHelpersWhitelist: [
           'defineProperties',
           'createClass',
+          'createSuper',
           'inheritsLoose',
           'defineProperty',
           'objectSpread2'

@@ -6,13 +6,13 @@
 @mixin button-variant(
   $background,
   $border,
-  $color: color-yiq($background),
+  $color: color-contrast($background),
   $hover-background: darken($background, 7.5%),
   $hover-border: darken($border, 10%),
-  $hover-color: color-yiq($hover-background),
+  $hover-color: color-contrast($hover-background),
   $active-background: darken($background, 10%),
   $active-border: darken($border, 12.5%),
-  $active-color: color-yiq($active-background)
+  $active-color: color-contrast($active-background)
 ) {
   color: $color;
   @include gradient-bg($background);
@@ -43,9 +43,8 @@
   .show > &.dropdown-toggle {
     color: $active-color;
     background-color: $active-background;
-    @if $enable-gradients {
-      background-image: none; // Remove the gradient for the pressed/active state
-    }
+    // Remove CSS gradients if they're enabled
+    background-image: if($enable-gradients, none, null);
     border-color: $active-border;
 
     &:focus {
@@ -62,20 +61,18 @@
   &.disabled {
     color: $color;
     background-color: $background;
-    border-color: $border;
     // Remove CSS gradients if they're enabled
-    @if $enable-gradients {
-      background-image: none;
-    }
+    background-image: if($enable-gradients, none, null);
+    border-color: $border;
   }
 }
 
 @mixin button-outline-variant(
   $color,
-  $color-hover: color-yiq($color),
+  $color-hover: color-contrast($color),
   $active-background: $color,
   $active-border: $color,
-  $active-color: color-yiq($active-background)
+  $active-color: color-contrast($active-background)
 ) {
   color: $color;
   border-color: $color;
@@ -93,7 +90,7 @@
 
   &:active,
   &.active,
-  .show > &.dropdown-toggle {
+  &.dropdown-toggle.show {
     color: $active-color;
     background-color: $active-background;
     border-color: $active-border;

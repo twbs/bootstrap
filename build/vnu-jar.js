@@ -37,10 +37,7 @@ childProcess.exec('java -version', (error, stdout, stderr) => {
     'The “month” input type is not supported in all browsers.*',
     'The “color” input type is not supported in all browsers.*',
     'The “datetime-local” input type is not supported in all browsers.*',
-    'The “time” input type is not supported in all browsers.*',
-    // IE11 doesn't recognize <main> / give the element an implicit "main" landmark.
-    // Explicit role="main" is redundant for other modern browsers, but still valid.
-    'The “main” role is unnecessary for element “main”.'
+    'The “time” input type is not supported in all browsers.*'
   ].join('|')
 
   const args = [
