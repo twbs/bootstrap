@@ -400,8 +400,7 @@ class Tooltip {
   setContent() {
     const tip = this.getTipElement()
     this.setElementContent(SelectorEngine.findOne(SELECTOR_TOOLTIP_INNER, tip), this.getTitle())
-    tip.classList.remove(CLASS_NAME_FADE)
-    tip.classList.remove(CLASS_NAME_SHOW)
+    tip.classList.remove(CLASS_NAME_FADE, CLASS_NAME_SHOW)
   }
 
   setElementContent(element, content) {
