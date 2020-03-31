@@ -10,11 +10,11 @@ toc: true
 
 {{< example >}}
 <div class="mb-3">
-  <label for="exampleFormControlInput1">Email address</label>
+  <label for="exampleFormControlInput1" class="form-label">Email address</label>
   <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
 </div>
 <div class="mb-3">
-  <label for="exampleFormControlTextarea1">Example textarea</label>
+  <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
   <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
 </div>
 {{< /example >}}
@@ -75,7 +75,7 @@ If you want to have `<input readonly>` elements in your form styled as plain tex
 ## Color
 
 {{< example >}}
-<label for="exampleColorInput">Color picker</label>
+<label for="exampleColorInput" class="form-label">Color picker</label>
 <input type="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c" title="Choose your color">
 {{< /example >}}
 
@@ -86,7 +86,7 @@ Datalists allow you to create a group of `<option>`s that can be accessed (and a
 Learn more about [support for datalist elements](https://caniuse.com/#feat=datalist).
 
 {{< example >}}
-<label for="exampleDataList">Datalist example</label>
+<label for="exampleDataList" class="form-label">Datalist example</label>
 <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
 <datalist id="datalistOptions">
   <option value="San Francisco">
