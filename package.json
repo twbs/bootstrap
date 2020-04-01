@@ -60,7 +60,7 @@
     "release-sri": "node build/generate-sri.js",
     "release-version": "node build/change-version.js",
     "release-zip": "cross-env-shell \"rm -rf bootstrap-$npm_package_version-dist && cp -r dist/ bootstrap-$npm_package_version-dist && zip -r9 bootstrap-$npm_package_version-dist.zip bootstrap-$npm_package_version-dist && rm -rf bootstrap-$npm_package_version-dist\"",
-    "release-zip-examples": "bash build/zip-examples.sh",
+    "release-zip-examples": "node build/zip-examples.js",
     "dist": "npm-run-all --parallel css js",
     "test": "npm-run-all lint dist js-test docs-build docs-lint",
     "netlify": "cross-env-shell HUGO_BASEURL=$DEPLOY_PRIME_URL npm-run-all dist release-sri docs-build",
