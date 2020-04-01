@@ -15,7 +15,7 @@
         <a class="nav-link {% if page.title == "Examples" %}active{% endif %}" href="{{ site.baseurl }}/docs/{{ site.docs_version }}/examples/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Examples');">Examples</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{ site.icons }}/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Icons');">Icons</a>
+        <a class="nav-link" href="{{ site.icons }}/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Icons');" target="_blank" rel="noopener">Icons</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{ site.themes }}/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Themes');" target="_blank" rel="noopener">Themes</a>
@@ -45,7 +45,7 @@
     </li>
 
     <li class="nav-item">
-      <a class="nav-link p-2" href="{{ site.repo }}" target="_blank" rel="noopener" aria-label="GitHub">
+      <a class="nav-link p-2" href="{{ site.github_org }}" target="_blank" rel="noopener" aria-label="GitHub">
         {%- include icons/github.svg class="navbar-nav-svg" -%}
       </a>
     </li>

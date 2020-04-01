@@ -20,20 +20,16 @@ const DATA_KEY           = 'bs.toast'
 const EVENT_KEY          = `.${DATA_KEY}`
 const JQUERY_NO_CONFLICT = $.fn[NAME]
 
-const Event = {
-  CLICK_DISMISS : `click.dismiss${EVENT_KEY}`,
-  HIDE          : `hide${EVENT_KEY}`,
-  HIDDEN        : `hidden${EVENT_KEY}`,
-  SHOW          : `show${EVENT_KEY}`,
-  SHOWN         : `shown${EVENT_KEY}`
-}
+const EVENT_CLICK_DISMISS = `click.dismiss${EVENT_KEY}`
+const EVENT_HIDE          = `hide${EVENT_KEY}`
+const EVENT_HIDDEN        = `hidden${EVENT_KEY}`
+const EVENT_SHOW          = `show${EVENT_KEY}`
+const EVENT_SHOWN         = `shown${EVENT_KEY}`
 
-const ClassName = {
-  FADE    : 'fade',
-  HIDE    : 'hide',
-  SHOW    : 'show',
-  SHOWING : 'showing'
-}
+const CLASS_NAME_FADE    = 'fade'
+const CLASS_NAME_HIDE    = 'hide'
+const CLASS_NAME_SHOW    = 'show'
+const CLASS_NAME_SHOWING = 'showing'
 
 const DefaultType = {
   animation : 'boolean',
@@ -47,9 +43,7 @@ const Default = {
   delay     : 500
 }
 
-const Selector = {
-  DATA_DISMISS : '[data-dismiss="toast"]'
-}
+const SELECTOR_DATA_DISMISS = '[data-dismiss="toast"]'
 
 /**
  * ------------------------------------------------------------------------
@@ -82,7 +76,7 @@ class Toast {
   // Public
 
   show() {
-    const showEvent = $.Event(Event.SHOW)
+    const showEvent = $.Event(EVENT_SHOW)
 
     $(this._element).trigger(showEvent)
     if (showEvent.isDefaultPrevented()) {
@@ -90,14 +84,14 @@ class Toast {
     }
 
     if (this._config.animation) {
-      this._element.classList.add(ClassName.FADE)
+      this._element.classList.add(CLASS_NAME_FADE)
     }
 
     const complete = () => {
-      this._element.classList.remove(ClassName.SHOWING)
-      this._element.classList.add(ClassName.SHOW)
+      this._element.classList.remove(CLASS_NAME_SHOWING)
+      this._element.classList.add(CLASS_NAME_SHOW)
 
-      $(this._element).trigger(Event.SHOWN)
+      $(this._element).trigger(EVENT_SHOWN)
 
       if (this._config.autohide) {
         this._timeout = setTimeout(() => {
@@ -106,9 +100,9 @@ class Toast {
       }
     }
 
-    this._element.classList.remove(ClassName.HIDE)
+    this._element.classList.remove(CLASS_NAME_HIDE)
     Util.reflow(this._element)
-    this._element.classList.add(ClassName.SHOWING)
+    this._element.classList.add(CLASS_NAME_SHOWING)
     if (this._config.animation) {
       const transitionDuration = Util.getTransitionDurationFromElement(this._element)
 
@@ -121,11 +115,11 @@ class Toast {
   }
 
   hide() {
-    if (!this._element.classList.contains(ClassName.SHOW)) {
+    if (!this._element.classList.contains(CLASS_NAME_SHOW)) {
       return
     }
 
-    const hideEvent = $.Event(Event.HIDE)
+    const hideEvent = $.Event(EVENT_HIDE)
 
     $(this._element).trigger(hideEvent)
     if (hideEvent.isDefaultPrevented()) {
@@ -139,11 +133,11 @@ class Toast {
     clearTimeout(this._timeout)
     this._timeout = null
 
-    if (this._element.classList.contains(ClassName.SHOW)) {
-      this._element.classList.remove(ClassName.SHOW)
+    if (this._element.classList.contains(CLASS_NAME_SHOW)) {
+      this._element.classList.remove(CLASS_NAME_SHOW)
     }
 
-    $(this._element).off(Event.CLICK_DISMISS)
+    $(this._element).off(EVENT_CLICK_DISMISS)
 
     $.removeData(this._element, DATA_KEY)
     this._element = null
@@ -170,19 +164,19 @@ class Toast {
 
   _setListeners() {
     $(this._element).on(
-      Event.CLICK_DISMISS,
-      Selector.DATA_DISMISS,
+      EVENT_CLICK_DISMISS,
+      SELECTOR_DATA_DISMISS,
       () => this.hide()
     )
   }
 
   _close() {
     const complete = () => {
-      this._element.classList.add(ClassName.HIDE)
-      $(this._element).trigger(Event.HIDDEN)
+      this._element.classList.add(CLASS_NAME_HIDE)
+      $(this._element).trigger(EVENT_HIDDEN)
     }
 
-    this._element.classList.remove(ClassName.SHOW)
+    this._element.classList.remove(CLASS_NAME_SHOW)
     if (this._config.animation) {
       const transitionDuration = Util.getTransitionDurationFromElement(this._element)
 
