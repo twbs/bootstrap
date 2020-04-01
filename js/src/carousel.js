@@ -12,7 +12,6 @@ import {
   getElementFromSelector,
   getTransitionDurationFromElement,
   isVisible,
-  makeArray,
   reflow,
   triggerTransitionEnd,
   typeCheckConfig
@@ -33,6 +32,7 @@ const VERSION = '4.3.1'
 const DATA_KEY = 'bs.carousel'
 const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
+
 const ARROW_LEFT_KEYCODE = 37 // KeyboardEvent.which value for left arrow key
 const ARROW_RIGHT_KEYCODE = 39 // KeyboardEvent.which value for right arrow key
 const TOUCHEVENT_COMPAT_WAIT = 500 // Time for mouse compat events to fire after touch
@@ -56,51 +56,42 @@ const DefaultType = {
   touch: 'boolean'
 }
 
-const Direction = {
-  NEXT: 'next',
-  PREV: 'prev',
-  LEFT: 'left',
-  RIGHT: 'right'
-}
+const DIRECTION_NEXT = 'next'
+const DIRECTION_PREV = 'prev'
+const DIRECTION_LEFT = 'left'
+const DIRECTION_RIGHT = 'right'
 
-const Event = {
-  SLIDE: `slide${EVENT_KEY}`,
-  SLID: `slid${EVENT_KEY}`,
-  KEYDOWN: `keydown${EVENT_KEY}`,
-  MOUSEENTER: `mouseenter${EVENT_KEY}`,
-  MOUSELEAVE: `mouseleave${EVENT_KEY}`,
-  TOUCHSTART: `touchstart${EVENT_KEY}`,
-  TOUCHMOVE: `touchmove${EVENT_KEY}`,
-  TOUCHEND: `touchend${EVENT_KEY}`,
-  POINTERDOWN: `pointerdown${EVENT_KEY}`,
-  POINTERUP: `pointerup${EVENT_KEY}`,
-  DRAG_START: `dragstart${EVENT_KEY}`,
-  LOAD_DATA_API: `load${EVENT_KEY}${DATA_API_KEY}`,
-  CLICK_DATA_API: `click${EVENT_KEY}${DATA_API_KEY}`
-}
+const EVENT_SLIDE = `slide${EVENT_KEY}`
+const EVENT_SLID = `slid${EVENT_KEY}`
+const EVENT_KEYDOWN = `keydown${EVENT_KEY}`
+const EVENT_MOUSEENTER = `mouseenter${EVENT_KEY}`
+const EVENT_MOUSELEAVE = `mouseleave${EVENT_KEY}`
+const EVENT_TOUCHSTART = `touchstart${EVENT_KEY}`
+const EVENT_TOUCHMOVE = `touchmove${EVENT_KEY}`
+const EVENT_TOUCHEND = `touchend${EVENT_KEY}`
+const EVENT_POINTERDOWN = `pointerdown${EVENT_KEY}`
+const EVENT_POINTERUP = `pointerup${EVENT_KEY}`
+const EVENT_DRAG_START = `dragstart${EVENT_KEY}`
+const EVENT_LOAD_DATA_API = `load${EVENT_KEY}${DATA_API_KEY}`
+const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 
-const ClassName = {
-  CAROUSEL: 'carousel',
-  ACTIVE: 'active',
-  SLIDE: 'slide',
-  RIGHT: 'carousel-item-right',
-  LEFT: 'carousel-item-left',
-  NEXT: 'carousel-item-next',
-  PREV: 'carousel-item-prev',
-  ITEM: 'carousel-item',
-  POINTER_EVENT: 'pointer-event'
-}
+const CLASS_NAME_CAROUSEL = 'carousel'
+const CLASS_NAME_ACTIVE = 'active'
+const CLASS_NAME_SLIDE = 'slide'
+const CLASS_NAME_RIGHT = 'carousel-item-right'
+const CLASS_NAME_LEFT = 'carousel-item-left'
+const CLASS_NAME_NEXT = 'carousel-item-next'
+const CLASS_NAME_PREV = 'carousel-item-prev'
+const CLASS_NAME_POINTER_EVENT = 'pointer-event'
 
-const Selector = {
-  ACTIVE: '.active',
-  ACTIVE_ITEM: '.active.carousel-item',
-  ITEM: '.carousel-item',
-  ITEM_IMG: '.carousel-item img',
-  NEXT_PREV: '.carousel-item-next, .carousel-item-prev',
-  INDICATORS: '.carousel-indicators',
-  DATA_SLIDE: '[data-slide], [data-slide-to]',
-  DATA_RIDE: '[data-ride="carousel"]'
-}
+const SELECTOR_ACTIVE = '.active'
+const SELECTOR_ACTIVE_ITEM = '.active.carousel-item'
+const SELECTOR_ITEM = '.carousel-item'
+const SELECTOR_ITEM_IMG = '.carousel-item img'
+const SELECTOR_NEXT_PREV = '.carousel-item-next, .carousel-item-prev'
+const SELECTOR_INDICATORS = '.carousel-indicators'
+const SELECTOR_DATA_SLIDE = '[data-slide], [data-slide-to]'
+const SELECTOR_DATA_RIDE = '[data-ride="carousel"]'
 
 const PointerType = {
   TOUCH: 'touch',
@@ -125,9 +116,9 @@ class Carousel {
 
     this._config = this._getConfig(config)
     this._element = element
-    this._indicatorsElement = SelectorEngine.findOne(Selector.INDICATORS, this._element)
+    this._indicatorsElement = SelectorEngine.findOne(SELECTOR_INDICATORS, this._element)
     this._touchSupported = 'ontouchstart' in document.documentElement || navigator.maxTouchPoints > 0
-    this._pointerEvent = Boolean(window.PointerEvent || window.MSPointerEvent)
+    this._pointerEvent = Boolean(window.PointerEvent)
 
     this._addEventListeners()
     Data.setData(element, DATA_KEY, this)
@@ -147,7 +138,7 @@ class Carousel {
 
   next() {
     if (!this._isSliding) {
-      this._slide(Direction.NEXT)
+      this._slide(DIRECTION_NEXT)
     }
   }
 
@@ -161,7 +152,7 @@ class Carousel {
 
   prev() {
     if (!this._isSliding) {
-      this._slide(Direction.PREV)
+      this._slide(DIRECTION_PREV)
     }
   }
 
@@ -170,7 +161,7 @@ class Carousel {
       this._isPaused = true
     }
 
-    if (SelectorEngine.findOne(Selector.NEXT_PREV, this._element)) {
+    if (SelectorEngine.findOne(SELECTOR_NEXT_PREV, this._element)) {
       triggerTransitionEnd(this._element)
       this.cycle(true)
     }
@@ -198,7 +189,7 @@ class Carousel {
   }
 
   to(index) {
-    this._activeElement = SelectorEngine.findOne(Selector.ACTIVE_ITEM, this._element)
+    this._activeElement = SelectorEngine.findOne(SELECTOR_ACTIVE_ITEM, this._element)
     const activeIndex = this._getItemIndex(this._activeElement)
 
     if (index > this._items.length - 1 || index < 0) {
@@ -206,7 +197,7 @@ class Carousel {
     }
 
     if (this._isSliding) {
-      EventHandler.one(this._element, Event.SLID, () => this.to(index))
+      EventHandler.one(this._element, EVENT_SLID, () => this.to(index))
       return
     }
 
@@ -217,8 +208,8 @@ class Carousel {
     }
 
     const direction = index > activeIndex ?
-      Direction.NEXT :
-      Direction.PREV
+      DIRECTION_NEXT :
+      DIRECTION_PREV
 
     this._slide(direction, this._items[index])
   }
@@ -273,14 +264,14 @@ class Carousel {
   _addEventListeners() {
     if (this._config.keyboard) {
       EventHandler
-        .on(this._element, Event.KEYDOWN, event => this._keydown(event))
+        .on(this._element, EVENT_KEYDOWN, event => this._keydown(event))
     }
 
     if (this._config.pause === 'hover') {
       EventHandler
-        .on(this._element, Event.MOUSEENTER, event => this.pause(event))
+        .on(this._element, EVENT_MOUSEENTER, event => this.pause(event))
       EventHandler
-        .on(this._element, Event.MOUSELEAVE, event => this.cycle(event))
+        .on(this._element, EVENT_MOUSELEAVE, event => this.cycle(event))
     }
 
     if (this._config.touch && this._touchSupported) {
@@ -330,19 +321,19 @@ class Carousel {
       }
     }
 
-    makeArray(SelectorEngine.find(Selector.ITEM_IMG, this._element)).forEach(itemImg => {
-      EventHandler.on(itemImg, Event.DRAG_START, e => e.preventDefault())
+    SelectorEngine.find(SELECTOR_ITEM_IMG, this._element).forEach(itemImg => {
+      EventHandler.on(itemImg, EVENT_DRAG_START, e => e.preventDefault())
     })
 
     if (this._pointerEvent) {
-      EventHandler.on(this._element, Event.POINTERDOWN, event => start(event))
-      EventHandler.on(this._element, Event.POINTERUP, event => end(event))
+      EventHandler.on(this._element, EVENT_POINTERDOWN, event => start(event))
+      EventHandler.on(this._element, EVENT_POINTERUP, event => end(event))
 
-      this._element.classList.add(ClassName.POINTER_EVENT)
+      this._element.classList.add(CLASS_NAME_POINTER_EVENT)
     } else {
-      EventHandler.on(this._element, Event.TOUCHSTART, event => start(event))
-      EventHandler.on(this._element, Event.TOUCHMOVE, event => move(event))
-      EventHandler.on(this._element, Event.TOUCHEND, event => end(event))
+      EventHandler.on(this._element, EVENT_TOUCHSTART, event => start(event))
+      EventHandler.on(this._element, EVENT_TOUCHMOVE, event => move(event))
+      EventHandler.on(this._element, EVENT_TOUCHEND, event => end(event))
     }
   }
 
@@ -366,15 +357,15 @@ class Carousel {
 
   _getItemIndex(element) {
     this._items = element && element.parentNode ?
-      makeArray(SelectorEngine.find(Selector.ITEM, element.parentNode)) :
+      SelectorEngine.find(SELECTOR_ITEM, element.parentNode) :
       []
 
     return this._items.indexOf(element)
   }
 
   _getItemByDirection(direction, activeElement) {
-    const isNextDirection = direction === Direction.NEXT
-    const isPrevDirection = direction === Direction.PREV
+    const isNextDirection = direction === DIRECTION_NEXT
+    const isPrevDirection = direction === DIRECTION_PREV
     const activeIndex = this._getItemIndex(activeElement)
     const lastItemIndex = this._items.length - 1
     const isGoingToWrap = (isPrevDirection && activeIndex === 0) ||
@@ -384,7 +375,7 @@ class Carousel {
       return activeElement
     }
 
-    const delta = direction === Direction.PREV ? -1 : 1
+    const delta = direction === DIRECTION_PREV ? -1 : 1
     const itemIndex = (activeIndex + delta) % this._items.length
 
     return itemIndex === -1 ?
@@ -394,9 +385,9 @@ class Carousel {
 
   _triggerSlideEvent(relatedTarget, eventDirectionName) {
     const targetIndex = this._getItemIndex(relatedTarget)
-    const fromIndex = this._getItemIndex(SelectorEngine.findOne(Selector.ACTIVE_ITEM, this._element))
+    const fromIndex = this._getItemIndex(SelectorEngine.findOne(SELECTOR_ACTIVE_ITEM, this._element))
 
-    return EventHandler.trigger(this._element, Event.SLIDE, {
+    return EventHandler.trigger(this._element, EVENT_SLIDE, {
       relatedTarget,
       direction: eventDirectionName,
       from: fromIndex,
@@ -406,9 +397,9 @@ class Carousel {
 
   _setActiveIndicatorElement(element) {
     if (this._indicatorsElement) {
-      const indicators = SelectorEngine.find(Selector.ACTIVE, this._indicatorsElement)
+      const indicators = SelectorEngine.find(SELECTOR_ACTIVE, this._indicatorsElement)
       for (let i = 0; i < indicators.length; i++) {
-        indicators[i].classList.remove(ClassName.ACTIVE)
+        indicators[i].classList.remove(CLASS_NAME_ACTIVE)
       }
 
       const nextIndicator = this._indicatorsElement.children[
@@ -416,13 +407,13 @@ class Carousel {
       ]
 
       if (nextIndicator) {
-        nextIndicator.classList.add(ClassName.ACTIVE)
+        nextIndicator.classList.add(CLASS_NAME_ACTIVE)
       }
     }
   }
 
   _slide(direction, element) {
-    const activeElement = SelectorEngine.findOne(Selector.ACTIVE_ITEM, this._element)
+    const activeElement = SelectorEngine.findOne(SELECTOR_ACTIVE_ITEM, this._element)
     const activeElementIndex = this._getItemIndex(activeElement)
     const nextElement = element || (activeElement &&
       this._getItemByDirection(direction, activeElement))
@@ -434,17 +425,17 @@ class Carousel {
     let orderClassName
     let eventDirectionName
 
-    if (direction === Direction.NEXT) {
-      directionalClassName = ClassName.LEFT
-      orderClassName = ClassName.NEXT
-      eventDirectionName = Direction.LEFT
+    if (direction === DIRECTION_NEXT) {
+      directionalClassName = CLASS_NAME_LEFT
+      orderClassName = CLASS_NAME_NEXT
+      eventDirectionName = DIRECTION_LEFT
     } else {
-      directionalClassName = ClassName.RIGHT
-      orderClassName = ClassName.PREV
-      eventDirectionName = Direction.RIGHT
+      directionalClassName = CLASS_NAME_RIGHT
+      orderClassName = CLASS_NAME_PREV
+      eventDirectionName = DIRECTION_RIGHT
     }
 
-    if (nextElement && nextElement.classList.contains(ClassName.ACTIVE)) {
+    if (nextElement && nextElement.classList.contains(CLASS_NAME_ACTIVE)) {
       this._isSliding = false
       return
     }
@@ -467,7 +458,7 @@ class Carousel {
 
     this._setActiveIndicatorElement(nextElement)
 
-    if (this._element.classList.contains(ClassName.SLIDE)) {
+    if (this._element.classList.contains(CLASS_NAME_SLIDE)) {
       nextElement.classList.add(orderClassName)
 
       reflow(nextElement)
@@ -489,16 +480,16 @@ class Carousel {
         .one(activeElement, TRANSITION_END, () => {
           nextElement.classList.remove(directionalClassName)
           nextElement.classList.remove(orderClassName)
-          nextElement.classList.add(ClassName.ACTIVE)
+          nextElement.classList.add(CLASS_NAME_ACTIVE)
 
-          activeElement.classList.remove(ClassName.ACTIVE)
+          activeElement.classList.remove(CLASS_NAME_ACTIVE)
           activeElement.classList.remove(orderClassName)
           activeElement.classList.remove(directionalClassName)
 
           this._isSliding = false
 
           setTimeout(() => {
-            EventHandler.trigger(this._element, Event.SLID, {
+            EventHandler.trigger(this._element, EVENT_SLID, {
               relatedTarget: nextElement,
               direction: eventDirectionName,
               from: activeElementIndex,
@@ -509,11 +500,11 @@ class Carousel {
 
       emulateTransitionEnd(activeElement, transitionDuration)
     } else {
-      activeElement.classList.remove(ClassName.ACTIVE)
-      nextElement.classList.add(ClassName.ACTIVE)
+      activeElement.classList.remove(CLASS_NAME_ACTIVE)
+      nextElement.classList.add(CLASS_NAME_ACTIVE)
 
       this._isSliding = false
-      EventHandler.trigger(this._element, Event.SLID, {
+      EventHandler.trigger(this._element, EVENT_SLID, {
         relatedTarget: nextElement,
         direction: eventDirectionName,
         from: activeElementIndex,
@@ -571,7 +562,7 @@ class Carousel {
   static dataApiClickHandler(event) {
     const target = getElementFromSelector(this)
 
-    if (!target || !target.classList.contains(ClassName.CAROUSEL)) {
+    if (!target || !target.classList.contains(CLASS_NAME_CAROUSEL)) {
       return
     }
 
@@ -606,10 +597,11 @@ class Carousel {
  */
 
 EventHandler
-  .on(document, Event.CLICK_DATA_API, Selector.DATA_SLIDE, Carousel.dataApiClickHandler)
+  .on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_SLIDE, Carousel.dataApiClickHandler)
 
-EventHandler.on(window, Event.LOAD_DATA_API, () => {
-  const carousels = makeArray(SelectorEngine.find(Selector.DATA_RIDE))
+EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
+  const carousels = SelectorEngine.find(SELECTOR_DATA_RIDE)
+
   for (let i = 0, len = carousels.length; i < len; i++) {
     Carousel.carouselInterface(carousels[i], Data.getData(carousels[i], DATA_KEY))
   }

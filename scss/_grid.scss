@@ -12,40 +12,6 @@
   }
 }
 
-// Gutters
-//
-// Make use of `.g-*`, `.gx-*` or `.gy-*` utilities to change spacing between the columns.
-
-@if $enable-grid-classes {
-  @each $breakpoint in map-keys($grid-breakpoints) {
-    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
-
-    @include media-breakpoint-up($breakpoint, $grid-breakpoints) {
-
-      @each $key, $value in $gutters {
-        .g#{$infix}-#{$key},
-        .gx#{$infix}-#{$key} {
-          margin-right: -$value / 2;
-          margin-left: -$value / 2;
-
-          > * {
-            padding-right: $value / 2;
-            padding-left: $value / 2;
-          }
-        }
-
-        .g#{$infix}-#{$key},
-        .gy#{$infix}-#{$key} {
-          margin-top: -$value;
-
-          > * {
-            margin-top: $value;
-          }
-        }
-      }
-    }
-  }
-}
 
 // Columns
 //

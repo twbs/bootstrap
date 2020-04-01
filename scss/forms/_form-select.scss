@@ -37,7 +37,7 @@
       // For visual consistency with other platforms/browsers,
       // suppress the default white text on blue background highlight given to
       // the selected option text when the (still closed) <select> receives focus
-      // in IE and (under certain conditions) Edge.
+      // in Edge.
       // See https://github.com/twbs/bootstrap/issues/19398.
       color: $input-color;
       background-color: $input-bg;
@@ -55,11 +55,6 @@
     color: $form-select-disabled-color;
     background-color: $form-select-disabled-bg;
     border-color: $form-select-disabled-border-color;
-  }
-
-  // Hides the default caret in IE11
-  &::-ms-expand {
-    display: none;
   }
 
   // Remove outline from select box in FF

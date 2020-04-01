@@ -149,8 +149,6 @@
 .btn-group-toggle {
   > .btn,
   > .btn-group > .btn {
-    margin-bottom: 0; // Override default `<label>` value
-
     input[type="radio"],
     input[type="checkbox"] {
       position: absolute;

@@ -463,7 +463,7 @@ In addition to styling the content within cards, Bootstrap includes a few option
 
 ### Card groups
 
-Use card groups to render cards as a single, attached element with equal width and height columns. Card groups use `display: flex;` to achieve their uniform sizing.
+Use card groups to render cards as a single, attached element with equal width and height columns. Card groups start off stacked and use `display: flex;` to become attached with uniform dimensions starting at the `sm` breakpoint.
 
 {{< example >}}
 <div class="card-group">

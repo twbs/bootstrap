@@ -1,8 +1,8 @@
-<nav class="collapse bd-links" id="bd-docs-nav" aria-label="Main navigation">
+<nav class="collapse bd-links" id="bd-docs-nav" aria-label="Docs navigation">
   {{- $url := split .Permalink "/" -}}
   {{- $page_slug := index $url (sub (len $url) 2) -}}
 
-  <ul class="list-unstyled">
+  <ul class="list-unstyled mb-0">
   {{- range $group := .Site.Data.sidebar -}}
     {{- $link := $group.title -}}
     {{- $link_slug := $link | urlize -}}
@@ -15,17 +15,17 @@
     {{- $group_slug := $group.title | urlize -}}
     {{- $active_group := eq $.Page.Params.group $group_slug }}
 
-    <li class="bd-sidenav-group my-1{{ if $active_group }} active{{ end }} js-sidenav-group{{ if $group.pages }} has-children{{ end }}">
-      <a class="d-inline-flex align-items-center bd-sidenav-group-link" href="/docs/{{ $.Site.Params.docs_version }}/{{ $group_slug }}/{{ if $group.pages }}{{ $link_slug }}/{{ end }}"{{ if $active_group }} aria-current="true"{{ end }}>
+    <li class="my-1{{ if $active_group }} active{{ end }}">
+      <a class="{{ if not $active_group }} collapsed{{ end }}" data-toggle="collapse" href="#{{ $group_slug }}-collapse" role="button" aria-expanded="{{ $active_group }}"{{ if $active_group }} aria-current="true"{{ end }}>
         {{ $group.title }}
       </a>
 
       {{- if $group.pages }}
-      <ul class="nav bd-sidenav flex-column mb-2">
+      <ul class="list-unstyled mb-2 collapse{{ if $active_group }} show{{ end }}" id="{{ $group_slug }}-collapse">
         {{- range $doc := $group.pages -}}
           {{- $doc_slug := $doc.title | urlize }}
-          <li{{ if and $active_group (eq $page_slug $doc_slug) }} class="active bd-sidenav-active"{{ end }}>
-            <a href="/docs/{{ $.Site.Params.docs_version }}/{{ $group_slug }}/{{ $doc_slug }}/"{{ if and $active_group (eq $page_slug $doc_slug) }} aria-current="page"{{ end }}>
+          <li>
+            <a href="/docs/{{ $.Site.Params.docs_version }}/{{ $group_slug }}/{{ $doc_slug }}/"{{ if and $active_group (eq $page_slug $doc_slug) }} class="active" aria-current="page"{{ end }}>
               {{- $doc.title -}}
             </a>
           </li>
@@ -36,8 +36,8 @@
   {{- end }}
 
     <li class="my-3 mx-4 border-top"></li>
-    <li class="bd-sidenav-group pl-3">
-      <a class="d-inline-flex align-items-center bd-sidenav-group-link" href="/docs/{{ $.Site.Params.docs_version }}/migration/">
+    <li{{ if eq $page_slug "migration" }} class="active"{{ end }}>
+      <a href="/docs/{{ $.Site.Params.docs_version }}/migration/">
         Migration
       </a>
     </li>

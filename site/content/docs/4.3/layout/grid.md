@@ -45,6 +45,7 @@ Breaking it down, here's how it works:
 - The horizontal gutter width can be changed with `.gx-*` classes like `.gx-2` (smaller horizontal gutters) or `.gx-xl-4` (larger horizontal gutters on viewports larger than the `xl` breakpoint).
 - The vertical gutter width can be changed with `.gy-*` classes like `.gy-2` (smaller vertical gutters) or `.gy-xl-4` (larger vertical gutters on viewports larger than the `xl` breakpoint). To achieve vertical gutters, additional margin is added to the top of each column. The `.row` counteracts this margin to the top with a negative margin.
 - The gutter width in both directions can be changed with `.g-*` classes like `.g-2` (smaller gutters) or `.g-xl-4` (larger gutters on viewports larger than the `xl` breakpoint)
+- CSS custom properties (`--grid-gutter-x` and `--grid-gutter-y`) are used to calculate the gutter widths.
 
 Be aware of the limitations and [bugs around flexbox](https://github.com/philipwalton/flexbugs), like the [inability to use some HTML elements as flex containers](https://github.com/philipwalton/flexbugs#flexbug-9).
 
@@ -57,24 +58,24 @@ See how aspects of the Bootstrap grid system work across multiple devices with a
 <table class="table">
   <thead>
     <tr>
-      <th></th>
-      <th>
+      <th scope="col"></th>
+      <th scope="col">
         Extra small<br>
         <span class="font-weight-normal">&lt;576px</span>
       </th>
-      <th>
+      <th scope="col">
         Small<br>
         <span class="font-weight-normal">&ge;576px</span>
       </th>
-      <th>
+      <th scope="col">
         Medium<br>
         <span class="font-weight-normal">&ge;768px</span>
       </th>
-      <th>
+      <th scope="col">
         Large<br>
         <span class="font-weight-normal">&ge;992px</span>
       </th>
-      <th>
+      <th scope="col">
         Extra large<br>
         <span class="font-weight-normal">&ge;1200px</span>
       </th>
@@ -520,7 +521,7 @@ In practice, here's how it looks. Note you can continue to use this with all oth
 
 ## Alignment
 
-Use flexbox alignment utilities to vertically and horizontally align columns. **Internet Explorer 10-11 do not support vertical alignment of flex items when the flex container has a `min-height` as shown below.** [See Flexbugs #3 for more details.](https://github.com/philipwalton/flexbugs#flexbug-3)
+Use flexbox alignment utilities to vertically and horizontally align columns.
 
 ### Vertical alignment
 

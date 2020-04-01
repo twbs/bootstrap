@@ -46,7 +46,6 @@
   position: relative;
   display: block;
   padding: $list-group-item-padding-y $list-group-item-padding-x;
-  margin-bottom: 0; // for <label> variations
   color: $list-group-color;
   text-decoration: if($link-decoration == none, null, none);
   background-color: $list-group-bg;
@@ -157,5 +156,5 @@
 // Organizationally, this must come after the `:hover` states.
 
 @each $color, $value in $theme-colors {
-  @include list-group-item-variant($color, color-level($value, -9), color-level($value, 6));
+  @include list-group-item-variant($color, color-level($value, $list-group-item-bg-level), color-level($value, $list-group-item-color-level));
 }
