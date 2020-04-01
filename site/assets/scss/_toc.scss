@@ -1,17 +1,37 @@
 // stylelint-disable selector-max-type, selector-max-compound-selectors
 
-.bd-toc nav {
-  padding-top: .125em;
-  padding-bottom: .125em;
-  border-left: .25em solid $gray-200;
+.bd-toc-wrap {
+  @include media-breakpoint-up(lg) {
+    @supports (position: sticky) {
+      position: sticky;
+      top: 5rem;
+      right: 0;
+      z-index: 2;
+      height: subtract(100vh, 7rem);
+      overflow-y: auto;
+    }
+  }
+}
 
-  > ul {
-    margin-bottom: 0;
+.bd-toc nav {
+  @include font-size(.875rem);
+
+  ul {
+    padding-left: 0;
+    list-style: none;
+
+    ul {
+      padding-left: 1rem;
+      margin-top: .25rem;
+    }
   }
 
-  li ul li {
+  li {
     margin-bottom: .25rem;
-    list-style-type: disc;
+  }
+
+  a {
+    color: inherit;
   }
 
   a:not(:hover) {
