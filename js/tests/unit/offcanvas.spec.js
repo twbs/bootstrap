@@ -47,7 +47,7 @@ describe('OffCanvas', () => {
       const offCanvasEl = fixtureEl.querySelector('.offcanvas')
       const offCanvas = new OffCanvas(offCanvasEl)
       const keyDownEsc = createEvent('keydown')
-      keyDownEsc.which = 27
+      keyDownEsc.key = 'Escape'
 
       spyOn(offCanvas, 'hide')
 
@@ -61,12 +61,12 @@ describe('OffCanvas', () => {
 
       const offCanvasEl = fixtureEl.querySelector('.offcanvas')
       const offCanvas = new OffCanvas(offCanvasEl)
-      const keyDownEsc = createEvent('keydown')
-      keyDownEsc.which = 9
+      const keydownTab = createEvent('keydown')
+      keydownTab.key = 'Tab'
 
       spyOn(offCanvas, 'hide')
 
-      document.dispatchEvent(keyDownEsc)
+      document.dispatchEvent(keydownTab)
 
       expect(offCanvas.hide).not.toHaveBeenCalled()
     })

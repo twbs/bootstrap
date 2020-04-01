@@ -21,31 +21,25 @@ const VERSION = '5.0.0-alpha1'
 const DATA_KEY = 'bs.offcanvas'
 const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
-const ESCAPE_KEYCODE = 27 // ESC
+const ESCAPE_KEY = 'Escape'
 const DATA_BODY_ACTIONS = 'data-body'
 
-const Selector = {
-  DATA_DISMISS: '[data-dismiss="offcanvas"]',
-  DATA_TOGGLE: '[data-toggle="offcanvas"]'
-}
+const SELECTOR_DATA_DISMISS = '[data-dismiss="offcanvas"]'
+const SELECTOR_DATA_TOGGLE = '[data-toggle="offcanvas"]'
 
-const Event = {
-  SHOW: `show${EVENT_KEY}`,
-  SHOWN: `shown${EVENT_KEY}`,
-  HIDE: `hide${EVENT_KEY}`,
-  HIDDEN: `hidden${EVENT_KEY}`,
-  CLICK_DATA_API: `click${EVENT_KEY}${DATA_API_KEY}`,
-  CLICK_DISMISS: `click.dismiss${EVENT_KEY}`
-}
+const EVENT_SHOW = `show${EVENT_KEY}`
+const EVENT_SHOWN = `shown${EVENT_KEY}`
+const EVENT_HIDE = `hide${EVENT_KEY}`
+const EVENT_HIDDEN = `hidden${EVENT_KEY}`
+const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
+const EVENT_CLICK_DISMISS = `click.dismiss${EVENT_KEY}`
 
-const ClassName = {
-  BACKDROP_BODY: 'offcanvas-backdrop',
-  DISABLED: 'disabled',
-  OPEN: 'offcanvas-open',
-  TOGGLING: 'offcanvas-toggling',
-  SHOW: 'show',
-  STOP_OVERFLOW: 'offcanvas-freeze'
-}
+const CLASS_NAME_BACKDROP_BODY = 'offcanvas-backdrop'
+const CLASS_NAME_DISABLED = 'disabled'
+const CLASS_NAME_OPEN = 'offcanvas-open'
+const CLASS_NAME_TOGGLING = 'offcanvas-toggling'
+const CLASS_NAME_SHOW = 'show'
+const CLASS_NAME_STOP_OVERFLOW = 'offcanvas-freeze'
 
 /**
  * ------------------------------------------------------------------------
@@ -56,7 +50,7 @@ const ClassName = {
 class OffCanvas {
   constructor(element) {
     this._element = element
-    this._isShown = element.classList.contains(ClassName.SHOW)
+    this._isShown = element.classList.contains(CLASS_NAME_SHOW)
     this._bodyOptions = element.getAttribute(DATA_BODY_ACTIONS)
 
     this._handleClosing()
@@ -80,34 +74,34 @@ class OffCanvas {
       return
     }
 
-    const showEvent = EventHandler.trigger(this._element, Event.SHOW, { relatedTarget })
+    const showEvent = EventHandler.trigger(this._element, EVENT_SHOW, { relatedTarget })
 
     if (showEvent.defaultPrevented) {
       return
     }
 
     this._isShown = true
-    document.body.classList.add(ClassName.TOGGLING)
+    document.body.classList.add(CLASS_NAME_TOGGLING)
 
     if (this._bodyOptions === 'backdrop') {
-      document.body.classList.add(ClassName.BACKDROP_BODY)
+      document.body.classList.add(CLASS_NAME_BACKDROP_BODY)
     }
 
     if (this._bodyOptions !== 'scroll') {
-      document.body.classList.add(ClassName.STOP_OVERFLOW)
+      document.body.classList.add(CLASS_NAME_STOP_OVERFLOW)
     }
 
     this._element.removeAttribute('aria-hidden')
-    this._element.classList.add(ClassName.SHOW)
+    this._element.classList.add(CLASS_NAME_SHOW)
 
     setTimeout(() => {
       this._element.setAttribute('aria-expanded', true)
       this._element.setAttribute('aria-offcanvas', true)
 
-      document.body.classList.add(ClassName.OPEN)
-      document.body.classList.remove(ClassName.TOGGLING)
+      document.body.classList.add(CLASS_NAME_OPEN)
+      document.body.classList.remove(CLASS_NAME_TOGGLING)
       this._enforceFocus()
-      EventHandler.trigger(this._element, Event.SHOWN, { relatedTarget })
+      EventHandler.trigger(this._element, EVENT_SHOWN, { relatedTarget })
     }, getTransitionDurationFromElement(this._element))
   }
 
@@ -116,7 +110,7 @@ class OffCanvas {
       return
     }
 
-    const hideEvent = EventHandler.trigger(this._element, Event.HIDE, { relatedTarget })
+    const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE, { relatedTarget })
 
     if (hideEvent.defaultPrevented) {
       return
@@ -124,29 +118,29 @@ class OffCanvas {
 
     this._isShown = false
 
-    if (!document.body.classList.contains(ClassName.TOGGLING)) {
-      document.body.classList.remove(ClassName.OPEN)
+    if (!document.body.classList.contains(CLASS_NAME_TOGGLING)) {
+      document.body.classList.remove(CLASS_NAME_OPEN)
     }
 
     if (this._bodyOptions === 'backdrop') {
-      document.body.classList.remove(ClassName.BACKDROP_BODY)
+      document.body.classList.remove(CLASS_NAME_BACKDROP_BODY)
     }
 
     if (this._bodyOptions !== 'scroll') {
-      document.body.classList.remove(ClassName.STOP_OVERFLOW)
+      document.body.classList.remove(CLASS_NAME_STOP_OVERFLOW)
     }
 
-    document.body.classList.add(ClassName.TOGGLING)
-    this._element.classList.remove(ClassName.SHOW)
+    document.body.classList.add(CLASS_NAME_TOGGLING)
+    this._element.classList.remove(CLASS_NAME_SHOW)
     this._element.blur()
 
     setTimeout(() => {
-      document.body.classList.remove(ClassName.TOGGLING)
+      document.body.classList.remove(CLASS_NAME_TOGGLING)
       this._element.setAttribute('aria-hidden', true)
       this._element.setAttribute('aria-expanded', false)
       this._element.removeAttribute('aria-offcanvas')
 
-      EventHandler.trigger(this._element, Event.HIDDEN, { relatedTarget })
+      EventHandler.trigger(this._element, EVENT_HIDDEN, { relatedTarget })
     }, getTransitionDurationFromElement(this._element))
   }
 
@@ -158,15 +152,15 @@ class OffCanvas {
   }
 
   _handleClosing() {
-    EventHandler.on(this._element, Event.CLICK_DISMISS, Selector.DATA_DISMISS, event => this.hide(event))
+    EventHandler.on(this._element, EVENT_CLICK_DISMISS, SELECTOR_DATA_DISMISS, event => this.hide(event))
 
     EventHandler.on(document, 'keydown', event => {
-      if (event.which === ESCAPE_KEYCODE) {
+      if (event.key === ESCAPE_KEY) {
         this.hide(event.target)
       }
     })
 
-    EventHandler.on(document, Event.CLICK_DATA_API, event => {
+    EventHandler.on(document, EVENT_CLICK_DATA_API, event => {
       const target = SelectorEngine.findOne(getSelectorFromElement(event.target))
       if (!this._element.contains(event.target) && target !== this._element) {
         this.hide(event.target)
@@ -201,12 +195,12 @@ class OffCanvas {
  * ------------------------------------------------------------------------
  */
 
-EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
+EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
   if (['A', 'AREA'].indexOf(this.tagName) > -1) {
     event.preventDefault()
   }
 
-  if (this.disabled || this.classList.contains(ClassName.DISABLED)) {
+  if (this.disabled || this.classList.contains(CLASS_NAME_DISABLED)) {
     return
   }
 
