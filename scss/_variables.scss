@@ -408,14 +408,7 @@ $display2-size:               5.5rem !default;
 $display3-size:               4.5rem !default;
 $display4-size:               3.5rem !default;
 
-$display1-weight:             300 !default;
-$display2-weight:             300 !default;
-$display3-weight:             300 !default;
-$display4-weight:             300 !default;
-$display-line-height:         $headings-line-height !default;
-
 $lead-font-size:              $font-size-base * 1.25 !default;
-$lead-font-weight:            300 !default;
 
 $small-font-size:             .875em !default;
 
@@ -425,7 +418,6 @@ $text-muted:                  $gray-600 !default;
 
 $initialism-font-size:        $small-font-size !default;
 
-$blockquote-small-color:      $gray-600 !default;
 $blockquote-small-font-size:  $small-font-size !default;
 $blockquote-font-size:        $font-size-base * 1.25 !default;
 
@@ -443,8 +435,6 @@ $mark-padding:                .2em !default;
 $dt-font-weight:              $font-weight-bold !default;
 
 $nested-kbd-font-weight:      $font-weight-bold !default;
-
-$list-inline-padding:         .5rem !default;
 
 $mark-bg:                     #fcf8e3 !default;
 

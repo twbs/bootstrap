@@ -1,4 +1,16 @@
 :root {
+  --b-gray-600: #6c757d;
+  --b-headings-line-height: 1.2;
+  --b-display1-weight: 300;
+  --b-display2-weight: 300;
+  --b-display3-weight: 300;
+  --b-display4-weight: 300;
+  --b-display-line-height: var(--b-headings-line-height);
+  --b-lead-font-weight: 300;
+  --b-list-inline-padding: .5rem;
+  --b-blockquote-small-color: var(--b-gray-600);
+  --b-spacer: 1rem;
+
   // Custom variable values only support SassScript inside `#{}`.
   @each $color, $value in $colors {
     --#{$color}: #{$value};
