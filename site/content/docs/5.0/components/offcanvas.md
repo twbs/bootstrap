@@ -22,14 +22,13 @@ Click the buttons below to show and hide an offcanvas element via class changes:
 You can use a link with the `href` attribute, or a button with the `data-target` attribute. In both cases, the `data-toggle="offcanvas"` is required.
 
 {{< example >}}
-<p>
-  <a class="btn btn-primary" data-toggle="offcanvas" href="#offcanvasExample" role="button" aria-expanded="false" aria-controls="offcanvasExample">
-    Link with href
-  </a>
-  <button class="btn btn-primary" type="button" data-toggle="offcanvas" data-target="#offcanvasExample" aria-expanded="false" aria-controls="offcanvasExample">
-    Button with data-target
-  </button>
-</p>
+<a class="btn btn-primary" data-toggle="offcanvas" href="#offcanvasExample" role="button" aria-expanded="false" aria-controls="offcanvasExample">
+  Link with href
+</a>
+<button class="btn btn-primary" type="button" data-toggle="offcanvas" data-target="#offcanvasExample" aria-expanded="false" aria-controls="offcanvasExample">
+  Button with data-target
+</button>
+
 <div class="offcanvas bg-dark text-white" tabindex="-1" id="offcanvasExample">
   <div class="offcanvas-header">
     <div>Offcanvas</div>
@@ -80,10 +79,10 @@ Change the placement of an offcanvas element with modifier classes:
 - `.offcanvas-bottom` places offcanvas on the bottom of the viewport
 
 {{< example >}}
-<p>
-  <button class="btn btn-primary" type="button" data-toggle="offcanvas" data-target="#offcanvasExample2" aria-expanded="false" aria-controls="offcanvasExample2">Toggle right offcanvas</button>
-  <button class="btn btn-primary" type="button" data-toggle="offcanvas" data-target="#offcanvasExample3" aria-expanded="false" aria-controls="offcanvasExample3">Toggle bottom offcanvas</button>
-</p>
+
+<button class="btn btn-primary" type="button" data-toggle="offcanvas" data-target="#offcanvasExample2" aria-expanded="false" aria-controls="offcanvasExample2">Toggle right offcanvas</button>
+<button class="btn btn-primary" type="button" data-toggle="offcanvas" data-target="#offcanvasExample3" aria-expanded="false" aria-controls="offcanvasExample3">Toggle bottom offcanvas</button>
+
 <div class="offcanvas bg-dark text-white offcanvas-right" tabindex="-1" id="offcanvasExample2">
   <div class="offcanvas-header">
     <div>Offcanvas right</div>
@@ -107,9 +106,8 @@ Change the placement of an offcanvas element with modifier classes:
 Easily style an offcanvas element with a different `background-color` or `color` with our [color utilities]({{< docsref "/utilities/colors" >}}).
 
 {{< example >}}
-<p>
-  <button class="btn btn-primary" type="button" data-toggle="offcanvas" data-target="#offcanvasColored" aria-expanded="false" aria-controls="offcanvasColored">Colored offcanvas</button>
-</p>
+<button class="btn btn-primary" type="button" data-toggle="offcanvas" data-target="#offcanvasColored" aria-expanded="false" aria-controls="offcanvasColored">Colored offcanvas</button>
+
 <div class="offcanvas bg-primary text-white" data-body="scroll" tabindex="-1" id="offcanvasColored">
   <div class="offcanvas-header">
     Colored offcanvas
@@ -126,10 +124,9 @@ By default, when an offcanvas is visible, the `<body>` of your page cannot be sc
 - `data-body="backdrop"` disables scrolling and creates a backdrop over the `<body>` when offcanvas is open
 
 {{< example >}}
-<p>
-  <button class="btn btn-primary" type="button" data-toggle="offcanvas" data-target="#offcanvasExample4" aria-expanded="false" aria-controls="offcanvasExample4">Enable body scrolling </button>
-  <button class="btn btn-primary" type="button" data-toggle="offcanvas" data-target="#offcanvasExample5" aria-expanded="false" aria-controls="offcanvasExample5">Body backdrop</button>
-</p>
+<button class="btn btn-primary" type="button" data-toggle="offcanvas" data-target="#offcanvasExample4" aria-expanded="false" aria-controls="offcanvasExample4">Enable body scrolling </button>
+<button class="btn btn-primary" type="button" data-toggle="offcanvas" data-target="#offcanvasExample5" aria-expanded="false" aria-controls="offcanvasExample5">Body backdrop</button>
+
 <div class="offcanvas bg-dark text-white" data-body="scroll" tabindex="-1" id="offcanvasExample4">
   <div class="offcanvas-header">
     Offcanvas with scrolling
@@ -137,7 +134,6 @@ By default, when an offcanvas is visible, the `<body>` of your page cannot be sc
   <div class="offcanvas-body">
     <p>Try scrolling the rest of the page to see this option in action.</p>
   </div>
-
 </div>
 <div class="offcanvas bg-dark text-white" data-body="backdrop" tabindex="-1" id="offcanvasExample5">
   <div class="offcanvas-header">
