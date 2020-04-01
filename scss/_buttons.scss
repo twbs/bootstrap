@@ -93,7 +93,6 @@ fieldset:disabled a.btn {
   &:focus,
   &.focus {
     text-decoration: $link-hover-decoration;
-    box-shadow: none;
   }
 
   &:disabled,
