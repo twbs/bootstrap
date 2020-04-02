@@ -1,0 +1,25 @@
+{{- /*
+  Usage: `scss-docs name="name" file="file/_location.scss"`
+
+    Prints everything between `// scss-docs-start "name"` and `// scss-docs-end "name"`
+    comments in the docs.
+*/ -}}
+
+{{- $name := .Get "name" -}}
+{{- $start := print "// scss-docs-start " $name "\n" -}}
+{{- $end := print "\n// scss-docs-end " $name -}}
+{{- $regex := print $start "(.|\n)*" $end -}}
+
+{{- $file := .Get "file" -}}
+
+{{- $css := readFile $file -}}
+{{- $match := findRE $regex $css 1 -}}
+
+{{- if (eq (len $match) 0) -}}
+{{- errorf "Got no matches for %q in %q! (called in %q)" $name $file $.Page.Path -}}
+{{- end -}}
+
+{{- $remove_start := replace (index $match 0) $start "" -}}
+{{- $result := replace $remove_start $end "" -}}
+
+{{- highlight $result "scss" "" -}}
