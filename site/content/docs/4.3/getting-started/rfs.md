@@ -61,7 +61,7 @@ When you don't want to use the includes, there are also two functions:
 - `rfs-value()` converts a value into a `rem` value if a `px` value is passed, in other cases it returns the same result.
 - `rfs-fluid-value()` returns the fluid version of a value if the property needs rescaling.
 
-In this example, we use one of Bootstrap's built-in [responsive breakpoint mixins]({{< docsref "/layout/overview#responsive-breakpoints" >}}) to only apply styling below the `lg` breakpoint.
+In this example, we use one of Bootstrap's built-in [responsive breakpoint mixins]({{< docsref "/layout/breakpoints" >}}) to only apply styling below the `lg` breakpoint.
 
 ```scss
 .selector {
