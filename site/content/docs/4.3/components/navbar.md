@@ -68,7 +68,7 @@ Here's an example of all the sub-components included in a responsive light-theme
       </ul>
       <form class="d-flex">
         <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <button class="btn btn-outline btn-success" type="submit">Search</button>
       </form>
     </div>
   </div>
@@ -223,7 +223,7 @@ Place various form controls and components within a navbar:
   <div class="container-fluid">
     <form class="d-flex">
       <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success" type="submit">Search</button>
+      <button class="btn btn-outline btn-success" type="submit">Search</button>
     </form>
   </div>
 </nav>
@@ -237,7 +237,7 @@ Immediate children elements in `.navbar` use flex layout and will default to `ju
     <a class="navbar-brand">Navbar</a>
     <form class="d-flex">
       <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success" type="submit">Search</button>
+      <button class="btn btn-outline btn-success" type="submit">Search</button>
     </form>
   </div>
 </nav>
@@ -261,8 +261,8 @@ Various buttons are supported as part of these navbar forms, too. This is also a
 {{< example >}}
 <nav class="navbar navbar-light bg-light">
   <form class="container-fluid justify-content-start">
-    <button class="btn btn-outline-success mr-2" type="button">Main button</button>
-    <button class="btn btn-sm btn-outline-secondary" type="button">Smaller button</button>
+    <button class="btn btn-outline btn-success mr-2" type="button">Main button</button>
+    <button class="btn btn-sm btn-outline btn-secondary" type="button">Smaller button</button>
   </form>
 </nav>
 {{< /example >}}
@@ -338,7 +338,7 @@ Theming the navbar has never been easier thanks to the combination of theming cl
         </ul>
         <form class="d-flex">
           <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-info" type="submit">Search</button>
+          <button class="btn btn-outline btn-info" type="submit">Search</button>
         </form>
       </div>
     </div>
@@ -367,7 +367,7 @@ Theming the navbar has never been easier thanks to the combination of theming cl
         </ul>
         <form class="d-flex">
           <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-light" type="submit">Search</button>
+          <button class="btn btn-outline btn-light" type="submit">Search</button>
         </form>
       </div>
     </div>
@@ -396,7 +396,7 @@ Theming the navbar has never been easier thanks to the combination of theming cl
         </ul>
         <form class="d-flex">
           <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-primary" type="submit">Search</button>
+          <button class="btn btn-outline btn-primary" type="submit">Search</button>
         </form>
       </div>
     </div>
@@ -512,7 +512,7 @@ With no `.navbar-brand` shown in lowest breakpoint:
       </ul>
       <form class="d-flex">
         <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <button class="btn btn-outline btn-success" type="submit">Search</button>
       </form>
     </div>
   </div>
@@ -542,7 +542,7 @@ With a brand name shown on the left and toggler on the right:
       </ul>
       <form class="d-flex">
         <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <button class="btn btn-outline btn-success" type="submit">Search</button>
       </form>
     </div>
   </div>
@@ -572,7 +572,7 @@ With a toggler on the left and brand name on the right:
       </ul>
       <form class="d-flex">
         <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <button class="btn btn-outline btn-success" type="submit">Search</button>
       </form>
     </div>
   </div>
