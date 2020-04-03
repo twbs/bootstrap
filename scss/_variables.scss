@@ -369,7 +369,7 @@ $embed-responsive-aspect-ratios: (
 // stylelint-disable value-keyword-case
 $font-family-sans-serif:      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
 $font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
-$font-family-base:            $font-family-sans-serif !default;
+$font-family-base:            var(--font-family-sans-serif) !default;
 // stylelint-enable value-keyword-case
 
 // $font-size-root effects the value of `rem`, which is used for as well font sizes, paddings and margins
