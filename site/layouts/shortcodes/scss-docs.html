@@ -3,6 +3,9 @@
 
     Prints everything between `// scss-docs-start "name"` and `// scss-docs-end "name"`
     comments in the docs.
+
+    Optional parameters:
+    strip-default: Remove the ` !default` flag from variable assignments - default: `true`
 */ -}}
 
 {{- $name := .Get "name" -}}
@@ -16,10 +19,14 @@
 {{- $match := findRE $regex $css 1 -}}
 
 {{- if (eq (len $match) 0) -}}
-{{- errorf "Got no matches for %q in %q! (called in %q)" $name $file $.Page.Path -}}
+  {{- errorf "Got no matches for %q in %q! (called in %q)" $name $file $.Page.Path -}}
 {{- end -}}
 
 {{- $remove_start := replace (index $match 0) $start "" -}}
 {{- $result := replace $remove_start $end "" -}}
+
+{{- if ne (.Get "strip-default" | default true) "false" -}}
+  {{- $result = replace $result " !default" "" -}}
+{{- end -}}
 
 {{- highlight $result "scss" "" -}}
