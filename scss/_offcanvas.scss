@@ -1,19 +1,15 @@
 .offcanvas {
   position: fixed;
-  top: 0;
   bottom: 0;
-  left: 0;
   z-index: $zindex-offcanvas;
   display: flex;
   flex-direction: column;
-  width: $offcanvas-horizontal-width-mobile;
   max-width: 100%;
   color: $offcanvas-color;
   background-color: $offcanvas-bg-color;
-  border: $offcanvas-border-width solid $offcanvas-border-color;
-  outline: 0;
+  // By using an outline, the "border" is always on the correct side
+  outline: $offcanvas-border-width solid $offcanvas-border-color;
   @include transition(transform $offcanvas-transition-duration ease-in-out);
-  transform: translateX(-100%);
 }
 
 .offcanvas-header {
@@ -26,51 +22,46 @@
     margin: (-$offcanvas-padding-y * 2) (-$offcanvas-padding-x) (-$offcanvas-padding-y) auto;
   }
 }
+
 .offcanvas-body {
-  padding: 0 $offcanvas-padding-x;
-  margin: $offcanvas-padding-y 0;
+  padding: $offcanvas-padding-y $offcanvas-padding-x;
   overflow-y: auto;
 }
 
+.offcanvas-left {
+  top: 0;
+  left: 0;
+  width: $offcanvas-width;
+  transform: translateX(-100%);
+}
+
 .offcanvas-right {
+  top: 0;
   right: 0;
-  left: auto;
+  width: $offcanvas-width;
   transform: translateX(100%);
 }
 
 .offcanvas-bottom {
-  top: auto;
   right: 0;
-  width: 100%;
-  max-height: $offcanvas-vertical-max-height-mobile;
+  left: 0;
+  max-height: 100%;
   transform: translateY(100%);
-}
-
-@include media-breakpoint-up($offcanvas-mobile-breakpoint) {
-  .offcanvas:not(.offcanvas-bottom) {
-    width: $offcanvas-horizontal-width;
-  }
-
-  .offcanvas-bottom {
-    max-height: $offcanvas-vertical-max-height;
-  }
 }
 
 .offcanvas.show {
   transform: none;
 }
 
-.offcanvas-freeze,
-.offcanvas-backdrop {
-  // stylelint-disable-next-line declaration-no-important
-  overflow: hidden !important;
+.offcanvas-freeze {
+  overflow: hidden;
 }
 
 .offcanvas-backdrop::before {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: #{$zindex-offcanvas - 1};
+  z-index: $zindex-offcanvas - 1;
   width: 100vw;
   height: 100vh;
   content: "";

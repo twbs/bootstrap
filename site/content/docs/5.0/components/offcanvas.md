@@ -29,7 +29,7 @@ You can use a link with the `href` attribute, or a button with the `data-target`
   Button with data-target
 </button>
 
-<div class="offcanvas bg-dark text-white" tabindex="-1" id="offcanvasExample">
+<div class="offcanvas offcanvas-left" tabindex="-1" id="offcanvasExample">
   <div class="offcanvas-header">
     <div>Offcanvas</div>
     <button type="button" class="close text-reset" data-dismiss="offcanvas" aria-label="Close">
@@ -83,7 +83,7 @@ Change the placement of an offcanvas element with modifier classes:
 <button class="btn btn-primary" type="button" data-toggle="offcanvas" data-target="#offcanvasExample2" aria-expanded="false" aria-controls="offcanvasExample2">Toggle right offcanvas</button>
 <button class="btn btn-primary" type="button" data-toggle="offcanvas" data-target="#offcanvasExample3" aria-expanded="false" aria-controls="offcanvasExample3">Toggle bottom offcanvas</button>
 
-<div class="offcanvas bg-dark text-white offcanvas-right" tabindex="-1" id="offcanvasExample2">
+<div class="offcanvas offcanvas-right" tabindex="-1" id="offcanvasExample2">
   <div class="offcanvas-header">
     <div>Offcanvas right</div>
     <button type="button" class="close text-reset" data-dismiss="offcanvas" aria-label="Close">
@@ -91,7 +91,7 @@ Change the placement of an offcanvas element with modifier classes:
     </button>
   </div>
 </div>
-<div class="offcanvas bg-dark text-white offcanvas-bottom" tabindex="-1" id="offcanvasExample3">
+<div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasExample3">
   <div class="offcanvas-header">
     <div>Offcanvas bottom</div>
     <button type="button" class="close text-reset" data-dismiss="offcanvas" aria-label="Close">
@@ -108,9 +108,26 @@ Easily style an offcanvas element with a different `background-color` or `color`
 {{< example >}}
 <button class="btn btn-primary" type="button" data-toggle="offcanvas" data-target="#offcanvasColored" aria-expanded="false" aria-controls="offcanvasColored">Colored offcanvas</button>
 
-<div class="offcanvas bg-primary text-white" data-body="scroll" tabindex="-1" id="offcanvasColored">
+<div class="offcanvas offcanvas-left bg-dark text-white" data-body="scroll" tabindex="-1" id="offcanvasColored">
   <div class="offcanvas-header">
     Colored offcanvas
+    <button type="button" class="close text-reset" data-dismiss="offcanvas" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="offcanvas-body">
+    <p>
+      Maecenas sed diam eget risus varius blandit sit amet non magna. Duis mollis,
+      est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
+    </p>
+    <p>
+      Aenean lacinia bibendum nulla sed consectetur. Maecenas faucibus mollis interdum.
+      Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut
+    </p>
+    <p>
+      fermentum massa justo sit amet risus. Nullam quis risus eget urna mollis ornare
+      vel eu leo. Curabitur blandit tempus porttitor.
+    </p>
   </div>
 </div>
 
@@ -127,7 +144,7 @@ By default, when an offcanvas is visible, the `<body>` of your page cannot be sc
 <button class="btn btn-primary" type="button" data-toggle="offcanvas" data-target="#offcanvasExample4" aria-expanded="false" aria-controls="offcanvasExample4">Enable body scrolling </button>
 <button class="btn btn-primary" type="button" data-toggle="offcanvas" data-target="#offcanvasExample5" aria-expanded="false" aria-controls="offcanvasExample5">Body backdrop</button>
 
-<div class="offcanvas bg-dark text-white" data-body="scroll" tabindex="-1" id="offcanvasExample4">
+<div class="offcanvas offcanvas-left" data-body="scroll" tabindex="-1" id="offcanvasExample4">
   <div class="offcanvas-header">
     Offcanvas with scrolling
   </div>
@@ -135,7 +152,7 @@ By default, when an offcanvas is visible, the `<body>` of your page cannot be sc
     <p>Try scrolling the rest of the page to see this option in action.</p>
   </div>
 </div>
-<div class="offcanvas bg-dark text-white" data-body="backdrop" tabindex="-1" id="offcanvasExample5">
+<div class="offcanvas offcanvas-left" data-body="backdrop" tabindex="-1" id="offcanvasExample5">
   <div class="offcanvas-header">
     Offcanvas with backdrop
   </div>

@@ -1437,11 +1437,7 @@ $btn-close-white-filter:     invert(1) grayscale(100%) brightness(200%) !default
 $offcanvas-padding-y:               $modal-inner-padding !default;
 $offcanvas-padding-x:               $modal-inner-padding !default;
 
-$offcanvas-horizontal-width:        390px !default;
-$offcanvas-horizontal-width-mobile: 100% !default;
-$offcanvas-vertical-max-height:     200px !default;
-$offcanvas-vertical-max-height-mobile: 50% !default;
-$offcanvas-mobile-breakpoint:       md !default;
+$offcanvas-width:                   400px !default;
 $offcanvas-transition-duration:     .3s !default;
 
 $offcanvas-border-color:            $modal-content-border-color !default;
