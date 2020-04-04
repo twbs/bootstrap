@@ -31,7 +31,7 @@
     @include gradient-bg($hover-background);
     border-color: $hover-border;
     // Avoid using mixin so we can pass custom focus shadow properly
-    @if $enable-shadows {
+    @if $enable-shadows and $btn-box-shadow != none {
       box-shadow: $btn-box-shadow, 0 0 0 $btn-focus-width rgba(mix($color, $border, 15%), .5);
     } @else {
       box-shadow: 0 0 0 $btn-focus-width rgba(mix($color, $border, 15%), .5);
