@@ -62,11 +62,6 @@
     overflow: hidden;
   }
 
-  .modal-header,
-  .modal-footer {
-    flex-shrink: 0;
-  }
-
   .modal-body {
     overflow-y: auto;
   }
@@ -115,6 +110,7 @@
 // Top section of the modal w/ title and dismiss
 .modal-header {
   display: flex;
+  flex-shrink: 0;
   align-items: flex-start; // so the close btn always stays on the upper right corner
   justify-content: space-between; // Put modal header elements (title and dismiss) on opposite ends
   padding: $modal-header-padding;
@@ -148,6 +144,7 @@
 .modal-footer {
   display: flex;
   flex-wrap: wrap;
+  flex-shrink: 0;
   align-items: center; // vertically center
   justify-content: flex-end; // Right align buttons with flex property because text-align doesn't work on flex items
   padding: $modal-inner-padding - $modal-footer-margin-between / 2;
@@ -203,4 +200,36 @@
 
 @include media-breakpoint-up(xl) {
   .modal-xl { max-width: $modal-xl; }
+}
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  $next-breakpoint: breakpoint-next($breakpoint);
+  $postfix: if(breakpoint-max($breakpoint, $grid-breakpoints) == null, "", "-#{$next-breakpoint}-down");
+
+  @include media-breakpoint-down($breakpoint) {
+    .modal-fullscreen#{$postfix} {
+      width: 100vw;
+      max-width: none;
+      height: 100%;
+      margin: 0;
+
+      .modal-content {
+        height: 100%;
+        border: 0;
+        @include border-radius(0);
+      }
+
+      .modal-header {
+        @include border-radius(0);
+      }
+
+      .modal-body {
+        overflow-y: auto;
+      }
+
+      .modal-footer {
+        @include border-radius(0);
+      }
+    }
+  }
 }
