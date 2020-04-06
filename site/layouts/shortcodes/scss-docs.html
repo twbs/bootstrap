@@ -9,11 +9,12 @@
 */ -}}
 
 {{- $name := .Get "name" -}}
+{{- $file := .Get "file" -}}
+{{- $strip_default := .Get "strip-default" | default "true" -}}
+
 {{- $start := print "// scss-docs-start " $name "\n" -}}
 {{- $end := print "\n// scss-docs-end " $name -}}
 {{- $regex := print $start "(.|\n)*" $end -}}
-
-{{- $file := .Get "file" -}}
 
 {{- $css := readFile $file -}}
 {{- $match := findRE $regex $css 1 -}}
@@ -25,7 +26,7 @@
 {{- $remove_start := replace (index $match 0) $start "" -}}
 {{- $result := replace $remove_start $end "" -}}
 
-{{- if ne (.Get "strip-default" | default true) "false" -}}
+{{- if (ne $strip_default "false") -}}
   {{- $result = replace $result " !default" "" -}}
 {{- end -}}
 
