@@ -106,7 +106,7 @@
   "dependencies": {},
   "peerDependencies": {
     "jquery": "1.9.1 - 3",
-    "popper.js": "^1.16.0"
+    "popper.js": "^1.16.0 || 1.16.1-lts"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.3",
@@ -176,7 +176,7 @@
     "dependencies": {},
     "peerDependencies": {
       "jquery": "1.9.1 - 3",
-      "popper.js": "^1.16.0"
+      "popper.js": "^1.16.0 || 1.16.1-lts"
     }
   }
 }
