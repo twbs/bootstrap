@@ -96,7 +96,7 @@
     "@babel/preset-env": "^7.9.0",
     "@rollup/plugin-commonjs": "^11.0.2",
     "@rollup/plugin-node-resolve": "^7.1.1",
-    "autoprefixer": "^9.7.5",
+    "autoprefixer": "^9.7.6",
     "bundlesize": "^0.18.0",
     "clean-css-cli": "^4.3.0",
     "cross-env": "^7.0.2",
