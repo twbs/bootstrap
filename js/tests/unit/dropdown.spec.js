@@ -1533,6 +1533,64 @@ describe('Dropdown', () => {
         done()
       }, 20)
     })
+
+    it('should not stop key event propagation when dropdown is disabled', () => {
+      fixtureEl.innerHTML = [
+        '<div id="dropdown-container">',
+        '  <div class="dropdown">',
+        '    <button class="btn dropdown-toggle" id="toggle" data-toggle="dropdown" disabled>Dropdown</button>',
+        '    <div class="dropdown-menu">',
+        '      <a class="dropdown-item" id="item" href="#">Menu item</a>',
+        '    </div>',
+        '  </div>',
+        '</div>'
+      ]
+
+      const dropdownBtn = fixtureEl.querySelector('button[data-toggle="dropdown"]')
+      const dropDownContainer = fixtureEl.querySelector('#dropdown-container')
+      const eventHandlerSpy = jasmine.createSpy()
+
+      dropDownContainer.addEventListener('keydown', eventHandlerSpy)
+
+      const params = { bubbles: true, cancelable: false }
+      const keyDownEscape = createEvent('keydown', params)
+      keyDownEscape.which = 27
+
+      // Key escape
+      dropdownBtn.focus()
+      dropdownBtn.dispatchEvent(keyDownEscape)
+
+      expect(eventHandlerSpy).toHaveBeenCalled()
+    })
+
+    it('should not stop ESC key event propagation when dropdown is not active', () => {
+      fixtureEl.innerHTML = [
+        '<div id="dropdown-container">',
+        '  <div class="dropdown">',
+        '    <button class="btn dropdown-toggle" id="toggle" data-toggle="dropdown">Dropdown</button>',
+        '    <div class="dropdown-menu">',
+        '      <a class="dropdown-item" id="item" href="#">Menu item</a>',
+        '    </div>',
+        '  </div>',
+        '</div>'
+      ]
+
+      const dropdownBtn = fixtureEl.querySelector('button[data-toggle="dropdown"]')
+      const dropDownContainer = fixtureEl.querySelector('#dropdown-container')
+      const eventHandlerSpy = jasmine.createSpy()
+
+      dropDownContainer.addEventListener('keydown', eventHandlerSpy)
+
+      const params = { bubbles: true, cancelable: false }
+      const keyDownEscape = createEvent('keydown', params)
+      keyDownEscape.which = 27
+
+      // Key escape
+      dropdownBtn.focus()
+      dropdownBtn.dispatchEvent(keyDownEscape)
+
+      expect(eventHandlerSpy).toHaveBeenCalled()
+    })
   })
 
   describe('jQueryInterface', () => {

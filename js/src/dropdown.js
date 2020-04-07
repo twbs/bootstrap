@@ -434,30 +434,50 @@ class Dropdown {
     return getElementFromSelector(element) || element.parentNode
   }
 
+  // If not input/textarea:
+  //  - And not a key in REGEXP_KEYDOWN => not a dropdown command
+  //  - And dropdown disabled or not active and escape key => not a dropdown command
+  // If input/textarea:
+  //  - If space key => not a dropdown command
+  //  - If key is other than escape
+  //    - If key is not up or down => not a dropdown command
+  //    - If trigger inside the menu => not a dropdown command
+  static _isDropDownCommand(event, dropdownElement) {
+    const isInputOrTextArea = /input|textarea/i.test(event.target.tagName)
+    const isSpaceKeyEvent = event.which === SPACE_KEYCODE
+    const isEscapeKeyEvent = event.which === ESCAPE_KEYCODE
+    const isUpOrDownKeyEvent = event.which === ARROW_DOWN_KEYCODE || event.which === ARROW_UP_KEYCODE
+    const isTriggerInsideMenu = SelectorEngine.closest(event.target, SELECTOR_MENU)
+    const isKeyInRegexpKeydown = REGEXP_KEYDOWN.test(event.which)
+
+    const isActive = dropdownElement.classList.contains(CLASS_NAME_SHOW)
+    const isDisabled = dropdownElement.disabled || dropdownElement.classList.contains(CLASS_NAME_DISABLED)
+
+    if (isInputOrTextArea) {
+      if (isSpaceKeyEvent) {
+        return false
+      }
+
+      if (!isEscapeKeyEvent) {
+        return isUpOrDownKeyEvent && !isTriggerInsideMenu
+      }
+    } else if (isKeyInRegexpKeydown) {
+      if (isDisabled || (!isActive && isEscapeKeyEvent)) {
+        return false
+      }
+    }
+
+    return true
+  }
+
   static dataApiKeydownHandler(event) {
-    // If not input/textarea:
-    //  - And not a key in REGEXP_KEYDOWN => not a dropdown command
-    // If input/textarea:
-    //  - If space key => not a dropdown command
-    //  - If key is other than escape
-    //    - If key is not up or down => not a dropdown command
-    //    - If trigger inside the menu => not a dropdown command
-    if (/input|textarea/i.test(event.target.tagName) ?
-      event.which === SPACE_KEYCODE || (event.which !== ESCAPE_KEYCODE &&
-      ((event.which !== ARROW_DOWN_KEYCODE && event.which !== ARROW_UP_KEYCODE) ||
-        SelectorEngine.closest(event.target, SELECTOR_MENU))) :
-      !REGEXP_KEYDOWN.test(event.which)) {
+    if (!Dropdown._isDropDownCommand(event, this)) {
       return
     }
 
     event.preventDefault()
     event.stopPropagation()
 
-    if (this.disabled || this.classList.contains(CLASS_NAME_DISABLED)) {
-      return
-    }
-
-    const parent = Dropdown.getParentFromElement(this)
     const isActive = this.classList.contains(CLASS_NAME_SHOW)
 
     if (event.which === ESCAPE_KEYCODE) {
@@ -472,6 +492,7 @@ class Dropdown {
       return
     }
 
+    const parent = Dropdown.getParentFromElement(this)
     const items = SelectorEngine.find(SELECTOR_VISIBLE_ITEMS, parent)
       .filter(isVisible)
 
