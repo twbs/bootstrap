@@ -6,6 +6,37 @@
   .swatch-#{$color} {
     color: color-contrast($value);
     background-color: #{$value};
+
+    &::after {
+      $contrast-ratio: "#{contrast-ratio($value, color-contrast($value))}";
+      $against-white: "#{contrast-ratio($value, $white)}";
+      $against-black: "#{contrast-ratio($value, $black)}";
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      padding-left: 1rem;
+      font-size: .75rem;
+      line-height: 1.35;
+      white-space: pre;
+      content:
+        str-slice($contrast-ratio, 1, 4) "\A"
+        str-slice($against-white, 1, 4) "\A"
+        str-slice($against-black, 1, 4);
+      background-color: $value;
+      background-image:
+        linear-gradient(
+          to bottom,
+          transparent .25rem,
+          color-contrast($value) .25rem .75rem,
+          transparent .75rem 1.25rem,
+          $white 1.25rem 1.75rem,
+          transparent 1.75rem 2.25rem,
+          $black 2.25rem 2.75rem,
+          transparent 2.75rem
+        );
+      background-repeat: no-repeat;
+      background-size: .5rem 100%;
+    }
   }
 }
 
