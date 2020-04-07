@@ -23,6 +23,7 @@
   border: $form-check-input-border;
   appearance: none;
   color-adjust: exact; // Keep themed appearance for print
+  @include transition($form-check-transition);
 
   &[type="checkbox"] {
     @include border-radius($form-check-input-border-radius);
@@ -119,9 +120,6 @@
     background-size: $form-switch-bg-size; // Get a 1px separation
     @include border-radius($form-switch-border-radius);
     color-adjust: exact; // Keep themed appearance for print
-    // Todo: Figure out how to tackle these, with or without mixin?
-    // transition: $form-switch-transition;
-    // transition-property: $form-switch-transition-property;
 
     &:focus {
       background-image: escape-svg($form-switch-focus-bg-image);
