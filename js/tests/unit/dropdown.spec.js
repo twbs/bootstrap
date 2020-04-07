@@ -1444,11 +1444,11 @@ describe('Dropdown', () => {
 
       // Key up
       const keyDownUp = createEvent('keydown')
-      keyDownSpace.which = 38
+      keyDownUp.which = 38
 
       // Key down
       const keyDown = createEvent('keydown')
-      keyDownSpace.which = 40
+      keyDown.which = 40
 
       // Key escape
       const keyDownEscape = createEvent('keydown')
