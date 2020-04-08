@@ -8,21 +8,19 @@ aliases: "/docs/4.3/helpers/"
 
 Easily clear `float`s by adding `.clearfix` **to the parent element**. Can also be used as a mixin.
 
+Use in HTML:
+
 {{< highlight html >}}
 <div class="clearfix">...</div>
 {{< /highlight >}}
 
-{{< highlight scss >}}
-// Mixin itself
-@mixin clearfix() {
-  &::after {
-    display: block;
-    content: "";
-    clear: both;
-  }
-}
+The mixin source code:
 
-// Usage as a mixin
+{{< scss-docs name="clearfix" file="scss/mixins/_clearfix.scss" >}}
+
+Use the mixin in SCSS:
+
+{{< highlight scss >}}
 .element {
   @include clearfix;
 }

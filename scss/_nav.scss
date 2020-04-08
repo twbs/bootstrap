@@ -15,6 +15,7 @@
   display: block;
   padding: $nav-link-padding-y $nav-link-padding-x;
   text-decoration: if($link-decoration == none, null, none);
+  @include transition($nav-link-transition);
 
   &:hover,
   &:focus {
