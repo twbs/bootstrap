@@ -173,7 +173,7 @@ These mixins take those declared breakpoints, subtract `.02px` from them, and us
 // No media query since the xxl breakpoint has no upper bound on its width
 {{< /highlight >}}
 
-{{< callout info >}}
+{{< callout warning >}}
 {{< partial "callout-info-mediaqueries-breakpoints.md" >}}
 {{< /callout >}}
 
