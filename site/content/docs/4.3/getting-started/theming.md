@@ -122,7 +122,7 @@ $theme-colors: (
 To add a new color to `$theme-colors`, add the new key and value. Keep in mind not to remove the existing colors:
 
 {{< highlight scss >}}
-$my-custom-color: #ffoodd;
+$my-custom-color: #ff00dd;
 
 // Make sure to define `$primary`, `$secondary`, ect.. first
 $theme-colors: (
