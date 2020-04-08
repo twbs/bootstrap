@@ -40,3 +40,7 @@
   line-height: 1;
   color: $gray-900;
 }
+
+.bd-search-docs-toggle:focus {
+  border: 3px solid $purple-100;
+}
