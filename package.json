@@ -19,7 +19,7 @@
   ],
   "scripts": {
     "start": "npm-run-all --parallel watch docs-serve",
-    "bundlesize": "bundlesize",
+    "bundlewatch": "bundlewatch --config .bundlewatch.config.json",
     "css": "npm-run-all css-compile css-prefix css-minify css-copy",
     "css-copy": "cross-env-shell shx mkdir -p site/docs/$npm_package_version_short/dist/ && cross-env-shell shx cp -r dist/css/ site/docs/$npm_package_version_short/dist/",
     "css-main": "npm-run-all css-lint css-compile-main css-prefix-main css-minify-main css-copy",
@@ -116,7 +116,7 @@
     "autoprefixer": "^9.7.5",
     "babel-eslint": "^10.1.0",
     "babel-plugin-istanbul": "^6.0.0",
-    "bundlesize": "^0.18.0",
+    "bundlewatch": "^0.2.6",
     "clean-css-cli": "^4.3.0",
     "cross-env": "^7.0.2",
     "eslint": "^6.8.0",
