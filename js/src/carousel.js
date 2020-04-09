@@ -478,13 +478,10 @@ class Carousel {
 
       EventHandler
         .one(activeElement, TRANSITION_END, () => {
-          nextElement.classList.remove(directionalClassName)
-          nextElement.classList.remove(orderClassName)
+          nextElement.classList.remove(directionalClassName, orderClassName)
           nextElement.classList.add(CLASS_NAME_ACTIVE)
 
-          activeElement.classList.remove(CLASS_NAME_ACTIVE)
-          activeElement.classList.remove(orderClassName)
-          activeElement.classList.remove(directionalClassName)
+          activeElement.classList.remove(CLASS_NAME_ACTIVE, orderClassName, directionalClassName)
 
           this._isSliding = false
 
