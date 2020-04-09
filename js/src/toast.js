@@ -28,20 +28,16 @@ const VERSION = '4.3.1'
 const DATA_KEY = 'bs.toast'
 const EVENT_KEY = `.${DATA_KEY}`
 
-const Event = {
-  CLICK_DISMISS: `click.dismiss${EVENT_KEY}`,
-  HIDE: `hide${EVENT_KEY}`,
-  HIDDEN: `hidden${EVENT_KEY}`,
-  SHOW: `show${EVENT_KEY}`,
-  SHOWN: `shown${EVENT_KEY}`
-}
+const EVENT_CLICK_DISMISS = `click.dismiss${EVENT_KEY}`
+const EVENT_HIDE = `hide${EVENT_KEY}`
+const EVENT_HIDDEN = `hidden${EVENT_KEY}`
+const EVENT_SHOW = `show${EVENT_KEY}`
+const EVENT_SHOWN = `shown${EVENT_KEY}`
 
-const ClassName = {
-  FADE: 'fade',
-  HIDE: 'hide',
-  SHOW: 'show',
-  SHOWING: 'showing'
-}
+const CLASS_NAME_FADE = 'fade'
+const CLASS_NAME_HIDE = 'hide'
+const CLASS_NAME_SHOW = 'show'
+const CLASS_NAME_SHOWING = 'showing'
 
 const DefaultType = {
   animation: 'boolean',
@@ -55,9 +51,7 @@ const Default = {
   delay: 500
 }
 
-const Selector = {
-  DATA_DISMISS: '[data-dismiss="toast"]'
-}
+const SELECTOR_DATA_DISMISS = '[data-dismiss="toast"]'
 
 /**
  * ------------------------------------------------------------------------
@@ -91,21 +85,21 @@ class Toast {
   // Public
 
   show() {
-    const showEvent = EventHandler.trigger(this._element, Event.SHOW)
+    const showEvent = EventHandler.trigger(this._element, EVENT_SHOW)
 
     if (showEvent.defaultPrevented) {
       return
     }
 
     if (this._config.animation) {
-      this._element.classList.add(ClassName.FADE)
+      this._element.classList.add(CLASS_NAME_FADE)
     }
 
     const complete = () => {
-      this._element.classList.remove(ClassName.SHOWING)
-      this._element.classList.add(ClassName.SHOW)
+      this._element.classList.remove(CLASS_NAME_SHOWING)
+      this._element.classList.add(CLASS_NAME_SHOW)
 
-      EventHandler.trigger(this._element, Event.SHOWN)
+      EventHandler.trigger(this._element, EVENT_SHOWN)
 
       if (this._config.autohide) {
         this._timeout = setTimeout(() => {
@@ -114,9 +108,9 @@ class Toast {
       }
     }
 
-    this._element.classList.remove(ClassName.HIDE)
+    this._element.classList.remove(CLASS_NAME_HIDE)
     reflow(this._element)
-    this._element.classList.add(ClassName.SHOWING)
+    this._element.classList.add(CLASS_NAME_SHOWING)
     if (this._config.animation) {
       const transitionDuration = getTransitionDurationFromElement(this._element)
 
@@ -128,22 +122,22 @@ class Toast {
   }
 
   hide() {
-    if (!this._element.classList.contains(ClassName.SHOW)) {
+    if (!this._element.classList.contains(CLASS_NAME_SHOW)) {
       return
     }
 
-    const hideEvent = EventHandler.trigger(this._element, Event.HIDE)
+    const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE)
 
     if (hideEvent.defaultPrevented) {
       return
     }
 
     const complete = () => {
-      this._element.classList.add(ClassName.HIDE)
-      EventHandler.trigger(this._element, Event.HIDDEN)
+      this._element.classList.add(CLASS_NAME_HIDE)
+      EventHandler.trigger(this._element, EVENT_HIDDEN)
     }
 
-    this._element.classList.remove(ClassName.SHOW)
+    this._element.classList.remove(CLASS_NAME_SHOW)
     if (this._config.animation) {
       const transitionDuration = getTransitionDurationFromElement(this._element)
 
@@ -158,11 +152,11 @@ class Toast {
     clearTimeout(this._timeout)
     this._timeout = null
 
-    if (this._element.classList.contains(ClassName.SHOW)) {
-      this._element.classList.remove(ClassName.SHOW)
+    if (this._element.classList.contains(CLASS_NAME_SHOW)) {
+      this._element.classList.remove(CLASS_NAME_SHOW)
     }
 
-    EventHandler.off(this._element, Event.CLICK_DISMISS)
+    EventHandler.off(this._element, EVENT_CLICK_DISMISS)
     Data.removeData(this._element, DATA_KEY)
 
     this._element = null
@@ -190,8 +184,8 @@ class Toast {
   _setListeners() {
     EventHandler.on(
       this._element,
-      Event.CLICK_DISMISS,
-      Selector.DATA_DISMISS,
+      EVENT_CLICK_DISMISS,
+      SELECTOR_DATA_DISMISS,
       () => this.hide()
     )
   }

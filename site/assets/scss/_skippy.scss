@@ -1,17 +1,13 @@
 .skippy {
-  display: block;
-  padding: 1em;
+  position: fixed;
+  top: .5rem;
+  left: .5rem;
+  z-index: $zindex-fixed;
+  padding: .5rem;
   color: $white;
-  text-align: center;
   background-color: $bd-purple;
-  outline: 0;
 
   &:hover {
     color: $white;
   }
-}
-
-.skippy-text {
-  padding: .5em;
-  outline: 1px dotted;
 }

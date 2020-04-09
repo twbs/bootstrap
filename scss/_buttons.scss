@@ -1,5 +1,3 @@
-// stylelint-disable selector-no-qualifying-type
-
 //
 // Base styles
 //
@@ -11,6 +9,7 @@
   line-height: $btn-line-height;
   color: $body-color;
   text-align: center;
+  text-decoration: if($link-decoration == none, null, none);
   white-space: $btn-white-space;
   vertical-align: middle;
   cursor: if($enable-pointer-cursor-for-buttons, pointer, null);
@@ -22,7 +21,7 @@
 
   &:hover {
     color: $body-color;
-    text-decoration: none;
+    text-decoration: if($link-hover-decoration == underline, none, null);
   }
 
   &:focus,
@@ -31,27 +30,22 @@
     box-shadow: $btn-focus-box-shadow;
   }
 
-  // Disabled comes first so active can properly restyle
-  &.disabled,
-  &:disabled {
-    opacity: $btn-disabled-opacity;
-    @include box-shadow(none);
-  }
-
-  &:not(:disabled):not(.disabled):active,
-  &:not(:disabled):not(.disabled).active {
+  &:active,
+  &.active {
     @include box-shadow($btn-active-box-shadow);
 
     &:focus {
       @include box-shadow($btn-focus-box-shadow, $btn-active-box-shadow);
     }
   }
-}
 
-// Future-proof disabling of clicks on `<a>` elements
-a.btn.disabled,
-fieldset:disabled a.btn {
-  pointer-events: none;
+  &:disabled,
+  &.disabled,
+  fieldset:disabled & { // stylelint-disable-line selector-no-qualifying-type
+    pointer-events: none;
+    opacity: $btn-disabled-opacity;
+    @include box-shadow(none);
+  }
 }
 
 
@@ -90,13 +84,11 @@ fieldset:disabled a.btn {
   &:focus,
   &.focus {
     text-decoration: $link-hover-decoration;
-    box-shadow: none;
   }
 
   &:disabled,
   &.disabled {
     color: $btn-link-disabled-color;
-    pointer-events: none;
   }
 
   // No need for an active state here

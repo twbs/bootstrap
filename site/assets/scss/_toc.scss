@@ -1,4 +1,4 @@
-// stylelint-disable selector-max-type, selector-max-combinators, selector-max-compound-selectors
+// stylelint-disable selector-max-type, selector-max-compound-selectors
 
 .bd-toc nav {
   padding-top: .125em;
@@ -6,17 +6,16 @@
   border-left: .25em solid $gray-200;
 
   > ul {
-    padding-left: .5rem;
     margin-bottom: 0;
-  }
-
-  > ul > li {
-    display: block;
   }
 
   li ul li {
     margin-bottom: .25rem;
     list-style-type: disc;
+  }
+
+  a:not(:hover) {
+    text-decoration: none;
   }
 
   a code {

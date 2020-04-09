@@ -35,12 +35,12 @@ Here's a quick example to demonstrate Bootstrap's form styles. Keep reading for 
 {{< example >}}
 <form>
   <div class="mb-3">
-    <label for="exampleInputEmail1">Email address</label>
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
   </div>
   <div class="mb-3">
-    <label for="exampleInputPassword1">Password</label>
+    <label for="exampleInputPassword1" class="form-label">Password</label>
     <input type="password" class="form-control" id="exampleInputPassword1">
   </div>
   <div class="mb-3 form-check">
@@ -64,7 +64,7 @@ Help text should be explicitly associated with the form control it relates to us
 Help text below inputs can be styled with `.form-text`. This class includes `display: block` and adds some top margin for easy spacing from the inputs above.
 
 {{< example >}}
-<label for="inputPassword5">Password</label>
+<label for="inputPassword5" class="form-label">Password</label>
 <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
 <small id="passwordHelpBlock" class="form-text text-muted">
   Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
@@ -74,15 +74,19 @@ Help text below inputs can be styled with `.form-text`. This class includes `dis
 Inline text can use any typical inline HTML element (be it a `<small>`, `<span>`, or something else) with nothing more than a utility class.
 
 {{< example >}}
-<form class="form-inline">
-  <div class="mb-3">
-    <label for="inputPassword6">Password</label>
-    <input type="password" id="inputPassword6" class="form-control mx-sm-3" aria-describedby="passwordHelpInline">
+<div class="row g-3 align-items-center">
+  <div class="col-auto">
+    <label for="inputPassword6" class="col-form-label">Password</label>
+  </div>
+  <div class="col-auto">
+    <input type="password" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
+  </div>
+  <div class="col-auto">
     <small id="passwordHelpInline" class="text-muted">
       Must be 8-20 characters long.
     </small>
   </div>
-</form>
+</div>
 {{< /example >}}
 
 ## Disabled forms
@@ -99,13 +103,13 @@ By default, browsers will treat all native form controls (`<input>`, `<select>`,
 
 {{< example >}}
 <form>
-  <fieldset disabled>
+  <fieldset disabled aria-label="Disabled fieldset example">
     <div class="mb-3">
-      <label for="disabledTextInput">Disabled input</label>
+      <label for="disabledTextInput" class="form-label">Disabled input</label>
       <input type="text" id="disabledTextInput" class="form-control" placeholder="Disabled input">
     </div>
     <div class="mb-3">
-      <label for="disabledSelect">Disabled select menu</label>
+      <label for="disabledSelect" class="form-label">Disabled select menu</label>
       <select id="disabledSelect" class="form-select">
         <option>Disabled select</option>
       </select>

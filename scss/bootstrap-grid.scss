@@ -1,28 +1,24 @@
 /*!
  * Bootstrap Grid v4.3.1 (https://getbootstrap.com/)
- * Copyright 2011-2019 The Bootstrap Authors
- * Copyright 2011-2019 Twitter, Inc.
+ * Copyright 2011-2020 The Bootstrap Authors
+ * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
-html {
-  box-sizing: border-box;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-}
+$include-column-box-sizing: true !default;
 
 @import "functions";
 @import "variables";
 
+@import "mixins/lists";
 @import "mixins/breakpoints";
-@import "mixins/grid-framework";
+@import "mixins/container";
 @import "mixins/grid";
 @import "mixins/utilities";
 
+@import "vendor/rfs";
+
+@import "containers";
 @import "grid";
 
 @import "utilities";

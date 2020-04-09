@@ -6,6 +6,6 @@ Before opening:
 
 Bug reports must include:
 
-- Operating system and version (Windows, macOS, Android, iOS, Win10 Mobile)
-- Browser and version (Chrome, Firefox, Safari, IE, MS Edge, Opera 15+, Android Browser)
+- Operating system and version (Windows, macOS, Android, iOS)
+- Browser and version (Chrome, Firefox, Safari, Microsoft Edge, Opera, Android Browser)
 - [Reduced test case](https://css-tricks.com/reduced-test-cases/) and suggested fix using [CodePen](https://codepen.io/) or [JS Bin](https://jsbin.com/)

@@ -8,7 +8,7 @@ toc: true
 
 ## Overview
 
-Dropdowns are toggleable, contextual overlays for displaying lists of links and more. They're made interactive with the included Bootstrap dropdown JavaScript plugin. They're toggled by clicking, not by hovering; this is [an intentional design decision](http://markdotto.com/2012/02/27/bootstrap-explained-dropdowns/).
+Dropdowns are toggleable, contextual overlays for displaying lists of links and more. They're made interactive with the included Bootstrap dropdown JavaScript plugin. They're toggled by clicking, not by hovering; this is [an intentional design decision](https://markdotto.com/2012/02/27/bootstrap-explained-dropdowns/).
 
 Dropdowns are built on a third party library, [Popper.js](https://popper.js.org/), which provides dynamic positioning and viewport detection. Be sure to include [popper.min.js]({{< param "cdn.popper" >}}) before Bootstrap's JavaScript or use `bootstrap.bundle.min.js` / `bootstrap.bundle.js` which contains Popper.js. Popper.js isn't used to position dropdowns in navbars though as dynamic positioning isn't required.
 
@@ -560,12 +560,12 @@ You can also create non-interactive dropdown items with `.dropdown-item-text`. F
 
 ### Active
 
-Add `.active` to items in the dropdown to **style them as active**.
+Add `.active` to items in the dropdown to **style them as active**. To convey the active state to assistive technologies, use the `aria-current` attribute — using the `page` value for the current page, or `true` for the current item in a set.
 
 {{< example >}}
 <ul class="dropdown-menu">
   <li><a class="dropdown-item" href="#">Regular link</a></li>
-  <li><a class="dropdown-item active" href="#">Active link</a></li>
+  <li><a class="dropdown-item active" href="#" aria-current="true">Active link</a></li>
   <li><a class="dropdown-item" href="#">Another link</a></li>
 </ul>
 {{< /example >}}
@@ -690,11 +690,11 @@ Put a form within a dropdown menu, or make it into a dropdown menu, and use [mar
 <div class="dropdown-menu">
   <form class="px-4 py-3">
     <div class="mb-3">
-      <label for="exampleDropdownFormEmail1">Email address</label>
+      <label for="exampleDropdownFormEmail1" class="form-label">Email address</label>
       <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
     </div>
     <div class="mb-3">
-      <label for="exampleDropdownFormPassword1">Password</label>
+      <label for="exampleDropdownFormPassword1" class="form-label">Password</label>
       <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
     </div>
     <div class="mb-3">
@@ -716,11 +716,11 @@ Put a form within a dropdown menu, or make it into a dropdown menu, and use [mar
 {{< example >}}
 <form class="dropdown-menu p-4">
   <div class="mb-3">
-    <label for="exampleDropdownFormEmail2">Email address</label>
+    <label for="exampleDropdownFormEmail2" class="form-label">Email address</label>
     <input type="email" class="form-control" id="exampleDropdownFormEmail2" placeholder="email@example.com">
   </div>
   <div class="mb-3">
-    <label for="exampleDropdownFormPassword2">Password</label>
+    <label for="exampleDropdownFormPassword2" class="form-label">Password</label>
     <input type="password" class="form-control" id="exampleDropdownFormPassword2" placeholder="Password">
   </div>
   <div class="mb-3">
@@ -828,26 +828,26 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <td>
         <p>Offset of the dropdown relative to its target.</p>
         <p>When a function is used to determine the offset, it is called with an object containing the offset data as its first argument. The function must return an object with the same structure. The triggering element DOM node is passed as the second argument.</p>
-        <p>For more information refer to Popper.js's <a href="https://popper.js.org/popper-documentation.html#modifiers..offset.offset">offset docs</a>.</p>
+        <p>For more information refer to Popper.js's <a href="https://popper.js.org/docs/v1/#modifiers..offset.offset">offset docs</a>.</p>
       </td>
     </tr>
     <tr>
       <td>flip</td>
       <td>boolean</td>
       <td>true</td>
-      <td>Allow Dropdown to flip in case of an overlapping on the reference element. For more information refer to Popper.js's <a href="https://popper.js.org/popper-documentation.html#modifiers..flip.enabled">flip docs</a>.</td>
+      <td>Allow Dropdown to flip in case of an overlapping on the reference element. For more information refer to Popper.js's <a href="https://popper.js.org/docs/v1/#modifiers..flip.enabled">flip docs</a>.</td>
     </tr>
     <tr>
       <td>boundary</td>
       <td>string | element</td>
       <td>'scrollParent'</td>
-      <td>Overflow constraint boundary of the dropdown menu. Accepts the values of <code>'viewport'</code>, <code>'window'</code>, <code>'scrollParent'</code>, or an HTMLElement reference (JavaScript only). For more information refer to Popper.js's <a href="https://popper.js.org/popper-documentation.html#modifiers..preventOverflow.boundariesElement">preventOverflow docs</a>.</td>
+      <td>Overflow constraint boundary of the dropdown menu. Accepts the values of <code>'viewport'</code>, <code>'window'</code>, <code>'scrollParent'</code>, or an HTMLElement reference (JavaScript only). For more information refer to Popper.js's <a href="https://popper.js.org/docs/v1/#modifiers..preventOverflow.boundariesElement">preventOverflow docs</a>.</td>
     </tr>
     <tr>
       <td>reference</td>
       <td>string | element</td>
       <td>'toggle'</td>
-      <td>Reference element of the dropdown menu. Accepts the values of <code>'toggle'</code>, <code>'parent'</code>, or an HTMLElement reference. For more information refer to Popper.js's <a href="https://popper.js.org/popper-documentation.html#referenceObject">referenceObject docs</a>.</td>
+      <td>Reference element of the dropdown menu. Accepts the values of <code>'toggle'</code>, <code>'parent'</code>, or an HTMLElement reference. For more information refer to Popper.js's <a href="https://popper.js.org/docs/v1/#referenceObject">referenceObject docs</a>.</td>
     </tr>
     <tr>
       <td>display</td>
@@ -859,7 +859,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <td>popperConfig</td>
       <td>null | object</td>
       <td>null</td>
-      <td>To change Bootstrap's default Popper.js config, see <a href="https://popper.js.org/popper-documentation.html#Popper.Defaults">Popper.js's configuration</a></td>
+      <td>To change Bootstrap's default Popper.js config, see <a href="https://popper.js.org/docs/v1/#Popper.Defaults">Popper.js's configuration</a></td>
     </tr>
   </tbody>
 </table>

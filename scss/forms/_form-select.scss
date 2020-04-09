@@ -4,7 +4,7 @@
 // https://primer.github.io/.
 
 .form-select {
-  display: inline-block;
+  display: block;
   width: 100%;
   height: $form-select-height;
   padding: $form-select-padding-y ($form-select-padding-x + $form-select-indicator-padding) $form-select-padding-y $form-select-padding-x;
@@ -14,7 +14,11 @@
   line-height: $form-select-line-height;
   color: $form-select-color;
   vertical-align: middle;
-  background: $form-select-bg escape-svg($form-select-indicator) $form-select-background;
+  background-color: $form-select-bg;
+  background-image: escape-svg($form-select-indicator);
+  background-repeat: no-repeat;
+  background-position: $form-select-bg-position;
+  background-size: $form-select-bg-size;
   border: $form-select-border-width solid $form-select-border-color;
   @include border-radius($form-select-border-radius, 0);
   @include box-shadow($form-select-box-shadow);
@@ -33,7 +37,7 @@
       // For visual consistency with other platforms/browsers,
       // suppress the default white text on blue background highlight given to
       // the selected option text when the (still closed) <select> receives focus
-      // in IE and (under certain conditions) Edge.
+      // in Edge.
       // See https://github.com/twbs/bootstrap/issues/19398.
       color: $input-color;
       background-color: $input-bg;
@@ -51,11 +55,6 @@
     color: $form-select-disabled-color;
     background-color: $form-select-disabled-bg;
     border-color: $form-select-disabled-border-color;
-  }
-
-  // Hides the default caret in IE11
-  &::-ms-expand {
-    display: none;
   }
 
   // Remove outline from select box in FF

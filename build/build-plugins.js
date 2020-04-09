@@ -1,7 +1,7 @@
 /*!
  * Script to build our plugins to use them separately.
- * Copyright 2019 The Bootstrap Authors
- * Copyright 2019 Twitter, Inc.
+ * Copyright 2020 The Bootstrap Authors
+ * Copyright 2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
@@ -18,10 +18,12 @@ const plugins = [
     exclude: 'node_modules/**',
     // Include only required helpers
     externalHelpersWhitelist: [
-      'defineProperties',
       'createClass',
-      'inheritsLoose',
+      'createSuper',
+      'defineProperties',
       'defineProperty',
+      'getPrototypeOf',
+      'inheritsLoose',
       'objectSpread2'
     ]
   })

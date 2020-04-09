@@ -3,7 +3,7 @@ const path = require('path')
 const ip = require('ip')
 const babel = require('rollup-plugin-babel')
 const istanbul = require('rollup-plugin-istanbul')
-const resolve = require('rollup-plugin-node-resolve')
+const resolve = require('@rollup/plugin-node-resolve')
 
 const {
   browsers,
@@ -75,6 +75,7 @@ const conf = {
         externalHelpersWhitelist: [
           'defineProperties',
           'createClass',
+          'createSuper',
           'inheritsLoose',
           'defineProperty',
           'objectSpread2'
