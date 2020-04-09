@@ -113,8 +113,7 @@ class Popover extends Tooltip {
 
     this.setElementContent(SelectorEngine.findOne(SELECTOR_CONTENT, tip), content)
 
-    tip.classList.remove(CLASS_NAME_FADE)
-    tip.classList.remove(CLASS_NAME_SHOW)
+    tip.classList.remove(CLASS_NAME_FADE, CLASS_NAME_SHOW)
   }
 
   _addAttachmentClass(attachment) {
