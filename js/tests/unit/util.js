@@ -51,6 +51,26 @@ $(function () {
     }
   })
 
+  QUnit.test('Util.typeCheckConfig should return null/undefined stringified when passed', function (assert) {
+    assert.expect(1)
+    var namePlugin = 'collapse'
+    var defaultType = {
+      toggle: '(null|undefined)'
+    }
+    var config = {
+      toggle: null
+    }
+
+    Util.typeCheckConfig(namePlugin, config, defaultType)
+
+    // eslint-disable-next-line
+    config.toggle = undefined
+
+    Util.typeCheckConfig(namePlugin, config, defaultType)
+
+    assert.strictEqual(true, true)
+  })
+
   QUnit.test('Util.isElement should check if we passed an element or not', function (assert) {
     assert.expect(3)
     var $div = $('<div id="test"></div>').appendTo($('#qunit-fixture'))

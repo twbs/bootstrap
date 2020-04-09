@@ -31,30 +31,22 @@ const DefaultType = {
   parent : '(string|element)'
 }
 
-const Event = {
-  SHOW           : `show${EVENT_KEY}`,
-  SHOWN          : `shown${EVENT_KEY}`,
-  HIDE           : `hide${EVENT_KEY}`,
-  HIDDEN         : `hidden${EVENT_KEY}`,
-  CLICK_DATA_API : `click${EVENT_KEY}${DATA_API_KEY}`
-}
+const EVENT_SHOW           = `show${EVENT_KEY}`
+const EVENT_SHOWN          = `shown${EVENT_KEY}`
+const EVENT_HIDE           = `hide${EVENT_KEY}`
+const EVENT_HIDDEN         = `hidden${EVENT_KEY}`
+const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 
-const ClassName = {
-  SHOW       : 'show',
-  COLLAPSE   : 'collapse',
-  COLLAPSING : 'collapsing',
-  COLLAPSED  : 'collapsed'
-}
+const CLASS_NAME_SHOW       = 'show'
+const CLASS_NAME_COLLAPSE   = 'collapse'
+const CLASS_NAME_COLLAPSING = 'collapsing'
+const CLASS_NAME_COLLAPSED  = 'collapsed'
 
-const Dimension = {
-  WIDTH  : 'width',
-  HEIGHT : 'height'
-}
+const DIMENSION_WIDTH  = 'width'
+const DIMENSION_HEIGHT = 'height'
 
-const Selector = {
-  ACTIVES     : '.show, .collapsing',
-  DATA_TOGGLE : '[data-toggle="collapse"]'
-}
+const SELECTOR_ACTIVES     = '.show, .collapsing'
+const SELECTOR_DATA_TOGGLE = '[data-toggle="collapse"]'
 
 /**
  * ------------------------------------------------------------------------
@@ -72,7 +64,7 @@ class Collapse {
       `[data-toggle="collapse"][data-target="#${element.id}"]`
     ))
 
-    const toggleList = [].slice.call(document.querySelectorAll(Selector.DATA_TOGGLE))
+    const toggleList = [].slice.call(document.querySelectorAll(SELECTOR_DATA_TOGGLE))
     for (let i = 0, len = toggleList.length; i < len; i++) {
       const elem = toggleList[i]
       const selector = Util.getSelectorFromElement(elem)
@@ -109,7 +101,7 @@ class Collapse {
   // Public
 
   toggle() {
-    if ($(this._element).hasClass(ClassName.SHOW)) {
+    if ($(this._element).hasClass(CLASS_NAME_SHOW)) {
       this.hide()
     } else {
       this.show()
@@ -118,7 +110,7 @@ class Collapse {
 
   show() {
     if (this._isTransitioning ||
-      $(this._element).hasClass(ClassName.SHOW)) {
+      $(this._element).hasClass(CLASS_NAME_SHOW)) {
       return
     }
 
@@ -126,13 +118,13 @@ class Collapse {
     let activesData
 
     if (this._parent) {
-      actives = [].slice.call(this._parent.querySelectorAll(Selector.ACTIVES))
+      actives = [].slice.call(this._parent.querySelectorAll(SELECTOR_ACTIVES))
         .filter((elem) => {
           if (typeof this._config.parent === 'string') {
             return elem.getAttribute('data-parent') === this._config.parent
           }
 
-          return elem.classList.contains(ClassName.COLLAPSE)
+          return elem.classList.contains(CLASS_NAME_COLLAPSE)
         })
 
       if (actives.length === 0) {
@@ -147,7 +139,7 @@ class Collapse {
       }
     }
 
-    const startEvent = $.Event(Event.SHOW)
+    const startEvent = $.Event(EVENT_SHOW)
     $(this._element).trigger(startEvent)
     if (startEvent.isDefaultPrevented()) {
       return
@@ -163,14 +155,14 @@ class Collapse {
     const dimension = this._getDimension()
 
     $(this._element)
-      .removeClass(ClassName.COLLAPSE)
-      .addClass(ClassName.COLLAPSING)
+      .removeClass(CLASS_NAME_COLLAPSE)
+      .addClass(CLASS_NAME_COLLAPSING)
 
     this._element.style[dimension] = 0
 
     if (this._triggerArray.length) {
       $(this._triggerArray)
-        .removeClass(ClassName.COLLAPSED)
+        .removeClass(CLASS_NAME_COLLAPSED)
         .attr('aria-expanded', true)
     }
 
@@ -178,15 +170,15 @@ class Collapse {
 
     const complete = () => {
       $(this._element)
-        .removeClass(ClassName.COLLAPSING)
-        .addClass(ClassName.COLLAPSE)
-        .addClass(ClassName.SHOW)
+        .removeClass(CLASS_NAME_COLLAPSING)
+        .addClass(CLASS_NAME_COLLAPSE)
+        .addClass(CLASS_NAME_SHOW)
 
       this._element.style[dimension] = ''
 
       this.setTransitioning(false)
 
-      $(this._element).trigger(Event.SHOWN)
+      $(this._element).trigger(EVENT_SHOWN)
     }
 
     const capitalizedDimension = dimension[0].toUpperCase() + dimension.slice(1)
@@ -202,11 +194,11 @@ class Collapse {
 
   hide() {
     if (this._isTransitioning ||
-      !$(this._element).hasClass(ClassName.SHOW)) {
+      !$(this._element).hasClass(CLASS_NAME_SHOW)) {
       return
     }
 
-    const startEvent = $.Event(Event.HIDE)
+    const startEvent = $.Event(EVENT_HIDE)
     $(this._element).trigger(startEvent)
     if (startEvent.isDefaultPrevented()) {
       return
@@ -219,9 +211,9 @@ class Collapse {
     Util.reflow(this._element)
 
     $(this._element)
-      .addClass(ClassName.COLLAPSING)
-      .removeClass(ClassName.COLLAPSE)
-      .removeClass(ClassName.SHOW)
+      .addClass(CLASS_NAME_COLLAPSING)
+      .removeClass(CLASS_NAME_COLLAPSE)
+      .removeClass(CLASS_NAME_SHOW)
 
     const triggerArrayLength = this._triggerArray.length
     if (triggerArrayLength > 0) {
@@ -231,8 +223,8 @@ class Collapse {
 
         if (selector !== null) {
           const $elem = $([].slice.call(document.querySelectorAll(selector)))
-          if (!$elem.hasClass(ClassName.SHOW)) {
-            $(trigger).addClass(ClassName.COLLAPSED)
+          if (!$elem.hasClass(CLASS_NAME_SHOW)) {
+            $(trigger).addClass(CLASS_NAME_COLLAPSED)
               .attr('aria-expanded', false)
           }
         }
@@ -244,9 +236,9 @@ class Collapse {
     const complete = () => {
       this.setTransitioning(false)
       $(this._element)
-        .removeClass(ClassName.COLLAPSING)
-        .addClass(ClassName.COLLAPSE)
-        .trigger(Event.HIDDEN)
+        .removeClass(CLASS_NAME_COLLAPSING)
+        .addClass(CLASS_NAME_COLLAPSE)
+        .trigger(EVENT_HIDDEN)
     }
 
     this._element.style[dimension] = ''
@@ -284,8 +276,8 @@ class Collapse {
   }
 
   _getDimension() {
-    const hasWidth = $(this._element).hasClass(Dimension.WIDTH)
-    return hasWidth ? Dimension.WIDTH : Dimension.HEIGHT
+    const hasWidth = $(this._element).hasClass(DIMENSION_WIDTH)
+    return hasWidth ? DIMENSION_WIDTH : DIMENSION_HEIGHT
   }
 
   _getParent() {
@@ -317,11 +309,11 @@ class Collapse {
   }
 
   _addAriaAndCollapsedClass(element, triggerArray) {
-    const isOpen = $(element).hasClass(ClassName.SHOW)
+    const isOpen = $(element).hasClass(CLASS_NAME_SHOW)
 
     if (triggerArray.length) {
       $(triggerArray)
-        .toggleClass(ClassName.COLLAPSED, !isOpen)
+        .toggleClass(CLASS_NAME_COLLAPSED, !isOpen)
         .attr('aria-expanded', isOpen)
     }
   }
@@ -368,7 +360,7 @@ class Collapse {
  * ------------------------------------------------------------------------
  */
 
-$(document).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE, function (event) {
+$(document).on(EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
   // preventDefault only for <a> elements (which change the URL) not inside the collapsible element
   if (event.currentTarget.tagName === 'A') {
     event.preventDefault()
