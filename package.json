@@ -19,7 +19,7 @@
   ],
   "scripts": {
     "start": "npm-run-all --parallel watch docs-serve",
-    "bundlesize": "bundlesize",
+    "bundlewatch": "bundlewatch --config .bundlewatch.config.json",
     "css": "npm-run-all css-compile css-prefix css-minify",
     "css-compile": "node-sass --output-style expanded --source-map true --source-map-contents true --precision 6 scss/ -o dist/css/",
     "css-lint": "npm-run-all --continue-on-error --parallel css-lint-*",
@@ -97,7 +97,7 @@
     "@rollup/plugin-commonjs": "^11.0.2",
     "@rollup/plugin-node-resolve": "^7.1.1",
     "autoprefixer": "^9.7.6",
-    "bundlesize": "^0.18.0",
+    "bundlewatch": "^0.2.6",
     "clean-css-cli": "^4.3.0",
     "cross-env": "^7.0.2",
     "eslint": "^6.8.0",
