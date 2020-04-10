@@ -50,4 +50,4 @@ Aspect ratios can be customized with modifier classes. By default the following 
 
 Within `_variables.scss`, you can change the aspect ratios you want to use. Here's an example of the `$embed-responsive-aspect-ratios` map:
 
-{{< scss-docs name="embed-responsive-aspect-ratios" file="scss/_variables.scss" >}}
+{{< scss-docs name=`embed-responsive-aspect-ratios` file=`scss/_variables.scss` >}}

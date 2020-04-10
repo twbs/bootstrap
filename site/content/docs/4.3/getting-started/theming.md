@@ -172,7 +172,7 @@ In Bootstrap 5, we've dropped the `color()`, `theme-color()` and `gray()` functi
 
 We also have a function for getting a particular _level_ of color. Negative level values will lighten the color, while higher levels will darken.
 
-{{< scss-docs name="color-level" file="scss/_functions.scss" >}}
+{{< scss-docs name=`color-level` file=`scss/_functions.scss` >}}
 
 In practice, you'd call the function and pass in two parameters: the name of the color from `$theme-colors` (e.g., primary or danger) and a numeric level.
 
@@ -384,15 +384,15 @@ Many of Bootstrap's components are built with a base-modifier class approach. Th
 
 Here are two examples of how we loop over the `$theme-colors` map to generate modifiers to the `.alert` and `.list-group` components.
 
-{{< scss-docs name="alert-modifiers" file="scss/_alert.scss" >}}
+{{< scss-docs name=`alert-modifiers` file=`scss/_alert.scss` >}}
 
-{{< scss-docs name="list-group-modifiers" file="scss/_list-group.scss" >}}
+{{< scss-docs name=`list-group-modifiers` file=`scss/_list-group.scss` >}}
 
 ### Responsive
 
 These Sass loops aren't limited to color maps, either. You can also generate responsive variations of your components. Take for example our responsive alignment of the dropdowns where we mix an `@each` loop for the `$grid-breakpoints` Sass map with a media query include.
 
-{{< scss-docs name="responsive-breakpoints" file="scss/_dropdown.scss" >}}
+{{< scss-docs name=`responsive-breakpoints` file=`scss/_dropdown.scss` >}}
 
 Should you need to modify your `$grid-breakpoints`, your changes will apply to all the loops iterating over that map.
 
@@ -407,7 +407,7 @@ Here are the variables we include (note that the `:root` is required). They're l
 {{< highlight css >}}
 {{< root.inline >}}
 {{- $css := readFile "dist/css/bootstrap.css" -}}
-{{- $match := findRE ":root {([^}]*)}" $css 1 -}}
+{{- $match := findRE `:root {([^}]*)}` $css 1 -}}
 
 {{- if (eq (len $match) 0) -}}
 {{- errorf "Got no matches for :root in %q!" $.Page.Path -}}

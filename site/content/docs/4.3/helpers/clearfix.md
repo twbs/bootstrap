@@ -16,7 +16,7 @@ Use in HTML:
 
 The mixin source code:
 
-{{< scss-docs name="clearfix" file="scss/mixins/_clearfix.scss" >}}
+{{< scss-docs name=`clearfix` file=`scss/mixins/_clearfix.scss` >}}
 
 Use the mixin in SCSS:
 
