@@ -46,11 +46,11 @@ When using button classes on `<a>` elements that are used to trigger in-page fun
 
 In need of a button, but not the hefty background colors they bring? Replace the default modifier classes with the `.btn-outline-*` ones to remove all background images and colors on any button.
 
-{{< example >}}
+{{< example class="d-flex justify-content-between align-items-center" >}}
 {{< buttons.inline >}}
-{{- range (index $.Site.Data "theme-colors") }}
+{{- range (index $.Site.Data "theme-colors") }}{{ if (or (eq .name "light") (eq .name "warning") (eq .name "info")) }}<div class="bg-dark p-2">{{ end }}
 <button type="button" class="btn btn-outline-{{ .name }}">{{ .name | title }}</button>
-{{- end -}}
+{{ if (or (eq .name "light") (eq .name "warning") (eq .name "info")) }}</div>{{ end }}{{- end -}}
 {{< /buttons.inline >}}
 {{< /example >}}
 
