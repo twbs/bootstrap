@@ -143,8 +143,8 @@ $(function () {
   QUnit.test('should not fire shown when tab is already active', function (assert) {
     assert.expect(0)
     var tabsHTML = '<ul class="nav nav-tabs" role="tablist">' +
-      '<li class="nav-item"><a href="#home" class="nav-link active" role="tab">Home</a></li>' +
-      '<li class="nav-item"><a href="#profile" class="nav-link" role="tab">Profile</a></li>' +
+      '<li class="nav-item" role="presentation"><a href="#home" class="nav-link active" role="tab">Home</a></li>' +
+      '<li class="nav-item" role="presentation"><a href="#profile" class="nav-link" role="tab">Profile</a></li>' +
       '</ul>' +
       '<div class="tab-content">' +
       '<div class="tab-pane active" id="home" role="tabpanel"></div>' +
@@ -387,8 +387,8 @@ $(function () {
     assert.expect(6)
     var done = assert.async()
     var tabsHTML = '<ul class="nav nav-tabs" role="tablist">' +
-      '<li class="nav-item"><a id="tab-home" href="#home" class="nav-link" data-toggle="tab" role="tab">Home</a></li>' +
-      '<li class="nav-item"><a id="tab-profile" href="#profile" class="nav-link" data-toggle="tab" role="tab">Profile</a></li>' +
+      '<li class="nav-item" role="presentation"><a id="tab-home" href="#home" class="nav-link" data-toggle="tab" role="tab">Home</a></li>' +
+      '<li class="nav-item" role="presentation"><a id="tab-profile" href="#profile" class="nav-link" data-toggle="tab" role="tab">Profile</a></li>' +
       '</ul>' +
       '<div class="tab-content">' +
       '<div class="tab-pane fade" id="home" role="tabpanel"></div>' +
@@ -421,17 +421,17 @@ $(function () {
 
     var html = [
       '<ul class="nav nav-tabs" role="tablist">',
-      '  <li class="nav-item">',
+      '  <li class="nav-item" role="presentation">',
       '    <a class="nav-link nav-tab" href="#profile" role="tab" data-toggle="tab">',
       '      <button class="close"><span aria-hidden="true">&times;</span></button>',
       '    </a>',
       '  </li>',
-      '  <li class="nav-item">',
+      '  <li class="nav-item" role="presentation">',
       '    <a id="secondNav" class="nav-link nav-tab" href="#buzz" role="tab" data-toggle="tab">',
       '      <button class="close"><span aria-hidden="true">&times;</span></button>',
       '    </a>',
       '  </li>',
-      '  <li class="nav-item">',
+      '  <li class="nav-item" role="presentation">',
       '    <a class="nav-link nav-tab" href="#references" role="tab" data-toggle="tab">',
       '      <button id="btnClose" class="close"><span aria-hidden="true">&times;</span></button>',
       '    </a>',
@@ -466,14 +466,14 @@ $(function () {
 
     var html = [
       '<ul class="nav nav-tabs" role="tablist">',
-      '  <li class="nav-item">',
+      '  <li class="nav-item" role="presentation">',
       '    <a class="nav-link nav-tab" href="#home" role="tab" data-toggle="tab">Home</a>',
       '  </li>',
-      '  <li class="nav-item">',
+      '  <li class="nav-item" role="presentation">',
       '    <a id="secondNav" class="nav-link nav-tab" href="#profile" role="tab" data-toggle="tab">Profile</a>',
       '  </li>',
       '</ul>',
-      '<div class="tab-content">',
+      '<div class="tab-content" role="presentation">',
       '  <div role="tabpanel" class="tab-pane" id="home">test 1</div>',
       '  <div role="tabpanel" class="tab-pane" id="profile">test 2</div>',
       '</div>'
@@ -494,10 +494,10 @@ $(function () {
 
     var html = [
       '<ul class="nav nav-tabs" role="tablist">',
-      '  <li class="nav-item">',
+      '  <li class="nav-item" role="presentation">',
       '    <a class="nav-link nav-tab" href="#home" role="tab" data-toggle="tab">Home</a>',
       '  </li>',
-      '  <li class="nav-item">',
+      '  <li class="nav-item" role="presentation">',
       '    <a id="secondNav" class="nav-link nav-tab" href="#profile" role="tab" data-toggle="tab">Profile</a>',
       '  </li>',
       '</ul>',
