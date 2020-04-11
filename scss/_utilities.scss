@@ -443,6 +443,11 @@ $utilities: map-merge(
       class: font,
       values: (monospace: var(--font-family-monospace))
     ),
+    "cursor": (
+      property: cursor,
+      class: cursor,
+      values: pointer
+    ),
     "user-select": (
       property: user-select,
       values: all auto none

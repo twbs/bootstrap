@@ -16,6 +16,14 @@ Change the way in which the content is selected when the user interacts with it.
 <p class="user-select-none">This paragraph will not be selectable when clicked by the user.</p>
 {{< /example >}}
 
+## Cursors
+
+Change the cursor from a default value to `pointer` with our built-in utility.
+
+{{< example >}}
+<span role="button" class="cursor-pointer">Non-button element button</span>
+{{< /example >}}
+
 ## Pointer events
 
 Bootstrap provides `pe-none` and `pe-auto` classes to prevent or add element interactions.
