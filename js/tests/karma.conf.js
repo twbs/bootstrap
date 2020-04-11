@@ -113,11 +113,18 @@ if (browserStack) {
     'karma-chrome-launcher',
     'karma-firefox-launcher',
     'karma-detect-browsers',
+    'karma-sabarivka-reporter',
     'karma-coverage-istanbul-reporter'
   )
-  reporters.push('coverage-istanbul')
+  reporters.push(
+    'sabarivka',
+    'coverage-istanbul'
+  )
   conf.customLaunchers = customLaunchers
   conf.detectBrowsers = detectBrowsers
+  conf.coverageReporter = {
+    include: 'src/**/*.js'
+  }
   conf.coverageIstanbulReporter = {
     dir: path.resolve(__dirname, '../coverage/'),
     reports: ['lcov', 'text-summary'],
