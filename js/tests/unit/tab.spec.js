@@ -27,7 +27,10 @@ describe('Tab', () => {
         '  <li><a href="#home" role="tab">Home</a></li>',
         '  <li><a id="triggerProfile" role="tab" href="#profile">Profile</a></li>',
         '</ul>',
-        '<ul><li id="home"/><li id="profile"/></ul>'
+        '<ul>',
+        '  <li id="home"></li>',
+        '  <li id="profile"></li>',
+        '</ul>'
       ].join('')
 
       const profileTriggerEl = fixtureEl.querySelector('#triggerProfile')
@@ -48,7 +51,10 @@ describe('Tab', () => {
         '  <li><a href="#home">Home</a></li>',
         '  <li><a id="triggerProfile" href="#profile">Profile</a></li>',
         '</ol>',
-        '<ol><li id="home"/><li id="profile"/></ol>'
+        '<ol>',
+        '  <li id="home"></li>',
+        '  <li id="profile"></li>',
+        '</ol>'
       ].join('')
 
       const profileTriggerEl = fixtureEl.querySelector('#triggerProfile')
@@ -444,7 +450,7 @@ describe('Tab', () => {
         '  <li class="nav-item"><a class="nav-link" href="#home" data-toggle="tab">Home</a></li>',
         '  <li class="nav-item"><a class="nav-link" href="#profile" data-toggle="tab">Profile</a></li>',
         '  <li class="nav-item dropdown">',
-        '    <a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#">Dropdown</>',
+        '    <a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#">Dropdown</a>',
         '    <div class="dropdown-menu">',
         '      <a class="dropdown-item active" href="#dropdown1" id="dropdown1-tab" data-toggle="tab">@fat</a>',
         '      <a class="dropdown-item" href="#dropdown2" id="dropdown2-tab" data-toggle="tab">@mdo</a>',

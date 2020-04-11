@@ -141,7 +141,7 @@ describe('Carousel', () => {
         '<div id="myCarousel" class="carousel slide">',
         '  <div class="carousel-inner">',
         '    <div class="carousel-item active">',
-        '      <input type="text" />',
+        '      <input type="text">',
         '      <textarea></textarea>',
         '    </div>',
         '    <div class="carousel-item"></div>',
