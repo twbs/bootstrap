@@ -14,63 +14,27 @@
   @return $return;
 }
 
-@mixin border-radius($radius: $border-radius, $fallback-border-radius: false) {
+@mixin border-radius($radius, $direction: null, $fallback-border-radius: false) {
+	$directions: (
+		"bottom": (bottom-right, bottom-left),
+		"bottom-left": (bottom-left),
+		"bottom-right": (bottom-right),
+		"left": (bottom-left, top-left),
+		"right": (bottom-right, top-right),
+		"top": (top-left, top-right),
+		"top-left": (top-left),
+		"top-right": (top-right),
+	);
+
   @if $enable-rounded {
-    border-radius: valid-radius($radius);
-  }
-  @else if $fallback-border-radius != false {
+  	@if index(map-keys($directions), $direction) {
+	  	@each $side in map-get($directions, $direction) {
+		  	border-#{$side}-radius: valid-radius($radius);
+		  }
+  	} @else {
+	  	border-radius: valid-radius($radius);
+	  }
+  } @else if $fallback-border-radius != false {
     border-radius: $fallback-border-radius;
-  }
-}
-
-@mixin border-top-radius($radius) {
-  @if $enable-rounded {
-    border-top-left-radius: valid-radius($radius);
-    border-top-right-radius: valid-radius($radius);
-  }
-}
-
-@mixin border-right-radius($radius) {
-  @if $enable-rounded {
-    border-top-right-radius: valid-radius($radius);
-    border-bottom-right-radius: valid-radius($radius);
-  }
-}
-
-@mixin border-bottom-radius($radius) {
-  @if $enable-rounded {
-    border-bottom-right-radius: valid-radius($radius);
-    border-bottom-left-radius: valid-radius($radius);
-  }
-}
-
-@mixin border-left-radius($radius) {
-  @if $enable-rounded {
-    border-top-left-radius: valid-radius($radius);
-    border-bottom-left-radius: valid-radius($radius);
-  }
-}
-
-@mixin border-top-left-radius($radius) {
-  @if $enable-rounded {
-    border-top-left-radius: valid-radius($radius);
-  }
-}
-
-@mixin border-top-right-radius($radius) {
-  @if $enable-rounded {
-    border-top-right-radius: valid-radius($radius);
-  }
-}
-
-@mixin border-bottom-right-radius($radius) {
-  @if $enable-rounded {
-    border-bottom-right-radius: valid-radius($radius);
-  }
-}
-
-@mixin border-bottom-left-radius($radius) {
-  @if $enable-rounded {
-    border-bottom-left-radius: valid-radius($radius);
   }
 }
