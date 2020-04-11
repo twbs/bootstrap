@@ -28,13 +28,13 @@
 
   @if $enable-rounded {
     @if index(map-keys($directions), $direction) {
-	    @each $side in map-get($directions, $direction) {
-		    border-#{$side}-radius: valid-radius($radius);
-		  }
+      @each $side in map-get($directions, $direction) {
+        border-#{$side}-radius: valid-radius($radius);
+      }
     } @else {
-	    border-radius: valid-radius($radius);
-	  }
-  } @else if $fallback-border-radius != false {
+      border-radius: valid-radius($radius);
+    }
+   } @else if $fallback-border-radius != false {
     border-radius: $fallback-border-radius;
   }
 }
