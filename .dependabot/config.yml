@@ -3,7 +3,7 @@ version: 1
 update_configs:
   - package_manager: "javascript"
     directory: "/"
-    update_schedule: "weekly"
+    update_schedule: "monthly"
     target_branch: "v4-dev"
     default_reviewers:
       - "XhmikosR"
@@ -13,7 +13,7 @@ update_configs:
     version_requirement_updates: "increase_versions"
   - package_manager: "ruby:bundler"
     directory: "/"
-    update_schedule: "weekly"
+    update_schedule: "monthly"
     target_branch: "v4-dev"
     default_reviewers:
       - "XhmikosR"
