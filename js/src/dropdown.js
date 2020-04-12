@@ -452,9 +452,6 @@ class Dropdown {
       return
     }
 
-    event.preventDefault()
-    event.stopPropagation()
-
     if (this.disabled || $(this).hasClass(CLASS_NAME_DISABLED)) {
       return
     }
@@ -465,6 +462,9 @@ class Dropdown {
     if (!isActive && event.which === ESCAPE_KEYCODE) {
       return
     }
+
+    event.preventDefault()
+    event.stopPropagation()
 
     if (!isActive || isActive && (event.which === ESCAPE_KEYCODE || event.which === SPACE_KEYCODE)) {
       if (event.which === ESCAPE_KEYCODE) {
