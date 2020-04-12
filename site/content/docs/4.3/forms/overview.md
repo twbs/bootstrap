@@ -37,7 +37,7 @@ Here's a quick example to demonstrate Bootstrap's form styles. Keep reading for 
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Email address</label>
     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    <small id="emailHelp" class="form-text">We'll never share your email with anyone else.</small>
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Password</label>
@@ -53,7 +53,7 @@ Here's a quick example to demonstrate Bootstrap's form styles. Keep reading for 
 
 ## Help text
 
-Block-level help text in forms can be created using `.form-text` (previously known as `.help-block` in v3). Inline help text can be flexibly implemented using any inline HTML element and utility classes like `.text-muted`.
+Block-level help text in forms can be created using `.form-text` (previously known as `.help-block` in v3). Inline help text can be flexibly implemented using any inline HTML element and utility classes like `.text-*`.
 
 {{< callout warning >}}
 ##### Associating help text with form controls
@@ -66,7 +66,7 @@ Help text below inputs can be styled with `.form-text`. This class includes `dis
 {{< example >}}
 <label for="inputPassword5" class="form-label">Password</label>
 <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
-<small id="passwordHelpBlock" class="form-text text-muted">
+<small id="passwordHelpBlock" class="form-text">
   Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
 </small>
 {{< /example >}}
