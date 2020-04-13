@@ -141,7 +141,7 @@ Utilize breakpoint-specific column classes for easy column sizing without an exp
 
 ### Equal-width
 
-For example, here are two grid layouts that apply to every device and viewport, from `xs` to `xl`. Add any number of unit-less classes for each breakpoint you need and every column will be the same width.
+For example, here are two grid layouts that apply to every device and viewport, from `xs` to `xxl`. Add any number of unit-less classes for each breakpoint you need and every column will be the same width.
 
 {{< example class="bd-example-row" >}}
 <div class="container">
@@ -418,30 +418,11 @@ Variables and maps determine the number of columns, the gutter width, and the me
 {{< highlight scss >}}
 $grid-columns:      12;
 $grid-gutter-width: 1.5rem;
-
-$grid-breakpoints: (
-  // Extra small screen / phone
-  xs: 0,
-  // Small screen / phone
-  sm: 576px,
-  // Medium screen / tablet
-  md: 768px,
-  // Large screen / desktop
-  lg: 992px,
-  // Extra large screen / wide desktop
-  xl: 1200px,
-  // Extra extra large screen / wide desktop
-  xxl: 1400px
-);
-
-$container-max-widths: (
-  sm: 540px,
-  md: 720px,
-  lg: 960px,
-  xl: 1140px,
-  xxl: 1320px
-);
 {{< /highlight >}}
+
+{{< scss-docs name="grid-breakpoints" file="scss/_variables.scss" >}}
+
+{{< scss-docs name="container-max-widths" file="scss/_variables.scss" >}}
 
 ### Mixins
 

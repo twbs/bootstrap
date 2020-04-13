@@ -65,16 +65,7 @@ Each breakpoint size was chosen to be a multiple of 12 and to be representative 
 
 These breakpoints are customizable via Sass—you'll find them in a Sass map in our `_variables.scss` stylesheet.
 
-{{< highlight scss >}}
-$grid-breakpoints: (
-  xs: 0,
-  sm: 576px,
-  md: 768px,
-  lg: 992px,
-  xl: 1200px,
-  xxl: 1400px
-) !default;
-{{< /highlight >}}
+{{< scss-docs name="grid-breakpoints" file="scss/_variables.scss" >}}
 
 For more information and examples on how to modify our Sass maps and variables, please refer to [the Sass section of the Grid documentation]({{< docsref "/layout/grid#sass" >}}).
 

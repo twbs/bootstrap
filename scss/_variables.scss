@@ -271,6 +271,7 @@ $paragraph-margin-bottom:   1rem !default;
 // Define the minimum dimensions at which your layout will change,
 // adapting to different screen sizes, for use in media queries.
 
+// scss-docs-start grid-breakpoints
 $grid-breakpoints: (
   xs: 0,
   sm: 576px,
@@ -279,6 +280,7 @@ $grid-breakpoints: (
   xl: 1200px,
   xxl: 1400px
 ) !default;
+// scss-docs-end grid-breakpoints
 
 @include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
 @include _assert-starts-at-zero($grid-breakpoints, "$grid-breakpoints");
@@ -288,6 +290,7 @@ $grid-breakpoints: (
 //
 // Define the maximum width of `.container` for different screen sizes.
 
+// scss-docs-start container-max-widths
 $container-max-widths: (
   sm: 540px,
   md: 720px,
@@ -295,6 +298,7 @@ $container-max-widths: (
   xl: 1140px,
   xxl: 1320px
 ) !default;
+// scss-docs-end container-max-widths
 
 @include _assert-ascending($container-max-widths, "$container-max-widths");
 
@@ -795,6 +799,7 @@ $form-validation-states: (
 // Warning: Avoid customizing these values. They're used for a bird's eye view
 // of components dependent on the z-axis and are designed to all work together.
 
+// scss-docs-start zindex-stack
 $zindex-dropdown:                   1000 !default;
 $zindex-sticky:                     1020 !default;
 $zindex-fixed:                      1030 !default;
@@ -802,6 +807,7 @@ $zindex-modal-backdrop:             1040 !default;
 $zindex-modal:                      1050 !default;
 $zindex-popover:                    1060 !default;
 $zindex-tooltip:                    1070 !default;
+// scss-docs-end zindex-stack
 
 
 // Navs

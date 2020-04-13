@@ -11,20 +11,6 @@ These higher values start at an arbitrary number, high and specific enough to id
 
 We don't encourage customization of these individual values; should you change one, you likely need to change them all.
 
-{{< highlight scss >}}
-{{< zindex.inline >}}
-{{- $file := readFile "scss/_variables.scss" -}}
-{{- $matches := findRE `\$zindex\-.+;` $file -}}
-
-{{- if (eq (len $matches) 0) -}}
-{{- errorf "Got no matches for $zindex- in %q!" $.Page.Path -}}
-{{- end -}}
-
-{{- range $matches }}
-{{ . | replaceRE "\\s{13}" "    " }}
-{{- end -}}
-
-{{< /zindex.inline >}}
-{{< /highlight >}}
+{{< scss-docs name="zindex-stack" file="scss/_variables.scss" >}}
 
 To handle overlapping borders within components (e.g., buttons and inputs in input groups), we use low single digit `z-index` values of `1`, `2`, and `3` for default, hover, and active states. On hover/focus/active, we bring a particular element to the forefront with a higher `z-index` value to show their border over the sibling elements.

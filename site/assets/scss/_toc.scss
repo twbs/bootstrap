@@ -1,6 +1,6 @@
-// stylelint-disable selector-max-type, selector-max-compound-selectors
+// stylelint-disable selector-max-type
 
-.bd-toc-wrap {
+.bd-toc {
   @include media-breakpoint-up(lg) {
     @supports (position: sticky) {
       position: sticky;
@@ -11,34 +11,34 @@
       overflow-y: auto;
     }
   }
-}
 
-.bd-toc nav {
-  @include font-size(.875rem);
-
-  ul {
-    padding-left: 0;
-    list-style: none;
+  nav {
+    @include font-size(.875rem);
 
     ul {
-      padding-left: 1rem;
-      margin-top: .25rem;
+      padding-left: 0;
+      list-style: none;
+
+      ul {
+        padding-left: 1rem;
+        margin-top: .25rem;
+      }
     }
-  }
 
-  li {
-    margin-bottom: .25rem;
-  }
+    li {
+      margin-bottom: .25rem;
+    }
 
-  a {
-    color: inherit;
-  }
+    a {
+      color: inherit;
 
-  a:not(:hover) {
-    text-decoration: none;
-  }
+      &:not(:hover) {
+        text-decoration: none;
+      }
 
-  a code {
-    font: inherit;
+      code {
+        font: inherit;
+      }
+    }
   }
 }
