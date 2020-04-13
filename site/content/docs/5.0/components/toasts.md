@@ -98,6 +98,60 @@ When you have multiple toasts, we default to vertically stacking them in a reada
 </div>
 {{< /example >}}
 
+### Custom content
+
+Customize your toasts by removing sub-components, tweaking with [utilities]({{< docsref "/utilities/api" >}}), or adding your own markup. Here we've created a simpler toast by removing the default `.toast-header`, adding a custom hide icon from [Bootstrap Icons](https://icons.getbootstrap.com), and using some [flexbox utilities]({{< docsref "/utilities/flex" >}}) to adjust the layout.
+
+{{< example class="bg-light" >}}
+<div class="toast d-flex" role="alert" aria-live="assertive" aria-atomic="true">
+  <div class="toast-body">
+    Hello, world! This is a toast message.
+  </div>
+  <button type="button" class="ml-auto p-2 close" data-dismiss="toast" aria-label="Close">
+    <span aria-hidden="true">
+      <svg class="bi bi-x" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"/>
+        <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"/>
+      </svg>
+    </span>
+  </button>
+</div>
+{{< /example >}}
+
+Alternatively, you can also add additional controls and components to toasts.
+
+{{< example class="bg-light" >}}
+<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+  <div class="toast-body">
+    Hello, world! This is a toast message.
+    <div class="mt-2 pt-2 border-top">
+      <button type="button" class="btn btn-primary btn-sm">Take action</button>
+      <button type="button" class="btn btn-secondary btn-sm" data-dismiss="toast">Close</button>
+    </div>
+  </div>
+</div>
+{{< /example >}}
+
+### Color schemes
+
+Building on the above example, you create different toast color schemes with our [color utilities]({{< docsref "/utilities/colors" >}}). Here we've added `.bg-primary` and `.text-white` to the `.toast`, and then added `.text-white` to our close button.
+
+{{< example class="bg-light" >}}
+<div class="toast d-flex bg-primary text-white" role="alert" aria-live="assertive" aria-atomic="true">
+  <div class="toast-body">
+    Hello, world! This is a toast message.
+  </div>
+  <button type="button" class="ml-auto p-2 close text-white" data-dismiss="toast" aria-label="Close">
+    <span aria-hidden="true">
+      <svg class="bi bi-x" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"/>
+        <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"/>
+      </svg>
+    </span>
+  </button>
+</div>
+{{< /example >}}
+
 ## Placement
 
 Place toasts with custom CSS as you need them. The top right is often used for notifications, as is the top middle. If you're only ever going to show one toast at a time, put the positioning styles right on the `.toast`.
