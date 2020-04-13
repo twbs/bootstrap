@@ -57,7 +57,7 @@ GEM
       mini_portile2 (~> 2.4.0)
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
-    public_suffix (4.0.3)
+    public_suffix (4.0.4)
     rb-fsevent (0.10.3)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
