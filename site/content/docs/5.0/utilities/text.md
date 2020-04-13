@@ -63,6 +63,23 @@ Transform text in components with text capitalization classes.
 
 Note how `.text-capitalize` only changes the first letter of each word, leaving the case of any other letters unaffected.
 
+## Font size
+
+Quickly change the `font-size` of text. While our heading classes (e.g., `.h1`–`.h6`) apply `font-size`, `font-weight`, and `line-height`, these utilities _only_ apply `font-size`.
+
+{{< example >}}
+<p class="fs-1">.fs-1 text</p>
+<p class="fs-2">.fs-2 text</p>
+<p class="fs-3">.fs-3 text</p>
+<p class="fs-4">.fs-4 text</p>
+<p class="fs-5">.fs-5 text</p>
+<p class="fs-6">.fs-6 text</p>
+{{< /example >}}
+
+Customize your available `font-size`s by modifying the `$font-sizes` Sass map.
+
+{{< scss-docs name="font-sizes" file="scss/_variables.scss" >}}
+
 ## Font weight and italics
 
 Quickly change the weight (boldness) of text or italicize text.
