@@ -15,47 +15,20 @@
 (function () {
   'use strict'
 
-  function makeArray(list) {
-    return [].slice.call(list)
-  }
-
-  (function () {
-    var checkbox = document.getElementById('flexCheckIndeterminate')
-
-    if (!checkbox) {
-      return
-    }
-
-    checkbox.indeterminate = true
-  })()
-
-  makeArray(document.querySelectorAll('.js-sidenav-group'))
-    .forEach(function (sidenavGroup) {
-      var groupHasLinks = Boolean(sidenavGroup.querySelector('li'))
-      var groupLink = sidenavGroup.querySelector('a')
-
-      if (groupHasLinks) {
-        groupLink.addEventListener('click', function (e) {
-          e.preventDefault()
-          e.target.parentNode.classList.toggle('active')
-        }, true)
-      }
-    })
-
   // Tooltip and popover demos
-  makeArray(document.querySelectorAll('.tooltip-demo'))
+  document.querySelectorAll('.tooltip-demo')
     .forEach(function (tooltip) {
       new bootstrap.Tooltip(tooltip, {
         selector: '[data-toggle="tooltip"]'
       })
     })
 
-  makeArray(document.querySelectorAll('[data-toggle="popover"]'))
+  document.querySelectorAll('[data-toggle="popover"]')
     .forEach(function (popover) {
       new bootstrap.Popover(popover)
     })
 
-  makeArray(document.querySelectorAll('.toast'))
+  document.querySelectorAll('.toast')
     .forEach(function (toastNode) {
       var toast = new bootstrap.Toast(toastNode, {
         autohide: false
@@ -65,24 +38,24 @@
     })
 
   // Demos within modals
-  makeArray(document.querySelectorAll('.tooltip-test'))
+  document.querySelectorAll('.tooltip-test')
     .forEach(function (tooltip) {
       new bootstrap.Tooltip(tooltip)
     })
 
-  makeArray(document.querySelectorAll('.popover-test'))
+  document.querySelectorAll('.popover-test')
     .forEach(function (popover) {
       new bootstrap.Popover(popover)
     })
 
   // Indeterminate checkbox example
-  makeArray(document.querySelectorAll('.bd-example-indeterminate [type="checkbox"]'))
+  document.querySelectorAll('.bd-example-indeterminate [type="checkbox"]')
     .forEach(function (checkbox) {
       checkbox.indeterminate = true
     })
 
   // Disable empty links in docs examples
-  makeArray(document.querySelectorAll('.bd-content [href="#"]'))
+  document.querySelectorAll('.bd-content [href="#"]')
     .forEach(function (link) {
       link.addEventListener('click', function (e) {
         e.preventDefault()
@@ -118,12 +91,12 @@
 
   // Insert copy to clipboard button before .highlight
   var btnHtml = '<div class="bd-clipboard"><button type="button" class="btn-clipboard" title="Copy to clipboard">Copy</button></div>'
-  makeArray(document.querySelectorAll('figure.highlight, div.highlight'))
+  document.querySelectorAll('figure.highlight, div.highlight')
     .forEach(function (element) {
       element.insertAdjacentHTML('beforebegin', btnHtml)
     })
 
-  makeArray(document.querySelectorAll('.btn-clipboard'))
+  document.querySelectorAll('.btn-clipboard')
     .forEach(function (btn) {
       var tooltipBtn = new bootstrap.Tooltip(btn)
 

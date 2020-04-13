@@ -41,11 +41,11 @@ jobs:
       - name: Run tests
         run: npm test
 
-      - name: Run bundlesize
-        run: npm run bundlesize
+      - name: Run bundlewatch
+        run: npm run bundlewatch
         if: matrix.node == 10
         env:
-          BUNDLESIZE_GITHUB_TOKEN: "${{ secrets.BUNDLESIZE_GITHUB_TOKEN }}"
+          BUNDLEWATCH_GITHUB_TOKEN: "${{ secrets.BUNDLEWATCH_GITHUB_TOKEN }}"
 
       - name: Run BrowserStack tests
         run: npm run js-test-cloud

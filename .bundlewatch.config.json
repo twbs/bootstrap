@@ -56,5 +56,11 @@
       "path": "./dist/js/bootstrap.min.js",
       "maxSize": "16.5 kB"
     }
-  ]
+  ],
+  "ci": {
+    "trackBranches": [
+      "master",
+      "v4-dev"
+    ]
+  }
 }

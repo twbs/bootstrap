@@ -1,82 +1,67 @@
-// stylelint-disable declaration-no-important
-
 .bd-links {
-  @include media-breakpoint-up(md) {
-    @supports (position: sticky) {
-      position: sticky;
-      top: 5rem;
-      height: subtract(100vh, 7rem);
-      overflow-y: auto;
-    }
-  }
-
-  // Override collapse behaviors
-  @include media-breakpoint-up(md) {
-    display: block !important;
-  }
-}
-
-:not(.active) > .bd-sidenav {
-  display: none;
-}
-
-.bd-sidenav-group-link {
-  padding: .25rem .625rem .25rem .5rem;
   font-weight: 600;
-  color: rgba($black, .65);
-  text-decoration: none;
-  @include border-radius(.25rem);
 
-  > * { pointer-events: none; }
-
-  &:hover,
-  &:focus {
-    color: rgba($black, .85);
-    background-color: rgba($bd-purple-bright, .1);
-  }
-}
-
-.bd-sidenav-group {
-  &.has-children .bd-sidenav-group-link::before {
-    display: inline-block;
-    margin-right: .25rem;
-    line-height: 0; // Align in the middle
-    content: escape-svg($sidebar-collapse-icon);
+  @include media-breakpoint-up(md) {
+    position: sticky;
+    top: 5rem;
+    // Override collapse behaviors
+    // stylelint-disable-next-line declaration-no-important
+    display: block !important;
+    height: subtract(100vh, 7rem);
+    // Prevent focus styles to be cut off:
+    padding-left: .25rem;
+    margin-left: -.25rem;
+    overflow-y: auto;
   }
 
-  &.active {
-    .bd-sidenav-group-link::before {
-      transform: rotate(90deg);
-    }
-
-    > .bd-sidenav-group-link {
-      color: rgba($black, .85);
-    }
-  }
-}
-
-// All levels of nav
-.bd-sidebar .nav {
-  padding-left: 1.25rem;
-
-  > li > a {
-    display: inline-block;
-    padding: .25rem .5rem;
-    @include font-size(.875rem);
+  a {
+    display: inline-flex;
+    align-items: center;
+    padding: .1875rem .5rem;
+    margin-top: .125rem;
     color: rgba($black, .65);
-    text-decoration: none;
+    text-decoration: if($link-decoration == none, null, none);
     @include border-radius(.25rem);
 
     &:hover,
     &:focus {
       color: rgba($black, .85);
+      text-decoration: if($link-hover-decoration == underline, none, null);
       background-color: rgba($bd-purple-bright, .1);
+    }
+
+    // Indent if there's no submenu
+    &:only-child {
+      margin-left: 1.25rem;
+    }
+
+    // Add chevron if there's a submenu
+    &:not(:only-child) {
+      &::before {
+        width: 1.25em;
+        line-height: 0; // Align in the middle
+        content: escape-svg($sidebar-collapse-icon);
+        @include transition(transform .35s ease);
+        transform-origin: .5em 50%;
+      }
+
+      &:not(.collapsed) {
+        color: rgba($black, .85);
+
+        &::before {
+          transform: rotate(90deg);
+        }
+      }
+    }
+
+    // Adjust font size and font weights in submenu
+    + ul {
+      @include font-size(.875rem);
+      font-weight: 400;
     }
   }
 
-  > .active > a,
-  > .active:hover > a,
-  > .active:focus > a {
+  .active {
     font-weight: 600;
     color: rgba($black, .85);
   }

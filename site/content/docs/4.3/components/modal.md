@@ -678,6 +678,168 @@ Our default modal without modifier class constitutes the "medium" size modal.
   </div>
 </div>
 
+## Fullscreen Modal
+
+Another override is the option to pop up a modal that covers the user viewport, available via modifier classes that are placed on a `.modal-dialog`.
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Class</th>
+      <th>Availability</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>.modal-fullscreen</code></td>
+      <td>Always</td>
+    </tr>
+    <tr>
+      <td><code>.modal-fullscreen-sm-down</code></td>
+      <td><code>Below 576px</code></td>
+    </tr>
+    <tr>
+      <td><code>.modal-fullscreen-md-down</code></td>
+      <td><code>Below 768px</code></td>
+    </tr>
+    <tr>
+      <td><code>.modal-fullscreen-lg-down</code></td>
+      <td><code>Below 992px</code></td>
+    </tr>
+    <tr>
+      <td><code>.modal-fullscreen-xl-down</code></td>
+      <td><code>Below 1200px</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="bd-example">
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalFullscreen">Full screen</button>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalFullscreenSm">Full screen below sm</button>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalFullscreenMd">Full screen below md</button>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalFullscreenLg">Full screen below lg</button>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalFullscreenXl">Full screen below xl</button>
+</div>
+
+{{< highlight html >}}
+<!-- Full screen modal -->
+<div class="modal-dialog modal-fullscreen-sm-down">
+  ...
+</div>
+{{< /highlight >}}
+
+<div class="modal fade" id="exampleModalFullscreen" tabindex="-1" role="dialog" aria-labelledby="exampleModalFullscreenLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title h4" id="exampleModalFullscreenLabel">Full screen modal</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+        <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+        <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModalFullscreenSm" tabindex="-1" role="dialog" aria-labelledby="exampleModalFullscreenSmLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen-sm-down" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title h4" id="exampleModalFullscreenSmLabel">Full screen below sm</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModalFullscreenMd" tabindex="-1" role="dialog" aria-labelledby="exampleModalFullscreenMdLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen-md-down" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title h4" id="exampleModalFullscreenMdLabel">Full screen below md</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModalFullscreenLg" tabindex="-1" role="dialog" aria-labelledby="exampleModalFullscreenLgLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen-lg-down" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title h4" id="exampleModalFullscreenLgLabel">Full screen below lg</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModalFullscreenXl" tabindex="-1" role="dialog" aria-labelledby="exampleModalFullscreenXlLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen-xl-down" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title h4" id="exampleModalFullscreenXlLabel">Full screen below xl</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 ## Usage
 
 The modal plugin toggles your hidden content on demand, via data attributes or JavaScript. It also adds `.modal-open` to the `<body>` to override default scrolling behavior and generates a `.modal-backdrop` to provide a click area for dismissing shown modals when clicking outside the modal.

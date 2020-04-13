@@ -24,11 +24,11 @@ Feel free to build your forms however you like, with `<fieldset>`s, `<div>`s, or
 
 {{< example >}}
 <div class="mb-3">
-  <label for="formGroupExampleInput">Example label</label>
+  <label for="formGroupExampleInput" class="form-label">Example label</label>
   <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder">
 </div>
 <div class="mb-3">
-  <label for="formGroupExampleInput2">Another label</label>
+  <label for="formGroupExampleInput2" class="form-label">Another label</label>
   <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input placeholder">
 </div>
 {{< /example >}}
@@ -68,34 +68,34 @@ More complex layouts can also be created with the grid system.
 {{< example >}}
 <form class="row g-3">
   <div class="col-md-6">
-    <label for="inputEmail4">Email</label>
+    <label for="inputEmail4" class="form-label">Email</label>
     <input type="email" class="form-control" id="inputEmail4">
   </div>
   <div class="col-md-6">
-    <label for="inputPassword4">Password</label>
+    <label for="inputPassword4" class="form-label">Password</label>
     <input type="password" class="form-control" id="inputPassword4">
   </div>
   <div class="col-12">
-    <label for="inputAddress">Address</label>
+    <label for="inputAddress" class="form-label">Address</label>
     <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
   </div>
   <div class="col-12">
-    <label for="inputAddress2">Address 2</label>
+    <label for="inputAddress2" class="form-label">Address 2</label>
     <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
   </div>
   <div class="col-md-6">
-    <label for="inputCity">City</label>
+    <label for="inputCity" class="form-label">City</label>
     <input type="text" class="form-control" id="inputCity">
   </div>
   <div class="col-md-4">
-    <label for="inputState">State</label>
+    <label for="inputState" class="form-label">State</label>
     <select id="inputState" class="form-select">
       <option selected>Choose...</option>
       <option>...</option>
     </select>
   </div>
   <div class="col-md-2">
-    <label for="inputZip">Zip</label>
+    <label for="inputZip" class="form-label">Zip</label>
     <input type="text" class="form-control" id="inputZip">
   </div>
   <div class="col-12">

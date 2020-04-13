@@ -9,6 +9,7 @@
   // No need to set list-style: none; since .list-group-item is block level
   padding-left: 0; // reset padding because ul and ol
   margin-bottom: 0;
+  @include border-radius($list-group-border-radius);
 }
 
 
@@ -46,18 +47,17 @@
   position: relative;
   display: block;
   padding: $list-group-item-padding-y $list-group-item-padding-x;
-  margin-bottom: 0; // for <label> variations
   color: $list-group-color;
   text-decoration: if($link-decoration == none, null, none);
   background-color: $list-group-bg;
   border: $list-group-border-width solid $list-group-border-color;
 
   &:first-child {
-    @include border-top-radius($list-group-border-radius);
+    @include border-top-radius(inherit);
   }
 
   &:last-child {
-    @include border-bottom-radius($list-group-border-radius);
+    @include border-bottom-radius(inherit);
   }
 
   &.disabled,
@@ -133,29 +133,25 @@
 // useful within other components (e.g., cards).
 
 .list-group-flush {
+  @include border-radius(0);
+
   .list-group-item {
-    border-right-width: 0;
-    border-left-width: 0;
-    @include border-radius(0);
+    border-width: 0 0 $list-group-border-width;
 
-    &:first-child {
-      border-top-width: 0;
-    }
-  }
-
-  &:last-child {
-    .list-group-item:last-child {
+    &:last-child {
       border-bottom-width: 0;
     }
   }
 }
 
 
-// Contextual variants
+// scss-docs-start list-group-modifiers
+// List group contextual variants
 //
 // Add modifier classes to change text and background color on individual items.
 // Organizationally, this must come after the `:hover` states.
 
 @each $color, $value in $theme-colors {
-  @include list-group-item-variant($color, color-level($value, -9), color-level($value, 6));
+  @include list-group-item-variant($color, color-level($value, $list-group-item-bg-level), color-level($value, $list-group-item-color-level));
 }
+// scss-docs-end list-group-modifiers

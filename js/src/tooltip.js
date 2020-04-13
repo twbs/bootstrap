@@ -400,8 +400,7 @@ class Tooltip {
   setContent() {
     const tip = this.getTipElement()
     this.setElementContent(SelectorEngine.findOne(SELECTOR_TOOLTIP_INNER, tip), this.getTitle())
-    tip.classList.remove(CLASS_NAME_FADE)
-    tip.classList.remove(CLASS_NAME_SHOW)
+    tip.classList.remove(CLASS_NAME_FADE, CLASS_NAME_SHOW)
   }
 
   setElementContent(element, content) {
@@ -421,7 +420,7 @@ class Tooltip {
           element.appendChild(content)
         }
       } else {
-        element.innerText = content.textContent
+        element.textContent = content.textContent
       }
 
       return
@@ -434,7 +433,7 @@ class Tooltip {
 
       element.innerHTML = content
     } else {
-      element.innerText = content
+      element.textContent = content
     }
   }
 

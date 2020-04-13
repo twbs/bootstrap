@@ -407,7 +407,7 @@ Table cells of `<thead>` are always vertical aligned to the bottom. Table cells 
       <tr>
         <th scope="col" class="w-25">Heading 1</th>
         <th scope="col" class="w-25">Heading 2</th>
-        <th scope="col" class="w-25">Heading 2</th>
+        <th scope="col" class="w-25">Heading 3</th>
         <th scope="col" class="w-25">Heading 4</th>
       </tr>
     </thead>

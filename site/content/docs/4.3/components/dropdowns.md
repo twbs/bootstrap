@@ -690,11 +690,11 @@ Put a form within a dropdown menu, or make it into a dropdown menu, and use [mar
 <div class="dropdown-menu">
   <form class="px-4 py-3">
     <div class="mb-3">
-      <label for="exampleDropdownFormEmail1">Email address</label>
+      <label for="exampleDropdownFormEmail1" class="form-label">Email address</label>
       <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
     </div>
     <div class="mb-3">
-      <label for="exampleDropdownFormPassword1">Password</label>
+      <label for="exampleDropdownFormPassword1" class="form-label">Password</label>
       <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
     </div>
     <div class="mb-3">
@@ -716,11 +716,11 @@ Put a form within a dropdown menu, or make it into a dropdown menu, and use [mar
 {{< example >}}
 <form class="dropdown-menu p-4">
   <div class="mb-3">
-    <label for="exampleDropdownFormEmail2">Email address</label>
+    <label for="exampleDropdownFormEmail2" class="form-label">Email address</label>
     <input type="email" class="form-control" id="exampleDropdownFormEmail2" placeholder="email@example.com">
   </div>
   <div class="mb-3">
-    <label for="exampleDropdownFormPassword2">Password</label>
+    <label for="exampleDropdownFormPassword2" class="form-label">Password</label>
     <input type="password" class="form-control" id="exampleDropdownFormPassword2" placeholder="Password">
   </div>
   <div class="mb-3">

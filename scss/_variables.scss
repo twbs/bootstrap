@@ -320,13 +320,13 @@ $border-width:                1px !default;
 $border-color:                $gray-300 !default;
 
 $border-radius:               .25rem !default;
-$border-radius-lg:            .3rem !default;
 $border-radius-sm:            .2rem !default;
+$border-radius-lg:            .3rem !default;
 
 $rounded-pill:                50rem !default;
 
-$box-shadow-sm:               0 .125rem .25rem rgba($black, .075) !default;
 $box-shadow:                  0 .5rem 1rem rgba($black, .15) !default;
+$box-shadow-sm:               0 .125rem .25rem rgba($black, .075) !default;
 $box-shadow-lg:               0 1rem 3rem rgba($black, .175) !default;
 $box-shadow-inset:            inset 0 1px 2px rgba($black, .075) !default;
 
@@ -341,6 +341,7 @@ $transition-base:             all .2s ease-in-out !default;
 $transition-fade:             opacity .15s linear !default;
 $transition-collapse:         height .35s ease !default;
 
+// scss-docs-start embed-responsive-aspect-ratios
 $embed-responsive-aspect-ratios: (
   "21by9": (
     x: 21,
@@ -359,6 +360,7 @@ $embed-responsive-aspect-ratios: (
     y: 1
   )
 ) !default;
+// scss-docs-end embed-responsive-aspect-ratios
 
 // Typography
 //
@@ -367,15 +369,15 @@ $embed-responsive-aspect-ratios: (
 // stylelint-disable value-keyword-case
 $font-family-sans-serif:      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
 $font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
-$font-family-base:            $font-family-sans-serif !default;
+$font-family-base:            var(--font-family-sans-serif) !default;
 // stylelint-enable value-keyword-case
 
 // $font-size-root effects the value of `rem`, which is used for as well font sizes, paddings and margins
 // $font-size-base effects the font size of the body text
 $font-size-root:              null !default;
 $font-size-base:              1rem !default; // Assumes the browser default, typically `16px`
-$font-size-lg:                $font-size-base * 1.25 !default;
 $font-size-sm:                $font-size-base * .875 !default;
+$font-size-lg:                $font-size-base * 1.25 !default;
 
 $font-weight-lighter:         lighter !default;
 $font-weight-light:           300 !default;
@@ -386,8 +388,8 @@ $font-weight-bolder:          bolder !default;
 $font-weight-base:            $font-weight-normal !default;
 
 $line-height-base:            1.5 !default;
-$line-height-lg:              2 !default;
 $line-height-sm:              1.25 !default;
+$line-height-lg:              2 !default;
 
 $h1-font-size:                $font-size-base * 2.5 !default;
 $h2-font-size:                $font-size-base * 2 !default;
@@ -549,15 +551,19 @@ $btn-block-spacing-y:         .5rem !default;
 
 // Allows for customizing button radius independently from global border radius
 $btn-border-radius:           $border-radius !default;
-$btn-border-radius-lg:        $border-radius-lg !default;
 $btn-border-radius-sm:        $border-radius-sm !default;
+$btn-border-radius-lg:        $border-radius-lg !default;
 
 $btn-transition:              color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
 
 
 // Forms
 
-$label-margin-bottom:                   .5rem !default;
+$form-label-margin-bottom:              .5rem !default;
+$form-label-font-size:                  null !default;
+$form-label-font-style:                 null !default;
+$form-label-font-weight:                null !default;
+$form-label-color:                      null !default;
 
 $input-padding-y:                       $input-btn-padding-y !default;
 $input-padding-x:                       $input-btn-padding-x !default;
@@ -584,8 +590,8 @@ $input-border-width:                    $input-btn-border-width !default;
 $input-box-shadow:                      $box-shadow-inset !default;
 
 $input-border-radius:                   $border-radius !default;
-$input-border-radius-lg:                $border-radius-lg !default;
 $input-border-radius-sm:                $border-radius-sm !default;
+$input-border-radius-lg:                $border-radius-lg !default;
 
 $input-focus-bg:                        $input-bg !default;
 $input-focus-border-color:              lighten($component-active-bg, 25%) !default;
@@ -615,6 +621,7 @@ $form-check-padding-left:                 $form-check-input-width + .5em !defaul
 $form-check-margin-bottom:                .125rem !default;
 $form-check-label-color:                  null !default;
 $form-check-label-cursor:                 null !default;
+$form-check-transition:                   background-color .15s ease-in-out, background-position .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
 
 $form-check-input-active-filter:          brightness(90%) !default;
 
@@ -648,8 +655,6 @@ $form-switch-padding-left:        $form-switch-width + .5em !default;
 $form-switch-bg-image:            url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{$form-switch-color}'/></svg>") !default;
 $form-switch-bg-size:             contain !default;
 $form-switch-border-radius:       $form-switch-width !default;
-$form-switch-transition:          .2s ease-in-out !default;
-$form-switch-transition-property: background-position, background-color !default;
 
 $form-switch-focus-color:         hsla(211, 100%, 75%, 1) !default;
 $form-switch-focus-bg-image:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{$form-switch-focus-color}'/></svg>") !default;
@@ -770,6 +775,7 @@ $form-feedback-icon-valid:          url("data:image/svg+xml,<svg xmlns='http://w
 $form-feedback-icon-invalid-color:  $form-feedback-invalid-color !default;
 $form-feedback-icon-invalid:        url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='#{$form-feedback-icon-invalid-color}' viewBox='0 0 12 12'><circle cx='6' cy='6' r='4.5'/><path stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/><circle cx='6' cy='8.2' r='.6' fill='#{$form-feedback-icon-invalid-color}' stroke='none'/></svg>") !default;
 
+// scss-docs-start form-validation-states
 $form-validation-states: (
   "valid": (
     "color": $form-feedback-valid-color,
@@ -780,6 +786,7 @@ $form-validation-states: (
     "icon": $form-feedback-icon-invalid
   )
 ) !default;
+// scss-docs-end form-validation-states
 
 // Z-index master list
 //
@@ -799,6 +806,7 @@ $zindex-tooltip:                    1070 !default;
 
 $nav-link-padding-y:                .5rem !default;
 $nav-link-padding-x:                1rem !default;
+$nav-link-transition:               color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out !default;
 $nav-link-disabled-color:           $gray-600 !default;
 
 $nav-tabs-border-color:             $gray-300 !default;
@@ -1055,10 +1063,10 @@ $modal-header-padding-y:            1rem !default;
 $modal-header-padding-x:            1rem !default;
 $modal-header-padding:              $modal-header-padding-y $modal-header-padding-x !default; // Keep this for backwards compatibility
 
-$modal-xl:                          1140px !default;
-$modal-lg:                          800px !default;
-$modal-md:                          500px !default;
 $modal-sm:                          300px !default;
+$modal-md:                          500px !default;
+$modal-lg:                          800px !default;
+$modal-xl:                          1140px !default;
 
 $modal-fade-transform:              translate(0, -50px) !default;
 $modal-show-transform:              none !default;
@@ -1105,6 +1113,8 @@ $list-group-border-radius:          $border-radius !default;
 
 $list-group-item-padding-y:         .75rem !default;
 $list-group-item-padding-x:         1.25rem !default;
+$list-group-item-bg-level:          -9 !default;
+$list-group-item-color-level:       6 !default;
 
 $list-group-hover-bg:               $gray-100 !default;
 $list-group-active-color:           $component-active-color !default;

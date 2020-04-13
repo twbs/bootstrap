@@ -382,10 +382,29 @@ describe('Modal', () => {
       modal.show()
     })
 
-    it('should set modal body scroll top to 0 if .modal-dialog-scrollable', done => {
+    it('should set .modal\'s scroll top to 0', done => {
       fixtureEl.innerHTML = [
         '<div class="modal fade">',
-        '  <div class="modal-dialog modal-dialog-scrollable">',
+        '  <div class="modal-dialog">',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const modalEl = fixtureEl.querySelector('.modal')
+      const modal = new Modal(modalEl)
+
+      modalEl.addEventListener('shown.bs.modal', () => {
+        expect(modalEl.scrollTop).toEqual(0)
+        done()
+      })
+
+      modal.show()
+    })
+
+    it('should set modal body scroll top to 0 if modal body do not exists', done => {
+      fixtureEl.innerHTML = [
+        '<div class="modal fade">',
+        '  <div class="modal-dialog">',
         '    <div class="modal-body"></div>',
         '  </div>',
         '</div>'
@@ -397,25 +416,6 @@ describe('Modal', () => {
 
       modalEl.addEventListener('shown.bs.modal', () => {
         expect(modalBody.scrollTop).toEqual(0)
-        done()
-      })
-
-      modal.show()
-    })
-
-    it('should set .modal\'s scroll top to 0 if .modal-dialog-scrollable and modal body do not exists', done => {
-      fixtureEl.innerHTML = [
-        '<div class="modal fade">',
-        '  <div class="modal-dialog modal-dialog-scrollable">',
-        '  </div>',
-        '</div>'
-      ].join('')
-
-      const modalEl = fixtureEl.querySelector('.modal')
-      const modal = new Modal(modalEl)
-
-      modalEl.addEventListener('shown.bs.modal', () => {
-        expect(modalEl.scrollTop).toEqual(0)
         done()
       })
 
