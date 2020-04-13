@@ -237,8 +237,9 @@
     border-color: $custom-select-focus-border-color;
     outline: 0;
     @if $enable-shadows {
-      box-shadow: $custom-select-box-shadow, $custom-select-focus-box-shadow;
+      @include box-shadow($custom-select-box-shadow, $custom-select-focus-box-shadow);
     } @else {
+      // Avoid using mixin so we can pass custom focus shadow properly
       box-shadow: $custom-select-focus-box-shadow;
     }
 
