@@ -405,6 +405,7 @@ $headings-font-weight:        500 !default;
 $headings-line-height:        1.2 !default;
 $headings-color:              null !default;
 
+// scss-docs-start display-headings
 $display-font-sizes: (
   1: 5rem,
   2: 4.5rem,
@@ -413,8 +414,10 @@ $display-font-sizes: (
   5: 3rem,
   6: 2.5rem
 ) !default;
-$display-font-weight:         300 !default;
-$display-line-height:         $headings-line-height !default;
+
+$display-font-weight: 300 !default;
+$display-line-height: $headings-line-height !default;
+// scss-docs-end display-headings
 
 $lead-font-size:              $font-size-base * 1.25 !default;
 $lead-font-weight:            300 !default;

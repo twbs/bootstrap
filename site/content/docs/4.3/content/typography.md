@@ -104,8 +104,6 @@ Use the included utility classes to recreate the small secondary heading text fr
 
 Traditional heading elements are designed to work best in the meat of your page content. When you need a heading to stand out, consider using a **display heading**—a larger, slightly more opinionated heading style.
 
-Display headings are configured via the `$display-font-sizes` Sass map and two variables, `$display-font-weight` and `$display-line-height`.
-
 <div class="bd-example">
   <div class="display-1 pb-3 mb-3 border-bottom">Display 1</div>
   <div class="display-2 pb-3 mb-3 border-bottom">Display 2</div>
@@ -123,6 +121,10 @@ Display headings are configured via the `$display-font-sizes` Sass map and two v
 <h1 class="display-5">Display 5</h1>
 <h1 class="display-6">Display 6</h1>
 {{< /highlight >}}
+
+Display headings are configured via the `$display-font-sizes` Sass map and two variables, `$display-font-weight` and `$display-line-height`.
+
+{{< scss-docs name="display-headings" file="scss/_variables.scss" >}}
 
 ## Lead
 
