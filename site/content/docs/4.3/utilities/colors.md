@@ -39,7 +39,7 @@ Similar to the contextual text color classes, easily set the background of an el
 
 ## Background gradient
 
-When `$enable-gradients` is set to `true` (default is `false`), you can use `.bg-gradient-` utility classes. [Learn about our Sass options]({{< docsref "/getting-started/theming#sass-options" >}}) to enable these classes and more.
+When `$enable-gradients` is set to `true` (default is `false`), you can use `.bg-gradient-` utility classes. [Learn about our Sass options]({{< docsref "/customize/sass" >}}) to enable these classes and more.
 
 {{< markdown >}}
 {{< colors.inline >}}
