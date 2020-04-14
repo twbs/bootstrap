@@ -30,4 +30,8 @@ These Sass loops aren't limited to color maps, either. You can also generate res
 
 {{< scss-docs name="responsive-breakpoints" file="scss/_dropdown.scss" >}}
 
-Should you need to modify your `$grid-breakpoints`, your changes will apply to all the loops iterating over that map.
+Should you modify your `$grid-breakpoints`, your changes will apply to all the loops iterating over that map.
+
+{{< scss-docs name="grid-breakpoints" file="scss/_variables.scss" >}}
+
+For more information and examples on how to modify our Sass maps and variables, please refer to [the Sass section of the Grid documentation]({{< docsref "/layout/grid#sass" >}}).
