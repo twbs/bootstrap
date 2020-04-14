@@ -46,6 +46,8 @@ Changes to our source Sass files and compiled CSS.
 - `color-yiq()` function and related variables are renamed to `color-contrast()` since it's not related to YIQ colorspace anymore. [See #30168.](https://github.com/twbs/bootstrap/pull/30168/)
   - `$yiq-contrasted-threshold` is renamed `$min-contrast-ratio`.
   - `$yiq-text-dark` and `$yiq-text-light` are respectively renamed `$color-contrast-dark` and `$color-contrast-light`.
+- Linear gradients are simplified when gradients are enabled and therefore, `gradient-bg()` now only accepts an optional `$color` parameter.
+- `bg-gradient-variant()` mixin is removed since the `.bg-gradient` class can now be used to add gradients to elements instead of the `.bg-gradient-*` classes.
 
 ## JavaScript
 

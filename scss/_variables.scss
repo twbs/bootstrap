@@ -222,6 +222,11 @@ $enable-negative-margins:     false !default;
 $enable-deprecation-messages: true !default;
 $enable-important-utilities:  true !default;
 
+// Gradient
+//
+// The gradient which is added to components if `$enable-gradients` is `true`
+// This gradient is also added to elements with `.bg-gradient`
+$gradient: linear-gradient(180deg, rgba($white, .15), rgba($white, 0)) !default;
 
 // Spacing
 //
