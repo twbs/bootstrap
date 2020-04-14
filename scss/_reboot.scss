@@ -463,7 +463,7 @@ button,
 [type="submit"] {
   -webkit-appearance: button; // 2
 
-  @if $enable-pointer-cursor-for-buttons {
+  @if $enable-button-pointers {
     &:not(:disabled) {
       cursor: pointer; // 3
     }
