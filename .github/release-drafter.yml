@@ -14,14 +14,26 @@ categories:
       - 'fix'
       - 'bugfix'
       - 'bug'
+  - title: '🎨 CSS'
+    labels:
+      - 'css'
+  - title: '☕️ JavaScript'
+    labels:
+      - 'js'
   - title: '📖 Docs'
     labels:
       - 'docs'
+  - title: '🌎 Accessibility'
+    labels:
+      - 'accessibility'
   - title: '📦 Dependencies'
     labels:
       - 'dependencies'
-  - title: '🧰 Maintenance'
-    label: 'chore'
+  - title: '🧰 Misc'
+    labels:
+      - 'build'
+      - 'meta'
+      - 'chore'
 change-template: '- #$NUMBER: $TITLE'
 template: |
   ## Changes
