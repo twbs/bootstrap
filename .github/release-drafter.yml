@@ -1,5 +1,5 @@
-name-template: 'v$NEXT_PATCH_VERSION'
-tag-template: 'v$NEXT_PATCH_VERSION'
+name-template: 'v$NEXT_MAJOR_VERSION'
+tag-template: 'v$NEXT_MAJOR_VERSION'
 prerelease: true
 exclude-labels:
   - 'skip-changelog'
@@ -26,14 +26,14 @@ categories:
   - title: '🌎 Accessibility'
     labels:
       - 'accessibility'
-  - title: '📦 Dependencies'
-    labels:
-      - 'dependencies'
   - title: '🧰 Misc'
     labels:
       - 'build'
       - 'meta'
       - 'chore'
+  - title: '📦 Dependencies'
+    labels:
+      - 'dependencies'
 change-template: '- #$NUMBER: $TITLE'
 template: |
   ## Changes
