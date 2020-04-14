@@ -411,16 +411,19 @@ $headings-font-weight:        500 !default;
 $headings-line-height:        1.2 !default;
 $headings-color:              null !default;
 
-$display1-size:               6rem !default;
-$display2-size:               5.5rem !default;
-$display3-size:               4.5rem !default;
-$display4-size:               3.5rem !default;
+// scss-docs-start display-headings
+$display-font-sizes: (
+  1: 5rem,
+  2: 4.5rem,
+  3: 4rem,
+  4: 3.5rem,
+  5: 3rem,
+  6: 2.5rem
+) !default;
 
-$display1-weight:             300 !default;
-$display2-weight:             300 !default;
-$display3-weight:             300 !default;
-$display4-weight:             300 !default;
-$display-line-height:         $headings-line-height !default;
+$display-font-weight: 300 !default;
+$display-line-height: $headings-line-height !default;
+// scss-docs-end display-headings
 
 $lead-font-size:              $font-size-base * 1.25 !default;
 $lead-font-weight:            300 !default;

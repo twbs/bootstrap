@@ -77,6 +77,13 @@ Changes to Reboot, typography, tables, and more.
 - `.text-*` utilities do not add hover and focus states to links anymore. `.link-*` helper classes can be used instead. [See #29267](https://github.com/twbs/bootstrap/pull/29267)
 - Drop `.text-justify` class. [See #229793](https://github.com/twbs/bootstrap/pull/29793)
 
+## Typography
+
+- Removed `$display-*` variables for a new `$display-font-sizes` Sass map.
+- Removed individiual `$display-*-weight` variables for a single `$display-font-weight`.
+- Added two new `.display-*` heading styles, `.display-5` and `.display-6`.
+- Resized existing display headings for a slightly more consistent set of `font-size`s.
+
 ## Forms
 
 - Rearranged form documentation under its own top-level section.
