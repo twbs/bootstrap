@@ -42,9 +42,9 @@ Changes to our source Sass files and compiled CSS.
 - Line heights are dropped from several components to simplify our codebase. The `button-size()` and `pagination-size()` do not accept line height parameters anymore. [See #29271](https://github.com/twbs/bootstrap/pull/29271)
 - The `button-variant()` mixin now accepts 3 optional color parameters, for each button state, to override the color provided by `color-contrast()`. By default, these parameters will find which color provides more contrast against the button state's background color with `color-contrast()`.
 - The `button-outline-variant()` mixin now accepts an additional argument, `$active-color`, for setting the button's active state text color. By default, this parameter will find which color provides more contrast against the button's active background color with `color-contrast()`.
-- Ditch the Sass map merges, which makes it easier to remove redundant values. Keep in mind you now have to define all values in the Sass maps like `$theme-colors`. Check out how to deal with Sass maps on the [theming documentation]({{< docsref "/getting-started/theming#maps-and-loops" >}}).
-- `color-yiq()` function is renamed to `color-contrast()` since it's not related to YIQ colorspace anymore — [See #30168](https://github.com/twbs/bootstrap/pull/30168/) — and related variables are renamed alongside:
-  - `$yiq-contrasted-threshold` is renamed `$min-contrast-ratio`,
+- Ditch the Sass map merges, which makes it easier to remove redundant values. Keep in mind you now have to define all values in the Sass maps like `$theme-colors`. Check out how to deal with [Sass maps]({{< docsref "/customize/sass#maps-and-loops" >}}).
+- `color-yiq()` function and related variables are renamed to `color-contrast()` since it's not related to YIQ colorspace anymore. [See #30168.](https://github.com/twbs/bootstrap/pull/30168/)
+  - `$yiq-contrasted-threshold` is renamed `$min-contrast-ratio`.
   - `$yiq-text-dark` and `$yiq-text-light` are respectively renamed `$color-contrast-dark` and `$color-contrast-light`.
 
 ## JavaScript
@@ -53,6 +53,14 @@ Changes to our source and compiled JavaScript files.
 
 - Dropped jQuery dependency and rewrote plugins to be in regular JavaScript.
 - Removed underscore from public static methods like `_getInstance()` → `getInstance()`.
+
+## Color system
+
+We've updated the color system that powers Bootstrap to improve color contrast and provide a much more extensive set of colors.
+
+- Updated blue and pink base colors (`-500`) to ensure AA contrast.
+- Added new tints and shades for every color, providing nine separate colors for each base color.
+- To support our color system, we've added new custom `tint()` and `shade()` functions to mix our colors appropriately.
 
 ## Grid and layout
 

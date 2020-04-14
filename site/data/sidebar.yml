@@ -5,12 +5,20 @@
     - title: Contents
     - title: Browsers & devices
     - title: JavaScript
-    - title: Theming
     - title: Build tools
-    # - title: Best practices # TODO: Write this content
     - title: Webpack
     - title: Accessibility
     - title: RFS
+
+- title: Customize
+  pages:
+    - title: Overview
+    - title: Sass
+    - title: Options
+    - title: Color
+    - title: Components
+    - title: CSS variables
+    - title: Optimize
 
 - title: Layout
   pages:
