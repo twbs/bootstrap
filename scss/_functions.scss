@@ -98,42 +98,29 @@ $_luminance-list: .0008 .001 .0011 .0013 .0015 .0017 .002 .0022 .0025 .0027 .003
 
 @function color-contrast($background, $color-contrast-dark: $color-contrast-dark, $color-contrast-light: $color-contrast-light, $min-contrast-ratio: $min-contrast-ratio) {
   $foregrounds: $color-contrast-light, $color-contrast-dark, $white, $black;
-  $contrast-ratios: ();
+  $max-ratio: 0;
+  $max-ratio-color: null;
 
   @each $color in $foregrounds {
     $contrast-ratio: contrast-ratio($background, $color);
     @if $contrast-ratio > $min-contrast-ratio {
       @return $color;
-    } @else {
-      $contrast-ratios: map-merge(($contrast-ratio: $color), $contrast-ratios);
+    } @else if $contrast-ratio > $max-ratio {
+      $max-ratio: $contrast-ratio;
+      $max-ratio-color: $color;
     }
   }
 
   @warn "Found no color leading to #{$min-contrast-ratio}:1 contrast ratio against #{$background}…";
 
-  @return most-contrasted($contrast-ratios);
+  @return $max-ratio-color;
 }
 
 @function contrast-ratio($background, $foreground: $color-contrast-light) {
   $l1: luminance($background);
   $l2: luminance(opaque($background, $foreground));
 
-  $contrast: if($l1 > $l2, ($l1 + .05) / ($l2 + .05), ($l2 + .05) / ($l1 + .05));
-
-  @return $contrast;
-}
-
-// Returns the most contrasted color in a map of insufficiently contrasted colors
-@function most-contrasted($contrast-ratios) {
-  $ratios: ();
-
-  @each $ratio, $color in $contrast-ratios {
-    $ratios: append($ratios, $ratio);
-  }
-
-  $highest-ratio: max($ratios...);
-
-  @return map-get($contrast-ratios, $highest-ratio);
+  @return if($l1 > $l2, ($l1 + .05) / ($l2 + .05), ($l2 + .05) / ($l1 + .05));
 }
 
 // Return WCAG2.0 relative luminance
