@@ -22,18 +22,7 @@ We use a subset of all colors to create a smaller color palette for generating c
 
 All these colors are available as a Sass map, `$theme-colors`.
 
-{{< highlight scss >}}
-$theme-colors: (
-  "primary":    $primary,
-  "secondary":  $secondary,
-  "success":    $success,
-  "info":       $info,
-  "warning":    $warning,
-  "danger":     $danger,
-  "light":      $light,
-  "dark":       $dark
-) !default;
-{{< /highlight >}}
+{{< scss-docs name="theme-colors-map" file="scss/_variables.scss" >}}
 
 Check out [our Sass maps and loops docs]({{< docsref "/customize/sass#maps-and-loops" >}}) for how to modify these colors.
 
@@ -98,23 +87,7 @@ Bootstrap's source Sass files include three maps to help you quickly and easily 
 
 Within `scss/_variables.scss`, you'll find Bootstrap's color variables and Sass map. Here's an example of the `$colors` Sass map:
 
-{{< highlight scss >}}
-$colors: (
-  "blue": $blue,
-  "indigo": $indigo,
-  "purple": $purple,
-  "pink": $pink,
-  "red": $red,
-  "orange": $orange,
-  "yellow": $yellow,
-  "green": $green,
-  "teal": $teal,
-  "cyan": $cyan,
-  "white": $white,
-  "gray": $gray-600,
-  "gray-dark": $gray-800
-) !default;
-{{< /highlight >}}
+{{< scss-docs name="colors-map" file="scss/_variables.scss" >}}
 
 Add, remove, or modify values within the map to update how they're used in many other components. Unfortunately at this time, not _every_ component utilizes this Sass map. Future updates will strive to improve upon this. Until then, plan on making use of the `${color}` variables and this Sass map.
 
