@@ -18,7 +18,7 @@ Since Bootstrap applies `display: block` and `width: 100%` to almost all our for
 
 ## Utilities
 
-[Margin utilities]({{< docsref "/utilities/spacing" >}}) are the easiest way to add some structure to forms. They provide basic grouping of labels, controls, optional help text, and form validation messaging. We recommend sticking to `margin-bottom` utilities, and using a single direction throughout the form for consistency.
+[Margin utilities]({{< docsref "/utilities/spacing" >}}) are the easiest way to add some structure to forms. They provide basic grouping of labels, controls, optional form text, and form validation messaging. We recommend sticking to `margin-bottom` utilities, and using a single direction throughout the form for consistency.
 
 Feel free to build your forms however you like, with `<fieldset>`s, `<div>`s, or nearly any other element.
 

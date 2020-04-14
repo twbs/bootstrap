@@ -565,6 +565,11 @@ $btn-transition:              color .15s ease-in-out, background-color .15s ease
 
 // Forms
 
+$form-text-margin-top:                  .25rem !default;
+$form-text-font-size:                   null !default;
+$form-text-font-style:                  null !default;
+$form-text-color:                       $text-muted !default;
+
 $form-label-margin-bottom:              .5rem !default;
 $form-label-font-size:                  null !default;
 $form-label-font-style:                 null !default;
@@ -668,8 +673,6 @@ $form-switch-focus-bg-image:      url("data:image/svg+xml,<svg xmlns='http://www
 $form-switch-checked-color:       $component-active-color !default;
 $form-switch-checked-bg-image:    url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{$form-switch-checked-color}'/></svg>") !default;
 $form-switch-checked-bg-position: right center !default;
-
-$form-text-margin-top:                  .25rem !default;
 
 $form-check-inline-margin-right:        1rem !default;
 
