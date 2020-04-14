@@ -9,40 +9,40 @@
     {{ partial "docs-navbar" . }}
     {{ partial "docs-subnav" . }}
 
-    <div class="container-xl my-4">
-      <div class="row flex-xl-nowrap">
-        <div class="col-md-3">
-          {{ partial "docs-sidebar" . }}
-        </div>
-
-        <main class="col-md-9 py-md-3 pl-md-5 bd-content">
-          <h1 class="bd-title" id="content">{{ .Title | markdownify }}</h1>
-          <p class="bd-lead">{{ .Page.Params.Description | markdownify }}</p>
-          {{ partial "ads" . }}
-
-          {{ if .Page.Params.sections }}
-            <div class="row my-5">
-              {{ range .Page.Params.sections }}
-                <div class="col-md-6 mb-4">
-                  <a class="d-block text-decoration-none" href="../{{ urlize .title }}/">
-                    <strong class="d-block h5 mb-0">{{ .title }}</strong>
-                    <span class="text-secondary">{{ .description }}</span>
-                  </a>
-                </div>
-              {{ end }}
-            </div>
-          {{ end }}
-
-          {{ if (eq .Page.Params.toc true) }}
-            <strong class="d-block h3 mt-5 mb-3">On this page</strong>
-            <nav class="bd-toc mb-5 text-muted" aria-label="Secondary navigation">
-              {{ .TableOfContents }}
-            </nav>
-          {{ end }}
-
-          {{ .Content }}
-        </main>
+    <div class="container-xxl my-4 bd-layout">
+      <div class="bd-sidebar">
+        {{ partial "docs-sidebar" . }}
       </div>
+
+      <div class="bd-intro pt-md-3 pl-lg-4">
+        <h1 class="bd-title" id="content">{{ .Title | markdownify }}</h1>
+        <p class="bd-lead">{{ .Page.Params.Description | markdownify }}</p>
+        {{ partial "ads" . }}
+      </div>
+
+      {{ if (eq .Page.Params.toc true) }}
+        <div class="bd-toc pl-xl-3 text-muted mb-lg-5">
+          <strong class="d-block h6 my-2 pb-2 border-bottom">On this page</strong>
+          {{ .TableOfContents }}
+        </div>
+      {{ end }}
+
+      <main class="bd-content pl-lg-4">
+        {{ if .Page.Params.sections }}
+          <div class="row g-3">
+            {{ range .Page.Params.sections }}
+            <div class="col-md-6">
+              <a class="d-block text-decoration-none" href="../{{ urlize .title }}/">
+                <strong class="d-block h5 mb-0">{{ .title }}</strong>
+                <span class="text-secondary">{{ .description }}</span>
+              </a>
+            </div>
+            {{ end }}
+          </div>
+        {{ end }}
+
+        {{ .Content }}
+      </main>
     </div>
 
     {{ partial "footer" . }}

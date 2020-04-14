@@ -607,7 +607,7 @@ By default, a dropdown menu is automatically positioned 100% from the top and al
 
 If you want to use responsive alignment, disable dynamic positioning by adding the `data-display="static"` attribute and use the responsive variation classes.
 
-To align **right** the dropdown menu with the given breakpoint or larger, add `.dropdown-menu{-sm|-md|-lg|-xl}-right`.
+To align **right** the dropdown menu with the given breakpoint or larger, add `.dropdown-menu{-sm|-md|-lg|-xl|-xxl}-right`.
 
 {{< example >}}
 <div class="btn-group">
@@ -622,7 +622,7 @@ To align **right** the dropdown menu with the given breakpoint or larger, add `.
 </div>
 {{< /example >}}
 
-To align **left** the dropdown menu with the given breakpoint or larger, add `.dropdown-menu-right` and `.dropdown-menu{-sm|-md|-lg|-xl}-left`.
+To align **left** the dropdown menu with the given breakpoint or larger, add `.dropdown-menu-right` and `.dropdown-menu{-sm|-md|-lg|-xl|-xxl}-left`.
 
 {{< example >}}
 <div class="btn-group">

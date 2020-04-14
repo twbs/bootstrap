@@ -1,6 +1,6 @@
 - breakpoint: xs
   abbr: ""
-  name: Extra small
+  name: X-Small
   min-width: 0px
   container: ""
 
@@ -24,6 +24,12 @@
 
 - breakpoint: xl
   abbr: -xl
-  name: Extra large
+  name: X-Large
   min-width: 1200px
   container: 1140px
+
+- breakpoint: xxl
+  abbr: -xxl
+  name: XX-Large
+  min-width: 1400px
+  container: 1320px
