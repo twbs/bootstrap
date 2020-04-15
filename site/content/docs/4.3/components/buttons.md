@@ -68,11 +68,11 @@ Fancy larger or smaller buttons? Add `.btn-lg` or `.btn-sm` for additional sizes
 <button type="button" class="btn btn-secondary btn-sm">Small button</button>
 {{< /example >}}
 
-Create block level buttons—those that span the full width of a parent—by adding `.btn-block`.
+Create block level buttons—those that span the full width of a parent—with some [utilities]({{< docsref "/utilities/api" >}}). In the below example, we've added `.d-block` and `.w-100` to handle the sizing, and then a quick `.mb-2` on the first button for spacing.
 
 {{< example >}}
-<button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
-<button type="button" class="btn btn-secondary btn-lg btn-block">Block level button</button>
+<button type="button" class="btn btn-primary btn-lg d-block w-100 mb-2">Block level button</button>
+<button type="button" class="btn btn-secondary btn-lg d-block w-100">Block level button</button>
 {{< /example >}}
 
 ## Active state

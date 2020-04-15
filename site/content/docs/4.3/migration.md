@@ -129,6 +129,10 @@ Badges were overhauled to better differentiate themselves from buttons and to be
 - **Todo:** Removed `.badge-pill` for the `.rounded-pill` utility class
 - **Todo:** Removed badge's hover and focus styles for `a.badge` and `button.badge`.
 
+### Buttons
+
+- Removed `.btn-block` as it duplicated functionality of utilities, but in a more limited way. With a utilities based approach, "block buttons" are now easily made responsive.
+
 ### Cards
 
 - Removed the card columns in favor of a Masonry grid [See #28922](https://github.com/twbs/bootstrap/pull/28922).
