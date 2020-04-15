@@ -15,10 +15,11 @@
   display: block;
   padding: $nav-link-padding-y $nav-link-padding-x;
   text-decoration: if($link-decoration == none, null, none);
+  @include transition($nav-link-transition);
 
   &:hover,
   &:focus {
-    text-decoration: none;
+    text-decoration: if($link-hover-decoration == underline, none, null);
   }
 
   // Disabled state lightens text

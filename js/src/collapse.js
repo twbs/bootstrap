@@ -13,7 +13,6 @@ import {
   getElementFromSelector,
   getTransitionDurationFromElement,
   isElement,
-  makeArray,
   reflow,
   typeCheckConfig
 } from './util/index'
@@ -72,16 +71,17 @@ class Collapse {
     this._isTransitioning = false
     this._element = element
     this._config = this._getConfig(config)
-    this._triggerArray = makeArray(SelectorEngine.find(
+    this._triggerArray = SelectorEngine.find(
       `${SELECTOR_DATA_TOGGLE}[href="#${element.id}"],` +
       `${SELECTOR_DATA_TOGGLE}[data-target="#${element.id}"]`
-    ))
+    )
 
-    const toggleList = makeArray(SelectorEngine.find(SELECTOR_DATA_TOGGLE))
+    const toggleList = SelectorEngine.find(SELECTOR_DATA_TOGGLE)
+
     for (let i = 0, len = toggleList.length; i < len; i++) {
       const elem = toggleList[i]
       const selector = getSelectorFromElement(elem)
-      const filterElement = makeArray(SelectorEngine.find(selector))
+      const filterElement = SelectorEngine.find(selector)
         .filter(foundElem => foundElem === element)
 
       if (selector !== null && filterElement.length) {
@@ -133,7 +133,7 @@ class Collapse {
     let activesData
 
     if (this._parent) {
-      actives = makeArray(SelectorEngine.find(SELECTOR_ACTIVES, this._parent))
+      actives = SelectorEngine.find(SELECTOR_ACTIVES, this._parent)
         .filter(elem => {
           if (typeof this._config.parent === 'string') {
             return elem.getAttribute('data-parent') === this._config.parent
@@ -192,8 +192,7 @@ class Collapse {
 
     const complete = () => {
       this._element.classList.remove(CLASS_NAME_COLLAPSING)
-      this._element.classList.add(CLASS_NAME_COLLAPSE)
-      this._element.classList.add(CLASS_NAME_SHOW)
+      this._element.classList.add(CLASS_NAME_COLLAPSE, CLASS_NAME_SHOW)
 
       this._element.style[dimension] = ''
 
@@ -230,8 +229,7 @@ class Collapse {
     reflow(this._element)
 
     this._element.classList.add(CLASS_NAME_COLLAPSING)
-    this._element.classList.remove(CLASS_NAME_COLLAPSE)
-    this._element.classList.remove(CLASS_NAME_SHOW)
+    this._element.classList.remove(CLASS_NAME_COLLAPSE, CLASS_NAME_SHOW)
 
     const triggerArrayLength = this._triggerArray.length
     if (triggerArrayLength > 0) {
@@ -307,7 +305,7 @@ class Collapse {
 
     const selector = `${SELECTOR_DATA_TOGGLE}[data-parent="${parent}"]`
 
-    makeArray(SelectorEngine.find(selector, parent))
+    SelectorEngine.find(selector, parent)
       .forEach(element => {
         const selected = getElementFromSelector(element)
 
@@ -390,7 +388,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
 
   const triggerData = Manipulator.getDataAttributes(this)
   const selector = getSelectorFromElement(this)
-  const selectorElements = makeArray(SelectorEngine.find(selector))
+  const selectorElements = SelectorEngine.find(selector)
 
   selectorElements.forEach(element => {
     const data = Data.getData(element, DATA_KEY)

@@ -122,7 +122,7 @@ $theme-colors: (
 To add a new color to `$theme-colors`, add the new key and value. Keep in mind not to remove the existing colors:
 
 {{< highlight scss >}}
-$my-custom-color: #ffoodd;
+$my-custom-color: #ff00dd;
 
 // Make sure to define `$primary`, `$secondary`, ect.. first
 $theme-colors: (
@@ -172,14 +172,7 @@ In Bootstrap 5, we've dropped the `color()`, `theme-color()` and `gray()` functi
 
 We also have a function for getting a particular _level_ of color. Negative level values will lighten the color, while higher levels will darken.
 
-{{< highlight scss >}}
-@function color-level($color: $primary, $level: 0) {
-  $color-base: if($level > 0, #000, #fff);
-  $level: abs($level);
-
-  @return mix($color-base, $color, $level * $theme-color-interval);
-}
-{{< /highlight >}}
+{{< scss-docs name="color-level" file="scss/_functions.scss" >}}
 
 In practice, you'd call the function and pass in two parameters: the name of the color from `$theme-colors` (e.g., primary or danger) and a numeric level.
 
@@ -191,14 +184,14 @@ In practice, you'd call the function and pass in two parameters: the name of the
 
 #### Color contrast
 
-An additional function we include in Bootstrap is the color contrast function, `color-yiq`. It utilizes the [YIQ color space](https://en.wikipedia.org/wiki/YIQ) to automatically return a light (`#fff`) or dark (`#111`) contrast color based on the specified base color. This function is especially useful for mixins or loops where you're generating multiple classes.
+An additional function we include in Bootstrap is the color contrast function, `color-contrast`. It utilizes the [WCAG 2.0 algorithm](https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests) for calculating contrast thresholds based on [relative luminance](https://www.w3.org/WAI/GL/wiki/Relative_luminance) in a `sRGB` colorspace to automatically return a light (`#fff`) or dark (`#111`) contrast color based on the specified base color. This function is especially useful for mixins or loops where you're generating multiple classes.
 
 For example, to generate color swatches from our `$theme-colors` map:
 
 {{< highlight scss >}}
 @each $color, $value in $theme-colors {
   .swatch-#{$color} {
-    color: color-yiq($value);
+    color: color-contrast($value);
   }
 }
 {{< /highlight >}}
@@ -207,7 +200,7 @@ It can also be used for one-off contrast needs:
 
 {{< highlight scss >}}
 .custom-element {
-  color: color-yiq(#000); // returns `color: #fff`
+  color: color-contrast(#000); // returns `color: #fff`
 }
 {{< /highlight >}}
 
@@ -215,13 +208,19 @@ You can also specify a base color with our color map functions:
 
 {{< highlight scss >}}
 .custom-element {
-  color: color-yiq($dark); // returns `color: #fff`
+  color: color-contrast($dark); // returns `color: #fff`
 }
 {{< /highlight >}}
 
+{{< callout info >}}
+##### Accessibility
+
+In order to meet [WCAG 2.0 accessibility standards for color contrast](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html), authors **must** provide [a contrast ratio of at least 4.5:1](https://www.w3.org/WAI/WCAG20/quickref/20160105/Overview.php#visual-audio-contrast-contrast), with very few exceptions.
+{{< /callout >}}
+
 #### Escape SVG
 
-We use the `escape-svg` function to escape the `<`, `>` and `#` characters for SVG background images. These characters need to be escaped to properly render the background images in IE.
+We use the `escape-svg` function to escape the `<`, `>` and `#` characters for SVG background images.
 
 #### Add and Subtract functions
 
@@ -278,8 +277,9 @@ You can find and customize these variables for key global options in Bootstrap's
 | `$enable-grid-classes`                       | `true` (default) or `false`        | Enables the generation of CSS classes for the grid system (e.g. `.row`, `.col-md-1`, etc.). |
 | `$enable-caret`                              | `true` (default) or `false`        | Enables pseudo element caret on `.dropdown-toggle`. |
 | `$enable-pointer-cursor-for-buttons`         | `true` (default) or `false`        | Add "hand" cursor to non-disabled button elements. |
-| `$enable-rfs`                                | `true` (default)  or `false`       | Globally enables [RFS]({{< docsref "/getting-started/rfs" >}}). |
+| `$enable-rfs`                                | `true` (default) or `false`        | Globally enables [RFS]({{< docsref "/getting-started/rfs" >}}). |
 | `$enable-validation-icons`                   | `true` (default) or `false`        | Enables `background-image` icons within textual inputs and some custom forms for validation states. |
+| `$enable-negative-margins`                   | `true` or `false` (default)        | Enables the generation of [negative margin utilities]({{< docsref "/utilities/spacing#negative-margin" >}}). |
 | `$enable-deprecation-messages`               | `true` or `false` (default)        | Set to `true` to show warnings when using any of the deprecated mixins and functions that are planned to be removed in `v5`. |
 | `$enable-important-utilities`                | `true` (default) or `false`        | Enables the `!important` suffix in utility classes. |
 
@@ -383,37 +383,17 @@ Many of Bootstrap's components and utilities are built with `@each` loops that i
 
 Many of Bootstrap's components are built with a base-modifier class approach. This means the bulk of the styling is contained to a base class (e.g., `.btn`) while style variations are confined to modifier classes (e.g., `.btn-danger`). These modifier classes are built from the `$theme-colors` map to make customizing the number and name of our modifier classes.
 
-Here are two examples of how we loop over the `$theme-colors` map to generate modifiers to the `.alert` component and all our `.bg-*` background utilities.
+Here are two examples of how we loop over the `$theme-colors` map to generate modifiers to the `.alert` and `.list-group` components.
 
-{{< highlight scss >}}
-// Generate alert modifier classes
-@each $color, $value in $theme-colors {
-  .alert-#{$color} {
-    @include alert-variant(color-level($color, -10), color-level($color, -9), color-level($color, 6));
-  }
-}
+{{< scss-docs name="alert-modifiers" file="scss/_alert.scss" >}}
 
-// Generate `.bg-*` color utilities
-@each $color, $value in $theme-colors {
-  @include bg-variant('.bg-#{$color}', $value);
-}
-{{< /highlight >}}
+{{< scss-docs name="list-group-modifiers" file="scss/_list-group.scss" >}}
 
 ### Responsive
 
-These Sass loops aren't limited to color maps, either. You can also generate responsive variations of your components or utilities. Take for example our responsive text alignment utilities where we mix an `@each` loop for the `$grid-breakpoints` Sass map with a media query include.
+These Sass loops aren't limited to color maps, either. You can also generate responsive variations of your components. Take for example our responsive alignment of the dropdowns where we mix an `@each` loop for the `$grid-breakpoints` Sass map with a media query include.
 
-{{< highlight scss >}}
-@each $breakpoint in map-keys($grid-breakpoints) {
-  @include media-breakpoint-up($breakpoint) {
-    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
-
-    .text#{$infix}-left   { text-align: left !important; }
-    .text#{$infix}-right  { text-align: right !important; }
-    .text#{$infix}-center { text-align: center !important; }
-  }
-}
-{{< /highlight >}}
+{{< scss-docs name="responsive-breakpoints" file="scss/_dropdown.scss" >}}
 
 Should you need to modify your `$grid-breakpoints`, your changes will apply to all the loops iterating over that map.
 

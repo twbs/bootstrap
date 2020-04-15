@@ -407,7 +407,7 @@ Table cells of `<thead>` are always vertical aligned to the bottom. Table cells 
       <tr>
         <th scope="col" class="w-25">Heading 1</th>
         <th scope="col" class="w-25">Heading 2</th>
-        <th scope="col" class="w-25">Heading 2</th>
+        <th scope="col" class="w-25">Heading 3</th>
         <th scope="col" class="w-25">Heading 4</th>
       </tr>
     </thead>
@@ -459,15 +459,15 @@ Use contextual classes to color table rows or individual cells.
         <td>Cell</td>
         <td>Cell</td>
       </tr>
-{{< table.inline >}}
-  {{- range (index $.Site.Data "theme-colors") }}
-      <tr class="table-{{ .name }}">
-        <th scope="row">{{ .name | title }}</th>
-        <td>Cell</td>
-        <td>Cell</td>
-      </tr>
-  {{- end -}}
-{{< /table.inline >}}
+      {{< table.inline >}}
+      {{- range (index $.Site.Data "theme-colors") }}
+        <tr class="table-{{ .name }}">
+          <th scope="row">{{ .name | title }}</th>
+          <td>Cell</td>
+          <td>Cell</td>
+        </tr>
+      {{- end -}}
+      {{< /table.inline >}}
     </tbody>
   </table>
 </div>
@@ -683,9 +683,45 @@ A `<caption>` functions like a heading for a table. It helps users with screen r
 </table>
 {{< /example >}}
 
+You can also put the `<caption>` on the top of the table with `.caption-top`.
+
+{{< example >}}
+<table class="table caption-top">
+  <caption>List of users</caption>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
+{{< /example >}}
+
 ## Responsive tables
 
-Responsive tables allow tables to be scrolled horizontally with ease. Make any table responsive across all viewports by wrapping a `.table` with `.table-responsive`. Or, pick a maximum breakpoint with which to have a responsive table up to by using `.table-responsive{-sm|-md|-lg|-xl}`.
+Responsive tables allow tables to be scrolled horizontally with ease. Make any table responsive across all viewports by wrapping a `.table` with `.table-responsive`. Or, pick a maximum breakpoint with which to have a responsive table up to by using `.table-responsive{-sm|-md|-lg|-xl|-xxl}`.
 
 {{< callout warning >}}
 ##### Vertical clipping/truncation
@@ -766,7 +802,7 @@ Across every breakpoint, use `.table-responsive` for horizontally scrolling tabl
 
 ### Breakpoint specific
 
-Use `.table-responsive{-sm|-md|-lg|-xl}` as needed to create responsive tables up to a particular breakpoint. From that breakpoint and up, the table will behave normally and not scroll horizontally.
+Use `.table-responsive{-sm|-md|-lg|-xl|-xxl}` as needed to create responsive tables up to a particular breakpoint. From that breakpoint and up, the table will behave normally and not scroll horizontally.
 
 **These tables may appear broken until their responsive styles apply at specific viewport widths.**
 

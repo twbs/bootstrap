@@ -19,15 +19,18 @@
     margin-left: 0;
   }
 
-  > .list-group:first-child {
-    .list-group-item:first-child {
-      @include border-top-radius($card-border-radius);
-    }
-  }
+  > .list-group {
+    border-top: inherit;
+    border-bottom: inherit;
 
-  > .list-group:last-child {
-    .list-group-item:last-child {
-      @include border-bottom-radius($card-border-radius);
+    &:first-child {
+      border-top-width: 0;
+      @include border-top-radius($card-inner-border-radius);
+    }
+
+    &:last-child  {
+      border-bottom-width: 0;
+      @include border-bottom-radius($card-inner-border-radius);
     }
   }
 }
@@ -36,9 +39,6 @@
   // Enable `flex-grow: 1` for decks and groups so that card blocks take up
   // as much space as possible, ensuring footers are aligned to the bottom.
   flex: 1 1 auto;
-  // Workaround for the image size bug in IE
-  // See: https://github.com/twbs/bootstrap/pull/28855
-  min-height: 1px;
   padding: $card-spacer-y $card-spacer-x;
   color: $card-color;
 }
@@ -90,6 +90,7 @@
 
 .card-footer {
   padding: $card-cap-padding-y $card-cap-padding-x;
+  color: $card-cap-color;
   background-color: $card-cap-bg;
   border-top: $card-border-width solid $card-border-color;
 
@@ -135,7 +136,6 @@
 .card-img,
 .card-img-top,
 .card-img-bottom {
-  flex-shrink: 0; // For IE: https://github.com/twbs/bootstrap/issues/29396
   width: 100%; // Required because we use flexbox and this inherently applies align-self: stretch
 }
 

@@ -32,25 +32,12 @@
 }
 
 // Type display classes
-.display-1 {
-  @include font-size($display1-size);
-  font-weight: $display1-weight;
-  line-height: $display-line-height;
-}
-.display-2 {
-  @include font-size($display2-size);
-  font-weight: $display2-weight;
-  line-height: $display-line-height;
-}
-.display-3 {
-  @include font-size($display3-size);
-  font-weight: $display3-weight;
-  line-height: $display-line-height;
-}
-.display-4 {
-  @include font-size($display4-size);
-  font-weight: $display4-weight;
-  line-height: $display-line-height;
+@each $display, $font-size in $display-font-sizes {
+  .display-#{$display} {
+    @include font-size($font-size);
+    font-weight: $display-font-weight;
+    line-height: $display-line-height;
+  }
 }
 
 //

@@ -87,10 +87,7 @@ const getTransitionDurationFromElement = element => {
 }
 
 const triggerTransitionEnd = element => {
-  const evt = document.createEvent('HTMLEvents')
-
-  evt.initEvent(TRANSITION_END, true, true)
-  element.dispatchEvent(evt)
+  element.dispatchEvent(new Event(TRANSITION_END))
 }
 
 const isElement = obj => (obj[0] || obj).nodeType
@@ -128,14 +125,6 @@ const typeCheckConfig = (componentName, config, configTypes) => {
           `but expected type "${expectedTypes}".`)
       }
     })
-}
-
-const makeArray = nodeList => {
-  if (!nodeList) {
-    return []
-  }
-
-  return [].slice.call(nodeList)
 }
 
 const isVisible = element => {
@@ -203,7 +192,6 @@ export {
   isElement,
   emulateTransitionEnd,
   typeCheckConfig,
-  makeArray,
   isVisible,
   findShadowRoot,
   noop,

@@ -1,6 +1,5 @@
 import Collapse from '../../src/collapse'
 import EventHandler from '../../src/dom/event-handler'
-import { makeArray } from '../../src/util/index'
 
 /** Test helpers */
 import { getFixture, clearFixture, jQueryMock } from '../helpers/fixture'
@@ -139,7 +138,7 @@ describe('Collapse', () => {
       const collapseEl1 = fixtureEl.querySelector('#collapse1')
       const collapseEl2 = fixtureEl.querySelector('#collapse2')
 
-      const collapseList = makeArray(fixtureEl.querySelectorAll('.collapse'))
+      const collapseList = [].concat(...fixtureEl.querySelectorAll('.collapse'))
         .map(el => new Collapse(el, {
           parent,
           toggle: false

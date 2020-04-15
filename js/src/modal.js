@@ -12,7 +12,6 @@ import {
   getElementFromSelector,
   getTransitionDurationFromElement,
   isVisible,
-  makeArray,
   reflow,
   typeCheckConfig
 } from './util/index'
@@ -61,7 +60,6 @@ const EVENT_MOUSEUP_DISMISS = `mouseup.dismiss${EVENT_KEY}`
 const EVENT_MOUSEDOWN_DISMISS = `mousedown.dismiss${EVENT_KEY}`
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 
-const CLASS_NAME_SCROLLABLE = 'modal-dialog-scrollable'
 const CLASS_NAME_SCROLLBAR_MEASURER = 'modal-scrollbar-measure'
 const CLASS_NAME_BACKDROP = 'modal-backdrop'
 const CLASS_NAME_OPEN = 'modal-open'
@@ -250,11 +248,10 @@ class Modal {
     this._element.style.display = 'block'
     this._element.removeAttribute('aria-hidden')
     this._element.setAttribute('aria-modal', true)
+    this._element.scrollTop = 0
 
-    if (this._dialog.classList.contains(CLASS_NAME_SCROLLABLE) && modalBody) {
+    if (modalBody) {
       modalBody.scrollTop = 0
-    } else {
-      this._element.scrollTop = 0
     }
 
     if (transition) {
@@ -456,7 +453,7 @@ class Modal {
       //   while $(DOMNode).css('padding-right') returns the calculated value or 0 if not set
 
       // Adjust fixed content padding
-      makeArray(SelectorEngine.find(SELECTOR_FIXED_CONTENT))
+      SelectorEngine.find(SELECTOR_FIXED_CONTENT)
         .forEach(element => {
           const actualPadding = element.style.paddingRight
           const calculatedPadding = window.getComputedStyle(element)['padding-right']
@@ -465,7 +462,7 @@ class Modal {
         })
 
       // Adjust sticky content margin
-      makeArray(SelectorEngine.find(SELECTOR_STICKY_CONTENT))
+      SelectorEngine.find(SELECTOR_STICKY_CONTENT)
         .forEach(element => {
           const actualMargin = element.style.marginRight
           const calculatedMargin = window.getComputedStyle(element)['margin-right']
@@ -486,7 +483,7 @@ class Modal {
 
   _resetScrollbar() {
     // Restore fixed content padding
-    makeArray(SelectorEngine.find(SELECTOR_FIXED_CONTENT))
+    SelectorEngine.find(SELECTOR_FIXED_CONTENT)
       .forEach(element => {
         const padding = Manipulator.getDataAttribute(element, 'padding-right')
         if (typeof padding !== 'undefined') {
@@ -496,7 +493,7 @@ class Modal {
       })
 
     // Restore sticky content and navbar-toggler margin
-    makeArray(SelectorEngine.find(`${SELECTOR_STICKY_CONTENT}`))
+    SelectorEngine.find(`${SELECTOR_STICKY_CONTENT}`)
       .forEach(element => {
         const margin = Manipulator.getDataAttribute(element, 'margin-right')
         if (typeof margin !== 'undefined') {

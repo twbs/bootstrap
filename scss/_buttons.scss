@@ -21,7 +21,7 @@
 
   &:hover {
     color: $body-color;
-    text-decoration: none;
+    text-decoration: if($link-hover-decoration == underline, none, null);
   }
 
   &:focus,
@@ -84,7 +84,6 @@
   &:focus,
   &.focus {
     text-decoration: $link-hover-decoration;
-    box-shadow: none;
   }
 
   &:disabled,
