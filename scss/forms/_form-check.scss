@@ -20,6 +20,7 @@
   margin-top: ($line-height-base - $form-check-input-width) / 2; // line-height minus check height
   vertical-align: top;
   background-color: $form-check-input-bg;
+  background-position: $form-check-input-checked-bg-position;
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
