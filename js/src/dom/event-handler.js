@@ -17,7 +17,6 @@ import { defaultPreventedPreservedOnDispatch } from './polyfill'
 const $ = getjQuery()
 const namespaceRegex = /[^.]*(?=\..*)\.|.*/
 const stripNameRegex = /\..*/
-const keyEventRegex = /^key/
 const stripUidRegex = /::\d+$/
 const eventRegistry = {} // Events storage
 let uidEvent = 1
@@ -94,11 +93,6 @@ function getEvent(element) {
 }
 
 function fixEvent(event, element) {
-  // Add which for key events
-  if (event.which === null && keyEventRegex.test(event.type)) {
-    event.which = event.charCode === null ? event.keyCode : event.charCode
-  }
-
   event.delegateTarget = element
 }
 
