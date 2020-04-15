@@ -15,8 +15,9 @@
   @include deprecate("The `bg-variant` mixin", "v4.4.0", "v5", $ignore-warning);
 }
 
-@mixin bg-gradient-variant($parent, $color) {
+@mixin bg-gradient-variant($parent, $color, $ignore-warning: false) {
   #{$parent} {
     background: $color linear-gradient(180deg, mix($body-bg, $color, 15%), $color) repeat-x !important;
   }
+  @include deprecate("The `bg-gradient-variant` mixin", "v4.4.2", "v5", $ignore-warning);
 }
