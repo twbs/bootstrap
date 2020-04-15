@@ -1,5 +1,5 @@
-name-template: 'v$NEXT_PATCH_VERSION'
-tag-template: 'v$NEXT_PATCH_VERSION'
+name-template: 'v$NEXT_MAJOR_VERSION'
+tag-template: 'v$NEXT_MAJOR_VERSION'
 prerelease: true
 exclude-labels:
   - 'skip-changelog'
@@ -14,14 +14,26 @@ categories:
       - 'fix'
       - 'bugfix'
       - 'bug'
+  - title: '🎨 CSS'
+    labels:
+      - 'css'
+  - title: '☕️ JavaScript'
+    labels:
+      - 'js'
   - title: '📖 Docs'
     labels:
       - 'docs'
+  - title: '🌎 Accessibility'
+    labels:
+      - 'accessibility'
+  - title: '🧰 Misc'
+    labels:
+      - 'build'
+      - 'meta'
+      - 'chore'
   - title: '📦 Dependencies'
     labels:
       - 'dependencies'
-  - title: '🧰 Maintenance'
-    label: 'chore'
 change-template: '- #$NUMBER: $TITLE'
 template: |
   ## Changes
