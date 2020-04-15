@@ -70,10 +70,10 @@ describe('Carousel', () => {
         done()
       })
 
-      const keyDown = createEvent('keydown')
-      keyDown.which = 39
+      const keydown = createEvent('keydown')
+      keydown.key = 'ArrowRight'
 
-      carouselEl.dispatchEvent(keyDown)
+      carouselEl.dispatchEvent(keydown)
     })
 
     it('should go to previous item if left arrow key is pressed', done => {
@@ -100,10 +100,10 @@ describe('Carousel', () => {
         done()
       })
 
-      const keyDown = createEvent('keydown')
-      keyDown.which = 37
+      const keydown = createEvent('keydown')
+      keydown.key = 'ArrowLeft'
 
-      carouselEl.dispatchEvent(keyDown)
+      carouselEl.dispatchEvent(keydown)
     })
 
     it('should not prevent keydown if key is not ARROW_LEFT or ARROW_RIGHT', done => {
@@ -130,10 +130,10 @@ describe('Carousel', () => {
         done()
       })
 
-      const keyDown = createEvent('keydown')
-      keyDown.which = 40
+      const keydown = createEvent('keydown')
+      keydown.key = 'ArrowDown'
 
-      carouselEl.dispatchEvent(keyDown)
+      carouselEl.dispatchEvent(keydown)
     })
 
     it('should ignore keyboard events within <input>s and <textarea>s', () => {
@@ -157,34 +157,34 @@ describe('Carousel', () => {
         keyboard: true
       })
 
-      const spyKeyDown = spyOn(carousel, '_keydown').and.callThrough()
+      const spyKeydown = spyOn(carousel, '_keydown').and.callThrough()
       const spyPrev = spyOn(carousel, 'prev')
       const spyNext = spyOn(carousel, 'next')
 
-      const keyDown = createEvent('keydown', { bubbles: true, cancelable: true })
-      keyDown.which = 39
-      Object.defineProperty(keyDown, 'target', {
+      const keydown = createEvent('keydown', { bubbles: true, cancelable: true })
+      keydown.key = 'ArrowRight'
+      Object.defineProperty(keydown, 'target', {
         value: input,
         writable: true,
         configurable: true
       })
 
-      input.dispatchEvent(keyDown)
+      input.dispatchEvent(keydown)
 
-      expect(spyKeyDown).toHaveBeenCalled()
+      expect(spyKeydown).toHaveBeenCalled()
       expect(spyPrev).not.toHaveBeenCalled()
       expect(spyNext).not.toHaveBeenCalled()
 
-      spyKeyDown.calls.reset()
+      spyKeydown.calls.reset()
       spyPrev.calls.reset()
       spyNext.calls.reset()
 
-      Object.defineProperty(keyDown, 'target', {
+      Object.defineProperty(keydown, 'target', {
         value: textarea
       })
-      textarea.dispatchEvent(keyDown)
+      textarea.dispatchEvent(keydown)
 
-      expect(spyKeyDown).toHaveBeenCalled()
+      expect(spyKeydown).toHaveBeenCalled()
       expect(spyPrev).not.toHaveBeenCalled()
       expect(spyNext).not.toHaveBeenCalled()
     })
