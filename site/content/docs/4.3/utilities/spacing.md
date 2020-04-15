@@ -84,7 +84,7 @@ Additionally, Bootstrap also includes an `.mx-auto` class for horizontally cente
 
 ### Negative margin
 
-In CSS, `margin` properties can utilize negative values (`padding` cannot). As of 4.2, we've added negative margin utilities for every non-zero integer size listed above (e.g., `1`, `2`, `3`, `4`, `5`). These utilities are ideal for customizing grid column gutters across breakpoints.
+In CSS, `margin` properties can utilize negative values (`padding` cannot). These negative margins are **disabled by default**, but can be enabled in Sass by setting `$enable-negative-margins: true`.
 
 The syntax is nearly the same as the default, positive margin utilities, but with the addition of `n` before the requested size. Here's an example class that's the opposite of `.mt-1`:
 
@@ -93,12 +93,3 @@ The syntax is nearly the same as the default, positive margin utilities, but wit
   margin-top: -0.25rem !important;
 }
 {{< /highlight >}}
-
-Here's an example of customizing the Bootstrap grid at the medium (`md`) breakpoint and above. We've increased the `.col` padding with `.px-md-5` and then counteracted that with `.mx-md-n5` on the parent `.row`.
-
-{{< example >}}
-<div class="row mx-md-n5">
-  <div class="col px-md-5"><div class="p-3 border bg-light">Custom column padding</div></div>
-  <div class="col px-md-5"><div class="p-3 border bg-light">Custom column padding</div></div>
-</div>
-{{< /example >}}
