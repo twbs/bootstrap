@@ -67,7 +67,7 @@ Be sure to have your pages set up with the latest design and development standar
 </html>
 {{< /highlight >}}
 
-That's all you need for overall page requirements. Visit the [Layout docs]({{< docsref "/layout/overview" >}}) or [our official examples]({{< docsref "/examples" >}}) to start laying out your site's content and components.
+That's all you need for overall page requirements. Visit the [Layout docs]({{< docsref "/layout/grid" >}}) or [our official examples]({{< docsref "/examples" >}}) to start laying out your site's content and components.
 
 ## Important globals
 
