@@ -214,6 +214,7 @@ $enable-grid-classes:                         true !default;
 $enable-pointer-cursor-for-buttons:           true !default;
 $enable-rfs:                                  true !default;
 $enable-validation-icons:                     true !default;
+$enable-negative-margins:                     false !default;
 $enable-deprecation-messages:                 true !default;
 $enable-important-utilities:                  true !default;
 
@@ -234,7 +235,7 @@ $spacers: (
   5: $spacer * 3,
 ) !default;
 
-$negative-spacers: negativify-map($spacers) !default;
+$negative-spacers: if($enable-negative-margins, negativify-map($spacers), null) !default;
 
 // Body
 //
