@@ -479,7 +479,7 @@ class Dropdown {
       return
     }
 
-    let index = items.indexOf(event.target) || 0
+    let index = items.indexOf(event.target)
 
     if (event.which === ARROW_UP_KEYCODE && index > 0) { // Up
       index--
@@ -488,6 +488,9 @@ class Dropdown {
     if (event.which === ARROW_DOWN_KEYCODE && index < items.length - 1) { // Down
       index++
     }
+
+    // index is -1 if the first keydown is an ArrowUp
+    index = index === -1 ? 0 : index
 
     items[index].focus()
   }
