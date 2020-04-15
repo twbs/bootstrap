@@ -212,10 +212,10 @@ Highlight a table row or cell by adding a `.table-active` class.
 
 For the accented tables ([striped rows](#striped-rows), [hoverable rows](#hoverable-rows) and [active tables](#active-tables)), we used some techniques to make these effects work for all our [table variants](#variants):
 
-- First of all we set the background of a table cell with the `--table-bg` custom property. All table variants then set that custom property to colorize the table cells. This way, we don't get into trouble if semi-transparent colors are used as table backgrounds.
-- Then we add a linear background to the table cells with `background-image: linear-gradient(var(--table-accent-bg), var(--table-accent-bg));`. Since `--table-accent-bg` is transparent by default, we have an invisible transparent linear gradient by default.
-- When either `.table-striped`, `.table-hover` or `.table-active` classes are added, the `--table-accent-bg` is set to a semitransparent color to colorize the background.
-- For each table variant the `--table-accent-bg` color with the most contrast is generated, therefor `.table-primary` has a darkened accent color and `.table-dark` has a lightened accent color.
+- First of all we set the background of a table cell with the `--bs-table-bg` custom property. All table variants then set that custom property to colorize the table cells. This way, we don't get into trouble if semi-transparent colors are used as table backgrounds.
+- Then we add a linear background to the table cells with `background-image: linear-gradient(var(--bs-table-accent-bg), var(--bs-table-accent-bg));`. Since `--bs-table-accent-bg` is transparent by default, we have an invisible transparent linear gradient by default.
+- When either `.table-striped`, `.table-hover` or `.table-active` classes are added, the `--bs-table-accent-bg` is set to a semitransparent color to colorize the background.
+- For each table variant the `--bs-table-accent-bg` color with the most contrast is generated, therefor `.table-primary` has a darkened accent color and `.table-dark` has a lightened accent color.
 - The text color and border color are also generated the same way. The colors and border colors are inherited by default.
 
 Behind the scenes it looks like this:

@@ -3,14 +3,14 @@
 //
 
 .table {
-  --table-bg: #{$table-bg};
-  --table-accent-bg: transparent;
-  --table-striped-color: #{$table-striped-color};
-  --table-striped-bg: #{$table-striped-bg};
-  --table-active-color: #{$table-active-color};
-  --table-active-bg: #{$table-active-bg};
-  --table-hover-color: #{$table-hover-color};
-  --table-hover-bg: #{$table-hover-bg};
+  --bs-table-bg: #{$table-bg};
+  --bs-table-accent-bg: transparent;
+  --bs-table-striped-color: #{$table-striped-color};
+  --bs-table-striped-bg: #{$table-striped-bg};
+  --bs-table-active-color: #{$table-active-color};
+  --bs-table-active-bg: #{$table-active-bg};
+  --bs-table-hover-color: #{$table-hover-color};
+  --bs-table-hover-bg: #{$table-hover-bg};
 
   width: 100%;
   margin-bottom: $spacer;
@@ -25,8 +25,8 @@
   // stylelint-disable-next-line selector-max-universal
   > :not(caption) > * > * {
     padding: $table-cell-padding;
-    background-color: var(--table-bg);
-    background-image: linear-gradient(var(--table-accent-bg), var(--table-accent-bg));
+    background-color: var(--bs-table-bg);
+    background-image: linear-gradient(var(--bs-table-accent-bg), var(--bs-table-accent-bg));
     border-bottom-width: $table-border-width;
   }
 
@@ -101,8 +101,8 @@
 
 .table-striped {
   > tbody > tr:nth-of-type(#{$table-striped-order}) {
-    --table-accent-bg: var(--table-striped-bg);
-    color: var(--table-striped-color);
+    --bs-table-accent-bg: var(--bs-table-striped-bg);
+    color: var(--bs-table-striped-color);
   }
 }
 
@@ -111,8 +111,8 @@
 // The `.table-active` class can be added to highlight rows or cells
 
 .table-active {
-  --table-accent-bg: var(--table-active-bg);
-  color: var(--table-active-color);
+  --bs-table-accent-bg: var(--bs-table-active-bg);
+  color: var(--bs-table-active-color);
 }
 
 // Hover effect
@@ -121,8 +121,8 @@
 
 .table-hover {
   > tbody > tr:hover {
-    --table-accent-bg: var(--table-hover-bg);
-    color: var(--table-hover-color);
+    --bs-table-accent-bg: var(--bs-table-hover-bg);
+    color: var(--bs-table-hover-color);
   }
 }
 
