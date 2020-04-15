@@ -1,5 +1,14 @@
 name: BrowserStack
-on: [push]
+
+on:
+  push:
+    branches:
+      - master
+      - "**-ci"
+  pull_request:
+    branches:
+      - "**"
+
 env:
   CI: true
   NODE: 10.x
