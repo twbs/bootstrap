@@ -399,7 +399,7 @@ Should you need to modify your `$grid-breakpoints`, your changes will apply to a
 
 ## CSS variables
 
-Bootstrap 4 includes around two dozen [CSS custom properties (variables)](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) in its compiled CSS. These provide easy access to commonly used values like our theme colors, breakpoints, and primary font stacks when working in your browser's Inspector, a code sandbox, or general prototyping.
+Bootstrap 4 includes around two dozen [CSS custom properties (variables)](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) in its compiled CSS. These provide easy access to commonly used values like our theme colors and primary font stacks when working in your browser's Inspector, a code sandbox, or general prototyping. All our custom properties are prefixed with `bs-` to avoid conflicts with third party CSS.
 
 ### Available variables
 
@@ -425,9 +425,9 @@ CSS variables offer similar flexibility to Sass's variables, but without the nee
 
 {{< highlight css >}}
 body {
-  font: 1rem/1.5 var(--font-family-sans-serif);
+  font: 1rem/1.5 var(--bs-font-sans-serif);
 }
 a {
-  color: var(--blue);
+  color: var(--bs-blue);
 }
 {{< /highlight >}}
