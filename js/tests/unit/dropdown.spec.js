@@ -1367,6 +1367,34 @@ describe('Dropdown', () => {
       triggerDropdown.click()
     })
 
+    it('should focus on the first element when using ArrowUp for the first time', done => {
+      fixtureEl.innerHTML = [
+        '<div class="dropdown">',
+        '  <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
+        '  <div class="dropdown-menu">',
+        '    <a id="item1" class="dropdown-item" href="#">A link</a>',
+        '    <a id="item2" class="dropdown-item" href="#">Another link</a>',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const triggerDropdown = fixtureEl.querySelector('[data-toggle="dropdown"]')
+      const dropdown = fixtureEl.querySelector('.dropdown')
+      const item1 = fixtureEl.querySelector('#item1')
+
+      dropdown.addEventListener('shown.bs.dropdown', () => {
+        const keydown = createEvent('keydown')
+        keydown.key = 'ArrowUp'
+
+        document.activeElement.dispatchEvent(keydown)
+        expect(document.activeElement).toEqual(item1, 'item1 is focused')
+
+        done()
+      })
+
+      triggerDropdown.click()
+    })
+
     it('should not close the dropdown if the user clicks on a text field', done => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
