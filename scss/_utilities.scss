@@ -441,7 +441,7 @@ $utilities: map-merge(
     "font-family": (
       property: font-family,
       class: font,
-      values: (monospace: var(--font-family-monospace))
+      values: (monospace: var(--bs-font-monospace))
     ),
     "user-select": (
       property: user-select,
