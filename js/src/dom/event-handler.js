@@ -92,13 +92,8 @@ function getEvent(element) {
   return eventRegistry[uid]
 }
 
-function fixEvent(event, element) {
-  event.delegateTarget = element
-}
-
 function bootstrapHandler(element, fn) {
   return function handler(event) {
-    fixEvent(event, element)
     if (handler.oneOff) {
       EventHandler.off(element, event.type, fn)
     }
@@ -114,8 +109,6 @@ function bootstrapDelegationHandler(element, selector, fn) {
     for (let { target } = event; target && target !== this; target = target.parentNode) {
       for (let i = domElements.length; i--;) {
         if (domElements[i] === target) {
-          fixEvent(event, target)
-
           if (handler.oneOff) {
             EventHandler.off(element, event.type, fn)
           }
