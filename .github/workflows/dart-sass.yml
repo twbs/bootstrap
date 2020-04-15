@@ -1,5 +1,14 @@
 name: CSS (Dart Sass)
-on: [push, pull_request]
+
+on:
+  push:
+    branches:
+      - master
+      - "**-ci"
+  pull_request:
+    branches:
+      - "**"
+
 env:
   CI: true
   NODE: 10.x
