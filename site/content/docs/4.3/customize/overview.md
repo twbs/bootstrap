@@ -22,7 +22,9 @@ sections:
 
 ## Overview
 
-There are multiple ways to customize Bootstrap. Your best path can depend on your project, the complexity of your build tools, the version of Bootstrap you're using, browser support, and more. Our two preferred methods are:
+There are multiple ways to customize Bootstrap. Your best path can depend on your project, the complexity of your build tools, the version of Bootstrap you're using, browser support, and more.
+
+Our two preferred methods are:
 
 1. Using Bootstrap [via package manager]({{< docsref "/getting-started/download#package-managers" >}}) so you can use and extend our source files.
 2. Using Bootstrap's compiled distribution files or the [Bootstrap CDN]({{< docsref "/getting-started/download#bootstrapcdn" >}}) so you can add onto or override Bootstrap's styles.
