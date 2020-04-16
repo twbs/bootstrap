@@ -50,23 +50,4 @@ Aspect ratios can be customized with modifier classes. By default the following 
 
 Within `_variables.scss`, you can change the aspect ratios you want to use. Here's an example of the `$embed-responsive-aspect-ratios` map:
 
-{{< highlight scss >}}
-$embed-responsive-aspect-ratios: (
-  "21by9": (
-    x: 21,
-    y: 9
-  ),
-  "16by9": (
-    x: 16,
-    y: 9
-  ),
-  "4by3": (
-    x: 4,
-    y: 3
-  ),
-  "1by1": (
-    x: 1,
-    y: 1
-  )
-);
-{{< /highlight >}}
+{{< scss-docs name="embed-responsive-aspect-ratios" file="scss/_variables.scss" >}}

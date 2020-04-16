@@ -57,11 +57,12 @@
   padding-bottom: $navbar-brand-padding-y;
   margin-right: $navbar-brand-margin-right;
   @include font-size($navbar-brand-font-size);
+  text-decoration: if($link-decoration == none, null, none);
   white-space: nowrap;
 
   &:hover,
   &:focus {
-    text-decoration: none;
+    text-decoration: if($link-hover-decoration == underline, none, null);
   }
 }
 

@@ -122,7 +122,7 @@ $theme-colors: (
 To add a new color to `$theme-colors`, add the new key and value. Keep in mind not to remove the existing colors:
 
 {{< highlight scss >}}
-$my-custom-color: #ffoodd;
+$my-custom-color: #ff00dd;
 
 // Make sure to define `$primary`, `$secondary`, ect.. first
 $theme-colors: (
@@ -172,14 +172,7 @@ In Bootstrap 5, we've dropped the `color()`, `theme-color()` and `gray()` functi
 
 We also have a function for getting a particular _level_ of color. Negative level values will lighten the color, while higher levels will darken.
 
-{{< highlight scss >}}
-@function color-level($color: $primary, $level: 0) {
-  $color-base: if($level > 0, #000, #fff);
-  $level: abs($level);
-
-  @return mix($color-base, $color, $level * $theme-color-interval);
-}
-{{< /highlight >}}
+{{< scss-docs name="color-level" file="scss/_functions.scss" >}}
 
 In practice, you'd call the function and pass in two parameters: the name of the color from `$theme-colors` (e.g., primary or danger) and a numeric level.
 
@@ -284,8 +277,9 @@ You can find and customize these variables for key global options in Bootstrap's
 | `$enable-grid-classes`                       | `true` (default) or `false`        | Enables the generation of CSS classes for the grid system (e.g. `.row`, `.col-md-1`, etc.). |
 | `$enable-caret`                              | `true` (default) or `false`        | Enables pseudo element caret on `.dropdown-toggle`. |
 | `$enable-pointer-cursor-for-buttons`         | `true` (default) or `false`        | Add "hand" cursor to non-disabled button elements. |
-| `$enable-rfs`                                | `true` (default)  or `false`       | Globally enables [RFS]({{< docsref "/getting-started/rfs" >}}). |
+| `$enable-rfs`                                | `true` (default) or `false`        | Globally enables [RFS]({{< docsref "/getting-started/rfs" >}}). |
 | `$enable-validation-icons`                   | `true` (default) or `false`        | Enables `background-image` icons within textual inputs and some custom forms for validation states. |
+| `$enable-negative-margins`                   | `true` or `false` (default)        | Enables the generation of [negative margin utilities]({{< docsref "/utilities/spacing#negative-margin" >}}). |
 | `$enable-deprecation-messages`               | `true` or `false` (default)        | Set to `true` to show warnings when using any of the deprecated mixins and functions that are planned to be removed in `v5`. |
 | `$enable-important-utilities`                | `true` (default) or `false`        | Enables the `!important` suffix in utility classes. |
 
@@ -389,43 +383,23 @@ Many of Bootstrap's components and utilities are built with `@each` loops that i
 
 Many of Bootstrap's components are built with a base-modifier class approach. This means the bulk of the styling is contained to a base class (e.g., `.btn`) while style variations are confined to modifier classes (e.g., `.btn-danger`). These modifier classes are built from the `$theme-colors` map to make customizing the number and name of our modifier classes.
 
-Here are two examples of how we loop over the `$theme-colors` map to generate modifiers to the `.alert` component and all our `.bg-*` background utilities.
+Here are two examples of how we loop over the `$theme-colors` map to generate modifiers to the `.alert` and `.list-group` components.
 
-{{< highlight scss >}}
-// Generate alert modifier classes
-@each $color, $value in $theme-colors {
-  .alert-#{$color} {
-    @include alert-variant(color-level($color, -10), color-level($color, -9), color-level($color, 6));
-  }
-}
+{{< scss-docs name="alert-modifiers" file="scss/_alert.scss" >}}
 
-// Generate `.bg-*` color utilities
-@each $color, $value in $theme-colors {
-  @include bg-variant('.bg-#{$color}', $value);
-}
-{{< /highlight >}}
+{{< scss-docs name="list-group-modifiers" file="scss/_list-group.scss" >}}
 
 ### Responsive
 
-These Sass loops aren't limited to color maps, either. You can also generate responsive variations of your components or utilities. Take for example our responsive text alignment utilities where we mix an `@each` loop for the `$grid-breakpoints` Sass map with a media query include.
+These Sass loops aren't limited to color maps, either. You can also generate responsive variations of your components. Take for example our responsive alignment of the dropdowns where we mix an `@each` loop for the `$grid-breakpoints` Sass map with a media query include.
 
-{{< highlight scss >}}
-@each $breakpoint in map-keys($grid-breakpoints) {
-  @include media-breakpoint-up($breakpoint) {
-    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
-
-    .text#{$infix}-left   { text-align: left !important; }
-    .text#{$infix}-right  { text-align: right !important; }
-    .text#{$infix}-center { text-align: center !important; }
-  }
-}
-{{< /highlight >}}
+{{< scss-docs name="responsive-breakpoints" file="scss/_dropdown.scss" >}}
 
 Should you need to modify your `$grid-breakpoints`, your changes will apply to all the loops iterating over that map.
 
 ## CSS variables
 
-Bootstrap 4 includes around two dozen [CSS custom properties (variables)](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) in its compiled CSS. These provide easy access to commonly used values like our theme colors, breakpoints, and primary font stacks when working in your browser's Inspector, a code sandbox, or general prototyping.
+Bootstrap 4 includes around two dozen [CSS custom properties (variables)](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) in its compiled CSS. These provide easy access to commonly used values like our theme colors and primary font stacks when working in your browser's Inspector, a code sandbox, or general prototyping. All our custom properties are prefixed with `bs-` to avoid conflicts with third party CSS.
 
 ### Available variables
 
@@ -451,9 +425,9 @@ CSS variables offer similar flexibility to Sass's variables, but without the nee
 
 {{< highlight css >}}
 body {
-  font: 1rem/1.5 var(--font-family-sans-serif);
+  font: 1rem/1.5 var(--bs-font-sans-serif);
 }
 a {
-  color: var(--blue);
+  color: var(--bs-blue);
 }
 {{< /highlight >}}

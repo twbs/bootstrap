@@ -2,7 +2,7 @@
   "files": [
     {
       "path": "./dist/css/bootstrap-grid.css",
-      "maxSize": "7.1 kB"
+      "maxSize": "7.2 kB"
     },
     {
       "path": "./dist/css/bootstrap-grid.min.css",
@@ -56,5 +56,11 @@
       "path": "./dist/js/bootstrap.min.js",
       "maxSize": "16.5 kB"
     }
-  ]
+  ],
+  "ci": {
+    "trackBranches": [
+      "master",
+      "v4-dev"
+    ]
+  }
 }
