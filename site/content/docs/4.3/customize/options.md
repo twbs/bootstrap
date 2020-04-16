@@ -21,8 +21,9 @@ You can find and customize these variables for key global options in Bootstrap's
 | `$enable-grid-classes`         | `true` (default) or `false`        | Enables the generation of CSS classes for the grid system (e.g. `.row`, `.col-md-1`, etc.). |
 | `$enable-caret`                | `true` (default) or `false`        | Enables pseudo element caret on `.dropdown-toggle`. |
 | `$enable-button-pointers`      | `true` (default) or `false`        | Add "hand" cursor to non-disabled button elements. |
-| `$enable-rfs`                  | `true` (default)  or `false`       | Globally enables [RFS]({{< docsref "/getting-started/rfs" >}}). |
+| `$enable-rfs`                  | `true` (default) or `false`        | Globally enables [RFS]({{< docsref "/getting-started/rfs" >}}). |
 | `$enable-validation-icons`     | `true` (default) or `false`        | Enables `background-image` icons within textual inputs and some custom forms for validation states. |
+| `$enable-negative-margins`     | `true` or `false` (default)        | Enables the generation of [negative margin utilities]({{< docsref "/utilities/spacing#negative-margin" >}}). |
 | `$enable-deprecation-messages` | `true` or `false` (default)        | Set to `true` to show warnings when using any of the deprecated mixins and functions that are planned to be removed in `v5`. |
 | `$enable-important-utilities`  | `true` (default) or `false`        | Enables the `!important` suffix in utility classes. |
 {{< /table >}}
