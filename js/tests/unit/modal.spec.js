@@ -450,7 +450,7 @@ describe('Modal', () => {
 
       modalEl.addEventListener('shown.bs.modal', () => {
         const keydownEscape = createEvent('keydown')
-        keydownEscape.which = 27
+        keydownEscape.key = 'Escape'
 
         modalEl.dispatchEvent(keydownEscape)
       })
@@ -479,7 +479,7 @@ describe('Modal', () => {
 
       modalEl.addEventListener('shown.bs.modal', () => {
         const keydownTab = createEvent('keydown')
-        keydownTab.which = 9
+        keydownTab.key = 'Tab'
 
         modalEl.dispatchEvent(keydownTab)
         setTimeout(expectDone, 30)
@@ -584,7 +584,7 @@ describe('Modal', () => {
 
       modalEl.addEventListener('shown.bs.modal', () => {
         const keydownEscape = createEvent('keydown')
-        keydownEscape.which = 27
+        keydownEscape.key = 'Escape'
 
         modalEl.dispatchEvent(keydownEscape)
         shownCallback()
@@ -611,7 +611,7 @@ describe('Modal', () => {
 
       modalEl.addEventListener('shown.bs.modal', () => {
         const keydownEscape = createEvent('keydown')
-        keydownEscape.which = 27
+        keydownEscape.key = 'Escape'
 
         modalEl.dispatchEvent(keydownEscape)
         shownCallback()
