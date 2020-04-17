@@ -277,8 +277,9 @@ You can find and customize these variables for key global options in Bootstrap's
 | `$enable-grid-classes`                       | `true` (default) or `false`        | Enables the generation of CSS classes for the grid system (e.g. `.row`, `.col-md-1`, etc.). |
 | `$enable-caret`                              | `true` (default) or `false`        | Enables pseudo element caret on `.dropdown-toggle`. |
 | `$enable-pointer-cursor-for-buttons`         | `true` (default) or `false`        | Add "hand" cursor to non-disabled button elements. |
-| `$enable-rfs`                                | `true` (default)  or `false`       | Globally enables [RFS]({{< docsref "/getting-started/rfs" >}}). |
+| `$enable-rfs`                                | `true` (default) or `false`        | Globally enables [RFS]({{< docsref "/getting-started/rfs" >}}). |
 | `$enable-validation-icons`                   | `true` (default) or `false`        | Enables `background-image` icons within textual inputs and some custom forms for validation states. |
+| `$enable-negative-margins`                   | `true` or `false` (default)        | Enables the generation of [negative margin utilities]({{< docsref "/utilities/spacing#negative-margin" >}}). |
 | `$enable-deprecation-messages`               | `true` or `false` (default)        | Set to `true` to show warnings when using any of the deprecated mixins and functions that are planned to be removed in `v5`. |
 | `$enable-important-utilities`                | `true` (default) or `false`        | Enables the `!important` suffix in utility classes. |
 
@@ -398,7 +399,7 @@ Should you need to modify your `$grid-breakpoints`, your changes will apply to a
 
 ## CSS variables
 
-Bootstrap 4 includes around two dozen [CSS custom properties (variables)](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) in its compiled CSS. These provide easy access to commonly used values like our theme colors, breakpoints, and primary font stacks when working in your browser's Inspector, a code sandbox, or general prototyping.
+Bootstrap 4 includes around two dozen [CSS custom properties (variables)](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) in its compiled CSS. These provide easy access to commonly used values like our theme colors and primary font stacks when working in your browser's Inspector, a code sandbox, or general prototyping. All our custom properties are prefixed with `bs-` to avoid conflicts with third party CSS.
 
 ### Available variables
 
@@ -424,9 +425,9 @@ CSS variables offer similar flexibility to Sass's variables, but without the nee
 
 {{< highlight css >}}
 body {
-  font: 1rem/1.5 var(--font-family-sans-serif);
+  font: 1rem/1.5 var(--bs-font-sans-serif);
 }
 a {
-  color: var(--blue);
+  color: var(--bs-blue);
 }
 {{< /highlight >}}

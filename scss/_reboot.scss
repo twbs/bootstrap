@@ -283,7 +283,7 @@ pre,
 code,
 kbd,
 samp {
-  font-family: var(--font-family-monospace);
+  font-family: var(--bs-font-monospace);
   @include font-size(1em); // Correct the odd `em` font sizing in all browsers.
 }
 
