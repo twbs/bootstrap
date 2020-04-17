@@ -11,9 +11,11 @@
 }
 
 // Headings for larger alerts
-.alert-heading {
+.alert > .alert-heading {
   // Specified to prevent conflicts of changing $headings-color
   color: inherit;
+  position: absolute;
+  @include border-radius($alert-border-radius);
 }
 
 // Provide class for links that match alerts
