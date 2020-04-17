@@ -31,14 +31,14 @@ const DATA_KEY = 'bs.dropdown'
 const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
 
-const ESCAPE_KEYCODE = 27 // KeyboardEvent.which value for Escape (Esc) key
-const SPACE_KEYCODE = 32 // KeyboardEvent.which value for space key
-const TAB_KEYCODE = 9 // KeyboardEvent.which value for tab key
-const ARROW_UP_KEYCODE = 38 // KeyboardEvent.which value for up arrow key
-const ARROW_DOWN_KEYCODE = 40 // KeyboardEvent.which value for down arrow key
-const RIGHT_MOUSE_BUTTON_WHICH = 3 // MouseEvent.which value for the right button (assuming a right-handed mouse)
+const ESCAPE_KEY = 'Escape'
+const SPACE_KEY = 'Space'
+const TAB_KEY = 'Tab'
+const ARROW_UP_KEY = 'ArrowUp'
+const ARROW_DOWN_KEY = 'ArrowDown'
+const RIGHT_MOUSE_BUTTON = 2 // MouseEvent.button value for the secondary button, usually the right button
 
-const REGEXP_KEYDOWN = new RegExp(`${ARROW_UP_KEYCODE}|${ARROW_DOWN_KEYCODE}|${ESCAPE_KEYCODE}`)
+const REGEXP_KEYDOWN = new RegExp(`${ARROW_UP_KEY}|${ARROW_DOWN_KEY}|${ESCAPE_KEY}`)
 
 const EVENT_HIDE = `hide${EVENT_KEY}`
 const EVENT_HIDDEN = `hidden${EVENT_KEY}`
@@ -372,8 +372,8 @@ class Dropdown {
   }
 
   static clearMenus(event) {
-    if (event && (event.which === RIGHT_MOUSE_BUTTON_WHICH ||
-      (event.type === 'keyup' && event.which !== TAB_KEYCODE))) {
+    if (event && (event.button === RIGHT_MOUSE_BUTTON ||
+      (event.type === 'keyup' && event.key !== TAB_KEY))) {
       return
     }
 
@@ -401,7 +401,7 @@ class Dropdown {
 
       if (event && ((event.type === 'click' &&
           /input|textarea/i.test(event.target.tagName)) ||
-          (event.type === 'keyup' && event.which === TAB_KEYCODE)) &&
+          (event.type === 'keyup' && event.key === TAB_KEY)) &&
           dropdownMenu.contains(event.target)) {
         continue
       }
@@ -444,11 +444,11 @@ class Dropdown {
   //    - If trigger inside the menu => not a dropdown command
   static _isDropDownCommand(event, dropdownElement) {
     const isInputOrTextArea = /input|textarea/i.test(event.target.tagName)
-    const isSpaceKeyEvent = event.which === SPACE_KEYCODE
-    const isEscapeKeyEvent = event.which === ESCAPE_KEYCODE
-    const isUpOrDownKeyEvent = event.which === ARROW_DOWN_KEYCODE || event.which === ARROW_UP_KEYCODE
+    const isSpaceKeyEvent = event.key === SPACE_KEY
+    const isEscapeKeyEvent = event.key === ESCAPE_KEY
+    const isUpOrDownKeyEvent = event.key === ARROW_DOWN_KEY || event.key === ARROW_UP_KEY
     const isTriggerInsideMenu = SelectorEngine.closest(event.target, SELECTOR_MENU)
-    const isKeyInRegexpKeydown = REGEXP_KEYDOWN.test(event.which)
+    const isKeyInRegexpKeydown = REGEXP_KEYDOWN.test(event.key)
 
     const isActive = dropdownElement.classList.contains(CLASS_NAME_SHOW)
     const isDisabled = dropdownElement.disabled || dropdownElement.classList.contains(CLASS_NAME_DISABLED)
@@ -480,14 +480,14 @@ class Dropdown {
 
     const isActive = this.classList.contains(CLASS_NAME_SHOW)
 
-    if (event.which === ESCAPE_KEYCODE) {
+    if (event.key === ESCAPE_KEY) {
       const button = this.matches(SELECTOR_DATA_TOGGLE) ? this : SelectorEngine.prev(this, SELECTOR_DATA_TOGGLE)[0]
       button.focus()
       Dropdown.clearMenus()
       return
     }
 
-    if (!isActive || event.which === SPACE_KEYCODE) {
+    if (!isActive || event.key === SPACE_KEY) {
       Dropdown.clearMenus()
       return
     }
@@ -500,15 +500,18 @@ class Dropdown {
       return
     }
 
-    let index = items.indexOf(event.target) || 0
+    let index = items.indexOf(event.target)
 
-    if (event.which === ARROW_UP_KEYCODE && index > 0) { // Up
+    if (event.key === ARROW_UP_KEY && index > 0) { // Up
       index--
     }
 
-    if (event.which === ARROW_DOWN_KEYCODE && index < items.length - 1) { // Down
+    if (event.key === ARROW_DOWN_KEY && index < items.length - 1) { // Down
       index++
     }
+
+    // index is -1 if the first keydown is an ArrowUp
+    index = index === -1 ? 0 : index
 
     items[index].focus()
   }

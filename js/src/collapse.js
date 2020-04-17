@@ -192,8 +192,7 @@ class Collapse {
 
     const complete = () => {
       this._element.classList.remove(CLASS_NAME_COLLAPSING)
-      this._element.classList.add(CLASS_NAME_COLLAPSE)
-      this._element.classList.add(CLASS_NAME_SHOW)
+      this._element.classList.add(CLASS_NAME_COLLAPSE, CLASS_NAME_SHOW)
 
       this._element.style[dimension] = ''
 
@@ -230,8 +229,7 @@ class Collapse {
     reflow(this._element)
 
     this._element.classList.add(CLASS_NAME_COLLAPSING)
-    this._element.classList.remove(CLASS_NAME_COLLAPSE)
-    this._element.classList.remove(CLASS_NAME_SHOW)
+    this._element.classList.remove(CLASS_NAME_COLLAPSE, CLASS_NAME_SHOW)
 
     const triggerArrayLength = this._triggerArray.length
     if (triggerArrayLength > 0) {
@@ -348,7 +346,7 @@ class Collapse {
       ...typeof config === 'object' && config ? config : {}
     }
 
-    if (!data && _config.toggle && /show|hide/.test(config)) {
+    if (!data && _config.toggle && typeof config === 'string' && /show|hide/.test(config)) {
       _config.toggle = false
     }
 

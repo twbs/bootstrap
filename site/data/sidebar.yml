@@ -14,9 +14,14 @@
 
 - title: Layout
   pages:
-    - title: Overview
+    - title: Breakpoints
+    - title: Containers
     - title: Grid
-    - title: Utilities for layout
+    # - title: Rows
+    - title: Columns
+    - title: Gutters
+    - title: Utilities
+    - title: Z-index
 
 - title: Content
   pages:

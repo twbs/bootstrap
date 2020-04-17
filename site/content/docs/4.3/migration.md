@@ -77,6 +77,13 @@ Changes to Reboot, typography, tables, and more.
 - `.text-*` utilities do not add hover and focus states to links anymore. `.link-*` helper classes can be used instead. [See #29267](https://github.com/twbs/bootstrap/pull/29267)
 - Drop `.text-justify` class. [See #229793](https://github.com/twbs/bootstrap/pull/29793)
 
+## Typography
+
+- Removed `$display-*` variables for a new `$display-font-sizes` Sass map.
+- Removed individiual `$display-*-weight` variables for a single `$display-font-weight`.
+- Added two new `.display-*` heading styles, `.display-5` and `.display-6`.
+- Resized existing display headings for a slightly more consistent set of `font-size`s.
+
 ## Forms
 
 - Rearranged form documentation under its own top-level section.
@@ -101,7 +108,6 @@ Changes to Reboot, typography, tables, and more.
 - Dropped `.form-row` for the more flexible grid gutters.
 - Dropped `.form-inline` for the more flexible grid.
 - Dropped support for `.form-control-plaintext` inside `.input-group`s.
-- Dropped `.form-text` as existing utilities cover this use class's former use case (e.g., `.mt-2`, `.text-small`, and/or `.text-muted`).
 - Dropped `.input-group-append` and `.input-group-prepend`. You can now just add buttons and `.input-group-text` as direct children of the input groups.
 - Form labels now require the `.form-label` class. Sass variables are now available to style form labels to your needs. [See #30476](https://github.com/twbs/bootstrap/pull/30476)
 
@@ -160,6 +166,7 @@ Badges were overhauled to better differentiate themselves from buttons and to be
 - Added `.bg-body` for quickly setting the `<body>`'s background to additional elements.
 - **Todo:** Drop `.text-hide` as it's an antiquated method for hiding text that shouldn't be used anymore
 - **Todo:** Split utilities into property-value utility classes and helpers
+- Negative margin utilities are disabled by default. You can re-enable them by setting `$enable-negative-margins: true`, but keep in mind this can increase the file size quite a lot.
 
 ## Docs
 
