@@ -38,15 +38,11 @@ const DefaultType = {
   content : '(string|element|function)'
 }
 
-const ClassName = {
-  FADE : 'fade',
-  SHOW : 'show'
-}
+const CLASS_NAME_FADE = 'fade'
+const CLASS_NAME_SHOW = 'show'
 
-const Selector = {
-  TITLE   : '.popover-header',
-  CONTENT : '.popover-body'
-}
+const SELECTOR_TITLE   = '.popover-header'
+const SELECTOR_CONTENT = '.popover-body'
 
 const Event = {
   HIDE       : `hide${EVENT_KEY}`,
@@ -117,14 +113,14 @@ class Popover extends Tooltip {
     const $tip = $(this.getTipElement())
 
     // We use append for html objects to maintain js events
-    this.setElementContent($tip.find(Selector.TITLE), this.getTitle())
+    this.setElementContent($tip.find(SELECTOR_TITLE), this.getTitle())
     let content = this._getContent()
     if (typeof content === 'function') {
       content = content.call(this.element)
     }
-    this.setElementContent($tip.find(Selector.CONTENT), content)
+    this.setElementContent($tip.find(SELECTOR_CONTENT), content)
 
-    $tip.removeClass(`${ClassName.FADE} ${ClassName.SHOW}`)
+    $tip.removeClass(`${CLASS_NAME_FADE} ${CLASS_NAME_SHOW}`)
   }
 
   // Private

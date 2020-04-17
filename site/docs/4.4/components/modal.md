@@ -81,7 +81,7 @@ Below is a _static_ modal example (meaning its `position` and `display` have bee
 
 Toggle a working modal demo by clicking the button below. It will slide down and fade in from the top of the page.
 
-<div id="exampleModalLive" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLiveLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModalLive" tabindex="-1" role="dialog" aria-labelledby="exampleModalLiveLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -139,7 +139,7 @@ Toggle a working modal demo by clicking the button below. It will slide down and
 
 When backdrop is set to static, the modal will not close when clicking outside it. Click the button below to try it.
 
-<div id="staticBackdropLive" class="modal fade" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLiveLabel" aria-hidden="true">
+<div class="modal fade" id="staticBackdropLive" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLiveLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -172,7 +172,7 @@ When backdrop is set to static, the modal will not close when clicking outside i
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -198,7 +198,7 @@ When backdrop is set to static, the modal will not close when clicking outside i
 
 When modals become too long for the user's viewport or device, they scroll independent of the page itself. Try the demo below to see what we mean.
 
-<div id="exampleModalLong" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -241,37 +241,9 @@ When modals become too long for the user's viewport or device, they scroll indep
   </button>
 </div>
 
-{% highlight html %}
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-  Launch demo modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-{% endhighlight %}
-
 You can also create a scrollable modal that allows scroll the modal body by adding `.modal-dialog-scrollable` to `.modal-dialog`.
 
-<div id="exampleModalScrollable" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+<div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -315,30 +287,9 @@ You can also create a scrollable modal that allows scroll the modal body by addi
 </div>
 
 {% highlight html %}
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalScrollable">
-  Launch demo modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalScrollableTitle">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
+<!-- Scrollable modal -->
+<div class="modal-dialog modal-dialog-scrollable" role="document">
+  ...
 </div>
 {% endhighlight %}
 
@@ -346,7 +297,7 @@ You can also create a scrollable modal that allows scroll the modal body by addi
 
 Add `.modal-dialog-centered` to `.modal-dialog` to vertically center the modal.
 
-<div id="exampleModalCenter" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -366,8 +317,8 @@ Add `.modal-dialog-centered` to `.modal-dialog` to vertically center the modal.
   </div>
 </div>
 
-<div id="exampleModalCenteredScrollable" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenteredScrollableTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+<div class="modal fade" id="exampleModalCenteredScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenteredScrollableTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalCenteredScrollableTitle">Modal title</h5>
@@ -400,30 +351,14 @@ Add `.modal-dialog-centered` to `.modal-dialog` to vertically center the modal.
 </div>
 
 {% highlight html %}
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-  Launch demo modal
-</button>
+<!-- Vertically centered modal -->
+<div class="modal-dialog modal-dialog-centered" role="document">
+  ...
+</div>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
+<!-- Vertically centered scrollable modal -->
+<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+  ...
 </div>
 {% endhighlight %}
 
@@ -431,7 +366,7 @@ Add `.modal-dialog-centered` to `.modal-dialog` to vertically center the modal.
 
 [Tooltips]({{ site.baseurl }}/docs/{{ site.docs_version }}/components/tooltips/) and [popovers]({{ site.baseurl }}/docs/{{ site.docs_version }}/components/popovers/) can be placed within modals as needed. When modals are closed, any tooltips and popovers within are also automatically dismissed.
 
-<div id="exampleModalPopovers" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalPopoversLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModalPopovers" tabindex="-1" role="dialog" aria-labelledby="exampleModalPopoversLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -475,7 +410,7 @@ Add `.modal-dialog-centered` to `.modal-dialog` to vertically center the modal.
 
 Utilize the Bootstrap grid system within a modal by nesting `.container-fluid` within the `.modal-body`. Then, use the normal grid system classes as you would anywhere else.
 
-<div id="gridSystemModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
+<div class="modal fade" id="gridSystemModal" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -676,52 +611,23 @@ Modals have three optional sizes, available via modifier classes to be placed on
 Our default modal without modifier class constitutes the "medium" size modal.
 
 <div class="bd-example">
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl">Extra large modal</button>
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm">Small modal</button>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalXl">Extra large modal</button>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLg">Large modal</button>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalSm">Small modal</button>
 </div>
 
 {% highlight html %}
-<!-- Extra large modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl">Extra large modal</button>
-
-<div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl" role="document">
-    <div class="modal-content">
-      ...
-    </div>
-  </div>
-</div>
-
-<!-- Large modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>
-
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      ...
-    </div>
-  </div>
-</div>
-
-<!-- Small modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm">Small modal</button>
-
-<div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm" role="document">
-    <div class="modal-content">
-      ...
-    </div>
-  </div>
-</div>
+<div class="modal-dialog modal-xl" role="document">...</div>
+<div class="modal-dialog modal-lg" role="document">...</div>
+<div class="modal-dialog modal-sm" role="document">...</div>
 {% endhighlight %}
 
-<div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModalXl" tabindex="-1" role="dialog" aria-labelledby="exampleModalXlLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content">
 
       <div class="modal-header">
-        <h5 class="modal-title h4" id="myExtraLargeModalLabel">Extra large modal</h5>
+        <h5 class="modal-title h4" id="exampleModalXlLabel">Extra large modal</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -733,12 +639,12 @@ Our default modal without modifier class constitutes the "medium" size modal.
   </div>
 </div>
 
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModalLg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLgLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
 
       <div class="modal-header">
-        <h5 class="modal-title h4" id="myLargeModalLabel">Large modal</h5>
+        <h5 class="modal-title h4" id="exampleModalLgLabel">Large modal</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -750,11 +656,11 @@ Our default modal without modifier class constitutes the "medium" size modal.
   </div>
 </div>
 
-<div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModalSm" tabindex="-1" role="dialog" aria-labelledby="exampleModalSmLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title h4" id="mySmallModalLabel">Small modal</h5>
+        <h5 class="modal-title h4" id="exampleModalSmLabel">Small modal</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -802,7 +708,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <td>backdrop</td>
       <td>boolean or the string <code>'static'</code></td>
       <td>true</td>
-      <td>Includes a modal-backdrop element. Alternatively, specify <code>static</code> for a backdrop which doesn't close the modal on click or on escape key press.</td>
+      <td>Includes a modal-backdrop element. Alternatively, specify <code>static</code> for a backdrop which doesn't close the modal on click.</td>
     </tr>
     <tr>
       <td>keyboard</td>
@@ -897,7 +803,7 @@ Bootstrap's modal class exposes a few events for hooking into modal functionalit
     </tr>
     <tr>
       <td>hidePrevented.bs.modal</td>
-      <td>This event is fired when the modal is shown, its backdrop is <code>static</code> and a click outside the modal or an escape key press is performed.</td>
+      <td>This event is fired when the modal is shown, its backdrop is <code>static</code> and a click outside the modal or an escape key press is performed with the keyboard option or <code>data-keyboard</code> set to <code>false</code>.</td>
     </tr>
   </tbody>
 </table>

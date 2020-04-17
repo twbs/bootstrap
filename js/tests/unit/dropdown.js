@@ -1020,6 +1020,70 @@ $(function () {
     $textarea.trigger('click')
   })
 
+  QUnit.test('should not stop key event propagation when dropdown is disabled', function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+
+    var dropdownHTML = '<div class="tabs">' +
+        '<div class="dropdown">' +
+        '<a href="#" class="dropdown-toggle" id="toggle" data-toggle="dropdown" disabled>Dropdown</a>' +
+        '<div class="dropdown-menu">' +
+        '<a class="dropdown-item" id="item" href="#">Menu item</a>' +
+        '</div>' +
+        '</div>'
+
+    var $dropdown = $(dropdownHTML)
+      .appendTo('#qunit-fixture')
+      .find('[data-toggle="dropdown"]')
+      .bootstrapDropdown()
+
+    var $body = $('body')
+
+    $(document).on('keydown', function () {
+      $body.addClass('event-handled')
+    })
+
+    // Key escape
+    $dropdown.trigger('focus').trigger($.Event('keydown', {
+      which: 27
+    }))
+
+    assert.ok($body.hasClass('event-handled'), 'ESC key event was propagated')
+    done()
+  })
+
+  QUnit.test('should not stop ESC key event propagation when dropdown is not active', function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+
+    var dropdownHTML = '<div class="tabs">' +
+        '<div class="dropdown">' +
+        '<a href="#" class="dropdown-toggle" id="toggle" data-toggle="dropdown">Dropdown</a>' +
+        '<div class="dropdown-menu">' +
+        '<a class="dropdown-item" id="item" href="#">Menu item</a>' +
+        '</div>' +
+        '</div>'
+
+    var $dropdown = $(dropdownHTML)
+      .appendTo('#qunit-fixture')
+      .find('[data-toggle="dropdown"]')
+      .bootstrapDropdown()
+
+    var $body = $('body')
+
+    $(document).on('keydown', function () {
+      $body.addClass('event-handled')
+    })
+
+    // Key escape
+    $dropdown.trigger('focus').trigger($.Event('keydown', {
+      which: 27
+    }))
+
+    assert.ok($body.hasClass('event-handled'), 'ESC key event was propagated')
+    done()
+  })
+
   QUnit.test('should not use Popper.js if display set to static', function (assert) {
     assert.expect(1)
     var dropdownHTML =

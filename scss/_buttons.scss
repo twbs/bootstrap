@@ -10,9 +10,9 @@
   font-weight: $btn-font-weight;
   color: $body-color;
   text-align: center;
+  text-decoration: if($link-decoration == none, null, none);
   white-space: $btn-white-space;
   vertical-align: middle;
-  cursor: if($enable-pointer-cursor-for-buttons, pointer, null);
   user-select: none;
   background-color: transparent;
   border: $btn-border-width solid transparent;
@@ -37,12 +37,16 @@
     @include box-shadow(none);
   }
 
-  &:not(:disabled):not(.disabled):active,
-  &:not(:disabled):not(.disabled).active {
-    @include box-shadow($btn-active-box-shadow);
+  &:not(:disabled):not(.disabled) {
+    cursor: if($enable-pointer-cursor-for-buttons, pointer, null);
 
-    &:focus {
-      @include box-shadow($btn-focus-box-shadow, $btn-active-box-shadow);
+    &:active,
+    &.active {
+      @include box-shadow($btn-active-box-shadow);
+
+      &:focus {
+        @include box-shadow($btn-focus-box-shadow, $btn-active-box-shadow);
+      }
     }
   }
 }
@@ -89,7 +93,6 @@ fieldset:disabled a.btn {
   &:focus,
   &.focus {
     text-decoration: $link-hover-decoration;
-    box-shadow: none;
   }
 
   &:disabled,

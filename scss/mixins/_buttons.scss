@@ -20,10 +20,10 @@
     color: color-yiq($hover-background);
     @include gradient-bg($hover-background);
     border-color: $hover-border;
-    // Avoid using mixin so we can pass custom focus shadow properly
     @if $enable-shadows {
-      box-shadow: $btn-box-shadow, 0 0 0 $btn-focus-width rgba(mix(color-yiq($background), $border, 15%), .5);
+      @include box-shadow($btn-box-shadow, 0 0 0 $btn-focus-width rgba(mix(color-yiq($background), $border, 15%), .5));
     } @else {
+      // Avoid using mixin so we can pass custom focus shadow properly
       box-shadow: 0 0 0 $btn-focus-width rgba(mix(color-yiq($background), $border, 15%), .5);
     }
   }
@@ -51,10 +51,10 @@
     border-color: $active-border;
 
     &:focus {
-      // Avoid using mixin so we can pass custom focus shadow properly
       @if $enable-shadows and $btn-active-box-shadow != none {
-        box-shadow: $btn-active-box-shadow, 0 0 0 $btn-focus-width rgba(mix(color-yiq($background), $border, 15%), .5);
+        @include box-shadow($btn-active-box-shadow, 0 0 0 $btn-focus-width rgba(mix(color-yiq($background), $border, 15%), .5));
       } @else {
+        // Avoid using mixin so we can pass custom focus shadow properly
         box-shadow: 0 0 0 $btn-focus-width rgba(mix(color-yiq($background), $border, 15%), .5);
       }
     }
@@ -90,10 +90,10 @@
     border-color: $active-border;
 
     &:focus {
-      // Avoid using mixin so we can pass custom focus shadow properly
       @if $enable-shadows and $btn-active-box-shadow != none {
-        box-shadow: $btn-active-box-shadow, 0 0 0 $btn-focus-width rgba($color, .5);
+        @include box-shadow($btn-active-box-shadow, 0 0 0 $btn-focus-width rgba($color, .5));
       } @else {
+        // Avoid using mixin so we can pass custom focus shadow properly
         box-shadow: 0 0 0 $btn-focus-width rgba($color, .5);
       }
     }
