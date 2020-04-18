@@ -60,8 +60,8 @@ cdn:
   js_hash:          "sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
   js_bundle:        "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"
   js_bundle_hash:   "sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm"
-  jquery:           "https://code.jquery.com/jquery-3.4.1.slim.min.js"
-  jquery_hash:      "sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+  jquery:           "https://code.jquery.com/jquery-3.5.0.slim.min.js"
+  jquery_hash:      "sha384-/IFzzQmt1S744I+IQO4Mc1uphkxbXt1tEwjQ/qSw2p8pXWck09sLvqHmKDYYwReJ"
   popper:           "https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
   popper_hash:      "sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
 
