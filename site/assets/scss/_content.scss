@@ -29,7 +29,7 @@
     margin-bottom: 1.5rem;
     @include font-size(.875rem);
 
-    @include media-breakpoint-down(md) {
+    @include media-breakpoint-down(lg) {
       display: block;
       overflow-x: auto;
 

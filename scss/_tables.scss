@@ -140,8 +140,7 @@
 // size of where your table will overflow.
 
 @each $breakpoint in map-keys($grid-breakpoints) {
-  $next: breakpoint-next($breakpoint, $grid-breakpoints);
-  $infix: breakpoint-infix($next, $grid-breakpoints);
+  $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
   @include media-breakpoint-down($breakpoint) {
     .table-responsive#{$infix} {
