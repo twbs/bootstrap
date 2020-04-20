@@ -148,6 +148,36 @@ describe('Modal', () => {
       modal.toggle()
     })
 
+    it('should not adjust the inline margin of sticky elements when element do not have full width', done => {
+      fixtureEl.innerHTML = [
+        '<div class="sticky-top" style="margin-right: 0px; width: 50%"></div>',
+        '<div class="modal"><div class="modal-dialog"></div></div>'
+      ].join('')
+
+      const stickyTopEl = fixtureEl.querySelector('.sticky-top')
+      const originalMargin = parseInt(window.getComputedStyle(stickyTopEl).marginRight, 10)
+      const modalEl = fixtureEl.querySelector('.modal')
+      const modal = new Modal(modalEl)
+
+      modalEl.addEventListener('shown.bs.modal', () => {
+        const expectedMargin = 0
+        const currentMargin = parseInt(window.getComputedStyle(stickyTopEl).marginRight, 10)
+
+        expect(currentMargin).toEqual(expectedMargin, 'sticky element margin should not be adjusted while opening')
+        modal.toggle()
+      })
+
+      modalEl.addEventListener('hidden.bs.modal', () => {
+        const currentMargin = parseInt(window.getComputedStyle(stickyTopEl).marginRight, 10)
+
+        expect(stickyTopEl.getAttribute('data-margin-right')).toEqual(null, 'data-margin-right should be cleared after closing')
+        expect(currentMargin).toEqual(originalMargin, 'sticky element margin should be reset after closing')
+        done()
+      })
+
+      modal.toggle()
+    })
+
     it('should ignore values set via CSS when trying to restore body padding after closing', done => {
       fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
       const styleTest = document.createElement('style')
