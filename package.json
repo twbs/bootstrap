@@ -109,7 +109,7 @@
     "hammer-simulator": "0.0.1",
     "hugo-bin": "^0.57.0",
     "ip": "^1.1.5",
-    "karma": "^5.0.1",
+    "karma": "^5.0.2",
     "karma-browserstack-launcher": "1.4.0",
     "karma-chrome-launcher": "^3.1.0",
     "karma-coverage-istanbul-reporter": "^2.1.1",
