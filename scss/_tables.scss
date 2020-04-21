@@ -41,7 +41,7 @@
   // Highlight border color between thead, tbody and tfoot.
   // stylelint-disable-next-line selector-max-universal
   > :not(:last-child) > :last-child > * {
-    border-bottom-color: currentColor;
+    border-bottom-color: $table-group-seperator-color;
   }
 }
 
