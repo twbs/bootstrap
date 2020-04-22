@@ -3,7 +3,46 @@
 // Variables should follow the `$component-state-property-size` formula for
 // consistent naming. Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.
 
-// Color system
+// TOC
+//
+// - Color system
+// - Options
+//
+// - Spacing
+// - Body
+// - Links
+// - Paragraphs
+//
+// - Grid
+// - Components
+// - Typography
+//
+// - Tables
+// - Buttons + Forms
+// - Z-index master list
+// - Navs
+// - Jumbotron
+// - Cards
+// - Tooltips
+// - Popovers
+// - Toasts
+// - Badges
+// - Modals
+// - Alerts
+// - Progress bars
+// - List group
+// - Image thumbnails
+// - Figures
+// - Breadcrumbs
+// - Carousel
+// - Spinners
+// - Close
+// - Code
+// - Utilities
+// - Printing
+
+
+// - Color system
 
 $white:    #fff !default;
 $gray-100: #f8f9fa !default;
@@ -111,7 +150,7 @@ $escaped-characters: (
 ) !default;
 
 
-// Options
+// - Options
 //
 // Quickly modify global styling by enabling or disabling optional features.
 
@@ -130,7 +169,7 @@ $enable-validation-icons:                     true !default;
 $enable-deprecation-messages:                 true !default;
 
 
-// Spacing
+// - Spacing
 //
 // Control the default styling of most Bootstrap elements by modifying these
 // variables. Mostly focused on spacing.
@@ -166,7 +205,7 @@ $sizes: map-merge(
 );
 
 
-// Body
+// - Body
 //
 // Settings for the `<body>` element.
 
@@ -174,7 +213,7 @@ $body-bg:                   $white !default;
 $body-color:                $gray-900 !default;
 
 
-// Links
+// - Links
 //
 // Style anchor elements.
 
@@ -185,14 +224,16 @@ $link-hover-decoration:                   underline !default;
 // Darken percentage for links with `.text-*` class (e.g. `.text-success`)
 $emphasized-link-hover-darken-percentage: 15% !default;
 
-// Paragraphs
+// - Paragraphs
 //
 // Style p element.
 
 $paragraph-margin-bottom:   1rem !default;
 
 
-// Grid breakpoints
+// - Grid
+
+// -- Grid breakpoints
 //
 // Define the minimum dimensions at which your layout will change,
 // adapting to different screen sizes, for use in media queries.
@@ -208,8 +249,7 @@ $grid-breakpoints: (
 @include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
 @include _assert-starts-at-zero($grid-breakpoints, "$grid-breakpoints");
 
-
-// Grid containers
+// -- Grid containers
 //
 // Define the maximum width of `.container` for different screen sizes.
 
@@ -222,8 +262,7 @@ $container-max-widths: (
 
 @include _assert-ascending($container-max-widths, "$container-max-widths");
 
-
-// Grid columns
+// -- Grid columns
 //
 // Set the number of columns and specify the width of the gutters.
 
@@ -232,7 +271,7 @@ $grid-gutter-width:           30px !default;
 $grid-row-columns:            6 !default;
 
 
-// Components
+// - Components
 //
 // Define common padding and border radius sizes and more.
 
@@ -275,7 +314,7 @@ $embed-responsive-aspect-ratios: join(
   $embed-responsive-aspect-ratios
 );
 
-// Typography
+// - Typography
 //
 // Font, line-height, and color for body text, headings, and more.
 
@@ -350,7 +389,7 @@ $mark-bg:                     #fcf8e3 !default;
 $hr-margin-y:                 $spacer !default;
 
 
-// Tables
+// - Tables
 //
 // Customizes the `.table` component with basic values, each used across all table variations.
 
@@ -385,7 +424,7 @@ $table-bg-level:              -9 !default;
 $table-border-level:          -6 !default;
 
 
-// Buttons + Forms
+// - Buttons + Forms
 //
 // Shared variables that are reassigned to `$input-` and `$btn-` specific variables.
 
@@ -412,7 +451,7 @@ $input-btn-line-height-lg:    $line-height-lg !default;
 $input-btn-border-width:      $border-width !default;
 
 
-// Buttons
+// -- Buttons
 //
 // For each of Bootstrap's buttons, define text, background, and border color.
 
@@ -454,7 +493,7 @@ $btn-border-radius-sm:        $border-radius-sm !default;
 $btn-transition:              color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
 
 
-// Forms
+// -- Forms
 
 $label-margin-bottom:                   .5rem !default;
 
@@ -655,7 +694,7 @@ $custom-file-text: (
 ) !default;
 
 
-// Form validation
+// --- Form validation
 
 $form-feedback-margin-top:          $form-text-margin-top !default;
 $form-feedback-font-size:           $small-font-size !default;
@@ -683,7 +722,7 @@ $form-validation-states: map-merge(
   $form-validation-states
 );
 
-// Z-index master list
+// - Z-index master list
 //
 // Warning: Avoid customizing these values. They're used for a bird's eye view
 // of components dependent on the z-axis and are designed to all work together.
@@ -697,7 +736,7 @@ $zindex-popover:                    1060 !default;
 $zindex-tooltip:                    1070 !default;
 
 
-// Navs
+// - Navs
 
 $nav-link-padding-y:                .5rem !default;
 $nav-link-padding-x:                1rem !default;
@@ -719,7 +758,7 @@ $nav-divider-color:                 $gray-200 !default;
 $nav-divider-margin-y:              $spacer / 2 !default;
 
 
-// Navbar
+// -- Navbar
 
 $navbar-padding-y:                  $spacer / 2 !default;
 $navbar-padding-x:                  $spacer !default;
@@ -757,7 +796,7 @@ $navbar-dark-brand-color:                 $navbar-dark-active-color !default;
 $navbar-dark-brand-hover-color:           $navbar-dark-active-color !default;
 
 
-// Dropdowns
+// -- Dropdowns
 //
 // Dropdown menu container and contents.
 
@@ -791,7 +830,7 @@ $dropdown-header-color:             $gray-600 !default;
 $dropdown-header-padding:           $dropdown-padding-y $dropdown-item-padding-x !default;
 
 
-// Pagination
+// -- Pagination
 
 $pagination-padding-y:              .5rem !default;
 $pagination-padding-x:              .75rem !default;
@@ -822,14 +861,14 @@ $pagination-disabled-bg:            $white !default;
 $pagination-disabled-border-color:  $gray-300 !default;
 
 
-// Jumbotron
+// - Jumbotron
 
 $jumbotron-padding:                 2rem !default;
 $jumbotron-color:                   null !default;
 $jumbotron-bg:                      $gray-200 !default;
 
 
-// Cards
+// - Cards
 
 $card-spacer-y:                     .75rem !default;
 $card-spacer-x:                     1.25rem !default;
@@ -853,7 +892,7 @@ $card-columns-gap:                  1.25rem !default;
 $card-columns-margin:               $card-spacer-y !default;
 
 
-// Tooltips
+// - Tooltips
 
 $tooltip-font-size:                 $font-size-sm !default;
 $tooltip-max-width:                 200px !default;
@@ -878,7 +917,7 @@ $form-feedback-tooltip-opacity:       $tooltip-opacity !default;
 $form-feedback-tooltip-border-radius: $tooltip-border-radius !default;
 
 
-// Popovers
+// - Popovers
 
 $popover-font-size:                 $font-size-sm !default;
 $popover-bg:                        $white !default;
@@ -905,7 +944,7 @@ $popover-arrow-color:               $popover-bg !default;
 $popover-arrow-outer-color:         fade-in($popover-border-color, .05) !default;
 
 
-// Toasts
+// - Toasts
 
 $toast-max-width:                   350px !default;
 $toast-padding-x:                   .75rem !default;
@@ -923,7 +962,7 @@ $toast-header-background-color:     rgba($white, .85) !default;
 $toast-header-border-color:         rgba(0, 0, 0, .05) !default;
 
 
-// Badges
+// - Badges
 
 $badge-font-size:                   75% !default;
 $badge-font-weight:                 $font-weight-bold !default;
@@ -940,7 +979,7 @@ $badge-pill-padding-x:              .6em !default;
 $badge-pill-border-radius:          10rem !default;
 
 
-// Modals
+// - Modals
 
 // Padding applied to the modal body
 $modal-inner-padding:               1rem !default;
@@ -983,7 +1022,7 @@ $modal-transition:                  transform .3s ease-out !default;
 $modal-scale-transform:             scale(1.02) !default;
 
 
-// Alerts
+// - Alerts
 //
 // Define alert colors, border radius, and padding.
 
@@ -999,7 +1038,7 @@ $alert-border-level:                -9 !default;
 $alert-color-level:                 6 !default;
 
 
-// Progress bars
+// - Progress bars
 
 $progress-height:                   1rem !default;
 $progress-font-size:                $font-size-base * .75 !default;
@@ -1012,7 +1051,7 @@ $progress-bar-animation-timing:     1s linear infinite !default;
 $progress-bar-transition:           width .6s ease !default;
 
 
-// List group
+// - List group
 
 $list-group-color:                  null !default;
 $list-group-bg:                     $white !default;
@@ -1038,7 +1077,7 @@ $list-group-action-active-color:    $body-color !default;
 $list-group-action-active-bg:       $gray-200 !default;
 
 
-// Image thumbnails
+// - Image thumbnails
 
 $thumbnail-padding:                 .25rem !default;
 $thumbnail-bg:                      $body-bg !default;
@@ -1048,13 +1087,13 @@ $thumbnail-border-radius:           $border-radius !default;
 $thumbnail-box-shadow:              0 1px 2px rgba($black, .075) !default;
 
 
-// Figures
+// - Figures
 
 $figure-caption-font-size:          90% !default;
 $figure-caption-color:              $gray-600 !default;
 
 
-// Breadcrumbs
+// - Breadcrumbs
 
 $breadcrumb-font-size:              null !default;
 
@@ -1072,7 +1111,7 @@ $breadcrumb-divider:                quote("/") !default;
 $breadcrumb-border-radius:          $border-radius !default;
 
 
-// Carousel
+// - Carousel
 
 $carousel-control-color:             $white !default;
 $carousel-control-width:             15% !default;
@@ -1099,7 +1138,7 @@ $carousel-transition-duration:       .6s !default;
 $carousel-transition:                transform $carousel-transition-duration ease-in-out !default; // Define transform transition first if using multiple transitions (e.g., `transform 2s ease, opacity .5s ease-out`)
 
 
-// Spinners
+// - Spinners
 
 $spinner-width:         2rem !default;
 $spinner-height:        $spinner-width !default;
@@ -1110,7 +1149,7 @@ $spinner-height-sm:       $spinner-width-sm !default;
 $spinner-border-width-sm: .2em !default;
 
 
-// Close
+// - Close
 
 $close-font-size:                   $font-size-base * 1.5 !default;
 $close-font-weight:                 $font-weight-bold !default;
@@ -1118,7 +1157,7 @@ $close-color:                       $black !default;
 $close-text-shadow:                 0 1px 0 $white !default;
 
 
-// Code
+// - Code
 
 $code-font-size:                    87.5% !default;
 $code-color:                        $pink !default;
@@ -1133,14 +1172,14 @@ $pre-color:                         $gray-900 !default;
 $pre-scrollable-max-height:         340px !default;
 
 
-// Utilities
+// - Utilities
 
 $displays: none, inline, inline-block, block, table, table-row, table-cell, flex, inline-flex !default;
 $overflows: auto, hidden !default;
 $positions: static, relative, absolute, fixed, sticky !default;
 
 
-// Printing
+// - Printing
 
 $print-page-size:                   a3 !default;
 $print-body-min-width:              map-get($grid-breakpoints, "lg") !default;
