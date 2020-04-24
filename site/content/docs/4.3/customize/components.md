@@ -35,3 +35,43 @@ Should you modify your `$grid-breakpoints`, your changes will apply to all the l
 {{< scss-docs name="grid-breakpoints" file="scss/_variables.scss" >}}
 
 For more information and examples on how to modify our Sass maps and variables, please refer to [the Sass section of the Grid documentation]({{< docsref "/layout/grid#sass" >}}).
+
+## Creating your own
+
+We encourage you to adopt these guidelines when building with Bootstrap to create your own components. We've extended the approach ourselves to the custom components in our documentation and examples. Consider the our custom callouts in our documentation that allow us
+
+<div class="bd-example">
+  <div class="bd-callout my-0">
+    <strong>This is a callout.</strong> We built it custom for our docs so our messages to you stand out. It has three variants via modifier classes.
+  </div>
+</div>
+
+{{< highlight html >}}
+<div class="callout">...</div>
+{{< /highlight >}}
+
+In your CSS, you'd have something like the following where the bulk of the styling is done via `.callout`. Then, the unique styles between each variant is controlled via modifier class.
+
+```scss
+// Base class
+.callout {}
+
+// Modifier classes
+.callout-info {}
+.callout-warning {}
+.callout-danger {}
+```
+
+For the callouts, that unique styling is just a `border-left-color`. When you combine that base class with one of those modifier classes, you get your complete component family:
+
+{{< callout info >}}
+**This is an info callout.** Example text to show it in action.
+{{< /callout >}}
+
+{{< callout warning >}}
+**This is a warning callout.** Example text to show it in action.
+{{< /callout >}}
+
+{{< callout danger >}}
+**This is a danger callout.** Example text to show it in action.
+{{< /callout >}}
