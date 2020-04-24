@@ -37,9 +37,16 @@ This way, you're not including any JavaScript you don't intend to use for compon
 
 Bootstrap depends on Autoprefixer to automatically add browser prefixes to certain CSS properties. Prefixes are dictated by our `browserslist.rc` file, found in the root of the Bootstrap repo. Customizing this list of browsers and recompiling the Sass will automatically remove some CSS from your compiled CSS, if there are vendor prefixes unique to that browser or version.
 
-## Use Purge CSS
+## Unused CSS
 
 _Help wanted with this section, please consider opening a PR. Thanks!_
+
+While we don't have a prebuilt example for using [PurgeCSS](https://github.com/FullHuman/purgecss) with Bootstrap, there are some helpful articles and walkthroughs that the community has written. Here are some options:
+
+- https://medium.com/dwarves-foundation/remove-unused-css-styles-from-bootstrap-using-purgecss-88395a2c5772
+- https://lukencode.com/2018/07/29/automatically-removeunused-css-from-bootstrap-or-other-frameworks/
+
+Lastly, this [CSS Tricks article on unused CSS](https://css-tricks.com/how-do-you-remove-unused-css-from-a-site/) shows how to use PurgeCSS and other similar tools.
 
 ## Minify and gzip
 
