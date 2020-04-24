@@ -309,7 +309,7 @@ $(function () {
     var done = assert.async()
     var dropdownHTML = '<div class="nav">' +
         '<div class="dropdown" id="testmenu">' +
-        '<a class="dropdown-toggle" data-toggle="dropdown" href="#testmenu">Test menu <span class="caret"/></a>' +
+        '<a class="dropdown-toggle" data-toggle="dropdown" href="#testmenu">Test menu</a>' +
         '<div class="dropdown-menu">' +
         '<a class="dropdown-item" href="#sub1">Submenu 1</a>' +
         '</div>' +
@@ -355,7 +355,7 @@ $(function () {
     var done = assert.async()
     var dropdownHTML = '<div class="nav">' +
         '<div class="dropdown" id="testmenu">' +
-        '<a class="dropdown-toggle" data-toggle="dropdown" href="#testmenu">Test menu <span class="caret"/></a>' +
+        '<a class="dropdown-toggle" data-toggle="dropdown" href="#testmenu">Test menu</a>' +
         '<div class="dropdown-menu">' +
         '<a class="dropdown-item" href="#sub1">Submenu 1</a>' +
         '</div>' +
@@ -363,7 +363,7 @@ $(function () {
         '</div>' +
         '<div class="btn-group">' +
         '<button class="btn">Actions</button>' +
-        '<button class="btn dropdown-toggle" data-toggle="dropdown"><span class="caret"/></button>' +
+        '<button class="btn dropdown-toggle" data-toggle="dropdown"></button>' +
         '<div class="dropdown-menu">' +
         '<a class="dropdown-item" href="#">Action 1</a>' +
         '</div>' +
