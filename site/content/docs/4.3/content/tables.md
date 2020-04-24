@@ -210,13 +210,13 @@ Highlight a table row or cell by adding a `.table-active` class.
 
 ## How do the variants and accented tables work?
 
-For the accented tables ([striped rows](#striped-rows), [hoverable rows](#hoverable-rows) and [active tables](#active-tables)), we used some techniques to make these effects work for all our [table variants](#variants):
+For the accented tables ([striped rows](#striped-rows), [hoverable rows](#hoverable-rows), and [active tables](#active-tables)), we used some techniques to make these effects work for all our [table variants](#variants):
 
-- First of all we set the background of a table cell with the `--bs-table-bg` custom property. All table variants then set that custom property to colorize the table cells. This way, we don't get into trouble if semi-transparent colors are used as table backgrounds.
-- Then we add a linear background to the table cells with `background-image: linear-gradient(var(--bs-table-accent-bg), var(--bs-table-accent-bg));`. Since `--bs-table-accent-bg` is transparent by default, we have an invisible transparent linear gradient by default.
+- We start by setting the background of a table cell with the `--bs-table-bg` custom property. All table variants then set that custom property to colorize the table cells. This way, we don't get into trouble if semi-transparent colors are used as table backgrounds.
+- Then we add a gradient on the table cells with `background-image: linear-gradient(var(--bs-table-accent-bg), var(--bs-table-accent-bg));` to layer on top of any specified `background-color`. Since `--bs-table-accent-bg` is transparent by default, we have an invisible transparent linear gradient by default.
 - When either `.table-striped`, `.table-hover` or `.table-active` classes are added, the `--bs-table-accent-bg` is set to a semitransparent color to colorize the background.
-- For each table variant the `--bs-table-accent-bg` color with the most contrast is generated, therefor `.table-primary` has a darkened accent color and `.table-dark` has a lightened accent color.
-- The text color and border color are also generated the same way. The colors and border colors are inherited by default.
+- For each table variant, we generate a `--bs-table-accent-bg` color with the highest contrast depedending on that color. For example, the accent color for `.table-primary` is darker while `.table-dark` has a lighter accent color.
+- Text and border colors are generated the same way, and their colors are inherited by default.
 
 Behind the scenes it looks like this:
 
@@ -242,7 +242,7 @@ Add `.table-borderless` for a table without borders.
 
 {{< table class="table table-dark table-borderless" >}}
 
-### Small tables
+## Small tables
 
 Add `.table-sm` to make any `.table` more compact by cutting all cell `padding` in half.
 
@@ -319,7 +319,7 @@ Table cells of `<thead>` are always vertical aligned to the bottom. Table cells 
 
 ## Nesting
 
-Neither border styles, active styles nor table variants are inherited by nested tables:
+Border styles, active styles, and table variants are not inherited by nested tables.
 
 <div class="bd-example">
 <table class="table table-striped table-bordered">
@@ -399,7 +399,9 @@ Neither border styles, active styles nor table variants are inherited by nested 
 
 ## How nesting works
 
-To prevent **any** style from leaking to nested tables we worked with the child combinator (`>`). Since we needed to target all the `td`s and `th`s in the `thead`, `tbody` and `tfoot`, our selector would look pretty long. Therefor we use the rather odd looking `.table > :not(caption) > * > * ` selector to target all `td`s and `th`s of the `.table` and not a nested table. Note: if you add `<tr>`s as direct children of a table, those `<tr>` will be wrapped in a `<tbody>` by default and therefor making the selector work.
+To prevent _any_ styles from leaking to nested tables, we use the child combinator (`>`) selector in our CSS. Since we need to target all the `td`s and `th`s in the `thead`, `tbody`, and `tfoot`, our selector would look pretty long without it. As such, we use the rather odd looking `.table > :not(caption) > * > * ` selector to target all `td`s and `th`s of the `.table`, but none of any potential nested tables.
+
+Note that if you add `<tr>`s as direct children of a table, those `<tr>` will be wrapped in a `<tbody>` by default, thus making our selectors work as intended.
 
 ## Anatomy
 
