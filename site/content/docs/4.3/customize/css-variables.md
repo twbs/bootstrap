@@ -10,9 +10,9 @@ Bootstrap includes around two dozen [CSS custom properties (variables)](https://
 
 **All our custom properties are prefixed with `bs-` to avoid conflicts with third party CSS.**
 
-## Available variables
+## Root variables
 
-Here are the variables we include (note that the `:root` is required). They're located in our `_root.scss` file.
+Here are the variables we include (note that the `:root` is required) that can be accessed anywhere Bootstrap's CSS is loaded. They're located in our `_root.scss` file and included in our compiled dist files.
 
 {{< highlight css >}}
 {{< root.inline >}}
@@ -27,6 +27,12 @@ Here are the variables we include (note that the `:root` is required). They're l
 
 {{< /root.inline >}}
 {{< /highlight >}}
+
+## Component variables
+
+We're also beginning to make use of custom properties as local variables for various components. By using CSS variables in this way, we can heavily reduce our compiled CSS, ensure that table styles aren't inherited, and allow you to dynamically restyle or extend Bootstrap components without recompiling Sass.
+
+Have a look at our table documentation for some [insight into how we're using CSS variables]({{< docsref "/content/tables#how-do-the-variants-and-accented-tables-work" >}}).
 
 ## Examples
 
