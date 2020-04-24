@@ -9,7 +9,7 @@ Customize Bootstrap with our built-in custom variables file and easily toggle gl
 
 You can find and customize these variables for key global options in Bootstrap's `scss/_variables.scss` file.
 
-{{< table "table text-left" >}}
+{{< bs-table "table text-left" >}}
 | Variable                       | Values                             | Description                                                                            |
 | ------------------------------ | ---------------------------------- | -------------------------------------------------------------------------------------- |
 | `$spacer`                      | `1rem` (default), or any value > 0 | Specifies the default spacer value to programmatically generate our [spacer utilities]({{< docsref "/utilities/spacing" >}}). |
@@ -26,4 +26,4 @@ You can find and customize these variables for key global options in Bootstrap's
 | `$enable-negative-margins`     | `true` or `false` (default)        | Enables the generation of [negative margin utilities]({{< docsref "/utilities/spacing#negative-margin" >}}). |
 | `$enable-deprecation-messages` | `true` or `false` (default)        | Set to `true` to show warnings when using any of the deprecated mixins and functions that are planned to be removed in `v5`. |
 | `$enable-important-utilities`  | `true` (default) or `false`        | Enables the `!important` suffix in utility classes. |
-{{< /table >}}
+{{< /bs-table >}}
