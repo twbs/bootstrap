@@ -19,6 +19,20 @@ If you're not using a component, comment it out or delete it entirely. For examp
 
 Bootstrap's JavaScript includes every component in our primary dist files (`bootstrap.js` and `bootstrap.min.js`), and even our primary dependency (Popper.js) with our bundle files (`bootstrap.bundle.js` and `bootstrap.bundle.min.js`). While you're customizing via Sass, be sure to remove related JavaScript.
 
+For instance, assuming you're using your own JavaScript bundler like Webpack or Rollup, you'd only import the JavaScript you plan on using. In the example below, we show how to just include our modal JavaScript:
+
+```js
+// Import just what we need
+
+// If you're importing tooltips or popovers, be sure to include the Popper.js dependency
+// import "../../node_modules/popper.js/dist/popper.min.js";
+
+import "../../node_modules/bootstrap/js/dist/util.js";
+import "../../node_modules/bootstrap/js/dist/modal.js";
+```
+
+This way, you're not including any JavaScript you don't intend to use for components like buttons, carousels, and tooltips.
+
 ## Autoprefixer browserslist.rc
 
 Bootstrap depends on Autoprefixer to automatically add browser prefixes to certain CSS properties. Prefixes are dictated by our `browserslist.rc` file, found in the root of the Bootstrap repo. Customizing this list of browsers and recompiling the Sass will automatically remove some CSS from your compiled CSS, if there are vendor prefixes unique to that browser or version.
