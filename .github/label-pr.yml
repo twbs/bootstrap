@@ -1,0 +1,8 @@
+- regExp: ".*\\.md+$"
+  labels: ["docs"]
+- regExp: ".*\\.scss+$"
+  labels: ["css"]
+- regExp: ".*\\.js+$"
+  labels: ["js"]
+- regExp: "^(package\\.json|build\\.gradle)$"
+  labels: ["dependencies"]
