@@ -1,0 +1,18 @@
+name: Label PRs
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  label_pr:
+    runs-on: ubuntu-latest
+
+    steps:
+      # We need to checkout the repository to access the configured file (.github/label-pr.yml)
+      - uses: actions/checkout@v2
+      - name: PR label by Files
+        uses: Decathlon/pull-request-labeler-action@v2.0.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
