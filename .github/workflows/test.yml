@@ -74,6 +74,7 @@ jobs:
         if: matrix.node == 10
         env:
           BUNDLEWATCH_GITHUB_TOKEN: "${{ secrets.BUNDLEWATCH_GITHUB_TOKEN }}"
+          CI_BRANCH_BASE: v4-dev
 
       - name: Run BrowserStack tests
         run: npm run js-test-cloud
