@@ -107,7 +107,7 @@
     "find-unused-sass-variables": "^1.0.5",
     "glob": "^7.1.6",
     "hammer-simulator": "0.0.1",
-    "hugo-bin": "^0.57.0",
+    "hugo-bin": "^0.57.2",
     "ip": "^1.1.5",
     "karma": "^5.0.2",
     "karma-browserstack-launcher": "1.4.0",
