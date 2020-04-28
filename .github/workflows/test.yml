@@ -56,8 +56,6 @@ jobs:
       - run: ruby --version
       - run: gem --version
       - run: bundle --version
-      - run: node --version
-      - run: npm --version
       - run: java -version
 
       - name: Install npm dependencies
