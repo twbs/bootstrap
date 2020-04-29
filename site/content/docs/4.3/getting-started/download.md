@@ -28,6 +28,12 @@ Should you require [build tools]({{< docsref "/getting-started/build-tools#tooli
 
 <a href="{{< param "download.source" >}}" class="btn btn-bd-primary" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download source');">Download source</a>
 
+## Examples
+
+If you want to download and examine our [examples]({{< docsref "/examples" >}}), you can grab the already built examples:
+
+<a href="{{< param "download.dist_examples" >}}" class="btn btn-bd-primary" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download Examples');">Download Examples</a>
+
 ## BootstrapCDN
 
 Skip the download with [BootstrapCDN](https://www.bootstrapcdn.com/) to deliver cached version of Bootstrap's compiled CSS and JS to your project.
