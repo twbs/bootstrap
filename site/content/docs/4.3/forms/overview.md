@@ -37,7 +37,7 @@ Here's a quick example to demonstrate Bootstrap's form styles. Keep reading for 
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Email address</label>
     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-    <small id="emailHelp" class="form-text">We'll never share your email with anyone else.</small>
+    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Password</label>
@@ -53,7 +53,7 @@ Here's a quick example to demonstrate Bootstrap's form styles. Keep reading for 
 
 ## Form text
 
-Block-level form text in forms can be created using `.form-text`.
+Block-level or inline-level form text can be created using `.form-text`.
 
 {{< callout warning >}}
 ##### Associating form text with form controls
@@ -61,17 +61,17 @@ Block-level form text in forms can be created using `.form-text`.
 Form text should be explicitly associated with the form control it relates to using the `aria-describedby` attribute. This will ensure that assistive technologies—such as screen readers—will announce this form text when the user focuses or enters the control.
 {{< /callout >}}
 
-Form text below inputs can be styled with `.form-text`. This class includes `display: block` and adds some top margin for easy spacing from the inputs above.
+Form text below inputs can be styled with `.form-text`. If a block-level element will be used, a top margin is added for easy spacing from the inputs above.
 
 {{< example >}}
 <label for="inputPassword5" class="form-label">Password</label>
 <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
-<small id="passwordHelpBlock" class="form-text">
+<div id="passwordHelpBlock" class="form-text">
   Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
-</small>
+</div>
 {{< /example >}}
 
-Inline text can use any typical inline HTML element (be it a `<small>`, `<span>`, or something else) with nothing more than a utility class.
+Inline text can use any typical inline HTML element (be it a `<span>`, `<small>`, or something else) with nothing more than the `.form-text` class.
 
 {{< example >}}
 <div class="row g-3 align-items-center">
@@ -82,9 +82,9 @@ Inline text can use any typical inline HTML element (be it a `<small>`, `<span>`
     <input type="password" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
   </div>
   <div class="col-auto">
-    <small id="passwordHelpInline" class="text-muted">
+    <span id="passwordHelpInline" class="form-text">
       Must be 8-20 characters long.
-    </small>
+    </span>
   </div>
 </div>
 {{< /example >}}

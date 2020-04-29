@@ -2,14 +2,12 @@
 
 .bd-toc {
   @include media-breakpoint-up(lg) {
-    @supports (position: sticky) {
-      position: sticky;
-      top: 5rem;
-      right: 0;
-      z-index: 2;
-      height: subtract(100vh, 7rem);
-      overflow-y: auto;
-    }
+    position: sticky;
+    top: 5rem;
+    right: 0;
+    z-index: 2;
+    height: subtract(100vh, 7rem);
+    overflow-y: auto;
   }
 
   nav {

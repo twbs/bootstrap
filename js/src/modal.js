@@ -31,7 +31,7 @@ const VERSION = '4.3.1'
 const DATA_KEY = 'bs.modal'
 const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
-const ESCAPE_KEYCODE = 27 // KeyboardEvent.which value for Escape (Esc) key
+const ESCAPE_KEY = 'Escape'
 
 const Default = {
   backdrop: true,
@@ -299,10 +299,10 @@ class Modal {
   _setEscapeEvent() {
     if (this._isShown) {
       EventHandler.on(this._element, EVENT_KEYDOWN_DISMISS, event => {
-        if (this._config.keyboard && event.which === ESCAPE_KEYCODE) {
+        if (this._config.keyboard && event.key === ESCAPE_KEY) {
           event.preventDefault()
           this.hide()
-        } else if (!this._config.keyboard && event.which === ESCAPE_KEYCODE) {
+        } else if (!this._config.keyboard && event.key === ESCAPE_KEY) {
           this._triggerBackdropTransition()
         }
       })
