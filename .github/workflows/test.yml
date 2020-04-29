@@ -22,8 +22,6 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
 
-      - run: node --version
-      - run: npm --version
       - run: java -version
 
       - name: Set up npm cache

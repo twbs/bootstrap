@@ -12,7 +12,7 @@
   text-decoration: if($link-decoration == none, null, none);
   white-space: $btn-white-space;
   vertical-align: middle;
-  cursor: if($enable-pointer-cursor-for-buttons, pointer, null);
+  cursor: if($enable-button-pointers, pointer, null);
   user-select: none;
   background-color: transparent;
   border: $btn-border-width solid transparent;

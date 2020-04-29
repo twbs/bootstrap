@@ -374,6 +374,17 @@ th {
   text-align: -webkit-match-parent; // 2
 }
 
+thead,
+tbody,
+tfoot,
+tr,
+td,
+th {
+  border-color: inherit;
+  border-style: solid;
+  border-width: 0;
+}
+
 
 // Forms
 //
@@ -452,7 +463,7 @@ button,
 [type="submit"] {
   -webkit-appearance: button; // 2
 
-  @if $enable-pointer-cursor-for-buttons {
+  @if $enable-button-pointers {
     &:not(:disabled) {
       cursor: pointer; // 3
     }

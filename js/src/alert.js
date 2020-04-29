@@ -14,7 +14,6 @@ import {
 } from './util/index'
 import Data from './dom/data'
 import EventHandler from './dom/event-handler'
-import SelectorEngine from './dom/selector-engine'
 
 /**
  * ------------------------------------------------------------------------
@@ -84,13 +83,7 @@ class Alert {
   // Private
 
   _getRootElement(element) {
-    let parent = getElementFromSelector(element)
-
-    if (!parent) {
-      parent = SelectorEngine.closest(element, `.${CLASSNAME_ALERT}`)
-    }
-
-    return parent
+    return getElementFromSelector(element) || element.closest(`.${CLASSNAME_ALERT}`)
   }
 
   _triggerCloseEvent(element) {
