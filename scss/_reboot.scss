@@ -229,6 +229,9 @@ pre {
   margin-bottom: 1rem;
   // Don't allow content to break outside
   overflow: auto;
+  // Disable auto-hiding scrollbar in IE & legacy Edge to avoid overlap,
+  // making it impossible to interact with the content
+  -ms-overflow-style: scrollbar;
 }
 
 
