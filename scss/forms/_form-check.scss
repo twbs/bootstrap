@@ -33,7 +33,7 @@
   }
 
   &[type="radio"] {
-    @include border-radius($form-check-radio-border-radius);
+    border-radius: $form-check-radio-border-radius; // stylelint-disable-line property-blacklist
   }
 
   &:active {
