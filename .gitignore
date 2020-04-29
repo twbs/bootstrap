@@ -3,6 +3,8 @@
 # This is the old Jekyll docs dist folder;
 # keeping it here so that when we switch branches it doesn't show up
 /site/docs/**/dist/
+# Jekyll's cache folder; keeping it for the same reason as above
+/site/.jekyll-cache/
 # Hugo resources folder
 /resources/
 

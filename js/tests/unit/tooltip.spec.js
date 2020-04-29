@@ -1,6 +1,6 @@
 import Tooltip from '../../src/tooltip'
 import EventHandler from '../../src/dom/event-handler'
-import { makeArray, noop } from '../../src/util/index'
+import { noop } from '../../src/util/index'
 
 /** Test helpers */
 import { getFixture, clearFixture, jQueryMock, createEvent } from '../helpers/fixture'
@@ -15,9 +15,7 @@ describe('Tooltip', () => {
   afterEach(() => {
     clearFixture()
 
-    const tooltipList = makeArray(document.querySelectorAll('.tooltip'))
-
-    tooltipList.forEach(tooltipEl => {
+    document.querySelectorAll('.tooltip').forEach(tooltipEl => {
       document.body.removeChild(tooltipEl)
     })
   })
@@ -915,7 +913,7 @@ describe('Tooltip', () => {
 
       tooltip.setElementContent(tooltip.getTipElement(), 'test')
 
-      expect(tooltip.getTipElement().innerText).toEqual('test')
+      expect(tooltip.getTipElement().textContent).toEqual('test')
     })
   })
 

@@ -1,5 +1,4 @@
 import Popover from '../../src/popover'
-import { makeArray } from '../../src/util/index'
 
 /** Test helpers */
 import { getFixture, clearFixture, jQueryMock } from '../helpers/fixture'
@@ -14,7 +13,7 @@ describe('Popover', () => {
   afterEach(() => {
     clearFixture()
 
-    const popoverList = makeArray(document.querySelectorAll('.popover'))
+    const popoverList = document.querySelectorAll('.popover')
 
     popoverList.forEach(popoverEl => {
       document.body.removeChild(popoverEl)

@@ -17,16 +17,14 @@
 }
 
 // Responsive sticky top
-@supports (position: sticky) {
-  @each $breakpoint in map-keys($grid-breakpoints) {
-    @include media-breakpoint-up($breakpoint) {
-      $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
-      .sticky#{$infix}-top {
-        position: sticky;
-        top: 0;
-        z-index: $zindex-sticky;
-      }
+    .sticky#{$infix}-top {
+      position: sticky;
+      top: 0;
+      z-index: $zindex-sticky;
     }
   }
 }

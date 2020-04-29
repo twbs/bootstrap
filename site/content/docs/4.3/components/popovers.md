@@ -248,20 +248,20 @@ Note that for security reasons the `sanitize`, `sanitizeFn` and `whiteList` opti
       <td>offset</td>
       <td>number | string</td>
       <td>0</td>
-      <td>Offset of the popover relative to its target. For more information refer to Popper.js's <a href="https://popper.js.org/popper-documentation.html#modifiers..offset.offset">offset docs</a>.</td>
+      <td>Offset of the popover relative to its target. For more information refer to Popper.js's <a href="https://popper.js.org/docs/v1/#modifiers..offset.offset">offset docs</a>.</td>
     </tr>
     <tr>
       <td>fallbackPlacement</td>
       <td>string | array</td>
       <td>'flip'</td>
       <td>Allow to specify which position Popper will use on fallback. For more information refer to
-      Popper.js's <a href="https://popper.js.org/popper-documentation.html#modifiers..flip.behavior">behavior docs</a></td>
+      Popper.js's <a href="https://popper.js.org/docs/v1/#modifiers..flip.behavior">behavior docs</a></td>
     </tr>
     <tr>
       <td>boundary</td>
       <td>string | element</td>
       <td>'scrollParent'</td>
-      <td>Overflow constraint boundary of the popover. Accepts the values of <code>'viewport'</code>, <code>'window'</code>, <code>'scrollParent'</code>, or an HTMLElement reference (JavaScript only). For more information refer to Popper.js's <a href="https://popper.js.org/popper-documentation.html#modifiers..preventOverflow.boundariesElement">preventOverflow docs</a>.</td>
+      <td>Overflow constraint boundary of the popover. Accepts the values of <code>'viewport'</code>, <code>'window'</code>, <code>'scrollParent'</code>, or an HTMLElement reference (JavaScript only). For more information refer to Popper.js's <a href="https://popper.js.org/docs/v1/#modifiers..preventOverflow.boundariesElement">preventOverflow docs</a>.</td>
     </tr>
     <tr>
       <td>sanitize</td>
@@ -285,7 +285,7 @@ Note that for security reasons the `sanitize`, `sanitizeFn` and `whiteList` opti
       <td>popperConfig</td>
       <td>null | object</td>
       <td>null</td>
-      <td>To change Bootstrap's default Popper.js config, see <a href="https://popper.js.org/popper-documentation.html#Popper.Defaults">Popper.js's configuration</a></td>
+      <td>To change Bootstrap's default Popper.js config, see <a href="https://popper.js.org/docs/v1/#Popper.Defaults">Popper.js's configuration</a></td>
     </tr>
   </tbody>
 </table>

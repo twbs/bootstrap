@@ -5,16 +5,14 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
+// scss-docs-start import-stack
 // Configuration
-
 @import "functions";
 @import "variables";
 @import "mixins";
 @import "utilities";
 
-
 // Layout & components
-
 @import "root";
 @import "reboot";
 @import "type";
@@ -44,12 +42,9 @@
 @import "carousel";
 @import "spinners";
 
-
 // Helpers
-
 @import "helpers";
 
-
 // Utilities
-
 @import "utilities/api";
+// scss-docs-end import-stack

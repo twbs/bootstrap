@@ -13,7 +13,6 @@ import {
   getTransitionDurationFromElement,
   getUID,
   isElement,
-  makeArray,
   noop,
   typeCheckConfig
 } from './util/index'
@@ -195,14 +194,14 @@ class Tooltip {
 
     if (event) {
       const dataKey = this.constructor.DATA_KEY
-      let context = Data.getData(event.delegateTarget, dataKey)
+      let context = Data.getData(event.target, dataKey)
 
       if (!context) {
         context = new this.constructor(
-          event.delegateTarget,
+          event.target,
           this._getDelegateConfig()
         )
-        Data.setData(event.delegateTarget, dataKey, context)
+        Data.setData(event.target, dataKey, context)
       }
 
       context._activeTrigger.click = !context._activeTrigger.click
@@ -228,7 +227,7 @@ class Tooltip {
     Data.removeData(this.element, this.constructor.DATA_KEY)
 
     EventHandler.off(this.element, this.constructor.EVENT_KEY)
-    EventHandler.off(SelectorEngine.closest(this.element, `.${CLASS_NAME_MODAL}`), 'hide.bs.modal', this._hideModalHandler)
+    EventHandler.off(this.element.closest(`.${CLASS_NAME_MODAL}`), 'hide.bs.modal', this._hideModalHandler)
 
     if (this.tip) {
       this.tip.parentNode.removeChild(this.tip)
@@ -301,7 +300,7 @@ class Tooltip {
       // only needed because of broken event delegation on iOS
       // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
       if ('ontouchstart' in document.documentElement) {
-        makeArray(document.body.children).forEach(element => {
+        [].concat(...document.body.children).forEach(element => {
           EventHandler.on(element, 'mouseover', noop())
         })
       }
@@ -354,7 +353,7 @@ class Tooltip {
     // If this is a touch-enabled device we remove the extra
     // empty mouseover listeners we added for iOS support
     if ('ontouchstart' in document.documentElement) {
-      makeArray(document.body.children)
+      [].concat(...document.body.children)
         .forEach(element => EventHandler.off(element, 'mouseover', noop))
     }
 
@@ -401,8 +400,7 @@ class Tooltip {
   setContent() {
     const tip = this.getTipElement()
     this.setElementContent(SelectorEngine.findOne(SELECTOR_TOOLTIP_INNER, tip), this.getTitle())
-    tip.classList.remove(CLASS_NAME_FADE)
-    tip.classList.remove(CLASS_NAME_SHOW)
+    tip.classList.remove(CLASS_NAME_FADE, CLASS_NAME_SHOW)
   }
 
   setElementContent(element, content) {
@@ -422,7 +420,7 @@ class Tooltip {
           element.appendChild(content)
         }
       } else {
-        element.innerText = content.textContent
+        element.textContent = content.textContent
       }
 
       return
@@ -435,7 +433,7 @@ class Tooltip {
 
       element.innerHTML = content
     } else {
-      element.innerText = content
+      element.textContent = content
     }
   }
 
@@ -558,7 +556,7 @@ class Tooltip {
       }
     }
 
-    EventHandler.on(SelectorEngine.closest(this.element, `.${CLASS_NAME_MODAL}`),
+    EventHandler.on(this.element.closest(`.${CLASS_NAME_MODAL}`),
       'hide.bs.modal',
       this._hideModalHandler
     )
@@ -589,14 +587,14 @@ class Tooltip {
 
   _enter(event, context) {
     const dataKey = this.constructor.DATA_KEY
-    context = context || Data.getData(event.delegateTarget, dataKey)
+    context = context || Data.getData(event.target, dataKey)
 
     if (!context) {
       context = new this.constructor(
-        event.delegateTarget,
+        event.target,
         this._getDelegateConfig()
       )
-      Data.setData(event.delegateTarget, dataKey, context)
+      Data.setData(event.target, dataKey, context)
     }
 
     if (event) {
@@ -629,14 +627,14 @@ class Tooltip {
 
   _leave(event, context) {
     const dataKey = this.constructor.DATA_KEY
-    context = context || Data.getData(event.delegateTarget, dataKey)
+    context = context || Data.getData(event.target, dataKey)
 
     if (!context) {
       context = new this.constructor(
-        event.delegateTarget,
+        event.target,
         this._getDelegateConfig()
       )
-      Data.setData(event.delegateTarget, dataKey, context)
+      Data.setData(event.target, dataKey, context)
     }
 
     if (event) {

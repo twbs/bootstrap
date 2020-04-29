@@ -60,9 +60,7 @@ Feel free to mix input groups with button groups in your toolbars. Similar to th
     <button type="button" class="btn btn-secondary">4</button>
   </div>
   <div class="input-group">
-    <div class="input-group-prepend">
-      <div class="input-group-text" id="btnGroupAddon">@</div>
-    </div>
+    <div class="input-group-text" id="btnGroupAddon">@</div>
     <input type="text" class="form-control" placeholder="Input group example" aria-label="Input group example" aria-describedby="btnGroupAddon">
   </div>
 </div>
@@ -75,9 +73,7 @@ Feel free to mix input groups with button groups in your toolbars. Similar to th
     <button type="button" class="btn btn-secondary">4</button>
   </div>
   <div class="input-group">
-    <div class="input-group-prepend">
-      <div class="input-group-text" id="btnGroupAddon2">@</div>
-    </div>
+    <div class="input-group-text" id="btnGroupAddon2">@</div>
     <input type="text" class="form-control" placeholder="Input group example" aria-label="Input group example" aria-describedby="btnGroupAddon2">
   </div>
 </div>
@@ -126,10 +122,10 @@ Place a `.btn-group` within another `.btn-group` when you want dropdown menus mi
     <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
       Dropdown
     </button>
-    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-      <a class="dropdown-item" href="#">Dropdown link</a>
-      <a class="dropdown-item" href="#">Dropdown link</a>
-    </div>
+    <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+      <li><a class="dropdown-item" href="#">Dropdown link</a></li>
+      <li><a class="dropdown-item" href="#">Dropdown link</a></li>
+    </ul>
   </div>
 </div>
 {{< /example >}}
@@ -158,10 +154,10 @@ Make a set of buttons appear vertically stacked rather than horizontally. **Spli
       <button id="btnGroupVerticalDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
         Dropdown
       </button>
-      <div class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop1">
-        <a class="dropdown-item" href="#">Dropdown link</a>
-        <a class="dropdown-item" href="#">Dropdown link</a>
-      </div>
+      <ul class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop1">
+        <li><a class="dropdown-item" href="#">Dropdown link</a></li>
+        <li><a class="dropdown-item" href="#">Dropdown link</a></li>
+      </ul>
     </div>
     <button type="button" class="btn btn-secondary">Button</button>
     <button type="button" class="btn btn-secondary">Button</button>
@@ -169,28 +165,28 @@ Make a set of buttons appear vertically stacked rather than horizontally. **Spli
       <button id="btnGroupVerticalDrop2" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
         Dropdown
       </button>
-      <div class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop2">
-        <a class="dropdown-item" href="#">Dropdown link</a>
-        <a class="dropdown-item" href="#">Dropdown link</a>
-      </div>
+      <ul class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop2">
+        <li><a class="dropdown-item" href="#">Dropdown link</a></li>
+        <li><a class="dropdown-item" href="#">Dropdown link</a></li>
+      </ul>
     </div>
     <div class="btn-group" role="group">
       <button id="btnGroupVerticalDrop3" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
         Dropdown
       </button>
-      <div class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop3">
-        <a class="dropdown-item" href="#">Dropdown link</a>
-        <a class="dropdown-item" href="#">Dropdown link</a>
-      </div>
+      <ul class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop3">
+        <li><a class="dropdown-item" href="#">Dropdown link</a></li>
+        <li><a class="dropdown-item" href="#">Dropdown link</a></li>
+      </ul>
     </div>
     <div class="btn-group" role="group">
       <button id="btnGroupVerticalDrop4" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
         Dropdown
       </button>
-      <div class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop4">
-        <a class="dropdown-item" href="#">Dropdown link</a>
-        <a class="dropdown-item" href="#">Dropdown link</a>
-      </div>
+      <ul class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop4">
+        <li><a class="dropdown-item" href="#">Dropdown link</a></li>
+        <li><a class="dropdown-item" href="#">Dropdown link</a></li>
+      </ul>
     </div>
   </div>
 </div>

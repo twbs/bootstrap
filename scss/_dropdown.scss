@@ -34,6 +34,7 @@
   @include box-shadow($dropdown-box-shadow);
 }
 
+// scss-docs-start responsive-breakpoints
 @each $breakpoint in map-keys($grid-breakpoints) {
   @include media-breakpoint-up($breakpoint) {
     $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
@@ -49,6 +50,7 @@
     }
   }
 }
+// scss-docs-end responsive-breakpoints
 
 // Allow for dropdowns to go bottom up (aka, dropup-menu)
 // Just add .dropup after the standard .dropdown class and you're set.
@@ -150,7 +152,7 @@
   &:hover,
   &:focus {
     color: $dropdown-link-hover-color;
-    text-decoration: none;
+    text-decoration: if($link-hover-decoration == underline, none, null);
     @include gradient-bg($dropdown-link-hover-bg);
   }
 

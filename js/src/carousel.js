@@ -12,7 +12,6 @@ import {
   getElementFromSelector,
   getTransitionDurationFromElement,
   isVisible,
-  makeArray,
   reflow,
   triggerTransitionEnd,
   typeCheckConfig
@@ -34,8 +33,8 @@ const DATA_KEY = 'bs.carousel'
 const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
 
-const ARROW_LEFT_KEYCODE = 37 // KeyboardEvent.which value for left arrow key
-const ARROW_RIGHT_KEYCODE = 39 // KeyboardEvent.which value for right arrow key
+const ARROW_LEFT_KEY = 'ArrowLeft'
+const ARROW_RIGHT_KEY = 'ArrowRight'
 const TOUCHEVENT_COMPAT_WAIT = 500 // Time for mouse compat events to fire after touch
 const SWIPE_THRESHOLD = 40
 
@@ -119,7 +118,7 @@ class Carousel {
     this._element = element
     this._indicatorsElement = SelectorEngine.findOne(SELECTOR_INDICATORS, this._element)
     this._touchSupported = 'ontouchstart' in document.documentElement || navigator.maxTouchPoints > 0
-    this._pointerEvent = Boolean(window.PointerEvent || window.MSPointerEvent)
+    this._pointerEvent = Boolean(window.PointerEvent)
 
     this._addEventListeners()
     Data.setData(element, DATA_KEY, this)
@@ -322,7 +321,7 @@ class Carousel {
       }
     }
 
-    makeArray(SelectorEngine.find(SELECTOR_ITEM_IMG, this._element)).forEach(itemImg => {
+    SelectorEngine.find(SELECTOR_ITEM_IMG, this._element).forEach(itemImg => {
       EventHandler.on(itemImg, EVENT_DRAG_START, e => e.preventDefault())
     })
 
@@ -343,12 +342,12 @@ class Carousel {
       return
     }
 
-    switch (event.which) {
-      case ARROW_LEFT_KEYCODE:
+    switch (event.key) {
+      case ARROW_LEFT_KEY:
         event.preventDefault()
         this.prev()
         break
-      case ARROW_RIGHT_KEYCODE:
+      case ARROW_RIGHT_KEY:
         event.preventDefault()
         this.next()
         break
@@ -358,7 +357,7 @@ class Carousel {
 
   _getItemIndex(element) {
     this._items = element && element.parentNode ?
-      makeArray(SelectorEngine.find(SELECTOR_ITEM, element.parentNode)) :
+      SelectorEngine.find(SELECTOR_ITEM, element.parentNode) :
       []
 
     return this._items.indexOf(element)
@@ -479,13 +478,10 @@ class Carousel {
 
       EventHandler
         .one(activeElement, TRANSITION_END, () => {
-          nextElement.classList.remove(directionalClassName)
-          nextElement.classList.remove(orderClassName)
+          nextElement.classList.remove(directionalClassName, orderClassName)
           nextElement.classList.add(CLASS_NAME_ACTIVE)
 
-          activeElement.classList.remove(CLASS_NAME_ACTIVE)
-          activeElement.classList.remove(orderClassName)
-          activeElement.classList.remove(directionalClassName)
+          activeElement.classList.remove(CLASS_NAME_ACTIVE, orderClassName, directionalClassName)
 
           this._isSliding = false
 
@@ -601,7 +597,8 @@ EventHandler
   .on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_SLIDE, Carousel.dataApiClickHandler)
 
 EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
-  const carousels = makeArray(SelectorEngine.find(SELECTOR_DATA_RIDE))
+  const carousels = SelectorEngine.find(SELECTOR_DATA_RIDE)
+
   for (let i = 0, len = carousels.length; i < len; i++) {
     Carousel.carouselInterface(carousels[i], Data.getData(carousels[i], DATA_KEY))
   }

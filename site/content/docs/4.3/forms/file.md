@@ -3,12 +3,14 @@ layout: docs
 title: File browser
 description: Use our custom file inputs for consistent cross-browser styling, built-in customization, and lightweight JavaScript.
 group: forms
-toc: false
+toc: true
 ---
 
 {{< callout info >}}
-The recommended plugin to animate custom file input: [bs-custom-file-input](https://www.npmjs.com/package/bs-custom-file-input), that's what we are using currently here in our docs.
+The recommended plugin to animate custom file inputs is [bs-custom-file-input](https://www.npmjs.com/package/bs-custom-file-input); it's what we use here in our docs.
 {{< /callout >}}
+
+## Default
 
 The file input is the most gnarly of the bunch and requires additional JavaScript if you'd like to hook them up with functional *Choose file...* and selected file name text.
 
@@ -47,3 +49,25 @@ Longer placeholder text is truncated and an ellipsis is added when there's not e
 {{< /example >}}
 
 We hide the default file `<input>` via `opacity` and instead style the `<label>`, and declare a `width` and `height` on the `<input>` for proper spacing for surrounding content.
+
+## Sizing
+
+You may also choose from small and large file inputs to match our similarly sized text inputs.
+
+{{< example >}}
+<div class="form-file form-file-lg mb-3">
+  <input type="file" class="form-file-input" id="customFileLg">
+  <label class="form-file-label" for="customFileLg">
+    <span class="form-file-text">Choose file...</span>
+    <span class="form-file-button">Browse</span>
+  </label>
+</div>
+
+<div class="form-file form-file-sm">
+  <input type="file" class="form-file-input" id="customFileSm">
+  <label class="form-file-label" for="customFileSm">
+    <span class="form-file-text">Choose file...</span>
+    <span class="form-file-button">Browse</span>
+  </label>
+</div>
+{{< /example >}}

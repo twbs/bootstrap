@@ -35,7 +35,6 @@ body {
   left: 0;
   display: block;
   width: 100%;
-  margin-bottom: 0; /* Override default `<label>` margin */
   color: #495057;
   pointer-events: none;
   cursor: text; /* Match the input under the label */
@@ -45,10 +44,6 @@ body {
 }
 
 .form-label-group input::-webkit-input-placeholder {
-  color: transparent;
-}
-
-.form-label-group input:-ms-input-placeholder {
   color: transparent;
 }
 
@@ -83,17 +78,6 @@ body {
     display: none;
   }
   .form-label-group input::-ms-input-placeholder {
-    color: #777;
-  }
-}
-
-/* Fallback for IE
--------------------------------------------------- */
-@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-  .form-label-group > label {
-    display: none;
-  }
-  .form-label-group input:-ms-input-placeholder {
     color: #777;
   }
 }

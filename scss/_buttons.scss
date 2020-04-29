@@ -12,7 +12,7 @@
   text-decoration: if($link-decoration == none, null, none);
   white-space: $btn-white-space;
   vertical-align: middle;
-  cursor: if($enable-pointer-cursor-for-buttons, pointer, null);
+  cursor: if($enable-button-pointers, pointer, null);
   user-select: none;
   background-color: transparent;
   border: $btn-border-width solid transparent;
@@ -21,7 +21,7 @@
 
   &:hover {
     color: $body-color;
-    text-decoration: none;
+    text-decoration: if($link-hover-decoration == underline, none, null);
   }
 
   &:focus,
@@ -84,7 +84,6 @@
   &:focus,
   &.focus {
     text-decoration: $link-hover-decoration;
-    box-shadow: none;
   }
 
   &:disabled,

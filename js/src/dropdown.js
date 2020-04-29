@@ -10,7 +10,6 @@ import {
   getElementFromSelector,
   isElement,
   isVisible,
-  makeArray,
   noop,
   typeCheckConfig
 } from './util/index'
@@ -32,14 +31,14 @@ const DATA_KEY = 'bs.dropdown'
 const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
 
-const ESCAPE_KEYCODE = 27 // KeyboardEvent.which value for Escape (Esc) key
-const SPACE_KEYCODE = 32 // KeyboardEvent.which value for space key
-const TAB_KEYCODE = 9 // KeyboardEvent.which value for tab key
-const ARROW_UP_KEYCODE = 38 // KeyboardEvent.which value for up arrow key
-const ARROW_DOWN_KEYCODE = 40 // KeyboardEvent.which value for down arrow key
-const RIGHT_MOUSE_BUTTON_WHICH = 3 // MouseEvent.which value for the right button (assuming a right-handed mouse)
+const ESCAPE_KEY = 'Escape'
+const SPACE_KEY = 'Space'
+const TAB_KEY = 'Tab'
+const ARROW_UP_KEY = 'ArrowUp'
+const ARROW_DOWN_KEY = 'ArrowDown'
+const RIGHT_MOUSE_BUTTON = 2 // MouseEvent.button value for the secondary button, usually the right button
 
-const REGEXP_KEYDOWN = new RegExp(`${ARROW_UP_KEYCODE}|${ARROW_DOWN_KEYCODE}|${ESCAPE_KEYCODE}`)
+const REGEXP_KEYDOWN = new RegExp(`${ARROW_UP_KEY}|${ARROW_DOWN_KEY}|${ESCAPE_KEY}`)
 
 const EVENT_HIDE = `hide${EVENT_KEY}`
 const EVENT_HIDDEN = `hidden${EVENT_KEY}`
@@ -129,7 +128,7 @@ class Dropdown {
       return
     }
 
-    const isActive = this._menu.classList.contains(CLASS_NAME_SHOW)
+    const isActive = this._element.classList.contains(CLASS_NAME_SHOW)
 
     Dropdown.clearMenus()
 
@@ -150,7 +149,7 @@ class Dropdown {
       relatedTarget: this._element
     }
 
-    const showEvent = EventHandler.trigger(parent, EVENT_SHOW, relatedTarget)
+    const showEvent = EventHandler.trigger(this._element, EVENT_SHOW, relatedTarget)
 
     if (showEvent.defaultPrevented) {
       return
@@ -190,8 +189,8 @@ class Dropdown {
     // only needed because of broken event delegation on iOS
     // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
     if ('ontouchstart' in document.documentElement &&
-      !makeArray(SelectorEngine.closest(parent, SELECTOR_NAVBAR_NAV)).length) {
-      makeArray(document.body.children)
+      !parent.closest(SELECTOR_NAVBAR_NAV)) {
+      [].concat(...document.body.children)
         .forEach(elem => EventHandler.on(elem, 'mouseover', null, noop()))
     }
 
@@ -199,7 +198,7 @@ class Dropdown {
     this._element.setAttribute('aria-expanded', true)
 
     Manipulator.toggleClass(this._menu, CLASS_NAME_SHOW)
-    Manipulator.toggleClass(parent, CLASS_NAME_SHOW)
+    Manipulator.toggleClass(this._element, CLASS_NAME_SHOW)
     EventHandler.trigger(parent, EVENT_SHOWN, relatedTarget)
   }
 
@@ -224,7 +223,7 @@ class Dropdown {
     }
 
     Manipulator.toggleClass(this._menu, CLASS_NAME_SHOW)
-    Manipulator.toggleClass(parent, CLASS_NAME_SHOW)
+    Manipulator.toggleClass(this._element, CLASS_NAME_SHOW)
     EventHandler.trigger(parent, EVENT_HIDDEN, relatedTarget)
   }
 
@@ -273,9 +272,7 @@ class Dropdown {
   }
 
   _getMenuElement() {
-    const parent = Dropdown.getParentFromElement(this._element)
-
-    return SelectorEngine.findOne(SELECTOR_MENU, parent)
+    return SelectorEngine.next(this._element, SELECTOR_MENU)[0]
   }
 
   _getPlacement() {
@@ -300,7 +297,7 @@ class Dropdown {
   }
 
   _detectNavbar() {
-    return Boolean(SelectorEngine.closest(this._element, `.${CLASS_NAME_NAVBAR}`))
+    return Boolean(this._element.closest(`.${CLASS_NAME_NAVBAR}`))
   }
 
   _getOffset() {
@@ -375,12 +372,13 @@ class Dropdown {
   }
 
   static clearMenus(event) {
-    if (event && (event.which === RIGHT_MOUSE_BUTTON_WHICH ||
-      (event.type === 'keyup' && event.which !== TAB_KEYCODE))) {
+    if (event && (event.button === RIGHT_MOUSE_BUTTON ||
+      (event.type === 'keyup' && event.key !== TAB_KEY))) {
       return
     }
 
-    const toggles = makeArray(SelectorEngine.find(SELECTOR_DATA_TOGGLE))
+    const toggles = SelectorEngine.find(SELECTOR_DATA_TOGGLE)
+
     for (let i = 0, len = toggles.length; i < len; i++) {
       const parent = Dropdown.getParentFromElement(toggles[i])
       const context = Data.getData(toggles[i], DATA_KEY)
@@ -397,14 +395,14 @@ class Dropdown {
       }
 
       const dropdownMenu = context._menu
-      if (!parent.classList.contains(CLASS_NAME_SHOW)) {
+      if (!toggles[i].classList.contains(CLASS_NAME_SHOW)) {
         continue
       }
 
       if (event && ((event.type === 'click' &&
           /input|textarea/i.test(event.target.tagName)) ||
-          (event.type === 'keyup' && event.which === TAB_KEYCODE)) &&
-          parent.contains(event.target)) {
+          (event.type === 'keyup' && event.key === TAB_KEY)) &&
+          dropdownMenu.contains(event.target)) {
         continue
       }
 
@@ -416,7 +414,7 @@ class Dropdown {
       // If this is a touch-enabled device we remove the extra
       // empty mouseover listeners we added for iOS support
       if ('ontouchstart' in document.documentElement) {
-        makeArray(document.body.children)
+        [].concat(...document.body.children)
           .forEach(elem => EventHandler.off(elem, 'mouseover', null, noop()))
       }
 
@@ -427,7 +425,7 @@ class Dropdown {
       }
 
       dropdownMenu.classList.remove(CLASS_NAME_SHOW)
-      parent.classList.remove(CLASS_NAME_SHOW)
+      toggles[i].classList.remove(CLASS_NAME_SHOW)
       EventHandler.trigger(parent, EVENT_HIDDEN, relatedTarget)
     }
   }
@@ -445,10 +443,10 @@ class Dropdown {
     //    - If key is not up or down => not a dropdown command
     //    - If trigger inside the menu => not a dropdown command
     if (/input|textarea/i.test(event.target.tagName) ?
-      event.which === SPACE_KEYCODE || (event.which !== ESCAPE_KEYCODE &&
-      ((event.which !== ARROW_DOWN_KEYCODE && event.which !== ARROW_UP_KEYCODE) ||
-        SelectorEngine.closest(event.target, SELECTOR_MENU))) :
-      !REGEXP_KEYDOWN.test(event.which)) {
+      event.key === SPACE_KEY || (event.key !== ESCAPE_KEY &&
+      ((event.key !== ARROW_DOWN_KEY && event.key !== ARROW_UP_KEY) ||
+        event.target.closest(SELECTOR_MENU))) :
+      !REGEXP_KEYDOWN.test(event.key)) {
       return
     }
 
@@ -460,18 +458,21 @@ class Dropdown {
     }
 
     const parent = Dropdown.getParentFromElement(this)
-    const isActive = parent.classList.contains(CLASS_NAME_SHOW)
+    const isActive = this.classList.contains(CLASS_NAME_SHOW)
 
-    if (!isActive || (isActive && (event.which === ESCAPE_KEYCODE || event.which === SPACE_KEYCODE))) {
-      if (event.which === ESCAPE_KEYCODE) {
-        SelectorEngine.findOne(SELECTOR_DATA_TOGGLE, parent).focus()
-      }
-
+    if (event.key === ESCAPE_KEY) {
+      const button = this.matches(SELECTOR_DATA_TOGGLE) ? this : SelectorEngine.prev(this, SELECTOR_DATA_TOGGLE)[0]
+      button.focus()
       Dropdown.clearMenus()
       return
     }
 
-    const items = makeArray(SelectorEngine.find(SELECTOR_VISIBLE_ITEMS, parent))
+    if (!isActive || event.key === SPACE_KEY) {
+      Dropdown.clearMenus()
+      return
+    }
+
+    const items = SelectorEngine.find(SELECTOR_VISIBLE_ITEMS, parent)
       .filter(isVisible)
 
     if (!items.length) {
@@ -480,17 +481,16 @@ class Dropdown {
 
     let index = items.indexOf(event.target)
 
-    if (event.which === ARROW_UP_KEYCODE && index > 0) { // Up
+    if (event.key === ARROW_UP_KEY && index > 0) { // Up
       index--
     }
 
-    if (event.which === ARROW_DOWN_KEYCODE && index < items.length - 1) { // Down
+    if (event.key === ARROW_DOWN_KEY && index < items.length - 1) { // Down
       index++
     }
 
-    if (index < 0) {
-      index = 0
-    }
+    // index is -1 if the first keydown is an ArrowUp
+    index = index === -1 ? 0 : index
 
     items[index].focus()
   }

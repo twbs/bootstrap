@@ -260,13 +260,13 @@ Add dropdown menus with a little extra HTML and the [dropdowns JavaScript plugin
   </li>
   <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">Dropdown</a>
-    <div class="dropdown-menu">
-      <a class="dropdown-item" href="#">Action</a>
-      <a class="dropdown-item" href="#">Another action</a>
-      <a class="dropdown-item" href="#">Something else here</a>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="#">Separated link</a>
-    </div>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#">Action</a></li>
+      <li><a class="dropdown-item" href="#">Another action</a></li>
+      <li><a class="dropdown-item" href="#">Something else here</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">Separated link</a></li>
+    </ul>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="#">Link</a>
@@ -286,13 +286,13 @@ Add dropdown menus with a little extra HTML and the [dropdowns JavaScript plugin
   </li>
   <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">Dropdown</a>
-    <div class="dropdown-menu">
-      <a class="dropdown-item" href="#">Action</a>
-      <a class="dropdown-item" href="#">Another action</a>
-      <a class="dropdown-item" href="#">Something else here</a>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="#">Separated link</a>
-    </div>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#">Action</a></li>
+      <li><a class="dropdown-item" href="#">Another action</a></li>
+      <li><a class="dropdown-item" href="#">Something else here</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">Separated link</a></li>
+    </ul>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="#">Link</a>
@@ -313,13 +313,13 @@ Note that dynamic tabbed interfaces should <em>not</em> contain dropdown menus, 
 
 <div class="bd-example">
   <ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
-    <li class="nav-item">
+    <li class="nav-item" role="presentation">
       <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item" role="presentation">
       <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item" role="presentation">
       <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
     </li>
   </ul>
@@ -338,13 +338,13 @@ Note that dynamic tabbed interfaces should <em>not</em> contain dropdown menus, 
 
 {{< highlight html >}}
 <ul class="nav nav-tabs" id="myTab" role="tablist">
-  <li class="nav-item">
+  <li class="nav-item" role="presentation">
     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
   </li>
-  <li class="nav-item">
+  <li class="nav-item" role="presentation">
     <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
   </li>
-  <li class="nav-item">
+  <li class="nav-item" role="presentation">
     <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
   </li>
 </ul>
@@ -397,13 +397,13 @@ The tabs plugin also works with pills.
 
 <div class="bd-example">
   <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-    <li class="nav-item">
+    <li class="nav-item" role="presentation">
       <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Home</a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item" role="presentation">
       <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item" role="presentation">
       <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</a>
     </li>
   </ul>
@@ -422,13 +422,13 @@ The tabs plugin also works with pills.
 
 {{< highlight html >}}
 <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-  <li class="nav-item">
+  <li class="nav-item" role="presentation">
     <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Home</a>
   </li>
-  <li class="nav-item">
+  <li class="nav-item" role="presentation">
     <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</a>
   </li>
-  <li class="nav-item">
+  <li class="nav-item" role="presentation">
     <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</a>
   </li>
 </ul>
@@ -498,16 +498,16 @@ You can activate a tab or pill navigation without writing any JavaScript by simp
 {{< highlight html >}}
 <!-- Nav tabs -->
 <ul class="nav nav-tabs" id="myTab" role="tablist">
-  <li class="nav-item">
+  <li class="nav-item" role="presentation">
     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
   </li>
-  <li class="nav-item">
+  <li class="nav-item" role="presentation">
     <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
   </li>
-  <li class="nav-item">
+  <li class="nav-item" role="presentation">
     <a class="nav-link" id="messages-tab" data-toggle="tab" href="#messages" role="tab" aria-controls="messages" aria-selected="false">Messages</a>
   </li>
-  <li class="nav-item">
+  <li class="nav-item" role="presentation">
     <a class="nav-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab" aria-controls="settings" aria-selected="false">Settings</a>
   </li>
 </ul>
@@ -572,16 +572,16 @@ Activates a tab element and content container. Tab should have either a `data-ta
 
 {{< highlight html >}}
 <ul class="nav nav-tabs" id="myTab" role="tablist">
-  <li class="nav-item">
+  <li class="nav-item" role="presentation">
     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
   </li>
-  <li class="nav-item">
+  <li class="nav-item" role="presentation">
     <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
   </li>
-  <li class="nav-item">
+  <li class="nav-item" role="presentation">
     <a class="nav-link" id="messages-tab" data-toggle="tab" href="#messages" role="tab" aria-controls="messages" aria-selected="false">Messages</a>
   </li>
-  <li class="nav-item">
+  <li class="nav-item" role="presentation">
     <a class="nav-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab" aria-controls="settings" aria-selected="false">Settings</a>
   </li>
 </ul>

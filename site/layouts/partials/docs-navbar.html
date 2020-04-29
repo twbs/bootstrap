@@ -1,5 +1,5 @@
 <header class="navbar navbar-expand navbar-dark bd-navbar">
-  <div class="container-xl flex-wrap flex-md-nowrap">
+  <nav class="container-xl flex-wrap flex-md-nowrap" aria-label="Main navigation">
     <a class="navbar-brand mr-2" href="/" aria-label="Bootstrap">
       {{ partial "icons/bootstrap-logo-solid.svg" (dict "class" "d-block" "width" "32" "height" "32") }}
     </a>
@@ -16,7 +16,7 @@
           <a class="nav-link{{ if eq .Page.Title "Examples" }} active" aria-current="true{{ end }}" href="/docs/{{ .Site.Params.docs_version }}/examples/" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Examples');">Examples</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ .Site.Params.icons }}" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Icons');">Icons</a>
+          <a class="nav-link" href="{{ .Site.Params.icons }}" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Icons');" target="_blank" rel="noopener">Icons</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{{ .Site.Params.themes }}" onclick="ga('send', 'event', 'Navbar', 'Community links', 'Themes');" target="_blank" rel="noopener">Themes</a>
@@ -32,27 +32,27 @@
 
     <ul class="navbar-nav ml-sm-auto">
       <li class="nav-item">
-        <a class="nav-link px-1 mx-1 py-3 my-n2" href="{{ .Site.Params.repo }}" target="_blank" rel="noopener" aria-label="GitHub">
+        <a class="nav-link px-1 mx-1 py-2" href="{{ .Site.Params.github_org }}" target="_blank" rel="noopener" aria-label="GitHub">
           {{ partial "icons/github.svg" (dict "class" "navbar-nav-svg" "width" "36" "height" "36") }}
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link px-1 mx-1 py-3 my-n2" href="https://twitter.com/{{ .Site.Params.twitter }}" target="_blank" rel="noopener" aria-label="Twitter">
+        <a class="nav-link px-1 mx-1 py-2" href="https://twitter.com/{{ .Site.Params.twitter }}" target="_blank" rel="noopener" aria-label="Twitter">
           {{ partial "icons/twitter.svg" (dict "class" "navbar-nav-svg" "width" "36" "height" "36") }}
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link px-1 mx-1 py-3 my-n2" href="{{ .Site.Params.slack }}" target="_blank" rel="noopener" aria-label="Slack">
+        <a class="nav-link px-1 mx-1 py-2" href="{{ .Site.Params.slack }}" target="_blank" rel="noopener" aria-label="Slack">
           {{ partial "icons/slack.svg" (dict "class" "navbar-nav-svg" "width" "36" "height" "36") }}
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link px-1 mx-1 py-3 my-n2" href="{{ .Site.Params.opencollective }}" target="_blank" rel="noopener" aria-label="Open Collective">
+        <a class="nav-link px-1 mx-1 py-2" href="{{ .Site.Params.opencollective }}" target="_blank" rel="noopener" aria-label="Open Collective">
           {{ partial "icons/opencollective.svg" (dict "class" "navbar-nav-svg" "width" "36" "height" "36") }}
         </a>
       </li>
     </ul>
 
     <a class="btn btn-bd-download d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="/docs/{{ .Site.Params.docs_version }}/getting-started/download/">Download</a>
-  </div>
+  </nav>
 </header>

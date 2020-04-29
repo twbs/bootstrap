@@ -1,6 +1,5 @@
 import Modal from '../../src/modal'
 import EventHandler from '../../src/dom/event-handler'
-import { makeArray } from '../../src/util/index'
 
 /** Test helpers */
 import { getFixture, clearFixture, createEvent, jQueryMock } from '../helpers/fixture'
@@ -31,11 +30,11 @@ describe('Modal', () => {
     document.body.classList.remove('modal-open')
     document.body.removeAttribute('style')
     document.body.removeAttribute('data-padding-right')
-    const backdropList = makeArray(document.querySelectorAll('.modal-backdrop'))
 
-    backdropList.forEach(backdrop => {
-      document.body.removeChild(backdrop)
-    })
+    document.querySelectorAll('.modal-backdrop')
+      .forEach(backdrop => {
+        document.body.removeChild(backdrop)
+      })
 
     document.body.style.paddingRight = '0px'
   })
@@ -383,10 +382,29 @@ describe('Modal', () => {
       modal.show()
     })
 
-    it('should set modal body scroll top to 0 if .modal-dialog-scrollable', done => {
+    it('should set .modal\'s scroll top to 0', done => {
       fixtureEl.innerHTML = [
         '<div class="modal fade">',
-        '  <div class="modal-dialog modal-dialog-scrollable">',
+        '  <div class="modal-dialog">',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const modalEl = fixtureEl.querySelector('.modal')
+      const modal = new Modal(modalEl)
+
+      modalEl.addEventListener('shown.bs.modal', () => {
+        expect(modalEl.scrollTop).toEqual(0)
+        done()
+      })
+
+      modal.show()
+    })
+
+    it('should set modal body scroll top to 0 if modal body do not exists', done => {
+      fixtureEl.innerHTML = [
+        '<div class="modal fade">',
+        '  <div class="modal-dialog">',
         '    <div class="modal-body"></div>',
         '  </div>',
         '</div>'
@@ -398,25 +416,6 @@ describe('Modal', () => {
 
       modalEl.addEventListener('shown.bs.modal', () => {
         expect(modalBody.scrollTop).toEqual(0)
-        done()
-      })
-
-      modal.show()
-    })
-
-    it('should set .modal\'s scroll top to 0 if .modal-dialog-scrollable and modal body do not exists', done => {
-      fixtureEl.innerHTML = [
-        '<div class="modal fade">',
-        '  <div class="modal-dialog modal-dialog-scrollable">',
-        '  </div>',
-        '</div>'
-      ].join('')
-
-      const modalEl = fixtureEl.querySelector('.modal')
-      const modal = new Modal(modalEl)
-
-      modalEl.addEventListener('shown.bs.modal', () => {
-        expect(modalEl.scrollTop).toEqual(0)
         done()
       })
 
@@ -451,7 +450,7 @@ describe('Modal', () => {
 
       modalEl.addEventListener('shown.bs.modal', () => {
         const keydownEscape = createEvent('keydown')
-        keydownEscape.which = 27
+        keydownEscape.key = 'Escape'
 
         modalEl.dispatchEvent(keydownEscape)
       })
@@ -480,7 +479,7 @@ describe('Modal', () => {
 
       modalEl.addEventListener('shown.bs.modal', () => {
         const keydownTab = createEvent('keydown')
-        keydownTab.which = 9
+        keydownTab.key = 'Tab'
 
         modalEl.dispatchEvent(keydownTab)
         setTimeout(expectDone, 30)
@@ -585,7 +584,7 @@ describe('Modal', () => {
 
       modalEl.addEventListener('shown.bs.modal', () => {
         const keydownEscape = createEvent('keydown')
-        keydownEscape.which = 27
+        keydownEscape.key = 'Escape'
 
         modalEl.dispatchEvent(keydownEscape)
         shownCallback()
@@ -612,7 +611,7 @@ describe('Modal', () => {
 
       modalEl.addEventListener('shown.bs.modal', () => {
         const keydownEscape = createEvent('keydown')
-        keydownEscape.which = 27
+        keydownEscape.key = 'Escape'
 
         modalEl.dispatchEvent(keydownEscape)
         shownCallback()
@@ -672,7 +671,6 @@ describe('Modal', () => {
     it('should enforce focus', done => {
       fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog" /></div>'
 
-      const isIE11 = Boolean(window.MSInputMethodContext) && Boolean(document.documentMode)
       const modalEl = fixtureEl.querySelector('.modal')
       const modal = new Modal(modalEl)
 
@@ -686,11 +684,6 @@ describe('Modal', () => {
 
       modalEl.addEventListener('shown.bs.modal', () => {
         expect(modal._enforceFocus).toHaveBeenCalled()
-
-        if (isIE11) {
-          done()
-          return
-        }
 
         spyOn(modal._element, 'focus')
 

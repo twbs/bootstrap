@@ -39,14 +39,17 @@
     "unicorn/consistent-function-scoping": "off",
     "unicorn/explicit-length-check": "off",
     "unicorn/import-index": "off",
+    "unicorn/no-fn-reference-in-iterator": "off",
     "unicorn/no-for-loop": "off",
+    "unicorn/no-null": "off",
     "unicorn/no-unused-properties": "error",
     "unicorn/prefer-dataset": "off",
     "unicorn/prefer-includes": "off",
     "unicorn/prefer-node-append": "off",
     "unicorn/prefer-node-remove": "off",
+    "unicorn/prefer-number-properties": "off",
     "unicorn/prefer-query-selector": "off",
-    "unicorn/prefer-text-content": "off",
+    "unicorn/prefer-set-has": "off",
     "unicorn/prevent-abbreviations": "off"
   }
 }
