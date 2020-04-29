@@ -442,8 +442,9 @@ class Modal {
   }
 
   _checkScrollbar() {
-    const rect = document.body.getBoundingClientRect()
-    this._isBodyOverflowing = rect.left + rect.right < window.innerWidth
+    const { left, right } = document.body.getBoundingClientRect()
+
+    this._isBodyOverflowing = Math.floor(left + right) < window.innerWidth
     this._scrollbarWidth = this._getScrollbarWidth()
   }
 
