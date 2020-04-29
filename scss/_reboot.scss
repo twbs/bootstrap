@@ -290,6 +290,8 @@ samp {
 // 1. Remove browser default top margin
 // 2. Reset browser default of `1em` to use `rem`s
 // 3. Don't allow content to break outside
+// 4. Disable auto-hiding scrollbar in legacy Edge to avoid overlap,
+//    making it impossible to interact with the content
 
 pre {
   display: block;
@@ -298,6 +300,7 @@ pre {
   overflow: auto; // 3
   @include font-size($code-font-size);
   color: $pre-color;
+  -ms-overflow-style: scrollbar; // 4
 
   // Account for some code outputs that place code tags in pre tags
   code {
