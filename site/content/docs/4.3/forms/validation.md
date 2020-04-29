@@ -175,7 +175,7 @@ While these feedback styles cannot be styled with CSS, you can still customize t
 
 ## Server side
 
-We recommend using client-side validation, but in case you require server-side validation, you can indicate invalid and valid form fields with `.is-invalid` and `.is-valid`. Note that `.invalid-feedback` is also supported with these classes.
+We recommend using server-side validation, but in case you require client-side validation, you can indicate invalid and valid form fields with `.is-invalid` and `.is-valid`. Note that `.invalid-feedback` is also supported with these classes.
 
 {{< example >}}
 <form class="row g-3">
