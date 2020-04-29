@@ -11,7 +11,7 @@ on:
 
 env:
   CI: true
-  NODE: 10.x
+  NODE: 12.x
 
 jobs:
   lint:

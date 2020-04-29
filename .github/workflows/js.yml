@@ -51,7 +51,7 @@ jobs:
 
       - name: Run Coveralls
         uses: coverallsapp/github-action@master
-        if: matrix.node == 10
+        if: matrix.node == 12
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
           path-to-lcov: "./js/coverage/lcov.info"
