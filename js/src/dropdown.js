@@ -189,7 +189,7 @@ class Dropdown {
     // only needed because of broken event delegation on iOS
     // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
     if ('ontouchstart' in document.documentElement &&
-      !SelectorEngine.closest(parent, SELECTOR_NAVBAR_NAV)) {
+      !parent.closest(SELECTOR_NAVBAR_NAV)) {
       [].concat(...document.body.children)
         .forEach(elem => EventHandler.on(elem, 'mouseover', null, noop()))
     }
@@ -297,7 +297,7 @@ class Dropdown {
   }
 
   _detectNavbar() {
-    return Boolean(SelectorEngine.closest(this._element, `.${CLASS_NAME_NAVBAR}`))
+    return Boolean(this._element.closest(`.${CLASS_NAME_NAVBAR}`))
   }
 
   _getOffset() {
@@ -445,7 +445,7 @@ class Dropdown {
     if (/input|textarea/i.test(event.target.tagName) ?
       event.key === SPACE_KEY || (event.key !== ESCAPE_KEY &&
       ((event.key !== ARROW_DOWN_KEY && event.key !== ARROW_UP_KEY) ||
-        SelectorEngine.closest(event.target, SELECTOR_MENU))) :
+        event.target.closest(SELECTOR_MENU))) :
       !REGEXP_KEYDOWN.test(event.key)) {
       return
     }
