@@ -776,30 +776,18 @@ Custom feedback styles apply custom colors, borders, focus styles, and backgroun
 {% capture example %}
 <form class="needs-validation" novalidate>
   <div class="form-row">
-    <div class="col-md-4 mb-3">
+    <div class="col-md-6 mb-3">
       <label for="validationCustom01">First name</label>
       <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
       <div class="valid-feedback">
         Looks good!
       </div>
     </div>
-    <div class="col-md-4 mb-3">
+    <div class="col-md-6 mb-3">
       <label for="validationCustom02">Last name</label>
       <input type="text" class="form-control" id="validationCustom02" value="Otto" required>
       <div class="valid-feedback">
         Looks good!
-      </div>
-    </div>
-    <div class="col-md-4 mb-3">
-      <label for="validationCustomUsername">Username</label>
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="inputGroupPrepend">@</span>
-        </div>
-        <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
-        <div class="invalid-feedback">
-          Please choose a username.
-        </div>
       </div>
     </div>
   </div>
@@ -875,22 +863,13 @@ While these feedback styles cannot be styled with CSS, you can still customize t
 {% capture example %}
 <form>
   <div class="form-row">
-    <div class="col-md-4 mb-3">
+    <div class="col-md-6 mb-3">
       <label for="validationDefault01">First name</label>
       <input type="text" class="form-control" id="validationDefault01" value="Mark" required>
     </div>
-    <div class="col-md-4 mb-3">
+    <div class="col-md-6 mb-3">
       <label for="validationDefault02">Last name</label>
       <input type="text" class="form-control" id="validationDefault02" value="Otto" required>
-    </div>
-    <div class="col-md-4 mb-3">
-      <label for="validationDefaultUsername">Username</label>
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="inputGroupPrepend2">@</span>
-        </div>
-        <input type="text" class="form-control" id="validationDefaultUsername"  aria-describedby="inputGroupPrepend2" required>
-      </div>
     </div>
   </div>
   <div class="form-row">
@@ -930,30 +909,18 @@ We recommend using client-side validation, but in case you require server-side v
 {% capture example %}
 <form>
   <div class="form-row">
-    <div class="col-md-4 mb-3">
+    <div class="col-md-6 mb-3">
       <label for="validationServer01">First name</label>
       <input type="text" class="form-control is-valid" id="validationServer01" value="Mark" required>
       <div class="valid-feedback">
         Looks good!
       </div>
     </div>
-    <div class="col-md-4 mb-3">
+    <div class="col-md-6 mb-3">
       <label for="validationServer02">Last name</label>
       <input type="text" class="form-control is-valid" id="validationServer02" value="Otto" required>
       <div class="valid-feedback">
         Looks good!
-      </div>
-    </div>
-    <div class="col-md-4 mb-3">
-      <label for="validationServerUsername">Username</label>
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="inputGroupPrepend3">@</span>
-        </div>
-        <input type="text" class="form-control is-invalid" id="validationServerUsername" aria-describedby="inputGroupPrepend3" required>
-        <div class="invalid-feedback">
-          Please choose a username.
-        </div>
       </div>
     </div>
   </div>
@@ -1003,11 +970,17 @@ We recommend using client-side validation, but in case you require server-side v
 
 Validation styles are available for the following form controls and components:
 
-- `<input>`s and `<textarea>`s with `.form-control` (including up to one `.form-control` in input groups)
+- `<input>`s and `<textarea>`s with `.form-control`
 - `<select>`s with `.form-control` or `.custom-select`
 - `.form-check`s
 - `.custom-checkbox`s and `.custom-radio`s
 - `.custom-file`
+
+{% capture callout %}
+##### Input group validations
+Input groups have difficulty with validation styles unfortunately. Our recommendation is to place feedback messages as sibling elements of the `.input-group` that has `.is-{valid|invalid}`. Placing feedback messages within input groups breaks the `border-radius`. [See this comment for workaround.](https://github.com/twbs/bootstrap/issues/25110#issuecomment-586565165)
+{% endcapture %}
+{% include callout.html content=callout type="warning" %}
 
 {% capture example %}
 <form class="was-validated">
@@ -1035,9 +1008,9 @@ Validation styles are available for the following form controls and components:
     <div class="invalid-feedback">More example invalid feedback text</div>
   </div>
 
-  <div class="form-group">
+  <div class="mb-3">
     <select class="custom-select" required>
-      <option value="">Open this select menu</option>
+      <option value="">Choose...</option>
       <option value="1">One</option>
       <option value="2">Two</option>
       <option value="3">Three</option>
@@ -1045,10 +1018,52 @@ Validation styles are available for the following form controls and components:
     <div class="invalid-feedback">Example invalid custom select feedback</div>
   </div>
 
-  <div class="custom-file">
+  <div class="custom-file mb-3">
     <input type="file" class="custom-file-input" id="validatedCustomFile" required>
     <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
     <div class="invalid-feedback">Example invalid custom file feedback</div>
+  </div>
+
+  <div class="mb-3">
+    <div class="input-group is-invalid">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="validatedInputGroupPrepend">@</span>
+      </div>
+      <input type="text" class="form-control is-invalid" aria-describedby="validatedInputGroupPrepend" required>
+    </div>
+    <div class="invalid-feedback">
+      Example invalid input group feedback
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <div class="input-group is-invalid">
+      <div class="input-group-prepend">
+        <label class="input-group-text" for="validatedInputGroupSelect">Options</label>
+      </div>
+      <select class="custom-select" id="validatedInputGroupSelect" required>
+        <option value="">Choose...</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+      </select>
+    </div>
+    <div class="invalid-feedback">
+      Example invalid input group feedback
+    </div>
+  </div>
+
+  <div class="input-group is-invalid">
+    <div class="custom-file">
+      <input type="file" class="custom-file-input" id="validatedInputGroupCustomFile" required>
+      <label class="custom-file-label" for="validatedInputGroupCustomFile">Choose file...</label>
+    </div>
+    <div class="input-group-append">
+       <button class="btn btn-outline-secondary" type="button">Button</button>
+    </div>
+  </div>
+  <div class="invalid-feedback">
+    Example invalid input group feedback
   </div>
 </form>
 {% endcapture %}
@@ -1061,30 +1076,18 @@ If your form layout allows it, you can swap the `.{valid|invalid}-feedback` clas
 {% capture example %}
 <form class="needs-validation" novalidate>
   <div class="form-row">
-    <div class="col-md-4 mb-3">
+    <div class="col-md-6 mb-3">
       <label for="validationTooltip01">First name</label>
       <input type="text" class="form-control" id="validationTooltip01" value="Mark" required>
       <div class="valid-tooltip">
         Looks good!
       </div>
     </div>
-    <div class="col-md-4 mb-3">
+    <div class="col-md-6 mb-3">
       <label for="validationTooltip02">Last name</label>
       <input type="text" class="form-control" id="validationTooltip02" value="Otto" required>
       <div class="valid-tooltip">
         Looks good!
-      </div>
-    </div>
-    <div class="col-md-4 mb-3">
-      <label for="validationTooltipUsername">Username</label>
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
-        </div>
-        <input type="text" class="form-control" id="validationTooltipUsername" aria-describedby="validationTooltipUsernamePrepend" required>
-        <div class="invalid-tooltip">
-          Please choose a unique and valid username.
-        </div>
       </div>
     </div>
   </div>
