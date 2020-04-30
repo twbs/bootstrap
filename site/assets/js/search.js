@@ -35,11 +35,11 @@
     transformData: function (hits) {
       return hits.map(function (hit) {
         var currentUrl = getOrigin()
-        var liveUrl = /^https?:\/\/getbootstrap\.com\//
+        var liveUrl = 'https://getbootstrap.com/'
 
         // When in production, return the result as is,
         // otherwise remove our url from it.
-        hit.url = liveUrl.test(currentUrl) ?
+        hit.url = currentUrl.lastIndexOf(liveUrl, 0) === 0 ?
           hit.url :
           // replace the URL with a trailing slash, so that
           // `hit.url` is relative to server root on development
