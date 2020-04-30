@@ -575,6 +575,11 @@ output {
   display: inline-block;
 }
 
+// Remove border from iframe
+
+iframe {
+  border: 0;
+}
 
 // Summary
 //
