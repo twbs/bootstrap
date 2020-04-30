@@ -109,15 +109,6 @@
     margin-top: 2rem;
   }
 
-  .pos-f-t {
-    position: relative;
-    margin: -1rem;
-
-    @include media-breakpoint-up(sm) {
-      margin: -1.5rem;
-    }
-  }
-
   .custom-file-input:lang(es) ~ .custom-file-label::after {
     content: "Elegir";
   }
