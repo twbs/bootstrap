@@ -1,13 +1,13 @@
 .form-file {
+  --bs-form-file-height: #{$form-file-height};
   position: relative;
-  height: $form-file-height;
 }
 
 .form-file-input {
   position: relative;
   z-index: 2;
   width: 100%;
-  height: 100%;
+  height: var(--bs-form-file-height);
   margin: 0;
   opacity: 0;
 
@@ -32,7 +32,7 @@
   left: 0;
   z-index: 1;
   display: flex;
-  height: 100%;
+  height: var(--bs-form-file-height);
   border-color: $form-file-border-color;
   @include border-radius($form-file-border-radius);
   @include box-shadow($form-file-box-shadow);
@@ -71,7 +71,7 @@
 }
 
 .form-file-sm {
-  height: $form-file-height-sm;
+  --bs-form-file-height: #{$form-file-height-sm};
   @include font-size($form-file-font-size-sm);
 
   .form-file-text,
@@ -81,7 +81,7 @@
 }
 
 .form-file-lg {
-  height: $form-file-height-lg;
+  --bs-form-file-height: #{$form-file-height-lg};
   @include font-size($form-file-font-size-lg);
 
   .form-file-text,
