@@ -35,14 +35,15 @@
     transformData: function (hits) {
       return hits.map(function (hit) {
         var currentUrl = getOrigin()
-        var liveUrl = 'https://getbootstrap.com'
+        var liveUrl = /^https?:\/\/getbootstrap\.com\//
 
         // When in production, return the result as is,
         // otherwise remove our url from it.
-        // eslint-disable-next-line no-negated-condition
-        hit.url = currentUrl.indexOf(liveUrl) !== -1 ? // lgtm [js/incomplete-url-substring-sanitization]
+        hit.url = liveUrl.test(currentUrl) ?
           hit.url :
-          hit.url.replace(liveUrl, '')
+          // replace the URL with a trailing slash, so that
+          // `hit.url` is relative to server root on development
+          hit.url.replace(liveUrl, '/')
 
         // Prevent jumping to first header
         if (hit.anchor === 'content') {
