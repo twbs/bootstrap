@@ -38,9 +38,9 @@
         var liveUrl = 'https://getbootstrap.com/'
 
         hit.url = currentUrl.lastIndexOf(liveUrl, 0) === 0 ?
-          // When in production, return the result as is
+          // On production, return the result as is
           hit.url :
-          // When in development, replace `hit.url` with a trailing slash,
+          // On development or Netlify, replace `hit.url` with a trailing slash,
           // so that the result link is relative to the server root
           hit.url.replace(liveUrl, '/')
 
