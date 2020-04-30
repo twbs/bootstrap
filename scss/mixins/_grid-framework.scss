@@ -15,12 +15,15 @@
   @each $breakpoint in map-keys($breakpoints) {
     $infix: breakpoint-infix($breakpoint, $breakpoints);
 
-    // Allow columns to stretch full width below their breakpoints
-    @for $i from 1 through $columns {
-      .col#{$infix}-#{$i} {
-        @extend %grid-column;
+    @if $columns > 0 {
+      // Allow columns to stretch full width below their breakpoints
+      @for $i from 1 through $columns {
+        .col#{$infix}-#{$i} {
+          @extend %grid-column;
+        }
       }
     }
+
     .col#{$infix},
     .col#{$infix}-auto {
       @extend %grid-column;
@@ -35,9 +38,11 @@
         max-width: 100%;
       }
 
-      @for $i from 1 through $grid-row-columns {
-        .row-cols#{$infix}-#{$i} {
-          @include row-cols($i);
+      @if $grid-row-columns > 0 {
+        @for $i from 1 through $grid-row-columns {
+          .row-cols#{$infix}-#{$i} {
+            @include row-cols($i);
+          }
         }
       }
 
@@ -45,9 +50,11 @@
         @include make-col-auto();
       }
 
-      @for $i from 1 through $columns {
-        .col#{$infix}-#{$i} {
-          @include make-col($i, $columns);
+      @if $columns > 0 {
+        @for $i from 1 through $columns {
+          .col#{$infix}-#{$i} {
+            @include make-col($i, $columns);
+          }
         }
       }
 
@@ -59,11 +66,13 @@
         .order#{$infix}-#{$i} { order: $i; }
       }
 
-      // `$columns - 1` because offsetting by the width of an entire row isn't possible
-      @for $i from 0 through ($columns - 1) {
-        @if not ($infix == "" and $i == 0) { // Avoid emitting useless .offset-0
-          .offset#{$infix}-#{$i} {
-            @include make-col-offset($i, $columns);
+      @if $columns > 0 {
+        // `$columns - 1` because offsetting by the width of an entire row isn't possible
+        @for $i from 0 through ($columns - 1) {
+          @if not ($infix == "" and $i == 0) { // Avoid emitting useless .offset-0
+            .offset#{$infix}-#{$i} {
+              @include make-col-offset($i, $columns);
+            }
           }
         }
       }

@@ -9,6 +9,7 @@
   // No need to set list-style: none; since .list-group-item is block level
   padding-left: 0; // reset padding because ul and ol
   margin-bottom: 0;
+  @include border-radius($list-group-border-radius);
 }
 
 
@@ -51,11 +52,11 @@
   border: $list-group-border-width solid $list-group-border-color;
 
   &:first-child {
-    @include border-top-radius($list-group-border-radius);
+    @include border-top-radius(inherit);
   }
 
   &:last-child {
-    @include border-bottom-radius($list-group-border-radius);
+    @include border-bottom-radius(inherit);
   }
 
   &.disabled,
@@ -95,7 +96,7 @@
     .list-group-horizontal#{$infix} {
       flex-direction: row;
 
-      .list-group-item {
+      > .list-group-item {
         &:first-child {
           @include border-bottom-left-radius($list-group-border-radius);
           @include border-top-right-radius(0);
@@ -131,18 +132,12 @@
 // useful within other components (e.g., cards).
 
 .list-group-flush {
-  .list-group-item {
-    border-right-width: 0;
-    border-left-width: 0;
-    @include border-radius(0);
+  @include border-radius(0);
 
-    &:first-child {
-      border-top-width: 0;
-    }
-  }
+  > .list-group-item {
+    border-width: 0 0 $list-group-border-width;
 
-  &:last-child {
-    .list-group-item:last-child {
+    &:last-child {
       border-bottom-width: 0;
     }
   }

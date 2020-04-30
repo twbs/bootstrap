@@ -12,7 +12,7 @@ jobs:
       fail-fast: false
       matrix:
         node: [10, 12]
-        ruby: [2.4.x]
+        ruby: [2.6.x]
 
     steps:
       - name: Clone repository
@@ -56,8 +56,6 @@ jobs:
       - run: ruby --version
       - run: gem --version
       - run: bundle --version
-      - run: node --version
-      - run: npm --version
       - run: java -version
 
       - name: Install npm dependencies
@@ -69,11 +67,12 @@ jobs:
       - name: Run tests
         run: npm test
 
-      - name: Run bundlesize
-        run: npm run bundlesize
+      - name: Run bundlewatch
+        run: npm run bundlewatch
         if: matrix.node == 10
         env:
-          BUNDLESIZE_GITHUB_TOKEN: "${{ secrets.BUNDLESIZE_GITHUB_TOKEN }}"
+          BUNDLEWATCH_GITHUB_TOKEN: "${{ secrets.BUNDLEWATCH_GITHUB_TOKEN }}"
+          CI_BRANCH_BASE: v4-dev
 
       - name: Run BrowserStack tests
         run: npm run js-test-cloud
