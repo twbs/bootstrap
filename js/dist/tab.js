@@ -167,7 +167,8 @@
 
       var previous;
       var target = getElementFromSelector(this._element);
-      var listElement = SelectorEngine.closest(this._element, SELECTOR_NAV_LIST_GROUP);
+
+      var listElement = this._element.closest(SELECTOR_NAV_LIST_GROUP);
 
       if (listElement) {
         var itemSelector = listElement.nodeName === 'UL' || listElement.nodeName === 'OL' ? SELECTOR_ACTIVE_UL : SELECTOR_ACTIVE;
@@ -263,7 +264,7 @@
       }
 
       if (element.parentNode && element.parentNode.classList.contains(CLASS_NAME_DROPDOWN_MENU)) {
-        var dropdownElement = SelectorEngine.closest(element, SELECTOR_DROPDOWN);
+        var dropdownElement = element.closest(SELECTOR_DROPDOWN);
 
         if (dropdownElement) {
           SelectorEngine.find(SELECTOR_DROPDOWN_TOGGLE).forEach(function (dropdown) {
