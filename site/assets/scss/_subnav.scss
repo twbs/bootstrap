@@ -15,7 +15,7 @@
     font-weight: 600;
     background-image: escape-svg($dropdown-active-icon);
     background-repeat: no-repeat;
-    background-position: .4rem .6rem;
+    background-position: right $dropdown-item-padding-x top .6rem;
     background-size: .75rem .75rem;
   }
 
