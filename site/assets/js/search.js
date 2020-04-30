@@ -37,12 +37,11 @@
         var currentUrl = getOrigin()
         var liveUrl = 'https://getbootstrap.com/'
 
-        // When in production, return the result as is,
-        // otherwise remove our url from it.
         hit.url = currentUrl.lastIndexOf(liveUrl, 0) === 0 ?
+          // When in production, return the result as is
           hit.url :
-          // replace the URL with a trailing slash, so that
-          // `hit.url` is relative to server root on development
+          // When in development, replace `hit.url` with a trailing slash,
+          // so that the result link is relative to the server root
           hit.url.replace(liveUrl, '/')
 
         // Prevent jumping to first header
