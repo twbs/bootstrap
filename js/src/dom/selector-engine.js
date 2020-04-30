@@ -50,10 +50,6 @@ const SelectorEngine = {
     return parents
   },
 
-  closest(element, selector) {
-    return element.closest(selector)
-  },
-
   prev(element, selector) {
     let previous = element.previousElementSibling
 
