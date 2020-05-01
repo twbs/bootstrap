@@ -2,8 +2,6 @@
 <meta name="twitter:card" content="{{ if .IsHome }}summary_large_image{{ else }}summary{{ end }}">
 <meta name="twitter:site" content="@{{ .Site.Params.twitter }}">
 <meta name="twitter:creator" content="@{{ .Site.Params.twitter }}">
-<meta name="twitter:title" content="{{ .Title | markdownify }}">
-<meta name="twitter:description" content="{{ .Page.Params.description | default .Site.Params.description | markdownify }}">
 <meta name="twitter:image" content="{{ if .IsHome }}{{ .Site.Params.social_logo_path | absURL }}{{ else }}{{ .Site.Params.social_image_path | absURL }}{{ end }}">
 
 {{ "<!-- Facebook -->" | safeHTML }}
