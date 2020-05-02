@@ -87,13 +87,13 @@ describe('Modal', () => {
       ].join('')
 
       const fixedEl = fixtureEl.querySelector('.fixed-top')
-      const originalPadding = parseInt(window.getComputedStyle(fixedEl).paddingRight, 10)
+      const originalPadding = Number.parseInt(window.getComputedStyle(fixedEl).paddingRight, 10)
       const modalEl = fixtureEl.querySelector('.modal')
       const modal = new Modal(modalEl)
 
       modalEl.addEventListener('shown.bs.modal', () => {
         const expectedPadding = originalPadding + modal._getScrollbarWidth()
-        const currentPadding = parseInt(window.getComputedStyle(modalEl).paddingRight, 10)
+        const currentPadding = Number.parseInt(window.getComputedStyle(modalEl).paddingRight, 10)
 
         expect(fixedEl.getAttribute('data-bs-padding-right')).toEqual('0px', 'original fixed element padding should be stored in data-bs-padding-right')
         expect(currentPadding).toEqual(expectedPadding, 'fixed element padding should be adjusted while opening')
@@ -101,7 +101,7 @@ describe('Modal', () => {
       })
 
       modalEl.addEventListener('hidden.bs.modal', () => {
-        const currentPadding = parseInt(window.getComputedStyle(modalEl).paddingRight, 10)
+        const currentPadding = Number.parseInt(window.getComputedStyle(modalEl).paddingRight, 10)
 
         expect(fixedEl.getAttribute('data-bs-padding-right')).toEqual(null, 'data-bs-padding-right should be cleared after closing')
         expect(currentPadding).toEqual(originalPadding, 'fixed element padding should be reset after closing')
@@ -118,13 +118,13 @@ describe('Modal', () => {
       ].join('')
 
       const stickyTopEl = fixtureEl.querySelector('.sticky-top')
-      const originalMargin = parseInt(window.getComputedStyle(stickyTopEl).marginRight, 10)
+      const originalMargin = Number.parseInt(window.getComputedStyle(stickyTopEl).marginRight, 10)
       const modalEl = fixtureEl.querySelector('.modal')
       const modal = new Modal(modalEl)
 
       modalEl.addEventListener('shown.bs.modal', () => {
         const expectedMargin = originalMargin - modal._getScrollbarWidth()
-        const currentMargin = parseInt(window.getComputedStyle(stickyTopEl).marginRight, 10)
+        const currentMargin = Number.parseInt(window.getComputedStyle(stickyTopEl).marginRight, 10)
 
         expect(stickyTopEl.getAttribute('data-bs-margin-right')).toEqual('0px', 'original sticky element margin should be stored in data-bs-margin-right')
         expect(currentMargin).toEqual(expectedMargin, 'sticky element margin should be adjusted while opening')
@@ -132,7 +132,7 @@ describe('Modal', () => {
       })
 
       modalEl.addEventListener('hidden.bs.modal', () => {
-        const currentMargin = parseInt(window.getComputedStyle(stickyTopEl).marginRight, 10)
+        const currentMargin = Number.parseInt(window.getComputedStyle(stickyTopEl).marginRight, 10)
 
         expect(stickyTopEl.getAttribute('data-bs-margin-right')).toEqual(null, 'data-bs-margin-right should be cleared after closing')
         expect(currentMargin).toEqual(originalMargin, 'sticky element margin should be reset after closing')

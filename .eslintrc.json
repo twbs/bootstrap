@@ -53,7 +53,6 @@
     "unicorn/prefer-dataset": "off",
     "unicorn/prefer-node-append": "off",
     "unicorn/prefer-node-remove": "off",
-    "unicorn/prefer-number-properties": "off",
     "unicorn/prefer-optional-catch-binding": "off",
     "unicorn/prefer-query-selector": "off",
     "unicorn/prefer-set-has": "off",

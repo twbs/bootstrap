@@ -71,8 +71,8 @@ const getTransitionDurationFromElement = element => {
     transitionDelay
   } = window.getComputedStyle(element)
 
-  const floatTransitionDuration = parseFloat(transitionDuration)
-  const floatTransitionDelay = parseFloat(transitionDelay)
+  const floatTransitionDuration = Number.parseFloat(transitionDuration)
+  const floatTransitionDelay = Number.parseFloat(transitionDelay)
 
   // Return 0 if element or transition duration is not found
   if (!floatTransitionDuration && !floatTransitionDelay) {
@@ -83,7 +83,7 @@ const getTransitionDurationFromElement = element => {
   transitionDuration = transitionDuration.split(',')[0]
   transitionDelay = transitionDelay.split(',')[0]
 
-  return (parseFloat(transitionDuration) + parseFloat(transitionDelay)) * MILLISECONDS_MULTIPLIER
+  return (Number.parseFloat(transitionDuration) + Number.parseFloat(transitionDelay)) * MILLISECONDS_MULTIPLIER
 }
 
 const triggerTransitionEnd = element => {
