@@ -41,7 +41,7 @@
     "js-compile-standalone-esm": "rollup --environment ESM:true,BUNDLE:false --config build/rollup.config.js --sourcemap",
     "js-compile-bundle": "rollup --environment BUNDLE:true --config build/rollup.config.js --sourcemap",
     "js-compile-plugins": "node build/build-plugins.js",
-    "js-lint": "eslint --cache --cache-location .cache/.eslintcache --report-unused-disable-directives .",
+    "js-lint": "xo",
     "js-minify": "npm-run-all --aggregate-output --parallel js-minify-*",
     "js-minify-standalone": "terser --compress passes=2 --mangle --comments \"/^!/\" --source-map \"content=dist/js/bootstrap.js.map,includeSources,url=bootstrap.min.js.map\" --output dist/js/bootstrap.min.js dist/js/bootstrap.js",
     "js-minify-standalone-esm": "terser --compress passes=2 --mangle --comments \"/^!/\" --source-map \"content=dist/js/bootstrap.esm.js.map,includeSources,url=bootstrap.esm.min.js.map\" --output dist/js/bootstrap.esm.min.js dist/js/bootstrap.esm.js",
@@ -112,10 +112,6 @@
     "bundlewatch": "^0.3.2",
     "clean-css-cli": "^5.3.3",
     "cross-env": "^7.0.3",
-    "eslint": "^7.32.0",
-    "eslint-config-xo": "^0.38.0",
-    "eslint-plugin-import": "^2.24.2",
-    "eslint-plugin-unicorn": "^35.0.0",
     "find-unused-sass-variables": "^3.1.0",
     "glob": "^7.1.7",
     "globby": "^11.0.4",
@@ -146,7 +142,8 @@
     "stylelint": "^13.13.1",
     "stylelint-config-twbs-bootstrap": "^2.2.3",
     "terser": "5.1.0",
-    "vnu-jar": "21.6.11"
+    "vnu-jar": "21.6.11",
+    "xo": "^0.44.0"
   },
   "files": [
     "dist/{css,js}/*.{css,js,map}",
@@ -173,5 +170,105 @@
     "peerDependencies": {
       "@popperjs/core": "^2.9.3"
     }
+  },
+  "xo": {
+    "envs": [
+      "browser"
+    ],
+    "esnext": true,
+    "semicolon": false,
+    "space": 2,
+    "ignores": [
+      "**/*.min.js",
+      "**/dist/**",
+      "**/vendor/**",
+      "site/static/sw.js"
+    ],
+    "rules": {
+      "arrow-body-style": "off",
+      "capitalized-comments": "off",
+      "comma-dangle": [
+        "error",
+        "never"
+      ],
+      "import/extensions": "off",
+      "max-params": [
+        "warn",
+        5
+      ],
+      "new-cap": [
+        "error",
+        {
+          "properties": false
+        }
+      ],
+      "no-console": "error",
+      "node/file-extension-in-import": "off",
+      "object-curly-spacing": [
+        "error",
+        "always"
+      ],
+      "operator-linebreak": [
+        "error",
+        "after"
+      ],
+      "unicorn/explicit-length-check": "off",
+      "unicorn/no-array-callback-reference": "off",
+      "unicorn/no-array-for-each": "off",
+      "unicorn/no-array-method-this-argument": "off",
+      "unicorn/no-for-loop": "off",
+      "unicorn/no-unused-properties": "error",
+      "unicorn/numeric-separators-style": "off",
+      "unicorn/prefer-array-flat": "off",
+      "unicorn/prefer-dom-node-dataset": "off",
+      "unicorn/prefer-module": "off",
+      "unicorn/prefer-prototype-methods": "off",
+      "unicorn/prefer-query-selector": "off",
+      "unicorn/prefer-spread": "off",
+      "unicorn/prevent-abbreviations": "off"
+    },
+    "overrides": [
+      {
+        "files": "build/*.js",
+        "envs": [
+          "node"
+        ],
+        "parserOptions": {
+          "sourceType": "script"
+        },
+        "rules": {
+          "no-console": "off",
+          "strict": "error"
+        }
+      },
+      {
+        "files": "js/tests/unit/**/*.spec.js",
+        "envs": [
+          "jasmine"
+        ],
+        "rules": {
+          "unicorn/consistent-function-scoping": "off",
+          "unicorn/no-useless-undefined": "off",
+          "unicorn/prefer-add-event-listener": "off"
+        }
+      },
+      {
+        "files": "site/**/*.js",
+        "parserOptions": {
+          "ecmaVersion": 5,
+          "sourceType": "script"
+        },
+        "rules": {
+          "no-new": "off",
+          "no-var": "off",
+          "object-shorthand": "off",
+          "prefer-arrow-callback": "off",
+          "strict": [
+            "error",
+            "function"
+          ]
+        }
+      }
+    ]
   }
 }
