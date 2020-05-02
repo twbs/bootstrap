@@ -5,7 +5,7 @@
  * --------------------------------------------------------------------------
  */
 
-const uriAttrs = [
+const uriAttrs = new Set([
   'background',
   'cite',
   'href',
@@ -14,7 +14,7 @@ const uriAttrs = [
   'poster',
   'src',
   'xlink:href'
-]
+])
 
 const ARIA_ATTRIBUTE_PATTERN = /^aria-[\w-]*$/i
 
@@ -36,7 +36,7 @@ const allowedAttribute = (attr, allowedAttributeList) => {
   const attrName = attr.nodeName.toLowerCase()
 
   if (allowedAttributeList.includes(attrName)) {
-    if (uriAttrs.includes(attrName)) {
+    if (uriAttrs.has(attrName)) {
       return Boolean(attr.nodeValue.match(SAFE_URL_PATTERN) || attr.nodeValue.match(DATA_URL_PATTERN))
     }
 
