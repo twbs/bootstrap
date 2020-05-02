@@ -679,7 +679,7 @@ class Tooltip {
     const dataAttributes = Manipulator.getDataAttributes(this.element)
 
     Object.keys(dataAttributes).forEach(dataAttr => {
-      if (DISALLOWED_ATTRIBUTES.indexOf(dataAttr) !== -1) {
+      if (DISALLOWED_ATTRIBUTES.includes(dataAttr)) {
         delete dataAttributes[dataAttr]
       }
     })

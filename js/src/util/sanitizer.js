@@ -35,8 +35,8 @@ const DATA_URL_PATTERN = /^data:(?:image\/(?:bmp|gif|jpeg|jpg|png|tiff|webp)|vid
 const allowedAttribute = (attr, allowedAttributeList) => {
   const attrName = attr.nodeName.toLowerCase()
 
-  if (allowedAttributeList.indexOf(attrName) !== -1) {
-    if (uriAttrs.indexOf(attrName) !== -1) {
+  if (allowedAttributeList.includes(attrName)) {
+    if (uriAttrs.includes(attrName)) {
       return Boolean(attr.nodeValue.match(SAFE_URL_PATTERN) || attr.nodeValue.match(DATA_URL_PATTERN))
     }
 
@@ -107,7 +107,7 @@ export function sanitizeHtml(unsafeHtml, allowList, sanitizeFn) {
     const el = elements[i]
     const elName = el.nodeName.toLowerCase()
 
-    if (allowlistKeys.indexOf(elName) === -1) {
+    if (!allowlistKeys.includes(elName)) {
       el.parentNode.removeChild(el)
 
       continue
