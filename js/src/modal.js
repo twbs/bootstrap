@@ -474,7 +474,7 @@ class Modal {
           const actualPadding = element.style.paddingRight
           const calculatedPadding = window.getComputedStyle(element)['padding-right']
           Manipulator.setDataAttribute(element, 'bs-padding-right', actualPadding)
-          element.style.paddingRight = `${parseFloat(calculatedPadding) + this._scrollbarWidth}px`
+          element.style.paddingRight = `${Number.parseFloat(calculatedPadding) + this._scrollbarWidth}px`
         })
 
       // Adjust sticky content margin
@@ -483,7 +483,7 @@ class Modal {
           const actualMargin = element.style.marginRight
           const calculatedMargin = window.getComputedStyle(element)['margin-right']
           Manipulator.setDataAttribute(element, 'bs-margin-right', actualMargin)
-          element.style.marginRight = `${parseFloat(calculatedMargin) - this._scrollbarWidth}px`
+          element.style.marginRight = `${Number.parseFloat(calculatedMargin) - this._scrollbarWidth}px`
         })
 
       // Adjust body padding
@@ -491,7 +491,7 @@ class Modal {
       const calculatedPadding = window.getComputedStyle(document.body)['padding-right']
 
       Manipulator.setDataAttribute(document.body, 'bs-padding-right', actualPadding)
-      document.body.style.paddingRight = `${parseFloat(calculatedPadding) + this._scrollbarWidth}px`
+      document.body.style.paddingRight = `${Number.parseFloat(calculatedPadding) + this._scrollbarWidth}px`
     }
 
     document.body.classList.add(CLASS_NAME_OPEN)
