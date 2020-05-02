@@ -29,7 +29,7 @@ The `<html>` and `<body>` elements are updated to provide better page-wide defau
 
 ## Native font stack
 
-The default web fonts (Helvetica Neue, Helvetica, and Arial) have been dropped in Bootstrap 4 and replaced with a "native font stack" for optimum text rendering on every device and OS. Read more about [native font stacks in this *Smashing Magazine* article](https://www.smashingmagazine.com/2015/11/using-system-ui-fonts-practical-guide/).
+Bootstrap utilizes a "native font stack" or "system font stack" for optimum text rendering on every device and OS. These system fonts have been designed specifically with today's devices in mind, with improved rendering on screens, variable font support, and more. Read more about [native font stacks in this *Smashing Magazine* article](https://www.smashingmagazine.com/2015/11/using-system-ui-fonts-practical-guide/).
 
 {{< highlight scss >}}
 $font-family-sans-serif:
