@@ -625,7 +625,7 @@ describe('Modal', () => {
     })
 
     it('should not overflow when clicking outside of modal-content if backdrop = static', done => {
-      fixtureEl.innerHTML = '<div class="modal" data-backdrop="static"><div class="modal-dialog" style="transition-duration: 20ms;" /></div>'
+      fixtureEl.innerHTML = '<div class="modal" data-backdrop="static"><div class="modal-dialog" style="transition-duration: 20ms;"></div></div>'
 
       const modalEl = fixtureEl.querySelector('.modal')
       const modal = new Modal(modalEl, {
