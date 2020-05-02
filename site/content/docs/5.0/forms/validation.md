@@ -96,8 +96,9 @@ Custom feedback styles apply custom colors, borders, focus styles, and backgroun
     <button class="btn btn-primary" type="submit">Submit form</button>
   </div>
 </form>
+{{< /example >}}
 
-<script>
+{{< example lang="js" show_preview="false" >}}
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 (function () {
   'use strict';
@@ -118,7 +119,6 @@ Custom feedback styles apply custom colors, borders, focus styles, and backgroun
       }, false);
     });
 })();
-</script>
 {{< /example >}}
 
 ## Browser defaults
