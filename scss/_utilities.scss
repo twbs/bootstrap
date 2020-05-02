@@ -493,5 +493,79 @@ $utilities: map-merge(
       )
     )
   ),
+  // EXTENSIONS
+	  // POSITION
+	  "top": (
+	  class: top,
+      property: top,
+      values: (
+		0:0,
+		10: 10px,
+        20: 20px,
+		30: 30px,
+		40: 40px,
+        50: 50px,
+		60: 60px,
+		70: 70px,
+		80: 80px,
+		90: 90px,
+        100: 100px,
+		"1-2": 50%,
+      )
+    ),
+	"right": (
+	  class: right,
+      property: right,
+      values: (
+		0:0,
+		10: 10px,
+        20: 20px,
+		30: 30px,
+		40: 40px,
+        50: 50px,
+		60: 60px,
+		70: 70px,
+		80: 80px,
+		90: 90px,
+        100: 100px,
+		"1-2": 50%,
+      )
+    ),
+	"bottom": (
+	  class: bottom,
+      property: bottom,
+      values: (
+		0:0,
+		10: 10px,
+        20: 20px,
+		30: 30px,
+		40: 40px,
+        50: 50px,
+		60: 60px,
+		70: 70px,
+		80: 80px,
+		90: 90px,
+        100: 100px,
+		"1-2": 50%,
+      )
+    ),
+	"left": (
+	  class: left,
+      property: left,
+      values: (
+		0:0,
+		10: 10px,
+        20: 20px,
+		30: 30px,
+		40: 40px,
+        50: 50px,
+		60: 60px,
+		70: 70px,
+		80: 80px,
+		90: 90px,
+        100: 100px,
+		"1-2": 50%,
+      )
+    ),
   $utilities
 );
