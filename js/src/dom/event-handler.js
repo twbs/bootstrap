@@ -235,7 +235,7 @@ const EventHandler = {
     const [delegation, originalHandler, typeEvent] = normalizeParams(originalTypeEvent, handler, delegationFn)
     const inNamespace = typeEvent !== originalTypeEvent
     const events = getEvent(element)
-    const isNamespace = originalTypeEvent.charAt(0) === '.'
+    const isNamespace = originalTypeEvent.startsWith('.')
 
     if (typeof originalHandler !== 'undefined') {
       // Simplest case: handler is passed, remove that listener ONLY.
