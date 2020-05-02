@@ -45,7 +45,7 @@
         var currentUrl = getOrigin()
         var liveUrl = 'https://v5.getbootstrap.com/'
 
-        hit.url = currentUrl.lastIndexOf(liveUrl, 0) === 0 ?
+        hit.url = currentUrl.startsWith(liveUrl) ?
           // On production, return the result as is
           hit.url :
           // On development or Netlify, replace `hit.url` with a trailing slash,
