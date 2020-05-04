@@ -33,7 +33,6 @@
       "never"
     ],
     "strict": "error",
-    "unicorn/consistent-function-scoping": "off",
     "unicorn/no-for-loop": "off",
     "unicorn/no-null": "off",
     "unicorn/prefer-dataset": "off",

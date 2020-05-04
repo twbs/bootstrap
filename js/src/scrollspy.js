@@ -229,8 +229,7 @@ class ScrollSpy {
       return
     }
 
-    const offsetLength = this._offsets.length
-    for (let i = offsetLength; i--;) {
+    for (let i = this._offsets.length; i--;) {
       const isActiveTarget = this._activeTarget !== this._targets[i] &&
           scrollTop >= this._offsets[i] &&
           (typeof this._offsets[i + 1] === 'undefined' ||
