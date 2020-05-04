@@ -179,6 +179,7 @@ function build(plugin) {
       .then(() => console.log(`Building ${plugin} plugin... Done!`))
       .catch(error => console.error(`${plugin}: ${error}`))
   })
+  .catch(error => console.error(`${plugin}: ${error}`))
 }
 
 Object.keys(bsPlugins)
