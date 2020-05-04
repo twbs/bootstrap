@@ -11,19 +11,15 @@ const path    = require('path')
 const rollup  = require('rollup')
 const babel   = require('rollup-plugin-babel')
 const banner  = require('./banner.js')
+const babelHelpers = require('./babel-helpers.js')
 
 const TEST    = process.env.NODE_ENV === 'test'
 const plugins = [
   babel({
-    exclude: 'node_modules/**', // Only transpile our source code
-    externalHelpersWhitelist: [ // Include only required helpers
-      'defineProperties',
-      'createClass',
-      'createSuper',
-      'inheritsLoose',
-      'defineProperty',
-      'objectSpread2'
-    ]
+    // Only transpile our source code
+    exclude: 'node_modules/**',
+    // Include only required helpers
+    externalHelpersWhitelist: babelHelpers
   })
 ]
 const bsPlugins = {
