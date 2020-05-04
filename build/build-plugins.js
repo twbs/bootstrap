@@ -11,21 +11,14 @@ const path = require('path')
 const rollup = require('rollup')
 const babel = require('rollup-plugin-babel')
 const banner = require('./banner.js')
+const babelHelpers = require('./babel-helpers.js')
 
 const plugins = [
   babel({
     // Only transpile our source code
     exclude: 'node_modules/**',
     // Include only required helpers
-    externalHelpersWhitelist: [
-      'createClass',
-      'createSuper',
-      'defineProperties',
-      'defineProperty',
-      'getPrototypeOf',
-      'inheritsLoose',
-      'objectSpread2'
-    ]
+    externalHelpersWhitelist: babelHelpers
   })
 ]
 const bsPlugins = {

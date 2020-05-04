@@ -9,6 +9,7 @@ const {
   browsers,
   browsersKeys
 } = require('./browsers')
+const babelHelpers = require('../../build/babel-helpers.js')
 
 const { env } = process
 const browserStack = env.BROWSER === 'true'
@@ -72,14 +73,7 @@ const conf = {
         // Only transpile our source code
         exclude: 'node_modules/**',
         // Include only required helpers
-        externalHelpersWhitelist: [
-          'defineProperties',
-          'createClass',
-          'createSuper',
-          'inheritsLoose',
-          'defineProperty',
-          'objectSpread2'
-        ],
+        externalHelpersWhitelist: babelHelpers,
         plugins: [
           '@babel/plugin-proposal-object-rest-spread'
         ]
