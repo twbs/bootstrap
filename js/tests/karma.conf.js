@@ -100,11 +100,6 @@ if (browserStack) {
   plugins.push('karma-browserstack-launcher', 'karma-jasmine-html-reporter')
   conf.customLaunchers = browsers
   conf.browsers = browsersKeys
-  conf.captureTimeout = 300000
-  conf.browserDisconnectTolerance = 0
-  conf.browserDisconnectTimeout = 300000
-  conf.browserSocketTimeout = 120000
-  conf.browserNoActivityTimeout = 300000
   reporters.push('BrowserStack', 'kjhtml')
 } else {
   frameworks.push('detectBrowsers')
