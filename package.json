@@ -132,7 +132,7 @@
     "serve": "^11.3.0",
     "shelljs": "^0.8.4",
     "stylelint": "^13.3.3",
-    "stylelint-config-twbs-bootstrap": "^2.0.1",
+    "stylelint-config-twbs-bootstrap": "^2.0.2",
     "terser": "^4.6.13",
     "vnu-jar": "20.3.16"
   },
