@@ -127,7 +127,7 @@ $(function () {
       .show()
       .find('#scrollspy-example')
       .bootstrapScrollspy({
-        target: document.getElementById('#ss-target')
+        target: document.getElementById('ss-target')
       })
 
     $scrollspy.one('scroll', function () {
