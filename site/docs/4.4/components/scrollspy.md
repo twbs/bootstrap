@@ -314,7 +314,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
     </tr>
     <tr>
       <td>target</td>
-      <td>string</td>
+      <td>string | jQuery object | DOM element</td>
       <td></td>
       <td>Specifies element to apply Scrollspy plugin.</td>
     </tr>

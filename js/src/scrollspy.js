@@ -157,7 +157,7 @@ class ScrollSpy {
       ...typeof config === 'object' && config ? config : {}
     }
 
-    if (typeof config.target !== 'string') {
+    if (typeof config.target !== 'string' && Util.isElement(config.target)) {
       let id = $(config.target).attr('id')
       if (!id) {
         id = Util.getUID(NAME)
