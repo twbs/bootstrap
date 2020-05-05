@@ -92,7 +92,7 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.9.0",
+    "@babel/core": "^7.9.6",
     "@babel/plugin-proposal-object-rest-spread": "^7.9.5",
     "@babel/preset-env": "^7.9.6",
     "@rollup/plugin-commonjs": "^11.1.0",
