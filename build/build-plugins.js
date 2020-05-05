@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 /*!
  * Script to build our plugins to use them separately.
  * Copyright 2020 The Bootstrap Authors
