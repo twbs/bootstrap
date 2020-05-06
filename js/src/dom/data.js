@@ -17,21 +17,25 @@ const mapData = (() => {
   return {
     set(element, key, data) {
       if (typeof element.bsKey === 'undefined') {
-        element.bsKey = {
+        element.bsKey = {}
+      }
+
+      if (typeof element.bsKey[key] === 'undefined') {
+        element.bsKey[key] = {
           key,
           id
         }
         id++
       }
 
-      storeData[element.bsKey.id] = data
+      storeData[element.bsKey[key].id] = data
     },
     get(element, key) {
-      if (!element || typeof element.bsKey === 'undefined') {
+      if (!element || typeof element.bsKey === 'undefined' || typeof element.bsKey[key] === 'undefined') {
         return null
       }
 
-      const keyProperties = element.bsKey
+      const keyProperties = element.bsKey[key]
       if (keyProperties.key === key) {
         return storeData[keyProperties.id]
       }
@@ -39,14 +43,14 @@ const mapData = (() => {
       return null
     },
     delete(element, key) {
-      if (typeof element.bsKey === 'undefined') {
+      if (typeof element.bsKey === 'undefined' || typeof element.bsKey[key] === 'undefined') {
         return
       }
 
-      const keyProperties = element.bsKey
+      const keyProperties = element.bsKey[key]
       if (keyProperties.key === key) {
         delete storeData[keyProperties.id]
-        delete element.bsKey
+        delete element.bsKey[key]
       }
     }
   }

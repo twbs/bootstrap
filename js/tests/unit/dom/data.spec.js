@@ -57,6 +57,23 @@ describe('Data', () => {
       expect(Data.getData(div, 'test')).toEqual(data)
     })
 
+    it('should return different stored data for multiple keys', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+      const data1 = {
+        test: 'bsData1'
+      }
+      const data2 = {
+        test: 'bsData2'
+      }
+
+      Data.setData(div, 'test1', data1)
+      Data.setData(div, 'test2', data2)
+      expect(Data.getData(div, 'test1')).toEqual(data1)
+      expect(Data.getData(div, 'test2')).toEqual(data2)
+    })
+
     it('should return null on undefined element', () => {
       expect(Data.getData(null)).toEqual(null)
       expect(Data.getData(undefined)).toEqual(null)
@@ -104,11 +121,11 @@ describe('Data', () => {
 
       Data.setData(div, 'test', data)
 
-      expect(div.bsKey).toBeDefined()
+      expect(div.bsKey.test).toBeDefined()
 
       Data.removeData(div, 'test2')
 
-      expect(div.bsKey).toBeDefined()
+      expect(div.bsKey.test).toBeDefined()
     })
 
     it('should remove data if something is stored', () => {
@@ -121,11 +138,34 @@ describe('Data', () => {
 
       Data.setData(div, 'test', data)
 
-      expect(div.bsKey).toBeDefined()
+      expect(div.bsKey.test).toBeDefined()
 
       Data.removeData(div, 'test')
 
-      expect(div.bsKey).toBeUndefined()
+      expect(div.bsKey.test).toBeUndefined()
+    })
+
+    it('should only remove the specified data', () => {
+      fixtureEl.innerHTML = '<div></div>'
+
+      const div = fixtureEl.querySelector('div')
+      const data1 = {
+        test: 'bsData1'
+      }
+      const data2 = {
+        test: 'bsData2'
+      }
+
+      Data.setData(div, 'test1', data1)
+      Data.setData(div, 'test2', data2)
+
+      expect(div.bsKey.test1).toBeDefined()
+      expect(div.bsKey.test2).toBeDefined()
+
+      Data.removeData(div, 'test1')
+
+      expect(div.bsKey.test1).toBeUndefined()
+      expect(div.bsKey.test2).toBeDefined()
     })
   })
 })
