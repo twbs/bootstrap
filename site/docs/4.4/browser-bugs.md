@@ -5,6 +5,13 @@ group: browser-bugs
 redirect_from: "/browser-bugs/"
 ---
 
+{% capture callout %}
+##### The Page is no longer maintained
+
+"The Wall of browser bugs" page is outdated for many versions now and is only kept for historical reasons.
+{% endcapture %}
+{% include callout.html content=callout type="danger" %}
+
 Bootstrap currently works around several outstanding browser bugs in major browsers to deliver the best cross-browser experience possible. Some bugs, like those listed below, cannot be solved by us.
 
 We publicly list browser bugs that are impacting us here, in the hopes of expediting the process of fixing them. For information on Bootstrap's browser compatibility, [see our browser compatibility docs]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/browsers-devices/#supported-browsers).
