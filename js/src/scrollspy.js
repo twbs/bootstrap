@@ -9,6 +9,7 @@ import {
   getjQuery,
   getSelectorFromElement,
   getUID,
+  isElement,
   typeCheckConfig
 } from './util/index'
 import Data from './dom/data'
@@ -168,7 +169,7 @@ class ScrollSpy {
       ...typeof config === 'object' && config ? config : {}
     }
 
-    if (typeof config.target !== 'string') {
+    if (typeof config.target !== 'string' && isElement(config.target)) {
       let { id } = config.target
       if (!id) {
         id = getUID(NAME)
