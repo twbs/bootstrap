@@ -229,10 +229,10 @@ describe('Collapse', () => {
     it('should collapse only the first collapse', done => {
       fixtureEl.innerHTML = [
         '<div class="card" id="accordion1">',
-        '  <div id="collapse1" class="collapse"/>',
+        '  <div id="collapse1" class="collapse"></div>',
         '</div>',
         '<div class="card" id="accordion2">',
-        '  <div id="collapse2" class="collapse show"/>',
+        '  <div id="collapse2" class="collapse show"></div>',
         '</div>'
       ].join('')
 
@@ -377,8 +377,8 @@ describe('Collapse', () => {
     it('should show multiple collapsed elements', done => {
       fixtureEl.innerHTML = [
         '<a role="button" data-toggle="collapse" class="collapsed" href=".multi"></a>',
-        '<div id="collapse1" class="collapse multi"/>',
-        '<div id="collapse2" class="collapse multi"/>'
+        '<div id="collapse1" class="collapse multi"></div>',
+        '<div id="collapse2" class="collapse multi"></div>'
       ].join('')
 
       const trigger = fixtureEl.querySelector('a')
@@ -399,8 +399,8 @@ describe('Collapse', () => {
     it('should hide multiple collapsed elements', done => {
       fixtureEl.innerHTML = [
         '<a role="button" data-toggle="collapse" href=".multi"></a>',
-        '<div id="collapse1" class="collapse multi show"/>',
-        '<div id="collapse2" class="collapse multi show"/>'
+        '<div id="collapse1" class="collapse multi show"></div>',
+        '<div id="collapse2" class="collapse multi show"></div>'
       ].join('')
 
       const trigger = fixtureEl.querySelector('a')
@@ -420,8 +420,8 @@ describe('Collapse', () => {
 
     it('should remove "collapsed" class from target when collapse is shown', done => {
       fixtureEl.innerHTML = [
-        '<a id="link1" role="button" data-toggle="collapse" class="collapsed" href="#" data-target="#test1" />',
-        '<a id="link2" role="button" data-toggle="collapse" class="collapsed" href="#" data-target="#test1" />',
+        '<a id="link1" role="button" data-toggle="collapse" class="collapsed" href="#" data-target="#test1"></a>',
+        '<a id="link2" role="button" data-toggle="collapse" class="collapsed" href="#" data-target="#test1"></a>',
         '<div id="test1"></div>'
       ].join('')
 
@@ -442,8 +442,8 @@ describe('Collapse', () => {
 
     it('should add "collapsed" class to target when collapse is hidden', done => {
       fixtureEl.innerHTML = [
-        '<a id="link1" role="button" data-toggle="collapse" href="#" data-target="#test1" />',
-        '<a id="link2" role="button" data-toggle="collapse" href="#" data-target="#test1" />',
+        '<a id="link1" role="button" data-toggle="collapse" href="#" data-target="#test1"></a>',
+        '<a id="link2" role="button" data-toggle="collapse" href="#" data-target="#test1"></a>',
         '<div id="test1" class="show"></div>'
       ].join('')
 
@@ -499,7 +499,7 @@ describe('Collapse', () => {
 
     it('should not prevent event for input', done => {
       fixtureEl.innerHTML = [
-        '<input type="checkbox" data-toggle="collapse" data-target="#collapsediv1" />',
+        '<input type="checkbox" data-toggle="collapse" data-target="#collapsediv1">',
         '<div id="collapsediv1"></div>'
       ].join('')
 
@@ -703,11 +703,11 @@ describe('Collapse', () => {
 
     it('should add "collapsed" class and set aria-expanded to triggers only when all the targeted collapse are hidden', done => {
       fixtureEl.innerHTML = [
-        '<a id="trigger1" role="button" data-toggle="collapse" href="#test1"/>',
-        '<a id="trigger2" role="button" data-toggle="collapse" href="#test2"/>',
-        '<a id="trigger3" role="button" data-toggle="collapse" href=".multi"/>',
-        '<div id="test1" class="multi"/>',
-        '<div id="test2" class="multi"/>'
+        '<a id="trigger1" role="button" data-toggle="collapse" href="#test1"></a>',
+        '<a id="trigger2" role="button" data-toggle="collapse" href="#test2"></a>',
+        '<a id="trigger3" role="button" data-toggle="collapse" href=".multi"></a>',
+        '<div id="test1" class="multi"></div>',
+        '<div id="test2" class="multi"></div>'
       ].join('')
 
       const trigger1 = fixtureEl.querySelector('#trigger1')
