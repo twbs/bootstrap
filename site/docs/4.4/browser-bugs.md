@@ -6,9 +6,9 @@ redirect_from: "/browser-bugs/"
 ---
 
 {% capture callout %}
-##### The Page is no longer maintained
+##### Outdated content
 
-"The Wall of browser bugs" page is outdated for many versions now and is only kept for historical reasons.
+This page is outdated and is no longer applicable to the latest versions of Bootstrap. It's here purely for historical purposes now and will be removed in our next major release.
 {% endcapture %}
 {% include callout.html content=callout type="danger" %}
 
