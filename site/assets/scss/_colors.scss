@@ -2,7 +2,7 @@
 // Docs color palette classes
 //
 
-@each $color, $value in $colors {
+@each $color, $value in map-merge($colors, ("gray-500": $gray-500)) {
   .swatch-#{$color} {
     color: color-contrast($value);
     background-color: #{$value};
@@ -37,13 +37,6 @@
       background-repeat: no-repeat;
       background-size: .5rem 100%;
     }
-  }
-}
-
-@each $color, $value in $grays {
-  .swatch-#{$color} {
-    color: color-contrast($value);
-    background-color: #{$value};
   }
 }
 
