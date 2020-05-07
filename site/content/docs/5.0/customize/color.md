@@ -49,7 +49,7 @@ Be sure to monitor contrast ratios as you customize colors. As shown below, we'v
   {{ end -}}
 
   <div class="col-md-4 mb-3">
-    <div class="p-3 mb-2 bd-gray-500">
+    <div class="p-3 mb-2 position-relative swatch-gray-500">
       <strong class="d-block">$gray-500</strong>
       #adb5bd
     </div>
