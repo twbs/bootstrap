@@ -14,7 +14,7 @@ We use a subset of all colors to create a smaller color palette for generating c
   {{< theme-colors.inline >}}
   {{- range (index $.Site.Data "theme-colors") }}
     <div class="col-md-4">
-      <div class="p-3 mb-3 bg-{{ .name }} {{ if or (eq .name "light") (eq .name "warning") }}text-dark{{ else }}text-white{{ end }}">{{ .name | title }}</div>
+      <div class="p-3 mb-3 bg-{{ .name }} {{ if or (eq .name "light") (eq .name "warning") }}text-dark{{ else if (eq .name "info")}}text-body{{ else }}text-white{{ end }}">{{ .name | title }}</div>
     </div>
   {{ end -}}
   {{< /theme-colors.inline >}}
@@ -30,12 +30,14 @@ Check out [our Sass maps and loops docs]({{< docsref "/customize/sass#maps-and-l
 
 All Bootstrap colors are available as Sass variables and a Sass map in `scss/_variables.scss` file. To avoid increased file sizes, we don't create text or background color classes for each of these variables. Instead, we choose a subset of these colors for a [theme palette](#theme-colors).
 
+Be sure to monitor contrast ratios as you customize colors. As shown below, we've added three contrast ratios to each of the main colors—one for the swatch's current colors, one for against white, and one for against black.
+
 <div class="row font-monospace">
   {{< theme-colors.inline >}}
   {{- range $color := $.Site.Data.colors }}
     {{- if (and (not (eq $color.name "white")) (not (eq $color.name "gray")) (not (eq $color.name "gray-dark"))) }}
     <div class="col-md-4 mb-3">
-      <div class="p-3 mb-2 swatch-{{ $color.name }}">
+      <div class="p-3 mb-2 position-relative swatch-{{ $color.name }}">
         <strong class="d-block">${{ $color.name }}</strong>
         {{ $color.hex }}
       </div>
