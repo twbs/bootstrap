@@ -50,9 +50,6 @@ jobs:
       - name: Set up Bundler
         run: gem install bundler -v "~> 1.17"
 
-      - name: Update rubygems
-        run: gem update --system
-
       - run: ruby --version
       - run: gem --version
       - run: bundle --version
