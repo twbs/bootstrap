@@ -1232,7 +1232,7 @@ describe('Dropdown', () => {
         '  <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#sub1">Submenu 1</a>',
-        '    <input type="text" />',
+        '    <input type="text">',
         '    <textarea></textarea>',
         '  </div>',
         '</div>'
@@ -1400,7 +1400,7 @@ describe('Dropdown', () => {
         '<div class="dropdown">',
         '  <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu">',
-        '    <input type="text" />',
+        '    <input type="text">',
         '  </div>',
         '</div>'
       ].join('')
@@ -1455,7 +1455,7 @@ describe('Dropdown', () => {
         '  <button class="btn dropdown-toggle" data-toggle="dropdown">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#sub1">Submenu 1</a>',
-        '    <input type="text" />',
+        '    <input type="text">',
         '    <textarea></textarea>',
         '  </div>',
         '</div>'
@@ -1531,7 +1531,7 @@ describe('Dropdown', () => {
         '    <div class="dropdown-menu">',
         '      <a class="dropdown-item" href="#">Secondary link</a>',
         '      <a class="dropdown-item" href="#">Something else here</a>',
-        '      <div class="divider"/>',
+        '      <div class="divider"></div>',
         '     <a class="dropdown-item" href="#">Another link</a>',
         '   </div>',
         '  </div>',

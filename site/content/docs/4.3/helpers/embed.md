@@ -10,7 +10,7 @@ toc: true
 
 Rules are directly applied to `<iframe>`, `<embed>`, `<video>`, and `<object>` elements; optionally use an explicit descendant class `.embed-responsive-item` when you want to match the styling for other attributes.
 
-**Pro-Tip!** You don't need to include `frameborder="0"` in your `<iframe>`s as we override that for you.
+**Pro-Tip!** You don't need to include `frameborder="0"` in your `<iframe>`s as we override that for you in [reboot]({{< docsref "/content/reboot" >}}).
 
 ## Example
 

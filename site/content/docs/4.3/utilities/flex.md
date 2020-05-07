@@ -272,7 +272,7 @@ Use `.flex-grow-*` utilities to toggle a flex item's ability to grow to fill ava
 </div>
 {{< /example >}}
 
-Use `.flex-shrink-*` utilities to toggle a flex item's ability to shrink if necessary. In the example below, the second flex item with `.flex-shrink-1` is forced to wrap it's contents to a new line, "shrinking" to allow more space for the previous flex item with `.w-100`.
+Use `.flex-shrink-*` utilities to toggle a flex item's ability to shrink if necessary. In the example below, the second flex item with `.flex-shrink-1` is forced to wrap its contents to a new line, "shrinking" to allow more space for the previous flex item with `.w-100`.
 
 {{< example >}}
 <div class="d-flex bd-highlight">

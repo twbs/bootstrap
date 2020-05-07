@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 /*!
  * Script to build our plugins to use them separately.
  * Copyright 2020 The Bootstrap Authors
@@ -11,21 +13,14 @@ const path = require('path')
 const rollup = require('rollup')
 const babel = require('rollup-plugin-babel')
 const banner = require('./banner.js')
+const babelHelpers = require('./babel-helpers.js')
 
 const plugins = [
   babel({
     // Only transpile our source code
     exclude: 'node_modules/**',
     // Include only required helpers
-    externalHelpersWhitelist: [
-      'createClass',
-      'createSuper',
-      'defineProperties',
-      'defineProperty',
-      'getPrototypeOf',
-      'inheritsLoose',
-      'objectSpread2'
-    ]
+    externalHelpersWhitelist: babelHelpers
   })
 ]
 const bsPlugins = {
@@ -61,7 +56,7 @@ const defaultPluginConfig = {
   }
 }
 
-function getConfigByPluginKey(pluginKey) {
+const getConfigByPluginKey = pluginKey => {
   if (
     pluginKey === 'Data' ||
     pluginKey === 'Manipulator' ||
@@ -148,7 +143,7 @@ const domObjects = [
   'SelectorEngine'
 ]
 
-function build(plugin) {
+const build = async plugin => {
   console.log(`Building ${plugin} plugin...`)
 
   const { external, globals } = getConfigByPluginKey(plugin)
@@ -163,23 +158,32 @@ function build(plugin) {
     pluginPath = `${rootPath}/dom/`
   }
 
-  rollup.rollup({
+  const bundle = await rollup.rollup({
     input: bsPlugins[plugin],
     plugins,
     external
-  }).then(bundle => {
-    bundle.write({
-      banner: banner(pluginFilename),
-      format: 'umd',
-      name: plugin,
-      sourcemap: true,
-      globals,
-      file: path.resolve(__dirname, `${pluginPath}/${pluginFilename}`)
-    })
-      .then(() => console.log(`Building ${plugin} plugin... Done!`))
-      .catch(error => console.error(`${plugin}: ${error}`))
   })
+
+  await bundle.write({
+    banner: banner(pluginFilename),
+    format: 'umd',
+    name: plugin,
+    sourcemap: true,
+    globals,
+    file: path.resolve(__dirname, `${pluginPath}/${pluginFilename}`)
+  })
+
+  console.log(`Building ${plugin} plugin... Done!`)
 }
 
-Object.keys(bsPlugins)
-  .forEach(plugin => build(plugin))
+const main = async () => {
+  try {
+    await Promise.all(Object.keys(bsPlugins).map(plugin => build(plugin)))
+  } catch (error) {
+    console.error(error)
+
+    process.exit(1)
+  }
+}
+
+main()

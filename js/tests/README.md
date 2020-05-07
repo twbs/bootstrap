@@ -51,7 +51,7 @@ describe('getInstance', () => {
 
 // Asynchronous test
 it('should show a tooltip without the animation', done => {
-  fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip"/>'
+  fixtureEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip"></a>'
 
   const tooltipEl = fixtureEl.querySelector('a')
   const tooltip = new Tooltip(tooltipEl, {
