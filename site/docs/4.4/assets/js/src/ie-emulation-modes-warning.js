@@ -7,7 +7,7 @@
   'use strict'
 
   function emulatedIEMajorVersion() {
-    var groups = /MSIE ([0-9.]+)/.exec(window.navigator.userAgent)
+    var groups = /MSIE ([\d.]+)/.exec(window.navigator.userAgent)
     if (groups === null) {
       return null
     }

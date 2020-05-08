@@ -102,7 +102,6 @@
     "no-shadow": "off",
     "no-shadow-restricted-names": "error",
     "no-undef-init": "error",
-    "no-undefined": "error",
     "no-use-before-define": "off",
 
     // Node.js and CommonJS
@@ -112,7 +111,6 @@
     "no-mixed-requires": "error",
     "no-new-require": "error",
     "no-path-concat": "error",
-    "no-process-env": "error",
     "no-process-exit": "error",
     "no-restricted-modules": "error",
     "no-sync": "error",
