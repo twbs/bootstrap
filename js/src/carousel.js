@@ -251,8 +251,7 @@ class Carousel {
 
   _addEventListeners() {
     if (this._config.keyboard) {
-      $(this._element)
-        .on(EVENT_KEYDOWN, (event) => this._keydown(event))
+      $(this._element).on(EVENT_KEYDOWN, (event) => this._keydown(event))
     }
 
     if (this._config.pause === 'hover') {
@@ -311,7 +310,9 @@ class Carousel {
       }
     }
 
-    $(this._element.querySelectorAll(SELECTOR_ITEM_IMG)).on(EVENT_DRAG_START, (e) => e.preventDefault())
+    $(this._element.querySelectorAll(SELECTOR_ITEM_IMG))
+      .on(EVENT_DRAG_START, (e) => e.preventDefault())
+
     if (this._pointerEvent) {
       $(this._element).on(EVENT_POINTERDOWN, (event) => start(event))
       $(this._element).on(EVENT_POINTERUP, (event) => end(event))
@@ -386,8 +387,7 @@ class Carousel {
   _setActiveIndicatorElement(element) {
     if (this._indicatorsElement) {
       const indicators = [].slice.call(this._indicatorsElement.querySelectorAll(SELECTOR_ACTIVE))
-      $(indicators)
-        .removeClass(CLASS_NAME_ACTIVE)
+      $(indicators).removeClass(CLASS_NAME_ACTIVE)
 
       const nextIndicator = this._indicatorsElement.children[
         this._getItemIndex(element)
@@ -572,8 +572,7 @@ class Carousel {
  * ------------------------------------------------------------------------
  */
 
-$(document)
-  .on(EVENT_CLICK_DATA_API, SELECTOR_DATA_SLIDE, Carousel._dataApiClickHandler)
+$(document).on(EVENT_CLICK_DATA_API, SELECTOR_DATA_SLIDE, Carousel._dataApiClickHandler)
 
 $(window).on(EVENT_LOAD_DATA_API, () => {
   const carousels = [].slice.call(document.querySelectorAll(SELECTOR_DATA_RIDE))
