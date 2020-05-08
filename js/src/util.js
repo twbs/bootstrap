@@ -67,7 +67,6 @@ function setTransitionEndSupport() {
  */
 
 const Util = {
-
   TRANSITION_END: 'bsTransitionEnd',
 
   getUID(prefix) {

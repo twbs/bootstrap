@@ -163,11 +163,7 @@ class Toast {
   }
 
   _setListeners() {
-    $(this._element).on(
-      EVENT_CLICK_DISMISS,
-      SELECTOR_DATA_DISMISS,
-      () => this.hide()
-    )
+    $(this._element).on(EVENT_CLICK_DISMISS, SELECTOR_DATA_DISMISS, () => this.hide())
   }
 
   _close() {

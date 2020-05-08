@@ -294,10 +294,9 @@ class Collapse {
       parent = document.querySelector(this._config.parent)
     }
 
-    const selector =
-      `[data-toggle="collapse"][data-parent="${this._config.parent}"]`
-
+    const selector = `[data-toggle="collapse"][data-parent="${this._config.parent}"]`
     const children = [].slice.call(parent.querySelectorAll(selector))
+
     $(children).each((i, element) => {
       this._addAriaAndCollapsedClass(
         Collapse._getTargetFromElement(element),
