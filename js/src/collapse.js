@@ -171,8 +171,7 @@ class Collapse {
     const complete = () => {
       $(this._element)
         .removeClass(CLASS_NAME_COLLAPSING)
-        .addClass(CLASS_NAME_COLLAPSE)
-        .addClass(CLASS_NAME_SHOW)
+        .addClass(`${CLASS_NAME_COLLAPSE} ${CLASS_NAME_SHOW}`)
 
       this._element.style[dimension] = ''
 
@@ -212,8 +211,7 @@ class Collapse {
 
     $(this._element)
       .addClass(CLASS_NAME_COLLAPSING)
-      .removeClass(CLASS_NAME_COLLAPSE)
-      .removeClass(CLASS_NAME_SHOW)
+      .removeClass(`${CLASS_NAME_COLLAPSE} ${CLASS_NAME_SHOW}`)
 
     const triggerArrayLength = this._triggerArray.length
     if (triggerArrayLength > 0) {
