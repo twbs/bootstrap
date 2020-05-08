@@ -468,8 +468,7 @@ class Dropdown {
 
     if (!isActive || isActive && (event.which === ESCAPE_KEYCODE || event.which === SPACE_KEYCODE)) {
       if (event.which === ESCAPE_KEYCODE) {
-        const toggle = parent.querySelector(SELECTOR_DATA_TOGGLE)
-        $(toggle).trigger('focus')
+        $(parent.querySelector(SELECTOR_DATA_TOGGLE)).trigger('focus')
       }
 
       $(this).trigger('click')
