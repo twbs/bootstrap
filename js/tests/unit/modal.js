@@ -826,7 +826,6 @@ $(function () {
       '</div>'
     ].join('')).appendTo('#qunit-fixture')
 
-
     $modal.on('shown.bs.modal', function () {
       assert.strictEqual($modal.scrollTop(), 0)
       done()

@@ -531,5 +531,4 @@ $.fn[NAME].noConflict = () => {
   return Dropdown._jQueryInterface
 }
 
-
 export default Dropdown

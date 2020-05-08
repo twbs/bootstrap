@@ -63,7 +63,6 @@ $(function () {
 
     Util.typeCheckConfig(namePlugin, config, defaultType)
 
-    // eslint-disable-next-line
     config.toggle = undefined
 
     Util.typeCheckConfig(namePlugin, config, defaultType)

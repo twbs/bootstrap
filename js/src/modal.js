@@ -179,7 +179,6 @@ class Modal {
     $(this._element).off(EVENT_CLICK_DISMISS)
     $(this._dialog).off(EVENT_MOUSEDOWN_DISMISS)
 
-
     if (transition) {
       const transitionDuration  = Util.getTransitionDurationFromElement(this._element)
 
