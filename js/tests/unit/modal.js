@@ -68,7 +68,7 @@ $(function () {
 
     $('<div id="modal-test"/>')
       .on('shown.bs.modal', function () {
-        assert.notEqual($('#modal-test').length, 0, 'modal inserted into dom')
+        assert.notStrictEqual($('#modal-test').length, 0, 'modal inserted into dom')
         done()
       })
       .bootstrapModal('show')
@@ -109,7 +109,7 @@ $(function () {
     $('<div id="modal-test"/>')
       .on('shown.bs.modal', function () {
         assert.ok($('#modal-test').is(':visible'), 'modal visible')
-        assert.notEqual($('#modal-test').length, 0, 'modal inserted into dom')
+        assert.notStrictEqual($('#modal-test').length, 0, 'modal inserted into dom')
         $(this).bootstrapModal('hide')
       })
       .on('hidden.bs.modal', function () {
@@ -126,7 +126,7 @@ $(function () {
     $('<div id="modal-test"/>')
       .on('shown.bs.modal', function () {
         assert.ok($('#modal-test').is(':visible'), 'modal visible')
-        assert.notEqual($('#modal-test').length, 0, 'modal inserted into dom')
+        assert.notStrictEqual($('#modal-test').length, 0, 'modal inserted into dom')
         $(this).bootstrapModal('toggle')
       })
       .on('hidden.bs.modal', function () {
@@ -143,7 +143,7 @@ $(function () {
     $('<div id="modal-test"><span class="close" data-dismiss="modal"/></div>')
       .on('shown.bs.modal', function () {
         assert.ok($('#modal-test').is(':visible'), 'modal visible')
-        assert.notEqual($('#modal-test').length, 0, 'modal inserted into dom')
+        assert.notStrictEqual($('#modal-test').length, 0, 'modal inserted into dom')
         $(this).find('.close').trigger('click')
       })
       .on('hidden.bs.modal', function () {
@@ -175,7 +175,7 @@ $(function () {
 
     $('<div id="modal-test"><div class="contents"/></div>')
       .on('shown.bs.modal', function () {
-        assert.notEqual($('#modal-test').length, 0, 'modal inserted into dom')
+        assert.notStrictEqual($('#modal-test').length, 0, 'modal inserted into dom')
         $('.contents').trigger('click')
         assert.ok($('#modal-test').is(':visible'), 'modal visible')
         $('#modal-test').trigger('click')
