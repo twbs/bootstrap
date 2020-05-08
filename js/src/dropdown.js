@@ -281,10 +281,9 @@ class Dropdown {
 
     // Handle dropup
     if ($parentDropdown.hasClass(CLASS_NAME_DROPUP)) {
-      placement = PLACEMENT_TOP
-      if ($(this._menu).hasClass(CLASS_NAME_MENURIGHT)) {
-        placement = PLACEMENT_TOPEND
-      }
+      placement = $(this._menu).hasClass(CLASS_NAME_MENURIGHT)
+        ? PLACEMENT_TOPEND
+        : PLACEMENT_TOP
     } else if ($parentDropdown.hasClass(CLASS_NAME_DROPRIGHT)) {
       placement = PLACEMENT_RIGHT
     } else if ($parentDropdown.hasClass(CLASS_NAME_DROPLEFT)) {
