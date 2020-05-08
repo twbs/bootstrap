@@ -138,6 +138,104 @@ $(function () {
     $scrollspy.scrollTop(350)
   })
 
+  // This could be simplified/improved later
+  QUnit.test('should only switch "active" class on current target specified w jQuery element', function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+
+    var sectionHTML = '<div id="root" class="active">' +
+        '<div class="topbar">' +
+        '<div class="topbar-inner">' +
+        '<div class="container" id="ss-target">' +
+        '<ul class="nav">' +
+        '<li class="nav-item"><a href="#masthead">Overview</a></li>' +
+        '<li class="nav-item"><a href="#detail">Detail</a></li>' +
+        '</ul>' +
+        '</div>' +
+        '</div>' +
+        '</div>' +
+        '<div id="scrollspy-example" style="height: 100px; overflow: auto;">' +
+        '<div style="height: 200px;">' +
+        '<h4 id="masthead">Overview</h4>' +
+        '<p style="height: 200px">' +
+        'Ad leggings keytar, brunch id art party dolor labore.' +
+        '</p>' +
+        '</div>' +
+        '<div style="height: 200px;">' +
+        '<h4 id="detail">Detail</h4>' +
+        '<p style="height: 200px">' +
+        'Veniam marfa mustache skateboard, adipisicing fugiat velit pitchfork beard.' +
+        '</p>' +
+        '</div>' +
+        '</div>' +
+        '</div>'
+    var $section = $(sectionHTML).appendTo('#qunit-fixture')
+
+    var $scrollspy = $section
+      .show()
+      .find('#scrollspy-example')
+      .bootstrapScrollspy({
+        target: $('#ss-target')
+      })
+
+    $scrollspy.one('scroll', function () {
+      assert.ok($section.hasClass('active'), '"active" class still on root node')
+      done()
+    })
+
+    $scrollspy.scrollTop(350)
+  })
+
+  // This could be simplified/improved later
+  QUnit.test('should only switch "active" class on current target specified without ID', function (assert) {
+    assert.expect(2)
+    var done = assert.async()
+
+    var sectionHTML = '<div id="root" class="active">' +
+        '<div class="topbar">' +
+        '<div class="topbar-inner">' +
+        '<div class="container">' +
+        '<ul class="nav">' +
+        '<li class="nav-item"><a href="#masthead">Overview</a></li>' +
+        '<li class="nav-item"><a href="#detail">Detail</a></li>' +
+        '</ul>' +
+        '</div>' +
+        '</div>' +
+        '</div>' +
+        '<div id="scrollspy-example" style="height: 100px; overflow: auto;">' +
+        '<div style="height: 200px;">' +
+        '<h4 id="masthead">Overview</h4>' +
+        '<p style="height: 200px">' +
+        'Ad leggings keytar, brunch id art party dolor labore.' +
+        '</p>' +
+        '</div>' +
+        '<div style="height: 200px;">' +
+        '<h4 id="detail">Detail</h4>' +
+        '<p style="height: 200px">' +
+        'Veniam marfa mustache skateboard, adipisicing fugiat velit pitchfork beard.' +
+        '</p>' +
+        '</div>' +
+        '</div>' +
+        '</div>'
+    var $section = $(sectionHTML).appendTo('#qunit-fixture')
+
+    var $scrollspy = $section
+      .show()
+      .find('#scrollspy-example')
+      .bootstrapScrollspy({
+        target: $('.container')
+      })
+
+    assert.ok($('.container').attr('id').length > 0, '`target` has an ID attribute')
+
+    $scrollspy.one('scroll', function () {
+      assert.ok($section.hasClass('active'), '"active" class still on root node')
+      done()
+    })
+
+    $scrollspy.scrollTop(350)
+  })
+
   QUnit.test('should correctly select middle navigation option when large offset is used', function (assert) {
     assert.expect(3)
     var done = assert.async()
@@ -732,5 +830,44 @@ $(function () {
 
     testOffsetMethod('js')
     testOffsetMethod('data')
+  })
+
+  // This could be simplified/improved later
+  QUnit.test('should raise exception to avoid xss on target', function (assert) {
+    assert.expect(1)
+    assert.throws(function () {
+      var templateHTML = '<div id="root" class="active">' +
+        '<div class="topbar">' +
+        '<div class="topbar-inner">' +
+        '<div class="container" id="ss-target">' +
+        '<ul class="nav">' +
+        '<li class="nav-item"><a href="#masthead">Overview</a></li>' +
+        '<li class="nav-item"><a href="#detail">Detail</a></li>' +
+        '</ul>' +
+        '</div>' +
+        '</div>' +
+        '</div>' +
+        '<div id="scrollspy-example" style="height: 100px; overflow: auto;">' +
+        '<div style="height: 200px;">' +
+        '<h4 id="masthead">Overview</h4>' +
+        '<p style="height: 200px">' +
+        'Ad leggings keytar, brunch id art party dolor labore.' +
+        '</p>' +
+        '</div>' +
+        '<div style="height: 200px;">' +
+        '<h4 id="detail">Detail</h4>' +
+        '<p style="height: 200px">' +
+        'Veniam marfa mustache skateboard, adipisicing fugiat velit pitchfork beard.' +
+        '</p>' +
+        '</div>' +
+        '</div>' +
+        '</div>'
+
+      $(templateHTML).appendTo(document.body)
+
+      $('#ss-target').bootstrapScrollspy({
+        target: '<img src=1 onerror=\'alert(0)\'>'
+      })
+    }, /SyntaxError/)
   })
 })
