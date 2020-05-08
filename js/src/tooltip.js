@@ -740,8 +740,7 @@ class Tooltip {
   }
 
   _handlePopperPlacementChange(popperData) {
-    const popperInstance = popperData.instance
-    this.tip = popperInstance.popper
+    this.tip = popperData.instance.popper
     this._cleanTipClass()
     this._addAttachmentClass(this._getAttachment(popperData.placement))
   }
