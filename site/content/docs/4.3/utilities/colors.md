@@ -13,6 +13,7 @@ Colorize text with color utilities. If you want to colorize links, you can use t
 {{< example >}}
 {{< colors.inline >}}
 {{- range (index $.Site.Data "theme-colors") }}
+
 <p class="text-{{ .name }}{{ if eq .name "light" }} bg-dark{{ end }}">.text-{{ .name }}</p>
 {{- end -}}
 {{< /colors.inline >}}
@@ -30,11 +31,30 @@ Similar to the contextual text color classes, easily set the background of an el
 {{< example >}}
 {{< colors.inline >}}
 {{- range (index $.Site.Data "theme-colors") }}
+
 <div class="p-3 mb-2 bg-{{ .name }} {{ if or (eq .name "light") (eq .name "warning") }}text-dark{{ else }}text-white{{ end }}">.bg-{{ .name }}</div>
 {{- end -}}
+
 {{< /colors.inline >}}
+
 <div class="p-3 mb-2 bg-white text-dark">.bg-white</div>
+
 <div class="p-3 mb-2 bg-transparent text-dark">.bg-transparent</div>
+{{< /example >}}
+
+## Dark Background colors
+
+Similar to the Background utilities.
+
+{{< example >}}
+{{< colors.inline >}}
+
+{{- range (index $.Site.Data "theme-dark-colors") }}
+
+<div class="p-3 mb-2 bg-dark-{{ .name }} text-white">.bg-dark-{{ .name }}</div>
+{{- end -}}
+{{< /colors.inline >}}
+
 {{< /example >}}
 
 ## Background gradient
@@ -44,12 +64,14 @@ When `$enable-gradients` is set to `true` (default is `false`), you can use `.bg
 {{< markdown >}}
 {{< colors.inline >}}
 {{- range (index $.Site.Data "theme-colors") }}
+
 - `.bg-gradient-{{ .name }}`
-{{- end -}}
-{{< /colors.inline >}}
-{{< /markdown >}}
+  {{- end -}}
+  {{< /colors.inline >}}
+  {{< /markdown >}}
 
 {{< callout info >}}
+
 #### Dealing with specificity
 
 Sometimes contextual classes cannot be applied due to the specificity of another selector. In some cases, a sufficient workaround is to wrap your element's content in a `<div>` with the class.

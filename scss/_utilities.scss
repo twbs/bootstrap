@@ -416,6 +416,16 @@ $utilities: map-merge(
         )
       )
     ),
+    "background-dark-color": (
+      property: background-color,
+      class: bg-dark,
+      values: map-merge(
+        $theme-dark-colors,
+        (
+          "body": #171515
+        )
+      )
+    ),
     "white-space": (
       property: white-space,
       class: text,

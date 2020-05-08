@@ -213,8 +213,7 @@
   var DATA_KEY = 'bs.modal';
   var EVENT_KEY = "." + DATA_KEY;
   var DATA_API_KEY = '.data-api';
-  var ESCAPE_KEYCODE = 27; // KeyboardEvent.which value for Escape (Esc) key
-
+  var ESCAPE_KEY = 'Escape';
   var Default = {
     backdrop: true,
     keyboard: true,
@@ -239,7 +238,6 @@
   var EVENT_MOUSEUP_DISMISS = "mouseup.dismiss" + EVENT_KEY;
   var EVENT_MOUSEDOWN_DISMISS = "mousedown.dismiss" + EVENT_KEY;
   var EVENT_CLICK_DATA_API = "click" + EVENT_KEY + DATA_API_KEY;
-  var CLASS_NAME_SCROLLABLE = 'modal-dialog-scrollable';
   var CLASS_NAME_SCROLLBAR_MEASURER = 'modal-scrollbar-measure';
   var CLASS_NAME_BACKDROP = 'modal-backdrop';
   var CLASS_NAME_OPEN = 'modal-open';
@@ -403,7 +401,7 @@
     ;
 
     _proto._getConfig = function _getConfig(config) {
-      config = _objectSpread2({}, Default, {}, config);
+      config = _objectSpread2(_objectSpread2({}, Default), config);
       typeCheckConfig(NAME, config, DefaultType);
       return config;
     };
@@ -426,10 +424,10 @@
 
       this._element.setAttribute('aria-modal', true);
 
-      if (this._dialog.classList.contains(CLASS_NAME_SCROLLABLE) && modalBody) {
+      this._element.scrollTop = 0;
+
+      if (modalBody) {
         modalBody.scrollTop = 0;
-      } else {
-        this._element.scrollTop = 0;
       }
 
       if (transition) {
@@ -479,11 +477,11 @@
 
       if (this._isShown) {
         EventHandler.on(this._element, EVENT_KEYDOWN_DISMISS, function (event) {
-          if (_this5._config.keyboard && event.which === ESCAPE_KEYCODE) {
+          if (_this5._config.keyboard && event.key === ESCAPE_KEY) {
             event.preventDefault();
 
             _this5.hide();
-          } else if (!_this5._config.keyboard && event.which === ESCAPE_KEYCODE) {
+          } else if (!_this5._config.keyboard && event.key === ESCAPE_KEY) {
             _this5._triggerBackdropTransition();
           }
         });
@@ -720,7 +718,7 @@
       return this.each(function () {
         var data = Data.getData(this, DATA_KEY);
 
-        var _config = _objectSpread2({}, Default, {}, Manipulator.getDataAttributes(this), {}, typeof config === 'object' && config ? config : {});
+        var _config = _objectSpread2(_objectSpread2(_objectSpread2({}, Default), Manipulator.getDataAttributes(this)), typeof config === 'object' && config ? config : {});
 
         if (!data) {
           data = new Modal(this, _config);
@@ -787,7 +785,7 @@
     var data = Data.getData(target, DATA_KEY);
 
     if (!data) {
-      var config = _objectSpread2({}, Manipulator.getDataAttributes(target), {}, Manipulator.getDataAttributes(this));
+      var config = _objectSpread2(_objectSpread2({}, Manipulator.getDataAttributes(target)), Manipulator.getDataAttributes(this));
 
       data = new Modal(target, config);
     }
