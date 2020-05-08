@@ -141,7 +141,7 @@ $(function () {
 
     $tooltip
       .one('shown.bs.tooltip', function () {
-        assert.notEqual($('.tooltip b').length, 0, 'b tag was inserted')
+        assert.notStrictEqual($('.tooltip b').length, 0, 'b tag was inserted')
         $tooltip.bootstrapTooltip('hide')
       })
       .one('hidden.bs.tooltip', function () {
@@ -163,7 +163,7 @@ $(function () {
 
     $tooltip
       .one('shown.bs.tooltip', function () {
-        assert.notEqual($('.tooltip').length, 0, 'tooltip inserted')
+        assert.notStrictEqual($('.tooltip').length, 0, 'tooltip inserted')
         assert.strictEqual($('.tooltip').text(), '<3 writing tests', 'title inserted')
         assert.ok(!$.contains($('.tooltip').get(0), title), 'title node copied, not moved')
         done()
@@ -184,7 +184,7 @@ $(function () {
 
     $tooltip
       .one('shown.bs.tooltip', function () {
-        assert.notEqual($('.tooltip').length, 0, 'tooltip inserted')
+        assert.notStrictEqual($('.tooltip').length, 0, 'tooltip inserted')
         assert.strictEqual($('.tooltip').text(), '<3 writing tests', 'title inserted')
         assert.ok($.contains($('.tooltip').get(0), title), 'title node moved, not copied')
         done()
@@ -244,7 +244,7 @@ $(function () {
     $('<div title="tooltip title"/>')
       .appendTo('#qunit-fixture')
       .on('inserted.bs.tooltip', function () {
-        assert.notEqual($('.tooltip').length, 0, 'tooltip was inserted')
+        assert.notStrictEqual($('.tooltip').length, 0, 'tooltip was inserted')
         assert.ok(true, 'inserted event fired')
         done()
       })
@@ -403,7 +403,7 @@ $(function () {
 
     $tooltip
       .one('shown.bs.tooltip', function () {
-        assert.notEqual($('body > .tooltip').length, 0, 'tooltip is direct descendant of body')
+        assert.notStrictEqual($('body > .tooltip').length, 0, 'tooltip is direct descendant of body')
         assert.strictEqual($('#qunit-fixture > .tooltip').length, 0, 'tooltip is not in parent')
         $tooltip.bootstrapTooltip('hide')
       })
@@ -843,7 +843,7 @@ $(function () {
     $.each(tests, function (idx, triggers) {
       for (var i = 0, len = triggers.length; i < len; i++) {
         $el.trigger(triggers[i])
-        assert.equal(i < len - 1, showingTooltip())
+        assert.strictEqual(i < len - 1, showingTooltip())
       }
     })
   })
