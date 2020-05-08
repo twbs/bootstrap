@@ -6206,6 +6206,20 @@ button.close {
   white-space: nowrap;
 }
 
+@media (prefers-color-scheme: dark) {
+  body {
+    color: #fff;
+    background-color: #343a40 !important;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  body {
+    color: #343a40;
+    background-color: #fff !important;
+  }
+}
+
 .align-baseline {
   vertical-align: baseline !important;
 }

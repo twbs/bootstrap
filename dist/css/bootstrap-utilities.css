@@ -4,6 +4,20 @@
  * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+@media (prefers-color-scheme: dark) {
+  body {
+    color: #fff;
+    background-color: #343a40 !important;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  body {
+    color: #343a40;
+    background-color: #fff !important;
+  }
+}
+
 .align-baseline {
   vertical-align: baseline !important;
 }

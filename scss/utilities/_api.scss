@@ -1,3 +1,18 @@
+//background system preference
+@media (prefers-color-scheme: dark) {
+  body{
+    color: #fff;
+    background-color: #343a40 if($enable-important-utilities, !important, null);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  body{
+    color: #343a40;
+    background-color: #fff if($enable-important-utilities, !important, null);
+  }
+}
+
 // Loop over each breakpoint
 @each $breakpoint in map-keys($grid-breakpoints) {
 
