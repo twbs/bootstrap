@@ -107,7 +107,6 @@
 .bd-title {
   margin-top: 1rem;
   margin-bottom: .5rem;
-  font-weight: 300;
   @include font-size(3rem);
 }
 
@@ -122,3 +121,7 @@
 
 .bd-text-purple { color: $bd-purple; }
 .bd-text-purple-bright { color: $bd-purple-bright; }
+
+.bd-bg-purple-bright {
+  background-color: $bd-purple-bright;
+}

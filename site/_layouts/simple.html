@@ -7,8 +7,10 @@ layout: default
     <h1 class="bd-title mt-0">{{ page.title | smartify }}</h1>
     <p class="bd-lead">{{ page.description | smartify }}</p>
     {%- if page.title == "Examples" -%}
-    <a href="{{ site.download.source }}" class="btn btn-lg btn-bd-primary" onclick="ga('send', 'event', 'Examples', 'Hero', 'Download');">Download source code</a>
-    <a href="{{ site.download.dist_examples }}" class="btn btn-lg btn-bd-primary mt-3 mt-sm-0 ml-sm-3 ml-md-5" onclick="ga('send', 'event', 'Examples', 'Hero', 'Download Examples');">Download Examples</a>
+    <div class="d-flex flex-column flex-sm-row">
+      <a href="{{ site.download.dist_examples }}" class="btn btn-bd-primary py-2 px-3" onclick="ga('send', 'event', 'Examples', 'Hero', 'Download Examples');">Download examples</a>
+      <a href="{{ site.download.source }}" class="btn btn-outline-secondary py-2 px-3 mt-3 mt-sm-0 ml-sm-3" onclick="ga('send', 'event', 'Examples', 'Hero', 'Download');">Download source code</a>
+    </div>
     {%- endif -%}
   </div>
   {% include ads.html %}
