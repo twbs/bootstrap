@@ -41,7 +41,7 @@
     "js-minify-standalone-esm": "terser --compress --mangle --comments \"/^!/\" --source-map \"content=dist/js/bootstrap.esm.js.map,includeSources,url=bootstrap.esm.min.js.map\" --output dist/js/bootstrap.esm.min.js dist/js/bootstrap.esm.js",
     "js-minify-bundle": "terser --compress --mangle --comments \"/^!/\" --source-map \"content=dist/js/bootstrap.bundle.js.map,includeSources,url=bootstrap.bundle.min.js.map\" --output dist/js/bootstrap.bundle.min.js dist/js/bootstrap.bundle.js",
     "js-test": "npm-run-all --parallel js-test-karma js-test-jquery js-test-integration",
-    "js-debug": "cross-env DEBUG=true karma start js/tests/karma.conf.js",
+    "js-debug": "cross-env DEBUG=true npm run js-test-karma",
     "js-test-karma": "karma start js/tests/karma.conf.js",
     "js-test-integration": "rollup --config js/tests/integration/rollup.bundle.js && rollup --config js/tests/integration/rollup.bundle-modularity.js",
     "js-test-cloud": "cross-env BROWSER=true npm run js-test-karma",
