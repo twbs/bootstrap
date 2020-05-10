@@ -649,6 +649,38 @@ describe('Modal', () => {
       modal.show()
     })
 
+    it('should not adjust the inline body padding when it does not overflow, even on a scaled display', done => {
+      fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
+
+      const modalEl = fixtureEl.querySelector('.modal')
+      const modal = new Modal(modalEl)
+      const originalPadding = window.getComputedStyle(document.body).paddingRight
+
+      // Remove body margins as would be done by Bootstrap css
+      document.body.style.margin = '0'
+
+      // Hide scrollbars to prevent the body overflowing
+      document.body.style.overflow = 'hidden'
+
+      // Simulate a discrepancy between exact, i.e. floating point body width, and rounded body width
+      // as it can occur when zooming or scaling the display to something else than 100%
+      document.documentElement.style.paddingRight = '.48px'
+
+      modalEl.addEventListener('shown.bs.modal', () => {
+        const currentPadding = window.getComputedStyle(document.body).paddingRight
+
+        expect(currentPadding).toEqual(originalPadding, 'body padding should not be adjusted')
+
+        // Restore overridden css
+        document.body.style.removeProperty('margin')
+        document.body.style.removeProperty('overflow')
+        document.documentElement.style.paddingRight = '16px'
+        done()
+      })
+
+      modal.show()
+    })
+
     it('should enforce focus', done => {
       fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
 
