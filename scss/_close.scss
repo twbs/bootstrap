@@ -12,6 +12,14 @@
     text-decoration: none;
   }
 
+  &:not(:disabled):not(.disabled) {
+    width: max-content;
+    height: max-content;
+    @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size, $btn-border-radius);
+    @include box-shadow($btn-box-shadow, 0 0 0 $btn-focus-width rgba(mix($color, $border, 15%), .5));
+    box-shadow: $btn-focus-box-shadow;
+  }
+
   &:hover,
   &:focus {
     opacity: .75;
