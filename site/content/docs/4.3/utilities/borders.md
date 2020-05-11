@@ -32,7 +32,7 @@ Use border utilities to add or remove an element's borders. Choose from all bord
 
 ## Border color
 
-Change the border color using utilities built on our theme colors.
+Change the border color using utilities built on our theme colors. We've also included a subset of our gray colors to provide more flexibility.
 
 {{< example class="bd-example-border-utils" >}}
 {{< border.inline >}}
@@ -41,6 +41,18 @@ Change the border color using utilities built on our theme colors.
 {{- end -}}
 {{< /border.inline >}}
 <span class="border border-white"></span>
+<span class="border border-gray-500"></span>
+<span class="border border-gray-700"></span>
+<span class="border border-black"></span>
+{{< /example >}}
+
+The gray `border-color` utilities differ slightly than our `background-color` utilities so that there's some slight contrast between the two.
+
+{{< example >}}
+<div class="p-3 mb-1 bg-light border"></div>
+<div class="p-3 mb-1 bg-gray border border-gray-500"></div>
+<div class="p-3 mb-1 bg-secondary border border-gray-700"></div>
+<div class="p-3 mb-1 bg-dark border border-black"></div>
 {{< /example >}}
 
 ## Border-radius
