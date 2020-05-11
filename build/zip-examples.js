@@ -21,7 +21,7 @@ const folderName = `bootstrap-${version}-examples`
 sh.config.fatal = true
 
 if (!sh.test('-d', '_gh_pages')) {
-  throw new Error('The _gh_pages folder does not exist, did you forget building the docs?')
+  throw new Error('The "_gh_pages" folder does not exist, did you forget building the docs?')
 }
 
 // switch to the root dir
@@ -29,21 +29,29 @@ sh.cd(path.join(__dirname, '..'))
 
 // remove any previously created folder with the same name
 sh.rm('-rf', folderName)
+// create any folders so that `cp` works
 sh.mkdir('-p', folderName)
+sh.mkdir('-p', `${folderName}/assets/brand/`)
 
-// copy the examples and dist folders; for the examples we use `*`
-// so that its content are copied to the root dist dir
-sh.cp('-Rf', [
-  `_gh_pages/docs/${versionShort}/examples/*`,
-  `_gh_pages/docs/${versionShort}/dist/`
-], folderName)
+sh.cp('-Rf', `_gh_pages/docs/${versionShort}/examples/*`, folderName)
+sh.cp('-Rf', `_gh_pages/docs/${versionShort}/dist/`, `${folderName}/assets/`)
+// also copy the two brand images we use in the examples
+sh.cp('-f', [
+  `_gh_pages/docs/${versionShort}/assets/brand/bootstrap-outline.svg`,
+  `_gh_pages/docs/${versionShort}/assets/brand/bootstrap-solid.svg`
+], `${folderName}/assets/brand/`)
 sh.rm(`${folderName}/index.html`)
 
-// sed-fu
+// get all examples' HTML files
 sh.find(`${folderName}/**/*.html`).forEach((file) => {
-  sh.sed('-i', new RegExp(`"/docs/${versionShort}/`, 'g'), '"../', file)
-  sh.sed('-i', /(<link href="\.\.\/.*) integrity=".*>/g, '$1>', file)
-  sh.sed('-i', /(<script src="\.\.\/.*) integrity=".*>/g, '$1></script>', file)
+  const fileContents = sh.cat(file)
+    .toString()
+    .replace(new RegExp(`"/docs/${versionShort}/`, 'g'), '"../')
+    .replace(/"..\/dist\//g, '"../assets/dist/')
+    .replace(/(<link href="\.\.\/.*) integrity=".*>/g, '$1>')
+    .replace(/(<script src="\.\.\/.*) integrity=".*>/g, '$1></script>')
+    .replace(/( +)<!-- favicons(.|\n)+<style>/i, '    <style>')
+  new sh.ShellString(fileContents).to(file)
 })
 
 // create the zip file
