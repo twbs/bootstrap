@@ -55,11 +55,11 @@ Use our background utility classes to quickly change the appearance of a badge. 
 
 ## Pill badges
 
-Use the `.rounded-pill` utility class to make badges more rounded with a larger `border-radius`.
+Use the `.radius-pill` utility class to make badges more rounded with a larger `border-radius`.
 
 {{< example >}}
 {{< badge.inline >}}
 {{- range (index $.Site.Data "theme-colors") }}
-<span class="badge rounded-pill bg-{{ .name }}{{ if or (eq .name "light") (eq .name "warning") }} text-dark{{ end }}">{{ .name | title }}</span>{{- end -}}
+<span class="badge radius-pill bg-{{ .name }}{{ if or (eq .name "light") (eq .name "warning") }} text-dark{{ end }}">{{ .name | title }}</span>{{- end -}}
 {{< /badge.inline >}}
 {{< /example >}}

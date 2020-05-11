@@ -140,7 +140,7 @@ Changes to Reboot, typography, tables, and more.
 Badges were overhauled to better differentiate themselves from buttons and to better utilize utility classes.
 
 - **Todo:** Removed and replaced `.badge` modifier classes with background utility classes (e.g., use `.bg-primary` instead of `.badge-primary`)
-- **Todo:** Removed `.badge-pill` for the `.rounded-pill` utility class
+- **Todo:** Removed `.badge-pill` for the `.radius-pill` utility class
 - **Todo:** Removed badge's hover and focus styles for `a.badge` and `button.badge`.
 
 ### Cards
@@ -178,6 +178,8 @@ Badges were overhauled to better differentiate themselves from buttons and to be
 - Decreased the number of responsive order utilities per breakpoint. The highest order utility with a number now is `.order-5` instead of `.order-12`. [See #28874](https://github.com/twbs/bootstrap/pull/28874).
 - New `line-height` utilities: `.lh-1`, `.lh-sm`, `.lh-base` and `.lh-lg`. See [here]({{< docsref "/utilities/text#line-height" >}}).
 - Added `.bg-body` for quickly setting the `<body>`'s background to additional elements.
+- Renamed the `.rounded` utility class to `.radius`. See [here]({{< docsref "/utilities/borders#border-radius" >}}).
+- Removed `.rounded-sm` and `.rounded-lg`, replaced them with new border-radius utilities (`.radius-0`, `.radius-1`, `.radius-2`, `.radius-3`) See [here]({{< docsref "/utilities/borders#sizes" >}}).
 - **Todo:** Drop `.text-hide` as it's an antiquated method for hiding text that shouldn't be used anymore
 - **Todo:** Split utilities into property-value utility classes and helpers
 - Negative margin utilities are disabled by default. You can re-enable them by setting `$enable-negative-margins: true`, but keep in mind this can increase the file size quite a lot.

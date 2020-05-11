@@ -9,7 +9,6 @@ $utilities: map-merge(
       property: position,
       values: static relative absolute fixed sticky
     ),
-
     // Display
     "display": (
       responsive: true,
@@ -18,7 +17,6 @@ $utilities: map-merge(
       class: d,
       values: none inline inline-block block table table-row table-cell flex inline-flex
     ),
-
     // Flex utilities
     "flex": (
       responsive: true,
@@ -115,7 +113,6 @@ $utilities: map-merge(
         last: 6,
       ),
     ),
-
     // Dimentions and display-related
     "float": (
       responsive: true,
@@ -174,7 +171,6 @@ $utilities: map-merge(
       class: min-vh,
       values: (100: 100vh)
     ),
-
     // Padding
     "padding": (
       responsive: true,
@@ -218,7 +214,6 @@ $utilities: map-merge(
       class: pl,
       values: $spacers
     ),
-
     // Margin
     "margin": (
       responsive: true,
@@ -305,13 +300,11 @@ $utilities: map-merge(
       class: ml,
       values: $negative-spacers
     ),
-
     // Overflow
     "overflow": (
       property: overflow,
       values: auto hidden,
     ),
-
     // Fonts
     "font-family": (
       property: font-family,
@@ -343,7 +336,6 @@ $utilities: map-merge(
         lg: $line-height-lg,
       )
     ),
-
     // Color
     "color": (
       property: color,
@@ -360,7 +352,6 @@ $utilities: map-merge(
         )
       )
     ),
-
     // Text
     "text-align": (
       responsive: true,
@@ -395,7 +386,6 @@ $utilities: map-merge(
       class: align,
       values: baseline top middle bottom text-bottom text-top
     ),
-
     // Behaviors
     "user-select": (
       property: user-select,
@@ -406,7 +396,6 @@ $utilities: map-merge(
       class: pe,
       values: none auto,
     ),
-
     // Background
     "background-color": (
       property: background-color,
@@ -420,7 +409,6 @@ $utilities: map-merge(
         )
       )
     ),
-
     // Border
     "border": (
       property: border,
@@ -462,41 +450,40 @@ $utilities: map-merge(
       class: border,
       values: map-merge($theme-colors, ("white": $white))
     ),
-
     // Border-radius
-    "rounded": (
+    "radius": (
       property: border-radius,
-      class: rounded,
+      class: radius,
       values: (
-        null: $border-radius,
-        sm: $border-radius-sm,
-        lg: $border-radius-lg,
+        // null: $border-radius,
+        0: 0,
+        1: $border-radius-sm,
+        2: $border-radius,
+        3: $border-radius-lg,
         circle: 50%,
         pill: $rounded-pill,
-        0: 0,
       )
     ),
-    "rounded-top": (
+    "radius-t": (
       property: border-top-left-radius border-top-right-radius,
-      class: rounded-top,
+      class: radius-t,
       values: (null: $border-radius)
     ),
-    "rounded-right": (
+    "radius-r": (
       property: border-top-right-radius border-bottom-right-radius,
-      class: rounded-right,
+      class: radius-r,
       values: (null: $border-radius)
     ),
-    "rounded-bottom": (
+    "radius-b": (
       property: border-bottom-right-radius border-bottom-left-radius,
-      class: rounded-bottom,
+      class: radius-b,
       values: (null: $border-radius)
     ),
-    "rounded-left": (
+    "radius-l": (
       property: border-bottom-left-radius border-top-left-radius,
-      class: rounded-left,
+      class: radius-l,
       values: (null: $border-radius)
     ),
-
     // Effects
     "shadow": (
       property: box-shadow,
