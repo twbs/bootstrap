@@ -1,13 +1,13 @@
 ---
 layout: docs
 title: Interactions
-description: Utility classes that change how users interact with contents of a website.
+description: Utility classes that change how users interact with the contents of a website.
 group: utilities
 ---
 
 ## Text selection
 
-Change the way in which the content is selected when the user interacts with it.
+Change how the content is selected when the user interacts with it.
 
 {% capture example %}
 <p class="user-select-all">This paragraph will be entirely selected when clicked by the user.</p>
