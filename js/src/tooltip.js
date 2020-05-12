@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.4.1): tooltip.js
+ * Bootstrap (v4.5.0): tooltip.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -20,7 +20,7 @@ import Util from './util'
  */
 
 const NAME                  = 'tooltip'
-const VERSION               = '4.4.1'
+const VERSION               = '4.5.0'
 const DATA_KEY              = 'bs.tooltip'
 const EVENT_KEY             = `.${DATA_KEY}`
 const JQUERY_NO_CONFLICT    = $.fn[NAME]
