@@ -333,6 +333,10 @@
   }
 }
 
+.bd-example-forms-input-group-workaround .fix-rounded-right {
+  @include border-right-radius(.2rem !important);
+}
+
 //
 // Code snippets
 //
