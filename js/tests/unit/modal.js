@@ -745,6 +745,45 @@ $(function () {
     }).bootstrapModal('show')
   })
 
+  QUnit.test('should not adjust the inline body padding when it does not overflow, even on a scaled display', function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+
+    var $modal = $([
+      '<div id="modal-test">',
+      '  <div class="modal-dialog">',
+      '    <div class="modal-content">',
+      '      <div class="modal-body" />',
+      '    </div>',
+      '  </div>',
+      '</div>'
+    ].join('')).appendTo('#qunit-fixture')
+
+    var originalPadding = window.getComputedStyle(document.body).paddingRight
+
+    // Remove body margins as would be done by Bootstrap css
+    document.body.style.margin = '0'
+
+    // Hide scrollbars to prevent the body overflowing
+    document.body.style.overflow = 'hidden'
+
+    // Simulate a discrepancy between exact, i.e. floating point body width, and rounded body width
+    // as it can occur when zooming or scaling the display to something else than 100%
+    document.documentElement.style.paddingRight = '.48px'
+
+    $modal.on('shown.bs.modal', function () {
+      var currentPadding = window.getComputedStyle(document.body).paddingRight
+
+      assert.strictEqual(currentPadding, originalPadding, 'body padding should not be adjusted')
+
+      // Restore overridden css
+      document.body.style.removeProperty('margin')
+      document.body.style.removeProperty('overflow')
+      document.documentElement.style.paddingRight = '16px'
+      done()
+    }).bootstrapModal('show')
+  })
+
   QUnit.test('should enforce focus', function (assert) {
     assert.expect(4)
     var done = assert.async()
