@@ -5,8 +5,8 @@ description: Get started with Bootstrap, the world's most popular framework for 
 group: getting-started
 redirect_from:
   - "/docs/"
-  - "/docs/4.4/"
-  - "/docs/4.4/getting-started/"
+  - "/docs/4.5/"
+  - "/docs/4.5/getting-started/"
   - "/docs/getting-started/"
   - "/getting-started/"
 toc: true
