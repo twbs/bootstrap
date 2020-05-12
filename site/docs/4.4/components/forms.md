@@ -1155,7 +1155,7 @@ $form-validation-states: map-merge(
 
 ### Input group validation workaround
 
-When you are using a medium size input group and don't customize the default border radius values, add `.rounded-right` to the missing border radius elements:
+We're unable to resolve the broken `border-radius` of input groups with validation due to selector limitations, so manual overrides are required. When you're using a standard input group and don't customize the default border radius values, add `.rounded-right` to the elements with the broken `border-radius`.
 
 {% highlight html %}
 <div class="input-group">
@@ -1181,7 +1181,7 @@ When you are using a medium size input group and don't customize the default bor
   </div>
 </div>
 
-When you are using a small or large input-group or customizing the default border radius values, add custom CSS to the missing border radius elements:
+When you are using a small or large input group or customizing the default `border-radius` values, add custom CSS to the element with the busted `border-radius`.
 
 {% highlight css %}
 /* Change values to match the radius of your form control */
