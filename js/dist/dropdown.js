@@ -167,19 +167,14 @@
   var DATA_KEY = 'bs.dropdown';
   var EVENT_KEY = "." + DATA_KEY;
   var DATA_API_KEY = '.data-api';
-  var ESCAPE_KEYCODE = 27; // KeyboardEvent.which value for Escape (Esc) key
+  var ESCAPE_KEY = 'Escape';
+  var SPACE_KEY = 'Space';
+  var TAB_KEY = 'Tab';
+  var ARROW_UP_KEY = 'ArrowUp';
+  var ARROW_DOWN_KEY = 'ArrowDown';
+  var RIGHT_MOUSE_BUTTON = 2; // MouseEvent.button value for the secondary button, usually the right button
 
-  var SPACE_KEYCODE = 32; // KeyboardEvent.which value for space key
-
-  var TAB_KEYCODE = 9; // KeyboardEvent.which value for tab key
-
-  var ARROW_UP_KEYCODE = 38; // KeyboardEvent.which value for up arrow key
-
-  var ARROW_DOWN_KEYCODE = 40; // KeyboardEvent.which value for down arrow key
-
-  var RIGHT_MOUSE_BUTTON_WHICH = 3; // MouseEvent.which value for the right button (assuming a right-handed mouse)
-
-  var REGEXP_KEYDOWN = new RegExp(ARROW_UP_KEYCODE + "|" + ARROW_DOWN_KEYCODE + "|" + ESCAPE_KEYCODE);
+  var REGEXP_KEYDOWN = new RegExp(ARROW_UP_KEY + "|" + ARROW_DOWN_KEY + "|" + ESCAPE_KEY);
   var EVENT_HIDE = "hide" + EVENT_KEY;
   var EVENT_HIDDEN = "hidden" + EVENT_KEY;
   var EVENT_SHOW = "show" + EVENT_KEY;
@@ -309,7 +304,7 @@
       // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
 
 
-      if ('ontouchstart' in document.documentElement && !SelectorEngine.closest(parent, SELECTOR_NAVBAR_NAV)) {
+      if ('ontouchstart' in document.documentElement && !parent.closest(SELECTOR_NAVBAR_NAV)) {
         var _ref;
 
         (_ref = []).concat.apply(_ref, document.body.children).forEach(function (elem) {
@@ -384,7 +379,7 @@
     };
 
     _proto._getConfig = function _getConfig(config) {
-      config = _objectSpread2({}, this.constructor.Default, {}, Manipulator.getDataAttributes(this._element), {}, config);
+      config = _objectSpread2(_objectSpread2(_objectSpread2({}, this.constructor.Default), Manipulator.getDataAttributes(this._element)), config);
       typeCheckConfig(NAME, config, this.constructor.DefaultType);
       return config;
     };
@@ -415,7 +410,7 @@
     };
 
     _proto._detectNavbar = function _detectNavbar() {
-      return Boolean(SelectorEngine.closest(this._element, "." + CLASS_NAME_NAVBAR));
+      return Boolean(this._element.closest("." + CLASS_NAME_NAVBAR));
     };
 
     _proto._getOffset = function _getOffset() {
@@ -425,7 +420,7 @@
 
       if (typeof this._config.offset === 'function') {
         offset.fn = function (data) {
-          data.offsets = _objectSpread2({}, data.offsets, {}, _this2._config.offset(data.offsets, _this2._element) || {});
+          data.offsets = _objectSpread2(_objectSpread2({}, data.offsets), _this2._config.offset(data.offsets, _this2._element) || {});
           return data;
         };
       } else {
@@ -455,7 +450,7 @@
         };
       }
 
-      return _objectSpread2({}, popperConfig, {}, this._config.popperConfig);
+      return _objectSpread2(_objectSpread2({}, popperConfig), this._config.popperConfig);
     } // Static
     ;
 
@@ -484,7 +479,7 @@
     };
 
     Dropdown.clearMenus = function clearMenus(event) {
-      if (event && (event.which === RIGHT_MOUSE_BUTTON_WHICH || event.type === 'keyup' && event.which !== TAB_KEYCODE)) {
+      if (event && (event.button === RIGHT_MOUSE_BUTTON || event.type === 'keyup' && event.key !== TAB_KEY)) {
         return;
       }
 
@@ -511,7 +506,7 @@
           continue;
         }
 
-        if (event && (event.type === 'click' && /input|textarea/i.test(event.target.tagName) || event.type === 'keyup' && event.which === TAB_KEYCODE) && dropdownMenu.contains(event.target)) {
+        if (event && (event.type === 'click' && /input|textarea/i.test(event.target.tagName) || event.type === 'keyup' && event.key === TAB_KEY) && dropdownMenu.contains(event.target)) {
           continue;
         }
 
@@ -555,7 +550,7 @@
       //  - If key is other than escape
       //    - If key is not up or down => not a dropdown command
       //    - If trigger inside the menu => not a dropdown command
-      if (/input|textarea/i.test(event.target.tagName) ? event.which === SPACE_KEYCODE || event.which !== ESCAPE_KEYCODE && (event.which !== ARROW_DOWN_KEYCODE && event.which !== ARROW_UP_KEYCODE || SelectorEngine.closest(event.target, SELECTOR_MENU)) : !REGEXP_KEYDOWN.test(event.which)) {
+      if (/input|textarea/i.test(event.target.tagName) ? event.key === SPACE_KEY || event.key !== ESCAPE_KEY && (event.key !== ARROW_DOWN_KEY && event.key !== ARROW_UP_KEY || event.target.closest(SELECTOR_MENU)) : !REGEXP_KEYDOWN.test(event.key)) {
         return;
       }
 
@@ -569,14 +564,14 @@
       var parent = Dropdown.getParentFromElement(this);
       var isActive = this.classList.contains(CLASS_NAME_SHOW);
 
-      if (event.which === ESCAPE_KEYCODE) {
+      if (event.key === ESCAPE_KEY) {
         var button = this.matches(SELECTOR_DATA_TOGGLE) ? this : SelectorEngine.prev(this, SELECTOR_DATA_TOGGLE)[0];
         button.focus();
         Dropdown.clearMenus();
         return;
       }
 
-      if (!isActive || event.which === SPACE_KEYCODE) {
+      if (!isActive || event.key === SPACE_KEY) {
         Dropdown.clearMenus();
         return;
       }
@@ -587,18 +582,20 @@
         return;
       }
 
-      var index = items.indexOf(event.target) || 0;
+      var index = items.indexOf(event.target);
 
-      if (event.which === ARROW_UP_KEYCODE && index > 0) {
+      if (event.key === ARROW_UP_KEY && index > 0) {
         // Up
         index--;
       }
 
-      if (event.which === ARROW_DOWN_KEYCODE && index < items.length - 1) {
+      if (event.key === ARROW_DOWN_KEY && index < items.length - 1) {
         // Down
         index++;
-      }
+      } // index is -1 if the first keydown is an ArrowUp
 
+
+      index = index === -1 ? 0 : index;
       items[index].focus();
     };
 
