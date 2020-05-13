@@ -61,10 +61,10 @@ Add classes to an element to easily round its corners.
 
 {{< example class="bd-example-radius-utils" >}}
 {{< placeholder width="75" height="75" class="radius" title="Example rounded image" >}}
-{{< placeholder width="75" height="75" class="radius-t" title="Example top rounded image" >}}
-{{< placeholder width="75" height="75" class="radius-r" title="Example right rounded image" >}}
-{{< placeholder width="75" height="75" class="radius-b" title="Example bottom rounded image" >}}
-{{< placeholder width="75" height="75" class="radius-l" title="Example left rounded image" >}}
+{{< placeholder width="75" height="75" class="radius-top" title="Example top rounded image" >}}
+{{< placeholder width="75" height="75" class="radius-right" title="Example right rounded image" >}}
+{{< placeholder width="75" height="75" class="radius-bottom" title="Example bottom rounded image" >}}
+{{< placeholder width="75" height="75" class="radius-left" title="Example left rounded image" >}}
 {{< placeholder width="75" height="75" class="radius-circle" title="Completely round image" >}}
 {{< placeholder width="150" height="75" class="radius-pill" title="Rounded pill image" >}}
 {{< placeholder width="75" height="75" class="radius-0" title="Example non-rounded image (overrides rounding applied elsewhere)" >}}

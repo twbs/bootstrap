@@ -474,24 +474,24 @@ $utilities: map-merge(
         pill: $rounded-pill,
       )
     ),
-    "radius-t": (
+    "radius-top": (
       property: border-top-left-radius border-top-right-radius,
-      class: radius-t,
+      class: radius-top,
       values: (null: $border-radius)
     ),
-    "radius-r": (
+    "radius-right": (
       property: border-top-right-radius border-bottom-right-radius,
-      class: radius-r,
+      class: radius-right,
       values: (null: $border-radius)
     ),
-    "radius-b": (
+    "radius-bottom": (
       property: border-bottom-right-radius border-bottom-left-radius,
-      class: radius-b,
+      class: radius-bottom,
       values: (null: $border-radius)
     ),
-    "radius-l": (
+    "radius-left": (
       property: border-bottom-left-radius border-top-left-radius,
-      class: radius-l,
+      class: radius-left,
       values: (null: $border-radius)
     ),
     // Effects
