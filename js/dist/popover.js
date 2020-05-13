@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap popover.js v4.3.1 (https://getbootstrap.com/)
+  * Bootstrap popover.js v5.0.0-alpha (https://getbootstrap.com/)
   * Copyright 2011-2020 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
   */
@@ -115,14 +115,14 @@
   var CLASS_PREFIX = 'bs-popover';
   var BSCLS_PREFIX_REGEX = new RegExp("(^|\\s)" + CLASS_PREFIX + "\\S+", 'g');
 
-  var Default = _objectSpread2({}, Tooltip.Default, {
+  var Default = _objectSpread2(_objectSpread2({}, Tooltip.Default), {}, {
     placement: 'right',
     trigger: 'click',
     content: '',
     template: '<div class="popover" role="tooltip">' + '<div class="popover-arrow"></div>' + '<h3 class="popover-header"></h3>' + '<div class="popover-body"></div></div>'
   });
 
-  var DefaultType = _objectSpread2({}, Tooltip.DefaultType, {
+  var DefaultType = _objectSpread2(_objectSpread2({}, Tooltip.DefaultType), {}, {
     content: '(string|element|function)'
   });
 
@@ -174,8 +174,7 @@
       }
 
       this.setElementContent(SelectorEngine.findOne(SELECTOR_CONTENT, tip), content);
-      tip.classList.remove(CLASS_NAME_FADE);
-      tip.classList.remove(CLASS_NAME_SHOW);
+      tip.classList.remove(CLASS_NAME_FADE, CLASS_NAME_SHOW);
     };
 
     _proto._addAttachmentClass = function _addAttachmentClass(attachment) {
