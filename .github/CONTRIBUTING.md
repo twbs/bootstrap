@@ -58,7 +58,7 @@ Good bug reports are extremely helpful, so thanks!
 
 Guidelines for bug reports:
 
-0. **[validate your HTML](https://html5.validator.nu/)** to ensure your
+0. **[Validate your HTML](https://html5.validator.nu/)** to ensure your
    problem isn't caused by a simple error in your own code.
 
 1. **Use the GitHub issue search** &mdash; check if the issue has already been
