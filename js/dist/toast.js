@@ -310,7 +310,7 @@
     ;
 
     _proto._getConfig = function _getConfig(config) {
-      config = _objectSpread2({}, Default, {}, Manipulator.getDataAttributes(this._element), {}, typeof config === 'object' && config ? config : {});
+      config = _objectSpread2(_objectSpread2(_objectSpread2({}, Default), Manipulator.getDataAttributes(this._element)), typeof config === 'object' && config ? config : {});
       typeCheckConfig(NAME, config, this.constructor.DefaultType);
       return config;
     };

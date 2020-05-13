@@ -33,9 +33,9 @@ import "../../node_modules/bootstrap/js/dist/modal.js";
 
 This way, you're not including any JavaScript you don't intend to use for components like buttons, carousels, and tooltips.
 
-## Autoprefixer browserslist.rc
+## Autoprefixer .browserslistrc
 
-Bootstrap depends on Autoprefixer to automatically add browser prefixes to certain CSS properties. Prefixes are dictated by our `browserslist.rc` file, found in the root of the Bootstrap repo. Customizing this list of browsers and recompiling the Sass will automatically remove some CSS from your compiled CSS, if there are vendor prefixes unique to that browser or version.
+Bootstrap depends on Autoprefixer to automatically add browser prefixes to certain CSS properties. Prefixes are dictated by our `.browserslistrc` file, found in the root of the Bootstrap repo. Customizing this list of browsers and recompiling the Sass will automatically remove some CSS from your compiled CSS, if there are vendor prefixes unique to that browser or version.
 
 ## Unused CSS
 

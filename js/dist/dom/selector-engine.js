@@ -65,9 +65,6 @@
 
       return parents;
     },
-    closest: function closest(element, selector) {
-      return element.closest(selector);
-    },
     prev: function prev(element, selector) {
       var previous = element.previousElementSibling;
 
