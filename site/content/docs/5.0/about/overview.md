@@ -5,7 +5,7 @@ description: Learn more about the team maintaining Bootstrap, how and why the pr
 group: about
 aliases:
   - "/about/"
-  - "/docs/4.3/about/"
+  - "/docs/5.0/about/"
 ---
 
 ## Team

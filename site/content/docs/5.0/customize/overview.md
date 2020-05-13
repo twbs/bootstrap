@@ -4,7 +4,7 @@ title: Customize
 description: Learn how to theme, customize, and extend Bootstrap with Sass, a boatload of global options, an expansive color system, and more.
 group: customize
 toc: false
-aliases: "/docs/4.3/customize/"
+aliases: "/docs/5.0/customize/"
 sections:
   - title: Sass
     description: Utilize our source Sass files to take advantage of variables, maps, mixins, and functions.
