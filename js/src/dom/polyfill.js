@@ -2,7 +2,7 @@
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.3.1): dom/polyfill.js
+ * Bootstrap (v5.0.0-alpha1): dom/polyfill.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
