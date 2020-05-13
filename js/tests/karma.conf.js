@@ -68,7 +68,11 @@ const conf = {
   rollupPreprocessor: {
     plugins: [
       istanbul({
-        exclude: ['js/tests/unit/**/*.spec.js', 'js/tests/helpers/**/*.js']
+        exclude: [
+          'node_modules/**',
+          'js/tests/unit/**/*.spec.js',
+          'js/tests/helpers/**/*.js'
+        ]
       }),
       babel({
         // Only transpile our source code

@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap tab.js v4.3.1 (https://getbootstrap.com/)
+  * Bootstrap tab.js v5.0.0-alpha1 (https://getbootstrap.com/)
   * Copyright 2011-2020 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
   */
@@ -31,7 +31,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.3.1): util/index.js
+   * Bootstrap (v5.0.0-alpha1): util/index.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -121,7 +121,7 @@
    */
 
   var NAME = 'tab';
-  var VERSION = '4.3.1';
+  var VERSION = '5.0.0-alpha1';
   var DATA_KEY = 'bs.tab';
   var EVENT_KEY = "." + DATA_KEY;
   var DATA_API_KEY = '.data-api';
@@ -167,7 +167,8 @@
 
       var previous;
       var target = getElementFromSelector(this._element);
-      var listElement = SelectorEngine.closest(this._element, SELECTOR_NAV_LIST_GROUP);
+
+      var listElement = this._element.closest(SELECTOR_NAV_LIST_GROUP);
 
       if (listElement) {
         var itemSelector = listElement.nodeName === 'UL' || listElement.nodeName === 'OL' ? SELECTOR_ACTIVE_UL : SELECTOR_ACTIVE;
@@ -263,7 +264,7 @@
       }
 
       if (element.parentNode && element.parentNode.classList.contains(CLASS_NAME_DROPDOWN_MENU)) {
-        var dropdownElement = SelectorEngine.closest(element, SELECTOR_DROPDOWN);
+        var dropdownElement = element.closest(SELECTOR_DROPDOWN);
 
         if (dropdownElement) {
           SelectorEngine.find(SELECTOR_DROPDOWN_TOGGLE).forEach(function (dropdown) {
