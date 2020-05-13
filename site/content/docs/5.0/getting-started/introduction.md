@@ -4,7 +4,7 @@ title: Introduction
 description: Get started with Bootstrap, the world's most popular framework for building responsive, mobile-first sites, with BootstrapCDN and a template starter page.
 group: getting-started
 aliases:
-  - "/docs/4.3/getting-started/"
+  - "/docs/5.0/getting-started/"
   - "/docs/getting-started/"
   - "/getting-started/"
 toc: true
