@@ -40,7 +40,7 @@ Below is a _static_ modal example (meaning its `position` and `display` have bee
 
 <div class="bd-example bd-example-modal">
   <div class="modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Modal title</h5>
@@ -62,7 +62,7 @@ Below is a _static_ modal example (meaning its `position` and `display` have bee
 
 {{< highlight html >}}
 <div class="modal" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Modal title</h5>
@@ -87,7 +87,7 @@ Below is a _static_ modal example (meaning its `position` and `display` have bee
 Toggle a working modal demo by clicking the button below. It will slide down and fade in from the top of the page.
 
 <div class="modal fade" id="exampleModalLive" tabindex="-1" role="dialog" aria-labelledby="exampleModalLiveLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLiveLabel">Modal title</h5>
@@ -120,7 +120,7 @@ Toggle a working modal demo by clicking the button below. It will slide down and
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
@@ -145,7 +145,7 @@ Toggle a working modal demo by clicking the button below. It will slide down and
 When backdrop is set to static, the modal will not close when clicking outside it. Click the button below to try it.
 
 <div class="modal fade" id="staticBackdropLive" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLiveLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="staticBackdropLiveLabel">Modal title</h5>
@@ -178,7 +178,7 @@ When backdrop is set to static, the modal will not close when clicking outside i
 
 <!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
@@ -204,7 +204,7 @@ When backdrop is set to static, the modal will not close when clicking outside i
 When modals become too long for the user's viewport or device, they scroll independent of the page itself. Try the demo below to see what we mean.
 
 <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
@@ -249,7 +249,7 @@ When modals become too long for the user's viewport or device, they scroll indep
 You can also create a scrollable modal that allows scroll the modal body by adding `.modal-dialog-scrollable` to `.modal-dialog`.
 
 <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable" role="document">
+  <div class="modal-dialog modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalScrollableTitle">Modal title</h5>
@@ -293,7 +293,7 @@ You can also create a scrollable modal that allows scroll the modal body by addi
 
 {{< highlight html >}}
 <!-- Scrollable modal -->
-<div class="modal-dialog modal-dialog-scrollable" role="document">
+<div class="modal-dialog modal-dialog-scrollable">
   ...
 </div>
 {{< /highlight >}}
@@ -303,7 +303,7 @@ You can also create a scrollable modal that allows scroll the modal body by addi
 Add `.modal-dialog-centered` to `.modal-dialog` to vertically center the modal.
 
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
@@ -323,7 +323,7 @@ Add `.modal-dialog-centered` to `.modal-dialog` to vertically center the modal.
 </div>
 
 <div class="modal fade" id="exampleModalCenteredScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenteredScrollableTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalCenteredScrollableTitle">Modal title</h5>
@@ -357,12 +357,12 @@ Add `.modal-dialog-centered` to `.modal-dialog` to vertically center the modal.
 
 {{< highlight html >}}
 <!-- Vertically centered modal -->
-<div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal-dialog modal-dialog-centered">
   ...
 </div>
 
 <!-- Vertically centered scrollable modal -->
-<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
   ...
 </div>
 {{< /highlight >}}
@@ -372,7 +372,7 @@ Add `.modal-dialog-centered` to `.modal-dialog` to vertically center the modal.
 [Tooltips]({{< docsref "/components/tooltips" >}}) and [popovers]({{< docsref "/components/popovers" >}}) can be placed within modals as needed. When modals are closed, any tooltips and popovers within are also automatically dismissed.
 
 <div class="modal fade" id="exampleModalPopovers" tabindex="-1" role="dialog" aria-labelledby="exampleModalPopoversLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalPopoversLabel">Modal title</h5>
@@ -416,7 +416,7 @@ Add `.modal-dialog-centered` to `.modal-dialog` to vertically center the modal.
 Utilize the Bootstrap grid system within a modal by nesting `.container-fluid` within the `.modal-body`. Then, use the normal grid system classes as you would anywhere else.
 
 <div class="modal fade" id="gridSystemModal" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="gridModalLabel">Grids in modals</h5>
@@ -507,7 +507,7 @@ Below is a live demo followed by example HTML and JavaScript. For more informati
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Open modal for @getbootstrap</button>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">New message</h5>
@@ -574,7 +574,7 @@ If the height of a modal changes while it is open, you should call `myModal.hand
 
 ### Accessibility
 
-Be sure to add `role="dialog"` and `aria-labelledby="..."`, referencing the modal title, to `.modal`, and `role="document"` to the `.modal-dialog` itself. Additionally, you may give a description of your modal dialog with `aria-describedby` on `.modal`.
+Be sure to add `role="dialog"` and `aria-labelledby="..."`, referencing the modal title, to `.modal`. Additionally, you may give a description of your modal dialog with `aria-describedby` on `.modal`.
 
 ### Embedding YouTube videos
 
@@ -625,13 +625,13 @@ Our default modal without modifier class constitutes the "medium" size modal.
 </div>
 
 {{< highlight html >}}
-<div class="modal-dialog modal-xl" role="document">...</div>
-<div class="modal-dialog modal-lg" role="document">...</div>
-<div class="modal-dialog modal-sm" role="document">...</div>
+<div class="modal-dialog modal-xl">...</div>
+<div class="modal-dialog modal-lg">...</div>
+<div class="modal-dialog modal-sm">...</div>
 {{< /highlight >}}
 
 <div class="modal fade" id="exampleModalXl" tabindex="-1" role="dialog" aria-labelledby="exampleModalXlLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl" role="document">
+  <div class="modal-dialog modal-xl">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title h4" id="exampleModalXlLabel">Extra large modal</h5>
@@ -647,7 +647,7 @@ Our default modal without modifier class constitutes the "medium" size modal.
 </div>
 
 <div class="modal fade" id="exampleModalLg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLgLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title h4" id="exampleModalLgLabel">Large modal</h5>
@@ -663,7 +663,7 @@ Our default modal without modifier class constitutes the "medium" size modal.
 </div>
 
 <div class="modal fade" id="exampleModalSm" tabindex="-1" role="dialog" aria-labelledby="exampleModalSmLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm" role="document">
+  <div class="modal-dialog modal-sm">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title h4" id="exampleModalSmLabel">Small modal</h5>
@@ -765,7 +765,7 @@ Another override is the option to pop up a modal that covers the user viewport, 
 </div>
 
 <div class="modal fade" id="exampleModalFullscreenSm" tabindex="-1" role="dialog" aria-labelledby="exampleModalFullscreenSmLabel" aria-hidden="true">
-  <div class="modal-dialog modal-fullscreen-sm-down" role="document">
+  <div class="modal-dialog modal-fullscreen-sm-down">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title h4" id="exampleModalFullscreenSmLabel">Full screen below sm</h5>
@@ -784,7 +784,7 @@ Another override is the option to pop up a modal that covers the user viewport, 
 </div>
 
 <div class="modal fade" id="exampleModalFullscreenMd" tabindex="-1" role="dialog" aria-labelledby="exampleModalFullscreenMdLabel" aria-hidden="true">
-  <div class="modal-dialog modal-fullscreen-md-down" role="document">
+  <div class="modal-dialog modal-fullscreen-md-down">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title h4" id="exampleModalFullscreenMdLabel">Full screen below md</h5>
@@ -803,7 +803,7 @@ Another override is the option to pop up a modal that covers the user viewport, 
 </div>
 
 <div class="modal fade" id="exampleModalFullscreenLg" tabindex="-1" role="dialog" aria-labelledby="exampleModalFullscreenLgLabel" aria-hidden="true">
-  <div class="modal-dialog modal-fullscreen-lg-down" role="document">
+  <div class="modal-dialog modal-fullscreen-lg-down">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title h4" id="exampleModalFullscreenLgLabel">Full screen below lg</h5>
@@ -822,7 +822,7 @@ Another override is the option to pop up a modal that covers the user viewport, 
 </div>
 
 <div class="modal fade" id="exampleModalFullscreenXl" tabindex="-1" role="dialog" aria-labelledby="exampleModalFullscreenXlLabel" aria-hidden="true">
-  <div class="modal-dialog modal-fullscreen-xl-down" role="document">
+  <div class="modal-dialog modal-fullscreen-xl-down">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title h4" id="exampleModalFullscreenXlLabel">Full screen below xl</h5>
