@@ -95,7 +95,7 @@
 .blockquote-footer {
   margin-top: -$blockquote-margin-y;
   margin-bottom: $blockquote-margin-y;
-  @include font-size($blockquote-small-font-size);
+  @include font-size($blockquote-footer-font-size);
   color: $blockquote-footer-color;
 
   &::before {
