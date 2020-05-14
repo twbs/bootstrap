@@ -122,7 +122,7 @@ As noted above, each of these breakpoints have their own container, unique class
     </tr>
     <tr>
       <th class="text-nowrap" scope="row">Custom gutters</th>
-      <td colspan="6"><a href="#gutters">Yes</a></td>
+      <td colspan="6"><a href="{{< docsref "/layout/gutters" >}}">Yes</a></td>
     </tr>
     <tr>
       <th class="text-nowrap" scope="row">Nestable</th>
@@ -130,7 +130,7 @@ As noted above, each of these breakpoints have their own container, unique class
     </tr>
     <tr>
       <th class="text-nowrap" scope="row">Column ordering</th>
-      <td colspan="6"><a href="#reordering">Yes</a></td>
+      <td colspan="6"><a href="{{< docsref "/layout/columns#reordering" >}}">Yes</a></td>
     </tr>
   </tbody>
 </table>
