@@ -103,7 +103,7 @@ Custom feedback styles apply custom colors, borders, focus styles, and backgroun
 
 {{< example lang="js" show_preview="false" >}}
 {{< js.inline >}}
-{{- readFile (path.Join "site/static/docs" .Site.Params.docs_version "assets/js/validate-forms.js") -}}
+{{- readFile "site/assets/js/validate-forms.js" -}}
 {{< /js.inline >}}
 {{< /example >}}
 
