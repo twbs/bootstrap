@@ -94,7 +94,7 @@ An alternative solution is to add a wrapper around the `.row` with the `.overflo
 
 ## Row columns gutters
 
-Gutter classes can also be added to [row columns](#row-columns). In the following example, we use responsive row columns and responsive gutter classes.
+Gutter classes can also be added to [row columns]({{< docsref "/layout/grid#row-columns" >}}). In the following example, we use responsive row columns and responsive gutter classes.
 
 {{< example >}}
 <div class="container">
