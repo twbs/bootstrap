@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap button.js v4.3.1 (https://getbootstrap.com/)
+  * Bootstrap button.js v5.0.0-alpha1 (https://getbootstrap.com/)
   * Copyright 2011-2020 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
   */
@@ -31,7 +31,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.3.1): util/index.js
+   * Bootstrap (v5.0.0-alpha1): util/index.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -54,12 +54,11 @@
    */
 
   var NAME = 'button';
-  var VERSION = '4.3.1';
+  var VERSION = '5.0.0-alpha1';
   var DATA_KEY = 'bs.button';
   var EVENT_KEY = "." + DATA_KEY;
   var DATA_API_KEY = '.data-api';
   var CLASS_NAME_ACTIVE = 'active';
-  var CLASS_NAME_BUTTON = 'btn';
   var CLASS_NAME_DISABLED = 'disabled';
   var CLASS_NAME_FOCUS = 'focus';
   var SELECTOR_DATA_TOGGLE_CARROT = '[data-toggle^="button"]';
@@ -89,7 +88,8 @@
     _proto.toggle = function toggle() {
       var triggerChangeEvent = true;
       var addAriaPressed = true;
-      var rootElement = SelectorEngine.closest(this._element, SELECTOR_DATA_TOGGLE);
+
+      var rootElement = this._element.closest(SELECTOR_DATA_TOGGLE);
 
       if (rootElement) {
         var input = SelectorEngine.findOne(SELECTOR_INPUT, this._element);
@@ -170,12 +170,7 @@
 
   EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE_CARROT, function (event) {
     event.preventDefault();
-    var button = event.target;
-
-    if (!button.classList.contains(CLASS_NAME_BUTTON)) {
-      button = SelectorEngine.closest(button, SELECTOR_BUTTON);
-    }
-
+    var button = event.target.closest(SELECTOR_BUTTON);
     var data = Data.getData(button, DATA_KEY);
 
     if (!data) {
@@ -185,14 +180,14 @@
     data.toggle();
   });
   EventHandler.on(document, EVENT_FOCUS_DATA_API, SELECTOR_DATA_TOGGLE_CARROT, function (event) {
-    var button = SelectorEngine.closest(event.target, SELECTOR_BUTTON);
+    var button = event.target.closest(SELECTOR_BUTTON);
 
     if (button) {
       button.classList.add(CLASS_NAME_FOCUS);
     }
   });
   EventHandler.on(document, EVENT_BLUR_DATA_API, SELECTOR_DATA_TOGGLE_CARROT, function (event) {
-    var button = SelectorEngine.closest(event.target, SELECTOR_BUTTON);
+    var button = event.target.closest(SELECTOR_BUTTON);
 
     if (button) {
       button.classList.remove(CLASS_NAME_FOCUS);

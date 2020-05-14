@@ -2,15 +2,12 @@ name: "Code Scanning - Action"
 
 on:
   push:
-  pull_request:
   schedule:
     - cron: "0 0 * * 0"
 
 jobs:
   CodeQL-Build:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
 
     steps:
       - name: Checkout repository

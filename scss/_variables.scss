@@ -479,8 +479,8 @@ $table-color:                 $body-color !default;
 $table-bg:                    transparent !default;
 
 $table-striped-color:         $table-color !default;
-$table-striped-bg-factor:      .05 !default;
-$table-striped-bg:             rgba($black, $table-striped-bg-factor) !default;
+$table-striped-bg-factor:     .05 !default;
+$table-striped-bg:            rgba($black, $table-striped-bg-factor) !default;
 
 $table-active-color:          $table-color !default;
 $table-active-bg-factor:      .1 !default;

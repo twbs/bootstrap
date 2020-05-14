@@ -1,0 +1,12 @@
+{{- /*
+  Work around wrong escapes in integrity attributes.
+*/ -}}
+
+{{- $name := .Get 0 -}}
+{{- with $name -}}
+{{- $value := $.Page.Param . -}}
+{{- if in $name "_hash" -}}
+  {{- $value = $value | safeHTML -}}
+{{- end -}}
+{{- with $value }}{{ . }}{{ else }}{{ errorf "Param %q not found: %s" $name $.Position }}{{ end -}}
+{{- else }}{{ errorf "Missing param key: %s" $.Position }}{{ end -}}

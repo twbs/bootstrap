@@ -143,7 +143,7 @@ describe('Button', () => {
     })
 
     it('should add focus class on focus event', () => {
-      fixtureEl.innerHTML = '<button class="btn" data-toggle="button"><input type="text" /></button>'
+      fixtureEl.innerHTML = '<button class="btn" data-toggle="button"><input type="text"></button>'
 
       const btn = fixtureEl.querySelector('.btn')
       const input = fixtureEl.querySelector('input')
@@ -155,7 +155,7 @@ describe('Button', () => {
     })
 
     it('should not add focus class', () => {
-      fixtureEl.innerHTML = '<button data-toggle="button"><input type="text" /></button>'
+      fixtureEl.innerHTML = '<button data-toggle="button"><input type="text"></button>'
 
       const btn = fixtureEl.querySelector('button')
       const input = fixtureEl.querySelector('input')
@@ -167,7 +167,7 @@ describe('Button', () => {
     })
 
     it('should remove focus class on blur event', () => {
-      fixtureEl.innerHTML = '<button class="btn focus" data-toggle="button"><input type="text" /></button>'
+      fixtureEl.innerHTML = '<button class="btn focus" data-toggle="button"><input type="text"></button>'
 
       const btn = fixtureEl.querySelector('.btn')
       const input = fixtureEl.querySelector('input')
@@ -179,7 +179,7 @@ describe('Button', () => {
     })
 
     it('should not remove focus class on blur event', () => {
-      fixtureEl.innerHTML = '<button class="focus" data-toggle="button"><input type="text" /></button>'
+      fixtureEl.innerHTML = '<button class="focus" data-toggle="button"><input type="text"></button>'
 
       const btn = fixtureEl.querySelector('button')
       const input = fixtureEl.querySelector('input')
@@ -211,7 +211,7 @@ describe('Button', () => {
       fixtureEl.innerHTML = [
         '<div class="btn-group disabled" data-toggle="buttons" aria-disabled="true" disabled>',
         '  <label class="btn btn-danger disabled" aria-disabled="true" disabled>',
-        '    <input type="checkbox" aria-disabled="true" autocomplete="off" disabled class="disabled"/>',
+        '    <input type="checkbox" aria-disabled="true" autocomplete="off" disabled class="disabled">',
         '  </label>',
         '</div>'
       ].join('')
