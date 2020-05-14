@@ -2,7 +2,7 @@
 
 Bootstrap uses [Jasmine](https://jasmine.github.io/). Each plugin has a file dedicated to its tests in `tests/unit/<plugin-name>.spec.js`.
 
-* `visual/` contains "visual" tests which are run interactively in real browsers and require manual verification by humans.
+- `visual/` contains "visual" tests which are run interactively in real browsers and require manual verification by humans.
 
 To run the unit test suite via [Karma](https://karma-runner.github.io/), run `npm run js-test`.
 To run the unit test suite via [Karma](https://karma-runner.github.io/) and debug, run `npm run js-debug`.
@@ -18,11 +18,11 @@ To run the unit test suite via [Karma](https://karma-runner.github.io/) and debu
 
 ## What should a unit test look like?
 
-* Each test should have a unique name clearly stating what unit is being tested.
-* Each test should be in the corresponding `describe`.
-* Each test should test only one unit per test, although one test can include several assertions. Create multiple tests for multiple units of functionality.
-* Each test should use [`expect`](https://jasmine.github.io/api/edge/matchers.html) to ensure something is expected.
-* Each test should follow the project's [JavaScript Code Guidelines](https://github.com/twbs/bootstrap/blob/master/CONTRIBUTING.md#js)
+- Each test should have a unique name clearly stating what unit is being tested.
+- Each test should be in the corresponding `describe`.
+- Each test should test only one unit per test, although one test can include several assertions. Create multiple tests for multiple units of functionality.
+- Each test should use [`expect`](https://jasmine.github.io/api/edge/matchers.html) to ensure something is expected.
+- Each test should follow the project's [JavaScript Code Guidelines](https://github.com/twbs/bootstrap/blob/master/CONTRIBUTING.md#js)
 
 ## Code coverage
 
