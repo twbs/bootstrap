@@ -9,7 +9,7 @@ Bootstrap is released under the MIT license and is copyright {{< year >}} Twitte
 
 ## It requires you to:
 
-* Keep the license and copyright notice included in Bootstrap's CSS and JavaScript files when you use them in your works
+- Keep the license and copyright notice included in Bootstrap's CSS and JavaScript files when you use them in your works
 
 ## It permits you to:
 
