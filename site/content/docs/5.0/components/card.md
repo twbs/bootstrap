@@ -101,6 +101,19 @@ Create lists of content in a card with a flush list group.
 </div>
 {{< /example >}}
 
+{{< example >}}
+<div class="card" style="width: 18rem;">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Cras justo odio</li>
+    <li class="list-group-item">Dapibus ac facilisis in</li>
+    <li class="list-group-item">Vestibulum at eros</li>
+  </ul>
+  <div class="card-footer">
+    Card footer
+  </div>
+</div>
+{{< /example >}}
+
 ### Kitchen sink
 
 Mix and match multiple content types to create the card you need, or throw everything in there. Shown below are image styles, blocks, text styles, and a list group—all wrapped in a fixed-width card.
