@@ -5,9 +5,23 @@ description: Guidance and suggestions for using external icon libraries with Boo
 group: extend
 ---
 
-Bootstrap doesn't include an icon library by default, but we have a handful of recommendations for you to choose from. While most icon sets include multiple file formats, we prefer SVG implementations for their improved accessibility and vector support.
+## Bootstrap Icons
 
-## Preferred
+While you won't find a built-in icon library in Bootstrap, our separate [Bootstrap Icons]({{ site.icons }}) projects is a growing set of open source SVGs you can use. While they're designed first and foremost to work with our components and documentation, you can use them in any project.
+
+<a href="{{ site.icons }}" class="btn btn-bd-primary">Get Bootstrap Icons</a>
+
+<img class="img-fluid mt-3 mx-auto" srcset="{{ site.baseurl }}/docs/{{ site.docs_version }}/assets/img/bootstrap-icons.png,
+                                            {{ site.baseurl }}/docs/{{ site.docs_version }}/assets/img/bootstrap-icons@2x.png 2x"
+                                            src="{{ site.baseurl }}/docs/{{ site.docs_version }}/assets/img/bootstrap-icons.png"
+                                            alt="Bootstrap Icons" width="966" height="600" loading="lazy">
+
+
+## Additional icon sets
+
+In addition to Bootstrap Icons, we have a handful of alternative icon libraries for you to choose from. While most icon sets include multiple file formats, we prefer SVG implementations for their improved accessibility and vector support.
+
+### Preferred
 
 We've tested and used these icon sets ourselves.
 
@@ -15,7 +29,7 @@ We've tested and used these icon sets ourselves.
 - [Feather](https://feathericons.com/)
 - [Octicons](https://octicons.github.com/)
 
-## More options
+### More
 
 While we haven't tried these out, they do look promising and provide multiple formats—including SVG.
 
