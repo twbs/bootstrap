@@ -84,14 +84,19 @@
 
 // Blockquotes
 .blockquote {
-  margin-bottom: $spacer;
+  margin-bottom: $blockquote-margin-y;
   @include font-size($blockquote-font-size);
+
+  > :last-child {
+    margin-bottom: 0;
+  }
 }
 
 .blockquote-footer {
-  display: block;
+  margin-top: -$blockquote-margin-y;
+  margin-bottom: $blockquote-margin-y;
   @include font-size($blockquote-small-font-size);
-  color: $blockquote-small-color;
+  color: $blockquote-footer-color;
 
   &::before {
     content: "\2014\00A0"; // em dash, nbsp

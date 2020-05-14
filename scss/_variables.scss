@@ -447,9 +447,10 @@ $text-muted:                  $gray-600 !default;
 
 $initialism-font-size:        $small-font-size !default;
 
-$blockquote-small-color:      $gray-600 !default;
-$blockquote-small-font-size:  $small-font-size !default;
+$blockquote-margin-y:         $spacer !default;
 $blockquote-font-size:        $font-size-base * 1.25 !default;
+$blockquote-footer-color:     $gray-600 !default;
+$blockquote-footer-font-size: $small-font-size !default;
 
 $hr-margin-y:                 $spacer !default;
 $hr-color:                    inherit !default;
