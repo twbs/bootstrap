@@ -187,6 +187,6 @@ Badges were overhauled to better differentiate themselves from buttons and to be
 
 ## Docs
 
--  Removed "Wall of browser bugs" page because it has become obsolete
+- Removed "Wall of browser bugs" page because it has become obsolete
 
 ## Build tools
