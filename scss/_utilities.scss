@@ -416,6 +416,11 @@ $utilities: map-merge(
         )
       )
     ),
+    "gradient": (
+      property: background-image,
+      class: bg,
+      values: (gradient: var(--bs-gradient))
+    ),
     "white-space": (
       property: white-space,
       class: text,
