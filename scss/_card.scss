@@ -132,6 +132,7 @@
   bottom: 0;
   left: 0;
   padding: $card-img-overlay-padding;
+  @include border-radius($card-inner-border-radius);
 }
 
 .card-img,
