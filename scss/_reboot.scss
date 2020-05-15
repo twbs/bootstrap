@@ -199,7 +199,7 @@ a {
 // causes specificity issues in many other styles that are too complex to fix.
 // See https://github.com/twbs/bootstrap/issues/19402
 
-a:not([href]) {
+a:not([href]):not([class]) {
   color: inherit;
   text-decoration: none;
 
