@@ -12,4 +12,5 @@
   // See https://github.com/sass/sass/issues/2383#issuecomment-336349172
   --bs-font-sans-serif: #{inspect($font-family-sans-serif)};
   --bs-font-monospace: #{inspect($font-family-monospace)};
+  --bs-gradient: #{$gradient};
 }
