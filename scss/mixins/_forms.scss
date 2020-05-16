@@ -97,7 +97,7 @@
       border-color: $color;
 
       &:checked {
-        @include gradient-bg(lighten($color, 10%), escape-svg($form-check-input-checked-bg-image));
+        background-color: $color;
       }
 
       &:focus {

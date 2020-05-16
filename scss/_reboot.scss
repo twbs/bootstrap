@@ -268,7 +268,7 @@ a {
 // causes specificity issues in many other styles that are too complex to fix.
 // See https://github.com/twbs/bootstrap/issues/19402
 
-a:not([href]) {
+a:not([href]):not([class]) {
   &,
   &:hover {
     color: inherit;
@@ -363,8 +363,8 @@ table {
 }
 
 caption {
-  padding-top: $table-cell-padding;
-  padding-bottom: $table-cell-padding;
+  padding-top: $table-cell-padding-y;
+  padding-bottom: $table-cell-padding-y;
   color: $table-caption-color;
   text-align: left;
 }
