@@ -65,7 +65,7 @@ Note how `.text-capitalize` only changes the first letter of each word, leaving 
 
 ## Font size
 
-Quickly change the `font-size` of text. While our heading classes (e.g., `.h1`–`.h6`) apply `font-size`, `font-weight`, and `line-height`, these utilities _only_ apply `font-size`.
+Quickly change the `font-size` of text. While our heading classes (e.g., `.h1`–`.h6`) apply `font-size`, `font-weight`, and `line-height`, these utilities _only_ apply `font-size`. Sizing for these utilities matches HTML's heading elements, so as the number increases, their size decreases.
 
 {{< example >}}
 <p class="fs-1">.fs-1 text</p>
