@@ -82,7 +82,7 @@ Customize your available `font-size`s by modifying the `$font-sizes` Sass map.
 
 ## Font weight and italics
 
-Quickly change the `font-weight` or `font-style` of text with these utilities. `font-style` utilities are abbreviated as `.f-*` and `font-weight` utilities are abbreviated as `.fw-*`.
+Quickly change the `font-weight` or `font-style` of text with these utilities. `font-style` utilities are abbreviated as `.fst-*` and `font-weight` utilities are abbreviated as `.fw-*`.
 
 {{< example >}}
 <p class="fw-bold">Bold text.</p>
@@ -90,8 +90,8 @@ Quickly change the `font-weight` or `font-style` of text with these utilities. `
 <p class="fw-normal">Normal weight text.</p>
 <p class="fw-light">Light weight text.</p>
 <p class="fw-lighter">Lighter weight text (relative to the parent element).</p>
-<p class="f-italic">Italic text.</p>
-<p class="f-normal">Text without font style</p>
+<p class="fst-italic">Italic text.</p>
+<p class="fst-normal">Text without font style</p>
 {{< /example >}}
 
 ## Line height
