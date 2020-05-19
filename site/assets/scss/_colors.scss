@@ -152,5 +152,5 @@
 .bd-gray-800 { color: color-contrast($gray-800); background-color: $gray-800; }
 .bd-gray-900 { color: color-contrast($gray-900); background-color: $gray-900; }
 
-.bd-white { color: color-yiq($white); background-color: $white; }
-.bd-black { color: color-yiq($black); background-color: $black; }
+.bd-white { color: color-contrast($white); background-color: $white; }
+.bd-black { color: color-contrast($black); background-color: $black; }
