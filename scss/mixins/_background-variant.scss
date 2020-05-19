@@ -1,7 +1,0 @@
-// stylelint-disable declaration-no-important
-
-@mixin bg-gradient-variant($parent, $color) {
-  #{$parent} {
-    background-image: linear-gradient(180deg, mix($body-bg, $color, 15%), $color) !important;
-  }
-}

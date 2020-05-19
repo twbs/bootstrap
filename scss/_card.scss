@@ -33,6 +33,13 @@
       @include border-bottom-radius($card-inner-border-radius);
     }
   }
+
+  // Due to specificity of the above selector (`.card > .list-group`), we must
+  // use a child selector here to prevent double borders.
+  > .card-header + .list-group,
+  > .list-group + .card-footer {
+    border-top: 0;
+  }
 }
 
 .card-body {
@@ -80,12 +87,6 @@
   &:first-child {
     @include border-radius($card-inner-border-radius $card-inner-border-radius 0 0);
   }
-
-  + .list-group {
-    .list-group-item:first-child {
-      border-top: 0;
-    }
-  }
 }
 
 .card-footer {
@@ -131,6 +132,7 @@
   bottom: 0;
   left: 0;
   padding: $card-img-overlay-padding;
+  @include border-radius($card-inner-border-radius);
 }
 
 .card-img,

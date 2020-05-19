@@ -222,6 +222,11 @@ $enable-negative-margins:     false !default;
 $enable-deprecation-messages: true !default;
 $enable-important-utilities:  true !default;
 
+// Gradient
+//
+// The gradient which is added to components if `$enable-gradients` is `true`
+// This gradient is also added to elements with `.bg-gradient`
+$gradient: linear-gradient(180deg, rgba($white, .15), rgba($white, 0)) !default;
 
 // Spacing
 //
@@ -470,8 +475,10 @@ $mark-bg:                     #fcf8e3 !default;
 // Customizes the `.table` component with basic values, each used across all table variations.
 
 // scss-docs-start table-variables
-$table-cell-padding:          .5rem !default;
-$table-cell-padding-sm:       .25rem !default;
+$table-cell-padding-y:        .5rem !default;
+$table-cell-padding-x:        .5rem !default;
+$table-cell-padding-y-sm:     .25rem !default;
+$table-cell-padding-x-sm:     .25rem !default;
 
 $table-cell-vertical-align:   top !default;
 
@@ -681,7 +688,7 @@ $form-switch-padding-left:        $form-switch-width + .5em !default;
 $form-switch-bg-image:            url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{$form-switch-color}'/></svg>") !default;
 $form-switch-border-radius:       $form-switch-width !default;
 
-$form-switch-focus-color:         hsla(211, 100%, 75%, 1) !default;
+$form-switch-focus-color:         $input-focus-border-color !default;
 $form-switch-focus-bg-image:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{$form-switch-focus-color}'/></svg>") !default;
 
 $form-switch-checked-color:       $component-active-color !default;

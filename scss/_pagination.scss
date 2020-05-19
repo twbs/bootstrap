@@ -34,7 +34,7 @@
   &.active .page-link {
     z-index: 3;
     color: $pagination-active-color;
-    background-color: $pagination-active-bg;
+    @include gradient-bg($pagination-active-bg);
     border-color: $pagination-active-border-color;
   }
 
