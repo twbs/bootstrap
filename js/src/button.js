@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.3.1): button.js
+ * Bootstrap (v5.0.0-alpha1): button.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -17,13 +17,12 @@ import SelectorEngine from './dom/selector-engine'
  */
 
 const NAME = 'button'
-const VERSION = '4.3.1'
+const VERSION = '5.0.0-alpha1'
 const DATA_KEY = 'bs.button'
 const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
 
 const CLASS_NAME_ACTIVE = 'active'
-const CLASS_NAME_BUTTON = 'btn'
 const CLASS_NAME_DISABLED = 'disabled'
 const CLASS_NAME_FOCUS = 'focus'
 
@@ -61,10 +60,7 @@ class Button {
     let triggerChangeEvent = true
     let addAriaPressed = true
 
-    const rootElement = SelectorEngine.closest(
-      this._element,
-      SELECTOR_DATA_TOGGLE
-    )
+    const rootElement = this._element.closest(SELECTOR_DATA_TOGGLE)
 
     if (rootElement) {
       const input = SelectorEngine.findOne(SELECTOR_INPUT, this._element)
@@ -143,10 +139,7 @@ class Button {
 EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE_CARROT, event => {
   event.preventDefault()
 
-  let button = event.target
-  if (!button.classList.contains(CLASS_NAME_BUTTON)) {
-    button = SelectorEngine.closest(button, SELECTOR_BUTTON)
-  }
+  const button = event.target.closest(SELECTOR_BUTTON)
 
   let data = Data.getData(button, DATA_KEY)
   if (!data) {
@@ -157,7 +150,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE_CARROT, eve
 })
 
 EventHandler.on(document, EVENT_FOCUS_DATA_API, SELECTOR_DATA_TOGGLE_CARROT, event => {
-  const button = SelectorEngine.closest(event.target, SELECTOR_BUTTON)
+  const button = event.target.closest(SELECTOR_BUTTON)
 
   if (button) {
     button.classList.add(CLASS_NAME_FOCUS)
@@ -165,7 +158,7 @@ EventHandler.on(document, EVENT_FOCUS_DATA_API, SELECTOR_DATA_TOGGLE_CARROT, eve
 })
 
 EventHandler.on(document, EVENT_BLUR_DATA_API, SELECTOR_DATA_TOGGLE_CARROT, event => {
-  const button = SelectorEngine.closest(event.target, SELECTOR_BUTTON)
+  const button = event.target.closest(SELECTOR_BUTTON)
 
   if (button) {
     button.classList.remove(CLASS_NAME_FOCUS)

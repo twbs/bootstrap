@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.3.1): modal.js
+ * Bootstrap (v5.0.0-alpha1): modal.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -27,11 +27,11 @@ import SelectorEngine from './dom/selector-engine'
  */
 
 const NAME = 'modal'
-const VERSION = '4.3.1'
+const VERSION = '5.0.0-alpha1'
 const DATA_KEY = 'bs.modal'
 const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
-const ESCAPE_KEYCODE = 27 // KeyboardEvent.which value for Escape (Esc) key
+const ESCAPE_KEY = 'Escape'
 
 const Default = {
   backdrop: true,
@@ -299,10 +299,10 @@ class Modal {
   _setEscapeEvent() {
     if (this._isShown) {
       EventHandler.on(this._element, EVENT_KEYDOWN_DISMISS, event => {
-        if (this._config.keyboard && event.which === ESCAPE_KEYCODE) {
+        if (this._config.keyboard && event.key === ESCAPE_KEY) {
           event.preventDefault()
           this.hide()
-        } else if (!this._config.keyboard && event.which === ESCAPE_KEYCODE) {
+        } else if (!this._config.keyboard && event.key === ESCAPE_KEY) {
           this._triggerBackdropTransition()
         }
       })
@@ -443,7 +443,7 @@ class Modal {
 
   _checkScrollbar() {
     const rect = document.body.getBoundingClientRect()
-    this._isBodyOverflowing = rect.left + rect.right < window.innerWidth
+    this._isBodyOverflowing = Math.round(rect.left + rect.right) < window.innerWidth
     this._scrollbarWidth = this._getScrollbarWidth()
   }
 

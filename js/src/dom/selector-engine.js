@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.3.1): dom/selector-engine.js
+ * Bootstrap (v5.0.0-alpha1): dom/selector-engine.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -48,10 +48,6 @@ const SelectorEngine = {
     }
 
     return parents
-  },
-
-  closest(element, selector) {
-    return element.closest(selector)
   },
 
   prev(element, selector) {

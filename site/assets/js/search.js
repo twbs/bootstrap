@@ -35,14 +35,14 @@
     transformData: function (hits) {
       return hits.map(function (hit) {
         var currentUrl = getOrigin()
-        var liveUrl = 'https://getbootstrap.com'
+        var liveUrl = 'https://getbootstrap.com/'
 
-        // When in production, return the result as is,
-        // otherwise remove our url from it.
-        // eslint-disable-next-line no-negated-condition
-        hit.url = currentUrl.indexOf(liveUrl) !== -1 ? // lgtm [js/incomplete-url-substring-sanitization]
+        hit.url = currentUrl.lastIndexOf(liveUrl, 0) === 0 ?
+          // On production, return the result as is
           hit.url :
-          hit.url.replace(liveUrl, '')
+          // On development or Netlify, replace `hit.url` with a trailing slash,
+          // so that the result link is relative to the server root
+          hit.url.replace(liveUrl, '/')
 
         // Prevent jumping to first header
         if (hit.anchor === 'content') {

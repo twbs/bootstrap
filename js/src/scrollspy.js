@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.3.1): scrollspy.js
+ * Bootstrap (v5.0.0-alpha1): scrollspy.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -9,6 +9,7 @@ import {
   getjQuery,
   getSelectorFromElement,
   getUID,
+  isElement,
   typeCheckConfig
 } from './util/index'
 import Data from './dom/data'
@@ -23,7 +24,7 @@ import SelectorEngine from './dom/selector-engine'
  */
 
 const NAME = 'scrollspy'
-const VERSION = '4.3.1'
+const VERSION = '5.0.0-alpha1'
 const DATA_KEY = 'bs.scrollspy'
 const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
@@ -168,7 +169,7 @@ class ScrollSpy {
       ...typeof config === 'object' && config ? config : {}
     }
 
-    if (typeof config.target !== 'string') {
+    if (typeof config.target !== 'string' && isElement(config.target)) {
       let { id } = config.target
       if (!id) {
         id = getUID(NAME)
@@ -229,8 +230,7 @@ class ScrollSpy {
       return
     }
 
-    const offsetLength = this._offsets.length
-    for (let i = offsetLength; i--;) {
+    for (let i = this._offsets.length; i--;) {
       const isActiveTarget = this._activeTarget !== this._targets[i] &&
           scrollTop >= this._offsets[i] &&
           (typeof this._offsets[i + 1] === 'undefined' ||
@@ -254,7 +254,7 @@ class ScrollSpy {
 
     if (link.classList.contains(CLASS_NAME_DROPDOWN_ITEM)) {
       SelectorEngine
-        .findOne(SELECTOR_DROPDOWN_TOGGLE, SelectorEngine.closest(link, SELECTOR_DROPDOWN))
+        .findOne(SELECTOR_DROPDOWN_TOGGLE, link.closest(SELECTOR_DROPDOWN))
         .classList.add(CLASS_NAME_ACTIVE)
 
       link.classList.add(CLASS_NAME_ACTIVE)

@@ -36,7 +36,7 @@
   .progress-bar-animated {
     animation: progress-bar-stripes $progress-bar-animation-timing;
 
-    @if $enable-prefers-reduced-motion-media-query {
+    @if $enable-reduced-motion {
       @media (prefers-reduced-motion: reduce) {
         animation: none;
       }

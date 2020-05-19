@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.3.1): tooltip.js
+ * Bootstrap (v5.0.0-alpha1): tooltip.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -33,7 +33,7 @@ import SelectorEngine from './dom/selector-engine'
  */
 
 const NAME = 'tooltip'
-const VERSION = '4.3.1'
+const VERSION = '5.0.0-alpha1'
 const DATA_KEY = 'bs.tooltip'
 const EVENT_KEY = `.${DATA_KEY}`
 const CLASS_PREFIX = 'bs-tooltip'
@@ -194,14 +194,14 @@ class Tooltip {
 
     if (event) {
       const dataKey = this.constructor.DATA_KEY
-      let context = Data.getData(event.delegateTarget, dataKey)
+      let context = Data.getData(event.target, dataKey)
 
       if (!context) {
         context = new this.constructor(
-          event.delegateTarget,
+          event.target,
           this._getDelegateConfig()
         )
-        Data.setData(event.delegateTarget, dataKey, context)
+        Data.setData(event.target, dataKey, context)
       }
 
       context._activeTrigger.click = !context._activeTrigger.click
@@ -227,7 +227,7 @@ class Tooltip {
     Data.removeData(this.element, this.constructor.DATA_KEY)
 
     EventHandler.off(this.element, this.constructor.EVENT_KEY)
-    EventHandler.off(SelectorEngine.closest(this.element, `.${CLASS_NAME_MODAL}`), 'hide.bs.modal', this._hideModalHandler)
+    EventHandler.off(this.element.closest(`.${CLASS_NAME_MODAL}`), 'hide.bs.modal', this._hideModalHandler)
 
     if (this.tip) {
       this.tip.parentNode.removeChild(this.tip)
@@ -556,7 +556,7 @@ class Tooltip {
       }
     }
 
-    EventHandler.on(SelectorEngine.closest(this.element, `.${CLASS_NAME_MODAL}`),
+    EventHandler.on(this.element.closest(`.${CLASS_NAME_MODAL}`),
       'hide.bs.modal',
       this._hideModalHandler
     )
@@ -587,14 +587,14 @@ class Tooltip {
 
   _enter(event, context) {
     const dataKey = this.constructor.DATA_KEY
-    context = context || Data.getData(event.delegateTarget, dataKey)
+    context = context || Data.getData(event.target, dataKey)
 
     if (!context) {
       context = new this.constructor(
-        event.delegateTarget,
+        event.target,
         this._getDelegateConfig()
       )
-      Data.setData(event.delegateTarget, dataKey, context)
+      Data.setData(event.target, dataKey, context)
     }
 
     if (event) {
@@ -627,14 +627,14 @@ class Tooltip {
 
   _leave(event, context) {
     const dataKey = this.constructor.DATA_KEY
-    context = context || Data.getData(event.delegateTarget, dataKey)
+    context = context || Data.getData(event.target, dataKey)
 
     if (!context) {
       context = new this.constructor(
-        event.delegateTarget,
+        event.target,
         this._getDelegateConfig()
       )
-      Data.setData(event.delegateTarget, dataKey, context)
+      Data.setData(event.target, dataKey, context)
     }
 
     if (event) {

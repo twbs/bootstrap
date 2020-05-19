@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap scrollspy.js v4.3.1 (https://getbootstrap.com/)
+  * Bootstrap scrollspy.js v5.0.0-alpha1 (https://getbootstrap.com/)
   * Copyright 2011-2020 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
   */
@@ -81,7 +81,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.3.1): util/index.js
+   * Bootstrap (v5.0.0-alpha1): util/index.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -164,7 +164,7 @@
    */
 
   var NAME = 'scrollspy';
-  var VERSION = '4.3.1';
+  var VERSION = '5.0.0-alpha1';
   var DATA_KEY = 'bs.scrollspy';
   var EVENT_KEY = "." + DATA_KEY;
   var DATA_API_KEY = '.data-api';
@@ -277,9 +277,9 @@
     ;
 
     _proto._getConfig = function _getConfig(config) {
-      config = _objectSpread2({}, Default, {}, typeof config === 'object' && config ? config : {});
+      config = _objectSpread2(_objectSpread2({}, Default), typeof config === 'object' && config ? config : {});
 
-      if (typeof config.target !== 'string') {
+      if (typeof config.target !== 'string' && isElement(config.target)) {
         var id = config.target.id;
 
         if (!id) {
@@ -335,9 +335,7 @@
         return;
       }
 
-      var offsetLength = this._offsets.length;
-
-      for (var i = offsetLength; i--;) {
+      for (var i = this._offsets.length; i--;) {
         var isActiveTarget = this._activeTarget !== this._targets[i] && scrollTop >= this._offsets[i] && (typeof this._offsets[i + 1] === 'undefined' || scrollTop < this._offsets[i + 1]);
 
         if (isActiveTarget) {
@@ -358,7 +356,7 @@
       var link = SelectorEngine.findOne(queries.join(','));
 
       if (link.classList.contains(CLASS_NAME_DROPDOWN_ITEM)) {
-        SelectorEngine.findOne(SELECTOR_DROPDOWN_TOGGLE, SelectorEngine.closest(link, SELECTOR_DROPDOWN)).classList.add(CLASS_NAME_ACTIVE);
+        SelectorEngine.findOne(SELECTOR_DROPDOWN_TOGGLE, link.closest(SELECTOR_DROPDOWN)).classList.add(CLASS_NAME_ACTIVE);
         link.classList.add(CLASS_NAME_ACTIVE);
       } else {
         // Set triggered link as active

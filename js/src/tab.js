@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.3.1): tab.js
+ * Bootstrap (v5.0.0-alpha1): tab.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -24,7 +24,7 @@ import SelectorEngine from './dom/selector-engine'
  */
 
 const NAME = 'tab'
-const VERSION = '4.3.1'
+const VERSION = '5.0.0-alpha1'
 const DATA_KEY = 'bs.tab'
 const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
@@ -80,7 +80,7 @@ class Tab {
 
     let previous
     const target = getElementFromSelector(this._element)
-    const listElement = SelectorEngine.closest(this._element, SELECTOR_NAV_LIST_GROUP)
+    const listElement = this._element.closest(SELECTOR_NAV_LIST_GROUP)
 
     if (listElement) {
       const itemSelector = listElement.nodeName === 'UL' || listElement.nodeName === 'OL' ? SELECTOR_ACTIVE_UL : SELECTOR_ACTIVE
@@ -186,7 +186,7 @@ class Tab {
     }
 
     if (element.parentNode && element.parentNode.classList.contains(CLASS_NAME_DROPDOWN_MENU)) {
-      const dropdownElement = SelectorEngine.closest(element, SELECTOR_DROPDOWN)
+      const dropdownElement = element.closest(SELECTOR_DROPDOWN)
 
       if (dropdownElement) {
         SelectorEngine.find(SELECTOR_DROPDOWN_TOGGLE)

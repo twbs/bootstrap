@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.3.1): alert.js
+ * Bootstrap (v5.0.0-alpha1): alert.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -14,7 +14,6 @@ import {
 } from './util/index'
 import Data from './dom/data'
 import EventHandler from './dom/event-handler'
-import SelectorEngine from './dom/selector-engine'
 
 /**
  * ------------------------------------------------------------------------
@@ -23,7 +22,7 @@ import SelectorEngine from './dom/selector-engine'
  */
 
 const NAME = 'alert'
-const VERSION = '4.3.1'
+const VERSION = '5.0.0-alpha1'
 const DATA_KEY = 'bs.alert'
 const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
@@ -84,13 +83,7 @@ class Alert {
   // Private
 
   _getRootElement(element) {
-    let parent = getElementFromSelector(element)
-
-    if (!parent) {
-      parent = SelectorEngine.closest(element, `.${CLASSNAME_ALERT}`)
-    }
-
-    return parent
+    return getElementFromSelector(element) || element.closest(`.${CLASSNAME_ALERT}`)
   }
 
   _triggerCloseEvent(element) {

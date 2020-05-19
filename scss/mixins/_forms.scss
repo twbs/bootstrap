@@ -19,6 +19,7 @@
     width: 100%;
     margin-top: $form-feedback-margin-top;
     @include font-size($form-feedback-font-size);
+    font-style: $form-feedback-font-style;
     color: $color;
   }
 
@@ -96,7 +97,7 @@
       border-color: $color;
 
       &:checked {
-        @include gradient-bg(lighten($color, 10%), escape-svg($form-check-input-checked-bg-image));
+        background-color: $color;
       }
 
       &:focus {

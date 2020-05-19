@@ -416,6 +416,11 @@ $utilities: map-merge(
         )
       )
     ),
+    "gradient": (
+      property: background-image,
+      class: bg,
+      values: (gradient: var(--bs-gradient))
+    ),
     "white-space": (
       property: white-space,
       class: text,
@@ -441,7 +446,7 @@ $utilities: map-merge(
     "font-family": (
       property: font-family,
       class: font,
-      values: (monospace: $font-family-monospace)
+      values: (monospace: var(--bs-font-monospace))
     ),
     "user-select": (
       property: user-select,
