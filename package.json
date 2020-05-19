@@ -133,7 +133,7 @@
     "rollup-plugin-istanbul": "^2.0.1",
     "serve": "^11.3.0",
     "shelljs": "^0.8.4",
-    "stylelint": "^13.3.3",
+    "stylelint": "^13.5.0",
     "stylelint-config-twbs-bootstrap": "^2.0.2",
     "terser": "^4.7.0",
     "vnu-jar": "20.3.16"
