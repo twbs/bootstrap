@@ -107,6 +107,7 @@
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-unicorn": "^20.0.0",
     "find-unused-sass-variables": "^2.0.0",
+    "focus-visible": "^5.1.0",
     "glob": "^7.1.6",
     "hammer-simulator": "0.0.1",
     "hugo-bin": "^0.59.0",
