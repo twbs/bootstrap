@@ -64,6 +64,13 @@ body {
   outline: 0 !important;
 }
 
+// Using the :focus-visible polyfill to hide outline defensively
+// See https://github.com/WICG/focus-visible
+.js-focus-visible :focus:not([data-focus-visible-added]),
+.js-focus-visible .focus:not([data-focus-visible-added]) {
+  outline: 0 !important;
+}
+
 
 // Content grouping
 //
