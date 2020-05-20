@@ -44,8 +44,10 @@ Changes to our source Sass files and compiled CSS.
 - The `button-outline-variant()` mixin now accepts an additional argument, `$active-color`, for setting the button's active state text color. By default, this parameter will find which color provides more contrast against the button's active background color with `color-contrast()`.
 - Ditch the Sass map merges, which makes it easier to remove redundant values. Keep in mind you now have to define all values in the Sass maps like `$theme-colors`. Check out how to deal with [Sass maps]({{< docsref "/customize/sass#maps-and-loops" >}}).
 - `color-yiq()` function and related variables are renamed to `color-contrast()` since it's not related to YIQ colorspace anymore. [See #30168.](https://github.com/twbs/bootstrap/pull/30168/)
-  - `$yiq-contrasted-threshold` is renamed `$min-contrast-ratio`.
-  - `$yiq-text-dark` and `$yiq-text-light` are respectively renamed `$color-contrast-dark` and `$color-contrast-light`.
+  - `$yiq-contrasted-threshold` is renamed to `$min-contrast-ratio`.
+  - `$yiq-text-dark` and `$yiq-text-light` are respectively renamed to `$color-contrast-dark` and `$color-contrast-light`.
+- Linear gradients are simplified when gradients are enabled and therefore, `gradient-bg()` now only accepts an optional `$color` parameter.
+- The `bg-gradient-variant()` mixin is removed since the `.bg-gradient` class can now be used to add gradients to elements instead of the `.bg-gradient-*` classes.
 
 ## JavaScript
 
@@ -66,14 +68,14 @@ We've updated the color system that powers Bootstrap to improve color contrast a
 
 Changes to any layout tools and our grid system.
 
-- Dropped `.media` component as it can be built with utility classes. [See #28265](https://github.com/twbs/bootstrap/pull/28265).
+- Dropped the `.media` component as it can be built with utility classes. [See #28265](https://github.com/twbs/bootstrap/pull/28265).
 - Remove `position: relative` from grid columns.
 - The horizontal padding is added to the direct children in a row instead of the columns themselves.
   - This simplifies our codebase.
   - The column classes can now be used stand alone. Whenever they are used outside a `.row`, horizontal padding won't be added.
-- Responsive gutter classes can be used to control the gutter width in as well horizontal, vertical or both directions.
+- The responsive gutter classes can be used to control the gutter width in horizontal, vertical or both directions.
 - The gutter width is now set in `rem` and decreased from `30px` to `1.5rem` (24px).
-- `bootstrap-grid.css` now only applies `box-sizing: border-box` to the column instead of resetting the global box-sizing. This way the grid system can be used, even if `box-sizing: border-box` in not applied to each element.
+- `bootstrap-grid.css` now only applies `box-sizing: border-box` to the column instead of resetting the global box-sizing. This way the grid system can be used, even if `box-sizing: border-box` is not applied to each element.
 
 ## Content, Reboot, etc
 
@@ -85,6 +87,7 @@ Changes to Reboot, typography, tables, and more.
 - Nested tables do not inherit styles anymore.
 - `.thead-light` and `.thead-dark` are dropped in favor of the `.table-*` variant classes which can be used for all table elements (`thead`, `tbody`, `tfoot`, `tr`, `th` and `td`).
 - The `table-row-variant()` mixin is renamed to `table-variant()` and accepts only 2 parameters: `$color` (colon name) and `$value` (color code). The border color and accent colors are automatically calculated based on the table factor variables.
+- Split table cell padding variables into `-y` and `-x`.
 - Dropped `.pre-scrollable` class. [See #29135](https://github.com/twbs/bootstrap/pull/29135)
 - `.text-*` utilities do not add hover and focus states to links anymore. `.link-*` helper classes can be used instead. [See #29267](https://github.com/twbs/bootstrap/pull/29267)
 - Drop `.text-justify` class. [See #229793](https://github.com/twbs/bootstrap/pull/29793)
@@ -100,7 +103,7 @@ Changes to Reboot, typography, tables, and more.
 
 - Rearranged form documentation under its own top-level section.
   - Split out old Forms page into several subpages
-  - Moved input groups docs under new Forms section
+  - Moved input groups docs under the new Forms section
 - Rearranged source Sass files under `scss/forms/`, including moving over input group styles.
 - Combined native and custom checkboxes and radios into single `.form-check` class.
   - New checks support sizing via `em`/`font-size` or explicit modifier classes now.
@@ -110,7 +113,7 @@ Changes to Reboot, typography, tables, and more.
 - Combined native and custom selects into `.form-select`.
   - Dropped `.custom-select` and associated classes.
   - Renamed most `$custom-select` variables to `$form-select` ones.
-- Updated file input component with same overall design, but improved HTML.
+- Updated file input component with the same overall design, but improved HTML.
   - Refactored `.form-file` markup to resolve some visual bugs while allowing translation and button text changes via HTML instead of CSS.
   - Dropped native `.form-control-file` and `.form-control-range` components entirely.
   - Renamed `.custom-file` to `.form-file` (including variables).
@@ -146,7 +149,7 @@ Badges were overhauled to better differentiate themselves from buttons and to be
 ### Cards
 
 - Removed the card columns in favor of a Masonry grid [See #28922](https://github.com/twbs/bootstrap/pull/28922).
-- Removed card decks in favor of the grid which adds more flexibility over responsive behaviour.
+- Removed card decks in favor of the grid which adds more flexibility over responsive behavior.
 
 ### Jumbotron
 
@@ -184,6 +187,6 @@ Badges were overhauled to better differentiate themselves from buttons and to be
 
 ## Docs
 
--  Removed "Wall of browser bugs" page because it has become obsolete
+- Removed "Wall of browser bugs" page because it has become obsolete
 
 ## Build tools

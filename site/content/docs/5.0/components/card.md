@@ -101,6 +101,19 @@ Create lists of content in a card with a flush list group.
 </div>
 {{< /example >}}
 
+{{< example >}}
+<div class="card" style="width: 18rem;">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Cras justo odio</li>
+    <li class="list-group-item">Dapibus ac facilisis in</li>
+    <li class="list-group-item">Vestibulum at eros</li>
+  </ul>
+  <div class="card-footer">
+    Card footer
+  </div>
+</div>
+{{< /example >}}
+
 ### Kitchen sink
 
 Mix and match multiple content types to create the card you need, or throw everything in there. Shown below are image styles, blocks, text styles, and a list group—all wrapped in a fixed-width card.
@@ -409,7 +422,7 @@ Use [text and background utilities]({{< docsref "/utilities/colors" >}}) to chan
 {{< example >}}
 {{< card.inline >}}
 {{- range (index $.Site.Data "theme-colors") }}
-<div class="card{{ if not (or (eq .name "light") (eq .name "warning")) }} text-white{{ end }} bg-{{ .name }} mb-3" style="max-width: 18rem;">
+<div class="card{{ if (eq .name "info") }} text-body {{ else if not (or (eq .name "light") (eq .name "warning")) }} text-white{{ end }} bg-{{ .name }} mb-3" style="max-width: 18rem;">
   <div class="card-header">Header</div>
   <div class="card-body">
     <h5 class="card-title">{{ .name | title }} card title</h5>
@@ -433,7 +446,7 @@ Use [border utilities]({{< docsref "/utilities/borders" >}}) to change just the 
 {{- range (index $.Site.Data "theme-colors") }}
 <div class="card border-{{ .name }} mb-3" style="max-width: 18rem;">
   <div class="card-header">Header</div>
-  <div class="card-body{{ if not (eq .name "light") }} text-{{ .name }}{{ end }}">
+  <div class="card-body{{ if not (or (eq .name "light") (eq .name "warning") (eq .name "info")) }} text-{{ .name }}{{ end }}">
     <h5 class="card-title">{{ .name | title }} card title</h5>
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
   </div>

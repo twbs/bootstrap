@@ -13,7 +13,7 @@ Colorize text with color utilities. If you want to colorize links, you can use t
 {{< example >}}
 {{< colors.inline >}}
 {{- range (index $.Site.Data "theme-colors") }}
-<p class="text-{{ .name }}{{ if eq .name "light" }} bg-dark{{ end }}">.text-{{ .name }}</p>
+<p class="text-{{ .name }}{{ if or (eq .name "light") (eq .name "warning") (eq .name "info") }} bg-dark{{ end }}">.text-{{ .name }}</p>
 {{- end -}}
 {{< /colors.inline >}}
 <p class="text-body">.text-body</p>
@@ -30,7 +30,7 @@ Similar to the contextual text color classes, easily set the background of an el
 {{< example >}}
 {{< colors.inline >}}
 {{- range (index $.Site.Data "theme-colors") }}
-<div class="p-3 mb-2 bg-{{ .name }} {{ if or (eq .name "light") (eq .name "warning") }}text-dark{{ else }}text-white{{ end }}">.bg-{{ .name }}</div>
+<div class="p-3 mb-2 bg-{{ .name }} {{ if or (eq .name "light") (eq .name "warning") }}text-dark{{ else if (eq .name "info") }}text-body{{ else }}text-white{{ end }}">.bg-{{ .name }}</div>
 {{- end -}}
 {{< /colors.inline >}}
 <div class="p-3 mb-2 bg-white text-dark">.bg-white</div>
@@ -39,12 +39,14 @@ Similar to the contextual text color classes, easily set the background of an el
 
 ## Background gradient
 
-When `$enable-gradients` is set to `true` (default is `false`), you can use `.bg-gradient-` utility classes. [Learn about our Sass options]({{< docsref "/customize/sass" >}}) to enable these classes and more.
+By adding a `.bg-gradient` class, a linear gradient is added as background image to the backgrounds. This gradient starts with a semi-transparent white which fades out to the bottom.
+
+Do you need a gradient in your custom CSS? Just add `background-image: var(--bs-gradient);`.
 
 {{< markdown >}}
 {{< colors.inline >}}
 {{- range (index $.Site.Data "theme-colors") }}
-- `.bg-gradient-{{ .name }}`
+<div class="p-3 mb-2 bg-{{ .name }} bg-gradient {{ if or (eq .name "light") (eq .name "warning") }}text-dark{{ else }}text-white{{ end }}">.bg-{{ .name }}.bg-gradient</div>
 {{- end -}}
 {{< /colors.inline >}}
 {{< /markdown >}}
