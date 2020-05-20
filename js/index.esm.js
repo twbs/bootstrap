@@ -16,6 +16,7 @@ import ScrollSpy from './src/scrollspy'
 import Tab from './src/tab'
 import Toast from './src/toast'
 import Tooltip from './src/tooltip'
+import '../node_modules/focus-visible/dist/focus-visible.js'
 
 export {
   Alert,
