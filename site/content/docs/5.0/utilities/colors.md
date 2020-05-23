@@ -18,6 +18,7 @@ Colorize text with color utilities. If you want to colorize links, you can use t
 {{< /colors.inline >}}
 <p class="text-body">.text-body</p>
 <p class="text-muted">.text-muted</p>
+<p class="text-black">.text-black</p>
 <p class="text-white bg-dark">.text-white</p>
 <p class="text-black-50">.text-black-50</p>
 <p class="text-white-50 bg-dark">.text-white-50</p>
@@ -33,6 +34,7 @@ Similar to the contextual text color classes, easily set the background of an el
 <div class="p-3 mb-2 bg-{{ .name }} {{ if or (eq .name "light") (eq .name "warning") }}text-dark{{ else if (eq .name "info") }}text-body{{ else }}text-white{{ end }}">.bg-{{ .name }}</div>
 {{- end -}}
 {{< /colors.inline >}}
+<div class="p-3 mb-2 bg-black text-light">.bg-black</div>
 <div class="p-3 mb-2 bg-white text-dark">.bg-white</div>
 <div class="p-3 mb-2 bg-transparent text-dark">.bg-transparent</div>
 {{< /example >}}
