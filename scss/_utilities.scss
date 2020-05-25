@@ -29,8 +29,8 @@ $utilities: map-merge(
       property: box-shadow,
       class: shadow,
       values: (
-        sm: $box-shadow-sm,
         null: $box-shadow,
+        sm: $box-shadow-sm,
         lg: $box-shadow-lg,
         none: none,
       )
@@ -77,7 +77,7 @@ $utilities: map-merge(
     "border-color": (
       property: border-color,
       class: border,
-      values: map-merge($theme-colors, (white: $white))
+      values: map-merge($theme-colors, ("white": $white))
     ),
     // Sizing utilities
     "width": (
@@ -378,7 +378,7 @@ $utilities: map-merge(
       responsive: true,
       property: text-align,
       class: text,
-      values: left right center justify
+      values: left right center
     ),
     "color": (
       property: color,
@@ -386,12 +386,12 @@ $utilities: map-merge(
       values: map-merge(
         $theme-colors,
         (
-          white: $white,
-          body: $body-color,
-          muted: $text-muted,
-          black-50: rgba($black, .5),
-          white-50: rgba($white, .5),
-          reset: inherit,
+          "white": $white,
+          "body": $body-color,
+          "muted": $text-muted,
+          "black-50": rgba($black, .5),
+          "white-50": rgba($white, .5),
+          "reset": inherit,
         )
       )
     ),
@@ -411,10 +411,16 @@ $utilities: map-merge(
       values: map-merge(
         $theme-colors,
         (
-          white: $white,
-          transparent: transparent
+          "body": $body-bg,
+          "white": $white,
+          "transparent": transparent
         )
       )
+    ),
+    "gradient": (
+      property: background-image,
+      class: bg,
+      values: (gradient: var(--bs-gradient))
     ),
     "white-space": (
       property: white-space,
@@ -426,22 +432,31 @@ $utilities: map-merge(
     ),
     "text-decoration": (
       property: text-decoration,
-      values: none
+      values: none underline line-through
     ),
     "font-style": (
       property: font-style,
       class: font,
-      values: italic
+      values: italic normal
     ),
-    "overflow-wrap": (
-      property: overflow-wrap word-break, // word-break for IE & < Edge 18
+    "word-wrap": (
+      property: word-wrap,
       class: text,
       values: (break: break-word)
     ),
     "font-family": (
       property: font-family,
       class: font,
-      values: (monospace: $font-family-monospace)
+      values: (monospace: var(--bs-font-monospace))
+    ),
+    "user-select": (
+      property: user-select,
+      values: all auto none
+    ),
+    "pointer-events": (
+      property: pointer-events,
+      class: pe,
+      values: none auto,
     ),
     "rounded": (
       property: border-radius,

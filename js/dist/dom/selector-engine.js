@@ -1,32 +1,17 @@
 /*!
-  * Bootstrap selector-engine.js v4.3.1 (https://getbootstrap.com/)
-  * Copyright 2011-2019 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Bootstrap selector-engine.js v5.0.0-alpha1 (https://getbootstrap.com/)
+  * Copyright 2011-2020 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
   */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./polyfill.js')) :
   typeof define === 'function' && define.amd ? define(['./polyfill.js'], factory) :
   (global = global || self, global.SelectorEngine = factory(global.Polyfill));
-}(this, function (polyfill_js) { 'use strict';
+}(this, (function (polyfill_js) { 'use strict';
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.3.1): util/index.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
-   * --------------------------------------------------------------------------
-   */
-
-  var makeArray = function makeArray(nodeList) {
-    if (!nodeList) {
-      return [];
-    }
-
-    return [].slice.call(nodeList);
-  };
-
-  /**
-   * --------------------------------------------------------------------------
-   * Bootstrap (v4.3.1): dom/selector-engine.js
+   * Bootstrap (v5.0.0-alpha1): dom/selector-engine.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -39,14 +24,16 @@
   var NODE_TEXT = 3;
   var SelectorEngine = {
     matches: function matches(element, selector) {
-      return polyfill_js.matches.call(element, selector);
+      return element.matches(selector);
     },
     find: function find(selector, element) {
+      var _ref;
+
       if (element === void 0) {
         element = document.documentElement;
       }
 
-      return polyfill_js.find.call(element, selector);
+      return (_ref = []).concat.apply(_ref, polyfill_js.find.call(element, selector));
     },
     findOne: function findOne(selector, element) {
       if (element === void 0) {
@@ -56,11 +43,12 @@
       return polyfill_js.findOne.call(element, selector);
     },
     children: function children(element, selector) {
-      var _this = this;
+      var _ref2;
 
-      var children = makeArray(element.children);
+      var children = (_ref2 = []).concat.apply(_ref2, element.children);
+
       return children.filter(function (child) {
-        return _this.matches(child, selector);
+        return child.matches(selector);
       });
     },
     parents: function parents(element, selector) {
@@ -77,26 +65,35 @@
 
       return parents;
     },
-    closest: function closest(element, selector) {
-      return polyfill_js.closest.call(element, selector);
-    },
     prev: function prev(element, selector) {
-      var siblings = [];
-      var previous = element.previousSibling;
+      var previous = element.previousElementSibling;
 
-      while (previous && previous.nodeType === Node.ELEMENT_NODE && previous.nodeType !== NODE_TEXT) {
-        if (this.matches(previous, selector)) {
-          siblings.push(previous);
+      while (previous) {
+        if (previous.matches(selector)) {
+          return [previous];
         }
 
-        previous = previous.previousSibling;
+        previous = previous.previousElementSibling;
       }
 
-      return siblings;
+      return [];
+    },
+    next: function next(element, selector) {
+      var next = element.nextElementSibling;
+
+      while (next) {
+        if (this.matches(next, selector)) {
+          return [next];
+        }
+
+        next = next.nextElementSibling;
+      }
+
+      return [];
     }
   };
 
   return SelectorEngine;
 
-}));
+})));
 //# sourceMappingURL=selector-engine.js.map

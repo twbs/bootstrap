@@ -1,12 +1,12 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.3.1): dom/event-handler.js
+ * Bootstrap (v5.0.0-alpha1): dom/event-handler.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
 
 import { getjQuery } from '../util/index'
-import { createCustomEvent, defaultPreventedPreservedOnDispatch } from './polyfill'
+import { defaultPreventedPreservedOnDispatch } from './polyfill'
 
 /**
  * ------------------------------------------------------------------------
@@ -17,7 +17,6 @@ import { createCustomEvent, defaultPreventedPreservedOnDispatch } from './polyfi
 const $ = getjQuery()
 const namespaceRegex = /[^.]*(?=\..*)\.|.*/
 const stripNameRegex = /\..*/
-const keyEventRegex = /^key/
 const stripUidRegex = /::\d+$/
 const eventRegistry = {} // Events storage
 let uidEvent = 1
@@ -93,18 +92,8 @@ function getEvent(element) {
   return eventRegistry[uid]
 }
 
-function fixEvent(event, element) {
-  // Add which for key events
-  if (event.which === null && keyEventRegex.test(event.type)) {
-    event.which = event.charCode === null ? event.keyCode : event.charCode
-  }
-
-  event.delegateTarget = element
-}
-
 function bootstrapHandler(element, fn) {
   return function handler(event) {
-    fixEvent(event, element)
     if (handler.oneOff) {
       EventHandler.off(element, event.type, fn)
     }
@@ -120,8 +109,6 @@ function bootstrapDelegationHandler(element, selector, fn) {
     for (let { target } = event; target && target !== this; target = target.parentNode) {
       for (let i = domElements.length; i--;) {
         if (domElements[i] === target) {
-          fixEvent(event, target)
-
           if (handler.oneOff) {
             EventHandler.off(element, event.type, fn)
           }
@@ -262,7 +249,7 @@ const EventHandler = {
     if (isNamespace) {
       Object.keys(events)
         .forEach(elementEvent => {
-          removeNamespacedHandlers(element, events, elementEvent, originalTypeEvent.substr(1))
+          removeNamespacedHandlers(element, events, elementEvent, originalTypeEvent.slice(1))
         })
     }
 
@@ -307,7 +294,7 @@ const EventHandler = {
       evt = document.createEvent('HTMLEvents')
       evt.initEvent(typeEvent, bubbles, true)
     } else {
-      evt = createCustomEvent(event, {
+      evt = new CustomEvent(event, {
         bubbles,
         cancelable: true
       })

@@ -14,10 +14,12 @@
 .nav-link {
   display: block;
   padding: $nav-link-padding-y $nav-link-padding-x;
+  text-decoration: if($link-decoration == none, null, none);
+  @include transition($nav-link-transition);
 
   &:hover,
   &:focus {
-    text-decoration: none;
+    text-decoration: if($link-hover-decoration == underline, none, null);
   }
 
   // Disabled state lightens text
@@ -35,11 +37,8 @@
 .nav-tabs {
   border-bottom: $nav-tabs-border-width solid $nav-tabs-border-color;
 
-  .nav-item {
-    margin-bottom: -$nav-tabs-border-width;
-  }
-
   .nav-link {
+    margin-bottom: -$nav-tabs-border-width;
     border: $nav-tabs-border-width solid transparent;
     @include border-top-radius($nav-tabs-border-radius);
 
@@ -83,7 +82,7 @@
   .nav-link.active,
   .show > .nav-link {
     color: $nav-pills-link-active-color;
-    background-color: $nav-pills-link-active-bg;
+    @include gradient-bg($nav-pills-link-active-bg);
   }
 }
 

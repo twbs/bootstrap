@@ -35,7 +35,7 @@
       <h1>Modal <small>Bootstrap Visual Test</small></h1>
 
       <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
               <h4 class="modal-title" id="myModalLabel">Modal title</h4>
@@ -55,7 +55,7 @@
               <p><a href="#" data-toggle="tooltip" data-placement="top" title="Tooltip on top">This link</a> and <a href="#" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">that link</a> should have tooltips on hover.</p>
 
               <div id="accordion" role="tablist">
-                <div class="card">
+                <div class="card" role="presentation">
                   <div class="card-header" role="tab" id="headingOne">
                     <h5 class="mb-0">
                       <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -70,7 +70,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="card">
+                <div class="card" role="presentation">
                   <div class="card-header" role="tab" id="headingTwo">
                     <h5 class="mb-0">
                       <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -84,7 +84,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="card">
+                <div class="card" role="presentation">
                   <div class="card-header" role="tab" id="headingThree">
                     <h5 class="mb-0">
                       <a class="collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
@@ -122,7 +122,7 @@
       </div>
 
       <div class="modal fade" id="firefoxModal" tabindex="-1" role="dialog" aria-labelledby="firefoxModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
               <h4 class="modal-title" id="firefoxModalLabel">Firefox Bug Test</h4>
@@ -148,7 +148,7 @@
       </div>
 
       <div class="modal fade" id="slowModal" tabindex="-1" role="dialog" aria-labelledby="slowModalLabel" aria-hidden="true" style="transition-duration: 5s;">
-        <div class="modal-dialog" role="document" style="transition-duration: inherit;">
+        <div class="modal-dialog" style="transition-duration: inherit;">
           <div class="modal-content">
             <div class="modal-header">
               <h4 class="modal-title" id="slowModalLabel">Lorem slowly</h4>

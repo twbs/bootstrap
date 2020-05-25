@@ -26,11 +26,6 @@
     "issues": "https://github.com/twbs/bootstrap/issues"
   },
   "license": "MIT",
-  "extra": {
-    "branch-alias": {
-      "dev-master": "3.3.x-dev"
-    }
-  },
   "replace": {
     "twitter/bootstrap": "self.version"
   }

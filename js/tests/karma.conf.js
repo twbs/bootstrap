@@ -3,16 +3,18 @@ const path = require('path')
 const ip = require('ip')
 const babel = require('rollup-plugin-babel')
 const istanbul = require('rollup-plugin-istanbul')
-const resolve = require('rollup-plugin-node-resolve')
+const resolve = require('@rollup/plugin-node-resolve')
 
 const {
   browsers,
   browsersKeys
 } = require('./browsers')
+const babelHelpers = require('../../build/babel-helpers.js')
 
 const { env } = process
 const browserStack = env.BROWSER === 'true'
 const debug = env.DEBUG === 'true'
+const jQueryTest = env.JQUERY === 'true'
 const frameworks = [
   'jasmine'
 ]
@@ -46,39 +48,6 @@ const customLaunchers = {
   }
 }
 
-const rollupPreprocessor = {
-  plugins: [
-    istanbul({
-      exclude: ['js/src/**/*.spec.js']
-    }),
-    babel({
-      // Only transpile our source code
-      exclude: 'node_modules/**',
-      // Include only required helpers
-      externalHelpersWhitelist: [
-        'defineProperties',
-        'createClass',
-        'inheritsLoose',
-        'defineProperty',
-        'objectSpread2'
-      ],
-      plugins: [
-        '@babel/plugin-proposal-object-rest-spread'
-      ]
-    }),
-    resolve()
-  ],
-  output: {
-    format: 'iife',
-    name: 'bootstrapTest',
-    sourcemap: 'inline'
-  }
-}
-
-let files = [
-  'node_modules/hammer-simulator/index.js'
-]
-
 const conf = {
   basePath: '../..',
   port: 9876,
@@ -88,6 +57,39 @@ const conf = {
   concurrency: Infinity,
   client: {
     clearContext: false
+  },
+  files: [
+    'node_modules/hammer-simulator/index.js',
+    { pattern: 'js/tests/unit/**/!(jquery).spec.js', watched: !browserStack }
+  ],
+  preprocessors: {
+    'js/tests/unit/**/*.spec.js': ['rollup']
+  },
+  rollupPreprocessor: {
+    plugins: [
+      istanbul({
+        exclude: [
+          'node_modules/**',
+          'js/tests/unit/**/*.spec.js',
+          'js/tests/helpers/**/*.js'
+        ]
+      }),
+      babel({
+        // Only transpile our source code
+        exclude: 'node_modules/**',
+        // Include only required helpers
+        externalHelpersWhitelist: babelHelpers,
+        plugins: [
+          '@babel/plugin-proposal-object-rest-spread'
+        ]
+      }),
+      resolve()
+    ],
+    output: {
+      format: 'iife',
+      name: 'bootstrapTest',
+      sourcemap: 'inline'
+    }
   }
 }
 
@@ -104,13 +106,19 @@ if (browserStack) {
   conf.customLaunchers = browsers
   conf.browsers = browsersKeys
   reporters.push('BrowserStack', 'kjhtml')
-  files = files.concat([
-    { pattern: 'js/src/**/*.spec.js', watched: false }
-  ])
-  conf.preprocessors = {
-    'js/src/**/*.spec.js': ['rollup']
-  }
-  conf.rollupPreprocessor = rollupPreprocessor
+} else if (jQueryTest) {
+  frameworks.push('detectBrowsers')
+  plugins.push(
+    'karma-chrome-launcher',
+    'karma-firefox-launcher',
+    'karma-detect-browsers'
+  )
+  conf.customLaunchers = customLaunchers
+  conf.detectBrowsers = detectBrowsers
+  conf.files = [
+    'node_modules/jquery/dist/jquery.slim.min.js',
+    { pattern: 'js/tests/unit/jquery.spec.js', watched: false }
+  ]
 } else {
   frameworks.push('detectBrowsers')
   plugins.push(
@@ -119,14 +127,7 @@ if (browserStack) {
     'karma-detect-browsers',
     'karma-coverage-istanbul-reporter'
   )
-  files = files.concat([
-    { pattern: 'js/src/**/*.spec.js', watched: true }
-  ])
   reporters.push('coverage-istanbul')
-  conf.preprocessors = {
-    'js/src/**/*.spec.js': ['rollup']
-  }
-  conf.rollupPreprocessor = rollupPreprocessor
   conf.customLaunchers = customLaunchers
   conf.detectBrowsers = detectBrowsers
   conf.coverageIstanbulReporter = {
@@ -165,7 +166,6 @@ if (browserStack) {
 conf.frameworks = frameworks
 conf.plugins = plugins
 conf.reporters = reporters
-conf.files = files
 
 module.exports = karmaConfig => {
   // possible values: karmaConfig.LOG_DISABLE || karmaConfig.LOG_ERROR || karmaConfig.LOG_WARN || karmaConfig.LOG_INFO || karmaConfig.LOG_DEBUG

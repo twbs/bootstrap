@@ -1,0 +1,11 @@
+{{- /*
+  Usage: `table "class"`,
+  where class can be anything
+*/ -}}
+
+{{ $htmlTable := .Inner | markdownify }}
+{{ $css_class := .Get 0 | default "table" }}
+{{ $old := "<table>" }}
+{{ $new := printf "<table class=\"%s\">" $css_class }}
+{{ $htmlTable := replace $htmlTable $old $new }}
+{{ $htmlTable | safeHTML }}

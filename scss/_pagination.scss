@@ -7,13 +7,14 @@
   position: relative;
   display: block;
   color: $pagination-color;
+  text-decoration: if($link-decoration == none, null, none);
   background-color: $pagination-bg;
   border: $pagination-border-width solid $pagination-border-color;
 
   &:hover {
     z-index: 2;
     color: $pagination-hover-color;
-    text-decoration: none;
+    text-decoration: if($link-hover-decoration == underline, none, null);
     background-color: $pagination-hover-bg;
     border-color: $pagination-hover-border-color;
   }
@@ -33,15 +34,13 @@
   &.active .page-link {
     z-index: 3;
     color: $pagination-active-color;
-    background-color: $pagination-active-bg;
+    @include gradient-bg($pagination-active-bg);
     border-color: $pagination-active-border-color;
   }
 
   &.disabled .page-link {
     color: $pagination-disabled-color;
     pointer-events: none;
-    // Opinionated: remove the "hand" cursor set previously for .page-link
-    cursor: auto;
     background-color: $pagination-disabled-bg;
     border-color: $pagination-disabled-border-color;
   }

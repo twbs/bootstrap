@@ -1,13 +1,13 @@
 /*!
-  * Bootstrap manipulator.js v4.3.1 (https://getbootstrap.com/)
-  * Copyright 2011-2019 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Bootstrap manipulator.js v5.0.0-alpha1 (https://getbootstrap.com/)
+  * Copyright 2011-2020 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
   */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
   (global = global || self, global.Manipulator = factory());
-}(this, function () { 'use strict';
+}(this, (function () { 'use strict';
 
   function _defineProperty(obj, key, value) {
     if (key in obj) {
@@ -43,13 +43,13 @@
       var source = arguments[i] != null ? arguments[i] : {};
 
       if (i % 2) {
-        ownKeys(source, true).forEach(function (key) {
+        ownKeys(Object(source), true).forEach(function (key) {
           _defineProperty(target, key, source[key]);
         });
       } else if (Object.getOwnPropertyDescriptors) {
         Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
       } else {
-        ownKeys(source).forEach(function (key) {
+        ownKeys(Object(source)).forEach(function (key) {
           Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
         });
       }
@@ -60,7 +60,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.3.1): dom/manipulator.js
+   * Bootstrap (v5.0.0-alpha1): dom/manipulator.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -86,7 +86,7 @@
 
   function normalizeDataKey(key) {
     return key.replace(/[A-Z]/g, function (chr) {
-      return chr.toLowerCase();
+      return "-" + chr.toLowerCase();
     });
   }
 
@@ -140,5 +140,5 @@
 
   return Manipulator;
 
-}));
+})));
 //# sourceMappingURL=manipulator.js.map

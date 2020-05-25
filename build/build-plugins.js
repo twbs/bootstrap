@@ -1,7 +1,9 @@
+#!/usr/bin/env node
+
 /*!
  * Script to build our plugins to use them separately.
- * Copyright 2019 The Bootstrap Authors
- * Copyright 2019 Twitter, Inc.
+ * Copyright 2020 The Bootstrap Authors
+ * Copyright 2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
@@ -11,19 +13,14 @@ const path = require('path')
 const rollup = require('rollup')
 const babel = require('rollup-plugin-babel')
 const banner = require('./banner.js')
+const babelHelpers = require('./babel-helpers.js')
 
 const plugins = [
   babel({
     // Only transpile our source code
     exclude: 'node_modules/**',
     // Include only required helpers
-    externalHelpersWhitelist: [
-      'defineProperties',
-      'createClass',
-      'inheritsLoose',
-      'defineProperty',
-      'objectSpread2'
-    ]
+    externalHelpersWhitelist: babelHelpers
   })
 ]
 const bsPlugins = {
@@ -32,19 +29,19 @@ const bsPlugins = {
   Manipulator: path.resolve(__dirname, '../js/src/dom/manipulator.js'),
   Polyfill: path.resolve(__dirname, '../js/src/dom/polyfill.js'),
   SelectorEngine: path.resolve(__dirname, '../js/src/dom/selector-engine.js'),
-  Alert: path.resolve(__dirname, '../js/src/alert/alert.js'),
-  Button: path.resolve(__dirname, '../js/src/button/button.js'),
-  Carousel: path.resolve(__dirname, '../js/src/carousel/carousel.js'),
-  Collapse: path.resolve(__dirname, '../js/src/collapse/collapse.js'),
-  Dropdown: path.resolve(__dirname, '../js/src/dropdown/dropdown.js'),
-  Modal: path.resolve(__dirname, '../js/src/modal/modal.js'),
-  Popover: path.resolve(__dirname, '../js/src/popover/popover.js'),
-  ScrollSpy: path.resolve(__dirname, '../js/src/scrollspy/scrollspy.js'),
-  Tab: path.resolve(__dirname, '../js/src/tab/tab.js'),
-  Toast: path.resolve(__dirname, '../js/src/toast/toast.js'),
-  Tooltip: path.resolve(__dirname, '../js/src/tooltip/tooltip.js')
+  Alert: path.resolve(__dirname, '../js/src/alert.js'),
+  Button: path.resolve(__dirname, '../js/src/button.js'),
+  Carousel: path.resolve(__dirname, '../js/src/carousel.js'),
+  Collapse: path.resolve(__dirname, '../js/src/collapse.js'),
+  Dropdown: path.resolve(__dirname, '../js/src/dropdown.js'),
+  Modal: path.resolve(__dirname, '../js/src/modal.js'),
+  Popover: path.resolve(__dirname, '../js/src/popover.js'),
+  ScrollSpy: path.resolve(__dirname, '../js/src/scrollspy.js'),
+  Tab: path.resolve(__dirname, '../js/src/tab.js'),
+  Toast: path.resolve(__dirname, '../js/src/toast.js'),
+  Tooltip: path.resolve(__dirname, '../js/src/tooltip.js')
 }
-const rootPath = '../js/dist/'
+const rootPath = path.resolve(__dirname, '../js/dist/')
 
 const defaultPluginConfig = {
   external: [
@@ -59,7 +56,7 @@ const defaultPluginConfig = {
   }
 }
 
-function getConfigByPluginKey(pluginKey) {
+const getConfigByPluginKey = pluginKey => {
   if (
     pluginKey === 'Data' ||
     pluginKey === 'Manipulator' ||
@@ -146,7 +143,7 @@ const domObjects = [
   'SelectorEngine'
 ]
 
-function build(plugin) {
+const build = async plugin => {
   console.log(`Building ${plugin} plugin...`)
 
   const { external, globals } = getConfigByPluginKey(plugin)
@@ -161,23 +158,32 @@ function build(plugin) {
     pluginPath = `${rootPath}/dom/`
   }
 
-  rollup.rollup({
+  const bundle = await rollup.rollup({
     input: bsPlugins[plugin],
     plugins,
     external
-  }).then(bundle => {
-    bundle.write({
-      banner: banner(pluginFilename),
-      format: 'umd',
-      name: plugin,
-      sourcemap: true,
-      globals,
-      file: path.resolve(__dirname, `${pluginPath}${pluginFilename}`)
-    })
-      .then(() => console.log(`Building ${plugin} plugin... Done!`))
-      .catch(error => console.error(`${plugin}: ${error}`))
   })
+
+  await bundle.write({
+    banner: banner(pluginFilename),
+    format: 'umd',
+    name: plugin,
+    sourcemap: true,
+    globals,
+    file: path.resolve(__dirname, `${pluginPath}/${pluginFilename}`)
+  })
+
+  console.log(`Building ${plugin} plugin... Done!`)
 }
 
-Object.keys(bsPlugins)
-  .forEach(plugin => build(plugin))
+const main = async () => {
+  try {
+    await Promise.all(Object.keys(bsPlugins).map(plugin => build(plugin)))
+  } catch (error) {
+    console.error(error)
+
+    process.exit(1)
+  }
+}
+
+main()

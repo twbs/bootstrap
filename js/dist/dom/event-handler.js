@@ -1,17 +1,17 @@
 /*!
-  * Bootstrap event-handler.js v4.3.1 (https://getbootstrap.com/)
-  * Copyright 2011-2019 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Bootstrap event-handler.js v5.0.0-alpha1 (https://getbootstrap.com/)
+  * Copyright 2011-2020 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
   */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('./polyfill.js')) :
   typeof define === 'function' && define.amd ? define(['./polyfill.js'], factory) :
   (global = global || self, global.EventHandler = factory(global.Polyfill));
-}(this, function (polyfill_js) { 'use strict';
+}(this, (function (polyfill_js) { 'use strict';
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.3.1): util/index.js
+   * Bootstrap (v5.0.0-alpha1): util/index.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -29,7 +29,7 @@
 
   /**
    * --------------------------------------------------------------------------
-   * Bootstrap (v4.3.1): dom/event-handler.js
+   * Bootstrap (v5.0.0-alpha1): dom/event-handler.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
@@ -42,7 +42,6 @@
   var $ = getjQuery();
   var namespaceRegex = /[^.]*(?=\..*)\.|.*/;
   var stripNameRegex = /\..*/;
-  var keyEventRegex = /^key/;
   var stripUidRegex = /::\d+$/;
   var eventRegistry = {}; // Events storage
 
@@ -69,19 +68,8 @@
     return eventRegistry[uid];
   }
 
-  function fixEvent(event, element) {
-    // Add which for key events
-    if (event.which === null && keyEventRegex.test(event.type)) {
-      event.which = event.charCode === null ? event.keyCode : event.charCode;
-    }
-
-    event.delegateTarget = element;
-  }
-
   function bootstrapHandler(element, fn) {
     return function handler(event) {
-      fixEvent(event, element);
-
       if (handler.oneOff) {
         EventHandler.off(element, event.type, fn);
       }
@@ -97,8 +85,6 @@
       for (var target = event.target; target && target !== this; target = target.parentNode) {
         for (var i = domElements.length; i--;) {
           if (domElements[i] === target) {
-            fixEvent(event, target);
-
             if (handler.oneOff) {
               EventHandler.off(element, event.type, fn);
             }
@@ -239,7 +225,7 @@
 
       if (isNamespace) {
         Object.keys(events).forEach(function (elementEvent) {
-          removeNamespacedHandlers(element, events, elementEvent, originalTypeEvent.substr(1));
+          removeNamespacedHandlers(element, events, elementEvent, originalTypeEvent.slice(1));
         });
       }
 
@@ -279,7 +265,7 @@
         evt = document.createEvent('HTMLEvents');
         evt.initEvent(typeEvent, bubbles, true);
       } else {
-        evt = polyfill_js.createCustomEvent(event, {
+        evt = new CustomEvent(event, {
           bubbles: bubbles,
           cancelable: true
         });
@@ -322,5 +308,5 @@
 
   return EventHandler;
 
-}));
+})));
 //# sourceMappingURL=event-handler.js.map
