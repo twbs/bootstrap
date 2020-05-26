@@ -1,21 +1,20 @@
 'use strict'
 
-const path    = require('path')
-const babel   = require('rollup-plugin-babel')
+const path = require('path')
+const { babel } = require('@rollup/plugin-babel')
 const resolve = require('@rollup/plugin-node-resolve')
-const banner  = require('./banner.js')
-const babelHelpers = require('./babel-helpers.js')
+const banner = require('./banner.js')
 
-const BUNDLE  = process.env.BUNDLE === 'true'
+const BUNDLE = process.env.BUNDLE === 'true'
 
-let fileDest  = 'bootstrap.js'
+let fileDest = 'bootstrap.js'
 const external = ['jquery', 'popper.js']
 const plugins = [
   babel({
-  // Only transpile our source code
+    // Only transpile our source code
     exclude: 'node_modules/**',
-    // Include only required helpers
-    externalHelpersWhitelist: babelHelpers
+    // Include the helpers in the bundle, at most one copy of each
+    babelHelpers: 'bundled'
   })
 ]
 const globals = {
