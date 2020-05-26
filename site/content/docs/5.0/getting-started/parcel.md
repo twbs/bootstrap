@@ -8,7 +8,7 @@ toc: true
 
 ## Installing Parcel Bundler
 
-[Install Parcel Bundler](https://en.parceljs.org/getting_started.html)
+Install [Parcel Bundler](https://en.parceljs.org/getting_started.html).
 
 ## Installing Bootstrap
 
@@ -17,7 +17,7 @@ toc: true
 Bootstrap depends on [Popper](https://popper.js.org/), which is specified in the `peerDependencies` property.
 This means that you will have to make sure to add both of them to your `package.json` using `npm install popper.js`.
 
-When all will be completed, your app project will be structured like this :
+When all will be completed, your app project will be structured like this:
 
 {{< highlight text >}}
 myProjectName/
@@ -101,7 +101,7 @@ Include `src/index.js`
 
 {{< highlight html >}}
 <!-- index.html -->
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -117,16 +117,14 @@ Include `src/index.js`
 
 ### Edit `package.json`
 
-Add dev and build scripts.
+Add dev and build scripts in your package.json file.
 
 {{< highlight json >}}
-...
-  scripts{
-    "dev": "parcel ./src/index.html",
-    "prebuild": "rm -rf build",
-    "build": "parcel build --public-url ./ ./src/index.html --experimental-scope-hoisting  --out-dir build"
-  },
-...
+scripts{
+  "dev": "parcel ./src/index.html",
+  "prebuild": "rm -rf build",
+  "build": "parcel build --public-url ./ ./src/index.html --experimental-scope-hoisting  --out-dir build"
+}
 {{< /highlight >}}
 
 ### Run dev script
@@ -139,7 +137,7 @@ npm run dev
 
 ### Or build app files
 
-Builded files are in build/ folder
+Built files are in the `build/` folder
 
 {{< highlight bash >}}
 npm run build
