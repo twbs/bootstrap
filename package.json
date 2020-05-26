@@ -97,7 +97,7 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.9.6",
     "@babel/preset-env": "^7.9.6",
     "@rollup/plugin-babel": "^5.0.2",
-    "@rollup/plugin-commonjs": "^11.1.0",
+    "@rollup/plugin-commonjs": "^12.0.0",
     "@rollup/plugin-node-resolve": "^7.1.3",
     "autoprefixer": "^9.8.0",
     "bundlewatch": "^0.2.7",
