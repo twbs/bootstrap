@@ -43,7 +43,7 @@ Skip the download with [BootstrapCDN](https://www.bootstrapcdn.com/) to deliver 
 <script src="{{ site.cdn.js }}" integrity="{{ site.cdn.js_hash }}" crossorigin="anonymous"></script>
 {% endhighlight %}
 
-If you're using our compiled JavaScript, don't forget to include CDN versions of jQuery and Popper.js before it.
+If you're using our compiled JavaScript, don't forget to include jQuery and Popper.js, via a CDN preferably, before our JS.
 
 {% highlight html %}
 <script src="{{ site.cdn.jquery }}" integrity="{{ site.cdn.jquery_hash }}" crossorigin="anonymous"></script>
