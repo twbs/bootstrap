@@ -14,7 +14,6 @@
 
 // Individual items
 .bd-brand-item {
-  width: 100%;
   padding: 4rem 1rem;
 
   + .bd-brand-item {
@@ -35,7 +34,6 @@
 //
 
 .color-swatches {
-  display: flex;
   margin: 0 -5px;
 
   // Docs colors
@@ -56,9 +54,6 @@
 .color-swatch {
   width: 4rem;
   height: 4rem;
-  margin-right: .25rem;
-  margin-left: .25rem;
-  @include border-radius();
 
   @include media-breakpoint-up(md) {
     width: 6rem;
