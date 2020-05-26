@@ -122,6 +122,14 @@ Use flexbox alignment utilities to vertically and horizontally align columns.
       One of two columns
     </div>
   </div>
+  <div class="row justify-content-evenly">
+    <div class="col-4">
+      One of two columns
+    </div>
+    <div class="col-4">
+      One of two columns
+    </div>
+  </div>
 </div>
 {{< /example >}}
 
