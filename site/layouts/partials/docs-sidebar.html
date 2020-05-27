@@ -16,17 +16,17 @@
     {{- $is_active_group := eq $.Page.Params.group $group_slug }}
 
     <li class="my-1{{ if $is_active_group }} active{{ end }}">
-      <a class="{{ if not $is_active_group }}collapsed{{ end }}" data-toggle="collapse" href="#{{ $group_slug }}-collapse" role="button" aria-expanded="{{ $is_active_group }}"{{ if $is_active_group }} aria-current="true"{{ end }}>
+      <a class="d-inline-flex align-items-center rounded{{ if not $is_active_group }} collapsed{{ end }}" data-toggle="collapse" href="#{{ $group_slug }}-collapse" role="button" aria-expanded="{{ $is_active_group }}"{{ if $is_active_group }} aria-current="true"{{ end }}>
         {{ $group.title }}
       </a>
 
       {{- if $group.pages }}
-      <ul class="list-unstyled mb-2 collapse{{ if $is_active_group }} show{{ end }}" id="{{ $group_slug }}-collapse">
+      <ul class="list-unstyled font-weight-normal mb-2 collapse{{ if $is_active_group }} show{{ end }}" id="{{ $group_slug }}-collapse">
         {{- range $doc := $group.pages -}}
           {{- $doc_slug := $doc.title | urlize -}}
           {{- $is_active := and $is_active_group (eq $page_slug $doc_slug) -}}
           {{- $href := printf "/docs/%s/%s/%s/" $.Site.Params.docs_version $group_slug $doc_slug }}
-          <li><a href="{{ $href }}"{{ if $is_active }} class="active" aria-current="page"{{ end }}>{{ $doc.title }}</a></li>
+          <li><a href="{{ $href }}" class="d-inline-flex align-items-center rounded{{ if $is_active }} active{{ end }}"{{ if $is_active }} aria-current="page"{{ end }}>{{ $doc.title }}</a></li>
         {{- end }}
       </ul>
       {{- end }}
@@ -35,7 +35,7 @@
 
     <li class="my-3 mx-4 border-top"></li>
     <li{{ if eq $page_slug "migration" }} class="active"{{ end }}>
-      <a href="/docs/{{ $.Site.Params.docs_version }}/migration/">
+      <a href="/docs/{{ $.Site.Params.docs_version }}/migration/" class="d-inline-flex align-items-center rounded">
         Migration
       </a>
     </li>
