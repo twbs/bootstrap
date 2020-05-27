@@ -31,12 +31,12 @@ Width and height utilities are generated from the utility API in `_utilities.scs
 You can also use `max-width: 100%;` and `max-height: 100%;` utilities as needed.
 
 {{< example >}}
-{{< placeholder width="100%" height="100" class="max-w-100" text="Max-width 100%" >}}
+{{< placeholder width="100%" height="100" class="mw-100" text="Max-width 100%" >}}
 {{< /example >}}
 
 {{< example >}}
 <div style="height: 100px; background-color: rgba(255,0,0,.1);">
-  <div class="max-h-100" style="width: 100px; height: 200px; background-color: rgba(0,0,255,.1);">Max-height 100%</div>
+  <div class="mh-100" style="width: 100px; height: 200px; background-color: rgba(0,0,255,.1);">Max-height 100%</div>
 </div>
 {{< /example >}}
 
