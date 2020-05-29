@@ -3,7 +3,8 @@
 //
 
 .btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   font-family: $btn-font-family;
   font-weight: $btn-font-weight;
   line-height: $btn-line-height;
@@ -11,7 +12,6 @@
   text-align: center;
   text-decoration: if($link-decoration == none, null, none);
   white-space: $btn-white-space;
-  vertical-align: middle;
   cursor: if($enable-button-pointers, pointer, null);
   user-select: none;
   background-color: transparent;
