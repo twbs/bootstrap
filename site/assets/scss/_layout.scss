@@ -7,6 +7,7 @@
       "sidebar toc"
       "sidebar content";
     grid-template-columns: 1fr 3fr;
+    grid-template-rows: auto auto 1fr;
   }
 
   @include media-breakpoint-up(lg) {
@@ -14,6 +15,7 @@
       "sidebar intro toc"
       "sidebar content toc";
     grid-template-columns: 1fr 4fr 1fr;
+    grid-template-rows: auto 1fr;
   }
 }
 
