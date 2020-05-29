@@ -1,4 +1,6 @@
 .close {
+  width: $close-width;
+  height: $close-height;
   @include font-size($close-font-size);
   font-weight: $close-font-weight;
   line-height: 1;

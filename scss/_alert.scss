@@ -34,7 +34,8 @@
     position: absolute;
     top: 0;
     right: 0;
-    padding: $alert-padding-y $alert-padding-x;
+    width: add($close-width, $alert-padding-x);
+    height: 100%;
     color: inherit;
   }
 }

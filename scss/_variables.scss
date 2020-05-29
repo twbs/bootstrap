@@ -1249,6 +1249,8 @@ $spinner-border-width-sm: .2em !default;
 
 // Close
 
+$close-width:                       2rem !default;
+$close-height:                      $close-width !default;
 $close-font-size:                   $font-size-base * 1.5 !default;
 $close-font-weight:                 $font-weight-bold !default;
 $close-color:                       $black !default;

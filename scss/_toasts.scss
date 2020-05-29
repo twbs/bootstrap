@@ -36,6 +36,10 @@
   background-clip: padding-box;
   border-bottom: $toast-border-width solid $toast-header-border-color;
   @include border-top-radius(subtract($toast-border-radius, $toast-border-width));
+
+  .close {
+    margin: ($toast-padding-y / -2) (-$toast-padding-x) ($toast-padding-y / -2) 0;
+  }
 }
 
 .toast-body {

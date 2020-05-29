@@ -34,7 +34,7 @@ Toasts are as flexible as you need and have very little required markup. At a mi
     {{< placeholder width="20" height="20" background="#007aff" class="rounded mr-2" text="false" title="false" >}}
     <strong class="mr-auto">Bootstrap</strong>
     <small>11 mins ago</small>
-    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+    <button type="button" class="close" data-dismiss="toast" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
@@ -54,7 +54,7 @@ Toasts are slightly translucent, too, so they blend over whatever they might app
     {{< placeholder width="20" height="20" background="#007aff" class="rounded mr-2" text="false" title="false" >}}
     <strong class="mr-auto">Bootstrap</strong>
     <small class="text-muted">11 mins ago</small>
-    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+    <button type="button" class="close" data-dismiss="toast" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
@@ -74,7 +74,7 @@ When you have multiple toasts, we default to vertically stacking them in a reada
     {{< placeholder width="20" height="20" background="#007aff" class="rounded mr-2" text="false" title="false" >}}
     <strong class="mr-auto">Bootstrap</strong>
     <small class="text-muted">just now</small>
-    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+    <button type="button" class="close" data-dismiss="toast" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
@@ -88,7 +88,7 @@ When you have multiple toasts, we default to vertically stacking them in a reada
     {{< placeholder width="20" height="20" background="#007aff" class="rounded mr-2" text="false" title="false" >}}
     <strong class="mr-auto">Bootstrap</strong>
     <small class="text-muted">2 seconds ago</small>
-    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+    <button type="button" class="close" data-dismiss="toast" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
@@ -159,7 +159,7 @@ Place toasts with custom CSS as you need them. The top right is often used for n
       {{< placeholder width="20" height="20" background="#007aff" class="rounded mr-2" text="false" title="false" >}}
       <strong class="mr-auto">Bootstrap</strong>
       <small>11 mins ago</small>
-      <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+      <button type="button" class="close" data-dismiss="toast" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
@@ -183,7 +183,7 @@ For systems that generate more notifications, consider using a wrapping element 
         {{< placeholder width="20" height="20" background="#007aff" class="rounded mr-2" text="false" title="false" >}}
         <strong class="mr-auto">Bootstrap</strong>
         <small class="text-muted">just now</small>
-        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+        <button type="button" class="close" data-dismiss="toast" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -197,7 +197,7 @@ For systems that generate more notifications, consider using a wrapping element 
         {{< placeholder width="20" height="20" background="#007aff" class="rounded mr-2" text="false" title="false" >}}
         <strong class="mr-auto">Bootstrap</strong>
         <small class="text-muted">2 seconds ago</small>
-        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+        <button type="button" class="close" data-dismiss="toast" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -221,7 +221,7 @@ You can also get fancy with flexbox utilities to align toasts horizontally and/o
       {{< placeholder width="20" height="20" background="#007aff" class="rounded mr-2" text="false" title="false" >}}
       <strong class="mr-auto">Bootstrap</strong>
       <small>11 mins ago</small>
-      <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+      <button type="button" class="close" data-dismiss="toast" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
@@ -256,7 +256,7 @@ When using `autohide: false`, you must add a close button to allow users to dism
     {{< placeholder width="20" height="20" background="#007aff" class="rounded mr-2" text="false" title="false" >}}
     <strong class="mr-auto">Bootstrap</strong>
     <small>11 mins ago</small>
-    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+    <button type="button" class="close" data-dismiss="toast" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
