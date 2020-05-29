@@ -356,9 +356,28 @@ Cards include a few options for working with images. Choose from appending "imag
 
 Similar to headers and footers, cards can include top and bottom "image caps"—images at the top or bottom of a card.
 
-{% capture example %}
+<div class="bd-example">
+  <div class="card mb-3">
+    {% include icons/placeholder.svg width="100%" height="180" class="card-img-top" text="Image cap" %}
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+    {% include icons/placeholder.svg width="100%" height="180" class="card-img-bottom" text="Image cap" %}
+  </div>
+</div>
+
+{% highlight html %}
 <div class="card mb-3">
-  {% include icons/placeholder.svg width="100%" height="180" class="card-img-top" text="Image cap" %}
+  <img src="..." class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">Card title</h5>
     <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -371,10 +390,9 @@ Similar to headers and footers, cards can include top and bottom "image caps"—
     <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
   </div>
-  {% include icons/placeholder.svg width="100%" height="180" class="card-img-bottom" text="Image cap" %}
+  <img src="..." class="card-img-bottom" alt="...">
 </div>
-{% endcapture %}
-{% include example.html content=example %}
+{% endhighlight %}
 
 ### Image overlays
 
