@@ -440,7 +440,7 @@ $utilities: map-merge(
       values: italic normal
     ),
     "word-wrap": (
-      property: word-wrap,
+      property: word-wrap word-break,
       class: text,
       values: (break: break-word)
     ),
