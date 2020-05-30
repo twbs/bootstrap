@@ -78,7 +78,7 @@ Responsive variations also exist for `flex-direction`.
 
 ## Justify content
 
-Use `justify-content` utilities on flexbox containers to change the alignment of flex items on the main axis (the x-axis to start, y-axis if `flex-direction: column`). Choose from `start` (browser default), `end`, `center`, `between`, or `around`.
+Use `justify-content` utilities on flexbox containers to change the alignment of flex items on the main axis (the x-axis to start, y-axis if `flex-direction: column`). Choose from `start` (browser default), `end`, `center`, `between`, `around`, or `evenly`.
 
 <div class="bd-example">
   <div class="d-flex justify-content-start bd-highlight mb-3">
@@ -106,6 +106,11 @@ Use `justify-content` utilities on flexbox containers to change the alignment of
     <div class="p-2 bd-highlight">Flex item</div>
     <div class="p-2 bd-highlight">Flex item</div>
   </div>
+  <div class="d-flex justify-content-evenly bd-highlight">
+    <div class="p-2 bd-highlight">Flex item</div>
+    <div class="p-2 bd-highlight">Flex item</div>
+    <div class="p-2 bd-highlight">Flex item</div>
+  </div>
 </div>
 
 {{< highlight html >}}
@@ -114,6 +119,7 @@ Use `justify-content` utilities on flexbox containers to change the alignment of
 <div class="d-flex justify-content-center">...</div>
 <div class="d-flex justify-content-between">...</div>
 <div class="d-flex justify-content-around">...</div>
+<div class="d-flex justify-content-evenly">...</div>
 {{< /highlight >}}
 
 Responsive variations also exist for `justify-content`.
@@ -126,6 +132,7 @@ Responsive variations also exist for `justify-content`.
 - `.justify-content{{ .abbr }}-center`
 - `.justify-content{{ .abbr }}-between`
 - `.justify-content{{ .abbr }}-around`
+- `.justify-content{{ .abbr }}-evenly`
 {{- end -}}
 {{< /flex.inline >}}
 {{< /markdown >}}
