@@ -194,14 +194,14 @@ class Tooltip {
 
     if (event) {
       const dataKey = this.constructor.DATA_KEY
-      let context = Data.getData(event.target, dataKey)
+      let context = Data.getData(event.delegateTarget, dataKey)
 
       if (!context) {
         context = new this.constructor(
-          event.target,
+          event.delegateTarget,
           this._getDelegateConfig()
         )
-        Data.setData(event.target, dataKey, context)
+        Data.setData(event.delegateTarget, dataKey, context)
       }
 
       context._activeTrigger.click = !context._activeTrigger.click
@@ -587,14 +587,14 @@ class Tooltip {
 
   _enter(event, context) {
     const dataKey = this.constructor.DATA_KEY
-    context = context || Data.getData(event.target, dataKey)
+    context = context || Data.getData(event.delegateTarget, dataKey)
 
     if (!context) {
       context = new this.constructor(
-        event.target,
+        event.delegateTarget,
         this._getDelegateConfig()
       )
-      Data.setData(event.target, dataKey, context)
+      Data.setData(event.delegateTarget, dataKey, context)
     }
 
     if (event) {
@@ -627,14 +627,14 @@ class Tooltip {
 
   _leave(event, context) {
     const dataKey = this.constructor.DATA_KEY
-    context = context || Data.getData(event.target, dataKey)
+    context = context || Data.getData(event.delegateTarget, dataKey)
 
     if (!context) {
       context = new this.constructor(
-        event.target,
+        event.delegateTarget,
         this._getDelegateConfig()
       )
-      Data.setData(event.target, dataKey, context)
+      Data.setData(event.delegateTarget, dataKey, context)
     }
 
     if (event) {
