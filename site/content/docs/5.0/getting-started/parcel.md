@@ -18,7 +18,7 @@ Bootstrap depends on [Popper](https://popper.js.org/), which is specified in the
 
 When all will be completed, your project will be structured like this:
 
-{{< highlight text >}}
+```text
 project-name/
 ├── build/
 ├── node_modules/
@@ -30,13 +30,13 @@ project-name/
 │   └── index.html
 │   └── index.js
 └── package.json
-{{< /highlight >}}
+```
 
 ## Importing JavaScript
 
 Import [Bootstrap's JavaScript]({{< docsref "/getting-started/javascript" >}}) in your app's entry point (usually `src/index.js`). You can import all our plugins in one file or separately if you require only a subset of them.
 
-{{< highlight js >}}
+```js
 // Import all plugins
 import * as bootstrap from 'bootstrap';
 
@@ -45,11 +45,11 @@ import { Tooltip as Tooltip, Toast as Toast, Popover as Popover } from 'bootstra
 
 // Or import just one
 import Alert as Alert from '../node_modules/bootstrap/js/dist/alert';
-{{< /highlight >}}
+```
 
 ## Importing CSS
 
-To utilizie the full potential of Bootstrap and customize it to your needs, use the source files as a part of your project's bundling process.
+To utilize the full potential of Bootstrap and customize it to your needs, use the source files as a part of your project's bundling process.
 
 Create your own `scss/custom.scss` to [import Bootstrap's Sass files]({{< docsref "/customize/sass#importing" >}}) and then override the [built-in custom variables]({{< docsref "/customize/sass#variable-defaults" >}}).
 
@@ -57,7 +57,7 @@ Create your own `scss/custom.scss` to [import Bootstrap's Sass files]({{< docsre
 
 Include `src/index.js` before the closing `</body>` tag.
 
-{{< highlight html >}}
+```html
 <!doctype html>
 <html lang="en">
   <head>
@@ -68,32 +68,32 @@ Include `src/index.js` before the closing `</body>` tag.
     <script src="./index.js"></script>
   </body>
 </html>
-{{< /highlight >}}
+```
 
 ### Edit `package.json`
 
-Add dev and build scripts in your `package.json` file.
+Add `dev` and `build` scripts in your `package.json` file.
 
-{{< highlight json >}}
-scripts{
+```json
+"scripts": {
   "dev": "parcel ./src/index.html",
-  "prebuild": "rm -rf build",
-  "build": "parcel build --public-url ./ ./src/index.html --experimental-scope-hoisting  --out-dir build"
+  "prebuild": "npx rimraf build",
+  "build": "parcel build --public-url ./ ./src/index.html --experimental-scope-hoisting --out-dir build"
 }
-{{< /highlight >}}
+```
 
 ### Run dev script
 
 Your app will be accessible at `http://127.0.0.1:1234`.
 
-{{< highlight bash >}}
+```sh
 npm run dev
-{{< /highlight >}}
+```
 
 ### Build app files
 
 Built files are in the `build/` folder.
 
-{{< highlight bash >}}
+```sh
 npm run build
-{{< /highlight >}}
+```
