@@ -136,9 +136,6 @@ $utilities: map-merge(
       property: max-height,
       class: max-h,
       values: (
-        25: 25%,
-        50: 50%,
-        75: 75%,
         100: 100%
       )
     ),
@@ -146,9 +143,6 @@ $utilities: map-merge(
       property: min-height,
       class: min-h,
       values: (
-        25: 25%,
-        50: 50%,
-        75: 75%,
         100: 100%
       )
     ),
@@ -207,7 +201,6 @@ $utilities: map-merge(
         center: center,
         between: space-between,
         around: space-around,
-        evenly: space-evenly,
       )
     ),
     "align-items": (
