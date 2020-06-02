@@ -95,7 +95,7 @@
     "@babel/cli": "^7.10.1",
     "@babel/core": "^7.10.2",
     "@babel/plugin-proposal-object-rest-spread": "^7.10.1",
-    "@babel/preset-env": "^7.9.6",
+    "@babel/preset-env": "^7.10.2",
     "@rollup/plugin-babel": "^5.0.2",
     "@rollup/plugin-commonjs": "^12.0.0",
     "@rollup/plugin-node-resolve": "^7.1.3",
