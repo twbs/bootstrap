@@ -93,7 +93,7 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.9.6",
+    "@babel/core": "^7.10.2",
     "@babel/plugin-proposal-object-rest-spread": "^7.9.6",
     "@babel/preset-env": "^7.9.6",
     "@rollup/plugin-babel": "^5.0.2",
@@ -134,7 +134,7 @@
     "serve": "^11.3.1",
     "shelljs": "^0.8.4",
     "stylelint": "^13.5.0",
-    "stylelint-config-twbs-bootstrap": "^2.0.2",
+    "stylelint-config-twbs-bootstrap": "^2.0.3",
     "terser": "^4.7.0",
     "vnu-jar": "20.3.16"
   },
