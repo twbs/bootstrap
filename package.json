@@ -93,7 +93,7 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.9.6",
+    "@babel/core": "^7.10.2",
     "@babel/plugin-proposal-object-rest-spread": "^7.9.6",
     "@babel/preset-env": "^7.9.6",
     "@rollup/plugin-babel": "^5.0.2",
@@ -106,7 +106,7 @@
     "eslint": "^7.1.0",
     "eslint-config-xo": "^0.29.1",
     "eslint-plugin-import": "^2.20.2",
-    "eslint-plugin-unicorn": "^20.0.0",
+    "eslint-plugin-unicorn": "^20.1.0",
     "find-unused-sass-variables": "^2.0.0",
     "glob": "^7.1.6",
     "hammer-simulator": "0.0.1",
@@ -134,7 +134,7 @@
     "serve": "^11.3.1",
     "shelljs": "^0.8.4",
     "stylelint": "^13.5.0",
-    "stylelint-config-twbs-bootstrap": "^2.0.2",
+    "stylelint-config-twbs-bootstrap": "^2.0.3",
     "terser": "^4.7.0",
     "vnu-jar": "20.5.29"
   },
