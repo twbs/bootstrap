@@ -24,14 +24,15 @@
 @apim-fail:             #d9534f;
 @apim-warn:             rgb(247, 163, 92);
 
-@apim2-main:            #1B1D30;
-@apim2-accent:          #00A5EF;
 @apim2-text:            white;
+@apim2-darkpurple:      #1B1D30;
 @apim2-blue:            #00A5EF;
 @apim2-purple:          #121421;
-@apim2-darkpurple:      #131422;
 @apim2-border:          #38384B;
 @apim2-deemphasize:     grey;
+
+@apim2-main:            @apim2-darkpurple;
+@apim2-accent:          @apim2-blue;
 
 // NEW COLORS
 @apim-pri-bg:            rgba(46, 49, 146, 1);
@@ -437,21 +438,21 @@
 @navbar-padding-vertical:          ((@navbar-height - @line-height-computed) / 2);
 @navbar-collapse-max-height:       340px;
 
-@navbar-default-color:             @apim-pri-color;
-@navbar-default-bg:                @apim-pri-bg;
-@navbar-default-border:            @apim-pri-border; //darken(@navbar-default-bg, 6.5%);
+@navbar-default-color:             @apim2-text;
+@navbar-default-bg:                @apim2-purple;
+@navbar-default-border:            @apim2-border;
 
-@navbar-default-shadow-color:           @apim-pri-color;
-@navbar-default-shadow-color-active:    @apim-pri-color;
-@navbar-default-shadow-color-hover:     @apim-pri-color;
+@navbar-default-shadow-color:           @apim2-border;
+@navbar-default-shadow-color-active:    @apim2-border;
+@navbar-default-shadow-color-hover:     @apim2-border;
 
 // Navbar links
-@navbar-default-link-color:                @apim-pri-color;
-@navbar-default-link-hover-color:          @apim-sec-bg;
-@navbar-default-link-hover-bg:             transparent;
-@navbar-default-link-active-color:         @apim-pri-color;
+@navbar-default-link-color:                @apim2-text;
+@navbar-default-link-hover-color:          @apim2-accent;
+@navbar-default-link-hover-bg:             @apim2-darkpurple;
+@navbar-default-link-active-color:         @apim2-text;
 @navbar-default-link-active-bg:            transparent;
-@navbar-default-link-disabled-color:       @apim-pri-color;
+@navbar-default-link-disabled-color:       @apim2-deemphasize;
 @navbar-default-link-disabled-bg:          transparent;
 
 // Navbar brand label
@@ -470,8 +471,8 @@
 // ##
 @sidebar-default-color:             white;
 @sidebar-default-color-focus:       @apim2-accent;
-@sidebar-default-bg:                @apim2-darkpurple;
-@sidebar-default-bg-focus:          @apim2-purple;
+@sidebar-default-bg:                @apim2-purple;
+@sidebar-default-bg-focus:          @apim2-darkpurple;
 @sidebar-default-border:            @apim2-border;
 
 

@@ -201,8 +201,6 @@ b, strong {
 
 // Default navbar
 .navbar-default {
-  .opacity(0.95);
-
   border-radius: @navbar-border-radius;
   .box-shadow(inset 0 -@navbar-default-shadow-height 0px 0px @navbar-default-shadow-color);
 
@@ -214,11 +212,32 @@ b, strong {
     .box-shadow(0 @navbar-default-shadow-height 0px 0px @navbar-default-shadow-color);
 
     background-color: @navbar-default-bg;
+
     > li > a {
       color: @navbar-default-color;
 
       &:active,
       &:hover {
+        color: @navbar-default-link-hover-color;
+        background-color: @navbar-default-link-hover-bg;
+      }
+
+      > i {
+        color: @navbar-default-link-hover-color;
+      }
+    }
+  }
+
+  .navbar-nav {
+    > li > a {
+      color: @navbar-default-color;
+
+      &:active,
+      &:hover {
+        color: @navbar-default-link-hover-color;
+      }
+
+      > i {
         color: @navbar-default-link-hover-color;
       }
     }
