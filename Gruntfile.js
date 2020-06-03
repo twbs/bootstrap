@@ -52,7 +52,7 @@ module.exports = function (grunt) {
     clean: {
       dist: 'dist',
       docs: 'docs/dist',
-      apimcss:  '../APImetrics-GAE-Server/static/css/bootstrap/',
+      apimcss:  '../APIm-Feature/APIm-Backend/static/css/bootstrap/',
     },
 
     jshint: {
@@ -293,7 +293,7 @@ module.exports = function (grunt) {
         expand: true,
         flatten: true,
         src: 'dist/css/*',
-        dest: '../APImetrics-GAE-Server/static/css/bootstrap/'
+        dest: '../APIm-Feature/APIm-Backend/static/css/bootstrap/'
       }
     },
 
