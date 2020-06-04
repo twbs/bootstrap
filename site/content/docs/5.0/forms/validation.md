@@ -4,6 +4,9 @@ title: Validation
 description: Provide valuable, actionable feedback to your users with HTML5 form validation, via browser default behaviors or custom styles and JavaScript.
 group: forms
 toc: true
+extra_js:
+  - src: "/docs/5.0/assets/js/validate-forms.js"
+    async: true
 ---
 
 {{< callout warning >}}
@@ -96,29 +99,12 @@ Custom feedback styles apply custom colors, borders, focus styles, and backgroun
     <button class="btn btn-primary" type="submit">Submit form</button>
   </div>
 </form>
+{{< /example >}}
 
-<script>
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-(function () {
-  'use strict';
-
-  // Fetch all the forms we want to apply custom Bootstrap validation styles to
-  var forms = document.querySelectorAll('.needs-validation');
-
-  // Loop over them and prevent submission
-  Array.prototype.slice.call(forms)
-    .forEach(function (form) {
-      form.addEventListener('submit', function (event) {
-        if (!form.checkValidity()) {
-          event.preventDefault();
-          event.stopPropagation();
-        }
-
-        form.classList.add('was-validated');
-      }, false);
-    });
-})();
-</script>
+{{< example lang="js" show_preview="false" >}}
+{{< js.inline >}}
+{{- readFile (printf "site/static/docs/%s/assets/js/validate-forms.js" .Site.Params.docs_version) -}}
+{{< /js.inline >}}
 {{< /example >}}
 
 ## Browser defaults

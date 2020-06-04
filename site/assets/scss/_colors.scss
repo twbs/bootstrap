@@ -2,17 +2,41 @@
 // Docs color palette classes
 //
 
-@each $color, $value in $colors {
+@each $color, $value in map-merge($colors, ("gray-500": $gray-500)) {
   .swatch-#{$color} {
     color: color-contrast($value);
     background-color: #{$value};
-  }
-}
 
-@each $color, $value in $grays {
-  .swatch-#{$color} {
-    color: color-contrast($value);
-    background-color: #{$value};
+    &::after {
+      $contrast-ratio: "#{contrast-ratio($value, color-contrast($value))}";
+      $against-white: "#{contrast-ratio($value, $white)}";
+      $against-black: "#{contrast-ratio($value, $black)}";
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      padding-left: 1rem;
+      font-size: .75rem;
+      line-height: 1.35;
+      white-space: pre;
+      content:
+        str-slice($contrast-ratio, 1, 4) "\A"
+        str-slice($against-white, 1, 4) "\A"
+        str-slice($against-black, 1, 4);
+      background-color: $value;
+      background-image:
+        linear-gradient(
+          to bottom,
+          transparent .25rem,
+          color-contrast($value) .25rem .75rem,
+          transparent .75rem 1.25rem,
+          $white 1.25rem 1.75rem,
+          transparent 1.75rem 2.25rem,
+          $black 2.25rem 2.75rem,
+          transparent 2.75rem
+        );
+      background-repeat: no-repeat;
+      background-size: .5rem 100%;
+    }
   }
 }
 
@@ -128,5 +152,5 @@
 .bd-gray-800 { color: color-contrast($gray-800); background-color: $gray-800; }
 .bd-gray-900 { color: color-contrast($gray-900); background-color: $gray-900; }
 
-.bd-white { color: color-yiq($white); background-color: $white; }
-.bd-black { color: color-yiq($black); background-color: $black; }
+.bd-white { color: color-contrast($white); background-color: $white; }
+.bd-black { color: color-contrast($black); background-color: $black; }

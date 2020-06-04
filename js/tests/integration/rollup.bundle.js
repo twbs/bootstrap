@@ -1,7 +1,7 @@
 /* eslint-env node */
 
 const resolve = require('@rollup/plugin-node-resolve')
-const babel = require('rollup-plugin-babel')
+const { babel } = require('@rollup/plugin-babel')
 
 module.exports = {
   input: 'js/tests/integration/bundle.js',
@@ -12,7 +12,8 @@ module.exports = {
   plugins: [
     resolve(),
     babel({
-      exclude: 'node_modules/**'
+      exclude: 'node_modules/**',
+      babelHelpers: 'bundled'
     })
   ]
 }

@@ -8,6 +8,7 @@
     show_markup: if the markup should be output in the HTML - default: `true`
 */ -}}
 
+{{- $lang := .Get "lang" | default "html" -}}
 {{- $show_preview := .Get "show_preview" | default true -}}
 {{- $show_markup := .Get "show_markup" | default true -}}
 {{- $input := .Inner -}}
@@ -21,5 +22,5 @@
 {{- if eq $show_markup true -}}
   {{- $content := replaceRE `<svg class="bd\-placeholder\-img(?:\-lg)?(?: *?bd\-placeholder\-img\-lg)? ?(.*?)".*?<\/svg>\n` `<img src="..." class="$1" alt="...">` $input -}}
   {{- $content = replaceRE `(class=" *?")` "" $content -}}
-  {{- highlight (trim $content "\n") "html" "" -}}
+  {{- highlight (trim $content "\n") $lang "" -}}
 {{- end -}}
