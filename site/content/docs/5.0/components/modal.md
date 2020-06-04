@@ -577,7 +577,7 @@ If the height of a modal changes while it is open, you should call `myModal.hand
 
 ### Accessibility
 
-Be sure to add `aria-labelledby="..."`, referencing the modal title, to `.modal`. Additionally, you may give a description of your modal dialog with `aria-describedby` on `.modal`.
+Be sure to add `aria-labelledby="..."`, referencing the modal title, to `.modal`. Additionally, you may give a description of your modal dialog with `aria-describedby` on `.modal`. Note that you don't need to add `role="dialog"` since we already add it via JavaScript.
 
 ### Embedding YouTube videos
 
