@@ -14,8 +14,8 @@
 
   // Bring the hover, focused, and "active" buttons to the front to overlay
   // the borders properly
-  > .btn-toggle:checked + .btn,
-  > .btn-toggle:focus + .btn,
+  > .btn-check:checked + .btn,
+  > .btn-check:focus + .btn,
   > .btn:hover,
   > .btn:focus,
   > .btn:active,
@@ -51,7 +51,7 @@
   // - Target second buttons which are not part of toggle buttons
   // - Target third or more child
   // - Target buttons in a button group
-  > :not(.btn-toggle) + .btn,
+  > :not(.btn-check) + .btn,
   > .btn:nth-child(n + 3),
   > .btn-group:not(:first-child) > .btn {
     @include border-left-radius(0);

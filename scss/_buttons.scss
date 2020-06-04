@@ -24,14 +24,14 @@
     text-decoration: if($link-hover-decoration == underline, none, null);
   }
 
-  .btn-toggle:focus + &,
+  .btn-check:focus + &,
   &:focus {
     outline: 0;
     box-shadow: $btn-focus-box-shadow;
   }
 
-  .btn-toggle:checked + &,
-  .btn-toggle:active + &,
+  .btn-check:checked + &,
+  .btn-check:active + &,
   &:active,
   &.active {
     @include box-shadow($btn-active-box-shadow);

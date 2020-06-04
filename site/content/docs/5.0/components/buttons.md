@@ -103,7 +103,7 @@ The `.disabled` class uses `pointer-events: none` to try to disable the link fun
 
 ## Button plugin
 
-Do more with buttons. Control button states or create groups of buttons for more components like toolbars.
+The button plugin allows you to create simple on/off toggle buttons.
 
 ### Toggle states
 
