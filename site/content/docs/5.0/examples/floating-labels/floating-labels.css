@@ -86,9 +86,15 @@ body {
 /* Fallback for Edge
 -------------------------------------------------- */
 @supports (-ms-ime-align: auto) {
-  .form-label-group > label {
-    display: none;
+  .form-label-group {
+    display: flex;
+    flex-direction: column-reverse;
   }
+
+  .form-label-group label {
+    position: static;
+  }
+
   .form-label-group input::-ms-input-placeholder {
     color: #777;
   }
