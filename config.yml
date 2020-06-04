@@ -1,0 +1,78 @@
+languageCode:           "en"
+title:                  "Bootstrap"
+baseURL:                "https://getbootstrap.com"
+enableInlineShortcodes: true
+
+markup:
+  goldmark:
+    renderer:
+      unsafe:           true
+  highlight:
+    noClasses:          false
+  tableOfContents:
+    startLevel:         2
+    endLevel:           6
+
+buildDrafts:            true
+buildFuture:            true
+
+enableRobotsTXT:        true
+metaDataFormat:         "yaml"
+disableKinds:           ["404", "taxonomy", "taxonomyTerm", "RSS"]
+
+publishDir:             "_gh_pages"
+
+module:
+  mounts:
+    - source:           dist
+      target:           static/docs/5.0/dist
+    - source:           site/assets
+      target:           assets
+    - source:           site/content
+      target:           content
+    - source:           site/data
+      target:           data
+    - source:           site/layouts
+      target:           layouts
+    - source:           site/static
+      target:           static
+    - source:           site/static/docs/5.0/assets/img/favicons/apple-touch-icon.png
+      target:           static/apple-touch-icon.png
+    - source:           site/static/docs/5.0/assets/img/favicons/favicon.ico
+      target:           static/favicon.ico
+
+params:
+  description:          "The most popular HTML, CSS, and JS library in the world."
+  authors:              "Mark Otto, Jacob Thornton, and Bootstrap contributors"
+  social_image_path:    /docs/5.0/assets/brand/bootstrap-social.png
+  social_logo_path:     /docs/5.0/assets/brand/bootstrap-social-logo.png
+
+  current_version:      "5.0.0-alpha1"
+  current_ruby_version: "5.0.0-alpha1"
+  docs_version:         "5.0"
+  rfs_version:          "9.0.2"
+  github_org:           "https://github.com/twbs"
+  repo:                 "https://github.com/twbs/bootstrap"
+  twitter:              "getbootstrap"
+  slack:                "https://bootstrap-slack.herokuapp.com/"
+  opencollective:       "https://opencollective.com/bootstrap"
+  blog:                 "https://blog.getbootstrap.com/"
+  expo:                 "https://expo.getbootstrap.com/"
+  themes:               "https://themes.getbootstrap.com/"
+  icons:                "https://icons.getbootstrap.com/"
+
+  download:
+    source:             "https://github.com/twbs/bootstrap/archive/v5.0.0-alpha1.zip"
+    dist:               "https://github.com/twbs/bootstrap/releases/download/v5.0.0-alpha1/bootstrap-5.0.0-alpha1-dist.zip"
+    dist_examples:      "https://github.com/twbs/bootstrap/releases/download/v5.0.0-alpha1/bootstrap-5.0.0-alpha1-examples.zip"
+
+  cdn:
+    # See https://www.srihash.org for info on how to generate the hashes
+    css:              "https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+    css_hash:         "sha384-j6A7bHxDBHFP/fFU0tDYWO5rC0fHU73OIMyfXyWjUP7LjULfhY6sXSyWLgIuop+J"
+    js:               "https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+    js_hash:          "sha384-3HDYci1RjYapKWcHOlx69VoYNavBQG79CDT/WLM9FTVQp1TpM5cBd8XlCEhumbsq"
+    js_bundle:        "https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js"
+    js_bundle_hash:   "sha384-E7NTjoTX5oFTbvRPPC4hH5dHD+I3L/DVPjIc1vJs1HaLyTPrBXCbRL2nJDdGJOV/"
+    popper:           "https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    popper_hash:      "sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"

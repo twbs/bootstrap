@@ -1,0 +1,70 @@
+//
+// Bootstrap docs content theming
+//
+
+.bd-content {
+  // Offset for the sticky header
+  > [id] {
+    @include media-breakpoint-up(md) {
+      scroll-margin-top: 4rem;
+    }
+  }
+
+  > h2:not(:first-child) {
+    margin-top: 3rem;
+  }
+
+  > h3 {
+    margin-top: 2rem;
+  }
+
+  > ul li,
+  > ol li {
+    margin-bottom: .25rem;
+  }
+
+  // Override Bootstrap defaults
+  > .table {
+    max-width: 100%;
+    margin-bottom: 1.5rem;
+    @include font-size(.875rem);
+
+    @include media-breakpoint-down(md) {
+      display: block;
+      overflow-x: auto;
+
+      &.table-bordered {
+        border: 0;
+      }
+    }
+
+    th,
+    td {
+      &:first-child {
+        padding-left: 0;
+      }
+
+      &:not(:last-child) {
+        padding-right: 1.5rem;
+      }
+    }
+
+    // Prevent breaking of code
+    td:first-child > code {
+      white-space: nowrap;
+    }
+  }
+}
+
+.bd-title {
+  @include font-size(3rem);
+}
+
+.bd-lead {
+  @include font-size(1.5rem);
+  font-weight: 300;
+}
+
+.bd-text-purple-bright {
+  color: $bd-purple-bright;
+}

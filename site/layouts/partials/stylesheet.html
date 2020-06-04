@@ -1,0 +1,20 @@
+{{- "<!-- Bootstrap core CSS -->" | safeHTML }}
+{{ if eq hugo.Environment "production" -}}
+<link href="/docs/{{ .Site.Params.docs_version }}/dist/css/bootstrap.min.css" rel="stylesheet" {{ printf "integrity=%q" .Site.Params.cdn.css_hash | safeHTMLAttr }} crossorigin="anonymous">
+{{- else -}}
+<link href="/docs/{{ .Site.Params.docs_version }}/dist/css/bootstrap.css" rel="stylesheet">
+{{- end }}
+
+{{- if (ne .Page.Layout "examples") }}
+{{- $targetDocsCssPath := printf "/docs/%s/assets/css/docs.css" .Site.Params.docs_version -}}
+{{- $sassOptions := dict "targetPath" $targetDocsCssPath "precision" 6 -}}
+{{- $postcssOptions := dict "use" "autoprefixer" "noMap" true -}}
+
+{{ if eq hugo.Environment "production" -}}
+  {{- $sassOptions = merge $sassOptions (dict "outputStyle" "compressed") -}}
+{{- end -}}
+
+{{- $style := resources.Get "scss/docs.scss" | toCSS $sassOptions | postCSS $postcssOptions }}
+
+<link rel="stylesheet" href="{{ $style.Permalink | relURL }}">
+{{- end }}

@@ -1,0 +1,18 @@
+//
+// Footer
+//
+
+.bd-footer {
+  @include font-size(.875rem);
+  color: #63707c;
+
+  a {
+    font-weight: 600;
+    color: $gray-700;
+
+    &:hover,
+    &:focus {
+      color: $link-color;
+    }
+  }
+}

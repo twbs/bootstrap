@@ -1,0 +1,64 @@
+.bd-links {
+  font-weight: 600;
+
+  @include media-breakpoint-up(md) {
+    position: sticky;
+    top: 5rem;
+    // Override collapse behaviors
+    // stylelint-disable-next-line declaration-no-important
+    display: block !important;
+    height: subtract(100vh, 7rem);
+    // Prevent focus styles to be cut off:
+    padding-left: .25rem;
+    margin-left: -.25rem;
+    overflow-y: auto;
+  }
+
+  a {
+    padding: .1875rem .5rem;
+    margin-top: .125rem;
+    color: rgba($black, .65);
+    text-decoration: if($link-decoration == none, null, none);
+
+    &:hover,
+    &:focus {
+      color: rgba($black, .85);
+      text-decoration: if($link-hover-decoration == underline, none, null);
+      background-color: rgba($bd-purple-bright, .1);
+    }
+
+    // Indent if there's no submenu
+    &:only-child {
+      margin-left: 1.25rem;
+    }
+
+    // Add chevron if there's a submenu
+    &:not(:only-child) {
+      &::before {
+        width: 1.25em;
+        line-height: 0; // Align in the middle
+        content: escape-svg($sidebar-collapse-icon);
+        @include transition(transform .35s ease);
+        transform-origin: .5em 50%;
+      }
+
+      &:not(.collapsed) {
+        color: rgba($black, .85);
+
+        &::before {
+          transform: rotate(90deg);
+        }
+      }
+    }
+
+    // Adjust font size and font weights in submenu
+    + ul {
+      @include font-size(.875rem);
+    }
+  }
+
+  .active {
+    font-weight: 600;
+    color: rgba($black, .85);
+  }
+}

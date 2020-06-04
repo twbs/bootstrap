@@ -1,0 +1,133 @@
+// This mixin uses an `if()` technique to be compatible with Dart Sass
+// See https://github.com/sass/sass/issues/1873#issuecomment-152293725 for more details
+@mixin form-validation-state-selector($state) {
+  @if ($state == "valid" or $state == "invalid") {
+    .was-validated #{if(&, "&", "")}:#{$state},
+    #{if(&, "&", "")}.is-#{$state} {
+      @content;
+    }
+  } @else {
+    #{if(&, "&", "")}.is-#{$state} {
+      @content;
+    }
+  }
+}
+
+@mixin form-validation-state($state, $color, $icon) {
+  .#{$state}-feedback {
+    display: none;
+    width: 100%;
+    margin-top: $form-feedback-margin-top;
+    @include font-size($form-feedback-font-size);
+    font-style: $form-feedback-font-style;
+    color: $color;
+  }
+
+  .#{$state}-tooltip {
+    position: absolute;
+    top: 100%;
+    z-index: 5;
+    display: none;
+    max-width: 100%; // Contain to parent when possible
+    padding: $form-feedback-tooltip-padding-y $form-feedback-tooltip-padding-x;
+    margin-top: .1rem;
+    @include font-size($form-feedback-tooltip-font-size);
+    line-height: $form-feedback-tooltip-line-height;
+    color: color-contrast($color);
+    background-color: rgba($color, $form-feedback-tooltip-opacity);
+    @include border-radius($form-feedback-tooltip-border-radius);
+  }
+
+  @include form-validation-state-selector($state) {
+    ~ .#{$state}-feedback,
+    ~ .#{$state}-tooltip {
+      display: block;
+    }
+  }
+
+  .form-control {
+    @include form-validation-state-selector($state) {
+      border-color: $color;
+
+      @if $enable-validation-icons {
+        padding-right: $input-height-inner;
+        background-image: escape-svg($icon);
+        background-repeat: no-repeat;
+        background-position: right $input-height-inner-quarter center;
+        background-size: $input-height-inner-half $input-height-inner-half;
+      }
+
+      &:focus {
+        border-color: $color;
+        box-shadow: 0 0 0 $input-focus-width rgba($color, $input-btn-focus-color-opacity);
+      }
+    }
+  }
+
+  // stylelint-disable-next-line selector-no-qualifying-type
+  textarea.form-control {
+    @include form-validation-state-selector($state) {
+      @if $enable-validation-icons {
+        padding-right: $input-height-inner;
+        background-position: top $input-height-inner-quarter right $input-height-inner-quarter;
+      }
+    }
+  }
+
+  .form-select {
+    @include form-validation-state-selector($state) {
+      border-color: $color;
+
+      @if $enable-validation-icons {
+        padding-right: $form-select-feedback-icon-padding-right;
+        background-image: escape-svg($form-select-indicator), escape-svg($icon);
+        background-position: $form-select-bg-position, $form-select-feedback-icon-position;
+        background-size: $form-select-bg-size, $form-select-feedback-icon-size;
+      }
+
+      &:focus {
+        border-color: $color;
+        box-shadow: 0 0 0 $input-focus-width rgba($color, .25);
+      }
+    }
+  }
+
+  .form-check-input {
+    @include form-validation-state-selector($state) {
+      border-color: $color;
+
+      &:checked {
+        background-color: $color;
+      }
+
+      &:focus {
+        box-shadow: 0 0 0 $input-focus-width rgba($color, .25);
+      }
+
+      ~ .form-check-label {
+        color: $color;
+      }
+    }
+  }
+  .form-check-inline .form-check-input {
+    ~ .#{$state}-feedback {
+      margin-left: .5em;
+    }
+  }
+
+  // custom file
+  .form-file-input {
+    @include form-validation-state-selector($state) {
+      ~ .form-file-label {
+        border-color: $color;
+      }
+
+      &:focus {
+        ~ .form-file-label {
+          border-color: $color;
+          box-shadow: 0 0 0 $input-focus-width rgba($color, .25);
+        }
+      }
+    }
+  }
+}

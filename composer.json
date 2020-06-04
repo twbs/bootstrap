@@ -4,14 +4,14 @@
   "keywords": [
     "css",
     "js",
-    "less",
+    "sass",
     "mobile-first",
     "responsive",
     "front-end",
     "framework",
     "web"
   ],
-  "homepage": "http://getbootstrap.com",
+  "homepage": "https://getbootstrap.com/",
   "authors": [
     {
       "name": "Mark Otto",
@@ -26,11 +26,6 @@
     "issues": "https://github.com/twbs/bootstrap/issues"
   },
   "license": "MIT",
-  "extra": {
-    "branch-alias": {
-      "dev-master": "3.2.x-dev"
-    }
-  },
   "replace": {
     "twitter/bootstrap": "self.version"
   }

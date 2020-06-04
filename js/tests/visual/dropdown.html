@@ -1,97 +1,221 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Dropdown</title>
-  <link rel="stylesheet" type="text/css" href="../../../dist/css/bootstrap.min.css">
-</head>
-<body>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../dist/css/bootstrap.min.css">
+    <title>Dropdown</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Dropdown <small>Bootstrap Visual Test</small></h1>
 
-<div class="container">
-
-  <div class="page-header">
-    <h1>Dropdown <small>Bootstrap Visual Test</small></h1>
-  </div>
-
-  <nav id="navbar-example" class="navbar navbar-default navbar-static" role="navigation">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".bs-example-js-navbar-collapse">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
+      <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href="#">Project Name</a>
+
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="dropdown" data-toggle="dropdown" aria-expanded="false">Dropdown</a>
+              <ul class="dropdown-menu" aria-labelledby="dropdown">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <ul class="nav nav-pills mt-3">
+        <li class="nav-item">
+          <a class="nav-link active" href="#">Active</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown2" data-toggle="dropdown" aria-expanded="false">Dropdown</a>
+          <ul class="dropdown-menu" aria-labelledby="dropdown2">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="row">
+        <div class="col-sm-12 mt-4">
+          <div class="dropdown">
+            <button type="button" class="btn btn-secondary" data-toggle="dropdown" aria-expanded="false">Dropdown</button>
+            <div class="dropdown-menu">
+              <input id="textField" type="text">
+            </div>
+          </div>
+          <div class="btn-group dropup">
+            <button type="button" class="btn btn-secondary">Dropup split</button>
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+              <span class="sr-only">Dropup split</span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </div>
+
+          <div class="btn-group dropup">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Dropup</button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </div>
+
+          <div class="btn-group">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+              This dropdown's menu is right-aligned
+            </button>
+            <div class="dropdown-menu dropdown-menu-right">
+              <button class="dropdown-item" type="button">Action</button>
+              <button class="dropdown-item" type="button">Another action</button>
+              <button class="dropdown-item" type="button">Something else here</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-12 mt-4">
+          <div class="btn-group dropup" role="group">
+            <a href="#" class="btn btn-secondary">Dropup split align right</a>
+            <button type="button" id="dropdown-page-subheader-button-3" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false">
+              <span class="sr-only">Product actions</span>
+            </button>
+            <div class="dropdown-menu dropdown-menu-right">
+              <button class="dropdown-item" type="button">Action</button>
+              <button class="dropdown-item" type="button">Another action</button>
+              <button class="dropdown-item" type="button">Something else here with a long text</button>
+            </div>
+          </div>
+          <div class="btn-group dropup">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Dropup align right</button>
+            <div class="dropdown-menu dropdown-menu-right">
+              <button class="dropdown-item" type="button">Action</button>
+              <button class="dropdown-item" type="button">Another action</button>
+              <button class="dropdown-item" type="button">Something else here with a long text</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-12 mt-4">
+          <div class="btn-group dropright" role="group">
+            <a href="#" class="btn btn-secondary">Dropright split</a>
+            <button type="button" id="dropdown-page-subheader-button-4" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false">
+              <span class="sr-only">Product actions</span>
+            </button>
+            <div class="dropdown-menu">
+              <button class="dropdown-item" type="button">Action</button>
+              <button class="dropdown-item" type="button">Another action</button>
+              <button class="dropdown-item" type="button">Something else here with a long text</button>
+            </div>
+          </div>
+          <div class="btn-group dropright">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuRight" data-toggle="dropdown" aria-expanded="false">
+              Dropright
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuRight">
+              <button class="dropdown-item" type="button">Action</button>
+              <button class="dropdown-item" type="button">Another action</button>
+              <button class="dropdown-item" type="button">Something else here</button>
+            </div>
+          </div>
+          <!-- dropleft -->
+          <div class="btn-group dropleft" role="group">
+            <a href="#" class="btn btn-secondary">Dropleft split</a>
+            <button type="button" id="dropdown-page-subheader-button-5" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false">
+              <span class="sr-only">Product actions</span>
+            </button>
+            <div class="dropdown-menu">
+              <button class="dropdown-item" type="button">Action</button>
+              <button class="dropdown-item" type="button">Another action</button>
+              <button class="dropdown-item" type="button">Something else here with a long text</button>
+            </div>
+          </div>
+          <div class="btn-group dropleft">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropleftMenu" data-toggle="dropdown" aria-expanded="false">
+              Dropleft
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropleftMenu">
+              <button class="dropdown-item" type="button">Action</button>
+              <button class="dropdown-item" type="button">Another action</button>
+              <button class="dropdown-item" type="button">Something else here</button>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="collapse navbar-collapse bs-example-js-navbar-collapse">
-        <ul class="nav navbar-nav">
-          <li class="dropdown">
-            <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-            <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Action</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Another action</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Something else here</a></li>
-              <li role="presentation" class="divider"></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Separated link</a></li>
+
+      <div class="row">
+        <div class="col-sm-3 mt-4">
+          <div class="btn-group dropdown">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-offset="10,20">Dropdown offset</button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
             </ul>
-          </li>
-          <li class="dropdown">
-            <a href="#" id="drop2" role="button" class="dropdown-toggle" data-toggle="dropdown">Dropdown 2 <b class="caret"></b></a>
-            <ul class="dropdown-menu" role="menu" aria-labelledby="drop2">
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Action</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Another action</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Something else here</a></li>
-              <li role="presentation" class="divider"></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Separated link</a></li>
+          </div>
+        </div>
+        <div class="col-sm-3 mt-4">
+          <div class="btn-group dropdown">
+            <button type="button" class="btn btn-secondary">Dropdown reference</button>
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" data-reference="parent">
+              <span class="sr-only">Dropdown split</span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
             </ul>
-          </li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li id="fat-menu" class="dropdown">
-            <a href="#" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown">Dropdown 3 <b class="caret"></b></a>
-            <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Action</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Another action</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Something else here</a></li>
-              <li role="presentation" class="divider"></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Separated link</a></li>
+          </div>
+        </div>
+        <div class="col-sm-3 mt-4">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" data-display="static" aria-expanded="false">
+              Dropdown menu without Popper.js
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
             </ul>
-          </li>
-        </ul>
+          </div>
+        </div>
       </div>
+
     </div>
-  </nav>
 
-  <ul class="nav nav-pills">
-    <li class="active"><a href="#">Regular link</a></li>
-    <li class="dropdown">
-      <a id="drop4" role="button" data-toggle="dropdown" href="#">Dropdown <b class="caret"></b></a>
-      <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Action</a></li>
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Another action</a></li>
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Something else here</a></li>
-        <li role="presentation" class="divider"></li>
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Separated link</a></li>
-      </ul>
-    </li>
-    <li class="dropdown">
-      <a id="drop5" role="button" data-toggle="dropdown" href="#">Dropdown 2 <b class="caret"></b></a>
-      <ul id="menu2" class="dropdown-menu" role="menu" aria-labelledby="drop5">
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Action</a></li>
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Another action</a></li>
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Something else here</a></li>
-        <li role="presentation" class="divider"></li>
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="http://twitter.com/fat">Separated link</a></li>
-      </ul>
-    </li>
-  </ul>
-
-</div>
-
-<!-- JavaScript Includes -->
-<script src="../vendor/jquery.min.js"></script>
-<script src="../../transition.js"></script>
-<script src="../../dropdown.js"></script>
-
-</body>
+    <script src="../../../node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <script src="../../dist/dom/polyfill.js"></script>
+    <script src="../../dist/dom/event-handler.js"></script>
+    <script src="../../dist/dom/selector-engine.js"></script>
+    <script src="../../dist/dom/data.js"></script>
+    <script src="../../dist/dom/manipulator.js"></script>
+    <script src="../../dist/dropdown.js"></script>
+    <script src="../../dist/collapse.js"></script>
+  </body>
 </html>

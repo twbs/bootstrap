@@ -1,0 +1,65 @@
+/*!
+ * Bootstrap Grid v5.0.0-alpha1 (https://getbootstrap.com/)
+ * Copyright 2011-2020 The Bootstrap Authors
+ * Copyright 2011-2020 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+
+$include-column-box-sizing: true !default;
+
+@import "functions";
+@import "variables";
+
+@import "mixins/lists";
+@import "mixins/breakpoints";
+@import "mixins/container";
+@import "mixins/grid";
+@import "mixins/utilities";
+
+@import "vendor/rfs";
+
+@import "containers";
+@import "grid";
+
+@import "utilities";
+// Only use the utilities we need
+// stylelint-disable-next-line scss/dollar-variable-default
+$utilities: map-get-multiple(
+  $utilities,
+  (
+    "display",
+    "order",
+    "flex",
+    "flex-direction",
+    "flex-grow",
+    "flex-shrink"
+    "flex-wrap",
+    "justify-content",
+    "align-items",
+    "align-content",
+    "align-self",
+    "margin",
+    "margin-x",
+    "margin-y",
+    "margin-top",
+    "margin-right",
+    "margin-bottom",
+    "margin-left",
+    "negative-margin",
+    "negative-margin-x",
+    "negative-margin-y",
+    "negative-margin-top",
+    "negative-margin-right",
+    "negative-margin-bottom",
+    "negative-margin-left",
+    "padding",
+    "padding-x",
+    "padding-y",
+    "padding-top",
+    "padding-right",
+    "padding-bottom",
+    "padding-left",
+  )
+);
+
+@import "utilities/api";

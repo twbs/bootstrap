@@ -1,0 +1,13 @@
+.skippy {
+  position: fixed;
+  top: .5rem;
+  left: .5rem;
+  z-index: $zindex-fixed;
+  padding: .5rem;
+  color: $white;
+  background-color: $bd-purple;
+
+  &:hover {
+    color: $white;
+  }
+}

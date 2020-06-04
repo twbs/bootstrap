@@ -1,0 +1,14 @@
+<div class="dropdown">
+  <button class="btn btn-bd-light dropdown-toggle" id="bd-versions" data-toggle="dropdown" aria-expanded="false" data-display="static">
+    Bootstrap v{{ .Site.Params.docs_version }}
+  </button>
+  <ul class="dropdown-menu dropdown-menu-md-right" aria-labelledby="bd-versions">
+    <li><a class="dropdown-item current" aria-current="true" href="/docs/{{ .Site.Params.docs_version }}/">Latest (5.0.x)</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="https://getbootstrap.com/docs/4.5/">v4.5.0</a></li>
+    <li><a class="dropdown-item" href="https://getbootstrap.com/docs/3.4/">v3.4.1</a></li>
+    <li><a class="dropdown-item" href="https://getbootstrap.com/2.3.2/">v2.3.2</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="/docs/versions/">All versions</a></li>
+  </ul>
+</div>

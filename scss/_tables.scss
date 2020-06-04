@@ -1,0 +1,154 @@
+//
+// Basic Bootstrap table
+//
+
+.table {
+  --bs-table-bg: #{$table-bg};
+  --bs-table-accent-bg: transparent;
+  --bs-table-striped-color: #{$table-striped-color};
+  --bs-table-striped-bg: #{$table-striped-bg};
+  --bs-table-active-color: #{$table-active-color};
+  --bs-table-active-bg: #{$table-active-bg};
+  --bs-table-hover-color: #{$table-hover-color};
+  --bs-table-hover-bg: #{$table-hover-bg};
+
+  width: 100%;
+  margin-bottom: $spacer;
+  color: $table-color;
+  vertical-align: $table-cell-vertical-align;
+  border-color: $table-border-color;
+
+  // Target th & td
+  // We need the child combinator to prevent styles leaking to nested tables which doesn't have a `.table` class.
+  // We use the universal selectors here to simplify the selector (else we would need 6 different selectors).
+  // Another advantage is that this generates less code and makes the selector less specific making it easier to override.
+  // stylelint-disable-next-line selector-max-universal
+  > :not(caption) > * > * {
+    padding: $table-cell-padding-y $table-cell-padding-x;
+    background-color: var(--bs-table-bg);
+    background-image: linear-gradient(var(--bs-table-accent-bg), var(--bs-table-accent-bg));
+    border-bottom-width: $table-border-width;
+  }
+
+  > tbody {
+    vertical-align: inherit;
+  }
+
+  > thead {
+    vertical-align: bottom;
+  }
+
+  // Highlight border color between thead, tbody and tfoot.
+  // stylelint-disable-next-line selector-max-universal
+  > :not(:last-child) > :last-child > * {
+    border-bottom-color: $table-group-seperator-color;
+  }
+}
+
+
+//
+// Change placement of captions with a class
+//
+
+.caption-top {
+  caption-side: top;
+}
+
+
+//
+// Condensed table w/ half padding
+//
+
+.table-sm {
+  // stylelint-disable-next-line selector-max-universal
+  > :not(caption) > * > * {
+    padding: $table-cell-padding-y-sm $table-cell-padding-x-sm;
+  }
+}
+
+
+// Border versions
+//
+// Add or remove borders all around the table and between all the columns.
+//
+// When borders are added on all sides of the cells, the corners can render odd when
+// these borders do not have the same color or if they are semi-transparent.
+// Therefor we add top and border bottoms to the `tr`s and left and right borders
+// to the `td`s or `th`s
+
+.table-bordered {
+  // stylelint-disable-next-line selector-max-universal
+  > :not(caption) > * {
+    border-width: $table-border-width 0;
+
+    // stylelint-disable-next-line selector-max-universal
+    > * {
+      border-width: 0 $table-border-width;
+    }
+  }
+}
+
+.table-borderless {
+  // stylelint-disable-next-line selector-max-universal
+  > :not(caption) > * > * {
+    border-bottom-width: 0;
+  }
+}
+
+// Zebra-striping
+//
+// Default zebra-stripe styles (alternating gray and transparent backgrounds)
+
+.table-striped {
+  > tbody > tr:nth-of-type(#{$table-striped-order}) {
+    --bs-table-accent-bg: var(--bs-table-striped-bg);
+    color: var(--bs-table-striped-color);
+  }
+}
+
+// Active table
+//
+// The `.table-active` class can be added to highlight rows or cells
+
+.table-active {
+  --bs-table-accent-bg: var(--bs-table-active-bg);
+  color: var(--bs-table-active-color);
+}
+
+// Hover effect
+//
+// Placed here since it has to come after the potential zebra striping
+
+.table-hover {
+  > tbody > tr:hover {
+    --bs-table-accent-bg: var(--bs-table-hover-bg);
+    color: var(--bs-table-hover-color);
+  }
+}
+
+
+// Table variants
+//
+// Table variants set the table cell backgrounds, border colors
+// and the colors of the striped, hovered & active tables
+
+@each $color, $value in $table-variants {
+  @include table-variant($color, $value);
+}
+
+// Responsive tables
+//
+// Generate series of `.table-responsive-*` classes for configuring the screen
+// size of where your table will overflow.
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  $next: breakpoint-next($breakpoint, $grid-breakpoints);
+  $infix: breakpoint-infix($next, $grid-breakpoints);
+
+  @include media-breakpoint-down($breakpoint) {
+    .table-responsive#{$infix} {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+}

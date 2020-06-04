@@ -1,0 +1,29 @@
+// Pagination
+
+@mixin pagination-size($padding-y, $padding-x, $font-size, $border-radius) {
+  .page-link {
+    padding: $padding-y $padding-x;
+    @include font-size($font-size);
+  }
+
+  .page-item {
+    @if $pagination-margin-left == (-$pagination-border-width) {
+      &:first-child {
+        .page-link {
+          @include border-left-radius($border-radius);
+        }
+      }
+
+      &:last-child {
+        .page-link {
+          @include border-right-radius($border-radius);
+        }
+      }
+    } @else {
+      //Add border-radius to all pageLinks in case they have left margin
+      .page-link {
+        @include border-radius($border-radius);
+      }
+    }
+  }
+}

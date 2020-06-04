@@ -1,0 +1,20 @@
+{{ if eq hugo.Environment "production" -}}
+  <script src="/docs/{{ .Site.Params.docs_version }}/dist/js/bootstrap.bundle.min.js" {{ printf "integrity=%q" .Site.Params.cdn.js_bundle_hash | safeHTMLAttr }} crossorigin="anonymous"></script>
+{{ else -}}
+  <script src="/docs/{{ .Site.Params.docs_version }}/dist/js/bootstrap.bundle.js"></script>
+{{- end }}
+
+{{ if eq .Page.Layout "docs" -}}
+<script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+{{- end }}
+
+{{- $vendor := resources.Match "js/vendor/*.js" -}}
+{{- $js := resources.Match "js/*.js" -}}
+{{- $targetDocsJSPath := printf "/docs/%s/assets/js/docs.js" .Site.Params.docs_version -}}
+{{- $docsJs := append $js $vendor | resources.Concat $targetDocsJSPath -}}
+
+{{- if eq hugo.Environment "production" -}}
+  {{- $docsJs = $docsJs | resources.Minify -}}
+{{- end }}
+
+<script src="{{ $docsJs.Permalink | relURL }}"></script>

@@ -1,42 +1,49 @@
 # Ignore docs files
-_gh_pages
-_site
-.ruby-version
+/_gh_pages/
+# This is the old Jekyll docs dist folder;
+# keeping it here so that when we switch branches it doesn't show up
+/site/docs/**/dist/
+# Jekyll's cache folder; keeping it for the same reason as above
+/site/.jekyll-cache/
+# Hugo resources folder
+/resources/
+
+# Ignore ruby/bundler files;
+# keeping them here so that when we switch branches they don't show up
+/.bundle/
+/vendor/
+/.ruby-version
 
 # Numerous always-ignore extensions
 *.diff
 *.err
-*.orig
 *.log
+*.orig
 *.rej
 *.swo
 *.swp
-*.zip
 *.vi
+*.zip
 *~
 
 # OS or Editor folders
-.DS_Store
 ._*
-Thumbs.db
 .cache
+.DS_Store
+.idea
 .project
 .settings
 .tmproj
 *.esproj
-nbproject
 *.sublime-project
 *.sublime-workspace
-.idea
+nbproject
+Thumbs.db
 
 # Komodo
-*.komodoproject
 .komodotools
-
-# grunt-html-validation
-validation-status.json
-validation-report.json
+*.komodoproject
 
 # Folders to ignore
-node_modules
-bower_components
+/js/coverage/
+/node_modules/

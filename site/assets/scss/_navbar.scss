@@ -1,0 +1,38 @@
+.bd-navbar {
+  padding: .625rem 0;
+  background-color: $bd-purple-bright;
+
+  @include media-breakpoint-down(md) {
+    .navbar-nav-scroll {
+      width: 100%;
+
+      .navbar-nav {
+        margin: -.5rem 0;
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+    }
+  }
+
+  .navbar-nav {
+    .nav-link {
+      color: rgba($white, .85);
+
+      &:hover,
+      &:focus {
+        color: $white;
+      }
+
+      &.active {
+        font-weight: 600;
+        color: $white;
+      }
+    }
+  }
+
+  .navbar-nav-svg {
+    width: 1rem;
+    height: 1rem;
+  }
+}

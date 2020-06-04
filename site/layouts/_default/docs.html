@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {{ partial "header" . }}
+  </head>
+  <body>
+    {{ partial "skippy" . }}
+
+    {{ partial "docs-navbar" . }}
+    {{ partial "docs-subnav" . }}
+
+    <div class="container-xxl my-4 bd-layout">
+      <div class="bd-sidebar">
+        {{ partial "docs-sidebar" . }}
+      </div>
+
+      <div class="bd-intro pt-md-3 pl-lg-4">
+        <h1 class="bd-title" id="content">{{ .Title | markdownify }}</h1>
+        <p class="bd-lead">{{ .Page.Params.Description | markdownify }}</p>
+        {{ partial "ads" . }}
+      </div>
+
+      {{ if (eq .Page.Params.toc true) }}
+        <div class="bd-toc pl-xl-3 text-muted mb-lg-5">
+          <strong class="d-block h6 my-2 pb-2 border-bottom">On this page</strong>
+          {{ .TableOfContents }}
+        </div>
+      {{ end }}
+
+      <main class="bd-content order-1 pl-lg-4">
+        {{ if .Page.Params.sections }}
+          <div class="row g-3">
+            {{ range .Page.Params.sections }}
+            <div class="col-md-6">
+              <a class="d-block text-decoration-none" href="../{{ urlize .title }}/">
+                <strong class="d-block h5 mb-0">{{ .title }}</strong>
+                <span class="text-secondary">{{ .description }}</span>
+              </a>
+            </div>
+            {{ end }}
+          </div>
+        {{ end }}
+
+        {{ .Content }}
+      </main>
+    </div>
+
+    {{ partial "footer" . }}
+    {{ partial "scripts" . }}
+
+    {{ range .Page.Params.extra_js -}}
+      <script{{ with .async }} async{{ end }} src="{{ .src }}"></script>
+    {{- end -}}
+  </body>
+</html>
