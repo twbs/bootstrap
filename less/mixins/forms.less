@@ -58,7 +58,13 @@
     border-color: @color;
     outline: 0;
     .box-shadow(~"inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px @{color-rgba}");
+    .transition(~"border-color ease-in-out .15s, box-shadow ease-in-out .15s");
   }
+}
+
+.form-control-underline(@color: @input-border-focus) {
+  @color-rgba: rgba(red(@color), green(@color), blue(@color), .2);
+  border-bottom: 1px solid @color-rgba;
 }
 
 // Form control sizing
