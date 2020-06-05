@@ -9,7 +9,7 @@
 // APImetrics Brand colors
 @apim-grey-dark:        #6d6e71;
 @apim-grey-medium:      #939598;
-@apim-grey-text:        #262626;
+@apim-grey-text:        darken(white, 5%);// #262626;
 // APImetrics extended palette
 @apim-grey-light:       #ededed;
 // Pass / Warning / Fail colors
@@ -24,19 +24,19 @@
 @apim2-darkpurple:      #1B1D30;
 @apim2-border:          #38384B;
 @apim2-grey:            grey;
-@apim2-light-bg:        #e2e5f9;
+@apim2-offwhite:        #e2e5f9;
 
-@apim2-main-color:      @apim2-darkpurple;
-@apim2-main-bg:         @apim2-white;
+@apim2-main-color:      @apim2-white;
+@apim2-main-bg:         @apim2-darkpurple;
 @apim2-accent:          @apim2-blue;
 @apim2-deemphasize:     @apim2-grey;
 
 // NEW COLORS
-@apim-pri-color:         @apim2-main-bg;
+@apim-pri-color:         @apim2-lightpurple;
 @apim-sec-bg:            @apim2-accent;
-@apim-sec-color:         @apim2-main-bg;
+@apim-sec-color:         @apim2-purple;
 @apim-pri-hover:         @apim2-accent;
-@apim-sec-hover:         @apim2-purple;
+@apim-sec-hover:         @apim2-offwhite;
 @apim-pri-border:        transparent;
 @apim-sec-border:        transparent;
 @apim-dis-bg:            @apim2-deemphasize;
@@ -45,11 +45,11 @@
 @apim-tab-sel-bg:        @apim2-accent;
 @apim-tab-sel-border:    transparent;
 @apim-tab-sel-color:     @apim2-lightpurple;
-@apim-tab-unsel-bg:      @apim2-white;
-@apim-tab-unsel-color:   @apim2-darkpurple;
+@apim-tab-unsel-bg:      @apim2-darkpurple;
+@apim-tab-unsel-color:   @apim2-white;
 @apim-tab-unsel-border:  transparent;
 
-@apim-widget-bg:         @apim2-light-bg;
+@apim-widget-bg:         @apim2-offwhite;
 @apim-widget-color:      @apim-pri-color;
 @apim-widget-btn-color:  @apim2-main-bg;
 @apim-widget-icon-color: @apim2-accent;
@@ -63,9 +63,10 @@
 @gray-light:             @apim-grey-medium;  // was #777
 @gray-lighter:           @apim-grey-light;  // was #eee
 
-@brand-primary:         @apim2-lightpurple;
+@brand-primary:         @apim2-white;
+@brand-secondary:       @apim2-accent;
 @brand-success:         @apim-pass;
-@brand-info:            @apim2-darkpurple;
+@brand-info:            @apim2-lightpurple;
 @brand-warning:         @apim-warn;
 @brand-danger:          @apim-fail;
 
@@ -80,7 +81,7 @@
 @text-color:            @apim2-main-color;
 
 //** Global textual link color.
-@link-color:            @brand-primary;
+@link-color:            @brand-secondary;
 //** Link hover color set via `darken()` function.
 @link-hover-color:      @apim-sec-bg; //darken(@link-color, 15%);
 //** Link hover decoration.
@@ -121,7 +122,7 @@
 @headings-font-family:    "Open Sans", Helvetica, Arial, sans-serif;
 @headings-font-weight:    @font-family-bold-weight; // bold
 @headings-line-height:    1.1;
-@headings-color:          @apim2-purple;
+@headings-color:          @apim2-white;
 
 
 //== Iconography
@@ -182,10 +183,10 @@
 //** Default background color used for all tables.
 @table-bg:                      transparent;
 //** Background color used for `.table-striped`.
-@table-bg-accent:               #f9f9f9;
+@table-bg-accent:               @apim2-lightpurple;
 //** Background color used for `.table-hover`.
-@table-bg-hover:                #f5f5f5;
-@table-bg-active:               @table-bg-hover;
+@table-bg-hover:                @apim2-purple;
+@table-bg-active:               @apim2-darkpurple;
 
 //** Border color for table and cell borders.
 @table-border-color:            #ddd;
@@ -202,8 +203,8 @@
 @btn-default-border:             @apim-tab-unsel-bg;
 @btn-default-sel-border:         @apim-sec-border;
 
-@btn-primary-color:              @apim-pri-color;
-@btn-primary-bg:                 @brand-primary;
+@btn-primary-color:              @brand-primary;
+@btn-primary-bg:                 @apim-pri-color;
 @btn-primary-border:             @brand-primary;
 @btn-primary-sel-border:         @apim-pri-border;
 
@@ -310,7 +311,7 @@
 @dropdown-divider-bg:            @apim-grey-medium;
 
 //** Dropdown link text color.
-@dropdown-link-color:            @btn-primary-bg;
+@dropdown-link-color:            @apim2-offwhite;
 //** Hover color for dropdown links.
 @dropdown-link-hover-color:      @apim-sec-bg;
 //** Hover background for dropdown links.
@@ -686,7 +687,7 @@
 @modal-title-line-height:     @line-height-base;
 
 //** Background color of modal content area
-@modal-content-bg:                             #fff;
+@modal-content-bg:                             @apim2-main-bg;
 //** Modal content border color
 @modal-content-border-color:                   rgba(0,0,0,.2);
 //** Modal content border color **for IE8**
@@ -850,7 +851,7 @@
 //
 //##
 
-@well-bg:                     @apim2-light-bg;
+@well-bg:                     @apim2-lightpurple;
 @well-border:                 transparent;
 
 
