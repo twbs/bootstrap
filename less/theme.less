@@ -477,7 +477,8 @@ b, strong {
       border: 0px solid transparent;
       border-top: 3px solid @nav-tabs-link-color;
 
-      &:hover {
+      &:hover,
+      &:focus {
         color: @nav-tabs-link-hover-color;
         background-color: @nav-tabs-link-hover-bg;
         border-bottom: 1px solid @nav-tabs-active-link-hover-border-color;
@@ -736,7 +737,7 @@ body {
     .select2-search__field {
       .select2-input-defaults;
       //color: @input-color;
-      //background-color: @input-bg;
+      background-color: @apim2-lightpurple;
     }
   }
 
@@ -803,8 +804,8 @@ body {
 
 .widget-content {
   min-height: 180px;
-  background-color: white;
-  border: 1px solid @brand-primary;
+  background-color: @apim2-lightpurple;
+  border: 1px solid transparent;
   padding: @padding-base-vertical @padding-base-horizontal;
   margin-bottom: @padding-large-vertical;
 }
@@ -849,7 +850,7 @@ body {
   &:focus {
     color: @apim-pri-hover;
     text-decoration: none;
-    .add-cicle-to-icon(@apim-pri-hover);
+    .add-cicle-to-icon(@apim-sec-color);
   }
 }
 
@@ -905,9 +906,15 @@ body {
   }
 }
 
-.list-group-item {
-  border: none;
-  border-top: 1px solid @list-group-border;
-  border-bottom: 1px solid @list-group-border;
-  // padding: 10px 0px;
+.badge {
+  > a {
+    color: @apim2-darkpurple;
+  }
 }
+
+// .list-group-item {
+//   border: none;
+//   border-top: 1px solid @list-group-border;
+//   border-bottom: 1px solid @list-group-border;
+//   // padding: 10px 0px;
+// }

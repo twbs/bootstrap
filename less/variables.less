@@ -35,8 +35,8 @@
 @apim-pri-color:         @apim2-lightpurple;
 @apim-sec-bg:            @apim2-accent;
 @apim-sec-color:         @apim2-purple;
-@apim-pri-hover:         @apim2-accent;
-@apim-sec-hover:         @apim2-offwhite;
+@apim-pri-hover:         @apim2-offwhite;
+@apim-sec-hover:         @apim2-purple;
 @apim-pri-border:        transparent;
 @apim-sec-border:        transparent;
 @apim-dis-bg:            @apim2-deemphasize;
@@ -44,7 +44,7 @@
 
 @apim-tab-sel-bg:        @apim2-accent;
 @apim-tab-sel-border:    transparent;
-@apim-tab-sel-color:     @apim2-lightpurple;
+@apim-tab-sel-color:     @apim2-accent;
 @apim-tab-unsel-bg:      @apim2-darkpurple;
 @apim-tab-unsel-color:   @apim2-white;
 @apim-tab-unsel-border:  transparent;
@@ -189,7 +189,7 @@
 @table-bg-active:               @apim2-darkpurple;
 
 //** Border color for table and cell borders.
-@table-border-color:            #ddd;
+@table-border-color:            transparent;
 
 
 //== Buttons
@@ -203,14 +203,14 @@
 @btn-default-border:             @apim-tab-unsel-bg;
 @btn-default-sel-border:         @apim-sec-border;
 
-@btn-primary-color:              @brand-primary;
-@btn-primary-bg:                 @apim-pri-color;
-@btn-primary-border:             @brand-primary;
+@btn-primary-color:              @apim-sec-color;
+@btn-primary-bg:                 @apim-sec-bg;
+@btn-primary-border:             @apim-sec-bg;
 @btn-primary-sel-border:         @apim-pri-border;
 
-@btn-secondary-color:            @apim-sec-color;
-@btn-secondary-bg:               @apim-sec-bg;
-@btn-secondary-border:           @apim-sec-bg;
+@btn-secondary-color:            @brand-primary;
+@btn-secondary-bg:               @apim-pri-color;
+@btn-secondary-border:           @brand-primary;
 @btn-secondary-sel-border:       @apim-sec-border;
 
 @btn-success-color:              @apim2-main-bg;
@@ -253,7 +253,7 @@
 //** `<input>` background color
 @input-bg:                       @apim2-main-bg;
 //** `<input disabled>` background color
-@input-bg-disabled:              @gray-lighter;
+@input-bg-disabled:              @apim2-lightpurple;
 
 //** Text color for `<input>`s
 @input-color:                    @apim-grey-text;
@@ -517,8 +517,8 @@
 @nav-tabs-link-color:                       @apim-tab-unsel-color;
 @nav-tabs-link-border-color:                @apim-tab-unsel-border;
 
-@nav-tabs-link-hover-bg:                    darken(@nav-tabs-link-bg, 14%);
-@nav-tabs-link-hover-color:                 darken(@nav-tabs-link-color, 12%);
+@nav-tabs-link-hover-bg:                    @apim-dis-color;
+@nav-tabs-link-hover-color:                 @nav-tabs-link-color;
 @nav-tabs-link-hover-border-color:          @apim-tab-sel-border;
 
 @nav-tabs-active-link-hover-bg:             @apim-tab-sel-bg;
@@ -538,21 +538,21 @@
 //
 //##
 
-@pagination-color:                     @link-color;
-@pagination-bg:                        #fff;
-@pagination-border:                    #ddd;
+@pagination-color:                     @btn-default-color;
+@pagination-bg:                        transparent;
+@pagination-border:                    transparent;
 
 @pagination-hover-color:               @link-hover-color;
-@pagination-hover-bg:                  @gray-lighter;
+@pagination-hover-bg:                  @apim-pri-hover;
 @pagination-hover-border:              #ddd;
 
-@pagination-active-color:              #fff;
-@pagination-active-bg:                 @brand-primary;
-@pagination-active-border:             @brand-primary;
+@pagination-active-color:              @btn-primary-bg;
+@pagination-active-bg:                 transparent;
+@pagination-active-border:             transparent;
 
 @pagination-disabled-color:            @gray-light;
-@pagination-disabled-bg:               #fff;
-@pagination-disabled-border:           #ddd;
+@pagination-disabled-bg:               transparent;
+@pagination-disabled-border:           transparent;
 
 
 //== Pager
@@ -577,7 +577,7 @@
 
 @jumbotron-padding:              30px;
 @jumbotron-color:                inherit;
-@jumbotron-bg:                   @gray-lighter;
+@jumbotron-bg:                   @apim2-lightpurple;
 @jumbotron-heading-color:        inherit;
 @jumbotron-font-size:            ceil((@font-size-base * 1.5));
 @jumbotron-heading-font-size:    ceil((@font-size-base * 4.5));
@@ -762,7 +762,7 @@
 //** Background color on `.list-group-item`
 @list-group-bg:                 transparent;
 //** `.list-group-item` border color
-@list-group-border:             @apim-grey-light;
+@list-group-border:             transparent;
 //** List group border radius
 @list-group-border-radius:      @border-radius-base;
 
@@ -912,8 +912,8 @@
 //##
 
 @close-font-weight:           bold;
-@close-color:                 #000;
-@close-text-shadow:           0 1px 0 #fff;
+@close-color:                 @text-color;
+@close-text-shadow:           none; //0 1px 0 #fff;
 
 
 //== Code
