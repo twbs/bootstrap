@@ -20,39 +20,36 @@
 @apim2-white:           white;
 @apim2-blue:            #00A5EF;
 @apim2-lightpurple:     #27283C;
-@apim2-purple:          #121421;
-@apim2-darkpurple:      #1B1D30;
+@apim2-purple:          #1B1D30;
+@apim2-darkpurple:      #121421;
 @apim2-border:          #38384B;
 @apim2-grey:            grey;
 @apim2-offwhite:        #e2e5f9;
 
-@apim2-main-color:      @apim2-white;
-@apim2-main-bg:         @apim2-darkpurple;
-@apim2-accent:          @apim2-blue;
-@apim2-deemphasize:     @apim2-grey;
+@apim-light-main:       @apim2-white;
+@apim-light-primary:    @apim2-offwhite;
+@apim-dark-main:        @apim2-purple;
+@apim-dark-primary:     @apim2-lightpurple;
+@apim-dark-secondary:   @apim2-darkpurple;
+@apim-accent:           @apim2-blue;
+@apim-light-disabled:   @apim2-grey;
+@apim-dark-disabled:    @apim2-darkpurple;
 
-// NEW COLORS
-@apim-pri-color:         @apim2-lightpurple;
-@apim-sec-bg:            @apim2-accent;
-@apim-sec-color:         @apim2-purple;
-@apim-pri-hover:         @apim2-offwhite;
-@apim-sec-hover:         @apim2-purple;
+@apim-light-primary-alt:  @apim2-offwhite;
+@apim-dark-main-alt:      @apim2-darkpurple;
+@apim-dark-primary-alt:   @apim2-purple;
+@apim-dark-secondary-alt: @apim2-lightpurple;
+@apim-accent-hover:       @apim-accent;
+
 @apim-pri-border:        transparent;
 @apim-sec-border:        transparent;
-@apim-dis-bg:            @apim2-deemphasize;
-@apim-dis-color:         @apim2-purple;
-
-@apim-tab-sel-bg:        @apim2-accent;
 @apim-tab-sel-border:    transparent;
-@apim-tab-sel-color:     @apim2-accent;
-@apim-tab-unsel-bg:      @apim2-darkpurple;
-@apim-tab-unsel-color:   @apim2-white;
 @apim-tab-unsel-border:  transparent;
 
 @apim-widget-bg:         @apim2-offwhite;
-@apim-widget-color:      @apim-pri-color;
-@apim-widget-btn-color:  @apim2-main-bg;
-@apim-widget-icon-color: @apim2-accent;
+@apim-widget-color:      @apim-dark-primary;
+@apim-widget-btn-color:  @apim-dark-main;
+@apim-widget-icon-color: @apim-accent;
 
 //## Gray and brand colors for use across Bootstrap.
 
@@ -64,9 +61,9 @@
 @gray-lighter:           @apim-grey-light;  // was #eee
 
 @brand-primary:         @apim2-white;
-@brand-secondary:       @apim2-accent;
+@brand-secondary:       @apim-accent;
 @brand-success:         @apim-pass;
-@brand-info:            @apim2-lightpurple;
+@brand-info:            @apim-dark-primary;
 @brand-warning:         @apim-warn;
 @brand-danger:          @apim-fail;
 
@@ -76,14 +73,14 @@
 //## Settings for some of the most global styles.
 
 //** Background color for `<body>`.
-@body-bg:               @apim2-main-bg;
+@body-bg:               @apim-dark-main;
 //** Global text color on `<body>`.
-@text-color:            @apim2-main-color;
+@text-color:            @apim-light-main;
 
 //** Global textual link color.
-@link-color:            @brand-secondary;
+@link-color:            @apim-accent;
 //** Link hover color set via `darken()` function.
-@link-hover-color:      @apim-sec-bg; //darken(@link-color, 15%);
+@link-hover-color:      @apim-accent-hover;
 //** Link hover decoration.
 @link-hover-decoration: underline;
 
@@ -163,7 +160,7 @@
 //** Global color for active items (e.g., navs or dropdowns).
 @component-active-color:    white;
 //** Global background color for active items (e.g., navs or dropdowns).
-@component-active-bg:       @apim-sec-bg;
+@component-active-bg:       @apim-accent;
 
 //** Width of the `border` for generating carets that indicate dropdowns.
 @caret-width-base:          4px;
@@ -183,10 +180,10 @@
 //** Default background color used for all tables.
 @table-bg:                      transparent;
 //** Background color used for `.table-striped`.
-@table-bg-accent:               @apim2-lightpurple;
+@table-bg-accent:               @apim-dark-primary;
 //** Background color used for `.table-hover`.
-@table-bg-hover:                @apim2-purple;
-@table-bg-active:               @apim2-darkpurple;
+@table-bg-hover:                @apim-dark-secondary;
+@table-bg-active:               @apim-dark-main;
 
 //** Border color for table and cell borders.
 @table-border-color:            transparent;
@@ -198,47 +195,47 @@
 
 @btn-font-weight:                @font-family-bold-weight;
 
-@btn-default-color:              @apim-tab-unsel-color;
-@btn-default-bg:                 @apim-tab-unsel-bg;
-@btn-default-border:             @apim-tab-unsel-bg;
+@btn-default-color:              @apim-light-main;
+@btn-default-bg:                 @apim-dark-main;
+@btn-default-border:             @apim-dark-main;
 @btn-default-sel-border:         @apim-sec-border;
 
-@btn-primary-color:              @apim-sec-color;
-@btn-primary-bg:                 @apim-sec-bg;
-@btn-primary-border:             @apim-sec-bg;
+@btn-primary-color:              @apim-dark-secondary;
+@btn-primary-bg:                 @apim-accent;
+@btn-primary-border:             @apim-accent;
 @btn-primary-sel-border:         @apim-pri-border;
 
 @btn-secondary-color:            @brand-primary;
-@btn-secondary-bg:               @apim-pri-color;
+@btn-secondary-bg:               @apim-dark-primary;
 @btn-secondary-border:           @brand-primary;
 @btn-secondary-sel-border:       @apim-sec-border;
 
-@btn-success-color:              @apim2-main-bg;
+@btn-success-color:              @apim-dark-main;
 @btn-success-bg:                 @brand-success;
 @btn-success-border:             @btn-success-bg;
 @btn-success-sel-border:         darken(@btn-success-bg, 5%);
 
-@btn-info-color:                 @apim-sec-color;
-@btn-info-bg:                    @apim-sec-bg;
-@btn-info-border:                @apim-sec-bg;
+@btn-info-color:                 @apim-dark-secondary;
+@btn-info-bg:                    @apim-accent;
+@btn-info-border:                @apim-accent;
 @btn-info-sel-border:            @apim-sec-border;
 
-@btn-warning-color:              @apim2-main-bg;
+@btn-warning-color:              @apim-dark-main;
 @btn-warning-bg:                 @brand-warning;
 @btn-warning-border:             @brand-warning;
 @btn-warning-sel-border:         @apim-sec-border;
 
-@btn-danger-color:               @apim2-main-bg;
+@btn-danger-color:               @apim-dark-main;
 @btn-danger-bg:                  @brand-danger;
 @btn-danger-border:              @brand-danger;
 @btn-danger-sel-border:          @apim-sec-border;
 
-@btn-inverse-color:              @apim2-main-bg;
+@btn-inverse-color:              @apim-dark-main;
 @btn-inverse-bg:                 @apim-grey-text;
 @btn-inverse-border:             @apim-grey-text;
 @btn-inverse-sel-border:         @apim-sec-border;
 
-@btn-link-disabled-color:        @apim-dis-color;
+@btn-link-disabled-color:        @apim-dark-disabled;
 
 // Allows for customizing button radius independently from global border radius
 @btn-border-radius-base:         @border-radius-base;
@@ -251,9 +248,9 @@
 //##
 
 //** `<input>` background color
-@input-bg:                       @apim2-main-bg;
+@input-bg:                       @apim-dark-main;
 //** `<input disabled>` background color
-@input-bg-disabled:              @apim2-lightpurple;
+@input-bg-disabled:              @apim-dark-secondary-alt;
 
 //** Text color for `<input>`s
 @input-color:                    @apim-grey-text;
@@ -270,7 +267,7 @@
 @input-border-radius-small:      @border-radius-small;
 
 //** Border color for inputs on focus
-@input-border-focus:             @apim-sec-bg;
+@input-border-focus:             @apim-accent;
 
 //** Placeholder text color
 @input-color-placeholder:        @apim-grey-medium;
@@ -302,7 +299,7 @@
 //## Dropdown menu container and contents.
 
 //** Background for the dropdown menu.
-@dropdown-bg:                    @apim2-main-bg;
+@dropdown-bg:                    @apim-dark-main;
 //** Dropdown menu `border-color`.
 @dropdown-border:                @btn-default-border;
 //** Dropdown menu `border-color` **for IE8**.
@@ -313,7 +310,7 @@
 //** Dropdown link text color.
 @dropdown-link-color:            @apim2-offwhite;
 //** Hover color for dropdown links.
-@dropdown-link-hover-color:      @apim-sec-bg;
+@dropdown-link-hover-color:      @apim-accent;
 //** Hover background for dropdown links.
 @dropdown-link-hover-bg:         @btn-default-color;
 
@@ -323,13 +320,13 @@
 @dropdown-link-active-bg:        @component-active-bg;
 
 //** Disabled dropdown menu item background color.
-@dropdown-link-disabled-color:   @apim-dis-color;
+@dropdown-link-disabled-color:   @apim-dark-disabled;
 
 //** Text color for headers within dropdown menus.
-@dropdown-header-color:          @apim2-accent;
+@dropdown-header-color:          @apim-accent;
 
 //** Deprecated `@dropdown-caret-color` as of v3.1.0
-@dropdown-caret-color:           @apim2-accent;
+@dropdown-caret-color:           @apim-accent;
 
 
 //-- Z-index master list
@@ -435,8 +432,8 @@
 @navbar-padding-vertical:          ((@navbar-height - @line-height-computed) / 2);
 @navbar-collapse-max-height:       340px;
 
-@navbar-default-color:             @apim2-white;
-@navbar-default-bg:                @apim2-lightpurple;
+@navbar-default-color:             @apim-light-main;
+@navbar-default-bg:                @apim-dark-primary;
 @navbar-default-border:            @apim2-border;
 
 @navbar-default-shadow-color:           @apim2-border;
@@ -445,11 +442,11 @@
 
 // Navbar links
 @navbar-default-link-color:                @apim2-white;
-@navbar-default-link-hover-color:          @apim2-accent;
-@navbar-default-link-hover-bg:             @apim2-darkpurple;
+@navbar-default-link-hover-color:          @apim-accent;
+@navbar-default-link-hover-bg:             @apim-dark-primary-alt;
 @navbar-default-link-active-color:         @apim2-white;
 @navbar-default-link-active-bg:            transparent;
-@navbar-default-link-disabled-color:       @apim2-deemphasize;
+@navbar-default-link-disabled-color:       @apim-light-disabled;
 @navbar-default-link-disabled-bg:          transparent;
 
 // Navbar brand label
@@ -467,9 +464,9 @@
 //
 // ##
 @sidebar-default-color:             white;
-@sidebar-default-color-focus:       @apim2-accent;
-@sidebar-default-bg:                @apim2-purple;
-@sidebar-default-bg-focus:          @apim2-darkpurple;
+@sidebar-default-color-focus:       @apim-accent;
+@sidebar-default-bg:                @apim-dark-secondary;
+@sidebar-default-bg-focus:          @apim-dark-main;
 @sidebar-default-border:            @apim2-border;
 
 
@@ -505,24 +502,24 @@
 
 //=== Shared nav styles
 @nav-link-padding:                          @padding-large-vertical @padding-large-horizontal;
-@nav-link-hover-bg:                         @apim-tab-unsel-color;
+@nav-link-hover-bg:                         @apim-light-main;
 
-@nav-disabled-link-color:                   @apim-tab-unsel-bg;
-@nav-disabled-link-hover-color:             @apim-tab-unsel-color;
+@nav-disabled-link-color:                   @apim-dark-main;
+@nav-disabled-link-hover-color:             @apim-light-main;
 
 //== Tabs
 @nav-tabs-border-color:                     @apim-tab-sel-border;
 
-@nav-tabs-link-bg:                          @apim-tab-unsel-bg;
-@nav-tabs-link-color:                       @apim-tab-unsel-color;
+@nav-tabs-link-bg:                          @apim-dark-main;
+@nav-tabs-link-color:                       @apim-light-main;
 @nav-tabs-link-border-color:                @apim-tab-unsel-border;
 
-@nav-tabs-link-hover-bg:                    @apim-dis-color;
+@nav-tabs-link-hover-bg:                    @apim-dark-disabled;
 @nav-tabs-link-hover-color:                 @nav-tabs-link-color;
 @nav-tabs-link-hover-border-color:          @apim-tab-sel-border;
 
-@nav-tabs-active-link-hover-bg:             @apim-tab-sel-bg;
-@nav-tabs-active-link-hover-color:          @apim-tab-sel-color;
+@nav-tabs-active-link-hover-bg:             @apim-accent;
+@nav-tabs-active-link-hover-color:          @apim-accent;
 @nav-tabs-active-link-hover-border-color:   @apim-tab-sel-border;
 
 @nav-tabs-justified-link-border-color:            @apim-tab-unsel-border;
@@ -543,7 +540,7 @@
 @pagination-border:                    transparent;
 
 @pagination-hover-color:               @link-hover-color;
-@pagination-hover-bg:                  @apim-pri-hover;
+@pagination-hover-bg:                  @apim-light-primary-alt;
 @pagination-hover-border:              #ddd;
 
 @pagination-active-color:              @btn-primary-bg;
@@ -577,7 +574,7 @@
 
 @jumbotron-padding:              30px;
 @jumbotron-color:                inherit;
-@jumbotron-bg:                   @apim2-lightpurple;
+@jumbotron-bg:                   @apim-dark-primary;
 @jumbotron-heading-color:        inherit;
 @jumbotron-font-size:            ceil((@font-size-base * 1.5));
 @jumbotron-heading-font-size:    ceil((@font-size-base * 4.5));
@@ -687,7 +684,7 @@
 @modal-title-line-height:     @line-height-base;
 
 //** Background color of modal content area
-@modal-content-bg:                             @apim2-main-bg;
+@modal-content-bg:                             @apim-dark-main;
 //** Modal content border color
 @modal-content-border-color:                   rgba(0,0,0,.2);
 //** Modal content border color **for IE8**
@@ -784,9 +781,9 @@
 //** Text color for content within disabled list items
 @list-group-disabled-text-color: @list-group-disabled-color;
 
-@list-group-link-color:         @apim2-accent;
-@list-group-link-hover-color:   @apim2-purple;
-@list-group-link-heading-color: @apim2-deemphasize;
+@list-group-link-color:         @apim-accent;
+@list-group-link-hover-color:   @apim-dark-main-alt;
+@list-group-link-heading-color: @apim-light-disabled;
 
 
 //== Panels
@@ -851,7 +848,7 @@
 //
 //##
 
-@well-bg:                     @apim2-lightpurple;
+@well-bg:                     @apim-dark-primary;
 @well-border:                 transparent;
 
 
@@ -883,9 +880,9 @@
 //** Breadcrumb background color
 @breadcrumb-bg:                 transparent;
 //** Breadcrumb text color
-@breadcrumb-color:              @apim2-lightpurple;
+@breadcrumb-color:              @apim-dark-primary;
 //** Text color of current page in the breadcrumb
-@breadcrumb-active-color:       @apim2-accent;
+@breadcrumb-active-color:       @apim-accent;
 //** Textual separator for between breadcrumb elements
 @breadcrumb-separator:          "/";
 
