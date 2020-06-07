@@ -231,6 +231,7 @@ describe('Modal', () => {
 
       modalEl.addEventListener('shown.bs.modal', () => {
         expect(modalEl.getAttribute('aria-modal')).toEqual('true')
+        expect(modalEl.getAttribute('role')).toEqual('dialog')
         expect(modalEl.getAttribute('aria-hidden')).toEqual(null)
         expect(modalEl.style.display).toEqual('block')
         expect(document.querySelector('.modal-backdrop')).toBeDefined()
@@ -254,6 +255,7 @@ describe('Modal', () => {
 
       modalEl.addEventListener('shown.bs.modal', () => {
         expect(modalEl.getAttribute('aria-modal')).toEqual('true')
+        expect(modalEl.getAttribute('role')).toEqual('dialog')
         expect(modalEl.getAttribute('aria-hidden')).toEqual(null)
         expect(modalEl.style.display).toEqual('block')
         expect(document.querySelector('.modal-backdrop')).toBeNull()
@@ -731,6 +733,7 @@ describe('Modal', () => {
 
       modalEl.addEventListener('hidden.bs.modal', () => {
         expect(modalEl.getAttribute('aria-modal')).toEqual(null)
+        expect(modalEl.getAttribute('role')).toEqual(null)
         expect(modalEl.getAttribute('aria-hidden')).toEqual('true')
         expect(modalEl.style.display).toEqual('none')
         expect(document.querySelector('.modal-backdrop')).toBeNull()
@@ -752,6 +755,7 @@ describe('Modal', () => {
 
       modalEl.addEventListener('hidden.bs.modal', () => {
         expect(modalEl.getAttribute('aria-modal')).toEqual(null)
+        expect(modalEl.getAttribute('role')).toEqual(null)
         expect(modalEl.getAttribute('aria-hidden')).toEqual('true')
         expect(modalEl.style.display).toEqual('none')
         expect(document.querySelector('.modal-backdrop')).toBeNull()
@@ -859,6 +863,7 @@ describe('Modal', () => {
 
       modalEl.addEventListener('shown.bs.modal', () => {
         expect(modalEl.getAttribute('aria-modal')).toEqual('true')
+        expect(modalEl.getAttribute('role')).toEqual('dialog')
         expect(modalEl.getAttribute('aria-hidden')).toEqual(null)
         expect(modalEl.style.display).toEqual('block')
         expect(document.querySelector('.modal-backdrop')).toBeDefined()
@@ -901,6 +906,7 @@ describe('Modal', () => {
 
       modalEl.addEventListener('shown.bs.modal', () => {
         expect(modalEl.getAttribute('aria-modal')).toEqual('true')
+        expect(modalEl.getAttribute('role')).toEqual('dialog')
         expect(modalEl.getAttribute('aria-hidden')).toEqual(null)
         expect(modalEl.style.display).toEqual('block')
         expect(document.querySelector('.modal-backdrop')).toBeDefined()
