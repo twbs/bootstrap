@@ -187,7 +187,7 @@ Force your `.nav`'s contents to extend the full available width one of two modif
 </ul>
 {{< /example >}}
 
-When using a `<nav>`-based navigation.
+When using a `<nav>`-based navigation, you can safely omit `.nav-item` as only `.nav-link` is required for styling `<a>` elements.
 
 {{< example >}}
 <nav class="nav nav-pills nav-fill">
