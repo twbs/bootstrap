@@ -399,7 +399,7 @@ $utilities: map-merge(
       values: italic normal
     ),
     "font-weight": (
-      property: fw,
+      property: font-weight,
       values: (
         light: $font-weight-light,
         lighter: $font-weight-lighter,
