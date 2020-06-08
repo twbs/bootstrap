@@ -12,6 +12,7 @@
 
 @mixin make-row($gutter: $grid-gutter-width) {
   display: flex;
+  flex: 1 0 100%;
   flex-wrap: wrap;
   margin-right: -$gutter / 2;
   margin-left: -$gutter / 2;
