@@ -1,0 +1,8 @@
+.carousel-item > img {
+  right: 0;
+  left: auto;
+}
+
+.featurette-heading {
+  letter-spacing: normal;
+}

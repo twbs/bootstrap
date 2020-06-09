@@ -70,6 +70,8 @@ params:
     # See https://www.srihash.org for info on how to generate the hashes
     css:              "https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
     css_hash:         "sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I"
+    css_rtl:          "https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.rtl.min.css"
+      css_rtl_hash:     "sha384-p2rD9NS2LUY1sS/4e22gTRO7klnzcFxxNPdZmXPUgygCZhxbgpa1w55tq1zkx7ed"
     js:               "https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
     js_hash:          "sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
     js_bundle:        "https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js"

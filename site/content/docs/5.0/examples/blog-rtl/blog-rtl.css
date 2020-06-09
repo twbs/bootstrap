@@ -1,0 +1,6 @@
+/* stylelint-disable selector-list-comma-newline-after */
+
+.blog-header-logo,
+h1, h2, h3, h4, h5, h6 {
+  font-family: Amiri, Georgia, "Times New Roman", serif;
+}
