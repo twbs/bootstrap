@@ -4,18 +4,19 @@
 
 @if $enable-grid-classes {
   // Single container class with breakpoint max-widths
-  .container {
-    @include make-container();
-    @include make-container-max-widths();
-  }
-
+  .container,
   // 100% wide container at all breakpoints
   .container-fluid {
     @include make-container();
   }
 
-  // Responsive containers that are 100% wide until a breakpoint
-  @each $breakpoint, $container-max-width in $container-max-widths {
+  // Avoid gaps for length differences
+  $start: if(length($grid-breakpoints) > length($container-max-widths), 1, 0);
+
+  @for $i from 1 through length($container-max-widths) {
+    $breakpoint:          nth(nth($container-max-widths, $i), 1);
+    $container-max-width: nth(nth($container-max-widths, $i), 2);
+
     .container-#{$breakpoint} {
       @extend .container-fluid;
     }
@@ -25,18 +26,18 @@
         max-width: $container-max-width;
       }
 
-      // Extend each breakpoint which is smaller or equal to the current breakpoint
-      $extend-breakpoint: true;
+      .container {
+        @extend %responsive-container-#{$breakpoint};
+      }
 
-      @each $name, $width in $grid-breakpoints {
-        @if ($extend-breakpoint) {
-          .container#{breakpoint-infix($name, $grid-breakpoints)} {
-            @extend %responsive-container-#{$breakpoint};
-          }
+      @if ($i != length($container-max-widths)) {
+        @for $j from $start + $i through length($grid-breakpoints) - 1 {
+          $name: nth(nth($grid-breakpoints, $j), 1);
 
-          // Once the current breakpoint is reached, stop extending
-          @if ($breakpoint == $name) {
-            $extend-breakpoint: false;
+          @if map-get($container-max-widths, $name) {
+            .container-#{$name} {
+              @extend %responsive-container-#{$breakpoint};
+            }
           }
         }
       }
