@@ -1,0 +1,173 @@
+body {
+  scroll-behavior: smooth;
+}
+
+/**
+ * Bootstrap "Journal code" icon
+ * @link https://icons.getbootstrap.com/icons/journal-code/
+ */
+.bd-heading a::before {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin-right: .25rem;
+  content: "";
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%25230d6efd' viewBox='0 0 16 16'%3E%3Cpath d='M4 1h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2h1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1H2a2 2 0 0 1 2-2z'/%3E%3Cpath d='M2 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H2zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H2zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H2z'/%3E%3Cpath fill-rule='evenodd' d='M8.646 5.646a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1 0 .708l-2 2a.5.5 0 0 1-.708-.708L10.293 8 8.646 6.354a.5.5 0 0 1 0-.708zm-1.292 0a.5.5 0 0 0-.708 0l-2 2a.5.5 0 0 0 0 .708l2 2a.5.5 0 0 0 .708-.708L5.707 8l1.647-1.646a.5.5 0 0 0 0-.708z'/%3E%3C/svg%3E");
+  background-size: 1em;
+}
+
+[dir="rtl"] .bd-heading a::before {
+  margin-right: 0;
+  margin-left: .25rem;
+}
+
+/* stylelint-disable-next-line selector-max-universal */
+.bd-heading + div > * + * {
+  margin-top: 3rem;
+}
+
+/* Table of contents */
+.bd-aside a {
+  padding: .125rem 1rem;
+  color: inherit;
+}
+
+.bd-aside a:not(:hover) {
+  text-decoration: none;
+}
+
+.bd-aside a:not(:only-child) {
+  margin-left: -1rem;
+}
+
+[dir="rtl"] .bd-aside a:not(:only-child) {
+  margin-right: -1rem;
+  margin-left: auto;
+}
+
+.bd-aside a:not(:only-child)::before {
+  width: 1rem;
+  line-height: 0;
+  content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgba%280,0,0,.5%29' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
+  transition: transform .35s ease;
+  transform-origin: .5em 50%;
+}
+
+.bd-aside a:not(:only-child):not(.collapsed) {
+  color: #000;
+}
+
+.bd-aside a:not(:only-child):not(.collapsed)::before {
+  transform: rotate(90deg);
+}
+
+.bd-aside .active {
+  font-weight: 700;
+  color: #000;
+}
+
+/* Examples */
+.scrollspy-example {
+  position: relative;
+  height: 200px;
+  margin-top: .5rem;
+  overflow: auto;
+}
+
+[id="modal"] .bd-example .btn,
+[id="buttons"] .bd-example .btn,
+[id="tooltips"] .bd-example .btn,
+[id="popovers"] .bd-example .btn,
+[id="dropdowns"] .bd-example .btn-group,
+[id="dropdowns"] .bd-example .dropdown,
+[id="dropdowns"] .bd-example .dropup,
+[id="dropdowns"] .bd-example .dropend,
+[id="dropdowns"] .bd-example .dropstart {
+  margin: 0 1rem 1rem 0;
+}
+
+[dir="rtl"] [id="modal"] .bd-example .btn,
+[dir="rtl"] [id="buttons"] .bd-example .btn,
+[dir="rtl"] [id="tooltips"] .bd-example .btn,
+[dir="rtl"] [id="popovers"] .bd-example .btn,
+[dir="rtl"] [id="dropdowns"] .bd-example .btn-group,
+[dir="rtl"] [id="dropdowns"] .bd-example .dropdown,
+[dir="rtl"] [id="dropdowns"] .bd-example .dropup,
+[dir="rtl"] [id="dropdowns"] .bd-example .dropend,
+[dir="rtl"] [id="dropdowns"] .bd-example .dropstart {
+  margin: 0 0 1rem 1rem;
+}
+
+/* Layout */
+@media (min-width: 1200px) {
+  body {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-rows: auto;
+  }
+
+  .bd-header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+    grid-column: 1 / span 3;
+    min-height: 6rem;
+  }
+
+  .bd-aside,
+  .bd-cheatsheet {
+    padding-top: 6rem;
+  }
+
+  /**
+   * 1. Too bad only Firefox supports subgrids ATM
+   */
+  .bd-cheatsheet,
+  .bd-cheatsheet section,
+  .bd-cheatsheet article {
+    display: inherit; /* 1 */
+    gap: inherit; /* 1 */
+    grid-template-columns: 1fr 4fr;
+    grid-column: 1 / span 2;
+    grid-template-rows: auto;
+  }
+
+  .bd-aside {
+    grid-area: 1 / 3;
+    scroll-margin-top: 6rem;
+  }
+
+  .bd-cheatsheet section,
+  .bd-cheatsheet section > h2 {
+    top: 6rem;
+    scroll-margin-top: 6rem;
+  }
+
+  .bd-cheatsheet section > h2 {
+    background-image: linear-gradient(to bottom, #fff, transparent);
+    grid-column: 1 / span 2;
+  }
+
+  .bd-cheatsheet section > h2::before {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+    width: 17.5%;
+    content: "";
+    background-image: linear-gradient(to bottom, #fff calc(100% - 2rem), transparent);
+  }
+
+  .bd-cheatsheet article,
+  .bd-cheatsheet .bd-heading {
+    top: 12rem;
+    scroll-margin-top: 12rem;
+  }
+
+  .bd-cheatsheet .bd-heading {
+    z-index: 1;
+  }
+}
