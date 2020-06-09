@@ -7,24 +7,49 @@
 //
 
 // APImetrics Brand colors
-@apim-grey-dark:        #6d6e71;
-@apim-grey-medium:      #939598;
-@apim-grey-text:        darken(white, 5%);// #262626;
+@apim-grey-dark:       #6d6e71;
+@apim-grey-medium:     #939598;
+@apim-grey-text:       darken(white, 5%); // #262626;
 // APImetrics extended palette
-@apim-grey-light:       #ededed;
-// Pass / Warning / Fail colors
-@apim-pass:             #5cb85c;
-@apim-fail:             #d9534f;
-@apim-warn:             rgb(247, 163, 92);
+@apim-grey-light:      #ededed;
 
-@apim2-white:           white;
-@apim2-blue:            #00A5EF;
-@apim2-lightpurple:     #27283C;
-@apim2-purple:          #1B1D30;
-@apim2-darkpurple:      #121421;
-@apim2-border:          #38384B;
-@apim2-grey:            grey;
-@apim2-offwhite:        #e2e5f9;
+// Pass / Warning / Fail colors
+@apim-pass:            rgb(92, 184, 92);   // #5cb85c;
+@apim-fail:            rgb(217, 83, 79);   // #d9534f;
+@apim-warn:            rgb(247, 163, 92);  // #f7a35c; 
+
+@apim2-white:          rgb(255, 255, 255); // #FFFFFF;
+@apim2-blue:           rgb(0, 177, 255);   // #00b1ff;
+@apim2-lightpurple:    rgb(39, 40, 60);    // #27283C;
+@apim2-purple:         rgb(27, 29, 48);    // #1B1D30;
+@apim2-darkpurple:     rgb(18, 20, 33);    // #121421;
+@apim2-border:         rgb(56, 56, 75);    // #38384B;
+@apim2-grey:           rgb(128, 128, 128); // #808080;
+@apim2-offwhite:       rgb(226, 229, 249); // #e2e5f9;
+
+// From wordpress site:
+@apim2-accent-orange:  rgb(222, 180, 139); // #deb48b;
+@apim2-accent-brown:   rgb(172, 130, 56);  // #ac8238;
+@apim2-accent-gold:    rgb(222, 186, 146); // #deba92;
+@apim2-accent-green:   rgb(103, 255, 189); // #67ffbd;
+@apim2-accent-green2:  rgb(96, 197, 150);  // #60c596;
+@apim2-accent-purple:  rgb(212, 123, 255); // #d47bff;
+@apim2-accent-purple2: rgb(133, 133, 255); // #8585ff;
+@apim2-accent-pink:    rgb(255, 101, 159); // #ff659f;
+@apim2-accent-yellow:  rgb(255, 250, 116); // #fffa74;
+@apim2-accent-grey:    rgb(184, 184, 184); // #b8b8b8;
+
+@apim2-muted-blue:     rgb(28, 47, 72);    // #1c2f48;
+@apim2-subhead-blue:   rgb(97, 183, 255);  // #61B7FF
+@apim2-diag-purple1:   rgb(58, 63, 95);    // #3a3f5f;
+@apim2-diag-purple2:   rgb(51, 56, 85);    // #333855
+@apim2-diag-purple3:   rgb(67, 78, 117);   // #434e75;
+@apim2-diag-purple4:   rgb(93, 115, 187);  // #5d73bb;
+
+@apim2-graph-color1:   rgb(78, 111, 210);  // #4e6fd2;
+@apim2-graph-color2:   rgb(53, 89, 221);   // #3559dd;
+@apim2-graph-color3:   rgb(44, 60, 203);   // #2c3ccb;
+@apim2-graph-color4:   rgb(155, 41, 210);  // #9b29d2;
 
 @apim-light-main:       @apim2-white;
 @apim-light-primary:    @apim2-offwhite;
@@ -37,7 +62,7 @@
 
 @apim-light-primary-alt:  @apim2-offwhite;
 @apim-dark-main-alt:      @apim2-darkpurple;
-@apim-dark-primary-alt:   @apim2-purple;
+@apim-dark-primary-alt:   @apim2-muted-blue;
 @apim-dark-secondary-alt: @apim2-lightpurple;
 @apim-accent-hover:       @apim-accent;
 
@@ -46,10 +71,67 @@
 @apim-tab-sel-border:    transparent;
 @apim-tab-unsel-border:  transparent;
 
-@apim-widget-bg:         @apim2-offwhite;
-@apim-widget-color:      @apim-dark-primary;
+@apim-widget-bg:         @apim2-darkpurple;
+@apim-widget-color:      @apim-light-main;
 @apim-widget-btn-color:  @apim-dark-main;
 @apim-widget-icon-color: @apim-accent;
+
+:root {
+    --pass: @apim-pass;
+    --fail: @apim-fail;
+    --warn: @apim-warn;
+    
+    --white: @apim2-white;
+    --blue: @apim2-blue;
+    --lightpurple: @apim2-lightpurple;
+    --purple: @apim2-purple;
+    --darkpurple: @apim2-darkpurple;
+    --border: @apim2-border;
+    --grey: @apim2-grey;
+    --offwhite: @apim2-offwhite;
+    
+    --accent-orange: @apim2-accent-orange;
+    --accent-brown: @apim2-accent-brown;
+    --accent-gold: @apim2-accent-gold;
+    --accent-green: @apim2-accent-green;
+    --accent-green2: @apim2-accent-green2;
+    --accent-purple: @apim2-accent-purple;
+    --accent-purple2: @apim2-accent-purple2;
+    --accent-pink: @apim2-accent-pink;
+    --accent-yellow: @apim2-accent-yellow;
+    --accent-grey: @apim2-accent-grey;
+    
+    --muted-blue: @apim2-muted-blue;
+    --subhead-blue: @apim2-subhead-blue;
+    --diag-purple1: @apim2-diag-purple1;
+    --diag-purple2: @apim2-diag-purple2;
+    --diag-purple3: @apim2-diag-purple3;
+    --diag-purple4: @apim2-diag-purple4;
+    
+    --graph-color1: @apim2-graph-color1;
+    --graph-color2: @apim2-graph-color2;
+    --graph-color3: @apim2-graph-color3;
+    --graph-color4: @apim2-graph-color4;
+    
+    --light-main: @apim-light-main;
+    --light-primary: @apim-light-primary;
+    --dark-main: @apim-dark-main;
+    --dark-primary: @apim-dark-primary;
+    --dark-secondary: @apim-dark-secondary;
+    --accent: @apim-accent;
+    --light-disabled: @apim-light-disabled;
+    --dark-disabled: @apim-dark-disabled;
+    --light-primary-alt: @apim-light-primary-alt;
+    --dark-main-alt: @apim-dark-main-alt;
+    --dark-primary-alt: @apim-dark-primary-alt;
+    --dark-secondary-alt: @apim-dark-secondary-alt;
+    --accent-hover: @apim-accent-hover;
+
+    --pri-border: @apim-pri-border;
+    --sec-border: @apim-sec-border;
+    --tab-sel-border: @apim-tab-sel-border;
+    --tab-unsel-border: @apim-tab-unsel-border;
+}
 
 //## Gray and brand colors for use across Bootstrap.
 
@@ -158,9 +240,9 @@
 @border-radius-small:       0;
 
 //** Global color for active items (e.g., navs or dropdowns).
-@component-active-color:    white;
+@component-active-color:    @apim-light-main;
 //** Global background color for active items (e.g., navs or dropdowns).
-@component-active-bg:       @apim-accent;
+@component-active-bg:       @apim-dark-primary-alt;
 
 //** Width of the `border` for generating carets that indicate dropdowns.
 @caret-width-base:          4px;
@@ -196,7 +278,9 @@
 @btn-font-weight:                @font-family-bold-weight;
 
 @btn-default-color:              @apim-light-main;
-@btn-default-bg:                 @apim-dark-main;
+@btn-default-bg:                 @apim-dark-secondary;
+@btn-default-hover-color:        @apim-accent;
+@btn-default-hover-bg:           @apim-dark-primary-alt;
 @btn-default-border:             @apim-dark-main;
 @btn-default-sel-border:         @apim-sec-border;
 
@@ -225,7 +309,7 @@
 @btn-warning-border:             @brand-warning;
 @btn-warning-sel-border:         @apim-sec-border;
 
-@btn-danger-color:               @apim-dark-main;
+@btn-danger-color:               @apim-light-main;
 @btn-danger-bg:                  @brand-danger;
 @btn-danger-border:              @brand-danger;
 @btn-danger-sel-border:          @apim-sec-border;
@@ -312,7 +396,7 @@
 //** Hover color for dropdown links.
 @dropdown-link-hover-color:      @apim-accent;
 //** Hover background for dropdown links.
-@dropdown-link-hover-bg:         @btn-default-color;
+@dropdown-link-hover-bg:         @component-active-bg;
 
 //** Active dropdown menu item text color.
 @dropdown-link-active-color:     @component-active-color;
@@ -466,7 +550,7 @@
 @sidebar-default-color:             white;
 @sidebar-default-color-focus:       @apim-accent;
 @sidebar-default-bg:                @apim-dark-secondary;
-@sidebar-default-bg-focus:          @apim-dark-main;
+@sidebar-default-bg-focus:          @apim-dark-primary-alt;
 @sidebar-default-border:            @apim2-border;
 
 
@@ -540,7 +624,7 @@
 @pagination-border:                    transparent;
 
 @pagination-hover-color:               @link-hover-color;
-@pagination-hover-bg:                  @apim-light-primary-alt;
+@pagination-hover-bg:                  @apim-dark-primary-alt;
 @pagination-hover-border:              #ddd;
 
 @pagination-active-color:              @btn-primary-bg;
