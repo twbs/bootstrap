@@ -599,7 +599,7 @@ b, strong {
 
   > h1, h2, h3, h4, h5, h6,
   .h1, .h2, .h3, .h4, .h5, .h6, a {
-    color: @sidebar-default-color;
+    color: @text-color;
   }
 
   > h4, h5, h6,
@@ -704,6 +704,13 @@ body {
       padding-left: 0 !important;
       padding-right: 0 !important;
     }
+    input, select {
+      color: @input-color;
+      background-color: @input-bg;
+      .form-control-underline();
+      .form-control-focus();
+      .placeholder();
+    }
   }
 }
 .dataTables_length {
@@ -787,7 +794,8 @@ body {
   .select2-selection--multiple {
     .select2-input-defaults; 
     .select2-selection__choice {
-      background: darken(@s2bs-btn-default-bg, 10%);
+      color: @btn-info-color;
+      background-color: @btn-info-bg;
     }
   }
 
@@ -918,9 +926,8 @@ body {
 }
 
 .badge {
-  > a {
-    color: @apim2-purple;
-  }
+  color: @btn-info-color;
+  background-color: @btn-info-bg;
 }
 
 // .list-group-item {
@@ -929,3 +936,32 @@ body {
 //   border-bottom: 1px solid @list-group-border;
 //   // padding: 10px 0px;
 // }
+
+.list-group-striped {
+  .list-group-item:nth-of-type(odd) {
+    background-color: @list-group-stipe;
+  }
+}
+
+.list-group-hover {
+  .list-group-item:hover {
+    background-color: @list-group-hover-bg;
+  }
+}
+
+.toolbar {
+  margin-bottom: @line-height-computed;
+}
+
+h1 {
+  color: @text-color;
+}
+
+/* For non-vue conditions page */
+.cell-variable-name input { text-transform:uppercase; }
+.conditionals-table .second-row td { border-bottom:4px double #555; }
+.conditionals-table td.cell-del { border-bottom:4px double #555; }
+.conditionals-table tbody > tr:nth-child(4n+1) { background-color: @list-group-stipe; }
+.conditionals-table tbody > tr:nth-child(4n+2) { background-color: @list-group-stipe; }
+.conditionals-table tbody > tr:nth-child(4n+3) { background-color: @list-group-bg; }
+.conditionals-table tbody > tr:nth-child(4n+4) { background-color: @list-group-bg; }

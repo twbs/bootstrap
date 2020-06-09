@@ -19,6 +19,7 @@
 @apim-warn:            rgb(247, 163, 92);  // #f7a35c; 
 
 @apim2-white:          rgb(255, 255, 255); // #FFFFFF;
+@apim2-black:          rgb(0, 0, 0);       // #000000;
 @apim2-blue:           rgb(0, 177, 255);   // #00b1ff;
 @apim2-lightpurple:    rgb(39, 40, 60);    // #27283C;
 @apim2-purple:         rgb(27, 29, 48);    // #1B1D30;
@@ -57,6 +58,7 @@
 @apim-dark-primary:     @apim2-lightpurple;
 @apim-dark-secondary:   @apim2-darkpurple;
 @apim-accent:           @apim2-blue;
+@apim-dark-accent:      @apim2-black;
 @apim-light-disabled:   @apim2-grey;
 @apim-dark-disabled:    @apim2-darkpurple;
 
@@ -64,7 +66,6 @@
 @apim-dark-main-alt:      @apim2-darkpurple;
 @apim-dark-primary-alt:   @apim2-muted-blue;
 @apim-dark-secondary-alt: @apim2-lightpurple;
-@apim-accent-hover:       @apim-accent;
 
 @apim-pri-border:        transparent;
 @apim-sec-border:        transparent;
@@ -81,6 +82,7 @@
     --fail: @apim-fail;
     --warn: @apim-warn;
     
+    --black: @apim2-black;
     --white: @apim2-white;
     --blue: @apim2-blue;
     --lightpurple: @apim2-lightpurple;
@@ -119,13 +121,13 @@
     --dark-primary: @apim-dark-primary;
     --dark-secondary: @apim-dark-secondary;
     --accent: @apim-accent;
+    --dark-accent: @apim-dark-accent;
     --light-disabled: @apim-light-disabled;
     --dark-disabled: @apim-dark-disabled;
     --light-primary-alt: @apim-light-primary-alt;
     --dark-main-alt: @apim-dark-main-alt;
     --dark-primary-alt: @apim-dark-primary-alt;
     --dark-secondary-alt: @apim-dark-secondary-alt;
-    --accent-hover: @apim-accent-hover;
 
     --pri-border: @apim-pri-border;
     --sec-border: @apim-sec-border;
@@ -162,7 +164,7 @@
 //** Global textual link color.
 @link-color:            @apim-accent;
 //** Link hover color set via `darken()` function.
-@link-hover-color:      @apim-accent-hover;
+@link-hover-color:      @apim-light-primary;
 //** Link hover decoration.
 @link-hover-decoration: underline;
 
@@ -201,7 +203,7 @@
 @headings-font-family:    "Open Sans", Helvetica, Arial, sans-serif;
 @headings-font-weight:    @font-family-bold-weight; // bold
 @headings-line-height:    1.1;
-@headings-color:          @apim2-white;
+@headings-color:          @apim2-subhead-blue;
 
 
 //== Iconography
@@ -260,12 +262,12 @@
 @table-condensed-cell-padding:  5px;
 
 //** Default background color used for all tables.
-@table-bg:                      transparent;
+@table-bg:                      @apim-dark-main;
 //** Background color used for `.table-striped`.
 @table-bg-accent:               @apim-dark-primary;
 //** Background color used for `.table-hover`.
 @table-bg-hover:                @apim-dark-secondary;
-@table-bg-active:               @apim-dark-main;
+@table-bg-active:               @apim-dark-primary-alt;
 
 //** Border color for table and cell borders.
 @table-border-color:            transparent;
@@ -281,42 +283,42 @@
 @btn-default-bg:                 @apim-dark-secondary;
 @btn-default-hover-color:        @apim-accent;
 @btn-default-hover-bg:           @apim-dark-primary-alt;
-@btn-default-border:             @apim-dark-main;
+@btn-default-border:             @apim-pri-border;
 @btn-default-sel-border:         @apim-sec-border;
 
-@btn-primary-color:              @apim-dark-secondary;
+@btn-primary-color:              @apim-dark-accent;
 @btn-primary-bg:                 @apim-accent;
-@btn-primary-border:             @apim-accent;
-@btn-primary-sel-border:         @apim-pri-border;
+@btn-primary-border:             @apim-pri-border;
+@btn-primary-sel-border:         @apim-sec-border;
 
-@btn-secondary-color:            @brand-primary;
+@btn-secondary-color:            @apim-light-main;
 @btn-secondary-bg:               @apim-dark-primary;
-@btn-secondary-border:           @brand-primary;
+@btn-secondary-border:           @apim-pri-border;
 @btn-secondary-sel-border:       @apim-sec-border;
 
 @btn-success-color:              @apim-dark-main;
 @btn-success-bg:                 @brand-success;
-@btn-success-border:             @btn-success-bg;
-@btn-success-sel-border:         darken(@btn-success-bg, 5%);
+@btn-success-border:             @apim-pri-border;
+@btn-success-sel-border:         @apim-sec-border;
 
-@btn-info-color:                 @apim-dark-secondary;
-@btn-info-bg:                    @apim-accent;
-@btn-info-border:                @apim-accent;
+@btn-info-color:                 @apim-light-main;
+@btn-info-bg:                    @apim-dark-primary-alt;
+@btn-info-border:                @apim-pri-border;
 @btn-info-sel-border:            @apim-sec-border;
 
 @btn-warning-color:              @apim-dark-main;
 @btn-warning-bg:                 @brand-warning;
-@btn-warning-border:             @brand-warning;
+@btn-warning-border:             @apim-pri-border;
 @btn-warning-sel-border:         @apim-sec-border;
 
 @btn-danger-color:               @apim-light-main;
 @btn-danger-bg:                  @brand-danger;
-@btn-danger-border:              @brand-danger;
+@btn-danger-border:              @apim-pri-border;
 @btn-danger-sel-border:          @apim-sec-border;
 
 @btn-inverse-color:              @apim-dark-main;
 @btn-inverse-bg:                 @apim-grey-text;
-@btn-inverse-border:             @apim-grey-text;
+@btn-inverse-border:             @apim-pri-border;
 @btn-inverse-sel-border:         @apim-sec-border;
 
 @btn-link-disabled-color:        @apim-dark-disabled;
@@ -841,22 +843,23 @@
 //##
 
 //** Background color on `.list-group-item`
-@list-group-bg:                 transparent;
+@list-group-bg:                 @apim-dark-main;
 //** `.list-group-item` border color
 @list-group-border:             transparent;
 //** List group border radius
 @list-group-border-radius:      @border-radius-base;
 
 //** Background color of single list items on hover
-@list-group-hover-bg:           @apim-grey-light;
+@list-group-hover-bg:           @apim-dark-secondary;
+@list-group-stipe:              @apim-dark-primary;
 //** Text color of active list items
 @list-group-active-color:       @component-active-color;
 //** Background color of active list items
 @list-group-active-bg:          @component-active-bg;
 //** Border color of active list elements
-@list-group-active-border:      @list-group-active-bg;
+@list-group-active-border:      transparent;
 //** Text color for content within active list items
-@list-group-active-text-color:  lighten(@list-group-active-bg, 40%);
+@list-group-active-text-color:  @apim-light-primary;
 
 //** Text color of disabled list items
 @list-group-disabled-color:      @apim-grey-medium;
