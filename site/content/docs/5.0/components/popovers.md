@@ -56,7 +56,7 @@ var popover = new bootstrap.Popover(document.querySelector('.example-popover'), 
 
 ### Four directions
 
-Four options are available: top, right, bottom, and left aligned.
+Four options are available: top, right, bottom, and left aligned. Directions are mirrored when using Bootstrap in RTL.
 
 <div class="bd-example popover-demo">
   <div class="bd-example-popovers">
