@@ -297,6 +297,23 @@ $(function () {
       .bootstrapModal('show')
   })
 
+  QUnit.test('should add role="dialog" attribute when shown, remove it again when hidden', function (assert) {
+    assert.expect(3)
+    var done = assert.async()
+
+    $('<div id="modal-test"/>')
+      .on('shown.bs.modal', function () {
+        assert.ok($('#modal-test').is('[role]'), 'role attribute added')
+        assert.strictEqual($('#modal-test').attr('role'), 'dialog', 'correct role="dialog" added')
+        $(this).bootstrapModal('hide')
+      })
+      .on('hidden.bs.modal', function () {
+        assert.notOk($('#modal-test').is('[role]'), 'role attribute removed')
+        done()
+      })
+      .bootstrapModal('show')
+  })
+
   QUnit.test('should close reopened modal with [data-dismiss="modal"] click', function (assert) {
     assert.expect(2)
     var done = assert.async()
