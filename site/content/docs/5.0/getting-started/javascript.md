@@ -39,7 +39,7 @@ Our dropdowns, popovers and tooltips also depend on [Popper.js](https://popper.j
 
 ## Still want to use jQuery? It's possible!
 
-Bootstrap 5 is designed to be used without jQuery, but it's still possible to use our components with jQuery. **If Bootstrap detects `jQuery` in the `window` object** it'll add all of our components in jQuery's plugin system; this means you'll be able to do `$('[data-toggle="tooltip"]').tooltip()` to enable tooltips. The same goes for our other components.
+Bootstrap 5 is designed to be used without jQuery, but it's still possible to use our components with jQuery. **If Bootstrap detects `jQuery` in the `window` object** it'll add all of our components in jQuery's plugin system; this means you'll be able to do `$('[data-bs-toggle="tooltip"]').tooltip()` to enable tooltips. The same goes for our other components.
 
 ## Data attributes
 
@@ -71,7 +71,7 @@ myModal.addEventListener('show.bs.modal', function (e) {
 {{< callout warning >}}
 ## jQuery events
 
-Bootstrap will detect jQuery if `jQuery` is present in the `window` object and there is no `data-no-jquery` attribute set on `<body>`. If jQuery is found, Bootstrap will emit events thanks to jQuery's event system. So if you want to listen to Bootstrap's events, you'll have to use the jQuery methods (`.on`, `.one`) instead of `addEventListener`.
+Bootstrap will detect jQuery if `jQuery` is present in the `window` object and there is no `data-bs-no-jquery` attribute set on `<body>`. If jQuery is found, Bootstrap will emit events thanks to jQuery's event system. So if you want to listen to Bootstrap's events, you'll have to use the jQuery methods (`.on`, `.one`) instead of `addEventListener`.
 
 {{< highlight js >}}
 $('#myTab a').on('shown.bs.tab', function () {
@@ -208,12 +208,12 @@ var myDefaultWhiteList = bootstrap.Tooltip.Default.whiteList
 // To allow table elements
 myDefaultWhiteList.table = []
 
-// To allow td elements and data-option attributes on td elements
-myDefaultWhiteList.td = ['data-option']
+// To allow td elements and data-bs-option attributes on td elements
+myDefaultWhiteList.td = ['data-bs-option']
 
 // You can push your custom regex to validate your attributes.
 // Be careful about your regular expressions being too lax
-var myCustomRegex = /^data-my-app-[\w-]+/
+var myCustomRegex = /^data-bs-my-app-[\w-]+/
 myDefaultWhiteList['*'].push(myCustomRegex)
 {{< /highlight >}}
 

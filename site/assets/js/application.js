@@ -19,11 +19,11 @@
   document.querySelectorAll('.tooltip-demo')
     .forEach(function (tooltip) {
       new bootstrap.Tooltip(tooltip, {
-        selector: '[data-toggle="tooltip"]'
+        selector: '[data-bs-toggle="tooltip"]'
       })
     })
 
-  document.querySelectorAll('[data-toggle="popover"]')
+  document.querySelectorAll('[data-bs-toggle="popover"]')
     .forEach(function (popover) {
       new bootstrap.Popover(popover)
     })
@@ -68,8 +68,8 @@
     exampleModal.addEventListener('show.bs.modal', function (event) {
       // Button that triggered the modal
       var button = event.relatedTarget
-      // Extract info from data-* attributes
-      var recipient = button.getAttribute('data-whatever')
+      // Extract info from data-bs-* attributes
+      var recipient = button.getAttribute('data-bs-whatever')
 
       // Update the modal's content.
       var modalTitle = exampleModal.querySelector('.modal-title')
@@ -119,10 +119,10 @@
   clipboard.on('success', function (e) {
     var tooltipBtn = bootstrap.Tooltip.getInstance(e.trigger)
 
-    e.trigger.setAttribute('data-original-title', 'Copied!')
+    e.trigger.setAttribute('data-bs-original-title', 'Copied!')
     tooltipBtn.show()
 
-    e.trigger.setAttribute('data-original-title', 'Copy to clipboard')
+    e.trigger.setAttribute('data-bs-original-title', 'Copy to clipboard')
     e.clearSelection()
   })
 
@@ -131,10 +131,10 @@
     var fallbackMsg = 'Press ' + modifierKey + 'C to copy'
     var tooltipBtn = bootstrap.Tooltip.getInstance(e.trigger)
 
-    e.trigger.setAttribute('data-original-title', fallbackMsg)
+    e.trigger.setAttribute('data-bs-original-title', fallbackMsg)
     tooltipBtn.show()
 
-    e.trigger.setAttribute('data-original-title', 'Copy to clipboard')
+    e.trigger.setAttribute('data-bs-original-title', 'Copy to clipboard')
   })
 
   anchors.options = {

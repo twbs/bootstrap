@@ -23,7 +23,7 @@ describe('Alert', () => {
     it('should close an alert without instantiating it manually', () => {
       fixtureEl.innerHTML = [
         '<div class="alert">',
-        '  <button type="button" data-dismiss="alert">x</button>',
+        '  <button type="button" data-bs-dismiss="alert">x</button>',
         '</div>'
       ].join('')
 
@@ -36,7 +36,7 @@ describe('Alert', () => {
     it('should close an alert without instantiating it manually with the parent selector', () => {
       fixtureEl.innerHTML = [
         '<div class="alert">',
-        '  <button type="button" data-target=".alert" data-dismiss="alert">x</button>',
+        '  <button type="button" data-bs-target=".alert" data-bs-dismiss="alert">x</button>',
         '</div>'
       ].join('')
 

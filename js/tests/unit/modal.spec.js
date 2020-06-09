@@ -29,7 +29,7 @@ describe('Modal', () => {
 
     document.body.classList.remove('modal-open')
     document.body.removeAttribute('style')
-    document.body.removeAttribute('data-padding-right')
+    document.body.removeAttribute('data-bs-padding-right')
 
     document.querySelectorAll('.modal-backdrop')
       .forEach(backdrop => {
@@ -67,12 +67,12 @@ describe('Modal', () => {
       document.body.style.paddingRight = originalPadding
 
       modalEl.addEventListener('shown.bs.modal', () => {
-        expect(document.body.getAttribute('data-padding-right')).toEqual(originalPadding, 'original body padding should be stored in data-padding-right')
+        expect(document.body.getAttribute('data-bs-padding-right')).toEqual(originalPadding, 'original body padding should be stored in data-bs-padding-right')
         modal.toggle()
       })
 
       modalEl.addEventListener('hidden.bs.modal', () => {
-        expect(document.body.getAttribute('data-padding-right')).toBeNull()
+        expect(document.body.getAttribute('data-bs-padding-right')).toBeNull()
         expect().nothing()
         done()
       })
@@ -95,7 +95,7 @@ describe('Modal', () => {
         const expectedPadding = originalPadding + modal._getScrollbarWidth()
         const currentPadding = parseInt(window.getComputedStyle(modalEl).paddingRight, 10)
 
-        expect(fixedEl.getAttribute('data-padding-right')).toEqual('0px', 'original fixed element padding should be stored in data-padding-right')
+        expect(fixedEl.getAttribute('data-bs-padding-right')).toEqual('0px', 'original fixed element padding should be stored in data-bs-padding-right')
         expect(currentPadding).toEqual(expectedPadding, 'fixed element padding should be adjusted while opening')
         modal.toggle()
       })
@@ -103,7 +103,7 @@ describe('Modal', () => {
       modalEl.addEventListener('hidden.bs.modal', () => {
         const currentPadding = parseInt(window.getComputedStyle(modalEl).paddingRight, 10)
 
-        expect(fixedEl.getAttribute('data-padding-right')).toEqual(null, 'data-padding-right should be cleared after closing')
+        expect(fixedEl.getAttribute('data-bs-padding-right')).toEqual(null, 'data-bs-padding-right should be cleared after closing')
         expect(currentPadding).toEqual(originalPadding, 'fixed element padding should be reset after closing')
         done()
       })
@@ -126,7 +126,7 @@ describe('Modal', () => {
         const expectedMargin = originalMargin - modal._getScrollbarWidth()
         const currentMargin = parseInt(window.getComputedStyle(stickyTopEl).marginRight, 10)
 
-        expect(stickyTopEl.getAttribute('data-margin-right')).toEqual('0px', 'original sticky element margin should be stored in data-margin-right')
+        expect(stickyTopEl.getAttribute('data-bs-margin-right')).toEqual('0px', 'original sticky element margin should be stored in data-bs-margin-right')
         expect(currentMargin).toEqual(expectedMargin, 'sticky element margin should be adjusted while opening')
         modal.toggle()
       })
@@ -134,7 +134,7 @@ describe('Modal', () => {
       modalEl.addEventListener('hidden.bs.modal', () => {
         const currentMargin = parseInt(window.getComputedStyle(stickyTopEl).marginRight, 10)
 
-        expect(stickyTopEl.getAttribute('data-margin-right')).toEqual(null, 'data-margin-right should be cleared after closing')
+        expect(stickyTopEl.getAttribute('data-bs-margin-right')).toEqual(null, 'data-bs-margin-right should be cleared after closing')
         expect(currentMargin).toEqual(originalMargin, 'sticky element margin should be reset after closing')
         done()
       })
@@ -355,19 +355,19 @@ describe('Modal', () => {
       modal.show()
     })
 
-    it('should close modal when a click occurred on data-dismiss="modal"', done => {
+    it('should close modal when a click occurred on data-bs-dismiss="modal"', done => {
       fixtureEl.innerHTML = [
         '<div class="modal fade">',
         '  <div class="modal-dialog">',
         '    <div class="modal-header">',
-        '      <button type="button" data-dismiss="modal"></button>',
+        '      <button type="button" data-bs-dismiss="modal"></button>',
         '    </div>',
         '  </div>',
         '</div>'
       ].join('')
 
       const modalEl = fixtureEl.querySelector('.modal')
-      const btnClose = fixtureEl.querySelector('[data-dismiss="modal"]')
+      const btnClose = fixtureEl.querySelector('[data-bs-dismiss="modal"]')
       const modal = new Modal(modalEl)
 
       spyOn(modal, 'hide').and.callThrough()
@@ -542,7 +542,7 @@ describe('Modal', () => {
     })
 
     it('should not close modal when clicking outside of modal-content if backdrop = static', done => {
-      fixtureEl.innerHTML = '<div class="modal" data-backdrop="static" ><div class="modal-dialog"></div>'
+      fixtureEl.innerHTML = '<div class="modal" data-bs-backdrop="static" ><div class="modal-dialog"></div>'
 
       const modalEl = fixtureEl.querySelector('.modal')
       const modal = new Modal(modalEl, {
@@ -569,7 +569,7 @@ describe('Modal', () => {
     })
 
     it('should close modal when escape key is pressed with keyboard = true and backdrop is static', done => {
-      fixtureEl.innerHTML = '<div class="modal" data-backdrop="static"><div class="modal-dialog"></div>'
+      fixtureEl.innerHTML = '<div class="modal" data-bs-backdrop="static"><div class="modal-dialog"></div>'
 
       const modalEl = fixtureEl.querySelector('.modal')
       const modal = new Modal(modalEl, {
@@ -596,7 +596,7 @@ describe('Modal', () => {
     })
 
     it('should not close modal when escape key is pressed with keyboard = false and backdrop = static', done => {
-      fixtureEl.innerHTML = '<div class="modal" data-backdrop="static" data-keyboard="false"><div class="modal-dialog"></div>'
+      fixtureEl.innerHTML = '<div class="modal" data-bs-backdrop="static" data-bs-keyboard="false"><div class="modal-dialog"></div>'
 
       const modalEl = fixtureEl.querySelector('.modal')
       const modal = new Modal(modalEl, {
@@ -854,12 +854,12 @@ describe('Modal', () => {
   describe('data-api', () => {
     it('should open modal', done => {
       fixtureEl.innerHTML = [
-        '<button type="button" data-toggle="modal" data-target="#exampleModal"></button>',
+        '<button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"></button>',
         '<div id="exampleModal" class="modal"><div class="modal-dialog"></div>'
       ].join('')
 
       const modalEl = fixtureEl.querySelector('.modal')
-      const trigger = fixtureEl.querySelector('[data-toggle="modal"]')
+      const trigger = fixtureEl.querySelector('[data-bs-toggle="modal"]')
 
       modalEl.addEventListener('shown.bs.modal', () => {
         expect(modalEl.getAttribute('aria-modal')).toEqual('true')
@@ -875,13 +875,13 @@ describe('Modal', () => {
 
     it('should not recreate a new modal', done => {
       fixtureEl.innerHTML = [
-        '<button type="button" data-toggle="modal" data-target="#exampleModal"></button>',
+        '<button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"></button>',
         '<div id="exampleModal" class="modal"><div class="modal-dialog"></div>'
       ].join('')
 
       const modalEl = fixtureEl.querySelector('.modal')
       const modal = new Modal(modalEl)
-      const trigger = fixtureEl.querySelector('[data-toggle="modal"]')
+      const trigger = fixtureEl.querySelector('[data-bs-toggle="modal"]')
 
       spyOn(modal, 'show').and.callThrough()
 
@@ -895,12 +895,12 @@ describe('Modal', () => {
 
     it('should prevent default when the trigger is <a> or <area>', done => {
       fixtureEl.innerHTML = [
-        '<a data-toggle="modal" href="#" data-target="#exampleModal"></a>',
+        '<a data-bs-toggle="modal" href="#" data-bs-target="#exampleModal"></a>',
         '<div id="exampleModal" class="modal"><div class="modal-dialog"></div>'
       ].join('')
 
       const modalEl = fixtureEl.querySelector('.modal')
-      const trigger = fixtureEl.querySelector('[data-toggle="modal"]')
+      const trigger = fixtureEl.querySelector('[data-bs-toggle="modal"]')
 
       spyOn(Event.prototype, 'preventDefault').and.callThrough()
 
@@ -919,12 +919,12 @@ describe('Modal', () => {
 
     it('should focus the trigger on hide', done => {
       fixtureEl.innerHTML = [
-        '<a data-toggle="modal" href="#" data-target="#exampleModal"></a>',
+        '<a data-bs-toggle="modal" href="#" data-bs-target="#exampleModal"></a>',
         '<div id="exampleModal" class="modal"><div class="modal-dialog"></div>'
       ].join('')
 
       const modalEl = fixtureEl.querySelector('.modal')
-      const trigger = fixtureEl.querySelector('[data-toggle="modal"]')
+      const trigger = fixtureEl.querySelector('[data-bs-toggle="modal"]')
 
       spyOn(trigger, 'focus')
 
@@ -950,12 +950,12 @@ describe('Modal', () => {
 
     it('should not focus the trigger if the modal is not visible', done => {
       fixtureEl.innerHTML = [
-        '<a data-toggle="modal" href="#" data-target="#exampleModal" style="display: none;"></a>',
+        '<a data-bs-toggle="modal" href="#" data-bs-target="#exampleModal" style="display: none;"></a>',
         '<div id="exampleModal" class="modal" style="display: none;"><div class="modal-dialog"></div>'
       ].join('')
 
       const modalEl = fixtureEl.querySelector('.modal')
-      const trigger = fixtureEl.querySelector('[data-toggle="modal"]')
+      const trigger = fixtureEl.querySelector('[data-bs-toggle="modal"]')
 
       spyOn(trigger, 'focus')
 
@@ -981,12 +981,12 @@ describe('Modal', () => {
 
     it('should not focus the trigger if the modal is not shown', done => {
       fixtureEl.innerHTML = [
-        '<a data-toggle="modal" href="#" data-target="#exampleModal"></a>',
+        '<a data-bs-toggle="modal" href="#" data-bs-target="#exampleModal"></a>',
         '<div id="exampleModal" class="modal"><div class="modal-dialog"></div>'
       ].join('')
 
       const modalEl = fixtureEl.querySelector('.modal')
-      const trigger = fixtureEl.querySelector('[data-toggle="modal"]')
+      const trigger = fixtureEl.querySelector('[data-bs-toggle="modal"]')
 
       spyOn(trigger, 'focus')
 
@@ -1067,7 +1067,7 @@ describe('Modal', () => {
     })
 
     it('should should not call show method', () => {
-      fixtureEl.innerHTML = '<div class="modal" data-show="false"><div class="modal-dialog"></div>'
+      fixtureEl.innerHTML = '<div class="modal" data-bs-show="false"><div class="modal-dialog"></div>'
 
       const div = fixtureEl.querySelector('div')
 

@@ -90,8 +90,8 @@ const SELECTOR_ITEM = '.carousel-item'
 const SELECTOR_ITEM_IMG = '.carousel-item img'
 const SELECTOR_NEXT_PREV = '.carousel-item-next, .carousel-item-prev'
 const SELECTOR_INDICATORS = '.carousel-indicators'
-const SELECTOR_DATA_SLIDE = '[data-slide], [data-slide-to]'
-const SELECTOR_DATA_RIDE = '[data-ride="carousel"]'
+const SELECTOR_DATA_SLIDE = '[data-bs-slide], [data-bs-slide-to]'
+const SELECTOR_DATA_RIDE = '[data-bs-ride="carousel"]'
 
 const PointerType = {
   TOUCH: 'touch',
@@ -466,7 +466,7 @@ class Carousel {
       activeElement.classList.add(directionalClassName)
       nextElement.classList.add(directionalClassName)
 
-      const nextElementInterval = parseInt(nextElement.getAttribute('data-interval'), 10)
+      const nextElementInterval = parseInt(nextElement.getAttribute('data-bs-interval'), 10)
       if (nextElementInterval) {
         this._config.defaultInterval = this._config.defaultInterval || this._config.interval
         this._config.interval = nextElementInterval
@@ -567,7 +567,7 @@ class Carousel {
       ...Manipulator.getDataAttributes(target),
       ...Manipulator.getDataAttributes(this)
     }
-    const slideIndex = this.getAttribute('data-slide-to')
+    const slideIndex = this.getAttribute('data-bs-slide-to')
 
     if (slideIndex) {
       config.interval = false

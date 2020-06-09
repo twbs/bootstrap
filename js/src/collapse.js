@@ -58,7 +58,7 @@ const WIDTH = 'width'
 const HEIGHT = 'height'
 
 const SELECTOR_ACTIVES = '.show, .collapsing'
-const SELECTOR_DATA_TOGGLE = '[data-toggle="collapse"]'
+const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="collapse"]'
 
 /**
  * ------------------------------------------------------------------------
@@ -73,7 +73,7 @@ class Collapse {
     this._config = this._getConfig(config)
     this._triggerArray = SelectorEngine.find(
       `${SELECTOR_DATA_TOGGLE}[href="#${element.id}"],` +
-      `${SELECTOR_DATA_TOGGLE}[data-target="#${element.id}"]`
+      `${SELECTOR_DATA_TOGGLE}[data-bs-target="#${element.id}"]`
     )
 
     const toggleList = SelectorEngine.find(SELECTOR_DATA_TOGGLE)
@@ -136,7 +136,7 @@ class Collapse {
       actives = SelectorEngine.find(SELECTOR_ACTIVES, this._parent)
         .filter(elem => {
           if (typeof this._config.parent === 'string') {
-            return elem.getAttribute('data-parent') === this._config.parent
+            return elem.getAttribute('data-bs-parent') === this._config.parent
           }
 
           return elem.classList.contains(CLASS_NAME_COLLAPSE)
@@ -303,7 +303,7 @@ class Collapse {
       parent = SelectorEngine.findOne(parent)
     }
 
-    const selector = `${SELECTOR_DATA_TOGGLE}[data-parent="${parent}"]`
+    const selector = `${SELECTOR_DATA_TOGGLE}[data-bs-parent="${parent}"]`
 
     SelectorEngine.find(selector, parent)
       .forEach(element => {
