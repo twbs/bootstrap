@@ -67,7 +67,6 @@
       // Provide basic `.col-{bp}` classes for equal-width flexbox columns
       .col#{$infix} {
         flex: 1 0 0%; // Flexbugs #4: https://github.com/philipwalton/flexbugs#flexbug-4
-        min-width: 0; // See https://github.com/twbs/bootstrap/issues/25410
       }
 
       .row-cols#{$infix}-auto > * {
