@@ -6,6 +6,7 @@
   --bs-gutter-x: #{$gutter};
   --bs-gutter-y: 0;
   display: flex;
+  flex: 1 0 100%;
   flex-wrap: wrap;
   margin-top: calc(var(--bs-gutter-y) * -1); // stylelint-disable-line function-blacklist
   margin-right: calc(var(--bs-gutter-x) / -2); // stylelint-disable-line function-blacklist
