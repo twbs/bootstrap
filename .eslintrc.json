@@ -174,7 +174,6 @@
     "no-underscore-dangle": "off",
     "no-unneeded-ternary": "error",
     "no-whitespace-before-property": "error",
-    "object-curly-newline": ["error", { "minProperties": 1 }],
     "object-curly-spacing": ["error", "always"],
     "object-property-newline": "error",
     "one-var": ["error", "never"],
