@@ -56,7 +56,7 @@ class Button {
 
   // Public
 
-  toggle() {
+  toggle(avoidTriggerChange) {
     let triggerChangeEvent = true
     let addAriaPressed = true
     const rootElement = $(this._element).closest(
@@ -86,7 +86,9 @@ class Button {
             input.checked = !this._element.classList.contains(CLASS_NAME_ACTIVE)
           }
 
-          $(input).trigger('change')
+          if (!avoidTriggerChange) {
+            $(input).trigger('change')
+          }
         }
 
         input.focus()
@@ -113,7 +115,7 @@ class Button {
 
   // Static
 
-  static _jQueryInterface(config) {
+  static _jQueryInterface(config, avoidTriggerChange) {
     return this.each(function () {
       let data = $(this).data(DATA_KEY)
 
@@ -123,7 +125,7 @@ class Button {
       }
 
       if (config === 'toggle') {
-        data[config]()
+        data[config](avoidTriggerChange)
       }
     })
   }
@@ -154,8 +156,8 @@ $(document)
         return
       }
 
-      if (initialButton.tagName !== 'LABEL' || inputBtn && inputBtn.type !== 'checkbox') {
-        Button._jQueryInterface.call($(button), 'toggle')
+      if (initialButton.tagName === 'INPUT' || button.tagName !== 'LABEL') {
+        Button._jQueryInterface.call($(button), 'toggle', initialButton.tagName === 'INPUT')
       }
     }
   })

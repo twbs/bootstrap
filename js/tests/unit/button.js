@@ -180,6 +180,32 @@ $(function () {
     $group.find('label').trigger('click')
   })
 
+  QUnit.test('should trigger label change event only once', function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+    var countChangeEvent = 0
+
+    var groupHTML = '<div class="btn-group" data-toggle="buttons">' +
+      '<label class="btn btn-primary">' +
+      '<input type="checkbox"><span class="check">✓</span> <i class="far fa-clipboard"></i> <span class="d-none d-lg-inline">checkbox</span>' +
+      '</label>' +
+      '</div>'
+    var $group = $(groupHTML).appendTo('#qunit-fixture')
+
+    var $btn = $group.children().eq(0)
+
+    $group.find('label').on('change', function () {
+      countChangeEvent++
+    })
+
+    setTimeout(function () {
+      assert.ok(countChangeEvent === 1, 'onchange event fired only once')
+      done()
+    }, 5)
+
+    $btn[0].click()
+  })
+
   QUnit.test('should check for closest matching toggle', function (assert) {
     assert.expect(18)
     var groupHTML = '<div class="btn-group" data-toggle="buttons">' +
