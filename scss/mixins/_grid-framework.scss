@@ -34,7 +34,6 @@
       .col#{$infix} {
         flex-basis: 0;
         flex-grow: 1;
-        min-width: 0; // See https://github.com/twbs/bootstrap/issues/25410
         max-width: 100%;
       }
 
