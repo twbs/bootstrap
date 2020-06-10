@@ -207,14 +207,13 @@ function removeHandler(element, events, typeEvent, handler, delegationSelector) 
 function removeNamespacedHandlers(element, events, typeEvent, namespace) {
   const storeElementEvent = events[typeEvent] || {}
 
-  Object.keys(storeElementEvent)
-    .forEach(handlerKey => {
-      if (handlerKey.indexOf(namespace) > -1) {
-        const event = storeElementEvent[handlerKey]
+  Object.keys(storeElementEvent).forEach(handlerKey => {
+    if (handlerKey.indexOf(namespace) > -1) {
+      const event = storeElementEvent[handlerKey]
 
-        removeHandler(element, events, typeEvent, event.originalHandler, event.delegationSelector)
-      }
-    })
+      removeHandler(element, events, typeEvent, event.originalHandler, event.delegationSelector)
+    }
+  })
 }
 
 const EventHandler = {
@@ -247,23 +246,21 @@ const EventHandler = {
     }
 
     if (isNamespace) {
-      Object.keys(events)
-        .forEach(elementEvent => {
-          removeNamespacedHandlers(element, events, elementEvent, originalTypeEvent.slice(1))
-        })
+      Object.keys(events).forEach(elementEvent => {
+        removeNamespacedHandlers(element, events, elementEvent, originalTypeEvent.slice(1))
+      })
     }
 
     const storeElementEvent = events[typeEvent] || {}
-    Object.keys(storeElementEvent)
-      .forEach(keyHandlers => {
-        const handlerKey = keyHandlers.replace(stripUidRegex, '')
+    Object.keys(storeElementEvent).forEach(keyHandlers => {
+      const handlerKey = keyHandlers.replace(stripUidRegex, '')
 
-        if (!inNamespace || originalTypeEvent.indexOf(handlerKey) > -1) {
-          const event = storeElementEvent[keyHandlers]
+      if (!inNamespace || originalTypeEvent.indexOf(handlerKey) > -1) {
+        const event = storeElementEvent[keyHandlers]
 
-          removeHandler(element, events, typeEvent, event.originalHandler, event.delegationSelector)
-        }
-      })
+        removeHandler(element, events, typeEvent, event.originalHandler, event.delegationSelector)
+      }
+    })
   },
 
   trigger(element, event, args) {
@@ -300,16 +297,15 @@ const EventHandler = {
       })
     }
 
-    // merge custom informations in our event
+    // merge custom information in our event
     if (typeof args !== 'undefined') {
-      Object.keys(args)
-        .forEach(key => {
-          Object.defineProperty(evt, key, {
-            get() {
-              return args[key]
-            }
-          })
+      Object.keys(args).forEach(key => {
+        Object.defineProperty(evt, key, {
+          get() {
+            return args[key]
+          }
         })
+      })
     }
 
     if (defaultPrevented) {

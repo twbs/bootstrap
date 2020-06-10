@@ -708,11 +708,7 @@ class Tooltip {
       config.content = config.content.toString()
     }
 
-    typeCheckConfig(
-      NAME,
-      config,
-      this.constructor.DefaultType
-    )
+    typeCheckConfig(NAME, config, this.constructor.DefaultType)
 
     if (config.sanitize) {
       config.template = sanitizeHtml(config.template, config.whiteList, config.sanitizeFn)
