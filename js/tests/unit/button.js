@@ -222,6 +222,46 @@ $(function () {
     assert.ok(!$btn2.find('input')[0].checked, 'btn2 is not checked')
   })
 
+  QUnit.test('should fire click event on input', function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+    var groupHTML = '<div class="btn-group" data-toggle="buttons">' +
+      '<label class="btn btn-primary active">' +
+      '<input type="checkbox" id="option1"> Option 1' +
+      '</label>' +
+      '</div>'
+    var $group = $(groupHTML).appendTo('#qunit-fixture')
+
+    var $btn = $group.children().eq(0)
+    $group.find('input').on('click', function (e) {
+      e.preventDefault()
+      assert.ok(true, 'click event fired')
+      done()
+    })
+
+    $btn[0].click()
+  })
+
+  QUnit.test('should fire click event on label', function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+    var groupHTML = '<div class="btn-group" data-toggle="buttons">' +
+      '<label class="btn btn-primary active">' +
+      '<input type="checkbox" id="option1"> Option 1' +
+      '</label>' +
+      '</div>'
+    var $group = $(groupHTML).appendTo('#qunit-fixture')
+
+    var $btn = $group.children().eq(0)
+    $group.find('label').on('click', function (e) {
+      e.preventDefault()
+      assert.ok(true, 'click event fired')
+      done()
+    })
+
+    $btn[0].click()
+  })
+
   QUnit.test('should not add aria-pressed on labels for radio/checkbox inputs in a data-toggle="buttons" group', function (assert) {
     assert.expect(2)
     var groupHTML = '<div class="btn-group" data-toggle="buttons">' +
