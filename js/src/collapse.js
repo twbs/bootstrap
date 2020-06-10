@@ -287,8 +287,7 @@ class Collapse {
   }
 
   _getDimension() {
-    const hasWidth = this._element.classList.contains(WIDTH)
-    return hasWidth ? WIDTH : HEIGHT
+    return this._element.classList.contains(WIDTH) ? WIDTH : HEIGHT
   }
 
   _getParent() {
