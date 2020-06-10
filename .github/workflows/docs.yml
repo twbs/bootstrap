@@ -1,14 +1,5 @@
 name: Docs
-
-on:
-  push:
-    branches:
-      - master
-      - "**-ci"
-  pull_request:
-    branches:
-      - "**"
-
+on: [push, pull_request]
 env:
   CI: true
   NODE: 12.x
