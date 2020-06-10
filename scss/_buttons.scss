@@ -41,7 +41,7 @@
 
   &:disabled,
   &.disabled,
-  fieldset:disabled & { // stylelint-disable-line selector-no-qualifying-type
+  fieldset:disabled & {
     pointer-events: none;
     opacity: $btn-disabled-opacity;
     @include box-shadow(none);
