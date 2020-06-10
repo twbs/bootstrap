@@ -18,7 +18,7 @@ aliases: "/examples/"
           <img class="img-thumbnail mb-3" srcset="/docs/{{ $.Site.Params.docs_version }}/assets/img/examples/{{ $example.name | urlize }}.png,
                                                   /docs/{{ $.Site.Params.docs_version }}/assets/img/examples/{{ $example.name | urlize }}@2x.png 2x"
                                           src="/docs/{{ $.Site.Params.docs_version }}/assets/img/examples/{{ $example.name | urlize }}.png"
-                                          alt="{{ $example.name }} screenshot"
+                                          alt=""
                                           width="480" height="300"
                                           loading="lazy">
           <h5 class="mb-1">{{ $example.name }}</h5>
