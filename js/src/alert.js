@@ -61,11 +61,7 @@ class Alert {
   // Public
 
   close(element) {
-    let rootElement = this._element
-    if (element) {
-      rootElement = this._getRootElement(element)
-    }
-
+    const rootElement = element ? this._getRootElement(element) : this._element
     const customEvent = this._triggerCloseEvent(rootElement)
 
     if (customEvent === null || customEvent.defaultPrevented) {
