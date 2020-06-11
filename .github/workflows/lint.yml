@@ -29,5 +29,5 @@ jobs:
       - name: Install npm dependencies
         run: npm ci
 
-      - name: Lint CSS and JS
+      - name: Lint
         run: npm run lint
