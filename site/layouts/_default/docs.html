@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en"{{ if eq .Page.Params.direction "rtl" }} dir="rtl"{{ end }}>
   <head>
     {{ partial "header" . }}
   </head>

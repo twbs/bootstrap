@@ -41,5 +41,10 @@
         Migration
       </a>
     </li>
+    <li{{ if eq $page_slug "cheatsheet" }} class="active"{{ end }}>
+      <a href="/docs/{{ $.Site.Params.docs_version }}/cheatsheet/" class="d-inline-flex align-items-center rounded">
+        Cheatsheet
+      </a>
+    </li>
   </ul>
 </nav>
