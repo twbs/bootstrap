@@ -37,12 +37,12 @@
         var currentUrl = getOrigin()
         var liveUrl = 'https://getbootstrap.com/'
 
-        hit.url = currentUrl.lastIndexOf(liveUrl, 0) === 0
+        hit.url = currentUrl.lastIndexOf(liveUrl, 0) === 0 ?
           // On production, return the result as is
-          ? hit.url
+          hit.url :
           // On development or Netlify, replace `hit.url` with a trailing slash,
           // so that the result link is relative to the server root
-          : hit.url.replace(liveUrl, '/')
+          hit.url.replace(liveUrl, '/')
 
         // Prevent jumping to first header
         if (hit.anchor === 'content') {
@@ -56,4 +56,4 @@
     // Set debug to `true` if you want to inspect the dropdown
     debug: false
   })
-}())
+})()

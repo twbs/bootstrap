@@ -49,7 +49,7 @@ const files = [
   }
 ]
 
-files.forEach((file) => {
+files.forEach(file => {
   fs.readFile(file.file, 'utf8', (err, data) => {
     if (err) {
       throw err

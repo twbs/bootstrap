@@ -39,7 +39,7 @@ const bsPlugins = {
 }
 const rootPath = TEST ? '../js/coverage/dist/' : '../js/dist/'
 
-const build = async (plugin) => {
+const build = async plugin => {
   console.log(`Building ${plugin} plugin...`)
 
   const external = ['jquery', 'popper.js']
@@ -81,7 +81,7 @@ const build = async (plugin) => {
 
 const main = async () => {
   try {
-    await Promise.all(Object.keys(bsPlugins).map((plugin) => build(plugin)))
+    await Promise.all(Object.keys(bsPlugins).map(plugin => build(plugin)))
   } catch (error) {
     console.error(error)
 

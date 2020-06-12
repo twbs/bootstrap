@@ -13,29 +13,29 @@ import $ from 'jquery'
  * ------------------------------------------------------------------------
  */
 
-const NAME                = 'button'
-const VERSION             = '4.5.2'
-const DATA_KEY            = 'bs.button'
-const EVENT_KEY           = `.${DATA_KEY}`
-const DATA_API_KEY        = '.data-api'
-const JQUERY_NO_CONFLICT  = $.fn[NAME]
+const NAME = 'button'
+const VERSION = '4.5.2'
+const DATA_KEY = 'bs.button'
+const EVENT_KEY = `.${DATA_KEY}`
+const DATA_API_KEY = '.data-api'
+const JQUERY_NO_CONFLICT = $.fn[NAME]
 
 const CLASS_NAME_ACTIVE = 'active'
 const CLASS_NAME_BUTTON = 'btn'
-const CLASS_NAME_FOCUS  = 'focus'
+const CLASS_NAME_FOCUS = 'focus'
 
-const SELECTOR_DATA_TOGGLE_CARROT   = '[data-toggle^="button"]'
-const SELECTOR_DATA_TOGGLES         = '[data-toggle="buttons"]'
-const SELECTOR_DATA_TOGGLE          = '[data-toggle="button"]'
+const SELECTOR_DATA_TOGGLE_CARROT = '[data-toggle^="button"]'
+const SELECTOR_DATA_TOGGLES = '[data-toggle="buttons"]'
+const SELECTOR_DATA_TOGGLE = '[data-toggle="button"]'
 const SELECTOR_DATA_TOGGLES_BUTTONS = '[data-toggle="buttons"] .btn'
-const SELECTOR_INPUT                = 'input:not([type="hidden"])'
-const SELECTOR_ACTIVE               = '.active'
-const SELECTOR_BUTTON               = '.btn'
+const SELECTOR_INPUT = 'input:not([type="hidden"])'
+const SELECTOR_ACTIVE = '.active'
+const SELECTOR_BUTTON = '.btn'
 
-const EVENT_CLICK_DATA_API      = `click${EVENT_KEY}${DATA_API_KEY}`
+const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 const EVENT_FOCUS_BLUR_DATA_API = `focus${EVENT_KEY}${DATA_API_KEY} ` +
                           `blur${EVENT_KEY}${DATA_API_KEY}`
-const EVENT_LOAD_DATA_API       = `load${EVENT_KEY}${DATA_API_KEY}`
+const EVENT_LOAD_DATA_API = `load${EVENT_KEY}${DATA_API_KEY}`
 
 /**
  * ------------------------------------------------------------------------
@@ -85,6 +85,7 @@ class Button {
           if (input.type === 'checkbox' || input.type === 'radio') {
             input.checked = !this._element.classList.contains(CLASS_NAME_ACTIVE)
           }
+
           $(input).trigger('change')
         }
 
@@ -135,7 +136,7 @@ class Button {
  */
 
 $(document)
-  .on(EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE_CARROT, (event) => {
+  .on(EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE_CARROT, event => {
     let button = event.target
     const initialButton = button
 
@@ -158,7 +159,7 @@ $(document)
       }
     }
   })
-  .on(EVENT_FOCUS_BLUR_DATA_API, SELECTOR_DATA_TOGGLE_CARROT, (event) => {
+  .on(EVENT_FOCUS_BLUR_DATA_API, SELECTOR_DATA_TOGGLE_CARROT, event => {
     const button = $(event.target).closest(SELECTOR_BUTTON)[0]
     $(button).toggleClass(CLASS_NAME_FOCUS, /^focus(in)?$/.test(event.type))
   })
