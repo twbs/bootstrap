@@ -14,22 +14,22 @@ import Util from './util'
  * ------------------------------------------------------------------------
  */
 
-const NAME                = 'alert'
-const VERSION             = '4.5.2'
-const DATA_KEY            = 'bs.alert'
-const EVENT_KEY           = `.${DATA_KEY}`
-const DATA_API_KEY        = '.data-api'
-const JQUERY_NO_CONFLICT  = $.fn[NAME]
+const NAME = 'alert'
+const VERSION = '4.5.2'
+const DATA_KEY = 'bs.alert'
+const EVENT_KEY = `.${DATA_KEY}`
+const DATA_API_KEY = '.data-api'
+const JQUERY_NO_CONFLICT = $.fn[NAME]
 
 const SELECTOR_DISMISS = '[data-dismiss="alert"]'
 
-const EVENT_CLOSE          = `close${EVENT_KEY}`
-const EVENT_CLOSED         = `closed${EVENT_KEY}`
+const EVENT_CLOSE = `close${EVENT_KEY}`
+const EVENT_CLOSED = `closed${EVENT_KEY}`
 const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 
 const CLASS_NAME_ALERT = 'alert'
-const CLASS_NAME_FADE  = 'fade'
-const CLASS_NAME_SHOW  = 'show'
+const CLASS_NAME_FADE = 'fade'
+const CLASS_NAME_SHOW = 'show'
 
 /**
  * ------------------------------------------------------------------------
@@ -74,7 +74,7 @@ class Alert {
 
   _getRootElement(element) {
     const selector = Util.getSelectorFromElement(element)
-    let parent     = false
+    let parent = false
 
     if (selector) {
       parent = document.querySelector(selector)
@@ -105,7 +105,7 @@ class Alert {
     const transitionDuration = Util.getTransitionDurationFromElement(element)
 
     $(element)
-      .one(Util.TRANSITION_END, (event) => this._destroyElement(element, event))
+      .one(Util.TRANSITION_END, event => this._destroyElement(element, event))
       .emulateTransitionEnd(transitionDuration)
   }
 
@@ -121,7 +121,7 @@ class Alert {
   static _jQueryInterface(config) {
     return this.each(function () {
       const $element = $(this)
-      let data       = $element.data(DATA_KEY)
+      let data = $element.data(DATA_KEY)
 
       if (!data) {
         data = new Alert(this)
@@ -163,9 +163,9 @@ $(document).on(
  * ------------------------------------------------------------------------
  */
 
-$.fn[NAME]             = Alert._jQueryInterface
+$.fn[NAME] = Alert._jQueryInterface
 $.fn[NAME].Constructor = Alert
-$.fn[NAME].noConflict  = () => {
+$.fn[NAME].noConflict = () => {
   $.fn[NAME] = JQUERY_NO_CONFLICT
   return Alert._jQueryInterface
 }
