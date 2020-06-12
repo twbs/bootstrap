@@ -1,14 +1,5 @@
 name: Lint
-
-on:
-  push:
-    branches:
-      - master
-      - "**-ci"
-  pull_request:
-    branches:
-      - "**"
-
+on: [push, pull_request]
 env:
   CI: true
   NODE: 12.x
@@ -30,13 +21,13 @@ jobs:
         uses: actions/cache@v2
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-node-v${{ env.NODE }}-${{ hashFiles('package.json') }}-${{ hashFiles('package-lock.json') }}-${{ hashFiles('.github/workflows/lint.yml') }}
+          key: ${{ runner.os }}-node-v${{ env.NODE }}-${{ hashFiles('package.json') }}-${{ hashFiles('package-lock.json') }}
           restore-keys: |
-            ${{ runner.OS }}-node-v${{ env.NODE }}-${{ hashFiles('package.json') }}-${{ hashFiles('package-lock.json') }}-${{ hashFiles('.github/workflows/lint.yml') }}
+            ${{ runner.OS }}-node-v${{ env.NODE }}-${{ hashFiles('package.json') }}-${{ hashFiles('package-lock.json') }}
             ${{ runner.OS }}-node-v${{ env.NODE }}-
 
       - name: Install npm dependencies
         run: npm ci
 
-      - name: Lint CSS and JS
+      - name: Lint
         run: npm run lint
