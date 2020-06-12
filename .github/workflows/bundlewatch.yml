@@ -1,0 +1,39 @@
+name: Bundlewatch
+on: [push, pull_request]
+env:
+  CI: true
+  NODE: 12.x
+
+jobs:
+  bundlewatch:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v2
+
+      - name: Set Node.js version
+        uses: actions/setup-node@v1
+        with:
+          node-version: "${{ env.NODE }}"
+
+      - name: Set up npm cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-v${{ env.NODE }}-${{ hashFiles('package.json') }}-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.OS }}-node-v${{ env.NODE }}-${{ hashFiles('package.json') }}-${{ hashFiles('package-lock.json') }}
+            ${{ runner.OS }}-node-v${{ env.NODE }}-
+
+      - name: Install npm dependencies
+        run: npm ci
+
+      - name: Run dist
+        run: npm run dist
+
+      - name: Run bundlewatch
+        run: npm run bundlewatch
+        env:
+          BUNDLEWATCH_GITHUB_TOKEN: "${{ secrets.BUNDLEWATCH_GITHUB_TOKEN }}"
+          CI_BRANCH_BASE: v4-dev
