@@ -90,6 +90,18 @@ Change the placement of an offcanvas element with modifier classes:
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
+  <div class="offcanvas-body small">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam bibendum ante ac est viverra tincidunt. Suspendisse lobortis lorem nec est congue, sed scelerisque mauris iaculis. Phasellus enim lorem, sagittis a eros at, feugiat tempor leo. Nunc in massa nibh. Vivamus vestibulum orci sem, et consectetur velit laoreet eget.</p>
+    <p>Curabitur et suscipit justo, sed pretium enim. Vivamus lobortis dapibus purus, eget pharetra nibh tincidunt in. Integer accumsan elit nisi, eget commodo magna vehicula ut. Cras nec pellentesque diam. Donec porta posuere urna in pellentesque. Nulla facilisi. Aliquam erat volutpat.</p>
+    <p>Donec lobortis eget tortor ac mattis. Maecenas sit amet sollicitudin libero. Quisque sodales pulvinar ipsum, vel fermentum enim convallis a. Proin rutrum orci scelerisque, accumsan quam vel, hendrerit erat. Cras vitae mauris vel massa sollicitudin scelerisque posuere sed lorem. Aenean volutpat libero non urna elementum aliquet.</p>
+    <p>Phasellus eros ex, efficitur in ex et, maximus lobortis magna. Suspendisse convallis, neque a varius tempor, nisi tellus blandit velit, at dignissim nibh ligula et leo. Mauris vel elit sit amet sem blandit congue. Pellentesque vulputate, nibh quis semper pharetra, tellus nunc pretium mi, et volutpat purus turpis porttitor lectus.</p>
+    <p>Proin rhoncus tortor ac dictum varius. Praesent congue condimentum tempus. Ut nec purus ut orci feugiat tristique sit amet sit amet mi. Etiam malesuada nibh sed porta faucibus. Aliquam dolor orci, gravida vel augue in, auctor eleifend lectus. Fusce viverra varius elementum. Nam quis ipsum eu ante venenatis vehicula. Duis eu nibh eget nulla interdum condimentum.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam bibendum ante ac est viverra tincidunt. Suspendisse lobortis lorem nec est congue, sed scelerisque mauris iaculis. Phasellus enim lorem, sagittis a eros at, feugiat tempor leo. Nunc in massa nibh. Vivamus vestibulum orci sem, et consectetur velit laoreet eget.</p>
+    <p>Curabitur et suscipit justo, sed pretium enim. Vivamus lobortis dapibus purus, eget pharetra nibh tincidunt in. Integer accumsan elit nisi, eget commodo magna vehicula ut. Cras nec pellentesque diam. Donec porta posuere urna in pellentesque. Nulla facilisi. Aliquam erat volutpat.</p>
+    <p>Donec lobortis eget tortor ac mattis. Maecenas sit amet sollicitudin libero. Quisque sodales pulvinar ipsum, vel fermentum enim convallis a. Proin rutrum orci scelerisque, accumsan quam vel, hendrerit erat. Cras vitae mauris vel massa sollicitudin scelerisque posuere sed lorem. Aenean volutpat libero non urna elementum aliquet.</p>
+    <p>Phasellus eros ex, efficitur in ex et, maximus lobortis magna. Suspendisse convallis, neque a varius tempor, nisi tellus blandit velit, at dignissim nibh ligula et leo. Mauris vel elit sit amet sem blandit congue. Pellentesque vulputate, nibh quis semper pharetra, tellus nunc pretium mi, et volutpat purus turpis porttitor lectus.</p>
+    <p>Proin rhoncus tortor ac dictum varius. Praesent congue condimentum tempus. Ut nec purus ut orci feugiat tristique sit amet sit amet mi. Etiam malesuada nibh sed porta faucibus. Aliquam dolor orci, gravida vel augue in, auctor eleifend lectus. Fusce viverra varius elementum. Nam quis ipsum eu ante venenatis vehicula. Duis eu nibh eget nulla interdum condimentum.</p>
+  </div>
 </div>
 <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasExample3">
   <div class="offcanvas-header">
@@ -97,6 +109,13 @@ Change the placement of an offcanvas element with modifier classes:
     <button type="button" class="close text-reset" data-dismiss="offcanvas" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
+  </div>
+  <div class="offcanvas-body small">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam bibendum ante ac est viverra tincidunt. Suspendisse lobortis lorem nec est congue, sed scelerisque mauris iaculis. Phasellus enim lorem, sagittis a eros at, feugiat tempor leo. Nunc in massa nibh. Vivamus vestibulum orci sem, et consectetur velit laoreet eget.</p>
+    <p>Curabitur et suscipit justo, sed pretium enim. Vivamus lobortis dapibus purus, eget pharetra nibh tincidunt in. Integer accumsan elit nisi, eget commodo magna vehicula ut. Cras nec pellentesque diam. Donec porta posuere urna in pellentesque. Nulla facilisi. Aliquam erat volutpat.</p>
+    <p>Donec lobortis eget tortor ac mattis. Maecenas sit amet sollicitudin libero. Quisque sodales pulvinar ipsum, vel fermentum enim convallis a. Proin rutrum orci scelerisque, accumsan quam vel, hendrerit erat. Cras vitae mauris vel massa sollicitudin scelerisque posuere sed lorem. Aenean volutpat libero non urna elementum aliquet.</p>
+    <p>Phasellus eros ex, efficitur in ex et, maximus lobortis magna. Suspendisse convallis, neque a varius tempor, nisi tellus blandit velit, at dignissim nibh ligula et leo. Mauris vel elit sit amet sem blandit congue. Pellentesque vulputate, nibh quis semper pharetra, tellus nunc pretium mi, et volutpat purus turpis porttitor lectus.</p>
+    <p>Proin rhoncus tortor ac dictum varius. Praesent congue condimentum tempus. Ut nec purus ut orci feugiat tristique sit amet sit amet mi. Etiam malesuada nibh sed porta faucibus. Aliquam dolor orci, gravida vel augue in, auctor eleifend lectus. Fusce viverra varius elementum. Nam quis ipsum eu ante venenatis vehicula. Duis eu nibh eget nulla interdum condimentum.</p>
   </div>
 </div>
 {{< /example >}}

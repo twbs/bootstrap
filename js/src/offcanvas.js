@@ -93,7 +93,7 @@ class OffCanvas {
 
     this._element.removeAttribute('aria-hidden')
     this._element.classList.add(CLASS_NAME_SHOW)
-
+    this.hidden = false
     setTimeout(() => {
       this._element.setAttribute('aria-expanded', true)
       this._element.setAttribute('aria-offcanvas', true)
@@ -139,6 +139,7 @@ class OffCanvas {
       this._element.setAttribute('aria-hidden', true)
       this._element.setAttribute('aria-expanded', false)
       this._element.removeAttribute('aria-offcanvas')
+      this.hidden = true
 
       EventHandler.trigger(this._element, EVENT_HIDDEN, { relatedTarget })
     }, getTransitionDurationFromElement(this._element))
