@@ -4,11 +4,7 @@
 
 @if $enable-grid-classes {
   // Single container class with breakpoint max-widths
-  .container {
-    @include make-container();
-    @include make-container-max-widths();
-  }
-
+  .container,
   // 100% wide container at all breakpoints
   .container-fluid {
     @include make-container();
