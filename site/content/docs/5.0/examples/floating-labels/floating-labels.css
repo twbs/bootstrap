@@ -59,9 +59,21 @@ body {
   color: transparent;
 }
 
+.form-label-group input:not(:-moz-placeholder-shown) {
+  padding-top: 1.25rem;
+  padding-bottom: .25rem;
+}
+
 .form-label-group input:not(:placeholder-shown) {
   padding-top: 1.25rem;
   padding-bottom: .25rem;
+}
+
+.form-label-group input:not(:-moz-placeholder-shown) ~ label {
+  padding-top: .25rem;
+  padding-bottom: .25rem;
+  font-size: 12px;
+  color: #777;
 }
 
 .form-label-group input:not(:placeholder-shown) ~ label {
