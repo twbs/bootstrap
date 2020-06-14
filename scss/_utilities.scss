@@ -497,6 +497,14 @@ $utilities: map-merge(
         visible: visible,
         invisible: hidden,
       )
+    ),
+    "clip-path": (
+      property: clip-path,
+      values: (
+        right-arrow: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%),
+        left-arrow: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%),
+        close: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%)
+      )
     )
   ),
   $utilities
