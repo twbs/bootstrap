@@ -497,6 +497,20 @@ $utilities: map-merge(
         visible: visible,
         invisible: hidden,
       )
+    ),
+    "rotate": (
+      property: transform,
+      class: rotate,
+      values: (
+        0: rotate(0deg),
+        45: rotate(45deg),
+        90: rotate(90deg),
+        135: rotate(135deg),
+        180: rotate(180deg),
+        225: rotate(225deg),
+        270: rotate(270deg),
+        315: rotate(315deg),
+      )
     )
   ),
   $utilities
