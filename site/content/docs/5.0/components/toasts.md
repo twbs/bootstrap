@@ -108,12 +108,10 @@ Customize your toasts by removing sub-components, tweaking with [utilities]({{< 
     Hello, world! This is a toast message.
   </div>
   <button type="button" class="ml-auto p-2 close" data-dismiss="toast" aria-label="Close">
-    <span aria-hidden="true">
-      <svg class="bi bi-x" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"/>
-        <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"/>
-      </svg>
-    </span>
+    <svg class="bi bi-x" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"/>
+      <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"/>
+    </svg>
   </button>
 </div>
 {{< /example >}}
@@ -134,20 +132,18 @@ Alternatively, you can also add additional controls and components to toasts.
 
 ### Color schemes
 
-Building on the above example, you create different toast color schemes with our [color utilities]({{< docsref "/utilities/colors" >}}). Here we've added `.bg-primary` and `.text-white` to the `.toast`, and then added `.text-white` to our close button.
+Building on the above example, you create different toast color schemes with our [color utilities]({{< docsref "/utilities/colors" >}}). Here we've added `.bg-primary` and `.text-white` to the `.toast`, and then added `.text-white` to our close button. For an crisp edge, we remove the default border with `.border-0`.
 
 {{< example class="bg-light" >}}
-<div class="toast d-flex bg-primary text-white" role="alert" aria-live="assertive" aria-atomic="true">
+<div class="toast d-flex text-white bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">
   <div class="toast-body">
     Hello, world! This is a toast message.
   </div>
   <button type="button" class="ml-auto p-2 close text-white" data-dismiss="toast" aria-label="Close">
-    <span aria-hidden="true">
-      <svg class="bi bi-x" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"/>
-        <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"/>
-      </svg>
-    </span>
+    <svg class="bi bi-x" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"/>
+      <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"/>
+    </svg>
   </button>
 </div>
 {{< /example >}}
