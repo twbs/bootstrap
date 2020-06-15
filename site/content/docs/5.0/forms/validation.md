@@ -274,7 +274,7 @@ You can insert custom feedback messages with the `.valid-feedback` or `.invalid-
   </div>
 
   <div class="mb-3">
-    <select class="form-select is-invalid" aria-describedby="messageFeedbackSelect" required>
+    <select class="form-select is-invalid" aria-describedby="messageFeedbackSelect" aria-label="Select example" required>
       <option value="">Open this select menu</option>
       <option value="1">One</option>
       <option value="2">Two</option>
