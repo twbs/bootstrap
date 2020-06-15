@@ -1,4 +1,7 @@
 .toast {
+  // Prevents from shrinking in IE11, when in a flex container
+  // See https://github.com/twbs/bootstrap/issues/28341
+  flex-basis: $toast-max-width;
   max-width: $toast-max-width;
   overflow: hidden; // cheap rounded corners on nested items
   @include font-size($toast-font-size);

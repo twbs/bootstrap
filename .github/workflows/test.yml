@@ -32,7 +32,7 @@ jobs:
         run: 'echo "gem: --no-document" > ~/.gemrc'
 
       - name: Set up Ruby cache
-        uses: actions/cache@v1
+        uses: actions/cache@v2
         with:
           path: vendor/bundle
           key: ${{ runner.os }}-ruby-v${{ matrix.ruby }}-${{ hashFiles('Gemfile') }}-${{ hashFiles('Gemfile.lock') }}
@@ -41,7 +41,7 @@ jobs:
             ${{ runner.os }}-ruby-v${{ matrix.ruby }}-
 
       - name: Set up npm cache
-        uses: actions/cache@v1
+        uses: actions/cache@v2
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-v${{ matrix.node }}-${{ hashFiles('package.json') }}-${{ hashFiles('package-lock.json') }}

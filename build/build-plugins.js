@@ -9,19 +9,18 @@
 
 'use strict'
 
-const path    = require('path')
-const rollup  = require('rollup')
-const babel   = require('rollup-plugin-babel')
-const banner  = require('./banner.js')
-const babelHelpers = require('./babel-helpers.js')
+const path = require('path')
+const rollup = require('rollup')
+const { babel } = require('@rollup/plugin-babel')
+const banner = require('./banner.js')
 
-const TEST    = process.env.NODE_ENV === 'test'
+const TEST = process.env.NODE_ENV === 'test'
 const plugins = [
   babel({
     // Only transpile our source code
     exclude: 'node_modules/**',
-    // Include only required helpers
-    externalHelpersWhitelist: babelHelpers
+    // Inline the required helpers in each file
+    babelHelpers: 'inline'
   })
 ]
 const bsPlugins = {
