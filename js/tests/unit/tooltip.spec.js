@@ -119,7 +119,7 @@ describe('Tooltip', () => {
 
       const popperConfig = tooltip._getPopperConfig('top')
 
-      expect(popperConfig.bsPlacement).toEqual('left')
+      expect(popperConfig.placement).toEqual('left')
     })
   })
 

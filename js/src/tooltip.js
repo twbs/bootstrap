@@ -702,8 +702,8 @@ class Tooltip {
       config.bsTitle = config.bsTitle.toString()
     }
 
-    if (typeof config.content === 'number') {
-      config.content = config.content.toString()
+    if (typeof config.bsContent === 'number') {
+      config.bsContent = config.bsContent.toString()
     }
 
     typeCheckConfig(

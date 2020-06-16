@@ -76,7 +76,7 @@ describe('Toast', () => {
     it('should expose default setting to allow to override them', () => {
       const defaultDelay = 1000
 
-      Toast.Default.delay = defaultDelay
+      Toast.Default.bsDelay = defaultDelay
 
       fixtureEl.innerHTML = [
         '<div class="toast" data-bs-autohide="false" data-bs-animation="false">',

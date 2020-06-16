@@ -140,7 +140,7 @@ describe('Collapse', () => {
 
       const collapseList = [].concat(...fixtureEl.querySelectorAll('.collapse'))
         .map(el => new Collapse(el, {
-          parent,
+          bsParent: parent,
           bsToggle: false
         }))
 

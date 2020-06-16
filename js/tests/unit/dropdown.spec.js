@@ -119,7 +119,7 @@ describe('Dropdown', () => {
 
       const popperConfig = dropdown._getPopperConfig()
 
-      expect(popperConfig.bsPlacement).toEqual('left')
+      expect(popperConfig.placement).toEqual('left')
     })
   })
 

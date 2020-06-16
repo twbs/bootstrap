@@ -649,7 +649,7 @@ describe('Carousel', () => {
 
       const carouselEl = fixtureEl.querySelector('#myCarousel')
       const carousel = new Carousel(carouselEl, {
-        interval: 1814
+        bsInterval: 1814
       })
 
       expect(carousel._config.bsInterval).toEqual(1814)

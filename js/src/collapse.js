@@ -292,20 +292,20 @@ class Collapse {
   }
 
   _getParent() {
-    let { parent } = this._config
+    let { bsParent } = this._config
 
-    if (isElement(parent)) {
+    if (isElement(bsParent)) {
       // it's a jQuery object
-      if (typeof parent.jquery !== 'undefined' || typeof parent[0] !== 'undefined') {
-        parent = parent[0]
+      if (typeof bsParent.jquery !== 'undefined' || typeof bsParent[0] !== 'undefined') {
+        bsParent = bsParent[0]
       }
     } else {
-      parent = SelectorEngine.findOne(parent)
+      bsParent = SelectorEngine.findOne(bsParent)
     }
 
-    const selector = `${SELECTOR_DATA_TOGGLE}[data-bs-parent="${parent}"]`
+    const selector = `${SELECTOR_DATA_TOGGLE}[data-bs-parent="${bsParent}"]`
 
-    SelectorEngine.find(selector, parent)
+    SelectorEngine.find(selector, bsParent)
       .forEach(element => {
         const selected = getElementFromSelector(element)
 
@@ -315,7 +315,7 @@ class Collapse {
         )
       })
 
-    return parent
+    return bsParent
   }
 
   _addAriaAndCollapsedClass(element, triggerArray) {
