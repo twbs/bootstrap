@@ -10,15 +10,17 @@
   > .btn {
     position: relative;
     flex: 1 1 auto;
+  }
 
-    // Bring the hover, focused, and "active" buttons to the front to overlay
-    // the borders properly
-    &:hover,
-    &:focus,
-    &:active,
-    &.active {
-      z-index: 1;
-    }
+  // Bring the hover, focused, and "active" buttons to the front to overlay
+  // the borders properly
+  > .btn-check:checked + .btn,
+  > .btn-check:focus + .btn,
+  > .btn:hover,
+  > .btn:focus,
+  > .btn:active,
+  > .btn.active {
+    z-index: 1;
   }
 }
 
@@ -46,7 +48,12 @@
     @include border-right-radius(0);
   }
 
-  > .btn:not(:first-child),
+  // The left radius should be 0 if the button is:
+  // - the "third or more" child
+  // - the second child and the previous element isn't `.btn-check` (making it the first child visually)
+  // - part of a btn-group which isn't the first child
+  > .btn:nth-child(n + 3),
+  > :not(.btn-check) + .btn,
   > .btn-group:not(:first-child) > .btn {
     @include border-left-radius(0);
   }
@@ -130,30 +137,5 @@
   > .btn:not(:first-child),
   > .btn-group:not(:first-child) > .btn {
     @include border-top-radius(0);
-  }
-}
-
-
-// Checkbox and radio options
-//
-// In order to support the browser's form validation feedback, powered by the
-// `required` attribute, we have to "hide" the inputs via `clip`. We cannot use
-// `display: none;` or `visibility: hidden;` as that also hides the popover.
-// Simply visually hiding the inputs via `opacity` would leave them clickable in
-// certain cases which is prevented by using `clip` and `pointer-events`.
-// This way, we ensure a DOM element is visible to position the popover from.
-//
-// See https://github.com/twbs/bootstrap/pull/12794 and
-// https://github.com/twbs/bootstrap/pull/14559 for more information.
-
-.btn-group-toggle {
-  > .btn,
-  > .btn-group > .btn {
-    input[type="radio"],
-    input[type="checkbox"] {
-      position: absolute;
-      clip: rect(0, 0, 0, 0);
-      pointer-events: none;
-    }
   }
 }
