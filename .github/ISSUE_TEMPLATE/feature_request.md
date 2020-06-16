@@ -7,7 +7,7 @@ about: Suggest an idea for a new feature in Bootstrap.
 Before opening:
 
 - [Search for duplicate or closed issues](https://github.com/twbs/bootstrap/issues?utf8=%E2%9C%93&q=is%3Aissue)
-- Read the [contributing guidelines](https://github.com/twbs/bootstrap/blob/master/.github/CONTRIBUTING.md)
+- Read the [contributing guidelines](https://github.com/twbs/bootstrap/blob/main/.github/CONTRIBUTING.md)
 
 Feature requests must include:
 
