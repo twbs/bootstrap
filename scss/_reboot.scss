@@ -441,6 +441,13 @@ select {
   text-transform: none;
 }
 
+// Set the cursor for non-`<button>` buttons
+//
+// Details at https://github.com/twbs/bootstrap/pull/30562
+[role="button"] {
+  cursor: pointer;
+}
+
 // Remove the inheritance of word-wrap in Safari.
 // See https://github.com/twbs/bootstrap/issues/24990
 
