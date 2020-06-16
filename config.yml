@@ -1,6 +1,6 @@
 languageCode:           "en"
 title:                  "Bootstrap"
-baseURL:                "https://getbootstrap.com"
+baseURL:                "https://v5.getbootstrap.com"
 enableInlineShortcodes: true
 
 markup:
