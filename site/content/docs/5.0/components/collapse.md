@@ -158,7 +158,7 @@ var collapseList = collapseElementList.map(function (collapseEl) {
 
 ### Options
 
-Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-bs-`, as in `data-bs-parent=""`.
+Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-bs-`, as in `data-bs-parent=""`. For JavaScript attributes, preprend the option name with `bs` and capitalize the first letter, as in `bsParent`.
 
 <table class="table">
   <thead>
@@ -198,7 +198,7 @@ You can create a collapse instance with the constructor, for example:
 {{< highlight js >}}
 var myCollapse = document.getElementById('myCollapse')
 var bsCollapse = new bootstrap.Collapse(myCollapse, {
-  toggle: false
+  bsToggle: false
 })
 {{< /highlight >}}
 

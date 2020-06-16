@@ -57,7 +57,7 @@ describe('ScrollSpy', () => {
 
       const navEl = fixtureEl.querySelector('nav')
       const scrollSpy = new ScrollSpy(fixtureEl.querySelector('.content'), {
-        target: navEl
+        bsTarget: navEl
       })
 
       expect(scrollSpy).toBeDefined()
@@ -80,7 +80,7 @@ describe('ScrollSpy', () => {
       ].join('')
 
       const scrollSpy = new ScrollSpy(fixtureEl.querySelector('#content'), {
-        target: '#navigation'
+        bsTarget: '#navigation'
       })
 
       expect(scrollSpy._targets.length).toEqual(2)
@@ -115,7 +115,7 @@ describe('ScrollSpy', () => {
       const scrollSpyEl = fixtureEl.querySelector('#scrollspy-example')
       const rootEl = fixtureEl.querySelector('#root')
       const scrollSpy = new ScrollSpy(scrollSpyEl, {
-        target: 'ss-target'
+        bsTarget: 'ss-target'
       })
 
       spyOn(scrollSpy, '_process').and.callThrough()
@@ -158,7 +158,7 @@ describe('ScrollSpy', () => {
       const scrollSpyEl = fixtureEl.querySelector('#scrollspy-example')
       const rootEl = fixtureEl.querySelector('#root')
       const scrollSpy = new ScrollSpy(scrollSpyEl, {
-        target: fixtureEl.querySelector('#ss-target')
+        bsTarget: fixtureEl.querySelector('#ss-target')
       })
 
       spyOn(scrollSpy, '_process').and.callThrough()
@@ -191,8 +191,8 @@ describe('ScrollSpy', () => {
 
       const contentEl = fixtureEl.querySelector('#content')
       const scrollSpy = new ScrollSpy(contentEl, {
-        target: '#navigation',
-        offset: Manipulator.position(contentEl).top
+        bsTarget: '#navigation',
+        bsOffset: Manipulator.position(contentEl).top
       })
 
       spyOn(scrollSpy, '_process').and.callThrough()
@@ -224,8 +224,8 @@ describe('ScrollSpy', () => {
 
       const contentEl = fixtureEl.querySelector('.content')
       const scrollSpy = new ScrollSpy(contentEl, {
-        offset: 0,
-        target: '.navbar'
+        bsOffset: 0,
+        bsTarget: '.navbar'
       })
       const spy = spyOn(scrollSpy, '_process').and.callThrough()
 
@@ -264,8 +264,8 @@ describe('ScrollSpy', () => {
 
       const contentEl = fixtureEl.querySelector('.content')
       const scrollSpy = new ScrollSpy(contentEl, {
-        offset: 0,
-        target: '.navbar'
+        bsOffset: 0,
+        bsTarget: '.navbar'
       })
       const spy = spyOn(scrollSpy, '_process').and.callThrough()
 
@@ -304,8 +304,8 @@ describe('ScrollSpy', () => {
 
       const contentEl = fixtureEl.querySelector('.content')
       const scrollSpy = new ScrollSpy(contentEl, {
-        offset: 0,
-        target: '.navbar'
+        bsOffset: 0,
+        bsTarget: '.navbar'
       })
       const spy = spyOn(scrollSpy, '_process').and.callThrough()
 
@@ -349,8 +349,8 @@ describe('ScrollSpy', () => {
 
       const contentEl = fixtureEl.querySelector('#content')
       const scrollSpy = new ScrollSpy(contentEl, {
-        target: '#navigation',
-        offset: Manipulator.position(contentEl).top
+        bsTarget: '#navigation',
+        bsOffset: Manipulator.position(contentEl).top
       })
       const spy = spyOn(scrollSpy, '_process').and.callThrough()
 
@@ -397,8 +397,8 @@ describe('ScrollSpy', () => {
       const startOfSectionTwo = 101
       const contentEl = fixtureEl.querySelector('#content')
       const scrollSpy = new ScrollSpy(contentEl, {
-        target: '#navigation',
-        offset: contentEl.offsetTop
+        bsTarget: '#navigation',
+        bsOffset: contentEl.offsetTop
       })
       const spy = spyOn(scrollSpy, '_process').and.callThrough()
 
@@ -446,8 +446,8 @@ describe('ScrollSpy', () => {
 
       const contentEl = fixtureEl.querySelector('.content')
       const scrollSpy = new ScrollSpy(contentEl, {
-        offset: 0,
-        target: '.navbar'
+        bsOffset: 0,
+        bsTarget: '.navbar'
       })
       const spy = spyOn(scrollSpy, '_process').and.callThrough()
 
@@ -520,9 +520,9 @@ describe('ScrollSpy', () => {
       const contentEl = fixtureEl.querySelector('.content')
       const targetEl = fixtureEl.querySelector('#div-jsm-2')
       const scrollSpy = new ScrollSpy(contentEl, {
-        target: '.navbar',
-        offset: 0,
-        method: 'offset'
+        bsTarget: '.navbar',
+        bsOffset: 0,
+        bsMethod: 'offset'
       })
 
       expect(scrollSpy._offsets[1]).toEqual(Manipulator.offset(targetEl).top)
@@ -548,9 +548,9 @@ describe('ScrollSpy', () => {
       const contentEl = fixtureEl.querySelector('.content')
       const targetEl = fixtureEl.querySelector('#div-jsm-2')
       const scrollSpy = new ScrollSpy(contentEl, {
-        target: '.navbar',
-        offset: 0,
-        method: 'position'
+        bsTarget: '.navbar',
+        bsOffset: 0,
+        bsMethod: 'position'
       })
 
       expect(scrollSpy._offsets[1]).not.toEqual(Manipulator.offset(targetEl).top)

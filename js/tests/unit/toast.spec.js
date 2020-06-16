@@ -32,7 +32,7 @@ describe('Toast', () => {
 
       const toastEl = fixtureEl.querySelector('div')
       const toast = new Toast(toastEl, {
-        delay: 1
+        bsDelay: 1
       })
 
       toastEl.addEventListener('shown.bs.toast', () => {

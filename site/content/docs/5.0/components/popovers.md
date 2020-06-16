@@ -44,7 +44,7 @@ When you have some styles on a parent element that interfere with a popover, you
 
 {{< highlight js >}}
 var popover = new bootstrap.Popover(document.querySelector('.example-popover'), {
-  container: 'body'
+  bsContainer: 'body'
 })
 {{< /highlight >}}
 
@@ -110,7 +110,7 @@ For proper cross-browser and cross-platform behavior, you must use the `<a>` tag
 
 {{< highlight js >}}
 var popover = new bootstrap.Popover(document.querySelector('.popover-dismiss'), {
-  trigger: 'focus'
+  bsTrigger: 'focus'
 })
 {{< /highlight >}}
 
@@ -147,7 +147,7 @@ Additionally, while it is possible to also include interactive controls (such as
 
 ### Options
 
-Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-bs-`, as in `data-bs-animation=""`.
+Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-bs-`, as in `data-bs-animation=""`. For JavaScript attributes, preprend the option name with `bs` and capitalize the first letter, as in `bsAnimation`.
 
 {{< callout warning >}}
 Note that for security reasons the `sanitize`, `sanitizeFn` and `whiteList` options cannot be supplied using data attributes.

@@ -34,12 +34,12 @@ const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
 
 const Default = {
-  toggle: true,
+  bsToggle: true,
   parent: ''
 }
 
 const DefaultType = {
-  toggle: 'boolean',
+  bsToggle: 'boolean',
   parent: '(string|element)'
 }
 
@@ -96,7 +96,7 @@ class Collapse {
       this._addAriaAndCollapsedClass(this._element, this._triggerArray)
     }
 
-    if (this._config.toggle) {
+    if (this._config.bsToggle) {
       this.toggle()
     }
 
@@ -281,7 +281,7 @@ class Collapse {
       ...Default,
       ...config
     }
-    config.toggle = Boolean(config.toggle) // Coerce string values
+    config.bsToggle = Boolean(config.bsToggle) // Coerce string values
     typeCheckConfig(NAME, config, DefaultType)
     return config
   }
@@ -346,8 +346,8 @@ class Collapse {
       ...typeof config === 'object' && config ? config : {}
     }
 
-    if (!data && _config.toggle && typeof config === 'string' && /show|hide/.test(config)) {
-      _config.toggle = false
+    if (!data && _config.bsToggle && typeof config === 'string' && /show|hide/.test(config)) {
+      _config.bsToggle = false
     }
 
     if (!data) {

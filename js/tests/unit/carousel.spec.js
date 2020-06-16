@@ -59,7 +59,7 @@ describe('Carousel', () => {
 
       const carouselEl = fixtureEl.querySelector('#myCarousel')
       const carousel = new Carousel(carouselEl, {
-        keyboard: true
+        bsKeyboard: true
       })
 
       spyOn(carousel, '_keydown').and.callThrough()
@@ -89,7 +89,7 @@ describe('Carousel', () => {
 
       const carouselEl = fixtureEl.querySelector('#myCarousel')
       const carousel = new Carousel(carouselEl, {
-        keyboard: true
+        bsKeyboard: true
       })
 
       spyOn(carousel, '_keydown').and.callThrough()
@@ -119,7 +119,7 @@ describe('Carousel', () => {
 
       const carouselEl = fixtureEl.querySelector('#myCarousel')
       const carousel = new Carousel(carouselEl, {
-        keyboard: true
+        bsKeyboard: true
       })
 
       spyOn(carousel, '_keydown').and.callThrough()
@@ -154,7 +154,7 @@ describe('Carousel', () => {
       const input = fixtureEl.querySelector('input')
       const textarea = fixtureEl.querySelector('textarea')
       const carousel = new Carousel(carouselEl, {
-        keyboard: true
+        bsKeyboard: true
       })
 
       const spyKeydown = spyOn(carousel, '_keydown').and.callThrough()
@@ -201,7 +201,7 @@ describe('Carousel', () => {
       ].join('')
 
       const carouselEl = fixtureEl.querySelector('#myCarousel')
-      const carousel = new Carousel(carouselEl, { wrap: true })
+      const carousel = new Carousel(carouselEl, { bsWrap: true })
       const getActiveId = () => {
         return carouselEl.querySelector('.carousel-item.active').getAttribute('id')
       }
@@ -243,7 +243,7 @@ describe('Carousel', () => {
 
       const carouselEl = fixtureEl.querySelector('#myCarousel')
       const firstElement = fixtureEl.querySelector('#one')
-      const carousel = new Carousel(carouselEl, { wrap: false })
+      const carousel = new Carousel(carouselEl, { bsWrap: false })
 
       carouselEl.addEventListener('slid.bs.carousel', () => {
         throw new Error('carousel slid when it should not have slid')
@@ -265,7 +265,7 @@ describe('Carousel', () => {
       spyOn(Carousel.prototype, '_addTouchEventListeners')
 
       const carousel = new Carousel(carouselEl, {
-        touch: false
+        bsTouch: false
       })
 
       expect(carousel._addTouchEventListeners).not.toHaveBeenCalled()

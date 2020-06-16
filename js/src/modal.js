@@ -34,17 +34,17 @@ const DATA_API_KEY = '.data-api'
 const ESCAPE_KEY = 'Escape'
 
 const Default = {
-  backdrop: true,
-  keyboard: true,
-  focus: true,
-  show: true
+  bsBackdrop: true,
+  bsKeyboard: true,
+  bsFocus: true,
+  bsShow: true
 }
 
 const DefaultType = {
-  backdrop: '(boolean|string)',
-  keyboard: 'boolean',
-  focus: 'boolean',
-  show: 'boolean'
+  bsBackdrop: '(boolean|string)',
+  bsKeyboard: 'boolean',
+  bsFocus: 'boolean',
+  bsShow: 'boolean'
 }
 
 const EVENT_HIDE = `hide${EVENT_KEY}`
@@ -261,12 +261,12 @@ class Modal {
 
     this._element.classList.add(CLASS_NAME_SHOW)
 
-    if (this._config.focus) {
+    if (this._config.bsFocus) {
       this._enforceFocus()
     }
 
     const transitionComplete = () => {
-      if (this._config.focus) {
+      if (this._config.bsFocus) {
         this._element.focus()
       }
 
@@ -300,10 +300,10 @@ class Modal {
   _setEscapeEvent() {
     if (this._isShown) {
       EventHandler.on(this._element, EVENT_KEYDOWN_DISMISS, event => {
-        if (this._config.keyboard && event.key === ESCAPE_KEY) {
+        if (this._config.bsKeyboard && event.key === ESCAPE_KEY) {
           event.preventDefault()
           this.hide()
-        } else if (!this._config.keyboard && event.key === ESCAPE_KEY) {
+        } else if (!this._config.bsKeyboard && event.key === ESCAPE_KEY) {
           this._triggerBackdropTransition()
         }
       })
@@ -344,7 +344,7 @@ class Modal {
       CLASS_NAME_FADE :
       ''
 
-    if (this._isShown && this._config.backdrop) {
+    if (this._isShown && this._config.bsBackdrop) {
       this._backdrop = document.createElement('div')
       this._backdrop.className = CLASS_NAME_BACKDROP
 
@@ -403,7 +403,7 @@ class Modal {
   }
 
   _triggerBackdropTransition() {
-    if (this._config.backdrop === 'static') {
+    if (this._config.bsBackdrop === 'static') {
       const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE_PREVENTED)
       if (hideEvent.defaultPrevented) {
         return
@@ -544,7 +544,7 @@ class Modal {
         }
 
         data[config](relatedTarget)
-      } else if (_config.show) {
+      } else if (_config.bsShow) {
         data.show(relatedTarget)
       }
     })

@@ -246,7 +246,7 @@ describe('Modal', () => {
 
       const modalEl = fixtureEl.querySelector('.modal')
       const modal = new Modal(modalEl, {
-        backdrop: false
+        bsBackdrop: false
       })
 
       modalEl.addEventListener('show.bs.modal', e => {
@@ -429,7 +429,7 @@ describe('Modal', () => {
 
       const modalEl = fixtureEl.querySelector('.modal')
       const modal = new Modal(modalEl, {
-        focus: false
+        bsFocus: false
       })
 
       spyOn(modal, '_enforceFocus')
@@ -519,7 +519,7 @@ describe('Modal', () => {
 
       const modalEl = fixtureEl.querySelector('.modal')
       const modal = new Modal(modalEl, {
-        backdrop: false
+        bsBackdrop: false
       })
 
       const shownCallback = () => {
@@ -546,7 +546,7 @@ describe('Modal', () => {
 
       const modalEl = fixtureEl.querySelector('.modal')
       const modal = new Modal(modalEl, {
-        backdrop: 'static'
+        bsBackdrop: 'static'
       })
 
       const shownCallback = () => {
@@ -573,8 +573,8 @@ describe('Modal', () => {
 
       const modalEl = fixtureEl.querySelector('.modal')
       const modal = new Modal(modalEl, {
-        backdrop: 'static',
-        keyboard: true
+        bsBackdrop: 'static',
+        bsKeyboard: true
       })
 
       const shownCallback = () => {
@@ -600,8 +600,8 @@ describe('Modal', () => {
 
       const modalEl = fixtureEl.querySelector('.modal')
       const modal = new Modal(modalEl, {
-        backdrop: 'static',
-        keyboard: false
+        bsBackdrop: 'static',
+        bsKeyboard: false
       })
 
       const shownCallback = () => {

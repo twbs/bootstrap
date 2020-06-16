@@ -231,7 +231,7 @@ var toastList = toastElList.map(function (toastEl) {
 
 ### Options
 
-Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-bs-`, as in `data-bs-animation=""`.
+Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-bs-`, as in `data-bs-animation=""`. For JavaScript attributes, preprend the option name with `bs` and capitalize the first letter, as in `bsAnimation`.
 
 <table class="table">
   <thead>

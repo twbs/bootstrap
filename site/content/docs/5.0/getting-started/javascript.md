@@ -222,7 +222,7 @@ If you want to bypass our sanitizer because you prefer to use a dedicated librar
 {{< highlight js >}}
 var yourTooltipEl = document.getElementById('yourTooltip')
 var tooltip = new bootstrap.Tooltip(yourTooltipEl, {
-  sanitizeFn: function (content) {
+  bSanitizeFn: function (content) {
     return DOMPurify.sanitize(content)
   }
 })

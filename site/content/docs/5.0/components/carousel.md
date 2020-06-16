@@ -226,7 +226,7 @@ var carousel = new bootstrap.Carousel(myCarousel)
 
 ### Options
 
-Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-bs-`, as in `data-bs-interval=""`.
+Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-bs-`, as in `data-bs-interval=""`. For JavaScript attributes, preprend the option name with `bs` and capitalize the first letter, as in `bsInterval`.
 
 <table class="table">
   <thead>
@@ -289,8 +289,8 @@ You can create a carousel instance with the carousel constructor, for example, t
 {{< highlight js >}}
 var myCarousel = document.querySelector('#myCarousel')
 var carousel = new bootstrap.Carousel(myCarousel, {
-  interval: 2000,
-  wrap: false
+  bsInterval: 2000,
+  bsWrap: false
 })
 {{< /highlight >}}
 

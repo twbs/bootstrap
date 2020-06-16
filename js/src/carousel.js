@@ -39,21 +39,21 @@ const TOUCHEVENT_COMPAT_WAIT = 500 // Time for mouse compat events to fire after
 const SWIPE_THRESHOLD = 40
 
 const Default = {
-  interval: 5000,
-  keyboard: true,
-  slide: false,
-  pause: 'hover',
-  wrap: true,
-  touch: true
+  bsInterval: 5000,
+  bsKeyboard: true,
+  bsSlide: false,
+  bsPause: 'hover',
+  bsWrap: true,
+  bsTouch: true
 }
 
 const DefaultType = {
-  interval: '(number|boolean)',
-  keyboard: 'boolean',
-  slide: '(boolean|string)',
-  pause: '(string|boolean)',
-  wrap: 'boolean',
-  touch: 'boolean'
+  bsInterval: '(number|boolean)',
+  bsKeyboard: 'boolean',
+  bsSlide: '(boolean|string)',
+  bsPause: '(string|boolean)',
+  bsWrap: 'boolean',
+  bsTouch: 'boolean'
 }
 
 const DIRECTION_NEXT = 'next'
@@ -180,10 +180,10 @@ class Carousel {
       this._interval = null
     }
 
-    if (this._config && this._config.interval && !this._isPaused) {
+    if (this._config && this._config.bsInterval && !this._isPaused) {
       this._interval = setInterval(
         (document.visibilityState ? this.nextWhenVisible : this.next).bind(this),
-        this._config.interval
+        this._config.bsInterval
       )
     }
   }
@@ -262,19 +262,19 @@ class Carousel {
   }
 
   _addEventListeners() {
-    if (this._config.keyboard) {
+    if (this._config.bsKeyboard) {
       EventHandler
         .on(this._element, EVENT_KEYDOWN, event => this._keydown(event))
     }
 
-    if (this._config.pause === 'hover') {
+    if (this._config.bsPause === 'hover') {
       EventHandler
         .on(this._element, EVENT_MOUSEENTER, event => this.pause(event))
       EventHandler
         .on(this._element, EVENT_MOUSELEAVE, event => this.cycle(event))
     }
 
-    if (this._config.touch && this._touchSupported) {
+    if (this._config.bsTouch && this._touchSupported) {
       this._addTouchEventListeners()
     }
   }
@@ -303,7 +303,7 @@ class Carousel {
       }
 
       this._handleSwipe()
-      if (this._config.pause === 'hover') {
+      if (this._config.bsPause === 'hover') {
         // If it's a touch-enabled device, mouseenter/leave are fired as
         // part of the mouse compatibility events on first tap - the carousel
         // would stop cycling until user tapped out of it;
@@ -317,7 +317,7 @@ class Carousel {
           clearTimeout(this.touchTimeout)
         }
 
-        this.touchTimeout = setTimeout(event => this.cycle(event), TOUCHEVENT_COMPAT_WAIT + this._config.interval)
+        this.touchTimeout = setTimeout(event => this.cycle(event), TOUCHEVENT_COMPAT_WAIT + this._config.bsInterval)
       }
     }
 
@@ -371,7 +371,7 @@ class Carousel {
     const isGoingToWrap = (isPrevDirection && activeIndex === 0) ||
                             (isNextDirection && activeIndex === lastItemIndex)
 
-    if (isGoingToWrap && !this._config.wrap) {
+    if (isGoingToWrap && !this._config.bsWrap) {
       return activeElement
     }
 
@@ -468,10 +468,10 @@ class Carousel {
 
       const nextElementInterval = parseInt(nextElement.getAttribute('data-bs-interval'), 10)
       if (nextElementInterval) {
-        this._config.defaultInterval = this._config.defaultInterval || this._config.interval
-        this._config.interval = nextElementInterval
+        this._config.defaultInterval = this._config.defaultInterval || this._config.bsInterval
+        this._config.bsInterval = nextElementInterval
       } else {
-        this._config.interval = this._config.defaultInterval || this._config.interval
+        this._config.bsInterval = this._config.defaultInterval || this._config.bsInterval
       }
 
       const transitionDuration = getTransitionDurationFromElement(activeElement)
@@ -530,7 +530,7 @@ class Carousel {
       }
     }
 
-    const action = typeof config === 'string' ? config : _config.slide
+    const action = typeof config === 'string' ? config : _config.bsSlide
 
     if (!data) {
       data = new Carousel(element, _config)
@@ -544,7 +544,7 @@ class Carousel {
       }
 
       data[action]()
-    } else if (_config.interval && _config.ride) {
+    } else if (_config.bsInterval && _config.ride) {
       data.pause()
       data.cycle()
     }
@@ -570,7 +570,7 @@ class Carousel {
     const slideIndex = this.getAttribute('data-bs-slide-to')
 
     if (slideIndex) {
-      config.interval = false
+      config.bsnterval = false
     }
 
     Carousel.carouselInterface(target, config)

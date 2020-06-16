@@ -38,25 +38,25 @@ const DATA_KEY = 'bs.tooltip'
 const EVENT_KEY = `.${DATA_KEY}`
 const CLASS_PREFIX = 'bs-tooltip'
 const BSCLS_PREFIX_REGEX = new RegExp(`(^|\\s)${CLASS_PREFIX}\\S+`, 'g')
-const DISALLOWED_ATTRIBUTES = ['sanitize', 'whiteList', 'sanitizeFn']
+const DISALLOWED_ATTRIBUTES = ['bsSanitize', 'bsWhiteList', 'bsSanitizeFn']
 
 const DefaultType = {
-  animation: 'boolean',
-  template: 'string',
-  title: '(string|element|function)',
-  trigger: 'string',
-  delay: '(number|object)',
-  html: 'boolean',
-  selector: '(string|boolean)',
-  placement: '(string|function)',
-  offset: '(number|string|function)',
-  container: '(string|element|boolean)',
-  fallbackPlacement: '(string|array)',
-  boundary: '(string|element)',
-  sanitize: 'boolean',
-  sanitizeFn: '(null|function)',
-  whiteList: 'object',
-  popperConfig: '(null|object)'
+  bsAnimation: 'boolean',
+  bsTemplate: 'string',
+  bsTitle: '(string|element|function)',
+  bsTrigger: 'string',
+  bsDelay: '(number|object)',
+  bsHtml: 'boolean',
+  bsSelector: '(string|boolean)',
+  bsPlacement: '(string|function)',
+  bsOffset: '(number|string|function)',
+  bsContainer: '(string|element|boolean)',
+  bsFallbackPlacement: '(string|array)',
+  bsBoundary: '(string|element)',
+  bsSanitize: 'boolean',
+  bsSanitizeFn: '(null|function)',
+  bsWhiteList: 'object',
+  bsPopperConfig: '(null|object)'
 }
 
 const AttachmentMap = {
@@ -68,24 +68,24 @@ const AttachmentMap = {
 }
 
 const Default = {
-  animation: true,
-  template: '<div class="tooltip" role="tooltip">' +
+  bsAnimation: true,
+  bsTemplate: '<div class="tooltip" role="tooltip">' +
                     '<div class="tooltip-arrow"></div>' +
                     '<div class="tooltip-inner"></div></div>',
-  trigger: 'hover focus',
-  title: '',
-  delay: 0,
-  html: false,
-  selector: false,
-  placement: 'top',
-  offset: 0,
-  container: false,
-  fallbackPlacement: 'flip',
-  boundary: 'scrollParent',
-  sanitize: true,
-  sanitizeFn: null,
-  whiteList: DefaultWhitelist,
-  popperConfig: null
+  bsTrigger: 'hover focus',
+  bsTitle: '',
+  bsDelay: 0,
+  bsHtml: false,
+  bsSelector: false,
+  bsPlacement: 'top',
+  bsOffset: 0,
+  bsContainer: false,
+  bsFallbackPlacement: 'flip',
+  bsBoundary: 'scrollParent',
+  bsSanitize: true,
+  bsSanitizeFn: null,
+  bsWhiteList: DefaultWhitelist,
+  bsPopperConfig: null
 }
 
 const Event = {
@@ -271,13 +271,13 @@ class Tooltip {
 
       this.setContent()
 
-      if (this.config.animation) {
+      if (this.config.bsAnimation) {
         tip.classList.add(CLASS_NAME_FADE)
       }
 
-      const placement = typeof this.config.placement === 'function' ?
-        this.config.placement.call(this, tip, this.element) :
-        this.config.placement
+      const placement = typeof this.config.bsPlacement === 'function' ?
+        this.config.bsPlacement.call(this, tip, this.element) :
+        this.config.bsPlacement
 
       const attachment = this._getAttachment(placement)
       this._addAttachmentClass(attachment)
@@ -306,7 +306,7 @@ class Tooltip {
       }
 
       const complete = () => {
-        if (this.config.animation) {
+        if (this.config.bsAnimation) {
           this._fixTransition()
         }
 
@@ -340,7 +340,9 @@ class Tooltip {
       this._cleanTipClass()
       this.element.removeAttribute('aria-describedby')
       EventHandler.trigger(this.element, this.constructor.Event.HIDDEN)
-      this._popper.destroy()
+      if (this._popper !== null) {
+        this._popper.destroy()
+      }
     }
 
     const hideEvent = EventHandler.trigger(this.element, this.constructor.Event.HIDE)
@@ -391,7 +393,7 @@ class Tooltip {
     }
 
     const element = document.createElement('div')
-    element.innerHTML = this.config.template
+    element.innerHTML = this.config.bsTemplate
 
     this.tip = element.children[0]
     return this.tip
@@ -414,7 +416,7 @@ class Tooltip {
       }
 
       // content is a DOM node or a jQuery
-      if (this.config.html) {
+      if (this.config.bsHtml) {
         if (content.parentNode !== element) {
           element.innerHTML = ''
           element.appendChild(content)
@@ -426,9 +428,9 @@ class Tooltip {
       return
     }
 
-    if (this.config.html) {
-      if (this.config.sanitize) {
-        content = sanitizeHtml(content, this.config.whiteList, this.config.sanitizeFn)
+    if (this.config.bsHtml) {
+      if (this.config.bsSanitize) {
+        content = sanitizeHtml(content, this.config.bsWhiteList, this.config.bsSanitizeFn)
       }
 
       element.innerHTML = content
@@ -441,9 +443,9 @@ class Tooltip {
     let title = this.element.getAttribute('data-bs-original-title')
 
     if (!title) {
-      title = typeof this.config.title === 'function' ?
-        this.config.title.call(this.element) :
-        this.config.title
+      title = typeof this.config.bsTitle === 'function' ?
+        this.config.bsTitle.call(this.element) :
+        this.config.bsTitle
     }
 
     return title
@@ -457,13 +459,13 @@ class Tooltip {
       modifiers: {
         offset: this._getOffset(),
         flip: {
-          behavior: this.config.fallbackPlacement
+          behavior: this.config.bsFallbackPlacement
         },
         arrow: {
           element: `.${this.constructor.NAME}-arrow`
         },
         preventOverflow: {
-          boundariesElement: this.config.boundary
+          boundariesElement: this.config.bsBoundary
         }
       },
       onCreate: data => {
@@ -476,7 +478,7 @@ class Tooltip {
 
     return {
       ...defaultBsConfig,
-      ...this.config.popperConfig
+      ...this.config.bsPopperConfig
     }
   }
 
@@ -487,32 +489,32 @@ class Tooltip {
   _getOffset() {
     const offset = {}
 
-    if (typeof this.config.offset === 'function') {
+    if (typeof this.config.bsOffset === 'function') {
       offset.fn = data => {
         data.offsets = {
           ...data.offsets,
-          ...this.config.offset(data.offsets, this.element) || {}
+          ...this.config.bsOffset(data.offsets, this.element) || {}
         }
 
         return data
       }
     } else {
-      offset.offset = this.config.offset
+      offset.offset = this.config.bsOffset
     }
 
     return offset
   }
 
   _getContainer() {
-    if (this.config.container === false) {
+    if (this.config.bsContainer === false) {
       return document.body
     }
 
-    if (isElement(this.config.container)) {
-      return this.config.container
+    if (isElement(this.config.bsContainer)) {
+      return this.config.bsContainer
     }
 
-    return SelectorEngine.findOne(this.config.container)
+    return SelectorEngine.findOne(this.config.bsContainer)
   }
 
   _getAttachment(placement) {
@@ -520,13 +522,13 @@ class Tooltip {
   }
 
   _setListeners() {
-    const triggers = this.config.trigger.split(' ')
+    const triggers = this.config.bsTrigger.split(' ')
 
     triggers.forEach(trigger => {
       if (trigger === 'click') {
         EventHandler.on(this.element,
           this.constructor.Event.CLICK,
-          this.config.selector,
+          this.config.bsSelector,
           event => this.toggle(event)
         )
       } else if (trigger !== TRIGGER_MANUAL) {
@@ -539,12 +541,12 @@ class Tooltip {
 
         EventHandler.on(this.element,
           eventIn,
-          this.config.selector,
+          this.config.bsSelector,
           event => this._enter(event)
         )
         EventHandler.on(this.element,
           eventOut,
-          this.config.selector,
+          this.config.bsSelector,
           event => this._leave(event)
         )
       }
@@ -561,11 +563,11 @@ class Tooltip {
       this._hideModalHandler
     )
 
-    if (this.config.selector) {
+    if (this.config.bsSelector) {
       this.config = {
         ...this.config,
-        trigger: 'manual',
-        selector: ''
+        bsTrigger: 'manual',
+        bsSelector: ''
       }
     } else {
       this._fixTitle()
@@ -609,7 +611,7 @@ class Tooltip {
 
     context._hoverState = HOVER_STATE_SHOW
 
-    if (!context.config.delay || !context.config.delay.show) {
+    if (!context.config.bsDelay || !context.config.bsDelay.show) {
       context.show()
       return
     }
@@ -618,7 +620,7 @@ class Tooltip {
       if (context._hoverState === HOVER_STATE_SHOW) {
         context.show()
       }
-    }, context.config.delay.show)
+    }, context.config.bsDelay.show)
   }
 
   _leave(event, context) {
@@ -647,7 +649,7 @@ class Tooltip {
 
     context._hoverState = HOVER_STATE_OUT
 
-    if (!context.config.delay || !context.config.delay.hide) {
+    if (!context.config.bsDelay || !context.config.bsDelay.hide) {
       context.hide()
       return
     }
@@ -656,7 +658,7 @@ class Tooltip {
       if (context._hoverState === HOVER_STATE_OUT) {
         context.hide()
       }
-    }, context.config.delay.hide)
+    }, context.config.bsDelay.hide)
   }
 
   _isWithActiveTrigger() {
@@ -679,8 +681,8 @@ class Tooltip {
         }
       })
 
-    if (config && typeof config.container === 'object' && config.container.jquery) {
-      config.container = config.container[0]
+    if (config && typeof config.bsContainer === 'object' && config.bsContainer.jquery) {
+      config.bsContainer = config.bsContainer[0]
     }
 
     config = {
@@ -689,15 +691,15 @@ class Tooltip {
       ...typeof config === 'object' && config ? config : {}
     }
 
-    if (typeof config.delay === 'number') {
-      config.delay = {
-        show: config.delay,
-        hide: config.delay
+    if (typeof config.bsDelay === 'number') {
+      config.bsDelay = {
+        show: config.bsDelay,
+        hide: config.bsDelay
       }
     }
 
-    if (typeof config.title === 'number') {
-      config.title = config.title.toString()
+    if (typeof config.bsTitle === 'number') {
+      config.bsTitle = config.bsTitle.toString()
     }
 
     if (typeof config.content === 'number') {
@@ -710,8 +712,8 @@ class Tooltip {
       this.constructor.DefaultType
     )
 
-    if (config.sanitize) {
-      config.template = sanitizeHtml(config.template, config.whiteList, config.sanitizeFn)
+    if (config.bsSanitize) {
+      config.bsTemplate = sanitizeHtml(config.bsTemplate, config.bsWhiteList, config.bsSanitizeFn)
     }
 
     return config
@@ -749,16 +751,16 @@ class Tooltip {
 
   _fixTransition() {
     const tip = this.getTipElement()
-    const initConfigAnimation = this.config.animation
+    const initConfigAnimation = this.config.bsAnimation
     if (tip.getAttribute('x-placement') !== null) {
       return
     }
 
     tip.classList.remove(CLASS_NAME_FADE)
-    this.config.animation = false
+    this.config.bsAnimation = false
     this.hide()
     this.show()
-    this.config.animation = initConfigAnimation
+    this.config.bsAnimation = initConfigAnimation
   }
 
   // Static

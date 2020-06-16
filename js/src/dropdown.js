@@ -72,21 +72,21 @@ const PLACEMENT_RIGHT = 'right-start'
 const PLACEMENT_LEFT = 'left-start'
 
 const Default = {
-  offset: 0,
-  flip: true,
-  boundary: 'scrollParent',
-  reference: 'toggle',
-  display: 'dynamic',
-  popperConfig: null
+  bsOffset: 0,
+  bsFlip: true,
+  bsBoundary: 'scrollParent',
+  bsReference: 'toggle',
+  bsDisplay: 'dynamic',
+  bsPopperConfig: null
 }
 
 const DefaultType = {
-  offset: '(number|string|function)',
-  flip: 'boolean',
-  boundary: '(string|element)',
-  reference: '(string|element)',
-  display: 'string',
-  popperConfig: '(null|object)'
+  bsOffset: '(number|string|function)',
+  bsFlip: 'boolean',
+  bsBoundary: '(string|element)',
+  bsReference: '(string|element)',
+  bsDisplay: 'string',
+  bsPopperConfig: '(null|object)'
 }
 
 /**
@@ -163,21 +163,21 @@ class Dropdown {
 
       let referenceElement = this._element
 
-      if (this._config.reference === 'parent') {
+      if (this._config.bsReference === 'parent') {
         referenceElement = parent
-      } else if (isElement(this._config.reference)) {
-        referenceElement = this._config.reference
+      } else if (isElement(this._config.bsReference)) {
+        referenceElement = this._config.bsReference
 
         // Check if it's jQuery element
-        if (typeof this._config.reference.jquery !== 'undefined') {
-          referenceElement = this._config.reference[0]
+        if (typeof this._config.bsReference.jquery !== 'undefined') {
+          referenceElement = this._config.bsReference[0]
         }
       }
 
       // If boundary is not `scrollParent`, then set position to `static`
       // to allow the menu to "escape" the scroll parent's boundaries
       // https://github.com/twbs/bootstrap/issues/24251
-      if (this._config.boundary !== 'scrollParent') {
+      if (this._config.bsBoundary !== 'scrollParent') {
         parent.classList.add(CLASS_NAME_POSITION_STATIC)
       }
 
@@ -303,17 +303,17 @@ class Dropdown {
   _getOffset() {
     const offset = {}
 
-    if (typeof this._config.offset === 'function') {
+    if (typeof this._config.bsOffset === 'function') {
       offset.fn = data => {
         data.offsets = {
           ...data.offsets,
-          ...this._config.offset(data.offsets, this._element) || {}
+          ...this._config.bsOffset(data.offsets, this._element) || {}
         }
 
         return data
       }
     } else {
-      offset.offset = this._config.offset
+      offset.offset = this._config.bsOffset
     }
 
     return offset
@@ -325,16 +325,16 @@ class Dropdown {
       modifiers: {
         offset: this._getOffset(),
         flip: {
-          enabled: this._config.flip
+          enabled: this._config.bsFlip
         },
         preventOverflow: {
-          boundariesElement: this._config.boundary
+          boundariesElement: this._config.bsBoundary
         }
       }
     }
 
     // Disable Popper.js if we have a static display
-    if (this._config.display === 'static') {
+    if (this._config.bsDisplay === 'static') {
       popperConfig.modifiers.applyStyle = {
         enabled: false
       }
@@ -342,7 +342,7 @@ class Dropdown {
 
     return {
       ...popperConfig,
-      ...this._config.popperConfig
+      ...this._config.bsPopperConfig
     }
   }
 

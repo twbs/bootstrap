@@ -77,8 +77,8 @@ describe('Tooltip', () => {
 
       const tooltipEl = fixtureEl.querySelector('a')
       const tooltip = new Tooltip(tooltipEl, {
-        title: 1,
-        content: 7
+        bsTitle: 1,
+        bsContent: 7
       })
 
       expect(tooltip.config.title).toEqual('1')
@@ -90,8 +90,8 @@ describe('Tooltip', () => {
 
       const containerEl = fixtureEl.querySelector('div')
       const tooltipContainer = new Tooltip(containerEl, {
-        selector: 'a[rel="tooltip"]',
-        trigger: 'click'
+        bsSelector: 'a[rel="tooltip"]',
+        bsTrigger: 'click'
       })
 
       containerEl.innerHTML = '<a href="#" rel="tooltip" title="Another tooltip">'
@@ -112,7 +112,7 @@ describe('Tooltip', () => {
 
       const tooltipEl = fixtureEl.querySelector('a')
       const tooltip = new Tooltip(tooltipEl, {
-        popperConfig: {
+        bsPopperConfig: {
           placement: 'left'
         }
       })
@@ -218,7 +218,7 @@ describe('Tooltip', () => {
 
       const tooltipEl = fixtureEl.querySelector('a')
       const tooltip = new Tooltip(tooltipEl, {
-        trigger: 'click'
+        bsTrigger: 'click'
       })
 
       spyOn(tooltip, 'toggle').and.callThrough()
@@ -254,7 +254,7 @@ describe('Tooltip', () => {
 
       const tooltipEl = fixtureEl.querySelector('a')
       const tooltip = new Tooltip(tooltipEl, {
-        trigger: 'click'
+        bsTrigger: 'click'
       })
 
       spyOn(tooltip, 'toggle').and.callThrough()
@@ -348,7 +348,7 @@ describe('Tooltip', () => {
 
       const tooltipEl = fixtureEl.querySelector('a')
       const tooltip = new Tooltip(tooltipEl, {
-        placement: 'bottom'
+        bsPlacement: 'bottom'
       })
 
       tooltipEl.addEventListener('inserted.bs.tooltip', () => {
@@ -397,7 +397,7 @@ describe('Tooltip', () => {
 
       const tooltipEl = fixtureEl.querySelector('a')
       const tooltip = new Tooltip(tooltipEl, {
-        container: fixtureEl
+        bsContainer: fixtureEl
       })
 
       tooltipEl.addEventListener('shown.bs.tooltip', () => {
@@ -413,7 +413,7 @@ describe('Tooltip', () => {
 
       const tooltipEl = fixtureEl.querySelector('a')
       const tooltip = new Tooltip(tooltipEl, {
-        container: {
+        bsContainer: {
           0: fixtureEl,
           jquery: 'jQuery'
         }
@@ -432,7 +432,7 @@ describe('Tooltip', () => {
 
       const tooltipEl = fixtureEl.querySelector('a')
       const tooltip = new Tooltip(tooltipEl, {
-        container: '#fixture'
+        bsContainer: '#fixture'
       })
 
       tooltipEl.addEventListener('shown.bs.tooltip', () => {
@@ -449,7 +449,7 @@ describe('Tooltip', () => {
       const spy = jasmine.createSpy('placement').and.returnValue('top')
       const tooltipEl = fixtureEl.querySelector('a')
       const tooltip = new Tooltip(tooltipEl, {
-        placement: spy
+        bsPlacement: spy
       })
 
       tooltipEl.addEventListener('shown.bs.tooltip', () => {
@@ -467,7 +467,7 @@ describe('Tooltip', () => {
       const spy = jasmine.createSpy('offset').and.returnValue({})
       const tooltipEl = fixtureEl.querySelector('a')
       const tooltip = new Tooltip(tooltipEl, {
-        offset: spy
+        bsOffset: spy
       })
 
       tooltipEl.addEventListener('shown.bs.tooltip', () => {
@@ -484,7 +484,7 @@ describe('Tooltip', () => {
 
       const tooltipEl = fixtureEl.querySelector('a')
       const tooltip = new Tooltip(tooltipEl, {
-        animation: false
+        bsAnimation: false
       })
 
       tooltipEl.addEventListener('shown.bs.tooltip', () => {
@@ -541,7 +541,7 @@ describe('Tooltip', () => {
 
       const tooltipEl = fixtureEl.querySelector('a')
       const tooltip = new Tooltip(tooltipEl, {
-        delay: 150
+        bsDelay: 150
       })
 
       spyOn(tooltip, 'show')
@@ -563,7 +563,7 @@ describe('Tooltip', () => {
 
       const tooltipEl = fixtureEl.querySelector('a')
       const tooltip = new Tooltip(tooltipEl, {
-        delay: 150
+        bsDelay: 150
       })
 
       spyOn(tooltip, 'show')
@@ -587,7 +587,7 @@ describe('Tooltip', () => {
 
       const tooltipEl = fixtureEl.querySelector('a')
       const tooltip = new Tooltip(tooltipEl, {
-        delay: {
+        bsDelay: {
           show: 0,
           hide: 150
         }
@@ -656,7 +656,7 @@ describe('Tooltip', () => {
 
       const tooltipEl = fixtureEl.querySelector('a')
       const tooltip = new Tooltip(tooltipEl, {
-        animation: false
+        bsAnimation: false
       })
 
       tooltipEl.addEventListener('shown.bs.tooltip', () => tooltip.hide())
@@ -681,7 +681,7 @@ describe('Tooltip', () => {
 
       const tooltipEl = fixtureEl.querySelector('a')
       const tooltip = new Tooltip(tooltipEl, {
-        animation: false
+        bsAnimation: false
       })
 
       tooltipEl.addEventListener('shown.bs.tooltip', () => tooltip.hide())
@@ -815,7 +815,7 @@ describe('Tooltip', () => {
       const tooltipEl = fixtureEl.querySelector('a')
       const childContent = fixtureEl.querySelector('div')
       const tooltip = new Tooltip(tooltipEl, {
-        html: true
+        bsHtml: true
       })
 
       tooltip.setElementContent(tooltip.getTipElement(), childContent)
@@ -832,7 +832,7 @@ describe('Tooltip', () => {
       const tooltipEl = fixtureEl.querySelector('a')
       const childContent = fixtureEl.querySelector('div')
       const tooltip = new Tooltip(tooltipEl, {
-        html: true
+        bsHtml: true
       })
 
       tooltip.getTipElement().appendChild(childContent)
@@ -850,7 +850,7 @@ describe('Tooltip', () => {
       const tooltipEl = fixtureEl.querySelector('a')
       const childContent = fixtureEl.querySelector('div')
       const tooltip = new Tooltip(tooltipEl, {
-        html: true
+        bsHtml: true
       })
 
       tooltip.setElementContent(tooltip.getTipElement(), { 0: childContent, jquery: 'jQuery' })
@@ -878,8 +878,8 @@ describe('Tooltip', () => {
 
       const tooltipEl = fixtureEl.querySelector('a')
       const tooltip = new Tooltip(tooltipEl, {
-        sanitize: false,
-        html: true
+        bsSanitize: false,
+        bsHtml: true
       })
 
       tooltip.setElementContent(tooltip.getTipElement(), '<div id="childContent">Tooltip</div>')
@@ -892,7 +892,7 @@ describe('Tooltip', () => {
 
       const tooltipEl = fixtureEl.querySelector('a')
       const tooltip = new Tooltip(tooltipEl, {
-        html: true
+        bsHtml: true
       })
 
       tooltip.setElementContent(tooltip.getTipElement(), [
@@ -932,7 +932,7 @@ describe('Tooltip', () => {
 
       const tooltipEl = fixtureEl.querySelector('a')
       const tooltip = new Tooltip(tooltipEl, {
-        title: () => 'test'
+        bsTitle: () => 'test'
       })
 
       expect(tooltip.getTitle()).toEqual('test')

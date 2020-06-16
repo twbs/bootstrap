@@ -40,15 +40,15 @@ const CLASS_NAME_SHOW = 'show'
 const CLASS_NAME_SHOWING = 'showing'
 
 const DefaultType = {
-  animation: 'boolean',
-  autohide: 'boolean',
-  delay: 'number'
+  bsAnimation: 'boolean',
+  bsAutohide: 'boolean',
+  bsDelay: 'number'
 }
 
 const Default = {
-  animation: true,
-  autohide: true,
-  delay: 500
+  bsAnimation: true,
+  bsAutohide: true,
+  bsDelay: 500
 }
 
 const SELECTOR_DATA_DISMISS = '[data-bs-dismiss="toast"]'
@@ -91,7 +91,7 @@ class Toast {
       return
     }
 
-    if (this._config.animation) {
+    if (this._config.bsAnimation) {
       this._element.classList.add(CLASS_NAME_FADE)
     }
 
@@ -101,17 +101,17 @@ class Toast {
 
       EventHandler.trigger(this._element, EVENT_SHOWN)
 
-      if (this._config.autohide) {
+      if (this._config.bsAutohide) {
         this._timeout = setTimeout(() => {
           this.hide()
-        }, this._config.delay)
+        }, this._config.bsDelay)
       }
     }
 
     this._element.classList.remove(CLASS_NAME_HIDE)
     reflow(this._element)
     this._element.classList.add(CLASS_NAME_SHOWING)
-    if (this._config.animation) {
+    if (this._config.bsAnimation) {
       const transitionDuration = getTransitionDurationFromElement(this._element)
 
       EventHandler.one(this._element, TRANSITION_END, complete)
@@ -138,7 +138,7 @@ class Toast {
     }
 
     this._element.classList.remove(CLASS_NAME_SHOW)
-    if (this._config.animation) {
+    if (this._config.bsAnimation) {
       const transitionDuration = getTransitionDurationFromElement(this._element)
 
       EventHandler.one(this._element, TRANSITION_END, complete)

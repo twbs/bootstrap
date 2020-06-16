@@ -44,7 +44,7 @@ describe('Collapse', () => {
         0: myCollapseEl
       }
       const collapse = new Collapse(collapseEl, {
-        parent: fakejQueryObject
+        bsParent: fakejQueryObject
       })
 
       expect(collapse._config.parent).toEqual(fakejQueryObject)
@@ -64,7 +64,7 @@ describe('Collapse', () => {
       const collapseEl = fixtureEl.querySelector('div.collapse')
       const myCollapseEl = fixtureEl.querySelector('.my-collapse')
       const collapse = new Collapse(collapseEl, {
-        parent: myCollapseEl
+        bsParent: myCollapseEl
       })
 
       expect(collapse._config.parent).toEqual(myCollapseEl)
@@ -83,7 +83,7 @@ describe('Collapse', () => {
       const collapseEl = fixtureEl.querySelector('div.collapse')
       const myCollapseEl = fixtureEl.querySelector('.my-collapse')
       const collapse = new Collapse(collapseEl, {
-        parent: 'div.my-collapse'
+        bsParent: 'div.my-collapse'
       })
 
       expect(collapse._config.parent).toEqual('div.my-collapse')
@@ -110,7 +110,7 @@ describe('Collapse', () => {
 
       const collapseEl = fixtureEl.querySelector('.show')
       const collapse = new Collapse(collapseEl, {
-        toggle: false
+        bsToggle: false
       })
 
       spyOn(collapse, 'hide')
@@ -141,7 +141,7 @@ describe('Collapse', () => {
       const collapseList = [].concat(...fixtureEl.querySelectorAll('.collapse'))
         .map(el => new Collapse(el, {
           parent,
-          toggle: false
+          bsToggle: false
         }))
 
       collapseEl2.addEventListener('shown.bs.collapse', () => {
@@ -162,7 +162,7 @@ describe('Collapse', () => {
 
       const collapseEl = fixtureEl.querySelector('div')
       const collapse = new Collapse(collapseEl, {
-        toggle: false
+        bsToggle: false
       })
 
       collapse._isTransitioning = true
@@ -178,7 +178,7 @@ describe('Collapse', () => {
 
       const collapseEl = fixtureEl.querySelector('div')
       const collapse = new Collapse(collapseEl, {
-        toggle: false
+        bsToggle: false
       })
 
       collapse.show()
@@ -191,7 +191,7 @@ describe('Collapse', () => {
 
       const collapseEl = fixtureEl.querySelector('div')
       const collapse = new Collapse(collapseEl, {
-        toggle: false
+        bsToggle: false
       })
 
       collapseEl.addEventListener('show.bs.collapse', () => {
@@ -211,7 +211,7 @@ describe('Collapse', () => {
 
       const collapseEl = fixtureEl.querySelector('div')
       const collapse = new Collapse(collapseEl, {
-        toggle: false
+        bsToggle: false
       })
 
       collapseEl.addEventListener('show.bs.collapse', () => {
@@ -239,7 +239,7 @@ describe('Collapse', () => {
       const el1 = fixtureEl.querySelector('#collapse1')
       const el2 = fixtureEl.querySelector('#collapse2')
       const collapse = new Collapse(el1, {
-        toggle: false
+        bsToggle: false
       })
 
       el1.addEventListener('shown.bs.collapse', () => {
@@ -256,7 +256,7 @@ describe('Collapse', () => {
 
       const collapseEl = fixtureEl.querySelector('div')
       const collapse = new Collapse(collapseEl, {
-        toggle: false
+        bsToggle: false
       })
 
       const expectEnd = () => {
@@ -287,7 +287,7 @@ describe('Collapse', () => {
 
       const collapseEl = fixtureEl.querySelector('div')
       const collapse = new Collapse(collapseEl, {
-        toggle: false
+        bsToggle: false
       })
 
       collapse._isTransitioning = true
@@ -303,7 +303,7 @@ describe('Collapse', () => {
 
       const collapseEl = fixtureEl.querySelector('div')
       const collapse = new Collapse(collapseEl, {
-        toggle: false
+        bsToggle: false
       })
 
       collapse.hide()
@@ -316,7 +316,7 @@ describe('Collapse', () => {
 
       const collapseEl = fixtureEl.querySelector('div')
       const collapse = new Collapse(collapseEl, {
-        toggle: false
+        bsToggle: false
       })
 
       collapseEl.addEventListener('hidden.bs.collapse', () => {
@@ -333,7 +333,7 @@ describe('Collapse', () => {
 
       const collapseEl = fixtureEl.querySelector('div')
       const collapse = new Collapse(collapseEl, {
-        toggle: false
+        bsToggle: false
       })
 
       const expectEnd = () => {
@@ -362,7 +362,7 @@ describe('Collapse', () => {
 
       const collapseEl = fixtureEl.querySelector('div')
       const collapse = new Collapse(collapseEl, {
-        toggle: false
+        bsToggle: false
       })
 
       expect(Collapse.getInstance(collapseEl)).toEqual(collapse)

@@ -30,15 +30,15 @@ const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
 
 const Default = {
-  offset: 10,
-  method: 'auto',
-  target: ''
+  bsOffset: 10,
+  bsMethod: 'auto',
+  bsTarget: ''
 }
 
 const DefaultType = {
-  offset: 'number',
-  method: 'string',
-  target: '(string|element)'
+  bsOffset: 'number',
+  bsMethod: 'string',
+  bsTarget: '(string|element)'
 }
 
 const EVENT_ACTIVATE = `activate${EVENT_KEY}`
@@ -70,9 +70,9 @@ class ScrollSpy {
     this._element = element
     this._scrollElement = element.tagName === 'BODY' ? window : element
     this._config = this._getConfig(config)
-    this._selector = `${this._config.target} ${SELECTOR_NAV_LINKS},` +
-                          `${this._config.target} ${SELECTOR_LIST_ITEMS},` +
-                          `${this._config.target} .${CLASS_NAME_DROPDOWN_ITEM}`
+    this._selector = `${this._config.bsTarget} ${SELECTOR_NAV_LINKS},` +
+                          `${this._config.bsTarget} ${SELECTOR_LIST_ITEMS},` +
+                          `${this._config.bsTarget} .${CLASS_NAME_DROPDOWN_ITEM}`
     this._offsets = []
     this._targets = []
     this._activeTarget = null
@@ -103,9 +103,9 @@ class ScrollSpy {
       METHOD_OFFSET :
       METHOD_POSITION
 
-    const offsetMethod = this._config.method === 'auto' ?
+    const offsetMethod = this._config.bsMethod === 'auto' ?
       autoMethod :
-      this._config.method
+      this._config.bsMethod
 
     const offsetBase = offsetMethod === METHOD_POSITION ?
       this._getScrollTop() :
@@ -169,14 +169,14 @@ class ScrollSpy {
       ...typeof config === 'object' && config ? config : {}
     }
 
-    if (typeof config.target !== 'string' && isElement(config.target)) {
-      let { id } = config.target
+    if (typeof config.bsTarget !== 'string' && isElement(config.bsTarget)) {
+      let { id } = config.bsTarget
       if (!id) {
         id = getUID(NAME)
-        config.target.id = id
+        config.bsTarget.id = id
       }
 
-      config.target = `#${id}`
+      config.bsTarget = `#${id}`
     }
 
     typeCheckConfig(NAME, config, DefaultType)
@@ -204,9 +204,9 @@ class ScrollSpy {
   }
 
   _process() {
-    const scrollTop = this._getScrollTop() + this._config.offset
+    const scrollTop = this._getScrollTop() + this._config.bsOffset
     const scrollHeight = this._getScrollHeight()
-    const maxScroll = this._config.offset +
+    const maxScroll = this._config.bsOffset +
       scrollHeight -
       this._getOffsetHeight()
 

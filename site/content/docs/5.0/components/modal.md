@@ -865,7 +865,7 @@ var myModal = new bootstrap.Modal(document.getElementById('myModal'), options)
 
 ### Options
 
-Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-bs-`, as in `data-bs-backdrop=""`.
+Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-bs-`, as in `data-bs-backdrop=""`. For JavaScript attributes, preprend the option name with `bs` and capitalize the first letter, as in `bsBackdrop`.
 
 <table class="table">
   <thead>
@@ -916,7 +916,7 @@ Activates your content as a modal. Accepts an optional options `object`.
 
 {{< highlight js >}}
 var myModal = new bootstrap.Modal(document.getElementById('myModal'), {
-  keyboard: false
+  bsKeyboard: false
 })
 {{< /highlight >}}
 

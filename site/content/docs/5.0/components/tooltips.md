@@ -95,12 +95,12 @@ var tooltip = new bootstrap.Tooltip(exampleEl, options)
 {{< callout warning >}}
 ##### Overflow `auto` and `scroll`
 
-Tooltip position attempts to automatically change when a parent container has `overflow: auto` or `overflow: scroll` like our `.table-responsive`, but still keeps the original placement's positioning. To resolve, set the `boundary` option to anything other than default value, `'scrollParent'`, such as `'window'`:
+Tooltip position attempts to automatically change when a parent container has `overflow: auto` or `overflow: scroll` like our `.table-responsive`, but still keeps the original placement's positioning. To resolve, set the `bsBoundary` option to anything other than default value, `'scrollParent'`, such as `'window'`:
 
 {{< highlight js >}}
 var exampleEl = document.getElementById('example')
 var tooltip = new bootstrap.Tooltip(exampleEl, {
-  boundary: 'window'
+  bsBoundary: 'window'
 })
 {{< /highlight >}}
 {{< /callout >}}
@@ -142,7 +142,7 @@ Elements with the `disabled` attribute aren't interactive, meaning users cannot 
 
 ### Options
 
-Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-bs-`, as in `data-bs-animation=""`.
+Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-bs-`, as in `data-bs-animation=""`. For JavaScript attributes, preprend the option name with `bs` and capitalize the first letter, as in `bsAnimation`.
 
 {{< callout warning >}}
 Note that for security reasons the `sanitize`, `sanitizeFn` and `whiteList` options cannot be supplied using data attributes.

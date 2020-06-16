@@ -253,7 +253,7 @@ After adding `position: relative;` in your CSS, call the scrollspy via JavaScrip
 
 {{< highlight js >}}
 var scrollSpy = new bootstrap.ScrollSpy(document.body, {
-  target: '#navbar-example'
+  bsTarget: '#navbar-example'
 })
 {{< /highlight >}}
 
@@ -298,7 +298,7 @@ var scrollSpy = bootstrap.ScrollSpy.getInstance(scrollSpyContentEl) // Returns a
 
 ### Options
 
-Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-bs-`, as in `data-bs-offset=""`.
+Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-bs-`, as in `data-bs-offset=""`. For JavaScript attributes, preprend the option name with `bs` and capitalize the first letter, as in `bsOffset`.
 
 <table class="table">
   <thead>

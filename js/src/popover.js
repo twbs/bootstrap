@@ -25,10 +25,10 @@ const BSCLS_PREFIX_REGEX = new RegExp(`(^|\\s)${CLASS_PREFIX}\\S+`, 'g')
 
 const Default = {
   ...Tooltip.Default,
-  placement: 'right',
-  trigger: 'click',
-  content: '',
-  template: '<div class="popover" role="tooltip">' +
+  bsPlacement: 'right',
+  bsTrigger: 'click',
+  bsContent: '',
+  bsTemplate: '<div class="popover" role="tooltip">' +
               '<div class="popover-arrow"></div>' +
               '<h3 class="popover-header"></h3>' +
               '<div class="popover-body"></div></div>'
@@ -36,7 +36,7 @@ const Default = {
 
 const DefaultType = {
   ...Tooltip.DefaultType,
-  content: '(string|element|function)'
+  bsContent: '(string|element|function)'
 }
 
 const Event = {
@@ -124,7 +124,7 @@ class Popover extends Tooltip {
 
   _getContent() {
     return this.element.getAttribute('data-bs-content') ||
-      this.config.content
+      this.config.bsContent
   }
 
   _cleanTipClass() {

@@ -82,8 +82,8 @@ describe('Popover', () => {
 
       const popoverEl = fixtureEl.querySelector('a')
       const popover = new Popover(popoverEl, {
-        title: () => 'Bootstrap',
-        content: () => 'loves writing tests （╯°□°）╯︵ ┻━┻'
+        bsTitle: () => 'Bootstrap',
+        bsContent: () => 'loves writing tests （╯°□°）╯︵ ┻━┻'
       })
 
       popoverEl.addEventListener('shown.bs.popover', () => {
@@ -103,7 +103,7 @@ describe('Popover', () => {
 
       const popoverEl = fixtureEl.querySelector('a')
       const popover = new Popover(popoverEl, {
-        content: 'Popover content'
+        bsContent: 'Popover content'
       })
 
       popoverEl.addEventListener('shown.bs.popover', () => {

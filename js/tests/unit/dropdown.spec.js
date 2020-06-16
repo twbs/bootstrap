@@ -49,7 +49,7 @@ describe('Dropdown', () => {
       const getOffset = offsets => offsets
       const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdown = new Dropdown(btnDropdown, {
-        offset: getOffset
+        bsOffset: getOffset
       })
 
       const offset = dropdown._getOffset()
@@ -71,7 +71,7 @@ describe('Dropdown', () => {
       const myOffset = 7
       const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdown = new Dropdown(btnDropdown, {
-        offset: myOffset
+        bsOffset: myOffset
       })
 
       const offset = dropdown._getOffset()
@@ -112,7 +112,7 @@ describe('Dropdown', () => {
 
       const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdown = new Dropdown(btnDropdown, {
-        popperConfig: {
+        bsPopperConfig: {
           placement: 'left'
         }
       })
@@ -351,7 +351,7 @@ describe('Dropdown', () => {
       const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdownEl = fixtureEl.querySelector('.dropdown')
       const dropdown = new Dropdown(btnDropdown, {
-        reference: 'parent'
+        bsReference: 'parent'
       })
 
       dropdownEl.addEventListener('shown.bs.dropdown', () => {
@@ -376,7 +376,7 @@ describe('Dropdown', () => {
       const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdownEl = fixtureEl.querySelector('.dropdown')
       const dropdown = new Dropdown(btnDropdown, {
-        reference: fixtureEl
+        bsReference: fixtureEl
       })
 
       dropdownEl.addEventListener('shown.bs.dropdown', () => {
@@ -401,7 +401,7 @@ describe('Dropdown', () => {
       const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
       const dropdownEl = fixtureEl.querySelector('.dropdown')
       const dropdown = new Dropdown(btnDropdown, {
-        reference: { 0: fixtureEl, jquery: 'jQuery' }
+        bsReference: { 0: fixtureEl, jquery: 'jQuery' }
       })
 
       dropdownEl.addEventListener('shown.bs.dropdown', () => {
