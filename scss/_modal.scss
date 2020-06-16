@@ -203,8 +203,8 @@
 }
 
 @each $breakpoint in map-keys($grid-breakpoints) {
-  $next-breakpoint: breakpoint-next($breakpoint);
-  $postfix: if(breakpoint-max($breakpoint, $grid-breakpoints) == null, "", "-#{$next-breakpoint}-down");
+  $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+  $postfix: if($infix != "", $infix + "-down", "");
 
   @include media-breakpoint-down($breakpoint) {
     .modal-fullscreen#{$postfix} {

@@ -1,6 +1,10 @@
 .bd-masthead {
   padding: 3rem 0;
-  background-image: linear-gradient(45deg, #fafafa, #f5f5f5);
+  background: linear-gradient(165deg, lighten($bd-purple-light, 16%) 50%, $white 50%);
+
+  @include media-breakpoint-up(sm) {
+    padding: 5rem 0;
+  }
 
   h1 {
     @include font-size(4rem);
@@ -15,42 +19,24 @@
     padding: .8rem 2rem;
     font-weight: 600;
   }
-
-  @include media-breakpoint-up(sm) {
-    padding: 5rem 0;
+  .lead {
+    @include font-size(1.5rem);
+    font-weight: 400;
+    color: $gray-700;
   }
-}
-
-.lead-lg {
-  @include font-size(1.5rem);
-}
-
-.home-icon {
-  width: 6rem;
-  height: 6rem;
-  padding: 1.5rem;
-  color: $white;
-  @include border-radius(25%);
-  box-shadow: 0 .25rem .5rem rgba(0, 0, 0, .15), inset 0 -1px 0 rgba(0, 0, 0, .15);
-}
-
-.home-icon-purple {
-  background-image: linear-gradient(180deg, $pink, $purple);
-}
-
-.home-icon-blue {
-  background-image: linear-gradient(180deg, $teal, $blue);
-}
-
-.home-icon-yellow {
-  background-image: linear-gradient(180deg, $yellow, $orange);
 }
 
 @include media-breakpoint-up(md) {
   .mw-md-75 { max-width: 75%; }
 }
 
-.half-rule {
-  width: 6rem;
-  margin: 2rem 0;
+.masthead-followup-icon {
+  padding: .75rem;
+  background-image: linear-gradient(to bottom right, rgba(255, 255, 255, .2), rgba(255, 255, 255, .01));
+  @include border-radius(.75rem);
+  box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .1);
+}
+
+.masthead-followup-svg {
+  filter: drop-shadow(0 1px 0 rgba(0, 0, 0, .125));
 }

@@ -24,12 +24,14 @@
     text-decoration: if($link-hover-decoration == underline, none, null);
   }
 
-  &:focus,
-  &.focus {
+  .btn-check:focus + &,
+  &:focus {
     outline: 0;
     box-shadow: $btn-focus-box-shadow;
   }
 
+  .btn-check:checked + &,
+  .btn-check:active + &,
   &:active,
   &.active {
     @include box-shadow($btn-active-box-shadow);
@@ -41,7 +43,7 @@
 
   &:disabled,
   &.disabled,
-  fieldset:disabled & { // stylelint-disable-line selector-no-qualifying-type
+  fieldset:disabled & {
     pointer-events: none;
     opacity: $btn-disabled-opacity;
     @include box-shadow(none);
@@ -81,8 +83,7 @@
     text-decoration: $link-hover-decoration;
   }
 
-  &:focus,
-  &.focus {
+  &:focus {
     text-decoration: $link-hover-decoration;
   }
 

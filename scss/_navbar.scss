@@ -24,6 +24,7 @@
   padding-right: $navbar-padding-x; // default: null
   padding-bottom: $navbar-padding-y;
   padding-left: $navbar-padding-x; // default: null
+  @include gradient-bg();
 
   // Because flex properties aren't inherited, we need to redeclare these first
   // few properties so that content nested within behave properly.
@@ -215,8 +216,6 @@
     }
 
     .show > .nav-link,
-    .active > .nav-link,
-    .nav-link.show,
     .nav-link.active {
       color: $navbar-light-active-color;
     }
@@ -268,8 +267,6 @@
     }
 
     .show > .nav-link,
-    .active > .nav-link,
-    .nav-link.show,
     .nav-link.active {
       color: $navbar-dark-active-color;
     }
