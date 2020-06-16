@@ -35,12 +35,12 @@ const DATA_API_KEY = '.data-api'
 
 const Default = {
   bsToggle: true,
-  parent: ''
+  bsParent: ''
 }
 
 const DefaultType = {
   bsToggle: 'boolean',
-  parent: '(string|element)'
+  bsParent: '(string|element)'
 }
 
 const EVENT_SHOW = `show${EVENT_KEY}`
@@ -90,9 +90,9 @@ class Collapse {
       }
     }
 
-    this._parent = this._config.parent ? this._getParent() : null
+    this._parent = this._config.bsParent ? this._getParent() : null
 
-    if (!this._config.parent) {
+    if (!this._config.bsParent) {
       this._addAriaAndCollapsedClass(this._element, this._triggerArray)
     }
 
@@ -135,8 +135,8 @@ class Collapse {
     if (this._parent) {
       actives = SelectorEngine.find(SELECTOR_ACTIVES, this._parent)
         .filter(elem => {
-          if (typeof this._config.parent === 'string') {
-            return elem.getAttribute('data-bs-parent') === this._config.parent
+          if (typeof this._config.bsParent === 'string') {
+            return elem.getAttribute('data-bs-parent') === this._config.bsParent
           }
 
           return elem.classList.contains(CLASS_NAME_COLLAPSE)
@@ -396,7 +396,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
     if (data) {
       // update parent attribute
       if (data._parent === null && typeof triggerData.parent === 'string') {
-        data._config.parent = triggerData.parent
+        data._config.bsParent = triggerData.parent
         data._parent = data._getParent()
       }
 

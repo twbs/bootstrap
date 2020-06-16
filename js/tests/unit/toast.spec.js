@@ -89,7 +89,7 @@ describe('Toast', () => {
       const toastEl = fixtureEl.querySelector('div')
       const toast = new Toast(toastEl)
 
-      expect(toast._config.delay).toEqual(defaultDelay)
+      expect(toast._config.bsDelay).toEqual(defaultDelay)
     })
   })
 

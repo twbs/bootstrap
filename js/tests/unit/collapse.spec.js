@@ -47,7 +47,7 @@ describe('Collapse', () => {
         bsParent: fakejQueryObject
       })
 
-      expect(collapse._config.parent).toEqual(fakejQueryObject)
+      expect(collapse._config.bsParent).toEqual(fakejQueryObject)
       expect(collapse._getParent()).toEqual(myCollapseEl)
     })
 
@@ -67,7 +67,7 @@ describe('Collapse', () => {
         bsParent: myCollapseEl
       })
 
-      expect(collapse._config.parent).toEqual(myCollapseEl)
+      expect(collapse._config.bsParent).toEqual(myCollapseEl)
     })
 
     it('should allow string selector in parent config', () => {
@@ -86,7 +86,7 @@ describe('Collapse', () => {
         bsParent: 'div.my-collapse'
       })
 
-      expect(collapse._config.parent).toEqual('div.my-collapse')
+      expect(collapse._config.bsParent).toEqual('div.my-collapse')
       expect(collapse._getParent()).toEqual(myCollapseEl)
     })
   })

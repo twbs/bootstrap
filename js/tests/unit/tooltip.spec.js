@@ -69,7 +69,7 @@ describe('Tooltip', () => {
       const tooltipEl = fixtureEl.querySelector('a')
       const tooltip = new Tooltip(tooltipEl)
 
-      expect(tooltip.config.sanitize).toEqual(true)
+      expect(tooltip.config.bsSanitize).toEqual(true)
     })
 
     it('should convert title and content to string if numbers', () => {
@@ -81,8 +81,8 @@ describe('Tooltip', () => {
         bsContent: 7
       })
 
-      expect(tooltip.config.title).toEqual('1')
-      expect(tooltip.config.content).toEqual('7')
+      expect(tooltip.config.bsTitle).toEqual('1')
+      expect(tooltip.config.bsContent).toEqual('7')
     })
 
     it('should enable selector delegation', done => {
@@ -119,7 +119,7 @@ describe('Tooltip', () => {
 
       const popperConfig = tooltip._getPopperConfig('top')
 
-      expect(popperConfig.placement).toEqual('left')
+      expect(popperConfig.bsPlacement).toEqual('left')
     })
   })
 

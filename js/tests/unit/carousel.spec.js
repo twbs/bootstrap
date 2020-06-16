@@ -652,11 +652,11 @@ describe('Carousel', () => {
         interval: 1814
       })
 
-      expect(carousel._config.interval).toEqual(1814)
+      expect(carousel._config.bsInterval).toEqual(1814)
 
       carousel.next()
 
-      expect(carousel._config.interval).toEqual(7)
+      expect(carousel._config.bsInterval).toEqual(7)
     })
 
     it('should update indicators if present', done => {
