@@ -4,7 +4,7 @@
  * Script to create the built examples zip archive;
  * requires the `zip` command to be present!
  * Copyright 2020 The Bootstrap Authors
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 
 'use strict'
