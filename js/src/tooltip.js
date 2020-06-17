@@ -1,7 +1,7 @@
 /**
  * --------------------------------------------------------------------------
  * Bootstrap (v5.0.0-alpha1): tooltip.js
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
@@ -708,11 +708,7 @@ class Tooltip {
       config.content = config.content.toString()
     }
 
-    typeCheckConfig(
-      NAME,
-      config,
-      this.constructor.DefaultType
-    )
+    typeCheckConfig(NAME, config, this.constructor.DefaultType)
 
     if (config.sanitize) {
       config.template = sanitizeHtml(config.template, config.whiteList, config.sanitizeFn)

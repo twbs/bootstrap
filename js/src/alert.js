@@ -1,7 +1,7 @@
 /**
  * --------------------------------------------------------------------------
  * Bootstrap (v5.0.0-alpha1): alert.js
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
@@ -61,11 +61,7 @@ class Alert {
   // Public
 
   close(element) {
-    let rootElement = this._element
-    if (element) {
-      rootElement = this._getRootElement(element)
-    }
-
+    const rootElement = element ? this._getRootElement(element) : this._element
     const customEvent = this._triggerCloseEvent(rootElement)
 
     if (customEvent === null || customEvent.defaultPrevented) {
@@ -100,8 +96,7 @@ class Alert {
 
     const transitionDuration = getTransitionDurationFromElement(element)
 
-    EventHandler
-      .one(element, TRANSITION_END, () => this._destroyElement(element))
+    EventHandler.one(element, TRANSITION_END, () => this._destroyElement(element))
     emulateTransitionEnd(element, transitionDuration)
   }
 

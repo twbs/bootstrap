@@ -209,3 +209,54 @@ Omit the wrapping `.form-check` for checkboxes and radios that have no label tex
   <input class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel1" value="" aria-label="...">
 </div>
 {{< /example >}}
+
+## Toggle buttons
+
+### Checkbox toggle buttons
+
+Bootstrap's `.btn` styles can be applied to `<label>`s, to provide checkbox style button toggling. Add an input with a `.btn-check` class as previous sibling to toggle the input state.
+
+{{< example >}}
+<input type="checkbox" class="btn-check" id="btn-check" autocomplete="off">
+<label class="btn btn-primary" for="btn-check">Single toggle</label>
+{{< /example >}}
+
+{{< example >}}
+<input type="checkbox" class="btn-check" id="btn-check-2" checked autocomplete="off">
+<label class="btn btn-primary" for="btn-check-2">Checked</label>
+{{< /example >}}
+
+### Radio toggle buttons
+
+Toggle buttons can be grouped in a [button group]({{< docsref "/components/button-group" >}}) if needed.
+
+{{< example >}}
+<div class="btn-group">
+  <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off" checked>
+  <label class="btn btn-secondary" for="option1">Checked</label>
+
+  <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
+  <label class="btn btn-secondary" for="option2">Radio</label>
+
+  <input type="radio" class="btn-check" name="options" id="option3" autocomplete="off">
+  <label class="btn btn-secondary" for="option3">Radio</label>
+</div>
+{{< /example >}}
+
+### Outlined styles
+
+{{< example >}}
+<input type="checkbox" class="btn-check" id="btn-check-outlined" autocomplete="off">
+<label class="btn btn-outline-primary" for="btn-check-outlined">Single toggle</label><br>
+
+<input type="checkbox" class="btn-check" id="btn-check-2-outlined" checked autocomplete="off">
+<label class="btn btn-outline-secondary" for="btn-check-2-outlined">Checked</label><br>
+
+<div class="btn-group">
+  <input type="radio" class="btn-check" name="options-outlined" id="success-outlined" autocomplete="off" checked>
+  <label class="btn btn-outline-success" for="success-outlined">Checked success radio</label>
+
+  <input type="radio" class="btn-check" name="options-outlined" id="danger-outlined" autocomplete="off">
+  <label class="btn btn-outline-danger" for="danger-outlined">Danger radio</label>
+</div>
+{{< /example >}}
