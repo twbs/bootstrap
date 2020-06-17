@@ -110,21 +110,20 @@ const emulateTransitionEnd = (element, duration) => {
 }
 
 const typeCheckConfig = (componentName, config, configTypes) => {
-  Object.keys(configTypes)
-    .forEach(property => {
-      const expectedTypes = configTypes[property]
-      const value = config[property]
-      const valueType = value && isElement(value) ?
-        'element' :
-        toType(value)
+  Object.keys(configTypes).forEach(property => {
+    const expectedTypes = configTypes[property]
+    const value = config[property]
+    const valueType = value && isElement(value) ?
+      'element' :
+      toType(value)
 
-      if (!new RegExp(expectedTypes).test(valueType)) {
-        throw new Error(
-          `${componentName.toUpperCase()}: ` +
-          `Option "${property}" provided type "${valueType}" ` +
-          `but expected type "${expectedTypes}".`)
-      }
-    })
+    if (!new RegExp(expectedTypes).test(valueType)) {
+      throw new Error(
+        `${componentName.toUpperCase()}: ` +
+        `Option "${property}" provided type "${valueType}" ` +
+        `but expected type "${expectedTypes}".`)
+    }
+  })
 }
 
 const isVisible = element => {
