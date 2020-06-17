@@ -46,7 +46,7 @@
         'contextmenu'
       ].forEach(function(eventAlias) {
         $.fn[eventAlias] = function() {
-          throw new Error('Using the ".' + eventAlias + '()" method is not allowed, so that Bootstrap can be compatible with custom jQuery builds which exclude the "event aliases" module that defines said method. See https://github.com/twbs/bootstrap/blob/master/CONTRIBUTING.md#js')
+          throw new Error('Using the ".' + eventAlias + '()" method is not allowed, so that Bootstrap can be compatible with custom jQuery builds which exclude the "event aliases" module that defines said method. See https://github.com/twbs/bootstrap/blob/v4-dev/.github/CONTRIBUTING.md#js')
         }
       })
 
