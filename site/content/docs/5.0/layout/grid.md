@@ -61,7 +61,7 @@ Bootstrap's grid system can adapt across all six default breakpoints, and any br
 - Extra large (xl)
 - Extra extra large (xxl)
 
-As noted above, each of these breakpoints have their own container, unique class prefix, and modifiers. Here's how the grid changes across thesse breakpoints:
+As noted above, each of these breakpoints have their own container, unique class prefix, and modifiers. Here's how the grid changes across these breakpoints:
 
 <table class="table mb-4">
   <thead>
