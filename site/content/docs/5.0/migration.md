@@ -57,6 +57,7 @@ Changes to our source and compiled JavaScript files.
 
 - Dropped jQuery dependency and rewrote plugins to be in regular JavaScript.
 - Removed underscore from public static methods like `_getInstance()` → `getInstance()`.
+- Changed "whitelist" to "allowlist" in the sanitizer function used for tooltips and popovers (`DefaultWhitelist` → `DefaultAllowList`, `whiteList` → `allowList`, `whitelistKeys` → `allowlistKeys`, `whitelistedAttributes` → `allowedAttributes`).
 
 ## Color system
 
