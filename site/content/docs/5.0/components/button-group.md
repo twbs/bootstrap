@@ -26,11 +26,11 @@ In order for assistive technologies (such as screen readers) to convey that a se
 In addition, groups and toolbars should be given an explicit label, as most assistive technologies will otherwise not announce them, despite the presence of the correct role attribute. In the examples provided here, we use `aria-label`, but alternatives such as `aria-labelledby` can also be used.
 {{< /callout >}}
 
-These classes can also be added to links. Use the `.active` class to highlight a link.
+These classes can also be added to groups of links, as an alternative to the [`.nav` navigation components]({{< docsref "/components/navs" >}}).
 
 {{< example >}}
 <div class="btn-group">
-  <a href="#" class="btn btn-secondary active">Active link</a>
+  <a href="#" class="btn btn-secondary active" aria-current="page">Active link</a>
   <a href="#" class="btn btn-secondary">Link</a>
   <a href="#" class="btn btn-secondary">Link</a>
 </div>
