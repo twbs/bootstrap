@@ -145,7 +145,7 @@ Elements with the `disabled` attribute aren't interactive, meaning users cannot 
 Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-`, as in `data-animation=""`.
 
 {{< callout warning >}}
-Note that for security reasons the `sanitize`, `sanitizeFn` and `allowList` options cannot be supplied using data attributes.
+Note that for security reasons the `sanitize`, `sanitizeFn`, and `allowList` options cannot be supplied using data attributes.
 {{< /callout >}}
 
 <table class="table">
