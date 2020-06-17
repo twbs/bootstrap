@@ -303,7 +303,7 @@ These changes, and more, are demonstrated below.
 Reboot includes an enhancement for `role="button"` to change the default cursor to `pointer`. Add this attribute to elements to help indicate elements are interactive. This role isn't necessary for `<button>` elements, which get their own `cursor` change.
 
 {% capture example %}
-<span role="button">Non-button element button</span>
+<span role="button" tabindex="0">Non-button element button</span>
 {% endcapture %}
 {% include example.html content=example %}
 
