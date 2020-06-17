@@ -39,3 +39,10 @@ export const jQueryMock = {
     })
   }
 }
+
+export const mockFileApi = (part, name) => {
+  return {
+    part,
+    name
+  }
+}

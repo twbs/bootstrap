@@ -10,6 +10,7 @@ import Button from './src/button'
 import Carousel from './src/carousel'
 import Collapse from './src/collapse'
 import Dropdown from './src/dropdown'
+import FileInput from './src/file-input'
 import Modal from './src/modal'
 import Popover from './src/popover'
 import ScrollSpy from './src/scrollspy'
@@ -23,6 +24,7 @@ export {
   Carousel,
   Collapse,
   Dropdown,
+  FileInput,
   Modal,
   Popover,
   ScrollSpy,

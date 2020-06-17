@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../../dist/css/bootstrap.min.css">
+    <title>FileInput</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>FileInput <small>Bootstrap Visual Test</small></h1>
+
+      <div class="row mt-3">
+        <div class="col-3">
+          <div class="form-file" data-toggle="file-input">
+            <input type="file" class="form-file-input" id="customFile">
+            <label class="form-file-label" for="customFile">
+              <span class="form-file-text">Choose file...</span>
+              <span class="form-file-button">Browse</span>
+            </label>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-file" data-toggle="file-input">
+            <input type="file" class="form-file-input" id="customFile2" multiple>
+            <label class="form-file-label" for="customFile2">
+              <span class="form-file-text">Choose multiple files...</span>
+              <span class="form-file-button">Browse</span>
+            </label>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-12 mb-3">
+            <h4>Form reset</h4>
+          </div>
+          <div class="col-12 mb-3">
+            <button id="btnResetForm" class="btn btn-primary">
+              Reset form
+            </button>
+          </div>
+          <div class="col-5">
+            <form>
+              <div class="mb-3">
+                <div class="form-file" data-toggle="file-input">
+                  <input type="file" class="form-file-input" id="customFile3">
+                  <label class="form-file-label" for="customFile3">
+                    <span class="form-file-text">Choose file...</span>
+                    <span class="form-file-button">Browse</span>
+                  </label>
+                </div>
+              </div>
+              <div>
+                <div class="form-file" data-toggle="file-input">
+                  <input type="file" class="form-file-input" id="customFile4" multiple>
+                  <label class="form-file-label" for="customFile4">
+                    <span class="form-file-text">Choose multiple files...</span>
+                    <span class="form-file-button">Browse</span>
+                  </label>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="../../dist/dom/polyfill.js"></script>
+    <script src="../../dist/dom/event-handler.js"></script>
+    <script src="../../dist/dom/manipulator.js"></script>
+    <script src="../../dist/dom/data.js"></script>
+    <script src="../../dist/dom/selector-engine.js"></script>
+    <script src="../../dist/file-input.js"></script>
+    <script>
+      var btn = document.getElementById('btnResetForm')
+      var form = document.querySelector('form')
+      btn.addEventListener('click', function() {
+        form.reset()
+      })
+    </script>
+  </body>
+</html>
