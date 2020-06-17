@@ -287,8 +287,7 @@ class Collapse {
   }
 
   _getDimension() {
-    const hasWidth = this._element.classList.contains(WIDTH)
-    return hasWidth ? WIDTH : HEIGHT
+    return this._element.classList.contains(WIDTH) ? WIDTH : HEIGHT
   }
 
   _getParent() {
@@ -319,21 +318,21 @@ class Collapse {
   }
 
   _addAriaAndCollapsedClass(element, triggerArray) {
-    if (element) {
-      const isOpen = element.classList.contains(CLASS_NAME_SHOW)
-
-      if (triggerArray.length) {
-        triggerArray.forEach(elem => {
-          if (isOpen) {
-            elem.classList.remove(CLASS_NAME_COLLAPSED)
-          } else {
-            elem.classList.add(CLASS_NAME_COLLAPSED)
-          }
-
-          elem.setAttribute('aria-expanded', isOpen)
-        })
-      }
+    if (!element || !triggerArray.length) {
+      return
     }
+
+    const isOpen = element.classList.contains(CLASS_NAME_SHOW)
+
+    triggerArray.forEach(elem => {
+      if (isOpen) {
+        elem.classList.remove(CLASS_NAME_COLLAPSED)
+      } else {
+        elem.classList.add(CLASS_NAME_COLLAPSED)
+      }
+
+      elem.setAttribute('aria-expanded', isOpen)
+    })
   }
 
   // Static

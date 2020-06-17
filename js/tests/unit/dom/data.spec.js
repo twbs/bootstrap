@@ -15,7 +15,7 @@ describe('Data', () => {
   })
 
   describe('setData', () => {
-    it('should set data in an element by adding a key attribute', () => {
+    it('should set data in an element by adding a bsKey attribute', () => {
       fixtureEl.innerHTML = '<div></div>'
 
       const div = fixtureEl.querySelector('div')
@@ -24,7 +24,7 @@ describe('Data', () => {
       }
 
       Data.setData(div, 'test', data)
-      expect(div.key).toBeDefined()
+      expect(div.bsKey).toBeDefined()
     })
 
     it('should change data if something is already stored', () => {
@@ -40,7 +40,7 @@ describe('Data', () => {
       data.test = 'bsData2'
       Data.setData(div, 'test', data)
 
-      expect(div.key).toBeDefined()
+      expect(div.bsKey).toBeDefined()
     })
   })
 
@@ -104,11 +104,11 @@ describe('Data', () => {
 
       Data.setData(div, 'test', data)
 
-      expect(div.key).toBeDefined()
+      expect(div.bsKey).toBeDefined()
 
       Data.removeData(div, 'test2')
 
-      expect(div.key).toBeDefined()
+      expect(div.bsKey).toBeDefined()
     })
 
     it('should remove data if something is stored', () => {
@@ -121,11 +121,11 @@ describe('Data', () => {
 
       Data.setData(div, 'test', data)
 
-      expect(div.key).toBeDefined()
+      expect(div.bsKey).toBeDefined()
 
       Data.removeData(div, 'test')
 
-      expect(div.key).toBeUndefined()
+      expect(div.bsKey).toBeUndefined()
     })
   })
 })
