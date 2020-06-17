@@ -150,7 +150,7 @@ Additionally, while it is possible to also include interactive controls (such as
 Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-`, as in `data-animation=""`.
 
 {{< callout warning >}}
-Note that for security reasons the `sanitize`, `sanitizeFn` and `allowList` options cannot be supplied using data attributes.
+Note that for security reasons the `sanitize`, `sanitizeFn`, and `allowList` options cannot be supplied using data attributes.
 {{< /callout >}}
 
 <table class="table">
