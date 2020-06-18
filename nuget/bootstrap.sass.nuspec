@@ -2,33 +2,38 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>bootstrap.sass</id>
-    <version>4.3.1</version>
+    <!-- pulled from package.json -->
+    <version>4</version>
     <title>Bootstrap Sass</title>
     <authors>The Bootstrap Authors, Twitter Inc.</authors>
     <owners>bootstrap</owners>
     <description>The most popular front-end framework for developing responsive, mobile first projects on the web.</description>
     <releaseNotes>https://blog.getbootstrap.com/</releaseNotes>
-    <summary>Bootstrap framework in Sass. Includes fonts and JavaScript</summary>
+    <summary>Bootstrap framework in Sass. Includes JavaScript</summary>
     <language>en-us</language>
     <projectUrl>https://getbootstrap.com/</projectUrl>
-    <iconUrl>https://getbootstrap.com/docs/4.3/assets/img/favicons/apple-touch-icon.png</iconUrl>
+    <icon>bootstrap.png</icon>
     <license type="file">LICENSE.txt</license>
-    <copyright>Copyright 2017-2019</copyright>
+    <copyright>Copyright 2017-2020</copyright>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <dependencies>
       <dependency id="popper.js" version="[1.16.0,2)" />
     </dependencies>
     <tags>css sass mobile-first responsive front-end framework web</tags>
+    <contentFiles>
+      <files include="**/*" buildAction="Content" />
+    </contentFiles>
   </metadata>
   <files>
     <file src="LICENSE.txt" target="" />
+    <file src="nuget\bootstrap.png" target="" />
 
     <file src="scss\**\*.scss" target="content\Content\bootstrap" />
     <file src="dist\js\bootstrap*.js" target="content\Scripts" />
     <file src="dist\js\bootstrap*.js.map" target="content\Scripts" />
 
-    <file src="scss\**\*.scss" target="contentFiles\Content\bootstrap" />
-    <file src="dist\js\bootstrap*.js" target="contentFiles\Scripts" />
-    <file src="dist\js\bootstrap*.js.map" target="contentFiles\Scripts" />
+    <file src="scss\**\*.scss" target="contentFiles\any\any\wwwroot\scss" />
+    <file src="dist\js\bootstrap*.js" target="contentFiles\any\any\wwwroot\js" />
+    <file src="dist\js\bootstrap*.js.map" target="contentFiles\any\any\wwwroot\js" />
   </files>
 </package>

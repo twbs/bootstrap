@@ -5,18 +5,31 @@
     - title: Contents
     - title: Browsers & devices
     - title: JavaScript
-    - title: Theming
     - title: Build tools
-    # - title: Best practices # TODO: Write this content
     - title: Webpack
     - title: Accessibility
     - title: RFS
 
-- title: Layout
+- title: Customize
   pages:
     - title: Overview
+    - title: Sass
+    - title: Options
+    - title: Color
+    - title: Components
+    - title: CSS variables
+    - title: Optimize
+
+- title: Layout
+  pages:
+    - title: Breakpoints
+    - title: Containers
     - title: Grid
-    - title: Utilities for layout
+    # - title: Rows
+    - title: Columns
+    - title: Gutters
+    - title: Utilities
+    - title: Z-index
 
 - title: Content
   pages:
@@ -50,9 +63,6 @@
     - title: Close button
     - title: Collapse
     - title: Dropdowns
-    - title: Icons
-    # - title: Forms
-    # - title: Input group
     - title: List group
     - title: Modal
     - title: Navs
@@ -83,6 +93,7 @@
     - title: Display
     - title: Flex
     - title: Float
+    - title: Interactions
     - title: Overflow
     - title: Position
     - title: Shadows

@@ -1,16 +1,13 @@
 .bd-navbar {
-  min-height: 4rem;
+  padding: .625rem 0;
   background-color: $bd-purple-bright;
 
-  @include media-breakpoint-down(md) {
+  @include media-breakpoint-down(lg) {
     .navbar-nav-scroll {
       width: 100%;
-      height: 2.5rem;
-      margin-top: .25rem;
-      overflow: hidden;
 
       .navbar-nav {
-        padding-bottom: 2rem;
+        margin: -.5rem 0;
         overflow-x: auto;
         white-space: nowrap;
         -webkit-overflow-scrolling: touch;
@@ -22,7 +19,6 @@
     .nav-link {
       color: rgba($white, .85);
 
-      &.active,
       &:hover,
       &:focus {
         color: $white;
@@ -30,14 +26,13 @@
 
       &.active {
         font-weight: 600;
+        color: $white;
       }
     }
   }
 
   .navbar-nav-svg {
-    display: inline-block;
     width: 1rem;
     height: 1rem;
-    vertical-align: text-top;
   }
 }

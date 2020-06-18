@@ -1,7 +1,7 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.3.1): popover.js
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * Bootstrap (v5.0.0-alpha1): popover.js
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
@@ -17,7 +17,7 @@ import Tooltip from './tooltip'
  */
 
 const NAME = 'popover'
-const VERSION = '4.3.1'
+const VERSION = '5.0.0-alpha1'
 const DATA_KEY = 'bs.popover'
 const EVENT_KEY = `.${DATA_KEY}`
 const CLASS_PREFIX = 'bs-popover'
@@ -39,16 +39,6 @@ const DefaultType = {
   content: '(string|element|function)'
 }
 
-const ClassName = {
-  FADE: 'fade',
-  SHOW: 'show'
-}
-
-const Selector = {
-  TITLE: '.popover-header',
-  CONTENT: '.popover-body'
-}
-
 const Event = {
   HIDE: `hide${EVENT_KEY}`,
   HIDDEN: `hidden${EVENT_KEY}`,
@@ -61,6 +51,12 @@ const Event = {
   MOUSEENTER: `mouseenter${EVENT_KEY}`,
   MOUSELEAVE: `mouseleave${EVENT_KEY}`
 }
+
+const CLASS_NAME_FADE = 'fade'
+const CLASS_NAME_SHOW = 'show'
+
+const SELECTOR_TITLE = '.popover-header'
+const SELECTOR_CONTENT = '.popover-body'
 
 /**
  * ------------------------------------------------------------------------
@@ -109,16 +105,15 @@ class Popover extends Tooltip {
     const tip = this.getTipElement()
 
     // we use append for html objects to maintain js events
-    this.setElementContent(SelectorEngine.findOne(Selector.TITLE, tip), this.getTitle())
+    this.setElementContent(SelectorEngine.findOne(SELECTOR_TITLE, tip), this.getTitle())
     let content = this._getContent()
     if (typeof content === 'function') {
       content = content.call(this.element)
     }
 
-    this.setElementContent(SelectorEngine.findOne(Selector.CONTENT, tip), content)
+    this.setElementContent(SelectorEngine.findOne(SELECTOR_CONTENT, tip), content)
 
-    tip.classList.remove(ClassName.FADE)
-    tip.classList.remove(ClassName.SHOW)
+    tip.classList.remove(CLASS_NAME_FADE, CLASS_NAME_SHOW)
   }
 
   _addAttachmentClass(attachment) {
@@ -135,7 +130,6 @@ class Popover extends Tooltip {
   _cleanTipClass() {
     const tip = this.getTipElement()
     const tabClass = tip.getAttribute('class').match(BSCLS_PREFIX_REGEX)
-
     if (tabClass !== null && tabClass.length > 0) {
       tabClass.map(token => token.trim())
         .forEach(tClass => tip.classList.remove(tClass))
