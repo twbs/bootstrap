@@ -44,7 +44,7 @@ Breaking it down, here's how the grid system comes together:
 
 - **Columns are incredibly flexible.** There are 12 template columns available per row, allowing you to create different combinations of elements that span any number of columns. Column classes indicate the number of template columns to span (e.g., `col-4` spans four). `width`s are set in percentages so you always have the same relative sizing.
 
-- **Gutters are also responsive and customizable.** [Gutter classes are available]({{< docsref "/layout/gutters" >}}) across all breakpoints, with all the same sizes as our [margin and padding spacing]({{< docsref "/utilities/spacing" >}}). Change horizontal gutters with `.gx-*` classes, verical gutters with `.gy-*`, or all gutters with `.g-*` classes. `.g-0` is also availble to remove gutters.
+- **Gutters are also responsive and customizable.** [Gutter classes are available]({{< docsref "/layout/gutters" >}}) across all breakpoints, with all the same sizes as our [margin and padding spacing]({{< docsref "/utilities/spacing" >}}). Change horizontal gutters with `.gx-*` classes, vertical gutters with `.gy-*`, or all gutters with `.g-*` classes. `.g-0` is also available to remove gutters.
 
 - **Sass variables, maps, and mixins power the grid.** If you don't want to use the predefined grid classes in Bootstrap, you can use our [grid's source Sass](#sass) to create your own with more semantic markup. We also include some CSS custom properties to consume these Sass variables for even greater flexibility for you.
 
@@ -61,7 +61,7 @@ Bootstrap's grid system can adapt across all six default breakpoints, and any br
 - Extra large (xl)
 - Extra extra large (xxl)
 
-As noted above, each of these breakpoints have their own container, unique class prefix, and modifiers. Here's how the grid changes across thesse breakpoints:
+As noted above, each of these breakpoints have their own container, unique class prefix, and modifiers. Here's how the grid changes across these breakpoints:
 
 <table class="table mb-4">
   <thead>
