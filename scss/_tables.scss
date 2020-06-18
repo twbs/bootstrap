@@ -39,7 +39,6 @@
   }
 
   // Highlight border color between thead, tbody and tfoot.
-  // stylelint-disable-next-line selector-max-universal
   > :not(:last-child) > :last-child > * {
     border-bottom-color: $table-group-seperator-color;
   }
@@ -77,7 +76,6 @@
 // to the `td`s or `th`s
 
 .table-bordered {
-  // stylelint-disable-next-line selector-max-universal
   > :not(caption) > * {
     border-width: $table-border-width 0;
 
@@ -142,8 +140,7 @@
 // size of where your table will overflow.
 
 @each $breakpoint in map-keys($grid-breakpoints) {
-  $next: breakpoint-next($breakpoint, $grid-breakpoints);
-  $infix: breakpoint-infix($next, $grid-breakpoints);
+  $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
   @include media-breakpoint-down($breakpoint) {
     .table-responsive#{$infix} {
