@@ -349,9 +349,9 @@ $box-shadow-inset:            inset 0 1px 2px rgba($black, .075) !default;
 $component-active-color:      $white !default;
 $component-active-bg:         $primary !default;
 
-$caret-width:                 .3em !default;
+$caret-width:                 .2em !default;
 $caret-vertical-align:        $caret-width * .85 !default;
-$caret-spacing:               $caret-width * .85 !default;
+$caret-spacing:               $caret-width * 2.5 !default;
 
 $transition-base:             all .2s ease-in-out !default;
 $transition-fade:             opacity .15s linear !default;

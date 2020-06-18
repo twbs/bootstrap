@@ -3468,13 +3468,16 @@ fieldset:disabled .btn {
 
 .dropdown-toggle::after {
   display: inline-block;
-  margin-left: 0.255em;
-  vertical-align: 0.255em;
+  margin-left: 0.5em;
+  vertical-align: 0.17em;
   content: "";
-  border-top: 0.3em solid;
-  border-right: 0.3em solid transparent;
-  border-bottom: 0;
-  border-left: 0.3em solid transparent;
+  padding: 0.2em;
+  border-radius: 0;
+  transform: rotate(45deg);
+  border-top: 0;
+  border-right: 0.2em solid;
+  border-bottom: 0.2em solid;
+  border-left: 0;
 }
 
 .dropdown-toggle:empty::after {
@@ -3574,13 +3577,16 @@ fieldset:disabled .btn {
 
 .dropup .dropdown-toggle::after {
   display: inline-block;
-  margin-left: 0.255em;
-  vertical-align: 0.255em;
+  margin-left: 0.5em;
+  vertical-align: 0.17em;
   content: "";
-  border-top: 0;
-  border-right: 0.3em solid transparent;
-  border-bottom: 0.3em solid;
-  border-left: 0.3em solid transparent;
+  padding: 0.2em;
+  border-radius: 0;
+  transform: rotate(45deg);
+  border-top: 0.2em solid;
+  border-right: 0;
+  border-bottom: 0;
+  border-left: 0.2em solid;
 }
 
 .dropup .dropdown-toggle:empty::after {
@@ -3597,13 +3603,16 @@ fieldset:disabled .btn {
 
 .dropright .dropdown-toggle::after {
   display: inline-block;
-  margin-left: 0.255em;
-  vertical-align: 0.255em;
+  margin-left: 0.5em;
+  vertical-align: 0.17em;
   content: "";
-  border-top: 0.3em solid transparent;
-  border-right: 0;
-  border-bottom: 0.3em solid transparent;
-  border-left: 0.3em solid;
+  padding: 0.2em;
+  border-radius: 0;
+  transform: rotate(45deg);
+  border-top: 0.2em solid;
+  border-right: 0.2em solid;
+  border-bottom: 0;
+  border-left: 0;
 }
 
 .dropright .dropdown-toggle:empty::after {
@@ -3624,9 +3633,12 @@ fieldset:disabled .btn {
 
 .dropleft .dropdown-toggle::after {
   display: inline-block;
-  margin-left: 0.255em;
-  vertical-align: 0.255em;
+  margin-left: 0.5em;
+  vertical-align: 0.17em;
   content: "";
+  padding: 0.2em;
+  border-radius: 0;
+  transform: rotate(45deg);
 }
 
 .dropleft .dropdown-toggle::after {
@@ -3635,12 +3647,16 @@ fieldset:disabled .btn {
 
 .dropleft .dropdown-toggle::before {
   display: inline-block;
-  margin-right: 0.255em;
-  vertical-align: 0.255em;
+  margin-right: 0.5em;
+  vertical-align: 0.17em;
   content: "";
-  border-top: 0.3em solid transparent;
-  border-right: 0.3em solid;
-  border-bottom: 0.3em solid transparent;
+  padding: 0.2em;
+  border-radius: 0;
+  transform: rotate(45deg);
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 0.2em solid;
+  border-left: 0.2em solid;
 }
 
 .dropleft .dropdown-toggle:empty::after {
