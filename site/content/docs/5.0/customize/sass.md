@@ -110,12 +110,16 @@ $theme-colors: (
 
 ### Add to map
 
-To add a new color to `$theme-colors`, add the new key and value:
+Add new colors to `$theme-colors`, or any other map, by creating a new Sass map with your custom values and merging it with the original map. In this case, we'll create a new `$custom-colors` map and merge it with `$theme-colors`.
 
 {{< highlight scss >}}
-$theme-colors: (
+// Create your own map
+$custom-colors: (
   "custom-color": #900
 );
+
+// Merge the maps
+$theme-colors: map-merge($theme-colors, $custom-colors);
 {{< /highlight >}}
 
 ### Remove from map
