@@ -99,7 +99,7 @@ Add the `disabled` boolean attribute on an input to prevent user interactions an
 
 Add the `disabled` attribute to a `<fieldset>` to disable all the controls within.
 
-By default, browsers will treat all native form controls (`<input>`, `<select>`, and `<button>` elements) inside a `<fieldset disabled>` as disabled, preventing both keyboard and mouse interactions on them. However, if your form also includes `<a ... class="btn btn-*">` elements, these will only be given a style of `pointer-events: none`.
+By default, browsers will treat all native form controls (`<input>`, `<select>`, and `<button>` elements) inside a `<fieldset disabled>` as disabled, preventing both keyboard and mouse interactions on them. However, if your form also includes custom button-like elements such as `<a ... class="btn btn-*">`, these will only be given a style of `pointer-events: none`, meaning that they will still be focusable and operable using the keyboard. In this case, you will need to manually modify these controls further (adding `tabindex="-1"` to prevent them from receiving focus, and `aria-disabled="disabled"` to signal their state to assistive technologies).
 
 {{< example >}}
 <form>
