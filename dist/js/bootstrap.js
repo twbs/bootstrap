@@ -1,6 +1,6 @@
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
- * Copyright 2011-2019 Twitter, Inc.
+ * Copyright 2011-2020 Twitter, Inc.
  * Licensed under the MIT license
  */
 
