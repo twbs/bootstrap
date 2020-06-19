@@ -17,7 +17,7 @@
     <copyright>Copyright 2017-2020</copyright>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <dependencies>
-      <dependency id="popper.js" version="[1.16.0,2)" />
+      <dependency id="@popperjs/core" version="[2.4.2,3)" />
     </dependencies>
     <tags>css mobile-first responsive front-end framework web</tags>
     <contentFiles>

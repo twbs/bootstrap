@@ -25,7 +25,7 @@ For instance, assuming you're using your own JavaScript bundler like Webpack or 
 // Import just what we need
 
 // If you're importing tooltips or popovers, be sure to include the Popper.js dependency
-// import "../../node_modules/popper.js/dist/popper.min.js";
+// import "../../node_modules/@popperjs/core/dist/umd/popper.min.js";
 
 import "../../node_modules/bootstrap/js/dist/util.js";
 import "../../node_modules/bootstrap/js/dist/modal.js";

@@ -5,6 +5,8 @@
  * --------------------------------------------------------------------------
  */
 
+import * as Popper from '@popperjs/core'
+
 import {
   getjQuery,
   getElementFromSelector,
@@ -16,7 +18,6 @@ import {
 import Data from './dom/data'
 import EventHandler from './dom/event-handler'
 import Manipulator from './dom/manipulator'
-import Popper from 'popper.js'
 import SelectorEngine from './dom/selector-engine'
 
 /**
@@ -56,7 +57,6 @@ const CLASS_NAME_DROPRIGHT = 'dropright'
 const CLASS_NAME_DROPLEFT = 'dropleft'
 const CLASS_NAME_MENURIGHT = 'dropdown-menu-right'
 const CLASS_NAME_NAVBAR = 'navbar'
-const CLASS_NAME_POSITION_STATIC = 'position-static'
 
 const SELECTOR_DATA_TOGGLE = '[data-toggle="dropdown"]'
 const SELECTOR_FORM_CHILD = '.dropdown form'
@@ -74,7 +74,7 @@ const PLACEMENT_LEFT = 'left-start'
 const Default = {
   offset: 0,
   flip: true,
-  boundary: 'scrollParent',
+  boundary: 'clippingParents',
   reference: 'toggle',
   display: 'dynamic',
   popperConfig: null
@@ -174,14 +174,7 @@ class Dropdown {
         }
       }
 
-      // If boundary is not `scrollParent`, then set position to `static`
-      // to allow the menu to "escape" the scroll parent's boundaries
-      // https://github.com/twbs/bootstrap/issues/24251
-      if (this._config.boundary !== 'scrollParent') {
-        parent.classList.add(CLASS_NAME_POSITION_STATIC)
-      }
-
-      this._popper = new Popper(referenceElement, this._menu, this._getPopperConfig())
+      this._popper = Popper.createPopper(referenceElement, this._menu, this._getPopperConfig())
     }
 
     // If this is a touch-enabled device we add extra
@@ -232,6 +225,7 @@ class Dropdown {
     EventHandler.off(this._element, EVENT_KEY)
     this._element = null
     this._menu = null
+
     if (this._popper) {
       this._popper.destroy()
       this._popper = null
@@ -241,7 +235,7 @@ class Dropdown {
   update() {
     this._inNavbar = this._detectNavbar()
     if (this._popper) {
-      this._popper.scheduleUpdate()
+      this._popper.update()
     }
   }
 
@@ -296,44 +290,25 @@ class Dropdown {
     return Boolean(this._element.closest(`.${CLASS_NAME_NAVBAR}`))
   }
 
-  _getOffset() {
-    const offset = {}
-
-    if (typeof this._config.offset === 'function') {
-      offset.fn = data => {
-        data.offsets = {
-          ...data.offsets,
-          ...this._config.offset(data.offsets, this._element) || {}
-        }
-
-        return data
-      }
-    } else {
-      offset.offset = this._config.offset
-    }
-
-    return offset
-  }
-
   _getPopperConfig() {
     const popperConfig = {
       placement: this._getPlacement(),
-      modifiers: {
-        offset: this._getOffset(),
-        flip: {
-          enabled: this._config.flip
-        },
-        preventOverflow: {
-          boundariesElement: this._config.boundary
+      modifiers: [
+        {
+          name: 'preventOverflow',
+          options: {
+            altBoundary: this._config.flip,
+            rootBoundary: this._config.boundary
+          }
         }
-      }
+      ]
     }
 
     // Disable Popper.js if we have a static display
     if (this._config.display === 'static') {
-      popperConfig.modifiers.applyStyle = {
-        enabled: false
-      }
+      popperConfig.modifiers = [
+        { name: 'applyStyles', enabled: false }
+      ]
     }
 
     return {

@@ -134,16 +134,16 @@
 }
 
 .bs-popover-auto {
-  &[x-placement^="top"] {
+  &[data-popper-placement^="top"] {
     @extend .bs-popover-top;
   }
-  &[x-placement^="right"] {
+  &[data-popper-placement^="right"] {
     @extend .bs-popover-right;
   }
-  &[x-placement^="bottom"] {
+  &[data-popper-placement^="bottom"] {
     @extend .bs-popover-bottom;
   }
-  &[x-placement^="left"] {
+  &[data-popper-placement^="left"] {
     @extend .bs-popover-left;
   }
 }

@@ -4,6 +4,7 @@ const ip = require('ip')
 const { babel } = require('@rollup/plugin-babel')
 const istanbul = require('rollup-plugin-istanbul')
 const resolve = require('@rollup/plugin-node-resolve')
+const replace = require('@rollup/plugin-replace')
 
 const {
   browsers,
@@ -66,6 +67,9 @@ const conf = {
   },
   rollupPreprocessor: {
     plugins: [
+      replace({
+        'process.env.NODE_ENV': '"dev"'
+      }),
       istanbul({
         exclude: [
           'node_modules/**',
