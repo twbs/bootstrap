@@ -461,13 +461,13 @@ $utilities: map-merge(
     "rounded": (
       property: border-radius,
       class: rounded,
-      values: (
-        null: $border-radius,
-        sm: $border-radius-sm,
-        lg: $border-radius-lg,
-        circle: 50%,
-        pill: $rounded-pill,
-        0: 0,
+      values: map-merge(
+        $rounded-sizes,
+        (
+          null: $border-radius,
+          "circle": 50%,
+          "pill": $rounded-pill,
+        )
       )
     ),
     "rounded-top": (
