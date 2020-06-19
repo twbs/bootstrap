@@ -45,7 +45,7 @@ Change the border color using utilities built on our theme colors.
 
 ## Border-radius
 
-Add `.rounded` classes to an element to round the corners via `border-radius`. Rounded utilities include a subset of sizes from our `$spacing` Sass map, as well as options for circle and pill shapes and a default `.rounded` that uses our `$border-radius` variable.
+Add `.rounded` classes to an element to round the corners via `border-radius`. Rounded utilities include a subset of sizes from our `$spacing` Sass map, as well as options for circle and pill shapes and a default `.rounded` class that uses our `$border-radius` variable.
 
 {{< example class="bd-example-rounded-utils" >}}
 {{< placeholder width="80" height="80" class="rounded-0" title="Rounded image" >}}
