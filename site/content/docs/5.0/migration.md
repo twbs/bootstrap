@@ -97,7 +97,7 @@ Changes to Reboot, typography, tables, and more.
 ## Typography
 
 - Removed `$display-*` variables for a new `$display-font-sizes` Sass map.
-- Removed individiual `$display-*-weight` variables for a single `$display-font-weight`.
+- Removed individual `$display-*-weight` variables for a single `$display-font-weight`.
 - Added two new `.display-*` heading styles, `.display-5` and `.display-6`.
 - Resized existing display headings for a slightly more consistent set of `font-size`s.
 
@@ -172,10 +172,12 @@ Badges were overhauled to better differentiate themselves from buttons and to be
 ### Popovers
 
 - Renamed `.arrow` to `.popover-arrow`
+- Renamed `whiteList` option to `allowList`
 
 ### Tooltips
 
 - Renamed `.arrow` to `.tooltip-arrow`
+- Renamed `whiteList` option to `allowList`
 
 ## Accessibility
 
