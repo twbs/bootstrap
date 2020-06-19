@@ -331,6 +331,10 @@ class Tooltip {
   }
 
   hide() {
+    if (!this._popper) {
+      return
+    }
+
     const tip = this.getTipElement()
     const complete = () => {
       if (this._hoverState !== HOVER_STATE_SHOW && tip.parentNode) {
@@ -340,9 +344,8 @@ class Tooltip {
       this._cleanTipClass()
       this.element.removeAttribute('aria-describedby')
       EventHandler.trigger(this.element, this.constructor.Event.HIDDEN)
-      if (this._popper !== null) {
-        this._popper.destroy()
-      }
+
+      this._popper.destroy()
     }
 
     const hideEvent = EventHandler.trigger(this.element, this.constructor.Event.HIDE)
