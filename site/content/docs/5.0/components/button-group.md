@@ -1,14 +1,14 @@
 ---
 layout: docs
 title: Button group
-description: Group a series of buttons together on a single line with the button group, and super-power them with JavaScript.
+description: Group a series of buttons together on a single line with the button group.
 group: components
 toc: true
 ---
 
 ## Basic example
 
-Wrap a series of buttons with `.btn` in `.btn-group`. Add on optional JavaScript radio and checkbox style behavior with [our buttons plugin]({{< docsref "/components/buttons#button-plugin" >}}).
+Wrap a series of buttons with `.btn` in `.btn-group`.
 
 {{< example >}}
 <div class="btn-group" role="group" aria-label="Basic example">
@@ -25,6 +25,26 @@ In order for assistive technologies (such as screen readers) to convey that a se
 
 In addition, groups and toolbars should be given an explicit label, as most assistive technologies will otherwise not announce them, despite the presence of the correct role attribute. In the examples provided here, we use `aria-label`, but alternatives such as `aria-labelledby` can also be used.
 {{< /callout >}}
+
+These classes can also be added to groups of links, as an alternative to the [`.nav` navigation components]({{< docsref "/components/navs" >}}).
+
+{{< example >}}
+<div class="btn-group">
+  <a href="#" class="btn btn-secondary active" aria-current="page">Active link</a>
+  <a href="#" class="btn btn-secondary">Link</a>
+  <a href="#" class="btn btn-secondary">Link</a>
+</div>
+{{< /example >}}
+
+## Outlined styles
+
+{{< example >}}
+<div class="btn-group" role="group" aria-label="Basic example">
+  <button type="button" class="btn btn-outline-secondary">Left</button>
+  <button type="button" class="btn btn-outline-secondary">Middle</button>
+  <button type="button" class="btn btn-outline-secondary">Right</button>
+</div>
+{{< /example >}}
 
 ## Button toolbar
 

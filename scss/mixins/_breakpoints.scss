@@ -31,18 +31,18 @@
   @return if($min != 0, $min, null);
 }
 
-// Maximum breakpoint width. Null for the largest (last) breakpoint.
-// The maximum value is calculated as the minimum of the next one less 0.02px
-// to work around the limitations of `min-` and `max-` prefixes and viewports with fractional widths.
+// Maximum breakpoint width.
+// The maximum value is reduced by 0.02px to work around the limitations of
+// `min-` and `max-` prefixes and viewports with fractional widths.
 // See https://www.w3.org/TR/mediaqueries-4/#mq-min-max
 // Uses 0.02px rather than 0.01px to work around a current rounding bug in Safari.
 // See https://bugs.webkit.org/show_bug.cgi?id=178261
 //
-//    >> breakpoint-max(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
+//    >> breakpoint-max(md, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
 //    767.98px
 @function breakpoint-max($name, $breakpoints: $grid-breakpoints) {
-  $next: breakpoint-next($name, $breakpoints);
-  @return if($next, breakpoint-min($next, $breakpoints) - .02, null);
+  $max: map-get($breakpoints, $name);
+  @return if($max and $max > 0, $max - .02, null);
 }
 
 // Returns a blank string if smallest breakpoint, otherwise returns the name with a dash in front.
@@ -108,7 +108,7 @@
 // Makes the @content apply only to the given breakpoint, not viewports any wider or narrower.
 @mixin media-breakpoint-only($name, $breakpoints: $grid-breakpoints) {
   $min: breakpoint-min($name, $breakpoints);
-  $max: breakpoint-max($name, $breakpoints);
+  $max: breakpoint-max(breakpoint-next($name, $breakpoints));
 
   @if $min != null and $max != null {
     @media (min-width: $min) and (max-width: $max) {
