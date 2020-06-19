@@ -41,6 +41,15 @@ const getSelector = element => {
     selector = hrefAttr && hrefAttr !== '#' ? hrefAttr.trim() : null
   }
 
+  if (selector) {
+    // Can we assume the first char is always a #(id) or .(class)?
+    const baseSeletor = selector.slice(0, 1)
+    // Do we need to polyfill CSS.escape for Legacy Edge?
+    const escapedSelector = CSS.escape(selector.slice(1).trim())
+
+    selector = baseSeletor + escapedSelector
+  }
+
   return selector
 }
 
