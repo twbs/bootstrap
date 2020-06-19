@@ -283,6 +283,8 @@ Changes to our source and compiled JavaScript files.
 
 - Dropped jQuery dependency and rewrote plugins to be in regular JavaScript.
 - Removed underscore from public static methods like `_getInstance()` → `getInstance()`.
+- Moved from Popper v1.x to Popper v2.x
+- Removed `offset` option from our Tooltip/Popover and Dropdown plugin, this can still be achieve using `popperConfig` parameter.
 
 ### Color system
 

@@ -2,6 +2,7 @@
 
 const { babel } = require('@rollup/plugin-babel')
 const { nodeResolve } = require('@rollup/plugin-node-resolve')
+const replace = require('@rollup/plugin-replace')
 
 module.exports = {
   input: 'js/tests/integration/bundle.js',
@@ -10,6 +11,9 @@ module.exports = {
     format: 'iife'
   },
   plugins: [
+    replace({
+      'process.env.NODE_ENV': '"production"'
+    }),
     nodeResolve(),
     babel({
       exclude: 'node_modules/**',
