@@ -165,6 +165,7 @@ b, strong {
 .btn-inverse { .btn-styles(@btn-inverse-bg, @btn-inverse-sel-border); }
 
 
+
 //
 // Images
 // --------------------------------------------------
@@ -423,13 +424,13 @@ b, strong {
 // --------------------------------------------------
 
 // Common styles
-.panel {
-  .box-shadow(0 1px 2px rgba(0,0,0,.05));
-}
+// .panel {
+  // .box-shadow(0 1px 2px rgba(0,0,0,.05));
+// }
 
 // Mixin for generating new styles
 .panel-heading-styles(@color) {
-  #gradient > .vertical(@start-color: @color; @end-color: darken(@color, 5%));
+  // #gradient > .vertical(@start-color: @color; @end-color: darken(@color, 5%));
 }
 
 // Apply the mixin to the panel headings only
@@ -955,6 +956,35 @@ body {
 
 h1 {
   color: @text-color;
+}
+
+.badge-danger {
+  color: @btn-danger-color;
+  background-color: @btn-danger-bg;
+  a {
+    color: @btn-primary-color;
+  }
+}
+.badge-warning {
+  color: @btn-warning-color;
+  background-color: @btn-warning-bg;
+  a {
+    color: @btn-primary-color;
+  }
+}
+.badge-info {
+  color: @btn-info-color;
+  background-color: @btn-info-bg;
+  a {
+    color: @btn-primary-color;
+  }
+}
+.badge-success {
+  color: @btn-success-color;
+  background-color: @btn-success-bg;
+  a {
+    color: @btn-primary-color;
+  }
 }
 
 /* For non-vue conditions page */

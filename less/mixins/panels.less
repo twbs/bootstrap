@@ -1,7 +1,9 @@
 // Panels
 
-.panel-variant(@border; @heading-text-color; @heading-bg-color; @heading-border) {
-  border-color: @border;
+.panel-variant(@bg-color; @heading-text-color; @heading-bg-color; @heading-border) {
+  
+  background-color: @bg-color;
+  border-color: @bg-color;
 
   & > .panel-heading {
     color: @heading-text-color;
@@ -9,7 +11,7 @@
     border-color: @heading-border;
 
     + .panel-collapse > .panel-body {
-      border-top-color: @border;
+      border-top-color: @bg-color;
     }
     .badge {
       color: @heading-bg-color;
@@ -18,7 +20,7 @@
   }
   & > .panel-footer {
     + .panel-collapse > .panel-body {
-      border-bottom-color: @border;
+      border-bottom-color: @bg-color;
     }
   }
 }
