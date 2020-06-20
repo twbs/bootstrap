@@ -676,12 +676,11 @@ class Tooltip {
   _getConfig(config) {
     const dataAttributes = Manipulator.getDataAttributes(this.element)
 
-    Object.keys(dataAttributes)
-      .forEach(dataAttr => {
-        if (DISALLOWED_ATTRIBUTES.indexOf(dataAttr) !== -1) {
-          delete dataAttributes[dataAttr]
-        }
-      })
+    Object.keys(dataAttributes).forEach(dataAttr => {
+      if (DISALLOWED_ATTRIBUTES.indexOf(dataAttr) !== -1) {
+        delete dataAttributes[dataAttr]
+      }
+    })
 
     if (config && typeof config.container === 'object' && config.container.jquery) {
       config.container = config.container[0]
