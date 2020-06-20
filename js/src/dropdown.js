@@ -468,8 +468,7 @@ class Dropdown {
       return
     }
 
-    const items = SelectorEngine.find(SELECTOR_VISIBLE_ITEMS, parent)
-      .filter(isVisible)
+    const items = SelectorEngine.find(SELECTOR_VISIBLE_ITEMS, parent).filter(isVisible)
 
     if (!items.length) {
       return
@@ -511,8 +510,7 @@ EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (
   event.stopPropagation()
   Dropdown.dropdownInterface(this, 'toggle')
 })
-EventHandler
-  .on(document, EVENT_CLICK_DATA_API, SELECTOR_FORM_CHILD, e => e.stopPropagation())
+EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_FORM_CHILD, e => e.stopPropagation())
 
 const $ = getjQuery()
 

@@ -179,12 +179,7 @@ class Toast {
   }
 
   _setListeners() {
-    EventHandler.on(
-      this._element,
-      EVENT_CLICK_DISMISS,
-      SELECTOR_DATA_DISMISS,
-      () => this.hide()
-    )
+    EventHandler.on(this._element, EVENT_CLICK_DISMISS, SELECTOR_DATA_DISMISS, () => this.hide())
   }
 
   _clearTimeout() {

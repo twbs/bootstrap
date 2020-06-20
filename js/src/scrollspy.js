@@ -118,27 +118,26 @@ class ScrollSpy {
 
     const targets = SelectorEngine.find(this._selector)
 
-    targets
-      .map(element => {
-        let target
-        const targetSelector = getSelectorFromElement(element)
+    targets.map(element => {
+      let target
+      const targetSelector = getSelectorFromElement(element)
 
-        if (targetSelector) {
-          target = SelectorEngine.findOne(targetSelector)
+      if (targetSelector) {
+        target = SelectorEngine.findOne(targetSelector)
+      }
+
+      if (target) {
+        const targetBCR = target.getBoundingClientRect()
+        if (targetBCR.width || targetBCR.height) {
+          return [
+            Manipulator[offsetMethod](target).top + offsetBase,
+            targetSelector
+          ]
         }
+      }
 
-        if (target) {
-          const targetBCR = target.getBoundingClientRect()
-          if (targetBCR.width || targetBCR.height) {
-            return [
-              Manipulator[offsetMethod](target).top + offsetBase,
-              targetSelector
-            ]
-          }
-        }
-
-        return null
-      })
+      return null
+    })
       .filter(item => item)
       .sort((a, b) => a[0] - b[0])
       .forEach(item => {
@@ -253,8 +252,7 @@ class ScrollSpy {
     const link = SelectorEngine.findOne(queries.join(','))
 
     if (link.classList.contains(CLASS_NAME_DROPDOWN_ITEM)) {
-      SelectorEngine
-        .findOne(SELECTOR_DROPDOWN_TOGGLE, link.closest(SELECTOR_DROPDOWN))
+      SelectorEngine.findOne(SELECTOR_DROPDOWN_TOGGLE, link.closest(SELECTOR_DROPDOWN))
         .classList.add(CLASS_NAME_ACTIVE)
 
       link.classList.add(CLASS_NAME_ACTIVE)
@@ -262,8 +260,7 @@ class ScrollSpy {
       // Set triggered link as active
       link.classList.add(CLASS_NAME_ACTIVE)
 
-      SelectorEngine
-        .parents(link, SELECTOR_NAV_LIST_GROUP)
+      SelectorEngine.parents(link, SELECTOR_NAV_LIST_GROUP)
         .forEach(listGroup => {
           // Set triggered links parents as active
           // With both <ul> and <nav> markup a parent is the previous sibling of any nav ancestor
