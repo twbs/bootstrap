@@ -113,18 +113,13 @@ class ScrollSpy {
 
     this._offsets = []
     this._targets = []
-
     this._scrollHeight = this._getScrollHeight()
 
     const targets = SelectorEngine.find(this._selector)
 
     targets.map(element => {
-      let target
       const targetSelector = getSelectorFromElement(element)
-
-      if (targetSelector) {
-        target = SelectorEngine.findOne(targetSelector)
-      }
+      const target = targetSelector ? SelectorEngine.findOne(targetSelector) : null
 
       if (target) {
         const targetBCR = target.getBoundingClientRect()
