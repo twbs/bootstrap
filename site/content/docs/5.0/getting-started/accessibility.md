@@ -37,7 +37,7 @@ Content which should be visually hidden, but remain accessible to assistive tech
 </p>
 {{< /highlight >}}
 
-For visually hidden interactive controls, such as traditional "skip" links, use the `.v-hidden-focusable` class. This will ensure that the control becomes visible once focused (for sighted keyboard users). **Watch out, since Bootstrap 5 `.v-hidden-focusable` is a standalone class, and must not be used in combination with the `.v-hidden` class.**
+For visually hidden interactive controls, such as traditional "skip" links, use the `.v-hidden-focusable` class. This will ensure that the control becomes visible once focused (for sighted keyboard users). **Watch out, compared to the equivalent `.sr-only` and `.sr-only-focusable` classes in past versions, Bootstrap 5's `.v-hidden-focusable` is a standalone class, and must not be used in combination with the `.v-hidden` class.**
 
 {{< highlight html >}}
 <a class="v-hidden-focusable" href="#content">Skip to main content</a>
