@@ -50,6 +50,7 @@ Changes to our source Sass files and compiled CSS.
 - The `bg-gradient-variant()` mixin is removed since the `.bg-gradient` class can now be used to add gradients to elements instead of the `.bg-gradient-*` classes.
 - The `media-breakpoint-down()` uses the breakpoint itself instead of the next breakpoint. Use `media-breakpoint-down(lg)` instead of `media-breakpoint-down(md)` to target viewports smaller than the `lg` breakpoint.
 - The `media-breakpoint-between()` mixin's second parameter also uses the breakpoint itself instead of the next breakpoint. Use `media-between(sm, lg)` instead of `media-breakpoint-between(sm, md)` to target viewports between the `sm` and `lg` breakpoints.
+- Renamed `sr-only()` and `sr-only-focusable()` mixins to `v-hidden()` and `v-hidden-focusable()`.
 
 ## JavaScript
 
@@ -181,7 +182,7 @@ Badges were overhauled to better differentiate themselves from buttons and to be
 
 ## Accessibility
 
-- `.sr-only-focusable` does not require `.sr-only` anymore. [See #28720](https://github.com/twbs/bootstrap/pull/28720).
+- `.v-hidden-focusable` does not require `.v-hidden` anymore. [See #28720](https://github.com/twbs/bootstrap/pull/28720).
 
 ## Utilities
 
@@ -192,6 +193,7 @@ Badges were overhauled to better differentiate themselves from buttons and to be
 - **Todo:** Drop `.text-hide` as it's an antiquated method for hiding text that shouldn't be used anymore
 - **Todo:** Split utilities into property-value utility classes and helpers
 - Negative margin utilities are disabled by default. You can re-enable them by setting `$enable-negative-margins: true`, but keep in mind this can increase the file size quite a lot.
+- Renamed `.sr-only` and `.sr-only-focusable` to `.v-hidden` and `.v-hidden-focusable`.
 
 ## Docs
 
