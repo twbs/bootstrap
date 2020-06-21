@@ -81,6 +81,17 @@ And with custom HTML added:
 </button>
 {{< /highlight >}}
 
+With an SVG:
+
+<div class="bd-example tooltip-demo">
+  <a href="#" data-toggle="tooltip" title="Default tooltip">
+    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 100 100">
+      <rect width="100%" height="100%" fill="#563d7c"/>
+      <circle cx="50" cy="50" r="30" fill="#007bff"/>
+    </svg>
+  </a>
+</div>
+
 ## Usage
 
 The tooltip plugin generates content and markup on demand, and by default places tooltips after their trigger element.
@@ -145,7 +156,7 @@ Elements with the `disabled` attribute aren't interactive, meaning users cannot 
 Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-`, as in `data-animation=""`.
 
 {{< callout warning >}}
-Note that for security reasons the `sanitize`, `sanitizeFn` and `whiteList` options cannot be supplied using data attributes.
+Note that for security reasons the `sanitize`, `sanitizeFn`, and `allowList` options cannot be supplied using data attributes.
 {{< /callout >}}
 
 <table class="table">
@@ -267,7 +278,7 @@ Note that for security reasons the `sanitize`, `sanitizeFn` and `whiteList` opti
       <td>Enable or disable the sanitization. If activated <code>'template'</code> and <code>'title'</code> options will be sanitized.</td>
     </tr>
     <tr>
-      <td>whiteList</td>
+      <td>allowList</td>
       <td>object</td>
       <td><a href="{{< docsref "/getting-started/javascript#sanitizer" >}}">Default value</a></td>
       <td>Object which contains allowed attributes and tags</td>

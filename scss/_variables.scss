@@ -487,6 +487,8 @@ $table-cell-vertical-align:   top !default;
 $table-color:                 $body-color !default;
 $table-bg:                    transparent !default;
 
+$table-th-font-weight:        null !default;
+
 $table-striped-color:         $table-color !default;
 $table-striped-bg-factor:     .05 !default;
 $table-striped-bg:            rgba($black, $table-striped-bg-factor) !default;
