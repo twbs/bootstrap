@@ -890,7 +890,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <td>Closes the modal when escape key is pressed</td>
     </tr>
     <tr>
-      <td><code>focus<code></td>
+      <td><code>focus</code></td>
       <td>boolean</td>
       <td><code>true</code></td>
       <td>Puts the focus on the modal when initialized.</td>
