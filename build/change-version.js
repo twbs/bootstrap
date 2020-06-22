@@ -95,7 +95,7 @@ function main(args) {
     'vendor'
   ])
   const INCLUDED_EXTENSIONS = new Set([
-    // This extension whitelist is how we avoid modifying binary files
+    // This extension allowlist is how we avoid modifying binary files
     '',
     '.css',
     '.html',
