@@ -182,7 +182,7 @@ Badges were overhauled to better differentiate themselves from buttons and to be
 
 ## Accessibility
 
-- `.v-hidden-focusable` does not require `.v-hidden` anymore. [See #28720](https://github.com/twbs/bootstrap/pull/28720).
+- Unlike the old `.sr-only-focusable`, which only worked in combination with `.sr-only`, the renamed `.v-hidden-focusable` can be used as a standalone class without `.v-hidden`. [See #28720](https://github.com/twbs/bootstrap/pull/28720).
 
 ## Utilities
 
