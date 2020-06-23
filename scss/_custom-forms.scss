@@ -136,11 +136,9 @@
 
   .custom-control-input:disabled {
     &:checked ~ .custom-control-label::before {
-      background-color: $custom-control-indicator-checked-disabled-bg;
       @include gradient-bg($custom-control-indicator-checked-disabled-bg);
     }
     &:indeterminate ~ .custom-control-label::before {
-      background-color: $custom-control-indicator-checked-disabled-bg;
       @include gradient-bg($custom-control-indicator-checked-disabled-bg);
     }
   }
@@ -164,7 +162,6 @@
 
   .custom-control-input:disabled {
     &:checked ~ .custom-control-label::before {
-      background-color: $custom-control-indicator-checked-disabled-bg;
       @include gradient-bg($custom-control-indicator-checked-disabled-bg);
     }
   }
@@ -208,7 +205,6 @@
 
   .custom-control-input:disabled {
     &:checked ~ .custom-control-label::before {
-      background-color: $custom-control-indicator-checked-disabled-bg;
       @include gradient-bg($custom-control-indicator-checked-disabled-bg);
     }
   }
