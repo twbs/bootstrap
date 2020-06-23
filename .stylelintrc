@@ -3,6 +3,9 @@
     "stylelint-config-twbs-bootstrap/scss"
   ],
   "rules": {
+    "function-blacklist": [
+      "calc"
+    ],
     "property-blacklist": [
       "border-radius",
       "border-top-left-radius",
@@ -11,12 +14,12 @@
       "border-bottom-left-radius",
       "transition"
     ],
-    "function-blacklist": ["calc"],
     "scss/dollar-variable-default": [
       true,
       {
         "ignore": "local"
       }
-    ]
+    ],
+    "scss/selector-no-union-class-name": true
   }
 }
