@@ -170,6 +170,30 @@ describe('Toast', () => {
 
       toast.show()
     })
+
+    it('should clear timeout if toast is shown again before it is hidden', done => {
+      fixtureEl.innerHTML = [
+        '<div class="toast">',
+        '  <div class="toast-body">',
+        '    a simple toast',
+        '  </div>',
+        '</div>'
+      ].join('')
+
+      const toastEl = fixtureEl.querySelector('.toast')
+      const toast = new Toast(toastEl)
+
+      setTimeout(() => {
+        toast._config.autohide = false
+        toastEl.addEventListener('shown.bs.toast', () => {
+          expect(toast._timeout).toBeNull()
+          done()
+        })
+        toast.show()
+      }, toast._config.delay / 2)
+
+      toast.show()
+    })
   })
 
   describe('hide', () => {
