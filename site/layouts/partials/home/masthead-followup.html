@@ -1,54 +1,87 @@
-{{ "<!-- Icons by Bytesize https://github.com/danklammer/bytesize-icons -->" | safeHTML }}
+<div class="container masthead-followup px-4 px-md-3">
+  <div class="row mb-5 pb-md-4 align-items-center">
+    <div class="col-md-5">
+      <div class="masthead-followup-icon d-inline-block mb-2 text-white bg-success">
+        {{ partial "icons/code.svg" (dict "width" "32" "height" "32") }}
+      </div>
+      <h2 class="display-5 font-weight-normal">Installation</h2>
+      <p class="lead font-weight-normal">
+        Install Bootstrap’s source Sass and JavaScript files via npm, Composer, or Meteor.
+      </p>
+      <p>Package managed installs don’t include documentation or our full build scripts. You can also <a href="https://github.com/twbs/bootstrap-npm-starter">use our npm template repo</a> to quickly generate a Bootstrap project via npm.</p>
+      <a class="btn btn-lg btn-outline-primary mb-3" href="/docs/{{ .Site.Params.docs_version }}/getting-started/download/">Read installation docs</a>
+    </div>
+    <div class="col-md-7 pl-md-5">
+      {{ highlight "npm install bootstrap" "sh" "" }}
+      {{ highlight (printf ("gem install bootstrap -v %s") .Site.Params.current_ruby_version) "sh" "" }}
+    </div>
+  </div>
 
-<div class="container py-3 my-3 py-md-5 my-md-5 text-center">
-  <div class="home-icon home-icon-blue text-white p-4 mx-auto mb-3">
-    {{ partial "icons/import.svg" (dict "width" "48" "height" "48") }}
-  </div>
-  <h2 class="display-4">Installation</h2>
-  <p class="lead lead-lg mw-md-75 mx-auto">
-    Include Bootstrap’s source Sass and JavaScript files via npm, Composer, or Meteor. Package managed installs don’t include documentation, but do include our build system and readme.
-  </p>
-  <a class="btn btn-lg btn-outline-primary mb-4" href="/docs/{{ .Site.Params.docs_version }}/getting-started/download/">Read installation docs</a>
-  <div class="text-left mx-md-5 px-md-5">
-    {{ highlight "npm install bootstrap" "sh" "" }}
-    {{ highlight (printf ("gem install bootstrap -v %s") .Site.Params.current_ruby_version) "sh" "" }}
-  </div>
-</div>
-
-<div class="container py-3 my-3 py-md-5 my-md-5 text-center">
-  <div class="home-icon home-icon-purple text-white p-4 mx-auto mb-3">
-    {{ partial "icons/download.svg" (dict "width" "48" "height" "48") }}
-  </div>
-  <h2 class="display-4">BootstrapCDN</h2>
-  <p class="lead lead-lg mw-md-75 mx-auto">
-    Use the <a href="https://www.bootstrapcdn.com/">BootstrapCDN</a> to deliver fast, cached, and compiled versions of Bootstrap’s CSS and JavaScript. No jQuery is required, but don't forget to include Popper.js for some components.
-  </p>
-  <a class="btn btn-lg btn-outline-primary mb-4" href="/docs/{{ .Site.Params.docs_version }}/getting-started/introduction/">Explore the docs</a>
-  <div class="text-left mx-md-5 px-md-5">
-    <h3 class="h5">CSS only</h3>
-    {{ highlight (printf (`<link rel="stylesheet" href="%s" integrity=%q crossorigin="anonymous">`) .Site.Params.cdn.css (.Site.Params.cdn.css_hash | safeHTMLAttr)) "html" "" }}
-    <h3 class="h5">JS and Popper.js</h3>
-    {{ highlight (printf (`<script src="%s" integrity=%q crossorigin="anonymous"></script>
+  <div class="row mb-5 pb-md-4 align-items-center">
+    <div class="col-md-5">
+      <div class="masthead-followup-icon d-inline-block mb-2 text-white bg-primary">
+        {{ partial "icons/cloud-fill.svg" (dict "width" "32" "height" "32") }}
+      </div>
+      <h2 class="display-5 font-weight-normal">BootstrapCDN</h2>
+      <p class="lead font-weight-normal">
+        When you only need to include Bootstrap’s compiled CSS or JS, you can use <a href="https://www.bootstrapcdn.com/">BootstrapCDN</a>.
+      </p>
+      <p>
+        See it in action with our simple <a href="/docs/{{ .Site.Params.docs_version }}/getting-started/introduction/#starter-template">starter template</a>, or <a href="/docs/{{ .Site.Params.docs_version }}/examples/">browse the examples</a> to jumpstart your next project.
+      </p>
+      <a class="btn btn-lg btn-outline-primary mb-3" href="/docs/{{ .Site.Params.docs_version }}/getting-started/introduction/">Explore the docs</a>
+    </div>
+    <div class="col-md-7 pl-md-5">
+      {{ highlight (printf (`<!-- CSS only -->
+<link rel="stylesheet" href="%s" integrity=%q crossorigin="anonymous">`) .Site.Params.cdn.css (.Site.Params.cdn.css_hash | safeHTMLAttr)) "html" "" }}
+      {{ highlight (printf (`<!-- JavaScript and dependencies -->
 <script src="%s" integrity=%q crossorigin="anonymous"></script>
-`) .Site.Params.cdn.popper (.Site.Params.cdn.popper_hash | safeHTMLAttr) .Site.Params.cdn.js (.Site.Params.cdn.js_hash | safeHTMLAttr)) "html" "" }}
+  <script src="%s" integrity=%q crossorigin="anonymous"></script>
+  `) .Site.Params.cdn.popper (.Site.Params.cdn.popper_hash | safeHTMLAttr) .Site.Params.cdn.js (.Site.Params.cdn.js_hash | safeHTMLAttr)) "html" "" }}
+    </div>
   </div>
-</div>
 
-<div class="container py-3 my-3 py-md-5 my-md-5 text-center">
-  <div class="home-icon home-icon-yellow text-white p-4 mx-auto mb-3">
-    {{ partial "icons/lightning.svg" (dict "width" "48" "height" "48") }}
+  <div class="row mb-5 pb-md-4 align-items-center">
+    <div class="col-md-5">
+      <div class="masthead-followup-icon d-inline-block mb-2 text-white bd-bg-purple-bright">
+        {{ partial "icons/circle-square.svg" (dict "width" "32" "height" "32") }}
+      </div>
+      <h2 class="display-5 font-weight-normal">Bootstrap Icons</h2>
+      <p class="lead font-weight-normal">
+        For the first time ever, Bootstrap has its own open source SVG icon library, designed to work best with our components and documentation.
+      </p>
+      <p>
+        Bootstrap Icons are designed to work best with Bootstrap components, but they’ll work in any project. They’re SVGs, so they scale quickly and easily, can be implemented in several ways, and can be styled with CSS.
+      </p>
+      <a href="{{ .Site.Params.icons }}" class="btn btn-lg btn-outline-primary mb-3">Get Bootstrap Icons</a>
+    </div>
+    <div class="col-md-7 pl-md-5">
+        <img class="img-fluid mt-3 mx-auto" srcset="/docs/{{ .Site.Params.docs_version }}/assets/img/bootstrap-icons.png,
+                                                    /docs/{{ .Site.Params.docs_version }}/assets/img/bootstrap-icons@2x.png 2x"
+                                               src="/docs/{{ .Site.Params.docs_version }}/assets/img/bootstrap-icons.png"
+                                               alt="Bootstrap Icons" width="966" height="600" loading="lazy">
+    </div>
   </div>
-  <h2 class="display-4">Official Themes</h2>
-  <p class="lead lead-lg mw-md-75 mx-auto">
-    Take Bootstrap 4 to the next level with official premium themes—toolkits built on Bootstrap with new components and plugins, docs, and build tools.
-  </p>
-  <a class="btn btn-lg btn-outline-primary mb-4" href="{{ .Site.Params.themes }}">Browse themes</a>
-  <div class="mx-5 border-bottom">
-    <img class="img-fluid mt-3 mx-auto" srcset="/docs/{{ .Site.Params.docs_version }}/assets/img/bootstrap-themes.png,
-                                                /docs/{{ .Site.Params.docs_version }}/assets/img/bootstrap-themes@2x.png 2x"
-                                        src="/docs/{{ .Site.Params.docs_version }}/assets/img/bootstrap-themes.png"
-                                        alt="Bootstrap Themes"
-                                        width="500" height="200"
-                                        loading="lazy">
+
+  <div class="row mb-5 pb-md-4 align-items-center">
+    <div class="col-md-5">
+      <div class="masthead-followup-icon d-inline-block mb-2 text-white bg-danger">
+        {{ partial "icons/droplet-fill.svg" (dict "width" "32" "height" "32") }}
+      </div>
+      <h2 class="display-5 font-weight-normal">Official Themes</h2>
+      <p class="lead font-weight-normal">
+        Take Bootstrap to the next level with premium themes from the <a href="{{ .Site.Params.themes }}">official Bootstrap Themes marketplace</a>.
+      </p>
+      <p>
+        Themes are built on Bootstrap as their own extended frameworks, rich with new components and plugins, documentation, and powerful build tools.
+      </p>
+      <a href="{{ .Site.Params.themes }}" class="btn btn-lg btn-outline-primary mb-3">Browse themes</a>
+    </div>
+    <div class="col-md-7 pl-md-5">
+        <img class="img-fluid mt-3 mx-auto" srcset="/docs/{{ .Site.Params.docs_version }}/assets/img/bootstrap-themes.png,
+                                                    /docs/{{ .Site.Params.docs_version }}/assets/img/bootstrap-themes@2x.png 2x"
+                                               src="/docs/{{ .Site.Params.docs_version }}/assets/img/bootstrap-themes.png"
+                                               alt="Bootstrap Icons" width="700" height="500" loading="lazy">
+    </div>
   </div>
 </div>

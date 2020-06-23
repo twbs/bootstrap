@@ -6,6 +6,7 @@
   --bs-gutter-x: #{$gutter};
   --bs-gutter-y: 0;
   display: flex;
+  flex: 1 0 100%;
   flex-wrap: wrap;
   margin-top: calc(var(--bs-gutter-y) * -1); // stylelint-disable-line function-blacklist
   margin-right: calc(var(--bs-gutter-x) / -2); // stylelint-disable-line function-blacklist
@@ -66,7 +67,6 @@
       // Provide basic `.col-{bp}` classes for equal-width flexbox columns
       .col#{$infix} {
         flex: 1 0 0%; // Flexbugs #4: https://github.com/philipwalton/flexbugs#flexbug-4
-        min-width: 0; // See https://github.com/twbs/bootstrap/issues/25410
       }
 
       .row-cols#{$infix}-auto > * {

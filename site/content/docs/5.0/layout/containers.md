@@ -20,31 +20,31 @@ The table below illustrates how each container's `max-width` compares to the ori
 
 See them in action and compare them in our [Grid example]({{< docsref "/examples/grid#containers" >}}).
 
-<table class="table text-left">
+<table class="table">
   <thead>
     <tr>
-      <th></th>
-      <th>
+      <td class="border-dark"></td>
+      <th scope="col">
         Extra small<br>
         <span class="font-weight-normal">&lt;576px</span>
       </th>
-      <th>
+      <th scope="col">
         Small<br>
         <span class="font-weight-normal">&ge;576px</span>
       </th>
-      <th>
+      <th scope="col">
         Medium<br>
         <span class="font-weight-normal">&ge;768px</span>
       </th>
-      <th>
+      <th scope="col">
         Large<br>
         <span class="font-weight-normal">&ge;992px</span>
       </th>
-      <th>
+      <th scope="col">
         X-Large<br>
         <span class="font-weight-normal">&ge;1200px</span>
       </th>
-      <th>
+      <th scope="col">
         XX-Large<br>
         <span class="font-weight-normal">&ge;1400px</span>
       </th>
@@ -52,7 +52,7 @@ See them in action and compare them in our [Grid example]({{< docsref "/examples
   </thead>
   <tbody>
     <tr>
-      <td><code>.container</code></td>
+      <th scope="row" class="font-weight-normal"><code>.container</code></th>
       <td class="text-muted">100%</td>
       <td>540px</td>
       <td>720px</td>
@@ -61,7 +61,7 @@ See them in action and compare them in our [Grid example]({{< docsref "/examples
       <td>1320px</td>
     </tr>
     <tr>
-      <td><code>.container-sm</code></td>
+      <th scope="row" class="font-weight-normal"><code>.container-sm</code></th>
       <td class="text-muted">100%</td>
       <td>540px</td>
       <td>720px</td>
@@ -70,7 +70,7 @@ See them in action and compare them in our [Grid example]({{< docsref "/examples
       <td>1320px</td>
     </tr>
     <tr>
-      <td><code>.container-md</code></td>
+      <th scope="row" class="font-weight-normal"><code>.container-md</code></th>
       <td class="text-muted">100%</td>
       <td class="text-muted">100%</td>
       <td>720px</td>
@@ -79,7 +79,7 @@ See them in action and compare them in our [Grid example]({{< docsref "/examples
       <td>1320px</td>
     </tr>
     <tr>
-      <td><code>.container-lg</code></td>
+      <th scope="row" class="font-weight-normal"><code>.container-lg</code></th>
       <td class="text-muted">100%</td>
       <td class="text-muted">100%</td>
       <td class="text-muted">100%</td>
@@ -88,7 +88,7 @@ See them in action and compare them in our [Grid example]({{< docsref "/examples
       <td>1320px</td>
     </tr>
     <tr>
-      <td><code>.container-xl</code></td>
+      <th scope="row" class="font-weight-normal"><code>.container-xl</code></th>
       <td class="text-muted">100%</td>
       <td class="text-muted">100%</td>
       <td class="text-muted">100%</td>
@@ -97,7 +97,7 @@ See them in action and compare them in our [Grid example]({{< docsref "/examples
       <td>1320px</td>
     </tr>
     <tr>
-      <td><code>.container-xxl</code></td>
+      <th scope="row" class="font-weight-normal"><code>.container-xxl</code></th>
       <td class="text-muted">100%</td>
       <td class="text-muted">100%</td>
       <td class="text-muted">100%</td>
@@ -106,7 +106,7 @@ See them in action and compare them in our [Grid example]({{< docsref "/examples
       <td>1320px</td>
     </tr>
     <tr>
-      <td><code>.container-fluid</code></td>
+      <th scope="row" class="font-weight-normal"><code>.container-fluid</code></th>
       <td class="text-muted">100%</td>
       <td class="text-muted">100%</td>
       <td class="text-muted">100%</td>

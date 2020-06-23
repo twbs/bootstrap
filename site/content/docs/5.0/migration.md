@@ -48,6 +48,8 @@ Changes to our source Sass files and compiled CSS.
   - `$yiq-text-dark` and `$yiq-text-light` are respectively renamed to `$color-contrast-dark` and `$color-contrast-light`.
 - Linear gradients are simplified when gradients are enabled and therefore, `gradient-bg()` now only accepts an optional `$color` parameter.
 - The `bg-gradient-variant()` mixin is removed since the `.bg-gradient` class can now be used to add gradients to elements instead of the `.bg-gradient-*` classes.
+- The `media-breakpoint-down()` uses the breakpoint itself instead of the next breakpoint. Use `media-breakpoint-down(lg)` instead of `media-breakpoint-down(md)` to target viewports smaller than the `lg` breakpoint.
+- The `media-breakpoint-between()` mixin's second parameter also uses the breakpoint itself instead of the next breakpoint. Use `media-between(sm, lg)` instead of `media-breakpoint-between(sm, md)` to target viewports between the `sm` and `lg` breakpoints.
 
 ## JavaScript
 
@@ -95,7 +97,7 @@ Changes to Reboot, typography, tables, and more.
 ## Typography
 
 - Removed `$display-*` variables for a new `$display-font-sizes` Sass map.
-- Removed individiual `$display-*-weight` variables for a single `$display-font-weight`.
+- Removed individual `$display-*-weight` variables for a single `$display-font-weight`.
 - Added two new `.display-*` heading styles, `.display-5` and `.display-6`.
 - Resized existing display headings for a slightly more consistent set of `font-size`s.
 
@@ -146,6 +148,10 @@ Badges were overhauled to better differentiate themselves from buttons and to be
 - **Todo:** Removed `.badge-pill` for the `.rounded-pill` utility class
 - **Todo:** Removed badge's hover and focus styles for `a.badge` and `button.badge`.
 
+### Buttons
+
+- The checkbox/radio toggle is removed from the button plugin in favour of a CSS only solution, which is documented in the [form checks]({{< docsref "/forms/checks#toggle-buttons" >}}) docs. The `.btn-check` class can be added to inputs, any label with `.btn` and modifier class can be used to theme the labels. [See #30650](https://github.com/twbs/bootstrap/pull/30650).
+
 ### Cards
 
 - Removed the card columns in favor of a Masonry grid [See #28922](https://github.com/twbs/bootstrap/pull/28922).
@@ -166,10 +172,12 @@ Badges were overhauled to better differentiate themselves from buttons and to be
 ### Popovers
 
 - Renamed `.arrow` to `.popover-arrow`
+- Renamed `whiteList` option to `allowList`
 
 ### Tooltips
 
 - Renamed `.arrow` to `.tooltip-arrow`
+- Renamed `whiteList` option to `allowList`
 
 ## Accessibility
 

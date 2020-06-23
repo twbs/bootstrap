@@ -283,7 +283,7 @@ pre,
 code,
 kbd,
 samp {
-  font-family: var(--bs-font-monospace);
+  font-family: $font-family-code;
   @include font-size(1em); // Correct the odd `em` font sizing in all browsers.
 }
 
@@ -369,12 +369,14 @@ caption {
   text-align: left;
 }
 
-// 1. Matches default `<td>` alignment by inheriting `text-align`.
-// 2. Fix alignment for Safari
+// 1. Removes font-weight bold by inheriting
+// 2. Matches default `<td>` alignment by inheriting `text-align`.
+// 3. Fix alignment for Safari
 
 th {
-  text-align: inherit; // 1
-  text-align: -webkit-match-parent; // 2
+  font-weight: $table-th-font-weight; // 1
+  text-align: inherit; // 2
+  text-align: -webkit-match-parent; // 3
 }
 
 thead,
@@ -439,6 +441,13 @@ input {
 button,
 select {
   text-transform: none;
+}
+
+// Set the cursor for non-`<button>` buttons
+//
+// Details at https://github.com/twbs/bootstrap/pull/30562
+[role="button"] {
+  cursor: pointer;
 }
 
 // Remove the inheritance of word-wrap in Safari.
