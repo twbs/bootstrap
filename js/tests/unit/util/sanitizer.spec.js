@@ -1,11 +1,11 @@
-import { DefaultWhitelist, sanitizeHtml } from '../../../src/util/sanitizer'
+import { DefaultAllowlist, sanitizeHtml } from '../../../src/util/sanitizer'
 
 describe('Sanitizer', () => {
   describe('sanitizeHtml', () => {
     it('should return the same on empty string', () => {
       const empty = ''
 
-      const result = sanitizeHtml(empty, DefaultWhitelist, null)
+      const result = sanitizeHtml(empty, DefaultAllowlist, null)
 
       expect(result).toEqual(empty)
     })
@@ -18,7 +18,7 @@ describe('Sanitizer', () => {
         '</div>'
       ].join('')
 
-      const result = sanitizeHtml(template, DefaultWhitelist, null)
+      const result = sanitizeHtml(template, DefaultAllowlist, null)
 
       expect(result.indexOf('script') === -1).toEqual(true)
     })
@@ -30,20 +30,20 @@ describe('Sanitizer', () => {
         '</div>'
       ].join('')
 
-      const result = sanitizeHtml(template, DefaultWhitelist, null)
+      const result = sanitizeHtml(template, DefaultAllowlist, null)
 
       expect(result.indexOf('aria-pressed') !== -1).toEqual(true)
       expect(result.indexOf('class="test"') !== -1).toEqual(true)
     })
 
-    it('should remove not whitelist tags', () => {
+    it('should remove tags not in allowlist', () => {
       const template = [
         '<div>',
         '  <script>alert(7)</script>',
         '</div>'
       ].join('')
 
-      const result = sanitizeHtml(template, DefaultWhitelist, null)
+      const result = sanitizeHtml(template, DefaultAllowlist, null)
 
       expect(result.indexOf('<script>') === -1).toEqual(true)
     })
@@ -61,7 +61,7 @@ describe('Sanitizer', () => {
 
       spyOn(DOMParser.prototype, 'parseFromString')
 
-      const result = sanitizeHtml(template, DefaultWhitelist, mySanitize)
+      const result = sanitizeHtml(template, DefaultAllowlist, mySanitize)
 
       expect(result).toEqual(template)
       expect(DOMParser.prototype.parseFromString).not.toHaveBeenCalled()

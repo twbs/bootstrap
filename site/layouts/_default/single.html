@@ -13,8 +13,10 @@
         <h1 class="bd-title mt-0">{{ .Title | markdownify }}</h1>
         <p class="bd-lead">{{ .Page.Params.Description | markdownify }}</p>
         {{ if eq .Title "Examples" }}
-        <a href="{{ .Site.Params.download.source }}" class="btn btn-lg btn-bd-primary" onclick="ga('send', 'event', 'Examples', 'Hero', 'Download');">Download source code</a>
-        <a href="{{ .Site.Params.download.dist_examples }}" class="btn btn-lg btn-bd-primary mt-3 mt-sm-0 ml-sm-3 ml-md-5" onclick="ga('send', 'event', 'Examples', 'Hero', 'Download Examples');">Download Examples</a>
+        <div class="d-flex flex-column flex-sm-row">
+          <a href="{{ .Site.Params.download.dist_examples }}" class="btn btn-lg btn-bd-primary" onclick="ga('send', 'event', 'Examples', 'Hero', 'Download Examples');">Download examples</a>
+          <a href="{{ .Site.Params.download.source }}" class="btn btn-lg btn-outline-secondary mt-3 mt-sm-0 ml-sm-3" onclick="ga('send', 'event', 'Examples', 'Hero', 'Download');">Download source code</a>
+        </div>
         {{ end }}
         {{ partial "ads" . }}
       </div>
@@ -23,6 +25,26 @@
     <main class="bd-content order-1 py-5" id="content">
       <div class="container">
         {{ .Content }}
+
+        {{ if eq .Title "Examples" }}
+          <hr class="my-5">
+          <div class="container">
+            <div class="text-center">
+              <div class="masthead-followup-icon d-inline-block mb-2 text-white bg-danger">
+                {{ partial "icons/droplet-fill.svg" (dict "width" "32" "height" "32") }}
+              </div>
+              <h2 class="display-6 font-weight-normal">Go further with Bootstrap Themes</h2>
+              <p class="col-md-10 col-lg-8 mx-auto lead">
+                Need something more than these examples? Take Bootstrap to the next level with premium themes from the <a href="{{ .Site.Params.themes }}">official Bootstrap Themes marketplace</a>. They’re built as their own extended frameworks, rich with new components and plugins, documentation, and powerful build tools.
+              </p>
+              <a href="{{ .Site.Params.themes }}" class="btn btn-lg btn-outline-primary mb-3">Browse themes</a>
+            </div>
+            <img class="d-block img-fluid mt-3 mx-auto" srcset="/docs/{{ .Site.Params.docs_version }}/assets/img/bootstrap-themes-collage.png,
+                                                                /docs/{{ .Site.Params.docs_version }}/assets/img/bootstrap-themes-collage@2x.png 2x"
+                                                           src="/docs/{{ .Site.Params.docs_version }}/assets/img/bootstrap-themes-collage.png"
+                                                           alt="Bootstrap Themes" width="1150" height="320" loading="lazy">
+          </div>
+        {{ end }}
       </div>
     </main>
 
