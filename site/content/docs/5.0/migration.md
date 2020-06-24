@@ -172,10 +172,12 @@ Badges were overhauled to better differentiate themselves from buttons and to be
 ### Popovers
 
 - Renamed `.arrow` to `.popover-arrow`
+- Renamed `whiteList` option to `allowList`
 
 ### Tooltips
 
 - Renamed `.arrow` to `.tooltip-arrow`
+- Renamed `whiteList` option to `allowList`
 
 ## Accessibility
 

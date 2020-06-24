@@ -17,7 +17,7 @@ import {
   typeCheckConfig
 } from './util/index'
 import {
-  DefaultWhitelist,
+  DefaultAllowlist,
   sanitizeHtml
 } from './util/sanitizer'
 import Data from './dom/data'
@@ -38,7 +38,7 @@ const DATA_KEY = 'bs.tooltip'
 const EVENT_KEY = `.${DATA_KEY}`
 const CLASS_PREFIX = 'bs-tooltip'
 const BSCLS_PREFIX_REGEX = new RegExp(`(^|\\s)${CLASS_PREFIX}\\S+`, 'g')
-const DISALLOWED_ATTRIBUTES = ['sanitize', 'whiteList', 'sanitizeFn']
+const DISALLOWED_ATTRIBUTES = ['sanitize', 'allowList', 'sanitizeFn']
 
 const DefaultType = {
   animation: 'boolean',
@@ -55,7 +55,7 @@ const DefaultType = {
   boundary: '(string|element)',
   sanitize: 'boolean',
   sanitizeFn: '(null|function)',
-  whiteList: 'object',
+  allowList: 'object',
   popperConfig: '(null|object)'
 }
 
@@ -84,7 +84,7 @@ const Default = {
   boundary: 'scrollParent',
   sanitize: true,
   sanitizeFn: null,
-  whiteList: DefaultWhitelist,
+  allowList: DefaultAllowlist,
   popperConfig: null
 }
 
@@ -428,7 +428,7 @@ class Tooltip {
 
     if (this.config.html) {
       if (this.config.sanitize) {
-        content = sanitizeHtml(content, this.config.whiteList, this.config.sanitizeFn)
+        content = sanitizeHtml(content, this.config.allowList, this.config.sanitizeFn)
       }
 
       element.innerHTML = content
@@ -711,7 +711,7 @@ class Tooltip {
     typeCheckConfig(NAME, config, this.constructor.DefaultType)
 
     if (config.sanitize) {
-      config.template = sanitizeHtml(config.template, config.whiteList, config.sanitizeFn)
+      config.template = sanitizeHtml(config.template, config.allowList, config.sanitizeFn)
     }
 
     return config
