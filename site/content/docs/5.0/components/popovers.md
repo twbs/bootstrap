@@ -142,7 +142,7 @@ To allow keyboard users to activate your popovers, you should only add them to H
 
 While you can insert rich, structured HTML in popovers with the `html` option, we strongly recommend that you avoid adding an excessive amount of content. The way popovers currently work is that, once displayed, their content is tied to the trigger element with the `aria-describedby` attribute. As a result, the entirety of the popover's content will be announced to assistive technology users as one long, uninterrupted stream.
 
-Additionally, while it is possible to also include interactive controls (such as form elements or links) in your popover (by adding these elements to the `whiteList` or allowed attributes and tags), be aware that currently the popover does not manage keyboard focus order. When a keyboard user opens a popover, focus remains on the triggering element, and as the popover usually does not immediately follow the trigger in the document's structure, there is no guarantee that moving forward/pressing <kbd>TAB</kbd> will move a keyboard user into the popover itself. In short, simply adding interactive controls to a popover is likely to make these controls unreachable/unusable for keyboard users and users of assistive technologies, or at the very least make for an illogical overall focus order. In these cases, consider using a modal dialog instead.
+Additionally, while it is possible to also include interactive controls (such as form elements or links) in your popover (by adding these elements to the `allowList` of allowed attributes and tags), be aware that currently the popover does not manage keyboard focus order. When a keyboard user opens a popover, focus remains on the triggering element, and as the popover usually does not immediately follow the trigger in the document's structure, there is no guarantee that moving forward/pressing <kbd>TAB</kbd> will move a keyboard user into the popover itself. In short, simply adding interactive controls to a popover is likely to make these controls unreachable/unusable for keyboard users and users of assistive technologies, or at the very least make for an illogical overall focus order. In these cases, consider using a modal dialog instead.
 {{< /callout >}}
 
 ### Options
@@ -150,7 +150,7 @@ Additionally, while it is possible to also include interactive controls (such as
 Options can be passed via data attributes or JavaScript. For data attributes, append the option name to `data-`, as in `data-animation=""`.
 
 {{< callout warning >}}
-Note that for security reasons the `sanitize`, `sanitizeFn` and `whiteList` options cannot be supplied using data attributes.
+Note that for security reasons the `sanitize`, `sanitizeFn`, and `allowList` options cannot be supplied using data attributes.
 {{< /callout >}}
 
 <table class="table">
@@ -270,7 +270,7 @@ Note that for security reasons the `sanitize`, `sanitizeFn` and `whiteList` opti
       <td>Enable or disable the sanitization. If activated <code>'template'</code>, <code>'content'</code> and <code>'title'</code> options will be sanitized.</td>
     </tr>
     <tr>
-      <td>whiteList</td>
+      <td>allowList</td>
       <td>object</td>
       <td><a href="{{< docsref "/getting-started/javascript#sanitizer" >}}">Default value</a></td>
       <td>Object which contains allowed attributes and tags</td>

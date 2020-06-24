@@ -215,7 +215,7 @@ For the accented tables ([striped rows](#striped-rows), [hoverable rows](#hovera
 - We start by setting the background of a table cell with the `--bs-table-bg` custom property. All table variants then set that custom property to colorize the table cells. This way, we don't get into trouble if semi-transparent colors are used as table backgrounds.
 - Then we add a gradient on the table cells with `background-image: linear-gradient(var(--bs-table-accent-bg), var(--bs-table-accent-bg));` to layer on top of any specified `background-color`. Since `--bs-table-accent-bg` is transparent by default, we have an invisible transparent linear gradient by default.
 - When either `.table-striped`, `.table-hover` or `.table-active` classes are added, the `--bs-table-accent-bg` is set to a semitransparent color to colorize the background.
-- For each table variant, we generate a `--bs-table-accent-bg` color with the highest contrast depedending on that color. For example, the accent color for `.table-primary` is darker while `.table-dark` has a lighter accent color.
+- For each table variant, we generate a `--bs-table-accent-bg` color with the highest contrast depending on that color. For example, the accent color for `.table-primary` is darker while `.table-dark` has a lighter accent color.
 - Text and border colors are generated the same way, and their colors are inherited by default.
 
 Behind the scenes it looks like this:
@@ -399,7 +399,7 @@ Border styles, active styles, and table variants are not inherited by nested tab
 
 ## How nesting works
 
-To prevent _any_ styles from leaking to nested tables, we use the child combinator (`>`) selector in our CSS. Since we need to target all the `td`s and `th`s in the `thead`, `tbody`, and `tfoot`, our selector would look pretty long without it. As such, we use the rather odd looking `.table > :not(caption) > * > * ` selector to target all `td`s and `th`s of the `.table`, but none of any potential nested tables.
+To prevent _any_ styles from leaking to nested tables, we use the child combinator (`>`) selector in our CSS. Since we need to target all the `td`s and `th`s in the `thead`, `tbody`, and `tfoot`, our selector would look pretty long without it. As such, we use the rather odd looking `.table > :not(caption) > * > *` selector to target all `td`s and `th`s of the `.table`, but none of any potential nested tables.
 
 Note that if you add `<tr>`s as direct children of a table, those `<tr>` will be wrapped in a `<tbody>` by default, thus making our selectors work as intended.
 

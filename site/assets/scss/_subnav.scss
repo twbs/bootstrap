@@ -26,9 +26,7 @@
 }
 
 .bd-search {
-  position: relative; // To contain the Algolia search
-
-  @include media-breakpoint-down(sm) {
+  @include media-breakpoint-down(md) {
     width: 100%;
   }
 
@@ -36,8 +34,4 @@
     border-color: $bd-purple-bright;
     box-shadow: 0 0 0 3px rgba($bd-purple-bright, .25);
   }
-}
-
-.bd-search-docs-toggle {
-  color: $gray-900;
 }

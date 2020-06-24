@@ -2,47 +2,15 @@
  * Bootstrap Grid v5.0.0-alpha1 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors
  * Copyright 2011-2020 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
-.container {
-  width: 100%;
-  padding-right: 1rem;
-  padding-left: 1rem;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-@media (min-width: 576px) {
-  .container {
-    max-width: 540px;
-  }
-}
-
-@media (min-width: 768px) {
-  .container {
-    max-width: 720px;
-  }
-}
-
-@media (min-width: 992px) {
-  .container {
-    max-width: 960px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .container {
-    max-width: 1140px;
-  }
-}
-
-@media (min-width: 1400px) {
-  .container {
-    max-width: 1320px;
-  }
-}
-
-.container-fluid, .container-sm, .container-md, .container-lg, .container-xl, .container-xxl {
+.container,
+.container-fluid,
+.container-sm,
+.container-md,
+.container-lg,
+.container-xl,
+.container-xxl {
   width: 100%;
   padding-right: 1rem;
   padding-left: 1rem;
@@ -84,6 +52,7 @@
   --bs-gutter-x: 1.5rem;
   --bs-gutter-y: 0;
   display: flex;
+  flex: 1 0 100%;
   flex-wrap: wrap;
   margin-top: calc(var(--bs-gutter-y) * -1);
   margin-right: calc(var(--bs-gutter-x) / -2);
@@ -102,7 +71,6 @@
 
 .col {
   flex: 1 0 0%;
-  min-width: 0;
 }
 
 .row-cols-auto > * {
@@ -312,7 +280,6 @@
 @media (min-width: 576px) {
   .col-sm {
     flex: 1 0 0%;
-    min-width: 0;
   }
   .row-cols-sm-auto > * {
     flex: 0 0 auto;
@@ -483,7 +450,6 @@
 @media (min-width: 768px) {
   .col-md {
     flex: 1 0 0%;
-    min-width: 0;
   }
   .row-cols-md-auto > * {
     flex: 0 0 auto;
@@ -654,7 +620,6 @@
 @media (min-width: 992px) {
   .col-lg {
     flex: 1 0 0%;
-    min-width: 0;
   }
   .row-cols-lg-auto > * {
     flex: 0 0 auto;
@@ -825,7 +790,6 @@
 @media (min-width: 1200px) {
   .col-xl {
     flex: 1 0 0%;
-    min-width: 0;
   }
   .row-cols-xl-auto > * {
     flex: 0 0 auto;
@@ -996,7 +960,6 @@
 @media (min-width: 1400px) {
   .col-xxl {
     flex: 1 0 0%;
-    min-width: 0;
   }
   .row-cols-xxl-auto > * {
     flex: 0 0 auto;
@@ -1246,6 +1209,10 @@
 
 .justify-content-around {
   justify-content: space-around !important;
+}
+
+.justify-content-evenly {
+  justify-content: space-evenly !important;
 }
 
 .align-items-start {
@@ -1802,6 +1769,9 @@
   .justify-content-sm-around {
     justify-content: space-around !important;
   }
+  .justify-content-sm-evenly {
+    justify-content: space-evenly !important;
+  }
   .align-items-sm-start {
     align-items: flex-start !important;
   }
@@ -2241,6 +2211,9 @@
   }
   .justify-content-md-around {
     justify-content: space-around !important;
+  }
+  .justify-content-md-evenly {
+    justify-content: space-evenly !important;
   }
   .align-items-md-start {
     align-items: flex-start !important;
@@ -2682,6 +2655,9 @@
   .justify-content-lg-around {
     justify-content: space-around !important;
   }
+  .justify-content-lg-evenly {
+    justify-content: space-evenly !important;
+  }
   .align-items-lg-start {
     align-items: flex-start !important;
   }
@@ -3122,6 +3098,9 @@
   .justify-content-xl-around {
     justify-content: space-around !important;
   }
+  .justify-content-xl-evenly {
+    justify-content: space-evenly !important;
+  }
   .align-items-xl-start {
     align-items: flex-start !important;
   }
@@ -3561,6 +3540,9 @@
   }
   .justify-content-xxl-around {
     justify-content: space-around !important;
+  }
+  .justify-content-xxl-evenly {
+    justify-content: space-evenly !important;
   }
   .align-items-xxl-start {
     align-items: flex-start !important;

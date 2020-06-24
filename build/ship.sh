@@ -29,7 +29,7 @@ fi
 printf "\n%s=======================================================%s" "$magenta" "$end"
 printf "\n%sPulling latest changes...%s" "$magenta" "$end"
 printf "\n%s=======================================================\n\n%s" "$magenta" "$end"
-git pull origin master
+git pull origin main
 
 # Update version number
 printf "\n%s=======================================================%s" "$magenta" "$end"

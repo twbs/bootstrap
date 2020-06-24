@@ -1,7 +1,7 @@
 /* eslint-env node */
 const path = require('path')
 const ip = require('ip')
-const babel = require('rollup-plugin-babel')
+const { babel } = require('@rollup/plugin-babel')
 const istanbul = require('rollup-plugin-istanbul')
 const resolve = require('@rollup/plugin-node-resolve')
 
@@ -9,7 +9,6 @@ const {
   browsers,
   browsersKeys
 } = require('./browsers')
-const babelHelpers = require('../../build/babel-helpers.js')
 
 const { env } = process
 const browserStack = env.BROWSER === 'true'
@@ -77,11 +76,8 @@ const conf = {
       babel({
         // Only transpile our source code
         exclude: 'node_modules/**',
-        // Include only required helpers
-        externalHelpersWhitelist: babelHelpers,
-        plugins: [
-          '@babel/plugin-proposal-object-rest-spread'
-        ]
+        // Inline the required helpers in each file
+        babelHelpers: 'inline'
       }),
       resolve()
     ],

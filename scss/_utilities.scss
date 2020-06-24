@@ -177,6 +177,7 @@ $utilities: map-merge(
         center: center,
         between: space-between,
         around: space-around,
+        evenly: space-evenly,
       )
     ),
     "align-items": (
@@ -439,7 +440,7 @@ $utilities: map-merge(
       values: italic normal
     ),
     "word-wrap": (
-      property: word-wrap,
+      property: word-wrap word-break,
       class: text,
       values: (break: break-word)
     ),
