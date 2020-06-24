@@ -72,6 +72,14 @@ describe('Util', () => {
 
       expect(Util.getSelectorFromElement(testEl)).toBeNull()
     })
+
+    it('should return null if selector is a URL', () => {
+      fixtureEl.innerHTML = '<a id="test" href="/users/1"></a>'
+
+      const testEl = fixtureEl.querySelector('#test')
+
+      expect(Util.getSelectorFromElement(testEl)).toBeNull()
+    })
   })
 
   describe('getElementFromSelector', () => {
