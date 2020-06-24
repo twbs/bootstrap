@@ -1,4 +1,5 @@
 .toast {
+  position: relative;
   max-width: $toast-max-width;
   overflow: hidden; // cheap rounded corners on nested items
   @include font-size($toast-font-size);
@@ -6,8 +7,6 @@
   background-color: $toast-background-color;
   background-clip: padding-box;
   border: $toast-border-width solid $toast-border-color;
-  box-shadow: $toast-box-shadow;
-  backdrop-filter: blur(10px);
   opacity: 0;
   @include border-radius($toast-border-radius);
 
@@ -26,6 +25,24 @@
 
   &.hide {
     display: none;
+  }
+
+  &::before,
+  &::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    content: "";
+  }
+
+  &::before {
+    backdrop-filter: blur(10px);
+  }
+  &::after {
+    box-shadow: $toast-box-shadow;
   }
 }
 
