@@ -959,4 +959,21 @@ $(function () {
         keyboard: false
       })
   })
+
+  QUnit.test('should not overflow when clicking outside of modal-content if backdrop = static', function (assert) {
+    assert.expect(1)
+    var done = assert.async()
+    var $modal = $('<div class="modal" data-backdrop="static"><div class="modal-dialog" style="transition-duration: 20ms;"/></div>').appendTo('#qunit-fixture')
+
+    $modal.on('shown.bs.modal', function () {
+      $modal.trigger('click')
+      setTimeout(function () {
+        assert.strictEqual($modal[0].clientHeight, $modal[0].scrollHeight)
+        done()
+      }, 20)
+    })
+      .bootstrapModal({
+        backdrop: 'static'
+      })
+  })
 })
