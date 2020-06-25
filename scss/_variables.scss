@@ -507,7 +507,7 @@ $table-border-color:          $border-color !default;
 
 $table-striped-order:         odd !default;
 
-$table-group-seperator-color: currentColor !default;
+$table-group-separator-color: currentColor !default;
 
 $table-caption-color:         $text-muted !default;
 
@@ -914,7 +914,7 @@ $dropdown-border-color:             rgba($black, .15) !default;
 $dropdown-border-radius:            $border-radius !default;
 $dropdown-border-width:             $border-width !default;
 $dropdown-inner-border-radius:      subtract($dropdown-border-radius, $dropdown-border-width) !default;
-$dropdown-divider-bg:               $gray-200 !default;
+$dropdown-divider-bg:               $dropdown-border-color !default;
 $dropdown-divider-margin-y:         $spacer / 2 !default;
 $dropdown-box-shadow:               $box-shadow !default;
 

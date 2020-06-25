@@ -7,7 +7,6 @@
   background-clip: padding-box;
   border: $toast-border-width solid $toast-border-color;
   box-shadow: $toast-box-shadow;
-  backdrop-filter: blur(10px);
   opacity: 0;
   @include border-radius($toast-border-radius);
 
