@@ -6,6 +6,15 @@ group: utilities
 toc: true
 ---
 
+{% capture callout %}
+#### Dealing with specificity
+
+Sometimes contextual classes cannot be applied due to the specificity of another selector. In some cases, a sufficient workaround is to wrap your element's content in a `<div>` with the class.
+{% endcapture %}
+{% include callout.html content=callout type="info" %}
+
+{% include callout-warning-color-assistive-technologies.md %}
+
 ## Color
 
 {% capture example %}
@@ -47,12 +56,3 @@ When `$enable-gradients` is set to `true` (default is `false`), you can use `.bg
 
 {% for color in site.data.theme-colors %}
 - `.bg-gradient-{{ color.name }}`{% endfor %}
-
-{% capture callout %}
-#### Dealing with specificity
-
-Sometimes contextual classes cannot be applied due to the specificity of another selector. In some cases, a sufficient workaround is to wrap your element's content in a `<div>` with the class.
-{% endcapture %}
-{% include callout.html content=callout type="info" %}
-
-{% include callout-warning-color-assistive-technologies.md %}
