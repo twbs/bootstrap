@@ -2,7 +2,7 @@
 // Screenreaders
 //
 
-.v-hidden,
-.v-hidden-focusable:not(:focus) {
-  @include v-hidden();
+.visually-hidden,
+.visually-hidden-focusable:not(:focus) {
+  @include visually-hidden();
 }

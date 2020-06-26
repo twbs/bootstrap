@@ -13,8 +13,8 @@ While in alpha, we may introduce breaking changes as we experiment and refine so
 
 ### Breaking
 
-- Renamed `.sr-only` and `.sr-only-focusable` to `.v-hidden` and `.v-hidden-focusable`.
-- Renamed `sr-only()` and `sr-only-focusable()` mixins to `v-hidden()` and `v-hidden-focusable()`.
+- Renamed `.sr-only` and `.sr-only-focusable` to `.visually-hidden` and `.visually-hidden-focusable`.
+- Renamed `sr-only()` and `sr-only-focusable()` mixins to `visually-hidden()` and `visually-hidden-focusable()`.
 
 ## Summary
 
@@ -63,7 +63,7 @@ Changes to our source Sass files and compiled CSS.
 - The `bg-gradient-variant()` mixin is removed since the `.bg-gradient` class can now be used to add gradients to elements instead of the `.bg-gradient-*` classes.
 - The `media-breakpoint-down()` uses the breakpoint itself instead of the next breakpoint. Use `media-breakpoint-down(lg)` instead of `media-breakpoint-down(md)` to target viewports smaller than the `lg` breakpoint.
 - The `media-breakpoint-between()` mixin's second parameter also uses the breakpoint itself instead of the next breakpoint. Use `media-between(sm, lg)` instead of `media-breakpoint-between(sm, md)` to target viewports between the `sm` and `lg` breakpoints.
-- Renamed `sr-only()` and `sr-only-focusable()` mixins to `v-hidden()` and `v-hidden-focusable()`.
+- Renamed `sr-only()` and `sr-only-focusable()` mixins to `visually-hidden()` and `visually-hidden-focusable()`.
 
 ### JavaScript
 
@@ -195,7 +195,7 @@ Badges were overhauled to better differentiate themselves from buttons and to be
 
 ### Accessibility
 
-- Unlike the old `.sr-only-focusable`, which only worked in combination with `.sr-only`, the renamed `.v-hidden-focusable` can be used as a standalone class without `.v-hidden`. [See #28720](https://github.com/twbs/bootstrap/pull/28720).
+- Unlike the old `.sr-only-focusable`, which only worked in combination with `.sr-only`, the renamed `.visually-hidden-focusable` can be used as a standalone class without `.visually-hidden`. [See #28720](https://github.com/twbs/bootstrap/pull/28720).
 
 ### Utilities
 
@@ -206,7 +206,7 @@ Badges were overhauled to better differentiate themselves from buttons and to be
 - **Todo:** Drop `.text-hide` as it's an antiquated method for hiding text that shouldn't be used anymore
 - **Todo:** Split utilities into property-value utility classes and helpers
 - Negative margin utilities are disabled by default. You can re-enable them by setting `$enable-negative-margins: true`, but keep in mind this can increase the file size quite a lot.
-- Renamed `.sr-only` and `.sr-only-focusable` to `.v-hidden` and `.v-hidden-focusable`.
+- Renamed `.sr-only` and `.sr-only-focusable` to `.visually-hidden` and `.visually-hidden-focusable`.
 
 ### Docs
 
