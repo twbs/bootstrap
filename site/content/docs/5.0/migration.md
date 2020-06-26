@@ -57,6 +57,7 @@ Changes to our source and compiled JavaScript files.
 
 - Dropped jQuery dependency and rewrote plugins to be in regular JavaScript.
 - Removed underscore from public static methods like `_getInstance()` → `getInstance()`.
+- Drop the use of `href` attributes to target element, except for our Scrollspy.
 
 ## Color system
 

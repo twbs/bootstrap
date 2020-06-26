@@ -72,7 +72,6 @@ class Collapse {
     this._element = element
     this._config = this._getConfig(config)
     this._triggerArray = SelectorEngine.find(
-      `${SELECTOR_DATA_TOGGLE}[href="#${element.id}"],` +
       `${SELECTOR_DATA_TOGGLE}[data-target="#${element.id}"]`
     )
 

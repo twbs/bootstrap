@@ -22,12 +22,12 @@ Click the buttons below to show and hide another element via class changes:
 - `.collapsing` is applied during transitions
 - `.collapse.show` shows content
 
-You can use a link with the `href` attribute, or a button with the `data-target` attribute. In both cases, the `data-toggle="collapse"` is required.
+You can use any element with the `data-target` attribute. In both cases, the `data-toggle="collapse"` is required.
 
 {{< example >}}
 <p>
-  <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-    Link with href
+  <a href="#" class="btn btn-primary" data-toggle="collapse" data-target="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    Link with data-target
   </a>
   <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
     Button with data-target
@@ -42,12 +42,12 @@ You can use a link with the `href` attribute, or a button with the `data-target`
 
 ## Multiple targets
 
-A `<button>` or `<a>` can show and hide multiple elements by referencing them with a selector in its `href` or `data-target` attribute.
-Multiple `<button>` or `<a>` can show and hide an element if they each reference it with their `href` or `data-target` attribute
+Any element can show and hide multiple elements by referencing them with a selector in its `data-target` attribute.
+Multiple `<button>` or `<a>` can show and hide an element if they each reference it with their `data-target` attribute
 
 {{< example >}}
 <p>
-  <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Toggle first element</a>
+  <a href="#" class="btn btn-primary" data-toggle="collapse" data-target="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Toggle first element</a>
   <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Toggle second element</button>
   <button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Toggle both elements</button>
 </p>

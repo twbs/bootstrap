@@ -121,7 +121,7 @@ class ScrollSpy {
     targets
       .map(element => {
         let target
-        const targetSelector = getSelectorFromElement(element)
+        const targetSelector = this._getSelectorFromElement(element)
 
         if (targetSelector) {
           target = SelectorEngine.findOne(targetSelector)
@@ -162,6 +162,18 @@ class ScrollSpy {
   }
 
   // Private
+
+  _getSelectorFromElement(element) {
+    let selector = getSelectorFromElement(element)
+
+    if (!selector) {
+      const hrefAttr = element.getAttribute('href')
+
+      selector = hrefAttr && hrefAttr !== '#' ? hrefAttr.trim() : null
+    }
+
+    return selector
+  }
 
   _getConfig(config) {
     config = {

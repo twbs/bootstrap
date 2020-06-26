@@ -849,7 +849,7 @@ The modal plugin toggles your hidden content on demand, via data attributes or J
 
 ### Via data attributes
 
-Activate a modal without writing JavaScript. Set `data-toggle="modal"` on a controller element, like a button, along with a `data-target="#foo"` or `href="#foo"` to target a specific modal to toggle.
+Activate a modal without writing JavaScript. Set `data-toggle="modal"` on a controller element, like a button, along with a `data-target="#foo"` to target a specific modal to toggle.
 
 {{< highlight html >}}
 <button type="button" data-toggle="modal" data-target="#myModal">Launch modal</button>

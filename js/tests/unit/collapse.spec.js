@@ -376,7 +376,7 @@ describe('Collapse', () => {
   describe('data-api', () => {
     it('should show multiple collapsed elements', done => {
       fixtureEl.innerHTML = [
-        '<a role="button" data-toggle="collapse" class="collapsed" href=".multi"></a>',
+        '<a href="#" role="button" data-toggle="collapse" class="collapsed" data-target=".multi"></a>',
         '<div id="collapse1" class="collapse multi"></div>',
         '<div id="collapse2" class="collapse multi"></div>'
       ].join('')
@@ -398,7 +398,7 @@ describe('Collapse', () => {
 
     it('should hide multiple collapsed elements', done => {
       fixtureEl.innerHTML = [
-        '<a role="button" data-toggle="collapse" href=".multi"></a>',
+        '<a href="#" role="button" data-toggle="collapse" data-target=".multi"></a>',
         '<div id="collapse1" class="collapse multi show"></div>',
         '<div id="collapse2" class="collapse multi show"></div>'
       ].join('')
@@ -466,11 +466,11 @@ describe('Collapse', () => {
       fixtureEl.innerHTML = [
         '<div id="accordion">',
         '  <div class="item">',
-        '    <a id="linkTrigger" data-toggle="collapse" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne"></a>',
+        '    <a id="linkTrigger" href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne"></a>',
         '    <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion"></div>',
         '  </div>',
         '  <div class="item">',
-        '    <a id="linkTriggerTwo" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"></a>',
+        '    <a id="linkTriggerTwo" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"></a>',
         '    <div id="collapseTwo" class="collapse show" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion"></div>',
         '  </div>',
         '</div>'
@@ -521,13 +521,13 @@ describe('Collapse', () => {
         '  <div class="row">',
         '    <div class="col-lg-6">',
         '      <div class="item">',
-        '        <a id="linkTrigger" data-toggle="collapse" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne"></a>',
+        '        <a id="linkTrigger" href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne"></a>',
         '        <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion"></div>',
         '      </div>',
         '    </div>',
         '    <div class="col-lg-6">',
         '      <div class="item">',
-        '        <a id="linkTriggerTwo" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"></a>',
+        '        <a id="linkTriggerTwo" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"></a>',
         '        <div id="collapseTwo" class="collapse show" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion"></div>',
         '      </div>',
         '    </div>',
@@ -647,18 +647,18 @@ describe('Collapse', () => {
       fixtureEl.innerHTML = [
         '<div id="accordion">',
         '  <div class="item">',
-        '    <a id="linkTrigger" data-toggle="collapse" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne"></a>',
+        '    <a id="linkTrigger" href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne"></a>',
         '    <div id="collapseOne" data-parent="#accordion" class="collapse" role="tabpanel" aria-labelledby="headingThree">',
         '      <div id="nestedAccordion">',
         '        <div class="item">',
-        '          <a id="nestedLinkTrigger" data-toggle="collapse" href="#nestedCollapseOne" aria-expanded="false" aria-controls="nestedCollapseOne"></a>',
+        '          <a id="nestedLinkTrigger" href="#" data-toggle="collapse" data-target="#nestedCollapseOne" aria-expanded="false" aria-controls="nestedCollapseOne"></a>',
         '          <div id="nestedCollapseOne" data-parent="#nestedAccordion" class="collapse" role="tabpanel" aria-labelledby="headingThree"></div>',
         '        </div>',
         '      </div>',
         '    </div>',
         '  </div>',
         '  <div class="item">',
-        '    <a id="linkTriggerTwo" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"></a>',
+        '    <a id="linkTriggerTwo" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"></a>',
         '    <div id="collapseTwo" data-parent="#accordion" class="collapse show" role="tabpanel" aria-labelledby="headingTwo"></div>',
         '  </div>',
         '</div>'
@@ -703,9 +703,9 @@ describe('Collapse', () => {
 
     it('should add "collapsed" class and set aria-expanded to triggers only when all the targeted collapse are hidden', done => {
       fixtureEl.innerHTML = [
-        '<a id="trigger1" role="button" data-toggle="collapse" href="#test1"></a>',
-        '<a id="trigger2" role="button" data-toggle="collapse" href="#test2"></a>',
-        '<a id="trigger3" role="button" data-toggle="collapse" href=".multi"></a>',
+        '<a id="trigger1" href="#" role="button" data-toggle="collapse" data-target="#test1"></a>',
+        '<a id="trigger2" href="#" role="button" data-toggle="collapse" data-target="#test2"></a>',
+        '<a id="trigger3" href="#" role="button" data-toggle="collapse" data-target=".multi"></a>',
         '<div id="test1" class="multi"></div>',
         '<div id="test2" class="multi"></div>'
       ].join('')

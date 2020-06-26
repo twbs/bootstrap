@@ -35,36 +35,6 @@ describe('Util', () => {
       expect(Util.getSelectorFromElement(testEl)).toEqual('.target')
     })
 
-    it('should get selector from href if no data-target set', () => {
-      fixtureEl.innerHTML = [
-        '<a id="test" href=".target"></a>',
-        '<div class="target"></div>'
-      ].join('')
-
-      const testEl = fixtureEl.querySelector('#test')
-
-      expect(Util.getSelectorFromElement(testEl)).toEqual('.target')
-    })
-
-    it('should get selector from href if data-target equal to #', () => {
-      fixtureEl.innerHTML = [
-        '<a id="test" data-target="#" href=".target"></a>',
-        '<div class="target"></div>'
-      ].join('')
-
-      const testEl = fixtureEl.querySelector('#test')
-
-      expect(Util.getSelectorFromElement(testEl)).toEqual('.target')
-    })
-
-    it('should return null if selector not found', () => {
-      fixtureEl.innerHTML = '<a id="test" href=".target"></a>'
-
-      const testEl = fixtureEl.querySelector('#test')
-
-      expect(Util.getSelectorFromElement(testEl)).toBeNull()
-    })
-
     it('should return null if no selector', () => {
       fixtureEl.innerHTML = '<div></div>'
 
@@ -86,19 +56,8 @@ describe('Util', () => {
       expect(Util.getElementFromSelector(testEl)).toEqual(fixtureEl.querySelector('.target'))
     })
 
-    it('should get element from href if no data-target set', () => {
-      fixtureEl.innerHTML = [
-        '<a id="test" href=".target"></a>',
-        '<div class="target"></div>'
-      ].join('')
-
-      const testEl = fixtureEl.querySelector('#test')
-
-      expect(Util.getElementFromSelector(testEl)).toEqual(fixtureEl.querySelector('.target'))
-    })
-
     it('should return null if element not found', () => {
-      fixtureEl.innerHTML = '<a id="test" href=".target"></a>'
+      fixtureEl.innerHTML = '<a id="test" data-target=".target"></a>'
 
       const testEl = fixtureEl.querySelector('#test')
 

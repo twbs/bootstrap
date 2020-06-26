@@ -64,13 +64,35 @@ describe('ScrollSpy', () => {
       expect(navEl.getAttribute('id')).not.toEqual(null)
     })
 
-    it('should not process element without target', () => {
+    it('should not process element without target and process elements with target inside href attribute', () => {
       fixtureEl.innerHTML = [
         '<nav id="navigation" class="navbar">',
         '  <ul class="navbar-nav">',
         '    <li class="nav-item active"><a class="nav-link" id="one-link" href="#">One</a></li>',
         '    <li class="nav-item"><a class="nav-link" id="two-link" href="#two">Two</a></li>',
         '    <li class="nav-item"><a class="nav-link" id="three-link" href="#three">Three</a></li>',
+        '  </ul>',
+        '</nav>',
+        '<div id="content" style="height: 200px; overflow-y: auto;">',
+        ' <div id="two" style="height: 300px;"></div>',
+        ' <div id="three" style="height: 10px;"></div>',
+        '</div>'
+      ].join('')
+
+      const scrollSpy = new ScrollSpy(fixtureEl.querySelector('#content'), {
+        target: '#navigation'
+      })
+
+      expect(scrollSpy._targets.length).toEqual(2)
+    })
+
+    it('should process element with target in data-target', () => {
+      fixtureEl.innerHTML = [
+        '<nav id="navigation" class="navbar">',
+        '  <ul class="navbar-nav">',
+        '    <li class="nav-item active"><a class="nav-link" id="one-link" href="#">One</a></li>',
+        '    <li class="nav-item"><a class="nav-link" id="two-link" href="#" data-target="#two">Two</a></li>',
+        '    <li class="nav-item"><a class="nav-link" id="three-link" href="#" data-target="#three">Three</a></li>',
         '  </ul>',
         '</nav>',
         '<div id="content" style="height: 200px; overflow-y: auto;">',
