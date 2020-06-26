@@ -2,7 +2,7 @@
  * Bootstrap Utilities v5.0.0-alpha1 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors
  * Copyright 2011-2020 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 .align-baseline {
   vertical-align: baseline !important;
@@ -327,6 +327,10 @@
 
 .justify-content-around {
   justify-content: space-around !important;
+}
+
+.justify-content-evenly {
+  justify-content: space-evenly !important;
 }
 
 .align-items-start {
@@ -979,6 +983,10 @@
   background-color: transparent !important;
 }
 
+.bg-gradient {
+  background-image: var(--bs-gradient) !important;
+}
+
 .text-wrap {
   white-space: normal !important;
 }
@@ -1009,6 +1017,7 @@
 
 .text-break {
   word-wrap: break-word !important;
+  word-break: break-word !important;
 }
 
 .font-monospace {
@@ -1183,6 +1192,9 @@
   }
   .justify-content-sm-around {
     justify-content: space-around !important;
+  }
+  .justify-content-sm-evenly {
+    justify-content: space-evenly !important;
   }
   .align-items-sm-start {
     align-items: flex-start !important;
@@ -1657,6 +1669,9 @@
   .justify-content-md-around {
     justify-content: space-around !important;
   }
+  .justify-content-md-evenly {
+    justify-content: space-evenly !important;
+  }
   .align-items-md-start {
     align-items: flex-start !important;
   }
@@ -2129,6 +2144,9 @@
   }
   .justify-content-lg-around {
     justify-content: space-around !important;
+  }
+  .justify-content-lg-evenly {
+    justify-content: space-evenly !important;
   }
   .align-items-lg-start {
     align-items: flex-start !important;
@@ -2603,6 +2621,9 @@
   .justify-content-xl-around {
     justify-content: space-around !important;
   }
+  .justify-content-xl-evenly {
+    justify-content: space-evenly !important;
+  }
   .align-items-xl-start {
     align-items: flex-start !important;
   }
@@ -3075,6 +3096,9 @@
   }
   .justify-content-xxl-around {
     justify-content: space-around !important;
+  }
+  .justify-content-xxl-evenly {
+    justify-content: space-evenly !important;
   }
   .align-items-xxl-start {
     align-items: flex-start !important;

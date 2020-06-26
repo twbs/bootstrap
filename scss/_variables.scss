@@ -385,8 +385,9 @@ $embed-responsive-aspect-ratios: (
 // stylelint-disable value-keyword-case
 $font-family-sans-serif:      system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
 $font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
-$font-family-base:            var(--bs-font-sans-serif) !default;
 // stylelint-enable value-keyword-case
+$font-family-base:            var(--bs-font-sans-serif) !default;
+$font-family-code:            var(--bs-font-monospace) !default;
 
 // $font-size-root effects the value of `rem`, which is used for as well font sizes, paddings and margins
 // $font-size-base effects the font size of the body text
@@ -446,9 +447,10 @@ $text-muted:                  $gray-600 !default;
 
 $initialism-font-size:        $small-font-size !default;
 
-$blockquote-small-color:      $gray-600 !default;
-$blockquote-small-font-size:  $small-font-size !default;
+$blockquote-margin-y:         $spacer !default;
 $blockquote-font-size:        $font-size-base * 1.25 !default;
+$blockquote-footer-color:     $gray-600 !default;
+$blockquote-footer-font-size: $small-font-size !default;
 
 $hr-margin-y:                 $spacer !default;
 $hr-color:                    inherit !default;
@@ -485,6 +487,8 @@ $table-cell-vertical-align:   top !default;
 $table-color:                 $body-color !default;
 $table-bg:                    transparent !default;
 
+$table-th-font-weight:        null !default;
+
 $table-striped-color:         $table-color !default;
 $table-striped-bg-factor:     .05 !default;
 $table-striped-bg:            rgba($black, $table-striped-bg-factor) !default;
@@ -503,7 +507,7 @@ $table-border-color:          $border-color !default;
 
 $table-striped-order:         odd !default;
 
-$table-group-seperator-color: currentColor !default;
+$table-group-separator-color: currentColor !default;
 
 $table-caption-color:         $text-muted !default;
 
@@ -910,7 +914,7 @@ $dropdown-border-color:             rgba($black, .15) !default;
 $dropdown-border-radius:            $border-radius !default;
 $dropdown-border-width:             $border-width !default;
 $dropdown-inner-border-radius:      subtract($dropdown-border-radius, $dropdown-border-width) !default;
-$dropdown-divider-bg:               $gray-200 !default;
+$dropdown-divider-bg:               $dropdown-border-color !default;
 $dropdown-divider-margin-y:         $spacer / 2 !default;
 $dropdown-box-shadow:               $box-shadow !default;
 

@@ -2,7 +2,7 @@
   padding: .625rem 0;
   background-color: $bd-purple-bright;
 
-  @include media-breakpoint-down(md) {
+  @include media-breakpoint-down(lg) {
     .navbar-nav-scroll {
       width: 100%;
 

@@ -370,6 +370,14 @@ These changes, and more, are demonstrated below.
 {{< partial "callout-warning-input-support.md" >}}
 {{< /callout >}}
 
+### Pointers on buttons
+
+Reboot includes an enhancement for `role="button"` to change the default cursor to `pointer`. Add this attribute to elements to help indicate elements are interactive. This role isn't necessary for `<button>` elements, which get their own `cursor` change.
+
+{{< example >}}
+<span role="button" tabindex="0">Non-button element button</span>
+{{< /example >}}
+
 ## Misc elements
 
 ### Address
@@ -397,8 +405,8 @@ The default `margin` on blockquotes is `1em 40px`, so we reset that to `0 0 1rem
 <div class="bd-example">
   <blockquote class="blockquote">
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-    <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
   </blockquote>
+  <p>Someone famous in <cite title="Source Title">Source Title</cite></p>
 </div>
 
 ### Inline elements

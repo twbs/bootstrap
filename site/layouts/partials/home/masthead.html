@@ -1,23 +1,19 @@
-<main class="bd-masthead mb-3 mb-md-5 border-bottom" id="content">
-  <div class="container">
-    <div class="row">
-      <div class="col-6 mx-auto col-md-4 order-md-2 col-lg-5">
-        {{ partial "icons/bootstrap-stack.svg" (dict "class" "img-fluid mb-3 mb-md-0" "width" "512" "height" "430") }}
+<main class="bd-masthead mb-3 mb-md-5" id="content">
+  <div class="container px-4 px-md-3">
+    <div class="row align-items-lg-center">
+      <div class="col-8 mx-auto col-md-4 order-md-2 col-lg-5">
+        {{ partial "icons/homepage-hero.svg" (dict "class" "img-fluid mb-3 mb-md-0" "width" "600" "height" "533") }}
       </div>
-      <div class="col-md-8 order-md-1 col-lg-6 text-center text-md-left">
-        <h1 class="mb-3 bd-text-purple-bright">Bootstrap</h1>
-        <p class="lead lead-lg">
-          Build responsive, mobile-first projects for the web with the world’s most popular open source front-end component library.
-        </p>
-        <p class="mb-4">
-          Quickly prototype your ideas, spin up internal tools, or build your entire production app or site with powerful features and customization like Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.
+      <div class="col-md-8 order-md-1 col-lg-7 text-center text-md-left">
+        <h1 class="mb-3">Build fast, responsive sites with Bootstrap</h1>
+        <p class="lead mb-4">
+          Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.
         </p>
 
         <div class="d-flex flex-column flex-md-row">
-          <a href="/docs/{{ .Site.Params.docs_version }}/getting-started/introduction/" class="btn btn-lg btn-bd-primary w-100 mb-3 mr-md-3" onclick="ga('send', 'event', 'Jumbotron actions', 'Get started', 'Get started');">Get started</a>
-          <a href="/docs/{{ .Site.Params.docs_version }}/getting-started/download/" class="btn btn-lg btn-outline-secondary w-100 mb-3" onclick="ga('send', 'event', 'Jumbotron actions', 'Download', 'Download {{ .Site.Params.current_version }}');">Download</a>
+          <a href="/docs/{{ .Site.Params.docs_version }}/getting-started/introduction/" class="btn btn-lg btn-bd-primary mb-3 mr-md-3" onclick="ga('send', 'event', 'Jumbotron actions', 'Get started', 'Get started');">Get started</a>
+          <a href="/docs/{{ .Site.Params.docs_version }}/getting-started/download/" class="btn btn-lg btn-outline-secondary mb-3" onclick="ga('send', 'event', 'Jumbotron actions', 'Download', 'Download {{ .Site.Params.current_version }}');">Download</a>
         </div>
-        <hr class="half-rule">
         <p class="text-muted mb-0">
           Currently <strong>v{{ .Site.Params.current_version }}</strong>
           <span class="px-1">&middot;</span>

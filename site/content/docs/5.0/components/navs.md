@@ -187,14 +187,14 @@ Force your `.nav`'s contents to extend the full available width one of two modif
 </ul>
 {{< /example >}}
 
-When using a `<nav>`-based navigation, be sure to include `.nav-item` on the anchors.
+When using a `<nav>`-based navigation, you can safely omit `.nav-item` as only `.nav-link` is required for styling `<a>` elements.
 
 {{< example >}}
 <nav class="nav nav-pills nav-fill">
-  <a class="nav-item nav-link active" aria-current="page" href="#">Active</a>
-  <a class="nav-item nav-link" href="#">Much longer nav link</a>
-  <a class="nav-item nav-link" href="#">Link</a>
-  <a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+  <a class="nav-link active" aria-current="page" href="#">Active</a>
+  <a class="nav-link" href="#">Much longer nav link</a>
+  <a class="nav-link" href="#">Link</a>
+  <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
 </nav>
 {{< /example >}}
 
@@ -217,14 +217,14 @@ For equal-width elements, use `.nav-justified`. All horizontal space will be occ
 </ul>
 {{< /example >}}
 
-Similar to the `.nav-fill` example using a `<nav>`-based navigation, be sure to include `.nav-item` on the anchors.
+Similar to the `.nav-fill` example using a `<nav>`-based navigation.
 
 {{< example >}}
 <nav class="nav nav-pills nav-justified">
-  <a class="nav-item nav-link active" aria-current="page" href="#">Active</a>
-  <a class="nav-item nav-link" href="#">Much longer nav link</a>
-  <a class="nav-item nav-link" href="#">Link</a>
-  <a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+  <a class="nav-link active" aria-current="page" href="#">Active</a>
+  <a class="nav-link" href="#">Much longer nav link</a>
+  <a class="nav-link" href="#">Link</a>
+  <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
 </nav>
 
 {{< /example >}}
@@ -360,9 +360,9 @@ To help fit your needs, this works with `<ul>`-based markup, as shown above, or 
 <div class="bd-example">
   <nav>
     <div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
-      <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
-      <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
-      <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
+      <a class="nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
+      <a class="nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
+      <a class="nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
     </div>
   </nav>
   <div class="tab-content" id="nav-tabContent">
@@ -381,9 +381,9 @@ To help fit your needs, this works with `<ul>`-based markup, as shown above, or 
 {{< highlight html >}}
 <nav>
   <div class="nav nav-tabs" id="nav-tab" role="tablist">
-    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
-    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
-    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
+    <a class="nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
+    <a class="nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
+    <a class="nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
   </div>
 </nav>
 <div class="tab-content" id="nav-tabContent">
