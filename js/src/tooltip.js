@@ -491,7 +491,7 @@ class Tooltip {
       offset.fn = data => {
         data.offsets = {
           ...data.offsets,
-          ...this.config.offset(data.offsets, this.element) || {}
+          ...(this.config.offset(data.offsets, this.element) || {})
         }
 
         return data
@@ -689,7 +689,7 @@ class Tooltip {
     config = {
       ...this.constructor.Default,
       ...dataAttributes,
-      ...typeof config === 'object' && config ? config : {}
+      ...(typeof config === 'object' && config ? config : {})
     }
 
     if (typeof config.delay === 'number') {

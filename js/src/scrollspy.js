@@ -160,7 +160,7 @@ class ScrollSpy {
   _getConfig(config) {
     config = {
       ...Default,
-      ...typeof config === 'object' && config ? config : {}
+      ...(typeof config === 'object' && config ? config : {})
     }
 
     if (typeof config.target !== 'string' && isElement(config.target)) {

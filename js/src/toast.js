@@ -169,7 +169,7 @@ class Toast {
     config = {
       ...Default,
       ...Manipulator.getDataAttributes(this._element),
-      ...typeof config === 'object' && config ? config : {}
+      ...(typeof config === 'object' && config ? config : {})
     }
 
     typeCheckConfig(NAME, config, this.constructor.DefaultType)
