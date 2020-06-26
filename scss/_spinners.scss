@@ -3,7 +3,7 @@
 //
 
 @keyframes spinner-border {
-  to { transform: rotate(360deg); }
+  to { transform: rotate(360deg) #{"/* rtl:ignore */"}; }
 }
 
 .spinner-border {
