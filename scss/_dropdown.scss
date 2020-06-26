@@ -17,6 +17,8 @@
 .dropdown-menu {
   position: absolute;
   top: 100%;
+
+  /* rtl:ignore */
   left: 0;
   z-index: $zindex-dropdown;
   display: none; // none by default, but block on "open" of the menu
@@ -34,6 +36,7 @@
   @include box-shadow($dropdown-box-shadow);
 }
 
+/* rtl:begin:ignore */
 // scss-docs-start responsive-breakpoints
 @each $breakpoint in map-keys($grid-breakpoints) {
   @include media-breakpoint-up($breakpoint) {
@@ -52,6 +55,8 @@
 }
 // scss-docs-end responsive-breakpoints
 
+/* rtl:end:ignore */
+
 // Allow for dropdowns to go bottom up (aka, dropup-menu)
 // Just add .dropup after the standard .dropdown class and you're set.
 .dropup {
@@ -67,6 +72,7 @@
   }
 }
 
+/* rtl:begin:ignore */
 .dropright {
   .dropdown-menu {
     top: 0;
@@ -112,6 +118,8 @@
     bottom: auto;
   }
 }
+
+/* rtl:end:ignore */
 
 // Dividers (basically an `<hr>`) within the dropdown
 .dropdown-divider {

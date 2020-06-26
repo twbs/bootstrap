@@ -1,3 +1,5 @@
+
+/* rtl:begin:ignore */
 // Base class
 .tooltip {
   position: absolute;
@@ -103,6 +105,8 @@
     @extend .bs-tooltip-left;
   }
 }
+
+/* rtl:end:ignore */
 
 // Wrapper for the tooltip content
 .tooltip-inner {
