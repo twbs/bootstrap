@@ -227,7 +227,7 @@ describe('Dropdown', () => {
       fixtureEl.innerHTML = [
         '<div class="dropdown">',
         '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>',
-        '  <div class="dropdown-menu dropdown-menu-right">',
+        '  <div class="dropdown-menu dropdown-menu-end">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
         '</div>'
@@ -273,7 +273,7 @@ describe('Dropdown', () => {
       fixtureEl.innerHTML = [
         '<div class="dropup">',
         '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>',
-        '  <div class="dropdown-menu dropdown-menu-right">',
+        '  <div class="dropdown-menu dropdown-menu-end">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
         '  </div>',
         '</div>'
@@ -292,9 +292,9 @@ describe('Dropdown', () => {
       dropdown.toggle()
     })
 
-    it('should toggle a dropright', done => {
+    it('should toggle a dropend', done => {
       fixtureEl.innerHTML = [
-        '<div class="dropright">',
+        '<div class="dropend">',
         '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
@@ -303,10 +303,10 @@ describe('Dropdown', () => {
       ].join('')
 
       const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
-      const droprightEl = fixtureEl.querySelector('.dropright')
+      const dropendEl = fixtureEl.querySelector('.dropend')
       const dropdown = new Dropdown(btnDropdown)
 
-      droprightEl.addEventListener('shown.bs.dropdown', () => {
+      dropendEl.addEventListener('shown.bs.dropdown', () => {
         expect(btnDropdown.classList.contains('show')).toEqual(true)
         expect(btnDropdown.getAttribute('aria-expanded')).toEqual('true')
         done()
@@ -315,9 +315,9 @@ describe('Dropdown', () => {
       dropdown.toggle()
     })
 
-    it('should toggle a dropleft', done => {
+    it('should toggle a dropstart', done => {
       fixtureEl.innerHTML = [
-        '<div class="dropleft">',
+        '<div class="dropstart">',
         '  <button class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>',
         '  <div class="dropdown-menu">',
         '    <a class="dropdown-item" href="#">Secondary link</a>',
@@ -326,10 +326,10 @@ describe('Dropdown', () => {
       ].join('')
 
       const btnDropdown = fixtureEl.querySelector('[data-bs-toggle="dropdown"]')
-      const dropleftEl = fixtureEl.querySelector('.dropleft')
+      const dropstartEl = fixtureEl.querySelector('.dropstart')
       const dropdown = new Dropdown(btnDropdown)
 
-      dropleftEl.addEventListener('shown.bs.dropdown', () => {
+      dropstartEl.addEventListener('shown.bs.dropdown', () => {
         expect(btnDropdown.classList.contains('show')).toEqual(true)
         expect(btnDropdown.getAttribute('aria-expanded')).toEqual('true')
         done()

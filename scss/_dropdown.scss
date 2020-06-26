@@ -1,8 +1,8 @@
 // The dropdown wrapper (`<div>`)
 .dropup,
-.dropright,
+.dropend,
 .dropdown,
-.dropleft {
+.dropstart {
   position: relative;
 }
 
@@ -39,14 +39,14 @@
   @include media-breakpoint-up($breakpoint) {
     $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
-    .dropdown-menu#{$infix}-left {
-      right: auto;
-      left: 0;
+    .dropdown-menu#{$infix}-start {
+      right: auto #{"/* rtl:ignore */"};
+      left: 0 #{"/* rtl:ignore */"};
     }
 
-    .dropdown-menu#{$infix}-right {
-      right: 0;
-      left: auto;
+    .dropdown-menu#{$infix}-end {
+      right: 0 #{"/* rtl:ignore */"};
+      left: auto #{"/* rtl:ignore */"};
     }
   }
 }
@@ -67,7 +67,7 @@
   }
 }
 
-.dropright {
+.dropend {
   .dropdown-menu {
     top: 0;
     right: auto;
@@ -77,14 +77,14 @@
   }
 
   .dropdown-toggle {
-    @include caret(right);
+    @include caret(end);
     &::after {
       vertical-align: 0;
     }
   }
 }
 
-.dropleft {
+.dropstart {
   .dropdown-menu {
     top: 0;
     right: 100%;
@@ -94,7 +94,7 @@
   }
 
   .dropdown-toggle {
-    @include caret(left);
+    @include caret(start);
     &::before {
       vertical-align: 0;
     }
@@ -110,8 +110,10 @@
   &[x-placement^="left"] {
     right: auto;
     bottom: auto;
+    left: auto;
   }
 }
+
 
 // Dividers (basically an `<hr>`) within the dropdown
 .dropdown-divider {
