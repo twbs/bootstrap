@@ -6,7 +6,7 @@ Please take a moment to review this document in order to make the contribution
 process easy and effective for everyone involved.
 
 Following these guidelines helps to communicate that you respect the time of
-the developers managing and developing this open source project. In return,
+the developers managing and developing this open-source project. In return,
 they should reciprocate that respect in addressing your issue or assessing
 patches and features.
 
@@ -20,9 +20,9 @@ restrictions:
 
 * Please **do not** use the issue tracker for personal support requests.  Stack
   Overflow ([`bootstrap-5`](https://stackoverflow.com/questions/tagged/bootstrap-5) tag),
-  [Slack](https://bootstrap-slack.herokuapp.com/) or [IRC](README.md#community) are better places to get help.
+  [Slack](https://bootstrap-slack.herokuapp.com/), or [IRC](README.md#community) are better places to get help.
 
-* Please **do not** derail or troll issues. Keep the discussion on topic and
+* Please **do not** derail or troll issues. Keep the discussion on the topic and
   respect the opinions of others.
 
 * Please **do not** post comments consisting solely of "+1" or ":thumbsup:".
@@ -65,7 +65,7 @@ Guidelines for bug reports:
    reported.
 
 2. **Check if the issue has been fixed** &mdash; try to reproduce it using the
-   latest `main` (or `v4-dev` branch if the issue is about v4) in the repository.
+   latest `main` (or `v4-dev` branch, if the issue is about v4) in the repository.
 
 3. **Isolate the problem** &mdash; ideally create a [reduced test
    case](https://css-tricks.com/reduced-test-cases/) and a live example.
