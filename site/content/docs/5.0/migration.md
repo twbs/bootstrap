@@ -150,7 +150,7 @@ Badges were overhauled to better differentiate themselves from buttons and to be
 
 ### Buttons
 
-- The checkbox/radio toggle is removed from the button plugin in favour of a CSS only solution, which is documented in the [form checks]({{< docsref "/forms/checks#toggle-buttons" >}}) docs. The `.btn-check` class can be added to inputs, any label with `.btn` and modifier class can be used to theme the labels. [See #30650](https://github.com/twbs/bootstrap/pull/30650).
+- The checkbox/radio toggle is removed from the button plugin in favour of a CSS only solution, which is documented in the [form checks and radios]({{< docsref "/forms/checks-radios#toggle-buttons" >}}) docs. The `.btn-check` class can be added to inputs, any label with `.btn` and modifier class can be used to theme the labels. [See #30650](https://github.com/twbs/bootstrap/pull/30650).
 
 ### Cards
 
