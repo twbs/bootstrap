@@ -294,19 +294,19 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
   </thead>
   <tbody>
     <tr>
-      <td>animation</td>
+      <td><code>animation</code></td>
       <td>boolean</td>
-      <td>true</td>
+      <td><code>true</code></td>
       <td>Apply a CSS fade transition to the toast</td>
     </tr>
     <tr>
-      <td>autohide</td>
+      <td><code>autohide</code></td>
       <td>boolean</td>
-      <td>true</td>
+      <td><code>true</code></td>
       <td>Auto hide the toast</td>
     </tr>
     <tr>
-      <td>delay</td>
+      <td><code>delay</code></td>
       <td>number</td>
       <td>
         <code>500</code>
@@ -352,19 +352,19 @@ Hides an element's toast. Your toast will remain on the DOM but won't show anymo
   </thead>
   <tbody>
     <tr>
-      <td>show.bs.toast</td>
+      <td><code>show.bs.toast</code></td>
       <td>This event fires immediately when the <code>show</code> instance method is called.</td>
     </tr>
     <tr>
-      <td>shown.bs.toast</td>
+      <td><code>shown.bs.toast</code></td>
       <td>This event is fired when the toast has been made visible to the user.</td>
     </tr>
     <tr>
-      <td>hide.bs.toast</td>
+      <td><code>hide.bs.toast</code></td>
       <td>This event is fired immediately when the <code>hide</code> instance method has been called.</td>
     </tr>
     <tr>
-      <td>hidden.bs.toast</td>
+      <td><code>hidden.bs.toast</code></td>
       <td>This event is fired when the toast has finished being hidden from the user.</td>
     </tr>
   </tbody>
