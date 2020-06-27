@@ -56,9 +56,10 @@
 }
 
 .modal-dialog-scrollable {
-  max-height: subtract(100%, $modal-dialog-margin * 2);
+  height: subtract(100%, $modal-dialog-margin * 2);
 
   .modal-content {
+    max-height: 100%;
     overflow: hidden;
   }
 
@@ -177,7 +178,7 @@
   }
 
   .modal-dialog-scrollable {
-    max-height: subtract(100%, $modal-dialog-margin-y-sm-up * 2);
+    height: subtract(100%, $modal-dialog-margin-y-sm-up * 2);
   }
 
   .modal-dialog-centered {
