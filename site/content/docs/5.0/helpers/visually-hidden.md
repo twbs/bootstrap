@@ -3,6 +3,7 @@ layout: docs
 title: Visually hidden
 description: Use these helpers to visually hide elements but keep them accessible to assistive technologies.
 group: helpers
+aliases: "/docs/5.0/helpers/screen-readers/"
 ---
 
 Visually hide an element while still allowing it to be exposed to assistive technologies (such as screen readers) with `.sr-only`. Use `.sr-only-focusable` to visually hide an element by default, but to display it when it's focused (e.g. by a keyboard-only user). Can also be used as mixins.
