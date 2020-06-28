@@ -396,6 +396,50 @@ class Tooltip {
     element.innerHTML = this.config.template
 
     this.tip = element.children[0]
+
+    const triggers = this.config.trigger.split(' ')
+    let isFocusTrigger = false
+
+    triggers.forEach(trigger => {
+      isFocusTrigger = trigger === TRIGGER_FOCUS
+    })
+
+    if (isFocusTrigger) {
+      EventHandler.on(this.tip,
+        this.constructor.Event.MOUSEENTER,
+        this.config.selector,
+        () => {
+          const inFlag = Manipulator.getDataAttribute(this.tip, MOUSEIN_FLAG)
+
+          if (!inFlag) {
+            Manipulator.setDataAttribute(this.tip, MOUSEIN_FLAG, true)
+          }
+        }
+      )
+
+      EventHandler.on(this.tip,
+        this.constructor.Event.MOUSELEAVE,
+        this.config.selector,
+        e => {
+          const inFlag = Manipulator.getDataAttribute(this.tip, MOUSEIN_FLAG)
+          const check = (
+            e.toElement.classList.contains('popover-body') ||
+            e.toElement.classList.contains('popover-header')
+          )
+
+          if (inFlag) {
+            Manipulator.removeDataAttribute(this.tip, MOUSEIN_FLAG)
+          }
+
+          if (!check) {
+            // If the mouse did not move to a different part of the popover, refocus onto the
+            // button to ensure the dismiss behaviour functions correctly
+            this.element.focus()
+          }
+        }
+      )
+    }
+
     return this.tip
   }
 
@@ -549,44 +593,6 @@ class Tooltip {
           this.config.selector,
           event => this._leave(event)
         )
-
-        const tip = this.getTipElement()
-
-        if (eventOut === this.constructor.Event.FOCUSOUT) {
-          EventHandler.on(tip,
-            this.constructor.Event.MOUSEENTER,
-            this.config.selector,
-            () => {
-              const inFlag = Manipulator.getDataAttribute(tip, MOUSEIN_FLAG)
-
-              if (!inFlag) {
-                Manipulator.setDataAttribute(tip, MOUSEIN_FLAG, true)
-              }
-            }
-          )
-
-          EventHandler.on(tip,
-            this.constructor.Event.MOUSELEAVE,
-            this.config.selector,
-            e => {
-              const inFlag = Manipulator.getDataAttribute(tip, MOUSEIN_FLAG)
-              const check = (
-                e.toElement.classList.contains('popover-body') ||
-                e.toElement.classList.contains('popover-header')
-              )
-
-              if (inFlag) {
-                Manipulator.removeDataAttribute(tip, MOUSEIN_FLAG)
-              }
-
-              if (!check) {
-                // If the mouse did not move to a different part of the popover, refocus onto the
-                // button to ensure the dismiss behaviour functions correctly
-                this.element.focus()
-              }
-            }
-          )
-        }
       }
     })
 

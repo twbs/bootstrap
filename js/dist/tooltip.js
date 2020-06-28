@@ -600,6 +600,8 @@
     };
 
     _proto.getTipElement = function getTipElement() {
+      var _this3 = this;
+
       if (this.tip) {
         return this.tip;
       }
@@ -607,6 +609,36 @@
       var element = document.createElement('div');
       element.innerHTML = this.config.template;
       this.tip = element.children[0];
+      var triggers = this.config.trigger.split(' ');
+      var isFocusTrigger = false;
+      triggers.forEach(function (trigger) {
+        isFocusTrigger = trigger === TRIGGER_FOCUS;
+      });
+
+      if (isFocusTrigger) {
+        EventHandler.on(this.tip, this.constructor.Event.MOUSEENTER, this.config.selector, function () {
+          var inFlag = Manipulator.getDataAttribute(_this3.tip, MOUSEIN_FLAG);
+
+          if (!inFlag) {
+            Manipulator.setDataAttribute(_this3.tip, MOUSEIN_FLAG, true);
+          }
+        });
+        EventHandler.on(this.tip, this.constructor.Event.MOUSELEAVE, this.config.selector, function (e) {
+          var inFlag = Manipulator.getDataAttribute(_this3.tip, MOUSEIN_FLAG);
+          var check = e.toElement.classList.contains('popover-body') || e.toElement.classList.contains('popover-header');
+
+          if (inFlag) {
+            Manipulator.removeDataAttribute(_this3.tip, MOUSEIN_FLAG);
+          }
+
+          if (!check) {
+            // If the mouse did not move to a different part of the popover, refocus onto the
+            // button to ensure the dismiss behaviour functions correctly
+            _this3.element.focus();
+          }
+        });
+      }
+
       return this.tip;
     };
 
@@ -662,7 +694,7 @@
     ;
 
     _proto._getPopperConfig = function _getPopperConfig(attachment) {
-      var _this3 = this;
+      var _this4 = this;
 
       var defaultBsConfig = {
         placement: attachment,
@@ -680,11 +712,11 @@
         },
         onCreate: function onCreate(data) {
           if (data.originalPlacement !== data.placement) {
-            _this3._handlePopperPlacementChange(data);
+            _this4._handlePopperPlacementChange(data);
           }
         },
         onUpdate: function onUpdate(data) {
-          return _this3._handlePopperPlacementChange(data);
+          return _this4._handlePopperPlacementChange(data);
         }
       };
       return _extends({}, defaultBsConfig, this.config.popperConfig);
@@ -695,13 +727,13 @@
     };
 
     _proto._getOffset = function _getOffset() {
-      var _this4 = this;
+      var _this5 = this;
 
       var offset = {};
 
       if (typeof this.config.offset === 'function') {
         offset.fn = function (data) {
-          data.offsets = _extends({}, data.offsets, _this4.config.offset(data.offsets, _this4.element) || {});
+          data.offsets = _extends({}, data.offsets, _this5.config.offset(data.offsets, _this5.element) || {});
           return data;
         };
       } else {
@@ -728,55 +760,29 @@
     };
 
     _proto._setListeners = function _setListeners() {
-      var _this5 = this;
+      var _this6 = this;
 
       var triggers = this.config.trigger.split(' ');
       triggers.forEach(function (trigger) {
         if (trigger === 'click') {
-          EventHandler.on(_this5.element, _this5.constructor.Event.CLICK, _this5.config.selector, function (event) {
-            return _this5.toggle(event);
+          EventHandler.on(_this6.element, _this6.constructor.Event.CLICK, _this6.config.selector, function (event) {
+            return _this6.toggle(event);
           });
         } else if (trigger !== TRIGGER_MANUAL) {
-          var eventIn = trigger === TRIGGER_HOVER ? _this5.constructor.Event.MOUSEENTER : _this5.constructor.Event.FOCUSIN;
-          var eventOut = trigger === TRIGGER_HOVER ? _this5.constructor.Event.MOUSELEAVE : _this5.constructor.Event.FOCUSOUT;
-          EventHandler.on(_this5.element, eventIn, _this5.config.selector, function (event) {
-            return _this5._enter(event);
+          var eventIn = trigger === TRIGGER_HOVER ? _this6.constructor.Event.MOUSEENTER : _this6.constructor.Event.FOCUSIN;
+          var eventOut = trigger === TRIGGER_HOVER ? _this6.constructor.Event.MOUSELEAVE : _this6.constructor.Event.FOCUSOUT;
+          EventHandler.on(_this6.element, eventIn, _this6.config.selector, function (event) {
+            return _this6._enter(event);
           });
-          EventHandler.on(_this5.element, eventOut, _this5.config.selector, function (event) {
-            return _this5._leave(event);
+          EventHandler.on(_this6.element, eventOut, _this6.config.selector, function (event) {
+            return _this6._leave(event);
           });
-
-          var tip = _this5.getTipElement();
-
-          if (eventOut === _this5.constructor.Event.FOCUSOUT) {
-            EventHandler.on(tip, _this5.constructor.Event.MOUSEENTER, _this5.config.selector, function () {
-              var inFlag = Manipulator.getDataAttribute(tip, MOUSEIN_FLAG);
-
-              if (!inFlag) {
-                Manipulator.setDataAttribute(tip, MOUSEIN_FLAG, true);
-              }
-            });
-            EventHandler.on(tip, _this5.constructor.Event.MOUSELEAVE, _this5.config.selector, function (e) {
-              var inFlag = Manipulator.getDataAttribute(tip, MOUSEIN_FLAG);
-              var check = e.toElement.classList.contains('popover-body') || e.toElement.classList.contains('popover-header');
-
-              if (inFlag) {
-                Manipulator.removeDataAttribute(tip, MOUSEIN_FLAG);
-              }
-
-              if (!check) {
-                // If the mouse did not move to a different part of the popover, refocus onto the
-                // button to ensure the dismiss behaviour functions correctly
-                _this5.element.focus();
-              }
-            });
-          }
         }
       });
 
       this._hideModalHandler = function () {
-        if (_this5.element) {
-          _this5.hide();
+        if (_this6.element) {
+          _this6.hide();
         }
       };
 
