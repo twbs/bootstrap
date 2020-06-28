@@ -3406,6 +3406,7 @@ var TRIGGER_HOVER = 'hover';
 var TRIGGER_FOCUS = 'focus';
 var TRIGGER_CLICK = 'click';
 var TRIGGER_MANUAL = 'manual';
+var MOUSEIN_FLAG = 'mousein';
 /**
  * ------------------------------------------------------------------------
  * Class Definition
@@ -3799,18 +3800,18 @@ var Tooltip = /*#__PURE__*/function () {
 
         if (eventOut === _this5.constructor.Event.FOCUSOUT) {
           EventHandler.on(tip, _this5.constructor.Event.MOUSEENTER, _this5.config.selector, function () {
-            var inFlag = Manipulator.getDataAttribute(tip, 'mousein');
+            var inFlag = Manipulator.getDataAttribute(tip, MOUSEIN_FLAG);
 
             if (!inFlag) {
-              Manipulator.setDataAttribute(tip, 'mousein', true);
+              Manipulator.setDataAttribute(tip, MOUSEIN_FLAG, true);
             }
           });
           EventHandler.on(tip, _this5.constructor.Event.MOUSELEAVE, _this5.config.selector, function (e) {
-            var inFlag = Manipulator.getDataAttribute(tip, 'mousein');
+            var inFlag = Manipulator.getDataAttribute(tip, MOUSEIN_FLAG);
             var check = e.toElement.classList.contains('popover-body') || e.toElement.classList.contains('popover-header');
 
             if (inFlag) {
-              Manipulator.removeDataAttribute(tip, 'mousein');
+              Manipulator.removeDataAttribute(tip, MOUSEIN_FLAG);
             }
 
             if (!check) {
@@ -3888,7 +3889,7 @@ var Tooltip = /*#__PURE__*/function () {
     context = context || Data.getData(event.delegateTarget, dataKey);
     var tip = this.getTipElement();
 
-    if (Manipulator.getDataAttribute(tip, 'mousein')) {
+    if (Manipulator.getDataAttribute(tip, MOUSEIN_FLAG)) {
       return;
     }
 

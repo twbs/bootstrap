@@ -115,6 +115,8 @@ const TRIGGER_FOCUS = 'focus'
 const TRIGGER_CLICK = 'click'
 const TRIGGER_MANUAL = 'manual'
 
+const MOUSEIN_FLAG = 'mousein'
+
 /**
  * ------------------------------------------------------------------------
  * Class Definition
@@ -555,10 +557,10 @@ class Tooltip {
             this.constructor.Event.MOUSEENTER,
             this.config.selector,
             () => {
-              const inFlag = Manipulator.getDataAttribute(tip, 'mousein')
+              const inFlag = Manipulator.getDataAttribute(tip, MOUSEIN_FLAG)
 
               if (!inFlag) {
-                Manipulator.setDataAttribute(tip, 'mousein', true)
+                Manipulator.setDataAttribute(tip, MOUSEIN_FLAG, true)
               }
             }
           )
@@ -567,14 +569,14 @@ class Tooltip {
             this.constructor.Event.MOUSELEAVE,
             this.config.selector,
             e => {
-              const inFlag = Manipulator.getDataAttribute(tip, 'mousein')
+              const inFlag = Manipulator.getDataAttribute(tip, MOUSEIN_FLAG)
               const check = (
                 e.toElement.classList.contains('popover-body') ||
                 e.toElement.classList.contains('popover-header')
               )
 
               if (inFlag) {
-                Manipulator.removeDataAttribute(tip, 'mousein')
+                Manipulator.removeDataAttribute(tip, MOUSEIN_FLAG)
               }
 
               if (!check) {
@@ -669,7 +671,7 @@ class Tooltip {
 
     const tip = this.getTipElement()
 
-    if (Manipulator.getDataAttribute(tip, 'mousein')) {
+    if (Manipulator.getDataAttribute(tip, MOUSEIN_FLAG)) {
       return
     }
 
