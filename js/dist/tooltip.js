@@ -193,7 +193,7 @@
     return false;
   };
 
-  var DefaultWhitelist = {
+  var DefaultAllowlist = {
     // Global attributes allowed on any supplied element below.
     '*': ['class', 'dir', 'id', 'lang', 'role', ARIA_ATTRIBUTE_PATTERN],
     a: ['target', 'href', 'title', 'rel'],
@@ -226,7 +226,7 @@
     u: [],
     ul: []
   };
-  function sanitizeHtml(unsafeHtml, whiteList, sanitizeFn) {
+  function sanitizeHtml(unsafeHtml, allowList, sanitizeFn) {
     var _ref;
 
     if (!unsafeHtml.length) {
@@ -239,7 +239,7 @@
 
     var domParser = new window.DOMParser();
     var createdDocument = domParser.parseFromString(unsafeHtml, 'text/html');
-    var whitelistKeys = Object.keys(whiteList);
+    var allowlistKeys = Object.keys(allowList);
 
     var elements = (_ref = []).concat.apply(_ref, createdDocument.body.querySelectorAll('*'));
 
@@ -249,16 +249,16 @@
       var el = elements[i];
       var elName = el.nodeName.toLowerCase();
 
-      if (whitelistKeys.indexOf(elName) === -1) {
+      if (allowlistKeys.indexOf(elName) === -1) {
         el.parentNode.removeChild(el);
         return "continue";
       }
 
       var attributeList = (_ref2 = []).concat.apply(_ref2, el.attributes);
 
-      var whitelistedAttributes = [].concat(whiteList['*'] || [], whiteList[elName] || []);
+      var allowedAttributes = [].concat(allowList['*'] || [], allowList[elName] || []);
       attributeList.forEach(function (attr) {
-        if (!allowedAttribute(attr, whitelistedAttributes)) {
+        if (!allowedAttribute(attr, allowedAttributes)) {
           el.removeAttribute(attr.nodeName);
         }
       });
@@ -273,11 +273,7 @@
     return createdDocument.body.innerHTML;
   }
 
-  function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-  function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-  function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
   function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
@@ -294,7 +290,7 @@
   var EVENT_KEY = "." + DATA_KEY;
   var CLASS_PREFIX = 'bs-tooltip';
   var BSCLS_PREFIX_REGEX = new RegExp("(^|\\s)" + CLASS_PREFIX + "\\S+", 'g');
-  var DISALLOWED_ATTRIBUTES = ['sanitize', 'whiteList', 'sanitizeFn'];
+  var DISALLOWED_ATTRIBUTES = ['sanitize', 'allowList', 'sanitizeFn'];
   var DefaultType = {
     animation: 'boolean',
     template: 'string',
@@ -310,7 +306,7 @@
     boundary: '(string|element)',
     sanitize: 'boolean',
     sanitizeFn: '(null|function)',
-    whiteList: 'object',
+    allowList: 'object',
     popperConfig: '(null|object)'
   };
   var AttachmentMap = {
@@ -335,7 +331,7 @@
     boundary: 'scrollParent',
     sanitize: true,
     sanitizeFn: null,
-    whiteList: DefaultWhitelist,
+    allowList: DefaultAllowlist,
     popperConfig: null
   };
   var Event$1 = {
@@ -411,11 +407,11 @@
 
       if (event) {
         var dataKey = this.constructor.DATA_KEY;
-        var context = Data.getData(event.target, dataKey);
+        var context = Data.getData(event.delegateTarget, dataKey);
 
         if (!context) {
-          context = new this.constructor(event.target, this._getDelegateConfig());
-          Data.setData(event.target, dataKey, context);
+          context = new this.constructor(event.delegateTarget, this._getDelegateConfig());
+          Data.setData(event.delegateTarget, dataKey, context);
         }
 
         context._activeTrigger.click = !context._activeTrigger.click;
@@ -644,7 +640,7 @@
 
       if (this.config.html) {
         if (this.config.sanitize) {
-          content = sanitizeHtml(content, this.config.whiteList, this.config.sanitizeFn);
+          content = sanitizeHtml(content, this.config.allowList, this.config.sanitizeFn);
         }
 
         element.innerHTML = content;
@@ -690,7 +686,7 @@
           return _this3._handlePopperPlacementChange(data);
         }
       };
-      return _objectSpread(_objectSpread({}, defaultBsConfig), this.config.popperConfig);
+      return _extends({}, defaultBsConfig, this.config.popperConfig);
     };
 
     _proto._addAttachmentClass = function _addAttachmentClass(attachment) {
@@ -704,7 +700,7 @@
 
       if (typeof this.config.offset === 'function') {
         offset.fn = function (data) {
-          data.offsets = _objectSpread(_objectSpread({}, data.offsets), _this4.config.offset(data.offsets, _this4.element) || {});
+          data.offsets = _extends({}, data.offsets, _this4.config.offset(data.offsets, _this4.element) || {});
           return data;
         };
       } else {
@@ -748,6 +744,32 @@
           EventHandler.on(_this5.element, eventOut, _this5.config.selector, function (event) {
             return _this5._leave(event);
           });
+
+          var tip = _this5.getTipElement();
+
+          if (eventOut === _this5.constructor.Event.FOCUSOUT) {
+            EventHandler.on(tip, _this5.constructor.Event.MOUSEENTER, _this5.config.selector, function () {
+              var inFlag = Manipulator.getDataAttribute(tip, 'mousein');
+
+              if (!inFlag) {
+                Manipulator.setDataAttribute(tip, 'mousein', true);
+              }
+            });
+            EventHandler.on(tip, _this5.constructor.Event.MOUSELEAVE, _this5.config.selector, function (e) {
+              var inFlag = Manipulator.getDataAttribute(tip, 'mousein');
+              var check = e.toElement.classList.contains('popover-body') || e.toElement.classList.contains('popover-header');
+
+              if (inFlag) {
+                Manipulator.removeDataAttribute(tip, 'mousein');
+              }
+
+              if (!check) {
+                // If the mouse did not move to a different part of the popover, refocus onto the
+                // button to ensure the dismiss behaviour functions correctly
+                _this5.element.focus();
+              }
+            });
+          }
         }
       });
 
@@ -760,7 +782,7 @@
       EventHandler.on(this.element.closest("." + CLASS_NAME_MODAL), 'hide.bs.modal', this._hideModalHandler);
 
       if (this.config.selector) {
-        this.config = _objectSpread(_objectSpread({}, this.config), {}, {
+        this.config = _extends({}, this.config, {
           trigger: 'manual',
           selector: ''
         });
@@ -780,11 +802,11 @@
 
     _proto._enter = function _enter(event, context) {
       var dataKey = this.constructor.DATA_KEY;
-      context = context || Data.getData(event.target, dataKey);
+      context = context || Data.getData(event.delegateTarget, dataKey);
 
       if (!context) {
-        context = new this.constructor(event.target, this._getDelegateConfig());
-        Data.setData(event.target, dataKey, context);
+        context = new this.constructor(event.delegateTarget, this._getDelegateConfig());
+        Data.setData(event.delegateTarget, dataKey, context);
       }
 
       if (event) {
@@ -813,11 +835,16 @@
 
     _proto._leave = function _leave(event, context) {
       var dataKey = this.constructor.DATA_KEY;
-      context = context || Data.getData(event.target, dataKey);
+      context = context || Data.getData(event.delegateTarget, dataKey);
+      var tip = this.getTipElement();
+
+      if (Manipulator.getDataAttribute(tip, 'mousein')) {
+        return;
+      }
 
       if (!context) {
-        context = new this.constructor(event.target, this._getDelegateConfig());
-        Data.setData(event.target, dataKey, context);
+        context = new this.constructor(event.delegateTarget, this._getDelegateConfig());
+        Data.setData(event.delegateTarget, dataKey, context);
       }
 
       if (event) {
@@ -865,7 +892,7 @@
         config.container = config.container[0];
       }
 
-      config = _objectSpread(_objectSpread(_objectSpread({}, this.constructor.Default), dataAttributes), typeof config === 'object' && config ? config : {});
+      config = _extends({}, this.constructor.Default, dataAttributes, typeof config === 'object' && config ? config : {});
 
       if (typeof config.delay === 'number') {
         config.delay = {
@@ -885,7 +912,7 @@
       typeCheckConfig(NAME, config, this.constructor.DefaultType);
 
       if (config.sanitize) {
-        config.template = sanitizeHtml(config.template, config.whiteList, config.sanitizeFn);
+        config.template = sanitizeHtml(config.template, config.allowList, config.sanitizeFn);
       }
 
       return config;

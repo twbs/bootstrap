@@ -3660,7 +3660,7 @@ fieldset:disabled .btn {
   height: 0;
   margin: 0.5rem 0;
   overflow: hidden;
-  border-top: 1px solid #e9ecef;
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
 }
 
 .dropdown-item {
@@ -5129,8 +5129,6 @@ button.close {
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.1);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
   opacity: 0;
   border-radius: 0.25rem;
 }
@@ -5214,10 +5212,11 @@ button.close {
 }
 
 .modal-dialog-scrollable {
-  max-height: calc(100% - 1rem);
+  height: calc(100% - 1rem);
 }
 
 .modal-dialog-scrollable .modal-content {
+  max-height: 100%;
   overflow: hidden;
 }
 
@@ -5319,7 +5318,7 @@ button.close {
     margin: 1.75rem auto;
   }
   .modal-dialog-scrollable {
-    max-height: calc(100% - 3.5rem);
+    height: calc(100% - 3.5rem);
   }
   .modal-dialog-centered {
     min-height: calc(100% - 3.5rem);

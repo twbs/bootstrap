@@ -25,53 +25,22 @@
     return Constructor;
   }
 
-  function _defineProperty(obj, key, value) {
-    if (key in obj) {
-      Object.defineProperty(obj, key, {
-        value: value,
-        enumerable: true,
-        configurable: true,
-        writable: true
-      });
-    } else {
-      obj[key] = value;
-    }
+  function _extends() {
+    _extends = Object.assign || function (target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i];
 
-    return obj;
-  }
-
-  function ownKeys(object, enumerableOnly) {
-    var keys = Object.keys(object);
-
-    if (Object.getOwnPropertySymbols) {
-      var symbols = Object.getOwnPropertySymbols(object);
-      if (enumerableOnly) symbols = symbols.filter(function (sym) {
-        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-      });
-      keys.push.apply(keys, symbols);
-    }
-
-    return keys;
-  }
-
-  function _objectSpread2(target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i] != null ? arguments[i] : {};
-
-      if (i % 2) {
-        ownKeys(Object(source), true).forEach(function (key) {
-          _defineProperty(target, key, source[key]);
-        });
-      } else if (Object.getOwnPropertyDescriptors) {
-        Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
-      } else {
-        ownKeys(Object(source)).forEach(function (key) {
-          Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-        });
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
+        }
       }
-    }
 
-    return target;
+      return target;
+    };
+
+    return _extends.apply(this, arguments);
   }
 
   function _inheritsLoose(subClass, superClass) {
@@ -272,22 +241,22 @@
     var id = 1;
     return {
       set: function set(element, key, data) {
-        if (typeof element.key === 'undefined') {
-          element.key = {
+        if (typeof element.bsKey === 'undefined') {
+          element.bsKey = {
             key: key,
             id: id
           };
           id++;
         }
 
-        storeData[element.key.id] = data;
+        storeData[element.bsKey.id] = data;
       },
       get: function get(element, key) {
-        if (!element || typeof element.key === 'undefined') {
+        if (!element || typeof element.bsKey === 'undefined') {
           return null;
         }
 
-        var keyProperties = element.key;
+        var keyProperties = element.bsKey;
 
         if (keyProperties.key === key) {
           return storeData[keyProperties.id];
@@ -296,15 +265,15 @@
         return null;
       },
       delete: function _delete(element, key) {
-        if (typeof element.key === 'undefined') {
+        if (typeof element.bsKey === 'undefined') {
           return;
         }
 
-        var keyProperties = element.key;
+        var keyProperties = element.bsKey;
 
         if (keyProperties.key === key) {
           delete storeData[keyProperties.id];
-          delete element.key;
+          delete element.bsKey;
         }
       }
     };
@@ -437,6 +406,8 @@
 
   function bootstrapHandler(element, fn) {
     return function handler(event) {
+      event.delegateTarget = element;
+
       if (handler.oneOff) {
         EventHandler.off(element, event.type, fn);
       }
@@ -452,6 +423,8 @@
       for (var target = event.target; target && target !== this; target = target.parentNode) {
         for (var i = domElements.length; i--;) {
           if (domElements[i] === target) {
+            event.delegateTarget = target;
+
             if (handler.oneOff) {
               EventHandler.off(element, event.type, fn);
             }
@@ -636,7 +609,7 @@
           bubbles: bubbles,
           cancelable: true
         });
-      } // merge custom informations in our event
+      } // merge custom information in our event
 
 
       if (typeof args !== 'undefined') {
@@ -711,11 +684,7 @@
 
     // Public
     _proto.close = function close(element) {
-      var rootElement = this._element;
-
-      if (element) {
-        rootElement = this._getRootElement(element);
-      }
+      var rootElement = element ? this._getRootElement(element) : this._element;
 
       var customEvent = this._triggerCloseEvent(rootElement);
 
@@ -984,7 +953,7 @@
         return {};
       }
 
-      var attributes = _objectSpread2({}, element.dataset);
+      var attributes = _extends({}, element.dataset);
 
       Object.keys(attributes).forEach(function (key) {
         attributes[key] = normalizeData(attributes[key]);
@@ -1297,7 +1266,7 @@
     ;
 
     _proto._getConfig = function _getConfig(config) {
-      config = _objectSpread2(_objectSpread2({}, Default), config);
+      config = _extends({}, Default, config);
       typeCheckConfig(NAME$2, config, DefaultType);
       return config;
     };
@@ -1591,10 +1560,10 @@
     Carousel.carouselInterface = function carouselInterface(element, config) {
       var data = Data.getData(element, DATA_KEY$2);
 
-      var _config = _objectSpread2(_objectSpread2({}, Default), Manipulator.getDataAttributes(element));
+      var _config = _extends({}, Default, Manipulator.getDataAttributes(element));
 
       if (typeof config === 'object') {
-        _config = _objectSpread2(_objectSpread2({}, _config), config);
+        _config = _extends({}, _config, config);
       }
 
       var action = typeof config === 'string' ? config : _config.slide;
@@ -1630,7 +1599,7 @@
         return;
       }
 
-      var config = _objectSpread2(_objectSpread2({}, Manipulator.getDataAttributes(target)), Manipulator.getDataAttributes(this));
+      var config = _extends({}, Manipulator.getDataAttributes(target), Manipulator.getDataAttributes(this));
 
       var slideIndex = this.getAttribute('data-slide-to');
 
@@ -1947,7 +1916,7 @@
     ;
 
     _proto._getConfig = function _getConfig(config) {
-      config = _objectSpread2(_objectSpread2({}, Default$1), config);
+      config = _extends({}, Default$1, config);
       config.toggle = Boolean(config.toggle); // Coerce string values
 
       typeCheckConfig(NAME$3, config, DefaultType$1);
@@ -1955,9 +1924,7 @@
     };
 
     _proto._getDimension = function _getDimension() {
-      var hasWidth = this._element.classList.contains(WIDTH);
-
-      return hasWidth ? WIDTH : HEIGHT;
+      return this._element.classList.contains(WIDTH) ? WIDTH : HEIGHT;
     };
 
     _proto._getParent = function _getParent() {
@@ -1984,28 +1951,27 @@
     };
 
     _proto._addAriaAndCollapsedClass = function _addAriaAndCollapsedClass(element, triggerArray) {
-      if (element) {
-        var isOpen = element.classList.contains(CLASS_NAME_SHOW);
-
-        if (triggerArray.length) {
-          triggerArray.forEach(function (elem) {
-            if (isOpen) {
-              elem.classList.remove(CLASS_NAME_COLLAPSED);
-            } else {
-              elem.classList.add(CLASS_NAME_COLLAPSED);
-            }
-
-            elem.setAttribute('aria-expanded', isOpen);
-          });
-        }
+      if (!element || !triggerArray.length) {
+        return;
       }
+
+      var isOpen = element.classList.contains(CLASS_NAME_SHOW);
+      triggerArray.forEach(function (elem) {
+        if (isOpen) {
+          elem.classList.remove(CLASS_NAME_COLLAPSED);
+        } else {
+          elem.classList.add(CLASS_NAME_COLLAPSED);
+        }
+
+        elem.setAttribute('aria-expanded', isOpen);
+      });
     } // Static
     ;
 
     Collapse.collapseInterface = function collapseInterface(element, config) {
       var data = Data.getData(element, DATA_KEY$3);
 
-      var _config = _objectSpread2(_objectSpread2(_objectSpread2({}, Default$1), Manipulator.getDataAttributes(element)), typeof config === 'object' && config ? config : {});
+      var _config = _extends({}, Default$1, Manipulator.getDataAttributes(element), typeof config === 'object' && config ? config : {});
 
       if (!data && _config.toggle && typeof config === 'string' && /show|hide/.test(config)) {
         _config.toggle = false;
@@ -2513,7 +2479,7 @@
     return obj;
   };
 
-  var _extends = Object.assign || function (target) {
+  var _extends$1 = Object.assign || function (target) {
     for (var i = 1; i < arguments.length; i++) {
       var source = arguments[i];
 
@@ -2535,7 +2501,7 @@
    * @returns {Object} ClientRect like output
    */
   function getClientRect(offsets) {
-    return _extends({}, offsets, {
+    return _extends$1({}, offsets, {
       right: offsets.left + offsets.width,
       bottom: offsets.top + offsets.height
     });
@@ -2823,7 +2789,7 @@
     };
 
     var sortedAreas = Object.keys(rects).map(function (key) {
-      return _extends({
+      return _extends$1({
         key: key
       }, rects[key], {
         area: getArea(rects[key])
@@ -3465,9 +3431,9 @@
     };
 
     // Update `data` attributes, styles and arrowStyles
-    data.attributes = _extends({}, attributes, data.attributes);
-    data.styles = _extends({}, styles, data.styles);
-    data.arrowStyles = _extends({}, data.offsets.arrow, data.arrowStyles);
+    data.attributes = _extends$1({}, attributes, data.attributes);
+    data.styles = _extends$1({}, styles, data.styles);
+    data.arrowStyles = _extends$1({}, data.offsets.arrow, data.arrowStyles);
 
     return data;
   }
@@ -3747,7 +3713,7 @@
 
         // this object contains `position`, we want to preserve it along with
         // any additional property we may add in the future
-        data.offsets.popper = _extends({}, data.offsets.popper, getPopperOffsets(data.instance.popper, data.offsets.reference, data.placement));
+        data.offsets.popper = _extends$1({}, data.offsets.popper, getPopperOffsets(data.instance.popper, data.offsets.reference, data.placement));
 
         data = runModifiers(data.instance.modifiers, data, 'flip');
       }
@@ -4021,7 +3987,7 @@
 
     order.forEach(function (placement) {
       var side = ['left', 'top'].indexOf(placement) !== -1 ? 'primary' : 'secondary';
-      popper = _extends({}, popper, check[side](placement));
+      popper = _extends$1({}, popper, check[side](placement));
     });
 
     data.offsets.popper = popper;
@@ -4056,7 +4022,7 @@
         end: defineProperty({}, side, reference[side] + reference[measurement] - popper[measurement])
       };
 
-      data.offsets.popper = _extends({}, popper, shiftOffsets[shiftvariation]);
+      data.offsets.popper = _extends$1({}, popper, shiftOffsets[shiftvariation]);
     }
 
     return data;
@@ -4588,7 +4554,7 @@
       this.update = debounce(this.update.bind(this));
 
       // with {} we create a new object with the options inside it
-      this.options = _extends({}, Popper.Defaults, options);
+      this.options = _extends$1({}, Popper.Defaults, options);
 
       // init state
       this.state = {
@@ -4603,13 +4569,13 @@
 
       // Deep merge modifiers options
       this.options.modifiers = {};
-      Object.keys(_extends({}, Popper.Defaults.modifiers, options.modifiers)).forEach(function (name) {
-        _this.options.modifiers[name] = _extends({}, Popper.Defaults.modifiers[name] || {}, options.modifiers ? options.modifiers[name] : {});
+      Object.keys(_extends$1({}, Popper.Defaults.modifiers, options.modifiers)).forEach(function (name) {
+        _this.options.modifiers[name] = _extends$1({}, Popper.Defaults.modifiers[name] || {}, options.modifiers ? options.modifiers[name] : {});
       });
 
       // Refactoring modifiers' list (Object => Array)
       this.modifiers = Object.keys(this.options.modifiers).map(function (name) {
-        return _extends({
+        return _extends$1({
           name: name
         }, _this.options.modifiers[name]);
       })
@@ -4941,7 +4907,7 @@
     };
 
     _proto._getConfig = function _getConfig(config) {
-      config = _objectSpread2(_objectSpread2(_objectSpread2({}, this.constructor.Default), Manipulator.getDataAttributes(this._element)), config);
+      config = _extends({}, this.constructor.Default, Manipulator.getDataAttributes(this._element), config);
       typeCheckConfig(NAME$4, config, this.constructor.DefaultType);
       return config;
     };
@@ -4982,7 +4948,7 @@
 
       if (typeof this._config.offset === 'function') {
         offset.fn = function (data) {
-          data.offsets = _objectSpread2(_objectSpread2({}, data.offsets), _this2._config.offset(data.offsets, _this2._element) || {});
+          data.offsets = _extends({}, data.offsets, _this2._config.offset(data.offsets, _this2._element) || {});
           return data;
         };
       } else {
@@ -5012,7 +4978,7 @@
         };
       }
 
-      return _objectSpread2(_objectSpread2({}, popperConfig), this._config.popperConfig);
+      return _extends({}, popperConfig, this._config.popperConfig);
     } // Static
     ;
 
@@ -5423,7 +5389,7 @@
     ;
 
     _proto._getConfig = function _getConfig(config) {
-      config = _objectSpread2(_objectSpread2({}, Default$3), config);
+      config = _extends({}, Default$3, config);
       typeCheckConfig(NAME$5, config, DefaultType$3);
       return config;
     };
@@ -5629,11 +5595,25 @@
           return;
         }
 
+        var isModalOverflowing = this._element.scrollHeight > document.documentElement.clientHeight;
+
+        if (!isModalOverflowing) {
+          this._element.style.overflowY = 'hidden';
+        }
+
         this._element.classList.add(CLASS_NAME_STATIC);
 
-        var modalTransitionDuration = getTransitionDurationFromElement(this._element);
+        var modalTransitionDuration = getTransitionDurationFromElement(this._dialog);
+        EventHandler.off(this._element, TRANSITION_END);
         EventHandler.one(this._element, TRANSITION_END, function () {
           _this9._element.classList.remove(CLASS_NAME_STATIC);
+
+          if (!isModalOverflowing) {
+            EventHandler.one(_this9._element, TRANSITION_END, function () {
+              _this9._element.style.overflowY = '';
+            });
+            emulateTransitionEnd(_this9._element, modalTransitionDuration);
+          }
         });
         emulateTransitionEnd(this._element, modalTransitionDuration);
 
@@ -5744,7 +5724,7 @@
       return this.each(function () {
         var data = Data.getData(this, DATA_KEY$5);
 
-        var _config = _objectSpread2(_objectSpread2(_objectSpread2({}, Default$3), Manipulator.getDataAttributes(this)), typeof config === 'object' && config ? config : {});
+        var _config = _extends({}, Default$3, Manipulator.getDataAttributes(this), typeof config === 'object' && config ? config : {});
 
         if (!data) {
           data = new Modal(this, _config);
@@ -5811,7 +5791,7 @@
     var data = Data.getData(target, DATA_KEY$5);
 
     if (!data) {
-      var config = _objectSpread2(_objectSpread2({}, Manipulator.getDataAttributes(target)), Manipulator.getDataAttributes(this));
+      var config = _extends({}, Manipulator.getDataAttributes(target), Manipulator.getDataAttributes(this));
 
       data = new Modal(target, config);
     }
@@ -5886,7 +5866,7 @@
     return false;
   };
 
-  var DefaultWhitelist = {
+  var DefaultAllowlist = {
     // Global attributes allowed on any supplied element below.
     '*': ['class', 'dir', 'id', 'lang', 'role', ARIA_ATTRIBUTE_PATTERN],
     a: ['target', 'href', 'title', 'rel'],
@@ -5919,7 +5899,7 @@
     u: [],
     ul: []
   };
-  function sanitizeHtml(unsafeHtml, whiteList, sanitizeFn) {
+  function sanitizeHtml(unsafeHtml, allowList, sanitizeFn) {
     var _ref;
 
     if (!unsafeHtml.length) {
@@ -5932,7 +5912,7 @@
 
     var domParser = new window.DOMParser();
     var createdDocument = domParser.parseFromString(unsafeHtml, 'text/html');
-    var whitelistKeys = Object.keys(whiteList);
+    var allowlistKeys = Object.keys(allowList);
 
     var elements = (_ref = []).concat.apply(_ref, createdDocument.body.querySelectorAll('*'));
 
@@ -5942,16 +5922,16 @@
       var el = elements[i];
       var elName = el.nodeName.toLowerCase();
 
-      if (whitelistKeys.indexOf(elName) === -1) {
+      if (allowlistKeys.indexOf(elName) === -1) {
         el.parentNode.removeChild(el);
         return "continue";
       }
 
       var attributeList = (_ref2 = []).concat.apply(_ref2, el.attributes);
 
-      var whitelistedAttributes = [].concat(whiteList['*'] || [], whiteList[elName] || []);
+      var allowedAttributes = [].concat(allowList['*'] || [], allowList[elName] || []);
       attributeList.forEach(function (attr) {
-        if (!allowedAttribute(attr, whitelistedAttributes)) {
+        if (!allowedAttribute(attr, allowedAttributes)) {
           el.removeAttribute(attr.nodeName);
         }
       });
@@ -5978,7 +5958,7 @@
   var EVENT_KEY$6 = "." + DATA_KEY$6;
   var CLASS_PREFIX = 'bs-tooltip';
   var BSCLS_PREFIX_REGEX = new RegExp("(^|\\s)" + CLASS_PREFIX + "\\S+", 'g');
-  var DISALLOWED_ATTRIBUTES = ['sanitize', 'whiteList', 'sanitizeFn'];
+  var DISALLOWED_ATTRIBUTES = ['sanitize', 'allowList', 'sanitizeFn'];
   var DefaultType$4 = {
     animation: 'boolean',
     template: 'string',
@@ -5994,7 +5974,7 @@
     boundary: '(string|element)',
     sanitize: 'boolean',
     sanitizeFn: '(null|function)',
-    whiteList: 'object',
+    allowList: 'object',
     popperConfig: '(null|object)'
   };
   var AttachmentMap = {
@@ -6019,7 +5999,7 @@
     boundary: 'scrollParent',
     sanitize: true,
     sanitizeFn: null,
-    whiteList: DefaultWhitelist,
+    allowList: DefaultAllowlist,
     popperConfig: null
   };
   var Event$1 = {
@@ -6095,11 +6075,11 @@
 
       if (event) {
         var dataKey = this.constructor.DATA_KEY;
-        var context = Data.getData(event.target, dataKey);
+        var context = Data.getData(event.delegateTarget, dataKey);
 
         if (!context) {
-          context = new this.constructor(event.target, this._getDelegateConfig());
-          Data.setData(event.target, dataKey, context);
+          context = new this.constructor(event.delegateTarget, this._getDelegateConfig());
+          Data.setData(event.delegateTarget, dataKey, context);
         }
 
         context._activeTrigger.click = !context._activeTrigger.click;
@@ -6328,7 +6308,7 @@
 
       if (this.config.html) {
         if (this.config.sanitize) {
-          content = sanitizeHtml(content, this.config.whiteList, this.config.sanitizeFn);
+          content = sanitizeHtml(content, this.config.allowList, this.config.sanitizeFn);
         }
 
         element.innerHTML = content;
@@ -6374,7 +6354,7 @@
           return _this3._handlePopperPlacementChange(data);
         }
       };
-      return _objectSpread2(_objectSpread2({}, defaultBsConfig), this.config.popperConfig);
+      return _extends({}, defaultBsConfig, this.config.popperConfig);
     };
 
     _proto._addAttachmentClass = function _addAttachmentClass(attachment) {
@@ -6388,7 +6368,7 @@
 
       if (typeof this.config.offset === 'function') {
         offset.fn = function (data) {
-          data.offsets = _objectSpread2(_objectSpread2({}, data.offsets), _this4.config.offset(data.offsets, _this4.element) || {});
+          data.offsets = _extends({}, data.offsets, _this4.config.offset(data.offsets, _this4.element) || {});
           return data;
         };
       } else {
@@ -6432,6 +6412,32 @@
           EventHandler.on(_this5.element, eventOut, _this5.config.selector, function (event) {
             return _this5._leave(event);
           });
+
+          var tip = _this5.getTipElement();
+
+          if (eventOut === _this5.constructor.Event.FOCUSOUT) {
+            EventHandler.on(tip, _this5.constructor.Event.MOUSEENTER, _this5.config.selector, function () {
+              var inFlag = Manipulator.getDataAttribute(tip, 'mousein');
+
+              if (!inFlag) {
+                Manipulator.setDataAttribute(tip, 'mousein', true);
+              }
+            });
+            EventHandler.on(tip, _this5.constructor.Event.MOUSELEAVE, _this5.config.selector, function (e) {
+              var inFlag = Manipulator.getDataAttribute(tip, 'mousein');
+              var check = e.toElement.classList.contains('popover-body') || e.toElement.classList.contains('popover-header');
+
+              if (inFlag) {
+                Manipulator.removeDataAttribute(tip, 'mousein');
+              }
+
+              if (!check) {
+                // If the mouse did not move to a different part of the popover, refocus onto the
+                // button to ensure the dismiss behaviour functions correctly
+                _this5.element.focus();
+              }
+            });
+          }
         }
       });
 
@@ -6444,7 +6450,7 @@
       EventHandler.on(this.element.closest("." + CLASS_NAME_MODAL), 'hide.bs.modal', this._hideModalHandler);
 
       if (this.config.selector) {
-        this.config = _objectSpread2(_objectSpread2({}, this.config), {}, {
+        this.config = _extends({}, this.config, {
           trigger: 'manual',
           selector: ''
         });
@@ -6464,11 +6470,11 @@
 
     _proto._enter = function _enter(event, context) {
       var dataKey = this.constructor.DATA_KEY;
-      context = context || Data.getData(event.target, dataKey);
+      context = context || Data.getData(event.delegateTarget, dataKey);
 
       if (!context) {
-        context = new this.constructor(event.target, this._getDelegateConfig());
-        Data.setData(event.target, dataKey, context);
+        context = new this.constructor(event.delegateTarget, this._getDelegateConfig());
+        Data.setData(event.delegateTarget, dataKey, context);
       }
 
       if (event) {
@@ -6497,11 +6503,16 @@
 
     _proto._leave = function _leave(event, context) {
       var dataKey = this.constructor.DATA_KEY;
-      context = context || Data.getData(event.target, dataKey);
+      context = context || Data.getData(event.delegateTarget, dataKey);
+      var tip = this.getTipElement();
+
+      if (Manipulator.getDataAttribute(tip, 'mousein')) {
+        return;
+      }
 
       if (!context) {
-        context = new this.constructor(event.target, this._getDelegateConfig());
-        Data.setData(event.target, dataKey, context);
+        context = new this.constructor(event.delegateTarget, this._getDelegateConfig());
+        Data.setData(event.delegateTarget, dataKey, context);
       }
 
       if (event) {
@@ -6549,7 +6560,7 @@
         config.container = config.container[0];
       }
 
-      config = _objectSpread2(_objectSpread2(_objectSpread2({}, this.constructor.Default), dataAttributes), typeof config === 'object' && config ? config : {});
+      config = _extends({}, this.constructor.Default, dataAttributes, typeof config === 'object' && config ? config : {});
 
       if (typeof config.delay === 'number') {
         config.delay = {
@@ -6569,7 +6580,7 @@
       typeCheckConfig(NAME$6, config, this.constructor.DefaultType);
 
       if (config.sanitize) {
-        config.template = sanitizeHtml(config.template, config.whiteList, config.sanitizeFn);
+        config.template = sanitizeHtml(config.template, config.allowList, config.sanitizeFn);
       }
 
       return config;
@@ -6729,14 +6740,14 @@
   var CLASS_PREFIX$1 = 'bs-popover';
   var BSCLS_PREFIX_REGEX$1 = new RegExp("(^|\\s)" + CLASS_PREFIX$1 + "\\S+", 'g');
 
-  var Default$5 = _objectSpread2(_objectSpread2({}, Tooltip.Default), {}, {
+  var Default$5 = _extends({}, Tooltip.Default, {
     placement: 'right',
     trigger: 'click',
     content: '',
     template: '<div class="popover" role="tooltip">' + '<div class="popover-arrow"></div>' + '<h3 class="popover-header"></h3>' + '<div class="popover-body"></div></div>'
   });
 
-  var DefaultType$5 = _objectSpread2(_objectSpread2({}, Tooltip.DefaultType), {}, {
+  var DefaultType$5 = _extends({}, Tooltip.DefaultType, {
     content: '(string|element|function)'
   });
 
@@ -7024,7 +7035,7 @@
     ;
 
     _proto._getConfig = function _getConfig(config) {
-      config = _objectSpread2(_objectSpread2({}, Default$6), typeof config === 'object' && config ? config : {});
+      config = _extends({}, Default$6, typeof config === 'object' && config ? config : {});
 
       if (typeof config.target !== 'string' && isElement(config.target)) {
         var id = config.target.id;
@@ -7573,7 +7584,7 @@
     ;
 
     _proto._getConfig = function _getConfig(config) {
-      config = _objectSpread2(_objectSpread2(_objectSpread2({}, Default$7), Manipulator.getDataAttributes(this._element)), typeof config === 'object' && config ? config : {});
+      config = _extends({}, Default$7, Manipulator.getDataAttributes(this._element), typeof config === 'object' && config ? config : {});
       typeCheckConfig(NAME$a, config, this.constructor.DefaultType);
       return config;
     };

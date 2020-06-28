@@ -134,11 +134,7 @@
 
     // Public
     _proto.close = function close(element) {
-      var rootElement = this._element;
-
-      if (element) {
-        rootElement = this._getRootElement(element);
-      }
+      var rootElement = element ? this._getRootElement(element) : this._element;
 
       var customEvent = this._triggerCloseEvent(rootElement);
 

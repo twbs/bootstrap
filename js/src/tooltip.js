@@ -555,9 +555,9 @@ class Tooltip {
             this.constructor.Event.MOUSEENTER,
             this.config.selector,
             () => {
-              const check = Manipulator.getDataAttribute(tip, 'mousein')
+              const inFlag = Manipulator.getDataAttribute(tip, 'mousein')
 
-              if (!check) {
+              if (!inFlag) {
                 Manipulator.setDataAttribute(tip, 'mousein', true)
               }
             }
@@ -566,14 +566,22 @@ class Tooltip {
           EventHandler.on(tip,
             this.constructor.Event.MOUSELEAVE,
             this.config.selector,
-            () => {
-              const check = Manipulator.getDataAttribute(tip, 'mousein')
+            e => {
+              const inFlag = Manipulator.getDataAttribute(tip, 'mousein')
+              const check = (
+                e.toElement.classList.contains('popover-body') ||
+                e.toElement.classList.contains('popover-header')
+              )
 
-              if (check) {
+              if (inFlag) {
                 Manipulator.removeDataAttribute(tip, 'mousein')
               }
 
-              this.element.focus()
+              if (!check) {
+                // If the mouse did not move to a different part of the popover, refocus onto the
+                // button to ensure the dismiss behaviour functions correctly
+                this.element.focus()
+              }
             }
           )
         }

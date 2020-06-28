@@ -26,22 +26,22 @@
     var id = 1;
     return {
       set: function set(element, key, data) {
-        if (typeof element.key === 'undefined') {
-          element.key = {
+        if (typeof element.bsKey === 'undefined') {
+          element.bsKey = {
             key: key,
             id: id
           };
           id++;
         }
 
-        storeData[element.key.id] = data;
+        storeData[element.bsKey.id] = data;
       },
       get: function get(element, key) {
-        if (!element || typeof element.key === 'undefined') {
+        if (!element || typeof element.bsKey === 'undefined') {
           return null;
         }
 
-        var keyProperties = element.key;
+        var keyProperties = element.bsKey;
 
         if (keyProperties.key === key) {
           return storeData[keyProperties.id];
@@ -50,15 +50,15 @@
         return null;
       },
       delete: function _delete(element, key) {
-        if (typeof element.key === 'undefined') {
+        if (typeof element.bsKey === 'undefined') {
           return;
         }
 
-        var keyProperties = element.key;
+        var keyProperties = element.bsKey;
 
         if (keyProperties.key === key) {
           delete storeData[keyProperties.id];
-          delete element.key;
+          delete element.bsKey;
         }
       }
     };
