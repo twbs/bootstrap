@@ -547,6 +547,34 @@ class Tooltip {
           this.config.selector,
           event => this._leave(event)
         )
+
+        const tip = this.getTipElement()
+
+        if (eventOut === this.constructor.Event.FOCUSOUT) {
+          EventHandler.on(tip,
+            'mouseenter',
+            this.config.selector,
+            () => {
+              const check = Manipulator.getDataAttribute(tip, 'mousein')
+
+              if (!check) {
+                Manipulator.setDataAttribute(tip, 'mousein', true)
+              }
+            }
+          )
+
+          EventHandler.on(tip,
+            'mouseleave',
+            this.config.selector,
+            () => {
+              const check = Manipulator.getDataAttribute(tip, 'mousein')
+
+              if (check) {
+                Manipulator.removeDataAttribute(tip, 'mousein')
+              }
+            }
+          )
+        }
       }
     })
 
