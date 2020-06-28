@@ -572,6 +572,8 @@ class Tooltip {
               if (check) {
                 Manipulator.removeDataAttribute(tip, 'mousein')
               }
+
+              this.element.focus()
             }
           )
         }
@@ -656,6 +658,12 @@ class Tooltip {
   _leave(event, context) {
     const dataKey = this.constructor.DATA_KEY
     context = context || Data.getData(event.delegateTarget, dataKey)
+
+    const tip = this.getTipElement()
+
+    if (Manipulator.getDataAttribute(tip, 'mousein')) {
+      return
+    }
 
     if (!context) {
       context = new this.constructor(
