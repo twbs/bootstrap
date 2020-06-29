@@ -21,9 +21,9 @@ Change the way in which the content is selected when the user interacts with it.
 Bootstrap provides `.pe-none` and `.pe-auto` classes to prevent or add element interactions.
 
 {{< example >}}
-<p><a href="#" class="pe-none">This link</a> can not be clicked.</p>
+<p><a href="#" class="pe-none" tabindex="-1" aria-disabled="true">This link</a> can not be clicked.</p>
 <p><a href="#" class="pe-auto">This link</a> can be clicked (this is default behaviour).</p>
-<p class="pe-none"><a href="#">This link</a> can not be clicked because the <code>pointer-events</code> property is inherited from its parent. However, <a href="#" class="pe-auto">this link</a> has a <code>pe-auto</code> class and can be clicked.</p>
+<p class="pe-none"><a href="#" tabindex="-1" aria-disabled="true">This link</a> can not be clicked because the <code>pointer-events</code> property is inherited from its parent. However, <a href="#" class="pe-auto">this link</a> has a <code>pe-auto</code> class and can be clicked.</p>
 {{< /example >}}
 
 {{< callout warning >}}
