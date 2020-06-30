@@ -232,6 +232,8 @@ toc: true
 
 ## Forms
 
+### Overview
+
 {{< example show_markup="false" >}}
 <form>
   <div class="mb-3">
@@ -475,8 +477,9 @@ toc: true
 </form>
 {{< /example >}}
 
-## Alerts
+## Components
 
+### Alerts
 
 {{< example show_markup="false" >}}
 {{< alerts.inline >}}
@@ -499,7 +502,7 @@ toc: true
 </div>
 {{< /example >}}
 
-## Badge
+### Badge
 
 {{< example show_markup="false" >}}
 <h1>Example heading <span class="badge bg-primary">New</span></h1>
@@ -519,7 +522,7 @@ toc: true
 {{< /badge.inline >}}
 {{< /example >}}
 
-## Breadcrumb
+### Breadcrumb
 
 {{< example show_markup="false" >}}
 <nav aria-label="breadcrumb">
@@ -531,7 +534,7 @@ toc: true
 </nav>
 {{< /example >}}
 
-## Buttons
+### Buttons
 
 {{< example show_markup="false" >}}
 {{< buttons.inline >}}
@@ -557,7 +560,7 @@ toc: true
 <button type="button" class="btn btn-primary btn-lg">Large button</button>
 {{< /example >}}
 
-## Button group
+### Button group
 
 {{< example show_markup="false" >}}
 <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
@@ -578,7 +581,7 @@ toc: true
 </div>
 {{< /example >}}
 
-## Card
+### Card
 
 {{< example show_markup="false" >}}
 <div class="row  row-cols-1 row-cols-md-2 g-4">
@@ -643,7 +646,7 @@ toc: true
 </div>
 {{< /example >}}
 
-## Carousel
+### Carousel
 
 {{< example show_markup="false" >}}
 <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
@@ -686,7 +689,7 @@ toc: true
 </div>
 {{< /example >}}
 
-## Collapse
+### Collapse
 
 {{< example show_markup="false" >}}
 <div class="accordion" id="accordionExample">
@@ -698,7 +701,6 @@ toc: true
         </button>
       </h2>
     </div>
-
     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
       <div class="card-body">
         Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
@@ -736,7 +738,7 @@ toc: true
 </div>
 {{< /example >}}
 
-## Dropdowns
+### Dropdowns
 
 {{< example show_markup="false" >}}
 <div class="btn-group w-100 align-items-center justify-content-around">
@@ -912,7 +914,7 @@ toc: true
 </div>
 {{< /example >}}
 
-## List group
+### List group
 
 {{< example show_markup="false" >}}
 <ul class="list-group">
@@ -945,8 +947,7 @@ toc: true
 </div>
 {{< /example >}}
 
-
-## Modal
+### Modal
 
 {{< example show_markup="false" >}}
 <div class="d-flex justify-content-between">
@@ -1026,7 +1027,7 @@ toc: true
   </div>
 </div>
 
-## Navs
+### Navs
 
 {{< example show_markup="false" >}}
 <nav class="nav">
@@ -1075,7 +1076,7 @@ toc: true
 </ul>
 {{< /example >}}
 
-## Navbar
+### Navbar
 
 {{< example show_markup="false" >}}
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -1157,7 +1158,7 @@ toc: true
 </nav>
 {{< /example >}}
 
-## Pagination
+### Pagination
 
 {{< example show_markup="false" >}}
 <nav aria-label="Pagination example">
@@ -1209,7 +1210,7 @@ toc: true
 </nav>
 {{< /example >}}
 
-## Popovers
+### Popovers
 
 {{< example show_markup="false" >}}
 <button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
@@ -1230,7 +1231,7 @@ toc: true
 </button>
 {{< /example >}}
 
-## Progress
+### Progress
 
 {{< example show_markup="false" >}}
 <div class="progress">
@@ -1257,7 +1258,7 @@ toc: true
 </div>
 {{< /example >}}
 
-## Scrollspy
+### Scrollspy
 
 <div class="bd-example">
   <nav id="navbar-example2" class="navbar navbar-light bg-light px-3">
@@ -1296,7 +1297,7 @@ toc: true
   </div>
 </div>
 
-## Spinners
+### Spinners
 
 {{< example show_markup="false" >}}
 {{< spinner.inline >}}
@@ -1318,7 +1319,7 @@ toc: true
 {{< /spinner.inline >}}
 {{< /example >}}
 
-## Toasts
+### Toasts
 
 {{< example show_markup="false" class="bg-dark" >}}
 <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
@@ -1336,7 +1337,7 @@ toc: true
 </div>
 {{< /example >}}
 
-## Tooltips
+### Tooltips
 
 {{< example show_markup="false" class="tooltip-demo" >}}
 <button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top">Tooltip on top</button>
