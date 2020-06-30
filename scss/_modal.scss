@@ -56,9 +56,10 @@
 }
 
 .modal-dialog-scrollable {
-  max-height: subtract(100%, $modal-dialog-margin * 2);
+  height: subtract(100%, $modal-dialog-margin * 2);
 
   .modal-content {
+    max-height: 100%;
     overflow: hidden;
   }
 
@@ -177,7 +178,7 @@
   }
 
   .modal-dialog-scrollable {
-    max-height: subtract(100%, $modal-dialog-margin-y-sm-up * 2);
+    height: subtract(100%, $modal-dialog-margin-y-sm-up * 2);
   }
 
   .modal-dialog-centered {
@@ -203,8 +204,8 @@
 }
 
 @each $breakpoint in map-keys($grid-breakpoints) {
-  $next-breakpoint: breakpoint-next($breakpoint);
-  $postfix: if(breakpoint-max($breakpoint, $grid-breakpoints) == null, "", "-#{$next-breakpoint}-down");
+  $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+  $postfix: if($infix != "", $infix + "-down", "");
 
   @include media-breakpoint-down($breakpoint) {
     .modal-fullscreen#{$postfix} {

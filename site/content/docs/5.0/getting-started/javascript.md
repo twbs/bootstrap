@@ -161,11 +161,11 @@ Bootstrap's plugins don't fall back particularly gracefully when JavaScript is d
 
 Tooltips and Popovers use our built-in sanitizer to sanitize options which accept HTML.
 
-The default `whiteList` value is the following:
+The default `allowList` value is the following:
 
 {{< highlight js >}}
 var ARIA_ATTRIBUTE_PATTERN = /^aria-[\w-]*$/i
-var DefaultWhitelist = {
+var DefaultAllowlist = {
   // Global attributes allowed on any supplied element below.
   '*': ['class', 'dir', 'id', 'lang', 'role', ARIA_ATTRIBUTE_PATTERN],
   a: ['target', 'href', 'title', 'rel'],
@@ -200,21 +200,21 @@ var DefaultWhitelist = {
 }
 {{< /highlight >}}
 
-If you want to add new values to this default `whiteList` you can do the following:
+If you want to add new values to this default `allowList` you can do the following:
 
 {{< highlight js >}}
-var myDefaultWhiteList = bootstrap.Tooltip.Default.whiteList
+var myDefaultAllowList = bootstrap.Tooltip.Default.allowList
 
 // To allow table elements
-myDefaultWhiteList.table = []
+myDefaultAllowList.table = []
 
 // To allow td elements and data-option attributes on td elements
-myDefaultWhiteList.td = ['data-option']
+myDefaultAllowList.td = ['data-option']
 
 // You can push your custom regex to validate your attributes.
 // Be careful about your regular expressions being too lax
 var myCustomRegex = /^data-my-app-[\w-]+/
-myDefaultWhiteList['*'].push(myCustomRegex)
+myDefaultAllowList['*'].push(myCustomRegex)
 {{< /highlight >}}
 
 If you want to bypass our sanitizer because you prefer to use a dedicated library, for example [DOMPurify](https://www.npmjs.com/package/dompurify), you should do the following:

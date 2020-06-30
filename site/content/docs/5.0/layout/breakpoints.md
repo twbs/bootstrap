@@ -127,12 +127,12 @@ These Sass mixins translate in our compiled CSS using the values declared in our
 We occasionally use media queries that go in the other direction (the given screen size *or smaller*):
 
 {{< highlight scss >}}
-@include media-breakpoint-down(xs) { ... }
+// No media query necessary for xs breakpoint as it's effectively `@media (max-width: 0) { ... }`
 @include media-breakpoint-down(sm) { ... }
 @include media-breakpoint-down(md) { ... }
 @include media-breakpoint-down(lg) { ... }
 @include media-breakpoint-down(xl) { ... }
-// No media query necessary for xxl breakpoint as it has no upper bound on its width
+@include media-breakpoint-down(xxl) { ... }
 
 // Example: Style from medium breakpoint and down
 @include media-breakpoint-down(md) {
@@ -181,7 +181,21 @@ There are also media queries and mixins for targeting a single segment of screen
 @include media-breakpoint-only(xxl) { ... }
 {{< /highlight >}}
 
+For example the `@include media-breakpoint-only(md) { ... }` will result in :
+
+{{< highlight scss >}}
+@media (min-width: 768px) and (max-width: 991.98px) { ... }
+{{< /highlight >}}
+
+### Between breakpoints
+
 Similarly, media queries may span multiple breakpoint widths:
+
+{{< highlight scss >}}
+@include media-breakpoint-between(md, xl) { ... }
+{{< /highlight >}}
+
+Which results in:
 
 {{< highlight scss >}}
 // Example
@@ -189,10 +203,3 @@ Similarly, media queries may span multiple breakpoint widths:
 @media (min-width: 768px) and (max-width: 1199.98px) { ... }
 {{< /highlight >}}
 
-### Between breakpoints
-
-The Sass mixin for targeting the same screen size range would be:
-
-{{< highlight scss >}}
-@include media-breakpoint-between(md, xl) { ... }
-{{< /highlight >}}

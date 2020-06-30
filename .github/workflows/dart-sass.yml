@@ -1,0 +1,24 @@
+name: CSS (Dart Sass)
+on: [push, pull_request]
+env:
+  CI: true
+  NODE: 12.x
+
+jobs:
+  css:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v2
+
+      - name: Set Node.js version
+        uses: actions/setup-node@v1
+        with:
+          node-version: "${{ env.NODE }}"
+
+      - name: Build CSS with Dart Sass
+        run: |
+          npx --package sass@latest sass --version
+          npx --package sass@latest sass --style expanded --source-map --embed-sources --no-error-css scss/:dist-sass/css/
+          ls -Al dist-sass/css
