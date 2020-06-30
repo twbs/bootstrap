@@ -131,7 +131,7 @@
     "rollup": "^2.18.0",
     "rollup-plugin-istanbul": "^2.0.1",
     "shelljs": "^0.8.4",
-    "sirv-cli": "^1.0.1",
+    "sirv-cli": "^1.0.3",
     "stylelint": "^13.6.1",
     "stylelint-config-twbs-bootstrap": "^2.0.3",
     "terser": "^4.8.0",
