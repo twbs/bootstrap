@@ -7,18 +7,35 @@ aliases: "/migration/"
 toc: true
 ---
 
-## Browser support
+## v5.0.0-alpha2
+
+### Components
+
+#### Popovers
+
+- Renamed `whiteList` option to `allowList`
+
+#### Tooltips
+
+- Renamed `whiteList` option to `allowList`
+
+---
+
+## v5.0.0-alpha1
+
+### Browser support
 
 See the browser and devices page for details on what is currently supported in Bootstrap 5. Since v4, here's what's changed to our browser support:
 
 - Dropped support for Internet Explorer 10 and 11
-- Dropped support for Firefox NN - MM
-- Dropped support for Safari NN
-- Dropped support for iOS Safari NN
-- Dropped support for Chrome NN
-- Dropped support for Android NN
+- Dropped support for Microsoft Edge < 16
+- Dropped support for Firefox < 60
+- Dropped support for Safari < 10
+- Dropped support for iOS Safari < 10
+- Dropped support for Chrome < 60
+- Dropped support for Android < 6
 
-## Sass
+### Sass
 
 Changes to our source Sass files and compiled CSS.
 
@@ -51,22 +68,22 @@ Changes to our source Sass files and compiled CSS.
 - The `media-breakpoint-down()` uses the breakpoint itself instead of the next breakpoint. Use `media-breakpoint-down(lg)` instead of `media-breakpoint-down(md)` to target viewports smaller than the `lg` breakpoint.
 - The `media-breakpoint-between()` mixin's second parameter also uses the breakpoint itself instead of the next breakpoint. Use `media-between(sm, lg)` instead of `media-breakpoint-between(sm, md)` to target viewports between the `sm` and `lg` breakpoints.
 
-## JavaScript
+### JavaScript
 
 Changes to our source and compiled JavaScript files.
 
 - Dropped jQuery dependency and rewrote plugins to be in regular JavaScript.
 - Removed underscore from public static methods like `_getInstance()` → `getInstance()`.
 
-## Color system
+### Color system
 
 We've updated the color system that powers Bootstrap to improve color contrast and provide a much more extensive set of colors.
 
-- Updated blue and pink base colors (`-500`) to ensure AA contrast.
+- Updated blue and pink base colors (`-500`) to ensure WCAG 2.1 AA contrast.
 - Added new tints and shades for every color, providing nine separate colors for each base color, as new Sass variables.
 - To support our color system, we've added new custom `tint-color()` and `shade-color()` functions to mix our colors appropriately.
 
-## Grid and layout
+### Grid and layout
 
 Changes to any layout tools and our grid system.
 
@@ -79,7 +96,7 @@ Changes to any layout tools and our grid system.
 - The gutter width is now set in `rem` and decreased from `30px` to `1.5rem` (24px).
 - `bootstrap-grid.css` now only applies `box-sizing: border-box` to the column instead of resetting the global box-sizing. This way the grid system can be used, even if `box-sizing: border-box` is not applied to each element.
 
-## Content, Reboot, etc
+### Content, Reboot, etc
 
 Changes to Reboot, typography, tables, and more.
 
@@ -94,14 +111,14 @@ Changes to Reboot, typography, tables, and more.
 - `.text-*` utilities do not add hover and focus states to links anymore. `.link-*` helper classes can be used instead. [See #29267](https://github.com/twbs/bootstrap/pull/29267)
 - Drop `.text-justify` class. [See #229793](https://github.com/twbs/bootstrap/pull/29793)
 
-## Typography
+### Typography
 
 - Removed `$display-*` variables for a new `$display-font-sizes` Sass map.
 - Removed individual `$display-*-weight` variables for a single `$display-font-weight`.
 - Added two new `.display-*` heading styles, `.display-5` and `.display-6`.
 - Resized existing display headings for a slightly more consistent set of `font-size`s.
 
-## Forms
+### Forms
 
 - Rearranged form documentation under its own top-level section.
   - Split out old Forms page into several subpages
@@ -128,19 +145,19 @@ Changes to Reboot, typography, tables, and more.
 - Dropped `.input-group-append` and `.input-group-prepend`. You can now just add buttons and `.input-group-text` as direct children of the input groups.
 - Form labels now require the `.form-label` class. Sass variables are now available to style form labels to your needs. [See #30476](https://github.com/twbs/bootstrap/pull/30476)
 
-## Components
+### Components
 
 - Unified `padding` values for alerts, breadcrumbs, cards, dropdowns, list groups, modals, popovers, and tooltips to be based on our `$spacer` variable. [See #30564](https://github.com/twbs/bootstrap/pull/30564).
 
-### Disabled states
+#### Disabled states
 
 - Disabled states of the buttons, close button, pagination link & form range now have `pointer-events: none` added. This simplifies our codebase and makes it easier to override active states in CSS. [#29296](https://github.com/twbs/bootstrap/pull/29296).
 
-### Alerts
+#### Alerts
 
 - **Todo:** Remove auto-darkening of `<hr>` elements in `.alert-*` class variants. `<hr>`s use `rgba()` for their color, so these should naturally blend anyway.
 
-### Badges
+#### Badges
 
 Badges were overhauled to better differentiate themselves from buttons and to better utilize utility classes.
 
@@ -148,42 +165,40 @@ Badges were overhauled to better differentiate themselves from buttons and to be
 - **Todo:** Removed `.badge-pill` for the `.rounded-pill` utility class
 - **Todo:** Removed badge's hover and focus styles for `a.badge` and `button.badge`.
 
-### Buttons
+#### Buttons
 
 - The checkbox/radio toggle is removed from the button plugin in favour of a CSS only solution, which is documented in the [form checks and radios]({{< docsref "/forms/checks-radios#toggle-buttons" >}}) docs. The `.btn-check` class can be added to inputs, any label with `.btn` and modifier class can be used to theme the labels. [See #30650](https://github.com/twbs/bootstrap/pull/30650).
 
-### Cards
+#### Cards
 
 - Removed the card columns in favor of a Masonry grid [See #28922](https://github.com/twbs/bootstrap/pull/28922).
 - Removed card decks in favor of the grid which adds more flexibility over responsive behavior.
 
-### Jumbotron
+#### Jumbotron
 
 - The jumbotron component is removed in favor of utility classes like `.bg-light` for the background color and `.p-*` classes to control padding.
 
-### Navbars
+#### Navbars
 
 - All navbars now require a container within. This drastically simplifies spacing requirements and removes the need for extensive CSS overrides we added for responsive containers in v4.
 
-### Pagination
+#### Pagination
 
 - Pagination links now have customizable `margin-left` that are dynamically rounded on all corners when separated from one another.
 
-### Popovers
+#### Popovers
 
 - Renamed `.arrow` to `.popover-arrow`
-- Renamed `whiteList` option to `allowList`
 
-### Tooltips
+#### Tooltips
 
 - Renamed `.arrow` to `.tooltip-arrow`
-- Renamed `whiteList` option to `allowList`
 
-## Accessibility
+### Accessibility
 
 - `.sr-only-focusable` does not require `.sr-only` anymore. [See #28720](https://github.com/twbs/bootstrap/pull/28720).
 
-## Utilities
+### Utilities
 
 - Renamed `.text-monospace` to `.font-monospace`
 - Decreased the number of responsive order utilities per breakpoint. The highest order utility with a number now is `.order-5` instead of `.order-12`. [See #28874](https://github.com/twbs/bootstrap/pull/28874).
@@ -193,8 +208,12 @@ Badges were overhauled to better differentiate themselves from buttons and to be
 - **Todo:** Split utilities into property-value utility classes and helpers
 - Negative margin utilities are disabled by default. You can re-enable them by setting `$enable-negative-margins: true`, but keep in mind this can increase the file size quite a lot.
 
-## Docs
+### Docs
 
 - Removed "Wall of browser bugs" page because it has become obsolete
+- Switched from Jekyll to Hugo
 
-## Build tools
+### Build tools
+
+- Updated all devDependencies
+- We support only the latest Node.js LTS releases which are 10 and 12 at the time of writing
