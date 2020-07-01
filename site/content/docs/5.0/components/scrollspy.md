@@ -311,19 +311,19 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
   </thead>
   <tbody>
     <tr>
-      <td>offset</td>
+      <td><code>offset</code></td>
       <td>number</td>
-      <td>10</td>
+      <td><code>10</code></td>
       <td>Pixels to offset from top when calculating position of scroll.</td>
     </tr>
     <tr>
-      <td>method</td>
+      <td><code>method</code></td>
       <td>string</td>
-      <td>auto</td>
+      <td><code>auto</code></td>
       <td>Finds which section the spied element is in. <code>auto</code> will choose the best method to get scroll coordinates. <code>offset</code> will use the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect"><code>Element.getBoundingClientRect()</code></a> method to get scroll coordinates. <code>position</code> will use the <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetTop"><code>HTMLElement.offsetTop</code></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetLeft"><code>HTMLElement.offsetLeft</code></a> properties to get scroll coordinates.</td>
     </tr>
     <tr>
-      <td>target</td>
+      <td><code>target</code></td>
       <td>string | jQuery object | DOM element</td>
       <td></td>
       <td>Specifies element to apply Scrollspy plugin.</td>
@@ -342,7 +342,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
   </thead>
   <tbody>
     <tr>
-      <td>activate.bs.scrollspy</td>
+      <td><code>activate.bs.scrollspy</code></td>
       <td>This event fires on the scroll element whenever a new item becomes activated by the scrollspy.</td>
     </tr>
   </tbody>

@@ -36,8 +36,8 @@
 <link rel="stylesheet" href="%s" integrity=%q crossorigin="anonymous">`) .Site.Params.cdn.css (.Site.Params.cdn.css_hash | safeHTMLAttr)) "html" "" }}
       {{ highlight (printf (`<!-- JavaScript and dependencies -->
 <script src="%s" integrity=%q crossorigin="anonymous"></script>
-  <script src="%s" integrity=%q crossorigin="anonymous"></script>
-  `) .Site.Params.cdn.popper (.Site.Params.cdn.popper_hash | safeHTMLAttr) .Site.Params.cdn.js (.Site.Params.cdn.js_hash | safeHTMLAttr)) "html" "" }}
+<script src="%s" integrity=%q crossorigin="anonymous"></script>
+`) .Site.Params.cdn.popper (.Site.Params.cdn.popper_hash | safeHTMLAttr) .Site.Params.cdn.js (.Site.Params.cdn.js_hash | safeHTMLAttr)) "html" "" }}
     </div>
   </div>
 
