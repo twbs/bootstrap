@@ -699,19 +699,19 @@ Another override is the option to pop up a modal that covers the user viewport, 
     </tr>
     <tr>
       <td><code>.modal-fullscreen-sm-down</code></td>
-      <td><code>Below 576px</code></td>
+      <td>Below <code>576px</code></td>
     </tr>
     <tr>
       <td><code>.modal-fullscreen-md-down</code></td>
-      <td><code>Below 768px</code></td>
+      <td>Below <code>768px</code></td>
     </tr>
     <tr>
       <td><code>.modal-fullscreen-lg-down</code></td>
-      <td><code>Below 992px</code></td>
+      <td>Below <code>992px</code></td>
     </tr>
     <tr>
       <td><code>.modal-fullscreen-xl-down</code></td>
-      <td><code>Below 1200px</code></td>
+      <td>Below <code>1200px</code></td>
     </tr>
   </tbody>
 </table>
@@ -878,27 +878,27 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
   </thead>
   <tbody>
     <tr>
-      <td>backdrop</td>
+      <td><code>backdrop</code></td>
       <td>boolean or the string <code>'static'</code></td>
-      <td>true</td>
+      <td><code>true</code></td>
       <td>Includes a modal-backdrop element. Alternatively, specify <code>static</code> for a backdrop which doesn't close the modal on click.</td>
     </tr>
     <tr>
-      <td>keyboard</td>
+      <td><code>keyboard</code></td>
       <td>boolean</td>
-      <td>true</td>
+      <td><code>true</code></td>
       <td>Closes the modal when escape key is pressed</td>
     </tr>
     <tr>
-      <td>focus</td>
+      <td><code>focus</code></td>
       <td>boolean</td>
-      <td>true</td>
+      <td><code>true</code></td>
       <td>Puts the focus on the modal when initialized.</td>
     </tr>
     <tr>
-      <td>show</td>
+      <td><code>show</code></td>
       <td>boolean</td>
-      <td>true</td>
+      <td><code>true</code></td>
       <td>Shows the modal when initialized.</td>
     </tr>
   </tbody>
@@ -972,23 +972,23 @@ Bootstrap's modal class exposes a few events for hooking into modal functionalit
   </thead>
   <tbody>
     <tr>
-      <td>show.bs.modal</td>
+      <td><code>show.bs.modal</code></td>
       <td>This event fires immediately when the <code>show</code> instance method is called. If caused by a click, the clicked element is available as the <code>relatedTarget</code> property of the event.</td>
     </tr>
     <tr>
-      <td>shown.bs.modal</td>
+      <td><code>shown.bs.modal</code></td>
       <td>This event is fired when the modal has been made visible to the user (will wait for CSS transitions to complete). If caused by a click, the clicked element is available as the <code>relatedTarget</code> property of the event.</td>
     </tr>
     <tr>
-      <td>hide.bs.modal</td>
+      <td><code>hide.bs.modal</code></td>
       <td>This event is fired immediately when the <code>hide</code> instance method has been called.</td>
     </tr>
     <tr>
-      <td>hidden.bs.modal</td>
+      <td><code>hidden.bs.modal</code></td>
       <td>This event is fired when the modal has finished being hidden from the user (will wait for CSS transitions to complete).</td>
     </tr>
     <tr>
-      <td>hidePrevented.bs.modal</td>
+      <td><code>hidePrevented.bs.modal</code></td>
       <td>This event is fired when the modal is shown, its backdrop is <code>static</code> and a click outside the modal or an escape key press is performed with the keyboard option or <code>data-keyboard</code> set to <code>false</code>.</td>
     </tr>
   </tbody>
