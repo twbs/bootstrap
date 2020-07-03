@@ -222,18 +222,18 @@ The example below uses a flexbox utility to vertically center the contents and c
 {{< example >}}
 <form class="row gy-2 gx-3 align-items-center">
   <div class="col-auto">
-    <label class="sr-only" for="autoSizingInput">Name</label>
+    <label class="visually-hidden" for="autoSizingInput">Name</label>
     <input type="text" class="form-control" id="autoSizingInput" placeholder="Jane Doe">
   </div>
   <div class="col-auto">
-    <label class="sr-only" for="autoSizingInputGroup">Username</label>
+    <label class="visually-hidden" for="autoSizingInputGroup">Username</label>
     <div class="input-group">
       <div class="input-group-text">@</div>
       <input type="text" class="form-control" id="autoSizingInputGroup" placeholder="Username">
     </div>
   </div>
   <div class="col-auto">
-    <label class="sr-only" for="autoSizingSelect">Preference</label>
+    <label class="visually-hidden" for="autoSizingSelect">Preference</label>
     <select class="form-select" id="autoSizingSelect">
       <option selected>Choose...</option>
       <option value="1">One</option>
@@ -260,18 +260,18 @@ You can then remix that once again with size-specific column classes.
 {{< example >}}
 <form class="row gx-3 gy-2 align-items-center">
   <div class="col-sm-3">
-    <label class="sr-only" for="specificSizeInputName">Name</label>
+    <label class="visually-hidden" for="specificSizeInputName">Name</label>
     <input type="text" class="form-control" id="specificSizeInputName" placeholder="Jane Doe">
   </div>
   <div class="col-sm-3">
-    <label class="sr-only" for="specificSizeInputGroupUsername">Username</label>
+    <label class="visually-hidden" for="specificSizeInputGroupUsername">Username</label>
     <div class="input-group">
       <div class="input-group-text">@</div>
       <input type="text" class="form-control" id="specificSizeInputGroupUsername" placeholder="Username">
     </div>
   </div>
   <div class="col-sm-3">
-    <label class="sr-only" for="specificSizeSelect">Preference</label>
+    <label class="visually-hidden" for="specificSizeSelect">Preference</label>
     <select class="form-select" id="specificSizeSelect">
       <option selected>Choose...</option>
       <option value="1">One</option>
@@ -297,17 +297,17 @@ You can then remix that once again with size-specific column classes.
 
 Use the `.col-auto` class to create horizontal layouts. By adding [gutter modifier classes]({{< docsref "/layout/gutters" >}}), we'll have gutters in horizontal and vertical directions. The `.align-items-center` aligns the form elements to the middle, making the `.form-checkbox` align properly.
 
-Be sure to always include a `<label>` with each form control, even if you need to hide it from non-screenreader visitors with `.sr-only`.
+Be sure to always include a `<label>` with each form control, even if you need to hide it from non-screenreader visitors with `.visually-hidden`.
 
 {{< example >}}
 <form class="row row-cols-md-auto g-3 align-items-center">
   <div class="col-12">
-    <label class="sr-only" for="inlineFormInputName">Name</label>
+    <label class="visually-hidden" for="inlineFormInputName">Name</label>
     <input type="text" class="form-control" id="inlineFormInputName" placeholder="Jane Doe">
   </div>
 
   <div class="col-12">
-    <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
+    <label class="visually-hidden" for="inlineFormInputGroupUsername">Username</label>
     <div class="input-group">
       <div class="input-group-text">@</div>
       <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="Username">
@@ -315,7 +315,7 @@ Be sure to always include a `<label>` with each form control, even if you need t
   </div>
 
   <div class="col-12">
-    <label class="sr-only" for="inlineFormSelectPref">Preference</label>
+    <label class="visually-hidden" for="inlineFormSelectPref">Preference</label>
     <select class="form-select" id="inlineFormSelectPref">
       <option selected>Choose...</option>
       <option value="1">One</option>
@@ -342,5 +342,5 @@ Be sure to always include a `<label>` with each form control, even if you need t
 {{< callout warning >}}
 ### Alternatives to hidden labels
 
-Assistive technologies such as screen readers will have trouble with your forms if you don't include a label for every input. For these inline forms, you can hide the labels using the `.sr-only` class. There are further alternative methods of providing a label for assistive technologies, such as the `aria-label`, `aria-labelledby` or `title` attribute. If none of these are present, assistive technologies may resort to using the `placeholder` attribute, if present, but note that use of `placeholder` as a replacement for other labeling methods is not advised.
+Assistive technologies such as screen readers will have trouble with your forms if you don't include a label for every input. For these inline forms, you can hide the labels using the `.visually-hidden` class. There are further alternative methods of providing a label for assistive technologies, such as the `aria-label`, `aria-labelledby` or `title` attribute. If none of these are present, assistive technologies may resort to using the `placeholder` attribute, if present, but note that use of `placeholder` as a replacement for other labeling methods is not advised.
 {{< /callout >}}
