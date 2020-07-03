@@ -203,7 +203,7 @@ Multiple add-ons are supported and can be mixed with checkbox and radio input ve
 <div class="input-group mb-3">
   <button type="button" class="btn btn-outline-secondary">Action</button>
   <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false">
-    <span class="sr-only">Toggle Dropdown</span>
+    <span class="visually-hidden">Toggle Dropdown</span>
   </button>
   <ul class="dropdown-menu">
     <li><a class="dropdown-item" href="#">Action</a></li>
@@ -219,7 +219,7 @@ Multiple add-ons are supported and can be mixed with checkbox and radio input ve
   <input type="text" class="form-control" aria-label="Text input with segmented dropdown button">
   <button type="button" class="btn btn-outline-secondary">Action</button>
   <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false">
-    <span class="sr-only">Toggle Dropdown</span>
+    <span class="visually-hidden">Toggle Dropdown</span>
   </button>
   <ul class="dropdown-menu dropdown-menu-right">
     <li><a class="dropdown-item" href="#">Action</a></li>
@@ -331,4 +331,4 @@ Input groups include support for custom selects and custom file inputs. Browser 
 
 Screen readers will have trouble with your forms if you don't include a label for every input. For these input groups, ensure that any additional label or functionality is conveyed to assistive technologies.
 
-The exact technique to be used (`<label>` elements hidden using the `.sr-only` class, or use of the `aria-label` and `aria-labelledby` attributes, possibly in combination with `aria-describedby`) and what additional information will need to be conveyed will vary depending on the exact type of interface widget you're implementing. The examples in this section provide a few suggested, case-specific approaches.
+The exact technique to be used (`<label>` elements hidden using the `.visually-hidden` class, or use of the `aria-label` and `aria-labelledby` attributes, possibly in combination with `aria-describedby`) and what additional information will need to be conveyed will vary depending on the exact type of interface widget you're implementing. The examples in this section provide a few suggested, case-specific approaches.
