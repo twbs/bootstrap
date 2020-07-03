@@ -1,0 +1,74 @@
+{{/*
+  get-js-assets
+  Returns a list of processed Hugo Assets to be used in templates
+
+  @author @regisphilibert
+
+  @context Page (.)
+
+  @access public
+
+  @example - Go Template
+  {{- range partialCached "func/get-js-assets" . $variant -}}
+    <script src="{{ .RelPermalink }}"></script>
+  {{- end -}}
+*/}}
+
+{{/* We'll return a slice so templates can safely use `range` */}}
+{{ $jsAssets := slice }}
+
+{{/* Storing the reused mount warning message */}}
+{{ $missing_file_warning := "%s not found. Check your mounts settings." }}
+{{ $doc_version := site.Params.docs_version }}
+{{/* Doc Search */}}
+{{ if eq .Page.Layout "docs" -}}
+  {{ with resources.GetMatch "js/vendor/docsearch.min.js" }}
+  {{/* As this is a WIP, we don't customize the asset URL,
+    but we will after Hugo .74 and resources.Put (https://github.com/gohugoio/hugo/issues/7406):
+  {{ with resources.GetMatch "js/vendor/docsearch.min.js" }}
+    {{ $docsearch := . | resources.Put (printf /docs/%s/assets/js/vendor/docsearch.min.js" $doc_version) }}
+    {{ $jsAssets = $jsAssets | append $docsearch }}
+  */}}
+    {{ $jsAssets = $jsAssets | append . }}
+  {{ else }}
+    {{ warnf $missing_file_warning "docsearch.min.js" }}
+  {{ end }}
+{{- end }}
+
+{{/* --- Bundle */}}
+{{ $bundle := slice }}
+
+{{/* ----- Mounted from vendors */}}
+{{- $vendor_assets := slice -}}
+{{/* As we need to list the desired mounted files to:
+  1. Check for missing mounts and throw an error
+  2. Control order if need be
+  3. Exclude docsearch (though there would be other ways) */}}
+{{ $vendor_filenames := slice "clipboard.min.js" "anchor.min.js" "bs-custom-file-input.min.js" }}
+{{ range $filename := $vendor_filenames }}
+  {{ with resources.GetMatch (print "js/vendor/" .) }}
+    {{ $vendor_assets = $vendor_assets | append . }}
+  {{ else }}
+    {{ warnf $missing_file_warning $filename }}
+  {{ end }}
+{{ end }}
+{{ with $vendor_assets }}
+  {{ $bundle = $bundle | append . }}
+{{ end }}
+
+{{/* ----- Local assets */}}
+{{ with resources.Match "js/*.js" }}
+  {{ $bundle = $bundle | append . }}
+{{ end }}
+
+{{/* Above code should have populated $bundle slice */}}
+{{ with $bundle }}
+  {{ $targetBundlePath := printf "/docs/%s/assets/js/docs.js" $doc_version }}
+  {{ $bundle_asset := $bundle | resources.Concat $targetBundlePath }}
+  {{ if eq hugo.Environment "production" }}
+    {{ $bundle_asset = $bundle_asset | resources.Minify }}
+  {{ end }}
+  {{ $jsAssets = $jsAssets | append $bundle_asset }}
+{{ end }}
+
+{{ return $jsAssets }}
