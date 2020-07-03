@@ -822,9 +822,9 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
   </thead>
   <tbody>
     <tr>
-      <td>offset</td>
+      <td><code>offset</code></td>
       <td>number | string | function</td>
-      <td>0</td>
+      <td><code>0</code></td>
       <td>
         <p>Offset of the dropdown relative to its target.</p>
         <p>When a function is used to determine the offset, it is called with an object containing the offset data as its first argument. The function must return an object with the same structure. The triggering element DOM node is passed as the second argument.</p>
@@ -832,33 +832,33 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       </td>
     </tr>
     <tr>
-      <td>flip</td>
+      <td><code>flip</code></td>
       <td>boolean</td>
-      <td>true</td>
+      <td><code>true</code></td>
       <td>Allow Dropdown to flip in case of an overlapping on the reference element. For more information refer to Popper.js's <a href="https://popper.js.org/docs/v1/#modifiers..flip.enabled">flip docs</a>.</td>
     </tr>
     <tr>
-      <td>boundary</td>
+      <td><code>boundary</code></td>
       <td>string | element</td>
-      <td>'scrollParent'</td>
+      <td><code>'scrollParent'</code></td>
       <td>Overflow constraint boundary of the dropdown menu. Accepts the values of <code>'viewport'</code>, <code>'window'</code>, <code>'scrollParent'</code>, or an HTMLElement reference (JavaScript only). For more information refer to Popper.js's <a href="https://popper.js.org/docs/v1/#modifiers..preventOverflow.boundariesElement">preventOverflow docs</a>.</td>
     </tr>
     <tr>
-      <td>reference</td>
+      <td><code>reference</code></td>
       <td>string | element</td>
-      <td>'toggle'</td>
+      <td><code>'toggle'</code></td>
       <td>Reference element of the dropdown menu. Accepts the values of <code>'toggle'</code>, <code>'parent'</code>, or an HTMLElement reference. For more information refer to Popper.js's <a href="https://popper.js.org/docs/v1/#referenceObject">referenceObject docs</a>.</td>
     </tr>
     <tr>
-      <td>display</td>
+      <td><code>display</code></td>
       <td>string</td>
-      <td>'dynamic'</td>
+      <td><code>'dynamic'</code></td>
       <td>By default, we use Popper.js for dynamic positioning. Disable this with <code>static</code>.</td>
     </tr>
     <tr>
-      <td>popperConfig</td>
+      <td><code>popperConfig</code></td>
       <td>null | object</td>
-      <td>null</td>
+      <td><code>null</code></td>
       <td>To change Bootstrap's default Popper.js config, see <a href="https://popper.js.org/docs/v1/#Popper.Defaults">Popper.js's configuration</a></td>
     </tr>
   </tbody>

@@ -7,29 +7,38 @@ aliases: "/migration/"
 toc: true
 ---
 
-## Alpha 2 changes
+## v5.0.0-alpha2
 
-While in alpha, we may introduce breaking changes as we experiment and refine some of the features.
-
-### Breaking
+### Sass
 
 - Renamed `.sr-only` and `.sr-only-focusable` to `.visually-hidden` and `.visually-hidden-focusable`.
 - Renamed `sr-only()` and `sr-only-focusable()` mixins to `visually-hidden()` and `visually-hidden-focusable()`.
 
-## Summary
+### Components
 
-Here are the big ticket items you’ll want to be aware of when moving from v4 to v5.
+#### Popovers
+
+- Renamed `whiteList` option to `allowList`
+
+#### Tooltips
+
+- Renamed `whiteList` option to `allowList`
+
+---
+
+## v5.0.0-alpha1
 
 ### Browser support
 
 See the browser and devices page for details on what is currently supported in Bootstrap 5. Since v4, here's what's changed to our browser support:
 
 - Dropped support for Internet Explorer 10 and 11
-- Dropped support for Firefox NN - MM
-- Dropped support for Safari NN
-- Dropped support for iOS Safari NN
-- Dropped support for Chrome NN
-- Dropped support for Android NN
+- Dropped support for Microsoft Edge < 16
+- Dropped support for Firefox < 60
+- Dropped support for Safari < 10
+- Dropped support for iOS Safari < 10
+- Dropped support for Chrome < 60
+- Dropped support for Android < 6
 
 ### Sass
 
@@ -76,7 +85,7 @@ Changes to our source and compiled JavaScript files.
 
 We've updated the color system that powers Bootstrap to improve color contrast and provide a much more extensive set of colors.
 
-- Updated blue and pink base colors (`-500`) to ensure AA contrast.
+- Updated blue and pink base colors (`-500`) to ensure WCAG 2.1 AA contrast.
 - Added new tints and shades for every color, providing nine separate colors for each base color, as new Sass variables.
 - To support our color system, we've added new custom `tint-color()` and `shade-color()` functions to mix our colors appropriately.
 
@@ -164,7 +173,7 @@ Badges were overhauled to better differentiate themselves from buttons and to be
 
 #### Buttons
 
-- The checkbox/radio toggle is removed from the button plugin in favour of a CSS only solution, which is documented in the [form checks]({{< docsref "/forms/checks#toggle-buttons" >}}) docs. The `.btn-check` class can be added to inputs, any label with `.btn` and modifier class can be used to theme the labels. [See #30650](https://github.com/twbs/bootstrap/pull/30650).
+- The checkbox/radio toggle is removed from the button plugin in favour of a CSS only solution, which is documented in the [form checks and radios]({{< docsref "/forms/checks-radios#toggle-buttons" >}}) docs. The `.btn-check` class can be added to inputs, any label with `.btn` and modifier class can be used to theme the labels. [See #30650](https://github.com/twbs/bootstrap/pull/30650).
 
 #### Cards
 
@@ -186,12 +195,10 @@ Badges were overhauled to better differentiate themselves from buttons and to be
 #### Popovers
 
 - Renamed `.arrow` to `.popover-arrow`
-- Renamed `whiteList` option to `allowList`
 
 #### Tooltips
 
 - Renamed `.arrow` to `.tooltip-arrow`
-- Renamed `whiteList` option to `allowList`
 
 ### Accessibility
 
@@ -211,5 +218,9 @@ Badges were overhauled to better differentiate themselves from buttons and to be
 ### Docs
 
 - Removed "Wall of browser bugs" page because it has become obsolete
+- Switched from Jekyll to Hugo
 
 ### Build tools
+
+- Updated all devDependencies
+- We support only the latest Node.js LTS releases which are 10 and 12 at the time of writing
