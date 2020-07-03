@@ -171,15 +171,15 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
   </thead>
   <tbody>
     <tr>
-      <td>parent</td>
+      <td><code>parent</code></td>
       <td>selector | jQuery object | DOM element </td>
-      <td>false</td>
+      <td><code>false</code></td>
       <td>If parent is provided, then all collapsible elements under the specified parent will be closed when this collapsible item is shown. (similar to traditional accordion behavior - this is dependent on the <code>card</code> class). The attribute has to be set on the target collapsible area.</td>
     </tr>
     <tr>
-      <td>toggle</td>
+      <td><code>toggle</code></td>
       <td>boolean</td>
-      <td>true</td>
+      <td><code>true</code></td>
       <td>Toggles the collapsible element on invocation</td>
     </tr>
   </tbody>
@@ -246,19 +246,19 @@ Bootstrap's collapse class exposes a few events for hooking into collapse functi
   </thead>
   <tbody>
     <tr>
-      <td>show.bs.collapse</td>
+      <td><code>show.bs.collapse</code></td>
       <td>This event fires immediately when the <code>show</code> instance method is called.</td>
     </tr>
     <tr>
-      <td>shown.bs.collapse</td>
+      <td><code>shown.bs.collapse</code></td>
       <td>This event is fired when a collapse element has been made visible to the user (will wait for CSS transitions to complete).</td>
     </tr>
     <tr>
-      <td>hide.bs.collapse</td>
+      <td><code>hide.bs.collapse</code></td>
       <td>This event is fired immediately when the <code>hide</code> method has been called.</td>
     </tr>
     <tr>
-      <td>hidden.bs.collapse</td>
+      <td><code>hidden.bs.collapse</code></td>
       <td>This event is fired when a collapse element has been hidden from the user (will wait for CSS transitions to complete).</td>
     </tr>
   </tbody>
