@@ -201,7 +201,7 @@ Badges were overhauled to better differentiate themselves from buttons and to be
 
 ### Accessibility
 
-- Unlike the old `.sr-only-focusable`, which only worked in combination with `.sr-only`, the renamed `.visually-hidden-focusable` can be used as a standalone class without `.visually-hidden`. [See #28720](https://github.com/twbs/bootstrap/pull/28720).
+- Unlike the old `.sr-only-focusable`, which only worked in combination with `.sr-only`, `.sr-only-focusable` can be used as a standalone class without `.sr-only`. [See #28720](https://github.com/twbs/bootstrap/pull/28720).
 
 ### Utilities
 
