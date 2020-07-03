@@ -40,10 +40,12 @@ module:
       target:           static/apple-touch-icon.png
     - source:           site/static/docs/5.0/assets/img/favicons/favicon.ico
       target:           static/favicon.ico
-    # docsearch is referenced in a `script` tag so we just mount it in the static folder
+    
+    # the following are processed via Hugo pipes so we need them in the assets folder
+    ## the following will be printed with Hugo pipes
     - source:           node_modules/docsearch.js/dist/cdn/docsearch.min.js
-      target:           static/docs/5.0/assets/js/vendor/docsearch.min.js
-    # the following are concatenated via Hugo pipes with docs.js so we need them in the assets folder
+      target:           assets/js/vendor/docsearch.min.js
+    ## The following vendor files will be bundled together on top of local js files as /docs.js
     - source:           node_modules/anchor-js/anchor.min.js
       target:           assets/js/vendor/anchor.min.js
     - source:           node_modules/bs-custom-file-input/dist/bs-custom-file-input.min.js

@@ -4,17 +4,7 @@
   <script src="/docs/{{ .Site.Params.docs_version }}/dist/js/bootstrap.bundle.js"></script>
 {{- end }}
 
-{{ if eq .Page.Layout "docs" -}}
-<script src="/docs/{{ .Site.Params.docs_version }}/assets/js/vendor/docsearch.min.js"></script>
-{{- end }}
-
-{{- $vendor := resources.Match "js/vendor/*.js" -}}
-{{- $js := resources.Match "js/*.js" -}}
-{{- $targetDocsJSPath := printf "/docs/%s/assets/js/docs.js" .Site.Params.docs_version -}}
-{{- $docsJs := append $js $vendor | resources.Concat $targetDocsJSPath -}}
-
-{{- if eq hugo.Environment "production" -}}
-  {{- $docsJs = $docsJs | resources.Minify -}}
-{{- end }}
-
-<script src="{{ $docsJs.Permalink | relURL }}"></script>
+{{- $variant := cond (eq .Page.Layout "docs") "docs" "default" -}}
+{{- range partialCached "func/get-js-assets" . $variant -}}
+  <script src="{{ .RelPermalink }}"></script>
+{{- end -}}
