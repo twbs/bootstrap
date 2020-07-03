@@ -31,7 +31,7 @@ The `rfs()` mixin has shorthands for `font-size`, `margin`, `margin-top`, `margi
   font-size: calc(1.525rem + 3.3vw);
 }
 
-@media (max-width: 1200px) {
+@media (min-width: 1200px) {
   .title {
     font-size: 4rem;
   }
