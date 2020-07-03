@@ -1,7 +1,7 @@
 /**
  * --------------------------------------------------------------------------
  * Bootstrap (v5.0.0-alpha1): tooltip.js
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
@@ -17,7 +17,7 @@ import {
   typeCheckConfig
 } from './util/index'
 import {
-  DefaultWhitelist,
+  DefaultAllowlist,
   sanitizeHtml
 } from './util/sanitizer'
 import Data from './dom/data'
@@ -38,7 +38,7 @@ const DATA_KEY = 'bs.tooltip'
 const EVENT_KEY = `.${DATA_KEY}`
 const CLASS_PREFIX = 'bs-tooltip'
 const BSCLS_PREFIX_REGEX = new RegExp(`(^|\\s)${CLASS_PREFIX}\\S+`, 'g')
-const DISALLOWED_ATTRIBUTES = ['sanitize', 'whiteList', 'sanitizeFn']
+const DISALLOWED_ATTRIBUTES = ['sanitize', 'allowList', 'sanitizeFn']
 
 const DefaultType = {
   animation: 'boolean',
@@ -55,7 +55,7 @@ const DefaultType = {
   boundary: '(string|element)',
   sanitize: 'boolean',
   sanitizeFn: '(null|function)',
-  whiteList: 'object',
+  allowList: 'object',
   popperConfig: '(null|object)'
 }
 
@@ -84,7 +84,7 @@ const Default = {
   boundary: 'scrollParent',
   sanitize: true,
   sanitizeFn: null,
-  whiteList: DefaultWhitelist,
+  allowList: DefaultAllowlist,
   popperConfig: null
 }
 
@@ -194,14 +194,14 @@ class Tooltip {
 
     if (event) {
       const dataKey = this.constructor.DATA_KEY
-      let context = Data.getData(event.target, dataKey)
+      let context = Data.getData(event.delegateTarget, dataKey)
 
       if (!context) {
         context = new this.constructor(
-          event.target,
+          event.delegateTarget,
           this._getDelegateConfig()
         )
-        Data.setData(event.target, dataKey, context)
+        Data.setData(event.delegateTarget, dataKey, context)
       }
 
       context._activeTrigger.click = !context._activeTrigger.click
@@ -428,7 +428,7 @@ class Tooltip {
 
     if (this.config.html) {
       if (this.config.sanitize) {
-        content = sanitizeHtml(content, this.config.whiteList, this.config.sanitizeFn)
+        content = sanitizeHtml(content, this.config.allowList, this.config.sanitizeFn)
       }
 
       element.innerHTML = content
@@ -587,14 +587,14 @@ class Tooltip {
 
   _enter(event, context) {
     const dataKey = this.constructor.DATA_KEY
-    context = context || Data.getData(event.target, dataKey)
+    context = context || Data.getData(event.delegateTarget, dataKey)
 
     if (!context) {
       context = new this.constructor(
-        event.target,
+        event.delegateTarget,
         this._getDelegateConfig()
       )
-      Data.setData(event.target, dataKey, context)
+      Data.setData(event.delegateTarget, dataKey, context)
     }
 
     if (event) {
@@ -627,14 +627,14 @@ class Tooltip {
 
   _leave(event, context) {
     const dataKey = this.constructor.DATA_KEY
-    context = context || Data.getData(event.target, dataKey)
+    context = context || Data.getData(event.delegateTarget, dataKey)
 
     if (!context) {
       context = new this.constructor(
-        event.target,
+        event.delegateTarget,
         this._getDelegateConfig()
       )
-      Data.setData(event.target, dataKey, context)
+      Data.setData(event.delegateTarget, dataKey, context)
     }
 
     if (event) {
@@ -708,14 +708,10 @@ class Tooltip {
       config.content = config.content.toString()
     }
 
-    typeCheckConfig(
-      NAME,
-      config,
-      this.constructor.DefaultType
-    )
+    typeCheckConfig(NAME, config, this.constructor.DefaultType)
 
     if (config.sanitize) {
-      config.template = sanitizeHtml(config.template, config.whiteList, config.sanitizeFn)
+      config.template = sanitizeHtml(config.template, config.allowList, config.sanitizeFn)
     }
 
     return config

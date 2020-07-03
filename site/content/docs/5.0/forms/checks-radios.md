@@ -1,8 +1,9 @@
 ---
 layout: docs
-title: Checks
+title: Checks and radios
 description: Create consistent cross-browser and cross-device checkboxes and radios with our completely rewritten checks component.
 group: forms
+aliases: "/docs/5.0/forms/checks/"
 toc: true
 ---
 
@@ -207,5 +208,60 @@ Omit the wrapping `.form-check` for checkboxes and radios that have no label tex
 
 <div>
   <input class="form-check-input" type="radio" name="radioNoLabel" id="radioNoLabel1" value="" aria-label="...">
+</div>
+{{< /example >}}
+
+## Toggle buttons
+
+### Checkbox toggle buttons
+
+Bootstrap's `.btn` styles can be applied to `<label>`s, to provide checkbox style button toggling. Add an input with a `.btn-check` class as previous sibling to toggle the input state.
+
+{{< example >}}
+<input type="checkbox" class="btn-check" id="btn-check" autocomplete="off">
+<label class="btn btn-primary" for="btn-check">Single toggle</label>
+{{< /example >}}
+
+{{< example >}}
+<input type="checkbox" class="btn-check" id="btn-check-2" checked autocomplete="off">
+<label class="btn btn-primary" for="btn-check-2">Checked</label>
+{{< /example >}}
+
+{{< callout info >}}
+Visually, these checkbox toggle buttons are identical to the [button plugin toggle buttons]({{< docsref "/components/buttons#button-plugin" >}}). However, they are conveyed differently by assistive technologies: the checkbox toggles will be announced by screen readers as "checked"/"not checked" (since, despite their appearance, they are fundamentally still checkboxes), whereas the button plugin toggle buttons will be announced as "button"/"button pressed". The choice between these two approaches will depend on the type of toggle you are creating, and whether or not the toggle will make sense to users when announced as a checkbox or as an actual button.
+{{< /callout >}}
+
+### Radio toggle buttons
+
+Toggle buttons can be grouped in a [button group]({{< docsref "/components/button-group" >}}) if needed.
+
+{{< example >}}
+<div class="btn-group">
+  <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off" checked>
+  <label class="btn btn-secondary" for="option1">Checked</label>
+
+  <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
+  <label class="btn btn-secondary" for="option2">Radio</label>
+
+  <input type="radio" class="btn-check" name="options" id="option3" autocomplete="off">
+  <label class="btn btn-secondary" for="option3">Radio</label>
+</div>
+{{< /example >}}
+
+### Outlined styles
+
+{{< example >}}
+<input type="checkbox" class="btn-check" id="btn-check-outlined" autocomplete="off">
+<label class="btn btn-outline-primary" for="btn-check-outlined">Single toggle</label><br>
+
+<input type="checkbox" class="btn-check" id="btn-check-2-outlined" checked autocomplete="off">
+<label class="btn btn-outline-secondary" for="btn-check-2-outlined">Checked</label><br>
+
+<div class="btn-group">
+  <input type="radio" class="btn-check" name="options-outlined" id="success-outlined" autocomplete="off" checked>
+  <label class="btn btn-outline-success" for="success-outlined">Checked success radio</label>
+
+  <input type="radio" class="btn-check" name="options-outlined" id="danger-outlined" autocomplete="off">
+  <label class="btn btn-outline-danger" for="danger-outlined">Danger radio</label>
 </div>
 {{< /example >}}
