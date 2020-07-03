@@ -258,7 +258,7 @@ Group checkboxes or radios on the same horizontal row by adding `.form-check-inl
 
 ### Without labels
 
-Add `.position-static` to inputs within `.form-check` that don't have any label text. Remember to still provide some form of label for assistive technologies (for instance, using `aria-label`).
+Add `.position-static` to inputs within `.form-check` that don't have any label text. Remember to still provide some form of accessible name for assistive technologies (for instance, using `aria-label`).
 
 {% capture example %}
 <div class="form-check">
