@@ -626,6 +626,25 @@ describe('Modal', () => {
       modal.show()
     })
 
+    it('should not overflow when clicking outside of modal-content if backdrop = static', done => {
+      fixtureEl.innerHTML = '<div class="modal" data-backdrop="static"><div class="modal-dialog" style="transition-duration: 20ms;"></div></div>'
+
+      const modalEl = fixtureEl.querySelector('.modal')
+      const modal = new Modal(modalEl, {
+        backdrop: 'static'
+      })
+
+      modalEl.addEventListener('shown.bs.modal', () => {
+        modalEl.click()
+        setTimeout(() => {
+          expect(modalEl.clientHeight === modalEl.scrollHeight).toEqual(true)
+          done()
+        }, 20)
+      })
+
+      modal.show()
+    })
+
     it('should not adjust the inline body padding when it does not overflow', done => {
       fixtureEl.innerHTML = '<div class="modal"><div class="modal-dialog"></div></div>'
 

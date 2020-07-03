@@ -50,7 +50,7 @@ params:
   current_version:      "5.0.0-alpha1"
   current_ruby_version: "5.0.0-alpha1"
   docs_version:         "5.0"
-  rfs_version:          "9.0.2"
+  rfs_version:          "9.0.3"
   github_org:           "https://github.com/twbs"
   repo:                 "https://github.com/twbs/bootstrap"
   twitter:              "getbootstrap"

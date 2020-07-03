@@ -1,7 +1,7 @@
 ---
 layout: docs
 title: Containers
-description: Containers are a fundamental building block of Bootstrap that contain, pad, and align your content withing a given device or viewport.
+description: Containers are a fundamental building block of Bootstrap that contain, pad, and align your content within a given device or viewport.
 group: layout
 toc: true
 ---
