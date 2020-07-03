@@ -6,21 +6,21 @@ group: helpers
 aliases: "/docs/5.0/helpers/screen-readers/"
 ---
 
-Visually hide an element while still allowing it to be exposed to assistive technologies (such as screen readers) with `.sr-only`. Use `.sr-only-focusable` to visually hide an element by default, but to display it when it's focused (e.g. by a keyboard-only user). Can also be used as mixins.
+Visually hide an element while still allowing it to be exposed to assistive technologies (such as screen readers) with `.visually-hidden`. Use `.visually-hidden-focusable` to visually hide an element by default, but to display it when it's focused (e.g. by a keyboard-only user). Can also be used as mixins.
 
 {{< example >}}
-<h2 class="sr-only">Title for screen readers</h2>
-<a class="sr-only-focusable" href="#content">Skip to main content</a>
+<h2 class="visually-hidden">Title for screen readers</h2>
+<a class="visually-hidden-focusable" href="#content">Skip to main content</a>
 {{< /example >}}
 
 {{< highlight scss >}}
 // Usage as a mixin
 
-.sr-only-title {
-  @include sr-only;
+.visually-hidden-title {
+  @include visually-hidden;
 }
 
 .skip-navigation {
-  @include sr-only-focusable;
+  @include visually-hidden-focusable;
 }
 {{< /highlight >}}
