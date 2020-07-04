@@ -9,6 +9,11 @@ toc: true
 
 ## v5.0.0-alpha2
 
+### Sass
+
+- Renamed `.sr-only` and `.sr-only-focusable` to `.visually-hidden` and `.visually-hidden-focusable`.
+- Renamed `sr-only()` and `sr-only-focusable()` mixins to `visually-hidden()` and `visually-hidden-focusable()`.
+
 ### Components
 
 #### Popovers
@@ -196,7 +201,7 @@ Badges were overhauled to better differentiate themselves from buttons and to be
 
 ### Accessibility
 
-- `.sr-only-focusable` does not require `.sr-only` anymore. [See #28720](https://github.com/twbs/bootstrap/pull/28720).
+- Unlike the old `.sr-only-focusable`, which only worked in combination with `.sr-only`, `.sr-only-focusable` can be used as a standalone class without `.sr-only`. [See #28720](https://github.com/twbs/bootstrap/pull/28720).
 
 ### Utilities
 
