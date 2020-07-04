@@ -2,7 +2,7 @@
 // Screenreaders
 //
 
-.sr-only,
-.sr-only-focusable:not(:focus) {
-  @include sr-only();
+.visually-hidden,
+.visually-hidden-focusable:not(:focus) {
+  @include visually-hidden();
 }

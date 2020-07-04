@@ -10,7 +10,7 @@ sections:
     description: Style textual inputs and textareas with support for multiple states.
   - title: Select
     description: Improve browser default select elements with a custom initial appearance.
-  - title: Checks
+  - title: Checks & radios
     description: Use our custom radio buttons and checkboxes in forms for selecting input options.
   - title: File
     description: Replace browser default file inputs with our custom version with optional JavaScript.
