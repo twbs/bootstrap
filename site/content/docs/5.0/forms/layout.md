@@ -302,11 +302,6 @@ Be sure to always include a `<label>` with each form control, even if you need t
 {{< example >}}
 <form class="row row-cols-md-auto g-3 align-items-center">
   <div class="col-12">
-    <label class="visually-hidden" for="inlineFormInputName">Name</label>
-    <input type="text" class="form-control" id="inlineFormInputName" placeholder="Jane Doe">
-  </div>
-
-  <div class="col-12">
     <label class="visually-hidden" for="inlineFormInputGroupUsername">Username</label>
     <div class="input-group">
       <div class="input-group-text">@</div>
