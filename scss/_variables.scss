@@ -226,7 +226,7 @@ $enable-important-utilities:  true !default;
 //
 // The gradient which is added to components if `$enable-gradients` is `true`
 // This gradient is also added to elements with `.bg-gradient`
-$gradient: linear-gradient(180deg, rgba($white, .15), rgba($white, 0)) !default;
+$gradient: linear-gradient(180deg, rgba($white, .15), transparent) !default;
 
 // Spacing
 //
