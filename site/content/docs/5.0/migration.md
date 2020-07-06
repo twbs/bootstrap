@@ -17,6 +17,7 @@ toc: true
 ### Components
 
 #### Disabled states
+
 - Disabled states of buttons variants are easier to customize thanks to additional arguments in the `button-variant()` mixin. [#30639](https://github.com/twbs/bootstrap/pull/30639).
 
 #### Popovers
