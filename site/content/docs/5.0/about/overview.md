@@ -22,6 +22,8 @@ Originally [released](https://blog.twitter.com/developer/en_us/a/2011/bootstrap-
 
 With Bootstrap 4, we once again rewrote the project to account for two key architectural changes: a migration to Sass and the move to CSS's flexbox. Our intention is to help in a small way to move the web development community forward by pushing for newer CSS properties, fewer dependencies, and new technologies across more modern browsers.
 
+Our latest release, Bootstrap 5 (currently in development), focuses on improving v4's codebase with as few major breaking chanages as possible. We improved existing features and components, removed support for older browsers, dropped jQuery for regular JavaScript, and embraced more future-friendly technologies like CSS custom properties as part of our tooling.
+
 ## Get involved
 
 Get involved with Bootstrap development by [opening an issue]({{< param repo >}}/issues/new) or submitting a pull request. Read our [contributing guidelines]({{< param repo >}}/blob/v{{< param current_version >}}/.github/CONTRIBUTING.md) for information on how we develop.
