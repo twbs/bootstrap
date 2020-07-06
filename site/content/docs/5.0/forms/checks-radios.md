@@ -213,9 +213,9 @@ Omit the wrapping `.form-check` for checkboxes and radios that have no label tex
 
 ## Toggle buttons
 
-### Checkbox toggle buttons
+Create button-like checkboxes and radio buttons by using `.btn` styles rather than `.form-check-label` on the `<label>` elements. These toggle buttons can further be grouped in a [button group]({{< docsref "/components/button-group" >}}) if needed.
 
-Bootstrap's `.btn` styles can be applied to `<label>`s, to provide checkbox style button toggling. Add an input with a `.btn-check` class as previous sibling to toggle the input state.
+### Checkbox toggle buttons
 
 {{< example >}}
 <input type="checkbox" class="btn-check" id="btn-check" autocomplete="off">
@@ -233,22 +233,20 @@ Visually, these checkbox toggle buttons are identical to the [button plugin togg
 
 ### Radio toggle buttons
 
-Toggle buttons can be grouped in a [button group]({{< docsref "/components/button-group" >}}) if needed.
-
 {{< example >}}
-<div class="btn-group">
-  <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off" checked>
-  <label class="btn btn-secondary" for="option1">Checked</label>
+<input type="radio" class="btn-check" name="options" id="option1" autocomplete="off" checked>
+<label class="btn btn-secondary" for="option1">Checked</label>
 
-  <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
-  <label class="btn btn-secondary" for="option2">Radio</label>
+<input type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
+<label class="btn btn-secondary" for="option2">Radio</label>
 
-  <input type="radio" class="btn-check" name="options" id="option3" autocomplete="off">
-  <label class="btn btn-secondary" for="option3">Radio</label>
-</div>
+<input type="radio" class="btn-check" name="options" id="option3" autocomplete="off">
+<label class="btn btn-secondary" for="option3">Radio</label>
 {{< /example >}}
 
 ### Outlined styles
+
+Different variants of `.btn`, such at the various outlined styles, are supported.
 
 {{< example >}}
 <input type="checkbox" class="btn-check" id="btn-check-outlined" autocomplete="off">
@@ -257,11 +255,9 @@ Toggle buttons can be grouped in a [button group]({{< docsref "/components/butto
 <input type="checkbox" class="btn-check" id="btn-check-2-outlined" checked autocomplete="off">
 <label class="btn btn-outline-secondary" for="btn-check-2-outlined">Checked</label><br>
 
-<div class="btn-group">
-  <input type="radio" class="btn-check" name="options-outlined" id="success-outlined" autocomplete="off" checked>
-  <label class="btn btn-outline-success" for="success-outlined">Checked success radio</label>
+<input type="radio" class="btn-check" name="options-outlined" id="success-outlined" autocomplete="off" checked>
+<label class="btn btn-outline-success" for="success-outlined">Checked success radio</label>
 
-  <input type="radio" class="btn-check" name="options-outlined" id="danger-outlined" autocomplete="off">
-  <label class="btn btn-outline-danger" for="danger-outlined">Danger radio</label>
-</div>
+<input type="radio" class="btn-check" name="options-outlined" id="danger-outlined" autocomplete="off">
+<label class="btn btn-outline-danger" for="danger-outlined">Danger radio</label>
 {{< /example >}}
