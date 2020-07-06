@@ -56,7 +56,7 @@
     "docs-serve": "hugo server --port 9001 --disableFastRender",
     "docs-serve-only": "sirv _gh_pages --port 9001",
     "lockfile-lint": "lockfile-lint --allowed-hosts npm --allowed-schemes https: --empty-hostname false --type npm --path package-lock.json",
-    "update-deps": "ncu -u -x karma-browserstack-launcher,popper.js && npm update && echo Manually update site/assets/js/vendor",
+    "update-deps": "ncu -u -x karma-browserstack-launcher && npm update && echo Manually update site/assets/js/vendor",
     "release": "npm-run-all dist release-sri docs-build release-zip*",
     "release-sri": "node build/generate-sri.js",
     "release-version": "node build/change-version.js",
@@ -89,7 +89,7 @@
   },
   "dependencies": {},
   "peerDependencies": {
-    "popper.js": "^1.16.0"
+    "popper.js": "^1.16.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.4",
@@ -126,7 +126,7 @@
     "node-sass": "^4.14.1",
     "nodemon": "^2.0.4",
     "npm-run-all": "^4.1.5",
-    "popper.js": "^1.16.0",
+    "popper.js": "^1.16.1",
     "postcss-cli": "^7.1.1",
     "rollup": "^2.19.0",
     "rollup-plugin-istanbul": "^2.0.1",
@@ -160,7 +160,7 @@
     },
     "dependencies": {},
     "peerDependencies": {
-      "popper.js": "^1.16.0"
+      "popper.js": "^1.16.1"
     }
   }
 }
