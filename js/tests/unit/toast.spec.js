@@ -186,11 +186,14 @@ describe('Toast', () => {
       setTimeout(() => {
         toast._config.autohide = false
         toastEl.addEventListener('shown.bs.toast', () => {
+          expect(toast._clearTimeout).toHaveBeenCalled()
           expect(toast._timeout).toBeNull()
           done()
         })
         toast.show()
       }, toast._config.delay / 2)
+
+      spyOn(toast, '_clearTimeout').and.callThrough()
 
       toast.show()
     })
