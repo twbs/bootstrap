@@ -19,7 +19,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="#">Home <span class="visually-hidden">(current)</span></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Link</a>
@@ -29,11 +29,11 @@
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="dropdown" data-toggle="dropdown" aria-expanded="false">Dropdown</a>
-              <div class="dropdown-menu" aria-labelledby="dropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </div>
+              <ul class="dropdown-menu" aria-labelledby="dropdown">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
             </li>
           </ul>
         </div>
@@ -51,11 +51,11 @@
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="dropdown2" data-toggle="dropdown" aria-expanded="false">Dropdown</a>
-          <div class="dropdown-menu" aria-labelledby="dropdown2">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
+          <ul class="dropdown-menu" aria-labelledby="dropdown2">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
         </li>
       </ul>
 
@@ -70,22 +70,22 @@
           <div class="btn-group dropup">
             <button type="button" class="btn btn-secondary">Dropup split</button>
             <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-              <span class="sr-only">Dropup split</span>
+              <span class="visually-hidden">Dropup split</span>
             </button>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
           </div>
 
           <div class="btn-group dropup">
             <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Dropup</button>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
           </div>
 
           <div class="btn-group">
@@ -104,7 +104,7 @@
           <div class="btn-group dropup" role="group">
             <a href="#" class="btn btn-secondary">Dropup split align right</a>
             <button type="button" id="dropdown-page-subheader-button-3" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false">
-              <span class="sr-only">Product actions</span>
+              <span class="visually-hidden">Product actions</span>
             </button>
             <div class="dropdown-menu dropdown-menu-right">
               <button class="dropdown-item" type="button">Action</button>
@@ -126,7 +126,7 @@
           <div class="btn-group dropright" role="group">
             <a href="#" class="btn btn-secondary">Dropright split</a>
             <button type="button" id="dropdown-page-subheader-button-4" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false">
-              <span class="sr-only">Product actions</span>
+              <span class="visually-hidden">Product actions</span>
             </button>
             <div class="dropdown-menu">
               <button class="dropdown-item" type="button">Action</button>
@@ -148,7 +148,7 @@
           <div class="btn-group dropleft" role="group">
             <a href="#" class="btn btn-secondary">Dropleft split</a>
             <button type="button" id="dropdown-page-subheader-button-5" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false">
-              <span class="sr-only">Product actions</span>
+              <span class="visually-hidden">Product actions</span>
             </button>
             <div class="dropdown-menu">
               <button class="dropdown-item" type="button">Action</button>
@@ -173,24 +173,24 @@
         <div class="col-sm-3 mt-4">
           <div class="btn-group dropdown">
             <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-offset="10,20">Dropdown offset</button>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
           </div>
         </div>
         <div class="col-sm-3 mt-4">
           <div class="btn-group dropdown">
             <button type="button" class="btn btn-secondary">Dropdown reference</button>
             <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" data-reference="parent">
-              <span class="sr-only">Dropdown split</span>
+              <span class="visually-hidden">Dropdown split</span>
             </button>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
           </div>
         </div>
         <div class="col-sm-3 mt-4">
@@ -198,11 +198,11 @@
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" data-display="static" aria-expanded="false">
               Dropdown menu without Popper.js
             </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
           </div>
         </div>
       </div>

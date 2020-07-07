@@ -3,34 +3,38 @@
 // Generate semantic grid columns with these mixins.
 
 @mixin make-row($gutter: $grid-gutter-width) {
+  --bs-gutter-x: #{$gutter};
+  --bs-gutter-y: 0;
   display: flex;
+  flex: 1 0 100%;
   flex-wrap: wrap;
-  margin-right: -$gutter / 2;
-  margin-left: -$gutter / 2;
+  margin-top: calc(var(--bs-gutter-y) * -1); // stylelint-disable-line function-blacklist
+  margin-right: calc(var(--bs-gutter-x) / -2); // stylelint-disable-line function-blacklist
+  margin-left: calc(var(--bs-gutter-x) / -2); // stylelint-disable-line function-blacklist
 }
 
 @mixin make-col-ready($gutter: $grid-gutter-width) {
-  position: relative;
+  // Add box sizing if only the grid is loaded
+  box-sizing: if(variable-exists(include-column-box-sizing) and $include-column-box-sizing, border-box, null);
   // Prevent columns from becoming too narrow when at smaller grid tiers by
-  // always setting `width: 100%;`. This works because we use `flex` values
+  // always setting `width: 100%;`. This works because we set the width
   // later on to override this initial width.
+  flex-shrink: 0;
   width: 100%;
-  padding-right: $gutter / 2;
-  padding-left: $gutter / 2;
+  max-width: 100%; // Prevent `.col-auto`, `.col` (& responsive variants) from breaking out the grid
+  padding-right: calc(var(--bs-gutter-x) / 2); // stylelint-disable-line function-blacklist
+  padding-left: calc(var(--bs-gutter-x) / 2); // stylelint-disable-line function-blacklist
+  margin-top: var(--bs-gutter-y);
 }
 
 @mixin make-col($size, $columns: $grid-columns) {
-  flex: 0 0 percentage($size / $columns);
-  // Add a `max-width` to ensure content within each column does not blow out
-  // the width of the column. Applies to IE10+ and Firefox. Chrome and Safari
-  // do not appear to require this.
-  max-width: percentage($size / $columns);
+  flex: 0 0 auto;
+  width: percentage($size / $columns);
 }
 
 @mixin make-col-auto() {
   flex: 0 0 auto;
   width: auto;
-  max-width: 100%; // Reset earlier grid tiers
 }
 
 @mixin make-col-offset($size, $columns: $grid-columns) {
@@ -45,8 +49,8 @@
 // style grid.
 @mixin row-cols($count) {
   & > * {
-    flex: 0 0 100% / $count;
-    max-width: 100% / $count;
+    flex: 0 0 auto;
+    width: 100% / $count;
   }
 }
 
@@ -56,40 +60,24 @@
 // any value of `$grid-columns`.
 
 @mixin make-grid-columns($columns: $grid-columns, $gutter: $grid-gutter-width, $breakpoints: $grid-breakpoints) {
-  // Common properties for all breakpoints
-  %grid-column {
-    position: relative;
-    width: 100%;
-    padding-right: $gutter / 2;
-    padding-left: $gutter / 2;
-  }
-
   @each $breakpoint in map-keys($breakpoints) {
     $infix: breakpoint-infix($breakpoint, $breakpoints);
-
-    // Allow columns to stretch full width below their breakpoints
-    @for $i from 1 through $columns {
-      .col#{$infix}-#{$i} {
-        @extend %grid-column;
-      }
-    }
-    .col#{$infix},
-    .col#{$infix}-auto {
-      @extend %grid-column;
-    }
 
     @include media-breakpoint-up($breakpoint, $breakpoints) {
       // Provide basic `.col-{bp}` classes for equal-width flexbox columns
       .col#{$infix} {
-        flex-basis: 0;
-        flex-grow: 1;
-        min-width: 0; // See https://github.com/twbs/bootstrap/issues/25410
-        max-width: 100%;
+        flex: 1 0 0%; // Flexbugs #4: https://github.com/philipwalton/flexbugs#flexbug-4
       }
 
-      @for $i from 1 through $grid-row-columns {
-        .row-cols#{$infix}-#{$i} {
-          @include row-cols($i);
+      .row-cols#{$infix}-auto > * {
+        @include make-col-auto();
+      }
+
+      @if $grid-row-columns > 0 {
+        @for $i from 1 through $grid-row-columns {
+          .row-cols#{$infix}-#{$i} {
+            @include row-cols($i);
+          }
         }
       }
 
@@ -97,18 +85,35 @@
         @include make-col-auto();
       }
 
-      @for $i from 1 through $columns {
-        .col#{$infix}-#{$i} {
-          @include make-col($i, $columns);
+      @if $columns > 0 {
+        @for $i from 1 through $columns {
+          .col#{$infix}-#{$i} {
+            @include make-col($i, $columns);
+          }
+        }
+
+        // `$columns - 1` because offsetting by the width of an entire row isn't possible
+        @for $i from 0 through ($columns - 1) {
+          @if not ($infix == "" and $i == 0) { // Avoid emitting useless .offset-0
+            .offset#{$infix}-#{$i} {
+              @include make-col-offset($i, $columns);
+            }
+          }
         }
       }
 
-      // `$columns - 1` because offsetting by the width of an entire row isn't possible
-      @for $i from 0 through ($columns - 1) {
-        @if not ($infix == "" and $i == 0) { // Avoid emitting useless .offset-0
-          .offset#{$infix}-#{$i} {
-            @include make-col-offset($i, $columns);
-          }
+      // Gutters
+      //
+      // Make use of `.g-*`, `.gx-*` or `.gy-*` utilities to change spacing between the columns.
+      @each $key, $value in $gutters {
+        .g#{$infix}-#{$key},
+        .gx#{$infix}-#{$key} {
+          --bs-gutter-x: #{$value};
+        }
+
+        .g#{$infix}-#{$key},
+        .gy#{$infix}-#{$key} {
+          --bs-gutter-y: #{$value};
         }
       }
     }

@@ -9,9 +9,10 @@
   line-height: $btn-line-height;
   color: $body-color;
   text-align: center;
+  text-decoration: if($link-decoration == none, null, none);
   white-space: $btn-white-space;
   vertical-align: middle;
-  cursor: if($enable-pointer-cursor-for-buttons, pointer, null);
+  cursor: if($enable-button-pointers, pointer, null);
   user-select: none;
   background-color: transparent;
   border: $btn-border-width solid transparent;
@@ -20,15 +21,17 @@
 
   &:hover {
     color: $body-color;
-    text-decoration: none;
+    text-decoration: if($link-hover-decoration == underline, none, null);
   }
 
-  &:focus,
-  &.focus {
+  .btn-check:focus + &,
+  &:focus {
     outline: 0;
     box-shadow: $btn-focus-box-shadow;
   }
 
+  .btn-check:checked + &,
+  .btn-check:active + &,
   &:active,
   &.active {
     @include box-shadow($btn-active-box-shadow);
@@ -40,7 +43,7 @@
 
   &:disabled,
   &.disabled,
-  fieldset:disabled & { // stylelint-disable-line selector-no-qualifying-type
+  fieldset:disabled & {
     pointer-events: none;
     opacity: $btn-disabled-opacity;
     @include box-shadow(none);
@@ -80,10 +83,8 @@
     text-decoration: $link-hover-decoration;
   }
 
-  &:focus,
-  &.focus {
+  &:focus {
     text-decoration: $link-hover-decoration;
-    box-shadow: none;
   }
 
   &:disabled,

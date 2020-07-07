@@ -19,16 +19,26 @@
     margin-left: 0;
   }
 
-  > .list-group:first-child {
-    .list-group-item:first-child {
-      @include border-top-radius($card-border-radius);
+  > .list-group {
+    border-top: inherit;
+    border-bottom: inherit;
+
+    &:first-child {
+      border-top-width: 0;
+      @include border-top-radius($card-inner-border-radius);
+    }
+
+    &:last-child  {
+      border-bottom-width: 0;
+      @include border-bottom-radius($card-inner-border-radius);
     }
   }
 
-  > .list-group:last-child {
-    .list-group-item:last-child {
-      @include border-bottom-radius($card-border-radius);
-    }
+  // Due to specificity of the above selector (`.card > .list-group`), we must
+  // use a child selector here to prevent double borders.
+  > .card-header + .list-group,
+  > .list-group + .card-footer {
+    border-top: 0;
   }
 }
 
@@ -36,9 +46,6 @@
   // Enable `flex-grow: 1` for decks and groups so that card blocks take up
   // as much space as possible, ensuring footers are aligned to the bottom.
   flex: 1 1 auto;
-  // Workaround for the image size bug in IE
-  // See: https://github.com/twbs/bootstrap/pull/28855
-  min-height: 1px;
   padding: $card-spacer-y $card-spacer-x;
   color: $card-color;
 }
@@ -80,16 +87,11 @@
   &:first-child {
     @include border-radius($card-inner-border-radius $card-inner-border-radius 0 0);
   }
-
-  + .list-group {
-    .list-group-item:first-child {
-      border-top: 0;
-    }
-  }
 }
 
 .card-footer {
   padding: $card-cap-padding-y $card-cap-padding-x;
+  color: $card-cap-color;
   background-color: $card-cap-bg;
   border-top: $card-border-width solid $card-border-color;
 
@@ -130,12 +132,12 @@
   bottom: 0;
   left: 0;
   padding: $card-img-overlay-padding;
+  @include border-radius($card-inner-border-radius);
 }
 
 .card-img,
 .card-img-top,
 .card-img-bottom {
-  flex-shrink: 0; // For IE: https://github.com/twbs/bootstrap/issues/29396
   width: 100%; // Required because we use flexbox and this inherently applies align-self: stretch
 }
 
@@ -147,30 +149,6 @@
 .card-img,
 .card-img-bottom {
   @include border-bottom-radius($card-inner-border-radius);
-}
-
-
-// Card deck
-
-.card-deck {
-  .card {
-    margin-bottom: $card-deck-margin;
-  }
-
-  @include media-breakpoint-up(sm) {
-    display: flex;
-    flex-flow: row wrap;
-    margin-right: -$card-deck-margin;
-    margin-left: -$card-deck-margin;
-
-    .card {
-      // Flexbugs #4: https://github.com/philipwalton/flexbugs#flexbug-4
-      flex: 1 0 0%;
-      margin-right: $card-deck-margin;
-      margin-bottom: 0; // Override the default
-      margin-left: $card-deck-margin;
-    }
-  }
 }
 
 

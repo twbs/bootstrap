@@ -56,17 +56,11 @@
 }
 
 .modal-dialog-scrollable {
-  display: flex; // IE10/11
-  max-height: subtract(100%, $modal-dialog-margin * 2);
+  height: subtract(100%, $modal-dialog-margin * 2);
 
   .modal-content {
-    max-height: subtract(100vh, $modal-dialog-margin * 2); // IE10/11
+    max-height: 100%;
     overflow: hidden;
-  }
-
-  .modal-header,
-  .modal-footer {
-    flex-shrink: 0;
   }
 
   .modal-body {
@@ -78,29 +72,6 @@
   display: flex;
   align-items: center;
   min-height: subtract(100%, $modal-dialog-margin * 2);
-
-  // Ensure `modal-dialog-centered` extends the full height of the view (IE10/11)
-  &::before {
-    display: block; // IE10
-    height: subtract(100vh, $modal-dialog-margin * 2);
-    height: min-content; // Reset height to 0 except on IE
-    content: "";
-  }
-
-  // Ensure `.modal-body` shows scrollbar (IE10/11)
-  &.modal-dialog-scrollable {
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
-
-    .modal-content {
-      max-height: none;
-    }
-
-    &::before {
-      content: none;
-    }
-  }
 }
 
 // Actual modal
@@ -140,6 +111,7 @@
 // Top section of the modal w/ title and dismiss
 .modal-header {
   display: flex;
+  flex-shrink: 0;
   align-items: flex-start; // so the close btn always stays on the upper right corner
   justify-content: space-between; // Put modal header elements (title and dismiss) on opposite ends
   padding: $modal-header-padding;
@@ -173,6 +145,7 @@
 .modal-footer {
   display: flex;
   flex-wrap: wrap;
+  flex-shrink: 0;
   align-items: center; // vertically center
   justify-content: flex-end; // Right align buttons with flex property because text-align doesn't work on flex items
   padding: $modal-inner-padding - $modal-footer-margin-between / 2;
@@ -205,20 +178,11 @@
   }
 
   .modal-dialog-scrollable {
-    max-height: subtract(100%, $modal-dialog-margin-y-sm-up * 2);
-
-    .modal-content {
-      max-height: subtract(100vh, $modal-dialog-margin-y-sm-up * 2);
-    }
+    height: subtract(100%, $modal-dialog-margin-y-sm-up * 2);
   }
 
   .modal-dialog-centered {
     min-height: subtract(100%, $modal-dialog-margin-y-sm-up * 2);
-
-    &::before {
-      height: subtract(100vh, $modal-dialog-margin-y-sm-up * 2);
-      height: min-content;
-    }
   }
 
   .modal-content {
@@ -237,4 +201,36 @@
 
 @include media-breakpoint-up(xl) {
   .modal-xl { max-width: $modal-xl; }
+}
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+  $postfix: if($infix != "", $infix + "-down", "");
+
+  @include media-breakpoint-down($breakpoint) {
+    .modal-fullscreen#{$postfix} {
+      width: 100vw;
+      max-width: none;
+      height: 100%;
+      margin: 0;
+
+      .modal-content {
+        height: 100%;
+        border: 0;
+        @include border-radius(0);
+      }
+
+      .modal-header {
+        @include border-radius(0);
+      }
+
+      .modal-body {
+        overflow-y: auto;
+      }
+
+      .modal-footer {
+        @include border-radius(0);
+      }
+    }
+  }
 }

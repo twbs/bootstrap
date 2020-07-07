@@ -5,18 +5,31 @@
     - title: Contents
     - title: Browsers & devices
     - title: JavaScript
-    - title: Theming
     - title: Build tools
-    # - title: Best practices # TODO: Write this content
     - title: Webpack
     - title: Accessibility
     - title: RFS
 
-- title: Layout
+- title: Customize
   pages:
     - title: Overview
+    - title: Sass
+    - title: Options
+    - title: Color
+    - title: Components
+    - title: CSS variables
+    - title: Optimize
+
+- title: Layout
+  pages:
+    - title: Breakpoints
+    - title: Containers
     - title: Grid
-    - title: Utilities for layout
+    # - title: Rows
+    - title: Columns
+    - title: Gutters
+    - title: Utilities
+    - title: Z-index
 
 - title: Content
   pages:
@@ -31,7 +44,7 @@
     - title: Overview
     - title: Form control
     - title: Select
-    - title: Checks
+    - title: Checks & radios
     - title: File
     - title: Range
     - title: Input group

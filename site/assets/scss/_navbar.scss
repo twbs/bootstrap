@@ -2,13 +2,11 @@
   padding: .625rem 0;
   background-color: $bd-purple-bright;
 
-  @include media-breakpoint-down(md) {
+  @include media-breakpoint-down(lg) {
     .navbar-nav-scroll {
       width: 100%;
-      margin-top: .25rem;
 
       .navbar-nav {
-        padding: .5rem 0;
         margin: -.5rem 0;
         overflow-x: auto;
         white-space: nowrap;
@@ -34,9 +32,7 @@
   }
 
   .navbar-nav-svg {
-    display: inline-block;
     width: 1rem;
     height: 1rem;
-    vertical-align: text-top;
   }
 }

@@ -27,7 +27,10 @@ describe('Tab', () => {
         '  <li><a href="#home" role="tab">Home</a></li>',
         '  <li><a id="triggerProfile" role="tab" href="#profile">Profile</a></li>',
         '</ul>',
-        '<ul><li id="home"/><li id="profile"/></ul>'
+        '<ul>',
+        '  <li id="home"></li>',
+        '  <li id="profile"></li>',
+        '</ul>'
       ].join('')
 
       const profileTriggerEl = fixtureEl.querySelector('#triggerProfile')
@@ -48,7 +51,10 @@ describe('Tab', () => {
         '  <li><a href="#home">Home</a></li>',
         '  <li><a id="triggerProfile" href="#profile">Profile</a></li>',
         '</ol>',
-        '<ol><li id="home"/><li id="profile"/></ol>'
+        '<ol>',
+        '  <li id="home"></li>',
+        '  <li id="profile"></li>',
+        '</ol>'
       ].join('')
 
       const profileTriggerEl = fixtureEl.querySelector('#triggerProfile')
@@ -129,8 +135,8 @@ describe('Tab', () => {
     it('should not fire shown when tab is already active', done => {
       fixtureEl.innerHTML = [
         '<ul class="nav nav-tabs" role="tablist">',
-        '  <li class="nav-item"><a href="#home" class="nav-link active" role="tab">Home</a></li>',
-        '  <li class="nav-item"><a href="#profile" class="nav-link" role="tab">Profile</a></li>',
+        '  <li class="nav-item" role="presentation"><a href="#home" class="nav-link active" role="tab">Home</a></li>',
+        '  <li class="nav-item" role="presentation"><a href="#profile" class="nav-link" role="tab">Profile</a></li>',
         '</ul>',
         '<div class="tab-content">',
         '  <div class="tab-pane active" id="home" role="tabpanel"></div>',
@@ -155,8 +161,8 @@ describe('Tab', () => {
     it('should not fire shown when tab is disabled', done => {
       fixtureEl.innerHTML = [
         '<ul class="nav nav-tabs" role="tablist">',
-        '  <li class="nav-item"><a href="#home" class="nav-link active" role="tab">Home</a></li>',
-        '  <li class="nav-item"><a href="#profile" class="nav-link disabled" role="tab">Profile</a></li>',
+        '  <li class="nav-item" role="presentation"><a href="#home" class="nav-link active" role="tab">Home</a></li>',
+        '  <li class="nav-item" role="presentation"><a href="#profile" class="nav-link disabled" role="tab">Profile</a></li>',
         '</ul>',
         '<div class="tab-content">',
         '  <div class="tab-pane active" id="home" role="tabpanel"></div>',
@@ -181,8 +187,8 @@ describe('Tab', () => {
     it('show and shown events should reference correct relatedTarget', done => {
       fixtureEl.innerHTML = [
         '<ul class="nav nav-tabs" role="tablist">',
-        '  <li class="nav-item"><a href="#home" class="nav-link active" role="tab">Home</a></li>',
-        '  <li class="nav-item"><a id="triggerProfile" href="#profile" class="nav-link" role="tab">Profile</a></li>',
+        '  <li class="nav-item" role="presentation"><a href="#home" class="nav-link active" role="tab">Home</a></li>',
+        '  <li class="nav-item" role="presentation"><a id="triggerProfile" href="#profile" class="nav-link" role="tab">Profile</a></li>',
         '</ul>',
         '<div class="tab-content">',
         '  <div class="tab-pane active" id="home" role="tabpanel"></div>',
@@ -275,17 +281,17 @@ describe('Tab', () => {
     it('should handle removed tabs', done => {
       fixtureEl.innerHTML = [
         '<ul class="nav nav-tabs" role="tablist">',
-        '  <li class="nav-item">',
+        '  <li class="nav-item" role="presentation">',
         '    <a class="nav-link nav-tab" href="#profile" role="tab" data-toggle="tab">',
         '      <button class="close"><span aria-hidden="true">&times;</span></button>',
         '    </a>',
         '  </li>',
-        '  <li class="nav-item">',
+        '  <li class="nav-item" role="presentation">',
         '    <a id="secondNav" class="nav-link nav-tab" href="#buzz" role="tab" data-toggle="tab">',
         '      <button class="close"><span aria-hidden="true">&times;</span></button>',
         '    </a>',
         '  </li>',
-        '  <li class="nav-item">',
+        '  <li class="nav-item" role="presentation">',
         '    <a class="nav-link nav-tab" href="#references" role="tab" data-toggle="tab">',
         '      <button id="btnClose" class="close"><span aria-hidden="true">&times;</span></button>',
         '    </a>',
@@ -418,8 +424,8 @@ describe('Tab', () => {
     it('should create dynamically a tab', done => {
       fixtureEl.innerHTML = [
         '<ul class="nav nav-tabs" role="tablist">',
-        '  <li class="nav-item"><a href="#home" class="nav-link active" role="tab">Home</a></li>',
-        '  <li class="nav-item"><a id="triggerProfile" data-toggle="tab" href="#profile" class="nav-link" role="tab">Profile</a></li>',
+        '  <li class="nav-item" role="presentation"><a href="#home" class="nav-link active" role="tab">Home</a></li>',
+        '  <li class="nav-item" role="presentation"><a id="triggerProfile" data-toggle="tab" href="#profile" class="nav-link" role="tab">Profile</a></li>',
         '</ul>',
         '<div class="tab-content">',
         '  <div class="tab-pane active" id="home" role="tabpanel"></div>',
@@ -444,7 +450,7 @@ describe('Tab', () => {
         '  <li class="nav-item"><a class="nav-link" href="#home" data-toggle="tab">Home</a></li>',
         '  <li class="nav-item"><a class="nav-link" href="#profile" data-toggle="tab">Profile</a></li>',
         '  <li class="nav-item dropdown">',
-        '    <a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#">Dropdown</>',
+        '    <a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#">Dropdown</a>',
         '    <div class="dropdown-menu">',
         '      <a class="dropdown-item active" href="#dropdown1" id="dropdown1-tab" data-toggle="tab">@fat</a>',
         '      <a class="dropdown-item" href="#dropdown2" id="dropdown2-tab" data-toggle="tab">@mdo</a>',
@@ -464,15 +470,15 @@ describe('Tab', () => {
     it('should handle nested tabs', done => {
       fixtureEl.innerHTML = [
         '<nav class="nav nav-tabs" role="tablist">',
-        '  <a id="tab1" href="#x-tab1" class="nav-item nav-link" data-toggle="tab" role="tab" aria-controls="x-tab1">Tab 1</a>',
-        '  <a href="#x-tab2" class="nav-item nav-link active" data-toggle="tab" role="tab" aria-controls="x-tab2" aria-selected="true">Tab 2</a>',
-        '  <a href="#x-tab3" class="nav-item nav-link" data-toggle="tab" role="tab" aria-controls="x-tab3">Tab 3</a>',
+        '  <a id="tab1" href="#x-tab1" class="nav-link" data-toggle="tab" role="tab" aria-controls="x-tab1">Tab 1</a>',
+        '  <a href="#x-tab2" class="nav-link active" data-toggle="tab" role="tab" aria-controls="x-tab2" aria-selected="true">Tab 2</a>',
+        '  <a href="#x-tab3" class="nav-link" data-toggle="tab" role="tab" aria-controls="x-tab3">Tab 3</a>',
         '</nav>',
         '<div class="tab-content">',
         '  <div class="tab-pane" id="x-tab1" role="tabpanel">',
         '    <nav class="nav nav-tabs" role="tablist">',
-        '      <a href="#nested-tab1" class="nav-item nav-link active" data-toggle="tab" role="tab" aria-controls="x-tab1" aria-selected="true">Nested Tab 1</a>',
-        '      <a id="tabNested2" href="#nested-tab2" class="nav-item nav-link" data-toggle="tab" role="tab" aria-controls="x-profile">Nested Tab2</a>',
+        '      <a href="#nested-tab1" class="nav-link active" data-toggle="tab" role="tab" aria-controls="x-tab1" aria-selected="true">Nested Tab 1</a>',
+        '      <a id="tabNested2" href="#nested-tab2" class="nav-link" data-toggle="tab" role="tab" aria-controls="x-profile">Nested Tab2</a>',
         '    </nav>',
         '    <div class="tab-content">',
         '      <div class="tab-pane active" id="nested-tab1" role="tabpanel">Nested Tab1 Content</div>',
@@ -504,8 +510,8 @@ describe('Tab', () => {
     it('should not remove fade class if no active pane is present', done => {
       fixtureEl.innerHTML = [
         '<ul class="nav nav-tabs" role="tablist">',
-        '  <li class="nav-item"><a id="tab-home" href="#home" class="nav-link" data-toggle="tab" role="tab">Home</a></li>',
-        '  <li class="nav-item"><a id="tab-profile" href="#profile" class="nav-link" data-toggle="tab" role="tab">Profile</a></li>',
+        '  <li class="nav-item" role="presentation"><a id="tab-home" href="#home" class="nav-link" data-toggle="tab" role="tab">Home</a></li>',
+        '  <li class="nav-item" role="presentation"><a id="tab-profile" href="#profile" class="nav-link" data-toggle="tab" role="tab">Profile</a></li>',
         '</ul>',
         '<div class="tab-content">',
         '  <div class="tab-pane fade" id="home" role="tabpanel"></div>',
@@ -541,10 +547,10 @@ describe('Tab', () => {
     it('should not add show class to tab panes if there is no `.fade` class', done => {
       fixtureEl.innerHTML = [
         '<ul class="nav nav-tabs" role="tablist">',
-        '  <li class="nav-item">',
+        '  <li class="nav-item" role="presentation">',
         '    <a class="nav-link nav-tab" href="#home" role="tab" data-toggle="tab">Home</a>',
         '  </li>',
-        '  <li class="nav-item">',
+        '  <li class="nav-item" role="presentation">',
         '    <a id="secondNav" class="nav-link nav-tab" href="#profile" role="tab" data-toggle="tab">Profile</a>',
         '  </li>',
         '</ul>',
@@ -567,10 +573,10 @@ describe('Tab', () => {
     it('should add show class to tab panes if there is a `.fade` class', done => {
       fixtureEl.innerHTML = [
         '<ul class="nav nav-tabs" role="tablist">',
-        '  <li class="nav-item">',
+        '  <li class="nav-item" role="presentation">',
         '    <a class="nav-link nav-tab" href="#home" role="tab" data-toggle="tab">Home</a>',
         '  </li>',
-        '  <li class="nav-item">',
+        '  <li class="nav-item" role="presentation">',
         '    <a id="secondNav" class="nav-link nav-tab" href="#profile" role="tab" data-toggle="tab">Profile</a>',
         '  </li>',
         '</ul>',

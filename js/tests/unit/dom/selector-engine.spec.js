@@ -1,5 +1,4 @@
 import SelectorEngine from '../../../src/dom/selector-engine'
-import { makeArray } from '../../../src/util/index'
 
 /** Test helpers */
 import { getFixture, clearFixture } from '../../helpers/fixture'
@@ -29,7 +28,7 @@ describe('SelectorEngine', () => {
 
       const div = fixtureEl.querySelector('div')
 
-      expect(makeArray(SelectorEngine.find('div', fixtureEl))).toEqual([div])
+      expect(SelectorEngine.find('div', fixtureEl)).toEqual([div])
     })
 
     it('should find elements globaly', () => {
@@ -37,7 +36,7 @@ describe('SelectorEngine', () => {
 
       const div = fixtureEl.querySelector('#test')
 
-      expect(makeArray(SelectorEngine.find('#test'))).toEqual([div])
+      expect(SelectorEngine.find('#test')).toEqual([div])
     })
 
     it('should handle :scope selectors', () => {
@@ -52,7 +51,7 @@ describe('SelectorEngine', () => {
       const listEl = fixtureEl.querySelector('ul')
       const aActive = fixtureEl.querySelector('.active')
 
-      expect(makeArray(SelectorEngine.find(':scope > li > .active', listEl))).toEqual([aActive])
+      expect(SelectorEngine.find(':scope > li > .active', listEl)).toEqual([aActive])
     })
   })
 
@@ -75,8 +74,8 @@ describe('SelectorEngine', () => {
       </ul>`
 
       const list = fixtureEl.querySelector('ul')
-      const liList = makeArray(fixtureEl.querySelectorAll('li'))
-      const result = makeArray(SelectorEngine.children(list, 'li'))
+      const liList = [].concat(...fixtureEl.querySelectorAll('li'))
+      const result = SelectorEngine.children(list, 'li')
 
       expect(result).toEqual(liList)
     })
@@ -109,6 +108,60 @@ describe('SelectorEngine', () => {
       const divTest = fixtureEl.querySelector('.test')
 
       expect(SelectorEngine.prev(btn, '.test')).toEqual([divTest])
+    })
+
+    it('should return previous element with comments or text nodes between', () => {
+      fixtureEl.innerHTML = [
+        '<div class="test"></div>',
+        '<div class="test"></div>',
+        '<!-- Comment-->',
+        'Text',
+        '<button class="btn"></button>'
+      ].join('')
+
+      const btn = fixtureEl.querySelector('.btn')
+      const divTest = fixtureEl.querySelectorAll('.test')[1]
+
+      expect(SelectorEngine.prev(btn, '.test')).toEqual([divTest])
+    })
+  })
+
+  describe('next', () => {
+    it('should return next element', () => {
+      fixtureEl.innerHTML = '<div class="test"></div><button class="btn"></button>'
+
+      const btn = fixtureEl.querySelector('.btn')
+      const divTest = fixtureEl.querySelector('.test')
+
+      expect(SelectorEngine.next(divTest, '.btn')).toEqual([btn])
+    })
+
+    it('should return next element with an extra element between', () => {
+      fixtureEl.innerHTML = [
+        '<div class="test"></div>',
+        '<span></span>',
+        '<button class="btn"></button>'
+      ].join('')
+
+      const btn = fixtureEl.querySelector('.btn')
+      const divTest = fixtureEl.querySelector('.test')
+
+      expect(SelectorEngine.next(divTest, '.btn')).toEqual([btn])
+    })
+
+    it('should return next element with comments or text nodes between', () => {
+      fixtureEl.innerHTML = [
+        '<div class="test"></div>',
+        '<!-- Comment-->',
+        'Text',
+        '<button class="btn"></button>',
+        '<button class="btn"></button>'
+      ].join('')
+
+      const btn = fixtureEl.querySelector('.btn')
+      const divTest = fixtureEl.querySelector('.test')
+
+      expect(SelectorEngine.next(divTest, '.btn')).toEqual([btn])
     })
   })
 })

@@ -79,8 +79,15 @@ $rfs-mq-property-height: if($rfs-mode == max-media-query, max-height, min-height
 // Internal mixin used to determine which media query needs to be used
 @mixin _rfs-media-query {
   @if $rfs-two-dimensional {
-    @media (#{$rfs-mq-property-width}: #{$rfs-mq-value}), (#{$rfs-mq-property-height}: #{$rfs-mq-value}) {
-      @content;
+    @if $rfs-mode == max-media-query {
+      @media (#{$rfs-mq-property-width}: #{$rfs-mq-value}), (#{$rfs-mq-property-height}: #{$rfs-mq-value}) {
+        @content;
+      }
+    }
+    @else {
+      @media (#{$rfs-mq-property-width}: #{$rfs-mq-value}) and (#{$rfs-mq-property-height}: #{$rfs-mq-value}) {
+        @content;
+      }
     }
   }
   @else {

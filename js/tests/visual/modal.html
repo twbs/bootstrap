@@ -19,7 +19,7 @@
         <a class="navbar-brand" href="#">This shouldn't jump!</a>
         <ul class="navbar-nav">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="#">Home <span class="visually-hidden">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Link</a>
@@ -34,8 +34,8 @@
     <div class="container mt-3">
       <h1>Modal <small>Bootstrap Visual Test</small></h1>
 
-      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+      <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
               <h4 class="modal-title" id="myModalLabel">Modal title</h4>
@@ -55,7 +55,7 @@
               <p><a href="#" data-toggle="tooltip" data-placement="top" title="Tooltip on top">This link</a> and <a href="#" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">that link</a> should have tooltips on hover.</p>
 
               <div id="accordion" role="tablist">
-                <div class="card">
+                <div class="card" role="presentation">
                   <div class="card-header" role="tab" id="headingOne">
                     <h5 class="mb-0">
                       <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -70,7 +70,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="card">
+                <div class="card" role="presentation">
                   <div class="card-header" role="tab" id="headingTwo">
                     <h5 class="mb-0">
                       <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -84,7 +84,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="card">
+                <div class="card" role="presentation">
                   <div class="card-header" role="tab" id="headingThree">
                     <h5 class="mb-0">
                       <a class="collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
@@ -121,8 +121,8 @@
         </div>
       </div>
 
-      <div class="modal fade" id="firefoxModal" tabindex="-1" role="dialog" aria-labelledby="firefoxModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+      <div class="modal fade" id="firefoxModal" tabindex="-1" aria-labelledby="firefoxModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
               <h4 class="modal-title" id="firefoxModalLabel">Firefox Bug Test</h4>
@@ -147,8 +147,8 @@
         </div>
       </div>
 
-      <div class="modal fade" id="slowModal" tabindex="-1" role="dialog" aria-labelledby="slowModalLabel" aria-hidden="true" style="transition-duration: 5s;">
-        <div class="modal-dialog" role="document" style="transition-duration: inherit;">
+      <div class="modal fade" id="slowModal" tabindex="-1" aria-labelledby="slowModalLabel" aria-hidden="true" style="transition-duration: 5s;">
+        <div class="modal-dialog" style="transition-duration: inherit;">
           <div class="modal-content">
             <div class="modal-header">
               <h4 class="modal-title" id="slowModalLabel">Lorem slowly</h4>
@@ -194,7 +194,7 @@
         Tall body content to force the page to have a scrollbar.
       </div>
 
-      <button type="button" class="btn btn-secondary btn-lg" data-toggle="modal" data-target="&#x3C;div class=&#x22;modal fade the-bad&#x22; tabindex=&#x22;-1&#x22; role=&#x22;dialog&#x22;&#x3E;&#x3C;div class=&#x22;modal-dialog&#x22; role=&#x22;document&#x22;&#x3E;&#x3C;div class=&#x22;modal-content&#x22;&#x3E;&#x3C;div class=&#x22;modal-header&#x22;&#x3E;&#x3C;button type=&#x22;button&#x22; class=&#x22;close&#x22; data-dismiss=&#x22;modal&#x22; aria-label=&#x22;Close&#x22;&#x3E;&#x3C;span aria-hidden=&#x22;true&#x22;&#x3E;&#x26;times;&#x3C;/span&#x3E;&#x3C;/button&#x3E;&#x3C;h4 class=&#x22;modal-title&#x22;&#x3E;The Bad Modal&#x3C;/h4&#x3E;&#x3C;/div&#x3E;&#x3C;div class=&#x22;modal-body&#x22;&#x3E;This modal&#x27;s HTTML source code is declared inline, inside the data-target attribute of it&#x27;s show-button&#x3C;/div&#x3E;&#x3C;/div&#x3E;&#x3C;/div&#x3E;&#x3C;/div&#x3E;">
+      <button type="button" class="btn btn-secondary btn-lg" data-toggle="modal" data-target="&#x3C;div class=&#x22;modal fade the-bad&#x22; tabindex=&#x22;-1&#x22;&#x3E;&#x3C;div class=&#x22;modal-dialog&#x22;&#x3E;&#x3C;div class=&#x22;modal-content&#x22;&#x3E;&#x3C;div class=&#x22;modal-header&#x22;&#x3E;&#x3C;button type=&#x22;button&#x22; class=&#x22;close&#x22; data-dismiss=&#x22;modal&#x22; aria-label=&#x22;Close&#x22;&#x3E;&#x3C;span aria-hidden=&#x22;true&#x22;&#x3E;&#x26;times;&#x3C;/span&#x3E;&#x3C;/button&#x3E;&#x3C;h4 class=&#x22;modal-title&#x22;&#x3E;The Bad Modal&#x3C;/h4&#x3E;&#x3C;/div&#x3E;&#x3C;div class=&#x22;modal-body&#x22;&#x3E;This modal&#x27;s HTTML source code is declared inline, inside the data-target attribute of it&#x27;s show-button&#x3C;/div&#x3E;&#x3C;/div&#x3E;&#x3C;/div&#x3E;&#x3C;/div&#x3E;">
         Modal with an XSS inside the data-target
       </button>
 

@@ -1,7 +1,7 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.3.1): tooltip.js
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * Bootstrap (v5.0.0-alpha1): tooltip.js
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
@@ -13,12 +13,11 @@ import {
   getTransitionDurationFromElement,
   getUID,
   isElement,
-  makeArray,
   noop,
   typeCheckConfig
 } from './util/index'
 import {
-  DefaultWhitelist,
+  DefaultAllowlist,
   sanitizeHtml
 } from './util/sanitizer'
 import Data from './dom/data'
@@ -34,12 +33,12 @@ import SelectorEngine from './dom/selector-engine'
  */
 
 const NAME = 'tooltip'
-const VERSION = '4.3.1'
+const VERSION = '5.0.0-alpha1'
 const DATA_KEY = 'bs.tooltip'
 const EVENT_KEY = `.${DATA_KEY}`
 const CLASS_PREFIX = 'bs-tooltip'
 const BSCLS_PREFIX_REGEX = new RegExp(`(^|\\s)${CLASS_PREFIX}\\S+`, 'g')
-const DISALLOWED_ATTRIBUTES = ['sanitize', 'whiteList', 'sanitizeFn']
+const DISALLOWED_ATTRIBUTES = ['sanitize', 'allowList', 'sanitizeFn']
 
 const DefaultType = {
   animation: 'boolean',
@@ -56,7 +55,7 @@ const DefaultType = {
   boundary: '(string|element)',
   sanitize: 'boolean',
   sanitizeFn: '(null|function)',
-  whiteList: 'object',
+  allowList: 'object',
   popperConfig: '(null|object)'
 }
 
@@ -85,13 +84,8 @@ const Default = {
   boundary: 'scrollParent',
   sanitize: true,
   sanitizeFn: null,
-  whiteList: DefaultWhitelist,
+  allowList: DefaultAllowlist,
   popperConfig: null
-}
-
-const HoverState = {
-  SHOW: 'show',
-  OUT: 'out'
 }
 
 const Event = {
@@ -107,21 +101,19 @@ const Event = {
   MOUSELEAVE: `mouseleave${EVENT_KEY}`
 }
 
-const ClassName = {
-  FADE: 'fade',
-  SHOW: 'show'
-}
+const CLASS_NAME_FADE = 'fade'
+const CLASS_NAME_MODAL = 'modal'
+const CLASS_NAME_SHOW = 'show'
 
-const Selector = {
-  TOOLTIP_INNER: '.tooltip-inner'
-}
+const HOVER_STATE_SHOW = 'show'
+const HOVER_STATE_OUT = 'out'
 
-const Trigger = {
-  HOVER: 'hover',
-  FOCUS: 'focus',
-  CLICK: 'click',
-  MANUAL: 'manual'
-}
+const SELECTOR_TOOLTIP_INNER = '.tooltip-inner'
+
+const TRIGGER_HOVER = 'hover'
+const TRIGGER_FOCUS = 'focus'
+const TRIGGER_CLICK = 'click'
+const TRIGGER_MANUAL = 'manual'
 
 /**
  * ------------------------------------------------------------------------
@@ -220,7 +212,7 @@ class Tooltip {
         context._leave(null, context)
       }
     } else {
-      if (this.getTipElement().classList.contains(ClassName.SHOW)) {
+      if (this.getTipElement().classList.contains(CLASS_NAME_SHOW)) {
         this._leave(null, this)
         return
       }
@@ -235,7 +227,7 @@ class Tooltip {
     Data.removeData(this.element, this.constructor.DATA_KEY)
 
     EventHandler.off(this.element, this.constructor.EVENT_KEY)
-    EventHandler.off(SelectorEngine.closest(this.element, '.modal'), 'hide.bs.modal', this._hideModalHandler)
+    EventHandler.off(this.element.closest(`.${CLASS_NAME_MODAL}`), 'hide.bs.modal', this._hideModalHandler)
 
     if (this.tip) {
       this.tip.parentNode.removeChild(this.tip)
@@ -280,7 +272,7 @@ class Tooltip {
       this.setContent()
 
       if (this.config.animation) {
-        tip.classList.add(ClassName.FADE)
+        tip.classList.add(CLASS_NAME_FADE)
       }
 
       const placement = typeof this.config.placement === 'function' ?
@@ -301,14 +293,14 @@ class Tooltip {
 
       this._popper = new Popper(this.element, tip, this._getPopperConfig(attachment))
 
-      tip.classList.add(ClassName.SHOW)
+      tip.classList.add(CLASS_NAME_SHOW)
 
       // If this is a touch-enabled device we add extra
       // empty mouseover listeners to the body's immediate children;
       // only needed because of broken event delegation on iOS
       // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
       if ('ontouchstart' in document.documentElement) {
-        makeArray(document.body.children).forEach(element => {
+        [].concat(...document.body.children).forEach(element => {
           EventHandler.on(element, 'mouseover', noop())
         })
       }
@@ -323,12 +315,12 @@ class Tooltip {
 
         EventHandler.trigger(this.element, this.constructor.Event.SHOWN)
 
-        if (prevHoverState === HoverState.OUT) {
+        if (prevHoverState === HOVER_STATE_OUT) {
           this._leave(null, this)
         }
       }
 
-      if (this.tip.classList.contains(ClassName.FADE)) {
+      if (this.tip.classList.contains(CLASS_NAME_FADE)) {
         const transitionDuration = getTransitionDurationFromElement(this.tip)
         EventHandler.one(this.tip, TRANSITION_END, complete)
         emulateTransitionEnd(this.tip, transitionDuration)
@@ -341,7 +333,7 @@ class Tooltip {
   hide() {
     const tip = this.getTipElement()
     const complete = () => {
-      if (this._hoverState !== HoverState.SHOW && tip.parentNode) {
+      if (this._hoverState !== HOVER_STATE_SHOW && tip.parentNode) {
         tip.parentNode.removeChild(tip)
       }
 
@@ -356,20 +348,20 @@ class Tooltip {
       return
     }
 
-    tip.classList.remove(ClassName.SHOW)
+    tip.classList.remove(CLASS_NAME_SHOW)
 
     // If this is a touch-enabled device we remove the extra
     // empty mouseover listeners we added for iOS support
     if ('ontouchstart' in document.documentElement) {
-      makeArray(document.body.children)
+      [].concat(...document.body.children)
         .forEach(element => EventHandler.off(element, 'mouseover', noop))
     }
 
-    this._activeTrigger[Trigger.CLICK] = false
-    this._activeTrigger[Trigger.FOCUS] = false
-    this._activeTrigger[Trigger.HOVER] = false
+    this._activeTrigger[TRIGGER_CLICK] = false
+    this._activeTrigger[TRIGGER_FOCUS] = false
+    this._activeTrigger[TRIGGER_HOVER] = false
 
-    if (this.tip.classList.contains(ClassName.FADE)) {
+    if (this.tip.classList.contains(CLASS_NAME_FADE)) {
       const transitionDuration = getTransitionDurationFromElement(tip)
 
       EventHandler.one(tip, TRANSITION_END, complete)
@@ -407,9 +399,8 @@ class Tooltip {
 
   setContent() {
     const tip = this.getTipElement()
-    this.setElementContent(SelectorEngine.findOne(Selector.TOOLTIP_INNER, tip), this.getTitle())
-    tip.classList.remove(ClassName.FADE)
-    tip.classList.remove(ClassName.SHOW)
+    this.setElementContent(SelectorEngine.findOne(SELECTOR_TOOLTIP_INNER, tip), this.getTitle())
+    tip.classList.remove(CLASS_NAME_FADE, CLASS_NAME_SHOW)
   }
 
   setElementContent(element, content) {
@@ -429,7 +420,7 @@ class Tooltip {
           element.appendChild(content)
         }
       } else {
-        element.innerText = content.textContent
+        element.textContent = content.textContent
       }
 
       return
@@ -437,12 +428,12 @@ class Tooltip {
 
     if (this.config.html) {
       if (this.config.sanitize) {
-        content = sanitizeHtml(content, this.config.whiteList, this.config.sanitizeFn)
+        content = sanitizeHtml(content, this.config.allowList, this.config.sanitizeFn)
       }
 
       element.innerHTML = content
     } else {
-      element.innerText = content
+      element.textContent = content
     }
   }
 
@@ -538,11 +529,11 @@ class Tooltip {
           this.config.selector,
           event => this.toggle(event)
         )
-      } else if (trigger !== Trigger.MANUAL) {
-        const eventIn = trigger === Trigger.HOVER ?
+      } else if (trigger !== TRIGGER_MANUAL) {
+        const eventIn = trigger === TRIGGER_HOVER ?
           this.constructor.Event.MOUSEENTER :
           this.constructor.Event.FOCUSIN
-        const eventOut = trigger === Trigger.HOVER ?
+        const eventOut = trigger === TRIGGER_HOVER ?
           this.constructor.Event.MOUSELEAVE :
           this.constructor.Event.FOCUSOUT
 
@@ -565,7 +556,7 @@ class Tooltip {
       }
     }
 
-    EventHandler.on(SelectorEngine.closest(this.element, '.modal'),
+    EventHandler.on(this.element.closest(`.${CLASS_NAME_MODAL}`),
       'hide.bs.modal',
       this._hideModalHandler
     )
@@ -608,19 +599,19 @@ class Tooltip {
 
     if (event) {
       context._activeTrigger[
-        event.type === 'focusin' ? Trigger.FOCUS : Trigger.HOVER
+        event.type === 'focusin' ? TRIGGER_FOCUS : TRIGGER_HOVER
       ] = true
     }
 
-    if (context.getTipElement().classList.contains(ClassName.SHOW) ||
-        context._hoverState === HoverState.SHOW) {
-      context._hoverState = HoverState.SHOW
+    if (context.getTipElement().classList.contains(CLASS_NAME_SHOW) ||
+        context._hoverState === HOVER_STATE_SHOW) {
+      context._hoverState = HOVER_STATE_SHOW
       return
     }
 
     clearTimeout(context._timeout)
 
-    context._hoverState = HoverState.SHOW
+    context._hoverState = HOVER_STATE_SHOW
 
     if (!context.config.delay || !context.config.delay.show) {
       context.show()
@@ -628,7 +619,7 @@ class Tooltip {
     }
 
     context._timeout = setTimeout(() => {
-      if (context._hoverState === HoverState.SHOW) {
+      if (context._hoverState === HOVER_STATE_SHOW) {
         context.show()
       }
     }, context.config.delay.show)
@@ -648,7 +639,7 @@ class Tooltip {
 
     if (event) {
       context._activeTrigger[
-        event.type === 'focusout' ? Trigger.FOCUS : Trigger.HOVER
+        event.type === 'focusout' ? TRIGGER_FOCUS : TRIGGER_HOVER
       ] = false
     }
 
@@ -658,7 +649,7 @@ class Tooltip {
 
     clearTimeout(context._timeout)
 
-    context._hoverState = HoverState.OUT
+    context._hoverState = HOVER_STATE_OUT
 
     if (!context.config.delay || !context.config.delay.hide) {
       context.hide()
@@ -666,7 +657,7 @@ class Tooltip {
     }
 
     context._timeout = setTimeout(() => {
-      if (context._hoverState === HoverState.OUT) {
+      if (context._hoverState === HOVER_STATE_OUT) {
         context.hide()
       }
     }, context.config.delay.hide)
@@ -717,14 +708,10 @@ class Tooltip {
       config.content = config.content.toString()
     }
 
-    typeCheckConfig(
-      NAME,
-      config,
-      this.constructor.DefaultType
-    )
+    typeCheckConfig(NAME, config, this.constructor.DefaultType)
 
     if (config.sanitize) {
-      config.template = sanitizeHtml(config.template, config.whiteList, config.sanitizeFn)
+      config.template = sanitizeHtml(config.template, config.allowList, config.sanitizeFn)
     }
 
     return config
@@ -767,7 +754,7 @@ class Tooltip {
       return
     }
 
-    tip.classList.remove(ClassName.FADE)
+    tip.classList.remove(CLASS_NAME_FADE)
     this.config.animation = false
     this.hide()
     this.show()

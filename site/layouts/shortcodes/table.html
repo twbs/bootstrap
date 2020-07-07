@@ -1,0 +1,30 @@
+{{- /*
+  Usage: `table [args]`
+
+  `args` are optional and can be one of the following:
+  class: any class(es) to be added to the `table` - default ""
+  simplified: show a simplified version in the examples - default `true`
+*/ -}}
+
+{{- $simplified := .Get "simplified" | default true -}}
+
+{{- $table_attributes := "" -}}
+{{- $table_content := "  ...\n" -}}
+
+{{- with .Get "class" -}}
+{{- $table_attributes = printf ` class="%s"` . -}}
+{{- end -}}
+
+{{- if eq $simplified "false" -}}
+{{- $table_content = partialCached "table-content" . -}}
+{{- end -}}
+
+{{- $table := printf "<table%s>\n%s</table>" $table_attributes $table_content -}}
+
+<div class="bd-example">
+  <table{{ with .Get "class" }} class="{{ . }}"{{ end }}>
+    {{ partialCached "table-content" . }}
+  </table>
+</div>
+
+{{- highlight $table "html" "" -}}

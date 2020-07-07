@@ -1,14 +1,13 @@
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.3.1): button.js
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * Bootstrap (v5.0.0-alpha1): button.js
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
 import { getjQuery } from './util/index'
 import Data from './dom/data'
 import EventHandler from './dom/event-handler'
-import SelectorEngine from './dom/selector-engine'
 
 /**
  * ------------------------------------------------------------------------
@@ -17,30 +16,16 @@ import SelectorEngine from './dom/selector-engine'
  */
 
 const NAME = 'button'
-const VERSION = '4.3.1'
+const VERSION = '5.0.0-alpha1'
 const DATA_KEY = 'bs.button'
 const EVENT_KEY = `.${DATA_KEY}`
 const DATA_API_KEY = '.data-api'
 
-const ClassName = {
-  ACTIVE: 'active',
-  BUTTON: 'btn',
-  FOCUS: 'focus'
-}
+const CLASS_NAME_ACTIVE = 'active'
 
-const Selector = {
-  DATA_TOGGLE_CARROT: '[data-toggle^="button"]',
-  DATA_TOGGLE: '[data-toggle="buttons"]',
-  INPUT: 'input:not([type="hidden"])',
-  ACTIVE: '.active',
-  BUTTON: '.btn'
-}
+const SELECTOR_DATA_TOGGLE = '[data-toggle="button"]'
 
-const Event = {
-  CLICK_DATA_API: `click${EVENT_KEY}${DATA_API_KEY}`,
-  FOCUS_DATA_API: `focus${EVENT_KEY}${DATA_API_KEY}`,
-  BLUR_DATA_API: `blur${EVENT_KEY}${DATA_API_KEY}`
-}
+const EVENT_CLICK_DATA_API = `click${EVENT_KEY}${DATA_API_KEY}`
 
 /**
  * ------------------------------------------------------------------------
@@ -63,54 +48,8 @@ class Button {
   // Public
 
   toggle() {
-    let triggerChangeEvent = true
-    let addAriaPressed = true
-
-    const rootElement = SelectorEngine.closest(
-      this._element,
-      Selector.DATA_TOGGLE
-    )
-
-    if (rootElement) {
-      const input = SelectorEngine.findOne(Selector.INPUT, this._element)
-
-      if (input && input.type === 'radio') {
-        if (input.checked &&
-          this._element.classList.contains(ClassName.ACTIVE)) {
-          triggerChangeEvent = false
-        } else {
-          const activeElement = SelectorEngine.findOne(Selector.ACTIVE, rootElement)
-
-          if (activeElement) {
-            activeElement.classList.remove(ClassName.ACTIVE)
-          }
-        }
-
-        if (triggerChangeEvent) {
-          if (input.hasAttribute('disabled') ||
-            rootElement.hasAttribute('disabled') ||
-            input.classList.contains('disabled') ||
-            rootElement.classList.contains('disabled')) {
-            return
-          }
-
-          input.checked = !this._element.classList.contains(ClassName.ACTIVE)
-          EventHandler.trigger(input, 'change')
-        }
-
-        input.focus()
-        addAriaPressed = false
-      }
-    }
-
-    if (addAriaPressed) {
-      this._element.setAttribute('aria-pressed',
-        !this._element.classList.contains(ClassName.ACTIVE))
-    }
-
-    if (triggerChangeEvent) {
-      this._element.classList.toggle(ClassName.ACTIVE)
-    }
+    // Toggle class and sync the `aria-pressed` attribute with the return value of the `.toggle()` method
+    this._element.setAttribute('aria-pressed', this._element.classList.toggle(CLASS_NAME_ACTIVE))
   }
 
   dispose() {
@@ -145,13 +84,10 @@ class Button {
  * ------------------------------------------------------------------------
  */
 
-EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_TOGGLE_CARROT, event => {
+EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, event => {
   event.preventDefault()
 
-  let button = event.target
-  if (!button.classList.contains(ClassName.BUTTON)) {
-    button = SelectorEngine.closest(button, Selector.BUTTON)
-  }
+  const button = event.target.closest(SELECTOR_DATA_TOGGLE)
 
   let data = Data.getData(button, DATA_KEY)
   if (!data) {
@@ -159,22 +95,6 @@ EventHandler.on(document, Event.CLICK_DATA_API, Selector.DATA_TOGGLE_CARROT, eve
   }
 
   data.toggle()
-})
-
-EventHandler.on(document, Event.FOCUS_DATA_API, Selector.DATA_TOGGLE_CARROT, event => {
-  const button = SelectorEngine.closest(event.target, Selector.BUTTON)
-
-  if (button) {
-    button.classList.add(ClassName.FOCUS)
-  }
-})
-
-EventHandler.on(document, Event.BLUR_DATA_API, Selector.DATA_TOGGLE_CARROT, event => {
-  const button = SelectorEngine.closest(event.target, Selector.BUTTON)
-
-  if (button) {
-    button.classList.remove(ClassName.FOCUS)
-  }
 })
 
 const $ = getjQuery()
