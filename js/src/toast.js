@@ -188,10 +188,8 @@ class Toast {
   }
 
   _clearTimeout() {
-    if (this._timeout) {
-      clearTimeout(this._timeout)
-      this._timeout = null
-    }
+    clearTimeout(this._timeout)
+    this._timeout = null
   }
 
   // Static
