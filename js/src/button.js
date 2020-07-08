@@ -111,11 +111,12 @@ class Button {
 
   static _jQueryInterface(config) {
     return this.each(function () {
-      let data = $(this).data(DATA_KEY)
+      const $element = $(this)
+      let data = $element.data(DATA_KEY)
 
       if (!data) {
         data = new Button(this)
-        $(this).data(DATA_KEY, data)
+        $element.data(DATA_KEY, data)
       }
 
       if (config === 'toggle') {
