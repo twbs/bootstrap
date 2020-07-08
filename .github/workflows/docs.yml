@@ -3,7 +3,7 @@ on: [push, pull_request]
 env:
   CI: true
   NODE: 12.x
-  RUBY: 2.6.x
+  RUBY: 2.7.x
 
 jobs:
   docs:
@@ -23,8 +23,11 @@ jobs:
         with:
           ruby-version: ${{ env.RUBY }}
 
-      - name: Disable gem docs
-        run: 'echo "gem: --no-document" > ~/.gemrc'
+      - name: Set up Ruby env
+        run: |
+          echo "gem: --no-document" > ~/.gemrc # Disable gem docs
+          bundle config set clean 'true'
+          bundle config set deployment 'true'
 
       - name: Set up Ruby cache
         uses: actions/cache@v2
@@ -43,9 +46,6 @@ jobs:
           restore-keys: |
             ${{ runner.OS }}-node-v${{ env.NODE }}-${{ hashFiles('package.json') }}-${{ hashFiles('package-lock.json') }}
             ${{ runner.OS }}-node-v${{ env.NODE }}-
-
-      - name: Set up Bundler
-        run: gem install bundler -v "~> 1.17"
 
       - run: ruby --version
       - run: gem --version
