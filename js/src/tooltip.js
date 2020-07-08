@@ -735,7 +735,8 @@ class Tooltip {
 
   static _jQueryInterface(config) {
     return this.each(function () {
-      let data = $(this).data(DATA_KEY)
+      const $element = $(this)
+      let data = $element.data(DATA_KEY)
       const _config = typeof config === 'object' && config
 
       if (!data && /dispose|hide/.test(config)) {
@@ -744,7 +745,7 @@ class Tooltip {
 
       if (!data) {
         data = new Tooltip(this, _config)
-        $(this).data(DATA_KEY, data)
+        $element.data(DATA_KEY, data)
       }
 
       if (typeof config === 'string') {

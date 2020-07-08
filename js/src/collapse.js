@@ -324,11 +324,11 @@ class Collapse {
 
   static _jQueryInterface(config) {
     return this.each(function () {
-      const $this = $(this)
-      let data = $this.data(DATA_KEY)
+      const $element = $(this)
+      let data = $element.data(DATA_KEY)
       const _config = {
         ...Default,
-        ...$this.data(),
+        ...$element.data(),
         ...typeof config === 'object' && config ? config : {}
       }
 
@@ -338,7 +338,7 @@ class Collapse {
 
       if (!data) {
         data = new Collapse(this, _config)
-        $this.data(DATA_KEY, data)
+        $element.data(DATA_KEY, data)
       }
 
       if (typeof config === 'string') {
