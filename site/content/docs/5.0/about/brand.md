@@ -13,7 +13,7 @@ Have a need for Bootstrap's brand resources? Great! We have only a few guideline
 When referencing Bootstrap, use our logo mark. Do not modify our logos in any way. Do not use Bootstrap's branding for your own open or closed source projects. **Do not use the Twitter name or logo** in association with Bootstrap.
 
 <div class="bd-brand-item px-2 py-5 mb-3 bg-light rounded-lg">
-  <img class="d-block mx-auto" src="/docs/{{< param docs_version >}}/assets/brand/bootstrap-logo.svg" alt="Bootstrap" width="512" height="408" loading="lazy">
+  <img class="d-block mx-auto" src="/docs/{{< param docs_version >}}/assets/brand/bootstrap-logo.svg" alt="Bootstrap" width="512" height="408">
 </div>
 
 Our logo mark is also available in black and white. All rules for our primary logo apply to these as well.
