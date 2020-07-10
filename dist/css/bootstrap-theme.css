@@ -3,57 +3,6 @@
  * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
-:root {
-  --pass: #5cb85c;
-  --fail: #d9534f;
-  --warn: #f7a35c;
-  --black: #000;
-  --white: #fff;
-  --blue: #00b1ff;
-  --lightpurple: #27283c;
-  --purple: #1b1d30;
-  --darkpurple: #121421;
-  --border: #38384b;
-  --grey: #808080;
-  --offwhite: #e2e5f9;
-  --accent-orange: #deb48b;
-  --accent-brown: #ac8238;
-  --accent-gold: #deba92;
-  --accent-green: #67ffbd;
-  --accent-green2: #60c596;
-  --accent-purple: #d47bff;
-  --accent-purple2: #8585ff;
-  --accent-pink: #ff659f;
-  --accent-yellow: #fffa74;
-  --accent-grey: #b8b8b8;
-  --muted-blue: #1c2f48;
-  --subhead-blue: #61b7ff;
-  --diag-purple1: #3a3f5f;
-  --diag-purple2: #333855;
-  --diag-purple3: #434e75;
-  --diag-purple4: #5d73bb;
-  --graph-color1: #4e6fd2;
-  --graph-color2: #3559dd;
-  --graph-color3: #2c3ccb;
-  --graph-color4: #9b29d2;
-  --light-main: #fff;
-  --light-primary: #e2e5f9;
-  --dark-main: #1b1d30;
-  --dark-primary: #27283c;
-  --dark-secondary: #121421;
-  --accent: #00b1ff;
-  --dark-accent: #000;
-  --light-disabled: #808080;
-  --dark-disabled: #121421;
-  --light-primary-alt: #e2e5f9;
-  --dark-main-alt: #121421;
-  --dark-primary-alt: #1c2f48;
-  --dark-secondary-alt: #27283c;
-  --pri-border: transparent;
-  --sec-border: transparent;
-  --tab-sel-border: transparent;
-  --tab-unsel-border: transparent;
-}
 .select2-container--bootstrap {
   display: block;
   /*------------------------------------*\
@@ -679,6 +628,63 @@
  */
 .form-inline .select2-container--bootstrap {
   display: inline-block;
+}
+:root {
+  --pass: #5cb85c;
+  --fail: #d9534f;
+  --warn: #f7a35c;
+  --aws: #e3c179;
+  --azure: #18a8ca;
+  --google: #5ed499;
+  --ibm: #f37c7c;
+  --chinavps: #924cbf;
+  --openhost: #d9f469;
+  --black: #000;
+  --white: #fff;
+  --blue: #00b1ff;
+  --lightpurple: #27283c;
+  --purple: #1b1d30;
+  --darkpurple: #121421;
+  --border: #38384b;
+  --grey: #808080;
+  --offwhite: #e2e5f9;
+  --accent-orange: #deb48b;
+  --accent-brown: #ac8238;
+  --accent-gold: #deba92;
+  --accent-green: #67ffbd;
+  --accent-green2: #60c596;
+  --accent-purple: #d47bff;
+  --accent-purple2: #8585ff;
+  --accent-pink: #ff659f;
+  --accent-yellow: #fffa74;
+  --accent-grey: #b8b8b8;
+  --muted-blue: #1c2f48;
+  --subhead-blue: #61b7ff;
+  --diag-purple1: #3a3f5f;
+  --diag-purple2: #333855;
+  --diag-purple3: #434e75;
+  --diag-purple4: #5d73bb;
+  --graph-color1: #4e6fd2;
+  --graph-color2: #3559dd;
+  --graph-color3: #2c3ccb;
+  --graph-color4: #9b29d2;
+  --light-main: #fff;
+  --light-primary: #e2e5f9;
+  --dark-main: #1b1d30;
+  --dark-primary: #27283c;
+  --dark-secondary: #121421;
+  --accent: #00b1ff;
+  --dark-accent: #000;
+  --light-disabled: #808080;
+  --dark-disabled: #121421;
+  --light-primary-alt: #e2e5f9;
+  --dark-main-alt: #121421;
+  --dark-primary-alt: #1c2f48;
+  --dark-secondary-alt: #27283c;
+  --pri-border: transparent;
+  --sec-border: transparent;
+  --tab-sel-border: transparent;
+  --tab-unsel-border: transparent;
 }
 a {
   cursor: pointer;
@@ -1998,6 +2004,55 @@ h1 {
 }
 .badge-success a {
   color: #000;
+}
+.row.is-flex {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+.row.is-flex > [class*='col-'] {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+          flex-direction: column;
+
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+}
+/*
+* And with max cross-browser enabled.
+* Nobody should ever write this by hand. 
+* Use a preprocesser with autoprefixing.
+*/
+.row.is-flex {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+.row.is-flex > [class*='col-'] {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+          flex-direction: column;
+
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
 }
 /* For non-vue conditions page */
 .cell-variable-name input {

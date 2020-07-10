@@ -3,57 +3,6 @@
  * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
-:root {
-  --pass: #5cb85c;
-  --fail: #d9534f;
-  --warn: #f7a35c;
-  --black: #000;
-  --white: #fff;
-  --blue: #00b1ff;
-  --lightpurple: #27283c;
-  --purple: #1b1d30;
-  --darkpurple: #121421;
-  --border: #38384b;
-  --grey: #808080;
-  --offwhite: #e2e5f9;
-  --accent-orange: #deb48b;
-  --accent-brown: #ac8238;
-  --accent-gold: #deba92;
-  --accent-green: #67ffbd;
-  --accent-green2: #60c596;
-  --accent-purple: #d47bff;
-  --accent-purple2: #8585ff;
-  --accent-pink: #ff659f;
-  --accent-yellow: #fffa74;
-  --accent-grey: #b8b8b8;
-  --muted-blue: #1c2f48;
-  --subhead-blue: #61b7ff;
-  --diag-purple1: #3a3f5f;
-  --diag-purple2: #333855;
-  --diag-purple3: #434e75;
-  --diag-purple4: #5d73bb;
-  --graph-color1: #4e6fd2;
-  --graph-color2: #3559dd;
-  --graph-color3: #2c3ccb;
-  --graph-color4: #9b29d2;
-  --light-main: #fff;
-  --light-primary: #e2e5f9;
-  --dark-main: #1b1d30;
-  --dark-primary: #27283c;
-  --dark-secondary: #121421;
-  --accent: #00b1ff;
-  --dark-accent: #000;
-  --light-disabled: #808080;
-  --dark-disabled: #121421;
-  --light-primary-alt: #e2e5f9;
-  --dark-main-alt: #121421;
-  --dark-primary-alt: #1c2f48;
-  --dark-secondary-alt: #27283c;
-  --pri-border: transparent;
-  --sec-border: transparent;
-  --tab-sel-border: transparent;
-  --tab-unsel-border: transparent;
-}
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 html {
   font-family: sans-serif;
@@ -2397,6 +2346,7 @@ table th[class*="col-"] {
 .table > thead > tr.active > th,
 .table > tbody > tr.active > th,
 .table > tfoot > tr.active > th {
+  color: #fff;
   background-color: #1c2f48;
 }
 .table-hover > tbody > tr > td.active:hover,
@@ -2418,6 +2368,7 @@ table th[class*="col-"] {
 .table > thead > tr.success > th,
 .table > tbody > tr.success > th,
 .table > tfoot > tr.success > th {
+  color: #000;
   background-color: #dff0d8;
 }
 .table-hover > tbody > tr > td.success:hover,
@@ -2439,6 +2390,7 @@ table th[class*="col-"] {
 .table > thead > tr.info > th,
 .table > tbody > tr.info > th,
 .table > tfoot > tr.info > th {
+  color: #000;
   background-color: #d9edf7;
 }
 .table-hover > tbody > tr > td.info:hover,
@@ -2460,6 +2412,7 @@ table th[class*="col-"] {
 .table > thead > tr.warning > th,
 .table > tbody > tr.warning > th,
 .table > tfoot > tr.warning > th {
+  color: #000;
   background-color: #fcf8e3;
 }
 .table-hover > tbody > tr > td.warning:hover,
@@ -2481,6 +2434,7 @@ table th[class*="col-"] {
 .table > thead > tr.danger > th,
 .table > tbody > tr.danger > th,
 .table > tfoot > tr.danger > th {
+  color: #000;
   background-color: #f2dede;
 }
 .table-hover > tbody > tr > td.danger:hover,
@@ -5531,7 +5485,6 @@ button.list-group-item-danger.active:focus {
 }
 .panel-footer {
   padding: 10px 15px;
-  background-color: #27283c;
   border-top: 1px solid #121421;
   border-bottom-right-radius: -1;
   border-bottom-left-radius: -1;
@@ -5750,6 +5703,9 @@ button.list-group-item-danger.active:focus {
 .panel-default > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #27283c;
 }
+.panel-default > .panel-footer {
+  border-color: #121421;
+}
 .panel-primary {
   background-color: #121421;
   border-color: #121421;
@@ -5768,6 +5724,9 @@ button.list-group-item-danger.active:focus {
 }
 .panel-primary > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #121421;
+}
+.panel-primary > .panel-footer {
+  border-color: #27283c;
 }
 .panel-success {
   background-color: #dff0d8;
@@ -5788,6 +5747,9 @@ button.list-group-item-danger.active:focus {
 .panel-success > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #dff0d8;
 }
+.panel-success > .panel-footer {
+  border-color: #d6e9c6;
+}
 .panel-info {
   background-color: #d9edf7;
   border-color: #d9edf7;
@@ -5806,6 +5768,9 @@ button.list-group-item-danger.active:focus {
 }
 .panel-info > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #d9edf7;
+}
+.panel-info > .panel-footer {
+  border-color: #bce8f1;
 }
 .panel-warning {
   background-color: #fcf8e3;
@@ -5826,6 +5791,9 @@ button.list-group-item-danger.active:focus {
 .panel-warning > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #fcf8e3;
 }
+.panel-warning > .panel-footer {
+  border-color: #faebcc;
+}
 .panel-danger {
   background-color: #f2dede;
   border-color: #f2dede;
@@ -5844,6 +5812,9 @@ button.list-group-item-danger.active:focus {
 }
 .panel-danger > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #f2dede;
+}
+.panel-danger > .panel-footer {
+  border-color: #ebccd1;
 }
 .embed-responsive {
   position: relative;
