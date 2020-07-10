@@ -73,7 +73,7 @@
     "docs-serve": "bundle exec jekyll serve",
     "docs-serve-only": "npm run docs-serve -- --skip-initial-build --no-watch",
     "lockfile-lint": "lockfile-lint --allowed-hosts npm --allowed-schemes https: --empty-hostname false --type npm --path package-lock.json",
-    "update-deps": "ncu -u -x \"jquery,karma-browserstack-launcher,popper.js,qunit,sinon\" && npm update && bundle update && cross-env-shell echo Manually update \\\"site/docs/$npm_package_version_short/assets/js/vendor/\\\"",
+    "update-deps": "ncu -u -x \"jquery,karma-browserstack-launcher,sinon\" && npm update && bundle update && cross-env-shell echo Manually update \\\"site/docs/$npm_package_version_short/assets/js/vendor/\\\"",
     "release": "npm-run-all dist release-sri docs-production release-zip*",
     "release-sri": "node build/generate-sri.js",
     "release-version": "node build/change-version.js",
@@ -106,7 +106,7 @@
   "dependencies": {},
   "peerDependencies": {
     "jquery": "1.9.1 - 3",
-    "popper.js": "^1.16.0"
+    "popper.js": "^1.16.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.4",
@@ -114,7 +114,7 @@
     "@babel/preset-env": "^7.10.4",
     "@rollup/plugin-babel": "^5.0.4",
     "@rollup/plugin-commonjs": "^13.0.0",
-    "@rollup/plugin-node-resolve": "^7.1.3",
+    "@rollup/plugin-node-resolve": "^8.1.0",
     "autoprefixer": "^9.8.4",
     "babel-eslint": "^10.1.0",
     "babel-plugin-istanbul": "^6.0.0",
@@ -140,10 +140,10 @@
     "node-sass": "^4.14.1",
     "nodemon": "^2.0.4",
     "npm-run-all": "^4.1.5",
-    "popper.js": "^1.16.0",
+    "popper.js": "^1.16.1",
     "postcss-cli": "^7.1.1",
-    "qunit": "2.9.2",
-    "rollup": "^2.19.0",
+    "qunit": "^2.10.1",
+    "rollup": "^2.21.0",
     "shelljs": "^0.8.4",
     "shx": "^0.3.2",
     "sinon": "^7.5.0",
@@ -175,7 +175,7 @@
     "dependencies": {},
     "peerDependencies": {
       "jquery": "1.9.1 - 3",
-      "popper.js": "^1.16.0"
+      "popper.js": "^1.16.1"
     }
   }
 }
