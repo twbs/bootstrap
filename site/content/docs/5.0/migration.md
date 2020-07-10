@@ -16,6 +16,15 @@ toc: true
   - Renamed `.sr-only` and `.sr-only-focusable` to `.visually-hidden` and `.visually-hidden-focusable`
   - Renamed `sr-only()` and `sr-only-focusable()` mixins to `visually-hidden()` and `visually-hidden-focusable()`.
 
+### Docs
+
+- Renamed "Checks" page to "Checks & radios", and filename to `checks-radios`
+- Improved documentation of check/radio powered button groups
+
+### Reboot
+
+- Updated `th` styling to use a default `null` value for `font-weight` and inherit `text-align` instead of setting explicitly.
+
 ### Components
 
 #### Popovers
