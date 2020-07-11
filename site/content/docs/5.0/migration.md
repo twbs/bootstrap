@@ -28,6 +28,10 @@ toc: true
 
 ### Components
 
+#### Navs
+
+- Added new null variables for `font-size`, `font-weight`,n`color`, and `:hover` `color to the `.nav-link` class.
+
 #### Popovers
 
 - Renamed `whiteList` option to `allowList`
