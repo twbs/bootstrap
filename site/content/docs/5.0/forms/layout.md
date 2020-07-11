@@ -300,7 +300,7 @@ Use the `.col-auto` class to create horizontal layouts. By adding [gutter modifi
 Be sure to always include a `<label>` with each form control, even if you need to visually hide it with `.visually-hidden` (which still keeps it available to assistive technologies such as screen readers).
 
 {{< example >}}
-<form class="row row-cols-md-auto g-3 align-items-center">
+<form class="row row-cols-lg-auto g-3 align-items-center">
   <div class="col-12">
     <label class="visually-hidden" for="inlineFormInputGroupUsername">Username</label>
     <div class="input-group">
