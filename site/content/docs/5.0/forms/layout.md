@@ -298,12 +298,7 @@ You can then remix that once again with size-specific column classes.
 Use the `.col-auto` class to create horizontal layouts. By adding [gutter modifier classes]({{< docsref "/layout/gutters" >}}), we'll have gutters in horizontal and vertical directions. The `.align-items-center` aligns the form elements to the middle, making the `.form-checkbox` align properly.
 
 {{< example >}}
-<form class="row row-cols-md-auto g-3 align-items-center">
-  <div class="col-12">
-    <label class="visually-hidden" for="inlineFormInputName">Name</label>
-    <input type="text" class="form-control" id="inlineFormInputName" placeholder="Jane Doe">
-  </div>
-
+<form class="row row-cols-lg-auto g-3 align-items-center">
   <div class="col-12">
     <label class="visually-hidden" for="inlineFormInputGroupUsername">Username</label>
     <div class="input-group">

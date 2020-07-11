@@ -91,6 +91,8 @@ class Toast {
       return
     }
 
+    this._clearTimeout()
+
     if (this._config.animation) {
       this._element.classList.add(CLASS_NAME_FADE)
     }
@@ -149,8 +151,7 @@ class Toast {
   }
 
   dispose() {
-    clearTimeout(this._timeout)
-    this._timeout = null
+    this._clearTimeout()
 
     if (this._element.classList.contains(CLASS_NAME_SHOW)) {
       this._element.classList.remove(CLASS_NAME_SHOW)
@@ -184,6 +185,11 @@ class Toast {
       SELECTOR_DATA_DISMISS,
       () => this.hide()
     )
+  }
+
+  _clearTimeout() {
+    clearTimeout(this._timeout)
+    this._timeout = null
   }
 
   // Static
