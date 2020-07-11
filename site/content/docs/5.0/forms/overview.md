@@ -97,9 +97,9 @@ Add the `disabled` boolean attribute on an input to prevent user interactions an
 <input class="form-control" id="disabledInput" type="text" placeholder="Disabled input here..." disabled>
 {{< /highlight >}}
 
-Add the `disabled` attribute to a `<fieldset>` to disable all the controls within.
+Add the `disabled` attribute to a `<fieldset>` to disable all the controls within. Browsers treat all native form controls (`<input>`, `<select>`, and `<button>` elements) inside a `<fieldset disabled>` as disabled, preventing both keyboard and mouse interactions on them.
 
-By default, browsers will treat all native form controls (`<input>`, `<select>`, and `<button>` elements) inside a `<fieldset disabled>` as disabled, preventing both keyboard and mouse interactions on them. However, if your form also includes `<a ... class="btn btn-*">` elements, these will only be given a style of `pointer-events: none`.
+However, if your form also includes custom button-like elements such as `<a class="btn btn-*">...</a>`, these will only be given a style of `pointer-events: none`, meaning they are still focusable and operable using the keyboard. In this case, you must manually modify these controls by adding `tabindex="-1"` to prevent them from receiving focus and `aria-disabled="disabled"` to signal their state to assistive technologies.
 
 {{< example >}}
 <form>
@@ -126,3 +126,18 @@ By default, browsers will treat all native form controls (`<input>`, `<select>`,
   </fieldset>
 </form>
 {{< /example >}}
+
+## Accessibility
+
+Ensure that all form controls have an appropriate accessible name so that their purpose can be conveyed to users of assistive technologies. The simplest way to achieve this is to use a `<label>` element, or—in the case of buttons—to include sufficiently descriptive text as part of the `<button>...</button>` content.
+
+For situations where it's not possible to include a visible `<label>` or appropriate text content, there are alternative ways of still providing an accessible name, such as:
+
+- `<label>` elements hidden using the `.visually-hidden` class
+- Pointing to an existing element that can act as a label using `aria-labelledby`
+- Providing a `title` attribute
+- Explicitly setting the accessible name on an element using `aria-label`
+
+If none of these are present, assistive technologies may resort to using the `placeholder` attribute as a fallback for the accessible name on `<input>` and `<textarea>` elements. The examples in this section provide a few suggested, case-specific approaches.
+
+While using visually hidden content (`.visually-hidden`, `aria-label`, and even `placeholder` content, which disappears once a form field has content) will benefit assistive technology users, a lack of visible label text may still be problematic for certain users. Some form of visible label is generally the best approach, both for accessibility and usability.

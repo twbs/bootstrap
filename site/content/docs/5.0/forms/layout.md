@@ -297,8 +297,6 @@ You can then remix that once again with size-specific column classes.
 
 Use the `.col-auto` class to create horizontal layouts. By adding [gutter modifier classes]({{< docsref "/layout/gutters" >}}), we'll have gutters in horizontal and vertical directions. The `.align-items-center` aligns the form elements to the middle, making the `.form-checkbox` align properly.
 
-Be sure to always include a `<label>` with each form control, even if you need to visually hide it with `.visually-hidden` (which still keeps it available to assistive technologies such as screen readers).
-
 {{< example >}}
 <form class="row row-cols-lg-auto g-3 align-items-center">
   <div class="col-12">
@@ -333,9 +331,3 @@ Be sure to always include a `<label>` with each form control, even if you need t
   </div>
 </form>
 {{< /example >}}
-
-{{< callout warning >}}
-### Alternatives to hidden labels
-
-Assistive technologies such as screen readers will have trouble with your forms if you don't include a label for every input. For these inline forms, you can hide the labels using the `.visually-hidden` class. There are further alternative methods of providing a label for assistive technologies, such as the `aria-label`, `aria-labelledby` or `title` attribute. If none of these are present, assistive technologies may resort to using the `placeholder` attribute, if present, but note that use of `placeholder` as a replacement for other labeling methods is not advised.
-{{< /callout >}}
