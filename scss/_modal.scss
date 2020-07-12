@@ -233,3 +233,50 @@
     }
   }
 }
+
+.modal-left,
+.modal-right {
+  .modal-dialog {
+    width: $modal-sidebar-width;
+    max-width: $modal-sidebar-max-width;
+    height: 100%;
+    margin: 0;
+    transform: translate(0);
+    @include transition(transform .2s);
+  }
+
+  .modal-content {
+    height: inherit;
+    border: 0;
+    @include border-radius(0);
+  }
+
+  .modal-body {
+    overflow-y: auto;
+  }
+
+  &.modal.fade {
+    .modal-dialog {
+      transform: translateX(0);
+    }
+  }
+  &.modal.show {
+    .modal-dialog {
+      transform: none;
+    }
+  }
+}
+
+.modal.modal-left {
+  .modal-dialog {
+    margin-right: auto;
+    transform: translateX(-100%);
+  }
+}
+
+.modal.modal-right {
+  .modal-dialog {
+    margin-left: auto;
+    transform: translateX(100%);
+  }
+}
