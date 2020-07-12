@@ -1,9 +1,10 @@
 /* eslint-env node */
+
 const path = require('path')
 const ip = require('ip')
 const { babel } = require('@rollup/plugin-babel')
 const istanbul = require('rollup-plugin-istanbul')
-const resolve = require('@rollup/plugin-node-resolve')
+const { nodeResolve } = require('@rollup/plugin-node-resolve')
 
 const {
   browsers,
@@ -79,7 +80,7 @@ const conf = {
         // Inline the required helpers in each file
         babelHelpers: 'inline'
       }),
-      resolve()
+      nodeResolve()
     ],
     output: {
       format: 'iife',
