@@ -50,11 +50,6 @@
         }
       }
     }
-
-    // Adjust font size and font weights in submenu
-    + ul {
-      @include font-size(.875rem);
-    }
   }
 
   .active {
