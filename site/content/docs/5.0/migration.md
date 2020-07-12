@@ -30,7 +30,7 @@ toc: true
 
 #### Navs
 
-- Added new null variables for `font-size`, `font-weight`,n`color`, and `:hover` `color to the `.nav-link` class.
+- Added new `null` variables for `font-size`, `font-weight`, `color`, and `:hover` `color` to the `.nav-link` class.
 
 #### Popovers
 
