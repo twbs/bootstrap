@@ -48,7 +48,7 @@ const DefaultType = {
 const Default = {
   animation: true,
   autohide: true,
-  delay: 500
+  delay: 5000
 }
 
 const SELECTOR_DATA_DISMISS = '[data-dismiss="toast"]'

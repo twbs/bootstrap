@@ -24,6 +24,10 @@ toc: true
 
 - Renamed `whiteList` option to `allowList`
 
+#### Toasts
+
+- Make default toast duration 5 seconds
+
 #### Tooltips
 
 - Renamed `whiteList` option to `allowList`
