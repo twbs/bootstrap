@@ -16,9 +16,17 @@ toc: true
 
 ### Components
 
+#### Buttons
+
+- Disabled states of buttons are easier to customize thanks to additional arguments in the `button-variant()` mixin. [See #30639.](https://github.com/twbs/bootstrap/pull/30639)
+
 #### Popovers
 
 - Renamed `whiteList` option to `allowList`
+
+#### Toasts
+
+- Make default toast duration 5 seconds
 
 #### Tooltips
 
