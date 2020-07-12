@@ -170,7 +170,7 @@ class Toast {
     config = {
       ...Default,
       ...Manipulator.getDataAttributes(this._element),
-      ...typeof config === 'object' && config ? config : {}
+      ...(typeof config === 'object' && config ? config : {})
     }
 
     typeCheckConfig(NAME, config, this.constructor.DefaultType)
@@ -179,12 +179,7 @@ class Toast {
   }
 
   _setListeners() {
-    EventHandler.on(
-      this._element,
-      EVENT_CLICK_DISMISS,
-      SELECTOR_DATA_DISMISS,
-      () => this.hide()
-    )
+    EventHandler.on(this._element, EVENT_CLICK_DISMISS, SELECTOR_DATA_DISMISS, () => this.hide())
   }
 
   _clearTimeout() {
