@@ -11,8 +11,20 @@ toc: true
 
 ### Sass
 
-- Renamed `.sr-only` and `.sr-only-focusable` to `.visually-hidden` and `.visually-hidden-focusable`.
-- Renamed `sr-only()` and `sr-only-focusable()` mixins to `visually-hidden()` and `visually-hidden-focusable()`.
+- "Screen reader" classes are now "visually hidden" classes.
+  - Changed the Sass file from `scss/helpers/_screenreaders.scss` to `scss/helpers/_visually-hidden.scss`
+  - Renamed `.sr-only` and `.sr-only-focusable` to `.visually-hidden` and `.visually-hidden-focusable`
+  - Renamed `sr-only()` and `sr-only-focusable()` mixins to `visually-hidden()` and `visually-hidden-focusable()`.
+
+### Docs
+
+- Renamed "Screen readers" helper page to "Visually hidden", and filename to `visually-hidden`
+- Renamed "Checks" page to "Checks & radios", and filename to `checks-radios`
+- Improved documentation of check/radio powered button groups
+
+### Reboot
+
+- Updated `th` styling to use a default `null` value for `font-weight` and inherit `text-align` instead of setting explicitly.
 
 ### Colors
 
@@ -26,6 +38,10 @@ toc: true
 #### Buttons
 
 - Disabled states of buttons are easier to customize thanks to additional arguments in the `button-variant()` mixin. [See #30639.](https://github.com/twbs/bootstrap/pull/30639)
+
+#### Navs
+
+- Added new `null` variables for `font-size`, `font-weight`, `color`, and `:hover` `color` to the `.nav-link` class.
 
 #### Popovers
 
