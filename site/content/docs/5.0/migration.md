@@ -14,6 +14,13 @@ toc: true
 - Renamed `.sr-only` and `.sr-only-focusable` to `.visually-hidden` and `.visually-hidden-focusable`.
 - Renamed `sr-only()` and `sr-only-focusable()` mixins to `visually-hidden()` and `visually-hidden-focusable()`.
 
+### Colors
+
+- Bumped color contrast ratio from 3:1 to 4.5:1.
+- Set `$black` as color contrast color instead of `$gray-900`.
+- Improved `$green` (and its theme alias `$success`) color to reach new minimum color contrast (moving from `#28a745` to `#198754`).
+- Improved `$cyan` (and its theme alias `$info`) color to be more vibrant (moving from `#17a2b8` to `#0dcaf0`).
+
 ### Components
 
 #### Buttons
