@@ -309,7 +309,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
       <td><code>delay</code></td>
       <td>number</td>
       <td>
-        <code>500</code>
+        <code>5000</code>
       </td>
       <td>Delay hiding the toast (ms)</td>
     </tr>

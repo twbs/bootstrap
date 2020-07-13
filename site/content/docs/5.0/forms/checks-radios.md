@@ -199,7 +199,7 @@ Group checkboxes or radios on the same horizontal row by adding `.form-check-inl
 
 ## Without labels
 
-Omit the wrapping `.form-check` for checkboxes and radios that have no label text. Remember to still provide some form of label for assistive technologies (for instance, using `aria-label`).
+Omit the wrapping `.form-check` for checkboxes and radios that have no label text. Remember to still provide some form of accessible name for assistive technologies (for instance, using `aria-label`). See the [forms overview accessibility]({{< docsref "/forms/overview#accessibility" >}}) section for details.
 
 {{< example >}}
 <div>
