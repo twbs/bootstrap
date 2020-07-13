@@ -326,9 +326,3 @@ Input groups include support for custom selects and custom file inputs. Browser 
   <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Button</button>
 </div>
 {{< /example >}}
-
-## Accessibility
-
-Screen readers will have trouble with your forms if you don't include a label for every input. For these input groups, ensure that any additional label or functionality is conveyed to assistive technologies.
-
-The exact technique to be used (`<label>` elements hidden using the `.visually-hidden` class, or use of the `aria-label` and `aria-labelledby` attributes, possibly in combination with `aria-describedby`) and what additional information will need to be conveyed will vary depending on the exact type of interface widget you're implementing. The examples in this section provide a few suggested, case-specific approaches.
