@@ -24,7 +24,11 @@ Copy-paste the stylesheet `<link>` into your `<head>` before all other styleshee
 
 ### JS
 
-Many of our components require the use of JavaScript to function. Specifically, they require our own JavaScript plugins and [Popper.js](https://popper.js.org/). Place the following `<script>`s near the end of your pages, right before the closing `</body>` tag, to enable them. Popper.js must come first, and then our JavaScript plugins.
+Many of our components require the use of JavaScript to function. Specifically, they require our own JavaScript plugins and [Popper.js](https://popper.js.org/). Place **one of following `<script>`s** near the end of your pages, right before the closing `</body>` tag, to enable them. If you decide to go with the separate scripts solution, Popper.js must come first, and then our JavaScript plugins.
+
+{{< highlight html >}}
+<script src="{{< param "cdn.js_bundle" >}}" integrity="{{< param "cdn.js_bundle_hash" >}}" crossorigin="anonymous"></script>
+{{< /highlight >}}
 
 {{< highlight html >}}
 <script src="{{< param "cdn.popper" >}}" integrity="{{< param "cdn.popper_hash" >}}" crossorigin="anonymous"></script>
@@ -59,8 +63,11 @@ Be sure to have your pages set up with the latest design and development standar
   <body>
     <h1>Hello, world!</h1>
 
-    <!-- Optional JavaScript -->
-    <!-- Popper.js first, then Bootstrap JS -->
+    <!-- Optional JavaScript; choose one of the two! -->
+    <!-- Bootstrap Bundle with Popper.js -->
+    <script src="{{< param "cdn.js_bundle" >}}" integrity="{{< param "cdn.js_bundle_hash" >}}" crossorigin="anonymous"></script>
+
+    <!-- Or Popper.js first, then Bootstrap JS -->
     <script src="{{< param "cdn.popper" >}}" integrity="{{< param "cdn.popper_hash" >}}" crossorigin="anonymous"></script>
     <script src="{{< param "cdn.js" >}}" integrity="{{< param "cdn.js_hash" >}}" crossorigin="anonymous"></script>
   </body>
