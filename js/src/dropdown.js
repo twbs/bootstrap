@@ -308,7 +308,7 @@ class Dropdown {
       offset.fn = data => {
         data.offsets = {
           ...data.offsets,
-          ...this._config.offset(data.offsets, this._element) || {}
+          ...(this._config.offset(data.offsets, this._element) || {})
         }
 
         return data
