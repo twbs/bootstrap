@@ -19,47 +19,17 @@ toc: true
 
 Bootstrap includes six default breakpoints, sometimes referred to as _grid tiers_, for building responsively. These breakpoints can be customized if you're using our source Sass files.
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Breakpoint</th>
-      <th>Class infix</th>
-      <th>Dimensions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Extra small</td>
-      <td><em>None</em></td>
-      <td>&lt;576px</td>
-    </tr>
-    <tr>
-      <td>Small</td>
-      <td><code>sm</code></td>
-      <td>&ge;576px</td>
-    </tr>
-    <tr>
-      <td>Medium</td>
-      <td><code>md</code></td>
-      <td>&ge;768px</td>
-    </tr>
-    <tr>
-      <td>Large</td>
-      <td><code>lg</code></td>
-      <td>&ge;992px</td>
-    </tr>
-    <tr>
-      <td>Extra large</td>
-      <td><code>xl</code></td>
-      <td>&ge;1200px</td>
-    </tr>
-    <tr>
-      <td>Extra extra large</td>
-      <td><code>xxl</code></td>
-      <td>&ge;1400px</td>
-    </tr>
-  </tbody>
-</table>
+{{< bs-table "table" >}}
+| Breakpoint | Class infix | Dimensions |
+| --- | --- | --- |
+| Extra small | <em>None</em>  |&lt;576px |
+| Small | `sm` | &ge;576px |
+| Medium | `md` | &ge;768px |
+| Large | `lg` | &ge;992px |
+| Extra large | `xl` | &ge;1200px |
+| Extra extra large | <code>xxl</code> | &ge;1400px |
+{{< /bs-table >}}
+
 
 Each breakpoint was chosen to comfortably hold containers whose widths are multiples of 12. Breakpoints are also representative of a subset of common device sizes and viewport dimensions—they don't specifically target every use case or device. Instead, the ranges provide a strong and consistent foundation to build on for nearly any device.
 
