@@ -81,6 +81,7 @@ $utilities: map-merge(
     ),
     // Sizing utilities
     "width": (
+      responsive: true,
       property: width,
       class: w,
       values: (
@@ -92,21 +93,25 @@ $utilities: map-merge(
       )
     ),
     "max-width": (
+      responsive: true,
       property: max-width,
       class: mw,
       values: (100: 100%)
     ),
     "viewport-width": (
+      responsive: true,
       property: width,
       class: vw,
       values: (100: 100vw)
     ),
     "min-viewport-width": (
+      responsive: true,
       property: min-width,
       class: min-vw,
       values: (100: 100vw)
     ),
     "height": (
+      responsive: true,
       property: height,
       class: h,
       values: (
@@ -118,16 +123,19 @@ $utilities: map-merge(
       )
     ),
     "max-height": (
+      responsive: true,
       property: max-height,
       class: mh,
       values: (100: 100%)
     ),
     "viewport-height": (
+      responsive: true,
       property: height,
       class: vh,
       values: (100: 100vh)
     ),
     "min-viewport-height": (
+      responsive: true,
       property: min-height,
       class: min-vh,
       values: (100: 100vh)
