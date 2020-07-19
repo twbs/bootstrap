@@ -212,3 +212,45 @@ $utilities: (
   "float": null,
 );
 ```
+
+## Adding to existing utilities
+
+Add new utilities with `map-merge`.Start by importing the utilities stylesheet, then use `map-merge` to add new properties and values.s
+
+```scss
+@import "bootstrap/scss/utilities";
+
+$utilities: map-merge(
+  $utilities,
+  (
+    "font-size": (
+      responsive: true,
+      property: font-weight,
+      values: $display-font-sizes,
+    )
+  )
+);
+```
+
+## Modifying existing utilities
+
+Modify existing utilities with `map-get` and `map-merge`. Once again, be sure to import the utilities stylesheet before your custom utilities.
+
+```scss
+@import "bootstrap/scss/utilities";
+
+$utilities: map-merge(
+  $utilities,
+  (
+    "width": map-merge(
+      map-get($utilities, "width"),
+      (
+        values: map-merge(
+          map-get(map-get($utilities, "width"), "values"),
+          (10: 10%),
+        ),
+      ),
+    ),
+  )
+);
+```
