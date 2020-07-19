@@ -260,3 +260,49 @@ $utilities: (
   "float": null,
 );
 ```
+
+## Adding to existing utilities
+
+The default utilities can be added to with `map-merge`
+
+Make sure to import this file instead of the default file in your Bootstrap imports
+
+```scss
+@import "[PATH TO BOOTSTRAP]/scss/utilities";
+
+$utilities: map-merge(
+  $utilities,
+  (
+    "font-size": (
+      responsive: true,
+      property: font-weight,
+      values: $display-font-sizes,
+    )
+  )
+);
+```
+
+## Modifying existing utilities
+
+The default utilities can be modified with a combination `map-get` and `map-merge`
+
+Make sure to import this file instead of the default file in your Bootstrap imports
+
+```scss
+@import "[PATH TO BOOTSTRAP]/scss/utilities";
+
+$utilities: map-merge(
+  $utilities,
+  (
+    "width": map-merge(
+      map-get($utilities, "width"),
+      (
+        values: map-merge(
+          map-get(map-get($utilities, "width"), "values"),
+          (10: 10%),
+        ),
+      ),
+    ),
+  )
+);
+```
