@@ -1,17 +1,20 @@
-.skippy {
-  display: block;
-  padding: 1em;
-  color: $white;
-  text-align: center;
-  background-color: $bd-purple;
-  outline: 0;
+// stylelint-disable declaration-no-important
 
-  @include hover() {
+.skippy {
+  background-color: $bd-purple;
+
+  a {
     color: $white;
   }
-}
 
-.skippy-text {
-  padding: .5em;
-  outline: 1px dotted;
+  &:focus-within a {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    padding: $spacer / 2 !important;
+    margin: $spacer / 4 !important;
+    overflow: visible !important;
+    clip: auto !important;
+    white-space: normal !important;
+  }
 }

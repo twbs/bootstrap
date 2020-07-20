@@ -1,3 +1,8 @@
-<a class="skippy sr-only sr-only-focusable" href="#content">
-  <span class="skippy-text">Skip to main content</span>
-</a>
+<div class="skippy overflow-hidden">
+  <div class="container-xl">
+    <a class="sr-only sr-only-focusable d-inline-flex p-2 m-1" href="#content">Skip to main content</a>
+    {%- if page.layout == "docs" -%}
+      <a class="sr-only sr-only-focusable d-none d-md-inline-flex p-2 m-1" href="#bd-docs-nav">Skip to docs navigation</a>
+    {%- endif -%}
+  </div>
+</div>
