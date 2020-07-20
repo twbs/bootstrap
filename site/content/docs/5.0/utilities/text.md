@@ -51,6 +51,15 @@ Prevent long strings of text from breaking your components' layout by using `.te
 <p class="text-break">mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm</p>
 {{< /example >}}
 
+## Text Ellipsis
+
+Prevent long strings to overflow layout by using `.text-ellipsis` to set `text-overflow: ellpisis`. Use it with  `.overflow-hidden`.
+
+{{< example >}}
+<p class="text-ellipsis overflow-hidden">mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm</p>
+{{< /example >}}
+
+
 ## Text transform
 
 Transform text in components with text capitalization classes.
