@@ -59,7 +59,6 @@ Prevent long strings to overflow layout by using `.text-ellipsis` to set `text-o
 <p class="text-ellipsis overflow-hidden">mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm</p>
 {{< /example >}}
 
-
 ## Text transform
 
 Transform text in components with text capitalization classes.
