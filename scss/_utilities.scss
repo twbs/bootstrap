@@ -444,6 +444,11 @@ $utilities: map-merge(
       class: text,
       values: (break: break-word)
     ),
+    "text-ellipsis": (
+      property: text-overflow,
+      class: text,
+      values: ellipsis
+    ),
     "font-family": (
       property: font-family,
       class: font,
