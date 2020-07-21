@@ -50,6 +50,7 @@ Our `bootstrap.bundle.js` and `bootstrap.bundle.min.js` include [Popper](https:/
 - Dropdowns for displaying and positioning (also requires [Popper.js](https://popper.js.org/))
 - Modals for displaying, positioning, and scroll behavior
 - Navbar for extending our Collapse plugin to implement responsive behavior
+- Toasts for displaying and dismissing
 - Tooltips and popovers for displaying and positioning (also requires [Popper.js](https://popper.js.org/))
 - Scrollspy for scroll behavior and navigation updates
 {% endcapture %}
