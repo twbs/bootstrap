@@ -33,7 +33,7 @@ const getUID = prefix => {
 }
 
 const getSelector = element => {
-  let selector = element.getAttribute('data-target')
+  let selector = element.getAttribute('data-bs-target')
 
   if (!selector || selector === '#') {
     const hrefAttr = element.getAttribute('href')
@@ -173,7 +173,7 @@ const reflow = element => element.offsetHeight
 const getjQuery = () => {
   const { jQuery } = window
 
-  if (jQuery && !document.body.hasAttribute('data-no-jquery')) {
+  if (jQuery && !document.body.hasAttribute('data-bs-no-jquery')) {
     return jQuery
   }
 

@@ -47,9 +47,13 @@ const Manipulator = {
       ...element.dataset
     }
 
-    Object.keys(attributes).forEach(key => {
-      attributes[key] = normalizeData(attributes[key])
-    })
+    Object.keys(attributes)
+      .filter(key => key.startsWith('bs'))
+      .forEach(key => {
+        let pureKey = key.replace(/^bs/, '')
+        pureKey = pureKey.charAt(0).toLowerCase() + pureKey.slice(1, pureKey.length)
+        attributes[pureKey] = normalizeData(attributes[key])
+      })
 
     return attributes
   },
