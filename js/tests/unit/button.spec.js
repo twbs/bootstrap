@@ -27,8 +27,8 @@ describe('Button', () => {
   describe('data-api', () => {
     it('should toggle active class on click', () => {
       fixtureEl.innerHTML = [
-        '<button class="btn" data-toggle="button">btn</button>',
-        '<button class="btn testParent" data-toggle="button"><div class="test"></div></button>'
+        '<button class="btn" data-bs-toggle="button">btn</button>',
+        '<button class="btn testParent" data-bs-toggle="button"><div class="test"></div></button>'
       ].join('')
 
       const btn = fixtureEl.querySelector('.btn')
@@ -53,7 +53,7 @@ describe('Button', () => {
 
   describe('toggle', () => {
     it('should toggle aria-pressed', () => {
-      fixtureEl.innerHTML = '<button class="btn" data-toggle="button" aria-pressed="false"></button>'
+      fixtureEl.innerHTML = '<button class="btn" data-bs-toggle="button" aria-pressed="false"></button>'
 
       const btnEl = fixtureEl.querySelector('.btn')
       const button = new Button(btnEl)
@@ -70,7 +70,7 @@ describe('Button', () => {
 
   describe('dispose', () => {
     it('should dispose a button', () => {
-      fixtureEl.innerHTML = '<button class="btn" data-toggle="button"></button>'
+      fixtureEl.innerHTML = '<button class="btn" data-bs-toggle="button"></button>'
 
       const btnEl = fixtureEl.querySelector('.btn')
       const button = new Button(btnEl)
@@ -85,7 +85,7 @@ describe('Button', () => {
 
   describe('jQueryInterface', () => {
     it('should handle config passed and toggle existing button', () => {
-      fixtureEl.innerHTML = '<button class="btn" data-toggle="button"></button>'
+      fixtureEl.innerHTML = '<button class="btn" data-bs-toggle="button"></button>'
 
       const btnEl = fixtureEl.querySelector('.btn')
       const button = new Button(btnEl)
@@ -101,7 +101,7 @@ describe('Button', () => {
     })
 
     it('should create new button instance and call toggle', () => {
-      fixtureEl.innerHTML = '<button class="btn" data-toggle="button"></button>'
+      fixtureEl.innerHTML = '<button class="btn" data-bs-toggle="button"></button>'
 
       const btnEl = fixtureEl.querySelector('.btn')
 
@@ -115,7 +115,7 @@ describe('Button', () => {
     })
 
     it('should just create a button instance without calling toggle', () => {
-      fixtureEl.innerHTML = '<button class="btn" data-toggle="button"></button>'
+      fixtureEl.innerHTML = '<button class="btn" data-bs-toggle="button"></button>'
 
       const btnEl = fixtureEl.querySelector('.btn')
 

@@ -70,8 +70,8 @@ const CLASS_NAME_STATIC = 'modal-static'
 
 const SELECTOR_DIALOG = '.modal-dialog'
 const SELECTOR_MODAL_BODY = '.modal-body'
-const SELECTOR_DATA_TOGGLE = '[data-toggle="modal"]'
-const SELECTOR_DATA_DISMISS = '[data-dismiss="modal"]'
+const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="modal"]'
+const SELECTOR_DATA_DISMISS = '[data-bs-dismiss="modal"]'
 const SELECTOR_FIXED_CONTENT = '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top'
 const SELECTOR_STICKY_CONTENT = '.sticky-top'
 
@@ -473,7 +473,7 @@ class Modal {
         .forEach(element => {
           const actualPadding = element.style.paddingRight
           const calculatedPadding = window.getComputedStyle(element)['padding-right']
-          Manipulator.setDataAttribute(element, 'padding-right', actualPadding)
+          Manipulator.setDataAttribute(element, 'bs-padding-right', actualPadding)
           element.style.paddingRight = `${parseFloat(calculatedPadding) + this._scrollbarWidth}px`
         })
 
@@ -482,7 +482,7 @@ class Modal {
         .forEach(element => {
           const actualMargin = element.style.marginRight
           const calculatedMargin = window.getComputedStyle(element)['margin-right']
-          Manipulator.setDataAttribute(element, 'margin-right', actualMargin)
+          Manipulator.setDataAttribute(element, 'bs-margin-right', actualMargin)
           element.style.marginRight = `${parseFloat(calculatedMargin) - this._scrollbarWidth}px`
         })
 
@@ -490,7 +490,7 @@ class Modal {
       const actualPadding = document.body.style.paddingRight
       const calculatedPadding = window.getComputedStyle(document.body)['padding-right']
 
-      Manipulator.setDataAttribute(document.body, 'padding-right', actualPadding)
+      Manipulator.setDataAttribute(document.body, 'bs-padding-right', actualPadding)
       document.body.style.paddingRight = `${parseFloat(calculatedPadding) + this._scrollbarWidth}px`
     }
 
@@ -501,9 +501,9 @@ class Modal {
     // Restore fixed content padding
     SelectorEngine.find(SELECTOR_FIXED_CONTENT)
       .forEach(element => {
-        const padding = Manipulator.getDataAttribute(element, 'padding-right')
+        const padding = Manipulator.getDataAttribute(element, 'bs-padding-right')
         if (typeof padding !== 'undefined') {
-          Manipulator.removeDataAttribute(element, 'padding-right')
+          Manipulator.removeDataAttribute(element, 'bs-padding-right')
           element.style.paddingRight = padding
         }
       })
@@ -511,19 +511,19 @@ class Modal {
     // Restore sticky content and navbar-toggler margin
     SelectorEngine.find(`${SELECTOR_STICKY_CONTENT}`)
       .forEach(element => {
-        const margin = Manipulator.getDataAttribute(element, 'margin-right')
+        const margin = Manipulator.getDataAttribute(element, 'bs-margin-right')
         if (typeof margin !== 'undefined') {
-          Manipulator.removeDataAttribute(element, 'margin-right')
+          Manipulator.removeDataAttribute(element, 'bs-margin-right')
           element.style.marginRight = margin
         }
       })
 
     // Restore body padding
-    const padding = Manipulator.getDataAttribute(document.body, 'padding-right')
+    const padding = Manipulator.getDataAttribute(document.body, 'bs-padding-right')
     if (typeof padding === 'undefined') {
       document.body.style.paddingRight = ''
     } else {
-      Manipulator.removeDataAttribute(document.body, 'padding-right')
+      Manipulator.removeDataAttribute(document.body, 'bs-padding-right')
       document.body.style.paddingRight = padding
     }
   }

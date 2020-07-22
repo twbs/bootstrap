@@ -60,14 +60,30 @@ describe('Manipulator', () => {
       expect().nothing()
     })
 
-    it('should get all data attributes', () => {
-      fixtureEl.innerHTML = '<div data-test="js" data-test2="js2" ></div>'
+    it('should get all data attributes, without bs prefixed as well', () => {
+      fixtureEl.innerHTML = '<div data-bs-toggle="tabs" data-bs-target="#element" data-another="value"></div>'
 
       const div = fixtureEl.querySelector('div')
 
       expect(Manipulator.getDataAttributes(div)).toEqual({
-        test: 'js',
-        test2: 'js2'
+        bsToggle: 'tabs',
+        bsTarget: '#element',
+        another: 'value',
+        toggle: 'tabs',
+        target: '#element'
+      })
+    })
+
+    it('should remove just prefixed bs keyword from the attributes and override original attribute with bs prefixed', () => {
+      fixtureEl.innerHTML = '<div data-bs-toggle="tabs" data-toggle="override" data-target-bs="#element" data-in-bs-out="in-between"></div>'
+
+      const div = fixtureEl.querySelector('div')
+
+      expect(Manipulator.getDataAttributes(div)).toEqual({
+        bsToggle: 'tabs',
+        targetBs: '#element',
+        inBsOut: 'in-between',
+        toggle: 'tabs'
       })
     })
   })
