@@ -48,6 +48,9 @@
   flex: 1 1 auto;
   padding: $card-spacer-y $card-spacer-x;
   color: $card-color;
+  > p:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .card-title {
