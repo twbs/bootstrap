@@ -678,11 +678,11 @@ toc: true
   </div>
   <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
+    <span class="visually-hidden">Previous</span>
   </a>
   <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
+    <span class="visually-hidden">Next</span>
   </a>
 </div>
 {{< /example >}}
@@ -786,7 +786,7 @@ toc: true
 <div class="btn-group">
 <button type="button" class="btn btn-primary">Primary</button>
 <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false">
-  <span class="sr-only">Toggle Dropdown</span>
+  <span class="visually-hidden">Toggle Dropdown</span>
 </button>
 <ul class="dropdown-menu">
   <li><a class="dropdown-item" href="#">Action</a></li>
@@ -797,7 +797,7 @@ toc: true
 <div class="btn-group">
 <button type="button" class="btn btn-secondary">Secondary</button>
 <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false">
-  <span class="sr-only">Toggle Dropdown</span>
+  <span class="visually-hidden">Toggle Dropdown</span>
 </button>
 <ul class="dropdown-menu">
   <li><a class="dropdown-item" href="#">Action</a></li>
@@ -808,7 +808,7 @@ toc: true
 <div class="btn-group">
 <button type="button" class="btn btn-success">Success</button>
 <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false">
-  <span class="sr-only">Toggle Dropdown</span>
+  <span class="visually-hidden">Toggle Dropdown</span>
 </button>
 <ul class="dropdown-menu">
   <li><a class="dropdown-item" href="#">Action</a></li>
@@ -819,7 +819,7 @@ toc: true
 <div class="btn-group">
 <button type="button" class="btn btn-info">Info</button>
 <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false">
-  <span class="sr-only">Toggle Dropdown</span>
+  <span class="visually-hidden">Toggle Dropdown</span>
 </button>
 <ul class="dropdown-menu">
   <li><a class="dropdown-item" href="#">Action</a></li>
@@ -830,7 +830,7 @@ toc: true
 <div class="btn-group">
 <button type="button" class="btn btn-warning">Warning</button>
 <button type="button" class="btn btn-warning dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false">
-  <span class="sr-only">Toggle Dropdown</span>
+  <span class="visually-hidden">Toggle Dropdown</span>
 </button>
 <ul class="dropdown-menu">
   <li><a class="dropdown-item" href="#">Action</a></li>
@@ -841,7 +841,7 @@ toc: true
 <div class="btn-group">
 <button type="button" class="btn btn-danger">Danger</button>
 <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false">
-  <span class="sr-only">Toggle Dropdown</span>
+  <span class="visually-hidden">Toggle Dropdown</span>
 </button>
 <ul class="dropdown-menu">
   <li><a class="dropdown-item" href="#">Action</a></li>
@@ -1164,7 +1164,7 @@ toc: true
   <ul class="pagination pagination-sm">
     <li class="page-item"><a class="page-link" href="#">1</a></li>
     <li class="page-item active" aria-current="page">
-      <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+      <a class="page-link" href="#">2 <span class="visually-hidden">(current)</span></a>
     </li>
     <li class="page-item"><a class="page-link" href="#">3</a></li>
   </ul>
@@ -1199,7 +1199,7 @@ toc: true
     </li>
     <li class="page-item"><a class="page-link" href="#">1</a></li>
     <li class="page-item active" aria-current="page">
-      <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+      <a class="page-link" href="#">2 <span class="visually-hidden">(current)</span></a>
     </li>
     <li class="page-item"><a class="page-link" href="#">3</a></li>
     <li class="page-item">
@@ -1302,7 +1302,7 @@ toc: true
 {{< spinner.inline >}}
 {{- range (index $.Site.Data "theme-colors") }}
 <div class="spinner-border text-{{ .name }}" role="status">
-  <span class="sr-only">Loading...</span>
+  <span class="visually-hidden">Loading...</span>
 </div>
 {{- end -}}
 {{< /spinner.inline >}}
@@ -1312,7 +1312,7 @@ toc: true
 {{< spinner.inline >}}
 {{- range (index $.Site.Data "theme-colors") }}
 <div class="spinner-grow text-{{ .name }}" role="status">
-  <span class="sr-only">Loading...</span>
+  <span class="visually-hidden">Loading...</span>
 </div>
 {{- end -}}
 {{< /spinner.inline >}}
