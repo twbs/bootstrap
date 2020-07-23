@@ -442,7 +442,8 @@ $utilities: map-merge(
     "word-wrap": (
       property: word-wrap word-break,
       class: text,
-      values: (break: break-word)
+      values: (break: break-word),
+      rtl: false
     ),
     "font-family": (
       property: font-family,
