@@ -93,7 +93,7 @@ Use [flexbox utilities][flex], [float utilities][float], or [text alignment][tex
 {{< example >}}
 <div class="d-flex align-items-center">
   <strong>Loading...</strong>
-  <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
+  <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
 </div>
 {{< /example >}}
 
@@ -101,7 +101,7 @@ Use [flexbox utilities][flex], [float utilities][float], or [text alignment][tex
 
 {{< example >}}
 <div class="clearfix">
-  <div class="spinner-border float-right" role="status">
+  <div class="spinner-border float-end" role="status">
     <span class="visually-hidden">Loading...</span>
   </div>
 </div>

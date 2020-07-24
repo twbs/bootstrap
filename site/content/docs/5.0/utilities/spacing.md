@@ -25,8 +25,8 @@ Where *sides* is one of:
 
 - `t` - for classes that set `margin-top` or `padding-top`
 - `b` - for classes that set `margin-bottom` or `padding-bottom`
-- `l` - for classes that set `margin-left` or `padding-left`
-- `r` - for classes that set `margin-right` or `padding-right`
+- `s` - for classes that set `margin-left` or `padding-left` in LTR, `margin-right` or `padding-right` in RTL
+- `e` - for classes that set `margin-right` or `padding-right` in LTR, `margin-left` or `padding-left` in RTL
 - `x` - for classes that set both `*-left` and `*-right`
 - `y` - for classes that set both `*-top` and `*-bottom`
 - blank - for classes that set a `margin` or `padding` on all 4 sides of the element
@@ -52,7 +52,7 @@ Here are some representative examples of these classes:
   margin-top: 0 !important;
 }
 
-.ml-1 {
+.ms-1 {
   margin-left: ($spacer * .25) !important;
 }
 

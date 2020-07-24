@@ -15,7 +15,7 @@
         {{ if eq .Title "Examples" }}
         <div class="d-flex flex-column flex-sm-row">
           <a href="{{ .Site.Params.download.dist_examples }}" class="btn btn-lg btn-bd-primary" onclick="ga('send', 'event', 'Examples', 'Hero', 'Download Examples');">Download examples</a>
-          <a href="{{ .Site.Params.download.source }}" class="btn btn-lg btn-outline-secondary mt-3 mt-sm-0 ml-sm-3" onclick="ga('send', 'event', 'Examples', 'Hero', 'Download');">Download source code</a>
+          <a href="{{ .Site.Params.download.source }}" class="btn btn-lg btn-outline-secondary mt-3 mt-sm-0 ms-sm-3" onclick="ga('send', 'event', 'Examples', 'Hero', 'Download');">Download source code</a>
         </div>
         {{ end }}
         {{ partial "ads" . }}

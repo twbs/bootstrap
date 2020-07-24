@@ -21,6 +21,6 @@ Aligning the figure's caption is easy with our [text utilities]({{< docsref "/ut
 {{< example >}}
 <figure class="figure">
   {{< placeholder width="400" height="300" class="figure-img img-fluid rounded" >}}
-  <figcaption class="figure-caption text-right">A caption for the above image.</figcaption>
+  <figcaption class="figure-caption text-end">A caption for the above image.</figcaption>
 </figure>
 {{< /example >}}

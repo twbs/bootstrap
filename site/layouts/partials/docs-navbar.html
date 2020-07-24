@@ -1,6 +1,6 @@
 <header class="navbar navbar-expand navbar-dark bd-navbar">
   <nav class="container-xxl flex-wrap flex-md-nowrap" aria-label="Main navigation">
-    <a class="navbar-brand p-0 mr-2" href="/" aria-label="Bootstrap">
+    <a class="navbar-brand p-0 me-2" href="/" aria-label="Bootstrap">
       {{ partial "icons/bootstrap-white-fill.svg" (dict "class" "d-block" "height" "32") }}
     </a>
 
@@ -30,7 +30,7 @@
       </ul>
     </div>
 
-    <ul class="navbar-nav ml-sm-auto">
+    <ul class="navbar-nav ms-sm-auto">
       <li class="nav-item">
         <a class="nav-link px-1 mx-1 py-2" href="{{ .Site.Params.github_org }}" target="_blank" rel="noopener" aria-label="GitHub">
           {{ partial "icons/github.svg" (dict "class" "navbar-nav-svg d-inline-block align-text-top" "width" "36" "height" "36") }}
@@ -53,6 +53,6 @@
       </li>
     </ul>
 
-    <a class="btn btn-bd-download d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="/docs/{{ .Site.Params.docs_version }}/getting-started/download/">Download</a>
+    <a class="btn btn-bd-download d-none d-lg-inline-block mb-3 mb-md-0 ms-md-3" href="/docs/{{ .Site.Params.docs_version }}/getting-started/download/">Download</a>
   </nav>
 </header>

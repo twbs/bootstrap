@@ -44,7 +44,7 @@ Here's an example of all the sub-components included in a responsive light-theme
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
@@ -67,7 +67,7 @@ Here's an example of all the sub-components included in a responsive light-theme
         </li>
       </ul>
       <form class="d-flex">
-        <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
     </div>
@@ -75,7 +75,7 @@ Here's an example of all the sub-components included in a responsive light-theme
 </nav>
 {{< /example >}}
 
-This example uses [color]({{< docsref "/utilities/colors" >}}) (`bg-light`) and [spacing]({{< docsref "/utilities/spacing" >}}) (`my-2`, `my-lg-0`, `mr-sm-0`, `my-sm-0`) utility classes.
+This example uses [color]({{< docsref "/utilities/colors" >}}) (`bg-light`) and [spacing]({{< docsref "/utilities/spacing" >}}) (`my-2`, `my-lg-0`, `me-sm-0`, `my-sm-0`) utility classes.
 
 ### Brand
 
@@ -222,7 +222,7 @@ Place various form controls and components within a navbar:
 <nav class="navbar navbar-light bg-light">
   <div class="container-fluid">
     <form class="d-flex">
-      <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
   </div>
@@ -236,7 +236,7 @@ Immediate children elements in `.navbar` use flex layout and will default to `ju
   <div class="container-fluid">
     <a class="navbar-brand">Navbar</a>
     <form class="d-flex">
-      <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
   </div>
@@ -261,7 +261,7 @@ Various buttons are supported as part of these navbar forms, too. This is also a
 {{< example >}}
 <nav class="navbar navbar-light bg-light">
   <form class="container-fluid justify-content-start">
-    <button class="btn btn-outline-success mr-2" type="button">Main button</button>
+    <button class="btn btn-outline-success me-2" type="button">Main button</button>
     <button class="btn btn-sm btn-outline-secondary" type="button">Smaller button</button>
   </form>
 </nav>
@@ -291,7 +291,7 @@ Mix and match with other components and utilities as needed.
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
@@ -322,7 +322,7 @@ Theming the navbar has never been easier thanks to the combination of theming cl
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarColor01">
-        <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Home</a>
           </li>
@@ -337,7 +337,7 @@ Theming the navbar has never been easier thanks to the combination of theming cl
           </li>
         </ul>
         <form class="d-flex">
-          <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-light" type="submit">Search</button>
         </form>
       </div>
@@ -351,7 +351,7 @@ Theming the navbar has never been easier thanks to the combination of theming cl
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarColor02">
-        <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Home</a>
           </li>
@@ -366,7 +366,7 @@ Theming the navbar has never been easier thanks to the combination of theming cl
           </li>
         </ul>
         <form class="d-flex">
-          <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-light" type="submit">Search</button>
         </form>
       </div>
@@ -380,7 +380,7 @@ Theming the navbar has never been easier thanks to the combination of theming cl
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarColor03">
-        <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Home</a>
           </li>
@@ -395,7 +395,7 @@ Theming the navbar has never been easier thanks to the combination of theming cl
           </li>
         </ul>
         <form class="d-flex">
-          <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-primary" type="submit">Search</button>
         </form>
       </div>
@@ -499,7 +499,7 @@ With no `.navbar-brand` shown in lowest breakpoint:
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
       <a class="navbar-brand" href="#">Hidden brand</a>
-      <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
@@ -511,7 +511,7 @@ With no `.navbar-brand` shown in lowest breakpoint:
         </li>
       </ul>
       <form class="d-flex">
-        <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
     </div>
@@ -529,7 +529,7 @@ With a brand name shown on the left and toggler on the right:
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-      <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
@@ -541,7 +541,7 @@ With a brand name shown on the left and toggler on the right:
         </li>
       </ul>
       <form class="d-flex">
-        <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
     </div>
@@ -559,7 +559,7 @@ With a toggler on the left and brand name on the right:
     </button>
     <a class="navbar-brand" href="#">Navbar</a>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-      <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
@@ -571,7 +571,7 @@ With a toggler on the left and brand name on the right:
         </li>
       </ul>
       <form class="d-flex">
-        <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
     </div>
