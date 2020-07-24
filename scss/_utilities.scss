@@ -12,7 +12,11 @@ $utilities: map-merge(
     "float": (
       responsive: true,
       property: float,
-      values: left right none
+      values: (
+        start: left,
+        end: right,
+        none: none,
+      )
     ),
     "overflow": (
       property: overflow,
@@ -53,8 +57,9 @@ $utilities: map-merge(
         0: 0,
       )
     ),
-    "border-right": (
+    "border-end": (
       property: border-right,
+      class: border-end,
       values: (
         null: $border-width solid $border-color,
         0: 0,
@@ -67,8 +72,9 @@ $utilities: map-merge(
         0: 0,
       )
     ),
-    "border-left": (
+    "border-start": (
       property: border-left,
+      class: border-start,
       values: (
         null: $border-width solid $border-color,
         0: 0,
@@ -254,10 +260,10 @@ $utilities: map-merge(
       class: mt,
       values: map-merge($spacers, (auto: auto))
     ),
-    "margin-right": (
+    "margin-end": (
       responsive: true,
       property: margin-right,
-      class: mr,
+      class: me,
       values: map-merge($spacers, (auto: auto))
     ),
     "margin-bottom": (
@@ -266,10 +272,10 @@ $utilities: map-merge(
       class: mb,
       values: map-merge($spacers, (auto: auto))
     ),
-    "margin-left": (
+    "margin-start": (
       responsive: true,
       property: margin-left,
-      class: ml,
+      class: ms,
       values: map-merge($spacers, (auto: auto))
     ),
     // Negative margin utilities
@@ -297,10 +303,10 @@ $utilities: map-merge(
       class: mt,
       values: $negative-spacers
     ),
-    "negative-margin-right": (
+    "negative-margin-end": (
       responsive: true,
       property: margin-right,
-      class: mr,
+      class: me,
       values: $negative-spacers
     ),
     "negative-margin-bottom": (
@@ -309,10 +315,10 @@ $utilities: map-merge(
       class: mb,
       values: $negative-spacers
     ),
-    "negative-margin-left": (
+    "negative-margin-start": (
       responsive: true,
       property: margin-left,
-      class: ml,
+      class: ms,
       values: $negative-spacers
     ),
     // Padding utilities
@@ -340,10 +346,10 @@ $utilities: map-merge(
       class: pt,
       values: $spacers
     ),
-    "padding-right": (
+    "padding-end": (
       responsive: true,
       property: padding-right,
-      class: pr,
+      class: pe,
       values: $spacers
     ),
     "padding-bottom": (
@@ -352,7 +358,7 @@ $utilities: map-merge(
       class: pb,
       values: $spacers
     ),
-    "padding-left": (
+    "padding-start": (
       responsive: true,
       property: padding-left,
       class: pl,
@@ -378,7 +384,11 @@ $utilities: map-merge(
       responsive: true,
       property: text-align,
       class: text,
-      values: left right center
+      values: (
+        start: left,
+        end: right,
+        center: center,
+      )
     ),
     "color": (
       property: color,
@@ -476,9 +486,9 @@ $utilities: map-merge(
       class: rounded-top,
       values: (null: $border-radius)
     ),
-    "rounded-right": (
+    "rounded-end": (
       property: border-top-right-radius border-bottom-right-radius,
-      class: rounded-right,
+      class: rounded-end,
       values: (null: $border-radius)
     ),
     "rounded-bottom": (
@@ -486,9 +496,9 @@ $utilities: map-merge(
       class: rounded-bottom,
       values: (null: $border-radius)
     ),
-    "rounded-left": (
+    "rounded-start": (
       property: border-bottom-left-radius border-top-left-radius,
-      class: rounded-left,
+      class: rounded-start,
       values: (null: $border-radius)
     ),
     "visibility": (

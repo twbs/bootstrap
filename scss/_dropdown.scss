@@ -83,7 +83,7 @@
   }
 
   .dropdown-toggle {
-    @include caret(right);
+    @include caret(end);
     &::after {
       vertical-align: 0;
     }
@@ -100,7 +100,7 @@
   }
 
   .dropdown-toggle {
-    @include caret(left);
+    @include caret(start);
     &::before {
       vertical-align: 0;
     }

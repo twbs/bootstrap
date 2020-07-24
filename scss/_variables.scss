@@ -660,7 +660,7 @@ $input-transition:                      border-color .15s ease-in-out, box-shado
 
 $form-check-input-width:                  1.25em !default;
 $form-check-min-height:                   $font-size-base * $line-height-base !default;
-$form-check-padding-left:                 $form-check-input-width + .5em !default;
+$form-check-padding-start:                $form-check-input-width + .5em !default;
 $form-check-margin-bottom:                .125rem !default;
 $form-check-label-color:                  null !default;
 $form-check-label-cursor:                 null !default;
@@ -688,7 +688,7 @@ $form-check-input-indeterminate-bg-image:       url("data:image/svg+xml,<svg xml
 
 $form-switch-color:               rgba(0, 0, 0, .25) !default;
 $form-switch-width:               2em !default;
-$form-switch-padding-left:        $form-switch-width + .5em !default;
+$form-switch-padding-start:        $form-switch-width + .5em !default;
 $form-switch-bg-image:            url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{$form-switch-color}'/></svg>") !default;
 $form-switch-border-radius:       $form-switch-width !default;
 
@@ -699,11 +699,11 @@ $form-switch-checked-color:       $component-active-color !default;
 $form-switch-checked-bg-image:    url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{$form-switch-checked-color}'/></svg>") !default;
 $form-switch-checked-bg-position: right center !default;
 
-$form-check-inline-margin-right:        1rem !default;
+$form-check-inline-margin-end:    1rem !default;
 
-$input-group-addon-color:               $input-color !default;
-$input-group-addon-bg:                  $gray-200 !default;
-$input-group-addon-border-color:        $input-border-color !default;
+$input-group-addon-color:         $input-color !default;
+$input-group-addon-bg:            $gray-200 !default;
+$input-group-addon-border-color:  $input-border-color !default;
 
 
 $form-select-padding-y:             $input-padding-y !default;
@@ -724,9 +724,9 @@ $form-select-bg-size:               16px 12px !default; // In pixels because ima
 $form-select-indicator-color:       $gray-800 !default;
 $form-select-indicator:             url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='none' stroke='#{$form-select-indicator-color}' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/></svg>") !default;
 
-$form-select-feedback-icon-padding-right: add(1em * .75, (2 * $form-select-padding-y * .75) + $form-select-padding-x + $form-select-indicator-padding) !default;
-$form-select-feedback-icon-position:      center right ($form-select-padding-x + $form-select-indicator-padding) !default;
-$form-select-feedback-icon-size:          $input-height-inner-half $input-height-inner-half !default;
+$form-select-feedback-icon-padding-end: add(1em * .75, (2 * $form-select-padding-y * .75) + $form-select-padding-x + $form-select-indicator-padding) !default;
+$form-select-feedback-icon-position:    center right ($form-select-padding-x + $form-select-indicator-padding) !default;
+$form-select-feedback-icon-size:        $input-height-inner-half $input-height-inner-half !default;
 
 $form-select-border-width:        $input-border-width !default;
 $form-select-border-color:        $input-border-color !default;
@@ -875,7 +875,7 @@ $navbar-brand-font-size:            $font-size-lg !default;
 $nav-link-height:                   $font-size-base * $line-height-base + $nav-link-padding-y * 2 !default;
 $navbar-brand-height:               $navbar-brand-font-size * $line-height-base !default;
 $navbar-brand-padding-y:            ($nav-link-height - $navbar-brand-height) / 2 !default;
-$navbar-brand-margin-right:         1rem !default;
+$navbar-brand-margin-end:           1rem !default;
 
 $navbar-toggler-padding-y:          .25rem !default;
 $navbar-toggler-padding-x:          .75rem !default;
@@ -951,7 +951,7 @@ $pagination-color:                  $link-color !default;
 $pagination-bg:                     $white !default;
 $pagination-border-width:           $border-width !default;
 $pagination-border-radius:          $border-radius !default;
-$pagination-margin-left:            -$pagination-border-width !default;
+$pagination-margin-start:           -$pagination-border-width !default;
 $pagination-border-color:           $gray-300 !default;
 
 $pagination-focus-box-shadow:       $input-btn-focus-box-shadow !default;

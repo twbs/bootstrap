@@ -45,7 +45,7 @@
   // Reset rounded corners
   > .btn:not(:last-child):not(.dropdown-toggle),
   > .btn-group:not(:last-child) > .btn {
-    @include border-right-radius(0);
+    @include border-end-radius(0);
   }
 
   // The left radius should be 0 if the button is:
@@ -55,7 +55,7 @@
   > .btn:nth-child(n + 3),
   > :not(.btn-check) + .btn,
   > .btn-group:not(:first-child) > .btn {
-    @include border-left-radius(0);
+    @include border-start-radius(0);
   }
 }
 

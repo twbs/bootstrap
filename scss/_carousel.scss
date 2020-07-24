@@ -3,12 +3,12 @@
 // 1. .carousel.pointer-event should ideally be pan-y (to allow for users to scroll vertically)
 //    even when their scroll action started on a carousel, but for compatibility (with Firefox)
 //    we're preventing all actions instead
-// 2. The .carousel-item-left and .carousel-item-right is used to indicate where
+// 2. The .carousel-item-start and .carousel-item-end is used to indicate where
 //    the active slide is heading.
 // 3. .active.carousel-item is the current slide.
-// 4. .active.carousel-item-left and .active.carousel-item-right is the current
+// 4. .active.carousel-item-start and .active.carousel-item-end is the current
 //    slide in its in-transition state. Only one of these occurs at a time.
-// 5. .carousel-item-next.carousel-item-left and .carousel-item-prev.carousel-item-right
+// 5. .carousel-item-next.carousel-item-start and .carousel-item-prev.carousel-item-end
 //    is the upcoming slide in transition.
 
 .carousel {
@@ -42,13 +42,13 @@
   display: block;
 }
 
-.carousel-item-next:not(.carousel-item-left),
-.active.carousel-item-right {
+.carousel-item-next:not(.carousel-item-start),
+.active.carousel-item-end {
   transform: translateX(100%);
 }
 
-.carousel-item-prev:not(.carousel-item-right),
-.active.carousel-item-left {
+.carousel-item-prev:not(.carousel-item-end),
+.active.carousel-item-start {
   transform: translateX(-100%);
 }
 
@@ -65,14 +65,14 @@
   }
 
   .carousel-item.active,
-  .carousel-item-next.carousel-item-left,
-  .carousel-item-prev.carousel-item-right {
+  .carousel-item-next.carousel-item-start,
+  .carousel-item-prev.carousel-item-end {
     z-index: 1;
     opacity: 1;
   }
 
-  .active.carousel-item-left,
-  .active.carousel-item-right {
+  .active.carousel-item-start,
+  .active.carousel-item-end {
     z-index: 0;
     opacity: 0;
     @include transition(opacity 0s $carousel-transition-duration);

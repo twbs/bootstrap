@@ -7,16 +7,16 @@
   }
 
   .page-item {
-    @if $pagination-margin-left == (-$pagination-border-width) {
+    @if $pagination-margin-start == (-$pagination-border-width) {
       &:first-child {
         .page-link {
-          @include border-left-radius($border-radius);
+          @include border-start-radius($border-radius);
         }
       }
 
       &:last-child {
         .page-link {
-          @include border-right-radius($border-radius);
+          @include border-end-radius($border-radius);
         }
       }
     } @else {

@@ -53,7 +53,7 @@
   border-color: inherit;
   border-style: solid;
   border-width: $form-file-border-width;
-  @include border-left-radius(inherit);
+  @include border-start-radius(inherit);
 }
 
 .form-file-button {
@@ -67,7 +67,7 @@
   border-color: inherit;
   border-style: solid;
   border-width: $form-file-border-width;
-  @include border-right-radius(inherit);
+  @include border-end-radius(inherit);
 }
 
 .form-file-sm {

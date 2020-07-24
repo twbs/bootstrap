@@ -32,11 +32,11 @@
     }
 
     &:not(:last-child) > .form-file-label {
-      @include border-right-radius(0);
+      @include border-end-radius(0);
     }
 
     &:not(:first-child) > .form-file-label {
-      @include border-left-radius(0);
+      @include border-start-radius(0);
     }
   }
 
@@ -130,11 +130,11 @@
 .input-group {
   > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu),
   > .dropdown-toggle:nth-last-child(n + 3) {
-    @include border-right-radius(0);
+    @include border-end-radius(0);
   }
 
   > :not(:first-child):not(.dropdown-menu) {
     margin-left: -$input-border-width;
-    @include border-left-radius(0);
+    @include border-start-radius(0);
   }
 }

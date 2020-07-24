@@ -182,7 +182,7 @@
       // Handle rounded corners
       @if $enable-rounded {
         &:not(:last-child) {
-          @include border-right-radius(0);
+          @include border-end-radius(0);
 
           .card-img-top,
           .card-header {
@@ -197,7 +197,7 @@
         }
 
         &:not(:first-child) {
-          @include border-left-radius(0);
+          @include border-start-radius(0);
 
           .card-img-top,
           .card-header {
