@@ -109,7 +109,7 @@
     "find-unused-sass-variables": "^2.0.0",
     "glob": "^7.1.6",
     "hammer-simulator": "0.0.1",
-    "hugo-bin": "^0.62.1",
+    "hugo-bin": "^0.62.3",
     "ip": "^1.1.5",
     "jquery": "^3.5.1",
     "karma": "^5.1.0",
