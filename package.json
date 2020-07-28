@@ -92,7 +92,7 @@
     "popper.js": "^1.16.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.10.4",
+    "@babel/cli": "^7.10.5",
     "@babel/core": "^7.10.5",
     "@babel/preset-env": "^7.10.4",
     "@rollup/plugin-babel": "^5.1.0",
