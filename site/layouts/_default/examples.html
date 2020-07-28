@@ -49,6 +49,19 @@
         <script src="/docs/{{ .Site.Params.docs_version }}/dist/js/bootstrap.bundle.js"></script>
       {{- end }}
 
+      {{- if or (eq .Page.Title "Cheatsheet") (eq .Page.Title "ورقة غش") -}}
+        {{- $vendor := resources.Match "js/vendor/*.js" -}}
+        {{- $js := resources.Match "js/*.js" -}}
+        {{- $targetDocsJSPath := printf "/docs/%s/assets/js/docs.js" .Site.Params.docs_version -}}
+        {{- $docsJs := append $js $vendor | resources.Concat $targetDocsJSPath -}}
+
+        {{- if eq hugo.Environment "production" -}}
+        {{- $docsJs = $docsJs | resources.Minify -}}
+        {{- end }}
+
+        <script src="{{ $docsJs.Permalink | relURL }}"></script>
+      {{- end }}
+
       {{ range .Page.Params.extra_js -}}
         <script{{ with .async }} async{{ end }} src="{{ .src }}"{{ with .integrity }} {{ printf "integrity=%q" . | safeHTMLAttr }} crossorigin="anonymous"{{ end }}></script>
       {{- end -}}

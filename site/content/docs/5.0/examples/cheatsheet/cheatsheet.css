@@ -1,0 +1,148 @@
+body {
+  scroll-behavior: smooth;
+}
+
+/* stylelint-disable-next-line selector-max-compound-selectors, selector-max-universal */
+.bd-cheatsheet article > div > * + * {
+  margin-top: 3rem;
+}
+
+/* Table of contents */
+.bd-aside a {
+  padding: .125rem 1rem;
+  margin-left: -1rem;
+  color: inherit;
+}
+
+[dir="rtl"] .bd-aside a {
+  margin-right: -1rem;
+  margin-left: auto;
+}
+
+.bd-aside a:not(:hover) {
+  text-decoration: none;
+}
+
+.bd-aside a:not(:only-child)::before {
+  width: 1rem;
+  line-height: 0;
+  content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgba%280,0,0,.5%29' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
+  transition: transform .35s ease;
+  transform-origin: .5em 50%;
+}
+
+.bd-aside a:not(:only-child):not(.collapsed) {
+  color: #000;
+}
+
+.bd-aside a:not(:only-child):not(.collapsed)::before {
+  transform: rotate(90deg);
+}
+
+.bd-aside .active {
+  font-weight: 700;
+  color: #000;
+}
+
+/* Examples */
+.scrollspy-example {
+  position: relative;
+  height: 200px;
+  margin-top: .5rem;
+  overflow: auto;
+}
+
+[id="modal"] .bd-example .btn,
+[id="buttons"] .bd-example .btn,
+[id="tooltips"] .bd-example .btn,
+[id="popovers"] .bd-example .btn,
+[id="dropdowns"] .bd-example .btn-group,
+[id="dropdowns"] .bd-example .dropdown,
+[id="dropdowns"] .bd-example .dropup,
+[id="dropdowns"] .bd-example .dropright,
+[id="dropdowns"] .bd-example .dropleft {
+  margin: 0 1rem 1rem 0;
+}
+
+[dir="rtl"] [id="modal"] .bd-example .btn,
+[dir="rtl"] [id="buttons"] .bd-example .btn,
+[dir="rtl"] [id="tooltips"] .bd-example .btn,
+[dir="rtl"] [id="popovers"] .bd-example .btn,
+[dir="rtl"] [id="dropdowns"] .bd-example .btn-group,
+[dir="rtl"] [id="dropdowns"] .bd-example .dropdown,
+[dir="rtl"] [id="dropdowns"] .bd-example .dropup,
+[dir="rtl"] [id="dropdowns"] .bd-example .dropright,
+[dir="rtl"] [id="dropdowns"] .bd-example .dropleft {
+  margin: 0 0 1rem 1rem;
+}
+
+/* Layout */
+@media (min-width: 1200px) {
+  body {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-rows: auto;
+  }
+
+  .bd-header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+    grid-column: 1 / span 3;
+    min-height: 6rem;
+  }
+
+  .bd-aside,
+  .bd-cheatsheet {
+    padding-top: 6rem;
+  }
+
+  /**
+ * 1. Too bad only Firefox supports subgrids ATM
+ */
+  .bd-cheatsheet,
+  .bd-cheatsheet section,
+  .bd-cheatsheet article {
+    display: inherit; /* 1 */
+    gap: inherit; /* 1 */
+    grid-template-columns: 1fr 4fr;
+    grid-column: 1 / span 2;
+    grid-template-rows: auto;
+  }
+
+  .bd-aside {
+    grid-area: 1 / 3;
+    scroll-margin-top: 6rem;
+  }
+
+  .bd-cheatsheet section,
+  .bd-cheatsheet section > h2 {
+    top: 6rem;
+    scroll-margin-top: 6rem;
+  }
+
+  .bd-cheatsheet section > h2 {
+    background-image: linear-gradient(to bottom, #fff, transparent);
+    grid-column: 1 / span 2;
+  }
+
+  .bd-cheatsheet section > h2::before {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+    width: 17.5%;
+    content: "";
+    background-image: linear-gradient(to bottom, #fff calc(100% - 2rem), transparent);
+  }
+
+  .bd-cheatsheet article,
+  .bd-cheatsheet article > h3 {
+    top: 12rem;
+    z-index: 0;
+    scroll-margin-top: 12rem;
+  }
+}
