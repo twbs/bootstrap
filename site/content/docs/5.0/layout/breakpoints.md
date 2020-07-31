@@ -61,7 +61,7 @@ Bootstrap includes six default breakpoints, sometimes referred to as _grid tiers
   </tbody>
 </table>
 
-Each breakpoint size was chosen to comfortably hold containers whose widths are multiples of 12. They're also aimed at be representative of a subset of common device sizes and viewport dimensions. They don't specifically target every use case or device, but the provide ranges provide a strong and consistent foundation to build on for any nearly device.
+Each breakpoint size was chosen to comfortably hold containers whose widths are multiples of 12. They're also aimed at be representative of a subset of common device sizes and viewport dimensions. They don't specifically target every use case or device, but they provide ranges provide a strong and consistent foundation to build on for nearly any device.
 
 These breakpoints are customizable via Sass—you'll find them in a Sass map in our `_variables.scss` stylesheet.
 
