@@ -954,6 +954,8 @@ $pagination-border-radius:          $border-radius !default;
 $pagination-margin-left:            -$pagination-border-width !default;
 $pagination-border-color:           $gray-300 !default;
 
+$pagination-focus-color:            $link-hover-color !default;
+$pagination-focus-bg:               $gray-200 !default;
 $pagination-focus-box-shadow:       $input-btn-focus-box-shadow !default;
 $pagination-focus-outline:          0 !default;
 
@@ -969,6 +971,7 @@ $pagination-disabled-color:         $gray-600 !default;
 $pagination-disabled-bg:            $white !default;
 $pagination-disabled-border-color:  $gray-300 !default;
 
+$pagination-transition:              color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
 
 // Cards
 
