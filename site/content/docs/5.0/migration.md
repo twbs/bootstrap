@@ -35,6 +35,10 @@ toc: true
 
 ### Components
 
+### Badges
+
+- Increased default padding for badges from `.25em`/`.5em` to `.35em`/`.65em`.
+
 #### Buttons
 
 - Disabled states of buttons are easier to customize thanks to additional arguments in the `button-variant()` mixin. [See #30639.](https://github.com/twbs/bootstrap/pull/30639)
