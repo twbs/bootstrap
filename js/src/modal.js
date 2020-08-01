@@ -544,7 +544,7 @@ class Modal {
       const _config = {
         ...Default,
         ...Manipulator.getDataAttributes(this),
-        ...typeof config === 'object' && config ? config : {}
+        ...(typeof config === 'object' && config ? config : {})
       }
 
       if (!data) {
