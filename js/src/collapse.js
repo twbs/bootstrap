@@ -342,7 +342,7 @@ class Collapse {
     const _config = {
       ...Default,
       ...Manipulator.getDataAttributes(element),
-      ...typeof config === 'object' && config ? config : {}
+      ...(typeof config === 'object' && config ? config : {})
     }
 
     if (!data && _config.toggle && typeof config === 'string' && /show|hide/.test(config)) {

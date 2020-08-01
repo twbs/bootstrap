@@ -11,14 +11,45 @@ toc: true
 
 ### Sass
 
-- Renamed `.sr-only` and `.sr-only-focusable` to `.visually-hidden` and `.visually-hidden-focusable`.
-- Renamed `sr-only()` and `sr-only-focusable()` mixins to `visually-hidden()` and `visually-hidden-focusable()`.
+- "Screen reader" classes are now "visually hidden" classes.
+  - Changed the Sass file from `scss/helpers/_screenreaders.scss` to `scss/helpers/_visually-hidden.scss`
+  - Renamed `.sr-only` and `.sr-only-focusable` to `.visually-hidden` and `.visually-hidden-focusable`
+  - Renamed `sr-only()` and `sr-only-focusable()` mixins to `visually-hidden()` and `visually-hidden-focusable()`.
+
+### Docs
+
+- Renamed "Screen readers" helper page to "Visually hidden", and filename to `visually-hidden`
+- Renamed "Checks" page to "Checks & radios", and filename to `checks-radios`
+- Improved documentation of check/radio powered button groups
+
+### Reboot
+
+- Updated `th` styling to use a default `null` value for `font-weight` and inherit `text-align` instead of setting explicitly.
+
+### Colors
+
+- Bumped color contrast ratio from 3:1 to 4.5:1.
+- Set `$black` as color contrast color instead of `$gray-900`.
+- Improved `$green` (and its theme alias `$success`) color to reach new minimum color contrast (moving from `#28a745` to `#198754`).
+- Improved `$cyan` (and its theme alias `$info`) color to be more vibrant (moving from `#17a2b8` to `#0dcaf0`).
 
 ### Components
+
+#### Buttons
+
+- Disabled states of buttons are easier to customize thanks to additional arguments in the `button-variant()` mixin. [See #30639.](https://github.com/twbs/bootstrap/pull/30639)
+
+#### Navs
+
+- Added new `null` variables for `font-size`, `font-weight`, `color`, and `:hover` `color` to the `.nav-link` class.
 
 #### Popovers
 
 - Renamed `whiteList` option to `allowList`
+
+#### Toasts
+
+- Make default toast duration 5 seconds
 
 #### Tooltips
 
