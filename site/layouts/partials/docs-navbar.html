@@ -31,10 +31,16 @@
     </div>
 
     <ul class="navbar-nav ml-sm-auto">
-      <li class="nav-item">
-        <a class="nav-link px-1 mx-1 py-2" href="{{ .Site.Params.github_org }}" target="_blank" rel="noopener" aria-label="GitHub">
+      <li class="nav-item dropdown">
+        <a class="nav-link px-1 mx-1 py-2 dropdown-toggle" href="#" id="githubDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           {{ partial "icons/github.svg" (dict "class" "navbar-nav-svg d-inline-block align-text-top" "width" "36" "height" "36") }}
         </a>
+        <div class="dropdown-menu dropdown-menu-right shadow p-3" aria-labelledby="githubDropdown">
+          <iframe src="https://ghbtns.com/github-btn.html?user=twbs&repo=bootstrap&type=star&count=true&size=large" frameborder="0" scrolling="0" width="170" height="30" title="GitHub"></iframe><br>
+          <iframe src="https://ghbtns.com/github-btn.html?user=twbs&repo=bootstrap&type=watch&count=true&size=large&v=2" frameborder="0" scrolling="0" width="170" height="30" title="GitHub"></iframe><br>
+          <iframe src="https://ghbtns.com/github-btn.html?user=twbs&repo=bootstrap&type=fork&count=true&size=large" frameborder="0" scrolling="0" width="170" height="30" title="GitHub"></iframe><br>
+          <iframe src="https://ghbtns.com/github-btn.html?user=mdo&type=follow&count=true&size=large" frameborder="0" scrolling="0" width="230" height="30" title="GitHub"></iframe><br>
+        </div>
       </li>
       <li class="nav-item">
         <a class="nav-link px-1 mx-1 py-2" href="https://twitter.com/{{ .Site.Params.twitter }}" target="_blank" rel="noopener" aria-label="Twitter">
