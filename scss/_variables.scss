@@ -658,7 +658,7 @@ $input-height-lg:                       add($input-line-height * 1em, add($input
 $input-transition:                      border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
 
 
-$form-check-input-width:                  1.25em !default;
+$form-check-input-width:                  1em !default;
 $form-check-min-height:                   $font-size-base * $line-height-base !default;
 $form-check-padding-left:                 $form-check-input-width + .5em !default;
 $form-check-margin-bottom:                .125rem !default;
@@ -1067,8 +1067,8 @@ $toast-header-border-color:         rgba(0, 0, 0, .05) !default;
 $badge-font-size:                   .75em !default;
 $badge-font-weight:                 $font-weight-bold !default;
 $badge-color:                       $white !default;
-$badge-padding-y:                   .25em !default;
-$badge-padding-x:                   .5em !default;
+$badge-padding-y:                   .35em !default;
+$badge-padding-x:                   .65em !default;
 $badge-border-radius:               $border-radius !default;
 
 
