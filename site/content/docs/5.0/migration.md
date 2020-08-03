@@ -33,6 +33,10 @@ toc: true
 - Improved `$green` (and its theme alias `$success`) color to reach new minimum color contrast (moving from `#28a745` to `#198754`).
 - Improved `$cyan` (and its theme alias `$info`) color to be more vibrant (moving from `#17a2b8` to `#0dcaf0`).
 
+### Forms
+
+- Resized checks and radios to be `1em` instead of `1.25em` in an effort to make them scale better with custom `$font-size-base` values and more.
+
 ### Components
 
 ### Badges
@@ -49,15 +53,16 @@ toc: true
 
 #### Popovers
 
-- Renamed `whiteList` option to `allowList`
+- Renamed `whiteList` option to `allowList`.
 
 #### Toasts
 
-- Make default toast duration 5 seconds
+- Made default toast duration 5 seconds.
+- Removed `overflow: hidden` from toasts and replaced with proper `border-radius`s with `calc()` functions.
 
 #### Tooltips
 
-- Renamed `whiteList` option to `allowList`
+- Renamed `whiteList` option to `allowList`.
 
 ---
 
@@ -88,9 +93,7 @@ Changes to our source Sass files and compiled CSS.
   - `text-hide()` (also dropped the associated utility class, `.text-hide`)
   - `visibility()`
   - `form-control-focus()`
-- **Todo:** New variables?
-- **Todo:** Rearrange forms source files (under `scss/forms/`)
-- **Todo:** Rearrange grid source files (under `scss/grid/`)
+- Rearranged forms source files under `scss/forms/`. [See Forms section for more details.](#forms)
 - Removed print styles and `$enable-print-styles` variable. Print display classes, however, have remained intact. [See #28339](https://github.com/twbs/bootstrap/pull/28339).
 - Dropped `color()`, `theme-color()` & `gray()` functions in favor of variables. [See #29083](https://github.com/twbs/bootstrap/pull/29083)
 - The `theme-color-level()` function is renamed to `color-level()` and now accepts any color you want instead of only `$theme-color` colors. [See #29083](https://github.com/twbs/bootstrap/pull/29083)
@@ -195,15 +198,15 @@ Changes to Reboot, typography, tables, and more.
 
 #### Alerts
 
-- **Todo:** Remove auto-darkening of `<hr>` elements in `.alert-*` class variants. `<hr>`s use `rgba()` for their color, so these should naturally blend anyway.
+- Removed auto-darkening of `<hr>` elements in `.alert-*` class variants. `<hr>`s use `rgba()` for their color, so these should naturally blend anyway.
 
 #### Badges
 
 Badges were overhauled to better differentiate themselves from buttons and to better utilize utility classes.
 
-- **Todo:** Removed and replaced `.badge` modifier classes with background utility classes (e.g., use `.bg-primary` instead of `.badge-primary`)
-- **Todo:** Removed `.badge-pill` for the `.rounded-pill` utility class
-- **Todo:** Removed badge's hover and focus styles for `a.badge` and `button.badge`.
+- Removed and replaced `.badge` modifier classes with background utility classes (e.g., use `.bg-primary` instead of `.badge-primary`)
+- Removed `.badge-pill` for the `.rounded-pill` utility class
+- Removed badge's hover and focus styles for `a.badge` and `button.badge`.
 
 #### Buttons
 
@@ -244,8 +247,8 @@ Badges were overhauled to better differentiate themselves from buttons and to be
 - Decreased the number of responsive order utilities per breakpoint. The highest order utility with a number now is `.order-5` instead of `.order-12`. [See #28874](https://github.com/twbs/bootstrap/pull/28874).
 - New `line-height` utilities: `.lh-1`, `.lh-sm`, `.lh-base` and `.lh-lg`. See [here]({{< docsref "/utilities/text#line-height" >}}).
 - Added `.bg-body` for quickly setting the `<body>`'s background to additional elements.
-- **Todo:** Drop `.text-hide` as it's an antiquated method for hiding text that shouldn't be used anymore
-- **Todo:** Split utilities into property-value utility classes and helpers
+- Drop `.text-hide` as it's an antiquated method for hiding text that shouldn't be used anymore
+- Split utilities into property-value utility classes and helpers
 - Negative margin utilities are disabled by default. You can re-enable them by setting `$enable-negative-margins: true`, but keep in mind this can increase the file size quite a lot.
 
 ### Docs
