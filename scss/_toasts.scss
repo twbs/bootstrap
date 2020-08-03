@@ -3,7 +3,6 @@
   // See https://github.com/twbs/bootstrap/issues/28341
   flex-basis: $toast-max-width;
   max-width: $toast-max-width;
-  overflow: hidden; // cheap rounded corners on nested items
   @include font-size($toast-font-size);
   color: $toast-color;
   background-color: $toast-background-color;
@@ -39,6 +38,7 @@
   background-color: $toast-header-background-color;
   background-clip: padding-box;
   border-bottom: $toast-border-width solid $toast-header-border-color;
+  @include border-top-radius(subtract($toast-border-radius, $toast-border-width));
 }
 
 .toast-body {
