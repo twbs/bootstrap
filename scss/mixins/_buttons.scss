@@ -13,6 +13,9 @@
   $active-background: if($color == $color-contrast-light, darken($background, 10%), lighten($background, 10%)),
   $active-border: if($color == $color-contrast-light, darken($border, 12.5%), lighten($border, 5%)),
   $active-color: color-contrast($active-background)
+  $disabled-background: $background,
+  $disabled-border: $border,
+  $disabled-color: color-contrast($disabled-background)
 ) {
   color: $color;
   @include gradient-bg($background);
@@ -61,11 +64,11 @@
 
   &:disabled,
   &.disabled {
-    color: $color;
-    background-color: $background;
+    color: $disabled-color;
+    background-color: $disabled-background;
     // Remove CSS gradients if they're enabled
     background-image: if($enable-gradients, none, null);
-    border-color: $border;
+    border-color: $disabled-border;
   }
 }
 

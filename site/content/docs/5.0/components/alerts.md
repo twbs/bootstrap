@@ -52,7 +52,6 @@ Alerts can also contain additional HTML elements like headings, paragraphs and d
 </div>
 {{< /example >}}
 
-
 ### Dismissing
 
 Using the alert JavaScript plugin, it's possible to dismiss any alert inline. Here's how:
@@ -72,6 +71,10 @@ You can see this in action with a live demo:
   </button>
 </div>
 {{< /example >}}
+
+{{< callout warning >}}
+When an alert is dismissed, the element is completely removed from the page structure. If a keyboard user dismisses the alert using the close button, their focus will suddenly be lost and, depending on the browser, reset to the start of the page/document. For this reason, we recommend including additional JavaScript that listens for the `closed.bs.alert` event and programmatically sets `focus()` to the most appropriate location in the page. If you're planning to move focus to a non-interactive element that normally does not receive focus, make sure to add `tabindex="-1"` to the element.
+{{< /callout >}}
 
 ## JavaScript behavior
 
@@ -178,6 +181,8 @@ Bootstrap's alert plugin exposes a few events for hooking into alert functionali
 {{< highlight js >}}
 var myAlert = document.getElementById('myAlert')
 myAlert.addEventListener('closed.bs.alert', function () {
-  // do something…
+  // do something … for instance, explicitly move focus to the most appropriate element,
+  // so it doesn't get lost/reset to the start of the page
+  // document.getElementById('…').focus()
 })
 {{< /highlight >}}

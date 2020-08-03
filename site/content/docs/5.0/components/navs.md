@@ -645,19 +645,19 @@ If no tab was already active, then the `hide.bs.tab` and `hidden.bs.tab` events 
   </thead>
   <tbody>
     <tr>
-      <td>show.bs.tab</td>
+      <td><code>show.bs.tab</code></td>
       <td>This event fires on tab show, but before the new tab has been shown. Use <code>event.target</code> and <code>event.relatedTarget</code> to target the active tab and the previous active tab (if available) respectively.</td>
     </tr>
     <tr>
-      <td>shown.bs.tab</td>
+      <td><code>shown.bs.tab</code></td>
       <td>This event fires on tab show after a tab has been shown. Use <code>event.target</code> and <code>event.relatedTarget</code> to target the active tab and the previous active tab (if available) respectively.</td>
     </tr>
     <tr>
-      <td>hide.bs.tab</td>
+      <td><code>hide.bs.tab</code></td>
       <td>This event fires when a new tab is to be shown (and thus the previous active tab is to be hidden). Use <code>event.target</code> and <code>event.relatedTarget</code> to target the current active tab and the new soon-to-be-active tab, respectively.</td>
     </tr>
     <tr>
-      <td>hidden.bs.tab</td>
+      <td><code>hidden.bs.tab</code></td>
       <td>This event fires after a new tab is shown (and thus the previous active tab is hidden). Use <code>event.target</code> and <code>event.relatedTarget</code> to target the previous active tab and the new active tab, respectively.</td>
     </tr>
   </tbody>
