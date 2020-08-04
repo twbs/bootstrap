@@ -497,6 +497,13 @@ $utilities: map-merge(
         visible: visible,
         invisible: hidden,
       )
+    ),
+    "smooth":(
+      property: scroll-behavior,
+      class: null,
+      values:(
+        smooth: smooth
+      )
     )
   ),
   $utilities
