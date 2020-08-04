@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="Documentation and examples for common text utilities to control alignment, wrapping, weight, and more.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Jekyll v4.0.1">
+<meta name="generator" content="Jekyll v4.1.1">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="4.5">
@@ -15,7 +15,7 @@
 <link rel="canonical" href="https://getbootstrap.com/docs/4.5/utilities/text/">
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
 <!-- Documentation extras -->
 
 <link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
@@ -62,9 +62,10 @@
 
   </head>
   <body>
-    <a class="skippy sr-only sr-only-focusable" href="#content">
-  <span class="skippy-text">Skip to main content</span>
-</a>
+    <div class="skippy overflow-hidden">
+  <div class="container-xl">
+    <a class="sr-only sr-only-focusable d-inline-flex p-2 m-1" href="#content">Skip to main content</a><a class="sr-only sr-only-focusable d-none d-md-inline-flex p-2 m-1" href="#bd-docs-nav">Skip to docs navigation</a></div>
+</div>
 
 
     <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
@@ -481,7 +482,10 @@
         
 
         <main class="col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
-          <h1 class="bd-title" id="content">Text</h1>
+          <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
+            <a class="btn btn-sm btn-bd-light my-2 my-md-0" href="https://github.com/twbs/bootstrap/tree/v4-dev/site/docs/4.5/utilities/text.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">View on GitHub</a>
+            <h1 class="bd-title" id="content">Text</h1>
+          </div>
           <p class="bd-lead">Documentation and examples for common text utilities to control alignment, wrapping, weight, and more.</p>
           <script async src="https://cdn.carbonads.com/carbon.js?serve=CKYIKKJL&placement=getbootstrapcom" id="_carbonads_js"></script>
 
@@ -517,7 +521,7 @@
 
 <h2 id="text-wrapping-and-overflow">Text wrapping and overflow</h2>
 
-<p>Wrap text with a <code class="highlighter-rouge">.text-wrap</code> class.</p>
+<p>Wrap text with a <code class="language-plaintext highlighter-rouge">.text-wrap</code> class.</p>
 
 <div class="bd-example">
 <div class="badge badge-primary text-wrap" style="width: 6rem;">
@@ -528,7 +532,7 @@
   This text should wrap.
 <span class="nt">&lt;/div&gt;</span></code></pre></figure>
 
-<p>Prevent text from wrapping with a <code class="highlighter-rouge">.text-nowrap</code> class.</p>
+<p>Prevent text from wrapping with a <code class="language-plaintext highlighter-rouge">.text-nowrap</code> class.</p>
 
 <div class="bd-example">
 <div class="text-nowrap bd-highlight" style="width: 8rem;">
@@ -539,7 +543,7 @@
   This text should overflow the parent.
 <span class="nt">&lt;/div&gt;</span></code></pre></figure>
 
-<p>For longer content, you can add a <code class="highlighter-rouge">.text-truncate</code> class to truncate the text with an ellipsis. <strong>Requires <code class="highlighter-rouge">display: inline-block</code> or <code class="highlighter-rouge">display: block</code>.</strong></p>
+<p>For longer content, you can add a <code class="language-plaintext highlighter-rouge">.text-truncate</code> class to truncate the text with an ellipsis. <strong>Requires <code class="language-plaintext highlighter-rouge">display: inline-block</code> or <code class="language-plaintext highlighter-rouge">display: block</code>.</strong></p>
 
 <div class="bd-example">
 <!-- Block level -->
@@ -568,7 +572,7 @@
 
 <h2 id="word-break">Word break</h2>
 
-<p>Prevent long strings of text from breaking your components’ layout by using <code class="highlighter-rouge">.text-break</code> to set <code class="highlighter-rouge">word-wrap: break-word</code>.</p>
+<p>Prevent long strings of text from breaking your components’ layout by using <code class="language-plaintext highlighter-rouge">.text-break</code> to set <code class="language-plaintext highlighter-rouge">word-wrap: break-word</code> and <code class="language-plaintext highlighter-rouge">word-break: break-word</code>. We use <code class="language-plaintext highlighter-rouge">word-wrap</code> instead of the more common <code class="language-plaintext highlighter-rouge">overflow-wrap</code> for wider browser support, and add the deprecated <code class="language-plaintext highlighter-rouge">word-break: break-word</code> to avoid issues with flex containers.</p>
 
 <div class="bd-example">
 <p class="text-break">mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm</p>
@@ -588,7 +592,7 @@
 <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"text-uppercase"</span><span class="nt">&gt;</span>Uppercased text.<span class="nt">&lt;/p&gt;</span>
 <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"text-capitalize"</span><span class="nt">&gt;</span>CapiTaliZed text.<span class="nt">&lt;/p&gt;</span></code></pre></figure>
 
-<p>Note how <code class="highlighter-rouge">.text-capitalize</code> only changes the first letter of each word, leaving the case of any other letters unaffected.</p>
+<p>Note how <code class="language-plaintext highlighter-rouge">.text-capitalize</code> only changes the first letter of each word, leaving the case of any other letters unaffected.</p>
 
 <h2 id="font-weight-and-italics">Font weight and italics</h2>
 
@@ -611,7 +615,7 @@
 
 <h2 id="monospace">Monospace</h2>
 
-<p>Change a selection to our monospace font stack with <code class="highlighter-rouge">.text-monospace</code>.</p>
+<p>Change a selection to our monospace font stack with <code class="language-plaintext highlighter-rouge">.text-monospace</code>.</p>
 
 <div class="bd-example">
 <p class="text-monospace">This is in monospace</p>
@@ -620,7 +624,7 @@
 
 <h2 id="reset-color">Reset color</h2>
 
-<p>Reset a text or link’s color with <code class="highlighter-rouge">.text-reset</code>, so that it inherits the color from its parent.</p>
+<p>Reset a text or link’s color with <code class="language-plaintext highlighter-rouge">.text-reset</code>, so that it inherits the color from its parent.</p>
 
 <div class="bd-example">
 <p class="text-muted">
@@ -633,7 +637,7 @@
 
 <h2 id="text-decoration">Text decoration</h2>
 
-<p>Remove a text decoration with a <code class="highlighter-rouge">.text-decoration-none</code> class.</p>
+<p>Remove a text decoration with a <code class="language-plaintext highlighter-rouge">.text-decoration-none</code> class.</p>
 
 <div class="bd-example">
 <a href="#" class="text-decoration-none">Non-underlined link</a>
@@ -646,6 +650,6 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.5/assets/js/docs.min.js"></script>
+<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-FxkQtQ8fW6C3xA7BoW8ocAb2N7U9dCA7ZJXMJlz/37PL6Q6PUGQ5ZeJcaXdYKcdJ" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.5/assets/js/docs.min.js"></script>
   </body>
 </html>

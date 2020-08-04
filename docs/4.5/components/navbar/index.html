@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="Documentation and examples for Bootstrap’s powerful, responsive navigation header, the navbar. Includes support for branding, navigation, and more, including support for our collapse plugin.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Jekyll v4.0.1">
+<meta name="generator" content="Jekyll v4.1.1">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="4.5">
@@ -15,7 +15,7 @@
 <link rel="canonical" href="https://getbootstrap.com/docs/4.5/components/navbar/">
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
 <!-- Documentation extras -->
 
 <link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
@@ -62,9 +62,10 @@
 
   </head>
   <body>
-    <a class="skippy sr-only sr-only-focusable" href="#content">
-  <span class="skippy-text">Skip to main content</span>
-</a>
+    <div class="skippy overflow-hidden">
+  <div class="container-xl">
+    <a class="sr-only sr-only-focusable d-inline-flex p-2 m-1" href="#content">Skip to main content</a><a class="sr-only sr-only-focusable d-none d-md-inline-flex p-2 m-1" href="#bd-docs-nav">Skip to docs navigation</a></div>
+</div>
 
 
     <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
@@ -491,7 +492,10 @@
         
 
         <main class="col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
-          <h1 class="bd-title" id="content">Navbar</h1>
+          <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
+            <a class="btn btn-sm btn-bd-light my-2 my-md-0" href="https://github.com/twbs/bootstrap/tree/v4-dev/site/docs/4.5/components/navbar.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">View on GitHub</a>
+            <h1 class="bd-title" id="content">Navbar</h1>
+          </div>
           <p class="bd-lead">Documentation and examples for Bootstrap’s powerful, responsive navigation header, the navbar. Includes support for branding, navigation, and more, including support for our collapse plugin.</p>
           <script async src="https://cdn.carbonads.com/carbon.js?serve=CKYIKKJL&placement=getbootstrapcom" id="_carbonads_js"></script>
 
@@ -500,16 +504,16 @@
 <p>Here’s what you need to know before getting started with the navbar:</p>
 
 <ul>
-  <li>Navbars require a wrapping <code class="highlighter-rouge">.navbar</code> with <code class="highlighter-rouge">.navbar-expand{-sm|-md|-lg|-xl}</code> for responsive collapsing and <a href="#color-schemes">color scheme</a> classes.</li>
+  <li>Navbars require a wrapping <code class="language-plaintext highlighter-rouge">.navbar</code> with <code class="language-plaintext highlighter-rouge">.navbar-expand{-sm|-md|-lg|-xl}</code> for responsive collapsing and <a href="#color-schemes">color scheme</a> classes.</li>
   <li>Navbars and their contents are fluid by default. Use <a href="#containers">optional containers</a> to limit their horizontal width.</li>
   <li>Use our <a href="/docs/4.5/utilities/spacing/">spacing</a> and <a href="/docs/4.5/utilities/flex/">flex</a> utility classes for controlling spacing and alignment within navbars.</li>
   <li>Navbars are responsive by default, but you can easily modify them to change that. Responsive behavior depends on our Collapse JavaScript plugin.</li>
-  <li>Navbars are hidden by default when printing. Force them to be printed by adding <code class="highlighter-rouge">.d-print</code> to the <code class="highlighter-rouge">.navbar</code>. See the <a href="/docs/4.5/utilities/display/">display</a> utility class.</li>
-  <li>Ensure accessibility by using a <code class="highlighter-rouge">&lt;nav&gt;</code> element or, if using a more generic element such as a <code class="highlighter-rouge">&lt;div&gt;</code>, add a <code class="highlighter-rouge">role="navigation"</code> to every navbar to explicitly identify it as a landmark region for users of assistive technologies.</li>
+  <li>Navbars are hidden by default when printing. Force them to be printed by adding <code class="language-plaintext highlighter-rouge">.d-print</code> to the <code class="language-plaintext highlighter-rouge">.navbar</code>. See the <a href="/docs/4.5/utilities/display/">display</a> utility class.</li>
+  <li>Ensure accessibility by using a <code class="language-plaintext highlighter-rouge">&lt;nav&gt;</code> element or, if using a more generic element such as a <code class="language-plaintext highlighter-rouge">&lt;div&gt;</code>, add a <code class="language-plaintext highlighter-rouge">role="navigation"</code> to every navbar to explicitly identify it as a landmark region for users of assistive technologies.</li>
 </ul>
 
 <div class="bd-callout bd-callout-info">
-<p>The animation effect of this component is dependent on the <code class="highlighter-rouge">prefers-reduced-motion</code> media query. See the <a href="/docs/4.5/getting-started/accessibility/#reduced-motion">reduced motion section of our accessibility documentation</a>.</p>
+<p>The animation effect of this component is dependent on the <code class="language-plaintext highlighter-rouge">prefers-reduced-motion</code> media query. See the <a href="/docs/4.5/getting-started/accessibility/#reduced-motion">reduced motion section of our accessibility documentation</a>.</p>
 </div>
 
 <p>Read on for an example and list of supported sub-components.</p>
@@ -519,15 +523,15 @@
 <p>Navbars come with built-in support for a handful of sub-components. Choose from the following as needed:</p>
 
 <ul>
-  <li><code class="highlighter-rouge">.navbar-brand</code> for your company, product, or project name.</li>
-  <li><code class="highlighter-rouge">.navbar-nav</code> for a full-height and lightweight navigation (including support for dropdowns).</li>
-  <li><code class="highlighter-rouge">.navbar-toggler</code> for use with our collapse plugin and other <a href="#responsive-behaviors">navigation toggling</a> behaviors.</li>
-  <li><code class="highlighter-rouge">.form-inline</code> for any form controls and actions.</li>
-  <li><code class="highlighter-rouge">.navbar-text</code> for adding vertically centered strings of text.</li>
-  <li><code class="highlighter-rouge">.collapse.navbar-collapse</code> for grouping and hiding navbar contents by a parent breakpoint.</li>
+  <li><code class="language-plaintext highlighter-rouge">.navbar-brand</code> for your company, product, or project name.</li>
+  <li><code class="language-plaintext highlighter-rouge">.navbar-nav</code> for a full-height and lightweight navigation (including support for dropdowns).</li>
+  <li><code class="language-plaintext highlighter-rouge">.navbar-toggler</code> for use with our collapse plugin and other <a href="#responsive-behaviors">navigation toggling</a> behaviors.</li>
+  <li><code class="language-plaintext highlighter-rouge">.form-inline</code> for any form controls and actions.</li>
+  <li><code class="language-plaintext highlighter-rouge">.navbar-text</code> for adding vertically centered strings of text.</li>
+  <li><code class="language-plaintext highlighter-rouge">.collapse.navbar-collapse</code> for grouping and hiding navbar contents by a parent breakpoint.</li>
 </ul>
 
-<p>Here’s an example of all the sub-components included in a responsive light-themed navbar that automatically collapses at the <code class="highlighter-rouge">lg</code> (large) breakpoint.</p>
+<p>Here’s an example of all the sub-components included in a responsive light-themed navbar that automatically collapses at the <code class="language-plaintext highlighter-rouge">lg</code> (large) breakpoint.</p>
 
 <div class="bd-example">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -602,11 +606,11 @@
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/nav&gt;</span></code></pre></figure>
 
-<p>This example uses <a href="/docs/4.5/utilities/colors/">color</a> (<code class="highlighter-rouge">bg-light</code>) and <a href="/docs/4.5/utilities/spacing/">spacing</a> (<code class="highlighter-rouge">my-2</code>, <code class="highlighter-rouge">my-lg-0</code>, <code class="highlighter-rouge">mr-sm-0</code>, <code class="highlighter-rouge">my-sm-0</code>) utility classes.</p>
+<p>This example uses <a href="/docs/4.5/utilities/colors/">color</a> (<code class="language-plaintext highlighter-rouge">bg-light</code>) and <a href="/docs/4.5/utilities/spacing/">spacing</a> (<code class="language-plaintext highlighter-rouge">my-2</code>, <code class="language-plaintext highlighter-rouge">my-lg-0</code>, <code class="language-plaintext highlighter-rouge">mr-sm-0</code>, <code class="language-plaintext highlighter-rouge">my-sm-0</code>) utility classes.</p>
 
 <h3 id="brand">Brand</h3>
 
-<p>The <code class="highlighter-rouge">.navbar-brand</code> can be applied to most elements, but an anchor works best as some elements might require utility classes or custom styles.</p>
+<p>The <code class="language-plaintext highlighter-rouge">.navbar-brand</code> can be applied to most elements, but an anchor works best as some elements might require utility classes or custom styles.</p>
 
 <div class="bd-example">
 <!-- As a link -->
@@ -629,7 +633,7 @@
   <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"navbar-brand mb-0 h1"</span><span class="nt">&gt;</span>Navbar<span class="nt">&lt;/span&gt;</span>
 <span class="nt">&lt;/nav&gt;</span></code></pre></figure>
 
-<p>Adding images to the <code class="highlighter-rouge">.navbar-brand</code> will likely always require custom styles or utilities to properly size. Here are some examples to demonstrate.</p>
+<p>Adding images to the <code class="language-plaintext highlighter-rouge">.navbar-brand</code> will likely always require custom styles or utilities to properly size. Here are some examples to demonstrate.</p>
 
 <div class="bd-example">
 <!-- Just an image -->
@@ -665,9 +669,9 @@
 
 <h3 id="nav">Nav</h3>
 
-<p>Navbar navigation links build on our <code class="highlighter-rouge">.nav</code> options with their own modifier class and require the use of <a href="#toggler">toggler classes</a> for proper responsive styling. <strong>Navigation in navbars will also grow to occupy as much horizontal space as possible</strong> to keep your navbar contents securely aligned.</p>
+<p>Navbar navigation links build on our <code class="language-plaintext highlighter-rouge">.nav</code> options with their own modifier class and require the use of <a href="#toggler">toggler classes</a> for proper responsive styling. <strong>Navigation in navbars will also grow to occupy as much horizontal space as possible</strong> to keep your navbar contents securely aligned.</p>
 
-<p>Active states—with <code class="highlighter-rouge">.active</code>—to indicate the current page can be applied directly to <code class="highlighter-rouge">.nav-link</code>s or their immediate parent <code class="highlighter-rouge">.nav-item</code>s.</p>
+<p>Active states—with <code class="language-plaintext highlighter-rouge">.active</code>—to indicate the current page can be applied directly to <code class="language-plaintext highlighter-rouge">.nav-link</code>s or their immediate parent <code class="language-plaintext highlighter-rouge">.nav-item</code>s.</p>
 
 <div class="bd-example">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -726,10 +730,10 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="#">Features</a>
-      <a class="nav-item nav-link" href="#">Pricing</a>
-      <a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+      <a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+      <a class="nav-link" href="#">Features</a>
+      <a class="nav-link" href="#">Pricing</a>
+      <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
     </div>
   </div>
 </nav>
@@ -741,15 +745,15 @@
   <span class="nt">&lt;/button&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"collapse navbar-collapse"</span> <span class="na">id=</span><span class="s">"navbarNavAltMarkup"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"navbar-nav"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-item nav-link active"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Home <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"sr-only"</span><span class="nt">&gt;</span>(current)<span class="nt">&lt;/span&gt;&lt;/a&gt;</span>
-      <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-item nav-link"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Features<span class="nt">&lt;/a&gt;</span>
-      <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-item nav-link"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Pricing<span class="nt">&lt;/a&gt;</span>
-      <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-item nav-link disabled"</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">tabindex=</span><span class="s">"-1"</span> <span class="na">aria-disabled=</span><span class="s">"true"</span><span class="nt">&gt;</span>Disabled<span class="nt">&lt;/a&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link active"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Home <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"sr-only"</span><span class="nt">&gt;</span>(current)<span class="nt">&lt;/span&gt;&lt;/a&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Features<span class="nt">&lt;/a&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Pricing<span class="nt">&lt;/a&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link disabled"</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">tabindex=</span><span class="s">"-1"</span> <span class="na">aria-disabled=</span><span class="s">"true"</span><span class="nt">&gt;</span>Disabled<span class="nt">&lt;/a&gt;</span>
     <span class="nt">&lt;/div&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/nav&gt;</span></code></pre></figure>
 
-<p>You may also utilize dropdowns in your navbar nav. Dropdown menus require a wrapping element for positioning, so be sure to use separate and nested elements for <code class="highlighter-rouge">.nav-item</code> and <code class="highlighter-rouge">.nav-link</code> as shown below.</p>
+<p>You may also utilize dropdowns in your navbar nav. Dropdown menus require a wrapping element for positioning, so be sure to use separate and nested elements for <code class="language-plaintext highlighter-rouge">.nav-item</code> and <code class="language-plaintext highlighter-rouge">.nav-link</code> as shown below.</p>
 
 <div class="bd-example">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -814,7 +818,7 @@
 
 <h3 id="forms">Forms</h3>
 
-<p>Place various form controls and components within a navbar with <code class="highlighter-rouge">.form-inline</code>.</p>
+<p>Place various form controls and components within a navbar with <code class="language-plaintext highlighter-rouge">.form-inline</code>.</p>
 
 <div class="bd-example">
 <nav class="navbar navbar-light bg-light">
@@ -831,7 +835,7 @@
   <span class="nt">&lt;/form&gt;</span>
 <span class="nt">&lt;/nav&gt;</span></code></pre></figure>
 
-<p>Immediate children elements in <code class="highlighter-rouge">.navbar</code> use flex layout and will default to <code class="highlighter-rouge">justify-content: space-between</code>. Use additional <a href="/docs/4.5/utilities/flex/">flex utilities</a> as needed to adjust this behavior.</p>
+<p>Immediate children elements in <code class="language-plaintext highlighter-rouge">.navbar</code> use flex layout and will default to <code class="language-plaintext highlighter-rouge">justify-content: space-between</code>. Use additional <a href="/docs/4.5/utilities/flex/">flex utilities</a> as needed to adjust this behavior.</p>
 
 <div class="bd-example">
 <nav class="navbar navbar-light bg-light">
@@ -894,7 +898,7 @@
 
 <h3 id="text">Text</h3>
 
-<p>Navbars may contain bits of text with the help of <code class="highlighter-rouge">.navbar-text</code>. This class adjusts vertical alignment and horizontal spacing for strings of text.</p>
+<p>Navbars may contain bits of text with the help of <code class="language-plaintext highlighter-rouge">.navbar-text</code>. This class adjusts vertical alignment and horizontal spacing for strings of text.</p>
 
 <div class="bd-example">
 <nav class="navbar navbar-light bg-light">
@@ -960,7 +964,7 @@
 
 <h2 id="color-schemes">Color schemes</h2>
 
-<p>Theming the navbar has never been easier thanks to the combination of theming classes and <code class="highlighter-rouge">background-color</code> utilities. Choose from <code class="highlighter-rouge">.navbar-light</code> for use with light background colors, or <code class="highlighter-rouge">.navbar-dark</code> for dark background colors. Then, customize with <code class="highlighter-rouge">.bg-*</code> utilities.</p>
+<p>Theming the navbar has never been easier thanks to the combination of theming classes and <code class="language-plaintext highlighter-rouge">background-color</code> utilities. Choose from <code class="language-plaintext highlighter-rouge">.navbar-light</code> for use with light background colors, or <code class="language-plaintext highlighter-rouge">.navbar-dark</code> for dark background colors. Then, customize with <code class="language-plaintext highlighter-rouge">.bg-*</code> utilities.</p>
 
 <div class="bd-example">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -1062,7 +1066,7 @@
 
 <h2 id="containers">Containers</h2>
 
-<p>Although it’s not required, you can wrap a navbar in a <code class="highlighter-rouge">.container</code> to center it on a page or add one within to only center the contents of a <a href="#placement">fixed or static top navbar</a>.</p>
+<p>Although it’s not required, you can wrap a navbar in a <code class="language-plaintext highlighter-rouge">.container</code> to center it on a page or add one within to only center the contents of a <a href="#placement">fixed or static top navbar</a>.</p>
 
 <div class="bd-example">
 <div class="container">
@@ -1077,7 +1081,7 @@
   <span class="nt">&lt;/nav&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></figure>
 
-<p>When the container is within your navbar, its horizontal padding is removed at breakpoints lower than your specified <code class="highlighter-rouge">.navbar-expand{-sm|-md|-lg|-xl}</code> class. This ensures we’re not doubling up on padding unnecessarily on lower viewports when your navbar is collapsed.</p>
+<p>When the container is within your navbar, its horizontal padding is removed at breakpoints lower than your specified <code class="language-plaintext highlighter-rouge">.navbar-expand{-sm|-md|-lg|-xl}</code> class. This ensures we’re not doubling up on padding unnecessarily on lower viewports when your navbar is collapsed.</p>
 
 <div class="bd-example">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -1094,9 +1098,9 @@
 
 <h2 id="placement">Placement</h2>
 
-<p>Use our <a href="/docs/4.5/utilities/position/">position utilities</a> to place navbars in non-static positions. Choose from fixed to the top, fixed to the bottom, or stickied to the top (scrolls with the page until it reaches the top, then stays there). Fixed navbars use <code class="highlighter-rouge">position: fixed</code>, meaning they’re pulled from the normal flow of the DOM and may require custom CSS (e.g., <code class="highlighter-rouge">padding-top</code> on the <code class="highlighter-rouge">&lt;body&gt;</code>) to prevent overlap with other elements.</p>
+<p>Use our <a href="/docs/4.5/utilities/position/">position utilities</a> to place navbars in non-static positions. Choose from fixed to the top, fixed to the bottom, or stickied to the top (scrolls with the page until it reaches the top, then stays there). Fixed navbars use <code class="language-plaintext highlighter-rouge">position: fixed</code>, meaning they’re pulled from the normal flow of the DOM and may require custom CSS (e.g., <code class="language-plaintext highlighter-rouge">padding-top</code> on the <code class="language-plaintext highlighter-rouge">&lt;body&gt;</code>) to prevent overlap with other elements.</p>
 
-<p>Also note that <strong><code class="highlighter-rouge">.sticky-top</code> uses <code class="highlighter-rouge">position: sticky</code>, which <a href="https://caniuse.com/#feat=css-sticky">isn’t fully supported in every browser</a></strong>.</p>
+<p>Also note that <strong><code class="language-plaintext highlighter-rouge">.sticky-top</code> uses <code class="language-plaintext highlighter-rouge">position: sticky</code>, which <a href="https://caniuse.com/#feat=css-sticky">isn’t fully supported in every browser</a></strong>.</p>
 
 <div class="bd-example">
 <nav class="navbar navbar-light bg-light">
@@ -1136,15 +1140,15 @@
 
 <h2 id="responsive-behaviors">Responsive behaviors</h2>
 
-<p>Navbars can utilize <code class="highlighter-rouge">.navbar-toggler</code>, <code class="highlighter-rouge">.navbar-collapse</code>, and <code class="highlighter-rouge">.navbar-expand{-sm|-md|-lg|-xl}</code> classes to change when their content collapses behind a button. In combination with other utilities, you can easily choose when to show or hide particular elements.</p>
+<p>Navbars can utilize <code class="language-plaintext highlighter-rouge">.navbar-toggler</code>, <code class="language-plaintext highlighter-rouge">.navbar-collapse</code>, and <code class="language-plaintext highlighter-rouge">.navbar-expand{-sm|-md|-lg|-xl}</code> classes to change when their content collapses behind a button. In combination with other utilities, you can easily choose when to show or hide particular elements.</p>
 
-<p>For navbars that never collapse, add the <code class="highlighter-rouge">.navbar-expand</code> class on the navbar. For navbars that always collapse, don’t add any <code class="highlighter-rouge">.navbar-expand</code> class.</p>
+<p>For navbars that never collapse, add the <code class="language-plaintext highlighter-rouge">.navbar-expand</code> class on the navbar. For navbars that always collapse, don’t add any <code class="language-plaintext highlighter-rouge">.navbar-expand</code> class.</p>
 
 <h3 id="toggler">Toggler</h3>
 
-<p>Navbar togglers are left-aligned by default, but should they follow a sibling element like a <code class="highlighter-rouge">.navbar-brand</code>, they’ll automatically be aligned to the far right. Reversing your markup will reverse the placement of the toggler. Below are examples of different toggle styles.</p>
+<p>Navbar togglers are left-aligned by default, but should they follow a sibling element like a <code class="language-plaintext highlighter-rouge">.navbar-brand</code>, they’ll automatically be aligned to the far right. Reversing your markup will reverse the placement of the toggler. Below are examples of different toggle styles.</p>
 
-<p>With no <code class="highlighter-rouge">.navbar-brand</code> shown in lowest breakpoint:</p>
+<p>With no <code class="language-plaintext highlighter-rouge">.navbar-brand</code> shown in lowest breakpoint:</p>
 
 <div class="bd-example">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -1303,7 +1307,7 @@
 
 <h3 id="external-content">External content</h3>
 
-<p>Sometimes you want to use the collapse plugin to trigger hidden content elsewhere on the page. Because our plugin works on the <code class="highlighter-rouge">id</code> and <code class="highlighter-rouge">data-target</code> matching, that’s easily done!</p>
+<p>Sometimes you want to use the collapse plugin to trigger hidden content elsewhere on the page. Because our plugin works on the <code class="language-plaintext highlighter-rouge">id</code> and <code class="language-plaintext highlighter-rouge">data-target</code> matching, that’s easily done!</p>
 
 <div class="bd-example">
 <div class="fixed-top">
@@ -1340,6 +1344,6 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.5/assets/js/docs.min.js"></script>
+<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-FxkQtQ8fW6C3xA7BoW8ocAb2N7U9dCA7ZJXMJlz/37PL6Q6PUGQ5ZeJcaXdYKcdJ" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.5/assets/js/docs.min.js"></script>
   </body>
 </html>

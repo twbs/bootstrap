@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="Indicate the loading state of a component or page with Bootstrap spinners, built entirely with HTML, CSS, and no JavaScript.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Jekyll v4.0.1">
+<meta name="generator" content="Jekyll v4.1.1">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="4.5">
@@ -15,7 +15,7 @@
 <link rel="canonical" href="https://getbootstrap.com/docs/4.5/components/spinners/">
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
 <!-- Documentation extras -->
 
 <link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
@@ -62,9 +62,10 @@
 
   </head>
   <body>
-    <a class="skippy sr-only sr-only-focusable" href="#content">
-  <span class="skippy-text">Skip to main content</span>
-</a>
+    <div class="skippy overflow-hidden">
+  <div class="container-xl">
+    <a class="sr-only sr-only-focusable d-inline-flex p-2 m-1" href="#content">Skip to main content</a><a class="sr-only sr-only-focusable d-none d-md-inline-flex p-2 m-1" href="#bd-docs-nav">Skip to docs navigation</a></div>
+</div>
 
 
     <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
@@ -494,7 +495,10 @@
         
 
         <main class="col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
-          <h1 class="bd-title" id="content">Spinners</h1>
+          <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
+            <a class="btn btn-sm btn-bd-light my-2 my-md-0" href="https://github.com/twbs/bootstrap/tree/v4-dev/site/docs/4.5/components/spinners.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">View on GitHub</a>
+            <h1 class="bd-title" id="content">Spinners</h1>
+          </div>
           <p class="bd-lead">Indicate the loading state of a component or page with Bootstrap spinners, built entirely with HTML, CSS, and no JavaScript.</p>
           <script async src="https://cdn.carbonads.com/carbon.js?serve=CKYIKKJL&placement=getbootstrapcom" id="_carbonads_js"></script>
 
@@ -502,7 +506,7 @@
 
 <p>Bootstrap “spinners” can be used to show the loading state in your projects. They’re built only with HTML and CSS, meaning you don’t need any JavaScript to create them. You will, however, need some custom JavaScript to toggle their visibility. Their appearance, alignment, and sizing can be easily customized with our amazing utility classes.</p>
 
-<p>For accessibility purposes, each loader here includes <code class="highlighter-rouge">role="status"</code> and a nested <code class="highlighter-rouge">&lt;span class="sr-only"&gt;Loading...&lt;/span&gt;</code>.</p>
+<p>For accessibility purposes, each loader here includes <code class="language-plaintext highlighter-rouge">role="status"</code> and a nested <code class="language-plaintext highlighter-rouge">&lt;span class="sr-only"&gt;Loading...&lt;/span&gt;</code>.</p>
 
 <h2 id="border-spinner">Border spinner</h2>
 
@@ -519,7 +523,7 @@
 
 <h3 id="colors">Colors</h3>
 
-<p>The border spinner uses <code class="highlighter-rouge">currentColor</code> for its <code class="highlighter-rouge">border-color</code>, meaning you can customize the color with <a href="/docs/4.5/utilities/colors/">text color utilities</a>. You can use any of our text color utilities on the standard spinner.</p>
+<p>The border spinner uses <code class="language-plaintext highlighter-rouge">currentColor</code> for its <code class="language-plaintext highlighter-rouge">border-color</code>, meaning you can customize the color with <a href="/docs/4.5/utilities/colors/">text color utilities</a>. You can use any of our text color utilities on the standard spinner.</p>
 
 <div class="bd-example">
 
@@ -574,7 +578,7 @@
 <span class="nt">&lt;/div&gt;</span></code></pre></figure>
 
 <div class="bd-callout bd-callout-info">
-<p><strong>Why not use <code class="highlighter-rouge">border-color</code> utilities?</strong> Each border spinner specifies a <code class="highlighter-rouge">transparent</code> border for at least one side, so <code class="highlighter-rouge">.border-{color}</code> utilities would override that.</p>
+<p><strong>Why not use <code class="language-plaintext highlighter-rouge">border-color</code> utilities?</strong> Each border spinner specifies a <code class="language-plaintext highlighter-rouge">transparent</code> border for at least one side, so <code class="language-plaintext highlighter-rouge">.border-{color}</code> utilities would override that.</p>
 </div>
 
 <h2 id="growing-spinner">Growing spinner</h2>
@@ -590,7 +594,7 @@
   <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"sr-only"</span><span class="nt">&gt;</span>Loading...<span class="nt">&lt;/span&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></figure>
 
-<p>Once again, this spinner is built with <code class="highlighter-rouge">currentColor</code>, so you can easily change its appearance with <a href="/docs/4.5/utilities/colors/">text color utilities</a>. Here it is in blue, along with the supported variants.</p>
+<p>Once again, this spinner is built with <code class="language-plaintext highlighter-rouge">currentColor</code>, so you can easily change its appearance with <a href="/docs/4.5/utilities/colors/">text color utilities</a>. Here it is in blue, along with the supported variants.</p>
 
 <div class="bd-example">
 
@@ -646,11 +650,11 @@
 
 <h2 id="alignment">Alignment</h2>
 
-<p>Spinners in Bootstrap are built with <code class="highlighter-rouge">rem</code>s, <code class="highlighter-rouge">currentColor</code>, and <code class="highlighter-rouge">display: inline-flex</code>. This means they can easily be resized, recolored, and quickly aligned.</p>
+<p>Spinners in Bootstrap are built with <code class="language-plaintext highlighter-rouge">rem</code>s, <code class="language-plaintext highlighter-rouge">currentColor</code>, and <code class="language-plaintext highlighter-rouge">display: inline-flex</code>. This means they can easily be resized, recolored, and quickly aligned.</p>
 
 <h3 id="margin">Margin</h3>
 
-<p>Use <a href="/docs/4.5/utilities/spacing/">margin utilities</a> like <code class="highlighter-rouge">.m-5</code> for easy spacing.</p>
+<p>Use <a href="/docs/4.5/utilities/spacing/">margin utilities</a> like <code class="language-plaintext highlighter-rouge">.m-5</code> for easy spacing.</p>
 
 <div class="bd-example">
 <div class="spinner-border m-5" role="status">
@@ -723,7 +727,7 @@
 
 <h2 id="size">Size</h2>
 
-<p>Add <code class="highlighter-rouge">.spinner-border-sm</code> and <code class="highlighter-rouge">.spinner-grow-sm</code> to make a smaller spinner that can quickly be used within other components.</p>
+<p>Add <code class="language-plaintext highlighter-rouge">.spinner-border-sm</code> and <code class="language-plaintext highlighter-rouge">.spinner-grow-sm</code> to make a smaller spinner that can quickly be used within other components.</p>
 
 <div class="bd-example">
 <div class="spinner-border spinner-border-sm" role="status">
@@ -805,6 +809,6 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.5/assets/js/docs.min.js"></script>
+<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-FxkQtQ8fW6C3xA7BoW8ocAb2N7U9dCA7ZJXMJlz/37PL6Q6PUGQ5ZeJcaXdYKcdJ" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.5/assets/js/docs.min.js"></script>
   </body>
 </html>

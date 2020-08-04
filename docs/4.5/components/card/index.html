@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="Bootstrap’s cards provide a flexible and extensible content container with multiple variants and options.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Jekyll v4.0.1">
+<meta name="generator" content="Jekyll v4.1.1">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="4.5">
@@ -15,7 +15,7 @@
 <link rel="canonical" href="https://getbootstrap.com/docs/4.5/components/card/">
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
 <!-- Documentation extras -->
 
 <link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
@@ -62,9 +62,10 @@
 
   </head>
   <body>
-    <a class="skippy sr-only sr-only-focusable" href="#content">
-  <span class="skippy-text">Skip to main content</span>
-</a>
+    <div class="skippy overflow-hidden">
+  <div class="container-xl">
+    <a class="sr-only sr-only-focusable d-inline-flex p-2 m-1" href="#content">Skip to main content</a><a class="sr-only sr-only-focusable d-none d-md-inline-flex p-2 m-1" href="#bd-docs-nav">Skip to docs navigation</a></div>
+</div>
 
 
     <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
@@ -516,7 +517,10 @@
         
 
         <main class="col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
-          <h1 class="bd-title" id="content">Cards</h1>
+          <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
+            <a class="btn btn-sm btn-bd-light my-2 my-md-0" href="https://github.com/twbs/bootstrap/tree/v4-dev/site/docs/4.5/components/card.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">View on GitHub</a>
+            <h1 class="bd-title" id="content">Cards</h1>
+          </div>
           <p class="bd-lead">Bootstrap’s cards provide a flexible and extensible content container with multiple variants and options.</p>
           <script async src="https://cdn.carbonads.com/carbon.js?serve=CKYIKKJL&placement=getbootstrapcom" id="_carbonads_js"></script>
 
@@ -526,7 +530,7 @@
 
 <h2 id="example">Example</h2>
 
-<p>Cards are built with as little markup and styles as possible, but still manage to deliver a ton of control and customization. Built with flexbox, they offer easy alignment and mix well with other Bootstrap components. They have no <code class="highlighter-rouge">margin</code> by default, so use <a href="/docs/4.5/utilities/spacing/">spacing utilities</a> as needed.</p>
+<p>Cards are built with as little markup and styles as possible, but still manage to deliver a ton of control and customization. Built with flexbox, they offer easy alignment and mix well with other Bootstrap components. They have no <code class="language-plaintext highlighter-rouge">margin</code> by default, so use <a href="/docs/4.5/utilities/spacing/">spacing utilities</a> as needed.</p>
 
 <p>Below is an example of a basic card with mixed content and a fixed width. Cards have no fixed width to start, so they’ll naturally fill the full width of its parent element. This is easily customized with our various <a href="#sizing">sizing options</a>.</p>
 
@@ -555,7 +559,7 @@
 
 <h3 id="body">Body</h3>
 
-<p>The building block of a card is the <code class="highlighter-rouge">.card-body</code>. Use it whenever you need a padded section within a card.</p>
+<p>The building block of a card is the <code class="language-plaintext highlighter-rouge">.card-body</code>. Use it whenever you need a padded section within a card.</p>
 
 <div class="bd-example">
 <div class="card">
@@ -572,9 +576,9 @@
 
 <h3 id="titles-text-and-links">Titles, text, and links</h3>
 
-<p>Card titles are used by adding <code class="highlighter-rouge">.card-title</code> to a <code class="highlighter-rouge">&lt;h*&gt;</code> tag. In the same way, links are added and placed next to each other by adding <code class="highlighter-rouge">.card-link</code> to an <code class="highlighter-rouge">&lt;a&gt;</code> tag.</p>
+<p>Card titles are used by adding <code class="language-plaintext highlighter-rouge">.card-title</code> to a <code class="language-plaintext highlighter-rouge">&lt;h*&gt;</code> tag. In the same way, links are added and placed next to each other by adding <code class="language-plaintext highlighter-rouge">.card-link</code> to an <code class="language-plaintext highlighter-rouge">&lt;a&gt;</code> tag.</p>
 
-<p>Subtitles are used by adding a <code class="highlighter-rouge">.card-subtitle</code> to a <code class="highlighter-rouge">&lt;h*&gt;</code> tag. If the <code class="highlighter-rouge">.card-title</code> and the <code class="highlighter-rouge">.card-subtitle</code> items are placed in a <code class="highlighter-rouge">.card-body</code> item, the card title and subtitle are aligned nicely.</p>
+<p>Subtitles are used by adding a <code class="language-plaintext highlighter-rouge">.card-subtitle</code> to a <code class="language-plaintext highlighter-rouge">&lt;h*&gt;</code> tag. If the <code class="language-plaintext highlighter-rouge">.card-title</code> and the <code class="language-plaintext highlighter-rouge">.card-subtitle</code> items are placed in a <code class="language-plaintext highlighter-rouge">.card-body</code> item, the card title and subtitle are aligned nicely.</p>
 
 <div class="bd-example">
 <div class="card" style="width: 18rem;">
@@ -599,7 +603,7 @@
 
 <h3 id="images">Images</h3>
 
-<p><code class="highlighter-rouge">.card-img-top</code> places an image to the top of the card. With <code class="highlighter-rouge">.card-text</code>, text can be added to the card. Text within <code class="highlighter-rouge">.card-text</code> can also be styled with the standard HTML tags.</p>
+<p><code class="language-plaintext highlighter-rouge">.card-img-top</code> places an image to the top of the card. With <code class="language-plaintext highlighter-rouge">.card-text</code>, text can be added to the card. Text within <code class="language-plaintext highlighter-rouge">.card-text</code> can also be styled with the standard HTML tags.</p>
 
 <div class="bd-example">
 <div class="card" style="width: 18rem;">
@@ -658,6 +662,29 @@
     <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"list-group-item"</span><span class="nt">&gt;</span>Dapibus ac facilisis in<span class="nt">&lt;/li&gt;</span>
     <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"list-group-item"</span><span class="nt">&gt;</span>Vestibulum at eros<span class="nt">&lt;/li&gt;</span>
   <span class="nt">&lt;/ul&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></figure>
+
+<div class="bd-example">
+<div class="card" style="width: 18rem;">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Cras justo odio</li>
+    <li class="list-group-item">Dapibus ac facilisis in</li>
+    <li class="list-group-item">Vestibulum at eros</li>
+  </ul>
+  <div class="card-footer">
+    Card footer
+  </div>
+</div>
+</div>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card"</span> <span class="na">style=</span><span class="s">"width: 18rem;"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"list-group list-group-flush"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"list-group-item"</span><span class="nt">&gt;</span>Cras justo odio<span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"list-group-item"</span><span class="nt">&gt;</span>Dapibus ac facilisis in<span class="nt">&lt;/li&gt;</span>
+    <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"list-group-item"</span><span class="nt">&gt;</span>Vestibulum at eros<span class="nt">&lt;/li&gt;</span>
+  <span class="nt">&lt;/ul&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-footer"</span><span class="nt">&gt;</span>
+    Card footer
+  <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></figure>
 
 <h3 id="kitchen-sink">Kitchen sink</h3>
@@ -726,7 +753,7 @@
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></figure>
 
-<p>Card headers can be styled by adding <code class="highlighter-rouge">.card-header</code> to <code class="highlighter-rouge">&lt;h*&gt;</code> elements.</p>
+<p>Card headers can be styled by adding <code class="language-plaintext highlighter-rouge">.card-header</code> to <code class="language-plaintext highlighter-rouge">&lt;h*&gt;</code> elements.</p>
 
 <div class="bd-example">
 <div class="card">
@@ -803,7 +830,7 @@
 
 <h2 id="sizing">Sizing</h2>
 
-<p>Cards assume no specific <code class="highlighter-rouge">width</code> to start, so they’ll be 100% wide unless otherwise stated. You can change this as needed with custom CSS, grid classes, grid Sass mixins, or utilities.</p>
+<p>Cards assume no specific <code class="language-plaintext highlighter-rouge">width</code> to start, so they’ll be 100% wide unless otherwise stated. You can change this as needed with custom CSS, grid classes, grid Sass mixins, or utilities.</p>
 
 <h3 id="using-grid-markup">Using grid markup</h3>
 
@@ -1062,23 +1089,24 @@
 <p>Similar to headers and footers, cards can include top and bottom “image caps”—images at the top or bottom of a card.</p>
 
 <div class="bd-example">
-<div class="card mb-3">
-  <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96" /><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></svg>
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+  <div class="card mb-3">
+    <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96" /><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></svg>
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+    <svg class="bd-placeholder-img card-img-bottom" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96" /><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></svg>
   </div>
 </div>
-<div class="card">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-  </div>
-  <svg class="bd-placeholder-img card-img-bottom" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96" /><text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text></svg>
-</div>
-</div>
+
 <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card mb-3"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"..."</span> <span class="na">class=</span><span class="s">"card-img-top"</span> <span class="na">alt=</span><span class="s">"..."</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"card-body"</span><span class="nt">&gt;</span>
@@ -1093,7 +1121,7 @@
     <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;</span>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.<span class="nt">&lt;/p&gt;</span>
     <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"card-text"</span><span class="nt">&gt;&lt;small</span> <span class="na">class=</span><span class="s">"text-muted"</span><span class="nt">&gt;</span>Last updated 3 mins ago<span class="nt">&lt;/small&gt;&lt;/p&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
-  <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"..."</span> <span class="na">class=</span><span class="s">"card-img-top"</span> <span class="na">alt=</span><span class="s">"..."</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"..."</span> <span class="na">class=</span><span class="s">"card-img-bottom"</span> <span class="na">alt=</span><span class="s">"..."</span><span class="nt">&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></figure>
 
 <h3 id="image-overlays">Image overlays</h3>
@@ -1125,7 +1153,7 @@
 
 <h2 id="horizontal">Horizontal</h2>
 
-<p>Using a combination of grid and utility classes, cards can be made horizontal in a mobile-friendly and responsive way. In the example below, we remove the grid gutters with <code class="highlighter-rouge">.no-gutters</code> and use <code class="highlighter-rouge">.col-md-*</code> classes to make the card horizontal at the <code class="highlighter-rouge">md</code> breakpoint. Further adjustments may be needed depending on your card content.</p>
+<p>Using a combination of grid and utility classes, cards can be made horizontal in a mobile-friendly and responsive way. In the example below, we remove the grid gutters with <code class="language-plaintext highlighter-rouge">.no-gutters</code> and use <code class="language-plaintext highlighter-rouge">.col-md-*</code> classes to make the card horizontal at the <code class="language-plaintext highlighter-rouge">md</code> breakpoint. Further adjustments may be needed depending on your card content.</p>
 
 <div class="bd-example">
 <div class="card mb-3" style="max-width: 540px;">
@@ -1285,12 +1313,12 @@
 <div class="bd-callout bd-callout-warning">
 <h5 id="conveying-meaning-to-assistive-technologies">Conveying meaning to assistive technologies</h5>
 
-<p>Using color to add meaning only provides a visual indication, which will not be conveyed to users of assistive technologies – such as screen readers. Ensure that information denoted by the color is either obvious from the content itself (e.g. the visible text), or is included through alternative means, such as additional text hidden with the <code class="highlighter-rouge">.sr-only</code> class.</p>
+<p>Using color to add meaning only provides a visual indication, which will not be conveyed to users of assistive technologies – such as screen readers. Ensure that information denoted by the color is either obvious from the content itself (e.g. the visible text), or is included through alternative means, such as additional text hidden with the <code class="language-plaintext highlighter-rouge">.sr-only</code> class.</p>
 </div>
 
 <h3 id="border">Border</h3>
 
-<p>Use <a href="/docs/4.5/utilities/borders/">border utilities</a> to change just the <code class="highlighter-rouge">border-color</code> of a card. Note that you can put <code class="highlighter-rouge">.text-{color}</code> classes on the parent <code class="highlighter-rouge">.card</code> or a subset of the card’s contents as shown below.</p>
+<p>Use <a href="/docs/4.5/utilities/borders/">border utilities</a> to change just the <code class="language-plaintext highlighter-rouge">border-color</code> of a card. Note that you can put <code class="language-plaintext highlighter-rouge">.text-{color}</code> classes on the parent <code class="language-plaintext highlighter-rouge">.card</code> or a subset of the card’s contents as shown below.</p>
 
 <div class="bd-example">
 
@@ -1410,7 +1438,7 @@
 
 <h3 id="mixins-utilities">Mixins utilities</h3>
 
-<p>You can also change the borders on the card header and footer as needed, and even remove their <code class="highlighter-rouge">background-color</code> with <code class="highlighter-rouge">.bg-transparent</code>.</p>
+<p>You can also change the borders on the card header and footer as needed, and even remove their <code class="language-plaintext highlighter-rouge">background-color</code> with <code class="language-plaintext highlighter-rouge">.bg-transparent</code>.</p>
 
 <div class="bd-example">
 <div class="card border-success mb-3" style="max-width: 18rem;">
@@ -1437,7 +1465,7 @@
 
 <h3 id="card-groups">Card groups</h3>
 
-<p>Use card groups to render cards as a single, attached element with equal width and height columns. Card groups start off stacked and use <code class="highlighter-rouge">display: flex;</code> to become attached with uniform dimensions starting at the <code class="highlighter-rouge">sm</code> breakpoint.</p>
+<p>Use card groups to render cards as a single, attached element with equal width and height columns. Card groups start off stacked and use <code class="language-plaintext highlighter-rouge">display: flex;</code> to become attached with uniform dimensions starting at the <code class="language-plaintext highlighter-rouge">sm</code> breakpoint.</p>
 
 <div class="bd-example">
 <div class="card-group">
@@ -1693,7 +1721,7 @@
 
 <h3 id="grid-cards">Grid cards</h3>
 
-<p>Use the Bootstrap grid system and its <a href="/docs/4.5/layout/grid/#row-columns"><code class="highlighter-rouge">.row-cols</code> classes</a> to control how many grid columns (wrapped around your cards) you show per row. For example, here’s <code class="highlighter-rouge">.row-cols-1</code> laying out the cards on one column, and <code class="highlighter-rouge">.row-cols-md-2</code> splitting four cards to equal width across multiple rows, from the medium breakpoint up.</p>
+<p>Use the Bootstrap grid system and its <a href="/docs/4.5/layout/grid/#row-columns"><code class="language-plaintext highlighter-rouge">.row-cols</code> classes</a> to control how many grid columns (wrapped around your cards) you show per row. For example, here’s <code class="language-plaintext highlighter-rouge">.row-cols-1</code> laying out the cards on one column, and <code class="language-plaintext highlighter-rouge">.row-cols-md-2</code> splitting four cards to equal width across multiple rows, from the medium breakpoint up.</p>
 
 <div class="bd-example">
 <div class="row row-cols-1 row-cols-md-2">
@@ -1774,7 +1802,7 @@
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></figure>
 
-<p>Change it to <code class="highlighter-rouge">.row-cols-3</code> and you’ll see the fourth card wrap.</p>
+<p>Change it to <code class="language-plaintext highlighter-rouge">.row-cols-3</code> and you’ll see the fourth card wrap.</p>
 
 <div class="bd-example">
 <div class="row row-cols-1 row-cols-md-3">
@@ -1855,7 +1883,7 @@
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></figure>
 
-<p>When you need equal height, add <code class="highlighter-rouge">.h-100</code> to the cards. If you want equal heights by default, you can set <code class="highlighter-rouge">$card-height: 100%</code> in Sass.</p>
+<p>When you need equal height, add <code class="language-plaintext highlighter-rouge">.h-100</code> to the cards. If you want equal heights by default, you can set <code class="language-plaintext highlighter-rouge">$card-height: 100%</code> in Sass.</p>
 
 <div class="bd-example">
 <div class="row row-cols-1 row-cols-md-3">
@@ -1938,9 +1966,9 @@
 
 <h3 id="card-columns">Card columns</h3>
 
-<p>Cards can be organized into <a href="https://masonry.desandro.com/">Masonry</a>-like columns with just CSS by wrapping them in <code class="highlighter-rouge">.card-columns</code>. Cards are built with CSS <code class="highlighter-rouge">column</code> properties instead of flexbox for easier alignment. Cards are ordered from top to bottom and left to right.</p>
+<p>Cards can be organized into <a href="https://masonry.desandro.com/">Masonry</a>-like columns with just CSS by wrapping them in <code class="language-plaintext highlighter-rouge">.card-columns</code>. Cards are built with CSS <code class="language-plaintext highlighter-rouge">column</code> properties instead of flexbox for easier alignment. Cards are ordered from top to bottom and left to right.</p>
 
-<p><strong>Heads up!</strong> Your mileage with card columns may vary. To prevent cards breaking across columns, we must set them to <code class="highlighter-rouge">display: inline-block</code> as <code class="highlighter-rouge">column-break-inside: avoid</code> isn’t a bulletproof solution yet.</p>
+<p><strong>Heads up!</strong> Your mileage with card columns may vary. To prevent cards breaking across columns, we must set them to <code class="language-plaintext highlighter-rouge">display: inline-block</code> as <code class="language-plaintext highlighter-rouge">column-break-inside: avoid</code> isn’t a bulletproof solution yet.</p>
 
 <div class="bd-example">
 <div class="card-columns">
@@ -2073,7 +2101,7 @@
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></figure>
 
-<p>Card columns can also be extended and customized with some additional code. Shown below is an extension of the <code class="highlighter-rouge">.card-columns</code> class using the same CSS we use—CSS columns— to generate a set of responsive tiers for changing the number of columns.</p>
+<p>Card columns can also be extended and customized with some additional code. Shown below is an extension of the <code class="language-plaintext highlighter-rouge">.card-columns</code> class using the same CSS we use—CSS columns— to generate a set of responsive tiers for changing the number of columns.</p>
 
 <figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="nc">.card-columns</span> <span class="p">{</span>
   <span class="k">@include</span> <span class="nd">media-breakpoint-only</span><span class="p">(</span><span class="n">lg</span><span class="p">)</span> <span class="p">{</span>
@@ -2090,6 +2118,6 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.5/assets/js/docs.min.js"></script>
+<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-FxkQtQ8fW6C3xA7BoW8ocAb2N7U9dCA7ZJXMJlz/37PL6Q6PUGQ5ZeJcaXdYKcdJ" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.5/assets/js/docs.min.js"></script>
   </body>
 </html>

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Jekyll v4.0.1">
+<meta name="generator" content="Jekyll v4.1.1">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="4.5">
@@ -15,7 +15,7 @@
 <link rel="canonical" href="https://getbootstrap.com/docs/4.5/components/alerts/">
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
 <!-- Documentation extras -->
 
 <link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
@@ -62,9 +62,10 @@
 
   </head>
   <body>
-    <a class="skippy sr-only sr-only-focusable" href="#content">
-  <span class="skippy-text">Skip to main content</span>
-</a>
+    <div class="skippy overflow-hidden">
+  <div class="container-xl">
+    <a class="sr-only sr-only-focusable d-inline-flex p-2 m-1" href="#content">Skip to main content</a><a class="sr-only sr-only-focusable d-none d-md-inline-flex p-2 m-1" href="#bd-docs-nav">Skip to docs navigation</a></div>
+</div>
 
 
     <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
@@ -487,13 +488,16 @@
         
 
         <main class="col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
-          <h1 class="bd-title" id="content">Alerts</h1>
+          <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
+            <a class="btn btn-sm btn-bd-light my-2 my-md-0" href="https://github.com/twbs/bootstrap/tree/v4-dev/site/docs/4.5/components/alerts.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">View on GitHub</a>
+            <h1 class="bd-title" id="content">Alerts</h1>
+          </div>
           <p class="bd-lead">Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages.</p>
           <script async src="https://cdn.carbonads.com/carbon.js?serve=CKYIKKJL&placement=getbootstrapcom" id="_carbonads_js"></script>
 
           <h2 id="examples">Examples</h2>
 
-<p>Alerts are available for any length of text, as well as an optional dismiss button. For proper styling, use one of the eight <strong>required</strong> contextual classes (e.g., <code class="highlighter-rouge">.alert-success</code>). For inline dismissal, use the <a href="#dismissing">alerts jQuery plugin</a>.</p>
+<p>Alerts are available for any length of text, as well as an optional dismiss button. For proper styling, use one of the eight <strong>required</strong> contextual classes (e.g., <code class="language-plaintext highlighter-rouge">.alert-success</code>). For inline dismissal, use the <a href="#dismissing">alerts jQuery plugin</a>.</p>
 
 <div class="bd-example">
 
@@ -550,12 +554,12 @@
 <div class="bd-callout bd-callout-warning">
 <h5 id="conveying-meaning-to-assistive-technologies">Conveying meaning to assistive technologies</h5>
 
-<p>Using color to add meaning only provides a visual indication, which will not be conveyed to users of assistive technologies – such as screen readers. Ensure that information denoted by the color is either obvious from the content itself (e.g. the visible text), or is included through alternative means, such as additional text hidden with the <code class="highlighter-rouge">.sr-only</code> class.</p>
+<p>Using color to add meaning only provides a visual indication, which will not be conveyed to users of assistive technologies – such as screen readers. Ensure that information denoted by the color is either obvious from the content itself (e.g. the visible text), or is included through alternative means, such as additional text hidden with the <code class="language-plaintext highlighter-rouge">.sr-only</code> class.</p>
 </div>
 
 <h3 id="link-color">Link color</h3>
 
-<p>Use the <code class="highlighter-rouge">.alert-link</code> utility class to quickly provide matching colored links within any alert.</p>
+<p>Use the <code class="language-plaintext highlighter-rouge">.alert-link</code> utility class to quickly provide matching colored links within any alert.</p>
 
 <div class="bd-example">
 
@@ -634,10 +638,10 @@
 
 <ul>
   <li>Be sure you’ve loaded the alert plugin, or the compiled Bootstrap JavaScript.</li>
-  <li>If you’re building our JavaScript from source, it <a href="/docs/4.5/getting-started/javascript/#util">requires <code class="highlighter-rouge">util.js</code></a>. The compiled version includes this.</li>
-  <li>Add a dismiss button and the <code class="highlighter-rouge">.alert-dismissible</code> class, which adds extra padding to the right of the alert and positions the <code class="highlighter-rouge">.close</code> button.</li>
-  <li>On the dismiss button, add the <code class="highlighter-rouge">data-dismiss="alert"</code> attribute, which triggers the JavaScript functionality. Be sure to use the <code class="highlighter-rouge">&lt;button&gt;</code> element with it for proper behavior across all devices.</li>
-  <li>To animate alerts when dismissing them, be sure to add the <code class="highlighter-rouge">.fade</code> and <code class="highlighter-rouge">.show</code> classes.</li>
+  <li>If you’re building our JavaScript from source, it <a href="/docs/4.5/getting-started/javascript/#util">requires <code class="language-plaintext highlighter-rouge">util.js</code></a>. The compiled version includes this.</li>
+  <li>Add a dismiss button and the <code class="language-plaintext highlighter-rouge">.alert-dismissible</code> class, which adds extra padding to the right of the alert and positions the <code class="language-plaintext highlighter-rouge">.close</code> button.</li>
+  <li>On the dismiss button, add the <code class="language-plaintext highlighter-rouge">data-dismiss="alert"</code> attribute, which triggers the JavaScript functionality. Be sure to use the <code class="language-plaintext highlighter-rouge">&lt;button&gt;</code> element with it for proper behavior across all devices.</li>
+  <li>To animate alerts when dismissing them, be sure to add the <code class="language-plaintext highlighter-rouge">.fade</code> and <code class="language-plaintext highlighter-rouge">.show</code> classes.</li>
 </ul>
 
 <p>You can see this in action with a live demo:</p>
@@ -665,7 +669,7 @@
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">.alert</span><span class="dl">'</span><span class="p">).</span><span class="nx">alert</span><span class="p">()</span></code></pre></figure>
 
-<p>Or with <code class="highlighter-rouge">data</code> attributes on a button <strong>within the alert</strong>, as demonstrated above:</p>
+<p>Or with <code class="language-plaintext highlighter-rouge">data</code> attributes on a button <strong>within the alert</strong>, as demonstrated above:</p>
 
 <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"close"</span> <span class="na">data-dismiss=</span><span class="s">"alert"</span> <span class="na">aria-label=</span><span class="s">"Close"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;span</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span><span class="ni">&amp;times;</span><span class="nt">&lt;/span&gt;</span>
@@ -684,15 +688,15 @@
   </thead>
   <tbody>
     <tr>
-      <td><code class="highlighter-rouge">$().alert()</code></td>
-      <td>Makes an alert listen for click events on descendant elements which have the <code class="highlighter-rouge">data-dismiss="alert"</code> attribute. (Not necessary when using the data-api’s auto-initialization.)</td>
+      <td><code class="language-plaintext highlighter-rouge">$().alert()</code></td>
+      <td>Makes an alert listen for click events on descendant elements which have the <code class="language-plaintext highlighter-rouge">data-dismiss="alert"</code> attribute. (Not necessary when using the data-api’s auto-initialization.)</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">$().alert('close')</code></td>
-      <td>Closes an alert by removing it from the DOM. If the <code class="highlighter-rouge">.fade</code> and <code class="highlighter-rouge">.show</code> classes are present on the element, the alert will fade out before it is removed.</td>
+      <td><code class="language-plaintext highlighter-rouge">$().alert('close')</code></td>
+      <td>Closes an alert by removing it from the DOM. If the <code class="language-plaintext highlighter-rouge">.fade</code> and <code class="language-plaintext highlighter-rouge">.show</code> classes are present on the element, the alert will fade out before it is removed.</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">$().alert('dispose')</code></td>
+      <td><code class="language-plaintext highlighter-rouge">$().alert('dispose')</code></td>
       <td>Destroys an element’s alert.</td>
     </tr>
   </tbody>
@@ -713,11 +717,11 @@
   </thead>
   <tbody>
     <tr>
-      <td><code class="highlighter-rouge">close.bs.alert</code></td>
+      <td><code class="language-plaintext highlighter-rouge">close.bs.alert</code></td>
       <td>This event fires immediately when the <code>close</code> instance method is called.</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">closed.bs.alert</code></td>
+      <td><code class="language-plaintext highlighter-rouge">closed.bs.alert</code></td>
       <td>This event is fired when the alert has been closed (will wait for CSS transitions to complete).</td>
     </tr>
   </tbody>
@@ -733,6 +737,6 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.5/assets/js/docs.min.js"></script>
+<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-FxkQtQ8fW6C3xA7BoW8ocAb2N7U9dCA7ZJXMJlz/37PL6Q6PUGQ5ZeJcaXdYKcdJ" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.5/assets/js/docs.min.js"></script>
   </body>
 </html>

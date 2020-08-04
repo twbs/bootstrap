@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="Make any HTML element or Bootstrap component clickable by “stretching” a nested link via CSS.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Jekyll v4.0.1">
+<meta name="generator" content="Jekyll v4.1.1">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="4.5">
@@ -15,7 +15,7 @@
 <link rel="canonical" href="https://getbootstrap.com/docs/4.5/utilities/stretched-link/">
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
 <!-- Documentation extras -->
 
 <link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
@@ -62,9 +62,10 @@
 
   </head>
   <body>
-    <a class="skippy sr-only sr-only-focusable" href="#content">
-  <span class="skippy-text">Skip to main content</span>
-</a>
+    <div class="skippy overflow-hidden">
+  <div class="container-xl">
+    <a class="sr-only sr-only-focusable d-inline-flex p-2 m-1" href="#content">Skip to main content</a><a class="sr-only sr-only-focusable d-none d-md-inline-flex p-2 m-1" href="#bd-docs-nav">Skip to docs navigation</a></div>
+</div>
 
 
     <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
@@ -468,15 +469,18 @@
         
 
         <main class="col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
-          <h1 class="bd-title" id="content">Stretched link</h1>
+          <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
+            <a class="btn btn-sm btn-bd-light my-2 my-md-0" href="https://github.com/twbs/bootstrap/tree/v4-dev/site/docs/4.5/utilities/stretched-link.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">View on GitHub</a>
+            <h1 class="bd-title" id="content">Stretched link</h1>
+          </div>
           <p class="bd-lead">Make any HTML element or Bootstrap component clickable by “stretching” a nested link via CSS.</p>
           <script async src="https://cdn.carbonads.com/carbon.js?serve=CKYIKKJL&placement=getbootstrapcom" id="_carbonads_js"></script>
 
-          <p>Add <code class="highlighter-rouge">.stretched-link</code> to a link to make its <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block">containing block</a> clickable via a <code class="highlighter-rouge">::after</code> pseudo element. In most cases, this means that an element with <code class="highlighter-rouge">position: relative;</code> that contains a link with the <code class="highlighter-rouge">.stretched-link</code> class is clickable.</p>
+          <p>Add <code class="language-plaintext highlighter-rouge">.stretched-link</code> to a link to make its <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block">containing block</a> clickable via a <code class="language-plaintext highlighter-rouge">::after</code> pseudo element. In most cases, this means that an element with <code class="language-plaintext highlighter-rouge">position: relative;</code> that contains a link with the <code class="language-plaintext highlighter-rouge">.stretched-link</code> class is clickable.</p>
 
-<p>Cards have <code class="highlighter-rouge">position: relative</code> by default in Bootstrap, so in this case you can safely add the <code class="highlighter-rouge">.stretched-link</code> class to a link in the card without any other HTML changes.</p>
+<p>Cards have <code class="language-plaintext highlighter-rouge">position: relative</code> by default in Bootstrap, so in this case you can safely add the <code class="language-plaintext highlighter-rouge">.stretched-link</code> class to a link in the card without any other HTML changes.</p>
 
-<p>Multiple links and tap targets are not recommended with stretched links. However, some <code class="highlighter-rouge">position</code> and <code class="highlighter-rouge">z-index</code> styles can help should this be required.</p>
+<p>Multiple links and tap targets are not recommended with stretched links. However, some <code class="language-plaintext highlighter-rouge">position</code> and <code class="language-plaintext highlighter-rouge">z-index</code> styles can help should this be required.</p>
 
 <div class="bd-example">
 <div class="card" style="width: 18rem;">
@@ -497,7 +501,7 @@
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></figure>
 
-<p>Media objects do not have <code class="highlighter-rouge">position: relative</code> by default, so we need to add the <code class="highlighter-rouge">.position-relative</code> here to prevent the link from stretching outside the media object.</p>
+<p>Media objects do not have <code class="language-plaintext highlighter-rouge">position: relative</code> by default, so we need to add the <code class="language-plaintext highlighter-rouge">.position-relative</code> here to prevent the link from stretching outside the media object.</p>
 
 <div class="bd-example">
 <div class="media position-relative">
@@ -518,7 +522,7 @@
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></figure>
 
-<p>Columns are <code class="highlighter-rouge">position: relative</code> by default, so clickable columns only require the <code class="highlighter-rouge">.stretched-link</code> class on a link. However, stretching a link over an entire <code class="highlighter-rouge">.row</code> requires <code class="highlighter-rouge">.position-static</code> on the column and <code class="highlighter-rouge">.position-relative</code> on the row.</p>
+<p>Columns are <code class="language-plaintext highlighter-rouge">position: relative</code> by default, so clickable columns only require the <code class="language-plaintext highlighter-rouge">.stretched-link</code> class on a link. However, stretching a link over an entire <code class="language-plaintext highlighter-rouge">.row</code> requires <code class="language-plaintext highlighter-rouge">.position-static</code> on the column and <code class="language-plaintext highlighter-rouge">.position-relative</code> on the row.</p>
 
 <div class="bd-example">
 <div class="row no-gutters bg-light position-relative">
@@ -548,10 +552,10 @@
 <p>If the stretched link doesn’t seem to work, the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block#Identifying_the_containing_block">containing block</a> will probably be the cause. The following CSS properties will make an element the containing block:</p>
 
 <ul>
-  <li>A <code class="highlighter-rouge">position</code> value other than <code class="highlighter-rouge">static</code></li>
-  <li>A <code class="highlighter-rouge">transform</code> or <code class="highlighter-rouge">perspective</code> value other than <code class="highlighter-rouge">none</code></li>
-  <li>A <code class="highlighter-rouge">will-change</code> value of <code class="highlighter-rouge">transform</code> or <code class="highlighter-rouge">perspective</code></li>
-  <li>A <code class="highlighter-rouge">filter</code> value other than <code class="highlighter-rouge">none</code> or a <code class="highlighter-rouge">will-change</code> value of <code class="highlighter-rouge">filter</code> (only works on Firefox)</li>
+  <li>A <code class="language-plaintext highlighter-rouge">position</code> value other than <code class="language-plaintext highlighter-rouge">static</code></li>
+  <li>A <code class="language-plaintext highlighter-rouge">transform</code> or <code class="language-plaintext highlighter-rouge">perspective</code> value other than <code class="language-plaintext highlighter-rouge">none</code></li>
+  <li>A <code class="language-plaintext highlighter-rouge">will-change</code> value of <code class="language-plaintext highlighter-rouge">transform</code> or <code class="language-plaintext highlighter-rouge">perspective</code></li>
+  <li>A <code class="language-plaintext highlighter-rouge">filter</code> value other than <code class="language-plaintext highlighter-rouge">none</code> or a <code class="language-plaintext highlighter-rouge">will-change</code> value of <code class="language-plaintext highlighter-rouge">filter</code> (only works on Firefox)</li>
 </ul>
 
 <div class="bd-example">
@@ -589,6 +593,6 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.5/assets/js/docs.min.js"></script>
+<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-FxkQtQ8fW6C3xA7BoW8ocAb2N7U9dCA7ZJXMJlz/37PL6Q6PUGQ5ZeJcaXdYKcdJ" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.5/assets/js/docs.min.js"></script>
   </body>
 </html>

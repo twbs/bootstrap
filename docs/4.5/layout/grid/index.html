@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="Use our powerful mobile-first flexbox grid to build layouts of all shapes and sizes thanks to a twelve column system, five default responsive tiers, Sass variables and mixins, and dozens of predefined classes.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Jekyll v4.0.1">
+<meta name="generator" content="Jekyll v4.1.1">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="4.5">
@@ -15,7 +15,7 @@
 <link rel="canonical" href="https://getbootstrap.com/docs/4.5/layout/grid/">
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
 <!-- Documentation extras -->
 
 <link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
@@ -62,9 +62,10 @@
 
   </head>
   <body>
-    <a class="skippy sr-only sr-only-focusable" href="#content">
-  <span class="skippy-text">Skip to main content</span>
-</a>
+    <div class="skippy overflow-hidden">
+  <div class="container-xl">
+    <a class="sr-only sr-only-focusable d-inline-flex p-2 m-1" href="#content">Skip to main content</a><a class="sr-only sr-only-focusable d-none d-md-inline-flex p-2 m-1" href="#bd-docs-nav">Skip to docs navigation</a></div>
+</div>
 
 
     <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
@@ -526,7 +527,10 @@
         
 
         <main class="col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
-          <h1 class="bd-title" id="content">Grid system</h1>
+          <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
+            <a class="btn btn-sm btn-bd-light my-2 my-md-0" href="https://github.com/twbs/bootstrap/tree/v4-dev/site/docs/4.5/layout/grid.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">View on GitHub</a>
+            <h1 class="bd-title" id="content">Grid system</h1>
+          </div>
           <p class="bd-lead">Use our powerful mobile-first flexbox grid to build layouts of all shapes and sizes thanks to a twelve column system, five default responsive tiers, Sass variables and mixins, and dozens of predefined classes.</p>
           <script async src="https://cdn.carbonads.com/carbon.js?serve=CKYIKKJL&placement=getbootstrapcom" id="_carbonads_js"></script>
 
@@ -569,28 +573,28 @@
 
 </div>
 
-<p>The above example creates three equal-width columns on small, medium, large, and extra large devices using our predefined grid classes. Those columns are centered in the page with the parent <code class="highlighter-rouge">.container</code>.</p>
+<p>The above example creates three equal-width columns on small, medium, large, and extra large devices using our predefined grid classes. Those columns are centered in the page with the parent <code class="language-plaintext highlighter-rouge">.container</code>.</p>
 
 <p>Breaking it down, here’s how it works:</p>
 
 <ul>
-  <li>Containers provide a means to center and horizontally pad your site’s contents. Use <code class="highlighter-rouge">.container</code> for a responsive pixel width or <code class="highlighter-rouge">.container-fluid</code> for <code class="highlighter-rouge">width: 100%</code> across all viewport and device sizes.</li>
-  <li>Rows are wrappers for columns. Each column has horizontal <code class="highlighter-rouge">padding</code> (called a gutter) for controlling the space between them. This <code class="highlighter-rouge">padding</code> is then counteracted on the rows with negative margins. This way, all the content in your columns is visually aligned down the left side.</li>
+  <li>Containers provide a means to center and horizontally pad your site’s contents. Use <code class="language-plaintext highlighter-rouge">.container</code> for a responsive pixel width or <code class="language-plaintext highlighter-rouge">.container-fluid</code> for <code class="language-plaintext highlighter-rouge">width: 100%</code> across all viewport and device sizes.</li>
+  <li>Rows are wrappers for columns. Each column has horizontal <code class="language-plaintext highlighter-rouge">padding</code> (called a gutter) for controlling the space between them. This <code class="language-plaintext highlighter-rouge">padding</code> is then counteracted on the rows with negative margins. This way, all the content in your columns is visually aligned down the left side.</li>
   <li>In a grid layout, content must be placed within columns and only columns may be immediate children of rows.</li>
-  <li>Thanks to flexbox, grid columns without a specified <code class="highlighter-rouge">width</code> will automatically layout as equal width columns. For example, four instances of <code class="highlighter-rouge">.col-sm</code> will each automatically be 25% wide from the small breakpoint and up. See the <a href="#auto-layout-columns">auto-layout columns</a> section for more examples.</li>
-  <li>Column classes indicate the number of columns you’d like to use out of the possible 12 per row. So, if you want three equal-width columns across, you can use <code class="highlighter-rouge">.col-4</code>.</li>
-  <li>Column <code class="highlighter-rouge">width</code>s are set in percentages, so they’re always fluid and sized relative to their parent element.</li>
-  <li>Columns have horizontal <code class="highlighter-rouge">padding</code> to create the gutters between individual columns, however, you can remove the <code class="highlighter-rouge">margin</code> from rows and <code class="highlighter-rouge">padding</code> from columns with <code class="highlighter-rouge">.no-gutters</code> on the <code class="highlighter-rouge">.row</code>.</li>
+  <li>Thanks to flexbox, grid columns without a specified <code class="language-plaintext highlighter-rouge">width</code> will automatically layout as equal width columns. For example, four instances of <code class="language-plaintext highlighter-rouge">.col-sm</code> will each automatically be 25% wide from the small breakpoint and up. See the <a href="#auto-layout-columns">auto-layout columns</a> section for more examples.</li>
+  <li>Column classes indicate the number of columns you’d like to use out of the possible 12 per row. So, if you want three equal-width columns across, you can use <code class="language-plaintext highlighter-rouge">.col-4</code>.</li>
+  <li>Column <code class="language-plaintext highlighter-rouge">width</code>s are set in percentages, so they’re always fluid and sized relative to their parent element.</li>
+  <li>Columns have horizontal <code class="language-plaintext highlighter-rouge">padding</code> to create the gutters between individual columns, however, you can remove the <code class="language-plaintext highlighter-rouge">margin</code> from rows and <code class="language-plaintext highlighter-rouge">padding</code> from columns with <code class="language-plaintext highlighter-rouge">.no-gutters</code> on the <code class="language-plaintext highlighter-rouge">.row</code>.</li>
   <li>To make the grid responsive, there are five grid breakpoints, one for each <a href="/docs/4.5/layout/overview/#responsive-breakpoints">responsive breakpoint</a>: all breakpoints (extra small), small, medium, large, and extra large.</li>
-  <li>Grid breakpoints are based on minimum width media queries, meaning <strong>they apply to that one breakpoint and all those above it</strong> (e.g., <code class="highlighter-rouge">.col-sm-4</code> applies to small, medium, large, and extra large devices, but not the first <code class="highlighter-rouge">xs</code> breakpoint).</li>
-  <li>You can use predefined grid classes (like <code class="highlighter-rouge">.col-4</code>) or <a href="#sass-mixins">Sass mixins</a> for more semantic markup.</li>
+  <li>Grid breakpoints are based on minimum width media queries, meaning <strong>they apply to that one breakpoint and all those above it</strong> (e.g., <code class="language-plaintext highlighter-rouge">.col-sm-4</code> applies to small, medium, large, and extra large devices, but not the first <code class="language-plaintext highlighter-rouge">xs</code> breakpoint).</li>
+  <li>You can use predefined grid classes (like <code class="language-plaintext highlighter-rouge">.col-4</code>) or <a href="#sass-mixins">Sass mixins</a> for more semantic markup.</li>
 </ul>
 
 <p>Be aware of the limitations and <a href="https://github.com/philipwalton/flexbugs">bugs around flexbox</a>, like the <a href="https://github.com/philipwalton/flexbugs#flexbug-9">inability to use some HTML elements as flex containers</a>.</p>
 
 <h2 id="grid-options">Grid options</h2>
 
-<p>While Bootstrap uses <code class="highlighter-rouge">em</code>s or <code class="highlighter-rouge">rem</code>s for defining most sizes, <code class="highlighter-rouge">px</code>s are used for grid breakpoints and container widths. This is because the viewport width is in pixels and does not change with the <a href="https://drafts.csswg.org/mediaqueries-3/#units">font size</a>.</p>
+<p>While Bootstrap uses <code class="language-plaintext highlighter-rouge">em</code>s or <code class="language-plaintext highlighter-rouge">rem</code>s for defining most sizes, <code class="language-plaintext highlighter-rouge">px</code>s are used for grid breakpoints and container widths. This is because the viewport width is in pixels and does not change with the <a href="https://drafts.csswg.org/mediaqueries-3/#units">font size</a>.</p>
 
 <p>See how aspects of the Bootstrap grid system work across multiple devices with a handy table.</p>
 
@@ -658,11 +662,11 @@
 
 <h2 id="auto-layout-columns">Auto-layout columns</h2>
 
-<p>Utilize breakpoint-specific column classes for easy column sizing without an explicit numbered class like <code class="highlighter-rouge">.col-sm-6</code>.</p>
+<p>Utilize breakpoint-specific column classes for easy column sizing without an explicit numbered class like <code class="language-plaintext highlighter-rouge">.col-sm-6</code>.</p>
 
 <h3 id="equal-width">Equal-width</h3>
 
-<p>For example, here are two grid layouts that apply to every device and viewport, from <code class="highlighter-rouge">xs</code> to <code class="highlighter-rouge">xl</code>. Add any number of unit-less classes for each breakpoint you need and every column will be the same width.</p>
+<p>For example, here are two grid layouts that apply to every device and viewport, from <code class="language-plaintext highlighter-rouge">xs</code> to <code class="language-plaintext highlighter-rouge">xl</code>. Add any number of unit-less classes for each breakpoint you need and every column will be the same width.</p>
 
 <div class="bd-example-row">
 
@@ -715,9 +719,9 @@
 
 <h3 id="equal-width-multi-line">Equal-width multi-line</h3>
 
-<p>Create equal-width columns that span multiple lines by inserting a <code class="highlighter-rouge">.w-100</code> where you want the columns to break to a new line. Make the breaks responsive by mixing <code class="highlighter-rouge">.w-100</code> with some <a href="/docs/4.5/utilities/display/">responsive display utilities</a>.</p>
+<p>Create equal-width columns that span multiple lines by inserting a <code class="language-plaintext highlighter-rouge">.w-100</code> where you want the columns to break to a new line. Make the breaks responsive by mixing <code class="language-plaintext highlighter-rouge">.w-100</code> with some <a href="/docs/4.5/utilities/display/">responsive display utilities</a>.</p>
 
-<p>There was a <a href="https://github.com/philipwalton/flexbugs#flexbug-11">Safari flexbox bug</a> that prevented this from working without an explicit <code class="highlighter-rouge">flex-basis</code> or <code class="highlighter-rouge">border</code>. There are workarounds for older browser versions, but they shouldn’t be necessary if your target browsers don’t fall into the buggy versions.</p>
+<p>There was a <a href="https://github.com/philipwalton/flexbugs#flexbug-11">Safari flexbox bug</a> that prevented this from working without an explicit <code class="language-plaintext highlighter-rouge">flex-basis</code> or <code class="language-plaintext highlighter-rouge">border</code>. There are workarounds for older browser versions, but they shouldn’t be necessary if your target browsers don’t fall into the buggy versions.</p>
 
 <div class="bd-example-row">
 
@@ -805,7 +809,7 @@
 
 <h3 id="variable-width-content">Variable width content</h3>
 
-<p>Use <code class="highlighter-rouge">col-{breakpoint}-auto</code> classes to size columns based on the natural width of their content.</p>
+<p>Use <code class="language-plaintext highlighter-rouge">col-{breakpoint}-auto</code> classes to size columns based on the natural width of their content.</p>
 
 <div class="bd-example-row">
 
@@ -868,7 +872,7 @@
 
 <h3 id="all-breakpoints">All breakpoints</h3>
 
-<p>For grids that are the same from the smallest of devices to the largest, use the <code class="highlighter-rouge">.col</code> and <code class="highlighter-rouge">.col-*</code> classes. Specify a numbered class when you need a particularly sized column; otherwise, feel free to stick to <code class="highlighter-rouge">.col</code>.</p>
+<p>For grids that are the same from the smallest of devices to the largest, use the <code class="language-plaintext highlighter-rouge">.col</code> and <code class="language-plaintext highlighter-rouge">.col-*</code> classes. Specify a numbered class when you need a particularly sized column; otherwise, feel free to stick to <code class="language-plaintext highlighter-rouge">.col</code>.</p>
 
 <div class="bd-example-row">
 
@@ -903,7 +907,7 @@
 
 <h3 id="stacked-to-horizontal">Stacked to horizontal</h3>
 
-<p>Using a single set of <code class="highlighter-rouge">.col-sm-*</code> classes, you can create a basic grid system that starts out stacked and becomes horizontal at the small breakpoint (<code class="highlighter-rouge">sm</code>).</p>
+<p>Using a single set of <code class="language-plaintext highlighter-rouge">.col-sm-*</code> classes, you can create a basic grid system that starts out stacked and becomes horizontal at the small breakpoint (<code class="language-plaintext highlighter-rouge">sm</code>).</p>
 
 <div class="bd-example-row">
 
@@ -987,9 +991,9 @@
 
 <h3 id="gutters">Gutters</h3>
 
-<p>Gutters can be responsively adjusted by breakpoint-specific padding and negative margin utility classes. To change the gutters in a given row, pair a negative margin utility on the <code class="highlighter-rouge">.row</code> and matching padding utilities on the <code class="highlighter-rouge">.col</code>s. The <code class="highlighter-rouge">.container</code> or <code class="highlighter-rouge">.container-fluid</code> parent may need to be adjusted too to avoid unwanted overflow, using again matching padding utility.</p>
+<p>Gutters can be responsively adjusted by breakpoint-specific padding and negative margin utility classes. To change the gutters in a given row, pair a negative margin utility on the <code class="language-plaintext highlighter-rouge">.row</code> and matching padding utilities on the <code class="language-plaintext highlighter-rouge">.col</code>s. The <code class="language-plaintext highlighter-rouge">.container</code> or <code class="language-plaintext highlighter-rouge">.container-fluid</code> parent may need to be adjusted too to avoid unwanted overflow, using again matching padding utility.</p>
 
-<p>Here’s an example of customizing the Bootstrap grid at the large (<code class="highlighter-rouge">lg</code>) breakpoint and above. We’ve increased the <code class="highlighter-rouge">.col</code> padding with <code class="highlighter-rouge">.px-lg-5</code>, counteracted that with <code class="highlighter-rouge">.mx-lg-n5</code> on the parent <code class="highlighter-rouge">.row</code> and then adjusted the <code class="highlighter-rouge">.container</code> wrapper with <code class="highlighter-rouge">.px-lg-5</code>.</p>
+<p>Here’s an example of customizing the Bootstrap grid at the large (<code class="language-plaintext highlighter-rouge">lg</code>) breakpoint and above. We’ve increased the <code class="language-plaintext highlighter-rouge">.col</code> padding with <code class="language-plaintext highlighter-rouge">.px-lg-5</code>, counteracted that with <code class="language-plaintext highlighter-rouge">.mx-lg-n5</code> on the parent <code class="language-plaintext highlighter-rouge">.row</code> and then adjusted the <code class="language-plaintext highlighter-rouge">.container</code> wrapper with <code class="language-plaintext highlighter-rouge">.px-lg-5</code>.</p>
 
 <div class="bd-example">
 <div class="container px-lg-5">
@@ -1008,7 +1012,7 @@
 
 <h3 id="row-columns">Row columns</h3>
 
-<p>Use the responsive <code class="highlighter-rouge">.row-cols-*</code> classes to quickly set the number of columns that best render your content and layout. Whereas normal <code class="highlighter-rouge">.col-*</code> classes apply to the individual columns (e.g., <code class="highlighter-rouge">.col-md-4</code>), the row columns classes are set on the parent <code class="highlighter-rouge">.row</code> as a shortcut.</p>
+<p>Use the responsive <code class="language-plaintext highlighter-rouge">.row-cols-*</code> classes to quickly set the number of columns that best render your content and layout. Whereas normal <code class="language-plaintext highlighter-rouge">.col-*</code> classes apply to the individual columns (e.g., <code class="language-plaintext highlighter-rouge">.col-md-4</code>), the row columns classes are set on the parent <code class="language-plaintext highlighter-rouge">.row</code> as a shortcut.</p>
 
 <p>Use these row columns classes to quickly create basic grid layouts or to control your card layouts.</p>
 
@@ -1127,7 +1131,7 @@
 
 </div>
 
-<p>You can also use the accompanying Sass mixin, <code class="highlighter-rouge">row-cols()</code>:</p>
+<p>You can also use the accompanying Sass mixin, <code class="language-plaintext highlighter-rouge">row-cols()</code>:</p>
 
 <figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="nc">.element</span> <span class="p">{</span>
   <span class="c1">// Three columns to start</span>
@@ -1141,7 +1145,7 @@
 
 <h2 id="alignment">Alignment</h2>
 
-<p>Use flexbox alignment utilities to vertically and horizontally align columns. <strong>Internet Explorer 10-11 do not support vertical alignment of flex items when the flex container has a <code class="highlighter-rouge">min-height</code> as shown below.</strong> <a href="https://github.com/philipwalton/flexbugs#flexbug-3">See Flexbugs #3 for more details.</a></p>
+<p>Use flexbox alignment utilities to vertically and horizontally align columns. <strong>Internet Explorer 10-11 do not support vertical alignment of flex items when the flex container has a <code class="language-plaintext highlighter-rouge">min-height</code> as shown below.</strong> <a href="https://github.com/philipwalton/flexbugs#flexbug-3">See Flexbugs #3 for more details.</a></p>
 
 <h3 id="vertical-alignment">Vertical alignment</h3>
 
@@ -1350,11 +1354,11 @@
 
 <h3 id="no-gutters">No gutters</h3>
 
-<p>The gutters between columns in our predefined grid classes can be removed with <code class="highlighter-rouge">.no-gutters</code>. This removes the negative <code class="highlighter-rouge">margin</code>s from <code class="highlighter-rouge">.row</code> and the horizontal <code class="highlighter-rouge">padding</code> from all immediate children columns.</p>
+<p>The gutters between columns in our predefined grid classes can be removed with <code class="language-plaintext highlighter-rouge">.no-gutters</code>. This removes the negative <code class="language-plaintext highlighter-rouge">margin</code>s from <code class="language-plaintext highlighter-rouge">.row</code> and the horizontal <code class="language-plaintext highlighter-rouge">padding</code> from all immediate children columns.</p>
 
 <p>Here’s the source code for creating these styles. Note that column overrides are scoped to only the first children columns and are targeted via <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors">attribute selector</a>. While this generates a more specific selector, column padding can still be further customized with <a href="/docs/4.5/utilities/spacing/">spacing utilities</a>.</p>
 
-<p><strong>Need an edge-to-edge design?</strong> Drop the parent <code class="highlighter-rouge">.container</code> or <code class="highlighter-rouge">.container-fluid</code>.</p>
+<p><strong>Need an edge-to-edge design?</strong> Drop the parent <code class="language-plaintext highlighter-rouge">.container</code> or <code class="language-plaintext highlighter-rouge">.container-fluid</code>.</p>
 
 <figure class="highlight"><pre><code class="language-sass" data-lang="sass"><span class="nc">.no-gutters</span> <span class="err">{</span>
   <span class="nl">margin-right</span><span class="p">:</span> <span class="m">0</span><span class="err">;</span>
@@ -1411,7 +1415,7 @@
 
 <h3 id="column-breaks">Column breaks</h3>
 
-<p>Breaking columns to a new line in flexbox requires a small hack: add an element with <code class="highlighter-rouge">width: 100%</code> wherever you want to wrap your columns to a new line. Normally this is accomplished with multiple <code class="highlighter-rouge">.row</code>s, but not every implementation method can account for this.</p>
+<p>Breaking columns to a new line in flexbox requires a small hack: add an element with <code class="language-plaintext highlighter-rouge">width: 100%</code> wherever you want to wrap your columns to a new line. Normally this is accomplished with multiple <code class="language-plaintext highlighter-rouge">.row</code>s, but not every implementation method can account for this.</p>
 
 <div class="bd-example-row">
 
@@ -1481,7 +1485,7 @@
 
 <h3 id="order-classes">Order classes</h3>
 
-<p>Use <code class="highlighter-rouge">.order-</code> classes for controlling the <strong>visual order</strong> of your content. These classes are responsive, so you can set the <code class="highlighter-rouge">order</code> by breakpoint (e.g., <code class="highlighter-rouge">.order-1.order-md-2</code>). Includes support for <code class="highlighter-rouge">1</code> through <code class="highlighter-rouge">12</code> across all five grid tiers.</p>
+<p>Use <code class="language-plaintext highlighter-rouge">.order-</code> classes for controlling the <strong>visual order</strong> of your content. These classes are responsive, so you can set the <code class="language-plaintext highlighter-rouge">order</code> by breakpoint (e.g., <code class="language-plaintext highlighter-rouge">.order-1.order-md-2</code>). Includes support for <code class="language-plaintext highlighter-rouge">1</code> through <code class="language-plaintext highlighter-rouge">12</code> across all five grid tiers.</p>
 
 <div class="bd-example-row">
 
@@ -1516,7 +1520,7 @@
 
 </div>
 
-<p>There are also responsive <code class="highlighter-rouge">.order-first</code> and <code class="highlighter-rouge">.order-last</code> classes that change the <code class="highlighter-rouge">order</code> of an element by applying <code class="highlighter-rouge">order: -1</code> and <code class="highlighter-rouge">order: 13</code> (<code class="highlighter-rouge">order: $columns + 1</code>), respectively. These classes can also be intermixed with the numbered <code class="highlighter-rouge">.order-*</code> classes as needed.</p>
+<p>There are also responsive <code class="language-plaintext highlighter-rouge">.order-first</code> and <code class="language-plaintext highlighter-rouge">.order-last</code> classes that change the <code class="language-plaintext highlighter-rouge">order</code> of an element by applying <code class="language-plaintext highlighter-rouge">order: -1</code> and <code class="language-plaintext highlighter-rouge">order: 13</code> (<code class="language-plaintext highlighter-rouge">order: $columns + 1</code>), respectively. These classes can also be intermixed with the numbered <code class="language-plaintext highlighter-rouge">.order-*</code> classes as needed.</p>
 
 <div class="bd-example-row">
 
@@ -1553,11 +1557,11 @@
 
 <h3 id="offsetting-columns">Offsetting columns</h3>
 
-<p>You can offset grid columns in two ways: our responsive <code class="highlighter-rouge">.offset-</code> grid classes and our <a href="/docs/4.5/utilities/spacing/">margin utilities</a>. Grid classes are sized to match columns while margins are more useful for quick layouts where the width of the offset is variable.</p>
+<p>You can offset grid columns in two ways: our responsive <code class="language-plaintext highlighter-rouge">.offset-</code> grid classes and our <a href="/docs/4.5/utilities/spacing/">margin utilities</a>. Grid classes are sized to match columns while margins are more useful for quick layouts where the width of the offset is variable.</p>
 
 <h4 id="offset-classes">Offset classes</h4>
 
-<p>Move columns to the right using <code class="highlighter-rouge">.offset-md-*</code> classes. These classes increase the left margin of a column by <code class="highlighter-rouge">*</code> columns. For example, <code class="highlighter-rouge">.offset-md-4</code> moves <code class="highlighter-rouge">.col-md-4</code> over four columns.</p>
+<p>Move columns to the right using <code class="language-plaintext highlighter-rouge">.offset-md-*</code> classes. These classes increase the left margin of a column by <code class="language-plaintext highlighter-rouge">*</code> columns. For example, <code class="language-plaintext highlighter-rouge">.offset-md-4</code> moves <code class="language-plaintext highlighter-rouge">.col-md-4</code> over four columns.</p>
 
 <div class="bd-example-row">
 
@@ -1623,7 +1627,7 @@
 
 <h4 id="margin-utilities">Margin utilities</h4>
 
-<p>With the move to flexbox in v4, you can use margin utilities like <code class="highlighter-rouge">.mr-auto</code> to force sibling columns away from one another.</p>
+<p>With the move to flexbox in v4, you can use margin utilities like <code class="language-plaintext highlighter-rouge">.mr-auto</code> to force sibling columns away from one another.</p>
 
 <div class="bd-example-row">
 
@@ -1662,7 +1666,7 @@
 
 <h2 id="nesting">Nesting</h2>
 
-<p>To nest your content with the default grid, add a new <code class="highlighter-rouge">.row</code> and set of <code class="highlighter-rouge">.col-sm-*</code> columns within an existing <code class="highlighter-rouge">.col-sm-*</code> column. Nested rows should include a set of columns that add up to 12 or fewer (it is not required that you use all 12 available columns).</p>
+<p>To nest your content with the default grid, add a new <code class="language-plaintext highlighter-rouge">.row</code> and set of <code class="language-plaintext highlighter-rouge">.col-sm-*</code> columns within an existing <code class="language-plaintext highlighter-rouge">.col-sm-*</code> column. Nested rows should include a set of columns that add up to 12 or fewer (it is not required that you use all 12 available columns).</p>
 
 <div class="bd-example-row">
 
@@ -1804,14 +1808,14 @@
 
 <h3 id="columns-and-gutters">Columns and gutters</h3>
 
-<p>The number of grid columns can be modified via Sass variables. <code class="highlighter-rouge">$grid-columns</code> is used to generate the widths (in percent) of each individual column while <code class="highlighter-rouge">$grid-gutter-width</code> sets the width for the column gutters.</p>
+<p>The number of grid columns can be modified via Sass variables. <code class="language-plaintext highlighter-rouge">$grid-columns</code> is used to generate the widths (in percent) of each individual column while <code class="language-plaintext highlighter-rouge">$grid-gutter-width</code> sets the width for the column gutters.</p>
 
 <figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="nv">$grid-columns</span><span class="p">:</span> <span class="m">12</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span>
 <span class="nv">$grid-gutter-width</span><span class="p">:</span> <span class="m">30px</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span></code></pre></figure>
 
 <h3 id="grid-tiers">Grid tiers</h3>
 
-<p>Moving beyond the columns themselves, you may also customize the number of grid tiers. If you wanted just four grid tiers, you’d update the <code class="highlighter-rouge">$grid-breakpoints</code> and <code class="highlighter-rouge">$container-max-widths</code> to something like this:</p>
+<p>Moving beyond the columns themselves, you may also customize the number of grid tiers. If you wanted just four grid tiers, you’d update the <code class="language-plaintext highlighter-rouge">$grid-breakpoints</code> and <code class="language-plaintext highlighter-rouge">$container-max-widths</code> to something like this:</p>
 
 <figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="nv">$grid-breakpoints</span><span class="p">:</span> <span class="p">(</span>
   <span class="n">xs</span><span class="o">:</span> <span class="m">0</span><span class="o">,</span>
@@ -1826,13 +1830,13 @@
   <span class="n">lg</span><span class="o">:</span> <span class="m">960px</span>
 <span class="p">);</span></code></pre></figure>
 
-<p>When making any changes to the Sass variables or maps, you’ll need to save your changes and recompile. Doing so will output a brand new set of predefined grid classes for column widths, offsets, and ordering. Responsive visibility utilities will also be updated to use the custom breakpoints. Make sure to set grid values in <code class="highlighter-rouge">px</code> (not <code class="highlighter-rouge">rem</code>, <code class="highlighter-rouge">em</code>, or <code class="highlighter-rouge">%</code>).</p>
+<p>When making any changes to the Sass variables or maps, you’ll need to save your changes and recompile. Doing so will output a brand new set of predefined grid classes for column widths, offsets, and ordering. Responsive visibility utilities will also be updated to use the custom breakpoints. Make sure to set grid values in <code class="language-plaintext highlighter-rouge">px</code> (not <code class="language-plaintext highlighter-rouge">rem</code>, <code class="language-plaintext highlighter-rouge">em</code>, or <code class="language-plaintext highlighter-rouge">%</code>).</p>
 
         </main>
       </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.5/assets/js/docs.min.js"></script>
+<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-FxkQtQ8fW6C3xA7BoW8ocAb2N7U9dCA7ZJXMJlz/37PL6Q6PUGQ5ZeJcaXdYKcdJ" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.5/assets/js/docs.min.js"></script>
   </body>
 </html>

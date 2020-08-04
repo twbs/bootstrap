@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="Learn how to include Bootstrap in your project using Webpack.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Jekyll v4.0.1">
+<meta name="generator" content="Jekyll v4.1.1">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="4.5">
@@ -15,7 +15,7 @@
 <link rel="canonical" href="https://getbootstrap.com/docs/4.5/getting-started/webpack/">
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
 <!-- Documentation extras -->
 
 <link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
@@ -62,9 +62,10 @@
 
   </head>
   <body>
-    <a class="skippy sr-only sr-only-focusable" href="#content">
-  <span class="skippy-text">Skip to main content</span>
-</a>
+    <div class="skippy overflow-hidden">
+  <div class="container-xl">
+    <a class="sr-only sr-only-focusable d-inline-flex p-2 m-1" href="#content">Skip to main content</a><a class="sr-only sr-only-focusable d-none d-md-inline-flex p-2 m-1" href="#bd-docs-nav">Skip to docs navigation</a></div>
+</div>
 
 
     <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
@@ -481,7 +482,10 @@
         
 
         <main class="col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
-          <h1 class="bd-title" id="content">Webpack</h1>
+          <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
+            <a class="btn btn-sm btn-bd-light my-2 my-md-0" href="https://github.com/twbs/bootstrap/tree/v4-dev/site/docs/4.5/getting-started/webpack.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">View on GitHub</a>
+            <h1 class="bd-title" id="content">Webpack</h1>
+          </div>
           <p class="bd-lead">Learn how to include Bootstrap in your project using Webpack.</p>
           <script async src="https://cdn.carbonads.com/carbon.js?serve=CKYIKKJL&placement=getbootstrapcom" id="_carbonads_js"></script>
 
@@ -491,7 +495,7 @@
 
 <h2 id="importing-javascript">Importing JavaScript</h2>
 
-<p>Import <a href="/docs/4.5/getting-started/javascript/">Bootstrap’s JavaScript</a> by adding this line to your app’s entry point (usually <code class="highlighter-rouge">index.js</code> or <code class="highlighter-rouge">app.js</code>):</p>
+<p>Import <a href="/docs/4.5/getting-started/javascript/">Bootstrap’s JavaScript</a> by adding this line to your app’s entry point (usually <code class="language-plaintext highlighter-rouge">index.js</code> or <code class="language-plaintext highlighter-rouge">app.js</code>):</p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="k">import</span> <span class="dl">'</span><span class="s1">bootstrap</span><span class="dl">'</span><span class="p">;</span></code></pre></figure>
 
@@ -502,8 +506,8 @@
 <span class="p">...</span></code></pre></figure>
 
 <p>Bootstrap depends on <a href="https://jquery.com/">jQuery</a> and <a href="https://popper.js.org/">Popper</a>,
-which are specified in the <code class="highlighter-rouge">peerDependencies</code> property; this means that you will have to make sure to add both of them
-to your <code class="highlighter-rouge">package.json</code> using <code class="highlighter-rouge">npm install --save jquery popper.js</code>.</p>
+which are specified in the <code class="language-plaintext highlighter-rouge">peerDependencies</code> property; this means that you will have to make sure to add both of them
+to your <code class="language-plaintext highlighter-rouge">package.json</code> using <code class="language-plaintext highlighter-rouge">npm install --save jquery popper.js</code>.</p>
 
 <h2 id="importing-styles">Importing Styles</h2>
 
@@ -511,7 +515,7 @@ to your <code class="highlighter-rouge">package.json</code> using <code class="h
 
 <p>To enjoy the full potential of Bootstrap and customize it to your needs, use the source files as a part of your project’s bundling process.</p>
 
-<p>First, create your own <code class="highlighter-rouge">_custom.scss</code> and use it to override the <a href="/docs/4.5/getting-started/theming/">built-in custom variables</a>. Then, use your main Sass file to import your custom variables, followed by Bootstrap:</p>
+<p>First, create your own <code class="language-plaintext highlighter-rouge">_custom.scss</code> and use it to override the <a href="/docs/4.5/getting-started/theming/">built-in custom variables</a>. Then, use your main Sass file to import your custom variables, followed by Bootstrap:</p>
 
 <figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="k">@import</span> <span class="s2">"custom"</span><span class="p">;</span>
 <span class="k">@import</span> <span class="s2">"~bootstrap/scss/bootstrap"</span><span class="p">;</span></code></pre></figure>
@@ -546,7 +550,7 @@ to your <code class="highlighter-rouge">package.json</code> using <code class="h
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="k">import</span> <span class="dl">'</span><span class="s1">bootstrap/dist/css/bootstrap.min.css</span><span class="dl">'</span><span class="p">;</span></code></pre></figure>
 
-<p>In this case you may use your existing rule for <code class="highlighter-rouge">css</code> without any special modifications to webpack config, except you don’t need <code class="highlighter-rouge">sass-loader</code> just <a href="https://github.com/webpack-contrib/style-loader">style-loader</a> and <a href="https://github.com/webpack-contrib/css-loader">css-loader</a>.</p>
+<p>In this case you may use your existing rule for <code class="language-plaintext highlighter-rouge">css</code> without any special modifications to webpack config, except you don’t need <code class="language-plaintext highlighter-rouge">sass-loader</code> just <a href="https://github.com/webpack-contrib/style-loader">style-loader</a> and <a href="https://github.com/webpack-contrib/css-loader">css-loader</a>.</p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">...</span>
 <span class="nx">module</span><span class="p">:</span> <span class="p">{</span>
@@ -565,6 +569,6 @@ to your <code class="highlighter-rouge">package.json</code> using <code class="h
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.5/assets/js/docs.min.js"></script>
+<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-FxkQtQ8fW6C3xA7BoW8ocAb2N7U9dCA7ZJXMJlz/37PL6Q6PUGQ5ZeJcaXdYKcdJ" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.5/assets/js/docs.min.js"></script>
   </body>
 </html>

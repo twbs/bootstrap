@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="Learn how to use Bootstrap’s included npm scripts to build our documentation, compile source code, run tests, and more.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Jekyll v4.0.1">
+<meta name="generator" content="Jekyll v4.1.1">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="4.5">
@@ -15,7 +15,7 @@
 <link rel="canonical" href="https://getbootstrap.com/docs/4.5/getting-started/build-tools/">
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
 <!-- Documentation extras -->
 
 <link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
@@ -62,9 +62,10 @@
 
   </head>
   <body>
-    <a class="skippy sr-only sr-only-focusable" href="#content">
-  <span class="skippy-text">Skip to main content</span>
-</a>
+    <div class="skippy overflow-hidden">
+  <div class="container-xl">
+    <a class="sr-only sr-only-focusable d-inline-flex p-2 m-1" href="#content">Skip to main content</a><a class="sr-only sr-only-focusable d-none d-md-inline-flex p-2 m-1" href="#bd-docs-nav">Skip to docs navigation</a></div>
+</div>
 
 
     <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
@@ -478,20 +479,23 @@
         
 
         <main class="col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
-          <h1 class="bd-title" id="content">Build tools</h1>
+          <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
+            <a class="btn btn-sm btn-bd-light my-2 my-md-0" href="https://github.com/twbs/bootstrap/tree/v4-dev/site/docs/4.5/getting-started/build-tools.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">View on GitHub</a>
+            <h1 class="bd-title" id="content">Build tools</h1>
+          </div>
           <p class="bd-lead">Learn how to use Bootstrap’s included npm scripts to build our documentation, compile source code, run tests, and more.</p>
           <script async src="https://cdn.carbonads.com/carbon.js?serve=CKYIKKJL&placement=getbootstrapcom" id="_carbonads_js"></script>
 
           <h2 id="tooling-setup">Tooling setup</h2>
 
-<p>Bootstrap uses <a href="https://docs.npmjs.com/misc/scripts">npm scripts</a> for its build system. Our <a href="https://github.com/twbs/bootstrap/blob/v4.5.0/package.json">package.json</a> includes convenient methods for working with the framework, including compiling code, running tests, and more.</p>
+<p>Bootstrap uses <a href="https://docs.npmjs.com/misc/scripts">npm scripts</a> for its build system. Our <a href="https://github.com/twbs/bootstrap/blob/v4.5.1/package.json">package.json</a> includes convenient methods for working with the framework, including compiling code, running tests, and more.</p>
 
 <p>To use our build system and run our documentation locally, you’ll need a copy of Bootstrap’s source files and Node. Follow these steps and you should be ready to rock:</p>
 
 <ol>
   <li><a href="https://nodejs.org/en/download/">Download and install Node.js</a>, which we use to manage our dependencies.</li>
-  <li>Navigate to the root <code class="highlighter-rouge">/bootstrap</code> directory and run <code class="highlighter-rouge">npm install</code> to install our local dependencies listed in <a href="https://github.com/twbs/bootstrap/blob/v4.5.0/package.json">package.json</a>.</li>
-  <li><a href="https://www.ruby-lang.org/en/documentation/installation/">Install Ruby</a>, install <a href="https://bundler.io/">Bundler</a> with <code class="highlighter-rouge">gem install bundler</code>, and finally run <code class="highlighter-rouge">bundle install</code>. This will install all Ruby dependencies, such as Jekyll and plugins.
+  <li>Navigate to the root <code class="language-plaintext highlighter-rouge">/bootstrap</code> directory and run <code class="language-plaintext highlighter-rouge">npm install</code> to install our local dependencies listed in <a href="https://github.com/twbs/bootstrap/blob/v4.5.1/package.json">package.json</a>.</li>
+  <li><a href="https://www.ruby-lang.org/en/documentation/installation/">Install Ruby</a>, install <a href="https://bundler.io/">Bundler</a> with <code class="language-plaintext highlighter-rouge">gem install bundler</code>, and finally run <code class="language-plaintext highlighter-rouge">bundle install</code>. This will install all Ruby dependencies, such as Jekyll and plugins.
     <ul>
       <li><strong>Windows users:</strong> Read <a href="https://jekyllrb.com/docs/windows/">this guide</a> to get Jekyll up and running without problems.</li>
     </ul>
@@ -502,7 +506,7 @@
 
 <h2 id="using-npm-scripts">Using npm scripts</h2>
 
-<p>Our <a href="https://github.com/twbs/bootstrap/blob/v4.5.0/package.json">package.json</a> includes the following commands and tasks:</p>
+<p>Our <a href="https://github.com/twbs/bootstrap/blob/v4.5.1/package.json">package.json</a> includes the following commands and tasks:</p>
 
 <table>
   <thead>
@@ -513,43 +517,43 @@
   </thead>
   <tbody>
     <tr>
-      <td><code class="highlighter-rouge">npm run dist</code></td>
-      <td><code class="highlighter-rouge">npm run dist</code> creates the <code class="highlighter-rouge">/dist/</code> directory with compiled files. <strong>Uses <a href="https://sass-lang.com/">Sass</a>, <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a>, and <a href="https://github.com/terser/terser">terser</a>.</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">npm run dist</code></td>
+      <td><code class="language-plaintext highlighter-rouge">npm run dist</code> creates the <code class="language-plaintext highlighter-rouge">/dist/</code> directory with compiled files. <strong>Uses <a href="https://sass-lang.com/">Sass</a>, <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a>, and <a href="https://github.com/terser/terser">terser</a>.</strong></td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">npm test</code></td>
-      <td>Same as <code class="highlighter-rouge">npm run dist</code> plus it runs tests locally</td>
+      <td><code class="language-plaintext highlighter-rouge">npm test</code></td>
+      <td>Same as <code class="language-plaintext highlighter-rouge">npm run dist</code> plus it runs tests locally</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">npm run docs</code></td>
-      <td>Builds and lints CSS and JavaScript for docs. You can then run the documentation locally via <code class="highlighter-rouge">npm run docs-serve</code>.</td>
+      <td><code class="language-plaintext highlighter-rouge">npm run docs</code></td>
+      <td>Builds and lints CSS and JavaScript for docs. You can then run the documentation locally via <code class="language-plaintext highlighter-rouge">npm run docs-serve</code>.</td>
     </tr>
   </tbody>
 </table>
 
-<p>Run <code class="highlighter-rouge">npm run</code> to see all the npm scripts.</p>
+<p>Run <code class="language-plaintext highlighter-rouge">npm run</code> to see all the npm scripts.</p>
 
 <h2 id="autoprefixer">Autoprefixer</h2>
 
 <p>Bootstrap uses <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a> (included in our build process) to automatically add vendor prefixes to some CSS properties at build time. Doing so saves us time and code by allowing us to write key parts of our CSS a single time while eliminating the need for vendor mixins like those found in v3.</p>
 
-<p>We maintain the list of browsers supported through Autoprefixer in a separate file within our GitHub repository. See <a href="https://github.com/twbs/bootstrap/blob/v4.5.0/.browserslistrc">.browserslistrc</a> for details.</p>
+<p>We maintain the list of browsers supported through Autoprefixer in a separate file within our GitHub repository. See <a href="https://github.com/twbs/bootstrap/blob/v4.5.1/.browserslistrc">.browserslistrc</a> for details.</p>
 
 <h2 id="local-documentation">Local documentation</h2>
 
 <p>Running our documentation locally requires the use of Jekyll, a decently flexible static site generator that provides us: basic includes, Markdown-based files, templates, and more. Here’s how to get it started:</p>
 
 <ol>
-  <li>Run through the <a href="#tooling-setup">tooling setup</a> above to install Jekyll (the site builder) and other Ruby dependencies with <code class="highlighter-rouge">bundle install</code>.</li>
-  <li>From the root <code class="highlighter-rouge">/bootstrap</code> directory, run <code class="highlighter-rouge">npm run docs-serve</code> in the command line.</li>
-  <li>Open <code class="highlighter-rouge">http://localhost:9001</code> in your browser, and voilà.</li>
+  <li>Run through the <a href="#tooling-setup">tooling setup</a> above to install Jekyll (the site builder) and other Ruby dependencies with <code class="language-plaintext highlighter-rouge">bundle install</code>.</li>
+  <li>From the root <code class="language-plaintext highlighter-rouge">/bootstrap</code> directory, run <code class="language-plaintext highlighter-rouge">npm run docs-serve</code> in the command line.</li>
+  <li>Open <code class="language-plaintext highlighter-rouge">http://localhost:9001</code> in your browser, and voilà.</li>
 </ol>
 
 <p>Learn more about using Jekyll by reading its <a href="https://jekyllrb.com/docs/">documentation</a>.</p>
 
 <h2 id="troubleshooting">Troubleshooting</h2>
 
-<p>Should you encounter problems with installing dependencies, uninstall all previous dependency versions (global and local). Then, rerun <code class="highlighter-rouge">npm install</code>.</p>
+<p>Should you encounter problems with installing dependencies, uninstall all previous dependency versions (global and local). Then, rerun <code class="language-plaintext highlighter-rouge">npm install</code>.</p>
 
 
         </main>
@@ -557,6 +561,6 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.5/assets/js/docs.min.js"></script>
+<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-FxkQtQ8fW6C3xA7BoW8ocAb2N7U9dCA7ZJXMJlz/37PL6Q6PUGQ5ZeJcaXdYKcdJ" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.5/assets/js/docs.min.js"></script>
   </body>
 </html>

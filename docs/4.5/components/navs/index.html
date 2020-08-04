@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="Documentation and examples for how to use Bootstrap’s included navigation components.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Jekyll v4.0.1">
+<meta name="generator" content="Jekyll v4.1.1">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="4.5">
@@ -15,7 +15,7 @@
 <link rel="canonical" href="https://getbootstrap.com/docs/4.5/components/navs/">
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
 <!-- Documentation extras -->
 
 <link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
@@ -62,9 +62,10 @@
 
   </head>
   <body>
-    <a class="skippy sr-only sr-only-focusable" href="#content">
-  <span class="skippy-text">Skip to main content</span>
-</a>
+    <div class="skippy overflow-hidden">
+  <div class="container-xl">
+    <a class="sr-only sr-only-focusable d-inline-flex p-2 m-1" href="#content">Skip to main content</a><a class="sr-only sr-only-focusable d-none d-md-inline-flex p-2 m-1" href="#bd-docs-nav">Skip to docs navigation</a></div>
+</div>
 
 
     <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
@@ -506,18 +507,21 @@
         
 
         <main class="col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
-          <h1 class="bd-title" id="content">Navs</h1>
+          <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
+            <a class="btn btn-sm btn-bd-light my-2 my-md-0" href="https://github.com/twbs/bootstrap/tree/v4-dev/site/docs/4.5/components/navs.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">View on GitHub</a>
+            <h1 class="bd-title" id="content">Navs</h1>
+          </div>
           <p class="bd-lead">Documentation and examples for how to use Bootstrap’s included navigation components.</p>
           <script async src="https://cdn.carbonads.com/carbon.js?serve=CKYIKKJL&placement=getbootstrapcom" id="_carbonads_js"></script>
 
           <h2 id="base-nav">Base nav</h2>
 
-<p>Navigation available in Bootstrap share general markup and styles, from the base <code class="highlighter-rouge">.nav</code> class to the active and disabled states. Swap modifier classes to switch between each style.</p>
+<p>Navigation available in Bootstrap share general markup and styles, from the base <code class="language-plaintext highlighter-rouge">.nav</code> class to the active and disabled states. Swap modifier classes to switch between each style.</p>
 
-<p>The base <code class="highlighter-rouge">.nav</code> component is built with flexbox and provide a strong foundation for building all types of navigation components. It includes some style overrides (for working with lists), some link padding for larger hit areas, and basic disabled styling.</p>
+<p>The base <code class="language-plaintext highlighter-rouge">.nav</code> component is built with flexbox and provide a strong foundation for building all types of navigation components. It includes some style overrides (for working with lists), some link padding for larger hit areas, and basic disabled styling.</p>
 
 <div class="bd-callout bd-callout-info">
-<p>The base <code class="highlighter-rouge">.nav</code> component does not include any <code class="highlighter-rouge">.active</code> state. The following examples include the class, mainly to demonstrate that this particular class does not trigger any special styling.</p>
+<p>The base <code class="language-plaintext highlighter-rouge">.nav</code> component does not include any <code class="language-plaintext highlighter-rouge">.active</code> state. The following examples include the class, mainly to demonstrate that this particular class does not trigger any special styling.</p>
 </div>
 
 <div class="bd-example">
@@ -551,7 +555,7 @@
   <span class="nt">&lt;/li&gt;</span>
 <span class="nt">&lt;/ul&gt;</span></code></pre></figure>
 
-<p>Classes are used throughout, so your markup can be super flexible. Use <code class="highlighter-rouge">&lt;ul&gt;</code>s like above, <code class="highlighter-rouge">&lt;ol&gt;</code> if the order of your items is important, or roll your own with a <code class="highlighter-rouge">&lt;nav&gt;</code> element. Because the <code class="highlighter-rouge">.nav</code> uses <code class="highlighter-rouge">display: flex</code>, the nav links behave the same as nav items would, but without the extra markup.</p>
+<p>Classes are used throughout, so your markup can be super flexible. Use <code class="language-plaintext highlighter-rouge">&lt;ul&gt;</code>s like above, <code class="language-plaintext highlighter-rouge">&lt;ol&gt;</code> if the order of your items is important, or roll your own with a <code class="language-plaintext highlighter-rouge">&lt;nav&gt;</code> element. Because the <code class="language-plaintext highlighter-rouge">.nav</code> uses <code class="language-plaintext highlighter-rouge">display: flex</code>, the nav links behave the same as nav items would, but without the extra markup.</p>
 
 <div class="bd-example">
 <nav class="nav">
@@ -570,13 +574,13 @@
 
 <h2 id="available-styles">Available styles</h2>
 
-<p>Change the style of <code class="highlighter-rouge">.nav</code>s component with modifiers and utilities. Mix and match as needed, or build your own.</p>
+<p>Change the style of <code class="language-plaintext highlighter-rouge">.nav</code>s component with modifiers and utilities. Mix and match as needed, or build your own.</p>
 
 <h3 id="horizontal-alignment">Horizontal alignment</h3>
 
 <p>Change the horizontal alignment of your nav with <a href="/docs/4.5/layout/grid/#horizontal-alignment">flexbox utilities</a>. By default, navs are left-aligned, but you can easily change them to center or right aligned.</p>
 
-<p>Centered with <code class="highlighter-rouge">.justify-content-center</code>:</p>
+<p>Centered with <code class="language-plaintext highlighter-rouge">.justify-content-center</code>:</p>
 
 <div class="bd-example">
 <ul class="nav justify-content-center">
@@ -609,7 +613,7 @@
   <span class="nt">&lt;/li&gt;</span>
 <span class="nt">&lt;/ul&gt;</span></code></pre></figure>
 
-<p>Right-aligned with <code class="highlighter-rouge">.justify-content-end</code>:</p>
+<p>Right-aligned with <code class="language-plaintext highlighter-rouge">.justify-content-end</code>:</p>
 
 <div class="bd-example">
 <ul class="nav justify-content-end">
@@ -644,7 +648,7 @@
 
 <h3 id="vertical">Vertical</h3>
 
-<p>Stack your navigation by changing the flex item direction with the <code class="highlighter-rouge">.flex-column</code> utility. Need to stack them on some viewports but not others? Use the responsive versions (e.g., <code class="highlighter-rouge">.flex-sm-column</code>).</p>
+<p>Stack your navigation by changing the flex item direction with the <code class="language-plaintext highlighter-rouge">.flex-column</code> utility. Need to stack them on some viewports but not others? Use the responsive versions (e.g., <code class="language-plaintext highlighter-rouge">.flex-sm-column</code>).</p>
 
 <div class="bd-example">
 <ul class="nav flex-column">
@@ -677,7 +681,7 @@
   <span class="nt">&lt;/li&gt;</span>
 <span class="nt">&lt;/ul&gt;</span></code></pre></figure>
 
-<p>As always, vertical navigation is possible without <code class="highlighter-rouge">&lt;ul&gt;</code>s, too.</p>
+<p>As always, vertical navigation is possible without <code class="language-plaintext highlighter-rouge">&lt;ul&gt;</code>s, too.</p>
 
 <div class="bd-example">
 <nav class="nav flex-column">
@@ -696,7 +700,7 @@
 
 <h3 id="tabs">Tabs</h3>
 
-<p>Takes the basic nav from above and adds the <code class="highlighter-rouge">.nav-tabs</code> class to generate a tabbed interface. Use them to create tabbable regions with our <a href="#javascript-behavior">tab JavaScript plugin</a>.</p>
+<p>Takes the basic nav from above and adds the <code class="language-plaintext highlighter-rouge">.nav-tabs</code> class to generate a tabbed interface. Use them to create tabbable regions with our <a href="#javascript-behavior">tab JavaScript plugin</a>.</p>
 
 <div class="bd-example">
 <ul class="nav nav-tabs">
@@ -731,7 +735,7 @@
 
 <h3 id="pills">Pills</h3>
 
-<p>Take that same HTML, but use <code class="highlighter-rouge">.nav-pills</code> instead:</p>
+<p>Take that same HTML, but use <code class="language-plaintext highlighter-rouge">.nav-pills</code> instead:</p>
 
 <div class="bd-example">
 <ul class="nav nav-pills">
@@ -766,7 +770,7 @@
 
 <h3 id="fill-and-justify">Fill and justify</h3>
 
-<p>Force your <code class="highlighter-rouge">.nav</code>’s contents to extend the full available width one of two modifier classes. To proportionately fill all available space with your <code class="highlighter-rouge">.nav-item</code>s, use <code class="highlighter-rouge">.nav-fill</code>. Notice that all horizontal space is occupied, but not every nav item has the same width.</p>
+<p>Force your <code class="language-plaintext highlighter-rouge">.nav</code>’s contents to extend the full available width one of two modifier classes. To proportionately fill all available space with your <code class="language-plaintext highlighter-rouge">.nav-item</code>s, use <code class="language-plaintext highlighter-rouge">.nav-fill</code>. Notice that all horizontal space is occupied, but not every nav item has the same width.</p>
 
 <div class="bd-example">
 <ul class="nav nav-pills nav-fill">
@@ -799,24 +803,24 @@
   <span class="nt">&lt;/li&gt;</span>
 <span class="nt">&lt;/ul&gt;</span></code></pre></figure>
 
-<p>When using a <code class="highlighter-rouge">&lt;nav&gt;</code>-based navigation, be sure to include <code class="highlighter-rouge">.nav-item</code> on the anchors.</p>
+<p>When using a <code class="language-plaintext highlighter-rouge">&lt;nav&gt;</code>-based navigation, you can safely omit <code class="language-plaintext highlighter-rouge">.nav-item</code> as only <code class="language-plaintext highlighter-rouge">.nav-link</code> is required for styling <code class="language-plaintext highlighter-rouge">&lt;a&gt;</code> elements.</p>
 
 <div class="bd-example">
 <nav class="nav nav-pills nav-fill">
-  <a class="nav-item nav-link active" href="#">Active</a>
-  <a class="nav-item nav-link" href="#">Much longer nav link</a>
-  <a class="nav-item nav-link" href="#">Link</a>
-  <a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+  <a class="nav-link active" href="#">Active</a>
+  <a class="nav-link" href="#">Much longer nav link</a>
+  <a class="nav-link" href="#">Link</a>
+  <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
 </nav>
 </div>
 <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"nav nav-pills nav-fill"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-item nav-link active"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Active<span class="nt">&lt;/a&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-item nav-link"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Much longer nav link<span class="nt">&lt;/a&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-item nav-link"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Link<span class="nt">&lt;/a&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-item nav-link disabled"</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">tabindex=</span><span class="s">"-1"</span> <span class="na">aria-disabled=</span><span class="s">"true"</span><span class="nt">&gt;</span>Disabled<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link active"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Active<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Much longer nav link<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Link<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link disabled"</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">tabindex=</span><span class="s">"-1"</span> <span class="na">aria-disabled=</span><span class="s">"true"</span><span class="nt">&gt;</span>Disabled<span class="nt">&lt;/a&gt;</span>
 <span class="nt">&lt;/nav&gt;</span></code></pre></figure>
 
-<p>For equal-width elements, use <code class="highlighter-rouge">.nav-justified</code>. All horizontal space will be occupied by nav links, but unlike the <code class="highlighter-rouge">.nav-fill</code> above, every nav item will be the same width.</p>
+<p>For equal-width elements, use <code class="language-plaintext highlighter-rouge">.nav-justified</code>. All horizontal space will be occupied by nav links, but unlike the <code class="language-plaintext highlighter-rouge">.nav-fill</code> above, every nav item will be the same width.</p>
 
 <div class="bd-example">
 <ul class="nav nav-pills nav-justified">
@@ -849,22 +853,22 @@
   <span class="nt">&lt;/li&gt;</span>
 <span class="nt">&lt;/ul&gt;</span></code></pre></figure>
 
-<p>Similar to the <code class="highlighter-rouge">.nav-fill</code> example using a <code class="highlighter-rouge">&lt;nav&gt;</code>-based navigation, be sure to include <code class="highlighter-rouge">.nav-item</code> on the anchors.</p>
+<p>Similar to the <code class="language-plaintext highlighter-rouge">.nav-fill</code> example using a <code class="language-plaintext highlighter-rouge">&lt;nav&gt;</code>-based navigation.</p>
 
 <div class="bd-example">
 <nav class="nav nav-pills nav-justified">
-  <a class="nav-item nav-link active" href="#">Active</a>
-  <a class="nav-item nav-link" href="#">Much longer nav link</a>
-  <a class="nav-item nav-link" href="#">Link</a>
-  <a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+  <a class="nav-link active" href="#">Active</a>
+  <a class="nav-link" href="#">Much longer nav link</a>
+  <a class="nav-link" href="#">Link</a>
+  <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
 </nav>
 
 </div>
 <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"nav nav-pills nav-justified"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-item nav-link active"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Active<span class="nt">&lt;/a&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-item nav-link"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Much longer nav link<span class="nt">&lt;/a&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-item nav-link"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Link<span class="nt">&lt;/a&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-item nav-link disabled"</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">tabindex=</span><span class="s">"-1"</span> <span class="na">aria-disabled=</span><span class="s">"true"</span><span class="nt">&gt;</span>Disabled<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link active"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Active<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Much longer nav link<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Link<span class="nt">&lt;/a&gt;</span>
+  <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link disabled"</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">tabindex=</span><span class="s">"-1"</span> <span class="na">aria-disabled=</span><span class="s">"true"</span><span class="nt">&gt;</span>Disabled<span class="nt">&lt;/a&gt;</span>
 <span class="nt">&lt;/nav&gt;</span></code></pre></figure>
 
 <h2 id="working-with-flex-utilities">Working with flex utilities</h2>
@@ -888,9 +892,9 @@
 
 <h2 id="regarding-accessibility">Regarding accessibility</h2>
 
-<p>If you’re using navs to provide a navigation bar, be sure to add a <code class="highlighter-rouge">role="navigation"</code> to the most logical parent container of the <code class="highlighter-rouge">&lt;ul&gt;</code>, or wrap a <code class="highlighter-rouge">&lt;nav&gt;</code> element around the whole navigation. Do not add the role to the <code class="highlighter-rouge">&lt;ul&gt;</code> itself, as this would prevent it from being announced as an actual list by assistive technologies.</p>
+<p>If you’re using navs to provide a navigation bar, be sure to add a <code class="language-plaintext highlighter-rouge">role="navigation"</code> to the most logical parent container of the <code class="language-plaintext highlighter-rouge">&lt;ul&gt;</code>, or wrap a <code class="language-plaintext highlighter-rouge">&lt;nav&gt;</code> element around the whole navigation. Do not add the role to the <code class="language-plaintext highlighter-rouge">&lt;ul&gt;</code> itself, as this would prevent it from being announced as an actual list by assistive technologies.</p>
 
-<p>Note that navigation bars, even if visually styled as tabs with the <code class="highlighter-rouge">.nav-tabs</code> class, should <strong>not</strong> be given <code class="highlighter-rouge">role="tablist"</code>, <code class="highlighter-rouge">role="tab"</code> or <code class="highlighter-rouge">role="tabpanel"</code> attributes. These are only appropriate for dynamic tabbed interfaces, as described in the <a href="https://www.w3.org/TR/wai-aria-practices/#tabpanel"><abbr title="Web Accessibility Initiative">WAI</abbr> <abbr title="Accessible Rich Internet Applications">ARIA</abbr> Authoring Practices</a>. See <a href="#javascript-behavior">JavaScript behavior</a> for dynamic tabbed interfaces in this section for an example.</p>
+<p>Note that navigation bars, even if visually styled as tabs with the <code class="language-plaintext highlighter-rouge">.nav-tabs</code> class, should <strong>not</strong> be given <code class="language-plaintext highlighter-rouge">role="tablist"</code>, <code class="language-plaintext highlighter-rouge">role="tab"</code> or <code class="language-plaintext highlighter-rouge">role="tabpanel"</code> attributes. These are only appropriate for dynamic tabbed interfaces, as described in the <a href="https://www.w3.org/TR/wai-aria-practices/#tabpanel"><abbr title="Web Accessibility Initiative">WAI</abbr> <abbr title="Accessible Rich Internet Applications">ARIA</abbr> Authoring Practices</a>. See <a href="#javascript-behavior">JavaScript behavior</a> for dynamic tabbed interfaces in this section for an example.</p>
 
 <h2 id="using-dropdowns">Using dropdowns</h2>
 
@@ -992,11 +996,11 @@
 
 <h2 id="javascript-behavior">JavaScript behavior</h2>
 
-<p>Use the tab JavaScript plugin—include it individually or through the compiled <code class="highlighter-rouge">bootstrap.js</code> file—to extend our navigational tabs and pills to create tabbable panes of local content, even via dropdown menus.</p>
+<p>Use the tab JavaScript plugin—include it individually or through the compiled <code class="language-plaintext highlighter-rouge">bootstrap.js</code> file—to extend our navigational tabs and pills to create tabbable panes of local content, even via dropdown menus.</p>
 
-<p>If you’re building our JavaScript from source, it <a href="/docs/4.5/getting-started/javascript/#util">requires <code class="highlighter-rouge">util.js</code></a>.</p>
+<p>If you’re building our JavaScript from source, it <a href="/docs/4.5/getting-started/javascript/#util">requires <code class="language-plaintext highlighter-rouge">util.js</code></a>.</p>
 
-<p>Dynamic tabbed interfaces, as described in the <a href="https://www.w3.org/TR/wai-aria-practices/#tabpanel"><abbr title="Web Accessibility Initiative">WAI</abbr> <abbr title="Accessible Rich Internet Applications">ARIA</abbr> Authoring Practices</a>, require <code class="highlighter-rouge">role="tablist"</code>, <code class="highlighter-rouge">role="tab"</code>, <code class="highlighter-rouge">role="tabpanel"</code>, and additional <code class="highlighter-rouge">aria-</code> attributes in order to convey their structure, functionality and current state to users of assistive technologies (such as screen readers).</p>
+<p>Dynamic tabbed interfaces, as described in the <a href="https://www.w3.org/TR/wai-aria-practices/#tabpanel"><abbr title="Web Accessibility Initiative">WAI</abbr> <abbr title="Accessible Rich Internet Applications">ARIA</abbr> Authoring Practices</a>, require <code class="language-plaintext highlighter-rouge">role="tablist"</code>, <code class="language-plaintext highlighter-rouge">role="tab"</code>, <code class="language-plaintext highlighter-rouge">role="tabpanel"</code>, and additional <code class="language-plaintext highlighter-rouge">aria-</code> attributes in order to convey their structure, functionality and current state to users of assistive technologies (such as screen readers).</p>
 
 <p>Note that dynamic tabbed interfaces should <em>not</em> contain dropdown menus, as this causes both usability and accessibility issues. From a usability perspective, the fact that the currently displayed tab’s trigger element is not immediately visible (as it’s inside the closed dropdown menu) can cause confusion. From an accessibility point of view, there is currently no sensible way to map this sort of construct to a standard WAI ARIA pattern, meaning that it cannot be easily made understandable to users of assistive technologies.</p>
 
@@ -1042,14 +1046,14 @@
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane fade"</span> <span class="na">id=</span><span class="s">"contact"</span> <span class="na">role=</span><span class="s">"tabpanel"</span> <span class="na">aria-labelledby=</span><span class="s">"contact-tab"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></figure>
 
-<p>To help fit your needs, this works with <code class="highlighter-rouge">&lt;ul&gt;</code>-based markup, as shown above, or with any arbitrary “roll your own” markup. Note that if you’re using <code class="highlighter-rouge">&lt;nav&gt;</code>, you shouldn’t add <code class="highlighter-rouge">role="tablist"</code> directly to it, as this would override the element’s native role as a navigation landmark. Instead, switch to an alternative element (in the example below, a simple <code class="highlighter-rouge">&lt;div&gt;</code>) and wrap the <code class="highlighter-rouge">&lt;nav&gt;</code> around it.</p>
+<p>To help fit your needs, this works with <code class="language-plaintext highlighter-rouge">&lt;ul&gt;</code>-based markup, as shown above, or with any arbitrary “roll your own” markup. Note that if you’re using <code class="language-plaintext highlighter-rouge">&lt;nav&gt;</code>, you shouldn’t add <code class="language-plaintext highlighter-rouge">role="tablist"</code> directly to it, as this would override the element’s native role as a navigation landmark. Instead, switch to an alternative element (in the example below, a simple <code class="language-plaintext highlighter-rouge">&lt;div&gt;</code>) and wrap the <code class="language-plaintext highlighter-rouge">&lt;nav&gt;</code> around it.</p>
 
 <div class="bd-example bd-example-tabs">
   <nav>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-      <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
-      <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
-      <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
+      <a class="nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
+      <a class="nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
+      <a class="nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
     </div>
   </nav>
   <div class="tab-content" id="nav-tabContent">
@@ -1067,9 +1071,9 @@
 
 <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;nav&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"nav nav-tabs"</span> <span class="na">id=</span><span class="s">"nav-tab"</span> <span class="na">role=</span><span class="s">"tablist"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-item nav-link active"</span> <span class="na">id=</span><span class="s">"nav-home-tab"</span> <span class="na">data-toggle=</span><span class="s">"tab"</span> <span class="na">href=</span><span class="s">"#nav-home"</span> <span class="na">role=</span><span class="s">"tab"</span> <span class="na">aria-controls=</span><span class="s">"nav-home"</span> <span class="na">aria-selected=</span><span class="s">"true"</span><span class="nt">&gt;</span>Home<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-item nav-link"</span> <span class="na">id=</span><span class="s">"nav-profile-tab"</span> <span class="na">data-toggle=</span><span class="s">"tab"</span> <span class="na">href=</span><span class="s">"#nav-profile"</span> <span class="na">role=</span><span class="s">"tab"</span> <span class="na">aria-controls=</span><span class="s">"nav-profile"</span> <span class="na">aria-selected=</span><span class="s">"false"</span><span class="nt">&gt;</span>Profile<span class="nt">&lt;/a&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-item nav-link"</span> <span class="na">id=</span><span class="s">"nav-contact-tab"</span> <span class="na">data-toggle=</span><span class="s">"tab"</span> <span class="na">href=</span><span class="s">"#nav-contact"</span> <span class="na">role=</span><span class="s">"tab"</span> <span class="na">aria-controls=</span><span class="s">"nav-contact"</span> <span class="na">aria-selected=</span><span class="s">"false"</span><span class="nt">&gt;</span>Contact<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link active"</span> <span class="na">id=</span><span class="s">"nav-home-tab"</span> <span class="na">data-toggle=</span><span class="s">"tab"</span> <span class="na">href=</span><span class="s">"#nav-home"</span> <span class="na">role=</span><span class="s">"tab"</span> <span class="na">aria-controls=</span><span class="s">"nav-home"</span> <span class="na">aria-selected=</span><span class="s">"true"</span><span class="nt">&gt;</span>Home<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">id=</span><span class="s">"nav-profile-tab"</span> <span class="na">data-toggle=</span><span class="s">"tab"</span> <span class="na">href=</span><span class="s">"#nav-profile"</span> <span class="na">role=</span><span class="s">"tab"</span> <span class="na">aria-controls=</span><span class="s">"nav-profile"</span> <span class="na">aria-selected=</span><span class="s">"false"</span><span class="nt">&gt;</span>Profile<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"nav-link"</span> <span class="na">id=</span><span class="s">"nav-contact-tab"</span> <span class="na">data-toggle=</span><span class="s">"tab"</span> <span class="na">href=</span><span class="s">"#nav-contact"</span> <span class="na">role=</span><span class="s">"tab"</span> <span class="na">aria-controls=</span><span class="s">"nav-contact"</span> <span class="na">aria-selected=</span><span class="s">"false"</span><span class="nt">&gt;</span>Contact<span class="nt">&lt;/a&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/nav&gt;</span>
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-content"</span> <span class="na">id=</span><span class="s">"nav-tabContent"</span><span class="nt">&gt;</span>
@@ -1174,7 +1178,7 @@
 
 <h3 id="using-data-attributes">Using data attributes</h3>
 
-<p>You can activate a tab or pill navigation without writing any JavaScript by simply specifying <code class="highlighter-rouge">data-toggle="tab"</code> or <code class="highlighter-rouge">data-toggle="pill"</code> on an element. Use these data attributes on <code class="highlighter-rouge">.nav-tabs</code> or <code class="highlighter-rouge">.nav-pills</code>.</p>
+<p>You can activate a tab or pill navigation without writing any JavaScript by simply specifying <code class="language-plaintext highlighter-rouge">data-toggle="tab"</code> or <code class="language-plaintext highlighter-rouge">data-toggle="pill"</code> on an element. Use these data attributes on <code class="language-plaintext highlighter-rouge">.nav-tabs</code> or <code class="language-plaintext highlighter-rouge">.nav-pills</code>.</p>
 
 <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- Nav tabs --&gt;</span>
 <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav nav-tabs"</span> <span class="na">id=</span><span class="s">"myTab"</span> <span class="na">role=</span><span class="s">"tablist"</span><span class="nt">&gt;</span>
@@ -1218,7 +1222,7 @@
 
 <h3 id="fade-effect">Fade effect</h3>
 
-<p>To make tabs fade in, add <code class="highlighter-rouge">.fade</code> to each <code class="highlighter-rouge">.tab-pane</code>. The first tab pane must also have <code class="highlighter-rouge">.show</code> to make the initial content visible.</p>
+<p>To make tabs fade in, add <code class="language-plaintext highlighter-rouge">.fade</code> to each <code class="language-plaintext highlighter-rouge">.tab-pane</code>. The first tab pane must also have <code class="language-plaintext highlighter-rouge">.show</code> to make the initial content visible.</p>
 
 <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-content"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane fade show active"</span> <span class="na">id=</span><span class="s">"home"</span> <span class="na">role=</span><span class="s">"tabpanel"</span> <span class="na">aria-labelledby=</span><span class="s">"home-tab"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
@@ -1239,7 +1243,7 @@
 
 <h4 id="tab">$().tab</h4>
 
-<p>Activates a tab element and content container. Tab should have either a <code class="highlighter-rouge">data-target</code> or an <code class="highlighter-rouge">href</code> targeting a container node in the DOM.</p>
+<p>Activates a tab element and content container. Tab should have either a <code class="language-plaintext highlighter-rouge">data-target</code> or an <code class="language-plaintext highlighter-rouge">href</code> targeting a container node in the DOM.</p>
 
 <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav nav-tabs"</span> <span class="na">id=</span><span class="s">"myTab"</span> <span class="na">role=</span><span class="s">"tablist"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"nav-item"</span> <span class="na">role=</span><span class="s">"presentation"</span><span class="nt">&gt;</span>
@@ -1271,7 +1275,7 @@
 
 <h4 id="tabshow">.tab(‘show’)</h4>
 
-<p>Selects the given tab and shows its associated pane. Any other tab that was previously selected becomes unselected and its associated pane is hidden. <strong>Returns to the caller before the tab pane has actually been shown</strong> (i.e. before the <code class="highlighter-rouge">shown.bs.tab</code> event occurs).</p>
+<p>Selects the given tab and shows its associated pane. Any other tab that was previously selected becomes unselected and its associated pane is hidden. <strong>Returns to the caller before the tab pane has actually been shown</strong> (i.e. before the <code class="language-plaintext highlighter-rouge">shown.bs.tab</code> event occurs).</p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#someTab</span><span class="dl">'</span><span class="p">).</span><span class="nx">tab</span><span class="p">(</span><span class="dl">'</span><span class="s1">show</span><span class="dl">'</span><span class="p">)</span></code></pre></figure>
 
@@ -1284,13 +1288,13 @@
 <p>When showing a new tab, the events fire in the following order:</p>
 
 <ol>
-  <li><code class="highlighter-rouge">hide.bs.tab</code> (on the current active tab)</li>
-  <li><code class="highlighter-rouge">show.bs.tab</code> (on the to-be-shown tab)</li>
-  <li><code class="highlighter-rouge">hidden.bs.tab</code> (on the previous active tab, the same one as for the <code class="highlighter-rouge">hide.bs.tab</code> event)</li>
-  <li><code class="highlighter-rouge">shown.bs.tab</code> (on the newly-active just-shown tab, the same one as for the <code class="highlighter-rouge">show.bs.tab</code> event)</li>
+  <li><code class="language-plaintext highlighter-rouge">hide.bs.tab</code> (on the current active tab)</li>
+  <li><code class="language-plaintext highlighter-rouge">show.bs.tab</code> (on the to-be-shown tab)</li>
+  <li><code class="language-plaintext highlighter-rouge">hidden.bs.tab</code> (on the previous active tab, the same one as for the <code class="language-plaintext highlighter-rouge">hide.bs.tab</code> event)</li>
+  <li><code class="language-plaintext highlighter-rouge">shown.bs.tab</code> (on the newly-active just-shown tab, the same one as for the <code class="language-plaintext highlighter-rouge">show.bs.tab</code> event)</li>
 </ol>
 
-<p>If no tab was already active, then the <code class="highlighter-rouge">hide.bs.tab</code> and <code class="highlighter-rouge">hidden.bs.tab</code> events will not be fired.</p>
+<p>If no tab was already active, then the <code class="language-plaintext highlighter-rouge">hide.bs.tab</code> and <code class="language-plaintext highlighter-rouge">hidden.bs.tab</code> events will not be fired.</p>
 
 <table class="table table-bordered table-striped">
   <thead>
@@ -1330,6 +1334,6 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.5/assets/js/docs.min.js"></script>
+<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-FxkQtQ8fW6C3xA7BoW8ocAb2N7U9dCA7ZJXMJlz/37PL6Q6PUGQ5ZeJcaXdYKcdJ" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.5/assets/js/docs.min.js"></script>
   </body>
 </html>

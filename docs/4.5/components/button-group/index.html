@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="Group a series of buttons together on a single line with the button group, and super-power them with JavaScript.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Jekyll v4.0.1">
+<meta name="generator" content="Jekyll v4.1.1">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="4.5">
@@ -15,7 +15,7 @@
 <link rel="canonical" href="https://getbootstrap.com/docs/4.5/components/button-group/">
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
 <!-- Documentation extras -->
 
 <link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
@@ -62,9 +62,10 @@
 
   </head>
   <body>
-    <a class="skippy sr-only sr-only-focusable" href="#content">
-  <span class="skippy-text">Skip to main content</span>
-</a>
+    <div class="skippy overflow-hidden">
+  <div class="container-xl">
+    <a class="sr-only sr-only-focusable d-inline-flex p-2 m-1" href="#content">Skip to main content</a><a class="sr-only sr-only-focusable d-none d-md-inline-flex p-2 m-1" href="#bd-docs-nav">Skip to docs navigation</a></div>
+</div>
 
 
     <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
@@ -478,13 +479,16 @@
         
 
         <main class="col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
-          <h1 class="bd-title" id="content">Button group</h1>
+          <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
+            <a class="btn btn-sm btn-bd-light my-2 my-md-0" href="https://github.com/twbs/bootstrap/tree/v4-dev/site/docs/4.5/components/button-group.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">View on GitHub</a>
+            <h1 class="bd-title" id="content">Button group</h1>
+          </div>
           <p class="bd-lead">Group a series of buttons together on a single line with the button group, and super-power them with JavaScript.</p>
           <script async src="https://cdn.carbonads.com/carbon.js?serve=CKYIKKJL&placement=getbootstrapcom" id="_carbonads_js"></script>
 
           <h2 id="basic-example">Basic example</h2>
 
-<p>Wrap a series of buttons with <code class="highlighter-rouge">.btn</code> in <code class="highlighter-rouge">.btn-group</code>. Add on optional JavaScript radio and checkbox style behavior with <a href="/docs/4.5/components/buttons/#button-plugin">our buttons plugin</a>.</p>
+<p>Wrap a series of buttons with <code class="language-plaintext highlighter-rouge">.btn</code> in <code class="language-plaintext highlighter-rouge">.btn-group</code>. Add on optional JavaScript radio and checkbox style behavior with <a href="/docs/4.5/components/buttons/#button-plugin">our buttons plugin</a>.</p>
 
 <div class="bd-example">
 <div class="btn-group" role="group" aria-label="Basic example">
@@ -500,11 +504,11 @@
 <span class="nt">&lt;/div&gt;</span></code></pre></figure>
 
 <div class="bd-callout bd-callout-warning">
-<h5 id="ensure-correct-role-and-provide-a-label">Ensure correct <code class="highlighter-rouge">role</code> and provide a label</h5>
+<h5 id="ensure-correct-role-and-provide-a-label">Ensure correct <code class="language-plaintext highlighter-rouge">role</code> and provide a label</h5>
 
-<p>In order for assistive technologies (such as screen readers) to convey that a series of buttons is grouped, an appropriate <code class="highlighter-rouge">role</code> attribute needs to be provided. For button groups, this would be <code class="highlighter-rouge">role="group"</code>, while toolbars should have a <code class="highlighter-rouge">role="toolbar"</code>.</p>
+<p>In order for assistive technologies (such as screen readers) to convey that a series of buttons is grouped, an appropriate <code class="language-plaintext highlighter-rouge">role</code> attribute needs to be provided. For button groups, this would be <code class="language-plaintext highlighter-rouge">role="group"</code>, while toolbars should have a <code class="language-plaintext highlighter-rouge">role="toolbar"</code>.</p>
 
-<p>In addition, groups and toolbars should be given an explicit label, as most assistive technologies will otherwise not announce them, despite the presence of the correct role attribute. In the examples provided here, we use <code class="highlighter-rouge">aria-label</code>, but alternatives such as <code class="highlighter-rouge">aria-labelledby</code> can also be used.</p>
+<p>In addition, groups and toolbars should be given an explicit label, as most assistive technologies will otherwise not announce them, despite the presence of the correct role attribute. In the examples provided here, we use <code class="language-plaintext highlighter-rouge">aria-label</code>, but alternatives such as <code class="language-plaintext highlighter-rouge">aria-labelledby</code> can also be used.</p>
 </div>
 
 <h2 id="button-toolbar">Button toolbar</h2>
@@ -611,7 +615,7 @@
 
 <h2 id="sizing">Sizing</h2>
 
-<p>Instead of applying button sizing classes to every button in a group, just add <code class="highlighter-rouge">.btn-group-*</code> to each <code class="highlighter-rouge">.btn-group</code>, including each one when nesting multiple groups.</p>
+<p>Instead of applying button sizing classes to every button in a group, just add <code class="language-plaintext highlighter-rouge">.btn-group-*</code> to each <code class="language-plaintext highlighter-rouge">.btn-group</code>, including each one when nesting multiple groups.</p>
 
 <div class="bd-example">
   <div class="btn-group btn-group-lg" role="group" aria-label="Large button group">
@@ -639,7 +643,7 @@
 
 <h2 id="nesting">Nesting</h2>
 
-<p>Place a <code class="highlighter-rouge">.btn-group</code> within another <code class="highlighter-rouge">.btn-group</code> when you want dropdown menus mixed with a series of buttons.</p>
+<p>Place a <code class="language-plaintext highlighter-rouge">.btn-group</code> within another <code class="language-plaintext highlighter-rouge">.btn-group</code> when you want dropdown menus mixed with a series of buttons.</p>
 
 <div class="bd-example">
 <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
@@ -742,6 +746,6 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.5/assets/js/docs.min.js"></script>
+<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-FxkQtQ8fW6C3xA7BoW8ocAb2N7U9dCA7ZJXMJlz/37PL6Q6PUGQ5ZeJcaXdYKcdJ" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.5/assets/js/docs.min.js"></script>
   </body>
 </html>

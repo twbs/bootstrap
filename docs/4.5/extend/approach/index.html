@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="Learn about the guiding principles, strategies, and techniques used to build and maintain Bootstrap so you can more easily customize and extend it yourself.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Jekyll v4.0.1">
+<meta name="generator" content="Jekyll v4.1.1">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="4.5">
@@ -15,7 +15,7 @@
 <link rel="canonical" href="https://getbootstrap.com/docs/4.5/extend/approach/">
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
 <!-- Documentation extras -->
 
 <link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
@@ -62,9 +62,10 @@
 
   </head>
   <body>
-    <a class="skippy sr-only sr-only-focusable" href="#content">
-  <span class="skippy-text">Skip to main content</span>
-</a>
+    <div class="skippy overflow-hidden">
+  <div class="container-xl">
+    <a class="sr-only sr-only-focusable d-inline-flex p-2 m-1" href="#content">Skip to main content</a><a class="sr-only sr-only-focusable d-none d-md-inline-flex p-2 m-1" href="#bd-docs-nav">Skip to docs navigation</a></div>
+</div>
 
 
     <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
@@ -468,7 +469,10 @@
         
 
         <main class="col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
-          <h1 class="bd-title" id="content">Approach</h1>
+          <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
+            <a class="btn btn-sm btn-bd-light my-2 my-md-0" href="https://github.com/twbs/bootstrap/tree/v4-dev/site/docs/4.5/extend/approach.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">View on GitHub</a>
+            <h1 class="bd-title" id="content">Approach</h1>
+          </div>
           <p class="bd-lead">Learn about the guiding principles, strategies, and techniques used to build and maintain Bootstrap so you can more easily customize and extend it yourself.</p>
           <script async src="https://cdn.carbonads.com/carbon.js?serve=CKYIKKJL&placement=getbootstrapcom" id="_carbonads_js"></script>
 
@@ -493,64 +497,64 @@
 
 <p>Bootstrap’s responsive styles are built to be responsive, an approach that’s often referred to as <em>mobile-first</em>. We use this term in our docs and largely agree with it, but at times it can be too broad. While not every component <em>must</em> be entirely responsive in Bootstrap, this responsive approach is about reducing CSS overrides by pushing you to add styles as the viewport becomes larger.</p>
 
-<p>Across Bootstrap, you’ll see this most clearly in our media queries. In most cases, we use <code class="highlighter-rouge">min-width</code> queries that begin to apply at a specific breakpoint and carry up through the higher breakpoints. For example, a <code class="highlighter-rouge">.d-none</code> applies from <code class="highlighter-rouge">min-width: 0</code> to infinity. On the other hand, a <code class="highlighter-rouge">.d-md-none</code> applies from the medium breakpoint and up.</p>
+<p>Across Bootstrap, you’ll see this most clearly in our media queries. In most cases, we use <code class="language-plaintext highlighter-rouge">min-width</code> queries that begin to apply at a specific breakpoint and carry up through the higher breakpoints. For example, a <code class="language-plaintext highlighter-rouge">.d-none</code> applies from <code class="language-plaintext highlighter-rouge">min-width: 0</code> to infinity. On the other hand, a <code class="language-plaintext highlighter-rouge">.d-md-none</code> applies from the medium breakpoint and up.</p>
 
-<p>At times we’ll use <code class="highlighter-rouge">max-width</code> when a component’s inherent complexity requires it. At times, these overrides are functionally and mentally clearer to implement and support than rewriting core functionality from our components. We strive to limit this approach, but will use it from time to time.</p>
+<p>At times we’ll use <code class="language-plaintext highlighter-rouge">max-width</code> when a component’s inherent complexity requires it. At times, these overrides are functionally and mentally clearer to implement and support than rewriting core functionality from our components. We strive to limit this approach, but will use it from time to time.</p>
 
 <h2 id="classes">Classes</h2>
 
-<p>Aside from our Reboot, a cross-browser normalization stylesheet, all our styles aim to use classes as selectors. This means steering clear of type selectors (e.g., <code class="highlighter-rouge">input[type="text"]</code>) and extraneous parent classes (e.g., <code class="highlighter-rouge">.parent .child</code>) that make styles too specific to easily override.</p>
+<p>Aside from our Reboot, a cross-browser normalization stylesheet, all our styles aim to use classes as selectors. This means steering clear of type selectors (e.g., <code class="language-plaintext highlighter-rouge">input[type="text"]</code>) and extraneous parent classes (e.g., <code class="language-plaintext highlighter-rouge">.parent .child</code>) that make styles too specific to easily override.</p>
 
-<p>As such, components should be built with a base class that houses common, not-to-be overridden property-value pairs. For example, <code class="highlighter-rouge">.btn</code> and <code class="highlighter-rouge">.btn-primary</code>. We use <code class="highlighter-rouge">.btn</code> for all the common styles like <code class="highlighter-rouge">display</code>, <code class="highlighter-rouge">padding</code>, and <code class="highlighter-rouge">border-width</code>. We then use modifiers like <code class="highlighter-rouge">.btn-primary</code> to add the color, background-color, border-color, etc.</p>
+<p>As such, components should be built with a base class that houses common, not-to-be overridden property-value pairs. For example, <code class="language-plaintext highlighter-rouge">.btn</code> and <code class="language-plaintext highlighter-rouge">.btn-primary</code>. We use <code class="language-plaintext highlighter-rouge">.btn</code> for all the common styles like <code class="language-plaintext highlighter-rouge">display</code>, <code class="language-plaintext highlighter-rouge">padding</code>, and <code class="language-plaintext highlighter-rouge">border-width</code>. We then use modifiers like <code class="language-plaintext highlighter-rouge">.btn-primary</code> to add the color, background-color, border-color, etc.</p>
 
 <p>Modifier classes should only be used when there are multiple properties or values to be changed across multiple variants. Modifiers are not always necessary, so be sure you’re actually saving lines of code and preventing unnecessary overrides when creating them. Good examples of modifiers are our theme color classes and size variants.</p>
 
 <h2 id="z-index-scales">z-index scales</h2>
 
-<p>There are two <code class="highlighter-rouge">z-index</code> scales in Bootstrap—elements within a component and overlay components.</p>
+<p>There are two <code class="language-plaintext highlighter-rouge">z-index</code> scales in Bootstrap—elements within a component and overlay components.</p>
 
 <h3 id="component-elements">Component elements</h3>
 
 <ul>
-  <li>Some components in Bootstrap are built with overlapping elements to prevent double borders without modifying the <code class="highlighter-rouge">border</code> property. For example, button groups, input groups, and pagination.</li>
-  <li>These components share a standard <code class="highlighter-rouge">z-index</code> scale of <code class="highlighter-rouge">0</code> through <code class="highlighter-rouge">3</code>.</li>
-  <li><code class="highlighter-rouge">0</code> is default (initial), <code class="highlighter-rouge">1</code> is <code class="highlighter-rouge">:hover</code>, <code class="highlighter-rouge">2</code> is <code class="highlighter-rouge">:active</code>/<code class="highlighter-rouge">.active</code>, and <code class="highlighter-rouge">3</code> is <code class="highlighter-rouge">:focus</code>.</li>
+  <li>Some components in Bootstrap are built with overlapping elements to prevent double borders without modifying the <code class="language-plaintext highlighter-rouge">border</code> property. For example, button groups, input groups, and pagination.</li>
+  <li>These components share a standard <code class="language-plaintext highlighter-rouge">z-index</code> scale of <code class="language-plaintext highlighter-rouge">0</code> through <code class="language-plaintext highlighter-rouge">3</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">0</code> is default (initial), <code class="language-plaintext highlighter-rouge">1</code> is <code class="language-plaintext highlighter-rouge">:hover</code>, <code class="language-plaintext highlighter-rouge">2</code> is <code class="language-plaintext highlighter-rouge">:active</code>/<code class="language-plaintext highlighter-rouge">.active</code>, and <code class="language-plaintext highlighter-rouge">3</code> is <code class="language-plaintext highlighter-rouge">:focus</code>.</li>
   <li>This approach matches our expectations of highest user priority. If an element is focused, it’s in view and at the user’s attention. Active elements are second highest because they indicate state. Hover is third highest because it indicates user intent, but nearly <em>anything</em> can be hovered.</li>
 </ul>
 
 <h3 id="overlay-components">Overlay components</h3>
 
-<p>Bootstrap includes several components that function as an overlay of some kind. This includes, in order of highest <code class="highlighter-rouge">z-index</code>, dropdowns, fixed and sticky navbars, modals, tooltips, and popovers. These components have their own <code class="highlighter-rouge">z-index</code> scale that begins at <code class="highlighter-rouge">1000</code>. This starting number was chosen arbitrarily and serves as a small buffer between our styles and your project’s custom styles.</p>
+<p>Bootstrap includes several components that function as an overlay of some kind. This includes, in order of highest <code class="language-plaintext highlighter-rouge">z-index</code>, dropdowns, fixed and sticky navbars, modals, tooltips, and popovers. These components have their own <code class="language-plaintext highlighter-rouge">z-index</code> scale that begins at <code class="language-plaintext highlighter-rouge">1000</code>. This starting number was chosen arbitrarily and serves as a small buffer between our styles and your project’s custom styles.</p>
 
-<p>Each overlay component increases its <code class="highlighter-rouge">z-index</code> value slightly in such a way that common UI principles allow user focused or hovered elements to remain in view at all times. For example, a modal is document blocking (e.g., you cannot take any other action save for the modal’s action), so we put that above our navbars.</p>
+<p>Each overlay component increases its <code class="language-plaintext highlighter-rouge">z-index</code> value slightly in such a way that common UI principles allow user focused or hovered elements to remain in view at all times. For example, a modal is document blocking (e.g., you cannot take any other action save for the modal’s action), so we put that above our navbars.</p>
 
-<p>Learn more about this in our <a href="/docs/4.5/layout/overview/#z-index"><code class="highlighter-rouge">z-index</code> layout page</a>.</p>
+<p>Learn more about this in our <a href="/docs/4.5/layout/overview/#z-index"><code class="language-plaintext highlighter-rouge">z-index</code> layout page</a>.</p>
 
 <h2 id="html-and-css-over-js">HTML and CSS over JS</h2>
 
 <p>Whenever possible, we prefer to write HTML and CSS over JavaScript. In general, HTML and CSS are more prolific and accessible to more people of all different experience levels. HTML and CSS are also faster in your browser than JavaScript, and your browser generally provides a great deal of functionality for you.</p>
 
-<p>This principle is our first-class JavaScript API using <code class="highlighter-rouge">data</code> attributes. You don’t need to write nearly any JavaScript to use our JavaScript plugins; instead, write HTML. Read more about this in <a href="/docs/4.5/getting-started/javascript/#data-attributes">our JavaScript overview page</a>.</p>
+<p>This principle is our first-class JavaScript API using <code class="language-plaintext highlighter-rouge">data</code> attributes. You don’t need to write nearly any JavaScript to use our JavaScript plugins; instead, write HTML. Read more about this in <a href="/docs/4.5/getting-started/javascript/#data-attributes">our JavaScript overview page</a>.</p>
 
-<p>Lastly, our styles build on the fundamental behaviors of common web elements. Whenever possible, we prefer to use what the browser provides. For example, you can put a <code class="highlighter-rouge">.btn</code> class on nearly any element, but most elements don’t provide any semantic value or browser functionality. So instead, we use <code class="highlighter-rouge">&lt;button&gt;</code>s and <code class="highlighter-rouge">&lt;a&gt;</code>s.</p>
+<p>Lastly, our styles build on the fundamental behaviors of common web elements. Whenever possible, we prefer to use what the browser provides. For example, you can put a <code class="language-plaintext highlighter-rouge">.btn</code> class on nearly any element, but most elements don’t provide any semantic value or browser functionality. So instead, we use <code class="language-plaintext highlighter-rouge">&lt;button&gt;</code>s and <code class="language-plaintext highlighter-rouge">&lt;a&gt;</code>s.</p>
 
-<p>The same goes for more complex components. While we <em>could</em> write our own form validation plugin to add classes to a parent element based on an input’s state, thereby allowing us to style the text say red, we prefer using the <code class="highlighter-rouge">:valid</code>/<code class="highlighter-rouge">:invalid</code> pseudo-elements every browser provides us.</p>
+<p>The same goes for more complex components. While we <em>could</em> write our own form validation plugin to add classes to a parent element based on an input’s state, thereby allowing us to style the text say red, we prefer using the <code class="language-plaintext highlighter-rouge">:valid</code>/<code class="language-plaintext highlighter-rouge">:invalid</code> pseudo-elements every browser provides us.</p>
 
 <h2 id="utilities">Utilities</h2>
 
-<p>Utility classes—formerly helpers in Bootstrap 3—are a powerful ally in combatting CSS bloat and poor page performance. A utility class is typically a single, immutable property-value pairing expressed as a class (e.g., <code class="highlighter-rouge">.d-block</code> represents <code class="highlighter-rouge">display: block;</code>). Their primary appeal is speed of use while writing HTML and limiting the amount of custom CSS you have to write.</p>
+<p>Utility classes—formerly helpers in Bootstrap 3—are a powerful ally in combatting CSS bloat and poor page performance. A utility class is typically a single, immutable property-value pairing expressed as a class (e.g., <code class="language-plaintext highlighter-rouge">.d-block</code> represents <code class="language-plaintext highlighter-rouge">display: block;</code>). Their primary appeal is speed of use while writing HTML and limiting the amount of custom CSS you have to write.</p>
 
 <p>Specifically regarding custom CSS, utilities can help combat increasing file size by reducing your most commonly repeated property-value pairs into single classes. This can have a dramatic effect at scale in your projects.</p>
 
 <h2 id="flexible-html">Flexible HTML</h2>
 
-<p>While not always possible, we strive to avoid being overly dogmatic in our HTML requirements for components. Thus, we focus on single classes in our CSS selectors and try to avoid immediate children selectors (<code class="highlighter-rouge">&gt;</code>). This gives you more flexibility in your implementation and helps keep our CSS simpler and less specific.</p>
+<p>While not always possible, we strive to avoid being overly dogmatic in our HTML requirements for components. Thus, we focus on single classes in our CSS selectors and try to avoid immediate children selectors (<code class="language-plaintext highlighter-rouge">&gt;</code>). This gives you more flexibility in your implementation and helps keep our CSS simpler and less specific.</p>
 
         </main>
       </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.5/assets/js/docs.min.js"></script>
+<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-FxkQtQ8fW6C3xA7BoW8ocAb2N7U9dCA7ZJXMJlz/37PL6Q6PUGQ5ZeJcaXdYKcdJ" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.5/assets/js/docs.min.js"></script>
   </body>
 </html>

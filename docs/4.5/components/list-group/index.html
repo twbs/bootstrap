@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="List groups are a flexible and powerful component for displaying a series of content. Modify and extend them to support just about any content within.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Jekyll v4.0.1">
+<meta name="generator" content="Jekyll v4.1.1">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="4.5">
@@ -15,7 +15,7 @@
 <link rel="canonical" href="https://getbootstrap.com/docs/4.5/components/list-group/">
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
 <!-- Documentation extras -->
 
 <link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
@@ -62,9 +62,10 @@
 
   </head>
   <body>
-    <a class="skippy sr-only sr-only-focusable" href="#content">
-  <span class="skippy-text">Skip to main content</span>
-</a>
+    <div class="skippy overflow-hidden">
+  <div class="container-xl">
+    <a class="sr-only sr-only-focusable d-inline-flex p-2 m-1" href="#content">Skip to main content</a><a class="sr-only sr-only-focusable d-none d-md-inline-flex p-2 m-1" href="#bd-docs-nav">Skip to docs navigation</a></div>
+</div>
 
 
     <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
@@ -496,7 +497,10 @@
         
 
         <main class="col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
-          <h1 class="bd-title" id="content">List group</h1>
+          <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
+            <a class="btn btn-sm btn-bd-light my-2 my-md-0" href="https://github.com/twbs/bootstrap/tree/v4-dev/site/docs/4.5/components/list-group.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">View on GitHub</a>
+            <h1 class="bd-title" id="content">List group</h1>
+          </div>
           <p class="bd-lead">List groups are a flexible and powerful component for displaying a series of content. Modify and extend them to support just about any content within.</p>
           <script async src="https://cdn.carbonads.com/carbon.js?serve=CKYIKKJL&placement=getbootstrapcom" id="_carbonads_js"></script>
 
@@ -523,7 +527,7 @@
 
 <h2 id="active-items">Active items</h2>
 
-<p>Add <code class="highlighter-rouge">.active</code> to a <code class="highlighter-rouge">.list-group-item</code> to indicate the current active selection.</p>
+<p>Add <code class="language-plaintext highlighter-rouge">.active</code> to a <code class="language-plaintext highlighter-rouge">.list-group-item</code> to indicate the current active selection.</p>
 
 <div class="bd-example">
 <ul class="list-group">
@@ -544,7 +548,7 @@
 
 <h2 id="disabled-items">Disabled items</h2>
 
-<p>Add <code class="highlighter-rouge">.disabled</code> to a <code class="highlighter-rouge">.list-group-item</code> to make it <em>appear</em> disabled. Note that some elements with <code class="highlighter-rouge">.disabled</code> will also require custom JavaScript to fully disable their click events (e.g., links).</p>
+<p>Add <code class="language-plaintext highlighter-rouge">.disabled</code> to a <code class="language-plaintext highlighter-rouge">.list-group-item</code> to make it <em>appear</em> disabled. Note that some elements with <code class="language-plaintext highlighter-rouge">.disabled</code> will also require custom JavaScript to fully disable their click events (e.g., links).</p>
 
 <div class="bd-example">
 <ul class="list-group">
@@ -565,9 +569,9 @@
 
 <h2 id="links-and-buttons">Links and buttons</h2>
 
-<p>Use <code class="highlighter-rouge">&lt;a&gt;</code>s or <code class="highlighter-rouge">&lt;button&gt;</code>s to create <em>actionable</em> list group items with hover, disabled, and active states by adding <code class="highlighter-rouge">.list-group-item-action</code>. We separate these pseudo-classes to ensure list groups made of non-interactive elements (like <code class="highlighter-rouge">&lt;li&gt;</code>s or <code class="highlighter-rouge">&lt;div&gt;</code>s) don’t provide a click or tap affordance.</p>
+<p>Use <code class="language-plaintext highlighter-rouge">&lt;a&gt;</code>s or <code class="language-plaintext highlighter-rouge">&lt;button&gt;</code>s to create <em>actionable</em> list group items with hover, disabled, and active states by adding <code class="language-plaintext highlighter-rouge">.list-group-item-action</code>. We separate these pseudo-classes to ensure list groups made of non-interactive elements (like <code class="language-plaintext highlighter-rouge">&lt;li&gt;</code>s or <code class="language-plaintext highlighter-rouge">&lt;div&gt;</code>s) don’t provide a click or tap affordance.</p>
 
-<p>Be sure to <strong>not use the standard <code class="highlighter-rouge">.btn</code> classes here</strong>.</p>
+<p>Be sure to <strong>not use the standard <code class="language-plaintext highlighter-rouge">.btn</code> classes here</strong>.</p>
 
 <div class="bd-example">
 <div class="list-group">
@@ -590,7 +594,7 @@
   <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"list-group-item list-group-item-action disabled"</span> <span class="na">tabindex=</span><span class="s">"-1"</span> <span class="na">aria-disabled=</span><span class="s">"true"</span><span class="nt">&gt;</span>Vestibulum at eros<span class="nt">&lt;/a&gt;</span>
 <span class="nt">&lt;/div&gt;</span></code></pre></figure>
 
-<p>With <code class="highlighter-rouge">&lt;button&gt;</code>s, you can also make use of the <code class="highlighter-rouge">disabled</code> attribute instead of the <code class="highlighter-rouge">.disabled</code> class. Sadly, <code class="highlighter-rouge">&lt;a&gt;</code>s don’t support the disabled attribute.</p>
+<p>With <code class="language-plaintext highlighter-rouge">&lt;button&gt;</code>s, you can also make use of the <code class="language-plaintext highlighter-rouge">disabled</code> attribute instead of the <code class="language-plaintext highlighter-rouge">.disabled</code> class. Sadly, <code class="language-plaintext highlighter-rouge">&lt;a&gt;</code>s don’t support the disabled attribute.</p>
 
 <div class="bd-example">
 <div class="list-group">
@@ -615,7 +619,7 @@
 
 <h2 id="flush">Flush</h2>
 
-<p>Add <code class="highlighter-rouge">.list-group-flush</code> to remove some borders and rounded corners to render list group items edge-to-edge in a parent container (e.g., cards).</p>
+<p>Add <code class="language-plaintext highlighter-rouge">.list-group-flush</code> to remove some borders and rounded corners to render list group items edge-to-edge in a parent container (e.g., cards).</p>
 
 <div class="bd-example">
 <ul class="list-group list-group-flush">
@@ -636,9 +640,9 @@
 
 <h2 id="horizontal">Horizontal</h2>
 
-<p>Add <code class="highlighter-rouge">.list-group-horizontal</code> to change the layout of list group items from vertical to horizontal across all breakpoints. Alternatively, choose a responsive variant <code class="highlighter-rouge">.list-group-horizontal-{sm|md|lg|xl}</code> to make a list group horizontal starting at that breakpoint’s <code class="highlighter-rouge">min-width</code>. Currently <strong>horizontal list groups cannot be combined with flush list groups.</strong></p>
+<p>Add <code class="language-plaintext highlighter-rouge">.list-group-horizontal</code> to change the layout of list group items from vertical to horizontal across all breakpoints. Alternatively, choose a responsive variant <code class="language-plaintext highlighter-rouge">.list-group-horizontal-{sm|md|lg|xl}</code> to make a list group horizontal starting at that breakpoint’s <code class="language-plaintext highlighter-rouge">min-width</code>. Currently <strong>horizontal list groups cannot be combined with flush list groups.</strong></p>
 
-<p><strong>ProTip:</strong> Want equal-width list group items when horizontal? Add <code class="highlighter-rouge">.flex-fill</code> to each list group item.</p>
+<p><strong>ProTip:</strong> Want equal-width list group items when horizontal? Add <code class="language-plaintext highlighter-rouge">.flex-fill</code> to each list group item.</p>
 
 <div class="bd-example">
 <ul class="list-group list-group-horizontal">
@@ -738,7 +742,7 @@
   <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"list-group-item list-group-item-dark"</span><span class="nt">&gt;</span>A simple dark list group item<span class="nt">&lt;/li&gt;</span>
 <span class="nt">&lt;/ul&gt;</span></code></pre></figure>
 
-<p>Contextual classes also work with <code class="highlighter-rouge">.list-group-item-action</code>. Note the addition of the hover styles here not present in the previous example. Also supported is the <code class="highlighter-rouge">.active</code> state; apply it to indicate an active selection on a contextual list group item.</p>
+<p>Contextual classes also work with <code class="language-plaintext highlighter-rouge">.list-group-item-action</code>. Note the addition of the hover styles here not present in the previous example. Also supported is the <code class="language-plaintext highlighter-rouge">.active</code> state; apply it to indicate an active selection on a contextual list group item.</p>
 
 <div class="bd-example">
 <div class="list-group">
@@ -772,7 +776,7 @@
 <div class="bd-callout bd-callout-warning">
 <h5 id="conveying-meaning-to-assistive-technologies">Conveying meaning to assistive technologies</h5>
 
-<p>Using color to add meaning only provides a visual indication, which will not be conveyed to users of assistive technologies – such as screen readers. Ensure that information denoted by the color is either obvious from the content itself (e.g. the visible text), or is included through alternative means, such as additional text hidden with the <code class="highlighter-rouge">.sr-only</code> class.</p>
+<p>Using color to add meaning only provides a visual indication, which will not be conveyed to users of assistive technologies – such as screen readers. Ensure that information denoted by the color is either obvious from the content itself (e.g. the visible text), or is included through alternative means, such as additional text hidden with the <code class="language-plaintext highlighter-rouge">.sr-only</code> class.</p>
 </div>
 
 <h2 id="with-badges">With badges</h2>
@@ -871,7 +875,7 @@
 
 <h2 id="javascript-behavior">JavaScript behavior</h2>
 
-<p>Use the tab JavaScript plugin—include it individually or through the compiled <code class="highlighter-rouge">bootstrap.js</code> file—to extend our list group to create tabbable panes of local content.</p>
+<p>Use the tab JavaScript plugin—include it individually or through the compiled <code class="language-plaintext highlighter-rouge">bootstrap.js</code> file—to extend our list group to create tabbable panes of local content.</p>
 
 <div class="bd-example" role="tabpanel">
   <div class="row">
@@ -923,7 +927,7 @@
 
 <h3 id="using-data-attributes">Using data attributes</h3>
 
-<p>You can activate a list group navigation without writing any JavaScript by simply specifying <code class="highlighter-rouge">data-toggle="list"</code> or on an element. Use these data attributes on <code class="highlighter-rouge">.list-group-item</code>.</p>
+<p>You can activate a list group navigation without writing any JavaScript by simply specifying <code class="language-plaintext highlighter-rouge">data-toggle="list"</code> or on an element. Use these data attributes on <code class="language-plaintext highlighter-rouge">.list-group-item</code>.</p>
 
 <div role="tabpanel">
 
@@ -963,7 +967,7 @@
 
 <h3 id="fade-effect">Fade effect</h3>
 
-<p>To make tabs panel fade in, add <code class="highlighter-rouge">.fade</code> to each <code class="highlighter-rouge">.tab-pane</code>. The first tab pane must also have <code class="highlighter-rouge">.show</code> to make the initial content visible.</p>
+<p>To make tabs panel fade in, add <code class="language-plaintext highlighter-rouge">.fade</code> to each <code class="language-plaintext highlighter-rouge">.tab-pane</code>. The first tab pane must also have <code class="language-plaintext highlighter-rouge">.show</code> to make the initial content visible.</p>
 
 <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-content"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane fade show active"</span> <span class="na">id=</span><span class="s">"home"</span> <span class="na">role=</span><span class="s">"tabpanel"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
@@ -976,7 +980,7 @@
 
 <h4 id="tab">$().tab</h4>
 
-<p>Activates a list item element and content container. Tab should have either a <code class="highlighter-rouge">data-target</code> or an <code class="highlighter-rouge">href</code> targeting a container node in the DOM.</p>
+<p>Activates a list item element and content container. Tab should have either a <code class="language-plaintext highlighter-rouge">data-target</code> or an <code class="language-plaintext highlighter-rouge">href</code> targeting a container node in the DOM.</p>
 
 <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"list-group"</span> <span class="na">id=</span><span class="s">"myList"</span> <span class="na">role=</span><span class="s">"tablist"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"list-group-item list-group-item-action active"</span> <span class="na">data-toggle=</span><span class="s">"list"</span> <span class="na">href=</span><span class="s">"#home"</span> <span class="na">role=</span><span class="s">"tab"</span><span class="nt">&gt;</span>Home<span class="nt">&lt;/a&gt;</span>
@@ -1000,7 +1004,7 @@
 
 <h4 id="tabshow">.tab(‘show’)</h4>
 
-<p>Selects the given list item and shows its associated pane. Any other list item that was previously selected becomes unselected and its associated pane is hidden. <strong>Returns to the caller before the tab pane has actually been shown</strong> (for example, before the <code class="highlighter-rouge">shown.bs.tab</code> event occurs).</p>
+<p>Selects the given list item and shows its associated pane. Any other list item that was previously selected becomes unselected and its associated pane is hidden. <strong>Returns to the caller before the tab pane has actually been shown</strong> (for example, before the <code class="language-plaintext highlighter-rouge">shown.bs.tab</code> event occurs).</p>
 
 <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#someListItem</span><span class="dl">'</span><span class="p">).</span><span class="nx">tab</span><span class="p">(</span><span class="dl">'</span><span class="s1">show</span><span class="dl">'</span><span class="p">)</span></code></pre></figure>
 
@@ -1009,13 +1013,13 @@
 <p>When showing a new tab, the events fire in the following order:</p>
 
 <ol>
-  <li><code class="highlighter-rouge">hide.bs.tab</code> (on the current active tab)</li>
-  <li><code class="highlighter-rouge">show.bs.tab</code> (on the to-be-shown tab)</li>
-  <li><code class="highlighter-rouge">hidden.bs.tab</code> (on the previous active tab, the same one as for the <code class="highlighter-rouge">hide.bs.tab</code> event)</li>
-  <li><code class="highlighter-rouge">shown.bs.tab</code> (on the newly-active just-shown tab, the same one as for the <code class="highlighter-rouge">show.bs.tab</code> event)</li>
+  <li><code class="language-plaintext highlighter-rouge">hide.bs.tab</code> (on the current active tab)</li>
+  <li><code class="language-plaintext highlighter-rouge">show.bs.tab</code> (on the to-be-shown tab)</li>
+  <li><code class="language-plaintext highlighter-rouge">hidden.bs.tab</code> (on the previous active tab, the same one as for the <code class="language-plaintext highlighter-rouge">hide.bs.tab</code> event)</li>
+  <li><code class="language-plaintext highlighter-rouge">shown.bs.tab</code> (on the newly-active just-shown tab, the same one as for the <code class="language-plaintext highlighter-rouge">show.bs.tab</code> event)</li>
 </ol>
 
-<p>If no tab was already active, the <code class="highlighter-rouge">hide.bs.tab</code> and <code class="highlighter-rouge">hidden.bs.tab</code> events will not be fired.</p>
+<p>If no tab was already active, the <code class="language-plaintext highlighter-rouge">hide.bs.tab</code> and <code class="language-plaintext highlighter-rouge">hidden.bs.tab</code> events will not be fired.</p>
 
 <table class="table table-bordered table-striped">
   <thead>
@@ -1055,6 +1059,6 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.5/assets/js/docs.min.js"></script>
+<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-FxkQtQ8fW6C3xA7BoW8ocAb2N7U9dCA7ZJXMJlz/37PL6Q6PUGQ5ZeJcaXdYKcdJ" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.5/assets/js/docs.min.js"></script>
   </body>
 </html>

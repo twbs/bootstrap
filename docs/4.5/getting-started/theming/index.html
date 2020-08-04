@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="Customize Bootstrap 4 with our new built-in Sass variables for global style preferences for easy theming and component changes.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Jekyll v4.0.1">
+<meta name="generator" content="Jekyll v4.1.1">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="4.5">
@@ -15,7 +15,7 @@
 <link rel="canonical" href="https://getbootstrap.com/docs/4.5/getting-started/theming/">
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
 <!-- Documentation extras -->
 
 <link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
@@ -62,9 +62,10 @@
 
   </head>
   <body>
-    <a class="skippy sr-only sr-only-focusable" href="#content">
-  <span class="skippy-text">Skip to main content</span>
-</a>
+    <div class="skippy overflow-hidden">
+  <div class="container-xl">
+    <a class="sr-only sr-only-focusable d-inline-flex p-2 m-1" href="#content">Skip to main content</a><a class="sr-only sr-only-focusable d-none d-md-inline-flex p-2 m-1" href="#bd-docs-nav">Skip to docs navigation</a></div>
+</div>
 
 
     <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
@@ -517,13 +518,16 @@
         
 
         <main class="col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
-          <h1 class="bd-title" id="content">Theming Bootstrap</h1>
+          <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
+            <a class="btn btn-sm btn-bd-light my-2 my-md-0" href="https://github.com/twbs/bootstrap/tree/v4-dev/site/docs/4.5/getting-started/theming.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">View on GitHub</a>
+            <h1 class="bd-title" id="content">Theming Bootstrap</h1>
+          </div>
           <p class="bd-lead">Customize Bootstrap 4 with our new built-in Sass variables for global style preferences for easy theming and component changes.</p>
           <script async src="https://cdn.carbonads.com/carbon.js?serve=CKYIKKJL&placement=getbootstrapcom" id="_carbonads_js"></script>
 
           <h2 id="introduction">Introduction</h2>
 
-<p>In Bootstrap 3, theming was largely driven by variable overrides in LESS, custom CSS, and a separate theme stylesheet that we included in our <code class="highlighter-rouge">dist</code> files. With some effort, one could completely redesign the look of Bootstrap 3 without touching the core files. Bootstrap 4 provides a familiar, but slightly different approach.</p>
+<p>In Bootstrap 3, theming was largely driven by variable overrides in LESS, custom CSS, and a separate theme stylesheet that we included in our <code class="language-plaintext highlighter-rouge">dist</code> files. With some effort, one could completely redesign the look of Bootstrap 3 without touching the core files. Bootstrap 4 provides a familiar, but slightly different approach.</p>
 
 <p>Now, theming is accomplished by Sass variables, Sass maps, and custom CSS. There’s no more dedicated theme stylesheet; instead, you can enable the built-in theme to add gradients, shadows, and more.</p>
 
@@ -554,7 +558,7 @@
 
 <h3 id="importing">Importing</h3>
 
-<p>In your <code class="highlighter-rouge">custom.scss</code>, you’ll import Bootstrap’s source Sass files. You have two options: include all of Bootstrap, or pick the parts you need. We encourage the latter, though be aware there are some requirements and dependencies across our components. You also will need to include some JavaScript for our plugins.</p>
+<p>In your <code class="language-plaintext highlighter-rouge">custom.scss</code>, you’ll import Bootstrap’s source Sass files. You have two options: include all of Bootstrap, or pick the parts you need. We encourage the latter, though be aware there are some requirements and dependencies across our components. You also will need to include some JavaScript for our plugins.</p>
 
 <figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="c1">// Custom.scss</span>
 <span class="c1">// Option A: Include all of Bootstrap</span>
@@ -576,17 +580,17 @@
 <span class="k">@import</span> <span class="s2">"../node_modules/bootstrap/scss/code"</span><span class="p">;</span>
 <span class="k">@import</span> <span class="s2">"../node_modules/bootstrap/scss/grid"</span><span class="p">;</span></code></pre></figure>
 
-<p>With that setup in place, you can begin to modify any of the Sass variables and maps in your <code class="highlighter-rouge">custom.scss</code>. You can also start to add parts of Bootstrap under the <code class="highlighter-rouge">// Optional</code> section as needed. We suggest using the full import stack from our <code class="highlighter-rouge">bootstrap.scss</code> file as your starting point.</p>
+<p>With that setup in place, you can begin to modify any of the Sass variables and maps in your <code class="language-plaintext highlighter-rouge">custom.scss</code>. You can also start to add parts of Bootstrap under the <code class="language-plaintext highlighter-rouge">// Optional</code> section as needed. We suggest using the full import stack from our <code class="language-plaintext highlighter-rouge">bootstrap.scss</code> file as your starting point.</p>
 
 <h3 id="variable-defaults">Variable defaults</h3>
 
-<p>Every Sass variable in Bootstrap 4 includes the <code class="highlighter-rouge">!default</code> flag allowing you to override the variable’s default value in your own Sass without modifying Bootstrap’s source code. Copy and paste variables as needed, modify their values, and remove the <code class="highlighter-rouge">!default</code> flag. If a variable has already been assigned, then it won’t be re-assigned by the default values in Bootstrap.</p>
+<p>Every Sass variable in Bootstrap 4 includes the <code class="language-plaintext highlighter-rouge">!default</code> flag allowing you to override the variable’s default value in your own Sass without modifying Bootstrap’s source code. Copy and paste variables as needed, modify their values, and remove the <code class="language-plaintext highlighter-rouge">!default</code> flag. If a variable has already been assigned, then it won’t be re-assigned by the default values in Bootstrap.</p>
 
-<p>You will find the complete list of Bootstrap’s variables in <code class="highlighter-rouge">scss/_variables.scss</code>. Some variables are set to <code class="highlighter-rouge">null</code>, these variables don’t output the property unless they are overridden in your configuration.</p>
+<p>You will find the complete list of Bootstrap’s variables in <code class="language-plaintext highlighter-rouge">scss/_variables.scss</code>. Some variables are set to <code class="language-plaintext highlighter-rouge">null</code>, these variables don’t output the property unless they are overridden in your configuration.</p>
 
 <p>Variable overrides within the same Sass file can come before or after the default variables. However, when overriding across Sass files, your overrides must come before you import Bootstrap’s Sass files.</p>
 
-<p>Here’s an example that changes the <code class="highlighter-rouge">background-color</code> and <code class="highlighter-rouge">color</code> for the <code class="highlighter-rouge">&lt;body&gt;</code> when importing and compiling Bootstrap via npm:</p>
+<p>Here’s an example that changes the <code class="language-plaintext highlighter-rouge">background-color</code> and <code class="language-plaintext highlighter-rouge">color</code> for the <code class="language-plaintext highlighter-rouge">&lt;body&gt;</code> when importing and compiling Bootstrap via npm:</p>
 
 <figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="c1">// Your variable overrides</span>
 <span class="nv">$body-bg</span><span class="p">:</span> <span class="mh">#000</span><span class="p">;</span>
@@ -599,13 +603,13 @@
 
 <h3 id="maps-and-loops">Maps and loops</h3>
 
-<p>Bootstrap 4 includes a handful of Sass maps, key value pairs that make it easier to generate families of related CSS. We use Sass maps for our colors, grid breakpoints, and more. Just like Sass variables, all Sass maps include the <code class="highlighter-rouge">!default</code> flag and can be overridden and extended.</p>
+<p>Bootstrap 4 includes a handful of Sass maps, key value pairs that make it easier to generate families of related CSS. We use Sass maps for our colors, grid breakpoints, and more. Just like Sass variables, all Sass maps include the <code class="language-plaintext highlighter-rouge">!default</code> flag and can be overridden and extended.</p>
 
 <p>Some of our Sass maps are merged into empty ones by default. This is done to allow easy expansion of a given Sass map, but comes at the cost of making <em>removing</em> items from a map slightly more difficult.</p>
 
 <h4 id="modify-map">Modify map</h4>
 
-<p>To modify an existing color in our <code class="highlighter-rouge">$theme-colors</code> map, add the following to your custom Sass file:</p>
+<p>To modify an existing color in our <code class="language-plaintext highlighter-rouge">$theme-colors</code> map, add the following to your custom Sass file:</p>
 
 <figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="nv">$theme-colors</span><span class="p">:</span> <span class="p">(</span>
   <span class="s2">"primary"</span><span class="o">:</span> <span class="mh">#0074d9</span><span class="o">,</span>
@@ -614,7 +618,7 @@
 
 <h4 id="add-to-map">Add to map</h4>
 
-<p>To add a new color to <code class="highlighter-rouge">$theme-colors</code>, add the new key and value:</p>
+<p>To add a new color to <code class="language-plaintext highlighter-rouge">$theme-colors</code>, add the new key and value:</p>
 
 <figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="nv">$theme-colors</span><span class="p">:</span> <span class="p">(</span>
   <span class="s2">"custom-color"</span><span class="o">:</span> <span class="mh">#900</span>
@@ -622,7 +626,7 @@
 
 <h4 id="remove-from-map">Remove from map</h4>
 
-<p>To remove colors from <code class="highlighter-rouge">$theme-colors</code>, or any other map, use <code class="highlighter-rouge">map-remove</code>. Be aware you must insert it between our requirements and options:</p>
+<p>To remove colors from <code class="language-plaintext highlighter-rouge">$theme-colors</code>, or any other map, use <code class="language-plaintext highlighter-rouge">map-remove</code>. Be aware you must insert it between our requirements and options:</p>
 
 <figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="c1">// Required</span>
 <span class="k">@import</span> <span class="s2">"../node_modules/bootstrap/scss/functions"</span><span class="p">;</span>
@@ -641,7 +645,7 @@
 
 <p>Bootstrap assumes the presence of some specific keys within Sass maps as we used and extend these ourselves. As you customize the included maps, you may encounter errors where a specific Sass map’s key is being used.</p>
 
-<p>For example, we use the <code class="highlighter-rouge">primary</code>, <code class="highlighter-rouge">success</code>, and <code class="highlighter-rouge">danger</code> keys from <code class="highlighter-rouge">$theme-colors</code> for links, buttons, and form states. Replacing the values of these keys should present no issues, but removing them may cause Sass compilation issues. In these instances, you’ll need to modify the Sass code that makes use of those values.</p>
+<p>For example, we use the <code class="language-plaintext highlighter-rouge">primary</code>, <code class="language-plaintext highlighter-rouge">success</code>, and <code class="language-plaintext highlighter-rouge">danger</code> keys from <code class="language-plaintext highlighter-rouge">$theme-colors</code> for links, buttons, and form states. Replacing the values of these keys should present no issues, but removing them may cause Sass compilation issues. In these instances, you’ll need to modify the Sass code that makes use of those values.</p>
 
 <h3 id="functions">Functions</h3>
 
@@ -666,7 +670,7 @@
   <span class="nl">background-color</span><span class="p">:</span> <span class="nf">theme-color</span><span class="p">(</span><span class="s2">"dark"</span><span class="p">);</span>
 <span class="p">}</span></code></pre></figure>
 
-<p>We also have another function for getting a particular <em>level</em> of color from the <code class="highlighter-rouge">$theme-colors</code> map. Negative level values will lighten the color, while higher levels will darken.</p>
+<p>We also have another function for getting a particular <em>level</em> of color from the <code class="language-plaintext highlighter-rouge">$theme-colors</code> map. Negative level values will lighten the color, while higher levels will darken.</p>
 
 <figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="k">@function</span> <span class="nf">theme-color-level</span><span class="p">(</span><span class="nv">$color-name</span><span class="o">:</span> <span class="s2">"primary"</span><span class="o">,</span> <span class="nv">$level</span><span class="o">:</span> <span class="m">0</span><span class="p">)</span> <span class="p">{</span>
   <span class="nv">$color</span><span class="p">:</span> <span class="nf">theme-color</span><span class="p">(</span><span class="nv">$color-name</span><span class="p">);</span>
@@ -676,7 +680,7 @@
   <span class="k">@return</span> <span class="nf">mix</span><span class="p">(</span><span class="nv">$color-base</span><span class="o">,</span> <span class="nv">$color</span><span class="o">,</span> <span class="nv">$level</span> <span class="o">*</span> <span class="nv">$theme-color-interval</span><span class="p">);</span>
 <span class="p">}</span></code></pre></figure>
 
-<p>In practice, you’d call the function and pass in two parameters: the name of the color from <code class="highlighter-rouge">$theme-colors</code> (e.g., primary or danger) and a numeric level.</p>
+<p>In practice, you’d call the function and pass in two parameters: the name of the color from <code class="language-plaintext highlighter-rouge">$theme-colors</code> (e.g., primary or danger) and a numeric level.</p>
 
 <figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="nc">.custom-element</span> <span class="p">{</span>
   <span class="nl">color</span><span class="p">:</span> <span class="nf">theme-color-level</span><span class="p">(</span><span class="n">primary</span><span class="o">,</span> <span class="m">-10</span><span class="p">);</span>
@@ -686,9 +690,9 @@
 
 <h4 id="color-contrast">Color contrast</h4>
 
-<p>An additional function we include in Bootstrap is the color contrast function, <code class="highlighter-rouge">color-yiq</code>. It utilizes the <a href="https://en.wikipedia.org/wiki/YIQ">YIQ color space</a> to automatically return a light (<code class="highlighter-rouge">#fff</code>) or dark (<code class="highlighter-rouge">#111</code>) contrast color based on the specified base color. This function is especially useful for mixins or loops where you’re generating multiple classes.</p>
+<p>An additional function we include in Bootstrap is the color contrast function, <code class="language-plaintext highlighter-rouge">color-yiq</code>. It utilizes the <a href="https://en.wikipedia.org/wiki/YIQ">YIQ color space</a> to automatically return a light (<code class="language-plaintext highlighter-rouge">#fff</code>) or dark (<code class="language-plaintext highlighter-rouge">#111</code>) contrast color based on the specified base color. This function is especially useful for mixins or loops where you’re generating multiple classes.</p>
 
-<p>For example, to generate color swatches from our <code class="highlighter-rouge">$theme-colors</code> map:</p>
+<p>For example, to generate color swatches from our <code class="language-plaintext highlighter-rouge">$theme-colors</code> map:</p>
 
 <figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="k">@each</span> <span class="nv">$color</span><span class="o">,</span> <span class="nv">$value</span> <span class="n">in</span> <span class="nv">$theme-colors</span> <span class="p">{</span>
   <span class="nc">.swatch-</span><span class="si">#{</span><span class="nv">$color</span><span class="si">}</span> <span class="p">{</span>
@@ -710,11 +714,11 @@
 
 <h4 id="escape-svg">Escape SVG</h4>
 
-<p>We use the <code class="highlighter-rouge">escape-svg</code> function to escape the <code class="highlighter-rouge">&lt;</code>, <code class="highlighter-rouge">&gt;</code> and <code class="highlighter-rouge">#</code> characters for SVG background images. These characters need to be escaped to properly render the background images in IE.</p>
+<p>We use the <code class="language-plaintext highlighter-rouge">escape-svg</code> function to escape the <code class="language-plaintext highlighter-rouge">&lt;</code>, <code class="language-plaintext highlighter-rouge">&gt;</code> and <code class="language-plaintext highlighter-rouge">#</code> characters for SVG background images. These characters need to be escaped to properly render the background images in IE.</p>
 
 <h4 id="add-and-subtract-functions">Add and Subtract functions</h4>
 
-<p>We use the <code class="highlighter-rouge">add</code> and <code class="highlighter-rouge">subtract</code> functions to wrap the CSS <code class="highlighter-rouge">calc</code> function. The primary purpose of these functions is to avoid errors when a “unitless” <code class="highlighter-rouge">0</code> value is passed into a <code class="highlighter-rouge">calc</code> expression. Expressions like <code class="highlighter-rouge">calc(10px - 0)</code> will return an error in all browsers, despite being mathematically correct.</p>
+<p>We use the <code class="language-plaintext highlighter-rouge">add</code> and <code class="language-plaintext highlighter-rouge">subtract</code> functions to wrap the CSS <code class="language-plaintext highlighter-rouge">calc</code> function. The primary purpose of these functions is to avoid errors when a “unitless” <code class="language-plaintext highlighter-rouge">0</code> value is passed into a <code class="language-plaintext highlighter-rouge">calc</code> expression. Expressions like <code class="language-plaintext highlighter-rouge">calc(10px - 0)</code> will return an error in all browsers, despite being mathematically correct.</p>
 
 <p>Example where the calc is valid:</p>
 
@@ -748,9 +752,9 @@
 
 <h2 id="sass-options">Sass options</h2>
 
-<p>Customize Bootstrap 4 with our built-in custom variables file and easily toggle global CSS preferences with new <code class="highlighter-rouge">$enable-*</code> Sass variables. Override a variable’s value and recompile with <code class="highlighter-rouge">npm run test</code> as needed.</p>
+<p>Customize Bootstrap 4 with our built-in custom variables file and easily toggle global CSS preferences with new <code class="language-plaintext highlighter-rouge">$enable-*</code> Sass variables. Override a variable’s value and recompile with <code class="language-plaintext highlighter-rouge">npm run test</code> as needed.</p>
 
-<p>You can find and customize these variables for key global options in Bootstrap’s <code class="highlighter-rouge">scss/_variables.scss</code> file.</p>
+<p>You can find and customize these variables for key global options in Bootstrap’s <code class="language-plaintext highlighter-rouge">scss/_variables.scss</code> file.</p>
 
 <table>
   <thead>
@@ -762,74 +766,74 @@
   </thead>
   <tbody>
     <tr>
-      <td><code class="highlighter-rouge">$spacer</code></td>
-      <td><code class="highlighter-rouge">1rem</code> (default), or any value &gt; 0</td>
+      <td><code class="language-plaintext highlighter-rouge">$spacer</code></td>
+      <td><code class="language-plaintext highlighter-rouge">1rem</code> (default), or any value &gt; 0</td>
       <td>Specifies the default spacer value to programmatically generate our <a href="/docs/4.5/utilities/spacing/">spacer utilities</a>.</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">$enable-rounded</code></td>
-      <td><code class="highlighter-rouge">true</code> (default) or <code class="highlighter-rouge">false</code></td>
-      <td>Enables predefined <code class="highlighter-rouge">border-radius</code> styles on various components.</td>
+      <td><code class="language-plaintext highlighter-rouge">$enable-rounded</code></td>
+      <td><code class="language-plaintext highlighter-rouge">true</code> (default) or <code class="language-plaintext highlighter-rouge">false</code></td>
+      <td>Enables predefined <code class="language-plaintext highlighter-rouge">border-radius</code> styles on various components.</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">$enable-shadows</code></td>
-      <td><code class="highlighter-rouge">true</code> or <code class="highlighter-rouge">false</code> (default)</td>
-      <td>Enables predefined <code class="highlighter-rouge">box-shadow</code> styles on various components.</td>
+      <td><code class="language-plaintext highlighter-rouge">$enable-shadows</code></td>
+      <td><code class="language-plaintext highlighter-rouge">true</code> or <code class="language-plaintext highlighter-rouge">false</code> (default)</td>
+      <td>Enables predefined <code class="language-plaintext highlighter-rouge">box-shadow</code> styles on various components.</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">$enable-gradients</code></td>
-      <td><code class="highlighter-rouge">true</code> or <code class="highlighter-rouge">false</code> (default)</td>
-      <td>Enables predefined gradients via <code class="highlighter-rouge">background-image</code> styles on various components.</td>
+      <td><code class="language-plaintext highlighter-rouge">$enable-gradients</code></td>
+      <td><code class="language-plaintext highlighter-rouge">true</code> or <code class="language-plaintext highlighter-rouge">false</code> (default)</td>
+      <td>Enables predefined gradients via <code class="language-plaintext highlighter-rouge">background-image</code> styles on various components.</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">$enable-transitions</code></td>
-      <td><code class="highlighter-rouge">true</code> (default) or <code class="highlighter-rouge">false</code></td>
-      <td>Enables predefined <code class="highlighter-rouge">transition</code>s on various components.</td>
+      <td><code class="language-plaintext highlighter-rouge">$enable-transitions</code></td>
+      <td><code class="language-plaintext highlighter-rouge">true</code> (default) or <code class="language-plaintext highlighter-rouge">false</code></td>
+      <td>Enables predefined <code class="language-plaintext highlighter-rouge">transition</code>s on various components.</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">$enable-prefers-reduced-motion-media-query</code></td>
-      <td><code class="highlighter-rouge">true</code> (default) or <code class="highlighter-rouge">false</code></td>
-      <td>Enables the <a href="/docs/4.5/getting-started/accessibility/#reduced-motion"><code class="highlighter-rouge">prefers-reduced-motion</code> media query</a>, which suppresses certain animations/transitions based on the users’ browser/operating system preferences.</td>
+      <td><code class="language-plaintext highlighter-rouge">$enable-prefers-reduced-motion-media-query</code></td>
+      <td><code class="language-plaintext highlighter-rouge">true</code> (default) or <code class="language-plaintext highlighter-rouge">false</code></td>
+      <td>Enables the <a href="/docs/4.5/getting-started/accessibility/#reduced-motion"><code class="language-plaintext highlighter-rouge">prefers-reduced-motion</code> media query</a>, which suppresses certain animations/transitions based on the users’ browser/operating system preferences.</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">$enable-hover-media-query</code></td>
-      <td><code class="highlighter-rouge">true</code> or <code class="highlighter-rouge">false</code> (default)</td>
+      <td><code class="language-plaintext highlighter-rouge">$enable-hover-media-query</code></td>
+      <td><code class="language-plaintext highlighter-rouge">true</code> or <code class="language-plaintext highlighter-rouge">false</code> (default)</td>
       <td><strong>Deprecated</strong></td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">$enable-grid-classes</code></td>
-      <td><code class="highlighter-rouge">true</code> (default) or <code class="highlighter-rouge">false</code></td>
-      <td>Enables the generation of CSS classes for the grid system (e.g., <code class="highlighter-rouge">.container</code>, <code class="highlighter-rouge">.row</code>, <code class="highlighter-rouge">.col-md-1</code>, etc.).</td>
+      <td><code class="language-plaintext highlighter-rouge">$enable-grid-classes</code></td>
+      <td><code class="language-plaintext highlighter-rouge">true</code> (default) or <code class="language-plaintext highlighter-rouge">false</code></td>
+      <td>Enables the generation of CSS classes for the grid system (e.g., <code class="language-plaintext highlighter-rouge">.container</code>, <code class="language-plaintext highlighter-rouge">.row</code>, <code class="language-plaintext highlighter-rouge">.col-md-1</code>, etc.).</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">$enable-caret</code></td>
-      <td><code class="highlighter-rouge">true</code> (default) or <code class="highlighter-rouge">false</code></td>
-      <td>Enables pseudo element caret on <code class="highlighter-rouge">.dropdown-toggle</code>.</td>
+      <td><code class="language-plaintext highlighter-rouge">$enable-caret</code></td>
+      <td><code class="language-plaintext highlighter-rouge">true</code> (default) or <code class="language-plaintext highlighter-rouge">false</code></td>
+      <td>Enables pseudo element caret on <code class="language-plaintext highlighter-rouge">.dropdown-toggle</code>.</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">$enable-pointer-cursor-for-buttons</code></td>
-      <td><code class="highlighter-rouge">true</code> (default) or <code class="highlighter-rouge">false</code></td>
+      <td><code class="language-plaintext highlighter-rouge">$enable-pointer-cursor-for-buttons</code></td>
+      <td><code class="language-plaintext highlighter-rouge">true</code> (default) or <code class="language-plaintext highlighter-rouge">false</code></td>
       <td>Add “hand” cursor to non-disabled button elements.</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">$enable-print-styles</code></td>
-      <td><code class="highlighter-rouge">true</code> (default) or <code class="highlighter-rouge">false</code></td>
+      <td><code class="language-plaintext highlighter-rouge">$enable-print-styles</code></td>
+      <td><code class="language-plaintext highlighter-rouge">true</code> (default) or <code class="language-plaintext highlighter-rouge">false</code></td>
       <td>Enables styles for optimizing printing.</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">$enable-responsive-font-sizes</code></td>
-      <td><code class="highlighter-rouge">true</code> or <code class="highlighter-rouge">false</code> (default)</td>
+      <td><code class="language-plaintext highlighter-rouge">$enable-responsive-font-sizes</code></td>
+      <td><code class="language-plaintext highlighter-rouge">true</code> or <code class="language-plaintext highlighter-rouge">false</code> (default)</td>
       <td>Enables <a href="/docs/4.5/content/typography/#responsive-font-sizes">responsive font sizes</a>.</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">$enable-validation-icons</code></td>
-      <td><code class="highlighter-rouge">true</code> (default) or <code class="highlighter-rouge">false</code></td>
-      <td>Enables <code class="highlighter-rouge">background-image</code> icons within textual inputs and some custom forms for validation states.</td>
+      <td><code class="language-plaintext highlighter-rouge">$enable-validation-icons</code></td>
+      <td><code class="language-plaintext highlighter-rouge">true</code> (default) or <code class="language-plaintext highlighter-rouge">false</code></td>
+      <td>Enables <code class="language-plaintext highlighter-rouge">background-image</code> icons within textual inputs and some custom forms for validation states.</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">$enable-deprecation-messages</code></td>
-      <td><code class="highlighter-rouge">true</code> or <code class="highlighter-rouge">false</code> (default)</td>
-      <td>Set to <code class="highlighter-rouge">true</code> to show warnings when using any of the deprecated mixins and functions that are planned to be removed in <code class="highlighter-rouge">v5</code>.</td>
+      <td><code class="language-plaintext highlighter-rouge">$enable-deprecation-messages</code></td>
+      <td><code class="language-plaintext highlighter-rouge">true</code> or <code class="language-plaintext highlighter-rouge">false</code> (default)</td>
+      <td>Set to <code class="language-plaintext highlighter-rouge">true</code> to show warnings when using any of the deprecated mixins and functions that are planned to be removed in <code class="language-plaintext highlighter-rouge">v5</code>.</td>
     </tr>
   </tbody>
 </table>
@@ -840,7 +844,7 @@
 
 <h3 id="all-colors">All colors</h3>
 
-<p>All colors available in Bootstrap 4, are available as Sass variables and a Sass map in <code class="highlighter-rouge">scss/_variables.scss</code> file. This will be expanded upon in subsequent minor releases to add additional shades, much like the <a href="#grays">grayscale palette</a> we already include.</p>
+<p>All colors available in Bootstrap 4, are available as Sass variables and a Sass map in <code class="language-plaintext highlighter-rouge">scss/_variables.scss</code> file. This will be expanded upon in subsequent minor releases to add additional shades, much like the <a href="#grays">grayscale palette</a> we already include.</p>
 
 <div class="row">
   
@@ -920,7 +924,7 @@
 <span class="c1">// From the Sass map with our `color()` function</span>
 <span class="nc">.beta</span> <span class="p">{</span> <span class="nl">color</span><span class="p">:</span> <span class="nf">color</span><span class="p">(</span><span class="s2">"purple"</span><span class="p">);</span> <span class="p">}</span></code></pre></figure>
 
-<p><a href="/docs/4.5/utilities/colors/">Color utility classes</a> are also available for setting <code class="highlighter-rouge">color</code> and <code class="highlighter-rouge">background-color</code>.</p>
+<p><a href="/docs/4.5/utilities/colors/">Color utility classes</a> are also available for setting <code class="language-plaintext highlighter-rouge">color</code> and <code class="language-plaintext highlighter-rouge">background-color</code>.</p>
 
 <div class="bd-callout bd-callout-info">
 <p>In the future, we’ll aim to provide Sass maps and variables for shades of each color as we’ve done with the grayscale colors below.</p>
@@ -928,7 +932,7 @@
 
 <h3 id="theme-colors">Theme colors</h3>
 
-<p>We use a subset of all colors to create a smaller color palette for generating color schemes, also available as Sass variables and a Sass map in Bootstrap’s <code class="highlighter-rouge">scss/_variables.scss</code> file.</p>
+<p>We use a subset of all colors to create a smaller color palette for generating color schemes, also available as Sass variables and a Sass map in Bootstrap’s <code class="language-plaintext highlighter-rouge">scss/_variables.scss</code> file.</p>
 
 <div class="row">
   
@@ -968,7 +972,7 @@
 
 <h3 id="grays">Grays</h3>
 
-<p>An expansive set of gray variables and a Sass map in <code class="highlighter-rouge">scss/_variables.scss</code> for consistent shades of gray across your project. Note that these are “cool grays”, which tend towards a subtle blue tone, rather than neutral grays.</p>
+<p>An expansive set of gray variables and a Sass map in <code class="language-plaintext highlighter-rouge">scss/_variables.scss</code> for consistent shades of gray across your project. Note that these are “cool grays”, which tend towards a subtle blue tone, rather than neutral grays.</p>
 
 <div class="row mb-3">
   <div class="col-md-4">
@@ -994,7 +998,7 @@
   </div>
 </div>
 
-<p>Within <code class="highlighter-rouge">scss/_variables.scss</code>, you’ll find Bootstrap’s color variables and Sass map. Here’s an example of the <code class="highlighter-rouge">$colors</code> Sass map:</p>
+<p>Within <code class="language-plaintext highlighter-rouge">scss/_variables.scss</code>, you’ll find Bootstrap’s color variables and Sass map. Here’s an example of the <code class="language-plaintext highlighter-rouge">$colors</code> Sass map:</p>
 
 <figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="nv">$colors</span><span class="p">:</span> <span class="p">(</span>
   <span class="s2">"blue"</span><span class="o">:</span> <span class="nv">$blue</span><span class="o">,</span>
@@ -1012,17 +1016,17 @@
   <span class="s2">"gray-dark"</span><span class="o">:</span> <span class="nv">$gray-800</span>
 <span class="p">)</span> <span class="o">!</span><span class="nb">default</span><span class="p">;</span></code></pre></figure>
 
-<p>Add, remove, or modify values within the map to update how they’re used in many other components. Unfortunately at this time, not <em>every</em> component utilizes this Sass map. Future updates will strive to improve upon this. Until then, plan on making use of the <code class="highlighter-rouge">${color}</code> variables and this Sass map.</p>
+<p>Add, remove, or modify values within the map to update how they’re used in many other components. Unfortunately at this time, not <em>every</em> component utilizes this Sass map. Future updates will strive to improve upon this. Until then, plan on making use of the <code class="language-plaintext highlighter-rouge">${color}</code> variables and this Sass map.</p>
 
 <h2 id="components">Components</h2>
 
-<p>Many of Bootstrap’s components and utilities are built with <code class="highlighter-rouge">@each</code> loops that iterate over a Sass map. This is especially helpful for generating variants of a component by our <code class="highlighter-rouge">$theme-colors</code> and creating responsive variants for each breakpoint. As you customize these Sass maps and recompile, you’ll automatically see your changes reflected in these loops.</p>
+<p>Many of Bootstrap’s components and utilities are built with <code class="language-plaintext highlighter-rouge">@each</code> loops that iterate over a Sass map. This is especially helpful for generating variants of a component by our <code class="language-plaintext highlighter-rouge">$theme-colors</code> and creating responsive variants for each breakpoint. As you customize these Sass maps and recompile, you’ll automatically see your changes reflected in these loops.</p>
 
 <h3 id="modifiers">Modifiers</h3>
 
-<p>Many of Bootstrap’s components are built with a base-modifier class approach. This means the bulk of the styling is contained to a base class (e.g., <code class="highlighter-rouge">.btn</code>) while style variations are confined to modifier classes (e.g., <code class="highlighter-rouge">.btn-danger</code>). These modifier classes are built from the <code class="highlighter-rouge">$theme-colors</code> map to make customizing the number and name of our modifier classes.</p>
+<p>Many of Bootstrap’s components are built with a base-modifier class approach. This means the bulk of the styling is contained to a base class (e.g., <code class="language-plaintext highlighter-rouge">.btn</code>) while style variations are confined to modifier classes (e.g., <code class="language-plaintext highlighter-rouge">.btn-danger</code>). These modifier classes are built from the <code class="language-plaintext highlighter-rouge">$theme-colors</code> map to make customizing the number and name of our modifier classes.</p>
 
-<p>Here are two examples of how we loop over the <code class="highlighter-rouge">$theme-colors</code> map to generate modifiers to the <code class="highlighter-rouge">.alert</code> component and all our <code class="highlighter-rouge">.bg-*</code> background utilities.</p>
+<p>Here are two examples of how we loop over the <code class="language-plaintext highlighter-rouge">$theme-colors</code> map to generate modifiers to the <code class="language-plaintext highlighter-rouge">.alert</code> component and all our <code class="language-plaintext highlighter-rouge">.bg-*</code> background utilities.</p>
 
 <figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="c1">// Generate alert modifier classes</span>
 <span class="k">@each</span> <span class="nv">$color</span><span class="o">,</span> <span class="nv">$value</span> <span class="n">in</span> <span class="nv">$theme-colors</span> <span class="p">{</span>
@@ -1038,7 +1042,7 @@
 
 <h3 id="responsive">Responsive</h3>
 
-<p>These Sass loops aren’t limited to color maps, either. You can also generate responsive variations of your components or utilities. Take for example our responsive text alignment utilities where we mix an <code class="highlighter-rouge">@each</code> loop for the <code class="highlighter-rouge">$grid-breakpoints</code> Sass map with a media query include.</p>
+<p>These Sass loops aren’t limited to color maps, either. You can also generate responsive variations of your components or utilities. Take for example our responsive text alignment utilities where we mix an <code class="language-plaintext highlighter-rouge">@each</code> loop for the <code class="language-plaintext highlighter-rouge">$grid-breakpoints</code> Sass map with a media query include.</p>
 
 <figure class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="k">@each</span> <span class="nv">$breakpoint</span> <span class="n">in</span> <span class="nf">map-keys</span><span class="p">(</span><span class="nv">$grid-breakpoints</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">@include</span> <span class="nd">media-breakpoint-up</span><span class="p">(</span><span class="nv">$breakpoint</span><span class="p">)</span> <span class="p">{</span>
@@ -1050,7 +1054,7 @@
   <span class="p">}</span>
 <span class="p">}</span></code></pre></figure>
 
-<p>Should you need to modify your <code class="highlighter-rouge">$grid-breakpoints</code>, your changes will apply to all the loops iterating over that map.</p>
+<p>Should you need to modify your <code class="language-plaintext highlighter-rouge">$grid-breakpoints</code>, your changes will apply to all the loops iterating over that map.</p>
 
 <h2 id="css-variables">CSS variables</h2>
 
@@ -1058,7 +1062,7 @@
 
 <h3 id="available-variables">Available variables</h3>
 
-<p>Here are the variables we include (note that the <code class="highlighter-rouge">:root</code> is required). They’re located in our <code class="highlighter-rouge">_root.scss</code> file.</p>
+<p>Here are the variables we include (note that the <code class="language-plaintext highlighter-rouge">:root</code> is required). They’re located in our <code class="language-plaintext highlighter-rouge">_root.scss</code> file.</p>
 
 <figure class="highlight"><pre><code class="language-css" data-lang="css"><span class="nd">:root</span> <span class="p">{</span>
   <span class="py">--blue</span><span class="p">:</span> <span class="m">#007bff</span><span class="p">;</span>
@@ -1104,7 +1108,7 @@
 
 <h3 id="breakpoint-variables">Breakpoint variables</h3>
 
-<p>While we originally included breakpoints in our CSS variables (e.g., <code class="highlighter-rouge">--breakpoint-md</code>), <strong>these are not supported in media queries</strong>, but they can still be used <em>within</em> rulesets in media queries. These breakpoint variables remain in the compiled CSS for backward compatibility given they can be utilized by JavaScript. <a href="https://www.w3.org/TR/css-variables-1/#using-variables">Learn more in the spec</a>.</p>
+<p>While we originally included breakpoints in our CSS variables (e.g., <code class="language-plaintext highlighter-rouge">--breakpoint-md</code>), <strong>these are not supported in media queries</strong>, but they can still be used <em>within</em> rulesets in media queries. These breakpoint variables remain in the compiled CSS for backward compatibility given they can be utilized by JavaScript. <a href="https://www.w3.org/TR/css-variables-1/#using-variables">Learn more in the spec</a>.</p>
 
 <p>Here’s an example of <strong>what’s not supported:</strong></p>
 
@@ -1126,6 +1130,6 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.5/assets/js/docs.min.js"></script>
+<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-FxkQtQ8fW6C3xA7BoW8ocAb2N7U9dCA7ZJXMJlz/37PL6Q6PUGQ5ZeJcaXdYKcdJ" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.5/assets/js/docs.min.js"></script>
   </body>
 </html>

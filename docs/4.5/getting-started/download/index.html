@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="Download Bootstrap to get the compiled CSS and JavaScript, source code, or include it with your favorite package managers like npm, RubyGems, and more.">
 <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-<meta name="generator" content="Jekyll v4.0.1">
+<meta name="generator" content="Jekyll v4.1.1">
 
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="4.5">
@@ -15,7 +15,7 @@
 <link rel="canonical" href="https://getbootstrap.com/docs/4.5/getting-started/download/">
 
 <!-- Bootstrap core CSS -->
-<link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
 <!-- Documentation extras -->
 
 <link href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" rel="stylesheet">
@@ -62,9 +62,10 @@
 
   </head>
   <body>
-    <a class="skippy sr-only sr-only-focusable" href="#content">
-  <span class="skippy-text">Skip to main content</span>
-</a>
+    <div class="skippy overflow-hidden">
+  <div class="container-xl">
+    <a class="sr-only sr-only-focusable d-inline-flex p-2 m-1" href="#content">Skip to main content</a><a class="sr-only sr-only-focusable d-none d-md-inline-flex p-2 m-1" href="#bd-docs-nav">Skip to docs navigation</a></div>
+</div>
 
 
     <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
@@ -486,13 +487,16 @@
         
 
         <main class="col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
-          <h1 class="bd-title" id="content">Download</h1>
+          <div class="d-md-flex flex-md-row-reverse align-items-center justify-content-between">
+            <a class="btn btn-sm btn-bd-light my-2 my-md-0" href="https://github.com/twbs/bootstrap/tree/v4-dev/site/docs/4.5/getting-started/download.md" title="View and edit this file on GitHub" target="_blank" rel="noopener">View on GitHub</a>
+            <h1 class="bd-title" id="content">Download</h1>
+          </div>
           <p class="bd-lead">Download Bootstrap to get the compiled CSS and JavaScript, source code, or include it with your favorite package managers like npm, RubyGems, and more.</p>
           <script async src="https://cdn.carbonads.com/carbon.js?serve=CKYIKKJL&placement=getbootstrapcom" id="_carbonads_js"></script>
 
           <h2 id="compiled-css-and-js">Compiled CSS and JS</h2>
 
-<p>Download ready-to-use compiled code for <strong>Bootstrap v4.5.0</strong> to easily drop into your project, which includes:</p>
+<p>Download ready-to-use compiled code for <strong>Bootstrap v4.5.1</strong> to easily drop into your project, which includes:</p>
 
 <ul>
   <li>Compiled and minified CSS bundles (see <a href="/docs/4.5/getting-started/contents/#css-files">CSS files comparison</a>)</li>
@@ -501,7 +505,7 @@
 
 <p>This doesn’t include documentation, source files, or any optional JavaScript dependencies (jQuery and Popper.js).</p>
 
-<p><a href="https://github.com/twbs/bootstrap/releases/download/v4.5.0/bootstrap-4.5.0-dist.zip" class="btn btn-bd-primary" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download Bootstrap');">Download</a></p>
+<p><a href="https://github.com/twbs/bootstrap/releases/download/v4.5.1/bootstrap-4.5.1-dist.zip" class="btn btn-bd-primary" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download Bootstrap');">Download</a></p>
 
 <h2 id="source-files">Source files</h2>
 
@@ -514,25 +518,25 @@
 
 <p>Should you require <a href="/docs/4.5/getting-started/build-tools/#tooling-setup">build tools</a>, they are included for developing Bootstrap and its docs, but they’re likely unsuitable for your own purposes.</p>
 
-<p><a href="https://github.com/twbs/bootstrap/archive/v4.5.0.zip" class="btn btn-bd-primary" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download source');">Download source</a></p>
+<p><a href="https://github.com/twbs/bootstrap/archive/v4.5.1.zip" class="btn btn-bd-primary" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download source');">Download source</a></p>
 
 <h2 id="examples">Examples</h2>
 
 <p>If you want to download and examine our <a href="/docs/4.5/examples/">examples</a>, you can grab the already built examples:</p>
 
-<p><a href="https://github.com/twbs/bootstrap/releases/download/v4.5.0/bootstrap-4.5.0-examples.zip" class="btn btn-bd-primary" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download Examples');">Download Examples</a></p>
+<p><a href="https://github.com/twbs/bootstrap/releases/download/v4.5.1/bootstrap-4.5.1-examples.zip" class="btn btn-bd-primary" onclick="ga('send', 'event', 'Getting started', 'Download', 'Download Examples');">Download Examples</a></p>
 
 <h2 id="bootstrapcdn">BootstrapCDN</h2>
 
 <p>Skip the download with <a href="https://www.bootstrapcdn.com/">BootstrapCDN</a> to deliver cached version of Bootstrap’s compiled CSS and JS to your project.</p>
 
-<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"</span> <span class="na">integrity=</span><span class="s">"sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"</span> <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"</span> <span class="na">integrity=</span><span class="s">"sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"</span> <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"</span> <span class="na">integrity=</span><span class="s">"sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX"</span> <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js"</span> <span class="na">integrity=</span><span class="s">"sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J"</span> <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></figure>
 
-<p>If you’re using our compiled JavaScript, don’t forget to include CDN versions of jQuery and Popper.js before it.</p>
+<p>If you’re using our compiled JavaScript, don’t forget to include jQuery and Popper.js, via a CDN preferably, before our JS.</p>
 
 <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://code.jquery.com/jquery-3.5.1.slim.min.js"</span> <span class="na">integrity=</span><span class="s">"sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"</span> <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;&lt;/script&gt;</span>
-<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"</span> <span class="na">integrity=</span><span class="s">"sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"</span> <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></figure>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"</span> <span class="na">integrity=</span><span class="s">"sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"</span> <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></figure>
 
 <h2 id="package-managers">Package managers</h2>
 
@@ -544,13 +548,13 @@
 
 <figure class="highlight"><pre><code class="language-sh" data-lang="sh">npm <span class="nb">install </span>bootstrap</code></pre></figure>
 
-<p><code class="highlighter-rouge">require('bootstrap')</code> will load all of Bootstrap’s jQuery plugins onto the jQuery object. The <code class="highlighter-rouge">bootstrap</code> module itself does not export anything. You can manually load Bootstrap’s jQuery plugins individually by loading the <code class="highlighter-rouge">/js/*.js</code> files under the package’s top-level directory.</p>
+<p><code class="language-plaintext highlighter-rouge">require('bootstrap')</code> will load all of Bootstrap’s jQuery plugins onto the jQuery object. The <code class="language-plaintext highlighter-rouge">bootstrap</code> module itself does not export anything. You can manually load Bootstrap’s jQuery plugins individually by loading the <code class="language-plaintext highlighter-rouge">/js/*.js</code> files under the package’s top-level directory.</p>
 
-<p>Bootstrap’s <code class="highlighter-rouge">package.json</code> contains some additional metadata under the following keys:</p>
+<p>Bootstrap’s <code class="language-plaintext highlighter-rouge">package.json</code> contains some additional metadata under the following keys:</p>
 
 <ul>
-  <li><code class="highlighter-rouge">sass</code> - path to Bootstrap’s main <a href="https://sass-lang.com/">Sass</a> source file</li>
-  <li><code class="highlighter-rouge">style</code> - path to Bootstrap’s non-minified CSS that’s been precompiled using the default settings (no customization)</li>
+  <li><code class="language-plaintext highlighter-rouge">sass</code> - path to Bootstrap’s main <a href="https://sass-lang.com/">Sass</a> source file</li>
+  <li><code class="language-plaintext highlighter-rouge">style</code> - path to Bootstrap’s non-minified CSS that’s been precompiled using the default settings (no customization)</li>
 </ul>
 
 <h3 id="yarn">yarn</h3>
@@ -561,13 +565,13 @@
 
 <h3 id="rubygems">RubyGems</h3>
 
-<p>Install Bootstrap in your Ruby apps using <a href="https://bundler.io/">Bundler</a> (<strong>recommended</strong>) and <a href="https://rubygems.org/">RubyGems</a> by adding the following line to your <a href="https://bundler.io/gemfile.html"><code class="highlighter-rouge">Gemfile</code></a>:</p>
+<p>Install Bootstrap in your Ruby apps using <a href="https://bundler.io/">Bundler</a> (<strong>recommended</strong>) and <a href="https://rubygems.org/">RubyGems</a> by adding the following line to your <a href="https://bundler.io/gemfile.html"><code class="language-plaintext highlighter-rouge">Gemfile</code></a>:</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">gem</span> <span class="s1">'bootstrap'</span><span class="p">,</span> <span class="s1">'~&gt; 4.5.0'</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">gem</span> <span class="s1">'bootstrap'</span><span class="p">,</span> <span class="s1">'~&gt; 4.5.1'</span></code></pre></figure>
 
 <p>Alternatively, if you’re not using Bundler, you can install the gem by running this command:</p>
 
-<figure class="highlight"><pre><code class="language-sh" data-lang="sh">gem <span class="nb">install </span>bootstrap <span class="nt">-v</span> 4.5.0</code></pre></figure>
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">gem <span class="nb">install </span>bootstrap <span class="nt">-v</span> 4.5.1</code></pre></figure>
 
 <p><a href="https://github.com/twbs/bootstrap-rubygem/blob/master/README.md">See the gem’s README</a> for further details.</p>
 
@@ -575,7 +579,7 @@
 
 <p>You can also install and manage Bootstrap’s Sass and JavaScript using <a href="https://getcomposer.org/">Composer</a>:</p>
 
-<figure class="highlight"><pre><code class="language-sh" data-lang="sh">composer require twbs/bootstrap:4.5.0</code></pre></figure>
+<figure class="highlight"><pre><code class="language-sh" data-lang="sh">composer require twbs/bootstrap:4.5.1</code></pre></figure>
 
 <h3 id="nuget">NuGet</h3>
 
@@ -591,6 +595,6 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.5/assets/js/docs.min.js"></script>
+<script>window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-FxkQtQ8fW6C3xA7BoW8ocAb2N7U9dCA7ZJXMJlz/37PL6Q6PUGQ5ZeJcaXdYKcdJ" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script><script src="/docs/4.5/assets/js/docs.min.js"></script>
   </body>
 </html>
