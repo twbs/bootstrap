@@ -498,11 +498,11 @@ $utilities: map-merge(
         invisible: hidden,
       )
     ),
-    //Smooth scroll utility 
-    "smooth":(
+    //Smooth scroll utility
+    "smooth": (
       property: scroll-behavior,
       class: null,
-      values:(
+      values: (
         smooth: smooth
       )
     )
